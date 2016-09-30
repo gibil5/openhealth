@@ -9,7 +9,7 @@
     'name': "openHealth",
 
     'summary': """
-		Extension for oeHealth. 
+		Extension for Odoo-oeHealth. 
 		Treatments. 
 	""",
 

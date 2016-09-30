@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+		<!--
+		Quotation
+		-->
+		<record model="ir.ui.view" id="consultation_quotation_form_view">
+			<field name="name">consultation.quotation.form</field>
+			<field name="model">openhealth.quotation</field>
+			<field name="priority" eval="1"/>
+			
+			<field name="inherit_id" ref="consultation_form_view"/>
+			
+			<field name="arch" type="xml">
+				<notebook position="inside">
+					
+					<page string="Presupuestox">
+							
+						<!--
+								<field name="service">
+
+									<tree string="Presupuestos">										
+										
+										<field name="name"/>
+									</tree>
+
+								</field>
+						-->
+
+					</page>
+				
+				</notebook>
+			</field>
+		</record>
+	</data>
+</openerp>

@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<!--
+	 Created on: 	July 2016
+	 Last updated:	9 Sep 2016
+-->	
+
+<form string="Patient">
+
+	<header>
+		<button name="print_patient_label" string="Historia Médica" type="object" class="oe_highlight"/>
+	</header>
+
+	<sheet>
+
+		<!-- Buttons --> 
+		<!--
+		<div class="oe_right oe_button_box" style="width: 500px;" name="buttons">
+
+
+			<button type="action" class="oe_stat_button" name="347" context="{'search_default_patient': active_id,'default_patient': active_id}" icon="fa-calendar">
+				<field string="Citas" name="app_count" widget="statinfo"/>
+			</button>
+
+
+			<button type="action" class="oe_stat_button" name="348" context="{'search_default_patient': active_id,'default_patient': active_id}" icon="fa-list">
+				<field string="Prescripciones" name="prescription_count" widget="statinfo"/>
+			</button>
+
+
+			<button type="action" class="oe_stat_button" name="207" context="{'search_default_patient': active_id,'default_patient': active_id}" icon="fa-pencil-square-o">
+				<field string="Facturas" name="invoice_count" widget="statinfo"/>
+			</button>
+		-->
+
+			<!--
+			<button type="action" class="oe_stat_button" name="349" context="{'search_default_patient': active_id,'default_patient': active_id}" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager" icon="fa-list">
+				<field string="Vaccines" name="vaccine_count" widget="statinfo"/>
+			</button>
+			<button type="action" class="oe_stat_button" name="345" context="{'search_default_patient': active_id,'default_patient': active_id}" icon="fa-building-o">
+				<field string="Admissions" name="admission_count" widget="statinfo"/>
+			</button>
+			-->
+		<!--
+		</div>
+		-->
+
+
+
+
+		<!-- Persona --> 
+		<div class="oe_left" style="width: 500px;">
+
+			<field name="image" widget="image" class="oe_left oe_avatar" options="{&quot;preview_image&quot;: &quot;image_medium&quot;, &quot;size&quot;: [90, 90]}"/>
+
+			<div class="oe_title">
+
+				<label string="Nombre completo" class="oe_edit_only"/>
+
+				<h1>
+					<field name="name" required="1"/>
+				</h1>
+
+
+				<field name="age"/>
+			</div>
+
+			<!--
+			<button type="action" class="oe_stat_button" name="347" context="{'search_default_patient': active_id,'default_patient': active_id}" icon="fa-calendar">
+				<field string="Citas" name="app_count" widget="statinfo"/>
+			</button>
+
+			<button type="action" class="oe_stat_button" name="348" context="{'search_default_patient': active_id,'default_patient': active_id}" icon="fa-list">
+				<field string="Prescripciones" name="prescription_count" widget="statinfo"/>
+			</button>
+
+
+			<button type="action" class="oe_stat_button" name="207" context="{'search_default_patient': active_id,'default_patient': active_id}" icon="fa-pencil-square-o">
+				<field string="Facturas" name="invoice_count" widget="statinfo"/>
+			</button>
+			-->
+
+		</div>
+
+
+		<!--
+		Number 
+		<div class="oe_right" style="width: 300px;" >
+		-->
+		<div class="oe_right" >
+			<h1>
+				<field string="Número:"  name="identification_code"/>
+			</h1>
+		</div>
+
+
+
+		<!-- Button --> 
+		<!--
+		<div class="oe_right" >
+			<button 
+				type="action" 
+				class="oe_stat_button" 
+				name="207" 
+				icon="fa-pencil-square-o"
+
+				context="{'search_default_patient': active_id,'default_patient': active_id}" 
+
+			>
+				<field string="Tratamientos" name="invoice_count" widget="statinfo"/>
+			</button>
+		</div>
+		-->
+
+
+		<!-- Fields -->
+		<group>
+			<group>
+				<!--
+				<field string='Fecha de apertura'  name="a_date_created"  />
+				-->
+			</group>
+		</group>
+
+
+		<group>
+			<group>
+				<!--
+				<field string="DNI"  name="a_dni"/>
+				-->
+
+				<field string='Fecha de nacimiento'  name="dob" required="1"/>
+
+				<field string='Sexo' name="sex" required="1"/>
+
+				<field string='Estado civil'  name="marital_status" required="1"/>
+
+				<!--
+				<field string='¿ Primer contacto con la clínica ?' name="a_first_contact" required="0"/>
+				-->
+			</group>
+
+
+
+			<group>
+					<!--
+					<field string="Alergias" name="x_allergies_medication" nolabel="1"/>
+					<field string="Alergias" name="a_allergies" />
+					-->
+			</group>
+
+
+
+			<!--
+			<group>
+			<field string='Blood Type' name="blood_type"/>
+
+			<field string='Rh'  name="rh"/>
+
+			<field string='Family Physician'  name="doctor" options="{'no_create': True}"/>
+
+			<field string='Responsible' name="oeh_patient_user_id" options="{'no_create': True}"/>
+			</group>
+			-->
+
+		</group>
+
+
+
+		<notebook>
+		</notebook>
+	</sheet>
+</form>

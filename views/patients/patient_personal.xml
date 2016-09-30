@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<!--
+	*** OPEN HEALTH
+
+	Created: 			26 Aug 2016
+	Last updated: 	 	13 Sep 2016
+-->
+
+<openerp>
+	<data>
+
+
+		<!--
+		Personal 
+		-->
+		<record model="ir.ui.view" id="patient_personal_form_view">
+			<field name="name">Patient personal</field>
+			<field name="model">oeh.medical.patient</field>
+			<!--
+			-->
+			<field name="priority" eval="1"/>
+
+    		<field name="inherit_id" ref="oeh_medical_patient_view"/>
+			<field name="arch" type="xml">
+
+				<notebook position="inside">
+					<page string="Personal">
+						<group>
+
+							<group>
+								<label for="street" string="Dirección"/>
+								<div>
+									<!--
+									<field name="street" placeholder="Street..."/>
+									-->
+									<field name="street"  required="1"/> 
+									<field name="street2" required="1"/>
+
+									<div class="address_format">
+
+										<!--
+										<field name="city" placeholder="City" style="width: 40%"/>
+										-->
+										<field name="city" style="width: 40%"/>
+
+										
+										<!--
+										<field name="state_id" class="oe_no_button" placeholder="State" style="width: 37%" options="{&quot;no_open&quot;: True}" on_change="onchange_state(state_id)"/>
+											
+										<field name="zip" class="oe_no_button" placeholder="State" style="width: 37%" options="{&quot;no_open&quot;: True}" on_change="onchange_state(state_id)"/>											
+										-->
+										<field name="zip" class="oe_no_button" style="width: 37%" options="{&quot;no_open&quot;: True}" on_change="onchange_state(state_id)"/>
+
+										<!--
+										<field name="zip" placeholder="ZIP" style="width: 20%"/>
+										-->
+
+									</div>
+									<!--
+									_id<field name="country_id" placeholder="Country" class="oe_no_button" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
+									-->
+									<field name="country_id" class="oe_no_button" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
+								</div>
+
+
+								<field name="a_country_residence"  required="1"/>
+
+								<!--
+				<field string="Sitio web"  name="website" widget="url" placeholder="e.g. www.odoo.com"/>
+				--> 
+			</group>
+
+
+			<group>
+
+				<field string="email" name="email" widget="email" required="1"/>
+
+				<field string="Teléfono 1" name="mobile" required="1"/>
+
+				<!--
+				<field string="Teléfono" name="phone" placeholder="e.g. +32.81.81.37.00"/>
+				-->
+				<field string="Teléfono 2" name="phone" placeholder=""/>
+
+			</group>
+		</group>
+
+
+		<hr></hr>
+
+
+		<group>
+			<group>
+				<!--
+				<field name="function" string="Ocupación" placeholder="e.g. Sales Director"/>
+				-->
+				<field name="function"  required="0"/>
+			</group>
+
+			<group>
+				<!--
+				-->
+				<field name="a_education_level" required="0"/>
+			</group>
+		</group>
+
+
+		<hr></hr>
+
+
+		<group string="Acompañante">
+			<group>
+				<field name="a_caregiver_last_name"/>
+				<field name="a_caregiver_first_name"/>
+
+				
+				<field name="phone" string="Teléfono"/>
+			</group>
+
+			<group>
+				<field string="DNI"  name="a_caregiver_dni"/>
+				<field string="Parentesco"  name="a_caregiver_relation"/>
+			</group>
+		</group>
+
+
+		<!-- 
+		<group>
+			<group>
+				<field string="Patient Deceased ?"  name="deceased"  invisible="1"/>
+				<field name="cod" attrs="{'invisible':[('deceased','=',False)]}"/>
+			</group>
+
+			<group>
+				<field name="dod" attrs="{'invisible':[('deceased','=',False)],'required':[('deceased','=',True)]}"/>
+			</group>
+		</group>
+
+
+
+
+		<group>
+			<group string="Motivo de consulta">
+				<field name="x_reason_consultation" nolabel="1"/>
+			</group>
+
+			<group string="Diagnóstico">
+				<field name="x_diagnosis" nolabel="1"/>
+			</group>
+
+			<group string="Antecedentes médicos">
+				<field name="x_antecedents" nolabel="1"/>
+			</group>
+
+			<group string="Alergias a medicamentos">
+				<field name="x_allergies_medication" nolabel="1"/>
+			</group>
+		</group>
+		--> 
+
+
+
+
+
+
+					</page>
+				</notebook>
+			</field>
+		</record>
+	</data>
+</openerp>

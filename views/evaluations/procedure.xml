@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+
+		<!--
+		Procedure 
+		-->
+			
+		<!-- Form view -->
+		<record model="ir.ui.view" id="procedure_form_view">
+			<field name="name">procedure.form</field>
+			<field name="model">openhealth.procedure</field>
+			<!--
+			<field name="inherit_id" ref="consultation_form_view"/>
+			-->
+			<field name="arch" type="xml">
+				
+				
+				<form string="Evaluation">
+
+					<sheet>
+
+
+
+
+
+						<!-- Id -->
+						<div>						
+
+							<!-- Persona --> 
+							<div class="oe_left"  style="width: 300px;">
+								<div class="oe_title" >
+									<h1>Procedimiento</h1>	
+								</div>								
+								<group></group>
+								<h1>
+									<field name="patient"/>
+								</h1>
+							</div>
+
+
+
+							<!-- Buttons --> 
+							<div class="oe_left" style="width: 300px;" name="buttons">
+							
+								<!--
+								Consultations
+								<button type="action" class="oe_stat_button" 
+									name="%(consultation_form_action)d"	
+									context="{									
+											'search_default_treatment': active_id,
+											}" 											
+									icon="fa-list">
+									<field string="Consultas" name="nr_consultations" widget="statinfo"/>
+								</button>
+								-->
+								
+								
+								<!--
+								Procedures
+								<button type="action" class="oe_stat_button" 
+									name="%(procedure_form_action)d"	
+									context="{									
+											'search_default_treatment': active_id,
+											}" 											
+									icon="fa-list">
+									<field string="Procedimientos" name="nr_procedures" widget="statinfo"/>
+								</button>
+								-->
+								
+							</div>
+						
+						
+							<!-- Number --> 
+							<div class="oe_right" >
+								<div class="oe_title" >
+									<label class="oe_edit_only" for="name" string="Tratamiento #"/>
+									<h1><field name="name" class="oe_inline"/></h1>
+								</div>
+							</div>
+
+						</div>
+
+						<!-- Padding --> 
+						<group></group>
+
+
+
+
+
+						<!-- Padding --> 
+						<div class="oe_left" style="height: 55px;">
+						</div>
+
+
+
+
+						<!-- Fields --> 
+						<group>
+							
+							<group>
+								<field name="treatment"/>
+							</group>
+							<group>
+							</group>
+							
+							
+							<group>
+								<field name="doctor" options="{'no_create': True}"/>
+								<field name="evaluation_start_date"/>
+							</group>
+							<group>
+								<field name="evaluation_type"/>
+								<field name="chief_complaint"/>
+								<field string="Próxima cita" name="appointment" domain="[('patient', '=', patient)]" options="{'no_create': True}"/>
+
+							</group>
+						</group>
+
+
+
+
+
+						<!-- Notebook --> 
+						<notebook>
+						</notebook>
+
+
+					</sheet>
+				</form>
+
+
+
+
+				
+			</field>
+		</record>
+
+
+
+
+		<!-- Tree view --> 
+		<record model="ir.ui.view" id="procedure_tree_view">
+			<field name="name">procedure.tree</field>
+			<field name="model">openhealth.procedure</field>
+			<field name="arch" type="xml">
+				
+				<tree string="Consultation Tree">
+					<field name="name"/>
+					<field name="patient"/>
+					<field name="doctor"/>
+					<field name="evaluation_start_date"/>
+					
+					<field name="treatment"/>
+				</tree>
+			</field>
+		</record>
+		
+		
+		
+		
+		<!-- Filter --> 
+        <record id="view_medical_procedure_filter" model="ir.ui.view">
+           <field name="name">Procedure Search</field>
+           <field name="model">openhealth.procedure</field>		   
+           <field name="arch" type="xml">
+               <search string="Procedures">
+                   <field name="treatment" />
+               </search>
+           </field>
+       </record>
+	   
+		<!-- Window Form Action --> 
+		<record model="ir.actions.act_window" id="procedure_form_action">
+			<field name="name">Procedimientos</field>
+			<field name="res_model">openhealth.procedure</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		
+		
+
+
+
+
+		<!-- Window List action -->
+		<!--
+		The following tag is an action definition for a "window action",
+		that is an action opening a view or a set of views
+		-->
+			<record model="ir.actions.act_window" id="procedure_list_action">
+			<field name="name">Procedimientos</field>
+			<field name="res_model">openhealth.procedure</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first procedure
+				</p>
+			</field>
+			
+		</record>
+		
+		
+		
+		<!-- Menus --> 
+		<!-- top level menu: no parent -->
+		<menuitem id="main_openextension_menu" name="Open Health"/>
+
+		<!-- A first level in the left side menu is needed
+		before using action= attribute -->
+		<menuitem id="openextension_menu" name="Open Health"
+			parent="main_openextension_menu"/>
+
+		<!-- the following menuitem should appear *after*
+		its parent openextension_menu and *after* its
+		action procedure_list_action -->
+		<!--
+		<menuitem id="procedures_menu" name="Treatments" parent="openextension_menu"
+		-->
+		<menuitem id="procedures_menu" name="Procedimientos" parent="openextension_menu"
+			action="procedure_list_action"/>
+
+		<!-- Full id location:
+		action="openextension.procedure_list_action"
+		It is not required when it is the same module -->
+	</data>
+</openerp>

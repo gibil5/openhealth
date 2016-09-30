@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+	*** OPEN HEALTH
+
+	Created: 			26 Aug 2016
+	Last updated: 	 	13 Sep 2016
+-->
+
+<openerp>
+	<data>
+
+
+
+		<!-- TREATMENT --> 
+
+		<!-- Form view --> 
+		<record model="ir.ui.view" id="treatment_form_view">
+			<field name="name">treatment.form</field>
+			<field name="model">openextension.treatment</field>
+			<field name="arch" type="xml">
+				
+				<form string="Treatment Form">
+					
+
+
+
+					<header>
+						<!--
+							context="{
+								'default_evaluation_type': 'Pre-arraganged Appointment',
+							}" 											
+						-->
+						<button 
+							type="object" 
+							class="oe_highlight"
+							string="Crear Consulta" 
+							name="open_consultation_current" 
+						/>
+
+
+						<!--
+							context="{
+								'default_evaluation_type': 'Ambulatory',
+							}" 											
+						-->
+						
+						<button 
+							type="object" 
+							class="oe_highlight"
+
+							string="Procedimiento" 
+
+							name="open_procedure_current" 
+						/>
+
+
+
+
+						<!--
+						<button 
+							type="object" 
+							class="oe_highlight oe_right"
+
+							string="Evaluación" 
+
+							name="open_evaluation_current" 
+
+						/>
+						-->
+
+
+						<!--
+						<button 
+							type="object" 
+							class="oe_highlight"
+
+							string="Control" 
+
+							name="open_oeh_current" 
+
+							context="{
+								'default_evaluation_type': 'Periodic Control',
+							}" 											
+						/>
+						-->
+
+
+						<!--
+						<button 
+							type="object" 
+							class="oe_highlight"
+							string="OEH - New" 
+
+							name="open_oeh_new" 
+						/>
+
+
+						Open Health - Deprecated  
+
+
+
+
+
+
+						<button 
+							type="object" 
+							class="oe_highlight"
+							string="Evaluación 3 - Current" 
+
+							name="open_eval3_current" 
+
+							context="{
+								'search_default_patient': active_id,
+							}" 											
+						/>
+
+						<button 
+							type="object" 
+							class="oe_highlight"
+							string="Evaluación 3 - New" 
+
+							name="open_eval3_new" 
+
+							context="{
+								'search_default_patient': active_id,
+							}" 											
+						/>
+						-->
+
+
+
+					</header>
+
+
+
+
+<!--
+Sheet 						
+-->	
+					<sheet>
+						<!--
+						<h1>
+							<field string="THIS"  name="name" readonly="0"  invisible="0"/>
+						</h1>
+						-->
+
+						
+						<!-- Id --> 
+						<!--
+						<div class="oe_left" style="width: 500px;">
+							<div class="oe_title" style="width: 390px;">
+												
+								<label class="oe_edit_only" for="name" string="Tratamiento #"/>
+								<h1><field name="name" class="oe_inline"/></h1>
+									
+								<label for="patient" class="oe_edit_only"/>
+								<field name="patient"/>
+							</div>
+						</div>
+						-->
+						
+						
+						
+						
+
+<!--
+Top
+-->
+						<div>						
+
+							<!-- Persona --> 
+							<div class="oe_left"  style="width: 300px;">
+								<div class="oe_title" >
+									<h1>Tratamiento</h1>	
+								</div>								
+								<group></group>
+								<h1>
+									<field name="patient"/>
+								</h1>
+							</div>
+
+
+
+							<!-- Buttons --> 
+							<div class="oe_left" style="width: 300px;" name="buttons">
+							
+								<!--
+								Consultations
+								-->
+								<button type="action" class="oe_stat_button" 
+									name="%(consultation_form_action)d"	
+									context="{									
+											'search_default_treatment': active_id,
+											}" 											
+									icon="fa-list">
+									<field string="Consultas" name="nr_consultations" widget="statinfo"/>
+								</button>
+								
+								
+								<!--
+								Procedures
+								-->
+								<button type="action" class="oe_stat_button" 
+									name="%(procedure_form_action)d"	
+									context="{									
+											'search_default_treatment': active_id,
+											}" 											
+									icon="fa-list">
+									<field string="Procedimientos" name="nr_procedures" widget="statinfo"/>
+								</button>
+								
+							</div>
+						
+						
+							<!-- Number --> 
+							<div class="oe_right" >
+								<div class="oe_title" >
+									<label class="oe_edit_only" for="name" string="Tratamiento #"/>
+									<h1><field name="name" class="oe_inline"/></h1>
+								</div>
+							</div>
+
+						</div>
+						
+
+												
+
+
+
+
+<!--
+Fields 
+-->
+
+						<!-- Padding --> 
+						<group></group>
+						<group></group>
+
+							
+						<group>
+							<!-- Padding --> 
+							<group>
+							</group>
+							<group>
+							</group>
+
+
+
+							<group>
+								<!--
+								<field name="patient"/>
+								-->
+								<field name="physician"/>									
+							</group>							
+							<group>
+								<field name="start_date"/>
+							</group>
+
+
+
+							<group>
+								<field name="chief_complaint"/>
+							</group>
+							<group>
+								<field name="end_date"/>
+							</group>
+
+
+
+							<group>
+								<field name="price_total"/>
+							</group>
+							<group>
+								<field name="duration"/>
+							</group>
+
+
+							<group>
+								<!--
+									<field name="nr_services"/>
+								-->
+							</group>
+							<group>
+							</group>
+
+
+							<group>
+							</group>
+							<group>
+							</group>
+
+						</group>
+
+
+
+
+<!--
+Notebook  
+-->
+						<notebook>
+
+
+							<!--
+								 Consultation 
+							-->
+							<page string="Consultas">
+
+								<field name="consultation_ids">
+									
+									<!--
+									<tree editable="bottom">										
+	                                -->
+									<tree string="Consultas">										
+										
+										<!--
+										<field string="Consulta #"  name="name"/>
+										-->
+										<field  name="name">
+										</field>
+											
+										<field string="Paciente" name="patient"/>
+										<field string="Médico" name="doctor"/>
+										<field name="chief_complaint"/>
+
+										<field name="evaluation_start_date"/>
+										<!--
+										<field string='Tipo' name="evaluation_type"/>		
+
+										<field name="treatment_id"/>
+										-->								
+										<field name="treatment"/>
+										
+										
+										<!--
+											string="EDITAR" 
+										-->
+										<button 
+											type="object" 
+											class="oe_highlight"
+											
+											string="E"
+											
+											name="open_line_current" 
+										/>
+										
+									</tree>
+								</field>
+							</page>
+
+
+
+
+
+							<!--
+								Procedures 
+							-->
+							<page string="Procedimientos">
+								<!--
+								<field name="procedure_ids" context="{'patient': 'Javier Revilla'}"/>
+								<field name="procedure_ids" domain="[('evaluation_type', '=', 'Ambulatory')]" />
+								--> 
+								<field name="procedure_ids">
+									<tree string="Procedimintos">
+										<field string="Procedimiento #"  name="name"/>
+										<field string="Paciente" name="patient"/>
+										<field string="Médico" name="doctor"/>
+										<field name="evaluation_start_date"/>
+										<field string='Tipo' name="evaluation_type"/>
+										
+										<field name="treatment"/>
+									</tree>
+								</field>
+							</page>
+
+
+
+							<!--
+								Evaluations
+							<page string="Evaluaciones">
+								<field name="evaluation_ids">
+									<tree string="Evaluations">
+										<field string="Evaluación #"  name="name"/>
+										<field name="patient"/>
+										<field name="doctor"/>
+										<field name="evaluation_start_date"/>
+										<field string='Tipo' name="evaluation_type"/>
+									</tree>
+								</field>
+							</page>
+							-->
+
+
+							<!--
+							<page string="Controles" invisible="0">
+								<field name="control_ids" context="{'patient': 'x'}"/>
+								<field name="control_ids">
+									<tree string="Controles">
+										<field string="Control #"  name="name"/>
+										<field string="Paciente" name="patient"/>
+										<field string="Médico" name="doctor"/>
+										<field name="evaluation_start_date"/>
+										<field string='Tipo' name="evaluation_type"/>
+									</tree>
+								</field>
+							</page>
+							-->
+
+
+
+								<!--
+							<page string="Servicios" invisible="0">
+								<field name="service_ids">
+									<tree string="Presupuestos registrados">
+										
+										<field name="name"/>
+										<field name="laser"/>
+										<field name="service"/>
+
+											
+										<field name="price"/>
+
+									</tree>
+								</field>
+							</page>
+									-->
+
+
+							<!--
+							<page string="Presupuestos" invisible="1">
+								<field name="invoice_ids">
+									<tree string="Invoices">
+										<field name="name"/>
+										<field name="invoice"/>
+										<field name="treatment_id"/>
+										<field name="price"/>
+									</tree>
+								</field>
+							</page>
+							-->
+
+
+
+							<!--
+							<page string="Descripción">
+								<field string="Descripción"  name="description"/>
+							</page>
+							--> 
+
+						</notebook>
+
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+		<!-- Tree view --> 
+		<record model="ir.ui.view" id="treatment_tree_view">
+			<field name="name">treatment.tree</field>
+			<field name="model">openextension.treatment</field>
+			<field name="arch" type="xml">
+				<tree string="Treatment Tree">
+					<field name="name"/>
+					<field name="patient"/>
+					<field name="physician"/>
+					<field name="start_date"/>
+					<field name="nr_evaluations"/>
+					<!--
+					<field name="duration"/>
+					<field name="nr_services"/>
+					<field name="price_total"/>
+					-->
+				</tree>
+			</field>
+		</record>
+		
+		
+		
+		
+
+
+		<!-- Search -->
+		<!--
+		<record model="ir.ui.view" id="treatment_search_view">
+			<field name="name">treatment.search</field>
+			<field name="model">openextension.treatment</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="name"/>
+				</search>
+			</field>
+		</record>
+		-->
+
+
+		<!-- Filter --> 
+        <record id="view_medical_treatment_filter" model="ir.ui.view">
+           <field name="name">Treatment Search</field>
+           <field name="model">openextension.treatment</field>
+		   <!--
+           <field name="priority" eval="8" />		   
+           -->
+		   <field name="arch" type="xml">
+			   
+               <search string="Treatments">
+				   
+                   <!--
+				   <field name="name" />	   
+                   -->
+				   <field name="patient" />
+                   
+				   
+				   <!--
+				   <newline />
+				   <group expand="0" string="Group By...">
+                       <filter string="Patient" domain="[]" context="{'group_by':'patient'}" />
+                   </group>
+				   -->
+               </search>
+
+           </field>
+       </record>
+
+	   	<!-- Window Form Action -->
+	   	<record model="ir.actions.act_window" id="treatment_form_action">
+			<field name="name">Tratamientos</field>
+			<field name="res_model">openextension.treatment</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+	  	</record>
+
+
+
+
+
+
+
+
+		<!-- Window List action -->
+		<!--
+		The following tag is an action definition for a "window action",
+		that is an action opening a view or a set of views
+		-->
+			<record model="ir.actions.act_window" id="treatment_list_action">
+			<field name="name">Tratamientos</field>
+			<field name="res_model">openextension.treatment</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first treatment
+				</p>
+			</field>
+			
+		</record>
+
+
+		<!-- Menus --> 
+		<!-- top level menu: no parent -->
+		<menuitem id="main_openextension_menu" name="Open Health"/>
+
+		<!-- A first level in the left side menu is needed
+		before using action= attribute -->
+		<menuitem id="openextension_menu" name="Open Health"
+			parent="main_openextension_menu"/>
+
+		<!-- the following menuitem should appear *after*
+		its parent openextension_menu and *after* its
+		action treatment_list_action -->
+		<!--
+		<menuitem id="treatments_menu" name="Treatments" parent="openextension_menu"
+		-->
+		<menuitem id="treatments_menu" name="Tratamientos" parent="openextension_menu"
+			action="treatment_list_action"/>
+
+		<!-- Full id location:
+		action="openextension.treatment_list_action"
+		It is not required when it is the same module -->
+
+
+	</data>
+</openerp>

@@ -1,0 +1,215 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+		<!--
+		First consultation 
+		-->
+			
+		<!-- Form view -->
+		<record model="ir.ui.view" id="consultation_first_form_view">
+			<field name="name">consultation.first.form</field>
+			<field name="model">openhealth.consultation</field>
+			
+			<field name="priority" eval="0"/>
+			
+			<field name="inherit_id" ref="consultation_form_view"/>
+
+			<field name="arch" type="xml">
+				<notebook position="inside">
+					<page string="Primera Consulta">
+
+
+						<group string="">
+
+							<!--
+							<group>
+								<field name="x_date_first" nolabel="0"/>
+							</group>
+							<group>
+							</group>
+							-->
+
+							<group string="Motivo de consulta">
+								<field name="x_reason_consultation" nolabel="1"/>
+							</group>
+							<group>
+							</group>
+
+							<group string="Diagnóstico">
+								<field name="x_diagnosis" nolabel="1"/>
+							</group>
+							<group>
+							</group>
+
+							<group string="Antecedentes médicos">
+								<field name="x_antecedents" nolabel="1"/>
+							</group>
+							<group>
+							</group>
+
+							<group string="Alergias a medicamentos">
+								<field name="x_allergies_medication" nolabel="1"/>
+							</group>
+							<group>
+							</group>
+
+						</group>
+
+						<hr></hr>
+
+
+						<!-- Evaluation -->
+						<!--
+					   	-->
+						
+						<group string="Evaluación">
+							<group string="">
+								<field name="x_fitzpatrick" nolabel="0"/>
+								<field name="x_photo_aging" nolabel="0"/>
+								<field name="x_analysis_lab" nolabel="0"/>
+							</group>
+							<group>
+							</group>
+						</group>
+
+						<hr></hr>
+
+
+						<!-- Treatment -->
+						<!--
+					   	-->
+						<group string="Tratamiento a realizar">
+
+							<group string="">
+								<field name="x_laser_co2" nolabel="0"/>
+								<field name="x_laser_ndyag" nolabel="0"/>
+								<field name="x_criosurgery" nolabel="0"/>
+								<field name="x_acid_haluronic" nolabel="0"/>
+								<field name="x_nutrition_deep" nolabel="0"/>
+
+
+								<field name="x_laser_ipl" nolabel="0"/>
+								<field name="x_toxin_botulinum" nolabel="0"/>
+							</group>
+							<group>
+								<field name="x_prp_rich" nolabel="0"/>
+								<field name="x_hydration_deep" nolabel="0"/>
+								<field name="x_laser_excimer" nolabel="0"/>
+
+
+								<field name="x_corporal" nolabel="0"/>
+								<field name="x_sclerotherapy" nolabel="0"/>
+								<field name="x_vitamin_c" nolabel="0"/>
+								<field name="x_laser_rejuvenation_vaginal" nolabel="0"/>
+							</group>
+						</group>
+
+						<hr></hr>
+
+
+
+						<!-- Zone --> 
+						<!--
+					   	-->
+						<group string="Zona del cuerpo">
+
+							<group string="">
+								<field name="x_areola" nolabel="0"/>
+								<field name="x_armpits" nolabel="0"/>
+								<field name="x_beard" nolabel="0"/>
+								<field name="x_belly" nolabel="0"/>
+								<field name="x_bikini" nolabel="0"/>
+							</group>
+
+							<group>
+								<field name="x_down_lip" nolabel="0"/>
+								<field name="x_arm" nolabel="0"/>
+								<field name="x_head" nolabel="0"/>
+								<field name="x_neck" nolabel="0"/>
+								<field name="x_back" nolabel="0"/>
+							</group>
+
+
+
+							<group>
+								<field name="x_front" nolabel="0"/>
+								<field name="x_gluteus" nolabel="0"/>
+								<field name="x_shoulders" nolabel="0"/>
+								<field name="x_linea_alba" nolabel="0"/>
+								<field name="x_body_localized" nolabel="0"/>
+							</group>
+
+							<group>
+								<field name="x_face_localized" nolabel="0"/>
+								<field name="x_hands" nolabel="0"/>
+								<field name="x_chin" nolabel="0"/>
+								<field name="x_nape" nolabel="0"/>
+								<field name="x_sideburns" nolabel="0"/>
+							</group>
+
+
+
+							<group>
+								<field name="x_breast" nolabel="0"/>
+								<field name="x_leg" nolabel="0"/>
+								<field name="x_feet" nolabel="0"/>
+								<field name="x_cheekbones" nolabel="0"/>
+							</group>
+
+							<group>
+								<field name="x_face_all" nolabel="0"/>
+								<field name="x_nail" nolabel="0"/>
+								<field name="x_vagina" nolabel="0"/>
+							</group>
+						</group>
+						
+						<hr></hr>
+
+
+
+						<!-- Observations -->
+						<!--
+					   	-->
+						<group string="Observaciones">
+							<group string="">
+								<field name="x_observations" nolabel="1"/>
+							</group>
+							<group>
+							</group>
+						</group>
+
+
+						<!-- Indications -->
+						<!--
+					   	-->
+						<group string="Indicaciones">
+							<group string="">
+								<field name="x_indications" nolabel="1"/>
+							</group>
+							<group>
+							</group>
+						</group>
+							
+							
+
+
+
+
+						<!-- Date next appointment -->
+						<!--
+						<group string="">
+							<group string="">
+								<field name="x_date_appointment_next" nolabel="0"/>
+							</group>
+							<group>
+							</group>
+						</group>
+					   	-->
+					</page>
+				</notebook>
+			</field>
+		</record>
+	</data>
+</openerp>

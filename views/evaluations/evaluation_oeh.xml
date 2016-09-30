@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	*** OPEN HEALTH
+
+	Created: 			26 Aug 2016
+	Last updated: 	 	12 Sep 2016
+-->
+
+<openerp>
+	<data>
+
+
+
+		<!-- OEH - EVALUATION -->
+
+		<!-- Form view -->
+
+
+		<!--
+		<record model="ir.ui.view" id="oeh_medical_evaluation_view">
+			<field name="name">Evaluation</field>
+			<field name="model">oeh.medical.evaluation</field>
+			<field name="type">form</field>
+			<field name="priority" eval="1"/>
+
+			<field name="arch" type="xml">
+
+				<form string="Evaluation Form">
+
+					<sheet>
+						<group>
+							<group string="Evaluation - OEH">
+
+								<field string="Treatment id" name="treatment_id" />
+
+								<field string="Name"  name="name"/>
+
+								<field name="patient" />
+
+								<field name="doctor" />
+								
+							</group>
+						</group>
+					</sheet>
+						
+				</form>
+
+			</field>
+		</record>
+		-->
+
+
+
+
+
+
+		<!-- evaluation tree/list view -->
+		<!--
+		<record model="ir.ui.view" id="oeh_evaluation_tree_view">
+			<field name="name">evaluation.tree</field>
+			<field name="model">oeh.medical.evaluation</field>
+			<field name="arch" type="xml">
+				<tree string="Evaluation Tree">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+		-->
+		
+
+
+
+		<!--
+			Evaluation - OE  
+		-->
+		<record model="ir.actions.act_window" id="oehealth.oeh_medical_evaluation_action_tree">
+			<field name="name">Evaluaciones</field>
+			<field name="res_model">oeh.medical.evaluation</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+
+			<!--
+				'default_patient': context.get('patient_id', False),
+				'default_patient': context.get('patient', False),
+				'default_patient': 3025,
+
+				'default_patient': patient_id,
+				'default_patient': context.get('patient', False) ,
+				'default_patient': context.get_patient_id('patient', False) ,
+
+				'default_patient': context.get_patient_id() ,
+			-->
+			<field name="context">{
+				}
+			</field>
+
+		</record>
+
+
+		<!--
+		<record id="action_new_evaluation1" model="ir.actions.act_window">
+			<field name="name">Evaluation</field>
+			<field name="res_model">oeh.medical.evaluation</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="target">current</field>
+		</record>
+		-->
+
+
+
+
+
+	</data>
+</openerp>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+
+		<!--
+			Quotation 	
+		-->
+			
+			
+			
+		<!-- Form view -->
+		<record model="ir.ui.view" id="quotation_form_view">
+			<field name="name">quotation.form</field>
+			<field name="model">openhealth.quotation</field>
+			<field name="priority" eval="1"/>
+			<field name="arch" type="xml">
+				
+				<form string="Quotation">
+
+
+					<header>						
+
+					</header>
+					
+										
+					
+					<sheet>
+
+
+						<!--
+						<group col="1">
+
+								<group>
+									<field name="laser" on_change="get_domain_service(laser)" />
+								</group>
+
+								<group>
+									<field name="service"/>
+								</group>
+
+								<group>
+									<field name="price" readonly="0"/>
+								</group>
+						</group>
+						-->		
+
+
+						<!-- Notebook --> 
+						<notebook>
+							
+							<page string="Procedimientos">
+						
+						
+										<field name="service">
+
+											<tree string="">										
+												<field name="name"/>
+												<field name="laser"/>
+										
+												<field name="service"/>
+
+												<!--
+												<field name="code"/>
+												-->
+
+												<field name="name_short"/>
+
+												<field name="price"/>
+											</tree>
+
+										</field>
+							</page>
+							
+							
+							
+						</notebook>
+
+					</sheet>
+
+				</form>
+
+			</field>
+		</record>
+
+
+		<!-- Tree view --> 
+		<record model="ir.ui.view" id="quotation_tree_view">
+			<field name="name">quotation.tree</field>
+			<field name="model">openhealth.quotation</field>
+			<field name="arch" type="xml">
+				
+				<tree string="Quotation Tree">
+					
+					<field name="name"/>
+
+				</tree>
+			</field>
+		</record>
+		
+		
+
+
+
+		<!-- Window List action -->
+		<!--
+		The following tag is an action definition for a "window action",
+		that is an action opening a view or a set of views
+		-->
+			<record model="ir.actions.act_window" id="quotation_list_action">
+			<field name="name">Presupuestos</field>
+			<field name="res_model">openhealth.quotation</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+			<!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first quotation
+				</p>
+			</field>
+			-->
+		</record>
+		
+		
+
+		<!-- Menus --> 
+		<!-- top level menu: no parent -->
+		<menuitem id="main_openextension_menu" name="Open Health"/>
+
+		<!-- A first level in the left side menu is needed
+		before using action= attribute -->
+		<menuitem id="openextension_menu" name="Open Health"
+			parent="main_openextension_menu"/>
+
+		<!-- the following menuitem should appear *after*
+		its parent openextension_menu and *after* its
+		action quotation_list_action -->
+		<!--
+		<menuitem id="quotations_menu" name="Treatments" parent="openextension_menu"
+		-->
+		<menuitem id="quotations_menu" name="Presupuestos" parent="openextension_menu"
+			action="quotation_list_action"/>
+
+		<!-- Full id location:
+		action="openextension.quotation_list_action"
+		It is not required when it is the same module -->
+
+
+	</data>
+</openerp>
+

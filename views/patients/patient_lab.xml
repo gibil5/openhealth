@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!-- Patient-->
+<openerp>
+	<data>
+
+		<!--
+		Lab
+		-->
+		<record model="ir.ui.view" id="patient_lab_form_view">
+			<field name="name">Patient lab</field>
+			<field name="model">oeh.medical.patient</field>
+			<!--
+			<field name="priority" eval="2"/>
+			-->
+			<field name="inherit_id" ref="oeh_medical_patient_view"/>
+			<field name="arch" type="xml">
+
+				<notebook position="inside">
+
+
+					<page string="Laboratorio">
+						
+						<field name="lab_test_ids" readonly="1">
+							<tree string="Lab Tests" colors="grey:state=='Invoiced';blue:state=='Test In Progress';green:state=='Completed';red:state=='Cancelled'">
+								<field name="name"/>
+								<field name="test_type"/>
+								<field name="pathologist"/>
+								<field name="requestor"/>
+								<field name="date_requested"/>
+								<field name="date_analysis"/>
+								<field name="state"/>
+								<field name="patient" invisible="1"/>
+							</tree>
+						</field>
+					</page>
+
+
+				</notebook>
+			</field>
+		</record>
+	</data>
+</openerp>

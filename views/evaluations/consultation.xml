@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+
+		<!--
+			CONSULTATION	
+		-->
+			
+			
+			
+		<!-- Form view -->
+		<record model="ir.ui.view" id="consultation_form_view">
+			<field name="name">consultation.form</field>
+			<field name="model">openhealth.consultation</field>
+			<field name="priority" eval="1"/>
+			<field name="arch" type="xml">
+				
+				<form string="Evaluation">
+
+
+
+					<!-- Header --> 
+					<header>
+						
+						<!--
+						-->
+						<button 
+							type="object" 
+							class="oe_highlight"
+							string="Crear Presupuesto" 
+
+							name="create_quotation_current" 
+						/>
+					</header>
+					
+					
+					
+					
+					<sheet>
+
+
+
+						<!-- Id -->
+						<div>						
+
+							<!-- Persona --> 
+							<div class="oe_left"  style="width: 300px;">
+								<div class="oe_title" >
+									<h1>Consulta</h1>	
+								</div>								
+								<group></group>
+								<h1>
+									<field name="patient"/>
+								</h1>
+							</div>
+
+
+
+							<!-- Buttons --> 
+							<div class="oe_left" style="width: 300px;" name="buttons">
+							
+								<!--
+								Consultations
+								<button type="action" class="oe_stat_button" 
+									name="%(consultation_form_action)d"	
+									context="{									
+											'search_default_treatment': active_id,
+											}" 											
+									icon="fa-list">
+									<field string="Consultas" name="nr_consultations" widget="statinfo"/>
+								</button>
+								-->
+								
+								
+								<!--
+								Procedures
+								<button type="action" class="oe_stat_button" 
+									name="%(procedure_form_action)d"	
+									context="{									
+											'search_default_treatment': active_id,
+											}" 											
+									icon="fa-list">
+									<field string="Procedimientos" name="nr_procedures" widget="statinfo"/>
+								</button>
+								-->
+								
+							</div>
+						
+						
+							<!-- Number --> 
+							<div class="oe_right" >
+								<div class="oe_title" >
+									<label class="oe_edit_only" for="name" string="Tratamiento #"/>
+									<h1><field name="name" class="oe_inline"/></h1>
+								</div>
+							</div>
+
+						</div>
+
+
+						<!-- Padding --> 
+						<group></group>
+
+						<div class="oe_left" style="height: 55px;">
+						</div>
+
+
+
+
+						<!-- Fields --> 
+						<group>
+							<!--
+							<group>
+								<field name="treatment"  invisible="1"/>
+							</group>
+							<group>
+							</group>
+							-->
+							
+							<group>
+
+								<!--
+								<field string="Physician"  name="doctor" options="{'no_create': True}"/>
+								<field string="Evaluation date"  name="evaluation_start_date"/>
+								<field string="Appointment"  name="appointment" domain="[('patient', '=', patient)]" options="{'no_create': True}"/>
+								-->
+
+								<field name="doctor" options="{'no_create': True}"/>
+								<field name="evaluation_start_date"/>
+
+							</group>
+							<group>
+								<!--
+								<field string="Evaluation type"  name="evaluation_type"/>
+								<field string="Evaluation end date"  name="evaluation_end_date"/>
+								<field string="Chief complaint"  name="chief_complaint"/>
+								-->
+								<field name="evaluation_type"/>
+								<field name="chief_complaint"/>
+								<field string="Próxima cita" name="appointment" domain="[('patient', '=', patient)]" options="{'no_create': True}"/>
+
+							</group>
+						</group>
+
+
+
+
+
+						<!-- Notebook --> 
+						<notebook>
+						</notebook>
+
+
+					</sheet>
+				</form>
+				
+
+
+			</field>
+		</record>
+
+
+
+
+
+		<!-- Tree view --> 
+		<record model="ir.ui.view" id="consultation_tree_view">
+			<field name="name">consultation.tree</field>
+			<field name="model">openhealth.consultation</field>
+			<field name="arch" type="xml">
+				<tree string="Consultation Tree">
+					<field name="name"/>
+					<field name="patient"/>
+					<field name="doctor"/>
+					<field name="evaluation_start_date"/>
+					
+					<field name="treatment"/>
+
+					<!--
+					<field name="owner"/>
+
+					<field name="treatment_id"/>
+					<field name="duration"/>
+					<field name="nr_services"/>
+					<field name="price_total"/>
+					-->
+				</tree>
+			</field>
+		</record>
+		
+		
+		
+		
+		<!-- Search -->
+		<!--
+		<record model="ir.ui.view" id="consultation_search_view">
+			<field name="name">consultation.search</field>
+			<field name="model">openhealth.consultation</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="name"/>
+				</search>
+			</field>
+		</record>
+		-->
+
+		
+		
+		
+		<!-- Filter --> 
+        <record id="view_medical_consultation_filter" model="ir.ui.view">
+           <field name="name">Consultation Search</field>
+           <field name="model">openhealth.consultation</field>		   
+           <field name="arch" type="xml">
+               <search string="Consultations">
+                   <field name="treatment" />
+               </search>
+           </field>
+       </record>
+
+		<!-- Window Form Action --> 
+		<record model="ir.actions.act_window" id="consultation_form_action">
+			<field name="name">Consultas</field>
+			<field name="res_model">openhealth.consultation</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+			<!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first consultation
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- Window List action -->
+		<!--
+		The following tag is an action definition for a "window action",
+		that is an action opening a view or a set of views
+		-->
+			<record model="ir.actions.act_window" id="consultation_list_action">
+			<field name="name">Consultas</field>
+			<field name="res_model">openhealth.consultation</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first consultation
+				</p>
+			</field>
+			
+		</record>
+
+
+		<!-- Menus --> 
+		<!-- top level menu: no parent -->
+		<menuitem id="main_openextension_menu" name="Open Health"/>
+
+		<!-- A first level in the left side menu is needed
+		before using action= attribute -->
+		<menuitem id="openextension_menu" name="Open Health"
+			parent="main_openextension_menu"/>
+
+		<!-- the following menuitem should appear *after*
+		its parent openextension_menu and *after* its
+		action consultation_list_action -->
+		<!--
+		<menuitem id="consultations_menu" name="Treatments" parent="openextension_menu"
+		-->
+		<menuitem id="consultations_menu" name="Consultas" parent="openextension_menu"
+			action="consultation_list_action"/>
+
+		<!-- Full id location:
+		action="openextension.consultation_list_action"
+		It is not required when it is the same module -->
+
+
+	</data>
+</openerp>
+

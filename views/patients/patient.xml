@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+	*** OPEN HEALTH
+
+	Created: 			26 Aug 2016
+	Last updated: 	 	13 Sep 2016
+-->
+
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="oeh_medical_patient_view">
+			
+			
+			<field name="name">Patient</field>
+			<field name="model">oeh.medical.patient</field>			
+			<field name="type">form</field>
+			<field name="priority" eval="1"/>
+
+
+			<field name="arch" type="xml">
+				<form string="Patient">
+
+					<field name="name" />
+
+
+					<!-- Header --> 
+					<header>
+						
+						<!--
+						<button name="print_patient_label" string="Historia Clínica" type="object" class="oe_highlight"/>
+						-->
+							
+						<!--
+						-->
+						<button 
+							type="object" 
+							class="oe_highlight"
+							string="Crear Tratamiento" 
+							name="open_treatment_current" 
+						/>
+					</header>
+
+
+
+
+<!--
+Sheet 						
+-->	
+					<sheet>
+
+				        <!-- Buttons -->
+						
+<!--						
+				        <div class="oe_right oe_button_box" style="width: 500px;" name="buttons">
+
+				            <button type="action" class="oe_stat_button" name="347" context="{'search_default_patient': active_id,'default_patient': active_id}" icon="fa-calendar">
+				                <field string="Citas" name="app_count" widget="statinfo"/>
+				            </button>
+
+
+				            <button type="action" class="oe_stat_button" name="348" context="{'search_default_patient': active_id,'default_patient': active_id}" icon="fa-list">
+				                <field string="Prescripciones" name="prescription_count" widget="statinfo"/>
+				            </button>
+
+
+				            <button type="action" class="oe_stat_button" name="207" context="{'search_default_patient': active_id,'default_patient': active_id}" icon="fa-pencil-square-o">
+				                <field string="Facturas" name="invoice_count" widget="statinfo"/>
+				            </button>
+
+
+				            <button type="action" class="oe_stat_button" name="349" context="{'search_default_patient': active_id,'default_patient': active_id}" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager" icon="fa-list">
+				                <field string="Vaccines" name="vaccine_count" widget="statinfo"/>
+				            </button>
+							
+							
+				            <button type="action" class="oe_stat_button" name="345" context="{'search_default_patient': active_id,'default_patient': active_id}" icon="fa-building-o">
+				                <field string="Admissions" name="admission_count" widget="statinfo"/>
+				            </button>
+
+				        </div>
+-->
+
+						
+
+						<!-- Persona --> 
+						<div class="oe_left" style="width: 500px;">
+							<field name="image" widget="image" class="oe_left oe_avatar" options="{&quot;preview_image&quot;: &quot;image_medium&quot;, &quot;size&quot;: [90, 90]}"/>
+							<div class="oe_title">
+								<label string="Nombre completo" class="oe_edit_only"/>
+								<h1>
+									<field name="name" required="1"/>
+								</h1>
+								<field name="age"/>
+							</div>
+						</div>
+
+
+
+						<!-- Button -->							
+						<!--
+								name="%(treatment_list_action)d"	
+
+											'default_physician': self.search([('physician', 'like', 'Fe')]).id ,
+											'default_physician': physician_id,
+						-->
+						<div class="oe_left" style="width: 100px;">
+
+							<!--
+											'default_patient': active_id,
+											'default_physician': 1,	
+								
+															
+							-->
+				            <button type="action" class="oe_stat_button" 
+
+
+
+								name="%(treatment_form_action)d"	
+
+								context="{
+											
+										'search_default_patient': active_id,
+											
+										}" 											
+
+
+
+								icon="fa-list">
+								
+								<field string="Tratamientos" name="a_treatment_count" widget="statinfo"/>
+				            </button>
+							
+						</div>
+
+
+
+						<!-- Number Medical history -->
+						<div class="oe_right" >
+							<h1>
+								<field string="Número:"  name="identification_code"/>
+							</h1>
+						</div>
+
+
+
+
+						<!-- Fields -->
+						<group>
+							<group>
+								<field name="a_date_created"  />
+							</group>
+							<group>
+								<!--
+								<field string='Custodia'  name="a_active"   visible="0"/>
+								-->
+								<field string='Custodia'  name="a_active"   visible="1"/>
+							</group>
+						</group>
+
+
+						<group>
+							<group>
+
+								<field string='Fecha de nacimiento'  name="dob" required="1"/>
+
+								<field string='Sexo' name="sex" required="1"/>
+
+								<!--
+								<field string='Estado civil'  name="marital_status" required="1"/>
+								-->
+
+								<field string="DNI"  name="a_dni"  required="1"/>
+
+							</group>
+
+
+
+							<group>
+								<field name="a_allergies"  required="1"/>
+								<field name="a_first_contact"/>
+							</group>
+
+
+
+							<group>
+								<!--
+								<field string='Blood Type' name="blood_type"/>
+								<field string='Rh'  name="rh"/>
+								<field string='Family Physician'  name="doctor" options="{'no_create': True}"/>
+								<field string='Responsible' name="oeh_patient_user_id" options="{'no_create': True}"/>
+								-->
+							</group>
+
+						</group>
+
+						<notebook>
+							<!--
+							<page string="Personal">
+
+							</page>
+							-->
+						</notebook>
+
+					</sheet>
+				</form>
+
+
+			</field>
+		</record>
+	</data>
+</openerp>

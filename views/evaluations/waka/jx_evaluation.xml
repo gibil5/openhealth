@@ -1,0 +1,78 @@
+<form string="Evaluation">
+
+	<sheet>
+
+
+
+		<!-- Id --> 
+		<div class="oe_left" style="width: 500px;">
+			<div class="oe_title" style="width: 390px;">
+				<label class="oe_edit_only" for="name" string="Evaluation #"/>
+				<h1><field name="name" class="oe_inline"/></h1>
+				<label for="patient" class="oe_edit_only"/>
+				<field name="patient"/>
+			</div>
+		</div>
+
+
+
+		<!-- Buttons --> 
+		<div class="oe_right oe_button_box" style="width: 500px;" name="buttons">
+
+			<!--
+			<button type="action" class="oe_stat_button" name="347" context="{'search_default_patient': active_id,'default_patient': active_id}" icon="fa-pencil-square-o">
+				<field string="Presupuesto" name="orientation" widget="statinfo"/>
+			</button>
+			-->
+
+			<button type="action" class="oe_stat_button" name="347" context="{'search_default_patient': active_id,'default_patient': active_id}" icon="fa-calendar">
+				<field string="Citas" name="orientation" widget="statinfo"/>
+			</button>
+
+			<button type="action" class="oe_stat_button" name="348" context="{'search_default_patient': active_id,'default_patient': active_id}" icon="fa-list">
+				<field string="Prescripciones" name="orientation" widget="statinfo"/>
+			</button>
+
+
+			<button type="action" class="oe_stat_button" name="207" context="{'search_default_patient': active_id,'default_patient': active_id}" icon="fa-pencil-square-o">
+				<field string="Facturas" name="orientation" widget="statinfo"/>
+			</button>
+
+		</div>
+
+
+
+		<!-- Padding --> 
+		<div class="oe_left" style="height: 55px;">
+		</div>
+
+
+
+
+		<!-- Fields --> 
+		<group>
+			<group>
+
+				<field string="Physician"  name="doctor" options="{'no_create': True}"/>
+				<field string="Evaluation date"  name="evaluation_start_date"/>
+				<field string="Appointment"  name="appointment" domain="[('patient', '=', patient)]" options="{'no_create': True}"/>
+
+			</group>
+			<group>
+
+				<field string="Evaluation type"  name="evaluation_type"/>
+				<field string="Evaluation end date"  name="evaluation_end_date"/>
+				<field string="Chief complaint"  name="chief_complaint"/>
+
+			</group>
+		</group>
+
+
+
+		<!-- Notebook --> 
+		<notebook>
+		</notebook>
+
+
+	</sheet>
+</form>

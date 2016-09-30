@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+		<!--
+		Services 
+		-->
+		<record model="ir.ui.view" id="consultation_services_form_view">
+			<field name="name">consultation.quotation.form</field>
+			<field name="model">openhealth.consultation</field>
+			
+			<field name="priority" eval="2"/>
+			
+			<field name="inherit_id" ref="consultation_form_view"/>
+
+			<field name="arch" type="xml">
+				<notebook position="inside">
+					
+					<page string="Procedimientos">
+						
+						
+								<field name="service_ids">
+
+									<tree string="">										
+										<field name="name"/>
+										<field name="laser"/>
+										
+										<field name="service"/>
+
+										<!--
+										<field name="code"/>
+										-->
+
+										<field name="name_short"/>
+
+										<field name="price"/>
+									</tree>
+
+								</field>
+								
+						
+						
+						
+					</page>
+				</notebook>
+			</field>
+		</record>
+	</data>
+</openerp>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+
+		<!--
+			OLD - CONSULTATION
+		-->
+		<!-- Form view -->
+		<record model="ir.ui.view" id="openhealth_consultation_form_view">
+			<field name="name">Consultation</field>
+			<field name="model">openhealth.consultation</field>
+			<!--
+			<field name="type">form</field>
+			<field name="priority" eval="1"/>
+			<field name="inherit_id" ref="oehealth.oeh_medical_evaluation_view"/>
+			-->
+			<field name="arch" type="xml">
+				<form string="Evaluation">
+					<sheet>
+						<group>
+							<group string="Consultation - Open Health - jz">
+								<field string="Treatment id" name="treatment_id" />
+								<field string="Name"  name="name"/>
+								<field name="patient" />
+								<field name="doctor" />
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+
+		<!-- Tree/list view -->
+		<record model="ir.ui.view" id="consultation_tree_view">
+			<field name="name">consultation.tree</field>
+			<!--
+			<field name="model">oeh.medical.evaluation</field>
+			-->
+			<field name="model">openhealth.consultation</field>
+			<field name="arch" type="xml">
+				<tree string="Service Tree">
+
+					<field string="tl Name"  name="name"/>
+
+					<!--
+					<field name="course_id"/>
+					<field name="taken_seats" widget="progressbar"/>
+					--> 
+				</tree>
+			</field>
+		</record>
+
+
+
+
+
+
+		<!--
+			Action - Consultation - Open Health 
+
+		<record model="ir.actions.act_window" id="openhealth.consulation_form_action">
+		<record model="ir.actions.act_window" id="oehealth.oeh_medical_evaluation_action_tree">
+		-->
+		<record model="ir.actions.act_window" id="openhealth.consultation_list_action">
+			<field name="name"> Action - Consultation - List</field>
+			<!--
+			<field name="model">oeh.medical.evaluation</field>
+			-->
+			<field name="res_model">openhealth.consultation</field>
+
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+
+			<field name="context">
+				{
+					'default_doctor': 1,
+					'default_patient': 3025,
+				}
+			</field>
+
+			<!--
+		  	<field name="context">
+			  	{
+		      		"domain": [["patient", "=", "Javier Revilla"]],
+		      		"domain": [["doctor", "=", "Fernando Chavarri"]],
+				}
+		 	</field>
+			-->
+
+			<!--
+            <field name="domain">[]</field>
+            <field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first treatment</p>
+			</field>
+			-->
+		</record>
+
+		
+
+
+	    <!-- actions opening views on models -->
+
+
+
+
+	    <!-- actions opening views on models -->
+		<!--
+	    record model="ir.actions.act_window" id="openhealth.consultation_action_window">
+		<record model="ir.actions.act_window" id="openhealth.consultation_list_action">
+	      <field name="name">Consultation Action Window</field>
+	      <field name="res_model">openhealth.consultaion</field>
+	      <field name="view_mode">tree,form</field>
+		  <field name="context">
+			  	{
+		      		"domain": [["patient", "=", "Javier Revilla"]],
+		      		"domain": [["doctor", "=", "Fernando Chavarri"]],
+				}
+		 </field>
+		  <field name="code">
+	        action = {
+	          "type": "ir.actions.act_window",
+	          "view_mode": "tree,form",
+	          "res_model": self._name,
+		      "domain": [["patient", "=", "Javier Revilla"]],
+	        }
+	      </field>
+	    </record>
+		-->
+
+
+
+	    <!-- server action to the one above -->
+		<!-- Action -->
+
+		<!--
+		<record model="ir.actions.act_window" id="oehealth.oeh_medical_evaluation_action_tree">
+			<field name="name">Evaluaciones</field>
+
+			<field name="res_model">openhealth.consultation</field>
+
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+
+			<field name="context">{
+				}
+			</field>
+
+		</record>
+		-->
+
+
+
+
+		<!-- Menus --> 
+		<!-- top level menu: no parent -->
+		<!--
+		<menuitem id="main_openhealth_menu" name="Open Health"/>
+		-->
+		<menuitem id="main_openextension_menu" name="Open Health"/>
+
+
+		<!-- A first level in the left side menu is needed
+		before using action= attribute -->
+		<!--
+		<menuitem id="openhealth_menu" name="Open Health"
+			parent="main_openhealth_menu"/>
+		-->
+		<menuitem id="openextension_menu" name="Open Health"
+			parent="main_openextension_menu"/>
+
+
+		<!-- the following menuitem should appear *after*
+		its parent openhealth_menu and *after* its
+		action consultation_list_action -->
+		<!--
+		<menuitem id="consultations_menu" name="Consultations" parent="openhealth_menu"
+
+		<menuitem id="consultations_menu" name="Consultations" parent="openhealth_menu"
+			action="oehealth.oeh_medical_evaluation_action_tree"/>
+		-->
+		<menuitem id="consultations_menu" name="Consultations jz" parent="openextension_menu"
+			action="consultation_list_action"/>
+
+
+
+	</data>
+</openerp>

@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!--
+	*** OPEN HEALTH
+
+	Created: 			26 Aug 2016
+	Last updated: 	 	12 Sep 2016
+-->
+
+<openerp>
+	<data>
+
+
+		<!--
+		Treatments 
+		-->
+		<record model="ir.ui.view" id="patient_treatments_form_view">
+			<field name="name">Patient treatments</field>
+			<field name="model">oeh.medical.patient</field>
+			<!--
+			<field name="priority" eval="3"/>
+			-->
+			<field name="priority" eval="0"/>
+
+    		<field name="inherit_id" ref="oeh_medical_patient_view"/>
+			<field name="arch" type="xml">
+
+				<notebook position="inside">
+					<page string="Tratamientos">
+
+						<!--
+						jx
+						<field name="x_treatment_ids" widget="one2many_list" readonly="1"/>
+						<field name="a_treatment_ids" widget="one2many_list" readonly="1"/>
+						--> 
+						<field name="a_treatment_ids">
+							
+							<tree string="Tratamientos">
+
+								<!--
+								<button 
+									type="object" 
+									class="oe_highlight"
+									string="EDITAR" 
+									name="open_line_current" 
+								/>
+								-->
+								
+								<field string="Tratamiento #"  name="name"/>
+								
+								<field name="patient"/>
+								<!--
+								-->
+								<field name="physician"/>
+
+								<field name="chief_complaint"/>
+
+
+								<field name="start_date"/>
+
+								<field name="duration"/>
+
+								<field name="nr_evaluations"/>
+
+								<field name="price_total"/>
+
+							</tree>
+						</field>
+					
+					</page>
+				</notebook>
+			</field>
+		</record>
+	</data>
+</openerp>

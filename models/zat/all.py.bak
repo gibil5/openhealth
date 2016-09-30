@@ -1,0 +1,670 @@
+# -*- coding: utf-8 -*-
+#
+# 	*** OPEN HEALTH
+# 
+# Created: 			26 Aug 2016
+# Last updated: 	 9 Sep 2016
+
+from openerp import models, fields, api
+from datetime import datetime
+
+
+
+
+class Patient(models.Model):
+	#_name = 'openhealth.patient'
+	_inherit = 'oeh.medical.patient'
+
+
+
+	# NEW 
+
+	# Date created 
+	a_date_created = fields.Date(
+			string = "Fecha de apertura", 	
+			default = fields.Date.today, 
+			readonly = True, 
+			required=True, 
+			)
+
+	# Active 
+	a_active = fields.Boolean(
+			string = "Activa", 	
+			default = True, 
+			#readonly = True, 
+			required=True, 
+			)
+
+
+	a_dni = fields.Char(
+			string = "DNI", 	
+			required=True, 
+			)
+
+
+
+	_first_contact_list = [
+			('none','ninguno'), 
+			('recommendation','Recomendación'), 
+			('tv','Tv'), 
+			('radio','Radio'), 
+			('internet','Internet'), 
+			('website','Sitio web'), 
+			('mail_campaign','Campaña de mail'), 
+			]
+
+	a_first_contact = fields.Selection(
+			selection = _first_contact_list, 
+			string = '¿ Primer contacto con la clínica ?',  
+			default = 'none', 
+			required=True, 
+			)
+
+
+
+	a_allergies = fields.Char(
+			string = "Alergias", 	
+			required=True, 
+			)
+
+
+	a_treatment_ids = fields.One2many(
+			#'openhealth.treatment', 
+			'openextension.treatment', 
+			#'patient_id', 
+			'patient', 
+			string="Tratamientos"
+			)
+
+
+	
+
+	# Caregiver
+	a_caregiver_last_name = fields.Char(
+			string = 'Apellidos',  
+			default = '', 
+			required=True, 
+			)
+
+	a_caregiver_first_name = fields.Char(
+			string = 'Nombres',  
+			default = '', 
+			required=True, 
+			)
+
+	a_caregiver_dni = fields.Char(
+			string = "DNI", 	
+			required=True, 
+			)
+
+	FAMILY_RELATION = [
+			('Father', 'Padre'),
+			('Mother', 'Madre'),
+			('Brother', 'Hermano'),
+			('Sister', 'Hermana'),
+			('Wife', 'Esposa'),
+			('Husband', 'Esposo'),
+			('Grand Father', 'Abuelo'),
+			('Grand Mother', 'Abuela'),
+			('Aunt', 'Tía'),
+			('Uncle', 'Tío'),
+			('Nephew', 'Sobrino'),
+			('Niece', 'Sobrina'),
+			('Cousin', 'Primo'),
+			('Relative', 'Pariente'),
+			('Other', 'Otro'),
+		]
+
+	a_caregiver_relation = fields.Selection(
+			selection = FAMILY_RELATION, 
+			string = 'Parentesco',  
+			default = 'Padre', 
+			required=True, 
+			)
+
+
+
+
+	# EXISTENT
+	street = fields.Char(
+			string = "Dirección", 	
+			required=True, 
+		)
+
+	street2 = fields.Char(
+			string = "", 	
+			required=True, 
+		)
+
+
+
+
+	_city_list = [
+			('lima','Lima'),
+			('abancay','Abancay'),
+			('arequipa','Arequipa'),
+			('ayacucho','Ayacucho'),
+			('cajamarca','Cajamarca'),
+			('callao','Callao'),
+			('cerro_de_pasco','Cerro de Pasco'), 
+			('chachapoyas','Chachapoyas'),
+			('chiclayo','Chiclayo'),
+			('cuzco','Cuzco'),
+			('huacho','Huacho'),
+			('huancavelica','Huancavelica'),
+			('huancayo','Huancayo'),
+			('huanuco','Huánuco'),
+			('huaraz','Huaraz'),
+			('ica','Ica'),
+			('iquitos','Iquitos'),
+			('moquegua','Moquegua'),
+			('moyobamba','Moyobamba'),
+			('piura','Piura'),
+			('pucallpa','Pucallpa'),
+			('puerto_maldonado','Puerto Maldonado'), 
+			('puno','Puno'),
+			('tacna','Tacna'),
+			('trujillo','Trujillo'),
+			('tumbes','Tumbes'),
+		]
+
+	city = fields.Selection(
+			selection = _city_list, 
+			string = '',  
+			#default = ('lima','Lima'), 
+			default = 'lima', 
+			required=True, 
+		)
+
+
+
+	_lima_district_list = [
+
+			('1','Lima'),
+			('2','Ancón'),
+			('3','Ate'),
+			('4','Barranco'),
+			('5','Breña'),
+			('6','Carabayllo'),
+			('7','Comas'),
+			('8','Chaclacayo'),
+			('9','Chorrillos'),
+			('10','El Agustino'),
+			('11','Jesús María'),
+			('12','La Molina'),
+			('13','La Victoria'),
+			('14','Lince'),
+			('15','Lurigancho'),
+			('16','Lurín'),
+			('17','Magdalena del Mar'),
+			('18','Miraflores'),
+			('19','Pachacamac'),
+			('20','Pucusana'),
+			('21','Pueblo Libre'),
+			('22','Puente Piedra'),
+			('23','Punta Negra'),
+			('24','Punta Hermosa'),
+			('25','Rímac'),
+			('26','San Bartolo'),
+			('27','San Isidro'),
+			('28','Independencia'),
+			('29','San Juan de Miraflores'),
+			('30','San Luis'),
+			('31','San Martín de Porres'),
+			('32','San Miguel'),
+			('33','Santiago de Surco'),
+			('34','Surquillo'),
+			('35','Villa María del Triunfo'),
+			('36','San Juan de Lurigancho'),
+			('37','Santa María del Mar'),
+			('38','Santa Rosa'),
+			('39','Los Olivos'),
+			('40','Cieneguilla'),
+			('41','San Borja'),
+			('42','Villa El Salvador'),
+			('43','Santa Anita'),
+			]
+
+	#a_district = fields.Selection(
+	zip = fields.Selection(
+			selection = _lima_district_list, 
+			string = 'Distrito',  
+			#default = ('lima','Lima'), 
+			default = 'Lima', 
+			required=True, 
+			)
+
+
+
+
+class Treatment(models.Model):
+	_inherit = 'openextension.treatment'
+	#_name = 'openhealth.treatment'
+
+
+
+	# Name 
+	name = fields.Char(
+			#string="Treatment #", 
+			string="Tratamiento #", 
+			required=True, 
+			compute='_compute_name', 
+			default='.'
+			)
+
+	@api.multi
+
+	def _compute_name(self):
+		for record in self:
+			#record.name = record.patient.name + '-' + record.physician.name + '-' + record.start_date 
+			record.name = 'TR-' + record.start_date 
+
+
+
+
+	# Patient 
+	patient = fields.Many2one(
+			'oeh.medical.patient',
+			#string="Patient", 
+			string="Paciente", 
+			required=True, 
+			index=True
+			)
+	#default='This is the actual model',
+
+
+
+	# Physician 
+	physician = fields.Many2one(
+			'oeh.medical.physician',
+			#string="Physician", 
+			string="Médico", 
+			required=True, 
+			index=True
+			)
+	#default='Fernando Chavarri',
+
+
+
+	# Dates 
+	start_date = fields.Date(
+			string="Fecha de inicio", 
+			default = fields.Date.today
+			)
+
+	end_date = fields.Date(
+			string="Fecha de final", 
+			default = fields.Date.today
+			)
+
+
+
+	# Duration 
+	duration = fields.Integer(
+			#string="Duration (days)", 
+			string="Duración (días)", 
+			compute='_compute_duration', 
+			)
+
+	#@api.multi
+	@api.depends('start_date', 'end_date')
+
+	def _compute_duration(self):
+		for record in self:
+			date_format = "%Y-%m-%d"
+			a = datetime.strptime(record.start_date, date_format)
+			b = datetime.strptime(record.end_date, date_format)
+			delta = b - a
+			record.duration = delta.days + 1 
+
+
+
+
+
+
+
+	# Number of services
+	nr_services = fields.Integer(
+			compute='_compute_nr_services', 
+			#string='Number of services', 
+			string='Nr servicios', 
+			default = 0, 
+			)
+
+	#@api.multi
+	@api.depends('service_ids')
+	def _compute_nr_services(self):
+		for record in self:
+			sub_total = 0 
+			for se in record.service_ids:   
+				#print se.price
+				sub_total = sub_total + 1  
+			record.nr_services= sub_total  
+			#record.nr_services = record.service_ids.count 
+
+
+
+
+
+	# Total Price
+	price_total = fields.Float(
+			compute='_compute_price_total', 
+			string='Total', 
+			default = 0, 
+			) 
+
+	#@api.multi
+	@api.depends('service_ids')
+
+	def _compute_price_total(self):
+		for record in self:
+			sub_total = 0.0 
+			for se in record.service_ids:   
+				print se.price
+				sub_total = sub_total + se.price 
+			record.price_total = sub_total  
+
+
+
+
+
+
+	# Test fields 
+	#jx_char = fields.Char() 
+	#jx_int = fields.Integer() 
+	#jx_float = fields.Float() 
+
+
+	# Service 
+	service_ids = fields.One2many(
+			'openhealth.service', 
+			'treatment_id', 
+			#string="Services"
+			string="Servicios"
+			)
+
+	# Invoices
+	invoice_ids = fields.One2many(
+			'openhealth.invoice', 
+			'treatment_id', 
+			#string="Invoices"
+			string="Presupuestos"
+			)
+
+
+
+	# Evluation  
+	evaluation_ids = fields.One2many(
+			'openhealth.evaluation', 
+			'treatment_id', 
+			#string="Evaluations"
+			string="Evaluaciones"
+			)
+
+	# Number of evaluations
+	nr_evaluations = fields.Integer(
+			compute='_compute_nr_evaluations', 
+			#string='Number of evaluations', 
+			string='Nr de evaluaciones', 
+			default = 0, 
+			)
+
+	@api.depends('evaluation_ids')
+
+	def _compute_nr_evaluations(self):
+		for record in self:
+			sub_total = 0 
+			for se in record.evaluation_ids:   
+				sub_total = sub_total + 1  
+			record.nr_evaluations= sub_total  
+
+
+
+
+
+
+
+
+#jx 
+class Evaluation(models.Model):
+	_name =	'openhealth.evaluation'
+
+	#PATIENT = 'Javier Revilla'
+	#PHYSICIAN = 'Fernando Chavarri'
+
+
+	#def __init__(self, x, y):
+	#	self.patient = 'Javier Revilla'
+	#	_patient = 'Javier Revilla'
+	#	print 'jx'
+	#	print x
+	#	print y 
+
+
+
+	# Name 
+	name = fields.Char(
+			default='x',
+			#string='Name',
+			string='Nombre',
+			#required=True, 
+			)
+
+	treatment_id = fields.Many2one('openextension.treatment',
+			ondelete='cascade', 
+			#string="Treatment", 
+			string="Tratamiento", 
+			)
+
+	# Evaluation  
+	evaluation = fields.Many2one(
+			'oeh.medical.evaluation',
+			#string="Evaluation", 
+			string="Evaluación", 
+
+			#domain = [
+			#			('patient', '=', 'Javier Revilla'),
+			#			('patient', '=', PATIENT),
+			#			('patient', '=', self.patient),
+			#			('doctor', '=', 'Fernando Chavarri'),
+			#			('doctor', '=', PHYSICIAN),
+			#		],
+
+			)
+
+
+
+	# Type evaluation 
+	evaluation_type = fields.Char(
+			compute='_compute_evaluation_type', 
+			string='Tipo de evaluación', 
+			)
+
+	@api.depends('evaluation')
+
+	def _compute_evaluation_type(self):
+		for record in self:
+			#record.type_evaluation = 'jx'
+			#record.evaluation_type = record.evaluation.evaluation_type   
+			record.evaluation_type = record.evaluation.evaluation_type  
+
+
+
+
+	def get_domain_evaluation(self,cr,uid,ids,context=None):
+
+		print 'jx'
+		print context
+
+		mach = []
+		lids = self.pool.get('oeh.medical.evaluation').search(cr,uid,[('patient', '=', context)])
+		return {'domain':{'evaluation':[('id','in',lids)]}}
+
+
+
+
+
+
+class Invoice(models.Model):
+	_name =	'openhealth.invoice'
+
+	# Name 
+	name = fields.Char(
+			default='x',
+			#string='Name',
+			string='Nombre',
+			required=True, 
+			)
+
+	# Invoice 
+	invoice = fields.Many2one(
+			'account.invoice',
+			#string="Invoice", 
+			string="Presupuesto", 
+			)
+
+	# Treatment 
+	#treatment_id = fields.Many2one('openhealth.treatment',
+	treatment_id = fields.Many2one('openextension.treatment',
+			ondelete='cascade', 
+			#string="Treatment", 
+			string="Tratamiento", 
+			)
+
+	#Price 
+	price = fields.Float(
+			#compute='_compute_price', 
+			#string='Price', 
+			string='Precio', 
+			default=55, 
+			) 
+
+
+
+
+
+class Service(models.Model):
+	_name = 'openhealth.service'
+
+
+	# Name 
+	name = fields.Char(
+			default='Laser Co2',
+			#string='Name',
+			string='Nombre',
+			required=True, 
+			)
+
+
+	# Service 
+	service = fields.Many2one(
+			'product.template',
+			#domain = [
+			#			('type', '=', 'service'),
+			#			('x_treatment', '=', _jx_laser_type),
+			#		],
+			#string="Service", 
+			string="Servicio", 
+			)
+
+
+	# Treatment 
+	treatment_id = fields.Many2one('openextension.treatment',
+			ondelete='cascade', 
+			#string="Treatment", 
+			string="Tratamiento", 
+			)
+	#required=True,
+
+
+
+
+
+
+
+
+	# Laser type 
+	_laser_type_list = [
+			('laser_co2','Laser Co2'), 
+			('laser_excilite','Laser Excilite'), 
+			('laser_ipl','Laser Ipl'), 
+			('laser_ndyag','Laser Ndyag'), 
+			]
+
+	laser = fields.Selection(
+			selection = _laser_type_list, 
+			#string="Treatment",  
+			string="Tratamiento",  
+			default='laser_co2',
+			required=True, 
+			index=True
+			)
+
+
+	def get_domain_service(self,cr,uid,ids,context=None):
+
+		#print context
+
+		#return {
+		#	'warning': {
+		#		'title': "Laser",
+		#		'message': context,
+		#}}
+
+		mach = []
+		lids = self.pool.get('product.template').search(cr,uid,[('x_treatment', '=', context)])
+		return {'domain':{'service':[('id','in',lids)]}}
+
+
+
+
+
+	# Code 
+	code = fields.Char(
+			compute='_compute_code', 
+			string='Code'
+			)
+
+	@api.depends('service')
+
+	def _compute_code(self):
+		for record in self:
+			record.code= record.service.name 
+
+
+
+
+
+
+	# Name short 
+	name_short = fields.Char(
+			compute='_compute_name_short', 
+			#string='Short name'
+			string='Código'
+			)
+
+	@api.depends('service')
+
+	def _compute_name_short(self):
+		for record in self:
+			record.name_short = record.service.x_name_short 
+
+
+
+
+	#Price 
+	price = fields.Float(
+			compute='_compute_price', 
+			#string='Price'
+			string='Precio'
+			) 
+
+	#@api.multi
+	@api.depends('service')
+
+	def _compute_price(self):
+		for record in self:
+			record.price= (record.service.list_price)
+
+
+

@@ -256,14 +256,38 @@ class Consultation(models.Model):
 
 	# Procedure 
 
+
+	x_vspace = fields.Char(
+			' ', 
+			readonly=True
+			)
+
+
+
+	# Laser 
 	x_laser_co2 = fields.Boolean(
 			string = 'Láser Co2',
+			)
+
+	x_laser_excimer = fields.Boolean(
+			string = 'Láser Exímero 308-nm',
 			)
 
 	x_laser_ndyag = fields.Boolean(
 			string = 'Láser Ndyag',
 			)
 
+	x_laser_ipl = fields.Boolean(
+			string = 'Láser IPL',
+			)
+
+	x_laser_rejuvenation_vaginal = fields.Boolean(
+			string = 'Láser rejuvenecimiento vaginal',
+			)
+
+
+
+	# Other 
 	x_criosurgery = fields.Boolean(
 			string = 'Criocirugía',
 			)
@@ -276,9 +300,6 @@ class Consultation(models.Model):
 			string = 'Nutrición profunda',
 			)
 
-	x_laser_ipl = fields.Boolean(
-			string = 'Láser IPL',
-			)
 
 	x_toxin_botulinum = fields.Boolean(
 			string = 'Toxina Botulínica',
@@ -292,12 +313,9 @@ class Consultation(models.Model):
 			)
 
 	x_hydration_deep = fields.Boolean(
-			string = 'Hidratación profunda con ácido hialurónico',
+			string = 'Hidratación prof. Acido hialurónico',
 			)
 
-	x_laser_excimer = fields.Boolean(
-			string = 'Láser Exímero 308-nm',
-			)
 
 	x_corporal = fields.Boolean(
 			string = 'Tratamiento corporal',
@@ -311,9 +329,6 @@ class Consultation(models.Model):
 			string = 'Vitamina C (EV)',
 			)
 
-	x_laser_rejuvenation_vaginal = fields.Boolean(
-			string = 'Rejuvenecimiento vaginal con Láser',
-			)
 
 
 
@@ -461,53 +476,6 @@ class Consultation(models.Model):
 
 
 
-	# Consultation - EDIT 
-	# --------------------
-
-	@api.multi
-	def open_line_current(self):  
-
-		#patient_id = self.patient.id
-		#doctor_id = self.physician.id
-
-		consultation_id = self.id 
-
-		return {
-				'type': 'ir.actions.act_window',
-				'name': ' Edit Consultation Current', 
-				'view_type': 'form',
-				'view_mode': 'form',
-
-				'res_model': self._name,
-				#'res_model': 'openhealth.consultation',
-
-				#'res_id': id[0],
-				'res_id': consultation_id,
-
-				'target': 'current',
-				#'target': 'inline'.
-
-				'flags': {
-						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-						'form': {'action_buttons': True, }
-						},
-
-
-
-				'context':   {
-					#'search_default_consultation': consultation_id,
-
-					#'default_patient': patient_id,
-					#'default_doctor': doctor_id,
-
-					#'default_consultation_id': consultation_id,
-				}
-		}
-
-
-
-
-
 
 	# Quotations
 	# -----------------------------------------------------------------------------------------------------------------
@@ -563,4 +531,30 @@ class Consultation(models.Model):
 			}
 		}
 
+
+
+
+	# Consultation - Quick Self Button  
+	# ---------------------------------
+
+	@api.multi
+	def open_line_current(self):  
+
+		consultation_id = self.id 
+
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' Edit Consultation Current', 
+				'view_type': 'form',
+				'view_mode': 'form',
+				'res_model': self._name,
+				'res_id': consultation_id,
+				'target': 'current',
+				'flags': {
+						'form': {'action_buttons': True, }
+						},
+
+				'context':   {
+				}
+		}
 

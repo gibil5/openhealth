@@ -61,8 +61,40 @@ class Procedure(models.Model):
 			)
 
 
-	#-----------------------------------------------------------------------------
-	# Aggregated 
+
+	#------------------------------------- Aggregated ----------------------------------------
+	#
+
+
+
+
+
+	#------------------------------------ Buttons -----------------------------------------
+	#
+
+	# Consultation - Quick Self Button  
+	# ---------------------------------
+
+	@api.multi
+	def open_line_current(self):  
+
+		procedure_id = self.id 
+
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' Edit Consultation Current', 
+				'view_type': 'form',
+				'view_mode': 'form',
+				'res_model': self._name,
+				'res_id': procedure_id,
+				'target': 'current',
+				'flags': {
+						'form': {'action_buttons': True, }
+						},
+
+				'context':   {
+				}
+		}
 
 
 

@@ -447,7 +447,7 @@ class Treatment(models.Model):
 		#patient_id = self.patient.id
 		#doctor_id = self.physician.id
 
-		consultation_id = self.id 
+		treatment_id = self.id 
 
 		return {
 				'type': 'ir.actions.act_window',
@@ -466,7 +466,9 @@ class Treatment(models.Model):
 				#'target': 'inline'.
 
 				'flags': {
-						'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						'form': {'action_buttons': True, }
+
 						},
 
 

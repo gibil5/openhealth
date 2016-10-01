@@ -15,20 +15,20 @@
 
     'description': """
 
-		Installed: 	 7 sep 2016.\n 
-		Upgraded: 	30 sep 2016.\n 
+		Installed: 	 7 Sep 2016.\n 
+		Upgraded: 	 1 Oct 2016.\n 
 		\n
 
 		This is my first extension for oeHealth.
 		Completely independent and self-referecing.\n
 		It provides the following objects:
             - Patients
-			- Treatments
-			- Evaluations
+            - Treatments
+            - Evaluations
             - Consultations
             - Procedures
             - Controls 
-			- Services
+            - Services
     """,
 
     'author': "DataMetrics",
@@ -85,6 +85,9 @@
 		'views/evaluations/evaluation_oeh.xml',
 		'views/evaluations/consultation.xml',
 		'views/evaluations/consultation_first.xml',
+
+		'views/evaluations/consultation_procedures.xml',
+
 
 		'views/evaluations/consultation_services.xml',
 		

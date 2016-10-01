@@ -58,6 +58,7 @@
 
 
 						<!--
+						-->
 						<button 
 							type="object" 
 							class="oe_highlight oe_right"
@@ -67,7 +68,6 @@
 							name="open_evaluation_current" 
 
 						/>
-						-->
 
 
 						<!--
@@ -301,6 +301,8 @@ Notebook
 						<notebook>
 
 
+
+
 							<!--
 								 Consultation 
 							-->
@@ -316,31 +318,27 @@ Notebook
 										<!--
 										<field string="Consulta #"  name="name"/>
 										-->
-										<field  name="name">
-										</field>
+										<!--
+										<field string='Tipo' name="evaluation_type"/>		
+										<field name="treatment_id"/>
+										-->								
+
+										<field  name="name"/>
 											
 										<field string="Paciente" name="patient"/>
 										<field string="Médico" name="doctor"/>
 										<field name="chief_complaint"/>
-
 										<field name="evaluation_start_date"/>
-										<!--
-										<field string='Tipo' name="evaluation_type"/>		
-
-										<field name="treatment_id"/>
-										-->								
 										<field name="treatment"/>
-										
-										
+											
+																				
 										<!--
-											string="EDITAR" 
+											Button
 										-->
 										<button 
 											type="object" 
-											class="oe_highlight"
-											
+											class="oe_highlight"	
 											string="E"
-											
 											name="open_line_current" 
 										/>
 										
@@ -369,6 +367,20 @@ Notebook
 										<field string='Tipo' name="evaluation_type"/>
 										
 										<field name="treatment"/>
+										
+										
+										
+										<!--
+											Button
+										-->
+										<button 
+											type="object" 
+											class="oe_highlight"	
+											string="E"
+											
+											name="open_line_current" 
+										/>
+										
 									</tree>
 								</field>
 							</page>

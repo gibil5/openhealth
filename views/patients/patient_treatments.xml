@@ -46,23 +46,24 @@
 								-->
 								
 								<field string="Tratamiento #"  name="name"/>
-								
 								<field name="patient"/>
-								<!--
-								-->
 								<field name="physician"/>
-
 								<field name="chief_complaint"/>
-
-
 								<field name="start_date"/>
-
 								<field name="duration"/>
-
 								<field name="nr_evaluations"/>
-
 								<field name="price_total"/>
 
+
+								<!--
+								-->
+								<button 
+									type="object" 
+									class="oe_highlight"	
+									string="E"
+									name="open_line_current" 
+								/>
+								
 							</tree>
 						</field>
 					

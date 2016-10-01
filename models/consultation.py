@@ -306,8 +306,6 @@ class Consultation(models.Model):
 			)
 
 
-
-
 	x_prp_rich = fields.Boolean(
 			string = 'PRP rico en factores de crecimiento',
 			)
@@ -455,6 +453,14 @@ class Consultation(models.Model):
 	x_vagina = fields.Boolean(
 			string = 'Vagina',
 			)
+
+
+
+
+
+	# Pathology
+
+
 
 
 

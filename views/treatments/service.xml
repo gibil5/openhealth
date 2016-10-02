@@ -29,14 +29,38 @@
 								<group>
 								</group>
 
+
+								<group>
+									<field name="id"/>
+								</group>
+								<group>
+								</group>
 								
 
 								<group>
+									<!--
 									<field name="laser" on_change="get_domain_service(laser)" />
+									-->
+									<field name="laser" on_change="get_domain_service_multi(laser,zone)" />
+
 								</group>
 								<group>
 								</group>
 
+
+								<group>
+									<!--
+									<field name="zone" />
+									<field name="zone" on_change="get_domain_service_zone(zone)" />
+									<field name="zone" on_change="get_domain_service_zone(laser)" />
+									<field name="zone" on_change="get_domain_service_zone(laser,zone)" />
+									-->
+									<field name="zone" on_change="get_domain_service_multi(laser,zone)" />
+								</group>
+								<group>
+								</group>
+								
+								
 
 								<group>
 									<field name="service"/>

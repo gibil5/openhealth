@@ -106,7 +106,6 @@ class Service(models.Model):
 			)
 
 
-
 	def get_domain_service(self,cr,uid,ids,context=None):
 
 		#print context
@@ -118,8 +117,106 @@ class Service(models.Model):
 		#}}
 
 		mach = []
-		lids = self.pool.get('product.template').search(cr,uid,[('x_treatment', '=', context)])
+		lids = self.pool.get('product.template').search(cr,uid,[
+																('x_treatment', '=', context)
+																])
 		return {'domain':{'service':[('id','in',lids)]}}
+
+
+
+
+
+	# Zone
+	_zone_list = [
+			('areola','Areola'), 
+			('armpits','Axilas'), 
+			('beard','Barba'), 
+			('belly','Barriga'), 
+			('bikini','Bikini'), 
+
+			('down_lip','Bozo/Bigote'), 
+			('arm','Brazo'), 
+			('head','Cabeza'), 
+			('neck','Cuello'), 
+			('back','Espalda'), 
+
+			('front','Frente'), 
+			('gluteus','Glúteo'), 
+			('shoulders','Hombros'), 
+			('linea_alba','Linea Alba'), 
+			('body_localized','Localizado cuerpo'), 
+
+			('face_localized','Localizado rostro'), 
+			('hands','Manos'), 
+			('chin','Mentón'), 
+			('nape','Nuca'), 
+			('sideburns','Patillas'), 
+
+			('breast','Pecho'), 
+			('feet','Pierna'), 
+			('leg','Pierna'), 
+			('cheekbones','Pómulos'), 
+			('face_all','Todo rostro'), 
+
+			('nail','Uña'), 
+			('vagina','Vagina'), 
+			]
+
+	zone = fields.Selection(
+			selection = _zone_list, 
+			string="Zona",  
+			default='areola',
+			required=True, 
+			)
+
+
+
+	# Zone
+	_pathology_list = [
+			('',''), 
+			('',''), 
+			('',''), 
+			('',''), 
+			('',''), 
+
+
+			#('',''), 
+			]
+
+	pathology = fields.Selection(
+			selection = _pathology_list, 
+			string="Zona",  
+			default='areola',
+			required=True, 
+			)
+
+
+
+
+
+
+
+	#def get_domain_service_zone(self,cr,uid,ids,context=None):
+	def get_domain_service_multi(self,cr,uid,ids,context_1=None,context_2=None):
+
+		#print context
+		print context_1, context_2
+
+		#return {
+		#	'warning': {
+		#		'title': "Zone domain",
+				#'message': context,
+				#'message': context_2,
+		#		'message': context_1 + ' ' + context_2,
+		#}}
+
+		mach = []
+		lids = self.pool.get('product.template').search(cr,uid,[
+																	('x_treatment', '=', context_1), 
+																	('x_zone', '=', context_2), 
+																])
+		return {'domain':{'service':[('id','in',lids)]}}
+
 
 
 
@@ -174,6 +271,36 @@ class Service(models.Model):
 			record.price= (record.service.list_price)
 
 
+
+
+
+
+	#------------------------------------ Buttons -----------------------------------------
+	#
+
+	# Service - Quick Self Button  
+	# ---------------------------------
+
+	@api.multi
+	def open_line_current(self):  
+
+		service_id = self.id 
+
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' Edit Service Current', 
+				'view_type': 'form',
+				'view_mode': 'form',
+				'res_model': self._name,
+				'res_id': service_id,
+				'target': 'current',
+				'flags': {
+						'form': {'action_buttons': True, }
+						},
+
+				'context':   {
+				}
+		}
 
 
 

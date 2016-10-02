@@ -37,7 +37,6 @@ http://localhost:8069/web#id=12&view_type=form&model=openextension.treatment&men
 http://localhost:8069/web#id=14&view_type=form&model=openextension.treatment&menu_id=1314&action=797
 
 
-self.env['openhealth.learn'].search([('name', 'like', 'J')])
 self.env['openhealth.learn'].search([('name', 'like', 'B')])
 
 self.env['openhealth.learn'].search([('name', 'like', 'J')]).do_operation()
@@ -87,6 +86,16 @@ self.env['oeh.medical.patient'].search([('id', '=', '3025')])
 
 self.env['oeh.medical.physician'].search([('name', 'like', 'Fe')])
 self.env['oeh.medical.physician'].search([('id', '=', '1')])
+
+
+
+
+
+
+
+self.env['openhealth.service'].search([('name', 'like', 'S')])
+
+
 
 
 

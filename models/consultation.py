@@ -356,6 +356,7 @@ class Consultation(models.Model):
 			)
 
 
+
 	x_down_lip = fields.Boolean(
 			string = 'Bozo/Bigote',
 			)
@@ -378,6 +379,9 @@ class Consultation(models.Model):
 
 
 
+
+
+
 	x_front = fields.Boolean(
 			string = 'Frente',
 			)
@@ -394,13 +398,11 @@ class Consultation(models.Model):
 			string = 'Linea Alba',
 			)
 
-
-
-
-
 	x_body_localized = fields.Boolean(
 			string = 'Localizado cuerpo',
 			)
+
+
 
 
 	x_face_localized = fields.Boolean(
@@ -425,6 +427,8 @@ class Consultation(models.Model):
 
 
 
+
+
 	x_breast = fields.Boolean(
 			string = 'Pecho',
 			)
@@ -444,6 +448,8 @@ class Consultation(models.Model):
 	x_face_all = fields.Boolean(
 			string = 'Todo rostro',
 			)
+
+
 
 
 	x_nail = fields.Boolean(
@@ -498,8 +504,8 @@ class Consultation(models.Model):
 
 
 
-	# Buttons
-	# -----------------------------------------------------------------------------------------------------------------
+	#------------------------------------ Buttons -----------------------------------------
+
 
 	# Button - Treatment 
 	# -------------------

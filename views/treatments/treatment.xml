@@ -62,11 +62,9 @@
 						<button 
 							type="object" 
 							class="oe_highlight oe_right"
-
 							string="Evaluación" 
 
 							name="open_evaluation_current" 
-
 						/>
 
 

@@ -12,7 +12,7 @@
 			<field name="name">consultation.procreal.form</field>
 			<field name="model">openhealth.consultation</field>
 			
-			<field name="priority" eval="0"/>
+			<field name="priority" eval="10"/>
 			
 			<field name="inherit_id" ref="consultation_form_view"/>
 			<field name="arch" type="xml">
@@ -23,7 +23,7 @@
 
 
 
-							<page string="Procedimientos a realizar">
+							<page string="Procedimientos">
 
 
 								<group></group>
@@ -292,6 +292,8 @@
 					   	-->
 					</page>
 				</notebook>
+				
+				
 			</field>
 		</record>
 	</data>

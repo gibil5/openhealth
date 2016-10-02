@@ -1,0 +1,406 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="consultation_laserco2_form_view">
+			<field name="name">consultation.laserco2.form</field>
+			<field name="model">openhealth.consultation</field>
+			
+			<field name="priority" eval="1"/>
+			
+			<field name="inherit_id" ref="consultation_form_view"/>
+			<field name="arch" type="xml">
+
+
+
+
+<!--
+<notebook position="inside">
+	<page string="Procedimientos">
+		<group string="Tipo de Laser">
+-->
+
+
+
+
+<!-- Laser Co2 -->
+<notebook position="inside">
+	<page string="Láser Co2">
+		<group string="Zona">
+
+			<notebook>
+
+
+
+				<!-- Buttons -->
+				<div class="oe_right oe_button_box" style="width: 500px;" name="buttons">
+
+
+					<button type="action" class="oe_stat_button" name="347" context="{'search_default_patient': active_id,'default_pa    tient': active_id}" icon="fa-calendar">
+
+						<field string="Citas" name="orientation" widget="statinfo"/>
+
+					</button>
+
+				</div>
+
+
+
+				<!-- todo rostro --> 
+				<page string="Todo Rostro">
+
+
+					<group col='3'>
+
+						<group>
+							<h4>
+								Rejuvenecimiento facial 
+							</h4>
+						</group>
+
+
+						<group>
+							<field string="1" name="orientation"/>
+							<field string="2" name="orientation"/>
+							<field string="3" name="orientation"/>
+						</group>
+
+						<group>
+						</group>
+
+					</group>
+
+					<hr></hr>
+
+					<group col='3'>
+
+						<group>
+							<h4>
+								Acné y secuelas 
+							</h4>
+						</group>
+
+						<group>
+							<field string="1" name="orientation"/>
+							<field string="2" name="orientation"/>
+							<field string="3" name="orientation"/>
+						</group>
+
+						<group>
+						</group>
+					</group>
+
+
+
+				</page>
+
+
+
+				<!-- pomulos --> 
+				<page string="Pómulos">
+					<group>
+						<field string="Acné y secuelas" name="orientation"/>
+						<field string="Manchas" name="orientation"/>
+					</group>
+					<group></group>
+				</page>
+
+
+
+				<!-- cuello --> 
+				<page string="Cuello">
+					<group>
+						<field string="Rejuvenecimiento" name="orientation"/>
+						<field string="Cicatriz" name="orientation"/>
+						<field string="Polipo" name="orientation"/>
+						<field string="Verruga" name="orientation"/>
+						<field string="Punto Rubí" name="orientation"/>
+					</group>
+					<group></group>
+				</page>
+
+
+
+				<!-- manos --> 
+				<page string="Manos">
+					<group>
+						<group>
+							<field string="Manchas" name="orientation"/>
+							<field string="Cicatriz" name="orientation"/>
+							<field string="Verruga" name="orientation"/>
+							<field string="Rejuvenecimiento en manos" name="orientation"/>
+						</group>
+
+						<group>
+						</group>
+					</group>
+				</page>
+
+
+
+				<!-- local rostro --> 
+				<page string="Local Rostro">
+
+
+					<group col='3'>
+						<group>
+							<h4>
+								Manchas
+							</h4>
+						</group>
+						<group>
+							<field string="Grado 1" name="orientation"/>
+							<field string="Grado 2" name="orientation"/>
+							<field string="Grado 3" name="orientation"/>
+						</group>
+						<group>
+						</group>
+					</group>
+
+					<hr></hr>
+
+					<group col='3'>
+						<group>
+							<h4>
+								Queratosis
+							</h4>
+						</group>
+						<group>
+							<field string="Grado 1" name="orientation"/>
+							<field string="Grado 2" name="orientation"/>
+							<field string="Grado 3" name="orientation"/>
+						</group>
+						<group>
+						</group>
+					</group>
+
+					<hr></hr>
+
+					<group col='3'>
+						<group>
+							<h4>
+								Lunar
+							</h4>
+						</group>
+						<group>
+							<field string="Tamaño 1" name="orientation"/>
+							<field string="Tamaño 2" name="orientation"/>
+							<field string="Tamaño 3" name="orientation"/>
+						</group>
+						<group>
+						</group>
+					</group>
+
+					<hr></hr>
+
+					<group col='3'>
+						<group>
+							<h4>
+								Cicatriz
+							</h4>
+						</group>
+						<group>
+							<field string="Tamaño 1" name="orientation"/>
+							<field string="Tamaño 2" name="orientation"/>
+							<field string="Tamaño 3" name="orientation"/>
+						</group>
+						<group>
+						</group>
+					</group>
+
+					<hr></hr>
+
+					<group>
+						<group>
+							<field string="Quiste" name="orientation"/>
+						</group>
+						<group>
+						</group>
+
+						<group>
+							<field string="Verruga" name="orientation"/>
+						</group>
+						<group>
+						</group>
+					</group>
+
+				</page>
+
+
+
+				<!-- local cuerpo --> 
+				<page string="Local Cuerpo">
+
+					<group col='3'>
+						<group>
+							<h4>
+								Manchas
+							</h4>
+						</group>
+						<group>
+							<field string="Grado 1" name="orientation"/>
+							<field string="Grado 2" name="orientation"/>
+							<field string="Grado 3" name="orientation"/>
+						</group>
+						<group>
+						</group>
+					</group>
+
+					<hr></hr>
+
+
+					<group col='3'>
+						<group>
+							<h4>
+								Acné y secuelas 	
+							</h4>
+						</group>
+						<group>
+							<field string="Grado 1" name="orientation"/>
+							<field string="Grado 2" name="orientation"/>
+							<field string="Grado 3" name="orientation"/>
+						</group>
+						<group>
+						</group>
+					</group>
+
+					<hr></hr>
+
+					<group col='3'>
+						<group>
+							<h4>
+								Lunar	
+							</h4>
+						</group>
+						<group>
+							<field string="Tamaño 1" name="orientation"/>
+							<field string="Tamaño 2" name="orientation"/>
+							<field string="Tamaño 3" name="orientation"/>
+						</group>
+						<group>
+						</group>
+					</group>
+
+					<hr></hr>
+
+					<group col='3'>
+						<group>
+							<h4>
+								Cicatriz
+							</h4>
+						</group>
+						<group>
+							<field string="Tamaño 1" name="orientation"/>
+							<field string="Tamaño 2" name="orientation"/>
+							<field string="Tamaño 3" name="orientation"/>
+						</group>
+						<group>
+						</group>
+					</group>
+
+
+
+
+					<hr></hr>
+
+
+
+
+					<group>
+						<group>
+							<field string="Queratosis" name="orientation"/>
+						</group>
+						<group>
+						</group>
+
+						<group>
+							<field string="Quiste" name="orientation"/>
+						</group>
+						<group>
+						</group>
+
+						<group>
+							<field string="Verruga" name="orientation"/>
+						</group>
+						<group>
+						</group>
+					</group>
+
+				</page>
+
+
+
+				<!-- vagina --> 
+				<page string="Vagina">
+					<group>
+						<group>
+							<field string="Monalisa Touch" name="orientation"/>
+						</group>
+						<group>
+						</group>
+					</group>
+				</page>
+
+
+
+				<!-- paquetes --> 
+				<page string="Paquetes">
+					<group>
+						<group>
+							<field string="Rejuvenecimiento Facial + Rejuvenecimiento en Cuello" name="orientation"/>
+						</group>
+						<group>
+						</group>
+						<group>
+							<field string="Rejuvenecimiento Facial + Rejuvenecimiento en Manos" name="orientation"/>
+						</group>
+						<group>
+						</group>
+						<group>
+							<field string="Rejuvenecimiento Facial + Rejuvenecimiento en Cuello + Rejuvenecimiento en Manos" name="orientation"/>
+						</group>
+						<group>
+						</group>
+					</group>
+				</page>
+
+
+
+			</notebook>
+		</group>
+
+
+
+
+
+		<!-- Config -->
+		<!--
+		<group string="Valores empleados - Láser Co2">
+			<group>
+
+				<field name="x_laser_co2_power"/>
+				<field name="x_laser_co2_frequency"/>
+				<field name="x_laser_co2_energy"/>
+				<field name="x_laser_co2_mode_emission"/>
+				<field name="x_laser_co2_mode_exposure"/>
+				<field name="x_laser_co2_observations"/>
+			</group>
+		</group>
+		-->
+
+	</page>
+</notebook>
+
+
+
+
+<!--	
+		</group>
+	</page>
+</notebook>
+-->
+
+				
+			</field>
+		</record>
+	</data>
+</openerp>

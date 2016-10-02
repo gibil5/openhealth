@@ -681,6 +681,12 @@ class Consultation(models.Model):
 
 
 
+	# Laser Co2
+	orientation = fields.Boolean(
+			string = 'Orientation',
+			)
+	
+
 
 
 	# Quotations

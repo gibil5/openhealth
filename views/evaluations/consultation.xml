@@ -164,6 +164,8 @@
 
 
 
+
+
 		<!-- Tree view --> 
 		<record model="ir.ui.view" id="consultation_tree_view">
 			<field name="name">consultation.tree</field>

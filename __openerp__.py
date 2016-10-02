@@ -2,7 +2,7 @@
 #
 # 	*** OPEN HEALTH
 # 
-#   Last up: 30 Sep 2016
+#   Last up: 2 Oct 2016
 #
 
 {
@@ -16,7 +16,7 @@
     'description': """
 
 		Installed: 	 7 Sep 2016.\n 
-		Upgraded: 	 1 Oct 2016.\n 
+		Upgraded: 	 2 Oct 2016.\n 
 		\n
 
 		This is my first extension for oeHealth.
@@ -83,22 +83,31 @@
         # Evaluations
 		#'views/evaluations/evaluation.xml',
 		'views/evaluations/evaluation_oeh.xml',
+		
 		'views/evaluations/consultation.xml',
 		'views/evaluations/consultation_first.xml',
 
 		'views/evaluations/consultation_procedures.xml',
 
-
 		'views/evaluations/consultation_services.xml',
+
+
+
+		# jx_eval
+		'views/evaluations/jx_eval_co2.xml',
+		'views/evaluations/jx_eval_excilite.xml',
+		'views/evaluations/jx_eval_ipl.xml',
+		'views/evaluations/jx_eval_ndyag.xml',
+
+
+
 		
-        #'views/evaluations/consultation_quotation.xml',
-        
-        
-        
+        #'views/evaluations/consultation_quotation.xml',        
 		'views/evaluations/quotation.xml',
         
-        
 		'views/evaluations/procedure.xml',
+
+
 
     ],
     # only loaded in demonstration mode

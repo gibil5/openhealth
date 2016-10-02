@@ -1,0 +1,245 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="consultation_laserndyag_form_view">
+			<field name="name">consultation.laserndyag.form</field>
+			<field name="model">openhealth.consultation</field>
+			
+			<field name="priority" eval="4"/>
+			
+			<field name="inherit_id" ref="consultation_form_view"/>
+			<field name="arch" type="xml">
+
+
+
+
+<!-- M22 - NDYAG -->
+<notebook position="inside">
+
+	<page string="M22 - NDYAG">
+
+		<group string="Zona">
+
+			<notebook>
+
+
+
+				<page string="Localizado Cuerpo">
+
+
+
+
+
+					<group col='3'>
+						<group>
+							<h4>Telangectacias</h4>
+						</group>
+						<group>
+							<h4>Número de sesiones</h4>
+						</group>
+						<group>
+							<field string="1 - Normal" name="orientation"/>
+							<field string="6 - VIP" name="orientation"/>
+						</group>
+						<group></group>
+						<group>
+							<h4>Tiempo</h4>
+						</group>
+						<group>
+							<field string="15 min" name="orientation"/>
+						</group>
+					</group>
+
+					<hr></hr>
+
+					<group col='3'>
+						<group>
+							<h4>Puntos Rubí</h4>
+						</group>
+						<group>
+							<h4>Número de sesiones</h4>
+						</group>
+						<group>
+							<field string="1 - Normal" name="orientation"/>
+							<field string="6 - VIP" name="orientation"/>
+						</group>
+						<group></group>
+						<group>
+							<h4>Tiempo</h4>
+						</group>
+						<group>
+							<field string="15 min" name="orientation"/>
+						</group>
+					</group>
+
+					<hr></hr>
+
+					<group col='3'>
+						<group>
+							<h4>Hemangiomas</h4>
+						</group>
+						<group>
+							<h4>Número de sesiones</h4>
+						</group>
+						<group>
+							<field string="1 - Normal" name="orientation"/>
+							<field string="6 - VIP" name="orientation"/>
+						</group>
+						<group></group>
+						<group>
+							<h4>Tiempo</h4>
+						</group>
+						<group>
+							<field string="15 min" name="orientation"/>
+						</group>
+					</group>
+
+					<hr></hr>
+
+					<group col='3'>
+						<group>
+							<h4>Várices</h4>
+						</group>
+						<group>
+							<h4>Número de sesiones</h4>
+						</group>
+						<group>
+							<field string="1 - Normal" name="orientation"/>
+							<field string="6 - VIP" name="orientation"/>
+						</group>
+						<group></group>
+						<group>
+							<h4>Tiempo</h4>
+						</group>
+						<group>
+							<field string="15 min" name="orientation"/>
+						</group>
+					</group>
+
+
+
+
+
+
+
+
+
+
+
+
+				</page>
+
+
+
+
+
+				<page string="Localizado Rostro">
+
+					<group col='3'>
+						<group>
+							<h4>Telangectacias</h4>
+						</group>
+						<group>
+							<h4>Número de sesiones</h4>
+						</group>
+						<group>
+							<field string="1 - Normal" name="orientation"/>
+							<field string="6 - VIP" name="orientation"/>
+						</group>
+						<group></group>
+						<group>
+							<h4>Tiempo</h4>
+						</group>
+						<group>
+							<field string="15 min" name="orientation"/>
+						</group>
+					</group>
+
+					<hr></hr>
+
+					<group col='3'>
+						<group>
+							<h4>Puntos Rubí</h4>
+						</group>
+						<group>
+							<h4>Número de sesiones</h4>
+						</group>
+						<group>
+							<field string="1 - Normal" name="orientation"/>
+							<field string="6 - VIP" name="orientation"/>
+						</group>
+						<group></group>
+						<group>
+							<h4>Tiempo</h4>
+						</group>
+						<group>
+							<field string="15 min" name="orientation"/>
+						</group>
+					</group>
+
+					<hr></hr>
+
+					<group col='3'>
+						<group>
+							<h4>Hemangiomas</h4>
+						</group>
+						<group>
+							<h4>Número de sesiones</h4>
+						</group>
+						<group>
+							<field string="1 - Normal" name="orientation"/>
+							<field string="6 - VIP" name="orientation"/>
+						</group>
+						<group></group>
+						<group>
+							<h4>Tiempo</h4>
+						</group>
+						<group>
+							<field string="15 min" name="orientation"/>
+						</group>
+					</group>
+
+				</page>
+
+
+			</notebook>
+		</group>
+
+
+
+		<!-- Config -->
+		<!--
+		<group string="Valores empleados - Láser M22-NDYAG">
+			<group>
+
+				<field name="x_laser_ndy_fluency"/>
+
+				<field name="x_laser_ndy_phototype"/>
+
+				<field name="x_laser_ndy_lesion_type"/>
+
+				<field name="x_laser_ndy_lesion_depth"/>
+
+				<field name="x_laser_ndy_pulse_type"/>
+
+				<field name="x_laser_ndy_pulse_duration"/>
+
+				<field name="x_laser_ndy_pulse_time_between"/>
+
+				<field name="x_laser_ndy_pulse_spot"/>
+
+				<field name="x_laser_ndy_observations"/>
+
+			</group>
+		</group>
+		-->
+			
+	</page>
+</notebook>
+
+
+				
+			</field>
+		</record>
+	</data>
+</openerp>

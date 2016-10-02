@@ -19,33 +19,44 @@
 					
 					
 					<sheet>
-						<group>
-							<group string="Procedimiento">
-
+							
+							
+							<group string="">
 
 								<group>
 									<field name="name"/>
 								</group>
-								<group>
-								</group>
+
+								<group></group>
 
 
 								<group>
 									<field name="id"/>
 								</group>
-								<group>
-								</group>
+
+								<group></group>
+
+
+							</group>
+
 								
 
+							<hr></hr>
+
+
+
+							<group string="">
 								<group>
 									<!--
 									<field name="laser" on_change="get_domain_service(laser)" />
-									-->
+										
 									<field name="laser" on_change="get_domain_service_multi(laser,zone)" />
-
+									-->
+										
+									<field name="laser" on_change="get_domain_service_multi(laser,zone,pathology)" />
 								</group>
-								<group>
-								</group>
+								
+								<group></group>
 
 
 								<group>
@@ -54,22 +65,55 @@
 									<field name="zone" on_change="get_domain_service_zone(zone)" />
 									<field name="zone" on_change="get_domain_service_zone(laser)" />
 									<field name="zone" on_change="get_domain_service_zone(laser,zone)" />
-									-->
+										
 									<field name="zone" on_change="get_domain_service_multi(laser,zone)" />
+									-->
+										
+									<field name="zone" on_change="get_domain_service_multi(laser,zone,pathology)" />
 								</group>
 								<group>
 								</group>
 								
 								
+								
+								<group>
+									<!--
+									<field name="pathology"/>
 
-								<group>
-									<field name="service"/>
+									<field name="zone" on_change="get_domain_service_multi(laser,zone,pathology)" />
+									-->
+
+									<field name="pathology" on_change="get_domain_service_multi(laser,zone,pathology)" />
 								</group>
 								<group>
 								</group>
+								
+							</group>
+								
+
+								
+							<hr></hr>
+								
+
+
+							<group string="" >
+								
+								<group>
+									<field name="service"  colspan="2" />
+								</group>
+
+							</group>
 
 
 								
+								
+							<hr></hr>
+
+
+
+
+							<group string="">
+
 								<group>
 										<field name="name_short" readonly="1"/>
 								</group>
@@ -104,7 +148,10 @@
 								<group>
 								</group>
 							</group>
-						</group>
+							
+							<hr></hr>
+							
+							
 					</sheet>
 				</form>
 			</field>

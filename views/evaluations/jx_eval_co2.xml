@@ -24,8 +24,8 @@
 
 <!-- Laser Co2 -->
 <notebook position="inside">
-	<page string="Láser Co2">
-		<group string="Zona">
+	<page string="Láser">
+		<group string="Láser Co2">
 
 			<notebook>
 
@@ -45,10 +45,128 @@
 
 
 
+
+
+				<!-- All --> 
+				<page string="Focalizado">
+
+
+
+					<group>						
+						<group>
+							<field name="co2_cheekbone"  widget="radio" />							
+						</group>
+					</group>
+						
+						
+					<hr></hr>
+
+
+					<group>						
+						<group>
+							<field name="co2_hands"  widget="radio" />							
+						</group>
+					</group>
+
+
+					<hr></hr>
+
+
+					<group>						
+						<group>
+							<field name="co2_neck"  widget="radio" />							
+						</group>
+					</group>
+
+					
+					<hr></hr>
+
+
+					<group>						
+						<group>
+							<!--
+							<field name="co2_allface"  widget="radio" />							
+							-->
+							<field name="co2_vagina"  widget="radio" />							
+						</group>
+					</group>
+					
+
+					<hr></hr>
+
+
+					<group>						
+						<group>
+							<!--
+							-->
+							<field name="co2_packages"  widget="radio" />							
+						</group>
+					</group>
+
+				</page>
+				
+
+
+
+
+				<!--
+				<page string="Pómulos">
+					<group>
+						<field name="stain" 		widget="toggle_button"/>						
+						<field name="acne_sequels" 	widget="toggle_button"/>
+					</group>
+					<group></group>
+										
+				</page>
+
+
+
+				<page string="Manos">
+					<group>
+						<group>
+							<field name="stain" 				widget="toggle_button"/>
+							<field name="scar" 					widget="toggle_button"/>
+							<field name="wart" 					widget="toggle_button"/>
+							<field name="rejuvenation_hands" 	widget="toggle_button"/>							
+						</group>
+						<group>
+						</group>
+					</group>
+				</page>
+
+
+
+				<page string="Cuello">
+					<group>
+						<field name="rejuvenation_neck" widget="toggle_button"/>
+						<field name="scar" 				widget="toggle_button"/>
+						<field name="polyp" 			widget="toggle_button"/>
+						<field name="wart" 				widget="toggle_button"/>
+						<field name="ruby_point" 		widget="toggle_button"/>						
+					</group>
+					<group></group>
+				</page>
+
+
+
+				<page string="Vagina">
+					<group>
+						<group>
+							<field string="Monalisa Touch" name="orientation"/>
+						</group>
+						<group>
+						</group>
+					</group>
+				</page>
+				-->
+
+
+
 				<!-- todo rostro --> 
+								
 				<page string="Todo Rostro">
 
-
+					<!--
 					<group col='3'>
 
 						<group>
@@ -56,84 +174,66 @@
 								Rejuvenecimiento facial 
 							</h4>
 						</group>
-
-
+							
 						<group>
-							<field string="1" name="orientation"/>
-							<field string="2" name="orientation"/>
-							<field string="3" name="orientation"/>
+							<field string="1" name="rejuvenation_face_1" widget="toggle_button"/>
+							<field string="2" name="rejuvenation_face_2" widget="toggle_button"/>
+							<field string="3" name="rejuvenation_face_3" widget="toggle_button"/>
 						</group>
 
-						<group>
-						</group>
-
+						<group></group>
 					</group>
+
+
 
 					<hr></hr>
 
 					<group col='3'>
-
 						<group>
 							<h4>
 								Acné y secuelas 
 							</h4>
 						</group>
 
-						<group>
-							<field string="1" name="orientation"/>
-							<field string="2" name="orientation"/>
-							<field string="3" name="orientation"/>
+						<group>								
+							<field name="acne_sequels_1" widget="toggle_button" />
+							<field name="acne_sequels_2" widget="toggle_button"/>
+							<field name="acne_sequels_3" widget="toggle_button"/>
 						</group>
+						
+						<group></group>
+					</group>
+					-->
+
+					<!--
+					<hr></hr>
+					-->
+
+					<group col='2'>
 
 						<group>
+							<field   name="co2_allface_rejuvenation_face"  nolabel="0"  visible="1"  widget="radio"  options="{'vertical': true, 'visible': true}"  class="" />							
 						</group>
+
+						<group></group>
 					</group>
 
 
 
-				</page>
+					<hr></hr>
 
-
-
-				<!-- pomulos --> 
-				<page string="Pómulos">
-					<group>
-						<field string="Acné y secuelas" name="orientation"/>
-						<field string="Manchas" name="orientation"/>
-					</group>
-					<group></group>
-				</page>
-
-
-
-				<!-- cuello --> 
-				<page string="Cuello">
-					<group>
-						<field string="Rejuvenecimiento" name="orientation"/>
-						<field string="Cicatriz" name="orientation"/>
-						<field string="Polipo" name="orientation"/>
-						<field string="Verruga" name="orientation"/>
-						<field string="Punto Rubí" name="orientation"/>
-					</group>
-					<group></group>
-				</page>
-
-
-
-				<!-- manos --> 
-				<page string="Manos">
-					<group>
+					<!--
+					-->
+					<group col='2'>
 						<group>
-							<field string="Manchas" name="orientation"/>
-							<field string="Cicatriz" name="orientation"/>
-							<field string="Verruga" name="orientation"/>
-							<field string="Rejuvenecimiento en manos" name="orientation"/>
+							<field name="co2_allface_acnesequels"  widget="radio" />							
 						</group>
-
+						
 						<group>
 						</group>
 					</group>
 				</page>
+
 
 
 
@@ -329,20 +429,11 @@
 
 
 
-				<!-- vagina --> 
-				<page string="Vagina">
-					<group>
-						<group>
-							<field string="Monalisa Touch" name="orientation"/>
-						</group>
-						<group>
-						</group>
-					</group>
-				</page>
 
 
 
 				<!-- paquetes --> 
+				<!--
 				<page string="Paquetes">
 					<group>
 						<group>
@@ -362,7 +453,7 @@
 						</group>
 					</group>
 				</page>
-
+				-->
 
 
 			</notebook>

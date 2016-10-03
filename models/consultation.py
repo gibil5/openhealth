@@ -466,8 +466,116 @@ class Consultation(models.Model):
 
 
 
+	
+
+	# Smart - Pathology
+	
+	_rejuv_list = [
+		
+			#('nil','0'),
+			('co2_allface_rejuv_1','1'),
+			('co2_allface_rejuv_2','2'),
+			('co2_allface_rejuv_3','3'),
+			]
+			
+	co2_allface_rejuvenation_face = fields.Selection(
+			selection = _rejuv_list, 
+			string="Rejuvenecimiento facial", 
+			#string="", 
+			#default='co2_allface_rejuv_1',	
+			default='nil',	
+			)
+	
+	
+	
+	_acneseq_list = [
+		
+			#('nil','0'),			
+			('co2_allface_acneseq_1','1'),	
+			('co2_allface_acneseq_2','2'),
+			('co2_allface_acneseq_3','3'),
+			]
+			
+	co2_allface_acnesequels = fields.Selection(
+			selection = _acneseq_list, 
+			string="Acné y secuelas", 
+			default='0',	
+			)
+	
+	
+	
+	
+
+	_co2_che_list = [
+			('stain','Manchas'),	
+			('acne_sequels','Acné y secuelas'),
+			]
+
+	_co2_han_list = [
+			('stain',	'Manchas'),	
+			('scar',	'Cicatriz'),
+			('wart',	'Verruga'),
+			('rejuvenation',	'Rejuvenecimiento'),
+			]
+
+	_co2_nec_list = [
+			('rejuvenation',	'Rejuvenecimiento'),
+			('scar',			'Cicatriz'),
+			('polyp',			'Polipo'),
+			('wart',			'Verruga'),
+			('ruby_point',		'Punto Rubí'),
+			]
+			
+			
+			
+	_co2_vag_list = [
+			('monalisa',	'Monalisa Touch'),
+			]		
 
 
+	_co2_pac_list = [
+			('face_neck',		'Facial + Cuello'),
+			('face_hands',		'Facial + Manos'),
+			('face_neck_hands',	'Facial + Cuello + Manos'),
+			]
+			
+			
+			
+	co2_cheekbone = fields.Selection(
+			selection = _co2_che_list, 
+			string="Pómulos", 
+			default='nil',	
+			)
+	
+	co2_hands = fields.Selection(
+			selection = _co2_han_list, 
+			string="Manos", 
+			default='nil',	
+			)
+
+	co2_neck = fields.Selection(
+			selection = _co2_nec_list, 
+			string="Cuello", 
+			default='nil',	
+			)
+	
+	
+	co2_vagina = fields.Selection(
+			selection = _co2_vag_list, 
+			string="Vagina", 
+			default='nil',	
+			)
+			
+			
+	co2_packages = fields.Selection(
+			selection = _co2_pac_list, 
+			string="Paquetes Rejuvenecimiento", 
+			default='nil',	
+			)
+			
+	
+	
+	
 	# Pathology
 
 	acne_active = fields.Boolean(
@@ -475,20 +583,22 @@ class Consultation(models.Model):
 			)
 	
 	acne_sequels = fields.Boolean(
-			string = '',
+			string = 'Acné y secuelas',
 			)
 
 	acne_sequels_1 = fields.Boolean(
-			string = '',
+			string = '1',
 			)
 
 	acne_sequels_2 = fields.Boolean(
-			string = '',
+			string = '2',
 			)
 
 	acne_sequels_3 = fields.Boolean(
-			string = '',
+			string = '3',
 			)
+
+
 
 
 	alopecia = fields.Boolean(
@@ -546,7 +656,7 @@ class Consultation(models.Model):
 			)
 
 	polyp = fields.Boolean(
-			string = '',
+			string = 'Polipo',
 			)
 
 	psoriasis = fields.Boolean(
@@ -590,7 +700,7 @@ class Consultation(models.Model):
 			)
 
 	rejuvenation_neck = fields.Boolean(
-			string = '',
+			string = 'Rejuvenecimiento',
 			)
 
 	rosacea = fields.Boolean(
@@ -598,7 +708,7 @@ class Consultation(models.Model):
 			)
  
 	ruby_point = fields.Boolean(
-			string = '',
+			string = 'Punto Rubí',
 			)
 
 
@@ -608,7 +718,7 @@ class Consultation(models.Model):
 			)
 
 	scar = fields.Boolean(
-			string = '',
+			string = 'Cicatriz',
 			)
 
 	scar_1 = fields.Boolean(
@@ -625,9 +735,11 @@ class Consultation(models.Model):
 
 
 
+
 	stain = fields.Boolean(
-			string = '',
+			string = 'Manchas',
 			)
+
 
 	stains_1 = fields.Boolean(
 			string = '',
@@ -656,7 +768,7 @@ class Consultation(models.Model):
 			)
 
 	wart = fields.Boolean(
-			string = '',
+			string = 'Verruga',
 			)
 
 	
@@ -763,7 +875,8 @@ class Consultation(models.Model):
 				'res_id': consultation_id,
 				'target': 'current',
 				'flags': {
-						'form': {'action_buttons': True, }
+						'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						#'form': {'action_buttons': True, }
 						},
 
 				'context':   {

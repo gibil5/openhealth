@@ -165,7 +165,13 @@
 			<field name="model">openhealth.service</field>
 			<field name="arch" type="xml">
 				<tree string="Service Tree">
+					
 					<field name="name"/>
+
+					<field name="id"/>
+
+					<field name="consultation"/>
+
 					<!--
 					<field name="course_id"/>
 					<field name="taken_seats" widget="progressbar"/>

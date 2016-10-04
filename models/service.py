@@ -25,7 +25,9 @@ class Service(models.Model):
 
 
 			default='SE',
-			string='Servicio #',
+			
+			#string='Servicio #',
+			string='Procedimiento #',
 
 			compute='_compute_name', 
 			required=True, 

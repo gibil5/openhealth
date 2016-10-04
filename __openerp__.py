@@ -95,15 +95,17 @@
 
 		# jx_eval
 		'views/evaluations/jx_eval_co2.xml',
-		'views/evaluations/jx_eval_excilite.xml',
-		'views/evaluations/jx_eval_ipl.xml',
-		'views/evaluations/jx_eval_ndyag.xml',
+		#'views/evaluations/jx_eval_excilite.xml',
+		#'views/evaluations/jx_eval_ipl.xml',
+		#'views/evaluations/jx_eval_ndyag.xml',
 
 
 
 		
-        #'views/evaluations/consultation_quotation.xml',        
+        'views/evaluations/consultation_quotation.xml',        
 		'views/evaluations/quotation.xml',
+		'views/evaluations/order.xml',
+
         
 		'views/evaluations/procedure.xml',
 

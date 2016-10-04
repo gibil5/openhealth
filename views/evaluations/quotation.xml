@@ -2,14 +2,9 @@
 <openerp>
 	<data>
 
-
-		<!--
-			Quotation 	
-		-->
-			
-			
 			
 		<!-- Form view -->
+		<!--
 		<record model="ir.ui.view" id="quotation_form_view">
 			<field name="name">quotation.form</field>
 			<field name="model">openhealth.quotation</field>
@@ -18,58 +13,17 @@
 				
 				<form string="Quotation">
 
-
-					<header>						
-
-					</header>
-					
-										
 					
 					<sheet>
 
 
-						<!--
-						<group col="1">
 
-								<group>
-									<field name="laser" on_change="get_domain_service(laser)" />
-								</group>
-
-								<group>
-									<field name="service"/>
-								</group>
-
-								<group>
-									<field name="price" readonly="0"/>
-								</group>
-						</group>
-						-->		
-
-
-						<!-- Notebook --> 
 						<notebook>
+							
 							
 							<page string="Procedimientos">
 						
 						
-										<field name="service">
-
-											<tree string="">										
-												<field name="name"/>
-												<field name="laser"/>
-										
-												<field name="service"/>
-
-												<!--
-												<field name="code"/>
-												-->
-
-												<field name="name_short"/>
-
-												<field name="price"/>
-											</tree>
-
-										</field>
 							</page>
 							
 							
@@ -82,6 +36,8 @@
 
 			</field>
 		</record>
+		-->
+
 
 
 		<!-- Tree view --> 
@@ -126,6 +82,7 @@
 		</record>
 		
 		
+
 
 		<!-- Menus --> 
 		<!-- top level menu: no parent -->

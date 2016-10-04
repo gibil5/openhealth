@@ -478,7 +478,7 @@ class Consultation(models.Model):
 			('co2_allface_rejuv_3','3'),
 			]
 			
-	co2_allface_rejuvenation_face = fields.Selection(
+	co2_allface_rejuvenation = fields.Selection(
 			selection = _rejuv_list, 
 			string="Rejuvenecimiento facial", 
 			#string="", 
@@ -507,7 +507,9 @@ class Consultation(models.Model):
 	
 
 	_co2_che_list = [
-			('stain','Manchas'),	
+			#('nil',	''),	
+		
+			('stains','Manchas'),	
 			('acne_sequels','Acné y secuelas'),
 			]
 
@@ -515,11 +517,11 @@ class Consultation(models.Model):
 			('stain',	'Manchas'),	
 			('scar',	'Cicatriz'),
 			('wart',	'Verruga'),
-			('rejuvenation',	'Rejuvenecimiento'),
+			('rejuvenation_hands',	'Rejuvenecimiento'),
 			]
 
 	_co2_nec_list = [
-			('rejuvenation',	'Rejuvenecimiento'),
+			('rejuvenation_neck',	'Rejuvenecimiento'),
 			('scar',			'Cicatriz'),
 			('polyp',			'Polipo'),
 			('wart',			'Verruga'),
@@ -528,15 +530,16 @@ class Consultation(models.Model):
 			
 			
 			
+			
 	_co2_vag_list = [
-			('monalisa',	'Monalisa Touch'),
+			('monalisa_touch',	'Monalisa Touch'),
 			]		
 
 
 	_co2_pac_list = [
-			('face_neck',		'Facial + Cuello'),
-			('face_hands',		'Facial + Manos'),
-			('face_neck_hands',	'Facial + Cuello + Manos'),
+			('rejuvenation_face_neck',			'Facial + Cuello'),
+			('rejuvenation_face_hands',			'Facial + Manos'),
+			('rejuvenation_face_neck_hands',	'Facial + Cuello + Manos'),
 			]
 			
 			
@@ -806,7 +809,10 @@ class Consultation(models.Model):
 
 	# Quotation 
 	quotation = fields.One2many(
-			'openhealth.quotation', 
+			#'openhealth.quotation', 
+			#'openhealth.order',
+			'sale.order',
+			 
 			#'treatment_id', 
 			'consultation', 
 			#string="Services"
@@ -856,6 +862,156 @@ class Consultation(models.Model):
 		}
 
 
+
+
+	# Clear Vars
+	# ------------
+	@api.multi
+	def clear_vars_co2_focus(self):  
+
+		self.co2_cheekbone = False
+		self.co2_hands = False
+		self.co2_neck = False
+		self.co2_vagina = False
+		self.co2_packages = False
+		
+		return {}
+		
+	
+	@api.multi
+	def clear_vars_co2_allface(self):  
+
+		self.co2_allface_rejuvenation = False
+		self.co2_allface_acnesquels = False
+		
+		return {}
+
+
+	@api.multi
+	def clear_vars_co2_localface(self):  
+
+		self.co2_cheekbone = False
+		
+		return {}
+	
+	
+	@api.multi
+	def clear_vars_co2_localbody(self):  
+
+		self.co2_cheekbone = False
+		
+		return {}
+	
+
+
+
+
+
+	# Clear Procedures
+	# ------------------
+	
+	@api.multi
+	def clear_others(self,context=None):  
+		
+		print
+		print 'jx: Mark'
+		print
+		
+		self.co2_cheekbone = False
+		#self.co2_hands = False
+		self.co2_neck = False
+		self.co2_vagina = False
+		self.co2_packages = False
+
+		return {}
+	
+	
+	
+	# Launch Procedures
+	# ------------------
+	
+	@api.multi
+	def open_procedure(self):  
+
+		consultation_id = self.id 
+		
+		
+		
+		laser = 'laser_co2'
+		#laser = 'laser_excilite'
+		
+		
+		#zone = 'cheekbones'	
+		#pathology = 'stains'
+		zone = ''	
+		pathology = ''
+
+
+
+		if self.co2_cheekbone: 
+			zone = 'cheekbones'
+			pathology = self.co2_cheekbone
+			
+		if self.co2_hands: 
+			zone = 'hands'
+			pathology = self.co2_hands
+		
+		if self.co2_neck:
+			zone = 'neck'
+			pathology = self.co2_neck
+
+		if self.co2_vagina:
+			zone = 'vagina'
+			pathology = self.co2_vagina
+
+		if self.co2_packages:
+			#zone = 'vagina'
+			pathology = self.co2_packages
+			
+			
+		
+			#if  self.co2_cheekbone == 'stain': 
+			#	pathology = 'stains'
+			
+			#elif self.co2_cheekbone == 'acne_sequels':
+			#	pathology = 'acne_sequels'
+			
+		
+		#pathology = pathologies.get(key, '')
+		
+
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' New Procedure Current', 
+				'view_type': 'form',
+				'view_mode': 'form',
+				
+				#'res_model': self._name,
+				'res_model': 'openhealth.service',
+				
+				#'res_id': consultation_id,
+
+				'target': 'current',
+				#'target': 'new',
+
+				'flags': 	{
+							'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+							#'form': {'action_buttons': True, }
+							},
+
+				'context': {
+							'default_consultation': consultation_id,
+					
+							#'default_laser': laser_id,
+							'default_laser': laser,
+							'default_zone': zone,
+							'default_pathology': pathology,
+							
+							}
+				}
+	
+	
+	
 
 
 	# Consultation - Quick Self Button  

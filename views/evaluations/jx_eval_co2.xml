@@ -41,11 +41,13 @@
 
 					</button>
 
+
+
 				</div>
 
 
 
-
+				
 
 				<!-- All --> 
 				<page string="Focalizado">
@@ -54,18 +56,51 @@
 
 					<group>						
 						<group>
-							<field name="co2_cheekbone"  widget="radio" />							
+							<field name="co2_cheekbone"  widget="radio"  class=""/>							
 						</group>
-					</group>
 						
+
+						<button 
+							type="object" 
+							class="oe_highlight oe_right"	
+							string="Crear Procedimiento"
+				
+							name="open_procedure" 	
+						/>
+
+					</group>
+					
+					
+						
+					<group>						
+					
+					
+
+						<button 
+							type="object" 
+							class="oe_highlight oe_right"	
+							string="Limpiar"
+						
+							name="clear_vars_co2_focus" 	
+						/>
+
+					</group>
+					
+					
 						
 					<hr></hr>
 
 
 					<group>						
 						<group>
-							<field name="co2_hands"  widget="radio" />							
+							<!--
+							<field name="co2_hands"  widget="radio" />	
+							-->					
+							<field name="co2_hands"  widget="radio"   on_change="clear_others(co2_hands)" />	
 						</group>
+
+
+
 					</group>
 
 
@@ -101,6 +136,8 @@
 							-->
 							<field name="co2_packages"  widget="radio" />							
 						</group>
+						
+						
 					</group>
 
 				</page>
@@ -212,10 +249,18 @@
 					<group col='2'>
 
 						<group>
-							<field   name="co2_allface_rejuvenation_face"  nolabel="0"  visible="1"  widget="radio"  options="{'vertical': true, 'visible': true}"  class="" />							
+							<field   name="co2_allface_rejuvenation"  nolabel="0"  visible="1"  widget="radio"  options="{'vertical': true, 'visible': true}"  class="" />							
 						</group>
 
-						<group></group>
+
+						<button 
+							type="object" 
+							class="oe_highlight oe_right"	
+							string="Clear"
+						
+							name="clear_vars_co2_allface" 	
+						/>
+						
 					</group>
 
 

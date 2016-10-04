@@ -23,15 +23,24 @@
 					<!-- Header --> 
 					<header>
 						
-						<!--
-						-->
+						<button 
+							type="object" 
+							class="oe_highlight"	
+							string="Crear Procedimiento"
+				
+							name="open_procedure" 	
+						/>
+
+
 						<button 
 							type="object" 
 							class="oe_highlight"
-							string="Crear Presupuesto" 
+							string="Presupuesto" 
 
 							name="create_quotation_current" 
 						/>
+						
+						
 					</header>
 					
 					
@@ -128,6 +137,8 @@
 
 								<field name="doctor" options="{'no_create': True}"/>
 								<field name="evaluation_start_date"/>
+								
+								<field string="Próxima cita" name="appointment" domain="[('patient', '=', patient)]" options="{'no_create': True}"/>
 
 							</group>
 							<group>
@@ -136,10 +147,15 @@
 								<field string="Evaluation end date"  name="evaluation_end_date"/>
 								<field string="Chief complaint"  name="chief_complaint"/>
 								-->
-								<field name="evaluation_type"/>
+								<field name="evaluation_type"  invisible="1"/>
+								
 								<field name="chief_complaint"/>
-								<field string="Próxima cita" name="appointment" domain="[('patient', '=', patient)]" options="{'no_create': True}"/>
 
+								<!--
+								<field name="x_observation"  style="height:50%"/>
+								-->
+								<field name="x_observation"  />
+								
 							</group>
 						</group>
 

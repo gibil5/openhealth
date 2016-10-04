@@ -73,7 +73,7 @@
 						<group>
 
 
-							<field string="Fecha de consentimiento informado" name="a_date_created"/>
+							<field string="Fecha de consentimiento informado" name="a_date_consent"/>
 
 						</group>
 

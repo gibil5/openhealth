@@ -20,6 +20,53 @@ class Patient(models.Model):
 
 
 
+	# Names 
+	#name = fields.Char(
+	#	string = "Nombre completo", 	
+	#	required=False, 
+		#compute='_compute_name',
+		#readonly=True, 
+		#default='x',
+	#)
+	
+	
+	# Names
+	a_full_name = fields.Char(
+		string = "Nombre completo", 	
+		#required=False, 
+		compute='_compute_full_name',
+		#readonly=True, 
+		default='a',
+	)
+	
+	@api.depends('a_first_name')
+	#@api.multi
+
+	def _compute_full_name(self):
+		for record in self:
+			#record.name = record.first_name.upper() + ' ' + record.last_name.upper()
+			record.a_full_name = record.a_first_name.upper() + '  ' + record.a_last_name.upper()
+			#record.name = record.name
+	#		print 'jx'
+
+
+	a_first_name = fields.Char(
+		string = "Nombre", 	
+		#quired=False, 
+		#required=True, 
+		default='b',		
+	)
+
+
+	a_last_name = fields.Char(
+		string = "Apellido", 	
+		#required=True, 
+		#required=False, 
+		default='c',	
+	)
+
+
+
 	# NEW 
 
 	# Date created 
@@ -28,7 +75,20 @@ class Patient(models.Model):
 			#default = fields.Date.today, 
 			#readonly = True, 
 			required=True, 
+			#default='z',
+			
 			)
+
+
+	a_date_consent = fields.Date(
+			string = "Fecha de consentimiento informado", 	
+			default = fields.Date.today, 
+			#readonly = True, 
+			#required=True, 
+			#default='z',			
+			)
+
+
 
 
 	# Active 
@@ -161,7 +221,7 @@ class Patient(models.Model):
 			selection = _education_level_type,
 			string = 'Grado de instrucción',
 			#default = 'university', 
-			required=True, 
+			#required=True, 
 			)
 
 
@@ -269,7 +329,7 @@ class Patient(models.Model):
 		)
 
 	street2 = fields.Char(
-			string = "", 	
+			string = "Distrito", 	
 			#required=True, 
 		)
 
@@ -307,7 +367,7 @@ class Patient(models.Model):
 
 	city = fields.Selection(
 			selection = _city_list, 
-			string = '',  
+			string = 'Departamento',  
 			#default = ('lima','Lima'), 
 			default = 'lima', 
 			required=True, 

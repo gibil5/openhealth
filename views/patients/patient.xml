@@ -21,7 +21,13 @@
 			<field name="arch" type="xml">
 				<form string="Patient">
 
+					<!--
 					<field name="name" />
+						
+					<field name="name" readonly="0"/>
+						<field name="a_full_name" />
+					-->
+					
 
 
 					<!-- Header --> 
@@ -89,7 +95,15 @@ Sheet
 							<div class="oe_title">
 								<label string="Nombre completo" class="oe_edit_only"/>
 								<h1>
+									
+									<!--
 									<field name="name" required="1"/>
+									-->
+									<field name="name" class="oe_edit_only"/>
+
+									<field name="a_full_name"  class="oe_read_only" />
+									
+
 								</h1>
 								<field name="age"/>
 							</div>
@@ -146,6 +160,32 @@ Sheet
 
 
 						<!-- Fields -->
+						<!--
+						-->
+						<group>
+
+							<group>						
+								<field name="a_first_name" />
+							</group>
+							<group>
+								<field name="a_last_name" />
+							</group>
+
+
+							<group>
+								<!--
+								<field name="a_full_name" />
+								-->
+							</group>
+							<group>
+							</group>
+												
+						</group>
+						
+						<group>
+						</group>
+						
+						
 						<group>
 							<group>
 								<field name="a_date_created"  />

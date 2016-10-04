@@ -6,7 +6,7 @@
 from openerp import models, fields, api
 from datetime import datetime
 
-
+import jxvars
 
 
 
@@ -176,12 +176,26 @@ class Consultation(models.Model):
 			)
 
 
-	chief_complaint = fields.Char(
+
+	_chief_complaint_list = [
+			#('Pre-arraganged Appointment', 'Primera consulta'),
+			('one', '1'),
+			('two', '2'),
+			('three', '3'),
+			
+			
+			]
+			
+	#chief_complaint = fields.Char(
+	chief_complaint = fields.Selection(
 			string = 'Motivo de consulta', 
-			default = '', 
+			#default = '', 
+			
+			#selection = _chief_complaint_list, 
+			selection = jxvars._pathology_list, 
+
 			required=True, 
 			)
-
 
 
 
@@ -189,6 +203,13 @@ class Consultation(models.Model):
 	#-----------------------------------------------------------------------------
 	# Aggregated 
 
+
+	#x_observation = fields.Char(
+	x_observation = fields.Text(
+			string="Observación",
+			#size=200,
+			size=200,
+			)
 
 
 	# Intro
@@ -514,7 +535,7 @@ class Consultation(models.Model):
 			]
 
 	_co2_han_list = [
-			('stain',	'Manchas'),	
+			('stains',	'Manchas'),	
 			('scar',	'Cicatriz'),
 			('wart',	'Verruga'),
 			('rejuvenation_hands',	'Rejuvenecimiento'),
@@ -1065,8 +1086,8 @@ class Consultation(models.Model):
 				'res_id': consultation_id,
 				'target': 'current',
 				'flags': {
-						'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-						#'form': {'action_buttons': True, }
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						'form': {'action_buttons': True, }
 						},
 
 				'context':   {

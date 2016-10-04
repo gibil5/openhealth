@@ -24,7 +24,8 @@
 
 <!-- Laser Co2 -->
 <notebook position="inside">
-	<page string="Láser">
+	<page string="Crear Procedimientos">
+		
 		<group string="Láser Co2">
 
 			<notebook>
@@ -50,7 +51,7 @@
 				
 
 				<!-- All --> 
-				<page string="Focalizado">
+				<page string="Zona">
 
 
 
@@ -59,7 +60,7 @@
 							<field name="co2_cheekbone"  widget="radio"  class=""/>							
 						</group>
 						
-
+						<!--
 						<button 
 							type="object" 
 							class="oe_highlight oe_right"	
@@ -67,23 +68,22 @@
 				
 							name="open_procedure" 	
 						/>
-
-					</group>
-					
-					
+						-->
 						
-					<group>						
-					
-					
-
+						
 						<button 
 							type="object" 
 							class="oe_highlight oe_right"	
 							string="Limpiar"
 						
 							name="clear_vars_co2_focus" 	
-						/>
-
+						/>	
+							
+					</group>
+					
+					
+						
+					<group>						
 					</group>
 					
 					

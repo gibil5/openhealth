@@ -15,7 +15,7 @@
 			<field name="arch" type="xml">
 				<notebook position="inside">
 					
-					<page string="Procedimientos">
+					<page string="Lista de Procedimientos">
 						
 						
 								<field name="service_ids">
@@ -33,9 +33,9 @@
 										<field name="name_short"/>
 
 										<field name="price"/>
-										
+										<!--
 										<field name="consultation"/>
-										
+										-->
 										
 										<!--
 											Button

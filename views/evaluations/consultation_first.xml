@@ -8,7 +8,7 @@
 			<field name="name">consultation.first.form</field>
 			<field name="model">openhealth.consultation</field>
 			
-			<field name="priority" eval="12"/>
+			<field name="priority" eval="0"/>
 			
 			<field name="inherit_id" ref="consultation_form_view"/>
 			<field name="arch" type="xml">
@@ -33,12 +33,17 @@
 								
 								<group string="">
 
+									<!--
 									<group string="Motivo de consulta">
 										<field name="x_reason_consultation" nolabel="1"/>
 									</group>
-						
+									-->
 									<group string="Diagnóstico">
 										<field name="x_diagnosis" nolabel="1"/>
+									</group>
+
+									<group string="Antecedentes médicos">
+										<field name="x_antecedents" nolabel="1"/>
 									</group>
 								</group>
 										
@@ -50,12 +55,16 @@
 										
 								<group string="">
 										
-									<group string="Antecedentes médicos">
-										<field name="x_antecedents" nolabel="1"/>
-									</group>
 
 									<group string="Alergias a medicamentos">
 										<field name="x_allergies_medication" nolabel="1"/>
+									</group>
+
+
+									<group string="Evaluación">
+										<field name="x_fitzpatrick" nolabel="0"/>
+										<field name="x_photo_aging" nolabel="0"/>
+										<field name="x_analysis_lab" nolabel="0"/>
 									</group>
 
 								</group>
@@ -67,18 +76,15 @@
 
 
 								<!-- Evaluation -->
+								<!--
 								<group string="Evaluación">
-									<group string="">
-										<field name="x_fitzpatrick" nolabel="0"/>
-										<field name="x_photo_aging" nolabel="0"/>
-										<field name="x_analysis_lab" nolabel="0"/>
+									<group>
 									</group>
 									<group>
 									</group>
 								</group>
-
 								<hr></hr>
-							
+								-->
 								
 								
 								

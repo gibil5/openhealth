@@ -18,12 +18,17 @@
 					<page string="Presupuestos">
 							
 						<!--
-						-->
 								<field name="quotation">
+							
+										<field name="order_line"/>
+						-->
+								<field name="order">
 
 									<tree string="Presupuestos">										
 										
 										<field name="name"/>
+										
+										
 									</tree>
 
 								</field>

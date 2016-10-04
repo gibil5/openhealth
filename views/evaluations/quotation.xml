@@ -4,13 +4,35 @@
 
 			
 		<!-- Form view -->
-		<!--
 		<record model="ir.ui.view" id="quotation_form_view">
 			<field name="name">quotation.form</field>
-			<field name="model">openhealth.quotation</field>
+			<field name="model">sale.order</field>
+
 			<field name="priority" eval="1"/>
+			
+			<field name="inherit_id" ref="sale.view_order_form"/>
 			<field name="arch" type="xml">
 				
+				
+				<!--
+				<field name="partner_id" position="after">
+					<field name="patient"/>
+					<field name="patient"  on_change="get_domain_servicebase(patient)"/>
+					<field name="patient"  on_change="get_domain_order_line(patient)"/>
+					
+				</field>
+
+				<field name="patient" position="after">
+					<field name="consultation"/>
+				</field>
+					-->
+				
+				
+				
+				<notebook position="inside">
+					<page string="Open Health">
+				
+				<!--
 				<form string="Quotation">
 
 					
@@ -33,10 +55,13 @@
 					</sheet>
 
 				</form>
+				-->
+
+					</page>
+				</notebook>
 
 			</field>
 		</record>
-		-->
 
 
 

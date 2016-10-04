@@ -18,6 +18,8 @@
 				<tree string="Order Tree">
 					
 					<field name="name"/>
+					
+					<field name="order_line"/>
 
 				</tree>
 			</field>

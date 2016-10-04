@@ -808,7 +808,8 @@ class Consultation(models.Model):
 	# -----------------------------------------------------------------------------------------------------------------
 
 	# Quotation 
-	quotation = fields.One2many(
+	#quotation = fields.One2many(
+	order = fields.One2many(
 			#'openhealth.quotation', 
 			#'openhealth.order',
 			'sale.order',
@@ -819,7 +820,10 @@ class Consultation(models.Model):
 			string="Presupuestos"
 			)
 
-
+	order_line  = fields.One2many(
+			'sale.order.line',
+			'order_id',
+	)
 
 
 	#------------------------------------ Buttons -----------------------------------------
@@ -831,33 +835,63 @@ class Consultation(models.Model):
 	def create_quotation_current(self):  
 
 		patient_id = self.patient.id
-		doctor_id = self.doctor.id
+		#doctor_id = self.doctor.id
 
+
+		#partner_id = lambda self: self.env['res.partner'].search([('name','=','Javier Revilla')])
+		#partner_id = lambda self: self.env['res.partner'].search([('name','=','Javier Revilla')])
+		partner_id = self.env['res.partner'].search([('name','=','Javier Revilla')]).id
+		print
+		print partner_id
+		#print partner_id.name
+		print
+		
 		consultation_id = self.id 
 
+		
+		#order_line_id = self.env['sale.order.line'].new().id
+		
+		
 		return {
 
 			# Mandatory 
+			#'type': 'ir.actions.act_window',
+			#'name': 'Create Quotation Current',
+			#'res_model': 'sale.order',
+			#"views": [[False, "form"]],
+			#'view_mode': 'form',
+			#'target': 'current',
+			
+			
 			'type': 'ir.actions.act_window',
-			'name': 'Create Quotation Current',
-
-			# Window action 
-			'res_model': 'openhealth.quotation',
-
-			# Views 
-			"views": [[False, "form"]],
-
+			'name': ' Create Quotation Current', 
+			'view_type': 'form',
 			'view_mode': 'form',
-
+			#'res_model': self._name,
+			'res_model': 'sale.order',
+			#'res_id': consultation_id,
+			
+			'flags': {
+					'form': {'action_buttons': True, }
+					},
+			
+			
 			'target': 'current',
+			#'target': 'new',
+			
 
 			'context':   {
-				'search_default_patient': patient_id,
 
-				'default_patient': patient_id,
-				'default_doctor': doctor_id,
+				#'search_default_partner_id': patient_id,
+				#'search_default_patient': patient_id,
 
+				'default_partner_id': partner_id,
+				#'default_patient': patient_id,
+				
 				'default_consultation': consultation_id,
+				
+				#'default_order_line': order_line_id,
+				
 			}
 		}
 

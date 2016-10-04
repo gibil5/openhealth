@@ -3,10 +3,6 @@
 	<data>
 
 
-		<!--
-		First consultation 
-		-->
-			
 		<!-- Form view -->
 		<record model="ir.ui.view" id="consultation_first_form_view">
 			<field name="name">consultation.first.form</field>

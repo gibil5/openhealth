@@ -130,3 +130,16 @@ self.env.ref('openextension.treatment')
 
 
 'default_patient': context.get('patient_id', False),
+
+
+
+
+
+
+
+
+
+self.env['sale.order'].search_count([('name', 'like', '1')])
+
+self.env['sale.order'].search([('name', 'like', '11')]).order_line.search([('name', 'like', 'CO')])
+self.env['sale.order'].search([('name', 'like', '11')]).order_line.search([('id', '=', '3201')])

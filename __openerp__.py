@@ -65,7 +65,9 @@
 
         # Treatments 
 		'views/treatments/treatment.xml',
-		'views/treatments/service.xml',
+		
+		# Services
+		'views/service/service.xml',
 		#'views/treatments/invoice.xml',
 
 		

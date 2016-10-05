@@ -144,7 +144,8 @@ class Patient(models.Model):
 
 	a_first_contact = fields.Selection(
 			selection = _first_contact_list, 
-			string = '¿ Primer contacto con la clínica ?',
+			#string = '¿ Primer contacto con la clínica ?',
+			string = '¿ Cómo se enteró ?',
 			#default = 'none', 
 			required=True, 
 			)

@@ -65,6 +65,7 @@ _co2_lfqueratosis_list = [
 		('queratosis_3','Grado 3'),	
 		]
 
+
 _co2_lfmole_list = [
 		('mole_1','Grado 1'),	
 		('mole_2','Grado 2'),	

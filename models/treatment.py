@@ -8,6 +8,8 @@
 from openerp import models, fields, api
 from datetime import datetime
 
+import jxvars
+
 
 
 
@@ -49,9 +51,13 @@ class Treatment(models.Model):
 	#		)
 
 
+
 	# Motivo  
-	chief_complaint = fields.Char(
+	#chief_complaint = fields.Char(
+	chief_complaint = fields.Selection(
 			string = 'Motivo de consulta', 
+			selection = jxvars._pathology_list, 
+			
 			#default = '', 
 			required=True, 
 			)
@@ -358,6 +364,8 @@ class Treatment(models.Model):
 		doctor_id = self.physician.id
 		treatment_id = self.id 
 
+		chief_complaint = self.chief_complaint
+
 		return {
 
 			# Mandatory 
@@ -389,6 +397,8 @@ class Treatment(models.Model):
 				'default_doctor': doctor_id,
 				#'default_treatment_id': treatment_id,
 				'default_treatment': treatment_id,
+				
+				'default_chief_complaint': chief_complaint,
 			}
 		}
 
@@ -404,6 +414,9 @@ class Treatment(models.Model):
 
 		patient_id = self.patient.id
 		doctor_id = self.physician.id
+
+		#chief_complaint = self.chief_complaint
+		
 		treatment_id = self.id 
 
 		return {
@@ -428,6 +441,9 @@ class Treatment(models.Model):
 				'default_patient': patient_id,
 				'default_doctor': doctor_id,
 				'default_treatment': treatment_id,
+				
+				#'default_chief_complaint': chief_complaint,
+				
 			}
 		}
 

@@ -1080,9 +1080,10 @@ class Consultation(models.Model):
 	def open_procedure_excilite(self):  
 
 		consultation_id = self.id 
+		
 		laser = 'laser_co2'
-		zone = ''	
-		pathology = ''
+		zone = 'cheekbones'	
+		pathology = 'stains'
 		
 		
 		return {
@@ -1093,6 +1094,7 @@ class Consultation(models.Model):
 				
 				'res_model': 'openhealth.service',				
 				#'res_model': 'openhealth.service_excilite',				
+				#'res_model': 'openhealth.service_co2',				
 				
 				#'res_id': consultation_id,
 				'target': 'current',

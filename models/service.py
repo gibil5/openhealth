@@ -399,6 +399,20 @@ class Service(models.Model):
 
 
 
+#------------------------------------ Classes -----------------------------------------
+
+class ServiceCo2(models.Model):
+	_name = 'openhealth.service_co2'
+	_inherit = 'openhealth.service'
+	
+	
+	# Smart vars
+	# ----------
+	
+
+
+
+
 
 class ServiceExcilite(models.Model):
 	_name = 'openhealth.service_excilite'

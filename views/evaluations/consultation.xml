@@ -169,8 +169,9 @@
 								
 								<!--
 								<field string="Próxima cita" name="appointment" domain="[('patient', '=', patient)]" options="{'no_create': True}"/>
-								-->
+
 								<field name="x_next_evaluation_date" />
+								-->
 
 
 							</group>

@@ -211,6 +211,13 @@ class Consultation(models.Model):
 			size=200,
 			)
 
+	x_next_evaluation_date = fields.Date(
+			string = "Próxima cita", 	
+			#default = fields.Date.today, 
+			#required=True, 
+			)
+
+	
 
 	# Intro
 
@@ -491,111 +498,21 @@ class Consultation(models.Model):
 
 	# Smart - Pathology
 	
-	_rejuv_list = [
-		
-			#('nil','0'),
-			('co2_allface_rejuv_1','1'),
-			('co2_allface_rejuv_2','2'),
-			('co2_allface_rejuv_3','3'),
-			]
+
 			
-	co2_allface_rejuvenation = fields.Selection(
-			selection = _rejuv_list, 
-			string="Rejuvenecimiento facial", 
-			#string="", 
-			#default='co2_allface_rejuv_1',	
-			default='nil',	
-			)
 	
 	
 	
-	_acneseq_list = [
-		
-			#('nil','0'),			
-			('co2_allface_acneseq_1','1'),	
-			('co2_allface_acneseq_2','2'),
-			('co2_allface_acneseq_3','3'),
-			]
+
 			
-	co2_allface_acnesequels = fields.Selection(
-			selection = _acneseq_list, 
-			string="Acné y secuelas", 
-			default='0',	
-			)
+
 	
 	
 	
 	
 
-	_co2_che_list = [
-			#('nil',	''),	
-		
-			('stains','Manchas'),	
-			('acne_sequels','Acné y secuelas'),
-			]
 
-	_co2_han_list = [
-			('stains',	'Manchas'),	
-			('scar',	'Cicatriz'),
-			('wart',	'Verruga'),
-			('rejuvenation_hands',	'Rejuvenecimiento'),
-			]
-
-	_co2_nec_list = [
-			('rejuvenation_neck',	'Rejuvenecimiento'),
-			('scar',			'Cicatriz'),
-			('polyp',			'Polipo'),
-			('wart',			'Verruga'),
-			('ruby_point',		'Punto Rubí'),
-			]
 			
-			
-			
-			
-	_co2_vag_list = [
-			('monalisa_touch',	'Monalisa Touch'),
-			]		
-
-
-	_co2_pac_list = [
-			('rejuvenation_face_neck',			'Facial + Cuello'),
-			('rejuvenation_face_hands',			'Facial + Manos'),
-			('rejuvenation_face_neck_hands',	'Facial + Cuello + Manos'),
-			]
-			
-			
-			
-	co2_cheekbone = fields.Selection(
-			selection = _co2_che_list, 
-			string="Pómulos", 
-			default='nil',	
-			)
-	
-	co2_hands = fields.Selection(
-			selection = _co2_han_list, 
-			string="Manos", 
-			default='nil',	
-			)
-
-	co2_neck = fields.Selection(
-			selection = _co2_nec_list, 
-			string="Cuello", 
-			default='nil',	
-			)
-	
-	
-	co2_vagina = fields.Selection(
-			selection = _co2_vag_list, 
-			string="Vagina", 
-			default='nil',	
-			)
-			
-			
-	co2_packages = fields.Selection(
-			selection = _co2_pac_list, 
-			string="Paquetes Rejuvenecimiento", 
-			default='nil',	
-			)
 			
 	
 	
@@ -861,7 +778,11 @@ class Consultation(models.Model):
 
 		#partner_id = lambda self: self.env['res.partner'].search([('name','=','Javier Revilla')])
 		#partner_id = lambda self: self.env['res.partner'].search([('name','=','Javier Revilla')])
-		partner_id = self.env['res.partner'].search([('name','=','Javier Revilla')]).id
+
+		#partner_id = self.env['res.partner'].search([('name','=','Javier Revilla')]).id
+		partner_id = self.env['res.partner'].search([('name','=',self.patient.name)]).id
+		
+		
 		print
 		print partner_id
 		#print partner_id.name
@@ -921,41 +842,28 @@ class Consultation(models.Model):
 
 	# Clear Vars
 	# ------------
-	@api.multi
-	def clear_vars_co2_focus(self):  
 
-		self.co2_cheekbone = False
-		self.co2_hands = False
-		self.co2_neck = False
-		self.co2_vagina = False
-		self.co2_packages = False
-		
-		return {}
-		
-	
-	@api.multi
-	def clear_vars_co2_allface(self):  
-
-		self.co2_allface_rejuvenation = False
-		self.co2_allface_acnesquels = False
-		
-		return {}
-
-
-	@api.multi
-	def clear_vars_co2_localface(self):  
-
-		self.co2_cheekbone = False
-		
-		return {}
 	
 	
-	@api.multi
-	def clear_vars_co2_localbody(self):  
+	
+	
+	#@api.multi
+	#def clear_vars_co2_allface(self):  
+	#	self.co2_allface_rejuvenation = False
+	#	self.co2_allface_acnesquels = False
+	#	return {}
 
-		self.co2_cheekbone = False
-		
-		return {}
+
+	#@api.multi
+	#def clear_vars_co2_localface(self):  
+	#	self.co2_cheekbone = False
+	#	return {}
+	
+	
+	#@api.multi
+	#def clear_vars_co2_localbody(self):  
+	#	self.co2_cheekbone = False
+	#	return {}
 	
 
 
@@ -982,25 +890,116 @@ class Consultation(models.Model):
 	
 	
 	
-	# Launch Procedures
+	
+	# Smart vars
+	# ----------
+	
+	co2_cheekbone = fields.Selection(
+			selection = jxvars._co2_che_list, 
+			string="Pómulos", 
+			#default='nil',	
+			)
+	
+	co2_hands = fields.Selection(
+			selection = jxvars._co2_han_list, 
+			string="Manos", 
+			#default='nil',	
+			)
+
+	co2_neck = fields.Selection(
+			selection = jxvars._co2_nec_list, 
+			string="Cuello", 
+			#default='nil',	
+			)
+	
+	co2_vagina = fields.Selection(
+			selection = jxvars._co2_vag_list, 
+			string="Vagina", 
+			#default='nil',	
+			)
+			
+	co2_packages = fields.Selection(
+			selection = jxvars._co2_pac_list, 
+			string="Paquetes Rejuvenecimiento", 
+			#default='nil',	
+			)
+
+	co2_allface_rejuvenation = fields.Selection(
+			selection = jxvars._co2_rejuv_list, 
+			string="Rejuvenecimiento facial", 
+			#default='nil',	
+			)
+
+	co2_allface_acnesequels = fields.Selection(
+			selection = jxvars._co2_acneseq_list, 
+			string="Acné y secuelas", 
+			#default='nil',	
+			)
+
+	co2_localface_stains = fields.Selection(
+			selection = jxvars._co2_lfstains_list, 
+			string="Manchas", 
+			#default='nil',	
+			)
+	
+	
+	
+	# Clear All vars
+	@api.multi
+	def clear_vars_co2_focus(self):  
+
+		self.co2_cheekbone = False
+		self.co2_hands = False
+		self.co2_neck = False
+		self.co2_vagina = False
+		self.co2_packages = False
+		
+		
+		self.co2_allface_rejuvenation = False
+		self.co2_allface_acnesequels = False
+		
+		self.co2_localface_stains = False
+
+		return {}
+	
+	
+	
+	
+	# smart Procedures
 	# ------------------
+	
+	
+	zone_glo = fields.Char(
+		string='zone_glo',
+		default='x',
+		)
+	
+	
+	@api.multi
+	#def set_zone(self,cr,uid,ids,context=None):
+	def set_zone(self,context=None):
+
+		#print context
+		print 'jx'
+		print context
+
+		print self.zone_glo
+		zone_glo=context
+		self.zone_glo=context
+		print self.zone_glo
+		print 'jx'
+		
+		return {self.zone_glo}
+
 	
 	@api.multi
 	def open_procedure(self):  
 
 		consultation_id = self.id 
-		
-		
-		
+				
 		laser = 'laser_co2'
-		#laser = 'laser_excilite'
-		
-		
-		#zone = 'cheekbones'	
-		#pathology = 'stains'
 		zone = ''	
 		pathology = ''
-
 
 
 		if self.co2_cheekbone: 
@@ -1024,7 +1023,22 @@ class Consultation(models.Model):
 			pathology = self.co2_packages
 			
 			
-		
+		if self.co2_allface_rejuvenation:
+			zone = 'face_all'
+			pathology = self.co2_allface_rejuvenation
+
+		if self.co2_allface_acnesequels:
+			zone = 'face_all'
+			pathology = self.co2_allface_acnesequels
+			
+
+		if self.co2_localface_stains:
+			zone = 'face_localized'
+			#zone =self.zone_glo
+			pathology = self.co2_localface_stains
+			
+			
+
 			#if  self.co2_cheekbone == 'stain': 
 			#	pathology = 'stains'
 			
@@ -1039,29 +1053,20 @@ class Consultation(models.Model):
 				'type': 'ir.actions.act_window',
 				'name': ' New Procedure Current', 
 				'view_type': 'form',
-				'view_mode': 'form',
-				
-				#'res_model': self._name,
-				'res_model': 'openhealth.service',
-				
+				'view_mode': 'form',				
+				'res_model': 'openhealth.service',				
 				#'res_id': consultation_id,
-
 				'target': 'current',
-				#'target': 'new',
-
 				'flags': 	{
 							'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 							#'form': {'action_buttons': True, }
 							},
 
 				'context': {
-							'default_consultation': consultation_id,
-					
-							#'default_laser': laser_id,
+							'default_consultation': consultation_id,					
 							'default_laser': laser,
 							'default_zone': zone,
 							'default_pathology': pathology,
-							
 							}
 				}
 	

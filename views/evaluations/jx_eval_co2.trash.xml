@@ -1,0 +1,166 @@
+<!--
+<page string="Pómulos">
+	<group>
+		<field name="stain" 		widget="toggle_button"/>						
+		<field name="acne_sequels" 	widget="toggle_button"/>
+	</group>
+	<group></group>
+						
+</page>
+
+
+
+<page string="Manos">
+	<group>
+		<group>
+			<field name="stain" 				widget="toggle_button"/>
+			<field name="scar" 					widget="toggle_button"/>
+			<field name="wart" 					widget="toggle_button"/>
+			<field name="rejuvenation_hands" 	widget="toggle_button"/>							
+		</group>
+		<group>
+		</group>
+	</group>
+</page>
+
+
+
+<page string="Cuello">
+	<group>
+		<field name="rejuvenation_neck" widget="toggle_button"/>
+		<field name="scar" 				widget="toggle_button"/>
+		<field name="polyp" 			widget="toggle_button"/>
+		<field name="wart" 				widget="toggle_button"/>
+		<field name="ruby_point" 		widget="toggle_button"/>						
+	</group>
+	<group></group>
+</page>
+
+
+
+<page string="Vagina">
+	<group>
+		<group>
+			<field string="Monalisa Touch" name="orientation"/>
+		</group>
+		<group>
+		</group>
+	</group>
+</page>
+-->
+
+
+
+
+
+
+<!--
+<group col='3'>
+
+	<group>
+		<h4>
+			Rejuvenecimiento facial 
+		</h4>
+	</group>
+		
+	<group>
+		<field string="1" name="rejuvenation_face_1" widget="toggle_button"/>
+		<field string="2" name="rejuvenation_face_2" widget="toggle_button"/>
+		<field string="3" name="rejuvenation_face_3" widget="toggle_button"/>
+	</group>
+
+	<group></group>
+</group>
+
+
+
+<hr></hr>
+
+<group col='3'>
+	<group>
+		<h4>
+			Acné y secuelas 
+		</h4>
+	</group>
+
+	<group>								
+		<field name="acne_sequels_1" widget="toggle_button" />
+		<field name="acne_sequels_2" widget="toggle_button"/>
+		<field name="acne_sequels_3" widget="toggle_button"/>
+	</group>
+	
+	<group></group>
+</group>
+-->
+
+<!--
+<hr></hr>
+-->
+
+
+
+<!--
+<group>
+	<h4>
+		Manchas
+	</h4>
+</group>
+<group>
+	<field string="Grado 1" name="orientation"/>
+	<field string="Grado 2" name="orientation"/>
+	<field string="Grado 3" name="orientation"/>
+</group>
+<group>
+</group>
+	
+<field name="co2_localface_stains"  widget="radio" />							
+-->
+
+
+
+
+
+<!-- paquetes --> 
+<!--
+<page string="Paquetes">
+	<group>
+		<group>
+			<field string="Rejuvenecimiento Facial + Rejuvenecimiento en Cuello" name="orientation"/>
+		</group>
+		<group>
+		</group>
+		<group>
+			<field string="Rejuvenecimiento Facial + Rejuvenecimiento en Manos" name="orientation"/>
+		</group>
+		<group>
+		</group>
+		<group>
+			<field string="Rejuvenecimiento Facial + Rejuvenecimiento en Cuello + Rejuvenecimiento en Manos" name="orientation"/>
+		</group>
+		<group>
+		</group>
+	</group>
+</page>
+-->
+
+
+
+
+
+
+
+<!-- Config -->
+<!--
+<group string="Valores empleados - Láser Co2">
+	<group>
+
+		<field name="x_laser_co2_power"/>
+		<field name="x_laser_co2_frequency"/>
+		<field name="x_laser_co2_energy"/>
+		<field name="x_laser_co2_mode_emission"/>
+		<field name="x_laser_co2_mode_exposure"/>
+		<field name="x_laser_co2_observations"/>
+	</group>
+</group>
+-->
+

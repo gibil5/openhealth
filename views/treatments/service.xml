@@ -22,24 +22,154 @@
 							
 							
 							<group string="">
-
 								<group>
 									<field name="name"/>
 								</group>
-
 								<group></group>
-
-
 								<group>
-									<field name="id"/>
+									<field name="id"  invisible="1"/>
 								</group>
-
 								<group></group>
-
-
 							</group>
 
 								
+								
+								
+							<!--
+								Here
+							-->
+							<hr></hr>
+
+							<h1>Laser Co2</h1>
+							<group></group>
+							<group></group>
+
+							<notebook>
+								<page string="Zona del cuerpo">
+								
+									<group>						
+										<group>
+											<field name="co2_cheekbone"  widget="radio"  class=""/>							
+										</group>																
+									</group>
+									
+
+									<hr></hr>
+
+
+									<group>						
+										<group>
+											<field name="co2_hands"  widget="radio" />	
+										</group>
+									</group>
+
+
+									<hr></hr>
+
+
+									<group>						
+										<group>
+											<field name="co2_neck"  widget="radio" />							
+										</group>
+									</group>
+
+					
+									<hr></hr>
+
+
+									<group>						
+										<group>
+											<field name="co2_vagina"  widget="radio" />							
+										</group>
+									</group>
+					
+
+									<hr></hr>
+
+
+									<group>						
+										<group>
+											<field name="co2_packages"  widget="radio" />							
+										</group>
+									</group>
+								</page>
+								
+								
+								
+								
+								<page string="Todo Rostro">
+
+									<group>
+										<group>
+											<field   name="co2_allface_rejuvenation"  nolabel="0"  visible="1"  widget="radio"  options="{'vertical': true, 'visible': true}"  class="" />							
+										</group>
+									</group>
+
+
+									<hr></hr>
+
+
+									<group>
+										<group>
+											<field name="co2_allface_acnesequels"  widget="radio" />							
+										</group>
+						
+										<group></group>
+									</group>
+									
+								</page>
+								
+								
+								
+								
+								<page string="Local Rostro">
+
+
+									<group>
+										<field name="co2_localface_stains" widget="radio"/>													
+									</group>
+
+									<hr></hr>
+
+									<group>
+										<field name="co2_localface_queratosis" widget="radio"/>													
+									</group>
+
+									<hr></hr>
+
+									<group>
+										<field name="co2_localface_mole" widget="radio"/>													
+									</group>
+
+
+									<hr></hr>
+
+									<group>
+										<field name="co2_localface_scar" widget="radio"/>													
+									</group>
+
+
+									<hr></hr>
+
+									<group>
+										<field name="co2_localface_cyst" widget="radio"/>													
+									</group>
+
+
+									<hr></hr>
+
+									<group>
+										<field name="co2_localface_wart" widget="radio"/>													
+									</group>
+
+
+								
+								</page>
+								
+								
+								
+								
+							</notebook>
 
 							<hr></hr>
 
@@ -99,7 +229,7 @@
 							<group string="" >
 								
 								<group>
-									<field name="service"  colspan="2" />
+									<field string="Servicio de la clínica" name="service"  colspan="2" />
 								</group>
 
 							</group>
@@ -128,25 +258,15 @@
 								<group>
 								</group>
 
-
-								<group>
-								</group>
-								<group>
-								</group>
-
-
+								
+								<!--
 								<group>
 									<field name="name" readonly="1" invisible="1"/>
 								</group>
 								<group>
 									<field name="treatment_id" readonly="1" invisible="1"/>
 								</group>
-
-
-								<group>
-								</group>
-								<group>
-								</group>
+								-->
 							</group>
 							
 							<hr></hr>

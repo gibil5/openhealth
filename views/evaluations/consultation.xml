@@ -26,15 +26,43 @@
 						<button 
 							type="object" 
 							class="oe_highlight"	
-							string="Crear Procedimiento"
+							string="Crear Procedimiento CO2"
+				
+							name="open_procedure" 	
+						/>
+
+						<button 
+							type="object" 
+							class="oe_highlight"	
+							string=" EXCILITE"
+				
+							name="open_procedure" 	
+						/>
+
+						<button 
+							type="object" 
+							class="oe_highlight"	
+							string=" IPL"
+				
+							name="open_procedure" 	
+						/>
+
+						<button 
+							type="object" 
+							class="oe_highlight"	
+							string=" NDYAG"
 				
 							name="open_procedure" 	
 						/>
 
 
+
+
+
+
 						<button 
 							type="object" 
-							class="oe_highlight"
+							class="oe_highlight oe_right"
 							string="Presupuesto" 
 
 							name="create_quotation_current" 
@@ -138,7 +166,11 @@
 								<field name="doctor" options="{'no_create': True}"/>
 								<field name="evaluation_start_date"/>
 								
+								<!--
 								<field string="Próxima cita" name="appointment" domain="[('patient', '=', patient)]" options="{'no_create': True}"/>
+								-->
+								<field name="x_next_evaluation_date" />
+
 
 							</group>
 							<group>
@@ -192,6 +224,8 @@
 					<field name="patient"/>
 					<field name="doctor"/>
 					<field name="evaluation_start_date"/>
+
+					<field name="chief_complaint"/>
 					
 					<field name="treatment"/>
 

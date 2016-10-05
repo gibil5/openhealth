@@ -8,6 +8,7 @@
 from openerp import models, fields, api
 from datetime import datetime
 
+import jxvars
 
 
 
@@ -100,15 +101,39 @@ class Patient(models.Model):
 			)
 
 
+
+
 	a_dni = fields.Char(
 			string = "DNI", 	
-			#required=True, 
+			required=True, 
 			)
 
 
+	def test_dni(self,cr,uid,ids,context=None):
+
+		print context
+
+		if context and (not context.isdigit()):
+			return {
+					'warning': {
+						'title': "Error: DNI no es número",
+						'message': context,
+					}}
+
+		if context and (len(str(context))!= 8):
+			return {
+					'warning': {
+						'title': "Error: DNI no tiene 8 cifras",
+						'message': context,
+					}}
+					
+		return {}
+		
+		
+
 
 	_first_contact_list = [
-			('none','ninguno'), 
+			('none','Ninguno'), 
 			('recommendation','Recomendación'), 
 			('tv','Tv'), 
 			('radio','Radio'), 
@@ -160,8 +185,12 @@ class Patient(models.Model):
 			string = "DNI", 	
 			#required=True, 
 			)
+			
 
 	FAMILY_RELATION = [
+			
+			('none', 'Ninguno'),
+
 			('Father', 'Padre'),
 			('Mother', 'Madre'),
 			('Brother', 'Hermano'),
@@ -183,7 +212,7 @@ class Patient(models.Model):
 	a_caregiver_relation = fields.Selection(
 			selection = FAMILY_RELATION, 
 			string = 'Parentesco',
-			#default = 'Padre', 
+			default = 'none', 
 			#default = 'Father', 
 			#required=True, 
 			)
@@ -350,7 +379,8 @@ class Patient(models.Model):
 			('huacho','Huacho'),
 			('huancavelica','Huancavelica'),
 			('huancayo','Huancayo'),
-			('huanuco','Huánuco'),
+			#('huanuco','Huánuco'),
+			('huanuco','Huanuco'),
 			('huaraz','Huaraz'),
 			('ica','Ica'),
 			('iquitos','Iquitos'),
@@ -375,63 +405,39 @@ class Patient(models.Model):
 
 
 
-	_lima_district_list = [
 
-			('Lima','1'),
-			('Ancón','2'),
-			('Ate','3'),
-			('Barranco','4'),
-			('Breña','5'),
-			('Carabayllo','6'),
-			('Comas','7'),
-			('Chaclacayo','8'),
-			('Chorrillos','9'),
-			('El Agustino','10'),
-			('Jesús María','11'),
-			('La Molina','12'),
-			('La Victoria','13'),
-			('Lince','14'),
-			('Lurigancho','15'),
-			('Lurín','16'),
-			('Magdalena del Mar','17'),
-			('Miraflores','18'),
-			('Pachacamac','19'),
-			('Pucusana','20'),
-			('Pueblo Libre','21'),
-			('Puente Piedra','22'),
-			('Punta Negra','23'),
-			('Punta Hermosa','24'),
-			('Rímac','25'),
-			('San Bartolo','26'),
-			('San Isidro','27'),
-			('Independencia','28'),
-			('San Juan de Miraflores','29'),
-			('San Luis','30'),
-			('San Martín de Porres','31'),
-			('San Miguel','32'),
-			('Santiago de Surco','33'),
-			('Surquillo','34'),
-			('Villa María del Triunfo','35'),
-			('San Juan de Lurigancho','36'),
-			('Santa María del Mar','37'),
-			('Santa Rosa','38'),
-			('Los Olivos','39'),
-			('Cieneguilla','40'),
-			('San Borja','41'),
-			('Villa El Salvador','42'),
-			('Santa Anita','43'),
-			]
 
 
 	#a_district = fields.Selection(
-	zip = fields.Selection(
-			selection = _lima_district_list, 
-			string = 'Distrito',  
+	#zip = fields.Selection(
+	zip = fields.Integer(
+			#selection = zip_list, 
+			#selection = jxvars.zip_list, 
+			
+			string = 'Código',  
 			#default = ('lima','Lima'), 
 			#default = 'Lima', 
-			placeholder="Código", 
+			#placeholder="Código", 
 			required=True, 
+			
+			compute='_compute_zip', 
 			)
+
+	#@api.multi
+	@api.depends('street2','city')
+
+	def _compute_zip(self):
+		for record in self:
+			#record.zip=zip_list[record.city]
+			#record.zip=jxvars.zip_list[record.street2]
+			if (record.street2 in jxvars.zip_dic) and (record.city == 'lima')  :
+				record.zip=jxvars.zip_dic[record.street2]
+			else:
+				#record.zip=0
+				record.zip=0
+
+
+
 
 
 

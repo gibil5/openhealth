@@ -208,9 +208,11 @@ Sheet
 
 								<!--
 								<field string='Estado civil'  name="marital_status" required="1"/>
+									
+								<field string="DNI"  name="a_dni"  required="1"/>
 								-->
 
-								<field string="DNI"  name="a_dni"  required="1"/>
+								<field name="a_dni"  on_change="test_dni(a_dni)"/>
 
 							</group>
 

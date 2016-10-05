@@ -15,7 +15,7 @@
 			<field name="arch" type="xml">
 				<notebook position="inside">
 					
-					<page string="Lista de Procedimientos">
+					<page string="Procedimientos">
 						
 						
 								<field name="service_ids">

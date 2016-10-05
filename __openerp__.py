@@ -16,7 +16,7 @@
     'description': """
 
 		Installed: 	 7 Sep 2016.\n 
-		Upgraded: 	 2 Oct 2016.\n 
+		Upgraded: 	 5 Oct 2016.\n 
 		\n
 
 		This is my first extension for oeHealth.
@@ -94,7 +94,7 @@
 
 
 		# jx_eval
-		'views/evaluations/jx_eval_co2.xml',
+		#'views/evaluations/jx_eval_co2.xml',
 		#'views/evaluations/jx_eval_excilite.xml',
 		#'views/evaluations/jx_eval_ipl.xml',
 		#'views/evaluations/jx_eval_ndyag.xml',

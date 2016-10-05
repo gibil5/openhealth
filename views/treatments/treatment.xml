@@ -325,9 +325,11 @@ Notebook
 											
 										<field string="Paciente" name="patient"/>
 										<field string="Médico" name="doctor"/>
-										<field name="chief_complaint"/>
 										<field name="evaluation_start_date"/>
-										<field name="treatment"/>
+
+
+										<field name="chief_complaint"/>
+										<field string="Tratamiento" name="treatment"/>
 											
 																				
 										<!--

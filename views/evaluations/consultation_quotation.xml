@@ -15,7 +15,7 @@
 			<field name="arch" type="xml">
 				<notebook position="inside">
 					
-					<page string="Presupuestos">
+					<page string="Presupuesto">
 							
 						<!--
 								<field name="quotation">

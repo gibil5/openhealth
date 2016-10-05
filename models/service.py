@@ -11,6 +11,8 @@ import jxvars
 
 
 
+	
+	
 
 
 class Service(models.Model):
@@ -396,4 +398,12 @@ class Service(models.Model):
 		}
 
 
+
+
+class ServiceExcilite(models.Model):
+	_name = 'openhealth.service_excilite'
+	_inherit = 'openhealth.service'
+	
+	
+	
 

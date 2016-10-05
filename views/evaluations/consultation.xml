@@ -26,7 +26,7 @@
 						<button 
 							type="object" 
 							class="oe_highlight"	
-							string="Crear Procedimiento CO2"
+							string="Crear Servicio CO2"
 				
 							name="open_procedure" 	
 						/>
@@ -36,8 +36,9 @@
 							class="oe_highlight"	
 							string=" EXCILITE"
 				
-							name="open_procedure" 	
+							name="open_procedure_excilite" 	
 						/>
+
 
 						<button 
 							type="object" 

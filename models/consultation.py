@@ -992,6 +992,7 @@ class Consultation(models.Model):
 		return {self.zone_glo}
 
 	
+	
 	@api.multi
 	def open_procedure(self):  
 
@@ -1073,6 +1074,44 @@ class Consultation(models.Model):
 	
 	
 
+	# Procedure - Excilite 
+	@api.multi
+	def open_procedure_excilite(self):  
+
+		consultation_id = self.id 
+		laser = 'laser_co2'
+		zone = ''	
+		pathology = ''
+		
+		
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' New Procedure Current - Excilite', 
+				'view_type': 'form',
+				'view_mode': 'form',				
+				
+				'res_model': 'openhealth.service',				
+				#'res_model': 'openhealth.service_excilite',				
+				
+				#'res_id': consultation_id,
+				'target': 'current',
+				'flags': 	{
+							'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+							#'form': {'action_buttons': True, }
+							},
+
+
+				'context': {
+							'default_consultation': consultation_id,					
+
+							'default_laser': laser,
+							'default_zone': zone,
+							'default_pathology': pathology,
+
+							}
+				}
+				
+				
 
 	# Consultation - Quick Self Button  
 	# ---------------------------------

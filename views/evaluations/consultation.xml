@@ -43,7 +43,7 @@
 						<button 
 							type="object" 
 							class="oe_highlight"	
-							string=" IPL"
+							string=" M22-IPL"
 				
 							name="open_procedure" 	
 						/>
@@ -51,12 +51,21 @@
 						<button 
 							type="object" 
 							class="oe_highlight"	
-							string=" NDYAG"
+							string=" M22-NDYAG"
 				
 							name="open_procedure" 	
 						/>
 
 
+						<button 
+							type="object" 
+							class="oe_highlight"	
+							string="Tratamiento médico"
+				
+							name="open_procedure" 	
+						/>
+						
+						
 
 
 

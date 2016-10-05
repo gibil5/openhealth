@@ -840,6 +840,32 @@ class Consultation(models.Model):
 
 
 
+	# Consultation - Quick Self Button  
+	# ---------------------------------
+	@api.multi
+	def open_line_current(self):  
+
+		consultation_id = self.id 
+
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' Edit Consultation Current', 
+				'view_type': 'form',
+				'view_mode': 'form',
+				'res_model': self._name,
+				'res_id': consultation_id,
+				'target': 'current',
+				'flags': {
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						'form': {'action_buttons': True, }
+						},
+
+				'context':   {
+				}
+		}
+
+
+
 
 	# Clear Vars
 	# ------------
@@ -888,6 +914,7 @@ class Consultation(models.Model):
 		self.co2_packages = False
 
 		return {}
+	
 	
 	
 	
@@ -994,8 +1021,12 @@ class Consultation(models.Model):
 
 	
 	
+	
+	
+	# Open Services
+	 
 	@api.multi
-	def open_procedure(self):  
+	def open_service(self):  
 
 		consultation_id = self.id 
 				
@@ -1004,56 +1035,9 @@ class Consultation(models.Model):
 		pathology = ''
 
 
-		if self.co2_cheekbone: 
-			zone = 'cheekbones'
-			pathology = self.co2_cheekbone
-			
-		if self.co2_hands: 
-			zone = 'hands'
-			pathology = self.co2_hands
-		
-		if self.co2_neck:
-			zone = 'neck'
-			pathology = self.co2_neck
-
-		if self.co2_vagina:
-			zone = 'vagina'
-			pathology = self.co2_vagina
-
-		if self.co2_packages:
-			#zone = 'vagina'
-			pathology = self.co2_packages
-			
-			
-		if self.co2_allface_rejuvenation:
-			zone = 'face_all'
-			pathology = self.co2_allface_rejuvenation
-
-		if self.co2_allface_acnesequels:
-			zone = 'face_all'
-			pathology = self.co2_allface_acnesequels
-			
-
-		if self.co2_localface_stains:
-			zone = 'face_localized'
-			#zone =self.zone_glo
-			pathology = self.co2_localface_stains
-			
-			
-
-			#if  self.co2_cheekbone == 'stain': 
-			#	pathology = 'stains'
-			
-			#elif self.co2_cheekbone == 'acne_sequels':
-			#	pathology = 'acne_sequels'
-			
-		
-		#pathology = pathologies.get(key, '')
-		
-
 		return {
 				'type': 'ir.actions.act_window',
-				'name': ' New Procedure Current', 
+				'name': ' New Service Current', 
 				'view_type': 'form',
 				'view_mode': 'form',				
 				'res_model': 'openhealth.service',				
@@ -1065,7 +1049,8 @@ class Consultation(models.Model):
 							},
 
 				'context': {
-							'default_consultation': consultation_id,					
+							'default_consultation': consultation_id,
+												
 							'default_laser': laser,
 							'default_zone': zone,
 							'default_pathology': pathology,
@@ -1075,9 +1060,9 @@ class Consultation(models.Model):
 	
 	
 
-	# Procedure - Excilite 
+	# Procedure - Laser Co2 
 	@api.multi
-	def open_procedure_excilite(self):  
+	def open_service_laserco2(self):  
 
 		consultation_id = self.id 
 		
@@ -1088,13 +1073,14 @@ class Consultation(models.Model):
 		
 		return {
 				'type': 'ir.actions.act_window',
-				'name': ' New Procedure Current - Excilite', 
+				'name': ' New Service Current - Excilite', 
 				'view_type': 'form',
 				'view_mode': 'form',				
 				
-				'res_model': 'openhealth.service',				
+				#'res_model': 'openhealth.service',				
 				#'res_model': 'openhealth.service_excilite',				
-				#'res_model': 'openhealth.service_co2',				
+				#'res_model': 'openhealth.serviceco2',				
+				'res_model': 'openhealth.laserco2',				
 				
 				#'res_id': consultation_id,
 				'target': 'current',
@@ -1114,30 +1100,3 @@ class Consultation(models.Model):
 							}
 				}
 				
-				
-
-	# Consultation - Quick Self Button  
-	# ---------------------------------
-
-	@api.multi
-	def open_line_current(self):  
-
-		consultation_id = self.id 
-
-		return {
-				'type': 'ir.actions.act_window',
-				'name': ' Edit Consultation Current', 
-				'view_type': 'form',
-				'view_mode': 'form',
-				'res_model': self._name,
-				'res_id': consultation_id,
-				'target': 'current',
-				'flags': {
-						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-						'form': {'action_buttons': True, }
-						},
-
-				'context':   {
-				}
-		}
-

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+		<!-- Form view -->
+		<record model="ir.ui.view" id="laserco2_form_view">
+			<field name="name">laserco2.form</field>
+			
+			<field name="model">openhealth.service</field>
+			<field name="priority" eval="1"/>
+			
+			<field name="inherit_id" ref="openhealth.service_form_view"/>
+			
+			<field name="arch" type="xml">
+				
+				
+				
+				<notebook position="inside">
+					<page string="GOTCHA !!!">
+						
+					</page>
+					
+				</notebook>
+				
+			</field>
+		</record>
+	</data>
+</openerp>
+						

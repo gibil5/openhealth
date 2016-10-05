@@ -25,44 +25,44 @@ class Service(models.Model):
 	co2_cheekbone = fields.Selection(
 			selection = jxvars._co2_che_list, 
 			string="Pómulos", 
-			default='nil',	
+			default='',	
 			)
 
 	co2_hands = fields.Selection(
 			selection = jxvars._co2_han_list, 
 			string="Manos", 
-			default='nil',	
+			default='',	
 			)
 
 	co2_neck = fields.Selection(
 			selection = jxvars._co2_nec_list, 
 			string="Cuello", 
-			default='nil',	
+			default='',	
 			)
 	
 	co2_vagina = fields.Selection(
 			selection = jxvars._co2_vag_list, 
 			string="Vagina", 
-			default='nil',	
+			default='',	
 			)
 			
 	co2_packages = fields.Selection(
 			selection = jxvars._co2_pac_list, 
 			string="Paquetes Rejuvenecimiento", 
-			default='nil',	
+			default='',	
 			)
 
 
 	co2_allface_rejuvenation = fields.Selection(
 			selection = jxvars._co2_rejuv_list, 
 			string="Rejuvenecimiento facial", 
-			default='nil',	
+			default='',	
 			)
 
 	co2_allface_acnesequels = fields.Selection(
 			selection = jxvars._co2_acneseq_list, 
 			string="Acné y secuelas", 
-			default='nil',	
+			default='',	
 			)
 
 
@@ -71,37 +71,37 @@ class Service(models.Model):
 	co2_localface_stains = fields.Selection(
 			selection = jxvars._co2_lfstains_list, 
 			string="Manchas", 
-			default='nil',	
+			default='',	
 			)
 
 	co2_localface_queratosis = fields.Selection(
 			selection = jxvars._co2_lfqueratosis_list, 
 			string="Queratosis", 
-			default='nil',	
+			default='',	
 			)
 
 	co2_localface_mole = fields.Selection(
 			selection = jxvars._co2_lfmole_list, 
 			string="Lunar", 
-			default='nil',	
+			default='',	
 			)
 			
 	co2_localface_scar = fields.Selection(
 			selection = jxvars._co2_lfscar_list, 
 			string="Cicatriz", 
-			default='nil',	
+			default='',	
 			)
 
 	co2_localface_cyst = fields.Selection(
 			selection = jxvars._co2_lfcyst_list, 
 			string="Quiste", 
-			default='nil',	
+			default='',	
 			)
 
 	co2_localface_wart = fields.Selection(
 			selection = jxvars._co2_lfwart_list, 
 			string="Verruga", 
-			default='nil',	
+			default='',	
 			)
 
 
@@ -122,7 +122,7 @@ class Service(models.Model):
 			default='SE',
 			
 			#string='Servicio #',
-			string='Procedimiento #',
+			string='Servicio #',
 
 			compute='_compute_name', 
 			required=True, 
@@ -399,17 +399,17 @@ class Service(models.Model):
 
 
 
+
 #------------------------------------ Classes -----------------------------------------
 
 class ServiceCo2(models.Model):
-	_name = 'openhealth.service_co2'
+	_name = 'openhealth.laserco2'
 	_inherit = 'openhealth.service'
 	
 	
 	# Smart vars
 	# ----------
 	
-
 
 
 

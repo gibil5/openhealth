@@ -68,6 +68,10 @@
 		
 		# Services
 		'views/service/service.xml',
+		'views/service/laserco2.xml',
+
+
+		# Invoices
 		#'views/treatments/invoice.xml',
 
 		

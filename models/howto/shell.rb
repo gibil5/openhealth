@@ -149,4 +149,5 @@ self.env['sale.order'].search([('name', 'like', '11')]).order_line.search([('id'
 
 self.env['openhealth.consultation'].search([('name', 'like', '93')])
 
+self.env['res.partner'].search([('name','=','Yvan Puga')],limit=1)
 

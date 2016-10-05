@@ -780,7 +780,8 @@ class Consultation(models.Model):
 		#partner_id = lambda self: self.env['res.partner'].search([('name','=','Javier Revilla')])
 
 		#partner_id = self.env['res.partner'].search([('name','=','Javier Revilla')]).id
-		partner_id = self.env['res.partner'].search([('name','=',self.patient.name)]).id
+		#partner_id = self.env['res.partner'].search([('name','=',self.patient.name)]).id
+		partner_id = self.env['res.partner'].search([('name','=',self.patient.name)],limit=1).id
 		
 		
 		print

@@ -403,7 +403,9 @@ class Service(models.Model):
 #------------------------------------ Classes -----------------------------------------
 
 class ServiceCo2(models.Model):
-	_name = 'openhealth.laserco2'
+	#_name = 'openhealth.laserco2'
+	_name = 'openhealth.service.co2'
+
 	_inherit = 'openhealth.service'
 	
 	
@@ -413,11 +415,27 @@ class ServiceCo2(models.Model):
 
 
 
-
 class ServiceExcilite(models.Model):
-	_name = 'openhealth.service_excilite'
+	#_name = 'openhealth.service.laserexcilite'
+	_name = 'openhealth.service.excilite'
+
 	_inherit = 'openhealth.service'
 	
 	
 	
+
+class ServiceIpl(models.Model):
+	#_name = 'openhealth.service.laseripl'
+	_name = 'openhealth.service.ipl'
+
+	_inherit = 'openhealth.service'
+
+
+
+class ServiceNdyag(models.Model):
+	#_name = 'openhealth.service.laserndyag'
+	_name = 'openhealth.service.ndyag'
+
+	_inherit = 'openhealth.service'
+
 

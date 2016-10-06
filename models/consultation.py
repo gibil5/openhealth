@@ -1076,8 +1076,11 @@ class Consultation(models.Model):
 				'type': 'ir.actions.act_window',
 				'name': ' New Service Current - Laser Co2', 
 				'view_type': 'form',
-				'view_mode': 'form',				
+				'view_mode': 'form',			
+					
 				#'res_id': consultation_id,
+				'res_id': 23,
+				
 				'target': 'current',
 								
 				#'res_model': 'openhealth.service',				

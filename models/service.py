@@ -174,7 +174,7 @@ class Service(models.Model):
 			selection = _zone_list, 
 			string="Zona", 
 			default='areola',
-			required=True, 
+			#required=True, 
 			)
 
 
@@ -188,7 +188,7 @@ class Service(models.Model):
 	
 			string="Patología", 
 			default='acne_active',
-			required=True, 
+			#required=True, 
 			)
 
 

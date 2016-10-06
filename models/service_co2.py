@@ -31,17 +31,9 @@ class ServiceCo2(models.Model):
 			default='',	
 			)
 
-	co2_hands = fields.Selection(
-			selection = jxvars._co2_han_list, 
-			string="Manos", 
-			default='',	
-			)
 
-	co2_neck = fields.Selection(
-			selection = jxvars._co2_nec_list, 
-			string="Cuello", 
-			default='',	
-			)
+
+
 	
 	co2_vagina = fields.Selection(
 			selection = jxvars._co2_vag_list, 
@@ -110,24 +102,105 @@ class ServiceCo2(models.Model):
 
 
 
+	co2_hands = fields.Selection(
+			selection = jxvars._co2_han_list, 
+			string="Manos", 
+			default='',	
+			)
 
+
+
+	co2_neck = fields.Selection(
+			selection = jxvars._co2_nec_list, 
+			string="Cuello", 
+			default='',	
+			#compute='_compute_co2_neck', 
+			)
+			
+
+	co2_neck_scar = fields.Boolean(
+			string="Cuello Cicatriz", 
+			default=False,	
+			#compute='_compute_co2_neck', 
+			)
+			
+			
+	#@api.depends('co2_hands')
+	#def _compute_co2_neck(self):
+	#	for record in self:
+	#		record.co2_neck=False
+
+
+			
 	# Clear Procedures
 	# ------------------
-	
-	@api.multi
-	def clear_others(self,context=None):  
+
+	@api.onchange('co2_hands')
+	def _onchange_co2_hands(self):
+	#def _onchange_co2_hands(self,context):
+	    #self.message = "Dear %s" % (self.partner_id.name or "")
+
+
+		print 
+		print self
+		print 
+		print self.co2_hands
 		
-		print
-		print 'jx: Mark'
-		print context 
-		print
+		#self.co2_neck = False
+		self.co2_neck = ''
+		self.co2_neck_scar = False
 		
+		
+		#self.co2_neck = 'none'
+
+		#self.co2_neck = 'scar'
+		#self.co2_neck = nil
+
+		#print self.co2_neck
 		
 		#self.co2_hands = False
+		#self.co2_cheekbone = False
+		#self.co2_vagina = False
+		#self.co2_packages = False
+		#self.write({'co2_neck': False})
+		#print self.co2_neck		
+		print 
+		
+		return {
+		    #'co2_neck': False,
+		    #'co2_neck': False,
+			'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', 'hands'),('x_pathology', '=', self.co2_hands)]},
+		    #'warning': {'title': "Warning", 'message': "What is this?"},
+		}
+		
+		
+		
+		
+
+	#def clear_others(self,cr,uid,ids,context=None):
+	#def clear_all(self,cr,uid,ids,context=None):
+
+	#def clear_others(self,context=None):
+	
+	@api.multi
+	def clear_all(self):
+	#def clear_all(self,cr,uid,ids,context=None):
+		
+		
+		self.co2_hands = False
 		self.co2_cheekbone = False
 		self.co2_neck = False
 		self.co2_vagina = False
 		self.co2_packages = False
+
+		self.co2_neck_scar = False
+		
+		print
+		print self.co2_hands
+		print
+		
+		#print 'jx: Mark'
+		#print context 
 
 		return {}
 	

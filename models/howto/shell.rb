@@ -151,3 +151,6 @@ self.env['openhealth.consultation'].search([('name', 'like', '93')])
 
 self.env['res.partner'].search([('name','=','Yvan Puga')],limit=1)
 
+
+self.env['openhealth.service.co2'].search([('name', 'like', '93')])
+

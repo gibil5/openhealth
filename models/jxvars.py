@@ -14,14 +14,20 @@ _co2_han_list = [
 		('wart',	'Verruga'),
 		('rejuvenation_hands',	'Rejuvenecimiento'),
 		]
+		
+
 
 _co2_nec_list = [
-		('rejuvenation_neck',	'Rejuvenecimiento'),
+	
+		#('none',			'Ninguno'),
+		
 		('scar',			'Cicatriz'),
 		('polyp',			'Polipo'),
 		('wart',			'Verruga'),
 		('ruby_point',		'Punto Rubí'),
+		('rejuvenation_neck',	'Rejuvenecimiento'),
 		]
+		
 			
 			
 _co2_vag_list = [

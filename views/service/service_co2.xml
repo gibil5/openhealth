@@ -31,41 +31,43 @@
 							<hr></hr>
 							
 							
+							<notebook>
+							</notebook>
 
 
 
-							
+							<!--
 							<group string="">
 								<group>
-									<field name="laser" on_change="get_domain_service_multi(laser,zone,pathology)" />
-								</group>
-								
+									<field name="laser" on_change="get_domain_service_multi(laser,zone,pathology)"  widget="radio" />
+								</group>								
 								<group></group>
-
 
 								<group>
 									<field name="zone" on_change="get_domain_service_multi(laser,zone,pathology)" />
 								</group>
-								<group>
-								</group>
-								
-								
+								<group></group>
 								
 								<group>
 									<field name="pathology" on_change="get_domain_service_multi(laser,zone,pathology)" />
 								</group>
-								<group>
-								</group>
-								
+								<group></group>
 							</group>
 								
-
 							<hr></hr>
+							-->	
+
 								
 
 							<group string="" >								
 								<group>
-									<field string="Servicio de la clínica" name="service"  colspan="2" />
+
+									<!--
+									<field string="Servicio de la clínica" name="service"  colspan="2"    />
+									<field string="Servicio de la clínica" name="service" colspan="2" widget="radio"  domain="[('x_treatment', '=', 'laser_co2')]" />
+									-->
+
+									<field name="service"     widget="radio"/>
 								</group>
 							</group>
 
@@ -84,8 +86,6 @@
 						
 							<hr></hr>
 							
-							<notebook>
-							</notebook>
 						
 						
 					</sheet>

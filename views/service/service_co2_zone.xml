@@ -15,21 +15,52 @@
 				
 				<notebook position="inside">
 				
-				
+					
+					
 					
 					<page string="Zona del cuerpo">
 					
-						<group>						
+						<group>		
+							<button 
+								type="object" 
+								class="oe_highlight oe_right"	
+								string="Clear"
+			
+								name="clear_all" 	
+							/>
+											
+						</group>
+
+					
+						<group>
+						
+							<group>
+							</group>
+							<group>
+								<field name="co2_neck_scar"/>							
+							</group>																									
+									
+												
 							<group>
 								<!--
 								<field name="co2_hands"  widget="radio" />
-								-->
+									
 								<field name="co2_hands"  widget="radio"  on_change="clear_others(co2_hands)"/>	
+									
+								<field name="co2_hands"  widget="radio"  openerp.api.on_change="_onchange_co2_hands()"/>	
+									
+								-->
+								<field name="co2_hands"  widget="radio"  openerp.api.on_change="_onchange_co2_hands(co2_hands)"/>	
 
 							</group>																									
 
 							<group>
+								<!--
+								<field name="co2_neck"  widget="radio" domain="[('co2_neck', '=', 'scar')]"/>		
+														
 								<field name="co2_neck"  widget="radio" />							
+								-->
+								<field name="co2_neck"   />							
 							</group>
 							
 						</group>

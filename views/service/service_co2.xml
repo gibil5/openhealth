@@ -9,169 +9,34 @@
 
 
 		<!-- Form view -->
+		<!--
 		<record model="ir.ui.view" id="service_form_view">
-			<field name="name">service.form</field>
+		-->
+		<record model="ir.ui.view" id="service_co2_form_view">
+			<field name="name">service.co2.form</field>
+			<!--
 			<field name="model">openhealth.service</field>
+			-->
+			<field name="model">openhealth.service.co2</field>
 			<field name="arch" type="xml">
-				
-				<form string="Service Form">
-					
-					
+				<form string="Service Co2 - Form">
 					<sheet>
+							
+							
+
+							<!--
+								Laser Co2
+							-->
+							<h1>Láser Co2</h1>
+							<hr></hr>
+							
 							
 
 
-								
-								
-								
-							<!--
-								Here
-							-->
-							<hr></hr>
 
-							<h1>Laser Co2</h1>
-							<group></group>
-							<group></group>
-
-							<notebook>
-								<page string="Zona del cuerpo">
-								
-									<group>						
-										<group>
-											<field name="co2_cheekbone"  widget="radio"  class=""/>							
-										</group>																
-									</group>
-									
-
-									<hr></hr>
-
-
-									<group>						
-										<group>
-											<field name="co2_hands"  widget="radio" />	
-										</group>
-									</group>
-
-
-									<hr></hr>
-
-
-									<group>						
-										<group>
-											<field name="co2_neck"  widget="radio" />							
-										</group>
-									</group>
-
-					
-									<hr></hr>
-
-
-									<group>						
-										<group>
-											<field name="co2_vagina"  widget="radio" />							
-										</group>
-									</group>
-					
-
-									<hr></hr>
-
-
-									<group>						
-										<group>
-											<field name="co2_packages"  widget="radio" />							
-										</group>
-									</group>
-								</page>
-								
-								
-								
-								
-								<page string="Todo Rostro">
-
-									<group>
-										<group>
-											<field   name="co2_allface_rejuvenation"  nolabel="0"  visible="1"  widget="radio"  options="{'vertical': true, 'visible': true}"  class="" />							
-										</group>
-									</group>
-
-
-									<hr></hr>
-
-
-									<group>
-										<group>
-											<field name="co2_allface_acnesequels"  widget="radio" />							
-										</group>
-						
-										<group></group>
-									</group>
-									
-								</page>
-								
-								
-								
-								
-								<page string="Local Rostro">
-
-
-									<group>
-										<field name="co2_localface_stains" widget="radio"/>													
-									</group>
-
-									<hr></hr>
-
-									<group>
-										<field name="co2_localface_queratosis" widget="radio"/>													
-									</group>
-
-									<hr></hr>
-
-									<group>
-										<field name="co2_localface_mole" widget="radio"/>													
-									</group>
-
-
-									<hr></hr>
-
-									<group>
-										<field name="co2_localface_scar" widget="radio"/>													
-									</group>
-
-
-									<hr></hr>
-
-									<group>
-										<field name="co2_localface_cyst" widget="radio"/>													
-									</group>
-
-
-									<hr></hr>
-
-									<group>
-										<field name="co2_localface_wart" widget="radio"/>													
-									</group>
-
-
-								
-								</page>
-								
-								<page string="Local Cuerpo">
-								</page>
-								
-							</notebook>
-
-
-
-							<hr></hr>
-
+							
 							<group string="">
 								<group>
-									<!--
-									<field name="laser" on_change="get_domain_service(laser)" />
-										
-									<field name="laser" on_change="get_domain_service_multi(laser,zone)" />
-									-->
-										
 									<field name="laser" on_change="get_domain_service_multi(laser,zone,pathology)" />
 								</group>
 								
@@ -179,15 +44,6 @@
 
 
 								<group>
-									<!--
-									<field name="zone" />
-									<field name="zone" on_change="get_domain_service_zone(zone)" />
-									<field name="zone" on_change="get_domain_service_zone(laser)" />
-									<field name="zone" on_change="get_domain_service_zone(laser,zone)" />
-										
-									<field name="zone" on_change="get_domain_service_multi(laser,zone)" />
-									-->
-										
 									<field name="zone" on_change="get_domain_service_multi(laser,zone,pathology)" />
 								</group>
 								<group>
@@ -196,12 +52,6 @@
 								
 								
 								<group>
-									<!--
-									<field name="pathology"/>
-
-									<field name="zone" on_change="get_domain_service_multi(laser,zone,pathology)" />
-									-->
-
 									<field name="pathology" on_change="get_domain_service_multi(laser,zone,pathology)" />
 								</group>
 								<group>
@@ -210,42 +60,34 @@
 							</group>
 								
 
-								
 							<hr></hr>
 								
 
-
-							<group string="" >
-								
+							<group string="" >								
 								<group>
 									<field string="Servicio de la clínica" name="service"  colspan="2" />
 								</group>
-
 							</group>
 
-
-								
 								
 							<hr></hr>
-
-
 
 
 							<group string="">
 								<group>
-										<field name="name_short" readonly="1"/>
+									<field name="name_short" readonly="1"/>
 								</group>
-								<group></group>
-
-
 								<group>
 									<field name="price" readonly="1"/>
 								</group>
-								<group></group>
 							</group>
-							
+						
 							<hr></hr>
 							
+							<notebook>
+							</notebook>
+						
+						
 					</sheet>
 				</form>
 			</field>
@@ -259,17 +101,9 @@
 			<field name="model">openhealth.service</field>
 			<field name="arch" type="xml">
 				<tree string="Service Tree">
-					
 					<field name="name"/>
-
 					<field name="id"/>
-
 					<field name="consultation"/>
-
-					<!--
-					<field name="course_id"/>
-					<field name="taken_seats" widget="progressbar"/>
-					--> 
 				</tree>
 			</field>
 		</record>

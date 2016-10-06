@@ -11,6 +11,7 @@ from . import patient
 from . import evaluation  
 
 from . import service
+from . import service_co2
 
 from . import consultation
 from . import procedure

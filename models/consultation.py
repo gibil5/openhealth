@@ -1025,70 +1025,70 @@ class Consultation(models.Model):
 	
 	# Open Services
 	 
-	@api.multi
-	def open_service(self):  
+	#@api.multi
+	#def open_service(self):  
 
-		consultation_id = self.id 
+	#	consultation_id = self.id 
 				
-		laser = 'laser_co2'
-		zone = ''	
-		pathology = ''
+	#	laser = 'laser_co2'
+	#	zone = ''	
+	#	pathology = ''
 
-
-		return {
-				'type': 'ir.actions.act_window',
-				'name': ' New Service Current', 
-				'view_type': 'form',
-				'view_mode': 'form',				
-				'res_model': 'openhealth.service',				
+	#	return {
+	#			'type': 'ir.actions.act_window',
+	#			'name': ' New Service Current', 
+	#			'view_type': 'form',
+	#			'view_mode': 'form',				
+	#			'res_model': 'openhealth.service',				
 				#'res_id': consultation_id,
-				'target': 'current',
-				'flags': 	{
-							'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+	#			'target': 'current',
+	#			'flags': 	{
+	#						'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 							#'form': {'action_buttons': True, }
-							},
+	#						},
 
-				'context': {
-							'default_consultation': consultation_id,
+	#			'context': {
+	#						'default_consultation': consultation_id,
 												
-							'default_laser': laser,
-							'default_zone': zone,
-							'default_pathology': pathology,
-							}
-				}
+	#						'default_laser': laser,
+	#						'default_zone': zone,
+	#						'default_pathology': pathology,
+	#						}
+	#			}
 	
 	
 	
 
 	# Procedure - Laser Co2 
 	@api.multi
-	def open_service_laserco2(self):  
+	def open_service_co2(self):  
 
 		consultation_id = self.id 
 		
 		laser = 'laser_co2'
-		zone = 'cheekbones'	
-		pathology = 'stains'
+		#zone = 'cheekbones'	
+		#pathology = 'stains'
+		zone = ''	
+		pathology = ''
 		
 		
 		return {
 				'type': 'ir.actions.act_window',
-				'name': ' New Service Current - Excilite', 
+				'name': ' New Service Current - Laser Co2', 
 				'view_type': 'form',
 				'view_mode': 'form',				
-				
-				#'res_model': 'openhealth.service',				
-				#'res_model': 'openhealth.service_excilite',				
-				#'res_model': 'openhealth.serviceco2',				
-				'res_model': 'openhealth.laserco2',				
-				
 				#'res_id': consultation_id,
 				'target': 'current',
+								
+				#'res_model': 'openhealth.service',				
+				#'res_model': 'openhealth.service_excilite',				
+				#'res_model': 'openhealth.laserco2',				
+				'res_model': 'openhealth.service.co2',				
+				
 				'flags': 	{
-							'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-							#'form': {'action_buttons': True, }
+							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+							'form': {'action_buttons': True, }
 							},
-
 
 				'context': {
 							'default_consultation': consultation_id,					

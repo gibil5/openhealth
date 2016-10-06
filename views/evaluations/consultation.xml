@@ -23,7 +23,7 @@
 					<!-- Header --> 
 					<header>
 
-
+						<!--
 						<button 
 							type="object" 
 							class="oe_highlight"	
@@ -31,14 +31,14 @@
 				
 							name="open_service" 	
 						/>
-
+						-->
 						
 						<button 
 							type="object" 
 							class="oe_highlight"	
-							string="Crear Servicio CO2"
+							string="Servicio CO2"
 				
-							name="open_service_laserco2" 	
+							name="open_service_co2" 	
 						/>
 
 						<button 

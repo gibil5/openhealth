@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+		<!-- Form view -->
+		<record model="ir.ui.view" id="service_zone_form_view">
+			<field name="name">service.co2.zone.form</field>
+			<field name="model">openhealth.service.co2</field>
+			
+			<field name="priority" eval="1"/>
+			
+			<field name="inherit_id" ref="service_co2_form_view"/>
+			<field name="arch" type="xml">
+				
+				<notebook position="inside">
+				
+				
+					
+					<page string="Zona del cuerpo">
+					
+						<group>						
+							<group>
+								<field name="co2_hands"  widget="radio" />	
+							</group>																									
+
+							<group>
+								<field name="co2_neck"  widget="radio" />							
+							</group>
+							
+						</group>
+						
+
+						<hr></hr>
+
+						<!--
+						<group>						
+						</group>
+
+
+						<hr></hr>
+						-->
+
+						<group>	
+							<group>
+								<field name="co2_cheekbone"  widget="radio"  class=""/>							
+							</group>	
+												
+							
+							<group>
+								<field name="co2_vagina"  widget="radio" />							
+							</group>										
+						</group>
+
+		
+						<hr></hr>
+
+						<!--
+						<group>						
+						</group>
+		
+
+						<hr></hr>
+						-->
+
+						<group>						
+							<group>
+								<field name="co2_packages"  widget="radio" />							
+							</group>
+						</group>
+					</page>
+					
+					
+					
+					
+					<page string="Todo Rostro">
+
+						<group>
+							<group>
+								<field   name="co2_allface_rejuvenation"  nolabel="0"  visible="1"  widget="radio"  options="{'vertical': true, 'visible': true}"  class="" />							
+							</group>
+						</group>
+
+
+						<hr></hr>
+
+
+						<group>
+							<group>
+								<field name="co2_allface_acnesequels"  widget="radio" />							
+							</group>
+			
+							<group></group>
+						</group>
+						
+					</page>
+					
+					
+					
+					
+					<page string="Local Rostro">
+
+
+						<group>
+							<field name="co2_localface_stains" widget="radio"/>													
+						</group>
+
+						<hr></hr>
+
+						<group>
+							<field name="co2_localface_queratosis" widget="radio"/>													
+						</group>
+
+						<hr></hr>
+
+						<group>
+							<field name="co2_localface_mole" widget="radio"/>													
+						</group>
+
+
+						<hr></hr>
+
+						<group>
+							<field name="co2_localface_scar" widget="radio"/>													
+						</group>
+
+
+						<hr></hr>
+
+						<group>
+							<field name="co2_localface_cyst" widget="radio"/>													
+						</group>
+
+
+						<hr></hr>
+
+						<group>
+							<field name="co2_localface_wart" widget="radio"/>													
+						</group>
+
+
+					
+					</page>
+					
+					<!--
+					<page string="Local Cuerpo">
+					</page>
+					-->
+					
+
+				</notebook>
+			</field>
+		</record>
+	</data>
+</openerp>

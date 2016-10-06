@@ -108,3 +108,29 @@ class ServiceCo2(models.Model):
 			)
 
 
+
+
+
+	# Clear Procedures
+	# ------------------
+	
+	@api.multi
+	def clear_others(self,context=None):  
+		
+		print
+		print 'jx: Mark'
+		print context 
+		print
+		
+		
+		#self.co2_hands = False
+		self.co2_cheekbone = False
+		self.co2_neck = False
+		self.co2_vagina = False
+		self.co2_packages = False
+
+		return {}
+	
+	
+	
+

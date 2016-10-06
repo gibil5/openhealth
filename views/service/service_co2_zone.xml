@@ -21,7 +21,11 @@
 					
 						<group>						
 							<group>
-								<field name="co2_hands"  widget="radio" />	
+								<!--
+								<field name="co2_hands"  widget="radio" />
+								-->
+								<field name="co2_hands"  widget="radio"  on_change="clear_others(co2_hands)"/>	
+
 							</group>																									
 
 							<group>

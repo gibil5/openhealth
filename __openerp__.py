@@ -127,4 +127,14 @@
     'demo': [
         #'demo/demo.xml',
     ],
+	
+	
+	
+	# Static - jx 
+	#'js': ['static/src/js/widget_radio.js'],
+	#'qweb': ['static/src/xml/widget_radio.xml'],
+    #'css': ['static/src/css/my_css.css'],
+	'css': ['static/src/css/jx.css'],
+	
+	
 }

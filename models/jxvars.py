@@ -4,9 +4,14 @@
 
 
 _co2_che_list = [
+	
+		('none','none'),	
+	
 		('stains','Manchas'),	
 		('acne_sequels','Acné y secuelas'),
 		]
+
+
 
 _co2_han_list = [
 		('stains',	'Manchas'),	

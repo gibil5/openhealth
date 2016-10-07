@@ -3,12 +3,10 @@
 
 
 
-_co2_che_list = [
-	
-		('none','none'),	
-	
+_co2_che_list = [	
 		('stains','Manchas'),	
 		('acne_sequels','Acné y secuelas'),
+		('none',''),
 		]
 
 
@@ -18,6 +16,7 @@ _co2_han_list = [
 		('scar',	'Cicatriz'),
 		('wart',	'Verruga'),
 		('rejuvenation_hands',	'Rejuvenecimiento'),
+		('none',''),
 		]
 		
 
@@ -31,12 +30,14 @@ _co2_nec_list = [
 		('wart',			'Verruga'),
 		('ruby_point',		'Punto Rubí'),
 		('rejuvenation_neck',	'Rejuvenecimiento'),
+		('none',''),
 		]
 		
 			
 			
 _co2_vag_list = [
 		('monalisa_touch',	'Monalisa Touch'),
+		('none',''),
 		]		
 
 
@@ -44,7 +45,12 @@ _co2_pac_list = [
 		('rejuvenation_face_neck',			'Facial + Cuello'),
 		('rejuvenation_face_hands',			'Facial + Manos'),
 		('rejuvenation_face_neck_hands',	'Facial + Cuello + Manos'),
+		('none',''),
 		]
+
+
+
+
 
 
 

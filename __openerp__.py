@@ -48,15 +48,22 @@
     #'depends': ['base', 'openextension'],
 
 
+
+
     # always loaded
     'data': [
+
+		'views/openhealth.xml',
+
         
         # Generated
         # 'security/ir.model.access.csv',
         #'views/views.xml',
         #'views/templates.xml',
-		#'views/openhealth.xml',
+		
         
+		
+		
         # Learning 
         'views/learning/learn.xml',
 

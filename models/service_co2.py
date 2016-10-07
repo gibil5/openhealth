@@ -25,14 +25,26 @@ class ServiceCo2(models.Model):
 	# Smart vars
 	# ----------
 	
+	co2_hands = fields.Selection(
+			selection = jxvars._co2_han_list, 
+			string="Manos", 
+			default='',	
+			)
+
+
+	co2_neck = fields.Selection(
+			selection = jxvars._co2_nec_list, 
+			string="Cuello", 
+			#default='',	
+			default='scar',	
+			)
+			
+	
 	co2_cheekbone = fields.Selection(
 			selection = jxvars._co2_che_list, 
 			string="Pómulos", 
 			default='',	
 			)
-
-
-
 
 	
 	co2_vagina = fields.Selection(
@@ -48,6 +60,13 @@ class ServiceCo2(models.Model):
 			)
 
 
+
+
+
+
+
+
+
 	co2_allface_rejuvenation = fields.Selection(
 			selection = jxvars._co2_rejuv_list, 
 			string="Rejuvenecimiento facial", 
@@ -59,7 +78,6 @@ class ServiceCo2(models.Model):
 			string="Acné y secuelas", 
 			default='',	
 			)
-
 
 
 
@@ -106,205 +124,100 @@ class ServiceCo2(models.Model):
 			
 
 
-	co2_hands = fields.Selection(
-			selection = jxvars._co2_han_list, 
-			string="Manos", 
-			default='',	
-			)
-
-
-
-	co2_neck = fields.Selection(
-			selection = jxvars._co2_nec_list, 
-			string="Cuello", 
-			#default='',	
-			default='scar',	
-			#compute='_compute_co2_neck', 
-			#store=True,
-			#edit=True,
-			)
 
 
 
 
 
-
-	# Booleans
-	
-	co2_hands_stains = fields.Boolean(
-			string="Manchas", 
-			default=False,	
-			#compute='_compute_co2_hands_stains', 
-			)
-	#@api.depends('co2_hands_scar')
-	#def _compute_co2_hands_stains(self):
-	#	for record in self:
-	#		record.hands_stains=True
-	
-	
-	
-			
-	co2_hands_scar = fields.Boolean(
-			string="Cicatriz", 
-			default=False,	
-			)
-	co2_hands_wart = fields.Boolean(
-			string="Verruga", 
-			default=False,	
-			)
-	co2_hands_rejuvenation = fields.Boolean(
-			string="Rejuvenecimiento", 
-			default=False,	
-			)
-
-
-
-
-
-	# On change 
-
-	# Smart 
-
-	#@api.onchange('co2_hands_stains', 'co2_hands_scar', 'co2_hands_wart', 'co2_hands_rejuvenation')
-	#@api.onchange('field1', 'field2')
-	
-	@api.onchange('co2_hands_stains', 'co2_hands_scar')
-	def _onchange_co2_hands(self):
-		
-		print
-		print 'jx'
-		print
-		
-		if self.co2_hands_stains == True:		
-			#self.co2_hands_stains = False
-			self.co2_hands_scar = False
-			self.co2_hands_wart = False
-			self.co2_hands_rejuvenation = False
-
-		if self.co2_hands_scar == True:	
-			self.co2_hands_stains = False
-			#self.co2_hands_scar = False
-			self.co2_hands_wart = False
-			self.co2_hands_rejuvenation = False
-
-		if self.co2_hands_wart == True:		
-			self.co2_hands_stains = False
-			self.co2_hands_scar = False
-			#self.co2_hands_wart = False
-			self.co2_hands_rejuvenation = False
-
-		if self.co2_hands_rejuvenation == True:		
-			self.co2_hands_stains = False
-			self.co2_hands_scar = False
-			self.co2_hands_wart = False
-			#self.co2_hands_rejuvenation = False
-
-			
-
-
-
-	co2_neck_scar = fields.Boolean(
-			string="Cuello Cicatriz", 
-			default=False,	
-			#compute='_compute_co2_neck', 
-			)
 
 
 
 
 
 			
-	@api.depends('co2_hands')
-	def _compute_co2_neck(self):
-		for record in self:
-			record.co2_neck=False
+	# On Change - Clear the rest
+	# ---------------------------
 
-
-			
-	# Clear Procedures
-	# ------------------
-
-	#@api.onchange('co2_hands')
 	@api.onchange('co2_hands')
 	def _onchange_co2_hands(self):
-	#def _onchange_co2_hands(self,context):
-	    #self.message = "Dear %s" % (self.partner_id.name or "")
-
-
-		print 
-		print self
-		print 
-		print self.co2_hands
 		
-		self.co2_neck_scar = False
-		self.co2_neck = ''
+		if self.co2_hands != 'none':	
+			
+			#self.co2_hands = 'none'
+			self.co2_neck = 'none'
+			self.co2_cheekbone = 'none'
+			self.co2_vagina = 'none'
+			self.co2_packages = 'none'
 				
-		#self.co2_cheekbone = 'nil'
-		self.co2_cheekbone = 'none'
-		#self.co2_cheekbone = False
-		
-		self.co2_vagina = ''
-		
-		
-		#for record in self:
-			#record.code = record.service.x_name_short
-		#	record.co2_cheekbone = ''
-		
-		
-		
-		#self.co2_neck = 'none'
-
-		#self.co2_neck = 'scar'
-		#self.co2_neck = nil
-
-		#print self.co2_neck
-		
-		#self.co2_hands = False
-		#self.co2_cheekbone = False
-		#self.co2_vagina = False
-		#self.co2_packages = False
-		#self.write({'co2_neck': False})
-		#print self.co2_neck		
-		print 
-		
 		return {
-		    'co2_cheekbone': False,
-		    #'co2_neck': False,
 			'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', 'hands'),('x_pathology', '=', self.co2_hands)]},
-		    #'warning': {'title': "Warning", 'message': "What is this?"},
+		}
+
+
+		
+	@api.onchange('co2_neck')
+	def _onchange_co2_neck(self):
+
+		if self.co2_neck != 'none':	
+			
+			self.co2_hands = 'none'
+			#self.co2_neck = 'none'
+			self.co2_cheekbone = 'none'
+			self.co2_vagina = 'none'
+			self.co2_packages = 'none'
+				
+		return {
+			'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', 'neck'),('x_pathology', '=', self.co2_neck)]},
+		}
+
+
+
+	@api.onchange('co2_cheekbone')
+	def _onchange_co2_cheekbone(self):
+
+		if self.co2_cheekbone != 'none':	
+			self.co2_hands = 'none'
+			self.co2_neck = 'none'
+			#self.co2_cheekbone = 'none'
+			self.co2_vagina = 'none'
+			self.co2_packages = 'none'
+				
+		return {
+			'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', 'cheekbone'),('x_pathology', '=', self.co2_cheekbone)]},
+		}
+
+
+
+	@api.onchange('co2_vagina')
+	def _onchange_co2_vagina(self):
+
+		if self.co2_vagina != 'none':	
+			
+			self.co2_hands = 'none'
+			self.co2_neck = 'none'
+			self.co2_cheekbone = 'none'
+			#self.co2_vagina = 'none'
+			self.co2_packages = 'none'
+				
+		return {
+			'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', 'vagina'),('x_pathology', '=', self.co2_vagina)]},
 		}
 		
 		
 		
-		
+	@api.onchange('co2_packages')
+	def _onchange_co2_packages(self):
 
-	#def clear_others(self,cr,uid,ids,context=None):
-	#def clear_all(self,cr,uid,ids,context=None):
+		if self.co2_packages != 'none':	
+			
+			self.co2_hands = 'none'
+			self.co2_neck = 'none'
+			self.co2_cheekbone = 'none'
+			self.co2_vagina = 'none'
+			#self.co2_packages = 'none'
+				
+		return {
+			'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', 'packages'),('x_pathology', '=', self.co2_packages)]},
+		}	
 
-	#def clear_others(self,context=None):
-	
-	@api.multi
-	def clear_all(self):
-	#def clear_all(self,cr,uid,ids,context=None):
-		
-		
-		self.co2_hands = False
-		self.co2_cheekbone = False
-		self.co2_neck = False
-		self.co2_vagina = False
-		self.co2_packages = False
-
-		self.co2_neck_scar = False
-		
-		print
-		print self.co2_hands
-		print
-		
-		#print 'jx: Mark'
-		#print context 
-
-		return {}
-	
-	
-	
 

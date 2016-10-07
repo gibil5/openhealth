@@ -65,9 +65,11 @@
 									<!--
 									<field string="Servicio de la clínica" name="service"  colspan="2"    />
 									<field string="Servicio de la clínica" name="service" colspan="2" widget="radio"  domain="[('x_treatment', '=', 'laser_co2')]" />
+										
+										widget="radio"
 									-->
 
-									<field name="service"     widget="radio"/>
+									<field name="service" />
 								</group>
 							</group>
 

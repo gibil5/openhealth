@@ -2,7 +2,7 @@
 #
 # 	*** OPEN HEALTH
 # 
-#   Last up: 2 Oct 2016
+#   Last up: 7 Oct 2016
 #
 
 {
@@ -16,7 +16,7 @@
     'description': """
 
 		Installed: 	 7 Sep 2016.\n 
-		Upgraded: 	 5 Oct 2016.\n 
+		Upgraded: 	 7 Oct 2016.\n 
 		\n
 
 		This is my first extension for oeHealth.

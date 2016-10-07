@@ -2,6 +2,7 @@
 
 
 
+# First
 
 _co2_che_list = [	
 		('stains','Manchas'),	
@@ -54,32 +55,42 @@ _co2_pac_list = [
 
 
 
+# Second
 
 _co2_rejuv_list = [		
 		('rejuvenation_face_1','1'),
 		('rejuvenation_face_2','2'),
 		('rejuvenation_face_3','3'),
+		('none',''),
 		]
 			
 _co2_acneseq_list = [
 		('acne_sequels_1','1'),	
 		('acne_sequels_2','2'),
 		('acne_sequels_3','3'),
+		('none',''),
 		]			
 
 
 
 
+
+
+
+# Third
+
 _co2_lfstains_list = [
 		('stains_1','Grado 1'),	
 		('stains_2','Grado 2'),	
 		('stains_3','Grado 3'),	
+		('none',''),
 		]
 
 _co2_lfqueratosis_list = [
 		('queratosis_1','Grado 1'),	
 		('queratosis_2','Grado 2'),	
 		('queratosis_3','Grado 3'),	
+		('none',''),
 		]
 
 
@@ -87,26 +98,101 @@ _co2_lfmole_list = [
 		('mole_1','Grado 1'),	
 		('mole_2','Grado 2'),	
 		('mole_3','Grado 3'),	
+		('none',''),
 		]
 		
 _co2_lfscar_list = [
 		('scar_1','Grado 1'),	
 		('scar_2','Grado 2'),	
 		('scar_3','Grado 3'),	
+		('none',''),
 		]
 		
+		
+		
 _co2_lfcyst_list = [
-		('cyst_1','Grado 1'),	
+		('cyst_1',''),	
 		#('cyst_2','Grado 2'),	
 		#('cyst_3','Grado 3'),	
+		('none',''),
 		]
 	
 _co2_lfwart_list = [
-		('wart_1','Grado 1'),	
+		('wart_1',''),	
 		#('wart_2','Grado 2'),	
 		#('wart_3','Grado 3'),	
-		]	
+		('none',''),
+ 		]	
 		
+
+
+
+
+
+# Fourth
+
+_co2_lbacneseq_list = [
+		('acne_sequels_1','Grado 1'),	
+		('acne_sequels_2','Grado 2'),	
+		('acne_sequels_3','Grado 3'),	
+		('none',''),
+		]
+		
+
+_co2_lbstains_list = [
+		('stains_1','Grado 1'),	
+		('stains_2','Grado 2'),	
+		('stains_3','Grado 3'),	
+		('none',''),
+		]
+
+_co2_lbqueratosis_list = [
+		('queratosis_1',''),	
+		#('queratosis_2','Grado 2'),	
+		#('queratosis_3','Grado 3'),	
+		('none',''),
+		]
+
+
+_co2_lbmole_list = [
+		('mole_1','Grado 1'),	
+		('mole_2','Grado 2'),	
+		('mole_3','Grado 3'),	
+		('none',''),
+		]
+		
+_co2_lbscar_list = [
+		('scar_1','Grado 1'),	
+		('scar_2','Grado 2'),	
+		('scar_3','Grado 3'),	
+		('none',''),
+		]
+		
+		
+_co2_lbcyst_list = [
+		('cyst_1',''),	
+		#('cyst_2','Grado 2'),	
+		#('cyst_3','Grado 3'),	
+		('none',''),
+		]
+	
+_co2_lbwart_list = [
+		('wart_1',''),	
+		#('wart_2','Grado 2'),	
+		#('wart_3','Grado 3'),	
+		('none',''),
+ 		]	
+		
+
+
+
+
+
+
+
+
+
+
 
 
 

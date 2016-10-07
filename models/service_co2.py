@@ -22,8 +22,11 @@ class ServiceCo2(models.Model):
 	
 	
 
+
 	# Smart vars
 	# ----------
+	
+	# First
 	
 	co2_hands = fields.Selection(
 			selection = jxvars._co2_han_list, 
@@ -67,56 +70,12 @@ class ServiceCo2(models.Model):
 
 
 
-	co2_allface_rejuvenation = fields.Selection(
-			selection = jxvars._co2_rejuv_list, 
-			string="Rejuvenecimiento facial", 
-			default='',	
-			)
-
-	co2_allface_acnesequels = fields.Selection(
-			selection = jxvars._co2_acneseq_list, 
-			string="Acné y secuelas", 
-			default='',	
-			)
 
 
 
-	co2_localface_stains = fields.Selection(
-			selection = jxvars._co2_lfstains_list, 
-			string="Manchas", 
-			default='',	
-			)
 
-	co2_localface_queratosis = fields.Selection(
-			selection = jxvars._co2_lfqueratosis_list, 
-			string="Queratosis", 
-			default='',	
-			)
 
-	co2_localface_mole = fields.Selection(
-			selection = jxvars._co2_lfmole_list, 
-			string="Lunar", 
-			default='',	
-			)
 			
-	co2_localface_scar = fields.Selection(
-			selection = jxvars._co2_lfscar_list, 
-			string="Cicatriz", 
-			default='',	
-			)
-
-	co2_localface_cyst = fields.Selection(
-			selection = jxvars._co2_lfcyst_list, 
-			string="Quiste", 
-			default='',	
-			)
-
-	co2_localface_wart = fields.Selection(
-			selection = jxvars._co2_lfwart_list, 
-			string="Verruga", 
-			default='',	
-			)
-
 
 
 
@@ -221,3 +180,314 @@ class ServiceCo2(models.Model):
 		}	
 
 
+
+
+
+
+
+	# Second
+	
+	co2_allface_rejuvenation = fields.Selection(
+			selection = jxvars._co2_rejuv_list, 
+			string="Rejuvenecimiento facial", 
+			default='',	
+			)
+
+	co2_allface_acnesequels = fields.Selection(
+			selection = jxvars._co2_acneseq_list, 
+			string="Acné y secuelas", 
+			default='',	
+			)
+	
+
+	# Smart 
+
+	@api.onchange('co2_allface_rejuvenation')
+	def _onchange_co2_afr(self):
+		print 
+		print 'a'
+		
+		if self.co2_allface_rejuvenation != 'none':				
+			self.co2_allface_acnesequels = 'none'
+
+		print 
+		return {}
+
+
+	@api.onchange('co2_allface_acnesequels')
+	def _onchange_co2_afa(self):
+		print 
+		print 'b'
+
+		if self.co2_allface_acnesequels != 'none':	
+			self.co2_allface_rejuvenation = 'none'
+			
+		print 
+		return {}
+		
+		
+		
+		
+
+
+	# Third
+	co2_lf_stains = fields.Selection(
+			selection = jxvars._co2_lfstains_list, 
+			string="Manchas", 
+			default='',	
+			)
+
+	co2_lf_queratosis = fields.Selection(
+			selection = jxvars._co2_lfqueratosis_list, 
+			string="Queratosis", 
+			default='',	
+			)
+
+	co2_lf_mole = fields.Selection(
+			selection = jxvars._co2_lfmole_list, 
+			string="Lunar", 
+			default='',	
+			)
+			
+			
+			
+	co2_lf_scar = fields.Selection(
+			selection = jxvars._co2_lfscar_list, 
+			string="Cicatriz", 
+			default='',	
+			)
+
+	co2_lf_cyst = fields.Selection(
+			selection = jxvars._co2_lfcyst_list, 
+			string="Quiste", 
+			default='',	
+			)
+
+	co2_lf_wart = fields.Selection(
+			selection = jxvars._co2_lfwart_list, 
+			string="Verruga", 
+			default='',	
+			)
+
+
+
+
+
+
+	@api.onchange('co2_lf_stains')
+	def _onchange_co2_lf_stains(self):
+
+		if self.co2_lf_stains != 'none':	
+			
+			#self.co2_lf_stains = 'none'
+			self.co2_lf_queratosis = 'none'
+			self.co2_lf_mole = 'none'
+			
+			self.co2_lf_scar = 'none'
+			self.co2_lf_cyst = 'none'
+			self.co2_lf_wart = 'none'
+				
+		return {}
+
+
+	@api.onchange('co2_lf_queratosis')
+	def _onchange_co2_lf_queratosis(self):
+
+		if self.co2_lf_queratosis != 'none':	
+			
+			self.co2_lf_stains = 'none'
+			#self.co2_lf_queratosis = 'none'
+			self.co2_lf_mole = 'none'
+			
+			self.co2_lf_scar = 'none'
+			self.co2_lf_cyst = 'none'
+			self.co2_lf_wart = 'none'
+				
+		return {}
+		
+		
+	@api.onchange('co2_lf_mole')
+	def _onchange_co2_lf_mole(self):
+
+		if self.co2_lf_mole != 'none':	
+			
+			self.co2_lf_stains = 'none'
+			self.co2_lf_queratosis = 'none'
+			#self.co2_lf_mole = 'none'
+			
+			self.co2_lf_scar = 'none'
+			self.co2_lf_cyst = 'none'
+			self.co2_lf_wart = 'none'
+				
+		return {}
+
+
+
+
+
+
+
+	@api.onchange('co2_lf_scar')
+	def _onchange_co2_lf_scar(self):
+
+		if self.co2_lf_scar != 'none':	
+			
+			self.co2_lf_stains = 'none'
+			self.co2_lf_queratosis = 'none'
+			self.co2_lf_mole = 'none'
+			
+			#self.co2_lf_scar = 'none'
+			self.co2_lf_cyst = 'none'
+			self.co2_lf_wart = 'none'
+				
+		return {}
+		
+		
+	@api.onchange('co2_lf_cyst')
+	def _onchange_co2_lf_cyst(self):
+
+		if self.co2_lf_cyst != 'none':	
+			
+			self.co2_lf_stains = 'none'
+			self.co2_lf_queratosis = 'none'
+			self.co2_lf_mole = 'none'
+			
+			self.co2_lf_scar = 'none'
+			#self.co2_lf_cyst = 'none'
+			self.co2_lf_wart = 'none'
+				
+		return {}		
+
+
+	@api.onchange('co2_lf_wart')
+	def _onchange_co2_lf_wart(self):
+
+		if self.co2_lf_wart != 'none':	
+			
+			self.co2_lf_stains = 'none'
+			self.co2_lf_queratosis = 'none'
+			self.co2_lf_mole = 'none'
+			
+			self.co2_lf_scar = 'none'
+			self.co2_lf_cyst = 'none'
+			#self.co2_lf_wart = 'none'
+				
+		return {}
+
+
+
+
+
+	# Fourth
+	
+	co2_lb_acneseq = fields.Selection(
+			selection = jxvars._co2_lbacneseq_list, 
+			string="Acné y secuelas", 
+			default='',	
+			)
+			
+	co2_lb_stains = fields.Selection(
+			selection = jxvars._co2_lbstains_list, 
+			string="Manchas", 
+			default='',	
+			)
+
+	co2_lb_queratosis = fields.Selection(
+			selection = jxvars._co2_lbqueratosis_list, 
+			string="Queratosis", 
+			default='',	
+			)
+
+	co2_lb_mole = fields.Selection(
+			selection = jxvars._co2_lbmole_list, 
+			string="Lunar", 
+			default='',	
+			)
+			
+			
+			
+	co2_lb_scar = fields.Selection(
+			selection = jxvars._co2_lbscar_list, 
+			string="Cicatriz", 
+			default='',	
+			)
+
+	co2_lb_cyst = fields.Selection(
+			selection = jxvars._co2_lbcyst_list, 
+			string="Quiste", 
+			default='',	
+			)
+
+	co2_lb_wart = fields.Selection(
+			selection = jxvars._co2_lbwart_list, 
+			string="Verruga", 
+			default='',	
+			)
+			
+			
+			
+			
+			
+			
+			
+	# On change 		
+	
+	#def clear_others(self,me):
+	#def clear_others(self):
+	#def clear_others():
+	def clear_others(self,token,arr):
+		print token
+		
+		print 3
+		#arr = [ 
+			#self.co2_lb_acneseq,
+			
+		#	self.co2_lb_stains,
+		#	self.co2_lb_queratosis,
+		#	self.co2_lb_mole,
+			
+		#	self.co2_lb_scar,
+		#	self.co2_lb_cyst,
+		#	self.co2_lb_wart,
+		#	]
+			
+		for vax in arr:
+			#if me != vax: 
+			if not (vax == 'none'  or  vax == False): 
+				print vax
+				vax = 'none'
+				#print vax 		
+		
+	
+	
+	@api.onchange('co2_lb_acneseq')
+	def _onchange_co2_lb_acneseq(self):
+		arr = [ 
+			#self.co2_lb_acneseq,
+			
+			self.co2_lb_stains,
+			self.co2_lb_queratosis,
+			self.co2_lb_mole,
+			
+			self.co2_lb_scar,
+			self.co2_lb_cyst,
+			self.co2_lb_wart,
+			]
+			
+		if self.co2_lb_acneseq != 'none':	
+			print 1
+			
+			#self.clear_others(2)
+			self.clear_others(2,arr)
+
+			#self.co2_lb_acneseq = 'none'
+			
+			#self.co2_lb_stains = 'none'
+			#self.co2_lb_queratosis = 'none'
+			#self.co2_lb_mole = 'none'
+			
+			#self.co2_lb_scar = 'none'
+			#self.co2_lb_cyst = 'none'
+			#self.co2_lb_wart = 'none'
+				
+		return {}

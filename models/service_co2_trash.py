@@ -155,4 +155,63 @@
 
 		return {}
 		
-					
+		
+	
+	
+	
+	def clear_others(self,me):
+		arr = [ 
+				self.co2_allface_rejuvenation, 
+				self.co2_allface_acnesequels, 
+			]
+		for vax in arr:
+			if me != vax: 
+				print vax
+				vax = 'none'
+				print vax 
+		print
+		
+		
+		
+		
+	#@api.onchange('co2_allface_rejuvenation', 'co2_allface_acnesequels')
+	
+	#def _onchange_co2_allface(self):
+	#	print 
+	#	print 'jx'
+
+	#	if self.co2_allface_rejuvenation != 'none':
+	#		self.co2_allface_acnesequels = 'none'
+	#		print 'rejuv'
+
+	#	if self.co2_allface_acnesequels != 'none':
+	#		self.co2_allface_rejuvenation = 'none'
+	#		print 'acneseq'
+		
+	#	print
+		
+		
+
+
+	@api.onchange('co2_allface_rejuvenation')
+	def _onchange_co2_afr(self):
+
+		if self.co2_allface_rejuvenation != 'none':				
+			self.co2_allface_acnesequels = 'none'
+				
+		return {
+			'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', 'face_all'),('x_pathology', '=', self.co2_allface_rejuvenation)]},
+		}
+		
+		
+	@api.onchange('co2_allface_acnesequels')
+	def _onchange_co2_afa(self):
+
+		if self.co2_allface_acnesequels != 'none':	
+			self.co2_allface_rejuvenation = 'none'
+				
+		return {
+			'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', 'face_all'),('x_pathology', '=', self.co2_allface_acnesequels)]},
+		}
+		
+		

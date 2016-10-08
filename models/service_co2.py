@@ -66,47 +66,25 @@ class ServiceCo2(models.Model):
 
 
 
-
-
-
-
-
-
-
-
-
-			
-
-
-
-			
-			
-
-
-
-
-
-
-
-
-
-
-
-
 			
 	# On Change - Clear the rest
 	# ---------------------------
 
+	#@api.onchange('co2_allface_rejuvenation')
+	#def _onchange_co2_allface_rejuvenation(self):
+	#	if self.co2_allface_rejuvenation != 'none':	
+	#		self.co2_allface_rejuvenation = self.clear_all(self.co2_allface_rejuvenation)
+	#	return {}
+
+
+
+
+
 	@api.onchange('co2_hands')
 	def _onchange_co2_hands(self):
-		
 		if self.co2_hands != 'none':	
 			
-			#self.co2_hands = 'none'
-			self.co2_neck = 'none'
-			self.co2_cheekbone = 'none'
-			self.co2_vagina = 'none'
-			self.co2_packages = 'none'
+			self.co2_hands = self.clear_all(self.co2_hands)
 				
 		return {
 			'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', 'hands'),('x_pathology', '=', self.co2_hands)]},
@@ -119,11 +97,7 @@ class ServiceCo2(models.Model):
 
 		if self.co2_neck != 'none':	
 			
-			self.co2_hands = 'none'
-			#self.co2_neck = 'none'
-			self.co2_cheekbone = 'none'
-			self.co2_vagina = 'none'
-			self.co2_packages = 'none'
+				self.co2_neck = self.clear_all(self.co2_neck)
 				
 		return {
 			'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', 'neck'),('x_pathology', '=', self.co2_neck)]},
@@ -135,11 +109,8 @@ class ServiceCo2(models.Model):
 	def _onchange_co2_cheekbone(self):
 
 		if self.co2_cheekbone != 'none':	
-			self.co2_hands = 'none'
-			self.co2_neck = 'none'
-			#self.co2_cheekbone = 'none'
-			self.co2_vagina = 'none'
-			self.co2_packages = 'none'
+
+			self.co2_cheekbone = self.clear_all(self.co2_cheekbone)
 				
 		return {
 			'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', 'cheekbone'),('x_pathology', '=', self.co2_cheekbone)]},
@@ -152,11 +123,8 @@ class ServiceCo2(models.Model):
 
 		if self.co2_vagina != 'none':	
 			
-			self.co2_hands = 'none'
-			self.co2_neck = 'none'
-			self.co2_cheekbone = 'none'
-			#self.co2_vagina = 'none'
-			self.co2_packages = 'none'
+			self.co2_vagina = self.clear_all(self.co2_vagina)
+
 				
 		return {
 			'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', 'vagina'),('x_pathology', '=', self.co2_vagina)]},
@@ -168,12 +136,8 @@ class ServiceCo2(models.Model):
 	def _onchange_co2_packages(self):
 
 		if self.co2_packages != 'none':	
-			
-			self.co2_hands = 'none'
-			self.co2_neck = 'none'
-			self.co2_cheekbone = 'none'
-			self.co2_vagina = 'none'
-			#self.co2_packages = 'none'
+
+			self.co2_packages = self.clear_all(self.co2_packages)
 				
 		return {
 			'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', 'packages'),('x_pathology', '=', self.co2_packages)]},
@@ -200,30 +164,25 @@ class ServiceCo2(models.Model):
 			)
 	
 
-	# Smart 
-
+	
+	# On change
+	
 	@api.onchange('co2_allface_rejuvenation')
-	def _onchange_co2_afr(self):
-		print 
-		print 'a'
+	def _onchange_co2_allface_rejuvenation(self):
+		if self.co2_allface_rejuvenation != 'none':	
+			self.co2_allface_rejuvenation = self.clear_all(self.co2_allface_rejuvenation)
+		return {}
 		
-		if self.co2_allface_rejuvenation != 'none':				
-			self.co2_allface_acnesequels = 'none'
-
-		print 
-		return {}
-
-
 	@api.onchange('co2_allface_acnesequels')
-	def _onchange_co2_afa(self):
-		print 
-		print 'b'
-
+	def _onchange_co2_allface_acnesequels(self):
 		if self.co2_allface_acnesequels != 'none':	
-			self.co2_allface_rejuvenation = 'none'
-			
-		print 
+			self.co2_allface_acnesequels = self.clear_all(self.co2_allface_acnesequels)
 		return {}
+		
+		
+		
+
+
 		
 		
 		
@@ -271,108 +230,46 @@ class ServiceCo2(models.Model):
 
 
 
-
-
+	# On change
+	
+	@api.onchange('co2_lf_scar')
+	def _onchange_co2_lf_scar(self):
+		if self.co2_lf_scar != 'none':	
+			self.co2_lf_scar = self.clear_all(self.co2_lf_scar)
+		return {}
+		
+	@api.onchange('co2_lf_mole')
+	def _onchange_co2_lf_mole(self):
+		if self.co2_lf_mole != 'none':	
+			self.co2_lf_mole = self.clear_all(self.co2_lf_mole)
+		return {}
 
 	@api.onchange('co2_lf_stains')
 	def _onchange_co2_lf_stains(self):
-
 		if self.co2_lf_stains != 'none':	
-			
-			#self.co2_lf_stains = 'none'
-			self.co2_lf_queratosis = 'none'
-			self.co2_lf_mole = 'none'
-			
-			self.co2_lf_scar = 'none'
-			self.co2_lf_cyst = 'none'
-			self.co2_lf_wart = 'none'
-				
+			self.co2_lf_stains = self.clear_all(self.co2_lf_stains)
 		return {}
+
 
 
 	@api.onchange('co2_lf_queratosis')
 	def _onchange_co2_lf_queratosis(self):
-
 		if self.co2_lf_queratosis != 'none':	
-			
-			self.co2_lf_stains = 'none'
-			#self.co2_lf_queratosis = 'none'
-			self.co2_lf_mole = 'none'
-			
-			self.co2_lf_scar = 'none'
-			self.co2_lf_cyst = 'none'
-			self.co2_lf_wart = 'none'
-				
-		return {}
-		
-		
-	@api.onchange('co2_lf_mole')
-	def _onchange_co2_lf_mole(self):
-
-		if self.co2_lf_mole != 'none':	
-			
-			self.co2_lf_stains = 'none'
-			self.co2_lf_queratosis = 'none'
-			#self.co2_lf_mole = 'none'
-			
-			self.co2_lf_scar = 'none'
-			self.co2_lf_cyst = 'none'
-			self.co2_lf_wart = 'none'
-				
+			self.co2_lf_queratosis = self.clear_all(self.co2_lf_queratosis)
 		return {}
 
-
-
-
-
-
-
-	@api.onchange('co2_lf_scar')
-	def _onchange_co2_lf_scar(self):
-
-		if self.co2_lf_scar != 'none':	
-			
-			self.co2_lf_stains = 'none'
-			self.co2_lf_queratosis = 'none'
-			self.co2_lf_mole = 'none'
-			
-			#self.co2_lf_scar = 'none'
-			self.co2_lf_cyst = 'none'
-			self.co2_lf_wart = 'none'
-				
-		return {}
-		
-		
 	@api.onchange('co2_lf_cyst')
 	def _onchange_co2_lf_cyst(self):
-
 		if self.co2_lf_cyst != 'none':	
-			
-			self.co2_lf_stains = 'none'
-			self.co2_lf_queratosis = 'none'
-			self.co2_lf_mole = 'none'
-			
-			self.co2_lf_scar = 'none'
-			#self.co2_lf_cyst = 'none'
-			self.co2_lf_wart = 'none'
-				
-		return {}		
-
+			self.co2_lf_cyst = self.clear_all(self.co2_lf_cyst)
+		return {}
 
 	@api.onchange('co2_lf_wart')
 	def _onchange_co2_lf_wart(self):
-
 		if self.co2_lf_wart != 'none':	
-			
-			self.co2_lf_stains = 'none'
-			self.co2_lf_queratosis = 'none'
-			self.co2_lf_mole = 'none'
-			
-			self.co2_lf_scar = 'none'
-			self.co2_lf_cyst = 'none'
-			#self.co2_lf_wart = 'none'
-				
+			self.co2_lf_wart = self.clear_all(self.co2_lf_wart)
 		return {}
+
 
 
 
@@ -386,6 +283,18 @@ class ServiceCo2(models.Model):
 			default='',	
 			)
 			
+	co2_lb_scar = fields.Selection(
+			selection = jxvars._co2_lbscar_list, 
+			string="Cicatriz", 
+			default='',	
+			)
+			
+	co2_lb_mole = fields.Selection(
+			selection = jxvars._co2_lbmole_list, 
+			string="Lunar", 
+			default='',	
+			)
+						
 	co2_lb_stains = fields.Selection(
 			selection = jxvars._co2_lbstains_list, 
 			string="Manchas", 
@@ -397,21 +306,7 @@ class ServiceCo2(models.Model):
 			string="Queratosis", 
 			default='',	
 			)
-
-	co2_lb_mole = fields.Selection(
-			selection = jxvars._co2_lbmole_list, 
-			string="Lunar", 
-			default='',	
-			)
 			
-			
-			
-	co2_lb_scar = fields.Selection(
-			selection = jxvars._co2_lbscar_list, 
-			string="Cicatriz", 
-			default='',	
-			)
-
 	co2_lb_cyst = fields.Selection(
 			selection = jxvars._co2_lbcyst_list, 
 			string="Quiste", 
@@ -425,69 +320,104 @@ class ServiceCo2(models.Model):
 			)
 			
 			
-			
-			
-			
-			
-			
-	# On change 		
-	
-	#def clear_others(self,me):
-	#def clear_others(self):
-	#def clear_others():
-	def clear_others(self,token,arr):
-		print token
-		
-		print 3
-		#arr = [ 
-			#self.co2_lb_acneseq,
-			
-		#	self.co2_lb_stains,
-		#	self.co2_lb_queratosis,
-		#	self.co2_lb_mole,
-			
-		#	self.co2_lb_scar,
-		#	self.co2_lb_cyst,
-		#	self.co2_lb_wart,
-		#	]
-			
-		for vax in arr:
-			#if me != vax: 
-			if not (vax == 'none'  or  vax == False): 
-				print vax
-				vax = 'none'
-				#print vax 		
-		
-	
-	
-	@api.onchange('co2_lb_acneseq')
-	def _onchange_co2_lb_acneseq(self):
-		arr = [ 
-			#self.co2_lb_acneseq,
-			
-			self.co2_lb_stains,
-			self.co2_lb_queratosis,
-			self.co2_lb_mole,
-			
-			self.co2_lb_scar,
-			self.co2_lb_cyst,
-			self.co2_lb_wart,
-			]
-			
-		if self.co2_lb_acneseq != 'none':	
-			print 1
-			
-			#self.clear_others(2)
-			self.clear_others(2,arr)
+					
 
-			#self.co2_lb_acneseq = 'none'
-			
-			#self.co2_lb_stains = 'none'
-			#self.co2_lb_queratosis = 'none'
-			#self.co2_lb_mole = 'none'
-			
-			#self.co2_lb_scar = 'none'
-			#self.co2_lb_cyst = 'none'
-			#self.co2_lb_wart = 'none'
-				
+	
+	
+	# On change
+
+	@api.onchange('co2_lb_acneseq')
+	def _onchange_co2_lb_acneseq(self):			
+		if self.co2_lb_acneseq != 'none':	
+			self.co2_lb_acneseq = self.clear_all(self.co2_lb_acneseq)
 		return {}
+	
+	
+	
+	
+	@api.onchange('co2_lb_scar')
+	def _onchange_co2_lb_scar(self):
+		if self.co2_lb_scar != 'none':	
+			self.co2_lb_scar = self.clear_all(self.co2_lb_scar)
+		return {}
+	
+	
+	@api.onchange('co2_lb_mole')
+	def _onchange_co2_lb_mole(self):
+		if self.co2_lb_mole != 'none':	
+			self.co2_lb_mole = self.clear_all(self.co2_lb_mole)
+		return {}
+	
+	
+	@api.onchange('co2_lb_stains')
+	def _onchange_co2_lb_stains(self):
+		if self.co2_lb_stains != 'none':	
+			self.co2_lb_stains = self.clear_all(self.co2_lb_stains)
+		return {}
+		
+		
+		
+		
+	@api.onchange('co2_lb_queratosis')
+	def _onchange_co2_lb_queratosis(self):		
+		if self.co2_lb_queratosis != 'none':	
+			self.co2_lb_queratosis = self.clear_all(self.co2_lb_queratosis)
+		return {}
+		
+		
+	@api.onchange('co2_lb_cyst')
+	def _onchange_co2_lb_cyst(self):
+		if self.co2_lb_cyst != 'none':	
+			self.co2_lb_cyst = self.clear_all(self.co2_lb_cyst)
+		return {}		
+	
+	
+	@api.onchange('co2_lb_wart')
+	def _onchange_co2_lb_wart(self):
+		if self.co2_lb_wart != 'none':	
+			self.co2_lb_wart = self.clear_all(self.co2_lb_wart)
+		return {}
+		
+		
+		
+		
+	def clear_all(self,token):
+		
+		# First
+		self.co2_hands = 'none'
+		self.co2_neck = 'none'
+		self.co2_cheekbone = 'none'
+		self.co2_vagina = 'none'
+		self.co2_packages = 'none'
+		
+		
+		# Second 
+		self.co2_allface_acnesequels = 'none'
+		self.co2_allface_rejuvenation = 'none'
+		
+		
+		# Third
+		self.co2_lf_scar = 'none'
+		self.co2_lf_mole = 'none'
+		self.co2_lf_stains = 'none'
+		
+		self.co2_lf_queratosis = 'none'		
+		self.co2_lf_cyst = 'none'
+		self.co2_lf_wart = 'none'
+		
+		
+		# Fourth
+		self.co2_lb_acneseq = 'none'
+
+		self.co2_lb_scar = 'none'
+		self.co2_lb_mole = 'none'
+		self.co2_lb_stains = 'none'
+
+		self.co2_lb_queratosis = 'none'
+		self.co2_lb_cyst = 'none'
+		self.co2_lb_wart = 'none'
+
+		return token 
+	
+	
+	

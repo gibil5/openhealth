@@ -226,7 +226,11 @@
 						
 						
 						<group>
+							<!--
+							<field name="lbo_dic[0]" widget="radio"/>													
+							-->
 							<field name="co2_lb_acneseq" widget="radio"/>													
+
 						</group>
 
 

@@ -12,6 +12,7 @@ from . import evaluation
 
 
 from . import product
+from . import pathology
 from . import service
 from . import service_co2
 

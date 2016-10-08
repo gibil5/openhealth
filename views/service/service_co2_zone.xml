@@ -75,9 +75,12 @@
 								
 								
 								openerp.api.on_change="_onchange_co2_hands()"	
+									
+									
+								<field name="co2_hands"  widget="radio"/>	
 								-->
 								
-								<field name="co2_hands"  widget="radio"/>	
+								<field name="co2_hands" widget="radio" />	
 									
 							</group>																									
 
@@ -174,49 +177,43 @@
 					
 					<page string="Local Rostro">
 
-
 						<group>
-							<field name="co2_lf_scar" widget="radio"/>													
+							<group>
+								<field name="co2_lf_scar" widget="radio"/>	
+																			
+							</group>
+						
+							<group>
+								<field name="co2_lf_mole" widget="radio"/>													
+							</group>
 						</group>
-
+					
 
 						<hr></hr>
 
 
 						<group>
-							<field name="co2_lf_mole" widget="radio"/>													
-						</group>
+							<group>
+								<field name="co2_lf_stains" widget="radio"/>													
+							</group>
 
+							<group>
+								<field name="co2_lf_keratosis" widget="radio"/>													
+							</group>
+						</group>
+					
 
 						<hr></hr>
 
 
 						<group>
-							<field name="co2_lf_stains" widget="radio"/>													
-						</group>
+							<group>
+								<field name="co2_lf_cyst" widget="radio"/>													
+							</group>
 
-
-						<hr></hr>
-
-
-						<group>
-							<field name="co2_lf_queratosis" widget="radio"/>													
-						</group>
-
-
-						<hr></hr>
-
-
-						<group>
-							<field name="co2_lf_cyst" widget="radio"/>													
-						</group>
-
-
-						<hr></hr>
-
-
-						<group>
-							<field name="co2_lf_wart" widget="radio"/>													
+							<group>
+								<field name="co2_lf_wart" widget="radio"/>													
+							</group>
 						</group>
 
 
@@ -267,7 +264,7 @@
 						
 						
 						<group>
-							<field name="co2_lb_queratosis" widget="radio"/>													
+							<field name="co2_lb_keratosis" widget="radio"/>													
 						</group>
 
 

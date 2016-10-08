@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 #
-# 	Consultation 
+# 	Service Co2 
 # 
-# Created: 				20 Sep 2016
-# Last updated: 	 	20 Sep 2016
+#
 
 from openerp import models, fields, api
 from datetime import datetime
@@ -51,18 +50,28 @@ class ServiceCo2(models.Model):
 	
 	# First
 	
+	
 	co2_hands = fields.Selection(
 			selection = jxvars._co2_han_list, 
 			string="Manos", 
 			default='',	
 			)
 
+	#co2_hands = fields.One2many(
+	#		'openhealth.pathology',
+	#		'service_co2', 
+	#		string="Manos", 
+	#		default='stains',	
+	#		)
+
+
+
 
 	co2_neck = fields.Selection(
 			selection = jxvars._co2_nec_list, 
 			string="Cuello", 
 			#default='',	
-			default='scar',	
+			default='',	
 			)
 			
 	
@@ -97,17 +106,18 @@ class ServiceCo2(models.Model):
 
 	@api.onchange('co2_hands')
 	def _onchange_co2_hands(self):
+		
 		if self.co2_hands != 'none':	
-			
 			self.co2_hands = self.clear_all(self.co2_hands)
 
 			self.zone = 'hands'
 			self.pathology = self.co2_hands
 			
-		return {
-			#'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', 'hands'),('x_pathology', '=', self.co2_hands)]},
-			'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
-		}
+			return {
+				'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
+			}
+
+
 
 
 		
@@ -115,16 +125,14 @@ class ServiceCo2(models.Model):
 	def _onchange_co2_neck(self):
 
 		if self.co2_neck != 'none':	
-			
 			self.co2_neck = self.clear_all(self.co2_neck)
 
 			self.zone = 'neck'
 			self.pathology = self.co2_neck
 				
-		return {
-			#'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', 'neck'),('x_pathology', '=', self.co2_neck)]},
-			'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
-		}
+			return {
+				'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
+			}
 
 
 
@@ -133,16 +141,14 @@ class ServiceCo2(models.Model):
 	def _onchange_co2_cheekbone(self):
 
 		if self.co2_cheekbone != 'none':	
-
 			self.co2_cheekbone = self.clear_all(self.co2_cheekbone)
 			
 			self.zone = 'cheekbones'
 			self.pathology = self.co2_cheekbone
 				
-		return {
-			#'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', 'cheekbones'),('x_pathology', '=', self.co2_cheekbone)]},
-			'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
-		}
+			return {
+				'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
+			}
 
 
 
@@ -154,16 +160,14 @@ class ServiceCo2(models.Model):
 	def _onchange_co2_vagina(self):
 
 		if self.co2_vagina != 'none':	
-			
 			self.co2_vagina = self.clear_all(self.co2_vagina)
 
 			self.zone = 'vagina'
 			self.pathology = self.co2_vagina
 				
-		return {
-			#'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', 'vagina'),('x_pathology', '=', self.co2_vagina)]},
-			'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
-		}
+			return {
+				'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
+			}
 		
 		
 		
@@ -177,11 +181,9 @@ class ServiceCo2(models.Model):
 			self.zone = 'package'
 			self.pathology = self.co2_packages
 				
-		return {
-			#'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', 'packages'),('x_pathology', '=', self.co2_packages)]},
-			'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
-			#'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_pathology', '=', self.pathology)]},
-		}	
+			return {
+				'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
+			}	
 
 
 
@@ -211,13 +213,22 @@ class ServiceCo2(models.Model):
 	def _onchange_co2_allface_rejuvenation(self):
 		if self.co2_allface_rejuvenation != 'none':	
 			self.co2_allface_rejuvenation = self.clear_all(self.co2_allface_rejuvenation)
-		return {}
+
+			self.zone = 'face_all'
+			self.pathology = self.co2_allface_rejuvenation
+			
+			return {'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]}}
+
 		
 	@api.onchange('co2_allface_acnesequels')
 	def _onchange_co2_allface_acnesequels(self):
 		if self.co2_allface_acnesequels != 'none':	
 			self.co2_allface_acnesequels = self.clear_all(self.co2_allface_acnesequels)
-		return {}
+
+			self.zone = 'face_all'
+			self.pathology = self.co2_allface_acnesequels
+
+			return {'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]}}
 		
 		
 		
@@ -236,8 +247,8 @@ class ServiceCo2(models.Model):
 			default='',	
 			)
 
-	co2_lf_queratosis = fields.Selection(
-			selection = jxvars._co2_lfqueratosis_list, 
+	co2_lf_keratosis = fields.Selection(
+			selection = jxvars._co2_lfkeratosis_list, 
 			string="Queratosis", 
 			default='',	
 			)
@@ -270,46 +281,91 @@ class ServiceCo2(models.Model):
 
 
 
+
+
 	# On change
 	
 	@api.onchange('co2_lf_scar')
 	def _onchange_co2_lf_scar(self):
 		if self.co2_lf_scar != 'none':	
 			self.co2_lf_scar = self.clear_all(self.co2_lf_scar)
-		return {}
+			
+			self.zone = 'face_local'
+			self.pathology = self.co2_lf_scar
+			
+			return {
+				'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]}
+			}
+				
+		
 		
 	@api.onchange('co2_lf_mole')
 	def _onchange_co2_lf_mole(self):
 		if self.co2_lf_mole != 'none':	
 			self.co2_lf_mole = self.clear_all(self.co2_lf_mole)
-		return {}
+
+			self.zone = 'face_local'
+			self.pathology = self.co2_lf_mole
+
+			return {
+				'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]}
+			}
+
+
+
 
 	@api.onchange('co2_lf_stains')
 	def _onchange_co2_lf_stains(self):
 		if self.co2_lf_stains != 'none':	
 			self.co2_lf_stains = self.clear_all(self.co2_lf_stains)
-		return {}
+			
+			self.zone = 'face_local'
+			self.pathology = self.co2_lf_stains
+			
+			return {
+				'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]}
+			}
 
 
-
-	@api.onchange('co2_lf_queratosis')
-	def _onchange_co2_lf_queratosis(self):
-		if self.co2_lf_queratosis != 'none':	
-			self.co2_lf_queratosis = self.clear_all(self.co2_lf_queratosis)
-		return {}
-
+	@api.onchange('co2_lf_keratosis')
+	def _onchange_co2_lf_keratosis(self):
+		if self.co2_lf_keratosis != 'none':	
+			self.co2_lf_keratosis = self.clear_all(self.co2_lf_keratosis)
+			
+			self.zone = 'face_local'
+			self.pathology = self.co2_lf_keratosis
+			
+			return {
+				'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]}
+			}
+			
+			
 	@api.onchange('co2_lf_cyst')
 	def _onchange_co2_lf_cyst(self):
 		if self.co2_lf_cyst != 'none':	
 			self.co2_lf_cyst = self.clear_all(self.co2_lf_cyst)
-		return {}
-
+			
+			self.zone = 'face_local'
+			self.pathology = self.co2_lf_cyst
+			
+			return {
+				'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]}
+			}
+			
+			
 	@api.onchange('co2_lf_wart')
 	def _onchange_co2_lf_wart(self):
 		if self.co2_lf_wart != 'none':	
 			self.co2_lf_wart = self.clear_all(self.co2_lf_wart)
-		return {}
-
+			
+			self.zone = 'face_local'
+			self.pathology = self.co2_lf_wart
+			
+			return {
+				'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]}
+			}
+			
+			
 
 
 
@@ -341,8 +397,8 @@ class ServiceCo2(models.Model):
 			default='',	
 			)
 
-	co2_lb_queratosis = fields.Selection(
-			selection = jxvars._co2_lbqueratosis_list, 
+	co2_lb_keratosis = fields.Selection(
+			selection = jxvars._co2_lbkeratosis_list, 
 			string="Queratosis", 
 			default='',	
 			)
@@ -370,7 +426,13 @@ class ServiceCo2(models.Model):
 	def _onchange_co2_lb_acneseq(self):			
 		if self.co2_lb_acneseq != 'none':	
 			self.co2_lb_acneseq = self.clear_all(self.co2_lb_acneseq)
-		return {}
+
+			self.zone = 'body_local'
+			self.pathology = self.co2_lb_acneseq
+			
+			return {
+				'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]}
+			}	
 	
 	
 	
@@ -379,54 +441,95 @@ class ServiceCo2(models.Model):
 	def _onchange_co2_lb_scar(self):
 		if self.co2_lb_scar != 'none':	
 			self.co2_lb_scar = self.clear_all(self.co2_lb_scar)
-		return {}
+
+			self.zone = 'body_local'
+			self.pathology = self.co2_lb_scar
+			
+			return {
+				'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]}
+			}	
+
+
 	
 	
 	@api.onchange('co2_lb_mole')
 	def _onchange_co2_lb_mole(self):
 		if self.co2_lb_mole != 'none':	
 			self.co2_lb_mole = self.clear_all(self.co2_lb_mole)
-		return {}
+
+			self.zone = 'body_local'
+			self.pathology = self.co2_lb_mole
+	
+			return {
+				'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]}
+			}	
+	
 	
 	
 	@api.onchange('co2_lb_stains')
 	def _onchange_co2_lb_stains(self):
 		if self.co2_lb_stains != 'none':	
 			self.co2_lb_stains = self.clear_all(self.co2_lb_stains)
-		return {}
+
+			self.zone = 'body_local'
+			self.pathology = self.co2_lb_stains
+	
+			return {
+				'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]}
+			}
 		
 		
 		
-		
-	@api.onchange('co2_lb_queratosis')
-	def _onchange_co2_lb_queratosis(self):		
-		if self.co2_lb_queratosis != 'none':	
-			self.co2_lb_queratosis = self.clear_all(self.co2_lb_queratosis)
-		return {}
+	@api.onchange('co2_lb_keratosis')
+	def _onchange_co2_lb_keratosis(self):		
+		if self.co2_lb_keratosis != 'none':	
+			self.co2_lb_keratosis = self.clear_all(self.co2_lb_keratosis)
+
+			self.zone = 'body_local'
+			self.pathology = self.co2_lb_keratosis
+	
+			return {
+				'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]}
+			}
 		
 		
 	@api.onchange('co2_lb_cyst')
 	def _onchange_co2_lb_cyst(self):
 		if self.co2_lb_cyst != 'none':	
 			self.co2_lb_cyst = self.clear_all(self.co2_lb_cyst)
-		return {}		
+
+			self.zone = 'body_local'
+			self.pathology = self.co2_lb_cyst
 	
+			return {
+				'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]}
+			}
+			
+			
 	
 	@api.onchange('co2_lb_wart')
 	def _onchange_co2_lb_wart(self):
 		if self.co2_lb_wart != 'none':	
 			self.co2_lb_wart = self.clear_all(self.co2_lb_wart)
-		return {}
+
+			self.zone = 'body_local'
+			self.pathology = self.co2_lb_wart
+	
+			return {
+				'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]}
+			}
+			
+			
 		
 		
 		
+	# Clear 
 		
 	def clear_all(self,token):
 		
-		
+		# Service
 		self.zone = ''
 		self.pathology = ''
-		
 		
 		
 		# First
@@ -436,21 +539,18 @@ class ServiceCo2(models.Model):
 		self.co2_vagina = 'none'
 		self.co2_packages = 'none'
 		
-		
 		# Second 
 		self.co2_allface_acnesequels = 'none'
 		self.co2_allface_rejuvenation = 'none'
-		
 		
 		# Third
 		self.co2_lf_scar = 'none'
 		self.co2_lf_mole = 'none'
 		self.co2_lf_stains = 'none'
 		
-		self.co2_lf_queratosis = 'none'		
+		self.co2_lf_keratosis = 'none'		
 		self.co2_lf_cyst = 'none'
 		self.co2_lf_wart = 'none'
-		
 		
 		# Fourth
 		self.co2_lb_acneseq = 'none'
@@ -459,7 +559,7 @@ class ServiceCo2(models.Model):
 		self.co2_lb_mole = 'none'
 		self.co2_lb_stains = 'none'
 
-		self.co2_lb_queratosis = 'none'
+		self.co2_lb_keratosis = 'none'
 		self.co2_lb_cyst = 'none'
 		self.co2_lb_wart = 'none'
 

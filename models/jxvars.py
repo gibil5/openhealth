@@ -4,12 +4,6 @@
 
 # First
 
-_co2_che_list = [	
-		('stains','Manchas'),	
-		('acne_sequels','Acné y secuelas'),
-		('none',''),
-		]
-
 
 
 _co2_han_list = [
@@ -19,6 +13,20 @@ _co2_han_list = [
 		('rejuvenation_hands',	'Rejuvenecimiento'),
 		('none',''),
 		]
+
+
+
+
+
+
+_co2_che_list = [	
+		('stains','Manchas'),	
+		('acne_sequels','Acné y secuelas'),
+		('none',''),
+		]
+
+
+
 		
 
 
@@ -86,10 +94,10 @@ _co2_lfstains_list = [
 		('none',''),
 		]
 
-_co2_lfqueratosis_list = [
-		('queratosis_1','Grado 1'),	
-		('queratosis_2','Grado 2'),	
-		('queratosis_3','Grado 3'),	
+_co2_lfkeratosis_list = [
+		('keratosis_1','Grado 1'),	
+		('keratosis_2','Grado 2'),	
+		('keratosis_3','Grado 3'),	
 		('none',''),
 		]
 
@@ -111,14 +119,14 @@ _co2_lfscar_list = [
 		
 		
 _co2_lfcyst_list = [
-		('cyst_1',''),	
+		('cyst',''),	
 		#('cyst_2','Grado 2'),	
 		#('cyst_3','Grado 3'),	
 		('none',''),
 		]
 	
 _co2_lfwart_list = [
-		('wart_1',''),	
+		('wart',''),	
 		#('wart_2','Grado 2'),	
 		#('wart_3','Grado 3'),	
 		('none',''),
@@ -146,8 +154,8 @@ _co2_lbstains_list = [
 		('none',''),
 		]
 
-_co2_lbqueratosis_list = [
-		('queratosis_1',''),	
+_co2_lbkeratosis_list = [
+		('keratosis',''),	
 		#('queratosis_2','Grado 2'),	
 		#('queratosis_3','Grado 3'),	
 		('none',''),
@@ -170,27 +178,19 @@ _co2_lbscar_list = [
 		
 		
 _co2_lbcyst_list = [
-		('cyst_1',''),	
+		('cyst',''),	
 		#('cyst_2','Grado 2'),	
 		#('cyst_3','Grado 3'),	
 		('none',''),
 		]
 	
 _co2_lbwart_list = [
-		('wart_1',''),	
+		('wart',''),	
 		#('wart_2','Grado 2'),	
 		#('wart_3','Grado 3'),	
 		('none',''),
  		]	
 		
-
-
-
-
-
-
-
-
 
 
 

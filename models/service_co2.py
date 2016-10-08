@@ -70,14 +70,6 @@ class ServiceCo2(models.Model):
 	# On Change - Clear the rest
 	# ---------------------------
 
-	#@api.onchange('co2_allface_rejuvenation')
-	#def _onchange_co2_allface_rejuvenation(self):
-	#	if self.co2_allface_rejuvenation != 'none':	
-	#		self.co2_allface_rejuvenation = self.clear_all(self.co2_allface_rejuvenation)
-	#	return {}
-
-
-
 
 
 	@api.onchange('co2_hands')

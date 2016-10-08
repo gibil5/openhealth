@@ -1079,7 +1079,7 @@ class Consultation(models.Model):
 				'view_mode': 'form',			
 					
 				#'res_id': consultation_id,
-				'res_id': 23,
+				#'res_id': 23,
 				
 				'target': 'current',
 								

@@ -21,6 +21,29 @@ class ServiceCo2(models.Model):
 	_inherit = 'openhealth.service'
 	
 	
+	
+	
+	zone = fields.Char(
+			#compute='_compute_zone', 
+			#string="Zona", 
+			default='x',
+			)
+			
+	pathology = fields.Char(
+			default='x',
+			)
+					
+	
+	#@api.multi
+	
+	#def _compute_zone(self):
+	#	for record in self:
+			#record.zone = 'SE00' + str(record.id) 
+	#		record.zone = 'zone' 
+	
+	
+	
+
 
 
 	# Smart vars
@@ -77,9 +100,13 @@ class ServiceCo2(models.Model):
 		if self.co2_hands != 'none':	
 			
 			self.co2_hands = self.clear_all(self.co2_hands)
-				
+
+			self.zone = 'hands'
+			self.pathology = self.co2_hands
+			
 		return {
-			'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', 'hands'),('x_pathology', '=', self.co2_hands)]},
+			#'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', 'hands'),('x_pathology', '=', self.co2_hands)]},
+			'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 		}
 
 
@@ -89,11 +116,16 @@ class ServiceCo2(models.Model):
 
 		if self.co2_neck != 'none':	
 			
-				self.co2_neck = self.clear_all(self.co2_neck)
+			self.co2_neck = self.clear_all(self.co2_neck)
+
+			self.zone = 'neck'
+			self.pathology = self.co2_neck
 				
 		return {
-			'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', 'neck'),('x_pathology', '=', self.co2_neck)]},
+			#'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', 'neck'),('x_pathology', '=', self.co2_neck)]},
+			'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 		}
+
 
 
 
@@ -103,10 +135,18 @@ class ServiceCo2(models.Model):
 		if self.co2_cheekbone != 'none':	
 
 			self.co2_cheekbone = self.clear_all(self.co2_cheekbone)
+			
+			self.zone = 'cheekbones'
+			self.pathology = self.co2_cheekbone
 				
 		return {
-			'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', 'cheekbone'),('x_pathology', '=', self.co2_cheekbone)]},
+			#'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', 'cheekbones'),('x_pathology', '=', self.co2_cheekbone)]},
+			'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 		}
+
+
+
+
 
 
 
@@ -117,9 +157,12 @@ class ServiceCo2(models.Model):
 			
 			self.co2_vagina = self.clear_all(self.co2_vagina)
 
+			self.zone = 'vagina'
+			self.pathology = self.co2_vagina
 				
 		return {
-			'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', 'vagina'),('x_pathology', '=', self.co2_vagina)]},
+			#'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', 'vagina'),('x_pathology', '=', self.co2_vagina)]},
+			'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 		}
 		
 		
@@ -130,9 +173,14 @@ class ServiceCo2(models.Model):
 		if self.co2_packages != 'none':	
 
 			self.co2_packages = self.clear_all(self.co2_packages)
+
+			self.zone = 'package'
+			self.pathology = self.co2_packages
 				
 		return {
-			'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', 'packages'),('x_pathology', '=', self.co2_packages)]},
+			#'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', 'packages'),('x_pathology', '=', self.co2_packages)]},
+			'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
+			#'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_pathology', '=', self.pathology)]},
 		}	
 
 
@@ -374,6 +422,12 @@ class ServiceCo2(models.Model):
 		
 		
 	def clear_all(self,token):
+		
+		
+		self.zone = ''
+		self.pathology = ''
+		
+		
 		
 		# First
 		self.co2_hands = 'none'

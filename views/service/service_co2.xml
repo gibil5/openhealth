@@ -28,7 +28,22 @@
 								Laser Co2
 							-->
 							<h1>Láser Co2</h1>
-							<hr></hr>
+							
+							
+							<group>						
+
+								<group>
+									<field name="zone" readonly="1" />													
+								</group>
+
+								<group>
+									<field name="pathology" readonly="1" />													
+								</group>
+							
+							</group>
+					
+							
+							
 							
 							
 							<notebook>

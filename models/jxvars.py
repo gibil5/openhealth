@@ -301,6 +301,45 @@ zip_list = [
 
 
 
+# Zone
+_zone_list = [
+			('areola','Areola'), 
+			('armpits','Axilas'), 
+			('beard','Barba'), 
+			('belly','Abdomen'), 
+			('bikini','Bikini'), 
+
+			('down_lip','Bozo/Bigote'), 
+			('arm','Brazo'), 
+			('head','Cabeza'), 
+			('neck','Cuello'), 
+			('back','Espalda'), 
+
+			('front','Frente'), 
+			('gluteus','Glúteo'), 
+			('shoulders','Hombros'), 
+			('linea_alba','Linea Alba'), 
+			('body_localized','Localizado cuerpo'), 
+
+			('face_localized','Localizado rostro'), 
+			('hands','Manos'), 
+			('chin','Mentón'), 
+			('nape','Nuca'), 
+			('sideburns','Patillas'), 
+
+			('breast','Pecho'), 
+			('feet','Pierna'), 
+			('leg','Pierna'), 
+			('cheekbones','Pómulos'), 
+			('face_all','Todo rostro'), 
+
+			('nail','Uña'), 
+			('vagina','Vagina'), 
+			]
+
+
+
+
 # Pathology
 _pathology_list = [
 
@@ -314,6 +353,7 @@ _pathology_list = [
 			('alopecia','Alopecias'),
 			
 			('scar','Cicatriz'),
+			
 			('scar_1','Cicatriz Pequeño'),
 			('scar_2','Cicatriz Mediano'),
 			('scar_3','Cicatriz Grande'),

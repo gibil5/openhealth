@@ -134,44 +134,13 @@ class Service(models.Model):
 
 
 
-	# Zone
-	_zone_list = [
-			('areola','Areola'), 
-			('armpits','Axilas'), 
-			('beard','Barba'), 
-			('belly','Abdomen'), 
-			('bikini','Bikini'), 
 
-			('down_lip','Bozo/Bigote'), 
-			('arm','Brazo'), 
-			('head','Cabeza'), 
-			('neck','Cuello'), 
-			('back','Espalda'), 
 
-			('front','Frente'), 
-			('gluteus','Glúteo'), 
-			('shoulders','Hombros'), 
-			('linea_alba','Linea Alba'), 
-			('body_localized','Localizado cuerpo'), 
-
-			('face_localized','Localizado rostro'), 
-			('hands','Manos'), 
-			('chin','Mentón'), 
-			('nape','Nuca'), 
-			('sideburns','Patillas'), 
-
-			('breast','Pecho'), 
-			('feet','Pierna'), 
-			('leg','Pierna'), 
-			('cheekbones','Pómulos'), 
-			('face_all','Todo rostro'), 
-
-			('nail','Uña'), 
-			('vagina','Vagina'), 
-			]
 
 	zone = fields.Selection(
-			selection = _zone_list, 
+			#selection = _zone_list, 
+			selection = jxvars._zone_list, 
+
 			string="Zona", 
 			default='areola',
 			#required=True, 

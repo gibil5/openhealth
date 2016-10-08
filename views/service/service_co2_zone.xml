@@ -13,9 +13,13 @@
 			<field name="inherit_id" ref="service_co2_form_view"/>
 			<field name="arch" type="xml">
 				
+				
+				
 				<notebook position="inside">
 				
 					
+					
+
 					
 					
 					<page string="Zona del cuerpo">
@@ -54,7 +58,8 @@
 						-->
 							
 							
-							
+
+
 						<group>						
 							<group>
 								<!--

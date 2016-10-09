@@ -4,51 +4,33 @@
 
 
 
-		<!-- SERVICE -->
+		<!-- SERVICE CO2 -->
 
 
 
 		<!-- Form view -->
-		<!--
-		<record model="ir.ui.view" id="service_form_view">
-		-->
 		<record model="ir.ui.view" id="service_co2_form_view">
 			<field name="name">service.co2.form</field>
-			<!--
-			<field name="model">openhealth.service</field>
-			-->
 			<field name="model">openhealth.service.co2</field>
 			<field name="arch" type="xml">
 				<form string="Service Co2 - Form">
 					<sheet>
-							
-							
-
-							<!--
-								Laser Co2
-							-->
+														
 							<h1>Láser Co2</h1>
 							
 							
 							<group>						
-
 								<group>
 									<field name="zone" readonly="1" />													
 								</group>
-
 								<group>
 									<field name="pathology" readonly="1" />													
 								</group>
-							
 							</group>
 					
-							
-							
-							
-							
+					
 							<notebook>
 							</notebook>
-
 
 
 							<!--
@@ -76,14 +58,6 @@
 
 							<group string="" >								
 								<group>
-
-									<!--
-									<field string="Servicio de la clínica" name="service"  colspan="2"    />
-									<field string="Servicio de la clínica" name="service" colspan="2" widget="radio"  domain="[('x_treatment', '=', 'laser_co2')]" />
-										
-										widget="radio"
-									-->
-
 									<field name="service" widget="radio"/>
 								</group>
 							</group>
@@ -103,8 +77,6 @@
 						
 							<hr></hr>
 							
-						
-						
 					</sheet>
 				</form>
 			</field>

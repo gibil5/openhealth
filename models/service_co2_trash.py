@@ -481,6 +481,42 @@
 
 
 
+	#def get_zone(self,cr,uid,ids,context=None):
+	def get_zone(self,cr,uid,ids,context1=None,context2=None):
+
+		print
+		print context1 + ' ' + context2
+		print
+
+		#self.zone = context1
+		
+		# {
+		#	'warning': {
+		#		'title': "Zone",
+		#		'message': context1+context2,
+		#}}
+
+		#mach = []
+		#lids = self.pool.get('product.template').search(cr,uid,[
+		#														('x_treatment', '=', context)
+		#												])
+		#return {'domain':{'service':[('id','in',lids)]}}
+		return{
+			'zone'	:context1,
+		}
+
+
+	@api.onchange('co2_hands')
+	
+	#def _onchange_co2_hands(self,zone):
+	#def _onchange_co2_hands(zone):
+	def _onchange_co2_hands(self):
+		print 
+		print self 
+		print self.zone
+		#print zone
+		print 
+
 	
 	
 		

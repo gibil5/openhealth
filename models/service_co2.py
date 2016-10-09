@@ -2,7 +2,6 @@
 #
 # 	Service Co2 
 # 
-#
 
 from openerp import models, fields, api
 from datetime import datetime
@@ -22,9 +21,9 @@ class ServiceCo2(models.Model):
 	
 	
 	
+	# From Service
+	
 	zone = fields.Char(
-			#compute='_compute_zone', 
-			#string="Zona", 
 			default='x',
 			)
 			
@@ -33,55 +32,31 @@ class ServiceCo2(models.Model):
 			)
 					
 	
-	#@api.multi
-	
-	#def _compute_zone(self):
-	#	for record in self:
-			#record.zone = 'SE00' + str(record.id) 
-	#		record.zone = 'zone' 
-	
-	
-	
-
 
 
 	# Smart vars
 	# ----------
 	
+	
 	# First
-	
-	
 	co2_hands = fields.Selection(
 			selection = jxvars._co2_han_list, 
 			string="Manos", 
 			default='',	
 			)
 
-	#co2_hands = fields.One2many(
-	#		'openhealth.pathology',
-	#		'service_co2', 
-	#		string="Manos", 
-	#		default='stains',	
-	#		)
-
-
-
-
 	co2_neck = fields.Selection(
 			selection = jxvars._co2_nec_list, 
 			string="Cuello", 
-			#default='',	
 			default='',	
 			)
-			
-	
+				
 	co2_cheekbone = fields.Selection(
 			selection = jxvars._co2_che_list, 
 			string="Pómulos", 
 			default='',	
 			)
 
-	
 	co2_vagina = fields.Selection(
 			selection = jxvars._co2_vag_list, 
 			string="Vagina", 
@@ -102,11 +77,9 @@ class ServiceCo2(models.Model):
 	# On Change - Clear the rest
 	# ---------------------------
 
-
-
 	@api.onchange('co2_hands')
 	def _onchange_co2_hands(self):
-		
+	
 		if self.co2_hands != 'none':	
 			self.co2_hands = self.clear_all(self.co2_hands)
 
@@ -119,8 +92,6 @@ class ServiceCo2(models.Model):
 
 
 
-
-		
 	@api.onchange('co2_neck')
 	def _onchange_co2_neck(self):
 
@@ -136,7 +107,6 @@ class ServiceCo2(models.Model):
 
 
 
-
 	@api.onchange('co2_cheekbone')
 	def _onchange_co2_cheekbone(self):
 
@@ -149,10 +119,6 @@ class ServiceCo2(models.Model):
 			return {
 				'domain': {'service': [('x_treatment', '=', 'laser_co2'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 			}
-
-
-
-
 
 
 

@@ -1066,26 +1066,19 @@ class Consultation(models.Model):
 		consultation_id = self.id 
 		
 		laser = 'laser_co2'
-		#zone = 'cheekbones'	
-		#pathology = 'stains'
 		zone = ''	
 		pathology = ''
-		
-		
+				
 		return {
 				'type': 'ir.actions.act_window',
 				'name': ' New Service Current - Laser Co2', 
 				'view_type': 'form',
 				'view_mode': 'form',			
 					
-				#'res_id': consultation_id,
-				'res_id': 23,
+				#'res_id': 23,
 				
 				'target': 'current',
 								
-				#'res_model': 'openhealth.service',				
-				#'res_model': 'openhealth.service_excilite',				
-				#'res_model': 'openhealth.laserco2',				
 				'res_model': 'openhealth.service.co2',				
 				
 				'flags': 	{
@@ -1102,4 +1095,45 @@ class Consultation(models.Model):
 
 							}
 				}
+				
+
+
+	# Procedure - Laser Co2 
+	@api.multi
+	def open_service_excilite(self):  
+
+		consultation_id = self.id 
+		
+		laser = 'laser_excilite'
+		zone = ''	
+		pathology = ''
+				
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' New Service Current - Laser Co2', 
+				'view_type': 'form',
+				'view_mode': 'form',			
+					
+				#'res_id': 23,
+				
+				'target': 'current',
+								
+				'res_model': 'openhealth.service.excilite',				
+				
+				'flags': 	{
+							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+							'form': {'action_buttons': True, }
+							},
+
+				'context': {
+							'default_consultation': consultation_id,					
+
+							'default_laser': laser,
+							'default_zone': zone,
+							'default_pathology': pathology,
+
+							}
+				}
+				
+				
 				

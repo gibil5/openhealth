@@ -1110,7 +1110,7 @@ class Consultation(models.Model):
 				
 		return {
 				'type': 'ir.actions.act_window',
-				'name': ' New Service Current - Laser Co2', 
+				'name': ' New Service Current - Laser Excilite', 
 				'view_type': 'form',
 				'view_mode': 'form',			
 					

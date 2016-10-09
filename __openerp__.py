@@ -82,7 +82,7 @@
 		'views/service/service_co2_zone.xml',
 
 		'views/service/service_excilite.xml',
-		#'views/service/service_excilite_zone.xml',
+		'views/service/service_excilite_zone.xml',
 
 
 

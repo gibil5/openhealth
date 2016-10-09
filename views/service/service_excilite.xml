@@ -26,6 +26,10 @@
 								<group>
 									<field name="pathology" readonly="1" />													
 								</group>
+								
+								<group>
+									<field name="time" readonly="1"/>
+								</group>
 							</group>
 					
 					
@@ -39,6 +43,7 @@
 								<group>
 									<field name="service" widget="radio"/>
 								</group>
+
 							</group>
 
 								

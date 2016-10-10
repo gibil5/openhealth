@@ -21,20 +21,20 @@
 							
 							<group>	
 								<group>
-									<field name="laser" readonly="1" />													
+									<field name="laser" readonly="1"   invisible="1"/>													
 								</group>
 								<group>
 								</group>
 													
 								<group>
-									<field name="zone" readonly="1" />													
+									<field name="zone" readonly="1"    invisible="1"/>													
 								</group>
 								<group>
-									<field name="pathology" readonly="1" />													
+									<field name="pathology" readonly="1"  invisible="1"/>													
 								</group>
 
 								<group>
-									<field name="time" readonly="1"/>
+									<field name="time" readonly="1"  invisible="1"/>
 								</group>
 
 							</group>

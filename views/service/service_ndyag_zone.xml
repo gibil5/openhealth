@@ -4,27 +4,41 @@
 
 
 		<!-- Form view -->
-		<record model="ir.ui.view" id="service_ipl_zone_form_view">
-			<field name="name">service.ipl.zone.form</field>
-			<field name="model">openhealth.service.ipl</field>
+		<record model="ir.ui.view" id="service_ndyag_zone_form_view">
+			<field name="name">service.ndyag.zone.form</field>
+			<field name="model">openhealth.service.ndyag</field>
 			<field name="priority" eval="1"/>
-			<field name="inherit_id" ref="service_ipl_form_view"/>
+			<field name="inherit_id" ref="service_ndyag_form_view"/>
 			<field name="arch" type="xml">
 				
 				<notebook position="inside">
 				
 					
-					<page string="Depilacion">
+					<page string="Localizado cuerpo">
 						<group>	
 							<group>
-								<field name="depilation"  widget="radio" />
+								<field name="body"  widget="radio" />
 							</group>																									
 							<group>
 							</group>
+							
+
+							<group>
+							</group>
+							<group>
+							</group>
+
+							<group>
+							</group>
+							<group>
+							</group>
+
+
+							
 						</group>
 					</page>
 										
-					<page string="Todo rostro">
+					<page string="Localizado rostro">
 						<group>	
 							<group>
 								<field name="face"  widget="radio" />							

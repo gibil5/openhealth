@@ -88,6 +88,9 @@
 		'views/service/service_ipl.xml',
 		'views/service/service_ipl_zone.xml',
 
+		'views/service/service_ndyag.xml',
+		'views/service/service_ndyag_zone.xml',
+
 
 
 		# Invoices

@@ -10,27 +10,24 @@ import jxvars
 
 
 
-
-
 class ServiceCo2(models.Model):
-	#_name = 'openhealth.laserco2'
 	_name = 'openhealth.service.co2'
 
 	_inherit = 'openhealth.service'
 	
 	
+		
+	# Service 
+	service = fields.Many2one(
+			'product.template',
+
+			domain = [
+						('type', '=', 'service'),
+						('x_treatment', '=', 'laser_co2'),
+					],
+	)
 	
 	
-	# From Service
-	
-	#zone = fields.Char(
-	#		default='x',
-	#		)
-			
-	#pathology = fields.Char(
-	#		default='x',
-	#		)
-					
 	
 
 

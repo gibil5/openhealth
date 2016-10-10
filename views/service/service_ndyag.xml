@@ -4,19 +4,19 @@
 
 
 
-		<!-- SERVICE IPL -->
+		<!-- SERVICE NDYAG -->
 
 
 
 		<!-- Form view -->
-		<record model="ir.ui.view" id="service_ipl_form_view">
-			<field name="name">service.ipl.form</field>
-			<field name="model">openhealth.service.ipl</field>
+		<record model="ir.ui.view" id="service_ndyag_form_view">
+			<field name="name">service.ndyag.form</field>
+			<field name="model">openhealth.service.ndyag</field>
 			<field name="arch" type="xml">
-				<form string="Service Ipl - Form">
+				<form string="Service Ndyag - Form">
 					<sheet>
 														
-							<h1>Láser M22-Ipl</h1>
+							<h1>Láser M22-Ndyag</h1>
 							
 							
 							<group>						
@@ -34,17 +34,12 @@
 								</group>
 								
 								<group>
-									<field name="time" readonly="1"  invisible="1" />
+									<field name="time" readonly="1"  invisible="1"/>
 								</group>
 								
 								<group>
-									<field name="client_type" readonly="1"  invisible="1" />
+									<field name="client_type" readonly="1"  invisible="1"/>
 								</group>
-								<!--
-								<group>
-									<field name="face" readonly="1"/>
-								</group>
-								-->
 							</group>
 					
 					
@@ -64,12 +59,6 @@
 									</group>
 
 									<hr></hr>
-
-									<group colspan="2">
-									</group>
-
-									<group colspan="2">
-									</group>
 									
 									<group colspan="2">
 										<field name="time_1" widget="radio"/>
@@ -79,11 +68,6 @@
 										<field name="client_type_1" widget="radio"/>
 									</group>
 
-									<group colspan="2">
-									</group>
-
-									<group colspan="2">
-									</group>
 
 									
 									<hr></hr>

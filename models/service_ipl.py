@@ -10,32 +10,28 @@ import ipl
 
 
 
-
-
 class ServiceIpl(models.Model):
 	_name = 'openhealth.service.ipl'
 
 	_inherit = 'openhealth.service'
 	
+
 	
-	
-	
-	# From Service
-	#zone = fields.Char(
-	#		default='x',
-	#		)
+	# Service 
+	service = fields.Many2one(
+			'product.template',
+
+			domain = [
+						('type', '=', 'service'),
+						('x_treatment', '=', 'laser_ipl'),
+					],
+	)
 			
-	#pathology = fields.Char(
-	#		default='x',
-	#		)
-					
-	time = fields.Char(
-			default='',
-			)
 			
-	client_type = fields.Char(
-			default='',	
-			)
+			
+		
+			
+
 
 
 
@@ -98,16 +94,7 @@ class ServiceIpl(models.Model):
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 			}
 			
-			
-			
-	
-	
-
-	
-
-	
-			
-
+		
 
 	# Clear 
 		
@@ -120,8 +107,6 @@ class ServiceIpl(models.Model):
 		
 		# First
 		self.depilation = 'none'
-		#self.rosacea = 'none'
-		#self.stains = 'none'
 
 		return token 
 	

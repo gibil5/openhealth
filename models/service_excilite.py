@@ -10,8 +10,6 @@ import exc
 
 
 
-
-
 class ServiceExcilite(models.Model):
 	_name = 'openhealth.service.excilite'
 
@@ -19,15 +17,20 @@ class ServiceExcilite(models.Model):
 	
 	
 	
+	# Service 
+	service = fields.Many2one(
+			'product.template',
+
+			domain = [
+						('type', '=', 'service'),
+						('x_treatment', '=', 'laser_excilite'),
+					],
+	)
 	
-	# From Service
-	#zone = fields.Char(
-	#		default='x',
-	#		)
-			
-	#pathology = fields.Char(
-	#		default='x',
-	#		)
+	
+	
+	
+	
 					
 	time = fields.Char(
 			default='',

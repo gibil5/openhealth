@@ -63,6 +63,16 @@ class Service(models.Model):
 	
 	
 	
+	time = fields.Char(
+			default='',
+	)
+			
+	client_type = fields.Char(
+			default='',	
+	)
+			
+
+	
 
 
 	# Time 

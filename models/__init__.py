@@ -14,9 +14,16 @@ from . import evaluation
 from . import product
 from . import pathology
 
+
+
 from . import service
 from . import service_co2
 from . import service_excilite
+from . import service_ipl
+from . import service_ndyag
+
+
+
 
 
 from . import consultation

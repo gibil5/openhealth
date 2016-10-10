@@ -9,6 +9,8 @@ from openerp import models, fields, api
 from datetime import datetime
 
 import jxvars
+import exc
+import ipl
 
 
 
@@ -41,6 +43,90 @@ class Service(models.Model):
 		for record in self:
 			#record.name = 'SE0000' + str(record.id) 
 			record.name = 'SE00' + str(record.id) 
+
+
+
+
+
+
+
+
+
+
+	# Smart factorization
+	
+	
+	vspace = fields.Char(
+			' ', 
+			readonly=True
+			)
+	
+	
+	
+
+
+	# Time 
+	
+	time_1 = fields.Selection(
+			selection = exc._time_list, 
+			string="Tiempo", 
+			default='none',	
+			)
+
+
+	@api.onchange('time_1')
+	def _onchange_time_1(self):
+	
+		if self.time_1 != 'none':	
+			
+			self.time_1 = self.clear_all_times(self.time_1)
+
+			self.time = self.time_1
+			
+			return {
+				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time)]},
+			}
+
+	
+	
+	def clear_all_times(self,token):
+	
+		# Second
+		self.time_1 = 'none'
+		
+		return token 
+	
+	
+	
+	
+	
+	
+	# Client type 
+	
+	client_type_1 = fields.Selection(
+			selection = ipl._ctype_list, 
+			string="Tipo de cliente", 
+			default='none',	
+			)
+
+
+	@api.onchange('client_type_1')
+	def _onchange_client_type_1(self):
+	
+		if self.client_type_1 != 'none':	
+			#self.client_type_1 = self.clear_all(self.client_type_1)
+
+			self.client_type = self.client_type_1
+			
+			return {
+				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time),('x_client_type', '=', self.client_type) ]},
+			}
+
+		
+		
+
+		
+		
 
 
 
@@ -102,13 +188,19 @@ class Service(models.Model):
 			('laser_excilite','Laser Excilite'), 
 			('laser_ipl','Laser Ipl'), 
 			('laser_ndyag','Laser Ndyag'), 
+			
+			('none','None'), 
+			
 			]
 
 	laser = fields.Selection(
 			selection = _laser_type_list, 
 			#string="Tratamiento", 
 			string="Tipo", 
-			default='laser_co2',
+			
+			#default='laser_co2',
+			default='none',
+			
 			required=True, 
 			index=True
 			)
@@ -138,11 +230,11 @@ class Service(models.Model):
 
 
 	zone = fields.Selection(
-			#selection = _zone_list, 
 			selection = jxvars._zone_list, 
 
 			string="Zona", 
-			default='areola',
+			#default='areola',
+			default='none',
 			#required=True, 
 			)
 
@@ -156,7 +248,8 @@ class Service(models.Model):
 			selection = jxvars._pathology_list, 
 	
 			string="Patología", 
-			default='acne_active',
+			#default='acne_active',
+			default='none',
 			#required=True, 
 			)
 

@@ -4,7 +4,7 @@
 
 
 		<!-- Form view -->
-		<record model="ir.ui.view" id="service_zone_form_view">
+		<record model="ir.ui.view" id="service_excilite_zone_form_view">
 			<field name="name">service.excilite.zone.form</field>
 			<field name="model">openhealth.service.excilite</field>
 			
@@ -29,7 +29,6 @@
 							</group>																									
 
 							<group>
-								<field name="time_pat" widget="radio"/>
 							</group>
 						</group>
 						
@@ -50,7 +49,6 @@
 							</group>
 							
 							<group>
-								<field name="time_pat" widget="radio"/>
 							</group>
 						</group>
 					</page>
@@ -63,7 +61,6 @@
 								<field name="alopecias"  widget="radio" />							
 							</group>
 							<group>
-								<field name="time_pat" widget="radio"/>
 							</group>
 						</group>
 					</page>

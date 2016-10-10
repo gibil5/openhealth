@@ -1098,7 +1098,8 @@ class Consultation(models.Model):
 				
 
 
-	# Procedure - Laser Co2 
+
+	# Procedure - Laser Excilite 
 	@api.multi
 	def open_service_excilite(self):  
 
@@ -1113,11 +1114,10 @@ class Consultation(models.Model):
 				'name': ' New Service Current - Laser Excilite', 
 				'view_type': 'form',
 				'view_mode': 'form',			
-					
+				'target': 'current',				
+				
 				#'res_id': 23,
 				
-				'target': 'current',
-								
 				'res_model': 'openhealth.service.excilite',				
 				
 				'flags': 	{
@@ -1136,4 +1136,81 @@ class Consultation(models.Model):
 				}
 				
 				
+				
+				
+	# Procedure - Laser Ipl 
+	@api.multi
+	def open_service_ipl(self):  
+
+		consultation_id = self.id 
+		
+		laser = 'laser_ipl'
+		zone = ''	
+		pathology = ''
+				
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' New Service Current - Laser Excilite', 
+				'view_type': 'form',
+				'view_mode': 'form',			
+				'target': 'current',				
+				
+				#'res_id': 23,
+				
+				'res_model': 'openhealth.service.ipl',				
+				
+				'flags': 	{
+							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+							'form': {'action_buttons': True, }
+							},
+
+				'context': {
+							'default_consultation': consultation_id,					
+
+							'default_laser': laser,
+							'default_zone': zone,
+							'default_pathology': pathology,
+
+							}
+				}
+
+
+
+
+	# Procedure - Laser Ndyag 
+	@api.multi
+	def open_service_ndyag(self):  
+
+		consultation_id = self.id 
+		
+		laser = 'laser_ndyag'
+		zone = ''	
+		pathology = ''
+				
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' New Service Current - Laser Ndyag', 
+				'view_type': 'form',
+				'view_mode': 'form',			
+				'target': 'current',				
+				
+				#'res_id': 23,
+				
+				'res_model': 'openhealth.service.ndyag',				
+				
+				'flags': 	{
+							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+							'form': {'action_buttons': True, }
+							},
+
+				'context': {
+							'default_consultation': consultation_id,					
+
+							'default_laser': laser,
+							'default_zone': zone,
+							'default_pathology': pathology,
+
+							}
+				}
+							
 				

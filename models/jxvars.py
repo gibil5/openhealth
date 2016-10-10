@@ -319,9 +319,10 @@ _zone_list = [
 			('gluteus','Glúteo'), 
 			('shoulders','Hombros'), 
 			('linea_alba','Linea Alba'), 
-			('body_localized','Localizado cuerpo'), 
-
-			('face_localized','Localizado rostro'), 
+			
+			#('body_localized','Localizado cuerpo'), 
+			#('face_localized','Localizado rostro'), 
+			
 			('hands','Manos'), 
 			('chin','Mentón'), 
 			('nape','Nuca'), 
@@ -335,6 +336,21 @@ _zone_list = [
 
 			('nail','Uña'), 
 			('vagina','Vagina'), 
+			
+			
+			('face','Rostro'), 
+			('face_local','Localizado rostro'), 
+			('body_local','Localizado cuerpo'), 
+			#('ariola','Areola'), 
+			('areolas','Areola'), 
+			('arms','Brazos'), 
+			('legs','Piernas'), 
+
+			('package','Paquete'), 
+			
+			
+			('none',''), 
+			
 			]
 
 
@@ -405,6 +421,9 @@ _pathology_list = [
 			('varices','Varices'),
 			('wart','Verruga'),
 			('vitiligo','Vitiligo'),
+			
+			
+			('none',''), 
 
 			]
 			

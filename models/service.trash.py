@@ -112,3 +112,56 @@ class ServiceBase(models.Model):
 			)
 
 
+
+
+
+
+
+
+	time_2 = fields.Selection(
+			selection = exc._time_list, 
+			string="Tiempo", 
+			default='none',	
+			)
+
+	time_3 = fields.Selection(
+			selection = exc._time_list, 
+			string="Tiempo", 
+			default='none',	
+			)
+			
+			
+			
+			
+			
+			
+	@api.onchange('time_2')
+	def _onchange_time_2(self):
+	
+		if self.time_2 != 'none':	
+			
+			self.time_2 = self.clear_all_times(self.time_2)
+
+			self.time = self.time_2
+			
+			return {
+				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time)]},
+			}
+			
+			
+	@api.onchange('time_3')
+	def _onchange_time_3(self):
+	
+		if self.time_3 != 'none':	
+			
+			self.time_3 = self.clear_all_times(self.time_3)
+
+			self.time = self.time_3
+			
+			return {
+				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time)]},
+			}
+			
+	
+	
+	

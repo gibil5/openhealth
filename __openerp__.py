@@ -78,11 +78,15 @@
 		# Services
 		#'views/service/service.xml',
 		#'views/service/laserco2.xml',
+		
 		'views/service/service_co2.xml',
 		'views/service/service_co2_zone.xml',
 
 		'views/service/service_excilite.xml',
 		'views/service/service_excilite_zone.xml',
+
+		'views/service/service_ipl.xml',
+		'views/service/service_ipl_zone.xml',
 
 
 

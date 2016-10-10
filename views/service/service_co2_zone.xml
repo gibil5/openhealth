@@ -4,7 +4,7 @@
 
 
 		<!-- Form view -->
-		<record model="ir.ui.view" id="service_zone_form_view">
+		<record model="ir.ui.view" id="service_co2_zone_form_view">
 			<field name="name">service.co2.zone.form</field>
 			<field name="model">openhealth.service.co2</field>
 			

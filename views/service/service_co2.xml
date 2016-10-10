@@ -19,7 +19,14 @@
 							<h1>Láser Co2</h1>
 							
 							
-							<group>						
+							<group>
+								<group>
+									<field name="laser" readonly="1" />													
+								</group>
+								<group>
+								</group>
+								
+														
 								<group>
 									<field name="zone" readonly="1" />													
 								</group>

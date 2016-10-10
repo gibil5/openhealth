@@ -13,7 +13,6 @@ import exc
 
 
 class ServiceExcilite(models.Model):
-	#_name = 'openhealth.laserexcilite'
 	_name = 'openhealth.service.excilite'
 
 	_inherit = 'openhealth.service'
@@ -22,16 +21,16 @@ class ServiceExcilite(models.Model):
 	
 	
 	# From Service
-	zone = fields.Char(
-			default='x',
-			)
+	#zone = fields.Char(
+	#		default='x',
+	#		)
 			
-	pathology = fields.Char(
-			default='x',
-			)
+	#pathology = fields.Char(
+	#		default='x',
+	#		)
 					
 	time = fields.Char(
-			default='x',
+			default='',
 			)
 	
 
@@ -40,27 +39,24 @@ class ServiceExcilite(models.Model):
 	vitiligo = fields.Selection(
 			selection = exc._vitiligo_list, 
 			string="Vitiligo", 
-			default='',	
+			default='none',	
 			)
 
 	psoriasis = fields.Selection(
 			selection = exc._psoriasis_list, 
 			string="Psoriasis", 
-			default='',	
+			default='none',	
 			)
 			
 	alopecias = fields.Selection(
 			selection = exc._alopecias_list, 
 			string="Alopecias", 
-			default='',	
+			default='none',	
 			)
 
 
-	time_pat = fields.Selection(
-			selection = exc._time_list, 
-			string="Tiempo", 
-			default='',	
-			)
+
+
 
 
 
@@ -76,7 +72,7 @@ class ServiceExcilite(models.Model):
 			self.pathology = 'vitiligo'
 			
 			return {
-				'domain': {'service': [('x_treatment', '=', 'laser_excilite'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
+				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 			}
 
 
@@ -90,7 +86,7 @@ class ServiceExcilite(models.Model):
 			self.pathology = 'psoriasis'
 			
 			return {
-				'domain': {'service': [('x_treatment', '=', 'laser_excilite'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
+				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 			}
 			
 			
@@ -98,53 +94,48 @@ class ServiceExcilite(models.Model):
 	def _onchange_alopecias(self):
 	
 		if self.alopecias != 'none':	
+			
 			self.alopecias = self.clear_all(self.alopecias)
 
 			self.zone = self.alopecias
 			self.pathology = 'alopecia'
 			
 			return {
-				'domain': {'service': [('x_treatment', '=', 'laser_excilite'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
-				#'domain': {'service': [('x_treatment', '=', 'laser_excilite'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time)]},
-			}
-			
-			
-	
-	
-	@api.onchange('time_pat')
-	def _onchange_time_pat(self):
-	
-		if self.time_pat != 'none':	
-			#self.time_pat = self.clear_all(self.time_pat)
-
-			self.time = self.time_pat
-			
-			return {
-				'domain': {'service': [('x_treatment', '=', 'laser_excilite'),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time)]},
+				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
+				#'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time)]},
 			}
 			
 			
 			
+			
+			
 
 
-	# Clear 
-		
+
+
+	# Clear 		
 	def clear_all(self,token):
 		
 		# Service
-		self.zone = ''
-		self.pathology = ''
+		self.zone = 'none'
+		self.pathology = 'none'
 		
 		
 		# First
 		self.vitiligo = 'none'
 		self.psoriasis = 'none'
 		self.alopecias = 'none'
-
+		
+		
+		# Times
+		#self.time_1 = 'none'
+		#self.time_2 = 'none'
+		#self.time_3 = 'none'
+		
 		return token 
-	
-	
-	
+
+
+
 	
 	
 	

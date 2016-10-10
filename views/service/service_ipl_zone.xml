@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+		<!-- Form view -->
+		<record model="ir.ui.view" id="service_ipl_zone_form_view">
+			<field name="name">service.ipl.zone.form</field>
+			<field name="model">openhealth.service.ipl</field>
+			
+			<field name="priority" eval="1"/>
+			
+			<field name="inherit_id" ref="service_ipl_form_view"/>
+			<field name="arch" type="xml">
+				
+				
+				
+				<notebook position="inside">
+				
+					
+					
+
+					
+					
+					<!--
+					-->
+					<page string="Depilacion">
+						<group>	
+							<group>
+								<field name="depilation"  widget="radio" />
+							</group>																									
+
+							<group>
+							</group>
+						</group>
+
+					</page>
+					
+					
+					
+					
+					<page string="Todo rostro">
+						<group>	
+							<group>
+								<field name="face"  widget="radio" />							
+							</group>
+							
+							<group>
+							</group>
+						</group>
+					</page>
+					
+					
+					
+					
+				</notebook>
+			</field>
+		</record>
+	</data>
+</openerp>

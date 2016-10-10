@@ -2,12 +2,27 @@
 
 
 
-_vitiligo_list = [
+_face_list = [
+	
+		('rosacea',	'Rosácea'),	
+		('stains',	'Manchas'),
+		('acne_active',	'Acné activo'),
+		
+		('rejuvenation_facial',	'Rejuvenecimiento facial'),	
+		('depilation',	'Depilación'),	
+		
+		('none',''),
+		]
+
+		
+		
+
+_depilation_list = [
 		('belly',	'Abdomen'),	
 		('areolas',	'Ariolas'),
 		('armpits',	'Axilas'),
 		
-		('arms',	'Brazos'),	
+		('arms',	'Braxos'),	
 		('neck',	'Cuello'),
 		('back',	'Espalda'),
 		
@@ -23,12 +38,12 @@ _vitiligo_list = [
 		]
 		
 		
-_psoriasis_list = [
+_rosacea_list = [
 		('belly',	'Abdomen'),	
 		('areolas',	'Ariolas'),
 		('armpits',	'Axilas'),
 		
-		('arms',	'Brazos'),	
+		('arms',	'Braxos'),	
 		('neck',	'Cuello'),
 		('back',	'Espalda'),
 		
@@ -44,12 +59,12 @@ _psoriasis_list = [
 		]
 		
 		
-_alopecias_list = [
+_stains_list = [
 		('belly',	'Abdomen'),	
 		('areolas',	'Ariolas'),
 		('armpits',	'Axilas'),
 		
-		('arms',	'Brazos'),	
+		('arms',	'Braxos'),	
 		('neck',	'Cuello'),
 		('back',	'Espalda'),
 		
@@ -70,9 +85,18 @@ _alopecias_list = [
 _time_list = [
 		('15 min','15 min'),	
 		('30 min','30 min'),
+		
 		('none',''),
 		]
 
 
+_ctype_list = [
+		('NORMAL','Normal'),	
+		('TARJETA VIP','Tarjeta Vip'),
+		
+		('none',''),
+		]
+		
+		
 
 

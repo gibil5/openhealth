@@ -1,124 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 <openerp>
 	<data>
 
 
-
-		<!-- SERVICE IPL -->
-
-
-
-		<!-- Form view -->
 		<record model="ir.ui.view" id="service_ipl_form_view">
 			<field name="name">service.ipl.form</field>
 			<field name="model">openhealth.service.ipl</field>
+
+			<field name="inherit_id" ref="service_form_view"/>
+	        <field name="mode">primary</field>
+			
+
 			<field name="arch" type="xml">
-				<form string="Service Ipl - Form">
-					<sheet>
-														
-							<h1>Láser M22-Ipl</h1>
-							
-							
-							<group>						
-								<group>
-									<field name="laser" readonly="1"  invisible="0" />													
-								</group>
-								<group>
-								</group>
-								
-								<group>
-									<field name="zone" readonly="1"  invisible="0" />													
-								</group>
-								<group>
-									<field name="pathology" readonly="1"  invisible="0" />													
-								</group>
-								
-								<group>
-									<field name="time_1" readonly="1"  invisible="0" />
-								</group>
-								
-								<group>
-									<field name="client_type" readonly="1"  invisible="0" />
-								</group>
-								<!--
-								<group>
-									<field name="face" readonly="1"/>
-								</group>
-								-->
-							</group>
-					
-					
+				
+				<xpath expr="//field[@name='title']" position="before">
+					<h1>Láser M22-IPL</h1>					
+        		</xpath>
 
-							
-							<group col="2">	
-								
-								<group colspan="1">
-									<notebook>
-									</notebook>
-								</group>
-
-
-								<group colspan="1">
-									
-									<group colspan="2">
-									</group>
-
-									<hr></hr>
-
-									<group colspan="2">
-									</group>
-
-									<group colspan="2">
-									</group>
-									
-									<group colspan="2">
-										<field name="time_1" widget="radio"/>
-									</group>
-									
-									<group colspan="2">
-										<field name="client_type_1" widget="radio"  invisible="1"/>
-										
-										<field name="nr_sessions" widget="radio"/>
-									</group>
-
-									<group colspan="2">
-									</group>
-
-									<group colspan="2">
-									</group>
-
-									
-									<hr></hr>
-								</group>
-							</group>
-							
-
-
-
-							<group string="" >								
-								<group>
-									<field name="service" widget="radio"/>
-								</group>
-
-							</group>
-
-								
-
-
-							<group string="">
-								<group>
-									<field name="name_short" readonly="1"/>
-								</group>
-								<group>
-									<field name="price" readonly="1"/>
-								</group>
-							</group>
-						
-							<hr></hr>
-							
-					</sheet>
-				</form>
 			</field>
-		</record>
+
+			
+		</record>		
 	</data>
 </openerp>

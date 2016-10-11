@@ -152,15 +152,25 @@
 									<label class="oe_edit_only" for="name" string="Tratamiento #"/>
 									<h1><field name="name" class="oe_inline"/></h1>
 								</div>
+								
 							</div>
 
+
 						</div>
+						
 
 
 						<!-- Padding --> 
-						<group></group>
+						<group>
+							<group>							
+							</group>
+
+							<group class="oe_right">							
+							</group>							
+						</group>						
 
 						<div class="oe_left" style="height: 55px;">
+							<field string="Tratamiento"  name="treatment"  invisible="0"/>
 						</div>
 
 

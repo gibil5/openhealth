@@ -499,8 +499,9 @@ class ServiceCo2(models.Model):
 	def clear_all(self,token):
 		
 		# Service
-		self.zone = 'none'
-		self.pathology = 'none'
+		#self.zone = 'none'
+		#self.pathology = 'none'
+		self.clear_commons
 		
 		
 		# First

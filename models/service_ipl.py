@@ -101,8 +101,11 @@ class ServiceIpl(models.Model):
 	def clear_all(self,token):
 		
 		# Service
-		self.zone = 'none'
-		self.pathology = 'none'
+		#self.zone = 'none'
+		#self.pathology = 'none'
+		#self.time_1 = 'none'
+		#self.nr_sessions = 'none'
+		self.clear_commons
 		
 		
 		# First

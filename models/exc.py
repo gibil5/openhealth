@@ -1,6 +1,13 @@
 # -*- coding: utf-8 -*-
 
 
+_time_list = [
+		('15 min','15 min'),	
+		('30 min','30 min'),
+		('none',''),
+		]
+
+
 
 _vitiligo_list = [
 		('belly',	'Abdomen'),	
@@ -67,11 +74,6 @@ _alopecias_list = [
 
 
 
-_time_list = [
-		('15 min','15 min'),	
-		('30 min','30 min'),
-		('none',''),
-		]
 
 
 

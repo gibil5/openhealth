@@ -32,9 +32,7 @@ class ServiceExcilite(models.Model):
 	
 	
 					
-	time = fields.Char(
-			default='',
-			)
+
 	
 
 
@@ -110,8 +108,9 @@ class ServiceExcilite(models.Model):
 			
 			
 			
-			
-			
+
+
+
 
 
 
@@ -120,8 +119,9 @@ class ServiceExcilite(models.Model):
 	def clear_all(self,token):
 		
 		# Service
-		self.zone = 'none'
-		self.pathology = 'none'
+		#self.zone = 'none'
+		#self.pathology = 'none'
+		self.clear_commons
 		
 		
 		# First
@@ -131,7 +131,7 @@ class ServiceExcilite(models.Model):
 		
 		
 		# Times
-		#self.time_1 = 'none'
+		self.time_1 = 'none'
 		#self.time_2 = 'none'
 		#self.time_3 = 'none'
 		

@@ -97,6 +97,13 @@ _ctype_list = [
 		('none',''),
 		]
 		
+
+_nr_sessions_list = [
+		('NORMAL','1'),	
+		('TARJETA VIP','6'),
 		
+		('none',''),
+		]
+				
 
 

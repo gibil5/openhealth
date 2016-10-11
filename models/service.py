@@ -63,9 +63,9 @@ class Service(models.Model):
 	
 	
 	
-	time = fields.Char(
-			default='',
-	)
+	#time = fields.Char(
+	#		default='',
+	#)
 			
 	client_type = fields.Char(
 			default='',	
@@ -89,12 +89,13 @@ class Service(models.Model):
 	
 		if self.time_1 != 'none':	
 			
-			self.time_1 = self.clear_all_times(self.time_1)
+			#self.time_1 = self.clear_all_times(self.time_1)
 
-			self.time = self.time_1
+			#self.time = self.time_1
 			
 			return {
-				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time)]},
+				#'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time)]},
+				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time_1)]},
 			}
 
 	
@@ -125,18 +126,63 @@ class Service(models.Model):
 	
 		if self.client_type_1 != 'none':	
 			#self.client_type_1 = self.clear_all(self.client_type_1)
-
 			self.client_type = self.client_type_1
 			
 			return {
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time),('x_client_type', '=', self.client_type) ]},
 			}
 
-		
+	
+	
+	
+	# Nr of sessions
+	
+	nr_sessions = fields.Selection(
+			selection = ipl._nr_sessions_list, 
+			string="Número de sesiones", 
+			default='none',	
+			)
+
+
+	@api.onchange('nr_sessions')
+	def _onchange_nr_sessions(self):
+	
+		if self.nr_sessions != 'none':	
+			#self.nr_sessions = self.clear_all(self.nr_sessions)
+			self.client_type = self.nr_sessions
+			
+			return {
+				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time),('x_client_type', '=', self.client_type) ]},
+			}
+			
+			
 		
 
+	# Service
+	@api.onchange('service')
+	def _onchange_service(self):
+	
+		if self.service != 'none':
+			#print
+			#print self.service
+			#print self.service.name
+			#print self.service.x_time
+			#print
+			self.time_1 = self.service.x_time
 		
 		
+	
+	# Clear 		
+	def clear_commons(self):
+		
+		# Service
+		self.zone = 'none'
+		self.pathology = 'none'
+		
+		#self.time = 'none'
+		self.time_1 = 'none'
+		
+		self.nr_sessions = 'none'
 
 
 

@@ -30,22 +30,27 @@ class Consultation(models.Model):
 	# ----------------------------- Services -----------------------------------
 
 	# Service id 
-	service_ids = fields.One2many(
-	#service = fields.One2many(
-			'openhealth.service', 
+	#service_ids = fields.One2many(
+	#		'openhealth.service', 
 			#'treatment_id', 
-			'consultation', 
+	#		'consultation', 
 			#string="Services"
-			string="Servicios"
-			)
+	#		string="Servicios"
+	#)
 
 
 
 
 
+	# Service 
+	service = fields.Many2one(
+	#service = fields.One2many(	
+			'product.template',
 
-
-
+			#'consultation',
+			
+			string="Servicio", 
+	)
 
 
 
@@ -83,16 +88,7 @@ class Consultation(models.Model):
 
 
 
-	# Service 
-	service = fields.Many2one(
-			'product.template',
-			#domain = [
-			#			('type', '=', 'service'),
-			#			('x_treatment', '=', _jx_laser_type),
-			#		],
-			#string="Service", 
-			string="Servicio", 
-			)
+
 
 
 
@@ -1069,6 +1065,7 @@ class Consultation(models.Model):
 		zone = ''	
 		pathology = ''
 				
+		
 		return {
 				'type': 'ir.actions.act_window',
 				'name': ' New Service Current - Laser Co2', 

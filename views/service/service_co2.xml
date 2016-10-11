@@ -26,6 +26,7 @@
 									<field name="laser" readonly="1"  invisible="1"/>													
 								</group>
 								<group>
+									<field name="consultation" readonly="1"  invisible="0"/>													
 								</group>
 														
 								<group>
@@ -92,24 +93,34 @@
 
 
 
+
+
 		<!-- service tree/list view -->
-		<record model="ir.ui.view" id="service_tree_view">
+		<record model="ir.ui.view" id="service_co2_tree_view">
 			<field name="name">service.tree</field>
-			<field name="model">openhealth.service</field>
+			<field name="model">openhealth.service.co2</field>
 			<field name="arch" type="xml">
+				
 				<tree string="Service Tree">
+				
 					<field name="name"/>
+					<!--
 					<field name="id"/>
+					-->
+					<field name="laser"/>
+				
 					<field name="consultation"/>
+				
 				</tree>
 			</field>
 		</record>
 
 
+
 		<!-- Window action -->
-		<record model="ir.actions.act_window" id="service_list_action">
-			<field name="name">Servicios</field>
-			<field name="res_model">openhealth.service</field>
+		<record model="ir.actions.act_window" id="service_co2_list_action">
+			<field name="name">Servicios Co2</field>
+			<field name="res_model">openhealth.service.co2</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 		</record>
@@ -119,9 +130,9 @@
 		<!--
 		<menuitem id="service_menu" name="Services"
 		-->
-		<menuitem id="service_menu" name="Servicios"
+		<menuitem id="service_menu" name="Servicios Co2"
 			parent="openextension_menu"
-			action="service_list_action"/>
+			action="service_co2_list_action"/>
 
 
 	</data>

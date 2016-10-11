@@ -15,32 +15,22 @@
 			<field name="arch" type="xml">
 				<notebook position="inside">
 					
-					<page string="Servicios">
+					<page string="Servicios recomendados">
 						
 						
-								<field name="service_ids">
+								<!--									
+								<field name="service">
 
-									<tree string="">										
+									<tree string="">	
 										<field name="name"/>
+										
+										
 										<field name="laser"/>
 										
 										<field name="service"/>
 
-										<!--
-										<field name="code"/>
-										-->
-
-										<field name="name_short"/>
-
 										<field name="price"/>
-										<!--
-										<field name="consultation"/>
-										-->
-										
-										<!--
-											Button
-											
-										-->
+
 										<button 
 											type="object" 
 											class="oe_highlight"	
@@ -48,12 +38,13 @@
 											name="open_line_current" 
 										/>
 										
-										
 									</tree>
-
-
-
 								</field>						
+						<field name="service_co2"/>
+
+								-->
+
+
 					</page>
 					
 					

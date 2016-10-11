@@ -114,9 +114,7 @@
 		
 		'views/evaluations/consultation.xml',
 		'views/evaluations/consultation_first.xml',
-
-		'views/evaluations/consultation_procedures.xml',
-
+		#'views/evaluations/consultation_procedures.xml',
 		'views/evaluations/consultation_services.xml',
 
 

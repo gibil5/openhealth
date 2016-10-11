@@ -14,6 +14,13 @@ class Product(models.Model):
 
 
 
+	# Consultation 
+	#consultation = fields.Many2one('openhealth.consultation',
+	#		ondelete='cascade', 
+	#		string="Consulta", 
+	#		)
+
+
 
 
 

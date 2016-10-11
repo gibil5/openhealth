@@ -12,8 +12,9 @@ import jxvars
 
 class ServiceCo2(models.Model):
 	_name = 'openhealth.service.co2'
-
 	_inherit = 'openhealth.service'
+	
+	
 	
 	
 		

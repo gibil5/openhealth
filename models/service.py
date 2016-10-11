@@ -173,7 +173,7 @@ class Service(models.Model):
 
 			#string="Service", 
 			string="Servicio",
-			#required=True, 
+			required=True, 
 			)
 
 

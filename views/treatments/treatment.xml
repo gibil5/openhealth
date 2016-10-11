@@ -353,7 +353,7 @@ Notebook
 							<!--
 								Procedures 
 							-->
-							<page string="Procedimientos">
+							<page string="Procedimientos realizados">
 								<!--
 								<field name="procedure_ids" context="{'patient': 'Javier Revilla'}"/>
 								<field name="procedure_ids" domain="[('evaluation_type', '=', 'Ambulatory')]" />

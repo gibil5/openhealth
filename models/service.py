@@ -55,11 +55,18 @@ class Service(models.Model):
 
 	# Smart factorization
 	
-	
 	vspace = fields.Char(
 			' ', 
 			readonly=True
 			)
+			
+	title = fields.Char(
+			string='Title', 
+			default='',
+			readonly=True,
+			)
+
+
 	
 	
 	
@@ -252,7 +259,7 @@ class Service(models.Model):
 	laser = fields.Selection(
 			selection = _laser_type_list, 
 			#string="Tratamiento", 
-			string="Tipo", 
+			string="Laser a", 
 			
 			#default='laser_co2',
 			default='none',

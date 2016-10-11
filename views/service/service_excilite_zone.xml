@@ -7,9 +7,9 @@
 		<record model="ir.ui.view" id="service_excilite_zone_form_view">
 			<field name="name">service.excilite.zone.form</field>
 			<field name="model">openhealth.service.excilite</field>
-			
+			<!--
 			<field name="priority" eval="1"/>
-			
+			-->
 			<field name="inherit_id" ref="service_excilite_form_view"/>
 			<field name="arch" type="xml">
 				

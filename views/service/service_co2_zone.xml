@@ -3,25 +3,19 @@
 	<data>
 
 
-		<!-- Form view -->
 		<record model="ir.ui.view" id="service_co2_zone_form_view">
+			
 			<field name="name">service.co2.zone.form</field>
 			<field name="model">openhealth.service.co2</field>
 			
-			<field name="priority" eval="1"/>
-			
 			<field name="inherit_id" ref="service_co2_form_view"/>
+			
 			<field name="arch" type="xml">
 				
 				
 				
 				<notebook position="inside">
 				
-					
-					
-
-					
-					
 					<page string="Zona del cuerpo">
 					
 						<!--

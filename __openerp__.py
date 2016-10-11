@@ -77,7 +77,6 @@
 		
 		# Services
 		'views/service/service.xml',
-		#'views/service/laserco2.xml',
 		
 		'views/service/service_co2.xml',
 		'views/service/service_co2_zone.xml',

@@ -7,7 +7,9 @@
 		<record model="ir.ui.view" id="service_ndyag_zone_form_view">
 			<field name="name">service.ndyag.zone.form</field>
 			<field name="model">openhealth.service.ndyag</field>
+			<!--
 			<field name="priority" eval="1"/>
+			-->
 			<field name="inherit_id" ref="service_ndyag_form_view"/>
 			<field name="arch" type="xml">
 				

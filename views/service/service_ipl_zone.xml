@@ -13,8 +13,24 @@
 			<field name="inherit_id" ref="service_ipl_form_view"/>
 			<field name="arch" type="xml">
 				
-				<notebook position="inside">
+
+
+				<xpath expr="//field[@name='zone']" position="after">
+					<group>
+						<field name="time" readonly="1"  invisible="0" />
+					</group>					
+        		</xpath>
+
+				<xpath expr="//field[@name='pathology']" position="after">
+					<group>
+						<field name="nr_sessions" readonly="1"  invisible="0" />
+					</group>					
+        		</xpath>
+
+
+
 				
+				<notebook position="inside">
 					
 					<page string="Depilacion">
 						<group>	
@@ -35,9 +51,26 @@
 							</group>
 						</group>
 					</page>
-					
-					
+						
 				</notebook>
+
+
+
+				<xpath expr="//div[@name='time']" position="after">					
+					<group>
+						<group>
+							<field name="time_1" widget="radio"/>
+						</group>
+					
+						<group>
+							<field name="nr_sessions" widget="radio"/>
+						</group>
+					</group>
+        		</xpath>
+
+
+
+
 			</field>
 		</record>
 	</data>

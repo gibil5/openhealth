@@ -66,13 +66,17 @@ class Service(models.Model):
 			readonly=True,
 			)
 
-
+	under_notebook = fields.Char(
+			string='Under notebook', 
+			default='',
+			readonly=True,
+			)
 	
 	
 	
-	#time = fields.Char(
-	#		default='',
-	#)
+	time = fields.Char(
+			default='',
+	)
 			
 	client_type = fields.Char(
 			default='',	
@@ -98,11 +102,11 @@ class Service(models.Model):
 			
 			#self.time_1 = self.clear_all_times(self.time_1)
 
-			#self.time = self.time_1
+			self.time = self.time_1
 			
 			return {
 				#'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time)]},
-				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time_1)]},
+				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time)]},
 			}
 
 	

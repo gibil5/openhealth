@@ -27,20 +27,19 @@
 														
 							<group>
 								<group>
-									<field name="laser" readonly="1"  invisible="0"/>													
+									<field name="laser" readonly="1"  invisible="0"/>	
+									
+									<field name="zone" readonly="1"   invisible="0"/>
 								</group>
+								
+								
 								<group>
-									<field name="consultation" readonly="1"  invisible="1"/>													
-								</group>
-														
-								<group>
-									<field name="zone" readonly="1"   invisible="0"/>													
-								</group>
-								<group>
+									<field name="consultation" readonly="1"  invisible="0"/>													
+
 									<field name="pathology" readonly="1"  invisible="0"/>													
 								</group>
 								
-								
+								<!--
 								<group>
 									<field name="time_1" readonly="1"  invisible="0" />
 								</group>
@@ -48,7 +47,7 @@
 								<group>
 									<field name="nr_sessions" readonly="1"  invisible="0" />
 								</group>
-								
+								-->
 							</group>
 
 					
@@ -56,7 +55,18 @@
 							<notebook>
 							</notebook>
 
+							<!--
+							<field name="under_notebook"  invisible="0" />													
+							<hr></hr>
+							-->
 
+
+
+							<div name="time">	
+							</div>	
+
+
+							<hr></hr>
 
 							<group string="" >								
 								<group>

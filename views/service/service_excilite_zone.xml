@@ -15,12 +15,13 @@
 				
 				
 				
-				<notebook position="inside">
+				<xpath expr="//field[@name='zone']" position="after">
+					<field name="time" readonly="1"  invisible="0" />
+        		</xpath>
 				
-					
-					
-
-					
+				
+				
+				<notebook position="inside">
 					
 					<page string="Vitiligo">
 						<group>						
@@ -33,10 +34,6 @@
 						</group>
 						
 						
-						<!--
-						<hr></hr>
-						<hr></hr>
-						-->
 					</page>
 					
 					
@@ -64,12 +61,25 @@
 							</group>
 						</group>
 					</page>
-					
-
-
-
-
 				</notebook>
+				
+				
+				
+				
+				
+				<xpath expr="//div[@name='time']" position="after">					
+					<group>
+						<group>
+							<field name="time_1" widget="radio"/>
+						</group>
+					
+						<group>
+						</group>
+					</group>
+        		</xpath>
+				
+				
+				
 			</field>
 		</record>
 	</data>

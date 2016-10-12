@@ -14,84 +14,26 @@
 				
 				
 				
+				<xpath expr="//field[@name='notebook_over']" position="after">						
+				<!--	
 				<notebook position="inside">
+				-->
+				<notebook>
+				
+				
 				
 					<page string="Zona Cuerpo">
-					
-						<!--
-						<group>		
-							<button 
-								type="object" 
-								class="oe_highlight oe_right"	
-								string="Clear"
-			
-								name="clear_all" 	
-							/>
-											
-						</group>
-
-					
-						<group  col='3'>
-							<group>
-								<h4>Manos</h4>
-							</group>																										
-							
-							<group>
-								<field name="co2_hands_stains"/>							
-								<field name="co2_hands_scar"/>							
-								<field name="co2_hands_wart"/>							
-								<field name="co2_hands_rejuvenation"/>							
-							</group>
-							
-							<group>
-								<field name="co2_neck_scar"/>							
-							</group>																										
-						</group>
-								
-						<hr></hr>
-						-->
-							
-							
-
-
+	
 						<group>						
+
 							<group>
-								<!--
-								<field name="co2_hands"  widget="radio" />									
-								<field name="co2_hands"  widget="radio"  on_change="clear_others(co2_hands)"/>	
-								<field name="co2_hands"  widget="radio"  openerp.api.on_change="_onchange_co2_hands(co2_hands,co2_cheekbone)"/>	
-								<field name="co2_hands"  widget="radio"  openerp.api.on_change="'hands'"/>	
-								-->
 								<field name="co2_hands"  widget="radio" />
 							</group>																									
 
 							<group>
-								<!--
-								<field name="co2_neck"  widget="radio" domain="[('co2_neck', '=', 'scar')]"/>		
-														
-								<field name="co2_neck"  widget="radio" />							
-								-->
 								<field name="co2_neck"  widget="radio" />							
 							</group>
 							
-						</group>
-						
-						
-						
-
-						<hr></hr>
-
-						<!--
-						<group>						
-						</group>
-
-
-						<hr></hr>
-							
-						options="{'horizontal': false, 'no_radiolabel': false}"
-						-->
-
-						<group>	
 							<div class="jx_radio">								
 								<group>
 									<field name="co2_cheekbone"  widget="radio"  />							
@@ -101,19 +43,15 @@
 							
 							<group>
 								<field name="co2_vagina"  widget="radio" />							
-							</group>										
+							</group>			
 						</group>
+						
+						
+						
 
-		
 						<hr></hr>
 
-						<!--
-						<group>						
-						</group>
-		
 
-						<hr></hr>
-						-->
 
 						<group>						
 							<group>
@@ -129,32 +67,18 @@
 
 						<group>
 							<group>
-								<!--
-								<field   name="co2_allface_rejuvenation"  nolabel="0"  visible="1"  widget="radio"  options="{'vertical': true, 'visible': true}"  class="" />							
-								-->
-								<field   name="co2_allface_rejuvenation"  widget="radio"  />							
-								
+								<field   name="co2_allface_rejuvenation"  widget="radio"/>								
 							</group>
-						</group>
-
-
-						<hr></hr>
-
-
-						<group>
+							
 							<group>
-								<field name="co2_allface_acnesequels"  widget="radio" 														openerp.api.on_change="_onchange_co2_allface('jz')" />							
-							</group>
-			
-							<group></group>
+								<field name="co2_allface_acnesequels"  widget="radio"/>							
+							</group>							
 						</group>
-						
+
 					</page>
 					
 					
-					
-					
-					
+										
 					
 					<page string="Localizado Rostro">
 
@@ -196,79 +120,72 @@
 								<field name="co2_lf_wart" widget="radio"/>													
 							</group>
 						</group>
-
-
 					
 					</page>
 					
 
 
-					<!--
-					-->
+
 					<page string="Localizado Cuerpo">
 						
 						
 						<group>
-							<!--
-							<field name="lbo_dic[0]" widget="radio"/>													
-							-->
-							<field name="co2_lb_acneseq" widget="radio"/>													
+							<group>
+								<field name="co2_lb_acneseq" widget="radio"/>													
+							</group>
 
+							<group>
+								<field name="co2_lb_scar" widget="radio"/>													
+							</group>
 						</group>
 
+						
+						
 
-						<hr></hr>
-						
-						
-						<group>
-							<field name="co2_lb_scar" widget="radio"/>													
-						</group>
 
 
 						<hr></hr>
 
 
 						<group>
-							<field name="co2_lb_mole" widget="radio"/>													
+							<group>
+								<field name="co2_lb_mole" widget="radio"/>													
+							</group>
+
+							<group>
+								<field name="co2_lb_stains" widget="radio"/>													
+							</group>
 						</group>
+
 
 
 						<hr></hr>
 
-
-						<group>
-							<field name="co2_lb_stains" widget="radio"/>													
-						</group>
-
-
-						<hr></hr>
 						
 						
-						<group>
-							<field name="co2_lb_keratosis" widget="radio"/>													
+						<group col="3">
+							<group>
+								<field name="co2_lb_keratosis" widget="radio"/>													
+							</group>
+
+							<group>
+								<field name="co2_lb_cyst" widget="radio"/>													
+							</group>
+							
+							<group>
+								<field name="co2_lb_wart" widget="radio"/>													
+							</group>
 						</group>
-
-
-						<hr></hr>
-
-
-						<group>
-							<field name="co2_lb_cyst" widget="radio"/>													
-						</group>
-
-
-						<hr></hr>
-
-
-						<group>
-							<field name="co2_lb_wart" widget="radio"/>													
-						</group>
-						
-						
+	
 					</page>
+					
 					
 
 				</notebook>
+				</xpath>
+				
+				
+					
 			</field>
 		</record>
 	</data>

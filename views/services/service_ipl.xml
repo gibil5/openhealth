@@ -12,11 +12,9 @@
 			
 
 			<field name="arch" type="xml">
-				
 				<xpath expr="//field[@name='title']" position="before">
 					<h1>Láser M22-IPL</h1>					
         		</xpath>
-
 			</field>
 
 			

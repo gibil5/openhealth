@@ -72,6 +72,12 @@ class Service(models.Model):
 			readonly=True,
 			)
 	
+	notebook_over = fields.Char(
+			string='Over notebook', 
+			default='',
+			readonly=True,
+			)
+
 	
 	
 	time = fields.Char(
@@ -86,7 +92,7 @@ class Service(models.Model):
 	
 
 
-	# Time 
+	# Time 1
 	
 	time_1 = fields.Selection(
 			selection = exc._time_list, 
@@ -94,26 +100,25 @@ class Service(models.Model):
 			default='none',	
 			)
 
-
 	@api.onchange('time_1')
 	def _onchange_time_1(self):
 	
-		if self.time_1 != 'none':	
-			
-			#self.time_1 = self.clear_all_times(self.time_1)
-
+		if self.time_1 != 'none':				
+			self.time_1 = self.clear_all_times(self.time_1)
 			self.time = self.time_1
 			
 			return {
-				#'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time)]},
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time)]},
 			}
+
+
 
 	
 	
 	def clear_all_times(self,token):
 	
 		# Second
+		self.time = 'none'
 		self.time_1 = 'none'
 		
 		return token 

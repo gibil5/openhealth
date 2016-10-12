@@ -49,9 +49,12 @@
 							</group>
 
 					
+							<field name="notebook_over"  invisible="0" />													
 					
+							<!--
 							<notebook>
 							</notebook>
+							-->
 
 							<!--
 							<field name="under_notebook"  invisible="0" />													

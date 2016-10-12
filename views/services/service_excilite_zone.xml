@@ -7,21 +7,29 @@
 		<record model="ir.ui.view" id="service_excilite_zone_form_view">
 			<field name="name">service.excilite.zone.form</field>
 			<field name="model">openhealth.service.excilite</field>
-			<!--
-			<field name="priority" eval="1"/>
-			-->
+
 			<field name="inherit_id" ref="service_excilite_form_view"/>
+			
 			<field name="arch" type="xml">
 				
 				
-				
+			
+				<!-- Time --> 
 				<xpath expr="//field[@name='zone']" position="after">
-					<field name="time" readonly="1"  invisible="0" />
+					<field name="vspace"/>
+					<field name="time" readonly="1"  invisible="0" />					
         		</xpath>
 				
 				
 				
+				<!-- Notebook -->
+				<xpath expr="//field[@name='notebook_over']" position="after">						
+				<!--
 				<notebook position="inside">
+				-->
+				<group>
+				<group>
+				<notebook>
 					
 					<page string="Vitiligo">
 						<group>						
@@ -29,14 +37,10 @@
 								<field name="vitiligo"  widget="radio" />
 							</group>																									
 
-							<group>
-							</group>
 						</group>
 						
 						
 					</page>
-					
-					
 					
 					
 					<page string="Psoriasis">
@@ -45,11 +49,8 @@
 								<field name="psoriasis"  widget="radio" />							
 							</group>
 							
-							<group>
-							</group>
 						</group>
 					</page>
-					
 					
 					
 					<page string="Alopecias">
@@ -61,13 +62,30 @@
 							</group>
 						</group>
 					</page>
+					
+				
 				</notebook>
+				</group>
+
+
+				<group col="1">
+					<group></group><group></group><group></group>
+					
+					<group>
+						<field name="time_1" widget="radio"/>
+					</group>
+				</group>
+
+				
+				</group>
+				</xpath>
 				
 				
 				
 				
 				
 				<xpath expr="//div[@name='time']" position="after">					
+					<!--
 					<group>
 						<group>
 							<field name="time_1" widget="radio"/>
@@ -76,6 +94,9 @@
 						<group>
 						</group>
 					</group>
+
+					<hr></hr>
+					-->
         		</xpath>
 				
 				

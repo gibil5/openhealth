@@ -131,6 +131,7 @@ class ServiceExcilite(models.Model):
 		
 		
 		# Times
+		self.time = ''
 		self.time_1 = 'none'
 		#self.time_2 = 'none'
 		#self.time_3 = 'none'

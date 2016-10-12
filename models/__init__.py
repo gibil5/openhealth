@@ -34,7 +34,8 @@ from . import quotation
 from . import order
 
 
-from . import jxvars
+#from . import jxvars
+#from var import jxvars
 
 
 

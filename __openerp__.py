@@ -75,19 +75,19 @@
 		
 		
 		# Services
-		'views/service/service.xml',
+		'views/services/service.xml',
 		
-		'views/service/service_co2.xml',
-		'views/service/service_co2_zone.xml',
+		'views/services/service_co2.xml',
+		'views/services/service_co2_zone.xml',
 
-		'views/service/service_excilite.xml',
-		'views/service/service_excilite_zone.xml',
+		'views/services/service_excilite.xml',
+		'views/services/service_excilite_zone.xml',
 
-		'views/service/service_ipl.xml',
-		'views/service/service_ipl_zone.xml',
+		'views/services/service_ipl.xml',
+		'views/services/service_ipl_zone.xml',
 
-		'views/service/service_ndyag.xml',
-		'views/service/service_ndyag_zone.xml',
+		'views/services/service_ndyag.xml',
+		'views/services/service_ndyag_zone.xml',
 
 
 

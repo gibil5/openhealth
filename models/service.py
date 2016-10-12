@@ -263,7 +263,7 @@ class Service(models.Model):
 	laser = fields.Selection(
 			selection = _laser_type_list, 
 			#string="Tratamiento", 
-			string="Laser a", 
+			string="Láser", 
 			
 			#default='laser_co2',
 			default='none',

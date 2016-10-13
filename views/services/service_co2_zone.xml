@@ -14,13 +14,9 @@
 				
 				
 				
-				<xpath expr="//field[@name='notebook_over']" position="after">						
-				<!--	
-				<notebook position="inside">
-				-->
-				<notebook>
-				
-				
+				<xpath expr="//field[@name='notebook_over']" position="after">
+					
+				<notebook>				
 				
 					<page string="Zona Cuerpo">
 	

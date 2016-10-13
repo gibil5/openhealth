@@ -62,15 +62,22 @@
 		
         
 		
+		# Consultation
+		'views/evaluations/consultation.xml',
+		'views/evaluations/consultation_first.xml',
+		'views/evaluations/consultation_services.xml',
+		#'views/evaluations/consultation_procedures.xml',
+		
+		
+		
+		
 		
         # Learning 
-        'views/learning/learn.xml',
+        #'views/learning/learn.xml',
 
 
 
 
-        # Treatments 
-		'views/treatments/treatment.xml',
 		
 		
 		
@@ -110,10 +117,6 @@
 		#'views/evaluations/evaluation.xml',
 		'views/evaluations/evaluation_oeh.xml',
 		
-		'views/evaluations/consultation.xml',
-		'views/evaluations/consultation_first.xml',
-		#'views/evaluations/consultation_procedures.xml',
-		'views/evaluations/consultation_services.xml',
 
 
 
@@ -133,6 +136,9 @@
         
 		'views/evaluations/procedure.xml',
 
+
+        # Treatments 
+		'views/treatments/treatment.xml',
 
 
     ],

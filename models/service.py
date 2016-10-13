@@ -35,8 +35,16 @@ class Service(models.Model):
 			record.name = 'SE00' + str(record.id) 
 
 
+
+
 	# Commons 
-	
+	def clear_all(self,token):
+		self.clear_commons		
+		self.clear_local  
+		return token
+		
+
+
 	def clear_commons(self):
 		
 		# Service
@@ -191,8 +199,9 @@ class Service(models.Model):
 
 			#string="Service", 
 			string="Servicio",
-			required=True, 
+			#required=True, 
 			)
+
 
 
 	# Treatment 

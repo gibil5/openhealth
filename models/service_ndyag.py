@@ -84,11 +84,17 @@ class ServiceNdyag(models.Model):
 		
 
 	# Clear 
-	def clear_all(self,token):
+
+	#def clear_all(self,token):
+	#	self.clear_commons
+	#	self.clear_local  
+	#	return token
+
+
+
 		
-		# Service
-		self.clear_commons
-		
+	@api.multi
+	def clear_local(self):
 		
 		# First
 		self.face = 'none'
@@ -97,14 +103,12 @@ class ServiceNdyag(models.Model):
 		# Times
 		self.time = ''
 		self.time_1 = 'none'
-		#self.clear_common_times
 
 
 		# Sessions
 		self.nr_sessions = ''
 		self.nr_sessions_1 = 'none'
 
-		return token
 		
 
 	

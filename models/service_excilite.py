@@ -108,12 +108,18 @@ class ServiceExcilite(models.Model):
 
 
 	# Clear 		
-	def clear_all(self,token):
+	
+	#def clear_all(self,token):
+	#	self.clear_commons
+	#	self.clear_local  
+	#	return token 
+	
+
+
 		
-		# Service
-		self.clear_commons
-		
-		
+	@api.multi
+	def clear_local(self):
+	
 		# First
 		self.vitiligo = 'none'
 		self.psoriasis = 'none'
@@ -126,7 +132,6 @@ class ServiceExcilite(models.Model):
 		#self.clear_common_times
 		
 		
-		return token 
 
 
 

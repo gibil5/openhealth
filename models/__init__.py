@@ -2,6 +2,11 @@
 
 #from . import models
 
+
+from . import consultation
+
+
+
 from . import learn_1
 
 from . import treatment 
@@ -26,7 +31,6 @@ from . import service_ndyag
 
 
 
-from . import consultation
 from . import procedure
 
 

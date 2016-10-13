@@ -22,25 +22,28 @@
 
 
 					<header>
-						
-
-						<button 
-							type="object" 
-							
-							class="oe_highlight oe_right_"
-							
-							string="Clear" 
-
-							name="clear_all_local" 
-						/>
-						
-						
-
 					</header>
 
 
 
 					<sheet>
+						<!--
+						<h1>Láser</h1>
+						-->
+						<group>
+						
+							<h1>Láser</h1>
+						
+							<button 
+								type="object" 
+								class="oe_highlight oe_right"
+								string="Clear" 
+
+								name="clear_local" 
+							/>
+						
+						</group>
+						
 						
 						<field name="title"  invisible="0" />													
 											

@@ -83,11 +83,17 @@ class ServiceIpl(models.Model):
 		
 
 	# Clear 
-	def clear_all(self,token):
+	
+	#def clear_all(self,token):
+	#	self.clear_commons
+	#	self.clear_local  
+	#	return token 
 		
-		# Service
-		self.clear_commons
 		
+
+		
+	@api.multi
+	def clear_local(self):
 		
 		# First
 		self.depilation = 'none'
@@ -102,7 +108,6 @@ class ServiceIpl(models.Model):
 		self.nr_sessions = ''
 		self.nr_sessions_1 = 'none'
 		
-		return token 
 	
 	
 	

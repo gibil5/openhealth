@@ -488,10 +488,18 @@ class ServiceCo2(models.Model):
 		
 	# Clear 
 		
-	def clear_all(self,token):
-		
-		# Service
-		self.clear_commons
+	#def clear_all(self,token):
+	#	self.clear_commons		
+	#	self.clear_local  
+	#	return token 
+	
+	
+	
+	
+	
+	# jx 
+	@api.multi
+	def clear_local(self):
 		
 		
 		# First
@@ -516,27 +524,10 @@ class ServiceCo2(models.Model):
 		
 		# Fourth
 		self.co2_lb_acneseq = 'none'
-
 		self.co2_lb_scar = 'none'
 		self.co2_lb_mole = 'none'
 		self.co2_lb_stains = 'none'
-
 		self.co2_lb_keratosis = 'none'
 		self.co2_lb_cyst = 'none'
 		self.co2_lb_wart = 'none'
-
-		return token 
-	
-	
-	
-	def clear_all_local(self):
-		
-		# First
-		self.co2_hands = 'none'
-		self.co2_neck = 'none'
-		self.co2_cheekbone = 'none'
-		self.co2_vagina = 'none'
-		self.co2_packages = 'none'
-		
-		
 		

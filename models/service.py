@@ -3,7 +3,7 @@
 # 	Consultation 
 # 
 # Created: 				20 Sep 2016
-# Last updated: 	 	20 Sep 2016
+# Last updated: 	 	12 Oct 2016
 
 from openerp import models, fields, api
 from datetime import datetime
@@ -23,17 +23,8 @@ class Service(models.Model):
 
 	# Name 
 	name = fields.Char(
-			#default='Laser Co2',
-			#string='Name',
-			#string='Nombre',
-
-
-
 			default='SE',
-			
-			#string='Servicio #',
 			string='Servicio #',
-
 			compute='_compute_name', 
 			required=True, 
 			)
@@ -41,58 +32,54 @@ class Service(models.Model):
 	@api.multi
 	def _compute_name(self):
 		for record in self:
-			#record.name = 'SE0000' + str(record.id) 
 			record.name = 'SE00' + str(record.id) 
 
 
-
-
-
-
-
-
-
-
-	# Smart factorization
+	# Commons 
 	
-	vspace = fields.Char(
-			' ', 
-			readonly=True
-			)
-			
-	title = fields.Char(
-			string='Title', 
-			default='',
-			readonly=True,
-			)
+	def clear_commons(self):
+		
+		# Service
+		self.zone = 'none'
+		self.pathology = 'none'
+		
+		#self.time = 'none'
+		#self.time_1 = 'none'
+		
+		
+		#self.nr_sessions = ''
+		#self.nr_sessions_1 = 'none'
+		
+		
+		
+	#def clear_common_times(self):
+	#	self.time = ''
+	#	self.time_1 = 'none'
+		
+		
+		
 
-	under_notebook = fields.Char(
-			string='Under notebook', 
-			default='',
-			readonly=True,
-			)
+	def clear_times(self,token):
 	
-	notebook_over = fields.Char(
-			string='Over notebook', 
-			default='',
-			readonly=True,
-			)
+		#self.time = 'none'
+		self.time = ''
+		self.time_1 = 'none'
+		
+		return token
+		
+		
 
+		
+		
+		
+	
+		
 	
 	
+	# Time 
 	time = fields.Char(
 			default='',
 	)
-			
-	client_type = fields.Char(
-			default='',	
-	)
-			
-
-	
-
-
-	# Time 1
 	
 	time_1 = fields.Selection(
 			selection = exc._time_list, 
@@ -104,74 +91,53 @@ class Service(models.Model):
 	def _onchange_time_1(self):
 	
 		if self.time_1 != 'none':				
-			self.time_1 = self.clear_all_times(self.time_1)
+			self.time_1 = self.clear_times(self.time_1)
 			self.time = self.time_1
+			
 			
 			return {
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time)]},
+				#'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time),('x_client_type', '=', self.nr_sessions) ]},
+				
 			}
 
 
 
-	
-	
-	def clear_all_times(self,token):
-	
-		# Second
-		self.time = 'none'
-		self.time_1 = 'none'
-		
-		return token 
-	
-	
-	
-	
-	
-	
-	# Client type 
-	
-	client_type_1 = fields.Selection(
-			selection = ipl._ctype_list, 
-			string="Tipo de cliente", 
-			default='none',	
-			)
 
 
-	@api.onchange('client_type_1')
-	def _onchange_client_type_1(self):
 	
-		if self.client_type_1 != 'none':	
-			#self.client_type_1 = self.clear_all(self.client_type_1)
-			self.client_type = self.client_type_1
-			
-			return {
-				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time),('x_client_type', '=', self.client_type) ]},
-			}
-
+	# Nr sessions
+	
+	nr_sessions = fields.Char(
+			default='',	
+	)
 	
 	
 	
-	# Nr of sessions
-	
-	nr_sessions = fields.Selection(
+	nr_sessions_1 = fields.Selection(
 			selection = ipl._nr_sessions_list, 
 			string="Número de sesiones", 
 			default='none',	
-			)
+	)
 
-
-	@api.onchange('nr_sessions')
-	def _onchange_nr_sessions(self):
+	@api.onchange('nr_sessions_1')
+	def _onchange_nr_sessions_1(self):
 	
-		if self.nr_sessions != 'none':	
-			#self.nr_sessions = self.clear_all(self.nr_sessions)
-			self.client_type = self.nr_sessions
+		if self.nr_sessions_1 != 'none':	
+			
+			#self.nr_sessions_1 = self.clear_all(self.nr_sessions_1)
+			#self.client_type = self.nr_sessions_1
+			
+			self.nr_sessions = self.nr_sessions_1
 			
 			return {
-				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time),('x_client_type', '=', self.client_type) ]},
+				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time),('x_client_type', '=', self.nr_sessions) ]},
+				#'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_client_type', '=', self.nr_sessions) ]},
 			}
 			
-			
+
+
+
 		
 
 	# Service
@@ -188,17 +154,7 @@ class Service(models.Model):
 		
 		
 	
-	# Clear 		
-	def clear_commons(self):
-		
-		# Service
-		self.zone = 'none'
-		self.pathology = 'none'
-		
-		#self.time = 'none'
-		self.time_1 = 'none'
-		
-		self.nr_sessions = 'none'
+
 
 
 
@@ -410,6 +366,26 @@ class Service(models.Model):
 			record.price= (record.service.list_price)
 
 
+
+
+
+	# Other
+	vspace = fields.Char(
+			' ', 
+			readonly=True
+			)
+			
+	title = fields.Char(
+			string='Title', 
+			default='',
+			readonly=True,
+			)
+	
+	notebook_over = fields.Char(
+			string='Over notebook', 
+			default='',
+			readonly=True,
+			)
 
 
 

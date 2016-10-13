@@ -5,14 +5,11 @@
 
 from openerp import models, fields, api
 from datetime import datetime
-
 import ipl
-
 
 
 class ServiceIpl(models.Model):
 	_name = 'openhealth.service.ipl'
-
 	_inherit = 'openhealth.service'
 	
 
@@ -26,35 +23,24 @@ class ServiceIpl(models.Model):
 						('x_treatment', '=', 'laser_ipl'),
 					],
 	)
-			
-			
-			
-		
+
 			
 
-
-
-
-
+	# Propietary
+			
 	# First
-
-
-
 	depilation = fields.Selection(
 			selection = ipl._depilation_list, 
 			string="Depilación", 
 			default='none',	
 			)
 
-
-
-
-
 	face = fields.Selection(
 			selection = ipl._face_list, 
 			string="Todo rostro", 
 			default='none',	
 			)
+
 
 
 
@@ -97,24 +83,26 @@ class ServiceIpl(models.Model):
 		
 
 	# Clear 
-		
 	def clear_all(self,token):
 		
 		# Service
-		#self.zone = 'none'
-		#self.pathology = 'none'
-		#self.time_1 = 'none'
-		#self.nr_sessions = 'none'
 		self.clear_commons
 		
 		
 		# First
 		self.depilation = 'none'
+		self.face = 'none'
 
+		# Times
+		self.time = ''
+		self.time_1 = 'none'
+		#self.clear_common_times
+		
+		# Sessions
+		self.nr_sessions = ''
+		self.nr_sessions_1 = 'none'
+		
 		return token 
-	
-	
-	
 	
 	
 	

@@ -5,14 +5,11 @@
 
 from openerp import models, fields, api
 from datetime import datetime
-
 import exc
-
 
 
 class ServiceExcilite(models.Model):
 	_name = 'openhealth.service.excilite'
-
 	_inherit = 'openhealth.service'
 	
 	
@@ -29,13 +26,8 @@ class ServiceExcilite(models.Model):
 	
 	
 	
+	# Propietary
 	
-	
-					
-
-	
-
-
 	# First
 	vitiligo = fields.Selection(
 			selection = exc._vitiligo_list, 
@@ -119,8 +111,6 @@ class ServiceExcilite(models.Model):
 	def clear_all(self,token):
 		
 		# Service
-		#self.zone = 'none'
-		#self.pathology = 'none'
 		self.clear_commons
 		
 		
@@ -133,8 +123,8 @@ class ServiceExcilite(models.Model):
 		# Times
 		self.time = ''
 		self.time_1 = 'none'
-		#self.time_2 = 'none'
-		#self.time_3 = 'none'
+		#self.clear_common_times
+		
 		
 		return token 
 

@@ -22,7 +22,7 @@ _depilation_list = [
 		('areolas',	'Ariolas'),
 		('armpits',	'Axilas'),
 		
-		('arms',	'Braxos'),	
+		('arms',	'Brazos'),	
 		('neck',	'Cuello'),
 		('back',	'Espalda'),
 		
@@ -43,7 +43,7 @@ _rosacea_list = [
 		('areolas',	'Ariolas'),
 		('armpits',	'Axilas'),
 		
-		('arms',	'Braxos'),	
+		('arms',	'Brazos'),	
 		('neck',	'Cuello'),
 		('back',	'Espalda'),
 		
@@ -64,7 +64,7 @@ _stains_list = [
 		('areolas',	'Ariolas'),
 		('armpits',	'Axilas'),
 		
-		('arms',	'Braxos'),	
+		('arms',	'Brazos'),	
 		('neck',	'Cuello'),
 		('back',	'Espalda'),
 		
@@ -82,12 +82,12 @@ _stains_list = [
 
 
 
-_time_list = [
-		('15 min','15 min'),	
-		('30 min','30 min'),
-		
-		('none',''),
-		]
+#_time_list = [
+#		('15 min','15 min'),	
+#		('30 min','30 min'),
+#		
+#		('none',''),
+#		]
 
 
 _ctype_list = [

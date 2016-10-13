@@ -27,17 +27,14 @@ class ServiceNdyag(models.Model):
 					],
 	)
 	
-	
-	
 	time_1 = fields.Selection(
 			selection = ndyag._time_list, 
-			#string="Tiempo", 
-			#default='none',	
+			string="Tiempo", 
+			default='none',	
 	)
-			
-			
-			
 	
+	
+	# Propietary	
 	
 	face = fields.Selection(
 			selection = ndyag._face_list, 
@@ -84,22 +81,28 @@ class ServiceNdyag(models.Model):
 			}
 			
 		
+		
 
 	# Clear 
-		
 	def clear_all(self,token):
 		
 		# Service
-		#self.zone = 'none'
-		#self.pathology = 'none'
-		#self.time_1 = 'none'
-		#self.nr_sessions = 'none'
 		self.clear_commons
 		
 		
 		# First
 		self.face = 'none'
 		self.body = 'none'
+		
+		# Times
+		self.time = ''
+		self.time_1 = 'none'
+		#self.clear_common_times
+
+
+		# Sessions
+		self.nr_sessions = ''
+		self.nr_sessions_1 = 'none'
 
 		return token
 		

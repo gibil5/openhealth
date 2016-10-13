@@ -164,4 +164,28 @@ class ServiceBase(models.Model):
 			
 	
 	
+	# Client type 
+	
+	client_type = fields.Char(
+			default='',	
+	)
+	
+	
+	client_type_1 = fields.Selection(
+			selection = ipl._ctype_list, 
+			string="Tipo de cliente", 
+			default='none',	
+			)
+
+
+	@api.onchange('client_type_1')
+	def _onchange_client_type_1(self):
+	
+		if self.client_type_1 != 'none':	
+			#self.client_type_1 = self.clear_all(self.client_type_1)
+			self.client_type = self.client_type_1
+			
+			return {
+				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time),('x_client_type', '=', self.client_type) ]},
+			}
 	

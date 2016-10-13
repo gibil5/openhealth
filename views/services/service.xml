@@ -17,8 +17,29 @@
 			
 			<field name="arch" type="xml">
 				
+				
 				<form string="Service - Form">
-					
+
+
+					<header>
+						
+
+						<button 
+							type="object" 
+							
+							class="oe_highlight oe_right_"
+							
+							string="Clear" 
+
+							name="clear_all_local" 
+						/>
+						
+						
+
+					</header>
+
+
+
 					<sheet>
 						
 						<field name="title"  invisible="0" />													

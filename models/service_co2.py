@@ -5,16 +5,12 @@
 
 from openerp import models, fields, api
 from datetime import datetime
-
 import jxvars
-
 
 
 class ServiceCo2(models.Model):
 	_name = 'openhealth.service.co2'
 	_inherit = 'openhealth.service'
-	
-	
 	
 	
 		
@@ -30,12 +26,8 @@ class ServiceCo2(models.Model):
 	
 	
 	
+	# Propietary
 
-
-	# Smart vars
-	# ----------
-	
-	
 	# First
 	co2_hands = fields.Selection(
 			selection = jxvars._co2_han_list, 
@@ -499,8 +491,6 @@ class ServiceCo2(models.Model):
 	def clear_all(self,token):
 		
 		# Service
-		#self.zone = 'none'
-		#self.pathology = 'none'
 		self.clear_commons
 		
 		
@@ -539,3 +529,14 @@ class ServiceCo2(models.Model):
 	
 	
 	
+	def clear_all_local(self):
+		
+		# First
+		self.co2_hands = 'none'
+		self.co2_neck = 'none'
+		self.co2_cheekbone = 'none'
+		self.co2_vagina = 'none'
+		self.co2_packages = 'none'
+		
+		
+		

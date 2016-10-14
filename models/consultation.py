@@ -25,10 +25,11 @@ class Consultation(models.Model):
 			' ', 
 			readonly=True
 			)
+
+
 			
-			
-	# Quotations
-	# -----------------------------------------------------------------------------------------------------------------
+
+	# ----------------------------------------------------------- Orders ------------------------------------------------------
 
 	order = fields.One2many(
 			#'openhealth.quotation', 
@@ -37,107 +38,23 @@ class Consultation(models.Model):
 			 
 			#'treatment_id', 
 			'consultation', 
-			string="Presupuestos"
+			
+			string="Order"
 			)
 
-	order_line  = fields.One2many(
-			'sale.order.line',
-			'order_id',
-	)
-			
-
-	# ----------------------------- Services -----------------------------------
-
-	# Service id 
-	#service_ids = fields.One2many(
-	#		'openhealth.service', 
-			#'treatment_id', 
-	#		'consultation', 
-			#string="Services"
-	#		string="Servicios"
+	#order_line  = fields.One2many(
+	#		'sale.order.line',
+	#		'order_id',
 	#)
-
-
-	# Service 
-	service = fields.Many2one(
-	#service = fields.One2many(	
-			'product.template',
-
-			#'consultation',
 			
-			string="Servicio", 
-	)
-
-
-
-	# Laser 
-	_laser_type_list = [
-			('laser_co2','Laser Co2'), 
-			('laser_excilite','Laser Excilite'), 
-			('laser_ipl','Laser Ipl'), 
-			('laser_ndyag','Laser Ndyag'), 
-			]
-
-	laser = fields.Selection(
-			selection = _laser_type_list, 
-			string="Laser",  
-			default='laser_co2',
-			required=True, 
-			index=True
-			)
-
-
-
-	# Name short 
-	code = fields.Char(
-			compute='_compute_code', 
-			#string='Short name'
-			string='Código'
-			)
-
-	@api.depends('service')
-
-	def _compute_code(self):
-		for record in self:
-			record.code = record.service.x_name_short 
 
 
 
 
+	# ----------------------------------------------------------- Services --------------------------------------------------------
 
-
-
-
-
-	#Price 
-	price = fields.Float(
-			compute='_compute_price', 
-			#string='Price'
-			string='Precio'
-			) 
-
-	#@api.multi
-	@api.depends('service')
-
-	def _compute_price(self):
-		for record in self:
-			record.price= (record.service.list_price)
-
-
-
-	def get_domain_service(self,cr,uid,ids,context=None):
-
-		#print context
-
-		#return {
-		#	'warning': {
-		#		'title': "Laser",
-		#		'message': context,
-		#}}
-
-		mach = []
-		lids = self.pool.get('product.template').search(cr,uid,[('x_treatment', '=', context)])
-		return {'domain':{'service':[('id','in',lids)]}}
+	# Services
+	
 
 
 
@@ -149,12 +66,8 @@ class Consultation(models.Model):
 
 
 
+	# --------------------------------------------------------- Consultation ------------------------------------------------------
 
-
-	# ----------------------------- Consultation -----------------------------------
-	# Go 
-
-	#treatment_id = fields.Many2one('openextension.treatment',
 	treatment = fields.Many2one('openextension.treatment',
 			ondelete='cascade', 
 			)
@@ -310,45 +223,6 @@ class Consultation(models.Model):
 	#----------------------------------------------------------- Buttons ------------------------------------------------------------
 
 
-	#  Quotation  
-	# -----------
-	@api.multi
-	def create_quotation_current(self):  
-
-		patient_id = self.patient.id
-
-		#partner_id = self.env['res.partner'].search([('name','=','Javier Revilla')]).id
-		#partner_id = self.env['res.partner'].search([('name','=',self.patient.name)]).id
-		partner_id = self.env['res.partner'].search([('name','=',self.patient.name)],limit=1).id
-				
-		consultation_id = self.id 
-		
-		#order_line_id = self.env['sale.order.line'].new().id
-		
-		
-		return {
-
-			# Mandatory 
-			'type': 'ir.actions.act_window',
-			'name': ' Create Quotation Current', 
-			'view_type': 'form',
-			'view_mode': 'form',
-			'res_model': 'sale.order',
-			
-			'flags': {
-					'form': {'action_buttons': True, }
-					},			
-			
-			'target': 'current',
-
-			'context':   {
-
-				'default_partner_id': partner_id,
-				#'default_patient': patient_id,				
-				'default_consultation': consultation_id,
-				#'default_order_line': order_line_id,
-			}
-		}
 
 
 
@@ -413,10 +287,60 @@ class Consultation(models.Model):
 	
 	
 	
+	# Service 
+	service_ids = fields.One2many(
+			'openhealth.service', 
+
+			'consultation', 
+
+			string="Servicios",
+			
+			#compute='_compute_service_ids', 
+	)
+	
+	
+	#@api.multi
+	#@api.depends('service_co2_ids')
+	
+	#def _compute_service_ids(self):
+	#	for record in self:
+			#record.service_ids = 'SE00' + str(record.id) 
+			#record.service_ids = record.service_co2_ids 
+			
+
+
+
+	
+	service_co2_ids = fields.One2many(
+			'openhealth.service.co2', 
+			'consultation', 
+			string="Servicios Co2",
+	)
+	
+	service_excilite_ids = fields.One2many(
+			'openhealth.service.excilite', 
+			'consultation', 
+			string="Servicios Excilite",
+	)
+
+	service_ipl_ids = fields.One2many(
+			'openhealth.service.ipl', 
+			'consultation', 
+			string="Servicios Ipl",
+	)
+
+	service_ndyag_ids = fields.One2many(
+			'openhealth.service.ndyag', 
+			'consultation', 
+			string="Servicios Ndyag",
+	)
+
+
+
+
 
 	# Service - Laser Co2 
 	# ---------------------
-	
 	@api.multi
 	def open_service_co2(self):  
 
@@ -426,6 +350,7 @@ class Consultation(models.Model):
 		zone = ''	
 		pathology = ''
 				
+		#self.service_ids = [39]
 		
 		return {
 				'type': 'ir.actions.act_window',
@@ -434,6 +359,7 @@ class Consultation(models.Model):
 				'view_mode': 'form',			
 					
 				#'res_id': 23,
+				#'res_id': 39,
 				
 				'target': 'current',
 								
@@ -576,5 +502,105 @@ class Consultation(models.Model):
 
 							}
 				}
+	
+	
+	
+	# ------------------------------------------------------------------------------------------------------------------------
+	#  Order  
+	# -----------
+	
+	
+	
+	# Products 
+	#products = fields.One2many(
+	#		'product.template',
+	#		string="Product",
+	#		default=[],
+	#		compute='_compute_products', 
+	#		)
+
+	
+	#@api.multi
+	#@api.depends('service_co2_ids')
+	
+	#def _compute_products(self):
+	#	for record in self:
+			
+	#		record.products = [3480, 3527, 3510]
+			#record.products = []
+			#for service in record.service_co2_ids:
+			#	record.products.append(service)
+
+
+
+
+
+	order_line = field_One2many=fields.One2many('sale.order.line',
+		'consultation',
+		string='Order',
+		#compute='_compute_order_line', 
+		)
+	
+	#@api.depends('service_co2_ids')
+	#def _compute_order_line(self):	
+	#	order_id = self.id
+	#	for record in self:
+	#		for service_laser in record.service_co2_ids:				
+	#			prod_id = service_laser.service.id
+	#			record.order_line.create({
+	#										'product_id': prod_id,
+	#										'order_id': order_id,
+	#										'name': '',
+	#										}) 
+			
+			
+
+	@api.multi
+	def create_quotation_current(self):  
+
+		patient_id = self.patient.id
+
+		#partner_id = self.env['res.partner'].search([('name','=',self.patient.name)]).id
+		partner_id = self.env['res.partner'].search([('name','=',self.patient.name)],limit=1).id
+				
+		consultation_id = self.id 
+		
+
+		#prod_array = [3480, 3527, 3510]
+		#products_id = self.products.id
+		
+		
+		return {
+
+			# Mandatory 
+			'type': 'ir.actions.act_window',
+			'name': ' Create Quotation Current', 
+			'view_type': 'form',
+			'view_mode': 'form',
+			
+			
+			'res_model': 'sale.order',
+			
+			
+			'flags': {
+					'form': {'action_buttons': True, }
+					},			
+			
+			'target': 'current',
+
+			'context':   {
+
+				'default_partner_id': partner_id,
+				'default_consultation': consultation_id,
+
+				#'default_products': products_id,
+
+
+				#'default_prod_array': prod_array,
+
+				#'default_order_line': order_line_id,
+				#'default_patient': patient_id,				
+			}
+		}
 							
 				

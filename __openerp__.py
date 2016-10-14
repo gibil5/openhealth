@@ -66,6 +66,15 @@
 		'views/evaluations/consultation.xml',
 		'views/evaluations/consultation_first.xml',
 		'views/evaluations/consultation_services.xml',
+
+		'views/evaluations/consultation_services_co2.xml',
+		'views/evaluations/consultation_services_excilite.xml',
+		'views/evaluations/consultation_services_ipl.xml',
+		'views/evaluations/consultation_services_ndyag.xml',
+
+		'views/evaluations/consultation_order_lines.xml',
+
+
 		#'views/evaluations/consultation_procedures.xml',
 		
 		
@@ -96,6 +105,11 @@
 		'views/services/service_ndyag.xml',
 		'views/services/service_ndyag_zone.xml',
 
+		# Orders
+		'views/orders/order.xml',
+
+
+		
 
 
 		# Invoices
@@ -129,9 +143,9 @@
 
 
 		
-        'views/evaluations/consultation_quotation.xml',        
-		'views/evaluations/quotation.xml',
-		'views/evaluations/order.xml',
+        #'views/evaluations/consultation_quotation.xml',        
+		#'views/evaluations/quotation.xml',
+		#'views/evaluations/order.xml',
 
         
 		'views/evaluations/procedure.xml',

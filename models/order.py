@@ -1,107 +1,134 @@
 # -*- coding: utf-8 -*-
 #
-# 	Quotation 
+# 	Order 
 # 
 
+#from openerp import fields,models
 from openerp import models, fields, api
-from datetime import datetime
+
+
+class sale_order(models.Model):
+	
+	_inherit='sale.order'
+    
+	order_line = field_One2many=fields.One2many('sale.order.line',
+		'order_id',
+		string='Order',
+		)
 
 
 
-
-
-#------------------------------------------------------------------------
-class Order(models.Model):
-	#_name = 'openhealth.order'
-	
-	
-	#_inherit = 'oeh.medical.evaluation'
-	#_inherit = 'oeh.medical.quotation'
-	#_inherit = 'oeh.medical.order'
-	
-	
-	_inherit = 'sale.order'
-	#_inherit = 'account.invoice'
-	
-	
-	
-	order_line  = fields.One2many(
-			'sale.order.line',
-			'order_id',
-			domain = [
-						('id', '=', '3201'),
-			#			('doctor', '=', PHYSICIAN),
-			],
-	)
-	
-	
-	def get_domain_order_line(self,cr,uid,ids,context=None):
-
-		context = 'laser_co2'
-		print 
-		print context
-		print 
-
-		#return {
-		#	'warning': {
-		#		'title': "Laser",
-		#		'message': context,
-		#}}
-
-		mach = []
-		lids = self.pool.get('product.template').search(cr,uid,[('x_treatment', '=', context)])
-		return {'domain':{'service':[('id','in',lids)]}}
-		
-		
-	
-
-
-	name = fields.Char(
-			string = 'Order #',
-			#string = 'Procedimiento #',
-	)
-			
 	consultation = fields.Many2one('openhealth.consultation',
 			ondelete='cascade', 
 	)
+	
+	
+	#products = fields.One2many(
+	#products = fields.Many2one(
+	#		'product.template',
+	#		)
 			
-
-	patient = fields.Many2one(
-			'oeh.medical.patient',
-			#string="Patient", 
-			string="Paciente", 
-			#required=True, 
-
-	        #default='This is the actual model',
-
-			index=True
+			
+	
+	
+	x_nex = fields.Char(
+		default='nex',
 	)
-			
-			
-			
-	#partner_invoice_id = fields.Many2one(
-	#		'res.partner',
-	#		required=False, 
-	#)
 	
-	#partner_shipping_id = fields.Many2one(
-	#		'res.partner',
-	#		required=False, 			
-	#)
 	
-	pricelist_id = fields.Many2one(
-			'product.pricelist',
-			required=False, 					
+	
+	
+	# Button
+	@api.multi 
+	def x_create_order_lines(self):
+		print 
+		print 'Mark'
+		
+		order_id = self.id
+
+
+		#prod_array = [3480, 3527, 3510]		
+		#for prod_id in prod_array:
+
+		for service_laser in self.consultation.service_co2_ids:
+			prod_id = service_laser.service.id			
+			ol = self.order_line.create({
+										'product_id': prod_id,
+										'order_id': order_id,
+										'name': '',
+										#'product_uom' : what.product_id.uom_id.id
+									})
+			
+		for service_laser in self.consultation.service_excilite_ids:
+			prod_id = service_laser.service.id			
+			ol = self.order_line.create({
+										'product_id': prod_id,
+										'order_id': order_id,
+										'name': '',
+										#'product_uom' : what.product_id.uom_id.id
+										
+									})
+
+		for service_laser in self.consultation.service_ipl_ids:
+			prod_id = service_laser.service.id			
+			ol = self.order_line.create({
+										'product_id': prod_id,
+										'order_id': order_id,
+										'name': '',
+										#'product_uom' : what.product_id.uom_id.id
+
+									})
+
+		for service_laser in self.consultation.service_ndyag_ids:
+			prod_id = service_laser.service.id			
+			ol = self.order_line.create({
+										'product_id': prod_id,
+										'order_id': order_id,
+										'name': '',
+										#'product_uom' : what.product_id.uom_id.id
+									})
+
+
+		print
+
+	
+	
+#sale_order()
+
+
+class sale_order_line(models.Model):
+
+	_inherit='sale.order.line'
+
+	order_id=fields.Many2one('sale.order',
+		string='Order',
+		)
+
+	
+	
+	x_mark = fields.Char(
+		default='mark',
+	)
+
+	consultation = fields.Many2one('openhealth.consultation',
+			ondelete='cascade', 
 	)
 
 
-	currency_id = fields.Many2one(
-			'res.currency',
-			required=False, 					
-	)
+	#product_id = fields.Many2one(
+	#	'product.product',
+	#	'order_line',
+	#	domain = [
+	#				('type', '=', 'service'),
+	#				('x_treatment', '=', 'laser_co2'),
+	#			],
+
+	#	)
 
 
 
 
-	
-	
+
+
+
+#sale_order_line()

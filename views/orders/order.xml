@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		
+		<record model="ir.ui.view" id="view_test">
+			<field name="name">sale.order.form</field>
+			<field name="model">sale.order</field>
+			<!--
+			<field name="inherit_id" ref="sale_order.form_view_id"/>
+			-->
+			<field name="inherit_id" ref="sale.view_order_form"/>
+			
+			<field name="arch" type="xml">
+
+				<!--
+				<xpath expr="pass of position" position="the postion">
+				-->
+					
+					
+				<field name="payment_term_id" position="after">
+					
+					<button 
+						type="object" 
+						class="oe_highlight"	
+						string="Crear Líneas"
+			
+						name="x_create_order_lines" 	
+					/>
+					
+				</field>
+				
+				
+				
+				<field name="partner_id" position="after">
+					
+					<field name="consultation"/>
+					<field name="x_nex"/>
+					
+					<!--
+					<field name='field_One2many'>
+						<tree>
+							
+						</tree>
+					</field>
+					-->
+						
+				</field>
+				<!--
+				</xpath>
+				-->
+				
+			</field>
+		</record>
+	</data>
+</openerp>

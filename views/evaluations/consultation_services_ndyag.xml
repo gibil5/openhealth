@@ -6,23 +6,21 @@
 		<!--
 		Services 
 		-->
-		<record model="ir.ui.view" id="consultation_services_form_view">
-			<field name="name">consultation.services.form</field>
+		<record model="ir.ui.view" id="consultation_services_ndyag_form_view">
+			<field name="name">consultation.service.ndyag.form</field>
 			<field name="model">openhealth.consultation</field>
-			<field name="priority" eval="1"/>
+			<field name="priority" eval="2"/>
 			<field name="inherit_id" ref="consultation_form_view"/>
 			<field name="arch" type="xml">
 				<notebook position="inside">
 					
-					<page string="Servicios">
+					<page string="Servicios ndyag">
 
 
 						<!--
 						<field name="service_ids"/>
 						-->
-							
-						<field name="service_ids">
-							
+						<field name="service_ndyag_ids">
 							<tree string="">	
 								<field name="name"/>
 								<field name="laser"/>				
@@ -39,8 +37,6 @@
 							</tree>
 						</field>						
 
-
-						
 
 					</page>
 				</notebook>

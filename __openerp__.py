@@ -72,8 +72,10 @@
 		'views/evaluations/consultation_services_ndyag.xml',
 
 
+
 		'views/evaluations/consultation_services.xml',
-		'views/evaluations/consultation_order_lines.xml',
+		'views/evaluations/consultation_order.xml',
+		#'views/evaluations/consultation_order_lines.xml',
 
 
 		#'views/evaluations/consultation_procedures.xml',
@@ -106,7 +108,9 @@
 		'views/services/service_ndyag.xml',
 		'views/services/service_ndyag_zone.xml',
 
+
 		# Orders
+		#'views/evaluations/order.xml',
 		'views/orders/order.xml',
 
 
@@ -146,7 +150,6 @@
 		
         #'views/evaluations/consultation_quotation.xml',        
 		#'views/evaluations/quotation.xml',
-		#'views/evaluations/order.xml',
 
         
 		'views/evaluations/procedure.xml',

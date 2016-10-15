@@ -503,13 +503,7 @@ class Consultation(models.Model):
 
 
 
-	order = fields.One2many(
-			'sale.order',			 
-			'consultation', 
-			string="Order",
-			
-			#compute='_compute_order', 
-			)
+
 
 
 	#order_line = field_One2many=fields.One2many('sale.order.line',
@@ -603,14 +597,39 @@ class Consultation(models.Model):
 				#record.service_ids.write(0, 0, values)
 	
 	
-				
+	# Order
+	order = fields.One2many(
+			'sale.order',			 
+			'consultation', 
+			string="Order",
+			
+			#compute='_compute_order', 
+			)
 				
 
+
+		
 	# Create Order - Button 
-
 	@api.multi
 	def create_order_current(self):  
 
+		# Order 
+		print 
+		print 'jx'
+		order_id = self.order.id
+		
+		if self.order.nr_lines != 0:
+			print 'Unlink'
+			u = self.order.remove_order_lines()
+			print u
+		
+		print 'Create'
+		nr_lines = self.order.x_create_order_lines()
+		print nr_lines
+		print 
+		
+		
+		
 		# Consultation
 		consultation_id = self.id 
 
@@ -619,11 +638,7 @@ class Consultation(models.Model):
 		#partner_id = self.env['res.partner'].search([('name','=',self.patient.name)]).id
 		partner_id = self.env['res.partner'].search([('name','=',self.patient.name)],limit=1).id
 		
-		# Order 
-		#prod_array = [3480, 3527, 3510]
-		#products_id = self.products.id
-		order_id = self.order.id
-		
+
 		
 		return {
 
@@ -635,12 +650,14 @@ class Consultation(models.Model):
 			
 			
 			'res_model': 'sale.order',
+			
 			#'res_id': 23,
 			'res_id': order_id,
 			
 			
 			'flags': {
 					'form': {'action_buttons': True, }
+					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 					},			
 			
 			'target': 'current',

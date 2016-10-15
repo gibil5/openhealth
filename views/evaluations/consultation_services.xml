@@ -19,7 +19,6 @@
 
 						<!--
 						<field name="service_ids"/>
-						-->
 							
 						<field name="service_ids">
 							
@@ -39,6 +38,8 @@
 							</tree>
 						</field>						
 
+						-->						
+						<field name="service_ids"/>
 
 						
 

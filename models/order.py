@@ -22,6 +22,14 @@ class sale_order(models.Model):
 	consultation = fields.Many2one('openhealth.consultation',
 		ondelete='cascade', 
 	)
+
+	treatment = fields.Many2one('openextension.treatment',
+		ondelete='cascade', 
+	)
+	
+	patient = fields.Many2one(
+			'oeh.medical.patient',
+	)
 	
 	
 	#products = fields.One2many(
@@ -29,9 +37,100 @@ class sale_order(models.Model):
 	#		'product.template',
 	#		)
 			
+			
 	#x_nex = fields.Char(
 	#	default='nex',
 	#)
+	
+	x_state = fields.Char(
+		default='a',
+	)
+	
+	_state_list = [
+         			('draft', 'Quotation'),
+					('sent', 'Quotation Sent'),
+					('sale', 'Sale Order'),
+					('done', 'Done'),
+					('cancel', 'Cancelled'),
+         	   ]
+
+	state = fields.Selection(
+			selection = _state_list, 
+			string='jx Status', 
+			
+			#readonly=True, 
+			readonly=False, 
+			
+			#copy=False, 
+			#index=True, 
+			#track_visibility='onchange', 
+			#default='draft'
+			)
+	
+
+	# State changes
+	#@api.depends('state', 'order_line.invoice_status')
+	#@api.depends('state')
+	#def _jx_state_change(self):
+	@api.onchange('state')
+	def _onchange_state(self):
+		
+		print 
+		print 'jx'
+		print 'Order - State change'
+		print self.state
+		
+		self.x_state = 'b'
+		
+		name = 'name',
+
+		#patient = self.consultation.treatment.patient.name
+		patient = self.patient
+		
+		print patient
+		
+		#return {
+		#	'warning': {
+		#		'title': "Order - State",
+		#		'message': self.state + ' ' + patient.name,
+		#}}
+		
+		
+		
+		print self.consultation.treatment.procedure_ids
+		
+		self.consultation.treatment.procedure_ids.create({
+			
+											'name': 'name',
+											'patient': patient.name,
+											
+											#'product_id': se.service.id,
+											#'product_uom': se.service.uom_id.id,
+											#'order_id': order_id,
+											#'order_id': 33,
+		#									'order_id': consultation_id,
+										})
+
+		
+		print 
+		
+
+		
+		
+	#state_changes = fields.Char(
+	#		default='a',
+	#		compute='_compute_state_changes', 
+	#		)
+
+	#@api.depends('state')	
+	#def _compute_state_changes(self):
+	#	print
+	#	print 'jx'
+	#	for record in self:
+	#		record.state_changes = 'b'
+	#		print record.state_changes
+	
+	
 	
 	
 	
@@ -63,7 +162,7 @@ class sale_order(models.Model):
 	
 	
 	
-	# Methods
+	# Order lines 
 	
 	@api.multi 
 	def remove_order_lines(self):

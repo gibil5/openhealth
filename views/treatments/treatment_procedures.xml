@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+		<!--
+		procedures
+		-->
+		<record model="ir.ui.view" id="treatment_procedure_form_view">
+			<field name="name">treatment.procedure.form</field>
+			<field name="model">openextension.treatment</field>
+			<field name="priority" eval="2"/>
+			<field name="inherit_id" ref="treatment_form_view"/>
+			<field name="arch" type="xml">
+				<notebook position="inside">
+					
+					
+
+					<!--
+						Procedures 
+					-->
+					<page string="Procedimientos realizados">
+						<!--
+						<field name="procedure_ids" context="{'patient': 'Javier Revilla'}"/>
+						<field name="procedure_ids" domain="[('evaluation_type', '=', 'Ambulatory')]" />
+						--> 
+						<field name="procedure_ids">
+							<tree string="Procedimintos">
+								<field string="Procedimiento #"  name="name"/>
+								<field string="Paciente" name="patient"/>
+								<field string="Médico" name="doctor"/>
+								<field name="evaluation_start_date"/>
+								<field string='Tipo' name="evaluation_type"/>
+								
+								<field name="treatment"/>
+								
+								
+								
+								<!--
+									Button
+								-->
+								<button 
+									type="object" 
+									class="oe_highlight"	
+									string="E"
+									
+									name="open_line_current" 
+								/>
+								
+							</tree>
+						</field>
+					</page>
+
+
+
+				</notebook>
+			</field>
+		</record>
+	</data>
+</openerp>

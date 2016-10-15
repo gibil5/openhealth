@@ -3,11 +3,7 @@
 	<data>
 
 
-		<!--
-			CONSULTATION	
-		-->
-			
-			
+		<!-- CONSULTATION -->
 			
 		<!-- Form view -->
 		<record model="ir.ui.view" id="consultation_form_view">

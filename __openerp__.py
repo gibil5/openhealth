@@ -76,10 +76,14 @@
 		#'views/evaluations/consultation_services.xml',
 		'views/evaluations/consultation_order.xml',
 		#'views/evaluations/consultation_order_lines.xml',
-
-
 		#'views/evaluations/consultation_procedures.xml',
 		
+		
+		
+        # Treatments 
+		'views/treatments/treatment.xml',
+		'views/treatments/treatment_sales.xml',
+		'views/treatments/treatment_procedures.xml',
 		
 		
 		
@@ -155,8 +159,6 @@
 		'views/evaluations/procedure.xml',
 
 
-        # Treatments 
-		'views/treatments/treatment.xml',
 
 
     ],

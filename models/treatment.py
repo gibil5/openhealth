@@ -19,6 +19,53 @@ class Treatment(models.Model):
 	_inherit = 'openextension.treatment'
 
 
+	# Consultations 
+	# --------------
+	consultation_ids = fields.One2many(
+			#'oeh.medical.evaluation', 
+			'openhealth.consultation', 
+
+			#'treatment_id', 
+			'treatment', 
+
+			string = "Consultas", 
+			)
+
+	procedure_ids = fields.One2many(
+			#'oeh.medical.evaluation', 
+			'openhealth.procedure', 
+
+			#'treatment_id', 
+			'treatment', 
+			string = "Procedimientos", 
+			)
+
+
+
+
+	
+	# Invoices
+	#invoice_ids = fields.One2many(
+	#		'openhealth.invoice', 
+	#		'treatment_id', 
+			#string="Invoices"
+	#		string="Presupuestos"
+	#		)
+
+
+
+	# Sales 
+	sale_ids = fields.One2many(
+			'sale.order',			 
+			'treatment', 
+			string="Ventas"
+			)
+	
+	
+	
+	
+
+
 
 	# Name 
 	name = fields.Char(
@@ -168,20 +215,14 @@ class Treatment(models.Model):
 
 
 	# Service 
-	service_ids = fields.One2many(
-			'openhealth.service', 
-			'treatment_id', 
-			#string="Services"
-			string="Servicios"
-			)
-
-	# Invoices
-	#invoice_ids = fields.One2many(
-	#		'openhealth.invoice', 
+	#service_ids = fields.One2many(
+	#		'openhealth.service', 
 	#		'treatment_id', 
-			#string="Invoices"
-	#		string="Presupuestos"
+			#string="Services"
+	#		string="Servicios"
 	#		)
+
+
 
 
 
@@ -272,17 +313,6 @@ class Treatment(models.Model):
 
 
 
-	# Consultations 
-	# --------------
-	consultation_ids = fields.One2many(
-			#'oeh.medical.evaluation', 
-			'openhealth.consultation', 
-
-			#'treatment_id', 
-			'treatment', 
-
-			string = "Consultas", 
-			)
 
 
 	nr_consultations = fields.Integer(
@@ -305,14 +335,6 @@ class Treatment(models.Model):
 
 	# Procedures 
 	# ------------
-	procedure_ids = fields.One2many(
-			#'oeh.medical.evaluation', 
-			'openhealth.procedure', 
-
-			#'treatment_id', 
-			'treatment', 
-			string = "Procedimientos", 
-			)
 
 
 	nr_procedures = fields.Integer(

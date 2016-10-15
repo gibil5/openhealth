@@ -33,12 +33,15 @@
 					<!--
 					<field name="consultation"/>
 					<field name="x_nex"/>
+					<field name="nr_lines"/>
 
 					-->
 					
 					<field name="state"/>
+					<field name="x_state"/>
 
-					<field name="nr_lines"/>
+					<field name="patient"/>
+
 					
 					<!--
 					<field name='field_One2many'>

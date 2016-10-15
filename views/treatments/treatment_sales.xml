@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+		<!--
+		sales
+		-->
+		<record model="ir.ui.view" id="treatment_sale_form_view">
+			<field name="name">treatment.sale.form</field>
+			<field name="model">openextension.treatment</field>
+			<field name="priority" eval="1"/>
+			<field name="inherit_id" ref="treatment_form_view"/>
+			<field name="arch" type="xml">
+				<notebook position="inside">
+					
+					<page string="Ventas">
+
+
+						<field name="sale_ids"/>
+
+						<!--
+						<field name="sale"/>
+
+						<field name="sale_ids">
+							
+							<tree string="">	
+								
+								<field name="name"/>
+
+								<field name="date_sale"/>
+
+								<field name="partner_id"/>
+
+								<field name="amount_total" sum="Total Tax Included" widget="monetary"/>
+
+
+								<field name="state" invisible="0"/>
+
+								<field name="nr_lines"/>
+
+							</tree>
+						</field>				
+						-->
+						
+
+					</page>
+				</notebook>
+			</field>
+		</record>
+	</data>
+</openerp>

@@ -16,6 +16,12 @@ class Consultation(models.Model):
 	_inherit = 'oeh.medical.evaluation'
 
 
+	treatment = fields.Many2one('openextension.treatment',
+			ondelete='cascade', 
+			)
+			
+			
+
 	name = fields.Char(
 			string = 'Consulta #',
 			)
@@ -58,9 +64,7 @@ class Consultation(models.Model):
 
 	# --------------------------------------------------------- Consultation ------------------------------------------------------
 
-	treatment = fields.Many2one('openextension.treatment',
-			ondelete='cascade', 
-			)
+
 
 
 
@@ -671,8 +675,10 @@ class Consultation(models.Model):
 		# Consultation
 		consultation_id = self.id 
 
-		# Customer 
+		# Patient
 		patient_id = self.patient.id
+		
+		# Partner
 		#partner_id = self.env['res.partner'].search([('name','=',self.patient.name)]).id
 		partner_id = self.env['res.partner'].search([('name','=',self.patient.name)],limit=1).id
 		
@@ -702,8 +708,10 @@ class Consultation(models.Model):
 
 			'context':   {
 
-				'default_partner_id': partner_id,
 				'default_consultation': consultation_id,
+
+				'default_partner_id': partner_id,
+				'default_patient': patient_id,				
 
 				#'default_products': products_id,
 
@@ -711,7 +719,6 @@ class Consultation(models.Model):
 				#'default_prod_array': prod_array,
 
 				#'default_order_line': order_line_id,
-				#'default_patient': patient_id,				
 			}
 		}
 							

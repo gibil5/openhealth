@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!--
-	*** OPEN HEALTH
-
-	Created: 			26 Aug 2016
-	Last updated: 	 	13 Sep 2016
--->
-
 <openerp>
 	<data>
-
 
 
 		<!-- TREATMENT --> 
@@ -290,6 +281,11 @@ Fields
 
 						</group>
 
+						<group>
+							<!--
+							<field name="sale_ids"/>
+							-->
+						</group>
 
 
 
@@ -350,40 +346,6 @@ Notebook
 
 
 
-							<!--
-								Procedures 
-							-->
-							<page string="Procedimientos realizados">
-								<!--
-								<field name="procedure_ids" context="{'patient': 'Javier Revilla'}"/>
-								<field name="procedure_ids" domain="[('evaluation_type', '=', 'Ambulatory')]" />
-								--> 
-								<field name="procedure_ids">
-									<tree string="Procedimintos">
-										<field string="Procedimiento #"  name="name"/>
-										<field string="Paciente" name="patient"/>
-										<field string="Médico" name="doctor"/>
-										<field name="evaluation_start_date"/>
-										<field string='Tipo' name="evaluation_type"/>
-										
-										<field name="treatment"/>
-										
-										
-										
-										<!--
-											Button
-										-->
-										<button 
-											type="object" 
-											class="oe_highlight"	
-											string="E"
-											
-											name="open_line_current" 
-										/>
-										
-									</tree>
-								</field>
-							</page>
 
 
 

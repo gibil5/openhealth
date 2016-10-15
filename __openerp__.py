@@ -62,21 +62,22 @@
 		
         
 		
+		
 		# Consultation
-		'views/evaluations/consultation.xml',
-		'views/evaluations/consultation_first.xml',
-
-		'views/evaluations/consultation_services_co2.xml',
-		'views/evaluations/consultation_services_excilite.xml',
-		'views/evaluations/consultation_services_ipl.xml',
-		'views/evaluations/consultation_services_ndyag.xml',
-
-
-
+		'views/consultations/consultation.xml',
+		'views/consultations/consultation_first.xml',
+		'views/consultations/consultation_services_co2.xml',
+		'views/consultations/consultation_services_excilite.xml',
+		'views/consultations/consultation_services_ipl.xml',
+		'views/consultations/consultation_services_ndyag.xml',
+		'views/consultations/consultation_order.xml',
 		#'views/evaluations/consultation_services.xml',
-		'views/evaluations/consultation_order.xml',
 		#'views/evaluations/consultation_order_lines.xml',
 		#'views/evaluations/consultation_procedures.xml',
+		
+		
+		# Procedures
+		'views/procedures/procedure.xml',
 		
 		
 		
@@ -156,7 +157,6 @@
 		#'views/evaluations/quotation.xml',
 
         
-		'views/evaluations/procedure.xml',
 
 
 

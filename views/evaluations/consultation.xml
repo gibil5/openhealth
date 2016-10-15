@@ -87,7 +87,7 @@
 							class="oe_highlight oe_right"
 							string="Presupuesto" 
 
-							name="create_quotation_current" 
+							name="create_order_current" 
 						/>
 						
 						

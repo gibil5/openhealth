@@ -31,16 +31,6 @@ class Consultation(models.Model):
 
 	# ----------------------------------------------------------- Orders ------------------------------------------------------
 
-	order = fields.One2many(
-			#'openhealth.quotation', 
-			#'openhealth.order',
-			'sale.order',
-			 
-			#'treatment_id', 
-			'consultation', 
-			
-			string="Order"
-			)
 
 	#order_line  = fields.One2many(
 	#		'sale.order.line',
@@ -287,26 +277,6 @@ class Consultation(models.Model):
 	
 	
 	
-	# Service 
-	service_ids = fields.One2many(
-			'openhealth.service', 
-
-			'consultation', 
-
-			string="Servicios",
-			
-			#compute='_compute_service_ids', 
-	)
-	
-	
-	#@api.multi
-	#@api.depends('service_co2_ids')
-	
-	#def _compute_service_ids(self):
-	#	for record in self:
-			#record.service_ids = 'SE00' + str(record.id) 
-			#record.service_ids = record.service_co2_ids 
-			
 
 
 
@@ -533,41 +503,126 @@ class Consultation(models.Model):
 
 
 
+	order = fields.One2many(
+			'sale.order',			 
+			'consultation', 
+			string="Order",
+			
+			#compute='_compute_order', 
+			)
 
 
-	order_line = field_One2many=fields.One2many('sale.order.line',
-		'consultation',
-		string='Order',
-		#compute='_compute_order_line', 
-		)
+	#order_line = field_One2many=fields.One2many('sale.order.line',
+	#	'consultation',
+	#	string='Order',
+		
+	#	compute='_compute_order_line', 
+	#	)
+	
 	
 	#@api.depends('service_co2_ids')
 	#def _compute_order_line(self):	
-	#	order_id = self.id
+	#def _compute_order(self):	
+	#	print
+	#	print 'mark'
+		#order_id = self.order
+		
 	#	for record in self:
-	#		for service_laser in record.service_co2_ids:				
-	#			prod_id = service_laser.service.id
-	#			record.order_line.create({
+	#		for s in record.service_co2_ids:
+	#			print 
+	#			print s
+	#			print s.service
+	#			print 
+	#			prod_id = s.service.id
+
+	#			record.order.order_line.create({
 	#										'product_id': prod_id,
-	#										'order_id': order_id,
-	#										'name': '',
+	#										'product_uom' : s.service.uom_id.id,
+											
+											#'order_id': order_id,
+											#'name': '',
 	#										}) 
 			
-			
-
-	@api.multi
-	def create_quotation_current(self):  
-
-		patient_id = self.patient.id
-
-		#partner_id = self.env['res.partner'].search([('name','=',self.patient.name)]).id
-		partner_id = self.env['res.partner'].search([('name','=',self.patient.name)],limit=1).id
-				
-		consultation_id = self.id 
+	#	print
 		
 
+
+	# Service 
+	service_ids = fields.One2many(
+			'openhealth.service', 
+			'consultation', 
+			string="Servicios",
+			
+			#compute='_compute_service_ids', 
+	)
+	
+	#@api.multi
+	#@api.depends('service_co2_ids')
+	
+	#def _compute_service_ids(self):
+	#	print 
+	#	for record in self:
+	#		for s in record.service_co2_ids:
+	#			print s
+	#			print s.name
+	#			print s.service.name
+	#			print s.service.id
+	#			print 
+				#record.service_ids.create({
+				#							'name':s.name,
+				#							'service_id':s.service.id,
+				#})
+	#			values = {
+	#						'name':s.name,
+	#			}
+				#record.service_ids.write(0, 0, values)
+	#			record.service_ids.write(values)
+		
+
+	#@api.onchange('service_co2_ids')
+	#def _onchange_service_co2_ids(self):	
+	#	print
+	#	print 'mark'
+	#	print 
+		
+		#return {
+		#	'warning': {
+		#		'title': "service_co_ids",
+		#		'message': '',
+		#}}
+		
+	#	for s in self.service_co2_ids:
+	#		print s
+	#		print s.name
+	#		print s.service.name
+	#		print s.service.id
+	#		print
+	#		values = {
+	#					'name':s.name,
+	#				}
+				#record.service_ids.write(0, 0, values)
+	
+	
+				
+				
+
+	# Create Order - Button 
+
+	@api.multi
+	def create_order_current(self):  
+
+		# Consultation
+		consultation_id = self.id 
+
+		# Customer 
+		patient_id = self.patient.id
+		#partner_id = self.env['res.partner'].search([('name','=',self.patient.name)]).id
+		partner_id = self.env['res.partner'].search([('name','=',self.patient.name)],limit=1).id
+		
+		# Order 
 		#prod_array = [3480, 3527, 3510]
 		#products_id = self.products.id
+		order_id = self.order.id
 		
 		
 		return {
@@ -580,6 +635,8 @@ class Consultation(models.Model):
 			
 			
 			'res_model': 'sale.order',
+			#'res_id': 23,
+			'res_id': order_id,
 			
 			
 			'flags': {

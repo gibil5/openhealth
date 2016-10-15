@@ -65,13 +65,14 @@
 		# Consultation
 		'views/evaluations/consultation.xml',
 		'views/evaluations/consultation_first.xml',
-		'views/evaluations/consultation_services.xml',
 
 		'views/evaluations/consultation_services_co2.xml',
 		'views/evaluations/consultation_services_excilite.xml',
 		'views/evaluations/consultation_services_ipl.xml',
 		'views/evaluations/consultation_services_ndyag.xml',
 
+
+		'views/evaluations/consultation_services.xml',
 		'views/evaluations/consultation_order_lines.xml',
 
 

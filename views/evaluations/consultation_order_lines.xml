@@ -18,18 +18,16 @@
 
 
 						<!--
-						-->
 						<field name="order_line">
 							
 							<tree string="">	
 								
 								<field name="name"/>
-								<!--
-								<field name="product_id"/>				
-								-->
 							</tree>
 							
 						</field>				
+						-->
+						<field name="order"/>
 						
 
 					</page>

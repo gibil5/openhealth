@@ -42,18 +42,6 @@ class Treatment(models.Model):
 
 
 
-
-	
-	# Invoices
-	#invoice_ids = fields.One2many(
-	#		'openhealth.invoice', 
-	#		'treatment_id', 
-			#string="Invoices"
-	#		string="Presupuestos"
-	#		)
-
-
-
 	# Sales 
 	sale_ids = fields.One2many(
 			'sale.order',			 
@@ -62,6 +50,61 @@ class Treatment(models.Model):
 			)
 	
 	
+	# Patient 
+	patient = fields.Many2one(
+			'oeh.medical.patient',
+			string="Paciente", 
+			#required=True, 
+			#index=True
+			)
+			
+
+
+	# Clean procedures
+	@api.multi
+	def clean_procedures(self):
+		self.procedure_ids.unlink()
+
+			
+	# Create procedure 
+	@api.multi
+	def create_procedure(self):
+		print 
+		print 'jx'
+		print 'Create Procedure'
+		
+		name = 'name'
+		patient = self.patient.id
+		doctor = self.physician.id
+		treatment = self.id
+		
+		
+		chief_complaint = self.chief_complaint
+
+
+		#for service in self.consultation_ids.service_co2_ids:
+		#	product = service.service.id
+		
+		
+		for line in self.consultation_ids.order.order_line:
+			
+			if not line.procedure_created:
+				
+				line.procedure_created = True
+				
+				product = line.product_id.id
+				
+				ret = self.procedure_ids.create({
+											'patient':patient,
+											'doctor':doctor,
+											'chief_complaint':chief_complaint,
+											'treatment':treatment,										
+											'product':product,
+									})
+				print ret 
+
+
+		print 
 	
 	
 
@@ -112,16 +155,7 @@ class Treatment(models.Model):
 
 
 	# Patient 
-	patient = fields.Many2one(
-			'oeh.medical.patient',
-			#string="Patient", 
-			string="Paciente", 
-			required=True, 
 
-	        #default='This is the actual model',
-
-			index=True
-			)
 
 
 

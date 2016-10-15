@@ -30,20 +30,34 @@
 						/>
 
 
+
 						<!--
-							context="{
-								'default_evaluation_type': 'Ambulatory',
-							}" 											
-						-->
-						
 						<button 
 							type="object" 
 							class="oe_highlight"
-
 							string="Procedimiento" 
 
 							name="open_procedure_current" 
 						/>
+
+
+						<button 
+							type="object" 
+							class="oe_highlight"
+							string="Clean" 
+
+							name="clean_procedures" 
+						/>
+						-->
+
+						<button 
+							type="object" 
+							class="oe_highlight"
+							string="Procedimiento" 
+
+							name="create_procedure" 
+						/>
+
 
 
 
@@ -57,6 +71,7 @@
 
 							name="open_evaluation_current" 
 						/>
+
 
 
 						<!--
@@ -265,27 +280,15 @@ Fields
 							</group>
 
 
-							<group>
-								<!--
-									<field name="nr_services"/>
-								-->
-							</group>
-							<group>
-							</group>
-
-
-							<group>
-							</group>
-							<group>
-							</group>
-
-						</group>
-
-						<group>
 							<!--
-							<field name="sale_ids"/>
+							<group>
+									<field name="nr_services"/>
+							</group>
+							<group>
+							</group>
 							-->
 						</group>
+
 
 
 

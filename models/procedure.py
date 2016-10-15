@@ -21,6 +21,22 @@ class Procedure(models.Model):
 			)
 
 
+
+	# Service 
+	product = fields.Many2one(
+			'product.template',
+
+			#domain = [
+			#			('type', '=', 'service'),
+			#			('x_treatment', '=', _jx_laser_type),
+			#		],
+
+			string="Producto",
+			required=True, 
+			)
+	
+	
+
 	#treatment_id = fields.Many2one('openextension.treatment',
 	treatment = fields.Many2one('openextension.treatment',
 			ondelete='cascade', 

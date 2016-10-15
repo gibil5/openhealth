@@ -98,25 +98,32 @@
 
 						<!-- Fields --> 
 						<group>
-							
 							<group>
 								<field name="treatment"/>
 							</group>
+
 							<group>
 							</group>
-							
-							
+						</group>
+
+
+						<group>	
+								
 							<group>
 								<field name="doctor" options="{'no_create': True}"/>
 								<field name="evaluation_start_date"/>
+								<field name="product"/>
 							</group>
+
+
 							<group>
 								<field name="evaluation_type"/>
 								<field name="chief_complaint"/>
 								<field string="Próxima cita" name="appointment" domain="[('patient', '=', patient)]" options="{'no_create': True}"/>
-
 							</group>
+							
 						</group>
+							
 
 
 

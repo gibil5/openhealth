@@ -26,15 +26,20 @@
 						--> 
 						<field name="procedure_ids">
 							<tree string="Procedimintos">
+
 								<field string="Procedimiento #"  name="name"/>
+
 								<field string="Paciente" name="patient"/>
+
 								<field string="Médico" name="doctor"/>
+
 								<field name="evaluation_start_date"/>
+
 								<field string='Tipo' name="evaluation_type"/>
 								
+								<field name="product"/>
+
 								<field name="treatment"/>
-								
-								
 								
 								<!--
 									Button

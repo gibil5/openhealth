@@ -69,10 +69,7 @@ class sale_order(models.Model):
 	
 
 	# State changes
-	#@api.depends('state', 'order_line.invoice_status')
-	#@api.depends('state')
-	#def _jx_state_change(self):
-	@api.onchange('state')
+	#@api.onchange('state')
 	def _onchange_state(self):
 		
 		print 
@@ -84,7 +81,6 @@ class sale_order(models.Model):
 		
 		name = 'name',
 
-		#patient = self.consultation.treatment.patient.name
 		patient = self.patient
 		
 		print patient
@@ -229,6 +225,10 @@ class sale_order_line(models.Model):
 
 	consultation = fields.Many2one('openhealth.consultation',
 			ondelete='cascade', 
+	)
+
+	procedure_created = fields.Boolean(
+		default=False,
 	)
 
 

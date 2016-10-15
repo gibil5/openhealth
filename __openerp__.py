@@ -73,7 +73,7 @@
 
 
 
-		'views/evaluations/consultation_services.xml',
+		#'views/evaluations/consultation_services.xml',
 		'views/evaluations/consultation_order.xml',
 		#'views/evaluations/consultation_order_lines.xml',
 

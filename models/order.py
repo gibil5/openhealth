@@ -128,15 +128,14 @@ class sale_order_line(models.Model):
 		string='Order',
 		)
 
-	
+	consultation = fields.Many2one('openhealth.consultation',
+			ondelete='cascade', 
+	)
+
+
 	#x_mark = fields.Char(
 	#	default='mark',
 	#)
-
-	#consultation = fields.Many2one('openhealth.consultation',
-	#		ondelete='cascade', 
-	#)
-
 
 	#product_id = fields.Many2one(
 	#	'product.product',

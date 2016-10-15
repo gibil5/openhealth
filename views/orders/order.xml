@@ -30,10 +30,14 @@
 				
 				<field name="partner_id" position="after">
 					
-					<field name="consultation"/>
 					<!--
+					<field name="consultation"/>
 					<field name="x_nex"/>
+
 					-->
+					
+					<field name="state"/>
+
 					<field name="nr_lines"/>
 					
 					<!--

@@ -506,12 +506,7 @@ class Consultation(models.Model):
 
 
 
-	#order_line = field_One2many=fields.One2many('sale.order.line',
-	#	'consultation',
-	#	string='Order',
-		
-	#	compute='_compute_order_line', 
-	#	)
+
 	
 	
 	#@api.depends('service_co2_ids')
@@ -602,31 +597,74 @@ class Consultation(models.Model):
 			'sale.order',			 
 			'consultation', 
 			string="Order",
-			
-			#compute='_compute_order', 
 			)
+
+
+	order_2 = fields.One2many(
+			'sale.order',			 
+			'consultation', 
+			string="Order 2",
+			)
+
 				
+	order_line = field_One2many=fields.One2many('sale.order.line',
+		'consultation',
+		#string='Order',
+		
+		#compute='_compute_order_line', 
+		)
+	
+	#@api.multi
+	@api.depends('order')
+	
+	def _compute_order_line(self):
+		print 'Compute order line'
+		
+		consultation_id = self.id
+		order_id = self.order_2
+		
+		
+		
+		for record in self:	
+			#record.order_line.id = record.order.order_line.id
+			
+			for se in record.service_co2_ids:
+				print se.name 
 
+				ol = record.order_line.create({
+											'product_id': se.service.id,
+											'name': se.name_short,
+											'product_uom': se.service.uom_id.id,
+											'order_id': order_id,
+											#'order_id': 33,
+		#									'order_id': consultation_id,
+											
+										})
 
+		print 
+	
+	
 		
 	# Create Order - Button 
 	@api.multi
 	def create_order_current(self):  
 
 		# Order 
-		print 
-		print 'jx'
+		#print 
+		#print 'jx'
 		order_id = self.order.id
 		
-		if self.order.nr_lines != 0:
-			print 'Unlink'
-			u = self.order.remove_order_lines()
-			print u
+		#if self.order.nr_lines != 0:
+			#print 'Unlink'
+		#	u = self.order.remove_order_lines()
+			#print u
 		
-		print 'Create'
-		nr_lines = self.order.x_create_order_lines()
-		print nr_lines
-		print 
+		
+		if self.order.nr_lines == 0:
+			#print 'Create'
+			nr_lines = self.order.x_create_order_lines()
+			#print nr_lines
+			#print 
 		
 		
 		

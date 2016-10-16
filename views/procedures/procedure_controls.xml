@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+		<!--
+		controls
+		-->
+		<record model="ir.ui.view" id="procedure_controls_form_view">
+			<field name="name">procedure.controls.form</field>
+			<field name="model">openhealth.procedure</field>
+			<field name="priority" eval="1"/>
+			
+			<field name="inherit_id" ref="procedure_form_view"/>
+			
+			<field name="arch" type="xml">
+				<notebook position="inside">
+							
+					<page string="Controles">
+
+
+
+						<field name="control_ids"/>
+						
+						<!--
+
+						<field name="controls">
+							<tree string="">	
+								
+								<field name="name"/>
+
+							</tree>
+						</field>				
+						-->
+						
+						
+
+					</page>
+				</notebook>
+			</field>
+		</record>
+	</data>
+</openerp>

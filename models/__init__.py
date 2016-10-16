@@ -31,6 +31,7 @@ from . import order
 
 
 from . import procedure
+from . import control
 
 
 

@@ -76,8 +76,11 @@
 		#'views/evaluations/consultation_procedures.xml',
 		
 		
+		
 		# Procedures
 		'views/procedures/procedure.xml',
+		'views/procedures/procedure_configuration.xml',
+		'views/procedures/procedure_controls.xml',
 		
 		
 		

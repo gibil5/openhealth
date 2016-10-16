@@ -142,19 +142,14 @@ class Treatment(models.Model):
 
 
 
-	# Motivo  
-	#chief_complaint = fields.Char(
+	# Motivo de consulta
 	chief_complaint = fields.Selection(
 			string = 'Motivo de consulta', 
 			selection = jxvars._pathology_list, 
-			
 			#default = '', 
 			required=True, 
 			)
 
-
-
-	# Patient 
 
 
 

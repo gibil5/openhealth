@@ -252,9 +252,6 @@ Fields
 
 
 							<group>
-								<!--
-								<field name="patient"/>
-								-->
 								<field name="physician"/>									
 							</group>							
 							<group>
@@ -264,7 +261,7 @@ Fields
 
 
 							<group>
-								<field name="chief_complaint"/>
+								<field name="duration"/>
 							</group>
 							<group>
 								<field name="end_date"/>
@@ -276,7 +273,7 @@ Fields
 								<field name="price_total"/>
 							</group>
 							<group>
-								<field name="duration"/>
+								<field name="chief_complaint"/>
 							</group>
 
 

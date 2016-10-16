@@ -19,6 +19,24 @@
 				
 				<form string="Evaluation">
 
+
+					<!-- Header --> 
+					<header>
+
+						<!--
+						-->
+						<button 
+							type="object" 
+							class="oe_highlight"
+							
+							string="Crear Control"
+				
+							name="open_control" 	
+						/>
+					
+					</header>
+					
+							
 					<sheet>
 
 
@@ -82,17 +100,20 @@
 
 						</div>
 
+
+
 						<!-- Padding --> 
+						<group></group>
+						<group></group>
+						<group></group>
 						<group></group>
 
 
-
-
-
 						<!-- Padding --> 
+						<!--
 						<div class="oe_left" style="height: 55px;">
 						</div>
-
+						-->
 
 
 
@@ -104,28 +125,29 @@
 
 							<group>
 							</group>
-						</group>
-
-
-						<group>	
-								
+							
+							<!--
+								<field name="evaluation_type"/>
+								<field string="Próxima cita" name="appointment" domain="[('patient', '=', patient)]" options="{'no_create': True}"/>
+							-->
 							<group>
 								<field name="doctor" options="{'no_create': True}"/>
+							</group>
+							<group>
+								<field name="chief_complaint"/>
+								
+							</group>
+							
+							<group>
+								
 								<field name="evaluation_start_date"/>
+							</group>
+							<group>
 								<field name="product"/>
 							</group>
 
-
-							<group>
-								<field name="evaluation_type"/>
-								<field name="chief_complaint"/>
-								<field string="Próxima cita" name="appointment" domain="[('patient', '=', patient)]" options="{'no_create': True}"/>
-							</group>
-							
 						</group>
 							
-
-
 
 
 
@@ -136,11 +158,6 @@
 
 					</sheet>
 				</form>
-
-
-
-
-				
 			</field>
 		</record>
 

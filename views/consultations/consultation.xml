@@ -172,52 +172,37 @@
 
 
 
-
 						<!-- Fields --> 
 						<group>
-							<!--
-							<group>
-								<field name="treatment"  invisible="1"/>
-							</group>
-							<group>
-							</group>
-							-->
 							
+							<!--
+							<field name="treatment"  invisible="1"/>
+							<field string="Physician"  name="doctor" options="{'no_create': True}"/>
+							<field string="Evaluation date"  name="evaluation_start_date"/>
+							<field string="Appointment"  name="appointment" domain="[('patient', '=', patient)]" options="{'no_create': True}"/>
+							<field string="Próxima cita" name="appointment" domain="[('patient', '=', patient)]" options="{'no_create': True}"/>
+							<field name="x_next_evaluation_date" />
+							<field string="Evaluation end date"  name="evaluation_end_date"/>
+							<field name="evaluation_type"  invisible="1"/>									
+							-->
+
 							<group>
-
-								<!--
-								<field string="Physician"  name="doctor" options="{'no_create': True}"/>
-								<field string="Evaluation date"  name="evaluation_start_date"/>
-								<field string="Appointment"  name="appointment" domain="[('patient', '=', patient)]" options="{'no_create': True}"/>
-								-->
-
 								<field name="doctor" options="{'no_create': True}"/>
-								<field name="evaluation_start_date"/>
-								
-								<!--
-								<field string="Próxima cita" name="appointment" domain="[('patient', '=', patient)]" options="{'no_create': True}"/>
-
-								<field name="x_next_evaluation_date" />
-								-->
-
-
 							</group>
 							<group>
-								<!--
-								<field string="Evaluation type"  name="evaluation_type"/>
-								<field string="Evaluation end date"  name="evaluation_end_date"/>
-								<field string="Chief complaint"  name="chief_complaint"/>
-								-->
-								<field name="evaluation_type"  invisible="1"/>
-								
 								<field name="chief_complaint"/>
 
-								<!--
-								<field name="x_observation"  style="height:50%"/>
-								-->
-								<field name="x_observation"  />
-								
+							</group>								
+
+							<group>								
+								<field name="evaluation_start_date"/>
+							</group>							
+							<group>								
+								<field name="x_observation"  />	
 							</group>
+
+
+							<group></group>
 						</group>
 
 

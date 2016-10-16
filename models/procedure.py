@@ -6,11 +6,11 @@
 from openerp import models, fields, api
 from datetime import datetime
 
+import jxvars
 
 
 
 
-#------------------------------------------------------------------------
 class Procedure(models.Model):
 	_name = 'openhealth.procedure'
 	_inherit = 'oeh.medical.evaluation'
@@ -20,6 +20,15 @@ class Procedure(models.Model):
 			string = 'Procedimiento #',
 			)
 
+
+
+	control_ids = fields.One2many(
+			'openhealth.control', 
+			'procedure', 
+			string = "Controles", 
+			)
+			
+			
 
 
 	# Service 
@@ -70,23 +79,23 @@ class Procedure(models.Model):
 			)
 
 
-	chief_complaint = fields.Char(
+
+	# Motivo de consulta
+	chief_complaint = fields.Selection(
 			string = 'Motivo de consulta', 
-			default = '', 
+			selection = jxvars._pathology_list, 
+			#default = '', 
 			required=True, 
 			)
 
 
 
+
+
 	#------------------------------------- Aggregated ----------------------------------------
-	#
-
-
-
 
 
 	#------------------------------------ Buttons -----------------------------------------
-	#
 
 	# Consultation - Quick Self Button  
 	# ---------------------------------
@@ -113,4 +122,41 @@ class Procedure(models.Model):
 		}
 
 
+
+
+	# Control 
+	# ---------
+	@api.multi
+	def open_control(self):  
+
+		patient_id = self.patient.id
+		doctor_id = self.physician.id
+		#chief_complaint = self.chief_complaint
+		
+		procedure_id = self.id 
+
+
+		return {
+
+			# Mandatory 
+			'type': 'ir.actions.act_window',
+			'name': 'Open control Current',
+
+			'res_model': 'openhealth.control',
+
+			'view_mode': 'form',
+			"views": [[False, "form"]],
+
+			'target': 'current',
+
+			'context':   {
+				#'search_default_treatment': treatment_id,
+
+				#'default_patient': patient_id,
+				#'default_doctor': doctor_id,
+				#'default_treatment': treatment_id,
+				#'default_chief_complaint': chief_complaint,
+				
+			}
+		}
 

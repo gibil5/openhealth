@@ -19,6 +19,86 @@ class Treatment(models.Model):
 	_inherit = 'openextension.treatment'
 
 
+
+	# Open 
+	treatment_open = fields.Boolean(
+			string="Abierto",
+			default=True,
+	)
+
+
+	# Number of consultations 
+	nr_consultations = fields.Integer(
+			string="Nr Consultas",
+			compute="_compute_nr_consultations",
+	)
+	#@api.multi
+	@api.depends('consultation_ids')
+	def _compute_nr_consultations(self):
+		for record in self:
+			ctr = 0 
+			for c in record.consultation_ids:
+				ctr = ctr + 1
+			record.nr_consultations = ctr
+
+
+
+	# Number of procedures 
+	nr_procedures = fields.Integer(
+			string="Procedimientos",
+			compute="_compute_nr_procedures",
+	)
+	#@api.multi
+	@api.depends('procedure_ids')
+	def _compute_nr_procedures(self):
+		for record in self:
+			ctr = 0 
+			for c in record.procedure_ids:
+				ctr = ctr + 1
+			record.nr_procedures = ctr
+
+
+
+
+	# Number of controls 
+	nr_controls = fields.Integer(
+			string="Controles",
+			compute="_compute_nr_controls",
+	)
+	@api.multi
+	def _compute_nr_controls(self):
+		for record in self:
+			ctr = 0 
+			for p in record.procedure_ids:
+				for c in p.control_ids:
+					ctr = ctr + 1
+			record.nr_controls = ctr
+
+	
+	
+	
+	# Number of orders 
+	nr_orders = fields.Integer(
+			string="Presupuestos",
+			compute="_compute_nr_orders",
+	)
+	@api.multi
+	def _compute_nr_orders(self):
+		for record in self:
+			ctr = 0 
+			
+			for c in record.consultation_ids:
+				for o in c.order:
+					ctr = ctr + 1
+					
+			record.nr_orders = ctr
+
+
+
+
+
+
+
 	# Consultations 
 	# --------------
 	consultation_ids = fields.One2many(
@@ -168,12 +248,18 @@ class Treatment(models.Model):
 
 	# Dates 
 	start_date = fields.Date(
-			string="Fecha de inicio", 
+			string="Fecha inicio", 
 			default = fields.Date.today
 			)
 
 	end_date = fields.Date(
-			string="Fecha de final", 
+			string="Fecha fin", 
+			default = fields.Date.today
+			)
+
+
+	today_date = fields.Date(
+			string="Fecha hoy", 
 			default = fields.Date.today
 			)
 
@@ -182,7 +268,7 @@ class Treatment(models.Model):
 	# Duration 
 	duration = fields.Integer(
 			#string="Duration (days)", 
-			string="Duración (en días)", 
+			string="Días", 
 			compute='_compute_duration', 
 			)
 
@@ -193,7 +279,16 @@ class Treatment(models.Model):
 		for record in self:
 			date_format = "%Y-%m-%d"
 			a = datetime.strptime(record.start_date, date_format)
-			b = datetime.strptime(record.end_date, date_format)
+			
+			if record.treatment_open:
+				#b = datetime.today
+				#b = datetime.strptime(datetime.today, date_format)
+				b = datetime.strptime(record.today_date, date_format)
+				#b = datetime.strptime(fields.Date.today, date_format)
+				
+			else:
+				b = datetime.strptime(record.end_date, date_format)
+			
 			delta = b - a
 			record.duration = delta.days + 1 
 

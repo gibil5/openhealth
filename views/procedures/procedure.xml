@@ -134,17 +134,25 @@
 								<field name="doctor" options="{'no_create': True}"/>
 							</group>
 							<group>
-								<field name="chief_complaint"/>
-								
+								<field name="chief_complaint"/>								
 							</group>
 							
+							
 							<group>
-								
 								<field name="evaluation_start_date"/>
 							</group>
 							<group>
 								<field name="product"/>
 							</group>
+
+
+
+							<group>
+							</group>
+							<group>
+								<field name="laser"/>
+							</group>
+
 
 						</group>
 							
@@ -171,10 +179,21 @@
 			<field name="arch" type="xml">
 				
 				<tree string="Consultation Tree">
+					
 					<field name="name"/>
+					
 					<field name="patient"/>
+					
 					<field name="doctor"/>
+					
 					<field name="evaluation_start_date"/>
+
+					<!--
+					<field name="product"/>
+					-->
+					
+					<field name="chief_complaint"/>
+					<field name="laser"/>
 					
 					<field name="treatment"/>
 				</tree>

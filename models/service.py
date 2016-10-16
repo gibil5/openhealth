@@ -220,18 +220,11 @@ class Service(models.Model):
 
 
 	# Laser type 
-	_laser_type_list = [
-			('laser_co2','Laser Co2'), 
-			('laser_excilite','Laser Excilite'), 
-			('laser_ipl','Laser Ipl'), 
-			('laser_ndyag','Laser Ndyag'), 
-			
-			('none','None'), 
-			
-			]
+
 
 	laser = fields.Selection(
-			selection = _laser_type_list, 
+			#selection = _laser_type_list, 
+			selection = jxvars._laser_type_list, 
 			#string="Tratamiento", 
 			string="Láser", 
 			

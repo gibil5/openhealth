@@ -2,10 +2,38 @@
 
 
 
+
+# Product 
+_laser_type_list = [
+		('laser_co2','Laser Co2'), 
+		('laser_excilite','Laser Excilite'), 
+		('laser_ipl','Laser Ipl'), 
+		('laser_ndyag','Laser Ndyag'), 
+		('none','None'), 	
+		]
+		
+_ipl_pulse_type = [
+		('one','Unico'), 
+		('two','Doble'), 
+		('three','Triple'), 
+		]
+
+_ndyag_pulse_type = [
+		('one','Unico'), 
+		('two','Doble'), 
+		#('three','Triple'), 
+		]
+		
+_ndyag_pulse_spot = [
+		('one','6mm'), 
+		('two','2 x 6mm'), 
+		#('three','Triple'), 
+
+		]
+
+
+
 # First
-
-
-
 _co2_han_list = [
 
 		('stains',	'Manchas'),	

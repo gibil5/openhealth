@@ -17,6 +17,7 @@ class Consultation(models.Model):
 
 
 	treatment = fields.Many2one('openextension.treatment',
+			string="Tratamiento",
 			ondelete='cascade', 
 			)
 			

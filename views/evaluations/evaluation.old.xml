@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	*** Evaluation 
+
+-->
+
+<openerp>
+	<data>
+
+
+
+		<!-- Evaluation -->
+
+		<!-- Form view -->
+		<record model="ir.ui.view" id="evaluation_form_view">
+			<field name="name">evaluation.form</field>
+			<field name="model">openhealth.evaluation3</field>
+			<field name="arch" type="xml">
+
+				<form string="Evaluation Form">
+
+					<sheet>
+						<group>
+							
+							<group string="Evaluation">
+
+								<field string="Name"  name="name"/>		
+								<field string="Treatment id" name="treatment_id" />
+								<field name="patient" />
+								<field name="doctor" />
+
+							</group>
+						</group>
+					</sheet>
+						
+				</form>
+
+			</field>
+		</record>
+
+
+
+
+		<!-- evaluation tree/list view -->
+		<record model="ir.ui.view" id="evaluation_tree_view">
+			<field name="name">evaluation.tree</field>
+			<field name="model">openhealth.evaluation3</field>
+			<field name="arch" type="xml">
+				<tree string="Evaluation Tree">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+		
+
+		
+		<!-- Action -->
+		<record model="ir.actions.act_window" id="openhealth.evaluation_form_action">
+			<field name="name">Evaluaciones</field>
+			<field name="res_model">openhealth.evaluation3</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form,tree</field>
+		</record>
+
+		
+
+
+	    <!-- actions opening views on models -->
+		<!--
+	    <record model="ir.actions.act_window" id="openhealth.evaluation3_action_window">
+	      <field name="name">openhealth 3 window</field>
+	      <field name="res_model">openhealth.evaluation3</field>
+	      <field name="view_mode">tree,form</field>
+		  <field name="code">
+	        action = {
+	          "type": "ir.actions.act_window",
+	          "view_mode": "tree,form",
+	          "res_model": self._name,
+		      "domain": [["patient", "=", "Javier Revilla"]],
+	        }
+	      </field>
+	    </record>
+		-->
+
+
+
+	    <!-- server action to the one above -->
+		<!--
+	    <record model="ir.actions.server" id="openhealth.action_server">
+	      <field name="name">openhealth 3 server</field>
+	      <field name="model_id" ref="model_openhealth_evaluation3"/>
+	      <field name="code">
+	        action = {
+	          "type": "ir.actions.act_window",
+	          "view_mode": "tree,form",
+	          "res_model": self._name,
+		      "domain": [["patient", "=", "Javier Revilla"]],
+	        }
+	      </field>
+	    </record>
+		-->
+		
+
+
+		<!-- List --> 
+		<!-- Menu -->
+
+		<!--
+		<record model="ir.actions.act_window" id="evaluation_list_action">
+			<field name="name">Evaluations</field>
+			<field name="res_model">openhealth.evaluation3</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		
+		<menuitem id="evaluation_menu" name="Evaluations"
+			parent="openextension_menu"
+			action="evaluation_list_action"/>
+		-->
+
+	</data>
+</openerp>

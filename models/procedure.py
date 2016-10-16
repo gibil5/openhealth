@@ -299,8 +299,8 @@ class Procedure(models.Model):
 	def open_control(self):  
 
 		patient_id = self.patient.id
-		doctor_id = self.physician.id
-		#chief_complaint = self.chief_complaint
+		doctor_id = self.doctor.id
+		chief_complaint = self.chief_complaint
 		
 		procedure_id = self.id 
 
@@ -320,11 +320,13 @@ class Procedure(models.Model):
 
 			'context':   {
 				#'search_default_treatment': treatment_id,
-
-				#'default_patient': patient_id,
-				#'default_doctor': doctor_id,
 				#'default_treatment': treatment_id,
-				#'default_chief_complaint': chief_complaint,
+
+				'default_patient': patient_id,
+				'default_doctor': doctor_id,
+				'default_chief_complaint': chief_complaint,
+				'default_procedure': procedure_id,
+				
 				
 			}
 		}

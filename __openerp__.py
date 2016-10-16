@@ -62,6 +62,13 @@
 		
         
 		
+
+        # Evaluations
+		'views/evaluations/evaluation.xml',
+		'views/evaluations/evaluation_oeh.xml',
+		
+		
+		
 		
 		# Consultation
 		'views/consultations/consultation.xml',
@@ -82,6 +89,10 @@
 		'views/procedures/procedure_configuration.xml',
 		'views/procedures/procedure_controls.xml',
 		
+
+		# Controls
+		'views/controls/control.xml',
+
 		
 		
         # Treatments 
@@ -139,10 +150,6 @@
 		#'views/patients/patient_med.xml',
 
 
-
-        # Evaluations
-		#'views/evaluations/evaluation.xml',
-		'views/evaluations/evaluation_oeh.xml',
 		
 
 

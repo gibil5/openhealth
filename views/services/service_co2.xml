@@ -2,7 +2,6 @@
 <openerp>
 	<data>
 
-
 		<record model="ir.ui.view" id="service_co2_form_view">
 			<field name="name">service.co2.form</field>
 			<field name="model">openhealth.service.co2</field>
@@ -18,7 +17,8 @@
         		</xpath>
 
 			</field>
-			
+						
 		</record>		
+
 	</data>
 </openerp>

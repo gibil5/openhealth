@@ -145,6 +145,8 @@ class Treatment(models.Model):
 	def clean_procedures(self):
 		self.procedure_ids.unlink()
 
+
+
 			
 	# Create procedure 
 	@api.multi
@@ -166,8 +168,10 @@ class Treatment(models.Model):
 		#	product = service.service.id
 		
 		
+		
 		for line in self.consultation_ids.order.order_line:
 			
+			#if (not line.procedure_created) and (self.consultation_ids.order):
 			if not line.procedure_created:
 				
 				line.procedure_created = True

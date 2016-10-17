@@ -14,7 +14,7 @@
 			<field name="arch" type="xml">
 				<notebook position="inside">
 					
-					<page string="Ventas">
+					<page string="Facturado">
 
 
 						<field name="sale_ids"/>

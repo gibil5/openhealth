@@ -56,10 +56,11 @@
 					<field name="nr_lines"/>
 
 					<field name="x_state"/>
+						
+					<field name="patient"/>
 					-->
 					
 					
-					<field name="patient"/>
 					<field name="vspace"/>
 					<field name="state"/>
 

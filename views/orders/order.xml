@@ -81,6 +81,44 @@
 		</record>
 		
 		
+		
+		
+		
+		
+		<!-- Filter --> 
+        <record id="view_medical_order_filter" model="ir.ui.view">
+           <field name="name">Order Search</field>
+		   
+           <field name="model">sale.order</field>		   
+           
+		   <field name="arch" type="xml">
+               <search string="orders">
+                   <field name="consultation" />
+               </search>
+           </field>
+       </record>
+
+		<!-- Window Form Action --> 
+		<record model="ir.actions.act_window" id="order_form_action">
+			<field name="name">orders</field>
+			<field name="res_model">sale.order</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+			<!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first order
+				</p>
+			</field>
+			-->
+		</record>
+		
+		
+		
+		
 
 		<!-- Window List action -->
 		<!--

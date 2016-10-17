@@ -116,16 +116,17 @@
 							<div class="oe_left" style="width: 300px;" name="buttons">
 							
 								<!--
-								Consultations
+								Controles
+								-->
+								
 								<button type="action" class="oe_stat_button" 
-									name="%(consultation_form_action)d"	
+									name="%(order_form_action)d"	
 									context="{									
-											'search_default_treatment': active_id,
+											'search_default_consultation': active_id,
 											}" 											
 									icon="fa-list">
-									<field string="Consultas" name="nr_consultations" widget="statinfo"/>
+									<field string="Presupuestos" name="nr_orders" widget="statinfo"/>
 								</button>
-								-->
 								
 								
 								<!--
@@ -245,6 +246,10 @@
 
 					<field name="chief_complaint"/>
 					
+					
+					<field name="nr_orders"/>
+					
+					
 					<field name="treatment"/>
 
 					<!--
@@ -323,7 +328,7 @@
 		The following tag is an action definition for a "window action",
 		that is an action opening a view or a set of views
 		-->
-			<record model="ir.actions.act_window" id="consultation_list_action">
+		<record model="ir.actions.act_window" id="consultation_list_action">
 			<field name="name">Consultas</field>
 			<field name="res_model">openhealth.consultation</field>
 			<field name="view_type">form</field>

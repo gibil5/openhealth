@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+		<!--
+		Control protocols 
+		-->
+		<record model="ir.ui.view" id="control_protocols_form_view">
+			<field name="name">control.protocols.form</field>
+			<field name="model">openhealth.control</field>
+			<field name="priority" eval="1"/>
+			<field name="inherit_id" ref="control_form_view"/>
+			<field name="arch" type="xml">
+				<notebook position="inside">
+					
+					<page string="Protocolos">
+
+
+					</page>
+				</notebook>
+			</field>
+		</record>
+	</data>
+</openerp>

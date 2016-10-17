@@ -34,7 +34,23 @@ class Consultation(models.Model):
 			)
 
 
-			
+
+
+	# Number of Orders 
+	nr_orders = fields.Integer(
+			string="Presupuestos",
+			compute="_compute_nr_orders",
+	)
+	
+	#@api.multi
+	@api.depends('order')
+	
+	def _compute_nr_orders(self):
+		for record in self:
+			ctr = 0 
+			for c in record.order:
+				ctr = ctr + 1
+			record.nr_orders = ctr
 
 	# ----------------------------------------------------------- Orders ------------------------------------------------------
 

@@ -14,7 +14,7 @@
 			<field name="arch" type="xml">
 				<notebook position="inside">
 					
-					<page string="Servicios ndyag">
+					<page string="M22-NDYAG">
 
 
 						<!--

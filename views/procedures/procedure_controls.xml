@@ -20,18 +20,34 @@
 
 
 
-						<field name="control_ids"/>
-						
 						<!--
+						<field name="control_ids"/>
+						-->
+						
 
-						<field name="controls">
+						<field name="control_ids">
 							<tree string="">	
 								
-								<field name="name"/>
+								<field string="Control #"  name="name"/>
+
+								<field string="Paciente" name="patient"/>
+
+								<field string="Médico" name="doctor"/>
+
+								<field name="evaluation_start_date"/>
+
+								
+								<field name="product" invisible="0"/>
+								
+								<field name="laser" invisible="1"/>
+
+
+								<field string='Tipo' name="evaluation_type"/>
+
+								<field name="procedure"/>
 
 							</tree>
 						</field>				
-						-->
 						
 						
 

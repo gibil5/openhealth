@@ -31,7 +31,7 @@
     """,
 
     'author': "DataMetrics",
-	'website': "http://javier-revilla.net/",
+	'website': "http://jrevilla.com/",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/master/openerp/addons/base/module/module_data.xml
@@ -92,6 +92,7 @@
 
 		# Controls
 		'views/controls/control.xml',
+		'views/controls/control_protocols.xml',
 
 		
 		

@@ -32,11 +32,26 @@ class Procedure(models.Model):
 			string = "Controles", 
 			)
 			
-			
+	
+	
+	# Number of controls 
+	nr_controls = fields.Integer(
+			string="Controles",
+			compute="_compute_nr_controls",
+	)
+	
+	#@api.multi
+	@api.depends('control_ids')
+	def _compute_nr_controls(self):
+		for record in self:
+			ctr = 0 
+			for c in record.control_ids:
+				ctr = ctr + 1
+			record.nr_controls = ctr		
 
 
 
-	# Produc 
+	# Product
 	product = fields.Many2one(
 			'product.template',
 
@@ -304,7 +319,11 @@ class Procedure(models.Model):
 		
 		procedure_id = self.id 
 
+		evaluation_type = 'Periodic Control'
 
+		product_id = self.product.id
+		laser = self.laser
+		
 		return {
 
 			# Mandatory 
@@ -326,7 +345,10 @@ class Procedure(models.Model):
 				'default_doctor': doctor_id,
 				'default_chief_complaint': chief_complaint,
 				'default_procedure': procedure_id,
-				
+				'default_evaluation_type':evaluation_type,
+								
+				'default_product': product_id,
+				'default_laser': laser,
 				
 			}
 		}

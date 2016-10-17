@@ -2,7 +2,7 @@
 #
 # 	*** OPEN HEALTH
 # 
-#
+
 
 {
     'name': "openHealth",
@@ -15,7 +15,7 @@
     'description': """
 
 		Installed: 	 7 Sep 2016.\n 
-		Upgraded: 	 15 Oct 2016.\n 
+		Upgraded: 	 17 Oct 2016.\n 
 		\n
 
 		This is my first extension for oeHealth.

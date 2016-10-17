@@ -9,11 +9,11 @@
 	        <field name="mode">primary</field>
 			
 			
-			<field name="arch" type="xml">				
+			<field name="arch" type="xml">
+				
 				<!--
 				<xpath expr="//h1" position="replace">
 				-->
-				
 				<xpath expr="//field[@name='name']" position="after">
 					<h1>Láser Co2</h1>					
         		</xpath>

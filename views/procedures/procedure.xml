@@ -11,37 +11,24 @@
 		<record model="ir.ui.view" id="procedure_form_view">
 			<field name="name">procedure.form</field>
 			<field name="model">openhealth.procedure</field>
-			<!--
-			<field name="inherit_id" ref="consultation_form_view"/>
-			-->
 			<field name="arch" type="xml">
 				
 				
 				<form string="Evaluation">
 
-
 					<!-- Header --> 
 					<header>
-
-						<!--
-						-->
 						<button 
 							type="object" 
 							class="oe_highlight"
-							
 							string="Crear Control"
-				
 							name="open_control" 	
-						/>
-					
+						/>					
 					</header>
 					
+
 							
 					<sheet>
-
-
-
-
 
 						<!-- Id -->
 						<div>						
@@ -61,7 +48,6 @@
 
 							<!-- Buttons --> 
 							<div class="oe_left" style="width: 300px;" name="buttons">
-							
 								<!--
 								Consultations
 								<button type="action" class="oe_stat_button" 
@@ -73,8 +59,7 @@
 									<field string="Consultas" name="nr_consultations" widget="statinfo"/>
 								</button>
 								-->
-								
-								
+																
 								<!--
 								Procedures
 								<button type="action" class="oe_stat_button" 
@@ -86,7 +71,6 @@
 									<field string="Procedimientos" name="nr_procedures" widget="statinfo"/>
 								</button>
 								-->
-								
 							</div>
 						
 						
@@ -97,7 +81,6 @@
 									<h1><field name="name" class="oe_inline"/></h1>
 								</div>
 							</div>
-
 						</div>
 
 
@@ -107,9 +90,6 @@
 						<group></group>
 						<group></group>
 						<group></group>
-
-
-						<!-- Padding --> 
 						<!--
 						<div class="oe_left" style="height: 55px;">
 						</div>
@@ -119,17 +99,18 @@
 
 						<!-- Fields --> 
 						<group>
+							<!--
+							<field string="Próxima cita" name="appointment" domain="[('patient', '=', patient)]" options="{'no_create': True}"/>
+							-->
+							
 							<group>
 								<field name="treatment"/>
 							</group>
-
 							<group>
+								<field name="evaluation_type"/>
 							</group>
 							
-							<!--
-								<field name="evaluation_type"/>
-								<field string="Próxima cita" name="appointment" domain="[('patient', '=', patient)]" options="{'no_create': True}"/>
-							-->
+							
 							<group>
 								<field name="doctor" options="{'no_create': True}"/>
 							</group>
@@ -146,23 +127,19 @@
 							</group>
 
 
-
 							<group>
 							</group>
 							<group>
 								<field name="laser"/>
 							</group>
 
-
 						</group>
 							
-
 
 
 						<!-- Notebook --> 
 						<notebook>
 						</notebook>
-
 
 					</sheet>
 				</form>

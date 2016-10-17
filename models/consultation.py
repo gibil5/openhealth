@@ -623,7 +623,7 @@ class Consultation(models.Model):
 	@api.depends('order')
 	
 	def _compute_order_line(self):
-		print 'Compute order line'
+		print "Compute order line"
 		
 		consultation_id = self.id
 		order_id = self.order_2

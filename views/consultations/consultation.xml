@@ -166,11 +166,12 @@
 							<group class="oe_right">							
 							</group>							
 						</group>						
-
+						
+						<!--
 						<div class="oe_left" style="height: 55px;">
 							<field string="Tratamiento"  name="treatment"  invisible="0"/>
 						</div>
-
+						-->
 
 
 						<!-- Fields --> 
@@ -187,8 +188,17 @@
 							<field name="evaluation_type"  invisible="1"/>									
 							-->
 
+
 							<group>
-								<field name="doctor" options="{'no_create': True}"/>
+								<field name="treatment"/>
+							</group>
+							<group>
+								<field name="evaluation_type" 	invisible="1"/>
+							</group>
+								
+								
+							<group>
+								<field name="doctor" options="{'no_create': True}"  string="Médico"/>
 							</group>
 							<group>
 								<field name="chief_complaint"/>

@@ -666,8 +666,11 @@ class Consultation(models.Model):
 	
 	
 		
+		
 	# Create Order - Button 
+	
 	@api.multi
+	
 	def create_order_current(self):  
 
 		# Order 

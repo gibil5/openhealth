@@ -11,19 +11,39 @@
 			<field name="arch" type="xml">
 
 
+
 				<!--
 				<xpath expr="pass of position" position="the postion">
 				-->					
 				<field name="payment_term_id" position="after">
+
+
+					<field name="vspace"/>
+					<field name="consultation"/>
+
+
+					<field name="vspace"/>
 					
 					<button 
 						type="object" 
 						class="oe_highlight"	
-						string="Crear Líneas"
-			
-						name="x_create_order_lines" 	
+
+						string="Actualizar"
+						
+						name="update_order_lines" 	
 					/>
 					
+
+					<!--
+					<button 
+						type="object" 
+						class="oe_highlight"	
+
+						string="Limpiar"
+						
+						name="clean_order_lines" 	
+					/>
+					-->
 				</field>
 				
 				
@@ -35,12 +55,15 @@
 					<field name="x_nex"/>
 					<field name="nr_lines"/>
 
+					<field name="x_state"/>
 					-->
 					
-					<field name="state"/>
-					<field name="x_state"/>
-
+					
 					<field name="patient"/>
+					<field name="vspace"/>
+					<field name="state"/>
+
+
 
 					
 					<!--
@@ -168,7 +191,7 @@
 		<!--
 		<menuitem id="orders_menu" name="Treatments" parent="openextension_menu"
 		-->
-		<menuitem id="orders_menu" name="Orders" parent="openextension_menu"
+		<menuitem id="orders_menu" name="Presupuestos" parent="openextension_menu"
 			action="order_list_action"/>
 
 		<!-- Full id location:

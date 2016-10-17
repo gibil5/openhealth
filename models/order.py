@@ -11,6 +11,13 @@ class sale_order(models.Model):
 	
 	_inherit='sale.order'
 	
+	vspace = fields.Char(
+			' ', 
+			readonly=True
+			)
+	
+	
+	
     
 	order_line = field_One2many=fields.One2many('sale.order.line',
 		'order_id',
@@ -20,6 +27,7 @@ class sale_order(models.Model):
 
 
 	consultation = fields.Many2one('openhealth.consultation',
+		string="Consulta",
 		ondelete='cascade', 
 	)
 
@@ -159,17 +167,35 @@ class sale_order(models.Model):
 	
 	
 	# Order lines 
+
+	@api.multi 
+	def clean_order_lines(self):
+		
+		if self.state == 'draft':
+			ret = self.remove_order_lines()
+
+	@api.multi 
+	def update_order_lines(self):
+
+		if self.state == 'draft':
+			ret = self.remove_order_lines()
+			ret = self.x_create_order_lines()
 	
+
+
+	# Remove 
 	@api.multi 
 	def remove_order_lines(self):
 		ret = self.order_line.unlink()
 		return ret 
-		
 	
+	# Create 
 	@api.multi 
 	def x_create_order_lines(self):
 		print 
 		print 'Create order lines'
+		
+		
 		
 		order_id = self.id
 

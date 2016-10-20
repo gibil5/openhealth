@@ -1,0 +1,20 @@
+"pylint_path": "/Users/gibil/Virtualenvs/Odoo9/lib/python2.7/site-packages/pylint"
+
+
+
+"pylint_path": "/Users/gibil/Virtualenvs/Odoo9/lib/python2.7/site-packages/pylint"
+
+
+"pylint_path": {
+    	"#multiconf#": [
+        	{"os:linux: "/Users/gibil/Virtualenvs/Odoo9/lib/python2.7/site-packages/pylint"},
+    	]
+  	}
+
+"pylint_path": {
+    	"#multiconf#": [
+        	{"os:linux": "/Users/gibil/Virtualenvs/Odoo9/lib/python2.7/site-packages/pylint"},
+    	]
+  	}
+
+  	

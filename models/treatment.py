@@ -14,6 +14,7 @@ import jxvars
 
 
 
+
 class Treatment(models.Model):
 	#_name = 'openhealth.treatment'
 	_inherit = 'openextension.treatment'
@@ -172,6 +173,7 @@ class Treatment(models.Model):
 		for line in self.consultation_ids.order.order_line:
 			
 			#if (not line.procedure_created) and (self.consultation_ids.order):
+
 			if not line.procedure_created:
 				
 				line.procedure_created = True

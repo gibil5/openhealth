@@ -14,8 +14,8 @@
 
     'description': """
 
-		Installed: 	 7 Sep 2016.\n 
-		Upgraded: 	 17 Oct 2016.\n 
+		Installed: 	 	7 Sep 2016.\n 
+		Last built: 	20 Oct 2016.\n 
 		\n
 
 		This is my first extension for oeHealth.
@@ -28,6 +28,8 @@
             - Procedures
             - Controls 
             - Services
+            - Orders
+            
     """,
 
     'author': "DataMetrics",

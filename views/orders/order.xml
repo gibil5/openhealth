@@ -144,6 +144,8 @@
 		
 		
 
+
+
 		<!-- Window List action -->
 		<!--
 		The following tag is an action definition for a "window action",
@@ -177,6 +179,14 @@
 		
 
 
+		<!--
+		<record id="user_group_id" model="res.groups">
+    		<field name="name">Open Health User Group</field>
+    		<field name="category_id" ref="base.module_category_sales_management"/>
+		</record>
+		-->
+
+
 		<!-- Menus --> 
 		<!-- top level menu: no parent -->
 		<menuitem id="main_openextension_menu" name="Open Health"/>
@@ -192,8 +202,16 @@
 		<!--
 		<menuitem id="orders_menu" name="Treatments" parent="openextension_menu"
 		-->
-		<menuitem id="orders_menu" name="Presupuestos" parent="openextension_menu"
+
+
+		<!--
+		<menuitem id="orders_menu" name="Presupuestos jx" parent="openextension_menu"
+			action="order_list_action"  group="group_openhealth_user"/>
+		-->
+		<menuitem id="orders_menu" name="Presupuestos jx" parent="openextension_menu"
 			action="order_list_action"/>
+
+
 
 		<!-- Full id location:
 		action="openextension.order_list_action"

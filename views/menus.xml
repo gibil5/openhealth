@@ -13,9 +13,9 @@
 
 
 		<!-- Open Health -->
-		<menuitem id="main_openhealth_menu" name="Open Health 2"/>
+		<menuitem id="main_openhealth_menu" name="Open Health"/>
 
-		<menuitem id="openhealth_menu" name="Open Health 2"
+		<menuitem id="openhealth_menu" name="Open Health"
 			parent="main_openhealth_menu"/>
 
 		
@@ -52,17 +52,36 @@
 
 
 
+
+
 		<!-- Medical Histories -->
+		<!--
 		<menuitem id="main_openextension_menu" name="Medical Histories"/>
 
-		<menuitem id="openextension_menu" name="Open Health"
+		<menuitem id="openextension_menu" name="Medical Histories"
 			parent="main_openextension_menu"/>
+
+		<menuitem id="patients_menu" name="Pacientes" parent="openextension_menu"
+			action="patient_list_action"/>
+
+		-->
 
 
 		<!--
-		<menuitem id="patient_menu" name="Pacientes" parent="openextension_menu"
-			action="patient_list_action"/>
+		<menuitem id="main_medicalhistories_menu" name="Historias Clínicas"/>
 		-->
+		<menuitem id="main_medicalhistories_menu" name="Medical Histories"/>
+
+		<!--
+		<menuitem id="medicalhistories_menu" name="Historias Clínicas"
+			parent="main_medicalhistories_menu"/>
+		-->
+		<menuitem id="medicalhistories_menu" name="Medical Histories"
+			parent="main_medicalhistories_menu"/>
+
+		<menuitem id="patients_menu" name="Pacientes" parent="medicalhistories_menu"
+			action="patient_list_action"/>
+
 
 
 	</data>

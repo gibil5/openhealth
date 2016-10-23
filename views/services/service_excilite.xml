@@ -19,5 +19,25 @@
 
 			
 		</record>		
+
+
+
+
+		<!-- Window action -->
+		<record model="ir.actions.act_window" id="service_excilite_list_action">
+			<field name="name">Servicios Excilite</field>
+			<field name="res_model">openhealth.service.excilite</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+
+		<!-- Menu -->
+		<menuitem id="service_excilite_menu" name="Servicios Excilite"
+			parent="openhealth_menu"
+			action="service_excilite_list_action"/>
+
+
+
 	</data>
 </openerp>

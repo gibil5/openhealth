@@ -15,7 +15,7 @@
     'description': """
 
 		Installed: 	 	7 Sep 2016.\n 
-		Last built: 	20 Oct 2016.\n 
+		Last built: 	21 Oct 2016.\n 
 		\n
 
 		This is my first extension for oeHealth.
@@ -170,7 +170,8 @@
 		#'views/evaluations/quotation.xml',
 
         
-
+		# Menus
+        'views/menus.xml',
 
 
 

@@ -559,23 +559,37 @@ Notebook
 		</record>
 
 
+
+
 		<!-- Menus --> 
 		<!-- top level menu: no parent -->
+		<!--
+
+		<menuitem id="main_openhealth_menu" name="Open Health 2"/>
+		-->
 		<menuitem id="main_openextension_menu" name="Open Health"/>
+
 
 		<!-- A first level in the left side menu is needed
 		before using action= attribute -->
+		<!--
+		<menuitem id="openhealth_menu" name="Open Health 2"
+			parent="main_openhealth_menu"/>
+		-->
 		<menuitem id="openextension_menu" name="Open Health"
 			parent="main_openextension_menu"/>
+
 
 		<!-- the following menuitem should appear *after*
 		its parent openextension_menu and *after* its
 		action treatment_list_action -->
 		<!--
-		<menuitem id="treatments_menu" name="Treatments" parent="openextension_menu"
+		<menuitem id="treatments_menu" name="Tratamientos" parent="openhealth_menu"
+			action="treatment_list_action"/>
 		-->
 		<menuitem id="treatments_menu" name="Tratamientos" parent="openextension_menu"
 			action="treatment_list_action"/>
+
 
 		<!-- Full id location:
 		action="openextension.treatment_list_action"

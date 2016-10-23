@@ -175,12 +175,13 @@ class Service(models.Model):
 			string="Consulta", 
 			)
 
-	# Quotation 
-	quotation = fields.Many2one('openhealth.quotation',
-			ondelete='cascade', 
+
+	# Quotation - Deprecated
+	#quotation = fields.Many2one('openhealth.quotation',
+	#		ondelete='cascade', 
 			#string="Treatment", 
-			string="Quotation", 
-			)
+	#		string="Quotation", 
+	#		)
 
 
 

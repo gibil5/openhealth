@@ -123,12 +123,16 @@ class Treatment(models.Model):
 
 
 
+
 	# Sales 
 	sale_ids = fields.One2many(
-			'sale.order',			 
+			#'sale.order',			 
+			'openhealth.order',	
+
 			'treatment', 
 			string="Ventas"
 			)
+
 	
 	
 	# Patient 

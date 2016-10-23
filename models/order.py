@@ -2,14 +2,20 @@
 #
 # 	Order 
 # 
+#
 
-#from openerp import fields,models
+
 from openerp import models, fields, api
 
 
 class sale_order(models.Model):
 	
+
+	_name = 'openhealth.order'
 	_inherit='sale.order'
+	
+
+
 	
 	vspace = fields.Char(
 			' ', 
@@ -17,8 +23,6 @@ class sale_order(models.Model):
 			)
 	
 	
-	
-    
 	order_line = field_One2many=fields.One2many('sale.order.line',
 		'order_id',
 		#string='Order',
@@ -49,6 +53,8 @@ class sale_order(models.Model):
 	#x_nex = fields.Char(
 	#	default='nex',
 	#)
+	
+
 	
 	x_state = fields.Char(
 		default='a',

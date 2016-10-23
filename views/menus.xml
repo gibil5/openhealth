@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+
+		<!-- Menus --> 
+
+		<!-- Sales -->
+		<menuitem id="main_sales_menu" name="Sales jx"/>
+
+
+
+		<!-- Open Health -->
+		<menuitem id="main_openhealth_menu" name="Open Health 2"/>
+
+		<menuitem id="openhealth_menu" name="Open Health 2"
+			parent="main_openhealth_menu"/>
+
+		
+		<menuitem id="treatments_menu" name="Tratamientos" parent="openhealth_menu"
+			action="treatment_list_action"/>
+
+
+		<menuitem id="procedures_menu" name="Procedimientos" parent="openhealth_menu"
+			action="procedure_list_action"/>
+
+
+		<menuitem id="consultations_menu" name="Consultas" parent="openhealth_menu"
+			action="consultation_list_action"/>
+
+
+		<menuitem id="controls_menu" name="Controles" parent="openhealth_menu"
+			action="control_list_action"/>
+
+
+		<menuitem id="orders_menu" name="Presupuestos" parent="openhealth_menu"
+			action="order_list_action"/>
+
+
+		<menuitem id="service_co2_menu" name="Servicios Co2"
+			parent="openhealth_menu"
+			action="service_co2_list_action"/>
+
+
+		<menuitem id="service_excilite_menu" name="Servicios Excilite"
+			parent="openhealth_menu"
+			action="service_excilite_list_action"/>
+
+
+
+
+
+		<!-- Medical Histories -->
+		<menuitem id="main_openextension_menu" name="Medical Histories"/>
+
+		<menuitem id="openextension_menu" name="Open Health"
+			parent="main_openextension_menu"/>
+
+
+		<!--
+		<menuitem id="patient_menu" name="Pacientes" parent="openextension_menu"
+			action="patient_list_action"/>
+		-->
+
+
+	</data>
+</openerp>

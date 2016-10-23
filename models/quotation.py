@@ -18,11 +18,14 @@ class Quotation(models.Model):
 	#_inherit = 'oeh.medical.evaluation'
 	#_inherit = 'oeh.medical.quotation'
 	#_inherit = 'oeh.medical.order'
-	
-	_inherit = 'sale.order'
 	#_inherit = 'account.invoice'
+
+
 	
+	_inherit = 'sale.order'	
+	#_inherit = 'openhealth.order'
 	
+
 
 
 	name = fields.Char(

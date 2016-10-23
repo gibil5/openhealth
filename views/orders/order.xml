@@ -4,10 +4,19 @@
 		
 		<record model="ir.ui.view" id="view_test">
 			<field name="name">sale.order.form</field>
-			<field name="model">sale.order</field>
-
-			<field name="inherit_id" ref="sale.view_order_form"/>
 			
+			<!--
+			<field name="model">sale.order</field>
+			-->
+			<field name="model">openhealth.order</field>
+
+
+			
+			<field name="inherit_id" ref="sale.view_order_form"/>			
+	        <field name="mode">primary</field>
+
+
+
 			<field name="arch" type="xml">
 
 
@@ -89,8 +98,12 @@
 		<!-- Tree view --> 
 		<record model="ir.ui.view" id="order_tree_view">
 			<field name="name">order.tree</field>
-			
+
+			<!--			
 			<field name="model">sale.order</field>
+			-->
+			<field name="model">openhealth.order</field>
+
 			
 			<field name="arch" type="xml">
 				
@@ -112,8 +125,11 @@
 		<!-- Filter --> 
         <record id="view_medical_order_filter" model="ir.ui.view">
            <field name="name">Order Search</field>
-		   
+
+			<!--		   
            <field name="model">sale.order</field>		   
+           -->
+           <field name="model">openhealth.order</field>		   
            
 		   <field name="arch" type="xml">
                <search string="orders">
@@ -125,7 +141,14 @@
 		<!-- Window Form Action --> 
 		<record model="ir.actions.act_window" id="order_form_action">
 			<field name="name">orders</field>
+			
+
+			<!--
 			<field name="res_model">sale.order</field>
+			-->
+			<field name="res_model">openhealth.order</field>
+			
+
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 			
@@ -155,9 +178,9 @@
 			<field name="name">Orders</field>
 
 			<!--
-			<field name="res_model">openhealth.order</field>
-			-->
 			<field name="res_model">sale.order</field>
+			-->
+			<field name="res_model">openhealth.order</field>
 			
 			
 			<field name="view_type">form</field>
@@ -185,6 +208,7 @@
     		<field name="category_id" ref="base.module_category_sales_management"/>
 		</record>
 		-->
+
 
 
 		<!-- Menus --> 

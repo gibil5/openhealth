@@ -16,6 +16,7 @@ class Consultation(models.Model):
 	_inherit = 'oeh.medical.evaluation'
 
 
+
 	treatment = fields.Many2one('openextension.treatment',
 			string="Tratamiento",
 			ondelete='cascade', 
@@ -52,13 +53,13 @@ class Consultation(models.Model):
 				ctr = ctr + 1
 			record.nr_orders = ctr
 
+
+
+
 	# ----------------------------------------------------------- Orders ------------------------------------------------------
 
 
-	#order_line  = fields.One2many(
-	#		'sale.order.line',
-	#		'order_id',
-	#)
+
 			
 
 
@@ -615,25 +616,27 @@ class Consultation(models.Model):
 	
 	# Order
 	order = fields.One2many(
-			'sale.order',			 
+			#'sale.order',		
+			'openhealth.order',	
+
 			'consultation', 
 			string="Order",
 			)
 
-
 	order_2 = fields.One2many(
-			'sale.order',			 
+			#'sale.order',			 
+			'openhealth.order',	
+			
 			'consultation', 
 			string="Order 2",
 			)
 
 				
-	order_line = field_One2many=fields.One2many('sale.order.line',
-		'consultation',
-		#string='Order',
-		
-		#compute='_compute_order_line', 
-		)
+
+
+
+
+
 	
 	#@api.multi
 	@api.depends('order')
@@ -712,8 +715,12 @@ class Consultation(models.Model):
 			'view_type': 'form',
 			'view_mode': 'form',
 			
+
 			
-			'res_model': 'sale.order',
+			#'res_model': 'sale.order',
+			'res_model': 'openhealth.order',
+
+
 			
 			#'res_id': 23,
 			'res_id': order_id,

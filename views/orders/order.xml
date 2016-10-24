@@ -3,12 +3,14 @@
 	<data>
 		
 		<record model="ir.ui.view" id="view_test">
+
 			<field name="name">sale.order.form</field>
 			
+
 			<!--
 			<field name="model">sale.order</field>
 			-->
-			<field name="model">openhealth.order</field>
+			<field name="model">sale.order</field>
 
 
 			
@@ -94,15 +96,19 @@
 		</record>
 		
 		
+
+
 		
 		<!-- Tree view --> 
-		<record model="ir.ui.view" id="order_tree_view">
-			<field name="name">order.tree</field>
-
 			<!--			
 			<field name="model">sale.order</field>
 			-->
-			<field name="model">openhealth.order</field>
+		<!--
+		-->
+		<record model="ir.ui.view" id="order_tree_view">
+			<field name="name">order.tree</field>
+
+			<field name="model">sale.order</field>
 
 			
 			<field name="arch" type="xml">
@@ -111,16 +117,17 @@
 					
 					<field name="name"/>
 					
-					<field name="order_line"/>
+					<field name="state"/>
 
+
+					<!--
+					<field name="order_line"/>
+					-->
 				</tree>
 			</field>
 		</record>
 		
-		
-		
-		
-		
+
 		
 		<!-- Filter --> 
         <record id="view_medical_order_filter" model="ir.ui.view">
@@ -129,7 +136,7 @@
 			<!--		   
            <field name="model">sale.order</field>		   
            -->
-           <field name="model">openhealth.order</field>		   
+           <field name="model">sale.order</field>		   
            
 		   <field name="arch" type="xml">
                <search string="orders">
@@ -137,6 +144,8 @@
                </search>
            </field>
        </record>
+
+
 
 		<!-- Window Form Action --> 
 		<record model="ir.actions.act_window" id="order_form_action">
@@ -146,7 +155,7 @@
 			<!--
 			<field name="res_model">sale.order</field>
 			-->
-			<field name="res_model">openhealth.order</field>
+			<field name="res_model">sale.order</field>
 			
 
 			<field name="view_type">form</field>
@@ -180,7 +189,7 @@
 			<!--
 			<field name="res_model">sale.order</field>
 			-->
-			<field name="res_model">openhealth.order</field>
+			<field name="res_model">sale.order</field>
 			
 			
 			<field name="view_type">form</field>

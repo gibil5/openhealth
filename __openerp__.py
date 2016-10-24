@@ -134,7 +134,7 @@
 		# Orders
 		#'views/evaluations/order.xml',
 		'views/orders/order.xml',
-
+		#'views/orders/sale_order.xml',
 
 		
 

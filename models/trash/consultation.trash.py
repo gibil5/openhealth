@@ -639,3 +639,194 @@
 	#)
 
 	
+
+
+
+
+	# Products 
+	#products = fields.One2many(
+	#		'product.template',
+	#		string="Product",
+	#		default=[],
+	#		compute='_compute_products', 
+	#		)
+
+	
+	#@api.multi
+	#@api.depends('service_co2_ids')
+	
+	#def _compute_products(self):
+	#	for record in self:
+			
+	#		record.products = [3480, 3527, 3510]
+			#record.products = []
+			#for service in record.service_co2_ids:
+			#	record.products.append(service)
+
+
+
+
+
+
+
+	
+	
+	#@api.depends('service_co2_ids')
+	#def _compute_order_line(self):	
+	#def _compute_order(self):	
+	#	print
+	#	print 'mark'
+		#order_id = self.order
+		
+	#	for record in self:
+	#		for s in record.service_co2_ids:
+	#			print 
+	#			print s
+	#			print s.service
+	#			print 
+	#			prod_id = s.service.id
+
+	#			record.order.order_line.create({
+	#										'product_id': prod_id,
+	#										'product_uom' : s.service.uom_id.id,
+											
+											#'order_id': order_id,
+											#'name': '',
+	#										}) 
+			
+	#	print
+
+
+
+
+
+
+
+
+	#@api.multi
+	#@api.depends('service_co2_ids')
+	
+	#def _compute_service_ids(self):
+	#	print 
+	#	for record in self:
+	#		for s in record.service_co2_ids:
+	#			print s
+	#			print s.name
+	#			print s.service.name
+	#			print s.service.id
+	#			print 
+				#record.service_ids.create({
+				#							'name':s.name,
+				#							'service_id':s.service.id,
+				#})
+	#			values = {
+	#						'name':s.name,
+	#			}
+				#record.service_ids.write(0, 0, values)
+	#			record.service_ids.write(values)
+		
+
+	#@api.onchange('service_co2_ids')
+	#def _onchange_service_co2_ids(self):	
+	#	print
+	#	print 'mark'
+	#	print 
+		
+		#return {
+		#	'warning': {
+		#		'title': "service_co_ids",
+		#		'message': '',
+		#}}
+		
+	#	for s in self.service_co2_ids:
+	#		print s
+	#		print s.name
+	#		print s.service.name
+	#		print s.service.id
+	#		print
+	#		values = {
+	#					'name':s.name,
+	#				}
+				#record.service_ids.write(0, 0, values)
+
+
+
+
+
+
+
+
+
+
+
+	order_2 = fields.One2many(
+			#'sale.order',			 
+			'openhealth.order',	
+			
+			'consultation', 
+			string="Order 2",
+			)
+
+				
+	
+	#@api.multi
+	@api.depends('order')
+	
+	def _compute_order_line(self):
+		print "Compute order line"
+		
+		consultation_id = self.id
+		order_id = self.order_2
+		
+		
+		for record in self:	
+			#record.order_line.id = record.order.order_line.id
+			
+			for se in record.service_co2_ids:
+				print se.name 
+
+				ol = record.order_line.create({
+											'product_id': se.service.id,
+											'name': se.name_short,
+											'product_uom': se.service.uom_id.id,
+											'order_id': order_id,
+											#'order_id': 33,
+		#									'order_id': consultation_id,
+											
+										})
+
+		print 
+
+
+
+
+
+
+
+
+
+
+
+		#if self.order.nr_lines != 0:
+			#print 'Unlink'
+		#	u = self.order.remove_order_lines()
+			#print u
+
+		#print 'order nr_lines:'
+		#print self.order.nr_lines 
+
+		#if self.order.nr_lines == 0:
+		#	print 'Create'
+		#	nr_lines = self.order.x_create_order_lines()
+		#	print nr_lines
+		#	print 
+		
+		#print 
+
+
+
+
+
+
+
+		

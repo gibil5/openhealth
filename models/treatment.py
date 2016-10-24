@@ -126,8 +126,8 @@ class Treatment(models.Model):
 
 	# Sales 
 	sale_ids = fields.One2many(
-			#'sale.order',			 
-			'openhealth.order',	
+			'sale.order',			 
+			#'openhealth.order',	
 
 			'treatment', 
 			string="Ventas"
@@ -275,15 +275,19 @@ class Treatment(models.Model):
 
 
 
+
+
 	# Duration 
 	duration = fields.Integer(
 			#string="Duration (days)", 
 			string="Días", 
 			compute='_compute_duration', 
+			default = 0,
 			)
 
-	#@api.multi
-	@api.depends('start_date', 'end_date')
+	@api.multi
+	#@api.depends('start_date', 'end_date')
+
 
 	def _compute_duration(self):
 		for record in self:

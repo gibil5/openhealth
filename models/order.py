@@ -11,9 +11,15 @@ from openerp import models, fields, api
 class sale_order(models.Model):
 	
 
-	_name = 'openhealth.order'
+	#_name = 'openhealth.order'
 	_inherit='sale.order'
 	
+
+
+
+
+
+
 
 
 	
@@ -35,110 +41,27 @@ class sale_order(models.Model):
 		ondelete='cascade', 
 	)
 
+
 	treatment = fields.Many2one('openextension.treatment',
 		ondelete='cascade', 
 	)
+
 	
 	patient = fields.Many2one(
 			'oeh.medical.patient',
 	)
 	
 	
-	#products = fields.One2many(
-	#products = fields.Many2one(
-	#		'product.template',
-	#		)
-			
-			
-	#x_nex = fields.Char(
-	#	default='nex',
-	#)
-	
-
 	
 	x_state = fields.Char(
 		default='a',
 	)
 	
-	_state_list = [
-         			('draft', 'Quotation'),
-					('sent', 'Quotation Sent'),
-					('sale', 'Sale Order'),
-					('done', 'Done'),
-					('cancel', 'Cancelled'),
-         	   ]
 
-	state = fields.Selection(
-			selection = _state_list, 
-			string='jx Status', 
-			
-			#readonly=True, 
-			readonly=False, 
-			
-			#copy=False, 
-			#index=True, 
-			#track_visibility='onchange', 
-			#default='draft'
-			)
-	
 
-	# State changes
-	#@api.onchange('state')
-	def _onchange_state(self):
-		
-		print 
-		print 'jx'
-		print 'Order - State change'
-		print self.state
-		
-		self.x_state = 'b'
-		
-		name = 'name',
-
-		patient = self.patient
-		
-		print patient
-		
-		#return {
-		#	'warning': {
-		#		'title': "Order - State",
-		#		'message': self.state + ' ' + patient.name,
-		#}}
-		
-		
-		
-		print self.consultation.treatment.procedure_ids
-		
-		self.consultation.treatment.procedure_ids.create({
-			
-											'name': 'name',
-											'patient': patient.name,
-											
-											#'product_id': se.service.id,
-											#'product_uom': se.service.uom_id.id,
-											#'order_id': order_id,
-											#'order_id': 33,
-		#									'order_id': consultation_id,
-										})
 
 		
-		print 
-		
 
-		
-		
-	#state_changes = fields.Char(
-	#		default='a',
-	#		compute='_compute_state_changes', 
-	#		)
-
-	#@api.depends('state')	
-	#def _compute_state_changes(self):
-	#	print
-	#	print 'jx'
-	#	for record in self:
-	#		record.state_changes = 'b'
-	#		print record.state_changes
 	
 	
 	
@@ -147,15 +70,17 @@ class sale_order(models.Model):
 	
 	# Nr lines 
 	nr_lines = fields.Integer(
+			
 			default=0,
+
 			string='Nr líneas',
 			
 			compute='_compute_nr_lines', 
 			#required=True, 
 			)
 
-	#@api.multi
-	@api.depends('order_line')
+	@api.multi
+	#@api.depends('order_line')
 	
 	def _compute_nr_lines(self):
 		for record in self:
@@ -180,13 +105,28 @@ class sale_order(models.Model):
 		if self.state == 'draft':
 			ret = self.remove_order_lines()
 
+
 	@api.multi 
 	def update_order_lines(self):
 
-		if self.state == 'draft':
-			ret = self.remove_order_lines()
+
+		#if self.state == 'draft':
+		if self.state == 'draft'  and  self.nr_lines == 0:
+			print 
+			print 'update_order_lines'
+			print 
+
+			#ret = self.remove_order_lines()
 			ret = self.x_create_order_lines()
 	
+
+
+
+
+
+
+	
+
 
 
 	# Remove 
@@ -194,7 +134,8 @@ class sale_order(models.Model):
 	def remove_order_lines(self):
 		ret = self.order_line.unlink()
 		return ret 
-	
+
+
 	# Create 
 	@api.multi 
 	def x_create_order_lines(self):
@@ -202,18 +143,27 @@ class sale_order(models.Model):
 		print 'Create order lines'
 		
 		
-		
 		order_id = self.id
 
+
+		print 'co2'
 		for se in self.consultation.service_co2_ids:
-			
+			#print se 
+
+			#print se.service.id
+			#print order_id
+			#print se.name_short
+
 			ol = self.order_line.create({
 										'product_id': se.service.id,
 										'order_id': order_id,
 										'name': se.name_short,
 									})
 			
+
+		print 'excilite'
 		for se in self.consultation.service_excilite_ids:
+			#print se 
 
 			ol = self.order_line.create({
 										'product_id': se.service.id,
@@ -221,7 +171,10 @@ class sale_order(models.Model):
 										'name': se.name_short,
 									})
 
+		
+		print 'ipl'
 		for se in self.consultation.service_ipl_ids:
+			#print se 
 
 			ol = self.order_line.create({
 										'product_id': se.service.id,
@@ -229,7 +182,9 @@ class sale_order(models.Model):
 										'name': se.name_short,
 									})
 
+		print 'ndyag'
 		for se in self.consultation.service_ndyag_ids:
+			#print se 
 
 			ol = self.order_line.create({
 										'product_id': se.service.id,
@@ -256,9 +211,15 @@ class sale_order_line(models.Model):
 
 	_inherit='sale.order.line'
 
-	order_id=fields.Many2one('sale.order',
+
+	order_id=fields.Many2one(
+
+		'sale.order',
+		#'openhealth.order',
+
 		string='Order',
 		)
+
 
 	consultation = fields.Many2one('openhealth.consultation',
 			ondelete='cascade', 

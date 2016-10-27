@@ -10,6 +10,9 @@ from datetime import datetime
 
 import jxvars
 
+import jrfuncs
+
+import pat_vars
 
 
 
@@ -110,46 +113,23 @@ class Patient(models.Model):
 			required=True, 
 			)
 
+
+
 	# On Change
 	@api.onchange('a_dni')
 	def _onchange_a_dni(self):
 
-		if self.a_dni and (not self.a_dni.isdigit()):
-			return {
-					'warning': {
-						'title': "Error: No es número",
-						'message': self.a_dni,
-					}}
+		ret = jrfuncs.test_for_digits(self, self.a_dni)
+
+		if ret != 0: 
+			return ret
 
 
-		if self.a_dni and (len(str(self.a_dni))!= 8):
-			return {
-					'warning': {
-						'title': "Error: No tiene 8 cifras",
-						'message': self.a_dni,
-					}}
+		ret = jrfuncs.test_for_length(self, self.a_dni, 8)
 
-		return {}
+		if ret != 0: 
+			return ret
 
-
-
-
-
-
-	# Test
-	def test_for_digits(self, token):
-		
-		print 
-		print 'on change'
-		print 
-
-		if token and (not token.isdigit()):
-		#if  (not token.isdigit()):
-			return {
-					'warning': {
-						'title': "Error: No es número",
-						'message': token,
-					}}
 
 
 
@@ -165,9 +145,10 @@ class Patient(models.Model):
 
 	def _onchange_phone_1(self):
 
-		ret = self.test_for_digits(self.phone_1)
+		ret = jrfuncs.test_for_digits(self, self.phone_1)
 
-		return ret
+		if ret != 0: 
+			return ret
 
 
 
@@ -185,9 +166,10 @@ class Patient(models.Model):
 
 	def _onchange_phone_2(self):
 
-		ret = self.test_for_digits(self.phone_2)
+		ret = jrfuncs.test_for_digits(self, self.phone_2)
 
-		return ret
+		if ret != 0: 
+			return ret
 
 
 
@@ -204,9 +186,10 @@ class Patient(models.Model):
 
 	def _onchange_phone_3(self):
 
-		ret = self.test_for_digits(self.phone_3)
+		ret = jrfuncs.test_for_digits(self, self.phone_3)
 
-		return ret
+		if ret != 0: 
+			return ret
 
 
 
@@ -438,49 +421,58 @@ class Patient(models.Model):
 	# EXISTENT
 	street = fields.Char(
 			string = "Dirección", 	
-			#required=True, 
+			required=True, 
 		)
+
 
 	street2 = fields.Char(
 			string = "Distrito", 	
-			#required=True, 
+			required=True, 
 		)
 
 
 
+	#jx 
+	street2_sel = fields.Selection(
 
-	_city_list = [
-			('lima','Lima'),
-			('abancay','Abancay'),
-			('arequipa','Arequipa'),
-			('ayacucho','Ayacucho'),
-			('cajamarca','Cajamarca'),
-			('callao','Callao'),
-			('cerro_de_pasco','Cerro de Pasco'), 
-			('chachapoyas','Chachapoyas'),
-			('chiclayo','Chiclayo'),
-			('cuzco','Cuzco'),
-			('huacho','Huacho'),
-			('huancavelica','Huancavelica'),
-			('huancayo','Huancayo'),
-			#('huanuco','Huánuco'),
-			('huanuco','Huanuco'),
-			('huaraz','Huaraz'),
-			('ica','Ica'),
-			('iquitos','Iquitos'),
-			('moquegua','Moquegua'),
-			('moyobamba','Moyobamba'),
-			('piura','Piura'),
-			('pucallpa','Pucallpa'),
-			('puerto_maldonado','Puerto Maldonado'), 
-			('puno','Puno'),
-			('tacna','Tacna'),
-			('trujillo','Trujillo'),
-			('tumbes','Tumbes'),
-		]
+			selection = pat_vars._street2_list, 
+
+			string = "Distrito", 	
+			required=True, 
+		)
+
+
+
+	@api.onchange('street2_sel')
+
+	def _onchange_street2_sel(self):
+		self.street2 = pat_vars.zip_dic_inv[self.street2_sel]
+		self.zip = self.street2_sel
+
+
+
+
+	street2_char = fields.Char(
+			string = "Distrito", 	
+			required=True, 
+		)
+
+	@api.onchange('street2_char')
+
+	def _onchange_street2_char(self):
+
+		self.street2 = self.street2_char
+
+
+
+
+
 
 	city = fields.Selection(
-			selection = _city_list, 
+
+			#selection = _city_list, 
+			selection = pat_vars._city_list, 
+
 			string = 'Departamento',  
 			#default = ('lima','Lima'), 
 			default = 'lima', 
@@ -492,32 +484,26 @@ class Patient(models.Model):
 
 
 
-	#a_district = fields.Selection(
-	#zip = fields.Selection(
 	zip = fields.Integer(
-			#selection = zip_list, 
-			#selection = jxvars.zip_list, 
-			
 			string = 'Código',  
-			#default = ('lima','Lima'), 
-			#default = 'Lima', 
-			#placeholder="Código", 
-			required=True, 
-			
-			compute='_compute_zip', 
+			required=True, 			
+			#compute='_compute_zip', 
 			)
+
 
 	#@api.multi
 	@api.depends('street2','city')
 
 	def _compute_zip(self):
 		for record in self:
-			#record.zip=zip_list[record.city]
-			#record.zip=jxvars.zip_list[record.street2]
-			if (record.street2 in jxvars.zip_dic) and (record.city == 'lima')  :
-				record.zip=jxvars.zip_dic[record.street2]
+
+			#if (record.street2 in jxvars.zip_dic) and (record.city == 'lima')  :
+			if (record.street2 in pat_vars.zip_dic) and (record.city == 'lima')  :
+
+				#record.zip=jxvars.zip_dic[record.street2]
+				record.zip=pat_vars.zip_dic[record.street2]
+
 			else:
-				#record.zip=0
 				record.zip=0
 
 

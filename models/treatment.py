@@ -124,14 +124,33 @@ class Treatment(models.Model):
 
 
 
-	# Sales 
-	sale_ids = fields.One2many(
-			'sale.order',			 
-			#'openhealth.order',	
 
+
+
+
+
+	# Quotations 
+	quotation_ids = fields.One2many(
+			'sale.order',			 
 			'treatment', 
-			string="Ventas"
+			
+			string="Presupuestos",
+
+			domain = [
+						('state', '=', 'draft'),
+					],
 			)
+
+
+
+
+
+	# Order 
+	#order = fields.One2many(
+	#		'sale.order',
+	#		'treatment', 
+	#		)
+
 
 	
 	
@@ -143,6 +162,22 @@ class Treatment(models.Model):
 			#index=True
 			)
 			
+
+
+
+	# Sales 
+	sale_ids = fields.One2many(
+			'sale.order',			 
+			'treatment', 
+
+			string="Ventas",
+
+			domain = [
+						('state', '=', 'sale'),
+					],
+			)
+
+
 
 
 	# Clean procedures
@@ -174,7 +209,9 @@ class Treatment(models.Model):
 		
 		
 		
-		for line in self.consultation_ids.order.order_line:
+		#for line in self.consultation_ids.order.order_line:	
+		for line in self.sale_ids.order_line:
+			
 			
 			#if (not line.procedure_created) and (self.consultation_ids.order):
 

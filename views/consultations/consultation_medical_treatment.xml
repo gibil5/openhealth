@@ -6,29 +6,32 @@
 		<!--
 		Services 
 		-->
-		<record model="ir.ui.view" id="consultation_services_excilite_form_view">
-			<field name="name">consultation.service.excilite.form</field>
+		<record model="ir.ui.view" id="consultation_services_medical_form_view">
+			<field name="name">consultation.service.medical.form</field>
 			<field name="model">openhealth.consultation</field>
-			<field name="priority" eval="2"/>
+
+			<field name="priority" eval="5"/>
+			
 			<field name="inherit_id" ref="consultation_form_view"/>
 			<field name="arch" type="xml">
 				<notebook position="inside">
 					
 
-					<page string="EXCILITE">
+					<page string="TRATAMIENTO MEDICO">
 
 
 						<!--
 						<field name="service_ids"/>
 						-->
-						<field name="service_excilite_ids">
+
+
+						<field name="service_medical_ids">
+
 							<tree string="">	
 								<field name="name"/>
 								<field name="laser"/>				
 								<field name="service"/>
-								
 								<field name="price"/>
-								<field name="price_vip"/>
 
 								<button 
 									type="object" 

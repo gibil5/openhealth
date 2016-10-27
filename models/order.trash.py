@@ -138,18 +138,7 @@ class Order(models.Model):
 	#				('cancel', 'Cancelled'),
     #     	   ]
 
-	#state = fields.Selection(
-	#		selection = _state_list, 
-	#		string='Status', 			
-			#readonly=True, 
-	#		readonly=False, 
-
-	#		default='draft'
-
-			#copy=False, 
-			#index=True, 
-			#track_visibility='onchange', 
-	#		)
+	
 	
 
 

@@ -355,6 +355,7 @@ class Service(models.Model):
 
 
 	#Price 
+
 	price = fields.Float(
 			compute='_compute_price', 
 			#string='Price'
@@ -367,6 +368,27 @@ class Service(models.Model):
 	def _compute_price(self):
 		for record in self:
 			record.price= (record.service.list_price)
+
+
+
+
+
+
+	# Price VIP
+
+	price_vip = fields.Float(
+			compute='_compute_price_vip', 
+			#string='price_vip'
+			string='Precio VIP (S/.)'
+			) 
+
+	#@api.multi
+	@api.depends('service')
+
+	def _compute_price_vip(self):
+		for record in self:
+			record.price_vip= (record.service.x_price_vip)
+
 
 
 

@@ -26,6 +26,9 @@ from . import service_excilite
 from . import service_ipl
 from . import service_ndyag
 
+from . import service_medical
+
+
 
 #from . import quotation
 from . import order

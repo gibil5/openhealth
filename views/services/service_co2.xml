@@ -13,7 +13,9 @@
 			<field name="arch" type="xml">				
 				<!-- <xpath expr="//field[@name='title']" position="before"> -->
 				<xpath expr="//h1" position="replace">
+
 					<h1>Láser Co2</h1>					
+        		
         		</xpath>
 
 			</field>

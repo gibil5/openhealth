@@ -156,3 +156,21 @@ self.env['res.partner'].search([('name','=','Yvan Puga')],limit=1)
 
 self.env['openhealth.service.co2'].search([('name', 'like', '93')])
 
+
+
+
+
+
+
+
+
+
+self.env['sale.order'].search([('state', 'like', 'draft')])
+
+o = self.env['sale.order'].search([('state', 'like', 'draft')])
+
+
+self.env['sale.order'].search([('customer', 'like', 'J')])
+
+
+

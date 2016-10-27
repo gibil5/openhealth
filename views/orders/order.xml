@@ -98,15 +98,16 @@
 		
 
 
+
+
 		
 		<!-- Tree view --> 
-			<!--			
-			<field name="model">sale.order</field>
-			-->
 		<!--
-		-->
 		<record model="ir.ui.view" id="order_tree_view">
-			<field name="name">order.tree</field>
+		-->
+		<record model="ir.ui.view" id="sale.view_order_tree">
+
+			<field name="name">sale.order.tree</field>
 
 			<field name="model">sale.order</field>
 
@@ -115,10 +116,34 @@
 				
 				<tree string="Order Tree">
 					
-					<field name="name"/>
-					
-					<field name="state"/>
+					<field name="message_needaction" invisible="1"/>
+                    
 
+                    <field name="name" string="Order Number"/>
+                    
+                    <field name="date_order"/>
+                    
+                    <field name="partner_id"/>
+                    
+                    <field name="user_id"/>
+                    
+                    <field name="amount_total" sum="Total Tax Included" widget="monetary"/>
+
+                    <!--
+                    <field name="invoice_status"/>
+                     -->
+                    
+                    <field name="state" invisible="0"/>
+                    
+                    <field name="nr_lines"/>
+
+                     <!--
+                    <field name="consultation"/>
+
+                    <field name="treatment"/>
+                    
+                    <field name="id"/>
+                    -->
 
 					<!--
 					<field name="order_line"/>
@@ -126,6 +151,8 @@
 				</tree>
 			</field>
 		</record>
+
+
 		
 
 		
@@ -147,6 +174,7 @@
 
 
 
+
 		<!-- Window Form Action --> 
 		<record model="ir.actions.act_window" id="order_form_action">
 			<field name="name">orders</field>
@@ -159,6 +187,7 @@
 			
 
 			<field name="view_type">form</field>
+			
 			<field name="view_mode">tree,form</field>
 			
 			<!--
@@ -183,7 +212,8 @@
 		The following tag is an action definition for a "window action",
 		that is an action opening a view or a set of views
 		-->
-			<record model="ir.actions.act_window" id="order_list_action">
+		<record model="ir.actions.act_window" id="order_list_action">
+
 			<field name="name">Orders</field>
 
 			<!--

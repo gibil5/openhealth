@@ -161,21 +161,30 @@ class Consultation(models.Model):
 			)
 
 	
+
+
 	
 
 	# First consultation
 
 	x_diagnosis = fields.Text(
 			string = 'Diagnóstico', 
+			required=True, 
 			)
 
 	x_antecedents = fields.Text(
 			string = 'Antecedentes médicos', 
+			required=True, 
 			)
 
 	x_allergies_medication = fields.Text(
 			string = 'Alergias a medicamentos', 
+			required=True, 
 			)
+
+
+
+
 
 	FITZ_TYPE = [
 			('one','I'),
@@ -190,6 +199,7 @@ class Consultation(models.Model):
 			selection = FITZ_TYPE, 
 			string = 'Fitzpatrick',
 			default = '', 
+			required=True, 
 			)
 
 	PHOTO_TYPE = [
@@ -202,19 +212,25 @@ class Consultation(models.Model):
 			selection = PHOTO_TYPE, 
 			string = 'Foto-envejecimiento',
 			default = '', 
+			required=True, 
 			)
+
+
 
 
 	x_analysis_lab = fields.Boolean(
 			string = 'Análisis de laboratorio', 
+			required=False, 
 			)
 
 	x_observations = fields.Text(
 			string = 'Observaciones',
+			required=True, 
 			)
 
 	x_indications = fields.Text(
 			string = 'Indicaciones',
+			required=True, 
 			)
 
 
@@ -325,6 +341,17 @@ class Consultation(models.Model):
 			'openhealth.service.ndyag', 
 			'consultation', 
 			string="Servicios Ndyag",
+	)
+
+
+
+
+	service_medical_ids = fields.One2many(
+
+			'openhealth.service.medical', 
+		
+			'consultation', 
+			string="Tratamiento médico",
 	)
 
 
@@ -517,17 +544,30 @@ class Consultation(models.Model):
 
 	
 	# Order
-	order = fields.One2many(
+	order = fields.One2many(		
+			'sale.order',		
+
+			'consultation', 
+			string="Order",
+
+			domain = [
+						('state', '=', 'draft'),
+					],
+			)
+
+
+
+
+	order_2 = fields.One2many(
 		
 			'sale.order',		
 			#'openhealth.order',	
 
 			'consultation', 
-			string="Order",
+			string="Order 2",
 			)
-
-
 		
+
 
 		
 	# Create Order - Button 
@@ -542,9 +582,24 @@ class Consultation(models.Model):
 
 
 
+
+		# Order 2
+		#self.order_2 = self.order.copy()
+
+
+
+
 		# Order 
-		order_id = self.order.id		
-		
+		#order_id = self.order.id		
+		order_id = self.env['sale.order'].search([
+													('consultation','=',self.id),
+													('state','=','draft'),
+												]).id
+
+		# Treatment
+		treatment_id = self.treatment.id 
+
+
 		# Consultation
 		consultation_id = self.id 
 
@@ -585,9 +640,15 @@ class Consultation(models.Model):
 			'target': 'current',
 
 			'context':   {
+
 				'default_consultation': consultation_id,
+
+				'default_treatment': treatment_id,
+
+
 				'default_partner_id': partner_id,
 				'default_patient': patient_id,				
+
 			}
 		}
 							

@@ -20,9 +20,12 @@
 
 						<!--
 						<field name="order"/>
+
+						<field name="order"  attrs="{'invisible':[('state', '!=', 'draft')]}">
 						-->
 
 						<field name="order">
+
 							<tree string="">	
 								
 								<field name="name"/>

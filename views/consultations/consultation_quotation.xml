@@ -15,23 +15,24 @@
 			<field name="arch" type="xml">
 				<notebook position="inside">
 					
-					<page string="Presupuesto">
-							
+					<page string="Presupuesto jx">
+			
 						<!--
-								<field name="quotation">
-							
-										<field name="order_line"/>
+						<field name="order">
 						-->
-								<field name="order">
 
-									<tree string="Presupuestos">										
-										
-										<field name="name"/>
-										
-										
-									</tree>
+						<field name="order"  attrs="{'invisible':[('state', '!=', 'draft')]}" >
 
-								</field>
+							<tree string="Presupuestos">										
+
+										
+								<field name="name"/>
+										
+										
+							</tree>
+
+						</field>
+
 
 					</page>
 				

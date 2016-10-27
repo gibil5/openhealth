@@ -4,10 +4,10 @@
 
 
 		<!--
-		sales
+		quotations
 		-->
-		<record model="ir.ui.view" id="treatment_sale_form_view">
-			<field name="name">treatment.sale.form</field>
+		<record model="ir.ui.view" id="treatment_quotation_form_view">
+			<field name="name">treatment.quotation.form</field>
 			<field name="model">openextension.treatment</field>
 			<field name="priority" eval="1"/>
 			<field name="inherit_id" ref="treatment_form_view"/>
@@ -15,21 +15,21 @@
 				<notebook position="inside">
 					
 
-					<page string="FACTURADOS">
+					<page string="Presupuestos">
 
 
-						<field name="sale_ids"/>
+						<field name="quotation_ids"/>
 
 						<!--
-						<field name="sale"/>
+						<field name="quotation"/>
 
-						<field name="sale_ids">
+						<field name="quotation_ids">
 							
 							<tree string="">	
 								
 								<field name="name"/>
 
-								<field name="date_sale"/>
+								<field name="date_quotation"/>
 
 								<field name="partner_id"/>
 

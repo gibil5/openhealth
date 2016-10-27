@@ -80,12 +80,25 @@
 
 				<field string="email" name="email" widget="email" required="1"/>
 
+
+				<!--
 				<field string="Teléfono 1" name="mobile" required="1"/>
+
+				<field name="mobile" />
+				-->
+				<field name="phone_1" />
+
 
 				<!--
 				<field string="Teléfono" name="phone" placeholder="e.g. +32.81.81.37.00"/>
-				-->
+
 				<field string="Teléfono 2" name="phone" placeholder=""/>
+
+				<field  name="phone" />
+				-->
+
+				<field  name="phone_2" />
+
 
 			</group>
 		</group>
@@ -118,8 +131,11 @@
 				<field name="a_caregiver_last_name"/>
 				<field name="a_caregiver_first_name"/>
 
-				
-				<field name="phone" string="Teléfono"/>
+				<!--				
+				<field name="phone_3" string="Teléfono"/>
+				-->
+				<field name="phone_3" />
+
 			</group>
 
 			<group>

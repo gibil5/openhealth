@@ -19,6 +19,20 @@ class sale_order(models.Model):
 
 
 
+	state = fields.Selection(
+			#selection = _state_list, 
+			#string='Status', 			
+			
+			#readonly=True, 
+			readonly=False, 
+
+	#		default='draft'
+
+			#copy=False, 
+			#index=True, 
+			#track_visibility='onchange', 
+			)
+
 
 
 
@@ -36,6 +50,8 @@ class sale_order(models.Model):
 
 
 
+
+	# Indexes 
 	consultation = fields.Many2one('openhealth.consultation',
 		string="Consulta",
 		ondelete='cascade', 
@@ -45,6 +61,8 @@ class sale_order(models.Model):
 	treatment = fields.Many2one('openextension.treatment',
 		ondelete='cascade', 
 	)
+
+
 
 	
 	patient = fields.Many2one(
@@ -106,9 +124,12 @@ class sale_order(models.Model):
 			ret = self.remove_order_lines()
 
 
+
+	# Update Lines 
 	@api.multi 
 	def update_order_lines(self):
 
+		
 
 		#if self.state == 'draft':
 		if self.state == 'draft'  and  self.nr_lines == 0:
@@ -118,9 +139,20 @@ class sale_order(models.Model):
 
 			#ret = self.remove_order_lines()
 			ret = self.x_create_order_lines()
-	
+			#print ret  
 
 
+#jx
+			print 'copy'
+
+			ret = self.copy({
+				
+							#'state':'sale',
+							'state':'sent',
+				})
+
+			
+			print ret 
 
 
 
@@ -134,6 +166,7 @@ class sale_order(models.Model):
 	def remove_order_lines(self):
 		ret = self.order_line.unlink()
 		return ret 
+
 
 
 	# Create 

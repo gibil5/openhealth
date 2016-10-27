@@ -103,33 +103,116 @@ class Patient(models.Model):
 
 
 
+	# DNI
+	
 	a_dni = fields.Char(
 			string = "DNI", 	
 			required=True, 
 			)
 
+	# On Change
+	@api.onchange('a_dni')
+	def _onchange_a_dni(self):
 
-	def test_dni(self,cr,uid,ids,context=None):
-
-		print context
-
-		if context and (not context.isdigit()):
+		if self.a_dni and (not self.a_dni.isdigit()):
 			return {
 					'warning': {
-						'title': "Error: DNI no es número",
-						'message': context,
+						'title': "Error: No es número",
+						'message': self.a_dni,
 					}}
 
-		if context and (len(str(context))!= 8):
+
+		if self.a_dni and (len(str(self.a_dni))!= 8):
 			return {
 					'warning': {
-						'title': "Error: DNI no tiene 8 cifras",
-						'message': context,
+						'title': "Error: No tiene 8 cifras",
+						'message': self.a_dni,
 					}}
-					
+
 		return {}
+
+
+
+
+
+
+	# Test
+	def test_for_digits(self, token):
 		
-		
+		print 
+		print 'on change'
+		print 
+
+		if token and (not token.isdigit()):
+		#if  (not token.isdigit()):
+			return {
+					'warning': {
+						'title': "Error: No es número",
+						'message': token,
+					}}
+
+
+
+
+	# Phone 1
+
+	phone_1 = fields.Char(
+		string="Teléfono 1",
+		required=True, 
+		)
+
+	@api.onchange('phone_1')
+
+	def _onchange_phone_1(self):
+
+		ret = self.test_for_digits(self.phone_1)
+
+		return ret
+
+
+
+
+
+	# Phone 2
+
+	phone_2 = fields.Char(
+		string="Teléfono 2",
+		required=False, 
+		)
+
+
+	@api.onchange('phone_2')
+
+	def _onchange_phone_2(self):
+
+		ret = self.test_for_digits(self.phone_2)
+
+		return ret
+
+
+
+
+
+	# Phone 3 - Caregiver 
+
+	phone_3 = fields.Char(
+		string="Teléfono",
+		required=False, 
+		)
+
+	@api.onchange('phone_3')
+
+	def _onchange_phone_3(self):
+
+		ret = self.test_for_digits(self.phone_3)
+
+		return ret
+
+
+
+
+
+
 
 
 	_first_contact_list = [
@@ -449,17 +532,17 @@ class Patient(models.Model):
 			)
 
 
-	mobile = fields.Char(
-			string = 'Celular',  
-			placeholder = '',
+	#mobile = fields.Char(
+	#		string = 'Celular',  
+	#		placeholder = '',
 			#required=True, 
-			)
+	#		)
 
-	phone = fields.Char(
-			string = 'Teléfono',  
-			placeholder = '',
+	#phone = fields.Char(
+	#		string = 'Teléfono',  
+	#		placeholder = '',
 			#required=True, 
-			)
+	#		)
 
 	email = fields.Char(
 			string = 'email',  

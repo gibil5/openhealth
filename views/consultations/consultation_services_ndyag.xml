@@ -25,7 +25,9 @@
 								<field name="name"/>
 								<field name="laser"/>				
 								<field name="service"/>
+								
 								<field name="price"/>
+								<field name="price_vip"/>
 
 								<button 
 									type="object" 

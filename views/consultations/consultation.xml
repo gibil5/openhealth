@@ -32,7 +32,7 @@
 						<button 
 							type="object" 
 							class="oe_highlight"	
-							string="Crear Servicio CO2"
+							string="LASER CO2"
 				
 							name="open_service_co2" 	
 						/>
@@ -65,14 +65,14 @@
 
 
 						<!--
+						-->
 						<button 
 							type="object" 
 							class="oe_highlight"	
-							string="Tratamiento médico"
+							string="TRATAMIENTO MEDICO"
 				
 							name="open_service" 	
 						/>
-						-->
 						
 
 
@@ -209,8 +209,22 @@
 								<field name="evaluation_start_date"/>
 							</group>							
 							<group>								
-								<field name="x_observation"  />	
+								<field name="x_fitzpatrick"  />	
 							</group>
+
+
+							<group>								
+								<field name="x_observation"  />	
+							</group>							
+							<group>								
+								<field name="x_photo_aging"  />	
+							</group>
+
+
+
+
+
+
 
 
 							<group></group>

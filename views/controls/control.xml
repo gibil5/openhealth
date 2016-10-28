@@ -89,7 +89,7 @@
 								<field name="procedure"/>
 							</group>
 							<group>
-								<field name="evaluation_type"	invisible="1"/>
+								<field name="evaluation_type"	invisible="0"/>
 							</group>
 							
 							

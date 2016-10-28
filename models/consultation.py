@@ -32,11 +32,18 @@ class Consultation(models.Model):
 	#		required=True, 
 	#		)
 
-	#chief_complaint = fields.Selection(
-	#		string = 'Motivo de consulta', 
-	#		selection = jxvars._pathology_list, 
-	#		required=True, 
-	#		)
+	chief_complaint = fields.Selection(
+			string = 'Motivo de consulta', 
+			selection = jxvars._pathology_list, 
+			required=True, 
+			)
+
+
+	evaluation_type = fields.Selection(
+			default = 'Pre-arraganged Appointment', 
+			)
+
+
 
 
 
@@ -103,23 +110,7 @@ class Consultation(models.Model):
 
 
 
-	EVALUATION_TYPE = [
-			#('Pre-arraganged Appointment', 'Primera consulta'),
-			('Pre-arraganged Appointment', 'Consulta'),
-			('Ambulatory', 'Procedimiento'),
-			('Periodic Control', 'Control'),
-			]
-
-	evaluation_type = fields.Selection(
-			selection = EVALUATION_TYPE, 
-			string = 'Tipo',
-
-			default = 'Pre-arraganged Appointment', 
-			#default = 'Ambulatory', 
-			#default = 'Periodic Control', 
-
-			required=True, 
-			)
+	
 
 
 

@@ -42,6 +42,15 @@ class Procedure(models.Model):
 
 
 
+	evaluation_type = fields.Selection(
+			default = 'Ambulatory', 
+			)
+
+
+
+
+
+
 
 	control_ids = fields.One2many(
 			'openhealth.control', 
@@ -264,24 +273,6 @@ class Procedure(models.Model):
 			)
 
 
-
-	EVALUATION_TYPE = [
-			#('Pre-arraganged Appointment', 'Primera consulta'),
-			('Pre-arraganged Appointment', 'Consulta'),
-			('Ambulatory', 'Procedimiento'),
-			('Periodic Control', 'Control'),
-			]
-
-	evaluation_type = fields.Selection(
-			selection = EVALUATION_TYPE, 
-			string = 'Tipo de evaluación',
-
-			#default = 'Pre-arraganged Appointment', 
-			default = 'Ambulatory', 
-			#default = 'Periodic Control', 
-
-			required=True, 
-			)
 
 
 

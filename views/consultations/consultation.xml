@@ -195,12 +195,12 @@
 								<field name="treatment"/>
 							</group>
 							<group>
-								<field name="evaluation_type" 	invisible="1"/>
+								<field name="evaluation_type" 	invisible="0"/>
 							</group>
 								
 								
 							<group>
-								<field name="doctor" options="{'no_create': True}"  string="Médico"/>
+								<field name="doctor" options="{'no_create': True}"/>
 							</group>
 							<group>
 								<field name="chief_complaint"/>
@@ -263,9 +263,9 @@
 					
 					<field name="name"/>
 					
-					<field name="patient"  string="Paciente"/>
+					<field name="patient"  />
 					
-					<field name="doctor"   string="Médico"/>
+					<field name="doctor"   />
 					
 					<field name="evaluation_start_date"/>
 

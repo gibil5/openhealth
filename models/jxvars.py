@@ -2,6 +2,14 @@
 
 
 
+# Evaluation
+EVALUATION_TYPE = [
+		('Pre-arraganged Appointment', 'Consulta'),
+		('Ambulatory', 'Procedimiento'),
+		('Periodic Control', 'Control'),
+		]
+
+
 
 # Product 
 _laser_type_list = [

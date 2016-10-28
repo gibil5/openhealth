@@ -28,6 +28,16 @@ class Evaluation(models.Model):
 			)
 
 
+	# Deprecated 
+
+	#treatment_id = fields.Many2one(
+	#		'openextension.treatment',
+	#		ondelete='cascade', 
+	#		)
+
+
+
+
 	# Commons
 	vspace = fields.Char(
 			' ', 
@@ -47,14 +57,11 @@ class Evaluation(models.Model):
 			required=True, 
 			)
 
-
 	evaluation_start_date = fields.Date(
 			string = "Fecha - nex", 	
 			default = fields.Date.today, 
 			required=True, 
 			)
-
-
 
 	chief_complaint = fields.Selection(
 			string = 'Motivo de consulta - nex', 
@@ -62,26 +69,9 @@ class Evaluation(models.Model):
 			required=True, 
 			)
 
-
-
-
-
-	EVALUATION_TYPE = [
-		#('Pre-arraganged Appointment', 'Primera consulta'),
-		('Pre-arraganged Appointment', 'Consulta'),
-		('Ambulatory', 'Procedimiento'),
-		('Periodic Control', 'Control'),
-		]
-
 	evaluation_type = fields.Selection(
-			selection = EVALUATION_TYPE, 
-			#string = 'Tipo de evaluación',
-			string = 'Tipo',
-
-			#default = 'Pre-arraganged Appointment', 
-			#default = 'Ambulatory', 
-			#default = 'Periodic Control', 
-
+			selection = jxvars.EVALUATION_TYPE, 
+			string = 'Tipo - nex',
 			required=True, 
 			)
 
@@ -89,8 +79,4 @@ class Evaluation(models.Model):
 
 
 
-	treatment_id = fields.Many2one(
-			'openextension.treatment',
-			ondelete='cascade', 
-			)
 

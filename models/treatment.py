@@ -21,6 +21,37 @@ class Treatment(models.Model):
 
 
 
+
+
+
+	# Evaluation  
+
+	#evaluation_ids = fields.One2many(
+	#		'oeh.medical.evaluation', 
+	#		'treatment_id', 
+	#		string = "Evaluaciones", 
+	#		)
+
+	#nr_evaluations = fields.Integer(
+	#		compute='_compute_nr_evaluations', 
+	#		string='Nr. evaluaciones', 
+	#		default = 0, 
+	#		)
+
+	#@api.depends('evaluation_ids')
+
+	#def _compute_nr_evaluations(self):
+	#	for record in self:
+	#		sub_total = 0 
+	#		for se in record.evaluation_ids:   
+	#			sub_total = sub_total + 1  
+	#		record.nr_evaluations= sub_total  
+
+
+
+
+
+
 	# Open 
 	treatment_open = fields.Boolean(
 			string="Abierto",
@@ -402,22 +433,6 @@ class Treatment(models.Model):
 
 
 
-	# Number of evaluations
-	nr_evaluations = fields.Integer(
-			compute='_compute_nr_evaluations', 
-			#string='Number of evaluations', 
-			string='Nr. evaluaciones', 
-			default = 0, 
-			)
-
-	@api.depends('evaluation_ids')
-
-	def _compute_nr_evaluations(self):
-		for record in self:
-			sub_total = 0 
-			for se in record.evaluation_ids:   
-				sub_total = sub_total + 1  
-			record.nr_evaluations= sub_total  
 
 
 
@@ -475,14 +490,7 @@ class Treatment(models.Model):
 
 
 
-	# Evaluation  
-	# ---------
-	evaluation_ids = fields.One2many(
-			'oeh.medical.evaluation', 
 
-			'treatment_id', 
-			string = "Evaluaciones", 
-			)
 
 
 

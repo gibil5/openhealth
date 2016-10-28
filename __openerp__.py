@@ -66,8 +66,8 @@
 		
 
         # Evaluations
-		'views/evaluations/evaluation.xml',
-		'views/evaluations/evaluation_oeh.xml',
+		#'views/evaluations/evaluation.xml',
+		#'views/evaluations/evaluation_oeh.xml',
 		
 		
 		

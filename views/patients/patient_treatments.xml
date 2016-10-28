@@ -51,7 +51,10 @@
 								<field name="chief_complaint"/>
 								<field name="start_date"/>
 								<field name="duration"/>
+
+								<!--
 								<field name="nr_evaluations"/>
+								-->
 								<field name="price_total"/>
 
 

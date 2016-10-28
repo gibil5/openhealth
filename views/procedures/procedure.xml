@@ -128,7 +128,7 @@
 								<field name="treatment"			string="Tratamiento"/>
 							</group>
 							<group>
-								<field name="evaluation_type"	invisible="1"/>
+								<field name="evaluation_type"	invisible="0"/>
 							</group>
 							
 							

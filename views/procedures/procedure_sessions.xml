@@ -4,13 +4,13 @@
 
 
 		<!--
-		controls
+		sessions
 		-->
-		<record model="ir.ui.view" id="procedure_controls_form_view">
-			<field name="name">procedure.controls.form</field>
+		<record model="ir.ui.view" id="procedure_sessions_form_view">
+			<field name="name">procedure.sessions.form</field>
 			<field name="model">openhealth.procedure</field>
 
-			<field name="priority" eval="3"/>
+			<field name="priority" eval="2"/>
 			
 			<field name="inherit_id" ref="procedure_form_view"/>
 			
@@ -19,18 +19,18 @@
 				<notebook position="inside">
 
 					<!--							
-					<page string="Controles">
+					<page string="Sesiones"  	attrs="{'invisible':[('laser', '!=', 'laser_co2')]}"	>
 					-->
-					<page string="Controles"  	attrs="{'invisible':[('laser', '!=', 'laser_co2')]}"	>
+					<page string="Sesiones">
 
 
 
 						<!--
 						<field name="control_ids"/>
 						-->
-						<field name="control_ids">
+						<field name="session_ids">
 							<tree string="">	
-								<field string="Control #"  name="name"/>
+								<field string="session #"  name="name"/>
 
 								<field string="Paciente" name="patient"/>
 

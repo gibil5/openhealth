@@ -18,8 +18,12 @@
 
 					<!--
 						Procedures 
-					-->
 					<page string="Procedimientos realizados">
+					-->
+
+
+					<page string="Procedimientos">
+
 						<!--
 						<field name="procedure_ids" context="{'patient': 'Javier Revilla'}"/>
 						<field name="procedure_ids" domain="[('evaluation_type', '=', 'Ambulatory')]" />
@@ -27,7 +31,10 @@
 						<field name="procedure_ids">
 							<tree string="Procedimintos">
 
+								<!--
 								<field string="Procedimiento #"  name="name"/>
+								-->
+								<field name="name"/>
 
 								<field string="Paciente" name="patient"/>
 
@@ -35,11 +42,17 @@
 
 								<field name="evaluation_start_date"/>
 
+								<!--
 								<field string='Tipo' name="evaluation_type"/>
-								
+								--> 
+
+								<field name="chief_complaint"/>
+
 								<field name="product"/>
 
+								<!--
 								<field name="treatment"/>
+								-->
 								
 								<!--
 									Button

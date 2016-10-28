@@ -95,8 +95,11 @@
 		# Procedures
 		'views/procedures/procedure.xml',
 		'views/procedures/procedure_configuration.xml',
+
 		'views/procedures/procedure_controls.xml',
+		'views/procedures/procedure_sessions.xml',
 		
+
 
 		# Controls
 		'views/controls/control.xml',

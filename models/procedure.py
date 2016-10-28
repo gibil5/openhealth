@@ -17,7 +17,8 @@ class Procedure(models.Model):
 
 
 	name = fields.Char(
-			string = 'Procedimiento #',
+			#string = 'Procedimiento #',
+			string = 'Proc #',
 			)
 
 	vspace = fields.Char(
@@ -31,7 +32,18 @@ class Procedure(models.Model):
 			'procedure', 
 			string = "Controles", 
 			)
+
+
 			
+	session_ids = fields.One2many(
+			'openhealth.session', 
+			'procedure', 
+			string = "sessiones", 
+			)
+
+
+
+
 	
 	
 	# Number of controls 

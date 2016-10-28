@@ -36,8 +36,13 @@
 							<!-- Persona --> 
 							<div class="oe_left"  style="width: 300px;">
 								<div class="oe_title" >
-									<h1>Procedimiento</h1>	
+									<h1>Procedimiento</h1>									
 								</div>								
+								
+								<group></group>
+								<h2><field name="laser"/></h2>
+
+
 								<group></group>
 								<h1>
 									<field name="patient"/>
@@ -93,8 +98,10 @@
 							<!-- Number --> 
 							<div class="oe_right" >
 								<div class="oe_title" >
+
 									<label class="oe_edit_only" for="name" string="Procedimiento #"/>
 									<h1><field name="name" class="oe_inline"/></h1>
+								
 								</div>
 							</div>
 						</div>
@@ -146,16 +153,21 @@
 							<group>
 							</group>
 							<group>
+								<!--
 								<field name="laser"/>
+								-->
 							</group>
 
 						</group>
 							
 
 
+
 						<!-- Notebook --> 
 						<notebook>
 						</notebook>
+
+
 
 					</sheet>
 				</form>

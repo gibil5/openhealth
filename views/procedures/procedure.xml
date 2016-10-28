@@ -3,9 +3,7 @@
 	<data>
 
 
-		<!--
-		Procedure 
-		-->
+		<!-- Procedure -->
 			
 		<!-- Form view -->
 		<record model="ir.ui.view" id="procedure_form_view">

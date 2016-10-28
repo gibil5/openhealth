@@ -9,7 +9,9 @@
 		<record model="ir.ui.view" id="consultation_form_view">
 			<field name="name">consultation.form</field>
 			<field name="model">openhealth.consultation</field>
+			<!--
 			<field name="priority" eval="1"/>
+			-->
 			<field name="arch" type="xml">
 				
 				<form string="Evaluation">

@@ -16,15 +16,31 @@ class Procedure(models.Model):
 	_inherit = 'oeh.medical.evaluation'
 
 
+
 	name = fields.Char(
 			#string = 'Procedimiento #',
 			string = 'Proc #',
 			)
 
-	vspace = fields.Char(
-			' ', 
-			readonly=True
-			)
+	#vspace = fields.Char(
+	#		' ', 
+	#		readonly=True
+	#		)
+
+	#evaluation_start_date = fields.Date(
+	#		string = "Fecha", 	
+	#		default = fields.Date.today, 
+	#		required=True, 
+	#		)
+
+	
+	#chief_complaint = fields.Selection(
+	#		string = 'Motivo de consulta', 
+	#		selection = jxvars._pathology_list,  
+	#		required=True, 
+	#		)
+
+
 
 
 	control_ids = fields.One2many(
@@ -268,21 +284,10 @@ class Procedure(models.Model):
 			)
 
 
-	evaluation_start_date = fields.Date(
-			string = "Fecha", 	
-			default = fields.Date.today, 
-			required=True, 
-			)
 
 
 
-	# Motivo de consulta
-	chief_complaint = fields.Selection(
-			string = 'Motivo de consulta', 
-			selection = jxvars._pathology_list, 
-			#default = '', 
-			required=True, 
-			)
+	
 
 
 

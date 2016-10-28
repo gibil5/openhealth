@@ -438,7 +438,7 @@ class Patient(models.Model):
 			selection = pat_vars._street2_list, 
 
 			string = "Distrito", 	
-			required=True, 
+			#required=True, 
 		)
 
 
@@ -454,7 +454,7 @@ class Patient(models.Model):
 
 	street2_char = fields.Char(
 			string = "Distrito", 	
-			required=True, 
+			#required=True, 
 		)
 
 	@api.onchange('street2_char')

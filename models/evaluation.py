@@ -8,14 +8,10 @@
 from openerp import models, fields, api
 from datetime import datetime
 
+import jxvars
 
 
-EVALUATION_TYPE = [
-	#('Pre-arraganged Appointment', 'Primera consulta'),
-	('Pre-arraganged Appointment', 'Consulta'),
-	('Ambulatory', 'Procedimiento'),
-	('Periodic Control', 'Control'),
-	]
+
 
 
 
@@ -23,8 +19,8 @@ EVALUATION_TYPE = [
 
 #------------------------------------------------------------------------
 class Evaluation(models.Model):
-	_inherit = 'oeh.medical.evaluation'
 	#_name =	'openhealth.evaluation5'
+	_inherit = 'oeh.medical.evaluation'
 
 
 
@@ -32,70 +28,50 @@ class Evaluation(models.Model):
 			)
 
 
-
-
-	#name = fields.Char(
-			#compute='_compute_name', 
-	#		default=7,
-			#default=jx_type,
-			#default = get_jx_type()  
-	#		)
-	#@api.multi
-	#@api.depends('start_date')
-	#def _compute_name(self):
-	#	for record in self:
-			#record.name = record.patient.name
-	#		record.name = '77'
-
-
-
-
-
-	treatment_id = fields.Many2one('openextension.treatment',
-			ondelete='cascade', 
-
-			#compute='_compute_treatment_id', 
-			#default = 'x', 
-
-			#string="Treatment", 
-			#string="Tratamiento", 
-
-			#required=True, 
-			#index=True, 
+	# Commons
+	vspace = fields.Char(
+			' ', 
+			readonly=True
 			)
-
-	#@api.depends('patient')
-
-	#def _compute_treatment_id(self):
-	#	for record in self:
-	#		record.treatment_id= record.patient.name 
-
-
 
 
 	patient = fields.Many2one(
 			'oeh.medical.patient',
-			string = "Paciente", 	
+			string = "Paciente - nex", 	
 			required=True, 
-			)
+	)
 
 	doctor = fields.Many2one(
 			'oeh.medical.physician',
-			string = "Médico", 	
+			string = "Médico - nex", 	
 			required=True, 
 			)
-
 
 
 	evaluation_start_date = fields.Date(
-			#string = "Fecha de Evaluación", 	
-			string = "Fecha", 	
+			string = "Fecha - nex", 	
 			default = fields.Date.today, 
-			#readonly = True, 
 			required=True, 
 			)
 
 
+
+	chief_complaint = fields.Selection(
+			string = 'Motivo de consulta - nex', 
+			selection = jxvars._pathology_list, 
+			required=True, 
+			)
+
+
+
+
+
+	EVALUATION_TYPE = [
+		#('Pre-arraganged Appointment', 'Primera consulta'),
+		('Pre-arraganged Appointment', 'Consulta'),
+		('Ambulatory', 'Procedimiento'),
+		('Periodic Control', 'Control'),
+		]
 
 	evaluation_type = fields.Selection(
 			selection = EVALUATION_TYPE, 
@@ -109,37 +85,12 @@ class Evaluation(models.Model):
 			required=True, 
 			)
 
-	chief_complaint = fields.Char(
-			string = 'Motivo de consulta', 
-			default = '', 
-			#required=True, 
+
+
+
+
+	treatment_id = fields.Many2one(
+			'openextension.treatment',
+			ondelete='cascade', 
 			)
 
-
-
-
-
-
-
-
-
-#class Control(models.Model):
-#	_name = 'openhealth.control'
-
-#	_inherit = 'oeh.medical.evaluation'
-
-
-#	treatment_id = fields.Many2one('openextension.treatment',
-#			ondelete='cascade', 
-#			)
-
-#	evaluation_type = fields.Selection(
-#			selection = EVALUATION_TYPE, 
-#			string = 'Tipo de evaluación',
-
-			#default = 'Pre-arraganged Appointment', 
-			#default = 'Ambulatory', 
-#			default = 'Periodic Control', 
-
-#			required=True, 
-#			)

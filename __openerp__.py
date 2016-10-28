@@ -15,7 +15,7 @@
     'description': """
 
 		Installed: 	 	7 Sep 2016.\n 
-		Last built: 	27 Oct 2016.\n 
+		Last built: 	28 Oct 2016.\n 
 		\n
 
 		This is my first extension for oeHealth.

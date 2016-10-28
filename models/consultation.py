@@ -17,6 +17,30 @@ class Consultation(models.Model):
 
 
 
+	name = fields.Char(
+			string = 'Consulta #',
+			)
+
+	#x_vspace = fields.Char(
+	#		' ', 
+	#		readonly=True
+	#		)
+
+	#evaluation_start_date = fields.Date(
+	#		string = "Fecha", 	
+	#		default = fields.Date.today, 
+	#		required=True, 
+	#		)
+
+	#chief_complaint = fields.Selection(
+	#		string = 'Motivo de consulta', 
+	#		selection = jxvars._pathology_list, 
+	#		required=True, 
+	#		)
+
+
+
+
 	treatment = fields.Many2one('openextension.treatment',
 			string="Tratamiento",
 			ondelete='cascade', 
@@ -24,15 +48,8 @@ class Consultation(models.Model):
 			
 			
 
-	name = fields.Char(
-			string = 'Consulta #',
-			)
 
 
-	x_vspace = fields.Char(
-			' ', 
-			readonly=True
-			)
 
 
 
@@ -106,33 +123,10 @@ class Consultation(models.Model):
 
 
 
-	evaluation_start_date = fields.Date(
-			string = "Fecha", 	
-			default = fields.Date.today, 
-			required=True, 
-			)
 
 
 
-	_chief_complaint_list = [
-			#('Pre-arraganged Appointment', 'Primera consulta'),
-			('one', '1'),
-			('two', '2'),
-			('three', '3'),
-			
-			
-			]
-			
-	#chief_complaint = fields.Char(
-	chief_complaint = fields.Selection(
-			string = 'Motivo de consulta', 
-			#default = '', 
-			
-			#selection = _chief_complaint_list, 
-			selection = jxvars._pathology_list, 
-
-			required=True, 
-			)
+	
 
 
 

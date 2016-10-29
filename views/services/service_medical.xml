@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+		<!-- Form --> 
+		<record model="ir.ui.view" id="service_medical_form_view">
+			<field name="name">service.medical.form</field>
+			<field name="model">openhealth.service.medical</field>
+
+			<field name="inherit_id" ref="service_form_view"/>
+	        <field name="mode">primary</field>
+			
+			
+			<field name="arch" type="xml">				
+				<!-- <xpath expr="//field[@name='title']" position="before"> -->
+				<xpath expr="//h1" position="replace">
+
+					<h1>Tratamiento médico</h1>					
+        		
+        		</xpath>
+
+			</field>
+						
+		</record>		
+
+
+
+
+
+
+
+	</data>
+</openerp>

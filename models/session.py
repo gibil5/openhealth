@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# 	session 	
+# 	Session 	
 # 
 
 from openerp import models, fields, api
@@ -21,6 +21,7 @@ class Session(models.Model):
 	name = fields.Char(
 			string = 'Sesión #',
 			)
+			
 			
 
 

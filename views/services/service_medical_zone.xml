@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+		<record model="ir.ui.view" id="service_medical_zone_form_view">
+			
+			<field name="name">service.medical.zone.form</field>
+			<field name="model">openhealth.service.medical</field>
+			
+			<field name="inherit_id" ref="service_medical_form_view"/>
+			
+			<field name="arch" type="xml">
+				
+				
+				
+				<xpath expr="//field[@name='notebook_over']" position="after">
+					
+				<notebook>				
+				
+					<page string="Cuerpo">
+	
+
+	
+					</page>
+					
+					
+
+				</notebook>
+				</xpath>
+				
+				
+					
+			</field>
+		</record>
+	</data>
+</openerp>

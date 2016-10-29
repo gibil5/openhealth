@@ -25,8 +25,12 @@ class ServiceCo2(models.Model):
 	)
 	
 	
+
+
+
+
 	
-	# Propietary
+	#------------------------------------- Co2 ----------------------------------------
 
 	# First
 	co2_hands = fields.Selection(

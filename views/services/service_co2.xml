@@ -2,6 +2,8 @@
 <openerp>
 	<data>
 
+
+		<!-- Form --> 
 		<record model="ir.ui.view" id="service_co2_form_view">
 			<field name="name">service.co2.form</field>
 			<field name="model">openhealth.service.co2</field>
@@ -33,13 +35,10 @@
 			<field name="view_mode">tree,form</field>
 		</record>
 
-
 		<!-- Menu -->
 		<menuitem id="service_co2_menu" name="Servicios Co2"
 			parent="openhealth_menu"
 			action="service_co2_list_action"/>
-
-
 
 
 	</data>

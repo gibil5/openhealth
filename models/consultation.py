@@ -116,7 +116,14 @@ class Consultation(models.Model):
 	)
 
 
-
+	# Service 
+	service_ids = fields.One2many(
+			'openhealth.service', 
+			'consultation', 
+			string="Servicios",
+			
+			#compute='_compute_service_ids', 
+	)
 
 
 
@@ -192,10 +199,12 @@ class Consultation(models.Model):
 
 
 
+
+
 	#----------------------------------------------------------- Buttons ------------------------------------------------------------
 
 
-	# Quick Self Button  
+	# Quick Self - Button  
 	# ------------------
 	@api.multi
 	def open_line_current(self):  
@@ -221,229 +230,7 @@ class Consultation(models.Model):
 
 
 
-	# Service
-	# --------
-	 
-	@api.multi
-	def open_service(self):  
-		consultation_id = self.id 				
-		laser = ''
-		zone = ''	
-		pathology = ''
 
-		return {
-				'type': 'ir.actions.act_window',
-				'name': ' New Service Current', 
-				'view_type': 'form',
-				'view_mode': 'form',				
-				'res_model': 'openhealth.service',				
-				#'res_id': consultation_id,
-				'target': 'current',
-				'flags': 	{
-							'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-							#'form': {'action_buttons': True, }
-							},
-				'context': {
-							'default_consultation': consultation_id,					
-							'default_laser': laser,
-							'default_zone': zone,
-							'default_pathology': pathology,
-							}
-				}
-	
-	
-	
-	
-
-
-
-	
-
-
-
-
-	# Service - Laser Co2 
-	# ---------------------
-	@api.multi
-	def open_service_co2(self):  
-
-		consultation_id = self.id 
-		
-		laser = 'laser_co2'
-		zone = ''	
-		pathology = ''
-				
-		#self.service_ids = [39]
-		
-		return {
-				'type': 'ir.actions.act_window',
-				'name': ' New Service Current - Laser Co2', 
-				'view_type': 'form',
-				'view_mode': 'form',			
-					
-				#'res_id': 23,
-				#'res_id': 39,
-				
-				'target': 'current',
-								
-				'res_model': 'openhealth.service.co2',				
-				
-				'flags': 	{
-							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-							'form': {'action_buttons': True, }
-							},
-
-				'context': {
-							'default_consultation': consultation_id,					
-
-							'default_laser': laser,
-							'default_zone': zone,
-							'default_pathology': pathology,
-
-							}
-				}
-				
-
-
-
-	# Service - Laser Excilite
-	# -------------------------
-	 
-	@api.multi
-	def open_service_excilite(self):  
-
-		consultation_id = self.id 
-		
-		laser = 'laser_excilite'
-		zone = ''	
-		pathology = ''
-				
-		return {
-				'type': 'ir.actions.act_window',
-				'name': ' New Service Current - Laser Excilite', 
-				'view_type': 'form',
-				'view_mode': 'form',			
-				'target': 'current',				
-				
-				#'res_id': 23,
-				
-				'res_model': 'openhealth.service.excilite',				
-				
-				'flags': 	{
-							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-							'form': {'action_buttons': True, }
-							},
-
-				'context': {
-							'default_consultation': consultation_id,					
-
-							'default_laser': laser,
-							'default_zone': zone,
-							'default_pathology': pathology,
-
-							}
-				}
-				
-				
-				
-				
-	# Service - Laser Ipl 
-	# ----------------------
-		
-	@api.multi
-	def open_service_ipl(self):  
-
-		consultation_id = self.id 
-		
-		laser = 'laser_ipl'
-		zone = ''	
-		pathology = ''
-				
-		return {
-				'type': 'ir.actions.act_window',
-				'name': ' New Service Current - Laser Excilite', 
-				'view_type': 'form',
-				'view_mode': 'form',			
-				'target': 'current',				
-				
-				#'res_id': 23,
-				
-				'res_model': 'openhealth.service.ipl',				
-				
-				'flags': 	{
-							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-							'form': {'action_buttons': True, }
-							},
-
-				'context': {
-							'default_consultation': consultation_id,					
-
-							'default_laser': laser,
-							'default_zone': zone,
-							'default_pathology': pathology,
-
-							}
-				}
-
-
-
-
-	# Service - Laser Ndyag 
-	# ----------------------
-	
-	@api.multi
-	def open_service_ndyag(self):  
-
-		consultation_id = self.id 
-		
-		laser = 'laser_ndyag'
-		zone = ''	
-		pathology = ''
-				
-		return {
-				'type': 'ir.actions.act_window',
-				'name': ' New Service Current - Laser Ndyag', 
-				'view_type': 'form',
-				'view_mode': 'form',			
-				'target': 'current',				
-				
-				#'res_id': 23,
-				
-				'res_model': 'openhealth.service.ndyag',				
-				
-				'flags': 	{
-							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-							'form': {'action_buttons': True, }
-							},
-
-				'context': {
-							'default_consultation': consultation_id,					
-
-							'default_laser': laser,
-							'default_zone': zone,
-							'default_pathology': pathology,
-
-							}
-				}
-	
-	
-
-
-	# Service 
-	service_ids = fields.One2many(
-			'openhealth.service', 
-			'consultation', 
-			string="Servicios",
-			
-			#compute='_compute_service_ids', 
-	)
-
-
-
-
-
-
-		
 	# Create Order - Button 
 	
 	@api.multi
@@ -453,8 +240,6 @@ class Consultation(models.Model):
 		print 
 		print 'jx'
 		print 'create_order_current'
-
-
 
 
 		# Order 
@@ -477,8 +262,6 @@ class Consultation(models.Model):
 		# Partner
 		#partner_id = self.env['res.partner'].search([('name','=',self.patient.name)]).id
 		partner_id = self.env['res.partner'].search([('name','=',self.patient.name)],limit=1).id
-		
-
 		
 
 		return {
@@ -519,5 +302,253 @@ class Consultation(models.Model):
 
 			}
 		}
+
+
+
+
+
+	# Open Service
+	 
+	@api.multi
+	def open_service(self):  
+		consultation_id = self.id 				
+		laser = ''
+		zone = ''	
+		pathology = ''
+
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' New Service Current', 
+				'view_type': 'form',
+				'view_mode': 'form',				
+				'res_model': 'openhealth.service',				
+				#'res_id': consultation_id,
+				'target': 'current',
+				'flags': 	{
+							'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+							#'form': {'action_buttons': True, }
+							},
+				'context': {
+							'default_consultation': consultation_id,					
+							'default_laser': laser,
+							'default_zone': zone,
+							'default_pathology': pathology,
+							}
+				}
+	
+	
+	
+	
+
+
+
+	
+
+
+
+
+	# Open Service - Laser Co2 
+	# -------------------------
+	@api.multi
+	def open_service_co2(self):  
+
+		consultation_id = self.id 
+		
+		laser = 'laser_co2'
+		zone = ''	
+		pathology = ''
+				
+		
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' New Service Current - Laser Co2', 
+				'view_type': 'form',
+				'view_mode': 'form',			
+				'target': 'current',
+
+				'res_model': 'openhealth.service.co2',				
+				
+				'flags': 	{
+							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+							'form': {'action_buttons': True, }
+							},
+
+				'context': {
+							'default_consultation': consultation_id,					
+
+							'default_laser': laser,
+							'default_zone': zone,
+							'default_pathology': pathology,
+
+							}
+				}
+				
+
+
+
+	# Open Service - Laser Excilite
+	# -------------------------------
+	 
+	@api.multi
+	def open_service_excilite(self):  
+
+		consultation_id = self.id 
+		
+		laser = 'laser_excilite'
+		zone = ''	
+		pathology = ''
+				
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' New Service Current - Laser Excilite', 
+				'view_type': 'form',
+				'view_mode': 'form',			
+				'target': 'current',				
+				
+				#'res_id': 23,
+				
+				'res_model': 'openhealth.service.excilite',				
+				
+				'flags': 	{
+							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+							'form': {'action_buttons': True, }
+							},
+
+				'context': {
+							'default_consultation': consultation_id,					
+
+							'default_laser': laser,
+							'default_zone': zone,
+							'default_pathology': pathology,
+
+							}
+				}
+				
+				
+				
+				
+	# Open Service - Laser Ipl 
+	# -------------------------
+		
+	@api.multi
+	def open_service_ipl(self):  
+
+		consultation_id = self.id 
+		
+		laser = 'laser_ipl'
+		zone = ''	
+		pathology = ''
+				
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' New Service Current - Laser Excilite', 
+				'view_type': 'form',
+				'view_mode': 'form',			
+				'target': 'current',				
+				
+				#'res_id': 23,
+				
+				'res_model': 'openhealth.service.ipl',				
+				
+				'flags': 	{
+							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+							'form': {'action_buttons': True, }
+							},
+
+				'context': {
+							'default_consultation': consultation_id,					
+
+							'default_laser': laser,
+							'default_zone': zone,
+							'default_pathology': pathology,
+
+							}
+				}
+
+
+
+
+	# Open Service - Laser Ndyag 
+	# ---------------------------
+	
+	@api.multi
+	def open_service_ndyag(self):  
+
+		consultation_id = self.id 
+		
+		laser = 'laser_ndyag'
+		zone = ''	
+		pathology = ''
+				
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' New Service Current - Laser Ndyag', 
+				'view_type': 'form',
+				'view_mode': 'form',			
+				'target': 'current',				
+				
+				#'res_id': 23,
+				
+				'res_model': 'openhealth.service.ndyag',				
+				
+				'flags': 	{
+							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+							'form': {'action_buttons': True, }
+							},
+
+				'context': {
+							'default_consultation': consultation_id,					
+
+							'default_laser': laser,
+							'default_zone': zone,
+							'default_pathology': pathology,
+
+							}
+				}
+	
+
+
+
+	
+	# Open Service - Medical 
+	# -------------------------
+	@api.multi
+	def open_service_medical(self):  
+
+		consultation_id = self.id 
+		
+		laser = 'medical'
+		zone = ''	
+		pathology = ''
+				
+		
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' New Service Current - Medical', 
+				'view_type': 'form',
+				'view_mode': 'form',			
+				'target': 'current',
+				
+				'res_model': 'openhealth.service.medical',				
+				
+				'flags': 	{
+							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+							'form': {'action_buttons': True, }
+							},
+
+				'context': {
+							'default_consultation': consultation_id,					
+
+							'default_laser': laser,
+							'default_zone': zone,
+							'default_pathology': pathology,
+
+							}
+				}
+				
+
+
+
+
 							
 				

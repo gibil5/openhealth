@@ -12,6 +12,11 @@ _laser_type_list = [
 		('laser_excilite','Laser Excilite'), 
 		('laser_ipl','Laser Ipl'), 
 		('laser_ndyag','Laser Ndyag'), 
+
+
+		('medical','Tratamiento médico'), 
+
+
 		('none','None'), 	
 		]
 		

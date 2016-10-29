@@ -73,7 +73,7 @@
 							class="oe_highlight"	
 							string="TRATAMIENTO MEDICO"
 				
-							name="open_service" 	
+							name="open_service_medical" 	
 						/>
 						
 

@@ -105,7 +105,7 @@
 
 		# Controls
 		'views/controls/control.xml',
-		'views/controls/control_protocols.xml',
+		#'views/controls/control_protocols.xml',
 
 
 		# sessions
@@ -150,6 +150,10 @@
 		
 		'views/services/service_ndyag.xml',
 		'views/services/service_ndyag_zone.xml',
+
+		'views/services/service_medical.xml',
+		'views/services/service_medical_zone.xml',
+
 
 
 

@@ -8,9 +8,8 @@ from datetime import datetime
 import jxvars
 
 
-class ServiceMed(models.Model):
+class ServiceMedical(models.Model):
 	_name = 'openhealth.service.medical'
-	
 	_inherit = 'openhealth.service'
 	
 	
@@ -21,10 +20,13 @@ class ServiceMed(models.Model):
 
 			domain = [
 						('type', '=', 'service'),
-						('x_treatment', '=', 'medical'),
+						#('x_treatment', '=', 'medical'),
+						('x_treatment', '=', 'laser_co2'),
+
 					],
 	)
 	
 	
+	#------------------------------------- Medical ----------------------------------------
 	
 

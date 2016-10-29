@@ -80,6 +80,7 @@
 		'views/consultations/consultation_services_ipl.xml',
 		'views/consultations/consultation_services_ndyag.xml',
 		'views/consultations/consultation_order.xml',
+
 		#'views/evaluations/consultation_services.xml',
 		#'views/evaluations/consultation_order_lines.xml',
 		#'views/evaluations/consultation_procedures.xml',
@@ -94,7 +95,8 @@
 		
 		# Procedures
 		'views/procedures/procedure.xml',
-		'views/procedures/procedure_configuration.xml',
+
+		#'views/procedures/procedure_configuration.xml',
 
 		'views/procedures/procedure_controls.xml',
 		'views/procedures/procedure_sessions.xml',
@@ -104,6 +106,12 @@
 		# Controls
 		'views/controls/control.xml',
 		'views/controls/control_protocols.xml',
+
+
+		# sessions
+		'views/sessions/session.xml',
+		'views/sessions/session_configuration.xml',
+
 
 		
 		

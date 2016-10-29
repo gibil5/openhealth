@@ -16,12 +16,21 @@
 
 					<!-- Header --> 
 					<header>
+
 						<button 
 							type="object" 
 							class="oe_highlight"
-							string="Crear Control"
+							string="Crear Sesión"
+							name="open_session" 	
+						/>
+
+						<button 
+							type="object" 
+							class="oe_highlight"
+							string="Control"
 							name="open_control" 	
-						/>					
+						/>
+
 					</header>
 					
 
@@ -75,21 +84,36 @@
 								</button>
 								-->
 							
-								
+
+								<!-- Nr Sessions --> 
 								<button type="action" class="oe_stat_button" 
-									
-									name="%(control_form_action)d"	
-									
+									name="%(session_form_action)d"	
 									context="{									
 											'search_default_procedure': active_id,
 											}" 											
 									icon="fa-list">
 									
+									<field string="Sesiones" name="nr_sessions" widget="statinfo"/>
+								</button>	
+
+
+
+								<!-- Nr Controls --> 								
+								<button type="action" class="oe_stat_button" 	attrs="{'invisible':[('laser', '!=', 'laser_co2')]}"
+
+									name="%(control_form_action)d"	
+									context="{									
+											'search_default_procedure': active_id,
+											}" 											
+									icon="fa-list">
 									
 									<field string="Controles" name="nr_controls" widget="statinfo"/>
-								
 								</button>	
+
+
 								
+
+
 							</div>
 						
 						

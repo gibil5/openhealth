@@ -2,12 +2,7 @@
 
 
 
-# Evaluation
-EVALUATION_TYPE = [
-		('Pre-arraganged Appointment', 'Consulta'),
-		('Ambulatory', 'Procedimiento'),
-		('Periodic Control', 'Control'),
-		]
+
 
 
 

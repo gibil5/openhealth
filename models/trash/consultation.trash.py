@@ -825,6 +825,22 @@
 
 
 
+# 28 Oct 2016
+
+	#x_vspace = fields.Char(
+	#		' ', 
+	#		readonly=True
+	#		)
+
+	#evaluation_start_date = fields.Date(
+	#		string = "Fecha", 	
+	#		default = fields.Date.today, 
+	#		required=True, 
+	#		)
+
+
+
+
 
 
 

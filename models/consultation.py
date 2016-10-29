@@ -7,6 +7,7 @@ from openerp import models, fields, api
 from datetime import datetime
 
 import jxvars
+import eval_vars
 
 
 
@@ -21,23 +22,15 @@ class Consultation(models.Model):
 			string = 'Consulta #',
 			)
 
-	#x_vspace = fields.Char(
-	#		' ', 
-	#		readonly=True
-	#		)
 
-	#evaluation_start_date = fields.Date(
-	#		string = "Fecha", 	
-	#		default = fields.Date.today, 
-	#		required=True, 
-	#		)
+
+	# Redefinition 
 
 	chief_complaint = fields.Selection(
 			string = 'Motivo de consulta', 
 			selection = jxvars._pathology_list, 
 			required=True, 
 			)
-
 
 	evaluation_type = fields.Selection(
 			default = 'Pre-arraganged Appointment', 
@@ -47,21 +40,30 @@ class Consultation(models.Model):
 
 
 
+	# ----------------------------------------------------------- Treatment ------------------------------------------------------
 
 	treatment = fields.Many2one('openextension.treatment',
 			string="Tratamiento",
 			ondelete='cascade', 
 			)
-			
-			
 
 
 
 
 
+	# ----------------------------------------------------------- Orders ------------------------------------------------------
 
+	order = fields.One2many(		
+			'sale.order',		
+			'consultation', 
+			string="Order",
+			domain = [
+						('state', '=', 'draft'),
+					],
+			)
 
-	# Number of Orders 
+		
+	# Number 
 	nr_orders = fields.Integer(
 			string="Presupuestos",
 			compute="_compute_nr_orders",
@@ -80,24 +82,38 @@ class Consultation(models.Model):
 
 
 
-	# ----------------------------------------------------------- Orders ------------------------------------------------------
-
-
-
-			
-
-
-
 
 	# ----------------------------------------------------------- Services --------------------------------------------------------
 
-	# Services
+	service_co2_ids = fields.One2many(
+			'openhealth.service.co2', 
+			'consultation', 
+			string="Servicios Co2",
+	)
 	
+	service_excilite_ids = fields.One2many(
+			'openhealth.service.excilite', 
+			'consultation', 
+			string="Servicios Excilite",
+	)
 
+	service_ipl_ids = fields.One2many(
+			'openhealth.service.ipl', 
+			'consultation', 
+			string="Servicios Ipl",
+	)
 
+	service_ndyag_ids = fields.One2many(
+			'openhealth.service.ndyag', 
+			'consultation', 
+			string="Servicios Ndyag",
+	)
 
-
-
+	service_medical_ids = fields.One2many(
+			'openhealth.service.medical', 
+			'consultation', 
+			string="Tratamiento médico",
+	)
 
 
 
@@ -105,29 +121,6 @@ class Consultation(models.Model):
 
 
 	# --------------------------------------------------------- Consultation ------------------------------------------------------
-
-
-
-
-
-	
-
-
-
-
-
-
-	
-
-
-
-
-
-
-	#-----------------------------------------------------------------------------
-	# Aggregated 
-
-
 	
 	x_reason_consultation = fields.Text(
 			string = 'Motivo de consulta (detalle)', 
@@ -138,14 +131,26 @@ class Consultation(models.Model):
 			size=200,
 			)
 
-
 	x_next_evaluation_date = fields.Date(
 			string = "Próxima cita", 	
 			#default = fields.Date.today, 
 			#required=True, 
 			)
 
-	
+	x_fitzpatrick = fields.Selection(
+			selection = eval_vars.FITZ_TYPE, 
+			string = 'Fitzpatrick',
+			default = '', 
+			required=True, 
+			)
+
+	x_photo_aging = fields.Selection(
+			selection = eval_vars.PHOTO_TYPE, 
+			string = 'Foto-envejecimiento',
+			default = '', 
+			required=True, 
+			)
+
 
 
 	
@@ -167,42 +172,6 @@ class Consultation(models.Model):
 			required=True, 
 			)
 
-
-
-
-
-	FITZ_TYPE = [
-			('one','I'),
-			('two','II'),
-			('three','III'),
-			('four','IV'),
-			('five','V'),
-			('six','VI')
-			]
-
-	x_fitzpatrick = fields.Selection(
-			selection = FITZ_TYPE, 
-			string = 'Fitzpatrick',
-			default = '', 
-			required=True, 
-			)
-
-	PHOTO_TYPE = [
-			('one','I (1,2,3)'),
-			('two','II (4,5,6)'),
-			('three','III (7,8,9)')
-			]
-
-	x_photo_aging = fields.Selection(
-			selection = PHOTO_TYPE, 
-			string = 'Foto-envejecimiento',
-			default = '', 
-			required=True, 
-			)
-
-
-
-
 	x_analysis_lab = fields.Boolean(
 			string = 'Análisis de laboratorio', 
 			required=False, 
@@ -223,22 +192,7 @@ class Consultation(models.Model):
 
 
 
-
-	
-
-
-
-
-
-
-
-
 	#----------------------------------------------------------- Buttons ------------------------------------------------------------
-
-
-
-
-
 
 
 	# Quick Self Button  
@@ -304,41 +258,6 @@ class Consultation(models.Model):
 
 
 	
-	service_co2_ids = fields.One2many(
-			'openhealth.service.co2', 
-			'consultation', 
-			string="Servicios Co2",
-	)
-	
-	service_excilite_ids = fields.One2many(
-			'openhealth.service.excilite', 
-			'consultation', 
-			string="Servicios Excilite",
-	)
-
-	service_ipl_ids = fields.One2many(
-			'openhealth.service.ipl', 
-			'consultation', 
-			string="Servicios Ipl",
-	)
-
-	service_ndyag_ids = fields.One2many(
-			'openhealth.service.ndyag', 
-			'consultation', 
-			string="Servicios Ndyag",
-	)
-
-
-
-
-	service_medical_ids = fields.One2many(
-
-			'openhealth.service.medical', 
-		
-			'consultation', 
-			string="Tratamiento médico",
-	)
-
 
 
 
@@ -523,36 +442,6 @@ class Consultation(models.Model):
 
 
 
-	# ------------------------------------------------------ Order ------------------------------------------------------------------
-	#	
-	#
-
-	
-	# Order
-	order = fields.One2many(		
-			'sale.order',		
-
-			'consultation', 
-			string="Order",
-
-			domain = [
-						('state', '=', 'draft'),
-					],
-			)
-
-
-
-
-	order_2 = fields.One2many(
-		
-			'sale.order',		
-			#'openhealth.order',	
-
-			'consultation', 
-			string="Order 2",
-			)
-		
-
 
 		
 	# Create Order - Button 
@@ -564,12 +453,6 @@ class Consultation(models.Model):
 		print 
 		print 'jx'
 		print 'create_order_current'
-
-
-
-
-		# Order 2
-		#self.order_2 = self.order.copy()
 
 
 

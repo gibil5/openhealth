@@ -22,25 +22,14 @@ class Procedure(models.Model):
 			string = 'Proc #',
 			)
 
-	#vspace = fields.Char(
-	#		' ', 
-	#		readonly=True
-	#		)
-
-	#evaluation_start_date = fields.Date(
-	#		string = "Fecha", 	
-	#		default = fields.Date.today, 
-	#		required=True, 
-	#		)
-
-	
-	#chief_complaint = fields.Selection(
-	#		string = 'Motivo de consulta', 
-	#		selection = jxvars._pathology_list,  
-	#		required=True, 
-	#		)
 
 
+
+
+
+
+
+	# Redefinition 
 
 	evaluation_type = fields.Selection(
 			default = 'Ambulatory', 
@@ -48,17 +37,13 @@ class Procedure(models.Model):
 
 
 
-
-
-
+	# Relational 
 
 	control_ids = fields.One2many(
 			'openhealth.control', 
 			'procedure', 
 			string = "Controles", 
 			)
-
-
 			
 	session_ids = fields.One2many(
 			'openhealth.session', 
@@ -66,12 +51,16 @@ class Procedure(models.Model):
 			string = "sessiones", 
 			)
 
+	treatment = fields.Many2one('openextension.treatment',
+			ondelete='cascade', 
+			)
 
 
 
 	
 	
-	# Number of controls 
+	# Controls - Number
+
 	nr_controls = fields.Integer(
 			string="Controles",
 			compute="_compute_nr_controls",
@@ -79,6 +68,7 @@ class Procedure(models.Model):
 	
 	#@api.multi
 	@api.depends('control_ids')
+
 	def _compute_nr_controls(self):
 		for record in self:
 			ctr = 0 
@@ -88,211 +78,38 @@ class Procedure(models.Model):
 
 
 
-	# Product
-	product = fields.Many2one(
-			'product.template',
 
-			#domain = [
-			#			('type', '=', 'service'),
-			#			('x_treatment', '=', _jx_laser_type),
-			#		],
+	# Sessions - Number
 
-			string="Producto",
-			required=True, 
-			)
-	
-	laser = fields.Selection(
-			selection = jxvars._laser_type_list, 
-			string="Láser", 			
-			compute='_compute_laser', 
-			
-			#default='none',
-			#required=True, 
-			#index=True
-			)
+	nr_sessions = fields.Integer(
+			string="Sesiones",
+			compute="_compute_nr_sessions",
+	)
 	
 	#@api.multi
-	@api.depends('product')
-	def _compute_laser(self):
+	@api.depends('session_ids')
+	
+	def _compute_nr_sessions(self):
 		for record in self:
-			record.laser = record.product.x_treatment 
-	
+			ctr = 0 
+			for c in record.session_ids:
+				ctr = ctr + 1
+			record.nr_sessions = ctr
 
-
-	# Calibration - Co2
-
-	co2_power=fields.Float(
-			string="Potencia (W)",
-			)
-	
-	co2_frequency=fields.Float(
-			string="Frecuencia (Hz)",
-			)
-	
-	co2_energy=fields.Float(
-			string="Energía de pulso (mJ)",
-			)
-	
-	co2_mode_emission=fields.Char(
-			string="Modo de emisión",
-			)
-	
-	co2_mode_exposure=fields.Char(
-			string="Modo de exposición",
-			)
-	
-	co2_observations=fields.Text(
-			string="Observaciones",
-			)
-
-
-
-	# Calibration - Excilite
-	exc_time=fields.Float(
-			string="Tiempo de tratamiento",
-			)
-			
-	exc_dose=fields.Char(
-			string="Dosis",
-			)
-			
-	exc_dose_selected=fields.Float(
-			string="Seleccionado (J/cm2)",
-			)
-
-	exc_dose_provided=fields.Float(
-			string="Entregado (J/cm2)",
-			)
-
-	exc_observations=fields.Text(
-			string="Observaciones",
-			)
-
-
-
-	# Calibration - Ipl
-	ipl_fluency=fields.Float(
-			string="Fluencia (J/cm2)",
-			)
-			
-	ipl_phototype=fields.Char(
-			string="Fototipo",
-			)
-			
-	ipl_lesion_type=fields.Char(
-			string="Tipo de lesión",
-			)
-	
-	ipl_lesion_depth=fields.Char(
-			string="Profundidad de lesión",
-			)
-			
-	ipl_pulse_type=fields.Selection(
-			selection=jxvars._ipl_pulse_type,
-			string="Tipo de pulso",
-			)
-			
-	ipl_pulse_duration=fields.Char(
-			string="Duración de pulso",
-			)
-			
-	ipl_pulse_time_between=fields.Char(
-			string="Tiempo entre pulsos",
-			)
-			
-	ipl_filter=fields.Char(
-			string="Filtro",
-			)
-			
-	ipl_spot=fields.Char(
-			string="Spot",
-			)
-			
-	ipl_observations=fields.Text(
-			string="Observaciones",
-			)
-
-	
-	
-	# Calibration - Ndyag
-	ndy_fluency=fields.Float(
-			string="Fluencia (J/cm2)",
-			)
-			
-	ndy_phototype=fields.Char(
-			string="Fototipo",
-			)
-			
-	ndy_lesion_type=fields.Char(
-			string="Tipo de lesión",
-			)
-			
-			
-	
-	ndy_lesion_depth=fields.Char(
-			string="Profundidad de lesión",
-			)
-			
-	ndy_pulse_type=fields.Selection(
-			selection=jxvars._ndyag_pulse_type,
-			string="Tipo de pulso",
-			)
-			
-	ndy_pulse_duration=fields.Char(
-			string="Duración de pulso",
-			)
-			
-			
-			
-	ndy_pulse_time_between=fields.Char(
-			string="Tiempo entre pulsos",
-			)
-			
-	ndy_pulse_spot=fields.Selection(
-			selection=jxvars._ndyag_pulse_spot,
-			string="Spot",
-			)
-			
-	ndy_observations=fields.Text(
-			string="Observaciones",
-			)
-	
-	
-	
-	
-	
-	
 	
 	
 	
 
 
-	#treatment_id = fields.Many2one('openextension.treatment',
-	treatment = fields.Many2one('openextension.treatment',
-			ondelete='cascade', 
-			)
-
-
-
-
-
-
-
-	
-
-
-
-
-
-	#------------------------------------- Aggregated ----------------------------------------
 
 
 	#------------------------------------ Buttons -----------------------------------------
 
+
 	# Consultation - Quick Self Button  
-	# ---------------------------------
 
 	@api.multi
+
 	def open_line_current(self):  
 
 		procedure_id = self.id 
@@ -309,35 +126,38 @@ class Procedure(models.Model):
 						'form': {'action_buttons': True, }
 						},
 
-				'context':   {
-				}
+				'context':   {}
 		}
 
 
 
 
-	# Control 
-	# ---------
+
+	# Open Control 
+
 	@api.multi
+
 	def open_control(self):  
+
+		procedure_id = self.id 
 
 		patient_id = self.patient.id
 		doctor_id = self.doctor.id
 		chief_complaint = self.chief_complaint
 		
-		procedure_id = self.id 
-
 		evaluation_type = 'Periodic Control'
-
 		product_id = self.product.id
 		laser = self.laser
 		
+
 		return {
 
 			# Mandatory 
 			'type': 'ir.actions.act_window',
 			'name': 'Open control Current',
 
+
+			# Optional 
 			'res_model': 'openhealth.control',
 
 			'view_mode': 'form',
@@ -346,12 +166,11 @@ class Procedure(models.Model):
 			'target': 'current',
 
 			'context':   {
-				#'search_default_treatment': treatment_id,
-				#'default_treatment': treatment_id,
 
 				'default_patient': patient_id,
 				'default_doctor': doctor_id,
 				'default_chief_complaint': chief_complaint,
+
 				'default_procedure': procedure_id,
 				'default_evaluation_type':evaluation_type,
 								
@@ -360,4 +179,58 @@ class Procedure(models.Model):
 				
 			}
 		}
+
+
+
+
+
+
+
+	# Open Session  
+
+	@api.multi
+
+	def open_session(self):  
+
+		procedure_id = self.id 
+
+		patient_id = self.patient.id
+		doctor_id = self.doctor.id
+		chief_complaint = self.chief_complaint
+		
+		evaluation_type = 'Session'
+		product_id = self.product.id
+		laser = self.laser
+		
+		
+		return {
+
+			# Mandatory 
+			'type': 'ir.actions.act_window',
+			'name': 'Open session Current',
+
+
+			# Optional 
+			'res_model': 'openhealth.session',
+
+			'view_mode': 'form',
+			"views": [[False, "form"]],
+
+			'target': 'current',
+
+			'context':   {
+
+				'default_patient': patient_id,
+				'default_doctor': doctor_id,
+				'default_chief_complaint': chief_complaint,
+
+				'default_procedure': procedure_id,
+				'default_evaluation_type':evaluation_type,
+								
+				'default_product': product_id,
+				'default_laser': laser,
+				
+			}
+		}
+
 

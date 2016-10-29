@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+
+		<!--
+		session 
+		-->
+			
+		<!-- Form view -->
+		<record model="ir.ui.view" id="session_form_view">
+			<field name="name">session.form</field>
+			<field name="model">openhealth.session</field>
+			<field name="arch" type="xml">
+				
+				
+				<form string="Evaluation">
+
+					<!-- Header --> 
+					<header>
+						<!--
+						<button 
+							type="object" 
+							class="oe_highlight"
+							string="Crear session"
+							name="open_session" 	
+						/>	
+						-->				
+					</header>
+					
+
+							
+					<sheet>
+
+						<!-- Id -->
+						<div>						
+
+							<!-- Persona --> 
+							<div class="oe_left"  style="width: 300px;">
+								<div class="oe_title" >
+									<h1>Sesión</h1>	
+								</div>								
+								<group></group>
+								<h1>
+									<field name="patient"/>
+								</h1>
+							</div>
+
+
+
+							<!-- Buttons --> 
+							<div class="oe_left" style="width: 300px;" name="buttons">
+								
+
+								
+							</div>
+						
+						
+							<!-- Number --> 
+							<div class="oe_right" >
+								<div class="oe_title" >
+									<label class="oe_edit_only" for="name" string="sesión #"/>
+									<h1><field name="name" class="oe_inline"/></h1>
+								</div>
+							</div>
+						</div>
+
+
+
+						<!-- Padding --> 
+						<group></group>
+						<group></group>
+						<group></group>
+						<group></group>
+						<!--
+						<div class="oe_left" style="height: 55px;">
+						</div>
+						-->
+
+
+
+						<!-- Fields --> 
+						<group>
+							<!--
+							<field string="Próxima cita" name="appointment" domain="[('patient', '=', patient)]" options="{'no_create': True}"/>
+							-->
+							
+							<group>
+								<field name="procedure"/>
+							</group>
+							<group>
+								<field name="evaluation_type"	invisible="0"/>
+							</group>
+							
+							
+							<group>
+								<field name="doctor" options="{'no_create': True}"/>
+							</group>
+							<group>
+								<field name="chief_complaint"/>								
+							</group>
+							
+							
+							<group>
+								<field name="evaluation_start_date"/>
+							</group>
+							<group>
+								<!--
+								-->
+								<field name="product"/>
+							</group>
+
+
+							<group>
+							</group>
+							<group>
+								<!--
+								-->
+								<field name="laser"/>
+							</group>
+
+						</group>
+							
+
+
+						<!-- Notebook --> 
+						<notebook>
+						</notebook>
+
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+		
+		
+		<!-- Tree --> 
+		<record model="ir.ui.view" id="session_tree_view">
+			<field name="name">session.tree</field>
+			<field name="model">openhealth.session</field>
+			<field name="arch" type="xml">
+				
+				<tree string="session Tree">
+					
+					<field name="name"/>
+					
+					<field name="patient"  string="Paciente"/>
+					
+					<field name="doctor"   string="Médico"/>
+					
+					<field name="evaluation_start_date"/>
+
+					<field name="chief_complaint"/>
+					
+					<field name="procedure"/>
+
+					<!--
+					<field name="owner"/>
+
+					<field name="treatment_id"/>
+					<field name="duration"/>
+					<field name="nr_services"/>
+					<field name="price_total"/>
+					-->
+				</tree>
+			</field>
+		</record>
+		
+		
+		
+		
+		<!-- Filter --> 
+        <record id="view_medical_session_filter" model="ir.ui.view">
+           <field name="name">session Search</field>
+           <field name="model">openhealth.session</field>		   
+           <field name="arch" type="xml">
+               <search string="sessions">
+                   <field name="procedure" />
+               </search>
+           </field>
+       </record>
+
+		<!-- Window Form Action --> 
+		<record model="ir.actions.act_window" id="session_form_action">
+			<field name="name">sessiones</field>
+			<field name="res_model">openhealth.session</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+			<!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first session
+				</p>
+			</field>
+			-->
+		</record>
+		
+		
+		
+		
+		<!-- Window List action -->
+		<!--
+		The following tag is an action definition for a "window action",
+		that is an action opening a view or a set of views
+		-->
+		<record model="ir.actions.act_window" id="session_list_action">
+			<field name="name">sessiones</field>
+			<field name="res_model">openhealth.session</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first session
+				</p>
+			</field>
+			
+		</record>
+		
+		
+		
+		<!-- Menus --> 
+		<!-- top level menu: no parent -->
+		<menuitem id="main_openextension_menu" name="Open Health"/>
+
+		<!-- A first level in the left side menu is needed
+		before using action= attribute -->
+		<menuitem id="openextension_menu" name="Open Health"
+			parent="main_openextension_menu"/>
+
+		<!-- the following menuitem should appear *after*
+		its parent openextension_menu and *after* its
+		action session_list_action -->
+		<menuitem id="sessions_menu" name="sessiones" parent="openextension_menu"
+			action="session_list_action"/>
+
+		<!-- Full id location:
+		action="openextension.session_list_action"
+		It is not required when it is the same module -->
+		
+	</data>
+</openerp>
+
+

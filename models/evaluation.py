@@ -3,13 +3,14 @@
 # 	Evaluation 
 # 
 # Created: 				26 Aug 2016
-# Last updated: 	 	20 Sep 2016
+# Last updated: 	 	28 Oct 2016
 
 from openerp import models, fields, api
 from datetime import datetime
 
 import jxvars
 
+import eval_vars
 
 
 
@@ -24,8 +25,8 @@ class Evaluation(models.Model):
 
 
 
-	name = fields.Char(
-			)
+	#name = fields.Char(
+	#		)
 
 
 	# Deprecated 
@@ -70,13 +71,32 @@ class Evaluation(models.Model):
 			)
 
 	evaluation_type = fields.Selection(
-			selection = jxvars.EVALUATION_TYPE, 
+			selection = eval_vars.EVALUATION_TYPE, 
 			string = 'Tipo - nex',
 			required=True, 
 			)
 
 
 
-
+	
+	# Product
+	
+	product = fields.Many2one(
+			'product.template',
+			string="Producto",
+			required=True, 
+			)
+	
+	laser = fields.Selection(
+			selection = jxvars._laser_type_list, 
+			string="Láser", 			
+			compute='_compute_laser', 			
+			)
+	
+	#@api.multi
+	@api.depends('product')
+	def _compute_laser(self):
+		for record in self:
+			record.laser = record.product.x_treatment 
 
 

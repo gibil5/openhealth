@@ -105,18 +105,22 @@
 								<field name="evaluation_start_date"/>
 							</group>
 							<group>
-								<!--
-								-->
 								<field name="product"/>
 							</group>
 
 
+							<group>								
+								<field name="evaluation_next_date"/>
+							</group>
+							<group>
+								<field name="laser"/>
+							</group>
+
+
 							<group>
 							</group>
 							<group>
-								<!--
-								-->
-								<field name="laser"/>
+								<field name="observation"/>
 							</group>
 
 						</group>
@@ -124,8 +128,12 @@
 
 
 						<!-- Notebook --> 
+						<!--
 						<notebook>
 						</notebook>
+						-->
+
+
 
 					</sheet>
 				</form>

@@ -217,13 +217,26 @@ class sale_order(models.Model):
 
 		print 'ndyag'
 		for se in self.consultation.service_ndyag_ids:
-			#print se 
 
 			ol = self.order_line.create({
 										'product_id': se.service.id,
 										'order_id': order_id,
 										'name': se.name_short,
 									})
+
+
+
+
+		print 'medical'
+		for se in self.consultation.service_medical_ids:
+
+			ol = self.order_line.create({
+										'product_id': se.service.id,
+										'order_id': order_id,
+										'name': se.name_short,
+									})
+
+
 
 
 		print

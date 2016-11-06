@@ -4,6 +4,65 @@
 
 
 
+#_med_con_list = [
+#		('medical',			'Médica'),	
+#		('gynecological',	'Ginecológica'),
+#
+#		('none',''),
+#		]
+
+
+_med_crio_list = [
+		('one',			'1 Sesión'),	
+		('ten',			'10 Sesiones'),
+
+		('none',''),
+		]
+
+
+_med_hia_list = [
+		('hialuronic',			''),	
+		('hialuronic_repair',	'Repair'),
+
+		('none',''),
+		]
+
+_med_scle_list = [
+		('sclerotherapy',		''),	
+
+		('none',''),
+		]
+
+
+
+
+_med_lep_list = [
+		('lepismatic',		''),	
+
+		('none',''),
+		]
+
+
+_med_pla_list = [
+		('lepismatic',		''),	
+
+		('none',''),
+		]
+
+_med_bot_list = [
+		('lepismatic',		''),	
+
+		('none',''),
+		]
+
+_med_int_list = [
+		('lepismatic',		''),	
+
+		('none',''),
+		]
+
+
+
 
 
 # Product 
@@ -13,13 +72,14 @@ _laser_type_list = [
 		('laser_ipl','Laser Ipl'), 
 		('laser_ndyag','Laser Ndyag'), 
 
-
 		('medical','Tratamiento médico'), 
 
 
 		('none','None'), 	
 		]
 		
+
+
 _ipl_pulse_type = [
 		('one','Unico'), 
 		('two','Doble'), 
@@ -315,6 +375,11 @@ _zone_list = [
 			
 			('none',''), 
 			
+
+
+			('x','x'), 
+			('1_hypodermic','1_hypodermic'), 
+
 			]
 
 

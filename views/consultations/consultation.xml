@@ -195,19 +195,19 @@
 								<field name="treatment"/>
 							</group>
 							<group>
-								<field name="evaluation_type" 	invisible="0"/>
+								<field name="evaluation_type" 	invisible="0"	string="Tipo"/>
 							</group>
 								
 								
 							<group>
-								<field name="doctor" options="{'no_create': True}"/>
+								<field name="doctor" options="{'no_create': True}"	string="Médico"/>
 							</group>
 							<group>
-								<field name="chief_complaint"/>
+								<field name="chief_complaint"	/>
 							</group>								
 
 							<group>								
-								<field name="evaluation_start_date"/>
+								<field name="evaluation_start_date"	string="Fecha"/>
 							</group>							
 							<group>								
 								<field name="x_fitzpatrick"  />	

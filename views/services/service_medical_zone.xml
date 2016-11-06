@@ -16,21 +16,99 @@
 				
 				<xpath expr="//field[@name='notebook_over']" position="after">
 					
+
+
 				<notebook>				
 				
-					<page string="Cuerpo">
-	
 
-	
+					<!--
+					<page string="Consultas">
+						<group>						
+							<group>
+								<field name="med_con"  widget="radio" />							
+							</group>
+						</group>
 					</page>
-					
-					
+					-->
 
-				</notebook>
-				</xpath>
-				
-				
+
+					<page string="Criocirugía">
+						<group>						
+							<group>
+								<field name="med_crio"  widget="radio" />							
+							</group>
+						</group>
+					</page>
+
+
+
+					<page string="Acido Hialurónico">		
+						<group>						
+							<group>
+								<field name="med_hia"  widget="radio" />							
+							</group>
+						</group>
+					</page>
+
+
+					<page string="Escleroterapia">
+						<group>						
+							<group>
+								<field name="med_scle"  widget="radio" />							
+							</group>
+						</group>
+					</page>
+
+
+
+
+
+
+
+					<page string="Lepismático">
+						<group>						
+							<group>
+								<field name="med_lep"  widget="radio" />							
+							</group>
+						</group>
+					</page>
+
+
+					<page string="Plasma">
+						<group>						
+							<group>
+								<field name="med_pla"  widget="radio" />							
+							</group>
+						</group>		
+					</page>
+
+
+					<page string="Toxina Botulínica">
+						<group>						
+							<group>
+								<field name="med_bot"  widget="radio" />							
+							</group>
+						</group>
+					</page>
+
+
+					<page string="Endovenoso">
+						<group>						
+							<group>
+								<field name="med_int"  widget="radio" />							
+							</group>
+						</group>	
+					</page>
+
+
+
+
 					
+				</notebook>
+
+				
+
+				</xpath>	
 			</field>
 		</record>
 	</data>

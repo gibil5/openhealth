@@ -8,37 +8,37 @@
 	"buffers":
 	[
 		{
-			"file": "models/patient.py",
+			"file": "models/evaluation.py",
 			"settings":
 			{
-				"buffer_size": 10715,
+				"buffer_size": 1579,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "models/jrfuncs.py",
+			"file": "models/product.py",
 			"settings":
 			{
-				"buffer_size": 747,
+				"buffer_size": 591,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "models/pat_vars.py",
+			"file": "models/prodvars.py",
 			"settings":
 			{
-				"buffer_size": 2836,
+				"buffer_size": 3011,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "views/patients/patient_personal.xml",
+			"file": "models/service_medical.py",
 			"settings":
 			{
-				"buffer_size": 3902,
+				"buffer_size": 2156,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -117,60 +117,79 @@
 	},
 	"file_history":
 	[
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/patients/patient.xml",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/service.py",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/services/service_medical_zone.xml",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/controls/control.xml",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/control.py",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/service_co2.py",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/jxvars.py",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/patient_vars.py",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/jx_lists.pyc",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/product.py",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/__openerp__.py",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/consultations/consultation_first.xml",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/procedures/procedure.xml",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/consultations/consultation.xml",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/consultation.py",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/jrfuncs.py",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/jxfuncs.py",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/service_co2.py",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/patient.trash.py",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/patients/patient_personal.xml",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/patient copy.py",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/order.py",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/service.py",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/treatment.py",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/sessions/session_configuration.xml",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/sessions/session.xml",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/order.py",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/services/service_co2_zone.xml",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/service_medical.py",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/services/service_medical.xml",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/services/service.xml",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/services/service_co2.xml",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/session.py",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/procedure.py",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/services/service_ipl.xml",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/services/service_excilite.xml",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/eval_vars.py",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/procedures/procedure_controls.xml",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/procedures/procedure_sessions.xml",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/procedures/procedure_configuration.xml",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/evaluation.py",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/__init__.py",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/trash/control.trash.py",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/trash/session.trash.py",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/trash/procedure.trash.py",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/trash/consultation.trash.py",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/pat_vars.py",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openextension/models/models.py",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/patients/patient_treatments.xml",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/patient.py",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/treatments/treatment_procedures.xml",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/patients/patient_personal.xml",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/lima.py",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/jrfuncs.py",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/patients/patient.xml",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/patient_vars.py",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/jx_lists.pyc",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/consultations/consultation_first.xml",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/jxfuncs.py",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/patient.trash.py",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/patient copy.py",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/consultations/consultation_services_ndyag.xml",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/consultations/consultation_services_ipl.xml",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/consultations/consultation_services_excilite.xml",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/consultations/consultation_services_co2.xml",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/__init__.py",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/treatments/treatment_sales.xml",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/consultations/consultation_medical_treatment.xml",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/service_medical.py",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/patient.py",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/treatments/treatment.xml",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/__init__.py",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/service_med.py",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/services/service_co2.xml",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/services/service_co2_zone.xml",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/security/ir.model.access.csv",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/treatments/treatment_quotations.xml",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/orders/order.xml",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/security/wak.txt",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/procedures/procedure_configuration.xml",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/consultations/consultation_order.xml",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/consultations/consultation_quotation.xml",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/controls/control.xml",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/controls/control_protocols.xml",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/consultations/consultation_order_lines.xml",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/howto/shell.rb",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/order.trash.py",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/orders/sale_order.xml",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/trash/consultation.trash.py",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/menus.xml",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/services/service_excilite.xml",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/services/service.xml",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/services/service_ndyag.xml",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/services/service_ipl.xml",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/procedures/procedure.xml",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/quotation.py",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/__init__.pyc",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/product.py",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/oehealth/oeh_evaluation/oeh_medical_evaluation_view.xml",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/oehealth/security/ir.rule.xml",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/oehealth/security/oeh_security.xml",
@@ -195,6 +214,39 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"co2_hands",
+			"date",
+			"obser",
+			"nex",
+			"co2",
+			"x",
+			"co2",
+			"control",
+			"procedure",
+			"control",
+			"session",
+			"control",
+			"procedure",
+			"consultation",
+			"order",
+			"evaluation",
+			"treatment",
+			"evaluation_type",
+			"string",
+			"chief_complaint_list",
+			"chief_complaint",
+			"chief_complaint_list",
+			"evaluation_start",
+			"doctor",
+			"patient",
+			"#",
+			"vspa",
+			"control",
+			"',",
+			"('",
+			"street2",
+			"dic",
+			"street2",
 			"city_list",
 			"zip_list",
 			"zip_dic",
@@ -250,11 +302,21 @@
 			"menuitem"
 		],
 		"highlight": true,
-		"in_selection": false,
+		"in_selection": true,
 		"preserve_case": false,
 		"regex": false,
 		"replace_history":
 		[
+			"med_crio",
+			"medical",
+			"1_zone",
+			"rejuvenation_capilar",
+			"medical",
+			"session",
+			"",
+			"session",
+			",",
+			"(",
 			"token",
 			"jrfuncs.test",
 			"phone_2",
@@ -284,24 +346,24 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "models/patient.py",
+					"file": "models/evaluation.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10715,
+						"buffer_size": 1579,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7027,
-								7027
+								709,
+								709
 							]
 						],
 						"settings":
@@ -310,90 +372,61 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 6096.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "models/jrfuncs.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 747,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								720,
-								720
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 154.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "models/pat_vars.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2836,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								28,
-								28
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 102.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "views/patients/patient_personal.xml",
+					"buffer": 1,
+					"file": "models/product.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3902,
+						"buffer_size": 591,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1421,
-								1421
+								350,
+								350
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 63.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "models/prodvars.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3011,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								303,
+								303
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
@@ -402,13 +435,42 @@
 					},
 					"stack_index": 2,
 					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "models/service_medical.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2156,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1420,
+								1420
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1211.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
 				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 23.0
+		"height": 25.0
 	},
 	"input":
 	{
@@ -509,7 +571,7 @@
 		[
 			[
 				"",
-				"~/Documents/Aptana Studio 3 Workspace/templates/dfirm/dfirm/interamericana.sublime-project"
+				"~/Documents/Aptana Studio 3 Workspace/chavarri/chavarri.sublime-project"
 			]
 		],
 		"width": 380.0

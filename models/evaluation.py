@@ -48,31 +48,33 @@ class Evaluation(models.Model):
 
 	patient = fields.Many2one(
 			'oeh.medical.patient',
-			string = "Paciente - nex", 	
+			string = "Paciente", 	
 			required=True, 
 	)
 
 	doctor = fields.Many2one(
 			'oeh.medical.physician',
-			string = "Médico - nex", 	
+			string = "Médico", 	
 			required=True, 
 			)
 
+
 	evaluation_start_date = fields.Date(
-			string = "Fecha - nex", 	
+			string = "Fecha", 	
 			default = fields.Date.today, 
 			required=True, 
 			)
 
+
 	chief_complaint = fields.Selection(
-			string = 'Motivo de consulta - nex', 
+			string = 'Motivo de consulta', 
 			selection = jxvars._pathology_list, 
 			required=True, 
 			)
 
 	evaluation_type = fields.Selection(
 			selection = eval_vars.EVALUATION_TYPE, 
-			string = 'Tipo - nex',
+			string = 'Tipo',
 			required=True, 
 			)
 

@@ -29,6 +29,8 @@
 							class="oe_highlight"
 							string="Control"
 							name="open_control" 	
+
+							attrs="{'invisible':[('laser', '!=', 'laser_co2')]}"
 						/>
 
 					</header>

@@ -107,6 +107,7 @@ class ServiceMedical(models.Model):
 
 
 
+
 	# On Change - Change the Domain
 	# -------------------------------
 
@@ -119,6 +120,9 @@ class ServiceMedical(models.Model):
 			print 
 
 			self.med_crio = self.clear_all(self.med_crio)
+			#self.clear_local()
+
+
 
 
 			self.family = 'medical'
@@ -148,6 +152,7 @@ class ServiceMedical(models.Model):
 			print 
 
 			self.med_hya = self.clear_all(self.med_hya)
+			#self.clear_local()
 
 
 			self.family = 'medical'
@@ -170,6 +175,7 @@ class ServiceMedical(models.Model):
 			print 
 
 			self.med_scle = self.clear_all(self.med_scle)
+
 
 			self.family = 'medical'
 			self.treatment = 'sclerotherapy'
@@ -194,7 +200,7 @@ class ServiceMedical(models.Model):
 			print 'med_lep'
 			print 
 
-			#self.med_lep = self.clear_all(self.med_lep)
+			self.med_lep = self.clear_all(self.med_lep)
 
 			self.family = 'medical'
 			self.treatment = 'lepismatic'
@@ -214,7 +220,7 @@ class ServiceMedical(models.Model):
 			print 'med_pla'
 			print 
 
-			#self.med_pla = self.clear_all(self.med_pla)
+			self.med_pla = self.clear_all(self.med_pla)
 
 			self.family = 'medical'
 			self.treatment = 'plasma'
@@ -234,7 +240,7 @@ class ServiceMedical(models.Model):
 			print 'med_bot'
 			print 
 
-			#self.med_bot = self.clear_all(self.med_bot)
+			self.med_bot = self.clear_all(self.med_bot)
 
 			self.family = 'medical'
 			self.treatment = 'botulinum_toxin'
@@ -257,7 +263,7 @@ class ServiceMedical(models.Model):
 			print 
 
 
-			#self.med_int = self.clear_all(self.med_int)
+			self.med_int = self.clear_all(self.med_int)
 
 			self.family = 'medical'
 			self.treatment = 'intravenous_vitamin'
@@ -272,10 +278,22 @@ class ServiceMedical(models.Model):
 
 
 
-
 	# Clear
+
+	def clear_all(self,token):
+		
+		#self.clear_commons()
+		self.clear_local()
+
+		return token
+
+
+
+
 	@api.multi
 	def clear_local(self):
+
+		print 'clear_local_med'
 		
 		self.med_crio = 'none'
 		self.med_hya = 'none'

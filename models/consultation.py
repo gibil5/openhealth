@@ -518,10 +518,15 @@ class Consultation(models.Model):
 		consultation_id = self.id 
 		
 		family = 'medical'
-		laser = 'na'
-		zone = 'none'	
-		pathology = 'none'
+
+		#laser = 'na'
+		#zone = 'none'	
+		#pathology = 'none'
 				
+		laser = ''
+		zone = ''	
+		pathology = ''
+
 		
 		return {
 				'type': 'ir.actions.act_window',
@@ -547,10 +552,5 @@ class Consultation(models.Model):
 
 							}
 				}
-				
-
-
-
-
-							
+					
 				

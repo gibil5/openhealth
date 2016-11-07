@@ -17,19 +17,19 @@
 			}
 		},
 		{
-			"file": "models/consultation.py",
+			"file": "models/order.py",
 			"settings":
 			{
-				"buffer_size": 10224,
+				"buffer_size": 3922,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "models/prodvars.py",
+			"file": "models/service_medical.py",
 			"settings":
 			{
-				"buffer_size": 3077,
+				"buffer_size": 5063,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -44,19 +44,28 @@
 			}
 		},
 		{
-			"file": "models/service_medical.py",
+			"file": "views/services/service_medical_zone.xml",
 			"settings":
 			{
-				"buffer_size": 4894,
+				"buffer_size": 2390,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "views/services/service_medical_zone.xml",
+			"file": "static/src/css/jx.css",
 			"settings":
 			{
-				"buffer_size": 2228,
+				"buffer_size": 325,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "__openerp__.py",
+			"settings":
+			{
+				"buffer_size": 4276,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -136,15 +145,15 @@
 	"file_history":
 	[
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/jxvars.py",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/prodvars.py",
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/consultation.py",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/product.py",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/service_co2.py",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/__openerp__.py",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/services/service_medical.xml",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/service.py",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/services/service_medical_zone.xml",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/prodvars.py",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/howto/shell.rb",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/consultation.py",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/evaluation.py",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/controls/control.xml",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/control.py",
@@ -375,7 +384,7 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -401,27 +410,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1112.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "models/consultation.py",
+					"file": "models/order.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10224,
+						"buffer_size": 3922,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9603,
-								9603
+								3165,
+								3165
 							]
 						],
 						"settings":
@@ -430,27 +439,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 8505.0,
+						"translation.y": 3696.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "models/prodvars.py",
+					"file": "models/service_medical.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3077,
+						"buffer_size": 5063,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								281,
-								281
+								4851,
+								4851
 							]
 						],
 						"settings":
@@ -459,10 +468,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 939.0,
+						"translation.y": 4551.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -478,8 +487,8 @@
 						"selection":
 						[
 							[
-								3802,
-								3802
+								540,
+								626
 							]
 						],
 						"settings":
@@ -488,56 +497,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3568.0,
+						"translation.y": 618.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "models/service_medical.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4894,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2699,
-								2699
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2463.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
 					"file": "views/services/service_medical_zone.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2228,
+						"buffer_size": 2390,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								549,
-								558
+								565,
+								565
 							]
 						],
 						"settings":
@@ -546,10 +526,66 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 55.0,
+						"translation.y": 58.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "static/src/css/jx.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 325,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								133,
+								133
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "__openerp__.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4276,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4236,
+								4236
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 3106.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				}
 			]

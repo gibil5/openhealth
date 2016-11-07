@@ -214,6 +214,9 @@
 	#'js': ['static/src/js/widget_radio.js'],
 	#'qweb': ['static/src/xml/widget_radio.xml'],
     #'css': ['static/src/css/my_css.css'],
+
+
+    # This is it.
 	'css': ['static/src/css/jx.css'],
 	
 	

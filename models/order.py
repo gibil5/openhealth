@@ -181,7 +181,7 @@ class sale_order(models.Model):
 
 		print 'co2'
 		for se in self.consultation.service_co2_ids:
-			#print se 
+			print se 
 
 			#print se.service.id
 			#print order_id
@@ -196,7 +196,7 @@ class sale_order(models.Model):
 
 		print 'excilite'
 		for se in self.consultation.service_excilite_ids:
-			#print se 
+			print se 
 
 			ol = self.order_line.create({
 										'product_id': se.service.id,
@@ -207,7 +207,7 @@ class sale_order(models.Model):
 		
 		print 'ipl'
 		for se in self.consultation.service_ipl_ids:
-			#print se 
+			print se 
 
 			ol = self.order_line.create({
 										'product_id': se.service.id,
@@ -217,6 +217,7 @@ class sale_order(models.Model):
 
 		print 'ndyag'
 		for se in self.consultation.service_ndyag_ids:
+			print se 
 
 			ol = self.order_line.create({
 										'product_id': se.service.id,
@@ -229,6 +230,7 @@ class sale_order(models.Model):
 
 		print 'medical'
 		for se in self.consultation.service_medical_ids:
+			print se 
 
 			ol = self.order_line.create({
 										'product_id': se.service.id,

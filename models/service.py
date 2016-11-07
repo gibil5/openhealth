@@ -50,10 +50,7 @@ class Service(models.Model):
 	def clear_commons(self):
 		
 		# Service
-
-		self.treatment = 'none'
-
-
+		#self.treatment = 'none'
 		self.zone = 'none'
 		self.pathology = 'none'
 		
@@ -254,7 +251,8 @@ class Service(models.Model):
 			#default='laser_co2',
 			default='none',
 			
-			required=True, 
+			#required=True, 
+			
 			index=True
 			)
 

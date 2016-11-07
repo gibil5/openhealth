@@ -14,6 +14,32 @@
 				
 				
 				
+
+
+				<xpath expr="//field[@name='notebook_over']" position="before">
+
+					<group>	
+
+						<group>
+							<!--
+							<field name="family"  widget="radio" />							
+							-->
+							<field name="family"  />							
+						</group>
+
+						<group>
+							<!--							
+							<field name="treatment"  widget="radio" />							
+							-->
+							<field name="treatment"  />							
+						</group>
+						
+					</group>
+
+				</xpath>	
+
+
+
 				<xpath expr="//field[@name='notebook_over']" position="after">
 					
 
@@ -45,7 +71,7 @@
 					<page string="Acido Hialurónico">		
 						<group>						
 							<group>
-								<field name="med_hia"  widget="radio" />							
+								<field name="med_hya"  widget="radio" />							
 							</group>
 						</group>
 					</page>

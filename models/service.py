@@ -9,6 +9,8 @@ from openerp import models, fields, api
 from datetime import datetime
 
 import jxvars
+import prodvars
+
 import exc
 import ipl
 
@@ -48,9 +50,14 @@ class Service(models.Model):
 	def clear_commons(self):
 		
 		# Service
+
+		self.treatment = 'none'
+
+
 		self.zone = 'none'
 		self.pathology = 'none'
 		
+
 		#self.time = 'none'
 		#self.time_1 = 'none'
 		
@@ -220,9 +227,24 @@ class Service(models.Model):
 
 
 
+	# Family
+	family = fields.Selection(
+			selection = prodvars._family_list, 
+		)
+
+
+	# Treatment
+	treatment = fields.Selection(
+			selection = prodvars._treatment_list, 
+		)
+
+
+
+
+
+
+
 	# Laser type 
-
-
 	laser = fields.Selection(
 			#selection = _laser_type_list, 
 			selection = jxvars._laser_type_list, 

@@ -95,6 +95,12 @@ self.env['oeh.medical.physician'].search([('id', '=', '1')])
 
 self.env['openhealth.service'].search([('name', 'like', 'S')])
 
+
+self.env['product.template']
+
+self.env['product.template'].search([('x_zone', 'like', '1_hypodermic'),])
+
+
 self.env['product.template'].search([('x_treatment', 'like', 'co2'),('x_zone', 'like', 'hands')], limit=1)
 
 

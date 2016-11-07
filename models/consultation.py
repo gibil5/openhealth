@@ -517,9 +517,10 @@ class Consultation(models.Model):
 
 		consultation_id = self.id 
 		
-		laser = 'medical'
-		zone = ''	
-		pathology = ''
+		family = 'medical'
+		laser = 'na'
+		zone = 'none'	
+		pathology = 'none'
 				
 		
 		return {
@@ -539,6 +540,7 @@ class Consultation(models.Model):
 				'context': {
 							'default_consultation': consultation_id,					
 
+							'default_family': family,
 							'default_laser': laser,
 							'default_zone': zone,
 							'default_pathology': pathology,

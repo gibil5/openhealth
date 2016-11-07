@@ -19,23 +19,17 @@ _treatment_list = [
 		('laser_ipl',		'laser_ipl'),
 		('laser_ndyag',		'laser_ndyag'),
 
-		#('medical',			'medical'), 
 
-		]
+		('criosurgery',			'criosurgery'),
+		('hyaluronic_acid',		'hyaluronic_acid'),
+		('sclerotherapy',		'sclerotherapy'),
+		('lepismatic',			'lepismatic'),
+		('plasma',				'plasma'),
+		('botulinum_toxin',		'botulinum_toxin'),
+		('intravenous_vitamin',	'intravenous_vitamin'),
 
 
-
-_subtreatment_list = [
-		('criosurgey',		'Criocirugía'),
-		('hialuronic',		'Acido Hialurónico'),
-		('sclerotherapy',	'Escleroterapia'),
-
-		('lepismatic',		'Lepismático'),
-		('plasma',			'Plasma'),
-		('botulinic Toxin',	'Toxina Botulínica'),
-
-		('intravenous',		'Endovenoso'),
-
+		('none',			'none'), 
 		]
 
 
@@ -82,8 +76,9 @@ _zone_list = [
 		('1_zone',		'1_zone'), 
 		('x',		'x'), 
 		('1_hypodermic','1_hypodermic'), 
+		('1_hypodermic_repair','1_hypodermic_repair'), 
 
-
+		('na',		'na'), 
 
 	]
 	
@@ -157,7 +152,7 @@ _pathology_list = [
 
 		('x',		'x'), 
 		('rejuvenation_capilar',		'rejuvenation_capilar'), 
-
+		('na',		'na'),
 
 	]
 	

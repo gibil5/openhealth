@@ -72,12 +72,19 @@ _laser_type_list = [
 		('laser_ipl','Laser Ipl'), 
 		('laser_ndyag','Laser Ndyag'), 
 
-		('medical','Tratamiento médico'), 
-
-
-		('none','None'), 	
+		#('medical','Tratamiento médico'), 
+		#('none','None'), 	
+		('na',''), 	
 		]
 		
+
+
+
+
+
+
+
+
 
 
 _ipl_pulse_type = [

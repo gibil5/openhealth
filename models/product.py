@@ -25,6 +25,8 @@ class Product(models.Model):
 		selection=prodvars._treatment_list,
 	)	
 
+
+
 	#x_subtreatment = fields.Selection(
 	#	selection=prodvars._subtreatment_list,
 	#)	

@@ -132,12 +132,14 @@ class sale_order(models.Model):
 		
 
 		#if self.state == 'draft':
-		if self.state == 'draft'  and  self.nr_lines == 0:
+		#if self.state == 'draft'  and  self.nr_lines == 0:
+		if self.state == 'draft':
+
 			print 
 			print 'update_order_lines'
 			print 
 
-			#ret = self.remove_order_lines()
+			ret = self.remove_order_lines()
 			ret = self.x_create_order_lines()
 			#print ret  
 
@@ -169,6 +171,8 @@ class sale_order(models.Model):
 
 
 
+
+
 	# Create 
 	@api.multi 
 	def x_create_order_lines(self):
@@ -179,6 +183,8 @@ class sale_order(models.Model):
 		order_id = self.id
 
 
+
+		print 
 		print 'co2'
 		for se in self.consultation.service_co2_ids:
 			print se 
@@ -194,6 +200,7 @@ class sale_order(models.Model):
 									})
 			
 
+		print 
 		print 'excilite'
 		for se in self.consultation.service_excilite_ids:
 			print se 
@@ -205,6 +212,7 @@ class sale_order(models.Model):
 									})
 
 		
+		print 
 		print 'ipl'
 		for se in self.consultation.service_ipl_ids:
 			print se 
@@ -215,6 +223,7 @@ class sale_order(models.Model):
 										'name': se.name_short,
 									})
 
+		print 
 		print 'ndyag'
 		for se in self.consultation.service_ndyag_ids:
 			print se 
@@ -227,21 +236,31 @@ class sale_order(models.Model):
 
 
 
-
+		print 
 		print 'medical'
 		for se in self.consultation.service_medical_ids:
 			print se 
+			print se.service.id
+			print order_id
+			print se.name_short
+			print 
+			print
 
 			ol = self.order_line.create({
 										'product_id': se.service.id,
+										#'product_id': 3201,
+										#'product_id': 4043,
+
 										'order_id': order_id,
+										
 										'name': se.name_short,
-									})
+										#'name': 'x',
+										})
 
 
 
 
-		print
+		print 'out'
 
 		return self.nr_lines
 
@@ -278,6 +297,10 @@ class sale_order_line(models.Model):
 	)
 
 
+
+
+
+
 	#x_mark = fields.Char(
 	#	default='mark',
 	#)
@@ -293,3 +316,7 @@ class sale_order_line(models.Model):
 	#	)
 
 #sale_order_line()
+
+
+
+

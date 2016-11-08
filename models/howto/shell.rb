@@ -96,6 +96,11 @@ self.env['oeh.medical.physician'].search([('id', '=', '1')])
 self.env['openhealth.service'].search([('name', 'like', 'S')])
 
 
+
+
+
+
+
 self.env['product.template']
 
 self.env['product.template'].search([('x_zone', 'like', '1_hypodermic'),])
@@ -104,9 +109,11 @@ self.env['product.template'].search([('x_zone', 'like', '1_hypodermic'),])
 self.env['product.template'].search([('x_treatment', 'like', 'co2'),('x_zone', 'like', 'hands')], limit=1)
 
 
+self.env['product.template'].search([('x_treatment', 'like', 'hyaluronic_acid'),('x_zone', 'like', '1_hypodermic_repair')], limit=1)
 
 
 
+p = self.env['product.template'].search([('x_treatment', 'like', 'hyaluronic_acid'),('x_zone', 'like', '1_hypodermic_repair')], limit=1)
 
 
 
@@ -151,6 +158,28 @@ self.env['sale.order'].search_count([('name', 'like', '1')])
 
 self.env['sale.order'].search([('name', 'like', '11')]).order_line.search([('name', 'like', 'CO')])
 self.env['sale.order'].search([('name', 'like', '11')]).order_line.search([('id', '=', '3201')])
+
+
+
+o = self.env['sale.order'].search([('name', 'like', '103')])
+
+
+o = self.env['sale.order'].search([('name', 'like', '109')])
+
+
+o.order_line.create({ 'product_id': 4043, 'order_id': 89, 'name': 'hya_1hr_ref_one_nor' })
+
+
+o.order_line.create({ 'product_id': 4136, 'order_id': 95, 'name': 'hya_1hr_ref_one_nor' })
+
+o.order_line.create({ 'product_id': 4136, 'order_id': 95, 'name': 'ACIDO HIALURONICO - 1 Jeringa - REPAIR - Rejuvenecimiento Facial - 1 - Normal' })
+
+
+
+
+self.env['product.template'].search([('x_name_short', 'like', 'hya_1hr_ref_one_nor'),])
+
+
 
 
 

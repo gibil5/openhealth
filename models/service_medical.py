@@ -119,8 +119,7 @@ class ServiceMedical(models.Model):
 			print 'med_crio'
 			print 
 
-			self.med_crio = self.clear_all(self.med_crio)
-			#self.clear_local()
+			#self.med_crio = self.clear_all(self.med_crio)
 
 
 
@@ -128,8 +127,9 @@ class ServiceMedical(models.Model):
 			self.family = 'medical'
 			self.treatment = 'criosurgery'
 
-			#self.zone = 'legs'
-			#self.pathology = 'varices'
+			self.laser = 'laser_co2'
+			self.zone = 'legs'
+			self.pathology = 'varices'
 			
 			return {
 				'domain': {'service': [
@@ -283,7 +283,7 @@ class ServiceMedical(models.Model):
 	def clear_all(self,token):
 		
 		#self.clear_commons()
-		self.clear_local()
+		self.clear_local_med()
 
 		return token
 
@@ -291,7 +291,7 @@ class ServiceMedical(models.Model):
 
 
 	@api.multi
-	def clear_local(self):
+	def clear_local_med(self):
 
 		print 'clear_local_med'
 		

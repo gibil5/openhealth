@@ -120,6 +120,12 @@
                     
 
                     <field name="name" string="Order Number"/>
+
+
+
+                    <field name="id"/>
+
+
                     
                     <field name="date_order"/>
                     

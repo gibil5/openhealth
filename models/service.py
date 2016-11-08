@@ -165,6 +165,9 @@ class Service(models.Model):
 			self.time_1 = self.service.x_time
 		
 		
+			# Now
+			self.zone = self.service.x_zone
+			self.pathology = self.service.x_pathology
 	
 
 

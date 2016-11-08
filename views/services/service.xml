@@ -34,6 +34,7 @@
 						
 							<h1>Láser</h1>
 						
+							<!--
 							<button 
 								type="object" 
 								class="oe_highlight oe_right"
@@ -41,7 +42,8 @@
 
 								name="clear_local" 
 							/>
-						
+							-->
+
 						</group>
 						
 						

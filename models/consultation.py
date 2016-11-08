@@ -109,11 +109,16 @@ class Consultation(models.Model):
 			string="Servicios Ndyag",
 	)
 
+
+
+
 	service_medical_ids = fields.One2many(
 			'openhealth.service.medical', 
 			'consultation', 
-			string="Tratamiento médico",
+			string="Tratamiento Médico",
 	)
+
+
 
 
 	# Service 
@@ -523,9 +528,13 @@ class Consultation(models.Model):
 		#zone = 'none'	
 		#pathology = 'none'
 				
-		laser = ''
-		zone = ''	
-		pathology = ''
+		#laser = ''
+		#zone = ''	
+		#pathology = ''
+
+
+		#laser = 'laser_co2'
+		laser = 'none'
 
 		
 		return {
@@ -546,9 +555,11 @@ class Consultation(models.Model):
 							'default_consultation': consultation_id,					
 
 							'default_family': family,
+
 							'default_laser': laser,
-							'default_zone': zone,
-							'default_pathology': pathology,
+
+							#'default_zone': zone,
+							#'default_pathology': pathology,
 
 							}
 				}

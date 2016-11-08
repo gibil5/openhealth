@@ -29,7 +29,13 @@
 
 							<tree string="">	
 								<field name="name"/>
-								<field name="laser"/>				
+								<field name="laser"/>		
+
+
+								<field name="zone"/>	
+								<field name="pathology"/>	
+
+		
 								<field name="service"/>
 								<field name="price"/>
 

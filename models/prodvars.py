@@ -8,6 +8,8 @@ _family_list = [
 
 		('medical',			'medical'), 
 
+
+		('deprecated',			'deprecated'), 
 		]
 
 

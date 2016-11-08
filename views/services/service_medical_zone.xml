@@ -22,16 +22,25 @@
 
 						<group>
 							<!--
-							<field name="family"  widget="radio" />							
+							<field name="family"  widget="radio" />		
+												
+							<field name="zone"  invisible="0" />							
 							-->
-							<field name="family"  invisible="1" />							
+
+							<field name="family"  invisible="0" />							
+
+
+							<field name="name_short"  invisible="0" />							
 						</group>
 
 						<group>
 							<!--							
 							<field name="treatment"  widget="radio" />							
+							<field name="pathology"  invisible="0" />							
 							-->
-							<field name="treatment"  invisible="1" />							
+							<field name="treatment"  invisible="0" />							
+						
+
 						</group>
 						
 					</group>

@@ -3,6 +3,41 @@
 
 
 
+# Product 
+
+# Laser
+_laser_type_list = [
+		('laser_co2','Laser Co2'), 
+		('laser_excilite','Laser Excilite'), 
+		('laser_ipl','Laser Ipl'), 
+		('laser_ndyag','Laser Ndyag'), 
+
+
+		('criosurgery',			'criosurgery'),
+		('hyaluronic_acid',		'hyaluronic_acid'),
+		('sclerotherapy',		'sclerotherapy'),
+		('lepismatic',			'lepismatic'),
+		('plasma',				'plasma'),
+		('botulinum_toxin',		'botulinum_toxin'),
+		('intravenous_vitamin',	'intravenous_vitamin'),
+
+
+		#('medical','Tratamiento médico'), 
+		
+		('none','None'), 	
+		
+		#('na',''), 	
+		#('',''), 	
+		]
+
+
+
+
+
+
+
+
+# Medical 
 
 #_med_con_list = [
 #		('medical',			'Médica'),	
@@ -65,17 +100,7 @@ _med_int_list = [
 
 
 
-# Product 
-_laser_type_list = [
-		('laser_co2','Laser Co2'), 
-		('laser_excilite','Laser Excilite'), 
-		('laser_ipl','Laser Ipl'), 
-		('laser_ndyag','Laser Ndyag'), 
 
-		#('medical','Tratamiento médico'), 
-		#('none','None'), 	
-		('na',''), 	
-		]
 		
 
 
@@ -85,7 +110,7 @@ _laser_type_list = [
 
 
 
-
+# Ipl
 
 _ipl_pulse_type = [
 		('one','Unico'), 
@@ -384,9 +409,14 @@ _zone_list = [
 			
 
 
+			# Medical 
 			('x','x'), 
 			('1_hypodermic','1_hypodermic'), 
+			('1_hypodermic_repair','1_hypodermic_repair'), 
 
+			('1_zone','1_zone'), 
+
+			('na','na'), 
 			]
 
 
@@ -459,7 +489,15 @@ _pathology_list = [
 			('vitiligo','Vitiligo'),
 			
 			
-			('none',''), 
+			#('none',''), 
+
+
+
+			# Medical 
+			('acne',			'acne'),
+			('rejuvenation_capilar','Rejuvenecimiento Capilar'),
+			('na','na'), 
+
 
 			]
 			

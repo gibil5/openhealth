@@ -25,9 +25,9 @@
 							<field name="family"  widget="radio" />		
 												
 							<field name="zone"  invisible="0" />							
+							<field name="family"  invisible="0" />							
 							-->
 
-							<field name="family"  invisible="0" />							
 
 
 							<field name="name_short"  invisible="0" />							

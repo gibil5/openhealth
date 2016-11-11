@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+
+
+
+
+		<!-- service tree/list view -->
+		<record model="ir.ui.view" id="product.product_template_tree_view">
+
+			<field name="name">product.template.product.tree</field>
+
+			<field name="model">product.template</field>
+			
+			
+			<field name="type">tree</field>
+
+			<field name="priority" eval="1"/>
+
+
+			<field name="arch" type="xml">
+				
+
+				<tree string="Product Tree"    default_order="x_name_short" >
+				
+
+
+					<!--
+					<field name="name"/>
+					<field name="default_code"/>
+					-->
+
+					<field name="x_name_short"/>
+					<field name="id"/>
+
+
+					<field name="x_family"/>
+
+					<field name="x_date_updated"/>
+					<field name="list_price"/>
+					<field name="x_price_vip"/>
+
+					<!--
+					-->
+
+
+
+
+					<!--
+					<field name="x_treatment"/>				
+					<field name="x_zone"/>				
+					<field name="x_pathology"/>				
+					
+
+
+
+					-->
+
+					
+
+					<!--
+					<field name="standard_price"/>				
+
+					<field name="volume"/>				
+				
+					<field name="weight"/>				
+
+					<field name="categ_id"/>				
+					-->
+
+				</tree>
+			</field>
+		</record>
+
+
+
+
+
+
+
+		<!-- Window action -->
+		<record model="ir.actions.act_window" id="product_template_co2_list_action">
+			<field name="name">Products</field>
+			<field name="res_model">product.template</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+
+			<field name="context">{'order': 'x_name_short'}</field>
+            
+            <field name="domain">[
+									('type', '=', 'service'),
+									('x_treatment', '=', 'laser_co2'),
+            					]</field>
+		</record>
+
+		<!-- Menu -->
+		<menuitem id="product_template_co2_menu" name="Productos Co2"
+			parent="openhealth_menu"
+			action="product_template_co2_list_action"/>
+
+
+
+
+	</data>
+</openerp>

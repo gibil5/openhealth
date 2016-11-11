@@ -163,12 +163,14 @@ self.env['sale.order'].search([('name', 'like', '11')]).order_line.search([('id'
 
 o = self.env['sale.order'].search([('name', 'like', '103')])
 
-
 o = self.env['sale.order'].search([('name', 'like', '109')])
+
+o = self.env['sale.order'].search([('name', 'like', '119')])
+
+
 
 
 o.order_line.create({ 'product_id': 4043, 'order_id': 89, 'name': 'hya_1hr_ref_one_nor' })
-
 
 o.order_line.create({ 'product_id': 4136, 'order_id': 95, 'name': 'hya_1hr_ref_one_nor' })
 
@@ -176,11 +178,20 @@ o.order_line.create({ 'product_id': 4136, 'order_id': 95, 'name': 'ACIDO HIALURO
 
 
 
+o.order_line.create({ 'product_id': 4190, 'order_id': 105, 'name': 'lep_bac_acn_one_nor' })
+
+
+
+
+
 
 self.env['product.template'].search([('x_name_short', 'like', 'hya_1hr_ref_one_nor'),])
 
+p = self.env['product.template'].search([('x_name_short', 'like', 'lep_bac_acn_one_nor')])
 
 
+
+pc = self.env['product.template'].search([('x_name_short', 'like', 'co2_nec_sca')])
 
 
 

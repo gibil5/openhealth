@@ -15,7 +15,6 @@ class Product(models.Model):
 
 
 
-
 	x_family = fields.Selection(
 		selection=prodvars._family_list,
 	)	
@@ -43,9 +42,11 @@ class Product(models.Model):
 
 
 
+	x_date_updated = fields.Date(
+			#string = "", 	
+			#default = fields.Date.today, 
+			#required=True, 
+			)
 
 
 
-
-	
-	

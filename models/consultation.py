@@ -121,14 +121,15 @@ class Consultation(models.Model):
 
 
 
+
 	# Service 
-	service_ids = fields.One2many(
-			'openhealth.service', 
-			'consultation', 
-			string="Servicios",
+	#service_ids = fields.One2many(
+	#		'openhealth.service', 
+	#		'consultation', 
+	#		string="Servicios",
 			
 			#compute='_compute_service_ids', 
-	)
+	#)
 
 
 
@@ -235,6 +236,7 @@ class Consultation(models.Model):
 
 
 
+	# ---------------------------------------------- Create Order --------------------------------------------------------
 
 	# Create Order - Button 
 	
@@ -534,7 +536,8 @@ class Consultation(models.Model):
 
 
 		#laser = 'laser_co2'
-		laser = 'none'
+		#laser = 'none'
+		laser = 'medical'
 
 		
 		return {

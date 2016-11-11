@@ -166,8 +166,8 @@ class Service(models.Model):
 		
 		
 			# Now
-			self.zone = self.service.x_zone
-			self.pathology = self.service.x_pathology
+			#self.zone = self.service.x_zone
+			#self.pathology = self.service.x_pathology
 	
 
 
@@ -228,9 +228,9 @@ class Service(models.Model):
 
 
 	# Family
-	family = fields.Selection(
-			selection = prodvars._family_list, 
-		)
+	#family = fields.Selection(
+	#		selection = prodvars._family_list, 
+	#	)
 
 
 	# Treatment
@@ -285,10 +285,9 @@ class Service(models.Model):
 
 	zone = fields.Selection(
 			selection = jxvars._zone_list, 
-
 			string="Zona", 
-			#default='areola',
-			default='none',
+
+			#default='none',
 			#required=True, 
 			)
 
@@ -297,13 +296,11 @@ class Service(models.Model):
 
 	# Pathology
 	pathology = fields.Selection(
-	
-			#selection = _pathology_list, 
+
 			selection = jxvars._pathology_list, 
-	
 			string="Patología", 
-			#default='acne_active',
-			default='none',
+
+			#default='none',
 			#required=True, 
 			)
 

@@ -20,11 +20,15 @@ class ServiceMedical(models.Model):
 
 			domain = [
 						('type', '=', 'service'),
-						('x_family', '=', 'medical'),
+						('x_family', '=', 'medical'),						
 
-						#('x_treatment', '=', 'medical'),
-						#('x_treatment', '=', 'laser_co2'),
-
+						#('x_treatment', '=', 'criosurgery'),
+						#('x_treatment', '=', 'hyaluronic_acid'),
+						#('x_treatment', '=', 'sclerotherapy'),
+						#('x_treatment', '=', 'lepismatic'),
+						#('x_treatment', '=', 'plasma'),
+						#('x_treatment', '=', 'botulinum_toxin'),
+						#('x_treatment', '=', 'intravenous_vitamin'),
 					],
 	)
 	
@@ -119,21 +123,21 @@ class ServiceMedical(models.Model):
 			print 'med_crio'
 			print 
 
-			#self.med_crio = self.clear_all(self.med_crio)
+			self.med_crio = self.clear_all_med(self.med_crio)
 
 
 
 
-			self.family = 'medical'
+			#self.family = 'medical'
 			self.treatment = 'criosurgery'
 
-			self.laser = 'laser_co2'
-			self.zone = 'legs'
-			self.pathology = 'varices'
+			#self.laser = 'laser_co2'
+			#self.zone = 'legs'
+			#self.pathology = 'varices'
 			
 			return {
 				'domain': {'service': [
-										('x_family', '=', self.family),
+										#('x_family', '=', self.family),
 										('x_treatment', '=', self.treatment),
 
 										#('x_zone', '=', self.zone),
@@ -151,16 +155,16 @@ class ServiceMedical(models.Model):
 			print 'med_hya'
 			print 
 
-			self.med_hya = self.clear_all(self.med_hya)
+			self.med_hya = self.clear_all_med(self.med_hya)
 			#self.clear_local()
 
 
-			self.family = 'medical'
+			#self.family = 'medical'
 			self.treatment = 'hyaluronic_acid'
 
 			return {
 				'domain': {'service': [
-										('x_family', '=', self.family),
+										#('x_family', '=', self.family),
 										('x_treatment', '=', self.treatment),
 										]},
 			}
@@ -174,15 +178,15 @@ class ServiceMedical(models.Model):
 			print 'med_scle'
 			print 
 
-			self.med_scle = self.clear_all(self.med_scle)
+			self.med_scle = self.clear_all_med(self.med_scle)
 
 
-			self.family = 'medical'
+			#self.family = 'medical'
 			self.treatment = 'sclerotherapy'
 
 			return {
 				'domain': {'service': [
-										('x_family', '=', self.family),
+										#('x_family', '=', self.family),
 										('x_treatment', '=', self.treatment),
 										]},
 			}
@@ -200,14 +204,14 @@ class ServiceMedical(models.Model):
 			print 'med_lep'
 			print 
 
-			self.med_lep = self.clear_all(self.med_lep)
+			self.med_lep = self.clear_all_med(self.med_lep)
 
-			self.family = 'medical'
+			#self.family = 'medical'
 			self.treatment = 'lepismatic'
 
 			return {
 				'domain': {'service': [
-										('x_family', '=', self.family),
+										#('x_family', '=', self.family),
 										('x_treatment', '=', self.treatment),
 										]},
 			}
@@ -220,14 +224,14 @@ class ServiceMedical(models.Model):
 			print 'med_pla'
 			print 
 
-			self.med_pla = self.clear_all(self.med_pla)
+			self.med_pla = self.clear_all_med(self.med_pla)
 
-			self.family = 'medical'
+			#self.family = 'medical'
 			self.treatment = 'plasma'
 
 			return {
 				'domain': {'service': [
-										('x_family', '=', self.family),
+										#('x_family', '=', self.family),
 										('x_treatment', '=', self.treatment),
 										]},
 			}
@@ -240,14 +244,14 @@ class ServiceMedical(models.Model):
 			print 'med_bot'
 			print 
 
-			self.med_bot = self.clear_all(self.med_bot)
+			self.med_bot = self.clear_all_med(self.med_bot)
 
-			self.family = 'medical'
+			#self.family = 'medical'
 			self.treatment = 'botulinum_toxin'
 
 			return {
 				'domain': {'service': [
-										('x_family', '=', self.family),
+										#('x_family', '=', self.family),
 										('x_treatment', '=', self.treatment),
 										]},
 			}
@@ -263,14 +267,14 @@ class ServiceMedical(models.Model):
 			print 
 
 
-			self.med_int = self.clear_all(self.med_int)
+			self.med_int = self.clear_all_med(self.med_int)
 
-			self.family = 'medical'
+			#self.family = 'medical'
 			self.treatment = 'intravenous_vitamin'
 
 			return {
 				'domain': {'service': [
-										('x_family', '=', self.family),
+										#('x_family', '=', self.family),
 										('x_treatment', '=', self.treatment),
 										]},
 			}
@@ -280,7 +284,7 @@ class ServiceMedical(models.Model):
 
 	# Clear
 
-	def clear_all(self,token):
+	def clear_all_med(self,token):
 		
 		#self.clear_commons()
 		self.clear_local_med()

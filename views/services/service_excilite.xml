@@ -23,6 +23,36 @@
 
 
 
+		<!-- service tree/list view -->
+		<record model="ir.ui.view" id="service_excilite_tree_view">
+			<field name="name">service.tree</field>
+			<field name="model">openhealth.service.excilite</field>
+			<field name="arch" type="xml">
+				
+				<tree string="Service Tree">
+				
+					<!--
+					-->
+
+					<field name="name"/>
+					<field name="id"/>
+
+					<field name="laser"/>				
+					
+					<field name="treatment"/>
+					<!--
+					<field name="zone"/>
+					<field name="pathology"/>
+					-->
+					<field name="service"/>
+
+					<field name="consultation"/>
+				
+				</tree>
+			</field>
+		</record>
+
+
 		<!-- Window action -->
 		<record model="ir.actions.act_window" id="service_excilite_list_action">
 			<field name="name">Servicios Excilite</field>
@@ -36,7 +66,6 @@
 		<menuitem id="service_excilite_menu" name="Servicios Excilite"
 			parent="openhealth_menu"
 			action="service_excilite_list_action"/>
-
 
 
 	</data>

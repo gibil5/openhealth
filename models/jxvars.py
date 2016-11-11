@@ -13,18 +13,17 @@ _laser_type_list = [
 		('laser_ndyag','Laser Ndyag'), 
 
 
-		('criosurgery',			'criosurgery'),
-		('hyaluronic_acid',		'hyaluronic_acid'),
-		('sclerotherapy',		'sclerotherapy'),
-		('lepismatic',			'lepismatic'),
-		('plasma',				'plasma'),
-		('botulinum_toxin',		'botulinum_toxin'),
-		('intravenous_vitamin',	'intravenous_vitamin'),
+		#('criosurgery',			'criosurgery'),
+		#('hyaluronic_acid',		'hyaluronic_acid'),
+		#('sclerotherapy',		'sclerotherapy'),
+		#('lepismatic',			'lepismatic'),
+		#('plasma',				'plasma'),
+		#('botulinum_toxin',		'botulinum_toxin'),
+		#('intravenous_vitamin',	'intravenous_vitamin'),
 
 
-		#('medical','Tratamiento médico'), 
-		
-		('none','None'), 	
+		('medical','Tratamiento médico'), 
+		#('none','None'), 	
 		
 		#('na',''), 	
 		#('',''), 	
@@ -405,7 +404,7 @@ _zone_list = [
 			('package','Paquete'), 
 			
 			
-			('none',''), 
+			#('none',''), 
 			
 
 
@@ -416,7 +415,7 @@ _zone_list = [
 
 			('1_zone','1_zone'), 
 
-			('na','na'), 
+			#('na','na'), 
 			]
 
 
@@ -425,7 +424,7 @@ _zone_list = [
 # Pathology
 _pathology_list = [
 
-			('none','Ninguno'),
+			#('none','Ninguno'),
 
 			('acne_active','Acné Activo'),
 			('acne_sequels','Acné y Secuelas'),
@@ -496,7 +495,7 @@ _pathology_list = [
 			# Medical 
 			('acne',			'acne'),
 			('rejuvenation_capilar','Rejuvenecimiento Capilar'),
-			('na','na'), 
+			#('na','na'), 
 
 
 			]

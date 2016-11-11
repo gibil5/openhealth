@@ -15,7 +15,7 @@
     'description': """
 
 		Installed: 	 	7 Sep 2016.\n 
-		Last built: 	7 Nov 2016.\n 
+		Last built: 	10 Nov 2016.\n 
 		\n
 
 		This is my first extension for oeHealth.
@@ -153,6 +153,18 @@
 
 		'views/services/service_medical.xml',
 		'views/services/service_medical_zone.xml',
+
+
+
+
+
+		# Products
+		'views/products/product.xml',
+		'views/products/product_excilite.xml',
+		'views/products/product_ipl.xml',
+		'views/products/product_ndyag.xml',
+		'views/products/product_medical.xml',
+
 
 
 

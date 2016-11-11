@@ -132,14 +132,14 @@ class sale_order(models.Model):
 		
 
 		#if self.state == 'draft':
-		#if self.state == 'draft'  and  self.nr_lines == 0:
-		if self.state == 'draft':
+		#if self.state == 'draft':
+		if self.state == 'draft'  and  self.nr_lines == 0:
 
 			print 
 			print 'update_order_lines'
 			print 
 
-			ret = self.remove_order_lines()
+			#ret = self.remove_order_lines()
 			ret = self.x_create_order_lines()
 			#print ret  
 
@@ -243,18 +243,25 @@ class sale_order(models.Model):
 			print se.service.id
 			print order_id
 			print se.name_short
+
+			pro = self.env['product.template'].search([
+														('x_name_short', 'like', 'lep_bac_acn_one_nor')
+													])
+
+			print pro.id 
 			print 
 			print
 
 			ol = self.order_line.create({
-										'product_id': se.service.id,
 										#'product_id': 3201,
 										#'product_id': 4043,
 
+										#'product_id': se.service.id,
+										#'product_id': 4190,
+										'product_id': pro.id,
+
 										'order_id': order_id,
-										
 										'name': se.name_short,
-										#'name': 'x',
 										})
 
 

@@ -117,6 +117,9 @@ p = self.env['product.template'].search([('x_treatment', 'like', 'hyaluronic_aci
 
 
 
+p = self.env['product.template'].search([('x_name_short', 'like', 'co2_han_sta'),])
+
+
 
 
 

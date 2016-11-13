@@ -18,6 +18,13 @@ class sale_order(models.Model):
 
 
 
+	x_vip = fields.Boolean(
+			'Vip', 
+			#readonly=True
+			)
+
+
+
 
 	state = fields.Selection(
 			#selection = _state_list, 
@@ -35,8 +42,6 @@ class sale_order(models.Model):
 
 
 
-
-	
 	vspace = fields.Char(
 			' ', 
 			readonly=True
@@ -46,7 +51,21 @@ class sale_order(models.Model):
 	order_line = field_One2many=fields.One2many('sale.order.line',
 		'order_id',
 		#string='Order',
+
+		#compute="_compute_order_line",
 		)
+
+
+	#@api.multi
+	#@api.depends('x_vip')
+	
+	#def _compute_order_line(self):
+	#	for record in self:
+	#		print 'compute_order_line'
+	#		print record.x_vip 
+	#		ret = record.update_order_lines()
+	#		print ret 
+
 
 
 
@@ -76,7 +95,9 @@ class sale_order(models.Model):
 	)
 	
 
-
+	#x_copy_created = fields.Boolean(
+	#	default=False,
+	#)
 
 		
 
@@ -125,41 +146,44 @@ class sale_order(models.Model):
 
 
 
+
+
+
+
+	# On change - Vip 
+
+	#@api.onchange('x_vip')
+	
+	#def _onchange_x_vip(self):
+		#print 'onchange'
+
+		#name = self.name 		
+		#order_id = self.env['sale.order'].search([('name', 'like', name)]).id
+
+		#print self.id
+		#print self.name
+		#print order_id 
+
+		#ret = self.update_order_lines(order_id)
+		#print ret 
+
+		#print 
+
+
+
+
 	# Update Lines 
 	@api.multi 
 	def update_order_lines(self):
 
-		
+		print 
+		print 'update_order_lines'
 
-		#if self.state == 'draft':
-		#if self.state == 'draft':
-		if self.state == 'draft'  and  self.nr_lines == 0:
+		#ret = self.remove_order_lines()
 
-			print 
-			print 'update_order_lines'
-			print 
+		ret = self.x_create_order_lines()
 
-			#ret = self.remove_order_lines()
-			ret = self.x_create_order_lines()
-			#print ret  
-
-
-#jx
-			print 'copy'
-
-			ret = self.copy({
-				
-							#'state':'sale',
-							'state':'sent',
-				})
-
-			
-			print ret 
-
-
-
-
-	
+		return 1
 
 
 
@@ -169,6 +193,79 @@ class sale_order(models.Model):
 		ret = self.order_line.unlink()
 		return ret 
 
+
+
+	@api.multi 
+	def create_line(self, order_id, se):
+		
+		product_id = se.service.id
+		name = se.name_short
+
+		x_price_vip = se.service.x_price_vip
+		x_price = se.service.list_price
+
+		#if self.x_vip and se.service.x_price_vip != 0.0:
+		if self.x_vip and x_price_vip != 0.0:
+			#price_unit = se.service.x_price_vip
+			price_unit = x_price_vip
+		else:
+			#price_unit = se.service.list_price
+			price_unit = x_price
+
+
+		#print product_id
+		#print order_id
+		#print name
+		#print price_unit
+		#print se.service.uom_id.id
+		#print 
+
+
+
+		if self.nr_lines == 0:
+			print 'create new'
+
+			ol = self.order_line.create({
+										'product_id': product_id,
+										'order_id': order_id,
+										'name': name,
+
+										'price_unit': price_unit,
+
+										'x_price_vip': x_price_vip,
+										'x_price': x_price,
+
+										'product_uom': se.service.uom_id.id, 
+									})
+
+		else:
+			print 'update existing'
+
+			order_line_id = self.env['sale.order.line'].search([
+																('order_id', 'like', order_id),
+																('name', 'like', name),
+																]).id
+			print order_line_id
+
+
+			rec_set = self.env['sale.order.line'].browse([
+															order_line_id																
+														])
+			print rec_set 
+
+			#ol = self.order_line.create({
+			#ol = self.order_line.write(1, order_line_id, 
+			
+			ol = rec_set.write({
+									#'product_id': product_id,
+									#'order_id': order_id,
+									#'name': name,
+									'price_unit': price_unit,
+									#'product_uom': se.service.uom_id.id, 
+								})
+
+
+		return 1
 
 
 
@@ -183,33 +280,22 @@ class sale_order(models.Model):
 		order_id = self.id
 
 
-
 		print 
 		print 'co2'
 		for se in self.consultation.service_co2_ids:
 			print se 
-
-			#print se.service.id
-			#print order_id
-			#print se.name_short
-
-			ol = self.order_line.create({
-										'product_id': se.service.id,
-										'order_id': order_id,
-										'name': se.name_short,
-									})
 			
+			ret = self.create_line(order_id, se)
+
+
 
 		print 
 		print 'excilite'
 		for se in self.consultation.service_excilite_ids:
 			print se 
 
-			ol = self.order_line.create({
-										'product_id': se.service.id,
-										'order_id': order_id,
-										'name': se.name_short,
-									})
+			ret = self.create_line(order_id, se)
+
 
 		
 		print 
@@ -217,22 +303,16 @@ class sale_order(models.Model):
 		for se in self.consultation.service_ipl_ids:
 			print se 
 
-			ol = self.order_line.create({
-										'product_id': se.service.id,
-										'order_id': order_id,
-										'name': se.name_short,
-									})
+			ret = self.create_line(order_id, se)
+
+
 
 		print 
 		print 'ndyag'
 		for se in self.consultation.service_ndyag_ids:
 			print se 
 
-			ol = self.order_line.create({
-										'product_id': se.service.id,
-										'order_id': order_id,
-										'name': se.name_short,
-									})
+			ret = self.create_line(order_id, se)
 
 
 
@@ -240,30 +320,11 @@ class sale_order(models.Model):
 		print 'medical'
 		for se in self.consultation.service_medical_ids:
 			print se 
-			print se.service.id
-			print order_id
-			print se.name_short
+			#print se.service.id
+			#print order_id
+			#print se.name_short
 
-			pro = self.env['product.template'].search([
-														('x_name_short', 'like', 'lep_bac_acn_one_nor')
-													])
-
-			print pro.id 
-			print 
-			print
-
-			ol = self.order_line.create({
-										#'product_id': 3201,
-										#'product_id': 4043,
-
-										#'product_id': se.service.id,
-										#'product_id': 4190,
-										'product_id': pro.id,
-
-										'order_id': order_id,
-										'name': se.name_short,
-										})
-
+			ret = self.create_line(order_id, se)
 
 
 
@@ -297,15 +358,20 @@ class sale_order_line(models.Model):
 
 	consultation = fields.Many2one('openhealth.consultation',
 			ondelete='cascade', 
-	)
+		)
 
 	procedure_created = fields.Boolean(
-		default=False,
-	)
+			default=False,
+		)
 
 
+	x_price_vip = fields.Float(
+			string="Price Vip",
+		)
 
-
+	x_price = fields.Float(
+			string="Price Std",
+		)
 
 
 	#x_mark = fields.Char(

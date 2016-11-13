@@ -15,7 +15,7 @@
     'description': """
 
 		Installed: 	 	7 Sep 2016.\n 
-		Last built: 	10 Nov 2016.\n 
+		Last built: 	12 Nov 2016.\n 
 		\n
 
 		This is my first extension for oeHealth.
@@ -172,8 +172,9 @@
 
 		# Orders
 		#'views/evaluations/order.xml',
-		'views/orders/order.xml',
 		#'views/orders/sale_order.xml',
+		'views/orders/order.xml',
+		'views/orders/order_line.xml',
 
 		
 

@@ -362,7 +362,7 @@ class Service(models.Model):
 			compute='_compute_name_short', 
 			#string='Short name'
 			#string='Código'
-			string='Código interno'
+			#string='Código interno'
 			)
 
 	@api.depends('service')

@@ -3,22 +3,13 @@
 	<data>
 		
 		<record model="ir.ui.view" id="view_test">
-
 			<field name="name">sale.order.form</field>
-			
-
-			<!--
-			<field name="model">sale.order</field>
-			-->
 			<field name="model">sale.order</field>
 
-
-			
 			<field name="inherit_id" ref="sale.view_order_form"/>			
 	        <field name="mode">primary</field>
 
-
-
+	        <field name="priority" eval="1"/>
 			<field name="arch" type="xml">
 
 
@@ -26,6 +17,48 @@
 				<!--
 				<xpath expr="pass of position" position="the postion">
 				-->					
+
+
+				<field name="order_line" position="replace">
+
+					<!--
+					<field name="vspace"/>
+					-->
+
+
+
+					<field name="order_line">
+
+						<tree string="Order Line Tree">
+					
+    	                	<field name="product_id" />
+
+        	            	<field name="name"/>
+
+        	            	<field name="product_uom_qty"/>
+
+
+            	        	<field name="x_price"/>
+            	        	<field name="x_price_vip"/>
+
+
+            	        	<field name="price_unit"/>
+
+            	        	<field name="tax_id"/>
+
+            	        	<field name="price_subtotal"/>
+
+						</tree>
+
+					</field>
+
+
+
+				</field>
+
+
+
+
 				<field name="payment_term_id" position="after">
 
 
@@ -75,6 +108,9 @@
 					<field name="vspace"/>
 					<field name="state"/>
 
+
+					<field name="vspace"/>
+					<field name="x_vip"/>
 
 
 					

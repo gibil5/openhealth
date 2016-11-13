@@ -186,7 +186,17 @@ class Order(models.Model):
 		
 
 		
+# 13 Nov 2016
 
+			#print 'copy'
+			#if not self.x_copy_created:			
+			#if not self.x_copy_created  and  self.state == 'draft':			
+				#ret = self.copy({
+				#				#'state':'sale',
+				#				'state':'sent',
+				#			})	
+				#self.x_copy_created = True
+			#print ret 
 
 	
 	

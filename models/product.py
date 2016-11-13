@@ -15,6 +15,11 @@ class Product(models.Model):
 
 
 
+	x_price_vip = fields.Float(
+		string = 'Precio VIP - nex',
+	)
+
+
 	x_family = fields.Selection(
 		selection=prodvars._family_list,
 	)	

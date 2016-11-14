@@ -81,6 +81,8 @@
 		'views/consultations/consultation_services_ndyag.xml',
 		'views/consultations/consultation_order.xml',
 
+		'views/consultations/consultation_appointment.xml',
+
 		#'views/evaluations/consultation_services.xml',
 		#'views/evaluations/consultation_order_lines.xml',
 		#'views/evaluations/consultation_procedures.xml',

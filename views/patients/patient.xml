@@ -135,14 +135,20 @@ Sheet
 								<field string="Tratamientos" name="a_treatment_count" widget="statinfo"/>
 				            </button>
 
+
 				            <!--
+				            Appointments 
+							-->
 							<button type="action" class="oe_stat_button" 
+
 								name="347" 
+								
 								context="{'search_default_patient': active_id,'default_patient': active_id}" 
+								
 								icon="fa-calendar">
+				                
 				                <field string="Citas" name="app_count" widget="statinfo"/>
 				            </button>
-							-->
 							
 						</div>
 

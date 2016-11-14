@@ -18,6 +18,32 @@ class Consultation(models.Model):
 
 
 
+
+
+	# Number of appointments
+	
+	nr_apps = fields.Integer(
+				string="Citas",
+				compute="_compute_nr_apps",
+	)
+
+	@api.multi
+	
+	def _compute_nr_apps(self):
+		for record in self:
+
+			ctr = 0 
+			
+			for a in record.appointment:
+				ctr = ctr + 1		
+
+			record.nr_apps = ctr
+
+
+
+
+
+
 	name = fields.Char(
 			string = 'Consulta #',
 			)

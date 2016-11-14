@@ -4,34 +4,38 @@
 
 
 		<!--
-		order_lines 
+		order
 		-->
-		<record model="ir.ui.view" id="consultation_order_form_view">
-			<field name="name">consultation.order.form</field>
+		<record model="ir.ui.view" id="consultation_appointment_form_view">
+			<field name="name">consultation.appointment.form</field>
 			<field name="model">openhealth.consultation</field>
 			<field name="priority" eval="1"/>
+			
 			<field name="inherit_id" ref="consultation_form_view"/>
+
 			<field name="arch" type="xml">
 
 				
 				<notebook position="inside">
 					
-					<page string="Presupuesto">
+					<page string="Citas">
 
 
 
 						<!--
-						<field name="order"/>
+						<field name="appointment"/>
 
-						<field name="order"  attrs="{'invisible':[('state', '!=', 'draft')]}">
+						<field name="appointment"  attrs="{'invisible':[('state', '!=', 'draft')]}">
 						-->
 
-						<field name="order">
+						<field name="appointment">
 
 							<tree string="">	
 								
 								<field name="name"/>
 
+
+								<!--
 								<field name="date_order"/>
 
 								<field name="partner_id"/>
@@ -42,7 +46,7 @@
 								<field name="state" invisible="0"/>
 
 								<field name="nr_lines"/>
-
+								-->
 
 								<!--
 								<field name="user_id"/>

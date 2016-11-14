@@ -189,6 +189,7 @@ Top
 							<!-- Buttons --> 
 							<div class="oe_left" style="width: 300px;" name="buttons">
 							
+
 								<!--
 								Consultations
 								-->
@@ -201,7 +202,8 @@ Top
 									<field string="Consultas" name="nr_consultations" widget="statinfo"/>
 								</button>
 								
-								
+							
+
 								<!--
 								Procedures
 								-->
@@ -213,7 +215,28 @@ Top
 									icon="fa-list">
 									<field string="Procedimientos" name="nr_procedures" widget="statinfo"/>
 								</button>
+						
+
+
+					            <!--
+					            Appointments 
+											'search_default_treatment': active_id,
+								-->
+								<button type="action" class="oe_stat_button" 
+
+									name="347" 
 								
+									context="{
+											'search_default_patient': patient, 'default_patient': patient, 'default_doctor' : physician
+											}" 
+								
+									icon="fa-calendar">
+				                
+				                	<field string="Citas" name="nr_apps" widget="statinfo"/>
+				            	</button>
+
+
+
 							</div>
 						
 						

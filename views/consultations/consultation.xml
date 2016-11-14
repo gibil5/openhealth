@@ -143,6 +143,24 @@
 								</button>
 								-->
 								
+
+								<!--
+								Appointments
+								-->
+								<button type="action" class="oe_stat_button" 
+
+									name="347" 
+								
+									context="{
+											'search_default_patient': patient, 'default_patient': patient, 'default_doctor' : doctor
+											}" 
+								
+									icon="fa-calendar">
+				                
+				                	<field string="Citas" name="nr_apps" widget="statinfo"/>
+				            	</button>
+
+
 							</div>
 						
 						

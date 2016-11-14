@@ -59,6 +59,11 @@ class Treatment(models.Model):
 	)
 
 
+
+
+
+
+
 	# Number of consultations 
 	nr_consultations = fields.Integer(
 			string="Nr Consultas",
@@ -129,6 +134,32 @@ class Treatment(models.Model):
 
 
 
+	# Number of appointments
+	
+	nr_apps = fields.Integer(
+				string="Citas",
+				compute="_compute_nr_apps",
+	)
+
+	@api.multi
+	
+	def _compute_nr_apps(self):
+		for record in self:
+
+			ctr = 0 
+			
+			#for c in record.consultation_ids:
+			#	for o in c.order:
+			#		ctr = ctr + 1		
+
+			record.nr_apps = ctr
+
+
+
+
+
+
+
 
 
 	# Consultations 
@@ -156,6 +187,14 @@ class Treatment(models.Model):
 
 
 
+	# Order 
+	#order = fields.One2many(
+	#		'sale.order',
+	#		'treatment', 
+	#		)
+
+
+
 
 
 
@@ -168,19 +207,29 @@ class Treatment(models.Model):
 			string="Presupuestos",
 
 			domain = [
-						('state', '=', 'draft'),
+
+						#('state', '=', 'draft'),
+						('state', 'in', ['draft', 'sent', 'sale', 'done'])
 					],
 			)
 
 
 
+	# Sales 
+	sale_ids = fields.One2many(
+			'sale.order',			 
+			'treatment', 
+
+			string="Ventas",
+
+			domain = [
+						#('state', '=', 'sale'),
+						('state', 'in', ['sale', 'done'])
+					],
+			)
 
 
-	# Order 
-	#order = fields.One2many(
-	#		'sale.order',
-	#		'treatment', 
-	#		)
+
 
 
 	
@@ -196,17 +245,6 @@ class Treatment(models.Model):
 
 
 
-	# Sales 
-	sale_ids = fields.One2many(
-			'sale.order',			 
-			'treatment', 
-
-			string="Ventas",
-
-			domain = [
-						('state', '=', 'sale'),
-					],
-			)
 
 
 
@@ -511,6 +549,8 @@ class Treatment(models.Model):
 			for co in record.consultation_ids:   
 				sub_total = sub_total + 1  
 			record.nr_consultations = sub_total  
+
+
 
 
 

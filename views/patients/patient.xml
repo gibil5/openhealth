@@ -93,15 +93,21 @@ Sheet
 						<div class="oe_left" style="width: 500px;">
 							<field name="image" widget="image" class="oe_left oe_avatar" options="{&quot;preview_image&quot;: &quot;image_medium&quot;, &quot;size&quot;: [90, 90]}"/>
 							<div class="oe_title">
-								<label string="Nombre completo" class="oe_edit_only"/>
+
+								<label string="Apellidos" class="oe_edit_only"/>
+								
 								<h1>
 									
 									<!--
 									<field name="name" required="1"/>
-									-->
 									<field name="name" class="oe_edit_only"/>
-
 									<field name="a_full_name"  class="oe_read_only" />
+
+									-->
+
+									<field name="name"  string="name"/>
+
+
 									
 
 								</h1>
@@ -171,9 +177,14 @@ Sheet
 
 							<group>						
 								<field name="a_first_name" />
+								<!--	
+								<field name="a_full_name"  string="a_full_name"/>
+								-->
 							</group>
 							<group>
-								<field name="a_last_name" />
+								<!--
+								<field name="a_last_name" 	/>
+								-->
 							</group>
 
 
@@ -207,9 +218,15 @@ Sheet
 						<group>
 							<group>
 
+								<!--
 								<field string='Fecha de nacimiento'  name="dob" required="1"/>
+								-->
+								<field string='Fecha de nacimiento'  name="dob" />
 
+								<!--
 								<field string='Sexo' name="sex" required="1"/>
+								-->
+								<field string='Sexo' name="sex" />
 
 								<!--
 								<field string='Estado civil'  name="marital_status" required="1"/>									
@@ -226,7 +243,10 @@ Sheet
 
 
 							<group>
+								<!--
 								<field name="a_allergies"  required="1"/>
+								-->
+								<field name="a_allergies"/>
 								<field name="a_first_contact"/>
 							</group>
 
@@ -259,6 +279,45 @@ Sheet
 		</record>
 
 
+
+
+
+
+
+		<!-- tree/list view -->
+		<!--
+		<record model="ir.ui.view" id="openhealth.patient_tree_view">
+		-->
+		<record model="ir.ui.view" id="oehealth.oeh_medical_patient_tree">
+			<field name="name">patient.tree</field>
+			<field name="model">oeh.medical.patient</field>
+			<field name="arch" type="xml">
+			<!--	
+			<field name="priority" eval="1"/>
+			-->
+
+				<tree string="Patient Tree">
+
+					<!--
+					<field name="id"/>
+					--> 
+					
+					<field name="name"  string="Apellidos"/>
+
+					<field name="a_first_name"  />
+					
+					<field string="Historia Médica"  name="identification_code"/>
+
+					<field name="sex"/>				
+					
+					<field name="dob"/>
+
+					<field name="age"/>
+
+				
+				</tree>
+			</field>
+		</record>
 
 
 

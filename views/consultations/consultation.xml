@@ -152,7 +152,7 @@
 									name="347" 
 								
 									context="{
-											'search_default_patient': patient, 'default_patient': patient, 'default_doctor' : doctor
+											'search_default_patient': patient, 'default_patient': patient, 'default_doctor' : doctor, 
 											}" 
 								
 									icon="fa-calendar">

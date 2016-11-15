@@ -3,6 +3,19 @@
 
 
 
+
+
+_first_contact_list = [
+		('none','Ninguno'), 
+		('recommendation','Recomendación'), 
+		('tv','Tv'), 
+		('radio','Radio'), 
+		('internet','Internet'), 
+		('website','Sitio web'), 
+		('mail_campaign','Campaña de mail'), 
+		]
+
+
 _street2_list = [
 
 	(1,'Lima'),
@@ -105,6 +118,8 @@ zip_dic_inv =  {
 		41:	'San Borja',
 		42:	'Villa El Salvador',
 		43:	'Santa Anita',
+
+		False: '',
 		
 		}
 

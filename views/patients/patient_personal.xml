@@ -97,8 +97,10 @@
 
 			<group>
 
+				<!--
 				<field string="email" name="email" widget="email" required="1"/>
-
+				--> 
+				<field string="email" name="email" widget="email" />
 
 				<!--
 				<field string="Teléfono 1" name="mobile" required="1"/>

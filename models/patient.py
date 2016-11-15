@@ -24,50 +24,101 @@ class Patient(models.Model):
 
 
 
+
 	# Names 
 	#name = fields.Char(
-	#	string = "Nombre completo", 	
-	#	required=False, 
-		#compute='_compute_name',
+		#required=True, 
 		#readonly=True, 
+		#string = "Nombre completo", 	
+
 		#default='x',
+
+		#compute='_compute_name',
 	#)
-	
-	
+
+
+	#'name': fields.char('Name', select=True),
+	#name = fields.Char(
+	#	string='Name', 
+	#	select=True,
+
+		#default='x',
+		#readonly=True, 
+		#compute='_compute_name',
+	#	)
+
+
+
+
+	#@api.depends('a_first_name', 'a_last_name')
+	#@api.multi
+
+	#def _compute_name(self):
+	#	for record in self:
+	#		if record.a_first_name and record.a_last_name:
+	#			#record.a_full_name = record.a_first_name.upper() + '  ' + record.a_last_name.upper()
+	#			record.name = record.a_first_name + ' ' + record.a_last_name
+
+
+
+	# On Change
+	#@api.onchange('a_first_name')
+	#def _onchange_first_name(self):
+	#	if self.a_first_name and self.a_last_name:
+	#		self.name = self.a_first_name + ' ' + self.a_last_name
+			#self.name = self.a_first_name.upper() + ' ' + self.a_last_name.upper()
+
+
+	#@api.onchange('a_last_name')
+	#def _onchange_last_name(self):
+	#	if self.a_first_name and self.a_last_name:
+	#		self.name = self.a_first_name + ' ' + self.a_last_name
+			#self.name = self.a_first_name.upper() + ' ' + self.a_last_name.upper()
+
+
+
+
 	# Names
 	a_full_name = fields.Char(
-		string = "Nombre completo", 	
-		#required=False, 
+		string = "Nombre completox", 	
 		compute='_compute_full_name',
 		#readonly=True, 
 		default='a',
+
+		#required=False, 
 	)
 	
+
 	@api.depends('a_first_name')
 	#@api.multi
 
 	def _compute_full_name(self):
 		for record in self:
 			#record.name = record.first_name.upper() + ' ' + record.last_name.upper()
-			record.a_full_name = record.a_first_name.upper() + '  ' + record.a_last_name.upper()
-			#record.name = record.name
-	#		print 'jx'
+			if record.a_first_name and record.a_last_name:
+				record.a_full_name = record.a_first_name.upper() + '  ' + record.a_last_name.upper()
+			
+			#print 'jx'
+
+
 
 
 	a_first_name = fields.Char(
-		string = "Nombre", 	
-		#quired=False, 
-		#required=True, 
-		default='b',		
+		string = "Nombres", 	
+		#required=False, 
+		required=True, 
+		default='',		
 	)
 
 
 	a_last_name = fields.Char(
-		string = "Apellido", 	
-		#required=True, 
+		string = "Apellidos", 	
 		#required=False, 
-		default='c',	
+		required=True, 
+		default='',	
 	)
+
+
 
 
 
@@ -106,12 +157,121 @@ class Patient(models.Model):
 
 
 
-	# DNI
+
+	# REQUIRED
+
+
+	age = fields.Char(
+			string = "Edad", 		
+			)
+
 	
+	sex = fields.Selection(
+			string="Sexo",
+
+			required=True, 
+			#required=False, 
+		)
+
+
+	dob = fields.Date(
+			string="Fecha nacimiento",
+
+			required=True, 
+			#required=False, 
+		)
+
+
 	a_dni = fields.Char(
 			string = "DNI", 	
+	
 			required=True, 
+			#required=False, 
 			)
+
+	a_allergies = fields.Char(
+			string = "Alergias", 	
+			
+			required=True, 
+			#required=False, 
+			)
+
+
+	a_first_contact = fields.Selection(
+			selection = pat_vars._first_contact_list, 
+			#string = '¿ Primer contacto con la clínica ?',
+			string = '¿ Cómo se enteró ?',
+			#default = 'none', 
+			
+			required=True, 
+			#required=False, 
+			)
+
+	street = fields.Char(
+			string = "Dirección", 	
+			
+			required=True, 
+			#required=False, 
+		)
+
+
+	street2 = fields.Char(
+			string = "Distrito", 	
+			
+			required=True, 
+			#required=False, 
+		)
+
+	zip = fields.Integer(
+			string = 'Código',  
+			#compute='_compute_zip', 
+
+			required=True, 			
+			#required=False, 			
+			)
+
+	email = fields.Char(
+			string = 'email',  
+			placeholder = '',
+
+			required=True, 
+			#required=False, 
+			)
+
+	country_id = fields.Many2one(
+			'res.country', 
+			string = 'País', 
+			#default = 'Perú', 
+			#default = '51', 
+
+			required=True, 
+			#required=False, 
+			)
+
+	city = fields.Selection(
+			#selection = _city_list, 
+			selection = pat_vars._city_list, 
+			string = 'Departamento',  
+			#default = ('lima','Lima'), 
+			default = 'lima', 
+
+			required=True, 
+			#required=False, 
+		)
+
+	phone_1 = fields.Char(
+		string="Teléfono 1",
+
+		required=True, 
+		#required=False, 
+		)
+
+
+
+
+
+
+
 
 
 
@@ -136,10 +296,6 @@ class Patient(models.Model):
 
 	# Phone 1
 
-	phone_1 = fields.Char(
-		string="Teléfono 1",
-		required=True, 
-		)
 
 	@api.onchange('phone_1')
 
@@ -198,30 +354,11 @@ class Patient(models.Model):
 
 
 
-	_first_contact_list = [
-			('none','Ninguno'), 
-			('recommendation','Recomendación'), 
-			('tv','Tv'), 
-			('radio','Radio'), 
-			('internet','Internet'), 
-			('website','Sitio web'), 
-			('mail_campaign','Campaña de mail'), 
-			]
-
-	a_first_contact = fields.Selection(
-			selection = _first_contact_list, 
-			#string = '¿ Primer contacto con la clínica ?',
-			string = '¿ Cómo se enteró ?',
-			#default = 'none', 
-			required=True, 
-			)
 
 
 
-	a_allergies = fields.Char(
-			string = "Alergias", 	
-			#required=True, 
-			)
+
+
 
 
 	a_treatment_ids = fields.One2many(
@@ -419,16 +556,6 @@ class Patient(models.Model):
 
 
 	# EXISTENT
-	street = fields.Char(
-			string = "Dirección", 	
-			required=True, 
-		)
-
-
-	street2 = fields.Char(
-			string = "Distrito", 	
-			required=True, 
-		)
 
 
 
@@ -468,27 +595,12 @@ class Patient(models.Model):
 
 
 
-	city = fields.Selection(
-
-			#selection = _city_list, 
-			selection = pat_vars._city_list, 
-
-			string = 'Departamento',  
-			#default = ('lima','Lima'), 
-			default = 'lima', 
-			required=True, 
-		)
 
 
 
 
 
 
-	zip = fields.Integer(
-			string = 'Código',  
-			required=True, 			
-			#compute='_compute_zip', 
-			)
 
 
 	#@api.multi
@@ -530,22 +642,6 @@ class Patient(models.Model):
 			#required=True, 
 	#		)
 
-	email = fields.Char(
-			string = 'email',  
-			placeholder = '',
-			#required=True, 
-			)
-
-
-
-
-	country_id = fields.Many2one(
-			'res.country', 
-			string = 'País', 
-			#default = 'Perú', 
-			#default = '51', 
-			required=True, 
-			)
             
 
 

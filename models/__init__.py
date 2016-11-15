@@ -39,6 +39,8 @@ from . import control
 from . import session 
 
 
+from . import appointment 
+
 
 
 #from . import jxvars

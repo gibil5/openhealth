@@ -7,6 +7,8 @@
 
 from openerp import models, fields, api
 
+import math
+
 
 class sale_order(models.Model):
 	
@@ -365,13 +367,48 @@ class sale_order_line(models.Model):
 		)
 
 
+
+
 	x_price_vip = fields.Float(
 			string="Price Vip",
 		)
 
+	x_price_vip_wigv = fields.Float(
+			string="Price Vip",
+
+			compute="_compute_x_price_vip_wigv",
+		)
+
+	#@api.multi
+	@api.depends('x_price_vip')
+	
+	def _compute_x_price_vip_wigv(self):
+		for record in self:
+			record.x_price_vip_wigv = math.ceil(record.x_price_vip * 118.0)
+
+
+
+
+
+
 	x_price = fields.Float(
 			string="Price Std",
 		)
+
+	x_price_wigv = fields.Float(
+			string="Price",
+
+			compute="_compute_x_price_wigv",
+		)
+
+
+	#@api.multi
+	@api.depends('x_price')
+	
+	def _compute_x_price_wigv(self):
+		for record in self:
+			record.x_price_wigv = math.ceil(record.x_price * 118.0)
+
 
 
 	#x_mark = fields.Char(

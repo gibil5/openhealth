@@ -8,8 +8,11 @@
 from openerp import models, fields, api
 from datetime import datetime
 
+from datetime import tzinfo
+
 import jxvars
 
+import treatment_funcs
 
 
 
@@ -77,6 +80,7 @@ class Treatment(models.Model):
 			for c in record.consultation_ids:
 				ctr = ctr + 1
 			record.nr_consultations = ctr
+
 
 
 
@@ -245,6 +249,15 @@ class Treatment(models.Model):
 
 
 
+	@api.multi
+	def create_procedure(self):
+
+		print 
+		print 'Create Procedure'
+
+		ret = treatment_funcs.create_procedure_go(self)
+		print ret 
+		print 
 
 
 
@@ -257,52 +270,7 @@ class Treatment(models.Model):
 
 
 			
-	# Create procedure 
-	@api.multi
-	def create_procedure(self):
-		print 
-		print 'jx'
-		print 'Create Procedure'
-		
-		name = 'name'
-		patient = self.patient.id
-		doctor = self.physician.id
-		treatment = self.id
-		
-		
-		chief_complaint = self.chief_complaint
 
-
-		#for service in self.consultation_ids.service_co2_ids:
-		#	product = service.service.id
-		
-		
-		
-		#for line in self.consultation_ids.order.order_line:	
-		for line in self.sale_ids.order_line:
-			
-			
-			#if (not line.procedure_created) and (self.consultation_ids.order):
-
-			if not line.procedure_created:
-				
-				line.procedure_created = True
-				
-				product = line.product_id.id
-				
-				ret = self.procedure_ids.create({
-											'patient':patient,
-											'doctor':doctor,
-											'chief_complaint':chief_complaint,
-											'treatment':treatment,										
-											'product':product,
-									})
-				print ret 
-
-
-		print 
-	
-	
 
 
 
@@ -608,12 +576,39 @@ class Treatment(models.Model):
 
 	@api.multi
 	def open_consultation_current(self):  
+		print 
+		print 'open consultation'
 
 		patient_id = self.patient.id
 		doctor_id = self.physician.id
 		treatment_id = self.id 
 
 		chief_complaint = self.chief_complaint
+
+
+
+		# Date 
+		GMT = treatment_funcs.Zone(0,False,'GMT')
+		print GMT()
+
+		#evaluation_start_date = datetime.today()
+		
+		
+		#evaluation_start_date = datetime.today().strftime("%Y-%m-%d %H:%M:%S")
+		#evaluation_start_date = datetime.today().strftime("%Y-%m-%d")
+		#evaluation_start_date = datetime.now().strftime("%Y-%m-%d")
+
+		#evaluation_start_date = datetime.now(GMT).strftime("%Y-%m-%d")
+
+
+		evaluation_start_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
+		print evaluation_start_date 
+
+		#date_format = "%m-%d-%Y"
+		#evaluation_start_date = datetime.strptime(evaluation_start_date, date_format)
+
+		#print evaluation_start_date 
+		print 
 
 		return {
 
@@ -648,6 +643,9 @@ class Treatment(models.Model):
 				'default_treatment': treatment_id,
 				
 				'default_chief_complaint': chief_complaint,
+
+
+				'default_evaluation_start_date': evaluation_start_date,
 			}
 		}
 
@@ -656,45 +654,6 @@ class Treatment(models.Model):
 
 
 
-	# Button - Procedure 
-	# -------------------
-	@api.multi
-	def open_procedure_current(self):  
-
-		patient_id = self.patient.id
-		doctor_id = self.physician.id
-
-		#chief_complaint = self.chief_complaint
-		
-		treatment_id = self.id 
-
-		return {
-
-			# Mandatory 
-			'type': 'ir.actions.act_window',
-			'name': 'Open Procedure Current',
-
-			# Window action 
-			'res_model': 'openhealth.procedure',
-
-			# Views 
-			"views": [[False, "form"]],
-
-			'view_mode': 'form',
-
-			'target': 'current',
-
-			'context':   {
-				'search_default_treatment': treatment_id,
-
-				'default_patient': patient_id,
-				'default_doctor': doctor_id,
-				'default_treatment': treatment_id,
-				
-				#'default_chief_complaint': chief_complaint,
-				
-			}
-		}
 
 
 

@@ -225,6 +225,7 @@
 					<field name="laser"/>
 
 
+					<field name="nr_sessions"/>
 					<field name="nr_controls"/>
 					
 					<field name="treatment"/>

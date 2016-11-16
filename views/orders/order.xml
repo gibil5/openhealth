@@ -64,8 +64,35 @@
 
 
 
+
+
+					<field name="vspace"/>
+					<!--
+					-->
+					<group col="3">
+
+						<group>
+						</group>
+
+						<group>
+						</group>
+
+						<group>
+							<field name="x_price_total"/>
+							<field name="x_price_vip_total"/>
+						</group>
+					</group>
+
 				</field>
 
+
+
+
+				<field name="amount_untaxed" position="replace">
+				</field>
+
+				<field name="amount_tax" position="replace">
+				</field>
 
 
 

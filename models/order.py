@@ -335,7 +335,54 @@ class sale_order(models.Model):
 		return self.nr_lines
 
 	
+
+
+
+	# Total 
+	x_price_total = fields.Float(
+			string="Total",
+			default=5.0,
+
+			compute="_compute_x_price_total",
+		)
+
+	x_price_vip_total = fields.Float(
+			string="Total Vip",
+			default=3.0,
+
+			compute="_compute_x_price_vip_total",
+		)
+
 	
+
+	@api.multi
+	#@api.depends('x_price')
+	
+	def _compute_x_price_total(self):
+		for record in self:			
+			total = 0 
+
+			for line in record.order_line:
+				#total = total + line.price_total 
+				total = total + line.x_price_wigv 
+
+			record.x_price_total = total 
+
+
+
+	@api.multi
+	#@api.depends('x_price_vip')
+	
+	def _compute_x_price_vip_total(self):
+		for record in self:			
+			total = 0 
+
+			for line in record.order_line:
+				total = total + line.x_price_vip_wigv
+
+			record.x_price_vip_total = total 
+
+
 #sale_order()
 
 
@@ -374,7 +421,7 @@ class sale_order_line(models.Model):
 		)
 
 	x_price_vip_wigv = fields.Float(
-			string="Price Vip",
+			string="Precio Vip",
 
 			compute="_compute_x_price_vip_wigv",
 		)
@@ -384,9 +431,16 @@ class sale_order_line(models.Model):
 	
 	def _compute_x_price_vip_wigv(self):
 		for record in self:
-			record.x_price_vip_wigv = math.ceil(record.x_price_vip * 118.0)
+
+			if record.x_price_vip == 0.0:
+				#record.x_price_vip = record.x_price
+				price_vip = record.x_price
+			else:
+				price_vip = record.x_price_vip
 
 
+			#record.x_price_vip_wigv = math.ceil(record.x_price_vip * 1.18)
+			record.x_price_vip_wigv = math.ceil(price_vip * 1.18)
 
 
 
@@ -396,7 +450,7 @@ class sale_order_line(models.Model):
 		)
 
 	x_price_wigv = fields.Float(
-			string="Price",
+			string="Precio",
 
 			compute="_compute_x_price_wigv",
 		)
@@ -407,7 +461,11 @@ class sale_order_line(models.Model):
 	
 	def _compute_x_price_wigv(self):
 		for record in self:
-			record.x_price_wigv = math.ceil(record.x_price * 118.0)
+			record.x_price_wigv = math.ceil(record.x_price * 1.18)
+
+
+
+
 
 
 

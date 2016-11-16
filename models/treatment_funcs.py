@@ -5,6 +5,7 @@ from datetime import datetime,tzinfo,timedelta
 from openerp import models, fields, api
 
 
+import time_funcs
 
 
 #------------------------------------------------ Buttons ---------------------------------------------------
@@ -26,7 +27,7 @@ def create_procedure_go(self):
 
 
 
-	GMT = Zone(0,False,'GMT')
+	GMT = time_funcs.Zone(0,False,'GMT')
 	evaluation_start_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
 
 
@@ -119,19 +120,7 @@ def open_procedure_current(self):
 
 
 
-#------------------------------------------------ Time ---------------------------------------------------
 
-class Zone(tzinfo):
-    def __init__(self,offset,isdst,name):
-        self.offset = offset
-        self.isdst = isdst
-        self.name = name
-    def utcoffset(self, dt):
-        return timedelta(hours=self.offset) + self.dst(dt)
-    def dst(self, dt):
-            return timedelta(hours=1) if self.isdst else timedelta(0)
-    def tzname(self,dt):
-         return self.name
 
 
 

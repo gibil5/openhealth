@@ -14,6 +14,8 @@ import jxvars
 
 import treatment_funcs
 
+import time_funcs
+
 
 
 
@@ -588,8 +590,6 @@ class Treatment(models.Model):
 
 
 		# Date 
-		GMT = treatment_funcs.Zone(0,False,'GMT')
-		print GMT()
 
 		#evaluation_start_date = datetime.today()
 		
@@ -601,6 +601,8 @@ class Treatment(models.Model):
 		#evaluation_start_date = datetime.now(GMT).strftime("%Y-%m-%d")
 
 
+		GMT = time_funcs.Zone(0,False,'GMT')
+		print GMT
 		evaluation_start_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
 		print evaluation_start_date 
 

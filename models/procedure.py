@@ -8,6 +8,8 @@ from datetime import datetime
 
 import jxvars
 
+import time_funcs
+
 
 
 
@@ -150,6 +152,14 @@ class Procedure(models.Model):
 		laser = self.laser
 		
 
+		# Date 		
+		GMT = time_funcs.Zone(0,False,'GMT')
+		print GMT
+		evaluation_start_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
+		print evaluation_start_date 
+		print 
+
+
 		return {
 
 			# Mandatory 
@@ -177,6 +187,8 @@ class Procedure(models.Model):
 				'default_product': product_id,
 				'default_laser': laser,
 				
+				'default_evaluation_start_date': evaluation_start_date,
+
 			}
 		}
 
@@ -189,8 +201,9 @@ class Procedure(models.Model):
 	# Open Session  
 
 	@api.multi
-
 	def open_session(self):  
+		print 
+		print 'open session'
 
 		procedure_id = self.id 
 
@@ -202,7 +215,14 @@ class Procedure(models.Model):
 		product_id = self.product.id
 		laser = self.laser
 		
-		
+
+		# Date 		
+		GMT = time_funcs.Zone(0,False,'GMT')
+		print GMT
+		evaluation_start_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
+		print evaluation_start_date 
+		print 
+
 		return {
 
 			# Mandatory 
@@ -229,7 +249,9 @@ class Procedure(models.Model):
 								
 				'default_product': product_id,
 				'default_laser': laser,
-				
+
+
+				'default_evaluation_start_date': evaluation_start_date,
 			}
 		}
 

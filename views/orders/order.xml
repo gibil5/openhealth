@@ -48,14 +48,15 @@
             	        	--> 
             	        	<field name="x_price_vip_wigv"/>
 
-
+            	        	<!--
             	        	<field name="price_unit"/>
-
+							-->
             	        	<!--
             	        	<field name="tax_id"/>
+            	        	<field name="price_subtotal"/>
 							--> 
 
-            	        	<field name="price_subtotal"/>
+            	        	<field name="price_total"/>
 
 						</tree>
 

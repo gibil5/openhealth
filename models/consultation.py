@@ -52,11 +52,17 @@ class Consultation(models.Model):
 
 	# Redefinition 
 
-	chief_complaint = fields.Selection(
+
+	chief_complaint = fields.Selection(			# Necessary 
 			string = 'Motivo de consulta', 
-			selection = jxvars._pathology_list, 
+
+			#selection = jxvars._pathology_list, 
+			selection = jxvars._chief_complaint_list, 
+
 			required=True, 
 			)
+
+
 
 	evaluation_type = fields.Selection(
 			default = 'Pre-arraganged Appointment', 

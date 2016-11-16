@@ -66,11 +66,16 @@ class Evaluation(models.Model):
 			)
 
 
+
 	chief_complaint = fields.Selection(
 			string = 'Motivo de consulta', 
-			selection = jxvars._pathology_list, 
+
+			#selection = jxvars._pathology_list, 
+			selection = jxvars._chief_complaint_list, 
+
 			required=True, 
 			)
+
 
 	evaluation_type = fields.Selection(
 			selection = eval_vars.EVALUATION_TYPE, 

@@ -411,6 +411,31 @@ class sale_order_line(models.Model):
 
 
 
+
+
+
+	# Price Subtotal 
+
+	#x_price_subtotal_wigv = fields.Float(
+	#		string="Subtotal",
+
+	#		compute="_compute_x_price_subtotal_wigv",
+	#	)
+
+	#@api.multi
+	#@api.depends('price_subtotal')
+	
+	#def _compute_x_price_subtotal_wigv(self):
+	#	for record in self:
+	#		record.x_price_subtotal_wigv = math.ceil(record.price_subtotal * 118.0)
+
+
+
+
+
+
+
+
 	#x_mark = fields.Char(
 	#	default='mark',
 	#)

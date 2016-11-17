@@ -39,19 +39,26 @@
 
 					<field name="id"/>
 
+
+
+
+					<!--
+					-->
 					<field name="name"/>
 
 
 					<field name="x_time"/>				
 					<field name="x_sessions"/>				
 
+					<!--
+					<field name="x_client_type"/>				
+					-->
 
 					<field name="x_date_updated"/>
 					<field name="list_price"/>
+
 					<field name="x_price_vip"/>
 
-					<!--
-					-->
 
 
 

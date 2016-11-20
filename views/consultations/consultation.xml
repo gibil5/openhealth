@@ -226,6 +226,8 @@
 
 							<group>								
 								<field name="evaluation_start_date"	string="Fecha"/>
+
+
 							</group>							
 							<group>								
 								<field name="x_fitzpatrick"  />	
@@ -233,10 +235,13 @@
 
 
 							<group>								
-								<field name="x_observation"  />	
+								<field name="appointment"  />	
 							</group>							
 							<group>								
 								<field name="x_photo_aging"  />	
+
+								<field name="x_observation"  />	
+
 							</group>
 
 

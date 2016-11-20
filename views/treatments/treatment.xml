@@ -236,7 +236,7 @@ Top
 								
 									icon="fa-calendar">
 				                
-				                	<field string="Citas" name="nr_apps" widget="statinfo"/>
+				                	<field string="Citas" name="nr_appointments" widget="statinfo"/>
 				            	</button>
 
 
@@ -470,27 +470,37 @@ Notebook
 					
 					<field name="name"/>
 
+					<!--
 					<field name="treatment_open"/>
-					
+					-->
 					<field name="patient"/>
 					
 					<field name="physician"/>
 					
 					<field name="start_date"/>
+
+					<!--
 					<field name="end_date"/>
-					
+					-->
+
 					<field name="duration"/>
 
 
 					<field name="chief_complaint"	string="Motivo"/>
+
+
+
+					<field name="nr_appointments"/>
 					
 					<field name="nr_consultations"	string="Consultas"	style="text-align:center;"/>
+
 					<field name="nr_orders"/>
 
-
 					<field name="nr_procedures"		string="Procedimientos"	style="color:red;"/>
+
 					<field name="nr_controls"/>
 
+					<field name="nr_sessions"/>
 
 					<!--
 					<field name="nr_evaluations"/>

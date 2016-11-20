@@ -2,6 +2,32 @@
 
 
 
+_time_list = [
+		('5 min','5 min'),	
+		('15 min','15 min'),	
+		('30 min','30 min'),
+		('none',''),
+		]
+
+
+#_nr_sessions_list = [
+#		('NORMAL','1'),	
+#		('TARJETA VIP','6'),
+		
+#		('none',''),
+#		]
+
+_nr_sessions_list = [
+		('1','1'),	
+		('6','6'),
+		
+		('none',''),
+		]
+
+
+
+
+
 _face_list = [
 	
 		('rosacea',	'Rosácea'),	
@@ -82,12 +108,6 @@ _stains_list = [
 
 
 
-#_time_list = [
-#		('15 min','15 min'),	
-#		('30 min','30 min'),
-#		
-#		('none',''),
-#		]
 
 
 _ctype_list = [
@@ -98,12 +118,6 @@ _ctype_list = [
 		]
 		
 
-_nr_sessions_list = [
-		('NORMAL','1'),	
-		('TARJETA VIP','6'),
-		
-		('none',''),
-		]
 				
 
 

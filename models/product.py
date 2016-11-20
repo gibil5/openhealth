@@ -15,6 +15,15 @@ class Product(models.Model):
 
 
 
+	x_date_updated = fields.Date(
+			)
+
+	x_date_created = fields.Date(
+			)
+
+
+
+
 	x_price_vip = fields.Float(
 		string = 'Precio VIP - nex',
 	)
@@ -47,11 +56,18 @@ class Product(models.Model):
 
 
 
-	x_date_updated = fields.Date(
-			#string = "", 	
-			#default = fields.Date.today, 
-			#required=True, 
-			)
+
+
+	#x_sessions = fields.Integer(
+	x_sessions = fields.Char(
+		string = 'Sesiones',
+		
+		default="",
+	)
+
+
+
+
 
 
 

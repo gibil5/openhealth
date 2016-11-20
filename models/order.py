@@ -28,14 +28,26 @@ class sale_order(models.Model):
 
 
 
+	_state_list = [
+        			('pre-draft', 'Pre-Quotation'),
+
+        			('draft', 'Quotation'),
+        			('sent', 'Quotation Sent'),
+        			('sale', 'Sale Order'),
+        			('done', 'Done'),
+        			('cancel', 'Cancelled'),
+        		]
+
 	state = fields.Selection(
-			#selection = _state_list, 
+			selection = _state_list, 
+
+
 			#string='Status', 			
 			
 			#readonly=True, 
 			readonly=False, 
 
-	#		default='draft'
+			#default='draft'
 
 			#copy=False, 
 			#index=True, 
@@ -50,10 +62,11 @@ class sale_order(models.Model):
 			)
 	
 	
-	order_line = field_One2many=fields.One2many('sale.order.line',
+	order_line = field_One2many=fields.One2many(
+		'sale.order.line',
 		'order_id',
-		#string='Order',
 
+		#string='Order',
 		#compute="_compute_order_line",
 		)
 
@@ -197,11 +210,24 @@ class sale_order(models.Model):
 
 
 
+
+
+	# Create Line 
+
 	@api.multi 
 	def create_line(self, order_id, se):
-		
+		print 'create line'
+
 		product_id = se.service.id
 		name = se.name_short
+
+
+		# Consultation 
+		consultation = self.consultation
+		print consultation 
+		print consultation.id
+
+
 
 		x_price_vip = se.service.x_price_vip
 		x_price = se.service.list_price
@@ -228,13 +254,22 @@ class sale_order(models.Model):
 			print 'create new'
 
 			ol = self.order_line.create({
+
 										'product_id': product_id,
+										
 										'order_id': order_id,
+
+										
+										'consultation':consultation.id,
+										'state':'pre-draft',
+
+
 										'name': name,
 
 										'price_unit': price_unit,
 
 										'x_price_vip': x_price_vip,
+										
 										'x_price': x_price,
 
 										'product_uom': se.service.uom_id.id, 
@@ -391,18 +426,40 @@ class sale_order(models.Model):
 
 
 
+
+# Order line 
+
 class sale_order_line(models.Model):
 
+	#_name = 'openhealth.order_line'
 	_inherit='sale.order.line'
 
 
+	#_inherit='sale.order.line, openhealth.line'
+	#_inherit=['sale.order.line','openhealth.line']
+
+
+
+
 	order_id=fields.Many2one(
-
 		'sale.order',
-		#'openhealth.order',
-
 		string='Order',
 		)
+
+
+#sale_order_line()
+
+
+
+
+
+
+# Line 
+
+#class line(models.Model):
+	#_name = 'openhealth.line'
+
+
 
 
 	consultation = fields.Many2one('openhealth.consultation',
@@ -466,50 +523,22 @@ class sale_order_line(models.Model):
 
 
 
+	_state_list = [
+        			('pre-draft', 'Pre-Quotation'),
 
+        			('draft', 'Quotation'),
+        			('sent', 'Quotation Sent'),
+        			('sale', 'Sale Order'),
+        			('done', 'Done'),
+        			('cancel', 'Cancelled'),
+        		]
 
+	state = fields.Selection(
+				selection = _state_list, 
+				
+				string="State",
 
-
-
-
-	# Price Subtotal 
-
-	#x_price_subtotal_wigv = fields.Float(
-	#		string="Subtotal",
-
-	#		compute="_compute_x_price_subtotal_wigv",
-	#	)
-
-	#@api.multi
-	#@api.depends('price_subtotal')
-	
-	#def _compute_x_price_subtotal_wigv(self):
-	#	for record in self:
-	#		record.x_price_subtotal_wigv = math.ceil(record.price_subtotal * 118.0)
-
-
-
-
-
-
-
-
-	#x_mark = fields.Char(
-	#	default='mark',
-	#)
-
-	#product_id = fields.Many2one(
-	#	'product.product',
-	#	'order_line',
-	#	domain = [
-	#				('type', '=', 'service'),
-	#				('x_treatment', '=', 'laser_co2'),
-	#			],
-
-	#	)
-
-#sale_order_line()
-
+				)
 
 
 

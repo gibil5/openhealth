@@ -19,33 +19,79 @@ class Appointment(models.Model):
 	name = fields.Char(
 			#string="", 
 			#default='',
-			compute='_compute_name', 
+
+			#compute='_compute_name', 
 			required=True, 
 			)
 
 
-	@api.multi
+
+
+
+	vspace = fields.Char(
+			' ', 
+			readonly=True
+			)
+
+
+
+
+	# Type 
+	_type_list = [
+        			('consultation', 'Consulta'),
+
+        			('procedure', 'Procedimiento'),
+
+        			('session', 'Sesión'),
+
+        			('control', 'Control'),
+
+        		]
+
+	x_type = fields.Selection(
+				selection = _type_list, 
+				
+				string="Tipo",
+				required=True, 
+				)
+
+
+
+
+
+	# ----------------------------------------------------------- Treatment ------------------------------------------------------
+
+	treatment = fields.Many2one('openextension.treatment',
+			string="Tratamiento",
+
+			required=True, 
+
+			ondelete='cascade', 
+			)
+
+
+
+
+
+
+	#@api.multi
 	#@api.depends('start_date')
 
-	def _compute_name(self):
+	#def _compute_name(self):
+	#	print 'compute name'
+	#	for record in self:
+	#		idx = record.id
+	#		if idx < 10:
+	#			pre = 'AP000'
+	#		elif idx < 100:
+	#			pre = 'AP00'
+	#		elif idx < 1000:
+	#			pre = 'AP0'
+	#		else:
+	#			pre = 'AP'
+	#		record.name =  pre + str(idx) 
+	#	print self.name 
+	#	print 
 
-		print 'compute name'
 
-		for record in self:
-
-			idx = record.id
-
-			if idx < 10:
-				pre = 'AP000'
-			elif idx < 100:
-				pre = 'AP00'
-			elif idx < 1000:
-				pre = 'AP0'
-			else:
-				pre = 'AP'
-
-			record.name =  pre + str(idx) 
-		
-		print self.name 
-		print 
 

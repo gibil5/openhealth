@@ -14,7 +14,7 @@
 			<field name="arch" type="xml">
 				<notebook position="inside">
 					
-					<page string="Líneas">
+					<page string="Servicios">
 
 
 						<!--
@@ -50,5 +50,18 @@
 				</notebook>
 			</field>
 		</record>
+
+
+
+
+
+
+
+
+
+
+
+
+
 	</data>
 </openerp>

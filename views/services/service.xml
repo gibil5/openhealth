@@ -133,6 +133,7 @@
 				<tree string="Service Tree">
 				
 					<field name="name"/>
+					
 					<field name="id"/>
 
 					<field name="laser"/>				

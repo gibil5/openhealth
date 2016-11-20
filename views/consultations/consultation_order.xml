@@ -24,9 +24,11 @@
 						<field name="order"/>
 
 						<field name="order"  attrs="{'invisible':[('state', '!=', 'draft')]}">
-						-->
 
 						<field name="order">
+						-->
+
+						<field name="pre_order">
 
 							<tree string="">	
 								

@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+		<!--
+		Treatmentt - Appointments
+		-->
+		<record model="ir.ui.view" id="treatment_appointment_form_view">
+			<field name="name">treatment.appointment.form</field>
+			<field name="model">openextension.treatment</field>
+			<field name="priority" eval="1"/>
+			
+			<field name="inherit_id" ref="treatment_form_view"/>
+
+			<field name="arch" type="xml">
+
+				
+				<notebook position="inside">
+					
+					<page string="Citas">
+
+
+
+						<!--
+
+						<field name="appointment"  attrs="{'invisible':[('state', '!=', 'draft')]}">
+
+						<field name="appointment_ids">
+
+							<tree string="">	
+								
+								<field name="name"/>
+
+
+							</tree>
+						</field>				
+						-->
+						
+						<field name="appointment_ids"/>
+						
+
+					</page>
+				</notebook>
+			</field>
+		</record>
+	</data>
+</openerp>

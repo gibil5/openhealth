@@ -15,7 +15,7 @@
     'description': """
 
 		Installed: 	 	7 Sep 2016.\n 
-		Last built: 	17 Nov 2016.\n 
+		Last built: 	20 Nov 2016.\n 
 		\n
 
 		This is my first extension for oeHealth.
@@ -75,21 +75,24 @@
 		# Consultation
 		'views/consultations/consultation.xml',
 		'views/consultations/consultation_first.xml',
-		'views/consultations/consultation_services_co2.xml',
-		'views/consultations/consultation_services_excilite.xml',
-		'views/consultations/consultation_services_ipl.xml',
-		'views/consultations/consultation_services_ndyag.xml',
-		'views/consultations/consultation_order.xml',
 
-		'views/consultations/consultation_appointment.xml',
+		'views/consultations/consultation_order.xml',
+		'views/consultations/consultation_order_lines.xml',
+
+
+		#'views/consultations/consultation_services_co2.xml',
+		#'views/consultations/consultation_services_excilite.xml',
+		#'views/consultations/consultation_services_ipl.xml',
+		#'views/consultations/consultation_services_ndyag.xml',
+		#'views/consultations/consultation_medical_treatment.xml',
+
 
 		#'views/evaluations/consultation_services.xml',
-		#'views/evaluations/consultation_order_lines.xml',
 		#'views/evaluations/consultation_procedures.xml',
 
+		
 
-		'views/consultations/consultation_medical_treatment.xml',
-
+		'views/consultations/consultation_appointment.xml',
 
 
 		
@@ -126,6 +129,7 @@
 
 		'views/treatments/treatment_procedures.xml',
 		
+		'views/treatments/treatment_appointments.xml',
 		
 		
 		

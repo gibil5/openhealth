@@ -29,6 +29,40 @@ class Treatment(models.Model):
 
 
 
+	# Appointments 
+
+	appointment_ids = fields.One2many(
+			'oeh.medical.appointment', 
+			'treatment', 
+
+			string = "Citas", 
+			)
+
+
+	# Number of appointments
+	
+	nr_appointments = fields.Integer(
+				string="Citas",
+				compute="_compute_nr_appointments",
+	)
+
+	@api.multi
+	
+	def _compute_nr_appointments(self):
+		for record in self:
+
+			ctr = 0 
+			
+			for c in record.appointment_ids:
+				ctr = ctr + 1		
+
+			record.nr_appointments = ctr
+
+
+
+
+
+
 	# Evaluation  
 
 	#evaluation_ids = fields.One2many(
@@ -103,19 +137,6 @@ class Treatment(models.Model):
 
 
 
-	# Number of controls 
-	nr_controls = fields.Integer(
-			string="Controles",
-			compute="_compute_nr_controls",
-	)
-	@api.multi
-	def _compute_nr_controls(self):
-		for record in self:
-			ctr = 0 
-			for p in record.procedure_ids:
-				for c in p.control_ids:
-					ctr = ctr + 1
-			record.nr_controls = ctr
 
 	
 	
@@ -140,25 +161,41 @@ class Treatment(models.Model):
 
 
 
-	# Number of appointments
-	
-	nr_apps = fields.Integer(
-				string="Citas",
-				compute="_compute_nr_apps",
+
+
+	# Number of controls 
+	nr_controls = fields.Integer(
+			string="Controles",
+			compute="_compute_nr_controls",
 	)
-
 	@api.multi
-	
-	def _compute_nr_apps(self):
+	def _compute_nr_controls(self):
 		for record in self:
-
 			ctr = 0 
-			
-			#for c in record.consultation_ids:
-			#	for o in c.order:
-			#		ctr = ctr + 1		
+			for p in record.procedure_ids:
+				for c in p.control_ids:
+					ctr = ctr + 1
+			record.nr_controls = ctr
 
-			record.nr_apps = ctr
+
+
+
+	# Number of sessions 
+	nr_sessions = fields.Integer(
+			string="Sesiones",
+			compute="_compute_nr_sessions",
+	)
+	@api.multi
+	def _compute_nr_sessions(self):
+		for record in self:
+			ctr = 0 
+			for p in record.procedure_ids:
+				for c in p.session_ids:
+					ctr = ctr + 1
+			record.nr_sessions = ctr
+
+
+
 
 
 

@@ -4,6 +4,40 @@
 
 
 
+		<record model="ir.ui.view" id="view_appointment">
+			<field name="name">oeh.medical.appointment.form</field>
+			<field name="model">oeh.medical.appointment</field>
+
+			<field name="inherit_id" ref="oehealth.oeh_medical_appointment_view"/>			
+
+	        <field name="mode">primary</field>
+
+	        <field name="priority" eval="1"/>
+			<field name="arch" type="xml">
+
+
+
+
+				<field name="patient_status" position="after">
+
+					<!--
+					-->
+					<group>
+						<field name="vspace"/>
+
+						<!--
+						<field name="evaluation_ids"/>
+						-->
+						<field name="x_type"/>
+						<field name="treatment"/>
+					</group>
+
+				</field>
+
+
+
+			</field>
+		</record>
 
 
 
@@ -33,17 +67,23 @@
 
 					<field name="id"/>
 
+					<field name="patient"/>
+
+					<field name="doctor"/>
+
 					<field name="state"/>
+
+
+
+					<field name="treatment"/>
+
+
+
 
 					<field name="evaluation_ids"/>
 
 					<field name="appointment_date"/>
 					
-					<field name="patient"/>
-
-					<field name="doctor"/>
-
-
 					<field name="appointment_end"/>
 
 

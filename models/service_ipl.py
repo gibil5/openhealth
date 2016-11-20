@@ -24,6 +24,20 @@ class ServiceIpl(models.Model):
 					],
 	)
 
+
+	time_1 = fields.Selection(
+			
+			#selection = ndyag._time_list, 
+			selection = ipl._time_list, 
+			
+			string="Tiempo", 
+			default='none',	
+	)
+
+
+
+
+
 			
 
 	# Propietary

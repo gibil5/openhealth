@@ -20,6 +20,80 @@ class Consultation(models.Model):
 
 
 
+
+	# Order line 
+
+	pre_order = fields.One2many(		
+			'sale.order',		
+			'consultation', 
+			string="Pre Order",
+			
+			domain = [
+						('state', '=', 'pre-draft'),
+					],
+			)
+
+
+
+	order_line = field_One2many=fields.One2many(
+			'sale.order.line',
+	
+			'consultation',
+	
+			domain = [
+						#('order_id', '=', pre_order),
+						('state', '=', 'pre-draft'),
+					],
+
+		#compute='_compute_order_line', 
+	)
+
+
+
+	#@api.multi
+	#@api.depends('order')
+	@api.depends('service_co2_ids')
+	
+	def _compute_order_line(self):
+
+		print 
+		print "Compute order line"
+		
+		consultation_id = self.id
+
+		print self.pre_order
+		print self.pre_order.id 
+
+		order_id = self.pre_order.id
+		#order_id = self.order.id
+		
+		
+		for record in self:	
+			#record.order_line.id = record.order.order_line.id
+			
+			for se in record.service_co2_ids:
+				print se.name 
+
+				ol = record.order_line.create({
+											'product_id': se.service.id,
+											'name': se.name_short,
+											'product_uom': se.service.uom_id.id,
+
+
+											'consultation': consultation_id,											
+											'order_id': order_id,
+
+											#'order_id': consultation_id,											
+										})
+
+		print 
+
+
+
+
+
+
+
 	# Number of appointments
 	
 	nr_apps = fields.Integer(
@@ -76,6 +150,9 @@ class Consultation(models.Model):
 
 	treatment = fields.Many2one('openextension.treatment',
 			string="Tratamiento",
+
+			required=True, 
+
 			ondelete='cascade', 
 			)
 
@@ -281,16 +358,9 @@ class Consultation(models.Model):
 		print 'create_order_current'
 
 
-		# Order 
-		#order_id = self.order.id		
-		order_id = self.env['sale.order'].search([
-													('consultation','=',self.id),
-													('state','=','draft'),
-												]).id
 
 		# Treatment
 		treatment_id = self.treatment.id 
-
 
 		# Consultation
 		consultation_id = self.id 
@@ -301,7 +371,60 @@ class Consultation(models.Model):
 		# Partner
 		#partner_id = self.env['res.partner'].search([('name','=',self.patient.name)]).id
 		partner_id = self.env['res.partner'].search([('name','=',self.patient.name)],limit=1).id
+
+
+
+
+
+
+		# Order 
+		#order_id = self.order.id		
+		order_id = self.env['sale.order'].search([
+													('consultation','=',self.id),
+													('state','=','draft'),
+												]).id
+		print order_id
+
+
+		# Create 
+		if order_id == False:
+
+			print 'create order'
+			order = self.env['sale.order'].create(
+													{
+
+														'treatment': treatment_id,
+														'partner_id': partner_id,
+														'patient': patient_id,	
+
+														'consultation':self.id,
+														'state':'draft',
+													}
+												)
+
+			# Create order lines 
+			ret = order.x_create_order_lines()
+			print ret 
+
+
+
+			# Copy 
+			pre_order = order.copy({
+								#'state':'sale',
+								#'state':'sent',
+								'state':'pre-draft',
+							})	
+
+
+			order_id = order.id 
+			print order
 		
+
+		print order_id
+		print 
+
+		
+
 
 		return {
 
@@ -310,15 +433,9 @@ class Consultation(models.Model):
 			'name': ' Create Quotation Current', 
 			'view_type': 'form',
 			'view_mode': 'form',
-			
-
-			
+						
 			'res_model': 'sale.order',
-			#'res_model': 'openhealth.order',
-
-
 			
-			#'res_id': 23,
 			'res_id': order_id,
 			
 			
@@ -332,12 +449,11 @@ class Consultation(models.Model):
 			'context':   {
 
 				'default_consultation': consultation_id,
-
 				'default_treatment': treatment_id,
-
-
 				'default_partner_id': partner_id,
-				'default_patient': patient_id,				
+				'default_patient': patient_id,	
+
+
 
 			}
 		}

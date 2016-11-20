@@ -2,6 +2,16 @@
 
 
 
+_time_list = [
+		('15 min','15 min'),	
+		#('30 min','30 min'),
+		
+		('none',''),
+]	
+
+
+
+
 _face_list = [
 		
 		('telangiectasia','Telangectacias'),	
@@ -24,11 +34,5 @@ _body_list = [
 
 
 
-_time_list = [
-		('15 min','15 min'),	
-		#('30 min','30 min'),
-		
-		('none',''),
-]	
 		
 		

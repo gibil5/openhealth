@@ -59,16 +59,19 @@ class Appointment(models.Model):
 
 
 
-	# ----------------------------------------------------------- Treatment ------------------------------------------------------
+	# ----------------------------------------------------------- Indexes ------------------------------------------------------
 
 	treatment = fields.Many2one('openextension.treatment',
 			string="Tratamiento",
-
 			required=True, 
-
 			ondelete='cascade', 
 			)
 
+
+	consultation = fields.Many2one('openhealth.consultation',
+		string="Consulta",
+		ondelete='cascade', 
+	)
 
 
 

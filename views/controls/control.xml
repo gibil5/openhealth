@@ -105,7 +105,7 @@
 								<field name="evaluation_start_date"/>
 							</group>
 							<group>
-								<field name="product"/>
+								<field name="laser"/>
 							</group>
 
 
@@ -113,11 +113,14 @@
 								<field name="evaluation_next_date"/>
 							</group>
 							<group>
-								<field name="laser"/>
+								<field name="product"/>
 							</group>
 
 
 							<group>
+
+								<field name="appointment"  />	
+
 							</group>
 							<group>
 								<field name="observation"/>
@@ -189,6 +192,9 @@
            </field>
        </record>
 
+
+
+
 		<!-- Window Form Action --> 
 		<record model="ir.actions.act_window" id="control_form_action">
 			<field name="name">Controles</field>
@@ -208,6 +214,8 @@
 		</record>
 		
 		
+
+
 		
 		
 		<!-- Window List action -->

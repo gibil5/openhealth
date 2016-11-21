@@ -13,16 +13,29 @@ import jxvars
 
 class Session(models.Model):
 	_name = 'openhealth.session'
-
 	_inherit = 'oeh.medical.evaluation'
+
+
+
+			
+			
+
+
+	# Appointments 
+
+	appointment_ids = fields.One2many(
+			'oeh.medical.appointment', 
+			'session', 
+
+			string = "Citas", 
+			)
+
 
 
 
 	name = fields.Char(
 			string = 'Sesión #',
 			)
-			
-			
 
 
 	# Relational 

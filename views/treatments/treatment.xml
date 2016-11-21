@@ -327,50 +327,7 @@ Notebook
 
 
 
-							<!--
-								 Consultation 
-							-->
-							<page string="Consultas">
 
-								<field name="consultation_ids">
-									
-									<!--
-									<tree editable="bottom">										
-	                                -->
-									<tree string="Consultas">										
-										
-										<!--
-										<field string="Consulta #"  name="name"/>
-										-->
-										<!--
-										<field string='Tipo' name="evaluation_type"/>		
-										<field name="treatment_id"/>
-										-->								
-
-										<field  name="name"/>
-											
-										<field string="Paciente" name="patient"/>
-										<field string="Médico" name="doctor"/>
-										<field name="evaluation_start_date"/>
-
-
-										<field name="chief_complaint"/>
-										<field string="Tratamiento" name="treatment"/>
-											
-																				
-										<!--
-											Button
-										-->
-										<button 
-											type="object" 
-											class="oe_highlight"	
-											string="E"
-											name="open_line_current" 
-										/>
-										
-									</tree>
-								</field>
-							</page>
 
 
 

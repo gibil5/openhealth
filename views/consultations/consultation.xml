@@ -342,6 +342,10 @@
            </field>
        </record>
 
+
+
+
+
 		<!-- Window Form Action --> 
 		<record model="ir.actions.act_window" id="consultation_form_action">
 			<field name="name">Consultas</field>

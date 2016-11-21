@@ -123,6 +123,10 @@
         # Treatments 
 		'views/treatments/treatment.xml',
 
+
+		'views/treatments/treatment_consultations.xml',
+
+
 		'views/treatments/treatment_sales.xml',
 
 		'views/treatments/treatment_quotations.xml',

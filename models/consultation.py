@@ -21,6 +21,19 @@ class Consultation(models.Model):
 
 
 
+	# Appointments 
+
+	appointment_ids = fields.One2many(
+			'oeh.medical.appointment', 
+			'consultation', 
+
+			string = "Citas", 
+			)
+
+
+
+
+
 	# Order line 
 
 	pre_order = fields.One2many(		

@@ -170,16 +170,19 @@
 								<field name="evaluation_start_date"/>
 							</group>
 							<group>
-								<field name="product"/>
 							</group>
 
 
 							<group>
+
+								<field name="appointment"  />	
+
 							</group>
 							<group>
 								<!--
 								<field name="laser"/>
 								-->
+								<field name="product"/>
 							</group>
 
 						</group>
@@ -246,6 +249,11 @@
                </search>
            </field>
        </record>
+
+
+
+
+       
 	   
 		<!-- Window Form Action --> 
 		<record model="ir.actions.act_window" id="procedure_form_action">

@@ -46,11 +46,20 @@ class Evaluation(models.Model):
 			)
 
 
+
 	patient = fields.Many2one(
 			'oeh.medical.patient',
 			string = "Paciente", 	
 			required=True, 
 	)
+
+	patient_id = fields.Integer(
+			default=3025, 
+	)
+
+
+
+
 
 	doctor = fields.Many2one(
 			'oeh.medical.physician',

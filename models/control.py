@@ -20,9 +20,24 @@ class Control(models.Model):
 
 
 
+
+	# Appointments 
+
+	appointment_ids = fields.One2many(
+			'oeh.medical.appointment', 
+			'control', 
+
+			string = "Citas", 
+			)
+
+
+
+
+
 	name = fields.Char(
 			string = 'Control #',
 			)
+
 
 	observation = fields.Text(
 			string="Observación",

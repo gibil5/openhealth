@@ -9,7 +9,9 @@
 		<record model="ir.ui.view" id="treatment_sale_form_view">
 			<field name="name">treatment.sale.form</field>
 			<field name="model">openextension.treatment</field>
-			<field name="priority" eval="1"/>
+
+			<field name="priority" eval="4"/>
+			
 			<field name="inherit_id" ref="treatment_form_view"/>
 			<field name="arch" type="xml">
 				<notebook position="inside">

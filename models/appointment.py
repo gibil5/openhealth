@@ -36,6 +36,14 @@ class Appointment(models.Model):
 
 
 
+
+	patient_id = fields.Integer(
+			default=3025, 
+	)
+
+	
+
+
 	# Type 
 	_type_list = [
         			('consultation', 'Consulta'),
@@ -59,6 +67,7 @@ class Appointment(models.Model):
 
 
 
+
 	# ----------------------------------------------------------- Indexes ------------------------------------------------------
 
 	treatment = fields.Many2one('openextension.treatment',
@@ -72,6 +81,24 @@ class Appointment(models.Model):
 		string="Consulta",
 		ondelete='cascade', 
 	)
+
+
+	procedure = fields.Many2one('openhealth.procedure',
+		string="Procedimiento",
+		ondelete='cascade', 
+	)
+
+
+	session = fields.Many2one('openhealth.session',
+		string="Sesión",
+		ondelete='cascade', 
+	)
+
+	control = fields.Many2one('openhealth.control',
+		string="Control",
+		ondelete='cascade', 
+	)
+
 
 
 

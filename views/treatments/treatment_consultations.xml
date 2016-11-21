@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+		<!--
+		Treatment - Consultations
+		-->
+		<record model="ir.ui.view" id="treatment_consultation_form_view">
+			<field name="name">treatment.consultation.form</field>
+			<field name="model">openextension.treatment</field>
+
+			<field name="priority" eval="2"/>
+			
+			<field name="inherit_id" ref="treatment_form_view"/>
+			<field name="arch" type="xml">
+
+
+				<notebook position="inside">
+					
+
+
+							<!--
+								 Consultations
+							-->
+							<page string="Consultas">
+
+								<field name="consultation_ids">
+									
+									<!--
+									<tree editable="bottom">										
+	                                -->
+									<tree string="Consultas">										
+										
+										<!--
+										<field string="Consulta #"  name="name"/>
+										-->
+										<!--
+										<field string='Tipo' name="evaluation_type"/>		
+										<field name="treatment_id"/>
+										-->								
+
+										<field  name="name"/>
+											
+										<field string="Paciente" name="patient"/>
+										<field string="Médico" name="doctor"/>
+										<field name="evaluation_start_date"/>
+
+
+										<field name="chief_complaint"/>
+										<field string="Tratamiento" name="treatment"/>
+											
+																				
+										<!--
+											Button
+										-->
+										<button 
+											type="object" 
+											class="oe_highlight"	
+											string="E"
+											name="open_line_current" 
+										/>
+										
+									</tree>
+								</field>
+							</page>
+
+
+
+				</notebook>
+			</field>
+		</record>
+	</data>
+</openerp>

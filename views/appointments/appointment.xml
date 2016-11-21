@@ -16,29 +16,55 @@
 			<field name="arch" type="xml">
 
 
+				<!--
+				<xpath expr="//field[@name='description']" position="after">
 
+				<xpath expr="//field[@name='patient_status']" position="after">
+				-->
 
+				<xpath expr="//notebook" position="before">
+				<!--
 				<field name="patient_status" position="after">
+				-->
+
+					<group>
 
 					<!--
 					-->
-					<group>
-						<field name="vspace"/>
 
-						<!--
-						<field name="evaluation_ids"/>
-						-->
-						<field name="x_type"/>
-						<field name="treatment"/>
-						<field name="consultation"/>
+						<group col="2">
+							<field name="vspace"/>
+
+							<!--
+							<field name="evaluation_ids"/>
+							-->
+							<field name="x_type"/>
+							<field name="treatment"/>
+
+							<field name="consultation"/>
+							<field name="procedure"/>
+
+							<field name="session"/>
+							<field name="control"/>
+						</group>
+
+						<group>
+						</group>
+
+
 					</group>
 
+				<!--
 				</field>
+				-->
+				</xpath>
 
 
 
 			</field>
 		</record>
+
+
 
 
 
@@ -78,17 +104,23 @@
 
 
 					<field name="treatment"/>
+
 					<field name="consultation"/>
 
+					<field name="procedure"/>
 
 
+					<field name="session"/>
+					<field name="control"/>
 
-					<field name="evaluation_ids"/>
+
 
 					<field name="appointment_date"/>
 					
+					<!--
 					<field name="appointment_end"/>
-
+					<field name="evaluation_ids"/>
+					-->
 
 					<!--
 					-->
@@ -144,20 +176,43 @@
 
 		<!-- Window action -->
 		<record model="ir.actions.act_window" id="oeh_medical_appointment_list_action">
-			<field name="name">Appointments</field>
+			<field name="name">Citas</field>
 			<field name="res_model">oeh.medical.appointment</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 
 			<!--
-			<field name="context">{'order': 'x_name_short'}</field>
             
             <field name="domain">[
 									('type', '=', 'service'),
 									('x_treatment', '=', 'laser_co2'),
             					]</field>
+
+
+			<field name="context">{
+
+									'order': 'x_name_short'
+
+									'default_patient': 3025,	
+
+									}	
+
+
+
+									'default_patient': patient_id,	
 			-->
+
+			<field name="context">{
+
+
+									}	
+			</field>
+
 		</record>
+
+
+
+
 
 		<!-- Menu -->
 		<menuitem id="oeh_medical_appointment_menu" name="Citas"

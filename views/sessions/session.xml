@@ -105,18 +105,19 @@
 								<field name="evaluation_start_date"/>
 							</group>
 							<group>
+								<field name="laser"/>
+							</group>
+
+
+							<group>
+
+								<field name="appointment"  />	
+
+							</group>
+							<group>
 								<!--
 								-->
 								<field name="product"/>
-							</group>
-
-
-							<group>
-							</group>
-							<group>
-								<!--
-								-->
-								<field name="laser"/>
 							</group>
 
 						</group>
@@ -181,9 +182,12 @@
            </field>
        </record>
 
+
+
+
 		<!-- Window Form Action --> 
 		<record model="ir.actions.act_window" id="session_form_action">
-			<field name="name">sessiones</field>
+			<field name="name">Sesiones</field>
 			<field name="res_model">openhealth.session</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>

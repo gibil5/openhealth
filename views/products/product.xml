@@ -54,9 +54,9 @@
 					<!--
 					<field name="x_client_type"/>				
 
-					<field name="x_date_created"/>
 					-->
 
+					<field name="x_date_created"/>
 					<field name="x_date_updated"/>
 
 
@@ -115,6 +115,7 @@
 									('x_treatment', '=', 'laser_co2'),
             					]</field>
 		</record>
+
 
 		<!-- Menu -->
 		<menuitem id="product_template_co2_menu" name="Productos Co2"

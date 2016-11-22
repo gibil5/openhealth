@@ -1,8 +1,40 @@
 # -*- coding: utf-8 -*-
 
 
+#from openerp import models, fields, api
+#import time_funcs
+#from datetime import datetime,tzinfo,timedelta
+
+
+
+
+
+
+
 
 # Test
+
+def test_name(self, token):
+		
+	print 
+	print 'on change name'
+	print 
+
+
+	if token != False:
+
+		nr_words = len(token.split())
+
+
+		if nr_words == 1:
+			return {
+					'warning': {
+						'title': "Error: Apellido incompleto: ",
+						'message': token,
+					}}
+
+
+
 
 def test_for_digits(self, token):
 		

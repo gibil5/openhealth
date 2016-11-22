@@ -16,17 +16,23 @@
 				
 				<form string="Evaluation">
 
+
 					<!-- Header --> 
 					<header>
-						<!--
+						
+
+
+
 						<button 
 							type="object" 
 							class="oe_highlight"
-							string="Crear session"
-							name="open_session" 	
-						/>	
-						-->				
+							string="Cita" 
+
+							name="open_appointment" 
+						/>
+				
 					</header>
+
 					
 
 							
@@ -86,7 +92,7 @@
 							-->
 							
 							<group>
-								<field name="procedure"/>
+								<field name="procedure"		string="jx"/>
 							</group>
 							<group>
 								<field name="evaluation_type"	invisible="0"/>

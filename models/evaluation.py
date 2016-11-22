@@ -116,3 +116,11 @@ class Evaluation(models.Model):
 			record.laser = record.product.x_treatment 
 
 
+
+
+
+
+
+
+
+

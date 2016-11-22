@@ -428,7 +428,7 @@ _chief_complaint_list = [
 
 			#('none','Ninguno'),
 
-			('acne',			'Acné'),	# Medical 
+			#('acne',			'Acné'),	# Medical 
 
 
 			('acne_active','Acné Activo'),
@@ -445,7 +445,7 @@ _chief_complaint_list = [
 			#('scar_3','Cicatriz Grande'),
 			
 			
-			('depilation','Depilacion'),
+			('depilation','Depilación'),
 			
 			('emangiomas','Hemangiomas'),
 			

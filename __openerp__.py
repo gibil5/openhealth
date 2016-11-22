@@ -15,20 +15,22 @@
     'description': """
 
 		Installed: 	 	7 Sep 2016.\n 
-		Last built: 	20 Nov 2016.\n 
+		Last built: 	22 Nov 2016.\n 
 		\n
 
 		This is my first extension for oeHealth.
 		Completely independent and self-referecing.\n
 		It provides the following objects:
-            - Patients
-            - Treatments
-            - Evaluations
-            - Consultations
-            - Procedures
-            - Controls 
-            - Services
-            - Orders
+            - Patients,
+            - Treatments,
+            - Evaluations,
+            - Consultations,
+            - Procedures,
+            - Controls,
+            - Sessions,
+            - Services,
+            - Orders,
+            - Appointments,
             
     """,
 
@@ -77,7 +79,8 @@
 		'views/consultations/consultation_first.xml',
 
 		'views/consultations/consultation_order.xml',
-		'views/consultations/consultation_order_lines.xml',
+		#'views/consultations/consultation_order_lines.xml',
+
 
 
 		#'views/consultations/consultation_services_co2.xml',
@@ -85,6 +88,7 @@
 		#'views/consultations/consultation_services_ipl.xml',
 		#'views/consultations/consultation_services_ndyag.xml',
 		#'views/consultations/consultation_medical_treatment.xml',
+
 
 
 		#'views/evaluations/consultation_services.xml',
@@ -108,6 +112,8 @@
 		
 
 
+
+
 		# Controls
 		'views/controls/control.xml',
 		#'views/controls/control_protocols.xml',
@@ -116,6 +122,8 @@
 		# sessions
 		'views/sessions/session.xml',
 		'views/sessions/session_configuration.xml',
+
+
 
 
 		
@@ -198,6 +206,7 @@
 		# Invoices
 		#'views/treatments/invoice.xml',
 
+		
 		
         # Patients 
         'views/patients/patient.xml',

@@ -16,6 +16,19 @@
 			<field name="arch" type="xml">
 
 
+
+
+				<xpath expr="//field[@name='institution']" position="replace">
+					<field name="x_duration_min"/>
+				</xpath>
+
+				<xpath expr="//field[@name='patient_status']" position="replace">
+				</xpath>
+
+				<xpath expr="//field[@name='urgency_level']" position="replace">
+				</xpath>
+
+
 				<!--
 				<xpath expr="//field[@name='description']" position="after">
 
@@ -33,19 +46,30 @@
 					-->
 
 						<group col="2">
-							<field name="vspace"/>
 
 							<!--
 							<field name="evaluation_ids"/>
 							-->
+
+							<field name="appointment_end"/>
+
+							<field name="vspace"/>
+
+
+
+
 							<field name="x_type"/>
+
 							<field name="treatment"/>
 
-							<field name="consultation"/>
-							<field name="procedure"/>
 
-							<field name="session"/>
-							<field name="control"/>
+							<field name="consultation"	attrs="{'invisible':[('x_type', '!=', 'consultation')]}"/>
+
+							<field name="procedure"   	attrs="{'invisible':[('x_type', '!=', 'procedure')]}"/>
+
+							<field name="session"		attrs="{'invisible':[('x_type', '!=', 'session')]}"/>
+
+							<field name="control"		attrs="{'invisible':[('x_type', '!=', 'control')]}"/>
 						</group>
 
 						<group>
@@ -103,19 +127,22 @@
 					<field name="x_type"/>
 
 
+
 					<field name="treatment"/>
-
 					<field name="consultation"/>
-
+					<!--
 					<field name="procedure"/>
-
-
+					-->
 					<field name="session"/>
 					<field name="control"/>
 
 
-
 					<field name="appointment_date"/>
+					<field name="appointment_end"/>
+
+					<field name="duration"/>
+					<field name="x_duration_min"/>
+
 					
 					<!--
 					<field name="appointment_end"/>

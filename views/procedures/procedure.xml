@@ -33,6 +33,17 @@
 							attrs="{'invisible':[('laser', '!=', 'laser_co2')]}"
 						/>
 
+
+
+
+						<button 
+							type="object" 
+							class="oe_highlight oe_right"
+							string="Cita" 
+
+							name="open_appointment" 
+						/>
+
 					</header>
 					
 

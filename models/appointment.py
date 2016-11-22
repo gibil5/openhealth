@@ -36,10 +36,63 @@ class Appointment(models.Model):
 
 
 
+	# Duration
 
-	patient_id = fields.Integer(
-			default=3025, 
-	)
+
+	_hash_duration = {
+					'0.25' 	: 0.25, 
+     				'0.5' 	: 0.5, 
+     				'0.75' 	: 0.75, 
+     				'1.0' 	: 1.0, 
+				}
+
+
+
+
+	_duration_list = [
+        			('0.25', 	'15 min'),
+
+        			('0.5', 	'30 min'),
+
+        			('0.75', 	'45 min'),
+
+        			('1.0', 	'60 min'),
+        		]
+
+
+
+
+	x_duration_min = fields.Selection(
+			#'', 
+			#readonly=True
+			selection = _duration_list, 
+		)
+
+	@api.onchange('x_duration_min')
+
+	def _onchange_x_duration_min(self):
+
+		if self.x_duration_min != False:	
+			self.duration = self._hash_duration[self.x_duration_min]
+
+
+
+
+	duration = fields.Float(
+	#duration = fields.Selection(
+			#'', 
+			#readonly=True
+			#selection = _duration_list, 
+		)
+
+
+
+
+
+
+
+
+
 
 	
 
@@ -72,7 +125,7 @@ class Appointment(models.Model):
 
 	treatment = fields.Many2one('openextension.treatment',
 			string="Tratamiento",
-			required=True, 
+			required=False, 
 			ondelete='cascade', 
 			)
 
@@ -122,6 +175,55 @@ class Appointment(models.Model):
 	#		record.name =  pre + str(idx) 
 	#	print self.name 
 	#	print 
+
+
+
+
+# ----------------------------------------------------------- Open ------------------------------------------------------
+
+	@api.multi
+	def open_popup(self):
+	#def open_current(self):
+
+		#the best thing you can calculate the default values 
+		# however you like then pass them to the context
+
+		print 
+		print 'open popup'
+		print 
+
+		return {
+
+        	'type': 'ir.actions.act_window',
+
+        	'name': 'Import Module',
+
+        	'view_type': 'form',
+
+        	'view_mode': 'form',
+
+
+			#'target': 'new',
+			'target': 'current',
+
+
+        	'res_model': 'oeh.medical.appointment',
+
+
+        	'context': {
+
+        			#'default_partner_id':value, 			
+        			#'default_other_field':othervalues
+        			
+        			'default_patient':3025, 			
+        			},
+
+    		}
+
+
+
+
+
 
 
 

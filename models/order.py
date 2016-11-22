@@ -43,6 +43,7 @@ class sale_order(models.Model):
 
 
 			#string='Status', 			
+			string='Estado',	
 			
 			#readonly=True, 
 			readonly=False, 
@@ -460,8 +461,6 @@ class sale_order_line(models.Model):
 	#_name = 'openhealth.line'
 
 
-
-
 	consultation = fields.Many2one('openhealth.consultation',
 			ondelete='cascade', 
 		)
@@ -469,6 +468,32 @@ class sale_order_line(models.Model):
 	procedure_created = fields.Boolean(
 			default=False,
 		)
+
+
+
+
+
+
+	_state_list = [
+        			('pre-draft', 'Pre-Quotation'),
+
+        			('draft', 'Quotation'),
+        			('sent', 'Quotation Sent'),
+        			('sale', 'Sale Order'),
+        			('done', 'Done'),
+        			('cancel', 'Cancelled'),
+        		]
+
+	state = fields.Selection(
+				selection = _state_list, 
+				
+				string="State",
+
+				)
+
+
+
+
 
 
 
@@ -523,22 +548,38 @@ class sale_order_line(models.Model):
 
 
 
-	_state_list = [
-        			('pre-draft', 'Pre-Quotation'),
 
-        			('draft', 'Quotation'),
-        			('sent', 'Quotation Sent'),
-        			('sale', 'Sale Order'),
-        			('done', 'Done'),
-        			('cancel', 'Cancelled'),
-        		]
 
-	state = fields.Selection(
-				selection = _state_list, 
-				
-				string="State",
 
-				)
+	price_total = fields.Float(
+			
+			string="Total",
+
+			#compute="_compute_price_total",
+		)
+
+	#@api.multi
+	#@api.depends('x_price')	
+	#def _compute_price_total(self):
+	#	for record in self:
+	#		record.x_price_wigv = math.ceil(record.x_price * 1.18)
+
+
+
+	#@api.onchange('price_total')
+	
+	#def _onchange_price_total(self):
+	#	print 
+	#	print 'on change price total'
+	#	print self.price_total
+
+	#	self.price_total = math.ceil(self.price_total)
+
+	#	print self.price_total
+	#	print 
+
+
+
 
 
 

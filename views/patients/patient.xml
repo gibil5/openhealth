@@ -105,7 +105,7 @@ Sheet
 
 									-->
 
-									<field name="name"  string="name"/>
+									<field name="name"    required="1"/>
 
 
 									
@@ -299,11 +299,11 @@ Sheet
 				<tree string="Patient Tree">
 
 					<!--
+					<field name="id"/>
 					--> 
 					
 					<field name="name"  string="Apellidos"/>
 
-					<field name="id"/>
 
 					<field name="a_first_name"  />
 					
@@ -336,6 +336,15 @@ Sheet
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 			
+
+			<field name="context">{'order': 'name'}</field>
+
+            <field name="domain">[
+									('sex', '=', 'Male'),
+            					]</field>
+
+
+
 			<!--
             <field name="domain">[]</field>
             <field name="context">{}</field>
@@ -352,20 +361,24 @@ Sheet
 
 		<!-- Menus --> 
 		<!-- top level menu: no parent -->
+		<!--
 		<menuitem id="main_openextension_menu" name="Open Health"/>
+		-->
 
-
-		<!-- A first level in the left side menu is needed
-		before using action= attribute -->
+		<!-- A first level in the left side menu is needed before using action= attribute -->
+		<!--
 		<menuitem id="openextension_menu" name="Open Health"
 			parent="main_openextension_menu"/>
+		--> 
+
 
 
 		<!-- the following menuitem should appear *after*
 		its parent openextension_menu and *after* its
 		action treatment_list_action -->
-		<menuitem id="treatments_menu" name="Tratamientos" parent="openextension_menu"
-			action="treatment_list_action"/>
+		<menuitem id="openhealth_patients_menu" name="Pacientes" 
+			parent="openhealth_menu"
+			action="patient_list_action"/>
 
 
 		<!-- Full id location:

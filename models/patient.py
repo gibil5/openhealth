@@ -50,6 +50,24 @@ class Patient(models.Model):
 
 
 
+
+	# On Change
+	@api.onchange('name')
+	
+	def _onchange_name(self):
+
+		ret = jrfuncs.test_name(self, self.name)
+
+		return ret
+
+
+
+
+
+
+
+
+
 	#@api.depends('a_first_name', 'a_last_name')
 	#@api.multi
 
@@ -126,8 +144,10 @@ class Patient(models.Model):
 
 	# Date created 
 	a_date_created = fields.Date(
-			string = "Fecha de apertura", 	
-			#default = fields.Date.today, 
+			string = "Fecha de apertura",
+
+			default = fields.Date.today, 
+			
 			#readonly = True, 
 			required=True, 
 			#default='z',
@@ -238,15 +258,34 @@ class Patient(models.Model):
 			#required=False, 
 			)
 
+
+
+	#@api.multi
+	#def get_country_id(self):		
+	#	print
+	#	print 'get country id'
+	#	country = self.env['res.country'].search([('name', 'like', 'Peru')])
+	#	print country
+	#	country_id = country.id
+	#	print country_id
+	#	print 
+	#	return country_id
+
+
+
 	country_id = fields.Many2one(
 			'res.country', 
 			string = 'País', 
-			#default = 'Perú', 
-			#default = '51', 
 
-			required=True, 
+			#default = 'Peru', 
+			default = 175,
+
 			#required=False, 
+			required=True, 
 			)
+
+
+
 
 	city = fields.Selection(
 			#selection = _city_list, 

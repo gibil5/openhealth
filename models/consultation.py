@@ -4,10 +4,19 @@
 # 
 
 from openerp import models, fields, api
-from datetime import datetime
+
+#from datetime import datetime
+from datetime import datetime,tzinfo,timedelta
+
 
 import jxvars
+
+import jrfuncs
+
+
 import eval_vars
+
+import time_funcs
 
 
 
@@ -18,6 +27,11 @@ class Consultation(models.Model):
 
 
 
+
+	# Owner 
+	owner_type = fields.Char(
+			default = 'consultation',
+		)
 
 
 
@@ -121,7 +135,8 @@ class Consultation(models.Model):
 
 			ctr = 0 
 			
-			for a in record.appointment:
+			#for a in record.appointment:
+			for a in record.appointment_ids:
 				ctr = ctr + 1		
 
 			record.nr_apps = ctr
@@ -531,7 +546,8 @@ class Consultation(models.Model):
 				'type': 'ir.actions.act_window',
 				'name': ' New Service Current - Laser Co2', 
 				'view_type': 'form',
-				'view_mode': 'form',			
+				'view_mode': 'form',	
+						
 				'target': 'current',
 
 				'res_model': 'openhealth.service.co2',				
@@ -728,4 +744,70 @@ class Consultation(models.Model):
 							}
 				}
 					
+
+
+
+
+
+	# Open Appointment
+	# -----------------
+	@api.multi
+	def open_appointment(self):  
+
+		print 
+		print 'open appointment'
+
+		owner_id = self.id 
+		owner_type = self.owner_type
+
+		patient_id = self.patient.id
+		doctor_id = self.doctor.id
+		treatment_id = self.treatment.id 
+
+
+
+		GMT = time_funcs.Zone(0,False,'GMT')
+		appointment_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
+		#appointment_date = '2016-12-23'
+
+
+		return {
+				'type': 'ir.actions.act_window',
+
+				'name': ' New Appointment', 
 				
+				'view_type': 'form',
+				
+				#'view_mode': 'form',			
+				'view_mode': 'calendar',			
+				
+				'target': 'current',
+				
+
+				'res_model': 'oeh.medical.appointment',				
+				
+				'flags': 	{
+							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+							'form': {'action_buttons': True, }
+							},
+
+
+				'context': {
+							'default_consultation': owner_id,					
+							'default_treatment': treatment_id,
+							'default_patient': patient_id,
+							'default_doctor': doctor_id,
+
+							'default_x_type': owner_type,
+
+
+							'default_appointment_date': appointment_date,
+							}
+				}
+
+
+
+
+
+
+

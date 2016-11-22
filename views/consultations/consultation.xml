@@ -79,7 +79,6 @@
 
 
 
-
 						<button 
 							type="object" 
 							class="oe_highlight oe_right"
@@ -87,6 +86,19 @@
 
 							name="create_order_current" 
 						/>
+
+
+
+						<button 
+							type="object" 
+							class="oe_highlight oe_right"
+							string="Cita" 
+
+							name="open_appointment" 
+						/>
+
+
+
 						
 						
 					</header>
@@ -144,8 +156,12 @@
 								-->
 								
 
+
+
 								<!--
 								Appointments
+											'default_consultation': consultation_id,				
+											'default_treatment': treatment_id,
 								-->
 								<button type="action" class="oe_stat_button" 
 
@@ -153,6 +169,7 @@
 								
 									context="{
 											'search_default_patient': patient, 'default_patient': patient, 'default_doctor' : doctor, 
+
 											}" 
 								
 									icon="fa-calendar">
@@ -161,9 +178,12 @@
 				            	</button>
 
 
+
 							</div>
 						
 						
+
+
 							<!-- Number --> 
 							<div class="oe_right" >
 								<div class="oe_title" >
@@ -235,7 +255,9 @@
 
 
 							<group>								
+								<!--
 								<field name="appointment"  />	
+								-->
 							</group>							
 							<group>								
 								<field name="x_photo_aging"  />	
@@ -297,6 +319,7 @@
 					
 					<field name="nr_orders"/>
 					
+					<field name="nr_apps"/>
 					
 					<field name="treatment"/>
 

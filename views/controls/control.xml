@@ -18,14 +18,18 @@
 
 					<!-- Header --> 
 					<header>
-						<!--
+
+
+
+
 						<button 
 							type="object" 
 							class="oe_highlight"
-							string="Crear Control"
-							name="open_control" 	
-						/>	
-						-->				
+							string="Cita" 
+
+							name="open_appointment" 
+						/>
+
 					</header>
 					
 

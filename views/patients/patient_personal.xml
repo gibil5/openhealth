@@ -54,25 +54,23 @@
 								-->
 								
 								
+								
 								<!--
+								Address 
 								-->
-								
-								<field name="street"  /> 
-								
-
-
-
+								<field name="country_id" class="oe_no_button" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
 
 								<field name="city" style="width: 40%"/>
 
-								<!--
-								<field name="street2" />
-								-->									
+
+
+
 								<field name="street2_sel"    	attrs="{'invisible':[('city', '!=', 'lima')]}"/>
 								
 								<field name="street2_char" 		attrs="{'invisible':[('city', '==', 'lima')]}"/>
 
 								<field name="street2" 			invisible="1"/>
+
 
 
 								<!--
@@ -81,10 +79,12 @@
 								<field name="zip" class="oe_no_button" style="width: 37%" options="{&quot;no_open&quot;: True}" on_change="onchange_state(state_id)"   	attrs="{'invisible':[('city', '!=', 'lima')]}" />
 
 
+								<field name="street"  /> 
+
+
 
 
 								
-								<field name="country_id" class="oe_no_button" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
 
 
 

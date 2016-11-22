@@ -4,6 +4,12 @@
 
 # Test
 
+
+
+
+
+
+
 def test_for_digits(self, token):
 		
 	print 

@@ -15,7 +15,7 @@
     'description': """
 
 		Installed: 	 	7 Sep 2016.\n 
-		Last built: 	22 Nov 2016.\n 
+		Last built: 	23 Nov 2016.\n 
 		\n
 
 		This is my first extension for oeHealth.
@@ -31,6 +31,8 @@
             - Services,
             - Orders,
             - Appointments,
+            - Calendar, 
+            
             
     """,
 

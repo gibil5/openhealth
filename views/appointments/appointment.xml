@@ -19,11 +19,34 @@
 
 
 				<xpath expr="//field[@name='institution']" position="replace">
+					<!--
+					<field name="x_duration_min"	widget="progressbar"/>
+					-->
+					
 					<field name="x_duration_min"/>
+				
 				</xpath>
 
+
+
+
+
+				<xpath expr="//field[@name='duration']" position="replace">
+					<!--
+					<field name="duration"	widget="progressbar"/>
+					-->
+					
+					<field name="duration"/>
+				
+				</xpath>
+
+
+
+
+				<!--
 				<xpath expr="//field[@name='patient_status']" position="replace">
 				</xpath>
+				-->
 
 				<xpath expr="//field[@name='urgency_level']" position="replace">
 				</xpath>
@@ -56,6 +79,7 @@
 							<field name="vspace"/>
 
 
+							<field name="state"		readonly="0"/>
 
 
 							<field name="x_type"/>
@@ -70,10 +94,20 @@
 							<field name="session"		attrs="{'invisible':[('x_type', '!=', 'session')]}"/>
 
 							<field name="control"		attrs="{'invisible':[('x_type', '!=', 'control')]}"/>
+
 						</group>
 
+
+
 						<group>
+							<!--
+							<calendar string="Calendar"  	date_start="appointment_date" date_delay="duration"  display="[patient]"   
+															color="color_doctor_id"   quick_add="False" mode="day">
+				            	<field name="patient"/>       
+        					</calendar>
+							-->
 						</group>
+
 
 
 					</group>

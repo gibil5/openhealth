@@ -80,7 +80,6 @@ class Control(models.Model):
 	def _onchange_evaluation_start_date(self):
 
 		date_format = "%Y-%m-%d"
-
 		delta = datetime.timedelta(weeks=1)
 		#to = datetime.datetime.today()
 		sd = datetime.datetime.strptime(self.evaluation_start_date, date_format)

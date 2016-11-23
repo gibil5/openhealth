@@ -6,7 +6,10 @@
 # Last updated: 	 	Id. 
 
 from openerp import models, fields, api
-from datetime import datetime
+
+#from datetime import datetime
+import datetime
+import time_funcs
 
 
 class Appointment(models.Model):
@@ -24,14 +27,85 @@ class Appointment(models.Model):
 			required=True, 
 			)
 
-
-
-
-
 	vspace = fields.Char(
 			' ', 
 			readonly=True
 			)
+
+
+
+
+	# Date end 
+	appointment_end = fields.Datetime(
+
+			#compute="_compute_appointment_end",
+			)
+
+	#@api.multi
+	@api.depends('appointment_date')
+	
+	def _compute_appointment_end(self):
+
+		print
+		print 'compute appointment end'
+
+		for record in self:
+
+			if record.appointment_date != False: 
+				#record.appointment_end = record.appointment_date + record.duration 
+
+				date_format = "%Y-%m-%d"
+				
+				#delta = datetime.timedelta(hours=1)
+				delta = datetime.timedelta(weeks=1)
+
+				#to = datetime.datetime.today()
+
+				sd = datetime.datetime.strptime(record.appointment_date, date_format)
+				print sd
+				
+				#record.appointment_end = delta + sd
+
+		print 
+
+
+
+
+
+
+	color_patient_id = fields.Integer(
+			default=2,
+		)
+
+	_hash_colors_doctor = {
+
+			'Dr. Acosta': 1,
+
+			'Dr. Canales': 2,
+
+			'Dr. Chavarri': 3,
+
+			'Dr. Vasquez': 6,
+
+			#'Dr. Acosta': 1,
+
+		}
+
+
+	color_doctor_id = fields.Integer(
+			default=1,
+
+			compute='_compute_color_doctor_id', 
+		)
+
+
+	#@api.multi
+	@api.depends('doctor')
+	def _compute_color_doctor_id(self):
+
+		for record in self:	
+
+			record.color_doctor_id = self._hash_colors_doctor[record.doctor.name]
 
 
 
@@ -44,6 +118,7 @@ class Appointment(models.Model):
      				'0.5' 	: 0.5, 
      				'0.75' 	: 0.75, 
      				'1.0' 	: 1.0, 
+     				'2.0' 	: 2.0, 
 				}
 
 
@@ -57,6 +132,8 @@ class Appointment(models.Model):
         			('0.75', 	'45 min'),
 
         			('1.0', 	'60 min'),
+
+        			('2.0', 	'120 min'),
         		]
 
 
@@ -66,7 +143,10 @@ class Appointment(models.Model):
 			#'', 
 			#readonly=True
 			selection = _duration_list, 
-		)
+		
+			#default = '1.0',
+			default = '0.5',
+)
 
 	@api.onchange('x_duration_min')
 
@@ -77,12 +157,12 @@ class Appointment(models.Model):
 
 
 
-
 	duration = fields.Float(
 	#duration = fields.Selection(
 			#'', 
 			#readonly=True
 			#selection = _duration_list, 
+			default = 1.0,
 		)
 
 
@@ -100,18 +180,20 @@ class Appointment(models.Model):
 	# Type 
 	_type_list = [
         			('consultation', 'Consulta'),
-
         			('procedure', 'Procedimiento'),
-
         			('session', 'Sesión'),
-
         			('control', 'Control'),
 
+        			#('Consulta', 'Consulta'),
+        			#('Procedimiento', 'Procedimiento'),
+        			#('Sesion', 'Sesión'),
+        			#('Control', 'Control'),
         		]
 
 	x_type = fields.Selection(
 				selection = _type_list, 
 				
+
 				string="Tipo",
 				required=True, 
 				)
@@ -181,7 +263,6 @@ class Appointment(models.Model):
 
 # ----------------------------------------------------------- Open ------------------------------------------------------
 
-	@api.multi
 	def open_popup(self):
 	#def open_current(self):
 
@@ -222,7 +303,41 @@ class Appointment(models.Model):
 
 
 
+	# CRUD
 
+	#@api.multi
+	#def create(self):
+
+	@api.model
+	def create(self,vals):
+
+		print 
+		print 'jx Create - Override'
+		
+		print vals
+		print vals['appointment_date']
+		print vals['duration']
+		print vals['appointment_end']
+
+		print
+
+		res = super(Appointment, self).create(vals)
+
+		return res
+
+
+	
+	#@api.multi
+	@api.model
+	def write(self,vals):
+
+		print 
+		print 'jx Write - Override'
+		print
+		
+		res = super(Appointment, self).write(vals)
+
+		return res
 
 
 

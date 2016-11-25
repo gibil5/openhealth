@@ -35,44 +35,21 @@ class Appointment(models.Model):
 
 
 
+
 	# Date end 
 	appointment_end = fields.Datetime(
 
 			#compute="_compute_appointment_end",
 			)
 
-	#@api.multi
-	@api.depends('appointment_date')
-	
-	def _compute_appointment_end(self):
-
-		print
-		print 'compute appointment end'
-
-		for record in self:
-
-			if record.appointment_date != False: 
-				#record.appointment_end = record.appointment_date + record.duration 
-
-				date_format = "%Y-%m-%d"
-				
-				#delta = datetime.timedelta(hours=1)
-				delta = datetime.timedelta(weeks=1)
-
-				#to = datetime.datetime.today()
-
-				sd = datetime.datetime.strptime(record.appointment_date, date_format)
-				print sd
-				
-				#record.appointment_end = delta + sd
-
-		print 
 
 
 
 
 
 
+
+	# Colors 
 	color_patient_id = fields.Integer(
 			default=2,
 		)
@@ -308,36 +285,35 @@ class Appointment(models.Model):
 	#@api.multi
 	#def create(self):
 
-	@api.model
-	def create(self,vals):
+	#@api.model
+	#def create(self,vals):
 
-		print 
-		print 'jx Create - Override'
+	#	print 
+	#	print 'jx Create - Override'
 		
-		print vals
-		print vals['appointment_date']
-		print vals['duration']
-		print vals['appointment_end']
+	#	print vals
+	#	print vals['appointment_date']
+	#	print vals['duration']
+	#	print vals['appointment_end']
+	#	print
 
-		print
+	#	res = super(Appointment, self).create(vals)
 
-		res = super(Appointment, self).create(vals)
-
-		return res
+	#	return res
 
 
 	
 	#@api.multi
-	@api.model
-	def write(self,vals):
+	#@api.model
+	#def write(self,vals):
 
-		print 
-		print 'jx Write - Override'
-		print
+		#print 
+		#print 'jx Write - Override'
+		#print
 		
-		res = super(Appointment, self).write(vals)
+		#res = super(Appointment, self).write(vals)
 
-		return res
+		#return res
 
 
 

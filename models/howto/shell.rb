@@ -223,3 +223,28 @@ self.env['sale.order'].search([('customer', 'like', 'J')])
 
 
 
+
+
+
+
+
+
+
+a = self.env['oeh.medical.appointment'].search([('name', 'like', '68')])
+
+a = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', '26')])
+
+a = self.env['oeh.medical.appointment'].search([('appointment_date', '=', '2016-11-26')])
+
+
+a = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', '26')], limit=1)
+
+
+
+a = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', '16-11-26')], limit=1)
+
+a = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', '16-11-26'), ('doctor_id', '=', '1'),])
+
+
+
+

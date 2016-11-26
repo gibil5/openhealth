@@ -299,10 +299,10 @@ Sheet
 				<tree string="Patient Tree">
 
 					<!--
-					<field name="id"/>
 					--> 
 					
 					<field name="name"  string="Apellidos"/>
+					<field name="id"/>
 
 
 					<field name="a_first_name"  />

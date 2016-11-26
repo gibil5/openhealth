@@ -35,6 +35,153 @@ class Appointment(models.Model):
 
 
 
+	# Patient
+	patient = fields.Many2one(
+			'oeh.medical.patient',
+			
+			default=3025, 		# Revilla 
+
+			#string = "Paciente", 	
+			#required=True, 
+	)
+
+
+
+
+	x_error = fields.Integer(
+			default = 0, 
+		)
+
+
+
+
+
+
+	# Doctor 
+	doctor = fields.Many2one(
+			'oeh.medical.physician',
+			
+			#default=1, 		# Chavarri
+
+			#string = "Médico", 	
+			#required=True, 
+			)
+
+
+
+
+	#@api.onchange('doctor')
+	@api.onchange('doctor', 'duration')
+
+	def _onchange_doctor(self):
+
+		print 
+		print 'On change Doctor'
+
+
+		if self.doctor.name != False:	
+
+
+			#date_format = "%Y-%m-%d"
+
+			#dt = self.appointment_date[:10]
+			dt = self.appointment_date[2:10]
+			print dt
+			print 
+
+
+
+			#a = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', '26'),  ('doctor', '=', 'Dr. Canales')  ])
+			#a = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', '26'),  ('doctor', '=', self.doctor.name)  ])
+			app_ids = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', dt),  ('doctor', '=', self.doctor.name)  ])
+
+
+
+
+			print self.doctor.name
+			print self.patient.name
+			print self.appointment_date
+			print self.x_date
+			print self.duration
+			print self.appointment_end
+
+			print 
+			date_format = "%Y-%m-%d %H:%M:%S"
+			delta = datetime.timedelta(hours=self.duration)
+			print delta
+			sd = datetime.datetime.strptime(self.appointment_date, date_format)
+			print sd 
+			self.appointment_end = delta + sd
+			print self.appointment_end
+			print 
+
+			print app_ids 
+			#print b
+
+
+			self.x_error = 0
+
+			for app in app_ids:
+				print app
+
+				ad = self.appointment_date
+				ae = self.appointment_end
+
+				start = app.appointment_date
+				end = app.appointment_end
+
+				if 	(	(ad >= start and ae <= end) or
+						(ad < start and ae > end) or
+						
+						(ad < start and ae > start)	or	
+						
+						(ad < end and ae > end) 
+						):
+
+					print 'Collision !'
+
+					self.x_error = 1
+
+					self.doctor = False
+					self.duration = False
+					self.x_duration_min = False
+
+
+					return {
+								'warning': {
+									'title': "Error: Colisión !",
+									'message': 'Cita existente, con el mismo Médico: ' + start[11::] + ' - ' + end[11::],
+							}}
+
+
+
+		print 
+
+
+
+
+	# Date 
+	appointment_date = fields.Datetime(
+
+			)
+
+	x_date = fields.Date(
+
+			#default = fields.Date.today, 
+			compute="_compute_x_date",
+			)
+
+	#@api.multi
+	@api.depends('appointment_date')
+
+	def _compute_x_date(self):
+		for record in self:
+			record.x_date = record.appointment_date
+
+
+
+
+
 
 	# Date end 
 	appointment_end = fields.Datetime(
@@ -171,8 +318,9 @@ class Appointment(models.Model):
 
 	x_type = fields.Selection(
 				selection = _type_list, 
-				
 				string="Tipo",
+
+				default="consultation",
 				required=True, 
 				)
 
@@ -286,21 +434,26 @@ class Appointment(models.Model):
 	#@api.multi
 	#def create(self):
 
-	#@api.model
-	#def create(self,vals):
 
-	#	print 
-	#	print 'jx Create - Override'
+	@api.model
+	def create(self,vals):
+
+		print 
+		print 'jx Create - Override'
+		print 
+		print vals
+		print 
+		print vals['appointment_date']
+		print vals['duration']
+		print vals['appointment_end']
+		#print vals['x_error']
 		
-	#	print vals
-	#	print vals['appointment_date']
-	#	print vals['duration']
-	#	print vals['appointment_end']
-	#	print
+		print
 
-	#	res = super(Appointment, self).create(vals)
+		res = super(Appointment, self).create(vals)
 
-	#	return res
+		return res
+
 
 
 	

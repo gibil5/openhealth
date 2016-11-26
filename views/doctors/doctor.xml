@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+
+
+
+
+
+		<!-- tree/list view -->
+		<record model="ir.ui.view" id="oehealth.oeh_medical_physician_tree">
+			<field name="name">doctor.tree</field>
+			<field name="model">oeh.medical.physician</field>
+			<field name="arch" type="xml">
+
+
+				<tree string="Physician Tree">
+
+					<!--
+					--> 					
+					<field name="name"/>
+
+					<field name="id"/>
+
+					<field name="speciality"  />
+					
+					<field name="mobile_phone"/>				
+					
+					<field name="work_email"/>
+									
+				</tree>
+			</field>
+		</record>
+
+
+
+
+		<!-- Window List action -->
+		<record model="ir.actions.act_window" id="doctor_list_action">
+			<field name="name">Médicos</field>
+			<field name="res_model">oeh.medical.physician</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first treatment
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+
+		<!-- Menus --> 
+		<menuitem id="openhealth_doctors_menu" name="Médicos" 
+			parent="openhealth_menu"
+			action="doctor_list_action"/>
+
+	</data>
+</openerp>

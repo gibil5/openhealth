@@ -171,6 +171,9 @@
 					<field name="control"/>
 
 
+
+					<field name="x_date"/>
+
 					<field name="appointment_date"/>
 					<field name="appointment_end"/>
 

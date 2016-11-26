@@ -56,15 +56,17 @@ class Appointment(models.Model):
 
 	_hash_colors_doctor = {
 
-			'Dr. Acosta': 1,
+			'Dra. Acosta': 1,
 
 			'Dr. Canales': 2,
 
 			'Dr. Chavarri': 3,
 
-			'Dr. Vasquez': 6,
+			'Dr. Escudero': 4,
 
-			#'Dr. Acosta': 1,
+			'Dr. Gonzales': 5,
+
+			'Dr. Vasquez': 6,
 
 		}
 
@@ -170,7 +172,6 @@ class Appointment(models.Model):
 	x_type = fields.Selection(
 				selection = _type_list, 
 				
-
 				string="Tipo",
 				required=True, 
 				)

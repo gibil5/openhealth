@@ -51,6 +51,24 @@ class Appointment(models.Model):
 
 
 
+	APPOINTMENT_STATUS = [
+			
+			# jx 
+			('Pre-scheduled', 'Pre-scheduled'),
+
+			('Scheduled', 'Scheduled'),
+			('Completed', 'Completed'),
+			('Invoiced', 'Invoiced'),
+		]
+
+	state = fields.Selection(
+
+			selection = APPOINTMENT_STATUS, 
+
+			readonly=False, 
+		)
+
+
 
 	# Patient
 
@@ -293,20 +311,23 @@ class Appointment(models.Model):
 	_hash_colors_x_type = {
 
 
+			'Procedimiento': 1,
+			'procedure': 1,
+
 			'Consulta': 2,
 			'consultation': 2,
 
 
-			'Procedimiento': 1,
-			'procedure': 1,
+
+			'procedure_pre_scheduled': 3,
 			
 
-			'Sesion': 3,
-			'session': 3,
+			'Sesion': 4,
+			'session': 4,
 
 			
-			'Control': 4,
-			'control': 4,
+			'Control': 5,
+			'control': 5,
 			
 		}
 
@@ -321,7 +342,13 @@ class Appointment(models.Model):
 	@api.depends('x_type')
 	def _compute_color_x_type_id(self):
 		for record in self:	
-			record.color_x_type_id = self._hash_colors_x_type[record.x_type]
+
+			if record.x_type == 'procedure'   and   record.state == 'Pre-scheduled':
+				print 'Gotcha !!!'
+				record.color_x_type_id = self._hash_colors_x_type['procedure_pre_scheduled']
+
+			else:
+				record.color_x_type_id = self._hash_colors_x_type[record.x_type]
 
 
 
@@ -735,8 +762,10 @@ class Appointment(models.Model):
 
 
 
-		#delta_fix = datetime.timedelta(hours=1)
-		delta_fix = datetime.timedelta(hours=0.5)
+		#delta_fix = datetime.timedelta(hours=1)		
+		#delta_fix = datetime.timedelta(hours=0.5)
+		delta_fix = datetime.timedelta(hours=1.5)
+
 		delta_var = datetime.timedelta(hours=0.25)
 		k = 0
 
@@ -775,7 +804,7 @@ class Appointment(models.Model):
 
 
 
-			if ret == 0: 
+			if ret == 0: 	# Success ! - No Collisions
 			
 
 				print 'CRUD: Create !!!'
@@ -784,15 +813,16 @@ class Appointment(models.Model):
 															{
 															'appointment_date': ad_pro_str,
 															
-															#'duration': 0.5,
 															'duration': duration,
 															
 															'patient': patient_id,	
-															'doctor': doctor_id,	
+															'doctor': doctor_id,
+
 															'x_type':'procedure',
+															'state':'Pre-scheduled',
 															}
 													)
-			else:
+			else:			# Collision 
 				k = k + 1
 
 

@@ -21,24 +21,28 @@
 				<xpath expr="//field[@name='institution']" position="replace">
 					<!--
 					<field name="x_duration_min"	widget="progressbar"/>
-
 					<field name="x_duration_min"	attrs="{'invisible':[('x_type', '!=', 'session')]}"/>
 
+
+
+					<field name="x_duration_min"	attrs="{'readonly':[('x_type', '!=', 'session')]}"/>
 					-->
 					
 
-					<field name="x_duration_min"	attrs="{'readonly':[('x_type', '!=', 'session')]}"/>
 
 				</xpath>
+
 
 
 
 
 				<xpath expr="//field[@name='patient_status']" position="replace">
-
+					<!--
 					<field name="appointment_end"	readonly="1"/>
-				
+					-->
+					<field name="appointment_end"	/>
 				</xpath>
+
 
 
 
@@ -187,6 +191,13 @@
 
 					<field name="x_type_cal"/>
 
+					<field name="duration"/>
+
+					<!--
+					<field name="x_duration_min"/>
+					-->
+
+
 
 
 					<field name="treatment"/>
@@ -204,8 +215,6 @@
 					<field name="appointment_date"/>
 					<field name="appointment_end"/>
 
-					<field name="duration"/>
-					<field name="x_duration_min"/>
 
 					
 					<!--

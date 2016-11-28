@@ -82,7 +82,8 @@ class Appointment(models.Model):
 
 
 	#@api.onchange('doctor')
-	@api.onchange('doctor', 'duration')
+	#@api.onchange('doctor', 'duration')
+	@api.onchange('doctor', 'x_type')
 
 	def _onchange_doctor(self):
 
@@ -339,13 +340,14 @@ class Appointment(models.Model):
 
 
 
-	@api.onchange('x_duration_min')
+	#@api.onchange('x_duration_min')
 
-	def _onchange_x_duration_min(self):
+	#def _onchange_x_duration_min(self):
 
-		if self.x_duration_min != False:	
+	#	if self.x_duration_min != False:	
 
-			self.duration = self._hash_duration[self.x_duration_min]
+	#		self.duration = self._hash_duration[self.x_duration_min]
+
 
 
 
@@ -358,15 +360,31 @@ class Appointment(models.Model):
 	# Duration 
 
 	duration = fields.Float(
-
 			string="Duración (h)", 
+			
+			#default = 0.5,
+			#default = 0.25,
 
-			default = 0.5,
+			compute='_compute_duration', 
 
 			readonly=True, 
 		)
 
+	#@api.multi
+	@api.depends('x_type')
+	
+	def _compute_duration(self):
 
+		for record in self:	
+
+			if record.x_type == 'consultation'  or  record.x_type == 'procedure':
+
+				record.duration = 0.5
+
+			#elif record.x_type == 'control':
+			elif record.x_type == 'control'  or  record.x_type == 'session':
+
+				record.duration = 0.25
 
 
 
@@ -668,7 +686,13 @@ class Appointment(models.Model):
 		k = 0
 
 
-		doctor_name = 'Dr. Chavarri'
+
+		#doctor_name = 'Dr. Chavarri'
+		doctor = self.env['oeh.medical.physician'].search([('id', '=', doctor_id)])
+		doctor_name = doctor.name
+
+
+
 		duration = 0.5 
 
 
@@ -781,10 +805,19 @@ class Appointment(models.Model):
 		#sd = datetime.datetime.strptime(self.appointment_date, date_format)
 		sd = datetime.datetime.strptime(appointment_date, date_format)
 		
+
+
+
+
 		#self.appointment_end = delta + sd
-		appointment_end = delta + sd
-				
-		ae = appointment_end.strftime("%Y-%m-%d %H:%M:%S")
+
+
+		#appointment_end = delta + sd
+		ae_dt = delta + sd
+
+		#ae = appointment_end.strftime("%Y-%m-%d %H:%M:%S")
+		ae = ae_dt.strftime("%Y-%m-%d %H:%M:%S")
+
 
 
 
@@ -794,7 +827,8 @@ class Appointment(models.Model):
 		print delta
 		print sd 
 		#print self.appointment_end
-		print appointment_end
+		#print appointment_end
+		print ae_dt
 		print 
 
 

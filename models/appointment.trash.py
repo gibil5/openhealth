@@ -118,6 +118,8 @@
 
 
 		dt = vals['appointment_date'][:10]
+
+		
 		print dt
 		#doctor_id = vals['x_doctor_id']
 		#print doctor_id
@@ -128,6 +130,19 @@
 		print a 
 		print 
 
+# 27 nov 2016
+
+	#@api.multi
+	#@api.model
+	#def write(self,vals):
+
+		#print 
+		#print 'jx Write - Override'
+		#print
+		
+		#res = super(Appointment, self).write(vals)
+
+		#return res
 
 
 

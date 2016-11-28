@@ -41,22 +41,6 @@ class Appointment(models.Model):
 			)
 
 
-
-
-	# Patient
-	patient = fields.Many2one(
-			'oeh.medical.patient',
-			
-			string = "Paciente", 	
-
-			default=3025, 		# Revilla 
-
-			#required=True, 
-	)
-
-
-
-
 	x_error = fields.Integer(
 			
 			default = 0, 
@@ -68,7 +52,61 @@ class Appointment(models.Model):
 
 
 
+	# Patient
+
+	patient = fields.Many2one(
+			'oeh.medical.patient',
+			
+			string = "Paciente", 	
+
+			default=3025, 		# Revilla 
+
+			#required=True, 
+		)
+
+
+
+	x_patient_name_first = fields.Char(
+			compute='_compute_x_patient_name_first', 
+		)
+
+	#@api.multi
+	@api.depends('patient')
+
+	def _compute_x_patient_name_first(self):
+		for record in self:
+
+			patient_name = record.patient.name
+			patient_name_first = patient_name.split(' ')[0]
+
+			record.x_patient_name_first = patient_name_first
+
+
+
+
+
+
+
+	# Hash 
+
+	_hash_doctor_code = {
+							'Dra. Acosta':		'Dra A',
+
+							'Dr. Canales':		'Dr Ca',
+
+							'Dr. Chavarri':		'Dr Ch',
+
+							'Dr. Gonzales':		'Dr Go',
+
+							'Dr. Escudero':		'Dr Es',
+
+							'Dr. Vasquez':		'Dr Va',
+		}
+
+
+
 	# Doctor 
+
 	doctor = fields.Many2one(
 			'oeh.medical.physician',
 			
@@ -77,6 +115,21 @@ class Appointment(models.Model):
 			#string = "Médico", 	
 			#required=True, 
 			)
+
+
+
+	x_doctor_code = fields.Char(
+			compute='_compute_x_doctor_code',
+		)
+
+	#@api.multi
+	@api.depends('doctor')
+
+	def _compute_x_doctor_code(self):
+		for record in self:
+
+			record.x_doctor_code = self._hash_doctor_code[record.doctor.name]
+
 
 
 
@@ -313,7 +366,8 @@ class Appointment(models.Model):
 
 			string="Duración (min)", 
 		
-			default = '0.5',
+			#default = '0.5',
+			#default = '0.25',
 
 			#readonly=True,
 		)
@@ -321,19 +375,21 @@ class Appointment(models.Model):
 
 
 
-	@api.onchange('x_type')
 
-	def _onchange_x_type(self):
+	#@api.onchange('x_type')
 
-		if self.x_type != False:	
+	#def _onchange_x_type(self):
 
-			if self.x_type == 'consultation'  or  self.x_type == 'procedure':
+	#	if self.x_type != False:	
 
-				self.x_duration_min = '0.5'
+	#		if self.x_type == 'consultation'  or  self.x_type == 'procedure':
 
-			elif self.x_type == 'control':
+	#			self.x_duration_min = '0.5'
 
-				self.x_duration_min = '0.25'
+	#		elif self.x_type == 'control':
+
+	#			self.x_duration_min = '0.25'
+
 
 
 
@@ -341,11 +397,9 @@ class Appointment(models.Model):
 
 
 	#@api.onchange('x_duration_min')
-
 	#def _onchange_x_duration_min(self):
-
 	#	if self.x_duration_min != False:	
-
+			#self.duration = self._hash_duration[self.x_duration_min]
 	#		self.duration = self._hash_duration[self.x_duration_min]
 
 
@@ -356,8 +410,8 @@ class Appointment(models.Model):
 
 
 
-
 	# Duration 
+
 
 	duration = fields.Float(
 			string="Duración (h)", 
@@ -377,12 +431,13 @@ class Appointment(models.Model):
 
 		for record in self:	
 
-			if record.x_type == 'consultation'  or  record.x_type == 'procedure':
+			#if record.x_type == 'consultation'  or  record.x_type == 'procedure':
+			if record.x_type == 'consultation'   or   record.x_type == 'procedure'   or   record.x_type == 'session':
 
 				record.duration = 0.5
 
-			#elif record.x_type == 'control':
-			elif record.x_type == 'control'  or  record.x_type == 'session':
+			elif record.x_type == 'control':
+			#elif record.x_type == 'control'  or  record.x_type == 'session':
 
 				record.duration = 0.25
 

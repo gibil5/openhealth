@@ -24,9 +24,11 @@
 					<field name="x_duration_min"	attrs="{'invisible':[('x_type', '!=', 'session')]}"/>
 
 
-
 					<field name="x_duration_min"	attrs="{'readonly':[('x_type', '!=', 'session')]}"/>
+
 					-->
+					<field name="x_duration_min"	attrs="{	'readonly':[('x_type', '!=', 'session')], 
+																'invisible':[('x_type', '!=', 'session')]	}"/>
 					
 
 
@@ -179,9 +181,18 @@
 
 					<field name="id"/>
 
+
+
 					<field name="patient"/>
 
+					<field name="x_patient_name_first"/>
+
+
+
 					<field name="doctor"/>
+					<field name="x_doctor_code"/>
+
+
 
 					<field name="state"/>
 

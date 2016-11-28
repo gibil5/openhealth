@@ -110,7 +110,8 @@ class Appointment(models.Model):
 			#ret = self.check_for_collision()
 			#ret, doctor_name, start, end = self.check_for_collision()
 			#ret, doctor_name, start, end = self.check_for_collision(self.appointment_date)
-			ret, doctor_name, start, end = self.check_for_collision(self.appointment_date, self.doctor.name)
+			#ret, doctor_name, start, end = self.check_for_collision(self.appointment_date, self.doctor.name)
+			ret, doctor_name, start, end = self.check_for_collision(self.appointment_date, self.doctor.name, self.duration)
 
 			print ret 
 
@@ -280,6 +281,7 @@ class Appointment(models.Model):
 
 	_hash_duration = {
 					'0.25' 	: 0.25, 
+
      				'0.5' 	: 0.5, 
 
      				#'0.75' 	: 0.75, 
@@ -310,8 +312,6 @@ class Appointment(models.Model):
 
 			string="Duración (min)", 
 		
-			#default = '1.0',
-
 			default = '0.5',
 
 			#readonly=True,
@@ -603,7 +603,10 @@ class Appointment(models.Model):
 		print patient
 
 
-	#	print vals['duration']
+		#duration = vals['duration']
+		#print duration 
+
+
 	#	print vals['appointment_end']
 		#print vals['x_error']
 		
@@ -618,19 +621,12 @@ class Appointment(models.Model):
 			print 
 			print 'Create Appointment for procedure !'
 
-
-
-			#appointment_date = appointment_date.strftime("%Y-%m-%d %H:%M:%S")
-
-
-
 			#app = self.create_app_procedure(appointment_date, x_date, doctor, patient)
 			app = self.create_app_procedure(appointment_date, doctor, patient)
 			print app 
 
 
-
-
+		# Return 
 		res = super(Appointment, self).create(vals)
 
 		return res
@@ -673,6 +669,8 @@ class Appointment(models.Model):
 
 
 		doctor_name = 'Dr. Chavarri'
+		duration = 0.5 
+
 
 		ret = 1
 
@@ -693,7 +691,8 @@ class Appointment(models.Model):
 
 			# Check for collisions 
 
-			ret, doctor_name, start, end = self.check_for_collision(ad_pro_str, doctor_name)
+			#ret, doctor_name, start, end = self.check_for_collision(ad_pro_str, doctor_name)
+			ret, doctor_name, start, end = self.check_for_collision(ad_pro_str, doctor_name, duration)
 
 
 
@@ -705,12 +704,13 @@ class Appointment(models.Model):
 				app = self.env['oeh.medical.appointment'].create(
 															{
 															'appointment_date': ad_pro_str,
-															'duration': 0.5,
+															
+															#'duration': 0.5,
+															'duration': duration,
+															
 															'patient': patient_id,	
 															'doctor': doctor_id,	
-
 															'x_type':'procedure',
-															
 															}
 													)
 			else:
@@ -744,7 +744,8 @@ class Appointment(models.Model):
 
 	#def check_for_collision(self, appointment_date, appointment_end, duration, doctor_name, app_ids):
 	#def check_for_collision(self):
-	def check_for_collision(self, appointment_date, doctor_name):
+	#def check_for_collision(self, appointment_date, doctor_name):
+	def check_for_collision(self, appointment_date, doctor_name, duration):
 
 
 		print 
@@ -772,7 +773,8 @@ class Appointment(models.Model):
 
 
 		#delta = datetime.timedelta(hours=self.duration)
-		delta = datetime.timedelta(hours=0.5)
+		#delta = datetime.timedelta(hours=0.5)
+		delta = datetime.timedelta(hours=duration)
 
 
 
@@ -858,9 +860,5 @@ class Appointment(models.Model):
 
 		# Passed test - All is Ok 
 		return 0, '', '', '' 
-
-
-
-
 
 

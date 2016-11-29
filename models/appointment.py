@@ -108,17 +108,19 @@ class Appointment(models.Model):
 	# Hash 
 
 	_hash_doctor_code = {
-							'Dra. Acosta':		'Dra A',
+							'Dra. Acosta':		'Dra. A',
 
-							'Dr. Canales':		'Dr Ca',
+							'Dr. Canales':		'Dr. Ca',
 
-							'Dr. Chavarri':		'Dr Ch',
+							'Dr. Chavarri':		'Dr. Ch',
 
-							'Dr. Gonzales':		'Dr Go',
+							'Dr. Gonzales':		'Dr. Go',
 
-							'Dr. Escudero':		'Dr Es',
+							'Dr. Escudero':		'Dr. Es',
 
-							'Dr. Vasquez':		'Dr Va',
+							'Dr. Vasquez':		'Dr. Va',
+
+							'Pre-control':		'Pre-control',
 		}
 
 

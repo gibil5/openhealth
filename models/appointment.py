@@ -89,10 +89,21 @@ class Appointment(models.Model):
 
 		if self.x_chief_complaint != False:	
 
-			t = self.env['openextension.treatment'].search([	
-																('chief_complaint', 'like', self.x_chief_complaint), 
-																('patient', 'like', self.patient.name),
-															])
+			#t = self.env['openextension.treatment'].search([	
+			#													('chief_complaint', 'like', self.x_chief_complaint), 
+			#													('patient', 'like', self.patient.name),
+			#												])
+
+			t = self.env['openextension.treatment'].search(		[
+																	('chief_complaint', 'like', 'acne_active'), 
+																	('patient', 'like', 'Revilla')
+																],  
+
+																order='start_date desc', 
+
+																limit=1,
+															)
+
 
 			print t
 			#if not (t == False  or  t == nil):

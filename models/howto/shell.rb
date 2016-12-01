@@ -144,16 +144,26 @@ self.env.ref('base.group_public')
 
 self.env.ref('openextension.treatment')
 
+t = self.env['openextension.treatment'].search([('chief_complaint', 'like', 'acne_active')], limit=1)
+
+
+
+t = self.env['openextension.treatment'].search([	('chief_complaint', 'like', 'acne_active'), ('patient', 'like', 'Puga')	])
+
+
+t = self.env['openextension.treatment'].search([	('chief_complaint', 'like', 'acne_active'), ('patient', 'like', 'Revilla')	])
+
+t = self.env['openextension.treatment'].search([	('chief_complaint', 'like', 'acne_active'), ('patient', 'like', 'Revilla')],  order='start_date' )
+
+
+
+
+
+
 
 
 
 'default_patient': context.get('patient_id', False),
-
-
-
-
-
-
 
 
 
@@ -230,6 +240,8 @@ self.env['sale.order'].search([('customer', 'like', 'J')])
 
 
 
+
+
 a = self.env['oeh.medical.appointment'].search([('name', 'like', '68')])
 
 a = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', '26')])
@@ -244,6 +256,8 @@ a = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', '26
 a = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', '16-11-26')], limit=1)
 
 a = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', '16-11-26'), ('doctor_id', '=', '1'),])
+
+
 
 
 

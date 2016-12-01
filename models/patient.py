@@ -51,6 +51,30 @@ class Patient(models.Model):
 
 
 
+	# Relational 
+
+	appointment_ids = fields.One2many(
+			'oeh.medical.appointment', 
+			'patient', 
+
+			string = "Citas", 
+			)
+
+
+	a_treatment_ids = fields.One2many(
+			#'openhealth.treatment', 
+			'openextension.treatment', 
+			#'patient_id', 
+			'patient', 
+			string="Tratamientos"
+			)
+
+
+
+
+
+
+
 	# On Change
 	@api.onchange('name')
 	
@@ -400,13 +424,6 @@ class Patient(models.Model):
 
 
 
-	a_treatment_ids = fields.One2many(
-			#'openhealth.treatment', 
-			'openextension.treatment', 
-			#'patient_id', 
-			'patient', 
-			string="Tratamientos"
-			)
 
 
 	

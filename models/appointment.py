@@ -15,6 +15,7 @@ import datetime
 import time_funcs
 
 #import appfuncs
+import jxvars
 
 
 
@@ -46,6 +47,62 @@ class Appointment(models.Model):
 			default = 0, 
 			required=True, 
 		)
+
+
+
+
+	# Create procedure 
+	x_create_procedure_automatic = fields.Boolean(
+			
+			#string="¿ Crear procedimiento de manera automática ?",
+			string="¿ Crear procedimiento ?",
+
+			default=True, 
+			
+			#required=True, 
+		)
+
+
+
+
+
+
+	# Chief complaint 
+	x_chief_complaint = fields.Selection(			# Necessary 
+			string = 'Motivo de consulta', 
+
+			#selection = jxvars._pathology_list, 
+			selection = jxvars._chief_complaint_list, 
+
+			#required=True, 
+			)
+
+
+	#jxx
+	@api.onchange('x_chief_complaint')
+
+	def _onchange_x_chief_complaint(self):
+
+		print 
+		print 'On change Chief complaint'
+
+
+		if self.x_chief_complaint != False:	
+
+			t = self.env['openextension.treatment'].search([	
+																('chief_complaint', 'like', self.x_chief_complaint), 
+																('patient', 'like', self.patient.name),
+															])
+
+			print t
+			#if not (t == False  or  t == nil):
+			if t != False:
+				self.treatment = t.id
+				print self.treatment 
+
+		print 
+
+
 
 
 
@@ -120,7 +177,8 @@ class Appointment(models.Model):
 
 							'Dr. Vasquez':		'Dr. Va',
 
-							'Pre-control':		'Pre-control',
+							#'Pre-control':		'Pre-control',
+							'Pre-cita':		'Pre-cita',
 		}
 
 
@@ -154,7 +212,6 @@ class Appointment(models.Model):
 
 
 
-	#@api.onchange('doctor')
 	#@api.onchange('doctor', 'duration')
 	@api.onchange('doctor', 'x_type')
 
@@ -176,6 +233,7 @@ class Appointment(models.Model):
 
 
 			self.x_error = 0
+			#self.x_create_procedure_automatic = True
 
 
 
@@ -511,12 +569,18 @@ class Appointment(models.Model):
         			'consultation': 	'C',
         			'procedure': 		'P',
         			'session': 			'S',
-        			'control': 			'X',
+        			
+        			#'control': 			'X',
+
 
         			'Consulta': 	'C',
         			'Procedimiento': 		'P',
         			'Sesion': 			'S',
-        			'Control': 			'X',
+
+
+        			#'X': 			'Ctl',
+        			'control': 			'Ctl',
+        			'Control': 			'Ctl',
         		}
 
 
@@ -525,7 +589,9 @@ class Appointment(models.Model):
         			('C', 'C'),
         			('P', 'P'),
         			('S', 'S'),
-        			('X', 'X'),
+
+        			#('X', 'Ctl'),
+        			('Ctl', 'Ctl'),
 
         			#('consultation', 'C'),
         			#('procedure', 'P'),
@@ -564,6 +630,9 @@ class Appointment(models.Model):
 
 
 	# ----------------------------------------------------------- Indexes ------------------------------------------------------
+
+
+
 
 	treatment = fields.Many2one('openextension.treatment',
 			string="Tratamiento",
@@ -705,6 +774,12 @@ class Appointment(models.Model):
 		print patient
 
 
+		x_create_procedure_automatic = vals['x_create_procedure_automatic']
+		#x_create_procedure_automatic = self.x_create_procedure_automatic
+		print x_create_procedure_automatic 
+
+
+
 		#duration = vals['duration']
 		#print duration 
 
@@ -717,9 +792,8 @@ class Appointment(models.Model):
 
 
 		# Create Procedure 
-		#if self.x_error == 0:
-		#if True:
-		if x_type == 'consultation':
+		#if x_type == 'consultation':
+		if x_type == 'consultation'  and  x_create_procedure_automatic:
 			print 
 			print 'Create Appointment for procedure !'
 
@@ -808,6 +882,8 @@ class Appointment(models.Model):
 
 			if ret == 0: 	# Success ! - No Collisions
 			
+				
+
 
 				print 'CRUD: Create !!!'
 

@@ -15,7 +15,7 @@
     'description': """
 
 		Installed: 	 	7 Sep 2016.\n 
-		Last built: 	29 Nov 2016.\n 
+		Last built: 	30 Nov 2016.\n 
 		\n
 
 		This is my first extension for oeHealth.
@@ -220,6 +220,9 @@
 		'views/patients/patient_personal.xml',
 		'views/patients/patient_treatments.xml',
 		'views/patients/patient_control_docs.xml',
+
+        'views/patients/patient_appointments.xml',
+
 		
         #'views/patients/patient_lab.xml',
 		#'views/patients/patient_med.xml',

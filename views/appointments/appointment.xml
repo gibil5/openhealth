@@ -82,12 +82,12 @@
 				<field name="patient_status" position="after">
 				-->
 
-					<group>
+					<group col="2">
 
 					<!--
 					-->
 
-						<group col="2">
+						<group >
 
 							<!--
 							<field name="evaluation_ids"/>
@@ -129,6 +129,7 @@
 
 
 
+
 						<group>
 							<!--
 							<calendar string="Calendar"  	date_start="appointment_date" date_delay="duration"  display="[patient]"   
@@ -136,6 +137,12 @@
 				            	<field name="patient"/>       
         					</calendar>
 							-->
+
+							<field name="vspace"/>
+
+							<field name="x_create_procedure_automatic"	attrs="{'invisible':[('x_type', '!=', 'consultation')]}"  />
+
+							<field name="x_chief_complaint"/>
 						</group>
 
 
@@ -176,22 +183,25 @@
 				<tree string="Appointment Tree">
 				
 
+					<!--
+					<field name="x_patient_name_first"/>
+					<field name="id"/>
+					<field name="x_doctor_code"/>
+					<field name="x_type_cal"/>
+					-->
 
 
 					<field name="name"/>
 
-					<field name="id"/>
 
 
 
 					<field name="patient"/>
 
-					<field name="x_patient_name_first"/>
 
 
 
 					<field name="doctor"/>
-					<field name="x_doctor_code"/>
 
 
 
@@ -201,7 +211,6 @@
 
 					<field name="x_type"/>
 
-					<field name="x_type_cal"/>
 
 					<field name="duration"/>
 
@@ -221,9 +230,10 @@
 					<field name="control"/>
 
 
-
+					<!--
 					<field name="x_date"/>
-
+					-->
+					
 					<field name="appointment_date"/>
 					<field name="appointment_end"/>
 
@@ -234,8 +244,6 @@
 					<field name="evaluation_ids"/>
 					-->
 
-					<!--
-					-->
 
 
 

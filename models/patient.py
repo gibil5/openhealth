@@ -17,35 +17,48 @@ import pat_vars
 
 
 class Patient(models.Model):
-	#_name = 'openhealth.patient'
-	#Te best solution. So that impact is minimal. 
+	#_name = 'openhealth.patient'	#The best solution ? So that impact is minimal ?
 
 	_inherit = 'oeh.medical.patient'
 
 
 
+	
+	# Autofill
 
-	# Names 
-	#name = fields.Char(
-		#required=True, 
-		#readonly=True, 
-		#string = "Nombre completo", 	
+	x_autofill = fields.Boolean(
+		string="Autofill",
+		default=False, 
+	)
 
-		#default='x',
+	@api.onchange('x_autofill')
+	
+	def _onchange_x_autofill(self):
 
-		#compute='_compute_name',
-	#)
+		if self.x_autofill == True:
+
+			#self.name = 'Michi Felina'
+			#self.a_first_name = 'Tigroide'
+			#self.sex = 'Female'
 
 
-	#'name': fields.char('Name', select=True),
-	#name = fields.Char(
-	#	string='Name', 
-	#	select=True,
+			self.dob = '1965-05-26'
+			self.a_dni = '09817194'
 
-		#default='x',
-		#readonly=True, 
-		#compute='_compute_name',
-	#	)
+			self.email = 'tigroide55@gmail.com'
+			self.phone_1 = '4760118'
+
+			self.a_allergies = 'Ninguna'
+
+			self.a_first_contact = 'recommendation'
+
+			self.street = 'Av. San Borja Norte 610'
+			self.street2_sel = 41
+			#self.street2 = 'San Borja'
+			#self.zip = 41
+			#self.city = 'Lima'
+			#self.country_id = 175
+
 
 
 
@@ -786,15 +799,17 @@ class Patient(models.Model):
 	# -----------------------------------------------------------------------------------------------------------------
 
 
-
 	# Button - Treatment 
 	# -------------------
 	@api.multi
 	def open_treatment_current(self):  
 
-		#patient_id = self.patient.id
-		#doctor_id = self.physician.id
+		print 
+		print 'Open Treatment'
+
 		patient_id = self.id 
+		print patient_id
+
 
 		return {
 
@@ -807,16 +822,15 @@ class Patient(models.Model):
 
 			# Views 
 			"views": [[False, "form"]],
-
 			'view_mode': 'form',
-
 			'target': 'current',
 
 			'context':   {
 				'search_default_patient': patient_id,
-
 				'default_patient': patient_id,
 			}
+
 		}
+
 
 

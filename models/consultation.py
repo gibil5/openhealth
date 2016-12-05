@@ -28,6 +28,34 @@ class Consultation(models.Model):
 
 
 
+	# Autofill
+
+	x_autofill = fields.Boolean(
+		string="Autofill",
+		default=False, 
+	)
+
+	@api.onchange('x_autofill')
+	
+	def _onchange_x_autofill(self):
+
+		if self.x_autofill == True:
+
+			self.x_fitzpatrick = 'one'			
+			self.x_photo_aging = 'one'
+
+			self.x_diagnosis = 'a'
+
+			self.x_antecedents = 'b'
+
+			self.x_allergies_medication = 'c'
+
+			self.x_observations = 'd'
+
+			self.x_indications = 'e'
+
+
+
 	# Owner 
 	owner_type = fields.Char(
 			default = 'consultation',
@@ -177,11 +205,11 @@ class Consultation(models.Model):
 	# ----------------------------------------------------------- Treatment ------------------------------------------------------
 
 	treatment = fields.Many2one('openextension.treatment',
-			string="Tratamiento",
-
-			required=True, 
 
 			ondelete='cascade', 
+
+			string="Tratamiento",
+			required=True, 
 			)
 
 

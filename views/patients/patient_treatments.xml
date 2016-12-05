@@ -19,7 +19,7 @@
 			<!--
 			<field name="priority" eval="3"/>
 			-->
-			<field name="priority" eval="10"/>
+			<field name="priority" eval="3"/>
 
     		<field name="inherit_id" ref="oeh_medical_patient_view"/>
 			<field name="arch" type="xml">

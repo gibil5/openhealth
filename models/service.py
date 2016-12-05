@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# 	Consultation 
+# 	Service 
 # 
 # Created: 				20 Sep 2016
 # Last updated: 	 	12 Oct 2016
@@ -178,8 +178,9 @@ class Service(models.Model):
 
 	# Consultation 
 	consultation = fields.Many2one('openhealth.consultation',
+
 			ondelete='cascade', 
-			#string="Treatment", 
+		
 			string="Consulta", 
 			)
 

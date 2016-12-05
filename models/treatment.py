@@ -728,10 +728,10 @@ class Treatment(models.Model):
 				'target': 'current',
 				#'target': 'inline'.
 
+
 				'flags': {
 						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 						'form': {'action_buttons': True, }
-
 						},
 
 

@@ -143,6 +143,19 @@
 							<field name="x_create_procedure_automatic"	attrs="{'invisible':[('x_type', '!=', 'consultation')]}"  />
 
 							<field name="x_chief_complaint"/>
+
+							<field name="vspace"/>
+
+							<button 
+								type="object" 
+								class="oe_highlight"
+								string="Crear Tratamiento" 
+
+								name="open_treatment_current" 
+							/>
+
+
+
 						</group>
 
 
@@ -205,20 +218,19 @@
 
 
 
-					<field name="state"/>
 
 
 
 					<field name="x_type"/>
 
 
-					<field name="duration"/>
 
 					<!--
 					<field name="x_duration_min"/>
 					-->
 
 
+					<field name="x_chief_complaint"/>
 
 
 					<field name="treatment"/>
@@ -234,6 +246,10 @@
 					<field name="x_date"/>
 					-->
 					
+					<field name="state"/>
+
+					<field name="duration"/>
+
 					<field name="appointment_date"/>
 					<field name="appointment_end"/>
 

@@ -37,14 +37,27 @@
 						<button name="print_patient_label" string="Historia Clínica" type="object" class="oe_highlight"/>
 						-->
 							
+
+						<!-- Create Treatment --> 
 						<!--
+
+										'search_default_patient': active_id,
+							context="{
+										'default_name: 'name', 
+										'name: 'name', 
+										}"
 						-->
+						
 						<button 
 							type="object" 
 							class="oe_highlight"
 							string="Crear Tratamiento" 
 							name="open_treatment_current" 
+
 						/>
+
+
+
 					</header>
 
 
@@ -54,6 +67,10 @@
 Sheet 						
 -->	
 					<sheet>
+
+
+
+
 
 				        <!-- Buttons -->
 						
@@ -185,6 +202,7 @@ Sheet
 								<!--
 								<field name="a_last_name" 	/>
 								-->
+								<field name="x_autofill" 	/>
 							</group>
 
 
@@ -339,10 +357,15 @@ Sheet
 
 			<field name="context">{'order': 'name'}</field>
 
-            <field name="domain">[
+			<!--
 									('sex', '=', 'Male'),
-            					]</field>
+									('sex', '=', 'Female'),
+			-->
+            <field name="domain">[
 
+									('sex', 'in', ['Female', 'Male']),
+            	
+            					]</field>
 
 
 			<!--

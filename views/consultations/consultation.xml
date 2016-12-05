@@ -204,6 +204,7 @@
 							</group>
 
 							<group class="oe_right">							
+								<field name="x_autofill"/>
 							</group>							
 						</group>						
 						
@@ -227,6 +228,10 @@
 							<field string="Evaluation end date"  name="evaluation_end_date"/>
 							<field name="evaluation_type"  invisible="1"/>									
 							-->
+
+
+
+
 
 
 							<group>

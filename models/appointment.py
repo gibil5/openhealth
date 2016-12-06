@@ -99,8 +99,14 @@ class Appointment(models.Model):
 																('chief_complaint', 'like', self.x_chief_complaint), 
 
 																#('patient', 'like', 'Revilla')], 
-																('patient', 'like', self.patient.name)],
-																
+																('patient', 'like', self.patient.name),
+
+
+																#('physician', 'like', 'Chavarri'),
+																('physician', 'like', self.doctor.name),
+
+
+																],
 																order='start_date desc',
 																limit=1,
 															)
@@ -109,11 +115,14 @@ class Appointment(models.Model):
 			print t
 			#if not (t == False  or  t == nil):
 
+
+
 			#if t != False:
 			if len(t) == 1:
-
+				print 'found'
 				self.treatment = t.id
-				print self.treatment 
+
+
 
 			else:
 				print 'empty'
@@ -127,6 +136,8 @@ class Appointment(models.Model):
 				#	}}
 
 
+			
+			print self.treatment 
 
 		print 
 
@@ -162,8 +173,8 @@ class Appointment(models.Model):
 			
 			string = "Paciente", 	
 
-			#default=3025, 		# Revilla 
-			default=3052, 		# Suarez Vertiz
+			default=3025, 		# Revilla 
+			#default=3052, 		# Suarez Vertiz
 
 			#required=True, 
 		)
@@ -770,10 +781,6 @@ class Appointment(models.Model):
 
 # ----------------------------------------------------------- CRUD ------------------------------------------------------
 
-	#@api.multi
-	#def create(self):
-
-
 	@api.model
 	def create(self,vals):
 
@@ -1168,3 +1175,43 @@ class Appointment(models.Model):
 			}
 
 		}
+
+
+
+
+
+	# Create Treatment
+	@api.multi
+	def create_treatment(self):
+
+		print 
+		print 'Create Treatment'
+
+		patient_id = self.patient.id
+		doctor_id = self.doctor.id
+		start_date = self.appointment_date
+
+		chief_complaint = self.x_chief_complaint
+
+
+		treatment = self.env['openextension.treatment'].create(
+																{
+
+																'patient': patient_id,	
+
+																'physician': doctor_id,
+
+																'start_date': start_date, 
+
+																'chief_complaint': chief_complaint, 
+
+																}
+														)
+				
+		self.treatment = treatment.id
+
+		print self.treatment  
+
+
+
+

@@ -139,6 +139,7 @@ self.env['openhealth.learn'].do_msg()
 
 
 
+# Treatment 
 
 self.env.ref('base.group_public')
 
@@ -160,6 +161,7 @@ t = self.env['openextension.treatment'].search([	('chief_complaint', 'like', 'ac
 t = self.env['openextension.treatment'].search([	('chief_complaint', 'like', 'acne_active'), ('patient', 'like', 'Revilla')],  order='start_date desc', limit=1 )
 
 
+t = self.env['openextension.treatment'].search([  ('chief_complaint', 'like', 'acne_active'), ('patient', 'like', 'Revilla'),    ],  order='start_date desc', limit=1 )
 
 
 
@@ -261,6 +263,30 @@ a = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', '16
 
 
 
+a = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', '16-12-6'), ('doctor', 'like', 'Chavarri'),])
+
+a = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', '16-12-6'), ('patient', 'like', 'Revilla'),])
+
+
+a = self.env['oeh.medical.appointment'].search([ 	('patient', 'like', 'Revilla'),		('doctor', 'like', 'Chavarri'), 		])
+
+a = self.env['oeh.medical.appointment'].search([ 	('patient', 'like', 'Revilla'),		('doctor', 'like', 'Chavarri'), 	('appointment_date', 'like', '2016-12-06 15:30:00')	])
+
+
+
+
+a = self.env['oeh.medical.appointment'].search([ 	('patient', 'like', 'Revilla'),		('doctor', 'like', 'Chavarri'), 		], limit=1)
+
+
+a = self.env['oeh.medical.appointment'].search([ 	('patient', 'like', 'Revilla'),		('doctor', 'like', 'Chavarri'), 	('x_type', 'like', 'consultation'), 		])
+
+a = self.env['oeh.medical.appointment'].search([ 	('patient', 'like', 'Revilla'),		('doctor', 'like', 'Chavarri'), 	('x_type', 'like', 'consultation'), 		], order='appointment_date desc', limit=1)
+
+
+
+
+
+a = self.env['oeh.medical.appointment'].search([ 	('patient', 'like', 'Revilla'),		('doctor', 'like', 'Chavarri'), 	('x_type', 'like', 'consultation'), ('appointment_date', 'like', '2016-12-06 15:30:00')		])
 
 
 

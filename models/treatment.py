@@ -354,7 +354,7 @@ class Treatment(models.Model):
 			selection = jxvars._chief_complaint_list, 
 			
 			#default = '', 
-			required=True, 
+			#required=True, 
 			)
 
 
@@ -615,38 +615,86 @@ class Treatment(models.Model):
 
 	@api.multi
 	def open_consultation_current(self):  
+
 		print 
 		print 'open consultation'
 
 		patient_id = self.patient.id
 		doctor_id = self.physician.id
 		treatment_id = self.id 
-
 		chief_complaint = self.chief_complaint
 
 
-
 		# Date 
-
-		#evaluation_start_date = datetime.today()
-		
-		
-		#evaluation_start_date = datetime.today().strftime("%Y-%m-%d %H:%M:%S")
-		#evaluation_start_date = datetime.today().strftime("%Y-%m-%d")
-		#evaluation_start_date = datetime.now().strftime("%Y-%m-%d")
-
-		#evaluation_start_date = datetime.now(GMT).strftime("%Y-%m-%d")
-
-
 		GMT = time_funcs.Zone(0,False,'GMT')
 		print GMT
 		evaluation_start_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
 		print evaluation_start_date 
 
-		#date_format = "%m-%d-%Y"
-		#evaluation_start_date = datetime.strptime(evaluation_start_date, date_format)
 
-		#print evaluation_start_date 
+
+		# Apointment 
+		appointment = self.env['oeh.medical.appointment'].search([ 	
+														
+															#('patient', 'like', 'Revilla'),		
+															('patient', 'like', self.patient.name),		
+															
+															#('doctor', 'like', 'Chavarri'), 	
+															('doctor', 'like', self.physician.name), 	
+															
+															('x_type', 'like', 'consultation'), 
+
+															#('appointment_date', 'like', '2016-12-06 15:30:00')	
+														
+														], 
+															order='appointment_date desc', limit=1)
+
+		print appointment
+
+		appointment_id = appointment.id
+
+
+
+
+
+
+		# Consultation 
+		print 'create consultation'
+		consultation = self.env['openhealth.consultation'].create(
+												{
+
+													#'treatment': treatment_id,
+													#'partner_id': partner_id,
+													#'patient': patient_id,	
+													#'consultation':self.id,
+													#'state':'draft',
+
+
+
+													'patient': patient_id,
+													'doctor': doctor_id,
+													'treatment': treatment_id,				
+													'chief_complaint': chief_complaint,
+													'evaluation_start_date': evaluation_start_date,
+
+													'appointment': appointment_id,
+
+												}
+											)
+		consultation_id = consultation.id 
+		print consultation
+		print consultation_id
+
+
+
+
+		# Update
+		#ret = appointment.write({
+		#							'consultation': consultation_id,
+		#						})
+		#print ret 
+
+
 		print 
 
 		return {
@@ -655,8 +703,13 @@ class Treatment(models.Model):
 			'type': 'ir.actions.act_window',
 			'name': 'Open Consultation Current',
 
+
+
 			# Window action 
 			'res_model': 'openhealth.consultation',
+			'res_id': consultation_id,
+
+
 
 			# Views 
 			"views": [[False, "form"]],
@@ -671,20 +724,27 @@ class Treatment(models.Model):
 
 			#"domain": [["patient", "=", self.patient.name]],
 			#'auto_search': False, 
-			#'flags': {'form': {'action_buttons': True}}, 
+
+
+			'flags': {
+					#'form': {'action_buttons': True, }
+					'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+					},			
+
+
 
 			'context':   {
+
 				'search_default_treatment': treatment_id,
 
 				'default_patient': patient_id,
 				'default_doctor': doctor_id,
-				#'default_treatment_id': treatment_id,
-				'default_treatment': treatment_id,
-				
+				'default_treatment': treatment_id,				
 				'default_chief_complaint': chief_complaint,
-
-
 				'default_evaluation_start_date': evaluation_start_date,
+
+				'default_appointment': appointment_id,
+
 			}
 		}
 

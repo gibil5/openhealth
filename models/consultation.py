@@ -27,6 +27,36 @@ class Consultation(models.Model):
 
 
 
+	# Name 
+	name = fields.Char(
+			string = 'Consulta #',
+			)
+
+
+	#@api.onchange('name')
+	
+	#def _onchange_name(self):
+
+	#	print 
+	#	print 'On change Name'
+
+	#	if self.name != False:
+
+			# Update
+	#		print 'update'
+
+	#		a = self.appointment.write({
+	#									'consultation': self.id,
+	#								})
+	#		print self.appointment
+	#		print self.id.name
+	#		print a 
+
+
+	#	print 
+
+
+
 
 	# Autofill
 
@@ -63,6 +93,9 @@ class Consultation(models.Model):
 
 
 
+
+
+
 	# Appointments 
 
 	appointment_ids = fields.One2many(
@@ -70,7 +103,14 @@ class Consultation(models.Model):
 			'consultation', 
 
 			string = "Citas", 
+
+			#domain = [
+			#			('name', '=', 'AP0267'),
+			#		],
 			)
+
+
+
 
 
 
@@ -174,9 +214,6 @@ class Consultation(models.Model):
 
 
 
-	name = fields.Char(
-			string = 'Consulta #',
-			)
 
 
 
@@ -298,6 +335,7 @@ class Consultation(models.Model):
 
 
 
+
 	# --------------------------------------------------------- Consultation ------------------------------------------------------
 	
 	x_reason_consultation = fields.Text(
@@ -319,14 +357,14 @@ class Consultation(models.Model):
 			selection = eval_vars.FITZ_TYPE, 
 			string = 'Fitzpatrick',
 			default = '', 
-			required=True, 
+			#required=True, 
 			)
 
 	x_photo_aging = fields.Selection(
 			selection = eval_vars.PHOTO_TYPE, 
 			string = 'Foto-envejecimiento',
 			default = '', 
-			required=True, 
+			#required=True, 
 			)
 
 
@@ -337,32 +375,32 @@ class Consultation(models.Model):
 
 	x_diagnosis = fields.Text(
 			string = 'Diagnóstico', 
-			required=True, 
+			#required=True, 
 			)
 
 	x_antecedents = fields.Text(
 			string = 'Antecedentes médicos', 
-			required=True, 
+			#required=True, 
 			)
 
 	x_allergies_medication = fields.Text(
 			string = 'Alergias a medicamentos', 
-			required=True, 
+			#required=True, 
 			)
 
 	x_analysis_lab = fields.Boolean(
 			string = 'Análisis de laboratorio', 
-			required=False, 
+			#required=False, 
 			)
 
 	x_observations = fields.Text(
 			string = 'Observaciones',
-			required=True, 
+			#required=True, 
 			)
 
 	x_indications = fields.Text(
 			string = 'Indicaciones',
-			required=True, 
+			#required=True, 
 			)
 
 
@@ -490,6 +528,7 @@ class Consultation(models.Model):
 			'view_type': 'form',
 			'view_mode': 'form',
 						
+
 			'res_model': 'sale.order',
 			
 			'res_id': order_id,
@@ -835,6 +874,32 @@ class Consultation(models.Model):
 
 
 
+# ----------------------------------------------------------- CRUD ------------------------------------------------------
+
+	@api.model
+	def create(self,vals):
+
+		print 
+		print 'Create Consultation - Override'
+		print 
+		print vals
+		print 
+	
+		
+		#consultation_id = self.id
+		#print consultation_id
+
+
+		appointment_id = vals['appointment']
+		print appointment_id
+		print 
+
+
+
+		# Return 
+		res = super(Consultation, self).create(vals)
+
+		return res
 
 
 

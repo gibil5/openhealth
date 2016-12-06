@@ -96,17 +96,13 @@ class Consultation(models.Model):
 
 
 
+
 	# Appointments 
 
 	appointment_ids = fields.One2many(
 			'oeh.medical.appointment', 
 			'consultation', 
-
 			string = "Citas", 
-
-			#domain = [
-			#			('name', '=', 'AP0267'),
-			#		],
 			)
 
 

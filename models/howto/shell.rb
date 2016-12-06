@@ -284,9 +284,11 @@ a = self.env['oeh.medical.appointment'].search([ 	('patient', 'like', 'Revilla')
 
 
 
-
-
 a = self.env['oeh.medical.appointment'].search([ 	('patient', 'like', 'Revilla'),		('doctor', 'like', 'Chavarri'), 	('x_type', 'like', 'consultation'), ('appointment_date', 'like', '2016-12-06 15:30:00')		])
+
+
+
+ret = a.write({'consultation': 65,})
 
 
 

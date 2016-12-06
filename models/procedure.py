@@ -43,7 +43,16 @@ class Procedure(models.Model):
 
 
 
+
 	# Relational 
+
+	appointment_ids = fields.One2many(
+			'oeh.medical.appointment', 
+			'procedure', 
+			string = "Citas", 
+			)
+
+
 
 	control_ids = fields.One2many(
 			'openhealth.control', 

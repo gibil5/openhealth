@@ -97,7 +97,6 @@
 		#'views/evaluations/consultation_procedures.xml',
 
 		
-
 		'views/consultations/consultation_appointment.xml',
 
 
@@ -112,6 +111,8 @@
 		'views/procedures/procedure_controls.xml',
 		'views/procedures/procedure_sessions.xml',
 		
+		'views/procedures/procedure_appointment.xml',
+
 
 
 
@@ -222,6 +223,7 @@
 		'views/patients/patient_control_docs.xml',
 
         'views/patients/patient_appointments.xml',
+
 
 		
         #'views/patients/patient_lab.xml',

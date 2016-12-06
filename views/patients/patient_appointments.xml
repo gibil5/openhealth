@@ -9,9 +9,13 @@
 		<record model="ir.ui.view" id="patient_appointment_form_view">
 			<field name="name">patient.appointment.form</field>
 			<field name="model">oeh.medical.patient</field>
-
-			<field name="priority" eval="2"/>
 			
+			<!--
+			<field name="priority" eval="2"/>
+			-->
+			<field name="priority" eval="0"/>
+			
+
 			<field name="inherit_id" ref="oeh_medical_patient_view"/>
 			<field name="arch" type="xml">
 

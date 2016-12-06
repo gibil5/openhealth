@@ -204,12 +204,12 @@
 					<field name="x_patient_name_first"/>
 					<field name="x_doctor_code"/>
 					<field name="x_type_cal"/>
+					<field name="id"/>
 					-->
 
 
 					<field name="name"/>
 
-					<field name="id"/>
 
 
 
@@ -239,9 +239,9 @@
 
 					<field name="treatment"/>
 					<field name="consultation"/>
+					<field name="procedure"/>
 					
 					<!--
-					<field name="procedure"/>
 					<field name="session"/>
 					<field name="control"/>					
 					-->
@@ -250,11 +250,11 @@
 					<!--
 					<field name="x_date"/>
 					<field name="appointment_end"/>
+					<field name="duration"/>
 					-->
 					
 					<field name="state"/>
 
-					<field name="duration"/>
 
 					<field name="appointment_date"/>
 

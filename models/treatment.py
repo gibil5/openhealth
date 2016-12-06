@@ -288,6 +288,7 @@ class Treatment(models.Model):
 
 
 
+
 	@api.multi
 	def create_procedure(self):
 
@@ -295,8 +296,26 @@ class Treatment(models.Model):
 		print 'Create Procedure'
 
 		ret = treatment_funcs.create_procedure_go(self)
-		print ret 
+		#print ret 
 		print 
+
+
+
+
+	@api.multi
+	def update_appointment(self, appointment_id, procedure_id, x_type):
+
+		print 
+		print 'Update Appointment'
+
+
+		#ret = treatment_funcs.create_procedure_go(self)
+		ret = treatment_funcs.update_appointment_go(self, appointment_id, procedure_id, x_type)
+
+
+		#print ret 
+		print 
+
 
 
 
@@ -689,10 +708,20 @@ class Treatment(models.Model):
 
 
 		# Update
-		#ret = appointment.write({
-		#							'consultation': consultation_id,
-		#						})
-		#print ret 
+		rec_set = self.env['oeh.medical.appointment'].browse([
+																appointment_id																
+															])
+		print rec_set
+
+		ret = rec_set.write({
+								'consultation': consultation_id,
+							})
+
+		print ret 
+		print appointment
+		print appointment.consultation
+		print appointment.consultation.id
+
 
 
 		print 

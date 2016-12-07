@@ -92,7 +92,7 @@
 							-->
 							
 							<group>
-								<field name="procedure"		string="jx"/>
+								<field name="procedure"		/>
 							</group>
 							<group>
 								<field name="evaluation_type"	invisible="0"/>
@@ -117,7 +117,7 @@
 
 							<group>
 
-								<field name="appointment"  />	
+								<field name="appointment"  	required="1"/>	
 
 							</group>
 							<group>

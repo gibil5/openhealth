@@ -231,19 +231,19 @@
 
 					<!--
 					<field name="x_duration_min"/>
+					<field name="x_chief_complaint"/>
 					-->
 
 
-					<field name="x_chief_complaint"/>
 
 
 					<field name="treatment"/>
 					<field name="consultation"/>
 					<field name="procedure"/>
-					
-					<!--
 					<field name="session"/>
 					<field name="control"/>					
+					
+					<!--
 					-->
 
 
@@ -251,10 +251,10 @@
 					<field name="x_date"/>
 					<field name="appointment_end"/>
 					<field name="duration"/>
+
 					-->
 					
 					<field name="state"/>
-
 
 					<field name="appointment_date"/>
 

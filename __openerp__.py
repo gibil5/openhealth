@@ -14,8 +14,11 @@
 
     'description': """
 
+    	EMR (Electronic Medical Records) for Laser\n
+    	Clinica Chavarri\n
+
 		Installed: 	 	7 Sep 2016.\n 
-		Last built: 	3 Dec 2016.\n 
+		Last built: 	7 Dec 2016.\n 
 		\n
 
 		This is my first extension for oeHealth.

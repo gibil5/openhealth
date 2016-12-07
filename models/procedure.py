@@ -1,15 +1,19 @@
 # -*- coding: utf-8 -*-
 #
-# 	Procedure 	
-# 
+# 	*** Procedure 	
+#
+
+# Created: 				 1 Nov 2016
+# Last updated: 	 	 7 Dec 2016 
+
+
 
 from openerp import models, fields, api
 from datetime import datetime
 
 import jxvars
-
 import time_funcs
-
+import jrfuncs
 
 
 
@@ -148,18 +152,20 @@ class Procedure(models.Model):
 
 
 
+
+
+
 	# Open Control 
 
 	@api.multi
 
 	def open_control(self):  
 
+		# Data
 		procedure_id = self.id 
-
 		patient_id = self.patient.id
 		doctor_id = self.doctor.id
 		chief_complaint = self.chief_complaint
-		
 		evaluation_type = 'Periodic Control'
 		product_id = self.product.id
 		laser = self.laser
@@ -170,6 +176,29 @@ class Procedure(models.Model):
 		print GMT
 		evaluation_start_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
 		print evaluation_start_date 
+
+
+
+
+		# Apointment 
+		#appointment = self.env['oeh.medical.appointment'].search([ 	
+		#															('patient', 'like', self.patient.name),		
+															
+		#															('doctor', 'like', self.doctor.name), 	
+															
+		#															('x_type', 'like', 'procedure'), 
+															
+		#														], 
+		#														order='appointment_date desc', limit=1)
+
+		#appointment_id = appointment.id
+		#print appointment
+		#print appointment_id
+
+
+
+
+
 		print 
 
 
@@ -195,8 +224,8 @@ class Procedure(models.Model):
 				'default_chief_complaint': chief_complaint,
 
 				'default_procedure': procedure_id,
-				'default_evaluation_type':evaluation_type,
-								
+
+				'default_evaluation_type':evaluation_type,				
 				'default_product': product_id,
 				'default_laser': laser,
 				
@@ -211,30 +240,97 @@ class Procedure(models.Model):
 
 
 
+
+
 	# Open Session  
 
 	@api.multi
-	def open_session(self):  
+	def open_session(self): 
+
 		print 
 		print 'open session'
 
-		procedure_id = self.id 
 
+		# Data
+		procedure_id = self.id 
 		patient_id = self.patient.id
 		doctor_id = self.doctor.id
 		chief_complaint = self.chief_complaint
-		
 		evaluation_type = 'Session'
 		product_id = self.product.id
 		laser = self.laser
 		
+
 
 		# Date 		
 		GMT = time_funcs.Zone(0,False,'GMT')
 		print GMT
 		evaluation_start_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
 		print evaluation_start_date 
+
+
+
+		# Apointment 
+		appointment = self.env['oeh.medical.appointment'].search([ 	
+																	('patient', 'like', self.patient.name),		
+															
+																	('doctor', 'like', self.doctor.name), 	
+															
+																	('x_type', 'like', 'procedure'), 
+															
+																], 
+																order='appointment_date desc', limit=1)
+
+		appointment_id = appointment.id
+		print appointment
+		print appointment_id
+
+
+
+
+		# session 
+		print 'create session'
+		session = self.env['openhealth.session'].create(
+												{
+													'patient': patient_id,
+													'doctor': doctor_id,													
+													'chief_complaint': chief_complaint,
+													'evaluation_start_date': evaluation_start_date,
+
+
+													'evaluation_type':evaluation_type,
+													'product': product_id,
+													'laser': laser,
+
+
+													'procedure': procedure_id,				
+
+													'appointment': appointment_id,
+												}
+											)
+		session_id = session.id 
+		print session
+		print session_id
+
+
+
+
+		# Update
+		#self.update_appointment(appointment_id, session_id, 'session')
+		ret = jrfuncs.update_appointment_go(self, appointment_id, session_id, 'session')
+
+
+		print appointment
+		print appointment.session
+		print appointment.session.id
+
+
+
 		print 
+
+
+
+
 
 		return {
 
@@ -243,29 +339,40 @@ class Procedure(models.Model):
 			'name': 'Open session Current',
 
 
+		
 			# Optional 
 			'res_model': 'openhealth.session',
+			'res_id': session_id,
+
+
 
 			'view_mode': 'form',
 			"views": [[False, "form"]],
 
 			'target': 'current',
 
+
+			'flags': {
+					#'form': {'action_buttons': True, }
+					'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+					},			
+
+
 			'context':   {
 
-				'default_patient': patient_id,
-				'default_doctor': doctor_id,
-				'default_chief_complaint': chief_complaint,
+							'default_patient': patient_id,
+							'default_doctor': doctor_id,
+							'default_chief_complaint': chief_complaint,
+							'default_procedure': procedure_id,
+							'default_evaluation_start_date': evaluation_start_date,
 
-				'default_procedure': procedure_id,
-				'default_evaluation_type':evaluation_type,
-								
-				'default_product': product_id,
-				'default_laser': laser,
+							'default_evaluation_type':evaluation_type,
+							'default_product': product_id,
+							'default_laser': laser,
 
 
-				'default_evaluation_start_date': evaluation_start_date,
-			}
+							'default_appointment': appointment_id,
+						}
 		}
 
 

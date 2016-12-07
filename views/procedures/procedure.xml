@@ -162,7 +162,7 @@
 							-->
 							
 							<group>
-								<field name="treatment"			string="Tratamiento"/>
+								<field name="treatment"			string="Tratamiento"	required="1"/>
 							</group>
 							<group>
 								<field name="evaluation_type"	invisible="0"/>
@@ -186,7 +186,7 @@
 
 							<group>
 
-								<field name="appointment"  />	
+								<field name="appointment"  	required="1"/>	
 
 							</group>
 							<group>

@@ -1,19 +1,18 @@
 # -*- coding: utf-8 -*-
 #
-# 	*** OPEN HEALTH
+# 	*** Treatment
 # 
 # Created: 			26 Aug 2016
-# Last updated: 	 20 Sep 2016
+# Last updated: 	 7 Dec 2016
+
+
 
 from openerp import models, fields, api
 from datetime import datetime
-
 from datetime import tzinfo
 
 import jxvars
-
 import treatment_funcs
-
 import time_funcs
 
 
@@ -655,18 +654,14 @@ class Treatment(models.Model):
 		# Apointment 
 		appointment = self.env['oeh.medical.appointment'].search([ 	
 														
-															#('patient', 'like', 'Revilla'),		
 															('patient', 'like', self.patient.name),		
 															
-															#('doctor', 'like', 'Chavarri'), 	
 															('doctor', 'like', self.physician.name), 	
 															
 															('x_type', 'like', 'consultation'), 
-
-															#('appointment_date', 'like', '2016-12-06 15:30:00')	
 														
 														], 
-															order='appointment_date desc', limit=1)
+														order='appointment_date desc', limit=1)
 
 		print appointment
 
@@ -681,14 +676,6 @@ class Treatment(models.Model):
 		print 'create consultation'
 		consultation = self.env['openhealth.consultation'].create(
 												{
-
-													#'treatment': treatment_id,
-													#'partner_id': partner_id,
-													#'patient': patient_id,	
-													#'consultation':self.id,
-													#'state':'draft',
-
-
 
 													'patient': patient_id,
 													'doctor': doctor_id,

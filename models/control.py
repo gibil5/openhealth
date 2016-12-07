@@ -1,13 +1,16 @@
 # -*- coding: utf-8 -*-
 #
-# 	Control 	
+# 	*** Control 	
 # 
 
-from openerp import models, fields, api
+# Created: 				 1 Nov 2016
+# Last updated: 	 	 7 Dec 2016 
 
+
+
+from openerp import models, fields, api
 #from datetime import datetime
 import datetime
-
 
 import jxvars
 import time_funcs
@@ -52,7 +55,9 @@ class Control(models.Model):
 	observation = fields.Text(
 			string="Observación",
 			size=200,
-			required=True,
+
+			#required=True,
+			required=False,
 			)
 
 

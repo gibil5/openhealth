@@ -1,21 +1,20 @@
 # -*- coding: utf-8 -*-
 #
-# 	Consultation 
+# 	*** Consultation 
 # 
 
-from openerp import models, fields, api
+# Created: 				 1 Nov 2016
+# Last updated: 	 	 7 Dec 2016 
 
+
+
+from openerp import models, fields, api
 #from datetime import datetime
 from datetime import datetime,tzinfo,timedelta
 
-
 import jxvars
-
 import jrfuncs
-
-
 import eval_vars
-
 import time_funcs
 
 

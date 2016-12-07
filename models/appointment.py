@@ -1,20 +1,19 @@
 # -*- coding: utf-8 -*-
 #
-# 	*** OPEN HEALTH
+# 	*** Appointment
 #
 
 # Created: 				14 Nov 2016
-# Last updated: 	 	27 Nov 2016 
+# Last updated: 	 	 7 Dec 2016 
 
 
 
 from openerp import models, fields, api
-
 #from datetime import datetime
 import datetime
-import time_funcs
 
 #import appfuncs
+import time_funcs
 import jxvars
 
 
@@ -676,8 +675,10 @@ class Appointment(models.Model):
 
 	treatment = fields.Many2one('openextension.treatment',
 			string="Tratamiento",
-			required=False, 
 			ondelete='cascade', 
+
+			#required=False, 
+			required=True, 
 			)
 
 

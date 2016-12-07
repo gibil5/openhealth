@@ -4,6 +4,8 @@ from datetime import datetime,tzinfo,timedelta
 from openerp import models, fields, api
 import time_funcs
 
+import jrfuncs
+
 
 
 
@@ -78,7 +80,10 @@ def create_procedure_go(self):
 			print procedure 
 			print procedure_id
 
-			self.update_appointment(appointment_id, procedure_id, 'procedure')
+
+			#self.update_appointment(appointment_id, procedure_id, 'procedure')
+			ret = jrfuncs.update_appointment_go(self, appointment_id, procedure_id, 'procedure')
+
 
 			print appointment
 			print appointment.procedure
@@ -87,73 +92,5 @@ def create_procedure_go(self):
 			print 
 
 	return ret	
-
-
-
-
-
-
-# Update Appointment
-
-@api.multi
-
-def update_appointment_go(self, appointment_id, owner_id, x_type):
-
-		rec_set = self.env['oeh.medical.appointment'].browse([
-																appointment_id																
-															])
-		print rec_set
-
-
-
-		if x_type == 'consultation':
-			ret = rec_set.write({
-									'consultation': owner_id,
-								})
-			#print appointment.consultation
-			#print appointment.consultation.id
-
-
-
-		elif x_type == 'procedure':
-			ret = rec_set.write({
-									'procedure': owner_id,
-								})
-			#print appointment.procedure
-			#print appointment.procedure.id
-
-
-
-		elif x_type == 'session':
-			ret = rec_set.write({
-									'session': owner_id,
-								})
-			#print appointment.session
-			#print appointment.session.id
-
-
-
-		elif x_type == 'control':
-			ret = rec_set.write({
-									'control': owner_id,
-								})
-			#print appointment.control
-			#print appointment.control.id
-
-
-		else:
-			print 
-			print 'This should not happen !!!'
-			print 
-
-
-
-		print ret 
-
-
-
-		return ret
-
-
 
 

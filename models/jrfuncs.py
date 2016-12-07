@@ -1,7 +1,14 @@
 # -*- coding: utf-8 -*-
+#
+# 	*** Jr Funcs
+# 
+
+# Created: 				 1 Nov 2016
+# Last updated: 	 	 7 Dec 2016 
 
 
-#from openerp import models, fields, api
+
+from openerp import models, fields, api
 #import time_funcs
 #from datetime import datetime,tzinfo,timedelta
 
@@ -9,10 +16,73 @@
 
 
 
+#------------------------------------------------ Appointment ---------------------------------------------------
+
+@api.multi
+
+def update_appointment_go(self, appointment_id, owner_id, x_type):
+
+		rec_set = self.env['oeh.medical.appointment'].browse([
+																appointment_id																
+															])
+		print rec_set
 
 
 
-# Test
+		if x_type == 'consultation':
+			ret = rec_set.write({
+									'consultation': owner_id,
+								})
+			#print appointment.consultation
+			#print appointment.consultation.id
+
+
+
+		elif x_type == 'procedure':
+			ret = rec_set.write({
+									'procedure': owner_id,
+								})
+			#print appointment.procedure
+			#print appointment.procedure.id
+
+
+
+		elif x_type == 'session':
+			ret = rec_set.write({
+									'session': owner_id,
+								})
+			#print appointment.session
+			#print appointment.session.id
+
+
+
+		elif x_type == 'control':
+			ret = rec_set.write({
+									'control': owner_id,
+								})
+			#print appointment.control
+			#print appointment.control.id
+
+
+		else:
+			print 
+			print 'This should not happen !!!'
+			print 
+
+
+
+		print ret 
+
+
+
+		return ret
+
+
+
+
+
+#------------------------------------------------ Test ---------------------------------------------------
+
 
 def test_name(self, token):
 		

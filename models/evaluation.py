@@ -1,15 +1,17 @@
 # -*- coding: utf-8 -*-
 #
-# 	Evaluation 
+# 	*** Evaluation 
 # 
+
 # Created: 				26 Aug 2016
 # Last updated: 	 	28 Oct 2016
+
+
 
 from openerp import models, fields, api
 from datetime import datetime
 
 import jxvars
-
 import eval_vars
 
 

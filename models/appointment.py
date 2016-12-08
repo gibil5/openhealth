@@ -670,9 +670,6 @@ class Appointment(models.Model):
 
 	# ----------------------------------------------------------- Indexes ------------------------------------------------------
 
-
-
-
 	treatment = fields.Many2one('openextension.treatment',
 			string="Tratamiento",
 			ondelete='cascade', 
@@ -701,6 +698,7 @@ class Appointment(models.Model):
 
 	control = fields.Many2one('openhealth.control',
 		string="Control",
+		
 		ondelete='cascade', 
 	)
 

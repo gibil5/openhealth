@@ -14,6 +14,7 @@ from datetime import datetime
 import jxvars
 import time_funcs
 import jrfuncs
+import procedure_funcs
 
 
 
@@ -123,6 +124,18 @@ class Procedure(models.Model):
 
 
 	#------------------------------------ Buttons -----------------------------------------
+
+	@api.multi
+	def create_controls(self):
+
+		print 
+		print 'Create Controls'
+
+		ret = procedure_funcs.create_controls_go(self)
+		#print ret 
+		print 
+
+
 
 
 	# Consultation - Quick Self Button  

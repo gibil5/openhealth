@@ -106,28 +106,32 @@
 							
 							
 							<group>
+								<field name="laser"/>
+								<field name="vspace"/>
+								<field name="product"/>							
+							</group>
+							<group>
+
+								<field name="observation"/>
+							</group>
+
+
+							<group>	
+								<field name="appointment"/>
+							</group>
+							<group>
+							</group>
+
+
+							<group>
+								<!--
+								<field name="appointment"  />	
+								<field name="evaluation_next_date"/>
+								-->
 								<field name="evaluation_start_date"/>
 							</group>
 							<group>
-								<field name="laser"/>
-							</group>
-
-
-							<group>								
-								<field name="evaluation_next_date"/>
-							</group>
-							<group>
-								<field name="product"/>
-							</group>
-
-
-							<group>
-
-								<field name="appointment"  />	
-
-							</group>
-							<group>
-								<field name="observation"/>
+								<field name="date_actual"/>
 							</group>
 
 						</group>
@@ -160,23 +164,27 @@
 					
 					<field name="name"/>
 					
+
+					<field name="evaluation_start_date"/>
+
+					<field name="appointment"	string="Cita #"/>
+
+
 					<field name="patient"  string="Paciente"/>
 					
 					<field name="doctor"   string="Médico"/>
 					
-					<field name="evaluation_start_date"/>
 
 					<field name="chief_complaint"/>
+					<field name="laser"/>
 					
 					<field name="procedure"/>
 
 					<!--
-					<field name="owner"/>
+					<field name="product"/>
 
-					<field name="treatment_id"/>
-					<field name="duration"/>
-					<field name="nr_services"/>
-					<field name="price_total"/>
+
+
 					-->
 				</tree>
 			</field>

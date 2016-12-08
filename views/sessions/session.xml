@@ -116,9 +116,7 @@
 
 
 							<group>
-
 								<field name="appointment"  	required="1"/>	
-
 							</group>
 							<group>
 								<!--
@@ -138,6 +136,8 @@
 				</form>
 			</field>
 		</record>
+
+
 
 
 		

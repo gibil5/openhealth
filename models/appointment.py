@@ -815,14 +815,13 @@ class Appointment(models.Model):
 		print treatment
 
 
-		x_create_procedure_automatic = vals['x_create_procedure_automatic']
-		#x_create_procedure_automatic = self.x_create_procedure_automatic
-		print x_create_procedure_automatic 
+		#x_create_procedure_automatic = vals['x_create_procedure_automatic']
+		#print x_create_procedure_automatic 
 
 
 
-		x_chief_complaint = vals['x_chief_complaint']
-		print x_chief_complaint
+		#x_chief_complaint = vals['x_chief_complaint']
+		#print x_chief_complaint
 
 
 
@@ -869,10 +868,6 @@ class Appointment(models.Model):
 
 	# Create app 
 	@api.multi
-	#def create_app_procedure(self, appointment_date, x_date, doctor_id, patient_id):
-	#def create_app_procedure(self, appointment_date, doctor_id, patient_id):
-	#def create_app_procedure(self, appointment_date, doctor_id, patient_id, treatment_id):
-	#def create_app_procedure(self, appointment_date, doctor_id, patient_id, treatment_id, x_create_procedure_automatic):
 	def create_app_procedure(self, appointment_date, doctor_id, patient_id, treatment_id,  x_chief_complaint, x_create_procedure_automatic):
 
 		date_format = "%Y-%m-%d %H:%M:%S"
@@ -926,16 +921,12 @@ class Appointment(models.Model):
 
 
 			# Check for collisions 
-
-			#ret, doctor_name, start, end = self.check_for_collision(ad_pro_str, doctor_name)
 			ret, doctor_name, start, end = self.check_for_collision(ad_pro_str, doctor_name, duration)
 
 
 
 			if ret == 0: 	# Success ! - No Collisions
 			
-				
-
 
 				print 'CRUD: Create !!!'
 

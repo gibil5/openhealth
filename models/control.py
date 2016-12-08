@@ -25,6 +25,28 @@ class Control(models.Model):
 
 
 
+
+	# Dates 
+
+	evaluation_start_date = fields.Date(
+			#string = "Fecha programada", 	
+			string = "Fecha", 	
+			required=True, 
+			)
+
+	date_actual = fields.Date(
+			string = "Fecha real", 	
+			#required=True, 
+			)
+
+	@api.onchange('evaluation_start_date')
+	def _onchange_evaluation_start_date(self):
+		self.date_actual = self.evaluation_start_date
+
+
+
+
+
 	# Owner 
 	owner_type = fields.Char(
 			default = 'control',
@@ -64,8 +86,10 @@ class Control(models.Model):
 	evaluation_next_date = fields.Date(
 			string = "Fecha próximo control", 	
 			#compute='_compute_evaluation_next_date', 
-			required=True, 
 			#default = fields.Date.today, 
+
+			#required=True, 
+			required=False, 
 			)
 
 	
@@ -81,16 +105,15 @@ class Control(models.Model):
 
 
 
-	@api.onchange('evaluation_start_date')
-	def _onchange_evaluation_start_date(self):
+	#@api.onchange('evaluation_start_date')
+	#def _onchange_evaluation_start_date(self):
 
-		date_format = "%Y-%m-%d"
-		delta = datetime.timedelta(weeks=1)
-		#to = datetime.datetime.today()
-		sd = datetime.datetime.strptime(self.evaluation_start_date, date_format)
-		next_week = delta + sd
+	#	date_format = "%Y-%m-%d"
+	#	delta = datetime.timedelta(weeks=1)
+	#	sd = datetime.datetime.strptime(self.evaluation_start_date, date_format)
+	#	next_week = delta + sd
 
-		self.evaluation_next_date = next_week
+	#	self.evaluation_next_date = next_week
 
 		#print
 		#print 'onchange'

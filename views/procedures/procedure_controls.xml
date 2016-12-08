@@ -10,7 +10,7 @@
 			<field name="name">procedure.controls.form</field>
 			<field name="model">openhealth.procedure</field>
 
-			<field name="priority" eval="3"/>
+			<field name="priority" eval="2"/>
 			
 			<field name="inherit_id" ref="procedure_form_view"/>
 			
@@ -26,8 +26,6 @@
 
 
 						<!--
-						<field name="control_ids"/>
-						-->
 						<field name="control_ids">
 							<tree string="">	
 								<field string="Control #"  name="name"/>
@@ -47,6 +45,9 @@
 								<field name="procedure"/>
 							</tree>
 						</field>				
+						-->
+						<field name="control_ids"/>
+						
 						
 						
 

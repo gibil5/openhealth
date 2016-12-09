@@ -393,7 +393,6 @@
                     <field name="view_type">form</field>
                     <field name="view_mode">calendar,tree,form</field>
                     
-
                     <field name="domain">[
 
                     						('state', '=', 'pre_scheduled_control'),
@@ -401,7 +400,6 @@
                     					]
                     </field>
                     
-
                     <field name="context">{}</field>
                     <field name="view_id" eval="False"/>
                     <field name="help" type="html">
@@ -420,9 +418,6 @@
 					id="oeh_medical_appointment_list" 
 					sequence="2"
 		/>
-
-
-
 
 
 

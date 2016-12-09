@@ -12,7 +12,7 @@ from openerp import models, fields, api
 #from datetime import datetime
 import datetime
 
-#import appfuncs
+import appfuncs
 import time_funcs
 import jxvars
 
@@ -281,13 +281,11 @@ class Appointment(models.Model):
 
 
 
-			# Check for collision 
+			# Check for collisions
+			#ret, doctor_name, start, end = self.check_for_collision(self.appointment_date, self.doctor.name, self.duration)
+			ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration)
 
-			#ret = self.check_for_collision()
-			#ret, doctor_name, start, end = self.check_for_collision()
-			#ret, doctor_name, start, end = self.check_for_collision(self.appointment_date)
-			#ret, doctor_name, start, end = self.check_for_collision(self.appointment_date, self.doctor.name)
-			ret, doctor_name, start, end = self.check_for_collision(self.appointment_date, self.doctor.name, self.duration)
+
 
 			print ret 
 
@@ -788,79 +786,48 @@ class Appointment(models.Model):
 	@api.model
 	def create(self,vals):
 
-		print 
-		print 'jx Create - Override'
-		print 
-		print vals
-		print 
+		#print 
+		#print 'jx Create - Override'
+		#print 
+		#print vals
+		#print 
 	
 
-		print vals['appointment_date']
 		appointment_date = vals['appointment_date']
-		print appointment_date
-
-
-		#x_date = vals['x_date']
-		#print x_date
-
-		
 		x_type = vals['x_type']
-		print x_type
-
 		doctor = vals['doctor']
-		print doctor
-
 		patient = vals['patient']
-		print patient
-
-
 		treatment = vals['treatment']
-		print treatment
-
-
 		x_create_procedure_automatic = vals['x_create_procedure_automatic']
-		print x_create_procedure_automatic 
-
-
-
 		x_chief_complaint = vals['x_chief_complaint']
-		print x_chief_complaint
 
 
-
-		#duration = vals['duration']
-		#print duration 
-
-
-	#	print vals['appointment_end']
-		#print vals['x_error']
-		
-		print
+		#print appointment_date
+		#print x_type
+		#print doctor
+		#print patient
+		#print treatment
+		#print x_create_procedure_automatic 
+		#print x_chief_complaint
+		#print
 
 
 
 		# Create Procedure 
 		#if x_type == 'consultation':
 		if x_type == 'consultation'  and  x_create_procedure_automatic:
-			print 
-			print 'Create Appointment for procedure !'
+			#print 
+			#print 'Create Appointment for procedure !'
 
-			#app = self.create_app_procedure(appointment_date, x_date, doctor, patient)
-			#app = self.create_app_procedure(appointment_date, doctor, patient)
-			#app = self.create_app_procedure(appointment_date, doctor, patient, treatment, x_create_procedure_automatic)
 			app = self.create_app_procedure(appointment_date, doctor, patient, treatment, x_chief_complaint, x_create_procedure_automatic)
 			
-			print app 
+			#print app 
 
 
 		# Return 
 		res = super(Appointment, self).create(vals)
 
 		return res
-
-
-
-	
 
 
 
@@ -923,8 +890,11 @@ class Appointment(models.Model):
 
 
 
+
 			# Check for collisions 
-			ret, doctor_name, start, end = self.check_for_collision(ad_pro_str, doctor_name, duration)
+			#ret, doctor_name, start, end = self.check_for_collision(ad_pro_str, doctor_name, duration)
+			ret, doctor_name, start, end = appfuncs.check_for_collisions(self, ad_pro_str, doctor_name, duration)
+
 
 
 
@@ -979,139 +949,6 @@ class Appointment(models.Model):
 
 
 
-
-# ----------------------------------------------------------- Collision  ------------------------------------------------------
-
-	@api.multi
-
-	#def check_for_collision(self, appointment_date, appointment_end, duration, doctor_name, app_ids):
-	#def check_for_collision(self):
-	#def check_for_collision(self, appointment_date, doctor_name):
-	def check_for_collision(self, appointment_date, doctor_name, duration):
-
-
-		print 
-		print 'Check for collision'
-
-
-
-		#dt = self.appointment_date[2:10]
-		dt = appointment_date[2:10]
-		print dt
-		print 
-
-
-		#app_ids = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', dt),  ('doctor', '=', self.doctor.name)  ])
-		app_ids = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', dt),  ('doctor', '=', doctor_name)  ])
-		print app_ids 
-
-
-
-
-
-		# Appointment end 
-		date_format = "%Y-%m-%d %H:%M:%S"
-
-
-
-		#delta = datetime.timedelta(hours=self.duration)
-		#delta = datetime.timedelta(hours=0.5)
-		delta = datetime.timedelta(hours=duration)
-
-
-
-		#sd = datetime.datetime.strptime(self.appointment_date, date_format)
-		sd = datetime.datetime.strptime(appointment_date, date_format)
-		
-
-
-
-
-		#self.appointment_end = delta + sd
-
-
-		#appointment_end = delta + sd
-		ae_dt = delta + sd
-
-		#ae = appointment_end.strftime("%Y-%m-%d %H:%M:%S")
-		ae = ae_dt.strftime("%Y-%m-%d %H:%M:%S")
-
-
-
-
-
-
-
-		print delta
-		print sd 
-		#print self.appointment_end
-		#print appointment_end
-		print ae_dt
-		print 
-
-
-
-
-
-		# Check if Collision 
-		#ad = self.appointment_date
-		ad = appointment_date
-
-		#ae = self.appointment_end
-		#ae = appointment_end
-
-
-
-		for app in app_ids:
-
-			#print app
-
-			start = app.appointment_date
-
-			end = app.appointment_end
-
-
-			if 	(	
-					#(ad >= start and ae <= end)  or  (ad <= start and ae >= end)  or  (ad < start and ae > start)  or  (ad < end and ae > end)
-					(ad >= start and ae <= end)  or  (ad <= start and ae >= end)  	or    (ad < start and ae > start)  or  (ad < end and ae > end)
-				): 
-
-
-				print 'Collision !!!'
-
-
-
-				# Local
-				delta = datetime.timedelta(hours=5)
-
-
-				# Start 
-				sd = datetime.datetime.strptime(start, date_format)
-				sl =  sd - delta 
-				#sl = start_local.strftime("%Y-%m-%d %H:%M:%S")
-				start_local = sl.strftime("%H:%M")
-
-
-				# End 
-				sd = datetime.datetime.strptime(end, date_format)
-				el =  sd - delta 
-				end_local = el.strftime("%H:%M")
-
-
-				#print delta
-				#print end_local
-				#print el
-
-
-
-				# Did not pass 
-				#return -1, self.doctor.name, start_local, end_local
-				return -1, doctor_name, start_local, end_local
-
-
-
-		# Passed test - All is Ok 
-		return 0, '', '', '' 
 
 
 

@@ -10,7 +10,7 @@
 			<field name="name">procedure.appointment.form</field>
 			<field name="model">openhealth.procedure</field>
 
-			<field name="priority" eval="0"/>
+			<field name="priority" eval="3"/>
 			
 			<field name="inherit_id" ref="procedure_form_view"/>
 			<field name="arch" type="xml">

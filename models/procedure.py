@@ -125,15 +125,19 @@ class Procedure(models.Model):
 
 	#------------------------------------ Buttons -----------------------------------------
 
+
+	# Create Controls 
 	@api.multi
 	def create_controls(self):
 
-		print 
-		print 'Create Controls'
+		#print 
+		#print 'Create Controls'
 
 		ret = procedure_funcs.create_controls_go(self)
-		#print ret 
-		print 
+
+		#print 
+
+
 
 
 

@@ -164,18 +164,18 @@
 					
 					<field name="name"/>
 					
-
 					<field name="evaluation_start_date"/>
 
-					<field name="appointment"	string="Cita #"/>
+
+					<field name="appointment"/>
 
 
 					<field name="patient"  string="Paciente"/>
 					
 					<field name="doctor"   string="Médico"/>
-					
 
 					<field name="chief_complaint"/>
+					
 					<field name="laser"/>
 					
 					<field name="procedure"/>
@@ -183,6 +183,7 @@
 					<!--
 					<field name="product"/>
 
+					<field name="appointment"	string="Cita #"/>
 
 
 					-->

@@ -140,8 +140,8 @@ class Control(models.Model):
 
 			
 
-	# Open Appointment
-	# -----------------
+# ----------------------------------------------------------- Open ------------------------------------------------------
+
 	@api.multi
 	def open_appointment(self):  
 
@@ -201,6 +201,25 @@ class Control(models.Model):
 							'default_appointment_date': appointment_date,
 							}
 				}
+
+
+
+# ----------------------------------------------------------- CRUD ------------------------------------------------------
+
+
+	@api.multi
+	def unlink(self):
+
+		print 
+		print 'Unlink - Override'
+
+		#print self.appointment
+		#self.appointment.unlink() 
+
+		print 
+
+		return models.Model.unlink(self)
+
 
 
 

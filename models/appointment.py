@@ -149,12 +149,16 @@ class Appointment(models.Model):
 	APPOINTMENT_STATUS = [
 			
 			# jx 
-			('Pre-scheduled', 'Pre-scheduled'),
+			('pre_scheduled', 			'Pre-scheduled'),
+			('pre_scheduled_control', 	'Pre-scheduled Control'),
 
+
+			# OeHealth 
 			('Scheduled', 'Scheduled'),
 			('Completed', 'Completed'),
 			('Invoiced', 'Invoiced'),
 		]
+
 
 	state = fields.Selection(
 
@@ -162,6 +166,7 @@ class Appointment(models.Model):
 
 			readonly=False, 
 		)
+
 
 
 
@@ -675,7 +680,7 @@ class Appointment(models.Model):
 			ondelete='cascade', 
 
 			#required=False, 
-			required=True, 
+			#required=True, 
 			)
 
 
@@ -813,13 +818,13 @@ class Appointment(models.Model):
 		print treatment
 
 
-		#x_create_procedure_automatic = vals['x_create_procedure_automatic']
-		#print x_create_procedure_automatic 
+		x_create_procedure_automatic = vals['x_create_procedure_automatic']
+		print x_create_procedure_automatic 
 
 
 
-		#x_chief_complaint = vals['x_chief_complaint']
-		#print x_chief_complaint
+		x_chief_complaint = vals['x_chief_complaint']
+		print x_chief_complaint
 
 
 
@@ -936,7 +941,9 @@ class Appointment(models.Model):
 															
 
 															'x_type':'procedure',
-															'state':'Pre-scheduled',
+															
+															#'state':'Pre-scheduled',
+															'state':'pre_scheduled',
 
 															'patient': patient_id,	
 															'doctor': doctor_id,

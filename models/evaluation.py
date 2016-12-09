@@ -31,6 +31,17 @@ class Evaluation(models.Model):
 	#		)
 
 
+
+
+	appointment = fields.Many2one(
+			'oeh.medical.appointment',
+			
+			#'Appointment #'
+			'Cita #'
+			)
+
+
+
 	# Deprecated 
 
 	#treatment_id = fields.Many2one(

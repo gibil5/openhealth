@@ -22,10 +22,12 @@ from openerp import models, fields, api
 
 def update_appointment_go(self, appointment_id, owner_id, x_type):
 
+
 		rec_set = self.env['oeh.medical.appointment'].browse([
 																appointment_id																
 															])
 		print rec_set
+
 
 
 

@@ -58,17 +58,30 @@ def create_controls_go(self):
 
 	ret = 0
 
-	#for line in self.sale_ids.order_line:
-	#for k in [0:6]:
-	for k in range(0,3): 
+
+	#GMT = time_funcs.Zone(0,False,'GMT')
+
 	#for k in range(1,4): 
+	for k in range(0,3): 
 					
 		nr_weeks = k 
 
+
+
+		# Control date 
 		control_date = get_control_date(self, evaluation_start_date, nr_weeks)
+
+
 		#control_date_str = control_date.strftime("%Y-%m-%d %H:%M:%S")
+		#control_date_str = control_date(GMT).strftime("%Y-%m-%d")
 		control_date_str = control_date.strftime("%Y-%m-%d")
-		control_date_str = control_date_str + ' 0:0:0'
+
+		
+		#control_date_str = control_date_str + ' 0:0:0'
+		#control_date_str = control_date_str + ' 5:0:0'
+		control_date_str = control_date_str + ' 14:0:0'
+
+
 
 		# Create Appointment
 		print control_date
@@ -80,7 +93,11 @@ def create_controls_go(self):
 
 		duration = 0.25
 		x_type = 'control'
-		state = 'Pre-scheduled'
+
+
+		#state = 'Pre-scheduled'
+		state = 'pre_scheduled_control'
+
 
 		appointment = create_appointment_control(self, appointment_date, duration, x_type, state, chief_complaint, patient_id, doctor_id, treatment_id)
 
@@ -112,11 +129,11 @@ def create_controls_go(self):
 
 
 
-		#ret = jrfuncs.update_appointment_go(self, appointment_id, control_id, 'control')
-		#print appointment
-		#print appointment.control
-		#print appointment.control.id
-		#print 
+		ret = jrfuncs.update_appointment_go(self, appointment_id, control_id, 'control')
+		print appointment
+		print appointment.control
+		print appointment.control.id
+		print 
 
 	return ret	
 
@@ -131,6 +148,10 @@ def create_controls_go(self):
 
 def create_appointment_control(self, appointment_date, duration, x_type, state, chief_complaint, patient_id, doctor_id, treatment_id):
 
+
+	x_create_procedure_automatic = False 
+
+
 	appointment = self.env['oeh.medical.appointment'].create({
 																'appointment_date': appointment_date,
 
@@ -138,6 +159,7 @@ def create_appointment_control(self, appointment_date, duration, x_type, state, 
 															
 
 																'x_type': x_type,
+
 																'state': state,
 
 
@@ -145,9 +167,9 @@ def create_appointment_control(self, appointment_date, duration, x_type, state, 
 																'doctor': doctor_id,
 																'treatment': treatment_id, 
 
-																#'x_create_procedure_automatic': x_create_procedure_automatic,
 																'x_chief_complaint': chief_complaint, 
 
+																'x_create_procedure_automatic': x_create_procedure_automatic,
 															})
 
 

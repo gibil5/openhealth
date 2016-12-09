@@ -361,6 +361,7 @@
 
 
 		<!-- Window action -->
+		<!--
 		<record model="ir.actions.act_window" id="oeh_medical_preappointment_list_action">
 			<field name="name">Pre-citas</field>
 			<field name="res_model">oeh.medical.appointment</field>
@@ -368,11 +369,13 @@
 			<field name="view_mode">tree,form</field>
 
 		</record>
-
+		-->
 		<!-- Menu -->
+		<!--
 		<menuitem id="oeh_medical_preappointment_menu" name="Pre-citas"
 			parent="openhealth_menu"
 			action="oeh_medical_preappointment_list_action"/>
+		-->
 
 
 
@@ -380,14 +383,45 @@
 
 
 
+		<record id="oeh_medical_appointment_action_tree_1" model="ir.actions.act_window">
+                    <field name="name">Citas - new</field>
+                    <field name="res_model">oeh.medical.appointment</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">calendar,tree,form</field>
+                    
+                    <field name="domain">[
+
+                    						('state', 'in', ['pre_scheduled','Scheduled', 'Completed', 'Invoiced']),
+
+                    					]
+                    </field>
+                    
+                    <field name="context">{}</field>
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to add a new appointment.
+                      </p><p>
+                        oeHealth appointment screen can easily find all of your appointment details;
+                      </p>
+                    </field>
+		</record>
+
+
+
+		<menuitem 
+					action="oeh_medical_appointment_action_tree_1" 
+					parent="oehealth.oeh_medical_appointment_menu"  
+					id="oeh_medical_appointment_list_1" 
+					sequence="2"
+		/>
 
 
 
 
 
 
-
-		<record id="oeh_medical_appointment_action_tree" model="ir.actions.act_window">
+		<record id="oeh_medical_appointment_action_tree_2" model="ir.actions.act_window">
                     <field name="name">Pre-citas</field>
                     <field name="res_model">oeh.medical.appointment</field>
                     <field name="view_type">form</field>
@@ -411,11 +445,10 @@
                     </field>
 		</record>
 
-
 		<menuitem 
-					action="oeh_medical_appointment_action_tree" 
+					action="oeh_medical_appointment_action_tree_2" 
 					parent="oehealth.oeh_medical_appointment_menu"  
-					id="oeh_medical_appointment_list" 
+					id="oeh_medical_appointment_list_2" 
 					sequence="2"
 		/>
 

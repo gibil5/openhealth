@@ -183,21 +183,17 @@
 
 		<!-- service tree/list view -->
 		<record model="ir.ui.view" id="oehealth.oeh_medical_appointment_tree">
-
 			<field name="name">oeh.medical.appointment.tree</field>
-
 			<field name="model">oeh.medical.appointment</field>
-			
-			
 			<field name="type">tree</field>
-
 			<field name="priority" eval="1"/>
-
 
 			<field name="arch" type="xml">
 				
 
-				<tree string="Appointment Tree">
+
+
+				<tree string="Appointment Tree"  	default_order='x_time'>
 				
 
 					<!--
@@ -207,23 +203,11 @@
 					<field name="id"/>
 					-->
 
-
 					<field name="name"/>
-
-
-
 
 					<field name="patient"/>
 
-
-
-
 					<field name="doctor"/>
-
-
-
-
-
 
 					<field name="x_type"/>
 
@@ -236,27 +220,29 @@
 
 
 
+					<!--
 
 					<field name="treatment"/>
 					<field name="consultation"/>
 					<field name="procedure"/>
 					<field name="session"/>
 					<field name="control"/>					
-					
-					<!--
 					-->
+					
 
 
 					<!--
-					<field name="x_date"/>
 					<field name="appointment_end"/>
 					<field name="duration"/>
 
+
+					<field name="appointment_date"/>
 					-->
 					
 					<field name="state"/>
 
-					<field name="appointment_date"/>
+					<field name="x_date"/>
+					<field name="x_time"/>
 
 
 					

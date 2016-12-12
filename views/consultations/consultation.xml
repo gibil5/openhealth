@@ -201,8 +201,10 @@
 						<!-- Padding --> 
 						<group>
 
-							<group>							
+							<group>
+								<!--
 								<field name="id"/>
+								-->
 							</group>
 
 

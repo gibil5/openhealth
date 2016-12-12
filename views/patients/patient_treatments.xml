@@ -16,10 +16,12 @@
 		<record model="ir.ui.view" id="patient_treatments_form_view">
 			<field name="name">Patient treatments</field>
 			<field name="model">oeh.medical.patient</field>
+			
 			<!--
 			<field name="priority" eval="3"/>
 			-->
-			<field name="priority" eval="3"/>
+			<field name="priority" eval="1"/>
+
 
     		<field name="inherit_id" ref="oeh_medical_patient_view"/>
 			<field name="arch" type="xml">
@@ -49,14 +51,15 @@
 								<field name="patient"/>
 								<field name="physician"/>
 								<field name="chief_complaint"/>
-								<field name="start_date"/>
-								<field name="duration"/>
 
 								<!--
 								<field name="nr_evaluations"/>
 								-->
 								<field name="price_total"/>
 
+
+								<field name="duration"/>
+								<field name="start_date"/>
 
 								<!--
 								-->

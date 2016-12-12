@@ -148,15 +148,25 @@ class Appointment(models.Model):
 
 	APPOINTMENT_STATUS = [
 			
+
 			# jx 
-			('pre_scheduled', 			'Pre-scheduled'),
-			('pre_scheduled_control', 	'Pre-scheduled Control'),
+			#('pre_scheduled', 			'Pre-scheduled'),
+			#('pre_scheduled_control', 	'Pre-scheduled Control'),
+
+			('pre_scheduled', 			'No confirmado'),
+			('pre_scheduled_control', 	'Pre-cita'),
+
 
 
 			# OeHealth 
-			('Scheduled', 'Scheduled'),
-			('Completed', 'Completed'),
-			('Invoiced', 'Invoiced'),
+			#('Scheduled', 'Scheduled'),
+			#('Completed', 'Completed'),
+			#('Invoiced', 'Invoiced'),
+
+			('Scheduled', 'Confirmado'),
+			('Completed', 'Completo'),
+			('Invoiced', 'Facturado'),
+
 		]
 
 
@@ -177,7 +187,7 @@ class Appointment(models.Model):
 			
 			string = "Paciente", 	
 
-			default=3025, 		# Revilla 
+			#default=3025, 		# Revilla 
 			#default=3052, 		# Suarez Vertiz
 
 			#required=True, 
@@ -337,21 +347,70 @@ class Appointment(models.Model):
 
 			)
 
+
 	x_date = fields.Date(
+			string="Fecha", 
+
 			#default = fields.Date.today, 
-			#compute="_compute_x_date",
+			compute="_compute_x_date",
 			#required=True, 
 		)
-
 
 	#@api.multi
 	@api.depends('appointment_date')
 
 	def _compute_x_date(self):
+
+		date_format = "%Y-%m-%d %H:%M:%S"
+		#date_format = "%Y-%m-%d"
+
 		for record in self:
-			record.x_date = record.appointment_date
+			#record.x_date = record.appointment_date
+			#record.x_date = record.appointment_date.strftime("%Y-%m-%d")
+
+			dt = datetime.datetime.strptime(record.appointment_date, date_format)
 
 
+			record.x_date = dt.strftime("%Y-%m-%d")
+
+
+
+
+	#x_time = fields.Date(
+	#x_time = fields.Datetime(
+	x_time = fields.Char(
+			string="Hora", 
+
+			compute="_compute_x_time",
+		)
+
+	#@api.multi
+	@api.depends('appointment_date')
+
+	def _compute_x_time(self):
+
+		print 
+		print 'compute x_time'
+
+		date_format = "%Y-%m-%d %H:%M:%S"
+		#date_format = "%H:%M:%S"
+
+		for record in self:
+			#record.x_time = record.appointment_date
+			
+			#record.x_time = record.appointment_date.strftime("%H:%M:%S")
+
+
+			dt = datetime.datetime.strptime(record.appointment_date, date_format)
+			delta = datetime.timedelta(hours=5)
+			dt = dt - delta
+			print dt
+
+
+			record.x_time = dt.strftime("%H:%M:%S")
+
+
+		print 
 
 
 

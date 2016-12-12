@@ -9,7 +9,9 @@
 		<record model="ir.ui.view" id="consultation_order_form_view">
 			<field name="name">consultation.order.form</field>
 			<field name="model">openhealth.consultation</field>
-			<field name="priority" eval="1"/>
+
+			<field name="priority" eval="2"/>
+			
 			<field name="inherit_id" ref="consultation_form_view"/>
 			<field name="arch" type="xml">
 

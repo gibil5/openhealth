@@ -143,7 +143,7 @@
 					
 					
 					<field name="vspace"/>
-					<field name="state"/>
+					<field name="state"		string="Estado"/>
 
 
 					<field name="vspace"/>
@@ -173,6 +173,7 @@
 
 
 
+
 		
 		<!-- Tree view --> 
 		<!--
@@ -196,25 +197,32 @@
 
 
 
+                    <!--
                     <field name="id"/>
 
+					-->
 
                     
-                    <field name="date_order"/>
                     
                     <field name="partner_id"/>
                     
                     <field name="user_id"/>
                     
-                    <field name="amount_total" sum="Total Tax Included" widget="monetary"/>
 
                     <!--
                     <field name="invoice_status"/>
                      -->
                     
-                    <field name="state" invisible="0"/>
+                    <field name="state" invisible="0"	string="Estado"/>
                     
                     <field name="nr_lines"/>
+
+
+
+
+                    <field name="amount_total" sum="Total Tax Included" widget="monetary"/>
+
+                    <field name="date_order"/>
 
                      <!--
                     <field name="consultation"/>
@@ -233,6 +241,8 @@
 
 
 		
+
+
 
 		
 		<!-- Filter --> 

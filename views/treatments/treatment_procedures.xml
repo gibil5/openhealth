@@ -42,7 +42,6 @@
 
 								<field string="Médico" name="doctor"/>
 
-								<field name="evaluation_start_date"/>
 
 								<!--
 								<field string='Tipo' name="evaluation_type"/>
@@ -51,6 +50,11 @@
 								<field name="chief_complaint"/>
 
 								<field name="product"/>
+
+
+								<field name="evaluation_start_date"/>
+
+
 
 								<!--
 								<field name="treatment"/>

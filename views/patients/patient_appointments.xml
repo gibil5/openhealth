@@ -11,9 +11,9 @@
 			<field name="model">oeh.medical.patient</field>
 			
 			<!--
-			<field name="priority" eval="2"/>
-			-->
 			<field name="priority" eval="0"/>
+			-->
+			<field name="priority" eval="2"/>
 			
 
 			<field name="inherit_id" ref="oeh_medical_patient_view"/>

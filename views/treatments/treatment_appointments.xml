@@ -10,7 +10,10 @@
 			<field name="name">treatment.appointment.form</field>
 			<field name="model">openextension.treatment</field>
 
+			<!--
 			<field name="priority" eval="1"/>
+			-->
+			<field name="priority" eval="6"/>
 			
 			<field name="inherit_id" ref="treatment_form_view"/>
 			<field name="arch" type="xml">

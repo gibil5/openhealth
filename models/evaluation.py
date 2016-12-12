@@ -82,7 +82,9 @@ class Evaluation(models.Model):
 
 
 	evaluation_start_date = fields.Date(
+
 			string = "Fecha", 	
+		
 			#default = fields.Date.today, 
 			required=True, 
 			)

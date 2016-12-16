@@ -267,7 +267,7 @@
 							<group>								
 								<!--
 								-->
-								<field name="appointment"  		required="1"/>	
+								<field name="appointment"/>	
 							</group>							
 							<group>								
 								<field name="x_photo_aging"  	required="1"/>	

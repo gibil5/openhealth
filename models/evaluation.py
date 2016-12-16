@@ -36,9 +36,14 @@ class Evaluation(models.Model):
 	appointment = fields.Many2one(
 			'oeh.medical.appointment',
 			
-			#'Appointment #'
-			'Cita #'
+			#string='Appointment #'
+			string='Cita #', 
+
+			required=False, 
 			)
+
+
+
 
 
 
@@ -48,6 +53,16 @@ class Evaluation(models.Model):
 	#		'openextension.treatment',
 	#		ondelete='cascade', 
 	#		)
+
+
+	treatment = fields.Many2one(
+			'openextension.treatment',
+			
+			ondelete='cascade', 
+			)
+
+
+
 
 
 

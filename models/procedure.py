@@ -49,7 +49,7 @@ class Procedure(models.Model):
 
 
 
-	# Relational 
+# ----------------------------------------------------------- Relational ------------------------------------------------------
 
 	appointment_ids = fields.One2many(
 			'oeh.medical.appointment', 
@@ -71,9 +71,20 @@ class Procedure(models.Model):
 			string = "sessiones", 
 			)
 
-	treatment = fields.Many2one('openextension.treatment',
+
+
+
+
+
+# ----------------------------------------------------------- Indexes ------------------------------------------------------
+
+	treatment = fields.Many2one(
+			'openextension.treatment',
+			
 			ondelete='cascade', 
 			)
+
+
 
 
 

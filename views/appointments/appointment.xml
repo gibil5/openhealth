@@ -18,21 +18,41 @@
 
 
 
-				<xpath expr="//field[@name='institution']" position="replace">
-					<!--
-					<field name="x_duration_min"	widget="progressbar"/>
-					<field name="x_duration_min"	attrs="{'invisible':[('x_type', '!=', 'session')]}"/>
 
-
-					<field name="x_duration_min"	attrs="{'readonly':[('x_type', '!=', 'session')]}"/>
-
-					-->
-					<field name="x_duration_min"	attrs="{	'readonly':[('x_type', '!=', 'session')], 
-																'invisible':[('x_type', '!=', 'session')]	}"/>
+				<xpath expr="//field[@name='patient']" position="replace">
 					
-
+					<field name="patient"/>
+					
+					<field name="vspace"/>
 
 				</xpath>
+
+
+
+
+
+
+				<xpath expr="//field[@name='institution']" position="replace">
+					<field name="x_duration_min"	attrs="{	'readonly':[('x_type', '!=', 'session')], 
+																'invisible':[('x_type', '!=', 'session')]	}"/>
+				</xpath>
+
+
+
+
+
+				<xpath expr="//field[@name='appointment_date']" position="replace">					
+				<!--
+				-->
+					<field name="appointment_date"		attrs="{'invisible':[
+																				('state', '=', 'pre_scheduled_control'),
+																			]}"/>
+
+					<field name="x_date"				attrs="{'invisible':[
+																				('state', '!=', 'pre_scheduled_control'),
+																			]}"/>
+				</xpath>
+
 
 
 
@@ -41,7 +61,9 @@
 				<xpath expr="//field[@name='patient_status']" position="replace">
 					<!--
 					<field name="appointment_end"	readonly="1"/>
+					<field name="patient_status"	/>
 					-->
+
 					<field name="appointment_end"	/>
 				</xpath>
 
@@ -50,13 +72,7 @@
 
 
 				<xpath expr="//field[@name='duration']" position="replace">
-					<!--
-					<field name="duration"	widget="progressbar"/>
-
-					-->
-					
-					<field name="duration"		/>
-				
+					<field name="duration"/>				
 				</xpath>
 
 
@@ -102,21 +118,22 @@
 
 
 
-							<field name="state"/>
+							<field name="x_type"/>
 
+
+							<field name="vspace"/>
+
+
+							<field name="state"/>
 
 							<field name="vspace"/>
 
 
 
 
-							<field name="x_type"/>
+							<field name="treatment"		attrs="{'invisible':[('x_type', '!=', 'consultation')]}"/>
 
-
-
-							<field name="treatment"/>
-
-
+							<!--
 							<field name="consultation"	attrs="{'invisible':[('x_type', '!=', 'consultation')]}"/>
 
 							<field name="procedure"   	attrs="{'invisible':[('x_type', '!=', 'procedure')]}"/>
@@ -124,6 +141,7 @@
 							<field name="session"		attrs="{'invisible':[('x_type', '!=', 'session')]}"/>
 
 							<field name="control"		attrs="{'invisible':[('x_type', '!=', 'control')]}"/>
+							-->
 
 						</group>
 
@@ -142,7 +160,7 @@
 
 							<field name="x_create_procedure_automatic"	attrs="{'invisible':[('x_type', '!=', 'consultation')]}"  />
 
-							<field name="x_chief_complaint"/>
+							<field name="x_chief_complaint"				attrs="{'invisible':[('x_type', '!=', 'consultation')]}"/>
 
 							<field name="vspace"/>
 
@@ -150,10 +168,13 @@
 								
 								name="open_treatment_current" 
 							-->
+
 							<button 
 								type="object" 
 								class="oe_highlight"
 								string="Crear Tratamiento" 
+
+								attrs="{'invisible':[('x_type', '!=', 'consultation')]}"
 
 								name="create_treatment" 
 							/>
@@ -192,8 +213,10 @@
 				
 
 
-
+				<!--
 				<tree string="Appointment Tree"  	default_order='x_time'>
+				-->
+				<tree string="Appointment Tree">
 				
 
 					<!--
@@ -201,9 +224,10 @@
 					<field name="x_doctor_code"/>
 					<field name="x_type_cal"/>
 					<field name="id"/>
-					-->
 
 					<field name="name"/>
+					-->
+
 
 					<field name="patient"/>
 
@@ -220,9 +244,8 @@
 
 
 
-					<!--
-
 					<field name="treatment"/>
+					<!--
 					<field name="consultation"/>
 					<field name="procedure"/>
 					<field name="session"/>
@@ -237,6 +260,8 @@
 
 
 					<field name="appointment_date"/>
+
+
 					-->
 					
 					<field name="state"/>
@@ -323,7 +348,7 @@
 
 
 		<record id="oeh_medical_appointment_action_tree_1" model="ir.actions.act_window">
-                    <field name="name">Citas - new</field>
+                    <field name="name">Citas confirmadas</field>
                     <field name="res_model">oeh.medical.appointment</field>
                     <field name="view_type">form</field>
                     <field name="view_mode">calendar,tree,form</field>
@@ -361,7 +386,9 @@
 
 
 		<record id="oeh_medical_appointment_action_tree_2" model="ir.actions.act_window">
-                    <field name="name">Pre-citas</field>
+
+                    <field name="name">Pre-citas / Controles</field>
+            
                     <field name="res_model">oeh.medical.appointment</field>
                     <field name="view_type">form</field>
                     <field name="view_mode">calendar,tree,form</field>

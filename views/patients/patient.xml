@@ -120,10 +120,12 @@ Sheet
 									<field name="name" class="oe_edit_only"/>
 									<field name="a_full_name"  class="oe_read_only" />
 
+									<field name="name_clone"    />
+									
+									<field name="name"    required="1"	readonly="1"/>
 									-->
 
-									<field name="name"    required="1"/>
-
+									<field name="name"  class="oe_read_only" />
 
 									
 
@@ -193,11 +195,14 @@ Sheet
 						<group>
 
 							<group>						
-								<field name="a_first_name" />
+								<field name="a_first_name" 	class="oe_edit_only"/>
 								<!--	
 								<field name="a_full_name"  string="a_full_name"/>
 								-->
+
+								<field name="a_last_name"   class="oe_edit_only"/>
 							</group>
+
 							<group>
 								<!--
 								<field name="a_last_name" 	/>
@@ -205,15 +210,15 @@ Sheet
 								<field name="x_autofill" 	/>
 							</group>
 
-
+							<!--
 							<group>
-								<!--
 								<field name="a_full_name" />
-								-->
 							</group>
 							<group>
 							</group>
-												
+							-->
+
+											
 						</group>
 						
 						<group>
@@ -319,13 +324,20 @@ Sheet
 					<!--
 					--> 
 					
-					<field name="name"  string="Apellidos"/>
+					<field name="name"/>
+
+					
+
+
+					<field name="a_last_name"  />
+					<field name="a_first_name"  />
+					<field name="a_full_name"  />
+
+					
 					<field name="id"/>
 
-
-					<field name="a_first_name"  />
-					
 					<field string="Historia Médica"  name="identification_code"/>
+
 
 					<field name="sex"/>				
 					

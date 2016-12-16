@@ -33,9 +33,15 @@
 						jx
 						<field name="x_treatment_ids" widget="one2many_list" readonly="1"/>
 						<field name="a_treatment_ids" widget="one2many_list" readonly="1"/>
-						--> 
+						
+
 						<field name="a_treatment_ids">
-							
+						--> 
+
+						<field name="treatment_ids">
+						
+
+
 							<tree string="Tratamientos">
 
 								<!--

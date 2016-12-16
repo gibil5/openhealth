@@ -153,8 +153,8 @@ class Appointment(models.Model):
 			#('pre_scheduled', 			'Pre-scheduled'),
 			#('pre_scheduled_control', 	'Pre-scheduled Control'),
 
+			('pre_scheduled_control', 	'Pre-cita control'),
 			('pre_scheduled', 			'No confirmado'),
-			('pre_scheduled_control', 	'Pre-cita'),
 
 
 
@@ -164,18 +164,34 @@ class Appointment(models.Model):
 			#('Invoiced', 'Invoiced'),
 
 			('Scheduled', 'Confirmado'),
-			('Completed', 'Completo'),
-			('Invoiced', 'Facturado'),
+			
+			#('Completed', 'Completo'),
+			#('Invoiced', 'Facturado'),
 
 		]
 
 
 	state = fields.Selection(
-
 			selection = APPOINTMENT_STATUS, 
-
 			readonly=False, 
 		)
+
+
+
+
+
+	APPOINTMENT_STATUS_PROXY = [
+									('pre_scheduled', 	'No confirmado'),
+									('Scheduled', 		'Confirmado'),
+								]
+
+	x_state_proxy = fields.Selection(
+			selection = APPOINTMENT_STATUS_PROXY, 
+		)
+
+
+
+
 
 
 
@@ -187,7 +203,7 @@ class Appointment(models.Model):
 			
 			string = "Paciente", 	
 
-			#default=3025, 		# Revilla 
+			default=3025, 		# Revilla 
 			#default=3052, 		# Suarez Vertiz
 
 			#required=True, 
@@ -195,20 +211,28 @@ class Appointment(models.Model):
 
 
 
-	x_patient_name_first = fields.Char(
-			compute='_compute_x_patient_name_first', 
+
+
+
+
+	x_patient_name_short = fields.Char(
+			compute='_compute_x_patient_name_short', 
 		)
+
 
 	#@api.multi
 	@api.depends('patient')
 
-	def _compute_x_patient_name_first(self):
+	def _compute_x_patient_name_short(self):
 		for record in self:
 
 			patient_name = record.patient.name
-			patient_name_first = patient_name.split(' ')[0]
 
-			record.x_patient_name_first = patient_name_first
+			first_half = patient_name.split(' ')[0]
+
+			record.x_patient_name_short = first_half
+
+
 
 
 
@@ -345,6 +369,10 @@ class Appointment(models.Model):
 
 			string="Fecha", 
 
+			#readonly=True,
+			readonly=False,
+
+			#states={'Scheduled': [('readonly', False)]})
 			)
 
 

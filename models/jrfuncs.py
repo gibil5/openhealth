@@ -16,6 +16,15 @@ from openerp import models, fields, api
 
 
 
+#------------------------------------------------ Unidecode ---------------------------------------------------
+
+import unicodedata
+def strip_accents(s):
+   return ''.join(c for c in unicodedata.normalize('NFD', s)
+                  if unicodedata.category(c) != 'Mn')
+
+
+
 #------------------------------------------------ Appointment ---------------------------------------------------
 
 @api.multi
@@ -88,9 +97,9 @@ def update_appointment_go(self, appointment_id, owner_id, x_type):
 
 def test_name(self, token):
 		
-	print 
-	print 'on change name'
-	print 
+	#print 
+	#print 'on change name'
+	#print 
 
 
 	if token != False:
@@ -110,9 +119,9 @@ def test_name(self, token):
 
 def test_for_digits(self, token):
 		
-	print 
-	print 'test for digits'
-	print 
+	#print 
+	#print 'test for digits'
+	#print 
 
 	if token and (not token.isdigit()):
 		return {
@@ -127,9 +136,9 @@ def test_for_digits(self, token):
 
 def test_for_length(self, token, length):
 		
-	print 
-	print 'test for length'
-	print 
+	#print 
+	#print 'test for length'
+	#print 
 
 
 	#if token and (not token.isdigit()):

@@ -18,7 +18,7 @@
     	Clinica Chavarri\n
 
 		Installed: 	 	7 Sep 2016.\n 
-		Last built: 	12 Dec 2016.\n 
+		Last built: 	14 Dec 2016.\n 
 		\n
 
 		This is my first extension for oeHealth.
@@ -232,6 +232,11 @@
         #'views/patients/patient_lab.xml',
 		#'views/patients/patient_med.xml',
 
+
+
+
+		# Partners 
+        'views/partners/partner.xml',
 
 		
 

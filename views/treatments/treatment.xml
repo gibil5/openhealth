@@ -178,7 +178,7 @@ Top
 						<div>						
 
 							<!-- Persona --> 
-							<div class="oe_left"  style="width: 300px;">
+							<div class="oe_left"  style="width: 250px;">
 								<div class="oe_title" >
 									<h1>Tratamiento</h1>	
 								</div>								
@@ -190,13 +190,14 @@ Top
 
 
 
+
+
 							<!-- Buttons --> 
-							<div class="oe_left" style="width: 300px;" name="buttons">
+							<div class="oe_left" style="width: 400px;" name="buttons">
 							
 
-								<!--
-								Consultations
-								-->
+
+								<!-- Consultations -->
 								<button type="action" class="oe_stat_button" 
 									name="%(consultation_form_action)d"	
 									context="{									
@@ -208,9 +209,7 @@ Top
 								
 							
 
-								<!--
-								Procedures
-								-->
+								<!-- Procedures -->
 								<button type="action" class="oe_stat_button" 
 									name="%(procedure_form_action)d"	
 									context="{									
@@ -222,10 +221,7 @@ Top
 						
 
 
-					            <!--
-					            Appointments 
-											'search_default_treatment': active_id,
-								-->
+					            <!-- Appointments -->
 								<button type="action" class="oe_stat_button" 
 
 									name="347" 
@@ -239,11 +235,11 @@ Top
 				                	<field string="Citas" name="nr_appointments" widget="statinfo"/>
 				            	</button>
 
-
-
 							</div>
 						
 						
+
+
 							<!-- Number --> 
 							<div class="oe_right" >
 								<div class="oe_title" >

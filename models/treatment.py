@@ -204,24 +204,25 @@ class Treatment(models.Model):
 
 
 
-	# Consultations 
-	# --------------
+
+# ----------------------------------------------------------- Relational ------------------------------------------------------
+
+
+
 	consultation_ids = fields.One2many(
 			#'oeh.medical.evaluation', 
 			'openhealth.consultation', 
-
-			#'treatment_id', 
 			'treatment', 
 
 			string = "Consultas", 
 			)
 
+
 	procedure_ids = fields.One2many(
 			#'oeh.medical.evaluation', 
 			'openhealth.procedure', 
-
-			#'treatment_id', 
 			'treatment', 
+
 			string = "Procedimientos", 
 			)
 
@@ -275,15 +276,20 @@ class Treatment(models.Model):
 
 
 	
+# ----------------------------------------------------------- Indexes ------------------------------------------------------
 	
-	# Patient 
 	patient = fields.Many2one(
 			'oeh.medical.patient',
+
 			string="Paciente", 
 			#required=True, 
 			#index=True
+
+			ondelete='cascade', 
 			)
 			
+
+
 
 
 
@@ -372,7 +378,7 @@ class Treatment(models.Model):
 			selection = jxvars._chief_complaint_list, 
 			
 			#default = '', 
-			#required=True, 
+			required=True, 
 			)
 
 

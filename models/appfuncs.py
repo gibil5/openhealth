@@ -60,9 +60,9 @@ def check_for_collisions(self, appointment_date, doctor_name, duration):
 			end = app.appointment_end
 
 
-			if 	(	
-					(ad >= start and ae <= end)  or  (ad <= start and ae >= end)  	or    (ad < start and ae > start)  or  (ad < end and ae > end)
-				): 
+			if 	app.state != 'pre_scheduled_control' and  	(	
+															(ad >= start and ae <= end)  or  (ad <= start and ae >= end)  	or    (ad < start and ae > start)  or  (ad < end and ae > end)
+															): 
 
 
 				#print 'Collision !!!'

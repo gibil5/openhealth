@@ -23,6 +23,90 @@ class Patient(models.Model):
 
 
 
+
+
+	# Name
+
+	#name = fields.Char(
+	#	string = "Nombre completo", 	
+		#compute='_compute_name',		
+	#)
+
+	#name = fields.Char(
+	#	string='Name', 
+	#	select=True,
+	#	)
+	
+	#@api.depends('a_first_name', 'a_last_name')
+	#@api.multi
+
+	#def _compute_name(self):
+	#	for record in self:
+	#		if record.a_first_name and record.a_last_name:
+	#			record.name = record.a_last_name.upper() + ' ' + record.a_first_name
+
+	#name_clone = fields.Char(
+	#	string = "Nombre completo", 	
+	#	compute='_compute_name_clone',		
+	#)
+
+	#def _compute_name_clone(self):
+	#	for record in self:
+	#		if record.name:
+	#			record.name_clone = record.name
+
+
+
+	@api.onchange('a_last_name', 'a_first_name')
+	def _onchange_a_last_name(self):
+		if self.a_last_name and self.a_first_name:
+
+			#self.name = self.a_last_name.upper() + ' ' + self.a_first_name
+
+			self.name = jrfuncs.strip_accents(self.a_last_name.upper() + ' ' + self.a_first_name)
+
+
+
+
+
+
+
+
+
+
+	# Full name
+	a_full_name = fields.Char(
+		string = "Nombre completo",
+
+		compute='_compute_full_name',
+	)
+	
+
+	@api.depends('a_first_name', 'a_last_name')
+	#@api.multi
+
+	def _compute_full_name(self):
+		
+		for record in self:
+			
+			#record.name = record.first_name.upper() + ' ' + record.last_name.upper()
+			if record.a_first_name and record.a_last_name:
+				
+				#record.a_full_name = record.a_first_name.upper() + '  ' + record.a_last_name.upper()
+
+				#full = record.a_first_name.lower() + '_' + record.a_last_name.lower()
+				full = record.a_last_name.lower() + '_' + record.a_first_name.lower()
+				
+				full = full.replace (" ", "_")
+				full = jrfuncs.strip_accents(full)
+
+				record.a_full_name = full
+
+
+
+
+
+
 	
 	# Autofill
 
@@ -39,7 +123,21 @@ class Patient(models.Model):
 
 			#self.name = 'Michi Felina'
 			#self.a_first_name = 'Tigroide'
-			#self.sex = 'Female'
+			
+
+
+			#self.a_last_name = 'Revilla Rondón'
+			#self.a_first_name = 'Fredy'
+			#self.a_last_name = 'Fuchs Vibors'
+			#self.a_first_name = 'Hans'
+
+
+
+			#self.name = self.a_last_name + ' ' + self.a_first_name
+
+
+
+			self.sex = 'Male'
 
 
 			self.dob = '1965-05-26'
@@ -64,38 +162,65 @@ class Patient(models.Model):
 
 
 
-	# Relational 
-
-	appointment_ids = fields.One2many(
-			'oeh.medical.appointment', 
-			'patient', 
-
-			string = "Citas", 
-			)
 
 
-	a_treatment_ids = fields.One2many(
-			#'openhealth.treatment', 
+# ----------------------------------------------------------- Relational ------------------------------------------------------
+
+	#a_treatment_ids = fields.One2many(
+	treatment_ids = fields.One2many(
 			'openextension.treatment', 
-			#'patient_id', 
 			'patient', 
+			
 			string="Tratamientos"
 			)
 
 
 
 
+	appointment_ids = fields.One2many(
+			'oeh.medical.appointment', 
+			'patient', 
+			
+			string = "Citas", 
+			)
 
 
+
+
+	#partner_ids = fields.One2many(
+	#		'res.partner', 
+	#		'patient', 
+			
+	#		string = "Partners", 
+	#		)
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- On change ------------------------------------------------------
 
 	# On Change
-	@api.onchange('name')
-	
-	def _onchange_name(self):
+	#@api.onchange('name')
+	#def _onchange_name(self):
+	#	ret = jrfuncs.test_name(self, self.name)
+	#	return ret
 
-		ret = jrfuncs.test_name(self, self.name)
 
-		return ret
+
+
+
+
+
+
 
 
 
@@ -133,25 +258,8 @@ class Patient(models.Model):
 
 
 
-	# Names
-	a_full_name = fields.Char(
-		string = "Nombre completox", 	
-		compute='_compute_full_name',
-		#readonly=True, 
-		default='a',
 
-		#required=False, 
-	)
-	
 
-	@api.depends('a_first_name')
-	#@api.multi
-
-	def _compute_full_name(self):
-		for record in self:
-			#record.name = record.first_name.upper() + ' ' + record.last_name.upper()
-			if record.a_first_name and record.a_last_name:
-				record.a_full_name = record.a_first_name.upper() + '  ' + record.a_last_name.upper()
 			
 			#print 'jx'
 
@@ -166,12 +274,18 @@ class Patient(models.Model):
 	)
 
 
+
+
+
+
 	a_last_name = fields.Char(
 		string = "Apellidos", 	
 		#required=False, 
 		required=True, 
 		default='',	
 	)
+
+
 
 
 
@@ -758,7 +872,7 @@ class Patient(models.Model):
 		for record in self:
 			#record.a_treatment_count = 5
 			sub_total = 0 
-			for tr in record.a_treatment_ids:   
+			for tr in record.treatment_ids:   
 				sub_total = sub_total + 1  
 			record.a_treatment_count = sub_total  
 

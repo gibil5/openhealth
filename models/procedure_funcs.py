@@ -45,15 +45,38 @@ def create_controls_go(self):
 
 
 
-	for k in range(0,3): 
+	# Number of days for controls 
+	k_dic = {
+				0 :	7,
+				1 :	15,
+				2 :	30,
+				3 :	60,
+				4 :	120,
+				5 :	180,
+	}
+
+
+
 	#for k in range(0,1): 
+	#for k in range(0,3): 
+	for k in range(0,6): 
 					
-		nr_weeks = k 
+
+		#delta = 0 
+		delta = -7
+
+
+		#nr_weeks = k 
+		nr_days = k_dic[k] + delta 
 
 
 
 		# Control date 
-		control_date = get_control_date(self, evaluation_start_date, nr_weeks)
+		#control_date = get_control_date(self, evaluation_start_date, nr_weeks)
+		control_date = get_control_date(self, evaluation_start_date, nr_days)
+
+
+
 		control_date_str = control_date.strftime("%Y-%m-%d")		
 		#control_date_str = control_date_str + ' 0:0:0'
 		#control_date_str = control_date_str + ' 5:0:0'
@@ -180,10 +203,14 @@ def	check_max_number(self, appointment_date, x_type, doctor_name):
 		print len(app_ids)
 
 
-		if len(app_ids) < 3:
+
+
+		if len(app_ids) < 4:
 			print 'Max number check - Success !!!'
 
 			ret = 0
+
+
 
 
 		else:
@@ -308,13 +335,16 @@ def create_appointment_control(self, appointment_date, duration, x_type, state, 
 #------------------------------------------------ Get control date ---------------------------------------------------
 @api.multi
 
-def get_control_date(self, evaluation_start_date, nr_weeks):
+#def get_control_date(self, evaluation_start_date, nr_weeks):
+def get_control_date(self, evaluation_start_date, nr_days):
 
 	#date_format = "%Y-%m-%d"
 	date_format = "%Y-%m-%d %H:%M:%S"
 
 
-	delta = datetime.timedelta(weeks=nr_weeks)
+	#delta = datetime.timedelta(weeks=nr_weeks)
+	delta = datetime.timedelta(days=nr_days)
+
 
 	#print evaluation_start_date
 

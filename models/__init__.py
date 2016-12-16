@@ -43,6 +43,11 @@ from . import appointment
 
 
 
+#jx 
+from . import partner
+
+
+
 #from . import jxvars
 #from var import jxvars
 #from . import eval_vars

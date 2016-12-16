@@ -456,29 +456,44 @@ class Consultation(models.Model):
 
 		# Patient
 		patient_id = self.patient.id
+		print 'patient_id: ', patient_id
 		
+
 		# Partner
 		#partner_id = self.env['res.partner'].search([('name','=',self.patient.name)]).id
-		partner_id = self.env['res.partner'].search([('name','=',self.patient.name)],limit=1).id
+		#partner_id = self.env['res.partner'].search([('name','=',self.patient.name)],limit=1).id		
+		#partner_id = self.env['oeh.medical.patient'].search([('name','like',self.patient.name)],limit=1).id
+		
+		partner_id = self.env['res.partner'].search([('name','like',self.patient.name)],limit=1).id
 
 
+
+		print 'patient name: ', self.patient.name 
+
+		print 'partner_id: ', partner_id
 
 
 
 
 		# Order 
 		#order_id = self.order.id		
+		consultation_id = self.id
+
 		order_id = self.env['sale.order'].search([
-													('consultation','=',self.id),
+													#('consultation','=',self.id),
+													('consultation','=',consultation_id),
 													('state','=','draft'),
 												]).id
-		print order_id
+
+		print 'consultation_id: ', consultation_id
+		print 'order_id: ', order_id
 
 
 		# Create 
 		if order_id == False:
 
 			print 'create order'
+			print 
 			order = self.env['sale.order'].create(
 													{
 

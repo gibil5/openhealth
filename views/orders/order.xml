@@ -174,6 +174,8 @@
 
 
 
+
+
 		
 		<!-- Tree view --> 
 		<!--
@@ -193,36 +195,38 @@
 					<field name="message_needaction" invisible="1"/>
                     
 
+					<!--
                     <field name="name" string="Order Number"/>
+
+                    <field name="name" string="Presupuesto #"	attrs="{'invisible':[('state', '!=', 'pre-draft')]}"/>
+                    
+                    <field name="name" string="Factura #"		attrs="{'invisible':[('state', '!=', 'sale')]}"/>
+					--> 
+
+                    <field name="name" string="Presupuesto #"/>
 
 
 
                     <!--
                     <field name="id"/>
 
+                    <field name="invoice_status"/>
 					-->
 
                     
                     
-                    <field name="partner_id"/>
+                    <field name="partner_id"	string="Paciente"/>
                     
-                    <field name="user_id"/>
-                    
-
-                    <!--
-                    <field name="invoice_status"/>
-                     -->
+                    <field name="user_id"		string="Vendido por"/>
                     
                     <field name="state" invisible="0"	string="Estado"/>
                     
                     <field name="nr_lines"/>
 
 
-
-
                     <field name="amount_total" sum="Total Tax Included" widget="monetary"/>
 
-                    <field name="date_order"/>
+                    <field name="date_order"		string="Fecha"/>
 
                      <!--
                     <field name="consultation"/>

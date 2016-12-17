@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+		<!--
+		Procedure - Appointments
+		-->
+		<record model="ir.ui.view" id="procedure_controls_appointment_form_view">
+			<field name="name">procedure.controls.appointment.form</field>
+			<field name="model">openhealth.procedure</field>
+
+
+			<field name="priority" eval="4"/>
+
+			
+			<field name="inherit_id" ref="procedure_form_view"/>
+			<field name="arch" type="xml">				
+				<notebook position="inside">
+					
+					<page string="Citas Controles">
+						
+						<field name="appointment_controls_ids"/>
+
+					</page>
+				</notebook>
+			</field>
+		</record>
+	</data>
+</openerp>

@@ -20,31 +20,33 @@
 					<page string="FACTURADOS">
 
 
-						<field name="sale_ids"/>
 
 						<!--
 						<field name="sale"/>
+						<field name="sale_ids"/>
+						-->
 
 						<field name="sale_ids">
 							
 							<tree string="">	
 								
-								<field name="name"/>
+								<field name="name"			string="Factura #"/>
 
-								<field name="date_sale"/>
+			                    <field name="partner_id"	string="Paciente"/>
+                    
+            			        <field name="user_id"		string="Vendido por"/>
+                    
+                    			<field name="state" 		string="Estado"/>
+                    
+	                    		<field name="nr_lines"/>
 
-								<field name="partner_id"/>
 
-								<field name="amount_total" sum="Total Tax Included" widget="monetary"/>
+                    			<field name="amount_total" sum="Total Tax Included" widget="monetary"/>
 
-
-								<field name="state" invisible="0"/>
-
-								<field name="nr_lines"/>
+                    			<field name="date_order"	string="Fecha"/>
 
 							</tree>
 						</field>				
-						-->
 						
 
 					</page>

@@ -34,6 +34,7 @@ def create_controls_go(self):
 	doctor_name = self.doctor.name
 
 	procedure_id = self.id
+
 	treatment_id = self.treatment.id
 	product_id = self.product.id
 	chief_complaint = self.chief_complaint
@@ -80,6 +81,7 @@ def create_controls_go(self):
 		control_date_str = control_date.strftime("%Y-%m-%d")		
 		#control_date_str = control_date_str + ' 0:0:0'
 		#control_date_str = control_date_str + ' 5:0:0'
+		#control_date_str = control_date_str + ' 23:0:0'
 		control_date_str = control_date_str + ' 14:0:0'
 
 
@@ -142,7 +144,13 @@ def create_controls_go(self):
 
 
 
-		ret = jrfuncs.update_appointment_go(self, appointment_id, control_id, 'control')
+		#ret = jrfuncs.update_appointment_go(self, appointment_id, control_id, 'control')
+		rec_set = self.env['oeh.medical.appointment'].browse([appointment_id])
+		ret = rec_set.write({
+								'control': control_id,
+								'procedure': procedure_id,
+							})
+
 
 		#print appointment
 		#print appointment.control

@@ -25,6 +25,8 @@ def strip_accents(s):
 
 
 
+
+
 #------------------------------------------------ Appointment ---------------------------------------------------
 
 @api.multi
@@ -49,12 +51,16 @@ def update_appointment_go(self, appointment_id, owner_id, x_type):
 
 
 
+
 		elif x_type == 'procedure':
 			ret = rec_set.write({
 									'procedure': owner_id,
+									'state': 'Scheduled',
+
 								})
 			#print appointment.procedure
 			#print appointment.procedure.id
+
 
 
 

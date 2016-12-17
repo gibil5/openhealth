@@ -29,14 +29,25 @@ class sale_order(models.Model):
 
 
 	_state_list = [
-        			('pre-draft', 'Pre-Quotation'),
+        			#('pre-draft', 'Pre-Quotation'),
 
-        			('draft', 'Quotation'),
-        			('sent', 'Quotation Sent'),
-        			('sale', 'Sale Order'),
-        			('done', 'Done'),
-        			('cancel', 'Cancelled'),
+        			#('draft', 'Quotation'),
+        			#('sent', 'Quotation Sent'),
+        			#('sale', 'Sale Order'),
+        			#('done', 'Done'),
+        			#('cancel', 'Cancelled'),
+
+
+        			('pre-draft', 	'Presupuesto'),
+
+        			('draft', 		'Presupuesto'),
+        			
+        			('sent', 		'Presupuesto enviado'),
+        			('sale', 		'Facturado'),
+        			('done', 		'Completo'),
+        			('cancel', 		'Cancelado'),
         		]
+
 
 	state = fields.Selection(
 			selection = _state_list, 

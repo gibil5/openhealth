@@ -153,7 +153,8 @@ class Appointment(models.Model):
 			#('pre_scheduled', 			'Pre-scheduled'),
 			#('pre_scheduled_control', 	'Pre-scheduled Control'),
 
-			('pre_scheduled_control', 	'Pre-cita control'),
+			#('pre_scheduled_control', 	'Pre-cita control'),
+			('pre_scheduled_control', 	'Pre-cita'),
 			('pre_scheduled', 			'No confirmado'),
 
 
@@ -173,6 +174,8 @@ class Appointment(models.Model):
 
 	state = fields.Selection(
 			selection = APPOINTMENT_STATUS, 
+
+			string="Estado",
 			readonly=False, 
 		)
 
@@ -203,7 +206,7 @@ class Appointment(models.Model):
 			
 			string = "Paciente", 	
 
-			default=3025, 		# Revilla 
+			#default=3025, 		# Revilla 
 			#default=3052, 		# Suarez Vertiz
 
 			#required=True, 
@@ -434,8 +437,10 @@ class Appointment(models.Model):
 			dt = dt - delta
 			print dt
 
-
 			record.x_time = dt.strftime("%H:%M:%S")
+
+			if record.state == 'pre_scheduled_control':
+				record.x_time = ''
 
 
 		print 
@@ -670,7 +675,8 @@ class Appointment(models.Model):
 	# Type 
 	_type_list = [
         			('consultation', 'Consulta'),
-        			('procedure', 'Procedimiento'),
+        			#('procedure', 'Procedimiento'),
+        			('procedure', 'Proc.'),
         			('session', 'Sesión'),
         			('control', 'Control'),
 
@@ -761,7 +767,8 @@ class Appointment(models.Model):
 	# ----------------------------------------------------------- Indexes ------------------------------------------------------
 
 	treatment = fields.Many2one('openextension.treatment',
-			string="Tratamiento",
+			#string="Tratamiento",
+			string="Trat.",
 			ondelete='cascade', 
 
 			#required=False, 
@@ -770,13 +777,15 @@ class Appointment(models.Model):
 
 
 	consultation = fields.Many2one('openhealth.consultation',
-		string="Consulta",
+		#string="Consulta",
+		string="Cons.",
 		ondelete='cascade', 
 	)
 
 
 	procedure = fields.Many2one('openhealth.procedure',
-		string="Procedimiento",
+		#string="Procedimiento",
+		string="Proc.",
 		ondelete='cascade', 
 	)
 
@@ -787,7 +796,8 @@ class Appointment(models.Model):
 	)
 
 	control = fields.Many2one('openhealth.control',
-		string="Control",
+		#string="Control",
+		string="Cont.",
 		
 		ondelete='cascade', 
 	)
@@ -886,7 +896,7 @@ class Appointment(models.Model):
 		patient = vals['patient']
 		treatment = vals['treatment']
 		x_create_procedure_automatic = vals['x_create_procedure_automatic']
-		x_chief_complaint = vals['x_chief_complaint']
+		#x_chief_complaint = vals['x_chief_complaint']
 
 
 		#print appointment_date
@@ -906,7 +916,8 @@ class Appointment(models.Model):
 			#print 
 			#print 'Create Appointment for procedure !'
 
-			app = self.create_app_procedure(appointment_date, doctor, patient, treatment, x_chief_complaint, x_create_procedure_automatic)
+			#app = self.create_app_procedure(appointment_date, doctor, patient, treatment, x_chief_complaint, x_create_procedure_automatic)
+			app = self.create_app_procedure(appointment_date, doctor, patient, treatment, x_create_procedure_automatic)
 			
 			#print app 
 
@@ -925,7 +936,8 @@ class Appointment(models.Model):
 
 	# Create app 
 	@api.multi
-	def create_app_procedure(self, appointment_date, doctor_id, patient_id, treatment_id,  x_chief_complaint, x_create_procedure_automatic):
+	#def create_app_procedure(self, appointment_date, doctor_id, patient_id, treatment_id,  x_chief_complaint, x_create_procedure_automatic):
+	def create_app_procedure(self, appointment_date, doctor_id, patient_id, treatment_id,  x_create_procedure_automatic):
 
 		date_format = "%Y-%m-%d %H:%M:%S"
 
@@ -1008,7 +1020,8 @@ class Appointment(models.Model):
 															'treatment': treatment_id, 
 
 															'x_create_procedure_automatic': x_create_procedure_automatic,
-															'x_chief_complaint': x_chief_complaint, 
+
+															#'x_chief_complaint': x_chief_complaint, 
 
 															}
 													)
@@ -1101,6 +1114,40 @@ class Appointment(models.Model):
 
 
 
+
+	# Search Treatment
+	@api.multi
+	def search_treatment(self):
+
+		print 
+		print 'Search Treatment'
+
+
+		treatment = self.env['openextension.treatment'].search([
+
+															#('chief_complaint', 'like', 'acne_active'), 
+															#('chief_complaint', 'like', self.x_chief_complaint), 
+
+															#('patient', 'like', 'Revilla')], 
+															('patient', 'like', self.patient.name),
+
+
+															#('physician', 'like', 'Chavarri'),
+															('physician', 'like', self.doctor.name),
+
+															],
+															order='start_date desc',
+															limit=1,
+														)
+
+		self.treatment = treatment.id
+		print self.treatment  
+
+
+
+
+
+
 	# Create Treatment
 	@api.multi
 	def create_treatment(self):
@@ -1117,7 +1164,6 @@ class Appointment(models.Model):
 
 		treatment = self.env['openextension.treatment'].create(
 																{
-
 																'patient': patient_id,	
 
 																'physician': doctor_id,
@@ -1125,7 +1171,6 @@ class Appointment(models.Model):
 																'start_date': start_date, 
 
 																'chief_complaint': chief_complaint, 
-
 																}
 														)
 				

@@ -55,7 +55,23 @@ class Procedure(models.Model):
 			'oeh.medical.appointment', 
 			'procedure', 
 			string = "Citas", 
+
+			#domain = [
+			#			('x_type', '=', 'procedure'),
+						#('x_type', '=', 'control'),
+						#('x_type', '=', 'session'),
+			#		],
 			)
+
+
+
+	#appointment_controls_ids = fields.One2many(
+	#		'oeh.medical.appointment', 
+	#		'control', 
+	#		string = "Citas", 
+	#		)
+
+
 
 
 

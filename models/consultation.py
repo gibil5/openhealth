@@ -221,7 +221,7 @@ class Consultation(models.Model):
 			#selection = jxvars._pathology_list, 
 			selection = jxvars._chief_complaint_list, 
 
-			required=True, 
+			#required=True, 
 			)
 
 

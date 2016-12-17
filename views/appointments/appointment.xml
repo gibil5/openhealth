@@ -108,15 +108,10 @@
 							<!--
 							<field name="evaluation_ids"/>
 							<field name="x_date"/>
-
 							<field name="x_error"/>
 							<field name="state"		readonly="0"/>
-
 							<field name="x_type_cal"/>
-
 							-->
-
-
 
 							<field name="x_type"/>
 
@@ -156,31 +151,49 @@
         					</calendar>
 							-->
 
-							<field name="vspace"/>
 
 							<field name="x_create_procedure_automatic"	attrs="{'invisible':[('x_type', '!=', 'consultation')]}"  />
 
-							<field name="x_chief_complaint"				attrs="{'invisible':[('x_type', '!=', 'consultation')]}"/>
-
+							<field name="vspace"/>							
 							<field name="vspace"/>
-
 							<!--
-								
-								name="open_treatment_current" 
+							<field name="x_chief_complaint"				attrs="{'invisible':[('x_type', '!=', 'consultation')]}"/>
 							-->
 
-							<button 
-								type="object" 
-								class="oe_highlight"
-								string="Crear Tratamiento" 
+							<group>
+								<button 
+									type="object" 
+									class="oe_highlight"
+									string="Buscar Tratamiento" 
+									attrs="{'invisible':[('x_type', '!=', 'consultation')]}"
 
-								attrs="{'invisible':[('x_type', '!=', 'consultation')]}"
-
-								name="create_treatment" 
-							/>
-
+									name="search_treatment" 
+								/>
+							</group>
 
 
+							<group>
+								<button 
+									type="object" 
+									class="oe_highlight"
+									string="Crear Tratamiento" 
+									attrs="{'invisible':[('x_type', '!=', 'consultation')]}"
+									name="create_treatment" 
+								/>
+							</group>
+
+						</group>
+					</group>
+
+
+
+
+					<group col="2">
+
+						<group >
+						</group>
+
+						<group >
 						</group>
 
 
@@ -214,21 +227,24 @@
 
 
 				<!--
-				<tree string="Appointment Tree"  	default_order='x_time'>
-				-->
 				<tree string="Appointment Tree">
+				<tree string="Appointment Tree"  	default_order='x_time'>
+
+
+					
+				<tree string="Appointment Tree"  	default_order='x_date, x_time'>
+				-->
+				<tree string="Appointment Tree"  	default_order='appointment_date'>
 				
 
+
 					<!--
-					<field name="x_patient_name_first"/>
-					<field name="x_doctor_code"/>
-					<field name="x_type_cal"/>
-					<field name="id"/>
-
-					<field name="name"/>
 					-->
+					<field name="name"/>
 
 
+					<!--
+					-->
 					<field name="patient"/>
 
 					<field name="doctor"/>
@@ -245,12 +261,21 @@
 
 
 					<field name="treatment"/>
+
 					<!--
+
+					<field name="consultation"		attrs="{'invisible':[('x_type', '!=', 'consultation')]}"/>
+					<field name="procedure"			attrs="{'invisible':[('x_type', '!=', 'procedure')]}"/>
+					<field name="session"			/>
+					<field name="control"			/>	
+
+					-->
 					<field name="consultation"/>
 					<field name="procedure"/>
 					<field name="session"/>
 					<field name="control"/>					
-					-->
+
+
 					
 
 
@@ -267,8 +292,11 @@
 					<field name="state"/>
 
 					<field name="x_date"/>
-					<field name="x_time"/>
 
+					<!--
+					<field name="x_time"	attrs="{'invisible':[('state', '=', 'pre_scheduled_control')]}" />
+					-->
+					<field name="x_time"/>
 
 					
 					<!--
@@ -315,6 +343,8 @@
 		<menuitem id="oeh_medical_appointment_menu" name="Citas"
 			parent="openhealth_menu"
 			action="oeh_medical_appointment_list_action"/>
+
+
 
 
 

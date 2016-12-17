@@ -299,7 +299,9 @@ Fields
 								<field name="duration"/>
 							</group>
 							<group>
+								<!--
 								<field name="chief_complaint"/>
+								-->
 							</group>
 
 

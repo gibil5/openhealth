@@ -18,7 +18,7 @@
     	Clinica Chavarri\n
 
 		Installed: 	 	7 Sep 2016.\n 
-		Last built: 	14 Dec 2016.\n 
+		Last built: 	17 Dec 2016.\n 
 		\n
 
 		This is my first extension for oeHealth.
@@ -114,8 +114,9 @@
 		'views/procedures/procedure_controls.xml',
 		'views/procedures/procedure_sessions.xml',
 		
+		
 		'views/procedures/procedure_appointment.xml',
-
+		#'views/procedures/procedure_controls_appointment.xml',
 
 
 

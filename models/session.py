@@ -81,41 +81,57 @@ class Session(models.Model):
 			string="Energía de pulso (mJ)",
 			)
 	
+	
+
 	co2_mode_emission=fields.Char(
 			string="Modo de emisión",
+			default="x",
 			)
 	
 	co2_mode_exposure=fields.Char(
 			string="Modo de exposición",
+			default="x",
 			)
 	
 	co2_observations=fields.Text(
 			string="Observaciones",
+			default="x",
 			)
+
+
 
 
 
 	# Calibration - Excilite
 
 	exc_time=fields.Float(
-			string="Tiempo de tratamiento",
+			#string="Tiempo de tratamiento",
+			#required=True, 
 			)
 			
 	exc_dose=fields.Char(
 			string="Dosis",
+			#default="x",
+			#required=True, 
 			)
 			
 	exc_dose_selected=fields.Float(
-			string="Seleccionado (J/cm2)",
+			#string="Seleccionado (J/cm2)",
+			#required=True, 
 			)
 
 	exc_dose_provided=fields.Float(
-			string="Entregado (J/cm2)",
+			#string="Entregado (J/cm2)",
+			#required=True, 
 			)
 
 	exc_observations=fields.Text(
 			string="Observaciones",
+			#default="x",
+			#required=True, 
 			)
+
+
 
 
 
@@ -127,42 +143,53 @@ class Session(models.Model):
 			
 	ipl_phototype=fields.Char(
 			string="Fototipo",
+			#required=True, 
 			)
 			
 	ipl_lesion_type=fields.Char(
 			string="Tipo de lesión",
+			#required=True, 
 			)
 	
 	ipl_lesion_depth=fields.Char(
 			string="Profundidad de lesión",
+			#required=True, 
 			)
 			
 	ipl_pulse_type=fields.Selection(
 			selection=jxvars._ipl_pulse_type,
 			string="Tipo de pulso",
+			#required=True, 
 			)
 			
 	ipl_pulse_duration=fields.Char(
 			string="Duración de pulso",
+			#required=True, 
 			)
 			
 	ipl_pulse_time_between=fields.Char(
 			string="Tiempo entre pulsos",
+			#required=True, 
 			)
 			
 	ipl_filter=fields.Char(
 			string="Filtro",
+			#required=True, 
 			)
 			
 	ipl_spot=fields.Char(
 			string="Spot",
+			#required=True, 
 			)
 			
 	ipl_observations=fields.Text(
 			string="Observaciones",
+			#required=True, 
 			)
 
 	
+
+
 	
 	# Calibration - Ndyag
 
@@ -269,6 +296,35 @@ class Session(models.Model):
 							'default_appointment_date': appointment_date,
 							}
 				}
+
+
+
+
+
+	#----------------------------------------------------------- Quick Button ------------------------------------------------------------
+
+	@api.multi
+	def open_line_current(self):  
+
+		return {
+				'type': 'ir.actions.act_window',
+				'name': 'Edit Session Current', 
+				'view_type': 'form',
+				'view_mode': 'form',
+				'res_model': self._name,
+				'res_id': self.id,
+				'target': 'current',
+
+				'flags': {
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						'form': {'action_buttons': True, }
+						},
+				
+				'context': {}
+		}
+
+
+
 
 
 		

@@ -117,6 +117,7 @@ _ipl_pulse_type = [
 		('three','Triple'), 
 		]
 
+
 _ndyag_pulse_type = [
 		('one','Unico'), 
 		('two','Doble'), 

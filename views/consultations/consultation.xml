@@ -336,6 +336,8 @@
 					
 					<field name="treatment"/>
 
+
+
 					<!--
 					<field name="owner"/>
 
@@ -344,6 +346,8 @@
 					<field name="nr_services"/>
 					<field name="price_total"/>
 					-->
+
+
 				</tree>
 			</field>
 		</record>

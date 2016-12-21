@@ -57,7 +57,7 @@
 						<button 
 							type="object" 
 							class="oe_highlight"
-							string="Procedimiento" 
+							string="Procedimientos" 
 
 							name="create_procedure" 
 						/>
@@ -300,8 +300,8 @@ Fields
 							</group>
 							<group>
 								<!--
-								<field name="chief_complaint"/>
 								-->
+								<field name="chief_complaint"/>
 							</group>
 
 

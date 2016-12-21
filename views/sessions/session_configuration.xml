@@ -27,6 +27,7 @@
 						<group string="Láser Co2"  attrs="{'invisible':[('laser', '!=', 'laser_co2')]}">
 							<group>
 
+								<!--
 								<field name="co2_power"/>
 								<field name="vspace"/>								
 								<field name="co2_frequency"/>
@@ -38,9 +39,8 @@
 								<field name="co2_mode_exposure"/>
 								<field name="vspace"/>
 								<field name="co2_observations"/>
+								-->
 
-
-								<!--
 								<field name="co2_power"				required="1"/>
 								<field name="vspace"/>								
 								<field name="co2_frequency"			required="1"/>
@@ -52,16 +52,19 @@
 								<field name="co2_mode_exposure"		required="1"/>
 								<field name="vspace"/>
 								<field name="co2_observations"		required="1"/>
-								-->
 							</group>
 						</group>
 						
 						
 
 						<!-- Excilite --> 
+						<!--
+						<group string="Láser Eximer 308 nm">
+						-->
 						<group string="Láser Eximer 308 nm"   attrs="{'invisible':[('laser', '!=', 'laser_excilite')]}">
 							<group>
 
+								<!--
 								<field name="exc_time"/>
 								<field name="vspace"/>								
 								<field name="exc_dose"/>
@@ -71,9 +74,10 @@
 								<field name="exc_dose_provided"/>
 								<field name="vspace"/>								
 								<field name="exc_observations"/>
-
+								-->
 
 								<!--
+								-->
 								<field name="exc_time"			required="1"/>
 								<field name="vspace"/>								
 								<field name="exc_dose"			required="1"/>
@@ -83,16 +87,19 @@
 								<field name="exc_dose_provided"	required="1"/>
 								<field name="vspace"/>								
 								<field name="exc_observations"	required="1"/>
-								-->
 							</group>
 						</group>
 						
 						
 						
 						<!-- Ipl --> 
+						<!--
+						<group string="Láser M22-IPL">
+						-->
 						<group string="Láser M22-IPL"  attrs="{'invisible':[('laser', '!=', 'laser_ipl')]}">
-							<group>
 
+							<group>
+								<!--
 								<field name="ipl_fluency"/>
 								<field name="vspace"/>								
 								<field name="ipl_phototype"/>
@@ -112,9 +119,10 @@
 								<field name="ipl_spot"/>
 								<field name="vspace"/>								
 								<field name="ipl_observations"/>
-
+								-->
 
 								<!--
+								-->
 								<field name="ipl_fluency"		required="1"/>
 								<field name="vspace"/>								
 								<field name="ipl_phototype"		required="1"/>
@@ -134,16 +142,19 @@
 								<field name="ipl_spot"			required="1"/>
 								<field name="vspace"/>								
 								<field name="ipl_observations"	required="1"/>
-								-->
 							</group>
 						</group>
 						
 						
 						
 						<!-- Ndyag --> 
+						<!--
+						<group string="Láser M22-NDYAG">
+						--> 
 						<group string="Láser M22-NDYAG"  attrs="{'invisible':[('laser', '!=', 'laser_ndyag')]}">
-							<group>
 
+							<group>
+								<!--
 								<field name="ndy_fluency"/>
 								<field name="ndy_phototype"/>
 								<field name="ndy_lesion_type"/>
@@ -153,9 +164,10 @@
 								<field name="ndy_pulse_time_between"/>
 								<field name="ndy_pulse_spot"/>
 								<field name="ndy_observations"/>
-
+								-->
 
 								<!--
+								-->
 								<field name="ndy_fluency"		required="1"/>
 								<field name="ndy_phototype"		required="1"/>
 								<field name="ndy_lesion_type"	required="1"/>
@@ -165,7 +177,6 @@
 								<field name="ndy_pulse_time_between"	required="1"/>
 								<field name="ndy_pulse_spot"	required="1"/>
 								<field name="ndy_observations"	required="1"/>
-								-->
 							</group>
 						</group>	
 

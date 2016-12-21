@@ -293,6 +293,8 @@ class Appointment(models.Model):
 
 
 
+
+
 	#@api.onchange('doctor', 'duration')
 	@api.onchange('doctor', 'x_type')
 
@@ -321,13 +323,12 @@ class Appointment(models.Model):
 			# Check for collisions
 			#ret, doctor_name, start, end = self.check_for_collision(self.appointment_date, self.doctor.name, self.duration)
 			ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration)
-
-
-
 			print ret 
 
 
-			if ret != 0:
+
+
+			if ret != 0:	# Error 
 
 				self.x_error = 1
 				self.doctor = False
@@ -342,6 +343,22 @@ class Appointment(models.Model):
 									#'message': 'Cita ya existente, con el ' + self.doctor.name + ": " + start + ' - ' + end + '.',
 									'message': 'Cita ya existente, con el ' + doctor_name + ": " + start + ' - ' + end + '.',
 						}}
+
+
+
+
+			else: 
+				# Treatment 
+				self.treatment = self.env['openextension.treatment'].search([
+
+															('patient', 'like', self.patient.name),
+
+															('physician', 'like', self.doctor.name),
+
+															],
+															order='start_date desc',
+															limit=1,
+														)
 
 
 
@@ -883,30 +900,35 @@ class Appointment(models.Model):
 	@api.model
 	def create(self,vals):
 
-		#print 
-		#print 'jx Create - Override'
-		#print 
-		#print vals
-		#print 
+		print 
+		print 'jx Create - Override'
+		print 
+		print vals
+		print 
 	
 
 		appointment_date = vals['appointment_date']
 		x_type = vals['x_type']
 		doctor = vals['doctor']
 		patient = vals['patient']
+
 		treatment = vals['treatment']
+		
 		x_create_procedure_automatic = vals['x_create_procedure_automatic']
 		#x_chief_complaint = vals['x_chief_complaint']
 
 
-		#print appointment_date
-		#print x_type
-		#print doctor
-		#print patient
-		#print treatment
-		#print x_create_procedure_automatic 
+		print "appointment date: ", appointment_date
+		print "x_type: ", x_type
+		print "doctor: ", doctor
+		print "patient: ", patient
+		
+		print "treatment: ", treatment
+		print self.treatment
+
+		print "x_create_procedure_automatic: ", x_create_procedure_automatic 
 		#print x_chief_complaint
-		#print
+		print
 
 
 
@@ -917,6 +939,7 @@ class Appointment(models.Model):
 			#print 'Create Appointment for procedure !'
 
 			#app = self.create_app_procedure(appointment_date, doctor, patient, treatment, x_chief_complaint, x_create_procedure_automatic)
+
 			app = self.create_app_procedure(appointment_date, doctor, patient, treatment, x_create_procedure_automatic)
 			
 			#print app 
@@ -1054,6 +1077,29 @@ class Appointment(models.Model):
 
 
 
+# ----------------------------------------------------------- Buttons - Appointment  ------------------------------------------------------
+
+	@api.multi
+	def remove_appointment(self):  
+
+		print 
+		print 'Remove Appointment'
+
+		appointment_id = self.id
+		print "id: ", appointment_id
+		
+		rec_set = self.env['oeh.medical.appointment'].browse([appointment_id])
+		print "rec_set: ", rec_set
+		
+		ret = rec_set.unlink()
+		print "ret: ", ret
+		print 
+
+
+
+
+
+
 # ----------------------------------------------------------- Treatment  ------------------------------------------------------
 
 
@@ -1065,7 +1111,6 @@ class Appointment(models.Model):
 		print 
 		print 'Open Treatment'
 
-		#patient_id = self.id 
 		patient_id = self.patient.id 
 		print patient_id
 
@@ -1125,12 +1170,8 @@ class Appointment(models.Model):
 
 		treatment = self.env['openextension.treatment'].search([
 
-															#('chief_complaint', 'like', 'acne_active'), 
-															#('chief_complaint', 'like', self.x_chief_complaint), 
-
 															#('patient', 'like', 'Revilla')], 
 															('patient', 'like', self.patient.name),
-
 
 															#('physician', 'like', 'Chavarri'),
 															('physician', 'like', self.doctor.name),
@@ -1159,7 +1200,7 @@ class Appointment(models.Model):
 		doctor_id = self.doctor.id
 		start_date = self.appointment_date
 
-		chief_complaint = self.x_chief_complaint
+		#chief_complaint = self.x_chief_complaint
 
 
 		treatment = self.env['openextension.treatment'].create(
@@ -1170,7 +1211,7 @@ class Appointment(models.Model):
 
 																'start_date': start_date, 
 
-																'chief_complaint': chief_complaint, 
+																#'chief_complaint': chief_complaint, 
 																}
 														)
 				

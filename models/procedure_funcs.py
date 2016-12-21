@@ -63,8 +63,8 @@ def create_controls_go(self):
 	for k in range(0,6): 
 					
 
-		#delta = 0 
-		delta = -7
+		delta = 0 
+		#delta = -7
 
 
 		#nr_weeks = k 

@@ -37,32 +37,24 @@
 										
 										<!--
 										<field string="Consulta #"  name="name"/>
-										-->
-										<!--
 										<field string='Tipo' name="evaluation_type"/>		
 										<field name="treatment_id"/>
-										-->								
+										<field string="Tratamiento" name="treatment"/>
+
+										-->
 
 										<field  name="name"/>
-											
+
 										<field string="Paciente" name="patient"/>
 
 										<field string="Médico" name="doctor"/>
 
-
 										<field name="chief_complaint"/>
-
-										<!--
-										<field string="Tratamiento" name="treatment"/>
-										-->
-
 
 										<field name="evaluation_start_date"		string = "Fecha"/>
 											
 																				
-										<!--
-											Button
-										-->
+										<!-- Hot Button -->
 										<button 
 											type="object" 
 											class="oe_highlight"	

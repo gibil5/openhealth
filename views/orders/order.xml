@@ -31,11 +31,15 @@
 
 						<tree string="Order Line Tree">
 					
-    	                	<field name="product_id" />
+    	                	<field name="product_id" 	string="Producto"/>
 
+    	                	<!--
         	            	<field name="name"/>
+							-->
+        	            	<field name="x_type"/>
 
-        	            	<field name="product_uom_qty"/>
+
+        	            	<field name="product_uom_qty"	string="Cantidad"/>
 
 
         	            	<!--
@@ -227,6 +231,10 @@
                     <field name="amount_total" sum="Total Tax Included" widget="monetary"/>
 
                     <field name="date_order"		string="Fecha"/>
+
+
+
+                    <field name="x_chief_complaint"/>
 
                      <!--
                     <field name="consultation"/>

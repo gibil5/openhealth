@@ -405,11 +405,8 @@ class Consultation(models.Model):
 
 
 
-	#----------------------------------------------------------- Buttons ------------------------------------------------------------
+	#----------------------------------------------------------- Quick Button ------------------------------------------------------------
 
-
-	# Quick Self - Button  
-	# ------------------
 	@api.multi
 	def open_line_current(self):  
 
@@ -475,6 +472,12 @@ class Consultation(models.Model):
 
 
 
+		# Chief complaint 
+		chief_complaint = self.chief_complaint
+
+
+
+
 		# Order 
 		#order_id = self.order.id		
 		consultation_id = self.id
@@ -503,6 +506,9 @@ class Consultation(models.Model):
 
 														'consultation':self.id,
 														'state':'draft',
+
+
+														'x_chief_complaint':chief_complaint,
 													}
 												)
 
@@ -559,6 +565,7 @@ class Consultation(models.Model):
 				'default_patient': patient_id,	
 
 
+				'default_x_chief_complaint': chief_complaint,	
 
 			}
 		}

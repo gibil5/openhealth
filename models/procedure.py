@@ -302,6 +302,7 @@ class Procedure(models.Model):
 		chief_complaint = self.chief_complaint
 		evaluation_type = 'Session'
 		product_id = self.product.id
+
 		laser = self.laser
 		
 
@@ -332,6 +333,68 @@ class Procedure(models.Model):
 
 
 
+
+		# Tampering
+		co2_mode_emission = ''
+		co2_mode_exposure = ''
+		co2_observations = ''
+
+		exc_dose = ''
+		exc_observations = ''
+
+		ipl_phototype = ''
+		ipl_lesion_type = ''
+		ipl_lesion_depth = ''
+		ipl_pulse_duration = ''
+		ipl_pulse_time_between = ''
+		ipl_filter = ''
+		ipl_spot = ''
+		ipl_observations = ''
+		ipl_pulse_type = ''
+
+		ndy_phototype = ''
+		ndy_lesion_type = ''
+		ndy_lesion_depth = ''	
+		ndy_pulse_duration = ''
+		ndy_pulse_time_between = ''
+		ndy_observations = ''
+		ndy_pulse_type = ''
+		ndy_pulse_spot = ''
+
+
+		if laser != 'laser_co2':
+			co2_mode_emission = 'x'
+			co2_mode_exposure = 'x'
+			co2_observations = 'x'
+
+		if laser != 'laser_excilite':
+			exc_dose = 'x'
+			exc_observations = 'x'
+
+		if laser != 'laser_ipl':
+			ipl_phototype = 'x'
+			ipl_lesion_type = 'x'
+			ipl_lesion_depth = 'x'
+			ipl_pulse_duration = 'x'
+			ipl_pulse_time_between = 'x'
+			ipl_filter = 'x'
+			ipl_spot = 'x'
+			ipl_observations = 'x'
+			ipl_pulse_type = 'one'
+
+		if laser != 'laser_ndyag':
+			ndy_phototype = 'x'
+			ndy_lesion_type = 'x'
+			ndy_lesion_depth = 'x'	
+			ndy_pulse_duration = 'x'
+			ndy_pulse_time_between = 'x'
+			ndy_observations = 'x'
+			ndy_pulse_type = 'one'
+			ndy_pulse_spot = 'one'
+
+
+
+
 		# session 
 		print 'create session'
 		session = self.env['openhealth.session'].create(
@@ -340,16 +403,43 @@ class Procedure(models.Model):
 													'doctor': doctor_id,													
 													'chief_complaint': chief_complaint,
 													'evaluation_start_date': evaluation_start_date,
-
-
 													'evaluation_type':evaluation_type,
 													'product': product_id,
+
 													'laser': laser,
 
-
 													'procedure': procedure_id,				
-
 													'appointment': appointment_id,
+
+
+
+													
+													'co2_mode_emission': co2_mode_emission, 
+													'co2_mode_exposure': co2_mode_exposure, 
+													'co2_observations': co2_observations, 
+
+													'exc_dose': exc_dose, 
+													'exc_observations': exc_observations, 
+
+													'ipl_phototype': ipl_phototype, 
+													'ipl_lesion_type': ipl_lesion_type,
+													'ipl_lesion_depth': ipl_lesion_depth, 
+													'ipl_pulse_duration': ipl_pulse_duration, 
+													'ipl_pulse_time_between': ipl_pulse_time_between, 
+													'ipl_filter': ipl_filter,
+													'ipl_spot': ipl_spot,
+													'ipl_observations': ipl_observations, 
+													'ipl_pulse_type': ipl_pulse_type, 
+
+													'ndy_phototype': ndy_phototype, 
+													'ndy_lesion_type': ndy_lesion_type, 
+													'ndy_lesion_depth': ndy_lesion_depth, 
+													'ndy_pulse_duration': ndy_pulse_duration, 
+													'ndy_pulse_time_between': ndy_pulse_time_between, 
+													'ndy_observations': ndy_observations,
+													'ndy_pulse_type': ndy_pulse_type, 
+													'ndy_pulse_spot': ndy_pulse_spot, 
+
 												}
 											)
 		session_id = session.id 
@@ -407,14 +497,12 @@ class Procedure(models.Model):
 							'default_patient': patient_id,
 							'default_doctor': doctor_id,
 							'default_chief_complaint': chief_complaint,
-							'default_procedure': procedure_id,
 							'default_evaluation_start_date': evaluation_start_date,
-
 							'default_evaluation_type':evaluation_type,
 							'default_product': product_id,
 							'default_laser': laser,
 
-
+							'default_procedure': procedure_id,
 							'default_appointment': appointment_id,
 						}
 		}

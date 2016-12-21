@@ -11,7 +11,7 @@
 			<field name="model">openhealth.procedure</field>
 
 
-			<field name="priority" eval="1"/>
+			<field name="priority" eval="2"/>
 
 			
 			<field name="inherit_id" ref="procedure_form_view"/>			

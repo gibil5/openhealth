@@ -133,6 +133,8 @@ class Evaluation(models.Model):
 			required=True, 
 			)
 	
+
+
 	laser = fields.Selection(
 			selection = jxvars._laser_type_list, 
 			string="Láser", 			
@@ -147,6 +149,28 @@ class Evaluation(models.Model):
 
 
 
+
+
+	zone = fields.Selection(
+			selection = jxvars._zone_list, 
+			string="Zona", 			
+			compute='_compute_zone', 			
+			)
+	
+	#@api.multi
+	@api.depends('product')
+	def _compute_zone(self):
+		for record in self:
+			record.zone = record.product.x_zone
+
+
+
+
+	# Completed
+	x_done = fields.Boolean(
+			default=False,
+			string="Realizado", 			
+		)
 
 
 

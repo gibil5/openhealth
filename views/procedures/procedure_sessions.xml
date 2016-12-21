@@ -11,7 +11,7 @@
 			<field name="model">openhealth.procedure</field>
 
 
-			<field name="priority" eval="2"/>
+			<field name="priority" eval="1"/>
 
 			
 			<field name="inherit_id" ref="procedure_form_view"/>
@@ -24,10 +24,7 @@
 					<page string="Sesiones">
 
 
-
 						<!--
-						<field name="control_ids"/>
-						-->
 						<field name="session_ids">
 							<tree string="">	
 								<field string="session #"  name="name"/>
@@ -47,7 +44,9 @@
 								<field name="procedure"/>
 							</tree>
 						</field>				
-						
+						-->
+						<field name="session_ids"/>
+
 						
 
 					</page>

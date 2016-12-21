@@ -19,9 +19,6 @@
 
 					<!-- Header --> 
 					<header>
-						
-
-
 
 						<button 
 							type="object" 
@@ -119,8 +116,13 @@
 								<field name="appointment"  	required="0"/>	
 							</group>
 							<group>
-								<!--
-								-->
+								<field name="zone"/>
+							</group>
+
+
+							<group>
+							</group>
+							<group>								
 								<field name="product"/>
 							</group>
 
@@ -132,10 +134,13 @@
 						<notebook>
 						</notebook>
 
+
 					</sheet>
 				</form>
 			</field>
 		</record>
+
+
 
 
 
@@ -156,13 +161,29 @@
 					
 					<field name="doctor"   string="Médico"/>
 					
+					<field name="chief_complaint"/>
+
+					<field name="product"/>
+
 					<field name="evaluation_start_date"/>
 
-					<field name="chief_complaint"/>
 					
-					<field name="procedure"/>
+					<field name="x_done"/>
+
+
+
+					<!-- Quick Button -->
+					<button 
+						type="object" 
+						class="oe_highlight"	
+						string="E"
+						name="open_line_current" 
+					/>
+
+
 
 					<!--
+					<field name="procedure"/>
 					<field name="owner"/>
 
 					<field name="treatment_id"/>

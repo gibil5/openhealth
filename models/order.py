@@ -8,6 +8,8 @@
 from openerp import models, fields, api
 
 import math
+import jxvars
+
 
 
 class sale_order(models.Model):
@@ -16,6 +18,17 @@ class sale_order(models.Model):
 	#_name = 'openhealth.order'
 	_inherit='sale.order'
 	
+
+
+	# Chief complaint 
+	x_chief_complaint = fields.Selection(
+			string = 'Motivo de consulta', 
+
+			selection = jxvars._chief_complaint_list, 
+			)
+
+
+
 
 
 
@@ -38,7 +51,7 @@ class sale_order(models.Model):
         			#('cancel', 'Cancelled'),
 
 
-        			('pre-draft', 	'Presupuesto'),
+        			('pre-draft', 	'Presupuesto consulta'),
 
         			('draft', 		'Presupuesto'),
         			
@@ -52,7 +65,6 @@ class sale_order(models.Model):
 	state = fields.Selection(
 			selection = _state_list, 
 
-
 			#string='Status', 			
 			string='Estado',	
 			
@@ -60,11 +72,35 @@ class sale_order(models.Model):
 			readonly=False, 
 
 			#default='draft'
-
 			#copy=False, 
 			#index=True, 
 			#track_visibility='onchange', 
 			)
+
+
+	#jxx
+	@api.onchange('state')
+
+	def _onchange_state(self):
+
+		print 
+		print 
+		print 'On change State'
+
+		if self.state == 'sale':	
+
+			print 'Gotcha !!!'
+
+		print 
+		print 
+
+
+
+
+
+
+
+
 
 
 
@@ -430,167 +466,62 @@ class sale_order(models.Model):
 			record.x_price_vip_total = total 
 
 
-#sale_order()
 
 
 
 
+# ----------------------------------------------------------- CRUD ------------------------------------------------------
 
+	@api.model
+	def create(self,vals):
 
-
-
-# Order line 
-
-class sale_order_line(models.Model):
-
-	#_name = 'openhealth.order_line'
-	_inherit='sale.order.line'
-
-
-	#_inherit='sale.order.line, openhealth.line'
-	#_inherit=['sale.order.line','openhealth.line']
-
-
-
-
-	order_id=fields.Many2one(
-		'sale.order',
-		string='Order',
-		)
-
-
-#sale_order_line()
-
-
-
-
-
-
-# Line 
-
-#class line(models.Model):
-	#_name = 'openhealth.line'
-
-
-	consultation = fields.Many2one('openhealth.consultation',
-			ondelete='cascade', 
-		)
-
-	procedure_created = fields.Boolean(
-			default=False,
-		)
-
-
-
-
-
-
-	_state_list = [
-        			('pre-draft', 'Pre-Quotation'),
-
-        			('draft', 'Quotation'),
-        			('sent', 'Quotation Sent'),
-        			('sale', 'Sale Order'),
-        			('done', 'Done'),
-        			('cancel', 'Cancelled'),
-        		]
-
-	state = fields.Selection(
-				selection = _state_list, 
-				
-				string="State",
-
-				)
-
-
-
-
-
-
-
-
-	x_price_vip = fields.Float(
-			string="Price Vip",
-		)
-
-	x_price_vip_wigv = fields.Float(
-			string="Precio Vip",
-
-			compute="_compute_x_price_vip_wigv",
-		)
-
-	#@api.multi
-	@api.depends('x_price_vip')
+		print 
+		print 'Order - Create - Override'
+		print 
+		print vals
+		print 
 	
-	def _compute_x_price_vip_wigv(self):
-		for record in self:
-
-			if record.x_price_vip == 0.0:
-				#record.x_price_vip = record.x_price
-				price_vip = record.x_price
-			else:
-				price_vip = record.x_price_vip
 
 
-			#record.x_price_vip_wigv = math.ceil(record.x_price_vip * 1.18)
-			record.x_price_vip_wigv = math.ceil(price_vip * 1.18)
+		# Return 
+		res = super(sale_order, self).create(vals)
+
+		return res
 
 
 
+	@api.multi
+	def write(self,vals):
 
-	x_price = fields.Float(
-			string="Price Std",
-		)
-
-	x_price_wigv = fields.Float(
-			string="Precio",
-
-			compute="_compute_x_price_wigv",
-		)
+		print 
+		print 'Order - Write - Override'
+		print 
+		print vals
 
 
-	#@api.multi
-	@api.depends('x_price')
-	
-	def _compute_x_price_wigv(self):
-		for record in self:
-			record.x_price_wigv = math.ceil(record.x_price * 1.18)
-
-
-
-
-
-
-
-	price_total = fields.Float(
+		if 'state' in vals:
+			state = vals['state']
+			print state
+			print self.state
 			
-			string="Total",
-
-			#compute="_compute_price_total",
-		)
-
-	#@api.multi
-	#@api.depends('x_price')	
-	#def _compute_price_total(self):
-	#	for record in self:
-	#		record.x_price_wigv = math.ceil(record.x_price * 1.18)
+			print self.patient.name
+			
+			print self.order_line
 
 
 
-	#@api.onchange('price_total')
-	
-	#def _onchange_price_total(self):
-	#	print 
-	#	print 'on change price total'
-	#	print self.price_total
-
-	#	self.price_total = math.ceil(self.price_total)
-
-	#	print self.price_total
-	#	print 
+		print 
+		print 
 
 
+		#Write your logic here
+		res = super(sale_order, self).write(vals)
+		#Write your logic here
+
+		print 
+		print 
+
+		return res
 
 
-
-
+#sale_order()

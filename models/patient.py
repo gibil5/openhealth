@@ -948,3 +948,47 @@ class Patient(models.Model):
 
 
 
+
+
+
+
+
+# ----------------------------------------------------------- CRUD ------------------------------------------------------
+
+	@api.model
+	def create(self,vals):
+
+		print 
+		print 'Patient - Create - Override'
+		print 
+		print vals
+		print 
+	
+
+		#appointment_date = vals['appointment_date']
+		#doctor = vals['doctor']
+		#patient = vals['patient']
+
+
+		#print "appointment date: ", appointment_date
+		#print "doctor: ", doctor
+		#print "patient: ", patient
+		
+		#print "treatment: ", treatment
+		#print self.treatment
+
+
+
+
+
+		# Return 
+		res = super(Patient, self).create(vals)
+
+		return res
+
+
+
+
+
+
+

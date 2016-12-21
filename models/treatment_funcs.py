@@ -27,7 +27,10 @@ def create_procedure_go(self):
 	patient = self.patient.id
 	doctor = self.physician.id
 	treatment = self.id
-	chief_complaint = self.chief_complaint
+
+
+	#chief_complaint = self.chief_complaint
+
 
 	GMT = time_funcs.Zone(0,False,'GMT')
 	evaluation_start_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
@@ -54,6 +57,17 @@ def create_procedure_go(self):
 
 
 
+
+
+	# Chief complaint 
+	for sale in self.sale_ids:
+		chief_complaint = sale.x_chief_complaint
+		print 'chief_complaint:', chief_complaint
+
+
+
+
+
 	for line in self.sale_ids.order_line:
 					
 		if self.nr_procedures < self.sale_ids.nr_lines:
@@ -61,36 +75,37 @@ def create_procedure_go(self):
 			product = line.product_id.id
 			
 
-			procedure = self.procedure_ids.create({
-											'patient':patient,
-											'doctor':doctor,
-											'chief_complaint':chief_complaint,
-											'treatment':treatment,										
-											'product':product,
+			if line.product_id.type == 'service':
+				
+				procedure = self.procedure_ids.create({
+														'patient':patient,
+														'doctor':doctor,
+														'treatment':treatment,										
+														'product':product,
+														'evaluation_start_date':evaluation_start_date,
 
-											'evaluation_start_date':evaluation_start_date,
+														'appointment': appointment_id,
 
-
-											'appointment': appointment_id,
-									})
-
-
-			procedure_id = procedure.id
-
-			print 
-			print procedure 
-			print procedure_id
+														'chief_complaint':chief_complaint,
+													})
 
 
-			#self.update_appointment(appointment_id, procedure_id, 'procedure')
-			ret = jrfuncs.update_appointment_go(self, appointment_id, procedure_id, 'procedure')
+				procedure_id = procedure.id
+
+				print 
+				print procedure 
+				print procedure_id
 
 
-			print appointment
-			print appointment.procedure
-			print appointment.procedure.id
+				#self.update_appointment(appointment_id, procedure_id, 'procedure')
+				ret = jrfuncs.update_appointment_go(self, appointment_id, procedure_id, 'procedure')
 
-			print 
+
+				print appointment
+				print appointment.procedure
+				print appointment.procedure.id
+
+				print 
 
 	return ret	
 

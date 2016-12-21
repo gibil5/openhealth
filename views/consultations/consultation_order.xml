@@ -48,6 +48,7 @@
 								<field name="nr_lines"/>
 
 
+								<field name="x_chief_complaint"/>
 								<!--
 								<field name="user_id"/>
 								<field name="invoice_status"/>

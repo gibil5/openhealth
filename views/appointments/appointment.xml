@@ -19,10 +19,29 @@
 
 
 
+				<!-- Remove -->
+				<xpath expr="//field[@name='name']" position="after">
+
+					<div class="oe_right">
+							<button 
+								type="object" 
+								class="oe_highlight"
+								string="Eliminar" 
+
+								name="remove_appointment" 
+							/>
+					</div>
+
+				</xpath>
+
+
+
+
+
 				<xpath expr="//field[@name='patient']" position="replace">
 					
-					<field name="patient"/>
-					
+					<field name="patient"/>					
+
 					<field name="vspace"/>
 
 				</xpath>
@@ -160,6 +179,8 @@
 							<field name="x_chief_complaint"				attrs="{'invisible':[('x_type', '!=', 'consultation')]}"/>
 							-->
 
+
+							<!--
 							<group>
 								<button 
 									type="object" 
@@ -171,7 +192,6 @@
 								/>
 							</group>
 
-
 							<group>
 								<button 
 									type="object" 
@@ -181,7 +201,7 @@
 									name="create_treatment" 
 								/>
 							</group>
-
+							-->
 						</group>
 					</group>
 
@@ -232,15 +252,15 @@
 
 
 					
-				<tree string="Appointment Tree"  	default_order='x_date, x_time'>
-				-->
 				<tree string="Appointment Tree"  	default_order='appointment_date'>
+				-->
+				<tree string="Appointment Tree"  	default_order='x_date, x_time'>
 				
 
 
 					<!--
-					-->
 					<field name="name"/>
+					-->
 
 
 					<!--

@@ -451,10 +451,18 @@ class Consultation(models.Model):
 		# Consultation
 		consultation_id = self.id 
 
+
 		# Patient
 		patient_id = self.patient.id
 		print 'patient_id: ', patient_id
 		
+
+
+		# Doctor
+		doctor_id = self.doctor.id
+		print 'doctor_id: ', doctor_id
+
+
 
 		# Partner
 		#partner_id = self.env['res.partner'].search([('name','=',self.patient.name)]).id
@@ -478,6 +486,7 @@ class Consultation(models.Model):
 
 
 
+
 		# Order 
 		#order_id = self.order.id		
 		consultation_id = self.id
@@ -492,6 +501,7 @@ class Consultation(models.Model):
 		print 'order_id: ', order_id
 
 
+
 		# Create 
 		if order_id == False:
 
@@ -499,14 +509,16 @@ class Consultation(models.Model):
 			print 
 			order = self.env['sale.order'].create(
 													{
-
 														'treatment': treatment_id,
 														'partner_id': partner_id,
+														
+														
 														'patient': patient_id,	
+														'x_doctor': doctor_id,	
+
 
 														'consultation':self.id,
 														'state':'draft',
-
 
 														'x_chief_complaint':chief_complaint,
 													}

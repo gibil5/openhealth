@@ -7,17 +7,26 @@
 
 from openerp import models, fields, api
 
-import math
 import jxvars
 
 
 
 class sale_order(models.Model):
 	
-
 	#_name = 'openhealth.order'
 	_inherit='sale.order'
 	
+
+
+
+	# Doctor 
+	x_doctor = fields.Many2one(
+			'oeh.medical.physician',
+			string = "Médico", 	
+			required=True, 
+			)
+
+
 
 
 	# Chief complaint 
@@ -470,6 +479,7 @@ class sale_order(models.Model):
 
 
 
+
 # ----------------------------------------------------------- CRUD ------------------------------------------------------
 
 	@api.model
@@ -482,11 +492,12 @@ class sale_order(models.Model):
 		print 
 	
 
-
-		# Return 
+		#Write your logic here
 		res = super(sale_order, self).create(vals)
+		#Write your logic here
 
 		return res
+
 
 
 
@@ -499,14 +510,6 @@ class sale_order(models.Model):
 		print vals
 
 
-		if 'state' in vals:
-			state = vals['state']
-			print state
-			print self.state
-			
-			print self.patient.name
-			
-			print self.order_line
 
 
 
@@ -516,8 +519,57 @@ class sale_order(models.Model):
 
 		#Write your logic here
 		res = super(sale_order, self).write(vals)
-		#Write your logic here
 
+		#Write your logic here
+		if 'state' in vals:
+			state = vals['state']
+			print state
+			print 'state: ', self.state
+			print 'patient: ', self.patient.name
+			print 'doctor: ', self.x_doctor.name
+
+			print 'order_line: ', self.order_line
+
+
+			for line in self.order_line:
+				product_id = line.product_id
+
+				if product_id.type == 'service':
+					print product_id.type
+					print product_id.name
+
+
+					appointment = self.env['oeh.medical.appointment'].search([ 	
+														
+															('patient', 'like', self.patient.name),		
+															
+															('doctor', 'like', self.x_doctor.name), 	
+															
+															('x_type', 'like', 'procedure'), 
+
+															('state', 'like', 'pre_scheduled'), 
+
+														
+														], 
+															order='appointment_date desc', limit=1)
+
+
+					appointment_id = appointment.id
+
+					print appointment  
+					print appointment_id  
+
+
+					rec_set = self.env['oeh.medical.appointment'].browse([appointment_id])
+
+					ret = rec_set.write({
+											'state': 'Scheduled',
+										})
+
+
+					print ret 
+
+					
 		print 
 		print 
 
@@ -525,183 +577,4 @@ class sale_order(models.Model):
 
 
 #sale_order()
-
-
-
-
-
-
-
-
-# ------------------------------------------------------------------------------------------------------------------------------#
-#  																															  	#
-# ----------------------------------------------------------- Order line -------------------------------------------------------#
-#																																#
-# ------------------------------------------------------------------------------------------------------------------------------#
-class sale_order_line(models.Model):
-
-	#_name = 'openhealth.order_line'
-	_inherit='sale.order.line'
-
-
-	#_inherit='sale.order.line, openhealth.line'
-	#_inherit=['sale.order.line','openhealth.line']
-
-
-
-
-	order_id=fields.Many2one(
-		'sale.order',
-		string='Order',
-		)
-
-
-
-
-# Line 
-
-#class line(models.Model):
-	#_name = 'openhealth.line'
-
-
-	consultation = fields.Many2one('openhealth.consultation',
-			ondelete='cascade', 
-		)
-
-	procedure_created = fields.Boolean(
-			default=False,
-		)
-
-
-
-
-	_state_list = [
-        			('pre-draft', 'Pre-Quotation'),
-
-        			('draft', 'Quotation'),
-        			('sent', 'Quotation Sent'),
-        			('sale', 'Sale Order'),
-        			('done', 'Done'),
-        			('cancel', 'Cancelled'),
-        		]
-
-	state = fields.Selection(
-				selection = _state_list, 
-				
-				string="State",
-
-				)
-
-
-
-
-
-
-
-	x_price_vip = fields.Float(
-			string="Price Vip",
-		)
-
-	x_price_vip_wigv = fields.Float(
-			string="Precio Vip",
-
-			compute="_compute_x_price_vip_wigv",
-		)
-
-	#@api.multi
-	@api.depends('x_price_vip')
-	
-	def _compute_x_price_vip_wigv(self):
-		for record in self:
-
-			if record.x_price_vip == 0.0:
-				#record.x_price_vip = record.x_price
-				price_vip = record.x_price
-			else:
-				price_vip = record.x_price_vip
-
-
-			#record.x_price_vip_wigv = math.ceil(record.x_price_vip * 1.18)
-			record.x_price_vip_wigv = math.ceil(price_vip * 1.18)
-
-
-
-
-	x_price = fields.Float(
-			string="Price Std",
-		)
-
-	x_price_wigv = fields.Float(
-			string="Precio",
-
-			compute="_compute_x_price_wigv",
-		)
-
-
-	#@api.multi
-	@api.depends('x_price')
-	
-	def _compute_x_price_wigv(self):
-		for record in self:
-			record.x_price_wigv = math.ceil(record.x_price * 1.18)
-
-
-
-
-
-
-
-	price_total = fields.Float(
-			
-			string="Total",
-
-			#compute="_compute_price_total",
-		)
-
-	#@api.multi
-	#@api.depends('x_price')	
-	#def _compute_price_total(self):
-	#	for record in self:
-	#		record.x_price_wigv = math.ceil(record.x_price * 1.18)
-
-
-
-	#@api.onchange('price_total')
-	
-	#def _onchange_price_total(self):
-	#	print 
-	#	print 'on change price total'
-	#	print self.price_total
-
-	#	self.price_total = math.ceil(self.price_total)
-
-	#	print self.price_total
-	#	print 
-
-
-
-
-
-	_x_type_list = [
-						('service','Servicio'), 
-						('consu','Producto'), 
-					]
-
-
-	x_type = fields.Selection(
-			selection = _x_type_list, 
-
-			string="Tipo",			
-			compute='_compute_x_type', 			
-			)
-	
-	#@api.multi
-	@api.depends('product_id')
-
-	def _compute_x_type(self):
-		for record in self:
-			record.x_type = record.product_id.type
-
-
-#sale_order_line()
 

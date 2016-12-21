@@ -25,23 +25,23 @@ from . import service_co2
 from . import service_excilite
 from . import service_ipl
 from . import service_ndyag
-
 from . import service_medical
+
 
 
 
 #from . import quotation
 from . import order
+from . import order_line
+
+
 
 
 from . import procedure
 from . import control
 from . import session 
 
-
 from . import appointment 
-
-
 
 #jx 
 from . import partner

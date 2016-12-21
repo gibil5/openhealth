@@ -221,6 +221,11 @@
                     
                     <field name="partner_id"	string="Paciente"/>
                     
+					<field name="x_doctor"/>
+
+
+
+
                     <field name="user_id"		string="Vendido por"/>
                     
                     <field name="state" invisible="0"	string="Estado"/>
@@ -233,8 +238,9 @@
                     <field name="date_order"		string="Fecha"/>
 
 
-
                     <field name="x_chief_complaint"/>
+
+
 
                      <!--
                     <field name="consultation"/>

@@ -10,7 +10,8 @@ import datetime
 
 @api.multi
 
-def check_for_collisions(self, appointment_date, doctor_name, duration):
+#def check_for_collisions(self, appointment_date, doctor_name, duration):
+def check_for_collisions(self, appointment_date, doctor_name, duration, x_machine):
 
 
 		#print 
@@ -22,7 +23,12 @@ def check_for_collisions(self, appointment_date, doctor_name, duration):
 		#print 
 
 
-		app_ids = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', dt),  ('doctor', '=', doctor_name)  ])
+		if x_machine == False:
+			app_ids = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', dt),  ('doctor', '=', doctor_name)  ])
+		else:
+			app_ids = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', dt),  ('x_machine', '=', x_machine)  ])
+
+
 		#print app_ids 
 
 

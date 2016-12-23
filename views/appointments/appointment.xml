@@ -58,11 +58,17 @@
 
 
 				<xpath expr="//field[@name='doctor']" position="replace">					
+					
+					<field name="vspace"	attrs="{'invisible':[('x_machine', '!=', False),]}"/>
+
+					<field name="doctor"	attrs="{'invisible':[('x_machine', '!=', False),]}"/>				
+					
+					<field name="x_machine"	/>
+					
 					<field name="vspace"/>
-					<field name="doctor"/>					
-					<field name="x_machine"/>
+					
 					<field name="vspace"/>
-					<field name="vspace"/>
+				
 				</xpath>
 
 
@@ -288,6 +294,9 @@
 					<field name="x_type"/>
 
 
+					<field name="x_machine"/>
+
+
 
 					<!--
 					<field name="x_duration_min"/>
@@ -412,7 +421,7 @@
 
 
 
-
+		<!-- Confirmed -->  
 		<record id="oeh_medical_appointment_action_tree_1" model="ir.actions.act_window">
                     <field name="name">Citas confirmadas</field>
                     <field name="res_model">oeh.medical.appointment</field>
@@ -422,6 +431,8 @@
                     <field name="domain">[
 
                     						('state', 'in', ['pre_scheduled','Scheduled', 'Completed', 'Invoiced']),
+
+                    						('x_machine', '=', 'False'),
 
                     					]
                     </field>
@@ -437,8 +448,6 @@
                     </field>
 		</record>
 
-
-
 		<menuitem 
 					action="oeh_medical_appointment_action_tree_1" 
 					parent="oehealth.oeh_medical_appointment_menu"  
@@ -451,6 +460,7 @@
 
 
 
+		<!-- Pre Controls -->
 		<record id="oeh_medical_appointment_action_tree_2" model="ir.actions.act_window">
 
                     <field name="name">Pre-citas / Controles</field>
@@ -481,6 +491,58 @@
 					action="oeh_medical_appointment_action_tree_2" 
 					parent="oehealth.oeh_medical_appointment_menu"  
 					id="oeh_medical_appointment_list_2" 
+					sequence="2"
+		/>
+
+
+
+
+
+
+		<!-- Machines -->
+		<record id="oeh_medical_appointment_action_tree_3" model="ir.actions.act_window">
+
+                    <field name="name">Máquinas</field>
+            
+                    <field name="res_model">oeh.medical.appointment</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">calendar,tree,form</field>
+                    
+                    <!--
+
+                    						('x_machine', 'in', ['laser_co2_1', 'laser_co2_2', 'laser_co2_3', 'laser_excilite', 'laser_m22']),
+                    -->
+                    <field name="domain">[
+
+
+                    						('x_machine', '!=', 'False'),
+
+                    					]
+                    </field>
+                    
+                    <field name="context">{
+
+											'default_x_machine': 'laser_co2_1',
+
+											'default_x_type': 'procedure',
+                    	}
+                    </field>
+
+
+                    <field name="view_id" eval="False"/>
+                    <field name="help" type="html">
+                      <p class="oe_view_nocontent_create">
+                        Click to add a new appointment.
+                      </p><p>
+                        oeHealth appointment screen can easily find all of your appointment details;
+                      </p>
+                    </field>
+		</record>
+
+		<menuitem 
+					action="oeh_medical_appointment_action_tree_3" 
+					parent="oehealth.oeh_medical_appointment_menu"  
+					id="oeh_medical_appointment_list_3"
 					sequence="2"
 		/>
 

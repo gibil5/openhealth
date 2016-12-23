@@ -45,11 +45,15 @@ class Appointment(models.Model):
 
 
 
+
+
 	x_machine = fields.Selection(
 			string="Máquina", 
 
 			selection = jxvars._machines_list, 
 		)
+
+
 
 
 
@@ -273,6 +277,14 @@ class Appointment(models.Model):
 							'Dr. Alarcon':		'Dr. Al',
 
 
+							'laser_co2_1':		'Co2_1',
+							'laser_co2_2':		'Co2_2',
+							'laser_co2_3':		'Co2_3',
+
+							'laser_excilite':		'Exc',
+
+							'laser_m22':		'M22',
+
 							#'Pre-control':		'Pre-control',
 							#'Pre-cita':		'Pre-cita',
 		}
@@ -288,7 +300,9 @@ class Appointment(models.Model):
 			default=defaults._doctor,
 
 			#string = "Médico", 	
+
 			#required=True, 
+			required=False, 
 			)
 
 
@@ -301,9 +315,13 @@ class Appointment(models.Model):
 	@api.depends('doctor')
 
 	def _compute_x_doctor_code(self):
+
 		for record in self:
 
-			record.x_doctor_code = self._hash_doctor_code[record.doctor.name]
+			if record.x_machine != False:
+				record.x_doctor_code = self._hash_doctor_code[record.x_machine]
+			else:
+				record.x_doctor_code = self._hash_doctor_code[record.doctor.name]
 
 
 
@@ -338,7 +356,17 @@ class Appointment(models.Model):
 
 			# Check for collisions
 			#ret, doctor_name, start, end = self.check_for_collision(self.appointment_date, self.doctor.name, self.duration)
-			ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration)
+
+
+			if self.x_machine == False:
+				#ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration)
+				ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, self.x_machine)
+			else:
+				#ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.x_machine, self.duration)
+				ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.x_machine, self.duration, self.x_machine)
+
+
+			
 			print ret 
 
 
@@ -709,7 +737,7 @@ class Appointment(models.Model):
 	_type_list = [
         			('consultation', 'Consulta'),
         			#('procedure', 'Procedimiento'),
-        			('procedure', 'Proc.'),
+        			('procedure', 'Procedimiento'),
         			('session', 'Sesión'),
         			('control', 'Control'),
 

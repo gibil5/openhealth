@@ -38,12 +38,9 @@
 
 
 
-				<xpath expr="//field[@name='patient']" position="replace">
-					
+				<xpath expr="//field[@name='patient']" position="replace">					
 					<field name="patient"/>					
-
 					<field name="vspace"/>
-
 				</xpath>
 
 
@@ -55,6 +52,21 @@
 					<field name="x_duration_min"	attrs="{	'readonly':[('x_type', '!=', 'session')], 
 																'invisible':[('x_type', '!=', 'session')]	}"/>
 				</xpath>
+
+
+
+
+
+				<xpath expr="//field[@name='doctor']" position="replace">					
+					<field name="vspace"/>
+					<field name="doctor"/>					
+					<field name="x_machine"/>
+					<field name="vspace"/>
+					<field name="vspace"/>
+				</xpath>
+
+
+
 
 
 
@@ -266,6 +278,10 @@
 					<!--
 					-->
 					<field name="patient"/>
+
+
+
+
 
 					<field name="doctor"/>
 

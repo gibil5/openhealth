@@ -3,6 +3,24 @@
 
 
 
+# Machines
+
+_machines_list = [
+
+		('laser_co2_1','Láser Co2 1'), 
+		('laser_co2_2','Láser Co2 2'), 
+		('laser_co2_3','Láser Co2 3'), 
+
+		('laser_excilite_1','Láser Excilite'), 
+		('laser_m22_1','Láser M22'), 
+]
+
+
+
+
+
+
+
 # Product 
 
 # Laser

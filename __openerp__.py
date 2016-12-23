@@ -18,7 +18,7 @@
     	Clinica Chavarri\n
 
 		Installed: 	 	7 Sep 2016.\n 
-		Last built: 	21 Dec 2016.\n 
+		Last built: 	23 Dec 2016.\n 
 		\n
 
 		This is my first extension for oeHealth.

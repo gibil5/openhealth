@@ -16,6 +16,7 @@ import appfuncs
 import time_funcs
 import jxvars
 
+import defaults
 
 
 class Appointment(models.Model):
@@ -41,13 +42,23 @@ class Appointment(models.Model):
 			)
 
 
-	x_error = fields.Integer(
-			
-			default = 0, 
-			required=True, 
+
+
+
+	x_machine = fields.Selection(
+			string="Máquina", 
+
+			selection = jxvars._machines_list, 
 		)
 
 
+
+
+
+	x_error = fields.Integer(			
+			default = 0, 
+			required=True, 
+		)
 
 
 	# Create procedure 
@@ -208,6 +219,7 @@ class Appointment(models.Model):
 
 			#default=3025, 		# Revilla 
 			#default=3052, 		# Suarez Vertiz
+			default = defaults._patient 
 
 			#required=True, 
 		)
@@ -258,8 +270,11 @@ class Appointment(models.Model):
 
 							'Dr. Vasquez':		'Dr. Va',
 
+							'Dr. Alarcon':		'Dr. Al',
+
+
 							#'Pre-control':		'Pre-control',
-							'Pre-cita':		'Pre-cita',
+							#'Pre-cita':		'Pre-cita',
 		}
 
 
@@ -269,7 +284,8 @@ class Appointment(models.Model):
 	doctor = fields.Many2one(
 			'oeh.medical.physician',
 			
-			#default=1, 		# Chavarri
+			#default=1, 				# Chavarri
+			default=defaults._doctor,
 
 			#string = "Médico", 	
 			#required=True, 

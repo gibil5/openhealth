@@ -14,8 +14,8 @@ import datetime
 def check_for_collisions(self, appointment_date, doctor_name, duration, x_machine):
 
 
-		#print 
-		#print 'Check for collision'
+		print 
+		print 'Check for collision'
 
 
 		dt = appointment_date[2:10]
@@ -23,13 +23,14 @@ def check_for_collisions(self, appointment_date, doctor_name, duration, x_machin
 		#print 
 
 
+
+		# Search for the rec set
 		if x_machine == False:
 			app_ids = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', dt),  ('doctor', '=', doctor_name)  ])
 		else:
 			app_ids = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', dt),  ('x_machine', '=', x_machine)  ])
 
-
-		#print app_ids 
+		print app_ids 
 
 
 

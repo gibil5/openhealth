@@ -48,9 +48,20 @@ class Appointment(models.Model):
 
 
 	x_machine = fields.Selection(
-			string="Máquina", 
+			#string="Máquina", 
+			string="Sala", 
 
 			selection = jxvars._machines_list, 
+			#required=True, 
+		)
+
+
+	x_target = fields.Selection(
+			string="Target", 
+
+			selection = jxvars._target_list, 
+
+			index=True,
 		)
 
 
@@ -297,7 +308,7 @@ class Appointment(models.Model):
 			'oeh.medical.physician',
 			
 			#default=1, 				# Chavarri
-			default=defaults._doctor,
+			#default=defaults._doctor,
 
 			#string = "Médico", 	
 
@@ -329,7 +340,65 @@ class Appointment(models.Model):
 
 
 
-	#@api.onchange('doctor', 'duration')
+
+
+
+
+	# On change - Machine
+
+	@api.onchange('x_machine')
+
+	def _onchange_x_machine(self):
+
+		print 
+		print 'On change Machine'
+
+
+		if self.x_machine != False:	
+
+			print self.x_machine 
+
+			print self.doctor.name
+			print self.patient.name
+			print self.appointment_date
+			print self.x_date
+			print self.duration
+			print self.appointment_end
+			print 
+
+			self.x_error = 0
+
+
+			ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor, self.duration, self.x_machine)
+
+
+			if ret != 0:	# Error 
+
+				self.x_error = 1
+				self.x_machine = False
+
+				return {
+							'warning': {
+									'title': "Error: Colisión !",
+									'message': 									#'Sala ' + self.x_machine + 
+																				'La sala ya está reservada: ' + 
+																				#self.x_machine + 
+																				#": " + start + ' - ' + end + '.',
+																				start + ' - ' + end + '.',
+						}}
+
+
+
+		print
+
+
+
+
+
+
+
+	# On change - Doctor
+
 	@api.onchange('doctor', 'x_type')
 
 	def _onchange_doctor(self):
@@ -339,6 +408,7 @@ class Appointment(models.Model):
 
 
 		if self.doctor.name != False:	
+		#if self.doctor != False:	
 
 			print self.doctor.name
 			print self.patient.name
@@ -356,17 +426,8 @@ class Appointment(models.Model):
 
 			# Check for collisions
 			#ret, doctor_name, start, end = self.check_for_collision(self.appointment_date, self.doctor.name, self.duration)
+			ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, False)
 
-
-			if self.x_machine == False:
-				#ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration)
-				ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, self.x_machine)
-			else:
-				#ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.x_machine, self.duration)
-				ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.x_machine, self.duration, self.x_machine)
-
-
-			
 			print ret 
 
 
@@ -374,17 +435,15 @@ class Appointment(models.Model):
 
 			if ret != 0:	# Error 
 
+				print 'Error: Collision !'
+				print 
+
 				self.x_error = 1
 				self.doctor = False
-				#self.duration = 0.5
-				#self.x_duration_min = '0.5'
-
 
 				return {
 							'warning': {
 									'title': "Error: Colisión !",
-									#'message': 'Cita ya existente, con el ' + self.doctor.name,
-									#'message': 'Cita ya existente, con el ' + self.doctor.name + ": " + start + ' - ' + end + '.',
 									'message': 'Cita ya existente, con el ' + doctor_name + ": " + start + ' - ' + end + '.',
 						}}
 
@@ -392,11 +451,14 @@ class Appointment(models.Model):
 
 
 			else: 
+
+				print 'Success !'
+				print 
+
 				# Treatment 
 				self.treatment = self.env['openextension.treatment'].search([
 
 															('patient', 'like', self.patient.name),
-
 															('physician', 'like', self.doctor.name),
 
 															],
@@ -922,13 +984,10 @@ class Appointment(models.Model):
         	'res_model': 'oeh.medical.appointment',
 
 
-        	'context': {
-
-        			#'default_partner_id':value, 			
-        			#'default_other_field':othervalues
-        			
-        			'default_patient':3025, 			
-        			},
+        	#'context': {
+        	#		#'default_partner_id':value, 			
+        	#		#'default_other_field':othervalues        			
+        	#		},
 
     		}
 
@@ -953,7 +1012,12 @@ class Appointment(models.Model):
 
 		appointment_date = vals['appointment_date']
 		x_type = vals['x_type']
-		doctor = vals['doctor']
+
+		if 'doctor' in vals:
+			doctor = vals['doctor']
+			print "doctor: ", doctor
+		
+
 		patient = vals['patient']
 
 		treatment = vals['treatment']
@@ -964,7 +1028,6 @@ class Appointment(models.Model):
 
 		print "appointment date: ", appointment_date
 		print "x_type: ", x_type
-		print "doctor: ", doctor
 		print "patient: ", patient
 		
 		print "treatment: ", treatment
@@ -1059,7 +1122,8 @@ class Appointment(models.Model):
 
 			# Check for collisions 
 			#ret, doctor_name, start, end = self.check_for_collision(ad_pro_str, doctor_name, duration)
-			ret, doctor_name, start, end = appfuncs.check_for_collisions(self, ad_pro_str, doctor_name, duration)
+
+			ret, doctor_name, start, end = appfuncs.check_for_collisions(self, ad_pro_str, doctor_name, duration, False)
 
 
 

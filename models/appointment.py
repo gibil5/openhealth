@@ -174,27 +174,18 @@ class Appointment(models.Model):
 
 	APPOINTMENT_STATUS = [
 			
-
 			# jx 
-			#('pre_scheduled', 			'Pre-scheduled'),
-			#('pre_scheduled_control', 	'Pre-scheduled Control'),
-
-			#('pre_scheduled_control', 	'Pre-cita control'),
+			('Scheduled', 		'Confirmado'),
+			('pre_scheduled', 	'No confirmado'),
 			('pre_scheduled_control', 	'Pre-cita'),
-			('pre_scheduled', 			'No confirmado'),
-
 
 
 			# OeHealth 
 			#('Scheduled', 'Scheduled'),
 			#('Completed', 'Completed'),
 			#('Invoiced', 'Invoiced'),
-
-			('Scheduled', 'Confirmado'),
-			
 			#('Completed', 'Completo'),
 			#('Invoiced', 'Facturado'),
-
 		]
 
 

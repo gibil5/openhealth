@@ -26,21 +26,25 @@
 
 
 						<!--
+						-->
+						
+						<field name="appointment_ids"/>
 
-						<field name="appointment"  attrs="{'invisible':[('state', '!=', 'draft')]}">
 
+
+						<!--
 						<field name="appointment_ids">
-
 							<tree string="">	
 								
+
 								<field name="name"/>
 
 
 							</tree>
 						</field>				
 						-->
-						
-						<field name="appointment_ids"/>
+
+
 						
 
 					</page>

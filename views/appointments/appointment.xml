@@ -301,46 +301,34 @@
 
 
 					<!--
+					<field name="x_duration_min"/>
+					<field name="x_chief_complaint"/>
+					
+					<field name="appointment_end"/>
+					<field name="duration"/>
+					<field name="appointment_date"/>
+
+					<field name="appointment_end"/>
+					<field name="evaluation_ids"/>
+
+					<field name="x_machine"/>
+					<field name="x_target"/>
+
+					-->
+
+
 					<field name="name"/>
-					-->
 
-
-					<!--
-					-->
 					<field name="patient"/>
-
-
-
-
 
 					<field name="doctor"/>
 
 					<field name="x_type"/>
 
 
-					<field name="x_machine"/>
-
-					<field name="x_target"/>
-
-
-
-					<!--
-					<field name="x_duration_min"/>
-					<field name="x_chief_complaint"/>
-					-->
-
 
 
 					<field name="treatment"/>
-
-					<!--
-
-					<field name="consultation"		attrs="{'invisible':[('x_type', '!=', 'consultation')]}"/>
-					<field name="procedure"			attrs="{'invisible':[('x_type', '!=', 'procedure')]}"/>
-					<field name="session"			/>
-					<field name="control"			/>	
-
-					-->
 					<field name="consultation"/>
 					<field name="procedure"/>
 					<field name="session"/>
@@ -348,33 +336,12 @@
 
 
 					
-
-
-					<!--
-					<field name="appointment_end"/>
-					<field name="duration"/>
-
-
-					<field name="appointment_date"/>
-
-
-					-->
 					
 					<field name="state"/>
-
 					<field name="x_date"/>
-
-					<!--
-					<field name="x_time"	attrs="{'invisible':[('state', '=', 'pre_scheduled_control')]}" />
-					-->
 					<field name="x_time"/>
 
-					
-					<!--
-					<field name="appointment_end"/>
-					<field name="evaluation_ids"/>
-					-->
-
+				
 				</tree>
 			</field>
 		</record>
@@ -410,21 +377,19 @@
 
 
 		<!-- Window action -->
-		<!--
 		<record model="ir.actions.act_window" id="oeh_medical_preappointment_list_action">
-			<field name="name">Pre-citas</field>
+			<field name="name">Citas</field>
 			<field name="res_model">oeh.medical.appointment</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 
 		</record>
-		-->
+
 		<!-- Menu -->
-		<!--
-		<menuitem id="oeh_medical_preappointment_menu" name="Pre-citas"
+		<menuitem id="oeh_medical_preappointment_menu" 
+			name="Citas"
 			parent="openhealth_menu"
 			action="oeh_medical_preappointment_list_action"/>
-		-->
 
 
 

@@ -535,7 +535,7 @@
 		<record id="oeh_medical_appointment_action_tree_3" model="ir.actions.act_window">
 
 
-                    <field name="name">  Reserva de Salas  </field>
+                    <field name="name">Reserva de salas</field>
 
             
                     <field name="res_model">oeh.medical.appointment</field>

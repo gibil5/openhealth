@@ -44,6 +44,8 @@ class Appointment(models.Model):
 
 
 
+	#x_tree = fields.Boolean(
+	#	)
 
 
 
@@ -194,6 +196,7 @@ class Appointment(models.Model):
 
 			string="Estado",
 			readonly=False, 
+			required=True, 
 		)
 
 
@@ -225,7 +228,7 @@ class Appointment(models.Model):
 
 			#default=3025, 		# Revilla 
 			#default=3052, 		# Suarez Vertiz
-			default = defaults._patient 
+			#default = defaults._patient 
 
 			#required=True, 
 		)
@@ -380,6 +383,27 @@ class Appointment(models.Model):
 
 
 
+			else: 			# Success 
+
+				print 'Success !'
+				print 
+				
+
+				# Treatment 
+				self.treatment = self.env['openextension.treatment'].search([
+
+															('patient', 'like', self.patient.name),
+															('physician', 'like', self.doctor.name),
+
+															],
+															order='start_date desc',
+															limit=1,
+														)
+
+				print self.treatment 
+
+
+
 		print
 
 
@@ -396,10 +420,15 @@ class Appointment(models.Model):
 
 		print 
 		print 'On change Doctor'
+		print self.x_machine
+		print self.doctor.name
 
 
-		if self.doctor.name != False:	
+
 		#if self.doctor != False:	
+		#if self.doctor.name != False  and  self.x_machine != False:
+		if self.doctor.name != False:
+
 
 			print self.doctor.name
 			print self.patient.name
@@ -416,8 +445,11 @@ class Appointment(models.Model):
 
 
 			# Check for collisions
+			ret = 0 
+
 			#ret, doctor_name, start, end = self.check_for_collision(self.appointment_date, self.doctor.name, self.duration)
-			ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, False)
+			if self.x_machine == False:
+				ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, False)
 
 			print ret 
 
@@ -446,8 +478,10 @@ class Appointment(models.Model):
 				print 'Success !'
 				print 
 
+
+
 				# Treatment 
-				self.treatment = self.env['openextension.treatment'].search([
+				treatment = self.env['openextension.treatment'].search([
 
 															('patient', 'like', self.patient.name),
 															('physician', 'like', self.doctor.name),
@@ -457,6 +491,27 @@ class Appointment(models.Model):
 															limit=1,
 														)
 
+
+
+				print treatment 
+
+				if treatment.name == False:
+					print 'Gotcha !!!'
+
+					treatment = self.env['openextension.treatment'].search([
+
+															('patient', 'like', self.patient.name),
+
+															],
+															order='start_date desc',
+															limit=1,
+														)
+
+
+					print treatment
+
+
+				self.treatment = treatment
 
 
 			# Create Procedure 
@@ -886,13 +941,13 @@ class Appointment(models.Model):
 			ondelete='cascade', 
 
 			#required=False, 
-			#required=True, 
+			required=True, 
 			)
 
 
 	consultation = fields.Many2one('openhealth.consultation',
-		#string="Consulta",
-		string="Cons.",
+		string="Consulta",
+		#string="Cons.",
 		ondelete='cascade', 
 	)
 
@@ -910,8 +965,8 @@ class Appointment(models.Model):
 	)
 
 	control = fields.Many2one('openhealth.control',
-		#string="Control",
-		string="Cont.",
+		string="Control",
+		#string="Cont.",
 		
 		ondelete='cascade', 
 	)

@@ -17,7 +17,7 @@
     	EMR (Electronic Medical Records) for Laser\n
     	Clinica Chavarri\n
 
-		Built: 	26 Dec 2016.\n 
+		Built: 	27 Dec 2016.\n 
 		Installed: 	 	7 Sep 2016.\n 
 		\n
 
@@ -150,6 +150,9 @@
 		
 		'views/treatments/treatment_appointments.xml',
 		
+
+		'views/treatments/treatment_reservations.xml',
+
 		
 		
         # Learning 

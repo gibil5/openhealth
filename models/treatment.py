@@ -28,6 +28,22 @@ class Treatment(models.Model):
 
 
 
+	reservation_ids = fields.One2many(
+			'oeh.medical.appointment', 
+			'treatment', 
+
+			string = "Reserva de sala", 
+
+			domain = [
+
+						('x_target', '=', 'machine'),
+					],
+			)
+
+
+
+
+
 	# Appointments 
 
 	appointment_ids = fields.One2many(
@@ -35,7 +51,13 @@ class Treatment(models.Model):
 			'treatment', 
 
 			string = "Citas", 
+
+			domain = [
+
+						('x_target', '=', 'doctor'),
+					],
 			)
+
 
 
 	# Number of appointments
@@ -385,15 +407,18 @@ class Treatment(models.Model):
 
 
 
+
 	# Physician 
 	physician = fields.Many2one(
 			'oeh.medical.physician',
 			#string="Physician", 
 			string="Médico", 
-			required=True, 
+			#required=True, 
 			index=True
 			)
 	        #default='Fernando Chavarri',
+
+
 
 
 

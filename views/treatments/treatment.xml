@@ -275,7 +275,7 @@ Fields
 
 
 							<group>
-								<field name="physician"/>									
+								<field name="physician"		required="1"/>									
 							</group>							
 							<group>
 								<field name="start_date"/>
@@ -301,7 +301,7 @@ Fields
 							<group>
 								<!--
 								-->
-								<field name="chief_complaint"/>
+								<field name="chief_complaint"		required="1"/>
 							</group>
 
 

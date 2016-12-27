@@ -959,9 +959,11 @@ class Patient(models.Model):
 	def create(self,vals):
 
 		print 
+		print 'jx: begin'
+
 		print 'Patient - Create - Override'
 		print 
-		print vals
+		#print vals
 		print 
 	
 
@@ -979,10 +981,39 @@ class Patient(models.Model):
 
 
 
+		# Pre
+		#name = vals['name']
+		#print 'name: ', name 
 
 
 		# Return 
 		res = super(Patient, self).create(vals)
+
+
+
+
+		# Pos 
+		name = vals['name']
+		print 'name: ', name 
+
+		#patient_id = vals['id']
+
+
+		patient_id = self.env['oeh.medical.patient'].search([
+																('name', '=', name), 
+														 	]).id 
+		print 'patient_id: ', patient_id
+
+
+
+
+		treatment = self.env['openextension.treatment'].create({ 
+																'patient': patient_id, 
+																})
+
+
+		print 'jx: end '
+		print 
 
 		return res
 

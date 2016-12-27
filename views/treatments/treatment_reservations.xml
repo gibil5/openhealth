@@ -4,31 +4,35 @@
 
 
 		<!--
-		Procedure - Appointments
+		Treatmentt - reservations
 		-->
-		<record model="ir.ui.view" id="procedure_appointment_form_view">
-			<field name="name">procedure.appointment.form</field>
-			<field name="model">openhealth.procedure</field>
+		<record model="ir.ui.view" id="treatment_reservation_form_view">
+			<field name="name">treatment.reservation.form</field>
+			<field name="model">openextension.treatment</field>
 
 			
 			<!--
-			<field name="priority" eval="3"/>
+			<field name="priority" eval="6"/>
 			-->
 			<field name="priority" eval="0"/>
 			
 
-			<field name="inherit_id" ref="procedure_form_view"/>
-			<field name="arch" type="xml">				
+			<field name="inherit_id" ref="treatment_form_view"/>
+			<field name="arch" type="xml">
+
+				
 				<notebook position="inside">
 					
-					<page string="Citas">
-						
+					<page string="Reserva de salas">
 
 						<!--
-						<field name="appointment_ids"/>
+						<field name="reservation_ids"/>
 						-->
-						<field name="appointment_ids">
-							<tree string="">	
+
+						<field name="reservation_ids">
+
+							<tree string=""		default_order="appointment_date">	
+
 								
 								<field name="name"		invisible="1"/>
 								<field name="patient"	invisible="1"/>
@@ -51,7 +55,10 @@
 								<field name="x_date"/>
 								<field name="x_time"/>
 							</tree>
-						</field>			
+
+						</field>				
+
+
 
 					</page>
 				</notebook>

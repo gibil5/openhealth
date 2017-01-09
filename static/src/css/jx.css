@@ -1,23 +1,46 @@
 
+
+
+
+
+
+
+.jx_title{
+	/*
+	color:green;
+	text-transform: capitalize;
+	text-transform: lowercase;
+	color:red;
+	*/
+	color:blue;
+	text-transform: uppercase;
+}
+
+
+.jx_subtitle{
+	color:red;
+	color:blue;
+	color:green;
+}
+
+
+
+
+
+/* Radio buttons */
 /*
 input[type="radio"]:checked{
     visibility:hidden;
 }
-
 input[type="radio"][value="none"]:checked{
     visibility:hidden;
 }
 
 */
 
-
-
 input[type="radio"][value="none"]{
     visibility:hidden;
 }
-
-
-
 
 .jx_radio {
 /*

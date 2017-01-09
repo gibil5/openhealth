@@ -75,18 +75,22 @@
 
 							<!-- Persona --> 
 							<div class="oe_left"  style="width: 300px;">
+
+
 								<div class="oe_title" >
-									<h1>Procedimiento</h1>									
+									<h1 class="jx_title">Procedimiento</h1>									
 								</div>								
+
+
+								<group></group>
+								<h2>
+									<field name="patient"/>
+								</h2>
 								
 								<group></group>
 								<h2><field name="laser"/></h2>
 
 
-								<group></group>
-								<h1>
-									<field name="patient"/>
-								</h1>
 							</div>
 
 

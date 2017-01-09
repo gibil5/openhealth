@@ -126,9 +126,9 @@
 				<xpath expr="//field[@name='patient_status']" position="replace">
 					<!--
 					<field name="patient_status"	/>
-					<field name="appointment_end"	/>
 					-->
 
+					<field name="appointment_end"	/>
 				</xpath>
 
 

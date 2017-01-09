@@ -78,8 +78,8 @@ class Control(models.Model):
 			string="Observación",
 			size=200,
 
-			#required=True,
-			required=False,
+			#required=False,
+			required=True,
 			)
 
 

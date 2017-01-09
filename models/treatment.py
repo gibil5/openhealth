@@ -36,7 +36,11 @@ class Treatment(models.Model):
 
 			domain = [
 
-						('x_target', '=', 'machine'),
+						('x_target', '!=', 'false'),
+						('x_target', '!=', 'doctor'),
+
+						#('x_target', 'in', 'doctor'),
+						#('treatment', 'like', 'TR000073'),
 					],
 			)
 
@@ -53,7 +57,6 @@ class Treatment(models.Model):
 			string = "Citas", 
 
 			domain = [
-
 						('x_target', '=', 'doctor'),
 					],
 			)
@@ -671,7 +674,9 @@ class Treatment(models.Model):
 		patient_id = self.patient.id
 		doctor_id = self.physician.id
 		treatment_id = self.id 
-		#chief_complaint = self.chief_complaint
+
+		chief_complaint = self.chief_complaint
+
 
 
 		# Date 
@@ -711,8 +716,10 @@ class Treatment(models.Model):
 													'patient': patient_id,
 													'doctor': doctor_id,
 													'treatment': treatment_id,				
-													#'chief_complaint': chief_complaint,
 													'evaluation_start_date': evaluation_start_date,
+
+													'chief_complaint': chief_complaint,
+
 
 													'appointment': appointment_id,
 
@@ -787,8 +794,10 @@ class Treatment(models.Model):
 				'default_patient': patient_id,
 				'default_doctor': doctor_id,
 				'default_treatment': treatment_id,				
-				#'default_chief_complaint': chief_complaint,
 				'default_evaluation_start_date': evaluation_start_date,
+
+				'default_chief_complaint': chief_complaint,
+
 
 				'default_appointment': appointment_id,
 

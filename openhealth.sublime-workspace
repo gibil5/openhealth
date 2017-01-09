@@ -24,7 +24,7 @@
 			"file": "__openerp__.py",
 			"settings":
 			{
-				"buffer_size": 5311,
+				"buffer_size": 5338,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -537,7 +537,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -566,7 +566,7 @@
 						"translation.y": 15596.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -575,15 +575,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5311,
+						"buffer_size": 5338,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2941,
-								2941
+								493,
+								493
 							]
 						],
 						"settings":
@@ -591,10 +591,10 @@
 							"syntax": "Packages/Python/Python.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 2243.0,
+						"translation.y": 165.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{

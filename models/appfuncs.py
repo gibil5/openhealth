@@ -26,7 +26,12 @@ def check_for_collisions(self, appointment_date, doctor_name, duration, x_machin
 
 		# Search for the rec set
 		if x_machine == False:
-			app_ids = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', dt),  ('doctor', '=', doctor_name)  ])
+			#app_ids = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', dt),  ('doctor', '=', doctor_name)  ])
+			app_ids = self.env['oeh.medical.appointment'].search([
+																	('appointment_date', 'like', dt),  
+																	('doctor', '=', doctor_name), 
+																	('x_machine', '=', x_machine),
+																])
 		else:
 			app_ids = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', dt),  ('x_machine', '=', x_machine)  ])
 

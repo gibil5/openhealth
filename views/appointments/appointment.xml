@@ -330,7 +330,9 @@
 					<field name="doctor"/>
 					<field name="x_type"/>
 
+
 					<field name="x_machine"/>
+
 
 					<field name="treatment"/>
 					<field name="consultation"/>
@@ -379,26 +381,20 @@
 
 
 		<!-- Window action -->
+		<!-- Admin menu --> 
 		<record model="ir.actions.act_window" id="oeh_medical_preappointment_list_action">
-			<field name="name">Citas</field>
+			<field name="name">Citas x</field>
 			<field name="res_model">oeh.medical.appointment</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
-
-			<!--
-			<field name="context">{
-									'default_x_tree': True,
-									'x_tree': True,
-                    			}
-			</field>
-			-->
 		</record>
 
-		<!-- Menu -->
 		<menuitem id="oeh_medical_preappointment_menu" 
-			name="Citas"
+			name="Citas x"
 			parent="openhealth_menu"
 			action="oeh_medical_preappointment_list_action"/>
+
+
 
 
 
@@ -435,7 +431,7 @@
 					action="oeh_medical_appointment_action_tree_2" 
 					parent="oehealth.oeh_medical_appointment_menu"  
 					id="oeh_medical_appointment_list_2" 
-					sequence="2"
+					sequence="4"
 		/>
 
 
@@ -483,16 +479,8 @@
 					action="oeh_medical_appointment_action_tree_1" 
 					parent="oehealth.oeh_medical_appointment_menu"  
 					id="oeh_medical_appointment_list_1" 
-					sequence="3"
+					sequence="2"
 		/>
-
-
-
-
-
-
-
-
 
 
 
@@ -545,7 +533,7 @@
 					action="oeh_medical_appointment_action_tree_3" 
 					parent="oehealth.oeh_medical_appointment_menu"  
 					id="oeh_medical_appointment_list_3"
-					sequence="4"
+					sequence="3"
 		/>
 
 

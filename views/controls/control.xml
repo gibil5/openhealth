@@ -166,9 +166,13 @@
 					
 					<field name="name"/>
 					
+					<field name="treatment"/>
+
+
 					<field name="patient"  string="Paciente"/>
 					
 					<field name="doctor"   string="Médico"/>
+
 
 					<field name="chief_complaint"/>
 					

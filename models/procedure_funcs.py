@@ -35,7 +35,10 @@ def create_controls_go(self):
 
 	procedure_id = self.id
 
+
 	treatment_id = self.treatment.id
+
+
 	product_id = self.product.id
 	chief_complaint = self.chief_complaint
 
@@ -111,6 +114,7 @@ def create_controls_go(self):
 		appointment_date_str = check_and_push(self, appointment_date_str, duration, x_type, doctor_name)
 
 
+
 		appointment = create_appointment_control(self, appointment_date_str, duration, x_type, state, chief_complaint, patient_id, doctor_id, treatment_id)
 
 
@@ -119,6 +123,8 @@ def create_controls_go(self):
 
 
 		appointment_id = appointment.id
+
+
 
 		# Create Control 
 		control = self.control_ids.create({
@@ -132,8 +138,13 @@ def create_controls_go(self):
 
 											'evaluation_start_date':control_date,
 
+
 											'appointment': appointment_id,
+
+
+											'treatment': treatment_id,
 									})
+
 
 
 		control_id = control.id
@@ -239,6 +250,7 @@ def	check_max_number(self, appointment_date, x_type, doctor_name):
 
 
 
+
 #------------------------------------------------ Check Push and Create ---------------------------------------------------
 @api.multi
 def check_and_push(self, appointment_date, duration, x_type, doctor_name):
@@ -316,20 +328,26 @@ def create_appointment_control(self, appointment_date, duration, x_type, state, 
 
 																'duration': duration,
 															
-
 																'x_type': x_type,
 
 																'state': state,
 
-
 																'patient': patient_id,	
+																
 																'doctor': doctor_id,
-																'treatment': treatment_id, 
 
 																'x_chief_complaint': chief_complaint, 
 
 																'x_create_procedure_automatic': x_create_procedure_automatic,
+
+
+
+																'treatment': treatment_id, 
+
+																'x_target': 'doctor',
 															})
+
+
 
 
 	return appointment

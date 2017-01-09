@@ -12,9 +12,9 @@
 
 			
 			<!--
-			<field name="priority" eval="3"/>
-			-->
 			<field name="priority" eval="0"/>
+			-->
+			<field name="priority" eval="3"/>
 			
 
 			<field name="inherit_id" ref="procedure_form_view"/>

@@ -228,7 +228,7 @@ class Appointment(models.Model):
 
 			#default=3025, 		# Revilla 
 			#default=3052, 		# Suarez Vertiz
-			#default = defaults._patient 
+			default = defaults._patient 
 
 			#required=True, 
 		)
@@ -267,19 +267,27 @@ class Appointment(models.Model):
 	# Hash 
 
 	_hash_doctor_code = {
-							'Dra. Acosta':		'Dra. A',
+							#'Dra. Acosta':		'Dra. A',
+							'Dra. Acosta':		'AC',
 
-							'Dr. Canales':		'Dr. Ca',
+							#'Dr. Canales':		'Dr. Ca',
+							'Dr. Canales':		'CA',
 
-							'Dr. Chavarri':		'Dr. Ch',
+							#'Dr. Chavarri':	'Dr. Ch',
+							'Dr. Chavarri':		'CH',
 
-							'Dr. Gonzales':		'Dr. Go',
+							#'Dr. Gonzales':	'Dr. Go',
+							'Dr. Gonzales':		'GO',
 
-							'Dr. Escudero':		'Dr. Es',
+							#'Dr. Escudero':	'Dr. Es',
+							'Dr. Escudero':		'ES',
 
-							'Dr. Vasquez':		'Dr. Va',
+							#'Dr. Vasquez':		'Dr. Va',
+							'Dr. Vasquez':		'VA',
 
-							'Dr. Alarcon':		'Dr. Al',
+							#'Dr. Alarcon':		'Dr. Al',
+							'Dr. Alarcon':		'AL',
+
 
 
 							'laser_co2_1':		'Co2_1',
@@ -302,7 +310,7 @@ class Appointment(models.Model):
 			'oeh.medical.physician',
 			
 			#default=1, 				# Chavarri
-			#default=defaults._doctor,
+			default=defaults._doctor,
 
 			#string = "Médico", 	
 
@@ -363,6 +371,7 @@ class Appointment(models.Model):
 			self.x_error = 0
 
 
+			# Check for collisions 
 			ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor, self.duration, self.x_machine)
 
 
@@ -374,11 +383,7 @@ class Appointment(models.Model):
 				return {
 							'warning': {
 									'title': "Error: Colisión !",
-									'message': 									#'Sala ' + self.x_machine + 
-																				'La sala ya está reservada: ' + 
-																				#self.x_machine + 
-																				#": " + start + ' - ' + end + '.',
-																				start + ' - ' + end + '.',
+									'message': 'La sala ya está reservada: ' + start + ' - ' + end + '.',
 						}}
 
 
@@ -412,7 +417,9 @@ class Appointment(models.Model):
 
 
 
-	# On change - Doctor
+
+
+# ----------------------------------------------------------- On change - Doctor  ------------------------------------------------------
 
 	@api.onchange('doctor', 'x_type')
 
@@ -1068,6 +1075,7 @@ class Appointment(models.Model):
 
 		treatment = vals['treatment']
 		
+
 		x_create_procedure_automatic = vals['x_create_procedure_automatic']
 		#x_chief_complaint = vals['x_chief_complaint']
 
@@ -1085,15 +1093,12 @@ class Appointment(models.Model):
 
 
 
+
 		# Create Procedure 
-		#if x_type == 'consultation':
 		if x_type == 'consultation'  and  x_create_procedure_automatic:
-			#print 
-			#print 'Create Appointment for procedure !'
 
-			#app = self.create_app_procedure(appointment_date, doctor, patient, treatment, x_chief_complaint, x_create_procedure_automatic)
-
-			app = self.create_app_procedure(appointment_date, doctor, patient, treatment, x_create_procedure_automatic)
+			#app = self.create_app_procedure(appointment_date, doctor, patient, treatment, x_create_procedure_automatic)
+			app = self.create_app_procedure(appointment_date, doctor, patient, treatment, x_create_procedure_automatic, False)
 			
 			#print app 
 
@@ -1108,12 +1113,14 @@ class Appointment(models.Model):
 
 
 
+
+
 # ----------------------------------------------------------- Create procedure  ------------------------------------------------------
 
-	# Create app 
 	@api.multi
-	#def create_app_procedure(self, appointment_date, doctor_id, patient_id, treatment_id,  x_chief_complaint, x_create_procedure_automatic):
-	def create_app_procedure(self, appointment_date, doctor_id, patient_id, treatment_id,  x_create_procedure_automatic):
+
+	#def create_app_procedure(self, appointment_date, doctor_id, patient_id, treatment_id,  x_create_procedure_automatic):
+	def create_app_procedure(self, appointment_date, doctor_id, patient_id, treatment_id, x_create_procedure_automatic, flag_machine):
 
 		date_format = "%Y-%m-%d %H:%M:%S"
 
@@ -1143,10 +1150,7 @@ class Appointment(models.Model):
 		doctor = self.env['oeh.medical.physician'].search([('id', '=', doctor_id)])
 		doctor_name = doctor.name
 
-
-
 		duration = 0.5 
-
 
 		ret = 1
 
@@ -1176,32 +1180,70 @@ class Appointment(models.Model):
 
 			if ret == 0: 	# Success ! - No Collisions
 			
-
 				print 'CRUD: Create !!!'
 
-				app = self.env['oeh.medical.appointment'].create(
-															{
-															'appointment_date': ad_pro_str,
-															
-															'duration': duration,
-															
 
-															'x_type':'procedure',
-															
-															#'state':'Pre-scheduled',
-															'state':'pre_scheduled',
 
-															'patient': patient_id,	
-															'doctor': doctor_id,
+				# Create machine 
+				x_machine = 'jx'
 
-															'treatment': treatment_id, 
+				if flag_machine:
+					x_machine = appfuncs.search_machine(self, ad_pro_str, doctor_name, duration)
 
-															'x_create_procedure_automatic': x_create_procedure_automatic,
 
-															#'x_chief_complaint': x_chief_complaint, 
+
+				if x_machine != False:
+
+					if flag_machine:
+						# Create Appointment - Machine 
+						app = self.env['oeh.medical.appointment'].create(
+																	{
+																		'appointment_date': ad_pro_str,
+
+																		'doctor': 		doctor_id,
+																		'patient': 		patient_id,	
+																		'treatment': 	treatment_id, 
+
+																		'duration': 	duration,
+																		'x_type': 		'procedure',
+																		'x_create_procedure_automatic': False, 
+
+																		'x_machine': 	x_machine,
+							                    						'x_target': 	'machine',
+																	}
+																)
+
+
+
+					# Create Appointment - Doctor  
+					app = self.env['oeh.medical.appointment'].create(
+																	{
+																		'appointment_date': ad_pro_str,
+
+																		'doctor': 		doctor_id,
+																		'patient': 		patient_id,	
+																		'treatment': 	treatment_id, 
+
+																		'duration': 	duration,
+																		'x_type':		'procedure',
+																		'x_create_procedure_automatic': x_create_procedure_automatic,
+
+																		'state':		'pre_scheduled',
+
+							                    						'x_target': 	'doctor',
+
+																		#'x_chief_complaint': x_chief_complaint, 
 
 															}
 													)
+
+
+				else:
+					k = k + 1 	# Collision
+					ret = 1
+
+
+			
 			else:			# Collision 
 				k = k + 1
 

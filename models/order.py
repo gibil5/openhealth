@@ -8,6 +8,7 @@
 from openerp import models, fields, api
 
 import jxvars
+import appfuncs
 
 
 
@@ -479,9 +480,50 @@ class sale_order(models.Model):
 
 
 
+# ----------------------------------------------------------- Button - Update Lines ------------------------------------------------------
+
+	# Update Lines 
+	@api.multi 
+	def update_order_lines_app(self):
+
+
+		for line in self.order_line:
+
+			product_id = line.product_id
+
+
+			# If Service 
+			if product_id.type == 'service':
+
+				appointment = self.env['oeh.medical.appointment'].search([ 	
+															('doctor', 'like', self.x_doctor.name), 	
+															('patient', 'like', self.patient.name),		
+															('x_type', 'like', 'procedure'), 
+
+															#('state', 'like', 'pre_scheduled'), 
+														], 
+														order='appointment_date desc', limit=1)
+
+				appointment_id = appointment.id
+				#print appointment  
+				#print appointment_id  
+
+
+
+				# Self 
+				line.x_appointment_date = appointment.appointment_date
+				line.x_doctor_name = appointment.doctor.name
+				line.x_duration = appointment.duration 
+
+				line.x_machine = appointment.x_machine
+
+
+
+
 
 # ----------------------------------------------------------- CRUD ------------------------------------------------------
 
+# Create 
 	@api.model
 	def create(self,vals):
 
@@ -501,79 +543,180 @@ class sale_order(models.Model):
 
 
 
+# Write 
 	@api.multi
 	def write(self,vals):
 
 		print 
 		print 'Order - Write - Override'
-		print 
-		print vals
+		#print 
+		#print vals
+		#print 
+		#print 
 
 
 
+		ret = 0 
 
 
-		print 
-		print 
 
-
-		#Write your logic here
-		res = super(sale_order, self).write(vals)
-
-		#Write your logic here
+		# My logic
 		if 'state' in vals:
 			state = vals['state']
-			print state
-			print 'state: ', self.state
-			print 'patient: ', self.patient.name
-			print 'doctor: ', self.x_doctor.name
-
-			print 'order_line: ', self.order_line
-
-
-			for line in self.order_line:
-				product_id = line.product_id
-
-				if product_id.type == 'service':
-					print product_id.type
-					print product_id.name
+			#print state
+			#print 'state: ', self.state
+			#print 'patient: ', self.patient.name
+			#print 'doctor: ', self.x_doctor.name
+			#print 'order_line: ', self.order_line
 
 
-					appointment = self.env['oeh.medical.appointment'].search([ 	
-														
-															('patient', 'like', self.patient.name),		
-															
+			#if state == 'draft':
+			if state == 'sale':
+			
+				for line in self.order_line:
+					product_id = line.product_id
+
+
+					# If Service 
+					if product_id.type == 'service':
+						#print product_id.type
+						#print product_id.name
+
+
+						appointment = self.env['oeh.medical.appointment'].search([ 	
 															('doctor', 'like', self.x_doctor.name), 	
-															
+															('patient', 'like', self.patient.name),		
 															('x_type', 'like', 'procedure'), 
 
-															('state', 'like', 'pre_scheduled'), 
-
-														
+															#('state', 'like', 'pre_scheduled'), 
 														], 
-															order='appointment_date desc', limit=1)
+														order='appointment_date desc', limit=1)
+
+						appointment_id = appointment.id
+
+						print appointment  
+						print appointment_id  
 
 
-					appointment_id = appointment.id
 
-					print appointment  
-					print appointment_id  
-
-
-					rec_set = self.env['oeh.medical.appointment'].browse([appointment_id])
-
-					ret = rec_set.write({
-											'state': 'Scheduled',
-										})
+						# Self 
+						self.x_appointment_date = appointment.appointment_date
+						self.x_doctor_name = appointment.doctor.name
+						self.x_duration = appointment.duration 
 
 
-					print ret 
 
-					
+						# Create Machine
+						appointment_date = appointment.appointment_date
+						doctor_name = self.x_doctor.name
+						doctor_id = self.x_doctor.id
+						patient_id = self.patient.id
+						treatment_id = self.treatment.id
+
+						duration = 0.5
+
+
+						x_machine = appfuncs.search_machine(self, appointment_date, doctor_name, duration)
+	
+
+
+
+						if x_machine != False:
+
+
+							self.x_machine = x_machine 
+
+
+							# Create Appointment - Machine 
+							app = self.env['oeh.medical.appointment'].create(
+																	{
+																		'appointment_date': appointment_date,
+
+																		'doctor': 		doctor_id,
+																		'patient': 		patient_id,	
+																		'treatment': 	treatment_id, 
+
+																		'duration': 	duration,
+																		'x_type': 		'procedure',
+																		'x_create_procedure_automatic': False, 
+
+																		'x_machine': 	x_machine,
+							                    						'x_target': 	'machine',
+																	}
+																)
+						else:
+						
+							ret = -1
+							#return {	'warning': 	{'title': "Error: Colisión !",
+							#			'message': 	'La sala ya está reservada.',   
+										#' + start + ' - ' + end + '.',
+							#			}}
+	
+
+
+
+
+						# Write 
+						#rec_set = self.env['oeh.medical.appointment'].browse([appointment_id])
+						#ret = rec_set.write({
+						#						'state': 'Scheduled',
+						#					})
+						#print ret 
+
+				
+
+
+
+
+		#ret = treatment_funcs.create_procedure_go(self)
+
+
+
+
+
+		#Write your logic here
+		res = False
+
+		if ret != -1:
+			res = super(sale_order, self).write(vals)
+
+		#Write your logic here
+
 		print 
 		print 
 
 		return res
+
+
+
+
+# ----------------------------------------------------------- Buttons - Order  ------------------------------------------------------
+
+	@api.multi
+	def remove_myself(self):  
+
+		print 
+		print 'Remove Order'
+
+		order_id = self.id
+		print "id: ", order_id
+		
+
+		# Search 
+		rec_set = self.env['sale.order'].browse([order_id])
+		print "rec_set: ", rec_set
+
+
+		# Write
+		ret = rec_set.write({
+								'state': 'draft',
+							})
+
+		
+		# Unlink 
+		ret = rec_set.unlink()
+		print "ret: ", ret
+		print 
 
 
 #sale_order()

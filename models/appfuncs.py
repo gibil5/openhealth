@@ -6,6 +6,54 @@ import datetime
 
 
 
+# ----------------------------------------------------------- Machines  ------------------------------------------------------
+
+@api.multi
+
+def search_machine(self, appointment_date, doctor_name, duration):
+
+	m_list = ['laser_co2_1', 'laser_co2_2', 'laser_co2_3']
+	
+	idx = 0 
+	
+	x_machine = m_list[idx]
+
+
+	ret = 1 
+
+
+
+	while not ret == 0:
+
+		#ret, doctor_name, start, end = appfuncs.check_for_collisions(self, appointment_date, doctor, duration, x_machine)
+		ret, doctor_name, start, end = check_for_collisions(self, appointment_date, doctor_name, duration, x_machine)
+
+
+
+		if ret != 0:	# Error 
+
+			idx = idx + 1
+
+			if idx == 3:
+				#idx = 0
+				return False
+
+			x_machine = m_list[idx]
+
+
+
+
+			#return {'warning': {'title': "Error: Colisión !",'message': 'La sala ya está reservada: ' + start + ' - ' + end + '.',}}
+
+
+		else: 			# Success 
+
+			print 'Success !'
+
+			return x_machine
+
+
+
 # ----------------------------------------------------------- Collisions  ------------------------------------------------------
 
 @api.multi
@@ -28,12 +76,19 @@ def check_for_collisions(self, appointment_date, doctor_name, duration, x_machin
 		if x_machine == False:
 			#app_ids = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', dt),  ('doctor', '=', doctor_name)  ])
 			app_ids = self.env['oeh.medical.appointment'].search([
-																	('appointment_date', 'like', dt),  
 																	('doctor', '=', doctor_name), 
+
+																	('appointment_date', 'like', dt), 
+
 																	('x_machine', '=', x_machine),
 																])
 		else:
-			app_ids = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', dt),  ('x_machine', '=', x_machine)  ])
+			app_ids = self.env['oeh.medical.appointment'].search([
+																	('appointment_date', 'like', dt), 
+
+																	('x_machine', '=', x_machine)  
+																])
+
 
 		print app_ids 
 
@@ -65,7 +120,7 @@ def check_for_collisions(self, appointment_date, doctor_name, duration, x_machin
 
 		for app in app_ids:
 
-			#print app
+			print app
 
 			start = app.appointment_date
 

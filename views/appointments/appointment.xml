@@ -126,9 +126,8 @@
 				<xpath expr="//field[@name='patient_status']" position="replace">
 					<!--
 					<field name="patient_status"	/>
-					-->
-
 					<field name="appointment_end"	/>
+					-->
 				</xpath>
 
 
@@ -317,7 +316,6 @@
 					<field name="appointment_end"/>
 					<field name="evaluation_ids"/>
 
-					<field name="x_target"/>
 
 					<field name="x_tree"/>
 					-->
@@ -332,6 +330,7 @@
 
 
 					<field name="x_machine"/>
+					<field name="x_target"/>
 
 
 					<field name="treatment"/>

@@ -240,3 +240,103 @@ class Order(models.Model):
 	#	)
 
 
+
+
+
+
+# 10 Jan 2017
+# Create Machine
+
+		m_list = ['laser_co2_1', 'laser_co2_2', 'laser_co2_3']
+		idx = 0 
+
+		x_machine = m_list[idx]
+
+
+		appointment_date = app.appointment_date 
+		doctor = app.doctor
+		duration = app.duration
+
+		ret = 1 
+
+		#if True: 
+		if appointment_date != False: 
+
+			while not ret == 0:
+	
+
+				print 'jx'
+				print 'Create Machine'
+				print self.patient
+				print self.x_doctor
+				print 
+
+				app = self.env['oeh.medical.appointment'].search([ 	
+															('patient', 'like', self.patient.name),		
+															('doctor', 'like', self.x_doctor.name), 	
+															('x_type', 'like', 'procedure'), 
+															#('state', 'like', 'pre_scheduled'), 
+														], 
+															order='appointment_date desc', limit=1)
+
+
+				print app
+
+				#x_machine = 'laser_co2_1'
+				#duration = 0.5
+				#doctor = self.x_doctor
+				#appointment_date = 
+
+
+				# Check for collisions 
+				#ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor, self.duration, self.x_machine)
+				#ret, doctor_name, start, end = appfuncs.check_for_collisions(self, app.appointment_date, app.doctor, app.duration, x_machine)
+				ret, doctor_name, start, end = appfuncs.check_for_collisions(self, appointment_date, doctor, duration, x_machine)
+
+			
+				if ret != 0:	# Error 
+
+					#x_machine = False
+
+					x_machine = m_list[idx]
+
+					idx = idx + 1
+					if idx == 3:
+						idx = 0
+
+
+
+
+					return {
+							'warning': {
+									'title': "Error: Colisión !",
+									'message': 'La sala ya está reservada: ' + start + ' - ' + end + '.',
+						}}
+
+
+
+
+				else: 			# Success 
+
+					print 'Success !'
+
+					app = self.env['oeh.medical.appointment'].create(
+																	{
+																		'appointment_date': app.appointment_date,
+
+																		'doctor': app.doctor.id,			
+																		'patient': app.patient.id,	
+																		'treatment': app.treatment.id,	
+
+																		'duration': app.duration,
+																		'x_type': 'procedure',
+																		'x_create_procedure_automatic': False, 
+
+																		'x_machine': x_machine,
+																	}
+																)
+					print app
+					print 
+					print 
+
+

@@ -56,7 +56,9 @@
 				
 				<tree string="Order Line Tree">
 				
+
                     <field name="product_id"/>
+				
 					<field name="name"/>
 
 					<!--

@@ -6,6 +6,161 @@ import datetime
 
 
 
+
+
+
+
+
+# ----------------------------------------------------------- Create Procedure  ------------------------------------------------------
+
+@api.multi
+
+def create_app_procedure(self, appointment_date, doctor_id, patient_id, treatment_id, x_create_procedure_automatic, flag_machine):
+
+
+		print 
+		print 'create app procedure'
+
+
+		# Consultation 
+		date_format = "%Y-%m-%d %H:%M:%S"
+		adate_con = datetime.datetime.strptime(appointment_date, date_format)
+
+		# Deltas
+		delta_fix = datetime.timedelta(hours=1.5)
+		delta_var = datetime.timedelta(hours=0.25)
+
+		# Doctor 
+		doctor = self.env['oeh.medical.physician'].search([('id', '=', doctor_id)])
+		doctor_name = doctor.name
+
+		k = 0
+		duration = 0.5 
+		ret = 1
+
+
+
+		# Log
+		#print appointment_date
+		#print doctor_id
+		#print patient_id
+		#print adate_con
+
+
+
+
+		# Loop 
+		while not ret == 0:
+
+
+			# Procedure 
+			adate_pro = adate_con + delta_fix + k*delta_var
+
+			adate_pro_str = adate_pro.strftime("%Y-%m-%d %H:%M:%S")
+
+
+
+			# Check for collisions 
+			ret, doctor_name, start, end = check_for_collisions(self, adate_pro_str, doctor_name, duration, False)
+
+
+
+			if ret == 0: 	# Success - No Collisions
+			
+				print 'CRUD: Create !!!'
+
+
+
+				# Create machine 
+				x_machine = 'jx'
+
+				if flag_machine:
+					x_machine = search_machine(self, adate_pro_str, doctor_name, duration)
+
+
+
+				if x_machine != False:
+
+					if flag_machine:
+						# Create Appointment - Machine 
+						app = self.env['oeh.medical.appointment'].create(
+																	{
+																		'appointment_date': adate_pro_str,
+
+																		'doctor': 		doctor_id,
+																		'patient': 		patient_id,	
+																		'treatment': 	treatment_id, 
+
+																		'duration': 	duration,
+																		'x_type': 		'procedure',
+																		'x_create_procedure_automatic': False, 
+
+																		'x_machine': 	x_machine,
+							                    						'x_target': 	'machine',
+																	}
+																)
+
+
+
+					# Create Appointment - Doctor  
+					app = self.env['oeh.medical.appointment'].create(
+																	{
+																		'appointment_date': adate_pro_str,
+
+																		'doctor': 		doctor_id,
+																		'patient': 		patient_id,	
+																		'treatment': 	treatment_id, 
+
+																		'duration': 	duration,
+																		'x_type':		'procedure',
+																		'x_create_procedure_automatic': x_create_procedure_automatic,
+
+																		'state':		'pre_scheduled',
+
+							                    						'x_target': 	'doctor',
+
+																		#'x_chief_complaint': x_chief_complaint, 
+
+															}
+													)
+
+
+				else:
+					k = k + 1 	# Collision
+					ret = 1
+
+
+			
+			else:			# Collision 
+				k = k + 1
+
+
+		
+			#if ret != 0:
+			
+			#			return {
+			#						'warning': {
+			#							'title': "Error: Colisión !",
+			#							'message': 'Cita ya existente, con el ' + doctor_name + ": " + start + ' - ' + end + '.',
+			#					}}
+
+
+		print 
+		print 'k'
+		print k
+		print 
+
+		return app 
+
+# create_app_procedure
+
+
+
+
+
+
+
+
 # ----------------------------------------------------------- Machines  ------------------------------------------------------
 
 @api.multi
@@ -51,6 +206,8 @@ def search_machine(self, appointment_date, doctor_name, duration):
 			print 'Success !'
 
 			return x_machine
+
+
 
 
 

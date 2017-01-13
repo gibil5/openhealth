@@ -33,12 +33,14 @@ class sale_order(models.Model):
 
 
 
+
 	# Machine 
 	x_machine = fields.Selection(
 			#string="Máquina", 
 			string="Sala", 
 			selection = jxvars._machines_list, 
 			
+			compute='_compute_x_machine', 
 			#required=True, 
 		)
 
@@ -49,15 +51,16 @@ class sale_order(models.Model):
 			'oeh.medical.physician',
 			string = "Médico", 	
 			
+			compute='_compute_x_doctor', 
 			#required=True, 
 			)
-
 
 
 	x_appointment_date = fields.Datetime(
 			string="Fecha", 
 			#readonly=True,
 
+			compute='_compute_x_appointment_date', 
 			#required=True, 
 			)
 
@@ -66,8 +69,47 @@ class sale_order(models.Model):
 			string="Duración (h)", 
 			#readonly=True, 
 
+			compute='_compute_x_duration', 
 			#required=True, 		
 			)
+
+
+
+
+	#@api.multi
+	@api.depends('x_appointment')
+
+	def _compute_x_doctor(self):
+		for record in self:
+			record.x_doctor = record.x_appointment.doctor
+
+
+	#@api.multi
+	@api.depends('x_appointment')
+
+	def _compute_x_appointment_date(self):
+		for record in self:
+			record.x_appointment_date = record.x_appointment.appointment_date
+
+
+
+	#@api.multi
+	@api.depends('x_appointment')
+
+	def _compute_x_duration(self):
+		for record in self:
+			record.x_duration = record.x_appointment.duration
+
+
+
+	#@api.multi
+	@api.depends('x_appointment')
+
+	def _compute_x_machine(self):
+		for record in self:
+			record.x_machine = record.x_appointment.x_machine
+
+
 
 
 
@@ -562,10 +604,10 @@ class sale_order(models.Model):
 
 
 				self.x_appointment = appointment
-				self.x_doctor = appointment.doctor
-				self.x_appointment_date = appointment.appointment_date
-				self.x_duration = appointment.duration
 
+				#self.x_doctor = appointment.doctor
+				#self.x_appointment_date = appointment.appointment_date
+				#self.x_duration = appointment.duration
 				#self.x_machine = appointment.x_machine 
 
 
@@ -579,7 +621,59 @@ class sale_order(models.Model):
 	@api.multi 
 	def reserve_machine(self):
 
-		self.x_machine = 'laser_co2_1'
+		print 'jx'
+		print 'Reserve Machine'
+
+		#self.x_machine = 'laser_co2_1'
+
+
+		
+		# Create Machine
+		appointment_date = 	self.x_appointment_date
+
+		doctor_name = 		self.x_doctor.name
+		doctor_id = 		self.x_doctor.id
+		patient_id = 		self.patient.id
+		
+		treatment_id = 		self.treatment.id
+		duration = 			self.x_duration
+
+
+		x_machine = appfuncs.search_machine(self, appointment_date, doctor_name, duration)
+		
+		#self.x_machine = x_machine 
+		self.x_appointment.x_machine = x_machine
+
+
+		if x_machine != False:
+
+
+			# Create Appointment - Machine 
+			app = self.env['oeh.medical.appointment'].create(
+															{
+																'appointment_date': appointment_date,
+																'doctor': 		doctor_id,
+																'patient': 		patient_id,	
+																'treatment': 	treatment_id, 
+
+																'duration': 	duration,
+																'x_type': 		'procedure',
+																'x_create_procedure_automatic': False, 
+
+																'x_machine': 	x_machine,
+							                    				'x_target': 	'machine',
+															}
+															)
+		else:
+			print 'Error !'	
+			print 			
+
+
+			return {	'warning': 	{'title': "Error: Colisión !",
+						'message': 	'La sala ya está reservada.',   
+			#' + start + ' - ' + end + '.',
+						}}
+	
 
 
 

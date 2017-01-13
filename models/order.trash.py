@@ -389,6 +389,8 @@ class Order(models.Model):
 
 
 
+
+
 						# Create Machine
 						appointment_date = appointment.appointment_date
 						doctor_name = self.x_doctor.name

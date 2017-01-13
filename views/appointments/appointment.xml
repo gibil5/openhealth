@@ -31,8 +31,11 @@
 								name="remove_appointment" 
 							/>
 					</div>
-
 				</xpath>
+
+
+
+
 
 
 
@@ -81,13 +84,12 @@
 
 					<field name="x_target"		invisible="1"/>
 
+					<!--
 					<field name="x_machine"		attrs="{
 														'invisible':[('x_target', '!=', 'machine'),],
-
 														'required':[('x_target', '=', 'machine'),],
 														}"/>
-
-					<field name="vspace"/>
+					-->
 
 					<field name="doctor"		required="1"/>				
 
@@ -135,8 +137,32 @@
 
 
 				<xpath expr="//field[@name='duration']" position="replace">
-					<field name="duration"/>				
+					
+					<group>
+
+						<group>
+							<field name="x_machine"/>
+							<field name="vspace"/>
+							<field name="vspace"/>
+							<field name="duration"/>	
+						</group>
+
+						<group class="">							
+							<button 
+								type="object" 
+								class="oe_highlight"
+								string="Buscar Sala" 
+								name="search_machine_button" 
+							/>
+						</group>							
+					</group>						
+
 				</xpath>
+
+
+
+
+
 
 
 

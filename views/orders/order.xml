@@ -137,10 +137,10 @@
 
 
 					<field name="vspace"/>
-					<field name="x_doctor"/>
-
 					<field name="x_appointment"/>
+					<field name="vspace"/>
 
+					<field name="x_doctor"/>
 					<field name="x_appointment_date"/>
 					<field name="x_duration"/>
 					<field name="x_machine"/>

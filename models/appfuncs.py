@@ -15,20 +15,25 @@ import datetime
 
 @api.multi
 
-def create_app_procedure(self, appointment_date, doctor_id, patient_id, treatment_id, x_create_procedure_automatic, flag_machine):
+#def create_app_procedure(self, appointment_date, doctor_id, patient_id, treatment_id, x_create_procedure_automatic, flag_machine):
+def create_app_procedure(self, adate_base, doctor_id, patient_id, treatment_id, x_create_procedure_automatic, flag_machine):
 
 
 		print 
 		print 'create app procedure'
 
 
-		# Consultation 
-		date_format = "%Y-%m-%d %H:%M:%S"
-		adate_con = datetime.datetime.strptime(appointment_date, date_format)
 
-		# Deltas
-		delta_fix = datetime.timedelta(hours=1.5)
-		delta_var = datetime.timedelta(hours=0.25)
+
+		# Consultation 
+		#date_format = "%Y-%m-%d %H:%M:%S"
+		#adate_con = datetime.datetime.strptime(appointment_date, date_format)
+		#delta_fix = datetime.timedelta(hours=1.5)
+		#adate_base = adate_con + delta_fix
+
+
+
+
 
 		# Doctor 
 		doctor = self.env['oeh.medical.physician'].search([('id', '=', doctor_id)])
@@ -49,12 +54,18 @@ def create_app_procedure(self, appointment_date, doctor_id, patient_id, treatmen
 
 
 
+
+		# Deltas
+		delta_var = datetime.timedelta(hours=0.25)
+
 		# Loop 
 		while not ret == 0:
 
 
 			# Procedure 
-			adate_pro = adate_con + delta_fix + k*delta_var
+			#adate_pro = adate_con + delta_fix + k*delta_var
+			adate_pro = adate_base + k * delta_var
+
 
 			adate_pro_str = adate_pro.strftime("%Y-%m-%d %H:%M:%S")
 

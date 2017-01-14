@@ -1049,67 +1049,6 @@ class Appointment(models.Model):
 
 
 
-# ----------------------------------------------------------- CRUD ------------------------------------------------------
-
-	@api.model
-	def create(self,vals):
-
-		print 
-		print 'jx Create - Override'
-		print 
-		print vals
-		print 
-	
-
-		appointment_date = vals['appointment_date']
-		x_type = vals['x_type']
-
-		if 'doctor' in vals:
-			doctor = vals['doctor']
-			print "doctor: ", doctor
-		
-
-		patient = vals['patient']
-
-		treatment = vals['treatment']
-		
-
-		x_create_procedure_automatic = vals['x_create_procedure_automatic']
-		#x_chief_complaint = vals['x_chief_complaint']
-
-
-		print "appointment date: ", appointment_date
-		print "x_type: ", x_type
-		print "patient: ", patient
-		
-		print "treatment: ", treatment
-		print self.treatment
-
-		print "x_create_procedure_automatic: ", x_create_procedure_automatic 
-		#print x_chief_complaint
-		print
-
-
-
-
-		# Create Procedure 
-		if x_type == 'consultation'  and  x_create_procedure_automatic:
-
-			#app = self.create_app_procedure(appointment_date, doctor, patient, treatment, x_create_procedure_automatic)
-			#app = self.create_app_procedure(appointment_date, doctor, patient, treatment, x_create_procedure_automatic, False)
-
-			app = appfuncs.create_app_procedure(self, appointment_date, doctor, patient, treatment, x_create_procedure_automatic, False)
-			#print app 
-
-
-		# Return 
-		res = super(Appointment, self).create(vals)
-
-		return res
-
-	# create - CRUD
-
-
 
 
 
@@ -1264,6 +1203,95 @@ class Appointment(models.Model):
 
 
 
+
+
+
+# ----------------------------------------------------------- CRUD ------------------------------------------------------
+
+	@api.model
+	def create(self,vals):
+
+		print 
+		print 'jx Create - Override'
+		print 
+		print vals
+		print 
+	
+
+		appointment_date = vals['appointment_date']
+		x_type = vals['x_type']
+
+		if 'doctor' in vals:
+			doctor = vals['doctor']
+			print "doctor: ", doctor
+		
+
+		patient = vals['patient']
+
+		treatment = vals['treatment']
+		
+
+		x_create_procedure_automatic = vals['x_create_procedure_automatic']
+		#x_chief_complaint = vals['x_chief_complaint']
+
+
+		print "appointment date: ", appointment_date
+		print "x_type: ", x_type
+		print "patient: ", patient
+		
+		print "treatment: ", treatment
+		print self.treatment
+
+		print "x_create_procedure_automatic: ", x_create_procedure_automatic 
+		#print x_chief_complaint
+		print
+
+
+
+
+		# Create Procedure 
+		if x_type == 'consultation'  and  x_create_procedure_automatic:
+
+
+
+			# Consultation 
+			date_format = "%Y-%m-%d %H:%M:%S"
+			adate_con = datetime.datetime.strptime(appointment_date, date_format)
+
+			delta_fix = datetime.timedelta(hours=1.5)
+			
+			#adate_base = datetime.datetime.strptime(appointment_date, date_format) + delta_fix
+			adate_base = adate_con + delta_fix
+
+
+
+			#app = self.create_app_procedure(appointment_date, doctor, patient, treatment, x_create_procedure_automatic)
+			#app = self.create_app_procedure(appointment_date, doctor, patient, treatment, x_create_procedure_automatic, False)
+			#app = appfuncs.create_app_procedure(self, appointment_date, doctor, patient, treatment, x_create_procedure_automatic, False)
+			
+			app = appfuncs.create_app_procedure(self, adate_base, doctor, patient, treatment, x_create_procedure_automatic, False)
+			#print app 
+
+
+
+		# Return 
+		res = super(Appointment, self).create(vals)
+
+		return res
+
+	# create - CRUD
+
+
+
+# CRUD
+
+
+
+
+
+
+
+
 # ----------------------------------------------------------- Search Machine Button ------------------------------------------------------
 
 	@api.multi
@@ -1274,7 +1302,19 @@ class Appointment(models.Model):
 		#x_machine = appfuncs.search_machine(self, ad_pro_str, doctor_name, duration)
 		
 
-		appointment_date = self.appointment_date
+		#adate_base = self.appointment_date
+
+
+		date_format = "%Y-%m-%d %H:%M:%S"
+		adate_con = datetime.datetime.strptime(self.appointment_date, date_format)
+
+		delta_fix = datetime.timedelta(hours=0)
+			
+		#adate_base = datetime.datetime.strptime(appointment_date, date_format) + delta_fix
+		adate_base = adate_con + delta_fix
+
+
+
 
 		doctor_id = self.doctor.id
 		patient_id = self.patient.id
@@ -1283,7 +1323,8 @@ class Appointment(models.Model):
 
 		flag_machine = True 
 		
-		app = appfuncs.create_app_procedure(self, appointment_date, doctor_id, patient_id, treatment_id, x_create_procedure_automatic, flag_machine)
+		#app = appfuncs.create_app_procedure(self, appointment_date, doctor_id, patient_id, treatment_id, x_create_procedure_automatic, flag_machine)
+		app = appfuncs.create_app_procedure(self, adate_base, doctor_id, patient_id, treatment_id, x_create_procedure_automatic, flag_machine)
 
 		print app
 

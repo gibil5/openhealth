@@ -588,10 +588,15 @@ class sale_order(models.Model):
 			if product_id.type == 'service':
 
 
+
 				appointment = self.env['oeh.medical.appointment'].search([ 	
 															('doctor', 'like', self.x_doctor.name), 	
 															('patient', 'like', self.patient.name),		
 															('x_type', 'like', 'procedure'), 
+
+
+															('x_target', '=', 'doctor'), 
+
 
 															#('state', 'like', 'pre_scheduled'), 
 														], 
@@ -609,16 +614,16 @@ class sale_order(models.Model):
 
 
 
-				# Self 
+				# Line  
 				line.x_appointment_date = appointment.appointment_date
 				line.x_doctor_name = appointment.doctor.name
 				line.x_duration = appointment.duration 
 				
-				#line.x_machine = appointment.x_machine
+				#line.x_machine_oldachine = appointment.x_machine
 				line.x_machine = False
 
 
-
+				# Self 
 				self.x_appointment = appointment
 
 				#self.x_doctor = appointment.doctor
@@ -633,65 +638,6 @@ class sale_order(models.Model):
 	# update_order_lines_app	
 
 
-
-# ----------------------------------------------------------- Button - Update Lines ------------------------------------------------------
-
-	@api.multi 
-	def reserve_machine(self):
-
-		print 'jx'
-		print 'Reserve Machine'
-
-		#self.x_machine = 'laser_co2_1'
-
-
-		
-		# Create Machine
-		appointment_date = 	self.x_appointment_date
-
-		doctor_name = 		self.x_doctor.name
-		doctor_id = 		self.x_doctor.id
-		patient_id = 		self.patient.id
-		
-		treatment_id = 		self.treatment.id
-		duration = 			self.x_duration
-
-
-		x_machine = appfuncs.search_machine(self, appointment_date, doctor_name, duration)
-		
-		#self.x_machine = x_machine 
-		self.x_appointment.x_machine = x_machine
-
-
-		if x_machine != False:
-
-
-			# Create Appointment - Machine 
-			app = self.env['oeh.medical.appointment'].create(
-															{
-																'appointment_date': appointment_date,
-																'doctor': 		doctor_id,
-																'patient': 		patient_id,	
-																'treatment': 	treatment_id, 
-
-																'duration': 	duration,
-																'x_type': 		'procedure',
-																'x_create_procedure_automatic': False, 
-
-																'x_machine': 	x_machine,
-							                    				'x_target': 	'machine',
-															}
-															)
-		else:
-			print 'Error !'	
-			print 			
-
-
-			return {	'warning': 	{'title': "Error: Colisión !",
-						'message': 	'La sala ya está reservada.',   
-			#' + start + ' - ' + end + '.',
-						}}
-	
 
 
 
@@ -734,6 +680,7 @@ class sale_order(models.Model):
 
 
 
+
 		#if 'x_machine' in vals:
 		#	x_machine = vals['x_machine']
 		#	print x_machine
@@ -745,20 +692,53 @@ class sale_order(models.Model):
 		#							'message': 'jx',
 												#'Cita ya existente, con el ' + doctor_name + ": " + start + ' - ' + end + '.',
 		#						}}
+
+
+		ok = True 
+
+
+
+		if 'x_appointment' in vals:
+			x_appointment_id = vals['x_appointment']
+			print x_appointment_id
+
+			x_appointment = self.env['oeh.medical.appointment'].search([
+
+																	('id', '=', x_appointment_id), 
+
+																])
+			print x_appointment
+
+			if x_appointment.x_machine == False:
+				ok = False 
+				#ok = True
+			else:
+				x_appointment.state = 'Scheduled'
+		
+				# Success !!!  
+				ok = True
+
+
 		print 
 
 
 
 
+		#res = 0
+		
+		if ok:
+			res = super(sale_order, self).write(vals)
+		else:
+			res = -1
+		
 
-		res = super(sale_order, self).write(vals)
 		#Write your logic here
-
 		print 
 		print 
 
 		return res
 
+	# CRUD 
 
 
 
@@ -790,6 +770,111 @@ class sale_order(models.Model):
 		print "ret: ", ret
 		print 
 
+	# remove_myself
+
+
+
+
+
+# ----------------------------------------------------------- Button - Reseve Machine  ------------------------------------------------------
+
+	@api.multi 
+	def reserve_machine(self):
+
+		print 'jx'
+		print 'Reserve Machine'
+
+		#self.x_machine = 'laser_co2_1'
+
+
+		
+		# Create Machine
+		appointment_date = 	self.x_appointment_date
+
+		doctor_name = 		self.x_doctor.name
+		doctor_id = 		self.x_doctor.id
+		patient_id = 		self.patient.id
+		
+		treatment_id = 		self.treatment.id
+		duration = 			self.x_duration
+
+
+		x_machine_old = 		self.x_machine
+
+
+
+
+
+
+
+
+
+
+		# New 
+		x_machine = appfuncs.search_machine(self, appointment_date, doctor_name, duration)
+		
+		#self.x_machine = x_machine 
+		self.x_appointment.x_machine = x_machine
+
+
+
+
+		if x_machine != False:
+
+
+			# Create Appointment - Machine 
+			app = self.env['oeh.medical.appointment'].create(
+															{
+																'appointment_date': appointment_date,
+
+																'doctor': 		doctor_id,
+																'patient': 		patient_id,	
+																'treatment': 	treatment_id, 
+
+																'duration': 	duration,
+																'x_type': 		'procedure',
+																'x_create_procedure_automatic': False, 
+
+																'x_machine': 	x_machine,
+							                    				'x_target': 	'machine',
+															}
+															)
+
+
+
+			if app != False:
+
+				# Unlink Old 
+				rec_set = self.env['oeh.medical.appointment'].search([
+																			('appointment_date', 'like', appointment_date), 
+																			('doctor', '=', doctor_name), 
+																			('x_machine', '=', x_machine_old),
+
+																			('patient', '=', self.patient.name), 
+																	])
+				ret = rec_set.unlink()
+				print "ret: ", ret
+
+
+
+
+		else:
+			print 'Error !'	
+			print 			
+
+
+			return {	'warning': 	{'title': "Error: Colisión !",
+						'message': 	'La sala ya está reservada.',   
+			#' + start + ' - ' + end + '.',
+						}}
+
+	# reserve_machine
+
+
+
 
 #sale_order()
+
+
+
 

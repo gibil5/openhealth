@@ -49,6 +49,63 @@ class Appointment(models.Model):
 
 
 
+
+	# Display 
+	x_display = fields.Char(
+
+			compute='_compute_x_display', 
+		)
+
+
+	@api.multi
+	#@api.depends('x_appointment')
+
+	def _compute_x_display(self):
+		for record in self:
+			#record.display = 'jx'
+			record.x_display = record.x_patient_name_short + ' - '  + record.x_doctor_code + ' - ' + record.x_type_cal
+			
+			if record.x_machine != False:
+				if record.x_target == 'doctor':
+					record.x_display = record.x_display + ' - ' + record.x_machine_short
+
+
+
+
+
+	
+
+	_hash_x_machine = {
+							False:				'', 
+
+							'laser_co2_1':		'C1',
+							'laser_co2_2':		'C2',
+							'laser_co2_3':		'C3',
+						}
+
+
+
+	x_machine_short = fields.Char(
+			compute='_compute_x_machine_short',
+		)
+
+	#@api.multi
+	@api.depends('x_machine')
+	def _compute_x_machine_short(self):
+		for record in self:
+			if record.x_machine != False:
+				if record.x_target == 'doctor':
+					record.x_machine_short = self._hash_x_machine[record.x_machine]
+
+
+
+
+
+
+
+
+
+
 	x_machine = fields.Selection(
 			#string="Máquina", 
 			string="Sala", 
@@ -249,11 +306,8 @@ class Appointment(models.Model):
 
 	def _compute_x_patient_name_short(self):
 		for record in self:
-
 			patient_name = record.patient.name
-
 			first_half = patient_name.split(' ')[0]
-
 			record.x_patient_name_short = first_half
 
 
@@ -267,6 +321,9 @@ class Appointment(models.Model):
 	# Hash 
 
 	_hash_doctor_code = {
+							False:				'', 
+
+
 							#'Dra. Acosta':		'Dra. A',
 							'Dra. Acosta':		'AC',
 
@@ -324,18 +381,14 @@ class Appointment(models.Model):
 
 	# X Doctor Code 
 	x_doctor_code = fields.Char(
-
 			compute='_compute_x_doctor_code',
 		)
 
 
 	#@api.multi
 	@api.depends('doctor')
-
 	def _compute_x_doctor_code(self):
-
 		for record in self:
-
 			if record.x_target == 'machine':
 				record.x_doctor_code = self._hash_doctor_code[record.x_machine]
 			else:
@@ -1306,22 +1359,36 @@ class Appointment(models.Model):
 
 		print 
 		#x_machine = appfuncs.search_machine(self, ad_pro_str, doctor_name, duration)
-		
-
 		#adate_base = self.appointment_date
-
-
 		date_format = "%Y-%m-%d %H:%M:%S"
 		adate_con = datetime.datetime.strptime(self.appointment_date, date_format)
-
-		delta_fix = datetime.timedelta(hours=0)
-			
+		delta_fix = datetime.timedelta(hours=0)			
 		#adate_base = datetime.datetime.strptime(appointment_date, date_format) + delta_fix
 		adate_base = adate_con + delta_fix
 
 
 
 
+
+		# Unlink Old 
+		rec_set = self.env['oeh.medical.appointment'].search([
+																('appointment_date', 'like', self.appointment_date), 
+																('doctor', '=', self.doctor.name), 
+
+																('patient', '=', self.patient.name), 
+
+																#('x_machine', '=', self.x_machine),
+																('x_target', '=', 'machine'), 
+
+															])
+		ret = rec_set.unlink()
+		print "ret: ", ret
+
+
+
+
+
+		# Create Proc 
 		doctor_id = self.doctor.id
 		patient_id = self.patient.id
 		treatment_id = self.treatment.id
@@ -1333,10 +1400,16 @@ class Appointment(models.Model):
 		app = appfuncs.create_app_procedure(self, adate_base, doctor_id, patient_id, treatment_id, x_create_procedure_automatic, flag_machine)
 
 
+
+
+
+
+
+
+
+
 		self.appointment_date = app.appointment_date
-
 		self.x_machine = app.x_machine
-
 
 		print app
 

@@ -51,7 +51,7 @@ class sale_order(models.Model):
 			'oeh.medical.physician',
 			string = "Médico", 	
 			
-			compute='_compute_x_doctor', 
+			#compute='_compute_x_doctor', 
 			#required=True, 
 			)
 
@@ -77,11 +77,11 @@ class sale_order(models.Model):
 
 
 	#@api.multi
-	@api.depends('x_appointment')
+	#@api.depends('x_appointment')
+	#def _compute_x_doctor(self):
+	#	for record in self:
+	#		record.x_doctor = record.x_appointment.doctor
 
-	def _compute_x_doctor(self):
-		for record in self:
-			record.x_doctor = record.x_appointment.doctor
 
 
 	#@api.multi
@@ -571,14 +571,22 @@ class sale_order(models.Model):
 	@api.multi 
 	def update_order_lines_app(self):
 
+		print 
+		print 'jx'
+		print 'Update Order Lines'
+
 
 		for line in self.order_line:
+
+			print line
+
 
 			product_id = line.product_id
 
 
 			# If Service 
 			if product_id.type == 'service':
+
 
 				appointment = self.env['oeh.medical.appointment'].search([ 	
 															('doctor', 'like', self.x_doctor.name), 	
@@ -590,8 +598,14 @@ class sale_order(models.Model):
 														order='appointment_date desc', limit=1)
 
 				appointment_id = appointment.id
-				#print appointment  
-				#print appointment_id  
+
+				
+				print self.x_doctor
+				print self.patient
+
+				
+				print appointment  
+				print appointment_id  
 
 
 
@@ -599,8 +613,10 @@ class sale_order(models.Model):
 				line.x_appointment_date = appointment.appointment_date
 				line.x_doctor_name = appointment.doctor.name
 				line.x_duration = appointment.duration 
+				
+				#line.x_machine = appointment.x_machine
+				line.x_machine = False
 
-				line.x_machine = appointment.x_machine
 
 
 				self.x_appointment = appointment
@@ -611,8 +627,10 @@ class sale_order(models.Model):
 				#self.x_machine = appointment.x_machine 
 
 
+		print 
 
 
+	# update_order_lines_app	
 
 
 
@@ -698,6 +716,7 @@ class sale_order(models.Model):
 		#Write your logic here
 
 		return res
+
 
 
 

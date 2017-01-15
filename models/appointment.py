@@ -320,9 +320,14 @@ class Appointment(models.Model):
 
 
 
+
+
+	# X Doctor Code 
 	x_doctor_code = fields.Char(
+
 			compute='_compute_x_doctor_code',
 		)
+
 
 	#@api.multi
 	@api.depends('doctor')
@@ -331,7 +336,7 @@ class Appointment(models.Model):
 
 		for record in self:
 
-			if record.x_machine != False:
+			if record.x_target == 'machine':
 				record.x_doctor_code = self._hash_doctor_code[record.x_machine]
 			else:
 				record.x_doctor_code = self._hash_doctor_code[record.doctor.name]
@@ -1226,7 +1231,8 @@ class Appointment(models.Model):
 			print "doctor: ", doctor
 		
 
-		patient = vals['patient']
+		if 'patient' in vals:
+			patient = vals['patient']
 
 		treatment = vals['treatment']
 		
@@ -1325,6 +1331,12 @@ class Appointment(models.Model):
 		
 		#app = appfuncs.create_app_procedure(self, appointment_date, doctor_id, patient_id, treatment_id, x_create_procedure_automatic, flag_machine)
 		app = appfuncs.create_app_procedure(self, adate_base, doctor_id, patient_id, treatment_id, x_create_procedure_automatic, flag_machine)
+
+
+		self.appointment_date = app.appointment_date
+
+		self.x_machine = app.x_machine
+
 
 		print app
 

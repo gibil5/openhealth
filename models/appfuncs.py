@@ -92,6 +92,7 @@ def create_app_procedure(self, adate_base, doctor_id, patient_id, treatment_id, 
 
 				if x_machine != False:
 
+
 					if flag_machine:
 						# Create Appointment - Machine 
 						app = self.env['oeh.medical.appointment'].create(
@@ -111,10 +112,11 @@ def create_app_procedure(self, adate_base, doctor_id, patient_id, treatment_id, 
 																	}
 																)
 
+						
 
-
-					# Create Appointment - Doctor  
-					app = self.env['oeh.medical.appointment'].create(
+					else:
+						# Create Appointment - Doctor  
+						app = self.env['oeh.medical.appointment'].create(
 																	{
 																		'appointment_date': adate_pro_str,
 

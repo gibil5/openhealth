@@ -91,12 +91,13 @@
 														}"/>
 					-->
 
-					<field name="doctor"		required="1"/>				
-
-
-					
+					<field name="doctor"		required="1"/>									
 					<field name="vspace"/>
 					
+
+					<field name="x_doctor_code"/>									
+
+
 					<field name="vspace"/>
 				
 				</xpath>
@@ -143,6 +144,11 @@
 						<group>
 							<field name="x_machine"/>
 							<field name="vspace"/>
+
+							<field name="x_target"/>
+							<field name="vspace"/>
+
+
 							<field name="vspace"/>
 							<field name="duration"/>	
 						</group>
@@ -510,6 +516,7 @@
 
 
 
+
 		<!-- Machines -->
 		<record id="oeh_medical_appointment_action_tree_3" model="ir.actions.act_window">
 
@@ -524,11 +531,13 @@
                     <!--
 
                     						('x_machine', 'in', ['laser_co2_1', 'laser_co2_2', 'laser_co2_3', 'laser_excilite', 'laser_m22']),
+
+                    						('x_machine', '!=', 'False'),
                     -->
                     <field name="domain">[
 
 
-                    						('x_machine', '!=', 'False'),
+                    						('x_target', '=', 'machine'),
 
                     					]
                     </field>

@@ -433,7 +433,6 @@ class Consultation(models.Model):
 
 	# ---------------------------------------------- Create Order --------------------------------------------------------
 
-	# Create Order - Button 
 	
 	@api.multi
 	
@@ -511,15 +510,14 @@ class Consultation(models.Model):
 													{
 														'treatment': treatment_id,
 														'partner_id': partner_id,
-														
-														
 														'patient': patient_id,	
+
+
 														'x_doctor': doctor_id,	
 
 
 														'consultation':self.id,
 														'state':'draft',
-
 														'x_chief_complaint':chief_complaint,
 													}
 												)
@@ -577,14 +575,21 @@ class Consultation(models.Model):
 				'default_patient': patient_id,	
 
 
-				'default_x_chief_complaint': chief_complaint,	
+				'default_x_doctor': doctor_id,	
 
+
+				'default_x_chief_complaint': chief_complaint,	
 			}
 		}
 
 
+	# create_order_current
 
 
+
+
+
+# ---------------------------------------------- Open Service --------------------------------------------------------
 
 	# Open Service
 	 
@@ -931,5 +936,6 @@ class Consultation(models.Model):
 		return res
 
 
+	# create - CRUD 
 
 

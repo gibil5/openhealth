@@ -431,6 +431,8 @@ class Consultation(models.Model):
 
 
 
+
+
 	# ---------------------------------------------- Create Order --------------------------------------------------------
 
 	
@@ -460,6 +462,11 @@ class Consultation(models.Model):
 		# Doctor
 		doctor_id = self.doctor.id
 		print 'doctor_id: ', doctor_id
+
+
+
+		# Appointment Proc
+		#appointment_proc = self.
 
 
 
@@ -509,16 +516,16 @@ class Consultation(models.Model):
 			order = self.env['sale.order'].create(
 													{
 														'treatment': treatment_id,
+
 														'partner_id': partner_id,
 														'patient': patient_id,	
-
-
 														'x_doctor': doctor_id,	
-
 
 														'consultation':self.id,
 														'state':'draft',
 														'x_chief_complaint':chief_complaint,
+
+														#'x_appointment': appointment_proc, 
 													}
 												)
 
@@ -532,7 +539,9 @@ class Consultation(models.Model):
 			pre_order = order.copy({
 								#'state':'sale',
 								#'state':'sent',
-								'state':'pre-draft',
+								#'state':'pre-draft',
+
+								'x_family':'private',
 							})	
 
 

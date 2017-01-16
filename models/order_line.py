@@ -173,31 +173,26 @@ class sale_order_line(models.Model):
 
 
 	# Procedure
-
-	x_appointment_date = fields.Datetime(
-			string="Fecha", 
+	#x_appointment_date = fields.Datetime(
+	#		string="Fecha", 
 			#readonly=True,
 			#readonly=False,
 			#states={'Scheduled': [('readonly', False)]})
-			)
+	#		)
 
-	x_doctor_name = fields.Char(
-			string="Médico", 
-		)
+	#x_doctor_name = fields.Char(
+	#		string="Médico", 
+	#	)
 
-
-
-	x_machine = fields.Selection(
-			string="Sala", 
-			selection = jxvars._machines_list, 
+	#x_machine = fields.Selection(
+	#		string="Sala", 
+	#		selection = jxvars._machines_list, 
 			#required=True, 
-		)
+	#	)
 
-
-
-	x_duration = fields.Float(
-			string="Duración", 
-		)
+	#x_duration = fields.Float(
+	#		string="Duración", 
+	#	)
 
 
 # ------------------------------------------------------------------------------------------------------------------------------#

@@ -5,6 +5,7 @@
 #
 
 
+
 from openerp import models, fields, api
 
 import jxvars
@@ -20,6 +21,7 @@ class sale_order(models.Model):
 
 
 
+
 	x_appointment = fields.Many2one(
 			'oeh.medical.appointment',
 			
@@ -28,9 +30,19 @@ class sale_order(models.Model):
 
 			#required=False, 
 			#required=True, 
+			compute='_compute_x_appointment', 
 			)
 
 
+
+
+
+
+	# Family 
+	x_family = fields.Selection(
+
+			selection = jxvars._family_list, 
+		)
 
 
 
@@ -41,7 +53,7 @@ class sale_order(models.Model):
 			selection = jxvars._machines_list, 
 			
 			compute='_compute_x_machine', 
-			#required=True, 
+			required=True, 
 		)
 
 
@@ -81,6 +93,35 @@ class sale_order(models.Model):
 	#def _compute_x_doctor(self):
 	#	for record in self:
 	#		record.x_doctor = record.x_appointment.doctor
+
+
+
+
+
+	@api.multi
+	#@api.depends('x_appointment')
+
+	def _compute_x_appointment(self):
+		for record in self:
+
+
+			app = self.env['oeh.medical.appointment'].search([
+																	('doctor', '=', record.x_doctor.name), 
+																	('patient', '=', record.patient.name), 
+
+																	('x_type', '=', 'procedure'),
+																	('x_target', '=', 'doctor'),
+
+
+																	#('appointment_date', 'like', dt), 
+																	#('x_machine', '=', x_machine),
+															],
+															order='appointment_date desc',
+															limit=1,)
+
+
+
+			record.x_appointment = app
 
 
 
@@ -694,44 +735,36 @@ class sale_order(models.Model):
 		#						}}
 
 
-		ok = True 
-
-
-
-		if 'x_appointment' in vals:
-			x_appointment_id = vals['x_appointment']
-			print x_appointment_id
-
-			x_appointment = self.env['oeh.medical.appointment'].search([
-
-																	('id', '=', x_appointment_id), 
-
-																])
-			print x_appointment
-
-			if x_appointment.x_machine == False:
-				ok = False 
+		#ok = True 
+		#if 'x_appointment' in vals:
+		#	x_appointment_id = vals['x_appointment']
+		#	print x_appointment_id
+		#	x_appointment = self.env['oeh.medical.appointment'].search([
+		#															('id', '=', x_appointment_id), 
+		#														])
+		#	print x_appointment
+		#	if x_appointment.x_machine == False:
+		#		ok = False 
 				#ok = True
-			else:
-				x_appointment.state = 'Scheduled'
-		
+		#	else:
+		#		x_appointment.state = 'Scheduled'
 				# Success !!!  
-				ok = True
-
-
-		print 
-
-
-
+		#		ok = True
+		#print 
 
 		#res = 0
-		
-		if ok:
-			res = super(sale_order, self).write(vals)
-		else:
-			res = -1
+		#if ok:
+		#	res = super(sale_order, self).write(vals)
+		#else:
+		#	res = -1
 		
 
+
+		if self.x_appointment.x_machine != False: 
+			self.x_appointment.state = 'Scheduled'
+
+
+		res = super(sale_order, self).write(vals)
 		#Write your logic here
 		print 
 		print 
@@ -750,6 +783,10 @@ class sale_order(models.Model):
 		print 
 		print 'Remove Order'
 
+
+		#self.x_appointment.x_machine = 'none'
+
+
 		order_id = self.id
 		print "id: ", order_id
 		
@@ -758,10 +795,10 @@ class sale_order(models.Model):
 		rec_set = self.env['sale.order'].browse([order_id])
 		print "rec_set: ", rec_set
 
-
 		# Write
 		ret = rec_set.write({
 								'state': 'draft',
+								#'x_machine': 'none',
 							})
 
 		

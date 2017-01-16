@@ -138,37 +138,37 @@
 
 					<field name="vspace"/>
 					<field name="consultation"/>
-
-
-
 					<field name="vspace"/>
+
+
 					<field name="x_appointment"/>
-					<field name="vspace"/>
-
 					<field name="x_doctor"/>
 					<field name="x_appointment_date"/>
 					<field name="x_duration"/>
+					<field name="vspace"/>
 
 					<!--
 					<field name="x_machine"		required="1"/>
 					-->
 					<field name="x_machine"/>
+					<field name="vspace"/>
 
+
+
+					<button 
+						type="object" 
+						class="oe_highlight"	
+						string="Reservar sala"
+						name="reserve_machine" 	
+					/>
 
 					<!--
-					<field name="vspace"/>
 					<field name="vspace"/>
 					<button 
 						type="object" 
 						class="oe_highlight"	
 						string="Actualizar"
 						name="update_order_lines_app" 	
-					/>
-					<button 
-						type="object" 
-						class="oe_highlight"	
-						string="Reservar sala"
-						name="reserve_machine" 	
 					/>
 					-->
 

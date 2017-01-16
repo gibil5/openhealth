@@ -53,7 +53,7 @@ class sale_order(models.Model):
 			selection = jxvars._machines_list, 
 			
 			compute='_compute_x_machine', 
-			required=True, 
+			#required=True, 
 		)
 
 
@@ -186,9 +186,8 @@ class sale_order(models.Model):
         			#('sale', 'Sale Order'),
         			#('done', 'Done'),
         			#('cancel', 'Cancelled'),
+					#('pre-draft', 	'Presupuesto consulta'),
 
-
-        			('pre-draft', 	'Presupuesto consulta'),
 
         			('draft', 		'Presupuesto'),
         			
@@ -836,10 +835,9 @@ class sale_order(models.Model):
 		duration = 			self.x_duration
 
 
-		x_machine_old = 		self.x_machine
+		x_machine_old = 	self.x_machine
 
-
-
+		start_machine = 	self.x_machine
 
 
 
@@ -848,7 +846,8 @@ class sale_order(models.Model):
 
 
 		# New 
-		x_machine = appfuncs.search_machine(self, appointment_date, doctor_name, duration)
+		#x_machine = appfuncs.search_machine(self, appointment_date, doctor_name, duration)
+		x_machine = appfuncs.search_machine(self, appointment_date, doctor_name, duration, start_machine)
 		
 		#self.x_machine = x_machine 
 		self.x_appointment.x_machine = x_machine
@@ -856,6 +855,8 @@ class sale_order(models.Model):
 
 
 
+
+		# If Sucess create Machine Appointment
 		if x_machine != False:
 
 

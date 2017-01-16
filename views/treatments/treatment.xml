@@ -25,9 +25,54 @@
 						<button 
 							type="object" 
 							class="oe_highlight"
+
 							string="Crear Consulta" 
+							
 							name="open_consultation_current" 
 						/>
+
+
+						<!--
+									'invisible':[('nr_consultations','=',0)], 
+									'readonly':[('nr_consultations','=',0)], 
+
+
+							attrs="{		
+									'readonly':[('nr_consultations','=',0)], 
+									}"
+						--> 
+						<button 
+							type="object" 
+							class="oe_highlight"
+
+							string="Crear Procedimiento" 
+
+
+							attrs="{'invisible':[
+												
+												('state','!=','invoice'), 
+
+												('state','!=','procedure'), 
+
+												('state','!=','sessions'), 
+
+												('state','!=','controls'), 
+
+												('state','!=','done'), 
+												]}"
+
+
+							name="create_procedure" 
+						/>
+
+
+
+
+						<!-- State --> 
+	                    <field name="state" widget="statusbar" 
+
+	                    					statusbar_visible="consultation, budget, invoice, procedure, sessions, controls,  done"/>
+
 
 
 
@@ -54,20 +99,12 @@
 						name="create_procedure" 
 						-->
 
-						<button 
-							type="object" 
-							class="oe_highlight"
-							string="Procedimientos" 
-
-							name="create_procedure" 
-						/>
 
 
 
 
 
 						<!--
-						-->
 						<button 
 							type="object" 
 							class="oe_highlight oe_right"
@@ -75,6 +112,7 @@
 
 							name="open_evaluation_current" 
 						/>
+						-->
 
 
 
@@ -213,7 +251,37 @@ Top
 									<field string="Consultas" name="nr_consultations" widget="statinfo"/>
 								</button>
 								
+
 							
+
+
+								<!-- Budgets -->
+								<button type="action" class="oe_stat_button" 
+									name="%(order_form_action)d"	
+									context="{									
+											'search_default_treatment': active_id,
+											}" 											
+									icon="fa-list">
+
+									<field string="Presupuestos" name="nr_budgets" widget="statinfo"/>
+								</button>
+
+
+								<!-- Invoices -->
+								<button type="action" class="oe_stat_button" 
+									name="%(order_form_action)d"	
+									context="{									
+											'search_default_treatment': active_id,
+											}" 											
+									icon="fa-list">
+
+									<field string="Facturados" name="nr_invoices" widget="statinfo"/>
+								</button>
+
+
+
+
+
 
 								<!-- Procedures -->
 								<button type="action" class="oe_stat_button" 
@@ -228,22 +296,22 @@ Top
 
 
 					            <!-- Appointments -->
+					            <!--
 								<button type="action" class="oe_stat_button" 
-
 									name="347" 
-								
 									context="{
 											'search_default_patient': patient, 'default_patient': patient, 'default_doctor' : physician
 											}" 
-								
 									icon="fa-calendar">
 				                
 				                	<field string="Citas" name="nr_appointments" widget="statinfo"/>
 				            	</button>
-
+								-->
 							</div>
 						
 						
+
+
 
 
 							<!-- Number --> 

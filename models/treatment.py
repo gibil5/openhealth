@@ -19,9 +19,79 @@ import time_funcs
 
 
 
+
 class Treatment(models.Model):
 	#_name = 'openhealth.treatment'
 	_inherit = 'openextension.treatment'
+
+
+
+
+
+
+
+	# State 
+
+	_state_list = [
+        			#('empty', 			'Vacío'),
+
+        			('consultation', 	'Primera Consulta'),
+        			
+        			('budget', 			'Presupuesto'),
+
+        			('invoice', 		'Facturado'),
+        			
+        			('procedure', 		'Procedimiento'),
+
+        			('sessions', 		'Sesiones'),
+
+        			('controls', 		'Controles'),
+
+        			('done', 		'Completo'),
+        		]
+
+	state = fields.Selection(
+			selection = _state_list, 
+			
+			#string='Status', 			
+			#string='Estado',	
+			#readonly=True, 
+			#readonly=False, 
+
+			compute="_compute_state",
+		)
+
+
+
+	#@api.multi
+	@api.depends('consultation_ids')
+
+	def _compute_state(self):
+		for record in self:
+
+
+			#con_count=self.env['openhealth.consultation'].search_count([('treatment','=', self.id)]) 
+			#bud_count=self.env['sale.order'].search_count([('treatment','=', self.id)]) 
+
+			
+			#if record.consultation_ids.search_count() > 0:
+
+
+			#if con_count > 0:
+			if record.nr_consultations > 0:
+				state = 'consultation'
+
+			#if bud_count > 0:
+			if record.nr_budgets > 0:
+				state = 'budget'
+
+			if record.nr_invoices > 0:
+				state = 'invoice'
+
+
+
+			record.state = state
+
 
 
 
@@ -60,6 +130,7 @@ class Treatment(models.Model):
 						('x_target', '=', 'doctor'),
 					],
 			)
+
 
 
 
@@ -173,13 +244,59 @@ class Treatment(models.Model):
 	@api.multi
 	def _compute_nr_orders(self):
 		for record in self:
-			ctr = 0 
-			
+			ctr = 0 			
 			for c in record.consultation_ids:
 				for o in c.order:
 					ctr = ctr + 1
-					
 			record.nr_orders = ctr
+
+
+
+
+
+
+
+
+
+
+
+	# Number of budgets 
+	nr_budgets = fields.Integer(
+			string="Presupuestos",
+			compute="_compute_nr_budgets",
+	)
+	@api.multi
+	def _compute_nr_budgets(self):
+		for record in self:
+
+			record.nr_budgets=self.env['sale.order'].search_count([
+																	('treatment','=', self.id),
+
+																	('state','=', 'draft'),
+																	
+																	('x_family','=', 'private'),
+																	]) 
+
+
+	# Number of invoices 
+	nr_invoices = fields.Integer(
+			string="Facturas",
+			compute="_compute_nr_invoices",
+	)
+	@api.multi
+	def _compute_nr_invoices(self):
+		for record in self:
+
+			record.nr_invoices=self.env['sale.order'].search_count([
+																	('treatment','=', self.id),
+																	('state','=', 'sale'),
+																	]) 
+
+
+
+
+
+
 
 
 
@@ -276,8 +393,9 @@ class Treatment(models.Model):
 
 			domain = [
 
-						('state', '=', 'pre-draft'),
+						#('state', '=', 'pre-draft'),
 						#('state', 'in', ['draft', 'sent', 'sale', 'done'])
+						('x_family', '=', 'private'),
 					],
 			)
 

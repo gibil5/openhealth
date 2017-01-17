@@ -17,7 +17,7 @@
 				<notebook position="inside">
 					
 
-					<page string="Presupuestos">
+					<page string="Presupuesto">
 
 
 						<field name="quotation_ids"/>

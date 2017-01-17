@@ -24,6 +24,17 @@ class Session(models.Model):
 
 
 
+	# Treatment 
+	treatment = fields.Many2one(
+			'openextension.treatment',
+			
+			ondelete='cascade', 
+			)
+
+
+
+
+
 	# Owner 
 	owner_type = fields.Char(
 			default = 'session',

@@ -89,6 +89,16 @@ class Treatment(models.Model):
 			if record.nr_invoices > 0:
 				state = 'invoice'
 
+			if record.nr_procedures > 0:
+				state = 'procedure'
+
+			if record.nr_sessions > 0:
+				state = 'sessions'
+
+			if record.nr_controls > 0:
+				state = 'controls'
+
+
 
 			record.state = state
 
@@ -96,8 +106,98 @@ class Treatment(models.Model):
 
 
 
+	# Number of budgets 
+	nr_budgets = fields.Integer(
+			string="Presupuestos",
+			compute="_compute_nr_budgets",
+	)
+	@api.multi
+	def _compute_nr_budgets(self):
+		for record in self:
+
+			record.nr_budgets=self.env['sale.order'].search_count([
+																	('treatment','=', self.id),
+																	('state','=', 'draft'),
+																	('x_family','=', 'private'),
+																	]) 
+
+	# Number of invoices 
+	nr_invoices = fields.Integer(
+			string="Facturas",
+			compute="_compute_nr_invoices",
+	)
+	@api.multi
+	def _compute_nr_invoices(self):
+		for record in self:
+
+			record.nr_invoices=self.env['sale.order'].search_count([
+																	('treatment','=', self.id),
+																	('state','=', 'sale'),
+																	]) 
 
 
+
+
+	# Number of procedures 
+	nr_procedures = fields.Integer(
+			string="Procedimientos",
+			compute="_compute_nr_procedures",
+	)
+	@api.multi
+	def _compute_nr_procedures(self):
+		for record in self:
+
+			record.nr_procedures=self.env['openhealth.procedure'].search_count([
+
+																	('treatment','=', self.id),
+
+																	]) 
+
+
+
+
+	# Number of sessions 
+	nr_sessions = fields.Integer(
+			string="Sesiones",
+			compute="_compute_nr_sessions",
+	)
+	@api.multi
+	def _compute_nr_sessions(self):
+		for record in self:
+
+			record.nr_sessions=self.env['openhealth.session'].search_count([
+
+																	('treatment','=', self.id),
+
+																	]) 
+
+
+
+
+	# Number of controls 
+	nr_controls = fields.Integer(
+			string="Controles",
+			compute="_compute_nr_controls",
+	)
+	@api.multi
+	def _compute_nr_controls(self):
+		for record in self:
+
+			record.nr_controls=self.env['openhealth.control'].search_count([
+
+																	('treatment','=', self.id),
+
+																	]) 
+
+
+
+
+
+
+
+
+
+	# Reservations 
 	reservation_ids = fields.One2many(
 			'oeh.medical.appointment', 
 			'treatment', 
@@ -215,19 +315,6 @@ class Treatment(models.Model):
 
 
 
-	# Number of procedures 
-	nr_procedures = fields.Integer(
-			string="Procedimientos",
-			compute="_compute_nr_procedures",
-	)
-	#@api.multi
-	@api.depends('procedure_ids')
-	def _compute_nr_procedures(self):
-		for record in self:
-			ctr = 0 
-			for c in record.procedure_ids:
-				ctr = ctr + 1
-			record.nr_procedures = ctr
 
 
 
@@ -260,37 +347,6 @@ class Treatment(models.Model):
 
 
 
-	# Number of budgets 
-	nr_budgets = fields.Integer(
-			string="Presupuestos",
-			compute="_compute_nr_budgets",
-	)
-	@api.multi
-	def _compute_nr_budgets(self):
-		for record in self:
-
-			record.nr_budgets=self.env['sale.order'].search_count([
-																	('treatment','=', self.id),
-
-																	('state','=', 'draft'),
-																	
-																	('x_family','=', 'private'),
-																	]) 
-
-
-	# Number of invoices 
-	nr_invoices = fields.Integer(
-			string="Facturas",
-			compute="_compute_nr_invoices",
-	)
-	@api.multi
-	def _compute_nr_invoices(self):
-		for record in self:
-
-			record.nr_invoices=self.env['sale.order'].search_count([
-																	('treatment','=', self.id),
-																	('state','=', 'sale'),
-																	]) 
 
 
 
@@ -304,36 +360,9 @@ class Treatment(models.Model):
 
 
 
-	# Number of controls 
-	nr_controls = fields.Integer(
-			string="Controles",
-			compute="_compute_nr_controls",
-	)
-	@api.multi
-	def _compute_nr_controls(self):
-		for record in self:
-			ctr = 0 
-			for p in record.procedure_ids:
-				for c in p.control_ids:
-					ctr = ctr + 1
-			record.nr_controls = ctr
 
 
 
-
-	# Number of sessions 
-	nr_sessions = fields.Integer(
-			string="Sesiones",
-			compute="_compute_nr_sessions",
-	)
-	@api.multi
-	def _compute_nr_sessions(self):
-		for record in self:
-			ctr = 0 
-			for p in record.procedure_ids:
-				for c in p.session_ids:
-					ctr = ctr + 1
-			record.nr_sessions = ctr
 
 
 
@@ -348,7 +377,6 @@ class Treatment(models.Model):
 
 
 # ----------------------------------------------------------- Relational ------------------------------------------------------
-
 
 
 	consultation_ids = fields.One2many(
@@ -367,6 +395,27 @@ class Treatment(models.Model):
 
 			string = "Procedimientos", 
 			)
+
+
+
+
+	session_ids = fields.One2many(
+			'openhealth.session', 
+			'treatment', 
+
+			string = "Sesiones", 
+			)
+
+	control_ids = fields.One2many(
+			'openhealth.control', 
+			'treatment', 
+
+			string = "Controles", 
+			)
+
+
+
+
 
 
 
@@ -418,6 +467,10 @@ class Treatment(models.Model):
 
 
 
+
+
+
+
 	
 # ----------------------------------------------------------- Indexes ------------------------------------------------------
 	
@@ -436,16 +489,6 @@ class Treatment(models.Model):
 
 
 
-
-	@api.multi
-	def create_procedure(self):
-
-		print 
-		print 'Create Procedure'
-
-		ret = treatment_funcs.create_procedure_go(self)
-		#print ret 
-		print 
 
 
 
@@ -999,7 +1042,7 @@ class Treatment(models.Model):
 # ----------------------------------------------------------- Button - Create Budget  ------------------------------------------------------
 
 	@api.multi 
-	def create_budget(self):			# Do Nothing  
+	def create_budget(self):
 
 		print 'jx'
 		print 'Create Budget'
@@ -1061,6 +1104,110 @@ class Treatment(models.Model):
 
 
 	# create_budget 
+
+
+
+
+
+# ----------------------------------------------------------- Button - Create Procedure ------------------------------------------------------
+
+	@api.multi
+	def create_procedure(self):
+
+		print 
+		print 'Create Procedure'
+
+		ret = treatment_funcs.create_procedure_go(self)
+		#print ret 
+		print 
+
+	# create_procedure 
+
+
+
+
+
+
+# ----------------------------------------------------------- Create Sessions ------------------------------------------------------
+
+	@api.multi 
+	def create_sessions(self):
+
+		print 'jx'
+		print 'Create Sessions'
+
+
+		procedure = self.env['openhealth.procedure'].search([('treatment','=', self.id)]) 
+		procedure_id = procedure.id
+
+
+		return {
+
+			# Mandatory 
+			'type': 'ir.actions.act_window',
+			'name': 'Open Procedure Current',
+
+
+			# Window action 
+			'res_model': 'openhealth.procedure',
+			'res_id': procedure_id,
+
+
+			# Views 
+			"views": [[False, "form"]],
+			'view_mode': 'form',
+
+			#'target': 'new',
+			'target': 'current',
+
+			'context':   {
+			}
+		}
+
+	# create_session
+
+
+
+
+
+# ----------------------------------------------------------- Create Controls  ------------------------------------------------------
+
+	@api.multi 
+	def create_controls(self):
+
+		print 'jx'
+		print 'Create Controls'
+
+
+		procedure = self.env['openhealth.procedure'].search([('treatment','=', self.id)]) 
+		procedure_id = procedure.id
+
+
+		return {
+
+			# Mandatory 
+			'type': 'ir.actions.act_window',
+			'name': 'Open Procedure Current',
+
+
+			# Window action 
+			'res_model': 'openhealth.procedure',
+			'res_id': procedure_id,
+
+
+			# Views 
+			"views": [[False, "form"]],
+			'view_mode': 'form',
+
+			#'target': 'new',
+			'target': 'current',
+
+			'context':   {
+			}
+		}
+
+
+	# create_controls
 
 
 

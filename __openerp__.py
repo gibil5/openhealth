@@ -141,21 +141,17 @@
 		
         # Treatments 
 		'views/treatments/treatment.xml',
-
-
 		'views/treatments/treatment_consultations.xml',
-
-
 		'views/treatments/treatment_sales.xml',
-
 		'views/treatments/treatment_quotations.xml',
-
 		'views/treatments/treatment_procedures.xml',
-		
 		'views/treatments/treatment_appointments.xml',
-		
-
 		'views/treatments/treatment_reservations.xml',
+
+
+		'views/treatments/treatment_sessions.xml',
+
+		'views/treatments/treatment_controls.xml',
 
 		
 		

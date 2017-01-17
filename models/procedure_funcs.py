@@ -28,19 +28,20 @@ def create_controls_go(self):
 
 
 	# Initialize 
-	patient_id = self.patient.id
-	
+	patient_id = self.patient.id	
 	doctor_id = self.doctor.id	
 	doctor_name = self.doctor.name
+	product_id = self.product.id
+	chief_complaint = self.chief_complaint
+
+
 
 	procedure_id = self.id
-
 
 	treatment_id = self.treatment.id
 
 
-	product_id = self.product.id
-	chief_complaint = self.chief_complaint
+
 
 	GMT = time_funcs.Zone(0,False,'GMT')
 	evaluation_start_date = datetime.datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
@@ -130,17 +131,14 @@ def create_controls_go(self):
 		control = self.control_ids.create({
 											'patient':patient_id,
 											'doctor':doctor_id,
-											'procedure':procedure_id,										
-
 											'product':product_id,
-
 											'chief_complaint':chief_complaint,
-
 											'evaluation_start_date':control_date,
 
 
-											'appointment': appointment_id,
 
+											'procedure':procedure_id,										
+											'appointment': appointment_id,
 
 											'treatment': treatment_id,
 									})

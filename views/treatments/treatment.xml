@@ -107,6 +107,55 @@
 
 
 
+
+
+
+						<button 
+							type="object" 
+							class="oe_highlight"
+
+							string="Crear Sesiones" 
+
+
+							attrs="{ 
+									'invisible':[
+												
+												('state','in',[ False, 'consultation', 'budget', 'invoice', 'sessions', 'controls', 'done']), 
+												
+												]}"
+
+
+							name="create_sessions" 
+						/>
+
+
+
+
+						<button 
+							type="object" 
+							class="oe_highlight"
+
+							string="Crear Controles" 
+
+
+							attrs="{ 
+									'invisible':[
+												
+												('state','in',[ False, 'consultation', 'budget', 'invoice', 'procedure', 'controls', 'done']), 
+												
+												]}"
+
+
+							name="create_controls" 
+						/>
+
+
+
+
+
+
+
+
 						<!-- State --> 
 	                    <field name="state" widget="statusbar" 
 
@@ -287,7 +336,7 @@ Top
 											'search_default_treatment': active_id,
 											}" 											
 									icon="fa-list">
-									<field string="Consultas" name="nr_consultations" widget="statinfo"/>
+									<field string="Consulta" name="nr_consultations" widget="statinfo"/>
 								</button>
 								
 
@@ -302,7 +351,7 @@ Top
 											}" 											
 									icon="fa-list">
 
-									<field string="Presupuestos" name="nr_budgets" widget="statinfo"/>
+									<field string="Presupuesto" name="nr_budgets" widget="statinfo"/>
 								</button>
 
 
@@ -314,7 +363,7 @@ Top
 											}" 											
 									icon="fa-list">
 
-									<field string="Facturados" name="nr_invoices" widget="statinfo"/>
+									<field string="Facturado" name="nr_invoices" widget="statinfo"/>
 								</button>
 
 
@@ -329,9 +378,42 @@ Top
 											'search_default_treatment': active_id,
 											}" 											
 									icon="fa-list">
-									<field string="Procedimientos" name="nr_procedures" widget="statinfo"/>
+									<field string="Procedimiento" name="nr_procedures" widget="statinfo"/>
 								</button>
 						
+
+
+
+
+								<!-- sessions -->
+								<button type="action" class="oe_stat_button" 
+									name="%(session_form_action)d"	
+									context="{									
+											'search_default_treatment': active_id,
+											}" 											
+									icon="fa-list">
+									<field string="Sesiones" name="nr_sessions" widget="statinfo"/>
+								</button>
+						
+
+
+
+
+								<!-- controls -->
+								<button type="action" class="oe_stat_button" 
+									name="%(control_form_action)d"	
+									context="{									
+											'search_default_treatment': active_id,
+											}" 											
+									icon="fa-list">
+									<field string="Controles" name="nr_controls" widget="statinfo"/>
+								</button>
+						
+
+
+
+
+
 
 
 					            <!-- Appointments -->

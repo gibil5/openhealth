@@ -123,6 +123,9 @@
 
 
 							<group>
+
+								<field name="treatment"/>
+
 							</group>
 							<group>								
 								<field name="product"/>

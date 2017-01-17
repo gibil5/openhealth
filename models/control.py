@@ -26,6 +26,19 @@ class Control(models.Model):
 
 
 
+	# Treatment 
+	treatment = fields.Many2one(
+			'openextension.treatment',
+			
+			ondelete='cascade', 
+			)
+
+
+
+
+
+
+
 	# Dates 
 
 	evaluation_start_date = fields.Date(
@@ -79,7 +92,7 @@ class Control(models.Model):
 			size=200,
 
 			#required=False,
-			required=True,
+			#required=True,
 			)
 
 

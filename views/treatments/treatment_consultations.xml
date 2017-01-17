@@ -29,7 +29,7 @@
 							<!--
 								 Consultations
 							-->
-							<page string="Consultas">
+							<page string="Consulta">
 
 								<field name="consultation_ids">
 									

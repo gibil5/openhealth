@@ -114,7 +114,7 @@
 							</group>
 							<group>
 
-								<field name="observation"/>
+								<field name="observation"	required="1"/>
 							</group>
 
 

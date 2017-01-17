@@ -418,6 +418,7 @@ Top
 
 					            <!-- Appointments -->
 					            <!--
+								-->
 								<button type="action" class="oe_stat_button" 
 									name="347" 
 									context="{
@@ -427,7 +428,6 @@ Top
 				                
 				                	<field string="Citas" name="nr_appointments" widget="statinfo"/>
 				            	</button>
-								-->
 							</div>
 						
 						

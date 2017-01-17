@@ -286,7 +286,7 @@ class Appointment(models.Model):
 
 			#default=3025, 		# Revilla 
 			#default=3052, 		# Suarez Vertiz
-			default = defaults._patient 
+			#default = defaults._patient 
 
 			#required=True, 
 		)
@@ -368,7 +368,7 @@ class Appointment(models.Model):
 			'oeh.medical.physician',
 			
 			#default=1, 				# Chavarri
-			default=defaults._doctor,
+			#default=defaults._doctor,
 
 			#string = "Médico", 	
 

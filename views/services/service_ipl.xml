@@ -19,5 +19,21 @@
 
 			
 		</record>		
+
+
+
+
+
+		<!-- Window action -->
+		<record model="ir.actions.act_window" id="service_ipl_list_action">
+			<field name="name">Servicios ipl</field>
+			<field name="res_model">openhealth.service.ipl</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+
+
+		
 	</data>
 </openerp>

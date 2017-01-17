@@ -28,8 +28,9 @@ class Service(models.Model):
 			default='SE',
 			string='Servicio #',
 			compute='_compute_name', 
-			required=True, 
+			#required=True, 
 			)
+
 
 	@api.multi
 	def _compute_name(self):
@@ -209,7 +210,7 @@ class Service(models.Model):
 
 			#string="Service", 
 			string="Servicio",
-			required=True, 
+			#required=True, 
 			)
 
 
@@ -437,11 +438,8 @@ class Service(models.Model):
 
 
 
-	#------------------------------------ Buttons -----------------------------------------
-	#
+	# ---------------------------------------------- Open Line --------------------------------------------------------
 
-	# Service - Quick Self Button 
-	# ---------------------------------
 
 	@api.multi
 	def open_line_current(self): 
@@ -464,32 +462,8 @@ class Service(models.Model):
 				}
 		}
 
+	# open_line_current 
 
 
-
-#------------------------------------ Classes -----------------------------------------
-
-class ServiceExcilite(models.Model):
-	#_name = 'openhealth.service.laserexcilite'
-	_name = 'openhealth.service.excilite'
-
-	_inherit = 'openhealth.service'
-	
-	
-	
-
-class ServiceIpl(models.Model):
-	#_name = 'openhealth.service.laseripl'
-	_name = 'openhealth.service.ipl'
-
-	_inherit = 'openhealth.service'
-
-
-
-class ServiceNdyag(models.Model):
-	#_name = 'openhealth.service.laserndyag'
-	_name = 'openhealth.service.ndyag'
-
-	_inherit = 'openhealth.service'
 
 

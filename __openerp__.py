@@ -90,15 +90,17 @@
 
 
 
-		#'views/consultations/consultation_services_co2.xml',
-		#'views/consultations/consultation_services_excilite.xml',
-		#'views/consultations/consultation_services_ipl.xml',
-		#'views/consultations/consultation_services_ndyag.xml',
+		'views/consultations/consultation_services_co2.xml',
+		'views/consultations/consultation_services_excilite.xml',
+		'views/consultations/consultation_services_ipl.xml',
+		'views/consultations/consultation_services_ndyag.xml',
 		#'views/consultations/consultation_medical_treatment.xml',
 
+		#'views/consultations/consultation_services.xml',
 
 
-		#'views/evaluations/consultation_services.xml',
+
+
 		#'views/evaluations/consultation_procedures.xml',
 
 		

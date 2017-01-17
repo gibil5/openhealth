@@ -32,27 +32,110 @@ class Consultation(models.Model):
 			)
 
 
-	#@api.onchange('name')
-	
-	#def _onchange_name(self):
-
-	#	print 
-	#	print 'On change Name'
-
-	#	if self.name != False:
-
-			# Update
-	#		print 'update'
-
-	#		a = self.appointment.write({
-	#									'consultation': self.id,
-	#								})
-	#		print self.appointment
-	#		print self.id.name
-	#		print a 
 
 
-	#	print 
+
+
+	# Nr Services 
+	nr_service = fields.Integer(
+			default = 0, 
+			compute="_compute_nr_service",
+		)
+
+	#@api.multi
+	@api.depends('nr_service_co2', 'nr_service_excilite', 'nr_service_ipl', 'nr_service_ndyag')
+
+	def _compute_nr_service(self):
+		for record in self:
+
+			record.nr_service = record.nr_service_co2 + record.nr_service_excilite + record.nr_service_ipl + record.nr_service_ndyag
+
+
+
+
+
+
+
+
+	# Nr Services co2 
+	nr_service_co2 = fields.Integer(
+			default = 0, 
+			compute="_compute_nr_service_co2",
+		)
+
+	#@api.multi
+	@api.depends('service_co2_ids')
+
+	def _compute_nr_service_co2(self):
+		for record in self:
+			record.nr_service_co2 = self.env['openhealth.service.co2'].search_count([('consultation','=', self.id)]) 
+
+
+
+
+
+	# Nr Services Excilite 
+	nr_service_excilite = fields.Integer(
+			default = 0, 
+			compute="_compute_nr_service_excilite",
+		)
+
+	#@api.multi
+	@api.depends('service_excilite_ids')
+
+	def _compute_nr_service_excilite(self):
+		for record in self:
+			record.nr_service_excilite = self.env['openhealth.service.excilite'].search_count([('consultation','=', self.id)]) 
+
+
+
+
+
+
+	# Nr Services ipl 
+	nr_service_ipl = fields.Integer(
+			default = 0, 
+			compute="_compute_nr_service_ipl",
+		)
+
+	#@api.multi
+	@api.depends('service_ipl_ids')
+
+	def _compute_nr_service_ipl(self):
+		for record in self:
+			record.nr_service_ipl = self.env['openhealth.service.ipl'].search_count([('consultation','=', self.id)]) 
+
+
+
+
+
+
+
+	# Nr Services ndyag 
+	nr_service_ndyag = fields.Integer(
+			default = 0, 
+			compute="_compute_nr_service_ndyag",
+		)
+
+	#@api.multi
+	@api.depends('service_ndyag_ids')
+
+	def _compute_nr_service_ndyag(self):
+		for record in self:
+			record.nr_service_ndyag = self.env['openhealth.service.ndyag'].search_count([('consultation','=', self.id)]) 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -119,7 +202,9 @@ class Consultation(models.Model):
 			string="Pre Order",
 			
 			domain = [
-						('state', '=', 'pre-draft'),
+						('state', '=', 'draft'),
+
+						('x_family', '=', 'private'),
 					],
 			)
 
@@ -132,7 +217,7 @@ class Consultation(models.Model):
 	
 			domain = [
 						#('order_id', '=', pre_order),
-						('state', '=', 'pre-draft'),
+						('state', '=', 'draft'),
 					],
 
 		#compute='_compute_order_line', 
@@ -248,6 +333,8 @@ class Consultation(models.Model):
 
 
 
+
+
 	# ----------------------------------------------------------- Orders ------------------------------------------------------
 
 	order = fields.One2many(		
@@ -255,7 +342,10 @@ class Consultation(models.Model):
 			'consultation', 
 			string="Order",
 			domain = [
+
 						('state', '=', 'draft'),
+			
+						('x_family', '=', 'private'),
 					],
 			)
 
@@ -282,6 +372,7 @@ class Consultation(models.Model):
 
 	# ----------------------------------------------------------- Services --------------------------------------------------------
 
+
 	service_co2_ids = fields.One2many(
 			'openhealth.service.co2', 
 			'consultation', 
@@ -306,9 +397,6 @@ class Consultation(models.Model):
 			string="Servicios Ndyag",
 	)
 
-
-
-
 	service_medical_ids = fields.One2many(
 			'openhealth.service.medical', 
 			'consultation', 
@@ -320,13 +408,13 @@ class Consultation(models.Model):
 
 
 	# Service 
-	#service_ids = fields.One2many(
-	#		'openhealth.service', 
-	#		'consultation', 
-	#		string="Servicios",
+	service_ids = fields.One2many(
+			'openhealth.service', 
+			'consultation', 
+			string="Servicios",
 			
 			#compute='_compute_service_ids', 
-	#)
+	)
 
 
 
@@ -500,7 +588,11 @@ class Consultation(models.Model):
 		order_id = self.env['sale.order'].search([
 													#('consultation','=',self.id),
 													('consultation','=',consultation_id),
+													
 													('state','=','draft'),
+
+													('x_family','=', 'private'),
+												
 												]).id
 
 		print 'consultation_id: ', consultation_id
@@ -598,269 +690,16 @@ class Consultation(models.Model):
 
 
 
-# ---------------------------------------------- Open Service --------------------------------------------------------
-
-	# Open Service
-	 
-	@api.multi
-	def open_service(self):  
-		consultation_id = self.id 				
-		laser = ''
-		zone = ''	
-		pathology = ''
-
-		return {
-				'type': 'ir.actions.act_window',
-				'name': ' New Service Current', 
-				'view_type': 'form',
-				'view_mode': 'form',				
-				'res_model': 'openhealth.service',				
-				#'res_id': consultation_id,
-				'target': 'current',
-				'flags': 	{
-							'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-							#'form': {'action_buttons': True, }
-							},
-				'context': {
-							'default_consultation': consultation_id,					
-							'default_laser': laser,
-							'default_zone': zone,
-							'default_pathology': pathology,
-							}
-				}
-	
-	
-	
-	
-
-
-
-	
-
-
-
-
-	# Open Service - Laser Co2 
-	# -------------------------
-	@api.multi
-	def open_service_co2(self):  
-
-		consultation_id = self.id 
-		
-		laser = 'laser_co2'
-		zone = ''	
-		pathology = ''
-				
-		
-		return {
-				'type': 'ir.actions.act_window',
-				'name': ' New Service Current - Laser Co2', 
-				'view_type': 'form',
-				'view_mode': 'form',	
-						
-				'target': 'current',
-
-				'res_model': 'openhealth.service.co2',				
-				
-				'flags': 	{
-							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-							'form': {'action_buttons': True, }
-							},
-
-				'context': {
-							'default_consultation': consultation_id,					
-
-							'default_laser': laser,
-							'default_zone': zone,
-							'default_pathology': pathology,
-
-							}
-				}
-				
-
-
-
-	# Open Service - Laser Excilite
-	# -------------------------------
-	 
-	@api.multi
-	def open_service_excilite(self):  
-
-		consultation_id = self.id 
-		
-		laser = 'laser_excilite'
-		zone = ''	
-		pathology = ''
-				
-		return {
-				'type': 'ir.actions.act_window',
-				'name': ' New Service Current - Laser Excilite', 
-				'view_type': 'form',
-				'view_mode': 'form',			
-				'target': 'current',				
-				
-				#'res_id': 23,
-				
-				'res_model': 'openhealth.service.excilite',				
-				
-				'flags': 	{
-							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-							'form': {'action_buttons': True, }
-							},
-
-				'context': {
-							'default_consultation': consultation_id,					
-
-							'default_laser': laser,
-							'default_zone': zone,
-							'default_pathology': pathology,
-
-							}
-				}
-				
-				
-				
-				
-	# Open Service - Laser Ipl 
-	# -------------------------
-		
-	@api.multi
-	def open_service_ipl(self):  
-
-		consultation_id = self.id 
-		
-		laser = 'laser_ipl'
-		zone = ''	
-		pathology = ''
-				
-		return {
-				'type': 'ir.actions.act_window',
-				'name': ' New Service Current - Laser Excilite', 
-				'view_type': 'form',
-				'view_mode': 'form',			
-				'target': 'current',				
-				
-				#'res_id': 23,
-				
-				'res_model': 'openhealth.service.ipl',				
-				
-				'flags': 	{
-							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-							'form': {'action_buttons': True, }
-							},
-
-				'context': {
-							'default_consultation': consultation_id,					
-
-							'default_laser': laser,
-							'default_zone': zone,
-							'default_pathology': pathology,
-
-							}
-				}
-
-
-
-
-	# Open Service - Laser Ndyag 
-	# ---------------------------
-	
-	@api.multi
-	def open_service_ndyag(self):  
-
-		consultation_id = self.id 
-		
-		laser = 'laser_ndyag'
-		zone = ''	
-		pathology = ''
-				
-		return {
-				'type': 'ir.actions.act_window',
-				'name': ' New Service Current - Laser Ndyag', 
-				'view_type': 'form',
-				'view_mode': 'form',			
-				'target': 'current',				
-				
-				#'res_id': 23,
-				
-				'res_model': 'openhealth.service.ndyag',				
-				
-				'flags': 	{
-							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-							'form': {'action_buttons': True, }
-							},
-
-				'context': {
-							'default_consultation': consultation_id,					
-
-							'default_laser': laser,
-							'default_zone': zone,
-							'default_pathology': pathology,
-
-							}
-				}
-	
-
-
-
-	
-	# Open Service - Medical 
-	# -------------------------
-	@api.multi
-	def open_service_medical(self):  
-
-		consultation_id = self.id 
-		
-		family = 'medical'
-
-		#laser = 'na'
-		#zone = 'none'	
-		#pathology = 'none'
-				
-		#laser = ''
-		#zone = ''	
-		#pathology = ''
-
-
-		#laser = 'laser_co2'
-		#laser = 'none'
-		laser = 'medical'
-
-		
-		return {
-				'type': 'ir.actions.act_window',
-				'name': ' New Service Current - Medical', 
-				'view_type': 'form',
-				'view_mode': 'form',			
-				'target': 'current',
-				
-				'res_model': 'openhealth.service.medical',				
-				
-				'flags': 	{
-							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-							'form': {'action_buttons': True, }
-							},
-
-				'context': {
-							'default_consultation': consultation_id,					
-
-							'default_family': family,
-
-							'default_laser': laser,
-
-							#'default_zone': zone,
-							#'default_pathology': pathology,
-
-							}
-				}
-					
 
 
 
 
 
-	# Open Appointment
-	# -----------------
+
+
+# ---------------------------------------------- Open Appointment --------------------------------------------------------
+
+
 	@api.multi
 	def open_appointment(self):  
 
@@ -915,6 +754,9 @@ class Consultation(models.Model):
 							}
 				}
 
+	# open_appointment
+
+
 
 
 # ----------------------------------------------------------- CRUD ------------------------------------------------------
@@ -946,5 +788,278 @@ class Consultation(models.Model):
 
 
 	# create - CRUD 
+
+
+
+
+# ---------------------------------------------- Create Service --------------------------------------------------------
+
+	# Create Service
+	 
+	@api.multi
+	def create_service(self):  
+		consultation_id = self.id 				
+		laser = ''
+		zone = ''	
+		pathology = ''
+
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' New Service Current', 
+				'view_type': 'form',
+				'view_mode': 'form',				
+				'res_model': 'openhealth.service',	
+
+				#'res_id': consultation_id,
+				
+				'target': 'current',
+				'flags': 	{
+							'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+							#'form': {'action_buttons': True, }
+							},
+				'context': {
+							'default_consultation': consultation_id,					
+							'default_laser': laser,
+							'default_zone': zone,
+							'default_pathology': pathology,
+							}
+				}
+
+	# create_service
+
+
+
+
+
+# ---------------------------------------------- Create Service - Co2 --------------------------------------------------------
+
+	@api.multi
+	def create_service_co2(self):  
+
+		consultation_id = self.id 
+		
+		laser = 'laser_co2'
+		zone = ''	
+		pathology = ''
+		
+		
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' New Service Current - Laser Co2', 
+				'view_type': 'form',
+				'view_mode': 'form',	
+				'target': 'current',
+				'res_model': 'openhealth.service.co2',				
+
+				#'res_id': consultation_id,
+
+
+				'flags': 	{
+							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+							'form': {'action_buttons': True, }
+							},
+
+				'context': {
+							'default_consultation': consultation_id,					
+
+							'default_laser': laser,
+							'default_zone': zone,
+							'default_pathology': pathology,
+
+							}
+				}
+
+	# create_service_co2
+
+
+
+
+
+# ---------------------------------------------- Create Service - Excilite --------------------------------------------------------
+	 
+	@api.multi
+	def create_service_excilite(self):  
+
+		consultation_id = self.id 
+		
+		laser = 'laser_excilite'
+		zone = ''	
+		pathology = ''
+				
+
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' New Service Current - Laser Excilite', 
+				'view_type': 'form',
+				'view_mode': 'form',			
+				'target': 'current',				
+				
+				#'res_id': 23,
+				
+				'res_model': 'createhealth.service.excilite',				
+				
+				'flags': 	{
+							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+							'form': {'action_buttons': True, }
+							},
+
+				'context': {
+							'default_consultation': consultation_id,					
+
+							'default_laser': laser,
+							'default_zone': zone,
+							'default_pathology': pathology,
+
+							}
+				}
+				
+	# create_service_excilite
+		
+				
+
+
+				
+# ---------------------------------------------- Create Service - IPL --------------------------------------------------------
+		
+	@api.multi
+	def create_service_ipl(self):  
+
+		consultation_id = self.id 
+		
+		laser = 'laser_ipl'
+		zone = ''	
+		pathology = ''
+			
+
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' New Service Current - Laser Excilite', 
+				'view_type': 'form',
+				'view_mode': 'form',			
+				'target': 'current',				
+				
+				#'res_id': 23,
+				
+				'res_model': 'createhealth.service.ipl',				
+				
+				'flags': 	{
+							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+							'form': {'action_buttons': True, }
+							},
+
+				'context': {
+							'default_consultation': consultation_id,					
+
+							'default_laser': laser,
+							'default_zone': zone,
+							'default_pathology': pathology,
+
+							}
+				}
+
+	# create_service_ipl
+
+
+
+
+# ---------------------------------------------- Create Service - NDYAG --------------------------------------------------------
+	
+	@api.multi
+	def create_service_ndyag(self):  
+
+		consultation_id = self.id 
+		
+		laser = 'laser_ndyag'
+		zone = ''	
+		pathology = ''
+				
+
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' New Service Current - Laser Ndyag', 
+				'view_type': 'form',
+				'view_mode': 'form',			
+				'target': 'current',				
+				
+				#'res_id': 23,
+				
+				'res_model': 'createhealth.service.ndyag',				
+				
+				'flags': 	{
+							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+							'form': {'action_buttons': True, }
+							},
+
+				'context': {
+							'default_consultation': consultation_id,					
+
+							'default_laser': laser,
+							'default_zone': zone,
+							'default_pathology': pathology,
+
+							}
+				}
+	
+	# create_service_ndyag
+
+
+
+	
+# ---------------------------------------------- Create Service - MEDICAL --------------------------------------------------------
+
+	@api.multi
+	def create_service_medical(self):  
+
+		consultation_id = self.id 
+		
+		family = 'medical'
+
+		#laser = 'na'
+		#zone = 'none'	
+		#pathology = 'none'
+				
+		#laser = ''
+		#zone = ''	
+		#pathology = ''
+
+
+		#laser = 'laser_co2'
+		#laser = 'none'
+		laser = 'medical'
+
+		
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' New Service Current - Medical', 
+				'view_type': 'form',
+				'view_mode': 'form',			
+				'target': 'current',
+				
+				'res_model': 'createhealth.service.medical',				
+				
+				'flags': 	{
+							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+							'form': {'action_buttons': True, }
+							},
+
+				'context': {
+							'default_consultation': consultation_id,					
+
+							'default_family': family,
+
+							'default_laser': laser,
+
+							#'default_zone': zone,
+							#'default_pathology': pathology,
+
+							}
+				}
+					
+	# create_service_medical
+
+
+
+
+
 
 

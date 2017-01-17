@@ -22,14 +22,59 @@
 								'default_evaluation_type': 'Pre-arraganged Appointment',
 							}" 											
 						-->
+
 						<button 
 							type="object" 
 							class="oe_highlight"
 
 							string="Crear Consulta" 
+
 							
+							attrs="{'invisible':[
+												
+												('state','in',['consultation', 'budget', 'invoice', 'procedure', 'sessions', 'controls', 'done']), 
+
+												]}"
+
+
 							name="open_consultation_current" 
 						/>
+
+
+
+
+						<button 
+							type="object" 
+							class="oe_highlight"
+
+							string="Crear Presupuesto" 
+
+							attrs="{'invisible':[
+												('state','in',[ False, 'budget', 'invoice', 'procedure', 'sessions', 'controls', 'done']),
+												]}"
+
+
+							name="create_budget" 
+						/>
+
+
+
+						<button 
+							type="object" 
+							class="oe_highlight"
+
+							string="Pagar en Caja" 
+
+							attrs="{'invisible':[
+												('state','in',[ False, 'consultation', 'invoice', 'procedure', 'sessions', 'controls', 'done']),
+												]}"
+
+
+							name="create_invoice" 
+						/>
+
+
+
 
 
 						<!--
@@ -48,17 +93,11 @@
 							string="Crear Procedimiento" 
 
 
-							attrs="{'invisible':[
+							attrs="{ 
+									'invisible':[
 												
-												('state','!=','invoice'), 
-
-												('state','!=','procedure'), 
-
-												('state','!=','sessions'), 
-
-												('state','!=','controls'), 
-
-												('state','!=','done'), 
+												('state','in',[ False, 'consultation', 'budget', 'procedure', 'sessions', 'controls', 'done']), 
+												
 												]}"
 
 

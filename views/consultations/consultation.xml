@@ -25,19 +25,31 @@
 						<button 
 							type="object" 
 							class="oe_highlight"	
+
 							string="Crear Servicio"
 				
-							name="open_service" 	
+							name="create_service" 	
 						/>
 						-->
 						
+
+
 						<button 
 							type="object" 
 							class="oe_highlight"	
-							string="LASER CO2"
+
+							string="Crear Servicio - LASER CO2"
+
 				
-							name="open_service_co2" 	
+							attrs="{'invisible':[
+												('nr_service','>', 0), 
+												]}"
+
+
+							name="create_service_co2" 	
 						/>
+
+
 
 
 						<button 
@@ -45,7 +57,11 @@
 							class="oe_highlight"	
 							string=" EXCILITE"
 				
-							name="open_service_excilite" 	
+							attrs="{'invisible':[
+												('nr_service','>', 0), 
+												]}"
+
+							name="create_service_excilite" 	
 						/>
 
 
@@ -54,15 +70,23 @@
 							class="oe_highlight"	
 							string=" M22-IPL"
 				
-							name="open_service_ipl" 	
+							attrs="{'invisible':[
+												('nr_service','>', 0), 
+												]}"
+
+							name="create_service_ipl" 	
 						/>
 
 						<button 
 							type="object" 
 							class="oe_highlight"	
 							string=" M22-NDYAG"
+
+							attrs="{'invisible':[
+												('nr_service','>', 0), 
+												]}"
 				
-							name="open_service_ndyag" 	
+							name="create_service_ndyag" 	
 						/>
 
 
@@ -71,18 +95,44 @@
 						<button 
 							type="object" 
 							class="oe_highlight"	
-							string="TRATAMIENTO MEDICO"
+							string="T. MEDICO"
+
+							attrs="{'invisible':[
+												('nr_service','>', 0), 
+												]}"
 				
-							name="open_service_medical" 	
+							name="create_service_medical" 	
 						/>
+
+
+
+
+
+						<!--
+												('nr_orders','>', 0), 
+
+							attrs="{
+									'invisible':[
+												('nr_service','=', 0), 
+												('nr_orders','=', 0), 
+												],
+									}"
 						
-
-
+						-->							
 
 						<button 
 							type="object" 
-							class="oe_highlight oe_right"
-							string="Presupuesto" 
+							class="oe_highlight"
+
+							string="Crear Presupuesto" 
+
+
+							attrs="{'invisible':[
+													'|',
+													('nr_service', '==', 0),
+													('nr_orders','>', 0) 
+												]}"
+
 
 							name="create_order_current" 
 						/>
@@ -131,20 +181,117 @@
 							<!-- Buttons --> 
 							<div class="oe_left" style="width: 300px;" name="buttons">
 							
-								<!--
-								Controles
-								-->
-								
+
+
+
+								<!-- Order -->	
 								<button type="action" class="oe_stat_button" 
 									name="%(order_form_action)d"	
 									context="{									
 											'search_default_consultation': active_id,
 											}" 											
 									icon="fa-list">
+									
 									<field string="Presupuestos" name="nr_orders" widget="statinfo"/>
+
 								</button>
 								
+
+
+
+
+
+								<!-- Nr Services --> 
+								<button type="action" class="oe_stat_button" 
+									name="%(service_list_action)d"	
+									context="{									
+											'search_default_consultation': active_id,
+											}" 											
+									icon="fa-list">
+
+									<field string="Servicios" name="nr_service" widget="statinfo"/>
 								
+								</button>
+
+
+
+
+
+
+
+								<!-- Nr co2--> 
+								<!--
+								-->
+								<button type="action" class="oe_stat_button" 
+									name="%(service_co2_list_action)d"	
+									context="{									
+											'search_default_consultation': active_id,
+											}" 											
+									icon="fa-list">
+
+
+									attrs="invisible"
+
+
+									<field string="Co2" name="nr_service_co2" widget="statinfo"/>
+								
+								</button>
+
+
+
+								<!-- Nr Excilite--> 
+								<!--
+								-->
+								<button type="action" class="oe_stat_button" 
+									name="%(service_excilite_list_action)d"	
+									context="{									
+											'search_default_consultation': active_id,
+											}" 											
+									icon="fa-list">
+
+									<field string="Excilite" name="nr_service_excilite" widget="statinfo"/>
+								
+								</button>
+								
+
+								<!-- Nr ipl--> 
+								<!--
+								-->
+								<button type="action" class="oe_stat_button" 
+									name="%(service_co2_list_action)d"	
+									context="{									
+											'search_default_consultation': active_id,
+											}" 											
+									icon="fa-list">
+
+									<field string="ipl" name="nr_service_ipl" widget="statinfo"/>
+								
+								</button>
+
+
+
+								<!-- Nr ndyag--> 
+								<!--
+								-->
+								<button type="action" class="oe_stat_button" 
+									name="%(service_co2_list_action)d"	
+									context="{									
+											'search_default_consultation': active_id,
+											}" 											
+									icon="fa-list">
+
+									<field string="ndyag" name="nr_service_ndyag" widget="statinfo"/>
+								
+								</button>
+
+
+
+
+
+
+
+								
+
 								<!--
 								Procedures
 								<button type="action" class="oe_stat_button" 
@@ -157,30 +304,17 @@
 								</button>
 								-->
 								
-
-
-
+								<!-- Appointments -->
 								<!--
-								Appointments
-											'default_consultation': consultation_id,				
-											'default_treatment': treatment_id,
-								-->
 								<button type="action" class="oe_stat_button" 
-
 									name="347" 
-								
 									context="{
 											'search_default_patient': patient, 'default_patient': patient, 'default_doctor' : doctor, 
-
 											}" 
-								
 									icon="fa-calendar">
-				                
 				                	<field string="Citas" name="nr_apps" widget="statinfo"/>
 				            	</button>
-
-
-
+								--> 
 							</div>
 						
 						

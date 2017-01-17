@@ -9,13 +9,19 @@
 		<record model="ir.ui.view" id="consultation_services_ipl_form_view">
 			<field name="name">consultation.service.ipl.form</field>
 			<field name="model">openhealth.consultation</field>
-			<field name="priority" eval="2"/>
+
+
+			<field name="priority" eval="4"/>
+			
+
 			<field name="inherit_id" ref="consultation_form_view"/>
 			<field name="arch" type="xml">
 				<notebook position="inside">
 					
+
 					
-					<page string="M22-IPL">
+					<page string="IPL"		attrs="{'invisible':[('nr_service_ipl', '=', 0)]}"	>
+
 
 
 						<!--

@@ -33,9 +33,9 @@ class Treatment(models.Model):
 	# State 
 
 	_state_list = [
-        			#('empty', 			'Vacío'),
+        			#('empty', 			'Inicio'),
 
-        			('consultation', 	'Primera Consulta'),
+        			('consultation', 	'Consulta'),
         			
         			('budget', 			'Presupuesto'),
 
@@ -47,7 +47,7 @@ class Treatment(models.Model):
 
         			('controls', 		'Controles'),
 
-        			('done', 		'Completo'),
+        			('done', 			'Completo'),
         		]
 
 	state = fields.Selection(
@@ -57,6 +57,8 @@ class Treatment(models.Model):
 			#string='Estado',	
 			#readonly=True, 
 			#readonly=False, 
+
+			default = False, 
 
 			compute="_compute_state",
 		)
@@ -71,23 +73,21 @@ class Treatment(models.Model):
 
 
 			#con_count=self.env['openhealth.consultation'].search_count([('treatment','=', self.id)]) 
-			#bud_count=self.env['sale.order'].search_count([('treatment','=', self.id)]) 
-
-			
+			#bud_count=self.env['sale.order'].search_count([('treatment','=', self.id)]) 			
 			#if record.consultation_ids.search_count() > 0:
 
 
-			#if con_count > 0:
+			state = False
+
+
 			if record.nr_consultations > 0:
 				state = 'consultation'
 
-			#if bud_count > 0:
 			if record.nr_budgets > 0:
 				state = 'budget'
 
 			if record.nr_invoices > 0:
 				state = 'invoice'
-
 
 
 			record.state = state
@@ -978,4 +978,89 @@ class Treatment(models.Model):
 					#'default_consultation_id': consultation_id,
 				}
 		}
+
+
+
+
+
+# ----------------------------------------------------------- Button - Create Invoice  ------------------------------------------------------
+
+	@api.multi 
+	def create_invoice(self):			# Do Nothing  
+
+		print 'jx'
+		print 'Create Invoice'
+
+	# create_invoice 
+
+
+
+
+# ----------------------------------------------------------- Button - Create Budget  ------------------------------------------------------
+
+	@api.multi 
+	def create_budget(self):			# Do Nothing  
+
+		print 'jx'
+		print 'Create Budget'
+
+
+		#consultation_id = self.consultation.id
+		
+
+		#con_count=self.env['openhealth.consultation'].search_count([('treatment','=', self.id)]) 
+		consultation = self.env['openhealth.consultation'].search([('treatment','=', self.id)]) 
+
+		consultation_id = consultation.id
+
+
+		return {
+
+
+			# Mandatory 
+			'type': 'ir.actions.act_window',
+			'name': 'Open Consultation Current',
+
+
+			# Window action 
+			'res_model': 'openhealth.consultation',
+			'res_id': consultation_id,
+
+
+
+			# Views 
+			"views": [[False, "form"]],
+
+			'view_mode': 'form',
+			'target': 'current',
+
+
+			#'view_id': view_id,
+			#"domain": [["patient", "=", self.patient.name]],
+			#'auto_search': False, 
+
+
+			'flags': {
+					'form': {'action_buttons': True, }
+					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+					},			
+
+
+			#'context':   {
+			#	'search_default_treatment': treatment_id,
+			#	'default_patient': patient_id,
+			#	'default_doctor': doctor_id,
+			#	'default_treatment': treatment_id,				
+			#	'default_evaluation_start_date': evaluation_start_date,
+			#	'default_chief_complaint': chief_complaint,
+			#	'default_appointment': appointment_id,
+			#}
+		}
+
+
+
+
+	# create_budget 
+
+
 

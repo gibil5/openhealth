@@ -445,7 +445,9 @@ class sale_order(models.Model):
 
 										
 										'consultation':consultation.id,
-										'state':'pre-draft',
+										
+										#'state':'pre-draft',
+										'state':'draft',
 
 
 										'name': name,

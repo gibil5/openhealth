@@ -40,7 +40,7 @@ class sale_order_line(models.Model):
 
 
 	_state_list = [
-        			('pre-draft', 'Pre-Quotation'),
+        			#('pre-draft', 'Pre-Quotation'),
 
         			('draft', 'Quotation'),
         			('sent', 'Quotation Sent'),

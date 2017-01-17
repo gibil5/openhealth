@@ -53,6 +53,8 @@
 		</record>
 
 
+
+
 		<!-- Window action -->
 		<record model="ir.actions.act_window" id="service_excilite_list_action">
 			<field name="name">Servicios Excilite</field>

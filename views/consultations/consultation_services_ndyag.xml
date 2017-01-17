@@ -9,12 +9,19 @@
 		<record model="ir.ui.view" id="consultation_services_ndyag_form_view">
 			<field name="name">consultation.service.ndyag.form</field>
 			<field name="model">openhealth.consultation</field>
-			<field name="priority" eval="2"/>
+
+
+			<field name="priority" eval="5"/>
+			
+
 			<field name="inherit_id" ref="consultation_form_view"/>
 			<field name="arch" type="xml">
 				<notebook position="inside">
 					
-					<page string="M22-NDYAG">
+
+
+					<page string="NDYAG"		attrs="{'invisible':[('nr_service_ndyag', '=', 0)]}"	>
+
 
 
 						<!--

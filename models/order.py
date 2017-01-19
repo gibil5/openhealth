@@ -761,8 +761,10 @@ class sale_order(models.Model):
 		
 
 
+		# Confirm 
 		if self.x_appointment.x_machine != False: 
 			self.x_appointment.state = 'Scheduled'
+
 
 
 		res = super(sale_order, self).write(vals)
@@ -851,7 +853,7 @@ class sale_order(models.Model):
 		#x_machine = appfuncs.search_machine(self, appointment_date, doctor_name, duration)
 		x_machine = appfuncs.search_machine(self, appointment_date, doctor_name, duration, start_machine)
 		
-		#self.x_machine = x_machine 
+		self.x_machine = x_machine 
 		self.x_appointment.x_machine = x_machine
 
 
@@ -914,7 +916,5 @@ class sale_order(models.Model):
 
 
 #sale_order()
-
-
 
 

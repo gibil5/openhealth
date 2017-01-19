@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+		<!--
+		service_co2
+		-->
+		<record model="ir.ui.view" id="treatment_service_co2_form_view">
+			<field name="name">treatment.service_co2.form</field>
+			<field name="model">openextension.treatment</field>
+
+
+			<field name="priority" eval="2"/>
+
+			
+			<field name="inherit_id" ref="treatment_form_view"/>
+			<field name="arch" type="xml">
+				<notebook position="inside">
+					
+
+					<page string="Rec. - Co2">
+
+						<field name="service_co2_ids"/>						
+
+					</page>
+
+
+				</notebook>
+			</field>
+		</record>
+	</data>
+</openerp>

@@ -284,9 +284,8 @@ class Appointment(models.Model):
 			
 			string = "Paciente", 	
 
-			#default=3025, 		# Revilla 
-			#default=3052, 		# Suarez Vertiz
-			#default = defaults._patient 
+
+			default = defaults._patient 
 
 			#required=True, 
 		)
@@ -367,10 +366,10 @@ class Appointment(models.Model):
 	doctor = fields.Many2one(
 			'oeh.medical.physician',
 			
-			#default=1, 				# Chavarri
-			#default=defaults._doctor,
-
 			#string = "Médico", 	
+
+
+			default=defaults._doctor,
 
 			#required=True, 
 			required=False, 
@@ -1288,8 +1287,11 @@ class Appointment(models.Model):
 		if 'patient' in vals:
 			patient = vals['patient']
 
-		treatment = vals['treatment']
-		
+
+		if 'treatment' in vals:
+			treatment = vals['treatment']
+			print "treatment: ", treatment
+
 
 		x_create_procedure_automatic = vals['x_create_procedure_automatic']
 		#x_chief_complaint = vals['x_chief_complaint']
@@ -1299,13 +1301,13 @@ class Appointment(models.Model):
 		print "x_type: ", x_type
 		print "patient: ", patient
 		
-		print "treatment: ", treatment
-		print self.treatment
 
 		print "x_create_procedure_automatic: ", x_create_procedure_automatic 
 		#print x_chief_complaint
 		print
 
+
+		print self.treatment
 
 
 
@@ -1329,6 +1331,7 @@ class Appointment(models.Model):
 			#app = self.create_app_procedure(appointment_date, doctor, patient, treatment, x_create_procedure_automatic, False)
 			#app = appfuncs.create_app_procedure(self, appointment_date, doctor, patient, treatment, x_create_procedure_automatic, False)
 			
+			#app = appfuncs.create_app_procedure(self, adate_base, doctor, patient, treatment, x_create_procedure_automatic, False)
 			app = appfuncs.create_app_procedure(self, adate_base, doctor, patient, treatment, x_create_procedure_automatic, False)
 			#print app 
 

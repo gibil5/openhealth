@@ -837,7 +837,11 @@ class Consultation(models.Model):
 	def create_service_co2(self):  
 
 		consultation_id = self.id 
+
+		treatment_id = self.treatment.id 
+
 		
+
 		laser = 'laser_co2'
 		zone = ''	
 		pathology = ''
@@ -859,8 +863,12 @@ class Consultation(models.Model):
 							'form': {'action_buttons': True, }
 							},
 
+
 				'context': {
-							'default_consultation': consultation_id,					
+							'default_consultation': consultation_id,
+
+							'default_treatment': treatment_id,
+
 
 							'default_laser': laser,
 							'default_zone': zone,

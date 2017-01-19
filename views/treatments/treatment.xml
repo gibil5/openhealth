@@ -32,7 +32,7 @@
 							
 							attrs="{'invisible':[
 												
-												('state','in',['consultation', 'budget', 'invoice', 'procedure', 'sessions', 'controls', 'done']), 
+												('state','in',['consultation', 'service', 'budget', 'invoice', 'procedure', 'sessions', 'controls', 'done']), 
 
 												]}"
 
@@ -43,14 +43,34 @@
 
 
 
+
 						<button 
 							type="object" 
 							class="oe_highlight"
 
+							string="Crear Recomendación" 
+
+							attrs="{'invisible':[
+												('state','in',[ False, 'service', 'budget', 'invoice', 'procedure', 'sessions', 'controls', 'done']),
+												]}"
+
+
+							name="create_service" 
+						/>
+
+
+
+
+
+
+						<button 
+							type="object" 
+							class="oe_highlight"
+  
 							string="Crear Presupuesto" 
 
 							attrs="{'invisible':[
-												('state','in',[ False, 'budget', 'invoice', 'procedure', 'sessions', 'controls', 'done']),
+												('state','in',[ False, 'consultation', 'budget', 'invoice', 'procedure', 'sessions', 'controls', 'done']),
 												]}"
 
 
@@ -66,7 +86,7 @@
 							string="Pagar en Caja" 
 
 							attrs="{'invisible':[
-												('state','in',[ False, 'consultation', 'invoice', 'procedure', 'sessions', 'controls', 'done']),
+												('state','in',[ False, 'consultation', 'service', 'invoice', 'procedure', 'sessions', 'controls', 'done']),
 												]}"
 
 
@@ -96,7 +116,7 @@
 							attrs="{ 
 									'invisible':[
 												
-												('state','in',[ False, 'consultation', 'budget', 'procedure', 'sessions', 'controls', 'done']), 
+												('state','in',[ False, 'consultation', 'service', 'budget', 'procedure', 'sessions', 'controls', 'done']), 
 												
 												]}"
 
@@ -120,7 +140,7 @@
 							attrs="{ 
 									'invisible':[
 												
-												('state','in',[ False, 'consultation', 'budget', 'invoice', 'sessions', 'controls', 'done']), 
+												('state','in',[ False, 'consultation', 'service', 'budget', 'invoice', 'sessions', 'controls', 'done']), 
 												
 												]}"
 
@@ -141,7 +161,7 @@
 							attrs="{ 
 									'invisible':[
 												
-												('state','in',[ False, 'consultation', 'budget', 'invoice', 'procedure', 'controls', 'done']), 
+												('state','in',[ False, 'consultation', 'service', 'budget', 'invoice', 'procedure', 'controls', 'done']), 
 												
 												]}"
 
@@ -159,7 +179,7 @@
 						<!-- State --> 
 	                    <field name="state" widget="statusbar" 
 
-	                    					statusbar_visible="consultation, budget, invoice, procedure, sessions, controls,  done"/>
+	                    					statusbar_visible="consultation, service, budget, invoice, procedure, sessions, controls,  done"/>
 
 
 
@@ -339,6 +359,20 @@ Top
 									<field string="Consulta" name="nr_consultations" widget="statinfo"/>
 								</button>
 								
+
+
+
+								<!-- Services -->
+								<button type="action" class="oe_stat_button" 
+									name="%(service_list_action)d"	
+									context="{									
+											'search_default_treatment': active_id,
+											}" 											
+									icon="fa-list">
+
+									<field string="Recomendación" name="nr_services" widget="statinfo"/>
+								</button>
+
 
 							
 
@@ -621,6 +655,10 @@ Notebook
 				<tree string="Treatment Tree">
 					
 					<field name="name"/>
+
+					<field name="id"/>
+
+
 
 					<!--
 					<field name="treatment_open"/>

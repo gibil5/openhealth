@@ -17,11 +17,14 @@
     	EMR (Electronic Medical Records) for Laser\n
     	Clinica Chavarri\n
 
-		Built: 	16 Jan 2017.\n 
+
+		Built: 	19 Jan 2017.\n 
 		Installed: 	 	7 Sep 2016.\n 
 		Active: 4 months.\n
 		---
 		\n
+
+
 
 		This is my first extension for oeHealth.
 		Completely independent and self-referecing.\n
@@ -148,10 +151,12 @@
 		'views/treatments/treatment_appointments.xml',
 		'views/treatments/treatment_reservations.xml',
 
-
 		'views/treatments/treatment_sessions.xml',
-
 		'views/treatments/treatment_controls.xml',
+
+
+
+		'views/treatments/treatment_services.xml',
 
 		
 		

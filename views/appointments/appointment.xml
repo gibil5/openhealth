@@ -19,47 +19,93 @@
 
 
 
-				<!-- Remove -->
+
+
+				<!-- Buttons -->
+				<!--
 				<xpath expr="//field[@name='name']" position="after">
+				<xpath expr="//header" position="inside">
+				-->
+
+				<xpath expr="//field[@name='state']" position="before">
+
+					<div class="oe_left">
+							<button 
+								type="object" 
+								class="oe_highlight"
+								string="Remove" 
+
+								name="remove_appointment" 
+							/>
+					</div>
 
 					<div class="oe_right">
 							<button 
 								type="object" 
 								class="oe_highlight"
-								string="Eliminar" 
-
-								name="remove_appointment" 
+								string="Buscar Sala" 
+								name="search_machine_button" 
 							/>
 					</div>
 				</xpath>
 
 
 
+				<!--
+				<xpath expr="//notebook" position="replace">
+				<xpath expr="//page[@string='Comments']" position="after">
+				-->
+				<xpath expr="//page" position="replace">
+				</xpath>
+				<xpath expr="//page" position="replace">
+				</xpath>
 
 
 
 
 
 
+				<!-- Patient --> 
+				<!--
 				<xpath expr="//field[@name='patient']" position="replace">					
 					<field name="patient"/>					
 					<field name="vspace"/>
 				</xpath>
+				-->
 
 
 
 
-
-
+				<!-- Institution --> 
 				<xpath expr="//field[@name='institution']" position="replace">
+					<!--											
+					<field name="institution"/>		
+
 					<field name="x_duration_min"	attrs="{	'readonly':[('x_type', '!=', 'session')], 
 																'invisible':[('x_type', '!=', 'session')]	}"/>
+					-->
+
+							<field name="x_machine"		attrs="{'invisible':[('x_type', '!=', 'procedure')]}"/>
+
+
+
+					<!--					
+					<group>
+						<group>
+						</group>
+
+						<group>							
+						</group>							
+					</group>						
+					-->
+
+			
 				</xpath>
 
 
 
 
-
+				<!-- Doctor --> 
 				<xpath expr="//field[@name='doctor']" position="replace">					
 					
 					<!--
@@ -78,12 +124,6 @@
 
 
 
-
-
-
-
-					<field name="x_target"		invisible="1"/>
-
 					<!--
 					<field name="x_machine"		attrs="{
 														'invisible':[('x_target', '!=', 'machine'),],
@@ -91,15 +131,15 @@
 														}"/>
 					-->
 
+
 					<field name="doctor"		required="1"/>									
 					<field name="vspace"/>
 					
 
+					<!--
 					<field name="x_doctor_code"/>									
-
-
 					<field name="vspace"/>
-				
+					-->				
 				</xpath>
 
 
@@ -112,13 +152,6 @@
 				<xpath expr="//field[@name='appointment_date']" position="replace">					
 				<!--
 				-->
-					<field name="appointment_date"		attrs="{'invisible':[
-																				('state', '=', 'pre_scheduled_control'),
-																			]}"/>
-
-					<field name="x_date"				attrs="{'invisible':[
-																				('state', '!=', 'pre_scheduled_control'),
-																			]}"/>
 				</xpath>
 
 
@@ -128,41 +161,18 @@
 
 				<xpath expr="//field[@name='patient_status']" position="replace">
 					<!--
-					<field name="patient_status"	/>
 					<field name="appointment_end"	/>
+					<field name="patient_status"	/>
 					-->
 				</xpath>
 
 
-
-
-
 				<xpath expr="//field[@name='duration']" position="replace">
-					
-					<group>
-
-						<group>
-							<field name="x_machine"/>
-							<field name="vspace"/>
-
+							<!--
 							<field name="x_target"/>
 							<field name="vspace"/>
-
-
 							<field name="vspace"/>
-							<field name="duration"/>	
-						</group>
-
-						<group class="">							
-							<button 
-								type="object" 
-								class="oe_highlight"
-								string="Buscar Sala" 
-								name="search_machine_button" 
-							/>
-						</group>							
-					</group>						
-
+							-->
 				</xpath>
 
 
@@ -179,15 +189,18 @@
 				-->
 
 				<xpath expr="//field[@name='urgency_level']" position="replace">
+					<!--
+					<field name="urgency_level"/>	
+					-->
 				</xpath>
 
 
-				<!--
-				<xpath expr="//field[@name='description']" position="after">
 
-				<xpath expr="//field[@name='patient_status']" position="after">
-				-->
 
+
+
+
+				<!-- Notebook --> 
 				<xpath expr="//notebook" position="before">
 				<!--
 				<field name="patient_status" position="after">
@@ -208,10 +221,28 @@
 							<field name="x_type_cal"/>
 							-->
 
+
+
 							<field name="x_type"/>
 
+							<field name="vspace"/>
+
+
+
+
+							<field name="appointment_date"		attrs="{'invisible':[('state', '=', 'pre_scheduled_control'),]}"/>
+
+							<field name="x_date"				attrs="{'invisible':[('state', '!=', 'pre_scheduled_control'),]}"/>
 
 							<field name="vspace"/>
+
+
+
+							<field name="duration"/>	
+
+							<field name="vspace"/>
+
+
 
 
 							<field name="state"/>
@@ -220,8 +251,7 @@
 
 
 
-
-							<field name="treatment"/>
+							<field name="treatment"		readonly="0"/>
 
 
 							<!--
@@ -361,7 +391,7 @@
 					<field name="x_type"/>
 
 
-					<field name="x_machine"/>
+					<field name="x_machine"		/>
 					<field name="x_target"/>
 
 

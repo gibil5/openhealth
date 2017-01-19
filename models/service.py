@@ -40,6 +40,31 @@ class Service(models.Model):
 
 
 
+
+	# Treatement 
+
+	# Treatment 
+	#treatment_id = fields.Many2one('openextension.treatment',
+	treatment = fields.Many2one('openextension.treatment',
+			ondelete='cascade', 
+			
+			#string="Treatment", 
+			string="Tratamiento", 
+			)
+
+
+	# Treatment - Deprecated 
+	#treatment = fields.Selection(
+	#		selection = prodvars._treatment_list, 
+	#	)
+
+
+
+
+
+
+
+
 	# Commons 
 	def clear_all(self,token):
 		self.clear_commons		
@@ -215,12 +240,6 @@ class Service(models.Model):
 
 
 
-	# Treatment 
-	treatment_id = fields.Many2one('openextension.treatment',
-			ondelete='cascade', 
-			#string="Treatment", 
-			string="Tratamiento", 
-			)
 
 
 
@@ -236,10 +255,6 @@ class Service(models.Model):
 	#	)
 
 
-	# Treatment
-	treatment = fields.Selection(
-			selection = prodvars._treatment_list, 
-		)
 
 
 

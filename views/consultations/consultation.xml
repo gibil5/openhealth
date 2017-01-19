@@ -34,76 +34,60 @@
 						
 
 
-						<button 
-							type="object" 
-							class="oe_highlight"	
-
-							string="Crear Servicio - LASER CO2"
-
-				
-							attrs="{'invisible':[
-												('nr_service','>', 0), 
-												]}"
-
-
-							name="create_service_co2" 	
-						/>
-
-
-
-
-						<button 
-							type="object" 
-							class="oe_highlight"	
-							string=" EXCILITE"
-				
-							attrs="{'invisible':[
-												('nr_service','>', 0), 
-												]}"
-
-							name="create_service_excilite" 	
-						/>
-
-
-						<button 
-							type="object" 
-							class="oe_highlight"	
-							string=" M22-IPL"
-				
-							attrs="{'invisible':[
-												('nr_service','>', 0), 
-												]}"
-
-							name="create_service_ipl" 	
-						/>
-
-						<button 
-							type="object" 
-							class="oe_highlight"	
-							string=" M22-NDYAG"
-
-							attrs="{'invisible':[
-												('nr_service','>', 0), 
-												]}"
-				
-							name="create_service_ndyag" 	
-						/>
-
-
 						<!--
+						<div		attrs="{'invisible':[('nr_service','>', 0),]}">
 						-->
-						<button 
-							type="object" 
-							class="oe_highlight"	
-							string="T. MEDICO"
+						<div>
 
-							attrs="{'invisible':[
-												('nr_service','>', 0), 
-												]}"
+							<!-- CO2 --> 
+							<button 
+								type="object" 
+								class="oe_highlight"	
+
+								string="Crear Servicio - LASER CO2"
+
+								name="create_service_co2" 	
+							/>
+
+
+							<!-- Excilite -->
+							<button 
+								type="object" 
+								class="oe_highlight"	
+								string=" EXCILITE"
 				
-							name="create_service_medical" 	
-						/>
+								name="create_service_excilite" 	
+							/>
 
+
+							<!-- M22-IPL --> 
+							<button 
+								type="object" 
+								class="oe_highlight"	
+								string=" M22-IPL"
+				
+								name="create_service_ipl" 	
+							/>
+
+							<!-- M22-NDYAG --> 
+							<button 
+								type="object" 
+								class="oe_highlight"	
+								string=" M22-NDYAG"
+				
+								name="create_service_ndyag" 	
+							/>
+
+
+							<!-- T. MEDICO -->
+							<button 
+								type="object" 
+								class="oe_highlight"	
+								string="T. MEDICO"
+				
+								name="create_service_medical" 	
+							/>
+						</div>
 
 
 

@@ -36,6 +36,11 @@ class Treatment(models.Model):
         			#('empty', 			'Inicio'),
 
         			('consultation', 	'Consulta'),
+
+        			('service', 		'Recomendación'),
+
+
+
         			
         			('budget', 			'Presupuesto'),
 
@@ -83,6 +88,11 @@ class Treatment(models.Model):
 			if record.nr_consultations > 0:
 				state = 'consultation'
 
+			if record.nr_services > 0:
+				state = 'service'
+
+
+
 			if record.nr_budgets > 0:
 				state = 'budget'
 
@@ -106,6 +116,34 @@ class Treatment(models.Model):
 
 
 
+
+
+# ----------------------------------------------------------- Number ofs ------------------------------------------------------
+
+
+	# Number of Services  
+	nr_services = fields.Integer(
+			string="Servicios",
+			compute="_compute_nr_services",
+	)
+	@api.multi
+	def _compute_nr_services(self):
+		for record in self:
+
+			co2 =		self.env['openhealth.service.co2'].search_count([('treatment','=', record.id),]) 
+			exc = 		self.env['openhealth.service.excilite'].search_count([('treatment','=', record.id),]) 
+			ipl = 		self.env['openhealth.service.ipl'].search_count([('treatment','=', record.id),]) 
+			ndyag = 	self.env['openhealth.service.ndyag'].search_count([('treatment','=', record.id),]) 
+			medical =	self.env['openhealth.service.medical'].search_count([('treatment','=', record.id),]) 
+
+
+			record.nr_services= co2 + exc + ipl + ndyag + medical
+
+
+
+
+
+
 	# Number of budgets 
 	nr_budgets = fields.Integer(
 			string="Presupuestos",
@@ -116,7 +154,7 @@ class Treatment(models.Model):
 		for record in self:
 
 			record.nr_budgets=self.env['sale.order'].search_count([
-																	('treatment','=', self.id),
+																	('treatment','=', record.id),
 																	('state','=', 'draft'),
 																	('x_family','=', 'private'),
 																	]) 
@@ -131,7 +169,7 @@ class Treatment(models.Model):
 		for record in self:
 
 			record.nr_invoices=self.env['sale.order'].search_count([
-																	('treatment','=', self.id),
+																	('treatment','=', record.id),
 																	('state','=', 'sale'),
 																	]) 
 
@@ -149,7 +187,7 @@ class Treatment(models.Model):
 
 			record.nr_procedures=self.env['openhealth.procedure'].search_count([
 
-																	('treatment','=', self.id),
+																	('treatment','=', record.id),
 
 																	]) 
 
@@ -166,11 +204,9 @@ class Treatment(models.Model):
 		for record in self:
 
 			record.nr_sessions=self.env['openhealth.session'].search_count([
-
-																	('treatment','=', self.id),
-
+																	('treatment','=', record.id),
 																	]) 
-
+			record.nr_sessions=0
 
 
 
@@ -183,18 +219,19 @@ class Treatment(models.Model):
 	def _compute_nr_controls(self):
 		for record in self:
 
+			record.nr_controls=0
 			record.nr_controls=self.env['openhealth.control'].search_count([
-
-																	('treatment','=', self.id),
-
-																	]) 
-
+																	('treatment','=', record.id),	
+																	])																	
+																	#order='appointment_date desc', limit=1)
 
 
 
 
 
 
+
+# ----------------------------------------------------------- Relational ------------------------------------------------------
 
 
 	# Reservations 
@@ -647,6 +684,8 @@ class Treatment(models.Model):
 	#		default = 0, 
 	#		)
 
+
+
 	#@api.depends('service_ids')
 	#def _compute_nr_services(self):
 	#	for record in self:
@@ -691,6 +730,15 @@ class Treatment(models.Model):
 	#		)
 
 
+
+	# Service 
+	service_co2_ids = fields.One2many(
+			'openhealth.service.co2', 
+			'treatment', 
+
+			#string="Services"
+			string="Servicios Co2"
+			)
 
 
 
@@ -1039,26 +1087,23 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Button - Create Budget  ------------------------------------------------------
+
+
+
+# ----------------------------------------------------------- Button - Create Service  ------------------------------------------------------
 
 	@api.multi 
-	def create_budget(self):
+	def create_service(self):
 
 		print 'jx'
-		print 'Create Budget'
+		print 'Create Service'
 
 
-		#consultation_id = self.consultation.id
-		
-
-		#con_count=self.env['openhealth.consultation'].search_count([('treatment','=', self.id)]) 
 		consultation = self.env['openhealth.consultation'].search([('treatment','=', self.id)]) 
-
 		consultation_id = consultation.id
 
 
 		return {
-
 
 			# Mandatory 
 			'type': 'ir.actions.act_window',
@@ -1082,6 +1127,69 @@ class Treatment(models.Model):
 			#"domain": [["patient", "=", self.patient.name]],
 			#'auto_search': False, 
 
+			'flags': {
+					'form': {'action_buttons': True, }
+					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+					},			
+
+			#'context':   {
+			#}
+		}
+
+
+
+
+	# create_recommedation
+
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Button - Create Budget  ------------------------------------------------------
+
+	@api.multi 
+	def create_budget(self):
+
+		print 'jx'
+		print 'Create Budget'
+
+
+		#consultation_id = self.consultation.id
+		
+
+		#con_count=self.env['openhealth.consultation'].search_count([('treatment','=', self.id)]) 
+		consultation = self.env['openhealth.consultation'].search([('treatment','=', self.id)]) 
+
+		consultation_id = consultation.id
+
+
+		return {
+
+			# Mandatory 
+			'type': 'ir.actions.act_window',
+			'name': 'Open Consultation Current',
+
+
+			# Window action 
+			'res_model': 'openhealth.consultation',
+			'res_id': consultation_id,
+
+
+
+			# Views 
+			"views": [[False, "form"]],
+
+			'view_mode': 'form',
+			'target': 'current',
+
+
+			#'view_id': view_id,
+			#"domain": [["patient", "=", self.patient.name]],
+			#'auto_search': False, 
 
 			'flags': {
 					'form': {'action_buttons': True, }

@@ -22,6 +22,7 @@
 					<header>
 
 						<!--
+						-->
 						<button 
 							type="object" 
 							class="oe_highlight"	
@@ -30,14 +31,7 @@
 				
 							name="create_service" 	
 						/>
-						-->
 						
-
-
-						<!--
-						<div		attrs="{'invisible':[('nr_service','>', 0),]}">
-						-->
-						<div>
 
 							<!-- CO2 --> 
 							<button 
@@ -58,6 +52,14 @@
 				
 								name="create_service_excilite" 	
 							/>
+
+
+
+						<!--
+						<div		attrs="{'invisible':[('nr_service','>', 0),]}">
+						-->
+						<div>
+
 
 
 							<!-- M22-IPL --> 
@@ -93,15 +95,12 @@
 
 
 						<!--
-												('nr_orders','>', 0), 
-
-							attrs="{
-									'invisible':[
-												('nr_service','=', 0), 
-												('nr_orders','=', 0), 
-												],
-									}"
 						
+							attrs="{'invisible':[
+													'|',
+													('nr_service', '==', 0),
+													('nr_orders','>', 0) 
+												]}"
 						-->							
 
 						<button 
@@ -110,16 +109,10 @@
 
 							string="Crear Presupuesto" 
 
-
-							attrs="{'invisible':[
-													'|',
-													('nr_service', '==', 0),
-													('nr_orders','>', 0) 
-												]}"
-
-
 							name="create_order_current" 
 						/>
+
+
 
 
 						<!--

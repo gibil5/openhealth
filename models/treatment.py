@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 #
-# 	*** Treatment
+# 	*** Treatment - OeHealth - new model 
 # 
 # Created: 			26 Aug 2016
 # Last updated: 	 7 Dec 2016
-
 
 
 from openerp import models, fields, api

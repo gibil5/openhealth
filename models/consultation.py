@@ -853,8 +853,8 @@ class Consultation(models.Model):
 				'view_type': 'form',
 				'view_mode': 'form',	
 				'target': 'current',
-				'res_model': 'openhealth.service.co2',				
 
+				'res_model': 'openhealth.service.co2',				
 				#'res_id': consultation_id,
 
 
@@ -888,8 +888,16 @@ class Consultation(models.Model):
 	@api.multi
 	def create_service_excilite(self):  
 
+		print 
+		print 'jx'
+		print 'Create Service Excilite'
+		print 
+
 		consultation_id = self.id 
-		
+
+		#treatment_id = self.treatment.id 
+
+
 		laser = 'laser_excilite'
 		zone = ''	
 		pathology = ''
@@ -901,10 +909,9 @@ class Consultation(models.Model):
 				'view_type': 'form',
 				'view_mode': 'form',			
 				'target': 'current',				
-				
-				#'res_id': 23,
-				
+								
 				'res_model': 'createhealth.service.excilite',				
+				#'res_id': 23,
 				
 				'flags': 	{
 							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
@@ -912,12 +919,14 @@ class Consultation(models.Model):
 							},
 
 				'context': {
-							'default_consultation': consultation_id,					
+							'default_consultation': consultation_id,	
+
+							#'default_treatment': treatment_id,
+
 
 							'default_laser': laser,
 							'default_zone': zone,
 							'default_pathology': pathology,
-
 							}
 				}
 				
@@ -933,6 +942,8 @@ class Consultation(models.Model):
 	def create_service_ipl(self):  
 
 		consultation_id = self.id 
+		treatment_id = self.treatment.id 
+
 		
 		laser = 'laser_ipl'
 		zone = ''	
@@ -958,10 +969,12 @@ class Consultation(models.Model):
 				'context': {
 							'default_consultation': consultation_id,					
 
+							'default_treatment': treatment_id,
+
+
 							'default_laser': laser,
 							'default_zone': zone,
 							'default_pathology': pathology,
-
 							}
 				}
 

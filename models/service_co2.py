@@ -13,7 +13,9 @@ class ServiceCo2(models.Model):
 	_inherit = 'openhealth.service'
 	
 	
-		
+
+
+
 	# Service 
 	service = fields.Many2one(
 			'product.template',
@@ -21,8 +23,6 @@ class ServiceCo2(models.Model):
 			domain = [
 						('type', '=', 'service'),
 						('x_treatment', '=', 'laser_co2'),
-
-						#('x_treatment', '=', 'lepismatic'),
 					],
 	)
 	

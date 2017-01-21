@@ -71,7 +71,9 @@
 								
 								<group>
 									<field name="consultation" readonly="1" invisible="0"/>
+									<!--
 									<field name="treatment" readonly="1" invisible="0"/>
+									-->
 								</group>
 								
 								<!--

@@ -17,13 +17,10 @@ class sale_order_line(models.Model):
 
 
 
-
 	order_id=fields.Many2one(
 		'sale.order',
 		string='Order',
 		)
-
-
 
 
 
@@ -122,6 +119,8 @@ class sale_order_line(models.Model):
 			#compute="_compute_price_total",
 		)
 
+
+
 	#@api.multi
 	#@api.depends('x_price')	
 	#def _compute_price_total(self):
@@ -172,34 +171,9 @@ class sale_order_line(models.Model):
 
 
 
-	# Procedure
-	#x_appointment_date = fields.Datetime(
-	#		string="Fecha", 
-			#readonly=True,
-			#readonly=False,
-			#states={'Scheduled': [('readonly', False)]})
-	#		)
-
-	#x_doctor_name = fields.Char(
-	#		string="Médico", 
-	#	)
-
-	#x_machine = fields.Selection(
-	#		string="Sala", 
-	#		selection = jxvars._machines_list, 
-			#required=True, 
-	#	)
-
-	#x_duration = fields.Float(
-	#		string="Duración", 
-	#	)
 
 
-# ------------------------------------------------------------------------------------------------------------------------------#
-#  																															  	#
-# ----------------------------------------------------------- Order line -------------------------------------------------------#
-#																																#
-# ------------------------------------------------------------------------------------------------------------------------------#
+
 
 
 #sale_order_line()

@@ -13,6 +13,8 @@ class ServiceExcilite(models.Model):
 	_inherit = 'openhealth.service'
 	
 	
+
+
 	
 	# Service 
 	service = fields.Many2one(
@@ -25,6 +27,8 @@ class ServiceExcilite(models.Model):
 	)
 	
 	
+
+
 	
 	# Propietary
 	

@@ -47,23 +47,22 @@
 
 
 
-		<!-- service tree/list view -->
+
+
+		<!-- Order Line tree/list view -->
+		<!--
 		<record model="ir.ui.view" id="sale.view_order_line_tree">
 			<field name="name">sale.order.line.tree</field>
 			<field name="model">sale.order.line</field>
-
 			<field name="arch" type="xml">
-				
 				<tree string="Order Line Tree">
-				
+                    <field name="id"/>
+
+
 
                     <field name="product_id"/>
 				
 					<field name="name"/>
-
-					<!--
-                    <field name="id"/>
-					-->
 
 					<field name="consultation"/>
 
@@ -71,17 +70,15 @@
 
 					<field name="state"/>
 
-                    <!--
-					--> 
                     <field name="price_subtotal"  invisible="1"/>
 
                     <field name="price_total"/>
-					
 
 				</tree>
-				
 			</field>
 		</record>
+		--> 
+
 
 
 

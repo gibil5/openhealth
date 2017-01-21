@@ -47,65 +47,42 @@
 
 
 
+				<!--
+				
+				Order Line - Replace - Deprecated  
+
 				<field name="order_line" position="replace">
 
 					<field name="order_line">
 
 						<tree string="Order Line Tree">
 					
-    	                	<!--
+
         	            	<field name="name"/>
-							-->
+        	            	<field name="product_uom_qty"	string="Cantidad"/>
+            	        	<field name="x_price"/>
+            	        	<field name="x_price_vip"/>
+            	        	<field name="price_unit"/>
+            	        	<field name="tax_id"/>
+            	        	<field name="price_subtotal"/>
+            	        	<field name="price_total"/>
+
+
 
 
     	                	<field name="product_id" 	string="Producto"/>
 
         	            	<field name="x_type"/>
 
-        	            	<!--
-        	            	<field name="product_uom_qty"	string="Cantidad"/>
-							-->
-
-        	            	<!--
-            	        	<field name="x_price"/>
-            	        	-->
             	        	<field name="x_price_wigv"/>
 
-
-            	        	<!--
-            	        	<field name="x_price_vip"/>
-            	        	--> 
             	        	<field name="x_price_vip_wigv"/>
-
-
-            	        	<!--
-            	        	<field name="price_unit"/>
-							-->
-            	        	<!--
-            	        	<field name="tax_id"/>
-            	        	<field name="price_subtotal"/>
-
-
-            	        	<field name="price_total"/>
-							--> 
-
-							<!--
-            	        		<field name="x_doctor_name"/>
-            	        		<field name="x_appointment_date"/>
-            	        		<field name="x_duration"/>
-            	        		<field name="x_machine"/>
-							-->
 						</tree>
-
 					</field>
 
 
 
-
-
 					<field name="vspace"/>
-					<!--
-					-->
 					<group col="3">
 
 						<group>
@@ -121,6 +98,7 @@
 					</group>
 
 				</field>
+				-->
 
 
 

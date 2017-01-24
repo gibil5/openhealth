@@ -4,6 +4,10 @@
 
 
 
+
+
+
+		<!-- Form view -->
 		<record model="ir.ui.view" id="view_appointment">
 
 			<field name="name">oeh.medical.appointment.form</field>

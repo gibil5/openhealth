@@ -15,17 +15,28 @@ class Product(models.Model):
 
 
 
+
+	# WTF ? 
+	x_name_short = fields.Char()
+
+	x_time = fields.Char()
+
+	#state = fields.Char()
+
+
+
+
+
+
+	# Before 
 	x_date_updated = fields.Date(
 			)
 
 	x_date_created = fields.Date(
 			)
 
-
-
-
 	x_price_vip = fields.Float(
-		string = 'Precio VIP - nex',
+		#string = 'Precio VIP - nex',
 	)
 
 
@@ -60,8 +71,7 @@ class Product(models.Model):
 
 	#x_sessions = fields.Integer(
 	x_sessions = fields.Char(
-		string = 'Sesiones',
-		
+		#string = 'Sesiones',
 		default="",
 	)
 

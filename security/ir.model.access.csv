@@ -27,6 +27,10 @@ access_openhealth_service_medical,openhealth.service_medical,model_openhealth_se
 
 access_sale_order,sale.order,model_sale_order,,1,1,1,1
 
+access_sale_order_line,sale.order_line,model_sale_order_line,,1,1,1,1
+
+
+
 access_oeh_medical_physician,oeh.medical.physician,oehealth.model_oeh_medical_physician,oehealth.group_oeh_medical_physician,1,1,1,1
 
 access_product_product,product.product,product.model_product_product,,1,1,1,1

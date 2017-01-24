@@ -6,8 +6,10 @@
 # In OpenHealth - Base 
 #from . import patient  
 #from . import partner
-#from . import product
-#from . import evaluation  
+
+
+from . import product
+from . import evaluation  
 
 
 

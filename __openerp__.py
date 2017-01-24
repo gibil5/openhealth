@@ -140,16 +140,23 @@
 		# Partners 
 		#'views/partners/partner.xml',
 
+
+
+
+
 		# Evaluations
-		#'views/evaluations/evaluation.xml',
-		#'views/evaluations/evaluation_oeh.xml',
+		'views/evaluations/evaluation.xml',
+		'views/evaluations/evaluation_oeh.xml',
+
+
 
 		# Products
-		#'views/products/product.xml',
-		#'views/products/product_excilite.xml',
-		#'views/products/product_ipl.xml',
-		#'views/products/product_ndyag.xml',
-		#'views/products/product_medical.xml',
+		'views/products/product.xml',
+		
+		'views/products/product_excilite.xml',
+		'views/products/product_ipl.xml',
+		'views/products/product_ndyag.xml',
+		'views/products/product_medical.xml',
 
 
 
@@ -164,11 +171,12 @@
 # ----------------------------------------------------------- Ok ------------------------------------------------------
 
 
-		'views/openhealth.xml',
+		# Static - Stylesheet 
+		'views/openhealth.xml',		
 
 
-		# Base 
-		'views/base.xml',
+		# Base
+		'views/base.xml',		# Dependencies - Actions 
 
 
 
@@ -227,6 +235,7 @@
 		#'views/controls/control_protocols.xml',
 
 
+
 		# sessions
 		'views/sessions/session.xml',
 		'views/sessions/session_configuration.xml',
@@ -242,6 +251,7 @@
 
 		# Services
 		'views/services/service.xml',
+
 		'views/services/service_co2.xml',
 		'views/services/service_co2_zone.xml',
 		'views/services/service_excilite.xml',
@@ -256,7 +266,7 @@
 
 		
 		# Templates
-		#'views/templates/template.xml',
+		#'views/templates/template.xml',	# Template - Change Title
 
 
 

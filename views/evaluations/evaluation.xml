@@ -19,8 +19,15 @@
 							
 							<group string="Evaluation">
 
-								<field string="Name"  name="name"/>		
+								<field string="Name"  name="name"/>	
+
+
+								<!--
 								<field string="Treatment id" name="treatment_id" />
+								-->
+								<field string="Treatment" name="treatment" />
+								
+
 								<field name="patient" />
 								<field name="doctor" />
 

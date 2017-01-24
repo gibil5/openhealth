@@ -433,21 +433,18 @@ class Consultation(models.Model):
 	x_next_evaluation_date = fields.Date(
 			string = "Próxima cita", 	
 			#default = fields.Date.today, 
-			#required=True, 
 			)
 
 	x_fitzpatrick = fields.Selection(
 			selection = eval_vars.FITZ_TYPE, 
 			string = 'Fitzpatrick',
 			default = '', 
-			#required=True, 
 			)
 
 	x_photo_aging = fields.Selection(
 			selection = eval_vars.PHOTO_TYPE, 
 			string = 'Foto-envejecimiento',
 			default = '', 
-			#required=True, 
 			)
 
 
@@ -458,32 +455,26 @@ class Consultation(models.Model):
 
 	x_diagnosis = fields.Text(
 			string = 'Diagnóstico', 
-			#required=True, 
 			)
 
 	x_antecedents = fields.Text(
 			string = 'Antecedentes médicos', 
-			#required=True, 
 			)
 
 	x_allergies_medication = fields.Text(
 			string = 'Alergias a medicamentos', 
-			#required=True, 
 			)
 
 	x_analysis_lab = fields.Boolean(
 			string = 'Análisis de laboratorio', 
-			#required=False, 
 			)
 
 	x_observations = fields.Text(
 			string = 'Observaciones',
-			#required=True, 
 			)
 
 	x_indications = fields.Text(
 			string = 'Indicaciones',
-			#required=True, 
 			)
 
 
@@ -765,18 +756,19 @@ class Consultation(models.Model):
 	def create(self,vals):
 
 		print 
-		print 'Create Consultation - Override'
+		print 'jx'
+		print 'Create Consultation - Override - CRUD'
 		print 
 		print vals
 		print 
 	
 		
-		#consultation_id = self.id
-		#print consultation_id
+		consultation_id = self.id
+		print 'consultation_id: ', consultation_id
 
 
 		appointment_id = vals['appointment']
-		print appointment_id
+		print 'appointment_id: ', appointment_id
 		print 
 
 
@@ -1077,10 +1069,5 @@ class Consultation(models.Model):
 				}
 					
 	# create_service_medical
-
-
-
-
-
 
 

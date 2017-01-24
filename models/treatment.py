@@ -877,7 +877,8 @@ class Treatment(models.Model):
 	def open_consultation_current(self):  
 
 		print 
-		print 'open consultation'
+		print 'jx'
+		print 'Open Consultation Current'
 
 		patient_id = self.patient.id
 		doctor_id = self.physician.id
@@ -889,9 +890,11 @@ class Treatment(models.Model):
 
 		# Date 
 		GMT = time_funcs.Zone(0,False,'GMT')
-		print GMT
+
+		print 'GMT: ', GMT
+		
 		evaluation_start_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
-		print evaluation_start_date 
+		print 'evaluation_start_date: ', evaluation_start_date 
 
 
 
@@ -907,7 +910,7 @@ class Treatment(models.Model):
 														], 
 														order='appointment_date desc', limit=1)
 
-		print appointment
+		print 'appointment: ', appointment
 
 		appointment_id = appointment.id
 
@@ -923,19 +926,16 @@ class Treatment(models.Model):
 
 													'patient': patient_id,
 													'doctor': doctor_id,
-													'treatment': treatment_id,				
+													'treatment': treatment_id,	
+
 													'evaluation_start_date': evaluation_start_date,
-
 													'chief_complaint': chief_complaint,
-
-
 													'appointment': appointment_id,
-
 												}
 											)
 		consultation_id = consultation.id 
-		print consultation
-		print consultation_id
+		print 'consultation: ', consultation
+		print 'consultation_id', consultation_id
 
 
 
@@ -944,7 +944,7 @@ class Treatment(models.Model):
 		rec_set = self.env['oeh.medical.appointment'].browse([
 																appointment_id																
 															])
-		print rec_set
+		print 'rec_set: ', rec_set
 
 		ret = rec_set.write({
 								'consultation': consultation_id,
@@ -1001,14 +1001,11 @@ class Treatment(models.Model):
 
 				'default_patient': patient_id,
 				'default_doctor': doctor_id,
-				'default_treatment': treatment_id,				
+				'default_treatment': treatment_id,		
+
 				'default_evaluation_start_date': evaluation_start_date,
-
 				'default_chief_complaint': chief_complaint,
-
-
 				'default_appointment': appointment_id,
-
 			}
 		}
 

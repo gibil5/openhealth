@@ -130,10 +130,9 @@ class Evaluation(models.Model):
 	product = fields.Many2one(
 			'product.template',
 			string="Producto",
-			required=True, 
+			#required=True, 
 			)
 	
-
 
 	laser = fields.Selection(
 			selection = jxvars._laser_type_list, 

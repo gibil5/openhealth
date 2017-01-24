@@ -22,7 +22,6 @@
 					<header>
 
 						<!--
-						-->
 						<button 
 							type="object" 
 							class="oe_highlight"	
@@ -31,7 +30,17 @@
 				
 							name="create_service" 	
 						/>
+						-->
 						
+
+
+
+						<!--
+						<div		attrs="{'invisible':[('nr_service','>', 0),]}">
+						-->
+						<div>
+
+
 
 							<!-- CO2 --> 
 							<button 
@@ -52,13 +61,6 @@
 				
 								name="create_service_excilite" 	
 							/>
-
-
-
-						<!--
-						<div		attrs="{'invisible':[('nr_service','>', 0),]}">
-						-->
-						<div>
 
 
 
@@ -89,6 +91,18 @@
 				
 								name="create_service_medical" 	
 							/>
+
+
+
+							<button 
+								type="object" 
+								class="oe_highlight oe_right"
+
+								string="Crear Presupuesto" 
+
+								name="create_order_current" 
+							/>
+
 						</div>
 
 
@@ -103,14 +117,6 @@
 												]}"
 						-->							
 
-						<button 
-							type="object" 
-							class="oe_highlight"
-
-							string="Crear Presupuesto" 
-
-							name="create_order_current" 
-						/>
 
 
 

@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+		<record model="ir.ui.view" id="oehealth.view_oeh_medical_event_calendar">
+			<field name="name">appointment.calendar</field>
+			<field name="model">oeh.medical.appointment</field>
+
+			<!--
+			<field name="inherit_id" ref="oehealth.view_oeh_medical_event_calendar"/>			
+	        <field name="mode">primary</field>
+	        <field name="priority" eval="1"/>
+			-->
+
+			<field name="arch" type="xml">
+
+				<!--
+							display="[patient]" 
+							display="[x_patient_name_short]-[x_doctor_code]" 
+				-->
+				<calendar 	string="Appointments" 
+							date_start="appointment_date" 
+							date_stop="appointment_end" 
+							date_delay="duration" 
+
+							display="[x_display]" 
+							
+							color="state" 
+							quick_add="False" 
+							mode="day"
+				>
+                
+                        <!--<field name="user_id"/>-->
+                        <field name="doctor"/>
+                        <field name="patient"/>
+                        <field name="patient_status"/>
+				
+                        <field name="x_patient_name_short"/>
+                        <field name="x_doctor_code"/>
+
+                        <field name="x_display"/>
+
+				</calendar>
+
+			</field>
+
+		</record>
+
+
+
+
+
+	</data>
+</openerp>

@@ -156,7 +156,10 @@
 
 		<!-- Menus --> 
 		<!-- top level menu: no parent -->
+		<!--
 		<menuitem id="main_openextension_menu" name="Open Health"/>
+		-->
+		<menuitem id="openhealth_menu" name="Open Health"/>
 
 		<!-- A first level in the left side menu is needed
 		before using action= attribute -->

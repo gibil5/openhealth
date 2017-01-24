@@ -285,7 +285,7 @@ class Appointment(models.Model):
 			string = "Paciente", 	
 
 
-			default = defaults._patient 
+			#default = defaults._patient 
 
 			#required=True, 
 		)

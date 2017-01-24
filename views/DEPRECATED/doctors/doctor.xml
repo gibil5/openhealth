@@ -56,9 +56,10 @@
 
 
 		<!-- Menus --> 
+		<!--
 		<menuitem id="openhealth_doctors_menu" name="Médicos" 
 			parent="openhealth_menu"
 			action="doctor_list_action"/>
-
+		-->
 	</data>
 </openerp>

@@ -5,7 +5,9 @@
 
 
 		<record model="ir.ui.view" id="view_appointment">
+
 			<field name="name">oeh.medical.appointment.form</field>
+			
 			<field name="model">oeh.medical.appointment</field>
 
 			<field name="inherit_id" ref="oehealth.oeh_medical_appointment_view"/>			
@@ -13,6 +15,7 @@
 	        <field name="mode">primary</field>
 
 	        <field name="priority" eval="1"/>
+			
 			<field name="arch" type="xml">
 
 
@@ -399,8 +402,9 @@
 					<field name="consultation"/>
 					<field name="procedure"/>
 					<field name="session"/>
+					<!--
 					<field name="control"/>					
-
+					-->
 					
 					<field name="state"/>
 					<field name="x_date"/>
@@ -450,10 +454,6 @@
 			<field name="view_mode">tree,form</field>
 		</record>
 
-		<menuitem id="oeh_medical_preappointment_menu" 
-			name="Citas x"
-			parent="openhealth_menu"
-			action="oeh_medical_preappointment_list_action"/>
 
 
 
@@ -462,16 +462,14 @@
 
 
 
+		<!-- Controls -->
+		<record id="oeh_medical_appointment_action_tree_controls" model="ir.actions.act_window">
 
-		<!-- Pre Controls -->
-		<record id="oeh_medical_appointment_action_tree_2" model="ir.actions.act_window">
-
-                    <field name="name">Pre-citas / Controles</field>
+                    <field name="name">Controles - Sin hora</field>
             
                     <field name="res_model">oeh.medical.appointment</field>
                     <field name="view_type">form</field>
                     <field name="view_mode">calendar,tree,form</field>
-                    
                     <field name="domain">[
                     						('state', '=', 'pre_scheduled_control'),
                     					]
@@ -488,44 +486,33 @@
                     </field>
 		</record>
 
-		<menuitem 
-					action="oeh_medical_appointment_action_tree_2" 
-					parent="oehealth.oeh_medical_appointment_menu"  
-					id="oeh_medical_appointment_list_2" 
-					sequence="4"
-		/>
+
+
 
 
 
 
 
 		<!-- Confirmed -->  
-		<record id="oeh_medical_appointment_action_tree_1" model="ir.actions.act_window">
+		<record id="oeh_medical_appointment_action_tree_confirmed" model="ir.actions.act_window">
                     
+
                     <field name="name">Citas confirmadas</field>
                     
+
                     <field name="res_model">oeh.medical.appointment</field>
                     <field name="view_type">form</field>
-                    <field name="view_mode">calendar,tree,form</field>
-                    
-                    <!--
-
-                    -->	
+                    <field name="view_mode">calendar,tree,form</field>                    
                     <field name="domain">[
                     						('state', 'in', ['pre_scheduled','Scheduled', 'Completed', 'Invoiced']),
-
                     						('x_target', '=', 'doctor'),
                     					]
                     </field>
-
-
 					<field name="context">{
 											'default_x_target': 'doctor',
 											'default_x_type': 'consultation',
                     					}
                     </field>
-
-                    
                     <field name="view_id" eval="False"/>
                     <field name="help" type="html">
                       <p class="oe_view_nocontent_create">
@@ -536,19 +523,14 @@
                     </field>
 		</record>
 
-		<menuitem 
-					action="oeh_medical_appointment_action_tree_1" 
-					parent="oehealth.oeh_medical_appointment_menu"  
-					id="oeh_medical_appointment_list_1" 
-					sequence="2"
-		/>
+
 
 
 
 
 
 		<!-- Machines -->
-		<record id="oeh_medical_appointment_action_tree_3" model="ir.actions.act_window">
+		<record id="oeh_medical_appointment_action_tree_machines" model="ir.actions.act_window">
 
 
                     <field name="name">Reserva de salas</field>
@@ -593,12 +575,36 @@
                     </field>
 		</record>
 
+
+
+
+
+
+
+
+<!--
+
 		<menuitem 
-					action="oeh_medical_appointment_action_tree_3" 
+					action="oehealth.oeh_medical_physician_action_tree1" 
 					parent="oehealth.oeh_medical_appointment_menu"  
-					id="oeh_medical_appointment_list_3"
-					sequence="3"
+					id="oehealth.oeh_medical_my_physician_profile"
+					sequence="10"
 		/>
+
+
+		<menuitem 	action="oehealth.oeh_medical_appointment_action_tree" 
+					parent="oehealth.oeh_medical_appointment_menu"  
+					id="oehealth.oeh_medical_appointment_list" 
+					sequence="11"/>
+
+
+		<menuitem 	action="oehealth.oeh_medical_prescription_action_tree" 
+					id="oehealth.oeh_medical_prescription_list" 
+					parent="oehealth.oeh_medical_appointment_menu" 
+					sequence="12"/>
+-->
+
+
 
 
 

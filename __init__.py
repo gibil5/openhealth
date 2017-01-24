@@ -4,8 +4,11 @@ from . import controllers
 from . import models
 
 
-import openerp.addons.openextension
 import openerp.addons.oehealth
+import openerp.addons.openextension
+
+
+#import openerp.addons.openhealth-patient
 
 
 #jx - This is deprecated 

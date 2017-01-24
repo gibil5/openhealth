@@ -170,11 +170,14 @@
 			<field name="view_mode">tree,form</field>
 		</record>
 
+
+
 		<!-- Menu -->
+		<!--
 		<menuitem id="service_menu" name="Servicios jx"
 			parent="openhealth_menu"
 			action="service_list_action"/>
-
+		-->
 
 
 

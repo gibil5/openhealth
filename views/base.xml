@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+		<!-- BASE --> 
+
+
+		<!-- Treatment --> 
+
+		<!-- Treatment - List action -->
+			<record model="ir.actions.act_window" id="treatment_list_action">
+			<field name="name">Tratamientos</field>
+			<field name="res_model">openextension.treatment</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first treatment
+				</p>
+			</field>
+			
+		</record>
+
+
+
+
+
+
+		<!-- Consultation - Form Action --> 
+		<record model="ir.actions.act_window" id="consultation_form_action">
+			<field name="name">Consultas</field>
+			<field name="res_model">openhealth.consultation</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+			<!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first consultation
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+
+
+		<!-- Window Form Action --> 
+		<record model="ir.actions.act_window" id="procedure_form_action">
+			<field name="name">Procedimientos</field>
+			<field name="res_model">openhealth.procedure</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+
+
+		<!-- Window List action -->
+		<!--
+		The following tag is an action definition for a "window action",
+		that is an action opening a view or a set of views
+		-->
+			<record model="ir.actions.act_window" id="procedure_list_action">
+			<field name="name">Procedimientos</field>
+			<field name="res_model">openhealth.procedure</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first procedure
+				</p>
+			</field>
+			
+		</record>
+
+
+
+
+
+
+		<!-- Window Form Action --> 
+		<record model="ir.actions.act_window" id="session_form_action">
+			<field name="name">Sesiones</field>
+			<field name="res_model">openhealth.session</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+			<!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first session
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+
+
+
+
+
+
+
+		<!-- Window List action -->
+		<!--
+		The following tag is an action definition for a "window action",
+		that is an action opening a view or a set of views
+		-->
+		<record model="ir.actions.act_window" id="control_list_action">
+			<field name="name">Controles</field>
+			<field name="res_model">openhealth.control</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first control
+				</p>
+			</field>
+			
+		</record>
+
+
+		<!-- Window Form Action --> 
+		<record model="ir.actions.act_window" id="control_form_action">
+			<field name="name">Controles</field>
+			<field name="res_model">openhealth.control</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+			<!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first control
+				</p>
+			</field>
+			-->
+		</record>
+		
+
+
+	</data>
+</openerp>

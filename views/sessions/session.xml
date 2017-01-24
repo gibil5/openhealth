@@ -217,23 +217,7 @@
 
 
 
-		<!-- Window Form Action --> 
-		<record model="ir.actions.act_window" id="session_form_action">
-			<field name="name">Sesiones</field>
-			<field name="res_model">openhealth.session</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-			
-			<!--
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first session
-				</p>
-			</field>
-			-->
-		</record>
+
 		
 		
 		
@@ -264,19 +248,25 @@
 		
 		<!-- Menus --> 
 		<!-- top level menu: no parent -->
+		<!--
 		<menuitem id="main_openextension_menu" name="Open Health"/>
+		-->
 
 		<!-- A first level in the left side menu is needed
 		before using action= attribute -->
+		<!--
 		<menuitem id="openextension_menu" name="Open Health"
 			parent="main_openextension_menu"/>
+		--> 
 
 		<!-- the following menuitem should appear *after*
 		its parent openextension_menu and *after* its
 		action session_list_action -->
+		<!--
 		<menuitem id="sessions_menu" name="sessiones" parent="openextension_menu"
 			action="session_list_action"/>
-
+		-->
+		
 		<!-- Full id location:
 		action="openextension.session_list_action"
 		It is not required when it is the same module -->

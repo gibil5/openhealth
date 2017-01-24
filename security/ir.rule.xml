@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    	<!--
+        <record id="oeh_medical_evaluation_admin" model="ir.rule">
+            <field name="name">Access all the evaluations</field>
+            <field name="model_id" ref="model_oeh_medical_evaluation"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_manager'))]"/>
+        </record>
+		-->
+
+
+
+
+        <!-- Physician -->
+
+        <record id="oehealth.oeh_medical_physician_physician" model="ir.rule">
+            <!--
+            <field name="name">Each physican can see only own profile</field>
+            --> 
+            <field name="name">Physician can see all the physicians</field>
+            <field name="model_id" ref="oehealth.model_oeh_medical_physician"/>
+            <!--
+            <field name="domain_force">[('oeh_user_id', '=', user.id)]</field>
+            -->
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_physician'))]"/>
+        </record>
+
+        <!--
+        <record id="oeh_medical_physician_physician_admin" model="ir.rule">
+            <field name="name">Patient and administrator can see all the physicians</field>
+            <field name="model_id" ref="model_oeh_medical_physician"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_patient')),(4, ref('oehealth.group_oeh_medical_manager'))]"/>
+        </record>
+        -->
+
+
+
+
+
+        <record id="oeh_medical_appointment_physician" model="ir.rule">
+            
+            <!--
+            <field name="name">Each physician can see only own appointment</field>
+            -->
+            <field name="name">Access all the appointments</field>
+
+            <field name="model_id" ref="model_oeh_medical_appointment"/>
+            <!--
+            <field name="domain_force">['|', ('doctor', '=', False), ('doctor.oeh_user_id', '=', user.id)]</field>
+            -->            
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_physician'))]"/>
+        </record>
+
+        <!--
+        <record id="oeh_medical_appointment_admin" model="ir.rule">
+            <field name="name">Access all the appointments</field>
+            <field name="model_id" ref="model_oeh_medical_appointment"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_manager'))]"/>
+        </record>
+        -->
+
+
+
+
+
+    </data>
+</openerp>
+        

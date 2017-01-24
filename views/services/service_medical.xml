@@ -69,10 +69,12 @@
 			<field name="view_mode">tree,form</field>
 		</record>
 
+
 		<!-- Menu -->
+		<!--
 		<menuitem id="service_medical_menu" name="Servicios Medical"
 			parent="openhealth_menu"
 			action="service_medical_list_action"/>
-
+		-->
 	</data>
 </openerp>

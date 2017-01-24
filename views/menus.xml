@@ -7,52 +7,178 @@
 
 		<!-- Menus --> 
 
-		<!-- Sales -->
-		<menuitem id="main_sales_menu" name="Sales jx"/>
 
 
 
-		<!-- Open Health -->
-		<menuitem id="main_openhealth_menu" name="Open Health"/>
+
+
+
+		
+
+
+<!-- Appointments -->
+
+		<!-- Main - Appointments -->
+		<!--
+		-->
+		<menuitem id="main_appointment_menu" 
+			name="Citas"
+			sequence="5"
+			/>
+
+		<menuitem id="oehealth_appointment_menu" 
+			name="Citas"
+			parent="main_appointment_menu"
+			/>
+
+
+
+		<!-- Confirmed --> 
+		<!--parent="oehealth.oeh_medical_appointment_menu"-->
+		<menuitem 
+					action="oeh_medical_appointment_action_tree_confirmed" 
+					parent="oehealth_appointment_menu"  
+					id="oeh_medical_appointment_list_1" 
+
+					sequence="1"
+		/>
+
+
+
+		<!-- Machines --> 
+		<!--
+					parent="oehealth.oeh_medical_appointment_menu"  
+		-->
+		<menuitem 
+					action="oeh_medical_appointment_action_tree_machines" 
+					parent="oehealth_appointment_menu"  
+					id="oeh_medical_appointment_list_3"
+
+					sequence="2"
+		/>
+
+
+
+		<!-- Conrols --> 
+		<!--
+					parent="oehealth.oeh_medical_appointment_menu"  
+		-->
+		<menuitem 
+					action="oeh_medical_appointment_action_tree_controls" 
+					parent="oehealth_appointment_menu"  
+					id="oeh_medical_appointment_list_2" 
+					sequence="3"
+		/>
+
+
+
+
+
+
+
+<!-- Open Health -->
+
+		<!-- Main - Open Health -->
+		<menuitem id="main_openhealth_menu" 
+			sequence="6"
+			name="Open Health"/>
 
 		<menuitem id="openhealth_menu" name="Open Health"
 			parent="main_openhealth_menu"/>
 
-		
+
+		<!-- Treatments -->
 		<menuitem id="treatments_menu" name="Tratamientos" parent="openhealth_menu"
+			sequence="1"
 			action="treatment_list_action"/>
 
-
-		<menuitem id="procedures_menu" name="Procedimientos" parent="openhealth_menu"
-			action="procedure_list_action"/>
-
-
+		<!-- Consultations --> 
 		<menuitem id="consultations_menu" name="Consultas" parent="openhealth_menu"
+			sequence="2"
 			action="consultation_list_action"/>
 
+		<!-- Procedures -->
+		<menuitem id="procedures_menu" name="Procedimientos" parent="openhealth_menu"
+			sequence="3"
+			action="procedure_list_action"/>
 
+		<!-- Sessions --> 
+		<menuitem id="sessions_menu" name="Sesiones" parent="openhealth_menu"
+			sequence="4"
+			action="session_list_action"/>
+
+		<!-- Controls --> 
 		<menuitem id="controls_menu" name="Controles" parent="openhealth_menu"
+			sequence="5"
 			action="control_list_action"/>
 
 
-		<menuitem id="orders_menu" name="Presupuestos" parent="openhealth_menu"
+
+
+		<!-- Orders --> 
+		<menuitem id="orders_menu" name="Orders" parent="openhealth_menu"
+			sequence="6"
 			action="order_list_action"/>
 
 
-		<menuitem id="service_co2_menu" name="Servicios Co2"
+		<!-- Doctors --> 
+		<!--
+		<menuitem id="openhealth_doctors_menu" name="Médicos" 
 			parent="openhealth_menu"
+			sequence="7"
+			action="doctor_list_action"/>
+		-->
+
+
+
+
+
+
+		<!-- Services --> 
+		<menuitem id="service_menu" name="Servicios"
+			parent="openhealth_menu"
+			sequence="10"
+			action="service_list_action"/>
+
+		<!-- Services Co2 --> 
+		<menuitem id="service_co2_menu" name="Services Co2"
+			parent="openhealth_menu"
+			sequence="11"
 			action="service_co2_list_action"/>
 
-
-		<menuitem id="service_excilite_menu" name="Servicios Excilite"
+		<!-- Service Excilite --> 
+		<menuitem id="service_excilite_menu" name="Services Excilite"
 			parent="openhealth_menu"
+			sequence="12"
 			action="service_excilite_list_action"/>
 
 
+		<!-- Service Medical --> 
+		<menuitem id="service_medical_menu" name="Servicios Medical"
+			parent="openhealth_menu"
+			sequence="15"
+			action="service_medical_list_action"/>
 
 
 
 
+
+
+
+		<menuitem id="oeh_medical_preappointment_menu" 
+			name="Citas"
+			parent="openhealth_menu"
+			sequence="20"
+			action="oeh_medical_preappointment_list_action"/>
+
+
+
+
+
+		<!-- Sales -->
+		<!--
+		<menuitem id="main_sales_menu" name="Sales jx"/>
+		--> 
 
 		<!-- Medical Histories -->
 		<!--
@@ -64,25 +190,13 @@
 		<menuitem id="patients_menu" name="Pacientes" parent="openextension_menu"
 			action="patient_list_action"/>
 
-		-->
-
-
-		<!--
-		<menuitem id="main_medicalhistories_menu" name="Historias Clínicas"/>
-		-->
 		<menuitem id="main_medicalhistories_menu" name="Medical Histories"/>
 
-		<!--
-		<menuitem id="medicalhistories_menu" name="Historias Clínicas"
-			parent="main_medicalhistories_menu"/>
-		-->
 		<menuitem id="medicalhistories_menu" name="Medical Histories"
 			parent="main_medicalhistories_menu"/>
 
 		<menuitem id="patients_menu" name="Pacientes" parent="medicalhistories_menu"
 			action="patient_list_action"/>
-
-
-
+		--> 
 	</data>
 </openerp>

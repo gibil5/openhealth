@@ -750,7 +750,7 @@ Notebook
 
 	   	<!-- Window Form Action -->
 	   	<record model="ir.actions.act_window" id="treatment_form_action">
-			<field name="name">Tratamientos</field>
+			<field name="name">Tratamientos 1</field>
 			<field name="res_model">openextension.treatment</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
@@ -763,27 +763,7 @@ Notebook
 
 
 
-		<!-- Window List action -->
-		<!--
-		The following tag is an action definition for a "window action",
-		that is an action opening a view or a set of views
-		-->
-			<record model="ir.actions.act_window" id="treatment_list_action">
-			<field name="name">Tratamientos</field>
-			<field name="res_model">openextension.treatment</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-			
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="view_id" eval="False"/>
-			
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first treatment
-				</p>
-			</field>
-			
-		</record>
+
 
 
 
@@ -791,32 +771,25 @@ Notebook
 		<!-- Menus --> 
 		<!-- top level menu: no parent -->
 		<!--
-
-		<menuitem id="main_openhealth_menu" name="Open Health 2"/>
+		<menuitem id="main_openextension_menu" name="Open Health 5"/>
 		-->
-		<menuitem id="main_openextension_menu" name="Open Health"/>
 
 
 		<!-- A first level in the left side menu is needed
 		before using action= attribute -->
 		<!--
-		<menuitem id="openhealth_menu" name="Open Health 2"
-			parent="main_openhealth_menu"/>
-		-->
-		<menuitem id="openextension_menu" name="Open Health"
+		<menuitem id="openextension_menu" name="Open Health 5"
 			parent="main_openextension_menu"/>
+		--> 
 
 
 		<!-- the following menuitem should appear *after*
 		its parent openextension_menu and *after* its
 		action treatment_list_action -->
 		<!--
-		<menuitem id="treatments_menu" name="Tratamientos" parent="openhealth_menu"
-			action="treatment_list_action"/>
-		-->
 		<menuitem id="treatments_menu" name="Tratamientos" parent="openextension_menu"
 			action="treatment_list_action"/>
-
+		--> 
 
 		<!-- Full id location:
 		action="openextension.treatment_list_action"

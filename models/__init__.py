@@ -3,21 +3,29 @@
 #from . import models
 
 
-from . import consultation
+# In OpenHealth - Base 
+#from . import patient  
+#from . import partner
+#from . import product
+#from . import evaluation  
 
 
-from . import learn_1
 
+
+
+# Deprecated 
+#from . import learn_1
+#from . import quotation
+#from . import pathology
+
+
+
+# Operational 
 from . import treatment 
-
-from . import patient  
-
-from . import evaluation  
-
-
-from . import product
-from . import pathology
-
+from . import consultation
+from . import procedure
+from . import control
+from . import session 
 
 
 from . import service
@@ -28,29 +36,12 @@ from . import service_ndyag
 from . import service_medical
 
 
-
-
-#from . import quotation
 from . import order
 from . import order_line
 
 
-
-
-from . import procedure
-from . import control
-from . import session 
-
 from . import appointment 
 
-#jx 
-from . import partner
-
-
-
-#from . import jxvars
-#from var import jxvars
-#from . import eval_vars
 
 
 

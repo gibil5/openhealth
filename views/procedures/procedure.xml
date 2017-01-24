@@ -288,60 +288,37 @@
 
        
 	   
-		<!-- Window Form Action --> 
-		<record model="ir.actions.act_window" id="procedure_form_action">
-			<field name="name">Procedimientos</field>
-			<field name="res_model">openhealth.procedure</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-		</record>
 		
 		
 
 
 
 
-		<!-- Window List action -->
-		<!--
-		The following tag is an action definition for a "window action",
-		that is an action opening a view or a set of views
-		-->
-			<record model="ir.actions.act_window" id="procedure_list_action">
-			<field name="name">Procedimientos</field>
-			<field name="res_model">openhealth.procedure</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-			
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="view_id" eval="False"/>
-			
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first procedure
-				</p>
-			</field>
-			
-		</record>
+
 		
 		
 		
 		<!-- Menus --> 
 		<!-- top level menu: no parent -->
+		<!--
 		<menuitem id="main_openextension_menu" name="Open Health"/>
+		--> 
 
 		<!-- A first level in the left side menu is needed
 		before using action= attribute -->
+		<!--
 		<menuitem id="openextension_menu" name="Open Health"
 			parent="main_openextension_menu"/>
+		--> 
 
 		<!-- the following menuitem should appear *after*
 		its parent openextension_menu and *after* its
 		action procedure_list_action -->
 		<!--
-		<menuitem id="procedures_menu" name="Treatments" parent="openextension_menu"
-		-->
 		<menuitem id="procedures_menu" name="Procedimientos" parent="openextension_menu"
 			action="procedure_list_action"/>
+		--> 
+
 
 		<!-- Full id location:
 		action="openextension.procedure_list_action"

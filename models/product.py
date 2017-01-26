@@ -15,11 +15,37 @@ class Product(models.Model):
 
 
 
+	# Canonical 
 
-	# WTF ? 
-	x_name_short = fields.Char()
+	x_family = fields.Selection(
+		selection=prodvars._family_list,
+	)	
+
+	x_treatment = fields.Selection(
+		selection=prodvars._treatment_list,
+	)	
+	
+	x_zone = fields.Selection(
+		selection=prodvars._zone_list,
+	)	
+	
+
+	x_pathology = fields.Selection(
+		selection=prodvars._pathology_list,
+	)
+
+
+	x_sessions = fields.Char(
+		default="",
+	)
 
 	x_time = fields.Char()
+
+
+	x_name_short = fields.Char()
+
+
+
 
 	#state = fields.Char()
 
@@ -40,44 +66,8 @@ class Product(models.Model):
 	)
 
 
-	x_family = fields.Selection(
-		selection=prodvars._family_list,
-	)	
-
-	
-	x_treatment = fields.Selection(
-		selection=prodvars._treatment_list,
-	)	
-
-
-
 	#x_subtreatment = fields.Selection(
 	#	selection=prodvars._subtreatment_list,
 	#)	
-
-
-
-	x_zone = fields.Selection(
-		selection=prodvars._zone_list,
-	)	
-	
-	x_pathology = fields.Selection(
-		selection=prodvars._pathology_list,
-	)
-
-
-
-
-
-	#x_sessions = fields.Integer(
-	x_sessions = fields.Char(
-		#string = 'Sesiones',
-		default="",
-	)
-
-
-
-
-
 
 

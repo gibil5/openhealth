@@ -15,25 +15,16 @@
 			"file": "__openerp__.py",
 			"settings":
 			{
-				"buffer_size": 5986,
+				"buffer_size": 5982,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "views/products/product.xml",
+			"file": "readme.txt",
 			"settings":
 			{
-				"buffer_size": 2901,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/orders/order.xml",
-			"settings":
-			{
-				"buffer_size": 8535,
+				"buffer_size": 15,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -42,24 +33,16 @@
 			"file": "models/product.py",
 			"settings":
 			{
-				"buffer_size": 915,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/appointments/appointment.xml",
-			"settings":
-			{
-				"buffer_size": 13171,
+				"buffer_size": 940,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "views/consultations/consultation.xml",
+			"file": "views/products/product.xml",
 			"settings":
 			{
-				"buffer_size": 11225,
+				"buffer_size": 2936,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -138,6 +121,10 @@
 	},
 	"file_history":
 	[
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/menus.xml",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/consultations/consultation.xml",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/appointments/appointment.xml",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/orders/order.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/__init__.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/products/product_ndyag.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/products/product_medical.xml",
@@ -148,13 +135,11 @@
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/consultations/consultation_appointment.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/openhealth.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/base.xml",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/menus.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/views.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/templates/template.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/evaluations/evaluation.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/evaluation.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/service.py",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/consultations/consultation.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/products/product.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/product.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/consultation.py",
@@ -163,7 +148,6 @@
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/service_co2.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/service.trash.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/security/ir.model.access.csv",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/appointments/appointment.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/appointments/calendar.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/treatments/treatment.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/security/openhealth_security.xml",
@@ -188,7 +172,6 @@
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/procedure.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/treatments/treatment_procedures.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/orders/order_line.xml",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/orders/order.xml",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/__init__.py",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/treatment.py",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/appointment.py",
@@ -284,6 +267,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"state",
+			"page",
 			"product",
 			"notebo",
 			"x_time",
@@ -409,9 +394,7 @@
 			"duration",
 			"update_order_lin",
 			"update_order_line_a",
-			"update_line_a",
-			"update_",
-			"x_machine"
+			"update_line_a"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -559,15 +542,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5986,
+						"buffer_size": 5982,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2928,
-								2928
+								3078,
+								3078
 							]
 						],
 						"settings":
@@ -576,7 +559,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2240.0,
+						"translation.y": 2496.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -584,28 +567,27 @@
 				},
 				{
 					"buffer": 1,
-					"file": "views/products/product.xml",
+					"file": "readme.txt",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2901,
+						"buffer_size": 15,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								875,
-								875
+								15,
+								15
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 322.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -613,48 +595,19 @@
 				},
 				{
 					"buffer": 2,
-					"file": "views/orders/order.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8535,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								355,
-								355
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
 					"file": "models/product.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 915,
+						"buffer_size": 940,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								106,
-								106
+								213,
+								213
 							]
 						],
 						"settings":
@@ -670,20 +623,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "views/appointments/appointment.xml",
+					"buffer": 3,
+					"file": "views/products/product.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 13171,
+						"buffer_size": 2936,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6361,
-								6374
+								1698,
+								1698
 							]
 						],
 						"settings":
@@ -692,39 +645,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 5622.0,
+						"translation.y": 1161.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "views/consultations/consultation.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 11225,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								8135,
-								8135
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -833,7 +757,7 @@
 		[
 			[
 				"",
-				"~/Virtualenvs/Odoo9-min/odoo/addons/openhealth-patient/OpenHealth-Patient.sublime-project"
+				"~/Documents/Aptana Studio 3 Workspace/chavarri/chavarri.sublime-project"
 			]
 		],
 		"width": 380.0

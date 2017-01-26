@@ -4,7 +4,7 @@
 
 
 _family_list = [
-		('laser',			'Láser'),
+		('laser',			'laser'),
 
 		('medical',			'medical'), 
 

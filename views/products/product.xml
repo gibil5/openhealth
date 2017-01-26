@@ -20,6 +20,12 @@
 			<field name="arch" type="xml">
 
 
+				<!--
+				<xpath expr="//field[@name='uom_id']" position="replace">
+				</xpath>
+				-->
+
+
 				<!-- Notebook --> 
 				<!--
 				<xpath expr="//notebook" position="inside">
@@ -85,7 +91,6 @@
 					<field name="name"/>
 					<field name="default_code"/>
 
-					<field name="x_family"/>
 					<field name="x_client_type"/>				
 					-->
 
@@ -94,14 +99,19 @@
 					<!--
 					<field name="id"/>
 					<field name="x_date_updated"/>
+					
+
+					<field name="uom_id"/>
+					<field name="state"/>
 					-->
 
 					<field name="name"/>
-					<field name="uom_id"/>
-					<field name="state"/>
+
 
 
 					<field name="x_name_short"/>
+
+					<field name="x_family"/>
 
 					<field name="x_treatment"/>				
 					<field name="x_zone"/>				

@@ -10,11 +10,14 @@ from openerp import models, fields, api
 from datetime import datetime
 
 import jxvars
+
 import prodvars
 
 import exc
 import ipl
 
+
+import service_vars
 
 
 	
@@ -49,6 +52,36 @@ class Service(models.Model):
 			string="Servicio",
 			#required=True, 
 			)
+
+
+
+
+
+
+	# Laser type 
+	laser = fields.Selection(
+			selection = jxvars._laser_type_list, 
+			string="Láser", 			
+			default='none',			
+			#required=True, 
+			index=True
+			)
+
+	# Zone 
+	zone = fields.Selection(
+			selection = jxvars._zone_list, 
+			string="Zona", 
+			)
+
+	# Pathology
+	pathology = fields.Selection(
+			#selection = jxvars._pathology_list, 
+			selection = service_vars._pathology_list, 
+			string="Patología", 
+			)
+
+
+
 
 
 
@@ -186,26 +219,7 @@ class Service(models.Model):
 
 
 
-	# Laser type 
-	laser = fields.Selection(
-			selection = jxvars._laser_type_list, 
-			string="Láser", 			
-			default='none',			
-			#required=True, 
-			index=True
-			)
 
-	# Zone 
-	zone = fields.Selection(
-			selection = jxvars._zone_list, 
-			string="Zona", 
-			)
-
-	# Pathology
-	pathology = fields.Selection(
-			selection = jxvars._pathology_list, 
-			string="Patología", 
-			)
 
 
 

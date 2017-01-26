@@ -7,6 +7,9 @@ from openerp import models, fields, api
 from datetime import datetime
 import jxvars
 
+import service_co2_vars
+
+
 
 class ServiceCo2(models.Model):
 	_name = 'openhealth.service.co2'
@@ -340,52 +343,56 @@ class ServiceCo2(models.Model):
 
 
 
+
+
 	# Fourth
 	
 	co2_lb_acneseq = fields.Selection(
-			selection = jxvars._co2_lbacneseq_list, 
+			selection = service_co2_vars._co2_lbacneseq_list, 
 			string="Acné y secuelas", 
 			default='none',	
 			)
 			
 	co2_lb_scar = fields.Selection(
-			selection = jxvars._co2_lbscar_list, 
+			selection = service_co2_vars._co2_lbscar_list, 
 			string="Cicatriz", 
 			default='none',	
 			)
 			
 	co2_lb_mole = fields.Selection(
-			selection = jxvars._co2_lbmole_list, 
+			selection = service_co2_vars._co2_lbmole_list, 
 			string="Lunar", 
 			default='none',	
 			)
 						
 	co2_lb_stains = fields.Selection(
-			selection = jxvars._co2_lbstains_list, 
+			selection = service_co2_vars._co2_lbstains_list, 
 			string="Manchas", 
 			default='none',	
 			)
 
 	co2_lb_keratosis = fields.Selection(
-			selection = jxvars._co2_lbkeratosis_list, 
+			selection = service_co2_vars._co2_lbkeratosis_list, 
 			string="Queratosis", 
 			default='none',	
 			)
 			
 	co2_lb_cyst = fields.Selection(
-			selection = jxvars._co2_lbcyst_list, 
+			selection = service_co2_vars._co2_lbcyst_list, 
 			string="Quiste", 
 			default='none',	
 			)
 
 	co2_lb_wart = fields.Selection(
-			selection = jxvars._co2_lbwart_list, 
+			selection = service_co2_vars._co2_lbwart_list, 
 			string="Verruga", 
 			default='none',	
 			)
 			
 			
 					
+
+
 
 	
 	

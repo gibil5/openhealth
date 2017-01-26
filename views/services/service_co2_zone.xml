@@ -17,6 +17,67 @@
 				<xpath expr="//field[@name='notebook_over']" position="after">
 					
 				<notebook>				
+
+
+
+
+					<!-- Body local -->
+					<page string="Localizado Cuerpo">
+						
+						<group>
+							<group>
+								<field name="co2_lb_acneseq" widget="radio"/>			<!-- 2017 -->									
+							</group>
+
+							<group>
+								<field name="co2_lb_cyst" widget="radio"/>				<!-- 2017 -->									
+							</group>
+
+							<group>
+								<field name="co2_lb_keratosis" widget="radio"/>			<!-- 2017 -->								
+							</group>
+
+							<group>
+								<field name="co2_lb_mole" widget="radio"/>				<!-- 2017 --> 									
+							</group>
+
+							<group>
+								<field name="co2_lb_scar" widget="radio"/>				<!-- 2017 -->									
+							</group>
+						</group>
+
+						
+						<hr></hr>
+
+
+						<group>
+
+							<group>
+								<field name="co2_lb_stains" widget="radio"/>													
+							</group>
+						</group>
+
+
+						<hr></hr>
+						
+						
+						<group col="3">
+
+
+
+							
+							<group>
+								<field name="co2_lb_wart" widget="radio"/>													
+							</group>
+						</group>
+	
+					</page>
+
+
+
+
+
+
 				
 					<page string="Zona Cuerpo">
 	
@@ -122,58 +183,7 @@
 
 
 
-					<page string="Localizado Cuerpo">
-						
-						
-						<group>
-							<group>
-								<field name="co2_lb_acneseq" widget="radio"/>													
-							</group>
 
-							<group>
-								<field name="co2_lb_scar" widget="radio"/>													
-							</group>
-						</group>
-
-						
-						
-
-
-
-						<hr></hr>
-
-
-						<group>
-							<group>
-								<field name="co2_lb_mole" widget="radio"/>													
-							</group>
-
-							<group>
-								<field name="co2_lb_stains" widget="radio"/>													
-							</group>
-						</group>
-
-
-
-						<hr></hr>
-
-						
-						
-						<group col="3">
-							<group>
-								<field name="co2_lb_keratosis" widget="radio"/>													
-							</group>
-
-							<group>
-								<field name="co2_lb_cyst" widget="radio"/>													
-							</group>
-							
-							<group>
-								<field name="co2_lb_wart" widget="radio"/>													
-							</group>
-						</group>
-	
-					</page>
 					
 					
 

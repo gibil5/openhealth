@@ -2,8 +2,40 @@
 
 
 
-# Pathology
 
+
+
+# Laser
+_laser_type_list = [
+		('laser_co2','Laser Co2'), 
+		('laser_excilite','Laser Excilite'), 
+		('laser_ipl','Laser Ipl'), 
+		('laser_ndyag','Laser Ndyag'), 
+
+
+		#('criosurgery',			'criosurgery'),
+		#('hyaluronic_acid',		'hyaluronic_acid'),
+		#('sclerotherapy',		'sclerotherapy'),
+		#('lepismatic',			'lepismatic'),
+		#('plasma',				'plasma'),
+		#('botulinum_toxin',		'botulinum_toxin'),
+		#('intravenous_vitamin',	'intravenous_vitamin'),
+
+
+		('medical','Tratamiento médico'), 
+		#('none','None'), 	
+		
+		#('na',''), 	
+		#('',''), 	
+		]
+
+
+
+
+
+
+
+# Pathology
 _pathology_list = [
 
 			#('none','Ninguno'),
@@ -48,6 +80,42 @@ _pathology_list = [
 			('scar_5','Cicatriz Grado 5'),
 
 
+			('stains','Manchas'),
+			('stains_1','Manchas Grado 1'),
+			('stains_2','Manchas Grado 2'),
+			('stains_3','Manchas Grado 3'),
+			('stains_4','Manchas Grado 4'),
+			('stains_5','Manchas Grado 5'),
+
+
+			#('wart','Verruga'),
+			('wart_1','Verruga Grado 1'),
+			('wart_2','Verruga Grado 2'),
+			('wart_3','Verruga Grado 3'),
+			('wart_4','Verruga Grado 4'),
+			('wart_5','Verruga Grado 5'),
+
+			('rejuvenation_face_1','Rejuvenecimiento Facial Grado 1'),
+			('rejuvenation_face_2','Rejuvenecimiento Facial Grado 2'),
+			('rejuvenation_face_3','Rejuvenecimiento Facial Grado 3'),
+			('rejuvenation_face_4','Rejuvenecimiento Facial Grado 4'),
+			('rejuvenation_face_5','Rejuvenecimiento Facial Grado 5'),
+
+
+			#('rejuvenation_hands','Rejuvenecimiento en manos'),
+			('rejuvenation_hands_1','Rejuvenecimiento en manos Grado 1'),
+			('rejuvenation_hands_2','Rejuvenecimiento en manos Grado 2'),
+			('rejuvenation_hands_3','Rejuvenecimiento en manos Grado 3'),
+			('rejuvenation_hands_4','Rejuvenecimiento en manos Grado 4'),
+			('rejuvenation_hands_5','Rejuvenecimiento en manos Grado 5'),
+
+
+			#('rejuvenation_neck','Rejuvenecimiento en cuello'),
+			('rejuvenation_neck_1','Rejuvenecimiento en cuello Grado 1'),
+			('rejuvenation_neck_2','Rejuvenecimiento en cuello Grado 2'),
+			('rejuvenation_neck_3','Rejuvenecimiento en cuello Grado 3'),
+			('rejuvenation_neck_4','Rejuvenecimiento en cuello Grado 4'),
+			('rejuvenation_neck_5','Rejuvenecimiento en cuello Grado 5'),
 
 
 
@@ -63,10 +131,6 @@ _pathology_list = [
 			
 
 
-			('stains','Manchas'),
-			('stains_1','Manchas Grado 1'),
-			('stains_2','Manchas Grado 2'),
-			('stains_3','Manchas Grado 3'),
 			('monalisa_touch','Monalisa Touch'),
 
 			('polyp','Pólipo'),
@@ -77,36 +141,31 @@ _pathology_list = [
 
 			
 
-			
 			('rejuvenation_facial','Rejuvenecimiento Facial'),
-			('rejuvenation_hands','Rejuvenecimiento en manos'),
-			('rejuvenation_neck','Rejuvenecimiento en cuello'),
-			('rejuvenation_face_1','Rejuvenecimiento Facial Grado 1'),
-			('rejuvenation_face_2','Rejuvenecimiento Facial Grado 2'),
-			('rejuvenation_face_3','Rejuvenecimiento Facial Grado 3'),
-			('rejuvenation_face_neck','Rejuvenecimiento Facial + Rejuvenecimiento en Cuello'),
-			('rejuvenation_face_hands','Rejuvenecimiento Facial + Rejuvenecimiento en Manos'),
-			('rejuvenation_face_neck_hands','Rejuvenecimiento Facial + Rejuvenecimiento en Cuello + Rejuvenecimiento en Manos'),
+
+			# Deprecated ? 			
+			#('rejuvenation_face_neck','Rejuvenecimiento Facial + Rejuvenecimiento en Cuello'),
+			#('rejuvenation_face_hands','Rejuvenecimiento Facial + Rejuvenecimiento en Manos'),
+			#('rejuvenation_face_neck_hands','Rejuvenecimiento Facial + Rejuvenecimiento en Cuello + Rejuvenecimiento en Manos'),
+
+
+
+
 			('rosacea','Rosácea'),
 			
-
 			('telangiectasia','Telangectacias'),
 
 
 			('varices','Varices'),
-			('wart','Verruga'),
 			('vitiligo','Vitiligo'),
 			
 			
-			#('none',''), 
-
-
-
 			# Medical 
 			('acne',			'acne'),
 			('rejuvenation_capilar','Rejuvenecimiento Capilar'),
 			#('na','na'), 
 
 
+			('none',''), 
 			]
 			

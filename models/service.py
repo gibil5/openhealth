@@ -11,11 +11,11 @@ from datetime import datetime
 
 import jxvars
 
-import prodvars
 
 import exc
 import ipl
 
+import prodvars
 
 import service_vars
 
@@ -50,36 +50,53 @@ class Service(models.Model):
 					],
 
 			string="Servicio",
-			#required=True, 
+			required=True, 
 			)
 
 
 
 
 
+	# Canonical 
 
-	# Laser type 
+	family = fields.Selection(
+		selection=prodvars._family_list,
+		)	
+
 	laser = fields.Selection(
-			selection = jxvars._laser_type_list, 
+			#selection = jxvars._laser_type_list, 
+			selection = service_vars._laser_type_list, 
 			string="Láser", 			
 			default='none',			
 			#required=True, 
 			index=True
 			)
 
-	# Zone 
+
+	x_treatment = fields.Selection(
+		selection=prodvars._treatment_list,
+		)	
+
+
 	zone = fields.Selection(
 			selection = jxvars._zone_list, 
 			string="Zona", 
 			)
 
-	# Pathology
+
 	pathology = fields.Selection(
 			#selection = jxvars._pathology_list, 
 			selection = service_vars._pathology_list, 
 			string="Patología", 
 			)
 
+
+
+	sessions = fields.Selection(
+			#selection = jxvars._pathology_list, 
+			selection = prodvars._sessions_list, 
+			string="Sesiones", 
+			)
 
 
 
@@ -109,14 +126,28 @@ class Service(models.Model):
 
 	# Commons 
 	def clear_all(self,token):
-		self.clear_commons		
-		self.clear_local  
-		return token
 		
-	def clear_commons(self):		
+		print
+		print 'jx'
+		print 'Clear All'
+
+		self.clear_commons()
+		self.clear_local() 
+		return token
+
+
+		
+	def clear_commons(self):	
+
+		print
+		print 'jx'
+		print 'Clear Commons'
+
 		self.zone = 'none'
 		self.pathology = 'none'
-				
+		
+
+
 	def clear_times(self,token):
 		self.time = ''
 		self.time_1 = 'none'		

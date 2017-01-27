@@ -64,8 +64,13 @@
 							<group>
 								<group>
 									<field name="laser" readonly="1"  invisible="0"/>	
-									<field name="zone" readonly="1"   invisible="0"/>
-									<field name="pathology" readonly="1"  invisible="0"/>									
+
+									<field name="zone" 		readonly="1"   	invisible="0"/>
+									<field name="pathology" readonly="1"  	invisible="0"/>									
+								
+									<field name="family" 		readonly="1"   	invisible="0"/>
+									<field name="x_treatment" 	readonly="1"   	invisible="0"/>
+									<field name="sessions" 		readonly="1"  	invisible="0"/>									
 								</group>
 								
 								
@@ -162,12 +167,21 @@
 		</record>
 
 
+
 		<!-- Window action -->
 		<record model="ir.actions.act_window" id="service_list_action">
 			<field name="name">Servicios jx</field>
 			<field name="res_model">openhealth.service</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
+
+			<!--
+			<field name="context">{
+									'default_laser': 'co2',
+                    			}
+			</field>
+			-->
+
 		</record>
 
 

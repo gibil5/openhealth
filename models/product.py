@@ -14,20 +14,32 @@ class Product(models.Model):
 
 
 
+	#uom_id = fields.Integer(
+	#		required=False, 
+	#	)
+
+
+	uom = fields.Many2one(
+			'product.uom',
+			required=False, 
+		)
+
+
+
 
 	# Canonical 
 
 	x_family = fields.Selection(
 		selection=prodvars._family_list,
-	)	
+		)	
 
 	x_treatment = fields.Selection(
 		selection=prodvars._treatment_list,
-	)	
+		)	
 	
 	x_zone = fields.Selection(
 		selection=prodvars._zone_list,
-	)	
+		)	
 	
 
 	x_pathology = fields.Selection(

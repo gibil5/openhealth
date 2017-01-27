@@ -2,14 +2,10 @@
 <openerp>
 	<data>
 
-
 		<record model="ir.ui.view" id="service_co2_zone_form_view">
-			
 			<field name="name">service.co2.zone.form</field>
 			<field name="model">openhealth.service.co2</field>
-			
 			<field name="inherit_id" ref="service_co2_form_view"/>
-			
 			<field name="arch" type="xml">
 				
 				
@@ -24,7 +20,9 @@
 					<!-- Body local -->
 					<page string="Localizado Cuerpo">
 						
-						<group>
+
+
+						<group col="3">
 							<group>
 								<field name="co2_lb_acneseq" widget="radio"/>			<!-- 2017 -->									
 							</group>
@@ -36,7 +34,11 @@
 							<group>
 								<field name="co2_lb_keratosis" widget="radio"/>			<!-- 2017 -->								
 							</group>
+						</group>
 
+						
+						<hr></hr>
+						<group col="3">
 							<group>
 								<field name="co2_lb_mole" widget="radio"/>				<!-- 2017 --> 									
 							</group>
@@ -44,33 +46,48 @@
 							<group>
 								<field name="co2_lb_scar" widget="radio"/>				<!-- 2017 -->									
 							</group>
-						</group>
-
-						
-						<hr></hr>
-
-
-						<group>
 
 							<group>
-								<field name="co2_lb_stains" widget="radio"/>													
+								<field name="co2_lb_stains" widget="radio"/>			<!-- 2017 -->											
 							</group>
 						</group>
 
 
 						<hr></hr>
-						
-						
 						<group col="3">
-
-
-
-							
 							<group>
-								<field name="co2_lb_wart" widget="radio"/>													
+								<field name="co2_lb_wart" widget="radio"/>				<!-- 2017 -->										
 							</group>
 						</group>
 	
+
+						<!--
+						<hr></hr>
+						<group col="2">		
+						</group>
+						-->
+					</page>
+
+
+
+
+					<!-- Face All -->
+					<page string="Todo Rostro">
+						<group col="3">
+
+							<group>
+								<field name="co2_allface_acnesequels"  widget="radio"/>				<!-- 2017 -->				
+							</group>							
+
+
+							<group>
+								<field   name="co2_allface_rejuvenation"  widget="radio"/>			<!-- 2017 -->				
+							</group>
+						
+							<group>
+								<field   name="co2_allface_stains"  widget="radio"/>				<!-- 2017 -->				
+							</group>
+						</group>
 					</page>
 
 
@@ -78,120 +95,96 @@
 
 
 
-				
+					<!-- Face Local -->
+					<page string="Localizado Rostro">
+
+
+						<group col="3">
+							<group>
+								<field name="co2_lf_cyst" widget="radio"/>							<!-- 2017 -->								
+							</group>
+
+							<group>
+								<field name="co2_lf_keratosis" widget="radio"/>						<!-- 2017 -->
+							</group>
+
+							<group>
+								<field name="co2_lf_mole" widget="radio"/>							<!-- 2017 -->								
+							</group>
+						</group>
+
+
+
+						<hr></hr>
+						<group col="3">
+
+							<group>
+								<field name="co2_lf_scar" widget="radio"/>							<!-- 2017 -->
+							</group>
+
+							<group>
+								<field name="co2_lf_stains" widget="radio"/>						<!-- 2017 -->
+							</group>
+
+							<group>
+								<field name="co2_lf_wart" widget="radio"/>							<!-- 2017 -->					
+							</group>
+						</group>
+					</page>
+					
+
+
+
+
+
+					<!-- Body Zone --> 
 					<page string="Zona Cuerpo">
 	
 						<group>						
-
 							<group>
-								<field name="co2_hands"  widget="radio" />
+								<field name="co2_hands"  widget="radio" />  				<!-- 2017 -->
 							</group>																									
 
 							<group>
-								<field name="co2_neck"  widget="radio" />							
-							</group>
-							
-							<div class="jx_radio">								
-								<group>
-									<field name="co2_cheekbone"  widget="radio"  />							
-								</group>	
-							</div>	
-												
-							
+								<field name="co2_neck"  widget="radio" />					<!-- 2017 -->			
+							</group>												
+						</group>
+						
+
+
+						<hr></hr>
+						<group>						
 							<group>
-								<field name="co2_vagina"  widget="radio" />							
-							</group>			
+									<field name="co2_cheekbone"  widget="radio"  />	  		<!-- 2017 -->						
+							</group>
+							<group>
+								<field name="co2_cheekbone_stains"  widget="radio"  />		<!-- 2017 -->					
+							</group>
+						</group>
+
+
+
+						<hr></hr>
+						<group>						
+							<group>
+								<field name="co2_vagina"  widget="radio" />					<!-- 2017 -->		
+							</group>
+							<group>
+							</group>
 						</group>
 						
 						
-						
-
+						<!--
 						<hr></hr>
-
-
-
 						<group>						
 							<group>
 								<field name="co2_packages"  widget="radio" />							
 							</group>
 						</group>
+						-->
 					</page>
-					
-					
-					
-					
-					<page string="Todo Rostro">
-
-						<group>
-							<group>
-								<field   name="co2_allface_rejuvenation"  widget="radio"/>								
-							</group>
-							
-							<group>
-								<field name="co2_allface_acnesequels"  widget="radio"/>							
-							</group>							
-						</group>
-
-					</page>
-					
-					
-										
-					
-					<page string="Localizado Rostro">
-
-						<group>
-							<group>
-								<field name="co2_lf_scar" widget="radio"/>	
-																			
-							</group>
-						
-							<group>
-								<field name="co2_lf_mole" widget="radio"/>													
-							</group>
-						</group>
-					
-
-						<hr></hr>
-
-
-						<group>
-							<group>
-								<field name="co2_lf_stains" widget="radio"/>													
-							</group>
-
-							<group>
-								<field name="co2_lf_keratosis" widget="radio"/>													
-							</group>
-						</group>
-					
-
-						<hr></hr>
-
-
-						<group>
-							<group>
-								<field name="co2_lf_cyst" widget="radio"/>													
-							</group>
-
-							<group>
-								<field name="co2_lf_wart" widget="radio"/>													
-							</group>
-						</group>
-					
-					</page>
-					
-
-
-
-
-					
-					
-
 				</notebook>
 				</xpath>
-				
-				
-					
 			</field>
 		</record>
 	</data>

@@ -32,7 +32,7 @@
 				<group>
 				<group>						
 				<notebook>
-					<page string="Localizado cuerpo">
+					<page string="Localizado Cuerpo">
 						<group>	
 							<group>
 								<field name="body"  widget="radio" />
@@ -56,7 +56,7 @@
 						</group>
 					</page>
 										
-					<page string="Localizado rostro">
+					<page string="Localizado Rostro">
 						<group>	
 							<group>
 								<field name="face"  widget="radio" />							

@@ -8,12 +8,13 @@ from datetime import datetime
 import exc
 
 
+
+
 class ServiceExcilite(models.Model):
 	_name = 'openhealth.service.excilite'
 	_inherit = 'openhealth.service'
 	
 	
-
 
 	
 	# Service 
@@ -30,34 +31,30 @@ class ServiceExcilite(models.Model):
 
 
 	
-	# Propietary
-	
-	# First
-	vitiligo = fields.Selection(
-			selection = exc._vitiligo_list, 
-			string="Vitiligo", 
-			default='none',	
-			)
+
+# ----------------------------------------------------------- Variables ------------------------------------------------------
 
 	psoriasis = fields.Selection(
 			selection = exc._psoriasis_list, 
 			string="Psoriasis", 
 			default='none',	
 			)
-			
+
+	vitiligo = fields.Selection(
+			selection = exc._vitiligo_list, 
+			string="Vitiligo", 
+			default='none',	
+			)
+		
 	alopecias = fields.Selection(
 			selection = exc._alopecias_list, 
 			string="Alopecias", 
 			default='none',	
 			)
+	
 
 
-
-
-
-
-
-	# On Change - Clear the rest
+# ----------------------------------------------------------- On changes ------------------------------------------------------
 
 	@api.onchange('vitiligo')
 	def _onchange_vitiligo(self):
@@ -72,7 +69,6 @@ class ServiceExcilite(models.Model):
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 			}
 
-
 	@api.onchange('psoriasis')
 	def _onchange_psoriasis(self):
 	
@@ -86,7 +82,6 @@ class ServiceExcilite(models.Model):
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 			}
 			
-			
 	@api.onchange('alopecias')
 	def _onchange_alopecias(self):
 	
@@ -99,27 +94,11 @@ class ServiceExcilite(models.Model):
 			
 			return {
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
-				#'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time)]},
 			}
 			
 			
-			
 
-
-
-
-
-
-
-	# Clear 		
-	
-	#def clear_all(self,token):
-	#	self.clear_commons
-	#	self.clear_local  
-	#	return token 
-	
-
-
+# ----------------------------------------------------------- Functions ------------------------------------------------------
 		
 	@api.multi
 	def clear_local(self):
@@ -138,7 +117,6 @@ class ServiceExcilite(models.Model):
 		
 
 
+# ServiceExcilite
 
-	
-	
 	

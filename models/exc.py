@@ -27,6 +27,8 @@ _vitiligo_list = [
 		('legs',	'Piernas'),
 		('feet',	'Pies'),
 
+		('face',	'Rostro'),
+
 		('none',''),
 		]
 		
@@ -47,6 +49,8 @@ _psoriasis_list = [
 		('breast',	'Pecho'),	
 		('legs',	'Piernas'),
 		('feet',	'Pies'),
+
+		('face',	'Rostro'),
 
 		('none',''),
 		]
@@ -69,13 +73,8 @@ _alopecias_list = [
 		('legs',	'Piernas'),
 		('feet',	'Pies'),
 
+		('face',	'Rostro'),
+
 		('none',''),
 		]
-
-
-
-
-
-
-
 

@@ -3,11 +3,22 @@
 
 
 
+
+_sessions_list = [
+		#('one',			'one'),
+		#('six',			'six'), 
+
+		('1',			'1'),
+		('10',			'10'), 
+		]
+
+
+
+
+
 _family_list = [
 		('laser',			'laser'),
-
 		('medical',			'medical'), 
-
 
 		('deprecated',			'deprecated'), 
 		]

@@ -42,7 +42,7 @@
 						</group>
 					</page>
 										
-					<page string="Todo rostro">
+					<page string="Todo Rostro">
 						<group>	
 							<group>
 								<field name="face"  widget="radio" />							

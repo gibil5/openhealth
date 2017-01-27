@@ -138,17 +138,38 @@
 			sequence="10"
 			action="service_list_action"/>
 
+
+
+
+
 		<!-- Services Co2 --> 
-		<menuitem id="service_co2_menu" name="Services Co2"
+		<menuitem id="service_co2_menu" name="Services Co2 - 1"
 			parent="openhealth_menu"
 			sequence="11"
 			action="service_co2_list_action"/>
+
 
 		<!-- Service Excilite --> 
 		<menuitem id="service_excilite_menu" name="Services Excilite"
 			parent="openhealth_menu"
 			sequence="12"
 			action="service_excilite_list_action"/>
+
+
+		<!-- Service ipl --> 
+		<menuitem id="service_ipl_menu" name="Services Ipl"
+			parent="openhealth_menu"
+			sequence="12"
+			action="service_ipl_list_action"/>
+
+
+		<!-- Service ndyag --> 
+		<menuitem id="service_ndyag_menu" name="Services Ndyag"
+			parent="openhealth_menu"
+			sequence="12"
+			action="service_ndyag_list_action"/>
+
+
 
 
 		<!-- Service Medical --> 

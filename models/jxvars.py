@@ -44,104 +44,8 @@ _machines_list = [
 
 
 
-# Product 
-
-# Laser
-_laser_type_list = [
-		('laser_co2','Laser Co2'), 
-		('laser_excilite','Laser Excilite'), 
-		('laser_ipl','Laser Ipl'), 
-		('laser_ndyag','Laser Ndyag'), 
 
 
-		#('criosurgery',			'criosurgery'),
-		#('hyaluronic_acid',		'hyaluronic_acid'),
-		#('sclerotherapy',		'sclerotherapy'),
-		#('lepismatic',			'lepismatic'),
-		#('plasma',				'plasma'),
-		#('botulinum_toxin',		'botulinum_toxin'),
-		#('intravenous_vitamin',	'intravenous_vitamin'),
-
-
-		('medical','Tratamiento médico'), 
-		#('none','None'), 	
-		
-		#('na',''), 	
-		#('',''), 	
-		]
-
-
-
-
-
-
-
-
-# Medical 
-
-#_med_con_list = [
-#		('medical',			'Médica'),	
-#		('gynecological',	'Ginecológica'),
-#
-#		('none',''),
-#		]
-
-
-_med_crio_list = [
-		('one',			'1 Sesión'),	
-		('ten',			'10 Sesiones'),
-
-		('none',''),
-		]
-
-
-_med_hia_list = [
-		('hialuronic',			''),	
-		('hialuronic_repair',	'Repair'),
-
-		('none',''),
-		]
-
-_med_scle_list = [
-		('sclerotherapy',		''),	
-
-		('none',''),
-		]
-
-
-
-
-_med_lep_list = [
-		('lepismatic',		''),	
-
-		('none',''),
-		]
-
-
-_med_pla_list = [
-		('lepismatic',		''),	
-
-		('none',''),
-		]
-
-_med_bot_list = [
-		('lepismatic',		''),	
-
-		('none',''),
-		]
-
-_med_int_list = [
-		('lepismatic',		''),	
-
-		('none',''),
-		]
-
-
-
-
-
-
-		
 
 
 
@@ -174,64 +78,6 @@ _ndyag_pulse_spot = [
 
 
 
-# First
-_co2_han_list = [
-
-		('stains',	'Manchas'),	
-		('scar',	'Cicatriz'),
-		('wart',	'Verruga'),
-		('rejuvenation_hands',	'Rejuvenecimiento'),
-
-		('none',''),
-		]
-
-
-
-
-
-
-_co2_che_list = [	
-
-		('stains','Manchas'),	
-		('acne_sequels','Acné y secuelas'),
-
-		('none',''),
-		]
-
-
-
-		
-
-
-_co2_nec_list = [
-		
-		('scar',			'Cicatriz'),
-		('polyp',			'Polipo'),
-		('wart',			'Verruga'),
-		('ruby_point',		'Punto Rubí'),
-		('rejuvenation_neck',	'Rejuvenecimiento'),
-
-		('none',''),
-		]
-		
-			
-			
-_co2_vag_list = [
-
-		('monalisa_touch',	'Monalisa Touch'),
-
-		('none',''),
-		]		
-
-
-_co2_pac_list = [
-
-		('rejuvenation_face_neck',			'Facial + Cuello'),
-		('rejuvenation_face_hands',			'Facial + Manos'),
-		('rejuvenation_face_neck_hands',	'Facial + Cuello + Manos'),
-
-		('none',''),
-		]
 
 
 
@@ -239,25 +85,6 @@ _co2_pac_list = [
 
 
 
-# Second
-
-_co2_rejuv_list = [		
-
-		('rejuvenation_face_1','1'),
-		('rejuvenation_face_2','2'),
-		('rejuvenation_face_3','3'),
-
-		('none',''),
-		]
-			
-_co2_acneseq_list = [
-
-		('acne_sequels_1','1'),	
-		('acne_sequels_2','2'),
-		('acne_sequels_3','3'),
-
-		('none',''),
-		]			
 
 
 
@@ -265,65 +92,9 @@ _co2_acneseq_list = [
 
 
 
-# Third
-
-_co2_lfstains_list = [
-
-		('stains_1','Grado 1'),	
-		('stains_2','Grado 2'),	
-		('stains_3','Grado 3'),	
-
-		('none',''),
-		]
-
-_co2_lfkeratosis_list = [
-
-		('keratosis_1','Grado 1'),	
-		('keratosis_2','Grado 2'),	
-		('keratosis_3','Grado 3'),	
-
-		('none',''),
-		]
 
 
-_co2_lfmole_list = [
 
-		('mole_1','Grado 1'),	
-		('mole_2','Grado 2'),	
-		('mole_3','Grado 3'),	
-
-		('none',''),
-		]
-		
-_co2_lfscar_list = [
-
-		('scar_1','Grado 1'),	
-		('scar_2','Grado 2'),	
-		('scar_3','Grado 3'),	
-
-		('none',''),
-		]
-		
-		
-		
-_co2_lfcyst_list = [
-
-		('cyst',''),	
-		#('cyst_2','Grado 2'),	
-		#('cyst_3','Grado 3'),	
-
-		('none',''),
-		]
-	
-_co2_lfwart_list = [
-
-		('wart',''),	
-		#('wart_2','Grado 2'),	
-		#('wart_3','Grado 3'),	
-
-		('none',''),
- 		]	
-		
 
 
 
@@ -381,7 +152,6 @@ _zone_list = [
 			('package','Paquete'), 
 			
 			
-			#('none',''), 
 			
 
 
@@ -393,6 +163,9 @@ _zone_list = [
 			('1_zone','1_zone'), 
 
 			#('na','na'), 
+
+
+			('none',''), 
 			]
 
 

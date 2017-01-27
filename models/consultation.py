@@ -829,10 +829,7 @@ class Consultation(models.Model):
 	def create_service_co2(self):  
 
 		consultation_id = self.id 
-
 		treatment_id = self.treatment.id 
-
-		
 
 		laser = 'laser_co2'
 		zone = ''	
@@ -842,9 +839,11 @@ class Consultation(models.Model):
 		return {
 				'type': 'ir.actions.act_window',
 				'name': ' New Service Current - Laser Co2', 
+
 				'view_type': 'form',
 				'view_mode': 'form',	
 				'target': 'current',
+
 
 				'res_model': 'openhealth.service.co2',				
 				#'res_id': consultation_id,
@@ -857,8 +856,8 @@ class Consultation(models.Model):
 
 
 				'context': {
-							'default_consultation': consultation_id,
 
+							'default_consultation': consultation_id,
 							'default_treatment': treatment_id,
 
 
@@ -886,8 +885,11 @@ class Consultation(models.Model):
 		print 
 
 		consultation_id = self.id 
-
-		#treatment_id = self.treatment.id 
+		treatment_id = self.treatment.id 
+		
+		print consultation_id
+		print treatment_id
+		print 
 
 
 		laser = 'laser_excilite'
@@ -898,11 +900,13 @@ class Consultation(models.Model):
 		return {
 				'type': 'ir.actions.act_window',
 				'name': ' New Service Current - Laser Excilite', 
+
 				'view_type': 'form',
 				'view_mode': 'form',			
 				'target': 'current',				
 								
-				'res_model': 'createhealth.service.excilite',				
+
+				'res_model': 'openhealth.service.excilite',				
 				#'res_id': 23,
 				
 				'flags': 	{
@@ -911,10 +915,9 @@ class Consultation(models.Model):
 							},
 
 				'context': {
+
 							'default_consultation': consultation_id,	
-
-							#'default_treatment': treatment_id,
-
+							'default_treatment': treatment_id,
 
 							'default_laser': laser,
 							'default_zone': zone,
@@ -951,7 +954,7 @@ class Consultation(models.Model):
 				
 				#'res_id': 23,
 				
-				'res_model': 'createhealth.service.ipl',				
+				'res_model': 'openhealth.service.ipl',				
 				
 				'flags': 	{
 							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
@@ -996,7 +999,7 @@ class Consultation(models.Model):
 				
 				#'res_id': 23,
 				
-				'res_model': 'createhealth.service.ndyag',				
+				'res_model': 'openhealth.service.ndyag',				
 				
 				'flags': 	{
 							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
@@ -1027,20 +1030,12 @@ class Consultation(models.Model):
 		
 		family = 'medical'
 
-		#laser = 'na'
-		#zone = 'none'	
-		#pathology = 'none'
-				
-		#laser = ''
-		#zone = ''	
-		#pathology = ''
-
-
-		#laser = 'laser_co2'
-		#laser = 'none'
 		laser = 'medical'
+		zone = ''	
+		pathology = ''
 
 		
+
 		return {
 				'type': 'ir.actions.act_window',
 				'name': ' New Service Current - Medical', 
@@ -1048,7 +1043,7 @@ class Consultation(models.Model):
 				'view_mode': 'form',			
 				'target': 'current',
 				
-				'res_model': 'createhealth.service.medical',				
+				'res_model': 'openhealth.service.medical',				
 				
 				'flags': 	{
 							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}

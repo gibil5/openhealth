@@ -254,7 +254,9 @@
 
 		'views/services/service_co2.xml',
 		'views/services/service_co2_zone.xml',
+
 		'views/services/service_excilite.xml',
+		
 		'views/services/service_excilite_zone.xml',
 		'views/services/service_ipl.xml',
 		'views/services/service_ipl_zone.xml',

@@ -16,9 +16,9 @@
 
 			<field name="inherit_id" ref="oehealth.oeh_medical_appointment_view"/>			
 
-	        <field name="mode">primary</field>
+			<field name="mode">primary</field>
 
-	        <field name="priority" eval="1"/>
+			<field name="priority" eval="1"/>
 			
 			<field name="arch" type="xml">
 
@@ -282,8 +282,8 @@
 							<!--
 							<calendar string="Calendar"  	date_start="appointment_date" date_delay="duration"  display="[patient]"   
 															color="color_doctor_id"   quick_add="False" mode="day">
-				            	<field name="patient"/>       
-        					</calendar>
+								<field name="patient"/>       
+							</calendar>
 							-->
 
 
@@ -469,25 +469,25 @@
 		<!-- Controls -->
 		<record id="oeh_medical_appointment_action_tree_controls" model="ir.actions.act_window">
 
-                    <field name="name">Controles - Sin hora</field>
-            
-                    <field name="res_model">oeh.medical.appointment</field>
-                    <field name="view_type">form</field>
-                    <field name="view_mode">calendar,tree,form</field>
-                    <field name="domain">[
-                    						('state', '=', 'pre_scheduled_control'),
-                    					]
-                    </field>
-                    
-                    <field name="context">{}</field>
-                    <field name="view_id" eval="False"/>
-                    <field name="help" type="html">
-                      <p class="oe_view_nocontent_create">
-                        Click to add a new appointment.
-                      </p><p>
-                        oeHealth appointment screen can easily find all of your appointment details;
-                      </p>
-                    </field>
+					<field name="name">Controles - Sin hora</field>
+			
+					<field name="res_model">oeh.medical.appointment</field>
+					<field name="view_type">form</field>
+					<field name="view_mode">calendar,tree,form</field>
+					<field name="domain">[
+											('state', '=', 'pre_scheduled_control'),
+										]
+					</field>
+					
+					<field name="context">{}</field>
+					<field name="view_id" eval="False"/>
+					<field name="help" type="html">
+					  <p class="oe_view_nocontent_create">
+						Click to add a new appointment.
+					  </p><p>
+						oeHealth appointment screen can easily find all of your appointment details;
+					  </p>
+					</field>
 		</record>
 
 
@@ -499,32 +499,32 @@
 
 		<!-- Confirmed -->  
 		<record id="oeh_medical_appointment_action_tree_confirmed" model="ir.actions.act_window">
-                    
+					
 
-                    <field name="name">Citas confirmadas</field>
-                    
+					<field name="name">Citas confirmadas</field>
+					
 
-                    <field name="res_model">oeh.medical.appointment</field>
-                    <field name="view_type">form</field>
-                    <field name="view_mode">calendar,tree,form</field>                    
-                    <field name="domain">[
-                    						('state', 'in', ['pre_scheduled','Scheduled', 'Completed', 'Invoiced']),
-                    						('x_target', '=', 'doctor'),
-                    					]
-                    </field>
+					<field name="res_model">oeh.medical.appointment</field>
+					<field name="view_type">form</field>
+					<field name="view_mode">calendar,tree,form</field>                    
+					<field name="domain">[
+											('state', 'in', ['pre_scheduled','Scheduled', 'Completed', 'Invoiced']),
+											('x_target', '=', 'doctor'),
+										]
+					</field>
 					<field name="context">{
 											'default_x_target': 'doctor',
 											'default_x_type': 'consultation',
-                    					}
-                    </field>
-                    <field name="view_id" eval="False"/>
-                    <field name="help" type="html">
-                      <p class="oe_view_nocontent_create">
-                        Click to add a new appointment.
-                      </p><p>
-                        oeHealth appointment screen can easily find all of your appointment details;
-                      </p>
-                    </field>
+										}
+					</field>
+					<field name="view_id" eval="False"/>
+					<field name="help" type="html">
+					  <p class="oe_view_nocontent_create">
+						Click to add a new appointment.
+					  </p><p>
+						oeHealth appointment screen can easily find all of your appointment details;
+					  </p>
+					</field>
 		</record>
 
 
@@ -537,46 +537,46 @@
 		<record id="oeh_medical_appointment_action_tree_machines" model="ir.actions.act_window">
 
 
-                    <field name="name">Reserva de salas</field>
+					<field name="name">Reserva de salas</field>
 
-            
-                    <field name="res_model">oeh.medical.appointment</field>
-                    <field name="view_type">form</field>
-                    <field name="view_mode">calendar,tree,form</field>
-                    
-                    <!--
+			
+					<field name="res_model">oeh.medical.appointment</field>
+					<field name="view_type">form</field>
+					<field name="view_mode">calendar,tree,form</field>
+					
+					<!--
 
-                    						('x_machine', 'in', ['laser_co2_1', 'laser_co2_2', 'laser_co2_3', 'laser_excilite', 'laser_m22']),
+											('x_machine', 'in', ['laser_co2_1', 'laser_co2_2', 'laser_co2_3', 'laser_excilite', 'laser_m22']),
 
-                    						('x_machine', '!=', 'False'),
-                    -->
-                    <field name="domain">[
+											('x_machine', '!=', 'False'),
+					-->
+					<field name="domain">[
 
 
-                    						('x_target', '=', 'machine'),
+											('x_target', '=', 'machine'),
 
-                    					]
-                    </field>
-                    
-                    <!--
+										]
+					</field>
+					
+					<!--
 
 											'default_x_machine': 'none',
-                    -->
-                    <field name="context">{
+					-->
+					<field name="context">{
 											'default_x_target': 'machine',
 											'default_x_type': 'procedure',
-                    	}
-                    </field>
+						}
+					</field>
 
 
-                    <field name="view_id" eval="False"/>
-                    <field name="help" type="html">
-                      <p class="oe_view_nocontent_create">
-                        Click to add a new appointment.
-                      </p><p>
-                        oeHealth appointment screen can easily find all of your appointment details;
-                      </p>
-                    </field>
+					<field name="view_id" eval="False"/>
+					<field name="help" type="html">
+					  <p class="oe_view_nocontent_create">
+						Click to add a new appointment.
+					  </p><p>
+						oeHealth appointment screen can easily find all of your appointment details;
+					  </p>
+					</field>
 		</record>
 
 

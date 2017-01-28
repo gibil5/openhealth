@@ -3,10 +3,10 @@
 	<data>
 
 
+		<!-- Form --> 
 		<record model="ir.ui.view" id="service_ndyag_form_view">
 			<field name="name">service.ndyag.form</field>
 			<field name="model">openhealth.service.ndyag</field>
-
 			<field name="inherit_id" ref="service_form_view"/>
 	        <field name="mode">primary</field>
 			
@@ -17,8 +17,29 @@
         		</xpath>
 			</field>
 
-			
 		</record>		
+
+
+
+
+
+		<!-- Tree -->
+		<record model="ir.ui.view" id="service_ndyag_tree_view">
+			<field name="name">service.ndyag.tree</field>
+			<field name="model">openhealth.service.ndyag</field>
+			<field name="arch" type="xml">
+				<tree string="Service Tree">
+					<field name="name"/>
+					<field name="id"/>
+					<field name="laser"/>				
+					<field name="treatment"/>
+					<field name="service"/>
+					<field name="consultation"/>
+				</tree>
+			</field>
+		</record>
+
+
 
 
 

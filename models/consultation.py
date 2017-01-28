@@ -128,6 +128,22 @@ class Consultation(models.Model):
 
 
 
+	# Nr Services medical 
+	nr_service_medical = fields.Integer(
+			default = 0, 
+			compute="_compute_nr_service_medical",
+		)
+
+	#@api.multi
+	@api.depends('service_medical_ids')
+
+	def _compute_nr_service_medical(self):
+		for record in self:
+			record.nr_service_medical = self.env['openhealth.service.medical'].search_count([('consultation','=', self.id)]) 
+
+
+
+
 
 
 
@@ -180,12 +196,12 @@ class Consultation(models.Model):
 
 
 	# Appointments 
-
 	appointment_ids = fields.One2many(
 			'oeh.medical.appointment', 
 			'consultation', 
 			string = "Citas", 
-			)
+			required=True, 
+		)
 
 
 
@@ -791,6 +807,8 @@ class Consultation(models.Model):
 	@api.multi
 	def create_service(self):  
 		consultation_id = self.id 				
+		treatment_id = self.treatment.id 
+
 		laser = ''
 		zone = ''	
 		pathology = ''
@@ -811,6 +829,9 @@ class Consultation(models.Model):
 							},
 				'context': {
 							'default_consultation': consultation_id,					
+							'default_treatment': treatment_id,
+
+
 							'default_laser': laser,
 							'default_zone': zone,
 							'default_pathology': pathology,
@@ -919,6 +940,7 @@ class Consultation(models.Model):
 							'default_consultation': consultation_id,	
 							'default_treatment': treatment_id,
 
+
 							'default_laser': laser,
 							'default_zone': zone,
 							'default_pathology': pathology,
@@ -963,8 +985,8 @@ class Consultation(models.Model):
 
 				'context': {
 							'default_consultation': consultation_id,					
-
 							'default_treatment': treatment_id,
+
 
 
 							'default_laser': laser,
@@ -984,6 +1006,8 @@ class Consultation(models.Model):
 	def create_service_ndyag(self):  
 
 		consultation_id = self.id 
+		treatment_id = self.treatment.id 
+
 		
 		laser = 'laser_ndyag'
 		zone = ''	
@@ -1008,6 +1032,8 @@ class Consultation(models.Model):
 
 				'context': {
 							'default_consultation': consultation_id,					
+							'default_treatment': treatment_id,
+
 
 							'default_laser': laser,
 							'default_zone': zone,
@@ -1027,6 +1053,8 @@ class Consultation(models.Model):
 	def create_service_medical(self):  
 
 		consultation_id = self.id 
+		treatment_id = self.treatment.id 
+
 		
 		family = 'medical'
 
@@ -1052,11 +1080,11 @@ class Consultation(models.Model):
 
 				'context': {
 							'default_consultation': consultation_id,					
+							'default_treatment': treatment_id,
+
 
 							'default_family': family,
-
 							'default_laser': laser,
-
 							#'default_zone': zone,
 							#'default_pathology': pathology,
 

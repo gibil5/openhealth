@@ -29,6 +29,61 @@ class Treatment(models.Model):
 
 
 
+# ----------------------------------------------------------- Relational ------------------------------------------------------
+	
+	# Service 
+	service_ids = fields.One2many(
+			'openhealth.service', 
+	
+			'treatment', 
+			#string="Services"
+			string="Servicios"
+		)
+
+
+
+	# Co2
+	service_co2_ids = fields.One2many(
+			'openhealth.service.co2', 
+			'treatment', 
+			string="Servicios Co2"
+			)
+
+	# Excilite
+	service_excilite_ids = fields.One2many(
+			'openhealth.service.excilite', 
+			'treatment', 
+			string="Servicios Excilite"
+			)
+
+	# Ipl
+	service_ipl_ids = fields.One2many(
+			'openhealth.service.ipl', 
+			'treatment', 
+			string="Servicios ipl"
+			)
+
+
+	# Ndyag
+	service_ndyag_ids = fields.One2many(
+			'openhealth.service.ndyag', 
+			'treatment', 
+			string="Servicios ndyag"
+			)
+
+	# Medical
+	service_medical_ids = fields.One2many(
+			'openhealth.service.medical', 
+			'treatment', 
+			string="Servicios medical"
+			)
+
+
+
+
+
+
+
 	# State 
 
 	_state_list = [
@@ -137,6 +192,74 @@ class Treatment(models.Model):
 
 
 			record.nr_services= co2 + exc + ipl + ndyag + medical
+
+
+
+
+	# Co2
+	nr_services_co2 = fields.Integer(
+			string="Servicios",
+			compute="_compute_nr_services_co2",
+	)
+	@api.multi
+	def _compute_nr_services_co2(self):
+		for record in self:
+			services =		self.env['openhealth.service.co2'].search_count([('treatment','=', record.id),]) 
+			record.nr_services_co2 = services 
+
+
+
+	# excilite
+	nr_services_excilite = fields.Integer(
+			string="Servicios",
+			compute="_compute_nr_services_excilite",
+	)
+	@api.multi
+	def _compute_nr_services_excilite(self):
+		for record in self:
+			services = 		self.env['openhealth.service.excilite'].search_count([('treatment','=', record.id),]) 
+			record.nr_services_excilite = services 
+
+
+	# ipl
+	nr_services_ipl = fields.Integer(
+			string="Servicios",
+			compute="_compute_nr_services_ipl",
+	)
+	@api.multi
+	def _compute_nr_services_ipl(self):
+		for record in self:
+			services = 		self.env['openhealth.service.ipl'].search_count([('treatment','=', record.id),]) 
+			record.nr_services_ipl = services 
+
+
+
+	# ndyag
+	nr_services_ndyag = fields.Integer(
+			string="Servicios",
+			compute="_compute_nr_services_ndyag",
+	)
+	@api.multi
+	def _compute_nr_services_ndyag(self):
+		for record in self:
+			services = 		self.env['openhealth.service.ndyag'].search_count([('treatment','=', record.id),]) 
+			record.nr_services_ndyag = services 
+
+
+	# medical
+	nr_services_medical = fields.Integer(
+			string="Servicios",
+			compute="_compute_nr_services_medical",
+	)
+	@api.multi
+	def _compute_nr_services_medical(self):
+		for record in self:
+			services = 		self.env['openhealth.service.medical'].search_count([('treatment','=', record.id),]) 
+			record.nr_services_medical = services 
+
+
+
+
 
 
 
@@ -719,25 +842,6 @@ class Treatment(models.Model):
 
 
 
-
-	# Service 
-	#service_ids = fields.One2many(
-	#		'openhealth.service', 
-	#		'treatment_id', 
-			#string="Services"
-	#		string="Servicios"
-	#		)
-
-
-
-	# Service 
-	service_co2_ids = fields.One2many(
-			'openhealth.service.co2', 
-			'treatment', 
-
-			#string="Services"
-			string="Servicios Co2"
-			)
 
 
 

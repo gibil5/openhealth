@@ -19,7 +19,7 @@
 				<notebook position="inside">
 					
 
-					<page string="TRATAMIENTO MEDICO">
+					<page string="TRATAMIENTO MEDICO"   	attrs="{'invisible':[('nr_service_medical', '=', 0)]}">
 
 
 						<!--
@@ -29,7 +29,7 @@
 
 						<field name="service_medical_ids">
 
-							<tree string="">	
+							<tree string="Medical">	
 								<field name="name"/>
 								<field name="laser"/>		
 

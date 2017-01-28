@@ -10,23 +10,51 @@
 			<field name="name">treatment.service_co2.form</field>
 			<field name="model">openextension.treatment</field>
 
-
 			<field name="priority" eval="2"/>
-
 			
 			<field name="inherit_id" ref="treatment_form_view"/>
 			<field name="arch" type="xml">
+
+
+
 				<notebook position="inside">
+					<page string="Servicios">
 					
 
-					<page string="Rec. - Co2">
+						<notebook>
 
-						<field name="service_co2_ids"/>						
+							<page string="Co2"   		attrs="{'invisible':[('nr_services_co2', '=', 0)]}"  >
+								<field name="service_co2_ids"/>						
+							</page>
+
+
+							<page string="Excilite"  	attrs="{'invisible':[('nr_services_excilite', '=', 0)]}"	>
+								<field name="service_excilite_ids"/>						
+							</page>
+
+
+							<page string="Ipl"   		attrs="{'invisible':[('nr_services_ipl', '=', 0)]}"  >
+								<field name="service_ipl_ids"/>						
+							</page>
+
+
+							<page string="Ndyag"   		attrs="{'invisible':[('nr_services_ndyag', '=', 0)]}"  >
+								<field name="service_ndyag_ids"/>						
+							</page>
+
+
+							<page string="Medical"   		attrs="{'invisible':[('nr_services_medical', '=', 0)]}"  >
+								<field name="service_medical_ids"/>						
+							</page>
+
+
+						</notebook>
+
 
 					</page>
-
-
 				</notebook>
+
+
 			</field>
 		</record>
 	</data>

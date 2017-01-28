@@ -1,65 +1,27 @@
 <?xml version="1.0"?>
 <openerp>
 	<data>
-
-
-		<!--
-		order_lines 
-		-->
 		<record model="ir.ui.view" id="consultation_order_form_view">
 			<field name="name">consultation.order.form</field>
 			<field name="model">openhealth.consultation</field>
-
-
 			<field name="priority" eval="7"/>
-
-			
 			<field name="inherit_id" ref="consultation_form_view"/>
-			<field name="arch" type="xml">
-
-				
+			<field name="arch" type="xml">				
 				<notebook position="inside">
-					
 					<page string="Presupuesto">
-
-
-
-						<!--
-						<field name="order"/>
-
-						<field name="order"  attrs="{'invisible':[('state', '!=', 'draft')]}">
-
-						<field name="order">
-						-->
-
 						<field name="pre_order">
-
-							<tree string="">	
-								
-								<field name="name"/>
-
-								<field name="date_order"/>
-
-								<field name="partner_id"/>
-
-								<field name="amount_total" sum="Total Tax Included" widget="monetary"/>
-
-
-								<field name="state" invisible="0"/>
-
-								<field name="nr_lines"/>
-
-
-								<field name="x_chief_complaint"/>
+							<tree string="pre_order">	
 								<!--
-								<field name="user_id"/>
-								<field name="invoice_status"/>
 								-->
+								<field name="name"/>
+								<field name="date_order"/>
+								<field name="partner_id"/>
+								<field name="amount_total" sum="Total Tax Included" widget="monetary"/>
+								<field name="state" invisible="0"/>
+								<field name="nr_lines"/>
+								<field name="x_chief_complaint"/>
 							</tree>
-						</field>				
-						
-						
-
+						</field>
 					</page>
 				</notebook>
 			</field>

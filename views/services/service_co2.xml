@@ -27,26 +27,18 @@
 
 
 
-		<!-- service tree/list view -->
+		<!-- Tree -->
 		<record model="ir.ui.view" id="service_co2_tree_view">
-			<field name="name">service.tree</field>
+			<field name="name">service.co2.tree</field>
 			<field name="model">openhealth.service.co2</field>
 			<field name="arch" type="xml">
-				
 				<tree string="Service Tree">
-				
 					<field name="name"/>
-					
 					<field name="id"/>
-
 					<field name="laser"/>				
-					
 					<field name="treatment"/>
-
 					<field name="service"/>
-
 					<field name="consultation"/>
-				
 				</tree>
 			</field>
 		</record>

@@ -609,6 +609,126 @@ class sale_order(models.Model):
 
 
 # ----------------------------------------------------------- Button - Update Lines ------------------------------------------------------
+	@api.multi 
+	def update_line(self, order_id, product_id, name, list_price, uom_id):
+
+
+		print 'update existing'
+
+		#line_id = self.env['sale.order.line'].search([
+		#														('order_id', 'like', order_id),
+		#														('name', 'like', name),
+		#												]).id
+			
+		#print order_line_id
+		#rec_set = self.env['sale.order.line'].browse([
+		#												order_line_id																
+		#											])
+		#print rec_set 
+		#ol = rec_set.write({
+									#'product_id': product_id,
+									#'order_id': order_id,
+									#'name': name,
+		#						'price_unit': price_unit,
+									#'product_uom': se.service.uom_id.id, 
+		#					})
+
+
+
+		order = self.env['sale.order'].search([
+															('id', '=', order_id),
+															#('name', 'like', name),
+													])
+		print order 
+
+		print order.id
+		print product_id
+		print name 
+		print uom_id
+
+		line = order.order_line.create({
+											'order_id': order.id,
+
+											'product_id': product_id,
+											'name': name,
+											#'price_unit': product_price_unit,
+											'product_uom': uom_id, 
+										})
+		print line
+		print 
+
+		return line
+	# update_line
+
+
+
+	@api.multi 
+	def update_order(self):
+
+		print 
+		print 'jx'
+		print 'Update Order'
+
+		order_id = self.id
+
+
+		#order.order_line.unlink
+		ret = self.order_line.unlink()
+
+
+		for service in self.consultation.service_co2_ids:
+			print service
+
+			line = self.update_line(	order_id, 
+										service.service.id, 
+										service.service.x_name_short, 
+										service.service.list_price, 
+										service.service.uom_id.id
+									)
+			print 
+		
+		for service in self.consultation.service_excilite_ids:
+			print service
+			line = self.update_line(	order_id, 
+										service.service.id, 
+										service.service.x_name_short, 
+										service.service.list_price, 
+										service.service.uom_id.id
+									)
+
+		for service in self.consultation.service_ipl_ids:
+			print service
+			line = self.update_line(	order_id, 
+										service.service.id, 
+										service.service.x_name_short, 
+										service.service.list_price, 
+										service.service.uom_id.id
+									)
+
+		for service in self.consultation.service_ndyag_ids:
+			print service
+			line = self.update_line(	order_id, 
+										service.service.id, 
+										service.service.x_name_short, 
+										service.service.list_price, 
+										service.service.uom_id.id
+									)
+
+		for service in self.consultation.service_medical_ids:
+			print service
+			line = self.update_line(	order_id, 
+										service.service.id, 
+										service.service.x_name_short, 
+										service.service.list_price, 
+										service.service.uom_id.id
+									)
+
+		print 
+
+	# update_order 
+
+
+
 
 	@api.multi 
 	def update_order_lines_app(self):
@@ -635,11 +755,7 @@ class sale_order(models.Model):
 															('doctor', 'like', self.x_doctor.name), 	
 															('patient', 'like', self.patient.name),		
 															('x_type', 'like', 'procedure'), 
-
-
 															('x_target', '=', 'doctor'), 
-
-
 															#('state', 'like', 'pre_scheduled'), 
 														], 
 														order='appointment_date desc', limit=1)

@@ -190,29 +190,37 @@
 		# Treatments 
 		'views/treatments/treatment.xml',
 		'views/treatments/treatment_consultations.xml',
-		'views/treatments/treatment_sales.xml',
-		'views/treatments/treatment_quotations.xml',
+
+		#'views/treatments/treatment_sales.xml',
+		#'views/treatments/treatment_quotations.xml',
+		'views/treatments/treatment_orders.xml',
+
 		'views/treatments/treatment_procedures.xml',
 		'views/treatments/treatment_appointments.xml',
 		'views/treatments/treatment_reservations.xml',
 		'views/treatments/treatment_sessions.xml',
 		'views/treatments/treatment_controls.xml',
 
-		#'views/treatments/treatment_services.xml',
+		'views/treatments/treatment_services.xml',
 
 
 
 		# Consultation
 		'views/consultations/consultation.xml',
 		'views/consultations/consultation_first.xml',
-		'views/consultations/consultation_order.xml',
-		'views/consultations/consultation_order_lines.xml',
+
+
+		'views/consultations/consultation_order.xml', 
+		#'views/consultations/consultation_order_lines.xml',
+
+
 		'views/consultations/consultation_appointment.xml',
+
 		'views/consultations/consultation_services_co2.xml',
 		'views/consultations/consultation_services_excilite.xml',
 		'views/consultations/consultation_services_ipl.xml',
 		'views/consultations/consultation_services_ndyag.xml',
-		#'views/consultations/consultation_medical_treatment.xml',
+		'views/consultations/consultation_medical_treatment.xml',
 
 		#'views/consultations/consultation_services.xml',		
 

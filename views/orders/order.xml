@@ -34,19 +34,28 @@
 
 				-->
 				<xpath expr="//field[@name='name']" position="after">
-					<div class="oe_right">
 
 
-							<button 
-								type="object" 
-								class="oe_highlight"
-								string="Eliminar" 
+					<button 
+							type="object" 
+							class="oe_highlight"
+							string="Eliminar" 
 
-								name="remove_myself" 
-							/>
+							name="remove_myself" 
+					/>
 
+
+					<button 
+							type="object" 
+							class="oe_highlight oe_right"	
+							string="Actualizar"
+
+							name="update_order" 	
+					/>
 							
-					</div>
+
+
+
 				</xpath>
 
 
@@ -147,15 +156,8 @@
 						name="reserve_machine" 	
 					/>
 
-					<!--
-					<field name="vspace"/>
-					<button 
-						type="object" 
-						class="oe_highlight"	
-						string="Actualizar"
-						name="update_order_lines_app" 	
-					/>
-					-->
+
+
 
 
 					<!--

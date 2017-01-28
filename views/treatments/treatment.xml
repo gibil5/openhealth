@@ -369,12 +369,69 @@ Top
 											'search_default_treatment': active_id,
 											}" 											
 									icon="fa-list">
-
 									<field string="Recomendación" name="nr_services" widget="statinfo"/>
 								</button>
 
 
-							
+
+
+
+								<!-- Co2 -->
+								<button type="action" class="oe_stat_button" 
+									name="%(service_co2_list_action)d"	
+									context="{									
+											'search_default_treatment': active_id,
+											}" 											
+									icon="fa-list">
+									<field string="Co2" name="nr_services_co2" widget="statinfo"/>
+								</button>
+
+								<!-- excilite -->
+								<button type="action" class="oe_stat_button" 
+									name="%(service_excilite_list_action)d"	
+									context="{									
+											'search_default_treatment': active_id,
+											}" 											
+									icon="fa-list">
+									<field string="Excilite" name="nr_services_excilite" widget="statinfo"/>
+								</button>
+
+
+								<!-- ipl -->
+								<button type="action" class="oe_stat_button" 
+									name="%(service_ipl_list_action)d"	
+									context="{									
+											'search_default_treatment': active_id,
+											}" 											
+									icon="fa-list">
+									<field string="Ipl" name="nr_services_ipl" widget="statinfo"/>
+								</button>
+
+								<!-- ndyag -->
+								<button type="action" class="oe_stat_button" 
+									name="%(service_ndyag_list_action)d"	
+									context="{									
+											'search_default_treatment': active_id,
+											}" 											
+									icon="fa-list">
+									<field string="Ndyag" name="nr_services_ndyag" widget="statinfo"/>
+								</button>
+
+								<!-- medical -->
+								<button type="action" class="oe_stat_button" 
+									name="%(service_medical_list_action)d"	
+									context="{									
+											'search_default_treatment': active_id,
+											}" 											
+									icon="fa-list">
+									<field string="Medical" name="nr_services_medical" widget="statinfo"/>
+								</button>
+
+
+
+
+
+
 
 
 								<!-- Budgets -->

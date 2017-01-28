@@ -10,6 +10,11 @@ access_openhealth_session,openhealth.session,model_openhealth_session,,1,1,1,1
 
 access_openhealth_control,openhealth.control,model_openhealth_control,,1,1,1,1
 
+
+
+
+access_openhealth_service,openhealth.service,model_openhealth_service,,1,1,1,1
+
 access_openhealth_service_co2,openhealth.service_co2,model_openhealth_service_co2,,1,1,1,1
 
 access_openhealth_service_excilite,openhealth.service_excilite,model_openhealth_service_excilite,,1,1,1,1

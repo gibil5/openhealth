@@ -20,7 +20,7 @@
 					
 
 
-					<page string="Recomendación - CO2"		attrs="{'invisible':[('nr_service_co2', '=', 0)]}"	>
+					<page string="Láser CO2"		attrs="{'invisible':[('nr_service_co2', '=', 0)]}"	>
 
 
 

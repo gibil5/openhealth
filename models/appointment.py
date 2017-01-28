@@ -546,37 +546,25 @@ class Appointment(models.Model):
 
 
 				# Treatment 
-				treatment = self.env['openextension.treatment'].search([
+				#treatment = self.env['openextension.treatment'].search([
+				#											('patient', 'like', self.patient.name),
+				#											('physician', 'like', self.doctor.name),
+				#											],
+				#											order='start_date desc',
+				#											limit=1,
+				#										)
+				#print treatment 
 
-															('patient', 'like', self.patient.name),
-															('physician', 'like', self.doctor.name),
-
-															],
-															order='start_date desc',
-															limit=1,
-														)
-
-
-
-				print treatment 
-
-				if treatment.name == False:
-					print 'Gotcha !!!'
-
-					treatment = self.env['openextension.treatment'].search([
-
-															('patient', 'like', self.patient.name),
-
-															],
-															order='start_date desc',
-															limit=1,
-														)
-
-
-					print treatment
-
-
-				self.treatment = treatment
+				#if treatment.name == False:
+				#	print 'Gotcha !!!'
+				#	treatment = self.env['openextension.treatment'].search([
+				#											('patient', 'like', self.patient.name),
+				#											],
+				#											order='start_date desc',
+				#											limit=1,
+				#										)
+				#	print treatment
+				#self.treatment = treatment
 
 
 			# Create Procedure 
@@ -997,17 +985,64 @@ class Appointment(models.Model):
 
 
 
+	# ----------------------------------------------------------- On Change ------------------------------------------------------
+
+	@api.onchange('patient','doctor')
+	def _onchange_patient_doctor(self):
+
+		print 
+		print 'jx'
+		print 'On Change PD'
+
+		if self.patient != False and self.doctor != False:
+				
+			treatment = self.env['openextension.treatment'].search([
+																				('patient', 'like', self.patient.name),
+																				('physician', 'like', self.doctor.name),
+																			],
+																				order='start_date desc',
+																				limit=1,
+																			)
+			self.treatment = treatment
+			#self.treatment.id = treatment.id
+			print 'jx'
+
+
+
 
 	# ----------------------------------------------------------- Indexes ------------------------------------------------------
 
 	treatment = fields.Many2one('openextension.treatment',
-			#string="Tratamiento",
 			string="Trat.",
 			ondelete='cascade', 
-
 			#required=False, 
 			required=True, 
+
+			#compute='_compute_treatment', 
 			)
+
+
+
+	#@api.multi
+	@api.depends('patient', 'doctor')
+
+	def _compute_treatment(self):
+		for record in self:
+
+			if record.patient != False and record.doctor != False:
+				
+				#treatment = self.env['openextension.treatment'].search([
+				#																('patient', 'like', self.patient.name),
+				#																('doctor', 'like', self.doctor.name),
+				#															],
+				#																order='start_date desc',
+				#																limit=1,
+				#															)
+				#record.treatment = treatment
+				#record.treatment.id = 3
+				print 'jx'
+
+
 
 
 	consultation = fields.Many2one('openhealth.consultation',

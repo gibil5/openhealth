@@ -10,6 +10,9 @@ _sessions_list = [
 
 		('1',			'1'),
 		('10',			'10'), 
+
+		('2',			'2'),
+		('3',			'3'),
 		]
 
 
@@ -158,11 +161,17 @@ _pathology_list = [
 		('scar_4',		'scar_4'),
 		('scar_5',		'scar_5'),
 
+
+
+		('rejuvenation_face',	'rejuvenation_face'),
+		('rejuvenation_face_repair',	'rejuvenation_face_repair'),
+
 		('rejuvenation_face_1',	'rejuvenation_face_1'),
 		('rejuvenation_face_2',	'rejuvenation_face_2'),
 		('rejuvenation_face_3',	'rejuvenation_face_3'),
 		('rejuvenation_face_4',	'rejuvenation_face_4'),
 		('rejuvenation_face_5',	'rejuvenation_face_5'),
+
 
 
 		('rejuvenation_neck',	'rejuvenation_neck'),
@@ -216,7 +225,6 @@ _pathology_list = [
 
 		('rejuvenation_face_hands',			'rejuvenation_face_hands'),
 		('rejuvenation_face_neck_hands',	'rejuvenation_face_neck_hands'),
-		('rejuvenation_facial',	'rejuvenation_facial'),
 		('rosacea',			'rosacea'),
 		('ruby_points',		'ruby_points'),
 				

@@ -67,6 +67,7 @@
 					-->
 
 
+					<!-- Criosurgery -->
 					<page string="Criocirugía">
 						<group>						
 							<group>
@@ -75,8 +76,7 @@
 						</group>
 					</page>
 
-
-
+					<!-- Hyaluronic Acid --> 
 					<page string="Acido Hialurónico">		
 						<group>						
 							<group>
@@ -85,7 +85,7 @@
 						</group>
 					</page>
 
-
+					<!-- Sclerotherapy --> 
 					<page string="Escleroterapia">
 						<group>						
 							<group>
@@ -94,30 +94,7 @@
 						</group>
 					</page>
 
-
-
-
-
-
-
-					<page string="Lepismático">
-						<group>						
-							<group>
-								<field name="med_lep"  widget="radio" />							
-							</group>
-						</group>
-					</page>
-
-
-					<page string="Plasma">
-						<group>						
-							<group>
-								<field name="med_pla"  widget="radio" />							
-							</group>
-						</group>		
-					</page>
-
-
+					<!-- Botulinum Toxyn --> 
 					<page string="Toxina Botulínica">
 						<group>						
 							<group>
@@ -126,7 +103,7 @@
 						</group>
 					</page>
 
-
+					<!-- Intravenous --> 
 					<page string="Endovenoso">
 						<group>						
 							<group>
@@ -138,11 +115,31 @@
 
 
 
-					
+
+
+
+
+
+					<!-- Lepismatic --> 
+					<page string="Lepismático">
+						<group>						
+							<group>
+								<field name="med_lep"  widget="radio" />							
+							</group>
+						</group>
+					</page>
+
+					<!-- Plasma --> 
+					<page string="Plasma">
+						<group>						
+							<group>
+								<field name="med_pla"  widget="radio" />							
+							</group>
+						</group>		
+					</page>
+
+
 				</notebook>
-
-				
-
 				</xpath>	
 			</field>
 		</record>

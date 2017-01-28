@@ -95,11 +95,16 @@ _pathology_list = [
 			('wart_4','Verruga Grado 4'),
 			('wart_5','Verruga Grado 5'),
 
+
+
+			('rejuvenation_face','Rejuvenecimiento Facial'),
+
 			('rejuvenation_face_1','Rejuvenecimiento Facial Grado 1'),
 			('rejuvenation_face_2','Rejuvenecimiento Facial Grado 2'),
 			('rejuvenation_face_3','Rejuvenecimiento Facial Grado 3'),
 			('rejuvenation_face_4','Rejuvenecimiento Facial Grado 4'),
 			('rejuvenation_face_5','Rejuvenecimiento Facial Grado 5'),
+
 
 
 			#('rejuvenation_hands','Rejuvenecimiento en manos'),

@@ -144,15 +144,24 @@
 					<!--
 					<field name="x_machine"		required="1"/>
 					-->
+
 					<field name="x_machine"/>
+					
 					<field name="vspace"/>
 
 
 
+					<!-- Reserve Machine --> 
+					<!--
+						context="{'x_machine': 'none'}"
+					-->
 					<button 
 						type="object" 
 						class="oe_highlight"	
+
+
 						string="Reservar sala"
+						
 						name="reserve_machine" 	
 					/>
 

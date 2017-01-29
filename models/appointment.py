@@ -16,8 +16,9 @@ import datetime
 import appfuncs
 import time_funcs
 import jxvars
-
 import defaults
+
+import app_vars
 
 
 class Appointment(models.Model):
@@ -111,7 +112,8 @@ class Appointment(models.Model):
 			#string="Máquina", 
 			string="Sala", 
 
-			selection = jxvars._machines_list, 
+			#selection = jxvars._machines_list, 
+			selection = app_vars._machines_list, 
 			#required=True, 
 		)
 
@@ -119,7 +121,8 @@ class Appointment(models.Model):
 	x_target = fields.Selection(
 			string="Target", 
 
-			selection = jxvars._target_list, 
+			#selection = jxvars._target_list, 
+			selection = app_vars._target_list, 
 
 			index=True,
 		)
@@ -369,7 +372,7 @@ class Appointment(models.Model):
 			#string = "Médico", 	
 
 
-			default=defaults._doctor,
+			#default=defaults._doctor,
 
 			#required=True, 
 			required=False, 

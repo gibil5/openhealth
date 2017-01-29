@@ -11,6 +11,8 @@ from openerp import models, fields, api
 import jxvars
 import appfuncs
 
+import app_vars
+
 
 
 class sale_order(models.Model):
@@ -50,7 +52,8 @@ class sale_order(models.Model):
 	x_machine = fields.Selection(
 			#string="Máquina", 
 			string="Sala", 
-			selection = jxvars._machines_list, 
+			#selection = jxvars._machines_list, 
+			selection = app_vars._machines_list, 
 			
 			compute='_compute_x_machine', 
 			#required=True, 
@@ -799,26 +802,54 @@ class sale_order(models.Model):
 
 
 
+	@api.multi 
+	def action_confirm(self):
+		print 
+		print 'jx'
+		print 'Action confirm - Over ridden'
+		 
+
+
+
+		#Write your logic here
+		if self.x_machine != False:
+
+			print 'Success !!!'
+
+			res = super(sale_order, self).action_confirm()
+		else: 
+			print 'Warning: Sala no Reservada !'
+
+			#return {	'warning': {
+			#						'title': "Error: Sala no Reservada !",
+			#						'message': 'jx',
+												#'Cita ya existente, con el ' + doctor_name + ": " + start + ' - ' + end + '.',
+			#					}}
+		
+		#res = super(sale_order, self).action_confirm()
+		#Write your logic here
+		
+		print
+	# action_confirm
+	
 
 
 # ----------------------------------------------------------- CRUD ------------------------------------------------------
 
+
+
 # Create 
 	@api.model
 	def create(self,vals):
-
 		print 
 		print 'Order - Create - Override'
 		print 
 		print vals
 		print 
 	
-
-
 		#Write your logic here
 		res = super(sale_order, self).create(vals)
 		#Write your logic here
-
 		return res
 
 

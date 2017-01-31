@@ -9,6 +9,7 @@
 
 
 
+
 from openerp import models, fields, api
 #from datetime import datetime
 import datetime
@@ -54,7 +55,6 @@ class Appointment(models.Model):
 
 	# Display 
 	x_display = fields.Char(
-
 			compute='_compute_x_display', 
 		)
 
@@ -64,12 +64,44 @@ class Appointment(models.Model):
 
 	def _compute_x_display(self):
 		for record in self:
+
 			#record.display = 'jx'
-			record.x_display = record.x_patient_name_short + ' - '  + record.x_doctor_code + ' - ' + record.x_type_cal
+			#record.x_display = record.x_patient_name_short + ' - '  + record.x_doctor_code + ' - ' + record.x_type_cal
+			#record.x_display = record.x_patient_name_short + ' - '  + record.x_doctor_code + ' - ' + record.x_type_cal + ' - ' + record.state
+			record.x_display = record.x_patient_name_short + ' - '  + record.x_doctor_code + ' - ' + record.x_type_cal + ' - ' + record.x_state_short
 			
 			if record.x_machine != False:
-				if record.x_target == 'doctor':
-					record.x_display = record.x_display + ' - ' + record.x_machine_short
+			#	if record.x_target == 'doctor':
+				record.x_display = record.x_display + ' - ' + record.x_machine_short
+
+
+
+
+
+
+	# State short 
+	_hash_state = {
+						#False:				'', 
+
+						'Scheduled':		'1',
+
+						'pre_scheduled':		'2',
+
+						'pre_scheduled_control':		'3',
+					}
+
+
+	x_state_short = fields.Char(
+			compute='_compute_x_state_short',
+		)
+
+	#@api.multi
+	@api.depends('state')
+	def _compute_x_state_short(self):
+		for record in self:
+
+			if record.state != False:
+				record.x_state_short = self._hash_state[record.state]
 
 
 
@@ -80,9 +112,12 @@ class Appointment(models.Model):
 	_hash_x_machine = {
 							False:				'', 
 
-							'laser_co2_1':		'C1',
-							'laser_co2_2':		'C2',
-							'laser_co2_3':		'C3',
+							#'laser_co2_1':		'C1',
+							#'laser_co2_2':		'C2',
+							#'laser_co2_3':		'C3',
+							'laser_co2_1':		'Co2_1',
+							'laser_co2_2':		'Co2_2',
+							'laser_co2_3':		'Co2_3',
 						}
 
 
@@ -95,9 +130,10 @@ class Appointment(models.Model):
 	@api.depends('x_machine')
 	def _compute_x_machine_short(self):
 		for record in self:
+
 			if record.x_machine != False:
-				if record.x_target == 'doctor':
-					record.x_machine_short = self._hash_x_machine[record.x_machine]
+				#if record.x_target == 'doctor':
+				record.x_machine_short = self._hash_x_machine[record.x_machine]
 
 
 
@@ -280,17 +316,17 @@ class Appointment(models.Model):
 
 
 
-	# Patient
+	# Patient def
 
 	patient = fields.Many2one(
 			'oeh.medical.patient',
 			
 			string = "Paciente", 	
 
-
-			#default = defaults._patient 
+			default = defaults._patient,
 
 			#required=True, 
+			readonly = False, 
 		)
 
 
@@ -364,7 +400,7 @@ class Appointment(models.Model):
 
 
 
-	# Doctor 
+	# Doctor def 
 
 	doctor = fields.Many2one(
 			'oeh.medical.physician',
@@ -376,6 +412,8 @@ class Appointment(models.Model):
 
 			#required=True, 
 			required=False, 
+
+			readonly = False, 
 			)
 
 
@@ -392,11 +430,13 @@ class Appointment(models.Model):
 	@api.depends('doctor')
 	def _compute_x_doctor_code(self):
 		for record in self:
-			if record.x_target == 'machine':
-				record.x_doctor_code = self._hash_doctor_code[record.x_machine]
-			else:
-				record.x_doctor_code = self._hash_doctor_code[record.doctor.name]
 
+			#if record.x_target == 'machine':
+			#	record.x_doctor_code = self._hash_doctor_code[record.x_machine]
+			#else:
+			#	record.x_doctor_code = self._hash_doctor_code[record.doctor.name]
+
+			record.x_doctor_code = self._hash_doctor_code[record.doctor.name]
 
 
 
@@ -432,8 +472,12 @@ class Appointment(models.Model):
 			self.x_error = 0
 
 
+
 			# Check for collisions 
-			ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor, self.duration, self.x_machine)
+			#ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor, self.duration, self.x_machine)
+			#ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, self.x_machine)
+			ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, self.x_machine, 'machine')
+
 
 
 			if ret != 0:	# Error 
@@ -516,8 +560,10 @@ class Appointment(models.Model):
 			ret = 0 
 
 			#ret, doctor_name, start, end = self.check_for_collision(self.appointment_date, self.doctor.name, self.duration)
-			if self.x_machine == False:
-				ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, False)
+			#if self.x_machine == False:
+
+			#ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, False)
+			ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, False, 'doctor')
 
 			print ret 
 
@@ -911,12 +957,14 @@ class Appointment(models.Model):
         			#('Control', 'Control'),
         		]
 
+
+    # x_type def 
 	x_type = fields.Selection(
 				selection = _type_list, 
 				
 				string="Tipo",
 
-				default="consultation",
+				#default="consultation",
 				required=True, 
 				)
 
@@ -1324,6 +1372,7 @@ class Appointment(models.Model):
 
 		if 'patient' in vals:
 			patient = vals['patient']
+			print "patient: ", patient
 
 
 		if 'treatment' in vals:
@@ -1337,7 +1386,6 @@ class Appointment(models.Model):
 
 		print "appointment date: ", appointment_date
 		print "x_type: ", x_type
-		print "patient: ", patient
 		
 
 		print "x_create_procedure_automatic: ", x_create_procedure_automatic 
@@ -1369,6 +1417,7 @@ class Appointment(models.Model):
 			#app = self.create_app_procedure(appointment_date, doctor, patient, treatment, x_create_procedure_automatic, False)
 			#app = appfuncs.create_app_procedure(self, appointment_date, doctor, patient, treatment, x_create_procedure_automatic, False)
 			
+
 			#app = appfuncs.create_app_procedure(self, adate_base, doctor, patient, treatment, x_create_procedure_automatic, False)
 			app = appfuncs.create_app_procedure(self, adate_base, doctor, patient, treatment, x_create_procedure_automatic, False)
 			#print app 
@@ -1437,6 +1486,7 @@ class Appointment(models.Model):
 		x_create_procedure_automatic = True
 
 		flag_machine = True 
+		
 		
 		#app = appfuncs.create_app_procedure(self, appointment_date, doctor_id, patient_id, treatment_id, x_create_procedure_automatic, flag_machine)
 		app = appfuncs.create_app_procedure(self, adate_base, doctor_id, patient_id, treatment_id, x_create_procedure_automatic, flag_machine)

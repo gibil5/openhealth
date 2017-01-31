@@ -154,16 +154,13 @@
 					<!-- Reserve Machine --> 
 					<!--
 						context="{'x_machine': 'none'}"
-					-->
 					<button 
-						type="object" 
-						class="oe_highlight"	
-
-
+						type="object"
+						class="oe_highlight"
 						string="Reservar sala"
-						
 						name="reserve_machine" 	
 					/>
+					-->
 
 
 

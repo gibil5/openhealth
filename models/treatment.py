@@ -365,9 +365,9 @@ class Treatment(models.Model):
 
 			domain = [
 
-						('x_target', '!=', 'false'),
-						('x_target', '!=', 'doctor'),
-
+						('x_machine', '!=', 'false'),
+						
+						#('x_target', '!=', 'doctor'),
 						#('x_target', 'in', 'doctor'),
 						#('treatment', 'like', 'TR000073'),
 					],

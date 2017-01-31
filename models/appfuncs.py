@@ -72,7 +72,8 @@ def create_app_procedure(self, adate_base, doctor_id, patient_id, treatment_id, 
 
 
 			# Check for collisions 
-			ret, doctor_name, start, end = check_for_collisions(self, adate_pro_str, doctor_name, duration, False)
+			#ret, doctor_name, start, end = check_for_collisions(self, adate_pro_str, doctor_name, duration, False)
+			ret, doctor_name, start, end = check_for_collisions(self, adate_pro_str, doctor_name, duration, False, 'doctor')
 
 
 
@@ -250,12 +251,16 @@ def search_machine(self, appointment_date, doctor_name, duration, start_machine)
 @api.multi
 
 #def check_for_collisions(self, appointment_date, doctor_name, duration):
-def check_for_collisions(self, appointment_date, doctor_name, duration, x_machine):
+#def check_for_collisions(self, appointment_date, doctor_name, duration, x_machine):
+def check_for_collisions(self, appointment_date, doctor_name, duration, x_machine, target):
 
 
 		print 
+		print 'jx'
 		print 'Check for collision'
 
+		print appointment_date, doctor_name, duration, x_machine
+		print 
 
 		dt = appointment_date[2:10]
 		#print dt
@@ -264,20 +269,33 @@ def check_for_collisions(self, appointment_date, doctor_name, duration, x_machin
 
 
 		# Search for the rec set
-		if x_machine == False:
-			#app_ids = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', dt),  ('doctor', '=', doctor_name)  ])
+		#if x_machine == False:
+		#	app_ids = self.env['oeh.medical.appointment'].search([
+		#															('doctor', '=', doctor_name), 
+		#															('appointment_date', 'like', dt), 
+		#															('x_machine', '=', x_machine),
+		#														])
+		#else:
+		#	app_ids = self.env['oeh.medical.appointment'].search([
+		#															('appointment_date', 'like', dt), 
+		#															('x_machine', '=', x_machine)  
+		#														])
+
+
+		# Always a total check
+		if target == 'doctor':
 			app_ids = self.env['oeh.medical.appointment'].search([
+																	('appointment_date', 'like', dt), 
+
 																	('doctor', '=', doctor_name), 
-
-																	('appointment_date', 'like', dt), 
-
-																	('x_machine', '=', x_machine),
+																	#('x_machine', '=', x_machine),
 																])
-		else:
+		if target == 'machine':
 			app_ids = self.env['oeh.medical.appointment'].search([
 																	('appointment_date', 'like', dt), 
 
-																	('x_machine', '=', x_machine)  
+																	#('doctor', '=', doctor_name), 
+																	('x_machine', '=', x_machine),
 																])
 
 

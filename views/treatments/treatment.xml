@@ -376,8 +376,8 @@ Top
 
 
 
-								<!-- Co2 -->
-								<button type="action" class="oe_stat_button" 
+								<!-- Nr of Services --> 
+								<button type="action" class="oe_stat_button" invisible="1" 
 									name="%(service_co2_list_action)d"	
 									context="{									
 											'search_default_treatment': active_id,
@@ -386,8 +386,8 @@ Top
 									<field string="Co2" name="nr_services_co2" widget="statinfo"/>
 								</button>
 
-								<!-- excilite -->
-								<button type="action" class="oe_stat_button" 
+
+								<button type="action" class="oe_stat_button" invisible="1"
 									name="%(service_excilite_list_action)d"	
 									context="{									
 											'search_default_treatment': active_id,
@@ -397,8 +397,7 @@ Top
 								</button>
 
 
-								<!-- ipl -->
-								<button type="action" class="oe_stat_button" 
+								<button type="action" class="oe_stat_button" invisible="1"
 									name="%(service_ipl_list_action)d"	
 									context="{									
 											'search_default_treatment': active_id,
@@ -407,8 +406,7 @@ Top
 									<field string="Ipl" name="nr_services_ipl" widget="statinfo"/>
 								</button>
 
-								<!-- ndyag -->
-								<button type="action" class="oe_stat_button" 
+								<button type="action" class="oe_stat_button" invisible="1"
 									name="%(service_ndyag_list_action)d"	
 									context="{									
 											'search_default_treatment': active_id,
@@ -417,8 +415,7 @@ Top
 									<field string="Ndyag" name="nr_services_ndyag" widget="statinfo"/>
 								</button>
 
-								<!-- medical -->
-								<button type="action" class="oe_stat_button" 
+								<button type="action" class="oe_stat_button" invisible="1"
 									name="%(service_medical_list_action)d"	
 									context="{									
 											'search_default_treatment': active_id,
@@ -426,7 +423,8 @@ Top
 									icon="fa-list">
 									<field string="Medical" name="nr_services_medical" widget="statinfo"/>
 								</button>
-
+								<!--
+								-->
 
 
 

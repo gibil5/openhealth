@@ -74,11 +74,13 @@
 
 				<!-- Patient --> 
 				<!--
+				-->
 				<xpath expr="//field[@name='patient']" position="replace">					
-					<field name="patient"/>					
+
+					<field name="patient"	string="patient_r"/>					
+
 					<field name="vspace"/>
 				</xpath>
-				-->
 
 
 
@@ -94,6 +96,7 @@
 
 							<field name="x_machine"		attrs="{'invisible':[('x_type', '!=', 'procedure')]}"/>
 
+							<field name="x_target"/>
 
 
 					<!--					
@@ -139,7 +142,8 @@
 					-->
 
 
-					<field name="doctor"		required="1"/>									
+					<field name="doctor"		required="1"/>		
+
 					<field name="vspace"/>
 					
 
@@ -474,12 +478,22 @@
 					<field name="res_model">oeh.medical.appointment</field>
 					<field name="view_type">form</field>
 					<field name="view_mode">calendar,tree,form</field>
+
+
 					<field name="domain">[
 											('state', '=', 'pre_scheduled_control'),
 										]
 					</field>
-					
-					<field name="context">{}</field>
+
+					<field name="context">{
+											'default_x_target': 'doctor',
+											'default_x_type': 'control',
+
+											'default_state': 'pre_scheduled_control',
+										}
+					</field>
+
+
 					<field name="view_id" eval="False"/>
 					<field name="help" type="html">
 					  <p class="oe_view_nocontent_create">
@@ -506,17 +520,22 @@
 
 					<field name="res_model">oeh.medical.appointment</field>
 					<field name="view_type">form</field>
-					<field name="view_mode">calendar,tree,form</field>                    
+					<field name="view_mode">calendar,tree,form</field>     
+
+
 					<field name="domain">[
 											('state', 'in', ['pre_scheduled','Scheduled', 'Completed', 'Invoiced']),
 											('x_target', '=', 'doctor'),
 										]
 					</field>
+
 					<field name="context">{
 											'default_x_target': 'doctor',
 											'default_x_type': 'consultation',
 										}
 					</field>
+					
+
 					<field name="view_id" eval="False"/>
 					<field name="help" type="html">
 					  <p class="oe_view_nocontent_create">
@@ -547,23 +566,26 @@
 					<!--
 
 											('x_machine', 'in', ['laser_co2_1', 'laser_co2_2', 'laser_co2_3', 'laser_excilite', 'laser_m22']),
-
 											('x_machine', '!=', 'False'),
-					-->
-					<field name="domain">[
-
 
 											('x_target', '=', 'machine'),
+					-->
+
+
+					<field name="domain">[
+
+											('x_machine', '!=', 'False'),
 
 										]
 					</field>
 					
 					<!--
-
 											'default_x_machine': 'none',
+
+											'default_x_target': 'machine',
 					-->
 					<field name="context">{
-											'default_x_target': 'machine',
+											'default_x_target': 'doctor',
 											'default_x_type': 'procedure',
 						}
 					</field>
@@ -607,9 +629,6 @@
 					parent="oehealth.oeh_medical_appointment_menu" 
 					sequence="12"/>
 -->
-
-
-
 
 
 	</data>

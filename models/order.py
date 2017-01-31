@@ -981,16 +981,12 @@ class sale_order(models.Model):
 		doctor_name = 		self.x_doctor.name
 		doctor_id = 		self.x_doctor.id
 		patient_id = 		self.patient.id
-		
 		treatment_id = 		self.treatment.id
 		duration = 			self.x_duration
 
 
 		x_machine_old = 	self.x_machine
-
 		start_machine = 	self.x_machine
-
-
 
 
 

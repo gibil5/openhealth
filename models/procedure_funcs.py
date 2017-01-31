@@ -280,8 +280,9 @@ def check_and_push(self, appointment_date, duration, x_type, doctor_name):
 
 		# Check for collisions 
 		#ret, doctor_name, start, end = appfuncs.check_for_collisions(self, appointment_date_str, doctor_name, duration)
-		ret, doctor_name, start, end = appfuncs.check_for_collisions(self, appointment_date_str, doctor_name, duration, False)
+		#ret, doctor_name, start, end = appfuncs.check_for_collisions(self, appointment_date_str, doctor_name, duration, False)
 
+		ret, doctor_name, start, end = appfuncs.check_for_collisions(self, appointment_date_str, doctor_name, duration, False, 'doctor')
 
 
 

@@ -91,12 +91,13 @@
 					<field name="institution"/>		
 
 					<field name="x_duration_min"	attrs="{	'readonly':[('x_type', '!=', 'session')], 
+	
 																'invisible':[('x_type', '!=', 'session')]	}"/>
+					<field name="x_target"/>
 					-->
 
 							<field name="x_machine"		attrs="{'invisible':[('x_type', '!=', 'procedure')]}"/>
 
-							<field name="x_target"/>
 
 
 					<!--					

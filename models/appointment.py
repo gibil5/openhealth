@@ -323,7 +323,7 @@ class Appointment(models.Model):
 			
 			string = "Paciente", 	
 
-			default = defaults._patient,
+			#default = defaults._patient,
 
 			#required=True, 
 			readonly = False, 
@@ -405,7 +405,7 @@ class Appointment(models.Model):
 	doctor = fields.Many2one(
 			'oeh.medical.physician',
 			
-			#string = "Médico", 	
+			string = "Médico", 	
 
 
 			#default=defaults._doctor,
@@ -1064,7 +1064,7 @@ class Appointment(models.Model):
 	# ----------------------------------------------------------- Indexes ------------------------------------------------------
 
 	treatment = fields.Many2one('openextension.treatment',
-			string="Trat.",
+			string="Tratamiento",
 			ondelete='cascade', 
 			#required=False, 
 			required=True, 

@@ -368,7 +368,17 @@
 					<field name="vspace"/>
 					<field name="x_payment_method"/>
 
-					<field name="x_payment_method_code"/>
+					<field name="x_payment_method_code" 	required="0" 	attrs="{'invisible':[
+																				
+																					('x_payment_method', '!=', 'debit_visa'), 
+																					('x_payment_method', '!=', 'debit_master'), 
+																					
+																					('x_payment_method', '!=', 'credit_visa'), 
+																					('x_payment_method', '!=', 'credit_master'), 
+																				
+																					('x_payment_method', '!=', 'diners'), 
+																					('x_payment_method', '!=', 'american_express'), 
+																				]}"			/>
 
 
 					<field name="vspace"/>

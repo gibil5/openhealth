@@ -506,14 +506,21 @@ class sale_order(models.Model):
 
 
 
-	x_payment_method = fields.Selection(
+
+
+	#x_payment_method = fields.Selection(
+	#		selection = ord_vars._payment_method_list, 			
+	#	)
+
+
+	x_payment_method = fields.One2many(
+			'openhealth.payment_method',
+			'order',		
 
 			string="Medio de pago", 
-
-			selection = ord_vars._payment_method_list, 
-						
-			#required=True, 
 		)
+
+
 
 
 

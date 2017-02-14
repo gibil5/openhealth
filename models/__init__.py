@@ -53,6 +53,9 @@ from . import sale_note
 from . import ticket_receipt
 from . import ticket_invoice
 
+from . import payment_method
+
+
 
 
 

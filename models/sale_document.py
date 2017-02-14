@@ -46,6 +46,7 @@ class SaleDocument(models.Model):
 	#amount_total = fields.Monetary(
 	#amount_total = fields.Integer(
 	#total = fields.Char(
+	
 	total = fields.Float(
 			string = 'Total', 
 		)
@@ -55,13 +56,9 @@ class SaleDocument(models.Model):
 
 
 	order = fields.Many2one(
-
 			'sale.order',
-
 			string="Presupuesto",
-
 			ondelete='cascade', 
-
 			required=True, 
 		)
 

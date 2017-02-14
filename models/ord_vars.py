@@ -39,7 +39,10 @@ _sale_docs_list = [
 
 		('advertisement','Canje publicidad'), 
 
-		('sale_note','Nota de venta'), 
+
+		#('sale_note','Nota de venta'), 
+		('sale_note','Canje (nv)'), 
+
 
 		('ticket_receipt','Ticket boleta'), 
 

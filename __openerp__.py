@@ -168,6 +168,10 @@
 		'views/orders/order.xml',
 		'views/orders/order_line.xml',
 
+
+		'views/sale_documents/receipts.xml',
+
+
 # ----------------------------------------------------------- Ok ------------------------------------------------------
 
 

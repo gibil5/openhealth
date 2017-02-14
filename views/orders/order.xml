@@ -2,8 +2,6 @@
 <openerp>
 	<data>
 		
-
-
 		<!-- Form view -->
 		<record model="ir.ui.view" id="view_test">
 
@@ -21,9 +19,131 @@
 
 
 
+
+
 				<!--
 				<xpath expr="pass of position" position="the postion">
 				-->		
+
+				<xpath expr="//button[@name='action_quotation_send']" position="replace">
+
+
+					<!--
+					<button 
+							type="object" 
+							class="oe_highlight"
+
+							string="Crear Documento de Venta" 
+
+							name="create_sale_document" 
+					/>
+					-->
+
+
+					<button 
+							attrs="{'invisible':[('x_sales_document', '!=', 'receipt')]}"
+
+							type="object" 
+							
+							class="oe_highlight"
+
+							string="Crear Boleta" 
+
+							name="create_receipt" 
+					/>
+
+
+					<button 
+							attrs="{'invisible':[('x_sales_document', '!=', 'invoice')]}"
+
+							type="object" 
+
+							class="oe_highlight"
+
+							string="Crear Factura" 
+
+							name="create_invoice" 
+					/>
+
+
+
+
+
+
+					<button 
+							attrs="{'invisible':[('x_sales_document', '!=', 'advertisement')]}"
+
+							type="object" 
+
+							class="oe_highlight"
+
+							string="Crear Canje publicidad" 
+
+							name="create_advertisement" 
+					/>
+
+
+
+					<button 
+							attrs="{'invisible':[('x_sales_document', '!=', 'sale_note')]}"
+
+							type="object" 
+
+							class="oe_highlight"
+
+							string="Crear Nota de venta" 
+
+							name="create_sale_note" 
+					/>
+
+
+					<button 
+							attrs="{'invisible':[('x_sales_document', '!=', 'ticket_receipt')]}"
+
+							type="object" 
+
+							class="oe_highlight"
+
+							string="Crear Ticket boleta" 
+
+							name="create_ticket_receipt" 
+					/>
+
+
+					<button 
+							attrs="{'invisible':[('x_sales_document', '!=', 'ticket_invoice')]}"
+
+							type="object" 
+
+							class="oe_highlight"
+
+							string="Crear Ticket factura" 
+
+							name="create_ticket_invoice" 
+					/>
+
+
+
+
+
+
+				</xpath>
+
+
+
+
+				<xpath expr="//button[@name='print_quotation']" position="replace">
+				</xpath>
+
+
+				<xpath expr="//button[@name='action_confirm']" position="replace">
+				</xpath>
+
+
+				<xpath expr="//button[@name='action_cancel']" position="replace">
+				</xpath>
+
+
 
 				<!-- Remove -->
 				<!--
@@ -52,10 +172,6 @@
 
 							name="update_order" 	
 					/>
-							
-
-
-
 				</xpath>
 
 
@@ -200,6 +316,43 @@
 					<field name="vspace"/>
 					<field name="x_vip"/>
 
+
+
+
+
+
+					<field name="vspace"/>
+					<field name="vspace"/>
+					<field name="x_sales_document"/>
+
+
+
+					<field name="vspace"/>
+
+					<field name="receipt" 		attrs="{'invisible':[('x_sales_document', '!=', 'receipt')]}"	/>
+
+					<field name="x_invoice"		attrs="{'invisible':[('x_sales_document', '!=', 'invoice')]}"	/>
+
+
+
+					<field name="x_advertisement"		attrs="{'invisible':[('x_sales_document', '!=', 'advertisement')]}"	/>
+					<field name="x_sale_note"			attrs="{'invisible':[('x_sales_document', '!=', 'sale_note')]}"		/>
+					<field name="x_ticket_receipt"		attrs="{'invisible':[('x_sales_document', '!=', 'ticket_receipt')]}"	/>
+					<field name="x_ticket_invoice"		attrs="{'invisible':[('x_sales_document', '!=', 'ticket_invoice')]}"	/>
+
+
+
+
+					<field name="vspace"/>
+					<field name="x_ruc"			attrs="{'invisible':[('x_sales_document', '!=', 'invoice')]}"	/>
+
+
+					<field name="vspace"/>
+					<field name="x_payment_method"/>
+
+
+
+					<field name="vspace"/>
 
 					
 					<!--

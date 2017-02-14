@@ -35,6 +35,23 @@ access_sale_order,sale.order,model_sale_order,,1,1,1,1
 access_sale_order_line,sale.order_line,model_sale_order_line,,1,1,1,1
 
 
+access_invoice,openhealth.invoice,model_openhealth_invoice,,1,1,1,1
+
+access_receipt,openhealth.receipt,model_openhealth_receipt,,1,1,1,1
+
+
+
+access_ticket_invoice,openhealth.ticket_invoice,model_openhealth_ticket_invoice,,1,1,1,1
+
+access_ticket_receipt,openhealth.ticket_receipt,model_openhealth_ticket_receipt,,1,1,1,1
+
+access_sale_note,openhealth.sale_note,model_openhealth_sale_note,,1,1,1,1
+
+access_advertisement,openhealth.advertisement,model_openhealth_advertisement,,1,1,1,1
+
+
+
+
 
 access_oeh_medical_physician,oeh.medical.physician,oehealth.model_oeh_medical_physician,oehealth.group_oeh_medical_physician,1,1,1,1
 

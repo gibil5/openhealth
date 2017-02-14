@@ -85,6 +85,16 @@
 			parent="main_openhealth_menu"/>
 
 
+
+
+		<!-- Receipts -->
+		<menuitem id="receipts_menu" name="Boletas" parent="openhealth_menu"
+			sequence="0"
+			action="receipt_list_action"/>
+
+
+
+
 		<!-- Treatments -->
 		<menuitem id="treatments_menu" name="Tratamientos" parent="openhealth_menu"
 			sequence="1"

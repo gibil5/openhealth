@@ -38,6 +38,36 @@ class sale_order(models.Model):
 
 
 
+
+
+# ----------------------------------------------------------- Number ofs ------------------------------------------------------
+
+
+	# Number of saledocs  
+	nr_saledocs = fields.Integer(
+			string="Documentos de venta",
+			compute="_compute_nr_saledocs",
+	)
+	@api.multi
+	def _compute_nr_saledocs(self):
+		for record in self:
+
+			receipt =			self.env['openhealth.receipt'].search_count([('order','=', record.id),]) 
+
+			invoice =			self.env['openhealth.invoice'].search_count([('order','=', record.id),]) 
+
+			advertisement =		self.env['openhealth.advertisement'].search_count([('order','=', record.id),]) 
+
+			sale_note =			self.env['openhealth.sale_note'].search_count([('order','=', record.id),]) 
+			
+			ticket_receipt =	self.env['openhealth.ticket_receipt'].search_count([('order','=', record.id),]) 
+			
+			ticket_invoice =	self.env['openhealth.ticket_invoice'].search_count([('order','=', record.id),]) 
+
+			record.nr_saledocs= receipt + invoice + advertisement + sale_note + ticket_receipt + ticket_receipt
+
+
+
 # ---------------------------------------------- Create Receipt --------------------------------------------------------
 	@api.multi 
 	def create_receipt(self):
@@ -114,6 +144,8 @@ class sale_order(models.Model):
 																'patient': self.patient.id,	
 																'doctor': self.x_doctor.id,	
 																'total': self.amount_total, 
+
+																'ruc': self.x_ruc,	
 													})
 			invoice_id = invoice.id 
 
@@ -146,6 +178,8 @@ class sale_order(models.Model):
 							'default_patient': self.patient.id,
 							'default_doctor': self.x_doctor.id,
 							'default_total': self.amount_total,
+
+							'default_ruc': self.x_ruc,
 							}
 				}
 
@@ -465,10 +499,12 @@ class sale_order(models.Model):
 
 			selection = ord_vars._sale_docs_list, 
 						
-			required=True, 
+			#required=True, 
 
 			#compute='_compute_x_machine', 
 		)
+
+
 
 	x_payment_method = fields.Selection(
 
@@ -476,10 +512,21 @@ class sale_order(models.Model):
 
 			selection = ord_vars._payment_method_list, 
 						
-			required=True, 
-
-			#compute='_compute_x_machine', 
+			#required=True, 
 		)
+
+
+
+	x_payment_method_code = fields.Char(
+
+			string="Código", 
+						
+			#required=True, 
+		)
+
+
+
+
 
 
 	x_ruc = fields.Char(

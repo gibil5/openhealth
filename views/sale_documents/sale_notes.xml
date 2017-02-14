@@ -7,11 +7,11 @@
 
 
 		<!-- Tree view --> 
-		<record model="ir.ui.view" id="receipt_tree_view">
-			<field name="name">receipt.tree</field>
-			<field name="model">openhealth.receipt</field>
+		<record model="ir.ui.view" id="sale_note_tree_view">
+			<field name="name">sale_note.tree</field>
+			<field name="model">openhealth.sale_note</field>
 			<field name="arch" type="xml">
-				<tree string="receipt Tree">
+				<tree string="sale_note Tree">
 					
 					<field name="name"/>
 					
@@ -36,9 +36,9 @@
 		The following tag is an action definition for a "window action",
 		that is an action opening a view or a set of views
 		-->
-		<record model="ir.actions.act_window" id="receipt_list_action">
+		<record model="ir.actions.act_window" id="sale_note_list_action">
 			<field name="name">Boletas</field>
-			<field name="res_model">openhealth.receipt</field>
+			<field name="res_model">openhealth.sale_note</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 			
@@ -47,7 +47,7 @@
             <field name="view_id" eval="False"/>
 			
 			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first receipt
+				<p class="oe_view_nocontent_create">Create the first sale_note
 				</p>
 			</field>
 			

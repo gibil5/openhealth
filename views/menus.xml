@@ -87,10 +87,43 @@
 
 
 
+
+
 		<!-- Receipts -->
 		<menuitem id="receipts_menu" name="Boletas" parent="openhealth_menu"
 			sequence="0"
 			action="receipt_list_action"/>
+
+		<!-- Invoices -->
+		<menuitem id="invoices_menu" name="Facturas" parent="openhealth_menu"
+			sequence="0"
+			action="invoice_list_action"/>
+
+
+
+		<!-- advertisements -->
+		<menuitem id="advertisements_menu" name="Canjes" parent="openhealth_menu"
+			sequence="0"
+			action="advertisement_list_action"/>
+
+		<!-- sale_notes -->
+		<menuitem id="sale_notes_menu" name="Notas" parent="openhealth_menu"
+			sequence="0"
+			action="sale_note_list_action"/>
+
+		<!-- ticket_receipts -->
+		<menuitem id="ticket_receipts_menu" name="Tickets Boleta" parent="openhealth_menu"
+			sequence="0"
+			action="ticket_receipt_list_action"/>
+
+		<!-- ticket_invoices -->
+		<menuitem id="ticket_invoices_menu" name="Tickets Factura" parent="openhealth_menu"
+			sequence="0"
+			action="ticket_invoice_list_action"/>
+
+
+
+
 
 
 

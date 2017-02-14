@@ -132,13 +132,57 @@
 
 
 
-				<xpath expr="//button[@name='print_quotation']" position="replace">
+				<xpath expr="//button[@name='action_confirm']" position="replace">
 				</xpath>
 
 
 				<xpath expr="//button[@name='action_confirm']" position="replace">
+
+					<!--					
+					-->
+					<button 
+
+							attrs="{'invisible':[
+													('receipt', '=', False),
+
+													('x_invoice', '=', False),
+
+													('x_advertisement', '=', False),
+
+
+													('x_sale_note', '=', False),
+
+													('x_ticket_invoice', '=', False),
+
+													('x_ticket_receipt', '=', False),
+
+													]}"
+
+							type="object" 
+
+							class="oe_highlight"
+
+							string="Confirmar Venta" 
+
+							name="action_confirm" 
+					/>
+
 				</xpath>
 
+
+
+
+
+
+
+
+
+
+
+
+
+				<xpath expr="//button[@name='print_quotation']" position="replace">
+				</xpath>
 
 				<xpath expr="//button[@name='action_cancel']" position="replace">
 				</xpath>
@@ -320,6 +364,12 @@
 
 
 
+					<field name="vspace"/>
+					<field name="vspace"/>
+					<field name="x_payment_method"/>
+
+					<field name="x_payment_method_code"/>
+
 
 					<field name="vspace"/>
 					<field name="vspace"/>
@@ -327,13 +377,14 @@
 
 
 
-					<field name="vspace"/>
+					<field name="x_ruc"			attrs="{'invisible':[('x_sales_document', '!=', 'invoice')]}"	/>
+
+
+
+
 
 					<field name="receipt" 		attrs="{'invisible':[('x_sales_document', '!=', 'receipt')]}"	/>
-
 					<field name="x_invoice"		attrs="{'invisible':[('x_sales_document', '!=', 'invoice')]}"	/>
-
-
 
 					<field name="x_advertisement"		attrs="{'invisible':[('x_sales_document', '!=', 'advertisement')]}"	/>
 					<field name="x_sale_note"			attrs="{'invisible':[('x_sales_document', '!=', 'sale_note')]}"		/>
@@ -343,12 +394,7 @@
 
 
 
-					<field name="vspace"/>
-					<field name="x_ruc"			attrs="{'invisible':[('x_sales_document', '!=', 'invoice')]}"	/>
 
-
-					<field name="vspace"/>
-					<field name="x_payment_method"/>
 
 
 

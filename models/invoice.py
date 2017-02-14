@@ -31,3 +31,16 @@ class Invoice(models.Model):
 	def _compute_name(self):
 		for record in self:
 			record.name = 'FA-' + str(record.id) 
+
+
+
+
+
+
+	ruc = fields.Char(
+
+			string="RUC", 
+						
+			required=True, 
+		)
+

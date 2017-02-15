@@ -27,7 +27,7 @@
 								 payment_methods
 							-->
 
-							<page string="Métodos de Pago">
+							<page string="Método de Pago">
 
 
 
@@ -61,6 +61,24 @@
 										-->
 									</tree>
 								</field>
+
+
+							
+							<group col="4">
+
+								<group>
+								</group>
+
+								<group>
+								</group>
+
+								<group>
+								</group>
+
+								<group>
+									<field  name="pm_total"/>
+								</group>
+							</group>
 
 							<button 
 								type="object" 

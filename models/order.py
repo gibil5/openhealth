@@ -79,11 +79,39 @@ class sale_order(models.Model):
 	)
 	@api.multi
 	def _compute_nr_pay_methods(self):
+
 		for record in self:
 
 			pm = self.env['openhealth.payment_method'].search_count([('order','=', record.id),]) 
 
 			record.nr_pay_methods = pm
+
+
+
+
+
+	# Number of paymethods  
+	pm_total = fields.Float(
+								string="Total",
+								compute="_compute_pm_total",
+	)
+	
+	#@api.multi
+	@api.depends('x_payment_method')
+
+	def _compute_pm_total(self):
+
+		for record in self:
+
+			total = 0.0
+
+			for pm in record.x_payment_method:
+
+				total = total + pm.subtotal
+
+
+			record.pm_total = total
+
 
 
 
@@ -97,7 +125,8 @@ class sale_order(models.Model):
 
 		nr_pm = self.env['openhealth.payment_method'].search_count([('order','=', self.id),]) 
 
-		name = 'MP-' + str(nr_pm + 1)
+		#name = 'MP-' + str(nr_pm + 1)
+		name = 'Pago ' + str(nr_pm + 1)
 
 		method = 'cash'
 

@@ -15,52 +15,60 @@
 			"file": "__openerp__.py",
 			"settings":
 			{
-				"buffer_size": 6038,
+				"buffer_size": 6298,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "models/appointment.py",
+			"file": "models/order.py",
 			"settings":
 			{
-				"buffer_size": 26240,
+				"buffer_size": 28176,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "views/appointments/appointment.xml",
+			"file": "models/payment_method.py",
 			"settings":
 			{
-				"buffer_size": 12391,
+				"buffer_size": 615,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "views/menus.xml",
+			"file": "models/sale_document.py",
 			"settings":
 			{
-				"buffer_size": 4326,
+				"buffer_size": 773,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "models/treatment.py",
+			"file": "models/receipt.py",
 			"settings":
 			{
-				"buffer_size": 23916,
+				"buffer_size": 406,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/invoice.py",
+			"settings":
+			{
+				"buffer_size": 489,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "views/treatments/treatment.xml",
+			"file": "models/ord_vars.py",
 			"settings":
 			{
-				"buffer_size": 16776,
+				"buffer_size": 713,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -69,7 +77,16 @@
 			"file": "views/orders/order.xml",
 			"settings":
 			{
-				"buffer_size": 8560,
+				"buffer_size": 12498,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/sale_documents/receipts.xml",
+			"settings":
+			{
+				"buffer_size": 1229,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -148,19 +165,44 @@
 	},
 	"file_history":
 	[
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/appfuncs.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/__init__.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/security/ir.model.access.csv",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/menus.xml",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/sale_documents/invoices.xml",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/sale_documents/ticket_invoices.xml",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/sale_documents/ticket_receipts.xml",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/sale_documents/sale_notes.xml",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/sale_documents/advertisements.xml",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/treatment.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/ticket_invoice.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/sale_documents/receipts.xml",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/sale_document.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/receipt.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/invoice.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/advertisement.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/sale_note.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/ticket_receipt.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/ord_vars.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/procedure_funcs.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/order_funcs.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/procedure.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/appointment.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/evaluation.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/orders/order.xml",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/consultation.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/treatments/treatment.xml",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/consultations/consultation.xml",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/order_line.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/sales_document.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/pat_vars.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/appointments/appointment.xml",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/appfuncs.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/treatments/treatment_reservations.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/order.py",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/consultation.py",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/treatment.py",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/consultations/consultation.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/jxvars.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/app_vars.py",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/orders/order.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/defaults.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/order.trash.py",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/order_line.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/services/service_medical.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/services/service_ndyag.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/services/service_ipl.xml",
@@ -173,9 +215,6 @@
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/treatments/treatment_sales.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/treatments/treatment_quotations.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/treatments/treatment_orders.xml",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/treatments/treatment.xml",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/appointment.py",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/security/ir.model.access.csv",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/security/openhealth_security.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/consultations/consultation_services_excilite.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/consultations/consultation_order.xml",
@@ -201,13 +240,9 @@
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/exc.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/service_excilite.TRASH.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/services/service_excilite.xml",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/menus.xml",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/__init__.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/base.xml",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/evaluation.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/__init__.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/service_co2_vars.py",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/appointments/appointment.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/service_co2_vars.TRASH.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/ndyag.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/readme.txt",
@@ -237,7 +272,6 @@
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/doctors/doctor.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/patients/patient.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/security/irrule.xml",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/procedure.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/treatments/treatment_procedures.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/orders/order_line.xml",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/__init__.py",
@@ -258,24 +292,7 @@
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openextension/models/less_minimal_model.py",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openextension/models/minimal_model.py",
 		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/service.py",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/consultation.py",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/order_line.trash.py",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/orders/order_line.xml",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/orders/order.xml",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/order_line.py",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/order.py",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/services/service_co2.xml",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/services/service_excilite.xml",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/services/service.xml",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/service.trash.py",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/consultations/consultation.xml",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/service_excilite.py",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/service_co2.py",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/service_ipl.py",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/treatments/treatment_quotations.xml",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/treatments/treatment_services.xml",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/treatments/treatment.xml",
-		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/views/treatments/treatment_consultations.xml"
+		"/Users/gibil/Virtualenvs/Odoo9/odoo/addons/openhealth/models/consultation.py"
 	],
 	"find":
 	{
@@ -294,6 +311,32 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"receipt",
+			"required",
+			"debit",
+			"receipt",
+			"treatment",
+			"co2",
+			"saledoc.",
+			"service",
+			"receipt",
+			"invoice",
+			"receipt",
+			"invoice",
+			"receipt",
+			"invoice",
+			"receipt",
+			"order",
+			"consultation",
+			"list_action",
+			"treatment_list",
+			"physician",
+			"patient",
+			"create",
+			"appointment",
+			"invoice",
+			"order",
+			"one2ma",
 			"doctor",
 			"patient",
 			"doctor",
@@ -395,40 +438,54 @@
 			"list_action",
 			"order",
 			"appointment",
-			"order",
-			"get_domain",
-			"get_domain_service",
-			"print",
-			"compute",
-			"x_time",
-			"compute x_time",
-			"treatment",
-			"service",
-			"product",
-			"service",
-			"product.template",
-			"service =",
-			"service",
-			"create_service",
-			"recommendation",
-			"treatments",
-			"service",
-			"quotation",
-			"treatment",
-			"service",
-			"treatment",
-			"recommendation",
-			"nr_service",
-			"service_ids",
-			"budget",
-			"treatment"
+			"order"
 		],
 		"highlight": true,
-		"in_selection": false,
+		"in_selection": true,
 		"preserve_case": false,
 		"regex": false,
 		"replace_history":
 		[
+			"payment_method",
+			"credit",
+			"ticket_invoice",
+			"ticket_receipt",
+			"sale_note",
+			"advertisement",
+			"ticket_invoice",
+			"ticket_receipt",
+			"sale_note",
+			"advertisement",
+			"order",
+			"ticket_invoice",
+			"ticket_receipt",
+			"sale_note",
+			"advertisement",
+			"invoice",
+			"receipt",
+			"",
+			"saledoc",
+			"invoice",
+			"ticket_invoice",
+			"ticket_receipt",
+			"sale_note",
+			"advertisement",
+			"sale_note",
+			"ticket_receipt",
+			"ticket_invoice",
+			"ticket_receipt",
+			"sale_note",
+			"advertisement",
+			"invoice",
+			"ticket_receipt",
+			"sale_note",
+			"advertisement",
+			"ticket_invoice",
+			"ticket_receipt",
+			"note",
+			"advertisement",
+			"invoice",
+			"receipt",
 			"state",
 			"ndyag",
 			"ipl",
@@ -516,47 +573,7 @@
 			"procedure",
 			"consultation",
 			"treatment",
-			"patient",
-			"x_create_procedure_automatic",
-			"y0",
-			"Dr",
-			"record",
-			"ad_con",
-			"x_date",
-			"x_type",
-			"patient",
-			"ad",
-			"end",
-			"start",
-			"doctor",
-			"hash_left",
-			"appointment_end",
-			"control",
-			"session",
-			"consultation",
-			"session",
-			"appointments",
-			"appointment",
-			"treatment",
-			"type",
-			"price_vip",
-			"x_price_vip",
-			"appointment",
-			"order_line_",
-			"order_line",
-			"order.line",
-			"medical",
-			"ndyag",
-			"ipl",
-			"excilite",
-			"clear_all_med",
-			"medical",
-			"excilite",
-			"medical",
-			"med_int",
-			"med_bot",
-			"med_pla",
-			"med_lep"
+			"patient"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -576,15 +593,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6038,
+						"buffer_size": 6298,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3668,
-								3668
+								3439,
+								3439
 							]
 						],
 						"settings":
@@ -596,24 +613,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "models/appointment.py",
+					"file": "models/order.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 26240,
+						"buffer_size": 28176,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								17839,
-								17839
+								131,
+								147
 							]
 						],
 						"settings":
@@ -622,7 +639,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 17810.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -630,77 +647,19 @@
 				},
 				{
 					"buffer": 2,
-					"file": "views/appointments/appointment.xml",
+					"file": "models/payment_method.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12391,
+						"buffer_size": 615,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2013,
-								2013
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1252.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "views/menus.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4326,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1000,
-								1007
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 776.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "models/treatment.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 23916,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7293,
-								7293
+								349,
+								349
 							]
 						],
 						"settings":
@@ -709,7 +668,65 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 5939.0,
+						"translation.y": 117.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "models/sale_document.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 773,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								603,
+								652
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 372.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "models/receipt.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 406,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								406
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
@@ -717,28 +734,28 @@
 				},
 				{
 					"buffer": 5,
-					"file": "views/treatments/treatment.xml",
+					"file": "models/invoice.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 16776,
+						"buffer_size": 489,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7906,
-								7906
+								209,
+								209
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
+							"syntax": "Packages/Python/Python.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 6755.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 5,
@@ -746,19 +763,48 @@
 				},
 				{
 					"buffer": 6,
-					"file": "views/orders/order.xml",
+					"file": "models/ord_vars.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8560,
+						"buffer_size": 713,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2888,
-								2888
+								424,
+								424
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "views/orders/order.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12498,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6232,
+								6232
 							]
 						],
 						"settings":
@@ -767,7 +813,36 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2287.0,
+						"translation.y": 6130.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "views/sale_documents/receipts.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1229,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								85,
+								85
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 6,
@@ -879,7 +954,7 @@
 		[
 			[
 				"",
-				"~/Documents/Aptana Studio 3 Workspace/spneuro/spNeuro.sublime-project"
+				"~/Documents/Aptana Studio 3 Workspace/templates/dfirm/dfirm/interamericana.sublime-project"
 			]
 		],
 		"width": 380.0

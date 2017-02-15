@@ -47,7 +47,7 @@
 							
 							class="oe_highlight"
 
-							string="Crear Boleta" 
+							string="Boleta" 
 
 							name="create_receipt" 
 					/>
@@ -60,7 +60,7 @@
 
 							class="oe_highlight"
 
-							string="Crear Factura" 
+							string="Factura" 
 
 							name="create_invoice" 
 					/>
@@ -77,13 +77,16 @@
 
 							class="oe_highlight"
 
-							string="Crear Canje publicidad" 
+							string="Canje publicidad" 
 
 							name="create_advertisement" 
 					/>
 
 
 
+					<!--
+							string="Nota de venta" 
+					-->
 					<button 
 							attrs="{'invisible':[('x_sales_document', '!=', 'sale_note')]}"
 
@@ -91,7 +94,7 @@
 
 							class="oe_highlight"
 
-							string="Crear Nota de venta" 
+							string="Canje (nv)" 
 
 							name="create_sale_note" 
 					/>
@@ -104,7 +107,7 @@
 
 							class="oe_highlight"
 
-							string="Crear Ticket boleta" 
+							string="Ticket boleta" 
 
 							name="create_ticket_receipt" 
 					/>
@@ -117,7 +120,7 @@
 
 							class="oe_highlight"
 
-							string="Crear Ticket factura" 
+							string="Ticket factura" 
 
 							name="create_ticket_invoice" 
 					/>
@@ -129,6 +132,12 @@
 
 				</xpath>
 
+
+
+				<!--
+				<xpath expr="//page[@name='Other Information']" position="replace">
+				</xpath>
+				-->
 
 
 
@@ -365,9 +374,34 @@
 
 
 					<field name="vspace"/>
-					<field name="vspace"/>
-					<field name="x_payment_method"/>
 
+
+					<!--
+					<group>
+						<group>
+							<field name="x_payment_method"/>
+							<button 
+								type="object" 
+								class="oe_highlight"	
+
+								string="Crear MP"
+						
+								name="create_payment_method" 	
+							/>
+						</group>
+					</group>
+					-->
+
+
+
+					<field name="vspace"/>
+
+
+
+
+
+
+					<!--
 					<field name="x_payment_method_code" 	required="0" 	attrs="{'invisible':[
 																				
 																					('x_payment_method', '!=', 'debit_visa'), 
@@ -379,7 +413,7 @@
 																					('x_payment_method', '!=', 'diners'), 
 																					('x_payment_method', '!=', 'american_express'), 
 																				]}"			/>
-
+					-->
 
 					<field name="vspace"/>
 					<field name="vspace"/>

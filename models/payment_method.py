@@ -9,7 +9,7 @@ from openerp import models, fields, api
 import ord_vars
 
 
-class PaymentMethod(models.Model):
+class payment_method(models.Model):
 	
 	_name = 'openhealth.payment_method'
 
@@ -20,8 +20,7 @@ class PaymentMethod(models.Model):
 	name = fields.Char(
 			#string="Medio de Pago", 
 			string="Nombre", 
-
-			#required=True, 
+			required=True, 
 		)
 
 
@@ -36,15 +35,50 @@ class PaymentMethod(models.Model):
 
 	subtotal = fields.Float(
 			string = 'Sub-total', 
+			required=True, 
 		)
 
 
 
 	method = fields.Selection(
-			string="Medio de Pago", 
+			string="Medio", 
 			selection = ord_vars._payment_method_list, 			
+			required=True, 
+		)
+
+	code = fields.Char(
+			string="Codigo", 
+			#required=True, 
 		)
 
 
 
+
+	# ----------------------------------------------------------- CRUD ------------------------------------------------------
+
+	# Create 
+	@api.model
+	def create(self,vals):
+
+		print 
+		print 'jx'
+		print 'Payment Method - Create Override'
+		print 
+		print vals
+		print 
+	
+
+
+		#order = vals['order']
+		#nr_pm = self.env['openhealth.payment_method'].search_count([('order','=', order),]) 
+		#name = 'MP-' + str(nr_pm + 1)
+		#vals['name'] = name
+
+
+
+		#Write your logic here
+		res = super(payment_method, self).create(vals)
+		#Write your logic here
+
+		return res
 

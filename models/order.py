@@ -68,6 +68,73 @@ class sale_order(models.Model):
 
 
 
+
+
+
+
+	# Number of paymethods  
+	nr_pay_methods = fields.Integer(
+			string="Documentos de venta",
+			compute="_compute_nr_pay_methods",
+	)
+	@api.multi
+	def _compute_nr_pay_methods(self):
+		for record in self:
+
+			pm = self.env['openhealth.payment_method'].search_count([('order','=', record.id),]) 
+
+			record.nr_pay_methods = pm
+
+
+
+
+# ---------------------------------------------- Create PM --------------------------------------------------------
+	@api.multi 
+	def create_payment_method(self):
+
+		print 
+		print 'Create Payment Method'
+
+		nr_pm = self.env['openhealth.payment_method'].search_count([('order','=', self.id),]) 
+
+		name = 'MP-' + str(nr_pm + 1)
+
+		method = 'cash'
+
+
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' New PM Current', 
+
+				'view_type': 'form',
+				'view_mode': 'form',	
+				'target': 'current',
+
+
+				'res_model': 'openhealth.payment_method',				
+				#'res_id': receipt_id,
+
+
+				'flags': 	{
+							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+							'form': {'action_buttons': True, }
+							},
+
+
+				'context': {
+							'default_order': self.id,
+
+							'default_name': name,
+							'default_method': method,
+							}
+				}
+
+	# create_payment_method
+
+
+
+
+
 # ---------------------------------------------- Create Receipt --------------------------------------------------------
 	@api.multi 
 	def create_receipt(self):
@@ -513,11 +580,12 @@ class sale_order(models.Model):
 	#	)
 
 
+
 	x_payment_method = fields.One2many(
 			'openhealth.payment_method',
 			'order',		
 
-			string="Medio de pago", 
+			string="Medios de pago", 
 		)
 
 

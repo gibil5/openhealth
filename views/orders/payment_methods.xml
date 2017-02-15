@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+		<!--
+		order - payment_methods
+		-->
+		<record model="ir.ui.view" id="order_payment_method_form_view">
+			<field name="name">order.payment_method.form</field>
+			<field name="model">sale.order</field>
+			
+
+			<field name="priority" eval="-1"/>
+			
+
+			<field name="inherit_id" ref="sale.view_order_form"/>
+			<field name="arch" type="xml">
+
+
+
+				<notebook position="inside">
+					
+
+
+							<!--
+								 payment_methods
+							-->
+
+							<page string="Métodos de Pago">
+
+
+
+
+
+								<field name="x_payment_method">
+									
+									<!--
+									<tree editable="bottom">										
+	                                -->
+
+									<tree string="Métodos de Pago">										
+										
+										<field  name="name"/>
+											
+										<field  name="method"/>
+
+										<field  name="subtotal"/>
+
+
+
+																				
+										<!-- Hot Button -->
+										<!--
+										<button 
+											type="object" 
+											class="oe_highlight"	
+											string="E"
+											name="open_line_current" 
+										/>
+										-->
+									</tree>
+								</field>
+
+							<button 
+								type="object" 
+								class="oe_highlight"	
+
+								string="Crear Línea"
+						
+								name="create_payment_method" 	
+							/>
+
+							</page>
+
+
+
+				</notebook>
+			</field>
+		</record>
+	</data>
+</openerp>

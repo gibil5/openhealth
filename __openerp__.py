@@ -168,6 +168,9 @@
 		'views/orders/order.xml',
 		'views/orders/order_line.xml',
 
+		'views/orders/payment_methods.xml',
+
+
 
 		'views/sale_documents/receipts.xml',
 		'views/sale_documents/invoices.xml',
@@ -177,6 +180,7 @@
 		'views/sale_documents/ticket_receipts.xml',
 		'views/sale_documents/ticket_invoices.xml',
 
+		'views/sale_documents/payment_methods.xml',
 
 # ----------------------------------------------------------- Ok ------------------------------------------------------
 

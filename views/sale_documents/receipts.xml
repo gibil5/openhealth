@@ -4,10 +4,6 @@
 
 
 
-
-
-
-
 		<!-- Tree view --> 
 		<record model="ir.ui.view" id="receipt_tree_view">
 			<field name="name">receipt.tree</field>
@@ -28,8 +24,6 @@
 				</tree>
 			</field>
 		</record>
-
-
 
 
 
@@ -54,8 +48,6 @@
 			</field>
 			
 		</record>
-
-
 
 	</data>
 </openerp>

@@ -148,24 +148,49 @@
 				<xpath expr="//button[@name='action_confirm']" position="replace">
 
 					<!--					
+							attrs="{'invisible':
+
+												[
+													('pm_complete', '=', False),
+												]
+
+												}"
+					
+
+											'invisible':
+
+												[
+														('receipt', '=', False),
+
+														('x_invoice', '=', False),
+
+														('x_advertisement', '=', False),
+
+														('x_sale_note', '=', False),
+
+														('x_ticket_invoice', '=', False),
+
+														('x_ticket_receipt', '=', False),
+												], 
+
+
 					-->
 					<button 
 
-							attrs="{'invisible':[
-													('receipt', '=', False),
-
-													('x_invoice', '=', False),
-
-													('x_advertisement', '=', False),
+							attrs="{
 
 
-													('x_sale_note', '=', False),
+											'invisible':
 
-													('x_ticket_invoice', '=', False),
+												[
+													('pm_complete', '=', False),
+												]
 
-													('x_ticket_receipt', '=', False),
+												}"
 
-													]}"
+
+
+
 
 							type="object" 
 
@@ -175,7 +200,6 @@
 
 							name="action_confirm" 
 					/>
-
 				</xpath>
 
 
@@ -189,12 +213,15 @@
 
 
 
-
+				<!-- Buttons --> 
 				<xpath expr="//button[@name='print_quotation']" position="replace">
 				</xpath>
 
 				<xpath expr="//button[@name='action_cancel']" position="replace">
 				</xpath>
+
+
+
 
 
 
@@ -209,22 +236,63 @@
 				<xpath expr="//field[@name='name']" position="after">
 
 
-					<button 
-							type="object" 
-							class="oe_highlight"
-							string="Eliminar" 
+					<group col='6'>
+					
+						<group>
 
-							name="remove_myself" 
-					/>
+							<button 
+								type="object" 
+								class="oe_highlight "
+								string="Eliminar" 
+
+								name="remove_myself" 
+							/>
+						</group>
+
+						<group>
+							<button 
+								type="object" 
+								class="oe_highlight"
+
+								string="Actualizar"
+
+								name="update_order" 	
+							/>
+						</group>
 
 
-					<button 
-							type="object" 
-							class="oe_highlight oe_right"	
-							string="Actualizar"
 
-							name="update_order" 	
-					/>
+						<group>
+						</group>
+
+
+
+						<group>
+							<button 
+								type="object" 
+								class="oe_highlight"	
+								string="Anular"
+								name="cancel_order" 	
+							/>
+						</group>
+
+						<group>
+							<button 
+								type="object" 
+								class="oe_highlight oe_right"	
+								string="Activar"
+								name="activate_order" 	
+							/>
+						</group>
+
+
+						<group>
+        	            	<field name="x_cancel"/>
+						</group>
+
+
+					</group>
+
 				</xpath>
 
 
@@ -532,6 +600,11 @@
 
 
                     <field name="x_family"/>
+
+
+                    <field name="receipt"/>
+                    <field name="x_invoice"/>
+
 
                      <!--
                     <field name="consultation"/>

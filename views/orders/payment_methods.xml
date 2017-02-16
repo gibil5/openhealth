@@ -77,6 +77,11 @@
 
 								<group>
 									<field  name="pm_total"/>
+
+									<field  name="nr_saledocs"/>
+
+									<field  name="pm_complete"/>
+
 								</group>
 							</group>
 

@@ -27,14 +27,43 @@ class sale_order(models.Model):
 
 
 
+	#@api.multi 
+	#def create_sale_document(self):
+	#	print 
+	#	print 'Create Sale Document'
+
+
+
+
+
+
+	x_cancel = fields.Boolean(
+			string='', 
+			default = False
+		)
+
+	x_cancel_reason = fields.Char(
+			string='Motivo de anulación', 
+		)
+
+	x_cancel_owner = fields.Char(
+			string='Quién anula', 
+		)
+
+
+
 	@api.multi 
-	def create_sale_document(self):
+	def cancel_order(self):
 		print 
-		print 'Create Sale Document'
+		print 'Cancel'
+		self.x_cancel = True
 
 
-
-
+	@api.multi 
+	def activate_order(self):
+		print 
+		print 'Cancel'
+		self.x_cancel = False
 
 
 
@@ -90,6 +119,8 @@ class sale_order(models.Model):
 
 
 
+
+
 	# Number of paymethods  
 	pm_total = fields.Float(
 								string="Total",
@@ -112,6 +143,34 @@ class sale_order(models.Model):
 
 			record.pm_total = total
 
+
+
+
+
+
+
+
+	# Number of paymethods  
+	pm_complete = fields.Boolean(
+								string="Pm Complete",
+								default = False, 
+								
+								compute="_compute_pm_complete",
+	)
+	
+
+	@api.multi
+	#@api.depends('pm_total')
+
+	def _compute_pm_complete(self):
+
+		for record in self:
+			
+			if (record.pm_total != record.amount_total)		or 	 (record.nr_saledocs == 0) : 
+				record.pm_complete = False
+
+			else:
+				record.pm_complete = True
 
 
 

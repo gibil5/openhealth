@@ -36,6 +36,20 @@ class sale_order(models.Model):
 
 
 
+# ---------------------------------------------- Event --------------------------------------------------------
+
+
+	event_ids = fields.One2many(
+
+			'openhealth.event',
+		
+			'order',		
+
+			string="Eventos", 
+		)
+
+
+
 
 	x_cancel = fields.Boolean(
 			string='', 
@@ -57,6 +71,12 @@ class sale_order(models.Model):
 		print 
 		print 'Cancel'
 		self.x_cancel = True
+
+		#ret = self.create_event()
+		ret = order_funcs.create_event(self)
+
+		return(ret)
+
 
 
 	@api.multi 
@@ -184,7 +204,6 @@ class sale_order(models.Model):
 
 		nr_pm = self.env['openhealth.payment_method'].search_count([('order','=', self.id),]) 
 
-		#name = 'MP-' + str(nr_pm + 1)
 		name = 'Pago ' + str(nr_pm + 1)
 
 		method = 'cash'
@@ -207,7 +226,6 @@ class sale_order(models.Model):
 							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 							'form': {'action_buttons': True, }
 							},
-
 
 				'context': {
 							'default_order': self.id,

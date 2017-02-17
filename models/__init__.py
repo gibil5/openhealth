@@ -55,6 +55,8 @@ from . import ticket_invoice
 
 from . import payment_method
 
+from . import event 
+
 
 
 

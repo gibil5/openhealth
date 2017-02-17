@@ -169,6 +169,7 @@
 		'views/orders/order_line.xml',
 
 		'views/orders/payment_methods.xml',
+		'views/orders/events.xml',
 
 
 

@@ -236,10 +236,9 @@
 				<xpath expr="//field[@name='name']" position="after">
 
 
-					<group col='6'>
+					<group col='5'>
 					
 						<group>
-
 							<button 
 								type="object" 
 								class="oe_highlight "
@@ -248,6 +247,7 @@
 								name="remove_myself" 
 							/>
 						</group>
+
 
 						<group>
 							<button 
@@ -260,22 +260,12 @@
 							/>
 						</group>
 
-
-
 						<group>
 						</group>
 
 
 
-						<group>
-							<button 
-								type="object" 
-								class="oe_highlight"	
-								string="Anular"
-								name="cancel_order" 	
-							/>
-						</group>
-
+						<!--
 						<group>
 							<button 
 								type="object" 
@@ -284,10 +274,20 @@
 								name="activate_order" 	
 							/>
 						</group>
+						-->
 
 
 						<group>
-        	            	<field name="x_cancel"/>
+							<button 
+								type="object" 
+								class="oe_highlight oe_right "	
+								string="Anular"
+								name="cancel_order" 	
+							/>
+						</group>
+
+						<group>
+        	            	<field name="x_cancel"  nolabel="1"/>
 						</group>
 
 

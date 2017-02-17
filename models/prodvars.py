@@ -23,7 +23,13 @@ _family_list = [
 		('laser',			'laser'),
 		('medical',			'medical'), 
 
-		('deprecated',			'deprecated'), 
+		#('deprecated',			'deprecated'), 
+
+
+		('topical',			'Tópico'),
+		('kit',				'Kit'),
+		('card',			'Tarjeta'),
+
 		]
 
 

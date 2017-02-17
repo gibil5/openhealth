@@ -4,14 +4,14 @@
 
 
 		<!--
-		order - payment_methods
+		order - events
 		-->
-		<record model="ir.ui.view" id="order_payment_method_form_view">
-			<field name="name">order.payment_method.form</field>
+		<record model="ir.ui.view" id="order_event_form_view">
+			<field name="name">order.event.form</field>
 			<field name="model">sale.order</field>
 			
 
-			<field name="priority" eval="1"/>
+			<field name="priority" eval="2"/>
 			
 
 			<field name="inherit_id" ref="sale.view_order_form"/>
@@ -24,28 +24,28 @@
 
 
 							<!--
-								 payment_methods
+								 events
 							-->
 
-							<page string="Método de Pago">
+							<page string="Anulaciones">
 
 
 
-
-
-								<field name="x_payment_method">
+								<field name="event_ids">
 									
+
 									<!--
 									<tree editable="bottom">										
 	                                -->
-
 									<tree string="Métodos de Pago">										
 										
-										<field  name="name"/>
+										<field  name="name"		string="Anulación"	/>
 											
-										<field  name="method"/>
+										<field  name="x_type"/>
 
-										<field  name="subtotal"/>
+										<field  name="message"/>
+
+										<field  name="owner"/>
 
 
 
@@ -60,30 +60,12 @@
 										/>
 										-->
 									</tree>
+								
+
 								</field>
 
 
-							
-							<group col="4">
 
-								<group>
-								</group>
-
-								<group>
-								</group>
-
-								<group>
-								</group>
-
-								<group>
-									<field  name="pm_total"/>
-
-									<field  name="nr_saledocs"/>
-
-									<field  name="pm_complete"/>
-
-								</group>
-							</group>
 
 							<button 
 								type="object" 
@@ -91,7 +73,7 @@
 
 								string="Crear Línea"
 						
-								name="create_payment_method" 	
+								name="create_event" 	
 							/>
 
 							</page>

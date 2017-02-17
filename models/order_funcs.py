@@ -5,95 +5,53 @@ from openerp import models, fields, api
 
 
 
-#receipt_id, order_id, patient_id, doctor_id, total = order_funcs.create_document_go(self, 'receipt')
+
+
+# ---------------------------------------------- Event --------------------------------------------------------
 @api.multi 
-def create_document_go(self, type_doc):
+def create_event(self):
 
 		print 
-		print 'Create'
+		print 'jx'
+		print 'Create Event'
+		print
+		print
+
+		nr_pm = self.env['openhealth.event'].search_count([('order','=', self.id),]) 
+
+		name = 'Evento ' + str(nr_pm + 1)
+
+		x_type = 'cancel'
 
 
-		order_id = self.id 
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' New PM Current', 
 
-		patient_id = self.patient.id
-
-		doctor_id = self.x_doctor.id
-		
-		total = self.amount_total
-		
-
+				'view_type': 'form',
+				'view_mode': 'form',	
+				'target': 'current',
 
 
-		if type_doc == 'receipt':
-			document_id = create_receipt_go(self)
-
-		elif type_doc == 'invoice':
-			document_id = create_invoice_go()
-
-		elif type_doc == 'advertisement':
-			document_id = create_advertisement_go()
+				'res_model': 'openhealth.event',				
+				#'res_id': receipt_id,
 
 
+				'flags': 	{
+							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+							'form': {'action_buttons': True, }
+							},
 
+				'context': {
+							'default_order': self.id,
 
+							'default_name': name,
 
-		print document_id
+							'default_x_type': x_type,
+							}
+				}
 
-		
-		return (document_id, order_id, patient_id, doctor_id, total)
-
-
-
-
-
-
-@api.multi 
-def create_receipt_go(self):
-
-		# Search 
-		receipt_id = self.env['openhealth.receipt'].search([
-													#('order','=',order_id),													
-													('order','=',self.id),													
-												]).id
-
-		# Create 
-		if receipt_id == False:
-			receipt = self.env['openhealth.receipt'].create(
-													{
-														#'order': order_id,
-														#'patient': patient_id,	
-														#'doctor': doctor_id,	
-														#'total': total, 
-
-														'order': self.id,
-														'patient': self.patient.id,	
-														'doctor': self.x_doctor.id,	
-														'total': self.amount_total, 
-													})
-			receipt_id = receipt.id 
-
-
-
-
-		self.receipt = receipt_id
-
-		return (receipt_id)
-
-
-
-
-
-@api.multi 
-def create_invoice_go(self):
-
-	print 
-
-
-
-@api.multi 
-def create_advertisement_go(self):
-
-	print 
+	# create_event
 
 
 

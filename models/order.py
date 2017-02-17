@@ -46,6 +46,38 @@ class sale_order(models.Model):
 
 
 
+
+
+
+
+
+	amount_total = fields.Float(
+
+			string = "Total",
+
+			compute="_compute_amount_total",
+		)
+
+	@api.multi
+	#@api.depends('x_payment_method')
+
+	def _compute_amount_total(self):
+
+		for record in self:
+
+			sub = 0.0
+
+			for line in record.order_line:
+				sub = sub + line.price_subtotal 
+
+			record.amount_total = sub
+
+
+
+
+
+
+
 	x_partner_vip = fields.Boolean(
 			'Vip', 
 
@@ -55,8 +87,6 @@ class sale_order(models.Model):
 
 			compute="_compute_partner_vip",
 			)
-
-
 
 	@api.multi
 	#@api.depends('x_payment_method')
@@ -1380,7 +1410,8 @@ class sale_order(models.Model):
 
 # ----------------------------------------------------------- Button - Update Lines ------------------------------------------------------
 	@api.multi 
-	def update_line(self, order_id, product_id, name, list_price, uom_id):
+	#def update_line(self, order_id, product_id, name, list_price, uom_id):
+	def update_line(self, order_id, product_id, name, list_price, uom_id, x_price_vip):
 
 
 		print 'update existing'
@@ -1420,9 +1451,16 @@ class sale_order(models.Model):
 											'order_id': order.id,
 
 											'product_id': product_id,
+
 											'name': name,
-											#'price_unit': product_price_unit,
+
 											'product_uom': uom_id, 
+
+
+											#'price_unit': product_price_unit,
+											'x_price_vip': x_price_vip, 
+
+											'x_partner_vip': self.x_partner_vip
 										})
 		print line
 		print 
@@ -1449,21 +1487,27 @@ class sale_order(models.Model):
 		for service in self.consultation.service_co2_ids:
 			print service
 
-			line = self.update_line(	order_id, 
+			line = self.update_line(	
+										order_id, 
 										service.service.id, 
 										service.service.x_name_short, 
 										service.service.list_price, 
-										service.service.uom_id.id
+										service.service.uom_id.id,
+
+										service.service.x_price_vip
 									)
 			print 
 		
 		for service in self.consultation.service_excilite_ids:
 			print service
-			line = self.update_line(	order_id, 
+			line = self.update_line(	
+										order_id, 
 										service.service.id, 
 										service.service.x_name_short, 
-										service.service.list_price, 
-										service.service.uom_id.id
+										service.service.list_price, 										
+										service.service.uom_id.id,
+
+										service.service.x_price_vip
 									)
 
 		for service in self.consultation.service_ipl_ids:
@@ -1472,7 +1516,9 @@ class sale_order(models.Model):
 										service.service.id, 
 										service.service.x_name_short, 
 										service.service.list_price, 
-										service.service.uom_id.id
+										service.service.uom_id.id,
+
+										service.service.x_price_vip
 									)
 
 		for service in self.consultation.service_ndyag_ids:
@@ -1481,7 +1527,9 @@ class sale_order(models.Model):
 										service.service.id, 
 										service.service.x_name_short, 
 										service.service.list_price, 
-										service.service.uom_id.id
+										service.service.uom_id.id,
+
+										service.service.x_price_vip
 									)
 
 		for service in self.consultation.service_medical_ids:
@@ -1490,7 +1538,9 @@ class sale_order(models.Model):
 										service.service.id, 
 										service.service.x_name_short, 
 										service.service.list_price, 
-										service.service.uom_id.id
+										service.service.uom_id.id,
+
+										service.service.x_price_vip
 									)
 
 		print 

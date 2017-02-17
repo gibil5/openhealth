@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
-
-
-
+#
+# 	Order Line
+# 
+#
 
 from openerp import models, fields, api
 
@@ -12,13 +13,15 @@ import jxvars
 
 class sale_order_line(models.Model):
 
-	#_name = 'openhealth.order_line'
 	_inherit='sale.order.line'
+	#_name = 'openhealth.order_line'
 
 
 
 	order_id=fields.Many2one(
+
 		'sale.order',
+		
 		string='Order',
 		)
 
@@ -58,92 +61,69 @@ class sale_order_line(models.Model):
 
 
 
-	# Prices 
-	x_price_vip = fields.Float(
-			string="Price Vip",
-		)
 
-	x_price_vip_wigv = fields.Float(
-			string="Precio Vip",
-
-			compute="_compute_x_price_vip_wigv",
-		)
-
-	#@api.multi
-	@api.depends('x_price_vip')
-	
-	def _compute_x_price_vip_wigv(self):
-		for record in self:
-
-			if record.x_price_vip == 0.0:
-				#record.x_price_vip = record.x_price
-				price_vip = record.x_price
-			else:
-				price_vip = record.x_price_vip
+# ---------------------------------------------- Prices --------------------------------------------------------
 
 
-			#record.x_price_vip_wigv = math.ceil(record.x_price_vip * 1.18)
-			record.x_price_vip_wigv = math.ceil(price_vip * 1.18)
+	x_partner_vip = fields.Boolean(
 
+			'Vip', 
 
-
-
-	x_price = fields.Float(
-			string="Price Std",
-		)
-
-	x_price_wigv = fields.Float(
-			string="Precio",
-
-			compute="_compute_x_price_wigv",
-		)
-
-
-	#@api.multi
-	@api.depends('x_price')
-	
-	def _compute_x_price_wigv(self):
-		for record in self:
-			record.x_price_wigv = math.ceil(record.x_price * 1.18)
-
-
-
-
-
-
-
-	price_total = fields.Float(
+			#readonly=True
 			
-			string="Total",
+			default=False, 
 
-			#compute="_compute_price_total",
+			#compute="_compute_partner_vip",
+			)
+
+
+
+	x_price_vip = fields.Float(
+			string="Precio Vip",
 		)
 
 
 
+
+	price_subtotal = fields.Float(			
+			string="Sub-Total",
+			
+			compute="_compute_price_subtotal",
+		)
+
+
 	#@api.multi
-	#@api.depends('x_price')	
-	#def _compute_price_total(self):
-	#	for record in self:
-	#		record.x_price_wigv = math.ceil(record.x_price * 1.18)
-
-
-
-	#@api.onchange('price_total')
+	@api.depends('price_unit', 'x_price_vip')
 	
-	#def _onchange_price_total(self):
-	#	print 
-	#	print 'on change price total'
-	#	print self.price_total
+	def _compute_price_subtotal(self):
+		
+		for record in self:
+		
+			#if True: 
+			if record.x_partner_vip  	and  	record.x_price_vip != 0.0:
+					record.price_subtotal = record.x_price_vip * record.product_uom_qty
+			
+			else: 
+				record.price_subtotal = record.price_unit * record.product_uom_qty
 
-	#	self.price_total = math.ceil(self.price_total)
-
-	#	print self.price_total
-	#	print 
 
 
 
+	#price_total = fields.Float(			
+	#		string="Total",
+			#compute="_compute_price_total",
+	#	)
 
+
+
+
+
+
+
+
+# ---------------------------------------------- Type --------------------------------------------------------
+
+	# Type - Deprecated ?
 
 	_x_type_list = [
 						('service','Servicio'), 
@@ -168,12 +148,6 @@ class sale_order_line(models.Model):
 
 
 
+#sale_order_line
 
 
-
-
-
-
-
-
-#sale_order_line()

@@ -29,23 +29,36 @@ class SaleDocument(models.Model):
 
 
 
-	patient = fields.Many2one(
-			'oeh.medical.patient',
-			string = "Paciente", 	
+	#patient = fields.Many2one(
+	#		'oeh.medical.patient',
+	#		string = "Paciente", 	
+	#		required=True, 
+	#	)
+
+	#doctor = fields.Many2one(
+	#		'oeh.medical.physician',
+	#		string = "Médico", 	
+	#		required=True, 
+	#		)
+
+
+
+
+
+	partner = fields.Many2one(
+
+			'res.partner',
+		
+			string = "Cliente", 	
+		
 			required=True, 
 		)
 
 
-	doctor = fields.Many2one(
-			'oeh.medical.physician',
-			string = "Médico", 	
-			required=True, 
-			)
 
 
-	#amount_total = fields.Monetary(
-	#amount_total = fields.Integer(
-	#total = fields.Char(
+
+
 	
 	total = fields.Float(
 			string = 'Total', 

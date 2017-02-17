@@ -21,6 +21,25 @@
 
 
 
+
+				<!--
+				-->
+				<xpath expr="//field[@name='validity_date']" position="replace">
+
+					<field name="patient" />
+
+				</xpath>
+
+
+				<xpath expr="//field[@name='payment_term_id']" position="replace">
+
+					<field name="x_doctor" />
+
+				</xpath>
+
+
+
+
 				<!--
 				<xpath expr="pass of position" position="the postion">
 				-->		
@@ -226,13 +245,6 @@
 
 
 				<!-- Remove -->
-				<!--
-								context="{
-											'default_x_machine: 'none', 
-											'x_machine: 'none', 
-										}"
-
-				-->
 				<xpath expr="//field[@name='name']" position="after">
 
 
@@ -364,7 +376,10 @@
 
 
 
+				<!--
 				<field name="payment_term_id" position="after">
+				-->
+				<field name="x_doctor" position="after">
 
 
 					<field name="vspace"/>
@@ -373,15 +388,11 @@
 
 
 					<field name="x_appointment"/>
+					<!--
 					<field name="x_doctor"/>
+					-->
 					<field name="x_appointment_date"/>
 					<field name="x_duration"/>
-					<field name="vspace"/>
-
-					<!--
-					<field name="x_machine"		required="1"/>
-					-->
-
 					<field name="x_machine"/>
 					
 					<field name="vspace"/>
@@ -420,28 +431,21 @@
 				<field name="partner_id" position="after">
 					
 					<!--
-					<field name="consultation"/>
-					<field name="x_nex"/>
-					<field name="nr_lines"/>
-
-					<field name="x_state"/>
-						
-					<field name="patient"/>
+					<field name="vspace"/>
 					-->
 					
+					<field name="x_partner_vip"/>
+
 					
 					<field name="vspace"/>
 					<field name="state"		string="Estado"/>
 
 
-					<field name="vspace"/>
-					<field name="x_vip"/>
 
 
 
 
 
-					<field name="vspace"/>
 
 
 					<!--
@@ -462,7 +466,6 @@
 
 
 
-					<field name="vspace"/>
 
 
 
@@ -483,7 +486,6 @@
 																				]}"			/>
 					-->
 
-					<field name="vspace"/>
 					<field name="vspace"/>
 					<field name="x_sales_document"/>
 

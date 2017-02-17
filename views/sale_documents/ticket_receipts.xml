@@ -15,9 +15,7 @@
 					
 					<field name="name"/>
 					
-					<field name="patient"  />
-					
-					<field name="doctor"   />
+					<field name="partner"  />					
 					
 					<field name="total"   />
 					

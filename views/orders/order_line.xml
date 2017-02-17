@@ -49,35 +49,39 @@
 
 
 
+
+
 		<!-- Order Line tree/list view -->
 		<!--
+		--> 
 		<record model="ir.ui.view" id="sale.view_order_line_tree">
 			<field name="name">sale.order.line.tree</field>
 			<field name="model">sale.order.line</field>
 			<field name="arch" type="xml">
 				<tree string="Order Line Tree">
+
+
+                    <!--
                     <field name="id"/>
-
-
-
                     <field name="product_id"/>
-				
-					<field name="name"/>
-
 					<field name="consultation"/>
-
 					<field name="order_id"/>
 
 					<field name="state"/>
+					<field name="description"/>
+					-->
 
-                    <field name="price_subtotal"  invisible="1"/>
+					<field name="name"/>
+
+                    <field name="price_subtotal" />
+
+                    <field name="x_price_vip" />
 
                     <field name="price_total"/>
 
 				</tree>
 			</field>
 		</record>
-		--> 
 
 
 
@@ -154,22 +158,20 @@
 		
 
 
+
+
 		<!-- Menus --> 
 		<!-- top level menu: no parent -->
 		<!--
-		<menuitem id="main_openextension_menu" name="Open Health"/>
-		-->
 		<menuitem id="openhealth_menu" name="Open Health"/>
+		-->
 
 		<!-- A first level in the left side menu is needed
 		before using action= attribute -->
+		<!--
 		<menuitem id="openextension_menu" name="Open Health"
 			parent="main_openextension_menu"/>
-
-		<menuitem id="order_lines_menu" name="Order lines" 
-			parent="openhealth_menu"
-			action="order_line_list_action"/>
-
+		-->
 
 	</data>
 </openerp>

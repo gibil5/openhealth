@@ -35,6 +35,74 @@ class sale_order(models.Model):
 
 
 
+	partner_id = fields.Many2one(
+
+			'res.partner',
+		
+			string = "Cliente", 	
+
+			required=True, 
+		)
+
+
+
+	x_partner_vip = fields.Boolean(
+			'Vip', 
+
+			#readonly=True
+			
+			default=False, 
+
+			compute="_compute_partner_vip",
+			)
+
+
+
+	@api.multi
+	#@api.depends('x_payment_method')
+
+	def _compute_partner_vip(self):
+		for record in self:
+
+			print 
+			print 'jx'
+			print 'Compute Partner Vip'
+			#count = self.env['sale.order'].search_count([
+			#												('partner_id','=', record.partner_id.id),
+			#												('state','=', 'sale'),
+			#											]) 
+
+
+			rec_set = self.env['sale.order'].search([
+															('partner_id','=', record.partner_id.id),
+															('state','=', 'sale'),
+														]) 
+
+			for rec in rec_set:
+				print rec
+
+				for line in rec.order_line:
+					print line
+					print line.name 
+
+					if line.name == 'Tarjeta VIP':
+						print 'Gotcha !!!'
+						record.x_partner_vip = True 
+					
+					print 
+
+			print 
+
+
+			#if count > 0:
+			#	record.x_partner_vip = True 
+			#else:				
+			#	record.x_partner_vip = False 
+
+
+			print 
+			print 
+
 
 # ---------------------------------------------- Event --------------------------------------------------------
 
@@ -195,6 +263,8 @@ class sale_order(models.Model):
 
 
 
+
+
 # ---------------------------------------------- Create PM --------------------------------------------------------
 	@api.multi 
 	def create_payment_method(self):
@@ -241,6 +311,7 @@ class sale_order(models.Model):
 
 
 
+
 # ---------------------------------------------- Create Receipt --------------------------------------------------------
 	@api.multi 
 	def create_receipt(self):
@@ -256,9 +327,9 @@ class sale_order(models.Model):
 
 			receipt = self.env['openhealth.receipt'].create({
 																'order': self.id,
-																'patient': self.patient.id,	
-																'doctor': self.x_doctor.id,	
 																'total': self.amount_total, 
+
+																'partner': self.partner_id.id,				
 													})
 			receipt_id = receipt.id 
 
@@ -287,9 +358,9 @@ class sale_order(models.Model):
 
 				'context': {
 							'default_order': self.id,
-							'default_patient': self.patient.id,
-							'default_doctor': self.x_doctor.id,
 							'default_total': self.amount_total,
+
+							'default_partner': self.partner_id.id,
 							}
 				}
 
@@ -314,11 +385,10 @@ class sale_order(models.Model):
 
 			invoice = self.env['openhealth.invoice'].create({
 																'order': self.id,
-																'patient': self.patient.id,	
-																'doctor': self.x_doctor.id,	
 																'total': self.amount_total, 
-
 																'ruc': self.x_ruc,	
+
+																'partner': self.partner_id.id,	
 													})
 			invoice_id = invoice.id 
 
@@ -348,11 +418,10 @@ class sale_order(models.Model):
 
 				'context': {
 							'default_order': self.id,
-							'default_patient': self.patient.id,
-							'default_doctor': self.x_doctor.id,
 							'default_total': self.amount_total,
-
 							'default_ruc': self.x_ruc,
+
+							'default_partner': self.partner_id.id,
 							}
 				}
 
@@ -377,9 +446,9 @@ class sale_order(models.Model):
 
 			advertisement = self.env['openhealth.advertisement'].create({
 																'order': self.id,
-																'patient': self.patient.id,	
-																'doctor': self.x_doctor.id,	
 																'total': self.amount_total, 
+
+																'partner': self.partner_id.id,	
 													})
 			advertisement_id = advertisement.id 
 
@@ -408,9 +477,9 @@ class sale_order(models.Model):
 
 				'context': {
 							'default_order': self.id,
-							'default_patient': self.patient.id,
-							'default_doctor': self.x_doctor.id,
 							'default_total': self.amount_total,
+
+							'default_partner': self.partner_id.id,
 							}
 				}
 
@@ -437,9 +506,9 @@ class sale_order(models.Model):
 
 			sale_note = self.env['openhealth.sale_note'].create({
 																'order': self.id,
-																'patient': self.patient.id,	
-																'doctor': self.x_doctor.id,	
 																'total': self.amount_total, 
+
+																'partner': self.partner_id.id,	
 													})
 			sale_note_id = sale_note.id 
 
@@ -469,9 +538,9 @@ class sale_order(models.Model):
 
 				'context': {
 							'default_order': self.id,
-							'default_patient': self.patient.id,
-							'default_doctor': self.x_doctor.id,
 							'default_total': self.amount_total,
+
+							'default_partner': self.partner_id.id,
 							}
 				}
 
@@ -499,9 +568,9 @@ class sale_order(models.Model):
 
 			ticket_receipt = self.env['openhealth.ticket_receipt'].create({
 																'order': self.id,
-																'patient': self.patient.id,	
-																'doctor': self.x_doctor.id,	
 																'total': self.amount_total, 
+
+																'partner': self.partner_id.id,	
 													})
 			ticket_receipt_id = ticket_receipt.id 
 
@@ -531,9 +600,9 @@ class sale_order(models.Model):
 
 				'context': {
 							'default_order': self.id,
-							'default_patient': self.patient.id,
-							'default_doctor': self.x_doctor.id,
 							'default_total': self.amount_total,
+
+							'default_partner': self.partner_id.id,
 							}
 				}
 
@@ -561,9 +630,9 @@ class sale_order(models.Model):
 
 			ticket_invoice = self.env['openhealth.ticket_invoice'].create({
 																'order': self.id,
-																'patient': self.patient.id,	
-																'doctor': self.x_doctor.id,	
 																'total': self.amount_total, 
+
+																'partner': self.partner_id.id,	
 													})
 			ticket_invoice_id = ticket_invoice.id 
 
@@ -593,9 +662,9 @@ class sale_order(models.Model):
 
 				'context': {
 							'default_order': self.id,
-							'default_patient': self.patient.id,
-							'default_doctor': self.x_doctor.id,
 							'default_total': self.amount_total,
+
+							'default_partner': self.partner_id.id,
 							}
 				}
 
@@ -714,7 +783,7 @@ class sale_order(models.Model):
 
 			string="RUC", 
 						
-			required=True, 
+			#required=True, 
 		)
 
 
@@ -873,10 +942,6 @@ class sale_order(models.Model):
 
 
 
-	x_vip = fields.Boolean(
-			'Vip', 
-			#readonly=True
-			)
 
 
 
@@ -988,6 +1053,8 @@ class sale_order(models.Model):
 	
 	patient = fields.Many2one(
 			'oeh.medical.patient',
+
+			string='Paciente', 
 	)
 	
 	
@@ -1502,6 +1569,7 @@ class sale_order(models.Model):
 
 
 
+
 	@api.multi 
 	def action_confirm(self):
 		print 
@@ -1512,12 +1580,26 @@ class sale_order(models.Model):
 
 		#Write your logic here
 
+
+
 		# Validate 
-		if self.x_machine != False:
+		#if self.x_machine != False:
+
+
+		print 'x_doctor.name: ', self.x_doctor.name
+		print 'x_machine', self.x_machine
+
+
+
+		if self.x_doctor.name != False   and   self.x_machine == False:
+			print 'Warning: Sala no Reservada !'
+
+		else:
 			print 'Success !!!'
 			res = super(sale_order, self).action_confirm()
-		else: 
-			print 'Warning: Sala no Reservada !'
+
+		#else: 
+			
 
 		
 		#res = super(sale_order, self).action_confirm()
@@ -1600,6 +1682,7 @@ class sale_order(models.Model):
 		#else:
 		#	res = -1
 		
+
 
 
 		# Confirm 

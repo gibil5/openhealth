@@ -26,9 +26,14 @@ _family_list = [
 		#('deprecated',			'deprecated'), 
 
 
+		# Product
 		('topical',			'Tópico'),
 		('kit',				'Kit'),
 		('card',			'Tarjeta'),
+
+
+		# Cosmetology
+		('cosmetology',			'Cosmiatría'),
 
 		]
 
@@ -53,9 +58,23 @@ _treatment_list = [
 		('none',			'none'), 
 
 
+
+
 		# 2017
 		('mesotherapy_nctf',		'mesotherapy_nctf'),
 		('hyaluronic_acid_repair',		'hyaluronic_acid_repair'),
+
+
+
+
+		# Cosmetology
+		('triactive_carboxytherapy_reductionchamber',			'triactive_carboxytherapy_reductionchamber'), 
+		('carboxytherapy',			'carboxytherapy'), 
+		('diamond_tip',			'diamond_tip'), 
+		('triactive_carboxytherapy',			'triactive_carboxytherapy'), 
+		('',			''), 
+
+
 		]
 
 
@@ -104,7 +123,16 @@ _zone_list = [
 		('1_hypodermic','1_hypodermic'), 
 		('1_hypodermic_repair','1_hypodermic_repair'), 
 
-		('na',		'na'), 
+		('na',		'na'),
+
+
+		# Cosmetology
+		('body_all',		'body_all'),
+		('body',		'body'),
+		('face_doublechin_neck',		'face_doublechin_neck'),
+		('',		''),
+
+		 
 
 	]
 	
@@ -245,6 +273,19 @@ _pathology_list = [
 		('x',		'x'), 
 		('rejuvenation_capilar',		'rejuvenation_capilar'), 
 		('na',		'na'),
+
+
+
+		# Cosmetology
+		('deep_face_cleansing',		'deep_face_cleansing'), 
+		('reaffirmation',		'reaffirmation'), 
+		('reduction_weight_measures',		'reduction_weight_measures'), 
+		('',		''), 
+		('',		''), 
+		('',		''), 
+
+
+		
 
 	]
 	

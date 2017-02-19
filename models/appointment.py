@@ -213,12 +213,12 @@ class Appointment(models.Model):
 
 		if self.x_chief_complaint != False:	
 
-			#t = self.env['openextension.treatment'].search([	
+			#t = self.env['openhealth.treatment'].search([	
 			#													('chief_complaint', 'like', self.x_chief_complaint), 
 			#													('patient', 'like', self.patient.name),
 			#												])
 
-			t = self.env['openextension.treatment'].search([
+			t = self.env['openhealth.treatment'].search([
 																#('chief_complaint', 'like', 'acne_active'), 
 																('chief_complaint', 'like', self.x_chief_complaint), 
 
@@ -500,7 +500,7 @@ class Appointment(models.Model):
 				
 
 				# Treatment 
-				self.treatment = self.env['openextension.treatment'].search([
+				self.treatment = self.env['openhealth.treatment'].search([
 
 															('patient', 'like', self.patient.name),
 															('physician', 'like', self.doctor.name),
@@ -595,7 +595,7 @@ class Appointment(models.Model):
 
 
 				# Treatment 
-				#treatment = self.env['openextension.treatment'].search([
+				#treatment = self.env['openhealth.treatment'].search([
 				#											('patient', 'like', self.patient.name),
 				#											('physician', 'like', self.doctor.name),
 				#											],
@@ -606,7 +606,7 @@ class Appointment(models.Model):
 
 				#if treatment.name == False:
 				#	print 'Gotcha !!!'
-				#	treatment = self.env['openextension.treatment'].search([
+				#	treatment = self.env['openhealth.treatment'].search([
 				#											('patient', 'like', self.patient.name),
 				#											],
 				#											order='start_date desc',
@@ -1047,7 +1047,7 @@ class Appointment(models.Model):
 
 		if self.patient != False and self.doctor != False:
 				
-			treatment = self.env['openextension.treatment'].search([
+			treatment = self.env['openhealth.treatment'].search([
 																				('patient', 'like', self.patient.name),
 																				('physician', 'like', self.doctor.name),
 																			],
@@ -1063,7 +1063,7 @@ class Appointment(models.Model):
 
 	# ----------------------------------------------------------- Indexes ------------------------------------------------------
 
-	treatment = fields.Many2one('openextension.treatment',
+	treatment = fields.Many2one('openhealth.treatment',
 			string="Tratamiento",
 			ondelete='cascade', 
 			#required=False, 
@@ -1082,7 +1082,7 @@ class Appointment(models.Model):
 
 			if record.patient != False and record.doctor != False:
 				
-				#treatment = self.env['openextension.treatment'].search([
+				#treatment = self.env['openhealth.treatment'].search([
 				#																('patient', 'like', self.patient.name),
 				#																('doctor', 'like', self.doctor.name),
 				#															],
@@ -1247,7 +1247,7 @@ class Appointment(models.Model):
 			'name': 'Open Treatment Current',
 
 			# Window action 
-			'res_model': 'openextension.treatment',
+			'res_model': 'openhealth.treatment',
 
 			# Views 
 			"views": [[False, "form"]],
@@ -1289,7 +1289,7 @@ class Appointment(models.Model):
 		print 'Search Treatment'
 
 
-		treatment = self.env['openextension.treatment'].search([
+		treatment = self.env['openhealth.treatment'].search([
 
 															#('patient', 'like', 'Revilla')], 
 															('patient', 'like', self.patient.name),
@@ -1324,7 +1324,7 @@ class Appointment(models.Model):
 		#chief_complaint = self.x_chief_complaint
 
 
-		treatment = self.env['openextension.treatment'].create(
+		treatment = self.env['openhealth.treatment'].create(
 																{
 																'patient': patient_id,	
 

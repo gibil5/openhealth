@@ -654,16 +654,14 @@
 		<!-- Filter --> 
         <record id="view_medical_order_filter" model="ir.ui.view">
            <field name="name">Order Search</field>
-
-			<!--		   
-           <field name="model">sale.order</field>		   
-           -->
            <field name="model">sale.order</field>		   
            
 		   <field name="arch" type="xml">
+
                <search string="orders">
                    <field name="consultation" />
                </search>
+           
            </field>
        </record>
 
@@ -673,18 +671,9 @@
 		<!-- Window Form Action --> 
 		<record model="ir.actions.act_window" id="order_form_action">
 			<field name="name">orders</field>
-			
-
-			<!--
 			<field name="res_model">sale.order</field>
-			-->
-			<field name="res_model">sale.order</field>
-			
-
 			<field name="view_type">form</field>
-			
 			<field name="view_mode">tree,form</field>
-			
 			<!--
             <field name="domain">[]</field>
             <field name="context">{}</field>
@@ -708,19 +697,10 @@
 		that is an action opening a view or a set of views
 		-->
 		<record model="ir.actions.act_window" id="order_list_action">
-
 			<field name="name">Orders</field>
-
-			<!--
 			<field name="res_model">sale.order</field>
-			-->
-			<field name="res_model">sale.order</field>
-			
-			
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
-			
-			
 			<!--
             <field name="domain">[]</field>
             <field name="context">{}</field>

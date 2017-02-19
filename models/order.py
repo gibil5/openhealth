@@ -295,6 +295,7 @@ class sale_order(models.Model):
 
 
 
+
 # ---------------------------------------------- Create PM --------------------------------------------------------
 	@api.multi 
 	def create_payment_method(self):
@@ -302,12 +303,19 @@ class sale_order(models.Model):
 		print 
 		print 'Create Payment Method'
 
+
+
 		nr_pm = self.env['openhealth.payment_method'].search_count([('order','=', self.id),]) 
 
 		name = 'Pago ' + str(nr_pm + 1)
 
 		method = 'cash'
 
+		
+		print nr_pm
+		print name
+		print method
+		print 
 
 		return {
 				'type': 'ir.actions.act_window',
@@ -329,13 +337,13 @@ class sale_order(models.Model):
 
 				'context': {
 							'default_order': self.id,
-
 							'default_name': name,
 							'default_method': method,
 							}
 				}
 
 	# create_payment_method
+
 
 
 
@@ -1054,12 +1062,12 @@ class sale_order(models.Model):
 
 
 	#@api.multi
-	#@api.depends('x_vip')
+	#@api.depends('x_partner_vip')
 	
 	#def _compute_order_line(self):
 	#	for record in self:
 	#		print 'compute_order_line'
-	#		print record.x_vip 
+	#		print record.x_partner_vip 
 	#		ret = record.update_order_lines()
 	#		print ret 
 
@@ -1074,7 +1082,8 @@ class sale_order(models.Model):
 	)
 
 
-	treatment = fields.Many2one('openextension.treatment',
+	treatment = fields.Many2one(
+		'openhealth.treatment',
 		ondelete='cascade', 
 	)
 
@@ -1151,9 +1160,9 @@ class sale_order(models.Model):
 
 	# On change - Vip 
 
-	#@api.onchange('x_vip')
+	#@api.onchange('x_partner_vip')
 	
-	#def _onchange_x_vip(self):
+	#def _onchange_x_partner_vip(self):
 		#print 'onchange'
 
 		#name = self.name 		
@@ -1216,8 +1225,8 @@ class sale_order(models.Model):
 		x_price_vip = se.service.x_price_vip
 		x_price = se.service.list_price
 
-		#if self.x_vip and se.service.x_price_vip != 0.0:
-		if self.x_vip and x_price_vip != 0.0:
+		#if self.x_partner_vip and se.service.x_price_vip != 0.0:
+		if self.x_partner_vip and x_price_vip != 0.0:
 			#price_unit = se.service.x_price_vip
 			price_unit = x_price_vip
 		else:

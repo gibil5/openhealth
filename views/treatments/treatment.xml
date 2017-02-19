@@ -8,7 +8,7 @@
 		<!-- Form view --> 
 		<record model="ir.ui.view" id="treatment_form_view">
 			<field name="name">treatment.form</field>
-			<field name="model">openextension.treatment</field>
+			<field name="model">openhealth.treatment</field>
 			<field name="arch" type="xml">
 				
 				<form string="Treatment Form">
@@ -705,7 +705,7 @@ Notebook
 		<!-- Tree view --> 
 		<record model="ir.ui.view" id="treatment_tree_view">
 			<field name="name">treatment.tree</field>
-			<field name="model">openextension.treatment</field>
+			<field name="model">openhealth.treatment</field>
 			<field name="arch" type="xml">
 				<tree string="Treatment Tree">
 					
@@ -765,7 +765,7 @@ Notebook
 		<!--
 		<record model="ir.ui.view" id="treatment_search_view">
 			<field name="name">treatment.search</field>
-			<field name="model">openextension.treatment</field>
+			<field name="model">openhealth.treatment</field>
 			<field name="arch" type="xml">
 				<search>
 					<field name="name"/>
@@ -778,7 +778,7 @@ Notebook
 		<!-- Filter --> 
         <record id="view_medical_treatment_filter" model="ir.ui.view">
            <field name="name">Treatment Search</field>
-           <field name="model">openextension.treatment</field>
+           <field name="model">openhealth.treatment</field>
 		   <!--
            <field name="priority" eval="8" />		   
            -->
@@ -806,7 +806,7 @@ Notebook
 	   	<!-- Window Form Action -->
 	   	<record model="ir.actions.act_window" id="treatment_form_action">
 			<field name="name">Tratamientos 1</field>
-			<field name="res_model">openextension.treatment</field>
+			<field name="res_model">openhealth.treatment</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 	  	</record>
@@ -847,7 +847,7 @@ Notebook
 		--> 
 
 		<!-- Full id location:
-		action="openextension.treatment_list_action"
+		action="openhealth.treatment_list_action"
 		It is not required when it is the same module -->
 
 

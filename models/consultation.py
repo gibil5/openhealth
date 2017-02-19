@@ -338,7 +338,7 @@ class Consultation(models.Model):
 
 	# ----------------------------------------------------------- Treatment ------------------------------------------------------
 
-	treatment = fields.Many2one('openextension.treatment',
+	treatment = fields.Many2one('openhealth.treatment',
 
 			ondelete='cascade', 
 

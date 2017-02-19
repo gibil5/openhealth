@@ -61,10 +61,10 @@
 
 
 
-		<!-- Menu -->
-		<menuitem id="service_co2_menu" name="Servicios Co2"
-			parent="openhealth_menu"
-			action="service_co2_list_action"/>
+
+
+
+
 
 
 	</data>

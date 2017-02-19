@@ -3,10 +3,12 @@
 #from . import models
 
 
-# In OpenHealth - Base 
-#from . import patient  
+
+
+# In OpenHealth - Base - Deprecated
 #from . import partner
 
+from . import patient  
 
 from . import product
 from . import evaluation  
@@ -23,7 +25,12 @@ from . import evaluation
 
 
 # Operational 
+
+from . import process 
 from . import treatment 
+
+
+
 from . import consultation
 from . import procedure
 from . import control
@@ -56,6 +63,9 @@ from . import ticket_invoice
 from . import payment_method
 
 from . import event 
+
+
+from . import cosmetology
 
 
 

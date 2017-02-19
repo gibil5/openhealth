@@ -105,7 +105,7 @@ class Service(models.Model):
 
 
 	# Treatement 
-	treatment = fields.Many2one('openextension.treatment',
+	treatment = fields.Many2one('openhealth.treatment',
 			ondelete='cascade', 			
 			string="Tratamiento", 
 			)

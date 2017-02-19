@@ -12,7 +12,7 @@
 		<!-- Treatment - List action -->
 			<record model="ir.actions.act_window" id="treatment_list_action">
 			<field name="name">Tratamientos</field>
-			<field name="res_model">openextension.treatment</field>
+			<field name="res_model">openhealth.treatment</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 			

@@ -2,39 +2,6 @@
 
 
 
-_education_level_type = [
-			('first', 'Primaria'),
-			('second', 'Secundaria'),
-			('technical', 'Instituto'),
-			('university', 'Universidad'),
-			('masterphd', 'Posgrado'),
-			]
-
-
-
-_FAMILY_RELATION = [
-			
-			('none', 'Ninguno'),
-
-			('Father', 'Padre'),
-			('Mother', 'Madre'),
-			('Brother', 'Hermano'),
-			('Grand Father', 'Abuelo'),
-			('Friend', 'Amigo'),
-			('Husband', 'Esposo'),
-			('Other', 'Otro'),
-			#('Sister', 'Hermana'),
-			#('Wife', 'Esposa'),
-			#('Grand Mother', 'Abuela'),
-			#('Aunt', 'Tía'),
-			#('Uncle', 'Tío'),
-			#('Nephew', 'Sobrino'),
-			#('Niece', 'Sobrina'),
-			#('Cousin', 'Primo'),
-			#('Relative', 'Pariente'),
-			]
-
-
 
 
 

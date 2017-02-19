@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+
+
+		<!-- Search -->
+		<!--
+		<record model="ir.ui.view" id="treatment_search_view">
+			<field name="name">treatment.search</field>
+			<field name="model">openextension.treatment</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="name"/>
+				</search>
+			</field>
+		</record>
+		-->
+
+
+		<!-- Filter --> 
+        <record id="view_medical_treatment_filter" model="ir.ui.view">
+           <field name="name">Treatment Search</field>
+           <field name="model">openextension.treatment</field>
+		   <!--
+           <field name="priority" eval="8" />		   
+           -->
+		   <field name="arch" type="xml">
+			   
+               <search string="Treatments">
+				   
+                   <!--
+				   <field name="name" />	   
+                   -->
+				   <field name="patient" />
+                   
+				   
+				   <!--
+				   <newline />
+				   <group expand="0" string="Group By...">
+                       <filter string="Patient" domain="[]" context="{'group_by':'patient'}" />
+                   </group>
+				   -->
+               </search>
+
+           </field>
+       </record>
+
+
+
+	   	<!-- Window Form Action -->
+	   	<record model="ir.actions.act_window" id="treatment_form_action">
+			<field name="name">Tratamientos 1</field>
+			<field name="res_model">openextension.treatment</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+	  	</record>
+
+
+
+
+
+
+
+
+
+
+
+		<!-- Treatment - List action -->
+			<record model="ir.actions.act_window" id="treatment_oex_list_action">
+			<field name="name">Tratamientos</field>
+			<field name="res_model">openextension.treatment</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first treatment
+				</p>
+			</field>
+			
+		</record>
+
+
+
+
+
+		<!-- Menus --> 
+		<!-- top level menu: no parent -->
+		<!--
+		<menuitem id="main_openextension_menu" name="Open Ext"/>
+		-->
+
+
+		<!-- A first level in the left side menu is needed
+		before using action= attribute -->
+		<!--
+		<menuitem id="openextension_menu" name="Open Ext"
+			parent="main_openextension_menu"/>
+		--> 
+
+
+		<!-- the following menuitem should appear *after*
+		its parent openextension_menu and *after* its
+		action treatment_list_action -->
+		<!--
+		--> 
+		<menuitem id="treatments_oex_menu" name="Tratamientos OEX" parent="openhealth_menu"
+			action="treatment_oex_list_action"/>
+
+
+		<!-- Full id location:
+		action="openextension.treatment_list_action"
+		It is not required when it is the same module -->
+
+
+	</data>
+</openerp>

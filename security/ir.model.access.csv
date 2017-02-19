@@ -2,6 +2,11 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+
+access_openhealth_treatment,openhealth.treatment,model_openhealth_treatment,,1,1,1,1
+
+
+
 access_openhealth_consultation,openhealth.consultation,model_openhealth_consultation,,1,1,1,1
 
 access_openhealth_procedure,openhealth.procedure,model_openhealth_procedure,,1,1,1,1

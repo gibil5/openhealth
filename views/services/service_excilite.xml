@@ -70,10 +70,8 @@
 		</record>
 
 
-		<!-- Menu -->
-		<menuitem id="service_excilite_menu" name="Servicios Excilite"
-			parent="openhealth_menu"
-			action="service_excilite_list_action"/>
+
+
 
 
 	</data>

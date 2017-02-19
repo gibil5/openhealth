@@ -151,26 +151,70 @@
 
 
 
+
+
+
 		<!-- Window action -->
-		<record model="ir.actions.act_window" id="product_template_co2_list_action">
-			<field name="name">Products</field>
+		<record model="ir.actions.act_window" id="product_template_list_action">
+			<field name="name">Productos</field>
 			<field name="res_model">product.template</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first receipt
+				</p>
+			</field>
+
+
+            <!--
 			<field name="context">{'order': 'x_name_short'}</field>
-            
             <field name="domain">[
 									('type', '=', 'service'),
 									('x_treatment', '=', 'laser_co2'),
             					]</field>
+			-->
 		</record>
 
 
-		<!-- Menu -->
-		<menuitem id="product_template_co2_menu" name="Productos Co2"
-			parent="openhealth_menu"
-			action="product_template_co2_list_action"/>
+
+
+
+
+		<!-- Window action -->
+		<record model="ir.actions.act_window" id="product_template_co2_list_action">
+			<field name="name">Productos Co2</field>
+			<field name="res_model">product.template</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			            
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first receipt
+				</p>
+			</field>
+
+
+            <!--
+			<field name="context">{'order': 'x_name_short'}</field>
+            <field name="domain">[
+									('type', '=', 'service'),
+									('x_treatment', '=', 'laser_co2'),
+            					]</field>
+			-->
+		</record>
+
+
+
+
+
 
 
 

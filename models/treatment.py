@@ -2,8 +2,8 @@
 #
 # 	*** Treatment - OeHealth - new model 
 # 
-# Created: 			26 Aug 2016
-# Last updated: 	 7 Dec 2016
+# Created: 			 26 Aug 2016
+# Last updated: 	 18 Feb 2017
 
 
 from openerp import models, fields, api
@@ -16,14 +16,66 @@ import time_funcs
 
 
 
-
-
-
 class Treatment(models.Model):
-	#_name = 'openhealth.treatment'
-	_inherit = 'openextension.treatment'
+
+	#_inherit = 'openextension.treatment'
 
 
+	_inherit = 'openhealth.process'	
+	_name = 'openhealth.treatment'
+
+
+
+
+# ----------------------------------------------------------- Variables ------------------------------------------------------
+
+	# Name 
+	name = fields.Char(
+			string="Tratamiento #", 
+			compute='_compute_name', 
+			)
+
+
+
+
+
+	patient = fields.Many2one(
+			'oeh.medical.patient',
+			string="Paciente", 
+			#index=True
+			ondelete='cascade', 
+			)
+
+	physician = fields.Many2one(
+			'oeh.medical.physician',
+			string="Médico", 
+			index=True
+			)
+
+	chief_complaint = fields.Selection(
+			string = 'Motivo de consulta', 			
+			selection = jxvars._chief_complaint_list, 
+			)
+
+
+
+
+	duration = fields.Integer(
+			string="Días", 
+			default = 0,
+			compute='_compute_duration', 
+			)
+
+	start_date = fields.Date(
+			string="Fecha inicio", 
+			default = fields.Date.today
+			)	
+
+	price_total = fields.Float(
+			string='Total', 
+			default = 0, 
+			#compute='_compute_price_total', 
+			) 
 
 
 
@@ -633,15 +685,7 @@ class Treatment(models.Model):
 	
 # ----------------------------------------------------------- Indexes ------------------------------------------------------
 	
-	patient = fields.Many2one(
-			'oeh.medical.patient',
 
-			string="Paciente", 
-			#required=True, 
-			#index=True
-
-			ondelete='cascade', 
-			)
 			
 
 
@@ -682,14 +726,6 @@ class Treatment(models.Model):
 
 
 
-	# Name 
-	name = fields.Char(
-			string="Tratamiento #", 
-			default='x',
-			compute='_compute_name', 
-			required=True, 
-			)
-
 
 	@api.multi
 	#@api.depends('start_date')
@@ -715,41 +751,14 @@ class Treatment(models.Model):
 
 
 
-	# Motivo de consulta
-	chief_complaint = fields.Selection(
-			string = 'Motivo de consulta', 
-			
-			#selection = jxvars._pathology_list, 
-			selection = jxvars._chief_complaint_list, 
-			
-			#default = '', 
-			#required=True, 
-			)
 
 
 
 
 
 
-	# Physician 
-	physician = fields.Many2one(
-			'oeh.medical.physician',
-			#string="Physician", 
-			string="Médico", 
-			#required=True, 
-			index=True
-			)
-	        #default='Fernando Chavarri',
 
 
-
-
-
-	# Dates 
-	start_date = fields.Date(
-			string="Fecha inicio", 
-			default = fields.Date.today
-			)
 
 	end_date = fields.Date(
 			string="Fecha fin", 
@@ -765,14 +774,6 @@ class Treatment(models.Model):
 
 
 
-
-	# Duration 
-	duration = fields.Integer(
-			#string="Duration (days)", 
-			string="Días", 
-			compute='_compute_duration', 
-			default = 0,
-			)
 
 	@api.multi
 	#@api.depends('start_date', 'end_date')
@@ -820,12 +821,7 @@ class Treatment(models.Model):
 
 
 
-	# Total Price
-	price_total = fields.Float(
-			#compute='_compute_price_total', 
-			string='Total', 
-			default = 0, 
-			) 
+
 
 
 	#@api.multi

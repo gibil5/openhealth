@@ -100,10 +100,33 @@ self.env['openhealth.service'].search([('name', 'like', 'S')])
 
 
 
+self.env['sale.order']
+
+self.env['openextension.treatment']
+
+
+self.env['sale.order']
+
+
+
 
 self.env['product.template']
 
 self.env['product.template'].search([('x_zone', 'like', '1_hypodermic'),])
+
+
+
+self.env['account.invoice.line']
+
+
+
+
+self.env['product.template'].search([('type', 'like', 'service'),])
+
+self.env['product.template'].search([('type', 'like', 'consumable'),])
+
+
+
 
 
 self.env['product.template'].search([('x_treatment', 'like', 'co2'),('x_zone', 'like', 'hands')], limit=1)

@@ -59,12 +59,8 @@
 
 	# Very important !!!
 	# --------------
-	# any module necessary for this one to work correctly
-	#'depends': ['base'],
-	#'depends': ['base', 'oehealth', 'openextension'],
-	#'depends': ['base', 'openextension'],
-	#'depends': ['base', 'oehealth'],
-	'depends': ['base', 'oehealth', 'openextension', 'openhealth-patient'],
+	'depends': ['base', 'oehealth'],
+
 
 
 
@@ -74,73 +70,53 @@
 
 
 
-
-
-
-
-# ----------------------------------------------------------- Security ------------------------------------------------------
+		# ----------------------------------------------------------- Security ------------------------------------------------------
+		
 		# Important !!!
 		'security/ir.model.access.csv',
-
 		'security/ir.rule.xml',
 
 
 
 
-		
 
-# ----------------------------------------------------------- Generated ------------------------------------------------------
-		#'views/views.xml',
-		#'views/templates.xml',
-		
+		# ----------------------------------------------------------- Forms and Menus ------------------------------------------------------
+
+		# Base - Form and List Actions - Must be the first 
+		'views/base.xml',		# Dependencies - Actions 
 
 
-# ----------------------------------------------------------- Deprecated ------------------------------------------------------
 
-		# Learning 
-		#'views/learning/learn.xml',	- Deprecated
-		#'views/evaluations/consultation_procedures.xml',
-		# Invoices
-		#'views/treatments/invoice.xml',
 
-		# jx_eval
-		#'views/evaluations/jx_eval_co2.xml',
-		#'views/evaluations/jx_eval_excilite.xml',
-		#'views/evaluations/jx_eval_ipl.xml',
-		#'views/evaluations/jx_eval_ndyag.xml',
+		'views/other.xml',
 
 
 
 		
-		#'views/evaluations/consultation_quotation.xml',        
-		#'views/evaluations/quotation.xml',
+		# Orders
+		'views/orders/order.xml',
+		'views/orders/order_line.xml',
+		'views/orders/payment_methods.xml',
+		'views/orders/events.xml',
+
+		# Sale Documents
+		'views/sale_documents/receipts.xml',
+		'views/sale_documents/invoices.xml',
+		'views/sale_documents/advertisements.xml',
+		'views/sale_documents/sale_notes.xml',
+		'views/sale_documents/ticket_receipts.xml',
+		'views/sale_documents/ticket_invoices.xml',
+		'views/sale_documents/payment_methods.xml',
 
 
 
-		
-		
+		# Sessions
+		'views/sessions/session.xml',
+		'views/sessions/session_configuration.xml',
 
-
-
-# ----------------------------------------------------------- In Base, now ------------------------------------------------------
-
-
-		# Patients 
-		#'views/patients/patient.xml',
-		#'views/patients/patient_personal.xml',
-		#'views/patients/patient_treatments.xml',
-		#'views/patients/patient_control_docs.xml',
-		#'views/patients/patient_appointments.xml',
-		#'views/patients/patient_lab.xml',
-		#'views/patients/patient_med.xml',
-
-		# Doctors
-		#'views/doctors/doctor.xml',
-
-		# Partners 
-		#'views/partners/partner.xml',
-
-
+		# Controls
+		'views/controls/control.xml',
+		#'views/controls/control_protocols.xml',
 
 
 
@@ -149,137 +125,20 @@
 		'views/evaluations/evaluation_oeh.xml',
 
 
-
 		# Products
-		'views/products/product.xml',
-		
+		'views/products/product.xml',		
 		'views/products/product_excilite.xml',
 		'views/products/product_ipl.xml',
 		'views/products/product_ndyag.xml',
 		'views/products/product_medical.xml',
 
-
-
-
-
-
-
-		# Orders
-		'views/orders/order.xml',
-		'views/orders/order_line.xml',
-
-		'views/orders/payment_methods.xml',
-		'views/orders/events.xml',
-
-
-
-		'views/sale_documents/receipts.xml',
-		'views/sale_documents/invoices.xml',
-
-		'views/sale_documents/advertisements.xml',
-		'views/sale_documents/sale_notes.xml',
-		'views/sale_documents/ticket_receipts.xml',
-		'views/sale_documents/ticket_invoices.xml',
-
-		'views/sale_documents/payment_methods.xml',
-
-# ----------------------------------------------------------- Ok ------------------------------------------------------
-
-
-		# Static - Stylesheet 
-		'views/openhealth.xml',		
-
-
-		# Base
-		'views/base.xml',		# Dependencies - Actions 
-
-
-
-
-
-
-
-
-
-
-		# Treatments 
-		'views/treatments/treatment.xml',
-		'views/treatments/treatment_consultations.xml',
-
-		#'views/treatments/treatment_sales.xml',
-		#'views/treatments/treatment_quotations.xml',
-		'views/treatments/treatment_orders.xml',
-
-		'views/treatments/treatment_procedures.xml',
-		'views/treatments/treatment_appointments.xml',
-		'views/treatments/treatment_reservations.xml',
-		'views/treatments/treatment_sessions.xml',
-		'views/treatments/treatment_controls.xml',
-
-		'views/treatments/treatment_services.xml',
-
-
-
-		# Consultation
-		'views/consultations/consultation.xml',
-		'views/consultations/consultation_first.xml',
-
-
-		'views/consultations/consultation_order.xml', 
-		#'views/consultations/consultation_order_lines.xml',
-
-
-		'views/consultations/consultation_appointment.xml',
-
-		'views/consultations/consultation_services_co2.xml',
-		'views/consultations/consultation_services_excilite.xml',
-		'views/consultations/consultation_services_ipl.xml',
-		'views/consultations/consultation_services_ndyag.xml',
-		'views/consultations/consultation_medical_treatment.xml',
-
-		#'views/consultations/consultation_services.xml',		
-
-
 		
-		# Procedures
-		'views/procedures/procedure.xml',
-		'views/procedures/procedure_controls.xml',
-		'views/procedures/procedure_sessions.xml',		
-		'views/procedures/procedure_appointment.xml',
-
-		#'views/procedures/procedure_controls_appointment.xml',
-		#'views/procedures/procedure_configuration.xml',
-
-		
-
-		# Controls
-		'views/controls/control.xml',
-		
-		#'views/controls/control_protocols.xml',
-
-
-
-		# sessions
-		'views/sessions/session.xml',
-		'views/sessions/session_configuration.xml',
-
-
-
-		# Appointments
-		'views/appointments/appointment.xml',
-		'views/appointments/calendar.xml',
-
-
-
 
 		# Services
 		'views/services/service.xml',
-
 		'views/services/service_co2.xml',
 		'views/services/service_co2_zone.xml',
-
 		'views/services/service_excilite.xml',
-		
 		'views/services/service_excilite_zone.xml',
 		'views/services/service_ipl.xml',
 		'views/services/service_ipl_zone.xml',
@@ -289,9 +148,55 @@
 		'views/services/service_medical_zone.xml',
 
 
-		
-		# Templates
-		#'views/templates/template.xml',	# Template - Change Title
+
+
+		# Procedures
+		'views/procedures/procedure.xml',
+		'views/procedures/procedure_controls.xml',
+		'views/procedures/procedure_sessions.xml',		
+		'views/procedures/procedure_appointment.xml',
+
+		#'views/procedures/procedure_controls_appointment.xml',
+		#'views/procedures/procedure_configuration.xml',
+
+
+
+		# Consultation
+		'views/consultations/consultation.xml',
+		'views/consultations/consultation_first.xml',
+		'views/consultations/consultation_order.xml', 
+		'views/consultations/consultation_appointment.xml',
+		'views/consultations/consultation_services_co2.xml',
+		'views/consultations/consultation_services_excilite.xml',
+		'views/consultations/consultation_services_ipl.xml',
+		'views/consultations/consultation_services_ndyag.xml',
+		'views/consultations/consultation_medical_treatment.xml',
+
+
+
+		# Treatments 
+		'views/treatments/treatment.xml',
+		'views/treatments/treatment_consultations.xml',
+		'views/treatments/treatment_orders.xml',
+		'views/treatments/treatment_procedures.xml',
+		'views/treatments/treatment_appointments.xml',
+		'views/treatments/treatment_reservations.xml',
+		'views/treatments/treatment_sessions.xml',
+		'views/treatments/treatment_controls.xml',
+		'views/treatments/treatment_services.xml',
+
+
+		# Patients 
+		'views/patients/patient.xml',
+		'views/patients/patient_personal.xml',
+		'views/patients/patient_treatments.xml',
+		'views/patients/patient_control_docs.xml',
+		'views/patients/patient_appointments.xml',
+
+
+		# Appointments
+		'views/appointments/appointment.xml',
+		'views/appointments/calendar.xml',
 
 
 
@@ -300,7 +205,14 @@
 		'views/menus.xml',
 
 
+
+
+		# Static - Stylesheet 
+		'views/openhealth.xml',		
+
 	],
+
+
 	# only loaded in demonstration mode
 	'demo': [
 		#'demo/demo.xml',
@@ -308,16 +220,9 @@
 	
 	
 	
-	# Static - jx 
-	#'js': ['static/src/js/widget_radio.js'],
-	#'qweb': ['static/src/xml/widget_radio.xml'],
-	#'css': ['static/src/css/my_css.css'],
 
-
-	# CSS - This is it.
+	# Static - CSS - This is it.
 	'css': ['static/src/css/jx.css'],
-	
-	
 }
 
 

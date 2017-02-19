@@ -69,6 +69,7 @@ class payment_method(models.Model):
 	
 
 
+
 		#order = vals['order']
 		#nr_pm = self.env['openhealth.payment_method'].search_count([('order','=', order),]) 
 		#name = 'MP-' + str(nr_pm + 1)

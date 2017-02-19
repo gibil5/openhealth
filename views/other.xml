@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+
+
+
+		<!-- Window List action -->
+		<!--
+		The following tag is an action definition for a "window action",
+		that is an action opening a view or a set of views
+		-->
+
+
+		<record model="ir.actions.act_window" id="account_invoice_line_list_action">
+			<field name="name">AIL</field>
+			<field name="res_model">account.invoice.line</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first receipt
+				</p>
+			</field>
+		</record>
+
+
+
+
+		<record model="ir.actions.act_window" id="procurement_order_list_action">
+			<field name="name">AIL</field>
+			<field name="res_model">procurement.order</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first receipt
+				</p>
+			</field>
+		</record>
+
+
+
+
+		<record model="ir.actions.act_window" id="stock_move_list_action">
+			<field name="name">AIL</field>
+			<field name="res_model">stock.move</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first receipt
+				</p>
+			</field>
+		</record>
+
+
+
+
+	</data>
+</openerp>
+

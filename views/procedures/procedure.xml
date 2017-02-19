@@ -97,28 +97,14 @@
 
 							<!-- Buttons --> 
 							<div class="oe_left" style="width: 300px;" name="buttons">
+
 								<!--
-								Consultations
-								<button type="action" class="oe_stat_button" 
-									name="%(consultation_form_action)d"	
-									context="{									
-											'search_default_treatment': active_id,
-											}" 											
-									icon="fa-list">
-									<field string="Consultas" name="nr_consultations" widget="statinfo"/>
-								</button>
+								Consultations - Buttons
 								-->
-																
+								
+
 								<!--
-								Procedures
-								<button type="action" class="oe_stat_button" 
-									name="%(procedure_form_action)d"	
-									context="{									
-											'search_default_treatment': active_id,
-											}" 											
-									icon="fa-list">
-									<field string="Procedimientos" name="nr_procedures" widget="statinfo"/>
-								</button>
+								Procedures - Button
 								-->
 							
 

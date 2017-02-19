@@ -8,13 +8,13 @@
 		-->
 		<record model="ir.ui.view" id="treatment_appointment_form_view">
 			<field name="name">treatment.appointment.form</field>
-			<field name="model">openextension.treatment</field>
+			<field name="model">openhealth.treatment</field>
 
 			
 			<!--
-			<field name="priority" eval="0"/>
-			-->
 			<field name="priority" eval="8"/>
+			-->
+			<field name="priority" eval="0"/>
 			
 
 

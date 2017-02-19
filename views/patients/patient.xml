@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+	*** OPEN HEALTH
+
+	Created: 			26 Aug 2016
+	Last updated: 	 	18 Feb 2017
+-->
+
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="oeh_medical_patient_view">
+			<field name="name">Patient</field>
+
+			<field name="model">oeh.medical.patient</field>			
+			
+			<field name="type">form</field>
+			<field name="priority" eval="1"/>
+
+
+			<field name="arch" type="xml">
+				<form string="Patient">
+
+					<!--
+					<field name="name" />						
+					-->
+
+
+					<!-- Header --> 
+					<header>
+						
+						<!--
+						<button name="print_patient_label" string="Historia Clínica" type="object" class="oe_highlight"/>
+						-->
+							
+
+
+						<!-- Create Treatment --> 
+						<button 
+							type="object" 
+							class="oe_highlight"
+							string="Crear Tratamiento" 
+							name="open_treatment_current" 
+						/>
+
+
+
+						<!-- Create Cosmetology --> 
+						<button 
+							type="object" 
+							class="oe_highlight"
+							string="Crear Cosmiatría" 
+
+							name="open_cosmetology_current" 
+						/>
+
+					</header>
+
+
+
+
+					<!-- Sheet -->	
+					<sheet>
+
+
+						<!-- Buttons -->
+						<!--						
+						<div class="oe_right oe_button_box" style="width: 500px;" name="buttons">
+							<button type="action" class="oe_stat_button" name="347" context="{'search_default_patient': active_id,'default_patient': active_id}" icon="fa-calendar">
+								<field string="Citas" name="app_count" widget="statinfo"/>
+							</button>
+
+							<button type="action" class="oe_stat_button" name="348" context="{'search_default_patient': active_id,'default_patient': active_id}" icon="fa-list">
+								<field string="Prescripciones" name="prescription_count" widget="statinfo"/>
+							</button>
+
+							<button type="action" class="oe_stat_button" name="207" context="{'search_default_patient': active_id,'default_patient': active_id}" icon="fa-pencil-square-o">
+								<field string="Facturas" name="invoice_count" widget="statinfo"/>
+							</button>
+
+							<button type="action" class="oe_stat_button" name="349" context="{'search_default_patient': active_id,'default_patient': active_id}" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager" icon="fa-list">
+								<field string="Vaccines" name="vaccine_count" widget="statinfo"/>
+							</button>
+														
+							<button type="action" class="oe_stat_button" name="345" context="{'search_default_patient': active_id,'default_patient': active_id}" icon="fa-building-o">
+								<field string="Admissions" name="admission_count" widget="statinfo"/>
+							</button>
+						</div>
+						-->
+
+						
+
+
+						<!-- Persona --> 
+						<div class="oe_left" style="width: 500px;">
+							<field name="image" widget="image" class="oe_left oe_avatar" options="{&quot;preview_image&quot;: &quot;image_medium&quot;, &quot;size&quot;: [90, 90]}"/>
+							<div class="oe_title">
+
+								<label string="Apellidos" class="oe_edit_only"/>
+								
+								<h1>
+									<field name="name"  class="oe_read_only" />
+								</h1>
+								<field name="age"/>
+							</div>
+						</div>
+
+
+
+						<!-- Button -->
+						<div class="oe_left" style="width: 100px;">
+
+
+							<!-- Treatment --> 
+							<button type="action" class="oe_stat_button" 
+								name="%(treatment_form_action)d"	
+								context="{
+										'search_default_patient': active_id,	
+										}" 											
+								icon="fa-list">
+								<field string="Tratamientos" name="x_treatment_count" widget="statinfo"/>
+							</button>
+
+
+							<!-- Appointments -->
+							<!-- Temp Comment
+							<button type="action" class="oe_stat_button" 
+
+								name="347" 
+								
+								context="{'search_default_patient': active_id,'default_patient': active_id}" 
+								icon="fa-calendar">
+								<field string="Citas" name="app_count" widget="statinfo"/>
+							</button>
+							--> 
+						</div>
+
+
+
+						<!-- Number Medical history -->
+						<div class="oe_right" >
+							<h1>
+								<field string="Número:"  name="identification_code"/>
+							</h1>
+						</div>
+
+
+
+
+						<!-- Fields -->
+						<!--
+						-->
+						<group>
+
+							<group>						
+								<!--	
+								<field name="x_full_name"  string="x_full_name"/>
+								-->
+								<field name="x_first_name" 	class="oe_edit_only"/>
+								<field name="x_last_name"   class="oe_edit_only"/>
+							</group>
+
+							<group>
+								<field name="x_autofill" 	/>
+							</group>
+
+							<!--
+							<group>
+								<field name="x_full_name" />
+							</group>
+							<group>
+							</group>
+							-->											
+						</group>
+						
+						<group>
+						</group>
+						
+						
+						<group>
+							<group>
+								<field name="x_date_created"  />
+							</group>
+							<group>
+								<field string='Custodia'  name="x_active"   visible="1"/>
+							</group>
+						</group>
+
+
+						<group>
+							<group>
+
+								<field string='Fecha de nacimiento'  name="dob" />
+								<field string='Sexo' name="sex" />
+								<!--
+								<field string='Estado civil'  name="marital_status" required="1"/>									
+								-->
+								<field name="x_dni"  />
+							</group>
+
+
+							<group>
+								<field name="x_allergies"/>
+								<field name="x_first_contact"/>
+							</group>
+
+							<group>
+								<!--
+								<field string='Blood Type' name="blood_type"/>
+								<field string='Rh'  name="rh"/>
+								<field string='Family Physician'  name="doctor" options="{'no_create': True}"/>
+								<field string='Responsible' name="oeh_patient_user_id" options="{'no_create': True}"/>
+								-->
+							</group>
+						</group>
+
+						<notebook>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+
+
+
+
+		<!-- tree/list view -->
+		<!--
+		<record model="ir.ui.view" id="openhealth.patient_tree_view">
+		-->
+		<record model="ir.ui.view" id="oehealth.oeh_medical_patient_tree">
+			<field name="name">patient.tree</field>
+			<field name="model">oeh.medical.patient</field>
+			<field name="arch" type="xml">
+			
+			<!--	
+			<field name="priority" eval="1"/>
+			-->
+
+				<tree string="Patient Tree">
+					<field name="name"/>
+					<field name="x_last_name"  />
+					<field name="x_first_name"  />
+					<field name="x_full_name"  />
+					<field name="id"/>
+					<field string="Historia Médica"  name="identification_code"/>
+					<field name="sex"/>				
+					<field name="dob"/>
+					<field name="age"/>
+				</tree>
+			</field>
+		</record>
+
+
+
+		<!-- Window List action -->
+		<!--
+		The following tag is an action definition for a "window action",
+		that is an action opening a view or a set of views
+		-->
+		<record model="ir.actions.act_window" id="patient_list_action">
+			<field name="name">Pacientes</field>
+			<field name="res_model">oeh.medical.patient</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+
+			<field name="context">{'order': 'name'}</field>
+
+			<!--
+									('sex', '=', 'Male'),
+									('sex', '=', 'Female'),
+									('sex', 'in', ['Female', 'Male']),
+			-->
+			<field name="domain">[]</field>
+
+
+			<!--
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first treatment
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+
+		<!-- Menus --> 
+		<!-- top level menu: no parent -->
+		<!--
+		<menuitem id="openhealth_patient_menu" name="OpenHealth - Base"/>
+		-->
+
+
+		<!-- A first level in the left side menu is needed before using action= attribute -->
+		<!--
+		<menuitem id="openextension_menu" name="Open Health"
+			parent="main_openextension_menu"/>
+		--> 
+
+
+		<!-- the following menuitem should appear *after*
+		its parent openextension_menu and *after* its
+		action treatment_list_action -->
+		<!--
+		<menuitem id="openhealth_patients_jx_menu" name="Pacientes" 
+			parent="openhealth_patient_menu"
+			action="patient_list_action"/>
+		-->
+
+		<!-- Full id location:
+		action="openextension.treatment_list_action"
+		It is not required when it is the same module -->
+
+	</data>
+</openerp>

@@ -57,7 +57,7 @@
 
 
 
-		<!-- Conrols --> 
+		<!-- Controls --> 
 		<!--
 					parent="oehealth.oeh_medical_appointment_menu"  
 		-->
@@ -88,11 +88,27 @@
 
 
 
+
+
+
+
+
+
+
+
+
 		<!-- Order Lines --> 
-		<menuitem id="order_lines_menu" name="Order lines" 
+		<menuitem id="order_lines_menu" name="Order Lines" 
 			parent="openhealth_menu"
 			sequence="0"
 			action="order_line_list_action"/>
+
+		<!-- Orders --> 
+		<menuitem id="orders_menu" name="Orders" parent="openhealth_menu"
+			sequence="0"
+			action="order_list_action"/>
+
+
 
 
 
@@ -106,6 +122,8 @@
 		<menuitem id="invoices_menu" name="Facturas" parent="openhealth_menu"
 			sequence="0"
 			action="invoice_list_action"/>
+
+
 
 
 
@@ -164,10 +182,6 @@
 
 
 
-		<!-- Orders --> 
-		<menuitem id="orders_menu" name="Orders" parent="openhealth_menu"
-			sequence="6"
-			action="order_list_action"/>
 
 
 		<!-- Doctors --> 
@@ -190,11 +204,8 @@
 			action="service_list_action"/>
 
 
-
-
-
 		<!-- Services Co2 --> 
-		<menuitem id="service_co2_menu" name="Services Co2 - 1"
+		<menuitem id="service_co2_menu" name="Services Co2"
 			parent="openhealth_menu"
 			sequence="11"
 			action="service_co2_list_action"/>
@@ -221,8 +232,6 @@
 			action="service_ndyag_list_action"/>
 
 
-
-
 		<!-- Service Medical --> 
 		<menuitem id="service_medical_menu" name="Servicios Medical"
 			parent="openhealth_menu"
@@ -235,12 +244,79 @@
 
 
 
+		<!-- Products -->
+
+		<menuitem id="product_template_menu" name="Productos"
+			parent="openhealth_menu"
+			sequence="19"
+			action="product_template_list_action"/>
+
+
+
+
+		<menuitem id="product_template_co2_menu" name="Productos Co2"
+			parent="openhealth_menu"
+			sequence="20"
+			action="product_template_co2_list_action"/>
+
+
+		<menuitem id="product_template_excilite_menu" name="Productos Excilite"
+			parent="openhealth_menu"
+			sequence="21"
+			action="product_template_excilite_list_action"/>
+
+
+		<menuitem id="product_template_ipl_menu" name="Productos ipl"
+			parent="openhealth_menu"
+			sequence="22"
+			action="product_template_ipl_list_action"/>
+
+
+		<menuitem id="product_template_ndyag_menu" name="Productos ndyag"
+			parent="openhealth_menu"
+			sequence="23"
+			action="product_template_ndyag_list_action"/>
+
+		<menuitem id="product_template_medical_menu" name="Productos Medical"
+			parent="openhealth_menu"
+			sequence="24"
+			action="product_template_medical_list_action"/>
+
+
+
+
+
+
+
+
 		<menuitem id="oeh_medical_preappointment_menu" 
 			name="Citas"
 			parent="openhealth_menu"
-			sequence="20"
+			sequence="30"
 			action="oeh_medical_preappointment_list_action"/>
 
+
+
+
+
+		<!-- Account Invoice Lines --> 
+		<menuitem id="account_invoice_lines_menu" name="Account Invoice Lines" 
+			parent="openhealth_menu"
+			sequence="100"
+			action="account_invoice_line_list_action"/>
+
+		<!-- Procurement Order --> 
+		<menuitem id="procurement_order_menu" name="Procurement Order" 
+			parent="openhealth_menu"
+			sequence="101"
+			action="procurement_order_list_action"/>
+
+
+		<!-- stock move --> 
+		<menuitem id="stock_move_menu" name="stock move" 
+			parent="openhealth_menu"
+			sequence="102"
+			action="stock_move_list_action"/>
 
 
 

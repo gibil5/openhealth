@@ -28,7 +28,7 @@ class Control(models.Model):
 
 	# Treatment 
 	treatment = fields.Many2one(
-			'openextension.treatment',
+			'openhealth.treatment',
 			
 			ondelete='cascade', 
 			)

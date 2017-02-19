@@ -98,7 +98,7 @@ class Procedure(models.Model):
 # ----------------------------------------------------------- Indexes ------------------------------------------------------
 
 	treatment = fields.Many2one(
-			'openextension.treatment',
+			'openhealth.treatment',
 			
 			ondelete='cascade', 
 			)

@@ -31,11 +31,10 @@ class ServiceCosmetology(models.Model):
 
 			domain = [
 						#('type', '=', 'service'),
-						#('x_treatment', '=', 'laser_cosmetology'),
+						#('x_treatment', '=', 'carboxytherapy'),
 						('x_family', '=', 'cosmetology'),
 					],
-	)
+		)
 	
 	
 
-	

@@ -224,14 +224,16 @@ class Cosmetology(models.Model):
 
 		cosmetology_id = self.id 
 
+		family = 'cosmetology'
 		laser = 'cosmetology'
+
 		#zone = ''	
 		#pathology = ''
 
 		return {
 				'type': 'ir.actions.act_window',
 				'name': ' New Service Current', 
-				
+
 				'view_type': 'form',
 				'view_mode': 'form',				
 
@@ -249,7 +251,9 @@ class Cosmetology(models.Model):
 				'context': {
 							'default_cosmetology': cosmetology_id,
 
+							'default_family': family,
 							'default_laser': laser,
+
 							#'default_zone': zone,
 							#'default_pathology': pathology,
 							}

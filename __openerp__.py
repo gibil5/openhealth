@@ -191,6 +191,10 @@
 
 		# Cosmetologies
 		'views/cosmetologies/cosmetology.xml',
+		'views/cosmetologies/cosmetology_services.xml',
+		'views/cosmetologies/cosmetology_orders.xml',
+		'views/cosmetologies/cosmetology_procedures.xml',
+		'views/cosmetologies/cosmetology_sessions.xml',
 
 
 		# Therapists 

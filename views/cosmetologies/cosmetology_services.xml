@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+		<!--
+		service
+		-->
+		<record model="ir.ui.view" id="cosmetology_service_form_view">
+			<field name="name">cosmetology.service.form</field>
+			<field name="model">openhealth.cosmetology</field>
+
+			<field name="priority" eval="2"/>
+			
+			<field name="inherit_id" ref="cosmetology_form_view"/>
+			<field name="arch" type="xml">
+
+
+
+				<notebook position="inside">
+
+					<page string="Servicios">
+					
+
+						<field name="service_ids"/>						
+
+
+					</page>
+				</notebook>
+
+
+			</field>
+		</record>
+	</data>
+</openerp>
+
+

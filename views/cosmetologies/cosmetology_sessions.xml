@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+		<!--
+		sessions
+		-->
+		<record model="ir.ui.view" id="cosmetology_session_form_view">
+			<field name="name">cosmetology.session.form</field>
+			<field name="model">openhealth.cosmetology</field>
+
+
+			<field name="priority" eval="6"/>
+
+			
+			<field name="inherit_id" ref="cosmetology_form_view"/>
+			<field name="arch" type="xml">
+				<notebook position="inside">
+					
+					
+
+					<page string="Sesiones">
+
+
+						<field name="session_ids">
+							<tree string="Sesiones">
+
+								<field name="name"/>
+
+								<field string="Paciente" name="patient"/>
+
+								<field string="Médico" name="doctor"/>
+
+
+								<!--
+								<field string='Tipo' name="evaluation_type"/>
+								--> 
+
+								<field name="chief_complaint"/>
+
+								<field name="product"/>
+
+
+								<field name="evaluation_start_date"/>
+
+
+
+								<!--
+								<field name="cosmetology"/>
+								-->
+								
+								<!--
+									Button
+								-->
+								<button 
+									type="object" 
+									class="oe_highlight"	
+									string="E"
+									
+									name="open_line_current" 
+								/>
+								
+							</tree>
+						</field>
+					</page>
+
+
+
+				</notebook>
+			</field>
+		</record>
+	</data>
+</openerp>

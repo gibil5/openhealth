@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+		<!--
+		procedures
+		-->
+		<record model="ir.ui.view" id="cosmetology_procedure_form_view">
+			<field name="name">cosmetology.procedure.form</field>
+			<field name="model">openhealth.cosmetology</field>
+
+			<field name="priority" eval="5"/>
+			
+			<field name="inherit_id" ref="cosmetology_form_view"/>
+			<field name="arch" type="xml">
+				<notebook position="inside">
+					
+					
+
+					<!--
+						Procedures 
+					<page string="Procedimientos realizados">
+					-->
+
+
+					<page string="Procedimiento">
+
+						<!--
+						<field name="procedure_ids" context="{'patient': 'Javier Revilla'}"/>
+						<field name="procedure_ids" domain="[('evaluation_type', '=', 'Ambulatory')]" />
+						--> 
+						<field name="procedure_ids">
+							<tree string="Procedimientos">
+
+								<!--
+								<field string="Procedimiento #"  name="name"/>
+								-->
+								<field name="name"/>
+
+								<field string="Paciente" name="patient"/>
+
+								<field string="Médico" name="doctor"/>
+
+
+								<!--
+								<field string='Tipo' name="evaluation_type"/>
+								--> 
+
+								<field name="chief_complaint"/>
+
+								<field name="product"/>
+
+
+								<field name="evaluation_start_date"/>
+
+
+
+								<!--
+								<field name="cosmetology"/>
+								-->
+								
+								<!--
+									Button
+								-->
+								<button 
+									type="object" 
+									class="oe_highlight"	
+									string="E"
+									
+									name="open_line_current" 
+								/>
+								
+							</tree>
+						</field>
+					</page>
+
+
+
+				</notebook>
+			</field>
+		</record>
+	</data>
+</openerp>

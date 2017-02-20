@@ -47,19 +47,23 @@ class Evaluation(models.Model):
 
 
 
-	# Deprecated 
 
-	#treatment_id = fields.Many2one(
-	#		'openextension.treatment',
-	#		ondelete='cascade', 
-	#		)
 
+
+# ----------------------------------------------------------- Relationals ------------------------------------------------------
 
 	treatment = fields.Many2one(
-			'openextension.treatment',
-			
+			'openhealth.treatment',			
 			ondelete='cascade', 
 			)
+
+	cosmetology = fields.Many2one(
+			'openhealth.cosmetology',
+			ondelete='cascade', 			
+			string="Cosmiatría", 
+			)
+
+
 
 
 

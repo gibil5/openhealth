@@ -1075,17 +1075,41 @@ class sale_order(models.Model):
 
 
 
-	# Indexes 
-	consultation = fields.Many2one('openhealth.consultation',
-		string="Consulta",
-		ondelete='cascade', 
-	)
 
+
+# ----------------------------------------------------------- Relationals ------------------------------------------------------
 
 	treatment = fields.Many2one(
-		'openhealth.treatment',
-		ondelete='cascade', 
-	)
+			'openhealth.treatment',
+			ondelete='cascade', 
+		)
+
+
+	cosmetology = fields.Many2one(
+			'openhealth.cosmetology',
+			ondelete='cascade', 			
+			string="Cosmiatría", 
+		)
+
+
+
+
+	consultation = fields.Many2one(
+			'openhealth.consultation',
+			string="Consulta",
+			ondelete='cascade', 
+		)
+
+
+
+
+
+
+
+
+
+
+
 
 
 

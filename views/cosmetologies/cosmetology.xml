@@ -118,8 +118,8 @@
 
 
 						<!-- State --> 
-	                    <field 	name="state" 
-	                    		widget="statusbar" 
+						<field 	name="state" 
+								widget="statusbar" 
 
 								statusbar_visible="service, budget, invoice, procedure, sessions, controls,  done"
 						/>
@@ -130,6 +130,115 @@
 
 
 					<sheet>
+
+
+
+						<div>						
+
+							<!-- Persona --> 
+							<div class="oe_left"  style="width: 250px;">
+								<div class="oe_title" >
+									<h1 class="jx_title">Cosmiatría</h1>	
+								</div>		
+
+								<group></group>
+
+								<h2>
+									<field name="patient"/>
+								</h2>
+							
+							</div>
+
+
+
+							<!-- Buttons --> 
+							<div class="oe_left" style="width: 400px;" name="buttons">
+							
+
+								<!-- Services -->
+								<button type="action" class="oe_stat_button" 
+									name="%(service_list_action)d"	
+									context="{									
+											'search_default_treatment': active_id,
+											}" 											
+									icon="fa-list">
+									<field string="Servicios" name="nr_services" widget="statinfo"/>
+								</button>
+							</div>
+						
+						
+
+
+
+
+							<!-- Name --> 
+							<div class="oe_right" >
+								<div class="oe_title" >
+									<label class="oe_edit_only" for="name" string="Cosmiatría #"/>
+									<h1><field name="name" class="oe_inline"/></h1>
+								</div>
+							</div>
+
+						</div>
+						
+
+
+
+
+						<!-- Padding --> 
+						<group></group>
+						<group></group>
+
+							
+
+						<!-- Fields --> 	
+						<group>
+							<!-- Padding --> 
+							<group>
+							</group>
+							<group>
+							</group>
+
+
+
+							<group>
+								<field name="therapist"		required="1"/>									
+							</group>							
+							<group>
+								<field name="start_date"/>
+							</group>
+
+
+
+							<group>
+								<field name="process_open"/>
+							</group>
+							<group>
+								<field name="end_date"/>
+							</group>
+
+
+
+							<group>
+								<!--
+								<field name="price_total"/>
+								-->
+								<field name="duration"/>
+							</group>
+							<group>
+								<!--
+								-->
+								<field name="chief_complaint"		required="1"/>
+							</group>
+
+
+						</group>
+
+
+
+
+
+
 
 						<notebook>
 
@@ -183,13 +292,13 @@
 		
 		
 
-	   	<!-- Window Form Action -->
-	   	<record model="ir.actions.act_window" id="cosmetology_form_action">
+		<!-- Window Form Action -->
+		<record model="ir.actions.act_window" id="cosmetology_form_action">
 			<field name="name">Cosmiatría</field>
 			<field name="res_model">openhealth.cosmetology</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
-	  	</record>
+		</record>
 
 
 	</data>

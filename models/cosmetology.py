@@ -84,6 +84,82 @@ class Cosmetology(models.Model):
 
 
 
+
+
+
+	# Number of Services  
+	nr_services = fields.Integer(
+			string="Servicios",
+			compute="_compute_nr_services",
+		)
+	
+	@api.multi
+	def _compute_nr_services(self):
+		for record in self:
+
+			record.nr_services= 0
+
+
+
+
+
+
+# ----------------------------------------------------------- Relationals ------------------------------------------------------
+
+
+
+	service_ids = fields.One2many(
+			'openhealth.service', 	
+			'cosmetology', 
+			string="Servicios"
+		)
+
+
+
+	procedure_ids = fields.One2many(
+			'openhealth.procedure', 
+			'cosmetology', 
+			string = "Procedimientos", 
+			)
+
+
+	session_ids = fields.One2many(
+			'openhealth.session', 
+			'cosmetology', 
+			string = "Sesiones", 
+			)
+
+
+
+
+
+
+	quotation_ids = fields.One2many(
+			'sale.order',			 
+			'cosmetology', 			
+			string="Presupuestos",
+
+			domain = [
+						#('state', '=', 'pre-draft'),
+						#('state', 'in', ['draft', 'sent', 'sale', 'done'])
+						('x_family', '=', 'private'),
+					],
+			)
+
+
+
+	sale_ids = fields.One2many(
+			'sale.order',			 
+			'cosmetology', 
+			string="Ventas",
+
+			domain = [
+						#('state', '=', 'sale'),
+						('state', 'in', ['sale', 'done'])
+					],
+			)
+
+
 # ----------------------------------------------------------- Computes ------------------------------------------------------
 	@api.multi
 	#@api.depends('start_date')

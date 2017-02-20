@@ -47,10 +47,8 @@ class Treatment(models.Model):
 	
 	# Service 
 	service_ids = fields.One2many(
-			'openhealth.service', 
-	
+			'openhealth.service', 	
 			'treatment', 
-			#string="Services"
 			string="Servicios"
 		)
 
@@ -601,12 +599,10 @@ class Treatment(models.Model):
 	# Quotations 
 	quotation_ids = fields.One2many(
 			'sale.order',			 
-			'treatment', 
-			
+			'treatment', 			
 			string="Presupuestos",
 
 			domain = [
-
 						#('state', '=', 'pre-draft'),
 						#('state', 'in', ['draft', 'sent', 'sale', 'done'])
 						('x_family', '=', 'private'),
@@ -619,7 +615,6 @@ class Treatment(models.Model):
 	sale_ids = fields.One2many(
 			'sale.order',			 
 			'treatment', 
-
 			string="Ventas",
 
 			domain = [

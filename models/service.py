@@ -73,9 +73,11 @@ class Service(models.Model):
 			)
 
 
+
 	x_treatment = fields.Selection(
 		selection=prodvars._treatment_list,
 		)	
+
 
 
 	zone = fields.Selection(
@@ -103,12 +105,23 @@ class Service(models.Model):
 
 
 
+# ----------------------------------------------------------- Relationals ------------------------------------------------------
 
 	# Treatement 
 	treatment = fields.Many2one('openhealth.treatment',
 			ondelete='cascade', 			
 			string="Tratamiento", 
 			)
+
+
+	cosmetology = fields.Many2one('openhealth.cosmetology',
+			ondelete='cascade', 			
+			string="Cosmiatría", 
+			)
+
+
+
+
 
 	# Consultation 
 	consultation = fields.Many2one('openhealth.consultation',

@@ -112,4 +112,22 @@ class Process(models.Model):
 		)
 
 
+
+
+	# Open 
+	process_open = fields.Boolean(
+			string="Abierto",
+			default=True,
+	)
+
+
+	end_date = fields.Date(
+			string="Fecha fin", 
+			default = fields.Date.today
+			)
+
+
+
+
+
 # Process

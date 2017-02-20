@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+
+
+
+
+		<!-- Form view --> 
+		<record model="ir.ui.view" id="cosmetology_form_view">
+			<field name="name">cosmetology.form</field>
+			<field name="model">openhealth.cosmetology</field>
+			<field name="arch" type="xml">
+				
+				<form string="cosmetology Form">
+					
+
+
+
+					<header>
+
+
+
+						<!-- Create Service --> 
+						<!--
+							attrs="{'invisible':[
+												('state','in',[ False, 'service', 'budget', 'invoice', 'procedure', 'sessions', 'controls', 'done']),
+												]}"
+						-->							
+						<button 
+							type="object" 
+							class="oe_highlight"
+
+							string="Crear Servicio" 
+
+							name="create_service" 
+						/>
+
+
+
+
+
+						<!-- Create Order --> 
+						<!--
+							attrs="{'invisible':[
+												('state','in',[ False, 'consultation', 'budget', 'invoice', 'procedure', 'sessions', 'controls', 'done']),
+												]}"
+						-->
+						<button 
+							type="object" 
+							class="oe_highlight"
+  
+							string="Presupuesto" 
+
+							name="create_order" 
+						/>
+
+
+
+
+
+						<!-- Pay --> 
+						<!--
+							attrs="{'invisible':[
+												('state','in',[ False, 'consultation', 'service', 'invoice', 'procedure', 'sessions', 'controls', 'done']),
+												]}"
+						-->
+						<button 
+							type="object" 
+							class="oe_highlight"
+
+							string="Pagar en Caja" 
+
+
+							name="create_invoice" 
+						/>
+
+
+
+						<!-- Create Procedure --> 
+						<!--
+							attrs="{ 
+									'invisible':[
+												
+												('state','in',[ False, 'consultation', 'service', 'budget', 'procedure', 'sessions', 'controls', 'done']), 
+												
+												]}"
+						-->
+						<button 
+							type="object" 
+							class="oe_highlight"
+
+							string="Procedimiento" 
+
+							name="create_procedure" 
+						/>
+
+
+
+						<!-- Create Sessions --> 
+						<!--
+							attrs="{ 
+									'invisible':[			
+												('state','in',[ False, 'consultation', 'service', 'budget', 'invoice', 'sessions', 'controls', 'done']), 
+												]}"
+						-->
+						<button 
+							type="object" 
+							class="oe_highlight"
+
+							string="Sesiones" 
+
+							name="create_sessions" 
+						/>
+
+
+
+
+
+						<!-- State --> 
+	                    <field 	name="state" 
+	                    		widget="statusbar" 
+
+								statusbar_visible="service, budget, invoice, procedure, sessions, controls,  done"
+						/>
+
+					</header>
+
+
+
+
+					<sheet>
+
+						<notebook>
+
+						</notebook>
+
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- Tree view --> 
+		<record model="ir.ui.view" id="cosmetology_tree_view">
+			<field name="name">cosmetology.tree</field>
+			<field name="model">openhealth.cosmetology</field>
+			<field name="arch" type="xml">
+				<tree string="cosmetology Tree">
+					<field name="name"/>
+								
+					<field name="patient"/>
+
+					<field name="therapist"/>
+
+					<field name="chief_complaint"/>
+
+					<field name="price_total"/>
+								
+					<field name="duration"/>
+								
+					<field name="start_date"/>
+				</tree>
+			</field>
+		</record>
+		
+		
+		
+		
+
+	   	<!-- Window Form Action -->
+	   	<record model="ir.actions.act_window" id="cosmetology_form_action">
+			<field name="name">Cosmiatría</field>
+			<field name="res_model">openhealth.cosmetology</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+	  	</record>
+
+
+	</data>
+</openerp>

@@ -67,13 +67,24 @@ class Patient(models.Model):
 			)
 
 
+	cosmetology_ids = fields.One2many(
+			'openhealth.cosmetology', 		
+			'patient', 
+			string="Cosmiatrías"
+			)
+
+
+
+
+
+
+
 	appointment_ids = fields.One2many(
 			'oeh.medical.appointment', 
 			'patient', 
 			
 			string = "Citas", 
 			)
-
 
 
 # ----------------------------------------------------------- Re-definitions ------------------------------------------------------

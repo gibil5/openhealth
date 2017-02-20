@@ -7,7 +7,7 @@
 <!-- Dependencies - Actions --> 
 
 
-		<!-- Treatment --> 
+
 
 		<!-- Treatment - List action -->
 			<record model="ir.actions.act_window" id="treatment_list_action">
@@ -15,17 +15,53 @@
 			<field name="res_model">openhealth.treatment</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
-			
             <field name="domain">[]</field>
             <field name="context">{}</field>
             <field name="view_id" eval="False"/>
-			
 			<field name="help" type="html">
 				<p class="oe_view_nocontent_create">Create the first treatment
 				</p>
 			</field>
-			
 		</record>
+
+
+
+		<!-- Cosmetology - List action -->
+			<record model="ir.actions.act_window" id="cosmetology_list_action">
+			<field name="name">Cosmiatrías</field>
+			<field name="res_model">openhealth.cosmetology</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first cosmetology
+				</p>
+			</field>
+		</record>
+
+
+
+
+
+
+
+		<!-- Therapist - List action -->
+			<record model="ir.actions.act_window" id="therapist_list_action">
+			<field name="name">Terapeutas</field>
+			<field name="res_model">openhealth.therapist</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first therapist
+				</p>
+			</field>
+		</record>
+
 
 
 

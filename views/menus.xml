@@ -93,6 +93,20 @@
 
 
 
+		<!-- Cosmetology --> 
+		<menuitem id="cosmetologies_menu" name="Cosmiatría" parent="openhealth_menu"
+			sequence="-1"
+			action="cosmetology_list_action"/>
+
+
+		<!-- Therapists -->
+		<menuitem id="therapists_menu" name="Terapeutas" parent="openhealth_menu"
+			sequence="-1"
+			action="therapist_list_action"/>
+
+
+
+
 
 
 

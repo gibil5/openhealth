@@ -33,20 +33,37 @@ class Process(models.Model):
 
 
 
+
 	patient = fields.Many2one(
 			'oeh.medical.patient',
-			string="Patient",
+			string="Paciente",
 			index=True, 
-
 			ondelete='cascade', 
+			#required=True, 
 			)
+
+
+
+
+
 
 	physician = fields.Many2one(
 			'oeh.medical.physician',
-			string="Physician",
+			string="Médico",
 			index=True
 			)
 	
+	therapist = fields.Many2one(
+			'oeh.medical.therapist',
+			string="Terapeuta",
+			index=True
+			)
+
+
+
+
+
+
 	chief_complaint = fields.Selection(
 			string = 'Motivo de consulta', 			
 			#selection = tre_vars._chief_complaint_list, 
@@ -59,13 +76,12 @@ class Process(models.Model):
 
 	duration = fields.Integer(
 			string="Días", 
-			#compute='_compute_duration', 
 			default = 0,
 			)
 
 	start_date = fields.Date(
 			string="Fecha inicio", 
-			#default = fields.Date.today
+			default = fields.Date.today
 			)
 
 	price_total = fields.Float(
@@ -73,6 +89,27 @@ class Process(models.Model):
 			default = 0, 
 			) 
 
+
+
+
+	_state_list = [
+        			#('empty', 			'Inicio'),
+
+        			('one', 	'Uno'),
+
+        			('two', 		'Dos'),
+        			
+        			('three', 			'Tres'),
+
+        			('done', 			'Completo'),
+        		]
+
+
+	state = fields.Selection(
+			selection = _state_list, 
+			string='State', 			
+			default = False, 
+		)
 
 
 # Process

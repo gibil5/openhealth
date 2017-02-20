@@ -186,12 +186,29 @@
 		'views/treatments/treatment_services.xml',
 
 
+
+
+
+		# Cosmetologies
+		'views/cosmetologies/cosmetology.xml',
+
+
+		# Therapists 
+		'views/therapists/therapist.xml',
+
+
+
+
+
 		# Patients 
 		'views/patients/patient.xml',
 		'views/patients/patient_personal.xml',
 		'views/patients/patient_treatments.xml',
 		'views/patients/patient_control_docs.xml',
 		'views/patients/patient_appointments.xml',
+
+		'views/patients/patient_cosmetologies.xml',
+
 
 
 		# Appointments

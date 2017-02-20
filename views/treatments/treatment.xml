@@ -15,20 +15,16 @@
 					
 
 
-
 					<header>
-						<!--
-							context="{
-								'default_evaluation_type': 'Pre-arraganged Appointment',
-							}" 											
-						-->
 
+
+
+						<!-- Create Consultation --> 
 						<button 
 							type="object" 
 							class="oe_highlight"
 
 							string="Crear Consulta" 
-
 							
 							attrs="{'invisible':[
 												
@@ -36,14 +32,12 @@
 
 												]}"
 
-
 							name="open_consultation_current" 
 						/>
 
 
 
-
-
+						<!-- Create Service --> 
 						<button 
 							type="object" 
 							class="oe_highlight"
@@ -60,9 +54,7 @@
 
 
 
-
-
-
+						<!-- Create Order --> 
 						<button 
 							type="object" 
 							class="oe_highlight"
@@ -79,6 +71,7 @@
 
 
 
+						<!-- Pay --> 
 						<button 
 							type="object" 
 							class="oe_highlight"
@@ -89,23 +82,12 @@
 												('state','in',[ False, 'consultation', 'service', 'invoice', 'procedure', 'sessions', 'controls', 'done']),
 												]}"
 
-
 							name="create_invoice" 
 						/>
 
 
 
-
-
-						<!--
-									'invisible':[('nr_consultations','=',0)], 
-									'readonly':[('nr_consultations','=',0)], 
-
-
-							attrs="{		
-									'readonly':[('nr_consultations','=',0)], 
-									}"
-						--> 
+						<!-- Create Procedure --> 
 						<button 
 							type="object" 
 							class="oe_highlight"
@@ -126,10 +108,7 @@
 
 
 
-
-
-
-
+						<!-- Create Sessions --> 
 						<button 
 							type="object" 
 							class="oe_highlight"
@@ -150,7 +129,7 @@
 
 
 
-
+						<!-- Create Controls --> 
 						<button 
 							type="object" 
 							class="oe_highlight"
@@ -173,182 +152,44 @@
 
 
 
-
-
-
 						<!-- State --> 
-	                    <field name="state" widget="statusbar" 
+	                    <field 	name="state" 
+	                    		widget="statusbar" 
 
-	                    					statusbar_visible="consultation, service, budget, invoice, procedure, sessions, controls,  done"/>
-
-
-
-
-						<!--
-						<button 
-							type="object" 
-							class="oe_highlight"
-							string="Procedimiento" 
-
-							name="open_procedure_current" 
+								statusbar_visible="consultation, service, budget, invoice, procedure, sessions, controls,  done"
 						/>
-
-
-						<button 
-							type="object" 
-							class="oe_highlight"
-							string="Clean" 
-
-							name="clean_procedures" 
-						/>
-						-->
-						
-						<!--
-						name="create_procedure" 
-						-->
-
-
-
-
-
-
-						<!--
-						<button 
-							type="object" 
-							class="oe_highlight oe_right"
-							string="Evaluación" 
-
-							name="open_evaluation_current" 
-						/>
-						-->
-
-
-
-						<!--
-						<button 
-							type="object" 
-							class="oe_highlight"
-
-							string="Control" 
-
-							name="open_oeh_current" 
-
-							context="{
-								'default_evaluation_type': 'Periodic Control',
-							}" 											
-						/>
-						-->
-
-
-						<!--
-						<button 
-							type="object" 
-							class="oe_highlight"
-							string="OEH - New" 
-
-							name="open_oeh_new" 
-						/>
-
-
-						Open Health - Deprecated  
-
-
-
-
-
-
-						<button 
-							type="object" 
-							class="oe_highlight"
-							string="Evaluación 3 - Current" 
-
-							name="open_eval3_current" 
-
-							context="{
-								'search_default_patient': active_id,
-							}" 											
-						/>
-
-						<button 
-							type="object" 
-							class="oe_highlight"
-							string="Evaluación 3 - New" 
-
-							name="open_eval3_new" 
-
-							context="{
-								'search_default_patient': active_id,
-							}" 											
-						/>
-						-->
-
-
 
 					</header>
 
 
 
 
-<!--
-Sheet 						
--->	
+					<!-- Sheet -->	
 					<sheet>
-						<!--
-						<h1>
-							<field string="THIS"  name="name" readonly="0"  invisible="0"/>
-						</h1>
-						-->
 
-						
-						<!-- Id --> 
-						<!--
-						<div class="oe_left" style="width: 500px;">
-							<div class="oe_title" style="width: 390px;">
-												
-								<label class="oe_edit_only" for="name" string="Tratamiento #"/>
-								<h1><field name="name" class="oe_inline"/></h1>
-									
-								<label for="patient" class="oe_edit_only"/>
-								<field name="patient"/>
-							</div>
-						</div>
-						-->
-						
-						
-						
-						
 
-<!--
-Top
--->
 						<div>						
+
 
 							<!-- Persona --> 
 							<div class="oe_left"  style="width: 250px;">
 								<div class="oe_title" >
-
 									<h1 class="jx_title">Tratamiento</h1>	
-								
-								</div>								
-								<group></group>
+								</div>		
 
+								<group></group>
 
 								<h2>
 									<field name="patient"/>
 								</h2>
-
 							
 							</div>
-
-
 
 
 
 							<!-- Buttons --> 
 							<div class="oe_left" style="width: 400px;" name="buttons">
 							
-
-
 								<!-- Consultations -->
 								<button type="action" class="oe_stat_button" 
 									name="%(consultation_form_action)d"	
@@ -358,7 +199,6 @@ Top
 									icon="fa-list">
 									<field string="Consulta" name="nr_consultations" widget="statinfo"/>
 								</button>
-								
 
 
 
@@ -371,8 +211,6 @@ Top
 									icon="fa-list">
 									<field string="Recomendación" name="nr_services" widget="statinfo"/>
 								</button>
-
-
 
 
 
@@ -423,12 +261,6 @@ Top
 									icon="fa-list">
 									<field string="Medical" name="nr_services_medical" widget="statinfo"/>
 								</button>
-								<!--
-								-->
-
-
-
-
 
 
 
@@ -444,6 +276,7 @@ Top
 								</button>
 
 
+
 								<!-- Invoices -->
 								<button type="action" class="oe_stat_button" 
 									name="%(order_form_action)d"	
@@ -454,9 +287,6 @@ Top
 
 									<field string="Facturado" name="nr_invoices" widget="statinfo"/>
 								</button>
-
-
-
 
 
 
@@ -473,8 +303,7 @@ Top
 
 
 
-
-								<!-- sessions -->
+								<!-- Sessions -->
 								<button type="action" class="oe_stat_button" 
 									name="%(session_form_action)d"	
 									context="{									
@@ -486,9 +315,7 @@ Top
 						
 
 
-
-
-								<!-- controls -->
+								<!-- Controls -->
 								<button type="action" class="oe_stat_button" 
 									name="%(control_form_action)d"	
 									context="{									
@@ -500,14 +327,7 @@ Top
 						
 
 
-
-
-
-
-
 					            <!-- Appointments -->
-					            <!--
-								-->
 								<button type="action" class="oe_stat_button" 
 									name="347" 
 									context="{
@@ -524,13 +344,11 @@ Top
 
 
 
-							<!-- Number --> 
+							<!-- Name --> 
 							<div class="oe_right" >
 								<div class="oe_title" >
 									<label class="oe_edit_only" for="name" string="Tratamiento #"/>
-
 									<h1><field name="name" class="oe_inline"/></h1>
-								
 								</div>
 							</div>
 
@@ -601,99 +419,8 @@ Fields
 						</group>
 
 
-
-
-<!--
-Notebook  
--->
 						<notebook>
-
-
-
-
-
-
-
-
-
-
-
-
-
-							<!--
-								Evaluations
-							<page string="Evaluaciones">
-								<field name="evaluation_ids">
-									<tree string="Evaluations">
-										<field string="Evaluación #"  name="name"/>
-										<field name="patient"/>
-										<field name="doctor"/>
-										<field name="evaluation_start_date"/>
-										<field string='Tipo' name="evaluation_type"/>
-									</tree>
-								</field>
-							</page>
-							-->
-
-
-							<!--
-							<page string="Controles" invisible="0">
-								<field name="control_ids" context="{'patient': 'x'}"/>
-								<field name="control_ids">
-									<tree string="Controles">
-										<field string="Control #"  name="name"/>
-										<field string="Paciente" name="patient"/>
-										<field string="Médico" name="doctor"/>
-										<field name="evaluation_start_date"/>
-										<field string='Tipo' name="evaluation_type"/>
-									</tree>
-								</field>
-							</page>
-							-->
-
-
-
-								<!--
-							<page string="Servicios" invisible="0">
-								<field name="service_ids">
-									<tree string="Presupuestos registrados">
-										
-										<field name="name"/>
-										<field name="laser"/>
-										<field name="service"/>
-
-											
-										<field name="price"/>
-
-									</tree>
-								</field>
-							</page>
-									-->
-
-
-							<!--
-							<page string="Presupuestos" invisible="1">
-								<field name="invoice_ids">
-									<tree string="Invoices">
-										<field name="name"/>
-										<field name="invoice"/>
-										<field name="treatment_id"/>
-										<field name="price"/>
-									</tree>
-								</field>
-							</page>
-							-->
-
-
-
-							<!--
-							<page string="Descripción">
-								<field string="Descripción"  name="description"/>
-							</page>
-							--> 
-
 						</notebook>
-
 					</sheet>
 				</form>
 			</field>

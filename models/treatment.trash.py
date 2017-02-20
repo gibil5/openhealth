@@ -48,3 +48,39 @@
 #	}
 
 
+
+
+
+
+# 19 Feb 2017
+
+	#patient = fields.Many2one(
+	#		'oeh.medical.patient',
+	#		string="Paciente", 
+			#index=True
+	#		ondelete='cascade', 
+	#		)
+
+	#physician = fields.Many2one(
+	#		'oeh.medical.physician',
+	#		string="Médico", 
+	#		index=True
+	#		)
+
+	#chief_complaint = fields.Selection(
+	#		string = 'Motivo de consulta', 			
+	#		selection = jxvars._chief_complaint_list, 
+	#		)
+
+
+	#start_date = fields.Date(
+	#		string="Fecha inicio", 
+	#		default = fields.Date.today
+	#		)	
+
+	#price_total = fields.Float(
+	#		string='Total', 
+	#		default = 0, 
+			#compute='_compute_price_total', 
+	#		) 
+

@@ -27,7 +27,7 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Variables ------------------------------------------------------
+# ----------------------------------------------------------- Canonical ------------------------------------------------------
 
 	# Name 
 	name = fields.Char(
@@ -36,49 +36,11 @@ class Treatment(models.Model):
 			)
 
 
-
-
-
-	patient = fields.Many2one(
-			'oeh.medical.patient',
-			string="Paciente", 
-			#index=True
-			ondelete='cascade', 
-			)
-
-	physician = fields.Many2one(
-			'oeh.medical.physician',
-			string="Médico", 
-			index=True
-			)
-
-	chief_complaint = fields.Selection(
-			string = 'Motivo de consulta', 			
-			selection = jxvars._chief_complaint_list, 
-			)
-
-
-
-
 	duration = fields.Integer(
-			string="Días", 
+			#string="Días", 
 			default = 0,
 			compute='_compute_duration', 
 			)
-
-	start_date = fields.Date(
-			string="Fecha inicio", 
-			default = fields.Date.today
-			)	
-
-	price_total = fields.Float(
-			string='Total', 
-			default = 0, 
-			#compute='_compute_price_total', 
-			) 
-
-
-
 
 
 # ----------------------------------------------------------- Relational ------------------------------------------------------
@@ -137,16 +99,12 @@ class Treatment(models.Model):
 
 
 	# State 
-
 	_state_list = [
         			#('empty', 			'Inicio'),
 
         			('consultation', 	'Consulta'),
 
         			('service', 		'Recomendación'),
-
-
-
         			
         			('budget', 			'Presupuesto'),
 
@@ -161,14 +119,10 @@ class Treatment(models.Model):
         			('done', 			'Completo'),
         		]
 
+
 	state = fields.Selection(
 			selection = _state_list, 
-			
-			#string='Status', 			
-			#string='Estado',	
-			#readonly=True, 
-			#readonly=False, 
-
+			string='State', 			
 			default = False, 
 
 			compute="_compute_state",
@@ -785,10 +739,7 @@ class Treatment(models.Model):
 			a = datetime.strptime(record.start_date, date_format)
 			
 			if record.treatment_open:
-				#b = datetime.today
-				#b = datetime.strptime(datetime.today, date_format)
 				b = datetime.strptime(record.today_date, date_format)
-				#b = datetime.strptime(fields.Date.today, date_format)
 				
 			else:
 				b = datetime.strptime(record.end_date, date_format)
@@ -1122,14 +1073,13 @@ class Treatment(models.Model):
 
 
 
+# ----------------------------------------------------------- Buttons ------------------------------------------------------
+
 	# Treatment - EDIT 
 	# --------------------
 
 	@api.multi
 	def open_line_current(self):  
-
-		#patient_id = self.patient.id
-		#doctor_id = self.physician.id
 
 		treatment_id = self.id 
 

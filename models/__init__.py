@@ -28,6 +28,9 @@ from . import evaluation
 
 from . import process 
 from . import treatment 
+from . import cosmetology
+from . import therapist 
+
 
 
 
@@ -65,7 +68,6 @@ from . import payment_method
 from . import event 
 
 
-from . import cosmetology
 
 
 

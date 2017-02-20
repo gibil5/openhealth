@@ -1,0 +1,222 @@
+
+
+
+<!--
+20 Feb 2017
+-->
+
+							<!--
+								Evaluations
+							<page string="Evaluaciones">
+								<field name="evaluation_ids">
+									<tree string="Evaluations">
+										<field string="Evaluación #"  name="name"/>
+										<field name="patient"/>
+										<field name="doctor"/>
+										<field name="evaluation_start_date"/>
+										<field string='Tipo' name="evaluation_type"/>
+									</tree>
+								</field>
+							</page>
+							-->
+
+
+							<!--
+							<page string="Controles" invisible="0">
+								<field name="control_ids" context="{'patient': 'x'}"/>
+								<field name="control_ids">
+									<tree string="Controles">
+										<field string="Control #"  name="name"/>
+										<field string="Paciente" name="patient"/>
+										<field string="Médico" name="doctor"/>
+										<field name="evaluation_start_date"/>
+										<field string='Tipo' name="evaluation_type"/>
+									</tree>
+								</field>
+							</page>
+							-->
+
+
+
+								<!--
+							<page string="Servicios" invisible="0">
+								<field name="service_ids">
+									<tree string="Presupuestos registrados">
+										
+										<field name="name"/>
+										<field name="laser"/>
+										<field name="service"/>
+
+											
+										<field name="price"/>
+
+									</tree>
+								</field>
+							</page>
+									-->
+
+
+							<!--
+							<page string="Presupuestos" invisible="1">
+								<field name="invoice_ids">
+									<tree string="Invoices">
+										<field name="name"/>
+										<field name="invoice"/>
+										<field name="treatment_id"/>
+										<field name="price"/>
+									</tree>
+								</field>
+							</page>
+							-->
+
+
+
+							<!--
+							<page string="Descripción">
+								<field string="Descripción"  name="description"/>
+							</page>
+							--> 
+
+
+
+
+
+
+
+
+
+
+<!-- Deprecated --> 
+						<!--
+						<button 
+							type="object" 
+							class="oe_highlight"
+							string="Procedimiento" 
+
+							name="open_procedure_current" 
+						/>
+
+
+						<button 
+							type="object" 
+							class="oe_highlight"
+							string="Clean" 
+
+							name="clean_procedures" 
+						/>
+						-->
+						
+						<!--
+						name="create_procedure" 
+						-->
+
+
+
+
+
+
+						<!--
+						<button 
+							type="object" 
+							class="oe_highlight oe_right"
+							string="Evaluación" 
+
+							name="open_evaluation_current" 
+						/>
+						-->
+
+
+
+						<!--
+						<button 
+							type="object" 
+							class="oe_highlight"
+
+							string="Control" 
+
+							name="open_oeh_current" 
+
+							context="{
+								'default_evaluation_type': 'Periodic Control',
+							}" 											
+						/>
+						-->
+
+
+						<!--
+						<button 
+							type="object" 
+							class="oe_highlight"
+							string="OEH - New" 
+
+							name="open_oeh_new" 
+						/>
+
+
+						Open Health - Deprecated  
+
+
+
+
+
+
+						<button 
+							type="object" 
+							class="oe_highlight"
+							string="Evaluación 3 - Current" 
+
+							name="open_eval3_current" 
+
+							context="{
+								'search_default_patient': active_id,
+							}" 											
+						/>
+
+						<button 
+							type="object" 
+							class="oe_highlight"
+							string="Evaluación 3 - New" 
+
+							name="open_eval3_new" 
+
+							context="{
+								'search_default_patient': active_id,
+							}" 											
+						/>
+						-->
+
+
+
+
+
+
+
+
+
+						<!--
+						<h1>
+							<field string="THIS"  name="name" readonly="0"  invisible="0"/>
+						</h1>
+						-->
+
+						
+						<!-- Id --> 
+						<!--
+						<div class="oe_left" style="width: 500px;">
+							<div class="oe_title" style="width: 390px;">
+												
+								<label class="oe_edit_only" for="name" string="Tratamiento #"/>
+								<h1><field name="name" class="oe_inline"/></h1>
+									
+								<label for="patient" class="oe_edit_only"/>
+								<field name="patient"/>
+							</div>
+						</div>
+						-->
+						
+						
+						
+						
+
+
+						

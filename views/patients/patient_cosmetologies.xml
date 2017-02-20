@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!--
+	*** OPEN HEALTH
+
+	Created: 			20 Feb 2017
+	Last updated: 	 	id. 
+-->
+
+<openerp>
+	<data>
+
+
+		<!--
+		Cosmetology
+		-->
+		<record model="ir.ui.view" id="patient_cosmetologies_form_view">
+			<field name="name">Patient cosmetologies</field>
+			<field name="model">oeh.medical.patient</field>
+			
+
+			<field name="priority" eval="0"/>
+
+
+    		<field name="inherit_id" ref="oeh_medical_patient_view"/>
+			<field name="arch" type="xml">
+
+				<notebook position="inside">
+					<page string="Cosmiatrías">
+
+						<!--
+						<field name="cosmetology_ids">
+						--> 
+
+						<field name="cosmetology_ids">
+
+							<tree string="Cosmiatrías">
+								
+								<!--
+								<field string="Tratamiento #"  name="name"/>
+
+								-->
+
+								<field name="name"/>
+								
+								<field name="patient"/>
+
+								<field name="therapist"/>
+
+
+								<field name="chief_complaint"/>
+
+								<field name="price_total"/>
+								
+								<field name="duration"/>
+								
+								<field name="start_date"/>
+
+
+								<button 
+									type="object" 
+									class="oe_highlight"	
+									string="E"
+									name="open_line_current" 
+								/>
+								
+							</tree>
+						</field>
+					
+					</page>
+				</notebook>
+			</field>
+		</record>
+	</data>
+</openerp>

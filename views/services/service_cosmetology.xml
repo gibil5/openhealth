@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+		<!-- Form --> 
+		<record model="ir.ui.view" id="service_cosmetology_form_view">
+			<field name="name">service.cosmetology.form</field>
+			<field name="model">openhealth.service.cosmetology</field>
+
+			<field name="inherit_id" ref="service_form_view"/>
+	        <field name="mode">primary</field>
+			
+			
+			<field name="arch" type="xml">				
+
+
+
+				<!-- <xpath expr="//field[@name='title']" position="before"> -->
+				<xpath expr="//h1" position="replace">
+
+					<h1>Cosmeatría</h1>					
+        		
+        		</xpath>
+
+
+
+				<xpath expr="//field[@name='laser']" position="replace"> 
+					<field name="family"/>
+	
+					<field name="vspace"/>
+				</xpath>
+
+
+
+				<xpath expr="//field[@name='consultation']" position="replace"> 
+				</xpath>
+
+
+
+
+			</field>
+		</record>		
+
+
+
+
+		<!-- Tree -->
+		<record model="ir.ui.view" id="service_cosmetology_tree_view">
+			<field name="name">service.cosmetology.tree</field>
+			<field name="model">openhealth.service.cosmetology</field>
+			<field name="arch" type="xml">
+				<tree string="Service Tree">
+					<field name="name"/>
+					<field name="id"/>
+					<field name="laser"/>				
+					<field name="treatment"/>
+					<field name="service"/>
+					<field name="consultation"/>
+				</tree>
+			</field>
+		</record>
+
+
+
+		<!-- Window action -->
+		<record model="ir.actions.act_window" id="service_cosmetology_list_action">
+			<field name="name">Servicios cosmetology - 2</field>
+			<field name="res_model">openhealth.service.cosmetology</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+
+			<field name="context">{
+									'default_family': 'cosmetology',
+                    			}
+			</field>
+		</record>
+
+
+
+	</data>
+</openerp>

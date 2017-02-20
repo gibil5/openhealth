@@ -24,7 +24,11 @@ _laser_type_list = [
 
 		('medical','Tratamiento médico'), 
 		#('none','None'), 	
+
+
+		('cosmetology','Cosmiatría'), 
 		
+
 		#('na',''), 	
 		#('',''), 	
 		]

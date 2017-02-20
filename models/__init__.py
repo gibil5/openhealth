@@ -46,6 +46,7 @@ from . import service_excilite
 from . import service_ipl
 from . import service_ndyag
 from . import service_medical
+from . import service_cosmetology
 
 
 

@@ -382,13 +382,10 @@ class Treatment(models.Model):
 
 
 	# Appointments 
-
 	appointment_ids = fields.One2many(
 			'oeh.medical.appointment', 
 			'treatment', 
-
 			string = "Citas", 
-
 			domain = [
 						('x_target', '=', 'doctor'),
 					],

@@ -130,10 +130,6 @@ class Cosmetology(models.Model):
 			)
 
 
-
-
-
-
 	quotation_ids = fields.One2many(
 			'sale.order',			 
 			'cosmetology', 			
@@ -146,8 +142,6 @@ class Cosmetology(models.Model):
 					],
 			)
 
-
-
 	sale_ids = fields.One2many(
 			'sale.order',			 
 			'cosmetology', 
@@ -158,6 +152,18 @@ class Cosmetology(models.Model):
 						('state', 'in', ['sale', 'done'])
 					],
 			)
+
+
+
+	appointment_ids = fields.One2many(
+			'oeh.medical.appointment', 
+			'cosmetology', 
+			string = "Citas", 
+			domain = [
+						('x_target', '=', 'doctor'),
+					],
+			)
+
 
 
 # ----------------------------------------------------------- Computes ------------------------------------------------------
@@ -214,6 +220,42 @@ class Cosmetology(models.Model):
 		print 
 		print 'jx'
 		print 'Create Service'
+
+
+		cosmetology_id = self.id 
+
+		laser = 'cosmetology'
+		#zone = ''	
+		#pathology = ''
+
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' New Service Current', 
+				
+				'view_type': 'form',
+				'view_mode': 'form',				
+
+				#'res_model': 'openhealth.service',	
+				'res_model': 'openhealth.service.cosmetology',	
+
+				#'res_id': consultation_id,
+				
+				'target': 'current',
+				'flags': 	{
+							'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+							#'form': {'action_buttons': True, }
+							},
+
+				'context': {
+							'default_cosmetology': cosmetology_id,
+
+							'default_laser': laser,
+							#'default_zone': zone,
+							#'default_pathology': pathology,
+							}
+				}
+
+	# create_service
 
 
 

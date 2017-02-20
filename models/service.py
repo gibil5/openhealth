@@ -60,6 +60,8 @@ class Service(models.Model):
 	# Canonical 
 
 	family = fields.Selection(
+		string="Familia", 
+
 		selection=prodvars._family_list,
 		)	
 
@@ -75,7 +77,8 @@ class Service(models.Model):
 
 
 	x_treatment = fields.Selection(
-		selection=prodvars._treatment_list,
+			selection=prodvars._treatment_list,
+			string="Tratamiento", 			
 		)	
 
 

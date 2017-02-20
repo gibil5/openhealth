@@ -1061,6 +1061,10 @@ class Appointment(models.Model):
 
 
 
+
+
+
+
 	# ----------------------------------------------------------- Indexes ------------------------------------------------------
 
 	treatment = fields.Many2one('openhealth.treatment',
@@ -1071,6 +1075,25 @@ class Appointment(models.Model):
 
 			#compute='_compute_treatment', 
 			)
+
+
+
+	cosmetology = fields.Many2one(
+			'openhealth.cosmetology',
+			string="Cosmiatría",
+			ondelete='cascade', 
+			#required=False, 
+			#required=True, 
+			)
+
+
+
+
+
+
+
+
+
 
 
 

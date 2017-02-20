@@ -148,6 +148,9 @@
 		'views/services/service_medical_zone.xml',
 
 
+		'views/services/service_cosmetology.xml',
+
+
 
 
 		# Procedures
@@ -195,6 +198,7 @@
 		'views/cosmetologies/cosmetology_orders.xml',
 		'views/cosmetologies/cosmetology_procedures.xml',
 		'views/cosmetologies/cosmetology_sessions.xml',
+		'views/cosmetologies/cosmetology_appointments.xml',
 
 
 		# Therapists 

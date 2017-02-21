@@ -172,7 +172,8 @@
 							-->
 							
 							<group>
-								<field name="treatment"			string="Tratamiento"	required="1"/>
+								<field name="treatment"				string="Tratamiento"	required="0"/>
+								<field name="cosmetology"			string="Cosmiatría"		required="0"/>
 							</group>
 							<group>
 								<field name="evaluation_type"	invisible="0"/>

@@ -35,6 +35,24 @@ class sale_order(models.Model):
 
 
 
+
+	# Doctor 
+	x_doctor = fields.Many2one(
+			'oeh.medical.physician',
+			string = "Médico", 	
+		)
+
+	x_therapist = fields.Many2one(
+			'openhealth.therapist',
+			string = "Terapeuta", 	
+		)
+
+
+
+
+
+
+
 	partner_id = fields.Many2one(
 
 			'res.partner',
@@ -868,14 +886,7 @@ class sale_order(models.Model):
 
 
 
-	# Doctor 
-	x_doctor = fields.Many2one(
-			'oeh.medical.physician',
-			string = "Médico", 	
-			
-			#compute='_compute_x_doctor', 
-			#required=True, 
-			)
+
 
 
 	x_appointment_date = fields.Datetime(
@@ -1229,7 +1240,7 @@ class sale_order(models.Model):
 
 
 
-	# Create Line 
+# ----------------------------------------------------------- Create Line ------------------------------------------------------
 
 	@api.multi 
 	def create_line(self, order_id, se):
@@ -1249,12 +1260,9 @@ class sale_order(models.Model):
 		x_price_vip = se.service.x_price_vip
 		x_price = se.service.list_price
 
-		#if self.x_partner_vip and se.service.x_price_vip != 0.0:
 		if self.x_partner_vip and x_price_vip != 0.0:
-			#price_unit = se.service.x_price_vip
 			price_unit = x_price_vip
 		else:
-			#price_unit = se.service.list_price
 			price_unit = x_price
 
 
@@ -1326,7 +1334,8 @@ class sale_order(models.Model):
 
 
 
-	# Create 
+# ----------------------------------------------------------- Create order lines ------------------------------------------------------
+
 	@api.multi 
 	def x_create_order_lines(self):
 		print 
@@ -1376,11 +1385,23 @@ class sale_order(models.Model):
 		print 'medical'
 		for se in self.consultation.service_medical_ids:
 			print se 
-			#print se.service.id
-			#print order_id
-			#print se.name_short
 
 			ret = self.create_line(order_id, se)
+
+
+
+
+
+		print 
+		print 'cosmetology'
+		for se in self.cosmetology.service_ids:
+			print se 
+
+			ret = self.create_line(order_id, se)
+
+
+
+
 
 
 

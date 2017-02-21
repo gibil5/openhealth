@@ -9,6 +9,11 @@ access_openhealth_cosmetology,openhealth.cosmetology,model_openhealth_cosmetolog
 
 access_openhealth_therapist,openhealth.therapist,model_openhealth_therapist,,1,1,1,1
 
+access_openhealth_service_cosmetology,openhealth.service.cosmetology,model_openhealth_service_cosmetology,,1,1,1,1
+
+
+
+
 
 
 

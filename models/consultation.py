@@ -542,65 +542,29 @@ class Consultation(models.Model):
 
 
 
-		# Treatment
 		treatment_id = self.treatment.id 
-
-		# Consultation
 		consultation_id = self.id 
-
-
-		# Patient
 		patient_id = self.patient.id
-		print 'patient_id: ', patient_id
-		
-
-
-		# Doctor
 		doctor_id = self.doctor.id
-		print 'doctor_id: ', doctor_id
-
-
-
-		# Appointment Proc
-		#appointment_proc = self.
-
-
-
-		# Partner
-		#partner_id = self.env['res.partner'].search([('name','=',self.patient.name)]).id
-		#partner_id = self.env['res.partner'].search([('name','=',self.patient.name)],limit=1).id		
-		#partner_id = self.env['oeh.medical.patient'].search([('name','like',self.patient.name)],limit=1).id
-		
-		partner_id = self.env['res.partner'].search([('name','like',self.patient.name)],limit=1).id
-
-
-
-		print 'patient name: ', self.patient.name 
-
-		print 'partner_id: ', partner_id
-
-
-
-
-		# Chief complaint 
 		chief_complaint = self.chief_complaint
 
+		partner_id = self.env['res.partner'].search([('name','like',self.patient.name)],limit=1).id
+
+		#print 'patient_id: ', patient_id
+		#print 'doctor_id: ', doctor_id
+		#print 'patient name: ', self.patient.name 
+		#print 'partner_id: ', partner_id
 
 
 
 
-		# Order 
-		#order_id = self.order.id		
+		# Search
 		consultation_id = self.id
 
 		order_id = self.env['sale.order'].search([
-													#('consultation','=',self.id),
-													('consultation','=',consultation_id),
-													
+													('consultation','=',consultation_id),													
 													('state','=','draft'),
-
 													('x_family','=', 'private'),
-												
 												]).id
 
 		print 'consultation_id: ', consultation_id
@@ -611,21 +575,17 @@ class Consultation(models.Model):
 		# Create 
 		if order_id == False:
 
-			print 'create order'
-			print 
+			#print 'create order'
+			#print 
 			order = self.env['sale.order'].create(
 													{
 														'treatment': treatment_id,
-
 														'partner_id': partner_id,
 														'patient': patient_id,	
 														'x_doctor': doctor_id,	
-
 														'consultation':self.id,
 														'state':'draft',
 														'x_chief_complaint':chief_complaint,
-
-														#'x_appointment': appointment_proc, 
 													}
 												)
 
@@ -635,13 +595,10 @@ class Consultation(models.Model):
 
 
 
+
 			# Copy 
 			pre_order = order.copy({
-								#'state':'sale',
-								#'state':'sent',
-								#'state':'pre-draft',
-
-								'x_family':'private',
+										'x_family':'private',
 							})	
 
 
@@ -678,18 +635,15 @@ class Consultation(models.Model):
 
 			'context':   {
 
-				'default_consultation': consultation_id,
-				'default_treatment': treatment_id,
-				'default_partner_id': partner_id,
-				'default_patient': patient_id,	
-
-
-				'default_x_doctor': doctor_id,	
-
-
-				'default_x_chief_complaint': chief_complaint,	
+							'default_consultation': consultation_id,
+							'default_treatment': treatment_id,
+							'default_partner_id': partner_id,
+							'default_patient': patient_id,	
+							'default_x_doctor': doctor_id,	
+							
+							'default_x_chief_complaint': chief_complaint,	
+						}
 			}
-		}
 
 
 	# create_order_current

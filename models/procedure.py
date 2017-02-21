@@ -99,10 +99,13 @@ class Procedure(models.Model):
 
 	treatment = fields.Many2one(
 			'openhealth.treatment',
-			
 			ondelete='cascade', 
 			)
 
+	cosmetology = fields.Many2one(
+			'openhealth.cosmetology',
+			ondelete='cascade', 
+			)
 
 
 

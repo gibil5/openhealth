@@ -11,6 +11,7 @@
 from openerp import models, fields, api
 
 import jxvars
+import treatment_funcs
 
 
 
@@ -103,6 +104,24 @@ class Cosmetology(models.Model):
 
 
 
+	nr_procedures = fields.Integer(
+			string="Procedimientos",
+			compute="_compute_nr_procedures",
+	)
+	@api.multi
+	def _compute_nr_procedures(self):
+		for record in self:
+
+			record.nr_procedures=self.env['openhealth.procedure'].search_count([
+
+																	('cosmetology','=', record.id),
+
+																	]) 
+
+
+
+
+
 
 
 # ----------------------------------------------------------- Relationals ------------------------------------------------------
@@ -181,7 +200,7 @@ class Cosmetology(models.Model):
 
 
 
-# ----------------------------------------------------------- Buttons ------------------------------------------------------
+# ----------------------------------------------------------- Open Line Current ------------------------------------------------------
 	@api.multi
 	def open_line_current(self):  
 
@@ -209,6 +228,7 @@ class Cosmetology(models.Model):
 				'context': 	{
 							}
 		}
+
 
 
 
@@ -266,6 +286,7 @@ class Cosmetology(models.Model):
 
 
 
+
 # ----------------------------------------------------------- Create order ------------------------------------------------------
 	@api.multi 
 	def create_order(self):
@@ -273,6 +294,125 @@ class Cosmetology(models.Model):
 		print 
 		print 'jx'
 		print 'Create order'
+
+
+
+
+
+		patient_id = self.patient.id
+		cosmetology_id = self.id 
+		therapist_id = self.therapist.id
+		chief_complaint = self.chief_complaint
+
+		partner_id = self.env['res.partner'].search([('name','like',self.patient.name)],limit=1).id
+
+
+
+
+		# Search
+		consultation_id = self.id
+
+		order_id = self.env['sale.order'].search([
+													#('consultation','=',consultation_id),	
+													('cosmetology','=',cosmetology_id),	
+
+													('state','=','draft'),
+													
+													('x_family','=', 'private'),
+												]).id
+
+		#print 'consultation_id: ', consultation_id
+		print 'order_id: ', order_id
+
+
+
+		# Create 
+		if order_id == False:
+
+			#print 'create order'
+			#print 
+			order = self.env['sale.order'].create(
+													{
+														#'treatment': treatment_id,
+														'cosmetology': cosmetology_id,
+
+														'partner_id': partner_id,
+														'patient': patient_id,	
+														
+														#'x_doctor': doctor_id,	
+														'x_therapist': therapist_id,	
+														
+														#'consultation':self.id,
+														
+														'state':'draft',
+														
+														'x_chief_complaint':chief_complaint,
+													}
+												)
+
+			# Create order lines 
+			ret = order.x_create_order_lines()
+			print ret 
+
+
+
+
+			# Copy 
+			pre_order = order.copy({
+										'x_family':'private',
+							})	
+
+
+			order_id = order.id 
+			print order
+		
+
+		print order_id
+		print 
+
+		
+
+
+		return {
+
+			# Mandatory 
+			'type': 'ir.actions.act_window',
+			'name': ' Create Quotation Current', 
+			'view_type': 'form',
+			'view_mode': 'form',
+						
+
+			'res_model': 'sale.order',
+			
+			'res_id': order_id,
+			
+			
+			'flags': {
+					'form': {'action_buttons': True, }
+					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+					},			
+			
+			'target': 'current',
+
+			'context':   {
+
+							#'default_treatment': treatment_id,
+							#'default_consultation': consultation_id,
+							'default_cosmetology': cosmetology_id,
+
+							'default_partner_id': partner_id,
+							'default_patient': patient_id,	
+
+							#'default_x_doctor': doctor_id,	
+							'default_x_therapist': therapist_id,	
+							
+							'default_x_chief_complaint': chief_complaint,	
+						}
+			}
+
+
+	# create_order_current
+
 
 
 
@@ -288,6 +428,8 @@ class Cosmetology(models.Model):
 
 
 
+
+
 # ----------------------------------------------------------- Create procedure ------------------------------------------------------
 	@api.multi 
 	def create_procedure(self):
@@ -295,6 +437,17 @@ class Cosmetology(models.Model):
 		print 
 		print 'jx'
 		print 'Create procedure'
+
+
+		#ret = treatment_funcs.create_procedure_go(self)
+		ret = treatment_funcs.create_procedure_go(self, 'cosmetology')
+		#print ret 
+		print 
+
+	# create_procedure 
+
+
+
 
 
 
@@ -305,8 +458,38 @@ class Cosmetology(models.Model):
 
 		print 
 		print 'jx'
-		print 'Create sessions'
+		print 'Create Sessions'
 
+
+
+		procedure = self.env['openhealth.procedure'].search([('cosmetology','=', self.id)]) 
+		procedure_id = procedure.id
+
+
+		return {
+
+			# Mandatory 
+			'type': 'ir.actions.act_window',
+			'name': 'Open Procedure Current',
+
+
+			# Window action 
+			'res_model': 'openhealth.procedure',
+			'res_id': procedure_id,
+
+
+			# Views 
+			"views": [[False, "form"]],
+			'view_mode': 'form',
+
+			#'target': 'new',
+			'target': 'current',
+
+			'context':   {
+			}
+		}
+
+	# create_session
 
 
 

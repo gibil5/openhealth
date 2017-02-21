@@ -115,6 +115,10 @@ _laser_type_list = [
 
 		('cosmetology','Cosmiatría'), 		
 
+
+		('diamond_tip','diamond_tip'), 	
+
+
 		#('',''), 	
 		#('none','None'), 	
 		]

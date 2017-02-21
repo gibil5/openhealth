@@ -94,11 +94,23 @@ class Evaluation(models.Model):
 
 
 
+
 	doctor = fields.Many2one(
 			'oeh.medical.physician',
 			string = "Médico", 	
-			required=True, 
+			#required=True, 
+			required=False, 
 			)
+
+	therapist = fields.Many2one(
+			'openhealth.therapist',
+			string = "Médico", 	
+			#required=True, 
+			required=False, 
+			)
+
+
+
 
 
 	evaluation_start_date = fields.Date(
@@ -139,6 +151,8 @@ class Evaluation(models.Model):
 			)
 	
 
+
+
 	laser = fields.Selection(
 			#selection = jxvars._laser_type_list, 
 			
@@ -148,6 +162,8 @@ class Evaluation(models.Model):
 			string="Láser", 			
 			compute='_compute_laser', 			
 			)
+	
+
 	
 	#@api.multi
 	@api.depends('product')

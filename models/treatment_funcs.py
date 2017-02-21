@@ -10,13 +10,14 @@ import jrfuncs
 
 
 
-#------------------------------------------------ Buttons ---------------------------------------------------
+#------------------------------------------------ Create Procedure ---------------------------------------------------
 
 # Create procedure 
 
 @api.multi
 
-def create_procedure_go(self):
+#def create_procedure_go(self):
+def create_procedure_go(self, process):
 
 	print 
 	print 'Create Procedure Go'
@@ -24,9 +25,25 @@ def create_procedure_go(self):
 
 	#name = 'name'
 
+
+	treatment = False
+	cosmetology = False
+
+
+	if process == 'treatment':
+		treatment = self.id
+
+	if process == 'cosmetology':
+		cosmetology = self.id
+
+
+
+
 	patient = self.patient.id
 	doctor = self.physician.id
-	treatment = self.id
+
+	therapist = self.therapist.id
+
 	#chief_complaint = self.chief_complaint
 
 
@@ -74,8 +91,13 @@ def create_procedure_go(self):
 				
 				procedure = self.procedure_ids.create({
 														'patient':patient,
+
 														'doctor':doctor,
-														'treatment':treatment,										
+														'therapist':therapist,
+														
+														'treatment':treatment,		
+														'cosmetology':cosmetology,		
+
 														'product':product,
 														'evaluation_start_date':evaluation_start_date,
 														'chief_complaint':chief_complaint,

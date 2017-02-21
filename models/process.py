@@ -127,6 +127,10 @@ class Process(models.Model):
 			)
 
 
+	nr_procedures = fields.Integer(
+			string="Procedimientos",
+			#compute="_compute_nr_procedures",
+	)
 
 
 

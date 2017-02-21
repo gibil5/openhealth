@@ -1263,7 +1263,8 @@ class Treatment(models.Model):
 		print 
 		print 'Create Procedure'
 
-		ret = treatment_funcs.create_procedure_go(self)
+		#ret = treatment_funcs.create_procedure_go(self)
+		ret = treatment_funcs.create_procedure_go(self, 'treatment')
 		#print ret 
 		print 
 

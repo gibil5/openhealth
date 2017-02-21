@@ -98,9 +98,14 @@
 							</group>
 							
 							
+
 							<group>
-								<field name="doctor" options="{'no_create': True}"/>
+								<field name="doctor" options="{'no_create': True}"		attrs="{'invisible':[('doctor', '=', False)]}"	/>
+
+								<field name="therapist" options="{'no_create': True}"	attrs="{'invisible':[('therapist', '=', False)]}"	/>
 							</group>
+							
+
 							<group>
 								<field name="chief_complaint"/>								
 							</group>
@@ -124,7 +129,11 @@
 
 							<group>
 
-								<field name="treatment"/>
+								<field name="treatment"		attrs="{'invisible':[('treatment', '=', False)]}"	/>
+								
+
+								<field name="cosmetology"	attrs="{'invisible':[('cosmetology', '=', False)]}"	/>
+
 
 							</group>
 							<group>								

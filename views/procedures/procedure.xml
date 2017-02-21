@@ -88,7 +88,10 @@
 								</h2>
 								
 								<group></group>
-								<h2><field name="laser"/></h2>
+
+								<h2>
+									<field name="laser"/>
+								</h2>
 
 
 							</div>
@@ -171,18 +174,30 @@
 							<field string="Próxima cita" name="appointment" domain="[('patient', '=', patient)]" options="{'no_create': True}"/>
 							-->
 							
-							<group>
-								<field name="treatment"				string="Tratamiento"	required="0"/>
-								<field name="cosmetology"			string="Cosmiatría"		required="0"/>
+							<group>	
+								<field name="treatment"		attrs="{'invisible':[('treatment', '=', False)]}"	/>
+								
+
+								<field name="cosmetology"	attrs="{'invisible':[('cosmetology', '=', False)]}"	/>
 							</group>
+							
+
 							<group>
 								<field name="evaluation_type"	invisible="0"/>
 							</group>
 							
 							
+
+
 							<group>
-								<field name="doctor" options="{'no_create': True}"/>
+								<field name="doctor" options="{'no_create': True}"		attrs="{'invisible':[('doctor', '=', False)]}"	/>
+
+								<field name="therapist" options="{'no_create': True}"	attrs="{'invisible':[('therapist', '=', False)]}"	/>
 							</group>
+
+
+							
+
 							<group>
 								<field name="chief_complaint"/>								
 							</group>

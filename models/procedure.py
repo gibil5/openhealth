@@ -99,11 +99,13 @@ class Procedure(models.Model):
 
 	treatment = fields.Many2one(
 			'openhealth.treatment',
+			string="Tratamiento", 
 			ondelete='cascade', 
 			)
 
 	cosmetology = fields.Many2one(
 			'openhealth.cosmetology',
+			string="Cosmiatría", 
 			ondelete='cascade', 
 			)
 
@@ -305,13 +307,19 @@ class Procedure(models.Model):
 		# Data
 		procedure_id = self.id 
 		patient_id = self.patient.id
+
+
 		doctor_id = self.doctor.id
+		therapist_id = self.therapist.id
+
+
 		chief_complaint = self.chief_complaint
 		evaluation_type = 'Session'
 		product_id = self.product.id
 
 
 		treatment_id = self.treatment.id
+		cosmetology_id = self.cosmetology.id
 
 
 		laser = self.laser
@@ -407,7 +415,10 @@ class Procedure(models.Model):
 		session = self.env['openhealth.session'].create(
 												{
 													'patient': patient_id,
+
 													'doctor': doctor_id,													
+													'therapist': therapist_id,													
+													
 													'chief_complaint': chief_complaint,
 													'evaluation_start_date': evaluation_start_date,
 													'evaluation_type':evaluation_type,
@@ -447,6 +458,7 @@ class Procedure(models.Model):
 													'appointment': appointment_id,
 
 													'treatment': treatment_id,				
+													'cosmetology': cosmetology_id,				
 												}
 											)
 		session_id = session.id 

@@ -81,8 +81,44 @@ class Cosmetology(models.Model):
 			string='State', 			
 			default = False, 
 
-			#compute="_compute_state",
+			compute="_compute_state",
 		)
+
+
+
+	def _compute_state(self):
+		for record in self:
+
+
+			state = False
+
+
+			#if record.nr_consultations > 0:
+			#	state = 'consultation'
+
+
+			if record.nr_services > 0:
+				state = 'service'
+
+			if record.nr_budgets > 0:
+				state = 'budget'
+
+			if record.nr_invoices > 0:
+				state = 'invoice'
+
+			if record.nr_procedures > 0:
+				state = 'procedure'
+
+			if record.nr_sessions > 0:
+				state = 'sessions'
+
+			#if record.nr_controls > 0:
+			#	state = 'controls'
+
+
+
+			record.state = state
+
 
 
 
@@ -99,7 +135,51 @@ class Cosmetology(models.Model):
 	def _compute_nr_services(self):
 		for record in self:
 
-			record.nr_services= 0
+			#record.nr_services= 0
+			services =		self.env['openhealth.service.cosmetology'].search_count([
+																						('cosmetology','=', record.id),
+																					]) 
+			record.nr_services = services 
+
+
+
+
+
+	# Budgets
+	nr_budgets = fields.Integer(
+			string="Presupuestos",
+			compute="_compute_nr_budgets",
+	)
+	@api.multi
+	def _compute_nr_budgets(self):
+		for record in self:
+
+			record.nr_budgets=self.env['sale.order'].search_count([
+																	('cosmetology','=', record.id),
+																	('state','=', 'draft'),
+																	('x_family','=', 'private'),
+																	]) 
+
+
+
+	# Number of invoices 
+	nr_invoices = fields.Integer(
+			string="Facturas",
+			compute="_compute_nr_invoices",
+	)
+	@api.multi
+	def _compute_nr_invoices(self):
+		for record in self:
+
+			record.nr_invoices=self.env['sale.order'].search_count([
+																	('cosmetology','=', record.id),
+																	('state','=', 'sale'),
+																	]) 
+
+
+
+
+
 
 
 
@@ -117,6 +197,27 @@ class Cosmetology(models.Model):
 																	('cosmetology','=', record.id),
 
 																	]) 
+
+
+
+
+
+
+	# Number of sessions 
+	nr_sessions = fields.Integer(
+			string="Sesiones",
+			compute="_compute_nr_sessions",
+	)
+	@api.multi
+	def _compute_nr_sessions(self):
+		for record in self:
+
+			record.nr_sessions=self.env['openhealth.session'].search_count([
+																	('cosmetology','=', record.id),
+																	]) 
+
+
+
 
 
 

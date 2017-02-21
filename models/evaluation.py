@@ -104,7 +104,7 @@ class Evaluation(models.Model):
 
 	therapist = fields.Many2one(
 			'openhealth.therapist',
-			string = "Médico", 	
+			string = "Terapeuta", 	
 			#required=True, 
 			required=False, 
 			)

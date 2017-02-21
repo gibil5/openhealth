@@ -30,6 +30,8 @@ _sessions_list = [
 		# Cosmetology
 		('6',			'6'),
 		('12',			'12'), 
+
+		('none',		'none'),
 		]
 
 
@@ -52,6 +54,7 @@ _family_list = [
 		# Cosmetology
 		('cosmetology',			'Cosmiatría'),
 
+		('none',		'none'),
 		]
 
 
@@ -96,6 +99,8 @@ _treatment_list = [
 		('',			''), 
 
 
+		('none',		'none'),
+
 		]
 
 
@@ -121,6 +126,7 @@ _laser_type_list = [
 
 		#('',''), 	
 		#('none','None'), 	
+		('none',		'none'),
 		]
 
 
@@ -179,7 +185,9 @@ _zone_list = [
 		('body_all',		'body_all'),
 		('body',		'body'),
 		('face_doublechin_neck',		'face_doublechin_neck'),
+		
 		('',		''),
+		('none',		'none'),
 
 	]
 	
@@ -335,5 +343,7 @@ _pathology_list = [
 		('',		''), 
 		('',		''), 
 
+
+		('none',		'none'),
 	]
 	

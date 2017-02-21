@@ -129,9 +129,10 @@
 
 
 
+
+
+
 					<sheet>
-
-
 
 						<div>						
 
@@ -151,6 +152,8 @@
 
 
 
+
+
 							<!-- Buttons --> 
 							<div class="oe_left" style="width: 400px;" name="buttons">
 							
@@ -164,6 +167,53 @@
 									icon="fa-list">
 									<field string="Servicios" name="nr_services" widget="statinfo"/>
 								</button>
+
+
+								<!-- budgets -->
+								<button type="action" class="oe_stat_button" 
+									name="%(order_list_action)d"	
+									context="{									
+											'search_default_treatment': active_id,
+											}" 											
+									icon="fa-list">
+									<field string="Presupuestos" name="nr_budgets" widget="statinfo"/>
+								</button>
+
+
+								<!-- invoices -->
+								<button type="action" class="oe_stat_button" 
+									name="%(order_list_action)d"	
+									context="{									
+											'search_default_treatment': active_id,
+											}" 											
+									icon="fa-list">
+									<field string="Facturas" name="nr_invoices" widget="statinfo"/>
+								</button>
+
+
+								<!-- procedures -->
+								<button type="action" class="oe_stat_button" 
+									name="%(procedure_list_action)d"	
+									context="{									
+											'search_default_treatment': active_id,
+											}" 											
+									icon="fa-list">
+									<field string="Procedimientos" name="nr_procedures" widget="statinfo"/>
+								</button>
+
+
+								<!-- sessions -->
+								<button type="action" class="oe_stat_button" 
+									name="%(session_list_action)d"	
+									context="{									
+											'search_default_treatment': active_id,
+											}" 											
+									icon="fa-list">
+									<field string="Sesiones" name="nr_sessions" widget="statinfo"/>
+								</button>
+
+
+
 							</div>
 						
 						

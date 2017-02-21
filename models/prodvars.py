@@ -3,6 +3,18 @@
 
 
 
+_time_list = [
+		
+		('15 min','15 min'),	
+		('30 min','30 min'),
+		
+		('60 min','60 min'),
+
+		('none',''),
+		]
+
+
+
 
 _sessions_list = [
 		#('one',			'one'),

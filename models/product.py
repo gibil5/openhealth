@@ -59,8 +59,17 @@ class Product(models.Model):
 			default="",
 		)
 
+
+
+
+
 	x_time = fields.Char(
+			selection=prodvars._time_list,
 		)
+
+
+
+
 
 	x_name_short = fields.Char(
 		)

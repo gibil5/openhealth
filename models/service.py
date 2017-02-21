@@ -187,6 +187,7 @@ class Service(models.Model):
 			)
 
 
+
 	@api.onchange('time_1')
 	def _onchange_time_1(self):
 	

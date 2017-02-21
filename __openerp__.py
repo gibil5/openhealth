@@ -149,6 +149,7 @@
 
 
 		'views/services/service_cosmetology.xml',
+		'views/services/service_cosmetology_zone.xml',
 
 
 

@@ -90,6 +90,35 @@
 
 
 
+
+
+
+		<!-- apppointment - Form Action --> 
+		<record model="ir.actions.act_window" id="appointment_form_action">
+			<field name="name">Citas</field>
+			<field name="res_model">oeh.medical.appointment</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">calendar, tree,form</field>
+			
+			<!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first apppointment
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+
+
+
+
+
+
 		<!-- Window Form Action --> 
 		<record model="ir.actions.act_window" id="procedure_form_action">
 			<field name="name">Procedimientos</field>

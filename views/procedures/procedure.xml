@@ -33,6 +33,18 @@
 						<button 
 							type="object" 
 							class="oe_highlight"
+							string="Controles"
+
+							name="create_controls" 
+
+							attrs="{'invisible':[('laser', '!=', 'laser_co2')]}"
+						/>
+
+
+
+						<button 
+							type="object" 
+							class="oe_highlight"
 							string="Control"
 							name="open_control" 	
 
@@ -42,15 +54,6 @@
 
 
 
-						<button 
-							type="object" 
-							class="oe_highlight"
-							string="Controles"
-
-							name="create_controls" 
-
-							attrs="{'invisible':[('laser', '!=', 'laser_co2')]}"
-						/>
 
 
 

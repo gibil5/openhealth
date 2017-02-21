@@ -19,6 +19,37 @@
 
 
 
+						<!-- Create Appointment --> 
+						<!--
+							context="{									
+											'search_default_treatment': active_id,
+										}" 											
+							name="%(appointment_form_action)d"	
+						-->
+						<button 
+							type="object" 
+
+							class="oe_highlight"
+
+							string="Crear Cita" 
+							
+							attrs="{'invisible':[
+												
+												('state','in',[ 'appointment', 'consultation', 'service', 'budget', 'invoice', 'procedure', 'sessions', 'controls', 'done']), 
+
+												]}"
+
+							name="open_appointment" 
+
+
+						/>
+
+
+
+
+
+
+
 						<!-- Create Consultation --> 
 						<button 
 							type="object" 
@@ -28,7 +59,7 @@
 							
 							attrs="{'invisible':[
 												
-												('state','in',['consultation', 'service', 'budget', 'invoice', 'procedure', 'sessions', 'controls', 'done']), 
+												('state','in',[ False, 'empty', 'consultation', 'service', 'budget', 'invoice', 'procedure', 'sessions', 'controls', 'done']), 
 
 												]}"
 
@@ -45,7 +76,7 @@
 							string="Crear Recomendación" 
 
 							attrs="{'invisible':[
-												('state','in',[ False, 'service', 'budget', 'invoice', 'procedure', 'sessions', 'controls', 'done']),
+												('state','in',[ False, 'appointment', 'service', 'budget', 'invoice', 'procedure', 'sessions', 'controls', 'done']),
 												]}"
 
 
@@ -62,7 +93,7 @@
 							string="Crear Presupuesto" 
 
 							attrs="{'invisible':[
-												('state','in',[ False, 'consultation', 'budget', 'invoice', 'procedure', 'sessions', 'controls', 'done']),
+												('state','in',[ False, 'appointment', 'consultation', 'budget', 'invoice', 'procedure', 'sessions', 'controls', 'done']),
 												]}"
 
 
@@ -79,7 +110,7 @@
 							string="Pagar en Caja" 
 
 							attrs="{'invisible':[
-												('state','in',[ False, 'consultation', 'service', 'invoice', 'procedure', 'sessions', 'controls', 'done']),
+												('state','in',[ False, 'appointment', 'consultation', 'service', 'invoice', 'procedure', 'sessions', 'controls', 'done']),
 												]}"
 
 							name="create_invoice" 
@@ -98,7 +129,7 @@
 							attrs="{ 
 									'invisible':[
 												
-												('state','in',[ False, 'consultation', 'service', 'budget', 'procedure', 'sessions', 'controls', 'done']), 
+												('state','in',[ False, 'appointment', 'consultation', 'service', 'budget', 'procedure', 'sessions', 'controls', 'done']), 
 												
 												]}"
 
@@ -119,7 +150,7 @@
 							attrs="{ 
 									'invisible':[
 												
-												('state','in',[ False, 'consultation', 'service', 'budget', 'invoice', 'sessions', 'controls', 'done']), 
+												('state','in',[ False, 'appointment', 'consultation', 'service', 'budget', 'invoice', 'sessions', 'controls', 'done']), 
 												
 												]}"
 
@@ -140,7 +171,7 @@
 							attrs="{ 
 									'invisible':[
 												
-												('state','in',[ False, 'consultation', 'service', 'budget', 'invoice', 'procedure', 'controls', 'done']), 
+												('state','in',[ False, 'appointment', 'consultation', 'service', 'budget', 'invoice', 'procedure', 'controls', 'done']), 
 												
 												]}"
 
@@ -156,7 +187,7 @@
 						<field 	name="state" 
 								widget="statusbar" 
 
-								statusbar_visible="consultation, service, budget, invoice, procedure, sessions, controls,  done"
+								statusbar_visible="appointment, consultation, service, budget, invoice, procedure, sessions, controls,  done"
 						/>
 
 					</header>

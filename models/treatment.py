@@ -3,7 +3,7 @@
 # 	*** Treatment - OeHealth - new model 
 # 
 # Created: 			 26 Aug 2016
-# Last updated: 	 18 Feb 2017
+# Last updated: 	 21 Feb 2017
 
 
 from openerp import models, fields, api
@@ -19,7 +19,6 @@ import time_funcs
 class Treatment(models.Model):
 
 	#_inherit = 'openextension.treatment'
-
 
 	_inherit = 'openhealth.process'	
 	_name = 'openhealth.treatment'
@@ -98,7 +97,11 @@ class Treatment(models.Model):
 
 	# State 
 	_state_list = [
-        			#('empty', 			'Inicio'),
+        			('empty', 			'Inicio'),
+
+
+        			('appointment', 	'Cita'),
+
 
         			('consultation', 	'Consulta'),
 
@@ -121,7 +124,11 @@ class Treatment(models.Model):
 	state = fields.Selection(
 			selection = _state_list, 
 			string='State', 			
-			default = False, 
+			
+
+			#default = False, 
+			default = 'empty', 
+
 
 			compute="_compute_state",
 		)
@@ -141,6 +148,10 @@ class Treatment(models.Model):
 
 
 			state = False
+
+
+			if record.nr_appointments > 0:
+				state = 'appointment'
 
 
 			if record.nr_consultations > 0:
@@ -177,6 +188,28 @@ class Treatment(models.Model):
 
 
 # ----------------------------------------------------------- Number ofs ------------------------------------------------------
+
+
+
+
+	# Number of appointments 
+	nr_appointments = fields.Integer(
+			string="Citas",
+			compute="_compute_nr_appointments",
+	)
+	@api.multi
+	def _compute_nr_appointments(self):
+		for record in self:
+
+			record.nr_appointments=self.env['oeh.medical.appointment'].search_count([
+
+																	('treatment','=', record.id),
+																	('x_target','=', 'doctor'),
+				
+																	]) 
+
+
+
 
 
 	# Number of Services  
@@ -908,10 +941,79 @@ class Treatment(models.Model):
 
 
 
-	# Buttons
-	# -----------------------------------------------------------------------------------------------------------------
+
+	# ----------------------------------------------------- Open Appointment ------------------------------------------------------------
+
+	# Open Appointment
+	# -----------------
+	@api.multi
+	def open_appointment(self):  
+
+		print 
+		print 'open appointment'
 
 
+		owner_id = self.id 
+		#owner_type = self.owner_type
+
+
+		patient_id = self.patient.id
+
+
+		doctor_id = self.physician.id
+		#therapist_id = self.therapist.id
+
+
+		
+		#treatment_id = self.treatment.id 
+		#cosmetology_id = self.cosmetology.id 
+
+
+
+		GMT = time_funcs.Zone(0,False,'GMT')
+		appointment_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
+		#appointment_date = '2016-12-23'
+
+
+		return {
+				'type': 'ir.actions.act_window',
+
+				'name': ' New Appointment', 
+				
+				'view_type': 'form',
+				
+				#'view_mode': 'form',			
+				'view_mode': 'calendar',			
+				
+				'target': 'current',
+				
+
+				'res_model': 'oeh.medical.appointment',				
+				
+				'flags': 	{
+							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+							'form': {'action_buttons': True, }
+							},
+
+
+				'context': {
+							#'default_consultation': owner_id,					
+							'default_treatment': owner_id,
+							
+							'default_patient': patient_id,
+							'default_doctor': doctor_id,
+							
+							#'default_x_type': owner_type,
+
+							'default_appointment_date': appointment_date,
+							}
+				}
+
+
+
+
+
+	# ----------------------------------------------------- Open Consultation ------------------------------------------------------------
 
 	# Consultation - NEW
 	# --------------------
@@ -1107,6 +1209,9 @@ class Treatment(models.Model):
 					#'default_consultation_id': consultation_id,
 				}
 		}
+
+
+
 
 
 

@@ -25,7 +25,7 @@ class ServiceCosmetology(models.Model):
 	
 	
 
-
+# ----------------------------------------------------------- Canonicals ------------------------------------------------------
 
 	# Service 
 	service = fields.Many2one(
@@ -56,28 +56,295 @@ class ServiceCosmetology(models.Model):
 	# Criosurgery
 	cos_dia = fields.Selection(
 			selection = cosvars._cos_dia_list, 
-			default='none',	
-			string="Punta de Diamante",
+			default='none',
+
+			string="Rostro (Limpieza facial profunda)",
 			)
 
 
-	# Hialuronic
-	cos_car = fields.Selection(
+
+
+
+	# Carboxytherapy 
+
+	cos_car_fac = fields.Selection(
 			selection = cosvars._cos_car_list, 
 			default='none',	
-			string="Carboxiterapia",
+			string="Rostro",
 			)
 
 
-	# Sclerotherapy
-	cos_tri = fields.Selection(
+	cos_car_bod = fields.Selection(
+			selection = cosvars._cos_car_list, 
+			default='none',	
+			string="Cuerpo",
+			)
+
+
+
+
+
+	# Laser Triactive
+	cos_tri_fac = fields.Selection(
 			selection = cosvars._cos_tri_list, 
 			default='none',	
-			string="Láser Triactive",
+			string="Rostro, Papada y Cuello",
+			)
+
+	cos_tri_bod = fields.Selection(
+			selection = cosvars._cos_tri_list, 
+			default='none',	
+			string="Todo Cuerpo",
 			)
 
 
 
 
 
+# ----------------------------------------------------------- On Changes ------------------------------------------------------
+
+
+	# Diamond
+	@api.onchange('cos_dia')
+	def _onchange_cos_dia(self):
+		
+		if self.cos_dia != 'none':
+			print 
+			print 'cos_dia'
+			print 
+
+
+			self.cos_dia = self.clear_all_med(self.cos_dia)
+			#self.clear_local()
+
+
+
+			self.x_treatment = 'diamond_tip'
+
+			self.zone = 'face'
+
+			self.pathology = 'deep_face_cleansing'
+								
+			self.time = '30 min'
+
+
+
+			self.sessions = self.cos_dia
+
+			return {
+				'domain': {'service': [
+
+										('x_treatment', '=', self.x_treatment),
+				
+										('x_sessions', '=', self.sessions),
+
+										]},
+			}
+
+
+
+
+
+
+
+	# Carboxytherapy - Face
+
+	@api.onchange('cos_car_fac')
+	def _onchange_cos_car_fac(self):
+		
+		if self.cos_car_fac != 'none':
+			print 
+			print 'cos_car_fac'
+			print 
+
+			self.cos_car_fac = self.clear_all_med(self.cos_car_fac)
+
+
+
+			self.x_treatment = 'carboxytherapy'
+
+			self.zone = 'face'
+
+			self.pathology = 'rejuvenation_face'
+								
+			self.time = '30 min'
+
+
+			self.sessions = self.cos_car_fac
+
+			return {
+				'domain': {'service': [
+
+										('x_treatment', '=', self.x_treatment),
+				
+										('x_zone', '=', self.zone),
+
+										('x_sessions', '=', self.sessions),
+
+										]},
+			}
+
+
+
+	# Carboxytherapy - Body
+
+	@api.onchange('cos_car_bod')
+	def _onchange_cos_car_bod(self):
+		
+		if self.cos_car_bod != 'none':
+			print 
+			print 'cos_car_bod'
+			print 
+
+			self.cos_car_bod = self.clear_all_med(self.cos_car_bod)
+
+
+
+			self.x_treatment = 'carboxytherapy'
+
+			self.zone = 'body'
+
+			self.pathology = 'rejuvenation_face'
+								
+			self.time = '30 min'
+
+
+			self.sessions = self.cos_car_bod
+
+
+			return {
+				'domain': {'service': [
+
+										('x_treatment', '=', self.x_treatment),
+				
+										('x_zone', '=', self.zone),
+
+										('x_sessions', '=', self.sessions),
+
+										]},
+			}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	# Laser Triactive - Face
+	@api.onchange('cos_tri_fac')
+	def _onchange_cos_tri_fac(self):
+		
+		if self.cos_tri_fac != 'none':
+			print 
+			print 'cos_tri_fac'
+			print 
+
+			self.cos_tri_fac = self.clear_all_med(self.cos_tri_fac)
+			#self.clear_local()
+
+
+			self.x_treatment = 'triactive_carboxytherapy'
+
+			self.zone = 'face_doublechin_neck'
+
+			self.pathology = 'reaffirmation'
+								
+			self.time = '30 min'
+
+
+
+			self.sessions = self.cos_tri_fac
+
+
+			return {
+				'domain': {'service': [
+										('x_treatment', '=', self.x_treatment),
+				
+										('x_zone', '=', self.zone),
+
+										('x_sessions', '=', self.sessions),
+										]},
+			}
+
+
+
+
+
+
+	# Laser Triactive - Body
+	@api.onchange('cos_tri_bod')
+	def _onchange_cos_tri_bod(self):
+		
+		if self.cos_tri_bod != 'none':
+			print 
+			print 'cos_tri_bod'
+			print 
+
+			self.cos_tri_bod = self.clear_all_med(self.cos_tri_bod)
+			#self.clear_local()
+
+
+			self.x_treatment = 'triactive_carboxytherapy_reductionchamber'
+
+			self.zone = 'body_all'
+
+			self.pathology = 'reduction_weight_measures'
+								
+			self.time = '30 min'
+
+
+
+			self.sessions = self.cos_tri_bod
+
+
+			return {
+				'domain': {'service': [
+										('x_treatment', '=', self.x_treatment),
+				
+										('x_zone', '=', self.zone),
+
+										('x_sessions', '=', self.sessions),
+										]},
+			}
+
+
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Functions ------------------------------------------------------
+
+	def clear_all_med(self,token):		
+		#self.clear_commons()
+		self.clear_local_cos()
+		return token
+
+
+	@api.multi
+	def clear_local_cos(self):
+
+		print 'clear_local_cos'
+		
+		self.cos_dia = 'none'
+		self.cos_car = 'none'
+		self.cos_tri = 'none'
+
+		
 

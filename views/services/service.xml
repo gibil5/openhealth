@@ -60,13 +60,14 @@
 								<group>
 									<field name="laser" readonly="1"  invisible="0"/>	
 
+									<field name="x_treatment" 	readonly="1"   	invisible="0"/>
 									<field name="zone" 		readonly="1"   	invisible="0"/>
 									<field name="pathology" readonly="1"  	invisible="0"/>									
+									<field name="sessions" 		readonly="1"  	invisible="0"/>									
+									<field name="time" 		readonly="1"  	invisible="0"/>									
 									<!--								
 									<field name="family" 		readonly="1"   	invisible="0"/>
 									-->
-									<field name="x_treatment" 	readonly="1"   	invisible="0"/>
-									<field name="sessions" 		readonly="1"  	invisible="0"/>									
 								</group>
 								
 								

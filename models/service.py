@@ -9,15 +9,15 @@
 from openerp import models, fields, api
 from datetime import datetime
 
-import jxvars
 
 
 import exc
 import ipl
 
-import prodvars
 
-import service_vars
+#import jxvars
+#import service_vars
+import prodvars
 
 
 	
@@ -67,7 +67,10 @@ class Service(models.Model):
 
 	laser = fields.Selection(
 			#selection = jxvars._laser_type_list, 
-			selection = service_vars._laser_type_list, 
+
+			#selection = service_vars._laser_type_list, 
+			selection = prodvars._laser_type_list, 
+			
 			string="Láser", 			
 			default='none',			
 			#required=True, 
@@ -77,29 +80,39 @@ class Service(models.Model):
 
 
 	x_treatment = fields.Selection(
+
 			selection=prodvars._treatment_list,
+			
 			string="Tratamiento", 			
 		)	
 
 
 
 	zone = fields.Selection(
-			selection = jxvars._zone_list, 
+
+			#selection = jxvars._zone_list, 
+			selection = prodvars._zone_list, 
+		
 			string="Zona", 
 			)
 
 
 	pathology = fields.Selection(
 			#selection = jxvars._pathology_list, 
-			selection = service_vars._pathology_list, 
+			#selection = service_vars._pathology_list, 
+
+			selection = prodvars._pathology_list, 
+			
 			string="Patología", 
 			)
 
 
 
 	sessions = fields.Selection(
+
 			#selection = jxvars._pathology_list, 
 			selection = prodvars._sessions_list, 
+		
 			string="Sesiones", 
 			)
 
@@ -178,8 +191,11 @@ class Service(models.Model):
 	# Time 
 	time = fields.Char(
 			default='',
+			string="Tiempo", 
 	)
 	
+
+
 	time_1 = fields.Selection(
 			selection = exc._time_list, 
 			string="Tiempo", 

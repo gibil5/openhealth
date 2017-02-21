@@ -1,37 +1,10 @@
 # -*- coding: utf-8 -*-
 
 
+# DEPRECATED ?
 
 
 
-
-# Laser
-_laser_type_list = [
-		('laser_co2','Laser Co2'), 
-		('laser_excilite','Laser Excilite'), 
-		('laser_ipl','Laser Ipl'), 
-		('laser_ndyag','Laser Ndyag'), 
-
-
-		#('criosurgery',			'criosurgery'),
-		#('hyaluronic_acid',		'hyaluronic_acid'),
-		#('sclerotherapy',		'sclerotherapy'),
-		#('lepismatic',			'lepismatic'),
-		#('plasma',				'plasma'),
-		#('botulinum_toxin',		'botulinum_toxin'),
-		#('intravenous_vitamin',	'intravenous_vitamin'),
-
-
-		('medical','Tratamiento médico'), 
-		#('none','None'), 	
-
-
-		('cosmetology','Cosmiatría'), 
-		
-
-		#('na',''), 	
-		#('',''), 	
-		]
 
 
 

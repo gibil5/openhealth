@@ -21,23 +21,14 @@
 					<group>	
 
 						<group>
-							<!--
-							<field name="family"  widget="radio" />														
-							<field name="zone"  invisible="0" />							
-							<field name="family"  invisible="0" />							
-							-->
-
 							<field name="name_short"  invisible="0" />							
 						</group>
 
 						<group>
-							<!--							
-							<field name="treatment"  widget="radio" />							
-							<field name="pathology"  invisible="0" />							
-							-->
+							<!--
 							<field name="treatment"  invisible="0" />							
-						
-
+							-->
+							<field name="cosmetology"   />							
 						</group>
 						
 					</group>
@@ -46,16 +37,15 @@
 
 
 
+
+
 				<xpath expr="//field[@name='notebook_over']" position="after">
-					
-
-
 				<notebook>				
 				
 
 
 
-					<!-- Criosurgery -->
+					<!-- Diamond -->
 					<page string="Punta de Diamante">
 						<group>						
 							<group>
@@ -66,22 +56,32 @@
 
 
 
-					<!-- Hyaluronic Acid --> 
+					<!-- Carboxytherapy --> 
 					<page string="Carboxiterapia">		
 						<group>						
 							<group>
-								<field name="cos_car"  widget="radio" />							
+								<field name="cos_car_fac"  widget="radio" />							
+							</group>
+						</group>
+						<group>						
+							<group>
+								<field name="cos_car_bod"  widget="radio" />							
 							</group>
 						</group>
 					</page>
 
 
 
-					<!-- Sclerotherapy --> 
+					<!-- Laser Triactive --> 
 					<page string="Láser Triactive">
 						<group>						
 							<group>
-								<field name="cos_tri"  widget="radio" />							
+								<field name="cos_tri_fac"  widget="radio" />							
+							</group>
+						</group>
+						<group>						
+							<group>
+								<field name="cos_tri_bod"  widget="radio" />							
 							</group>
 						</group>
 					</page>

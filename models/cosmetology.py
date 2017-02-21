@@ -21,6 +21,7 @@ class Cosmetology(models.Model):
 	
 
 
+# ----------------------------------------------------------- Canonicals ------------------------------------------------------
 
 	name = fields.Char(
 			string="Cosmiatría #", 
@@ -109,7 +110,7 @@ class Cosmetology(models.Model):
 
 
 	service_ids = fields.One2many(
-			'openhealth.service', 	
+			'openhealth.service.cosmetology', 	
 			'cosmetology', 
 			string="Servicios"
 		)

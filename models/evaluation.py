@@ -14,7 +14,8 @@ from datetime import datetime
 import jxvars
 import eval_vars
 
-import service_vars
+#import service_vars
+import prodvars
 
 
 
@@ -140,7 +141,10 @@ class Evaluation(models.Model):
 
 	laser = fields.Selection(
 			#selection = jxvars._laser_type_list, 
-			selection = service_vars._laser_type_list, 
+			
+			#selection = service_vars._laser_type_list, 
+			selection = prodvars._laser_type_list, 
+			
 			string="Láser", 			
 			compute='_compute_laser', 			
 			)

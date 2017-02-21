@@ -3,29 +3,37 @@
 
 
 
+
+
+
+
 # Criosurgery
 _cos_dia_list = [
-		('1',			'1 Sesión'),	
-		('10',			'6 Sesiones'),
+		('1',			'1 Sesión (30 min)'),	
+		('6',			'6 Sesiones (30 min)'),
 
 		('none',''),
 		]
+
 
 
 
 # Hialuronic
 _cos_car_list = [
-		('hialuronic',			'1 Jeringa - Rejuvenecimiento Facial'),	
-		('hialuronic_repair',	'1 Jeringa - Rejuvenecimiento Facial - REPAIR'),
+		('1',			'1 Sesión (30 min)'),	
+		('6',			'6 Sesiones (30 min)'),
 
 		('none',''),
 		]
 
 
 
+
 # Sclerotherapy
 _cos_tri_list = [
-		('sclerotherapy',		'Piernas - Varices'),	
+		('1',			'1 Sesión (30 min)'),	
+		('6',			'6 Sesiones (30 min)'),
+		('12',			'12 Sesiones (30 min)'),	
 
 		('none',''),
 		]

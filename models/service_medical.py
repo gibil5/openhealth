@@ -120,6 +120,7 @@ class ServiceMedical(models.Model):
 		self.clear_local_med()
 		return token
 
+
 	@api.multi
 	def clear_local_med(self):
 

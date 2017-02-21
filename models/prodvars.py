@@ -25,6 +25,11 @@ _sessions_list = [
 
 		('2',			'2'),
 		('3',			'3'),
+
+
+		# Cosmetology
+		('6',			'6'),
+		('12',			'12'), 
 		]
 
 
@@ -48,6 +53,10 @@ _family_list = [
 		('cosmetology',			'Cosmiatría'),
 
 		]
+
+
+
+
 
 
 
@@ -88,6 +97,30 @@ _treatment_list = [
 
 
 		]
+
+
+
+
+
+
+
+# Laser
+_laser_type_list = [
+		('laser_co2','Laser Co2'), 
+		('laser_excilite','Laser Excilite'), 
+		('laser_ipl','Laser Ipl'), 
+		('laser_ndyag','Laser Ndyag'), 
+
+		('medical','Tratamiento médico'), 
+
+		('cosmetology','Cosmiatría'), 		
+
+		#('',''), 	
+		#('none','None'), 	
+		]
+
+
+
 
 
 
@@ -143,8 +176,6 @@ _zone_list = [
 		('body',		'body'),
 		('face_doublechin_neck',		'face_doublechin_neck'),
 		('',		''),
-
-		 
 
 	]
 	
@@ -288,16 +319,17 @@ _pathology_list = [
 
 
 
+
 		# Cosmetology
 		('deep_face_cleansing',		'deep_face_cleansing'), 
+
 		('reaffirmation',		'reaffirmation'), 
-		('reduction_weight_measures',		'reduction_weight_measures'), 
-		('',		''), 
-		('',		''), 
-		('',		''), 
-
-
 		
+		('reduction_weight_measures',		'reduction_weight_measures'), 
+
+		('',		''), 
+		('',		''), 
+		('',		''), 
 
 	]
 	

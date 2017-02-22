@@ -86,89 +86,13 @@
 
 
 
-					<!--
-					<button 
-							attrs="{'invisible':[('x_sales_document', '!=', 'receipt')]}"
-
-							type="object" 
-							
-							class="oe_highlight"
-
-							string="Boleta" 
-
-							name="create_receipt" 
-					/>
-					-->
-
-
-					<button 
-							attrs="{'invisible':[('x_sales_document', '!=', 'invoice')]}"
-
-							type="object" 
-
-							class="oe_highlight"
-
-							string="Factura" 
-
-							name="create_invoice" 
-					/>
 
 
 
 
 
 
-					<button 
-							attrs="{'invisible':[('x_sales_document', '!=', 'advertisement')]}"
 
-							type="object" 
-
-							class="oe_highlight"
-
-							string="Canje publicidad" 
-
-							name="create_advertisement" 
-					/>
-
-
-
-					<button 
-							attrs="{'invisible':[('x_sales_document', '!=', 'sale_note')]}"
-
-							type="object" 
-
-							class="oe_highlight"
-
-							string="Canje (nv)" 
-
-							name="create_sale_note" 
-					/>
-
-
-					<button 
-							attrs="{'invisible':[('x_sales_document', '!=', 'ticket_receipt')]}"
-
-							type="object" 
-
-							class="oe_highlight"
-
-							string="Ticket boleta" 
-
-							name="create_ticket_receipt" 
-					/>
-
-
-					<button 
-							attrs="{'invisible':[('x_sales_document', '!=', 'ticket_invoice')]}"
-
-							type="object" 
-
-							class="oe_highlight"	
-
-							string="Ticket factura" 
-
-							name="create_ticket_invoice" 
-					/>
 
 
 

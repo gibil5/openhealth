@@ -57,6 +57,15 @@ class SaleDocument(models.Model):
 
 
 
+	ruc = fields.Char(
+			string="RUC", 	
+			#required=True, 
+		)
+
+
+
+
+
 
 
 	receipt = fields.Many2one(
@@ -68,35 +77,35 @@ class SaleDocument(models.Model):
 
 	invoice = fields.Many2one(
 			'openhealth.invoice',
-			string = "Boleta", 			
+			string = "Factura", 			
 			#required=True, 
 		)
 
 
 	advertisement = fields.Many2one(
 			'openhealth.advertisement',
-			string = "Boleta", 			
+			string = "Canje publicidad", 			
 			#required=True, 
 		)
 
 
 	sale_note = fields.Many2one(
 			'openhealth.sale_note',
-			string = "Boleta", 			
+			string = "Nota de venta", 			
 			#required=True, 
 		)
 
 
 	ticket_receipt = fields.Many2one(
 			'openhealth.ticket_receipt',
-			string = "Boleta", 			
+			string = "Ticket Boleta", 			
 			#required=True, 
 		)
 
 
 	ticket_invoice = fields.Many2one(
 			'openhealth.ticket_invoice',
-			string = "Boleta", 			
+			string = "Ticket Factura", 			
 			#required=True, 
 		)
 
@@ -154,7 +163,8 @@ class SaleDocument(models.Model):
 
 
 				'context': {
-							'default_order': self.id,
+							'default_order': self.order.id,
+
 							'default_total': self.total,
 
 							'default_partner': self.partner.id,
@@ -175,19 +185,19 @@ class SaleDocument(models.Model):
 
 
 		# Search 
-		invoice_id = self.env['openhealth.invoice'].search([('order','=',self.id),]).id
+		invoice_id = self.env['openhealth.invoice'].search([('order','=',self.order.id),]).id
 
 		# Create 
 		if invoice_id == False:
 
 			invoice = self.env['openhealth.invoice'].create({
-																'order': self.id,
+																'order': self.order.id,
 
-																'total': self.amount_total, 
+																'total': self.total, 
 																
-																'ruc': self.x_ruc,	
+																'ruc': self.ruc,	
 
-																'partner': self.partner_id.id,	
+																'partner': self.partner.id,	
 													})
 			invoice_id = invoice.id 
 
@@ -216,11 +226,11 @@ class SaleDocument(models.Model):
 
 
 				'context': {
-							'default_order': self.id,
-							'default_total': self.amount_total,
-							'default_ruc': self.x_ruc,
+							'default_order': self.order.id,
+							'default_total': self.total,
+							'default_ruc': self.ruc,
 
-							'default_partner': self.partner_id.id,
+							'default_partner': self.partner.id,
 							}
 				}
 
@@ -238,16 +248,17 @@ class SaleDocument(models.Model):
 
 
 		# Search 
-		advertisement_id = self.env['openhealth.advertisement'].search([('order','=',self.id),]).id
+		advertisement_id = self.env['openhealth.advertisement'].search([('order','=',self.order.id),]).id
 
 		# Create 
 		if advertisement_id == False:
 
 			advertisement = self.env['openhealth.advertisement'].create({
-																'order': self.id,
-																'total': self.amount_total, 
+																'order': self.order.id,
 
-																'partner': self.partner_id.id,	
+																'total': self.total, 
+
+																'partner': self.partner.id,	
 													})
 			advertisement_id = advertisement.id 
 
@@ -275,10 +286,11 @@ class SaleDocument(models.Model):
 
 
 				'context': {
-							'default_order': self.id,
-							'default_total': self.amount_total,
+							'default_order': self.order.id,
 
-							'default_partner': self.partner_id.id,
+							'default_total': self.total,
+
+							'default_partner': self.partner.id,
 							}
 				}
 
@@ -298,16 +310,17 @@ class SaleDocument(models.Model):
 
 
 		# Search 
-		sale_note_id = self.env['openhealth.sale_note'].search([('order','=',self.id),]).id
+		sale_note_id = self.env['openhealth.sale_note'].search([('order','=',self.order.id),]).id
 
 		# Create 
 		if sale_note_id == False:
 
 			sale_note = self.env['openhealth.sale_note'].create({
-																'order': self.id,
-																'total': self.amount_total, 
+																'order': self.order.id,
 
-																'partner': self.partner_id.id,	
+																'total': self.total, 
+
+																'partner': self.partner.id,	
 													})
 			sale_note_id = sale_note.id 
 
@@ -336,10 +349,11 @@ class SaleDocument(models.Model):
 
 
 				'context': {
-							'default_order': self.id,
-							'default_total': self.amount_total,
+							'default_order': self.order.id,
 
-							'default_partner': self.partner_id.id,
+							'default_total': self.total,
+
+							'default_partner': self.partner.id,
 							}
 				}
 
@@ -360,16 +374,17 @@ class SaleDocument(models.Model):
 		print 'Create Ticekt Receipt'
 
 		# Search 
-		ticket_receipt_id = self.env['openhealth.ticket_receipt'].search([('order','=',self.id),]).id
+		ticket_receipt_id = self.env['openhealth.ticket_receipt'].search([('order','=',self.order.id),]).id
 
 		# Create 
 		if ticket_receipt_id == False:
 
 			ticket_receipt = self.env['openhealth.ticket_receipt'].create({
-																'order': self.id,
-																'total': self.amount_total, 
+																'order': self.order.id,
 
-																'partner': self.partner_id.id,	
+																'total': self.total, 
+
+																'partner': self.partner.id,	
 													})
 			ticket_receipt_id = ticket_receipt.id 
 
@@ -398,10 +413,10 @@ class SaleDocument(models.Model):
 
 
 				'context': {
-							'default_order': self.id,
-							'default_total': self.amount_total,
+							'default_order': self.order.id,
+							'default_total': self.total,
 
-							'default_partner': self.partner_id.id,
+							'default_partner': self.partner.id,
 							}
 				}
 
@@ -422,16 +437,17 @@ class SaleDocument(models.Model):
 
 
 		# Search 
-		ticket_invoice_id = self.env['openhealth.ticket_invoice'].search([('order','=',self.id),]).id
+		ticket_invoice_id = self.env['openhealth.ticket_invoice'].search([('order','=',self.order.id),]).id
 
 		# Create 
 		if ticket_invoice_id == False:
 
 			ticket_invoice = self.env['openhealth.ticket_invoice'].create({
-																'order': self.id,
-																'total': self.amount_total, 
+																'order': self.order.id,
 
-																'partner': self.partner_id.id,	
+																'total': self.total, 
+
+																'partner': self.partner.id,	
 													})
 			ticket_invoice_id = ticket_invoice.id 
 
@@ -460,10 +476,11 @@ class SaleDocument(models.Model):
 
 
 				'context': {
-							'default_order': self.id,
-							'default_total': self.amount_total,
+							'default_order': self.order.id,
 
-							'default_partner': self.partner_id.id,
+							'default_total': self.total,
+
+							'default_partner': self.partner.id,
 							}
 				}
 

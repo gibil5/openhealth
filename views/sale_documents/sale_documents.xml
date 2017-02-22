@@ -6,9 +6,7 @@
 
 		<!-- Form view -->
 		<record model="ir.ui.view" id="sale_document_form_view">
-
-			<field name="name">payment.method.form</field>
-			
+			<field name="name">sale.document.form</field>
 			<field name="model">openhealth.sale_document</field>
 
 			<!--
@@ -20,7 +18,6 @@
 			<field name="arch" type="xml">
 
 				
-
 
 				<form string="Sale Document - Form">
 
@@ -43,6 +40,93 @@
 
 								name="create_receipt" 
 						/>
+
+
+
+
+						<!--
+								attrs="{'invisible':[('x_sales_document', '!=', 'invoice')]}"
+						-->
+						<button 
+
+								type="object" 
+
+								class="oe_highlight"
+
+								string="Factura" 
+
+								name="create_invoice" 
+						/>						
+
+
+
+
+
+						<!--
+								attrs="{'invisible':[('x_sales_document', '!=', 'advertisement')]}"
+						-->
+						<button 
+
+								type="object" 
+
+								class="oe_highlight"
+
+								string="Canje publicidad" 
+
+								name="create_advertisement" 
+						/>
+
+
+
+
+					<!--
+							attrs="{'invisible':[('x_sales_document', '!=', 'sale_note')]}"
+					-->
+					<button 
+
+							type="object" 
+
+							class="oe_highlight"
+
+							string="Canje (nv)" 
+
+							name="create_sale_note" 
+					/>
+
+
+					<!--
+							attrs="{'invisible':[('x_sales_document', '!=', 'ticket_receipt')]}"
+					-->
+					<button 
+
+							type="object" 
+
+							class="oe_highlight"
+
+							string="Ticket boleta" 
+
+							name="create_ticket_receipt" 
+					/>
+
+
+					<!--
+							attrs="{'invisible':[('x_sales_document', '!=', 'ticket_invoice')]}"
+					-->
+					<button 
+
+							type="object" 
+
+							class="oe_highlight"	
+
+							string="Ticket factura" 
+
+							name="create_ticket_invoice" 
+					/>
+
+
+
+
+					
 					</header>
 
 
@@ -65,7 +149,6 @@
 							<group>
 								<field name="order"   />													
 
-								<field name="receipt"   />													
 
 
 							</group>
@@ -75,6 +158,41 @@
 
 						<group>
 							<group>
+
+
+
+								<field name="receipt"/>
+								
+								<field name="invoice"/>
+
+								<field name="advertisement"/>
+								
+								<field name="sale_note"/>
+								
+								<field name="ticket_receipt"/>
+								
+								<field name="ticket_invoice"/>
+
+
+
+
+								<!--
+								<field name="receipt" 				attrs="{'invisible':[('receipt', '=', False)]}"			/>
+								
+								<field name="invoice"				attrs="{'invisible':[('invoice', '=', False)]}"			/>
+
+								<field name="advertisement"			attrs="{'invisible':[('advertisement', '=', False)]}"	/>
+
+
+								
+								<field name="sale_note"				attrs="{'invisible':[('sale_note', '=', False)]}"		/>
+								
+								<field name="ticket_receipt"		attrs="{'invisible':[('ticket_receipt', '=', False)]}"	/>
+								
+								<field name="ticket_invoice"		attrs="{'invisible':[('ticket_invoice', '=', False)]}"	/>
+								-->
+
+
 								<field name="total"   />													
 							</group>
 

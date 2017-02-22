@@ -37,10 +37,8 @@ class Invoice(models.Model):
 
 
 
-	ruc = fields.Char(
-
-			string="RUC", 
-						
-			required=True, 
-		)
+	#ruc = fields.Char(
+	#		string="RUC", 					
+	#		required=True, 
+	#	)
 

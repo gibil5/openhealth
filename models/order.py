@@ -27,13 +27,6 @@ class sale_order(models.Model):
 
 
 
-	#@api.multi 
-	#def create_sale_document(self):
-	#	print 
-	#	print 'Create Sale Document'
-
-
-
 
 
 	# Doctor 
@@ -237,6 +230,7 @@ class sale_order(models.Model):
 
 
 
+
 	# Number of paymethods  
 	nr_pay_methods = fields.Integer(
 			string="Documentos de venta",
@@ -314,6 +308,8 @@ class sale_order(models.Model):
 
 
 
+
+
 # ---------------------------------------------- Create PM --------------------------------------------------------
 	@api.multi 
 	def create_payment_method(self):
@@ -328,6 +324,11 @@ class sale_order(models.Model):
 		name = 'Pago ' + str(nr_pm + 1)
 
 		method = 'cash'
+
+		balance = self.amount_total - self.pm_total
+
+		#total = self.amount_total
+
 
 		
 		print nr_pm
@@ -357,6 +358,13 @@ class sale_order(models.Model):
 							'default_order': self.id,
 							'default_name': name,
 							'default_method': method,
+							
+
+							'default_subtotal': balance,
+
+							'default_total': self.amount_total,
+
+							'default_pm_total': self.pm_total,
 							}
 				}
 
@@ -368,42 +376,45 @@ class sale_order(models.Model):
 
 
 
-# ---------------------------------------------- Create Receipt --------------------------------------------------------
+
+# ---------------------------------------------- Create Sale Document --------------------------------------------------------
+
 	@api.multi 
-	def create_receipt(self):
+	def create_sale_document(self):
 		print 
-		print 'Create Receipt'
+		print 'Create Sale Document'
 
 
 		# Search 
-		receipt_id = self.env['openhealth.receipt'].search([('order','=',self.id),]).id
+		sale_document_id = self.env['openhealth.sale_document'].search([('order','=',self.id),]).id
+
+
 
 		# Create 
-		if receipt_id == False:
+		if sale_document_id == False:
 
-			receipt = self.env['openhealth.receipt'].create({
-																'order': self.id,
-																'total': self.amount_total, 
+			sale_document = self.env['openhealth.sale_document'].create({
+																			'order': self.id,
+																			'total': self.amount_total, 
+																			'partner': self.partner_id.id,				
+																		})
+			sale_document_id = sale_document.id 
 
-																'partner': self.partner_id.id,				
-													})
-			receipt_id = receipt.id 
 
-
-		self.receipt = receipt_id
+		self.sale_document = sale_document_id
 
 
 		return {
 				'type': 'ir.actions.act_window',
-				'name': ' New Receipt Current', 
+				'name': ' New sale_document Current', 
 
 				'view_type': 'form',
 				'view_mode': 'form',	
 				'target': 'current',
 
 
-				'res_model': 'openhealth.receipt',				
-				'res_id': receipt_id,
+				'res_model': 'openhealth.sale_document',				
+				'res_id': sale_document_id,
 
 
 				'flags': 	{
@@ -415,316 +426,14 @@ class sale_order(models.Model):
 				'context': {
 							'default_order': self.id,
 							'default_total': self.amount_total,
-
 							'default_partner': self.partner_id.id,
 							}
 				}
 
-	# create_receipt
+	# create_sale_document
 
 
 
-
-
-# ---------------------------------------------- Create Invoice --------------------------------------------------------
-	@api.multi 
-	def create_invoice(self):
-		print 
-		print 'Create Invoice'
-
-
-		# Search 
-		invoice_id = self.env['openhealth.invoice'].search([('order','=',self.id),]).id
-
-		# Create 
-		if invoice_id == False:
-
-			invoice = self.env['openhealth.invoice'].create({
-																'order': self.id,
-																'total': self.amount_total, 
-																'ruc': self.x_ruc,	
-
-																'partner': self.partner_id.id,	
-													})
-			invoice_id = invoice.id 
-
-
-
-		self.x_invoice = invoice_id
-
-
-		return {
-				'type': 'ir.actions.act_window',
-				'name': ' New invoice Current', 
-
-				'view_type': 'form',
-				'view_mode': 'form',	
-				'target': 'current',
-
-
-				'res_model': 'openhealth.invoice',				
-				'res_id': invoice_id,
-
-
-				'flags': 	{
-							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-							'form': {'action_buttons': True, }
-							},
-
-
-				'context': {
-							'default_order': self.id,
-							'default_total': self.amount_total,
-							'default_ruc': self.x_ruc,
-
-							'default_partner': self.partner_id.id,
-							}
-				}
-
-	# create_invoice
-
-
-
-
-
-# ---------------------------------------------- Create advertisement --------------------------------------------------------
-	@api.multi 
-	def create_advertisement(self):
-		print 
-		print 'Create advertisement'
-
-
-		# Search 
-		advertisement_id = self.env['openhealth.advertisement'].search([('order','=',self.id),]).id
-
-		# Create 
-		if advertisement_id == False:
-
-			advertisement = self.env['openhealth.advertisement'].create({
-																'order': self.id,
-																'total': self.amount_total, 
-
-																'partner': self.partner_id.id,	
-													})
-			advertisement_id = advertisement.id 
-
-
-		self.x_advertisement = advertisement_id
-
-
-		return {
-				'type': 'ir.actions.act_window',
-				'name': ' New advertisement Current', 
-
-				'view_type': 'form',
-				'view_mode': 'form',	
-				'target': 'current',
-
-
-				'res_model': 'openhealth.advertisement',				
-				'res_id': advertisement_id,
-
-
-				'flags': 	{
-							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-							'form': {'action_buttons': True, }
-							},
-
-
-				'context': {
-							'default_order': self.id,
-							'default_total': self.amount_total,
-
-							'default_partner': self.partner_id.id,
-							}
-				}
-
-	# create_advertisement
-
-
-
-
-
-
-# ---------------------------------------------- Create Sale Note --------------------------------------------------------
-	@api.multi 
-	def create_sale_note(self):
-		print 
-		print 'Create Sale Note'
-
-
-
-		# Search 
-		sale_note_id = self.env['openhealth.sale_note'].search([('order','=',self.id),]).id
-
-		# Create 
-		if sale_note_id == False:
-
-			sale_note = self.env['openhealth.sale_note'].create({
-																'order': self.id,
-																'total': self.amount_total, 
-
-																'partner': self.partner_id.id,	
-													})
-			sale_note_id = sale_note.id 
-
-
-
-		self.x_sale_note = sale_note_id
-
-
-		return {
-				'type': 'ir.actions.act_window',
-				'name': ' New sale_note Current', 
-
-				'view_type': 'form',
-				'view_mode': 'form',	
-				'target': 'current',
-
-
-				'res_model': 'openhealth.sale_note',				
-				'res_id': sale_note_id,
-
-
-				'flags': 	{
-							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-							'form': {'action_buttons': True, }
-							},
-
-
-				'context': {
-							'default_order': self.id,
-							'default_total': self.amount_total,
-
-							'default_partner': self.partner_id.id,
-							}
-				}
-
-	# create_sale_note
-
-
-
-
-
-
-
-
-
-# ---------------------------------------------- Create Ticket Receipt  --------------------------------------------------------
-	@api.multi 
-	def create_ticket_receipt(self):
-		print 
-		print 'Create Ticekt Receipt'
-
-		# Search 
-		ticket_receipt_id = self.env['openhealth.ticket_receipt'].search([('order','=',self.id),]).id
-
-		# Create 
-		if ticket_receipt_id == False:
-
-			ticket_receipt = self.env['openhealth.ticket_receipt'].create({
-																'order': self.id,
-																'total': self.amount_total, 
-
-																'partner': self.partner_id.id,	
-													})
-			ticket_receipt_id = ticket_receipt.id 
-
-
-
-		self.x_ticket_receipt = ticket_receipt_id
-
-
-		return {
-				'type': 'ir.actions.act_window',
-				'name': ' New ticket_receipt Current', 
-
-				'view_type': 'form',
-				'view_mode': 'form',	
-				'target': 'current',
-
-
-				'res_model': 'openhealth.ticket_receipt',				
-				'res_id': ticket_receipt_id,
-
-
-				'flags': 	{
-							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-							'form': {'action_buttons': True, }
-							},
-
-
-				'context': {
-							'default_order': self.id,
-							'default_total': self.amount_total,
-
-							'default_partner': self.partner_id.id,
-							}
-				}
-
-	# create_ticket_receipt
-
-
-
-
-
-
-
-
-# ---------------------------------------------- Create Ticket Invoice --------------------------------------------------------
-	@api.multi 
-	def create_ticket_invoice(self):
-		print 
-		print 'Create Ticket Invoice'
-
-
-		# Search 
-		ticket_invoice_id = self.env['openhealth.ticket_invoice'].search([('order','=',self.id),]).id
-
-		# Create 
-		if ticket_invoice_id == False:
-
-			ticket_invoice = self.env['openhealth.ticket_invoice'].create({
-																'order': self.id,
-																'total': self.amount_total, 
-
-																'partner': self.partner_id.id,	
-													})
-			ticket_invoice_id = ticket_invoice.id 
-
-
-
-		self.x_ticket_invoice = ticket_invoice_id
-
-
-		return {
-				'type': 'ir.actions.act_window',
-				'name': ' New ticket_invoice Current', 
-
-				'view_type': 'form',
-				'view_mode': 'form',	
-				'target': 'current',
-
-
-				'res_model': 'openhealth.ticket_invoice',				
-				'res_id': ticket_invoice_id,
-
-
-				'flags': 	{
-							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-							'form': {'action_buttons': True, }
-							},
-
-
-				'context': {
-							'default_order': self.id,
-							'default_total': self.amount_total,
-
-							'default_partner': self.partner_id.id,
-							}
-				}
-
-	# create_ticket_invoice
 
 
 

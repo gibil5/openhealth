@@ -37,14 +37,13 @@
 				<xpath expr="//field[@name='validity_date']" position="replace">
 
 					<field name="patient" />
+					<field name="x_doctor" />
+					<field name="consultation"/>
 
 				</xpath>
 
 
 				<xpath expr="//field[@name='payment_term_id']" position="replace">
-
-					<field name="x_doctor" />
-
 				</xpath>
 
 
@@ -54,21 +53,40 @@
 				<xpath expr="pass of position" position="the postion">
 				-->		
 
+				<!-- Buttons in Header --> 
 				<xpath expr="//button[@name='action_quotation_send']" position="replace">
 
 
-					<!--
+					<!-- Pagar -->
 					<button 
 							type="object" 
+							class="oe_highlight"	
+							string="Pagar"						
+							name="create_payment_method"
+							/>
+
+
+
+
+
+
+					<!--
+					-->
+					<button 
+							type="object" 
+
 							class="oe_highlight"
 
-							string="Crear Documento de Venta" 
+							string="Comprobante" 
 
 							name="create_sale_document" 
 					/>
-					-->
 
 
+
+
+
+					<!--
 					<button 
 							attrs="{'invisible':[('x_sales_document', '!=', 'receipt')]}"
 
@@ -80,6 +98,7 @@
 
 							name="create_receipt" 
 					/>
+					-->
 
 
 					<button 
@@ -113,9 +132,6 @@
 
 
 
-					<!--
-							string="Nota de venta" 
-					-->
 					<button 
 							attrs="{'invisible':[('x_sales_document', '!=', 'sale_note')]}"
 
@@ -147,7 +163,7 @@
 
 							type="object" 
 
-							class="oe_highlight"
+							class="oe_highlight"	
 
 							string="Ticket factura" 
 
@@ -157,76 +173,48 @@
 
 
 
-
-
-				</xpath>
-
-
-
-				<!--
-				<xpath expr="//page[@name='Other Information']" position="replace">
-				</xpath>
-				-->
-
-
-
-				<xpath expr="//button[@name='action_confirm']" position="replace">
-				</xpath>
-
-
-				<xpath expr="//button[@name='action_confirm']" position="replace">
-
-					<!--					
-							attrs="{'invisible':
-
-												[
-													('pm_complete', '=', False),
-												]
-
-												}"
-					
-
-											'invisible':
-
-												[
-														('receipt', '=', False),
-
-														('x_invoice', '=', False),
-
-														('x_advertisement', '=', False),
-
-														('x_sale_note', '=', False),
-
-														('x_ticket_invoice', '=', False),
-
-														('x_ticket_receipt', '=', False),
-												], 
-
-
-					-->
+					<!-- Reserve Machine --> 
 					<button 
+						type="object"
 
-							attrs="{
+						class="oe_highlight"
+						
+						string="Reservar Sala"
+						
+						name="reserve_machine" 	
+					/>
 
 
-											'invisible':
+				</xpath>
 
+
+
+
+
+	
+
+
+
+
+
+				<xpath expr="//button[@name='action_confirm']" position="replace">
+				</xpath>
+
+				<xpath expr="//button[@name='action_confirm']" position="replace">
+					<!-- Confirm -->
+					<button 
+							attrs="{'invisible':
 												[
 													('pm_complete', '=', False),
 												]
-
-												}"
-
-
-
-
-
+									}"
+									
 							type="object" 
 
 							class="oe_highlight"
-
-							string="Confirmar Venta" 
-
+							
+							string="Confirmar" 
+							
 							name="action_confirm" 
 					/>
 				</xpath>
@@ -411,14 +399,10 @@
 				<!--
 				<field name="payment_term_id" position="after">
 				-->
-				<field name="x_doctor" position="after">
+				<field name="consultation" position="after">
 
 
 					<field name="vspace"/>
-					<field name="consultation"/>
-					<field name="vspace"/>
-
-
 					<field name="x_appointment"/>
 					<!--
 					<field name="x_doctor"/>

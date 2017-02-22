@@ -19,7 +19,7 @@ class payment_method(models.Model):
 
 	name = fields.Char(
 			#string="Medio de Pago", 
-			string="Nombre", 
+			string="Pagos", 
 			required=True, 
 		)
 
@@ -33,10 +33,49 @@ class payment_method(models.Model):
 
 
 
+
+
+
 	subtotal = fields.Float(
 			string = 'Sub-total', 
 			required=True, 
 		)
+
+	total = fields.Float(
+			string = 'Total', 
+			required=True, 
+		)
+
+	pm_total = fields.Float(
+			string = 'Pm Total', 
+			required=True, 
+		)
+
+
+
+
+
+
+	balance = fields.Float(
+			string = 'Saldo', 
+			required=True, 
+			#compute="_compute_balance",
+		)
+
+	#@api.multi
+	#@api.depends('total', 'pm_total')
+	#def _compute_balance(self):
+	#	for record in self:
+	#		record.balance = self.total - (self.pm_total + self.subtotal)
+
+
+	@api.onchange('subtotal')
+	def _onchange_subtotal(self):
+		self.balance = self.total - (self.pm_total + self.subtotal)
+
+
+
+
 
 
 
@@ -50,6 +89,8 @@ class payment_method(models.Model):
 			string="Codigo", 
 			#required=True, 
 		)
+
+
 
 
 

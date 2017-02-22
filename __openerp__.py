@@ -100,6 +100,8 @@
 		'views/orders/events.xml',
 
 		# Sale Documents
+		'views/sale_documents/sale_documents.xml',
+
 		'views/sale_documents/receipts.xml',
 		'views/sale_documents/invoices.xml',
 		'views/sale_documents/advertisements.xml',

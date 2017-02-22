@@ -3,6 +3,8 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+
+
 access_openhealth_treatment,openhealth.treatment,model_openhealth_treatment,,1,1,1,1
 
 access_openhealth_cosmetology,openhealth.cosmetology,model_openhealth_cosmetology,,1,1,1,1
@@ -11,6 +13,7 @@ access_openhealth_therapist,openhealth.therapist,model_openhealth_therapist,,1,1
 
 access_openhealth_service_cosmetology,openhealth.service.cosmetology,model_openhealth_service_cosmetology,,1,1,1,1
 
+access_openhealth_sale_document,openhealth.sale_document,model_openhealth_sale_document,,1,1,1,1
 
 
 

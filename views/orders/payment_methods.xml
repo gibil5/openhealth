@@ -11,7 +11,7 @@
 			<field name="model">sale.order</field>
 			
 
-			<field name="priority" eval="1"/>
+			<field name="priority" eval="-10"/>
 			
 
 			<field name="inherit_id" ref="sale.view_order_form"/>
@@ -27,7 +27,7 @@
 								 payment_methods
 							-->
 
-							<page string="Forma de Pago">
+							<page string="Formas de Pago">
 
 
 
@@ -65,34 +65,26 @@
 
 							
 							<group col="4">
-
 								<group>
+									<!--
+									<button 
+										type="object" 
+										class="oe_highlight"	
+										string="Pagar"						
+										name="create_payment_method"/>
+									-->
 								</group>
-
-								<group>
-								</group>
-
-								<group>
-								</group>
-
+								<group></group>
+								<group></group>
 								<group>
 									<field  name="pm_total"/>
-
-									<field  name="nr_saledocs"/>
-
-									<field  name="pm_complete"/>
-
+									<field  name="nr_saledocs"		invisible="1"	/>
+									<field  name="pm_complete"		invisible="1"	/>
 								</group>
 							</group>
 
-							<button 
-								type="object" 
-								class="oe_highlight"	
 
-								string="Crear Línea"
-						
-								name="create_payment_method" 	
-							/>
+
 
 							</page>
 

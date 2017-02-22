@@ -45,7 +45,7 @@
 
 										<field  name="message"/>
 
-										<field  name="owner"/>
+										<field  name="user"/>
 
 
 

@@ -47,12 +47,27 @@ class Event(models.Model):
   	message = fields.Char(
 			string="Mensaje", 
 			required=True, 
-			)
+		)
 
-  	owner = fields.Char(
-			string="Quién ?", 
-			required=True, 
-			)
+
+
+  	#owner = fields.Char(
+	#		string="Quién ?", 
+	#		required=True, 
+	#	)
+
+
+	user = fields.Many2one( 
+			
+			string="Usuario", 
+
+			comodel_name='res.users', 
+			
+			default= lambda self: self.env.user.id,
+
+			#required=True, 			
+		)
+
 
 
 

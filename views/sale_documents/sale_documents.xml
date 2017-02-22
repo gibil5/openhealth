@@ -5,11 +5,11 @@
 
 
 		<!-- Form view -->
-		<record model="ir.ui.view" id="payment_method_form_view">
+		<record model="ir.ui.view" id="sale_document_form_view">
 
 			<field name="name">payment.method.form</field>
 			
-			<field name="model">openhealth.payment_method</field>
+			<field name="model">openhealth.sale_document</field>
 
 			<!--
 			<field name="inherit_id" ref="sale.view_order_form"/>			
@@ -22,12 +22,27 @@
 				
 
 
-				<form string="Payment Method - Form">
+				<form string="Sale Document - Form">
+
+
 
 
 
 					<!-- Header --> 
+					<!--
+								attrs="{'invisible':[('x_sales_document', '!=', 'receipt')]}"
+					-->
 					<header>
+						<button 
+
+								type="object" 
+							
+								class="oe_highlight"
+
+								string="Boleta" 
+
+								name="create_receipt" 
+						/>
 					</header>
 
 
@@ -42,7 +57,7 @@
 							<group>
 								<field name="name"   />													
 
-								<field name="method"   />													
+								<field name="partner"   />													
 
 							</group>
 
@@ -50,15 +65,9 @@
 							<group>
 								<field name="order"   />													
 
+								<field name="receipt"   />													
 
-								<field name="code" 		attrs="{'invisible':[
-																					('method', '!=', 'debit_visa'), 
-																					('method', '!=', 'debit_master'), 
-																					('method', '!=', 'credit_visa'), 
-																					('method', '!=', 'credit_master'), 
-																					('method', '!=', 'diners'), 
-																					('method', '!=', 'american_express'), 
-																			]}"			/>
+
 							</group>
 						</group>
 
@@ -66,13 +75,10 @@
 
 						<group>
 							<group>
-								<field name="subtotal"   />													
-								<field name="balance"   />													
+								<field name="total"   />													
 							</group>
-							<group>
 
-								<field name="total"   	invisible="1"	/>													
-								<field name="pm_total"  invisible="1" 	/>													
+							<group>
 							
 							</group>
 						</group>
@@ -82,7 +88,6 @@
 				</form>
 
 
-				
 			</field>
 		</record>
 
@@ -90,17 +95,17 @@
 
 
 		<!-- Tree view --> 
-		<record model="ir.ui.view" id="payment_method_tree_view">
-			<field name="name">payment_method.tree</field>
-			<field name="model">openhealth.payment_method</field>
+		<record model="ir.ui.view" id="sale_document_tree_view">
+			<field name="name">sale_document.tree</field>
+			<field name="model">openhealth.sale_document</field>
 			<field name="arch" type="xml">
-				<tree string="payment_method Tree">
+				<tree string="sale_document Tree">
 					
 					<field name="name"/>
 					
-					<field name="method"  />
+					<field name="partner"  />
 					
-					<field name="subtotal"   />
+					<field name="order"   />
 					
 				</tree>
 			</field>
@@ -113,9 +118,9 @@
 		The following tag is an action definition for a "window action",
 		that is an action opening a view or a set of views
 		-->
-		<record model="ir.actions.act_window" id="payment_method_list_action">
+		<record model="ir.actions.act_window" id="sale_document_list_action">
 			<field name="name">Boletas</field>
-			<field name="res_model">openhealth.payment_method</field>
+			<field name="res_model">openhealth.sale_document</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 			
@@ -124,7 +129,7 @@
             <field name="view_id" eval="False"/>
 			
 			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first payment_method
+				<p class="oe_view_nocontent_create">Create the first sale_document
 				</p>
 			</field>
 			

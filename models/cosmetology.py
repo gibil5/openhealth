@@ -58,7 +58,8 @@ class Cosmetology(models.Model):
 	_state_list = [
         			#('empty', 			'Inicio'),
 
-					#('consultation', 	'Consulta'),
+
+        			('appointment', 			'Cita'),
 
         			('service', 		'Servicio'),
         			
@@ -66,13 +67,15 @@ class Cosmetology(models.Model):
 
         			('invoice', 		'Facturado'),
         			
+					('consultation', 	'Consulta'),
+
         			('procedure', 		'Procedimiento'),
 
         			('sessions', 		'Sesiones'),
 
         			#('controls', 		'Controles'),
 
-        			('done', 			'Completo'),
+        			#('done', 			'Completo'),
         		]
 
 
@@ -329,6 +332,33 @@ class Cosmetology(models.Model):
 				'context': 	{
 							}
 		}
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Create Appointment ------------------------------------------------------
+	@api.multi 
+	def create_appointment(self):
+
+		print 
+		print 'jx'
+		print 'Create Appointment'
+
+
+
+
+
+
+# ----------------------------------------------------------- Create consultation ------------------------------------------------------
+	@api.multi 
+	def create_consultation(self):
+
+		print 
+		print 'jx'
+		print 'Create Consultation'
 
 
 

@@ -21,6 +21,17 @@
 
 
 
+						<button 
+							type="object" 
+							class="oe_highlight"
+
+							string="Cita" 
+
+							name="create_service" 
+						/>
+
+
+
 						<!-- Create Service --> 
 						<!--
 							attrs="{'invisible':[
@@ -31,7 +42,7 @@
 							type="object" 
 							class="oe_highlight"
 
-							string="Crear Servicio" 
+							string="Servicio" 
 
 							name="create_service" 
 						/>
@@ -69,11 +80,25 @@
 							type="object" 
 							class="oe_highlight"
 
-							string="Pagar en Caja" 
-
+							string="Caja" 
 
 							name="create_invoice" 
 						/>
+
+
+
+
+
+
+						<button 
+							type="object" 
+							class="oe_highlight"
+
+							string="Consulta" 
+
+							name="create_consultation" 
+						/>
+
 
 
 
@@ -121,7 +146,7 @@
 						<field 	name="state" 
 								widget="statusbar" 
 
-								statusbar_visible="service, budget, invoice, procedure, sessions, controls,  done"
+								statusbar_visible="appointment, service, budget, invoice, consultation, procedure, sessions"
 						/>
 
 					</header>

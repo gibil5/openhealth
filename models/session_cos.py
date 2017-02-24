@@ -1,33 +1,31 @@
 # -*- coding: utf-8 -*-
 #
-# 	*** Consultation Cos
-# 
+# 	*** Session Cos
+#
 
-# Created: 				 1 Nov 2016
-# Last updated: 	 	 7 Dec 2016 
+# Created: 				 24 Feb 2017
+# Last updated: 	 	 24 Feb 2017 
 
 
 
 from openerp import models, fields, api
-from datetime import datetime,tzinfo,timedelta
+from datetime import datetime
 
 import jxvars
 import cosvars
 
-
-import jrfuncs
-import eval_vars
 import time_funcs
+import jrfuncs
+#import session_funcs
 
 
 
-
-class ConsultationCos(models.Model):
-
-	_name = 'openhealth.consultation.cos'
+class SessionCos(models.Model):
+	
+	_name = 'openhealth.session.cos'
 	
 	#_inherit = 'oeh.medical.evaluation'
-	_inherit = 'openhealth.consultation'
+	_inherit = 'openhealth.session'
 
 
 
@@ -50,6 +48,15 @@ class ConsultationCos(models.Model):
 			)
 
 
+
+
+
+	procedure = fields.Many2one('openhealth.procedure.cos',
+			string="Procedimiento Cos",
+			readonly=True,
+			ondelete='cascade', 
+			)
+			
 
 
 

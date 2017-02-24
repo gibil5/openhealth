@@ -40,8 +40,12 @@ from . import consultation_cos
 from . import procedure
 from . import procedure_cos
 
-from . import control
 from . import session 
+from . import session_cos
+#from . import session_med
+
+from . import control
+
 
 
 from . import service

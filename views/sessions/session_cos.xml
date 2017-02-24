@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+		<!-- Form --> 
+		<record model="ir.ui.view" id="session_cos_form_view">
+			<field name="name">session.cos.form</field>
+			
+			<field name="model">openhealth.session.cos</field>
+
+			<field name="inherit_id" ref="session_form_view"/>
+
+	        <field name="mode">primary</field>
+			<field name="arch" type="xml">				
+
+
+
+				<!-- <xpath expr="//field[@name='title']" position="before"> -->
+
+
+
+				<!-- Title --> 
+				<xpath expr="//h1" position="replace">
+
+					<h1>Sesión - Cos</h1>					
+        		
+        		</xpath>
+
+
+
+        		<!-- Therapist --> 
+				<xpath expr="//field[@name='doctor']" position="replace">
+					<field name="therapist"	/>
+				</xpath>
+
+
+
+        		<!-- Cosmetoloty --> 
+				<xpath expr="//field[@name='treatment']" position="replace">
+					<field name="cosmetology"	/>
+				</xpath>
+
+
+
+			</field>						
+		</record>		
+
+
+
+
+
+
+
+		<!-- Tree --> 
+		<record model="ir.ui.view" id="session_cos_tree_view">
+			<field name="name">session.cos.tree</field>
+			<field name="model">openhealth.session.cos</field>
+			<field name="arch" type="xml">
+				
+				<tree string="Session Cos Tree">
+					
+					<field name="name"/>
+					
+					<field name="patient"  string="Paciente"/>
+					
+
+					<!--
+					<field name="doctor"   string="Médico"/>
+					-->
+					<field name="therapist"   />
+
+
+
+					<field name="chief_complaint"/>
+
+
+					<field name="product"/>
+
+					<field name="evaluation_start_date"/>
+
+					
+					<field name="x_done"/>
+
+
+
+					<!-- Quick Button -->
+					<button 
+						type="object" 
+						class="oe_highlight"	
+						string="E"
+						name="open_line_current" 
+					/>
+
+
+
+					<!--
+					<field name="procedure"/>
+					<field name="owner"/>
+
+					<field name="treatment_id"/>
+					<field name="duration"/>
+					<field name="nr_services"/>
+					<field name="price_total"/>
+					-->
+				</tree>
+			</field>
+		</record>
+		
+		
+		
+		
+
+
+	</data>
+</openerp>
+

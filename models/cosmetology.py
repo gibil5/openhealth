@@ -261,6 +261,7 @@ class Cosmetology(models.Model):
 
 	service_ids = fields.One2many(
 			'openhealth.service.cosmetology', 	
+
 			'cosmetology', 
 			string="Servicios"
 		)
@@ -272,6 +273,7 @@ class Cosmetology(models.Model):
 	procedure_ids = fields.One2many(
 			#'openhealth.procedure', 
 			'openhealth.procedure.cos', 
+
 			'cosmetology', 
 			string = "Procedimientos", 
 			)
@@ -281,14 +283,19 @@ class Cosmetology(models.Model):
 
 
 	session_ids = fields.One2many(
-			'openhealth.session', 
+			#'openhealth.session', 
+			'openhealth.session.cos', 
+
 			'cosmetology', 
 			string = "Sesiones", 
 			)
 
 
+
+
 	quotation_ids = fields.One2many(
-			'sale.order',			 
+			'sale.order',	
+
 			'cosmetology', 			
 			string="Presupuestos",
 
@@ -301,6 +308,7 @@ class Cosmetology(models.Model):
 
 	sale_ids = fields.One2many(
 			'sale.order',			 
+
 			'cosmetology', 
 			string="Ventas",
 
@@ -314,6 +322,7 @@ class Cosmetology(models.Model):
 
 	appointment_ids = fields.One2many(
 			'oeh.medical.appointment', 
+			
 			'cosmetology', 
 			string = "Citas", 
 			domain = [

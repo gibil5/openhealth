@@ -93,6 +93,9 @@
 
 
 
+
+
+
 		<!-- apppointment - Form Action --> 
 		<record model="ir.actions.act_window" id="appointment_form_action">
 			<field name="name">Citas</field>
@@ -126,6 +129,10 @@
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 		</record>
+
+
+
+
 
 
 
@@ -168,6 +175,47 @@
 				</p>
 			</field>
 		</record>
+
+
+
+
+
+		
+		
+		<!-- Window List action -->
+		<!--
+		The following tag is an action definition for a "window action",
+		that is an action opening a view or a set of views
+		-->
+		<record model="ir.actions.act_window" id="session_list_action">
+			<field name="name">sessiones</field>
+			<field name="res_model">openhealth.session</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first session
+				</p>
+			</field>
+			
+		</record>
+
+
+
+		
+
+
+
+
+
+
+
+
+
 
 
 

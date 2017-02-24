@@ -21,6 +21,12 @@ access_openhealth_consultation_cos,openhealth.consultation.cos,model_openhealth_
 
 access_openhealth_procedure_cos,openhealth.procedure.cos,model_openhealth_procedure_cos,,1,1,1,1
 
+access_openhealth_session_cos,openhealth.session.cos,model_openhealth_session_cos,,1,1,1,1
+
+
+
+
+
 
 
 

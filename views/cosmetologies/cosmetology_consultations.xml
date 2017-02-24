@@ -29,11 +29,11 @@
 							<tree string="consultation_ids">
 
 
-								<field  name="name"/>
+								<field name="name"/>
 
-								<field string="Paciente" name="patient"/>
+								<field name="patient"/>
 
-								<field string="Cosmiatra" name="therapist"/>
+								<field name="therapist"/>
 
 								<field name="chief_complaint"/>
 

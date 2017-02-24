@@ -449,7 +449,9 @@
 					
 					<field name="patient"  />
 					
+
 					<field name="doctor"   />
+					
 					
 					<field name="evaluation_start_date"/>
 

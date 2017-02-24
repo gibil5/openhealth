@@ -12,18 +12,20 @@
 
 			<field name="inherit_id" ref="procedure_form_view"/>
 	        <field name="mode">primary</field>
-			
-			
 			<field name="arch" type="xml">				
 
 
+
 				<!-- <xpath expr="//field[@name='title']" position="before"> -->
+
+
+
+				<!-- Title --> 
 				<xpath expr="//h1" position="replace">
 
 					<h1>Procedimiento - Cos</h1>					
         		
         		</xpath>
-
 
 
 
@@ -39,15 +41,8 @@
 					<field name="cosmetology"	/>
 				</xpath>
 
-
-
-
-
-			</field>
-						
+			</field>						
 		</record>		
-
-
 
 	</data>
 </openerp>

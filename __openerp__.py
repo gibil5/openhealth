@@ -112,14 +112,24 @@
 
 
 
+
+
+
+
 		# Sessions
 		'views/sessions/session.xml',
-		'views/sessions/session_configuration.xml',
+		#'views/sessions/session_configuration.xml',
+
+		'views/sessions/session_cos.xml',
+
+
+
+
+
 
 		# Controls
 		'views/controls/control.xml',
 		#'views/controls/control_protocols.xml',
-
 
 
 		# Evaluations

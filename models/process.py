@@ -53,9 +53,16 @@ class Process(models.Model):
 			index=True
 			)
 	
+
+
 	therapist = fields.Many2one(
 			'oeh.medical.therapist',
-			string="Terapeuta",
+
+
+			#string="Terapeuta",
+			string = "Cosmeatra", 	
+
+
 			index=True
 			)
 

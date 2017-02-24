@@ -537,9 +537,9 @@
 
                     <field name="date_order"		string="Fecha"/>
 
-
+                    <!--
                     <field name="x_chief_complaint"/>
-
+					-->
 
                     <field name="x_family"/>
 

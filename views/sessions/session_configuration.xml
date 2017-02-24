@@ -19,7 +19,7 @@
 					
 					
 					
-					<page string="Valores empleados"  >
+					<page string="Valores empleados - Med"  	attrs="{'invisible':[('cosmetology', '!=', False)]}"	>
 
 
 

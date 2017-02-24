@@ -58,6 +58,7 @@ class Evaluation(models.Model):
 			ondelete='cascade', 
 			)
 
+
 	cosmetology = fields.Many2one(
 			'openhealth.cosmetology',
 			ondelete='cascade', 			
@@ -95,6 +96,8 @@ class Evaluation(models.Model):
 
 
 
+
+
 	doctor = fields.Many2one(
 			'oeh.medical.physician',
 			string = "Médico", 	
@@ -104,10 +107,15 @@ class Evaluation(models.Model):
 
 	therapist = fields.Many2one(
 			'openhealth.therapist',
-			string = "Terapeuta", 	
+
+			#string = "Terapeuta", 	
+			string = "Cosmeatra", 	
+
 			#required=True, 
 			required=False, 
 			)
+
+
 
 
 
@@ -142,14 +150,17 @@ class Evaluation(models.Model):
 
 
 	
+
+
 	# Product
-	
 	product = fields.Many2one(
 			'product.template',
 			string="Producto",
 			#required=True, 
 			)
 	
+
+
 
 
 

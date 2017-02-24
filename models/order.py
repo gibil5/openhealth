@@ -687,12 +687,12 @@ class sale_order(models.Model):
 
 
 
-	# Chief complaint 
-	x_chief_complaint = fields.Selection(
-			string = 'Motivo de consulta', 
 
-			selection = jxvars._chief_complaint_list, 
-			)
+	# Chief complaint 
+	#x_chief_complaint = fields.Selection(
+	#		string = 'Motivo de consulta', 
+	#		selection = jxvars._chief_complaint_list, 
+	#		)
 
 
 

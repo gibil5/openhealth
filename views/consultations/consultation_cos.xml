@@ -32,10 +32,12 @@
 
 
 
+
         		<!-- Cosmetoloty --> 
 				<xpath expr="//field[@name='treatment']" position="replace">
 					<field name="cosmetology"	/>
 				</xpath>
+
 
 
 

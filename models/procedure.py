@@ -30,10 +30,36 @@ class Procedure(models.Model):
 			)
 
 
+
+
+
+
+	# Sessions - Quantity 
+	sessions_qty = fields.Integer(
+			string="Sesiones",
+			compute="_compute_sessions_qty",
+	)
+	
+	#@api.multi
+	@api.depends('product')
+	
+	def _compute_sessions_qty(self):
+		for record in self:
+			record.sessions_qty = record.product.x_sessions
+
+
+
+
+
+
+
+
 	# Owner 
 	owner_type = fields.Char(
 			default = 'procedure',
 		)
+
+
 
 
 
@@ -128,8 +154,9 @@ class Procedure(models.Model):
 
 
 
-	# Sessions - Number
 
+
+	# Sessions - Number
 	nr_sessions = fields.Integer(
 			string="Sesiones",
 			compute="_compute_nr_sessions",
@@ -309,7 +336,6 @@ class Procedure(models.Model):
 # ----------------------------------------------------------- Create Session  ------------------------------------------------------
 
 	@api.multi
-	#def open_session(self): 
 	def create_session(self): 
 
 		print 
@@ -422,18 +448,25 @@ class Procedure(models.Model):
 
 
 
+
+
 		# session 
 		print 'create session'
-		session = self.env['openhealth.session'].create(
+		#session = self.env['openhealth.session'].create(
+		session = self.env['openhealth.session.med'].create(
 												{
 													'patient': patient_id,
 
+
 													'doctor': doctor_id,													
-													'therapist': therapist_id,													
+													#'therapist': therapist_id,													
+
 													
 													'chief_complaint': chief_complaint,
+
 													'evaluation_start_date': evaluation_start_date,
 													'evaluation_type':evaluation_type,
+													
 													'product': product_id,
 													'laser': laser,
 
@@ -469,8 +502,9 @@ class Procedure(models.Model):
 													'procedure': procedure_id,				
 													'appointment': appointment_id,
 
+
 													'treatment': treatment_id,				
-													'cosmetology': cosmetology_id,				
+													#'cosmetology': cosmetology_id,				
 												}
 											)
 		session_id = session.id 
@@ -498,7 +532,9 @@ class Procedure(models.Model):
 			'name': 'Open session Current',
 		
 			# Optional 
-			'res_model': 'openhealth.session',
+			#'res_model': 'openhealth.session',
+			'res_model': 'openhealth.session.med',
+
 			'res_id': session_id,
 
 			'view_mode': 'form',
@@ -513,7 +549,9 @@ class Procedure(models.Model):
 			'context':   {
 							'default_patient': patient_id,
 							'default_doctor': doctor_id,
+
 							'default_chief_complaint': chief_complaint,
+							
 							'default_evaluation_start_date': evaluation_start_date,
 							'default_evaluation_type':evaluation_type,
 							'default_product': product_id,
@@ -527,6 +565,7 @@ class Procedure(models.Model):
 							'default_treatment': treatment_id,
 						}
 		}
+	# create_session
 
 
 
@@ -587,7 +626,5 @@ class Procedure(models.Model):
 							'default_appointment_date': appointment_date,
 							}
 				}
-
-
 
 

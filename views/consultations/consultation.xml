@@ -374,8 +374,7 @@
 
 
 							<group>
-								<field name="treatment"			attrs="{'invisible':[('treatment', '=', False)]}" 		/>
-								<field name="cosmetology"		attrs="{'invisible':[('cosmetology', '=', False)]}"		/>
+								<field name="treatment"		/>
 							</group>
 							<group>
 								<field name="evaluation_type" 	invisible="0"	string="Tipo"/>
@@ -385,10 +384,10 @@
 							<group>
 								<field name="doctor" options="{'no_create': True}"	string="Médico"/>
 							</group>
-							<group>
 
+
+							<group>
 								<field name="chief_complaint"		required="1"	/>
-							
 							</group>								
 
 
@@ -411,12 +410,6 @@
 								<field name="x_photo_aging"  	required="1"/>	
 								<field name="x_observation"  	required="0"/>	
 							</group>
-
-
-
-
-
-
 
 
 							<group></group>

@@ -32,7 +32,7 @@ def create_procedure_go(self):
 
 	therapist = self.therapist.id
 
-	#chief_complaint = self.chief_complaint
+	chief_complaint = self.chief_complaint
 
 
 
@@ -60,9 +60,9 @@ def create_procedure_go(self):
 
 
 	# Chief complaint 
-	for sale in self.sale_ids:
-		chief_complaint = sale.x_chief_complaint
-		print 'chief_complaint:', chief_complaint
+	#for sale in self.sale_ids:
+		#chief_complaint = sale.x_chief_complaint
+		#print 'chief_complaint:', chief_complaint
 
 
 
@@ -93,7 +93,8 @@ def create_procedure_go(self):
 														
 														'evaluation_start_date':evaluation_start_date,
 														
-														#'chief_complaint':chief_complaint,
+
+														'chief_complaint':chief_complaint,
 
 
 														'appointment': appointment_id,

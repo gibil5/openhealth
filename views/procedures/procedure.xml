@@ -193,11 +193,9 @@
 							<field string="Próxima cita" name="appointment" domain="[('patient', '=', patient)]" options="{'no_create': True}"/>
 							-->
 							
-							<group>	
-								<field name="treatment"		attrs="{'invisible':[('treatment', '=', False)]}"	/>
-								
 
-								<field name="cosmetology"	attrs="{'invisible':[('cosmetology', '=', False)]}"	/>
+							<group>	
+								<field name="treatment"			/>
 							</group>
 							
 
@@ -209,9 +207,7 @@
 
 
 							<group>
-								<field name="doctor" options="{'no_create': True}"		attrs="{'invisible':[('doctor', '=', False)]}"	/>
-
-								<field name="therapist" options="{'no_create': True}"	attrs="{'invisible':[('therapist', '=', False)]}"	/>
+								<field name="doctor" options="{'no_create': True}"	/>
 							</group>
 
 

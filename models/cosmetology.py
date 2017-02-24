@@ -756,8 +756,6 @@ class Cosmetology(models.Model):
 		print 'Create procedure'
 
 
-		#ret = treatment_funcs.create_procedure_go(self)
-		#ret = treatment_funcs.create_procedure_go(self, 'cosmetology')
 		ret = cos_funcs.create_procedure_go(self)
 
 
@@ -773,12 +771,12 @@ class Cosmetology(models.Model):
 
 
 # ----------------------------------------------------------- Create Sessions ------------------------------------------------------
-	#@api.multi 
-	#def create_sessions(self):
+	@api.multi 
+	def create_sessions(self):
 
-	#	print 
-	#	print 'jx'
-	#	print 'Create Sessions'
+		print 
+		print 'jx'
+		print 'Create Sessions'
 
 
 

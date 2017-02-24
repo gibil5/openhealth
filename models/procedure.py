@@ -103,12 +103,6 @@ class Procedure(models.Model):
 			ondelete='cascade', 
 			)
 
-	cosmetology = fields.Many2one(
-			'openhealth.cosmetology',
-			string="Cosmiatría", 
-			ondelete='cascade', 
-			)
-
 
 
 
@@ -295,13 +289,31 @@ class Procedure(models.Model):
 
 
 
-# ----------------------------------------------------------- Open Session  ------------------------------------------------------
+# ----------------------------------------------------------- Create Sessions  ------------------------------------------------------
 
 	@api.multi
-	def open_session(self): 
+	#def open_session(self): 
+	def create_sessions(self): 
 
 		print 
-		print 'open session'
+		print 'Create sessions'
+
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Create Session  ------------------------------------------------------
+
+	@api.multi
+	#def open_session(self): 
+	def create_session(self): 
+
+		print 
+		print 'Create session'
 
 
 		# Data

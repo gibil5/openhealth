@@ -17,11 +17,27 @@
 					<!-- Header --> 
 					<header>
 
+
+
 						<button 
 							type="object" 
 							class="oe_highlight"
-							string="Crear Sesión"
-							name="open_session" 	
+
+							string="Crear Sesiones"
+
+							name="create_sessions" 	
+						/>
+
+
+
+
+						<button 
+							type="object" 
+							class="oe_highlight"
+
+							string="Sesión"
+
+							name="create_session" 	
 						/>
 
 						<!--

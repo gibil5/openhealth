@@ -374,7 +374,8 @@
 
 
 							<group>
-								<field name="treatment"/>
+								<field name="treatment"			attrs="{'invisible':[('treatment', '=', False)]}" 		/>
+								<field name="cosmetology"		attrs="{'invisible':[('cosmetology', '=', False)]}"		/>
 							</group>
 							<group>
 								<field name="evaluation_type" 	invisible="0"	string="Tipo"/>
@@ -385,7 +386,9 @@
 								<field name="doctor" options="{'no_create': True}"	string="Médico"/>
 							</group>
 							<group>
-								<field name="chief_complaint"	required="1"/>
+
+								<field name="chief_complaint"		required="1"	/>
+							
 							</group>								
 
 

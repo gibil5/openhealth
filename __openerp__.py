@@ -178,6 +178,9 @@
 		'views/consultations/consultation_services_ndyag.xml',
 		'views/consultations/consultation_medical_treatment.xml',
 
+		'views/consultations/consultation_cos.xml',
+
+
 
 
 		# Treatments 
@@ -201,7 +204,9 @@
 		'views/cosmetologies/cosmetology_orders.xml',
 		'views/cosmetologies/cosmetology_procedures.xml',
 		'views/cosmetologies/cosmetology_sessions.xml',
+
 		'views/cosmetologies/cosmetology_appointments.xml',
+		'views/cosmetologies/cosmetology_consultations.xml',
 
 
 		# Therapists 

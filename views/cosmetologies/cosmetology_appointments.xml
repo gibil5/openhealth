@@ -11,7 +11,7 @@
 			<field name="model">openhealth.cosmetology</field>
 
 			
-			<field name="priority" eval="8"/>
+			<field name="priority" eval="1"/>
 			
 
 

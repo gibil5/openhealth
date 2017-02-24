@@ -13,6 +13,9 @@ from openerp import models, fields, api
 from datetime import datetime,tzinfo,timedelta
 
 import jxvars
+import cosvars
+
+
 import jrfuncs
 import eval_vars
 import time_funcs
@@ -316,14 +319,23 @@ class Consultation(models.Model):
 	# Redefinition 
 
 
+
+
 	chief_complaint = fields.Selection(			# Necessary 
 			string = 'Motivo de consulta', 
 
-			#selection = jxvars._pathology_list, 
 			selection = jxvars._chief_complaint_list, 
 
 			#required=True, 
+			required=False, 
 			)
+
+
+
+
+
+
+
 
 
 
@@ -343,8 +355,12 @@ class Consultation(models.Model):
 			ondelete='cascade', 
 
 			string="Tratamiento",
-			required=True, 
+			#required=True, 
 			)
+
+
+
+
 
 
 

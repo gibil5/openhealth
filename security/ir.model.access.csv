@@ -17,6 +17,13 @@ access_openhealth_sale_document,openhealth.sale_document,model_openhealth_sale_d
 
 
 
+access_openhealth_consultation_cos,openhealth.consultation.cos,model_openhealth_consultation_cos,,1,1,1,1
+
+access_openhealth_procedure_cos,openhealth.procedure.cos,model_openhealth_procedure_cos,,1,1,1,1
+
+
+
+
 
 
 

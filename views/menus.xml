@@ -178,10 +178,22 @@
 			sequence="2"
 			action="consultation_list_action"/>
 
+
+
+
 		<!-- Procedures -->
 		<menuitem id="procedures_menu" name="Procedimientos" parent="openhealth_menu"
 			sequence="3"
 			action="procedure_list_action"/>
+
+		<menuitem id="procedures_cos_menu" name="Procedimientos Cos" parent="openhealth_menu"
+			sequence="3"
+			action="procedure_cos_list_action"/>
+
+
+
+
+
 
 		<!-- Sessions --> 
 		<menuitem id="sessions_menu" name="Sesiones" parent="openhealth_menu"

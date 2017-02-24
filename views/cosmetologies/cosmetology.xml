@@ -115,7 +115,7 @@
 							type="object" 
 							class="oe_highlight"
 
-							string="Procedimiento" 
+							string="Proc." 
 
 							name="create_procedure" 
 						/>

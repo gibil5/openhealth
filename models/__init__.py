@@ -35,7 +35,11 @@ from . import therapist
 
 
 from . import consultation
+from . import consultation_cos
+
 from . import procedure
+from . import procedure_cos
+
 from . import control
 from . import session 
 

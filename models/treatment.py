@@ -1018,12 +1018,14 @@ class Treatment(models.Model):
 	# Consultation - NEW
 	# --------------------
 
+
 	@api.multi
 	def open_consultation_current(self):  
 
 		print 
 		print 'jx'
 		print 'Open Consultation Current'
+
 
 		patient_id = self.patient.id
 		doctor_id = self.physician.id

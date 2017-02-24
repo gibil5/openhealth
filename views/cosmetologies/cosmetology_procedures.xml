@@ -54,15 +54,13 @@
 
 								<field name="evaluation_start_date"/>
 
-
-
 								<!--
 								<field name="cosmetology"/>
 								-->
 								
-								<!--
-									Button
-								-->
+
+								
+								<!-- Button -->
 								<button 
 									type="object" 
 									class="oe_highlight"	

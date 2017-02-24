@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+		<!-- Form --> 
+		<record model="ir.ui.view" id="consultation_cos_form_view">
+			<field name="name">consultation.cos.form</field>
+			<field name="model">openhealth.consultation.cos</field>
+
+			<field name="inherit_id" ref="consultation_form_view"/>
+	        <field name="mode">primary</field>
+			
+			
+			<field name="arch" type="xml">				
+
+
+
+				<!-- <xpath expr="//field[@name='title']" position="before"> -->
+				<xpath expr="//h1" position="replace">
+
+					<h1>Consulta - Cos</h1>					
+        		
+        		</xpath>
+
+
+			</field>
+						
+		</record>		
+
+
+
+
+
+
+
+
+
+	</data>
+</openerp>
+

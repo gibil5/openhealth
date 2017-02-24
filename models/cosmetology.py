@@ -11,8 +11,17 @@
 from openerp import models, fields, api
 
 import jxvars
-import treatment_funcs
 
+
+#import treatment_funcs
+import cos_funcs
+
+
+import time_funcs
+from datetime import datetime
+
+
+import cosvars
 
 
 class Cosmetology(models.Model):
@@ -32,6 +41,20 @@ class Cosmetology(models.Model):
 
 
 
+
+
+
+	consultation_ids = fields.One2many(
+			#'openhealth.consultation', 
+			'openhealth.consultation.cos', 
+			'cosmetology', 
+			string = "Consultas", 
+			)
+
+
+
+
+
 	therapist = fields.Many2one(
 			'openhealth.therapist',
 			required=True, 
@@ -47,7 +70,10 @@ class Cosmetology(models.Model):
 
 
 	chief_complaint = fields.Selection(
-			selection = jxvars._chief_complaint_list, 
+
+			#selection = jxvars._chief_complaint_list, 
+			selection = cosvars._chief_complaint_list, 
+		
 			required=True, 
 			)
 
@@ -195,7 +221,8 @@ class Cosmetology(models.Model):
 	def _compute_nr_procedures(self):
 		for record in self:
 
-			record.nr_procedures=self.env['openhealth.procedure'].search_count([
+			#record.nr_procedures=self.env['openhealth.procedure'].search_count([
+			record.nr_procedures=self.env['openhealth.procedure.cos'].search_count([
 
 																	('cosmetology','=', record.id),
 
@@ -240,11 +267,17 @@ class Cosmetology(models.Model):
 
 
 
+
+
 	procedure_ids = fields.One2many(
-			'openhealth.procedure', 
+			#'openhealth.procedure', 
+			'openhealth.procedure.cos', 
 			'cosmetology', 
 			string = "Procedimientos", 
 			)
+
+
+
 
 
 	session_ids = fields.One2many(
@@ -352,6 +385,8 @@ class Cosmetology(models.Model):
 
 
 
+
+
 # ----------------------------------------------------------- Create consultation ------------------------------------------------------
 	@api.multi 
 	def create_consultation(self):
@@ -360,6 +395,153 @@ class Cosmetology(models.Model):
 		print 'jx'
 		print 'Create Consultation'
 
+
+		#treatment_id = self.id 
+		cosmetology_id = self.id 
+
+
+		patient_id = self.patient.id
+
+		#doctor_id = self.physician.id
+		therapist_id = self.therapist.id
+
+
+		chief_complaint = self.chief_complaint
+
+
+
+		# Date 
+		GMT = time_funcs.Zone(0,False,'GMT')		
+		evaluation_start_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
+		print 'GMT: ', GMT
+		print 'evaluation_start_date: ', evaluation_start_date 
+
+
+
+		# Apointment 
+		appointment = self.env['oeh.medical.appointment'].search([ 	
+														
+															('patient', 'like', self.patient.name),		
+															
+															('doctor', 'like', self.physician.name), 	
+															
+															('x_type', 'like', 'consultation'), 
+														
+														], 
+														order='appointment_date desc', limit=1)
+
+		print 'appointment: ', appointment
+		appointment_id = appointment.id
+
+
+
+
+
+
+		# Consultation 
+		print 'create consultation'
+		consultation = self.env['openhealth.consultation.cos'].create(
+																	{
+
+																	#'treatment': treatment_id,	
+																	'cosmetology': cosmetology_id,	
+
+																	'appointment': appointment_id,
+
+																	'patient': patient_id,
+																	#'doctor': doctor_id,
+																	'therapist': therapist_id,
+
+																	'evaluation_start_date': evaluation_start_date,
+
+																	'chief_complaint': chief_complaint,
+																	}
+																)
+		consultation_id = consultation.id 
+		print 'consultation: ', consultation
+		print 'consultation_id', consultation_id
+
+
+
+
+		# Update
+		rec_set = self.env['oeh.medical.appointment'].browse([
+																appointment_id																
+															])
+		print 'rec_set: ', rec_set
+
+		ret = rec_set.write({
+								'consultation': consultation_id,
+							})
+
+		print ret 
+		print appointment
+		print appointment.consultation
+		print appointment.consultation.id
+
+
+
+		print 
+
+		return {
+
+			# Mandatory 
+			'type': 'ir.actions.act_window',
+			'name': 'Open Consultation Current',
+
+
+
+			# Window action 
+			#'res_model': 'openhealth.consultation',
+			'res_model': 'openhealth.consultation.cos',
+
+			'res_id': consultation_id,
+
+
+
+			# Views 
+			"views": [[False, "form"]],
+
+			'view_mode': 'form',
+
+			'target': 'current',
+
+			#'view_id': view_id,
+			#'view_id': 'oeh_medical_evaluation_view',
+			#'view_id': 'oehealth.oeh_medical_evaluation_view',
+
+			#"domain": [["patient", "=", self.patient.name]],
+			#'auto_search': False, 
+
+
+			'flags': {
+					#'form': {'action_buttons': True, }
+					'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+					},			
+
+
+
+			'context':   {
+
+				#'search_default_treatment': treatment_id,
+				'search_default_cosmetology': cosmetology_id,
+
+				'default_patient': patient_id,
+				#'default_doctor': doctor_id,
+				'default_therapist': therapist_id,
+
+				#'default_treatment': treatment_id,		
+				'default_cosmetology': cosmetology_id,		
+
+				'default_evaluation_start_date': evaluation_start_date,
+				'default_appointment': appointment_id,
+
+				'default_chief_complaint': chief_complaint,
+				#'default_chief_complaint_cos': chief_complaint_cos,
+			}
+		}
+
+	# create_consultation
 
 
 
@@ -412,6 +594,7 @@ class Cosmetology(models.Model):
 				}
 
 	# create_service
+
 
 
 
@@ -549,6 +732,7 @@ class Cosmetology(models.Model):
 
 
 
+
 # ----------------------------------------------------------- Create invoice ------------------------------------------------------
 	@api.multi 
 	def create_invoice(self):
@@ -556,6 +740,8 @@ class Cosmetology(models.Model):
 		print 
 		print 'jx'
 		print 'Create invoice'
+
+
 
 
 
@@ -571,7 +757,10 @@ class Cosmetology(models.Model):
 
 
 		#ret = treatment_funcs.create_procedure_go(self)
-		ret = treatment_funcs.create_procedure_go(self, 'cosmetology')
+		#ret = treatment_funcs.create_procedure_go(self, 'cosmetology')
+		ret = cos_funcs.create_procedure_go(self)
+
+
 		#print ret 
 		print 
 
@@ -583,9 +772,23 @@ class Cosmetology(models.Model):
 
 
 
+# ----------------------------------------------------------- Create Sessions ------------------------------------------------------
+	#@api.multi 
+	#def create_sessions(self):
+
+	#	print 
+	#	print 'jx'
+	#	print 'Create Sessions'
+
+
+
+
+
+
+
 # ----------------------------------------------------------- Create session ------------------------------------------------------
 	@api.multi 
-	def create_sessions(self):
+	def create_session(self):
 
 		print 
 		print 'jx'

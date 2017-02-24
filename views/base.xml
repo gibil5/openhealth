@@ -129,12 +129,15 @@
 
 
 
+
+
+
 		<!-- Window List action -->
 		<!--
 		The following tag is an action definition for a "window action",
 		that is an action opening a view or a set of views
 		-->
-			<record model="ir.actions.act_window" id="procedure_list_action">
+		<record model="ir.actions.act_window" id="procedure_list_action">
 			<field name="name">Procedimientos</field>
 			<field name="res_model">openhealth.procedure</field>
 			<field name="view_type">form</field>
@@ -148,8 +151,25 @@
 				<p class="oe_view_nocontent_create">Create the first procedure
 				</p>
 			</field>
-			
 		</record>
+
+		<record model="ir.actions.act_window" id="procedure_cos_list_action">
+			<field name="name">Procedimientos Cos</field>
+			<field name="res_model">openhealth.procedure.cos</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first procedure_cos
+				</p>
+			</field>
+		</record>
+
+
 
 
 

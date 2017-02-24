@@ -3,6 +3,23 @@
 
 
 
+# Chief complaint
+_chief_complaint_list = [
+
+			('rejuvenation_face',			'Rejuvenecimiento facial'),
+			
+			('deep_face_cleansing',			'Limpieza facial profunda'),
+
+			('reaffirmation',				'Reafirmación'),
+
+			('reduction_weight_measures',	'Reducción de peso y medidas'),
+
+			#('',''),
+
+			]
+
+
+
 
 
 

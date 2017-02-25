@@ -16,23 +16,30 @@
 
 <!-- Appointments -->
 
-		<!-- Main - Appointments -->
-		<!--
-		-->
+		<!-- Appointments -->
 		<menuitem id="main_appointment_menu" 
 			name="Citas"
 			sequence="5"
 			/>
 
+
 		<menuitem id="oehealth_appointment_menu" 
-			name="Citas"
+			name="Citas - Médicos"
+			parent="main_appointment_menu"
+			/>
+
+
+		<menuitem id="oehealth_appointment_menu_cos" 
+			name="Citas - Cosmiatría"
 			parent="main_appointment_menu"
 			/>
 
 
 
+
+
+
 		<!-- Confirmed --> 
-		<!--parent="oehealth.oeh_medical_appointment_menu"-->
 		<menuitem 
 					action="oeh_medical_appointment_action_tree_confirmed" 
 					parent="oehealth_appointment_menu"  
@@ -41,12 +48,7 @@
 					sequence="1"
 		/>
 
-
-
 		<!-- Machines --> 
-		<!--
-					parent="oehealth.oeh_medical_appointment_menu"  
-		-->
 		<menuitem 
 					action="oeh_medical_appointment_action_tree_machines" 
 					parent="oehealth_appointment_menu"  
@@ -55,17 +57,37 @@
 					sequence="2"
 		/>
 
-
-
 		<!-- Controls --> 
-		<!--
-					parent="oehealth.oeh_medical_appointment_menu"  
-		-->
 		<menuitem 
 					action="oeh_medical_appointment_action_tree_controls" 
 					parent="oehealth_appointment_menu"  
 					id="oeh_medical_appointment_list_2" 
 					sequence="3"
+		/>
+
+
+
+
+
+
+
+
+		<!-- Confirmed - Cos --> 
+		<menuitem 
+					action="oeh_medical_appointment_action_tree_confirmed_cos" 
+					parent="oehealth_appointment_menu_cos"  
+					id="oeh_medical_appointment_list_confirmed_cos" 
+
+					sequence="1"
+		/>
+
+		<!-- Machines --> 
+		<menuitem 
+					action="oeh_medical_appointment_action_tree_machines_cos" 
+					parent="oehealth_appointment_menu_cos"  
+					id="oeh_medical_appointment_list_machines_cos"
+
+					sequence="2"
 		/>
 
 

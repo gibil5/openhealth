@@ -9,3 +9,6 @@ _patient=12		# Revilla
 
 
 _doctor=1			# Chavarri	
+
+
+_therapist=1			# Eulalia

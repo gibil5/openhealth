@@ -43,10 +43,6 @@
 
 
 
-
-
-
-
 		<!-- Therapist - List action -->
 			<record model="ir.actions.act_window" id="therapist_list_action">
 			<field name="name">Terapeutas</field>
@@ -61,6 +57,9 @@
 				</p>
 			</field>
 		</record>
+
+
+
 
 
 
@@ -89,13 +88,6 @@
 
 
 
-
-
-
-
-
-
-
 		<!-- apppointment - Form Action --> 
 		<record model="ir.actions.act_window" id="appointment_form_action">
 			<field name="name">Citas</field>
@@ -113,10 +105,6 @@
 			</field>
 			-->
 		</record>
-
-
-
-
 
 
 

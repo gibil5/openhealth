@@ -145,13 +145,24 @@ class Appointment(models.Model):
 
 
 	x_machine = fields.Selection(
-			#string="Máquina", 
 			string="Sala", 
 
-			#selection = jxvars._machines_list, 
 			selection = app_vars._machines_list, 
+
 			#required=True, 
 		)
+
+	x_machine_cos = fields.Selection(
+			string="Sala - Cos", 
+
+			selection = app_vars._machines_cos_list, 
+		)
+
+
+
+
+
+
 
 
 	x_target = fields.Selection(
@@ -323,7 +334,7 @@ class Appointment(models.Model):
 			
 			string = "Paciente", 	
 
-			#default = defaults._patient,
+			default = defaults._patient,
 
 			#required=True, 
 			readonly = False, 
@@ -396,7 +407,13 @@ class Appointment(models.Model):
 
 							#'Pre-control':		'Pre-control',
 							#'Pre-cita':		'Pre-cita',
+
+
+
+							'Eulalia':		'EU',
 		}
+
+
 
 
 
@@ -407,14 +424,31 @@ class Appointment(models.Model):
 			
 			string = "Médico", 	
 
-
 			#default=defaults._doctor,
+			#required=True, 
+			required=False, 
+			readonly = False, 
+			)
+
+
+
+
+
+
+	x_therapist = fields.Many2one(
+			'openhealth.therapist',
+			
+			string = "Cosmeatra", 	
+
+			default=defaults._therapist,
 
 			#required=True, 
 			required=False, 
-
 			readonly = False, 
 			)
+
+
+
 
 
 
@@ -425,18 +459,19 @@ class Appointment(models.Model):
 			compute='_compute_x_doctor_code',
 		)
 
-
 	#@api.multi
 	@api.depends('doctor')
 	def _compute_x_doctor_code(self):
 		for record in self:
 
-			#if record.x_target == 'machine':
-			#	record.x_doctor_code = self._hash_doctor_code[record.x_machine]
-			#else:
-			#	record.x_doctor_code = self._hash_doctor_code[record.doctor.name]
+			if record.doctor.name !=False:
+				record.x_doctor_code = self._hash_doctor_code[record.doctor.name]
+			else:
+				record.x_doctor_code = self._hash_doctor_code[record.x_therapist.name]
 
-			record.x_doctor_code = self._hash_doctor_code[record.doctor.name]
+
+
+
 
 
 
@@ -1036,7 +1071,9 @@ class Appointment(models.Model):
 
 
 
-	# ----------------------------------------------------------- On Change ------------------------------------------------------
+
+
+	# ----------------------------------------------------------- On Change - Patient Doctor ------------------------------------------------------
 
 	@api.onchange('patient','doctor')
 	def _onchange_patient_doctor(self):
@@ -1064,14 +1101,48 @@ class Appointment(models.Model):
 
 
 
+	# ----------------------------------------------------------- On Change - Patient Therapist ------------------------------------------------------
+
+	@api.onchange('patient','x_therapist')
+	def _onchange_patient_therapist(self):
+
+		print 
+		print 'jx'
+		print 'On Change PT'
+
+		if self.patient != False and self.x_therapist != False:
+				
+
+			cosmetology = self.env['openhealth.cosmetology'].search([
+																				('patient', 'like', self.patient.name),
+																				('therapist', 'like', self.x_therapist.name),
+																			],
+																				order='start_date desc',
+																				limit=1,
+																			)
+			self.cosmetology = cosmetology
+
+			print 'jx'
+
+
+
+
+
+
+
+
+
+
+
 
 	# ----------------------------------------------------------- Indexes ------------------------------------------------------
 
 	treatment = fields.Many2one('openhealth.treatment',
 			string="Tratamiento",
 			ondelete='cascade', 
-			#required=False, 
-			required=True, 
+			
+			required=False, 
+			#required=True, 
 
 			#compute='_compute_treatment', 
 			)
@@ -1082,7 +1153,8 @@ class Appointment(models.Model):
 			'openhealth.cosmetology',
 			string="Cosmiatría",
 			ondelete='cascade', 
-			#required=False, 
+
+			required=False, 
 			#required=True, 
 			)
 

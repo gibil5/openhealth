@@ -19,8 +19,12 @@ import procedure_funcs
 
 
 class Procedure(models.Model):
-	_name = 'openhealth.procedure'
+
 	_inherit = 'oeh.medical.evaluation'
+
+	_name = 'openhealth.procedure'
+
+
 
 
 
@@ -77,8 +81,13 @@ class Procedure(models.Model):
 
 # ----------------------------------------------------------- Relational ------------------------------------------------------
 
+
 	appointment_ids = fields.One2many(
+
 			'oeh.medical.appointment', 
+			#'openhealth.appointment', 
+
+
 			'procedure', 
 			string = "Citas", 
 

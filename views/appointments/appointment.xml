@@ -11,10 +11,17 @@
 		<record model="ir.ui.view" id="view_appointment">
 
 			<field name="name">oeh.medical.appointment.form</field>
-			
+
+
+<!--			
+			<field name="model">oeh.medical.appointment</field>
+-->
 			<field name="model">oeh.medical.appointment</field>
 
+
+
 			<field name="inherit_id" ref="oehealth.oeh_medical_appointment_view"/>			
+
 
 			<field name="mode">primary</field>
 
@@ -93,6 +100,7 @@
 					<field name="x_duration_min"	attrs="{	'readonly':[('x_type', '!=', 'session')], 
 	
 																'invisible':[('x_type', '!=', 'session')]	}"/>
+							<field name="x_machine_cos"		attrs="{'invisible':[('x_type', '!=', 'procedure')]}"/>
 					-->
 
 							<field name="x_target"/>
@@ -100,7 +108,6 @@
 
 							<field name="x_machine"		attrs="{'invisible':[('x_type', '!=', 'procedure')]}"/>
 
-							<field name="x_machine_cos"		attrs="{'invisible':[('x_type', '!=', 'procedure')]}"/>
 
 
 					<!--					
@@ -143,15 +150,17 @@
 														'invisible':[('x_target', '!=', 'machine'),],
 														'required':[('x_target', '=', 'machine'),],
 														}"/>
-					-->
+
+					<field name="x_therapist"		required="0"	/>		
 
 
 					<field name="doctor"		attrs="{
 														'invisible':[('x_target', '!=', 'doctor'),],
 														'required':[('x_target', '=', 'doctor'),],
 														}"	/>
+					-->
 
-					<field name="x_therapist"		required="0"	/>		
+					<field name="doctor"			/>
 
 					<field name="vspace"/>
 					
@@ -271,6 +280,8 @@
 
 
 
+<!--
+
 							<field name="treatment"		attrs="{
 																	'invisible':[('x_target', '!=', 'doctor'),],
 																	'required':[('x_target', '=', 'doctor'),],
@@ -278,6 +289,11 @@
 
 
 							<field name="cosmetology"		/>
+
+-->
+							<field name="treatment"		/>
+
+
 
 
 							<!--
@@ -375,7 +391,13 @@
 		<!-- service tree/list view -->
 		<record model="ir.ui.view" id="oehealth.oeh_medical_appointment_tree">
 			<field name="name">oeh.medical.appointment.tree</field>
+			
+<!--
 			<field name="model">oeh.medical.appointment</field>
+-->
+			<field name="model">oeh.medical.appointment</field>
+			
+
 			<field name="type">tree</field>
 			<field name="priority" eval="1"/>
 
@@ -470,14 +492,36 @@
 
 
 
+
+
 		<!-- Window action -->
-		<!-- Admin menu --> 
+
+		<!-- Appointment --> 
 		<record model="ir.actions.act_window" id="oeh_medical_preappointment_list_action">
 			<field name="name">Citas x</field>
+
+
+<!--
 			<field name="res_model">oeh.medical.appointment</field>
+-->
+			<field name="res_model">oeh.medical.appointment</field>
+
+
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 		</record>
+
+
+
+		<!-- Appointment - Cos --> 
+		<record model="ir.actions.act_window" id="oeh_medical_preappointment_list_action_cos">
+			<field name="name">Citas - Cos</field>
+			<field name="res_model">openhealth.appointment.cos</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+
 
 
 
@@ -499,7 +543,13 @@
 					
 					<field name="name">Citas confirmadas</field>
 					
+
+<!--
 					<field name="res_model">oeh.medical.appointment</field>
+-->
+					<field name="res_model">oeh.medical.appointment</field>
+
+
 					<field name="view_type">form</field>
 					<field name="view_mode">calendar,tree,form</field>     
 
@@ -535,11 +585,12 @@
 
 		<!-- Machines -->
 		<record id="oeh_medical_appointment_action_tree_machines" model="ir.actions.act_window">
-
 					<field name="name">Reserva de salas</field>
 
 			
 					<field name="res_model">oeh.medical.appointment</field>
+
+
 					<field name="view_type">form</field>
 					<field name="view_mode">calendar,tree,form</field>
 					
@@ -622,34 +673,53 @@
 
 
 
+
+
 		<!-- Confirmed - Cos -->  
 		<record id="oeh_medical_appointment_action_tree_confirmed_cos" model="ir.actions.act_window">
-					
 					<field name="name">Citas confirmadas - Cos</field>
 					
+
+
+
+					<!--
+					<field name="res_model">openhealth.appointment.cos</field>
+					-->
 					<field name="res_model">oeh.medical.appointment</field>
+
+
+
+
 					<field name="view_type">form</field>
+
 					<field name="view_mode">calendar,tree,form</field>     
 
 					<!--
 											('x_target', '=', 'doctor'),
 					-->
+
 					<field name="domain">[
 											('state', 'in', ['pre_scheduled','Scheduled', 'Completed', 'Invoiced']),
 											('x_target', '=', 'therapist'),
 										]
 					</field>
 
+
+
+
 					<!--
 											'default_x_target': 'doctor',
 					-->
 					<field name="context">{
 											'default_x_target': 'therapist',
+
 											'default_x_type': 'consultation',
 
 											'default_x_create_procedure_automatic': False,
 										}
 					</field>
+
+
 					
 
 					<field name="view_id" eval="False"/>
@@ -664,6 +734,7 @@
 
 
 
+
 		<!-- Machines - Cos -->
 		<record id="oeh_medical_appointment_action_tree_machines_cos" model="ir.actions.act_window">
 
@@ -671,6 +742,8 @@
 
 			
 					<field name="res_model">oeh.medical.appointment</field>
+
+					
 					<field name="view_type">form</field>
 					<field name="view_mode">calendar,tree,form</field>
 					
@@ -678,12 +751,12 @@
 
 											('x_machine', 'in', ['laser_co2_1', 'laser_co2_2', 'laser_co2_3', 'laser_excilite', 'laser_m22']),
 											('x_target', '=', 'machine'),
+											('x_machine_cos', '!=', 'False'),
 					-->
 
 
 					<field name="domain">[
 
-											('x_machine_cos', '!=', 'False'),
 
 										]
 					</field>

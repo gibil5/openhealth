@@ -23,9 +23,11 @@ import app_vars
 
 
 class Appointment(models.Model):
-	#_name = 'openhealth.appointment'
 
 	_inherit = 'oeh.medical.appointment'
+
+	#_name = 'openhealth.appointment'
+
 
 
 
@@ -152,11 +154,10 @@ class Appointment(models.Model):
 			#required=True, 
 		)
 
-	x_machine_cos = fields.Selection(
-			string="Sala - Cos", 
-
-			selection = app_vars._machines_cos_list, 
-		)
+	#x_machine_cos = fields.Selection(
+	#		string="Sala - Cos", 
+	#		selection = app_vars._machines_cos_list, 
+	#	)
 
 
 
@@ -410,7 +411,7 @@ class Appointment(models.Model):
 
 
 
-							'Eulalia':		'EU',
+							#'Eulalia':		'EU',
 		}
 
 
@@ -435,17 +436,16 @@ class Appointment(models.Model):
 
 
 
-	x_therapist = fields.Many2one(
-			'openhealth.therapist',
-			
-			string = "Cosmeatra", 	
-
-			default=defaults._therapist,
-
+#	x_therapist = fields.Many2one(
+#			'openhealth.therapist',
+#			string = "Cosmeatra", 	
+#			default=defaults._therapist,
 			#required=True, 
-			required=False, 
-			readonly = False, 
-			)
+#			required=False, 
+#			readonly = False, 
+#			)
+
+
 
 
 
@@ -463,12 +463,7 @@ class Appointment(models.Model):
 	@api.depends('doctor')
 	def _compute_x_doctor_code(self):
 		for record in self:
-
-			if record.doctor.name !=False:
-				record.x_doctor_code = self._hash_doctor_code[record.doctor.name]
-			else:
-				record.x_doctor_code = self._hash_doctor_code[record.x_therapist.name]
-
+			record.x_doctor_code = self._hash_doctor_code[record.doctor.name]
 
 
 
@@ -675,14 +670,12 @@ class Appointment(models.Model):
 
 	# Date 
 	appointment_date = fields.Datetime(
-
 			string="Fecha", 
-
-			#readonly=True,
 			readonly=False,
-
 			#states={'Scheduled': [('readonly', False)]})
 			)
+
+
 
 
 	x_date = fields.Date(
@@ -757,9 +750,7 @@ class Appointment(models.Model):
 
 	# Date end 
 	appointment_end = fields.Datetime(
-			string="Fecha fin", 
-			#compute="_compute_appointment_end",
-		
+			string="Fecha fin", 		
 			readonly=True, 
 			)
 
@@ -939,17 +930,13 @@ class Appointment(models.Model):
 
 	# Duration 
 
-
 	duration = fields.Float(
-			string="Duración (h)", 
-			
-			#default = 0.5,
-			#default = 0.25,
-
+			string="Duración (h)", 			
 			compute='_compute_duration', 
-
 			readonly=True, 
 		)
+
+
 
 	#@api.multi
 	@api.depends('x_type')
@@ -1101,30 +1088,6 @@ class Appointment(models.Model):
 
 
 
-	# ----------------------------------------------------------- On Change - Patient Therapist ------------------------------------------------------
-
-	@api.onchange('patient','x_therapist')
-	def _onchange_patient_therapist(self):
-
-		print 
-		print 'jx'
-		print 'On Change PT'
-
-		if self.patient != False and self.x_therapist != False:
-				
-
-			cosmetology = self.env['openhealth.cosmetology'].search([
-																				('patient', 'like', self.patient.name),
-																				('therapist', 'like', self.x_therapist.name),
-																			],
-																				order='start_date desc',
-																				limit=1,
-																			)
-			self.cosmetology = cosmetology
-
-			print 'jx'
-
-
 
 
 
@@ -1149,14 +1112,14 @@ class Appointment(models.Model):
 
 
 
-	cosmetology = fields.Many2one(
-			'openhealth.cosmetology',
-			string="Cosmiatría",
-			ondelete='cascade', 
+#	cosmetology = fields.Many2one(
+#			'openhealth.cosmetology',
+#			string="Cosmiatría",
+#			ondelete='cascade', 
 
-			required=False, 
+#			required=False, 
 			#required=True, 
-			)
+#			)
 
 
 

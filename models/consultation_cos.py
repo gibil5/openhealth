@@ -24,10 +24,11 @@ import time_funcs
 
 class ConsultationCos(models.Model):
 
-	_name = 'openhealth.consultation.cos'
-	
 	#_inherit = 'oeh.medical.evaluation'
 	_inherit = 'openhealth.consultation'
+
+	_name = 'openhealth.consultation.cos'
+	
 
 
 

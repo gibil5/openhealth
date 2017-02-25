@@ -242,8 +242,10 @@
 
 		# Appointments
 		'views/appointments/appointment.xml',
+
 		'views/appointments/calendar.xml',
 
+		'views/appointments/appointment_cos.xml',
 
 
 

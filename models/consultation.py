@@ -15,17 +15,18 @@ from datetime import datetime,tzinfo,timedelta
 import jxvars
 import cosvars
 
-
 import jrfuncs
 import eval_vars
 import time_funcs
 
 
 
-
 class Consultation(models.Model):
-	_name = 'openhealth.consultation'
+
 	_inherit = 'oeh.medical.evaluation'
+
+	_name = 'openhealth.consultation'
+	
 
 
 
@@ -200,7 +201,12 @@ class Consultation(models.Model):
 
 	# Appointments 
 	appointment_ids = fields.One2many(
+
+
 			'oeh.medical.appointment', 
+			#'openhealth.appointment', 
+
+
 			'consultation', 
 			string = "Citas", 
 			required=True, 

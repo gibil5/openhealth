@@ -84,6 +84,7 @@ from . import event
 
 from . import appointment 
 
+from . import appointment_cos
 
 
 

@@ -47,9 +47,13 @@ class Session(models.Model):
 	# Appointments 
 
 	appointment_ids = fields.One2many(
-			'oeh.medical.appointment', 
-			'session', 
 
+
+			'oeh.medical.appointment', 
+			#'openhealth.appointment', 
+
+		
+			'session', 
 			string = "Citas", 
 			)
 

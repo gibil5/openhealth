@@ -395,7 +395,10 @@ class Treatment(models.Model):
 
 	# Reservations 
 	reservation_ids = fields.One2many(
+
 			'oeh.medical.appointment', 
+			#'openhealth.appointment', 
+
 			'treatment', 
 
 			string = "Reserva de sala", 
@@ -416,7 +419,12 @@ class Treatment(models.Model):
 
 	# Appointments 
 	appointment_ids = fields.One2many(
+
+
 			'oeh.medical.appointment', 
+			#'openhealth.appointment', 
+		
+
 			'treatment', 
 			string = "Citas", 
 			domain = [

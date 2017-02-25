@@ -72,9 +72,12 @@ class Control(models.Model):
 	# Appointments 
 
 	appointment_ids = fields.One2many(
-			'oeh.medical.appointment', 
-			'control', 
 
+			'oeh.medical.appointment', 
+			#'openhealth.appointment', 
+
+
+			'control', 
 			string = "Citas", 
 			)
 

@@ -23,8 +23,11 @@ import prodvars
 
 #------------------------------------------------------------------------
 class Evaluation(models.Model):
-	#_name =	'openhealth.evaluation5'
+
 	_inherit = 'oeh.medical.evaluation'
+
+	#_name =	'openhealth.evaluation5'
+
 
 
 

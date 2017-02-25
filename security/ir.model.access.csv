@@ -25,6 +25,11 @@ access_openhealth_session_cos,openhealth.session.cos,model_openhealth_session_co
 
 
 
+access_openhealth_appointment_cos,openhealth.appointment.cos,model_openhealth_appointment_cos,,1,1,1,1
+
+
+
+
 
 
 

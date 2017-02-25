@@ -6,7 +6,13 @@
 
 		<record model="ir.ui.view" id="oehealth.view_oeh_medical_event_calendar">
 			<field name="name">appointment.calendar</field>
+
+<!--
+			<field name="model">openhealth.appointment</field>
+-->
 			<field name="model">oeh.medical.appointment</field>
+
+
 
 			<!--
 			<field name="inherit_id" ref="oehealth.view_oeh_medical_event_calendar"/>			

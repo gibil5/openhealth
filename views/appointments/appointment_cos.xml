@@ -8,8 +8,11 @@
 		<record model="ir.ui.view" id="appointment_cos_form_view">
 			<field name="name">appointment.cos.form</field>
 
-
+<!--
 			<field name="model">openhealth.appointment.cos</field>
+-->
+			<field name="model">oeh.medical.appointment</field>
+
 
 
 <!--

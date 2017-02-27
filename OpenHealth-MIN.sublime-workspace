@@ -15,34 +15,7 @@
 			"file": "__openerp__.py",
 			"settings":
 			{
-				"buffer_size": 5506,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/menus.xml",
-			"settings":
-			{
-				"buffer_size": 7833,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/appointments/appointment.xml",
-			"settings":
-			{
-				"buffer_size": 14960,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/base.xml",
-			"settings":
-			{
-				"buffer_size": 7117,
+				"buffer_size": 5551,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -51,16 +24,16 @@
 			"file": "models/appointment.py",
 			"settings":
 			{
-				"buffer_size": 27265,
+				"buffer_size": 26432,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "models/defaults.py",
+			"file": "models/appointment_cos.py",
 			"settings":
 			{
-				"buffer_size": 193,
+				"buffer_size": 3247,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -69,115 +42,16 @@
 			"file": "models/app_vars.py",
 			"settings":
 			{
-				"buffer_size": 339,
+				"buffer_size": 554,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "models/process.py",
+			"file": "views/appointments/appointment.xml",
 			"settings":
 			{
-				"buffer_size": 1848,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/evaluation.py",
-			"settings":
-			{
-				"buffer_size": 2764,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/consultation_cos.py",
-			"settings":
-			{
-				"buffer_size": 774,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/procedure.py",
-			"settings":
-			{
-				"buffer_size": 11557,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/order.py",
-			"settings":
-			{
-				"buffer_size": 26998,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/procedures/procedure.xml",
-			"settings":
-			{
-				"buffer_size": 6155,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/orders/order.xml",
-			"settings":
-			{
-				"buffer_size": 12444,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/consultations/consultation_order.xml",
-			"settings":
-			{
-				"buffer_size": 929,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/sessions/session.xml",
-			"settings":
-			{
-				"buffer_size": 4703,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/procedure_cos.py",
-			"settings":
-			{
-				"buffer_size": 4085,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/session_cos.py",
-			"settings":
-			{
-				"buffer_size": 884,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/consultation.py",
-			"settings":
-			{
-				"buffer_size": 18665,
+				"buffer_size": 16031,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -186,52 +60,7 @@
 			"file": "models/cosmetology.py",
 			"settings":
 			{
-				"buffer_size": 14819,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/sessions/session_cos.xml",
-			"settings":
-			{
-				"buffer_size": 1915,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/procedures/procedure_cos.xml",
-			"settings":
-			{
-				"buffer_size": 917,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/consultations/consultation.xml",
-			"settings":
-			{
-				"buffer_size": 11657,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/cosmetologies/cosmetology_consultations.xml",
-			"settings":
-			{
-				"buffer_size": 1116,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/consultations/consultation_cos.xml",
-			"settings":
-			{
-				"buffer_size": 1134,
+				"buffer_size": 14860,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -310,37 +139,51 @@
 	},
 	"file_history":
 	[
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/appointments/appointment_cos.xml",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/consultation.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/evaluation.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/treatment.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/event.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/menus.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/base.xml",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/__init__.py",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/session.py",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/session_cos.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/consultation_cos.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/cosmetology.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/procedure.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/control.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/session.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/appointments/calendar.xml",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/therapist.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/consultations/consultation_cos.xml",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/consultations/consultation.xml",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/security/ir.model.access.csv",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/consultations/consultation_first.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/procedure_cos.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/__init__.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/app_vars.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/process.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/service.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/procedures/procedure.xml",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/order.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/session_cos.py",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/cosmetologies/cosmetology_consultations.xml",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/procedures/procedure_cos.xml",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/sessions/session_cos.xml",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/sessions/session.xml",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/orders/order.xml",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/consultations/consultation_order.xml",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/defaults.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/cosmetologies/cosmetology_services.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/session_med.py",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/cosmetology.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/sessions/session_configuration.xml",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/consultation_cos.py",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/consultation.py",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/security/ir.model.access.csv",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/procedures/procedure_cos.xml",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/procedures/procedure.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/cos_funcs.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/treatment_funcs.py",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/menus.xml",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/evaluation.py",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/order.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/cosmetologies/cosmetology_procedures.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/treatments/treatment_consultations.xml",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/cosmetologies/cosmetology_consultations.xml",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/treatment.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/jxvars.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/cosvars.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/cosmetologies/cosmetology.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/services/service_co2.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/sale_documents/sale_documents.xml",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/orders/order.xml",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/therapist.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/cosmetologies/cosmetology_orders.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/cosmetologies/cosmetology_appointments.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/sale_documents/payment_methods.xml",
@@ -352,14 +195,10 @@
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/treatments/treatment.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/orders/payment_methods.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/orders/events.xml",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/event.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/service_cosmetology.py",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/process.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/appointments/appointment.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/appointment.py",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/sessions/session.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/prodvars.py",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/service.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/services/service.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/services/service_cosmetology.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/services/service_cosmetology_zone.xml",
@@ -387,7 +226,6 @@
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/treatment.trash.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/order_line.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/appfuncs.py",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/control.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/products/product_ipl.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/products/product_ndyag.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/products/product_medical.xml",
@@ -402,7 +240,6 @@
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/services/service_ndyag.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/services/service_ipl.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/services/service_excilite.xml",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/consultations/consultation.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/__old_openerp__.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/__openerp__.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/openhealth.xml",
@@ -422,7 +259,6 @@
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/sale_documents/sale_notes.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/sale_documents/ticket_invoices.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/sale_documents/advertisements.xml",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/app_vars.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/event_vars.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/order_funcs.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/order_funcs.trash.py",
@@ -430,14 +266,7 @@
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/services/service_co2_zone.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/orders/sale_order.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/ticket_invoice.py",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/advertisement.py",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/sale_note.py",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/ticket_receipt.py",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/procedure_funcs.py",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/sales_document.py",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/defaults.py",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/order.trash.py",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/services/service_ipl_zone.xml"
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/advertisement.py"
 	],
 	"find":
 	{
@@ -456,6 +285,47 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"compute_x_machine_sh",
+			"machine_short",
+			"machine_",
+			"machine_code",
+			"x_machine",
+			"treatment",
+			"x_doctor_code",
+			"cosmetology",
+			"x_machine",
+			"x_therapist",
+			"openhealth.appointment",
+			"cosmetology",
+			"therapist",
+			"openhealth.appointment",
+			"oeh.medical.appointment",
+			"state",
+			"inherit",
+			"oeh.medical.appointment",
+			"appointment",
+			"oeh.medical.appointment",
+			"x_create_pr",
+			"oeh.medical.appointment",
+			"appoint",
+			"x_display",
+			"duration",
+			"appointment_end",
+			"appointment_date",
+			"appoint",
+			"cosmetology",
+			"therapist",
+			"cosmetology",
+			"therapist",
+			"treatment",
+			"consultation",
+			"oeh_medical_preappointment_list_action",
+			"appoin",
+			"x_machine_cos",
+			"appoint",
+			"x_machine_cos",
+			"x_machine",
+			"machine",
 			"x_create_pr",
 			"create_pro",
 			"treatment",
@@ -542,48 +412,7 @@
 			"consultation",
 			"create_",
 			"treatment",
-			"consultation_ids",
-			"consultation",
-			"service",
-			"appointment",
-			"service",
-			"create_ser",
-			"x_ruc",
-			"partner_id",
-			"amount_total",
-			"self.id",
-			"payment_method",
-			"!=",
-			"x_",
-			"attr",
-			"receipt",
-			"payment_method",
-			"treatment",
-			"receipt",
-			"create_sale",
-			"reserve",
-			"sala",
-			"buscar",
-			"appoint",
-			"patient",
-			"consultation",
-			"agregar",
-			"x_receipt",
-			"x_sal",
-			"change",
-			"on_cha",
-			"onchan",
-			"subtotal",
-			"payment_me",
-			"forma de ",
-			"forma",
-			"notebook",
-			"target",
-			"budget",
-			"consultation",
-			"state",
-			"physician",
-			"x_type"
+			"consultation_ids"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -591,6 +420,10 @@
 		"regex": false,
 		"replace_history":
 		[
+			"oeh.medical.appointment",
+			"openhealth.appointment",
+			"appointment_cos",
+			"appointment",
 			"cosmetology",
 			"x_therapist",
 			"therapist",
@@ -714,11 +547,7 @@
 			"ticket_invoice",
 			"ticket_receipt",
 			"sale_note",
-			"advertisement",
-			"sale_note",
-			"ticket_receipt",
-			"ticket_invoice",
-			"ticket_receipt"
+			"advertisement"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -729,7 +558,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -738,15 +567,101 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5506,
+						"buffer_size": 5551,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2053,
-								2053
+								5225,
+								5225
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3923.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "models/appointment.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 26432,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2195,
+								2195
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1844.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "models/appointment_cos.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3247,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1399,
+								1399
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1573.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "models/app_vars.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 554,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								436,
+								436
 							]
 						],
 						"settings":
@@ -756,93 +671,6 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "views/menus.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7833,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1471,
-								1471
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 980.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "views/appointments/appointment.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 14960,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								13922,
-								13963
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 11288.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "views/base.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7117,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 260.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
@@ -850,28 +678,28 @@
 				},
 				{
 					"buffer": 4,
-					"file": "models/appointment.py",
+					"file": "views/appointments/appointment.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 27265,
+						"buffer_size": 16031,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								26809,
-								26837
+								14403,
+								14403
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
+							"syntax": "Packages/XML/XML.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 26341.0,
+						"translation.y": 12641.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
@@ -879,423 +707,19 @@
 				},
 				{
 					"buffer": 5,
-					"file": "models/defaults.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 193,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								193,
-								193
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "models/app_vars.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 339,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								104,
-								104
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "models/process.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1848,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								689,
-								689
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "models/evaluation.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2764,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1928,
-								1928
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2252.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 16,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "models/consultation_cos.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 774,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								638,
-								638
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 213.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 19,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "models/procedure.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 11557,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								708,
-								708
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 269.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 12,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "models/order.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 26998,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								10658,
-								10658
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 11381.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "views/procedures/procedure.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6155,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3623,
-								3623
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 3368.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "views/orders/order.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 12444,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								9329,
-								9329
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 8848.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 14,
-					"file": "views/consultations/consultation_order.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 929,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								667,
-								667
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 15,
-					"file": "views/sessions/session.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4703,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2617,
-								3550
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 3297.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 13,
-					"type": "text"
-				},
-				{
-					"buffer": 16,
-					"file": "models/procedure_cos.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4085,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								538,
-								538
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 257.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 17,
-					"type": "text"
-				},
-				{
-					"buffer": 17,
-					"file": "models/session_cos.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 884,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								553,
-								553
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 221.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 18,
-					"type": "text"
-				},
-				{
-					"buffer": 18,
-					"file": "models/consultation.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 18665,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 20,
-					"type": "text"
-				},
-				{
-					"buffer": 19,
 					"file": "models/cosmetology.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 14819,
+						"buffer_size": 14860,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9476,
-								9485
+								5244,
+								5244
 							]
 						],
 						"settings":
@@ -1304,155 +728,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 8831.0,
+						"translation.y": 5244.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
-					"type": "text"
-				},
-				{
-					"buffer": 20,
-					"file": "views/sessions/session_cos.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1915,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1335,
-								1335
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 916.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 14,
-					"type": "text"
-				},
-				{
-					"buffer": 21,
-					"file": "views/procedures/procedure_cos.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 917,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								917
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 24,
-					"type": "text"
-				},
-				{
-					"buffer": 22,
-					"file": "views/consultations/consultation.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 11657,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								9018,
-								9018
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 6317.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 22,
-					"type": "text"
-				},
-				{
-					"buffer": 23,
-					"file": "views/cosmetologies/cosmetology_consultations.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1116,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								686,
-								686
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 398.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 23,
-					"type": "text"
-				},
-				{
-					"buffer": 24,
-					"file": "views/consultations/consultation_cos.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1134,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								842,
-								842
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 177.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 21,
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -1561,7 +840,7 @@
 		[
 			[
 				"",
-				"~/Virtualenvs/Odoo9/odoo/addons/web_calendar/web-calendar.sublime-project"
+				"~/Documents/Aptana Studio 3 Workspace/templates/dfirm/dfirm/interamericana.sublime-project"
 			]
 		],
 		"width": 380.0

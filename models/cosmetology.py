@@ -325,9 +325,11 @@ class Cosmetology(models.Model):
 
 	appointment_ids = fields.One2many(
 
-			#'oeh.medical.appointment', 
-			'openhealth.appointment.cos', 
+
+			'oeh.medical.appointment', 
+			#'openhealth.appointment.cos', 
 			
+
 			'cosmetology', 
 			string = "Citas", 
 			domain = [

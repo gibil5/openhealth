@@ -28,19 +28,21 @@ class AppointmentCos(models.Model):
 	#_inherit = 'openhealth.appointment'
 	_inherit = 'oeh.medical.appointment'
 
-	_name = 'openhealth.appointment.cos'
+	#_name = 'openhealth.appointment.cos'
 
 
 
 
 
-	x_machine = fields.Selection(
-			string="Sala", 
+	x_machine_cos = fields.Selection(
+			string="Sala Cos", 
 
 			selection = app_vars._machines_cos_list, 
 
 			#required=True, 
 		)
+
+
 
 
 
@@ -93,36 +95,69 @@ class AppointmentCos(models.Model):
 
 
 
+
+
+
 	# ----------------------------------------------------------- Computes ------------------------------------------------------
 
 	# Hash 
 
-	_hash_doctor_code = {
+	_hash_therapist_code = {
 							False:				'', 
 
 							'Eulalia':		'EU',
 		}
 
 
-
-
-
-
 	# X Doctor Code 
-	x_doctor_code = fields.Char(
-			compute='_compute_x_doctor_code',
-		)
+	#x_doctor_code = fields.Char(
+	#		compute='_compute_x_doctor_code',
+	#	)
 
 	#@api.multi
-	@api.depends('x_therapist')
+	#@api.depends('x_therapist')
+	@api.depends('doctor', 'x_therapist')
+
 	def _compute_x_doctor_code(self):
 		for record in self:
 
-			record.x_doctor_code = self._hash_doctor_code[record.x_therapist.name]
+			if record.doctor.name != False:
+				record.x_doctor_code = self._hash_doctor_code[record.doctor.name]
+			else: 
+				record.x_doctor_code = self._hash_therapist_code[record.x_therapist.name]
 
 
 
 
+
+
+	_hash_x_machine_cos = {
+							False:				'', 
+
+							#'laser_co2_1':		'C1',
+							#'laser_co2_2':		'C2',
+							#'laser_co2_3':		'C3',
+							
+							'laser_triactive':		'Tri',
+							'chamber_reduction':	'Cam',
+							'carboxy_diamond':		'CaDi',
+						}
+
+
+
+
+
+	@api.multi
+	#@api.depends('x_machine')
+	#@api.depends('x_machine', 'x_machine_cos')
+	def _compute_x_machine_short(self):
+		for record in self:
+
+			#if record.x_machine != '':
+			if record.doctor.name != False:
+				record.x_machine_short = self._hash_x_machine[record.x_machine]
+			else:
+				record.x_machine_short = self._hash_x_machine_cos[record.x_machine_cos]
 
 
 
@@ -130,26 +165,26 @@ class AppointmentCos(models.Model):
 
 	# ----------------------------------------------------------- On Change - Patient Therapist ------------------------------------------------------
 
-#	@api.onchange('patient','x_therapist')
-#	def _onchange_patient_therapist(self):
+	@api.onchange('patient','x_therapist')
+	def _onchange_patient_therapist(self):
 
-#		print 
-#		print 'jx'
-#		print 'On Change PT'
+		print 
+		print 'jx'
+		print 'On Change PT'
 
-#		if self.patient != False and self.x_therapist != False:
+		if self.patient != False and self.x_therapist != False:
 				
 
-#			cosmetology = self.env['openhealth.cosmetology'].search([
-#																				('patient', 'like', self.patient.name),
-#																				('therapist', 'like', self.x_therapist.name),
-#																			],
-#																				order='start_date desc',
-#																				limit=1,
-#																			)
-#			self.cosmetology = cosmetology
+			cosmetology = self.env['openhealth.cosmetology'].search([
+																				('patient', 'like', self.patient.name),
+																				('therapist', 'like', self.x_therapist.name),
+																			],
+																				order='start_date desc',
+																				limit=1,
+																			)
+			self.cosmetology = cosmetology
 
-#			print 'jx'
+			print 'jx'
 
 
 

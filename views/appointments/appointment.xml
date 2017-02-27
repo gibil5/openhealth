@@ -100,16 +100,16 @@
 					<field name="x_duration_min"	attrs="{	'readonly':[('x_type', '!=', 'session')], 
 	
 																'invisible':[('x_type', '!=', 'session')]	}"/>
+							<field name="x_machine"		attrs="{'invisible':[('x_type', '!=', 'procedure')]}"/>
 							<field name="x_machine_cos"		attrs="{'invisible':[('x_type', '!=', 'procedure')]}"/>
 					-->
 
 							<field name="x_target"/>
 
 
-							<field name="x_machine"		attrs="{'invisible':[('x_type', '!=', 'procedure')]}"/>
+							<field name="x_machine"		/>
 
-
-
+							<field name="x_machine_cos"	/>
 					<!--					
 					<group>
 						<group>
@@ -151,7 +151,6 @@
 														'required':[('x_target', '=', 'machine'),],
 														}"/>
 
-					<field name="x_therapist"		required="0"	/>		
 
 
 					<field name="doctor"		attrs="{
@@ -161,6 +160,9 @@
 					-->
 
 					<field name="doctor"			/>
+
+					<field name="x_therapist"		required="0"	/>		
+
 
 					<field name="vspace"/>
 					
@@ -288,10 +290,10 @@
 														}"	/>
 
 
-							<field name="cosmetology"		/>
 
 -->
 							<field name="treatment"		/>
+							<field name="cosmetology"		/>
 
 
 
@@ -516,7 +518,9 @@
 		<!-- Appointment - Cos --> 
 		<record model="ir.actions.act_window" id="oeh_medical_preappointment_list_action_cos">
 			<field name="name">Citas - Cos</field>
-			<field name="res_model">openhealth.appointment.cos</field>
+
+			<field name="res_model">oeh.medical.appointment</field>
+			
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 		</record>
@@ -735,6 +739,7 @@
 
 
 
+
 		<!-- Machines - Cos -->
 		<record id="oeh_medical_appointment_action_tree_machines_cos" model="ir.actions.act_window">
 
@@ -751,12 +756,12 @@
 
 											('x_machine', 'in', ['laser_co2_1', 'laser_co2_2', 'laser_co2_3', 'laser_excilite', 'laser_m22']),
 											('x_target', '=', 'machine'),
-											('x_machine_cos', '!=', 'False'),
 					-->
 
 
 					<field name="domain">[
 
+											('x_machine_cos', '!=', 'False'),
 
 										]
 					</field>
@@ -768,6 +773,7 @@
 					<field name="context">{
 											'default_x_target': 'therapist',
 											'default_x_type': 'procedure',
+											'default_x_machine_cos': 'laser_triactive',
 						}
 					</field>
 

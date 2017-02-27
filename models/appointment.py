@@ -117,6 +117,7 @@ class Appointment(models.Model):
 							#'laser_co2_1':		'C1',
 							#'laser_co2_2':		'C2',
 							#'laser_co2_3':		'C3',
+							
 							'laser_co2_1':		'Co2_1',
 							'laser_co2_2':		'Co2_2',
 							'laser_co2_3':		'Co2_3',
@@ -128,14 +129,16 @@ class Appointment(models.Model):
 			compute='_compute_x_machine_short',
 		)
 
-	#@api.multi
-	@api.depends('x_machine')
-	def _compute_x_machine_short(self):
-		for record in self:
 
-			if record.x_machine != False:
+
+
+	#@api.multi
+	#@api.depends('x_machine')
+	#def _compute_x_machine_short(self):
+	#	for record in self:
+	#		if record.x_machine != False:
 				#if record.x_target == 'doctor':
-				record.x_machine_short = self._hash_x_machine[record.x_machine]
+	#			record.x_machine_short = self._hash_x_machine[record.x_machine]
 
 
 

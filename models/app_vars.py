@@ -29,7 +29,7 @@ _machines_list = [
 _machines_cos_list = [
 
 		('laser_triactive','Triactivo'), 
-		('chamber','Cámara de reducción'), 
+		('chamber_reduction','Cámara de reducción'), 
 		('carboxy_diamond','Carboxiterapia - Punta de Diamante'), 
 
 		#('none','Ninguna'), 		

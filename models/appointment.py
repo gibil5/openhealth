@@ -67,13 +67,12 @@ class Appointment(models.Model):
 	def _compute_x_display(self):
 		for record in self:
 
-			#record.display = 'jx'
-			#record.x_display = record.x_patient_name_short + ' - '  + record.x_doctor_code + ' - ' + record.x_type_cal
-			#record.x_display = record.x_patient_name_short + ' - '  + record.x_doctor_code + ' - ' + record.x_type_cal + ' - ' + record.state
-			record.x_display = record.x_patient_name_short + ' - '  + record.x_doctor_code + ' - ' + record.x_type_cal + ' - ' + record.x_state_short
+			#record.x_display = record.x_patient_name_short + ' - '  + record.x_doctor_code + ' - ' + record.x_type_cal + ' - ' + record.x_state_short
+			record.x_display = record.x_patient_name_short + ' - '  + record.x_doctor_code + ' - ' + record.x_type_cal 
 			
-			if record.x_machine != False:
-			#	if record.x_target == 'doctor':
+
+			#if record.x_machine != False:
+			if record.x_machine != False	or 	record.x_machine_cos != False:
 				record.x_display = record.x_display + ' - ' + record.x_machine_short
 
 
@@ -114,13 +113,13 @@ class Appointment(models.Model):
 	_hash_x_machine = {
 							False:				'', 
 
-							#'laser_co2_1':		'C1',
-							#'laser_co2_2':		'C2',
-							#'laser_co2_3':		'C3',
+							'laser_co2_1':		'C1',
+							'laser_co2_2':		'C2',
+							'laser_co2_3':		'C3',
 							
-							'laser_co2_1':		'Co2_1',
-							'laser_co2_2':		'Co2_2',
-							'laser_co2_3':		'Co2_3',
+							#'laser_co2_1':		'Co2_1',
+							#'laser_co2_2':		'Co2_2',
+							#'laser_co2_3':		'Co2_3',
 						}
 
 

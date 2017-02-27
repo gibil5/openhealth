@@ -24,7 +24,7 @@
 			"file": "models/appointment.py",
 			"settings":
 			{
-				"buffer_size": 26432,
+				"buffer_size": 26305,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -42,7 +42,7 @@
 			"file": "models/app_vars.py",
 			"settings":
 			{
-				"buffer_size": 554,
+				"buffer_size": 556,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -285,6 +285,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"display",
+			"Co2",
+			"label",
 			"compute_x_machine_sh",
 			"machine_short",
 			"machine_",
@@ -409,10 +412,7 @@
 			"treatment",
 			"doctor",
 			"treatment",
-			"consultation",
-			"create_",
-			"treatment",
-			"consultation_ids"
+			"consultation"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -558,7 +558,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -596,15 +596,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 26432,
+						"buffer_size": 26305,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2195,
-								2195
+								1216,
+								1216
 							]
 						],
 						"settings":
@@ -613,10 +613,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1844.0,
+						"translation.y": 991.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -632,19 +632,20 @@
 						"selection":
 						[
 							[
-								1399,
-								1399
+								1713,
+								1713
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.sublime-syntax"
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1573.0,
+						"translation.y": 534.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -653,15 +654,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 554,
+						"buffer_size": 556,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								436,
-								436
+								256,
+								256
 							]
 						],
 						"settings":
@@ -840,7 +841,7 @@
 		[
 			[
 				"",
-				"~/Documents/Aptana Studio 3 Workspace/templates/dfirm/dfirm/interamericana.sublime-project"
+				"~/Virtualenvs/Odoo9/odoo/addons/web_calendar/web-calendar.sublime-project"
 			]
 		],
 		"width": 380.0

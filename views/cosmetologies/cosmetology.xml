@@ -231,6 +231,23 @@
 								</button>
 
 
+
+
+
+								<!-- consultations -->
+								<button type="action" class="oe_stat_button" 
+									name="%(consultation_list_action)d"	
+									context="{									
+											'search_default_treatment': active_id,
+											}" 											
+									icon="fa-list">
+									<field string="Consultas" name="nr_consultations" widget="statinfo"/>
+								</button>
+
+
+
+
+
 								<!-- procedures -->
 								<button type="action" class="oe_stat_button" 
 									name="%(procedure_list_action)d"	

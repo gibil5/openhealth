@@ -8,15 +8,10 @@ from openerp import models, fields, api
 
 import jxvars
 import appfuncs
-
 import app_vars
-
 import ord_vars
 
-
 import order_funcs
-
-
 
 class sale_order(models.Model):
 	
@@ -1233,6 +1228,9 @@ class sale_order(models.Model):
 
 
 
+
+
+# ----------------------------------------------------------- Button - Update Order ------------------------------------------------------
 	@api.multi 
 	def update_order(self):
 
@@ -1243,8 +1241,29 @@ class sale_order(models.Model):
 		order_id = self.id
 
 
-		#order.order_line.unlink
+
 		ret = self.order_line.unlink()
+
+
+
+
+		# Cosmetology 
+		for service in self.cosmetology.service_ids:
+			print service
+
+			line = self.update_line(	
+										order_id, 
+										service.service.id, 
+										service.service.x_name_short, 
+										service.service.list_price, 
+										service.service.uom_id.id,
+										service.service.x_price_vip
+									)
+			print 
+
+
+
+
 
 
 		for service in self.consultation.service_co2_ids:

@@ -52,7 +52,7 @@ class AppointmentCos(models.Model):
 			
 			string = "Cosmeatra", 	
 
-			default=defaults._therapist,
+			#default=defaults._therapist,
 
 			#required=True, 
 			required=False, 
@@ -199,12 +199,15 @@ class AppointmentCos(models.Model):
 
 
 	#@api.onchange('x_therapist', 'x_type')
-	@api.onchange('x_therapist', 'x_type')
+	#@api.onchange('x_therapist', 'x_type')
+	@api.onchange('x_therapist')
 
 	def _onchange_x_therapist(self):
 
 		print 
-		print 'On change x_therapist'
+		print 'jx'
+		print 'On change - Therapist'
+
 		print self.x_machine_cos
 		print self.x_therapist.name
 

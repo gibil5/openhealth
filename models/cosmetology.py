@@ -85,7 +85,7 @@ class Cosmetology(models.Model):
         			#('empty', 			'Inicio'),
 
 
-        			('appointment', 			'Cita'),
+        			('appointment', 	'Cita'),
 
         			('service', 		'Servicio'),
         			
@@ -122,8 +122,11 @@ class Cosmetology(models.Model):
 			state = False
 
 
-			#if record.nr_consultations > 0:
-			#	state = 'consultation'
+
+
+
+			if record.nr_appointments > 0:
+				state = 'appointment'
 
 
 			if record.nr_services > 0:
@@ -135,11 +138,20 @@ class Cosmetology(models.Model):
 			if record.nr_invoices > 0:
 				state = 'invoice'
 
+
+
+			if record.nr_consultations > 0:
+				state = 'consultation'
+
+
+
 			if record.nr_procedures > 0:
 				state = 'procedure'
 
 			if record.nr_sessions > 0:
 				state = 'sessions'
+
+
 
 			#if record.nr_controls > 0:
 			#	state = 'controls'
@@ -168,7 +180,8 @@ class Cosmetology(models.Model):
 
 			appointments =		self.env['oeh.medical.appointment'].search_count([
 																						('cosmetology','=', record.id),
-																					]) 
+																					])
+
 			record.nr_appointments = appointments 
 
 
@@ -230,6 +243,25 @@ class Cosmetology(models.Model):
 
 
 
+	# Number of consultations 
+	nr_consultations = fields.Integer(
+			string="Consultas",
+			compute="_compute_nr_consultations",
+	)
+	@api.multi
+	def _compute_nr_consultations(self):
+		for record in self:
+
+			record.nr_consultations=self.env['openhealth.consultation.cos'].search_count([
+																						('cosmetology','=', record.id),
+																					]) 
+
+
+
+
+
+
+
 
 
 
@@ -242,7 +274,6 @@ class Cosmetology(models.Model):
 	def _compute_nr_procedures(self):
 		for record in self:
 
-			#record.nr_procedures=self.env['openhealth.procedure'].search_count([
 			record.nr_procedures=self.env['openhealth.procedure.cos'].search_count([
 																						('cosmetology','=', record.id),
 																					]) 
@@ -677,6 +708,24 @@ class Cosmetology(models.Model):
 
 
 
+
+
+		# Search Appointment 
+		appointment = self.env['oeh.medical.appointment'].search([ 	
+																	('patient', 'like', self.patient.name),	
+
+																	#('doctor', 'like', self.physician.name), 	
+																	('x_therapist', 'like', self.therapist.name), 	
+																	
+																	('x_type', 'like', 'procedure'), 
+																], 
+																	order='appointment_date desc', limit=1)
+
+		appointment_id = appointment.id
+
+
+
+
 		# Create 
 		if order_id == False:
 
@@ -688,6 +737,7 @@ class Cosmetology(models.Model):
 														'cosmetology': cosmetology_id,
 
 														'partner_id': partner_id,
+														
 														'patient': patient_id,	
 														
 														#'x_doctor': doctor_id,	
@@ -698,6 +748,10 @@ class Cosmetology(models.Model):
 														'state':'draft',
 														
 														'x_chief_complaint':chief_complaint,
+
+
+
+														'x_appointment': appointment_id,	
 													}
 												)
 
@@ -749,15 +803,22 @@ class Cosmetology(models.Model):
 
 							#'default_treatment': treatment_id,
 							#'default_consultation': consultation_id,
+							#'default_x_doctor': doctor_id,	
+
+
 							'default_cosmetology': cosmetology_id,
 
 							'default_partner_id': partner_id,
+
 							'default_patient': patient_id,	
 
-							#'default_x_doctor': doctor_id,	
 							'default_x_therapist': therapist_id,	
 							
 							'default_x_chief_complaint': chief_complaint,	
+
+
+
+							'default_x_appointment': appointment_id,	
 						}
 			}
 

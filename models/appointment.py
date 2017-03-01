@@ -67,8 +67,8 @@ class Appointment(models.Model):
 	def _compute_x_display(self):
 		for record in self:
 
-			#record.x_display = record.x_patient_name_short + ' - '  + record.x_doctor_code + ' - ' + record.x_type_cal + ' - ' + record.x_state_short
-			record.x_display = record.x_patient_name_short + ' - '  + record.x_doctor_code + ' - ' + record.x_type_cal 
+			#record.x_display = record.x_patient_name_short + ' - '  + record.x_doctor_code + ' - ' + record.x_type_cal 
+			record.x_display = record.x_patient_name_short + ' - '  + record.x_doctor_code + ' - ' + record.x_type_cal + ' - ' + record.x_state_short
 			
 
 			#if record.x_machine != False:
@@ -508,7 +508,8 @@ class Appointment(models.Model):
 			# Check for collisions 
 
 			#ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, self.x_machine)
-			ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, self.x_machine, 'machine')
+			#ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, self.x_machine, 'machine')
+			ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, self.x_machine, 'machine', self.x_type)
 
 
 
@@ -588,7 +589,8 @@ class Appointment(models.Model):
 			ret = 0 
 
 			#ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, False)
-			ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, False, 'doctor')
+			#ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, False, 'doctor')
+			ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, False, 'doctor', self.x_type)
 
 			print ret 
 
@@ -1427,14 +1429,16 @@ class Appointment(models.Model):
 
 
 
-			#app = self.create_app_procedure(appointment_date, doctor, patient, treatment, x_create_procedure_automatic)
-			#app = self.create_app_procedure(appointment_date, doctor, patient, treatment, x_create_procedure_automatic, False)
-			#app = appfuncs.create_app_procedure(self, appointment_date, doctor, patient, treatment, x_create_procedure_automatic, False)
 			
+
+
+
 
 			#app = appfuncs.create_app_procedure(self, adate_base, doctor, patient, treatment, x_create_procedure_automatic, False)
 			app = appfuncs.create_app_procedure(self, adate_base, doctor, patient, treatment, x_create_procedure_automatic, False)
 			#print app 
+
+
 
 
 

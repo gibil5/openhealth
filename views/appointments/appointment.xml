@@ -475,7 +475,12 @@
 					<field name="x_target"/>
 
 
+
+					<field name="cosmetology"/>
 					<field name="treatment"/>
+
+
+
 					<field name="consultation"/>
 					<field name="procedure"/>
 					<field name="session"/>

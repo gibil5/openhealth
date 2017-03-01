@@ -113,20 +113,20 @@
 
 
 
-
 		<menuitem id="oeh_medical_preappointment_menu" 
 			name="Citas"
 			parent="openhealth_menu"
 			sequence="-10"
 			action="oeh_medical_preappointment_list_action"/>
 
+<!--
 		<menuitem id="oeh_medical_preappointment_menu_cos" 
 			name="Citas - Cos"
 			parent="openhealth_menu"
 			sequence="-9"
 			action="oeh_medical_preappointment_list_action_cos"/>
 
-
+-->
 
 
 

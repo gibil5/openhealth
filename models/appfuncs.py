@@ -256,7 +256,9 @@ def search_machine(self, appointment_date, doctor_name, duration, start_machine)
 
 #def check_for_collisions(self, appointment_date, doctor_name, duration):
 #def check_for_collisions(self, appointment_date, doctor_name, duration, x_machine):
-def check_for_collisions(self, appointment_date, doctor_name, duration, x_machine, target):
+#def check_for_collisions(self, appointment_date, doctor_name, duration, x_machine, target):
+def check_for_collisions(self, appointment_date, doctor_name, duration, x_machine, target, x_type):
+
 
 
 		print 
@@ -286,21 +288,48 @@ def check_for_collisions(self, appointment_date, doctor_name, duration, x_machin
 		#														])
 
 
+
+
 		# Always a total check
+
 		if target == 'doctor':
 			app_ids = self.env['oeh.medical.appointment'].search([
 																	('appointment_date', 'like', dt), 
 
 																	('doctor', '=', doctor_name), 
-																	#('x_machine', '=', x_machine),
 																])
+
 		if target == 'machine':
 			app_ids = self.env['oeh.medical.appointment'].search([
 																	('appointment_date', 'like', dt), 
 
-																	#('doctor', '=', doctor_name), 
 																	('x_machine', '=', x_machine),
 																])
+
+
+		# Cosmetology  
+		if target == 'therapist':
+
+
+			if x_type == 'consultation':
+				
+				app_ids = self.env['oeh.medical.appointment'].search([
+																		('appointment_date', 'like', dt), 
+
+																		('x_therapist', '=', doctor_name), 
+																	])
+
+
+			else:
+
+				app_ids = self.env['oeh.medical.appointment'].search([
+																		('appointment_date', 'like', dt), 
+
+																		#('x_therapist', '=', doctor_name), 
+																		('x_machine_cos', '=', x_machine),
+																	])
+
+
 
 
 		print app_ids 

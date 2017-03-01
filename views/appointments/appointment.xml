@@ -102,14 +102,26 @@
 																'invisible':[('x_type', '!=', 'session')]	}"/>
 							<field name="x_machine"		attrs="{'invisible':[('x_type', '!=', 'procedure')]}"/>
 							<field name="x_machine_cos"		attrs="{'invisible':[('x_type', '!=', 'procedure')]}"/>
-					-->
-
-							<field name="x_target"/>
 
 
 							<field name="x_machine"		/>
 
 							<field name="x_machine_cos"	/>
+					-->
+
+							<field name="x_target"/>
+
+
+							<field name="x_machine"			attrs="{
+																	'invisible':[('x_target', '!=', 'doctor'),],
+															}"	/>
+
+
+
+							<field name="x_machine_cos"		attrs="{
+																	'invisible':[('x_target', '!=', 'therapist'),],
+															}"	/>
+
 					<!--					
 					<group>
 						<group>
@@ -153,15 +165,21 @@
 
 
 
-					<field name="doctor"		attrs="{
-														'invisible':[('x_target', '!=', 'doctor'),],
-														'required':[('x_target', '=', 'doctor'),],
-														}"	/>
+					<field name="doctor"			/>
+					<field name="x_therapist"		required="0"	/>		
 					-->
 
-					<field name="doctor"			/>
 
-					<field name="x_therapist"		required="0"	/>		
+
+					<field name="doctor"		attrs="{
+														'invisible':[('x_target', '!=', 'doctor'),],
+														}"	/>
+					
+					<field name="x_therapist"		attrs="{
+														'invisible':[('x_target', '!=', 'therapist'),],
+														}"	/>
+
+
 
 
 					<field name="vspace"/>
@@ -291,9 +309,19 @@
 
 
 
--->
 							<field name="treatment"		/>
 							<field name="cosmetology"		/>
+-->
+
+							<field name="treatment"		attrs="{
+																	'invisible':[('x_target', '!=', 'doctor'),],
+														}"	/>
+
+
+							<field name="cosmetology"	attrs="{
+																	'invisible':[('x_target', '!=', 'therapist'),],
+														}"	/>
+
 
 
 
@@ -472,13 +500,13 @@
 
 		<!-- Window action -->
 		<!--
+		-->
 		<record model="ir.actions.act_window" id="oeh_medical_appointment_list_action">
 			<field name="name">Citas</field>
 			<field name="res_model">oeh.medical.appointment</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 		</record>
-		-->
 
 		<!-- Menu -->
 		<!--
@@ -766,15 +794,21 @@
 										]
 					</field>
 					
+
+
 					<!--
 											'default_x_machine': 'none',
 											'default_x_target': 'doctor',
+
+											'default_x_machine_cos': 'laser_triactive',
 					-->
 					<field name="context">{
+
 											'default_x_target': 'therapist',
+						
 											'default_x_type': 'procedure',
-											'default_x_machine_cos': 'laser_triactive',
-						}
+						
+										}
 					</field>
 
 

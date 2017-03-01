@@ -130,6 +130,8 @@
 		print a 
 		print 
 
+
+
 # 27 nov 2016
 
 	#@api.multi
@@ -146,5 +148,44 @@
 
 
 
+
+
+
+
+
+
+# 27 Feb 2017
+
+				# Treatment 
+				#treatment = self.env['openhealth.treatment'].search([
+				#											('patient', 'like', self.patient.name),
+				#											('physician', 'like', self.doctor.name),
+				#											],
+				#											order='start_date desc',
+				#											limit=1,
+				#										)
+				#print treatment 
+
+				#if treatment.name == False:
+				#	print 'Gotcha !!!'
+				#	treatment = self.env['openhealth.treatment'].search([
+				#											('patient', 'like', self.patient.name),
+				#											],
+				#											order='start_date desc',
+				#											limit=1,
+				#										)
+				#	print treatment
+				#self.treatment = treatment
+
+
+			# Create Procedure 
+			#if self.x_error == 0:
+			#	print 
+			#	print 'Create Appointment for procedure !'
+			#	app = self.create_app_procedure()
+			#	print app 
+
+
+			
 
 

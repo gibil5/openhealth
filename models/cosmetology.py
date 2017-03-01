@@ -153,6 +153,27 @@ class Cosmetology(models.Model):
 
 
 
+# ----------------------------------------------------------- Number ofs ------------------------------------------------------
+
+
+	# Number of Appointments  
+	nr_appointments = fields.Integer(
+			string="Nr Citas",
+			compute="_compute_nr_appointments",
+		)
+	
+	@api.multi
+	def _compute_nr_appointments(self):
+		for record in self:
+
+			appointments =		self.env['oeh.medical.appointment'].search_count([
+																						('cosmetology','=', record.id),
+																					]) 
+			record.nr_appointments = appointments 
+
+
+
+
 
 	# Number of Services  
 	nr_services = fields.Integer(
@@ -164,7 +185,6 @@ class Cosmetology(models.Model):
 	def _compute_nr_services(self):
 		for record in self:
 
-			#record.nr_services= 0
 			services =		self.env['openhealth.service.cosmetology'].search_count([
 																						('cosmetology','=', record.id),
 																					]) 
@@ -184,9 +204,9 @@ class Cosmetology(models.Model):
 		for record in self:
 
 			record.nr_budgets=self.env['sale.order'].search_count([
-																	('cosmetology','=', record.id),
-																	('state','=', 'draft'),
-																	('x_family','=', 'private'),
+																		('cosmetology','=', record.id),
+																		('state','=', 'draft'),
+																		('x_family','=', 'private'),
 																	]) 
 
 
@@ -201,8 +221,8 @@ class Cosmetology(models.Model):
 		for record in self:
 
 			record.nr_invoices=self.env['sale.order'].search_count([
-																	('cosmetology','=', record.id),
-																	('state','=', 'sale'),
+																		('cosmetology','=', record.id),
+																		('state','=', 'sale'),
 																	]) 
 
 
@@ -213,6 +233,7 @@ class Cosmetology(models.Model):
 
 
 
+	# Number of Procedures 
 	nr_procedures = fields.Integer(
 			string="Procedimientos",
 			compute="_compute_nr_procedures",
@@ -223,17 +244,15 @@ class Cosmetology(models.Model):
 
 			#record.nr_procedures=self.env['openhealth.procedure'].search_count([
 			record.nr_procedures=self.env['openhealth.procedure.cos'].search_count([
-
-																	('cosmetology','=', record.id),
-
-																	]) 
+																						('cosmetology','=', record.id),
+																					]) 
 
 
 
 
 
 
-	# Number of sessions 
+	# Number of Sessions 
 	nr_sessions = fields.Integer(
 			string="Sesiones",
 			compute="_compute_nr_sessions",
@@ -242,9 +261,9 @@ class Cosmetology(models.Model):
 	def _compute_nr_sessions(self):
 		for record in self:
 
-			record.nr_sessions=self.env['openhealth.session'].search_count([
-																	('cosmetology','=', record.id),
-																	]) 
+			record.nr_sessions=self.env['openhealth.session.cos'].search_count([
+																				('cosmetology','=', record.id),
+																			]) 
 
 
 
@@ -332,9 +351,11 @@ class Cosmetology(models.Model):
 
 			'cosmetology', 
 			string = "Citas", 
+
 			domain = [
-						('x_target', '=', 'doctor'),
+						('x_target', '=', 'therapist'),
 					],
+			
 			)
 
 

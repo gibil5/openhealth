@@ -135,8 +135,8 @@ class Treatment(models.Model):
 
 
 
-	#@api.multi
-	@api.depends('consultation_ids')
+	@api.multi
+	#@api.depends('consultation_ids')
 
 	def _compute_state(self):
 		for record in self:
@@ -154,11 +154,13 @@ class Treatment(models.Model):
 				state = 'appointment'
 
 
+			if record.nr_services > 0:
+				state = 'service'
+
+
 			if record.nr_consultations > 0:
 				state = 'consultation'
 
-			if record.nr_services > 0:
-				state = 'service'
 
 
 

@@ -13,13 +13,13 @@
 from openerp import models, fields, api
 
 #import datetime
-#import appfuncs
 #import time_funcs
 #import jxvars
 
 
 import defaults
 import app_vars
+import appfuncs
 
 
 class AppointmentCos(models.Model):
@@ -163,6 +163,8 @@ class AppointmentCos(models.Model):
 
 
 
+
+
 	# ----------------------------------------------------------- On Change - Patient Therapist ------------------------------------------------------
 
 	@api.onchange('patient','x_therapist')
@@ -185,6 +187,153 @@ class AppointmentCos(models.Model):
 			self.cosmetology = cosmetology
 
 			print 'jx'
+
+		# _onchange_patient_therapist
+
+
+
+
+
+
+	# ----------------------------------------------------------- On Change - Therapist ------------------------------------------------------
+
+
+	#@api.onchange('x_therapist', 'x_type')
+	@api.onchange('x_therapist', 'x_type')
+
+	def _onchange_x_therapist(self):
+
+		print 
+		print 'On change x_therapist'
+		print self.x_machine_cos
+		print self.x_therapist.name
+
+
+
+		if self.x_therapist.name != False:
+
+			print self.x_therapist.name
+			print self.patient.name
+			print self.appointment_date
+			print self.x_date
+			print self.duration
+			print self.appointment_end
+
+			print self.x_type  
+			print 
+
+			#self.x_error = 0
+
+
+
+
+			# Check for collisions
+			ret = 0 
+
+			#ret, x_therapist_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.x_therapist.name, self.duration, False, 'therapist')
+			ret, x_therapist_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.x_therapist.name, self.duration, False, 'therapist', self.x_type)
+
+			print ret 
+
+
+
+
+			if ret != 0:	# Error 
+
+				print 'Error: Collision !'
+				print 
+
+
+				#self.x_error = 1
+				self.x_therapist = False
+
+				return {
+							'warning': {
+									'title': "Error: Colisión !",
+									'message': 'Cita ya existente, con la Cosmeatra ' + x_therapist_name + ": " + start + ' - ' + end + '.',
+						}}
+
+
+			else: 			# Success  
+
+				print 'Success !'
+				print 
+
+
+		print 
+
+	# _onchange_x_therapist
+
+
+
+
+
+
+
+
+	# ----------------------------------------------------------- On Change - Machine ------------------------------------------------------
+
+	@api.onchange('x_machine_cos')
+
+	def _onchange_x_machine_cos(self):
+
+		print 
+		print 'On change Machine - Cos'
+
+
+		if self.x_machine_cos != False:	
+
+			print self.x_machine_cos 
+
+			print self.doctor.name
+			print self.patient.name
+			print self.appointment_date
+			print self.x_date
+			print self.duration
+			print self.appointment_end
+
+			print self.x_type  
+
+			print 
+
+			#self.x_error = 0
+
+
+
+			# Check for collisions 
+
+			#ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, self.x_machine_cos, 'machine')
+			ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, self.x_machine_cos, 'therapist', self.x_type)
+
+
+
+			if ret != 0:	# Error - Collision 
+
+
+				#self.x_error = 1
+				self.x_machine_cos = False
+
+				return {
+							'warning': {
+									'title': "Error: Colisión !",
+									'message': 'La sala ya está reservada: ' + start + ' - ' + end + '.',
+						}}
+
+
+
+			else: 			# Success 
+
+				print 'Success !'
+				print 
+				
+
+
+
+		print
+
+	# _onchange_x_machine_cos
+
+
 
 
 

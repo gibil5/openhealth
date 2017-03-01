@@ -506,7 +506,7 @@ class Appointment(models.Model):
 
 
 			# Check for collisions 
-			#ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor, self.duration, self.x_machine)
+
 			#ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, self.x_machine)
 			ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, self.x_machine, 'machine')
 
@@ -569,10 +569,7 @@ class Appointment(models.Model):
 
 
 
-		#if self.doctor != False:	
-		#if self.doctor.name != False  and  self.x_machine != False:
 		if self.doctor.name != False:
-
 
 			print self.doctor.name
 			print self.patient.name
@@ -582,17 +579,13 @@ class Appointment(models.Model):
 			print self.appointment_end
 			print 
 
-
 			self.x_error = 0
-			#self.x_create_procedure_automatic = True
+
 
 
 
 			# Check for collisions
 			ret = 0 
-
-			#ret, doctor_name, start, end = self.check_for_collision(self.appointment_date, self.doctor.name, self.duration)
-			#if self.x_machine == False:
 
 			#ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, False)
 			ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, False, 'doctor')
@@ -617,54 +610,15 @@ class Appointment(models.Model):
 						}}
 
 
-
-
-			else: 
+			else: 			# Success  
 
 				print 'Success !'
 				print 
 
 
-
-				# Treatment 
-				#treatment = self.env['openhealth.treatment'].search([
-				#											('patient', 'like', self.patient.name),
-				#											('physician', 'like', self.doctor.name),
-				#											],
-				#											order='start_date desc',
-				#											limit=1,
-				#										)
-				#print treatment 
-
-				#if treatment.name == False:
-				#	print 'Gotcha !!!'
-				#	treatment = self.env['openhealth.treatment'].search([
-				#											('patient', 'like', self.patient.name),
-				#											],
-				#											order='start_date desc',
-				#											limit=1,
-				#										)
-				#	print treatment
-				#self.treatment = treatment
-
-
-			# Create Procedure 
-			#if self.x_error == 0:
-			#	print 
-			#	print 'Create Appointment for procedure !'
-			#	app = self.create_app_procedure()
-			#	print app 
 		print 
 
-
-
-
-
-
-
-
-
-
+	# _onchange_doctor
 
 
 

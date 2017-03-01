@@ -179,9 +179,24 @@
 
 
 
-							<!-- Buttons --> 
+
+							<!-- Buttons - Counters --> 
 							<div class="oe_left" style="width: 400px;" name="buttons">
 							
+
+
+
+								<!-- appointments -->
+								<button type="action" class="oe_stat_button" 
+									name="%(service_list_action)d"	
+									context="{									
+											'search_default_treatment': active_id,
+											}" 											
+									icon="fa-list">
+									<field string="Citas" name="nr_appointments" widget="statinfo"/>
+								</button>							
+
+
 
 								<!-- Services -->
 								<button type="action" class="oe_stat_button" 

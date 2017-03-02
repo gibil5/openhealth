@@ -38,12 +38,11 @@ class Evaluation(models.Model):
 
 
 	appointment = fields.Many2one(
-			'oeh.medical.appointment',
-			
-			#string='Appointment #'
+			'oeh.medical.appointment',			
 			string='Cita #', 
-
 			required=False, 
+
+			ondelete='cascade', 
 			)
 
 

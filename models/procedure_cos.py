@@ -162,6 +162,7 @@ class ProcedureCos(models.Model):
 		#machine = 'triactive'
 		machine = self.machine_cos
 
+		therapist_name = self.therapist.name 
 
 
 
@@ -175,6 +176,38 @@ class ProcedureCos(models.Model):
 
 
 
+
+
+
+
+
+
+
+
+# Clean Appointments 
+		rec_set = self.env['oeh.medical.appointment'].search([
+																#('procedure', '=', self.id), 
+																('procedure_cos', '=', self.id), 
+															])
+		ret = rec_set.unlink()
+		print "ret: ", ret
+
+
+
+
+# Clean Sessions 
+		rec_set = self.env['openhealth.session.cos'].search([
+																('procedure', '=', self.id), 
+															])
+		ret = rec_set.unlink()
+		print "ret: ", ret
+
+
+
+
+
+
+
 # Loop 
 		# Date dictionary - Number of days for controls 
 		k_dic = {
@@ -182,20 +215,24 @@ class ProcedureCos(models.Model):
 
 					#1 :	7,
 					#2 :	15,
+					#3 :	21,
+					#3 :	30,
+					#4 :	60,
+					#5 :	120,
+
 					1 :	1,
 					2 :	2,
-
-					3 :	21,
-					3 :	30,
-					4 :	60,
-					5 :	120,
+					3 :	3,
+					3 :	4,
+					4 :	5,
+					5 :	6,
 				}
 
 
 
-		#for k in range(0,6): 
 		#for k in range(0,1): 
-		for k in range(0,2): 
+		#for k in range(0,2): 
+		for k in range(0,6): 
 
 			delta = 0 
 			nr_days = k_dic[k] + delta 
@@ -248,8 +285,8 @@ class ProcedureCos(models.Model):
 
 
 
-
-				#appointment_date_str = procedure_funcs_cos.check_and_push(self, appointment_date_str, duration, x_type, doctor_name, machine)
+				# Check and push 
+				appointment_date_str = procedure_funcs_cos.check_and_push(self, appointment_date_str, duration, x_type, therapist_name, machine)
 
 
 
@@ -284,6 +321,7 @@ class ProcedureCos(models.Model):
 
 
 																		'x_machine_cos': machine,
+																		'procedure_cos': self.id,
 																	})
 
 

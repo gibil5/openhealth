@@ -1119,6 +1119,10 @@ class Appointment(models.Model):
 	)
 
 
+
+
+
+	# Here 
 	procedure = fields.Many2one('openhealth.procedure',
 		#string="Procedimiento",
 		string="Proc.",
@@ -1126,10 +1130,24 @@ class Appointment(models.Model):
 	)
 
 
+	procedure_cos = fields.Many2one('openhealth.procedure.cos',
+		#string="Procedimiento",
+		string="Proc. - Cos",
+		ondelete='cascade', 
+	)
+
+
+
+
+
+
+
+
 	session = fields.Many2one('openhealth.session',
 		string="Sesión",
 		ondelete='cascade', 
 	)
+
 
 	control = fields.Many2one('openhealth.control',
 		string="Control",

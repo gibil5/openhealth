@@ -2,6 +2,25 @@
 
 
 
+
+# Machines
+_machines_cos_list = [
+
+		('laser_triactive','Triactivo'), 
+		('chamber_reduction','Cámara de reducción'), 
+		('carboxy_diamond','Carboxiterapia - Punta de Diamante'), 
+
+		#('none','Ninguna'), 		
+]
+
+
+
+
+
+
+
+
+
 # Targets
 _target_list = [
 		('doctor','Doctor'), 
@@ -27,13 +46,4 @@ _machines_list = [
 
 
 
-# Machines
-_machines_cos_list = [
-
-		('laser_triactive','Triactivo'), 
-		('chamber_reduction','Cámara de reducción'), 
-		('carboxy_diamond','Carboxiterapia - Punta de Diamante'), 
-
-		#('none','Ninguna'), 		
-]
 

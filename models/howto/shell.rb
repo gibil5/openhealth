@@ -323,6 +323,27 @@ a = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', '16
 
 
 
+a = self.env['oeh.medical.appointment'].search([ ('patient', 'like', 'REVILLA Javier'),	('x_therapist', 'like', 'Eulalia'), ('x_type', 'like', 'procedure'), ], order='appointment_date desc', limit=1)
+
+
+
+
+a = self.env['oeh.medical.appointment'].search([ ('appointment_date', 'like', '17-03-02'), ('patient', 'like', 'REVILLA Javier'),	('x_therapist', 'like', 'Eulalia'), ('x_type', 'like', 'procedure'), ], order='appointment_date desc', limit=1)
+
+
+a = self.env['oeh.medical.appointment'].search([ ('appointment_date', 'like', '2017-03-02 16:00:00'), ('patient', 'like', 'REVILLA Javier'),	('x_therapist', 'like', 'Eulalia'), ('x_type', 'like', 'procedure'), ], order='appointment_date desc', limit=1)
+
+
+a = self.env['oeh.medical.appointment'].search([ ('appointment_date', 'like', '2017-03-02 '), ('patient', 'like', 'REVILLA Javier'),	('x_therapist', 'like', 'Eulalia'), ('x_type', 'like', 'procedure'), ], order='appointment_date desc', limit=1)
+
+
+a = self.env['oeh.medical.appointment'].search([ ('appointment_date', 'like', '2017-03-02 17:17:36'), ('patient', 'like', 'REVILLA Javier'),	('x_therapist', 'like', 'Eulalia'), ('x_type', 'like', 'procedure'), ], order='appointment_date desc', limit=1)
+
+
+
+
+
+
 
 
 ret = a.write({'consultation': 65,})

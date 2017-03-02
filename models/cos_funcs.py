@@ -19,7 +19,7 @@ import jrfuncs
 def create_procedure_go(self):
 
 	print 
-	print 'Create Procedure Cos - Go'
+	print 'Create Procedure - Cos - Go'
 	print 
 
 	#name = 'name'
@@ -41,12 +41,17 @@ def create_procedure_go(self):
 	evaluation_start_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
 
 
+
 	appointment = self.env['oeh.medical.appointment'].search([ 	
-															('patient', 'like', self.patient.name),		
-															('doctor', 'like', self.physician.name), 	
+															('patient', 'like', self.patient.name),	
+
+															#('doctor', 'like', self.physician.name), 	
+															('x_therapist', 'like', self.therapist.name), 	
+															
 															('x_type', 'like', 'procedure'), 
 														], 
 															order='appointment_date desc', limit=1)
+
 
 	print appointment
 	appointment_id = appointment.id
@@ -109,8 +114,10 @@ def create_procedure_go(self):
 
 
 
-				#self.update_appointment(appointment_id, procedure_id, 'procedure')
-				ret = jrfuncs.update_appointment_go(self, appointment_id, procedure_id, 'procedure')
+
+				#ret = jrfuncs.update_appointment_go(self, appointment_id, procedure_id, 'procedure')
+
+
 
 
 				print appointment

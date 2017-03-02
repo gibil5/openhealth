@@ -40,7 +40,44 @@ class sale_order(models.Model):
 
 
 
+	# Appointment 
+	x_appointment = fields.Many2one(
+			'oeh.medical.appointment',
+			
+			string='Cita', 
 
+			#required=True, 
+			#compute='_compute_x_appointment', 
+			)
+
+
+	@api.multi
+	#@api.depends('x_appointment')
+
+	def _compute_x_appointment(self):
+		for record in self:
+
+			app = self.env['oeh.medical.appointment'].search([
+																	('doctor', '=', record.x_doctor.name), 
+
+																	('patient', '=', record.patient.name), 
+
+																	('x_type', '=', 'procedure'),
+
+																	('x_target', '=', 'doctor'),
+															],
+															order='appointment_date desc',
+															limit=1,)
+
+			record.x_appointment = app
+
+
+
+
+
+
+
+	# Partner 
 	partner_id = fields.Many2one(
 
 			'res.partner',
@@ -553,16 +590,6 @@ class sale_order(models.Model):
 
 
 
-	x_appointment = fields.Many2one(
-			'oeh.medical.appointment',
-			
-			#string='Appointment #'
-			string='Cita', 
-
-			#required=False, 
-			#required=True, 
-			compute='_compute_x_appointment', 
-			)
 
 
 
@@ -623,30 +650,6 @@ class sale_order(models.Model):
 
 
 
-	@api.multi
-	#@api.depends('x_appointment')
-
-	def _compute_x_appointment(self):
-		for record in self:
-
-
-			app = self.env['oeh.medical.appointment'].search([
-																	('doctor', '=', record.x_doctor.name), 
-																	('patient', '=', record.patient.name), 
-
-																	('x_type', '=', 'procedure'),
-																	('x_target', '=', 'doctor'),
-
-
-																	#('appointment_date', 'like', dt), 
-																	#('x_machine', '=', x_machine),
-															],
-															order='appointment_date desc',
-															limit=1,)
-
-
-
-			record.x_appointment = app
 
 
 
@@ -1242,10 +1245,33 @@ class sale_order(models.Model):
 
 
 
+		# Appointment 
+		appointment = self.env['oeh.medical.appointment'].search([ 	
+																	('patient', 'like', self.patient.name),	
+
+																	#('doctor', 'like', self.physician.name), 	
+																	('x_therapist', 'like', self.x_therapist.name), 	
+																	
+																	('x_type', 'like', 'procedure'), 
+																], 
+																	order='appointment_date desc', limit=1)
+
+		appointment_id = appointment.id
+
+		print appointment
+		print appointment_id
+
+
+		self.x_appointment = appointment_id
+		print self.x_appointment
+		print 
+		print 
+
+
+
+
+		# Lines 
 		ret = self.order_line.unlink()
-
-
-
 
 		# Cosmetology 
 		for service in self.cosmetology.service_ids:

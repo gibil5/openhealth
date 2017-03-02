@@ -27,22 +27,19 @@ def create_controls_go(self):
 	print 
 
 
-	# Initialize 
+
+	# Initial conditions  
 	patient_id = self.patient.id	
 	doctor_id = self.doctor.id	
 	doctor_name = self.doctor.name
 	product_id = self.product.id
 	chief_complaint = self.chief_complaint
-
-
-
 	procedure_id = self.id
-
 	treatment_id = self.treatment.id
 
 
 
-
+	# Start date 
 	GMT = time_funcs.Zone(0,False,'GMT')
 	evaluation_start_date = datetime.datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
 
@@ -50,7 +47,8 @@ def create_controls_go(self):
 
 
 
-	# Number of days for controls 
+# Loop 
+	# Date dictionary - Number of days for controls 
 	k_dic = {
 				0 :	7,
 				1 :	15,
@@ -63,7 +61,6 @@ def create_controls_go(self):
 
 
 	#for k in range(0,1): 
-	#for k in range(0,3): 
 	for k in range(0,6): 
 					
 
@@ -77,15 +74,8 @@ def create_controls_go(self):
 
 
 		# Control date 
-		#control_date = get_control_date(self, evaluation_start_date, nr_weeks)
 		control_date = get_control_date(self, evaluation_start_date, nr_days)
-
-
-
 		control_date_str = control_date.strftime("%Y-%m-%d")		
-		#control_date_str = control_date_str + ' 0:0:0'
-		#control_date_str = control_date_str + ' 5:0:0'
-		#control_date_str = control_date_str + ' 23:0:0'
 		control_date_str = control_date_str + ' 14:0:0'
 
 
@@ -94,7 +84,6 @@ def create_controls_go(self):
 		# Create Appointment
 		duration = 0.25
 		x_type = 'control'
-		#state = 'Pre-scheduled'
 		state = 'pre_scheduled_control'
 
 		appointment_date = control_date_str
@@ -104,24 +93,12 @@ def create_controls_go(self):
 
 
 
-		# Core 
-
-
+		# Create Appointment 
 		appointment_date_str = check_max_number(self, appointment_date, x_type, doctor_name)
 
-
-
-		#appointment_date_str = check_and_push(self, appointment_date, duration, x_type, doctor_name)
 		appointment_date_str = check_and_push(self, appointment_date_str, duration, x_type, doctor_name)
 
-
-
 		appointment = create_appointment_control(self, appointment_date_str, duration, x_type, state, chief_complaint, patient_id, doctor_id, treatment_id)
-
-
-
-
-
 
 		appointment_id = appointment.id
 
@@ -129,13 +106,13 @@ def create_controls_go(self):
 
 		# Create Control 
 		control = self.control_ids.create({
+											'evaluation_start_date':control_date,
+
+
 											'patient':patient_id,
 											'doctor':doctor_id,
 											'product':product_id,
 											'chief_complaint':chief_complaint,
-											'evaluation_start_date':control_date,
-
-
 
 											'procedure':procedure_id,										
 											'appointment': appointment_id,
@@ -279,9 +256,6 @@ def check_and_push(self, appointment_date, duration, x_type, doctor_name):
 
 
 		# Check for collisions 
-		#ret, doctor_name, start, end = appfuncs.check_for_collisions(self, appointment_date_str, doctor_name, duration)
-		#ret, doctor_name, start, end = appfuncs.check_for_collisions(self, appointment_date_str, doctor_name, duration, False)
-
 		ret, doctor_name, start, end = appfuncs.check_for_collisions(self, appointment_date_str, doctor_name, duration, False, 'doctor')
 
 

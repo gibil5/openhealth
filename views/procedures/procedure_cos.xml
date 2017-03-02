@@ -41,6 +41,22 @@
 					<field name="cosmetology"	/>
 				</xpath>
 
+
+
+
+
+        		<!-- Therapist --> 
+				<xpath expr="//field[@name='appointment']" position="after">
+					
+					<field name="vspace"/>
+
+					<field name="machine_cos"/>
+				</xpath>
+
+
+
+
+
 			</field>						
 		</record>		
 

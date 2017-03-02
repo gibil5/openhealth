@@ -748,21 +748,21 @@ class Consultation(models.Model):
 	@api.model
 	def create(self,vals):
 
-		print 
-		print 'jx'
-		print 'Create Consultation - Override - CRUD'
-		print 
-		print vals
-		print 
+		#print 
+		#print 'jx'
+		#print 'Create Consultation - Override - CRUD'
+		#print 
+		#print vals
+		#print 
 	
 		
 		consultation_id = self.id
-		print 'consultation_id: ', consultation_id
+		#print 'consultation_id: ', consultation_id
 
 
 		appointment_id = vals['appointment']
-		print 'appointment_id: ', appointment_id
-		print 
+		#print 'appointment_id: ', appointment_id
+		#print 
 
 
 

@@ -387,9 +387,10 @@ def search_machine(self, appointment_date, doctor_name, duration, start_machine)
 
 	while not ret == 0:
 
-		#ret, doctor_name, start, end = appfuncs.check_for_collisions(self, appointment_date, doctor, duration, x_machine)
+
 		#ret, doctor_name, start, end = check_for_collisions(self, appointment_date, doctor_name, duration, x_machine)
-		ret, doctor_name, start, end = check_for_collisions(self, appointment_date, doctor_name, duration, x_machine, target)
+		#ret, doctor_name, start, end = check_for_collisions(self, appointment_date, doctor_name, duration, x_machine, target)
+		ret, doctor_name, start, end = check_for_collisions(self, appointment_date, doctor_name, duration, x_machine, target, 'procedure')
 
 
 

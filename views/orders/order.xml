@@ -37,9 +37,36 @@
 				<xpath expr="//field[@name='validity_date']" position="replace">
 
 					<field name="patient" />
-					<field name="x_doctor" />
-					<field name="consultation"/>
 
+
+<!--
+					<field name="x_doctor" />
+					
+					<field name="x_therapist" />
+					
+					<field name="consultation"/>
+-->
+
+					<field name="x_doctor"		attrs="{
+														'invisible':[('x_doctor', '=', False ),],
+														}"	/>
+														
+					
+					<field name="x_therapist"		attrs="{
+														'invisible':[('x_therapist', '=', False ),],
+														}"	/>
+
+
+
+
+
+					<field name="cosmetology"/>
+
+
+
+					<field name="consultation"		attrs="{
+														'invisible':[('consultation', '=', False ),],
+														}"	/>
 				</xpath>
 
 

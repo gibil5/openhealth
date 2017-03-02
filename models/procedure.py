@@ -38,6 +38,9 @@ class Procedure(models.Model):
 
 
 
+
+
+
 	# Sessions - Quantity 
 	sessions_qty = fields.Integer(
 			string="Sesiones",
@@ -327,12 +330,10 @@ class Procedure(models.Model):
 
 # ----------------------------------------------------------- Create Sessions  ------------------------------------------------------
 
-	@api.multi
-	#def open_session(self): 
-	def create_sessions(self): 
-
-		print 
-		print 'Create sessions'
+	#@api.multi
+	#def create_sessions(self): 
+	#	print 
+	#	print 'Create sessions'
 
 
 

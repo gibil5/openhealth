@@ -461,6 +461,7 @@ class Cosmetology(models.Model):
 
 		print 
 		print 'jx'
+		print 'begin'
 		print 'Create Consultation'
 
 
@@ -481,8 +482,9 @@ class Cosmetology(models.Model):
 		# Date 
 		GMT = time_funcs.Zone(0,False,'GMT')		
 		evaluation_start_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
-		print 'GMT: ', GMT
-		print 'evaluation_start_date: ', evaluation_start_date 
+		#print 'GMT: ', GMT
+		#print 'evaluation_start_date: ', evaluation_start_date 
+
 
 
 
@@ -491,15 +493,16 @@ class Cosmetology(models.Model):
 														
 															('patient', 'like', self.patient.name),		
 															
-															('doctor', 'like', self.physician.name), 	
+															#('doctor', 'like', self.physician.name), 	
+															('x_therapist', 'like', self.therapist.name), 	
 															
 															('x_type', 'like', 'consultation'), 
 														
 														], 
 														order='appointment_date desc', limit=1)
 
-		print 'appointment: ', appointment
 		appointment_id = appointment.id
+		#print 'appointment: ', appointment
 
 
 
@@ -508,6 +511,7 @@ class Cosmetology(models.Model):
 
 		# Consultation 
 		print 'create consultation'
+		print 
 		consultation = self.env['openhealth.consultation.cos'].create(
 																	{
 
@@ -526,30 +530,37 @@ class Cosmetology(models.Model):
 																	}
 																)
 		consultation_id = consultation.id 
-		print 'consultation: ', consultation
-		print 'consultation_id', consultation_id
 
+		print 
+		print 'consultation: ', consultation
+		print 'consultation_id: ', consultation_id
+
+		print 
 
 
 
 		# Update
+		print 'Update'
 		rec_set = self.env['oeh.medical.appointment'].browse([
 																appointment_id																
 															])
 		print 'rec_set: ', rec_set
 
-		ret = rec_set.write({
-								'consultation': consultation_id,
-							})
 
-		print ret 
+
+		#ret = rec_set.write({
+		#						'consultation': consultation_id,
+		#					})
+		#print ret 
+
+
 		print appointment
 		print appointment.consultation
 		print appointment.consultation.id
 
 
 
-		print 
+		print 'end'
 
 		return {
 
@@ -595,6 +606,7 @@ class Cosmetology(models.Model):
 				'search_default_cosmetology': cosmetology_id,
 
 				'default_patient': patient_id,
+
 				#'default_doctor': doctor_id,
 				'default_therapist': therapist_id,
 
@@ -602,10 +614,11 @@ class Cosmetology(models.Model):
 				'default_cosmetology': cosmetology_id,		
 
 				'default_evaluation_start_date': evaluation_start_date,
+				
 				'default_appointment': appointment_id,
 
-				'default_chief_complaint': chief_complaint,
 				#'default_chief_complaint_cos': chief_complaint_cos,
+				'default_chief_complaint': chief_complaint,
 			}
 		}
 

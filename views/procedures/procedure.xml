@@ -18,24 +18,22 @@
 					<header>
 
 
+						<!--
+						<button 
+							type="object" 
+							class="oe_highlight"
+							string="Crear Sesiones"
+							name="create_sessions" 	
+						/>
+						-->
+
+
 
 						<button 
 							type="object" 
 							class="oe_highlight"
 
 							string="Crear Sesiones"
-
-							name="create_sessions" 	
-						/>
-
-
-
-
-						<button 
-							type="object" 
-							class="oe_highlight"
-
-							string="Sesión"
 
 							name="create_session" 	
 						/>
@@ -234,6 +232,8 @@
 								<field name="laser"/>
 								-->
 								<field name="product"/>
+
+
 							</group>
 
 						</group>

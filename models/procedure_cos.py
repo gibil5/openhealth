@@ -17,7 +17,10 @@ import cosvars
 import time_funcs
 import jrfuncs
 import procedure_funcs
+import procedure_funcs_cos
 
+
+import app_vars
 
 
 class ProcedureCos(models.Model):
@@ -26,6 +29,54 @@ class ProcedureCos(models.Model):
 	
 	#_inherit = 'oeh.medical.evaluation'
 	_inherit = 'openhealth.procedure'
+
+
+
+
+
+	_hash_tre = {
+
+		'carboxytherapy': 'carboxy_diamond', 
+
+		'triactive_carboxytherapy_reductionchamber': 'chamber_reduction',
+
+		'diamond_tip' : 'carboxy_diamond', 
+
+	}
+
+
+
+
+
+	machine_cos = fields.Selection(
+			string="Sala", 
+
+			selection = app_vars._machines_cos_list, 
+
+			#required=True, 
+
+			compute="_compute_machine_cos",
+		)
+
+
+	#@api.multi
+	@api.depends('product')
+	
+	def _compute_machine_cos(self):
+
+		for record in self:
+		
+			tre = record.product.x_treatment
+
+			mac = self._hash_tre[tre]
+
+			#record.machine_cos = record.product.x_treatment
+			record.machine_cos = mac
+
+
+
+
+
 
 
 
@@ -65,155 +116,267 @@ class ProcedureCos(models.Model):
 
 
 
-# ----------------------------------------------------------- Create Session  ------------------------------------------------------
+
+
+
+
+
+
+# ----------------------------------------------------------- Create Session - Cos ------------------------------------------------------
 
 	@api.multi
 	def create_session(self): 
 
 		print 
-		print 'Create Session - Cos'
+		print 
+		print 
+		print 'jx' 
+		print 'Create Sessions - Cos'
 
 
-		# Data
+
+
+		# Initial conditions 
 		procedure_id = self.id 
-
 		patient_id = self.patient.id
 
-
-		#doctor_id = self.doctor.id
 		therapist_id = self.therapist.id
-
-
+		
 		chief_complaint = self.chief_complaint
 		evaluation_type = 'Session'
 		product_id = self.product.id
-
-
-		#treatment_id = self.treatment.id
 		cosmetology_id = self.cosmetology.id
-
-
 		laser = self.laser
 		
 
 
+		duration = 0.5
+		x_type = 'session'
+		#state = 'pre_scheduled_control'
+		state = 'pre_scheduled'
+		x_create_procedure_automatic = False 
+
+
+
+
+		#machine = 'triactive'
+		machine = self.machine_cos
+
+
+
+
 		# Date 		
 		GMT = time_funcs.Zone(0,False,'GMT')
-		print GMT
 		evaluation_start_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
+		app_date = datetime.now(GMT).strftime("%Y-%m-%d ")
+		print GMT
 		print evaluation_start_date 
+		print app_date
 
 
 
-		# Apointment 
-		appointment = self.env['oeh.medical.appointment'].search([ 	
-																	('patient', 'like', self.patient.name),		
-																	('doctor', 'like', self.doctor.name), 	
-																	('x_type', 'like', 'procedure'), 
-																], 
-																order='appointment_date desc', limit=1)
+# Loop 
+		# Date dictionary - Number of days for controls 
+		k_dic = {
+					0 :	0,
 
-		appointment_id = appointment.id
-		print appointment
-		print appointment_id
+					#1 :	7,
+					#2 :	15,
+					1 :	1,
+					2 :	2,
+
+					3 :	21,
+					3 :	30,
+					4 :	60,
+					5 :	120,
+				}
+
+
+
+		#for k in range(0,6): 
+		#for k in range(0,1): 
+		for k in range(0,2): 
+
+			delta = 0 
+			nr_days = k_dic[k] + delta 
 
 
 
 
-		# session 
-		print 'create session'
-		#session = self.env['openhealth.session'].create(
-		session = self.env['openhealth.session.cos'].create(
+
+			# session date 
+			session_date = procedure_funcs.get_control_date(self, evaluation_start_date, nr_days)
+			session_date_str = session_date.strftime("%Y-%m-%d")		
+			
+
+
+
+
+
+			# First - Today - The app already exists !  
+			if k == 0:
+				
+				appointment_date = session_date_str + ' '
+				print 'appointment_date: ', appointment_date
+
+
+
+				# Search Appointment 
+				appointment = self.env['oeh.medical.appointment'].search([ 	
+																			('appointment_date', 'like', app_date),	
+
+
+
+																			('patient', 'like', self.patient.name),	
+																			('x_therapist', 'like', self.therapist.name), 	
+																			('x_type', 'like', 'procedure'), 
+																		], 
+																			order='appointment_date desc', limit=1)
+
+				#print appointment
+
+
+
+
+			#if appointment == False: 
+
+			else: 	# Create Appointment 
+
+	
+				#appointment_date = session_date_str
+				appointment_date_str = session_date_str + ' 14:0:0'
+
+
+
+
+				#appointment_date_str = procedure_funcs_cos.check_and_push(self, appointment_date_str, duration, x_type, doctor_name, machine)
+
+
+
+
+				print 'appointment_date: ', appointment_date
+
+				appointment = self.env['oeh.medical.appointment'].create({
+																		'appointment_date': appointment_date_str,
+
+
+
+																		'duration': duration,
+															
+																		'x_type': x_type,
+
+																		'state': state,
+
+																		'patient': patient_id,	
+
+																		#'doctor': doctor_id,
+																		'x_therapist': therapist_id,
+
+																		#'x_chief_complaint': chief_complaint, 
+
+																		'x_create_procedure_automatic': x_create_procedure_automatic,
+
+																		#'treatment': treatment_id, 
+																		'cosmetology': cosmetology_id, 
+
+																		'x_target': 'therapist',
+
+
+
+																		'x_machine_cos': machine,
+																	})
+
+
+
+
+
+
+
+			appointment_id = appointment.id
+			print appointment
+			print appointment_id
+
+
+			# Crate Session 
+			print 'create session'
+			session = self.env['openhealth.session.cos'].create(
 												{
-													'procedure': procedure_id,				
 
+													#'evaluation_start_date': evaluation_start_date,
+													'evaluation_start_date':session_date,
+
+
+													'procedure': procedure_id,				
 
 													'patient': patient_id,
 
-													#'doctor': doctor_id,													
 													'therapist': therapist_id,													
 													
 													'chief_complaint': chief_complaint,
 
-													'evaluation_start_date': evaluation_start_date,
+
 													'evaluation_type':evaluation_type,
 
 													'product': product_id,
+													
 													'laser': laser,
-
-
 
 													'appointment': appointment_id,
 
-													#'treatment': treatment_id,				
 													'cosmetology': cosmetology_id,				
 												}
 											)
-		session_id = session.id 
-		print session
-		print session_id
+			session_id = session.id 
+			print session
+			print session_id
 
 
 
-		# Update
-		#self.update_appointment(appointment_id, session_id, 'session')
-		ret = jrfuncs.update_appointment_go(self, appointment_id, session_id, 'session')
+			# Update - Deprecated - For Cos 
+			#ret = jrfuncs.update_appointment_go(self, appointment_id, session_id, 'session')
 
 
 
-		print appointment
-		print appointment.session
-		print appointment.session.id
-		print 
+			#print appointment
+			#print appointment.session
+			#print appointment.session.id
+			print 
+			print 
+			print 
 
 
 
 
 
-		return {
+		#return {
+		#	'type': 'ir.actions.act_window',
+		#	'name': 'Open session Current',		
+		#	'res_model': 'openhealth.session.cos',
+		#	'res_id': session_id,
+		#	'view_mode': 'form',
+		#	"views": [[False, "form"]],
+		#	'target': 'current',
+		#	'flags': {
+		#			'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+		#			},			
+		#	'context':   {
+		#					'default_procedure': procedure_id,
+		#					'default_patient': patient_id,
+		#					'default_therapist': therapist_id,
+		#					'default_chief_complaint': chief_complaint,
+		#					'default_evaluation_start_date': evaluation_start_date,
+		#					'default_evaluation_type':evaluation_type,
+		#					'default_product': product_id,
+		#					'default_laser': laser,
+		#					'default_appointment': appointment_id,
+		#					'default_cosmetology': cosmetology_id,
+		#				}
+		#}
 
-			# Mandatory 
-			'type': 'ir.actions.act_window',
-			'name': 'Open session Current',
-		
-			# Optional 
-			#'res_model': 'openhealth.session',
-			'res_model': 'openhealth.session.cos',
-
-			'res_id': session_id,
-
-			'view_mode': 'form',
-			"views": [[False, "form"]],
-			'target': 'current',
-
-			'flags': {
-					#'form': {'action_buttons': True, }
-					'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-					},			
-
-			'context':   {
-							'default_procedure': procedure_id,
-
-
-							'default_patient': patient_id,
-							#'default_doctor': doctor_id,
-
-							'default_chief_complaint': chief_complaint,
-							
-							'default_evaluation_start_date': evaluation_start_date,
-							
-							'default_evaluation_type':evaluation_type,
-							'default_product': product_id,
-							'default_laser': laser,
+		ret = 0
+		return ret	
 
 
-
-							'default_appointment': appointment_id,
-
-							#'default_treatment': treatment_id,
-							'default_cosmetology': cosmetology_id,
-						}
-		}
 	# create_session
 
 

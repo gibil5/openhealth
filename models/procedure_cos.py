@@ -34,20 +34,8 @@ class ProcedureCos(models.Model):
 
 
 
-	_hash_tre = {
 
-		'carboxytherapy': 'carboxy_diamond', 
-
-		'triactive_carboxytherapy_reductionchamber': 'chamber_reduction',
-
-		'diamond_tip' : 'carboxy_diamond', 
-
-	}
-
-
-
-
-
+	# Machine - Cos
 	machine_cos = fields.Selection(
 			string="Sala", 
 
@@ -68,7 +56,10 @@ class ProcedureCos(models.Model):
 		
 			tre = record.product.x_treatment
 
-			mac = self._hash_tre[tre]
+
+			#mac = self._hash_tre[tre]
+			mac = cosvars._hash_tre_mac[tre]
+
 
 			#record.machine_cos = record.product.x_treatment
 			record.machine_cos = mac
@@ -211,8 +202,7 @@ class ProcedureCos(models.Model):
 # Loop 
 		# Date dictionary - Number of days for controls 
 		k_dic = {
-					0 :	0,
-
+					#0 :	0,
 					#1 :	7,
 					#2 :	15,
 					#3 :	21,
@@ -220,19 +210,30 @@ class ProcedureCos(models.Model):
 					#4 :	60,
 					#5 :	120,
 
+					0 :	0,
 					1 :	1,
 					2 :	2,
 					3 :	3,
-					3 :	4,
-					4 :	5,
-					5 :	6,
+					4 :	4,
+					5 :	5,
+
+					6 :	6,
+					7 :	7,
+					8 :	8,
+					9 :	9,
+					10 :	10,
+					11 :	11,
 				}
+
 
 
 
 		#for k in range(0,1): 
 		#for k in range(0,2): 
-		for k in range(0,6): 
+		#for k in range(0,6): 
+		for k in range(0,self.number_sessions): 
+
+
 
 			delta = 0 
 			nr_days = k_dic[k] + delta 

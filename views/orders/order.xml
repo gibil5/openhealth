@@ -352,17 +352,17 @@
 				-->
 				<field name="consultation" position="after">
 
-
-					<field name="vspace"/>
-					<field name="x_appointment"/>
 					<!--
 					<field name="x_doctor"/>
 					-->
+
+
+					<field name="vspace"/>
+					<field name="x_appointment"/>
 					<field name="x_appointment_date"/>
 					<field name="x_duration"/>
 					<field name="x_machine"/>
-					
-					<field name="vspace"/>
+
 
 
 
@@ -480,6 +480,11 @@
 
 
 					<field name="vspace"/>
+<!--
+					<field name="x_product"/>
+-->
+					<field name="x_machine_req"/>
+
 
 					
 					<!--

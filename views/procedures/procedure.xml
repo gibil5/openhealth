@@ -219,8 +219,10 @@
 							<group>
 								<field name="evaluation_start_date"/>
 							</group>
-							<group>								
-								<field name="sessions_qty"/>								
+							<group>							
+								
+								<field name="number_sessions"/>								
+							
 							</group>
 
 

@@ -3,6 +3,24 @@
 
 
 
+_hash_tre_mac = {
+
+		'triactive_carboxytherapy': 	'triactive',
+
+		'carboxytherapy': 				'carboxy_diamond', 
+		
+		'diamond_tip' : 				'carboxy_diamond', 
+
+		'triactive_carboxytherapy_reductionchamber': 	'chamber_reduction',
+	}
+
+
+
+
+
+
+
+
 # Chief complaint
 _chief_complaint_list = [
 

@@ -107,19 +107,25 @@
 							<field name="x_machine"		/>
 
 							<field name="x_machine_cos"	/>
+
+
+																	'invisible':[('x_target', '!=', 'doctor'),],
+																	'invisible':[('x_target', '!=', 'therapist'),],
 					-->
 
 							<field name="x_target"/>
 
 
+
+
 							<field name="x_machine"			attrs="{
-																	'invisible':[('x_target', '!=', 'doctor'),],
+																	'invisible':[('x_machine', '=', False),],
 															}"	/>
 
 
 
 							<field name="x_machine_cos"		attrs="{
-																	'invisible':[('x_target', '!=', 'therapist'),],
+																	'invisible':[('x_machine_cos', '=', False),],
 															}"	/>
 
 					<!--					

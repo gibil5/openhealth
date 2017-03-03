@@ -10,14 +10,67 @@ import jxvars
 import appfuncs
 import app_vars
 import ord_vars
-
 import order_funcs
+
+
+
+import cosvars
 
 class sale_order(models.Model):
 	
 	#_name = 'openhealth.order'
 	_inherit='sale.order'
 	
+
+
+
+	# Machine Required  
+	x_machine_req = fields.Char(
+
+			string='Sala req.',
+
+			compute='_compute_x_machine_req', 
+		)
+
+	#@api.multi
+	@api.depends('x_product')
+
+	def _compute_x_machine_req(self):
+		for record in self:
+
+			tre = record.x_product.x_treatment
+			mac = cosvars._hash_tre_mac[tre]
+
+			record.x_machine_req = mac
+
+
+
+
+
+
+	# Product
+	x_product = fields.Many2one(
+			'product.template',			
+			string="Producto",
+			
+			#required=True, 
+			
+			compute='_compute_x_product', 
+			)
+
+
+	#@api.multi
+	@api.depends('order_line')
+
+	def _compute_x_product(self):
+		for record in self:
+
+			for line in record.order_line:
+
+				product = line.product_id.id
+
+			record.x_product = product
+
 
 
 
@@ -1621,7 +1674,12 @@ class sale_order(models.Model):
 
 
 		x_machine_old = 	self.x_machine
-		start_machine = 	self.x_machine
+
+
+
+
+		#start_machine = 	self.x_machine
+		start_machine = 	self.x_machine_req
 
 
 
@@ -1631,6 +1689,9 @@ class sale_order(models.Model):
 		#x_machine = appfuncs.search_machine(self, appointment_date, doctor_name, duration)
 		x_machine = appfuncs.search_machine(self, appointment_date, doctor_name, duration, start_machine)
 		
+		
+
+
 		self.x_machine = x_machine 
 		self.x_appointment.x_machine = x_machine
 

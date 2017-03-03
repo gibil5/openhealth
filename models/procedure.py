@@ -42,17 +42,17 @@ class Procedure(models.Model):
 
 
 	# Sessions - Quantity 
-	sessions_qty = fields.Integer(
+	number_sessions = fields.Integer(
 			string="Sesiones",
-			compute="_compute_sessions_qty",
+			compute="_compute_number_sessions",
 	)
 	
 	#@api.multi
 	@api.depends('product')
 	
-	def _compute_sessions_qty(self):
+	def _compute_number_sessions(self):
 		for record in self:
-			record.sessions_qty = record.product.x_sessions
+			record.number_sessions = record.product.x_sessions
 
 
 

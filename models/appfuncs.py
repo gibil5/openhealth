@@ -79,7 +79,8 @@ def check_for_collisions(self, appointment_date, doctor_name, duration, x_machin
 																		('appointment_date', 'like', dt), 
 
 																		#('x_therapist', '=', doctor_name), 
-																		('x_machine_cos', '=', x_machine),
+																		#('x_machine_cos', '=', x_machine),
+																		('x_machine', '=', x_machine),
 																	])
 
 
@@ -369,13 +370,21 @@ def search_machine(self, appointment_date, doctor_name, duration, start_machine)
 							'laser_co2_3':	0, 
 
 							'laser_triactive':	0, 
+							'chamber_reduction':	0, 
+							'carboxy_diamond':	0, 
 					}
 
 
 	m_dic = {
 				'laser_co2_1': 	['laser_co2_1', 'laser_co2_2', 'laser_co2_3'],
 
+
+
 				'laser_triactive': 	['laser_triactive'], 
+
+				'chamber_reduction': 	['chamber_reduction'], 
+
+				'carboxy_diamond': 	['carboxy_diamond'], 
 	}
 
 

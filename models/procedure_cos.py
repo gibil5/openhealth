@@ -36,33 +36,30 @@ class ProcedureCos(models.Model):
 
 
 	# Machine - Cos
-	machine_cos = fields.Selection(
+	machine = fields.Selection(
 			string="Sala", 
 
-			selection = app_vars._machines_cos_list, 
-
+			#selection = app_vars._machines_cos_list, 
+			selection = app_vars._machines_list, 
+			
 			#required=True, 
-
-			compute="_compute_machine_cos",
+			compute="_compute_machine",
 		)
+
 
 
 	#@api.multi
 	@api.depends('product')
 	
-	def _compute_machine_cos(self):
+	def _compute_machine(self):
 
 		for record in self:
 		
 			tre = record.product.x_treatment
 
-
-			#mac = self._hash_tre[tre]
 			mac = cosvars._hash_tre_mac[tre]
 
-
-			#record.machine_cos = record.product.x_treatment
-			record.machine_cos = mac
+			record.machine = mac
 
 
 
@@ -150,8 +147,10 @@ class ProcedureCos(models.Model):
 
 
 
-		#machine = 'triactive'
-		machine = self.machine_cos
+		#machine = self.machine_cos
+		machine = self.machine
+
+
 
 		therapist_name = self.therapist.name 
 
@@ -321,7 +320,12 @@ class ProcedureCos(models.Model):
 
 
 
-																		'x_machine_cos': machine,
+																		
+
+																		#'x_machine_cos': machine,
+																		'x_machine': machine,
+																		
+
 																		'procedure_cos': self.id,
 																	})
 

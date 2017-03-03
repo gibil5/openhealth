@@ -71,8 +71,8 @@ class Appointment(models.Model):
 			record.x_display = record.x_patient_name_short + ' - '  + record.x_doctor_code + ' - ' + record.x_type_cal + ' - ' + record.x_state_short
 			
 
-			#if record.x_machine != False:
-			if record.x_machine != False	or 	record.x_machine_cos != False:
+			#if record.x_machine != False	or 	record.x_machine_cos != False:
+			if record.x_machine != False:
 				record.x_display = record.x_display + ' - ' + record.x_machine_short
 
 
@@ -120,6 +120,11 @@ class Appointment(models.Model):
 							#'laser_co2_1':		'Co2_1',
 							#'laser_co2_2':		'Co2_2',
 							#'laser_co2_3':		'Co2_3',
+
+
+							'laser_triactive':		'Tri',
+							'chamber_reduction':	'Cam',
+							'carboxy_diamond':		'CaDi',
 						}
 
 
@@ -132,12 +137,11 @@ class Appointment(models.Model):
 
 
 	#@api.multi
-	#@api.depends('x_machine')
-	#def _compute_x_machine_short(self):
-	#	for record in self:
-	#		if record.x_machine != False:
-				#if record.x_target == 'doctor':
-	#			record.x_machine_short = self._hash_x_machine[record.x_machine]
+	@api.depends('x_machine')
+	def _compute_x_machine_short(self):
+		for record in self:
+			if record.x_machine != False:
+				record.x_machine_short = self._hash_x_machine[record.x_machine]
 
 
 
@@ -156,10 +160,7 @@ class Appointment(models.Model):
 			#required=True, 
 		)
 
-	#x_machine_cos = fields.Selection(
-	#		string="Sala - Cos", 
-	#		selection = app_vars._machines_cos_list, 
-	#	)
+
 
 
 

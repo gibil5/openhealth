@@ -91,6 +91,7 @@ _treatment_list = [
 
 
 
+
 		# Cosmetology
 		('triactive_carboxytherapy_reductionchamber',			'triactive_carboxytherapy_reductionchamber'), 
 		('carboxytherapy',			'carboxytherapy'), 
@@ -121,7 +122,15 @@ _laser_type_list = [
 		('cosmetology','Cosmiatría'), 		
 
 
-		('diamond_tip','diamond_tip'), 	
+
+
+		# Cos 
+		('diamond_tip',			'diamond_tip'), 
+		('triactive_carboxytherapy_reductionchamber',			'triactive_carboxytherapy_reductionchamber'), 
+		('carboxytherapy',			'carboxytherapy'), 
+		('triactive_carboxytherapy',			'triactive_carboxytherapy'), 
+
+
 
 
 		#('',''), 	

@@ -50,7 +50,7 @@
 					
 					<field name="vspace"/>
 
-					<field name="machine_cos"/>
+					<field name="machine"/>
 				</xpath>
 
 

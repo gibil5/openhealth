@@ -24,11 +24,10 @@ import appfuncs
 
 class AppointmentCos(models.Model):
 
+	#_name = 'openhealth.appointment.cos'
 
 	#_inherit = 'openhealth.appointment'
 	_inherit = 'oeh.medical.appointment'
-
-	#_name = 'openhealth.appointment.cos'
 
 
 
@@ -36,9 +35,7 @@ class AppointmentCos(models.Model):
 
 	x_machine_cos = fields.Selection(
 			string="Sala Cos", 
-
 			selection = app_vars._machines_cos_list, 
-
 			#required=True, 
 		)
 

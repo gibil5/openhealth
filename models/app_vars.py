@@ -26,7 +26,11 @@ _machines_list = [
 		('laser_m22','M22'), 
 
 
+
+
 		('laser_triactive','Triactivo'), 
+		('chamber_reduction','Cámara de reducción'), 
+		('carboxy_diamond','Carboxiterapia - Punta de Diamante'), 
 		
 		#('none','Ninguna'), 		
 ]
@@ -45,6 +49,7 @@ _machines_list = [
 # Targets
 _target_list = [
 		('doctor','Doctor'), 
+
 		('machine','Machine'), 
 
 		('therapist','Cosmeatra'), 

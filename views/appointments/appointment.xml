@@ -643,16 +643,21 @@
 					<field name="view_type">form</field>
 					<field name="view_mode">calendar,tree,form</field>
 					
+
+
 					<!--
 
 											('x_machine', 'in', ['laser_co2_1', 'laser_co2_2', 'laser_co2_3', 'laser_excilite', 'laser_m22']),
 											('x_target', '=', 'machine'),
-					-->
 
+
+											('x_machine', '!=', 'False'),
+					-->
 
 					<field name="domain">[
 
-											('x_machine', '!=', 'False'),
+											('x_machine', 'in', ['laser_co2_1', 'laser_co2_2', 'laser_co2_3', 'laser_excilite', 'laser_m22']),
+											('x_target', '=', 'doctor'),
 
 										]
 					</field>
@@ -801,13 +806,19 @@
 
 											('x_machine', 'in', ['laser_co2_1', 'laser_co2_2', 'laser_co2_3', 'laser_excilite', 'laser_m22']),
 											('x_target', '=', 'machine'),
+
+
+											('x_machine_cos', '!=', 'False'),
 					-->
 
 
 					<field name="domain">[
 
-											('x_machine_cos', '!=', 'False'),
+											('x_target', '=', 'therapist'),
 
+											('x_type', '=', 'procedure'),
+
+											('x_machine', 'in', ['laser_triactive', 'chamber_reduction', 'carboxy_diamond', ]),
 										]
 					</field>
 					

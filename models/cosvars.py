@@ -5,11 +5,11 @@
 
 _hash_tre_mac = {
 
-		'triactive_carboxytherapy': 	'triactive',
+		'triactive_carboxytherapy': 					'laser_triactive',
 
-		'carboxytherapy': 				'carboxy_diamond', 
+		'carboxytherapy': 								'carboxy_diamond', 
 		
-		'diamond_tip' : 				'carboxy_diamond', 
+		'diamond_tip' : 								'carboxy_diamond', 
 
 		'triactive_carboxytherapy_reductionchamber': 	'chamber_reduction',
 	}

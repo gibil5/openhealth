@@ -190,11 +190,15 @@ _zone_list = [
 		('na',		'na'),
 
 
+
+
 		# Cosmetology
 		('body_all',		'body_all'),
 		('body',		'body'),
 		('face_doublechin_neck',		'face_doublechin_neck'),
-		
+
+
+
 		('',		''),
 		('none',		'none'),
 

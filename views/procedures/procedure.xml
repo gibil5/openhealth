@@ -228,6 +228,9 @@
 
 							<group>
 								<field name="appointment"  	required="0"/>	
+
+								<field name="vspace"/>
+								<field name="machine"/>
 							</group>
 							<group>
 								<!--

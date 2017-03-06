@@ -46,13 +46,10 @@
 
 
         		<!-- Therapist --> 
-				<xpath expr="//field[@name='appointment']" position="after">
-					
-					<field name="vspace"/>
-
-					<field name="machine"/>
+<!--
+				<xpath expr="//field[@name='appointment']" position="after">					
 				</xpath>
-
+-->
 
 
 

@@ -16,6 +16,9 @@ import time_funcs
 import jrfuncs
 import procedure_funcs
 
+import cosvars
+import app_vars
+
 
 
 class Procedure(models.Model):
@@ -33,6 +36,33 @@ class Procedure(models.Model):
 			string = 'Proc #',
 			)
 
+
+
+
+
+	# Machine 
+	machine = fields.Selection(
+			string="Sala", 
+
+			selection = app_vars._machines_list, 
+			
+			#required=True, 
+			compute="_compute_machine",
+		)
+
+
+	#@api.multi
+	@api.depends('product')
+	
+	def _compute_machine(self):
+
+		for record in self:
+		
+			tre = record.product.x_treatment
+
+			mac = cosvars._hash_tre_mac[tre]
+
+			record.machine = mac
 
 
 

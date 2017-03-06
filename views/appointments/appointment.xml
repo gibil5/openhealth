@@ -79,12 +79,24 @@
 
 
 
+				<xpath expr="//field[@name='name']" position="after">					
+
+					<field name="nr_clones"/>
+					<field name="nr_mac_clones"/>
+					<field name="vspace"/>
+
+				</xpath>
+
+
+
+
 				<!-- Patient --> 
 				<!--
 				-->
 				<xpath expr="//field[@name='patient']" position="replace">					
 
 					<field name="patient"	string="patient_r"/>					
+
 
 					<field name="vspace"/>
 				</xpath>
@@ -453,28 +465,31 @@
 
 					
 				<tree string="Appointment Tree"  	default_order='x_date, x_time'>
-				-->
-				<tree string="Appointment Tree"  	default_order='appointment_date'>
 				
 
+				<tree string="Appointment Tree"  	default_order='appointment_date'>
+				-->
 
+
+				<tree string="Appointment Tree"  	default_order='appointment_date'	colors="red:nr_clones!=1;"  >
+				
 					<!--
 					<field name="x_duration_min"/>
-					<field name="x_chief_complaint"/>
-					
+					<field name="x_chief_complaint"/>					
 					<field name="appointment_end"/>
 					<field name="duration"/>
 					<field name="appointment_date"/>
-
 					<field name="appointment_end"/>
 					<field name="evaluation_ids"/>
-
-
 					<field name="x_tree"/>
 					-->
 
 
 					<field name="name"/>
+
+					<field name="nr_clones"/>
+					<field name="nr_mac_clones"/>
+
 
 
 					<field name="patient"/>

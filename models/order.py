@@ -7,20 +7,54 @@
 from openerp import models, fields, api
 
 import jxvars
-import appfuncs
 import app_vars
 import ord_vars
 import order_funcs
 
-
+import appfuncs
+import mac_funcs
 
 import cosvars
+
+
+
+import datetime
+
 
 class sale_order(models.Model):
 	
 	#_name = 'openhealth.order'
 	_inherit='sale.order'
 	
+
+
+
+
+	# Target 
+	x_target = fields.Selection(
+			string="Target", 
+
+			#selection = jxvars._target_list, 
+			selection = app_vars._target_list, 
+
+			compute='_compute_x_target', 
+		)
+
+	#@api.multi
+	@api.depends('x_doctor')
+
+	def _compute_x_target(self):
+		for record in self:
+
+			if record.x_doctor.name != False: 
+				record.x_target = 'doctor'
+
+			if record.x_therapist.name != False: 
+				record.x_target = 'therapist'
+
+
+
+
 
 
 
@@ -39,6 +73,7 @@ class sale_order(models.Model):
 		for record in self:
 
 			tre = record.x_product.x_treatment
+
 			mac = cosvars._hash_tre_mac[tre]
 
 			record.x_machine_req = mac
@@ -100,7 +135,7 @@ class sale_order(models.Model):
 			string='Cita', 
 
 			#required=True, 
-			#compute='_compute_x_appointment', 
+			compute='_compute_x_appointment', 
 			)
 
 
@@ -110,17 +145,38 @@ class sale_order(models.Model):
 	def _compute_x_appointment(self):
 		for record in self:
 
-			app = self.env['oeh.medical.appointment'].search([
-																	('doctor', '=', record.x_doctor.name), 
 
+			if record.x_target == 'doctor': 
+
+				app = self.env['oeh.medical.appointment'].search([
 																	('patient', '=', record.patient.name), 
-
+																	
 																	('x_type', '=', 'procedure'),
 
-																	('x_target', '=', 'doctor'),
+																	('x_target', '=', record.x_target),
+
+																	('doctor', '=', record.x_doctor.name), 
 															],
 															order='appointment_date desc',
 															limit=1,)
+
+
+			#if record.x_target == 'therapist': 
+			else:
+
+				app = self.env['oeh.medical.appointment'].search([
+																	('patient', '=', record.patient.name), 
+																	
+																	('x_type', '=', 'procedure'),
+
+																	('x_target', '=', record.x_target),
+
+																	('x_therapist', '=', record.x_therapist.name), 
+															],
+															order='appointment_date desc',
+															limit=1,)
+
+			
 
 			record.x_appointment = app
 
@@ -147,26 +203,22 @@ class sale_order(models.Model):
 
 
 
-	amount_total = fields.Float(
-
+	# Amount total 
+	x_amount_total = fields.Float(
 			string = "Total",
-
-			compute="_compute_amount_total",
+			compute="_compute_x_amount_total",
 		)
+
 
 	@api.multi
 	#@api.depends('x_payment_method')
 
-	def _compute_amount_total(self):
-
+	def _compute_x_amount_total(self):
 		for record in self:
-
 			sub = 0.0
-
 			for line in record.order_line:
 				sub = sub + line.price_subtotal 
-
-			record.amount_total = sub
+			record.x_amount_total = sub
 
 
 
@@ -185,49 +237,29 @@ class sale_order(models.Model):
 			)
 
 	@api.multi
-	#@api.depends('x_payment_method')
 
 	def _compute_partner_vip(self):
 		for record in self:
-
-			print 
-			print 'jx'
-			print 'Compute Partner Vip'
-			#count = self.env['sale.order'].search_count([
-			#												('partner_id','=', record.partner_id.id),
-			#												('state','=', 'sale'),
-			#											]) 
-
-
+			#print 
+			#print 'jx'
+			#print 'Compute Partner Vip'
 			rec_set = self.env['sale.order'].search([
 															('partner_id','=', record.partner_id.id),
 															('state','=', 'sale'),
 														]) 
-
 			for rec in rec_set:
-				print rec
-
+				#print rec
 				for line in rec.order_line:
-					print line
-					print line.name 
-
+					#print line
+					#print line.name 
 					if line.name == 'Tarjeta VIP':
-						print 'Gotcha !!!'
+						#print 'Gotcha !!!'
 						record.x_partner_vip = True 
 					
-					print 
-
-			print 
-
-
-			#if count > 0:
-			#	record.x_partner_vip = True 
-			#else:				
-			#	record.x_partner_vip = False 
-
-
-			print 
-			print 
+					#print 
+			#print 
+			#print 
+			#print 
 
 
 # ---------------------------------------------- Event --------------------------------------------------------
@@ -381,7 +413,7 @@ class sale_order(models.Model):
 
 		for record in self:
 			
-			if (record.pm_total != record.amount_total)		or 	 (record.nr_saledocs == 0) : 
+			if (record.pm_total != record.x_amount_total)		or 	 (record.nr_saledocs == 0) : 
 				record.pm_complete = False
 
 			else:
@@ -410,9 +442,9 @@ class sale_order(models.Model):
 
 		method = 'cash'
 
-		balance = self.amount_total - self.pm_total
+		balance = self.x_amount_total - self.pm_total
 
-		#total = self.amount_total
+		#total = self.x_amount_total
 
 
 		
@@ -447,7 +479,7 @@ class sale_order(models.Model):
 
 							'default_subtotal': balance,
 
-							'default_total': self.amount_total,
+							'default_total': self.x_amount_total,
 
 							'default_pm_total': self.pm_total,
 							}
@@ -480,7 +512,7 @@ class sale_order(models.Model):
 
 			sale_document = self.env['openhealth.sale_document'].create({
 																			'order': self.id,
-																			'total': self.amount_total, 
+																			'total': self.x_amount_total, 
 																			'partner': self.partner_id.id,				
 																		})
 			sale_document_id = sale_document.id 
@@ -510,7 +542,7 @@ class sale_order(models.Model):
 
 				'context': {
 							'default_order': self.id,
-							'default_total': self.amount_total,
+							'default_total': self.x_amount_total,
 							'default_partner': self.partner_id.id,
 							}
 				}
@@ -1651,13 +1683,137 @@ class sale_order(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Nr Mac Clones  ------------------------------------------------------
+
+	@api.multi 
+	def get_nr_mc(self):
+
+		nr_mac_clones =	self.env['oeh.medical.appointment'].search_count([
+																			('appointment_date','=', self.x_appointment.appointment_date),
+																			
+																			#('x_machine','=', self.x_machine),
+																			('x_machine','=', self.x_appointment.x_machine),
+																		]) 
+		return nr_mac_clones
+
+
+
+
 # ----------------------------------------------------------- Button - Reseve Machine  ------------------------------------------------------
 
 	@api.multi 
 	def reserve_machine(self):
 
+		print
+		print 
 		print 'jx'
 		print 'Reserve Machine'
+		print 
+
+
+		date_format = "%Y-%m-%d %H:%M:%S"
+		duration = self.x_appointment.duration 
+		delta = datetime.timedelta(hours=duration)
+
+
+
+		# Easiest first 
+		#self.x_appointment.x_machine = self.x_machine_req
+
+
+
+
+
+
+		#m_list = ['laser_co2_1', 'laser_co2_2', 'laser_co2_3']
+
+		m_dic = {
+					'laser_co2_1': 			['laser_co2_1', 'laser_co2_2', 'laser_co2_3'], 
+
+					'laser_excilite': 		['laser_excilite'], 
+				
+					'laser_m22': 			['laser_m22'], 
+
+
+
+					'laser_triactive': 		['laser_triactive'], 
+					
+					'chamber_reduction': 	['chamber_reduction'], 
+					
+					'carboxy_diamond': 		['carboxy_diamond'], 
+			}
+
+
+
+		m_list = m_dic[self.x_machine_req]
+
+		ad_str = self.x_appointment.appointment_date
+
+
+		k = 1.
+		out = False 
+
+
+
+		while not out		and  	  k < 6: 		
+
+
+
+			for x_machine_req in m_list: 
+
+
+
+				if not out: 				
+					self.x_appointment.appointment_date = ad_str
+
+					self.x_appointment.x_machine = x_machine_req
+
+					nr_mc = self.get_nr_mc()
+
+
+
+					print k
+					print self.x_appointment.appointment_date				
+					print nr_mc
+
+
+
+					if nr_mc == 1:		# Success - Get out 
+						out = True 
+
+
+
+					print out 
+					print 
+
+
+
+
+			if not out: 	# Error - Change the date 
+				ad = datetime.datetime.strptime(self.x_appointment.appointment_date, date_format) 
+				ad_dt = delta + ad
+				ad_str = ad_dt.strftime("%Y-%m-%d %H:%M:%S")
+
+				k = k + 1.
+
+				
+
+
+
+	# reserve_machine
+
+
+
+
+
+# ----------------------------------------------------------- Button - Reseve Machine  ------------------------------------------------------
+
+	@api.multi 
+	def reserve_machine_old(self):
+
+		print 'jx'
+		print 'Reserve Machine - Old'
 
 		#self.x_machine = 'laser_co2_1'
 
@@ -1665,7 +1821,6 @@ class sale_order(models.Model):
 		
 		# Create Machine
 		appointment_date = 	self.x_appointment_date
-
 		doctor_name = 		self.x_doctor.name
 		doctor_id = 		self.x_doctor.id
 		patient_id = 		self.patient.id
@@ -1687,8 +1842,10 @@ class sale_order(models.Model):
 
 		# New 
 		#x_machine = appfuncs.search_machine(self, appointment_date, doctor_name, duration)
-		x_machine = appfuncs.search_machine(self, appointment_date, doctor_name, duration, start_machine)
+		#x_machine = appfuncs.search_machine(self, appointment_date, doctor_name, duration, start_machine)
+		x_machine = mac_funcs.search_machine(self, appointment_date, doctor_name, duration, start_machine)
 		
+
 		
 
 
@@ -1708,16 +1865,25 @@ class sale_order(models.Model):
 															{
 																'appointment_date': appointment_date,
 
-																'doctor': 		doctor_id,
-																'patient': 		patient_id,	
-																'treatment': 	treatment_id, 
+																'patient': 		patient_id,																	
+
+																'x_type': 		'procedure',
 
 																'duration': 	duration,
-																'x_type': 		'procedure',
+																																
 																'x_create_procedure_automatic': False, 
 
 																'x_machine': 	x_machine,
-							                    				'x_target': 	'machine',
+
+
+
+							                    				#'x_target': 	'machine',
+							                    				'x_target': 	self.x_target,
+
+
+																'doctor': 		doctor_id,
+
+																'treatment': 	treatment_id, 
 															}
 															)
 

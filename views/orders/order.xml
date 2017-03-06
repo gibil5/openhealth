@@ -25,11 +25,20 @@
 				<!--
 				<xpath expr="//page[@name='Other Information']" position="replace">
 
-
 				</xpath>
 				-->
 
 
+
+
+				<xpath expr="//field[@name='amount_total']" position="replace">
+					<field name="x_amount_total" />
+				</xpath>
+
+				<!--
+				<xpath expr="//field[@name='amount_total']" position="replace">
+				</xpath>
+				-->
 
 
 				<!--
@@ -485,6 +494,7 @@
 -->
 					<field name="x_machine_req"/>
 
+					<field name="x_target"/>
 
 					
 					<!--
@@ -526,9 +536,10 @@
 			
 			<field name="arch" type="xml">
 				
+
+
 				<tree string="Order Tree">
 					
-					<field name="message_needaction" invisible="1"/>
                     
 
 					<!--
@@ -537,23 +548,27 @@
                     <field name="name" string="Presupuesto #"	attrs="{'invisible':[('state', '!=', 'pre-draft')]}"/>
                     
                     <field name="name" string="Factura #"		attrs="{'invisible':[('state', '!=', 'sale')]}"/>
-					--> 
 
-                    <field name="name" string="Presupuesto #"/>
-
-
-
-                    <!--
                     <field name="id"/>
 
                     <field name="invoice_status"/>
+
+
+
+					<field name="message_needaction" invisible="0"/>
 					-->
 
                     
-                    
+
+                    <field name="name" string="Presupuesto #"/>
+
                     <field name="partner_id"	string="Paciente"/>
                     
+
+					<field name="x_target"/>
+
 					<field name="x_doctor"/>
+					<field name="x_therapist"/>
 
 
 
@@ -565,22 +580,22 @@
                     <field name="nr_lines"/>
 
 
-                    <field name="amount_total" sum="Total Tax Included" widget="monetary"/>
+                    <field name="x_amount_total" sum="Total Tax Included" widget="monetary"/>
 
                     <field name="date_order"		string="Fecha"/>
 
-                    <!--
-                    <field name="x_chief_complaint"/>
-					-->
 
                     <field name="x_family"/>
 
 
                     <field name="receipt"/>
+
                     <field name="x_invoice"/>
 
 
                      <!--
+                    <field name="x_chief_complaint"/>
+
                     <field name="consultation"/>
 
                     <field name="treatment"/>

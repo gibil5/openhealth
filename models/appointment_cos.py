@@ -98,6 +98,8 @@ class AppointmentCos(models.Model):
 							False:				'', 
 
 							'Eulalia':		'EU',
+							'Eulalia 2':	'EU2',
+							'Eulalia 3':	'EU3',
 		}
 
 

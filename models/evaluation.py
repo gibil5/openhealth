@@ -37,12 +37,14 @@ class Evaluation(models.Model):
 
 
 
+
+
 	appointment = fields.Many2one(
 			'oeh.medical.appointment',			
 			string='Cita #', 
 			required=False, 
 
-			ondelete='cascade', 
+			#ondelete='cascade', 
 			)
 
 
@@ -167,8 +169,8 @@ class Evaluation(models.Model):
 
 
 	laser = fields.Selection(
-			#selection = jxvars._laser_type_list, 
-			
+
+			#selection = jxvars._laser_type_list, 	
 			#selection = service_vars._laser_type_list, 
 			selection = prodvars._laser_type_list, 
 			
@@ -189,7 +191,10 @@ class Evaluation(models.Model):
 
 
 	zone = fields.Selection(
-			selection = jxvars._zone_list, 
+
+			#selection = jxvars._zone_list, 
+			selection = prodvars._zone_list, 
+
 			string="Zona", 			
 			compute='_compute_zone', 			
 			)

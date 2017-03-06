@@ -3,16 +3,23 @@
 
 
 
+
 _hash_tre_mac = {
 
 		'triactive_carboxytherapy': 					'laser_triactive',
-
 		'carboxytherapy': 								'carboxy_diamond', 
-		
 		'diamond_tip' : 								'carboxy_diamond', 
-
 		'triactive_carboxytherapy_reductionchamber': 	'chamber_reduction',
+
+
+
+		'laser_co2': 									'laser_co2_1',
+		'laser_excilite': 								'laser_excilite',
+		'laser_ipl': 									'laser_m22',
+		'laser_ndyag': 									'laser_m22',
 	}
+
+
 
 
 

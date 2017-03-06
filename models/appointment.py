@@ -49,6 +49,62 @@ class Appointment(models.Model):
 
 
 
+
+
+
+
+	# Number of clones  
+	nr_clones = fields.Integer(
+			string="nr_clones",
+			compute="_compute_nr_clones",
+	)
+	@api.multi
+	def _compute_nr_clones(self):
+		for record in self:
+			record.nr_clones =	self.env['oeh.medical.appointment'].search_count([
+																						('appointment_date','=', record.appointment_date),
+																						('doctor','=', record.doctor.name),
+																					]) 
+			if record.nr_clones > 1:
+				record.state = 'error'
+
+
+
+
+
+
+	# Number of mac_clones  
+	nr_mac_clones = fields.Integer(
+			string="nr_mac_clones",
+			compute="_compute_nr_mac_clones",
+	)
+	@api.multi
+	def _compute_nr_mac_clones(self):
+		for record in self:
+
+			if record.x_machine != False: 
+
+				record.nr_mac_clones =	self.env['oeh.medical.appointment'].search_count([
+
+																						('appointment_date','=', record.appointment_date),
+
+																						('x_machine','=', record.x_machine),
+					
+																					]) 
+				if record.nr_mac_clones > 1:
+					record.state = 'error'
+
+			else:
+				record.nr_mac_clones = 1 
+
+
+
+
+
+
+
+
+
 	#x_tree = fields.Boolean(
 	#	)
 
@@ -84,12 +140,17 @@ class Appointment(models.Model):
 	_hash_state = {
 						#False:				'', 
 
-						'Scheduled':		'1',
+						'Scheduled':				'1',
 
-						'pre_scheduled':		'2',
+						'pre_scheduled':			'2',
 
-						'pre_scheduled_control':		'3',
+						'pre_scheduled_control':	'3',
+
+
+
+						'error':					'55',
 					}
+
 
 
 	x_state_short = fields.Char(
@@ -120,6 +181,13 @@ class Appointment(models.Model):
 							#'laser_co2_1':		'Co2_1',
 							#'laser_co2_2':		'Co2_2',
 							#'laser_co2_3':		'Co2_3',
+
+
+							'laser_excilite':	'Exc',
+
+							'laser_m22':		'M22',
+
+
 
 
 							'laser_triactive':		'Tri',
@@ -292,6 +360,9 @@ class Appointment(models.Model):
 			('Scheduled', 		'Confirmado'),
 			('pre_scheduled', 	'No confirmado'),
 			('pre_scheduled_control', 	'Pre-cita'),
+
+
+			('error', 			'Error'),
 
 
 			# OeHealth 
@@ -1032,7 +1103,9 @@ class Appointment(models.Model):
 				
 			treatment = self.env['openhealth.treatment'].search([
 																				('patient', 'like', self.patient.name),
+																				
 																				('physician', 'like', self.doctor.name),
+																			
 																			],
 																				order='start_date desc',
 																				limit=1,
@@ -1116,6 +1189,7 @@ class Appointment(models.Model):
 	consultation = fields.Many2one('openhealth.consultation',
 		string="Consulta",
 		#string="Cons.",
+
 		ondelete='cascade', 
 	)
 

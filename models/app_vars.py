@@ -50,10 +50,10 @@ _machines_list = [
 _target_list = [
 		('doctor','Doctor'), 
 
-		('machine','Machine'), 
-
 		('therapist','Cosmeatra'), 
 
+
+		#('machine','Machine'), 
 ]
 
 

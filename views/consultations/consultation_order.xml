@@ -4,9 +4,19 @@
 		<record model="ir.ui.view" id="consultation_order_form_view">
 			<field name="name">consultation.order.form</field>
 			<field name="model">openhealth.consultation</field>
+
+<!--
 			<field name="priority" eval="7"/>
 			<field name="inherit_id" ref="consultation_form_view"/>
-			<field name="arch" type="xml">				
+
+	        <field name="mode">primary</field>
+-->
+			<field name="inherit_id" ref="consultation_med_form_view"/>
+			<field name="priority" eval="3"/>
+			
+
+			<field name="arch" type="xml">	
+
 				<notebook position="inside">
 					<page string="Presupuesto">
 						<field name="pre_order">
@@ -27,6 +37,7 @@
 						</field>
 					</page>
 				</notebook>
+			
 			</field>
 		</record>
 	</data>

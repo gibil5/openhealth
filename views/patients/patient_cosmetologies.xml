@@ -44,7 +44,14 @@
 								
 								<field name="patient"/>
 
+
+
+<!--
 								<field name="therapist"/>
+-->
+								<field name="physician"/>
+
+
 
 
 								<field name="chief_complaint"/>

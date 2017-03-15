@@ -30,6 +30,26 @@ class SessionCos(models.Model):
 
 
 
+	treatment = fields.Many2one(
+			'openhealth.treatment',
+			#ondelete='cascade', 
+			required=False, 
+			)
+
+
+
+
+	doctor = fields.Many2one(
+			'oeh.medical.physician',
+
+			string = "Cosmeatra", 	
+			
+			)
+
+
+
+
+
 	#cosmetology = fields.Many2one('openhealth.cosmetology',
 	#		ondelete='cascade', 
 	#		string="Cosmetología",
@@ -51,12 +71,72 @@ class SessionCos(models.Model):
 
 
 
-	procedure = fields.Many2one('openhealth.procedure.cos',
-			string="Procedimiento Cos",
+	procedure = fields.Many2one(
+
+			'openhealth.procedure.cos',
+			
+			string="Procedimiento",
+			
 			readonly=True,
+			
 			ondelete='cascade', 
+
+
+			#required=False, 
+			required=True, 
 			)
 			
+
+
+
+
+	procedure_applied = fields.Selection(
+			string = 'Procedimiento aplicado', 
+
+			selection = cosvars._procedure_list, 
+
+			#required=True, 
+			#required=False, 
+		)
+
+
+
+
+
+	navel = fields.Float(
+			string="Ombligo (cm)", 		
+		)
+
+	abdomen_low = fields.Float(
+			string="Abdomen superior (cm)", 		
+		)
+
+	abdomen_high = fields.Float(
+			string="Abdomen inferior (cm)", 		
+		)
+
+
+
+
+
+	config_volume = fields.Float(
+			string="Dosificación (ml)", 		
+		)
+
+	config_time = fields.Float(
+			string="Tiempo (min)", 		
+		)
+
+
+
+	comments = fields.Text(
+			string="Comentarios", 
+		)
+
+
+
+
+
 
 
 

@@ -2,18 +2,20 @@
 <openerp>
 	<data>
 		
+
+
 		<!-- Form view -->
-		<record model="ir.ui.view" id="view_test">
+		<record model="ir.ui.view" id="view_order_form">
 
 			<field name="name">sale.order.form</field>
 			
 			<field name="model">sale.order</field>
 
-			<field name="inherit_id" ref="sale.view_order_form"/>			
-	        
-	        <field name="mode">primary</field>
 
+			<field name="inherit_id" ref="sale.view_order_form"/>			
+	        <field name="mode">primary</field>
 	        <field name="priority" eval="1"/>
+
 	        
 			<field name="arch" type="xml">
 
@@ -49,12 +51,13 @@
 
 
 <!--
-					<field name="x_doctor" />
 					
 					<field name="x_therapist" />
 					
-					<field name="consultation"/>
--->
+					
+					<field name="consultation"		attrs="{
+														'invisible':[('consultation', '=', False ),],
+														}"	/>
 
 					<field name="x_doctor"		attrs="{
 														'invisible':[('x_doctor', '=', False ),],
@@ -64,19 +67,36 @@
 					<field name="x_therapist"		attrs="{
 														'invisible':[('x_therapist', '=', False ),],
 														}"	/>
+-->
+
+
+
+					<field name="x_doctor" />
+
+
+
+
+					<field name="consultation"/>
 
 
 
 
 
-					<field name="cosmetology"/>
+					<field name="vspace"/>
 
-
-
-					<field name="consultation"		attrs="{
-														'invisible':[('consultation', '=', False ),],
+					<field name="cosmetology"	attrs="{
+														'invisible':[('cosmetology', '=', False ),],
 														}"	/>
+					
+					<field name="treatment"		attrs="{
+														'invisible':[('treatment', '=', False ),],
+														}"	/>
+
+
+
 				</xpath>
+
+
 
 
 				<xpath expr="//field[@name='payment_term_id']" position="replace">
@@ -85,19 +105,52 @@
 
 
 
+
+
+
+
+
+
+				<!-- State --> 
+				<xpath expr="//field[@name='state']" position="replace">
+
+					<field 	name="x_state" 
+							widget="statusbar" 
+
+
+							statusbar_visible="draft, payment, proof, machine, sale, invoice"
+					/>
+
+				</xpath>
+	
+
 				<!--
 				<xpath expr="pass of position" position="the postion">
 				-->		
 
 				<!-- Buttons in Header --> 
+<!--
 				<xpath expr="//button[@name='action_quotation_send']" position="replace">
+
+				<xpath expr="//header" position="inside">
+-->
+				<xpath expr="//field[@name='x_state']" position="before">
+
+
 
 
 					<!-- Pagar -->
+<!--
+							states="draft"						
+-->					
 					<button 
 							type="object" 
 							class="oe_highlight"	
-							string="Pagar"						
+							string="Pagar"
+
+
+							attrs="{'invisible':	[('x_state', 'in', ['payment', 'proof', 'machine', 'sale', 'invoice'] ),	]}"
+
 							name="create_payment_method"
 							/>
 
@@ -107,13 +160,16 @@
 
 
 					<!--
+							states="payment"						
 					-->
 					<button 
 							type="object" 
-
 							class="oe_highlight"
-
 							string="Comprobante" 
+
+
+
+							attrs="{'invisible':	[('x_state', 'in', ['draft', 'proof',  'machine', 'sale', 'invoice'] ),	]}"
 
 							name="create_sale_document" 
 					/>
@@ -134,51 +190,80 @@
 
 
 					<!-- Reserve Machine --> 
+<!--
+							states="proof"						
+-->
 					<button 
-						type="object"
+							type="object"
+							class="oe_highlight"						
+							string="Reservar sala"
 
-						class="oe_highlight"
 						
-						string="Reservar Sala"
-						
-						name="reserve_machine" 	
+							attrs="{'invisible':	[('x_state', 'in', ['draft', 'payment',  'machine', 'sale', 'invoice'] ),	]}"
+
+							name="reserve_machine" 	
 					/>
 
 
-				</xpath>
 
-
-
-
-
-	
-
-
-
-
-
-				<xpath expr="//button[@name='action_confirm']" position="replace">
-				</xpath>
-
-				<xpath expr="//button[@name='action_confirm']" position="replace">
 					<!-- Confirm -->
-					<button 
+<!--
 							attrs="{'invisible':
 												[
 													('pm_complete', '=', False),
 												]
 									}"
+							states="machine"		
+-->
+					<button 
 									
 							type="object" 
-
 							class="oe_highlight"
+							string="Confirmar venta" 
 							
-							string="Confirmar" 
-							
+
+
+							attrs="{'invisible':	[('x_state', 'in', ['draft', 'payment', 'proof',   'sale', 'invoice'] ),	]}"
+
 							name="action_confirm" 
 					/>
+
+
+
+
+					<!-- Create Invoice --> 
+<!--
+							states="sale"						
+-->
+					<button 
+							type="object"
+							class="oe_highlight"
+							string="Crear factura"
+						
+
+							attrs="{'invisible':	[('x_state', 'in', ['draft', 'payment', 'proof',   'machine', 'invoice'] ),	]}"
+							name="x_create_invoice" 	
+					/>
+
 				</xpath>
 
+
+
+
+
+
+
+
+
+
+
+<!--
+				<xpath expr="//button[@name='action_confirm']" position="replace">
+				</xpath>
+
+				<xpath expr="//button[@name='action_confirm']" position="replace">
+				</xpath>
+-->
 
 
 
@@ -191,9 +276,10 @@
 
 
 				<!-- Buttons --> 
+<!--				
 				<xpath expr="//button[@name='print_quotation']" position="replace">
 				</xpath>
-
+-->
 				<xpath expr="//button[@name='action_cancel']" position="replace">
 				</xpath>
 
@@ -212,6 +298,7 @@
 							<button 
 								type="object" 
 								class="oe_highlight "
+
 								string="Eliminar" 
 
 								name="remove_myself" 
@@ -230,8 +317,8 @@
 							/>
 						</group>
 
-						<group>
-						</group>
+
+
 
 
 
@@ -261,6 +348,21 @@
 						</group>
 
 
+
+
+						<group>
+							<button 
+								type="object" 
+								class="oe_highlight"
+
+								string="Reset"
+
+								name="x_reset" 	
+							/>
+						</group>
+
+
+
 					</group>
 
 				</xpath>
@@ -284,6 +386,8 @@
 					
 
     	                	<field name="product_id" 		string="Producto"/>
+
+
 
         	            	<field name="name"				string="Descripción" />
 
@@ -414,8 +518,11 @@
 
 					
 					<field name="vspace"/>
-					<field name="state"		string="Estado"/>
 
+					<field name="state"		string="Estado"/>
+<!--					
+					<field name="x_state"		string="x Estado"/>
+-->
 
 
 
@@ -463,23 +570,23 @@
 					-->
 
 					<field name="vspace"/>
-					<field name="x_sales_document"/>
+					<field name="x_sale_document"/>
 
 
 
-					<field name="x_ruc"			attrs="{'invisible':[('x_sales_document', '!=', 'invoice')]}"	/>
+					<field name="x_ruc"			attrs="{'invisible':[('x_sale_document', '!=', 'invoice')]}"	/>
 
 
 
 
 
-					<field name="receipt" 		attrs="{'invisible':[('x_sales_document', '!=', 'receipt')]}"	/>
-					<field name="x_invoice"		attrs="{'invisible':[('x_sales_document', '!=', 'invoice')]}"	/>
+					<field name="receipt" 		attrs="{'invisible':[('x_sale_document', '!=', 'receipt')]}"	/>
+					<field name="x_invoice"		attrs="{'invisible':[('x_sale_document', '!=', 'invoice')]}"	/>
 
-					<field name="x_advertisement"		attrs="{'invisible':[('x_sales_document', '!=', 'advertisement')]}"	/>
-					<field name="x_sale_note"			attrs="{'invisible':[('x_sales_document', '!=', 'sale_note')]}"		/>
-					<field name="x_ticket_receipt"		attrs="{'invisible':[('x_sales_document', '!=', 'ticket_receipt')]}"	/>
-					<field name="x_ticket_invoice"		attrs="{'invisible':[('x_sales_document', '!=', 'ticket_invoice')]}"	/>
+					<field name="x_advertisement"		attrs="{'invisible':[('x_sale_document', '!=', 'advertisement')]}"	/>
+					<field name="x_sale_note"			attrs="{'invisible':[('x_sale_document', '!=', 'sale_note')]}"		/>
+					<field name="x_ticket_receipt"		attrs="{'invisible':[('x_sale_document', '!=', 'ticket_receipt')]}"	/>
+					<field name="x_ticket_invoice"		attrs="{'invisible':[('x_sale_document', '!=', 'ticket_invoice')]}"	/>
 
 
 
@@ -544,68 +651,51 @@
 
 					<!--
                     <field name="name" string="Order Number"/>
-
                     <field name="name" string="Presupuesto #"	attrs="{'invisible':[('state', '!=', 'pre-draft')]}"/>
-                    
                     <field name="name" string="Factura #"		attrs="{'invisible':[('state', '!=', 'sale')]}"/>
-
                     <field name="id"/>
-
                     <field name="invoice_status"/>
-
-
-
 					<field name="message_needaction" invisible="0"/>
 					-->
 
                     
 
-                    <field name="name" string="Presupuesto #"/>
+                    <field name="name"/>
 
-                    <field name="partner_id"	string="Paciente"/>
+                    <field name="partner_id"/>
+
+
+
+					<field name="x_doctor"		/>
                     
-
 					<field name="x_target"/>
 
-					<field name="x_doctor"/>
-					<field name="x_therapist"/>
 
 
-
-
-                    <field name="user_id"		string="Vendido por"/>
-                    
-                    <field name="state" invisible="0"	string="Estado"/>
+                    <field name="state"/>
                     
                     <field name="nr_lines"/>
 
 
-                    <field name="x_amount_total" sum="Total Tax Included" widget="monetary"/>
+
+                    <field name="x_amount_total" 	sum="Total Tax Included"	widget="monetary"/>
 
                     <field name="date_order"		string="Fecha"/>
 
 
-                    <field name="x_family"/>
-
-
+<!--
                     <field name="receipt"/>
-
                     <field name="x_invoice"/>
 
+                    <field name="user_id"		string="Vendido por"/>
 
-                     <!--
                     <field name="x_chief_complaint"/>
-
                     <field name="consultation"/>
-
                     <field name="treatment"/>
-                    
                     <field name="id"/>
-                    -->
 
-					<!--
 					<field name="order_line"/>
-					-->
+-->
 				</tree>
 			</field>
 		</record>

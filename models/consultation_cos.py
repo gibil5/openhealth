@@ -33,6 +33,17 @@ class ConsultationCos(models.Model):
 
 
 
+	doctor = fields.Many2one(
+			'oeh.medical.physician',
+
+			string = "Cosmeatra", 	
+			
+			)
+
+
+
+
+
 	#cosmetology = fields.Many2one('openhealth.cosmetology',
 	#		ondelete='cascade', 
 	#		string="Cosmetología",
@@ -51,6 +62,30 @@ class ConsultationCos(models.Model):
 			)
 
 
+
+	x_antecedents_chirurgical = fields.Text(
+			string = '', 
+			)
+
+
+	x_treatments_former = fields.Text(
+			string = '', 
+			)
+
+
+
+	# Number of sessions 
+	nr_sessions = fields.Integer(
+			string="Número de Sesiones",
+			#compute="_compute_nr_sessions",
+	)
+	#@api.multi
+	#def _compute_nr_sessions(self):
+	#	for record in self:
+	#		record.nr_sessions=self.env['openhealth.session'].search_count([
+	#																('treatment','=', record.id),
+	#																]) 
+	#		record.nr_sessions=0
 
 
 

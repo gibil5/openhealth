@@ -33,6 +33,10 @@ class payment_method(models.Model):
 
 
 
+	vspace = fields.Char(
+			' ', 
+			readonly=True
+			)
 
 
 

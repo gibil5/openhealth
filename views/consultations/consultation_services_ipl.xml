@@ -11,11 +11,18 @@
 			<field name="model">openhealth.consultation</field>
 
 
+			
+<!--
 			<field name="priority" eval="4"/>
+			<field name="inherit_id" ref="consultation_form_view"/>
+	        <field name="mode">primary</field>
+-->
+			<field name="inherit_id" ref="consultation_med_form_view"/>
+			<field name="priority" eval="2"/>
 			
 
-			<field name="inherit_id" ref="consultation_form_view"/>
 			<field name="arch" type="xml">
+
 				<notebook position="inside">
 					
 

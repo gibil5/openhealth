@@ -5,10 +5,9 @@
 
 
 # Family
-_family_list = [
-
-		('private','Private'), 
-]
+#_family_list = [
+#		('private','Private'), 
+#]
 
 
 
@@ -137,10 +136,7 @@ _zone_list = [
 # Chief complaint
 _chief_complaint_list = [
 
-			#('none','Ninguno'),
-
 			#('acne',			'Acné'),	# Medical 
-
 
 			('acne_active','Acné Activo'),
 			('acne_sequels','Acné y Secuelas'),
@@ -218,6 +214,9 @@ _chief_complaint_list = [
 
 
 			# Medical 
+
+
+			# Cosmetology
 
 
 			]

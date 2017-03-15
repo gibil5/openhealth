@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+		<!-- Form view -->
+		<record model="ir.ui.view" id="consultation_cos_first_form_view">
+
+			<field name="name">consultation.cos.first.form</field>
+			
+			<field name="model">openhealth.consultation.cos</field>
+			
+
+
+<!--			
+			<field name="inherit_id" ref="consultation_form_view"/>
+-->			
+			<field name="inherit_id" ref="consultation_cos_form_view"/>
+	        <field name="mode">primary</field>
+			<field name="priority" eval="1"/>
+
+
+
+			<field name="arch" type="xml">
+				
+				
+				
+				<notebook position="inside">
+
+					<page string="Consulta Cosmiatría">
+
+						<group></group>
+						<group></group>
+
+
+
+						
+
+						<group string="">
+
+							<group string="Antecedentes médicos">
+<!--
+								<field name="x_diagnosis" nolabel="1"  required="1"/>
+-->
+								<field name="x_antecedents" nolabel="1"  	required="1"/>
+							</group>
+
+							<group string="Antecedentes quirurgicos">
+
+								<field name="x_antecedents_chirurgical"		nolabel="1"  	/>
+
+							</group>
+						</group>
+										
+										
+										
+						<hr></hr>
+
+
+										
+						<group string="">
+										
+
+							<group string="Alergias a medicamentos">
+								<field name="x_allergies_medication" nolabel="1"	required="1"/>
+							</group>
+
+
+							<group string="Tratamientos anteriores">
+<!--
+								<field name="x_analysis_lab" nolabel="0"	required="0"/>
+-->						
+								<field name="x_treatments_former"	nolabel="1"  	/>
+							</group>
+
+						</group>
+
+
+
+						<hr></hr>
+
+
+
+<!--									
+						<group string="">
+							<group string="Observaciones">
+								<field name="x_observations" nolabel="1"	required="1"/>
+							</group>
+
+
+							<group string="Indicaciones">
+								<field name="x_indications" nolabel="1"		required="1"/>
+							</group>
+						</group>
+-->
+							
+
+				
+							
+					</page>
+				</notebook>
+			</field>
+		</record>
+	</data>
+</openerp>

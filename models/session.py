@@ -65,11 +65,17 @@ class Session(models.Model):
 			)
 
 
-	# Relational 
 
-	procedure = fields.Many2one('openhealth.procedure',
+
+	# Relational 
+	procedure = fields.Many2one(
+
+			'openhealth.procedure',
+			
 			string="Procedimiento",
+			
 			readonly=True,
+			
 			ondelete='cascade', 
 			)
 			

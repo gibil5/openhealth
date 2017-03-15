@@ -4,20 +4,14 @@
 
 
 		<!--
-		Treatmentt - reservations
+		Treatment - Reservations
 		-->
 		<record model="ir.ui.view" id="treatment_reservation_form_view">
 			<field name="name">treatment.reservation.form</field>
 			<field name="model">openhealth.treatment</field>
-
 			
-			<!--
-			<field name="priority" eval="0"/>
-			-->
 			<field name="priority" eval="9"/>
 			
-
-
 			<field name="inherit_id" ref="treatment_form_view"/>
 			<field name="arch" type="xml">
 
@@ -34,16 +28,12 @@
 
 							<tree string=""		default_order="appointment_date">	
 
-								
 								<field name="name"		invisible="1"/>
 								<field name="patient"	invisible="1"/>
 								<field name="doctor"	invisible="1"/>
-
-
 								<field name="x_type"/>
 
 								<field name="x_machine"/>
-
 
 								<field name="treatment"/>
 								<field name="consultation"/>
@@ -51,16 +41,11 @@
 								<field name="session"/>
 								<field name="control"/>					
 
-					
 								<field name="state"/>
 								<field name="x_date"/>
 								<field name="x_time"/>
 							</tree>
-
 						</field>				
-
-
-
 					</page>
 				</notebook>
 			</field>

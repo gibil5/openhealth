@@ -97,16 +97,18 @@ class Treatment(models.Model):
 
 	# State 
 	_state_list = [
-        			('empty', 			'Inicio'),
+
+        			#('empty', 			'Inicio'),
 
 
         			('appointment', 	'Cita'),
-
 
         			('consultation', 	'Consulta'),
 
         			('service', 		'Recomendación'),
         			
+
+
         			('budget', 			'Presupuesto'),
 
         			('invoice', 		'Facturado'),
@@ -126,8 +128,8 @@ class Treatment(models.Model):
 			string='State', 			
 			
 
-			#default = False, 
-			default = 'empty', 
+			default = False, 
+			#default = 'empty', 
 
 
 			compute="_compute_state",
@@ -142,11 +144,6 @@ class Treatment(models.Model):
 		for record in self:
 
 
-			#con_count=self.env['openhealth.consultation'].search_count([('treatment','=', self.id)]) 
-			#bud_count=self.env['sale.order'].search_count([('treatment','=', self.id)]) 			
-			#if record.consultation_ids.search_count() > 0:
-
-
 			state = False
 
 
@@ -154,12 +151,12 @@ class Treatment(models.Model):
 				state = 'appointment'
 
 
-			if record.nr_services > 0:
-				state = 'service'
-
-
 			if record.nr_consultations > 0:
 				state = 'consultation'
+
+
+			if record.nr_services > 0:
+				state = 'service'
 
 
 
@@ -167,8 +164,10 @@ class Treatment(models.Model):
 			if record.nr_budgets > 0:
 				state = 'budget'
 
-			if record.nr_invoices > 0:
-				state = 'invoice'
+
+			#if record.nr_invoices > 0:
+			#	state = 'invoice'
+
 
 			if record.nr_procedures > 0:
 				state = 'procedure'
@@ -316,8 +315,9 @@ class Treatment(models.Model):
 
 			record.nr_budgets=self.env['sale.order'].search_count([
 																	('treatment','=', record.id),
-																	('state','=', 'draft'),
-																	('x_family','=', 'private'),
+
+																	#('state','=', 'draft'),
+																	#('x_family','=', 'private'),
 																	]) 
 
 	# Number of invoices 
@@ -331,6 +331,7 @@ class Treatment(models.Model):
 
 			record.nr_invoices=self.env['sale.order'].search_count([
 																	('treatment','=', record.id),
+																	
 																	('state','=', 'sale'),
 																	]) 
 
@@ -364,10 +365,11 @@ class Treatment(models.Model):
 	def _compute_nr_sessions(self):
 		for record in self:
 
-			record.nr_sessions=self.env['openhealth.session'].search_count([
-																	('treatment','=', record.id),
-																	]) 
-			record.nr_sessions=0
+			#record.nr_sessions=self.env['openhealth.session'].search_count([
+			record.nr_sessions=self.env['openhealth.session.med'].search_count([
+																					('treatment','=', record.id),
+																				]) 
+
 
 
 
@@ -399,7 +401,6 @@ class Treatment(models.Model):
 	reservation_ids = fields.One2many(
 
 			'oeh.medical.appointment', 
-			#'openhealth.appointment', 
 
 			'treatment', 
 
@@ -603,7 +604,9 @@ class Treatment(models.Model):
 
 
 	session_ids = fields.One2many(
-			'openhealth.session', 
+			#'openhealth.session', 
+			'openhealth.session.med', 
+
 			'treatment', 
 
 			string = "Sesiones", 
@@ -637,31 +640,42 @@ class Treatment(models.Model):
 
 
 	# Quotations 
-	quotation_ids = fields.One2many(
-			'sale.order',			 
-			'treatment', 			
-			string="Presupuestos",
-
-			domain = [
+	#quotation_ids = fields.One2many(
+	#		'sale.order',			 
+	#		'treatment', 			
+	#		string="Presupuestos",
+	#		domain = [
 						#('state', '=', 'pre-draft'),
 						#('state', 'in', ['draft', 'sent', 'sale', 'done'])
-						('x_family', '=', 'private'),
-					],
-			)
-
-
+						#('x_family', '=', 'private'),
+	#				],
+	#		)
 
 	# Sales 
-	sale_ids = fields.One2many(
+	#sale_ids = fields.One2many(
+	#		'sale.order',			 
+	#		'treatment', 
+	#		string="Ventas",
+	#		domain = [
+						#('state', '=', 'sale'),
+	#					('state', 'in', ['sale', 'done'])
+	#				],
+	#		)
+
+
+
+
+	# orders 
+	order_ids = fields.One2many(
 			'sale.order',			 
 			'treatment', 
-			string="Ventas",
-
+			string="Presupuestos",
 			domain = [
-						#('state', '=', 'sale'),
-						('state', 'in', ['sale', 'done'])
+						#('state', '=', 'order'),
+						#('state', 'in', ['order', 'done'])
 					],
 			)
+
 
 
 
@@ -1378,11 +1392,16 @@ class Treatment(models.Model):
 	def create_procedure(self):
 
 		print 
+		print 
 		print 'Create Procedure'
 
-		#ret = treatment_funcs.create_procedure_go(self)
-		ret = treatment_funcs.create_procedure_go(self, 'treatment')
+
+		if self.nr_invoices > 0:
+			ret = treatment_funcs.create_procedure_go(self)
+
+
 		#print ret 
+		print 
 		print 
 
 	# create_procedure 

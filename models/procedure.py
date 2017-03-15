@@ -89,6 +89,27 @@ class Procedure(models.Model):
 
 
 
+	# Controls - Quantity 
+	number_controls = fields.Integer(
+			string="Controles",
+			compute="_compute_number_controls",
+	)
+	
+	#@api.multi
+	#@api.depends('product')
+	@api.depends('laser')
+	
+	def _compute_number_controls(self):
+		for record in self:
+
+			if record.laser == 'laser_co2':
+				record.number_controls = 6
+			else: 
+				record.number_controls = 0
+
+
+
+
 
 
 	# Owner 
@@ -104,7 +125,6 @@ class Procedure(models.Model):
 
 
 	# Redefinition 
-
 	evaluation_type = fields.Selection(
 			default = 'Ambulatory', 
 			)
@@ -113,6 +133,19 @@ class Procedure(models.Model):
 
 
 # ----------------------------------------------------------- Relational ------------------------------------------------------
+
+	session_ids = fields.One2many(
+
+			#'openhealth.session', 
+			'openhealth.session.med', 
+
+			'procedure', 
+
+			string = "sessiones", 
+			)
+
+
+
 
 
 	appointment_ids = fields.One2many(
@@ -150,13 +183,8 @@ class Procedure(models.Model):
 			string = "Controles", 
 			)
 			
+			
 
-	session_ids = fields.One2many(
-			'openhealth.session', 
-			'procedure', 
-
-			string = "sessiones", 
-			)
 
 
 
@@ -356,15 +384,50 @@ class Procedure(models.Model):
 
 
 
+# ----------------------------------------------------------- Keys  ------------------------------------------------------
+
+	key = fields.Char(
+			string='key', 
+
+			default='procedure', 
+		)
+
+
+	model = fields.Char(
+			string='model', 
+
+			default='openhealth.session.med', 
+		)
+
+
+	target = fields.Char(
+			string='target', 
+
+			default='doctor', 
+		)
+
+
 
 
 # ----------------------------------------------------------- Create Sessions  ------------------------------------------------------
 
-	#@api.multi
-	#def create_sessions(self): 
-	#	print 
-	#	print 'Create sessions'
+	@api.multi
+	def create_sessions(self): 
 
+		print 
+		print 
+		print 'jx'
+		print 'Create Sessions - Many'
+
+
+		model = 'openhealth.session.med'
+		ret = procedure_funcs.create_sessions_go(self, model)
+
+
+		print 
+		print 
+
+	# create_sessions
 
 
 
@@ -376,8 +439,10 @@ class Procedure(models.Model):
 # ----------------------------------------------------------- Create Session  ------------------------------------------------------
 
 	@api.multi
-	def create_session(self): 
+	#def create_session(self): 
+	def create_session_one(self): 
 
+		print 
 		print 
 		print 'Create session'
 
@@ -386,10 +451,7 @@ class Procedure(models.Model):
 		procedure_id = self.id 
 		patient_id = self.patient.id
 
-
 		doctor_id = self.doctor.id
-		therapist_id = self.therapist.id
-
 
 		chief_complaint = self.chief_complaint
 		evaluation_type = 'Session'
@@ -397,7 +459,7 @@ class Procedure(models.Model):
 
 
 		treatment_id = self.treatment.id
-		cosmetology_id = self.cosmetology.id
+		#cosmetology_id = self.cosmetology.id
 
 
 		laser = self.laser
@@ -406,9 +468,7 @@ class Procedure(models.Model):
 
 		# Date 		
 		GMT = time_funcs.Zone(0,False,'GMT')
-		print GMT
 		evaluation_start_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
-		print evaluation_start_date 
 
 
 
@@ -421,8 +481,24 @@ class Procedure(models.Model):
 																order='appointment_date desc', limit=1)
 
 		appointment_id = appointment.id
-		print appointment
-		print appointment_id
+
+
+		print 'procedure_id: ', procedure_id
+		print 'patient_id: ', patient_id
+		print 'doctor_id: ', doctor_id
+		print 'chief_complaint: ', chief_complaint
+		print 'evaluation_type: ', evaluation_type
+		print 'product_id: ', product_id
+		print 'treatment_id: ', treatment_id
+		print 'laser: ', laser
+
+		print 
+		print 'GMT: ', GMT
+		print 'evaluation_start_date: ', evaluation_start_date 
+		print 'appointment: ', appointment
+		print 'appointment_id: ', appointment_id
+		print 
+		print 
 
 
 
@@ -461,9 +537,11 @@ class Procedure(models.Model):
 			co2_mode_exposure = 'x'
 			co2_observations = 'x'
 
+
 		if laser != 'laser_excilite':
 			exc_dose = 'x'
 			exc_observations = 'x'
+
 
 		if laser != 'laser_ipl':
 			ipl_phototype = 'x'
@@ -475,6 +553,7 @@ class Procedure(models.Model):
 			ipl_spot = 'x'
 			ipl_observations = 'x'
 			ipl_pulse_type = 'one'
+
 
 		if laser != 'laser_ndyag':
 			ndy_phototype = 'x'
@@ -492,11 +571,15 @@ class Procedure(models.Model):
 
 		# session 
 		print 'create session'
+		print 
+		
+
 		#session = self.env['openhealth.session'].create(
 		session = self.env['openhealth.session.med'].create(
+		
+
 												{
 													'patient': patient_id,
-
 
 													'doctor': doctor_id,													
 													#'therapist': therapist_id,													
@@ -509,6 +592,17 @@ class Procedure(models.Model):
 													
 													'product': product_id,
 													'laser': laser,
+
+
+													'procedure': procedure_id,				
+													'appointment': appointment_id,
+
+													'treatment': treatment_id,				
+													#'cosmetology': cosmetology_id,				
+
+
+
+
 
 
 													'co2_mode_emission': co2_mode_emission, 
@@ -539,12 +633,6 @@ class Procedure(models.Model):
 
 
 
-													'procedure': procedure_id,				
-													'appointment': appointment_id,
-
-
-													'treatment': treatment_id,				
-													#'cosmetology': cosmetology_id,				
 												}
 											)
 		session_id = session.id 

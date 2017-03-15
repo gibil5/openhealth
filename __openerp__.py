@@ -96,8 +96,12 @@
 		# Orders
 		'views/orders/order.xml',
 		'views/orders/order_line.xml',
+
 		'views/orders/payment_methods.xml',
+		
 		'views/orders/events.xml',
+
+
 
 		# Sale Documents
 		'views/sale_documents/sale_documents.xml',
@@ -108,6 +112,7 @@
 		'views/sale_documents/sale_notes.xml',
 		'views/sale_documents/ticket_receipts.xml',
 		'views/sale_documents/ticket_invoices.xml',
+		
 		'views/sale_documents/payment_methods.xml',
 
 
@@ -118,10 +123,12 @@
 
 		# Sessions
 		'views/sessions/session.xml',
-		#'views/sessions/session_configuration.xml',
+		'views/sessions/session_configuration.xml',
 
 		'views/sessions/session_cos.xml',
+		'views/sessions/session_med.xml',
 
+		'views/sessions/session_measures.xml',
 
 
 
@@ -176,22 +183,33 @@
 		#'views/procedures/procedure_configuration.xml',
 
 		'views/procedures/procedure_cos.xml',
+		'views/procedures/procedure_cos_sessions.xml',		
+
+
 
 
 
 
 		# Consultation
 		'views/consultations/consultation.xml',
-		'views/consultations/consultation_first.xml',
-		'views/consultations/consultation_order.xml', 
+
+		'views/consultations/consultation_med.xml',
+		#'views/consultations/consultation_first.xml',
+		'views/consultations/consultation_med_first.xml',
+
+		#'views/consultations/consultation_order.xml',
 		#'views/consultations/consultation_appointment.xml',
-		'views/consultations/consultation_services_co2.xml',
-		'views/consultations/consultation_services_excilite.xml',
-		'views/consultations/consultation_services_ipl.xml',
-		'views/consultations/consultation_services_ndyag.xml',
-		'views/consultations/consultation_medical_treatment.xml',
+		#'views/consultations/consultation_services_co2.xml',
+		#'views/consultations/consultation_services_ipl.xml',
+		#'views/consultations/consultation_services_excilite.xml',
+		#'views/consultations/consultation_services_ndyag.xml',
+		#'views/consultations/consultation_medical_treatment.xml',
+
 
 		'views/consultations/consultation_cos.xml',
+		'views/consultations/consultation_cos_first.xml',
+
+
 
 
 
@@ -199,7 +217,11 @@
 		# Treatments 
 		'views/treatments/treatment.xml',
 		'views/treatments/treatment_consultations.xml',
+
+
 		'views/treatments/treatment_orders.xml',
+		
+
 		'views/treatments/treatment_procedures.xml',
 		'views/treatments/treatment_appointments.xml',
 		'views/treatments/treatment_reservations.xml',
@@ -217,14 +239,22 @@
 		'views/cosmetologies/cosmetology_orders.xml',
 		'views/cosmetologies/cosmetology_procedures.xml',
 		'views/cosmetologies/cosmetology_sessions.xml',
-
 		'views/cosmetologies/cosmetology_appointments.xml',
 		'views/cosmetologies/cosmetology_consultations.xml',
 
 
-		# Therapists 
-		'views/therapists/therapist.xml',
+		'views/cosmetologies/cosmetology_reservations.xml',
 
+
+
+
+		# Therapists 
+		#'views/therapists/therapist.xml',
+
+
+
+		# Physicians 
+		'views/physicians/physician.xml',
 
 
 

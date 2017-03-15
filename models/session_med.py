@@ -31,16 +31,9 @@ class SessionMed(models.Model):
 
 
 
-
-
-
-
-
-
 	#------------------------------------------------------ Session Med ----------------------------------------------------------
 
-
-	# Calibration - Co2
+	# Co2 - Calibration 
 
 	co2_power=fields.Float(
 			string="Potencia (W)",
@@ -79,36 +72,36 @@ class SessionMed(models.Model):
 
 	exc_time=fields.Float(
 			#string="Tiempo de tratamiento",
-			#required=True, 
+			required=False, 
 			)
 			
 	exc_dose=fields.Char(
 			string="Dosis",
 			#default="x",
-			#required=True, 
+			required=False, 
 			)
 			
 	exc_dose_selected=fields.Float(
 			#string="Seleccionado (J/cm2)",
-			#required=True, 
+			required=False, 
 			)
 
 	exc_dose_provided=fields.Float(
 			#string="Entregado (J/cm2)",
-			#required=True, 
+			required=False, 
 			)
 
 	exc_observations=fields.Text(
 			string="Observaciones",
 			#default="x",
-			#required=True, 
+			required=False, 
 			)
 
 
 
 
 
-	# Calibration - Ipl
+	# Ipl - Calibration 
 
 	ipl_fluency=fields.Float(
 			string="Fluencia (J/cm2)",
@@ -116,55 +109,55 @@ class SessionMed(models.Model):
 			
 	ipl_phototype=fields.Char(
 			string="Fototipo",
-			#required=True, 
+			required=False, 
 			)
 			
 	ipl_lesion_type=fields.Char(
 			string="Tipo de lesión",
-			#required=True, 
+			required=False, 
 			)
 	
 	ipl_lesion_depth=fields.Char(
 			string="Profundidad de lesión",
-			#required=True, 
+			required=False, 
 			)
 			
 	ipl_pulse_type=fields.Selection(
 			selection=jxvars._ipl_pulse_type,
 			string="Tipo de pulso",
-			#required=True, 
+			required=False, 
 			)
 			
 	ipl_pulse_duration=fields.Char(
 			string="Duración de pulso",
-			#required=True, 
+			required=False, 
 			)
 			
 	ipl_pulse_time_between=fields.Char(
 			string="Tiempo entre pulsos",
-			#required=True, 
+			required=False, 
 			)
 			
 	ipl_filter=fields.Char(
 			string="Filtro",
-			#required=True, 
+			required=False, 
 			)
 			
 	ipl_spot=fields.Char(
 			string="Spot",
-			#required=True, 
+			required=False, 
 			)
 			
 	ipl_observations=fields.Text(
 			string="Observaciones",
-			#required=True, 
+			required=False, 
 			)
 
 	
 
 
 	
-	# Calibration - Ndyag
+	# Ndyag - Calibration 
 
 	ndy_fluency=fields.Float(
 			string="Fluencia (J/cm2)",

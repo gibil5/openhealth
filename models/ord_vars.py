@@ -2,6 +2,50 @@
 
 
 
+_state_list = [
+
+        			#('pre-draft', 'Pre-Quotation'),
+
+        			#('draft', 'Quotation'),
+        			#('sent', 'Quotation Sent'),
+        			#('sale', 'Sale Order'),
+        			#('done', 'Done'),
+        			#('cancel', 'Cancelled'),
+					#('pre-draft', 	'Presupuesto consulta'),
+
+
+        			#('draft', 		'Presupuesto'),
+        			#('sent', 		'Presupuesto enviado'),
+        			#('sale', 		'Facturado'),
+        			#('done', 		'Completo'),
+        			#('cancel', 	'Cancelado'),
+
+
+
+        			#(False, 			'False'),
+
+
+        			('draft', 			'Presupuesto'),
+
+
+        			('payment', 		'Pagado'),
+
+        			('proof', 			'Comprobante'),
+
+        			('machine', 		'Reserva de sala'),
+        			
+        			#('confirmed', 		'Confirmado'),
+
+        			('sale', 			'Confirmado'),
+
+
+        			('invoice', 		'Facturado'),
+
+        		]
+
+
+
+
 _payment_method_list = [
 
 		#('none','Ninguno'), 

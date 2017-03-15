@@ -4,7 +4,7 @@
 #
 
 # Created: 				14 Nov 2016
-# Last updated: 	 	 7 Dec 2016 
+# Last updated: 	 	 7 Mar 2017
 
 
 
@@ -46,6 +46,57 @@ class Appointment(models.Model):
 			readonly=True
 			)
 
+
+
+
+	x_target = fields.Selection(
+			string="Target", 
+			selection = app_vars._target_list, 
+			index=True,
+			required=True, 
+		)
+
+
+
+
+
+	#@api.multi 
+	#def get_x_target(self):
+	#	return self.x_target
+
+
+	#x_target = 'therapist'
+
+	#x_target = get_x_target
+	#x_target = self.x_target
+
+
+
+
+	#@api.multi
+	#def _compute_x_type(self):
+	#	for record in self:
+	#		record.x_type = record.x_target
+
+
+
+
+
+	# Doctor 
+	doctor = fields.Many2one(
+			'oeh.medical.physician',			
+			string = "Médico", 	
+			#default=defaults._doctor,
+			required=True, 
+			#required=False, 
+			readonly = False, 
+			
+
+			#domain = [						
+						#('x_type', '=', 'therapist'),
+						#('x_type', '=', _compute_x_type ),
+			#		],
+			)
 
 
 
@@ -146,8 +197,6 @@ class Appointment(models.Model):
 
 						'pre_scheduled_control':	'3',
 
-
-
 						'error':					'55',
 					}
 
@@ -237,14 +286,6 @@ class Appointment(models.Model):
 
 
 
-	x_target = fields.Selection(
-			string="Target", 
-
-			#selection = jxvars._target_list, 
-			selection = app_vars._target_list, 
-
-			index=True,
-		)
 
 
 
@@ -485,42 +526,11 @@ class Appointment(models.Model):
 
 
 
-							#'Eulalia':		'EU',
+							# Cosmetology 
+							'Eulalia':		'EU',
+							'Eulalia 2':	'EU2',
+							'Eulalia 3':	'EU3',							
 		}
-
-
-
-
-
-	# Doctor def 
-
-	doctor = fields.Many2one(
-			'oeh.medical.physician',
-			
-			string = "Médico", 	
-
-			#default=defaults._doctor,
-			#required=True, 
-			required=False, 
-			readonly = False, 
-			)
-
-
-
-
-
-
-#	x_therapist = fields.Many2one(
-#			'openhealth.therapist',
-#			string = "Cosmeatra", 	
-#			default=defaults._therapist,
-			#required=True, 
-#			required=False, 
-#			readonly = False, 
-#			)
-
-
-
 
 
 
@@ -660,9 +670,10 @@ class Appointment(models.Model):
 			# Check for collisions
 			ret = 0 
 
-			#ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, False)
+
 			#ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, False, 'doctor')
 			ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, False, 'doctor', self.x_type)
+
 
 			print ret 
 
@@ -693,6 +704,7 @@ class Appointment(models.Model):
 		print 
 
 	# _onchange_doctor
+
 
 
 
@@ -1090,6 +1102,7 @@ class Appointment(models.Model):
 
 
 
+
 	# ----------------------------------------------------------- On Change - Patient Doctor ------------------------------------------------------
 
 	@api.onchange('patient','doctor')
@@ -1100,8 +1113,12 @@ class Appointment(models.Model):
 		print 'On Change PD'
 
 		if self.patient != False and self.doctor != False:
+			
+
+
+			if self.x_target == 'doctor': 	
 				
-			treatment = self.env['openhealth.treatment'].search([
+				treatment = self.env['openhealth.treatment'].search([
 																				('patient', 'like', self.patient.name),
 																				
 																				('physician', 'like', self.doctor.name),
@@ -1110,11 +1127,28 @@ class Appointment(models.Model):
 																				order='start_date desc',
 																				limit=1,
 																			)
-			self.treatment = treatment
-			#self.treatment.id = treatment.id
-			print 'jx'
+				self.treatment = treatment
 
 
+
+			else: 
+
+				cosmetology = self.env['openhealth.cosmetology'].search([
+																				('patient', 'like', self.patient.name),
+																				
+																				('physician', 'like', self.doctor.name),
+																			
+																			],
+																				order='start_date desc',
+																				limit=1,
+																			)
+				self.cosmetology = cosmetology
+			
+
+
+			print 
+
+	# _onchange_patient_doctor
 
 
 
@@ -1144,14 +1178,6 @@ class Appointment(models.Model):
 
 
 
-#	cosmetology = fields.Many2one(
-#			'openhealth.cosmetology',
-#			string="Cosmiatría",
-#			ondelete='cascade', 
-
-#			required=False, 
-			#required=True, 
-#			)
 
 
 
@@ -1165,13 +1191,10 @@ class Appointment(models.Model):
 
 
 	#@api.multi
-	@api.depends('patient', 'doctor')
-
-	def _compute_treatment(self):
-		for record in self:
-
-			if record.patient != False and record.doctor != False:
-				
+	#@api.depends('patient', 'doctor')
+	#def _compute_treatment(self):
+	#	for record in self:
+	#		if record.patient != False and record.doctor != False:
 				#treatment = self.env['openhealth.treatment'].search([
 				#																('patient', 'like', self.patient.name),
 				#																('doctor', 'like', self.doctor.name),
@@ -1181,7 +1204,7 @@ class Appointment(models.Model):
 				#															)
 				#record.treatment = treatment
 				#record.treatment.id = 3
-				print 'jx'
+	#			print 'jx'
 
 
 
@@ -1199,8 +1222,8 @@ class Appointment(models.Model):
 
 	# Here 
 	procedure = fields.Many2one('openhealth.procedure',
-		#string="Procedimiento",
-		string="Proc.",
+		string="Procedimiento",
+		#string="Proc.",
 		ondelete='cascade', 
 	)
 
@@ -1489,6 +1512,15 @@ class Appointment(models.Model):
 			print "treatment: ", treatment
 
 
+
+		# Cosmetology 
+		if 'cosmetology' in vals:
+			cosmetology = vals['cosmetology']
+			print "cosmetology: ", cosmetology
+
+
+
+
 		x_create_procedure_automatic = vals['x_create_procedure_automatic']
 		#x_chief_complaint = vals['x_chief_complaint']
 
@@ -1506,6 +1538,8 @@ class Appointment(models.Model):
 
 
 
+
+
 		# Create Procedure 
 		if x_type == 'consultation'  and  x_create_procedure_automatic:
 
@@ -1513,11 +1547,11 @@ class Appointment(models.Model):
 
 			# Consultation 
 			date_format = "%Y-%m-%d %H:%M:%S"
+
 			adate_con = datetime.datetime.strptime(appointment_date, date_format)
 
 			delta_fix = datetime.timedelta(hours=1.5)
 			
-			#adate_base = datetime.datetime.strptime(appointment_date, date_format) + delta_fix
 			adate_base = adate_con + delta_fix
 
 
@@ -1528,8 +1562,12 @@ class Appointment(models.Model):
 
 
 			#app = appfuncs.create_app_procedure(self, adate_base, doctor, patient, treatment, x_create_procedure_automatic, False)
-			app = appfuncs.create_app_procedure(self, adate_base, doctor, patient, treatment, x_create_procedure_automatic, False)
+			#app = appfuncs.create_app_procedure(self, adate_base, doctor, patient, treatment, x_create_procedure_automatic)
+			#app = appfuncs.create_appointment_procedure(self, adate_base, doctor, patient, treatment, x_create_procedure_automatic)
+			app = appfuncs.create_appointment_procedure(self, adate_base, doctor, patient, treatment, cosmetology, x_create_procedure_automatic)
 			#print app 
+
+
 
 
 
@@ -1545,77 +1583,6 @@ class Appointment(models.Model):
 
 
 # CRUD
-
-
-
-
-
-
-
-
-# ----------------------------------------------------------- Search Machine Button ------------------------------------------------------
-
-	@api.multi
-
-	def search_machine_button(self):
-
-		print 
-		#x_machine = appfuncs.search_machine(self, ad_pro_str, doctor_name, duration)
-		#adate_base = self.appointment_date
-		date_format = "%Y-%m-%d %H:%M:%S"
-		adate_con = datetime.datetime.strptime(self.appointment_date, date_format)
-		delta_fix = datetime.timedelta(hours=0)			
-		#adate_base = datetime.datetime.strptime(appointment_date, date_format) + delta_fix
-		adate_base = adate_con + delta_fix
-
-
-
-
-
-		# Unlink Old 
-		rec_set = self.env['oeh.medical.appointment'].search([
-																('appointment_date', 'like', self.appointment_date), 
-																('doctor', '=', self.doctor.name), 
-
-																('patient', '=', self.patient.name), 
-
-																#('x_machine', '=', self.x_machine),
-																('x_target', '=', 'machine'), 
-
-															])
-		ret = rec_set.unlink()
-		print "ret: ", ret
-
-
-
-
-
-		# Create Proc 
-		doctor_id = self.doctor.id
-		patient_id = self.patient.id
-		treatment_id = self.treatment.id
-		x_create_procedure_automatic = True
-
-		flag_machine = True 
-		
-		
-		#app = appfuncs.create_app_procedure(self, appointment_date, doctor_id, patient_id, treatment_id, x_create_procedure_automatic, flag_machine)
-		app = appfuncs.create_app_procedure(self, adate_base, doctor_id, patient_id, treatment_id, x_create_procedure_automatic, flag_machine)
-
-
-
-
-
-
-
-
-
-
-		self.appointment_date = app.appointment_date
-		self.x_machine = app.x_machine
-
-		print app
-
 
 
 

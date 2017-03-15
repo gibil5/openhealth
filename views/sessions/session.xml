@@ -158,22 +158,41 @@
 		
 		
 		<!-- Tree --> 
-		<record model="ir.ui.view" id="session_tree_view">
-			<field name="name">session.tree</field>
+		<!-- Not used ? --> 
+		<record model="ir.ui.view" id="session_med_tree_view">
+
+			<field name="name">session.med.tree</field>
+
+<!--			
 			<field name="model">openhealth.session</field>
+-->
+			<field name="model">openhealth.session.med</field>
+
+
 			<field name="arch" type="xml">
 				
 				<tree string="session Tree">
 					
+
+
 					<field name="name"/>
 					
+					<field name="appointment"/>
+
+
+
+
 					<field name="patient"  string="Paciente"/>
 					
 					<field name="doctor"   string="Médico"/>
 					
+
+
 					<field name="chief_complaint"/>
 
 					<field name="product"/>
+
+
 
 					<field name="evaluation_start_date"/>
 
@@ -208,6 +227,7 @@
 		
 		
 		
+
 		<!-- Filter --> 
         <record id="view_medical_session_filter" model="ir.ui.view">
            <field name="name">session Search</field>

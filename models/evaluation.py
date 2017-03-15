@@ -85,39 +85,46 @@ class Evaluation(models.Model):
 
 
 
+
+	#patient_id = fields.Integer(
+	#		default=3025, 
+	#)
+
+
+
+
+
+
 	patient = fields.Many2one(
 			'oeh.medical.patient',
+
 			string = "Paciente", 	
+			
 			required=True, 
 	)
-
-	patient_id = fields.Integer(
-			default=3025, 
-	)
-
-
-
-
-
-
 
 
 	doctor = fields.Many2one(
 			'oeh.medical.physician',
+
 			string = "Médico", 	
+			
 			#required=True, 
 			required=False, 
 			)
 
-	therapist = fields.Many2one(
-			'openhealth.therapist',
+
+
+
+	#therapist = fields.Many2one(
+	#		'openhealth.therapist',
 
 			#string = "Terapeuta", 	
-			string = "Cosmeatra", 	
+	#		string = "Cosmeatra", 	
 
 			#required=True, 
-			required=False, 
-			)
+	#		required=False, 
+	#		)
 
 
 
@@ -135,6 +142,7 @@ class Evaluation(models.Model):
 
 
 
+
 	chief_complaint = fields.Selection(
 			string = 'Motivo de consulta', 
 
@@ -143,6 +151,8 @@ class Evaluation(models.Model):
 
 			required=True, 
 			)
+
+
 
 
 	evaluation_type = fields.Selection(

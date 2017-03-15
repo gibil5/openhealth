@@ -14,31 +14,14 @@ def check_for_collisions(self, appointment_date, doctor_name, duration, x_machin
 
 
 
-		print 
-		print 'jx'
-		print 'Check for collision'
-
-		print appointment_date, doctor_name, duration, x_machine
-		print 
-
-		dt = appointment_date[2:10]
-		#print dt
+		#print 
+		#print 'jx'
+		#print 'Check for collision'
+		#print appointment_date, doctor_name, duration, x_machine
 		#print 
 
 
-
-		# Search for the rec set
-		#if x_machine == False:
-		#	app_ids = self.env['oeh.medical.appointment'].search([
-		#															('doctor', '=', doctor_name), 
-		#															('appointment_date', 'like', dt), 
-		#															('x_machine', '=', x_machine),
-		#														])
-		#else:
-		#	app_ids = self.env['oeh.medical.appointment'].search([
-		#															('appointment_date', 'like', dt), 
-		#															('x_machine', '=', x_machine)  
-		#														])
+		dt = appointment_date[2:10]
 
 
 
@@ -86,27 +69,21 @@ def check_for_collisions(self, appointment_date, doctor_name, duration, x_machin
 
 
 
-		print 'app_ids'
+		#print 'app_ids'
+		#print app_ids 
+		#for app in app_ids:
+			#print app.name
+		#print
+		#print 
 
-		print app_ids 
-
-
-		for app in app_ids:
-			print app.name
-		print
-		print 
 
 
 
 		# Appointment end 
 		date_format = "%Y-%m-%d %H:%M:%S"
-
 		delta = datetime.timedelta(hours=duration)
-
 		sd = datetime.datetime.strptime(appointment_date, date_format)
-		
 		ae_dt = delta + sd
-
 		ae = ae_dt.strftime("%Y-%m-%d %H:%M:%S")
 
 
@@ -122,10 +99,11 @@ def check_for_collisions(self, appointment_date, doctor_name, duration, x_machin
 
 		for app in app_ids:
 
-			print app
+
+			#print app
+
 
 			start = app.appointment_date
-
 			end = app.appointment_end
 
 
@@ -188,21 +166,18 @@ def check_for_collisions(self, appointment_date, doctor_name, duration, x_machin
 
 @api.multi
 
-#def create_app_procedure(self, appointment_date, doctor_id, patient_id, treatment_id, x_create_procedure_automatic, flag_machine):
-def create_app_procedure(self, adate_base, doctor_id, patient_id, treatment_id, x_create_procedure_automatic, flag_machine):
+#def create_app_procedure(self, adate_base, doctor_id, patient_id, treatment_id, x_create_procedure_automatic, flag_machine):
+#def create_app_procedure(self, adate_base, doctor_id, patient_id, treatment_id, x_create_procedure_automatic):
+#def create_appointment_procedure(self, adate_base, doctor_id, patient_id, treatment_id, x_create_procedure_automatic):
+def create_appointment_procedure(self, adate_base, doctor_id, patient_id, treatment_id, cosmetology_id, x_create_procedure_automatic):
+
+
+		#flag_machine = False 
+
 
 
 		print 
-		print 'create app procedure'
-
-
-
-
-		# Consultation 
-		#date_format = "%Y-%m-%d %H:%M:%S"
-		#adate_con = datetime.datetime.strptime(appointment_date, date_format)
-		#delta_fix = datetime.timedelta(hours=1.5)
-		#adate_base = adate_con + delta_fix
+		print 'Create App Procedure'
 
 
 
@@ -211,6 +186,15 @@ def create_app_procedure(self, adate_base, doctor_id, patient_id, treatment_id, 
 		# Doctor 
 		doctor = self.env['oeh.medical.physician'].search([('id', '=', doctor_id)])
 		doctor_name = doctor.name
+
+		# Target
+		if doctor.x_therapist:
+			x_target = 'therapist'
+		else:
+			x_target = 'doctor'
+
+
+
 
 		k = 0
 		duration = 0.5 
@@ -236,7 +220,6 @@ def create_app_procedure(self, adate_base, doctor_id, patient_id, treatment_id, 
 
 
 			# Procedure 
-			#adate_pro = adate_con + delta_fix + k*delta_var
 			adate_pro = adate_base + k * delta_var
 
 			adate_pro_str = adate_pro.strftime("%Y-%m-%d %H:%M:%S")
@@ -245,100 +228,49 @@ def create_app_procedure(self, adate_base, doctor_id, patient_id, treatment_id, 
 
 
 			# Check for collisions 
-			#ret, doctor_name, start, end = check_for_collisions(self, adate_pro_str, doctor_name, duration, False)
 			#ret, doctor_name, start, end = check_for_collisions(self, adate_pro_str, doctor_name, duration, False, 'doctor')
 			ret, doctor_name, start, end = check_for_collisions(self, adate_pro_str, doctor_name, duration, False, 'doctor', 'procedure')
 
 
 
-			if ret == 0: 	# Success - No Collisions
+
+
+			if ret == 0: 					# Success - No Collisions
 			
 				print 'CRUD: Create !!!'
 
 
 
-				# Create machine 
-				x_machine = 'jx'
 
-				if flag_machine:
-
-
-					#start_machine = False 
-					start_machine = self.x_machine
-
-
-
-					#x_machine = search_machine(self, adate_pro_str, doctor_name, duration)
-					x_machine = search_machine(self, adate_pro_str, doctor_name, duration, start_machine)
-
-
-
-				if x_machine != False:
-
-
-					if flag_machine:
-						# Create Appointment - Machine 
-						app = self.env['oeh.medical.appointment'].create(
+				# Create Appointment - Doctor  
+				app = self.env['oeh.medical.appointment'].create(
 																	{
 																		'appointment_date': adate_pro_str,
 
 																		'doctor': 		doctor_id,
 																		'patient': 		patient_id,	
-																		'treatment': 	treatment_id, 
-
-																		'duration': 	duration,
-																		'x_type': 		'procedure',
-																		'x_create_procedure_automatic': False, 
-
-																		'x_machine': 	x_machine,
-							                    						'x_target': 	'machine',
-																	}
-																)
-
-						
-
-					else:
-						# Create Appointment - Doctor  
-						app = self.env['oeh.medical.appointment'].create(
-																	{
-																		'appointment_date': adate_pro_str,
-
-																		'doctor': 		doctor_id,
-																		'patient': 		patient_id,	
-																		'treatment': 	treatment_id, 
-
 																		'duration': 	duration,
 																		'x_type':		'procedure',
 																		'x_create_procedure_automatic': x_create_procedure_automatic,
-
 																		'state':		'pre_scheduled',
-
-							                    						'x_target': 	'doctor',
-
 																		#'x_chief_complaint': x_chief_complaint, 
+
+
+							                    						'x_target': 	x_target,
+
+																		'treatment': 	treatment_id, 
+																		'cosmetology': 	cosmetology_id, 
 
 															}
 													)
 
 
-				else:
-					k = k + 1 	# Collision
-					ret = 1
-
 
 			
-			else:			# Collision 
+			else:							# Collision - Change appointment time 
 				k = k + 1
 
 
-		
-			#if ret != 0:
-			
-			#			return {
-			#						'warning': {
-			#							'title': "Error: Colisión !",
-			#							'message': 'Cita ya existente, con el ' + doctor_name + ": " + start + ' - ' + end + '.',
-			#					}}
 
 
 		print 
@@ -349,16 +281,5 @@ def create_app_procedure(self, adate_base, doctor_id, patient_id, treatment_id, 
 		return app 
 
 # create_app_procedure
-
-
-
-
-
-
-
-
-
-
-
 
 

@@ -27,12 +27,14 @@ def create_procedure_go(self):
 
 
 	cosmetology = self.id
-
 	patient = self.patient.id
-
-	therapist = self.therapist.id
-
 	chief_complaint = self.chief_complaint
+
+
+
+	#therapist = self.therapist.id
+	doctor = self.physician.id
+
 
 
 
@@ -45,8 +47,10 @@ def create_procedure_go(self):
 	appointment = self.env['oeh.medical.appointment'].search([ 	
 															('patient', 'like', self.patient.name),	
 
-															#('doctor', 'like', self.physician.name), 	
-															('x_therapist', 'like', self.therapist.name), 	
+
+															#('x_therapist', 'like', self.therapist.name), 	
+															('doctor', 'like', self.physician.name), 	
+
 															
 															('x_type', 'like', 'procedure'), 
 														], 
@@ -73,9 +77,12 @@ def create_procedure_go(self):
 
 
 
-	for line in self.sale_ids.order_line:
-					
-		if self.nr_procedures < self.sale_ids.nr_lines:
+	#for line in self.sale_ids.order_line:
+	for line in self.order_ids.order_line:
+	
+
+		#if self.nr_procedures < self.sale_ids.nr_lines:
+		if self.nr_procedures < self.order_ids.nr_lines:
 
 			product = line.product_id.id
 			
@@ -86,10 +93,13 @@ def create_procedure_go(self):
 
 														'patient':patient,
 
-														#'doctor':doctor,
 
-														'therapist':therapist,
+
+														#'therapist':therapist,
+														'doctor':doctor,
 														
+
+
 														#'treatment':treatment,		
 														
 														'cosmetology':cosmetology,		

@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+		<!--
+		measures
+		-->
+		<record model="ir.ui.view" id="session_measures_form_view">
+
+			<field name="name">session.measures.form</field>
+
+
+<!--
+			<field name="model">openhealth.session</field>
+			<field name="model">openhealth.session.med</field>
+-->
+			<field name="model">openhealth.session.cos</field>
+
+
+
+			<field name="priority" eval="1"/>
+			
+
+			<field name="inherit_id" ref="session_cos_form_view"/>
+			
+
+			<field name="arch" type="xml">
+				<notebook position="inside">
+					
+					
+
+					<page string="Control de medidas"  		>
+
+						<!-- Body -->
+						<group string="Cuerpo"  >
+							<group>
+
+								<field name="navel"				required="1"/>
+
+								<field name="vspace"/>								
+								
+								<field name="abdomen_low"			required="1"/>
+								
+								<field name="vspace"/>
+								
+								<field name="abdomen_high"			required="1"/>
+								
+								<field name="vspace"/>
+
+							</group>
+						</group>
+					</page>
+
+
+
+					<page string="Valores empleados"  		>
+
+						<!-- Body -->
+						<group string=""  >
+							<group>
+
+								<field name="config_volume"				required="1"/>
+
+								<field name="vspace"/>								
+								
+								<field name="config_time"			required="1"/>
+								
+								<field name="vspace"/>
+								
+
+							</group>
+						</group>
+					</page>
+
+
+
+
+
+
+
+
+				</notebook>
+			</field>
+		</record>
+	</data>
+</openerp>

@@ -16,6 +16,9 @@ from openerp import models, fields, api
 class Therapist(models.Model):
 	
 	#_inherit = 'openhealth.process'	
+	
+	#_inherit = 'oeh.medical.physician'	
+	
 	_name = 'openhealth.therapist'
 	
 

@@ -10,24 +10,18 @@
 			<field name="name">order.payment_method.form</field>
 			<field name="model">sale.order</field>
 			
-
 			<field name="priority" eval="-10"/>
 			
-
 			<field name="inherit_id" ref="sale.view_order_form"/>
 			<field name="arch" type="xml">
 
 
 
+
+
 				<notebook position="inside">
 					
-
-
-							<!--
-								 payment_methods
-							-->
-
-							<page string="Formas de Pago">
+							<page string="Pagos">
 
 
 
@@ -78,6 +72,7 @@
 								<group></group>
 								<group>
 									<field  name="pm_total"/>
+
 									<field  name="nr_saledocs"		invisible="1"	/>
 									<field  name="pm_complete"		invisible="1"	/>
 								</group>

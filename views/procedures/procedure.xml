@@ -35,23 +35,40 @@
 
 							string="Crear Sesiones"
 
-							name="create_session" 	
+							name="create_sessions" 	
 						/>
-
-						<!--
-							name="open_control" 	
-						-->
 
 
 
 						<button 
 							type="object" 
 							class="oe_highlight"
+
+							string="Sesión"
+
+							name="create_session_one" 	
+						/>
+
+
+
+
+
+						<!--
+							name="open_control" 
+
+							attrs="{'invisible':[(	'cosmetology', '!=', False 	)]}"
+							attrs="{'invisible':[(	'target', '!=', 'doctor' 	)]}"
+						-->
+
+						<button 
+							type="object" 
+							class="oe_highlight"
 							string="Controles"
 
-							name="create_controls" 
 
 							attrs="{'invisible':[('laser', '!=', 'laser_co2')]}"
+
+							name="create_controls" 
 						/>
 
 
@@ -236,6 +253,9 @@
 								<!--
 								<field name="laser"/>
 								-->
+								<field name="number_controls"/>								
+
+								<field name="vspace"/>
 								<field name="product"/>
 
 

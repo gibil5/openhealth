@@ -9,31 +9,26 @@
 			
 			<field name="inherit_id" ref="treatment_form_view"/>
 			<field name="arch" type="xml">
-				<notebook position="inside">
-					
-
-					<page string="Caja">
 
 
+				<notebook>
+					<page string="Presupuesto"   		 >
+						<field name="order_ids"/>
+					</page>
+				</notebook>
 
+<!--
 						<notebook>
-
 							<page string="Presupuesto"   		 >
 								<field name="quotation_ids"/>
 							</page>
-
-
 							<page string="FACTURADO"   		 >
 								<field name="sale_ids"/>
 							</page>
-
-
 						</notebook>
+-->
 
-						
 
-					</page>
-				</notebook>
 			</field>
 		</record>
 	</data>

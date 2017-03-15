@@ -29,7 +29,9 @@ from . import evaluation
 from . import process 
 from . import treatment 
 from . import cosmetology
-from . import therapist 
+#from . import therapist 
+
+from . import physician 
 
 
 
@@ -40,9 +42,10 @@ from . import consultation_cos
 from . import procedure
 from . import procedure_cos
 
+
 from . import session 
 from . import session_cos
-#from . import session_med
+from . import session_med
 
 from . import control
 

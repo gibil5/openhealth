@@ -11,7 +11,6 @@
 			<field name="model">openhealth.session.cos</field>
 
 			<field name="inherit_id" ref="session_form_view"/>
-
 	        <field name="mode">primary</field>
 			<field name="arch" type="xml">				
 
@@ -23,17 +22,9 @@
 
 				<!-- Title --> 
 				<xpath expr="//h1" position="replace">
-
 					<h1>Sesión - Cos</h1>					
-        		
         		</xpath>
 
-
-
-        		<!-- Therapist --> 
-				<xpath expr="//field[@name='doctor']" position="replace">
-					<field name="therapist"	/>
-				</xpath>
 
 
 
@@ -41,6 +32,21 @@
 				<xpath expr="//field[@name='treatment']" position="replace">
 					<field name="cosmetology"	/>
 				</xpath>
+
+
+
+
+        		<!-- Comments --> 
+				<xpath expr="//field[@name='product']" position="after">
+
+					<field name="comments"	/>
+
+					<field name="vspace"/>								
+					<field name="procedure_applied"	/>
+				
+				</xpath>
+
+
 
 
 
@@ -66,23 +72,18 @@
 					<field name="patient"  string="Paciente"/>
 					
 
-					<!--
-					<field name="doctor"   string="Médico"/>
-					-->
-					<field name="therapist"   />
+
+					<field name="doctor"   />
 
 
 
 					<field name="chief_complaint"/>
 
-
 					<field name="product"/>
 
 					<field name="evaluation_start_date"/>
-
 					
 					<field name="x_done"/>
-
 
 
 					<!-- Quick Button -->

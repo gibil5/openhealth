@@ -24,6 +24,9 @@
 					<page string="Sesiones">
 
 
+						<field name="session_ids"/>
+
+
 						<!--
 						<field name="session_ids">
 							<tree string="">	
@@ -45,7 +48,6 @@
 							</tree>
 						</field>				
 						-->
-						<field name="session_ids"/>
 
 						
 

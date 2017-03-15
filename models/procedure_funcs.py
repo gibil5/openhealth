@@ -3,20 +3,391 @@
 from openerp import models, fields, api
 
 #from datetime import datetime,tzinfo,timedelta
-import datetime
-
-
-import time_funcs
 
 import jrfuncs
-
 import appfuncs
 
 
 
-#------------------------------------------------ Buttons ---------------------------------------------------
+#import datetime
+from datetime import datetime
 
-# Create control 
+import time_funcs
+
+
+import procedure_funcs_cos
+
+
+
+
+#------------------------------------------------ Create - Sessions ---------------------------------------------------
+
+@api.multi
+
+#def create_sessions_go(self):
+def create_sessions_go(self, model):
+
+
+		print 
+		print 
+		print 'Create Sessions - Go'
+		print 
+
+
+
+# Initial conditions 
+		print 'Initial conditions'
+
+		procedure_id = self.id 
+
+		patient_id = self.patient.id		
+		
+		chief_complaint = self.chief_complaint
+		
+
+
+		evaluation_type = 'Session'
+		
+		product_id = self.product.id
+		
+		treatment_id = self.treatment.id
+		
+		cosmetology_id = self.cosmetology.id
+		
+
+
+		laser = self.laser
+		
+
+
+		#therapist_id = self.therapist.id
+		doctor_id = self.doctor.id
+
+
+
+		duration = 0.5
+
+		x_type = 'session'
+		
+		state = 'pre_scheduled'
+		
+		x_create_procedure_automatic = False 
+
+
+
+
+		#machine = self.machine_cos
+		machine = self.machine
+
+
+
+		#therapist_name = self.therapist.name 
+		doctor_name = self.doctor.name 
+
+
+
+		
+		# Date 		
+		GMT = time_funcs.Zone(0,False,'GMT')
+		evaluation_start_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
+		app_date = datetime.now(GMT).strftime("%Y-%m-%d ")
+
+
+
+		#date_format = "%Y-%m-%d %H:%M:%S"
+		#app_date = datetime.strptime(self.evaluation_start_date, date_format).strftime("%Y-%m-%d ")
+		#app_date = self.evaluation_start_date
+
+
+		print GMT
+		print evaluation_start_date 
+		print app_date
+		print 
+		print 
+		
+
+
+
+
+
+
+
+
+
+
+# Clean Appointments 
+		#print 
+		#print 'Clean Appointments'
+
+		#rec_set = self.env['oeh.medical.appointment'].search([
+																#('procedure', '=', self.id), 	
+																#('procedure_cos', '=', self.id), 
+		#														(self.key, '=', self.id), 
+		#													])
+		#ret = rec_set.unlink()
+		#print "ret: ", ret
+
+
+
+
+# Clean Sessions 
+		print 
+		print 'Clean Sessions'
+
+		#rec_set = self.env['openhealth.session.cos'].search([
+		#rec_set = self.env[self.model].search([
+		rec_set = self.env[model].search([
+																('procedure', '=', self.id), 
+															])
+		ret = rec_set.unlink()
+		print "ret: ", ret
+
+
+
+
+
+
+
+# Loop 
+		# Date dictionary - Number of days for controls 
+		k_dic = {
+					#0 :	0,
+					#1 :	7,
+					#2 :	15,
+					#3 :	21,
+					#3 :	30,
+					#4 :	60,
+					#5 :	120,
+
+					0 :	0,
+					1 :	1,
+					2 :	2,
+					3 :	3,
+					4 :	4,
+					5 :	5,
+
+					6 :	6,
+					7 :	7,
+					8 :	8,
+					9 :	9,
+					10 :	10,
+					11 :	11,
+				}
+
+
+
+
+		print 
+		print 'Loop'
+
+
+
+		#for k in range(0,1): 
+		#for k in range(0,2): 
+		#for k in range(0,6): 
+		for k in range(0,self.number_sessions): 
+
+
+
+			print k
+
+
+			delta = 0 
+			nr_days = k_dic[k] + delta 
+
+
+
+
+
+			# session date 
+			#session_date = procedure_funcs.get_control_date(self, evaluation_start_date, nr_days)
+			session_date = get_control_date(self, evaluation_start_date, nr_days)
+
+
+			session_date_str = session_date.strftime("%Y-%m-%d")		
+			
+
+
+
+
+
+			# First - Today - The app already exists !  
+			if k == 0:
+				
+				appointment_date = session_date_str + ' '
+				print 'appointment_date: ', appointment_date
+
+
+
+				# Search Appointment 
+				appointment = self.env['oeh.medical.appointment'].search([ 	
+																			('appointment_date', 'like', app_date),	
+
+																			('patient', 'like', self.patient.name),	
+																			
+																			('x_type', 'like', 'procedure'), 
+
+																			('doctor', 'like', self.doctor.name), 																				
+																		], 
+																			order='appointment_date desc', limit=1)
+
+				print appointment
+
+
+
+
+			#if appointment == False: 
+
+			else: 	# Create Appointment 
+				print 
+				print 'Create Appointment'
+
+
+	
+				#appointment_date = session_date_str
+				#appointment_date_str = session_date_str + ' 14:0:0'
+				appointment_date_str = session_date_str + ' 15:0:0'
+
+
+
+
+				# Check and push 
+				#appointment_date_str = procedure_funcs_cos.check_and_push(self, appointment_date_str, duration, x_type, therapist_name, machine)
+				appointment_date_str = procedure_funcs_cos.check_and_push(self, appointment_date_str, duration, x_type, doctor_name, machine)
+
+
+
+
+
+				print 'appointment_date: ', appointment_date
+
+				appointment = self.env['oeh.medical.appointment'].create({
+																		'appointment_date': appointment_date_str,
+																		'duration': duration,
+																		'x_type': x_type,
+																		'state': state,
+																		'patient': patient_id,	
+																		'doctor': doctor_id,
+																		'x_create_procedure_automatic': x_create_procedure_automatic,
+																		'x_machine': machine,
+
+																		#'x_chief_complaint': chief_complaint, 
+																		
+
+
+																		'treatment': treatment_id, 
+																		'cosmetology': cosmetology_id, 
+																		
+																		#'x_target': 'therapist',
+																		'x_target': self.target,
+
+
+																		#'procedure_cos': self.id,
+																		self.key: self.id,
+																	})
+
+
+
+
+				print appointment 
+
+
+
+			appointment_id = appointment.id
+			print appointment
+			print appointment_id
+
+
+
+
+
+			# Crrate Session 
+			print 'Create Session'
+
+			print session_date
+			print patient_id
+			print doctor_id
+			print evaluation_type
+			
+			print 
+
+			print product_id
+			print laser
+			print appointment_id
+
+			print 
+
+			print treatment_id
+			print cosmetology_id
+			print chief_complaint
+
+			print 
+			print procedure_id
+
+
+
+			#session = self.env['openhealth.session.cos'].create(
+			#session = self.env[self.model].create(
+			session = self.env[model].create(
+												{
+
+													#'evaluation_start_date': evaluation_start_date,
+													'evaluation_start_date':session_date,
+
+
+													'patient': patient_id,
+
+													'doctor': doctor_id,													
+
+													'evaluation_type':evaluation_type,
+
+													'product': product_id,
+													
+													'laser': laser,
+
+													'appointment': appointment_id,
+
+
+
+													'treatment': treatment_id,				
+													'cosmetology': cosmetology_id,				
+
+
+													'chief_complaint': chief_complaint,
+
+
+													'procedure': procedure_id,				
+												}
+											)
+			session_id = session.id 
+			print session
+			print session_id
+
+
+
+			# Update - Deprecated - For Cos 
+			#ret = jrfuncs.update_appointment_go(self, appointment_id, session_id, 'session')
+
+
+
+			#print appointment
+			#print appointment.session
+			#print appointment.session.id
+			print 
+			print 
+			print 
+
+
+		ret = 0
+		return ret	
+
+
+
+
+
+
+
+#------------------------------------------------ Create - Controls ---------------------------------------------------
 
 @api.multi
 
@@ -28,7 +399,7 @@ def create_controls_go(self):
 
 
 
-	# Initial conditions  
+# Initial conditions  
 	patient_id = self.patient.id	
 	doctor_id = self.doctor.id	
 	doctor_name = self.doctor.name
@@ -37,13 +408,48 @@ def create_controls_go(self):
 	procedure_id = self.id
 	treatment_id = self.treatment.id
 
-
-
 	# Start date 
 	GMT = time_funcs.Zone(0,False,'GMT')
-	evaluation_start_date = datetime.datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
+	#evaluation_start_date = datetime.datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
+	evaluation_start_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
 
 	ret = 0
+
+
+
+
+
+
+		# Clean Appointments 
+		#print 
+		#print 'Clean Appointments'
+
+		#rec_set = self.env['oeh.medical.appointment'].search([
+																#('procedure', '=', self.id), 	
+																#('procedure_cos', '=', self.id), 
+		#														(self.key, '=', self.id), 
+		#													])
+		#ret = rec_set.unlink()
+		#print "ret: ", ret
+
+
+
+
+
+# Clean Sessions 
+	print 
+	print 'Clean Controls'
+
+	rec_set = self.env['openhealth.control'].search([
+														('procedure', '=', self.id), 
+													])
+	ret = rec_set.unlink()
+	print "ret: ", ret
+
+
+
+
+
 
 
 
@@ -61,7 +467,8 @@ def create_controls_go(self):
 
 
 	#for k in range(0,1): 
-	for k in range(0,6): 
+	#for k in range(0,6): 
+	for k in range(0,self.number_controls): 
 					
 
 		delta = 0 
@@ -155,6 +562,8 @@ def create_controls_go(self):
 @api.multi
 def	check_max_number(self, appointment_date, x_type, doctor_name):
 
+	import datetime
+
 	print 
 	print 'Check Max Number'
 
@@ -230,6 +639,8 @@ def	check_max_number(self, appointment_date, x_type, doctor_name):
 @api.multi
 def check_and_push(self, appointment_date, duration, x_type, doctor_name):
 
+	import datetime
+
 	print 
 	print 'Chech and push'
 	print appointment_date
@@ -256,7 +667,8 @@ def check_and_push(self, appointment_date, duration, x_type, doctor_name):
 
 
 		# Check for collisions 
-		ret, doctor_name, start, end = appfuncs.check_for_collisions(self, appointment_date_str, doctor_name, duration, False, 'doctor')
+		#ret, doctor_name, start, end = appfuncs.check_for_collisions(self, appointment_date_str, doctor_name, duration, False, 'doctor')
+		ret, doctor_name, start, end = appfuncs.check_for_collisions(self, appointment_date_str, doctor_name, duration, False, 'doctor', x_type)
 
 
 
@@ -339,6 +751,10 @@ def create_appointment_control(self, appointment_date, duration, x_type, state, 
 
 #def get_control_date(self, evaluation_start_date, nr_weeks):
 def get_control_date(self, evaluation_start_date, nr_days):
+
+
+	import datetime
+
 
 	#date_format = "%Y-%m-%d"
 	date_format = "%Y-%m-%d %H:%M:%S"

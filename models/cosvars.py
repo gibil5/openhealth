@@ -17,8 +17,33 @@ _hash_tre_mac = {
 		'laser_excilite': 								'laser_excilite',
 		'laser_ipl': 									'laser_m22',
 		'laser_ndyag': 									'laser_m22',
+
+
+		False:	'', 
 	}
 
+
+
+
+
+
+
+
+# Procedure
+_procedure_list = [
+							
+							('diamond_tip',							'Punta de diamantes'),
+
+
+							('carboxytherapy',						'Carboxiterapia'),
+
+
+							('laser_triactive',						'Láser triactivo'),			
+
+
+							('reductionchamber',					'Cámara de reducción'),
+			
+			]
 
 
 
@@ -30,17 +55,12 @@ _hash_tre_mac = {
 
 # Chief complaint
 _chief_complaint_list = [
-
-			('rejuvenation_face',			'Rejuvenecimiento facial'),
+				
+							('rejuvenation_face',			'Rejuvenecimiento facial'),			
+							('deep_face_cleansing',			'Limpieza facial profunda'),
+							('reaffirmation',				'Reafirmación'),
+							('reduction_weight_measures',	'Reducción de peso y medidas'),
 			
-			('deep_face_cleansing',			'Limpieza facial profunda'),
-
-			('reaffirmation',				'Reafirmación'),
-
-			('reduction_weight_measures',	'Reducción de peso y medidas'),
-
-			#('',''),
-
 			]
 
 

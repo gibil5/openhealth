@@ -21,6 +21,7 @@
 
 
 					<page string="Consulta">
+
 						<!--						
 						<field name="consultation_ids"/>						
 						-->
@@ -31,9 +32,17 @@
 
 								<field name="name"/>
 
+								<field name="appointment"/>
+
+
+
+
 								<field name="patient"/>
 
-								<field name="therapist"/>
+								<field name="doctor"/>
+
+
+
 
 								<field name="chief_complaint"/>
 

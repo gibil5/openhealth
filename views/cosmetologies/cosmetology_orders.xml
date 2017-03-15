@@ -11,12 +11,22 @@
 			<field name="arch" type="xml">
 
 
+
+				<notebook>
+					<page string="Presupuesto">
+
+						<field name="order_ids"/>
+					
+					</page>
+				</notebook>
+
+
+<!--
 						<notebook>
 							<page string="Presupuesto"   		 >
 								<field name="quotation_ids"/>
 							</page>
 						</notebook>
-
 
 						<notebook>
 							<page string="Facturado"   		 >
@@ -24,7 +34,7 @@
 							</page>
 						</notebook>
 						
-
+-->
 
 			</field>
 		</record>

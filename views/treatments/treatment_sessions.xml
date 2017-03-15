@@ -23,19 +23,25 @@
 					<page string="Sesiones">
 
 
+<!--
+						<field name="session_ids"/>
+-->
+
+
+
 						<field name="session_ids">
 							<tree string="Sesiones">
 
 								<field name="name"/>
-
-								<field string="Paciente" name="patient"/>
-
-								<field string="Médico" name="doctor"/>
+								
+								<field name="appointment"/>
 
 
-								<!--
-								<field string='Tipo' name="evaluation_type"/>
-								--> 
+								<field  name="patient"/>
+
+								<field  name="doctor"/>
+
+
 
 								<field name="chief_complaint"/>
 
@@ -46,13 +52,6 @@
 
 
 
-								<!--
-								<field name="treatment"/>
-								-->
-								
-								<!--
-									Button
-								-->
 								<button 
 									type="object" 
 									class="oe_highlight"	
@@ -63,6 +62,7 @@
 								
 							</tree>
 						</field>
+
 					</page>
 
 

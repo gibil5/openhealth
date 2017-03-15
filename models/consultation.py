@@ -229,7 +229,7 @@ class Consultation(models.Model):
 			domain = [
 						('state', '=', 'draft'),
 
-						('x_family', '=', 'private'),
+						#('x_family', '=', 'private'),
 					],
 			)
 
@@ -384,7 +384,7 @@ class Consultation(models.Model):
 
 						('state', '=', 'draft'),
 			
-						('x_family', '=', 'private'),
+						#('x_family', '=', 'private'),
 					],
 			)
 
@@ -578,15 +578,16 @@ class Consultation(models.Model):
 		#print 'partner_id: ', partner_id
 
 
-
-
-		# Search
 		consultation_id = self.id
 
+
+
+		# Order - Search
 		order_id = self.env['sale.order'].search([
 													('consultation','=',consultation_id),													
 													('state','=','draft'),
-													('x_family','=', 'private'),
+
+													#('x_family','=', 'private'),
 												]).id
 
 		print 'consultation_id: ', consultation_id
@@ -594,11 +595,9 @@ class Consultation(models.Model):
 
 
 
-		# Create 
+		# Order - Create 
 		if order_id == False:
 
-			#print 'create order'
-			#print 
 			order = self.env['sale.order'].create(
 													{
 														'treatment': treatment_id,
@@ -619,9 +618,11 @@ class Consultation(models.Model):
 
 
 			# Copy 
-			pre_order = order.copy({
-										'x_family':'private',
-							})	
+			#pre_order = order.copy({
+										#'x_family':'private',
+			#				})	
+
+
 
 
 			order_id = order.id 

@@ -23,6 +23,9 @@ from datetime import datetime
 
 import cosvars
 
+import procedure_funcs
+
+
 
 class Cosmetology(models.Model):
 	
@@ -44,6 +47,28 @@ class Cosmetology(models.Model):
 
 
 
+	# Reservations 
+	reservation_ids = fields.One2many(
+
+			'oeh.medical.appointment', 
+
+			'cosmetology', 
+
+			string = "Reserva de sala", 
+
+			domain = [						
+						#('x_target', '!=', 'doctor'),
+						#('x_target', 'in', 'doctor'),
+						#('treatment', 'like', 'TR000073'),
+						('x_machine', '!=', 'false'),
+					],
+			)
+
+
+
+
+
+
 	consultation_ids = fields.One2many(
 			#'openhealth.consultation', 
 			'openhealth.consultation.cos', 
@@ -55,15 +80,32 @@ class Cosmetology(models.Model):
 
 
 
-	therapist = fields.Many2one(
-			'openhealth.therapist',
+
+
+	#therapist = fields.Many2one(
+	physician = fields.Many2one(
+			#'openhealth.therapist',
+			'oeh.medical.physician',
+
+
+			string = "Cosmeatra", 	
+
+
+			domain = [						
+						('x_therapist', '=', True),
+					],
+
+
 			required=True, 
 			)
 
 
 
+
+
 	patient = fields.Many2one(
 			'oeh.medical.patient',
+			string='Paciente', 
 			required=True, 
 			)
 
@@ -218,8 +260,10 @@ class Cosmetology(models.Model):
 
 			record.nr_budgets=self.env['sale.order'].search_count([
 																		('cosmetology','=', record.id),
-																		('state','=', 'draft'),
-																		('x_family','=', 'private'),
+
+																		#('state','=', 'draft'),
+
+																		#('x_family','=', 'private'),
 																	]) 
 
 
@@ -235,6 +279,7 @@ class Cosmetology(models.Model):
 
 			record.nr_invoices=self.env['sale.order'].search_count([
 																		('cosmetology','=', record.id),
+																		
 																		('state','=', 'sale'),
 																	]) 
 
@@ -333,40 +378,49 @@ class Cosmetology(models.Model):
 
 
 	session_ids = fields.One2many(
+		
 			#'openhealth.session', 
 			'openhealth.session.cos', 
 
 			'cosmetology', 
+
 			string = "Sesiones", 
 			)
 
 
 
 
-	quotation_ids = fields.One2many(
-			'sale.order',	
-
-			'cosmetology', 			
-			string="Presupuestos",
-
-			domain = [
+	#quotation_ids = fields.One2many(
+	#		'sale.order',	
+	#		'cosmetology', 		
+	#		string="Presupuestos",
+	#		domain = [
 						#('state', '=', 'pre-draft'),
 						#('state', 'in', ['draft', 'sent', 'sale', 'done'])
-						('x_family', '=', 'private'),
-					],
-			)
+						#('x_family', '=', 'private'),
+	#				],
+	#		)
 
-	sale_ids = fields.One2many(
-			'sale.order',			 
-
-			'cosmetology', 
-			string="Ventas",
-
-			domain = [
+	#sale_ids = fields.One2many(
+	#		'sale.order',			 
+	#		'cosmetology', 
+	#		string="Ventas",
+	#		domain = [
 						#('state', '=', 'sale'),
-						('state', 'in', ['sale', 'done'])
-					],
+	#					('state', 'in', ['sale', 'done'])
+	#				],
+	#		)
+
+
+
+
+
+	order_ids = fields.One2many(
+			'sale.order',	
+			'cosmetology', 		
+			string="Presupuestos",
 			)
+
 
 
 
@@ -467,15 +521,14 @@ class Cosmetology(models.Model):
 
 		#treatment_id = self.id 
 		cosmetology_id = self.id 
-
-
 		patient_id = self.patient.id
-
-		#doctor_id = self.physician.id
-		therapist_id = self.therapist.id
-
-
 		chief_complaint = self.chief_complaint
+
+
+		doctor_id = self.physician.id
+		#therapist_id = self.therapist.id
+
+
 
 
 
@@ -493,9 +546,11 @@ class Cosmetology(models.Model):
 														
 															('patient', 'like', self.patient.name),		
 															
-															#('doctor', 'like', self.physician.name), 	
-															('x_therapist', 'like', self.therapist.name), 	
+
+															('doctor', 'like', self.physician.name), 	
+															#('x_therapist', 'like', self.therapist.name), 	
 															
+
 															('x_type', 'like', 'consultation'), 
 														
 														], 
@@ -521,8 +576,11 @@ class Cosmetology(models.Model):
 																	'appointment': appointment_id,
 
 																	'patient': patient_id,
-																	#'doctor': doctor_id,
-																	'therapist': therapist_id,
+
+
+																	'doctor': doctor_id,
+																	#'therapist': therapist_id,
+
 
 																	'evaluation_start_date': evaluation_start_date,
 
@@ -607,8 +665,10 @@ class Cosmetology(models.Model):
 
 				'default_patient': patient_id,
 
-				#'default_doctor': doctor_id,
-				'default_therapist': therapist_id,
+
+				'default_doctor': doctor_id,
+				#'default_therapist': therapist_id,
+
 
 				#'default_treatment': treatment_id,		
 				'default_cosmetology': cosmetology_id,		
@@ -692,54 +752,30 @@ class Cosmetology(models.Model):
 
 
 
-
-
+		# Initial conditions 
 		patient_id = self.patient.id
 		cosmetology_id = self.id 
-		therapist_id = self.therapist.id
 		chief_complaint = self.chief_complaint
-
+		doctor_id = self.physician.id
 		partner_id = self.env['res.partner'].search([('name','like',self.patient.name)],limit=1).id
+		#consultation_id = self.id
 
 
 
 
-		# Search
-		consultation_id = self.id
 
+		# Order - Search
 		order_id = self.env['sale.order'].search([
-													#('consultation','=',consultation_id),	
 													('cosmetology','=',cosmetology_id),	
-
-													('state','=','draft'),
-													
-													('x_family','=', 'private'),
+													('state','=','draft'),													
 												]).id
 
-		#print 'consultation_id: ', consultation_id
 		print 'order_id: ', order_id
 
 
 
 
-
-		# Search Appointment 
-		appointment = self.env['oeh.medical.appointment'].search([ 	
-																	('patient', 'like', self.patient.name),	
-
-																	#('doctor', 'like', self.physician.name), 	
-																	('x_therapist', 'like', self.therapist.name), 	
-																	
-																	('x_type', 'like', 'procedure'), 
-																], 
-																	order='appointment_date desc', limit=1)
-
-		appointment_id = appointment.id
-
-
-
-
-		# Create 
+		# Order - Create 
 		if order_id == False:
 
 			#print 'create order'
@@ -750,46 +786,26 @@ class Cosmetology(models.Model):
 														'cosmetology': cosmetology_id,
 
 														'partner_id': partner_id,
-														
 														'patient': patient_id,	
-														
-														#'x_doctor': doctor_id,	
-														'x_therapist': therapist_id,	
-														
-														#'consultation':self.id,
-														
+														'x_doctor': doctor_id,														
 														'state':'draft',
-														
 														'x_chief_complaint':chief_complaint,
 
 
-
-														'x_appointment': appointment_id,	
+														#'x_appointment': appointment_id,	
+														#'consultation':self.id,
 													}
 												)
+			order_id = order.id 
+			print order_id
+
 
 			# Create order lines 
 			ret = order.x_create_order_lines()
 			print ret 
 
 
-
-
-			# Copy 
-			pre_order = order.copy({
-										'x_family':'private',
-							})	
-
-
-			order_id = order.id 
-			print order
-		
-
-		print order_id
 		print 
-
-		
-
 
 		return {
 
@@ -816,22 +832,21 @@ class Cosmetology(models.Model):
 
 							#'default_treatment': treatment_id,
 							#'default_consultation': consultation_id,
-							#'default_x_doctor': doctor_id,	
 
 
 							'default_cosmetology': cosmetology_id,
-
 							'default_partner_id': partner_id,
-
 							'default_patient': patient_id,	
 
-							'default_x_therapist': therapist_id,	
+
+
+							'default_x_doctor': doctor_id,	
+							#'default_x_therapist': therapist_id,	
+
+
 							
 							'default_x_chief_complaint': chief_complaint,	
-
-
-
-							'default_x_appointment': appointment_id,	
+							#'default_x_appointment': appointment_id,	
 						}
 			}
 
@@ -867,7 +882,10 @@ class Cosmetology(models.Model):
 		print 'Create procedure'
 
 
-		ret = cos_funcs.create_procedure_go(self)
+
+		if self.nr_invoices > 0:
+			ret = cos_funcs.create_procedure_go(self)
+
 
 
 		#print ret 
@@ -887,11 +905,41 @@ class Cosmetology(models.Model):
 
 		print 
 		print 'jx'
-		print 'Create Sessions'
+		print 'Create Sessions - Through Procedure'
 
 
+		#model = 'openhealth.session.cos'
+		#ret = procedure_funcs.create_sessions_go(self, model)
 
 
+		procedure = self.env['openhealth.procedure.cos'].search([('cosmetology','=', self.id)]) 
+		procedure_id = procedure.id
+
+
+		return {
+
+			# Mandatory 
+			'type': 'ir.actions.act_window',
+			'name': 'Open Procedure Cos - Current',
+
+
+			# Window action 
+			'res_model': 'openhealth.procedure.cos',
+			'res_id': procedure_id,
+
+
+			# Views 
+			"views": [[False, "form"]],
+			'view_mode': 'form',
+
+			#'target': 'new',
+			'target': 'current',
+
+			'context':   {
+			}
+		}
+
+	# create_session
 
 
 

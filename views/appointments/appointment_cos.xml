@@ -40,13 +40,15 @@
         		</xpath>
 
 
+
+
 <!--
--->
-
-
 				<xpath expr="//field[@name='doctor']" position="replace">
 					<field name="x_therapist"	/>
 				</xpath>
+-->
+
+
 
 				<xpath expr="//field[@name='treatment']" position="replace">
 					<field name="cosmetology"	/>

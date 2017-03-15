@@ -113,6 +113,60 @@
 
 
 
+
+		<!-- payment_methods -->
+		<menuitem id="payment_methods_menu" name="Payment methods" parent="openhealth_menu"
+			sequence="-30"
+			action="payment_method_list_action"/>
+
+		<!-- sale_documents -->
+		<menuitem id="sale_documents_menu" name="Sale documents" parent="openhealth_menu"
+			sequence="-30"
+			action="sale_document_list_action"/>
+
+
+
+
+
+		<!-- Receipts -->
+		<menuitem id="receipts_menu" name="Boletas" parent="openhealth_menu"
+			sequence="-20"
+			action="receipt_list_action"/>
+
+		<!-- Invoices -->
+		<menuitem id="invoices_menu" name="Facturas" parent="openhealth_menu"
+			sequence="-20"
+			action="invoice_list_action"/>
+
+
+		<!-- advertisements -->
+		<menuitem id="advertisements_menu" name="Canjes" parent="openhealth_menu"
+			sequence="-20"
+			action="advertisement_list_action"/>
+
+		<!-- sale_notes -->
+		<menuitem id="sale_notes_menu" name="Notas" parent="openhealth_menu"
+			sequence="-20"
+			action="sale_note_list_action"/>
+
+		<!-- ticket_receipts -->
+		<menuitem id="ticket_receipts_menu" name="Tickets Boleta" parent="openhealth_menu"
+			sequence="-20"
+			action="ticket_receipt_list_action"/>
+
+		<!-- ticket_invoices -->
+		<menuitem id="ticket_invoices_menu" name="Tickets Factura" parent="openhealth_menu"
+			sequence="-20"
+			action="ticket_invoice_list_action"/>
+
+
+
+
+
+
+
+
+
 		<menuitem id="oeh_medical_preappointment_menu" 
 			name="Citas"
 			parent="openhealth_menu"
@@ -141,10 +195,11 @@
 
 
 		<!-- Therapists -->
+<!--		
 		<menuitem id="therapists_menu" name="Terapeutas" parent="openhealth_menu"
 			sequence="-1"
 			action="therapist_list_action"/>
-
+-->
 
 
 
@@ -168,39 +223,7 @@
 
 
 
-		<!-- Receipts -->
-		<menuitem id="receipts_menu" name="Boletas" parent="openhealth_menu"
-			sequence="0"
-			action="receipt_list_action"/>
 
-		<!-- Invoices -->
-		<menuitem id="invoices_menu" name="Facturas" parent="openhealth_menu"
-			sequence="0"
-			action="invoice_list_action"/>
-
-
-
-
-
-		<!-- advertisements -->
-		<menuitem id="advertisements_menu" name="Canjes" parent="openhealth_menu"
-			sequence="0"
-			action="advertisement_list_action"/>
-
-		<!-- sale_notes -->
-		<menuitem id="sale_notes_menu" name="Notas" parent="openhealth_menu"
-			sequence="0"
-			action="sale_note_list_action"/>
-
-		<!-- ticket_receipts -->
-		<menuitem id="ticket_receipts_menu" name="Tickets Boleta" parent="openhealth_menu"
-			sequence="0"
-			action="ticket_receipt_list_action"/>
-
-		<!-- ticket_invoices -->
-		<menuitem id="ticket_invoices_menu" name="Tickets Factura" parent="openhealth_menu"
-			sequence="0"
-			action="ticket_invoice_list_action"/>
 
 
 

@@ -189,3 +189,74 @@
 			
 
 
+
+
+
+
+
+# 7 Mar 2017
+# ----------------------------------------------------------- Search Machine Button ------------------------------------------------------
+
+	@api.multi
+
+	def search_machine_button(self):
+
+		print 
+		date_format = "%Y-%m-%d %H:%M:%S"
+		adate_con = datetime.datetime.strptime(self.appointment_date, date_format)
+		delta_fix = datetime.timedelta(hours=0)			
+		adate_base = adate_con + delta_fix
+
+
+		# Unlink Old 
+		rec_set = self.env['oeh.medical.appointment'].search([
+																('appointment_date', 'like', self.appointment_date), 
+																('doctor', '=', self.doctor.name), 
+																('patient', '=', self.patient.name), 
+																#('x_machine', '=', self.x_machine),
+																('x_target', '=', 'machine'), 
+
+															])
+		ret = rec_set.unlink()
+		print "ret: ", ret
+
+
+		# Create Proc 
+		doctor_id = self.doctor.id
+		patient_id = self.patient.id
+		treatment_id = self.treatment.id
+		x_create_procedure_automatic = True
+
+		flag_machine = True 
+		
+		
+		#app = appfuncs.create_app_procedure(self, appointment_date, doctor_id, patient_id, treatment_id, x_create_procedure_automatic, flag_machine)
+		app = appfuncs.create_app_procedure(self, adate_base, doctor_id, patient_id, treatment_id, x_create_procedure_automatic, flag_machine)
+
+
+		self.appointment_date = app.appointment_date
+		self.x_machine = app.x_machine
+
+		print app
+
+	# search_machine_button
+
+
+
+
+
+
+#	x_therapist = fields.Many2one(
+#			'openhealth.therapist',
+#			string = "Cosmeatra", 	
+#			default=defaults._therapist,
+			#required=True, 
+#			required=False, 
+#			readonly = False, 
+#			)
+
+
+
+
+
+

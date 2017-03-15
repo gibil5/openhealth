@@ -30,10 +30,11 @@
 
 
         		<!-- Therapist --> 
+<!--        		
 				<xpath expr="//field[@name='doctor']" position="replace">
 					<field name="therapist"	/>
 				</xpath>
-
+-->
 
 
         		<!-- Cosmetoloty --> 

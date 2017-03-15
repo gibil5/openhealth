@@ -168,6 +168,10 @@
 					
 					<field name="name"/>
 					
+					<field name="appointment"/>
+
+
+					
 					<field name="treatment"/>
 
 

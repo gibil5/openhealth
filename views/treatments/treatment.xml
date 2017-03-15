@@ -25,6 +25,13 @@
 											'search_default_treatment': active_id,
 										}" 											
 							name="%(appointment_form_action)d"	
+
+
+							attrs="{'invisible':[
+												
+												('state','in',[ 'appointment', 'consultation', 'service', 'budget', 'invoice', 'procedure', 'sessions', 'controls', 'done']), 
+
+												]}"
 						-->
 						<button 
 							type="object" 
@@ -33,11 +40,8 @@
 
 							string="Crear Cita" 
 							
-							attrs="{'invisible':[
-												
-												('state','in',[ 'appointment', 'consultation', 'service', 'budget', 'invoice', 'procedure', 'sessions', 'controls', 'done']), 
 
-												]}"
+							states="False"
 
 							name="open_appointment" 
 
@@ -51,17 +55,21 @@
 
 
 						<!-- Create Consultation --> 
+<!--
+							attrs="{'invisible':[
+												
+												('state','in',[ False, 'empty', 'consultation', 'service', 'budget', 'invoice', 'procedure', 'sessions', 'controls', 'done']), 
+
+												]}"
+-->
 						<button 
 							type="object" 
 							class="oe_highlight"
 
 							string="Crear Consulta" 
 							
-							attrs="{'invisible':[
-												
-												('state','in',[ False, 'empty', 'consultation', 'service', 'budget', 'invoice', 'procedure', 'sessions', 'controls', 'done']), 
 
-												]}"
+							states="appointment"
 
 							name="open_consultation_current" 
 						/>
@@ -69,16 +77,19 @@
 
 
 						<!-- Create Service --> 
+<!--						
+							attrs="{'invisible':[
+												('state','in',[ False, 'appointment', 'service', 'budget', 'invoice', 'procedure', 'sessions', 'controls', 'done']),
+												]}"
+-->
 						<button 
 							type="object" 
 							class="oe_highlight"
 
 							string="Crear Recomendación" 
 
-							attrs="{'invisible':[
-												('state','in',[ False, 'appointment', 'service', 'budget', 'invoice', 'procedure', 'sessions', 'controls', 'done']),
-												]}"
 
+							states="consultation"
 
 							name="create_service" 
 						/>
@@ -86,16 +97,19 @@
 
 
 						<!-- Create Order --> 
+<!--
+							attrs="{'invisible':[
+												('state','in',[ False, 'appointment', 'consultation', 'budget', 'invoice', 'procedure', 'sessions', 'controls', 'done']),
+												]}"
+-->						
 						<button 
 							type="object" 
 							class="oe_highlight"
   
 							string="Crear Presupuesto" 
 
-							attrs="{'invisible':[
-												('state','in',[ False, 'appointment', 'consultation', 'budget', 'invoice', 'procedure', 'sessions', 'controls', 'done']),
-												]}"
 
+							states="service"
 
 							name="create_budget" 
 						/>
@@ -103,6 +117,7 @@
 
 
 						<!-- Pay --> 
+<!--
 						<button 
 							type="object" 
 							class="oe_highlight"
@@ -115,10 +130,18 @@
 
 							name="create_invoice" 
 						/>
-
+-->
 
 
 						<!-- Create Procedure --> 
+<!--
+							attrs="{ 
+									'invisible':[
+												
+												('state','in',[ False, 'appointment', 'consultation', 'service', 'budget', 'procedure', 'sessions', 'controls', 'done']), 
+												
+												]}"
+-->
 						<button 
 							type="object" 
 							class="oe_highlight"
@@ -126,20 +149,23 @@
 							string="Crear Procedimiento" 
 
 
-							attrs="{ 
-									'invisible':[
-												
-												('state','in',[ False, 'appointment', 'consultation', 'service', 'budget', 'procedure', 'sessions', 'controls', 'done']), 
-												
-												]}"
-
+							states="budget"
 
 							name="create_procedure" 
 						/>
 
 
 
+
 						<!-- Create Sessions --> 
+<!--
+							attrs="{ 
+									'invisible':[
+												
+												('state','in',[ False, 'appointment', 'consultation', 'service', 'budget', 'invoice', 'sessions', 'controls', 'done']), 
+												
+												]}"
+-->						
 						<button 
 							type="object" 
 							class="oe_highlight"
@@ -147,20 +173,24 @@
 							string="Crear Sesiones" 
 
 
-							attrs="{ 
-									'invisible':[
-												
-												('state','in',[ False, 'appointment', 'consultation', 'service', 'budget', 'invoice', 'sessions', 'controls', 'done']), 
-												
-												]}"
 
+							states="procedure"
 
 							name="create_sessions" 
 						/>
 
 
 
+
 						<!-- Create Controls --> 
+<!--
+							attrs="{ 
+									'invisible':[
+												
+												('state','in',[ False, 'appointment', 'consultation', 'service', 'budget', 'invoice', 'procedure', 'controls', 'done']), 
+												
+												]}"
+-->						
 						<button 
 							type="object" 
 							class="oe_highlight"
@@ -168,13 +198,8 @@
 							string="Crear Controles" 
 
 
-							attrs="{ 
-									'invisible':[
-												
-												('state','in',[ False, 'appointment', 'consultation', 'service', 'budget', 'invoice', 'procedure', 'controls', 'done']), 
-												
-												]}"
 
+							states="sessions"
 
 							name="create_controls" 
 						/>
@@ -233,6 +258,7 @@
 
 
 
+
 								<!-- Services -->
 								<button type="action" class="oe_stat_button" 
 									name="%(service_list_action)d"	
@@ -240,8 +266,9 @@
 											'search_default_treatment': active_id,
 											}" 											
 									icon="fa-list">
-									<field string="Recomendación" name="nr_services" widget="statinfo"/>
+									<field string="Servicio" name="nr_services" widget="statinfo"/>
 								</button>
+
 
 
 
@@ -309,6 +336,8 @@
 
 
 								<!-- Invoices -->
+<!--
+-->
 								<button type="action" class="oe_stat_button" 
 									name="%(order_form_action)d"	
 									context="{									
@@ -318,7 +347,6 @@
 
 									<field string="Facturado" name="nr_invoices" widget="statinfo"/>
 								</button>
-
 
 
 								<!-- Procedures -->
@@ -344,6 +372,7 @@
 									<field string="Sesiones" name="nr_sessions" widget="statinfo"/>
 								</button>
 						
+
 
 
 								<!-- Controls -->

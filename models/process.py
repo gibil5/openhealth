@@ -34,9 +34,13 @@ class Process(models.Model):
 
 
 
+
+
 	patient = fields.Many2one(
 			'oeh.medical.patient',
+
 			string="Paciente",
+			
 			index=True, 
 			ondelete='cascade', 
 			#required=True, 
@@ -44,27 +48,28 @@ class Process(models.Model):
 
 
 
-
-
-
 	physician = fields.Many2one(
+
 			'oeh.medical.physician',
+		
 			string="Médico",
+			
 			index=True
 			)
 	
 
 
-	therapist = fields.Many2one(
-			'oeh.medical.therapist',
+	#therapist = fields.Many2one(
+			#'oeh.medical.therapist',
+	#		'oeh.medical.physician',
 
 
 			#string="Terapeuta",
-			string = "Cosmeatra", 	
+	#		string = "Cosmeatra", 	
 
 
-			index=True
-			)
+	#		index=True
+	#		)
 
 
 

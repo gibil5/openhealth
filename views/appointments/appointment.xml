@@ -43,6 +43,9 @@
 
 				<xpath expr="//field[@name='state']" position="before">
 
+
+<!-- Remove --> 
+
 					<div class="oe_left">
 							<button 
 								type="object" 
@@ -53,14 +56,6 @@
 							/>
 					</div>
 
-					<div class="oe_right">
-							<button 
-								type="object" 
-								class="oe_highlight"
-								string="Buscar Sala" 
-								name="search_machine_button" 
-							/>
-					</div>
 				</xpath>
 
 
@@ -129,18 +124,21 @@
 							<field name="x_machine_cos"		attrs="{
 																	'invisible':[('x_machine_cos', '=', False),],
 															}"	/>
+
 							<field name="x_machine"			attrs="{
 																	'invisible':[('x_machine', '=', False),],
 															}"	/>
 					-->
 
-							<field name="x_target"/>
+							<field name="x_target"			/>
 
 
 
 
 
-							<field name="x_machine"		/>
+							<field name="x_machine"			attrs="{
+																	'invisible':[('x_type', '=', 'consultation'),],
+															}"	/>
 
 
 
@@ -187,9 +185,8 @@
 
 
 
-					<field name="doctor"			/>
-					<field name="x_therapist"		required="0"	/>		
-					-->
+					<field name="x_therapist"		required="0"	/>	
+
 
 
 
@@ -201,6 +198,13 @@
 					<field name="x_therapist"		attrs="{
 														'invisible':[('x_target', '!=', 'therapist'),],
 														}"	/>
+					-->
+
+
+
+
+					<field name="doctor"			domain="[('x_type', '=', x_target )]"	/>
+
 
 
 
@@ -341,7 +345,8 @@
 														}"	/>
 
 
-							<field name="cosmetology"	attrs="{
+							<field name="cosmetology"			
+														attrs="{
 																	'invisible':[('x_target', '!=', 'therapist'),],
 														}"	/>
 
@@ -496,8 +501,9 @@
 
 
 					<field name="doctor"/>
+<!--					
 					<field name="x_therapist"/>
-
+-->
 
 					<field name="x_type"/>
 
@@ -515,8 +521,8 @@
 					<field name="consultation"/>
 					<field name="procedure"/>
 					<field name="session"/>
-					<!--
 					<field name="control"/>					
+					<!--
 					-->
 					
 					<field name="state"/>
@@ -755,9 +761,6 @@
 
 
 
-					<!--
-					<field name="res_model">openhealth.appointment.cos</field>
-					-->
 					<field name="res_model">oeh.medical.appointment</field>
 
 
@@ -773,6 +776,7 @@
 
 					<field name="domain">[
 											('state', 'in', ['pre_scheduled','Scheduled', 'Completed', 'Invoiced']),
+											
 											('x_target', '=', 'therapist'),
 										]
 					</field>
@@ -782,13 +786,13 @@
 
 					<!--
 											'default_x_target': 'doctor',
+
+											'default_x_create_procedure_automatic': False,
 					-->
 					<field name="context">{
 											'default_x_target': 'therapist',
 
 											'default_x_type': 'consultation',
-
-											'default_x_create_procedure_automatic': False,
 										}
 					</field>
 

@@ -30,6 +30,228 @@ class sale_order(models.Model):
 
 
 
+	name = fields.Char(
+			
+			string="Presupuesto #"
+
+		)
+
+
+
+
+
+
+
+	@api.multi 
+	def x_reset(self):
+
+		print 
+		print 'jx'
+		print 'Reset'
+
+
+
+		#self.procedure_ids.unlink()
+		self.x_payment_method.unlink()
+	
+
+			
+		#self.x_sale_document = False
+		self.x_sale_document.unlink()
+
+
+		self.x_appointment.x_machine = False
+
+		self.state = 'draft'
+
+
+		print 
+		print 
+		print 
+
+	# x_reset
+
+
+
+
+
+
+
+	x_payment_method = fields.One2many(
+			'openhealth.payment_method',
+			'order',		
+			string="Medios de pago", 
+		)
+
+
+
+
+	x_sale_document = fields.Many2one(
+			'openhealth.sale_document',
+			string="Comprobante de pago", 
+			#required=True, 
+			compute='_compute_x_sale_document', 
+		)
+
+	@api.multi
+	#@api.depends('state')
+
+	def _compute_x_sale_document(self):
+		for record in self:
+
+			#doc = record.env['openhealth.sale_document'].search_count([
+			#															('order','=', record.id),
+			#															])
+
+			doc = record.env['openhealth.sale_document'].search([
+																		('order','=', record.id),
+																],
+																#order='appointment_date desc',
+																limit=1,)
+			record.x_sale_document = doc
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	@api.multi 
+	def x_create_invoice(self):
+
+		print 
+		print 'jx'
+		print 'Create Invoice'
+
+		print 
+		print 
+		print 
+
+	# x_create_invoice
+
+
+
+
+
+	#x_state = fields.Char(
+	x_state = fields.Selection(
+
+			selection = ord_vars._state_list, 
+
+			string='x Estado',	
+			
+
+			default='draft',	
+			compute="_compute_x_state",
+	)
+
+	@api.multi
+	#@api.depends('state')
+
+	def _compute_x_state(self):
+		for record in self:
+
+
+
+
+			#if record.state == 'draft'	or 	record.state == 'sale':
+			if record.state == 'draft':
+				record.x_state = record.state
+
+
+
+			if	record.env['openhealth.payment_method'].search_count([('order','=', record.id),]):
+				record.x_state = 'payment'
+				#record.state = 'payment'
+
+
+
+			if	record.env['openhealth.sale_document'].search_count([('order','=', record.id),]):
+				record.x_state = 'proof'
+				#record.state = record.x_state
+
+
+
+			if record.x_machine != False:
+				record.x_state = 'machine'
+				#record.state = record.x_state
+
+
+
+			if record.state == 'sale':
+				record.x_state = 'sale'
+
+
+
+
+
+	state = fields.Selection(
+
+			selection = ord_vars._state_list, 
+
+			#string='Status', 			
+			string='Estado',	
+
+			
+			#readonly=True, 
+			readonly=False, 
+
+
+			default='draft',
+			#copy=False, 
+			#index=True, 
+
+
+			#track_visibility='onchange', 
+
+			#compute="_compute_state",
+			)
+
+
+	#@api.multi
+	#@api.depends('x_state')
+	#def _compute_state(self):
+	#	for record in self:
+	#		record.state = record.x_state
+
+
+
+
+
+	#@api.onchange('x_state')
+	#def _onchange_x_state(self):
+	#	print 
+	#	print 
+	#	print 'On change x State'
+	#	self.state = self.x_state
+
+
+
+
+
+	#		print 'Gotcha !!!'
+
+	#	print 
+	#	print 
+
+
+
+
+
+
+
+
+
+
+
 	# Target 
 	x_target = fields.Selection(
 			string="Target", 
@@ -40,17 +262,22 @@ class sale_order(models.Model):
 			compute='_compute_x_target', 
 		)
 
+
 	#@api.multi
 	@api.depends('x_doctor')
 
 	def _compute_x_target(self):
 		for record in self:
 
-			if record.x_doctor.name != False: 
+			#if record.x_doctor.name != False: 
+			if record.treatment.name != False: 
 				record.x_target = 'doctor'
 
-			if record.x_therapist.name != False: 
+			#if record.x_therapist.name != False: 
+			if record.cosmetology.name != False: 
 				record.x_target = 'therapist'
+
+
 
 
 
@@ -118,11 +345,52 @@ class sale_order(models.Model):
 			string = "Médico", 	
 		)
 
-	x_therapist = fields.Many2one(
-			'openhealth.therapist',
-			string = "Terapeuta", 	
+
+
+	#x_therapist = fields.Many2one(
+
+			#'openhealth.therapist',
+	#		'oeh.medical.physician',
+
+	#		domain = [						
+	#					('x_therapist', '=', True),
+	#				],
+	
+	#		string = "Terapeuta", 	
+	#	)
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Relational ------------------------------------------------------
+
+	# Consultation 									# Deprecated ? 
+	consultation = fields.Many2one(
+			'openhealth.consultation',
+			string="Consulta",
+			ondelete='cascade', 
+	#		compute='_compute_consultation_cos', 
 		)
 
+
+
+	#@api.multi
+	#@api.depends('x_appointment')
+	#def _compute_consultation_cos(self):
+	#	for record in self:
+	#		consultation = self.env['openhealth.consultation.cos'].search([
+	#																		('patient', '=', record.patient.name), 
+																			#('x_type', '=', 'procedure'),
+																			#('x_target', '=', record.x_target),	
+	#																		('doctor', '=', record.x_doctor.name), 
+	#																	],
+	#																		order='appointment_date desc',
+	#																		limit=1,)
+	#		record.consultation_cos = consultation
 
 
 
@@ -146,39 +414,43 @@ class sale_order(models.Model):
 		for record in self:
 
 
-			if record.x_target == 'doctor': 
-
-				app = self.env['oeh.medical.appointment'].search([
-																	('patient', '=', record.patient.name), 
-																	
-																	('x_type', '=', 'procedure'),
-
-																	('x_target', '=', record.x_target),
-
-																	('doctor', '=', record.x_doctor.name), 
+			app = self.env['oeh.medical.appointment'].search([
+																('patient', '=', record.patient.name), 
+																('x_type', '=', 'procedure'),
+																#('x_target', '=', record.x_target),	
+																('doctor', '=', record.x_doctor.name), 
 															],
-															order='appointment_date desc',
-															limit=1,)
+																order='appointment_date desc',
+																limit=1,)
+
+			record.x_appointment = app
 
 
-			#if record.x_target == 'therapist': 
-			else:
 
-				app = self.env['oeh.medical.appointment'].search([
-																	('patient', '=', record.patient.name), 
-																	
-																	('x_type', '=', 'procedure'),
+			#if record.x_target == 'doctor': 
+			#	app = self.env['oeh.medical.appointment'].search([
+			#														('patient', '=', record.patient.name), 
+			#														('x_type', '=', 'procedure'),
+			#														('x_target', '=', record.x_target),
+			#														('doctor', '=', record.x_doctor.name), 
+			#												],
+			#												order='appointment_date desc',
+			#												limit=1,)
 
-																	('x_target', '=', record.x_target),
 
-																	('x_therapist', '=', record.x_therapist.name), 
-															],
-															order='appointment_date desc',
-															limit=1,)
+			#else:		# therapist 
+			#	app = self.env['oeh.medical.appointment'].search([
+			#														('patient', '=', record.patient.name), 
+			#														('x_type', '=', 'procedure'),
+			#														('x_target', '=', record.x_target),
+
+			#														('x_therapist', '=', record.x_therapist.name), 
+			#												],
+			#												order='appointment_date desc',
+			#												limit=1,)
 
 			
 
-			record.x_appointment = app
 
 
 
@@ -205,7 +477,9 @@ class sale_order(models.Model):
 
 	# Amount total 
 	x_amount_total = fields.Float(
+
 			string = "Total",
+		
 			compute="_compute_x_amount_total",
 		)
 
@@ -617,33 +891,13 @@ class sale_order(models.Model):
 
 
 
-	x_sales_document = fields.Selection(
-
-			string="Documento de venta", 
-
-			selection = ord_vars._sale_docs_list, 
-						
-			#required=True, 
-
-			#compute='_compute_x_machine', 
-		)
 
 
 
 
 
-	#x_payment_method = fields.Selection(
-	#		selection = ord_vars._payment_method_list, 			
-	#	)
 
 
-
-	x_payment_method = fields.One2many(
-			'openhealth.payment_method',
-			'order',		
-
-			string="Medios de pago", 
-		)
 
 
 
@@ -682,10 +936,10 @@ class sale_order(models.Model):
 
 
 	# Family 
-	x_family = fields.Selection(
+	#x_family = fields.Selection(
+	#		selection = jxvars._family_list, 
+	#	)
 
-			selection = jxvars._family_list, 
-		)
 
 
 
@@ -787,57 +1041,10 @@ class sale_order(models.Model):
 
 
 
-	_state_list = [
-        			#('pre-draft', 'Pre-Quotation'),
-
-        			#('draft', 'Quotation'),
-        			#('sent', 'Quotation Sent'),
-        			#('sale', 'Sale Order'),
-        			#('done', 'Done'),
-        			#('cancel', 'Cancelled'),
-					#('pre-draft', 	'Presupuesto consulta'),
 
 
-        			('draft', 		'Presupuesto'),
-        			
-        			('sent', 		'Presupuesto enviado'),
-        			('sale', 		'Facturado'),
-        			('done', 		'Completo'),
-        			('cancel', 		'Cancelado'),
-        		]
 
 
-	state = fields.Selection(
-			selection = _state_list, 
-
-			#string='Status', 			
-			string='Estado',	
-			
-			#readonly=True, 
-			readonly=False, 
-
-			#default='draft'
-			#copy=False, 
-			#index=True, 
-			#track_visibility='onchange', 
-			)
-
-
-	#jxx
-	@api.onchange('state')
-
-	def _onchange_state(self):
-
-		print 
-		print 
-		print 'On change State'
-
-		if self.state == 'sale':	
-
-			print 'Gotcha !!!'
-
-		print 
-		print 
 
 
 
@@ -885,7 +1092,10 @@ class sale_order(models.Model):
 	treatment = fields.Many2one(
 			'openhealth.treatment',
 			ondelete='cascade', 
+			string="Tratamiento", 
 		)
+
+
 
 
 	cosmetology = fields.Many2one(
@@ -896,12 +1106,6 @@ class sale_order(models.Model):
 
 
 
-
-	consultation = fields.Many2one(
-			'openhealth.consultation',
-			string="Consulta",
-			ondelete='cascade', 
-		)
 
 
 
@@ -925,9 +1129,6 @@ class sale_order(models.Model):
 	
 	
 	
-	x_state = fields.Char(
-		default='a',
-	)
 	
 
 	#x_copy_created = fields.Boolean(
@@ -1335,7 +1536,8 @@ class sale_order(models.Model):
 																	('patient', 'like', self.patient.name),	
 
 																	#('doctor', 'like', self.physician.name), 	
-																	('x_therapist', 'like', self.x_therapist.name), 	
+																	#('x_therapist', 'like', self.x_therapist.name), 	
+																	('doctor', 'like', self.x_doctor.name), 	
 																	
 																	('x_type', 'like', 'procedure'), 
 																], 
@@ -1533,11 +1735,17 @@ class sale_order(models.Model):
 		print 'x_machine', self.x_machine
 
 
+		#print 'x_state', self.x_state
+
 
 		if self.x_doctor.name != False   and   self.x_machine == False:
 			print 'Warning: Sala no Reservada !'
 
 		else:
+
+			#self.x_state = 'sale'
+
+
 			print 'Success !!!'
 			res = super(sale_order, self).action_confirm()
 

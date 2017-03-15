@@ -20,9 +20,13 @@ import appfuncs
 #def check_and_push(self, appointment_date, duration, x_type, doctor_name):
 def check_and_push(self, appointment_date, duration, x_type, therapist_name, machine):
 
-	print 
-	print 'Chech and push - Cos'
-	print appointment_date
+	debug = False 
+
+	if debug: 
+		print 
+		print 'Chech and push - Cos'
+		print appointment_date
+
 
 
 	delta_var = datetime.timedelta(hours=duration)
@@ -55,23 +59,15 @@ def check_and_push(self, appointment_date, duration, x_type, therapist_name, mac
 
 		if ret == 0: 		# Success ! - No Collisions
 			
-
-			print 'Collision check - Success !!!'
-			print k
+			if debug: 
+				print 'Collision check - Success !!!'
+				print k
 
 
 
 		else:				# Collision - Keep going... 
 			k = k + 1
 
-
-
-
-
-
-	#appointment_date_str = appointment_date.strftime("%Y-%m-%d %H:%M:%S")
-
-	#return appointment_date
 	return appointment_date_str
 
 

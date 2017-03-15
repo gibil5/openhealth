@@ -16,8 +16,9 @@ import jrfuncs
 
 @api.multi
 
-#def create_procedure_go(self):
-def create_procedure_go(self, process):
+#def create_procedure_go(self, process):
+def create_procedure_go(self):
+
 
 	print 
 	print 'Create Procedure Go'
@@ -26,25 +27,27 @@ def create_procedure_go(self, process):
 	#name = 'name'
 
 
-	treatment = False
-	cosmetology = False
-
-
-	if process == 'treatment':
-		treatment = self.id
-
-	if process == 'cosmetology':
-		cosmetology = self.id
+	#treatment = False
+	#cosmetology = False
+	#if process == 'treatment':
+	#	treatment = self.id
+	#if process == 'cosmetology':
+	#	cosmetology = self.id
 
 
 
+
+	treatment = self.id
 
 	patient = self.patient.id
+
+
+	#therapist = self.therapist.id
 	doctor = self.physician.id
 
-	therapist = self.therapist.id
 
-	#chief_complaint = self.chief_complaint
+
+	chief_complaint = self.chief_complaint
 
 
 
@@ -72,17 +75,17 @@ def create_procedure_go(self, process):
 
 
 	# Chief complaint 
-	for sale in self.sale_ids:
-		chief_complaint = sale.x_chief_complaint
-		print 'chief_complaint:', chief_complaint
+	#for sale in self.order_ids:
+	#	chief_complaint = sale.x_chief_complaint
+	#	print 'chief_complaint:', chief_complaint
 
 
 
 
 
-	for line in self.sale_ids.order_line:
+	for line in self.order_ids.order_line:
 					
-		if self.nr_procedures < self.sale_ids.nr_lines:
+		if self.nr_procedures < self.order_ids.nr_lines:
 
 			product = line.product_id.id
 			
@@ -93,14 +96,18 @@ def create_procedure_go(self, process):
 														'patient':patient,
 
 														'doctor':doctor,
-														'therapist':therapist,
+														#'therapist':therapist,
 														
 														'treatment':treatment,		
-														'cosmetology':cosmetology,		
+														#'cosmetology':cosmetology,		
 
 														'product':product,
 														'evaluation_start_date':evaluation_start_date,
+
+
+
 														'chief_complaint':chief_complaint,
+
 
 
 														'appointment': appointment_id,

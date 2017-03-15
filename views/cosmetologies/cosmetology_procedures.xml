@@ -33,32 +33,28 @@
 						<field name="procedure_ids">
 							<tree string="Procedimientos">
 
-								<!--
-								<field string="Procedimiento #"  name="name"/>
-								-->
+
 								<field name="name"/>
 
-								<field string="Paciente" name="patient"/>
-
-								<field string="Médico" name="doctor"/>
+								<field name="appointment"/>
 
 
-								<!--
-								<field string='Tipo' name="evaluation_type"/>
-								--> 
+
+								<field string="Paciente" />
+
+								<field string="Médico" />
+
+
 
 								<field name="chief_complaint"/>
 
 								<field name="product"/>
 
 
+
 								<field name="evaluation_start_date"/>
 
-								<!--
-								<field name="cosmetology"/>
-								-->
-								
-
+							
 								
 								<!-- Button -->
 								<button 
@@ -68,6 +64,11 @@
 									
 									name="open_line_current" 
 								/>
+
+								<!--
+								<field name="cosmetology"/>
+								<field string='Tipo' name="evaluation_type"/>
+								-->
 								
 							</tree>
 						</field>

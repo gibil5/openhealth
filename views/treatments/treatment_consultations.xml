@@ -44,6 +44,10 @@
 
 										<field  name="name"/>
 
+										<field name="appointment"/>
+
+
+
 										<field string="Paciente" name="patient"/>
 
 										<field string="Médico" name="doctor"/>

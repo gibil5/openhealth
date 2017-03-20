@@ -83,7 +83,7 @@ class SessionCos(models.Model):
 
 
 			#required=False, 
-			required=True, 
+			#required=True, 
 			)
 			
 

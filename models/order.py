@@ -144,7 +144,8 @@ class sale_order(models.Model):
 	#x_state = fields.Char(
 	x_state = fields.Selection(
 
-			selection = ord_vars._state_list, 
+			#selection = ord_vars._state_list, 
+			selection = ord_vars._x_state_list, 
 
 			string='x Estado',	
 			

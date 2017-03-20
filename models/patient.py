@@ -168,11 +168,15 @@ class Patient(models.Model):
 			#required=False, 
 		)
 
+
+
 	phone_1 = fields.Char(
 		string="Teléfono 1",
-		required=True, 
+		
+		#required=True, 
 		#required=False, 
 		)
+
 
 
 	# Phone 2
@@ -283,16 +287,18 @@ class Patient(models.Model):
 
 
 	x_dni = fields.Char(
-			string = "DNI", 		
-			required=True, 
+			string = "DNI", 	
+
+			#required=True, 
 			#required=False, 
 			)
 
 
 
 	x_allergies = fields.Char(
-			string = "Alergias", 	
-			required=True, 
+			string = "Alergias", 
+
+			#required=True, 
 			#required=False, 
 			)
 
@@ -301,8 +307,9 @@ class Patient(models.Model):
 	x_first_contact = fields.Selection(
 			selection = pat_vars._first_contact_list, 
 			string = '¿ Cómo se enteró ?',
-			#default = 'none', 			
-			required=True, 
+			#default = 'none', 
+
+			#required=True, 
 			#required=False, 
 			)
 

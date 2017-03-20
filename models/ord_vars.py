@@ -2,6 +2,26 @@
 
 
 
+
+_x_state_list = [
+        			('draft', 			'Presupuesto'),
+
+
+        			('payment', 		'Pagado'),
+
+        			('proof', 			'Comprobante'),
+
+        			('machine', 		'Reserva de sala'),
+        			
+        			('sale', 			'Confirmado'),
+
+
+        			('invoice', 		'Facturado'),
+	]
+
+
+
+
 _state_list = [
 
         			#('pre-draft', 'Pre-Quotation'),
@@ -14,33 +34,20 @@ _state_list = [
 					#('pre-draft', 	'Presupuesto consulta'),
 
 
-        			#('draft', 		'Presupuesto'),
+        			#('draft', 			'Presupuesto'),
+        			#('payment', 		'Pagado'),
+        			#('proof', 			'Comprobante'),
+        			#('machine', 		'Reserva de sala'),
+        			#('sale', 			'Confirmado'),
+        			#('invoice', 		'Facturado'),
+
+
+
+        			('draft', 		'Presupuesto'),
         			#('sent', 		'Presupuesto enviado'),
-        			#('sale', 		'Facturado'),
-        			#('done', 		'Completo'),
-        			#('cancel', 	'Cancelado'),
-
-
-
-        			#(False, 			'False'),
-
-
-        			('draft', 			'Presupuesto'),
-
-
-        			('payment', 		'Pagado'),
-
-        			('proof', 			'Comprobante'),
-
-        			('machine', 		'Reserva de sala'),
-        			
-        			#('confirmed', 		'Confirmado'),
-
-        			('sale', 			'Confirmado'),
-
-
-        			('invoice', 		'Facturado'),
-
+        			('sale', 		'Facturado'),
+        			('done', 		'Completo'),
+        			('cancel', 	'Cancelado'),
         		]
 
 

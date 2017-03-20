@@ -96,7 +96,7 @@ class Cosmetology(models.Model):
 					],
 
 
-			required=True, 
+			#required=True, 
 			)
 
 

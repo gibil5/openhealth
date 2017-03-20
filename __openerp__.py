@@ -14,21 +14,22 @@
 
 	'description': """
 
-		EMR (Electronic Medical Records) for Laser\n
-		Clinica Chavarri\n
+		Clínica Chavarri\n
 
+		Laser - EMR (Electronic Medical Records)\n
 
-		Built: 	23 Jan 2017.\n 
+		Last built: 	17 Mar 2017
 
-		Installed: 	 	7 Sep 2016.\n 
-		Active: 4 months.\n
+		Created: 	 	7 Sep 2016
+
+		Active: 		7 months.
+
 		---
-		\n
 
 
 
 		This is my first extension for oeHealth.
-		Completely independent and self-referecing.\n
+
 		It provides the following objects:
 			- Patients,
 			- Treatments,
@@ -41,6 +42,7 @@
 			- Orders,
 			- Appointments,
 			- Calendar, 
+			- ...
 			
 			
 	""",
@@ -69,92 +71,129 @@
 	'data': [
 
 
-
 		# ----------------------------------------------------------- Security ------------------------------------------------------
-		
-		# Important !!!
 		'security/ir.model.access.csv',
 		'security/ir.rule.xml',
 
 
 
-
-
-		# ----------------------------------------------------------- Forms and Menus ------------------------------------------------------
+		# ----------------------------------------------------------- Base ------------------------------------------------------
 
 		# Base - Form and List Actions - Must be the first 
 		'views/base.xml',		# Dependencies - Actions 
-
-
-
-
 		'views/other.xml',
 
 
 
-		
+
+		# ----------------------------------------------------------- First Level ------------------------------------------------------
 		# Orders
 		'views/orders/order.xml',
 		'views/orders/order_line.xml',
-
 		'views/orders/payment_methods.xml',
-		
 		'views/orders/events.xml',
 
 
 
 		# Sale Documents
 		'views/sale_documents/sale_documents.xml',
-
 		'views/sale_documents/receipts.xml',
 		'views/sale_documents/invoices.xml',
 		'views/sale_documents/advertisements.xml',
 		'views/sale_documents/sale_notes.xml',
 		'views/sale_documents/ticket_receipts.xml',
 		'views/sale_documents/ticket_invoices.xml',
-		
 		'views/sale_documents/payment_methods.xml',
-
-
-
-
 
 
 
 		# Sessions
 		'views/sessions/session.xml',
-		'views/sessions/session_configuration.xml',
-
-		'views/sessions/session_cos.xml',
-		'views/sessions/session_med.xml',
-
-		'views/sessions/session_measures.xml',
-
-
-
 
 
 		# Controls
 		'views/controls/control.xml',
-		#'views/controls/control_protocols.xml',
 
 
 		# Evaluations
 		'views/evaluations/evaluation.xml',
-		'views/evaluations/evaluation_oeh.xml',
+
+
+
+
+		# Services
+		'views/services/service.xml',
+
+
+		# Procedures
+		'views/procedures/procedure.xml',
+
+
+
+		# Consultation
+		'views/consultations/consultation.xml',
+
+
+
+		# Treatments 
+		'views/treatments/treatment.xml',
+
+
+
+
+		# Cosmetologies
+		'views/cosmetologies/cosmetology.xml',
+
+
+		# Physicians 
+		'views/physicians/physician.xml',
+
+		# Patients 
+		'views/patients/patient.xml',
+
+
+
+
+		# Appointments
+		'views/appointments/appointment.xml',
+
 
 
 		# Products
 		'views/products/product.xml',		
-		'views/products/product_excilite.xml',
-		'views/products/product_ipl.xml',
-		'views/products/product_ndyag.xml',
-		'views/products/product_medical.xml',
 
-		
 
-		# Services
-		'views/services/service.xml',
+
+		# Menus
+		'views/menus.xml',
+
+
+
+		# Static - Stylesheet 
+		'views/openhealth.xml',		
+
+
+
+
+
+
+		# ----------------------------------------------------------- Second Level ------------------------------------------------------
+
+		# Sessions - 2 
+		'views/sessions/session_med.xml',
+		'views/sessions/session_configuration.xml',
+		'views/sessions/session_cos.xml',
+		'views/sessions/session_measures.xml',
+
+
+
+		# Evaluations - 2
+		'views/evaluations/evaluation_oeh.xml',
+
+
+
+
+		# Services - 2  
 		'views/services/service_co2.xml',
 		'views/services/service_co2_zone.xml',
 		'views/services/service_excilite.xml',
@@ -165,63 +204,32 @@
 		'views/services/service_ndyag_zone.xml',
 		'views/services/service_medical.xml',
 		'views/services/service_medical_zone.xml',
-
-
 		'views/services/service_cosmetology.xml',
 		'views/services/service_cosmetology_zone.xml',
 
 
 
 
-		# Procedures
-		'views/procedures/procedure.xml',
+
+		# Procedures - 2  
 		'views/procedures/procedure_controls.xml',
 		'views/procedures/procedure_sessions.xml',		
-
-		#'views/procedures/procedure_appointment.xml',
-		#'views/procedures/procedure_controls_appointment.xml',
-		#'views/procedures/procedure_configuration.xml',
-
 		'views/procedures/procedure_cos.xml',
 		'views/procedures/procedure_cos_sessions.xml',		
 
 
 
-
-
-
-		# Consultation
-		'views/consultations/consultation.xml',
-
+		# Consultation - 2
 		'views/consultations/consultation_med.xml',
-		#'views/consultations/consultation_first.xml',
 		'views/consultations/consultation_med_first.xml',
-
-		#'views/consultations/consultation_order.xml',
-		#'views/consultations/consultation_appointment.xml',
-		#'views/consultations/consultation_services_co2.xml',
-		#'views/consultations/consultation_services_ipl.xml',
-		#'views/consultations/consultation_services_excilite.xml',
-		#'views/consultations/consultation_services_ndyag.xml',
-		#'views/consultations/consultation_medical_treatment.xml',
-
-
 		'views/consultations/consultation_cos.xml',
 		'views/consultations/consultation_cos_first.xml',
 
 
 
-
-
-
-		# Treatments 
-		'views/treatments/treatment.xml',
+		# Treatments - 2 
 		'views/treatments/treatment_consultations.xml',
-
-
 		'views/treatments/treatment_orders.xml',
-		
-
 		'views/treatments/treatment_procedures.xml',
 		'views/treatments/treatment_appointments.xml',
 		'views/treatments/treatment_reservations.xml',
@@ -233,62 +241,42 @@
 
 
 
-		# Cosmetologies
-		'views/cosmetologies/cosmetology.xml',
+		# Cosmetologies - 2 
 		'views/cosmetologies/cosmetology_services.xml',
 		'views/cosmetologies/cosmetology_orders.xml',
 		'views/cosmetologies/cosmetology_procedures.xml',
 		'views/cosmetologies/cosmetology_sessions.xml',
 		'views/cosmetologies/cosmetology_appointments.xml',
 		'views/cosmetologies/cosmetology_consultations.xml',
-
-
 		'views/cosmetologies/cosmetology_reservations.xml',
 
 
 
-
-		# Therapists 
-		#'views/therapists/therapist.xml',
-
-
-
-		# Physicians 
-		'views/physicians/physician.xml',
-
-
-
-
-		# Patients 
-		'views/patients/patient.xml',
+		# Patients - 2 
 		'views/patients/patient_personal.xml',
 		'views/patients/patient_treatments.xml',
 		'views/patients/patient_control_docs.xml',
 		'views/patients/patient_appointments.xml',
-
 		'views/patients/patient_cosmetologies.xml',
 
 
 
-		# Appointments
-		'views/appointments/appointment.xml',
-
+		# Appointments - 2
 		'views/appointments/calendar.xml',
-
 		'views/appointments/appointment_cos.xml',
 
 
-
-		# Menus
-		'views/menus.xml',
+		],
 
 
 
 
-		# Static - Stylesheet 
-		'views/openhealth.xml',		
+
+	'data_jx': [
 
 	],
+
+
 
 
 	# only loaded in demonstration mode

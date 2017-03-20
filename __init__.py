@@ -6,13 +6,10 @@ from . import models
 
 
 import openerp.addons.oehealth
-#import openerp.addons.openextension
-
-
-
 
 
 
 #jx - This is deprecated 
 #import openerp.addons.oehealth.oeh_medical.oeh_medical
 #import openerp.addons.openhealth-patient
+#import openerp.addons.openextension

@@ -350,6 +350,7 @@
 			action="product_template_co2_list_action"/>
 
 
+
 		<menuitem id="product_template_excilite_menu" name="Productos Excilite"
 			parent="openhealth_menu"
 			sequence="21"

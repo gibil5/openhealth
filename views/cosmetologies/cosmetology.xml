@@ -96,6 +96,8 @@
 
 							name="create_invoice" 
 						/>
+
+							states="budget"
 						-->
 
 
@@ -109,7 +111,8 @@
 
 							string="Consulta" 
 
-							states="budget"
+
+							states="invoice"
 
 							name="create_consultation" 
 						/>
@@ -131,6 +134,7 @@
 							class="oe_highlight"
 
 							string="Procedimiento" 
+
 
 							states="consultation"
 

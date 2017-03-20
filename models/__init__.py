@@ -21,6 +21,8 @@ from . import evaluation
 #from . import learn_1
 #from . import quotation
 #from . import pathology
+#from . import therapist 
+
 
 
 
@@ -29,7 +31,6 @@ from . import evaluation
 from . import process 
 from . import treatment 
 from . import cosmetology
-#from . import therapist 
 
 from . import physician 
 
@@ -82,11 +83,7 @@ from . import event
 
 
 
-
-
-
 from . import appointment 
-
 from . import appointment_cos
 
 

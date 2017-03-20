@@ -195,13 +195,13 @@
 								<!--
 								<field string='Estado civil'  name="marital_status" required="1"/>									
 								-->
-								<field name="x_dni"  />
+								<field name="x_dni"  required="1"/>
 							</group>
 
 
 							<group>
-								<field name="x_allergies"/>
-								<field name="x_first_contact"/>
+								<field name="x_allergies"		required="1"/>
+								<field name="x_first_contact"	required="1"/>
 							</group>
 
 							<group>

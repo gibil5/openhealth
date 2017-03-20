@@ -371,10 +371,12 @@
 
 
 
-
+<!--
+EC2
 				<xpath expr="//field[@name='margin']" position="replace">
 				</xpath>
-				
+-->				
+
 
 
 				<xpath expr="//field[@name='order_line']" position="replace">

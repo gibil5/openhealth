@@ -86,8 +86,10 @@
 				<field string="Teléfono 2" name="phone" placeholder=""/>
 				<field  name="phone" />
 				-->
-				<field name="phone_1" />
+
+				<field name="phone_1" 	required="1"/>
 				<field  name="phone_2" />
+			
 			</group>
 		</group>
 

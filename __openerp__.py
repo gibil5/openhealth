@@ -16,9 +16,9 @@
 
 		Clínica Chavarri\n
 
-		Laser - EMR (Electronic Medical Records)\n
+		Laser - EMR - Min - Ama\n
 
-		Last built: 	17 Mar 2017
+		Last built: 	20 Mar 2017
 
 		Created: 	 	7 Sep 2016
 

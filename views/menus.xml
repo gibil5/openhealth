@@ -19,7 +19,7 @@
 		<!-- Appointments -->
 		<menuitem id="main_appointment_menu" 
 			name="Citas"
-			sequence="5"
+			sequence="0"
 			/>
 
 
@@ -33,11 +33,6 @@
 			name="Citas - Cosmiatría"
 			parent="main_appointment_menu"
 			/>
-
-
-
-
-
 
 		<!-- Confirmed --> 
 		<menuitem 
@@ -66,12 +61,6 @@
 		/>
 
 
-
-
-
-
-
-
 		<!-- Confirmed - Cos --> 
 		<menuitem 
 					action="oeh_medical_appointment_action_tree_confirmed_cos" 
@@ -98,6 +87,57 @@
 
 
 
+
+<!-- EMR -->
+
+		<!-- Main - EMR -->
+		<menuitem 	id="main_emr_menu" 
+					sequence="0"
+					name="Historias Médicas"/>
+
+
+
+
+		<menuitem 	id="emr_menu" 
+					name="Historias Médicas"
+					parent="main_emr_menu"/>
+
+
+
+		<menuitem 	id="emr_patients_menu" 
+					name="Pacientes" 
+					parent="emr_menu"
+					sequence="1"
+					action="patient_list_action"/>
+
+
+<!--
+		<menuitem id="physicians_menu" name="Médicos - Branch"
+			parent="main_emr_menu"/>
+
+					action="oehealth.oeh_medical_physician_action_tree" 
+-->
+
+		<menuitem 	id="oeh_medical_physician_list"  
+					name="Médicos"
+
+					action="physician_list_action" 
+					
+					parent="emr_menu" 
+					sequence="2"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- Open Health -->
 
 		<!-- Main - Open Health -->
@@ -107,8 +147,6 @@
 
 		<menuitem id="openhealth_menu" name="Open Health"
 			parent="main_openhealth_menu"/>
-
-
 
 
 

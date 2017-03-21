@@ -159,6 +159,10 @@
 				<xpath expr="//button[@name='action_confirm']" position="replace">
 				</xpath>
 
+				<xpath expr="//button[@name='action_done']" position="replace">
+				</xpath>
+
+
 <!--
 				<xpath expr="//button[@name='225']" position="replace">
 				</xpath>
@@ -167,8 +171,8 @@
 -->
 
 
-				<xpath expr="//button[@name='action_done']" position="replace">
-				</xpath>
+
+
 
 
 

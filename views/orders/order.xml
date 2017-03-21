@@ -128,17 +128,60 @@
 				<xpath expr="pass of position" position="the postion">
 				-->		
 
-				<!-- Buttons in Header --> 
+
+
+
+
 <!--
-				<xpath expr="//button[@name='action_quotation_send']" position="replace">
 
 				<xpath expr="//header" position="inside">
 -->
+
+
+				<!-- OLD Buttons - DEPRECATED --> 
+				<!-- Two times important --> 
+				<xpath expr="//button[@name='action_quotation_send']" position="replace">
+				</xpath>
+				<xpath expr="//button[@name='action_quotation_send']" position="replace">
+				</xpath>
+
+
+
+				<xpath expr="//button[@name='print_quotation']" position="replace">
+				</xpath>
+				<xpath expr="//button[@name='print_quotation']" position="replace">
+				</xpath>
+
+
+
+				<xpath expr="//button[@name='action_confirm']" position="replace">
+				</xpath>
+				<xpath expr="//button[@name='action_confirm']" position="replace">
+				</xpath>
+
+
+				<xpath expr="//button[@name='225']" position="replace">
+				</xpath>
+				<xpath expr="//button[@name='225']" position="replace">
+				</xpath>
+
+
+
+				<xpath expr="//button[@name='action_done']" position="replace">
+				</xpath>
+
+
+
+
+
+
+
+
+
+
+
+				<!-- NEW BUTTONS --> 
 				<xpath expr="//field[@name='x_state']" position="before">
-
-
-
-
 					<!-- Pagar -->
 <!--
 							states="draft"						

@@ -574,6 +574,7 @@ class Consultation(models.Model):
 
 		partner_id = self.env['res.partner'].search([('name','like',self.patient.name)],limit=1).id
 
+
 		#print 'patient_id: ', patient_id
 		#print 'doctor_id: ', doctor_id
 		#print 'patient name: ', self.patient.name 

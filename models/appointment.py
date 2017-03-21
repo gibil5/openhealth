@@ -85,8 +85,10 @@ class Appointment(models.Model):
 	# Doctor 
 	doctor = fields.Many2one(
 			'oeh.medical.physician',			
-			string = "Médico", 	
+			string = "Médico", 
+
 			#default=defaults._doctor,
+			
 			required=True, 
 			#required=False, 
 			readonly = False, 
@@ -450,7 +452,7 @@ class Appointment(models.Model):
 			
 			string = "Paciente", 	
 
-			default = defaults._patient,
+			#default = defaults._patient,
 
 			#required=True, 
 			readonly = False, 

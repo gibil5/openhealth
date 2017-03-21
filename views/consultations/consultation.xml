@@ -36,13 +36,22 @@
 
 
 						<!--
-						<div		attrs="{'invisible':[('nr_service','>', 0),]}">
-														string="Crear Servicio - LASER CO2"
+						<div	
+
+								attrs="{'invisible':[('nr_service','>', 0),]}"
+								>
+								
+								string="Crear Servicio - LASER CO2"
 	
 						-->
 
+
+
 							<!-- CO2 --> 
 							<button 
+								attrs="{'invisible':[('x_target','!=', 'doctor'),]}"
+
+
 								type="object" 
 								class="oe_highlight"	
 
@@ -51,9 +60,11 @@
 								name="create_service_co2" 	
 							/>
 
-
 							<!-- Excilite -->
 							<button 
+								attrs="{'invisible':[('x_target','!=', 'doctor'),]}"
+
+
 								type="object" 
 								class="oe_highlight"	
 
@@ -62,10 +73,11 @@
 								name="create_service_excilite" 	
 							/>
 
-
-
 							<!-- M22-IPL --> 
 							<button 
+								attrs="{'invisible':[('x_target','!=', 'doctor'),]}"
+
+
 								type="object" 
 								class="oe_highlight"	
 								string=" M22-IPL"
@@ -75,6 +87,9 @@
 
 							<!-- M22-NDYAG --> 
 							<button 
+								attrs="{'invisible':[('x_target','!=', 'doctor'),]}"
+
+
 								type="object" 
 								class="oe_highlight"	
 								string=" M22-NDYAG"
@@ -82,9 +97,11 @@
 								name="create_service_ndyag" 	
 							/>
 
-
 							<!-- T. MEDICO -->
 							<button 
+								attrs="{'invisible':[('x_target','!=', 'doctor'),]}"
+
+
 								type="object" 
 								class="oe_highlight"	
 								string="T. MEDICO"
@@ -94,9 +111,13 @@
 
 
 
+
+<!--
+								class="oe_highlight oe_right"
+-->
 							<button 
 								type="object" 
-								class="oe_highlight oe_right"
+								class="oe_highlight "
 
 								string="Presupuesto" 
 
@@ -416,6 +437,9 @@
 								<field name="appointment"	required="0"/>	
 								-->								
 								<field name="appointment"   required="1"/>	
+
+
+								<field name="x_target"		/>
 							</group>							
 							<group>						
 <!--

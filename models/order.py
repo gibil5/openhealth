@@ -264,6 +264,8 @@ class sale_order(models.Model):
 		)
 
 
+
+
 	#@api.multi
 	@api.depends('x_doctor')
 

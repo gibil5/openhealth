@@ -19,6 +19,7 @@ import jrfuncs
 import eval_vars
 import time_funcs
 
+import app_vars
 
 
 class Consultation(models.Model):
@@ -29,11 +30,23 @@ class Consultation(models.Model):
 	
 
 
-
 	# Name 
 	name = fields.Char(
 			string = 'Consulta #',
 			)
+
+
+
+
+
+	x_target = fields.Selection(
+			string="Target", 
+			selection = app_vars._target_list, 
+			default="doctor", 
+
+			#required=True, 
+		)
+
 
 
 

@@ -19,6 +19,7 @@ import jrfuncs
 import eval_vars
 import time_funcs
 
+import app_vars
 
 
 
@@ -29,6 +30,20 @@ class ConsultationCos(models.Model):
 
 	_name = 'openhealth.consultation.cos'
 	
+
+
+
+
+	x_target = fields.Selection(
+			string="Target", 
+			selection = app_vars._target_list, 
+			default="therapist", 
+
+			#required=True, 
+		)
+
+
+
 
 
 

@@ -168,19 +168,41 @@
 				</xpath>
 				<xpath expr="//button[@name='225']" position="replace">
 				</xpath>
+
+
+
+				<xpath expr="//page[@string='Other Information']" position="replace">
+				</xpath>
+
+<xpath expr="//page[@string='Other Information']" position="attributes" >
+    <attribute name="invisible">1</attribute>
+</xpath>
+
+<xpath expr="/form/notebook/page[@string='Other Information']" position="attributes">
+    <attribute name="invisible">1</attribute>
+</xpath>
+
+
+            <page string="Other Information" position="attributes">
+                <attribute name='invisible'>1</attribute> 
+            </page>
 -->
 
 
 
 
+<xpath expr="//page[1]" position="attributes">
+
+	<attribute name='string'>Líneas</attribute> 
+
+</xpath>
 
 
 
 
-
-
-
-
+<xpath expr="//page[2]" position="attributes">
+	<attribute name='invisible'>1</attribute> 
+</xpath>
 
 
 

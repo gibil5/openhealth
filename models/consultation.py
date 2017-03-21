@@ -568,7 +568,9 @@ class Consultation(models.Model):
 		consultation_id = self.id 
 		patient_id = self.patient.id
 		doctor_id = self.doctor.id
-		chief_complaint = self.chief_complaint
+
+		#chief_complaint = self.chief_complaint
+
 
 		partner_id = self.env['res.partner'].search([('name','like',self.patient.name)],limit=1).id
 
@@ -606,7 +608,8 @@ class Consultation(models.Model):
 														'x_doctor': doctor_id,	
 														'consultation':self.id,
 														'state':'draft',
-														'x_chief_complaint':chief_complaint,
+
+														#'x_chief_complaint':chief_complaint,
 													}
 												)
 
@@ -664,7 +667,7 @@ class Consultation(models.Model):
 							'default_patient': patient_id,	
 							'default_x_doctor': doctor_id,	
 							
-							'default_x_chief_complaint': chief_complaint,	
+							#'default_x_chief_complaint': chief_complaint,	
 						}
 			}
 

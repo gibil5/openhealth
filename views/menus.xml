@@ -96,11 +96,11 @@
 					name="Historias Médicas"/>
 
 
-
-
 		<menuitem 	id="emr_menu" 
 					name="Historias Médicas"
 					parent="main_emr_menu"/>
+
+
 
 
 
@@ -109,7 +109,6 @@
 					parent="emr_menu"
 					sequence="1"
 					action="patient_list_action"/>
-
 
 <!--
 		<menuitem id="physicians_menu" name="Médicos - Branch"
@@ -128,6 +127,34 @@
 
 
 
+
+
+
+<!-- Sales -->
+
+		<!-- Main - sales -->
+		<menuitem 	id="main_sales_menu" 
+					sequence="0"
+					name="Ventas - Main"/>
+
+		<menuitem 	id="sales_menu" 
+					name="Ventas - Branch"
+					parent="main_sales_menu"/>
+
+
+
+		<menuitem 	id="sales_budget_menu" 
+					name="Presupuestos" 
+					parent="sales_menu"
+					sequence="1"
+					action="budget_list_action"/>
+
+
+		<menuitem 	id="sales_invoice_menu" 
+					name="Facturas" 
+					parent="sales_menu"
+					sequence="1"
+					action="invoice_list_action"/>
 
 
 

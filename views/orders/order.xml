@@ -841,6 +841,8 @@ EC2
 		
 
 
+
+
 		<record model="ir.actions.act_window" id="budget_list_action">
 			<field name="name">Presupuestos - Local</field>
 			<field name="res_model">sale.order</field>
@@ -869,8 +871,8 @@ EC2
 		</record>
 
 
-		<record model="ir.actions.act_window" id="invoice_list_action">
-			<field name="name">Facturas - Local</field>
+		<record model="ir.actions.act_window" id="sale_list_action">
+			<field name="name">Ventas - Local</field>
 			<field name="res_model">sale.order</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>

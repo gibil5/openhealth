@@ -135,10 +135,10 @@
 		<!-- Main - sales -->
 		<menuitem 	id="main_sales_menu" 
 					sequence="0"
-					name="Ventas - Main"/>
+					name="Caja"/>
 
 		<menuitem 	id="sales_menu" 
-					name="Ventas - Branch"
+					name="Caja"
 					parent="main_sales_menu"/>
 
 
@@ -151,10 +151,10 @@
 
 
 		<menuitem 	id="sales_invoice_menu" 
-					name="Facturas" 
+					name="Ventas" 
 					parent="sales_menu"
-					sequence="1"
-					action="invoice_list_action"/>
+					sequence="2"
+					action="sale_list_action"/>
 
 
 

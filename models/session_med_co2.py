@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# 	*** Session Med - Co2
+# 	*** Session Med - Co2 - Deprecated
 #
 
 # Created: 				 22 Mar 2017

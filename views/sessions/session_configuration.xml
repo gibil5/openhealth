@@ -36,17 +36,36 @@
 						<!-- Co2 -->
 						<group string="Láser Co2"  attrs="{'invisible':[('laser', '!=', 'laser_co2')]}">
 							<group>
+
+<!--								
 								<field name="co2_power"				required="1"/>
-								<field name="vspace"/>								
 								<field name="co2_frequency"			required="1"/>
-								<field name="vspace"/>
 								<field name="co2_energy"			required="1"/>
-								<field name="vspace"/>
-								<field name="co2_mode_emission"		required="1"/>
-								<field name="vspace"/>
-								<field name="co2_mode_exposure"		required="1"/>
-								<field name="vspace"/>
+								<field name="co2_mode_emission"		required="1"/>								
+								<field name="co2_mode_exposure"		required="1"/>								
 								<field name="co2_observations"		required="1"/>
+-->
+								<field name="co2_power"				attrs = "{'required':[('laser','in',('laser_co2'))]}"	/>
+
+								<field name="vspace"/>
+
+								<field name="co2_frequency"			attrs = "{'required':[('laser','in',('laser_co2'))]}"	/>
+								
+								<field name="vspace"/>
+								
+								<field name="co2_energy"			attrs = "{'required':[('laser','in',('laser_co2'))]}"	/>
+								
+								<field name="vspace"/>
+								
+								<field name="co2_mode_emission"		attrs = "{'required':[('laser','in',('laser_co2'))]}"/>
+								
+								<field name="vspace"/>
+								
+								<field name="co2_mode_exposure"		attrs = "{'required':[('laser','in',('laser_co2'))]}"/>
+								
+								<field name="vspace"/>
+								
+								<field name="co2_observations"		attrs = "{'required':[('laser','in',('laser_co2'))]}"/>
 							</group>
 						</group>
 						
@@ -59,15 +78,15 @@
 						-->
 						<group string="Láser Eximer 308 nm"   attrs="{'invisible':[('laser', '!=', 'laser_excilite')]}">
 							<group>
-								<field name="exc_time"			required="1"/>
+								<field name="exc_time"			attrs = "{'required':[('laser','in',('laser_excilite'))]}"/>
 								<field name="vspace"/>								
-								<field name="exc_dose"			required="1"/>
+								<field name="exc_dose"			attrs = "{'required':[('laser','in',('laser_excilite'))]}"/>
 								<field name="vspace"/>								
-								<field name="exc_dose_selected"	required="1"/>
+								<field name="exc_dose_selected"	attrs = "{'required':[('laser','in',('laser_excilite'))]}"/>
 								<field name="vspace"/>		
-								<field name="exc_dose_provided"	required="1"/>
+								<field name="exc_dose_provided"	attrs = "{'required':[('laser','in',('laser_excilite'))]}"/>
 								<field name="vspace"/>								
-								<field name="exc_observations"	required="1"/>
+								<field name="exc_observations"	attrs = "{'required':[('laser','in',('laser_excilite'))]}"/>
 							</group>
 						</group>
 						
@@ -81,25 +100,25 @@
 						<group string="Láser M22-IPL"  attrs="{'invisible':[('laser', '!=', 'laser_ipl')]}">
 
 							<group>
-								<field name="ipl_fluency"		required="1"/>
+								<field name="ipl_fluency"			attrs = "{'required':[('laser','in',('laser_ipl'))]}"/>
 								<field name="vspace"/>								
-								<field name="ipl_phototype"		required="1"/>
+								<field name="ipl_phototype"			attrs = "{'required':[('laser','in',('laser_ipl'))]}"/>
 								<field name="vspace"/>								
-								<field name="ipl_lesion_type"	required="1"/>
+								<field name="ipl_lesion_type"		attrs = "{'required':[('laser','in',('laser_ipl'))]}"/>
 								<field name="vspace"/>								
-								<field name="ipl_lesion_depth"	required="1"/>
+								<field name="ipl_lesion_depth"		attrs = "{'required':[('laser','in',('laser_ipl'))]}"/>
 								<field name="vspace"/>								
-								<field name="ipl_pulse_type"	required="1"/>
+								<field name="ipl_pulse_type"		attrs = "{'required':[('laser','in',('laser_ipl'))]}"/>
 								<field name="vspace"/>								
-								<field name="ipl_pulse_duration"		required="1"/>
+								<field name="ipl_pulse_duration"	attrs = "{'required':[('laser','in',('laser_ipl'))]}"/>
 								<field name="vspace"/>								
-								<field name="ipl_pulse_time_between"	required="1"/>
+								<field name="ipl_pulse_time_between"	attrs = "{'required':[('laser','in',('laser_ipl'))]}"/>
 								<field name="vspace"/>								
-								<field name="ipl_filter"		required="1"/>
+								<field name="ipl_filter"			attrs = "{'required':[('laser','in',('laser_ipl'))]}"/>
 								<field name="vspace"/>								
-								<field name="ipl_spot"			required="1"/>
+								<field name="ipl_spot"				attrs = "{'required':[('laser','in',('laser_ipl'))]}"/>
 								<field name="vspace"/>								
-								<field name="ipl_observations"	required="1"/>
+								<field name="ipl_observations"		attrs = "{'required':[('laser','in',('laser_ipl'))]}"/>
 							</group>
 						</group>
 						
@@ -112,15 +131,15 @@
 						--> 
 						<group string="Láser M22-NDYAG"  attrs="{'invisible':[('laser', '!=', 'laser_ndyag')]}">
 							<group>
-								<field name="ndy_fluency"		required="1"/>
-								<field name="ndy_phototype"		required="1"/>
-								<field name="ndy_lesion_type"	required="1"/>
-								<field name="ndy_lesion_depth"	required="1"/>
-								<field name="ndy_pulse_type"	required="1"/>
-								<field name="ndy_pulse_duration"		required="1"/>
-								<field name="ndy_pulse_time_between"	required="1"/>
-								<field name="ndy_pulse_spot"	required="1"/>
-								<field name="ndy_observations"	required="1"/>
+								<field name="ndy_fluency"				attrs = "{'required':[('laser','in',('laser_ndyag'))]}"/>
+								<field name="ndy_phototype"				attrs = "{'required':[('laser','in',('laser_ndyag'))]}"/>
+								<field name="ndy_lesion_type"			attrs = "{'required':[('laser','in',('laser_ndyag'))]}"/>
+								<field name="ndy_lesion_depth"			attrs = "{'required':[('laser','in',('laser_ndyag'))]}"/>
+								<field name="ndy_pulse_type"			attrs = "{'required':[('laser','in',('laser_ndyag'))]}"/>
+								<field name="ndy_pulse_duration"		attrs = "{'required':[('laser','in',('laser_ndyag'))]}"/>
+								<field name="ndy_pulse_time_between"	attrs = "{'required':[('laser','in',('laser_ndyag'))]}"/>
+								<field name="ndy_pulse_spot"			attrs = "{'required':[('laser','in',('laser_ndyag'))]}"/>
+								<field name="ndy_observations"			attrs = "{'required':[('laser','in',('laser_ndyag'))]}"/>
 							</group>
 						</group>	
 					</page>

@@ -56,6 +56,10 @@
             <field name="name">Caja - Low level</field>
         </record>
 
+        <record id="openhealth.openhealth_reception" model="res.groups">
+            <field name="name">Plataforma - Low level</field>
+        </record>
+
 
 
 

@@ -94,7 +94,7 @@
 		<menuitem 	id="main_emr_menu" 
 					sequence="0"
 					name="Historias Médicas"
-					groups="openhealth.openhealth_physicians"
+					groups="openhealth.openhealth_physicians,openhealth.openhealth_reception"
 					/>
 
 
@@ -139,7 +139,7 @@
 		<menuitem 	id="main_sales_menu" 
 					sequence="0"
 					name="Caja"
-					groups="openhealth.openhealth_caja"
+					groups="openhealth.openhealth_caja,openhealth.openhealth_reception"
 					/>
 
 

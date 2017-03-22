@@ -235,7 +235,9 @@
 		that is an action opening a view or a set of views
 		-->
 		<record model="ir.actions.act_window" id="patient_list_action">
-			<field name="name">Pacientes - Local</field>
+			
+			<field name="name">Pacientes</field>
+			
 			<field name="res_model">oeh.medical.patient</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">kanban,tree,form</field>

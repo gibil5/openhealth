@@ -93,12 +93,15 @@
 		<!-- Main - EMR -->
 		<menuitem 	id="main_emr_menu" 
 					sequence="0"
-					name="Historias Médicas"/>
+					name="Historias Médicas"
+					groups="openhealth.openhealth_physicians"
+					/>
 
 
 		<menuitem 	id="emr_menu" 
 					name="Historias Médicas"
-					parent="main_emr_menu"/>
+					parent="main_emr_menu"
+					/>
 
 
 
@@ -135,12 +138,15 @@
 		<!-- Main - sales -->
 		<menuitem 	id="main_sales_menu" 
 					sequence="0"
-					name="Caja"/>
+					name="Caja"
+					groups="openhealth.openhealth_caja"
+					/>
+
+
 
 		<menuitem 	id="sales_menu" 
 					name="Caja"
 					parent="main_sales_menu"/>
-
 
 
 		<menuitem 	id="sales_budget_menu" 
@@ -155,6 +161,32 @@
 					parent="sales_menu"
 					sequence="2"
 					action="sale_list_action"/>
+
+
+
+
+
+<!-- Contacts -->
+<!--
+		<menuitem 	id="main_contacts_menu" 
+					sequence="0"
+					name="Contactos"/>
+
+		<menuitem 	id="contacts_menu" 
+					name="Contactos"
+					parent="main_contacts_menu"/>
+
+
+		<menuitem 	id="mbox_contacts_menu" 
+					name="Mailbox" 
+					parent="contacts_menu"
+					sequence="1"
+
+					action="mail.action_contacts"/>
+
+            <menuitem id="menu_config_address_book" parent="base.menu_sale_config" name="Contacts" sequence="4" groups="group_system"/>
+-->
+
 
 
 

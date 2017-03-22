@@ -75,6 +75,9 @@
 		'security/ir.model.access.csv',
 		'security/ir.rule.xml',
 
+		'security/openhealth_security.xml',
+
+
 
 
 		# ----------------------------------------------------------- Base ------------------------------------------------------

@@ -31,5 +31,23 @@
         </record>
         --> 
 
+
+
+
+        <!-- Emtpy group --> 
+<!--
+            <field name="category_id" ref="module_oeh_medical_category"/>
+-->
+        <record id="make_invisible" model="res.groups">
+            <field name="name">Invisible</field>
+        </record>
+        
+<!--        
+        <record model="ir.ui.menu" id="module.menu_name">
+-->
+        <record model="ir.ui.menu" id="module.main_openhealth_menu">
+            <field name="groups_id" eval="[(6,0,[ref('make_invisible')])]"/>
+        </record>
+
     </data>
 </openerp>

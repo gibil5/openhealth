@@ -160,9 +160,12 @@
 
 
 
-
-
-
+<!--
+		<menuitem 	id="tabel_menu_emp_by_division" name="Employees by division"
+              		parent="tabel_menu"
+              		action="tabel_list_emp_action_group_by_division"  sequence="5" 
+              		groups="Tabel.group_manager,Tabel.group_accountant,Tabel.group_eco"/>
+-->
 
 
 <!-- Open Health -->
@@ -170,7 +173,9 @@
 		<!-- Main - Open Health -->
 		<menuitem id="main_openhealth_menu" 
 			sequence="6"
-			name="Open Health"/>
+			name="Open Health"
+			groups=""
+			/>
 
 		<menuitem id="openhealth_menu" name="Open Health"
 			parent="main_openhealth_menu"/>

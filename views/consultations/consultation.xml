@@ -439,12 +439,15 @@
 								<field name="appointment"   required="1"/>	
 
 
+								<field name="vspace"/>
 								<field name="x_target"		/>
 							</group>							
 							<group>						
-<!--
--->
 								<field name="x_photo_aging"  	required="1"/>	
+
+
+								<field name="vspace"/>
+								<field name="x_profile"/>	
 							</group>
 
 

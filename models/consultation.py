@@ -39,6 +39,15 @@ class Consultation(models.Model):
 
 
 
+	x_profile = fields.Selection(
+			string="Perfil psicológico", 
+			selection=app_vars._profile_list, 
+		)
+
+
+
+
+
 	x_target = fields.Selection(
 			string="Target", 
 			selection = app_vars._target_list, 

@@ -116,9 +116,12 @@ def test_name(self, token):
 		if nr_words == 1:
 			return {
 					'warning': {
-						'title': "Error: Apellido incompleto: ",
+						'title': "Error: Introduzca los dos Apellidos.",
 						'message': token,
 					}}
+
+		else:
+			return 0
 
 
 

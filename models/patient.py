@@ -21,6 +21,11 @@ class Patient(models.Model):
 
 
 
+	x_first_impression = fields.Char(
+			string="Primera impresión", 
+			required=False, 
+		)
+
 
 # ----------------------------------------------------------- Autofill ------------------------------------------------------
 	
@@ -431,6 +436,25 @@ class Patient(models.Model):
 	def _onchange_x_last_name(self):
 		if self.x_last_name and self.x_first_name:
 			self.name = pat_funcs.strip_accents(self.x_last_name.upper() + ' ' + self.x_first_name)
+
+
+
+
+	@api.onchange('x_last_name')
+	def _onchange_x_last_name_test(self):
+		
+		print 'Test name'
+
+		if self.x_last_name:
+			ret = pat_funcs.test_name(self, self.x_last_name)
+			
+			print ret 
+			print 
+			
+			return ret
+
+
+
 
 
 

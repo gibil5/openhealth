@@ -2,6 +2,24 @@
 
 
 
+# Profile
+_profile_list = [
+
+		('normal','Normal'), 
+		('anxious','Ansioso'), 
+		('psychiatric','Psiquiátrico'), 
+		('plaintif','Quejoso'), 
+		('depressed','Deprimido'), 
+		('histroinic','Histriónico'), 
+		('other','Otro'), 
+		
+		#('',''), 
+]
+
+
+
+
+
 
 # Machines
 _machines_cos_list = [

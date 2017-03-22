@@ -20,6 +20,7 @@
 		<menuitem id="main_appointment_menu" 
 			name="Citas"
 			sequence="0"
+			groups="openhealth.openhealth_physicians,openhealth.openhealth_caja,openhealth.openhealth_reception"
 			/>
 
 
@@ -139,7 +140,7 @@
 		<menuitem 	id="main_sales_menu" 
 					sequence="0"
 					name="Caja"
-					groups="openhealth.openhealth_caja,openhealth.openhealth_reception"
+					groups="openhealth.openhealth_caja"
 					/>
 
 

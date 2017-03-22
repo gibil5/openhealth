@@ -18,6 +18,7 @@ import time_funcs
 import jrfuncs
 #import session_funcs
 
+import session_vars
 
 
 class SessionMed(models.Model):
@@ -31,7 +32,8 @@ class SessionMed(models.Model):
 
 
 
-	#------------------------------------------------------ Session Med ----------------------------------------------------------
+
+	#------------------------------------------------------ Co2 ----------------------------------------------------------
 
 	# Co2 - Calibration 
 
@@ -49,26 +51,32 @@ class SessionMed(models.Model):
 	
 	
 
-	co2_mode_emission=fields.Char(
+	#co2_mode_emission=fields.Char(
+	co2_mode_emission=fields.Selection(
 			string="Modo de emisión",
-			default="x",
+
+			selection=session_vars._co2_mode_emission_list, 
+			#default="x",
 			)
 	
-	co2_mode_exposure=fields.Char(
+	co2_mode_exposure=fields.Selection(
 			string="Modo de exposición",
-			default="x",
+
+			selection=session_vars._co2_mode_exposure_list, 
+			#default="x",
 			)
 	
 	co2_observations=fields.Text(
 			string="Observaciones",
-			default="x",
+			#default="x",
 			)
 
 
 
 
 
-	# Calibration - Excilite
+
+	#------------------------------------------------------ Excilite ----------------------------------------------------------
 
 	exc_time=fields.Float(
 			#string="Tiempo de tratamiento",
@@ -101,7 +109,8 @@ class SessionMed(models.Model):
 
 
 
-	# Ipl - Calibration 
+
+	#------------------------------------------------------ Ipl ----------------------------------------------------------
 
 	ipl_fluency=fields.Float(
 			string="Fluencia (J/cm2)",
@@ -154,10 +163,11 @@ class SessionMed(models.Model):
 			)
 
 	
+	
 
 
 	
-	# Ndyag - Calibration 
+	#------------------------------------------------------ Ndyag ----------------------------------------------------------
 
 	ndy_fluency=fields.Float(
 			string="Fluencia (J/cm2)",

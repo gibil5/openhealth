@@ -112,6 +112,8 @@
 							<group string="" >								
 								<group>
 									<field name="service" widget="radio"/>
+
+									<field name="price" />
 								</group>
 							</group>
 

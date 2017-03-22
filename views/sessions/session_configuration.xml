@@ -52,6 +52,7 @@
 						
 						
 
+
 						<!-- Excilite --> 
 						<!--
 						<group string="Láser Eximer 308 nm">
@@ -72,6 +73,7 @@
 						
 						
 						
+
 						<!-- Ipl --> 
 						<!--
 						<group string="Láser M22-IPL">
@@ -101,7 +103,8 @@
 							</group>
 						</group>
 						
-						
+
+
 						
 						<!-- Ndyag --> 
 						<!--

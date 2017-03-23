@@ -125,6 +125,15 @@
 
 
 <!-- Canales -->
+		<record id="dr_canales" model="oeh.medical.physician">
+			<field name="name">Dr. Canales</field>
+			<field name="x_type">doctor</field>
+			<field name=" consultancy_type ">residential</field>
+			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
+		</record>
+
+
+
 	   <record id="ava_can_mon" model="oeh.medical.physician.line">
 			<field name="physician_id" ref="dr_canales"/>
 			<field name="name">Monday</field>
@@ -176,12 +185,8 @@
 
 
 
-		<record id="dr_canales" model="oeh.medical.physician">
-			<field name="name">Dr. Canales</field>
-			<field name="x_type">doctor</field>
-			<field name=" consultancy_type ">residential</field>
-			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
 
+		<record id="dr_canales" model="oeh.medical.physician">
 			<field name="line_id" ref="ava_can_mon"/>
 			<field name="line_id" ref="ava_can_tue"/>
 			<field name="line_id" ref="ava_can_wed"/>
@@ -195,6 +200,16 @@
 
 
 <!-- Escudero -->
+		<record id="dr_escudero" model="oeh.medical.physician">
+			<field name="name">Dr. Escudero</field>
+			<field name="x_type">doctor</field>
+			<field name=" consultancy_type ">residential</field>
+			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
+		</record>
+
+
+
+
 		<record id="ava_esc_mon" model="oeh.medical.physician.line">
 			<field name="physician_id" ref="dr_escudero"/>
 			<field name="name">Monday</field>
@@ -246,13 +261,10 @@
 
 
 
+
+
+
 		<record id="dr_escudero" model="oeh.medical.physician">
-			<field name="name">Dr. Escudero</field>
-			<field name="x_type">doctor</field>
-			<field name=" consultancy_type ">residential</field>
-			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
-
-
 			<field name="line_id" ref="ava_esc_mon"/>
 			<field name="line_id" ref="ava_esc_tue"/>
 			<field name="line_id" ref="ava_esc_wed"/>
@@ -267,6 +279,14 @@
 
 
 <!-- Gonzales -->
+		<record id="dr_gonzales" model="oeh.medical.physician">
+			<field name="name">Dr. Gonzales</field>
+			<field name="x_type">doctor</field>
+			<field name=" consultancy_type ">residential</field>
+			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
+		</record>
+
+
 		<record id="ava_gon_mon" model="oeh.medical.physician.line">
 			<field name="physician_id" ref="dr_gonzales"/>
 			<field name="name">Monday</field>
@@ -316,14 +336,10 @@
 			<field name="start_time">8.98333333333</field>
 		</record>
 
+
+
+
 		<record id="dr_gonzales" model="oeh.medical.physician">
-			<field name="name">Dr. Gonzales</field>
-			<field name="x_type">doctor</field>
-			<field name=" consultancy_type ">residential</field>
-			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
-
-
-
 			<field name="line_id" ref="ava_gon_mon"/>
 			<field name="line_id" ref="ava_gon_tue"/>
 			<field name="line_id" ref="ava_gon_wed"/>
@@ -337,6 +353,15 @@
 
 
 <!-- Vasquez -->
+		<record id="dr_vasquez" model="oeh.medical.physician">
+			<field name="name">Dr. Vasquez</field>
+			<field name="x_type">doctor</field>
+			<field name=" consultancy_type ">residential</field>
+			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
+		</record>
+
+
+
 		<record id="ava_vas_mon" model="oeh.medical.physician.line">
 			<field name="physician_id" ref="dr_vasquez"/>
 			<field name="name">Monday</field>
@@ -386,14 +411,10 @@
 			<field name="start_time">8.98333333333</field>
 		</record>
 
+
+
+
 		<record id="dr_vasquez" model="oeh.medical.physician">
-			<field name="name">Dr. Vasquez</field>
-			<field name="x_type">doctor</field>
-			<field name=" consultancy_type ">residential</field>
-			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
-
-
-
 			<field name="line_id" ref="ava_vas_mon"/>
 			<field name="line_id" ref="ava_vas_tue"/>
 			<field name="line_id" ref="ava_vas_wed"/>

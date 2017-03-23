@@ -36,6 +36,15 @@
 
 
 <!-- Chavarri -->
+		<record id="dr_chavarri" model="oeh.medical.physician">
+			<field name="name">Dr. Chavarri</field>
+			<field name="x_type">doctor</field>
+			<field name=" consultancy_type ">residential</field>
+			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
+		</record>
+
+
+
 		<record id="ava_cha_mon" model="oeh.medical.physician.line">
 			<field name="physician_id" ref="dr_chavarri"/>
 			<field name="name">Monday</field>
@@ -87,12 +96,8 @@
 
 
 
-		<record id="dr_chavarri" model="oeh.medical.physician">
-			<field name="name">Dr. Chavarri</field>
-			<field name="x_type">doctor</field>
-			<field name=" consultancy_type ">residential</field>
-			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
 
+		<record id="dr_chavarri" model="oeh.medical.physician">
 			<field name="line_id" ref="ava_cha_mon"/>
 			<field name="line_id" ref="ava_cha_tue"/>
 			<field name="line_id" ref="ava_cha_wed"/>
@@ -101,6 +106,9 @@
 			<field name="line_id" ref="ava_cha_sat"/>
 			<field name="line_id" ref="ava_cha_sun"/>
 		</record>
+
+
+
 
 
 
@@ -612,8 +620,6 @@
 			<field name="line_id" ref="ava_mon_sat"/>
 			<field name="line_id" ref="ava_mon_sun"/>
 		</record>
-
-
 
 
 

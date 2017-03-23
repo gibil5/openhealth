@@ -5,25 +5,15 @@
 -->
 	<data noupdate="0">
  
-<!--
-		<record id="main_partner" model="res.partner" context="{'default_is_company': True}">
-			<field name="name">My Company</field>
-			<field name="company_id" eval="None"/>
-			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
-			<field name="customer" eval="False"/>
-			<field name="is_company" eval="True"/>
-			<field name="street"></field>
-			<field name="city"></field>
-			<field name="zip"></field>
-			<field name="phone"></field>
-			<field name="email">info@yourcompany.com</field>
-			<field name="website">www.yourcompany.com</field>
-		</record>
--->
+
+
+<!-- Data - Physicians -->
+
  
 
 
 
+<!-- Revilla --> 
 		<record id="dr_revilla" model="oeh.medical.physician">
 			<field name="name">Dr. Revilla</field>
 			<field name="x_type">doctor</field>
@@ -112,14 +102,7 @@
 
 
 
-<!-- Acosta
-		<record id="dr_acosta" model="oeh.medical.physician">
-			<field name="name">Dr. Acosta</field>
-			<field name="x_type">doctor</field>
-			<field name=" consultancy_type ">residential</field>
-			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
-		</record>
--->
+
 
 
 
@@ -655,6 +638,35 @@
 			<field name="line_id" ref="ava_mon_sat"/>
 			<field name="line_id" ref="ava_mon_sun"/>
 		</record>
+
+
+
+
+<!-- Acosta
+		<record id="dr_acosta" model="oeh.medical.physician">
+			<field name="name">Dr. Acosta</field>
+			<field name="x_type">doctor</field>
+			<field name=" consultancy_type ">residential</field>
+			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
+		</record>
+-->
+
+
+<!--
+		<record id="main_partner" model="res.partner" context="{'default_is_company': True}">
+			<field name="name">My Company</field>
+			<field name="company_id" eval="None"/>
+			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
+			<field name="customer" eval="False"/>
+			<field name="is_company" eval="True"/>
+			<field name="street"></field>
+			<field name="city"></field>
+			<field name="zip"></field>
+			<field name="phone"></field>
+			<field name="email">info@yourcompany.com</field>
+			<field name="website">www.yourcompany.com</field>
+		</record>
+-->
 
 
 

@@ -642,6 +642,83 @@
 
 
 
+
+<!-- Eulalia -->
+		<record id="eulalia" model="oeh.medical.physician">
+			<field name="name">Eulalia</field>
+			<field name="x_type">therapist</field>
+			<field name=" consultancy_type ">residential</field>
+			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
+		</record>
+
+
+
+		<record id="ava_eul_mon" model="oeh.medical.physician.line">
+			<field name="physician_id" ref="eulalia"/>
+			<field name="name">Monday</field>
+			<field name="end_time">20.0166666667</field>
+			<field name="start_time">9.98333333333</field>
+		</record>
+
+		<record id="ava_eul_tue" model="oeh.medical.physician.line">
+			<field name="physician_id" ref="eulalia"/>
+			<field name="name">Tuesday</field>
+			<field name="end_time">20.0166666667</field>
+			<field name="start_time">9.98333333333</field>
+		</record>
+		
+		<record id="ava_eul_wed" model="oeh.medical.physician.line">
+			<field name="physician_id" ref="eulalia"/>
+			<field name="name">Wednesday</field>
+			<field name="end_time">20.0166666667</field>
+			<field name="start_time">9.98333333333</field>
+		</record>
+		
+		<record id="ava_eul_thu" model="oeh.medical.physician.line">
+			<field name="physician_id" ref="eulalia"/>
+			<field name="name">Thursday</field>
+			<field name="end_time">20.0166666667</field>
+			<field name="start_time">9.98333333333</field>
+		</record>
+		
+		<record id="ava_eul_fri" model="oeh.medical.physician.line">
+			<field name="physician_id" ref="eulalia"/>
+			<field name="name">Friday</field>
+			<field name="end_time">20.0166666667</field>
+			<field name="start_time">9.98333333333</field>
+		</record>
+		
+		<record id="ava_eul_sat" model="oeh.medical.physician.line">
+			<field name="physician_id" ref="eulalia"/>
+			<field name="name">Saturday</field>
+			<field name="end_time">20.0166666667</field>
+			<field name="start_time">9.98333333333</field>
+		</record>
+		
+		<record id="ava_eul_sun" model="oeh.medical.physician.line">
+			<field name="physician_id" ref="eulalia"/>
+			<field name="name">Sunday</field>
+			<field name="end_time">20.0166666667</field>
+			<field name="start_time">9.98333333333</field>
+		</record>
+
+
+
+
+		<record id="eulalia" model="oeh.medical.physician">
+			<field name="line_id" ref="ava_eul_mon"/>
+			<field name="line_id" ref="ava_eul_tue"/>
+			<field name="line_id" ref="ava_eul_wed"/>
+			<field name="line_id" ref="ava_eul_thu"/>
+			<field name="line_id" ref="ava_eul_fri"/>
+			<field name="line_id" ref="ava_eul_sat"/>
+			<field name="line_id" ref="ava_eul_sun"/>
+		</record>
+
+
+
+
+
 <!-- Acosta
 		<record id="dr_acosta" model="oeh.medical.physician">
 			<field name="name">Dr. Acosta</field>

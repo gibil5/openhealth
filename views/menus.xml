@@ -5,7 +5,76 @@
 
 
 
+
 <!-- Menus --> 
+
+
+
+
+<!-- EMR - The First !!! -->
+
+		<!-- Main - EMR -->
+		<menuitem 	id="main_emr_menu" 
+					sequence="-10"
+					name="Historias Médicas - First"
+					groups="openhealth.openhealth_physicians,openhealth.openhealth_reception"
+					/>
+
+
+		<menuitem 	id="emr_menu" 
+					name="Historias Médicas"
+					parent="main_emr_menu"
+					/>
+
+		<menuitem 	id="emr_patients_menu" 
+					name="Pacientes" 
+					parent="emr_menu"
+					sequence="1"
+					action="patient_list_action"/>
+
+		<menuitem 	id="oeh_medical_physician_list"  
+					name="Médicos"
+
+					action="physician_list_action" 
+					
+					parent="emr_menu" 
+					sequence="2"/>
+
+		<!--
+		<menuitem id="physicians_menu" name="Médicos - Branch"
+			parent="main_emr_menu"/>
+
+					action="oehealth.oeh_medical_physician_action_tree" 
+		-->
+
+
+
+
+
+<!-- Sales -->
+
+		<!-- Main - sales -->
+		<menuitem 	id="main_sales_menu" 
+					sequence="-9"
+					name="Caja"
+					groups="openhealth.openhealth_caja"
+					/>
+
+		<menuitem 	id="sales_menu" 
+					name="Caja"
+					parent="main_sales_menu"/>
+
+		<menuitem 	id="sales_budget_menu" 
+					name="Presupuestos" 
+					parent="sales_menu"
+					sequence="1"
+					action="budget_list_action"/>
+
+		<menuitem 	id="sales_invoice_menu" 
+					name="Ventas" 
+					parent="sales_menu"
+					sequence="2"
+					action="sale_list_action"/>
 
 
 
@@ -19,9 +88,10 @@
 		<!-- Appointments -->
 		<menuitem id="main_appointment_menu" 
 			name="Citas"
-			sequence="0"
+			sequence="-8"
 			groups="openhealth.openhealth_physicians,openhealth.openhealth_caja,openhealth.openhealth_reception"
 			/>
+
 
 
 		<menuitem id="oehealth_appointment_menu" 
@@ -89,79 +159,6 @@
 
 
 
-<!-- EMR -->
-
-		<!-- Main - EMR -->
-		<menuitem 	id="main_emr_menu" 
-					sequence="0"
-					name="Historias Médicas"
-					groups="openhealth.openhealth_physicians,openhealth.openhealth_reception"
-					/>
-
-
-		<menuitem 	id="emr_menu" 
-					name="Historias Médicas"
-					parent="main_emr_menu"
-					/>
-
-
-
-
-
-		<menuitem 	id="emr_patients_menu" 
-					name="Pacientes" 
-					parent="emr_menu"
-					sequence="1"
-					action="patient_list_action"/>
-
-<!--
-		<menuitem id="physicians_menu" name="Médicos - Branch"
-			parent="main_emr_menu"/>
-
-					action="oehealth.oeh_medical_physician_action_tree" 
--->
-
-		<menuitem 	id="oeh_medical_physician_list"  
-					name="Médicos"
-
-					action="physician_list_action" 
-					
-					parent="emr_menu" 
-					sequence="2"/>
-
-
-
-
-
-
-<!-- Sales -->
-
-		<!-- Main - sales -->
-		<menuitem 	id="main_sales_menu" 
-					sequence="0"
-					name="Caja"
-					groups="openhealth.openhealth_caja"
-					/>
-
-
-
-		<menuitem 	id="sales_menu" 
-					name="Caja"
-					parent="main_sales_menu"/>
-
-
-		<menuitem 	id="sales_budget_menu" 
-					name="Presupuestos" 
-					parent="sales_menu"
-					sequence="1"
-					action="budget_list_action"/>
-
-
-		<menuitem 	id="sales_invoice_menu" 
-					name="Ventas" 
-					parent="sales_menu"
-					sequence="2"
-					action="sale_list_action"/>
 
 
 

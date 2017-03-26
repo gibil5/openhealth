@@ -127,7 +127,9 @@ class AppointmentCos(models.Model):
 			#else: 
 			#	record.x_doctor_code = self._hash_therapist_code[record.x_therapist.name]
 
-			record.x_doctor_code = self._hash_doctor_code[record.doctor.name]
+
+			#record.x_doctor_code = self._hash_doctor_code[record.doctor.name]
+			record.x_doctor_code = app_vars._hash_doctor_code[record.doctor.name]
 
 
 

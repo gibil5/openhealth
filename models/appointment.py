@@ -4,7 +4,7 @@
 #
 
 # Created: 				14 Nov 2016
-# Last updated: 	 	 7 Mar 2017
+# Last updated: 	 	 26 Mar 2017
 
 
 
@@ -486,56 +486,6 @@ class Appointment(models.Model):
 
 
 
-	# Hash 
-
-	_hash_doctor_code = {
-							False:				'', 
-
-
-							#'Dra. Acosta':		'Dra. A',
-							'Dra. Acosta':		'AC',
-
-							#'Dr. Canales':		'Dr. Ca',
-							'Dr. Canales':		'CA',
-
-							#'Dr. Chavarri':	'Dr. Ch',
-							'Dr. Chavarri':		'CH',
-
-							#'Dr. Gonzales':	'Dr. Go',
-							'Dr. Gonzales':		'GO',
-
-							#'Dr. Escudero':	'Dr. Es',
-							'Dr. Escudero':		'ES',
-
-							#'Dr. Vasquez':		'Dr. Va',
-							'Dr. Vasquez':		'VA',
-
-							#'Dr. Alarcon':		'Dr. Al',
-							'Dr. Alarcon':		'AL',
-
-
-
-							'laser_co2_1':		'Co2_1',
-							'laser_co2_2':		'Co2_2',
-							'laser_co2_3':		'Co2_3',
-
-							'laser_excilite':		'Exc',
-
-							'laser_m22':		'M22',
-
-							#'Pre-control':		'Pre-control',
-							#'Pre-cita':		'Pre-cita',
-
-
-
-							# Cosmetology 
-							'Eulalia':		'EU',
-							'Eulalia 2':	'EU2',
-							'Eulalia 3':	'EU3',							
-		}
-
-
-
 
 
 
@@ -549,7 +499,8 @@ class Appointment(models.Model):
 	@api.depends('doctor')
 	def _compute_x_doctor_code(self):
 		for record in self:
-			record.x_doctor_code = self._hash_doctor_code[record.doctor.name]
+			#record.x_doctor_code = self._hash_doctor_code[record.doctor.name]
+			record.x_doctor_code = app_vars._hash_doctor_code[record.doctor.name]
 
 
 

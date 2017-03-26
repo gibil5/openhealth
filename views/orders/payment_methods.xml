@@ -71,8 +71,9 @@
 								<group></group>
 								<group></group>
 								<group>
+<!--									
 									<field  name="pm_total"/>
-
+-->
 									<field  name="nr_saledocs"		invisible="1"	/>
 									<field  name="pm_complete"		invisible="1"	/>
 								</group>

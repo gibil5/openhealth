@@ -31,6 +31,15 @@
 				-->
 
 
+<!--
+				<xpath expr="//field[@name='validity_date']" position="before">
+					<field name="pm_total" />
+					<field name="pm_complete" />
+					<field name="vspace" />
+				</xpath>
+-->
+
+
 
 
 				<xpath expr="//field[@name='amount_total']" position="replace">
@@ -43,9 +52,13 @@
 				-->
 
 
+
 				<!--
-				-->
 				<xpath expr="//field[@name='validity_date']" position="replace">
+				-->
+				<xpath expr="//field[@name='validity_date']" position="after">
+
+					<field name="vspace" />
 
 					<field name="patient" />
 

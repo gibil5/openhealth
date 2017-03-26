@@ -31,10 +31,70 @@ class sale_order(models.Model):
 
 
 	name = fields.Char(
-			
 			string="Presupuesto #"
-
 		)
+
+
+
+
+
+	validity_date = fields.Char(
+			string="Fecha de expiración"
+		)
+
+
+
+
+
+
+	# Number of paymethods  
+	pm_total = fields.Float(
+								#string="Total",
+								compute="_compute_pm_total",
+	)
+	
+	#@api.multi
+	@api.depends('x_payment_method')
+
+	def _compute_pm_total(self):
+
+		for record in self:
+
+			total = 0.0
+
+			for pm in record.x_payment_method:
+
+				total = total + pm.subtotal
+
+
+			record.pm_total = total
+
+
+
+
+	# Number of paymethods  
+	pm_complete = fields.Boolean(
+								#string="Pm Complete",
+								default = False, 
+								compute="_compute_pm_complete",
+	)
+	
+
+	@api.multi
+	#@api.depends('pm_total')
+
+	def _compute_pm_complete(self):
+
+		for record in self:
+			
+			if (record.pm_total != record.x_amount_total)		or 	 (record.nr_saledocs == 0) : 
+				record.pm_complete = False
+
+			else:
+				record.pm_complete = True
+
+
+
 
 
 
@@ -157,6 +217,8 @@ class sale_order(models.Model):
 	@api.multi
 	#@api.depends('state')
 
+
+
 	def _compute_x_state(self):
 		for record in self:
 
@@ -169,21 +231,29 @@ class sale_order(models.Model):
 
 
 
-			if	record.env['openhealth.payment_method'].search_count([('order','=', record.id),]):
-				record.x_state = 'payment'
-				#record.state = 'payment'
+
+
+			if	record.env['openhealth.payment_method'].search_count([('order','=', record.id),]):	
+
+				#if record.pm_complete:
+				if record.x_amount_total == record.pm_total:
+			
+					#record.state = 'payment'
+					record.x_state = 'payment'
+
+
 
 
 
 			if	record.env['openhealth.sale_document'].search_count([('order','=', record.id),]):
-				record.x_state = 'proof'
 				#record.state = record.x_state
+				record.x_state = 'proof'
 
 
 
 			if record.x_machine != False:
-				record.x_state = 'machine'
 				#record.state = record.x_state
+				record.x_state = 'machine'
 
 
 
@@ -480,9 +550,7 @@ class sale_order(models.Model):
 
 	# Amount total 
 	x_amount_total = fields.Float(
-
 			string = "Total",
-		
 			compute="_compute_x_amount_total",
 		)
 
@@ -645,27 +713,6 @@ class sale_order(models.Model):
 
 
 
-	# Number of paymethods  
-	pm_total = fields.Float(
-								string="Total",
-								compute="_compute_pm_total",
-	)
-	
-	#@api.multi
-	@api.depends('x_payment_method')
-
-	def _compute_pm_total(self):
-
-		for record in self:
-
-			total = 0.0
-
-			for pm in record.x_payment_method:
-
-				total = total + pm.subtotal
-
-
-			record.pm_total = total
 
 
 
@@ -674,27 +721,6 @@ class sale_order(models.Model):
 
 
 
-	# Number of paymethods  
-	pm_complete = fields.Boolean(
-								string="Pm Complete",
-								default = False, 
-								
-								compute="_compute_pm_complete",
-	)
-	
-
-	@api.multi
-	#@api.depends('pm_total')
-
-	def _compute_pm_complete(self):
-
-		for record in self:
-			
-			if (record.pm_total != record.x_amount_total)		or 	 (record.nr_saledocs == 0) : 
-				record.pm_complete = False
-
-			else:
-				record.pm_complete = True
 
 
 
@@ -719,7 +745,9 @@ class sale_order(models.Model):
 
 		method = 'cash'
 
+
 		balance = self.x_amount_total - self.pm_total
+
 
 		#total = self.x_amount_total
 

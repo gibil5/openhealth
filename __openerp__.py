@@ -18,7 +18,7 @@
 
 		Laser - EMR - Min - Ama - Docean\n
 
-		Last built: 	26 Mar 2017
+		Last built: 	27 Mar 2017
 
 		Created: 	 	7 Sep 2016
 
@@ -89,9 +89,10 @@
 
 
 
-		'views/base_data_physicians.xml',
-		'views/base_data_products.xml',
-		'views/base_data_services.xml',
+		# ----------------------------------------------------------- DATA ------------------------------------------------------
+		'data/base_data_physicians.xml',
+		'data/base_data_products.xml',
+		'data/base_data_services.xml',
 		#'views/base_data.xml',
 
 

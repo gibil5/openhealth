@@ -94,7 +94,7 @@
 		'data/base_data_products.xml',
 		'data/base_data_services.xml',
 
-		'data/base_data_users.xml',
+		#'data/base_data_users.xml',
 
 		#'views/base_data.xml',
 

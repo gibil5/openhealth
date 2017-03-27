@@ -185,17 +185,18 @@
             <menuitem id="menu_config_address_book" parent="base.menu_sale_config" name="Contacts" sequence="4" groups="group_system"/>
 -->
 
-
-
-
-
-
 <!--
 		<menuitem 	id="tabel_menu_emp_by_division" name="Employees by division"
               		parent="tabel_menu"
               		action="tabel_list_emp_action_group_by_division"  sequence="5" 
               		groups="Tabel.group_manager,Tabel.group_accountant,Tabel.group_eco"/>
 -->
+
+
+
+
+
+
 
 
 <!-- Open Health -->
@@ -209,6 +210,18 @@
 
 		<menuitem id="openhealth_menu" name="Open Health"
 			parent="main_openhealth_menu"/>
+
+
+
+
+
+<!--
+			action="base.action_res_users"/>
+-->
+		<!-- users -->
+		<menuitem id="res_users_menu" name="Users" parent="openhealth_menu"
+			sequence="-40"
+			action="user_list_action"/>
 
 
 

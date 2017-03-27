@@ -967,5 +967,6 @@ EC2
 		action="openextension.order_list_action"
 		It is not required when it is the same module -->
 
+
 	</data>
 </openerp>

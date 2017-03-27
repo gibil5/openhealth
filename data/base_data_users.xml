@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<!--
+    <data noupdate="1">
+-->
+    <data noupdate="0">
+ 
+
+<!-- Data - Physicians -->
+
+
+
+
+<!--
+        <record id="public_user" model="res.users">
+            <field name="name">Public user</field>
+            <field name="login">public</field>
+            <field name="password"></field>
+
+            <field name="groups_id" eval="[(6,0,[])]"/>
+            <field name="image" type="base64" file="base/static/img/public_user-image.png"/>
+            <field name="partner_id" ref="public_partner"/>
+            <field name="active" eval="False"/>
+        </record>
+-->
+<!--
+        <record model="res.users" id="base.user_root">
+            <field name="partner_id" ref="base.partner_root"/>
+            <field name="company_id" ref="main_company"/>
+            <field name="company_ids" eval="[(4, ref('main_company'))]"/>
+        </record>
+-->
+
+
+
+        <record id="public_partner" model="res.partner">
+            <field name="name">Public user</field>
+            <field name="active" eval="False"/>
+        </record>
+
+
+
+<!-- Victor Mori -->
+        <record id="vmori_clinicachavarri" model="res.users">
+            <field name="name">Víctor Mori</field>
+            <field name="login">vmori@clinicachavarri.com</field>
+            <field name="password">vmori</field>
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="active">True</field>
+
+
+<!--
+            <field name="partner_id" ref="public_partner"/>
+            <field name="groups_id" eval="[(6,0,[])]"/>
+            <field name="active" eval="False"/>
+-->
+        </record>
+
+
+
+<!-- Renato Chavarri -->
+        <record id="rchavarri_clinicachavarri" model="res.users">
+            <field name="name">Renato Chavarri</field>
+            <field name="login">rchavarri@clinicachavarri.com</field>
+            <field name="password">rchavarri</field>
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="active">True</field>
+        </record>
+
+
+
+
+
+<!-- Medico -->
+        <record id="medico_clinicachavarri" model="res.users">
+            <field name="name">Medico</field>
+            <field name="login">medico@clinicachavarri.com</field>
+            <field name="password">medico</field>
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="active">True</field>
+        </record>
+
+<!-- Caja -->
+        <record id="caja_clinicachavarri" model="res.users">
+            <field name="name">Caja</field>
+            <field name="login">caja@clinicachavarri.com</field>
+            <field name="password">caja</field>
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="active">True</field>
+        </record>
+
+<!-- Plataforma -->
+        <record id="plataforma_clinicachavarri" model="res.users">
+            <field name="name">Plataforma</field>
+            <field name="login">plataforma@clinicachavarri.com</field>
+            <field name="password">plataforma</field>
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="active">True</field>
+        </record>
+
+
+
+
+
+    </data>
+</openerp>
+

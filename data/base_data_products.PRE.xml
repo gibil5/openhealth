@@ -1,0 +1,29 @@
+<!--
+x_date_created,type,x_family,Name,x_name_short,x_brand,price,x_price_vip
+
+2017-02-19,Consumable,topical,Mascara astringente Polvo,mask_astringent_powder,CLINICA CHAVARRI,100.0,
+
+2017-02-19,Consumable,topical,Mascara astringente (Liquido + Polvo),mask_astringent_liquid_powder,CLINICA CHAVARRI,200.0,
+
+2017-02-19,Consumable,topical,Despigmentante HQ,depigmentation_hq,CLINICA CHAVARRI,200.0,
+2017-02-19,Consumable,topical,Despigmentante AHA,depigmentation_aha,CLINICA CHAVARRI,200.0,
+2017-02-19,Consumable,topical,Despigmentante GLI-KO,depigmentation_gliko,CLINICA CHAVARRI,300.0,
+2017-02-19,Consumable,topical,Crema con Vitaminas,cream_vitamins,CLINICA CHAVARRI,200.0,
+2017-02-19,Consumable,topical,Despigmentante BF-D8,depigmentation_bfd8,BOTICA FRANCESA,200.0,
+2017-02-19,Consumable,topical,Despigmentante Sin Hidroquinona,depigmentation_no_hidroquinone,BOTICA FRANCESA,200.0,
+2017-02-19,Consumable,topical,"Crema con Vitaminas A, E, C",cream_vitamins_aec,BOTICA FRANCESA,200.0,
+2017-02-19,Consumable,topical,Despigmentante Santa Teresa,depigmentation_santa_teresa,BOTICA SANTA TERESA,300.0,
+2017-02-19,Consumable,topical,Q54,q54,DROGUERIA ZOMAX,350.0,
+2017-02-19,Consumable,topical,ANTIRROJECES,anti_red,EURODERMA,150.0,
+2017-02-19,Consumable,topical,Protector solar,solar_protector,CLINICA CHAVARRI,200.0,
+2017-02-19,Consumable,topical,DERMATOPIC LOCION 120ml,dermatopic_lotion_120ml,MEDISCIENCE,80.0,
+2017-02-19,Consumable,topical,Tretinoina,tretinoina,CLINICA CHAVARRI,200.0,
+2017-02-19,Consumable,topical,Aloe Vital,aloe_vital,CLINICA CHAVARRI,200.0,
+2017-02-19,Consumable,topical,Mascara astringente Liquido,mask_astringent_liquid,CLINICA CHAVARRI,100.0,
+2017-02-19,Consumable,topical,DERMATOPIC SULFUR 90gr,dermatopic_sulfur_90gr,MEDISCIENCE,80.0,
+2017-02-19,Consumable,topical,HIDRATOPIC LOCION 120ml,hidratopic_lotion_120ml,MEDISCIENCE,80.0,
+2017-02-19,Consumable,topical,ACNETOPIC 200ml,acnetopic_200ml,MEDISCIENCE,120.0,
+2017-02-19,Consumable,topical,NCTF,nctf,FILORGA,800.0,
+2017-02-19,Consumable,kit,Kit post laser,kit_post_laser,BOTICA VILLEGAS,150.0,
+2017-02-19,Consumable,card,Tarjeta VIP,vip_card,CLINICA CHAVARRI,300.0,
+-->

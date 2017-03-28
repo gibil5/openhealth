@@ -92,8 +92,13 @@
 
 		# ----------------------------------------------------------- DATA ------------------------------------------------------
 		'data/base_data_physicians.xml',
-		'data/base_data_products.xml',
-		'data/base_data_services.xml',
+		#'data/base_data_products.xml',
+		#'data/base_data_services.xml',
+
+
+		'data/odoo_data_products.xml',
+
+
 
 
 		#'views/base_data.xml',

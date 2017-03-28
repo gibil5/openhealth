@@ -1,0 +1,19 @@
+<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+\n
+<oeh-product>
+
+	<id type=\"integer\">326</id>
+
+	<name-short>solar_protector</name-short>
+	<name>Protector solar</name>
+
+	<family>topical</family>
+	<brand>CLINICA CHAVARRI</brand>
+
+	<price type=\"float\">200.0</price>
+	<price-vip type=\"float\" nil=\"true\"/>
+
+	<created-at type=\"dateTime\">2017-02-19T16:53:19Z</created-at>
+	<updated-at type=\"dateTime\">2017-02-19T16:53:19Z</updated-at>
+
+</oeh-product>\n"

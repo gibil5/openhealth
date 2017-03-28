@@ -15,16 +15,25 @@
 			"file": "__openerp__.py",
 			"settings":
 			{
-				"buffer_size": 5840,
+				"buffer_size": 5879,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "security/openhealth_security.xml",
+			"file": "data/odoo_data_products.xml",
 			"settings":
 			{
-				"buffer_size": 4592,
+				"buffer_size": 10303,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "data/base_data_products.xml",
+			"settings":
+			{
+				"buffer_size": 1050,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -33,7 +42,7 @@
 			"file": "data/base_data_users.xml",
 			"settings":
 			{
-				"buffer_size": 4682,
+				"buffer_size": 5715,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -42,7 +51,43 @@
 			"file": "data/base_data_physicians.xml",
 			"settings":
 			{
-				"buffer_size": 24331,
+				"buffer_size": 24329,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "<!--\nx_date_created,type,x_family,Name,x_name_short,x_brand,price,x_price_vip\n\n2017-02-19,Consumable,topical,Mascara astringente Polvo,mask_astringent_powder,CLINICA CHAVARRI,100.0,\n\n2017-02-19,Consumable,topical,Mascara astringente (Liquido + Polvo),mask_astringent_liquid_powder,CLINICA CHAVARRI,200.0,\n\n2017-02-19,Consumable,topical,Despigmentante HQ,depigmentation_hq,CLINICA CHAVARRI,200.0,\n2017-02-19,Consumable,topical,Despigmentante AHA,depigmentation_aha,CLINICA CHAVARRI,200.0,\n2017-02-19,Consumable,topical,Despigmentante GLI-KO,depigmentation_gliko,CLINICA CHAVARRI,300.0,\n2017-02-19,Consumable,topical,Crema con Vitaminas,cream_vitamins,CLINICA CHAVARRI,200.0,\n2017-02-19,Consumable,topical,Despigmentante BF-D8,depigmentation_bfd8,BOTICA FRANCESA,200.0,\n2017-02-19,Consumable,topical,Despigmentante Sin Hidroquinona,depigmentation_no_hidroquinone,BOTICA FRANCESA,200.0,\n2017-02-19,Consumable,topical,\"Crema con Vitaminas A, E, C\",cream_vitamins_aec,BOTICA FRANCESA,200.0,\n2017-02-19,Consumable,topical,Despigmentante Santa Teresa,depigmentation_santa_teresa,BOTICA SANTA TERESA,300.0,\n2017-02-19,Consumable,topical,Q54,q54,DROGUERIA ZOMAX,350.0,\n2017-02-19,Consumable,topical,ANTIRROJECES,anti_red,EURODERMA,150.0,\n2017-02-19,Consumable,topical,Protector solar,solar_protector,CLINICA CHAVARRI,200.0,\n2017-02-19,Consumable,topical,DERMATOPIC LOCION 120ml,dermatopic_lotion_120ml,MEDISCIENCE,80.0,\n2017-02-19,Consumable,topical,Tretinoina,tretinoina,CLINICA CHAVARRI,200.0,\n2017-02-19,Consumable,topical,Aloe Vital,aloe_vital,CLINICA CHAVARRI,200.0,\n2017-02-19,Consumable,topical,Mascara astringente Liquido,mask_astringent_liquid,CLINICA CHAVARRI,100.0,\n2017-02-19,Consumable,topical,DERMATOPIC SULFUR 90gr,dermatopic_sulfur_90gr,MEDISCIENCE,80.0,\n2017-02-19,Consumable,topical,HIDRATOPIC LOCION 120ml,hidratopic_lotion_120ml,MEDISCIENCE,80.0,\n2017-02-19,Consumable,topical,ACNETOPIC 200ml,acnetopic_200ml,MEDISCIENCE,120.0,\n2017-02-19,Consumable,topical,NCTF,nctf,FILORGA,800.0,\n2017-02-19,Consumable,kit,Kit post laser,kit_post_laser,BOTICA VILLEGAS,150.0,\n2017-02-19,Consumable,card,Tarjeta VIP,vip_card,CLINICA CHAVARRI,300.0,\n-->\n",
+			"file": "data/base_data_products.PRE.xml",
+			"file_size": 2148,
+			"file_write_time": 131351947000000000,
+			"settings":
+			{
+				"buffer_size": 2149,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "data/base_data_services.xml",
+			"settings":
+			{
+				"buffer_size": 119,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/product.py",
+			"settings":
+			{
+				"buffer_size": 1052,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "security/openhealth_security.xml",
+			"settings":
+			{
+				"buffer_size": 3054,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -51,7 +96,7 @@
 			"file": "views/users/user.xml",
 			"settings":
 			{
-				"buffer_size": 2451,
+				"buffer_size": 3571,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -60,8 +105,19 @@
 			"file": "views/menus.xml",
 			"settings":
 			{
-				"buffer_size": 10956,
+				"buffer_size": 11100,
 				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Learn\n------\n\nCreated: \t15 sep 2016\nLast mod:\tid. \n\n\n\nShell \n./odoo.py shell -d chavarri-oehealth\n\n\nself\n\nself.name\n\nself.env\n\n\nself.env['res.partner']\n\n\n\n#self.env['res.partner'].mapped('partner_id')\n\n\n\nself.env['res.partner'].search([('name', 'like', 'J')])\n\n\n\n\n\nself.env['res.users']\nself.env['res.users'].search([('name', 'like', 'J')])\n\n\n\n\n\n\nself.env['res.country'].search([('name', 'like', 'Peru')])\n\n\n\n\n\nhttp://localhost:8069/web#id=12&view_type=form&model=openextension.treatment&menu_id=1314&action=797\nhttp://localhost:8069/web#id=14&view_type=form&model=openextension.treatment&menu_id=1314&action=797\n\n\nself.env['openhealth.learn'].search([('name', 'like', 'B')])\n\nself.env['openhealth.learn'].search([('name', 'like', 'J')]).do_operation()\n\n\nself.env['openhealth.learn'].search([('name', 'like', 'J')]).write({'a': 1, 'b': 2, 'c': 3})\n\nself.env['openhealth.learn'].search([('name', 'like', '')]).write({'a': 1, 'b': 2, 'c': 3})\n\n\nself.env['res.partner'].filtered(\"partner_id.is_company\")\nself.env['res.partner'].filtered(\"company_type.is_company\")\n\n\nself.env['openhealth.learn'].search([('name', 'like', '')]).sorted()\nself.env['openhealth.learn'].search([('name', 'like', '')]).sorted(key=lambda r: r.name)\n\nself.env['openhealth.learn'].search([('name', 'like', '')]).mapped(lambda r: r.a + r.b)\n\n\nself.env['openhealth.learn'].search([('name', 'like', '')]).mapped('name')\n\n\n\nself.env['openhealth.learn'].search([('id','=','1')]).name\n\n\n\n\nenv['res.partner'].sudo().create({'name': \"A Partner\"})\n\n\n\n\nself.env['openhealth.learn'].search([('name', 'like', '')]).search_count()\n\n\n\n\n\n\nself.env['oeh.medical.patient'].search([('name', 'like', 'Ja')])\n\nself.env['oeh.medical.patient'].search([('id', '=', '3025')])\n\n\n\nself.env['oeh.medical.physician'].search([('name', 'like', 'Fe')])\nself.env['oeh.medical.physician'].search([('id', '=', '1')])\n\n\n\n\n\n\n\nself.env['openhealth.service'].search([('name', 'like', 'S')])\n\n\n\n\n\n\nself.env['sale.order']\n\nself.env['openextension.treatment']\n\n\nself.env['sale.order']\n\n\n\n\nself.env['product.template']\n\nself.env['product.template'].search([('x_zone', 'like', '1_hypodermic'),])\n\n\n\nself.env['account.invoice.line']\n\n\n\n\nself.env['product.template'].search([('type', 'like', 'service'),])\n\nself.env['product.template'].search([('type', 'like', 'consumable'),])\n\n\n\n\n\nself.env['product.template'].search([('x_treatment', 'like', 'co2'),('x_zone', 'like', 'hands')], limit=1)\n\n\nself.env['product.template'].search([('x_treatment', 'like', 'hyaluronic_acid'),('x_zone', 'like', '1_hypodermic_repair')], limit=1)\n\n\n\np = self.env['product.template'].search([('x_treatment', 'like', 'hyaluronic_acid'),('x_zone', 'like', '1_hypodermic_repair')], limit=1)\n\n\n\np = self.env['product.template'].search([('x_name_short', 'like', 'co2_han_sta'),])\n\n\n\n\n\n\n# not working\nself.env['openhealth.learn'].search([('name', 'like', '')]).filtered(lambda r: r.name == user.name)\n\nopenhealth.learn(1, 2)\n\nself.env['openhealth.learn'].do_operation()\n\nself.env['openhealth.learn'].do_msg()\n\n\n\n\n\n\n\n# Treatment \n\nself.env.ref('base.group_public')\n\nself.env.ref('openextension.treatment')\n\nt = self.env['openextension.treatment'].search([('chief_complaint', 'like', 'acne_active')], limit=1)\n\n\n\nt = self.env['openextension.treatment'].search([\t('chief_complaint', 'like', 'acne_active'), ('patient', 'like', 'Puga')\t])\n\n\nt = self.env['openextension.treatment'].search([\t('chief_complaint', 'like', 'acne_active'), ('patient', 'like', 'Revilla')\t])\n\nt = self.env['openextension.treatment'].search([\t('chief_complaint', 'like', 'acne_active'), ('patient', 'like', 'Revilla')],  order='start_date' )\n\nt = self.env['openextension.treatment'].search([\t('chief_complaint', 'like', 'acne_active'), ('patient', 'like', 'Revilla')],  order='start_date desc' )\n\nt = self.env['openextension.treatment'].search([\t('chief_complaint', 'like', 'acne_active'), ('patient', 'like', 'Revilla')],  order='start_date desc', limit=1 )\n\n\nt = self.env['openextension.treatment'].search([  ('chief_complaint', 'like', 'acne_active'), ('patient', 'like', 'Revilla'),    ],  order='start_date desc', limit=1 )\n\n\n\n\n\n'default_patient': context.get('patient_id', False),\n\n\n\nself.env['sale.order'].search_count([('name', 'like', '1')])\n\nself.env['sale.order'].search([('name', 'like', '11')]).order_line.search([('name', 'like', 'CO')])\nself.env['sale.order'].search([('name', 'like', '11')]).order_line.search([('id', '=', '3201')])\n\n\n\no = self.env['sale.order'].search([('name', 'like', '103')])\n\no = self.env['sale.order'].search([('name', 'like', '109')])\n\no = self.env['sale.order'].search([('name', 'like', '119')])\n\n\n\n\no.order_line.create({ 'product_id': 4043, 'order_id': 89, 'name': 'hya_1hr_ref_one_nor' })\n\no.order_line.create({ 'product_id': 4136, 'order_id': 95, 'name': 'hya_1hr_ref_one_nor' })\n\no.order_line.create({ 'product_id': 4136, 'order_id': 95, 'name': 'ACIDO HIALURONICO - 1 Jeringa - REPAIR - Rejuvenecimiento Facial - 1 - Normal' })\n\n\n\no.order_line.create({ 'product_id': 4190, 'order_id': 105, 'name': 'lep_bac_acn_one_nor' })\n\n\n\n\n\n\nself.env['product.template'].search([('x_name_short', 'like', 'hya_1hr_ref_one_nor'),])\n\np = self.env['product.template'].search([('x_name_short', 'like', 'lep_bac_acn_one_nor')])\n\n\n\npc = self.env['product.template'].search([('x_name_short', 'like', 'co2_nec_sca')])\n\n\n\nself.env['openhealth.consultation'].search([('name', 'like', '93')])\n\nself.env['res.partner'].search([('name','=','Yvan Puga')],limit=1)\n\n\nself.env['openhealth.service.co2'].search([('name', 'like', '93')])\n\n\n\n\n\n\n\n\n\n\nself.env['sale.order'].search([('state', 'like', 'draft')])\n\no = self.env['sale.order'].search([('state', 'like', 'draft')])\n\n\nself.env['sale.order'].search([('customer', 'like', 'J')])\n\n\n\n\n\n\n\n\n\n\n\n\na = self.env['oeh.medical.appointment'].search([('name', 'like', '68')])\n\na = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', '26')])\n\na = self.env['oeh.medical.appointment'].search([('appointment_date', '=', '2016-11-26')])\n\n\na = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', '26')], limit=1)\n\n\n\na = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', '16-11-26')], limit=1)\n\na = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', '16-11-26'), ('doctor_id', '=', '1'),])\n\n\n\na = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', '16-12-6'), ('doctor', 'like', 'Chavarri'),])\n\na = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', '16-12-6'), ('patient', 'like', 'Revilla'),])\n\n\na = self.env['oeh.medical.appointment'].search([ \t('patient', 'like', 'Revilla'),\t\t('doctor', 'like', 'Chavarri'), \t\t])\n\na = self.env['oeh.medical.appointment'].search([ \t('patient', 'like', 'Revilla'),\t\t('doctor', 'like', 'Chavarri'), \t('appointment_date', 'like', '2016-12-06 15:30:00')\t])\n\n\n\n\na = self.env['oeh.medical.appointment'].search([ \t('patient', 'like', 'Revilla'),\t\t('doctor', 'like', 'Chavarri'), \t\t], limit=1)\n\n\na = self.env['oeh.medical.appointment'].search([ \t('patient', 'like', 'Revilla'),\t\t('doctor', 'like', 'Chavarri'), \t('x_type', 'like', 'consultation'), \t\t])\n\na = self.env['oeh.medical.appointment'].search([ \t('patient', 'like', 'Revilla'),\t\t('doctor', 'like', 'Chavarri'), \t('x_type', 'like', 'consultation'), \t\t], order='appointment_date desc', limit=1)\n\n\n\na = self.env['oeh.medical.appointment'].search([ \t('patient', 'like', 'Revilla'),\t\t('doctor', 'like', 'Chavarri'), \t('x_type', 'like', 'consultation'), ('appointment_date', 'like', '2016-12-06 15:30:00')\t\t])\n\n\n\n\na = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', appointment_date_str), ('doctor', '=', doctor_name), ('x_type', '=', x_type), ])\n\n\na = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', appointment_date_str), ])\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t \t])\n\na = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', '16-12-23'), ])\n\n\n\n\na = self.env['oeh.medical.appointment'].search([ ('patient', 'like', 'REVILLA Javier'),\t('x_therapist', 'like', 'Eulalia'), ('x_type', 'like', 'procedure'), ], order='appointment_date desc', limit=1)\n\n\n\n\na = self.env['oeh.medical.appointment'].search([ ('appointment_date', 'like', '17-03-02'), ('patient', 'like', 'REVILLA Javier'),\t('x_therapist', 'like', 'Eulalia'), ('x_type', 'like', 'procedure'), ], order='appointment_date desc', limit=1)\n\n\na = self.env['oeh.medical.appointment'].search([ ('appointment_date', 'like', '2017-03-02 16:00:00'), ('patient', 'like', 'REVILLA Javier'),\t('x_therapist', 'like', 'Eulalia'), ('x_type', 'like', 'procedure'), ], order='appointment_date desc', limit=1)\n\n\na = self.env['oeh.medical.appointment'].search([ ('appointment_date', 'like', '2017-03-02 '), ('patient', 'like', 'REVILLA Javier'),\t('x_therapist', 'like', 'Eulalia'), ('x_type', 'like', 'procedure'), ], order='appointment_date desc', limit=1)\n\n\na = self.env['oeh.medical.appointment'].search([ ('appointment_date', 'like', '2017-03-02 17:17:36'), ('patient', 'like', 'REVILLA Javier'),\t('x_therapist', 'like', 'Eulalia'), ('x_type', 'like', 'procedure'), ], order='appointment_date desc', limit=1)\n\n\n\n\n\n\n\n\nret = a.write({'consultation': 65,})\n\n\n\n",
+			"file": "models/howto/shell.rb",
+			"file_size": 9088,
+			"file_write_time": 131329488230000000,
+			"settings":
+			{
+				"buffer_size": 9174,
 				"line_ending": "Unix"
 			}
 		}
@@ -139,6 +195,9 @@
 	},
 	"file_history":
 	[
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/data/base_data_products.WAK.xml",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/security/openhealth_security.TRASH.xml",
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/data/base_data_users.TRASH.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/app_vars.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/appointment_cos.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/appointment.py",
@@ -263,10 +322,7 @@
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/treatments/treatment_reservations.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/cosmetologies/cosmetology_reservations.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/mac_funcs.py",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/prodvars.py",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/order_line.py",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/howto/shell.rb",
-		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/jrfuncs.py"
+		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/prodvars.py"
 	],
 	"find":
 	{
@@ -285,6 +341,15 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"consumable",
+			">product<",
+			"type",
+			"Consumable",
+			"rchavarri",
+			"ipuga",
+			"rchavarri",
+			"user",
+			"group",
 			" - JX",
 			"rchavarri",
 			"vmori",
@@ -403,23 +468,22 @@
 			"confirm",
 			"print_quo",
 			"action_",
-			"action_quotation_send",
-			"action_",
-			"confirmar",
-			"x_machine",
-			"nr_service",
-			"payment",
-			"x_state",
-			"onchange",
-			"state",
-			"reservar"
+			"action_quotation_send"
 		],
 		"highlight": false,
-		"in_selection": true,
+		"in_selection": false,
 		"preserve_case": false,
-		"regex": false,
+		"regex": true,
 		"replace_history":
 		[
+			"consu",
+			">consumable<",
+			"product",
+			"pbalboa",
+			"dgrafico",
+			"marketing",
+			"ipuga",
+			"lang",
 			"",
 			"vmori",
 			"group",
@@ -539,15 +603,7 @@
 			"med",
 			"session",
 			"cosmetology",
-			"session",
-			"procedure",
-			"procedure_cos",
-			"consultation_cos",
-			"cos",
-			"consultation",
-			"complaint_cos",
-			"cosmetology",
-			"therapist"
+			"session"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -558,7 +614,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -567,15 +623,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5840,
+						"buffer_size": 5879,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1226,
-								1226
+								1750,
+								1750
 							]
 						],
 						"settings":
@@ -584,87 +640,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1024.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "security/openhealth_security.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4592,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2653,
-								2784
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1247.0,
+						"translation.y": 1293.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "data/base_data_users.xml",
+					"buffer": 1,
+					"file": "data/odoo_data_products.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4682,
+						"buffer_size": 10303,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3404,
-								3404
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1520.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "data/base_data_physicians.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 24331,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								452,
-								452
+								319,
+								319
 							]
 						],
 						"settings":
@@ -676,24 +672,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "views/users/user.xml",
+					"buffer": 2,
+					"file": "data/base_data_products.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2451,
+						"buffer_size": 1050,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								860,
-								860
+								155,
+								155
 							]
 						],
 						"settings":
@@ -702,27 +698,201 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 433.0,
+						"translation.y": 12.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "data/base_data_users.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5715,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								131,
+								131
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "data/base_data_physicians.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 24329,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								136,
+								136
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "data/base_data_products.PRE.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2149,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								567,
+								567
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "data/base_data_services.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 119,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "models/product.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1052,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								351,
+								351
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "views/menus.xml",
+					"buffer": 8,
+					"file": "security/openhealth_security.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10956,
+						"buffer_size": 3054,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3998,
-								3998
+								377,
+								377
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "views/users/user.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3571,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2590,
+								2590
 							]
 						],
 						"settings":
@@ -731,10 +901,67 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3682.0,
+						"translation.y": 1691.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "views/menus.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11100,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4420,
+								4420
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3573.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "models/howto/shell.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9174,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								287,
+								341
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 2.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
 					"type": "text"
 				}
 			]
@@ -843,7 +1070,7 @@
 		[
 			[
 				"",
-				"~/Virtualenvs/Odoo9/odoo/addons/oehealth/OeHealth.sublime-project"
+				"~/Documents/Aptana Studio 3 Workspace/chavarri/chavarri.sublime-project"
 			]
 		],
 		"width": 380.0

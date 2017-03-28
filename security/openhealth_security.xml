@@ -2,66 +2,7 @@
 <openerp>
     <data>
 
-        <!--
-        <record model="ir.module.category" id="module_oeh_medical_category">
-                <field name="name">Open Health</field>
-                <field name="sequence">0</field>
-                <field name="visible" eval="0" />
-        </record>
-
-        <record id="group_oeh_medical_manager" model="res.groups">
-            <field name="name">Health Center Admin</field>
-            <field name="category_id" ref="module_oeh_medical_category"/>
-            <field name="users" eval="[(4, ref('base.user_root'))]"/>
-        </record>
-        -->
-
-        <!--
-        <record id="group_oeh_medical_patient" model="res.groups">
-            <field name="name">Patient</field>
-            <field name="category_id" ref="module_oeh_medical_category"/>
-        </record>
-
-        <record id="group_oeh_medical_physician" model="res.groups">
-            <field name="name">Physician</field>
-            <field name="category_id" ref="module_oeh_medical_category"/>
-        </record>
-        --> 
-
-        <!-- Emtpy group --> 
-<!--
-        <record id="make_invisible" model="res.groups">
-            <field name="name">Invisible</field>
-        </record>
-        
-        <record model="ir.ui.menu" id="module.main_openhealth_menu">
-            <field name="groups_id" eval="[(6,0,[ref('make_invisible')])]"/>
-        </record>
--->
-<!--
-            <field name="user" ref="vmori_clinicachavarri"/>
-                <field name="users_id" ref="vmori_clinicachavarri"/>
-
-            <field name="users">
-            </field>
-
-            <field name="users_id" eval="[(4,0,[])]"/>
--->
-
-
-
-
-
-
-
-
-<!--
-            <field name="users_ids" eval="[(4, ref('base.group_user'))]"/>            
--->
-
-
-
-
+ 
 
 
 <!-- Categories --> 
@@ -73,6 +14,8 @@
 
 
 
+
+
 <!-- Groups --> 
 
     <!-- Medicos --> 
@@ -81,6 +24,9 @@
             <field name="category_id" ref="module_openhealth_category"/>
 
             
+            <!--
+            <field name="users" eval="[ (4, ref('openhealth.vmori_clinicachavarri'))    ]"/>
+            -->
             <field name="users" eval="[ 
                                         (4, ref('openhealth.medico_clinicachavarri')),
 
@@ -89,11 +35,6 @@
                                     ]"/>
 
         </record>
-<!--
-            <field name="users" eval="[ (4, ref('openhealth.vmori_clinicachavarri'))
-
-                                        ]"/>
--->
 
 
 
@@ -133,7 +74,6 @@
             <field name="name">Physician</field>
             <field name="category_id" ref="oehealth.module_oeh_medical_category"/>
 
-
             <field name="users" eval="[ 
                                         (4, ref('openhealth.caja_clinicachavarri')),
                                         (4, ref('openhealth.medico_clinicachavarri')),
@@ -143,9 +83,6 @@
                                         (4, ref('openhealth.vmori_clinicachavarri')),
                                     ]"/>
         </record>
-
-
-
 
     </data>
 </openerp>

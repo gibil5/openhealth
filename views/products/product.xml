@@ -73,6 +73,7 @@
 
 		<!-- Tree/list view -->
 <!--		
+-->
 		<record model="ir.ui.view" id="product.product_template_tree_view">
 			<field name="name">product.template.product.tree</field>
 			<field name="model">product.template</field>
@@ -81,6 +82,9 @@
 			<field name="arch" type="xml">
 				<tree string="Product Tree"    default_order="x_name_short" >
 					<field name="name"/>
+
+					<field name="id"/>
+
 					<field name="type"/>
 					<field name="x_name_short"/>
 					<field name="x_family"/>
@@ -95,7 +99,6 @@
 				</tree>
 			</field>
 		</record>
--->
 
 
 

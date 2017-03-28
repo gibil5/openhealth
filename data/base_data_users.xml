@@ -22,8 +22,7 @@
             <field name="partner_id" ref="public_partner"/>
             <field name="active" eval="False"/>
         </record>
--->
-<!--
+
         <record model="res.users" id="base.user_root">
             <field name="partner_id" ref="base.partner_root"/>
             <field name="company_id" ref="main_company"/>
@@ -64,12 +63,6 @@
             <field name="groups_id" eval="[(6,0,[])]"/>
             <field name="active" eval="False"/>
 -->
-
-
-
-
-
-
 
 <!--
         <record id="lang_en" model="res.lang">
@@ -112,13 +105,58 @@
             <field name="tz">America/Lima</field>
         </record>
 
-
-
 <!-- Renato Chavarri -->
         <record id="rchavarri_clinicachavarri" model="res.users">
             <field name="name">Renato Chavarri</field>
             <field name="login">rchavarri@clinicachavarri.com</field>
             <field name="password">rchavarri</field>
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="active">True</field>
+            <field name="lang">es_ES</field>
+            <field name="tz">America/Lima</field>
+        </record>
+
+
+
+
+<!-- Ivan Puga -->
+        <record id="ipuga_clinicachavarri" model="res.users">
+            <field name="name">Iván Puga</field>
+            <field name="login">ipuga@clinicachavarri.com</field>
+            <field name="password">ipuga</field>
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="active">True</field>
+            <field name="lang">es_ES</field>
+            <field name="tz">America/Lima</field>
+        </record>
+
+<!-- Marketing -->
+        <record id="marketing_clinicachavarri" model="res.users">
+            <field name="name">Marketing</field>
+            <field name="login">marketing@clinicachavarri.com</field>
+            <field name="password">marketing</field>
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="active">True</field>
+            <field name="lang">es_ES</field>
+            <field name="tz">America/Lima</field>
+        </record>
+
+<!-- Diseño gráfico -->
+        <record id="dgrafico_clinicachavarri" model="res.users">
+            <field name="name">Diseño Gráfico</field>
+            <field name="login">dgrafico@clinicachavarri.com</field>
+            <field name="password">dgrafico</field>
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="active">True</field>
+            <field name="lang">es_ES</field>
+            <field name="tz">America/Lima</field>
+        </record>
+
+<!-- Percy Balboa -->
+        <record id="pbalboa_clinicachavarri" model="res.users">
+            <field name="name">Percy Balboa</field>
+            <field name="login">pbalboa@clinicachavarri.com</field>
+            <field name="password">pbalboa</field>
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="active">True</field>
             <field name="lang">es_ES</field>

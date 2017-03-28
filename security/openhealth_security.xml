@@ -138,6 +138,9 @@
                                         (4, ref('openhealth.caja_clinicachavarri')),
                                         (4, ref('openhealth.medico_clinicachavarri')),
                                         (4, ref('openhealth.plataforma_clinicachavarri')),
+
+                                        (4, ref('openhealth.rchavarri_clinicachavarri')),
+                                        (4, ref('openhealth.vmori_clinicachavarri')),
                                     ]"/>
         </record>
 

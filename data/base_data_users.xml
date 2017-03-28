@@ -29,14 +29,74 @@
             <field name="company_id" ref="main_company"/>
             <field name="company_ids" eval="[(4, ref('main_company'))]"/>
         </record>
--->
 
-
-
+        
         <record id="public_partner" model="res.partner">
             <field name="name">Public user</field>
             <field name="active" eval="False"/>
         </record>
+-->
+
+
+
+
+
+
+
+
+
+
+
+<!--
+            <field name="groups_id" eval="[(6,0,[])]"/>
+            <field name="group_id" ref="openhealth.openhealth_physicians"/>
+                <field name="groups_id_id" ref="openhealth.openhealth_physicians"/>
+
+
+            <field name="groups_id" >
+            </field>
+
+            <field name="groups_id" eval="[(6,0,[])]"/>
+
+             <field name="group_id" ref="openhealth.openhealth_physicians"/>
+
+            <field name="partner_id" ref="public_partner"/>
+            <field name="groups_id" eval="[(6,0,[])]"/>
+            <field name="active" eval="False"/>
+-->
+
+
+
+
+
+
+
+<!--
+        <record id="lang_en" model="res.lang">
+            <field name="code">en_US</field>
+            <field name="name">English</field>
+            <field name="translatable">True</field>
+            <field name="grouping">[3,0]</field>
+            <field name="decimal_point">.</field>
+            <field name="thousands_sep">,</field>
+        </record>
+        <record id="lang_es" model="res.lang">
+            <field name="code">es_ES</field>
+            <field name="name">Spanish</field>
+            <field name="translatable">True</field>
+            <field name="grouping">[3,0]</field>
+            <field name="decimal_point">.</field>
+            <field name="thousands_sep">,</field>
+        </record>
+
+
+            <field name="lang" eval="[  
+                                        (4, ref('res.lang.lang_es'))
+                                    ]"/>
+
+-->
+
+
 
 
 
@@ -48,12 +108,8 @@
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="active">True</field>
 
-
-<!--
-            <field name="partner_id" ref="public_partner"/>
-            <field name="groups_id" eval="[(6,0,[])]"/>
-            <field name="active" eval="False"/>
--->
+            <field name="lang">es_ES</field>
+            <field name="tz">America/Lima</field>
         </record>
 
 
@@ -65,6 +121,8 @@
             <field name="password">rchavarri</field>
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="active">True</field>
+            <field name="lang">es_ES</field>
+            <field name="tz">America/Lima</field>
         </record>
 
 
@@ -78,7 +136,10 @@
             <field name="password">medico</field>
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="active">True</field>
+            <field name="lang">es_ES</field>
+            <field name="tz">America/Lima</field>
         </record>
+
 
 <!-- Caja -->
         <record id="caja_clinicachavarri" model="res.users">
@@ -87,7 +148,10 @@
             <field name="password">caja</field>
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="active">True</field>
+            <field name="lang">es_ES</field>
+            <field name="tz">America/Lima</field>
         </record>
+
 
 <!-- Plataforma -->
         <record id="plataforma_clinicachavarri" model="res.users">
@@ -96,11 +160,9 @@
             <field name="password">plataforma</field>
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="active">True</field>
+            <field name="lang">es_ES</field>
+            <field name="tz">America/Lima</field>
         </record>
-
-
-
-
 
     </data>
 </openerp>

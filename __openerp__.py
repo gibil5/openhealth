@@ -75,6 +75,7 @@
 		'security/ir.model.access.csv',
 		'security/ir.rule.xml',
 
+		'data/base_data_users.xml',
 		'security/openhealth_security.xml',
 
 
@@ -94,7 +95,6 @@
 		'data/base_data_products.xml',
 		'data/base_data_services.xml',
 
-		#'data/base_data_users.xml',
 
 		#'views/base_data.xml',
 

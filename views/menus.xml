@@ -217,11 +217,32 @@
 
 <!--
 			action="base.action_res_users"/>
+
+			action="base.action_res_groups"/>
 -->
-		<!-- users -->
+		<!-- Users -->
 		<menuitem id="res_users_menu" name="Users" parent="openhealth_menu"
 			sequence="-40"
 			action="user_list_action"/>
+
+
+		<!-- Groups -->
+		<menuitem id="res_groups_menu" name="Groups" parent="openhealth_menu"
+			sequence="-40"
+			action="group_list_action"/>
+
+
+		<!-- Langs -->
+		<menuitem id="res_langs_menu" name="Langs" parent="openhealth_menu"
+			sequence="-40"
+			action="lang_list_action"/>
+
+
+
+
+
+
+
 
 
 

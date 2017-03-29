@@ -72,10 +72,11 @@
 								
 								
 								<group>
-									<field name="consultation" readonly="1" invisible="0"/>
 									<!--
 									<field name="treatment" readonly="1" invisible="0"/>
 									-->
+									<field name="consultation" readonly="1" invisible="1"/>
+									<h1><field name="treatment" class="oe_inline"/></h1>
 								</group>
 								
 								<!--

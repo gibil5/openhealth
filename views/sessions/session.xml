@@ -19,7 +19,7 @@
 
 					<!-- Header --> 
 					<header>
-
+<!--
 						<button 
 							type="object" 
 							class="oe_highlight"
@@ -27,7 +27,7 @@
 
 							name="open_appointment" 
 						/>
-				
+-->			
 					</header>
 
 					
@@ -43,7 +43,7 @@
 								<div class="oe_title" >
 
 									<h1 class="jx_title">Sesión</h1>	
-								
+
 								</div>								
 								<group></group>
 								<h2>
@@ -65,7 +65,10 @@
 							<div class="oe_right" >
 								<div class="oe_title" >
 									<label class="oe_edit_only" for="name" string="sesión #"/>
+<!--
 									<h1><field name="name" class="oe_inline"/></h1>
+-->
+									<h1><field name="treatment" class="oe_inline"/></h1>
 								</div>
 							</div>
 						</div>
@@ -128,9 +131,9 @@
 
 
 							<group>
-
+<!--
 								<field name="treatment"			/>
-								
+-->							
 							</group>
 							<group>								
 								<field name="product"/>

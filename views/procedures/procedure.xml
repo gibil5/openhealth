@@ -39,7 +39,7 @@
 						/>
 
 
-
+<!--
 						<button 
 							type="object" 
 							class="oe_highlight"
@@ -48,7 +48,7 @@
 
 							name="create_session_one" 	
 						/>
-
+-->
 
 
 
@@ -73,6 +73,7 @@
 
 
 
+<!--
 						<button 
 							type="object" 
 							class="oe_highlight"
@@ -82,14 +83,6 @@
 							attrs="{'invisible':[('laser', '!=', 'laser_co2')]}"
 						/>
 
-
-
-
-
-
-
-
-
 						<button 
 							type="object" 
 							class="oe_highlight oe_right"
@@ -97,6 +90,7 @@
 
 							name="open_appointment" 
 						/>
+-->
 
 					</header>
 					
@@ -169,12 +163,8 @@
 									
 									<field string="Controles" name="nr_controls" widget="statinfo"/>
 								</button>	
-
-
-								
-
-
 							</div>
+						
 						
 						
 							<!-- Number --> 
@@ -182,8 +172,11 @@
 								<div class="oe_title" >
 
 									<label class="oe_edit_only" for="name" string="Procedimiento #"/>
+
+<!--
 									<h1><field name="name" class="oe_inline"/></h1>
-								
+-->							
+									<h1><field name="treatment" class="oe_inline"/></h1>
 								</div>
 							</div>
 						</div>
@@ -210,7 +203,9 @@
 							
 
 							<group>	
+<!--
 								<field name="treatment"			/>
+-->						
 							</group>
 							
 

@@ -24,7 +24,7 @@
 
 				<!-- Title --> 
 				<xpath expr="//h1" position="replace">
-					<h1>Sesión - Med</h1>					
+					<h1 class="jx_title">Sesión - Med</h1>	
         		</xpath>
 
 

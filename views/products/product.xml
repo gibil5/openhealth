@@ -73,7 +73,6 @@
 
 		<!-- Tree/list view -->
 <!--		
--->
 		<record model="ir.ui.view" id="product.product_template_tree_view">
 			<field name="name">product.template.product.tree</field>
 			<field name="model">product.template</field>
@@ -99,6 +98,7 @@
 				</tree>
 			</field>
 		</record>
+-->
 
 
 

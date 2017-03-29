@@ -27,6 +27,18 @@ self.env['res.partner']
 
 self.env['res.partner'].search([('name', 'like', 'J')])
 
+
+
+
+
+self.env['res.users']
+self.env['res.users'].search([('name', 'like', 'J')])
+
+
+
+
+
+
 self.env['res.country'].search([('name', 'like', 'Peru')])
 
 

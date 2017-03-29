@@ -95,7 +95,6 @@
 		#'data/base_data_products.xml',
 		#'data/base_data_services.xml',
 
-
 		'data/odoo_data_products.xml',
 
 

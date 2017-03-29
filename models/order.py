@@ -2188,9 +2188,6 @@ class sale_order(models.Model):
 
 
 
-
-
-
 #sale_order()
 
 

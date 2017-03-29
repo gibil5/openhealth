@@ -101,10 +101,11 @@
 														'invisible':[('cosmetology', '=', False ),],
 														}"	/>
 					
+<!--
 					<field name="treatment"		attrs="{
 														'invisible':[('treatment', '=', False ),],
 														}"	/>
-
+-->
 
 
 				</xpath>
@@ -374,7 +375,7 @@
 				<xpath expr="//field[@name='name']" position="after">
 
 
-					<group col='5'>
+					<group col='7'>
 					
 						<group>
 							<button 
@@ -425,9 +426,12 @@
 							/>
 						</group>
 
+
+
 						<group>
         	            	<field name="x_cancel"  nolabel="1"/>
 						</group>
+
 
 
 
@@ -443,6 +447,14 @@
 							/>
 						</group>
 
+
+
+						<group>
+            	        	<field name="vspace"/>
+						</group>
+						<group>
+							<h3><field name="treatment" class="oe_inline oe_right"/></h3>
+						</group>
 
 
 					</group>

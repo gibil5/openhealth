@@ -24,28 +24,121 @@
 						<notebook>
 
 							<page string="Co2"   		attrs="{'invisible':[('nr_services_co2', '=', 0)]}"  >
-								<field name="service_co2_ids"/>						
+<!--
+								<field name="service_co2_ids"/>	
+-->							
+								<field name="service_co2_ids">									
+									<tree string="Services">	
+										<field name="name"/>
+										<!--
+										<field name="id"/>
+										-->
+										<field name="laser"/>				
+										<field name="treatment"/>
+										<field name="service"/>
+										<field name="consultation"/>
+										<button 
+											type="object" 
+											class="oe_highlight"	
+											string="E"
+											name="open_line_current" 
+										/>
+									</tree>
+								</field>
+
 							</page>
 
 
 							<page string="Excilite"  	attrs="{'invisible':[('nr_services_excilite', '=', 0)]}"	>
-								<field name="service_excilite_ids"/>						
+<!--
+								<field name="service_excilite_ids"/>
+-->
+								<field name="service_excilite_ids">									
+									<tree string="Services">	
+										<field name="name"/>
+										<field name="laser"/>				
+										<field name="treatment"/>
+										<field name="service"/>
+										<field name="consultation"/>
+										<button 
+											type="object" 
+											class="oe_highlight"	
+											string="E"
+											name="open_line_current" 
+										/>
+									</tree>
+								</field>
+
 							</page>
 
 
 							<page string="Ipl"   		attrs="{'invisible':[('nr_services_ipl', '=', 0)]}"  >
-								<field name="service_ipl_ids"/>						
+<!--
+								<field name="service_ipl_ids"/>	
+-->
+								<field name="service_ipl_ids">									
+									<tree string="Services">	
+										<field name="name"/>
+										<field name="laser"/>				
+										<field name="treatment"/>
+										<field name="service"/>
+										<field name="consultation"/>
+										<button 
+											type="object" 
+											class="oe_highlight"	
+											string="E"
+											name="open_line_current" 
+										/>
+									</tree>
+								</field>
+
 							</page>
 
 
 							<page string="Ndyag"   		attrs="{'invisible':[('nr_services_ndyag', '=', 0)]}"  >
+<!--								
 								<field name="service_ndyag_ids"/>						
+-->
+								<field name="service_ndyag_ids">									
+									<tree string="Services">	
+										<field name="name"/>
+										<field name="laser"/>				
+										<field name="treatment"/>
+										<field name="service"/>
+										<field name="consultation"/>
+										<button 
+											type="object" 
+											class="oe_highlight"	
+											string="E"
+											name="open_line_current" 
+										/>
+									</tree>
+								</field>
+
 							</page>
 
 
 							<page string="Medical"   		attrs="{'invisible':[('nr_services_medical', '=', 0)]}"  >
+<!--
 								<field name="service_medical_ids"/>						
+-->
+								<field name="service_medical_ids">									
+									<tree string="Services">	
+										<field name="name"/>
+										<field name="laser"/>				
+										<field name="treatment"/>
+										<field name="service"/>
+										<field name="consultation"/>
+										<button 
+											type="object" 
+											class="oe_highlight"	
+											string="E"
+											name="open_line_current" 
+										/>
+									</tree>
+								</field>
 							</page>
+
 
 
 						</notebook>

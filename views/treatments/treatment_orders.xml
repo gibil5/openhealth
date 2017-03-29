@@ -13,7 +13,40 @@
 
 				<notebook>
 					<page string="Presupuesto"   		 >
+<!--
 						<field name="order_ids"/>
+-->					
+
+						<field name="order_ids">									
+							<tree string="Consultas">										
+
+
+								<field  name="name"	string="Presupuesto #"/>
+
+								<field  name="partner_id"/>
+
+								<field  name="x_doctor"/>
+
+								<field name="x_target"/>
+
+								<field name="state"/>
+								<field name="nr_lines"/>
+								<field name="amount_total"/>
+<!--
+-->
+								<field name="date_order"/>
+											
+																				
+								<!-- Hot Button -->
+								<button 
+									type="object" 
+									class="oe_highlight"	
+									string="E"
+									name="open_line_current" 
+								/>
+							</tree>
+						</field>
+
 					</page>
 				</notebook>
 

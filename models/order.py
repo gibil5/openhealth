@@ -2159,6 +2159,38 @@ class sale_order(models.Model):
 
 
 
+
+
+
+
+	#----------------------------------------------------------- Quick Button ------------------------------------------------------------
+
+	@api.multi
+	def open_line_current(self):  
+
+		consultation_id = self.id 
+
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' Edit Order Current', 
+				'view_type': 'form',
+				'view_mode': 'form',
+				'res_model': self._name,
+				'res_id': consultation_id,
+				'target': 'current',
+				'flags': {
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						'form': {'action_buttons': True, }
+						},
+				'context': {}
+		}
+
+
+
+
+
+
+
 #sale_order()
 
 

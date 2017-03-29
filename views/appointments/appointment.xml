@@ -75,11 +75,11 @@
 
 
 				<xpath expr="//field[@name='name']" position="after">					
-
+<!--
 					<field name="nr_clones"/>
 					<field name="nr_mac_clones"/>
 					<field name="vspace"/>
-
+-->
 				</xpath>
 
 
@@ -340,9 +340,12 @@
 							<field name="cosmetology"		/>
 -->
 
+
 							<field name="treatment"		attrs="{
 																	'invisible':[('x_target', '!=', 'doctor'),],
+																	'required':[('x_target', '=', 'doctor'),],
 														}"	/>
+
 
 
 							<field name="cosmetology"			

@@ -32,6 +32,8 @@
 
                                         (4, ref('openhealth.rchavarri_clinicachavarri')),
                                         (4, ref('openhealth.vmori_clinicachavarri')),
+
+                                        (4, ref('openhealth.pruebas_clinicachavarri')),
                                     ]"/>
 
         </record>
@@ -48,6 +50,8 @@
 
                                         (4, ref('openhealth.rchavarri_clinicachavarri')),
                                         (4, ref('openhealth.vmori_clinicachavarri')),
+
+                                        (4, ref('openhealth.pruebas_clinicachavarri')),
                                     ]"/>
         </record>
 
@@ -63,8 +67,11 @@
 
                                         (4, ref('openhealth.rchavarri_clinicachavarri')),
                                         (4, ref('openhealth.vmori_clinicachavarri')),
+
+                                        (4, ref('openhealth.pruebas_clinicachavarri')),
                                     ]"/>
         </record>
+
 
 
 
@@ -81,6 +88,8 @@
 
                                         (4, ref('openhealth.rchavarri_clinicachavarri')),
                                         (4, ref('openhealth.vmori_clinicachavarri')),
+
+                                        (4, ref('openhealth.pruebas_clinicachavarri')),
                                     ]"/>
         </record>
 

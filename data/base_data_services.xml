@@ -6,5 +6,27 @@
 <!-- Data - Services -->
 
 
+
+x_date_created,type,x_family,Name,x_name_short,x_treatment,x_zone,x_pathology,x_time,x_sessions,price,x_price_vip
+
+2017-02-20,service,cosmetology,PUNTA DE DIAMANTES - Rostro - Limpieza facial profunda - 1 - 30 min,dit_fac_dfc_30m_one,diamond_tip,face,deep_face_cleansing,30 min,1,200.0,
+
+2017-02-20,service,cosmetology,LASER TRIACTIVE + CARBOXITERAPIA + CAMARA DE REDUCCION - Todo Cuerpo - Reduccion de peso y medidas - 12 - 60 min,tcr_boa_rwm,triactive_carboxytherapy_reductionchamber,body_all,reduction_weight_measures,60 min,12,3400.0,
+2017-02-20,service,cosmetology,LASER TRIACTIVE + CARBOXITERAPIA + CAMARA DE REDUCCION - Todo Cuerpo - Reduccion de peso y medidas - 6 - 60 min,tcr_boa_rwm_six,triactive_carboxytherapy_reductionchamber,body_all,reduction_weight_measures,60 min,6,1800.0,
+2017-02-20,service,cosmetology,CARBOXITERAPIA - Cuerpo - Rejuvenecimiento Facial - 1 - 30 min,car_bod_rfa_30m_one,carboxytherapy,body,rejuvenation_face,30 min,1,200.0,
+2017-02-20,service,cosmetology,PUNTA DE DIAMANTES - Rostro - Limpieza facial profunda - 6 - 30 min,dit_fac_dfc_30m_six,diamond_tip,face,deep_face_cleansing,30 min,6,900.0,
+2017-02-20,service,cosmetology,"LASER TRIACTIVE + CARBOXITERAPIA - Rostro, Papada y Cuello - Reafirmacion - 6 - 30 min",tca_fdn_rfa_30m_six,triactive_carboxytherapy,face_doublechin_neck,reaffirmation,30 min,6,1500.0,
+2017-02-20,service,cosmetology,LASER TRIACTIVE + CARBOXITERAPIA + CAMARA DE REDUCCION - Todo Cuerpo - Reduccion de peso y medidas - 1 - 60 min,tcr_boa_rwm_one,triactive_carboxytherapy_reductionchamber,body_all,reduction_weight_measures,60 min,1,400.0,
+2017-02-20,service,cosmetology,CARBOXITERAPIA - Cuerpo - Rejuvenecimiento Facial - 6 - 30 min,car_bod_rfa_30m_six,carboxytherapy,body,rejuvenation_face,30 min,6,900.0,
+2017-02-20,service,cosmetology,CARBOXITERAPIA - Rostro - Rejuvenecimiento Facial - 1 - 30 min,car_fac_rfa_30m_one,carboxytherapy,face,rejuvenation_face,30 min,1,200.0,
+2017-02-20,service,cosmetology,"LASER TRIACTIVE + CARBOXITERAPIA - Rostro, Papada y Cuello - Reafirmacion - 12 - 30 min",tca_fdn_rfa_30m,triactive_carboxytherapy,face_doublechin_neck,reaffirmation,30 min,12,2400.0,
+2017-02-20,service,cosmetology,CARBOXITERAPIA - Rostro - Rejuvenecimiento Facial - 6 - 30 min,car_fac_rfa_30m_six,carboxytherapy,face,rejuvenation_face,30 min,6,900.0,
+2017-02-20,service,cosmetology,"LASER TRIACTIVE + CARBOXITERAPIA - Rostro, Papada y Cuello - Reafirmacion - 1 - 30 min",tca_fdn_rfa_30m_one,triactive_carboxytherapy,face_doublechin_neck,reaffirmation,30 min,1,300.0,
+
+
+
+
+
+
 	</data>
 </openerp>

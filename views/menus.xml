@@ -464,6 +464,13 @@
 
 
 
+		<!-- Service Medical --> 
+		<menuitem id="service_cosmetology_menu" name="Servicios Cosmiatria"
+			parent="openhealth_menu"
+			sequence="15"
+			action="service_cosmetology_list_action"/>
+
+
 
 
 

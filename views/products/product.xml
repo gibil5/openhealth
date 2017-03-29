@@ -83,6 +83,7 @@
 				<tree string="Product Tree"    default_order="x_name_short" >
 					<field name="name"/>
 
+					<field name="x_date_created"/>
 					<field name="id"/>
 
 					<field name="type"/>
@@ -93,7 +94,6 @@
 					<field name="x_pathology"/>				
 					<field name="x_sessions"/>	
 					<field name="x_time"/>				
-					<field name="x_date_created"/>
 					<field name="x_price_vip"/>
 					<field name="list_price"/>
 				</tree>

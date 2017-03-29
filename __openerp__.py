@@ -18,7 +18,7 @@
 
 		Laser - EMR - Min - Ama - Docean\n
 
-		Last built: 	28 Mar 2017
+		Last built: 	29 Mar 2017
 
 		Created: 	 	7 Sep 2016
 
@@ -96,6 +96,19 @@
 		#'data/base_data_services.xml',
 
 		'data/odoo_data_products.xml',
+
+
+
+
+		#'data/odoo_data_services.xml',
+
+		'data/odoo_data_services_co2.xml',
+		'data/odoo_data_services_exc.xml',
+		'data/odoo_data_services_m22.xml',
+		'data/odoo_data_services_med.xml',
+		'data/odoo_data_services_cos.xml',
+
+
 
 
 

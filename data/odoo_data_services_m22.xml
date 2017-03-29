@@ -1,0 +1,1387 @@
+<?xml version='1.0' encoding='utf-8'?>
+<openerp>
+	<data noupdate='0'>
+		<!-- Data - Services -->
+
+		<record id='ipl_fac_dep_15m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_fac_dep_15m_one</field>
+			<field name='name'>LASER M22 IPL - Rostro - Depilacion - 1 - 15 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>face</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>900</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_fac_dep_5m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_fac_dep_5m_one</field>
+			<field name='name'>LASER M22 IPL - Rostro - Depilacion - 1 - 5 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>face</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>300</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>5 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_fac_sta_30m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_fac_sta_30m_one</field>
+			<field name='name'>LASER M22 IPL - Rostro - Manchas - 1 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>face</field>
+			<field name='x_pathology'>stains</field>
+			<field name='price'>1800</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_fee_dep_5m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_fee_dep_5m_one</field>
+			<field name='name'>LASER M22 IPL - Pies - Depilacion - 1 - 5 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>feet</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>300</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>5 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ndy_bol_rub_15m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ndy_bol_rub_15m_one</field>
+			<field name='name'>LASER M22 ND YAG - Localizado Cuerpo - Puntos Rubi - 1 - 15 min</field>
+			<field name='x_treatment'>laser_ndyag</field>
+			<field name='x_zone'>body_local</field>
+			<field name='x_pathology'>ruby_points</field>
+			<field name='price'>900</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_sho_dep_5m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_sho_dep_5m_one</field>
+			<field name='name'>LASER M22 IPL - Hombros - Depilacion - 1 - 5 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>shoulders</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>300</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>5 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ndy_bol_ema_15m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ndy_bol_ema_15m_one</field>
+			<field name='name'>LASER M22 ND YAG - Localizado Cuerpo - Hemangiomas - 1 - 15 min</field>
+			<field name='x_treatment'>laser_ndyag</field>
+			<field name='x_zone'>body_local</field>
+			<field name='x_pathology'>emangiomas</field>
+			<field name='price'>900</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_fac_ros_30m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_fac_ros_30m_one</field>
+			<field name='name'>LASER M22 IPL - Rostro - Rosacea - 1 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>face</field>
+			<field name='x_pathology'>rosacea</field>
+			<field name='price'>1800</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ndy_bol_tel_15m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ndy_bol_tel_15m_one</field>
+			<field name='name'>LASER M22 ND YAG - Localizado Cuerpo - Telangectacias - 1 - 15 min</field>
+			<field name='x_treatment'>laser_ndyag</field>
+			<field name='x_zone'>body_local</field>
+			<field name='x_pathology'>telangiectasia</field>
+			<field name='price'>900</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_bre_dep_5m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_bre_dep_5m_one</field>
+			<field name='name'>LASER M22 IPL - Pecho - Depilacion - 1 - 5 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>breast</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>300</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>5 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_arp_dep_5m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_arp_dep_5m_one</field>
+			<field name='name'>LASER M22 IPL - Axilas - Depilacion - 1 - 5 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>armpits</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>300</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>5 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ndy_bol_var_15m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ndy_bol_var_15m_one</field>
+			<field name='name'>LASER M22 ND YAG - Localizado Cuerpo - Varices - 1 - 15 min</field>
+			<field name='x_treatment'>laser_ndyag</field>
+			<field name='x_zone'>body_local</field>
+			<field name='x_pathology'>varices</field>
+			<field name='price'>900</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_fac_rfa_30m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_fac_rfa_30m_one</field>
+			<field name='name'>LASER M22 IPL - Rostro - Rejuvenecimiento Facial - 1 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>face</field>
+			<field name='x_pathology'>rejuvenation_face</field>
+			<field name='price'>1800</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_fac_ros_30m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_fac_ros_30m_one</field>
+			<field name='name'>LASER M22 IPL - Rostro - Rosacea - 1 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>face</field>
+			<field name='x_pathology'>rosacea</field>
+			<field name='price'>1800</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_han_dep_5m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_han_dep_5m_one</field>
+			<field name='name'>LASER M22 IPL - Manos - Depilacion - 1 - 5 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>hands</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>300</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>5 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ndy_fal_ema_15m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ndy_fal_ema_15m_one</field>
+			<field name='name'>LASER M22 ND YAG - Localizado Rostro - Hemangiomas - 1 - 15 min</field>
+			<field name='x_treatment'>laser_ndyag</field>
+			<field name='x_zone'>face_local</field>
+			<field name='x_pathology'>emangiomas</field>
+			<field name='price'>900</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ndy_fal_rub_15m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ndy_fal_rub_15m_one</field>
+			<field name='name'>LASER M22 ND YAG - Localizado Rostro - Puntos Rubi - 1 - 15 min</field>
+			<field name='x_treatment'>laser_ndyag</field>
+			<field name='x_zone'>face_local</field>
+			<field name='x_pathology'>ruby_points</field>
+			<field name='price'>900</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_are_dep_5m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_are_dep_5m_one</field>
+			<field name='name'>LASER M22 IPL - Ariolas - Depilacion - 1 - 5 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>areolas</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>300</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>5 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ndy_fal_tel_15m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ndy_fal_tel_15m_one</field>
+			<field name='name'>LASER M22 ND YAG - Localizado Rostro - Telangectacias - 1 - 15 min</field>
+			<field name='x_treatment'>laser_ndyag</field>
+			<field name='x_zone'>face_local</field>
+			<field name='x_pathology'>telangiectasia</field>
+			<field name='price'>900</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_bel_dep_5m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_bel_dep_5m_one</field>
+			<field name='name'>LASER M22 IPL - Abdomen - Depilacion - 1 - 5 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>belly</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>300</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>5 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_fac_aca_30m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_fac_aca_30m_one</field>
+			<field name='name'>LASER M22 IPL - Rostro - Acné Activo - 1 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>face</field>
+			<field name='x_pathology'>acne_active</field>
+			<field name='price'>1800</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_fac_sta_30m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_fac_sta_30m_one</field>
+			<field name='name'>LASER M22 IPL - Rostro - Manchas - 1 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>face</field>
+			<field name='x_pathology'>stains</field>
+			<field name='price'>1800</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_nec_dep_5m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_nec_dep_5m_one</field>
+			<field name='name'>LASER M22 IPL - Cuello - Depilacion - 1 - 5 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>neck</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>300</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>5 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_bac_dep_5m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_bac_dep_5m_one</field>
+			<field name='name'>LASER M22 IPL - Espalda - Depilacion - 1 - 5 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>back</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>300</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>5 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_nec_dep_15m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_nec_dep_15m_one</field>
+			<field name='name'>LASER M22 IPL - Cuello - Depilacion - 1 - 15 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>neck</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>900</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_are_dep_15m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_are_dep_15m_one</field>
+			<field name='name'>LASER M22 IPL - Ariolas - Depilacion - 1 - 15 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>areolas</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>900</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_arp_dep_15m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_arp_dep_15m_one</field>
+			<field name='name'>LASER M22 IPL - Axilas - Depilacion - 1 - 15 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>armpits</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>900</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_han_dep_30m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_han_dep_30m_one</field>
+			<field name='name'>LASER M22 IPL - Manos - Depilacion - 1 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>hands</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>1800</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_bre_dep_30m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_bre_dep_30m_one</field>
+			<field name='name'>LASER M22 IPL - Pecho - Depilacion - 1 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>breast</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>1800</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_are_dep_30m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_are_dep_30m_one</field>
+			<field name='name'>LASER M22 IPL - Ariolas - Depilacion - 1 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>areolas</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>1800</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_sho_dep_30m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_sho_dep_30m_one</field>
+			<field name='name'>LASER M22 IPL - Hombros - Depilacion - 1 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>shoulders</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>1800</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_arm_dep_30m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_arm_dep_30m_one</field>
+			<field name='name'>LASER M22 IPL - Brazos - Depilacion - 1 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>arms</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>1800</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_sho_dep_15m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_sho_dep_15m_one</field>
+			<field name='name'>LASER M22 IPL - Hombros - Depilacion - 1 - 15 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>shoulders</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>900</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_bre_dep_15m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_bre_dep_15m_one</field>
+			<field name='name'>LASER M22 IPL - Pecho - Depilacion - 1 - 15 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>breast</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>900</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_fac_ros_30m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_fac_ros_30m_six</field>
+			<field name='name'>LASER M22 IPL - Rostro - Rosacea - 6 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>face</field>
+			<field name='x_pathology'>rosacea</field>
+			<field name='price'>10800</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>6000</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_fac_dep_30m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_fac_dep_30m_one</field>
+			<field name='name'>LASER M22 IPL - Rostro - Depilacion - 1 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>face</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>1800</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_fac_sta_30m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_fac_sta_30m_six</field>
+			<field name='name'>LASER M22 IPL - Rostro - Manchas - 6 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>face</field>
+			<field name='x_pathology'>stains</field>
+			<field name='price'>10800</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>6000</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_fac_ros_30m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_fac_ros_30m_six</field>
+			<field name='name'>LASER M22 IPL - Rostro - Rosacea - 6 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>face</field>
+			<field name='x_pathology'>rosacea</field>
+			<field name='price'>10800</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>6000</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_glu_dep_30m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_glu_dep_30m_one</field>
+			<field name='name'>LASER M22 IPL - Gluteos - Depilacion - 1 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>gluteus</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>1800</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_arp_dep_30m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_arp_dep_30m_one</field>
+			<field name='name'>LASER M22 IPL - Axilas - Depilacion - 1 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>armpits</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>1800</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_bel_dep_15m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_bel_dep_15m_one</field>
+			<field name='name'>LASER M22 IPL - Abdomen - Depilacion - 1 - 15 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>belly</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>900</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_han_dep_15m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_han_dep_15m_one</field>
+			<field name='name'>LASER M22 IPL - Manos - Depilacion - 1 - 15 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>hands</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>900</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_bel_dep_30m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_bel_dep_30m_one</field>
+			<field name='name'>LASER M22 IPL - Abdomen - Depilacion - 1 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>belly</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>1800</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_nec_dep_30m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_nec_dep_30m_one</field>
+			<field name='name'>LASER M22 IPL - Cuello - Depilacion - 1 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>neck</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>1800</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ndy_fal_tel_15m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ndy_fal_tel_15m_six</field>
+			<field name='name'>LASER M22 ND YAG - Localizado Rostro - Telangectacias - 6 - 15 min</field>
+			<field name='x_treatment'>laser_ndyag</field>
+			<field name='x_zone'>face_local</field>
+			<field name='x_pathology'>telangiectasia</field>
+			<field name='price'>5400</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>3600</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_bac_dep_30m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_bac_dep_30m_one</field>
+			<field name='name'>LASER M22 IPL - Espalda - Depilacion - 1 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>back</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>1800</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_bac_dep_15m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_bac_dep_15m_one</field>
+			<field name='name'>LASER M22 IPL - Espalda - Depilacion - 1 - 15 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>back</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>900</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_fac_sta_30m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_fac_sta_30m_six</field>
+			<field name='name'>LASER M22 IPL - Rostro - Manchas - 6 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>face</field>
+			<field name='x_pathology'>stains</field>
+			<field name='price'>10800</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>6000</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_fee_dep_15m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_fee_dep_15m_one</field>
+			<field name='name'>LASER M22 IPL - Pies - Depilacion - 1 - 15 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>feet</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>900</field>
+			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ndy_bol_var_15m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ndy_bol_var_15m_six</field>
+			<field name='name'>LASER M22 ND YAG - Localizado Cuerpo - Varices - 6 - 15 min</field>
+			<field name='x_treatment'>laser_ndyag</field>
+			<field name='x_zone'>body_local</field>
+			<field name='x_pathology'>varices</field>
+			<field name='price'>5400</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>3600</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_fee_dep_30m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_fee_dep_30m_one</field>
+			<field name='name'>LASER M22 IPL - Pies - Depilacion - 1 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>feet</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>1800</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_leg_dep_30m_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_leg_dep_30m_one</field>
+			<field name='name'>LASER M22 IPL - Piernas - Depilacion - 1 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>legs</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>1800</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>0</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ndy_bol_tel_15m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ndy_bol_tel_15m_six</field>
+			<field name='name'>LASER M22 ND YAG - Localizado Cuerpo - Telangectacias - 6 - 15 min</field>
+			<field name='x_treatment'>laser_ndyag</field>
+			<field name='x_zone'>body_local</field>
+			<field name='x_pathology'>telangiectasia</field>
+			<field name='price'>5400</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>3600</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_are_dep_5m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_are_dep_5m_six</field>
+			<field name='name'>LASER M22 IPL - Ariolas - Depilacion - 6 - 5 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>areolas</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>1800</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>5 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>1200</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ndy_fal_rub_15m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ndy_fal_rub_15m_six</field>
+			<field name='name'>LASER M22 ND YAG - Localizado Rostro - Puntos Rubi - 6 - 15 min</field>
+			<field name='x_treatment'>laser_ndyag</field>
+			<field name='x_zone'>face_local</field>
+			<field name='x_pathology'>ruby_points</field>
+			<field name='price'>5400</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>3600</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ndy_bol_ema_15m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ndy_bol_ema_15m_six</field>
+			<field name='name'>LASER M22 ND YAG - Localizado Cuerpo - Hemangiomas - 6 - 15 min</field>
+			<field name='x_treatment'>laser_ndyag</field>
+			<field name='x_zone'>body_local</field>
+			<field name='x_pathology'>emangiomas</field>
+			<field name='price'>5400</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>3600</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_bac_dep_5m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_bac_dep_5m_six</field>
+			<field name='name'>LASER M22 IPL - Espalda - Depilacion - 6 - 5 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>back</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>1800</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>5 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>1200</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_fee_dep_5m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_fee_dep_5m_six</field>
+			<field name='name'>LASER M22 IPL - Pies - Depilacion - 6 - 5 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>feet</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>1800</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>5 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>1200</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_fac_dep_5m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_fac_dep_5m_six</field>
+			<field name='name'>LASER M22 IPL - Rostro - Depilacion - 6 - 5 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>face</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>1800</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>5 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>1200</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_arp_dep_15m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_arp_dep_15m_six</field>
+			<field name='name'>LASER M22 IPL - Axilas - Depilacion - 6 - 15 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>armpits</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>5400</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>3600</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ndy_bol_rub_15m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ndy_bol_rub_15m_six</field>
+			<field name='name'>LASER M22 ND YAG - Localizado Cuerpo - Puntos Rubi - 6 - 15 min</field>
+			<field name='x_treatment'>laser_ndyag</field>
+			<field name='x_zone'>body_local</field>
+			<field name='x_pathology'>ruby_points</field>
+			<field name='price'>5400</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>3600</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_han_dep_5m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_han_dep_5m_six</field>
+			<field name='name'>LASER M22 IPL - Manos - Depilacion - 6 - 5 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>hands</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>1800</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>5 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>1200</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_fac_aca_30m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_fac_aca_30m_six</field>
+			<field name='name'>LASER M22 IPL - Rostro - Acné Activo - 6 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>face</field>
+			<field name='x_pathology'>acne_active</field>
+			<field name='price'>10800</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>6000</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_sho_dep_15m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_sho_dep_15m_six</field>
+			<field name='name'>LASER M22 IPL - Hombros - Depilacion - 6 - 15 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>shoulders</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>5400</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>3600</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_bac_dep_15m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_bac_dep_15m_six</field>
+			<field name='name'>LASER M22 IPL - Espalda - Depilacion - 6 - 15 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>back</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>5400</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>3600</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_bel_dep_15m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_bel_dep_15m_six</field>
+			<field name='name'>LASER M22 IPL - Abdomen - Depilacion - 6 - 15 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>belly</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>5400</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>3600</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_arp_dep_5m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_arp_dep_5m_six</field>
+			<field name='name'>LASER M22 IPL - Axilas - Depilacion - 6 - 5 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>armpits</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>1800</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>5 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>1200</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_bel_dep_5m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_bel_dep_5m_six</field>
+			<field name='name'>LASER M22 IPL - Abdomen - Depilacion - 6 - 5 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>belly</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>1800</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>5 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>1200</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_nec_dep_5m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_nec_dep_5m_six</field>
+			<field name='name'>LASER M22 IPL - Cuello - Depilacion - 6 - 5 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>neck</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>1800</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>5 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>1200</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ndy_fal_ema_15m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ndy_fal_ema_15m_six</field>
+			<field name='name'>LASER M22 ND YAG - Localizado Rostro - Hemangiomas - 6 - 15 min</field>
+			<field name='x_treatment'>laser_ndyag</field>
+			<field name='x_zone'>face_local</field>
+			<field name='x_pathology'>emangiomas</field>
+			<field name='price'>5400</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>3600</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_bre_dep_15m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_bre_dep_15m_six</field>
+			<field name='name'>LASER M22 IPL - Pecho - Depilacion - 6 - 15 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>breast</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>5400</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>3600</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_fac_rfa_30m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_fac_rfa_30m_six</field>
+			<field name='name'>LASER M22 IPL - Rostro - Rejuvenecimiento Facial - 6 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>face</field>
+			<field name='x_pathology'>rejuvenation_face</field>
+			<field name='price'>10800</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>6000</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_sho_dep_5m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_sho_dep_5m_six</field>
+			<field name='name'>LASER M22 IPL - Hombros - Depilacion - 6 - 5 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>shoulders</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>1800</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>5 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>1200</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_fac_dep_15m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_fac_dep_15m_six</field>
+			<field name='name'>LASER M22 IPL - Rostro - Depilacion - 6 - 15 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>face</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>5400</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>3600</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_bre_dep_5m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_bre_dep_5m_six</field>
+			<field name='name'>LASER M22 IPL - Pecho - Depilacion - 6 - 5 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>breast</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>1800</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>5 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>1200</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_nec_dep_15m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_nec_dep_15m_six</field>
+			<field name='name'>LASER M22 IPL - Cuello - Depilacion - 6 - 15 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>neck</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>5400</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>3600</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_are_dep_15m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_are_dep_15m_six</field>
+			<field name='name'>LASER M22 IPL - Ariolas - Depilacion - 6 - 15 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>areolas</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>5400</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>3600</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_han_dep_15m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_han_dep_15m_six</field>
+			<field name='name'>LASER M22 IPL - Manos - Depilacion - 6 - 15 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>hands</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>5400</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>3600</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_fee_dep_15m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_fee_dep_15m_six</field>
+			<field name='name'>LASER M22 IPL - Pies - Depilacion - 6 - 15 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>feet</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>5400</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>15 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>3600</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_arm_dep_30m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_arm_dep_30m_six</field>
+			<field name='name'>LASER M22 IPL - Brazos - Depilacion - 6 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>arms</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>10800</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>6000</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_fac_dep_30m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_fac_dep_30m_six</field>
+			<field name='name'>LASER M22 IPL - Rostro - Depilacion - 6 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>face</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>10800</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>6000</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_leg_dep_30m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_leg_dep_30m_six</field>
+			<field name='name'>LASER M22 IPL - Piernas - Depilacion - 6 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>legs</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>10800</field>
+			<field name='x_date_created'>2017-03-29 15:32:31 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>6000</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_sho_dep_30m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_sho_dep_30m_six</field>
+			<field name='name'>LASER M22 IPL - Hombros - Depilacion - 6 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>shoulders</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>10800</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>6000</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_bre_dep_30m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_bre_dep_30m_six</field>
+			<field name='name'>LASER M22 IPL - Pecho - Depilacion - 6 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>breast</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>10800</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>6000</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_nec_dep_30m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_nec_dep_30m_six</field>
+			<field name='name'>LASER M22 IPL - Cuello - Depilacion - 6 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>neck</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>10800</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>6000</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_bac_dep_30m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_bac_dep_30m_six</field>
+			<field name='name'>LASER M22 IPL - Espalda - Depilacion - 6 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>back</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>10800</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>6000</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_are_dep_30m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_are_dep_30m_six</field>
+			<field name='name'>LASER M22 IPL - Ariolas - Depilacion - 6 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>areolas</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>10800</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>6000</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_bel_dep_30m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_bel_dep_30m_six</field>
+			<field name='name'>LASER M22 IPL - Abdomen - Depilacion - 6 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>belly</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>10800</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>6000</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_han_dep_30m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_han_dep_30m_six</field>
+			<field name='name'>LASER M22 IPL - Manos - Depilacion - 6 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>hands</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>10800</field>
+			<field name='x_date_created'>2017-03-29 15:32:31 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>6000</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_glu_dep_30m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_glu_dep_30m_six</field>
+			<field name='name'>LASER M22 IPL - Gluteos - Depilacion - 6 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>gluteus</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>10800</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>6000</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_fee_dep_30m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_fee_dep_30m_six</field>
+			<field name='name'>LASER M22 IPL - Pies - Depilacion - 6 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>feet</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>10800</field>
+			<field name='x_date_created'>2017-03-29 15:32:31 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>6000</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+		<record id='ipl_arp_dep_30m_six' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ipl_arp_dep_30m_six</field>
+			<field name='name'>LASER M22 IPL - Axilas - Depilacion - 6 - 30 min</field>
+			<field name='x_treatment'>laser_ipl</field>
+			<field name='x_zone'>armpits</field>
+			<field name='x_pathology'>depilation</field>
+			<field name='price'>10800</field>
+			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'>6000</field>
+			<field name='x_family'>laser</field>
+		</record>
+
+	</data>
+</openerp>

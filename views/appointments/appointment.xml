@@ -876,18 +876,7 @@
 					</field>
 		</record>
 
-
-
-
-
-
-
-
-
-
-
 <!--
-
 		<menuitem 
 					action="oehealth.oeh_medical_physician_action_tree1" 
 					parent="oehealth.oeh_medical_appointment_menu"  
@@ -895,18 +884,38 @@
 					sequence="10"
 		/>
 
-
 		<menuitem 	action="oehealth.oeh_medical_appointment_action_tree" 
 					parent="oehealth.oeh_medical_appointment_menu"  
 					id="oehealth.oeh_medical_appointment_list" 
 					sequence="11"/>
-
 
 		<menuitem 	action="oehealth.oeh_medical_prescription_action_tree" 
 					id="oehealth.oeh_medical_prescription_list" 
 					parent="oehealth.oeh_medical_appointment_menu" 
 					sequence="12"/>
 -->
+
+
+
+
+
+		<!-- Filter --> 
+        <record id="view_appointment_filter" model="ir.ui.view">
+           <field name="name">Appointment Search</field>
+
+           <field name="model">oeh.medical.appointment</field>		   
+		   
+		   <field name="arch" type="xml">
+
+               <search string="appointments">
+                   <field name="patient" />               
+               </search>
+           
+           </field>
+       </record>
+
+
+
 
 
 	</data>

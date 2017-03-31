@@ -727,34 +727,14 @@ EC2
 
 		
 		<!-- Tree view --> 
-		<!--
-		<record model="ir.ui.view" id="order_tree_view">
-		-->
 		<record model="ir.ui.view" id="sale.view_order_tree">
-
 			<field name="name">sale.order.tree</field>
-
 			<field name="model">sale.order</field>
-
-			
 			<field name="arch" type="xml">
 				
-
-
 				<tree string="Order Tree">
 					
-                    
 
-					<!--
-                    <field name="name" string="Order Number"/>
-                    <field name="name" string="Presupuesto #"	attrs="{'invisible':[('state', '!=', 'pre-draft')]}"/>
-                    <field name="name" string="Factura #"		attrs="{'invisible':[('state', '!=', 'sale')]}"/>
-                    <field name="id"/>
-                    <field name="invoice_status"/>
-					<field name="message_needaction" invisible="0"/>
-					-->
-
-                    
 
                     <field name="name"/>
 
@@ -762,24 +742,25 @@ EC2
 
 
 
+
+
+
 					<field name="x_doctor"		/>
-                    
 					<field name="x_target"/>
-
-
-
                     <field name="state"/>
-                    
                     <field name="nr_lines"/>
-
-
-
                     <field name="x_amount_total" 	sum="Total Tax Included"	widget="monetary"/>
-
                     <field name="date_order"		string="Fecha"/>
 
-
 <!--
+                    <field name="name" string="Order Number"/>
+                    <field name="name" string="Presupuesto #"	attrs="{'invisible':[('state', '!=', 'pre-draft')]}"/>
+                    <field name="name" string="Factura #"		attrs="{'invisible':[('state', '!=', 'sale')]}"/>
+                    <field name="id"/>
+                    <field name="invoice_status"/>
+					<field name="message_needaction" invisible="0"/>
+
+
                     <field name="receipt"/>
                     <field name="x_invoice"/>
 
@@ -810,11 +791,16 @@ EC2
 		   <field name="arch" type="xml">
 
                <search string="orders">
+<!--
                    <field name="consultation" />
+-->
+                   <field name="partner_id" />
+               
                </search>
            
            </field>
        </record>
+
 
 
 

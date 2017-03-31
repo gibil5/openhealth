@@ -902,9 +902,7 @@
 		<!-- Filter --> 
         <record id="view_appointment_filter" model="ir.ui.view">
            <field name="name">Appointment Search</field>
-
-           <field name="model">oeh.medical.appointment</field>		   
-		   
+           <field name="model">oeh.medical.appointment</field>
 		   <field name="arch" type="xml">
 
                <search string="appointments">
@@ -913,8 +911,6 @@
            
            </field>
        </record>
-
-
 
 	</data>
 </openerp>

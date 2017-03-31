@@ -782,24 +782,6 @@ EC2
 
 
 
-		
-		<!-- Filter --> 
-        <record id="view_medical_order_filter" model="ir.ui.view">
-           <field name="name">Order Search</field>
-           <field name="model">sale.order</field>		   
-           
-		   <field name="arch" type="xml">
-
-               <search string="orders">
-<!--
-                   <field name="consultation" />
--->
-                   <field name="partner_id" />
-               
-               </search>
-           
-           </field>
-       </record>
 
 
 
@@ -965,6 +947,24 @@ EC2
 		action="openextension.order_list_action"
 		It is not required when it is the same module -->
 
+
+
+
+
+
+		
+		<!-- Filter --> 
+        <record id="view_medical_order_filter" model="ir.ui.view">
+           <field name="name">Order Search</field>
+           <field name="model">sale.order</field>		   
+		   <field name="arch" type="xml">
+
+               <search string="orders">
+                   <field name="partner_id" />               
+               </search>
+           
+           </field>
+       </record>
 
 	</data>
 </openerp>

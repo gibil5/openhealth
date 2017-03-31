@@ -49,6 +49,49 @@ class Appointment(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Relational  ------------------------------------------------------
+
+	consultation = fields.Many2one('openhealth.consultation',
+		string="Consulta",
+
+		#ondelete='cascade', 			# Very important. 
+	)
+
+
+	procedure = fields.Many2one('openhealth.procedure',
+		string="Procedimiento",
+
+		#ondelete='cascade', 
+	)
+
+	procedure_cos = fields.Many2one('openhealth.procedure.cos',
+		string="Proc. - Cos",
+		
+		#ondelete='cascade', 
+	)
+
+
+	session = fields.Many2one('openhealth.session',
+		string="Sesión",
+		
+		#ondelete='cascade', 
+	)
+
+
+	control = fields.Many2one('openhealth.control',
+		string="Control",
+		
+		#ondelete='cascade', 
+	)
+
+
+
+
+
+
+
+
 	x_target = fields.Selection(
 			string="Target", 
 			selection = app_vars._target_list, 
@@ -1162,30 +1205,6 @@ class Appointment(models.Model):
 
 
 
-	consultation = fields.Many2one('openhealth.consultation',
-		string="Consulta",
-		#string="Cons.",
-
-		ondelete='cascade', 
-	)
-
-
-
-
-
-	# Here 
-	procedure = fields.Many2one('openhealth.procedure',
-		string="Procedimiento",
-		#string="Proc.",
-		ondelete='cascade', 
-	)
-
-
-	procedure_cos = fields.Many2one('openhealth.procedure.cos',
-		#string="Procedimiento",
-		string="Proc. - Cos",
-		ondelete='cascade', 
-	)
 
 
 
@@ -1193,19 +1212,6 @@ class Appointment(models.Model):
 
 
 
-
-	session = fields.Many2one('openhealth.session',
-		string="Sesión",
-		ondelete='cascade', 
-	)
-
-
-	control = fields.Many2one('openhealth.control',
-		string="Control",
-		#string="Cont.",
-		
-		ondelete='cascade', 
-	)
 
 
 

@@ -534,9 +534,14 @@ Order Line - Tree
             	        <field name="x_price_vip"/>
             	</xpath>
 
+<!--
 				<xpath expr="//field	[@name='order_line']/tree//field[@name='purchase_price']" position="replace">
                 	<field name="purchase_price" invisible="1"/>
             	</xpath>
+-->
+
+
+
 
 <!--
 				<xpath expr="//field	[@name='order_line']/tree//field[@name='name']" position="after">

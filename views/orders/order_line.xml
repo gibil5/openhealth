@@ -27,11 +27,10 @@
 		<!--
 		<record model="ir.ui.view" id="sale.view_order_line_tree">
 			<field name="name">sale.order.line.tree</field>
-			<field name="model">sale.order.line</field>
-
-			
+			<field name="model">sale.order.line</field>			
 			<field name="arch" type="xml">
 				
+
 				<tree string="Order Line Tree">
 					
                     <field name="name" />
@@ -51,27 +50,34 @@
 
 
 
+
+
+
 		<!-- Order Line tree/list view -->
 		<!--
-		--> 
+		<record model="ir.ui.view" id="sale_margin.sale_margin_sale_order_line_form">
+		<tree string="Order Line Tree">		--> 
+
+
 		<record model="ir.ui.view" id="sale.view_order_line_tree">
 			<field name="name">sale.order.line.tree</field>
 			<field name="model">sale.order.line</field>
 			<field name="arch" type="xml">
-				<tree string="Order Line Tree">
 
+
+				<tree string="Sales Order Lines">
 
                     <!--
                     <field name="id"/>
                     <field name="product_id"/>
 					<field name="consultation"/>
 					<field name="order_id"/>
-
 					<field name="state"/>
 					<field name="description"/>
 					-->
 
 					<field name="name"/>
+
 
                     <field name="price_subtotal" />
 
@@ -90,30 +96,21 @@
 
 
 		
-		<!-- Filter --> 
-        <record id="view_medical_order_line_filter" model="ir.ui.view">
-           <field name="name">Order Line Search</field>
 
-           <field name="model">sale.order.line</field>		   
-           
-		   <field name="arch" type="xml">
-               <search string="order lines">
-                   <field name="consultation" />
-               </search>
-           </field>
-       </record>
+
 
 
 
 
 		<!-- Window Form Action --> 
+<!--
+-->	
 		<record model="ir.actions.act_window" id="order_line_form_action">
 			<field name="name">orders</field>
 			<field name="res_model">sale.order.line</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 			
-			<!--
             <field name="domain">[]</field>
             <field name="context">{}</field>
             <field name="view_id" eval="False"/>
@@ -121,9 +118,7 @@
 				<p class="oe_view_nocontent_create">Create the first order
 				</p>
 			</field>
-			-->
 		</record>
-		
 		
 		
 		
@@ -135,16 +130,18 @@
 		The following tag is an action definition for a "window action",
 		that is an action opening a view or a set of views
 		-->
-		<record model="ir.actions.act_window" id="order_line_list_action">
+<!--
+		<record model="ir.actions.act_window" id="order_line_list_action"> 
+-->
+		<record model="ir.actions.act_window" id="sale.action_product_sale_list"> 
 
-			<field name="name">Order Lines</field>
+			<field name="name">Order Lines - jx</field>
 			<field name="res_model">sale.order.line</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 			
 			
-			<!--
-            <field name="domain">[]</field>
+           <field name="domain">[]</field>
             <field name="context">{}</field>
             <field name="view_id" eval="False"/>
 			
@@ -152,9 +149,8 @@
 				<p class="oe_view_nocontent_create">Create the first order
 				</p>
 			</field>
-			-->
 		</record>
-		
+
 		
 
 
@@ -172,6 +168,21 @@
 		<menuitem id="openextension_menu" name="Open Health"
 			parent="main_openextension_menu"/>
 		-->
+
+
+		<!-- Filter --> 
+        <record id="view_medical_order_line_filter" model="ir.ui.view">
+           <field name="name">Order Line Search</field>
+
+           <field name="model">sale.order.line</field>		   
+           
+		   <field name="arch" type="xml">
+               <search string="order lines">
+                   <field name="consultation" />
+               </search>
+           </field>
+       </record>
+
 
 	</data>
 </openerp>

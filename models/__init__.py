@@ -66,6 +66,7 @@ from . import service_cosmetology
 from . import order
 from . import order_line
 
+
 from . import sale_document
 
 from . import invoice

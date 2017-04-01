@@ -201,7 +201,6 @@ class sale_order(models.Model):
 
 
 
-	#x_state = fields.Char(
 	x_state = fields.Selection(
 
 			#selection = ord_vars._state_list, 
@@ -251,9 +250,12 @@ class sale_order(models.Model):
 
 
 
-			if record.x_machine != False:
+
+			#if record.x_machine != False:
+			if (record.x_machine != False	or 	record.patient.name == False) and record.x_sale_document:
 				#record.state = record.x_state
 				record.x_state = 'machine'
+
 
 
 
@@ -400,11 +402,14 @@ class sale_order(models.Model):
 	def _compute_x_product(self):
 		for record in self:
 
+			flag = False
+
 			for line in record.order_line:
-
 				product = line.product_id.id
+				flag = True 
 
-			record.x_product = product
+			if flag: 
+				record.x_product = product
 
 
 

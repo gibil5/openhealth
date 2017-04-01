@@ -122,10 +122,14 @@
 
 
 		# Orders
-		'views/orders/order.xml',
 		'views/orders/order_line.xml',
+		
+		'views/orders/order.xml',
+
+
 		'views/orders/payment_methods.xml',
 		'views/orders/events.xml',
+
 
 
 

@@ -342,10 +342,13 @@
 
 
 		<!-- Order Lines --> 
+<!--
+			action="order_line_list_action"/>
+-->
 		<menuitem id="order_lines_menu" name="Order Lines" 
 			parent="openhealth_menu"
 			sequence="0"
-			action="order_line_list_action"/>
+			action="sale.action_product_sale_list"/>
 
 		<!-- Orders --> 
 		<menuitem id="orders_menu" name="Orders" parent="openhealth_menu"

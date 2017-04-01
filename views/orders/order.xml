@@ -58,6 +58,11 @@
 				-->
 				<xpath expr="//field[@name='validity_date']" position="after">
 
+
+					<group	attrs="{				'invisible':[('patient', '=', False ),],
+												}"	>
+
+
 					<field name="vspace" />
 
 					<field name="patient" />
@@ -93,10 +98,19 @@
 
 
 
-
+					<field name="vspace"/>
+					<field name="x_appointment"/>
+					<field name="x_appointment_date"/>
+					<field name="x_duration"/>
 
 					<field name="vspace"/>
+					<field name="x_machine"/>
 
+
+
+<!--
+					<field name="vspace"/>
+-->
 					<field name="cosmetology"	attrs="{
 														'invisible':[('cosmetology', '=', False ),],
 														}"	/>
@@ -107,7 +121,7 @@
 														}"	/>
 -->
 
-
+					</group>
 				</xpath>
 
 
@@ -473,23 +487,22 @@ EC2
 
 
 
+<!--
+Order Line - Tree
+-->
+<!--
 				<xpath expr="//field[@name='order_line']" position="replace">
-
 					<field name="order_line">
-
-
 						<tree string="Order Line Tree">
 					
 
     	                	<field name="product_id" 		string="Producto"/>
 
-
-
         	            	<field name="name"				string="Descripción" />
 
+
+
         	            	<field name="x_partner_vip"		string="Vip"/>
-
-
 
         	            	<field name="product_uom_qty"	string="Cantidad"/>
 
@@ -499,28 +512,50 @@ EC2
 
             	        	<field name="price_subtotal"	/>
 
-
-        	            	<!--
-            	        	<field name="x_price"/>
-            	        	<field name="tax_id"/>
-            	        	<field name="price_total"/>
-
-        	            	<field name="x_type"/>
-
-            	        	<field name="x_price_wigv"/>
-
-            	        	<field name="x_price_vip_wigv"/>
-            	        	-->
 						</tree>
 					</field>
-
 				</xpath>
-				
 
-				<!--
-				
-				Order Line - Replace - Deprecated  
 
+
+				<xpath expr="//field[@name='price_subtotal']" position="before">
+            	        <field name="x_price_vip"/>
+				</xpath>
+
+
+				<xpath expr="//field	[@name='order_line']/tree//field[@name='price_unit']" position="after">
+                	<field name="purchase_price" groups="base.group_user"  string='jx'/>
+            	</xpath>
+-->			
+
+
+
+				<xpath expr="//field	[@name='order_line']/tree//field[@name='price_subtotal']" position="before">
+            	        <field name="x_price_vip"/>
+            	</xpath>
+
+				<xpath expr="//field	[@name='order_line']/tree//field[@name='purchase_price']" position="replace">
+            	</xpath>
+
+<!--
+				<xpath expr="//field	[@name='order_line']/tree//field[@name='name']" position="after">
+        	            <field name="x_partner_vip"		string="Vip"/>
+            	</xpath>
+-->
+				<xpath expr="//field	[@name='order_line']/tree//field[@name='tax_id']" position="replace">
+            	</xpath>
+
+
+
+				<xpath expr="//field	[@name='order_line']/tree//field[@name='product_uom_qty']" position="replace">
+        	            <field name="product_uom_qty"	string="Cantidad"/>
+            	</xpath>
+
+
+
+
+				<!--				
+				Order Line - Replace    
 				<field name="order_line" position="replace">
 
 
@@ -548,6 +583,10 @@ EC2
 
 
 
+
+
+
+
 				<field name="amount_untaxed" position="replace">
 				</field>
 
@@ -556,53 +595,11 @@ EC2
 
 
 
-				<!--
-				<field name="payment_term_id" position="after">
-				-->
-				<field name="consultation" position="after">
-
-					<!--
-					<field name="x_doctor"/>
-					-->
-
-
-					<field name="vspace"/>
-					<field name="x_appointment"/>
-					<field name="x_appointment_date"/>
-					<field name="x_duration"/>
-					<field name="x_machine"/>
-
-
-
-
-					<!-- Reserve Machine --> 
-					<!--
-						context="{'x_machine': 'none'}"
-					<button 
-						type="object"
-						class="oe_highlight"
-						string="Reservar sala"
-						name="reserve_machine" 	
-					/>
-					-->
-
-
-
-
-
-					<!--
-					<button 
-						type="object" 
-						class="oe_highlight"	
-
-						string="Limpiar"
-						
-						name="clean_order_lines" 	
-					/>
-					-->
-				</field>
 				
 				
+
+
+
 				
 				<field name="partner_id" position="after">
 					
@@ -666,7 +663,9 @@ EC2
 					-->
 
 					<field name="vspace"/>
+					<field name="vspace"/>
 					<field name="x_sale_document"/>
+					<field name="vspace"/>
 
 
 
@@ -688,16 +687,13 @@ EC2
 
 
 
-
-
-
-					<field name="vspace"/>
 <!--
+					<field name="vspace"/>
 					<field name="x_product"/>
--->
 					<field name="x_machine_req"/>
-
 					<field name="x_target"/>
+-->
+
 
 					
 					<!--

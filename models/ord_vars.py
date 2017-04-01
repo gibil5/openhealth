@@ -11,9 +11,9 @@ _x_state_list = [
 
         			('proof', 			'Comprobante'),
 
-        			('machine', 		'Reserva de sala'),
+        			('machine', 		'Sala reservada'),
         			
-        			('sale', 			'Confirmado'),
+        			('sale', 			'Venta'),
 
 
         			('invoice', 		'Facturado'),

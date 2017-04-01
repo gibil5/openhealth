@@ -18,6 +18,58 @@ class sale_order_line(models.Model):
 
 
 
+	name = fields.Text(
+
+			#string='Description', 
+			string='Descripción', 
+
+			required=True
+		)
+
+
+	product_id = fields.Many2one(
+			'product.product', 
+		
+			#string='Product', 
+			string='Producto', 
+		
+			domain=[('sale_ok', '=', True)], 
+			change_default=True, 
+			ondelete='restrict', 
+			required=True
+		)
+
+
+	product_uom_qty = fields.Float(
+
+			#string='Quantity', 
+			string='Cantidad', 
+
+			#digits=dp.get_precision('Product Unit of Measure'), 
+			#required=True, 
+			#default=1.0
+		)
+
+
+	#price_unit = fields.Float('Unit Price', required=True, digits=dp.get_precision('Product Price'), default=0.0)
+	price_unit = fields.Float(
+			'Precio', 
+			required=True, 
+			#digits=dp.get_precision('Product Price'), 
+			default=0.0
+		)
+
+	#price_subtotal = fields.Monetary(compute='_compute_amount', string='Subtotal', readonly=True, store=True)
+	#price_tax = fields.Monetary(compute='_compute_amount', string='Taxes', readonly=True, store=True)
+	#price_total = fields.Monetary(compute='_compute_amount', string='Total', readonly=True, store=True)
+
+
+
+
+
+
+
+
 	order_id=fields.Many2one(
 
 		'sale.order',

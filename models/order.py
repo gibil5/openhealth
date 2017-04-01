@@ -140,7 +140,8 @@ class sale_order(models.Model):
 	x_payment_method = fields.One2many(
 			'openhealth.payment_method',
 			'order',		
-			string="Medios de pago", 
+			#string="Medios de pago", 
+			string="Pagos", 
 		)
 
 
@@ -148,7 +149,8 @@ class sale_order(models.Model):
 
 	x_sale_document = fields.Many2one(
 			'openhealth.sale_document',
-			string="Comprobante de pago", 
+			#string="Comprobante de pago", 
+			string="Comprobante", 
 			#required=True, 
 			compute='_compute_x_sale_document', 
 		)

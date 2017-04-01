@@ -6,6 +6,76 @@
 
 
 
+		<!-- Form view -->
+		<record model="ir.ui.view" id="receipt_form_view">
+			<field name="name">receipt.form</field>
+			
+			<field name="model">openhealth.invoice</field>
+
+			<!--
+			<field name="inherit_id" ref="sale.view_order_form"/>			
+	        <field name="mode">primary</field>
+	        <field name="priority" eval="1"/>
+	        -->
+
+			<field name="arch" type="xml">
+
+				<form string="Invoice - Form">
+
+					<!-- Header --> 
+					<header></header>
+
+
+
+					<!-- Sheet --> 
+					<sheet>
+						<h1><field name="order" class="oe_inline"/></h1>
+
+						
+						<field name="vspace"   />													
+
+
+						<group>
+							<group>
+								<field name="name"   />													
+							</group>
+
+							<group>
+							</group>
+						</group>
+
+						<group>
+							<group>
+								<field name="partner"   />													
+							</group>
+							<group>							
+							</group>
+						</group>
+
+						<group>
+							<group>
+								<field name="total"   />													
+							</group>
+							<group>							
+							</group>
+						</group>
+
+
+					</sheet>
+				</form>
+				
+			</field>
+		</record>
+
+
+
+
+
+
+
+
+
+
 		<!-- Tree view --> 
 		<record model="ir.ui.view" id="invoice_tree_view">
 			<field name="name">invoice.tree</field>

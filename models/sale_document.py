@@ -31,6 +31,13 @@ class SaleDocument(models.Model):
 
 
 
+	vspace = fields.Char(
+			' ', 
+			readonly=True
+			)
+
+	
+
 
 
 	partner = fields.Many2one(

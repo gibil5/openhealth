@@ -19,43 +19,19 @@
 
 
 
-				<notebook position="inside">
-					
+				<notebook position="inside">					
 							<page string="Pagos">
 
 
-
-
-
+<!--
+-->
 								<field name="x_payment_method">
-									
-									<!--
-									<tree editable="bottom">										
-	                                -->
-
 									<tree string="Métodos de Pago">										
-										
 										<field  name="name"/>
-											
 										<field  name="method"/>
-
 										<field  name="subtotal"/>
-
-
-
-																				
-										<!-- Hot Button -->
-										<!--
-										<button 
-											type="object" 
-											class="oe_highlight"	
-											string="E"
-											name="open_line_current" 
-										/>
-										-->
 									</tree>
 								</field>
-
 
 							
 							<group col="4">

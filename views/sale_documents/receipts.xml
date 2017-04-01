@@ -6,7 +6,6 @@
 
 		<!-- Form view -->
 		<record model="ir.ui.view" id="receipt_form_view">
-
 			<field name="name">receipt.form</field>
 			
 			<field name="model">openhealth.receipt</field>
@@ -19,39 +18,37 @@
 
 			<field name="arch" type="xml">
 
-				
-
-
 				<form string="Receipt - Form">
 
-
-
-
 					<!-- Header --> 
-					<header>
-					</header>
-
-
+					<header></header>
 
 
 
 					<!-- Sheet --> 
 					<sheet>
+						<h1><field name="order" class="oe_inline"/></h1>
+
 						
+						<field name="vspace"   />													
+
 
 						<group>
 							<group>
 								<field name="name"   />													
-								<field name="partner"   />													
 							</group>
 
-
 							<group>
-								<field name="order"   />													
 							</group>
 						</group>
 
-
+						<group>
+							<group>
+								<field name="partner"   />													
+							</group>
+							<group>							
+							</group>
+						</group>
 
 						<group>
 							<group>
@@ -64,8 +61,6 @@
 
 					</sheet>
 				</form>
-
-
 				
 			</field>
 		</record>

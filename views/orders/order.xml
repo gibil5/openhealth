@@ -53,14 +53,23 @@
 
 
 
-				<!--
 				<xpath expr="//field[@name='validity_date']" position="replace">
-				-->
+
+					<field name="x_machine"		attrs="{	'invisible':[('patient', '=', False ),],
+															}"	/>
+				
+				</xpath>
+
+
+
+				<!--
 				<xpath expr="//field[@name='validity_date']" position="after">
+				-->
+				<xpath expr="//field[@name='x_machine']" position="after">
 
-
-					<group	attrs="{				'invisible':[('patient', '=', False ),],
+					<group	attrs="{	'invisible':[('patient', '=', False ),],
 												}"	>
+
 
 
 					<field name="vspace" />
@@ -96,15 +105,10 @@
 
 					<field name="consultation"/>
 
-
-
-					<field name="vspace"/>
 					<field name="x_appointment"/>
 					<field name="x_appointment_date"/>
 					<field name="x_duration"/>
 
-					<field name="vspace"/>
-					<field name="x_machine"/>
 
 
 
@@ -455,7 +459,7 @@
 								type="object" 
 								class="oe_highlight"
 
-								string="Reset"
+								string="Reiniciar"
 
 								name="x_reset" 	
 							/>
@@ -669,10 +673,14 @@ Order Line - Tree
 					-->
 
 					<field name="vspace"/>
+					
 					<field name="vspace"/>
 					<field name="x_sale_document"/>
+					<field name="vspace"/>					
+<!--
+					<field name="x_payment_method"/>
 					<field name="vspace"/>
-
+-->
 
 
 					<field name="x_ruc"			attrs="{'invisible':[('x_sale_document', '!=', 'invoice')]}"	/>

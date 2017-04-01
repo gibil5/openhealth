@@ -37,10 +37,14 @@
 					<!-- Sheet --> 
 					<sheet>
 						
+<!--
+						<h1><field name="order"   /></h1>
+-->
+						<h1><field name="order" class="oe_inline"/></h1>
+
 
 						<group>
 							<group>
-								<field name="order"   />													
 
 
 								<field name="vspace"   />													

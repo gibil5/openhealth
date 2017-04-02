@@ -12,7 +12,9 @@ class advertisement(models.Model):
 	
 	_name = 'openhealth.advertisement'
 
-	_inherit='openhealth.sale_document'
+	#_inherit='openhealth.sale_document'
+	_inherit='openhealth.sale_proof'
+
 
 
 

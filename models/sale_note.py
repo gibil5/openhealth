@@ -12,7 +12,9 @@ class SaleNote(models.Model):
 	
 	_name = 'openhealth.sale_note'
 
-	_inherit='openhealth.sale_document'
+	#_inherit='openhealth.sale_document'
+	_inherit='openhealth.sale_proof'
+
 
 
 

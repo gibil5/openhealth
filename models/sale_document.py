@@ -36,23 +36,15 @@ class SaleDocument(models.Model):
 			readonly=True
 			)
 
-	
-
-
-
 	partner = fields.Many2one(
 			'res.partner',
 			string = "Cliente", 			
 			required=True, 
 		)
 
-
-	
 	total = fields.Float(
 			string = 'Total', 
 		)
-
-
 
 	order = fields.Many2one(
 			'sale.order',
@@ -60,9 +52,6 @@ class SaleDocument(models.Model):
 			ondelete='cascade', 
 			required=True, 
 		)
-
-
-
 
 	ruc = fields.Char(
 			string="RUC", 	
@@ -75,49 +64,201 @@ class SaleDocument(models.Model):
 
 
 
+
+
+
+	#consultation_ids = fields.One2many(
+	#		'openhealth.consultation', 
+	#		'treatment', 
+
+	#		string = "Consultas", 
+	#		)
+
+
+
+
+
+	#receipt = fields.One2many(
 	receipt = fields.Many2one(
 			'openhealth.receipt',
+			#'sale_document', 
+
 			string = "Boleta", 			
-			#required=True, 
+
+			#ondelete='cascade', 
 		)
 
 
+
+
+
+	#invoice = fields.One2many(
 	invoice = fields.Many2one(
 			'openhealth.invoice',
+			#'sale_document', 
+
 			string = "Factura", 			
-			#required=True, 
+
+			#ondelete='cascade', 
 		)
 
 
+	#advertisement = fields.One2many(
 	advertisement = fields.Many2one(
 			'openhealth.advertisement',
+			#'sale_document', 
+
 			string = "Canje publicidad", 			
-			#required=True, 
+
+			#ondelete='cascade', 
 		)
 
 
+	#sale_note = fields.One2many(
 	sale_note = fields.Many2one(
 			'openhealth.sale_note',
+			#'sale_document', 
+
 			string = "Nota de venta", 			
-			#required=True, 
+
+			#ondelete='cascade', 
 		)
 
 
+	#ticket_receipt = fields.One2many(
 	ticket_receipt = fields.Many2one(
 			'openhealth.ticket_receipt',
+			#'sale_document', 
+
 			string = "Ticket Boleta", 			
-			#required=True, 
+
+			#ondelete='cascade', 
 		)
 
 
+	#ticket_invoice = fields.One2many(
 	ticket_invoice = fields.Many2one(
 			'openhealth.ticket_invoice',
+			#'sale_document', 
+
 			string = "Ticket Factura", 			
-			#required=True, 
+
+			#ondelete='cascade', 
 		)
 
 
 
+
+
+
+
+
+
+
+
+
+	# Number of receipts 
+	nr_receipts = fields.Integer(
+			compute="_compute_nr_receipts",
+	)
+	@api.multi
+	def _compute_nr_receipts(self):
+		for record in self:
+			record.nr_receipts=self.env['openhealth.receipt'].search_count([
+
+																				('sale_document','=', record.id),
+				
+																		]) 
+
+	# Number of invoices 
+	nr_invoices = fields.Integer(
+			compute="_compute_nr_invoices",
+	)
+	@api.multi
+	def _compute_nr_invoices(self):
+		for record in self:
+			record.nr_invoices=self.env['openhealth.invoice'].search_count([
+
+																				('sale_document','=', record.id),
+				
+
+
+																		]) 
+
+
+	# Number of advertisements 
+	nr_advertisements = fields.Integer(
+			compute="_compute_nr_advertisements",
+	)
+	@api.multi
+	def _compute_nr_advertisements(self):
+		for record in self:
+			record.nr_advertisements=self.env['openhealth.advertisement'].search_count([
+
+																				('sale_document','=', record.id),
+				
+																		]) 
+
+	# Number of sale_notes 
+	nr_sale_notes = fields.Integer(
+			compute="_compute_nr_sale_notes",
+	)
+	@api.multi
+	def _compute_nr_sale_notes(self):
+		for record in self:
+			record.nr_sale_notes=self.env['openhealth.sale_note'].search_count([
+
+																				('sale_document','=', record.id),
+				
+																		]) 
+
+
+
+	# Number of ticket_invoices 
+	nr_ticket_invoices = fields.Integer(
+			compute="_compute_nr_ticket_invoices",
+	)
+	@api.multi
+	def _compute_nr_ticket_invoices(self):
+		for record in self:
+			record.nr_ticket_invoices=self.env['openhealth.ticket_invoice'].search_count([
+
+																				('sale_document','=', record.id),
+				
+																		]) 
+
+	# Number of ticket_receipts 
+	nr_ticket_receipts = fields.Integer(
+			compute="_compute_nr_ticket_receipts",
+	)
+	@api.multi
+	def _compute_nr_ticket_receipts(self):
+		for record in self:
+			record.nr_ticket_receipts=self.env['openhealth.ticket_receipt'].search_count([
+
+																				('sale_document','=', record.id),
+				
+																		]) 
+
+
+
+
+
+	nr_proofs = fields.Integer(
+			string='Nr Proofs',	
+			default=0, 
+			compute="_compute_nr_proofs",
+	)
+
+
+	@api.multi
+	#@api.depends('state')
+
+	def _compute_nr_proofs(self):
+		for record in self:
+
+			record.nr_proofs = 	record.nr_receipts + record.nr_invoices + record.nr_advertisements + \
+								record.nr_sale_notes + record.nr_ticket_receipts + record.nr_ticket_invoices
 
 
 
@@ -130,7 +271,10 @@ class SaleDocument(models.Model):
 
 
 		# Search 
-		receipt_id = self.env['openhealth.receipt'].search([('order','=',self.order.id),]).id
+		receipt_id = self.env['openhealth.receipt'].search([
+																#('order','=',self.order.id),
+																('sale_document','=',self.id),
+															]).id
 
 
 
@@ -138,7 +282,9 @@ class SaleDocument(models.Model):
 		if receipt_id == False:
 
 			receipt = self.env['openhealth.receipt'].create({
-																'order': self.order.id,
+																'sale_document': self.id,
+
+																#'order': self.order.id,
 
 																'total': self.total, 
 
@@ -170,7 +316,9 @@ class SaleDocument(models.Model):
 
 
 				'context': {
-							'default_order': self.order.id,
+							'default_sale_document': self.id,
+
+							#'default_order': self.order.id,
 
 							'default_total': self.total,
 
@@ -192,13 +340,17 @@ class SaleDocument(models.Model):
 
 
 		# Search 
-		invoice_id = self.env['openhealth.invoice'].search([('order','=',self.order.id),]).id
+		invoice_id = self.env['openhealth.invoice'].search([
+																#('order','=',self.order.id),
+																('sale_document','=',self.id),
+
+																]).id
 
 		# Create 
 		if invoice_id == False:
 
 			invoice = self.env['openhealth.invoice'].create({
-																'order': self.order.id,
+																'sale_document': self.id,
 
 																'total': self.total, 
 																
@@ -210,7 +362,7 @@ class SaleDocument(models.Model):
 
 
 
-		self.x_invoice = invoice_id
+		self.invoice = invoice_id
 
 
 		return {
@@ -233,10 +385,10 @@ class SaleDocument(models.Model):
 
 
 				'context': {
-							'default_order': self.order.id,
+							'default_sale_document': self.id,
+
 							'default_total': self.total,
 							'default_ruc': self.ruc,
-
 							'default_partner': self.partner.id,
 							}
 				}
@@ -255,13 +407,16 @@ class SaleDocument(models.Model):
 
 
 		# Search 
-		advertisement_id = self.env['openhealth.advertisement'].search([('order','=',self.order.id),]).id
+		advertisement_id = self.env['openhealth.advertisement'].search([	
+																			#('order','=',self.order.id),
+																			('sale_document','=',self.id),
+																		]).id
 
 		# Create 
 		if advertisement_id == False:
 
 			advertisement = self.env['openhealth.advertisement'].create({
-																'order': self.order.id,
+																'sale_document': self.id,
 
 																'total': self.total, 
 
@@ -270,7 +425,7 @@ class SaleDocument(models.Model):
 			advertisement_id = advertisement.id 
 
 
-		self.x_advertisement = advertisement_id
+		self.advertisement = advertisement_id
 
 
 		return {
@@ -293,10 +448,9 @@ class SaleDocument(models.Model):
 
 
 				'context': {
-							'default_order': self.order.id,
+							'default_sale_document': self.id,
 
 							'default_total': self.total,
-
 							'default_partner': self.partner.id,
 							}
 				}
@@ -317,13 +471,17 @@ class SaleDocument(models.Model):
 
 
 		# Search 
-		sale_note_id = self.env['openhealth.sale_note'].search([('order','=',self.order.id),]).id
+		sale_note_id = self.env['openhealth.sale_note'].search([
+																	#('order','=',self.order.id),
+																	('sale_document','=',self.id),
+
+																	]).id
 
 		# Create 
 		if sale_note_id == False:
 
 			sale_note = self.env['openhealth.sale_note'].create({
-																'order': self.order.id,
+																'sale_document': self.id,
 
 																'total': self.total, 
 
@@ -333,7 +491,7 @@ class SaleDocument(models.Model):
 
 
 
-		self.x_sale_note = sale_note_id
+		self.sale_note = sale_note_id
 
 
 		return {
@@ -356,10 +514,9 @@ class SaleDocument(models.Model):
 
 
 				'context': {
-							'default_order': self.order.id,
+							'default_sale_document': self.id,
 
 							'default_total': self.total,
-
 							'default_partner': self.partner.id,
 							}
 				}
@@ -381,13 +538,16 @@ class SaleDocument(models.Model):
 		print 'Create Ticekt Receipt'
 
 		# Search 
-		ticket_receipt_id = self.env['openhealth.ticket_receipt'].search([('order','=',self.order.id),]).id
+		ticket_receipt_id = self.env['openhealth.ticket_receipt'].search([
+																			#('order','=',self.order.id),
+																			('sale_document','=',self.id),
+																			]).id
 
 		# Create 
 		if ticket_receipt_id == False:
 
 			ticket_receipt = self.env['openhealth.ticket_receipt'].create({
-																'order': self.order.id,
+																'sale_document': self.id,
 
 																'total': self.total, 
 
@@ -397,7 +557,7 @@ class SaleDocument(models.Model):
 
 
 
-		self.x_ticket_receipt = ticket_receipt_id
+		self.ticket_receipt = ticket_receipt_id
 
 
 		return {
@@ -420,9 +580,9 @@ class SaleDocument(models.Model):
 
 
 				'context': {
-							'default_order': self.order.id,
-							'default_total': self.total,
+							'default_sale_document': self.id,
 
+							'default_total': self.total,
 							'default_partner': self.partner.id,
 							}
 				}
@@ -444,13 +604,16 @@ class SaleDocument(models.Model):
 
 
 		# Search 
-		ticket_invoice_id = self.env['openhealth.ticket_invoice'].search([('order','=',self.order.id),]).id
+		ticket_invoice_id = self.env['openhealth.ticket_invoice'].search([
+																			#('order','=',self.order.id),
+																			('sale_document','=',self.id),
+																		]).id
 
 		# Create 
 		if ticket_invoice_id == False:
 
 			ticket_invoice = self.env['openhealth.ticket_invoice'].create({
-																'order': self.order.id,
+																'sale_document': self.id,
 
 																'total': self.total, 
 
@@ -460,7 +623,7 @@ class SaleDocument(models.Model):
 
 
 
-		self.x_ticket_invoice = ticket_invoice_id
+		self.ticket_invoice = ticket_invoice_id
 
 
 		return {
@@ -483,18 +646,14 @@ class SaleDocument(models.Model):
 
 
 				'context': {
-							'default_order': self.order.id,
+							'default_sale_document': self.id,
 
 							'default_total': self.total,
-
 							'default_partner': self.partner.id,
 							}
 				}
 
 	# create_ticket_invoice
-
-
-
 
 
 

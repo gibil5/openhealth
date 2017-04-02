@@ -6,6 +6,43 @@
 
 
 
+
+		<!-- Form view -->
+		<record model="ir.ui.view" id="ticket_receipt_form_view">
+			<field name="name">ticket_receipt.form</field>
+			
+			<field name="model">openhealth.ticket_receipt</field>
+
+			<field name="inherit_id" ref="receipt_form_view"/>			
+	        <field name="mode">primary</field>
+	        <field name="priority" eval="1"/>
+
+			<field name="arch" type="xml">
+
+
+
+				<xpath expr="//h2" position="replace">
+					<h2>Ticket boleta</h2>					
+				</xpath>
+
+
+				<xpath expr="//field[@name='name']" position="replace">
+					<field name="name" />
+				</xpath>
+
+
+			</field>
+		</record>
+
+
+
+
+
+
+
+
+
+
 		<!-- Tree view --> 
 		<record model="ir.ui.view" id="ticket_receipt_tree_view">
 			<field name="name">ticket_receipt.tree</field>

@@ -11,7 +11,9 @@ class Invoice(models.Model):
 	
 	_name = 'openhealth.invoice'
 
-	_inherit='openhealth.sale_document'
+	#_inherit='openhealth.sale_document'
+	_inherit='openhealth.sale_proof'
+
 
 
 

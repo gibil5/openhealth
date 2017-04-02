@@ -27,10 +27,33 @@
 
 					<!-- Header --> 
 					<!--
+								attrs="{'invisible':[('receipt', '!=', False)]}"				>
+
+
 								attrs="{'invisible':[('x_sales_document', '!=', 'receipt')]}"
+
+
+
+								attrs="{'invisible':	['|',('filed_name_1','=',False),('fieled_name_2','=',False)]}" 
+
+
+								attrs="{'invisible':	['|',
+														('receipt','!=',False),
+														('invoice','!=',False),
+														('advertisement','!=',False),
+														('sale_note','!=',False),
+														('ticket_receipt','!=',False),
+														('ticket_invoice','!=',False),
+														]}" 
 					-->
 					<header>
+						
+						<group		attrs="{'invisible':[('nr_proofs', '!=', 0	)]}"	>
+
+						
+
 						<button 
+								attrs="{'invisible':[('receipt', '!=', False)]}"
 
 								type="object" 
 							
@@ -40,6 +63,25 @@
 
 								name="create_receipt" 
 						/>
+
+
+
+
+					<!--
+							attrs="{'invisible':[('x_sales_document', '!=', 'sale_note')]}"
+					-->
+					<button 
+							attrs="{'invisible':[('invoice', '!=', False)]}"
+
+							type="object" 
+
+							class="oe_highlight"
+
+							string="Canje (nv)" 
+
+							name="create_sale_note" 
+					/>
+
 
 
 
@@ -61,6 +103,21 @@
 
 
 
+					<!--
+							attrs="{'invisible':[('x_sales_document', '!=', 'ticket_receipt')]}"
+					-->
+					<button 
+
+							type="object" 
+
+							class="oe_highlight"
+
+							string="Ticket boleta" 
+
+							name="create_ticket_receipt" 
+					/>
+
+
 
 						<!--
 								attrs="{'invisible':[('x_sales_document', '!=', 'advertisement')]}"
@@ -79,34 +136,7 @@
 
 
 
-					<!--
-							attrs="{'invisible':[('x_sales_document', '!=', 'sale_note')]}"
-					-->
-					<button 
 
-							type="object" 
-
-							class="oe_highlight"
-
-							string="Canje (nv)" 
-
-							name="create_sale_note" 
-					/>
-
-
-					<!--
-							attrs="{'invisible':[('x_sales_document', '!=', 'ticket_receipt')]}"
-					-->
-					<button 
-
-							type="object" 
-
-							class="oe_highlight"
-
-							string="Ticket boleta" 
-
-							name="create_ticket_receipt" 
-					/>
 
 
 					<!--
@@ -126,7 +156,7 @@
 
 
 
-					
+					</group>
 					</header>
 
 
@@ -147,16 +177,21 @@
 						<group>
 							<group>
 								<field name="name"   />													
-
-								<field name="partner"   />													
-
 							</group>
 
+							<group>								
+								<field name="nr_proofs"   />													
+							</group>
+						</group>
+
+
+
+						<group>
+							<group>
+								<field name="partner"   />													
+							</group>
 
 							<group>
-
-
-
 							</group>
 						</group>
 
@@ -166,30 +201,36 @@
 							<group>
 
 
-
+<!--
 								<field name="receipt"/>
-								
 								<field name="invoice"/>
-
 								<field name="advertisement"/>
-								
 								<field name="sale_note"/>
-								
 								<field name="ticket_receipt"/>
-								
 								<field name="ticket_invoice"/>
+-->
 
 
 
 
+
+
+								<field name="total"   />													
+							</group>
+
+							<group>
+							</group>
+						</group>
+
+
+
+
+						<group>
+							<group>
 								<!--
 								<field name="receipt" 				attrs="{'invisible':[('receipt', '=', False)]}"			/>
-								
 								<field name="invoice"				attrs="{'invisible':[('invoice', '=', False)]}"			/>
-
 								<field name="advertisement"			attrs="{'invisible':[('advertisement', '=', False)]}"	/>
-
-
 								
 								<field name="sale_note"				attrs="{'invisible':[('sale_note', '=', False)]}"		/>
 								
@@ -198,14 +239,24 @@
 								<field name="ticket_invoice"		attrs="{'invisible':[('ticket_invoice', '=', False)]}"	/>
 								-->
 
+								<field name="receipt" 						/>
+								
+								<field name="invoice"							/>
 
-								<field name="total"   />													
+								<field name="advertisement"				/>
+								
+								<field name="sale_note"					/>
+								
+								<field name="ticket_receipt"			/>
+								
+								<field name="ticket_invoice"			/>
 							</group>
 
 							<group>
-							
 							</group>
 						</group>
+
+
 
 
 					</sheet>

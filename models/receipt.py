@@ -12,7 +12,9 @@ class Receipt(models.Model):
 	
 	_name = 'openhealth.receipt'
 
-	_inherit='openhealth.sale_document'
+	#_inherit='openhealth.sale_document'
+	_inherit='openhealth.sale_proof'
+
 
 
 
@@ -28,3 +30,5 @@ class Receipt(models.Model):
 	def _compute_name(self):
 		for record in self:
 			record.name = 'BO-' + str(record.id) 
+
+

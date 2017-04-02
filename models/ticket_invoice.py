@@ -12,7 +12,9 @@ class TicketInvoice(models.Model):
 	
 	_name = 'openhealth.ticket_invoice'
 
-	_inherit='openhealth.sale_document'
+	#_inherit='openhealth.sale_document'
+	_inherit='openhealth.sale_proof'
+
 
 
 

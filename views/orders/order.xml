@@ -334,8 +334,6 @@
 
 					<!-- Create Invoice --> 
 <!--
-							states="sale"						
--->
 					<button 
 							type="object"
 							class="oe_highlight"
@@ -345,6 +343,7 @@
 							attrs="{'invisible':	[('x_state', 'in', ['draft', 'payment', 'proof',   'machine', 'invoice'] ),	]}"
 							name="x_create_invoice" 	
 					/>
+-->
 
 				</xpath>
 

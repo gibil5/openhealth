@@ -191,13 +191,35 @@ class sale_order(models.Model):
 
 		print 
 		print 'jx'
-		print 'Create Invoice'
+		print 'X Create Invoice'
 
 		print 
 		print 
 		print 
 
 	# x_create_invoice
+
+
+
+
+	@api.multi 
+	#def create_invoice(self):
+	def action_invoice_create(self, grouped=False, final=False):
+
+		print 
+		print 'jx'
+		print 'Action Invoice Create - Intercepted'
+
+		print 
+		print 
+		print 
+
+	# x_create_invoice
+
+
+
+
+
 
 
 

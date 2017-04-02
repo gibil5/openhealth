@@ -6,6 +6,38 @@
 
 
 
+		<!-- Form view -->
+		<record model="ir.ui.view" id="advertisement_form_view">
+			<field name="name">advertisement.form</field>
+			
+			<field name="model">openhealth.advertisement</field>
+
+			<!--
+	        -->
+			<field name="inherit_id" ref="receipt_form_view"/>			
+	        <field name="mode">primary</field>
+	        <field name="priority" eval="1"/>
+
+			<field name="arch" type="xml">
+
+
+				<xpath expr="//h2" position="replace">
+					<h2>Canje publicidad</h2>					
+				</xpath>
+
+
+
+				<xpath expr="//field[@name='name']" position="replace">
+					<field name="name" />
+				</xpath>
+
+
+			</field>
+		</record>
+
+
+
+
 		<!-- Tree view --> 
 		<record model="ir.ui.view" id="advertisement_tree_view">
 			<field name="name">advertisement.tree</field>

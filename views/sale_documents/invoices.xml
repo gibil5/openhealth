@@ -7,63 +7,34 @@
 
 
 		<!-- Form view -->
-		<record model="ir.ui.view" id="receipt_form_view">
-			<field name="name">receipt.form</field>
+		<record model="ir.ui.view" id="invoice_form_view">
+			<field name="name">invoice.form</field>
 			
 			<field name="model">openhealth.invoice</field>
 
-			<!--
-			<field name="inherit_id" ref="sale.view_order_form"/>			
+			<field name="inherit_id" ref="receipt_form_view"/>			
 	        <field name="mode">primary</field>
 	        <field name="priority" eval="1"/>
-	        -->
 
 			<field name="arch" type="xml">
 
-				<form string="Invoice - Form">
-
-					<!-- Header --> 
-					<header></header>
 
 
-
-					<!-- Sheet --> 
-					<sheet>
-						<h1><field name="order" class="oe_inline"/></h1>
-
-						
-						<field name="vspace"   />													
+				<xpath expr="//h2" position="replace">
+					<h2>Factura</h2>					
+				</xpath>
 
 
-						<group>
-							<group>
-								<field name="name"   />													
-							</group>
-
-							<group>
-							</group>
-						</group>
-
-						<group>
-							<group>
-								<field name="partner"   />													
-							</group>
-							<group>							
-							</group>
-						</group>
-
-						<group>
-							<group>
-								<field name="total"   />													
-							</group>
-							<group>							
-							</group>
-						</group>
+				<xpath expr="//field[@name='name']" position="replace">
+					<field name="name" />
+				</xpath>
 
 
-					</sheet>
-				</form>
-				
+				<xpath expr="//field[@name='total']" position="after">
+					<field name="vspace" />
+					<field name="ruc" />
+				</xpath>
+
 			</field>
 		</record>
 

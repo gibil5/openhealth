@@ -29,6 +29,11 @@
 					<sheet>
 						<h1><field name="order" class="oe_inline"/></h1>
 
+						<field name="vspace" />
+
+						<h2>Boleta</h2>
+
+
 						
 						<field name="vspace"   />													
 
@@ -89,6 +94,10 @@
 
 					<field name="total"   />
 					
+
+
+					<field name="sale_document"/>
+
 					<field name="order"/>
 
 				</tree>

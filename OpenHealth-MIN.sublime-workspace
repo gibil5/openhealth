@@ -33,7 +33,7 @@
 			"file": "models/order.py",
 			"settings":
 			{
-				"buffer_size": 35895,
+				"buffer_size": 35914,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -42,7 +42,7 @@
 			"file": "views/orders/order.xml",
 			"settings":
 			{
-				"buffer_size": 18679,
+				"buffer_size": 18833,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -330,6 +330,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"x_create_invoice",
+			"crear",
+			"action",
 			"action_invoice",
 			"invoice_cre",
 			"create_invoice",
@@ -454,10 +457,7 @@
 			"dr_vasvarri",
 			"dr_alavarri",
 			"dr_menvarri",
-			"dr_monvarri",
-			"dr_monvari",
-			"dr_monvarii",
-			"cha"
+			"dr_monvarri"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -603,7 +603,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -661,7 +661,7 @@
 						"translation.y": 2.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -670,15 +670,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 35895,
+						"buffer_size": 35914,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2808,
-								2808
+								2326,
+								2326
 							]
 						],
 						"settings":
@@ -687,10 +687,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3171.0,
+						"translation.y": 2882.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -699,15 +699,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 18679,
+						"buffer_size": 18833,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								777,
-								777
+								6560,
+								6560
 							]
 						],
 						"settings":
@@ -716,10 +716,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 5037.0,
+						"translation.y": 5806.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -1035,7 +1035,7 @@
 		[
 			[
 				"",
-				"~/Virtualenvs/Odoo9/odoo/addons/oehealth/OeHealth.sublime-project"
+				"~/Documents/Aptana Studio 3 Workspace/templates/dfirm/dfirm/interamericana.sublime-project"
 			]
 		],
 		"width": 380.0

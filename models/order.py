@@ -190,9 +190,10 @@ class sale_order(models.Model):
 	def x_create_invoice(self):
 
 		print 
+		print 
+		print 
 		print 'jx'
 		print 'X Create Invoice'
-
 		print 
 		print 
 		print 
@@ -202,13 +203,18 @@ class sale_order(models.Model):
 
 
 
+
+
 	@api.multi 
 	#def create_invoice(self):
+	#def action_view_sale_advance_payment_inv(self):
+	#def sale_advance_payment_inv(self):
+	#def invoice_create(self):
 	def action_invoice_create(self, grouped=False, final=False):
 
 		print 
 		print 'jx'
-		print 'Action Invoice Create - Intercepted'
+		print 'Action Invoice Create - Local'
 
 		print 
 		print 

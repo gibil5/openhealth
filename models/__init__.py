@@ -63,8 +63,14 @@ from . import service_cosmetology
 
 
 
+
+from . import sale_make_invoice_advance
+
 from . import order
 from . import order_line
+
+
+
 
 
 from . import sale_document

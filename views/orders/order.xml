@@ -24,11 +24,33 @@
 
 
 
+
 				<!--
 				<xpath expr="//page[@name='Other Information']" position="replace">
 
 				</xpath>
 				-->
+
+
+
+
+				<!-- Create Invoice --> 
+<!--
+				<xpath expr="//button[contains(text(),'Create')]" position="replace">
+
+				<xpath expr="//button[@name='225']" position="replace">
+				<xpath expr="//button[@string='Create Invoice']" position="replace">
+				</xpath>
+-->
+
+				<xpath expr="//button[@type='action']" position="replace">
+				</xpath>
+				<xpath expr="//button[@type='action']" position="replace">
+				</xpath>
+
+
+
+
 
 
 <!--
@@ -334,6 +356,7 @@
 
 					<!-- Create Invoice --> 
 <!--
+-->
 					<button 
 							type="object"
 							class="oe_highlight"
@@ -343,7 +366,6 @@
 							attrs="{'invisible':	[('x_state', 'in', ['draft', 'payment', 'proof',   'machine', 'invoice'] ),	]}"
 							name="x_create_invoice" 	
 					/>
--->
 
 				</xpath>
 

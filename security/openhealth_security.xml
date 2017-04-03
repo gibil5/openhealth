@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-    <data>
+	<data>
 
  
 
 
 <!-- Categories --> 
-       <record model="ir.module.category" id="module_openhealth_category">
-                <field name="name">Open Health</field>
-                <field name="sequence">0</field>
-                <field name="visible" eval="0" />
-        </record>
+	   <record model="ir.module.category" id="module_openhealth_category">
+				<field name="name">Open Health</field>
+				<field name="sequence">0</field>
+				<field name="visible" eval="0" />
+		</record>
 
 
 
@@ -18,97 +18,110 @@
 
 <!-- Groups --> 
 
-    <!-- Medicos --> 
-        <record id="openhealth.openhealth_physicians" model="res.groups">
-            <field name="name">Medicos</field>
-            <field name="category_id" ref="module_openhealth_category"/>
-
-            
-            <!--
-            <field name="users" eval="[ (4, ref('openhealth.vmori_clinicachavarri'))    ]"/>
-            -->
-            <field name="users" eval="[ 
-                                        (4, ref('openhealth.medico_clinicachavarri')),
-
-                                        (4, ref('openhealth.rchavarri_clinicachavarri')),
-                                        (4, ref('openhealth.vmori_clinicachavarri')),
-
-                                        (4, ref('openhealth.pruebas_clinicachavarri')),
-                                    ]"/>
-
-        </record>
-
-
-
-    <!-- Caja --> 
-        <record id="openhealth.openhealth_caja" model="res.groups">
-            <field name="name">Caja</field>
-            <field name="category_id" ref="module_openhealth_category"/>
-
-            <field name="users" eval="[ 
-                                        (4, ref('openhealth.caja_clinicachavarri')),
-
-                                        (4, ref('openhealth.rchavarri_clinicachavarri')),
-                                        (4, ref('openhealth.vmori_clinicachavarri')),
-
-                                        (4, ref('openhealth.pruebas_clinicachavarri')),
-                                    ]"/>
-        </record>
-
-
-
-    <!-- Plataforma --> 
-        <record id="openhealth.openhealth_reception" model="res.groups">
-            <field name="name">Plataforma</field>
-            <field name="category_id" ref="module_openhealth_category"/>
-
-            <field name="users" eval="[ 
-                                        (4, ref('openhealth.plataforma_clinicachavarri')),
-
-                                        (4, ref('openhealth.rchavarri_clinicachavarri')),
-                                        (4, ref('openhealth.vmori_clinicachavarri')),
-
-                                        (4, ref('openhealth.pruebas_clinicachavarri')),
-                                    ]"/>
-        </record>
+		<!-- Admins --> 
+		<record id="openhealth.admins" model="res.groups">
+			<field name="name">Admins</field>
+			<field name="category_id" ref="module_openhealth_category"/>
+		</record>
 
 
 
 
 
-    <!-- OeHealth - Physician --> 
-        <record id="oehealth.group_oeh_medical_physician" model="res.groups">
-            <field name="name">Physician</field>
-            <field name="category_id" ref="oehealth.module_oeh_medical_category"/>
-
-            <field name="users" eval="[ 
-                                        (4, ref('openhealth.caja_clinicachavarri')),
-                                        (4, ref('openhealth.medico_clinicachavarri')),
-                                        (4, ref('openhealth.plataforma_clinicachavarri')),
-
-                                        (4, ref('openhealth.rchavarri_clinicachavarri')),
-                                        (4, ref('openhealth.vmori_clinicachavarri')),
-
-                                        (4, ref('openhealth.pruebas_clinicachavarri')),
-                                    ]"/>
-        </record>
 
 
-    <!-- Sales - Manager -->
-        <record id="base.group_sale_manager" model="res.groups">
-            <field name="name">Manager</field>
-            <field name="comment">the user will have an access to the sales configuration as well as statistic reports.</field>
-            <field name="category_id" ref="base.module_category_sales_management"/>
-            <field name="implied_ids" eval="[(4, ref('base.group_sale_salesman_all_leads'))]"/>
-        
-            <field name="users" eval="[
-                                    (4, ref('base.user_root')), 
-                                        (4, ref('openhealth.pruebas_clinicachavarri')),                                    
-                                    ]"/>
-        </record>
+		<!-- Medicos --> 
+		<record id="openhealth.openhealth_physicians" model="res.groups">
+			<field name="name">Medicos</field>
+			<field name="category_id" ref="module_openhealth_category"/>
+			
+			<!--
+			<field name="users" eval="[ (4, ref('openhealth.vmori_clinicachavarri'))    ]"/>
+			-->
+			<field name="users" eval="[ 
+										(4, ref('openhealth.medico_clinicachavarri')),
+
+										(4, ref('openhealth.rchavarri_clinicachavarri')),
+										(4, ref('openhealth.vmori_clinicachavarri')),
+
+										(4, ref('openhealth.pruebas_clinicachavarri')),
+									]"/>
+
+		</record>
 
 
 
+		<!-- Caja --> 
+		<record id="openhealth.openhealth_caja" model="res.groups">
+			<field name="name">Caja</field>
+			<field name="category_id" ref="module_openhealth_category"/>
 
-    </data>
+			<field name="users" eval="[ 
+										(4, ref('openhealth.caja_clinicachavarri')),
+
+										(4, ref('openhealth.rchavarri_clinicachavarri')),
+										(4, ref('openhealth.vmori_clinicachavarri')),
+
+										(4, ref('openhealth.pruebas_clinicachavarri')),
+									]"/>
+		</record>
+
+
+
+		<!-- Plataforma --> 
+		<record id="openhealth.openhealth_reception" model="res.groups">
+			<field name="name">Plataforma</field>
+			<field name="category_id" ref="module_openhealth_category"/>
+
+			<field name="users" eval="[ 
+										(4, ref('openhealth.plataforma_clinicachavarri')),
+
+										(4, ref('openhealth.rchavarri_clinicachavarri')),
+										(4, ref('openhealth.vmori_clinicachavarri')),
+
+										(4, ref('openhealth.pruebas_clinicachavarri')),
+									]"/>
+		</record>
+
+
+
+
+
+
+
+	<!-- OeHealth - Physician --> 
+		<record id="oehealth.group_oeh_medical_physician" model="res.groups">
+			<field name="name">Physician</field>
+			<field name="category_id" ref="oehealth.module_oeh_medical_category"/>
+
+			<field name="users" eval="[ 
+										(4, ref('openhealth.caja_clinicachavarri')),
+										(4, ref('openhealth.medico_clinicachavarri')),
+										(4, ref('openhealth.plataforma_clinicachavarri')),
+
+										(4, ref('openhealth.rchavarri_clinicachavarri')),
+										(4, ref('openhealth.vmori_clinicachavarri')),
+
+										(4, ref('openhealth.pruebas_clinicachavarri')),
+									]"/>
+		</record>
+
+
+	<!-- Sales - Manager -->
+		<record id="base.group_sale_manager" model="res.groups">
+			<field name="name">Manager</field>
+			<field name="comment">the user will have an access to the sales configuration as well as statistic reports.</field>
+			<field name="category_id" ref="base.module_category_sales_management"/>
+			<field name="implied_ids" eval="[(4, ref('base.group_sale_salesman_all_leads'))]"/>
+		
+			<field name="users" eval="[
+									(4, ref('base.user_root')), 
+										(4, ref('openhealth.pruebas_clinicachavarri')),                                    
+									]"/>
+		</record>
+
+
+
+
+	</data>
 </openerp>

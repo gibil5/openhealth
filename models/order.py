@@ -38,6 +38,11 @@ class sale_order(models.Model):
 
 
 
+
+	margin = fields.Float(
+			string="Margen"
+		)
+
 	validity_date = fields.Char(
 			string="Fecha de expiración"
 		)

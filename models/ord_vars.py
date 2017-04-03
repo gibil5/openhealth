@@ -11,7 +11,7 @@ _x_state_list = [
 
         			('proof', 			'Comprobante'),
 
-        			('machine', 		'Sala reservada'),
+        			('machine', 		'Sala Reservada'),
         			
         			('sale', 			'Venta'),
 

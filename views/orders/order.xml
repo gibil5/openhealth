@@ -288,7 +288,7 @@
 					<button 
 							type="object" 
 							class="oe_highlight"
-							string="Comprobante" 
+							string="Sacar comprobante de Pago" 
 
 
 
@@ -319,7 +319,7 @@
 					<button 
 							type="object"
 							class="oe_highlight"						
-							string="Reservar sala"
+							string="Reservar la Sala"
 
 						
 							attrs="{'invisible':	[('x_state', 'in', ['draft', 'payment',  'machine', 'sale', 'invoice'] ),	]}"
@@ -342,7 +342,7 @@
 									
 							type="object" 
 							class="oe_highlight"
-							string="Confirmar venta" 
+							string="Confirmar la Venta" 
 							
 
 
@@ -360,7 +360,7 @@
 					<button 
 							type="object"
 							class="oe_highlight"
-							string="Crear factura"
+							string="Crear Factura"
 						
 
 							attrs="{'invisible':	[('x_state', 'in', ['draft', 'payment', 'proof',   'machine', 'invoice'] ),	]}"
@@ -411,23 +411,44 @@
 
 
 				<!-- Remove -->
-				<xpath expr="//field[@name='name']" position="after">
+				<xpath expr="//field[@name='name']" position="replace">
 
 
-					<group col='7'>
-					
-						<group>
-							<button 
-								type="object" 
-								class="oe_highlight "
 
-								string="Eliminar" 
+					<group>
+						<h3>
+							<div attrs="{'invisible':[	('state', '!=', 'draft'), ]}">
+								Presupuesto
+							</div>
+						
+							<div attrs="{'invisible':[	('state', '!=', 'sale'), ]}">
+								Venta
+							</div>
+						</h3>
+					</group>
 
-								name="remove_myself" 
-							/>
+
+
+					<group>
+						<group class="oe_left"  style="width: 600px;">
+							<h4><field name="name" 	class=""/></h4>
 						</group>
 
+						<group class="">
+							<h5><field name="treatment" class=""/></h5>
+						</group>
+					</group>
 
+
+
+
+
+
+
+					<group col='5'>
+					
+
+						<!-- Update --> 
 						<group>
 							<button 
 								type="object" 
@@ -440,6 +461,55 @@
 						</group>
 
 
+						<!-- Reset --> 
+						<group>
+							<button 
+								type="object" 
+								class="oe_highlight"
+
+								string="Reiniciar"
+
+								name="x_reset" 	
+							/>
+						</group>
+
+
+
+
+
+
+
+						<!-- Remove --> 
+						<group>
+							<button 
+								groups="openhealth.admins"
+
+								type="object" 
+								class="oe_highlight "
+
+								string="Eliminar" 
+
+								name="remove_myself" 
+							/>
+						</group>
+
+						<!-- Cancel --> 
+						<group>
+							<button 
+								groups="openhealth.admins"
+
+								type="object" 
+								class="oe_highlight oe_right "	
+								string="Anular"
+								name="cancel_order" 	
+							/>
+						</group>
+
+						<group>
+        	            	<field name="x_cancel"  nolabel="1"	 groups="openhealth.admins"/>
+						</group>
+
+					</group>
 
 
 
@@ -454,49 +524,6 @@
 							/>
 						</group>
 						-->
-
-
-						<group>
-							<button 
-								type="object" 
-								class="oe_highlight oe_right "	
-								string="Anular"
-								name="cancel_order" 	
-							/>
-						</group>
-
-
-
-						<group>
-        	            	<field name="x_cancel"  nolabel="1"/>
-						</group>
-
-
-
-
-
-						<group>
-							<button 
-								type="object" 
-								class="oe_highlight"
-
-								string="Reiniciar"
-
-								name="x_reset" 	
-							/>
-						</group>
-
-
-
-						<group>
-            	        	<field name="vspace"/>
-						</group>
-						<group>
-							<h3><field name="treatment" class="oe_inline oe_right"/></h3>
-						</group>
-
-
-					</group>
 
 				</xpath>
 

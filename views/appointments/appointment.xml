@@ -12,16 +12,9 @@
 
 			<field name="name">oeh.medical.appointment.form</field>
 
-
-<!--			
 			<field name="model">oeh.medical.appointment</field>
--->
-			<field name="model">oeh.medical.appointment</field>
-
-
 
 			<field name="inherit_id" ref="oehealth.oeh_medical_appointment_view"/>			
-
 
 			<field name="mode">primary</field>
 
@@ -449,6 +442,8 @@
 
 
 
+
+
 		<!-- service tree/list view -->
 		<record model="ir.ui.view" id="oehealth.oeh_medical_appointment_tree">
 			<field name="name">oeh.medical.appointment.tree</field>
@@ -620,14 +615,10 @@
 					
 					<field name="name">Citas confirmadas</field>
 					
-
-<!--
 					<field name="res_model">oeh.medical.appointment</field>
--->
-					<field name="res_model">oeh.medical.appointment</field>
-
 
 					<field name="view_type">form</field>
+
 					<field name="view_mode">calendar,tree,form</field>     
 
 
@@ -636,6 +627,7 @@
 											('x_target', '=', 'doctor'),
 										]
 					</field>
+
 
 					<field name="context">{
 											'default_x_target': 'doctor',

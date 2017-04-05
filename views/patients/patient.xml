@@ -196,6 +196,9 @@
 								<field string='Estado civil'  name="marital_status" required="1"/>									
 								-->
 								<field name="x_dni"  required="1"/>
+
+
+								<field name="x_state"  />
 							</group>
 
 

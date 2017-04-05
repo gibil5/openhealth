@@ -21,10 +21,62 @@ class Patient(models.Model):
 
 
 
+
+	x_state = fields.Selection(
+
+			selection = pat_vars._state_list, 
+
+			string='Estado', 			
+
+			#default = False, 
+			default = 'active', 
+
+			compute='_compute_x_state', 
+		)
+
+
+
+	@api.multi
+	#@api.depends('state')
+
+	def _compute_x_state(self):
+		for record in self:
+			print 
+			print 'jx'
+			print 'Compute x_state'
+
+			#record.x_state = treatment_vars._hash_x_state[record.state]
+
+			flag = False
+
+
+			for treatment in record.treatment_ids:
+				if treatment.progress == False: 
+					flag = True
+
+			if flag:
+				record.x_state = 'incomplete'
+			else:
+				record.x_state = 'active'
+
+			print 
+
+
+
+
+
+
+
+
+
+
 	x_first_impression = fields.Char(
 			string="Primera impresión", 
 			required=False, 
 		)
+
+
+
 
 
 # ----------------------------------------------------------- Autofill ------------------------------------------------------

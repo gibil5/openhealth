@@ -2,6 +2,23 @@
 
 
 
+
+_state_list = [
+        			#(False, 	'Incompleto'),
+
+					#('incomplete', 	'Ficha incompleta'),
+					('incomplete', 	'FICHA INCOMPLETA'),
+
+        			('active', 	'Activo'),
+
+        		]
+
+
+
+
+
+
+
 _education_level_type = [
 			('first', 'Primaria'),
 			('second', 'Secundaria'),

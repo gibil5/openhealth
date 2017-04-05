@@ -5,6 +5,10 @@
 
 _hash_progress = {
 
+
+                                        False:          0, 
+
+
 					'appointment': 		10, 
 
 					'consultation': 	20,

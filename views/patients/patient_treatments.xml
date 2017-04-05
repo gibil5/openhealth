@@ -56,6 +56,11 @@
 								<field name="start_date"/>
 
 
+								<field name="state"		/>
+<!--
+								<field name="progress"		/>
+-->
+								<field name="progress"		widget="progressbar"/>
 								<button 
 									type="object" 
 									class="oe_highlight"	

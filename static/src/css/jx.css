@@ -53,3 +53,26 @@ height: 100px;
 color:black;
 }
 
+
+
+
+
+
+
+.o_progressbar .o_progress .o_progressbar_complete.o_progress_gt_fty {
+  background-color: #456325;
+  height: 100%;
+}
+
+.o_progressbar .o_progress .o_progressbar_complete.o_progress_lt_fty {
+  background-color: #000000;
+  height: 100%;
+}
+
+
+
+
+
+
+
+

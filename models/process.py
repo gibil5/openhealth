@@ -12,6 +12,8 @@ from openerp import models, fields, api
 
 import jxvars
 
+import treatment_vars
+
 
 
 class Process(models.Model):
@@ -104,24 +106,49 @@ class Process(models.Model):
 
 
 
-	_state_list = [
-        			#('empty', 			'Inicio'),
-
-        			('one', 	'Uno'),
-
-        			('two', 		'Dos'),
-        			
-        			('three', 			'Tres'),
-
-        			('done', 			'Completo'),
-        		]
+#	_state_list = [
+#        			#('empty', 			'Inicio'),
+#        			('one', 	'Uno'),
+#        			('two', 		'Dos'),
+#        			('three', 			'Tres'),
+#        			('done', 			'Completo'),
+#        		]
 
 
 	state = fields.Selection(
-			selection = _state_list, 
-			string='State', 			
+
+			#selection = _state_list, 
+			selection = treatment_vars._state_list, 
+
+			string='Estado', 			
 			default = False, 
 		)
+
+
+
+
+
+
+	progress = fields.Float(
+			string='Progreso', 			
+			default = 0., 
+
+			compute='_compute_progress', 
+		)
+
+	@api.multi
+	#@api.depends('state')
+
+	def _compute_progress(self):
+		for record in self:
+			print 
+			print 'jx'
+			print 'Compute progress'
+			record.progress = treatment_vars._hash_progress[record.state]
+			print 
+
+
+
 
 
 

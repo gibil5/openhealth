@@ -18,7 +18,7 @@
 
 		Laser - EMR - Min - Ama - Docean\n
 
-		Last built: 	4 April 2017
+		Last built: 	5 April 2017
 
 		Created: 	 	7 Sep 2016
 
@@ -208,7 +208,11 @@
 
 
 
-		# Static - Stylesheet 
+
+
+
+		# Statics  
+		# Style 
 		'views/openhealth.xml',		
 
 
@@ -328,6 +332,9 @@
 
 	# Static - CSS - This is it.
 	'css': ['static/src/css/jx.css'],
+
+	#'js': ['static/src/js/progressbar.js'],
+
 }
 
 

@@ -14,6 +14,9 @@ import jxvars
 import treatment_funcs
 import time_funcs
 
+import treatment_vars
+
+
 
 
 class Treatment(models.Model):
@@ -96,42 +99,14 @@ class Treatment(models.Model):
 
 
 	# State 
-	_state_list = [
-
-        			#('empty', 			'Inicio'),
-
-
-        			('appointment', 	'Cita'),
-
-        			('consultation', 	'Consulta'),
-
-        			('service', 		'Recomendación'),
-        			
-
-
-        			('budget', 			'Presupuesto'),
-
-        			('invoice', 		'Facturado'),
-        			
-        			('procedure', 		'Procedimiento'),
-
-        			('sessions', 		'Sesiones'),
-
-        			('controls', 		'Controles'),
-
-        			('done', 			'Completo'),
-        		]
-
-
 	state = fields.Selection(
-			selection = _state_list, 
-			string='State', 			
-			
 
+			#selection = _state_list, 
+			selection = treatment_vars._state_list, 
+		
+			string='State', 			
 			default = False, 
 			#default = 'empty', 
-
-
 			compute="_compute_state",
 		)
 

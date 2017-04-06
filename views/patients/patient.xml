@@ -4,7 +4,7 @@
 	*** OPEN HEALTH
 
 	Created: 			26 Aug 2016
-	Last updated: 	 	18 Feb 2017
+	Last updated: 	 	 5 Apr 2017
 -->
 
 <openerp>
@@ -198,7 +198,14 @@
 								<field name="x_dni"  required="1"/>
 
 
-								<field name="x_state"  />
+
+<!--							  
+								<group  	colors="red:x_state!='incomplete';green:x_state!='active';"  >
+								</group>
+-->
+								<field name="x_state"    colors="red" />
+
+
 							</group>
 
 

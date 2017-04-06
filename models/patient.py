@@ -4,7 +4,7 @@
 # 		*** OPEN HEALTH - Patient 
 # 
 # Created: 				26 Aug 2016
-# Last updated: 	 	20 Jan 2017
+# Last updated: 	 	 5 Apr 2017
 
 from openerp import models, fields, api
 from datetime import datetime

@@ -104,7 +104,8 @@ class Treatment(models.Model):
 			#selection = _state_list, 
 			selection = treatment_vars._state_list, 
 		
-			string='State', 			
+			string='Estado', 			
+
 			default = False, 
 			#default = 'empty', 
 			compute="_compute_state",

@@ -7,16 +7,12 @@
 
 
 		<!-- LANGUAGES - Tree --> 
+		<!--
 		<record model="ir.ui.view" id="view_lang_tree">
-
 			<field name="name">res.lang.tree</field>
-
 			<field name="model">res.lang</field>
-
 			<field name="arch" type="xml">
 				
-
-
 				<tree string="lang Tree">
 					
                     <field name="name"/>
@@ -26,8 +22,11 @@
                     <field name="code"/>
 
 				</tree>
+
 			</field>
 		</record>
+		-->
+
 
 		<!-- lang - List action -->
 		<!-- The following tag is an action definition for a "window action", that is an action opening a view or a set of views -->

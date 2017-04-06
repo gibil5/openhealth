@@ -120,7 +120,8 @@ class Process(models.Model):
 			#selection = _state_list, 
 			selection = treatment_vars._state_list, 
 
-			string='Estado', 			
+			string='Estado', 	
+					
 			default = False, 
 		)
 

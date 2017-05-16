@@ -29,10 +29,14 @@
 
 						<!--
 						<field name="x_treatment_ids">
+							<tree string="Tratamientos">
 						--> 
 
+
 						<field name="treatment_ids">
-							<tree string="Tratamientos">
+
+							<tree string="Tratamientos"		default_order="start_date desc">	
+
 
 								<!--
 								<button 

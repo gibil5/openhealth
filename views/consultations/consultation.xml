@@ -21,6 +21,24 @@
 					<!-- Header --> 
 					<header>
 
+
+
+					<!-- Treatment --> 
+					<button 
+							name="open_treatment"
+
+							type="object" 
+
+							class="oe_highlight"
+
+
+							string="INICIO"
+					/>
+
+
+
+
+
 						<!--
 						<button 
 							type="object" 
@@ -47,7 +65,8 @@
 
 
 
-							<!-- CO2 --> 
+
+<!--
 							<button 
 								attrs="{'invisible':[('x_target','!=', 'doctor'),]}"
 
@@ -59,7 +78,6 @@
 								name="create_service_co2" 	
 							/>
 
-							<!-- Excilite -->
 							<button 
 								attrs="{'invisible':[('x_target','!=', 'doctor'),]}"
 
@@ -72,7 +90,6 @@
 								name="create_service_excilite" 	
 							/>
 
-							<!-- M22-IPL --> 
 							<button 
 								attrs="{'invisible':[('x_target','!=', 'doctor'),]}"
 
@@ -84,7 +101,6 @@
 								name="create_service_ipl" 	
 							/>
 
-							<!-- M22-NDYAG --> 
 							<button 
 								attrs="{'invisible':[('x_target','!=', 'doctor'),]}"
 
@@ -96,7 +112,6 @@
 								name="create_service_ndyag" 	
 							/>
 
-							<!-- T. MEDICO -->
 							<button 
 								attrs="{'invisible':[('x_target','!=', 'doctor'),]}"
 
@@ -107,22 +122,21 @@
 				
 								name="create_service_medical" 	
 							/>
+-->
+
 
 
 
 
 <!--
-								class="oe_highlight "
--->
+DEPRECATED
 							<button 
 								type="object" 
-
 								class="oe_highlight oe_right"
-
 								string="Presupuesto" 
-
 								name="create_order_current" 
 							/>
+-->
 
 
 
@@ -178,48 +192,61 @@
 
 
 
+
+
 							<!-- Buttons --> 
 							<div class="oe_left" style="width: 300px;" name="buttons">
 							
 
 								<!-- Order -->	
-								<button type="action" class="oe_stat_button" 
+								<button type="action" class="oe_stat_button" icon="fa-list"  invisible="1"
+
 									name="%(order_form_action)d"	
+
 									context="{									
 											'search_default_consultation': active_id,
 											}" 											
-									icon="fa-list">
 									
-									<field string="Presupuestos" name="nr_orders" widget="statinfo"/>
+									>
 
+									<field string="Presupuestos" name="nr_orders" widget="statinfo"/>
 								</button>
 								
 
+
 								<!-- Nr Services --> 
-								<button type="action" class="oe_stat_button" 
+								<button type="action" class="oe_stat_button" icon="fa-list" invisible="1"
+
 									name="%(service_list_action)d"	
+
 									context="{									
 											'search_default_consultation': active_id,
 											}" 											
-									icon="fa-list">
+									>
 
 									<field string="Servicios" name="nr_service" widget="statinfo"/>
 								
 								</button>
 
 
+
+
+
 								<!-- Nr co2--> 
-								<!--
-								-->
-								<button type="action" class="oe_stat_button" 
+								<button type="action" class="oe_stat_button" icon="fa-list"
+
+
 									name="%(service_co2_list_action)d"	
+
+
+									attrs="{ 'invisible':[	('nr_service_co2','=',0), ]}"
+
+
 									context="{									
-											'search_default_consultation': active_id,
-											}" 											
-									icon="fa-list">
+												'search_default_consultation': active_id,
+											}" 	
 
-
-									attrs="invisible"
+									>
 
 
 									<field string="Co2" name="nr_service_co2" widget="statinfo"/>
@@ -227,30 +254,39 @@
 								</button>
 
 
+
 								<!-- Nr Excilite--> 
-								<!--
-								-->
-								<button type="action" class="oe_stat_button" 
+								<button type="action" class="oe_stat_button" icon="fa-list"
+
 									name="%(service_excilite_list_action)d"	
+									
+									attrs="{ 'invisible':[	('nr_service_excilite','=',0), ]}"
+
 									context="{									
 											'search_default_consultation': active_id,
-											}" 											
-									icon="fa-list">
+											}" 			
+
+
+									>
 
 									<field string="Excilite" name="nr_service_excilite" widget="statinfo"/>
 								
 								</button>
 								
 
+
 								<!-- Nr ipl--> 
-								<!--
-								-->
-								<button type="action" class="oe_stat_button" 
+								<button type="action" class="oe_stat_button" icon="fa-list"
+									
 									name="%(service_co2_list_action)d"	
+									
+									attrs="{ 'invisible':[	('nr_service_ipl','=',0), ]}"
+
 									context="{									
 											'search_default_consultation': active_id,
-											}" 											
-									icon="fa-list">
+											}" 		
+
+									>
 
 									<field string="ipl" name="nr_service_ipl" widget="statinfo"/>
 								
@@ -258,35 +294,40 @@
 
 
 
+
 								<!-- Nr ndyag--> 
-								<!--
-								-->
-								<button type="action" class="oe_stat_button" 
+								<button type="action" class="oe_stat_button" icon="fa-list"
+
 									name="%(service_co2_list_action)d"	
+									
+									attrs="{ 'invisible':[	('nr_service_ndyag','=',0), ]}"
+
 									context="{									
 											'search_default_consultation': active_id,
 											}" 											
-									icon="fa-list">
+									>
+
 
 									<field string="ndyag" name="nr_service_ndyag" widget="statinfo"/>
-								
 								</button>
 
 
 
 
 								<!-- Nr medical--> 
-								<!--
-								-->
-								<button type="action" class="oe_stat_button" 
+								<button type="action" class="oe_stat_button" icon="fa-list"
+
 									name="%(service_medical_list_action)d"	
+									
+									attrs="{ 'invisible':[	('nr_service_medical','=',0), ]}"
+
 									context="{									
 											'search_default_consultation': active_id,
 											}" 											
-									icon="fa-list">
+									>
+
 
 									<field string="medical" name="nr_service_medical" widget="statinfo"/>
-								
 								</button>
 
 

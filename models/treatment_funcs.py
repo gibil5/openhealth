@@ -83,9 +83,12 @@ def create_procedure_go(self):
 
 
 
-	for line in self.order_ids.order_line:
-					
-		if self.nr_procedures < self.order_ids.nr_lines:
+	#for line in self.order_ids.order_line:
+	for line in self.order_pro_ids.order_line:
+
+
+		#if self.nr_procedures < self.order_ids.nr_lines:
+		if self.nr_procedures < self.order_pro_ids.nr_lines:
 
 			product = line.product_id.id
 			

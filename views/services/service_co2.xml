@@ -47,6 +47,37 @@
 
 
 
+		<!-- Window action -->
+		<record model="ir.actions.act_window" id="service_co2_list_action">
+			<field name="name">Servicios Co2 - 2</field>
+			<field name="res_model">openhealth.service.co2</field>
+			<field name="view_type">form</field>
+
+			<field name="view_mode">tree,form</field>
+			
+			<field name="context">{
+									'default_laser': 'laser_co2',
+                    			}
+			</field>
+		</record>
+
+
+
+
+
+		<!-- Filter --> 
+        <record id="view_service_co2_filter" model="ir.ui.view">
+           <field name="name">Service Co2 Search</field>
+           <field name="model">openhealth.service.co2</field>		   
+		   <field name="arch" type="xml">
+               <search string="service.co2">
+
+                   <field name="treatment" />
+                   <field name="consultation" />
+               
+               </search>
+           </field>
+       </record>
 
 
 

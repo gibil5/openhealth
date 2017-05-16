@@ -2,5 +2,6 @@
 
 
 #from . import test_order
+#from . import test_partner
 
-from . import test_partner
+from . import test_location

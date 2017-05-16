@@ -32,34 +32,23 @@
 						<field name="session_ids">
 							<tree string="Sesiones">
 
-								<field name="name"/>
-								
-								<field name="appointment"/>
-
-
-								<field  name="patient"/>
-
-								<field  name="doctor"/>
-
-
-
-								<field name="chief_complaint"/>
-
-								<field name="product"/>
-
-
-								<field name="evaluation_start_date"/>
-
-
-
 								<button 
 									type="object" 
 									class="oe_highlight"	
-									string="E"
+									string="Editar"
 									
 									name="open_line_current" 
 								/>
-								
+
+
+
+								<field name="name"/>
+								<field name="appointment"/>
+								<field  name="patient"/>
+								<field  name="doctor"/>
+								<field name="chief_complaint"/>
+								<field name="product"/>
+								<field name="evaluation_start_date"/>
 							</tree>
 						</field>
 

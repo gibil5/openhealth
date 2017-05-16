@@ -5,14 +5,15 @@
 			<field name="name">treatment.quotation.form</field>
 			<field name="model">openhealth.treatment</field>
 
-			<field name="priority" eval="3"/>
+			<field name="priority" eval="0"/>
 			
 			<field name="inherit_id" ref="treatment_form_view"/>
 			<field name="arch" type="xml">
 
 
 				<notebook>
-					<page string="Presupuesto"   		 >
+
+					<page string="Presupuestos"   		 >
 <!--
 						<field name="order_ids"/>
 -->					
@@ -21,29 +22,30 @@
 							<tree string="Consultas">										
 
 
+
+								<!-- Hot Button -->
+								<button 
+									name="open_line_current" 
+									type="object" 
+									class="oe_highlight"	
+
+									string="Editar"
+								/>
+
+
+
 								<field  name="name"	string="Presupuesto #"/>
 
 								<field  name="partner_id"/>
-
 								<field  name="x_doctor"/>
-
+<!--
 								<field name="x_target"/>
-
+-->
+								<field name="x_family"/>
 								<field name="state"/>
 								<field name="nr_lines"/>
 								<field name="amount_total"/>
-<!--
--->
-								<field name="date_order"/>
-											
-																				
-								<!-- Hot Button -->
-								<button 
-									type="object" 
-									class="oe_highlight"	
-									string="E"
-									name="open_line_current" 
-								/>
+								<field name="date_order"/>					
 							</tree>
 						</field>
 

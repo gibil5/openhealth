@@ -38,6 +38,166 @@ class Treatment(models.Model):
 			)
 
 
+
+
+
+	# Open Myself
+	@api.multi 
+	def open_myself(self):
+
+		print 
+		print 'Open Myself'
+
+
+		#treatment = self.env['openhealth.treatment'].search([('id','=', self.treatment.id)]) 
+		treatment_id = self.id  
+
+
+
+		return {
+
+			# Mandatory 
+			'type': 'ir.actions.act_window',
+			'name': 'Open Consultation Current',
+
+
+			# Window action 
+			'res_model': 'openhealth.treatment',
+			'res_id': treatment_id,
+
+
+			# Views 
+			"views": [[False, "form"]],
+			'view_mode': 'form',
+			'target': 'current',
+
+
+			#'view_id': view_id,
+			#"domain": [["patient", "=", self.patient.name]],
+			#'auto_search': False, 
+
+			'flags': {
+					'form': {'action_buttons': True, }
+					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+					},			
+
+
+			'context':   {
+					}
+		}
+	# x_open_treatment
+
+
+
+
+
+
+
+	# Partner 
+	partner_id = fields.Many2one(
+
+			'res.partner',
+		
+			string = "Cliente", 	
+
+			#required=True, 
+			compute='_compute_partner_id', 
+		)
+
+
+	#@api.multi
+	@api.depends('patient')
+
+
+	def _compute_partner_id(self):
+		for record in self:
+
+			partner = record.env['res.partner'].search([
+
+															#('order','=', record.id),
+															('name','like', record.patient.name),
+				
+														],
+														#order='appointment_date desc',
+														limit=1,)
+
+			record.partner_id = partner 
+	# _compute_partner_id
+
+
+
+
+
+
+	@api.multi 
+	def reset(self):
+
+		print 
+		print 
+		print 'jx'
+		print 'Treatment - Reset'
+
+		#self.state = 'draft'
+		#self.x_payment_method.unlink()
+		#self.x_appointment.x_machine = False
+
+
+		# Unlinks
+		print 'Unlinks'
+		self.service_co2_ids.unlink()
+		self.service_excilite_ids.unlink()
+		self.service_ipl_ids.unlink()
+		self.service_ndyag_ids.unlink()
+		self.service_medical_ids.unlink()
+		self.consultation_ids.unlink()
+		self.procedure_ids.unlink()
+		self.session_ids.unlink()
+		self.control_ids.unlink()
+		self.appointment_ids.unlink()
+
+
+		# Numbers 
+		self.nr_budgets_cons = 0 
+		self.nr_invoices_cons = 0 
+		self.nr_budgets_pro = 0 
+		self.nr_invoices_pro = 0 
+
+
+
+		# Orders 
+		#self.order_ids.unlink()
+		for order in self.order_ids:
+			print order 
+			print order.name
+
+			order.remove_myself()
+
+
+
+
+
+
+		print 
+		print 
+		print 
+
+	# x_reset
+
+
+
+
+
+	# Family 
+	x_family = fields.Selection(
+			string = "Tipo", 	
+			
+			selection = jxvars._family_list, 
+		)
+
+
+
+
+
 	duration = fields.Integer(
 			#string="Días", 
 			default = 0,
@@ -106,8 +266,9 @@ class Treatment(models.Model):
 		
 			string='Estado', 			
 
-			default = False, 
-			#default = 'empty', 
+			#default = False, 
+			default = 'empty', 
+
 			compute="_compute_state",
 		)
 
@@ -120,16 +281,28 @@ class Treatment(models.Model):
 		for record in self:
 
 
-			state = False
+			#state = False
+			state = 'empty'
+
 
 
 			if record.nr_appointments > 0:
 				state = 'appointment'
 
 
+
+
+			if record.nr_budgets_cons > 0:
+				state = 'budget_consultation'
+
+			if record.nr_invoices_cons > 0:
+				state = 'invoice_consultation'
+
+
+
+
 			if record.nr_consultations > 0:
 				state = 'consultation'
-
 
 			if record.nr_services > 0:
 				state = 'service'
@@ -137,12 +310,14 @@ class Treatment(models.Model):
 
 
 
-			if record.nr_budgets > 0:
-				state = 'budget'
+
+			if record.nr_budgets_pro > 0:
+				state = 'budget_procedure'
+
+			if record.nr_invoices_pro > 0:
+				state = 'invoice_procedure'
 
 
-			#if record.nr_invoices > 0:
-			#	state = 'invoice'
 
 
 			if record.nr_procedures > 0:
@@ -210,6 +385,8 @@ class Treatment(models.Model):
 
 
 
+
+
 	# Co2
 	nr_services_co2 = fields.Integer(
 			string="Servicios",
@@ -218,8 +395,12 @@ class Treatment(models.Model):
 	@api.multi
 	def _compute_nr_services_co2(self):
 		for record in self:
+
 			services =		self.env['openhealth.service.co2'].search_count([('treatment','=', record.id),]) 
+			
 			record.nr_services_co2 = services 
+
+
 
 
 
@@ -280,36 +461,87 @@ class Treatment(models.Model):
 
 
 
-	# Number of budgets 
-	nr_budgets = fields.Integer(
-			string="Presupuestos",
-			compute="_compute_nr_budgets",
+
+
+
+
+
+	# Number of budgets - Consultations
+	nr_budgets_cons = fields.Integer(
+			string="Presupuestos Consultas",
+			compute="_compute_nr_budgets_cons",
 	)
 	@api.multi
-	def _compute_nr_budgets(self):
+	def _compute_nr_budgets_cons(self):
 		for record in self:
 
-			record.nr_budgets=self.env['sale.order'].search_count([
+			record.nr_budgets_cons=self.env['sale.order'].search_count([
 																	('treatment','=', record.id),
+																	('x_family','=', 'consultation'),
 
-																	#('state','=', 'draft'),
-																	#('x_family','=', 'private'),
+																	('state','=', 'draft'),
 																	]) 
 
-	# Number of invoices 
-	nr_invoices = fields.Integer(
-			string="Facturas",
-			compute="_compute_nr_invoices",
+	# Number of invoices - Consultations
+	nr_invoices_cons = fields.Integer(
+			string="Facturas Consultas",
+			compute="_compute_nr_invoices_cons",
 	)
 	@api.multi
-	def _compute_nr_invoices(self):
+	def _compute_nr_invoices_cons(self):
 		for record in self:
 
-			record.nr_invoices=self.env['sale.order'].search_count([
+			record.nr_invoices_cons=self.env['sale.order'].search_count([
 																	('treatment','=', record.id),
-																	
+
+																	('x_family','=', 'consultation'),
+
 																	('state','=', 'sale'),
 																	]) 
+
+
+
+
+
+
+
+
+	# Number of budgets - Proc
+	nr_budgets_pro = fields.Integer(
+			string="Presupuestos - Pro",
+			compute="_compute_nr_budgets_pro",
+	)
+	@api.multi
+	def _compute_nr_budgets_pro(self):
+		for record in self:
+
+			record.nr_budgets_pro=self.env['sale.order'].search_count([
+																		('treatment','=', record.id),
+																		
+																		('x_family','=', 'procedure'),
+
+																		('state','=', 'draft'),
+																	]) 
+
+	# Number of invoices - Proc
+	nr_invoices_pro = fields.Integer(
+			string="Facturas",
+			compute="_compute_nr_invoices_pro",
+	)
+	@api.multi
+	def _compute_nr_invoices_pro(self):
+		for record in self:
+
+			record.nr_invoices_pro=self.env['sale.order'].search_count([
+																
+																	('treatment','=', record.id),
+																	
+																	('x_family','=', 'procedure'),
+
+																	('state','=', 'sale'),
+																	]) 
+
+
 
 
 
@@ -558,6 +790,19 @@ class Treatment(models.Model):
 
 # ----------------------------------------------------------- Relational ------------------------------------------------------
 
+	recommendation_ids = fields.One2many(
+			#'oeh.medical.evaluation', 
+			'openhealth.recommendation', 
+
+			'treatment', 
+
+			string = "Recomendaciones", 
+			)
+
+
+
+
+
 
 	consultation_ids = fields.One2many(
 			#'oeh.medical.evaluation', 
@@ -641,6 +886,8 @@ class Treatment(models.Model):
 
 
 
+
+
 	# orders 
 	order_ids = fields.One2many(
 			'sale.order',			 
@@ -651,6 +898,20 @@ class Treatment(models.Model):
 						#('state', 'in', ['order', 'done'])
 					],
 			)
+
+
+
+	order_pro_ids = fields.One2many(
+			'sale.order',			 
+			'treatment', 
+			
+			string="Presupuestos",
+
+			domain = [
+						('x_family', '=', 'procedure'),
+					],
+			)
+
 
 
 
@@ -1136,8 +1397,8 @@ class Treatment(models.Model):
 
 
 			'flags': {
-					#'form': {'action_buttons': True, }
-					'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+					'form': {'action_buttons': True, }
 					},			
 
 
@@ -1236,16 +1497,19 @@ class Treatment(models.Model):
 
 
 # ----------------------------------------------------------- Button - Create Service  ------------------------------------------------------
-
+#jz
 	@api.multi 
+	#def create_recommendation(self):
 	def create_service(self):
 
 		print 'jx'
 		print 'Create Service'
 
 
-		consultation = self.env['openhealth.consultation'].search([('treatment','=', self.id)]) 
-		consultation_id = consultation.id
+		#consultation = self.env['openhealth.consultation'].search([('treatment','=', self.id)]) 
+		#consultation_id = consultation.id
+
+		treatment_id = self.id
 
 
 		return {
@@ -1256,9 +1520,74 @@ class Treatment(models.Model):
 
 
 			# Window action 
-			'res_model': 'openhealth.consultation',
-			'res_id': consultation_id,
+			#'res_model': 'openhealth.consultation',
+			#'res_id': consultation_id,
 
+			#'res_model': 'openhealth.service',
+			'res_model': 'openhealth.recommendation',
+
+
+
+
+			# Views 
+			"views": [[False, "form"]],
+
+			'view_mode': 'form',
+			'target': 'current',
+
+
+
+			#'view_id': view_id,
+			#"domain": [["patient", "=", self.patient.name]],
+			#'auto_search': False, 
+
+			'flags': {
+					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+					#'form': {'action_buttons': True, }
+					'form': {'action_buttons': False, }
+					},			
+
+
+			'context':   {
+							#'default_consultation': consultation_id,
+
+							'default_treatment': treatment_id,					
+					}
+		}
+
+
+
+
+	# create_recommendation
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Button - Create Order Pro  ------------------------------------------------------
+	@api.multi 
+	def create_order_con(self):
+
+		target = 'consultation'
+
+
+		order = self.create_order(target)		
+		print order 
+
+
+
+		return {
+
+			# Mandatory 
+			'type': 'ir.actions.act_window',
+			'name': 'Open Order Current',
+
+
+			# Window action 
+			'res_model': 'sale.order',
+			'res_id': order.id,
 
 
 			# Views 
@@ -1277,16 +1606,168 @@ class Treatment(models.Model):
 					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 					},			
 
-			#'context':   {
-			#}
+
+			'context': {}
 		}
 
+	# create_order_con
 
 
 
-	# create_recommedation
+
+# ----------------------------------------------------------- Button - Create Order Pro  ------------------------------------------------------
+	@api.multi 
+	def create_order_pro(self):
+
+		target = 'procedure'
 
 
+		order = self.create_order(target)		
+		print order 
+
+
+
+		return {
+
+			# Mandatory 
+			'type': 'ir.actions.act_window',
+			'name': 'Open Order Current',
+
+
+			# Window action 
+			'res_model': 'sale.order',
+			'res_id': order.id,
+
+
+			# Views 
+			"views": [[False, "form"]],
+
+			'view_mode': 'form',
+			'target': 'current',
+
+
+			#'view_id': view_id,
+			#"domain": [["patient", "=", self.patient.name]],
+			#'auto_search': False, 
+
+			'flags': {
+					'form': {'action_buttons': True, }
+					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+					},			
+
+
+			'context': {}
+		}
+
+	# create_order_pro
+
+
+
+
+
+
+# ----------------------------------------------------------- Button - Create Order  ------------------------------------------------------
+#jz
+
+
+	@api.multi 
+	#def create_order(self):
+	def create_order(self, target):
+
+		print 
+		print 'jx'
+		print 'Create Order'
+
+
+		#print self.x_family
+		print target
+
+
+		order = self.env['sale.order'].create(
+													{
+														'treatment': self.id,
+
+														'partner_id': self.partner_id.id,
+														
+														'patient': self.patient.id,	
+														
+														'x_doctor': self.physician.id,	
+														
+														#'consultation':self.id,
+														
+														'state':'draft',
+
+														#'x_chief_complaint':chief_complaint,
+
+														
+														'x_family': target, 
+													}
+												)
+
+
+
+		# Create order lines 
+		if target == 'consultation':
+			if self.chief_complaint in ['monalisa_touch']:
+				target_line = 'con_gyn'
+			else:
+				target_line = 'con_med'
+
+
+
+
+		#elif target == 'procedure':
+		else:
+			#consultation = self.env['openhealth.consultation'].search([
+			#																('treatment','=', self.id),
+			#																#('name','like', record.patient.name),
+			#															],
+																		#order='appointment_date desc',
+			#															limit=1,)
+
+
+
+			#con = self.consultation_ids[0]
+			#print con
+
+
+			if self.service_co2_ids.name != False:
+				service = self.service_co2_ids[0].service
+
+
+			if self.service_excilite_ids.name != False:
+				service = self.service_excilite_ids[0].service
+
+
+			if self.service_ipl_ids.name != False:
+				service = self.service_ipl_ids[0].service
+
+
+			if self.service_ndyag_ids.name != False:
+				service = self.service_ndyag_ids[0].service
+
+
+			if self.service_medical_ids.name != False:
+				service = self.service_medical_ids[0].service
+
+
+			#target_line = 'co2_nec_rn1_one'
+			target_line = service.x_name_short
+
+
+
+		print
+		print target_line 
+		print 
+
+		ret = order.x_create_order_lines_target(target_line)
+		print ret 
+
+		print 
+
+
+		return order
+	# create_order
 
 
 
@@ -1303,12 +1784,7 @@ class Treatment(models.Model):
 		print 'Create Budget'
 
 
-		#consultation_id = self.consultation.id
-		
-
-		#con_count=self.env['openhealth.consultation'].search_count([('treatment','=', self.id)]) 
 		consultation = self.env['openhealth.consultation'].search([('treatment','=', self.id)]) 
-
 		consultation_id = consultation.id
 
 
@@ -1354,9 +1830,8 @@ class Treatment(models.Model):
 		}
 
 
-
-
 	# create_budget 
+
 
 
 
@@ -1372,7 +1847,9 @@ class Treatment(models.Model):
 		print 'Create Procedure'
 
 
-		if self.nr_invoices > 0:
+		#if self.nr_invoices > 0:
+		if self.nr_invoices_pro > 0:
+
 			ret = treatment_funcs.create_procedure_go(self)
 
 

@@ -32,22 +32,69 @@
 												('state','in',[ 'appointment', 'consultation', 'service', 'budget', 'invoice', 'procedure', 'sessions', 'controls', 'done']), 
 
 												]}"
-						-->
-						<button 
-							type="object" 
 
-							class="oe_highlight"
-
-							string="Crear Cita" 
-							
 
 							states="False"
 
-							name="open_appointment" 
+							string="Crear Cita" 
 
+							type="object" 
+							name="open_appointment" 
+						-->
+						<button 
+							type="action" 
+
+							name="%(oeh_medical_appointment_action_tree_confirmed)d"	
+
+							class="oe_highlight"
+
+							string="Crear  CITA" 
+							
+							states="empty"
+
+							context="{									
+											'search_default_doctor': physician,
+											'default_patient': patient, 
+											'default_doctor' : physician, 
+											'default_appointment_date': start_date, 
+									}" 											
 
 						/>
 
+
+
+
+
+<!--
+jz
+
+							type="action" 
+							name="%(order_form_action)d"	
+
+
+							context="{									
+											'search_default_treatment': active_id,
+											'default_partner_id': partner_id, 
+											'default_treatment': active_id, 
+										}" 
+							name="create_order" 
+-->
+
+						<button 
+
+							type="object" 
+
+							name="create_order_con" 
+							
+
+							
+							class="oe_highlight"
+  
+							string="Crear PRESUPUESTO - Consulta" 
+
+
+							states="appointment"
+						/>
 
 
 
@@ -61,15 +108,18 @@
 												('state','in',[ False, 'empty', 'consultation', 'service', 'budget', 'invoice', 'procedure', 'sessions', 'controls', 'done']), 
 
 												]}"
+
+							states="appointment"
 -->
 						<button 
 							type="object" 
 							class="oe_highlight"
 
-							string="Crear Consulta" 
+							string="Crear CONSULTA" 
 							
 
-							states="appointment"
+							states="invoice_consultation"
+
 
 							name="open_consultation_current" 
 						/>
@@ -81,12 +131,13 @@
 							attrs="{'invisible':[
 												('state','in',[ False, 'appointment', 'service', 'budget', 'invoice', 'procedure', 'sessions', 'controls', 'done']),
 												]}"
+							string="Crear RECOMENDACION" 
 -->
 						<button 
 							type="object" 
 							class="oe_highlight"
 
-							string="Crear Recomendación" 
+							string="Crear RECOMENDACION" 
 
 
 							states="consultation"
@@ -101,17 +152,35 @@
 							attrs="{'invisible':[
 												('state','in',[ False, 'appointment', 'consultation', 'budget', 'invoice', 'procedure', 'sessions', 'controls', 'done']),
 												]}"
+
+
+
+										'search_default_doctor': physician, 										
+										'default_patient': patient, 
+										'default_doctor' : physician
+
+							name="create_budget" 
+							context="{
+										'default_x_family': 'procedure', 
+									}" 
+
+
+jz
 -->						
 						<button 
 							type="object" 
+
+							name="create_order_pro" 
+
+
 							class="oe_highlight"
   
-							string="Crear Presupuesto" 
-
+							string="Crear PRESUPUESTO - P" 
 
 							states="service"
 
-							name="create_budget" 
+
+
 						/>
 
 
@@ -146,10 +215,10 @@
 							type="object" 
 							class="oe_highlight"
 
-							string="Crear Procedimiento" 
+							string="Crear PROCEDIMIENTO" 
 
 
-							states="budget"
+							states="budget_procedure,invoice_procedure"
 
 							name="create_procedure" 
 						/>
@@ -170,7 +239,7 @@
 							type="object" 
 							class="oe_highlight"
 
-							string="Crear Sesiones" 
+							string="Crear SESIONES" 
 
 
 
@@ -195,7 +264,7 @@
 							type="object" 
 							class="oe_highlight"
 
-							string="Crear Controles" 
+							string="Crear CONTROLES" 
 
 
 
@@ -209,10 +278,19 @@
 
 
 						<!-- State --> 
+<!--
+								statusbar_visible="appointment, consultation, service, budget, invoice, procedure, sessions, controls,  done"
+
+								statusbar_visible="False, appointment, consultation, service, budget, invoice, procedure, sessions, controls,  done"
+
+								statusbar_visible="appointment, budget_consultation, invoice_consultation, consultation, service, budget_procedure, invoice_procedure, procedure, sessions, controls"
+-->						
 						<field 	name="state" 
 								widget="statusbar" 
 
-								statusbar_visible="appointment, consultation, service, budget, invoice, procedure, sessions, controls,  done"
+
+								statusbar_visible="appointment, invoice_consultation, consultation, service, invoice_procedure, procedure, sessions, controls"
+
 						/>
 
 					</header>
@@ -225,6 +303,8 @@
 
 
 						<div>						
+
+
 
 
 							<!-- Persona --> 
@@ -246,79 +326,245 @@
 							<!-- Buttons --> 
 							<div class="oe_left" style="width: 400px;" name="buttons">
 							
-								<!-- Consultations -->
+
+
+
+<!--
+
+									name="347" 
+
+									name="%(appointment_form_action)d"	
+									name="%(oeh_medical_appointment_action_tree_confirmed)d"	
+
+												'search_default_patient': patient, 
+jz
+-->
+
+								<!-- Appointments -->
 								<button type="action" class="oe_stat_button" 
-									name="%(consultation_form_action)d"	
+
+
+									name="%(oeh_medical_appointment_action_tree_confirmed)d"	
+
+									
+									context="{
+												'search_default_doctor': physician, 
+
+												'default_patient': patient, 
+												'default_doctor' : physician
+											}" 
+
+									icon="fa-calendar"
+
+									attrs="{ 'invisible':[	('nr_appointments','=',0), 	]}"
+
+									>
+								
+
+
+									
+									<field string="Citas" name="nr_appointments" widget="statinfo"/>
+								</button>
+
+
+
+
+
+
+
+								<!-- Budgets -->
+								<button type="action" class="oe_stat_button" 
+
+									name="%(order_form_action)d"	
+									
 									context="{									
 											'search_default_treatment': active_id,
 											}" 											
-									icon="fa-list">
+									icon="fa-list"
+
+
+
+									attrs="{ 'invisible':[	('nr_budgets_cons','=',0), 	]}"
+
+
+
+									>
+
+
+									<field string="Presupuesto - C" name="nr_budgets_cons" widget="statinfo"/>
+								</button>
+
+
+
+								<!-- Invoices -->
+<!--
+															('nr_invoices_cons','=','0'), 	
+
+												'search_default_treatment': active_id,
+
+												'search_default_x_family': 'consultation', 
+-->
+								<button type="action" class="oe_stat_button" 
+
+									name="%(order_form_action)d"	
+									
+
+									context="{									
+												'search_default_partner_id': partner_id, 
+												'search_default_x_doctor': physician, 
+
+												'default_partner_id': partner_id, 
+											}" 	
+
+
+									icon="fa-list"
+
+									attrs="{ 'invisible':[	
+															('nr_invoices_cons','in',[ False, 0, ]), 
+														]}"
+									>
+
+
+
+
+									<field string="Facturado - C" name="nr_invoices_cons" widget="statinfo"/>
+								</button>
+
+
+
+								<!-- Consultations -->
+								<button type="action" class="oe_stat_button" 
+
+									name="%(consultation_form_action)d"	
+									
+									context="{									
+											'search_default_treatment': active_id,
+											}" 	
+
+									icon="fa-list"
+
+
+									attrs="{ 'invisible':[	('nr_consultations','=',0), ]}"
+
+
+									>
 									<field string="Consulta" name="nr_consultations" widget="statinfo"/>
 								</button>
 
 
 
 
+
+
+
+
 								<!-- Services -->
-								<button type="action" class="oe_stat_button" 
+<!--
+									attrs="{ 'invisible':[	('nr_services','=',0), ]}"
+-->								
+								<button type="action" class="oe_stat_button" icon="fa-list" invisible="1"
+
 									name="%(service_list_action)d"	
+									
+
 									context="{									
 											'search_default_treatment': active_id,
-											}" 											
-									icon="fa-list">
-									<field string="Servicio" name="nr_services" widget="statinfo"/>
+											}" 	
+									>
+
+									<field string="Recomendacion" name="nr_services" widget="statinfo"/>
+								
 								</button>
 
 
 
 
-								<!-- Nr of Services --> 
-								<button type="action" class="oe_stat_button" invisible="1" 
+								<!-- Nr of Services - Co2 --> 
+								<button type="action" class="oe_stat_button" icon="fa-list"
+
 									name="%(service_co2_list_action)d"	
+
+									attrs="{ 'invisible':[	('nr_services_co2','=',0), ]}"
+
 									context="{									
 											'search_default_treatment': active_id,
 											}" 											
-									icon="fa-list">
-									<field string="Co2" name="nr_services_co2" widget="statinfo"/>
+									>
+
+									<field string="Recomendacion" name="nr_services_co2" widget="statinfo"/>
 								</button>
 
 
-								<button type="action" class="oe_stat_button" invisible="1"
+
+								<!-- Nr of Services - Exc --> 
+								<button type="action" class="oe_stat_button"  icon="fa-list"
 									name="%(service_excilite_list_action)d"	
+
+									attrs="{ 'invisible':[	('nr_services_excilite','=',0), ]}"
+
 									context="{									
 											'search_default_treatment': active_id,
 											}" 											
-									icon="fa-list">
-									<field string="Excilite" name="nr_services_excilite" widget="statinfo"/>
+									>
+									<field string="Recomendacion" name="nr_services_excilite" widget="statinfo"/>
 								</button>
 
 
-								<button type="action" class="oe_stat_button" invisible="1"
+
+								<!-- Nr of Services - Ipl --> 
+								<button type="action" class="oe_stat_button" icon="fa-list"
+
 									name="%(service_ipl_list_action)d"	
+
+									attrs="{ 'invisible':[	('nr_services_ipl','=',0), ]}"
+
 									context="{									
 											'search_default_treatment': active_id,
 											}" 											
-									icon="fa-list">
-									<field string="Ipl" name="nr_services_ipl" widget="statinfo"/>
+									>
+									<field string="Recomendacion" name="nr_services_ipl" widget="statinfo"/>
 								</button>
 
-								<button type="action" class="oe_stat_button" invisible="1"
+
+
+								<!-- Nr of Services - Ndyag --> 
+								<button type="action" class="oe_stat_button" icon="fa-list"
+
 									name="%(service_ndyag_list_action)d"	
+
+									attrs="{ 'invisible':[	('nr_services_ndyag','=',0), ]}"
+
 									context="{									
 											'search_default_treatment': active_id,
 											}" 											
-									icon="fa-list">
-									<field string="Ndyag" name="nr_services_ndyag" widget="statinfo"/>
+									>
+									<field string="Recomendacion" name="nr_services_ndyag" widget="statinfo"/>
 								</button>
 
-								<button type="action" class="oe_stat_button" invisible="1"
+
+
+								<!-- Nr of Services - Med --> 
+								<button type="action" class="oe_stat_button" icon="fa-list"
+
 									name="%(service_medical_list_action)d"	
+
+									attrs="{ 'invisible':[	('nr_services_medical','=',0), ]}"
+
 									context="{									
 											'search_default_treatment': active_id,
 											}" 											
-									icon="fa-list">
-									<field string="Medical" name="nr_services_medical" widget="statinfo"/>
+									>
+									<field string="Recomendacion" name="nr_services_medical" widget="statinfo"/>
 								</button>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -328,34 +574,64 @@
 									context="{									
 											'search_default_treatment': active_id,
 											}" 											
-									icon="fa-list">
+									icon="fa-list"
 
-									<field string="Presupuesto" name="nr_budgets" widget="statinfo"/>
+
+									attrs="{ 'invisible':[	('nr_budgets_pro','=',0), ]}"
+
+
+									>
+
+									<field string="Presupuesto - P" name="nr_budgets_pro" widget="statinfo"/>
 								</button>
 
 
 
-								<!-- Invoices -->
+
+
+								<!-- Invoices - Pro -->
 <!--
 -->
 								<button type="action" class="oe_stat_button" 
-									name="%(order_form_action)d"	
-									context="{									
-											'search_default_treatment': active_id,
-											}" 											
-									icon="fa-list">
 
-									<field string="Facturado" name="nr_invoices" widget="statinfo"/>
+									name="%(order_form_action)d"	
+									
+									icon="fa-list"
+
+
+									attrs="{ 'invisible':[	('nr_invoices_pro','=',0), ]}"
+
+
+
+									context="{									
+												'search_default_partner_id': partner_id, 
+												'search_default_x_doctor': physician, 
+
+												'default_partner_id': partner_id, 
+											}" 	
+
+
+									>
+
+									<field string="Facturado - P" name="nr_invoices_pro" widget="statinfo"/>
 								</button>
 
 
 								<!-- Procedures -->
 								<button type="action" class="oe_stat_button" 
+
 									name="%(procedure_form_action)d"	
+
 									context="{									
 											'search_default_treatment': active_id,
 											}" 											
-									icon="fa-list">
+									
+									icon="fa-list"
+
+
+									attrs="{ 'invisible':[	('nr_procedures','=',0), ]}"
+
+									>
 									<field string="Procedimiento" name="nr_procedures" widget="statinfo"/>
 								</button>
 						
@@ -364,11 +640,19 @@
 
 								<!-- Sessions -->
 								<button type="action" class="oe_stat_button" 
-									name="%(session_form_action)d"	
+
+									name="%(session_med_form_action)d"	
+
 									context="{									
 											'search_default_treatment': active_id,
-											}" 											
-									icon="fa-list">
+											}" 	
+
+									icon="fa-list"
+
+
+									attrs="{ 'invisible':[	('nr_sessions','=',0), ]}"
+
+									>
 									<field string="Sesiones" name="nr_sessions" widget="statinfo"/>
 								</button>
 						
@@ -376,27 +660,21 @@
 
 
 								<!-- Controls -->
-								<button type="action" class="oe_stat_button" 
+								<button type="action" class="oe_stat_button" icon="fa-list"
+
 									name="%(control_form_action)d"	
+									
 									context="{									
 											'search_default_treatment': active_id,
-											}" 											
-									icon="fa-list">
+											}" 		
+
+
+									attrs="{ 'invisible':[	('nr_controls','=',0), ]}"
+
+									>
 									<field string="Controles" name="nr_controls" widget="statinfo"/>
 								</button>
-						
 
-
-								<!-- Appointments -->
-								<button type="action" class="oe_stat_button" 
-									name="347" 
-									context="{
-											'search_default_patient': patient, 'default_patient': patient, 'default_doctor' : physician
-											}" 
-									icon="fa-calendar">
-								
-									<field string="Citas" name="nr_appointments" widget="statinfo"/>
-								</button>
 							</div>
 						
 						
@@ -428,12 +706,27 @@ Fields
 						<group></group>
 						<group></group>
 
+
+
 							
 						<group>
 							<!-- Padding --> 
 							<group>
+								<field name="partner_id"/>
 							</group>
+
 							<group>
+
+								<button 
+										type="object" 
+
+										class="oe_highlight"
+
+										string="Reset"
+
+										name="reset" 	
+									/>
+
 							</group>
 
 
@@ -498,13 +791,21 @@ Fields
 					
 					<field name="name"/>
 
+
 					<field name="id"/>
+					<field name="state"/>
 
 
 
 					<!--
 					<field name="treatment_open"/>
 					-->
+
+
+
+					<field name="partner_id"/>
+
+
 					<field name="patient"/>
 					
 					<field name="physician"/>

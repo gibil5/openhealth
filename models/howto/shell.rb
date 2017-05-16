@@ -112,12 +112,19 @@ self.env['openhealth.service'].search([('name', 'like', 'S')])
 
 
 
-self.env['sale.order']
-
-self.env['openextension.treatment']
 
 
-self.env['sale.order']
+self.env['openhealth.treatment']
+
+self.env['openhealth.treatment'].search([('name', 'like', 'TR000016'),])
+
+t = self.env['openhealth.treatment'].search([('id', '=', '16'),])
+
+t = self.env['openhealth.treatment'].search([('id', '=', '02'),])
+
+
+
+
 
 
 
@@ -206,6 +213,11 @@ t = self.env['openextension.treatment'].search([  ('chief_complaint', 'like', 'a
 
 
 
+
+
+
+
+self.env['sale.order']
 self.env['sale.order'].search_count([('name', 'like', '1')])
 
 self.env['sale.order'].search([('name', 'like', '11')]).order_line.search([('name', 'like', 'CO')])

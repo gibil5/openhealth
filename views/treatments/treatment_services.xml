@@ -7,18 +7,22 @@
 		service_co2
 		-->
 		<record model="ir.ui.view" id="treatment_service_co2_form_view">
+
 			<field name="name">treatment.service_co2.form</field>
+			
 			<field name="model">openhealth.treatment</field>
 
 			<field name="priority" eval="2"/>
 			
 			<field name="inherit_id" ref="treatment_form_view"/>
+			
 			<field name="arch" type="xml">
 
 
 
 				<notebook position="inside">
-					<page string="Servicios">
+
+					<page string="Recomendaciones">
 					
 
 						<notebook>
@@ -29,6 +33,14 @@
 -->							
 								<field name="service_co2_ids">									
 									<tree string="Services">	
+
+										<button 
+											type="object" 
+											class="oe_highlight"	
+											string="Editar"
+											name="open_line_current" 
+										/>
+
 										<field name="name"/>
 										<!--
 										<field name="id"/>
@@ -37,35 +49,34 @@
 										<field name="treatment"/>
 										<field name="service"/>
 										<field name="consultation"/>
-										<button 
-											type="object" 
-											class="oe_highlight"	
-											string="E"
-											name="open_line_current" 
-										/>
+										
 									</tree>
 								</field>
 
 							</page>
 
 
+
 							<page string="Excilite"  	attrs="{'invisible':[('nr_services_excilite', '=', 0)]}"	>
 <!--
 								<field name="service_excilite_ids"/>
 -->
-								<field name="service_excilite_ids">									
+								<field name="service_excilite_ids">	
+
 									<tree string="Services">	
+										<button 
+											type="object" 
+											class="oe_highlight"	
+											string="Editar"
+											name="open_line_current" 
+										/>
+
+
 										<field name="name"/>
 										<field name="laser"/>				
 										<field name="treatment"/>
 										<field name="service"/>
 										<field name="consultation"/>
-										<button 
-											type="object" 
-											class="oe_highlight"	
-											string="E"
-											name="open_line_current" 
-										/>
 									</tree>
 								</field>
 
@@ -78,17 +89,18 @@
 -->
 								<field name="service_ipl_ids">									
 									<tree string="Services">	
+										<button 
+											type="object" 
+											class="oe_highlight"	
+											string="Editar"
+											name="open_line_current" 
+										/>
+
 										<field name="name"/>
 										<field name="laser"/>				
 										<field name="treatment"/>
 										<field name="service"/>
 										<field name="consultation"/>
-										<button 
-											type="object" 
-											class="oe_highlight"	
-											string="E"
-											name="open_line_current" 
-										/>
 									</tree>
 								</field>
 
@@ -101,17 +113,19 @@
 -->
 								<field name="service_ndyag_ids">									
 									<tree string="Services">	
+										<button 
+											type="object" 
+											class="oe_highlight"	
+											string="Editar"
+											name="open_line_current" 
+										/>
+
+
 										<field name="name"/>
 										<field name="laser"/>				
 										<field name="treatment"/>
 										<field name="service"/>
 										<field name="consultation"/>
-										<button 
-											type="object" 
-											class="oe_highlight"	
-											string="E"
-											name="open_line_current" 
-										/>
 									</tree>
 								</field>
 
@@ -124,30 +138,24 @@
 -->
 								<field name="service_medical_ids">									
 									<tree string="Services">	
+										<button 
+											type="object" 
+											class="oe_highlight"	
+											string="Editar"
+											name="open_line_current" 
+										/>
+
 										<field name="name"/>
 										<field name="laser"/>				
 										<field name="treatment"/>
 										<field name="service"/>
 										<field name="consultation"/>
-										<button 
-											type="object" 
-											class="oe_highlight"	
-											string="E"
-											name="open_line_current" 
-										/>
 									</tree>
 								</field>
 							</page>
-
-
-
 						</notebook>
-
-
 					</page>
 				</notebook>
-
-
 			</field>
 		</record>
 	</data>

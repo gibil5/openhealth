@@ -44,19 +44,21 @@
 
 								<field name="x_type"/>
 
-								<field name="x_machine"/>
 
 
 								<field name="treatment"/>
+<!--								
 								<field name="consultation"/>
 								<field name="procedure"/>
 								<field name="session"/>
 								<field name="control"/>					
-
+-->
 					
 								<field name="state"/>
 								<field name="x_date"/>
 								<field name="x_time"/>
+
+								<field name="x_machine"/>								
 							</tree>
 						</field>				
 

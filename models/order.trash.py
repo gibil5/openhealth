@@ -466,3 +466,80 @@ class Order(models.Model):
 
 
 
+
+
+
+
+# 12 May 2017
+
+
+
+	#@api.multi
+	#@api.depends('x_state')
+	#def _compute_state(self):
+	#	for record in self:
+	#		record.state = record.x_state
+
+
+
+	#@api.onchange('x_state')
+	#def _onchange_x_state(self):
+	#	print 
+	#	print 
+	#	print 'On change x State'
+	#	self.state = self.x_state
+	#		print 'Gotcha !!!'
+	#	print 
+	#	print 
+
+
+
+
+
+
+
+
+	# x_state
+	x_state = fields.Selection(
+
+			selection = ord_vars._x_state_list, 
+
+			string='x Estado',	
+			default='draft',	
+			compute="_compute_x_state",
+	)
+
+	@api.multi
+	#@api.depends('state')
+
+	def _compute_x_state(self):
+		for record in self:
+
+			if record.state == 'draft':
+				record.x_state = record.state
+
+			if	record.env['openhealth.payment_method'].search_count([('order','=', record.id),]):	
+				if record.x_amount_total == record.pm_total:			
+					record.x_state = 'payment'
+
+			if	record.env['openhealth.sale_document'].search_count([('order','=', record.id),]):
+				record.x_state = 'proof'
+
+			if (record.x_machine != False	or 	record.patient.name == False) and record.x_sale_document:
+				record.x_state = 'machine'
+
+			if record.state == 'sale':
+				record.x_state = 'sale'
+
+
+
+
+
+
+
+
+
+
+
+
+

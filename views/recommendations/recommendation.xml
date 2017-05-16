@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+
+		<!-- RECOMMENDATION -->
+			
+
+		<!-- Form view -->
+		<record model="ir.ui.view" id="recommendation_form_view">
+
+			<field name="name">recommendation.form</field>
+			
+			<field name="model">openhealth.recommendation</field>
+			
+			<!--
+			<field name="priority" eval="1"/>
+			-->
+			
+			<field name="arch" type="xml">
+				
+				<form string="Evaluation">
+
+
+
+
+
+					<!-- Header --> 
+					<header>
+
+
+
+							<!-- CO2 --> 
+							<button 
+
+								type="object" 
+
+								class="oe_highlight"	
+
+								string="LASER CO2"
+
+								name="create_service_co2" 	
+							/>
+
+
+
+							<!-- Excilite -->
+							<button 
+
+
+								type="object" 
+								class="oe_highlight"	
+
+								string=" EXCILITE"
+				
+								name="create_service_excilite" 	
+							/>
+
+
+
+							<!-- M22-IPL --> 
+							<button 
+
+
+								type="object" 
+								class="oe_highlight"	
+								string=" M22-IPL"
+				
+								name="create_service_ipl" 	
+							/>
+
+
+
+							<!-- M22-NDYAG --> 
+							<button 
+
+
+								type="object" 
+								class="oe_highlight"	
+								string=" M22-NDYAG"
+				
+								name="create_service_ndyag" 	
+							/>
+
+
+
+							<!-- T. MEDICO -->
+							<button 
+
+
+								type="object" 
+								class="oe_highlight"	
+								string="T. MEDICO"
+				
+								name="create_service_medical" 	
+							/>
+
+					</header>
+					
+					
+					
+					<sheet>
+
+	
+						<field name="treatment"/>
+
+
+					</sheet>
+
+
+				</form>
+				
+
+
+			</field>
+		</record>
+
+
+
+
+
+
+	</data>
+</openerp>
+

@@ -41,6 +41,29 @@ class Service(models.Model):
 
 
 
+
+
+
+
+	# Open Treatment
+	@api.multi 
+	def open_treatment(self):
+
+		print 
+		print 'Open Treatment'
+
+
+		ret = self.treatment.open_myself()
+
+		return ret 
+	# open_treatment
+
+
+
+
+
+
+
 	# Service 
 	service = fields.Many2one(
 			'product.template',
@@ -76,6 +99,7 @@ class Service(models.Model):
 			#required=True, 
 			index=True
 			)
+
 
 
 
@@ -127,6 +151,7 @@ class Service(models.Model):
 	treatment = fields.Many2one('openhealth.treatment',
 			ondelete='cascade', 			
 			string="Tratamiento", 
+			readonly=True, 
 			)
 
 

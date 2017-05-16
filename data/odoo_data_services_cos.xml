@@ -1,6 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
+
+<!--
 	<data noupdate='0'>
+-->
+	<data noupdate='1'>
+
 		<!-- Data - Services -->
 
 		<record id='dit_fac_dfc_30m_one' model='product.template'>

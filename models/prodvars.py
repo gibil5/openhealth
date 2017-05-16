@@ -39,6 +39,11 @@ _sessions_list = [
 
 
 _family_list = [
+
+		('consultation',			'consultation'), 
+
+
+
 		('laser',			'laser'),
 		('medical',			'medical'), 
 
@@ -65,6 +70,10 @@ _family_list = [
 
 
 _treatment_list = [
+
+		('consultation',			'consultation'), 
+
+
 		('laser_co2',		'laser_co2'),
 		('laser_excilite',	'laser_excilite'),
 		('laser_ipl',		'laser_ipl'),
@@ -112,6 +121,9 @@ _treatment_list = [
 
 # Laser
 _laser_type_list = [
+		('consultation',			'consultation'), 
+
+
 		('laser_co2','Laser Co2'), 
 		('laser_excilite','Laser Excilite'), 
 		('laser_ipl','Laser Ipl'), 

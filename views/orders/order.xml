@@ -31,6 +31,32 @@
 
 
 
+				<!-- State --> 
+<!--
+							attrs="{		'invisible':[('x_family', '!=', 'procedure' ),],
+									}"							
+
+
+							statusbar_visible="draft, payment, proof, machine, sale, invoice"
+-->	
+				<xpath expr="//field[@name='state']" position="replace">
+
+
+					<field 	name="state" 
+
+							widget="statusbar" 
+
+
+							statusbar_visible="draft, payment, proof, sale, invoice"
+					/>
+				</xpath>
+
+
+
+
+
+
+
 
 
 				<!--
@@ -173,18 +199,9 @@
 
 
 
-				<!-- State --> 
-				<xpath expr="//field[@name='state']" position="replace">
 
-					<field 	name="x_state" 
-							widget="statusbar" 
-
-
-							statusbar_visible="draft, payment, proof, machine, sale, invoice"
-					/>
-
-				</xpath>
 	
+
 
 				<!--
 				<xpath expr="pass of position" position="the postion">
@@ -268,19 +285,48 @@
 
 
 
+
 				<!-- NEW BUTTONS --> 
+<!--
 				<xpath expr="//field[@name='x_state']" position="before">
+-->
+				<xpath expr="//field[@name='state']" position="before">
+				
+
+
+
+
+					<!-- Treatment --> 
+					<button 
+							name="open_treatment"
+
+							type="object" 
+
+							class="oe_highlight"
+
+							string="INICIO"
+
+
+							states="sale"						
+					/>
+
+
+
+
+
+
 					<!-- Pagar -->
 <!--
-							states="draft"						
+							attrs="{'invisible':	[('x_state', 'in', ['payment', 'proof', 'machine', 'sale', 'invoice'] ),	]}"
 -->					
 					<button 
 							type="object" 
-							class="oe_highlight"	
+							class="oe_highlight"
+
 							string="Pagar"
 
+							states="draft"						
 
-							attrs="{'invisible':	[('x_state', 'in', ['payment', 'proof', 'machine', 'sale', 'invoice'] ),	]}"
 
 							name="create_payment_method"
 							/>
@@ -291,16 +337,18 @@
 
 
 					<!--
-							states="payment"						
+
+							attrs="{'invisible':	[('x_state', 'in', ['draft', 'proof',  'machine', 'sale', 'invoice'] ),	]}"
 					-->
 					<button 
 							type="object" 
 							class="oe_highlight"
-							string="Sacar comprobante de Pago" 
+
+							string="Comprobante" 
 
 
+							states="payment"						
 
-							attrs="{'invisible':	[('x_state', 'in', ['draft', 'proof',  'machine', 'sale', 'invoice'] ),	]}"
 
 							name="create_sale_document" 
 					/>
@@ -323,17 +371,47 @@
 					<!-- Reserve Machine --> 
 <!--
 							states="proof"						
--->
-					<button 
-							type="object"
-							class="oe_highlight"						
-							string="Reservar la Sala"
-
-						
 							attrs="{'invisible':	[('x_state', 'in', ['draft', 'payment',  'machine', 'sale', 'invoice'] ),	]}"
 
+
+							attrs="{'invisible':	[('x_family', 'in', ['consultation'] 	),	]}"
+
+							states="proof"
+
+														('state','=','proof'),
+							attrs="{'invisible':	[
+														('x_family','!=','procedure'), 
+
+													]}"
+
+																('x_machine','!=',''), 
+-->
+
+					<button 
+							type="object"
+
 							name="reserve_machine" 	
+
+							class="oe_highlight"
+
+
+							string="Reservar la Sala"
+
+
+
+
+							attrs="{'invisible':		['|',
+																('x_family','!=','procedure'),
+
+																('state','!=','proof'), 
+
+									]}"
+
 					/>
+
+
+
+
 
 
 
@@ -344,17 +422,27 @@
 													('pm_complete', '=', False),
 												]
 									}"
-							states="machine"		
+
+
+							attrs="{'invisible':	[('x_state', 'in', ['draft', 'payment', 'proof',   'sale', 'invoice'] ),	]}"
+							states="proof"						
+
+							attrs="{'invisible':	[('x_state', 'in', ['draft', 'payment',  'machine', 'sale', 'invoice'] ),	]}"
+
+
+							states="machine"
 -->
+
 					<button 
 									
 							type="object" 
 							class="oe_highlight"
-							string="Confirmar la Venta" 
-							
+
+							string="Confirmar" 
 
 
-							attrs="{'invisible':	[('x_state', 'in', ['draft', 'payment', 'proof',   'sale', 'invoice'] ),	]}"
+							states="proof"
+
 
 							name="action_confirm" 
 					/>
@@ -364,6 +452,8 @@
 
 					<!-- Create Invoice --> 
 <!--
+
+							attrs="{'invisible':	[('x_state', 'in', ['draft', 'payment', 'proof',   'machine', 'invoice'] ),	]}"
 -->
 					<button 
 							type="object"
@@ -371,7 +461,8 @@
 							string="Crear Factura"
 						
 
-							attrs="{'invisible':	[('x_state', 'in', ['draft', 'payment', 'proof',   'machine', 'invoice'] ),	]}"
+							states="sale"		
+
 							name="x_create_invoice" 	
 					/>
 
@@ -469,8 +560,10 @@
 						</group>
 
 
+
 						<!-- Reset --> 
 						<group>
+
 							<button 
 								type="object" 
 								class="oe_highlight"
@@ -479,6 +572,7 @@
 
 								name="x_reset" 	
 							/>
+						
 						</group>
 
 
@@ -668,19 +762,24 @@ Order Line - Tree
 
 				
 				<field name="partner_id" position="after">
-					
+<!--				
+					<field name="x_partner_name"/>
+					<field name="doctor_name"/>
+-->
+
 					<!--
 					<field name="vspace"/>
 					-->
 					
 					<field name="x_partner_vip"/>
-
 					
 					<field name="vspace"/>
 
-					<field name="state"		string="Estado"/>
+
+
 <!--					
 					<field name="x_state"		string="x Estado"/>
+					<field name="state"		string="Estado"/>
 -->
 
 
@@ -732,7 +831,12 @@ Order Line - Tree
 					
 					<field name="vspace"/>
 					<field name="x_sale_document"/>
-					<field name="vspace"/>					
+					<field name="vspace"/>			
+
+
+					<field name="x_family"/>
+
+
 <!--
 					<field name="x_payment_method"/>
 					<field name="vspace"/>
@@ -812,7 +916,15 @@ Order Line - Tree
 
 
 					<field name="x_doctor"		/>
+
+
+<!--
 					<field name="x_target"/>
+-->
+					<field name="x_family"/>
+
+
+
                     <field name="state"/>
                     <field name="nr_lines"/>
                     <field name="x_amount_total" 	sum="Total Tax Included"	widget="monetary"/>
@@ -858,8 +970,11 @@ Order Line - Tree
 			<field name="name">orders</field>
 			<field name="res_model">sale.order</field>
 			<field name="view_type">form</field>
+
 			<field name="view_mode">tree,form</field>
+			
 			<!--
+			<field name="view_mode">form,tree</field>
             <field name="domain">[]</field>
             <field name="context">{}</field>
             <field name="view_id" eval="False"/>
@@ -1024,13 +1139,30 @@ Order Line - Tree
            <field name="name">Order Search</field>
            <field name="model">sale.order</field>		   
 		   <field name="arch" type="xml">
-
                <search string="orders">
-                   <field name="partner_id" />               
+
+                   <field name="partner_id" />
+                   <field name="x_doctor" />               
+               
                </search>
-           
            </field>
        </record>
+
+
+<!--
+        <record id="view_medical_order_filter_phy" model="ir.ui.view">
+           <field name="name">Order Search</field>
+           <field name="model">sale.order</field>		   
+		   <field name="arch" type="xml">
+               <search string="orders">
+                   <field name="x_doctor" />                           
+               </search>
+           </field>
+       </record>
+-->
+
+
+
 
 	</data>
 </openerp>

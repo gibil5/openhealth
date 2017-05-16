@@ -39,6 +39,29 @@ class Evaluation(models.Model):
 
 
 
+	# Open Treatment
+	@api.multi 
+	def open_treatment(self):
+
+		print 
+		print 'Open Treatment'
+
+		treatment = self.env['openhealth.treatment'].search([('id','=', self.treatment.id)]) 
+		treatment_id = treatment.id  
+
+
+		ret = treatment.open_myself()
+
+		return ret 
+	# open_treatment
+
+
+
+
+
+
+
+
 	appointment = fields.Many2one(
 			'oeh.medical.appointment',			
 			string='Cita #', 

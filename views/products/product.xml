@@ -24,9 +24,9 @@
 
 				<!-- Notebook --> 
 				<!--
-				<xpath expr="//notebook" position="inside">
-				-->
 				<xpath expr="//page" position="before">
+				-->
+				<xpath expr="//notebook" position="inside">
 
 					<page string="Chavarri"  			sequence="1">
 
@@ -71,8 +71,12 @@
 
 
 
+
+
 		<!-- Tree/list view -->
 <!--		
+-->
+
 		<record model="ir.ui.view" id="product.product_template_tree_view">
 			<field name="name">product.template.product.tree</field>
 			<field name="model">product.template</field>
@@ -85,7 +89,15 @@
 					<field name="x_date_created"/>
 					<field name="id"/>
 
+
+
 					<field name="type"/>
+
+					<field name="qty_available"/>
+
+
+
+
 					<field name="x_name_short"/>
 					<field name="x_family"/>
 					<field name="x_treatment"/>				
@@ -98,9 +110,31 @@
 				</tree>
 			</field>
 		</record>
--->
 
 
+
+
+
+		<!-- Window action -->
+		<record model="ir.actions.act_window" id="product_template_stockable_list_action">
+			<field name="name">Productos</field>
+			<field name="res_model">product.template</field>
+			<field name="view_type">form</field>
+
+			<field name="view_mode">tree,form</field>
+
+            <field name="domain">[
+									('type', '=', 'product'),
+            					]</field>
+
+            <!--
+			<field name="context">{'order': 'x_name_short'}</field>
+            <field name="domain">[
+									('type', '=', 'service'),
+									('x_treatment', '=', 'laser_co2'),
+            					]</field>
+			-->
+		</record>
 
 
 
@@ -111,8 +145,11 @@
 			<field name="name">Productos</field>
 			<field name="res_model">product.template</field>
 			<field name="view_type">form</field>
+
 			<field name="view_mode">tree,form</field>
 
+
+<!--
             <field name="domain">[]</field>
             <field name="context">{}</field>
             <field name="view_id" eval="False"/>
@@ -121,7 +158,7 @@
 				<p class="oe_view_nocontent_create">Create the first receipt
 				</p>
 			</field>
-
+-->
 
             <!--
 			<field name="context">{'order': 'x_name_short'}</field>

@@ -38,6 +38,7 @@
 							mode="day"
 				>
                 
+                
                         <!--<field name="user_id"/>-->
                         <field name="doctor"/>
                         <field name="patient"/>

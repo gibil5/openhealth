@@ -18,7 +18,7 @@
 				
 				<notebook position="inside">
 					
-					<page string="Reserva de salas">
+					<page string="Salas">
 
 						<!--
 						<field name="reservation_ids"/>

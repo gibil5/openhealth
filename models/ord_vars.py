@@ -3,20 +3,46 @@
 
 
 
+
+
+_sale_doc_type_list = [
+
+				('receipt', 			'Recibo'),
+				('invoice', 			'Factura'),
+
+				('advertisement', 		'Canje publicidad'),
+				('sale_note', 			'Nota de venta'),
+
+				('ticket_receipt', 		'Ticket boleta'),
+				('ticket_invoice', 		'Ticket factura'),
+
+				#('', 			''),
+	]
+
+
+
+
+
+
 _x_state_list = [
-        			('draft', 			'Presupuesto'),
+				('draft', 			'Presupuesto'),
 
 
-        			('payment', 		'Pagado'),
 
-        			('proof', 			'Comprobante'),
+				('payment', 		'Pagado'),
 
-        			('machine', 		'Sala Reservada'),
-        			
-        			('sale', 			'Venta'),
+				('proof', 		      'Comprobante'),
 
 
-        			('invoice', 		'Facturado'),
+
+				('machine', 		'Reservación de Sala'),
+
+
+
+				
+				('sale', 			'Venta'),
+
+				('invoice', 		'Facturado'),
 	]
 
 
@@ -24,31 +50,31 @@ _x_state_list = [
 
 _state_list = [
 
-        			#('pre-draft', 'Pre-Quotation'),
+				#('pre-draft', 'Pre-Quotation'),
 
-        			#('draft', 'Quotation'),
-        			#('sent', 'Quotation Sent'),
-        			#('sale', 'Sale Order'),
-        			#('done', 'Done'),
-        			#('cancel', 'Cancelled'),
+				#('draft', 'Quotation'),
+				#('sent', 'Quotation Sent'),
+				#('sale', 'Sale Order'),
+				#('done', 'Done'),
+				#('cancel', 'Cancelled'),
 					#('pre-draft', 	'Presupuesto consulta'),
 
 
-        			#('draft', 			'Presupuesto'),
-        			#('payment', 		'Pagado'),
-        			#('proof', 			'Comprobante'),
-        			#('machine', 		'Reserva de sala'),
-        			#('sale', 			'Confirmado'),
-        			#('invoice', 		'Facturado'),
+				#('draft', 			'Presupuesto'),
+				#('payment', 		'Pagado'),
+				#('proof', 			'Comprobante'),
+				#('machine', 		'Reserva de sala'),
+				#('sale', 			'Confirmado'),
+				#('invoice', 		'Facturado'),
 
 
 
-        			('draft', 		'Presupuesto'),
-        			#('sent', 		'Presupuesto enviado'),
-        			('sale', 		'Facturado'),
-        			('done', 		'Completo'),
-        			('cancel', 	'Cancelado'),
-        		]
+				('draft', 		'Presupuesto'),
+				#('sent', 		'Presupuesto enviado'),
+				('sale', 		'Facturado'),
+				('done', 		'Completo'),
+				('cancel', 	'Cancelado'),
+			]
 
 
 

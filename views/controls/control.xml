@@ -18,6 +18,20 @@
 
 					<!-- Header --> 
 					<header>
+
+
+						<!-- Treatment --> 
+						<button 
+								name="open_treatment"
+								type="object" 
+								class="oe_highlight"
+
+								string="INICIO"
+						/>
+
+
+
+
 <!--
 						<button 
 							type="object" 
@@ -113,8 +127,10 @@
 								<field name="product"/>							
 							</group>
 							<group>
-
+<!--
 								<field name="observation"	required="1"/>
+-->
+								<field name="observation"	/>
 							</group>
 
 
@@ -219,14 +235,38 @@
 		
 		
 		
+
+
+
+		<!-- Window Form Action --> 
+		<record model="ir.actions.act_window" id="control_form_action">
+			<field name="name">Controles</field>
+			<field name="res_model">openhealth.control</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+			<!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first control
+				</p>
+			</field>
+			-->
+		</record>		
 		
+
 		<!-- Filter --> 
         <record id="view_medical_control_filter" model="ir.ui.view">
            <field name="name">Control Search</field>
            <field name="model">openhealth.control</field>		   
            <field name="arch" type="xml">
                <search string="Controls">
+        
+                   <field name="treatment" />
                    <field name="procedure" />
+        
                </search>
            </field>
        </record>

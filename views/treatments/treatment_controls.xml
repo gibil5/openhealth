@@ -27,6 +27,19 @@
 
 							<tree string="Controles">
 
+
+								<!-- Button -->
+								<button 
+									type="object" 
+									class="oe_highlight"	
+									string="Editar"
+									
+									name="open_line_current" 
+								/>
+
+
+
+
 								<field name="name"/>
 
 								<field name="appointment"/>
@@ -54,16 +67,6 @@
 								<field name="treatment"/>
 								-->
 								
-								<!--
-									Button
-								-->
-								<button 
-									type="object" 
-									class="oe_highlight"	
-									string="E"
-									
-									name="open_line_current" 
-								/>
 								
 							</tree>
 						</field>

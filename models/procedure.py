@@ -40,6 +40,14 @@ class Procedure(models.Model):
 
 
 
+
+
+
+
+
+
+
+
 	# Machine 
 	machine = fields.Selection(
 			string="Sala", 
@@ -102,10 +110,11 @@ class Procedure(models.Model):
 	def _compute_number_controls(self):
 		for record in self:
 
-			if record.laser == 'laser_co2':
-				record.number_controls = 6
-			else: 
-				record.number_controls = 0
+			if record.laser != 'consultation':
+				if record.laser == 'laser_co2':
+					record.number_controls = 6
+				else: 
+					record.number_controls = 0
 
 
 

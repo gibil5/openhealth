@@ -266,23 +266,7 @@
 
 
 
-		<!-- Window Form Action --> 
-		<record model="ir.actions.act_window" id="session_form_action">
-			<field name="name">Sesiones</field>
-			<field name="res_model">openhealth.session</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-			
-			<!--
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first session
-				</p>
-			</field>
-			-->
-		</record>
+
 
 
 
@@ -316,23 +300,9 @@
 		</record>
 
 
-		<!-- Window Form Action --> 
-		<record model="ir.actions.act_window" id="control_form_action">
-			<field name="name">Controles</field>
-			<field name="res_model">openhealth.control</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-			
-			<!--
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first control
-				</p>
-			</field>
-			-->
-		</record>
+
+
+
 		
 
 
@@ -344,17 +314,6 @@
 
 
 
-		<!-- Window action -->
-		<record model="ir.actions.act_window" id="service_co2_list_action">
-			<field name="name">Servicios Co2 - 2</field>
-			<field name="res_model">openhealth.service.co2</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-			<field name="context">{
-									'default_laser': 'laser_co2',
-                    			}
-			</field>
-		</record>
 
 
 

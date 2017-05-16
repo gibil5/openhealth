@@ -32,7 +32,12 @@ class SaleProof(models.Model):
 
 
 	name = fields.Char(
+			#compute='_compute_name', 			
 		)
+	#def _compute_code(self):
+	#	for record in self:
+	#		record.name = record.id
+
 
 
 

@@ -348,7 +348,7 @@ class Appointment(models.Model):
 	x_create_procedure_automatic = fields.Boolean(
 			
 			#string="¿ Crear procedimiento de manera automática ?",
-			string="¿ Crear procedimiento ?",
+			string="¿ Crear Cita para el Procedimiento ?",
 
 			default=True, 
 			

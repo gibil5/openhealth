@@ -5,6 +5,10 @@
 
 
 _hash_tre_mac = {
+		
+		'consultation': 'consultation', 
+
+
 
 		'triactive_carboxytherapy': 					'laser_triactive',
 		'carboxytherapy': 								'carboxy_diamond', 

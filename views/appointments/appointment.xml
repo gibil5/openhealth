@@ -34,21 +34,27 @@
 				<xpath expr="//header" position="inside">
 				-->
 
+
+				<!-- Button - Mark as completed - Replace --> 
+				<xpath expr="//button[@name='set_to_completed']" position="replace">
+				</xpath>
+
+
+
 				<xpath expr="//field[@name='state']" position="before">
 
 
-<!-- Remove --> 
-
+					<!-- Remove --> 
+<!--
 					<div class="oe_left">
 							<button 
 								type="object" 
 								class="oe_highlight"
 								string="Remove" 
-
 								name="remove_appointment" 
 							/>
 					</div>
-
+-->
 				</xpath>
 
 
@@ -121,9 +127,13 @@
 							<field name="x_machine"			attrs="{
 																	'invisible':[('x_machine', '=', False),],
 															}"	/>
-					-->
+
 
 							<field name="x_target"			/>
+					-->
+
+
+							<field name="x_target"			invisible="1"	/>
 
 
 
@@ -329,15 +339,18 @@
 
 
 
-							<field name="treatment"		/>
 							<field name="cosmetology"		/>
--->
+
 
 
 							<field name="treatment"		attrs="{
 																	'invisible':[('x_target', '!=', 'doctor'),],
 																	'required':[('x_target', '=', 'doctor'),],
 														}"	/>
+-->
+
+
+							<field name="treatment"		invisible="1"/>
 
 
 
@@ -895,6 +908,7 @@
 		<!-- Filter --> 
 <!--
         <record id="view_appointment_filter" model="ir.ui.view">
+                   <field name="patient" />               
 -->
         <record id="oehealth.view_oeh_medical_appointment_filter" model="ir.ui.view">
 
@@ -903,7 +917,9 @@
 		   <field name="arch" type="xml">
 
                <search string="appointments">
-                   <field name="patient" />               
+
+                   <field name="doctor" />               
+
                </search>
            
            </field>

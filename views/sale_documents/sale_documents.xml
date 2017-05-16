@@ -48,40 +48,24 @@
 					-->
 					<header>
 						
+<!--						
 						<group		attrs="{'invisible':[('nr_proofs', '!=', 0	)]}"	>
-
+-->
 						
 
 						<button 
-								attrs="{'invisible':[('receipt', '!=', False)]}"
+								name="create_receipt" 
 
 								type="object" 
 							
 								class="oe_highlight"
 
+
 								string="Boleta" 
 
-								name="create_receipt" 
+
+								attrs="{'invisible':[('receipt', '!=', False)]}"
 						/>
-
-
-
-
-					<!--
-							attrs="{'invisible':[('x_sales_document', '!=', 'sale_note')]}"
-					-->
-					<button 
-							attrs="{'invisible':[('invoice', '!=', False)]}"
-
-							type="object" 
-
-							class="oe_highlight"
-
-							string="Canje (nv)" 
-
-							name="create_sale_note" 
-					/>
-
 
 
 
@@ -98,7 +82,50 @@
 								string="Factura" 
 
 								name="create_invoice" 
-						/>						
+						/>				
+
+
+
+
+						<!--
+								attrs="{'invisible':[('x_sales_document', '!=', 'advertisement')]}"
+						-->
+						<button 
+
+								type="object" 
+
+								class="oe_highlight"
+
+								string="Canje Publicidad" 
+
+								name="create_advertisement" 
+						/>
+
+
+
+
+
+					<!--
+							attrs="{'invisible':[('x_sales_document', '!=', 'sale_note')]}"
+					-->
+					<button 
+							name="create_sale_note" 
+
+							type="object" 
+
+							class="oe_highlight"
+
+
+							string="Canje (NV)" 
+
+
+							attrs="{'invisible':[('invoice', '!=', False)]}"
+					/>
+
+
+
+
+		
 
 
 
@@ -112,26 +139,12 @@
 
 							class="oe_highlight"
 
-							string="Ticket boleta" 
+							string="Ticket Boleta" 
 
 							name="create_ticket_receipt" 
 					/>
 
 
-
-						<!--
-								attrs="{'invisible':[('x_sales_document', '!=', 'advertisement')]}"
-						-->
-						<button 
-
-								type="object" 
-
-								class="oe_highlight"
-
-								string="Canje publicidad" 
-
-								name="create_advertisement" 
-						/>
 
 
 
@@ -148,15 +161,16 @@
 
 							class="oe_highlight"	
 
-							string="Ticket factura" 
+							string="Ticket Factura" 
 
 							name="create_ticket_invoice" 
 					/>
 
 
 
-
+<!--
 					</group>
+-->
 					</header>
 
 
@@ -220,6 +234,16 @@
 
 							<group>
 							</group>
+
+
+
+							<group>
+								<field name="x_type"/>									
+								<field name="code"/>									
+							</group>
+							<group>
+							</group>
+
 						</group>
 
 

@@ -18,6 +18,8 @@ class Receipt(models.Model):
 
 
 
+
+
 	name = fields.Char(
 			string="Boleta #", 
 			required=True, 

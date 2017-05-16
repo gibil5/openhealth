@@ -19,11 +19,11 @@
 
 		Laser - EMR - Min - Ama - Docean\n
 
-		Last built: 	5 April 2017
+		Last built: 	16 May 2017
 
 		Created: 	 	7 Sep 2016
 
-		Active: 		7 months.
+		Active for: 		9 months.
 
 		---
 
@@ -72,9 +72,25 @@
 	'data': [
 
 
+
+
+
+		# ----------------------------------------------------------- Reporting ------------------------------------------------------
+		#'views/example_report.xml',
+		'views/order_report.xml',
+
+
+
+
+
+
+
 		# ----------------------------------------------------------- Security ------------------------------------------------------
 		'security/ir.model.access.csv',
 		'security/ir.rule.xml',
+
+
+
 
 		'data/base_data_users.xml',
 		'security/openhealth_security.xml',
@@ -93,18 +109,16 @@
 
 		# ----------------------------------------------------------- DATA ------------------------------------------------------
 		'data/base_data_physicians.xml',
-
-
 		'data/odoo_data_products.xml',
-
 		'data/odoo_data_services_co2.xml',
+		
+
 		'data/odoo_data_services_exc.xml',
 		'data/odoo_data_services_m22.xml',
 		'data/odoo_data_services_med.xml',
+
 		'data/odoo_data_services_cos.xml',
-
-
-
+		'data/odoo_data_services_consult.xml',
 
 
 
@@ -172,6 +186,14 @@
 
 		# Consultation
 		'views/consultations/consultation.xml',
+
+
+
+
+		# Recommendation
+		'views/recommendations/recommendation.xml',
+
+
 
 
 

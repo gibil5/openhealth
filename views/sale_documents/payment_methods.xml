@@ -45,20 +45,15 @@
 
 						<group>
 							<group>
-
+								<field name="name"   />													
 
 								<field name="vspace"   />													
 
-								<field name="name"   />													
-
-								<field name="method"   />													
-
+								<field name="balance"   />													
 							</group>
 
 
 							<group>
-
-
 								<field name="code" 		attrs="{'invisible':[
 																					('method', '!=', 'debit_visa'), 
 																					('method', '!=', 'debit_master'), 
@@ -74,8 +69,11 @@
 
 						<group>
 							<group>
+								<field name="method"   />													
+
+								<field name="vspace"   />													
+
 								<field name="subtotal"   />													
-								<field name="balance"   />													
 							</group>
 							<group>
 

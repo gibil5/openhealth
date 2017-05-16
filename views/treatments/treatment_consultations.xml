@@ -34,6 +34,17 @@
 	                                -->
 									<tree string="Consultas">										
 										
+
+										<!-- Hot Button -->
+										<button 
+											name="open_line_current" 
+											type="object" 
+											class="oe_highlight"
+												
+											string="Editar"
+										/>
+
+
 										<!--
 										<field string="Consulta #"  name="name"/>
 										<field string='Tipo' name="evaluation_type"/>		
@@ -41,29 +52,14 @@
 										<field string="Tratamiento" name="treatment"/>
 
 										-->
-
 										<field  name="name"/>
-
 										<field name="appointment"/>
-
-
-
 										<field string="Paciente" name="patient"/>
-
 										<field string="Médico" name="doctor"/>
-
 										<field name="chief_complaint"/>
-
 										<field name="evaluation_start_date"		string = "Fecha"/>
 											
 																				
-										<!-- Hot Button -->
-										<button 
-											type="object" 
-											class="oe_highlight"	
-											string="E"
-											name="open_line_current" 
-										/>
 										
 									</tree>
 								</field>

@@ -18,6 +18,18 @@
 					<header>
 
 
+						<!-- Treatment --> 
+						<button 
+								name="open_treatment"
+								type="object" 
+								class="oe_highlight"
+
+								string="INICIO"
+						/>
+
+
+
+
 						<!--
 						<button 
 							type="object" 
@@ -63,7 +75,7 @@
 						<button 
 							type="object" 
 							class="oe_highlight"
-							string="Controles"
+							string="Crear Controles"
 
 
 							attrs="{'invisible':[('laser', '!=', 'laser_co2')]}"
@@ -139,16 +151,22 @@
 								-->
 							
 
+
 								<!-- Nr Sessions --> 
-								<button type="action" class="oe_stat_button" 
-									name="%(session_form_action)d"	
+								<button type="action" class="oe_stat_button" icon="fa-list"
+
+									name="%(session_med_form_action)d"	
+
+									attrs="{ 'invisible':[	('nr_sessions','=',0), ]}"
+
 									context="{									
 											'search_default_procedure': active_id,
 											}" 											
-									icon="fa-list">
+									>
 									
 									<field string="Sesiones" name="nr_sessions" widget="statinfo"/>
 								</button>	
+
 
 
 
@@ -156,6 +174,7 @@
 								<button type="action" class="oe_stat_button" 	attrs="{'invisible':[('laser', '!=', 'laser_co2')]}"
 
 									name="%(control_form_action)d"	
+
 									context="{									
 											'search_default_procedure': active_id,
 											}" 											

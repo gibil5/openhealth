@@ -6,12 +6,84 @@
 
 from openerp import models, fields, api
 
+import ord_vars
+
+
 
 class SaleDocument(models.Model):
 	
 	_name = 'openhealth.sale_document'
 
 	#_inherit='sale.order'
+
+
+
+	code = fields.Char(
+			compute='_compute_code', 
+		)
+
+	#@api.depends()
+	@api.multi
+
+	def _compute_code(self):
+		for record in self:
+
+			if record.receipt != False :
+				record.code = record.receipt.name
+
+			elif record.invoice != False:
+				record.code = record.invoice.name
+
+			elif record.advertisement != False:
+				record.code = record.advertisement.name
+
+			elif record.sale_note != False:
+				record.code = record.sale_note.name
+
+			elif record.ticket_receipt != False:
+				record.code = record.ticket_receipt.name
+
+			elif record.ticket_invoice != False:
+				record.code = record.ticket_invoice.name
+
+
+
+
+	x_type = fields.Selection(
+
+			selection = ord_vars._sale_doc_type_list, 
+
+			compute='_compute_type', 
+		)
+
+	#@api.depends()
+	@api.multi
+
+	def _compute_type(self):
+		for record in self:
+
+			if record.receipt != False :
+				record.x_type = 'receipt'
+
+			elif record.invoice != False:
+				record.x_type = 'invoice'
+
+			elif record.advertisement != False:
+				record.x_type = 'advertisement'
+
+			elif record.sale_note != False:
+				record.x_type = 'sale_note'
+
+			elif record.ticket_receipt != False:
+				record.x_type = 'ticket_receipt'
+
+			elif record.ticket_invoice != False:
+				record.x_type = 'ticket_invoice'
+
+
+
+
+
 
 
 

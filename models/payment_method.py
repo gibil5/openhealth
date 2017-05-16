@@ -17,19 +17,33 @@ class payment_method(models.Model):
 
 
 
-	name = fields.Char(
-			#string="Medio de Pago", 
-			string="Pagos", 
-			required=True, 
-		)
-
-
 	order = fields.Many2one(
 			'sale.order',
 			string="Presupuesto",
 			ondelete='cascade', 
 			required=True, 
+			readonly=True, 
 		)
+
+
+
+	name = fields.Char(
+			#string="Medio de Pago", 
+			string="Pagos", 
+			required=True, 
+			readonly=True, 
+		)
+
+
+	method = fields.Selection(
+			string="Medio", 
+			selection = ord_vars._payment_method_list, 			
+			required=True, 
+		)
+
+
+
+
 
 
 
@@ -64,6 +78,7 @@ class payment_method(models.Model):
 			string = 'Saldo', 
 			required=True, 
 			#compute="_compute_balance",
+			readonly=True, 
 		)
 
 	#@api.multi
@@ -83,11 +98,6 @@ class payment_method(models.Model):
 
 
 
-	method = fields.Selection(
-			string="Medio", 
-			selection = ord_vars._payment_method_list, 			
-			required=True, 
-		)
 
 	code = fields.Char(
 			string="Codigo", 

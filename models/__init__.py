@@ -40,6 +40,11 @@ from . import physician
 from . import consultation
 from . import consultation_cos
 
+
+from . import recommendation
+
+
+
 from . import procedure
 from . import procedure_cos
 

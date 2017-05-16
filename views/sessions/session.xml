@@ -19,6 +19,18 @@
 
 					<!-- Header --> 
 					<header>
+
+
+						<!-- Treatment --> 
+						<button 
+								name="open_treatment"
+								type="object" 
+								class="oe_highlight"
+
+								string="INICIO"
+						/>
+
+
 <!--
 						<button 
 							type="object" 
@@ -229,7 +241,29 @@
 		
 		
 		
+
+
 		
+		<!-- Window Form Action --> 
+		<record model="ir.actions.act_window" id="session_form_action">
+			<field name="name">Sesiones</field>
+			<field name="res_model">openhealth.session</field>
+			<field name="view_type">form</field>
+
+			<field name="view_mode">tree,form</field>
+			
+			<!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first session
+				</p>
+			</field>
+			-->
+		</record>		
+
+
 
 		<!-- Filter --> 
         <record id="view_medical_session_filter" model="ir.ui.view">
@@ -237,7 +271,10 @@
            <field name="model">openhealth.session</field>		   
            <field name="arch" type="xml">
                <search string="sessions">
+
+                   <field name="treatment" />
                    <field name="procedure" />
+               
                </search>
            </field>
        </record>

@@ -377,9 +377,16 @@ jz
 
 									name="%(order_form_action)d"	
 									
+
+
 									context="{									
-											'search_default_treatment': active_id,
-											}" 											
+												'search_default_partner_id': partner_id, 
+												'search_default_x_doctor': physician, 
+												'default_partner_id': partner_id, 
+											}" 	
+
+
+									
 									icon="fa-list"
 
 
@@ -391,7 +398,7 @@ jz
 									>
 
 
-									<field string="Presupuesto - C" name="nr_budgets_cons" widget="statinfo"/>
+									<field string="Presu - Con" name="nr_budgets_cons" widget="statinfo"/>
 								</button>
 
 
@@ -407,14 +414,16 @@ jz
 								<button type="action" class="oe_stat_button" 
 
 									name="%(order_form_action)d"	
+
 									
 
 									context="{									
 												'search_default_partner_id': partner_id, 
 												'search_default_x_doctor': physician, 
-
 												'default_partner_id': partner_id, 
 											}" 	
+
+
 
 
 									icon="fa-list"
@@ -427,7 +436,7 @@ jz
 
 
 
-									<field string="Facturado - C" name="nr_invoices_cons" widget="statinfo"/>
+									<field string="Factu - Con" name="nr_invoices_cons" widget="statinfo"/>
 								</button>
 
 
@@ -571,9 +580,19 @@ jz
 								<!-- Budgets -->
 								<button type="action" class="oe_stat_button" 
 									name="%(order_form_action)d"	
+
+
+
+
 									context="{									
-											'search_default_treatment': active_id,
-											}" 											
+												'search_default_partner_id': partner_id, 
+												'search_default_x_doctor': physician, 
+												'default_partner_id': partner_id, 
+											}" 	
+
+
+									
+
 									icon="fa-list"
 
 
@@ -582,7 +601,7 @@ jz
 
 									>
 
-									<field string="Presupuesto - P" name="nr_budgets_pro" widget="statinfo"/>
+									<field string="Presu - Pro" name="nr_budgets_pro" widget="statinfo"/>
 								</button>
 
 
@@ -613,7 +632,9 @@ jz
 
 									>
 
-									<field string="Facturado - P" name="nr_invoices_pro" widget="statinfo"/>
+									
+									<field string="Factu - Pro" name="nr_invoices_pro" widget="statinfo"/>
+
 								</button>
 
 

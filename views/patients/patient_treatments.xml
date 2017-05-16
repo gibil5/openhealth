@@ -48,6 +48,15 @@
 
 								<field name="nr_evaluations"/>
 								-->
+
+								<button 
+									type="object" 
+									class="oe_highlight"	
+									string="E"
+									name="open_line_current" 
+								/>
+
+
 								
 								<field string="Tratamiento #"  name="name"/>
 								<field name="patient"/>
@@ -65,12 +74,8 @@
 								<field name="progress"		/>
 -->
 								<field name="progress"		widget="progressbar"/>
-								<button 
-									type="object" 
-									class="oe_highlight"	
-									string="E"
-									name="open_line_current" 
-								/>
+
+
 								
 							</tree>
 						</field>

@@ -233,6 +233,15 @@ o = self.env['sale.order'].search([('name', 'like', '119')])
 
 
 
+o = self.env['sale.order'].search([('name', 'like', '182')])
+
+
+
+
+
+
+
+
 
 o.order_line.create({ 'product_id': 4043, 'order_id': 89, 'name': 'hya_1hr_ref_one_nor' })
 

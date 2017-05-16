@@ -37,18 +37,21 @@
 <!--
 							attrs="{		'invisible':[('x_family', '!=', 'procedure' ),],
 									}"							
-
-
 							statusbar_visible="draft, payment, proof, machine, sale, invoice"
-
-							statusbar_visible="draft, payment, proof, sale, invoice"
+							statusbar_visible="draft, payment, proof, sale, invoice, done"
 -->	
+
+
+
 				<xpath expr="//field[@name='state']" position="replace">
 					<field 	name="state" 
 							widget="statusbar" 
-							statusbar_visible="draft, payment, proof, sale, invoice, done"
+							
+							statusbar_visible="draft, payment, proof, sale, invoice"
 					/>
 				</xpath>
+
+
 
 
 
@@ -85,9 +88,9 @@
 
 				<!-- Action Done --> 
 				<!--
+				-->
 				<xpath expr="//button[@name='action_done']" position="replace">
 				</xpath>
-				-->
 
 
 
@@ -127,19 +130,21 @@
 
 
 <!--
+-->
 				<xpath expr="//field[@name='validity_date']" position="before">
+					<field name="x_amount_total" />
 					<field name="pm_total" />
 					<field name="pm_complete" />
 					<field name="vspace" />
 				</xpath>
--->
 
 
 
-
+<!--
 				<xpath expr="//field[@name='amount_total']" position="replace">
 					<field name="x_amount_total" />
 				</xpath>
+-->
 
 				<!--
 				<xpath expr="//field[@name='amount_total']" position="replace">
@@ -463,17 +468,16 @@
 					<!-- Create Invoice --> 
 <!--
 
--->
 					<button 
 							type="object"
 							class="oe_highlight"
 							string="Crear Factura"
 						
-
 							states="sale"		
 
 							name="x_create_invoice" 	
 					/>
+-->
 
 				</xpath>
 
@@ -788,6 +792,7 @@ Order Line - Tree
 
 <!--					
 					<field name="x_state"		string="x Estado"/>
+
 					<field name="state"		string="Estado"/>
 -->
 

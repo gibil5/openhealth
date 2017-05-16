@@ -167,19 +167,29 @@ class sale_order(models.Model):
 
 	def _compute_pm_complete(self):
 
+		print 'Compute Pm Complete'
+
 		for record in self:
 			
-			if (record.pm_total != record.x_amount_total)		or 	 (record.nr_saledocs == 0) : 
-				record.pm_complete = False
+			#if (record.pm_total != record.x_amount_total)		or 	 (record.nr_saledocs == 0) : 
+			#if record.pm_total != record.x_amount_total: 
+			#	record.pm_complete = False
+			#else:
+			#	record.pm_complete = True
 
-			else:
+
+			if record.pm_total == record.x_amount_total: 
+				print 'Equal !'
 				record.pm_complete = True
+				record.state = 'payment'
+			else:
+				print 'Not Equal'
 
 
-
-
-
-
+			print record.pm_total
+			print record.x_amount_total
+			print record.pm_complete
+			print record.state
 
 
 
@@ -308,51 +318,44 @@ class sale_order(models.Model):
 
 
 
+
 #jz
-	#pre_state = fields.Char(
-			#default=''
-	#	)
-
-
 	# state 
 	state = fields.Selection(
 
 			#selection = ord_vars._state_list, 
 			selection = ord_vars._x_state_list, 
 
-			string='Estado',			
+			string='Estado',	
+
 			readonly=False,
+
 			default='draft',
 
 
 			#copy=False, 
 			#index=True, 
 			#track_visibility='onchange', 
-			#store=True
-			
-			compute="_compute_state",
+			#compute="_compute_state",
 			)
 
 
 
-	@api.multi
+	#@api.multi
 	#@api.depends('state')
 
-	def _compute_state(self):
-		for record in self:
+	#def _compute_state(self):
+	#	for record in self:
+
+	#		record.state = 'draft'
+
+	#		if	record.env['openhealth.payment_method'].search_count([('order','=', record.id),]):	
+	#			if record.x_amount_total == record.pm_total:			
+	#				record.state = 'payment'
 
 
-			record.state = 'draft'
-
-
-			if	record.env['openhealth.payment_method'].search_count([('order','=', record.id),]):	
-				if record.x_amount_total == record.pm_total:			
-					record.state = 'payment'
-
-
-			if	record.env['openhealth.sale_document'].search_count([('order','=', record.id),]):
-				record.state = 'proof'
-
+	#		if	record.env['openhealth.sale_document'].search_count([('order','=', record.id),]):
+	#			record.state = 'proof'
 
 
 
@@ -363,22 +366,10 @@ class sale_order(models.Model):
 
 
 
+	#		if record.x_confirmed != False:
+	#			record.state = 'sale'
 
-			if record.x_confirmed != False:
-				record.state = 'sale'
-
-
-
-
-			#	record.x_machine = 'consultation'
-
-
-
-
-
-			#if record.pre_state == 'draft':
-			#	record.state = 'draft'
-			#	record.prestate = ''
+	# _compute_state
 
 
 
@@ -408,6 +399,8 @@ class sale_order(models.Model):
 
 
 
+
+
 	# Payment Method 
 	x_payment_method = fields.One2many(
 			'openhealth.payment_method',
@@ -417,16 +410,28 @@ class sale_order(models.Model):
 		)
 
 
-	#@api.onchange('x_payment_method')
-	#def _onchange_x_payment_method(self):
-	#	print 
-	#	print 
-	#	print 'On change - Payment Method'
-	#	if self.pm_total != self.x_amount_total:
-	#		self.state = 'draft'
-	#	print self.x_payment_method	
-	#	print 
-	#	print 
+	@api.onchange('x_payment_method')
+	
+	def _onchange_x_payment_method(self):
+
+		print 
+		print 
+		print 'On change - Payment Method'
+		print self.x_payment_method	
+
+
+		#if self.pm_total != self.x_amount_total:
+		#	self.state = 'draft'
+
+		total = 0.0
+		for pm in self.x_payment_method:
+
+			total = total + pm.subtotal
+
+		self.pm_total = total
+
+		print 
+		print 
 
 
 
@@ -435,9 +440,39 @@ class sale_order(models.Model):
 	# Total of Payments
 	pm_total = fields.Float(
 								#string="Total",
-								compute="_compute_pm_total",
+								#compute="_compute_pm_total",
 	)
 	
+
+
+	@api.onchange('pm_total')
+
+	def _onchange_pm_total(self):
+
+		print 
+		print 
+		print 'On change - Pm Total'
+
+		print self.pm_total
+		print self.x_amount_total
+		print self.state
+
+
+		#if self.pm_total != self.x_amount_total:
+		#	self.state = 'draft'
+
+		if self.pm_total == self.x_amount_total:
+			self.state = 'payment'
+
+
+		print self.state	
+		print 
+		print 
+
+
+
+
+
 	@api.multi
 	#@api.depends('x_payment_method')
 
@@ -451,15 +486,20 @@ class sale_order(models.Model):
 		for record in self:
 
 			total = 0.0
-
 			for pm in record.x_payment_method:
 				total = total + pm.subtotal
 
 			record.pm_total = total
 
 
-			#if record.pm_total == record.x_amount_total:
-			#	record.state = 'payment'
+			print record.pm_total
+			print record.x_amount_total
+
+
+			if record.pm_total == record.x_amount_total:
+				record.state = 'payment'
+
+			print record.state
 			#else:
 			#	record.state = 'draft'
 			#self.state = 'payment'
@@ -704,8 +744,11 @@ class sale_order(models.Model):
 	def _compute_x_amount_total(self):
 		for record in self:
 			sub = 0.0
+
 			for line in record.order_line:
+
 				sub = sub + line.price_subtotal 
+			
 			record.x_amount_total = sub
 
 
@@ -924,10 +967,11 @@ class sale_order(models.Model):
 
 
 		# State - Change
-		#print 'State changes'
-		#self.state = 'payment'
-		#print self.state
-		#print 
+		print 'State changes'
+		self.state = 'payment'
+		print self.state
+		print 
+
 
 
 
@@ -1003,6 +1047,7 @@ class sale_order(models.Model):
 		self.state = 'proof'
 		print self.state
 		print 
+
 
 
 
@@ -2021,17 +2066,19 @@ class sale_order(models.Model):
 
 		#if self.x_doctor.name != False   and   self.x_machine == False:
 		if self.x_doctor.name != False   and   self.x_machine == False	 and 	self.x_machine_req != 'consultation':
+			
 			print 'Warning: Sala no Reservada !'
 
 
 		else:
+			print 'Success !!!'
 
 			#self.x_state = 'sale'
+			#self.x_confirmed = True 
 
-			self.x_confirmed = True 
 
 
-			print 'Success !!!'
+			# State is changed here ! 
 			res = super(sale_order, self).action_confirm()
 
 		#else: 
@@ -2046,95 +2093,9 @@ class sale_order(models.Model):
 	
 
 
-# ----------------------------------------------------------- CRUD ------------------------------------------------------
 
 
 
-# Create 
-	@api.model
-	def create(self,vals):
-		print 
-		print 'Order - Create - Override'
-		print 
-		print vals
-		print 
-	
-		#Write your logic here
-		res = super(sale_order, self).create(vals)
-		#Write your logic here
-		return res
-
-
-
-
-
-# Write 
-	@api.multi
-	def write(self,vals):
-
-		print 
-		print 'Order - Write - Override'
-		#print 
-		#print vals
-		#print 
-		#print 
-
-
-
-
-		#if 'x_machine' in vals:
-		#	x_machine = vals['x_machine']
-		#	print x_machine
-		#else:
-		#	print 'Error !'
-		#	return {
-		#				'warning': {
-		#							'title': "Error: Sala no Reservada !",
-		#							'message': 'jx',
-												#'Cita ya existente, con el ' + doctor_name + ": " + start + ' - ' + end + '.',
-		#						}}
-
-
-		#ok = True 
-		#if 'x_appointment' in vals:
-		#	x_appointment_id = vals['x_appointment']
-		#	print x_appointment_id
-		#	x_appointment = self.env['oeh.medical.appointment'].search([
-		#															('id', '=', x_appointment_id), 
-		#														])
-		#	print x_appointment
-		#	if x_appointment.x_machine == False:
-		#		ok = False 
-				#ok = True
-		#	else:
-		#		x_appointment.state = 'Scheduled'
-				# Success !!!  
-		#		ok = True
-		#print 
-
-		#res = 0
-		#if ok:
-		#	res = super(sale_order, self).write(vals)
-		#else:
-		#	res = -1
-		
-
-
-
-		# Confirm 
-		if self.x_appointment.x_machine != False: 
-			self.x_appointment.state = 'Scheduled'
-
-
-
-		res = super(sale_order, self).write(vals)
-		#Write your logic here
-		print 
-		print 
-
-		return res
-
-	# CRUD 
 
 
 

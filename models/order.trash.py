@@ -539,6 +539,96 @@ class Order(models.Model):
 
 
 
+# 16 May 
+
+# ----------------------------------------------------------- CRUD ------------------------------------------------------
+
+
+# Create - Deprecated ? 
+	@api.model
+	def create(self,vals):
+		print 
+		print 'Order - Create - Override'
+		print 
+		print vals
+		print 
+	
+	
+		#Write your logic here
+		res = super(sale_order, self).create(vals)
+		#Write your logic here
+		return res
+
+
+
+
+# Write - Deprecated ?
+	@api.multi
+	def write(self,vals):
+
+		print 
+		print 'Order - Write - Override'
+		#print 
+		#print vals
+		#print 
+		#print 
+
+
+
+
+		#if 'x_machine' in vals:
+		#	x_machine = vals['x_machine']
+		#	print x_machine
+		#else:
+		#	print 'Error !'
+		#	return {
+		#				'warning': {
+		#							'title': "Error: Sala no Reservada !",
+		#							'message': 'jx',
+												#'Cita ya existente, con el ' + doctor_name + ": " + start + ' - ' + end + '.',
+		#						}}
+
+
+		#ok = True 
+		#if 'x_appointment' in vals:
+		#	x_appointment_id = vals['x_appointment']
+		#	print x_appointment_id
+		#	x_appointment = self.env['oeh.medical.appointment'].search([
+		#															('id', '=', x_appointment_id), 
+		#														])
+		#	print x_appointment
+		#	if x_appointment.x_machine == False:
+		#		ok = False 
+				#ok = True
+		#	else:
+		#		x_appointment.state = 'Scheduled'
+				# Success !!!  
+		#		ok = True
+		#print 
+
+		#res = 0
+		#if ok:
+		#	res = super(sale_order, self).write(vals)
+		#else:
+		#	res = -1
+		
+
+
+
+		# Confirm 
+		if self.x_appointment.x_machine != False: 
+			self.x_appointment.state = 'Scheduled'
+
+		res = super(sale_order, self).write(vals)
+		#Write your logic here
+		print 
+		print 
+
+		return res
+
+	# CRUD 
+
+
 
 
 

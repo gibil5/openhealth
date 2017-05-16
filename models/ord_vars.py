@@ -45,6 +45,7 @@ _x_state_list = [
 
 
 
+
 				('done', 		'Completo'),
 				('cancel', 		'Cancelado'),
 	]
@@ -59,8 +60,10 @@ _state_list = [
 				#('sale', 'Sale Order'),
 				#('done', 'Done'),
 				#('cancel', 'Cancelled'),
-					#('pre-draft', 	'Presupuesto consulta'),
 
+
+
+				#('pre-draft', 	'Presupuesto consulta'),
 
 				#('draft', 			'Presupuesto'),
 				#('payment', 		'Pagado'),
@@ -75,7 +78,7 @@ _state_list = [
 				#('sent', 		'Presupuesto enviado'),
 				('sale', 		'Facturado'),
 				('done', 		'Completo'),
-				('cancel', 	'Cancelado'),
+				('cancel', 		'Cancelado'),
 			]
 
 

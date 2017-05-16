@@ -71,6 +71,9 @@
 	# always loaded
 	'data': [
 
+		'views/actions.xml',
+
+
 
 
 

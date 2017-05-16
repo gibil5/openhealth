@@ -92,6 +92,10 @@
 					<field name="type"/>
 					<field name="qty_available"/>
 
+					<field name="state"/>				
+
+
+
 
 <!-- Must be present --> 
 					<field name="uom_id"/>

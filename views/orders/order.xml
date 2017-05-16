@@ -1017,6 +1017,7 @@ Order Line - Tree
 
 
 
+		<!-- Budgets --> 
 		<record model="ir.actions.act_window" id="budget_list_action">
 			
 			<field name="name">Presupuestos</field>
@@ -1026,12 +1027,9 @@ Order Line - Tree
 			<field name="view_mode">tree,form</field>
 
             <field name="domain">[
-
 									('state', '=', 'draft'),
-
-            	]
+            					]
             </field>
-
 
 			<!--
             <field name="domain">[]</field>

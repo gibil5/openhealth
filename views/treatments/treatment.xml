@@ -372,16 +372,17 @@ jz
 
 
 
-								<!-- Budgets -->
+								<!-- Budgets - Con -->
 								<button type="action" class="oe_stat_button" 
 
-									name="%(order_form_action)d"	
+									name="%(budget_list_action)d"	
 									
 
 
 									context="{									
 												'search_default_partner_id': partner_id, 
 												'search_default_x_doctor': physician, 
+												
 												'default_partner_id': partner_id, 
 											}" 	
 
@@ -403,7 +404,8 @@ jz
 
 
 
-								<!-- Invoices -->
+
+								<!-- Invoices - Con -->
 <!--
 															('nr_invoices_cons','=','0'), 	
 
@@ -413,7 +415,7 @@ jz
 -->
 								<button type="action" class="oe_stat_button" 
 
-									name="%(order_form_action)d"	
+									name="%(sale_list_action)d"	
 
 									
 

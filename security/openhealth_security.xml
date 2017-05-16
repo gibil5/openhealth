@@ -16,6 +16,8 @@
 
 
 
+
+
 <!-- Groups --> 
 
 		<!-- Admins --> 
@@ -23,10 +25,6 @@
 			<field name="name">Admins</field>
 			<field name="category_id" ref="module_openhealth_category"/>
 		</record>
-
-
-
-
 
 
 

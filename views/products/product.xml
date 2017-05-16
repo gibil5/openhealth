@@ -93,7 +93,7 @@
 
 
 
-					<field name="uom_id">
+					<field name="uom_id"/>
 
 
 

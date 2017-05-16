@@ -41,16 +41,18 @@ _x_state_list = [
 
 				
 				('sale', 			'Venta'),
-
 				('invoice', 		'Facturado'),
+
+
+
+				('done', 		'Completo'),
+				('cancel', 		'Cancelado'),
 	]
 
 
 
 
 _state_list = [
-
-				#('pre-draft', 'Pre-Quotation'),
 
 				#('draft', 'Quotation'),
 				#('sent', 'Quotation Sent'),

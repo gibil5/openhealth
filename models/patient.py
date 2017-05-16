@@ -259,7 +259,8 @@ class Patient(models.Model):
 	street2_sel = fields.Selection(
 			selection = pat_vars._street2_list, 
 			string = "Distrito", 	
-			#required=True, 
+			
+			required=True, 
 		)
 
 
@@ -319,7 +320,9 @@ class Patient(models.Model):
 	x_date_created = fields.Date(
 			string = "Fecha de apertura",
 			default = fields.Date.today, 
-			#readonly = True, 
+
+			readonly = True, 
+			
 			required=True, 
 			)
 

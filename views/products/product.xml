@@ -88,13 +88,12 @@
 
 					<field name="x_date_created"/>
 					<field name="id"/>
-
-
-
 					<field name="type"/>
-
 					<field name="qty_available"/>
 
+
+
+					<field name="uom_id">
 
 
 

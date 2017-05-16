@@ -180,7 +180,7 @@
 
 
 		# Procedures
-		#'views/procedures/procedure.xml',
+		'views/procedures/procedure.xml',
 
 
 

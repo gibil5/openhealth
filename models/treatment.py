@@ -48,11 +48,7 @@ class Treatment(models.Model):
 		print 
 		print 'Open Myself'
 
-
-		#treatment = self.env['openhealth.treatment'].search([('id','=', self.treatment.id)]) 
 		treatment_id = self.id  
-
-
 
 		return {
 
@@ -79,13 +75,13 @@ class Treatment(models.Model):
 			'flags': {
 					'form': {'action_buttons': True, }
 					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-					},			
-
+			},			
 
 			'context':   {
-					}
+
+			}
 		}
-	# x_open_treatment
+	# open_myself
 
 
 

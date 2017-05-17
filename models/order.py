@@ -38,8 +38,6 @@ class sale_order(models.Model):
 
 
 
-
-
 	# Open Treatment
 	@api.multi 
 	def open_treatment(self):
@@ -52,6 +50,54 @@ class sale_order(models.Model):
 
 		return ret 
 	# open_treatment
+
+
+
+
+
+	# Open Myself
+	@api.multi 
+	def open_myself(self):
+
+		print 
+		print 'Open Myself'
+
+		order_id = self.id  
+
+		return {
+
+			# Mandatory 
+			'type': 'ir.actions.act_window',
+			'name': 'Open Order Current',
+
+
+			# Window action 
+			'res_model': 'sale.order',
+			'res_id': order_id,
+
+
+			# Views 
+			"views": [[False, "form"]],
+			'view_mode': 'form',
+			'target': 'current',
+
+
+			#'view_id': view_id,
+			#"domain": [["patient", "=", self.patient.name]],
+			#'auto_search': False, 
+
+			'flags': {
+					'form': {'action_buttons': True, }
+					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+			},			
+
+			'context':   {
+
+			}
+		}
+	# open_myself
+
+
 
 
 
@@ -210,9 +256,10 @@ class sale_order(models.Model):
 		#self.x_sale_document = False
 		self.x_sale_document.unlink()
 
-		#self.x_appointment.x_machine = False
+
 		#self.x_appointment.unlink()
-		self.x_appointment = False
+		self.x_appointment.x_machine = False
+		#self.x_appointment = False
 
 
 

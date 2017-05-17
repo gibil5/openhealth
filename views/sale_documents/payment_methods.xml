@@ -26,8 +26,26 @@
 
 
 
+
+
 					<!-- Header --> 
 					<header>
+
+
+
+<!--
+						states="sale"						
+-->
+
+						<!-- Order --> 
+						<button 
+								name="open_order"
+								type="object" 
+								class="oe_highlight"
+
+								string="REGRESAR"
+						/>
+
 					</header>
 
 

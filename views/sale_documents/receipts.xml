@@ -20,8 +20,24 @@
 
 				<form string="Receipt - Form">
 
+
+
+
+
 					<!-- Header --> 
-					<header></header>
+					<header>
+						
+
+						<!-- Order --> 
+						<button 
+								name="open_order"
+								type="object" 
+								class="oe_highlight"
+
+								string="REGRESAR"
+						/>						
+
+					</header>
 
 
 

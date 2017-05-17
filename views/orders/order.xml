@@ -420,6 +420,7 @@
 
 																('state','!=','proof'), 
 
+																('x_machine','=',False), 
 									]}"
 
 					/>

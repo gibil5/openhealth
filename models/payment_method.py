@@ -17,6 +17,27 @@ class payment_method(models.Model):
 
 
 
+
+
+
+	# Open Order
+	@api.multi 
+	def open_order(self):
+
+		print 
+		print 'Open order'
+
+
+		ret = self.order.open_myself()
+
+		return ret 
+	# open_order
+
+
+
+
+
+
 	order = fields.Many2one(
 			'sale.order',
 			string="Presupuesto",

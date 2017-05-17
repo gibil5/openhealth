@@ -432,7 +432,7 @@ jz
 								>
 
 
-									<field string="Factu - Con" name="nr_invoices_cons" widget="statinfo"/>
+									<field string="Venta - Con" name="nr_invoices_cons" widget="statinfo"/>
 								</button>
 
 
@@ -582,6 +582,7 @@ jz
 										context="{									
 													'search_default_partner_id': partner_id, 
 													'search_default_x_doctor': physician, 
+
 													'search_default_x_family': 'procedure', 
 
 													'default_partner_id': partner_id, 
@@ -591,7 +592,7 @@ jz
 
 										attrs="{ 'invisible':[	('nr_budgets_pro','=',0), ]}"
 								>
-								
+
 
 									<field string="Presu - Pro" name="nr_budgets_pro" widget="statinfo"/>
 								</button>
@@ -623,7 +624,7 @@ jz
 									>
 
 									
-									<field string="Factu - Pro" name="nr_invoices_pro" widget="statinfo"/>
+									<field string="Venta - Pro" name="nr_invoices_pro" widget="statinfo"/>
 
 								</button>
 

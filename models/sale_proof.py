@@ -14,6 +14,25 @@ class SaleProof(models.Model):
 
 
 
+
+	# Open Order
+	@api.multi 
+	def open_order(self):
+
+		print 
+		print 'Open order'
+
+
+		ret = self.order.open_myself()
+
+		return ret 
+	# open_order
+
+
+
+
+
+
 	sale_document = fields.Many2one('openhealth.sale_document',
 			ondelete='cascade', 
 			string="Sale document",

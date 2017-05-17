@@ -257,9 +257,15 @@ class sale_order(models.Model):
 		self.x_sale_document.unlink()
 
 
+
+
 		#self.x_appointment.unlink()
-		self.x_appointment.x_machine = False
 		#self.x_appointment = False
+		#self.x_appointment.x_machine = False
+#jz
+		if self.x_appointment.x_machine != False:
+			self.x_appointment.x_machine = False
+
 
 
 
@@ -954,7 +960,7 @@ class sale_order(models.Model):
 
 
 # ---------------------------------------------- Create PM --------------------------------------------------------
-#jz 
+
 	@api.multi 
 	def create_payment_method(self):
 
@@ -2076,7 +2082,7 @@ class sale_order(models.Model):
 
 
 
-#jz
+
 	@api.multi 
 	def action_confirm(self):
 		print 
@@ -2137,7 +2143,7 @@ class sale_order(models.Model):
 
 
 # ----------------------------------------------------------- Buttons - Order  ------------------------------------------------------
-#jz
+
 	@api.multi
 	def remove_myself(self):  
 

@@ -1,4 +1,27 @@
 
+
+access_stock_picking_manager,stock.picking manager,model_stock_picking,openhealth.openhealth_caja,1,1,1,1
+
+
+access_stock_picking,stock.picking,model_stock_picking,openhealth.openhealth_caja,1,1,1,1
+
+
+
+access_sale_order,sale.order,model_sale_order,,1,1,1,1
+
+access_sale_order_line,sale.order_line,model_sale_order_line,,1,1,1,1
+
+
+
+
+
+
+
+
+
+
+
+
 access_openhealth_openhealth,openhealth.openhealth,model_openhealth_openhealth,,1,1,1,1
 
 access_openhealth_order,access_openhealth_order,model_openhealth_order,,1,1,1,1
@@ -13,16 +36,9 @@ access_openhealth_consultation,openhealth.consultation,model_openhealth_consulta
 
 access_openhealth_service_co2,openhealth.service_co2,model_openhealth_service_co2,,1,1,1,1
 
-
-
 access_oeh_medical_physician,oeh.medical.physician,model_oeh_medical_physician,group_oeh_medical_physician,1,1,1,1
 
 access_oeh_medical_physician,oeh.medical.physician,oehealth.model_oeh_medical_physician,oehealth.group_oeh_medical_physician,1,1,1,1
-
-
-
-
-
 
 access_oeh_medical_appointment,oeh.medical.appointment,model_oeh_medical_appointment,group_oeh_medical_physician,1,1,1,1
 

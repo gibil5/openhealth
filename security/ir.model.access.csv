@@ -1,10 +1,20 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
+
+access_sale_order_manager,sale.order.manager,model_sale_order,openhealth.openhealth_caja,1,1,1,1
+
+access_sale_order_line,sale.order.line,model_sale_order_line,openhealth.openhealth_caja,1,1,1,1
+
+
+access_stock_inventory_manager,stock.inventory manager,stock.model_stock_inventory,openhealth.openhealth_caja,1,1,1,1
+access_stock_picking_manager,stock.picking manager,stock.model_stock_picking,openhealth.openhealth_caja,1,1,1,1
+
+
+
+
+
 access_openhealth_process,access_openhealth_process,model_openhealth_process,,1,0,0,0
-
-
-
 
 access_openhealth_treatment,openhealth.treatment,model_openhealth_treatment,,1,1,1,1
 
@@ -47,9 +57,6 @@ access_openhealth_service_medical,openhealth.service_medical,model_openhealth_se
 
 
 
-access_sale_order,sale.order,model_sale_order,,1,1,1,1
-
-access_sale_order_line,sale.order_line,model_sale_order_line,,1,1,1,1
 
 
 

@@ -62,6 +62,7 @@
 					groups="openhealth.openhealth_caja"
 					/>
 
+
 		<menuitem 	id="sales_menu" 
 					name="Caja"
 					parent="main_sales_menu"/>

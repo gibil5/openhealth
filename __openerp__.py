@@ -62,6 +62,7 @@
 
 	# Very important !!!
 	# --------------
+	#'depends': ['base', 'oehealth'],
 	'depends': ['base', 'oehealth'],
 
 
@@ -91,6 +92,7 @@
 		# ----------------------------------------------------------- Security ------------------------------------------------------
 		'security/ir.model.access.csv',
 		'security/ir.rule.xml',
+
 
 
 

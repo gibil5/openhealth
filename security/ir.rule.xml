@@ -2,6 +2,7 @@
 <openerp>
     <data>
 
+
     	<!--
         <record id="oeh_medical_evaluation_admin" model="ir.rule">
             <field name="name">Access all the evaluations</field>
@@ -10,6 +11,50 @@
             <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_manager'))]"/>
         </record>
 		-->
+
+        <!--
+        <record id="oeh_medical_appointment_admin" model="ir.rule">
+            <field name="name">Access all the appointments</field>
+            <field name="model_id" ref="model_oeh_medical_appointment"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_manager'))]"/>
+        </record>
+        -->
+
+        <!--
+        <record id="oeh_medical_physician_physician_admin" model="ir.rule">
+            <field name="name">Patient and administrator can see all the physicians</field>
+            <field name="model_id" ref="model_oeh_medical_physician"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_patient')),(4, ref('oehealth.group_oeh_medical_manager'))]"/>
+        </record>
+        -->
+
+
+
+
+        <!--
+        <record id="sale.sale_order_see_all" model="ir.rule">
+            <field name="name">Remove all the Orders</field>
+            <field name="model_id" ref="model_sale_order"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('openhealth.openhealth_caja'))]"/>
+        </record>
+
+        <record id="openhealth_caja_admin" model="ir.rule">
+            <field name="name">Access all the Orders</field>
+            <field name="model_id" ref="model_sale_order"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('openhealth.openhealth_caja'))]"/>
+        </record>
+        -->
+
+
+
+
+
+
+
 
 
 
@@ -29,14 +74,6 @@
             <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_physician'))]"/>
         </record>
 
-        <!--
-        <record id="oeh_medical_physician_physician_admin" model="ir.rule">
-            <field name="name">Patient and administrator can see all the physicians</field>
-            <field name="model_id" ref="model_oeh_medical_physician"/>
-            <field name="domain_force">[(1, '=', 1)]</field>
-            <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_patient')),(4, ref('oehealth.group_oeh_medical_manager'))]"/>
-        </record>
-        -->
 
 
 
@@ -56,18 +93,6 @@
             <field name="domain_force">[(1, '=', 1)]</field>
             <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_physician'))]"/>
         </record>
-
-        <!--
-        <record id="oeh_medical_appointment_admin" model="ir.rule">
-            <field name="name">Access all the appointments</field>
-            <field name="model_id" ref="model_oeh_medical_appointment"/>
-            <field name="domain_force">[(1, '=', 1)]</field>
-            <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_manager'))]"/>
-        </record>
-        -->
-
-
-
 
 
     </data>

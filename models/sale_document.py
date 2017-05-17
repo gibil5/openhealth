@@ -19,6 +19,8 @@ class SaleDocument(models.Model):
 
 
 	code = fields.Char(
+			string='Código',
+
 			compute='_compute_code', 
 		)
 
@@ -53,6 +55,7 @@ class SaleDocument(models.Model):
 
 			selection = ord_vars._sale_doc_type_list, 
 
+			string='Tipo',
 			compute='_compute_type', 
 		)
 

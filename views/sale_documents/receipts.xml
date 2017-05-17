@@ -41,15 +41,22 @@
 
 
 
+
+
+
 					<!-- Sheet --> 
 					<sheet>
+
+<!--
 						<h1><field name="order" class="oe_inline"/></h1>
+						<h2>Boleta</h2>
+-->
+						<h1>Boleta de Pago</h1>
+						<h2></h2>
+
+
 
 						<field name="vspace" />
-
-						<h2>Boleta</h2>
-
-
 						
 						<field name="vspace"   />													
 
@@ -59,8 +66,13 @@
 								<field name="name"   />													
 							</group>
 
+
+
 							<group>
+								<field name="order"   />													
 							</group>
+
+
 						</group>
 
 						<group>

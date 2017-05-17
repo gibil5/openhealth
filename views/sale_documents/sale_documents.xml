@@ -183,11 +183,14 @@
 
 <!--
 						<field name="order"   />													
--->
 						<h1><field name="order" class="oe_inline"/></h1>
+-->
+
+						<h1>Comprobante de Pago</h1>
 
 
 
+<!--
 						<group>
 							<group>
 								<field name="name"   />													
@@ -197,11 +200,12 @@
 								<field name="nr_proofs"   />													
 							</group>
 						</group>
-
+-->
 
 
 						<group>
 							<group>
+								<field name="vspace"   />													
 								<field name="partner"   />													
 							</group>
 

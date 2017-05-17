@@ -41,9 +41,12 @@ class SaleProof(models.Model):
 
 	order = fields.Many2one(
 			'sale.order',
+
 			string="Presupuesto",
+			
 			ondelete='cascade', 
-			#required=True, 
+			
+			required=True, 
 		)
 
 

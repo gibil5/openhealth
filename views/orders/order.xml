@@ -529,23 +529,38 @@
 
 
 
+
+
 					<group>
+
+
 						<h3>
+<!--
 							<div attrs="{'invisible':[	('state', '!=', 'draft'), ]}">
 								Presupuesto
 							</div>
-						
 							<div attrs="{'invisible':[	('state', '!=', 'sale'), ]}">
 								Venta
 							</div>
+-->
+								Presupuesto
 						</h3>
+
+						<h4>
+							<field name="name" 	class=""/>								
+						</h4>
+
 					</group>
+
+
 
 
 
 					<group>
 						<group class="oe_left"  style="width: 600px;">
+<!--
 							<h4><field name="name" 	class=""/></h4>
+-->					
 						</group>
 
 						<group class="">

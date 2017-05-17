@@ -16,7 +16,7 @@
 		<!-- Main - EMR -->
 		<menuitem 	id="main_emr_menu" 
 					sequence="-10"
-					name="Historias Médicas"
+					name="Historias"
 					groups="openhealth.openhealth_physicians,openhealth.openhealth_reception"
 					/>
 

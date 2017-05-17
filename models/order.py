@@ -170,6 +170,7 @@ class sale_order(models.Model):
 		print 'Compute Pm Complete'
 
 		for record in self:
+
 			
 			#if (record.pm_total != record.x_amount_total)		or 	 (record.nr_saledocs == 0) : 
 			#if record.pm_total != record.x_amount_total: 
@@ -181,7 +182,7 @@ class sale_order(models.Model):
 			if record.pm_total == record.x_amount_total: 
 				print 'Equal !'
 				record.pm_complete = True
-				record.state = 'payment'
+				#record.state = 'payment'
 			else:
 				print 'Not Equal'
 
@@ -437,37 +438,28 @@ class sale_order(models.Model):
 
 
 
+
 	# Total of Payments
 	pm_total = fields.Float(
 								#string="Total",
-								#compute="_compute_pm_total",
+								compute="_compute_pm_total",
 	)
 	
 
 
-	@api.onchange('pm_total')
-
-	def _onchange_pm_total(self):
-
-		print 
-		print 
-		print 'On change - Pm Total'
-
-		print self.pm_total
-		print self.x_amount_total
-		print self.state
-
-
-		#if self.pm_total != self.x_amount_total:
-		#	self.state = 'draft'
-
-		if self.pm_total == self.x_amount_total:
-			self.state = 'payment'
-
-
-		print self.state	
-		print 
-		print 
+	#@api.onchange('pm_total')
+	#def _onchange_pm_total(self):
+	#	print 
+	#	print 
+	#	print 'On change - Pm Total'
+	#	print self.pm_total
+	#	print self.x_amount_total
+	#	print self.state
+	#	if self.pm_total == self.x_amount_total:
+	#		self.state = 'payment'
+	#	print self.state	
+	#	print 
+	#	print 
 
 
 
@@ -496,10 +488,9 @@ class sale_order(models.Model):
 			print record.x_amount_total
 
 
-			if record.pm_total == record.x_amount_total:
-				record.state = 'payment'
-
-			print record.state
+			#if record.pm_total == record.x_amount_total:
+			#	record.state = 'payment'
+			#print record.state
 			#else:
 			#	record.state = 'draft'
 			#self.state = 'payment'

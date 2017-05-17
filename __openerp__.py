@@ -112,15 +112,15 @@
 
 		# ----------------------------------------------------------- DATA ------------------------------------------------------
 		'data/base_data_physicians.xml',
-		'data/odoo_data_products.xml',
-		'data/odoo_data_services_co2.xml',
 		
-
+		'data/odoo_data_products.xml',
+		
+		'data/odoo_data_services_co2.xml',
 		'data/odoo_data_services_exc.xml',
 		'data/odoo_data_services_m22.xml',
 		'data/odoo_data_services_med.xml',
-
 		'data/odoo_data_services_cos.xml',
+		
 		'data/odoo_data_services_consult.xml',
 
 

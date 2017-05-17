@@ -359,7 +359,7 @@
 							type="object" 
 							class="oe_highlight"
 
-							string="Comprobante" 
+							string="Comprobante de pago" 
 
 
 							states="payment"						
@@ -400,6 +400,9 @@
 													]}"
 
 																('x_machine','!=',''), 
+
+
+																('x_machine','=',False), 
 -->
 
 					<button 
@@ -419,8 +422,6 @@
 																('x_family','!=','procedure'),
 
 																('state','!=','proof'), 
-
-																('x_machine','=',False), 
 									]}"
 
 					/>
@@ -454,7 +455,7 @@
 							type="object" 
 							class="oe_highlight"
 
-							string="Confirmar" 
+							string="Confirmar Venta" 
 
 
 							states="proof"

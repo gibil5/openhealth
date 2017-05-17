@@ -438,7 +438,6 @@ class sale_order(models.Model):
 
 
 
-
 	# Total of Payments
 	pm_total = fields.Float(
 								#string="Total",

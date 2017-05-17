@@ -373,29 +373,26 @@ jz
 
 
 								<!-- Budgets - Con -->
-								<button type="action" class="oe_stat_button" 
-
+<!--
 									name="%(budget_list_action)d"	
+-->								
+								<button type="action" class="oe_stat_button" icon="fa-list"
+
+										name="%(order_form_action)d"	
 									
 
 
-									context="{									
-												'search_default_partner_id': partner_id, 
-												'search_default_x_doctor': physician, 
+										context="{									
+													'search_default_partner_id': partner_id, 
+													'search_default_x_doctor': physician, 
 												
-												'default_partner_id': partner_id, 
-											}" 	
+													'search_default_x_family': 'consultation', 
+
+													'default_partner_id': partner_id, 
+												}" 	
 
 
-									
-									icon="fa-list"
-
-
-
-									attrs="{ 'invisible':[	('nr_budgets_cons','=',0), 	]}"
-
-
-
+										attrs="{ 'invisible':[	('nr_budgets_cons','=',0), 	]}"
 									>
 
 
@@ -407,35 +404,32 @@ jz
 
 								<!-- Invoices - Con -->
 <!--
+										name="%(sale_cons_list_action)d"	
 															('nr_invoices_cons','=','0'), 	
 
 												'search_default_treatment': active_id,
 
 												'search_default_x_family': 'consultation', 
 -->
-								<button type="action" class="oe_stat_button" 
+								<button type="action" class="oe_stat_button" icon="fa-list"
 
-									name="%(sale_list_action)d"	
+										name="%(order_form_action)d"	
 
 									
+										context="{									
+													'search_default_partner_id': partner_id, 
+													'search_default_x_doctor': physician, 
 
-									context="{									
-												'search_default_partner_id': partner_id, 
-												'search_default_x_doctor': physician, 
-												'default_partner_id': partner_id, 
-											}" 	
-
-
-
-
-									icon="fa-list"
-
-									attrs="{ 'invisible':[	
-															('nr_invoices_cons','in',[ False, 0, ]), 
-														]}"
-									>
+													'search_default_x_family': 'consultation', 
+	
+													'default_partner_id': partner_id, 
+												}" 	
 
 
+										attrs="{ 'invisible':[	
+																('nr_invoices_cons','in',[ False, 0, ]), 
+															]}"
+								>
 
 
 									<field string="Factu - Con" name="nr_invoices_cons" widget="statinfo"/>
@@ -580,28 +574,24 @@ jz
 
 
 								<!-- Budgets -->
-								<button type="action" class="oe_stat_button" 
-									name="%(order_form_action)d"	
+								<button type="action" class="oe_stat_button" icon="fa-list"
+
+										name="%(order_form_action)d"	
+
+
+										context="{									
+													'search_default_partner_id': partner_id, 
+													'search_default_x_doctor': physician, 
+													'search_default_x_family': 'procedure', 
+
+													'default_partner_id': partner_id, 
+												}" 	
 
 
 
-
-									context="{									
-												'search_default_partner_id': partner_id, 
-												'search_default_x_doctor': physician, 
-												'default_partner_id': partner_id, 
-											}" 	
-
-
-									
-
-									icon="fa-list"
-
-
-									attrs="{ 'invisible':[	('nr_budgets_pro','=',0), ]}"
-
-
-									>
+										attrs="{ 'invisible':[	('nr_budgets_pro','=',0), ]}"
+								>
+								
 
 									<field string="Presu - Pro" name="nr_budgets_pro" widget="statinfo"/>
 								</button>
@@ -613,12 +603,10 @@ jz
 								<!-- Invoices - Pro -->
 <!--
 -->
-								<button type="action" class="oe_stat_button" 
+								<button type="action" class="oe_stat_button" icon="fa-list"
 
 									name="%(order_form_action)d"	
 									
-									icon="fa-list"
-
 
 									attrs="{ 'invisible':[	('nr_invoices_pro','=',0), ]}"
 
@@ -628,10 +616,10 @@ jz
 												'search_default_partner_id': partner_id, 
 												'search_default_x_doctor': physician, 
 
+												'search_default_x_family': 'procedure', 
+
 												'default_partner_id': partner_id, 
 											}" 	
-
-
 									>
 
 									

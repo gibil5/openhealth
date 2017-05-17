@@ -46,7 +46,7 @@
 				<xpath expr="//field[@name='state']" position="replace">
 					<field 	name="state" 
 							widget="statusbar" 
-							
+
 							statusbar_visible="draft, payment, proof, sale, invoice"
 					/>
 				</xpath>
@@ -1059,29 +1059,25 @@ Order Line - Tree
 		</record>
 
 
-		<record model="ir.actions.act_window" id="sale_list_action">
 
+
+
+		<!-- Sales --> 
+		<record model="ir.actions.act_window" id="sale_list_action">
 			<field name="name">Ventas</field>
-			
 			<field name="res_model">sale.order</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 
-
            	<field name="domain">[
-
 									('state', '=', 'sale'),
-
-            	]
+            					]
             </field>
-
-
 
 			<!--
             <field name="domain">[]</field>
             <field name="context">{}</field>
             <field name="view_id" eval="False"/>
-			
 			<field name="help" type="html">
 				<p class="oe_view_nocontent_create">Create the first invoice
 				</p>
@@ -1090,7 +1086,34 @@ Order Line - Tree
 		</record>
 
 
+		<!-- Sales - Consultations --> 
+		<record model="ir.actions.act_window" id="sale_cons_list_action">
+			<field name="name">Ventas</field>
+			<field name="res_model">sale.order</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
 
+           	<field name="domain">[
+									('state', '=', 'sale'),
+									('x_family', '=', 'consultation'),
+            					]
+            </field>
+		</record>
+
+
+		<!-- Sales - Procedures --> 
+		<record model="ir.actions.act_window" id="sale_proc_list_action">
+			<field name="name">Ventas</field>
+			<field name="res_model">sale.order</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+
+           	<field name="domain">[
+									('state', '=', 'sale'),
+									('x_family', '=', 'procedure'),
+            					]
+            </field>
+		</record>
 		
 
 
@@ -1155,6 +1178,8 @@ Order Line - Tree
 
                    <field name="partner_id" />
                    <field name="x_doctor" />               
+
+                   <field name="x_family" />               
                
                </search>
            </field>

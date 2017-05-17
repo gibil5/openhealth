@@ -133,9 +133,11 @@
 -->
 				<xpath expr="//field[@name='validity_date']" position="before">
 					<field name="x_amount_total" />
+<!--
 					<field name="pm_total" />
 					<field name="pm_complete" />
 					<field name="vspace" />
+-->			
 				</xpath>
 
 

@@ -122,6 +122,8 @@ class sale_order(models.Model):
 	x_family = fields.Selection(
 			string = "Tipo", 	
 
+			default='product',
+			
 			selection = jxvars._family_list, 
 		)
 

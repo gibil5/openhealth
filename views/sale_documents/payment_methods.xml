@@ -160,6 +160,8 @@
 
 										<field name="method"	/>
 
+										<field name="code"	/>
+
 										<field name="subtotal"	/>
 
 									</tree>

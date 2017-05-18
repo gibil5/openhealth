@@ -42,16 +42,18 @@ class payment_method(models.Model):
 
 
 
-	subtotal = fields.Float(
-			string = 'Sub-total', 
-			required=True, 
-		)
+	# Consistency 
 
-	method = fields.Selection(
-			string="Medio", 
-			selection = ord_vars._payment_method_list, 			
-			required=True, 
-		)
+	#subtotal = fields.Float(
+	#		string = 'Sub-total', 
+	#		required=True, 
+	#	)
+
+	#method = fields.Selection(
+	#		string="Medio", 
+	#		selection = ord_vars._payment_method_list, 			
+	#		required=True, 
+	#	)
 
 
 

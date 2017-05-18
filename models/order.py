@@ -39,6 +39,9 @@ class sale_order(models.Model):
 
 
 
+
+	# Consistency 
+
 	#subtotal = fields.Float(
 	#		string = 'Sub-total', 
 			#required=True, 

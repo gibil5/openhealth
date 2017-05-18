@@ -38,6 +38,19 @@ class sale_order(models.Model):
 
 
 
+
+	# Payment Method 
+	x_payment_method = fields.Many2one(
+
+			'openhealth.payment_method',
+
+			string="Pagos", 
+		)
+
+
+
+
+
 	# Open Treatment
 	@api.multi 
 	def open_treatment(self):
@@ -203,42 +216,41 @@ class sale_order(models.Model):
 
 
 	# Number of paymethods  
-	pm_complete = fields.Boolean(
+	#pm_complete = fields.Boolean(
+	#							default = False, 
+	#							readonly=False,
 								#string="Pm Complete",
-								default = False, 
-								compute="_compute_pm_complete",
-	)
+								#compute="_compute_pm_complete",
+	#)
 	
-
-	@api.multi
+	#@api.multi
 	#@api.depends('pm_total')
 
-	def _compute_pm_complete(self):
-
-		print 'Compute Pm Complete'
-
-		for record in self:
-
-			
-			#if (record.pm_total != record.x_amount_total)		or 	 (record.nr_saledocs == 0) : 
-			#if record.pm_total != record.x_amount_total: 
-			#	record.pm_complete = False
-			#else:
-			#	record.pm_complete = True
-
-
-			if record.pm_total == record.x_amount_total: 
-				print 'Equal !'
-				record.pm_complete = True
+	#def _compute_pm_complete(self):
+	#	print 'Compute Pm Complete'
+	#	for record in self:
+	#		if record.pm_total == record.x_amount_total: 
+	#			print 'Equal !'
+	#			record.pm_complete = True
 				#record.state = 'payment'
-			else:
-				print 'Not Equal'
+	#		else:
+	#			print 'Not Equal'
+	#		print record.pm_total
+	#		print record.x_amount_total
+	#		print record.pm_complete
+	#		print record.state
 
 
-			print record.pm_total
-			print record.x_amount_total
-			print record.pm_complete
-			print record.state
+
+
+
+	# Payment Complete
+	x_payment_complete = fields.Boolean(
+								#default = False, 
+								#readonly=False,
+								#string="Pm Complete",
+	)
+
 
 
 
@@ -458,36 +470,33 @@ class sale_order(models.Model):
 
 
 	# Payment Method 
-	x_payment_method = fields.One2many(
-			'openhealth.payment_method',
-			'order',		
-			#string="Medios de pago", 
-			string="Pagos", 
-		)
+	#x_payment_method = fields.One2many(
+	#		'openhealth.payment_method',
+	#		'order',		
+	#		string="Pagos", 
+	#	)
+
+	#@api.onchange('x_payment_method')
+	#def _onchange_x_payment_method(self):
+	#	print 
+	#	print 
+	#	print 'On change - Payment Method'
+	#	print self.x_payment_method	
+	#	total = 0.0
+	#	for pm in self.x_payment_method:
+	#		total = total + pm.subtotal
+	#	self.pm_total = total
+	#	print 
+	#	print 
 
 
-	@api.onchange('x_payment_method')
-	
-	def _onchange_x_payment_method(self):
-
-		print 
-		print 
-		print 'On change - Payment Method'
-		print self.x_payment_method	
 
 
-		#if self.pm_total != self.x_amount_total:
-		#	self.state = 'draft'
 
-		total = 0.0
-		for pm in self.x_payment_method:
 
-			total = total + pm.subtotal
 
-		self.pm_total = total
 
-		print 
-		print 
+
 
 
 
@@ -496,7 +505,8 @@ class sale_order(models.Model):
 	# Total of Payments
 	pm_total = fields.Float(
 								#string="Total",
-								compute="_compute_pm_total",
+								
+								#compute="_compute_pm_total",
 	)
 	
 
@@ -535,20 +545,22 @@ class sale_order(models.Model):
 			for pm in record.x_payment_method:
 				total = total + pm.subtotal
 
+
 			record.pm_total = total
 
+			#record.pm_complete = True
+			record.x_payment_complete = True
 
-			print record.pm_total
-			print record.x_amount_total
 
+			print record.name
+			print 'pm_total: ', record.pm_total
+			print 'x_amount_total: ', record.x_amount_total
 
-			#if record.pm_total == record.x_amount_total:
-			#	record.state = 'payment'
-			#print record.state
-			#else:
-			#	record.state = 'draft'
-			#self.state = 'payment'
-			#print record.state
+			#print 'pm_complete: ', record.pm_complete
+			print 'x_payment_complete: ', record.x_payment_complete
+
+			print 
+
 
 		print
 		print
@@ -971,18 +983,18 @@ class sale_order(models.Model):
 
 
 
-		nr_pm = self.env['openhealth.payment_method'].search_count([('order','=', self.id),]) 
-
-		name = 'Pago ' + str(nr_pm + 1)
-
+		#nr_pm = self.env['openhealth.payment_method'].search_count([('order','=', self.id),]) 
+		#name = 'Pago ' + str(nr_pm + 1)
+		name = 'Pago'
 		method = 'cash'
+
 
 
 		#total = self.x_amount_total
 		balance = self.x_amount_total - self.pm_total
 
 		
-		print nr_pm
+		#print nr_pm
 		print name
 		print method
 		print 
@@ -992,25 +1004,27 @@ class sale_order(models.Model):
 
 		# Create 
 		#if payment_method_id == False:
-		payment_method = self.env['openhealth.payment_method'].create({
-																			'order': self.id,
+		self.x_payment_method = self.env['openhealth.payment_method'].create({
+																				'order': self.id,
 
-																			'name': name,
-																			'method': method,
-																			'subtotal': balance,
+																				'name': name,
+																			
+																				'method': method,
+																			
+																				'subtotal': balance,
 																			
 
-																			'pm_total': self.pm_total,
-																			'total': self.x_amount_total,
+																				'pm_total': self.pm_total,
+																			
+																				'total': self.x_amount_total,
+
+																				'balance': balance, 
+																			})
+		payment_method_id = self.x_payment_method.id 
 
 
-																			'balance': balance, 
-																		})
-		payment_method_id = payment_method.id 
 
-
-
-
+#jz
 		# State - Change
 		print 'State changes'
 		self.state = 'payment'
@@ -1041,6 +1055,7 @@ class sale_order(models.Model):
 
 				'context': {
 							'default_order': self.id,
+
 							'default_name': name,
 							'default_method': method,
 							'default_subtotal': balance,

@@ -19,7 +19,7 @@
 
 		Laser - EMR - Min - Ama - Docean\n
 
-		Last built: 	17 May 2017
+		Last built: 	18 May 2017
 
 		Created: 	 	7 Sep 2016
 
@@ -144,9 +144,7 @@
 		'views/orders/order_line.xml',
 		
 		'views/orders/order.xml',
-
-
-		'views/orders/payment_methods.xml',
+		#'views/orders/payment_methods.xml',
 		'views/orders/events.xml',
 
 

@@ -18,6 +18,25 @@ class payment_method(models.Model):
 
 
 
+	name = fields.Char(
+			#string="Medio de Pago", 
+			string="Pagos", 
+			
+			#required=True, 
+			#readonly=True, 
+
+			compute='_compute_name', 
+		)
+
+	#@api.depends()
+	@api.multi
+
+	def _compute_name(self):
+		for record in self:
+			record.name = 'PA-' + str(record.id) 
+
+
+
 
 
 	# Open Order
@@ -48,19 +67,10 @@ class payment_method(models.Model):
 
 
 
-	name = fields.Char(
-			#string="Medio de Pago", 
-			string="Pagos", 
-			required=True, 
-			readonly=True, 
-		)
 
 
-	method = fields.Selection(
-			string="Medio", 
-			selection = ord_vars._payment_method_list, 			
-			required=True, 
-		)
+
+
 
 
 
@@ -75,10 +85,6 @@ class payment_method(models.Model):
 
 
 
-	subtotal = fields.Float(
-			string = 'Sub-total', 
-			required=True, 
-		)
 
 	total = fields.Float(
 			string = 'Total', 
@@ -109,21 +115,8 @@ class payment_method(models.Model):
 	#		record.balance = self.total - (self.pm_total + self.subtotal)
 
 
-	@api.onchange('subtotal')
-	def _onchange_subtotal(self):
-		self.balance = self.total - (self.pm_total + self.subtotal)
 
 
-
-
-
-
-
-
-	code = fields.Char(
-			string="Codigo", 
-			#required=True, 
-		)
 
 
 

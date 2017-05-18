@@ -69,12 +69,14 @@
 								<field name="name"   />													
 -->
 								
-								<field name="vspace"   />													
+								<field name="vspace"   />	
+
 								<field name="balance"   />													
 							</group>
 
 
 							<group>
+<!--
 								<field name="code" 		attrs="{'invisible':[
 																					('method', '!=', 'debit_visa'), 
 																					('method', '!=', 'debit_master'), 
@@ -83,6 +85,7 @@
 																					('method', '!=', 'diners'), 
 																					('method', '!=', 'american_express'), 
 																			]}"			/>
+-->
 							</group>
 						</group>
 
@@ -90,16 +93,18 @@
 
 						<group>
 							<group>
+<!--
 								<field name="method"   />													
 
 								<field name="vspace"   />													
 
 								<field name="subtotal"   />													
+-->
 							</group>
 							<group>
 
-								<field name="total"   	invisible="1"	/>													
-								<field name="pm_total"  invisible="1" 	/>													
+								<field name="total"   	invisible="0"	/>													
+								<field name="pm_total"  invisible="0" 	/>													
 							
 							</group>
 						</group>
@@ -124,11 +129,11 @@
 				<tree string="payment_method Tree">
 					
 					<field name="name"/>
-					
+<!--
 					<field name="method"  />
 					
 					<field name="subtotal"   />
-					
+-->				
 				</tree>
 			</field>
 		</record>

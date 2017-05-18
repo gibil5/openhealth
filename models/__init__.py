@@ -89,7 +89,10 @@ from . import sale_note
 from . import ticket_receipt
 from . import ticket_invoice
 
+
 from . import payment_method
+from . import payment_method_line
+
 
 from . import event 
 

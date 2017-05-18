@@ -134,10 +134,10 @@
 				<xpath expr="//field[@name='validity_date']" position="before">
 					<field name="x_amount_total" />
 <!--
-					<field name="pm_total" />
-					<field name="pm_complete" />
-					<field name="vspace" />
 -->			
+					<field name="pm_total" />
+					<field name="x_payment_complete" />
+					<field name="vspace" />
 				</xpath>
 
 
@@ -157,6 +157,7 @@
 
 				<xpath expr="//field[@name='validity_date']" position="replace">
 
+					<field name="vspace" />
 					<field name="x_machine"		attrs="{	'invisible':[('patient', '=', False ),],
 															}"	/>
 				
@@ -860,20 +861,20 @@ Order Line - Tree
 																				]}"			/>
 					-->
 
-					<field name="vspace"/>
-					
+
+					<field name="vspace"/>					
+					<field name="x_payment_method"/>
+
+
 					<field name="vspace"/>
 					<field name="x_sale_document"/>
+
+
 					<field name="vspace"/>			
-
-
+					<field name="vspace"/>			
 					<field name="x_family"/>
 
 
-<!--
-					<field name="x_payment_method"/>
-					<field name="vspace"/>
--->
 
 
 					<field name="x_ruc"			attrs="{'invisible':[('x_sale_document', '!=', 'invoice')]}"	/>

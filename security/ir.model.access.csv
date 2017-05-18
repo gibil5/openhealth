@@ -12,6 +12,15 @@ access_stock_picking_manager,stock.picking manager,stock.model_stock_picking,ope
 
 
 
+access_payment_method,openhealth.payment_method,model_openhealth_payment_method,,1,1,1,1
+
+access_payment_method_line,openhealth.payment_method_line,model_openhealth_payment_method_line,,1,1,1,1
+
+
+
+
+
+
 
 
 access_openhealth_process,access_openhealth_process,model_openhealth_process,,1,0,0,0
@@ -74,7 +83,6 @@ access_sale_note,openhealth.sale_note,model_openhealth_sale_note,,1,1,1,1
 
 access_advertisement,openhealth.advertisement,model_openhealth_advertisement,,1,1,1,1
 
-access_payment_method,openhealth.payment_method,model_openhealth_payment_method,,1,1,1,1
 
 access_event,openhealth.event,model_openhealth_event,,1,1,1,1
 

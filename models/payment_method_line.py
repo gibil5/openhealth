@@ -116,7 +116,7 @@ class payment_method_line(models.Model):
 
 
 	subtotal = fields.Float(
-			string = 'Sub-total', 
+			string = 'Subtotal', 
 			required=True, 
 		)
 

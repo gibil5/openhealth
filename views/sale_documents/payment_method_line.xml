@@ -101,10 +101,32 @@
 																					('method', '!=', 'diners'), 
 																					('method', '!=', 'american_express'), 
 																			]}"			/>
+
+attrs="{'invisible':[
+																						('method', '!=', 'debit_visa'), 
+																						('method', '!=', 'debit_master'), 
+																						('method', '!=', 'credit_visa'), 
+																						('method', '!=', 'credit_master'), 
+																						('method', '!=', 'diners'), 
+																						('method', '!=', 'american_express'), 
+																			]}"			
+
 -->
 
 
+
+								<field name="vspace"   />	
 								<field name="payment_method"   />	
+								<field name="vspace"   />	
+
+
+								<field name="code" 		
+
+														attrs="{	'invisible':[ ('method', 'in', ['cash', 'cuota_perfecta'] ),], 
+																	'required':[ ('method', 'in', ['debit_visa', 'debit_master', 'credit_visa', 'credit_master', 'diners', 'american_express'] ),]
+																}"
+
+								/>
 							</group>
 
 

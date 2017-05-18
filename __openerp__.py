@@ -147,6 +147,10 @@
 		#'views/orders/payment_methods.xml',
 		#'views/orders/events.xml',
 
+		'views/sale_documents/payment_methods.xml',
+		'views/sale_documents/payment_method_line.xml',
+
+
 
 
 
@@ -161,9 +165,6 @@
 		'views/sale_documents/ticket_receipts.xml',
 		'views/sale_documents/ticket_invoices.xml',
 
-
-		'views/sale_documents/payment_methods.xml',
-		'views/sale_documents/payment_method_line.xml',
 
 
 

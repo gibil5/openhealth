@@ -50,6 +50,15 @@ class sale_order(models.Model):
 			required=True, 
 		)
 
+	# Number of paymethods  
+	pm_complete = fields.Boolean(
+								default = False, 
+								readonly=False,
+								#string="Pm Complete",
+								#compute="_compute_pm_complete",
+	)
+
+
 
 
 

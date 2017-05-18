@@ -44,6 +44,14 @@ class sale_order(models.Model):
 			required=True, 
 		)
 
+	method = fields.Selection(
+			string="Medio", 
+			selection = ord_vars._payment_method_list, 			
+			required=True, 
+		)
+
+
+
 
 
 

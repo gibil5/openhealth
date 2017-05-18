@@ -40,6 +40,21 @@ class payment_method(models.Model):
 
 
 
+	subtotal = fields.Float(
+			string = 'Sub-total', 
+			required=True, 
+		)
+
+
+
+
+
+
+
+
+
+
+
 
 
 

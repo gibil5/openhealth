@@ -39,6 +39,15 @@ class sale_order(models.Model):
 
 
 
+	subtotal = fields.Float(
+			string = 'Sub-total', 
+			required=True, 
+		)
+
+
+
+
+
 	# Payment Method 
 	x_payment_method = fields.Many2one(
 

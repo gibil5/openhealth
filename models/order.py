@@ -39,24 +39,24 @@ class sale_order(models.Model):
 
 
 
-	subtotal = fields.Float(
-			string = 'Sub-total', 
-			required=True, 
-		)
+	#subtotal = fields.Float(
+	#		string = 'Sub-total', 
+			#required=True, 
+	#	)
 
-	method = fields.Selection(
-			string="Medio", 
-			selection = ord_vars._payment_method_list, 			
-			required=True, 
-		)
+	#method = fields.Selection(
+	#		string="Medio", 
+	#		selection = ord_vars._payment_method_list, 			
+	#		required=True, 
+	#	)
 
 	# Number of paymethods  
-	pm_complete = fields.Boolean(
-								default = False, 
-								readonly=False,
+	#pm_complete = fields.Boolean(
+	#							default = False, 
+	#							readonly=False,
 								#string="Pm Complete",
 								#compute="_compute_pm_complete",
-	)
+	#)
 
 
 

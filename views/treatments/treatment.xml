@@ -755,6 +755,8 @@ Fields
 							<group>
 
 								<field name="treatment_open"	invisible="1"	/>
+
+								<field name="chief_complaint"		required="1"/>
 							
 							</group>
 							<group>
@@ -774,7 +776,6 @@ Fields
 							<group>
 								<!--
 								-->
-								<field name="chief_complaint"		required="1"/>
 							</group>
 
 

@@ -37,9 +37,6 @@
 -->
 
 
-
-
-
 <!--
         <record id="lang_en" model="res.lang">
             <field name="code">en_US</field>
@@ -68,12 +65,35 @@
 
   
 
+
+
+<!-- Almacen -->
+        <record id="almacen_partner" model="res.partner">
+            <field name="name">Almacen</field>
+            <field name="email">almacen@clinicachavarri.com</field>
+        </record>
+
+        <record id="almacen_clinicachavarri" model="res.users">
+            <field name="name">Almacen</field>
+            <field name="login">almacen@clinicachavarri.com</field>
+            <field name="password">almacen</field>
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="active">True</field>
+            <field name="lang">es_ES</field>
+            <field name="tz">America/Lima</field>
+
+            <field name="partner_id" ref="almacen_partner"/>
+        </record>
+
+
+
+
+
 <!-- Pruebas -->
         <record id="pruebas_partner" model="res.partner">
             <field name="name">Pruebas</field>
             <field name="email">pruebas@clinicachavarri.com</field>
         </record>
-
 
         <record id="pruebas_clinicachavarri" model="res.users">
             <field name="name">Pruebas</field>

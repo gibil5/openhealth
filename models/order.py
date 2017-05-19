@@ -167,6 +167,8 @@ class sale_order(models.Model):
 			default='product',
 			
 			selection = jxvars._family_list, 
+
+			required=True, 
 		)
 
 

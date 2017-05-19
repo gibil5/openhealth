@@ -54,6 +54,12 @@
 
 
 
+
+
+
+
+
+
 		<!-- Caja --> 
 		<record id="openhealth.openhealth_caja" model="res.groups">
 			<field name="name">Caja</field>
@@ -67,10 +73,10 @@
 										(4, ref('openhealth.vmori_clinicachavarri')),
 
 										(4, ref('openhealth.pruebas_clinicachavarri')),
+
+										(4, ref('openhealth.almacen_clinicachavarri')),
 									]"/>
 		</record>
-
-
 
 
 

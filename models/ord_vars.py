@@ -31,7 +31,7 @@ _x_state_list = [
 
 				('payment', 		'Pagado'),
 
-				('proof', 		      'Comprobante'),
+				('proof', 		     'Comprobante'),
 
 
 
@@ -46,8 +46,8 @@ _x_state_list = [
 
 
 
-				('done', 		'Completo'),
-				('cancel', 		'Cancelado'),
+				('done', 			'Completo'),
+				('cancel', 			'Cancelado'),
 	]
 
 

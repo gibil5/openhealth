@@ -175,7 +175,7 @@ jz
 
 							class="oe_highlight"
   
-							string="Crear PRESUPUESTO - P" 
+							string="Crear PRESUPUESTO - Procedimiento" 
 
 							states="service"
 

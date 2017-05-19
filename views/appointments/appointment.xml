@@ -577,22 +577,31 @@
 
 
 
+
 		<!-- Window action -->
 
 		<!-- Appointment --> 
 		<record model="ir.actions.act_window" id="oeh_medical_preappointment_list_action">
-			<field name="name">Citas x</field>
-
-
-<!--
+			<field name="name">Citas - jz</field>
 			<field name="res_model">oeh.medical.appointment</field>
--->
-			<field name="res_model">oeh.medical.appointment</field>
-
-
 			<field name="view_type">form</field>
+
 			<field name="view_mode">tree,form</field>
+
+
+			<field name="context">{
+									'default_x_target': 'doctor',
+									'default_x_type': 'consultation',
+
+									'default_patient': 'patient',
+								}
+			</field>
+
 		</record>
+
+
+
+
 
 
 

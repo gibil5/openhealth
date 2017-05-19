@@ -32,7 +32,7 @@
 									<!--
 									<tree editable="bottom">										
 	                                -->
-									<tree string="Consultas">										
+									<tree string="Consultas"	create="false" >										
 										
 
 										<!-- Hot Button -->

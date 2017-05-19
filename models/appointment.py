@@ -1018,13 +1018,15 @@ class Appointment(models.Model):
         		]
 
 
-    # x_type def 
+
+    # x_type 
 	x_type = fields.Selection(
 				selection = _type_list, 
 				
 				string="Tipo",
 
-				#default="consultation",
+				default="consultation",
+				
 				required=True, 
 				)
 

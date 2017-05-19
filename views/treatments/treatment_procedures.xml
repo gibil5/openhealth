@@ -31,7 +31,7 @@
 						<field name="procedure_ids" domain="[('evaluation_type', '=', 'Ambulatory')]" />
 						--> 
 						<field name="procedure_ids">
-							<tree string="Procedimientos">
+							<tree string="Procedimientos"		create="false" >
 
 								<!-- Button -->
 								<button 

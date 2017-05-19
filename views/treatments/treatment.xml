@@ -753,19 +753,23 @@ Fields
 
 
 							<group>
-								<field name="treatment_open"/>
+
+								<field name="treatment_open"	invisible="1"	/>
+							
 							</group>
 							<group>
+							
 								<field name="end_date"/>
+							
 							</group>
 
 
 
 							<group>
-								<!--
+								<!-- 
 								<field name="price_total"/>
 								-->
-								<field name="duration"/>
+								<field name="duration"			invisible="1" />
 							</group>
 							<group>
 								<!--

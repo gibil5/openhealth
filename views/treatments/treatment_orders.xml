@@ -19,7 +19,7 @@
 -->					
 
 						<field name="order_ids">									
-							<tree string="Consultas">										
+							<tree string="Consultas"	create="false" 	>										
 
 
 

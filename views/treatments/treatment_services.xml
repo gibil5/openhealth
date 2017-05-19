@@ -32,7 +32,7 @@
 								<field name="service_co2_ids"/>	
 -->							
 								<field name="service_co2_ids">									
-									<tree string="Services">	
+									<tree string="Services"		create="false" >	
 
 										<button 
 											type="object" 

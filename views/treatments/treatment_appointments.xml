@@ -28,19 +28,26 @@
 
 						<!--
 						<field name="appointment_ids"/>
-
 						<tree string=""		default_order='appointment_date, x_machine'>
-						-->
+
+
 						<field name="appointment_ids">
+						<field name="appointment_ids"	context="{'patient': 'patient', 'doctor': 'Dr. Alarcon' }"  >
+						-->
 
 
-							<tree string=""		default_order="appointment_date">	
+
+						<field name="appointment_ids"		>
+
+
+							<tree string=""		default_order="appointment_date"	create="false" >	
 
 								
 								<field name="name"	invisible="1"/>
-								<field name="patient"	invisible="1"/>
-								<field name="doctor"	invisible="1"/>
 
+								<field name="patient"	invisible="1"/>
+								
+								<field name="doctor"	invisible="1"/>
 
 								<field name="x_type"/>
 

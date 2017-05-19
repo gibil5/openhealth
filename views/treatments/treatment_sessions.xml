@@ -30,7 +30,7 @@
 
 
 						<field name="session_ids">
-							<tree string="Sesiones">
+							<tree string="Sesiones"		create="false" >
 
 								<button 
 									type="object" 

@@ -168,6 +168,8 @@ class Service(models.Model):
 	consultation = fields.Many2one('openhealth.consultation',
 			ondelete='cascade', 		
 			string="Consulta", 
+			
+			required=False, 
 			)
 
 

@@ -376,7 +376,7 @@ class Treatment(models.Model):
 			medical =	self.env['openhealth.service.medical'].search_count([('treatment','=', record.id),]) 
 
 
-			record.nr_services= co2 + exc + ipl + ndyag + medical
+			record.nr_services = co2 + exc + ipl + ndyag + medical
 
 
 
@@ -1709,58 +1709,40 @@ class Treatment(models.Model):
 			else:
 				target_line = 'con_med'
 
+			print target_line 
+			ret = order.x_create_order_lines_target(target_line)
+			print ret 
 
 
 
 		#elif target == 'procedure':
 		else:
-			#consultation = self.env['openhealth.consultation'].search([
-			#																('treatment','=', self.id),
-			#																#('name','like', record.patient.name),
-			#															],
-																		#order='appointment_date desc',
-			#															limit=1,)
 
 
 
-			#con = self.consultation_ids[0]
-			#print con
 
+#jz
+			order_id = order.id
 
-			if self.service_co2_ids.name != False:
-				service = self.service_co2_ids[0].service
+			ret = treatment_funcs.create_order_lines(self, 'co2', order_id)
+			print ret
 
+			ret = treatment_funcs.create_order_lines(self, 'excilite', order_id)
+			print ret 
 
-			if self.service_excilite_ids.name != False:
-				service = self.service_excilite_ids[0].service
+			ret = treatment_funcs.create_order_lines(self, 'ipl', order_id)
+			print ret 
 
+			ret = treatment_funcs.create_order_lines(self, 'ndyag', order_id)
+			print ret 
 
-			if self.service_ipl_ids.name != False:
-				service = self.service_ipl_ids[0].service
-
-
-			if self.service_ndyag_ids.name != False:
-				service = self.service_ndyag_ids[0].service
-
-
-			if self.service_medical_ids.name != False:
-				service = self.service_medical_ids[0].service
-
-
-			#target_line = 'co2_nec_rn1_one'
-			target_line = service.x_name_short
+			ret = treatment_funcs.create_order_lines(self, 'medical', order_id)
+			print ret 
 
 
 
-		print
-		print target_line 
-		print 
-
-		ret = order.x_create_order_lines_target(target_line)
-		print ret 
 
 		print 
-
 
 		return order
 	# create_order

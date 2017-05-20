@@ -148,13 +148,15 @@ class recommendation(models.Model):
 
 				'context': {
 
-							'default_consultation': consultation_id,	
+							#'default_consultation': consultation_id,	
 							'default_treatment': treatment_id,
 
 
 							'default_laser': laser,
 							'default_zone': zone,
 							'default_pathology': pathology,
+
+							#'default_x_treatment': x_treatment,
 							}
 				}
 				
@@ -195,14 +197,14 @@ class recommendation(models.Model):
 							},
 
 				'context': {
-							'default_consultation': consultation_id,					
+							#'default_consultation': consultation_id,					
 							'default_treatment': treatment_id,
-
-
 
 							'default_laser': laser,
 							'default_zone': zone,
 							'default_pathology': pathology,
+
+							#'default_x_treatment': x_treatment,
 							}
 				}
 
@@ -242,14 +244,14 @@ class recommendation(models.Model):
 							},
 
 				'context': {
-							'default_consultation': consultation_id,					
+							#'default_consultation': consultation_id,					
 							'default_treatment': treatment_id,
-
 
 							'default_laser': laser,
 							'default_zone': zone,
 							'default_pathology': pathology,
 
+							#'default_x_treatment': x_treatment,
 							}
 				}
 	
@@ -290,15 +292,15 @@ class recommendation(models.Model):
 							},
 
 				'context': {
-							'default_consultation': consultation_id,					
+							#'default_consultation': consultation_id,					
 							'default_treatment': treatment_id,
-
 
 							'default_family': family,
 							'default_laser': laser,
 							#'default_zone': zone,
 							#'default_pathology': pathology,
 
+							#'default_x_treatment': x_treatment,
 							}
 				}
 					

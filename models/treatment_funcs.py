@@ -9,6 +9,64 @@ import jrfuncs
 
 
 
+#------------------------------------------------ Create Order Lines ---------------------------------------------------
+
+@api.multi
+
+def create_order_lines(self, laser, order_id):
+
+	print 
+	print 'Create Order Lines'
+
+	order = self.env['sale.order'].search([(
+												'id','=', order_id),
+												],
+												#order='appointment_date desc',
+												#limit=1,						
+											)		
+
+	print laser
+	print order
+
+
+
+	_model = {
+
+				'co2':			'openhealth.service.co2',
+				'excilite':		'openhealth.service.excilite',
+				'ipl':			'openhealth.service.ipl',
+				'ndyag':		'openhealth.service.ndyag',
+				'medical':		'openhealth.service.medical',
+
+
+	}
+
+	print _model[laser]
+
+	print 
+
+
+	rec_set = self.env[_model[laser]].search([(
+																		'treatment','=', self.id),
+																	],
+																		#order='appointment_date desc',
+																		#limit=1,						
+																	)		
+
+	if rec_set != False: 
+
+		for service in rec_set: 
+
+			target_line = service.service.x_name_short
+					
+			ret = order.x_create_order_lines_target(target_line)
+					
+			print ret 
+
+
+	return 0
+
+
 
 #------------------------------------------------ Create Procedure ---------------------------------------------------
 

@@ -137,10 +137,11 @@ jz
 							type="object" 
 							class="oe_highlight"
 
+
 							string="Crear RECOMENDACION" 
 
 
-							states="consultation"
+							states="consultation,service"
 
 							name="create_service" 
 						/>
@@ -175,7 +176,7 @@ jz
 
 							class="oe_highlight"
   
-							string="Crear PRESUPUESTO - Procedimiento" 
+							string="Crear PRESUPUESTO - Proc" 
 
 							states="service"
 
@@ -226,15 +227,9 @@ jz
 
 
 
+
 						<!-- Create Sessions --> 
 <!--
-							attrs="{ 
-									'invisible':[
-												
-												('state','in',[ False, 'appointment', 'consultation', 'service', 'budget', 'invoice', 'sessions', 'controls', 'done']), 
-												
-												]}"
--->						
 						<button 
 							type="object" 
 							class="oe_highlight"
@@ -242,36 +237,30 @@ jz
 							string="Crear SESIONES" 
 
 
-
 							states="procedure"
 
 							name="create_sessions" 
 						/>
+-->						
+
 
 
 
 
 						<!-- Create Controls --> 
 <!--
-							attrs="{ 
-									'invisible':[
-												
-												('state','in',[ False, 'appointment', 'consultation', 'service', 'budget', 'invoice', 'procedure', 'controls', 'done']), 
-												
-												]}"
--->						
 						<button 
 							type="object" 
 							class="oe_highlight"
 
 							string="Crear CONTROLES" 
 
-
-
 							states="sessions"
 
 							name="create_controls" 
 						/>
+-->						
+
 
 
 

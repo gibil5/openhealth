@@ -15,6 +15,7 @@
 					
 
 
+
 					<header>
 
 
@@ -41,17 +42,12 @@
 							type="object" 
 							name="open_appointment" 
 						-->
+
 						<button 
-							type="action" 
-
 							name="%(oeh_medical_appointment_action_tree_confirmed)d"	
-
+							type="action" 
 							class="oe_highlight"
-
-							string="Crear  CITA" 
-							
 							states="empty"
-
 							context="{									
 											'search_default_doctor': physician,
 											'default_patient': patient, 
@@ -59,7 +55,9 @@
 											'default_appointment_date': start_date, 
 									}" 											
 
+							string="Crear  CITA"
 						/>
+
 
 
 
@@ -273,12 +271,14 @@ jz
 								statusbar_visible="False, appointment, consultation, service, budget, invoice, procedure, sessions, controls,  done"
 
 								statusbar_visible="appointment, budget_consultation, invoice_consultation, consultation, service, budget_procedure, invoice_procedure, procedure, sessions, controls"
+
+								statusbar_visible="appointment, invoice_consultation, consultation, service, invoice_procedure, procedure, sessions, controls"
 -->						
 						<field 	name="state" 
 								widget="statusbar" 
 
 
-								statusbar_visible="appointment, invoice_consultation, consultation, service, invoice_procedure, procedure, sessions, controls"
+								statusbar_visible="appointment, invoice_consultation, consultation, service, invoice_procedure, procedure"
 
 						/>
 

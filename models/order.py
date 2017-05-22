@@ -66,13 +66,29 @@ class sale_order(models.Model):
 
 
 
+	# Print Order
+	@api.multi 
+	def print_order(self):
+
+		print 
+		print 'Print Order'
+
+
+		#ret = self.treatment.open_myself()
+		#return ret 
+	# open_treatment
+
+
+
+
+
+
+
 
 
 	# Payment Method 
 	x_payment_method = fields.Many2one(
-
 			'openhealth.payment_method',
-
 			string="Pagos", 
 		)
 

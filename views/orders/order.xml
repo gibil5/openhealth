@@ -335,6 +335,26 @@
 
 
 
+					<!-- Print --> 
+					<button 
+							name="print_order"
+
+							type="object" 
+
+							class="oe_highlight"
+
+							string="Imprimir"
+
+
+							states="sale"						
+					/>
+
+
+
+
+
+
+
 
 					<!-- Pagar -->
 <!--

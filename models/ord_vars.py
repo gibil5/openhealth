@@ -7,16 +7,16 @@
 
 _sale_doc_type_list = [
 
-				('receipt', 			'Recibo'),
+				('receipt', 			'Boleta'),
 				('invoice', 			'Factura'),
 
-				('advertisement', 		'Canje publicidad'),
-				('sale_note', 			'Nota de venta'),
+				('advertisement', 		'Canje Publicidad'),
+				('sale_note', 			'Nota de Venta'),
 
-				('ticket_receipt', 		'Ticket boleta'),
-				('ticket_invoice', 		'Ticket factura'),
+				('ticket_receipt', 		'Ticket Boleta'),
+				('ticket_invoice', 		'Ticket Factura'),
 
-				#('', 			''),
+				('', 			''),
 	]
 
 

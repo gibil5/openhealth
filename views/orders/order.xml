@@ -335,21 +335,6 @@
 
 
 
-					<!-- Print --> 
-					<button 
-							name="print_order"
-
-							type="object" 
-
-							class="oe_highlight"
-
-							string="Imprimir"
-
-
-							states="sale"						
-					/>
-
-
 
 
 
@@ -490,6 +475,37 @@
 
 							name="action_confirm" 
 					/>
+
+
+
+
+
+
+
+					<!-- Print --> 
+<!--
+							states="sale"						
+-->
+					<button 
+							name="print_order"
+
+							type="object" 
+
+							class="oe_highlight"
+
+							string="Imprimir"
+
+
+							attrs="{'invisible':	[
+												
+												('x_sale_document_type', 'in', ['receipt', 'invoice', 'advertisement', 'sale_note', False, ] ),
+
+												]
+
+										}"
+					/>
+
+
 
 
 
@@ -892,6 +908,8 @@ Order Line - Tree
 
 					<field name="vspace"/>
 					<field name="x_sale_document"/>
+					<field name="x_sale_document_type"/>
+
 
 
 					<field name="vspace"/>			

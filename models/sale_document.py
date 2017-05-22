@@ -51,36 +51,53 @@ class SaleDocument(models.Model):
 
 
 
+
+	# Type 
 	x_type = fields.Selection(
 
 			selection = ord_vars._sale_doc_type_list, 
 
 			string='Tipo',
-			compute='_compute_type', 
+
+			compute='_compute_x_type', 
 		)
+
 
 	#@api.depends()
 	@api.multi
 
-	def _compute_type(self):
+	def _compute_x_type(self):
+
+		print 
+		print 'Compute x type'
+
+
+
 		for record in self:
 
-			if record.receipt != False :
+
+			print record.name
+			print record.receipt.name
+			print record.ticket_receipt.name
+
+			print 
+
+			if record.receipt.name != False :
 				record.x_type = 'receipt'
 
-			elif record.invoice != False:
+			elif record.invoice.name != False:
 				record.x_type = 'invoice'
 
-			elif record.advertisement != False:
+			elif record.advertisement.name != False:
 				record.x_type = 'advertisement'
 
-			elif record.sale_note != False:
+			elif record.sale_note.name != False:
 				record.x_type = 'sale_note'
 
-			elif record.ticket_receipt != False:
+			elif record.ticket_receipt.name != False:
 				record.x_type = 'ticket_receipt'
 
-			elif record.ticket_invoice != False:
+			elif record.ticket_invoice.name != False:
 				record.x_type = 'ticket_invoice'
 
 

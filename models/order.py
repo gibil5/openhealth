@@ -314,6 +314,11 @@ class sale_order(models.Model):
 		#self.procedure_ids.unlink()
 		self.x_payment_method.unlink()
 	
+
+
+		#self.x_sale_document_type = ''
+		self.x_sale_document_type = False
+
 		#self.x_sale_document = False
 		self.x_sale_document.unlink()
 
@@ -383,7 +388,29 @@ class sale_order(models.Model):
 
 
 
+	# Sale Document Type 
+	x_sale_document_type = fields.Selection(
 
+			selection = ord_vars._sale_doc_type_list, 
+
+			string="Comprobante Tipo", 
+
+			#required=True, 
+
+			compute='_compute_x_sale_document_type', 
+		)
+
+
+	@api.multi
+	#@api.depends('state')
+
+	def _compute_x_sale_document_type(self):
+		for record in self:
+
+
+			if record.x_sale_document != False: 
+				
+				record.x_sale_document_type = record.x_sale_document.x_type
 
 
 

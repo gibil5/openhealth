@@ -631,5 +631,30 @@ class Order(models.Model):
 
 
 
+# 22 May
+
+				x_type = ''
+
+				if record.x_sale_document.receipt != False:
+					x_type = 'receipt'
+
+				if record.x_sale_document.invoice != False:
+					x_type = 'invoice'
+
+				if record.x_sale_document.advertisement != False:
+					x_type = 'advertisement'
+
+				if record.x_sale_document.sale_note != False:
+					x_type = 'sale_note'
+
+				if record.x_sale_document.ticket_receipt != False:
+					x_type = 'ticket_receipt'
+
+				if record.x_sale_document.ticket_invoice != False:
+					x_type = 'ticket_invoice'
+
+				record.x_sale_document_type = x_type
+
+
 
 

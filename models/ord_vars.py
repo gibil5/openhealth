@@ -41,8 +41,10 @@ _x_state_list = [
 
 				
 				('sale', 			'Venta'),
-				('invoice', 		'Facturado'),
+				#('invoice', 		'Facturado'),
+				
 
+				('printed', 		'Impreso'),
 
 
 

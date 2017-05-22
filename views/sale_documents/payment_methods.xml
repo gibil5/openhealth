@@ -44,7 +44,7 @@
 
 								states="draft"						
 
-								string="PAGAR"
+								string="Pagar"
 						/>
 
 
@@ -62,7 +62,7 @@
 
 								states="done"						
 
-								string="PRESUPUESTO"
+								string="Regresar al PRESUPUESTO"
 						/>
 
 					

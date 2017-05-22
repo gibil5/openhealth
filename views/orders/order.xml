@@ -39,6 +39,9 @@
 									}"							
 							statusbar_visible="draft, payment, proof, machine, sale, invoice"
 							statusbar_visible="draft, payment, proof, sale, invoice, done"
+
+
+							statusbar_visible="draft, payment, proof, sale, invoice"
 -->	
 
 
@@ -47,7 +50,7 @@
 					<field 	name="state" 
 							widget="statusbar" 
 
-							statusbar_visible="draft, payment, proof, sale, invoice"
+							statusbar_visible="draft, payment, proof, sale, printed"
 					/>
 				</xpath>
 
@@ -322,7 +325,7 @@
 
 							class="oe_highlight"
 
-							string="TRATAMIENTO"
+							string="Regresar al TRATAMIENTO"
 
 
 							states="sale"						
@@ -341,10 +344,11 @@
 							type="object" 
 							class="oe_highlight"
 
-							string="Pagar"
+
+							string="Módulo de Pago"
+
 
 							states="draft"						
-
 
 							name="create_payment_method"
 							/>
@@ -362,7 +366,7 @@
 							type="object" 
 							class="oe_highlight"
 
-							string="Comprobante de pago" 
+							string="Módulo Comprobante de pago" 
 
 
 							states="payment"						

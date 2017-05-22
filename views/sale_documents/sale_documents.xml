@@ -186,7 +186,7 @@
 						<h1><field name="order" class="oe_inline"/></h1>
 -->
 
-						<h1>Comprobante de Pago</h1>
+						<h1>Módulo Comprobante de Pago</h1>
 
 
 
@@ -210,6 +210,8 @@
 							</group>
 
 							<group>
+								<field name="vspace"   />													
+								<field name="order"   />
 							</group>
 						</group>
 

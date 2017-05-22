@@ -56,6 +56,7 @@
             <field name="grouping">[3,0]</field>
             <field name="decimal_point">.</field>
             <field name="thousands_sep">,</field>
+
             <field name="date_format">%d/%m/%Y</field>
 
 
@@ -64,6 +65,27 @@
 
 
   
+
+
+<!-- Renato Chavarri -->
+        <record id="rchavarri_clinicachavarri" model="res.users">
+            <field name="name">Renato Chavarri</field>
+            <field name="login">rchavarri@clinicachavarri.com</field>
+            <field name="password">rchavarri</field>
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="active">True</field>
+<!--
+            <field name="lang">en_EN</field>
+-->            
+
+            <field name="lang">oh_es_ES</field>
+
+            <field name="tz">America/Lima</field>
+        </record>
+
+
+
+
 
 
 
@@ -127,20 +149,6 @@
             <field name="tz">America/Lima</field>
         </record>
 
-
-
-<!-- Renato Chavarri -->
-        <record id="rchavarri_clinicachavarri" model="res.users">
-            <field name="name">Renato Chavarri</field>
-            <field name="login">rchavarri@clinicachavarri.com</field>
-            <field name="password">rchavarri</field>
-            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-            <field name="active">True</field>
-<!--
-            <field name="lang">en_EN</field>
--->            
-            <field name="tz">America/Lima</field>
-        </record>
 
 
 
@@ -253,11 +261,6 @@
 
             <field name="partner_id" ref="plataforma_partner"/>
         </record>
-
-
-
-
-
 
 
     </data>

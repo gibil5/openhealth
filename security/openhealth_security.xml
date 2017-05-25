@@ -96,6 +96,8 @@
 									]"/>
 		</record>
 -->
+
+
 		<record id="openhealth.caja" model="res.groups">
 			<field name="name">Caja</field>
 			<field name="category_id" ref="module_openhealth_category"/>

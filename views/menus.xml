@@ -102,7 +102,8 @@
 		<menuitem id="main_appointment_menu" 
 			name="Citas"
 			sequence="-8"
-			groups="openhealth.physicians,openhealth.caja,openhealth.reception"
+
+			groups="openhealth.reception"
 			/>
 
 

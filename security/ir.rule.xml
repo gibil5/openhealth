@@ -66,11 +66,13 @@
             <field name="name">Each physican can see only own profile</field>
             --> 
             <field name="name">Physician can see all the physicians</field>
+
             <field name="model_id" ref="oehealth.model_oeh_medical_physician"/>
             <!--
             <field name="domain_force">[('oeh_user_id', '=', user.id)]</field>
             -->
             <field name="domain_force">[(1, '=', 1)]</field>
+
             <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_physician'))]"/>
         </record>
 
@@ -87,12 +89,16 @@
             <field name="name">Access all the appointments</field>
 
             <field name="model_id" ref="model_oeh_medical_appointment"/>
+
             <!--
             <field name="domain_force">['|', ('doctor', '=', False), ('doctor.oeh_user_id', '=', user.id)]</field>
             -->            
             <field name="domain_force">[(1, '=', 1)]</field>
+            
             <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_physician'))]"/>
         </record>
+
+
 
 
     </data>

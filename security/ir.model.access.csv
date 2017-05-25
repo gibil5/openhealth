@@ -21,6 +21,11 @@ access_sale_order_line_reception,sale.order.line.reception,model_sale_order_line
 
 
 
+access_oeh_medical_appointment,oeh.medical.appointment,oehealth.model_oeh_medical_appointment,oehealth.group_oeh_medical_physician,1,1,1,1
+
+access_oeh_medical_appointment,oeh.medical.appointment,oehealth.model_oeh_medical_appointment,openhealth.reception,1,1,1,1
+
+
 
 
 
@@ -115,7 +120,6 @@ access_product_template,product.template,product.model_product_template,,1,1,1,1
 
 
 
-access_oeh_medical_appointment,oeh.medical.appointment,oehealth.model_oeh_medical_appointment,oehealth.group_oeh_medical_physician,1,1,1,1
 
 
 

@@ -315,10 +315,11 @@
 				
 
 
-
-
 					<!-- Treatment --> 
+
 					<button 
+							groups="openhealth.managers"
+
 							name="open_treatment"
 
 							type="object" 
@@ -327,8 +328,24 @@
 
 							string="Regresar al TRATAMIENTO"
 
-
 							states="sale"						
+					/>
+
+
+
+
+					<!-- Treatment --> 
+					<button 
+							groups="openhealth.reception"
+
+							name="open_treatment"
+
+							type="object" 
+
+							class="oe_highlight"
+
+							string="Regresar al TRATAMIENTO"
+
 					/>
 
 

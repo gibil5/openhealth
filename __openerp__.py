@@ -91,11 +91,8 @@
 
 		# ----------------------------------------------------------- Security ------------------------------------------------------
 		'security/ir.model.access.csv',
-		#'security/ir.rule.xml',
-
-
-
-
+		
+		'security/ir.rule.xml',
 
 		'data/base_data_users.xml',
 		

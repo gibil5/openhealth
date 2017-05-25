@@ -346,6 +346,9 @@
 							attrs="{'invisible':	[('x_state', 'in', ['payment', 'proof', 'machine', 'sale', 'invoice'] ),	]}"
 -->					
 					<button 
+							groups="openhealth.managers,openhealth.caja"
+
+
 							type="object" 
 							class="oe_highlight"
 

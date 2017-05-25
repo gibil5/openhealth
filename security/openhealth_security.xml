@@ -31,6 +31,26 @@
 
 		<!-- Medicos --> 
 		<record id="openhealth.openhealth_physicians" model="res.groups">
+			<field name="name">OH - Medicos</field>
+			<field name="category_id" ref="module_openhealth_category"/>
+			
+			<!--
+			<field name="users" eval="[ (4, ref('openhealth.vmori_clinicachavarri'))    ]"/>
+			-->
+			<field name="users" eval="[ 
+										(4, ref('openhealth.medico_clinicachavarri')),
+
+										(4, ref('openhealth.rchavarri_clinicachavarri')),
+
+										(4, ref('openhealth.vmori_clinicachavarri')),
+
+										(4, ref('openhealth.pruebas_clinicachavarri')),
+									]"/>
+
+		</record>
+
+
+		<record id="openhealth.physicians" model="res.groups">
 			<field name="name">Medicos</field>
 			<field name="category_id" ref="module_openhealth_category"/>
 			
@@ -62,6 +82,23 @@
 
 		<!-- Caja --> 
 		<record id="openhealth.openhealth_caja" model="res.groups">
+			<field name="name">OH - Caja</field>
+			<field name="category_id" ref="module_openhealth_category"/>
+
+			<field name="users" eval="[ 
+										(4, ref('openhealth.caja_clinicachavarri')),
+
+										(4, ref('openhealth.rchavarri_clinicachavarri')),
+
+										(4, ref('openhealth.vmori_clinicachavarri')),
+
+										(4, ref('openhealth.pruebas_clinicachavarri')),
+
+										(4, ref('openhealth.almacen_clinicachavarri')),
+									]"/>
+		</record>
+
+		<record id="openhealth.caja" model="res.groups">
 			<field name="name">Caja</field>
 			<field name="category_id" ref="module_openhealth_category"/>
 
@@ -80,19 +117,55 @@
 
 
 
+
+
+
 		<!-- Plataforma --> 
+<!--
+										(4, ref('openhealth.rchavarri_clinicachavarri')),
+										(4, ref('openhealth.vmori_clinicachavarri')),
+										(4, ref('openhealth.pruebas_clinicachavarri')),
+-->		
 		<record id="openhealth.openhealth_reception" model="res.groups">
+			<field name="name">OH - Plataforma</field>
+			<field name="category_id" ref="module_openhealth_category"/>
+
+			<field name="users" eval="[ 
+										(4, ref('openhealth.plataforma_clinicachavarri')),
+									]"/>
+		</record>
+
+
+		<record id="openhealth.reception" model="res.groups">
 			<field name="name">Plataforma</field>
 			<field name="category_id" ref="module_openhealth_category"/>
 
 			<field name="users" eval="[ 
 										(4, ref('openhealth.plataforma_clinicachavarri')),
+									]"/>
+		</record>
 
+
+
+
+		<!-- Managers --> 
+<!--
+		<record id="openhealth.openhealth_managers" model="res.groups">
+			<field name="name">OH - Managers</field>
+			<field name="category_id" ref="module_openhealth_category"/>
+
+			<field name="users" eval="[ 
 										(4, ref('openhealth.rchavarri_clinicachavarri')),
+									]"/>
+		</record>
+-->
 
-										(4, ref('openhealth.vmori_clinicachavarri')),
+		<record id="openhealth.managers" model="res.groups">
+			<field name="name">Managers</field>
+			<field name="category_id" ref="module_openhealth_category"/>
 
-										(4, ref('openhealth.pruebas_clinicachavarri')),
+			<field name="users" eval="[ 
+										(4, ref('openhealth.rchavarri_clinicachavarri')),
 									]"/>
 		</record>
 

@@ -59,7 +59,7 @@
 		<menuitem 	id="main_sales_menu" 
 					sequence="-9"
 					name="Caja"
-					groups="openhealth.openhealth_caja"
+					groups="openhealth.caja"
 					/>
 
 
@@ -102,7 +102,7 @@
 		<menuitem id="main_appointment_menu" 
 			name="Citas"
 			sequence="-8"
-			groups="openhealth.openhealth_physicians,openhealth.openhealth_caja,openhealth.openhealth_reception"
+			groups="openhealth.physicians,openhealth.caja,openhealth.reception"
 			/>
 
 

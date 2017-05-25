@@ -12,7 +12,6 @@ access_sale_order_reception,sale.order.reception,model_sale_order,openhealth.rec
 
 
 
-
 access_sale_order_line_managers,sale.order.line.managers,model_sale_order_line,openhealth.managers,1,1,1,1
 
 access_sale_order_line_caja,sale.order.line.caja,model_sale_order_line,openhealth.caja,1,1,1,1
@@ -26,8 +25,10 @@ access_sale_order_line_reception,sale.order.line.reception,model_sale_order_line
 
 
 
-access_stock_inventory_manager,stock.inventory manager,stock.model_stock_inventory,openhealth.openhealth_caja,1,1,1,1
-access_stock_picking_manager,stock.picking manager,stock.model_stock_picking,openhealth.openhealth_caja,1,1,1,1
+
+
+access_stock_inventory_manager,stock.inventory manager,stock.model_stock_inventory,openhealth.caja,1,1,1,1
+access_stock_picking_manager,stock.picking manager,stock.model_stock_picking,openhealth.caja,1,1,1,1
 
 access_payment_method,openhealth.payment_method,model_openhealth_payment_method,,1,1,1,1
 access_payment_method_line,openhealth.payment_method_line,model_openhealth_payment_method_line,,1,1,1,1

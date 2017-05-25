@@ -99,7 +99,9 @@
 
 
 		<record id="openhealth.caja" model="res.groups">
+
 			<field name="name">Caja</field>
+			
 			<field name="category_id" ref="module_openhealth_category"/>
 
 			<field name="users" eval="[ 
@@ -185,12 +187,15 @@
 
 
 	<!-- OeHealth - Physician --> 
+<!--
+										(4, ref('openhealth.caja_clinicachavarri')),
+-->
+
 		<record id="oehealth.group_oeh_medical_physician" model="res.groups">
 			<field name="name">Physician</field>
 			<field name="category_id" ref="oehealth.module_oeh_medical_category"/>
 
 			<field name="users" eval="[ 
-										(4, ref('openhealth.caja_clinicachavarri')),
 
 										(4, ref('openhealth.medico_clinicachavarri')),
 										

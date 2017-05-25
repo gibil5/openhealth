@@ -11,11 +11,14 @@
 
 
 
+
+
 <!-- EMR - The First !!! -->
 
 		<!-- Main - EMR -->
 		<menuitem 	id="main_emr_menu" 
 					sequence="-10"
+
 					name="Historias"
 					groups="openhealth.physicians,openhealth.reception,openhealth.managers"
 					/>
@@ -58,8 +61,9 @@
 		<!-- Main - sales -->
 		<menuitem 	id="main_sales_menu" 
 					sequence="-9"
+
 					name="Caja"
-					groups="openhealth.caja"
+					groups="openhealth.caja,openhealth.managers"
 					/>
 
 
@@ -96,27 +100,31 @@
 
 
 
-<!-- Appointments -->
-
-		<!-- Appointments -->
+<!-- Appointments - jx -->
+<!--
 		<menuitem id="main_appointment_menu" 
-			name="Citas"
+			groups="openhealth.reception"
+-->
+		<!-- Appointments -->
+		<menuitem id="main_appointment_menu_jx" 
 			sequence="-8"
 
-			groups="openhealth.reception"
+			name="Citas"
+
+			groups="openhealth.reception,openhealth.managers"
 			/>
+
 
 
 
 		<menuitem id="oehealth_appointment_menu" 
 			name="Citas - Médicos"
-			parent="main_appointment_menu"
+			parent="main_appointment_menu_jx"
 			/>
-
 
 		<menuitem id="oehealth_appointment_menu_cos" 
 			name="Citas - Cosmiatría"
-			parent="main_appointment_menu"
+			parent="main_appointment_menu_jx"
 			/>
 
 		<!-- Confirmed --> 

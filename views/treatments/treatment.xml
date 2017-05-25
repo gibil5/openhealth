@@ -719,6 +719,9 @@ Fields
 							<group>
 
 								<button 
+										groups="openhealth.managers"
+			
+
 										type="object" 
 
 										class="oe_highlight"

@@ -336,7 +336,7 @@
 
 					<!-- Treatment --> 
 					<button 
-							groups="openhealth.reception"
+							groups="openhealth.reception,openhealth.physicians"
 
 							name="open_treatment"
 
@@ -643,7 +643,11 @@
 						<!-- Update --> 
 						<group>
 							<button 
+								groups="openhealth.managers"
+
+
 								type="object" 
+
 								class="oe_highlight"
 
 								string="Actualizar"
@@ -658,7 +662,11 @@
 						<group>
 
 							<button 
+								groups="openhealth.managers"
+
+
 								type="object" 
+
 								class="oe_highlight"
 
 								string="Reiniciar"
@@ -677,9 +685,10 @@
 						<!-- Remove --> 
 						<group>
 							<button 
-								groups="openhealth.admins"
+								groups="openhealth.managers"
 
 								type="object" 
+								
 								class="oe_highlight "
 
 								string="Eliminar" 

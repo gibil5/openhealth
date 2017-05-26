@@ -110,7 +110,11 @@ jz
 							states="appointment"
 -->
 						<button 
+							groups="openhealth.managers,openhealth.physicians"
+
+
 							type="object" 
+
 							class="oe_highlight"
 
 							string="Crear CONSULTA" 
@@ -132,12 +136,14 @@ jz
 							string="Crear RECOMENDACION" 
 -->
 						<button 
+							groups="openhealth.managers,openhealth.physicians"
+
+
 							type="object" 
+
 							class="oe_highlight"
 
-
 							string="Crear RECOMENDACION" 
-
 
 							states="consultation,service"
 
@@ -167,19 +173,18 @@ jz
 jz
 -->						
 						<button 
+							groups="openhealth.managers,openhealth.physicians"
+
+
 							type="object" 
 
 							name="create_order_pro" 
-
 
 							class="oe_highlight"
   
 							string="Crear PRESUPUESTO - Proc" 
 
 							states="service"
-
-
-
 						/>
 
 
@@ -211,11 +216,14 @@ jz
 												]}"
 -->
 						<button 
+							groups="openhealth.managers,openhealth.physicians"
+
+
 							type="object" 
+
 							class="oe_highlight"
 
 							string="Crear PROCEDIMIENTO" 
-
 
 							states="budget_procedure,invoice_procedure"
 

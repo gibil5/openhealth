@@ -42,7 +42,11 @@
 
 
 						<button 
+							groups="openhealth.managers,openhealth.physicians"
+
+
 							type="object" 
+
 							class="oe_highlight"
 
 							string="Crear Sesiones"
@@ -73,10 +77,14 @@
 						-->
 
 						<button 
-							type="object" 
-							class="oe_highlight"
-							string="Crear Controles"
+							groups="openhealth.managers,openhealth.physicians"
 
+
+							type="object" 
+
+							class="oe_highlight"
+
+							string="Crear Controles"
 
 							attrs="{'invisible':[('laser', '!=', 'laser_co2')]}"
 

@@ -17,7 +17,7 @@
 
 		Clínica Chavarri\n
 
-		Laser - EMR - Min - Ama - Docean\n
+		Laser - EMR - Min - Ama - Docean - Ooor\n
 
 		Last built: 	1 June 2017 - Yey !
 

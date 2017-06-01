@@ -309,9 +309,22 @@
 					<field string="Historia Médica"  name="identification_code"/>
 					<field name="sex"/>		
 
+<!--
 					<field name="x_status"/>		
+					<field name="x_owner"/>		
+					<field name="x_sex"/>		
+-->
+
+					<field name="x_dni"/>		
+
+
 
 					<field name="x_date_created"/>
+
+					<field name="x_year_cre"/>
+					<field name="x_month_cre"/>
+
+
 
 					<field name="dob"/>
 					

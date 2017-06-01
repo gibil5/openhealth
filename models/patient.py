@@ -20,6 +20,48 @@ class Patient(models.Model):
 
 
 
+
+	x_year_cre = fields.Char(
+			string='Year created', 
+			#default = '', 
+			required=False, 
+		)
+		
+	x_month_cre = fields.Char(
+			string='Month created', 
+			#default = '', 
+			required=True, 
+		)
+
+
+
+	x_date_created = fields.Date(
+			string = "Fecha de apertura",
+			default = fields.Date.today, 
+
+			readonly = True, 
+			
+			required=True, 
+			)
+
+
+
+
+
+	x_year = fields.Char(
+			string='Year', 
+			required=False, 
+		)
+
+	x_month = fields.Char(
+			string='Month', 
+			required=True, 
+		)
+
+
+
+
+
 	x_status = fields.Char(
 			string='Status', 
 
@@ -338,14 +380,7 @@ class Patient(models.Model):
 
 
 
-	x_date_created = fields.Date(
-			string = "Fecha de apertura",
-			default = fields.Date.today, 
 
-			readonly = True, 
-			
-			required=True, 
-			)
 
 
 

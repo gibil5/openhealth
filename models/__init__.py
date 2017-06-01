@@ -6,7 +6,10 @@
 
 
 # In OpenHealth - Base - Deprecated
-#from . import partner
+
+from . import partner
+
+
 
 from . import patient  
 

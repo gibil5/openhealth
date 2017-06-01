@@ -239,6 +239,20 @@
 
 
 
+
+
+		<!-- Partners --> 
+		<menuitem id="partners_menu" name="Partners" parent="openhealth_menu"
+			sequence="-60"
+			action="partner_list_action"/>
+
+
+
+
+
+
+
+
 		<!-- Order Lines  --> 
 <!--
 		<menuitem id="order_lines_menu" name="Order Lines" 

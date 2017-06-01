@@ -20,6 +20,15 @@ class Patient(models.Model):
 
 
 
+	x_status = fields.Char(
+			string='Status', 
+
+			default = '00', 
+
+			#required=False, 
+			required=True, 
+		)
+
 
 
 	x_state = fields.Selection(
@@ -159,26 +168,33 @@ class Patient(models.Model):
 		)
 
 
+
+
+
+	# For Ccdata compatibility 
+
 	dob = fields.Date(
 			string="Fecha nacimiento",
 
-			required=True, 
-			#required=False, 
+			#required=True, 
+			required=False, 
 		)
 
 
 
 	street = fields.Char(
 			string = "Dirección", 	
-			required=True, 
-			#required=False, 
+			
+			#required=True, 
+			required=False, 
 		)
 
 
 	street2 = fields.Char(
 			string = "Distrito", 	
-			required=True, 
-			#required=False, 
+			
+			#required=True, 
+			required=False, 
 		)
 
 
@@ -186,8 +202,9 @@ class Patient(models.Model):
 	zip = fields.Integer(
 			string = 'Código',  
 			#compute='_compute_zip', 
-			required=True, 			
-			#required=False, 			
+
+			#required=True, 			
+			required=False, 			
 			)
 	#@api.multi
 	@api.depends('street2','city')
@@ -205,24 +222,27 @@ class Patient(models.Model):
 			string = 'email',  
 			placeholder = '',
 
-			required=True, 
-			#required=False, 
+			#required=True, 
+			required=False, 
 			)
+
 
 	country_id = fields.Many2one(
 			'res.country', 
 			string = 'País', 
 			default = 175,	# Peru
-			#required=False, 
-			required=True, 
+
+			required=False, 
+			#required=True, 
 			)
 
 	city = fields.Selection(
 			selection = pat_vars._city_list, 
 			string = 'Departamento',  
 			default = 'lima', 
-			required=True, 
-			#required=False, 
+
+			#required=True, 
+			required=False, 
 		)
 
 
@@ -231,7 +251,7 @@ class Patient(models.Model):
 		string="Teléfono 1",
 		
 		#required=True, 
-		#required=False, 
+		required=False, 
 		)
 
 
@@ -239,6 +259,7 @@ class Patient(models.Model):
 	# Phone 2
 	phone_2 = fields.Char(
 		string="Teléfono 2",
+
 		required=False, 
 		)
 

@@ -19,7 +19,7 @@
 
 		Laser - EMR - Min - Ama - Docean\n
 
-		Last built: 	31 May 2017 - Yey !
+		Last built: 	1 June 2017 - Yey !
 
 		Created: 	 	7 Sep 2016
 
@@ -215,8 +215,17 @@
 		# Physicians 
 		'views/physicians/physician.xml',
 
+
+
 		# Patients 
 		'views/patients/patient.xml',
+
+
+
+
+		# Partners
+		'views/partners/partner.xml',
+
 
 
 

@@ -32,6 +32,7 @@
 
 					<field name="x_type" />
 
+					<field name="id" />
 				</xpath>
 
 

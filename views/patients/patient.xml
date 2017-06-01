@@ -298,13 +298,23 @@
 
 				<tree string="Patient Tree">
 					<field name="name"/>
+<!--
 					<field name="x_last_name"  />
 					<field name="x_first_name"  />
 					<field name="x_full_name"  />
+-->
+
+
 					<field name="id"/>
 					<field string="Historia Médica"  name="identification_code"/>
-					<field name="sex"/>				
+					<field name="sex"/>		
+
+					<field name="x_status"/>		
+
+					<field name="x_date_created"/>
+
 					<field name="dob"/>
+					
 					<field name="age"/>
 				</tree>
 			</field>

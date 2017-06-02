@@ -21,28 +21,74 @@ class Patient(models.Model):
 
 
 
-	x_year_cre = fields.Char(
+
+
+	# Year created  
+	x_year_created = fields.Char(
 			string='Year created', 
 			#default = '', 
-			required=False, 
+			#required=False, 
+
+			index=True, 
+			#compute='_compute_x_year_created', 
 		)
-		
-	x_month_cre = fields.Char(
+
+	#@api.multi
+	#@api.depends('x_date_created')
+
+	#def _compute_x_year_created(self):
+	#	for record in self:
+	#		print 
+	#		print 'Compute x_year_created'
+	#		record.x_year_created = record.x_date_created.split('-')[0]
+
+
+	@api.onchange('x_date_created')
+	
+	def _onchange_x_date_created(self):
+
+		self.x_year_created = self.x_date_created.split('-')[0]
+
+		self.x_month_created = self.x_date_created.split('-')[1]
+
+
+
+
+
+
+	# Month created
+	x_month_created = fields.Char(
 			string='Month created', 
 			#default = '', 
-			required=True, 
+			#required=True, 
+
+			#compute='_compute_x_month_created', 
 		)
 
+	#@api.multi
+	#@api.depends('x_date_created')
+
+	#def _compute_x_month_created(self):
+	#	for record in self:
+	#		print 
+	#		print 'Compute x_month_created'
+	#		record.x_month_created = record.x_date_created.split('-')[1]
 
 
+
+
+
+	# Date created
 	x_date_created = fields.Date(
 			string = "Fecha de apertura",
 			default = fields.Date.today, 
 
-			readonly = True, 
+			#readonly = True, 
 			
 			required=True, 
 			)
+
+
 
 
 
@@ -678,6 +724,26 @@ class Patient(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Buttons Update ------------------------------------------------------
+
+
+	# Button - Update 
+	# -------------------
+	@api.multi
+	def x_update(self):  
+
+		print 
+		print 'Update'
+
+		self.x_date_created = self.x_date_created
+
+
+
+
+
+
+
 # ----------------------------------------------------------- Buttons Treatment ------------------------------------------------------
 
 
@@ -786,6 +852,8 @@ class Patient(models.Model):
 
 
 
+
+
 		# My logic 
 
 		# Create a Treatment - When Patient is created
@@ -793,8 +861,16 @@ class Patient(models.Model):
 		print 'name: ', name 
 		patient_id = self.env['oeh.medical.patient'].search([('name', '=', name),]).id 
 		print 'patient_id: ', patient_id
-
 		treatment = self.env['openhealth.treatment'].create({'patient': patient_id,})
+
+
+		x_date_created = vals['x_date_created']
+		print x_date_created 
+
+		#self.x_year_created = 'jx'
+		#print self.x_year_created
+
+
 
 		#print 'jx: end '
 		print 

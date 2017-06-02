@@ -25,10 +25,10 @@
 				<tree string="Partner Tree">					
 					<field name="name"/>
 					<field name="id"/>
-
+<!--
 					<field name="x_owner"/>				
 					<field name="x_sex"/>				
-
+-->
 					<field name="comment"/>				
 
 <!--					

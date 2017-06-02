@@ -32,6 +32,18 @@
 						<!--
 						<button name="print_patient_label" string="Historia Clínica" type="object" class="oe_highlight"/>
 						-->
+
+
+
+						<!-- Update --> 
+						<button 
+							type="object" 
+							class="oe_highlight"
+							string="Update" 
+
+							name="x_update" 
+						/>
+
 							
 
 
@@ -321,8 +333,8 @@
 
 					<field name="x_date_created"/>
 
-					<field name="x_year_cre"/>
-					<field name="x_month_cre"/>
+					<field name="x_year_created"/>
+					<field name="x_month_created"/>
 
 
 

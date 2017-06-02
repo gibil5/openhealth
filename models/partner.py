@@ -11,13 +11,11 @@ class Partner(models.Model):
 
 
 
-	x_owner = fields.Char(
-							string='Owner', 
-		)
-
-
-	x_sex = fields.Char(
-							string='Sex', 
-		)
+	#x_owner = fields.Char(
+	#						string='Owner', 
+	#	)
+	#x_sex = fields.Char(
+	#						string='Sex', 
+	#	)
 
 

@@ -333,9 +333,10 @@
 
 					<field name="x_date_created"/>
 
+<!--
 					<field name="x_year_created"/>
 					<field name="x_month_created"/>
-
+-->
 
 
 					<field name="dob"/>

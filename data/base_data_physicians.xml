@@ -25,6 +25,18 @@
 
 
 
+<!-- Acosta
+-->
+		<record id="dr_acosta" model="oeh.medical.physician">
+			<field name="name">Dra. Acosta</field>
+			<field name="x_type">doctor</field>
+			<field name=" consultancy_type ">residential</field>
+			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
+		</record>
+
+
+
+
 
 <!-- Chavarri -->
 		<record id="dr_chavarri" model="oeh.medical.physician">
@@ -722,14 +734,7 @@
 
 
 
-<!-- Acosta
-		<record id="dr_acosta" model="oeh.medical.physician">
-			<field name="name">Dr. Acosta</field>
-			<field name="x_type">doctor</field>
-			<field name=" consultancy_type ">residential</field>
-			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
-		</record>
--->
+
 
 
 <!--

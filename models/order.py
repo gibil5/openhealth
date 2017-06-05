@@ -38,6 +38,26 @@ class sale_order(models.Model):
 
 
 
+	note = fields.Text(
+			string="Note",		
+		)
+
+
+
+	# Doctor name  
+
+	x_doctor_name = fields.Char(
+		
+		)
+
+
+	doctor_name = fields.Char(
+								default = 'generic doctor',
+		)
+
+
+
+
 
 
 	# Consistency 
@@ -178,7 +198,9 @@ class sale_order(models.Model):
 
 	# Family 
 	x_family = fields.Selection(
-			string = "Tipo", 	
+
+			#string = "Tipo", 	
+			string = "Familia", 	
 
 			default='product',
 			
@@ -196,13 +218,6 @@ class sale_order(models.Model):
 
 
 
-	# Doctor name  
-	#x_doctor_name = fields.Char(
-	
-
-	doctor_name = fields.Char(
-									default = 'generic doctor',
-						)
 	
 
 
@@ -945,11 +960,13 @@ class sale_order(models.Model):
 		)
 
 	x_cancel_reason = fields.Char(
-			string='Motivo de anulación', 
+			#string='Motivo de anulación', 
+			string='Tipo', 
 		)
 
 	x_cancel_owner = fields.Char(
-			string='Quién anula', 
+			#string='Quién anula', 
+			string='Producto', 
 		)
 
 
@@ -2555,6 +2572,41 @@ class sale_order(models.Model):
 
 
 
+
+
+
+
+# ----------------------------------------------------------- CRUD ------------------------------------------------------
+
+
+
+
+
+
+	@api.multi
+	def unlink(self):
+
+		print 
+		print 'Order - Unlink - Override'
+		print 
+		
+		for invoice in self:
+
+			if invoice.state not in ('draft', 'cancel'):
+				print 'jx - Warning'				
+				#raise Warning(('You cannot delete an invoice which is not draft or cancelled. You should refund it instead. - jx'))
+		
+		return models.Model.unlink(self)
+
+
+
+
+
+
+
+
 #sale_order()
+
+
 
 

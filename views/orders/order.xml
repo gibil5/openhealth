@@ -1013,6 +1013,10 @@ Order Line - Tree
 
                     <field name="name"/>
 
+					<field name="note" />  
+
+
+
                     <field name="partner_id"/>
 
 
@@ -1022,11 +1026,23 @@ Order Line - Tree
 
 					<field name="x_doctor"		/>
 
+<!--
+					<field name="x_doctor_name"		/>
+					<field name="doctor_name"		/>
+-->
+
+
+					<field name="x_cancel_owner"/>
+					<field name="x_cancel_reason"/>
+<!--
+					<field name="x_cancel"/>
+--> 
+
 
 <!--
 					<field name="x_target"/>
--->
 					<field name="x_family"/>
+-->
 
 
 
@@ -1268,7 +1284,12 @@ Order Line - Tree
                <search string="orders">
 
                    <field name="partner_id" />
+
+<!--
+                   <field name="physician" />  
+-->
                    <field name="x_doctor" />               
+
 
                    <field name="x_family" />               
                

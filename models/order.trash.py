@@ -658,3 +658,23 @@ class Order(models.Model):
 
 
 
+
+	@api.model
+	def unlink(self,vals):
+		print 
+		print 'Order - Unlink - Override'
+		print 
+		print vals
+		print 
+	
+	
+		#print self.state
+		#self.state = 'draft'
+		#print self.state
+
+
+		#Write your logic here
+		res = super(sale_order).unlink(vals)
+		#Write your logic here
+		return res
+

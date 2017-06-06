@@ -2,6 +2,31 @@
 
 
 
+
+
+
+
+# Consultation
+_state_list = [
+					('draft', 	'Inicio'),
+
+					('inprogress', 	'En progreso'),
+
+					('done', 	'Completo'),
+				]
+
+
+_hash_progress = {
+
+						'draft':          	10, 
+						'inprogress': 		50,
+						'done': 			100, 
+				}	
+
+
+
+
+
 # Evaluation
 EVALUATION_TYPE = [
 		('Pre-arraganged Appointment', 'Consulta'),

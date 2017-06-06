@@ -164,6 +164,14 @@ DEPRECATED
 							name="open_appointment" 
 						/>
 						-->
+
+
+						<field 	name="state" 
+
+							widget="statusbar" 
+
+							statusbar_visible="draft, inprogress, done"
+						/>
 					</header>
 					
 					
@@ -461,7 +469,10 @@ DEPRECATED
 								<field name="appointment"   required="1"/>	
 							</group>		
 							<group>				
+<!--
 								<field name="x_fitzpatrick" 	required="1"/>	
+-->						
+								<field name="x_fitzpatrick" 	required="0"/>	
 							</group>
 
 
@@ -473,7 +484,11 @@ DEPRECATED
 								<field name="x_profile"/>	
 							</group>							
 							<group>						
+<!--
 								<field name="x_photo_aging"  	required="1"/>	
+-->
+								<field name="x_photo_aging"  	required="0"/>	
+
 <!--								
 								<field name="vspace"/>
 -->

@@ -839,6 +839,7 @@ class sale_order(models.Model):
 
 
 
+
 	# Appointment 
 	x_appointment = fields.Many2one(
 			'oeh.medical.appointment',
@@ -858,16 +859,28 @@ class sale_order(models.Model):
 		for record in self:
 
 
-			if record.x_family == 'procedure':
+			if record.x_family == 'procedure':				
 				app = self.env['oeh.medical.appointment'].search([
 																	('patient', '=', record.patient.name), 
 																	('x_type', '=', 'procedure'),
-																	#('x_target', '=', record.x_target),	
 																	('doctor', '=', record.x_doctor.name), 
+																	#('x_target', '=', record.x_target),	
 																],
 																	order='appointment_date desc',
 																	limit=1,
 																)
+			elif record.x_family == 'consultation':				
+				app = self.env['oeh.medical.appointment'].search([
+																	('patient', '=', record.patient.name), 
+																	('x_type', '=', 'consultation'),
+																	('doctor', '=', record.x_doctor.name), 
+																	#('x_target', '=', record.x_target),	
+																],
+																	order='appointment_date desc',
+																	limit=1,
+																)
+			
+			if record.x_appointment != False:
 				record.x_appointment = app
 
 
@@ -2251,10 +2264,9 @@ class sale_order(models.Model):
 
 
 		#if self.x_doctor.name != False   and   self.x_machine == False:
-		if self.x_doctor.name != False   and   self.x_machine == False	 and 	self.x_machine_req != 'consultation':
-			
+		#if self.x_doctor.name != False   and   self.x_machine == False	 and 	self.x_machine_req != 'consultation':
+		if self.x_treatment == 'laser_co2'   and   self.x_machine == False:
 			print 'Warning: Sala no Reservada !'
-
 
 		else:
 			print 'Success !!!'
@@ -2262,6 +2274,10 @@ class sale_order(models.Model):
 			#self.x_state = 'sale'
 			#self.x_confirmed = True 
 
+
+			#if self.x_family == 'consultation': 
+			if self.x_family == 'consultation'	or 	self.x_family == 'procedure': 
+				self.x_appointment.state = 'Scheduled'
 
 
 			# State is changed here ! 

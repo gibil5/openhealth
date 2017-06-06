@@ -460,10 +460,14 @@ class Appointment(models.Model):
 		]
 
 
-	state = fields.Selection(
-			selection = APPOINTMENT_STATUS, 
 
+	state = fields.Selection(
+
+			selection = APPOINTMENT_STATUS, 
 			string="Estado",
+			
+			default='pre_scheduled',
+
 			readonly=False, 
 			required=True, 
 		)

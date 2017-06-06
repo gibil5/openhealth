@@ -58,9 +58,10 @@
 										<field string="Médico" name="doctor"/>
 										<field name="chief_complaint"/>
 										<field name="evaluation_start_date"		string = "Fecha"/>
-											
-																				
-										
+		
+
+										<field name="progress"		widget="progressbar"/>
+																												
 									</tree>
 								</field>
 							</page>

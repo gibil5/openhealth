@@ -46,6 +46,7 @@
 
 					<!-- Remove --> 
 <!--
+-->
 					<div class="oe_left">
 							<button 
 								type="object" 
@@ -54,7 +55,6 @@
 								name="remove_appointment" 
 							/>
 					</div>
--->
 				</xpath>
 
 

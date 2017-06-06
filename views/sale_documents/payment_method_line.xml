@@ -119,13 +119,13 @@ attrs="{'invisible':[
 								<field name="payment_method"   />	
 								<field name="vspace"   />	
 
-
+<!--
 								<field name="code" 		
 
 														attrs="{	'invisible':[ ('method', 'in', ['cash', 'cuota_perfecta'] ),], 
 																	'required':[ ('method', 'in', ['debit_visa', 'debit_master', 'credit_visa', 'credit_master', 'diners', 'american_express'] ),]
 																}"
-
+-->
 								/>
 							</group>
 

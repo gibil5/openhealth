@@ -48,6 +48,7 @@
 							type="action" 
 							class="oe_highlight"
 							states="empty"
+							
 							context="{									
 											'search_default_doctor': physician,
 											'default_patient': patient, 
@@ -757,7 +758,10 @@ Fields
 								<field name="treatment_open"	invisible="1"	/>
 
 								<field name="chief_complaint"		required="1"/>
+
 							
+								<field name="vspace" />
+								<field name="consultation_progress"		/>
 							</group>
 							<group>
 							

@@ -37,6 +37,10 @@ class Treatment(models.Model):
 			compute='_compute_name', 
 			)
 
+	vspace = fields.Char(
+			' ', 
+			readonly=True
+			)
 
 
 
@@ -253,6 +257,14 @@ class Treatment(models.Model):
 
 
 
+	# Consultation progress
+	consultation_progress = fields.Float(
+
+			default = 0, 
+		)
+
+
+
 
 	# State 
 	state = fields.Selection(
@@ -297,8 +309,10 @@ class Treatment(models.Model):
 
 
 
-			if record.nr_consultations > 0:
+			#if record.nr_consultations > 0:
+			if record.consultation_progress == 100:
 				state = 'consultation'
+
 
 			if record.nr_services > 0:
 				state = 'service'
@@ -1717,10 +1731,6 @@ class Treatment(models.Model):
 
 		#elif target == 'procedure':
 		else:
-
-
-
-
 #jz
 			order_id = order.id
 

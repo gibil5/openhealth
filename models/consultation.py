@@ -46,6 +46,90 @@ class Consultation(models.Model):
 
 
 
+
+	# state 
+	state = fields.Selection(
+
+			#selection = ord_vars._state_list, 
+			selection = eval_vars._state_list, 
+
+			string='Estado',	
+
+			default='draft',
+
+			compute='_compute_state', 
+			)
+
+	@api.multi
+	#@api.depends('state')
+
+	def _compute_state(self):
+		for record in self:
+
+			pro = 0
+
+
+			if record.x_fitzpatrick != False:
+				pro = pro + 1
+
+			if record.x_photo_aging != False:
+				pro = pro + 1
+			
+			if record.x_diagnosis != False:
+				pro = pro + 1
+			
+			if record.x_antecedents != False:
+				pro = pro + 1
+
+
+			if record.x_allergies_medication != False:
+				pro = pro + 1
+
+			if record.x_observations != False:
+				pro = pro + 1
+
+			if record.x_indications != False:
+				pro = pro + 1
+
+
+			if pro == 0:
+				record.state = 'draft'
+			elif pro == 7:
+				record.state = 'done'
+			elif 0 < pro < 7: 
+				record.state = 'inprogress'
+
+
+
+
+
+	progress = fields.Float(
+			string='Progreso', 			
+			default = 0., 
+
+			compute='_compute_progress', 
+		)
+
+
+	@api.multi
+	#@api.depends('state')
+
+	def _compute_progress(self):
+		for record in self:
+			print 
+			print 'jx'
+			print 'Compute progress'
+			record.progress = eval_vars._hash_progress[record.state]
+			print 
+
+
+
+
+
+
+
+
+
 	x_profile = fields.Selection(
 			string="Perfil psicológico", 
 			selection=app_vars._profile_list, 

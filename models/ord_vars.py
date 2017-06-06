@@ -29,18 +29,17 @@ _x_state_list = [
 
 
 
-				('payment', 		'Pagado'),
-
-				('proof', 		     'Comprobante'),
-
+				('payment', 		'Pagos'),
+				('proof', 		    'Comprobante'),
 
 
 				('machine', 		'Reservación de Sala'),
 
-
-
 				
-				('sale', 			'Venta'),
+				#('sale', 			'Venta'),
+				('sale', 			'Pagado'),
+
+
 				#('invoice', 		'Facturado'),
 				
 

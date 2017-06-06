@@ -435,6 +435,7 @@
 
 
 																('x_machine','=',False), 
+
 -->
 
 					<button 
@@ -454,6 +455,8 @@
 																('x_family','!=','procedure'),
 
 																('state','!=','proof'), 
+
+																('x_machine_req','=','laser_co2_1'), 
 									]}"
 
 					/>
@@ -966,10 +969,12 @@ Order Line - Tree
 
 
 
-<!--
 					<field name="vspace"/>
 					<field name="x_product"/>
+					<field name="x_treatment"/>
 					<field name="x_machine_req"/>
+
+<!--
 					<field name="x_target"/>
 -->
 

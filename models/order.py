@@ -722,9 +722,14 @@ class sale_order(models.Model):
 	x_product = fields.Many2one(
 			'product.template',			
 			string="Producto",
-			
 			#required=True, 
 			
+
+			domain = [
+						('x_treatment', '=', 'laser_co2'),						
+					],
+
+
 			compute='_compute_x_product', 
 			)
 
@@ -738,11 +743,38 @@ class sale_order(models.Model):
 			flag = False
 
 			for line in record.order_line:
-				product = line.product_id.id
-				flag = True 
+				if line.product_id.x_treatment == 'laser_co2':
+					product = line.product_id.id
+					flag = True 
+
 
 			if flag: 
 				record.x_product = product
+
+
+
+
+
+
+
+	# Treatment
+	x_treatment = fields.Char(
+			#string="Tratamiento",
+			#required=True, 
+
+			compute='_compute_x_treatment', 
+			)
+
+	#@api.multi
+	@api.depends('x_product')
+	def _compute_x_treatment(self):
+		for record in self:
+			record.x_treatment = record.x_product.x_treatment
+
+
+
+
+
 
 
 
@@ -2334,22 +2366,15 @@ class sale_order(models.Model):
 		print 'Reserve Machine'
 		print 
 
-
 		date_format = "%Y-%m-%d %H:%M:%S"
 		duration = self.x_appointment.duration 
 		delta = datetime.timedelta(hours=duration)
 
 
-
 		# Easiest first 
 		#self.x_appointment.x_machine = self.x_machine_req
-
-
-
-
-
-
 		#m_list = ['laser_co2_1', 'laser_co2_2', 'laser_co2_3']
+
 
 		m_dic = {
 					'consultation':			[], 

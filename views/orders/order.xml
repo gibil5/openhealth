@@ -1027,7 +1027,6 @@ Order Line - Tree
 					<field name="x_doctor"		/>
 
 <!--
-					<field name="x_doctor_name"		/>
 					<field name="doctor_name"		/>
 -->
 
@@ -1048,7 +1047,22 @@ Order Line - Tree
 
                     <field name="state"/>
                     <field name="nr_lines"/>
+
+
+<!--
                     <field name="x_amount_total" 	sum="Total Tax Included"	widget="monetary"/>
+                    <field name="amount_total" 		sum="Total Tax Included"	widget="monetary"/>
+-->
+
+                    <field name="x_amount_total" 	sum="Total Tax Included"	widget="monetary"/>
+
+
+
+<!--
+					<field name="x_doctor_name"		/>
+					<field name="x_ruc"		/>
+-->
+
                     <field name="date_order"		string="Fecha"/>
 
 <!--

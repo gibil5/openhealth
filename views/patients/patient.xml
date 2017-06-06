@@ -36,6 +36,7 @@
 
 
 						<!-- Update --> 
+<!--
 						<button 
 							type="object" 
 							class="oe_highlight"
@@ -43,7 +44,7 @@
 
 							name="x_update" 
 						/>
-
+-->
 							
 
 
@@ -62,7 +63,6 @@
 							type="object" 
 							class="oe_highlight"
 							string="Crear Cosmiatría" 
-
 							name="open_cosmetology_current" 
 						/>
 
@@ -202,8 +202,8 @@
 						<group>
 							<group>
 
-								<field string='Fecha de nacimiento'  name="dob" />
-								<field string='Sexo' name="sex" />
+								<field string='Fecha de nacimiento'  name="dob" 	required="1" />
+								<field string='Sexo' name="sex" 	required="1" />
 								<!--
 								<field string='Estado civil'  name="marital_status" required="1"/>									
 								-->

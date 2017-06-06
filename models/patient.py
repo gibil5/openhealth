@@ -273,8 +273,8 @@ class Patient(models.Model):
 	street = fields.Char(
 			string = "Dirección", 	
 			
-			#required=True, 
-			required=False, 
+			required=True, 
+			#required=False, 
 		)
 
 
@@ -291,8 +291,8 @@ class Patient(models.Model):
 			string = 'Código',  
 			#compute='_compute_zip', 
 
-			#required=True, 			
-			required=False, 			
+			required=True, 			
+			#required=False, 			
 			)
 	#@api.multi
 	@api.depends('street2','city')
@@ -310,8 +310,8 @@ class Patient(models.Model):
 			string = 'email',  
 			placeholder = '',
 
-			#required=True, 
-			required=False, 
+			required=True, 
+			#required=False, 
 			)
 
 
@@ -320,8 +320,8 @@ class Patient(models.Model):
 			string = 'País', 
 			default = 175,	# Peru
 
-			required=False, 
-			#required=True, 
+			#required=False, 
+			required=True, 
 			)
 
 	city = fields.Selection(
@@ -329,8 +329,8 @@ class Patient(models.Model):
 			string = 'Departamento',  
 			default = 'lima', 
 
-			#required=True, 
-			required=False, 
+			required=True, 
+			#required=False, 
 		)
 
 
@@ -338,8 +338,8 @@ class Patient(models.Model):
 	phone_1 = fields.Char(
 		string="Teléfono 1",
 		
-		#required=True, 
-		required=False, 
+		required=True, 
+		#required=False, 
 		)
 
 

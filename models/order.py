@@ -39,7 +39,7 @@ class sale_order(models.Model):
 
 
 	note = fields.Text(
-			string="Note",		
+			string="Nota",		
 		)
 
 
@@ -879,7 +879,8 @@ class sale_order(models.Model):
 
 	# Amount total 
 	x_amount_total = fields.Float(
-			string = "Total",
+			#string = "x Amount Total",
+			string = "x Total",
 			compute="_compute_x_amount_total",
 		)
 
@@ -892,9 +893,11 @@ class sale_order(models.Model):
 			sub = 0.0
 
 			for line in record.order_line:
-
 				sub = sub + line.price_subtotal 
-			
+
+			if sub == 0.0:
+				sub = float(record.x_ruc)
+
 			record.x_amount_total = sub
 
 

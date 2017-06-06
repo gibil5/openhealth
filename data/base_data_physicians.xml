@@ -34,6 +34,17 @@
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
 		</record>
 
+<!-- Pedemonte
+-->
+		<record id="dr_pedemonte" model="oeh.medical.physician">
+			<field name="name">Dra. Pedemonte</field>
+			<field name="x_type">doctor</field>
+			<field name=" consultancy_type ">residential</field>
+			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
+		</record>
+
+
+
 
 
 

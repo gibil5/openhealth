@@ -436,6 +436,16 @@
 
 																('x_machine','=',False), 
 
+
+
+																'|',
+																('x_family','!=','procedure'),
+
+																('state','!=','proof'), 
+
+																('x_machine_req','=','laser_co2_1'), 
+
+													('consultation_progress','in',[ False, '0.0',0.0, 0]),
 -->
 
 					<button 
@@ -451,13 +461,11 @@
 
 
 
-							attrs="{'invisible':		['|',
-																('x_family','!=','procedure'),
+							attrs="{'invisible':[			
 
-																('state','!=','proof'), 
+													('x_machine_req','not in',['laser_co2_1']), 
 
-																('x_machine_req','=','laser_co2_1'), 
-									]}"
+											]}"
 
 					/>
 

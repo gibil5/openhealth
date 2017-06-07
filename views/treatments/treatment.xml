@@ -124,8 +124,18 @@ jz
 							states="invoice_consultation"
 
 
+
+							attrs="{'invisible':[
+												
+													('consultation_progress','in',[ False, '0.0', 0.0, 0, '10.0', 10.0, 10]),
+
+												]}"
+
+
 							name="open_consultation_current" 
 						/>
+
+
 
 
 

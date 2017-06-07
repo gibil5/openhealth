@@ -257,11 +257,23 @@ class Treatment(models.Model):
 
 
 
+
+
 	# Consultation progress
 	consultation_progress = fields.Float(
 
 			default = 0, 
+			compute="_compute_progress",
 		)
+
+	@api.multi
+	#@api.depends('consultation_ids')
+
+	def _compute_progress(self):
+		for record in self:
+
+			for con in record.consultation_ids:
+				record.consultation_progress = con.progress
 
 
 

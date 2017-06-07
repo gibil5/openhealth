@@ -361,32 +361,25 @@ class SaleDocument(models.Model):
 		print 
 		print 'Create Receipt'
 
-
 		# Search 
 		receipt_id = self.env['openhealth.receipt'].search([
 																#('order','=',self.order.id),
 																('sale_document','=',self.id),
 															]).id
 
-
-
 		# Create 
 		if receipt_id == False:
 
 			receipt = self.env['openhealth.receipt'].create({
 																'sale_document': self.id,
-
 																#'order': self.order.id,
-
 																'total': self.total, 
-
 																'partner': self.partner.id,				
 													})
 			receipt_id = receipt.id 
 
 
 		self.receipt = receipt_id
-
 
 		return {
 				'type': 'ir.actions.act_window',
@@ -396,24 +389,18 @@ class SaleDocument(models.Model):
 				'view_mode': 'form',	
 				'target': 'current',
 
-
 				'res_model': 'openhealth.receipt',				
 				'res_id': receipt_id,
-
 
 				'flags': 	{
 							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 							'form': {'action_buttons': True, }
 							},
 
-
 				'context': {
 							'default_sale_document': self.id,
-
 							#'default_order': self.order.id,
-
 							'default_total': self.total,
-
 							'default_partner': self.partner.id,
 							}
 				}

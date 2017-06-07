@@ -18,10 +18,8 @@ class SaleProof(models.Model):
 	# Open Order
 	@api.multi 
 	def open_order(self):
-
 		print 
 		print 'Open order'
-
 
 		ret = self.order.open_myself()
 
@@ -29,6 +27,28 @@ class SaleProof(models.Model):
 	# open_order
 
 
+
+	# Open Payment Method
+	@api.multi 
+	def open_pm(self):
+		print 
+		print 'Open Payment method'
+
+		ret = self.payment_method.open_myself()
+
+		return ret 
+	# open_order
+
+
+
+
+
+
+
+	payment_method = fields.Many2one('openhealth.payment_method',
+			ondelete='cascade', 
+			string="Payment method",
+			)
 
 
 

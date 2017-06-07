@@ -38,10 +38,142 @@ class payment_method(models.Model):
 
 
 
+
+
+
+
+	# Open Myself
+	@api.multi 
+	def open_myself(self):
+		print 
+		print 'Open Myself'
+		payment_method_id = self.id  
+
+
+
+		return {
+				# Mandatory 
+				'type': 'ir.actions.act_window',
+				'name': 'Open payment method Current',
+
+
+				# Window action 
+				'res_model': 'openhealth.payment_method',
+				'res_id': payment_method_id,
+
+
+				# Views 
+				"views": [[False, "form"]],
+				'view_mode': 'form',
+				'target': 'current',
+
+
+				#'view_id': view_id,
+				#"domain": [["patient", "=", self.patient.name]],
+				#'auto_search': False, 
+
+				'flags': {
+						'form': {'action_buttons': True, }
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+				},			
+
+				'context':   {
+
+				}
+			}
+	# open_myself
+
+
+
+
+
+
+
+
+	# Partner 
+	partner = fields.Many2one(
+			'res.partner',
+			string = "Cliente", 	
+			required=True, 
+		)
+
+
+
+
 	# Create Saledoc
 	@api.multi 
 	def create_saledoc(self):
 		print 'Create Saledoc'
+
+		ret = ''
+
+		if self.saledoc == 'receipt':
+			ret = self.create_receipt()
+
+		return ret 
+
+
+
+
+
+	# Create Receipt
+	@api.multi 
+	def create_receipt(self):
+		print 
+		print 'Create Receipt'
+
+		# Search 
+		receipt_id = self.env['openhealth.receipt'].search([
+																('payment_method', '=', self.id),
+																#('sale_document','=',self.id),
+															]).id
+
+
+		# Create 
+		if receipt_id == False:
+
+			receipt = self.env['openhealth.receipt'].create({
+																'payment_method': self.id,
+																#'sale_document': self.id,
+																'partner': self.partner.id,
+																'order': self.order.id,
+																'total': self.total,
+														})
+			receipt_id = receipt.id 
+
+
+
+
+		self.receipt = receipt_id
+
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' New Receipt Current', 
+
+				'view_type': 'form',
+				'view_mode': 'form',	
+				'target': 'current',
+
+				'res_model': 'openhealth.receipt',				
+				'res_id': receipt_id,
+
+				'flags': 	{
+							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+							'form': {'action_buttons': True, }
+							},
+
+				'context': {
+							'default_payment_method': self.id,
+
+							#'default_order': self.order.id,
+							'default_total': self.total,
+							'default_partner': self.partner.id,
+							}
+				}
+
+	# create_receipt
+
+
 
 
 
@@ -191,8 +323,12 @@ class payment_method(models.Model):
 
 	# state 
 	_state_list = [
-					('draft', 'En curso'),
+					('draft', 'Inicio'),
+
+					('payment', 'Pagado'),
+
 					('done', 'Completo'),
+					
 					#('cancel', 'Cancelled'),
 				]
 
@@ -225,7 +361,14 @@ class payment_method(models.Model):
 			#	record.state = 'proof'
 
 			if record.balance == 0.0:
+				record.state = 'payment'
+
+
+			if	record.env['openhealth.receipt'].search_count([('payment_method','=', record.id),]):
 				record.state = 'done'
+
+
+
 
 
 		print record.state

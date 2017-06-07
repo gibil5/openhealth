@@ -762,9 +762,10 @@ Fields
 
 								<field name="chief_complaint"		required="1"/>
 
-							
+<!--
 								<field name="vspace" />
 								<field name="consultation_progress"		/>
+-->
 							</group>
 							<group>
 							

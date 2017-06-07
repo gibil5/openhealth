@@ -51,20 +51,6 @@
 
 
 
-						<!-- Back to Order --> 
-<!--
-
-						<button 
-								name="open_order"
-								type="object" 
-								class="oe_highlight"
-
-								states="done"						
-
-								string="Regresar al PRESUPUESTO"
-						/>
--->
-
 					
 
 
@@ -75,10 +61,26 @@
 								
 								class="oe_highlight"
 
-								states="done"						
+								states="payment"						
 
 								string="Crear el Documento de Pago"
 						/>
+
+
+						<!-- Back to Order --> 
+<!--
+-->
+						<button 
+								name="open_order"
+								type="object" 
+								class="oe_highlight"
+
+								states="done"						
+
+								string="Regresar"
+						/>
+
+
 
 
 
@@ -87,7 +89,7 @@
 
 								widget="statusbar" 
 
-								statusbar_visible="draft, done"
+								statusbar_visible="draft, payment, done"
 						/>
 					</header>
 
@@ -115,6 +117,7 @@
 -->
 								<field name="order"   />													
 								
+								<field name="partner"   readonly=""	/>													
 							</group>
 
 
@@ -161,6 +164,25 @@
 <!-- Notebook --> 
 						<notebook position="inside">
 					
+
+
+
+							<!-- Payments --> 
+							<page string="Pagos">
+								<!--
+								<field name="appointment_ids"/>
+								<tree string=""		default_order='appointment_date, x_machine'>
+								-->
+								<field name="pm_line_ids">
+									<tree>	
+										<field name="name"	/>
+										<field name="method"	/>
+										<field name="code"	/>
+										<field name="subtotal"	/>
+									</tree>
+								</field>
+							</page>
+
 
 
 
@@ -225,42 +247,12 @@
 																				('saledoc','in',[ False, 'receipt', 'advertisement', 'sale_note', 'ticket_receipt', 'invoice', 'none',]),
 															]}"
 										/>
-
-
-
-
-
-
 								</group>
-
 							</group>
-
 							</page>
 
 
 
-							<!-- Payments --> 
-							<page string="Pagos">
-
-								<!--
-								<field name="appointment_ids"/>
-								<tree string=""		default_order='appointment_date, x_machine'>
-								-->
-
-								<field name="pm_line_ids">
-									<tree>	
-
-										<field name="name"	/>
-
-										<field name="method"	/>
-
-										<field name="code"	/>
-
-										<field name="subtotal"	/>
-
-									</tree>
-								</field>
-							</page>
 
 
 

@@ -42,6 +42,7 @@
 
 
 							statusbar_visible="draft, payment, proof, sale, invoice"
+							statusbar_visible="draft, payment, proof, sale, printed"
 -->	
 
 
@@ -50,7 +51,8 @@
 					<field 	name="state" 
 							widget="statusbar" 
 
-							statusbar_visible="draft, payment, proof, sale, printed"
+
+							statusbar_visible="draft, sale, printed"
 					/>
 				</xpath>
 

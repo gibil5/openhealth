@@ -186,11 +186,8 @@ class sale_order(models.Model):
 
 	# Partner 
 	partner_id = fields.Many2one(
-
 			'res.partner',
-		
 			string = "Cliente", 	
-
 			required=True, 
 		)
 
@@ -1158,6 +1155,9 @@ class sale_order(models.Model):
 																				'total': self.x_amount_total,
 
 																				'balance': balance, 
+
+
+																				'partner': self.partner_id.id, 
 																			})
 		payment_method_id = self.x_payment_method.id 
 
@@ -1166,7 +1166,10 @@ class sale_order(models.Model):
 #jz
 		# State - Change
 		print 'State changes'
-		self.state = 'payment'
+
+		#self.state = 'payment'
+		self.state = 'sale'
+		
 		print self.state
 		print 
 
@@ -1200,6 +1203,8 @@ class sale_order(models.Model):
 							'default_subtotal': balance,
 							'default_total': self.x_amount_total,
 							'default_pm_total': self.pm_total,
+
+							'default_partner': self.partner_id.id,
 							}
 				}
 

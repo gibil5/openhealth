@@ -53,7 +53,6 @@
 
 						<!-- Back to Order --> 
 <!--
--->
 
 						<button 
 								name="open_order"
@@ -64,8 +63,23 @@
 
 								string="Regresar al PRESUPUESTO"
 						/>
+-->
 
 					
+
+
+						<button 
+								name="create_saledoc"
+
+								type="object" 
+								
+								class="oe_highlight"
+
+								states="done"						
+
+								string="Crear el Documento de Pago"
+						/>
+
 
 
 						<!-- State --> 
@@ -99,6 +113,7 @@
 <!--								
 								<field name="name"   />													
 -->
+								<field name="order"   />													
 								
 							</group>
 
@@ -143,9 +158,88 @@
 
 
 
-
+<!-- Notebook --> 
 						<notebook position="inside">
 					
+
+
+
+							<!-- Sale document --> 
+							<page string="Documento de Pago">
+
+
+							<group>
+
+								<group>
+									<field name="saledoc"	widget="radio"	/>
+								</group>
+
+								<group>
+									<field name="saledoc_code"		/>
+
+
+									<field name="receipt"		
+															readonly="1"
+															attrs="{'invisible':[
+																				('saledoc','in',[ False, 'invoice', 'advertisement', 'sale_note', 'ticket_receipt', 'ticket_invoice', 'none',]),
+															]}"
+										/>
+
+
+									<field name="invoice"		
+															readonly="1"
+															attrs="{'invisible':[
+																				('saledoc','in',[ False, 'receipt', 'advertisement', 'sale_note', 'ticket_receipt', 'ticket_invoice', 'none',]),
+															]}"
+										/>
+								
+
+									<field name="advertisement"		
+															readonly="1"
+															attrs="{'invisible':[
+																				('saledoc','in',[ False, 'receipt', 'invoice', 'sale_note', 'ticket_receipt', 'ticket_invoice', 'none',]),
+															]}"
+										/>
+
+
+									<field name="sale_note"		
+															readonly="1"
+															attrs="{'invisible':[
+																				('saledoc','in',[ False, 'receipt', 'invoice', 'advertisement', 'advertisement', 'ticket_receipt', 'ticket_invoice', 'none',]),
+															]}"
+										/>
+
+
+
+									<field name="ticket_receipt"		
+															readonly="1"
+															attrs="{'invisible':[
+																				('saledoc','in',[ False, 'receipt', 'invoice', 'advertisement', 'sale_note', 'sale_note', 'ticket_invoice', 'none',]),
+															]}"
+										/>
+
+
+									<field name="ticket_invoice"		
+															readonly="1"
+															attrs="{'invisible':[
+																				('saledoc','in',[ False, 'receipt', 'advertisement', 'sale_note', 'ticket_receipt', 'invoice', 'none',]),
+															]}"
+										/>
+
+
+
+
+
+
+								</group>
+
+							</group>
+
+							</page>
+
+
+
+							<!-- Payments --> 
 							<page string="Pagos">
 
 								<!--
@@ -166,9 +260,15 @@
 
 									</tree>
 								</field>
-
-
 							</page>
+
+
+
+
+
+
+
+
 						</notebook>
 					</sheet>
 				</form>

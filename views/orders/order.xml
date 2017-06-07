@@ -373,7 +373,7 @@
 							string="Módulo de Pago"
 
 
-							states="draft"						
+							states="draft,payment"						
 
 							name="create_payment_method"
 							/>
@@ -386,12 +386,11 @@
 					<!--
 
 							attrs="{'invisible':	[('x_state', 'in', ['draft', 'proof',  'machine', 'sale', 'invoice'] ),	]}"
-					-->
 					<button 
 							type="object" 
 							class="oe_highlight"
 
-							string="Módulo Comprobante de pago" 
+							string="Módulo de Pago" 
 
 
 							states="payment"						
@@ -399,6 +398,7 @@
 
 							name="create_sale_document" 
 					/>
+					-->
 
 
 
@@ -446,6 +446,8 @@
 																('x_machine_req','=','laser_co2_1'), 
 
 													('consultation_progress','in',[ False, '0.0',0.0, 0]),
+
+
 -->
 
 					<button 
@@ -461,9 +463,11 @@
 
 
 
-							attrs="{'invisible':[			
+							attrs="{'invisible':[	'|',
 
 													('x_machine_req','not in',['laser_co2_1']), 
+
+													('state','not in',['proof']), 
 
 											]}"
 

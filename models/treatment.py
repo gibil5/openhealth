@@ -1309,86 +1309,81 @@ class Treatment(models.Model):
 		print 'jx'
 		print 'Open Consultation Current'
 
-
 		patient_id = self.patient.id
 		doctor_id = self.physician.id
 		treatment_id = self.id 
-
 		chief_complaint = self.chief_complaint
-
-
 
 		# Date 
 		GMT = time_funcs.Zone(0,False,'GMT')
-
 		print 'GMT: ', GMT
-		
 		evaluation_start_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
 		print 'evaluation_start_date: ', evaluation_start_date 
 
-
-
 		# Apointment 
 		appointment = self.env['oeh.medical.appointment'].search([ 	
-														
-															('patient', 'like', self.patient.name),		
-															
-															('doctor', 'like', self.physician.name), 	
-															
-															('x_type', 'like', 'consultation'), 
-														
-														], 
-														order='appointment_date desc', limit=1)
-
+																('patient', 'like', self.patient.name),		
+																('doctor', 'like', self.physician.name), 	
+																('x_type', 'like', 'consultation'), 
+															], 
+															order='appointment_date desc', limit=1)
 		print 'appointment: ', appointment
-
 		appointment_id = appointment.id
 
 
 
 
+		# Search  
+		consultation = self.env['openhealth.consultation'].search([
+																		('treatment','=', self.id),
+																],
+																#order='appointment_date desc',
+																limit=1,)
 
-
-		# Consultation 
-		print 'create consultation'
-		consultation = self.env['openhealth.consultation'].create(
-												{
-
-													'patient': patient_id,
-													'doctor': doctor_id,
-													'treatment': treatment_id,	
-
-													'evaluation_start_date': evaluation_start_date,
-													'chief_complaint': chief_complaint,
-													'appointment': appointment_id,
-												}
-											)
-		consultation_id = consultation.id 
-		print 'consultation: ', consultation
-		print 'consultation_id', consultation_id
+		# Create if it does not exist 
+		if consultation.name == False:
+			print 'create consultation'
 
 
 
+			# Consultation 
+			consultation = self.env['openhealth.consultation'].create(
+													{
 
-		# Update
-		rec_set = self.env['oeh.medical.appointment'].browse([
-																appointment_id																
-															])
-		print 'rec_set: ', rec_set
+														'patient': patient_id,
+														'doctor': doctor_id,
+														'treatment': treatment_id,	
 
-		ret = rec_set.write({
-								'consultation': consultation_id,
-							})
+														'evaluation_start_date': evaluation_start_date,
+														'chief_complaint': chief_complaint,
+														'appointment': appointment_id,
+													}
+												)
+			consultation_id = consultation.id 
+			print 'consultation: ', consultation
+			print 'consultation_id', consultation_id
 
-		print ret 
-		print appointment
-		print appointment.consultation
-		print appointment.consultation.id
+
+			# Update
+			rec_set = self.env['oeh.medical.appointment'].browse([
+																	appointment_id																
+																])
+			print 'rec_set: ', rec_set
+
+			ret = rec_set.write({
+									'consultation': consultation_id,
+								})
+
+			print ret 
+			print appointment
+			print appointment.consultation
+			print appointment.consultation.id
 
 
 
 		print 
-
+		consultation_id = consultation.id 
+		
 		return {
 
 			# Mandatory 

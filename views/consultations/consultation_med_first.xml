@@ -38,11 +38,11 @@
 
 						<group string="">
 
-							<group string="Diagnóstico">
+							<group string="Diagnóstico (*)">
 								<field name="x_diagnosis" 	nolabel="1"  required="0"/>
 							</group>
 
-							<group string="Antecedentes médicos">
+							<group string="Antecedentes médicos (*)">
 								<field name="x_antecedents" 	nolabel="1"  	required="0"/>
 							</group>
 						</group>
@@ -56,7 +56,7 @@
 						<group string="">
 										
 
-							<group string="Alergias a medicamentos">
+							<group string="Alergias a medicamentos (*)">
 								<field name="x_allergies_medication" 	nolabel="1"	required="0"/>
 							</group>
 
@@ -75,12 +75,12 @@
 
 						<group string="">
 									
-							<group string="Observaciones">
+							<group string="Observaciones (*)">
 								<field name="x_observations" nolabel="1"	required="0"/>
 							</group>
 
 
-							<group string="Indicaciones">
+							<group string="Indicaciones (*)">
 								<field name="x_indications" nolabel="1"		required="0"/>
 							</group>
 

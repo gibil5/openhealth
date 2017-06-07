@@ -109,6 +109,9 @@ jz
 												]}"
 
 							states="appointment"
+							attrs="{'invisible':[												
+													('consultation_progress','in',[ False, '0.0', 0.0, 0, '10.0', 10.0, 10]),
+												]}"
 -->
 						<button 
 							groups="openhealth.managers,openhealth.physicians"
@@ -120,17 +123,7 @@ jz
 
 							string="Crear CONSULTA" 
 							
-
 							states="invoice_consultation"
-
-
-
-							attrs="{'invisible':[
-												
-													('consultation_progress','in',[ False, '0.0', 0.0, 0, '10.0', 10.0, 10]),
-
-												]}"
-
 
 							name="open_consultation_current" 
 						/>

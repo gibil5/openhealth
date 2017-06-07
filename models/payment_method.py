@@ -38,6 +38,121 @@ class payment_method(models.Model):
 
 
 
+	# Create Saledoc
+	@api.multi 
+	def create_saledoc(self):
+		print 'Create Saledoc'
+
+
+
+
+
+	receipt = fields.Many2one(
+			'openhealth.receipt',
+			string = "Boleta", 			
+			#ondelete='cascade', 
+		)
+
+	invoice = fields.Many2one(
+			'openhealth.invoice',
+			string = "Factura", 			
+			#ondelete='cascade', 
+		)
+
+	advertisement = fields.Many2one(
+			'openhealth.advertisement',
+			string = "Canje publicidad", 			
+			#ondelete='cascade', 
+		)
+
+	sale_note = fields.Many2one(
+			'openhealth.sale_note',
+			string = "Nota de venta", 			
+			#ondelete='cascade', 
+		)
+
+	ticket_receipt = fields.Many2one(
+			'openhealth.ticket_receipt',
+			string = "Ticket Boleta", 			
+			#ondelete='cascade', 
+		)
+
+	ticket_invoice = fields.Many2one(
+			'openhealth.ticket_invoice',
+			string = "Ticket Factura", 			
+			#ondelete='cascade', 
+		)
+
+
+
+
+
+
+	_saledoc_list = [
+
+				('receipt', 			'Boleta'),
+				('invoice', 			'Factura'),
+
+				('advertisement', 		'Canje Publicidad'),
+				('sale_note', 			'Nota de Venta'),
+
+				('ticket_receipt', 		'Ticket Boleta'),
+				('ticket_invoice', 		'Ticket Factura'),
+
+				#('none', 				'Ninguno'),
+
+			]
+	
+
+	saledoc = fields.Selection(
+			string="Documento de venta", 
+			selection=_saledoc_list, 
+			default='receipt', 
+		)
+
+
+
+	saledoc_code = fields.Char(
+			string="No", 
+			compute="_compute_saledoc_code",
+		)
+
+	#@api.multi
+	@api.depends('saledoc')
+
+	def _compute_saledoc_code(self):
+		for record in self:
+
+			receipt_ctr = '00001'
+
+
+			if record.saledoc  == 'receipt':
+				pre = 'BO-'
+
+			if record.saledoc  == 'invoice':
+				pre = 'FA-'
+
+			if record.saledoc  == 'advertisement':
+				pre = 'CA-'
+
+			if record.saledoc  == 'sale_note':
+				pre = 'NV-'
+			
+			if record.saledoc  == 'ticket_receipt':
+				pre = 'TB-'
+			
+			if record.saledoc  == 'ticket_invoice':
+				pre = 'TF-'
+
+			if record.saledoc  == 'none':
+				pre = 'NO-'
+
+
+
+			code = receipt_ctr
+			record.saledoc_code = pre + code
+
+
 
 
 

@@ -347,8 +347,10 @@
 -->
 
 
-							<field name="vspace"/>							
-							<field name="treatment"		invisible="0"	readonly="1"	nolabel="0"	/>
+							<field name="vspace"/>
+
+							<field name="treatment"		invisible="0"	readonly="0"/>
+
 
 
 							<field name="cosmetology"			

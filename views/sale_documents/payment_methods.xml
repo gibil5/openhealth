@@ -163,10 +163,6 @@
 
 <!-- Notebook --> 
 						<notebook position="inside">
-					
-
-
-
 							<!-- Payments --> 
 							<page string="Pagos">
 								<!--
@@ -182,10 +178,11 @@
 									</tree>
 								</field>
 							</page>
+						</notebook>
 
 
 
-
+						<notebook position="inside">
 							<!-- Sale document --> 
 							<page string="Documento de Pago">
 
@@ -247,6 +244,12 @@
 																				('saledoc','in',[ False, 'receipt', 'advertisement', 'sale_note', 'ticket_receipt', 'invoice', 'none',]),
 															]}"
 										/>
+
+
+
+									<field name="vspace"/>
+									<field name="date_created"/>
+
 								</group>
 							</group>
 							</page>

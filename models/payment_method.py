@@ -39,6 +39,13 @@ class payment_method(models.Model):
 
 
 
+	# Date created 
+	date_created = fields.Datetime(
+			string="Fecha", 
+			#readonly=True,
+			required=True, 
+			)
+
 
 
 
@@ -138,6 +145,8 @@ class payment_method(models.Model):
 																'partner': self.partner.id,
 																'order': self.order.id,
 																'total': self.total,
+
+																'date_created': self.date_created,
 														})
 			receipt_id = receipt.id 
 
@@ -164,10 +173,12 @@ class payment_method(models.Model):
 
 				'context': {
 							'default_payment_method': self.id,
-
 							#'default_order': self.order.id,
 							'default_total': self.total,
 							'default_partner': self.partner.id,
+
+
+							'default_date_created': self.date_created,
 							}
 				}
 

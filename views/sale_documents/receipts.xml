@@ -79,7 +79,8 @@
 							<group>
 								<field name="partner"   />													
 							</group>
-							<group>							
+							<group>		
+								<field name="date_created"   />
 							</group>
 						</group>
 

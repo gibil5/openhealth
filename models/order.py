@@ -1156,8 +1156,10 @@ class sale_order(models.Model):
 
 																				'balance': balance, 
 
-
 																				'partner': self.partner_id.id, 
+
+
+																				'date_created': self.date_order,
 																			})
 		payment_method_id = self.x_payment_method.id 
 
@@ -1205,8 +1207,9 @@ class sale_order(models.Model):
 							'default_subtotal': balance,
 							'default_total': self.x_amount_total,
 							'default_pm_total': self.pm_total,
-
 							'default_partner': self.partner_id.id,
+
+							'default_date_created': self.date_order,
 							}
 				}
 

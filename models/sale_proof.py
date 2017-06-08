@@ -13,6 +13,15 @@ class SaleProof(models.Model):
 
 
 
+	# Date created 
+	date_created = fields.Datetime(
+			string="Fecha", 
+			#readonly=True,
+			required=True, 
+			)
+
+
+
 
 
 	# Open Order

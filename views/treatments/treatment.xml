@@ -43,6 +43,7 @@
 							name="open_appointment" 
 						-->
 
+
 						<button 
 							name="%(oeh_medical_appointment_action_tree_confirmed)d"	
 							type="action" 
@@ -51,12 +52,15 @@
 							
 							context="{									
 											'search_default_doctor': physician,
+
 											'default_patient': patient, 
 											'default_doctor' : physician, 
 											'default_appointment_date': start_date, 
+											
+											'default_treatment': active_id, 
 									}" 											
 
-							string="Crear  CITA"
+							string="Crear CITA"
 						/>
 
 

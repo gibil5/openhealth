@@ -1172,8 +1172,8 @@ class Appointment(models.Model):
 			string="Tratamiento",
 			ondelete='cascade', 
 			
-			required=False, 
-			#required=True, 
+			#required=False, 
+			required=True, 
 
 			#compute='_compute_treatment', 
 			)
@@ -1499,7 +1499,7 @@ class Appointment(models.Model):
 		print
 
 
-		print self.treatment
+		#print self.treatment
 
 
 

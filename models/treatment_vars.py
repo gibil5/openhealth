@@ -50,7 +50,7 @@ _state_list = [
 
 				('budget_consultation', 	'Presupuesto-C'),
 				
-				('invoice_consultation', 	'Cancelado - C'),
+				('invoice_consultation', 	'Consulta Pagada'),
 
 
 
@@ -58,13 +58,13 @@ _state_list = [
 
 				('consultation', 	'Consulta'),
 
-				('service', 		'Servicio'),
+				('service', 		'Recomendación'),
 				
 
 
 				('budget_procedure', 			'Presupuesto-P'),
 
-				('invoice_procedure', 		'Cancelado - P'),
+				('invoice_procedure', 		'Procedimiento Pagado'),
 
 
 				

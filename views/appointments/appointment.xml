@@ -88,10 +88,7 @@
 				<!--
 				-->
 				<xpath expr="//field[@name='patient']" position="replace">					
-
 					<field name="patient"	string="patient_r"/>					
-
-
 					<field name="vspace"/>
 				</xpath>
 
@@ -350,8 +347,8 @@
 -->
 
 
-							<field name="treatment"		invisible="1"/>
-
+							<field name="vspace"/>							
+							<field name="treatment"		invisible="0"	readonly="1"	nolabel="0"	/>
 
 
 							<field name="cosmetology"			

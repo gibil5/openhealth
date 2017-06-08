@@ -52,7 +52,7 @@
 							widget="statusbar" 
 
 
-							statusbar_visible="draft, sale, printed"
+							statusbar_visible="draft, payment, sale, printed"
 					/>
 				</xpath>
 
@@ -347,7 +347,6 @@
 							class="oe_highlight"
 
 							string="Regresar al TRATAMIENTO"
-
 					/>
 
 
@@ -375,7 +374,7 @@
 							string="Módulo de Pago"
 
 
-							states="draft,payment"						
+							states="draft"						
 
 							name="create_payment_method"
 							/>
@@ -469,7 +468,7 @@
 
 													('x_machine_req','not in',['laser_co2_1']), 
 
-													('state','not in',['proof']), 
+													('state','not in',['payment']), 
 
 											]}"
 
@@ -507,7 +506,7 @@
 							string="Confirmar Venta" 
 
 
-							states="proof"
+							states="payment"
 
 
 							name="action_confirm" 

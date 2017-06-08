@@ -1167,9 +1167,11 @@ class sale_order(models.Model):
 		# State - Change
 		print 'State changes'
 
-		#self.state = 'payment'
-		self.state = 'sale'
 		
+		self.state = 'payment'
+		#self.state = 'sale'
+		
+
 		print self.state
 		print 
 
@@ -1486,25 +1488,6 @@ class sale_order(models.Model):
 	#		string = 'Motivo de consulta', 
 	#		selection = jxvars._chief_complaint_list, 
 	#		)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2284,9 +2267,13 @@ class sale_order(models.Model):
 			if self.x_family == 'consultation'	or 	self.x_family == 'procedure': 
 				self.x_appointment.state = 'Scheduled'
 
+				#self.state = 'confirmed'
+
 
 			# State is changed here ! 
 			res = super(sale_order, self).action_confirm()
+			
+			#self.state = 'confirmed'
 
 		#else: 
 			

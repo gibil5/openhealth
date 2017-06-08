@@ -20,6 +20,12 @@ class Patient(models.Model):
 
 
 
+	vspace = fields.Char(
+			' ', 
+			readonly=True
+			)
+
+
 
 
 
@@ -201,6 +207,9 @@ class Patient(models.Model):
 			self.street = 'Av. San Borja Norte 610'
 			self.street2_sel = 41
 
+
+			self.comment = 'test'
+			
 			#self.x_last_name = 'Fuchs Vibors'
 			#self.x_first_name = 'Hans'
 			#self.name = self.x_last_name + ' ' + self.x_first_name

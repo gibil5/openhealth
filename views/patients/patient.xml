@@ -218,6 +218,9 @@
 								<field name="x_state"    colors="red" />
 
 
+								<field name="vspace"    />
+								<field name="comment"    />
+
 							</group>
 
 
@@ -310,6 +313,11 @@
 
 				<tree string="Patient Tree">
 					<field name="name"/>
+
+
+					<field name="comment"/>
+
+
 <!--
 					<field name="x_last_name"  />
 					<field name="x_first_name"  />

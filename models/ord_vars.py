@@ -27,25 +27,23 @@ _sale_doc_type_list = [
 _x_state_list = [
 				('draft', 			'Presupuesto'),
 
+				('payment', 		'Pagado'),
+
+				#('proof', 		    'Comprobante'),
+				#('machine', 		'Reservación de Sala'),
 
 
-				('payment', 		'Pagos'),
-				('proof', 		    'Comprobante'),
-
-
-				('machine', 		'Reservación de Sala'),
-
-				
 				#('sale', 			'Venta'),
-				('sale', 			'Pagado'),
+				('sale', 			'Confirmado'),
+
+				#('confirmed', 		'Confirmado'),
+
 
 
 				#('invoice', 		'Facturado'),
 				
 
 				('printed', 		'Impreso'),
-
-
 
 				('done', 			'Completo'),
 				('cancel', 			'Cancelado'),
@@ -77,7 +75,7 @@ _state_list = [
 
 				('draft', 		'Presupuesto'),
 				#('sent', 		'Presupuesto enviado'),
-				('sale', 		'Facturado'),
+				('sale', 		'Facturado'),				
 				('done', 		'Completo'),
 				('cancel', 		'Cancelado'),
 			]

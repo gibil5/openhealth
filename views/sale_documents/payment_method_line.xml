@@ -86,8 +86,9 @@
 								<field name="subtotal"   />	
 
 								<field name="vspace"   />
-
+<!--
 								<field name="code"   invisible="1" />	
+-->
 							</group>
 
 
@@ -144,6 +145,8 @@ attrs="{'invisible':[
 
 
 
+
+
 		<!-- Tree view --> 
 		<record model="ir.ui.view" id="payment_method_line_tree_view">
 			<field name="name">payment_method_line.tree</field>
@@ -160,6 +163,46 @@ attrs="{'invisible':[
 				</tree>
 			</field>
 		</record>
+
+
+
+
+
+
+
+
+		<!-- Window Form Action --> 
+		<record model="ir.actions.act_window" id="openhealth_payment_method_line_form_action">
+			
+			<field name="name">Payment method line</field>
+
+			<field name="res_model">openhealth.payment_method_line</field>
+			
+			<field name="view_type">form</field>
+
+			<field name="view_mode">tree, form</field>
+			
+
+			<field name="context">{'default_subtotal': balance,}
+			</field>
+
+
+			<!--
+			<field name="view_mode">form,tree</field>
+            
+            <field name="domain">[]</field>
+            
+            <field name="context">{}</field>
+            
+            <field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first order
+				</p>
+			</field>
+			-->
+		</record>
+		
+		
 
 
 	</data>

@@ -2,9 +2,9 @@
 <openerp>
 	
 <!--
-	<data noupdate='1'>
--->
 	<data noupdate='0'>
+-->
+	<data noupdate='1'>
 
 
 		<!-- Data - Products -->

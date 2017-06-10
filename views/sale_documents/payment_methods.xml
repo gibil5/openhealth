@@ -35,20 +35,17 @@
 					<header>
 
 
+
+
+
 						<!-- Pay --> 
 						<button 
 								name="create_pm_line"
-
 								type="object" 
 								class="oe_highlight"
-
 								states="draft"						
-
 								string="Pagar"
 						/>
-
-
-
 
 
 					
@@ -80,7 +77,17 @@
 								string="Regresar"
 						/>
 
+<!--
+						<button 
+								name="open_order"
+								type="object" 
+								class="oe_highlight"
 
+								states="done"						
+
+								string="Anular"
+						/>
+-->
 
 
 
@@ -163,20 +170,58 @@
 
 <!-- Notebook --> 
 						<notebook position="inside">
+
+
+
 							<!-- Payments --> 
 							<page string="Pagos">
+
+
+
 								<!--
 								<field name="appointment_ids"/>
 								<tree string=""		default_order='appointment_date, x_machine'>
 								-->
-								<field name="pm_line_ids">
+<!--								
+								<field name="pm_line_ids"	editable="top">
+-->
+								<field name="pm_line_ids"	context="{
+																		
+																		'default_subtotal': balance,
+																		
+																		'default_name': 'Pago #',
+
+																		'default_payment_method': active_id,
+
+																		}"  >
+
+
+<!--
+									<tree			editable="top">	
+									<tree			editable="bottom"	on_write="x_test"		>	
+-->
 									<tree>	
+
 										<field name="name"	/>
+
 										<field name="method"	/>
-										<field name="code"	/>
+
 										<field name="subtotal"	/>
+
+										<field name="payment_method"	/>
+
+<!--										
+										<field name="code"	/>
+-->									
 									</tree>
 								</field>
+							
+							
+
+
+
+
+
 							</page>
 						</notebook>
 
@@ -292,6 +337,7 @@
 				</tree>
 			</field>
 		</record>
+
 
 
 

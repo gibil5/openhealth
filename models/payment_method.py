@@ -237,7 +237,8 @@ class payment_method(models.Model):
 				('invoice', 			'Factura'),
 
 				('advertisement', 		'Canje Publicidad'),
-				('sale_note', 			'Nota de Venta'),
+				#('sale_note', 			'Nota de Venta'),
+				('sale_note', 			'Canje NV'),
 
 				('ticket_receipt', 		'Ticket Boleta'),
 				('ticket_invoice', 		'Ticket Factura'),
@@ -250,7 +251,8 @@ class payment_method(models.Model):
 	saledoc = fields.Selection(
 			string="Documento de venta", 
 			selection=_saledoc_list, 
-			default='receipt', 
+			
+			#default='receipt', 
 		)
 
 
@@ -268,6 +270,7 @@ class payment_method(models.Model):
 
 			receipt_ctr = '00001'
 
+			pre = 'x'
 
 			if record.saledoc  == 'receipt':
 				pre = 'BO-'
@@ -291,9 +294,9 @@ class payment_method(models.Model):
 				pre = 'NO-'
 
 
-
-			code = receipt_ctr
-			record.saledoc_code = pre + code
+			if pre != 'x':
+				code = receipt_ctr
+				record.saledoc_code = pre + code
 
 
 

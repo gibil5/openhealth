@@ -37,6 +37,19 @@
 								string="Regresar"
 						/>						
 
+
+						<!-- Order --> 
+<!--
+						<button 
+								name="open_pm"
+								type="object" 
+								class="oe_highlight"
+
+								string="Anular"
+						/>						
+-->
+
+
 					</header>
 
 

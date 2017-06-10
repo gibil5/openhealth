@@ -137,8 +137,24 @@
 <!--
 -->
 				<xpath expr="//field[@name='validity_date']" position="before">
-					<field name="x_amount_total" />
+					
+					<field name="date_order" 	string="Fecha"		readonly="1"	/>
+
+
+					<field name="vspace"/>					
+					<field name="x_payment_method"		invisible="1"	readonly="1"	/>
+					<field name="x_sale_document_type"	invisible="1"	/>
+					<field name="x_product"				invisible="1"	/>
+
+
 <!--
+					<field name="vspace"/>
+					<field name="x_sale_document"/>
+-->
+
+<!--
+					<field name="vspace" />
+					<field name="x_amount_total" />
 					<field name="pm_total" />
 					<field name="x_payment_complete" />
 					<field name="vspace" />
@@ -318,7 +334,8 @@
 
 
 					<!-- Treatment --> 
-
+<!--
+-->
 					<button 
 							groups="openhealth.managers"
 
@@ -333,10 +350,8 @@
 							states="sale"						
 					/>
 
-
-
-
 					<!-- Treatment --> 
+<!--
 					<button 
 							groups="openhealth.reception,openhealth.physicians"
 
@@ -348,7 +363,7 @@
 
 							string="Regresar al TRATAMIENTO"
 					/>
-
+-->
 
 
 
@@ -643,7 +658,7 @@
 						</group>
 
 						<group class="">
-							<h5><field name="treatment" class=""/></h5>
+							<h5><field name="treatment" class=""	readonly="1"/></h5>
 						</group>
 					</group>
 
@@ -886,12 +901,11 @@ Order Line - Tree
 -->
 
 					<!--
-					<field name="vspace"/>
 					-->
 					
+					<field name="vspace"/>
 					<field name="x_partner_vip"/>
 					
-					<field name="vspace"/>
 
 
 
@@ -947,29 +961,17 @@ Order Line - Tree
 					-->
 
 
-					<field name="vspace"/>					
-					<field name="x_payment_method"/>
-
-
-					<field name="vspace"/>
-					<field name="x_sale_document"/>
-					<field name="x_sale_document_type"/>
-
-
-
-					<field name="vspace"/>			
-					<field name="vspace"/>			
-					<field name="x_family"/>
 
 
 
 
+
+
+
+
+
+<!--
 					<field name="x_ruc"			attrs="{'invisible':[('x_sale_document', '!=', 'invoice')]}"	/>
-
-
-
-
-
 					<field name="receipt" 		attrs="{'invisible':[('x_sale_document', '!=', 'receipt')]}"	/>
 					<field name="x_invoice"		attrs="{'invisible':[('x_sale_document', '!=', 'invoice')]}"	/>
 
@@ -977,15 +979,25 @@ Order Line - Tree
 					<field name="x_sale_note"			attrs="{'invisible':[('x_sale_document', '!=', 'sale_note')]}"		/>
 					<field name="x_ticket_receipt"		attrs="{'invisible':[('x_sale_document', '!=', 'ticket_receipt')]}"	/>
 					<field name="x_ticket_invoice"		attrs="{'invisible':[('x_sale_document', '!=', 'ticket_invoice')]}"	/>
+					<field name="vspace"/>		
+-->
 
 
 
 
+					<field name="vspace"/>			
+
+					<field name="x_family"		readonly="1"/>
 
 					<field name="vspace"/>
-					<field name="x_product"/>
+
+
+<!--
 					<field name="x_treatment"/>
-					<field name="x_machine_req"/>
+-->
+
+					<field name="x_machine_req"		invisible="1"/>
+
 
 <!--
 					<field name="x_target"/>
@@ -1069,10 +1081,10 @@ Order Line - Tree
 
 <!--
                     <field name="x_amount_total" 	sum="Total Tax Included"	widget="monetary"/>
-                    <field name="amount_total" 		sum="Total Tax Included"	widget="monetary"/>
+                    <field name="x_amount_total" 	sum="Total Tax Included"	widget="monetary"/>
 -->
 
-                    <field name="x_amount_total" 	sum="Total Tax Included"	widget="monetary"/>
+                    <field name="amount_total" 		sum="Total Tax Included"	widget="monetary"/>
 
 
 
@@ -1080,6 +1092,15 @@ Order Line - Tree
 					<field name="x_doctor_name"		/>
 					<field name="x_ruc"		/>
 -->
+
+
+<!--
+					<field name="x_age"/>
+					<field name="x_group"/>
+-->
+
+					<field name="x_month"/>
+					<field name="x_year"/>
 
                     <field name="date_order"		string="Fecha"/>
 

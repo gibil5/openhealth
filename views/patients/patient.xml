@@ -47,8 +47,6 @@
 -->
 							
 
-
-						<!-- Create Treatment --> 
 						<button 
 							type="object" 
 							class="oe_highlight"
@@ -56,15 +54,14 @@
 							name="open_treatment_current" 
 						/>
 
-
-
-						<!-- Create Cosmetology --> 
+<!--
 						<button 
 							type="object" 
 							class="oe_highlight"
 							string="Crear Cosmiatría" 
 							name="open_cosmetology_current" 
 						/>
+-->
 
 					</header>
 

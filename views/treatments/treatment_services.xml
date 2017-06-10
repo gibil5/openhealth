@@ -27,7 +27,7 @@
 
 						<notebook>
 
-							<page string="Co2"   		attrs="{'invisible':[('nr_services_co2', '=', 0)]}"  >
+							<page string="CO2"   		attrs="{'invisible':[('nr_services_co2', '=', 0)]}"  >
 <!--
 								<field name="service_co2_ids"/>	
 -->							
@@ -57,7 +57,7 @@
 
 
 
-							<page string="Excilite"  	attrs="{'invisible':[('nr_services_excilite', '=', 0)]}"	>
+							<page string="EXCILITE"  	attrs="{'invisible':[('nr_services_excilite', '=', 0)]}"	>
 <!--
 								<field name="service_excilite_ids"/>
 -->
@@ -83,7 +83,7 @@
 							</page>
 
 
-							<page string="Ipl"   		attrs="{'invisible':[('nr_services_ipl', '=', 0)]}"  >
+							<page string="IPL"   		attrs="{'invisible':[('nr_services_ipl', '=', 0)]}"  >
 <!--
 								<field name="service_ipl_ids"/>	
 -->
@@ -107,7 +107,7 @@
 							</page>
 
 
-							<page string="Ndyag"   		attrs="{'invisible':[('nr_services_ndyag', '=', 0)]}"  >
+							<page string="NDYAG"   		attrs="{'invisible':[('nr_services_ndyag', '=', 0)]}"  >
 <!--								
 								<field name="service_ndyag_ids"/>						
 -->

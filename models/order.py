@@ -30,9 +30,92 @@ class sale_order(models.Model):
 
 
 
-	name = fields.Char(
-			string="Presupuesto #"
+	#name = fields.Char(
+	#		string="Presupuesto #"
+	#	)
+
+
+
+
+	x_age = fields.Integer(string='Age', default=52, help='Age of student')
+
+	x_group = fields.Char(string='Group', compute='_compute_x_group', help='Group of student', store=True)
+
+	@api.depends('x_age')
+	def _compute_x_group(self):
+    
+		#self.x_group = 'NA'
+		#if self.x_age > 5 and self.x_age <= 10:
+		#	self.x_group = 'A'
+		#elif self.x_age > 10 and self.x_age <= 12:
+		#	self.x_group = 'B'
+		#elif self.x_age > 12:
+		#	self.x_group = 'C'
+
+		for record in self:
+			record.x_group = 'NA'
+			if record.x_age > 5 and record.x_age <= 10:
+				record.x_group = 'A'
+			elif record.x_age > 10 and record.x_age <= 12:
+				record.x_group = 'B'
+			elif record.x_age > 12:
+				record.x_group = 'C'
+
+
+
+
+	# Year
+	x_year = fields.Char(
+			compute="_compute_x_year",
+
+			string='Year', 
+
+			#store=True, 
+
+			default=False, 
 		)
+
+	#@api.multi
+	@api.one
+	@api.depends('date_order')
+	def _compute_x_year(self):
+		print 
+		print 'Compute X Year'
+
+		#date = datetime.datetime.strptime(self.date_order, date_format)
+		#self.x_year = date.year
+		#print self.x_year
+		#print 
+		#self.fats = self.name.fats
+
+		for record in self:
+			date_format = "%Y-%m-%d %H:%M:%S"
+			date = datetime.datetime.strptime(record.date_order, date_format)
+			record.x_year = date.year
+
+
+
+
+	# Month 
+	x_month = fields.Char(
+			string='Month', 
+			
+			#required=False, 
+			#store=True, 
+
+			compute="_compute_x_month",
+		)
+
+	#@api.multi
+	@api.depends('date_order')
+	def _compute_x_month(self):
+		for record in self:
+			#record.x_month = 'jz'
+
+			date_format = "%Y-%m-%d %H:%M:%S"
+			date = datetime.datetime.strptime(record.date_order, date_format)
+			record.x_month = date.month
+
 
 
 
@@ -45,11 +128,8 @@ class sale_order(models.Model):
 
 
 	# Doctor name  
-
 	x_doctor_name = fields.Char(
-		
 		)
-
 
 	doctor_name = fields.Char(
 								default = 'generic doctor',
@@ -866,7 +946,10 @@ class sale_order(models.Model):
 																	order='appointment_date desc',
 																	limit=1,
 																)
-			elif record.x_family == 'consultation':				
+
+			#elif record.x_family == 'consultation':			
+			elif record.x_family == 'consultation'	or  record.x_family == 'product':			
+
 				app = self.env['oeh.medical.appointment'].search([
 																	('patient', '=', record.patient.name), 
 																	('x_type', '=', 'consultation'),
@@ -877,8 +960,10 @@ class sale_order(models.Model):
 																	limit=1,
 																)
 			
-			if record.x_appointment != False:
-				record.x_appointment = app
+
+			#if record.x_appointment != False:
+			#if record.x_appointment.name != False:
+			record.x_appointment = app
 
 
 
@@ -2616,11 +2701,6 @@ class sale_order(models.Model):
 
 
 # ----------------------------------------------------------- CRUD ------------------------------------------------------
-
-
-
-
-
 
 	@api.multi
 	def unlink(self):

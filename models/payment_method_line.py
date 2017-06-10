@@ -15,14 +15,64 @@ class payment_method_line(models.Model):
 
 
 
+
+	# Test
+	@api.multi 
+	def x_test(self):
+		print
+		print 'X Test'
+
+		print id
+
+		#ctr = 5
+		#self.name = 'Pago - ' + str(ctr)
+		#self.name = 'Pago - '
+
+		#for record in self:
+		#	print record.name
+		#	print record.payment_method
+		
+		print 
+
+
+
+
+
+	# Name 
 	name = fields.Char(
 			#string="Medio de Pago", 
 			string="Pago", 
+
 			required=True, 
-			readonly=True, 
+			#required=False, 
+			
+			#readonly=True, 
+			#compute="_compute_name",
 		)
 
+	@api.multi
+	#@api.depends('date_order')
+	def _compute_name(self):
+		print
+		print 'PML - compute name'
+		print 
 
+		for record in self:
+
+			ctr = 0
+
+			#pm = record.env['openhealth.payment_method'].search([
+			#															('id','=', record.payment_method)[0].id,
+			#													],
+																#order='appointment_date desc',
+			#													limit=1,)
+			#for line in pm.pm_line_ids:
+			#	ctr = ctr+1
+
+			#print ctr
+			record.name = 'Pago - ' + str(ctr)
+
+		print 
 
 
 
@@ -61,8 +111,8 @@ class payment_method_line(models.Model):
 			#'auto_search': False, 
 
 			'flags': {
-					'form': {'action_buttons': True, }
-					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+					#'form': {'action_buttons': True, }
+					'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 			},			
 
 			'context':   {
@@ -90,9 +140,11 @@ class payment_method_line(models.Model):
 			string="Módulo de Pago",
 
 			ondelete='cascade', 
+
 			required=True, 
+			#required=False, 
 			
-			readonly=True, 
+			#readonly=True, 
 		)
 
 
@@ -108,7 +160,11 @@ class payment_method_line(models.Model):
 
 	method = fields.Selection(
 			string="Medio", 
+
 			selection = ord_vars._payment_method_list, 			
+
+			default="cash", 
+
 			required=True, 
 		)
 
@@ -117,6 +173,9 @@ class payment_method_line(models.Model):
 
 	subtotal = fields.Float(
 			string = 'Subtotal', 
+
+			#default=self.balance, 
+
 			required=True, 
 		)
 
@@ -128,9 +187,51 @@ class payment_method_line(models.Model):
 
 
 
-	code = fields.Char(
-			string="Codigo", 
+
+	#code = fields.Char(
+	#		string="Codigo", 
 			#required=True, 
-		)
+	#	)
+
+
+
+
+
+# ----------------------------------------------------------- CRUD ------------------------------------------------------
+
+# Create 
+	@api.model
+	def create(self,vals):
+		print 
+		print 'PML - Create - Override'
+		print 
+		print vals
+		print 
+	
+	
+		#Write your logic here
+		res = super(payment_method_line, self).create(vals)
+		#Write your logic here
+		return res
+
+
+
+# Write 
+	@api.multi
+	def write(self,vals):
+
+		print 
+		print 'PML - Write - Override'
+		print 
+		print vals
+
+		res = super(payment_method_line, self).write(vals)
+		#Write your logic here
+		print 
+		print 
+
+		return res
+
+
 
 

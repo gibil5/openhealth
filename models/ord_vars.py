@@ -11,7 +11,8 @@ _sale_doc_type_list = [
 				('invoice', 			'Factura'),
 
 				('advertisement', 		'Canje Publicidad'),
-				('sale_note', 			'Nota de Venta'),
+				#('sale_note', 			'Nota de Venta'),
+				('sale_note', 			'Canje NV'),
 
 				('ticket_receipt', 		'Ticket Boleta'),
 				('ticket_invoice', 		'Ticket Factura'),

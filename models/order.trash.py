@@ -27,6 +27,7 @@ class Order(models.Model):
 	)
 	
 	
+	
 	def get_domain_order_line(self,cr,uid,ids,context=None):
 
 		context = 'laser_co2'

@@ -28,6 +28,17 @@ class Patient(models.Model):
 
 
 
+	x_year = fields.Char(
+			string='Year', 
+			required=False, 
+		)
+
+	x_month = fields.Char(
+			string='Month', 
+			required=True, 
+		)
+
+
 
 	# Year created  
 	x_year_created = fields.Char(
@@ -100,15 +111,6 @@ class Patient(models.Model):
 
 
 
-	x_year = fields.Char(
-			string='Year', 
-			required=False, 
-		)
-
-	x_month = fields.Char(
-			string='Month', 
-			required=True, 
-		)
 
 
 
@@ -761,6 +763,14 @@ class Patient(models.Model):
 	@api.multi
 	def open_treatment_current(self):  
 
+
+		treatment_id = self.env['openhealth.treatment'].search([
+																		('patient','=', self.id),
+																],
+																order='start_date desc',
+																limit=1,).id
+
+
 		print 
 		print 'Open Treatment'
 		patient_id = self.id 
@@ -772,13 +782,24 @@ class Patient(models.Model):
 			'type': 'ir.actions.act_window',
 			'name': 'Open Treatment Current',
 
+
+
 			# Window action 
 			'res_model': 'openhealth.treatment',
+			'res_id': treatment_id,
+
 
 			# Views 
 			"views": [[False, "form"]],
 			'view_mode': 'form',
 			'target': 'current',
+
+			
+
+			'flags': {
+					#'form': {'action_buttons': True, }
+					'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+			},	
 
 			'context':   {
 				'search_default_patient': patient_id,

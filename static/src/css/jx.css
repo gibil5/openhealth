@@ -1,6 +1,19 @@
 
 
+.openerp .rallign {
+/*
+  text-align: right;
+*/
+  text-align: left;
+}
 
+/*
+.openerp .oe_list_content th.oe_sortable, .openerp .oe_list_content th.oe_sortable div {
+    cursor: pointer;
+
+    text-align: right; 
+}
+*/
 
 
 
@@ -15,16 +28,11 @@
 	color:blue;
 	text-transform: uppercase;
 }
-
-
 .jx_subtitle{
 	color:red;
 	color:blue;
 	color:green;
 }
-
-
-
 
 
 /* Radio buttons */

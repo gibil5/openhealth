@@ -19,7 +19,7 @@
 
 		Laser - EMR - Min - Ama - Docean - Ooor\n
 
-		Last built: 	10 June 2017 - Yey !
+		Last built: 	11 June 2017 - Yey !
 
 		Created: 	 	7 Sep 2016
 
@@ -140,6 +140,11 @@
 		'views/orders/order.xml',
 		#'views/orders/payment_methods.xml',
 		#'views/orders/events.xml',
+
+
+
+		'views/counters/counter.xml',
+
 
 		'views/sale_documents/payment_methods.xml',
 		'views/sale_documents/payment_method_line.xml',
@@ -363,7 +368,7 @@
 	
 	
 
-	# Static - CSS - This is it.
+	# Static - CSS - STYLE
 	'css': ['static/src/css/jx.css'],
 
 	#'js': ['static/src/js/progressbar.js'],

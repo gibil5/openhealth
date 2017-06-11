@@ -60,7 +60,7 @@
 
 								states="payment"						
 
-								string="Crear el Documento de Pago"
+								string="Generar el Documento de Pago"
 						/>
 
 
@@ -116,6 +116,11 @@
 
 						<h1>Módulo de Pago</h1>
 
+						<group>
+							<group>
+							</group>
+						</group>
+						
 
 						<group>
 							<group>
@@ -124,6 +129,8 @@
 -->
 								<field name="order"   />													
 								
+								<field name="vspace"   />	
+
 								<field name="partner"   readonly=""	/>													
 							</group>
 
@@ -141,9 +148,10 @@
 -->
 
 								<field name="total"   	invisible="0"	/>													
-								<field name="pm_total"  invisible="0" 	/>	
 								<field name="vspace"   />	
 								<field name="balance"   />													
+
+								<field name="pm_total"  invisible="1" 	/>	
 																				
 							</group>
 						</group>
@@ -184,33 +192,34 @@
 								-->
 <!--								
 								<field name="pm_line_ids"	editable="top">
+
+
+																		'default_name': nr_pm,
 -->
 								<field name="pm_line_ids"	context="{
-																		
 																		'default_subtotal': balance,
-																		
-																		'default_name': 'Pago #',
-
 																		'default_payment_method': active_id,
 
-																		}"  >
+																		}"  class="rallign"	>
 
 
 <!--
 									<tree			editable="top">	
 									<tree			editable="bottom"	on_write="x_test"		>	
 -->
-									<tree>	
+									<tree			>	
 
 										<field name="name"	/>
 
 										<field name="method"	/>
 
-										<field name="subtotal"	/>
+										<field name="currency"	/>
 
-										<field name="payment_method"	/>
+										<field name="subtotal"	class="rallign"	/>
+
 
 <!--										
+										<field name="payment_method"	/>
 										<field name="code"	/>
 -->									
 									</tree>
@@ -228,8 +237,9 @@
 
 
 						<notebook position="inside">
+
 							<!-- Sale document --> 
-							<page string="Documento de Pago">
+							<page string="Documento a Generar">
 
 
 							<group>
@@ -239,7 +249,11 @@
 								</group>
 
 								<group>
+
+
 									<field name="saledoc_code"		/>
+
+
 
 
 									<field name="receipt"		

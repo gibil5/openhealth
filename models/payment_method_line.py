@@ -41,7 +41,8 @@ class payment_method_line(models.Model):
 	# Name 
 	name = fields.Char(
 			#string="Medio de Pago", 
-			string="Pago", 
+			#string="Pago", 
+			string="#", 
 
 			required=True, 
 			#required=False, 
@@ -73,6 +74,14 @@ class payment_method_line(models.Model):
 			record.name = 'Pago - ' + str(ctr)
 
 		print 
+
+
+
+	# Currency 
+	currency = fields.Char(
+			string="Moneda", 
+			default="S/.", 
+		)
 
 
 
@@ -159,7 +168,9 @@ class payment_method_line(models.Model):
 
 
 	method = fields.Selection(
-			string="Medio", 
+
+			#string="Medio", 
+			string="Forma de Pago", 
 
 			selection = ord_vars._payment_method_list, 			
 
@@ -173,6 +184,7 @@ class payment_method_line(models.Model):
 
 	subtotal = fields.Float(
 			string = 'Subtotal', 
+			#string = 'Importe', 
 
 			#default=self.balance, 
 
@@ -209,6 +221,8 @@ class payment_method_line(models.Model):
 		print 
 	
 	
+
+			
 		#Write your logic here
 		res = super(payment_method_line, self).create(vals)
 		#Write your logic here

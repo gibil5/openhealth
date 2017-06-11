@@ -76,7 +76,9 @@
 
 						<group>
 							<group>
-								<field name="name"   />													
+								<field name="name"   />		
+
+								<field name="counter"   />		
 							</group>
 
 

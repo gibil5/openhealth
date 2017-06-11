@@ -241,6 +241,13 @@
 
 
 
+		<!-- Counters --> 
+		<menuitem id="counters_menu" name="Counters" parent="openhealth_menu"
+			sequence="-70"
+			action="counter_list_action"/>
+
+
+
 		<!-- Partners --> 
 		<menuitem id="partners_menu" name="Partners" parent="openhealth_menu"
 			sequence="-60"

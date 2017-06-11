@@ -13,6 +13,22 @@ class SaleProof(models.Model):
 
 
 
+
+	# Counter
+	#counter = fields.Many2one(
+	counter = fields.Char(
+
+			#'openhealth.counter',
+		
+			string="Counter", 
+			default="0", 
+			required=True, 
+		)
+
+
+
+
+
 	# Date created 
 	date_created = fields.Datetime(
 			string="Fecha", 
@@ -112,5 +128,13 @@ class SaleProof(models.Model):
 			string="RUC", 	
 			#required=True, 
 		)
+
+
+
+
+
+
+
+
 
 

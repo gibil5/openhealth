@@ -39,6 +39,19 @@ class payment_method(models.Model):
 
 
 
+
+	# Counters
+	#counter_receipt = fields.Many2one(
+	#		'openhealth.counter',
+	#		string="Counter", 
+	#		required=True, 
+	#	)
+
+
+
+
+
+
 	# Date created 
 	date_created = fields.Datetime(
 			string="Fecha", 
@@ -129,6 +142,9 @@ class payment_method(models.Model):
 		print 
 		print 'Create Receipt'
 
+
+
+
 		# Search 
 		receipt_id = self.env['openhealth.receipt'].search([
 																('payment_method', '=', self.id),
@@ -139,6 +155,7 @@ class payment_method(models.Model):
 		# Create 
 		if receipt_id == False:
 
+
 			receipt = self.env['openhealth.receipt'].create({
 																'payment_method': self.id,
 																#'sale_document': self.id,
@@ -147,6 +164,8 @@ class payment_method(models.Model):
 																'total': self.total,
 
 																'date_created': self.date_created,
+
+																'counter': self.saledoc_code,																
 														})
 			receipt_id = receipt.id 
 
@@ -176,9 +195,10 @@ class payment_method(models.Model):
 							#'default_order': self.order.id,
 							'default_total': self.total,
 							'default_partner': self.partner.id,
-
-
 							'default_date_created': self.date_created,
+
+
+							'default_counter': self.saledoc_code,
 							}
 				}
 
@@ -249,7 +269,9 @@ class payment_method(models.Model):
 	
 
 	saledoc = fields.Selection(
-			string="Documento de venta", 
+			#string="Documento de venta", 
+			string="Documento de Pago", 
+
 			selection=_saledoc_list, 
 			
 			#default='receipt', 
@@ -257,10 +279,56 @@ class payment_method(models.Model):
 
 
 
+
+
+	# Sale doc code 
 	saledoc_code = fields.Char(
+
 			string="No", 
-			compute="_compute_saledoc_code",
+		
+			readonly=False, 
+
+			#compute="_compute_saledoc_code",
 		)
+
+
+	@api.onchange('saledoc')
+	
+	def _onchange_saledoc(self):
+		print
+		print 'onchange - Saledoc'
+
+		ctr = 0 
+
+		if self.saledoc  == 'receipt':
+			pre = 'BO-'
+
+			counter = self.env['openhealth.counter'].search([('name', 'like', 'receipt')])
+			ctr = counter.value
+			#self.counter_receipt = counter
+
+
+		if self.saledoc  == 'invoice':
+			pre = 'FA-'
+
+		if self.saledoc  == 'advertisement':
+			pre = 'CA-'
+
+		if self.saledoc  == 'sale_note':
+			pre = 'NV-'
+			
+		if self.saledoc  == 'ticket_receipt':
+			pre = 'TB-'
+			
+		if self.saledoc  == 'ticket_invoice':
+			pre = 'TF-'
+
+		if self.saledoc  == 'none':
+			pre = 'NO-'
+
+		self.saledoc_code = ctr 
+
+
 
 	#@api.multi
 	@api.depends('saledoc')
@@ -274,6 +342,7 @@ class payment_method(models.Model):
 
 			if record.saledoc  == 'receipt':
 				pre = 'BO-'
+
 
 			if record.saledoc  == 'invoice':
 				pre = 'FA-'
@@ -292,7 +361,6 @@ class payment_method(models.Model):
 
 			if record.saledoc  == 'none':
 				pre = 'NO-'
-
 
 			if pre != 'x':
 				code = receipt_ctr
@@ -381,13 +449,28 @@ class payment_method(models.Model):
 			if	record.env['openhealth.receipt'].search_count([('payment_method','=', record.id),]):
 				record.state = 'done'
 
-
-
-
-
 		print record.state
 		print 
 
+
+
+
+	nr_pm = fields.Integer(
+
+			compute="_compute_nr_pm",
+		)
+
+	@api.multi
+	#@api.depends('date_order')
+
+	def _compute_nr_pm(self):
+		print
+		print 'PML - compute nr pm'
+		print 
+
+		for record in self:
+			nr = record.env['openhealth.payment_method_line'].search_count([('payment_method','=', record.id),]) 
+			record.nr_pm = nr + 1
 
 
 
@@ -401,9 +484,12 @@ class payment_method(models.Model):
 
 
 
+		
+		#nr_pm = self.env['openhealth.payment_method_line'].search_count([('payment_method','=', self.id),]) 
 		#name = 'Pago #'
-		nr_pm = self.env['openhealth.payment_method_line'].search_count([('payment_method','=', self.id),]) 
-		name = 'Pago # ' + str(nr_pm + 1)
+		#name = '# ' + str(nr_pm + 1)
+		#name = str(nr_pm + 1)
+		name = self.nr_pm
 
 
 
@@ -420,7 +506,10 @@ class payment_method(models.Model):
 
 				'view_type': 'form',
 				'view_mode': 'form',	
-				'target': 'current',
+
+				#'target': 'current',
+				'target': 'new',
+				#'target': 'inline',
 
 
 				'res_model': 'openhealth.payment_method_line',				

@@ -27,9 +27,6 @@ class sale_order(models.Model):
 	_inherit='sale.order'
 	
 
-
-
-
 	#name = fields.Char(
 	#		string="Presupuesto #"
 	#	)
@@ -37,6 +34,14 @@ class sale_order(models.Model):
 
 
 
+
+
+
+
+
+
+
+	# Ooor 
 	x_age = fields.Integer(string='Age', default=52, help='Age of student')
 
 	x_group = fields.Char(string='Group', compute='_compute_x_group', help='Group of student', store=True)
@@ -189,7 +194,7 @@ class sale_order(models.Model):
 	# Payment Method 
 	x_payment_method = fields.Many2one(
 			'openhealth.payment_method',
-			string="Pagos", 
+			string="Pago", 
 		)
 
 
@@ -276,8 +281,8 @@ class sale_order(models.Model):
 	# Family 
 	x_family = fields.Selection(
 
-			#string = "Tipo", 	
-			string = "Familia", 	
+			string = "Tipo", 	
+			#string = "Familia", 	
 
 			default='product',
 			
@@ -2179,10 +2184,9 @@ class sale_order(models.Model):
 
 
 
-
-
-
-		for service in self.consultation.service_co2_ids:
+		# Doctor 
+		#for service in self.consultation.service_co2_ids:
+		for service in self.treatment.service_co2_ids:
 			print service
 
 			line = self.update_line(	

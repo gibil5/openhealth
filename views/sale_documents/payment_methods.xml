@@ -69,12 +69,14 @@
 -->
 						<button 
 								name="open_order"
+
 								type="object" 
+								
 								class="oe_highlight"
 
-								states="done"						
+								states="generated"						
 
-								string="Confirmar"
+								string="Confirmar Pago"
 						/>
 
 <!--
@@ -150,6 +152,11 @@
 								<field name="total"   	invisible="0"	/>													
 								<field name="vspace"   />	
 								<field name="balance"   />													
+
+								<field name="vspace"   />	
+								<field name="confirmed"   />	
+
+
 
 								<field name="pm_total"  invisible="1" 	/>	
 																				

@@ -13,6 +13,8 @@ _dic_model = {
 
 						'ticket_receipt' : 	'openhealth.ticket_receipt', 		
 						'ticket_invoice' : 	'openhealth.ticket_invoice', 		
+
+						False :	False, 
 			}
 
 

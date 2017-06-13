@@ -21,22 +21,26 @@ class payment_method(models.Model):
 	name = fields.Char(
 			#string="Medio de Pago", 
 			string="Pagos", 
-			
 			#required=True, 
 			#readonly=True, 
-
-			compute='_compute_name', 
+			#compute='_compute_name', 
 		)
 
 	#@api.depends()
-	@api.multi
-
-	def _compute_name(self):
-		for record in self:
-			record.name = 'PA-' + str(record.id) 
-
+	#@api.multi
+	#def _compute_name(self):
+	#	for record in self:
+	#		record.name = 'PA-' + str(record.id) 
 
 
+
+
+	confirmed = fields.Boolean(
+			default=False, 
+			readonly=True, 
+
+			string="Confirmado", 
+		)
 
 
 
@@ -139,19 +143,23 @@ class payment_method(models.Model):
 		model = ord_vars._dic_model[self.saledoc]
 
 
-		# Search 
-		proof = self.env[model].search([
-																('payment_method', '=', self.id),
-															])
+		if model != False: 
 
-		# Create 
-		if proof.id == False:
 
-			count = self.env[model].search_count([
+			# Search 
+			proof = self.env[model].search([
+												('payment_method', '=', self.id),
+											])
+
+			# Create 
+			if proof.id == False:
+
+				count = self.env[model].search_count([
 																	('name','=', self.saledoc_code),
 															])
-			if count != 0: 
-				proof = self.env[model].create({
+				if count != 0: 
+
+					proof = self.env[model].create({
 																'payment_method': self.id,
 																'partner': self.partner.id,
 																'total': self.total,
@@ -160,29 +168,29 @@ class payment_method(models.Model):
 
 																'name': self.saledoc_code,
 														})
-		proof_id = proof.id 
+			proof_id = proof.id 
 
 
 
-		return {
-				'type': 'ir.actions.act_window',
-				'name': ' New Proof Current', 
+			return {
+					'type': 'ir.actions.act_window',
+					'name': ' New Proof Current', 
 
-				'view_type': 'form',
-				'view_mode': 'form',	
-				'target': 'current',
-
-
-				'res_model': model,
-				'res_id': proof_id,
+					'view_type': 'form',
+					'view_mode': 'form',	
+					'target': 'current',
 
 
-				'flags': 	{
+					'res_model': model,
+					'res_id': proof_id,
+
+
+					'flags': 	{
 							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 							'form': {'action_buttons': True, }
 							},
 
-				'context': {
+					'context': {
 							'default_payment_method': self.id,
 							'default_total': self.total,
 							'default_partner': self.partner.id,
@@ -191,7 +199,7 @@ class payment_method(models.Model):
 
 							'default_name': self.saledoc_code,
 							}
-				}
+					}
 
 	# create_saleproof
 
@@ -402,8 +410,10 @@ class payment_method(models.Model):
 
 					('payment', 'Pagado'),
 
-					('done', 'Documento generado'),
+					('generated', 'Documento generado'),
 					
+					('done', 'Confirmado'),
+
 					#('cancel', 'Cancelled'),
 				]
 
@@ -439,8 +449,21 @@ class payment_method(models.Model):
 				record.state = 'payment'
 
 
-			if	record.env['openhealth.receipt'].search_count([('payment_method','=', record.id),]):
+			if	record.env['openhealth.receipt'].search_count([('payment_method','=', record.id),])			or \
+				record.env['openhealth.invoice'].search_count([('payment_method','=', record.id),])			or \
+				record.env['openhealth.advertisement'].search_count([('payment_method','=', record.id),])	or \
+				record.env['openhealth.sale_note'].search_count([('payment_method','=', record.id),])		or \
+				record.env['openhealth.ticket_receipt'].search_count([('payment_method','=', record.id),])	or \
+				record.env['openhealth.ticket_invoice'].search_count([('payment_method','=', record.id),]):
+				
+				#record.state = 'done'
+				record.state = 'generated'
+
+			if record.confirmed:
 				record.state = 'done'
+
+
+
 
 		print record.state
 		print 
@@ -566,6 +589,8 @@ class payment_method(models.Model):
 
 		print 
 		print 'Open order'
+
+		self.confirmed = True 
 
 
 		ret = self.order.open_myself()

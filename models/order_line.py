@@ -117,16 +117,12 @@ class sale_order_line(models.Model):
 # ---------------------------------------------- Prices --------------------------------------------------------
 
 
-	x_partner_vip = fields.Boolean(
-
-			'Vip', 
-
+	#x_partner_vip = fields.Boolean(
+	#		'Vip', 
 			#readonly=True
-			
-			default=False, 
-
+	#		default=False, 
 			#compute="_compute_partner_vip",
-			)
+	#		)
 
 
 
@@ -137,9 +133,33 @@ class sale_order_line(models.Model):
 
 
 
-	price_subtotal = fields.Float(			
-			string="Sub-Total",
-			
+	price_total = fields.Float(	
+			string="Total",
+			compute="_compute_price_total",
+		)
+
+	#@api.multi
+	@api.depends('price_unit', 'x_price_vip')
+	
+	def _compute_price_total(self):
+
+		print 
+		print 'Compute - Price Total'
+		
+		for record in self:
+
+			if record.order_id.x_partner_vip  	and  	record.x_price_vip != 0.0:
+				record.price_total = record.x_price_vip * record.product_uom_qty
+
+			else: 
+				record.price_total = record.price_unit * record.product_uom_qty
+
+
+
+
+
+	price_subtotal = fields.Float(	
+			string="jx Sub-Total",
 			compute="_compute_price_subtotal",
 		)
 
@@ -148,13 +168,19 @@ class sale_order_line(models.Model):
 	@api.depends('price_unit', 'x_price_vip')
 	
 	def _compute_price_subtotal(self):
+
+		print 
+		print 'Compute - Price Subtotal'
 		
 		for record in self:
 		
 			#if True: 
-			if record.x_partner_vip  	and  	record.x_price_vip != 0.0:
+			#if record.x_partner_vip  	and  	record.x_price_vip != 0.0:
+			if record.order_id.x_partner_vip  	and  	record.x_price_vip != 0.0:
+
 					record.price_subtotal = record.x_price_vip * record.product_uom_qty
-			
+
+
 			else: 
 				record.price_subtotal = record.price_unit * record.product_uom_qty
 

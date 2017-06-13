@@ -3,8 +3,115 @@
 	<data>
 
 
+		<!-- Form view -->
+		<record model="ir.ui.view" id="counter_form_view">
 
-		<!-- tree/list view -->
+			<field name="name">counter.form</field>
+			
+			<field name="model">openhealth.counter</field>
+
+			<!--
+			<field name="inherit_id" ref="sale.view_order_form"/>			
+	        <field name="mode">primary</field>
+	        <field name="priority" eval="1"/>
+	        -->
+
+			<field name="arch" type="xml">
+
+				<form string="counter - Form">
+
+
+					<!-- Header --> 
+					<header>
+						
+
+						<!-- Reset --> 
+						<button 
+								name="reset"
+								type="object" 
+								class="oe_highlight"
+
+								string="Reinicializar"
+						/>						
+
+
+
+						<!-- Increase --> 
+						<button 
+								name="increase"
+								type="object" 
+								class="oe_highlight"
+
+								string="Incrementar"
+						/>						
+
+						<!-- Decrease --> 
+						<button 
+								name="decrease"
+								type="object" 
+								class="oe_highlight"
+
+								string="Decrementar"
+						/>						
+
+					</header>
+
+
+
+
+
+
+					<!-- Sheet --> 
+					<sheet>
+
+						<h1>Contadores</h1>
+						<h2></h2>
+
+						<field name="vspace" />
+						
+						<field name="vspace"   />													
+
+
+						<group>
+							<group>
+								<field name="name"   	/>		
+							</group>
+
+
+							<group>
+								<field name="date_created"  readonly="1" />
+							</group>
+						</group>
+
+
+
+						<group>
+							<group>
+								<field name="value"   />													
+							</group>
+							<group>		
+								<field name="date_modified"  readonly="1" />
+							</group>
+						</group>
+
+
+					</sheet>
+				</form>
+				
+			</field>
+		</record>
+
+
+
+
+
+
+
+
+
+
+
+		<!-- Tree/List view -->
 		<!--
 		<record model="ir.ui.view" id="base.view_counter_tree">
 		-->
@@ -26,9 +133,6 @@
 				</tree>
 			</field>
 		</record>
-
-
-
 
 
 
@@ -55,11 +159,6 @@
 			</field>
 			-->
 		</record>
-
-
-
-
-
 
 	</data>
 </openerp>

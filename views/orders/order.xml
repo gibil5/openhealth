@@ -138,12 +138,11 @@
 -->
 				<xpath expr="//field[@name='validity_date']" position="before">
 					
-					<field name="date_order" 	string="Fecha"		readonly="1"	/>
+					<field name="date_order" 			string="Fecha"		readonly="1"	/>
+					<field name="x_payment_method"		invisible="0"		readonly="1"	/>
 
 
-					<field name="vspace"/>					
-					<field name="x_payment_method"		invisible="1"	readonly="1"	/>
-					<field name="x_sale_document_type"	invisible="1"	/>
+					<field name="x_sale_document_type"	invisible="1"	readonly="1"	/>
 					<field name="x_product"				invisible="1"	/>
 
 
@@ -193,15 +192,19 @@
 
 					<group	attrs="{	'invisible':[('patient', '=', False ),],
 												}"	>
-
-
-
-					<field name="vspace" />
-
 					<field name="patient" />
+					<field name="x_doctor" />
+					<field name="consultation"/>
+					<field name="x_appointment"/>
+					<field name="x_appointment_date"/>
+					<field name="x_duration"/>
+
 
 
 <!--
+					<field name="cosmetology"	attrs="{
+														'invisible':[('cosmetology', '=', False ),],
+														}"	/>
 					
 					<field name="x_therapist" />
 					
@@ -218,32 +221,8 @@
 					<field name="x_therapist"		attrs="{
 														'invisible':[('x_therapist', '=', False ),],
 														}"	/>
--->
 
-
-
-					<field name="x_doctor" />
-
-
-
-
-					<field name="consultation"/>
-
-					<field name="x_appointment"/>
-					<field name="x_appointment_date"/>
-					<field name="x_duration"/>
-
-
-
-
-<!--
 					<field name="vspace"/>
--->
-					<field name="cosmetology"	attrs="{
-														'invisible':[('cosmetology', '=', False ),],
-														}"	/>
-					
-<!--
 					<field name="treatment"		attrs="{
 														'invisible':[('treatment', '=', False ),],
 														}"	/>
@@ -306,16 +285,9 @@
 
 
 
-
-
-
 <xpath expr="//page[1]" position="attributes">
-
 	<attribute name='string'>Líneas</attribute> 
-
 </xpath>
-
-
 
 
 <xpath expr="//page[2]" position="attributes">
@@ -641,7 +613,7 @@
 						</h3>
 
 						<h4>
-							<field name="name" 	class=""/>								
+							<field name="name" 	class=""	readonly="1"	/>								
 						</h4>
 
 					</group>
@@ -821,6 +793,13 @@ Order Line - Tree
             	        <field name="x_price_vip"/>
             	</xpath>
 
+				<xpath expr="//field	[@name='order_line']/tree//field[@name='price_subtotal']" position="replace">
+            	        <field name="price_total"/>
+            	</xpath>
+
+
+
+
 <!--
 				<xpath expr="//field	[@name='order_line']/tree//field[@name='purchase_price']" position="replace">
                 	<field name="purchase_price" invisible="1"/>
@@ -898,14 +877,30 @@ Order Line - Tree
 <!--				
 					<field name="x_partner_name"/>
 					<field name="doctor_name"/>
--->
 
-					<!--
-					-->
-					
 					<field name="vspace"/>
+-->
+					
 					<field name="x_partner_vip"/>
 					
+					<field name="vspace"/>			
+
+					<field name="x_family"		readonly="1"/>
+
+
+
+<!--
+					<field name="x_treatment"/>
+-->
+
+					<field name="vspace"/>
+					<field name="x_machine_req"		invisible="1"/>
+
+
+<!--
+					<field name="x_target"/>
+-->
+
 
 
 
@@ -985,23 +980,7 @@ Order Line - Tree
 
 
 
-					<field name="vspace"/>			
 
-					<field name="x_family"		readonly="1"/>
-
-					<field name="vspace"/>
-
-
-<!--
-					<field name="x_treatment"/>
--->
-
-					<field name="x_machine_req"		invisible="1"/>
-
-
-<!--
-					<field name="x_target"/>
--->
 
 
 					

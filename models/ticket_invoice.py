@@ -3,16 +3,12 @@
 # 	ticket_invoice 
 # 
 #
-
 from openerp import models, fields, api
-
-
 
 class TicketInvoice(models.Model):
 	
 	_name = 'openhealth.ticket_invoice'
 
-	#_inherit='openhealth.sale_document'
 	_inherit='openhealth.sale_proof'
 
 
@@ -20,13 +16,34 @@ class TicketInvoice(models.Model):
 
 	name = fields.Char(
 			string="Ticket Factura #", 
-			required=True, 
-			compute='_compute_name', 
-			)
+		)
 
-	#@api.depends()
-	@api.multi
+	family = fields.Char(
+			default='ticket_invoice', 
+		)
 
-	def _compute_name(self):
-		for record in self:
-			record.name = 'TF-' + str(record.id) 
+
+
+	# ----------------------------------------------------------- CRUD ------------------------------------------------------
+
+ 	# Create 
+	@api.model
+	def create(self,vals):
+
+		print 
+		print 'Create Override'
+		print 
+		print vals
+		print 
+	
+		counter = self.env['openhealth.counter'].search([('name', '=', 'ticket_invoice')])		
+		counter.increase()
+
+
+		#Write your logic here
+		res = super(TicketInvoice, self).create(vals)
+		#Write your logic here
+
+		return res
+
+		

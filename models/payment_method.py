@@ -120,70 +120,62 @@ class payment_method(models.Model):
 
 
 
-	# Create Saledoc
+
+
+
+
+
+
+	# Create Sale Proof
 	@api.multi 
-	def create_saledoc(self):
-		print 'Create Saledoc'
-
-		ret = ''
-
-		if self.saledoc == 'receipt':
-			ret = self.create_receipt()
-
-		return ret 
-
-
-
-
-
-	# Create Receipt
-	@api.multi 
-	def create_receipt(self):
+	def create_saleproof(self):
 		print 
-		print 'Create Receipt'
+		print 'Create Sale proof'
 
 
+
+
+		#model = dic_model[self.saledoc]
+		model = ord_vars._dic_model[self.saledoc]
 
 
 		# Search 
-		receipt_id = self.env['openhealth.receipt'].search([
+		proof = self.env[model].search([
 																('payment_method', '=', self.id),
-																#('sale_document','=',self.id),
-															]).id
-
+															])
 
 		# Create 
-		if receipt_id == False:
+		if proof.id == False:
 
-
-			receipt = self.env['openhealth.receipt'].create({
+			count = self.env[model].search_count([
+																	('name','=', self.saledoc_code),
+															])
+			if count != 0: 
+				proof = self.env[model].create({
 																'payment_method': self.id,
-																#'sale_document': self.id,
 																'partner': self.partner.id,
-																'order': self.order.id,
 																'total': self.total,
-
 																'date_created': self.date_created,
+																'order': self.order.id,
 
-																'counter': self.saledoc_code,																
+																'name': self.saledoc_code,
 														})
-			receipt_id = receipt.id 
+		proof_id = proof.id 
 
 
-
-
-		self.receipt = receipt_id
 
 		return {
 				'type': 'ir.actions.act_window',
-				'name': ' New Receipt Current', 
+				'name': ' New Proof Current', 
 
 				'view_type': 'form',
 				'view_mode': 'form',	
 				'target': 'current',
 
-				'res_model': 'openhealth.receipt',				
-				'res_id': receipt_id,
+
+				'res_model': model,
+				'res_id': proof_id,
+
 
 				'flags': 	{
 							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
@@ -192,17 +184,16 @@ class payment_method(models.Model):
 
 				'context': {
 							'default_payment_method': self.id,
-							#'default_order': self.order.id,
 							'default_total': self.total,
 							'default_partner': self.partner.id,
 							'default_date_created': self.date_created,
+							'default_order': self.order.id,
 
-
-							'default_counter': self.saledoc_code,
+							'default_name': self.saledoc_code,
 							}
 				}
 
-	# create_receipt
+	# create_saleproof
 
 
 
@@ -210,71 +201,130 @@ class payment_method(models.Model):
 
 
 
+	# Receipt
 	receipt = fields.Many2one(
 			'openhealth.receipt',
 			string = "Boleta", 			
 			#ondelete='cascade', 
+
+			compute="_compute_receipt",
 		)
 
+	@api.multi
+	#@api.depends('saledoc')
+
+	def _compute_receipt(self):
+		for record in self:
+			record.receipt = record.env['openhealth.receipt'].search([('payment_method', '=', record.id),])
+
+	
+
+
+	# Invoice
 	invoice = fields.Many2one(
 			'openhealth.invoice',
 			string = "Factura", 			
 			#ondelete='cascade', 
+
+			compute="_compute_invoice",
 		)
 
+	@api.multi
+	#@api.depends('saledoc')
+
+	def _compute_invoice(self):
+		for record in self:
+			record.invoice = record.env['openhealth.invoice'].search([('payment_method', '=', record.id),])
+
+
+
+
+	# Advertisement
 	advertisement = fields.Many2one(
 			'openhealth.advertisement',
 			string = "Canje publicidad", 			
 			#ondelete='cascade', 
-		)
 
+			compute="_compute_advertisement",
+		)
+	@api.multi
+	#@api.depends('saledoc')
+
+	def _compute_advertisement(self):
+		for record in self:
+			record.advertisement = record.env['openhealth.advertisement'].search([('payment_method', '=', record.id),])
+
+
+
+
+	# Sale note 
 	sale_note = fields.Many2one(
 			'openhealth.sale_note',
 			string = "Nota de venta", 			
 			#ondelete='cascade', 
-		)
 
+			compute="_compute_sale_note",
+		)
+	@api.multi
+	#@api.depends('saledoc')
+
+	def _compute_sale_note(self):
+		for record in self:
+			record.sale_note = record.env['openhealth.sale_note'].search([('payment_method', '=', record.id),])
+
+
+
+
+	# Ticket Receipt
 	ticket_receipt = fields.Many2one(
 			'openhealth.ticket_receipt',
 			string = "Ticket Boleta", 			
 			#ondelete='cascade', 
-		)
 
+			compute="_compute_ticket_receipt",
+		)
+	@api.multi
+	#@api.depends('saledoc')
+
+	def _compute_ticket_receipt(self):
+		for record in self:
+			record.ticket_receipt = record.env['openhealth.ticket_receipt'].search([('payment_method', '=', record.id),])
+
+
+
+
+	# Ticket Invoice
 	ticket_invoice = fields.Many2one(
 			'openhealth.ticket_invoice',
 			string = "Ticket Factura", 			
 			#ondelete='cascade', 
+
+			compute="_compute_ticket_invoice",
 		)
+	@api.multi
+	#@api.depends('saledoc')
+
+	def _compute_ticket_invoice(self):
+		for record in self:
+			record.ticket_invoice = record.env['openhealth.ticket_invoice'].search([('payment_method', '=', record.id),])
 
 
 
 
 
 
-	_saledoc_list = [
 
-				('receipt', 			'Boleta'),
-				('invoice', 			'Factura'),
-
-				('advertisement', 		'Canje Publicidad'),
-				#('sale_note', 			'Nota de Venta'),
-				('sale_note', 			'Canje NV'),
-
-				('ticket_receipt', 		'Ticket Boleta'),
-				('ticket_invoice', 		'Ticket Factura'),
-
-				#('none', 				'Ninguno'),
-
-			]
 	
-
+	# Saledoc 
 	saledoc = fields.Selection(
 			#string="Documento de venta", 
 			string="Documento de Pago", 
 
-			selection=_saledoc_list, 
+			#selection=_saledoc_list, 
+			selection=ord_vars._sale_doc_type_list, 
 			
 			#default='receipt', 
+			#required=True, 
 		)
 
 
@@ -283,112 +333,55 @@ class payment_method(models.Model):
 
 	# Sale doc code 
 	saledoc_code = fields.Char(
-
 			string="No", 
-		
 			readonly=False, 
 
 			#compute="_compute_saledoc_code",
 		)
 
-
 	@api.onchange('saledoc')
 	
 	def _onchange_saledoc(self):
+
 		print
 		print 'onchange - Saledoc'
 
-		ctr = 0 
+		pre = {
+				'receipt':	'BO-1-', 
+				'invoice':	'FA-1-', 
 
-		if self.saledoc  == 'receipt':
-			pre = 'BO-'
+				'advertisement':	'CP-1-', 
+				'sale_note':		'CN-1-', 
 
-			counter = self.env['openhealth.counter'].search([('name', 'like', 'receipt')])
+				'ticket_receipt':	'TKB-1-', 
+				'ticket_invoice':	'TKF-1-', 
+		}
+
+
+		counter = self.env['openhealth.counter'].search([('name', '=', self.saledoc)])
+
+		out = False 
+
+
+
+		while not out:
+
 			ctr = counter.value
-			#self.counter_receipt = counter
+			name = pre[self.saledoc] + str(ctr).rjust(4, '0')
+		
 
-
-		if self.saledoc  == 'invoice':
-			pre = 'FA-'
-
-		if self.saledoc  == 'advertisement':
-			pre = 'CA-'
-
-		if self.saledoc  == 'sale_note':
-			pre = 'NV-'
-			
-		if self.saledoc  == 'ticket_receipt':
-			pre = 'TB-'
-			
-		if self.saledoc  == 'ticket_invoice':
-			pre = 'TF-'
-
-		if self.saledoc  == 'none':
-			pre = 'NO-'
-
-		self.saledoc_code = ctr 
+			model = ord_vars._dic_model[self.saledoc]
+			count = self.env[model].search_count([
+												('name','=', name),
+											]) 
+			if count == 0:
+				out = True
+			else:
+				counter.increase()
 
 
 
-	#@api.multi
-	@api.depends('saledoc')
-
-	def _compute_saledoc_code(self):
-		for record in self:
-
-			receipt_ctr = '00001'
-
-			pre = 'x'
-
-			if record.saledoc  == 'receipt':
-				pre = 'BO-'
-
-
-			if record.saledoc  == 'invoice':
-				pre = 'FA-'
-
-			if record.saledoc  == 'advertisement':
-				pre = 'CA-'
-
-			if record.saledoc  == 'sale_note':
-				pre = 'NV-'
-			
-			if record.saledoc  == 'ticket_receipt':
-				pre = 'TB-'
-			
-			if record.saledoc  == 'ticket_invoice':
-				pre = 'TF-'
-
-			if record.saledoc  == 'none':
-				pre = 'NO-'
-
-			if pre != 'x':
-				code = receipt_ctr
-				record.saledoc_code = pre + code
-
-
-
-
-
-
-	# Consistency 
-
-	#subtotal = fields.Float(
-	#		string = 'Sub-total', 
-	#		required=True, 
-	#	)
-
-	#method = fields.Selection(
-	#		string="Medio", 
-	#		selection = ord_vars._payment_method_list, 			
-	#		required=True, 
-	#	)
-
-
-
-
-
-
+		self.saledoc_code = name
 
 
 
@@ -409,7 +402,7 @@ class payment_method(models.Model):
 
 					('payment', 'Pagado'),
 
-					('done', 'Completo'),
+					('done', 'Documento generado'),
 					
 					#('cancel', 'Cancelled'),
 				]
@@ -707,15 +700,13 @@ class payment_method(models.Model):
 		print 
 		print vals
 		print 
+		
 	
-
-
 
 		#order = vals['order']
 		#nr_pm = self.env['openhealth.payment_method'].search_count([('order','=', order),]) 
 		#name = 'MP-' + str(nr_pm + 1)
 		#vals['name'] = name
-
 
 
 		#Write your logic here

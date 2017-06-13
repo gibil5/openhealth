@@ -79,8 +79,6 @@
 
 
 
-
-
         <record id="oeh_medical_appointment_physician" model="ir.rule">
             
             <!--
@@ -97,9 +95,6 @@
             
             <field name="groups" eval="[(4, ref('oehealth.group_oeh_medical_physician'))]"/>
         </record>
-
-
-
 
     </data>
 </openerp>

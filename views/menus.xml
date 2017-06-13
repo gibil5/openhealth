@@ -67,11 +67,11 @@
 					/>
 
 
+
+
 		<menuitem 	id="sales_menu" 
 					name="Caja"
 					parent="main_sales_menu"/>
-
-
 
 		<menuitem 	id="sales_budget_menu" 
 					name="Presupuestos" 
@@ -85,14 +85,33 @@
 					sequence="2"
 					action="sale_list_action"/>
 
-
-
 		<menuitem 	id="sales_product_template_menu" 
 					name="Productos"
 					parent="sales_menu"
 					sequence="3"
 
 					action="product_template_stockable_list_action"/>
+
+
+
+
+		<!-- Config --> 
+		<menuitem 	id="sales_config_menu" 
+					name="Configuración"
+					parent="main_sales_menu"
+
+					groups="openhealth.managers"
+					/>
+
+		<!-- Counters --> 
+		<menuitem 	id="sales_counters_menu" 
+					name="Counters" 
+					parent="sales_config_menu"
+					sequence="4"
+					
+					action="counter_list_action"/>
+
+
 
 
 
@@ -243,20 +262,8 @@
 
 		<!-- Counters --> 
 		<menuitem id="counters_menu" name="Counters" parent="openhealth_menu"
-			sequence="-70"
+			sequence="-80"
 			action="counter_list_action"/>
-
-
-
-		<!-- Partners --> 
-		<menuitem id="partners_menu" name="Partners" parent="openhealth_menu"
-			sequence="-60"
-			action="partner_list_action"/>
-
-
-
-
-
 
 
 
@@ -270,10 +277,60 @@
 
 		<!-- Orders --> 
 		<menuitem id="orders_menu" name="Orders" parent="openhealth_menu"
-			sequence="-50"
+			sequence="-70"
 			action="order_list_action"/>
 
 
+
+
+
+
+
+
+		<!-- Receipts -->
+		<menuitem id="receipts_menu" name="Boletas" parent="openhealth_menu"
+			sequence="-70"
+			action="receipt_list_action"/>
+
+		<!-- Invoices -->
+		<menuitem id="invoices_menu" name="Facturas" parent="openhealth_menu"
+			sequence="-70"
+			action="invoice_list_action"/>
+
+
+		<!-- advertisements -->
+		<menuitem id="advertisements_menu" name="Canjes" parent="openhealth_menu"
+			sequence="-70"
+			action="advertisement_list_action"/>
+
+		<!-- sale_notes -->
+		<menuitem id="sale_notes_menu" name="Notas" parent="openhealth_menu"
+			sequence="-70"
+			action="sale_note_list_action"/>
+
+		<!-- ticket_receipts -->
+		<menuitem id="ticket_receipts_menu" name="Tickets Boleta" parent="openhealth_menu"
+			sequence="-70"
+			action="ticket_receipt_list_action"/>
+
+		<!-- ticket_invoices -->
+		<menuitem id="ticket_invoices_menu" name="Tickets Factura" parent="openhealth_menu"
+			sequence="-70"
+			action="ticket_invoice_list_action"/>
+
+
+
+
+
+
+
+
+
+
+		<!-- Partners --> 
+		<menuitem id="partners_menu" name="Partners" parent="openhealth_menu"
+			sequence="-60"
+			action="partner_list_action"/>
 
 
 
@@ -323,36 +380,7 @@
 
 
 
-		<!-- Receipts -->
-		<menuitem id="receipts_menu" name="Boletas" parent="openhealth_menu"
-			sequence="-20"
-			action="receipt_list_action"/>
 
-		<!-- Invoices -->
-		<menuitem id="invoices_menu" name="Facturas" parent="openhealth_menu"
-			sequence="-20"
-			action="invoice_list_action"/>
-
-
-		<!-- advertisements -->
-		<menuitem id="advertisements_menu" name="Canjes" parent="openhealth_menu"
-			sequence="-20"
-			action="advertisement_list_action"/>
-
-		<!-- sale_notes -->
-		<menuitem id="sale_notes_menu" name="Notas" parent="openhealth_menu"
-			sequence="-20"
-			action="sale_note_list_action"/>
-
-		<!-- ticket_receipts -->
-		<menuitem id="ticket_receipts_menu" name="Tickets Boleta" parent="openhealth_menu"
-			sequence="-20"
-			action="ticket_receipt_list_action"/>
-
-		<!-- ticket_invoices -->
-		<menuitem id="ticket_invoices_menu" name="Tickets Factura" parent="openhealth_menu"
-			sequence="-20"
-			action="ticket_invoice_list_action"/>
 
 
 

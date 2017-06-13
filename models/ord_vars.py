@@ -3,22 +3,37 @@
 
 
 
+_dic_model = {
+
+						'receipt' : 'openhealth.receipt', 		
+						'invoice' : 'openhealth.invoice', 		
+
+						'advertisement' : 	'openhealth.advertisement', 		
+						'sale_note' : 		'openhealth.sale_note', 		
+
+						'ticket_receipt' : 	'openhealth.ticket_receipt', 		
+						'ticket_invoice' : 	'openhealth.ticket_invoice', 		
+			}
+
+
+
+
+
 
 
 _sale_doc_type_list = [
+						('receipt', 			'Boleta'),
+						('invoice', 			'Factura'),
 
-				('receipt', 			'Boleta'),
-				('invoice', 			'Factura'),
+						('advertisement', 		'Canje Publicidad'),
+						#('sale_note', 			'Nota de Venta'),
+						('sale_note', 			'Canje NV'),
 
-				('advertisement', 		'Canje Publicidad'),
-				#('sale_note', 			'Nota de Venta'),
-				('sale_note', 			'Canje NV'),
+						('ticket_receipt', 		'Ticket Boleta'),
+						('ticket_invoice', 		'Ticket Factura'),
 
-				('ticket_receipt', 		'Ticket Boleta'),
-				('ticket_invoice', 		'Ticket Factura'),
-
-				('', 			''),
-	]
+						#('', 			''),
+		]
 
 
 

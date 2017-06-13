@@ -2,10 +2,6 @@
 <openerp>
 	<data>
 
-
-
-
-
 		<!-- Form view -->
 		<record model="ir.ui.view" id="advertisement_form_view">
 			<field name="name">advertisement.form</field>
@@ -21,8 +17,8 @@
 			<field name="arch" type="xml">
 
 
-				<xpath expr="//h2" position="replace">
-					<h2>Canje publicidad</h2>					
+				<xpath expr="//h1" position="replace">
+					<h1>Canje publicidad</h1>					
 				</xpath>
 
 

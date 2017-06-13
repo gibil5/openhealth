@@ -97,6 +97,10 @@ class payment_method_line(models.Model):
 
 		payment_method_id = self.payment_method.id  
 
+		#saledoc = 'receipt'
+
+		#self.payment_method.saledoc = saledoc
+
 		return {
 
 			# Mandatory 
@@ -126,6 +130,7 @@ class payment_method_line(models.Model):
 
 			'context':   {
 
+							#'default_saledoc': saledoc,
 			}
 		}
 

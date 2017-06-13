@@ -3,30 +3,45 @@
 # 	sale_note 
 # 
 #
-
 from openerp import models, fields, api
-
-
 
 class SaleNote(models.Model):
 	
 	_name = 'openhealth.sale_note'
 
-	#_inherit='openhealth.sale_document'
 	_inherit='openhealth.sale_proof'
 
 
 
-
 	name = fields.Char(
-			string="Nota #", 
-			required=True, 
-			compute='_compute_name', 
-			)
+			string="CANJE NV #", 
+		)
 
-	#@api.depends()
-	@api.multi
+	family = fields.Char(
+			default='sale_note', 
+		)
 
-	def _compute_name(self):
-		for record in self:
-			record.name = 'NO-' + str(record.id) 
+
+
+	# ----------------------------------------------------------- CRUD ------------------------------------------------------
+
+ 	# Create 
+	@api.model
+	def create(self,vals):
+
+		print 
+		print 'Create Override'
+		print 
+		print vals
+		print 
+	
+		counter = self.env['openhealth.counter'].search([('name', '=', 'sale_note')])		
+		counter.increase()
+
+
+		#Write your logic here
+		res = super(SaleNote, self).create(vals)
+		#Write your logic here
+
+		return res
+

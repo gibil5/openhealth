@@ -2,6 +2,10 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+access_openhealth_counter,openhealth.counter,model_openhealth_counter,,1,1,1,1
+
+
+
 
 access_sale_order_managers,sale.order.managers,model_sale_order,openhealth.managers,1,1,1,1
 

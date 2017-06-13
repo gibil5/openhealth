@@ -2,11 +2,6 @@
 <openerp>
 	<data>
 
-
-
-
-
-
 		<!-- Form view -->
 		<record model="ir.ui.view" id="ticket_receipt_form_view">
 			<field name="name">ticket_receipt.form</field>
@@ -21,8 +16,8 @@
 
 
 
-				<xpath expr="//h2" position="replace">
-					<h2>Ticket boleta</h2>					
+				<xpath expr="//h1" position="replace">
+					<h1>Ticket boleta</h1>					
 				</xpath>
 
 

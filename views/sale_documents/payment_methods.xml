@@ -52,7 +52,7 @@
 
 
 						<button 
-								name="create_saledoc"
+								name="create_saleproof"
 
 								type="object" 
 								
@@ -74,7 +74,7 @@
 
 								states="done"						
 
-								string="Regresar"
+								string="Confirmar"
 						/>
 
 <!--
@@ -257,7 +257,8 @@
 
 
 									<field name="receipt"		
-															readonly="1"
+															readonly="0"
+
 															attrs="{'invisible':[
 																				('saledoc','in',[ False, 'invoice', 'advertisement', 'sale_note', 'ticket_receipt', 'ticket_invoice', 'none',]),
 															]}"
@@ -266,6 +267,7 @@
 
 									<field name="invoice"		
 															readonly="1"
+
 															attrs="{'invisible':[
 																				('saledoc','in',[ False, 'receipt', 'advertisement', 'sale_note', 'ticket_receipt', 'ticket_invoice', 'none',]),
 															]}"
@@ -306,7 +308,6 @@
 
 
 
-									<field name="vspace"/>
 									<field name="date_created"/>
 
 								</group>

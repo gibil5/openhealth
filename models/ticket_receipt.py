@@ -3,30 +3,45 @@
 # 	ticket_receipt 
 # 
 #
-
 from openerp import models, fields, api
-
-
 
 class TicketReceipt(models.Model):
 	
 	_name = 'openhealth.ticket_receipt'
 
-	#_inherit='openhealth.sale_document'
 	_inherit='openhealth.sale_proof'
-
 
 
 
 	name = fields.Char(
 			string="Ticket Boleta #", 
-			required=True, 
-			compute='_compute_name', 
-			)
+		)
 
-	#@api.depends()
-	@api.multi
+	family = fields.Char(
+			default='ticket_receipt', 
+		)
 
-	def _compute_name(self):
-		for record in self:
-			record.name = 'TB-' + str(record.id) 
+
+
+	# ----------------------------------------------------------- CRUD ------------------------------------------------------
+
+ 	# Create 
+	@api.model
+	def create(self,vals):
+
+		print 
+		print 'Create Override'
+		print 
+		print vals
+		print 
+	
+		counter = self.env['openhealth.counter'].search([('name', '=', 'ticket_receipt')])		
+		counter.increase()
+
+
+		#Write your logic here
+		res = super(TicketReceipt, self).create(vals)
+		#Write your logic here
+
+		return res
+

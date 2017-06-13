@@ -2,10 +2,6 @@
 <openerp>
 	<data>
 
-
-
-
-
 		<!-- Form view -->
 		<record model="ir.ui.view" id="sale_note_form_view">
 			<field name="name">sale_note.form</field>
@@ -20,8 +16,8 @@
 
 
 
-				<xpath expr="//h2" position="replace">
-					<h2>Canje (nv)</h2>					
+				<xpath expr="//h1" position="replace">
+					<h1>Canje (NV)</h1>					
 				</xpath>
 
 

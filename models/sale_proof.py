@@ -13,17 +13,56 @@ class SaleProof(models.Model):
 
 
 
+	name = fields.Char(
+			string="", 
+			required=True, 
+
+			)
+	family = fields.Char(
+		)
+
+
+
+	vspace = fields.Char(
+			' ', 
+			readonly=True
+			)
+
+
+	counter = fields.Many2one('openhealth.counter',
+			#ondelete='cascade', 
+			string="Counter",
+			required=True, 
+
+			compute="_compute_counter",
+			)
+
+	@api.multi
+	#@api.depends('saledoc')
+
+	def _compute_counter(self):
+		for record in self:
+			record.counter = self.env['openhealth.counter'].search([('name', 'like', record.family)])
+
+
+
+
+
+
 
 	# Counter
-	#counter = fields.Many2one(
-	counter = fields.Char(
+	#counter = fields.Char(
+	#		string="Counter", 
+	#		default="0", 
+	#		required=True, 
+	#	)
 
-			#'openhealth.counter',
-		
-			string="Counter", 
-			default="0", 
-			required=True, 
-		)
+	# Code
+	#code = fields.Char(
+	#		string="Code", 
+	#		default="x", 
+	#		required=True, 
+	#	)
 
 
 
@@ -32,11 +71,12 @@ class SaleProof(models.Model):
 	# Date created 
 	date_created = fields.Datetime(
 			string="Fecha", 
+
+			default = fields.Date.today,
+
 			#readonly=True,
 			required=True, 
 			)
-
-
 
 
 
@@ -73,16 +113,15 @@ class SaleProof(models.Model):
 	payment_method = fields.Many2one('openhealth.payment_method',
 			ondelete='cascade', 
 			string="Payment method",
+
+			#required=True, 
+			required=False, 
 			)
 
-
-
-
-	sale_document = fields.Many2one('openhealth.sale_document',
-			ondelete='cascade', 
-			string="Sale document",
-			)
-
+	#sale_document = fields.Many2one('openhealth.sale_document',
+	#		ondelete='cascade', 
+	#		string="Sale document",
+	#		)
 
 	order = fields.Many2one(
 			'sale.order',
@@ -91,27 +130,11 @@ class SaleProof(models.Model):
 			
 			ondelete='cascade', 
 			
-			required=True, 
+			#required=True, 
+			required=False, 
 		)
 
 
-
-
-
-	name = fields.Char(
-			#compute='_compute_name', 			
-		)
-	#def _compute_code(self):
-	#	for record in self:
-	#		record.name = record.id
-
-
-
-
-	vspace = fields.Char(
-			' ', 
-			readonly=True
-			)
 
 	partner = fields.Many2one(
 			'res.partner',
@@ -121,13 +144,14 @@ class SaleProof(models.Model):
 
 	total = fields.Float(
 			string = 'Total', 
+			required=True, 
 		)
-
 
 	ruc = fields.Char(
 			string="RUC", 	
 			#required=True, 
 		)
+
 
 
 

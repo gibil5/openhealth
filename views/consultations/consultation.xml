@@ -470,9 +470,9 @@ DEPRECATED
 							</group>		
 							<group>				
 <!--
-								<field name="x_fitzpatrick" 	required="1"/>	
--->						
 								<field name="x_fitzpatrick" 	required="0"	string="Fitzpatrick (*)"/>	
+-->						
+								<field name="x_fitzpatrick" 	required="1"/>	
 							</group>
 
 
@@ -485,9 +485,9 @@ DEPRECATED
 							</group>							
 							<group>						
 <!--
-								<field name="x_photo_aging"  	required="1"/>	
--->
 								<field name="x_photo_aging"  	required="0"	string="Foto-envejecimiento (*)"/>	
+-->
+								<field name="x_photo_aging"  	required="1"/>	
 
 <!--								
 								<field name="vspace"/>

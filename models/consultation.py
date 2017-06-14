@@ -116,11 +116,11 @@ class Consultation(models.Model):
 
 	def _compute_progress(self):
 		for record in self:
-			print 
-			print 'jx'
-			print 'Compute progress'
+			#print 
+			#print 'jx'
+			#print 'Compute progress'
 			record.progress = eval_vars._hash_progress[record.state]
-			print 
+			#print 
 
 
 
@@ -554,14 +554,17 @@ class Consultation(models.Model):
 
 	x_diagnosis = fields.Text(
 			string = 'Diagnóstico', 
+			required=True, 
 			)
 
 	x_antecedents = fields.Text(
 			string = 'Antecedentes médicos', 
+			required=True, 
 			)
 
 	x_allergies_medication = fields.Text(
 			string = 'Alergias a medicamentos', 
+			required=True, 
 			)
 
 	x_analysis_lab = fields.Boolean(
@@ -570,10 +573,12 @@ class Consultation(models.Model):
 
 	x_observations = fields.Text(
 			string = 'Observaciones',
+			required=True, 
 			)
 
 	x_indications = fields.Text(
 			string = 'Indicaciones',
+			required=True, 
 			)
 
 
@@ -618,9 +623,9 @@ class Consultation(models.Model):
 	
 	def create_order_current(self):  
 
-		print 
-		print 'jx'
-		print 'create_order_current'
+		#print 
+		#print 'jx'
+		#print 'create_order_current'
 
 
 
@@ -653,8 +658,8 @@ class Consultation(models.Model):
 													#('x_family','=', 'private'),
 												]).id
 
-		print 'consultation_id: ', consultation_id
-		print 'order_id: ', order_id
+		#print 'consultation_id: ', consultation_id
+		#print 'order_id: ', order_id
 
 
 
@@ -676,7 +681,7 @@ class Consultation(models.Model):
 
 			# Create order lines 
 			ret = order.x_create_order_lines()
-			print ret 
+			#print ret 
 
 
 
@@ -690,11 +695,11 @@ class Consultation(models.Model):
 
 
 			order_id = order.id 
-			print order
+			#print order
 		
 
-		print order_id
-		print 
+		#print order_id
+		#print 
 
 		
 
@@ -752,8 +757,8 @@ class Consultation(models.Model):
 	@api.multi
 	def open_appointment(self):  
 
-		print 
-		print 'open appointment'
+		#print 
+		#print 'open appointment'
 
 		owner_id = self.id 
 		owner_type = self.owner_type

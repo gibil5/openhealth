@@ -30,11 +30,11 @@ class TicketInvoice(models.Model):
 	@api.model
 	def create(self,vals):
 
-		print 
-		print 'Create Override'
-		print 
-		print vals
-		print 
+		#print 
+		#print 'Create Override'
+		#print 
+		#print vals
+		#print 
 	
 		counter = self.env['openhealth.counter'].search([('name', '=', 'ticket_invoice')])		
 		counter.increase()

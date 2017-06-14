@@ -3,22 +3,11 @@
 #from . import models
 
 
-
-
 # In OpenHealth - Base - Deprecated
-
 from . import partner
-
-
-
 from . import patient  
-
 from . import product
 from . import evaluation  
-
-
-
-
 
 # Deprecated 
 #from . import learn_1
@@ -29,25 +18,23 @@ from . import evaluation
 
 
 
-# Operational 
+# After Travis
+#from . import openhealth.models.appfuncs 
+from . import appfuncs 
+#from openhealth.models import appfuncs 
 
+
+
+
+
+# Operational 
 from . import process 
 from . import treatment 
 from . import cosmetology
-
 from . import physician 
-
-
-
-
 from . import consultation
 from . import consultation_cos
-
-
 from . import recommendation
-
-
-
 from . import procedure
 from . import procedure_cos
 

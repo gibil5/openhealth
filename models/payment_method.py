@@ -69,8 +69,8 @@ class payment_method(models.Model):
 	# Open Myself
 	@api.multi 
 	def open_myself(self):
-		print 
-		print 'Open Myself'
+		#print 
+		#print 'Open Myself'
 		payment_method_id = self.id  
 
 
@@ -133,10 +133,8 @@ class payment_method(models.Model):
 	# Create Sale Proof
 	@api.multi 
 	def create_saleproof(self):
-		print 
-		print 'Create Sale proof'
-
-
+		#print 
+		#print 'Create Sale proof'
 
 
 		#model = dic_model[self.saledoc]
@@ -351,8 +349,8 @@ class payment_method(models.Model):
 	
 	def _onchange_saledoc(self):
 
-		print
-		print 'onchange - Saledoc'
+		#print
+		#print 'onchange - Saledoc'
 
 		pre = {
 				'receipt':	'BO-1-', 
@@ -437,7 +435,7 @@ class payment_method(models.Model):
 	def _compute_state(self):
 		for record in self:
 
-			print 'Compute State'
+			#print 'Compute State'
 
 			record.state = 'draft'
 
@@ -465,13 +463,13 @@ class payment_method(models.Model):
 
 
 
-		print record.state
-		print 
+		#print record.state
+		#print 
 
 
 
 
-	nr_pm = fields.Integer(
+	nr_pm = fields.Char(
 
 			compute="_compute_nr_pm",
 		)
@@ -480,13 +478,15 @@ class payment_method(models.Model):
 	#@api.depends('date_order')
 
 	def _compute_nr_pm(self):
-		print
-		print 'PML - compute nr pm'
-		print 
+		#print
+		#print 'PML - compute nr pm'
+		#print 
 
 		for record in self:
+			
 			nr = record.env['openhealth.payment_method_line'].search_count([('payment_method','=', record.id),]) 
-			record.nr_pm = nr + 1
+
+			record.nr_pm = str(nr + 1)
 
 
 
@@ -495,8 +495,8 @@ class payment_method(models.Model):
 	@api.multi 
 	def create_pm_line(self):
 
-		print 
-		print 'Create Pm Line'
+		#print 
+		#print 'Create Pm Line'
 
 
 
@@ -587,8 +587,8 @@ class payment_method(models.Model):
 	@api.multi 
 	def open_order(self):
 
-		print 
-		print 'Open order'
+		#print 
+		#print 'Open order'
 
 		self.confirmed = True 
 
@@ -679,18 +679,18 @@ class payment_method(models.Model):
 	#@api.depends('total', 'pm_total')
 	def _compute_balance(self):
 
-		print 'Compute Balance'
+		#print 'Compute Balance'
 		
 		for record in self:
 			record.balance = record.total - record.pm_total 
 
 			#if record.balance == 0.0:
 			#if record.total == record.pm_total:
-			#	print 'Gotcha'
-			#	record.state = 'done'
-			#	print record.state  
+				#print 'Gotcha'
+				#record.state = 'done'
+				#print record.state  
 
-		print 
+		#print 
 
 
 
@@ -701,13 +701,13 @@ class payment_method(models.Model):
 	
 	#def _onchange_balance(self):
 		
-	#	print 'Onchange Balance'
+		#print 'Onchange Balance'
 
 		#if self.balance == 0.0:
 	#	if self.total == self.pm_total:
-	#		print 'Gotcha'
+			#print 'Gotcha'
 	#		self.state = 'done'
-	#		print self.state  
+			#print self.state  
 
 
 
@@ -719,12 +719,12 @@ class payment_method(models.Model):
 	@api.model
 	def create(self,vals):
 
-		print 
-		print 'jx'
-		print 'Payment Method - Create Override'
-		print 
-		print vals
-		print 
+		#print 
+		#print 'jx'
+		#print 'Payment Method - Create Override'
+		#print 
+		#print vals
+		#print 
 		
 	
 

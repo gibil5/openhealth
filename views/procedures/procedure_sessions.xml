@@ -24,12 +24,28 @@
 					<page string="Sesiones">
 
 
-						<field name="session_ids"/>
+						<field name="session_ids"		context="{
+																		'default_patient': patient,
+
+																		'default_chief_complaint': chief_complaint,
+
+																		'default_evaluation_type': evaluation_type,
+
+																		'default_evaluation_start_date': evaluation_start_date,
+
+
+																		'default_product': product,
+
+																		'default_doctor': doctor,
+
+																		}"
+						/>
 
 
 						<!--
 						<field name="session_ids">
 							<tree string="">	
+
 								<field string="session #"  name="name"/>
 
 								<field string="Paciente" name="patient"/>
@@ -48,9 +64,6 @@
 							</tree>
 						</field>				
 						-->
-
-						
-
 					</page>
 				</notebook>
 			</field>

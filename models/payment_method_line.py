@@ -17,22 +17,21 @@ class payment_method_line(models.Model):
 
 
 	# Test
-	@api.multi 
-	def x_test(self):
-		print
-		print 'X Test'
-
-		print id
+	#@api.multi 
+	#def x_test(self):
+		#print
+		#print 'X Test'
+		#print id
 
 		#ctr = 5
 		#self.name = 'Pago - ' + str(ctr)
 		#self.name = 'Pago - '
 
 		#for record in self:
-		#	print record.name
-		#	print record.payment_method
+			#print record.name
+			#print record.payment_method
 		
-		print 
+		#print 
 
 
 
@@ -54,9 +53,9 @@ class payment_method_line(models.Model):
 	@api.multi
 	#@api.depends('date_order')
 	def _compute_name(self):
-		print
-		print 'PML - compute name'
-		print 
+		#print
+		#print 'PML - compute name'
+		#print 
 
 		for record in self:
 
@@ -73,7 +72,7 @@ class payment_method_line(models.Model):
 			#print ctr
 			record.name = 'Pago - ' + str(ctr)
 
-		print 
+		#print 
 
 
 
@@ -90,8 +89,8 @@ class payment_method_line(models.Model):
 	@api.multi 
 	def open_pm(self):
 
-		print 
-		print 'Open Pm'
+		#print 
+		#print 'Open Pm'
 
 
 
@@ -219,11 +218,11 @@ class payment_method_line(models.Model):
 # Create 
 	@api.model
 	def create(self,vals):
-		print 
-		print 'PML - Create - Override'
-		print 
-		print vals
-		print 
+		#print 
+		#print 'PML - Create - Override'
+		#print 
+		#print vals
+		#print 
 	
 	
 
@@ -239,15 +238,15 @@ class payment_method_line(models.Model):
 	@api.multi
 	def write(self,vals):
 
-		print 
-		print 'PML - Write - Override'
-		print 
-		print vals
+		#print 
+		#print 'PML - Write - Override'
+		#print 
+		#print vals
 
 		res = super(payment_method_line, self).write(vals)
 		#Write your logic here
-		print 
-		print 
+		#print 
+		#print 
 
 		return res
 

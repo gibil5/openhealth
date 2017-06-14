@@ -39,6 +39,7 @@
 
 
 						<!-- Pay --> 
+<!--
 						<button 
 								name="create_pm_line"
 								type="object" 
@@ -46,7 +47,7 @@
 								states="draft"						
 								string="Pagar"
 						/>
-
+-->
 
 					
 
@@ -134,6 +135,10 @@
 								<field name="vspace"   />	
 
 								<field name="partner"   readonly=""	/>													
+
+
+								<field name="vspace"   />	
+								<field name="nr_pm"   invisible="1"	/>													
 							</group>
 
 
@@ -201,20 +206,23 @@
 								<field name="pm_line_ids"	editable="top">
 
 
-																		'default_name': nr_pm,
 -->
 								<field name="pm_line_ids"	context="{
+																		'default_name': nr_pm,
+
 																		'default_subtotal': balance,
+
 																		'default_payment_method': active_id,
 
 																		}"  class="rallign"	>
 
 
 <!--
-									<tree			editable="top">	
 									<tree			editable="bottom"	on_write="x_test"		>	
--->
 									<tree			>	
+									<tree			editable="top">	
+-->
+									<tree			editable="bottom">	
 
 										<field name="name"	/>
 

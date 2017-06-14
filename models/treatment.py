@@ -49,8 +49,8 @@ class Treatment(models.Model):
 	@api.multi 
 	def open_myself(self):
 
-		print 
-		print 'Open Myself'
+		#print 
+		#print 'Open Myself'
 
 		treatment_id = self.id  
 
@@ -132,10 +132,10 @@ class Treatment(models.Model):
 	@api.multi 
 	def reset(self):
 
-		print 
-		print 
-		print 'jx'
-		print 'Treatment - Reset'
+		#print 
+		#print 
+		#print 'jx'
+		#print 'Treatment - Reset'
 
 		#self.state = 'draft'
 		#self.x_payment_method.unlink()
@@ -143,7 +143,7 @@ class Treatment(models.Model):
 
 
 		# Unlinks
-		print 'Unlinks'
+		#print 'Unlinks'
 		self.service_co2_ids.unlink()
 		self.service_excilite_ids.unlink()
 		self.service_ipl_ids.unlink()
@@ -167,8 +167,8 @@ class Treatment(models.Model):
 		# Orders 
 		#self.order_ids.unlink()
 		for order in self.order_ids:
-			print order 
-			print order.name
+			#print order 
+			#print order.name
 
 			order.remove_myself()
 
@@ -177,9 +177,9 @@ class Treatment(models.Model):
 
 
 
-		print 
-		print 
-		print 
+		#print 
+		#print 
+		#print 
 
 	# x_reset
 
@@ -961,8 +961,8 @@ class Treatment(models.Model):
 	@api.multi
 	def update_appointment(self, appointment_id, procedure_id, x_type):
 
-		print 
-		print 'Update Appointment'
+		#print 
+		#print 'Update Appointment'
 
 
 		#ret = treatment_funcs.create_procedure_go(self)
@@ -970,7 +970,7 @@ class Treatment(models.Model):
 
 
 		#print ret 
-		print 
+		#print 
 
 
 
@@ -1090,7 +1090,7 @@ class Treatment(models.Model):
 	#	for record in self:
 	#		sub_total = 0.0 
 	#		for se in record.service_ids:   
-	#			print se.price
+	#			#print se.price
 	#			sub_total = sub_total + se.price 
 	#		record.price_total = sub_total  
 
@@ -1232,8 +1232,8 @@ class Treatment(models.Model):
 	@api.multi
 	def open_appointment(self):  
 
-		print 
-		print 'open appointment'
+		#print 
+		#print 'open appointment'
 
 
 		owner_id = self.id 
@@ -1305,9 +1305,9 @@ class Treatment(models.Model):
 	@api.multi
 	def open_consultation_current(self):  
 
-		print 
-		print 'jx'
-		print 'Open Consultation Current'
+		#print 
+		#print 'jx'
+		#print 'Open Consultation Current'
 
 		patient_id = self.patient.id
 		doctor_id = self.physician.id
@@ -1316,9 +1316,9 @@ class Treatment(models.Model):
 
 		# Date 
 		GMT = time_funcs.Zone(0,False,'GMT')
-		print 'GMT: ', GMT
+		#print 'GMT: ', GMT
 		evaluation_start_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
-		print 'evaluation_start_date: ', evaluation_start_date 
+		#print 'evaluation_start_date: ', evaluation_start_date 
 
 		# Apointment 
 		appointment = self.env['oeh.medical.appointment'].search([ 	
@@ -1327,7 +1327,7 @@ class Treatment(models.Model):
 																('x_type', 'like', 'consultation'), 
 															], 
 															order='appointment_date desc', limit=1)
-		print 'appointment: ', appointment
+		#print 'appointment: ', appointment
 		appointment_id = appointment.id
 
 
@@ -1342,7 +1342,7 @@ class Treatment(models.Model):
 
 		# Create if it does not exist 
 		if consultation.name == False:
-			print 'create consultation'
+			#print 'create consultation'
 
 
 
@@ -1360,28 +1360,28 @@ class Treatment(models.Model):
 													}
 												)
 			consultation_id = consultation.id 
-			print 'consultation: ', consultation
-			print 'consultation_id', consultation_id
+			#print 'consultation: ', consultation
+			#print 'consultation_id', consultation_id
 
 
 			# Update
 			rec_set = self.env['oeh.medical.appointment'].browse([
 																	appointment_id																
 																])
-			print 'rec_set: ', rec_set
+			#print 'rec_set: ', rec_set
 
 			ret = rec_set.write({
 									'consultation': consultation_id,
 								})
 
-			print ret 
-			print appointment
-			print appointment.consultation
-			print appointment.consultation.id
+			#print ret 
+			#print appointment
+			#print appointment.consultation
+			#print appointment.consultation.id
 
 
 
-		print 
+		#print 
 		consultation_id = consultation.id 
 		
 		return {
@@ -1414,8 +1414,8 @@ class Treatment(models.Model):
 
 
 			'flags': {
-					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-					'form': {'action_buttons': True, }
+					'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+					#'form': {'action_buttons': True, }
 					},			
 
 
@@ -1499,11 +1499,10 @@ class Treatment(models.Model):
 
 # ----------------------------------------------------------- Button - Create Invoice  ------------------------------------------------------
 
-	@api.multi 
-	def create_invoice(self):			# Do Nothing  
-
-		print 'jx'
-		print 'Create Invoice'
+	#@api.multi 
+	#def create_invoice(self):			# Do Nothing  
+		#print 'jx'
+		#print 'Create Invoice'
 
 	# create_invoice 
 
@@ -1514,20 +1513,15 @@ class Treatment(models.Model):
 
 
 # ----------------------------------------------------------- Button - Create Service  ------------------------------------------------------
-#jz
-	@api.multi 
-	#def create_recommendation(self):
+
+	@api.multi
 	def create_service(self):
-
-		print 'jx'
-		print 'Create Service'
-
-
-		#consultation = self.env['openhealth.consultation'].search([('treatment','=', self.id)]) 
-		#consultation_id = consultation.id
-
 		treatment_id = self.id
 
+		#print 'jx'
+		#print 'Create Service'
+		#consultation = self.env['openhealth.consultation'].search([('treatment','=', self.id)]) 
+		#consultation_id = consultation.id
 
 		return {
 
@@ -1591,7 +1585,7 @@ class Treatment(models.Model):
 
 
 		order = self.create_order(target)		
-		print order 
+		#print order 
 
 
 
@@ -1640,7 +1634,7 @@ class Treatment(models.Model):
 
 
 		order = self.create_order(target)		
-		print order 
+		#print order 
 
 
 
@@ -1691,13 +1685,13 @@ class Treatment(models.Model):
 	#def create_order(self):
 	def create_order(self, target):
 
-		print 
-		print 'jx'
-		print 'Create Order'
+		#print 
+		#print 'jx'
+		#print 'Create Order'
 
 
 		#print self.x_family
-		print target
+		#print target
 
 
 		order = self.env['sale.order'].create(
@@ -1730,9 +1724,9 @@ class Treatment(models.Model):
 			else:
 				target_line = 'con_med'
 
-			print target_line 
+			#print target_line 
 			ret = order.x_create_order_lines_target(target_line)
-			print ret 
+			#print ret 
 
 
 
@@ -1742,24 +1736,24 @@ class Treatment(models.Model):
 			order_id = order.id
 
 			ret = treatment_funcs.create_order_lines(self, 'co2', order_id)
-			print ret
+			#print ret
 
 			ret = treatment_funcs.create_order_lines(self, 'excilite', order_id)
-			print ret 
+			#print ret 
 
 			ret = treatment_funcs.create_order_lines(self, 'ipl', order_id)
-			print ret 
+			#print ret 
 
 			ret = treatment_funcs.create_order_lines(self, 'ndyag', order_id)
-			print ret 
+			#print ret 
 
 			ret = treatment_funcs.create_order_lines(self, 'medical', order_id)
-			print ret 
+			#print ret 
 
 
 
 
-		print 
+		#print 
 
 		return order
 	# create_order
@@ -1775,8 +1769,8 @@ class Treatment(models.Model):
 	@api.multi 
 	def create_budget(self):
 
-		print 'jx'
-		print 'Create Budget'
+		#print 'jx'
+		#print 'Create Budget'
 
 
 		consultation = self.env['openhealth.consultation'].search([('treatment','=', self.id)]) 
@@ -1837,9 +1831,9 @@ class Treatment(models.Model):
 	@api.multi
 	def create_procedure(self):
 
-		print 
-		print 
-		print 'Create Procedure'
+		#print 
+		#print 
+		#print 'Create Procedure'
 
 
 		#if self.nr_invoices > 0:
@@ -1849,8 +1843,8 @@ class Treatment(models.Model):
 
 
 		#print ret 
-		print 
-		print 
+		#print 
+		#print 
 
 	# create_procedure 
 
@@ -1864,8 +1858,8 @@ class Treatment(models.Model):
 	@api.multi 
 	def create_sessions(self):
 
-		print 'jx'
-		print 'Create Sessions'
+		#print 'jx'
+		#print 'Create Sessions'
 
 
 		procedure = self.env['openhealth.procedure'].search([('treatment','=', self.id)]) 
@@ -1906,8 +1900,8 @@ class Treatment(models.Model):
 	@api.multi 
 	def create_controls(self):
 
-		print 'jx'
-		print 'Create Controls'
+		#print 'jx'
+		#print 'Create Controls'
 
 
 		procedure = self.env['openhealth.procedure'].search([('treatment','=', self.id)]) 

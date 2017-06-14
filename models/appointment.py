@@ -14,12 +14,23 @@ from openerp import models, fields, api
 #from datetime import datetime
 import datetime
 
+
+#import openhealth.models.appfuncs
+#import openhealth.models.time_funcs
+#import openhealth.models.jxvars
+#import openhealth.models.defaults
+#import openhealth.models.app_vars
+#from openhealth.models import appfuncs 
+
 import appfuncs
 import time_funcs
 import jxvars
 import defaults
-
 import app_vars
+
+
+
+
 
 
 class Appointment(models.Model):

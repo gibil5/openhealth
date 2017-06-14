@@ -24,13 +24,32 @@
 						
 
 						<!-- Order --> 
+<!--
+								name="open_pm"
+-->						
+						<button 
+								name="open_order"
+
+								type="object" 
+								
+								class="oe_highlight"
+
+								string="Confirmar"
+						/>						
+
+
 						<button 
 								name="open_pm"
+
 								type="object" 
+								
 								class="oe_highlight"
 
 								string="Regresar"
-						/>						
+						/>	
+
+
+
 
 
 						<!-- Order --> 

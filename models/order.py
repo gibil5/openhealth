@@ -84,8 +84,8 @@ class sale_order(models.Model):
 	@api.one
 	@api.depends('date_order')
 	def _compute_x_year(self):
-		print 
-		print 'Compute X Year'
+		#print 
+		#print 'Compute X Year'
 
 		#date = datetime.datetime.strptime(self.date_order, date_format)
 		#self.x_year = date.year
@@ -175,8 +175,8 @@ class sale_order(models.Model):
 	@api.multi 
 	def print_order(self):
 
-		print 
-		print 'Print Order'
+		#print 
+		#print 'Print Order'
 
 
 		#ret = self.treatment.open_myself()
@@ -205,8 +205,8 @@ class sale_order(models.Model):
 	@api.multi 
 	def open_treatment(self):
 
-		print 
-		print 'Open Treatment'
+		#print 
+		#print 'Open Treatment'
 
 
 		ret = self.treatment.open_myself()
@@ -222,8 +222,8 @@ class sale_order(models.Model):
 	@api.multi 
 	def open_myself(self):
 
-		print 
-		print 'Open Myself'
+		#print 
+		#print 'Open Myself'
 
 		order_id = self.id  
 
@@ -371,18 +371,18 @@ class sale_order(models.Model):
 	#@api.depends('pm_total')
 
 	#def _compute_pm_complete(self):
-	#	print 'Compute Pm Complete'
+	#	#print 'Compute Pm Complete'
 	#	for record in self:
 	#		if record.pm_total == record.x_amount_total: 
-	#			print 'Equal !'
+	#			#print 'Equal !'
 	#			record.pm_complete = True
 				#record.state = 'payment'
 	#		else:
-	#			print 'Not Equal'
-	#		print record.pm_total
-	#		print record.x_amount_total
-	#		print record.pm_complete
-	#		print record.state
+	#			#print 'Not Equal'
+	#		#print record.pm_total
+	#		#print record.x_amount_total
+	#		#print record.pm_complete
+	#		#print record.state
 
 
 
@@ -402,9 +402,9 @@ class sale_order(models.Model):
 	@api.multi 
 	def x_reset(self):
 
-		print 
-		print 'jx'
-		print 'Reset'
+		#print 
+		#print 'jx'
+		#print 'Reset'
 
 
 
@@ -436,9 +436,9 @@ class sale_order(models.Model):
 		self.state = 'draft'			# This works. 
 		self.x_confirmed = False
 
-		print 
-		print 
-		print 
+		#print 
+		#print 
+		#print 
 
 	# x_reset
 
@@ -521,14 +521,14 @@ class sale_order(models.Model):
 	@api.multi 
 	def x_create_invoice(self):
 
-		print 
-		print 
-		print 
-		print 'jx'
-		print 'X Create Invoice'
-		print 
-		print 
-		print 
+		#print 
+		#print 
+		#print 
+		#print 'jx'
+		#print 'X Create Invoice'
+		#print 
+		#print 
+		#print 
 
 	# x_create_invoice
 
@@ -544,13 +544,13 @@ class sale_order(models.Model):
 	#def invoice_create(self):
 	def action_invoice_create(self, grouped=False, final=False):
 
-		print 
-		print 'jx'
-		print 'Action Invoice Create - Local'
+		#print 
+		#print 'jx'
+		#print 'Action Invoice Create - Local'
 
-		print 
-		print 
-		print 
+		#print 
+		#print 
+		#print 
 
 	# x_create_invoice
 
@@ -618,16 +618,16 @@ class sale_order(models.Model):
 
 	#@api.onchange('state')
 	#def _onchange_state(self):
-	#	print 
-	#	print 
-	#	print 'On change State'
+	#	#print 
+	#	#print 
+	#	#print 'On change State'
 		
 	#	if self.pm_total != self.x_amount_total:
 	#		self.state = 'draft'
 
-	#	print self.state	
-	#	print 
-	#	print 
+	#	#print self.state	
+	#	#print 
+	#	#print 
 
 
 
@@ -649,16 +649,16 @@ class sale_order(models.Model):
 
 	#@api.onchange('x_payment_method')
 	#def _onchange_x_payment_method(self):
-	#	print 
-	#	print 
-	#	print 'On change - Payment Method'
-	#	print self.x_payment_method	
+	#	#print 
+	#	#print 
+	#	#print 'On change - Payment Method'
+	#	#print self.x_payment_method	
 	#	total = 0.0
 	#	for pm in self.x_payment_method:
 	#		total = total + pm.subtotal
 	#	self.pm_total = total
-	#	print 
-	#	print 
+	#	#print 
+	#	#print 
 
 
 
@@ -684,17 +684,17 @@ class sale_order(models.Model):
 
 	#@api.onchange('pm_total')
 	#def _onchange_pm_total(self):
-	#	print 
-	#	print 
-	#	print 'On change - Pm Total'
-	#	print self.pm_total
-	#	print self.x_amount_total
-	#	print self.state
+	#	#print 
+	#	#print 
+	#	#print 'On change - Pm Total'
+	#	#print self.pm_total
+	#	#print self.x_amount_total
+	#	#print self.state
 	#	if self.pm_total == self.x_amount_total:
 	#		self.state = 'payment'
-	#	print self.state	
-	#	print 
-	#	print 
+	#	#print self.state	
+	#	#print 
+	#	#print 
 
 
 
@@ -705,9 +705,9 @@ class sale_order(models.Model):
 
 	def _compute_pm_total(self):
 
-		print 
-		print 
-		print 'Compute - Pm Total'
+		#print 
+		#print 
+		#print 'Compute - Pm Total'
 
 
 		for record in self:
@@ -723,18 +723,18 @@ class sale_order(models.Model):
 			record.x_payment_complete = True
 
 
-			print record.name
-			print 'pm_total: ', record.pm_total
-			print 'x_amount_total: ', record.x_amount_total
+			#print record.name
+			#print 'pm_total: ', record.pm_total
+			#print 'x_amount_total: ', record.x_amount_total
 
 			#print 'pm_complete: ', record.pm_complete
-			print 'x_payment_complete: ', record.x_payment_complete
+			#print 'x_payment_complete: ', record.x_payment_complete
 
-			print 
+			#print 
 
 
-		print
-		print
+		#print
+		#print
 
 
 
@@ -1108,8 +1108,8 @@ class sale_order(models.Model):
 
 	@api.multi 
 	def cancel_order(self):
-		print 
-		print 'Cancel'
+		#print 
+		#print 'Cancel'
 		self.x_cancel = True
 
 		#ret = self.create_event()
@@ -1121,8 +1121,8 @@ class sale_order(models.Model):
 
 	@api.multi 
 	def activate_order(self):
-		print 
-		print 'Cancel'
+		#print 
+		#print 'Cancel'
 		self.x_cancel = False
 
 
@@ -1204,8 +1204,8 @@ class sale_order(models.Model):
 	@api.multi 
 	def create_payment_method(self):
 
-		print 
-		print 'Create Payment Method'
+		#print 
+		#print 'Create Payment Method'
 
 
 
@@ -1221,9 +1221,9 @@ class sale_order(models.Model):
 
 		
 		#print nr_pm
-		print name
-		print method
-		print 
+		#print name
+		#print method
+		#print 
 
 
 
@@ -1258,15 +1258,15 @@ class sale_order(models.Model):
 
 #jz
 		# State - Change
-		print 'State changes'
+		#print 'State changes'
 
 		
 		self.state = 'payment'
 		#self.state = 'sale'
 		
 
-		print self.state
-		print 
+		#print self.state
+		#print 
 
 
 
@@ -1319,8 +1319,8 @@ class sale_order(models.Model):
 
 	@api.multi 
 	def create_sale_document(self):
-		print 
-		print 'Create Sale Document'
+		#print 
+		#print 'Create Sale Document'
 
 
 		# Search 
@@ -1345,10 +1345,10 @@ class sale_order(models.Model):
 
 
 		# State
-		print 'State changes'
+		#print 'State changes'
 		self.state = 'proof'
-		print self.state
-		print 
+		#print self.state
+		#print 
 
 
 
@@ -1611,10 +1611,10 @@ class sale_order(models.Model):
 	
 	#def _compute_order_line(self):
 	#	for record in self:
-	#		print 'compute_order_line'
-	#		print record.x_partner_vip 
+	#		#print 'compute_order_line'
+	#		#print record.x_partner_vip 
 	#		ret = record.update_order_lines()
-	#		print ret 
+	#		#print ret 
 
 
 
@@ -1748,8 +1748,8 @@ class sale_order(models.Model):
 	@api.multi 
 	def update_order_lines(self):
 
-		print 
-		print 'update_order_lines'
+		#print 
+		#print 'update_order_lines'
 
 		#ret = self.remove_order_lines()
 
@@ -1773,7 +1773,7 @@ class sale_order(models.Model):
 
 	@api.multi 
 	def create_line(self, order_id, se):
-		print 'create line'
+		#print 'create line'
 
 		product_id = se.service.id
 		name = se.name_short
@@ -1781,8 +1781,8 @@ class sale_order(models.Model):
 
 		# Consultation 
 		consultation = self.consultation
-		print consultation 
-		print consultation.id
+		#print consultation 
+		#print consultation.id
 
 
 
@@ -1805,7 +1805,7 @@ class sale_order(models.Model):
 
 
 		if self.nr_lines == 0:
-			print 'create new'
+			#print 'create new'
 
 			ol = self.order_line.create({
 
@@ -1832,19 +1832,19 @@ class sale_order(models.Model):
 									})
 
 		else:
-			print 'update existing'
+			#print 'update existing'
 
 			order_line_id = self.env['sale.order.line'].search([
 																('order_id', 'like', order_id),
 																('name', 'like', name),
 																]).id
-			print order_line_id
+			#print order_line_id
 
 
 			rec_set = self.env['sale.order.line'].browse([
 															order_line_id																
 														])
-			print rec_set 
+			#print rec_set 
 
 			#ol = self.order_line.create({
 			#ol = self.order_line.write(1, order_line_id, 
@@ -1871,9 +1871,9 @@ class sale_order(models.Model):
 	@api.multi 
 	def x_create_order_lines_target(self, target):
 
-		print 
-		print 
-		print 'Create order lines - Target'
+		#print 
+		#print 
+		#print 'Create order lines - Target'
 		
 		order_id = self.id
 
@@ -1887,8 +1887,8 @@ class sale_order(models.Model):
 
 												])
 
-		print product
-		print product.id
+		#print product
+		#print product.id
 		
 		product_id = product.id
 
@@ -1931,8 +1931,8 @@ class sale_order(models.Model):
 										'product_uom': product_uom, 
 									})
 
-		print
-		print 
+		#print
+		#print 
 
 		return self.nr_lines
 
@@ -1943,53 +1943,53 @@ class sale_order(models.Model):
 
 	@api.multi 
 	def x_create_order_lines(self):
-		print 
-		print 'Create order lines'
+		#print 
+		#print 'Create order lines'
 		
 		
 		order_id = self.id
 
 
-		print 
-		print 'co2'
+		#print 
+		#print 'co2'
 		for se in self.consultation.service_co2_ids:
-			print se 
+			#print se 
 			
 			ret = self.create_line(order_id, se)
 
 
 
-		print 
-		print 'excilite'
+		#print 
+		#print 'excilite'
 		for se in self.consultation.service_excilite_ids:
-			print se 
+			#print se 
 
 			ret = self.create_line(order_id, se)
 
 
 		
-		print 
-		print 'ipl'
+		#print 
+		#print 'ipl'
 		for se in self.consultation.service_ipl_ids:
-			print se 
+			#print se 
 
 			ret = self.create_line(order_id, se)
 
 
 
-		print 
-		print 'ndyag'
+		#print 
+		#print 'ndyag'
 		for se in self.consultation.service_ndyag_ids:
-			print se 
+			#print se 
 
 			ret = self.create_line(order_id, se)
 
 
 
-		print 
-		print 'medical'
+		#print 
+		#print 'medical'
 		for se in self.consultation.service_medical_ids:
-			print se 
+			#print se 
 
 			ret = self.create_line(order_id, se)
 
@@ -1997,10 +1997,10 @@ class sale_order(models.Model):
 
 
 
-		print 
-		print 'cosmetology'
+		#print 
+		#print 'cosmetology'
 		for se in self.cosmetology.service_ids:
-			print se 
+			#print se 
 
 			ret = self.create_line(order_id, se)
 
@@ -2010,7 +2010,7 @@ class sale_order(models.Model):
 
 
 
-		print 'out'
+		#print 'out'
 
 		return self.nr_lines
 
@@ -2069,7 +2069,7 @@ class sale_order(models.Model):
 	def update_line(self, order_id, product_id, name, list_price, uom_id, x_price_vip):
 
 
-		print 'update existing'
+		#print 'update existing'
 
 		#line_id = self.env['sale.order.line'].search([
 		#														('order_id', 'like', order_id),
@@ -2095,12 +2095,12 @@ class sale_order(models.Model):
 															('id', '=', order_id),
 															#('name', 'like', name),
 													])
-		print order 
+		#print order 
 
-		print order.id
-		print product_id
-		print name 
-		print uom_id
+		#print order.id
+		#print product_id
+		#print name 
+		#print uom_id
 
 		line = order.order_line.create({
 											'order_id': order.id,
@@ -2117,8 +2117,8 @@ class sale_order(models.Model):
 
 											'x_partner_vip': self.x_partner_vip
 										})
-		print line
-		print 
+		#print line
+		#print 
 
 		return line
 	# update_line
@@ -2131,9 +2131,9 @@ class sale_order(models.Model):
 	@api.multi 
 	def update_order(self):
 
-		print 
-		print 'jx'
-		print 'Update Order'
+		#print 
+		#print 'jx'
+		#print 'Update Order'
 
 		order_id = self.id
 
@@ -2153,14 +2153,14 @@ class sale_order(models.Model):
 
 		appointment_id = appointment.id
 
-		print appointment
-		print appointment_id
+		#print appointment
+		#print appointment_id
 
 
 		self.x_appointment = appointment_id
-		print self.x_appointment
-		print 
-		print 
+		#print self.x_appointment
+		#print 
+		#print 
 
 
 

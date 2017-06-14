@@ -37,9 +37,9 @@ class counter(models.Model):
 
 	@api.onchange('value')
 	def _onchange_value(self):
-		print
-		print 'onchange - Value'
-		print 
+		#print
+		#print 'onchange - Value'
+		#print 
 		self.date_modified = fields.datetime.now()
 
 

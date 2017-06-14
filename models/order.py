@@ -172,13 +172,10 @@ class sale_order(models.Model):
 
 
 	# Print Order
-	@api.multi 
-	def print_order(self):
-
+	#@api.multi 
+	#def print_order(self):
 		#print 
 		#print 'Print Order'
-
-
 		#ret = self.treatment.open_myself()
 		#return ret 
 	# open_treatment
@@ -518,9 +515,8 @@ class sale_order(models.Model):
 
 
 
-	@api.multi 
-	def x_create_invoice(self):
-
+	#@api.multi 
+	#def x_create_invoice(self):
 		#print 
 		#print 
 		#print 
@@ -529,7 +525,6 @@ class sale_order(models.Model):
 		#print 
 		#print 
 		#print 
-
 	# x_create_invoice
 
 
@@ -537,21 +532,14 @@ class sale_order(models.Model):
 
 
 
-	@api.multi 
-	#def create_invoice(self):
-	#def action_view_sale_advance_payment_inv(self):
-	#def sale_advance_payment_inv(self):
-	#def invoice_create(self):
-	def action_invoice_create(self, grouped=False, final=False):
-
+	#@api.multi 
+	#def action_invoice_create(self, grouped=False, final=False):
 		#print 
 		#print 'jx'
 		#print 'Action Invoice Create - Local'
-
 		#print 
 		#print 
 		#print 
-
 	# x_create_invoice
 
 
@@ -2170,7 +2158,7 @@ class sale_order(models.Model):
 
 		# Cosmetology 
 		for service in self.cosmetology.service_ids:
-			print service
+			#print service
 
 			line = self.update_line(	
 										order_id, 
@@ -2180,14 +2168,14 @@ class sale_order(models.Model):
 										service.service.uom_id.id,
 										service.service.x_price_vip
 									)
-			print 
+			#print 
 
 
 
 		# Doctor 
 		#for service in self.consultation.service_co2_ids:
 		for service in self.treatment.service_co2_ids:
-			print service
+			#print service
 
 			line = self.update_line(	
 										order_id, 
@@ -2198,10 +2186,10 @@ class sale_order(models.Model):
 
 										service.service.x_price_vip
 									)
-			print 
+			#print 
 		
 		for service in self.consultation.service_excilite_ids:
-			print service
+			#print service
 			line = self.update_line(	
 										order_id, 
 										service.service.id, 
@@ -2213,7 +2201,7 @@ class sale_order(models.Model):
 									)
 
 		for service in self.consultation.service_ipl_ids:
-			print service
+			#print service
 			line = self.update_line(	order_id, 
 										service.service.id, 
 										service.service.x_name_short, 
@@ -2224,7 +2212,7 @@ class sale_order(models.Model):
 									)
 
 		for service in self.consultation.service_ndyag_ids:
-			print service
+			#print service
 			line = self.update_line(	order_id, 
 										service.service.id, 
 										service.service.x_name_short, 
@@ -2235,7 +2223,7 @@ class sale_order(models.Model):
 									)
 
 		for service in self.consultation.service_medical_ids:
-			print service
+			#print service
 			line = self.update_line(	order_id, 
 										service.service.id, 
 										service.service.x_name_short, 
@@ -2245,7 +2233,7 @@ class sale_order(models.Model):
 										service.service.x_price_vip
 									)
 
-		print 
+		#print 
 
 	# update_order 
 
@@ -2255,14 +2243,14 @@ class sale_order(models.Model):
 	@api.multi 
 	def update_order_lines_app(self):
 
-		print 
-		print 'jx'
-		print 'Update Order Lines'
+		#print 
+		#print 'jx'
+		#print 'Update Order Lines'
 
 
 		for line in self.order_line:
 
-			print line
+			#print line
 
 
 			product_id = line.product_id
@@ -2285,12 +2273,12 @@ class sale_order(models.Model):
 				appointment_id = appointment.id
 
 				
-				print self.x_doctor
-				print self.patient
+				#print self.x_doctor
+				#print self.patient
 
 				
-				print appointment  
-				print appointment_id  
+				#print appointment  
+				#print appointment_id  
 
 
 
@@ -2312,7 +2300,7 @@ class sale_order(models.Model):
 				#self.x_machine = appointment.x_machine 
 
 
-		print 
+		#print 
 
 
 	# update_order_lines_app	
@@ -2324,9 +2312,9 @@ class sale_order(models.Model):
 
 	@api.multi 
 	def action_confirm(self):
-		print 
-		print 'jx'
-		print 'Action confirm - Over ridden'
+		#print 
+		#print 'jx'
+		#print 'Action confirm - Over ridden'
 		 
 
 
@@ -2338,8 +2326,8 @@ class sale_order(models.Model):
 		#if self.x_machine != False:
 
 
-		print 'x_doctor.name: ', self.x_doctor.name
-		print 'x_machine', self.x_machine
+		#print 'x_doctor.name: ', self.x_doctor.name
+		#print 'x_machine', self.x_machine
 
 
 		#print 'x_state', self.x_state
@@ -2349,10 +2337,10 @@ class sale_order(models.Model):
 		#if self.x_doctor.name != False   and   self.x_machine == False:
 		#if self.x_doctor.name != False   and   self.x_machine == False	 and 	self.x_machine_req != 'consultation':
 		if self.x_treatment == 'laser_co2'   and   self.x_machine == False:
-			print 'Warning: Sala no Reservada !'
-
+			#print 'Warning: Sala no Reservada !'
+			tra = 1 
 		else:
-			print 'Success !!!'
+			#print 'Success !!!'
 
 			#self.x_state = 'sale'
 			#self.x_confirmed = True 
@@ -2372,17 +2360,12 @@ class sale_order(models.Model):
 
 		#else: 
 			
-
-		
 		#res = super(sale_order, self).action_confirm()
 		#Write your logic here
 		
-		print
+		#print
 	# action_confirm
 	
-
-
-
 
 
 
@@ -2392,30 +2375,19 @@ class sale_order(models.Model):
 
 	@api.multi
 	def remove_myself(self):  
-
-		print 
-		print 
-		print 'Remove Myself'
-		
-		print self.name 
-
+		#print 
+		#print 
+		#print 'Remove Myself'
+		#print self.name 
 		self.x_reset()
-		
 		self.unlink()
 
-
-
 		#self.x_appointment.x_machine = 'none'
-
 		#order_id = self.id
 		#print "id: ", order_id
-		
-
 		# Search 
 		#rec_set = self.env['sale.order'].browse([order_id])
 		#print "rec_set: ", rec_set
-
-
 		# Write
 		#ret = rec_set.write({
 		#						'state': 'draft',
@@ -2425,16 +2397,13 @@ class sale_order(models.Model):
 
 		#for rec in rec_set:
 		#	rec.x_reset
-
-
-		
 		# Unlink 
 		#ret = rec_set.unlink()
 		#print "ret: ", ret
 		
 
-		print 
-		print 
+		#print 
+		#print 
 	# remove_myself
 
 
@@ -2446,11 +2415,8 @@ class sale_order(models.Model):
 
 	@api.multi 
 	def get_nr_mc(self):
-
 		nr_mac_clones =	self.env['oeh.medical.appointment'].search_count([
-																			('appointment_date','=', self.x_appointment.appointment_date),
-																			
-																			#('x_machine','=', self.x_machine),
+																			('appointment_date','=', self.x_appointment.appointment_date),													
 																			('x_machine','=', self.x_appointment.x_machine),
 																		]) 
 		return nr_mac_clones
@@ -2462,13 +2428,11 @@ class sale_order(models.Model):
 
 	@api.multi 
 	def reserve_machine(self):
-
-		print
-		print 
-		print 'jx'
-		print 'Reserve Machine'
-		print 
-
+		#print
+		#print 
+		#print 'jx'
+		#print 'Reserve Machine'
+		#print 
 		date_format = "%Y-%m-%d %H:%M:%S"
 		duration = self.x_appointment.duration 
 		delta = datetime.timedelta(hours=duration)
@@ -2527,9 +2491,9 @@ class sale_order(models.Model):
 
 
 
-					print k
-					print self.x_appointment.appointment_date				
-					print nr_mc
+					#print k
+					#print self.x_appointment.appointment_date				
+					#print nr_mc
 
 
 
@@ -2538,8 +2502,8 @@ class sale_order(models.Model):
 
 
 
-					print out 
-					print 
+					#print out 
+					#print 
 
 
 
@@ -2550,11 +2514,6 @@ class sale_order(models.Model):
 				ad_str = ad_dt.strftime("%Y-%m-%d %H:%M:%S")
 
 				k = k + 1.
-
-				
-
-
-
 	# reserve_machine
 
 
@@ -2566,8 +2525,8 @@ class sale_order(models.Model):
 	@api.multi 
 	def reserve_machine_old(self):
 
-		print 'jx'
-		print 'Reserve Machine - Old'
+		#print 'jx'
+		#print 'Reserve Machine - Old'
 
 		#self.x_machine = 'laser_co2_1'
 
@@ -2654,14 +2613,14 @@ class sale_order(models.Model):
 																			('patient', '=', self.patient.name), 
 																	])
 				ret = rec_set.unlink()
-				print "ret: ", ret
+				#print "ret: ", ret
 
 
 
 
 		else:
-			print 'Error !'	
-			print 			
+			#print 'Error !'	
+			#print 			
 
 
 			return {	'warning': 	{'title': "Error: Colisión !",
@@ -2712,16 +2671,17 @@ class sale_order(models.Model):
 	@api.multi
 	def unlink(self):
 
-		print 
-		print 'Order - Unlink - Override'
-		print 
+		#print 
+		#print 'Order - Unlink - Override'
+		#print 
 		
 		for invoice in self:
 
 			if invoice.state not in ('draft', 'cancel'):
-				print 'jx - Warning'				
+				#print 'jx - Warning'				
 				#raise Warning(('You cannot delete an invoice which is not draft or cancelled. You should refund it instead. - jx'))
-		
+				tra = 1 
+				
 		return models.Model.unlink(self)
 
 

@@ -143,8 +143,8 @@ class sale_order_line(models.Model):
 	
 	def _compute_price_total(self):
 
-		print 
-		print 'Compute - Price Total'
+		#print 
+		#print 'Compute - Price Total'
 		
 		for record in self:
 
@@ -169,8 +169,8 @@ class sale_order_line(models.Model):
 	
 	def _compute_price_subtotal(self):
 
-		print 
-		print 'Compute - Price Subtotal'
+		#print 
+		#print 'Compute - Price Subtotal'
 		
 		for record in self:
 		

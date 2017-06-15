@@ -5,10 +5,9 @@
 #
 
 from openerp import models, fields, api
+import math
 
 
-
-from . import math
 from . import jxvars
 
 

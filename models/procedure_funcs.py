@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from openerp import models, fields, api
-#from datetime import datetime,tzinfo,timedelta
-from datetime import datetime
+
+#from datetime import datetime
 
 
 

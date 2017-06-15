@@ -17,7 +17,7 @@
 
 		Clínica Chavarri\n
 
-		Laser - EMR - Min - Ama - Docean - Ooor - Travis\n
+		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis\n
 
 		Last built: 	14 June 2017 - Yey !
 

@@ -65,9 +65,9 @@ class ServiceNdyag(models.Model):
 
 	def get_domain_service_multi(self,cr,uid,ids,context_1=None,context_2=None,context_3=None):
 		#print context
-		print 'jx'
-		print context_1, context_2, context_3
-		print 'jx'
+		#print 'jx'
+		#print context_1, context_2, context_3
+		#print 'jx'
 		
 		mach = []
 		lids = self.pool.get('product.template').search(cr,uid,[

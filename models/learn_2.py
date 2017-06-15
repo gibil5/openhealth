@@ -6,7 +6,7 @@ class MyModel(models.Model):
 	firstname = fields.Char(string="Firstname")
 
 	def jx_fun():
-		print 'jx'
+		#print 'jx'
 
 	def a_fun(self):
 		self.do_something() 
@@ -15,7 +15,7 @@ class MyModel(models.Model):
 
 	def do_something(self):
 		for record in self:
-			print record
+			#print record
 
 
 

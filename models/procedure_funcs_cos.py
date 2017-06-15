@@ -23,9 +23,9 @@ def check_and_push(self, appointment_date, duration, x_type, therapist_name, mac
 	debug = False 
 
 	if debug: 
-		print 
-		print 'Chech and push - Cos'
-		print appointment_date
+		#print 
+		#print 'Chech and push - Cos'
+		#print appointment_date
 
 
 
@@ -60,8 +60,8 @@ def check_and_push(self, appointment_date, duration, x_type, therapist_name, mac
 		if ret == 0: 		# Success ! - No Collisions
 			
 			if debug: 
-				print 'Collision check - Success !!!'
-				print k
+				#print 'Collision check - Success !!!'
+				#print k
 
 
 

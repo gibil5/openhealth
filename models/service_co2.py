@@ -5,10 +5,9 @@
 
 from openerp import models, fields, api
 from datetime import datetime
-import jxvars
 
 
-
+from . import jxvars
 from . import service_co2_vars
 
 

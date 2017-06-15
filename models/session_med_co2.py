@@ -6,17 +6,13 @@
 # Created: 				 22 Mar 2017
 # Last updated: 	 	 22 Feb 2017 
 
-
-
 from openerp import models, fields, api
 from datetime import datetime
 
-#import jxvars
 
-#import time_funcs
-#import jrfuncs
 
-import session_vars
+from . import session_vars
+
 
 
 class SessionMedCo2(models.Model):

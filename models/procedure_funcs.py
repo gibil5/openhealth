@@ -1,19 +1,13 @@
 # -*- coding: utf-8 -*-
 
 from openerp import models, fields, api
-
 #from datetime import datetime,tzinfo,timedelta
-
-import jrfuncs
-import appfuncs
-
-
-
-#import datetime
 from datetime import datetime
 
 
 
+from . import jrfuncs
+from . import appfuncs
 from . import time_funcs
 from . import procedure_funcs_cos
 

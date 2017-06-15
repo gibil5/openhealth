@@ -30,17 +30,15 @@ from . import appfuncs
 # Operational 
 from . import process 
 from . import treatment 
-from . import cosmetology
+
+
 from . import physician 
 from . import consultation
-from . import consultation_cos
 from . import recommendation
 from . import procedure
-from . import procedure_cos
 
 
 from . import session 
-from . import session_cos
 from . import session_med
 
 from . import control
@@ -53,7 +51,6 @@ from . import service_excilite
 from . import service_ipl
 from . import service_ndyag
 from . import service_medical
-from . import service_cosmetology
 
 
 
@@ -90,11 +87,17 @@ from . import payment_method_line
 from . import event 
 
 
-
-
 from . import appointment 
+
+
+
+
+# Cosmetology 	- Deprecated ? 
+from . import cosmetology				
+from . import consultation_cos
+from . import procedure_cos
+from . import session_cos
+from . import service_cosmetology
 from . import appointment_cos
-
-
 
 

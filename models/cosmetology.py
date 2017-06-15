@@ -13,10 +13,11 @@ from datetime import datetime
 
 
 
-from . import jxvars
-from . import cos_funcs
-from . import time_funcs
 from . import cosvars
+from . import cos_funcs
+
+from . import jxvars
+from . import time_funcs
 from . import procedure_funcs
 
 

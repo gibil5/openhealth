@@ -209,8 +209,9 @@
 
 
 
-		# Cosmetologies
-		'views/cosmetologies/cosmetology.xml',
+		# Cosmetologies		- Deprecated ? 
+		#'views/cosmetologies/cosmetology.xml',
+
 
 
 		# Physicians 
@@ -285,8 +286,8 @@
 		'views/services/service_ndyag_zone.xml',
 		'views/services/service_medical.xml',
 		'views/services/service_medical_zone.xml',
-		'views/services/service_cosmetology.xml',
-		'views/services/service_cosmetology_zone.xml',
+		#'views/services/service_cosmetology.xml',
+		#'views/services/service_cosmetology_zone.xml',
 
 
 
@@ -323,13 +324,14 @@
 
 
 		# Cosmetologies - 2 
-		'views/cosmetologies/cosmetology_services.xml',
-		'views/cosmetologies/cosmetology_orders.xml',
-		'views/cosmetologies/cosmetology_procedures.xml',
-		'views/cosmetologies/cosmetology_sessions.xml',
-		'views/cosmetologies/cosmetology_appointments.xml',
-		'views/cosmetologies/cosmetology_consultations.xml',
-		'views/cosmetologies/cosmetology_reservations.xml',
+		#'views/cosmetologies/cosmetology_services.xml',
+		#'views/cosmetologies/cosmetology_orders.xml',
+		#'views/cosmetologies/cosmetology_procedures.xml',
+		#'views/cosmetologies/cosmetology_sessions.xml',
+		#'views/cosmetologies/cosmetology_appointments.xml',
+		#'views/cosmetologies/cosmetology_consultations.xml',
+		#'views/cosmetologies/cosmetology_reservations.xml',
+
 
 
 

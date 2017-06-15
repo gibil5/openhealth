@@ -15,24 +15,17 @@ from openerp import models, fields, api
 import datetime
 
 
-#import openhealth.models.appfuncs
-#import openhealth.models.time_funcs
-#import openhealth.models.jxvars
-#import openhealth.models.defaults
-#import openhealth.models.app_vars
-#from openhealth.models import appfuncs 
-
 
 #import appfuncs
-from .appfuncs import appfuncs
-
-import time_funcs
-import jxvars
-import defaults
-import app_vars
-
-
-
+#import time_funcs
+#import jxvars
+#import defaults
+#import app_vars
+from . import appfuncs
+from . import time_funcs
+from . import jxvars
+from . import defaults
+from . import app_vars
 
 
 

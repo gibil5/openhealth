@@ -3,11 +3,7 @@
 
 
 # Hash 
-
 _hash_doctor_code = {
-							False:				'', 
-
-
 							#'Dra. Acosta':		'Dra. A',
 							#'Dr. Canales':		'Dr. Ca',
 							#'Dr. Chavarri':	'Dr. Ch',
@@ -31,7 +27,6 @@ _hash_doctor_code = {
 							'Dr. Monteverde':	'MO',
 
 
-
 							# Lasers  
 							'laser_co2_1':		'Co2_1',
 							'laser_co2_2':		'Co2_2',
@@ -39,27 +34,13 @@ _hash_doctor_code = {
 							'laser_excilite':	'Exc',
 							'laser_m22':		'M22',
 
-
-
-
-
 							# Cosmetology 
 							'Eulalia':		'EU',
 							'Eulalia 2':	'EU2',
 							'Eulalia 3':	'EU3',							
+
+							False:				'', 
 		}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -76,8 +57,6 @@ _profile_list = [
 		
 		#('',''), 
 ]
-
-
 
 
 
@@ -99,16 +78,11 @@ _machines_list = [
 
 		('consultation','consultation'), 
 
-
 		('laser_co2_1','Co2 1'), 
 		('laser_co2_2','Co2 2'), 
 		('laser_co2_3','Co2 3'), 
-
 		('laser_excilite','Excilite'), 
 		('laser_m22','M22'), 
-
-
-
 
 		('laser_triactive','Triactivo'), 
 		('chamber_reduction','Cámara de reducción'), 
@@ -119,28 +93,10 @@ _machines_list = [
 
 
 
-
-
-
-
-
-
-
-
-
 # Targets
 _target_list = [
 		('doctor','Doctor'), 
-
 		('therapist','Cosmeatra'), 
-
-
 		#('machine','Machine'), 
 ]
-
-
-
-
-
-
 

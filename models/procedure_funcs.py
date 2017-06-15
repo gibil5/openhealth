@@ -21,6 +21,9 @@ from . import procedure_funcs_cos
 #def create_sessions_go(self):
 def create_sessions_go(self, model):
 
+		from datetime import datetime
+
+
 
 		#print 
 		#print 
@@ -386,6 +389,8 @@ def create_sessions_go(self, model):
 @api.multi
 
 def create_controls_go(self):
+
+	from datetime import datetime
 
 	#print 
 	#print 'Create control Go'

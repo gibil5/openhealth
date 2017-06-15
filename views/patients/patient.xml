@@ -50,7 +50,7 @@
 						<button 
 							type="object" 
 							class="oe_highlight"
-							string="Crear Tratamiento" 
+							string="Tratamiento" 
 							name="open_treatment_current" 
 						/>
 

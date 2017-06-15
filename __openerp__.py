@@ -19,7 +19,7 @@
 
 		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis\n
 
-		Last built: 	14 June 2017 - Yey !
+		Last built: 	15 June 2017 - Yey !
 
 		Created: 	 	7 Sep 2016
 

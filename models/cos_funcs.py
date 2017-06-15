@@ -18,9 +18,9 @@ import jrfuncs
 
 def create_procedure_go(self):
 
-	print 
-	print 'Create Procedure - Cos - Go'
-	print 
+	#print 
+	#print 'Create Procedure - Cos - Go'
+	#print 
 
 	#name = 'name'
 
@@ -57,7 +57,7 @@ def create_procedure_go(self):
 															order='appointment_date desc', limit=1)
 
 
-	print appointment
+	#print appointment
 	appointment_id = appointment.id
 
 
@@ -118,9 +118,9 @@ def create_procedure_go(self):
 
 				procedure_id = procedure.id
 
-				print 
-				print procedure 
-				print procedure_id
+				#print 
+				#print procedure 
+				#print procedure_id
 
 
 
@@ -130,11 +130,11 @@ def create_procedure_go(self):
 
 
 
-				print appointment
-				print appointment.procedure
-				print appointment.procedure.id
+				#print appointment
+				#print appointment.procedure
+				#print appointment.procedure.id
 
-				print 
+				#print 
 
 	return ret	
 

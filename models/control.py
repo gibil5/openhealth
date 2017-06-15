@@ -161,8 +161,8 @@ class Control(models.Model):
 	@api.multi
 	def open_appointment(self):  
 
-		print 
-		print 'open appointment'
+		#print 
+		#print 'open appointment'
 
 
 		owner_id = self.id 
@@ -255,13 +255,13 @@ class Control(models.Model):
 	@api.multi
 	def unlink(self):
 
-		print 
-		print 'Unlink - Override'
+		#print 
+		#print 'Unlink - Override'
 
 		#print self.appointment
 		#self.appointment.unlink() 
 
-		print 
+		#print 
 
 		return models.Model.unlink(self)
 

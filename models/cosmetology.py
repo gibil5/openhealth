@@ -498,9 +498,9 @@ class Cosmetology(models.Model):
 	@api.multi 
 	def create_appointment(self):
 
-		print 
-		print 'jx'
-		print 'Create Appointment'
+		#print 
+		#print 'jx'
+		#print 'Create Appointment'
 
 
 
@@ -513,10 +513,10 @@ class Cosmetology(models.Model):
 	@api.multi 
 	def create_consultation(self):
 
-		print 
-		print 'jx'
-		print 'begin'
-		print 'Create Consultation'
+		#print 
+		#print 'jx'
+		#print 'begin'
+		#print 'Create Consultation'
 
 
 		#treatment_id = self.id 
@@ -565,8 +565,8 @@ class Cosmetology(models.Model):
 
 
 		# Consultation 
-		print 'create consultation'
-		print 
+		#print 'create consultation'
+		#print 
 		consultation = self.env['openhealth.consultation.cos'].create(
 																	{
 
@@ -589,20 +589,20 @@ class Cosmetology(models.Model):
 																)
 		consultation_id = consultation.id 
 
-		print 
-		print 'consultation: ', consultation
-		print 'consultation_id: ', consultation_id
+		#print 
+		#print 'consultation: ', consultation
+		#print 'consultation_id: ', consultation_id
 
-		print 
+		#print 
 
 
 
 		# Update
-		print 'Update'
+		#print 'Update'
 		rec_set = self.env['oeh.medical.appointment'].browse([
 																appointment_id																
 															])
-		print 'rec_set: ', rec_set
+		#print 'rec_set: ', rec_set
 
 
 
@@ -612,13 +612,13 @@ class Cosmetology(models.Model):
 		#print ret 
 
 
-		print appointment
-		print appointment.consultation
-		print appointment.consultation.id
+		#print appointment
+		#print appointment.consultation
+		#print appointment.consultation.id
 
 
 
-		print 'end'
+		#print 'end'
 
 		return {
 
@@ -692,9 +692,9 @@ class Cosmetology(models.Model):
 	@api.multi 
 	def create_service(self):
 
-		print 
-		print 'jx'
-		print 'Create Service'
+		#print 
+		#print 'jx'
+		#print 'Create Service'
 
 
 		cosmetology_id = self.id 
@@ -746,9 +746,9 @@ class Cosmetology(models.Model):
 	@api.multi 
 	def create_order(self):
 
-		print 
-		print 'jx'
-		print 'Create order'
+		#print 
+		#print 'jx'
+		#print 'Create order'
 
 
 
@@ -770,7 +770,7 @@ class Cosmetology(models.Model):
 													('state','=','draft'),													
 												]).id
 
-		print 'order_id: ', order_id
+		#print 'order_id: ', order_id
 
 
 
@@ -797,15 +797,15 @@ class Cosmetology(models.Model):
 													}
 												)
 			order_id = order.id 
-			print order_id
+			#print order_id
 
 
 			# Create order lines 
 			ret = order.x_create_order_lines()
-			print ret 
+			#print ret 
 
 
-		print 
+		#print 
 
 		return {
 
@@ -863,9 +863,9 @@ class Cosmetology(models.Model):
 	@api.multi 
 	def create_invoice(self):
 
-		print 
-		print 'jx'
-		print 'Create invoice'
+		#print 
+		#print 'jx'
+		#print 'Create invoice'
 
 
 
@@ -877,9 +877,9 @@ class Cosmetology(models.Model):
 	@api.multi 
 	def create_procedure(self):
 
-		print 
-		print 'jx'
-		print 'Create procedure'
+		#print 
+		#print 'jx'
+		#print 'Create procedure'
 
 
 
@@ -889,7 +889,7 @@ class Cosmetology(models.Model):
 
 
 		#print ret 
-		print 
+		#print 
 
 	# create_procedure 
 
@@ -903,9 +903,9 @@ class Cosmetology(models.Model):
 	@api.multi 
 	def create_sessions(self):
 
-		print 
-		print 'jx'
-		print 'Create Sessions - Through Procedure'
+		#print 
+		#print 'jx'
+		#print 'Create Sessions - Through Procedure'
 
 
 		#model = 'openhealth.session.cos'
@@ -947,9 +947,9 @@ class Cosmetology(models.Model):
 	@api.multi 
 	def create_session(self):
 
-		print 
-		print 'jx'
-		print 'Create Sessions'
+		#print 
+		#print 'jx'
+		#print 'Create Sessions'
 
 
 

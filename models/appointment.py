@@ -22,7 +22,10 @@ import datetime
 #import openhealth.models.app_vars
 #from openhealth.models import appfuncs 
 
-import appfuncs
+
+#import appfuncs
+from .appfuncs import appfuncs
+
 import time_funcs
 import jxvars
 import defaults

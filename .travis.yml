@@ -85,8 +85,8 @@ install:
 #jx 
 script:
   - travis_run_tests
-  - coverage run --append ./travis/travis_run_tests 9.0  # only used if VERSION not set in env
-  #- coverage run --append ./travis/self_tests
+#  - coverage run --append ./travis/travis_run_tests 9.0  # only used if VERSION not set in env
+#  - coverage run --append ./travis/self_tests
 
 
 

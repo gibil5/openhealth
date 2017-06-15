@@ -176,8 +176,8 @@ def create_appointment_procedure(self, adate_base, doctor_id, patient_id, treatm
 
 
 
-		print 
-		print 'Create App Procedure'
+		#print 
+		#print 'Create App Procedure'
 
 
 
@@ -237,7 +237,7 @@ def create_appointment_procedure(self, adate_base, doctor_id, patient_id, treatm
 
 			if ret == 0: 					# Success - No Collisions
 			
-				print 'CRUD: Create !!!'
+				#print 'CRUD: Create !!!'
 
 
 
@@ -273,10 +273,10 @@ def create_appointment_procedure(self, adate_base, doctor_id, patient_id, treatm
 
 
 
-		print 
-		print 'k'
-		print k
-		print 
+		#print 
+		#print 'k'
+		#print k
+		#print 
 
 		return app 
 

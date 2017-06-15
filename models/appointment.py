@@ -387,8 +387,8 @@ class Appointment(models.Model):
 
 	def _onchange_x_chief_complaint(self):
 
-		print 
-		print 'On change Chief complaint'
+		#print 
+		#print 'On change Chief complaint'
 
 
 		if self.x_chief_complaint != False:	
@@ -416,20 +416,20 @@ class Appointment(models.Model):
 															)
 
 
-			print t
+			#print t
 			#if not (t == False  or  t == nil):
 
 
 
 			#if t != False:
 			if len(t) == 1:
-				print 'found'
+				#print 'found'
 				self.treatment = t.id
 
 
 
 			else:
-				print 'empty'
+				#print 'empty'
 
 				#self.open_treatment_current()
 
@@ -441,9 +441,9 @@ class Appointment(models.Model):
 
 
 			
-			print self.treatment 
+			#print self.treatment 
 
-		print 
+		#print 
 
 
 
@@ -578,21 +578,21 @@ class Appointment(models.Model):
 
 	def _onchange_x_machine(self):
 
-		print 
-		print 'On change Machine'
+		#print 
+		#print 'On change Machine'
 
 
 		if self.x_machine != False:	
 
-			print self.x_machine 
+			#print self.x_machine 
 
-			print self.doctor.name
-			print self.patient.name
-			print self.appointment_date
-			print self.x_date
-			print self.duration
-			print self.appointment_end
-			print 
+			#print self.doctor.name
+			#print self.patient.name
+			#print self.appointment_date
+			#print self.x_date
+			#print self.duration
+			#print self.appointment_end
+			#print 
 
 			self.x_error = 0
 
@@ -621,8 +621,8 @@ class Appointment(models.Model):
 
 			else: 			# Success 
 
-				print 'Success !'
-				print 
+				#print 'Success !'
+				#print 
 				
 
 				# Treatment 
@@ -636,11 +636,11 @@ class Appointment(models.Model):
 															limit=1,
 														)
 
-				print self.treatment 
+				#print self.treatment 
 
 
 
-		print
+		#print
 
 
 
@@ -656,22 +656,22 @@ class Appointment(models.Model):
 
 	def _onchange_doctor(self):
 
-		print 
-		print 'On change Doctor'
-		print self.x_machine
-		print self.doctor.name
+		#print 
+		#print 'On change Doctor'
+		#print self.x_machine
+		#print self.doctor.name
 
 
 
 		if self.doctor.name != False:
 
-			print self.doctor.name
-			print self.patient.name
-			print self.appointment_date
-			print self.x_date
-			print self.duration
-			print self.appointment_end
-			print 
+			#print self.doctor.name
+			#print self.patient.name
+			#print self.appointment_date
+			#print self.x_date
+			#print self.duration
+			#print self.appointment_end
+			#print 
 
 			self.x_error = 0
 
@@ -686,15 +686,15 @@ class Appointment(models.Model):
 			ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, False, 'doctor', self.x_type)
 
 
-			print ret 
+			#print ret 
 
 
 
 
 			if ret != 0:	# Error 
 
-				print 'Error: Collision !'
-				print 
+				#print 'Error: Collision !'
+				#print 
 
 				self.x_error = 1
 				self.doctor = False
@@ -708,11 +708,11 @@ class Appointment(models.Model):
 
 			else: 			# Success  
 
-				print 'Success !'
-				print 
+				#print 'Success !'
+				#print 
 
 
-		print 
+		#print 
 
 	# _onchange_doctor
 
@@ -772,8 +772,8 @@ class Appointment(models.Model):
 
 	def _compute_x_time(self):
 
-		print 
-		print 'compute x_time'
+		#print 
+		#print 'compute x_time'
 
 		date_format = "%Y-%m-%d %H:%M:%S"
 		#date_format = "%H:%M:%S"
@@ -787,7 +787,7 @@ class Appointment(models.Model):
 			dt = datetime.datetime.strptime(record.appointment_date, date_format)
 			delta = datetime.timedelta(hours=5)
 			dt = dt - delta
-			print dt
+			#print dt
 
 			record.x_time = dt.strftime("%H:%M:%S")
 
@@ -795,7 +795,7 @@ class Appointment(models.Model):
 				record.x_time = ''
 
 
-		print 
+		#print 
 
 
 
@@ -888,7 +888,7 @@ class Appointment(models.Model):
 		for record in self:	
 
 			if record.x_type == 'procedure'   and   record.state == 'Pre-scheduled':
-				print 'Gotcha !!!'
+				#print 'Gotcha !!!'
 				record.color_x_type_id = self._hash_colors_x_type['procedure_pre_scheduled']
 
 			else:
@@ -1121,9 +1121,9 @@ class Appointment(models.Model):
 	@api.onchange('patient','doctor')
 	def _onchange_patient_doctor(self):
 
-		print 
-		print 'jx'
-		print 'On Change PD'
+		#print 
+		#print 'jx'
+		#print 'On Change PD'
 
 		if self.patient != False and self.doctor != False:
 			
@@ -1159,7 +1159,7 @@ class Appointment(models.Model):
 			
 
 
-			print 
+			#print 
 
 	# _onchange_patient_doctor
 
@@ -1217,7 +1217,7 @@ class Appointment(models.Model):
 				#															)
 				#record.treatment = treatment
 				#record.treatment.id = 3
-	#			print 'jx'
+	#			#print 'jx'
 
 
 
@@ -1239,7 +1239,7 @@ class Appointment(models.Model):
 	#@api.depends('start_date')
 
 	#def _compute_name(self):
-	#	print 'compute name'
+	#	#print 'compute name'
 	#	for record in self:
 	#		idx = record.id
 	#		if idx < 10:
@@ -1251,8 +1251,8 @@ class Appointment(models.Model):
 	#		else:
 	#			pre = 'AP'
 	#		record.name =  pre + str(idx) 
-	#	print self.name 
-	#	print 
+	#	#print self.name 
+	#	#print 
 
 
 
@@ -1267,9 +1267,9 @@ class Appointment(models.Model):
 		#the best thing you can calculate the default values 
 		# however you like then pass them to the context
 
-		print 
-		print 'open popup'
-		print 
+		#print 
+		#print 'open popup'
+		#print 
 
 		return {
 
@@ -1311,18 +1311,18 @@ class Appointment(models.Model):
 	@api.multi
 	def remove_appointment(self):  
 
-		print 
-		print 'Remove Appointment'
+		#print 
+		#print 'Remove Appointment'
 
 		appointment_id = self.id
-		print "id: ", appointment_id
+		#print "id: ", appointment_id
 		
 		rec_set = self.env['oeh.medical.appointment'].browse([appointment_id])
-		print "rec_set: ", rec_set
+		#print "rec_set: ", rec_set
 		
 		ret = rec_set.unlink()
-		print "ret: ", ret
-		print 
+		#print "ret: ", ret
+		#print 
 
 
 
@@ -1337,15 +1337,15 @@ class Appointment(models.Model):
 	@api.multi
 	def open_treatment_current(self):  
 
-		print 
-		print 'Open Treatment'
+		#print 
+		#print 'Open Treatment'
 
 		patient_id = self.patient.id 
-		print patient_id
+		#print patient_id
 
 
 		doctor_id = self.doctor.id
-		print doctor_id 
+		#print doctor_id 
 
 
 		return {
@@ -1393,8 +1393,8 @@ class Appointment(models.Model):
 	@api.multi
 	def search_treatment(self):
 
-		print 
-		print 'Search Treatment'
+		#print 
+		#print 'Search Treatment'
 
 
 		treatment = self.env['openhealth.treatment'].search([
@@ -1411,7 +1411,7 @@ class Appointment(models.Model):
 														)
 
 		self.treatment = treatment.id
-		print self.treatment  
+		#print self.treatment  
 
 
 
@@ -1422,8 +1422,8 @@ class Appointment(models.Model):
 	@api.multi
 	def create_treatment(self):
 
-		print 
-		print 'Create Treatment'
+		#print 
+		#print 'Create Treatment'
 
 		patient_id = self.patient.id
 		doctor_id = self.doctor.id
@@ -1446,7 +1446,7 @@ class Appointment(models.Model):
 				
 		self.treatment = treatment.id
 
-		print self.treatment  
+		#print self.treatment  
 
 
 
@@ -1463,11 +1463,11 @@ class Appointment(models.Model):
 	@api.model
 	def create(self,vals):
 
-		print 
-		print 'jx Create - Override'
-		print 
-		print vals
-		print 
+		#print 
+		#print 'jx Create - Override'
+		#print 
+		#print vals
+		#print 
 	
 
 		appointment_date = vals['appointment_date']
@@ -1475,24 +1475,24 @@ class Appointment(models.Model):
 
 		if 'doctor' in vals:
 			doctor = vals['doctor']
-			print "doctor: ", doctor
+			#print "doctor: ", doctor
 		
 
 		if 'patient' in vals:
 			patient = vals['patient']
-			print "patient: ", patient
+			#print "patient: ", patient
 
 
 		if 'treatment' in vals:
 			treatment = vals['treatment']
-			print "treatment: ", treatment
+			#print "treatment: ", treatment
 
 
 
 		# Cosmetology 
 		if 'cosmetology' in vals:
 			cosmetology = vals['cosmetology']
-			print "cosmetology: ", cosmetology
+			#print "cosmetology: ", cosmetology
 
 
 
@@ -1501,13 +1501,13 @@ class Appointment(models.Model):
 		#x_chief_complaint = vals['x_chief_complaint']
 
 
-		print "appointment date: ", appointment_date
-		print "x_type: ", x_type
+		#print "appointment date: ", appointment_date
+		#print "x_type: ", x_type
 		
 
-		print "x_create_procedure_automatic: ", x_create_procedure_automatic 
+		#print "x_create_procedure_automatic: ", x_create_procedure_automatic 
 		#print x_chief_complaint
-		print
+		#print
 
 
 		#print self.treatment

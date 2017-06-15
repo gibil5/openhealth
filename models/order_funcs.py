@@ -11,11 +11,11 @@ from openerp import models, fields, api
 @api.multi 
 def create_event(self):
 
-		print 
-		print 'jx'
-		print 'Create Event'
-		print
-		print
+		#print 
+		#print 'jx'
+		#print 'Create Event'
+		#print
+		#print
 
 		nr_pm = self.env['openhealth.event'].search_count([('order','=', self.id),]) 
 

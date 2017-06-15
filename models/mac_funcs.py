@@ -13,18 +13,18 @@ import appfuncs
 #def search_machine(self, appointment_date, doctor_name, duration):
 def search_machine(self, appointment_date, doctor_name, duration, start_machine):
 
-	print 
-	print
-	print 'jx'
-	print 'Reserve - Machine'
+	#print 
+	#print
+	#print 'jx'
+	#print 'Reserve - Machine'
 
 	target = 'machine'
 
-	print appointment_date
-	print doctor_name
-	print duration
-	print start_machine
-	print target
+	#print appointment_date
+	#print doctor_name
+	#print duration
+	#print start_machine
+	#print target
 
 
 	#m_list = ['laser_co2_1', 'laser_co2_2', 'laser_co2_3']
@@ -115,7 +115,7 @@ def search_machine(self, appointment_date, doctor_name, duration, start_machine)
 
 		else: 			# Success 
 
-			print 'Success !'
+			#print 'Success !'
 
 			return x_machine
 

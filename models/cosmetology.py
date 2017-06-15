@@ -495,9 +495,8 @@ class Cosmetology(models.Model):
 
 
 # ----------------------------------------------------------- Create Appointment ------------------------------------------------------
-	@api.multi 
-	def create_appointment(self):
-
+	#@api.multi 
+	#def create_appointment(self):
 		#print 
 		#print 'jx'
 		#print 'Create Appointment'
@@ -860,9 +859,8 @@ class Cosmetology(models.Model):
 
 
 # ----------------------------------------------------------- Create invoice ------------------------------------------------------
-	@api.multi 
-	def create_invoice(self):
-
+	#@api.multi 
+	#def create_invoice(self):
 		#print 
 		#print 'jx'
 		#print 'Create invoice'

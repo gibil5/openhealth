@@ -129,19 +129,19 @@ class ProcedureCos(models.Model):
 	@api.multi
 	def create_sessions(self): 
 
-		print 
-		print 
-		print 
-		print 'jx' 
-		print 'Create Sessions - Cos'
+		#print 
+		#print 
+		#print 
+		#print 'jx' 
+		#print 'Create Sessions - Cos'
 
 
 		model = 'openhealth.session.cos'
 		ret = procedure_funcs.create_sessions_go(self, model)
 
 
-		print 
-		print 
+		#print 
+		#print 
 
 	# create_sessions
 
@@ -154,9 +154,9 @@ class ProcedureCos(models.Model):
 	@api.multi
 	def create_session_one(self): 
 
-		print 
-		print 
-		print 'Create session one'
+		#print 
+		#print 
+		#print 'Create session one'
 
 
 		# Data
@@ -199,29 +199,29 @@ class ProcedureCos(models.Model):
 		appointment_id = appointment.id
 
 
-		print 'procedure_id: ', procedure_id
-		print 'patient_id: ', patient_id
-		print 'doctor_id: ', doctor_id
-		print 'chief_complaint: ', chief_complaint
-		print 'evaluation_type: ', evaluation_type
-		print 'product_id: ', product_id
+		#print 'procedure_id: ', procedure_id
+		#print 'patient_id: ', patient_id
+		#print 'doctor_id: ', doctor_id
+		#print 'chief_complaint: ', chief_complaint
+		#print 'evaluation_type: ', evaluation_type
+		#print 'product_id: ', product_id
 
-		print 'treatment_id: ', treatment_id
-		print 'cosmetology_id: ', cosmetology_id
+		#print 'treatment_id: ', treatment_id
+		#print 'cosmetology_id: ', cosmetology_id
 
-		print 'laser: ', laser
+		#print 'laser: ', laser
 
-		print 
-		print 'GMT: ', GMT
-		print 'evaluation_start_date: ', evaluation_start_date 
-		print 'appointment: ', appointment
-		print 'appointment_id: ', appointment_id
-		print 
+		#print 
+		#print 'GMT: ', GMT
+		#print 'evaluation_start_date: ', evaluation_start_date 
+		#print 'appointment: ', appointment
+		#print 'appointment_id: ', appointment_id
+		#print 
 
 
 		# session 
-		print 'create session'
-		print 
+		#print 'create session'
+		#print 
 		
 
 		#session = self.env['openhealth.session'].create(
@@ -251,18 +251,18 @@ class ProcedureCos(models.Model):
 												}
 											)
 		session_id = session.id 
-		print session
-		print session_id
+		#print session
+		#print session_id
 
 
 		# Update
 		#self.update_appointment(appointment_id, session_id, 'session')
 		ret = jrfuncs.update_appointment_go(self, appointment_id, session_id, 'session')
 
-		print appointment
-		print appointment.session
-		print appointment.session.id
-		print 
+		#print appointment
+		#print appointment.session
+		#print appointment.session.id
+		#print 
 
 
 

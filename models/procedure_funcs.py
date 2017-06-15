@@ -28,15 +28,15 @@ import procedure_funcs_cos
 def create_sessions_go(self, model):
 
 
-		print 
-		print 
-		print 'Create Sessions - Go'
-		print 
+		#print 
+		#print 
+		#print 'Create Sessions - Go'
+		#print 
 
 
 
 # Initial conditions 
-		print 'Initial conditions'
+		#print 'Initial conditions'
 
 		procedure_id = self.id 
 
@@ -99,11 +99,11 @@ def create_sessions_go(self, model):
 		#app_date = self.evaluation_start_date
 
 
-		print GMT
-		print evaluation_start_date 
-		print app_date
-		print 
-		print 
+		#print GMT
+		#print evaluation_start_date 
+		#print app_date
+		#print 
+		#print 
 		
 
 
@@ -131,8 +131,8 @@ def create_sessions_go(self, model):
 
 
 # Clean Sessions 
-		print 
-		print 'Clean Sessions'
+		#print 
+		#print 'Clean Sessions'
 
 		#rec_set = self.env['openhealth.session.cos'].search([
 		#rec_set = self.env[self.model].search([
@@ -140,7 +140,7 @@ def create_sessions_go(self, model):
 																('procedure', '=', self.id), 
 															])
 		ret = rec_set.unlink()
-		print "ret: ", ret
+		#print "ret: ", ret
 
 
 
@@ -177,8 +177,8 @@ def create_sessions_go(self, model):
 
 
 
-		print 
-		print 'Loop'
+		#print 
+		#print 'Loop'
 
 
 
@@ -189,7 +189,7 @@ def create_sessions_go(self, model):
 
 
 
-			print k
+			#print k
 
 
 			delta = 0 
@@ -215,7 +215,7 @@ def create_sessions_go(self, model):
 			if k == 0:
 				
 				appointment_date = session_date_str + ' '
-				print 'appointment_date: ', appointment_date
+				#print 'appointment_date: ', appointment_date
 
 
 
@@ -231,7 +231,7 @@ def create_sessions_go(self, model):
 																		], 
 																			order='appointment_date desc', limit=1)
 
-				print appointment
+				#print appointment
 
 
 
@@ -239,8 +239,8 @@ def create_sessions_go(self, model):
 			#if appointment == False: 
 
 			else: 	# Create Appointment 
-				print 
-				print 'Create Appointment'
+				#print 
+				#print 'Create Appointment'
 
 
 	
@@ -259,7 +259,7 @@ def create_sessions_go(self, model):
 
 
 
-				print 'appointment_date: ', appointment_date
+				#print 'appointment_date: ', appointment_date
 
 				appointment = self.env['oeh.medical.appointment'].create({
 																		'appointment_date': appointment_date_str,
@@ -289,40 +289,40 @@ def create_sessions_go(self, model):
 
 
 
-				print appointment 
+				#print appointment 
 
 
 
 			appointment_id = appointment.id
-			print appointment
-			print appointment_id
+			#print appointment
+			#print appointment_id
 
 
 
 
 
 			# Crrate Session 
-			print 'Create Session'
+			#print 'Create Session'
 
-			print session_date
-			print patient_id
-			print doctor_id
-			print evaluation_type
+			#print session_date
+			#print patient_id
+			#print doctor_id
+			#print evaluation_type
 			
-			print 
+			#print 
 
-			print product_id
-			print laser
-			print appointment_id
+			#print product_id
+			#print laser
+			#print appointment_id
 
-			print 
+			#print 
 
-			print treatment_id
-			print cosmetology_id
-			print chief_complaint
+			#print treatment_id
+			#print cosmetology_id
+			#print chief_complaint
 
-			print 
-			print procedure_id
+			#print 
+			#print procedure_id
 
 
 
@@ -360,8 +360,8 @@ def create_sessions_go(self, model):
 												}
 											)
 			session_id = session.id 
-			print session
-			print session_id
+			#print session
+			#print session_id
 
 
 
@@ -373,9 +373,9 @@ def create_sessions_go(self, model):
 			#print appointment
 			#print appointment.session
 			#print appointment.session.id
-			print 
-			print 
-			print 
+			#print 
+			#print 
+			#print 
 
 
 		ret = 0
@@ -393,9 +393,9 @@ def create_sessions_go(self, model):
 
 def create_controls_go(self):
 
-	print 
-	print 'Create control Go'
-	print 
+	#print 
+	#print 'Create control Go'
+	#print 
 
 
 
@@ -437,14 +437,14 @@ def create_controls_go(self):
 
 
 # Clean Sessions 
-	print 
-	print 'Clean Controls'
+	#print 
+	#print 'Clean Controls'
 
 	rec_set = self.env['openhealth.control'].search([
 														('procedure', '=', self.id), 
 													])
 	ret = rec_set.unlink()
-	print "ret: ", ret
+	#print "ret: ", ret
 
 
 
@@ -564,8 +564,8 @@ def	check_max_number(self, appointment_date, x_type, doctor_name):
 
 	import datetime
 
-	print 
-	print 'Check Max Number'
+	#print 
+	#print 'Check Max Number'
 
 	date_format = "%Y-%m-%d %H:%M:%S"
 
@@ -574,14 +574,14 @@ def	check_max_number(self, appointment_date, x_type, doctor_name):
 
 
 	#appointment_date_str = appointment_date[0:10]
-	print appointment_date
+	#print appointment_date
 
 
 
 
 
 	delta_var = datetime.timedelta(days=1)
-	print delta_var
+	#print delta_var
 
 	ret = 1
 
@@ -592,8 +592,8 @@ def	check_max_number(self, appointment_date, x_type, doctor_name):
 		appointment_date = appointment_date_dt.strftime("%Y-%m-%d %H:%M:%S")
 		appointment_date_str = appointment_date[2:10]
 		
-		print appointment_date
-		print appointment_date_str
+		#print appointment_date
+		#print appointment_date_str
 
 		app_ids = self.env['oeh.medical.appointment'].search([
 																('appointment_date', 'like', appointment_date_str),  
@@ -602,14 +602,14 @@ def	check_max_number(self, appointment_date, x_type, doctor_name):
 																('x_type', '=', x_type), 
 
 														 	])
-		print app_ids
-		print len(app_ids)
+		#print app_ids
+		#print len(app_ids)
 
 
 
 
 		if len(app_ids) < 4:
-			print 'Max number check - Success !!!'
+			#print 'Max number check - Success !!!'
 
 			ret = 0
 
@@ -617,15 +617,15 @@ def	check_max_number(self, appointment_date, x_type, doctor_name):
 
 
 		else:
-			print 'Alert. Max reached. Check next day.'
+			#print 'Alert. Max reached. Check next day.'
 
 			appointment_date_dt = datetime.datetime.strptime(appointment_date, date_format)
 
 			appointment_date_dt = appointment_date_dt + delta_var
 
-			print appointment_date_dt
+			#print appointment_date_dt
 
-		print 
+		#print 
 
 
 
@@ -641,9 +641,9 @@ def check_and_push(self, appointment_date, duration, x_type, doctor_name):
 
 	import datetime
 
-	print 
-	print 'Chech and push'
-	print appointment_date
+	#print 
+	#print 'Chech and push'
+	#print appointment_date
 
 
 	delta_var = datetime.timedelta(hours=duration)
@@ -673,13 +673,9 @@ def check_and_push(self, appointment_date, duration, x_type, doctor_name):
 
 
 		if ret == 0: 		# Success ! - No Collisions
-			
-
-			print 'Collision check - Success !!!'
-			print k
-
-
-
+			tra = 1 
+			#print 'Collision check - Success !!!'
+			#print k
 		else:				# Collision - Keep going... 
 			k = k + 1
 

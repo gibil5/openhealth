@@ -429,6 +429,7 @@ class Appointment(models.Model):
 
 
 			else:
+				tra = 1 
 				#print 'empty'
 
 				#self.open_treatment_current()
@@ -707,7 +708,7 @@ class Appointment(models.Model):
 
 
 			else: 			# Success  
-
+				tra = 1
 				#print 'Success !'
 				#print 
 

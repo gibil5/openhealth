@@ -325,9 +325,9 @@ class Procedure(models.Model):
 
 		# Date 		
 		GMT = time_funcs.Zone(0,False,'GMT')
-		print GMT
+		#print GMT
 		evaluation_start_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
-		print evaluation_start_date 
+		#print evaluation_start_date 
 
 
 
@@ -351,7 +351,7 @@ class Procedure(models.Model):
 
 
 
-		print 
+		#print 
 
 
 		return {
@@ -423,18 +423,18 @@ class Procedure(models.Model):
 	@api.multi
 	def create_sessions(self): 
 
-		print 
-		print 
-		print 'jx'
-		print 'Create Sessions - Many'
+		#print 
+		#print 
+		#print 'jx'
+		#print 'Create Sessions - Many'
 
 
 		model = 'openhealth.session.med'
 		ret = procedure_funcs.create_sessions_go(self, model)
 
 
-		print 
-		print 
+		#print 
+		#print 
 
 	# create_sessions
 
@@ -451,9 +451,9 @@ class Procedure(models.Model):
 	#def create_session(self): 
 	def create_session_one(self): 
 
-		print 
-		print 
-		print 'Create session'
+		#print 
+		#print 
+		#print 'Create session'
 
 
 		# Data
@@ -492,22 +492,22 @@ class Procedure(models.Model):
 		appointment_id = appointment.id
 
 
-		print 'procedure_id: ', procedure_id
-		print 'patient_id: ', patient_id
-		print 'doctor_id: ', doctor_id
-		print 'chief_complaint: ', chief_complaint
-		print 'evaluation_type: ', evaluation_type
-		print 'product_id: ', product_id
-		print 'treatment_id: ', treatment_id
-		print 'laser: ', laser
+		#print 'procedure_id: ', procedure_id
+		#print 'patient_id: ', patient_id
+		#print 'doctor_id: ', doctor_id
+		#print 'chief_complaint: ', chief_complaint
+		#print 'evaluation_type: ', evaluation_type
+		#print 'product_id: ', product_id
+		#print 'treatment_id: ', treatment_id
+		#print 'laser: ', laser
 
-		print 
-		print 'GMT: ', GMT
-		print 'evaluation_start_date: ', evaluation_start_date 
-		print 'appointment: ', appointment
-		print 'appointment_id: ', appointment_id
-		print 
-		print 
+		#print 
+		#print 'GMT: ', GMT
+		#print 'evaluation_start_date: ', evaluation_start_date 
+		#print 'appointment: ', appointment
+		#print 'appointment_id: ', appointment_id
+		#print 
+		#print 
 
 
 
@@ -579,8 +579,8 @@ class Procedure(models.Model):
 
 
 		# session 
-		print 'create session'
-		print 
+		#print 'create session'
+		#print 
 		
 
 		#session = self.env['openhealth.session'].create(
@@ -645,18 +645,18 @@ class Procedure(models.Model):
 												}
 											)
 		session_id = session.id 
-		print session
-		print session_id
+		#print session
+		#print session_id
 
 
 		# Update
 		#self.update_appointment(appointment_id, session_id, 'session')
 		ret = jrfuncs.update_appointment_go(self, appointment_id, session_id, 'session')
 
-		print appointment
-		print appointment.session
-		print appointment.session.id
-		print 
+		#print appointment
+		#print appointment.session
+		#print appointment.session.id
+		#print 
 
 
 
@@ -713,8 +713,8 @@ class Procedure(models.Model):
 	@api.multi
 	def open_appointment(self):  
 
-		print 
-		print 'open appointment'
+		#print 
+		#print 'open appointment'
 
 		owner_id = self.id 
 		owner_type = self.owner_type

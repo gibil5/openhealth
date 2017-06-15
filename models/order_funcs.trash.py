@@ -4,8 +4,8 @@
 @api.multi 
 def create_document_go(self, type_doc):
 
-		print 
-		print 'Create'
+		#print 
+		#print 'Create'
 
 		order_id = self.id 
 		patient_id = self.patient.id
@@ -23,7 +23,7 @@ def create_document_go(self, type_doc):
 			document_id = create_advertisement_go()
 
 
-		print document_id
+		#print document_id
 		
 		return (document_id, order_id, patient_id, doctor_id, total)
 
@@ -71,14 +71,14 @@ def create_receipt_go(self):
 @api.multi 
 def create_invoice_go(self):
 
-	print 
+	#print 
 
 
 
 @api.multi 
 def create_advertisement_go(self):
 
-	print 
+	#print 
 
 
 

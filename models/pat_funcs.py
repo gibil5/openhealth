@@ -37,7 +37,7 @@ def update_appointment_go(self, appointment_id, owner_id, x_type):
 		rec_set = self.env['oeh.medical.appointment'].browse([
 																appointment_id																
 															])
-		print rec_set
+		#print rec_set
 
 
 
@@ -82,13 +82,14 @@ def update_appointment_go(self, appointment_id, owner_id, x_type):
 
 
 		else:
-			print 
-			print 'This should not happen !!!'
-			print 
+			tra = 1
+			#print 
+			#print 'This should not happen !!!'
+			#print 
 
 
 
-		print ret 
+		#print ret 
 
 
 

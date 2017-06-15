@@ -55,8 +55,8 @@ class Patient(models.Model):
 
 	#def _compute_x_year_created(self):
 	#	for record in self:
-	#		print 
-	#		print 'Compute x_year_created'
+	#		#print 
+	#		#print 'Compute x_year_created'
 	#		record.x_year_created = record.x_date_created.split('-')[0]
 
 
@@ -87,8 +87,8 @@ class Patient(models.Model):
 
 	#def _compute_x_month_created(self):
 	#	for record in self:
-	#		print 
-	#		print 'Compute x_month_created'
+	#		#print 
+	#		#print 'Compute x_month_created'
 	#		record.x_month_created = record.x_date_created.split('-')[1]
 
 
@@ -146,9 +146,9 @@ class Patient(models.Model):
 
 	def _compute_x_state(self):
 		for record in self:
-			print 
-			print 'jx'
-			print 'Compute x_state'
+			#print 
+			#print 'jx'
+			#print 'Compute x_state'
 
 			#record.x_state = treatment_vars._hash_x_state[record.state]
 
@@ -164,7 +164,7 @@ class Patient(models.Model):
 			else:
 				record.x_state = 'active'
 
-			print 
+			#print 
 
 
 
@@ -611,13 +611,13 @@ class Patient(models.Model):
 	@api.onchange('x_last_name')
 	def _onchange_x_last_name_test(self):
 		
-		print 'Test name'
+		#print 'Test name'
 
 		if self.x_last_name:
 			ret = pat_funcs.test_name(self, self.x_last_name)
 			
-			print ret 
-			print 
+			#print ret 
+			#print 
 			
 			return ret
 
@@ -744,8 +744,8 @@ class Patient(models.Model):
 	@api.multi
 	def x_update(self):  
 
-		print 
-		print 'Update'
+		#print 
+		#print 'Update'
 
 		self.x_date_created = self.x_date_created
 
@@ -771,10 +771,10 @@ class Patient(models.Model):
 																limit=1,).id
 
 
-		print 
-		print 'Open Treatment'
+		#print 
+		#print 'Open Treatment'
 		patient_id = self.id 
-		print patient_id
+		#print patient_id
 
 		return {
 
@@ -824,10 +824,10 @@ class Patient(models.Model):
 	@api.multi
 	def open_cosmetology_current(self):  
 
-		print 
-		print 'Open Cosmetology'
+		#print 
+		#print 'Open Cosmetology'
 		patient_id = self.id 
-		print patient_id
+		#print patient_id
 
 		return {
 
@@ -866,13 +866,13 @@ class Patient(models.Model):
 	@api.model
 	def create(self,vals):
 
-		print 
+		#print 
 		#print 'jx: begin'
-		print 'jx'
-		print 'Patient - Create - Override'
-		print 
+		#print 'jx'
+		#print 'Patient - Create - Override'
+		#print 
 		#print vals
-		print 
+		#print 
 	
 
 
@@ -888,14 +888,14 @@ class Patient(models.Model):
 
 		# Create a Treatment - When Patient is created
 		name = vals['name']
-		print 'name: ', name 
+		#print 'name: ', name 
 		patient_id = self.env['oeh.medical.patient'].search([('name', '=', name),]).id 
-		print 'patient_id: ', patient_id
+		#print 'patient_id: ', patient_id
 		treatment = self.env['openhealth.treatment'].create({'patient': patient_id,})
 
 
 		x_date_created = vals['x_date_created']
-		print x_date_created 
+		#print x_date_created 
 
 		#self.x_year_created = 'jx'
 		#print self.x_year_created
@@ -903,7 +903,7 @@ class Patient(models.Model):
 
 
 		#print 'jx: end '
-		print 
+		#print 
 
 
 		return res

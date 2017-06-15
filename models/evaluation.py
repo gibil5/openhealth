@@ -43,8 +43,8 @@ class Evaluation(models.Model):
 	@api.multi 
 	def open_treatment(self):
 
-		print 
-		print 'Open Treatment'
+		#print 
+		#print 'Open Treatment'
 
 		treatment = self.env['openhealth.treatment'].search([('id','=', self.treatment.id)]) 
 		treatment_id = treatment.id  

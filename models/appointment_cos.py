@@ -12,14 +12,9 @@
 
 from openerp import models, fields, api
 
-#import datetime
-#import time_funcs
-#import jxvars
-
-
-import defaults
-import app_vars
-import appfuncs
+from . import defaults
+from . import app_vars
+from . import appfuncs
 
 
 class AppointmentCos(models.Model):

@@ -9,21 +9,15 @@
 
 
 from openerp import models, fields, api
-
-import jxvars
-
-
-#import treatment_funcs
-import cos_funcs
-
-
-import time_funcs
 from datetime import datetime
 
 
-import cosvars
 
-import procedure_funcs
+from . import jxvars
+from . import cos_funcs
+from . import time_funcs
+from . import cosvars
+from . import procedure_funcs
 
 
 

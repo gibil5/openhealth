@@ -12,14 +12,14 @@ from openerp import models, fields, api
 #from datetime import datetime
 from datetime import datetime,tzinfo,timedelta
 
-import jxvars
-import cosvars
 
-import jrfuncs
-import eval_vars
-import time_funcs
+from . import jxvars
+from . import cosvars
+from . import jrfuncs
+from . import eval_vars
+from . import time_funcs
+from . import app_vars
 
-import app_vars
 
 
 class Consultation(models.Model):

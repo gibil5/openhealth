@@ -17,23 +17,20 @@ class SaleAdvancePaymentInv(models.TransientModel):
 
 
 
-	@api.multi
-	def create_invoices(self):
-
+	#@api.multi
+	#def create_invoices(self):
 		#jx
-		print
-		print 'jx - Sales Advance Payment Invoice - Local - Gotcha !'
-		print
+		#print
+		#print 'jx - Sales Advance Payment Invoice - Local - Gotcha !'
+		#print
 
 
 
 
-	@api.multi
-	def _create_invoice(self, order, so_line, amount):
-		print 'jx - _create_invoice !'
+	#@api.multi
+	#def _create_invoice(self, order, so_line, amount):
+		#print 'jx - _create_invoice !'
 
-
-
-	def _prepare_deposit_product(self):
-		print 'jx - _prepare_deposit_product !'
+	#def _prepare_deposit_product(self):
+		#print 'jx - _prepare_deposit_product !'
 

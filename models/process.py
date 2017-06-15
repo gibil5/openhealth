@@ -142,11 +142,11 @@ class Process(models.Model):
 
 	def _compute_progress(self):
 		for record in self:
-			print 
-			print 'jx'
-			print 'Compute progress'
+			#print 
+			#print 'jx'
+			#print 'Compute progress'
 			record.progress = treatment_vars._hash_progress[record.state]
-			print 
+			#print 
 
 
 

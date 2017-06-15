@@ -90,8 +90,8 @@ class Session(models.Model):
 	@api.multi
 	def open_appointment(self):  
 
-		print 
-		print 'open appointment'
+		#print 
+		#print 'open appointment'
 
 		owner_id = self.id 
 		owner_type = self.owner_type

@@ -15,8 +15,8 @@ import jrfuncs
 
 def create_order_lines(self, laser, order_id):
 
-	print 
-	print 'Create Order Lines'
+	#print 
+	#print 'Create Order Lines'
 
 	order = self.env['sale.order'].search([(
 												'id','=', order_id),
@@ -25,8 +25,8 @@ def create_order_lines(self, laser, order_id):
 												#limit=1,						
 											)		
 
-	print laser
-	print order
+	#print laser
+	#print order
 
 
 
@@ -41,9 +41,9 @@ def create_order_lines(self, laser, order_id):
 
 	}
 
-	print _model[laser]
+	#print _model[laser]
 
-	print 
+	#print 
 
 
 	rec_set = self.env[_model[laser]].search([(
@@ -61,7 +61,7 @@ def create_order_lines(self, laser, order_id):
 					
 			ret = order.x_create_order_lines_target(target_line)
 					
-			print ret 
+			#print ret 
 
 
 	return 0
@@ -78,9 +78,9 @@ def create_order_lines(self, laser, order_id):
 def create_procedure_go(self):
 
 
-	print 
-	print 'Create Procedure Go'
-	print 
+	#print 
+	#print 'Create Procedure Go'
+	#print 
 
 	#name = 'name'
 
@@ -121,7 +121,7 @@ def create_procedure_go(self):
 														], 
 															order='appointment_date desc', limit=1)
 
-	print appointment
+	#print appointment
 	appointment_id = appointment.id
 
 
@@ -135,7 +135,7 @@ def create_procedure_go(self):
 	# Chief complaint 
 	#for sale in self.order_ids:
 	#	chief_complaint = sale.x_chief_complaint
-	#	print 'chief_complaint:', chief_complaint
+	#	#print 'chief_complaint:', chief_complaint
 
 
 
@@ -177,20 +177,20 @@ def create_procedure_go(self):
 
 				procedure_id = procedure.id
 
-				print 
-				print procedure 
-				print procedure_id
+				#print 
+				#print procedure 
+				#print procedure_id
 
 
 				#self.update_appointment(appointment_id, procedure_id, 'procedure')
 				ret = jrfuncs.update_appointment_go(self, appointment_id, procedure_id, 'procedure')
 
 
-				print appointment
-				print appointment.procedure
-				print appointment.procedure.id
+				#print appointment
+				#print appointment.procedure
+				#print appointment.procedure.id
 
-				print 
+				#print 
 
 	return ret	
 

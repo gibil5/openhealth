@@ -49,8 +49,8 @@ class Service(models.Model):
 	@api.multi 
 	def open_treatment(self):
 
-		print 
-		print 'Open Treatment'
+		#print 
+		#print 'Open Treatment'
 
 
 		ret = self.treatment.open_myself()
@@ -183,9 +183,9 @@ class Service(models.Model):
 	# Commons 
 	def clear_all(self,token):
 		
-		print
-		print 'jx'
-		print 'Clear All'
+		#print
+		#print 'jx'
+		#print 'Clear All'
 
 		self.clear_commons()
 		self.clear_local() 
@@ -195,9 +195,9 @@ class Service(models.Model):
 		
 	def clear_commons(self):	
 
-		print
-		print 'jx'
-		print 'Clear Commons'
+		#print
+		#print 'jx'
+		#print 'Clear Commons'
 
 		self.zone = 'none'
 		self.pathology = 'none'

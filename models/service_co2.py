@@ -470,11 +470,11 @@ class ServiceCo2(models.Model):
 	@api.onchange('co2_lb_acneseq')
 	def _onchange_co2_lb_acneseq(self):		
 		
-		print
-		print 'jx'
-		print 'on change - co2_lb_acneseq'	
-		print self.co2_lb_acneseq
-		print 
+		#print
+		#print 'jx'
+		#print 'on change - co2_lb_acneseq'	
+		#print self.co2_lb_acneseq
+		#print 
 
 
 		if self.co2_lb_acneseq != 'none':	
@@ -591,9 +591,9 @@ class ServiceCo2(models.Model):
 	@api.multi
 	def clear_local(self):
 		
-		print 
-		print 'jx'
-		print 'Clear Local'
+		#print 
+		#print 'jx'
+		#print 'Clear Local'
 
 		# Fourth
 		self.co2_lb_acneseq = 'none'

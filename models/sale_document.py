@@ -68,19 +68,19 @@ class SaleDocument(models.Model):
 
 	def _compute_x_type(self):
 
-		print 
-		print 'Compute x type'
+		#print 
+		#print 'Compute x type'
 
 
 
 		for record in self:
 
 
-			print record.name
-			print record.receipt.name
-			print record.ticket_receipt.name
+			#print record.name
+			#print record.receipt.name
+			#print record.ticket_receipt.name
 
-			print 
+			#print 
 
 			if record.receipt.name != False :
 				record.x_type = 'receipt'
@@ -358,8 +358,8 @@ class SaleDocument(models.Model):
 # ---------------------------------------------- Create Receipt --------------------------------------------------------
 	@api.multi 
 	def create_receipt(self):
-		print 
-		print 'Create Receipt'
+		#print 
+		#print 'Create Receipt'
 
 		# Search 
 		receipt_id = self.env['openhealth.receipt'].search([
@@ -414,8 +414,8 @@ class SaleDocument(models.Model):
 # ---------------------------------------------- Create Invoice --------------------------------------------------------
 	@api.multi 
 	def create_invoice(self):
-		print 
-		print 'Create Invoice'
+		#print 
+		#print 'Create Invoice'
 
 
 		# Search 
@@ -481,8 +481,8 @@ class SaleDocument(models.Model):
 # ---------------------------------------------- Create advertisement --------------------------------------------------------
 	@api.multi 
 	def create_advertisement(self):
-		print 
-		print 'Create advertisement'
+		#print 
+		#print 'Create advertisement'
 
 
 		# Search 
@@ -544,8 +544,8 @@ class SaleDocument(models.Model):
 # ---------------------------------------------- Create Sale Note --------------------------------------------------------
 	@api.multi 
 	def create_sale_note(self):
-		print 
-		print 'Create Sale Note'
+		#print 
+		#print 'Create Sale Note'
 
 
 
@@ -613,8 +613,8 @@ class SaleDocument(models.Model):
 # ---------------------------------------------- Create Ticket Receipt  --------------------------------------------------------
 	@api.multi 
 	def create_ticket_receipt(self):
-		print 
-		print 'Create Ticekt Receipt'
+		#print 
+		#print 'Create Ticekt Receipt'
 
 		# Search 
 		ticket_receipt_id = self.env['openhealth.ticket_receipt'].search([
@@ -678,8 +678,8 @@ class SaleDocument(models.Model):
 # ---------------------------------------------- Create Ticket Invoice --------------------------------------------------------
 	@api.multi 
 	def create_ticket_invoice(self):
-		print 
-		print 'Create Ticket Invoice'
+		#print 
+		#print 'Create Ticket Invoice'
 
 
 		# Search 

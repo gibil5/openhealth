@@ -109,9 +109,9 @@ class ServiceCosmetology(models.Model):
 	def _onchange_cos_dia(self):
 		
 		if self.cos_dia != 'none':
-			print 
-			print 'cos_dia'
-			print 
+			#print 
+			#print 'cos_dia'
+			#print 
 
 
 			self.cos_dia = self.clear_all_med(self.cos_dia)
@@ -153,9 +153,9 @@ class ServiceCosmetology(models.Model):
 	def _onchange_cos_car_fac(self):
 		
 		if self.cos_car_fac != 'none':
-			print 
-			print 'cos_car_fac'
-			print 
+			#print 
+			#print 'cos_car_fac'
+			#print 
 
 			self.cos_car_fac = self.clear_all_med(self.cos_car_fac)
 
@@ -192,9 +192,9 @@ class ServiceCosmetology(models.Model):
 	def _onchange_cos_car_bod(self):
 		
 		if self.cos_car_bod != 'none':
-			print 
-			print 'cos_car_bod'
-			print 
+			#print 
+			#print 'cos_car_bod'
+			#print 
 
 			self.cos_car_bod = self.clear_all_med(self.cos_car_bod)
 
@@ -248,9 +248,9 @@ class ServiceCosmetology(models.Model):
 	def _onchange_cos_tri_fac(self):
 		
 		if self.cos_tri_fac != 'none':
-			print 
-			print 'cos_tri_fac'
-			print 
+			#print 
+			#print 'cos_tri_fac'
+			#print 
 
 			self.cos_tri_fac = self.clear_all_med(self.cos_tri_fac)
 			#self.clear_local()
@@ -289,9 +289,9 @@ class ServiceCosmetology(models.Model):
 	def _onchange_cos_tri_bod(self):
 		
 		if self.cos_tri_bod != 'none':
-			print 
-			print 'cos_tri_bod'
-			print 
+			#print 
+			#print 'cos_tri_bod'
+			#print 
 
 			self.cos_tri_bod = self.clear_all_med(self.cos_tri_bod)
 			#self.clear_local()
@@ -340,7 +340,7 @@ class ServiceCosmetology(models.Model):
 	@api.multi
 	def clear_local_cos(self):
 
-		print 'clear_local_cos'
+		#print 'clear_local_cos'
 		
 		self.cos_dia = 'none'
 		self.cos_car = 'none'

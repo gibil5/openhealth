@@ -111,17 +111,17 @@ class recommendation(models.Model):
 	@api.multi
 	def create_service_excilite(self):  
 
-		print 
-		print 'jx'
-		print 'Create Service Excilite'
-		print 
+		#print 
+		#print 'jx'
+		#print 'Create Service Excilite'
+		#print 
 
 		consultation_id = self.id 
 		treatment_id = self.treatment.id 
 		
-		print consultation_id
-		print treatment_id
-		print 
+		#print consultation_id
+		#print treatment_id
+		#print 
 
 
 		laser = 'laser_excilite'

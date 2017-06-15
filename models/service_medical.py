@@ -124,7 +124,7 @@ class ServiceMedical(models.Model):
 	@api.multi
 	def clear_local_med(self):
 
-		print 'clear_local_med'
+		#print 'clear_local_med'
 		
 		self.med_crio = 'none'
 		self.med_hya = 'none'
@@ -154,13 +154,13 @@ class ServiceMedical(models.Model):
 			self.sessions = self.med_crio
 
 
-			print 
-			print 'med_crio'
-			print self.med_crio
-			print self.sessions
-			print self.x_treatment
+			#print 
+			#print 'med_crio'
+			#print self.med_crio
+			#print self.sessions
+			#print self.x_treatment
 
-			print 
+			#print 
 
 			#self.med_crio = self.clear_all_med(self.med_crio)
 			#self.family = 'medical'
@@ -191,9 +191,9 @@ class ServiceMedical(models.Model):
 	def _onchange_med_hya(self):
 		
 		if self.med_hya != 'none':
-			print 
-			print 'med_hya'
-			print 
+			#print 
+			#print 'med_hya'
+			#print 
 
 			self.med_hya = self.clear_all_med(self.med_hya)
 			#self.clear_local()
@@ -215,9 +215,9 @@ class ServiceMedical(models.Model):
 	def _onchange_med_scle(self):
 		
 		if self.med_scle != 'none':
-			print 
-			print 'med_scle'
-			print 
+			#print 
+			#print 'med_scle'
+			#print 
 
 			self.med_scle = self.clear_all_med(self.med_scle)
 
@@ -247,9 +247,9 @@ class ServiceMedical(models.Model):
 	def _onchange_med_bot(self):
 		
 		if self.med_bot != 'none':
-			print 
-			print 'med_bot'
-			print 
+			#print 
+			#print 'med_bot'
+			#print 
 			self.med_bot = self.clear_all_med(self.med_bot)
 
 
@@ -269,9 +269,9 @@ class ServiceMedical(models.Model):
 	def _onchange_med_int(self):
 		
 		if self.med_int != 'none':
-			print 
-			print 'med_int'
-			print 
+			#print 
+			#print 'med_int'
+			#print 
 			self.med_int = self.clear_all_med(self.med_int)
 
 
@@ -296,8 +296,8 @@ class ServiceMedical(models.Model):
 		if self.med_lep != 'none':
 		#if self.med_lep != False:
 
-			print 
-			print 'on change - med_lep'
+			#print 
+			#print 'on change - med_lep'
 
 
 			self.zone = 		service_medical_vars._lep_dic_zone[self.med_lep]
@@ -305,10 +305,10 @@ class ServiceMedical(models.Model):
 			self.x_treatment = 'lepismatic' 
 
 
-			print self.med_lep 
-			print self.zone
-			print self.pathology
-			print 
+			#print self.med_lep 
+			#print self.zone
+			#print self.pathology
+			#print 
 
 			#print self.med_lep['zone']
 			#print self.med_lep['pathology']
@@ -331,9 +331,9 @@ class ServiceMedical(models.Model):
 	def _onchange_med_pla(self):
 		
 		if self.med_pla != 'none':
-			print 
-			print 'med_pla'
-			print 
+			#print 
+			#print 'med_pla'
+			#print 
 			self.med_pla = self.clear_all_med(self.med_pla)
 
 
@@ -354,11 +354,11 @@ class ServiceMedical(models.Model):
 
 
 
-			print self.med_pla 
-			print self.zone
-			print self.pathology
-			print self.sessions
-			print 
+			#print self.med_pla 
+			#print self.zone
+			#print self.pathology
+			#print self.sessions
+			#print 
 
 
 

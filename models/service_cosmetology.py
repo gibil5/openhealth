@@ -11,9 +11,10 @@
 from openerp import models, fields, api
 from datetime import datetime
 
-#import service_cosmetology_vars
-import prodvars
-import cosvars
+
+
+from . import prodvars
+from . import cosvars
 
 
 

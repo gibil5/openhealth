@@ -11,14 +11,13 @@
 from openerp import models, fields, api
 from datetime import datetime
 
-import jxvars
-#import cosvars
 
-import time_funcs
-import jrfuncs
-#import session_funcs
 
-import session_vars
+from . import jxvars
+from . import time_funcs
+from . import jrfuncs
+from . import session_vars
+
 
 
 class SessionMed(models.Model):

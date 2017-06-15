@@ -5,9 +5,12 @@
 
 from openerp import models, fields, api
 from datetime import datetime
-import jxvars
 
-import service_medical_vars
+
+
+from . import jxvars
+from . import service_medical_vars
+
 
 
 class ServiceMedical(models.Model):

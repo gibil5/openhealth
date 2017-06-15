@@ -2,9 +2,10 @@
 
 from datetime import datetime,tzinfo,timedelta
 from openerp import models, fields, api
-import time_funcs
 
-import jrfuncs
+
+from . import time_funcs
+from . import jrfuncs
 
 
 

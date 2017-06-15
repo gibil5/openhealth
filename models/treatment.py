@@ -10,11 +10,12 @@ from openerp import models, fields, api
 from datetime import datetime
 from datetime import tzinfo
 
-import jxvars
-import treatment_funcs
-import time_funcs
 
-import treatment_vars
+
+from . import jxvars
+from . import treatment_funcs
+from . import time_funcs
+from . import treatment_vars
 
 
 

@@ -5,7 +5,9 @@
 
 from openerp import models, fields, api
 from datetime import datetime
-import exc
+
+
+from . import exc
 
 
 

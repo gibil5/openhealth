@@ -11,13 +11,14 @@
 from openerp import models, fields, api
 from datetime import datetime
 
-import jxvars
-import time_funcs
-import jrfuncs
-import procedure_funcs
 
-import cosvars
-import app_vars
+
+from . import jxvars
+from . import time_funcs
+from . import jrfuncs
+from . import procedure_funcs
+from . import cosvars
+from . import app_vars
 
 
 

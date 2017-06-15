@@ -11,16 +11,11 @@ from datetime import datetime
 
 
 
-import exc
-import ipl
+from . import exc
+from . import ipl
+from . import prodvars
 
 
-#import jxvars
-#import service_vars
-import prodvars
-
-
-	
 
 class Service(models.Model):
 	_name = 'openhealth.service'

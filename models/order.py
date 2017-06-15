@@ -6,15 +6,13 @@
 
 from openerp import models, fields, api
 
-import jxvars
-import app_vars
-import ord_vars
-import order_funcs
-
-import appfuncs
-import mac_funcs
-
-import cosvars
+from . import jxvars
+from . import app_vars
+from . import ord_vars
+from . import order_funcs
+from . import appfuncs
+from . import mac_funcs
+from . import cosvars
 
 
 

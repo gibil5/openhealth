@@ -9,8 +9,11 @@
 from openerp import models, fields, api
 from datetime import datetime
 
-import pat_funcs
-import pat_vars
+
+
+from . import pat_funcs
+from . import pat_vars
+
 
 
 class Patient(models.Model):

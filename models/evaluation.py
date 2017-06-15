@@ -11,13 +11,11 @@
 from openerp import models, fields, api
 from datetime import datetime
 
-import jxvars
-import eval_vars
-
-#import service_vars
-import prodvars
 
 
+from . import jxvars
+from . import eval_vars
+from . import prodvars
 
 
 

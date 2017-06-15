@@ -3,7 +3,7 @@
 from openerp import models, fields, api
 import datetime
 
-import appfuncs
+from . import appfuncs
 
 
 # ----------------------------------------------------------- Machines  ------------------------------------------------------

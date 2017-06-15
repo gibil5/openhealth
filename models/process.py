@@ -10,9 +10,10 @@
 
 from openerp import models, fields, api
 
-import jxvars
 
-import treatment_vars
+
+from . import jxvars
+from . import treatment_vars
 
 
 

@@ -6,7 +6,10 @@
 
 from openerp import models, fields, api
 
-import ord_vars
+
+
+from . import ord_vars
+
 
 
 class payment_method(models.Model):

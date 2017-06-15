@@ -6,7 +6,9 @@
 
 from openerp import models, fields, api
 
-import event_vars
+
+
+from . import event_vars
 
 
 

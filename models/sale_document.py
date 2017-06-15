@@ -6,7 +6,9 @@
 
 from openerp import models, fields, api
 
-import ord_vars
+
+
+from . import ord_vars
 
 
 

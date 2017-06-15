@@ -12,10 +12,10 @@ import appfuncs
 #import datetime
 from datetime import datetime
 
-import time_funcs
 
 
-import procedure_funcs_cos
+from . import time_funcs
+from . import procedure_funcs_cos
 
 
 

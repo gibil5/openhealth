@@ -82,6 +82,7 @@ install:
   - travis_install_nightly
 #jx 
   - pip install coverage
+  - pip install unittest2 
 
 
 

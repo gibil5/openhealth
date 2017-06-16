@@ -9,6 +9,52 @@
 
 
 
+		<!-- Confirmed -->  
+		<record id="oeh_medical_appointment_action_tree_confirmed" model="ir.actions.act_window">
+					<field name="name">Citas confirmadas</field>
+					<field name="res_model">oeh.medical.appointment</field>
+					<field name="view_type">form</field>
+					<field name="view_mode">calendar,tree,form</field>     
+					<field name="domain">[
+											('state', 'in', ['pre_scheduled','Scheduled', 'Completed', 'Invoiced']),
+											('x_target', '=', 'doctor'),
+										]
+					</field>
+					<field name="context">{
+											'default_x_target': 'doctor',
+											'default_x_type': 'consultation',
+										}
+					</field>
+					<field name="view_id" eval="False"/>
+					<field name="help" type="html">
+					  <p class="oe_view_nocontent_create">
+						Click to add a new appointment.
+					  </p><p>
+						oeHealth appointment screen can easily find all of your appointment details;
+					  </p>
+					</field>
+		</record>
+
+
+
+
+
+
+		<!-- Window action -->
+		<record model="ir.actions.act_window" id="service_co2_list_action">
+			<field name="name">Servicios Co2 - 2</field>
+			<field name="res_model">openhealth.service.co2</field>
+			<field name="view_type">form</field>
+
+			<field name="view_mode">tree,form</field>
+			
+			<field name="context">{
+									'default_laser': 'laser_co2',
+                    			}
+			</field>
+		</record>
+
+
 
 
 		<!-- payment_method - List action -->

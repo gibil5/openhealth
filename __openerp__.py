@@ -17,9 +17,9 @@
 
 		Clínica Chavarri\n
 
-		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis\n
+		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - UnitTest2\n
 
-		Last built: 	15 June 2017 - Yey !
+		Last built: 	16 June 2017 - Yey !
 
 		Created: 	 	7 Sep 2016
 
@@ -90,13 +90,13 @@
 
 
 		# ----------------------------------------------------------- Security ------------------------------------------------------
+		'data/base_data_users.xml',
+		'security/openhealth_security.xml',
 		'security/ir.model.access.csv',
 		
 		'security/ir.rule.xml',
 
-		'data/base_data_users.xml',
 		
-		'security/openhealth_security.xml',
 
 
 
@@ -104,7 +104,7 @@
 		# ----------------------------------------------------------- Base ------------------------------------------------------
 
 		# Base - Form and List Actions - Must be the first 
-		'views/base.xml',		# Dependencies - Actions 
+		'views/base.xml',			# Very important - All Actions should go here - Dependencies
 		'views/other.xml',
 
 

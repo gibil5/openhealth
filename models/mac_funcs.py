@@ -10,21 +10,9 @@ from . import appfuncs
 
 @api.multi
 
-#def search_machine(self, appointment_date, doctor_name, duration):
 def search_machine(self, appointment_date, doctor_name, duration, start_machine):
 
-	#print 
-	#print
-	#print 'jx'
-	#print 'Reserve - Machine'
-
 	target = 'machine'
-
-	#print appointment_date
-	#print doctor_name
-	#print duration
-	#print start_machine
-	#print target
 
 
 	#m_list = ['laser_co2_1', 'laser_co2_2', 'laser_co2_3']
@@ -64,36 +52,15 @@ def search_machine(self, appointment_date, doctor_name, duration, start_machine)
 	}
 
 
-	
-	
-
 	idx = _hash_machine_idx[start_machine]
-
-
 	m_list = m_dic[start_machine]
-
-
 	x_machine = m_list[idx]
 
 
-
-
-
-
-
 	ret = 1 
-
-
-
 	while not ret == 0:
 
-
-		#ret, doctor_name, start, end = check_for_collisions(self, appointment_date, doctor_name, duration, x_machine)
-		#ret, doctor_name, start, end = check_for_collisions(self, appointment_date, doctor_name, duration, x_machine, target)
-		#ret, doctor_name, start, end = check_for_collisions(self, appointment_date, doctor_name, duration, x_machine, target, 'procedure')
 		ret, doctor_name, start, end = appfuncs.check_for_collisions(self, appointment_date, doctor_name, duration, x_machine, target, 'procedure')
-
-
 
 		if ret != 0:	# Error 
 
@@ -103,22 +70,12 @@ def search_machine(self, appointment_date, doctor_name, duration, start_machine)
 				#idx = 0
 				return False
 
-
-
 			x_machine = m_list[idx]
-
-
-
 
 			#return {'warning': {'title': "Error: Colisión !",'message': 'La sala ya está reservada: ' + start + ' - ' + end + '.',}}
 
-
 		else: 			# Success 
-
 			#print 'Success !'
-
 			return x_machine
-
-
 
 	# search_machine

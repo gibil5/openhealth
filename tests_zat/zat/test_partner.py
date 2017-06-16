@@ -7,7 +7,6 @@ class TestModelPartner(common.TransactionCase):
 
 	def test_some_action(self):
 
-
 		#record = self.env['model.a'].create({'field': 'value'})
 
 		name = 'Javier Revilla'

@@ -249,7 +249,6 @@ def create_sessions_go(self, model):
 
 
 				# Check and push 
-				#appointment_date_str = procedure_funcs_cos.check_and_push(self, appointment_date_str, duration, x_type, therapist_name, machine)
 				appointment_date_str = procedure_funcs_cos.check_and_push(self, appointment_date_str, duration, x_type, doctor_name, machine)
 
 

@@ -18,7 +18,7 @@ from . import cosvars
 from . import time_funcs
 from . import jrfuncs
 from . import procedure_funcs
-from . import procedure_funcs_cos
+#from . import procedure_funcs_cos
 
 
 

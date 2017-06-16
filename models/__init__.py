@@ -65,7 +65,7 @@ from . import order_line
 
 
 
-from . import sale_document
+#from . import sale_document
 from . import sale_proof
 
 from . import invoice

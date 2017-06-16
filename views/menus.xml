@@ -371,11 +371,13 @@
 			sequence="-30"
 			action="payment_method_list_action"/>
 
+
 		<!-- sale_documents -->
+<!--
 		<menuitem id="sale_documents_menu" name="Sale documents" parent="openhealth_menu"
 			sequence="-30"
 			action="sale_document_list_action"/>
-
+-->
 
 
 

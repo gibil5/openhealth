@@ -77,6 +77,7 @@
 
 
 		<!-- sale_document - List action -->
+<!--		
 			<record model="ir.actions.act_window" id="sale_document_list_action">
 
 			<field name="name">Sale documents</field>
@@ -92,7 +93,7 @@
 				</p>
 			</field>
 		</record>
-
+-->
 
 
 

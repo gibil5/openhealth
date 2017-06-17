@@ -33,11 +33,12 @@ class sale_order(models.Model):
 
 
 
-
-
-
-
-
+	# Consultation - DEPRECATED ? 
+	consultation = fields.Many2one(
+			'openhealth.consultation',
+			string="Consulta",
+			ondelete='cascade', 
+		)
 
 
 
@@ -410,11 +411,8 @@ class sale_order(models.Model):
 	
 
 
-		#self.x_sale_document_type = ''
-		self.x_sale_document_type = False
-
-		#self.x_sale_document = False
-		self.x_sale_document.unlink()
+		#self.x_sale_document_type = False
+		#self.x_sale_document.unlink()
 
 
 
@@ -443,179 +441,21 @@ class sale_order(models.Model):
 
 
 
-
-
-
-
-
-
-
-
-
-	# Comprobante 
-	x_sale_document = fields.Many2one(
-			'openhealth.sale_document',
-			#string="Comprobante de pago", 
-			string="Comprobante", 
-			#required=True, 
-			compute='_compute_x_sale_document', 
-		)
-
-
-	@api.multi
-	#@api.depends('state')
-
-	def _compute_x_sale_document(self):
-		for record in self:
-
-			#doc = record.env['openhealth.sale_document'].search_count([
-			#															('order','=', record.id),
-			#															])
-
-			doc = record.env['openhealth.sale_document'].search([
-																		('order','=', record.id),
-																],
-																#order='appointment_date desc',
-																limit=1,)
-			record.x_sale_document = doc
-
-
-
-
-	# Sale Document Type 
-	x_sale_document_type = fields.Selection(
-
-			selection = ord_vars._sale_doc_type_list, 
-
-			string="Comprobante Tipo", 
-
-			#required=True, 
-
-			compute='_compute_x_sale_document_type', 
-		)
-
-
-	@api.multi
-	#@api.depends('state')
-
-	def _compute_x_sale_document_type(self):
-		for record in self:
-
-
-			if record.x_sale_document != False: 
-				
-				record.x_sale_document_type = record.x_sale_document.x_type
-
-
-
-
-
-
-
-
-
-
-	#@api.multi 
-	#def x_create_invoice(self):
-		#print 
-		#print 
-		#print 
-		#print 'jx'
-		#print 'X Create Invoice'
-		#print 
-		#print 
-		#print 
-	# x_create_invoice
-
-
-
-
-
-
-	#@api.multi 
-	#def action_invoice_create(self, grouped=False, final=False):
-		#print 
-		#print 'jx'
-		#print 'Action Invoice Create - Local'
-		#print 
-		#print 
-		#print 
-	# x_create_invoice
-
-
-
-
-
 #jz
 	# state 
 	state = fields.Selection(
 
 			#selection = ord_vars._state_list, 
 			selection = ord_vars._x_state_list, 
-
 			string='Estado',	
-
 			readonly=False,
-
 			default='draft',
-
 
 			#copy=False, 
 			#index=True, 
 			#track_visibility='onchange', 
 			#compute="_compute_state",
 			)
-
-
-
-	#@api.multi
-	#@api.depends('state')
-
-	#def _compute_state(self):
-	#	for record in self:
-
-	#		record.state = 'draft'
-
-	#		if	record.env['openhealth.payment_method'].search_count([('order','=', record.id),]):	
-	#			if record.x_amount_total == record.pm_total:			
-	#				record.state = 'payment'
-
-
-	#		if	record.env['openhealth.sale_document'].search_count([('order','=', record.id),]):
-	#			record.state = 'proof'
-
-
-
-			#if record.x_sale_document  and  	(record.x_machine != False		or 		record.x_family == 'consultation'):
-			#if (record.x_machine != False	or 	record.patient.name == False) and record.x_sale_document:
-			#if record.x_machine != False:
-			#	record.state = 'machine'
-
-
-
-	#		if record.x_confirmed != False:
-	#			record.state = 'sale'
-
-	# _compute_state
-
-
-
-
-
-
-
-	#@api.onchange('state')
-	#def _onchange_state(self):
-	#	#print 
-	#	#print 
-	#	#print 'On change State'
-		
-	#	if self.pm_total != self.x_amount_total:
-	#		self.state = 'draft'
-
-	#	#print self.state	
-	#	#print 
-	#	#print 
 
 
 
@@ -626,103 +466,23 @@ class sale_order(models.Model):
 
 
 
-
-
-	# Payment Method 
-	#x_payment_method = fields.One2many(
-	#		'openhealth.payment_method',
-	#		'order',		
-	#		string="Pagos", 
-	#	)
-
-	#@api.onchange('x_payment_method')
-	#def _onchange_x_payment_method(self):
-	#	#print 
-	#	#print 
-	#	#print 'On change - Payment Method'
-	#	#print self.x_payment_method	
-	#	total = 0.0
-	#	for pm in self.x_payment_method:
-	#		total = total + pm.subtotal
-	#	self.pm_total = total
-	#	#print 
-	#	#print 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	# Total of Payments
 	pm_total = fields.Float(
 								#string="Total",
-								
 								#compute="_compute_pm_total",
 	)
 	
-
-
-	#@api.onchange('pm_total')
-	#def _onchange_pm_total(self):
-	#	#print 
-	#	#print 
-	#	#print 'On change - Pm Total'
-	#	#print self.pm_total
-	#	#print self.x_amount_total
-	#	#print self.state
-	#	if self.pm_total == self.x_amount_total:
-	#		self.state = 'payment'
-	#	#print self.state	
-	#	#print 
-	#	#print 
-
-
-
-
-
 	@api.multi
 	#@api.depends('x_payment_method')
 
 	def _compute_pm_total(self):
-
-		#print 
-		#print 
-		#print 'Compute - Pm Total'
-
-
 		for record in self:
-
 			total = 0.0
 			for pm in record.x_payment_method:
 				total = total + pm.subtotal
-
-
 			record.pm_total = total
-
-			#record.pm_complete = True
 			record.x_payment_complete = True
-
-
-			#print record.name
-			#print 'pm_total: ', record.pm_total
-			#print 'x_amount_total: ', record.x_amount_total
-
-			#print 'pm_complete: ', record.pm_complete
-			#print 'x_payment_complete: ', record.x_payment_complete
-
-			#print 
-
-
-		#print
-		#print
+	# _compute_pm_total
 
 
 
@@ -831,7 +591,6 @@ class sale_order(models.Model):
 	x_treatment = fields.Char(
 			#string="Tratamiento",
 			#required=True, 
-
 			compute='_compute_x_treatment', 
 			)
 
@@ -840,13 +599,7 @@ class sale_order(models.Model):
 	def _compute_x_treatment(self):
 		for record in self:
 			record.x_treatment = record.x_product.x_treatment
-
-
-
-
-
-
-
+	# _compute_x_treatment
 
 
 
@@ -859,56 +612,7 @@ class sale_order(models.Model):
 		)
 
 
-
-	#x_therapist = fields.Many2one(
-
-			#'openhealth.therapist',
-	#		'oeh.medical.physician',
-
-	#		domain = [						
-	#					('x_therapist', '=', True),
-	#				],
-	
-	#		string = "Terapeuta", 	
-	#	)
-
-
-
-
-
-
-
-
 # ----------------------------------------------------------- Relational ------------------------------------------------------
-
-	# Consultation 									# Deprecated ? 
-	consultation = fields.Many2one(
-			'openhealth.consultation',
-			string="Consulta",
-			ondelete='cascade', 
-	#		compute='_compute_consultation_cos', 
-		)
-
-
-
-	#@api.multi
-	#@api.depends('x_appointment')
-	#def _compute_consultation_cos(self):
-	#	for record in self:
-	#		consultation = self.env['openhealth.consultation.cos'].search([
-	#																		('patient', '=', record.patient.name), 
-																			#('x_type', '=', 'procedure'),
-																			#('x_target', '=', record.x_target),	
-	#																		('doctor', '=', record.x_doctor.name), 
-	#																	],
-	#																		order='appointment_date desc',
-	#																		limit=1,)
-	#		record.consultation_cos = consultation
-
-
-
-
-
 
 	# Appointment 
 	x_appointment = fields.Many2one(
@@ -1345,7 +1049,6 @@ class sale_order(models.Model):
 		#print 
 		#print 'Create Sale Document'
 
-
 		# Search 
 		sale_document_id = self.env['openhealth.sale_document'].search([('order','=',self.id),]).id
 
@@ -1745,404 +1448,56 @@ class sale_order(models.Model):
 
 
 
-	# On change - Vip 
 
-	#@api.onchange('x_partner_vip')
-	
-	#def _onchange_x_partner_vip(self):
-		#print 'onchange'
 
-		#name = self.name 		
-		#order_id = self.env['sale.order'].search([('name', 'like', name)]).id
 
-		#print self.id
-		#print self.name
-		#print order_id 
 
-		#ret = self.update_order_lines(order_id)
-		#print ret 
 
-		#print 
-
-
-
-
-	# Update Lines 
-	@api.multi 
-	def update_order_lines(self):
-
-		#print 
-		#print 'update_order_lines'
-
-		#ret = self.remove_order_lines()
-
-		ret = self.x_create_order_lines()
-
-		return 1
-
-
-
-	# Remove 
-	@api.multi 
-	def remove_order_lines(self):
-		ret = self.order_line.unlink()
-		return ret 
-
-
-
-
-
-# ----------------------------------------------------------- Create Line ------------------------------------------------------
-
-	@api.multi 
-	def create_line(self, order_id, se):
-		#print 'create line'
-
-		product_id = se.service.id
-		name = se.name_short
-
-
-		# Consultation 
-		consultation = self.consultation
-		#print consultation 
-		#print consultation.id
-
-
-
-		x_price_vip = se.service.x_price_vip
-		x_price = se.service.list_price
-
-		if self.x_partner_vip and x_price_vip != 0.0:
-			price_unit = x_price_vip
-		else:
-			price_unit = x_price
-
-
-		#print product_id
-		#print order_id
-		#print name
-		#print price_unit
-		#print se.service.uom_id.id
-		#print 
-
-
-
-		if self.nr_lines == 0:
-			#print 'create new'
-
-			ol = self.order_line.create({
-
-										'product_id': product_id,
-										
-										'order_id': order_id,
-
-										
-										'consultation':consultation.id,
-										
-										#'state':'pre-draft',
-										'state':'draft',
-
-
-										'name': name,
-
-										'price_unit': price_unit,
-
-										'x_price_vip': x_price_vip,
-										
-										'x_price': x_price,
-
-										'product_uom': se.service.uom_id.id, 
-									})
-
-		else:
-			#print 'update existing'
-
-			order_line_id = self.env['sale.order.line'].search([
-																('order_id', 'like', order_id),
-																('name', 'like', name),
-																]).id
-			#print order_line_id
-
-
-			rec_set = self.env['sale.order.line'].browse([
-															order_line_id																
-														])
-			#print rec_set 
-
-			#ol = self.order_line.create({
-			#ol = self.order_line.write(1, order_line_id, 
-			
-			ol = rec_set.write({
-									#'product_id': product_id,
-									#'order_id': order_id,
-									#'name': name,
-									'price_unit': price_unit,
-									#'product_uom': se.service.uom_id.id, 
-								})
-
-
-		return 1
-
-
-
-
-
-
-
-# ----------------------------------------------------------- Create order lines - Target ------------------------------------------------------
-
-	@api.multi 
-	def x_create_order_lines_target(self, target):
-
-		#print 
-		#print 
-		#print 'Create order lines - Target'
-		
-		order_id = self.id
-
-
-
-		# Order - Search
-		product = self.env['product.template'].search([
-
-														#('x_family','=', 'private'),
-														('x_name_short','=', target),
-
-												])
-
-		#print product
-		#print product.id
-		
-		product_id = product.id
-
-
-		price_unit = product.list_price
-
-
-
-		x_price_vip = product.x_price_vip
-		product_uom = product.uom_id.id
-		#x_price = product.price
-
-
-		#ret = self.create_line(order_id, product)
-		#print ret
-
-		ol = self.order_line.create({
-
-										'product_id': product_id,
-										
-										'order_id': order_id,
-
-										
-										#'consultation':consultation.id,
-										
-										'state':'draft',
-
-
-										'name': target,
-
-
-										'price_unit': price_unit,
-
-										'x_price_vip': x_price_vip,
-										
-										#'x_price': x_price,
-
-
-										#'product_uom': se.service.uom_id.id, 
-										'product_uom': product_uom, 
-									})
-
-		#print
-		#print 
-
-		return self.nr_lines
 
 
 
 
 # ----------------------------------------------------------- Create order lines ------------------------------------------------------
-
-	@api.multi 
-	def x_create_order_lines(self):
-		#print 
-		#print 'Create order lines'
-		
-		
+	#@api.multi 
+	def x_create_order_lines_target(self, target):		
 		order_id = self.id
-
-
-		#print 
-		#print 'co2'
-		for se in self.consultation.service_co2_ids:
-			#print se 
-			
-			ret = self.create_line(order_id, se)
-
-
-
-		#print 
-		#print 'excilite'
-		for se in self.consultation.service_excilite_ids:
-			#print se 
-
-			ret = self.create_line(order_id, se)
-
-
-		
-		#print 
-		#print 'ipl'
-		for se in self.consultation.service_ipl_ids:
-			#print se 
-
-			ret = self.create_line(order_id, se)
-
-
-
-		#print 
-		#print 'ndyag'
-		for se in self.consultation.service_ndyag_ids:
-			#print se 
-
-			ret = self.create_line(order_id, se)
-
-
-
-		#print 
-		#print 'medical'
-		for se in self.consultation.service_medical_ids:
-			#print se 
-
-			ret = self.create_line(order_id, se)
-
-
-
-
-
-		#print 
-		#print 'cosmetology'
-		for se in self.cosmetology.service_ids:
-			#print se 
-
-			ret = self.create_line(order_id, se)
-
-
-
-
-
-
-
-		#print 'out'
-
+		product = self.env['product.template'].search([
+														('x_name_short','=', target),
+												])
+		product_id = product.id
+		price_unit = product.list_price
+		x_price_vip = product.x_price_vip
+		product_uom = product.uom_id.id
+		ol = self.order_line.create({
+										'product_id': product_id,
+										'order_id': order_id,										
+										'state':'draft',
+										'name': target,
+										'price_unit': price_unit,
+										'x_price_vip': x_price_vip,
+										'product_uom': product_uom, 
+									})
 		return self.nr_lines
 
 	
 
 
 
-	# For Ooor compatibility - Commented : BEGIN
-
-
-	# Total 
-	#x_price_total = fields.Float(
-	#		string="Total",
-	#		default=5.0,
-
-	#		compute="_compute_x_price_total",
-	#	)
-
-	#x_price_vip_total = fields.Float(
-	#		string="Total Vip",
-	#		default=3.0,
-
-	#		compute="_compute_x_price_vip_total",
-	#	)
-
-	
-	#@api.multi
-	#def _compute_x_price_total(self):
-	#	for record in self:			
-	#		total = 0 
-	#		for line in record.order_line:
-	#			total = total + line.x_price_wigv 
-	#		record.x_price_total = total 
-
-
-	# For Ooor compatibility 
-	#@api.multi
-	#def _compute_x_price_vip_total(self):
-	#	for record in self:			
-	#		total = 0 
-	#		for line in record.order_line:
-	#			total = total + line.x_price_vip_wigv
-	#		record.x_price_vip_total = total 
-
-
-	# For Ooor compatibility - Commented : END
-
-
-
-
-
-
 # ----------------------------------------------------------- Button - Update Lines ------------------------------------------------------
 	@api.multi 
-	#def update_line(self, order_id, product_id, name, list_price, uom_id):
 	def update_line(self, order_id, product_id, name, list_price, uom_id, x_price_vip):
-
-
-		#print 'update existing'
-
-		#line_id = self.env['sale.order.line'].search([
-		#														('order_id', 'like', order_id),
-		#														('name', 'like', name),
-		#												]).id
-			
-		#print order_line_id
-		#rec_set = self.env['sale.order.line'].browse([
-		#												order_line_id																
-		#											])
-		#print rec_set 
-		#ol = rec_set.write({
-									#'product_id': product_id,
-									#'order_id': order_id,
-									#'name': name,
-		#						'price_unit': price_unit,
-									#'product_uom': se.service.uom_id.id, 
-		#					})
-
-
-
 		order = self.env['sale.order'].search([
 															('id', '=', order_id),
 															#('name', 'like', name),
 													])
-		#print order 
-
-		#print order.id
-		#print product_id
-		#print name 
-		#print uom_id
-
 		line = order.order_line.create({
 											'order_id': order.id,
-
 											'product_id': product_id,
-
 											'name': name,
-
 											'product_uom': uom_id, 
-
-
-											#'price_unit': product_price_unit,
 											'x_price_vip': x_price_vip, 
-
 											'x_partner_vip': self.x_partner_vip
 										})
-		#print line
-		#print 
-
 		return line
 	# update_line
 
@@ -2154,36 +1509,18 @@ class sale_order(models.Model):
 	@api.multi 
 	def update_order(self):
 
-		#print 
-		#print 'jx'
-		#print 'Update Order'
-
+		# Order 
 		order_id = self.id
-
-
 
 		# Appointment 
 		appointment = self.env['oeh.medical.appointment'].search([ 	
 																	('patient', 'like', self.patient.name),	
-
-																	#('doctor', 'like', self.physician.name), 	
-																	#('x_therapist', 'like', self.x_therapist.name), 	
 																	('doctor', 'like', self.x_doctor.name), 	
-																	
 																	('x_type', 'like', 'procedure'), 
 																], 
 																	order='appointment_date desc', limit=1)
-
 		appointment_id = appointment.id
-
-		#print appointment
-		#print appointment_id
-
-
 		self.x_appointment = appointment_id
-		#print self.x_appointment
-		#print 
-		#print 
 
 
 

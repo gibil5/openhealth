@@ -660,6 +660,9 @@ class Order(models.Model):
 
 
 
+
+
+# CRUD
 	@api.model
 	def unlink(self,vals):
 		print 
@@ -678,4 +681,315 @@ class Order(models.Model):
 		res = super(sale_order).unlink(vals)
 		#Write your logic here
 		return res
+
+
+
+
+
+
+# 17 Jun 2017
+
+	# Comprobante 
+	#x_sale_document = fields.Many2one(
+	#		'openhealth.sale_document',
+	#		string="Comprobante", 
+			#required=True, 
+	#		compute='_compute_x_sale_document', 
+	#	)
+
+	#@api.multi
+	#@api.depends('state')
+	#def _compute_x_sale_document(self):
+	#	for record in self:
+	#		doc = record.env['openhealth.sale_document'].search([('order','=', record.id),],
+																#order='appointment_date desc',
+	#															limit=1,)
+	#		record.x_sale_document = doc
+
+	# Sale Document Type 
+	#x_sale_document_type = fields.Selection(
+	#		selection = ord_vars._sale_doc_type_list, 
+	#		string="Comprobante Tipo", 
+			#required=True, 
+	#		compute='_compute_x_sale_document_type', 
+	#	)
+	#@api.multi
+	#@api.depends('state')
+	#def _compute_x_sale_document_type(self):
+	#	for record in self:
+	#		if record.x_sale_document != False: 
+	#			record.x_sale_document_type = record.x_sale_document.x_type
+
+
+
+
+
+
+	#@api.multi 
+	#def x_create_invoice(self):
+		#print 
+		#print 
+		#print 
+		#print 'jx'
+		#print 'X Create Invoice'
+		#print 
+		#print 
+		#print 
+	# x_create_invoice
+
+	#@api.multi 
+	#def action_invoice_create(self, grouped=False, final=False):
+		#print 
+		#print 'jx'
+		#print 'Action Invoice Create - Local'
+		#print 
+		#print 
+		#print 
+	# x_create_invoice
+
+
+
+
+
+# State
+	#@api.multi
+	#@api.depends('state')
+
+	#def _compute_state(self):
+	#	for record in self:
+	#		record.state = 'draft'
+	#		if	record.env['openhealth.payment_method'].search_count([('order','=', record.id),]):	
+	#			if record.x_amount_total == record.pm_total:			
+	#				record.state = 'payment'
+	#		if	record.env['openhealth.sale_document'].search_count([('order','=', record.id),]):
+	#			record.state = 'proof'
+			#if record.x_sale_document  and  	(record.x_machine != False		or 		record.x_family == 'consultation'):
+			#if (record.x_machine != False	or 	record.patient.name == False) and record.x_sale_document:
+			#if record.x_machine != False:
+			#	record.state = 'machine'
+	#		if record.x_confirmed != False:
+	#			record.state = 'sale'
+
+	# _compute_state
+
+	#@api.onchange('state')
+	#def _onchange_state(self):
+	#	#print 
+	#	#print 
+	#	#print 'On change State'		
+	#	if self.pm_total != self.x_amount_total:
+	#		self.state = 'draft'
+	#	#print self.state	
+	#	#print 
+	#	#print 
+
+
+
+
+
+# Payment Method 
+	#x_payment_method = fields.One2many(
+	#		'openhealth.payment_method',
+	#		'order',		
+	#		string="Pagos", 
+	#	)
+
+	#@api.onchange('x_payment_method')
+	#def _onchange_x_payment_method(self):
+	#	#print 
+	#	#print 
+	#	#print 'On change - Payment Method'
+	#	#print self.x_payment_method	
+	#	total = 0.0
+	#	for pm in self.x_payment_method:
+	#		total = total + pm.subtotal
+	#	self.pm_total = total
+	#	#print 
+	#	#print 
+
+
+
+
+
+# Therapist
+	#x_therapist = fields.Many2one(
+			#'openhealth.therapist',
+	#		'oeh.medical.physician',
+	#		domain = [						
+	#					('x_therapist', '=', True),
+	#				],
+	#		string = "Terapeuta", 	
+	#	)
+
+
+
+
+
+
+# Consultation 									# Deprecated ? 
+	#@api.multi
+	#@api.depends('x_appointment')
+	#def _compute_consultation_cos(self):
+	#	for record in self:
+	#		consultation = self.env['openhealth.consultation.cos'].search([
+	#																		('patient', '=', record.patient.name), 
+																			#('x_type', '=', 'procedure'),
+																			#('x_target', '=', record.x_target),	
+	#																		('doctor', '=', record.x_doctor.name), 
+	#																	],
+	#																		order='appointment_date desc',
+	#																		limit=1,)
+	#		record.consultation_cos = consultation
+
+
+
+
+
+
+
+
+
+	# For Ooor compatibility - Commented : BEGIN
+	# Total 
+	#x_price_total = fields.Float(
+	#		string="Total",
+	#		default=5.0,
+
+	#		compute="_compute_x_price_total",
+	#	)
+
+	#x_price_vip_total = fields.Float(
+	#		string="Total Vip",
+	#		default=3.0,
+
+	#		compute="_compute_x_price_vip_total",
+	#	)
+
+	
+	#@api.multi
+	#def _compute_x_price_total(self):
+	#	for record in self:			
+	#		total = 0 
+	#		for line in record.order_line:
+	#			total = total + line.x_price_wigv 
+	#		record.x_price_total = total 
+
+
+	# For Ooor compatibility 
+	#@api.multi
+	#def _compute_x_price_vip_total(self):
+	#	for record in self:			
+	#		total = 0 
+	#		for line in record.order_line:
+	#			total = total + line.x_price_vip_wigv
+	#		record.x_price_vip_total = total 
+
+
+	# For Ooor compatibility - Commented : END
+
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Create order lines - Target ------------------------------------------------------
+
+# Update Lines 	- DEPRECATED !
+	#@api.multi 
+	#def update_order_lines(self):
+	#	ret = self.x_create_order_lines()
+	#	return 1
+
+# Remove - DEPRECATED !
+	#@api.multi 
+	#def remove_order_lines(self):
+	#	ret = self.order_line.unlink()
+	#	return ret 
+
+
+
+# Create Order Lines 
+	#@api.multi 
+	#def x_create_order_lines(self):
+	#	order_id = self.id
+		# co2
+	#	for se in self.consultation.service_co2_ids:
+	#		ret = self.create_line(order_id, se)
+		# 'excilite'
+	#	for se in self.consultation.service_excilite_ids:
+	#		ret = self.create_line(order_id, se)
+		#print 'ipl'
+	#	for se in self.consultation.service_ipl_ids:
+	#		ret = self.create_line(order_id, se)
+		#print 'ndyag'
+	#	for se in self.consultation.service_ndyag_ids:
+	#		ret = self.create_line(order_id, se)
+		#print 'medical'
+	#	for se in self.consultation.service_medical_ids:
+	#		ret = self.create_line(order_id, se)
+		#print 'cosmetology'
+	#	for se in self.cosmetology.service_ids:
+	#		ret = self.create_line(order_id, se)
+		#print 'out'
+	#	return self.nr_lines
+
+
+
+# ----------------------------------------------------------- Create Line ------------------------------------------------------
+
+	#@api.multi 
+	#def create_line(self, order_id, se):
+	#	product_id = se.service.id
+	#	name = se.name_short
+	#	x_price_vip = se.service.x_price_vip
+	#	x_price = se.service.list_price
+	#	if self.x_partner_vip and x_price_vip != 0.0:
+	#		price_unit = x_price_vip
+	#	else:
+	#		price_unit = x_price
+	#	if self.nr_lines == 0:
+	#		ol = self.order_line.create({
+	#									'product_id': product_id,
+	#									'order_id': order_id,
+	#									'state':'draft',
+	#									'name': name,
+	#									'price_unit': price_unit,
+	#									'x_price_vip': x_price_vip,
+	#									'x_price': x_price,
+	#									'product_uom': se.service.uom_id.id, 
+	#								})
+	#	else:
+	#		order_line_id = self.env['sale.order.line'].search([
+	#															('order_id', 'like', order_id),
+	#															('name', 'like', name),
+	#															]).id
+	#		rec_set = self.env['sale.order.line'].browse([
+	#														order_line_id																
+	#													])			
+	#		ol = rec_set.write({
+	#								'price_unit': price_unit,
+	#							})
+	#	return 1
+
+
+
+
+
+# On change - Vip 
+	#@api.onchange('x_partner_vip')
+	#def _onchange_x_partner_vip(self):
+		#print 'onchange'
+		#name = self.name 		
+		#order_id = self.env['sale.order'].search([('name', 'like', name)]).id
+		#print self.id
+		#print self.name
+		#print order_id 
+		#ret = self.update_order_lines(order_id)
+		#print ret 
+		#print 
+
+
 

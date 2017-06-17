@@ -207,19 +207,16 @@ DEPRECATED
 							
 
 								<!-- Order -->	
+<!--								
 								<button type="action" class="oe_stat_button" icon="fa-list"  invisible="1"
-
 									name="%(order_form_action)d"	
-
 									context="{									
 											'search_default_consultation': active_id,
 											}" 											
-									
 									>
-
 									<field string="Presupuestos" name="nr_orders" widget="statinfo"/>
-								</button>
-								
+								</button>							
+-->
 
 
 								<!-- Nr Services --> 
@@ -545,9 +542,9 @@ DEPRECATED
 
 					<field name="chief_complaint"/>
 					
-					
+<!--
 					<field name="nr_orders"/>
-					
+-->				
 					<field name="nr_apps"/>
 					
 					<field name="treatment"/>

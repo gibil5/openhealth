@@ -142,16 +142,16 @@
 					<field name="x_payment_method"		invisible="0"		readonly="1"	/>
 
 
-					<field name="x_sale_document_type"	invisible="1"	readonly="1"	/>
 					<field name="x_product"				invisible="1"	/>
 
 
 <!--
+					<field name="x_sale_document_type"	invisible="1"	readonly="1"	/>
+
+
 					<field name="vspace"/>
 					<field name="x_sale_document"/>
--->
 
-<!--
 					<field name="vspace" />
 					<field name="x_amount_total" />
 					<field name="pm_total" />
@@ -194,7 +194,9 @@
 												}"	>
 					<field name="patient" />
 					<field name="x_doctor" />
+<!--
 					<field name="consultation"/>
+-->				
 					<field name="x_appointment"/>
 					<field name="x_appointment_date"/>
 					<field name="x_duration"/>
@@ -507,26 +509,17 @@
 
 					<!-- Print --> 
 <!--
-							states="sale"						
--->
 					<button 
 							name="print_order"
-
 							type="object" 
-
 							class="oe_highlight"
-
 							string="Imprimir"
-
-
-							attrs="{'invisible':	[
-												
+							attrs="{'invisible':	[	
 												('x_sale_document_type', 'in', ['receipt', 'invoice', 'advertisement', 'sale_note', False, ] ),
-
 												]
-
 										}"
 					/>
+-->
 
 
 

@@ -152,6 +152,8 @@
 		# DEPRECATED 
 		#'views/sale_documents/sale_documents.xml',
 
+
+
 		# Sale Documents
 		'views/sale_documents/payment_methods.xml',
 		'views/sale_documents/payment_method_line.xml',

@@ -2,21 +2,17 @@
 <openerp>
 	<data>
 
-
-		<!--
-		sessions
-		-->
+		<!-- Sessions -->
 		<record model="ir.ui.view" id="procedure_sessions_form_view">
 			<field name="name">procedure.sessions.form</field>
 			<field name="model">openhealth.procedure</field>
 
-
 			<field name="priority" eval="1"/>
-
 			
 			<field name="inherit_id" ref="procedure_form_view"/>
 			<field name="arch" type="xml">
 				<notebook position="inside">
+
 
 					<!--							
 					<page string="Sesiones"  	attrs="{'invisible':[('laser', '!=', 'laser_co2')]}"	>
@@ -33,11 +29,13 @@
 
 																		'default_evaluation_start_date': evaluation_start_date,
 
-
 																		'default_product': product,
 
 																		'default_doctor': doctor,
 
+																		'default_co2_mode_emission': 'continuous', 
+																		'default_co2_mode_exposure': 'one', 
+																		'default_co2_observations': 'x', 
 																		}"
 						/>
 

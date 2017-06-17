@@ -52,7 +52,6 @@
 							
 							context="{									
 											'search_default_doctor': physician,
-
 											'default_patient': patient, 
 											'default_doctor' : physician, 
 											'default_appointment_date': start_date, 

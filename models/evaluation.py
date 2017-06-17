@@ -130,8 +130,8 @@ class Evaluation(models.Model):
 
 			string = "Médico", 	
 			
-			#required=True, 
-			required=False, 
+			required=True, 
+			#required=False, 
 			)
 
 

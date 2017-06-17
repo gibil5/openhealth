@@ -25,16 +25,29 @@ class Control(models.Model):
 
 
 
+	name = fields.Char(
+			string = 'Control #',
+			)
+
+
 
 
 	# Treatment 
 	treatment = fields.Many2one(
 			'openhealth.treatment',
-			
 			ondelete='cascade', 
+
+			required=True, 
 			)
 
 
+	# Product
+	product = fields.Many2one(
+			'product.template',
+			string="Producto",
+			required=True, 
+			)
+	
 
 
 
@@ -86,9 +99,6 @@ class Control(models.Model):
 
 
 
-	name = fields.Char(
-			string = 'Control #',
-			)
 
 
 	observation = fields.Text(

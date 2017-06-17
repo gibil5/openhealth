@@ -211,10 +211,12 @@
 
 
 						<!-- Padding --> 
+<!--
 						<group></group>
 						<group></group>
 						<group></group>
 						<group></group>
+-->
 						<!--
 						<div class="oe_left" style="height: 55px;">
 						</div>
@@ -230,12 +232,7 @@
 							
 
 							<group>	
-<!--
-								<field name="treatment"			/>
--->						
 							</group>
-							
-
 							<group>
 								<field name="evaluation_type"	invisible="0"/>
 							</group>
@@ -246,28 +243,23 @@
 							<group>
 								<field name="doctor" options="{'no_create': True}"	/>
 							</group>
-
-
-							
-
 							<group>
 								<field name="chief_complaint"/>								
 							</group>
 							
+
+
 							
 							<group>
 								<field name="evaluation_start_date"/>
 							</group>
 							<group>							
-								
 								<field name="number_sessions"/>								
-							
 							</group>
 
 
 							<group>
 								<field name="appointment"  	required="0"/>	
-
 								<field name="vspace"/>
 								<field name="machine"/>
 							</group>
@@ -276,28 +268,21 @@
 								<field name="laser"/>
 								-->
 								<field name="number_controls"/>								
-
 								<field name="vspace"/>
 								<field name="product"/>
-
-
 							</group>
-
 						</group>
 							
-
-
 
 						<!-- Notebook --> 
 						<notebook>
 						</notebook>
 
-
-
 					</sheet>
 				</form>
 			</field>
 		</record>
+
 
 
 

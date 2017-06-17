@@ -2,22 +2,16 @@
 <openerp>
 	<data>
 
-
-		<!--
-		controls
-		-->
+		<!-- Controls -->
 		<record model="ir.ui.view" id="procedure_controls_form_view">
 			<field name="name">procedure.controls.form</field>
 			<field name="model">openhealth.procedure</field>
 
-
 			<field name="priority" eval="2"/>
-
 			
 			<field name="inherit_id" ref="procedure_form_view"/>			
 			<field name="arch" type="xml">
 				<notebook position="inside">
-
 
 
 					<!--							
@@ -48,7 +42,23 @@
 							</tree>
 						</field>				
 						-->
-						<field name="control_ids"/>
+						<field name="control_ids"		context="{
+																		'default_patient': patient,
+
+																		'default_chief_complaint': chief_complaint,
+
+																		'default_evaluation_type': evaluation_type,
+
+																		'default_evaluation_start_date': evaluation_start_date,
+
+																		'default_product': product,
+
+																		'default_doctor': doctor,
+
+
+																		'default_treatment': treatment,
+																		}"
+							/>
 						
 						
 						

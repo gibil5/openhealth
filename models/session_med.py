@@ -50,10 +50,8 @@ class SessionMed(models.Model):
 	
 	
 
-	#co2_mode_emission=fields.Char(
 	co2_mode_emission=fields.Selection(
 			string="Modo de emisión",
-
 			selection=session_vars._co2_mode_emission_list, 
 			#default="x",
 			)

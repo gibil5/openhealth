@@ -945,17 +945,11 @@ class Appointment(models.Model):
 
 
 	#@api.onchange('x_type')
-
 	#def _onchange_x_type(self):
-
 	#	if self.x_type != False:	
-
 	#		if self.x_type == 'consultation'  or  self.x_type == 'procedure':
-
 	#			self.x_duration_min = '0.5'
-
 	#		elif self.x_type == 'control':
-
 	#			self.x_duration_min = '0.25'
 
 
@@ -1037,7 +1031,7 @@ class Appointment(models.Model):
 				
 				string="Tipo",
 
-				default="consultation",
+				#default="consultation",
 				
 				required=True, 
 				)

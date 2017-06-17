@@ -57,6 +57,16 @@
 				<tree string="Session Med Tree">
 					
 
+					<!-- Quick Button -->
+					<button 
+						type="object" 
+						class="oe_highlight"	
+						string="E"
+						name="open_line_current" 
+					/>
+
+
+
 					<field name="name"/>
 					
 					<field name="appointment"/>
@@ -65,28 +75,25 @@
 
 					<field name="patient"  string="Paciente"/>
 					
-
-
 					<field name="doctor"   />
 
 
 
 					<field name="chief_complaint"/>
 
+<!--
 					<field name="product"/>
+-->
+
+					<field name="laser"/>
 
 					<field name="evaluation_start_date"/>
 					
 					<field name="x_done"/>
 
 
-					<!-- Quick Button -->
-					<button 
-						type="object" 
-						class="oe_highlight"	
-						string="E"
-						name="open_line_current" 
-					/>
+
+
 
 
 

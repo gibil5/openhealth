@@ -720,7 +720,6 @@
 					-->
 					<field name="domain">[
 											('state', 'in', ['pre_scheduled','Scheduled', 'Completed', 'Invoiced']),
-											
 											('x_target', '=', 'therapist'),
 										]
 					</field>

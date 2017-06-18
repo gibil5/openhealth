@@ -2,6 +2,16 @@
 
 
 
+# Family
+_family_list = [
+#		('private','Private'), 
+		('product','Producto'), 
+		('consultation','Consulta'), 
+		('procedure','Procedimiento'), 
+]
+
+
+
 
 _hash_progress = {
 

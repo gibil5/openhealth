@@ -9,8 +9,6 @@
 from openerp import models, fields, api
 from datetime import datetime
 
-
-
 from . import pat_funcs
 from . import pat_vars
 

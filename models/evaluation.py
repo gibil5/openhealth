@@ -13,7 +13,7 @@ from datetime import datetime
 
 
 
-from . import jxvars
+#from . import jxvars
 from . import eval_vars
 from . import prodvars
 
@@ -169,7 +169,8 @@ class Evaluation(models.Model):
 			string = 'Motivo de consulta', 
 
 			#selection = jxvars._pathology_list, 
-			selection = jxvars._chief_complaint_list, 
+			#selection = jxvars._chief_complaint_list, 
+			selection = eval_vars._chief_complaint_list, 
 
 			required=True, 
 			)

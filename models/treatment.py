@@ -10,9 +10,7 @@ from openerp import models, fields, api
 from datetime import datetime
 from datetime import tzinfo
 
-
-
-from . import jxvars
+#from . import jxvars	 - DEPRECATED
 from . import treatment_funcs
 from . import time_funcs
 from . import treatment_vars
@@ -192,7 +190,8 @@ class Treatment(models.Model):
 	x_family = fields.Selection(
 			string = "Tipo", 	
 			
-			selection = jxvars._family_list, 
+			#selection = jxvars._family_list, 
+			selection = treatment_vars._family_list, 
 		)
 
 
@@ -814,16 +813,10 @@ class Treatment(models.Model):
 # ----------------------------------------------------------- Relational ------------------------------------------------------
 
 	recommendation_ids = fields.One2many(
-			#'oeh.medical.evaluation', 
 			'openhealth.recommendation', 
-
 			'treatment', 
-
 			string = "Recomendaciones", 
 			)
-
-
-
 
 
 
@@ -831,43 +824,34 @@ class Treatment(models.Model):
 			#'oeh.medical.evaluation', 
 			'openhealth.consultation', 
 			'treatment', 
-
 			string = "Consultas", 
 			)
+
 
 
 	procedure_ids = fields.One2many(
 			#'oeh.medical.evaluation', 
 			'openhealth.procedure', 
 			'treatment', 
-
 			string = "Procedimientos", 
 			)
-
 
 
 
 	session_ids = fields.One2many(
 			#'openhealth.session', 
 			'openhealth.session.med', 
-
 			'treatment', 
-
 			string = "Sesiones", 
 			)
+
+
 
 	control_ids = fields.One2many(
 			'openhealth.control', 
 			'treatment', 
-
 			string = "Controles", 
 			)
-
-
-
-
-
-
 
 
 
@@ -876,10 +860,6 @@ class Treatment(models.Model):
 	#		'sale.order',
 	#		'treatment', 
 	#		)
-
-
-
-
 
 
 
@@ -908,9 +888,6 @@ class Treatment(models.Model):
 
 
 
-
-
-
 	# orders 
 	order_ids = fields.One2many(
 			'sale.order',			 
@@ -923,7 +900,6 @@ class Treatment(models.Model):
 			)
 
 
-
 	order_pro_ids = fields.One2many(
 			'sale.order',			 
 			'treatment', 
@@ -934,14 +910,6 @@ class Treatment(models.Model):
 						('x_family', '=', 'procedure'),
 					],
 			)
-
-
-
-
-
-
-
-
 
 
 

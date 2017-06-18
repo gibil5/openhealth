@@ -5,20 +5,14 @@
 #
 
 from openerp import models, fields, api
+import datetime
 
-from . import jxvars
+#from . import jxvars
 from . import app_vars
 from . import ord_vars
 from . import appfuncs
 from . import cosvars
-
-#from . import order_funcs
-
-#from . import mac_funcs	- DEPRECATED 
-
-
-
-import datetime
+from . import treatment_vars
 
 
 class sale_order(models.Model):
@@ -284,7 +278,8 @@ class sale_order(models.Model):
 
 			default='product',
 			
-			selection = jxvars._family_list, 
+			#selection = jxvars._family_list, 
+			selection = treatment_vars._family_list, 
 
 			required=True, 
 		)

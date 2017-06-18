@@ -2,25 +2,20 @@
 #
 # 	*** Pat Funcs
 # 
-
 # Created: 				  1 Nov 2016
 # Last updated: 	 	 21 Jan 2017
 
-
-
 from openerp import models, fields, api
 
+import unicodedata
 
 
 #------------------------------------------------ Unidecode ---------------------------------------------------
-
-import unicodedata
 def strip_accents(s):
    return ''.join(c for c in unicodedata.normalize('NFD', s)
                   if unicodedata.category(c) != 'Mn')
 
 # strip_accents
-
 
 
 #------------------------------------------------ Tests ---------------------------------------------------

@@ -12,7 +12,8 @@ from openerp import models, fields, api
 
 
 
-from . import jxvars
+#from . import jxvars
+from . import eval_vars
 from . import treatment_vars
 
 
@@ -82,7 +83,8 @@ class Process(models.Model):
 	chief_complaint = fields.Selection(
 			string = 'Motivo de consulta', 			
 			#selection = tre_vars._chief_complaint_list, 
-			selection = jxvars._chief_complaint_list, 
+			#selection = jxvars._chief_complaint_list, 
+			selection = eval_vars._chief_complaint_list, 
 			)
 
 

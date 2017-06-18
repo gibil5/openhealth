@@ -6,16 +6,12 @@
 # Created: 				 1 Nov 2016
 # Last updated: 	 	 7 Dec 2016 
 
-
-
 from openerp import models, fields, api
 from datetime import datetime
 
-
-
 from . import jxvars
 from . import time_funcs
-from . import jrfuncs
+#from . import jrfuncs	- DEPRECATED
 from . import procedure_funcs
 from . import cosvars
 from . import app_vars
@@ -25,11 +21,7 @@ from . import app_vars
 class Procedure(models.Model):
 
 	_inherit = 'oeh.medical.evaluation'
-
 	_name = 'openhealth.procedure'
-
-
-
 
 
 	name = fields.Char(
@@ -38,45 +30,21 @@ class Procedure(models.Model):
 			)
 
 
-
-
-
-
-
-
-
-
-
-
-
 	# Machine 
 	machine = fields.Selection(
 			string="Sala", 
-
 			selection = app_vars._machines_list, 
-			
 			#required=True, 
 			compute="_compute_machine",
 		)
 
-
 	#@api.multi
 	@api.depends('product')
-	
 	def _compute_machine(self):
-
 		for record in self:
-		
 			tre = record.product.x_treatment
-
 			mac = cosvars._hash_tre_mac[tre]
-
 			record.machine = mac
-
-
-
-
-
 
 
 
@@ -88,13 +56,9 @@ class Procedure(models.Model):
 	
 	#@api.multi
 	@api.depends('product')
-	
 	def _compute_number_sessions(self):
 		for record in self:
 			record.number_sessions = record.product.x_sessions
-
-
-
 
 
 
@@ -105,20 +69,15 @@ class Procedure(models.Model):
 	)
 	
 	#@api.multi
-	#@api.depends('product')
 	@api.depends('laser')
 	
 	def _compute_number_controls(self):
 		for record in self:
-
 			if record.laser != 'consultation':
 				if record.laser == 'laser_co2':
 					record.number_controls = 6
 				else: 
 					record.number_controls = 0
-
-
-
 
 
 
@@ -128,12 +87,6 @@ class Procedure(models.Model):
 		)
 
 
-
-
-
-
-
-
 	# Redefinition 
 	evaluation_type = fields.Selection(
 			default = 'Ambulatory', 
@@ -141,49 +94,20 @@ class Procedure(models.Model):
 
 
 
-
 # ----------------------------------------------------------- Relational ------------------------------------------------------
 
 	session_ids = fields.One2many(
-
-			#'openhealth.session', 
 			'openhealth.session.med', 
-
 			'procedure', 
-
 			string = "sessiones", 
 			)
 
 
-
-
-
 	appointment_ids = fields.One2many(
-
 			'oeh.medical.appointment', 
-			#'openhealth.appointment', 
-
-
 			'procedure', 
 			string = "Citas", 
-
-			#domain = [
-			#			('x_type', '=', 'procedure'),
-						#('x_type', '=', 'control'),
-						#('x_type', '=', 'session'),
-			#		],
 			)
-
-
-
-	#appointment_controls_ids = fields.One2many(
-	#		'oeh.medical.appointment', 
-	#		'control', 
-	#		string = "Citas", 
-	#		)
-
-
-
 
 
 	control_ids = fields.One2many(
@@ -195,12 +119,6 @@ class Procedure(models.Model):
 			
 			
 
-
-
-
-
-
-
 # ----------------------------------------------------------- Indexes ------------------------------------------------------
 
 	treatment = fields.Many2one(
@@ -211,8 +129,6 @@ class Procedure(models.Model):
 
 
 
-
-	
 	
 	# Controls - Number
 
@@ -223,7 +139,6 @@ class Procedure(models.Model):
 	
 	#@api.multi
 	@api.depends('control_ids')
-
 	def _compute_nr_controls(self):
 		for record in self:
 			ctr = 0 
@@ -244,7 +159,6 @@ class Procedure(models.Model):
 	
 	#@api.multi
 	@api.depends('session_ids')
-	
 	def _compute_nr_sessions(self):
 		for record in self:
 			ctr = 0 
@@ -265,13 +179,7 @@ class Procedure(models.Model):
 	# Create Controls 
 	@api.multi
 	def create_controls(self):
-
-		#print 
-		#print 'Create Controls'
-
 		ret = procedure_funcs.create_controls_go(self)
-
-		#print 
 
 
 
@@ -281,9 +189,7 @@ class Procedure(models.Model):
 	# Consultation - Quick Self Button  
 
 	@api.multi
-
 	def open_line_current(self):  
-
 		procedure_id = self.id 
 
 		return {
@@ -311,7 +217,6 @@ class Procedure(models.Model):
 	# Open Control 
 
 	@api.multi
-
 	def open_control(self):  
 
 		# Data
@@ -323,44 +228,15 @@ class Procedure(models.Model):
 		product_id = self.product.id
 		laser = self.laser
 		
-
 		# Date 		
 		GMT = time_funcs.Zone(0,False,'GMT')
-		#print GMT
 		evaluation_start_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
-		#print evaluation_start_date 
-
-
-
-
-		# Apointment 
-		#appointment = self.env['oeh.medical.appointment'].search([ 	
-		#															('patient', 'like', self.patient.name),		
-															
-		#															('doctor', 'like', self.doctor.name), 	
-															
-		#															('x_type', 'like', 'procedure'), 
-															
-		#														], 
-		#														order='appointment_date desc', limit=1)
-
-		#appointment_id = appointment.id
-		#print appointment
-		#print appointment_id
-
-
-
-
-
-		#print 
-
 
 		return {
 
 			# Mandatory 
 			'type': 'ir.actions.act_window',
 			'name': 'Open control Current',
-
 
 			# Optional 
 			'res_model': 'openhealth.control',
@@ -371,19 +247,13 @@ class Procedure(models.Model):
 			'target': 'current',
 
 			'context':   {
-
 				'default_patient': patient_id,
 				'default_doctor': doctor_id,
 				'default_chief_complaint': chief_complaint,
-
-
 				'default_evaluation_type':evaluation_type,				
 				'default_product': product_id,
 				'default_laser': laser,
-				
 				'default_evaluation_start_date': evaluation_start_date,
-
-
 				'default_procedure': procedure_id,
 			}
 		}
@@ -398,17 +268,13 @@ class Procedure(models.Model):
 
 	key = fields.Char(
 			string='key', 
-
 			default='procedure', 
 		)
 
-
 	model = fields.Char(
 			string='model', 
-
 			default='openhealth.session.med', 
 		)
-
 
 	target = fields.Char(
 			string='target', 
@@ -418,30 +284,14 @@ class Procedure(models.Model):
 
 
 
-
 # ----------------------------------------------------------- Create Sessions  ------------------------------------------------------
 
 	@api.multi
 	def create_sessions(self): 
 
-		#print 
-		#print 
-		#print 'jx'
-		#print 'Create Sessions - Many'
-
-
 		model = 'openhealth.session.med'
 		ret = procedure_funcs.create_sessions_go(self, model)
-
-
-		#print 
-		#print 
-
 	# create_sessions
-
-
-
-
 
 
 
@@ -449,38 +299,21 @@ class Procedure(models.Model):
 # ----------------------------------------------------------- Create Session  ------------------------------------------------------
 
 	@api.multi
-	#def create_session(self): 
 	def create_session_one(self): 
-
-		#print 
-		#print 
-		#print 'Create session'
-
 
 		# Data
 		procedure_id = self.id 
 		patient_id = self.patient.id
-
 		doctor_id = self.doctor.id
-
 		chief_complaint = self.chief_complaint
 		evaluation_type = 'Session'
 		product_id = self.product.id
-
-
 		treatment_id = self.treatment.id
-		#cosmetology_id = self.cosmetology.id
-
-
 		laser = self.laser
 		
-
-
 		# Date 		
 		GMT = time_funcs.Zone(0,False,'GMT')
 		evaluation_start_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
-
-
 
 		# Apointment 
 		appointment = self.env['oeh.medical.appointment'].search([ 	
@@ -489,29 +322,7 @@ class Procedure(models.Model):
 																	('x_type', 'like', 'procedure'), 
 																], 
 																order='appointment_date desc', limit=1)
-
 		appointment_id = appointment.id
-
-
-		#print 'procedure_id: ', procedure_id
-		#print 'patient_id: ', patient_id
-		#print 'doctor_id: ', doctor_id
-		#print 'chief_complaint: ', chief_complaint
-		#print 'evaluation_type: ', evaluation_type
-		#print 'product_id: ', product_id
-		#print 'treatment_id: ', treatment_id
-		#print 'laser: ', laser
-
-		#print 
-		#print 'GMT: ', GMT
-		#print 'evaluation_start_date: ', evaluation_start_date 
-		#print 'appointment: ', appointment
-		#print 'appointment_id: ', appointment_id
-		#print 
-		#print 
-
-
-
 
 
 		# Tampering
@@ -541,17 +352,14 @@ class Procedure(models.Model):
 		ndy_pulse_type = ''
 		ndy_pulse_spot = ''
 
-
 		if laser != 'laser_co2':
 			co2_mode_emission = 'x'
 			co2_mode_exposure = 'x'
 			co2_observations = 'x'
 
-
 		if laser != 'laser_excilite':
 			exc_dose = 'x'
 			exc_observations = 'x'
-
 
 		if laser != 'laser_ipl':
 			ipl_phototype = 'x'
@@ -563,7 +371,6 @@ class Procedure(models.Model):
 			ipl_spot = 'x'
 			ipl_observations = 'x'
 			ipl_pulse_type = 'one'
-
 
 		if laser != 'laser_ndyag':
 			ndy_phototype = 'x'
@@ -577,43 +384,19 @@ class Procedure(models.Model):
 
 
 
-
-
-		# session 
-		#print 'create session'
-		#print 
-		
-
-		#session = self.env['openhealth.session'].create(
+		# Create session 
 		session = self.env['openhealth.session.med'].create(
-		
-
 												{
 													'patient': patient_id,
-
 													'doctor': doctor_id,													
-													#'therapist': therapist_id,													
-
-													
 													'chief_complaint': chief_complaint,
-
 													'evaluation_start_date': evaluation_start_date,
 													'evaluation_type':evaluation_type,
-													
 													'product': product_id,
 													'laser': laser,
-
-
 													'procedure': procedure_id,				
 													'appointment': appointment_id,
-
 													'treatment': treatment_id,				
-													#'cosmetology': cosmetology_id,				
-
-
-
-
-
 
 													'co2_mode_emission': co2_mode_emission, 
 													'co2_mode_exposure': co2_mode_exposure, 
@@ -640,28 +423,13 @@ class Procedure(models.Model):
 													'ndy_observations': ndy_observations,
 													'ndy_pulse_type': ndy_pulse_type, 
 													'ndy_pulse_spot': ndy_pulse_spot, 
-
-
-
 												}
 											)
 		session_id = session.id 
-		#print session
-		#print session_id
 
 
 		# Update
-		#self.update_appointment(appointment_id, session_id, 'session')
 		ret = jrfuncs.update_appointment_go(self, appointment_id, session_id, 'session')
-
-		#print appointment
-		#print appointment.session
-		#print appointment.session.id
-		#print 
-
-
-
-
 
 		return {
 
@@ -670,9 +438,7 @@ class Procedure(models.Model):
 			'name': 'Open session Current',
 		
 			# Optional 
-			#'res_model': 'openhealth.session',
 			'res_model': 'openhealth.session.med',
-
 			'res_id': session_id,
 
 			'view_mode': 'form',
@@ -680,89 +446,22 @@ class Procedure(models.Model):
 			'target': 'current',
 
 			'flags': {
-					#'form': {'action_buttons': True, }
-					'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						#'form': {'action_buttons': True, }
+						'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 					},			
 
-			'context':   {
+			'context': {
 							'default_patient': patient_id,
 							'default_doctor': doctor_id,
-
 							'default_chief_complaint': chief_complaint,
-							
 							'default_evaluation_start_date': evaluation_start_date,
 							'default_evaluation_type':evaluation_type,
 							'default_product': product_id,
 							'default_laser': laser,
-
-
-
 							'default_procedure': procedure_id,
 							'default_appointment': appointment_id,
-
 							'default_treatment': treatment_id,
 						}
 		}
 	# create_session
-
-
-
-
-
-	# Open Appointment
-	# -----------------
-	@api.multi
-	def open_appointment(self):  
-
-		#print 
-		#print 'open appointment'
-
-		owner_id = self.id 
-		owner_type = self.owner_type
-
-		patient_id = self.patient.id
-		doctor_id = self.doctor.id
-		treatment_id = self.treatment.id 
-
-
-
-		GMT = time_funcs.Zone(0,False,'GMT')
-		appointment_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
-		#appointment_date = '2016-12-23'
-
-
-		return {
-				'type': 'ir.actions.act_window',
-
-				'name': ' New Appointment', 
-				
-				'view_type': 'form',
-				
-				#'view_mode': 'form',			
-				'view_mode': 'calendar',			
-				
-				'target': 'current',
-				
-
-				'res_model': 'oeh.medical.appointment',				
-				
-				'flags': 	{
-							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-							'form': {'action_buttons': True, }
-							},
-
-
-				'context': {
-							'default_consultation': owner_id,					
-							'default_treatment': treatment_id,
-							'default_patient': patient_id,
-							'default_doctor': doctor_id,
-
-							'default_x_type': owner_type,
-
-
-							'default_appointment_date': appointment_date,
-							}
-				}
-
 

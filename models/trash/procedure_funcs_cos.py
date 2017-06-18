@@ -26,4 +26,5 @@ def check_and_push(self, appointment_date, duration, x_type, therapist_name, mac
 		else:				# Collision - Keep going... 
 			k = k + 1
 	return appointment_date_str
+
 # check_and_push

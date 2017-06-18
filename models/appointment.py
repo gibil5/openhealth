@@ -6,26 +6,16 @@
 # Created: 				14 Nov 2016
 # Last updated: 	 	 26 Mar 2017
 
-
-
-
-
 from openerp import models, fields, api
 #from datetime import datetime
 import datetime
 
-
-
-#import appfuncs
-#import time_funcs
-#import jxvars
-#import defaults
-#import app_vars
 from . import appfuncs
 from . import time_funcs
-from . import jxvars
+#from . import jxvars
 from . import defaults
 from . import app_vars
+from . import eval_vars
 
 
 
@@ -372,7 +362,8 @@ class Appointment(models.Model):
 			string = 'Motivo de consulta', 
 
 			#selection = jxvars._pathology_list, 
-			selection = jxvars._chief_complaint_list, 
+			#selection = jxvars._chief_complaint_list, 
+			selection = eval_vars._chief_complaint_list, 
 
 			#required=True, 
 			)

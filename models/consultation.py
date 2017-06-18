@@ -13,7 +13,7 @@ from openerp import models, fields, api
 from datetime import datetime,tzinfo,timedelta
 
 
-from . import jxvars
+#from . import jxvars
 from . import cosvars
 from . import jrfuncs
 from . import eval_vars
@@ -390,7 +390,8 @@ class Consultation(models.Model):
 	chief_complaint = fields.Selection(			# Necessary 
 			string = 'Motivo de consulta', 
 
-			selection = jxvars._chief_complaint_list, 
+			#selection = jxvars._chief_complaint_list, 
+			selection = eval_vars._chief_complaint_list, 
 
 			#required=True, 
 			required=False, 

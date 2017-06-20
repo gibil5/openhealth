@@ -111,15 +111,33 @@ class Procedure(models.Model):
 
 
 	#jx 
-
 	control_ids = fields.One2many(
 			'openhealth.control', 
 			'procedure', 
 
 			string = "Controles", 
 			)
-			
-			
+
+
+
+#jx
+	#@api.onchange('control_ids')
+	#def _onchange_control_ids(self):
+	#	print 
+	#	print 'On change Control ids'
+	#	rec = self.env['openhealth.control'].search([ 
+
+	#													('procedure', '=', self.id),	
+	#												], 
+	#												order='evaluation_start_date', 
+													#limit=1
+	#												)
+	#	print rec
+	#	print 
+
+
+
+
 
 # ----------------------------------------------------------- Indexes ------------------------------------------------------
 
@@ -178,6 +196,7 @@ class Procedure(models.Model):
 	#------------------------------------ Buttons -----------------------------------------
 
 
+#jx 
 	# Create Controls 
 	@api.multi
 	def create_controls(self):

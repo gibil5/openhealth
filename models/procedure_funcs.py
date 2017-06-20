@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
+#
+# 	*** Procedure 	
+#
+# Created: 				 1 Nov 2016
+# Last updated: 	 	 20 Jun 2017
+
+
 
 from openerp import models, fields, api
 
-#from datetime import datetime
-
-
-
-from . import jrfuncs
+#from . import jrfuncs
 from . import appfuncs
 from . import time_funcs
 from . import procedure_funcs_cos
@@ -385,7 +388,8 @@ def create_sessions_go(self, model):
 
 #------------------------------------------------ Create - Controls ---------------------------------------------------
 
-@api.multi
+#jx 
+api.multi
 
 def create_controls_go(self):
 
@@ -509,20 +513,19 @@ def create_controls_go(self):
 
 
 
+
 		# Create Control 
 		control = self.control_ids.create({
 											'evaluation_start_date':control_date,
-
-
 											'patient':patient_id,
 											'doctor':doctor_id,
 											'product':product_id,
 											'chief_complaint':chief_complaint,
-
 											'procedure':procedure_id,										
 											'appointment': appointment_id,
-
 											'treatment': treatment_id,
+
+											'control_nr': k+1, 
 									})
 
 

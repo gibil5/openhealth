@@ -164,6 +164,9 @@
 								<field name="vspace"/>
 								<field name="nr_images"/>
 
+								<field name="vspace"/>
+								<field name="control_nr"/>
+
 							</group>
 							<group>
 								<field name="procedure"			invisible="0"	/>
@@ -205,11 +208,12 @@
 						<!-- Notebook --> 
 						<notebook>
 
-							<!--
-																		'default_evaluation_start_date': evaluation_start_date,
-																		'default_treatment': treatment,
-							-->
-							<page string="Fotos VISIA"  		>
+
+							<page string="Fotos VISIA"  	attrs="{
+																		'invisible':[('control_nr', 'in', [2, 4, 5] ),],
+																}"	
+
+								>
 								
 
 

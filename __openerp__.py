@@ -177,7 +177,8 @@
 
 
 		# Images 
-		'views/images/image.xml',
+		#'views/images/image.xml',
+		'views/images/image_view.xml',
 
 
 

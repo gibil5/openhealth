@@ -390,7 +390,6 @@ def create_sessions_go(self, model):
 
 #jx 
 api.multi
-
 def create_controls_go(self):
 
 	from datetime import datetime

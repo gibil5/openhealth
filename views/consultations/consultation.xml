@@ -167,9 +167,7 @@ DEPRECATED
 
 
 						<field 	name="state" 
-
 							widget="statusbar" 
-
 							statusbar_visible="draft, inprogress, done"
 						/>
 					</header>

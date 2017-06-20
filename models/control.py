@@ -37,6 +37,38 @@ class Control(models.Model):
 
 
 
+
+	# state 
+	state = fields.Selection(
+			#selection = eval_vars._state_list, 
+			#string='Estado',	
+			#default='draft',
+
+			compute='_compute_state', 
+			)
+
+	@api.multi
+	#@api.depends('state')
+
+	def _compute_state(self):
+		for record in self:
+
+			state = 'draft'
+
+			if record.nr_images > 0:
+				state = 'inprogress'
+
+			if record.nr_images > 2:
+				state = 'done'
+
+				for image in record.image_ids:
+					if image.name not in ['Frente', 'Derecha', 'Izquierda', 'frente', 'derecha', 'izquierda', 'FRENTE', 'DERECHA', 'IZQUIERDA', ]:
+						state = 'inprogress'
+
+			record.state = state
+
+
+
 	#image_ids = fields.One2many(
 	#		'openhealth.image', 
 	#		'control', 

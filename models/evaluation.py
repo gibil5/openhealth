@@ -35,6 +35,18 @@ class Evaluation(models.Model):
 
 
 
+	# State 
+	state = fields.Selection(
+			selection = eval_vars._state_list, 
+			string='Estado',	
+			default='draft',
+
+			#compute='_compute_state', 
+			)
+
+
+
+
 
 
 	# Open Treatment

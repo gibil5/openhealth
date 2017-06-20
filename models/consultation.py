@@ -49,13 +49,9 @@ class Consultation(models.Model):
 
 	# state 
 	state = fields.Selection(
-
-			#selection = ord_vars._state_list, 
-			selection = eval_vars._state_list, 
-
-			string='Estado',	
-
-			default='draft',
+			#selection = eval_vars._state_list, 
+			#string='Estado',	
+			#default='draft',
 
 			compute='_compute_state', 
 			)
@@ -66,8 +62,8 @@ class Consultation(models.Model):
 	def _compute_state(self):
 		for record in self:
 
-			pro = 0
 
+			pro = 0
 
 			if record.x_fitzpatrick != False:
 				pro = pro + 1

@@ -2,18 +2,15 @@
 #
 # 	*** Control 	
 # 
-
 # Created: 				 1 Nov 2016
-# Last updated: 	 	 7 Dec 2016 
+# Last updated: 	 	 20 Jun 2017
 
 
 
 from openerp import models, fields, api
-#from datetime import datetime
 import datetime
 
-
-from . import jxvars
+#from . import jxvars
 from . import time_funcs
 
 
@@ -28,13 +25,26 @@ class Control(models.Model):
 
 
 
-
-
 	name = fields.Char(
-			string = 'Control #',
+			#string = 'Control #',
+			string = 'Nombre',
 			)
 
 
+	control_nr = fields.Integer(
+			string="Control #", 
+			default=1, 
+
+			compute='_compute_control_nr', 
+			)
+	@api.multi
+	#@api.depends('state')
+
+	def _compute_control_nr(self):
+		for record in self:
+
+			nr = 1
+			record.control_nr = nr  
 
 
 

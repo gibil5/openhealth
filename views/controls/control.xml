@@ -137,7 +137,6 @@
 							
 
 							<group>
-								<field name="procedure"			invisible="1"	/>
 							</group>
 							<group>
 								<field name="evaluation_type"	invisible="1"	/>
@@ -167,6 +166,9 @@
 
 							</group>
 							<group>
+								<field name="procedure"			invisible="0"	/>
+
+								<field name="vspace"/>
 								<field name="chief_complaint"/>								
 
 								<field name="vspace"/>
@@ -288,6 +290,9 @@
 					/>
 
 
+					<field name="control_nr"/>
+
+
 
 					<field name="name"/>
 					
@@ -367,17 +372,6 @@
            </field>
        </record>
 
-
-
-
-
-		
-
-
-		
-		
-
-		
 		
 		
 		<!-- Menus --> 
@@ -407,5 +401,3 @@
 		
 	</data>
 </openerp>
-
-

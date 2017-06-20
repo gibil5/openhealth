@@ -20,13 +20,41 @@ from . import time_funcs
 
 
 class Control(models.Model):
+	
 	_name = 'openhealth.control'
-	_inherit = 'oeh.medical.evaluation'
+
+	#_inherit = 'oeh.medical.evaluation'
+	_inherit = ['oeh.medical.evaluation', 'base_multi_image.owner']
+
+
 
 
 
 	name = fields.Char(
 			string = 'Control #',
+			)
+
+
+
+
+	#image_ids = fields.One2many(
+	#		'openhealth.image', 
+	#		'control', 
+	#		string = "Fotos", 
+	#	)
+
+
+
+
+
+	# Evaluation type 
+	evaluation_type = fields.Selection(
+			#selection = eval_vars.EVALUATION_TYPE, 
+			#string = 'Tipo',
+			
+			default='control', 
+			
+			#required=True, 
 			)
 
 
@@ -101,9 +129,11 @@ class Control(models.Model):
 
 
 
-	observation = fields.Text(
+	#observation = fields.Text(
+	observation = fields.Char(
 			string="Observación",
-			size=200,
+			
+			#size=200,
 
 			#required=False,
 			#required=True,

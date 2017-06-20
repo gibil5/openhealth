@@ -81,6 +81,8 @@ class Evaluation(models.Model):
 	treatment = fields.Many2one(
 			'openhealth.treatment',			
 			ondelete='cascade', 
+
+			required=True, 
 			)
 
 
@@ -118,16 +120,15 @@ class Evaluation(models.Model):
 
 	patient = fields.Many2one(
 			'oeh.medical.patient',
-
 			string = "Paciente", 	
-			
+			ondelete='cascade', 			
+
 			required=True, 
 	)
 
 
 	doctor = fields.Many2one(
 			'oeh.medical.physician',
-
 			string = "Médico", 	
 			
 			required=True, 
@@ -181,6 +182,8 @@ class Evaluation(models.Model):
 	evaluation_type = fields.Selection(
 			selection = eval_vars.EVALUATION_TYPE, 
 			string = 'Tipo',
+			#default='', 
+			
 			required=True, 
 			)
 

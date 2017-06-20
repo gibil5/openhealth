@@ -43,21 +43,13 @@
                         <field name="doctor"/>
                         <field name="patient"/>
                         <field name="patient_status"/>
-				
                         <field name="x_patient_name_short"/>
                         <field name="x_doctor_code"/>
-
                         <field name="x_display"/>
-
 				</calendar>
+			
 
 			</field>
-
 		</record>
-
-
-
-
-
 	</data>
 </openerp>

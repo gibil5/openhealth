@@ -27,6 +27,8 @@
 		
 
 
+
+
 		<!-- service tree/list view -->
 		<record model="ir.ui.view" id="service_medical_tree_view">
 			<field name="name">service.tree</field>
@@ -42,12 +44,6 @@
 				</tree>
 			</field>
 		</record>
-
-
-
-
-
-
 
 		<!-- Menu -->
 		<!--

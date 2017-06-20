@@ -265,6 +265,9 @@ class sale_order(models.Model):
 	partner_id = fields.Many2one(
 			'res.partner',
 			string = "Cliente", 	
+
+			ondelete='cascade', 			
+
 			required=True, 
 		)
 

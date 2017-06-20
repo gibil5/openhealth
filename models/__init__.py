@@ -44,6 +44,9 @@ from . import session_med
 from . import control
 
 
+from . import image
+
+
 
 from . import service
 from . import service_co2

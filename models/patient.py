@@ -249,6 +249,8 @@ class Patient(models.Model):
 			'oeh.medical.appointment', 
 			'patient', 
 			
+			#ondelete='cascade', 		# No - Very dangerous		
+
 			string = "Citas", 
 			)
 

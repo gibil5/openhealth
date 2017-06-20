@@ -20,6 +20,7 @@
 											('x_target', '=', 'doctor'),
 										]
 					</field>
+
 <!--
 					<field name="context">{
 											'default_x_target': 'doctor',
@@ -27,6 +28,7 @@
 										}
 					</field>
 -->
+
 					<field name="view_id" eval="False"/>
 					<field name="help" type="html">
 					  <p class="oe_view_nocontent_create">
@@ -36,6 +38,9 @@
 					  </p>
 					</field>
 		</record>
+
+
+
 
 
 

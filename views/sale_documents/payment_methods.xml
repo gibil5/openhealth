@@ -6,25 +6,16 @@
 
 		<!-- Form view -->
 		<record model="ir.ui.view" id="payment_method_form_view">
-
 			<field name="name">payment.method.form</field>
-			
 			<field name="model">openhealth.payment_method</field>
-
 			<!--
 			<field name="inherit_id" ref="sale.view_order_form"/>			
 	        <field name="mode">primary</field>
 	        <field name="priority" eval="1"/>
 	        -->
-
 			<field name="arch" type="xml">
 
-				
-
-
 				<form string="Payment Method - Form">
-
-
 
 
 
@@ -54,12 +45,9 @@
 
 						<button 
 								name="create_saleproof"
-
 								type="object" 
-								
 								class="oe_highlight"
-
-								states="payment"						
+								states="draft,payment"						
 
 								string="Generar el Documento de Pago"
 						/>

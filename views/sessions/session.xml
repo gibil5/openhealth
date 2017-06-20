@@ -46,16 +46,23 @@
 							
 							context="{									
 											'search_default_doctor': doctor,
+
 											'default_patient': patient, 
 											'default_doctor' : doctor, 
 											'default_appointment_date': evaluation_start_date, 
-											
+
+
 											'default_treatment': treatment, 
-
 											'default_x_type': 'session', 
-
 											'default_state': 'pre_scheduled', 
+
+											'default_x_target' : 'doctor', 
+
+
+											'default_session_id' : active_id, 
+											'default_session' : active_id, 
 									}" 											
+
 
 							string="Crear CITA"
 						/>
@@ -100,7 +107,9 @@
 <!--
 									<h1><field name="name" class="oe_inline"/></h1>
 -->
+
 									<h1><field name="treatment" class="oe_inline"/></h1>
+
 								</div>
 							</div>
 						</div>
@@ -163,9 +172,7 @@
 
 
 							<group>
-<!--
 								<field name="treatment"			/>
--->							
 							</group>
 							<group>								
 								<field name="product"/>

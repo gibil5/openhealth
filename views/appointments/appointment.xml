@@ -3,29 +3,14 @@
 	<data>
 
 
-
-
-
-
 		<!-- Form view -->
 		<record model="ir.ui.view" id="view_appointment">
-
 			<field name="name">oeh.medical.appointment.form</field>
-
 			<field name="model">oeh.medical.appointment</field>
-
 			<field name="inherit_id" ref="oehealth.oeh_medical_appointment_view"/>			
-
 			<field name="mode">primary</field>
-
 			<field name="priority" eval="1"/>
-			
 			<field name="arch" type="xml">
-
-
-
-
-
 
 
 				<!-- Buttons -->
@@ -35,18 +20,16 @@
 				-->
 
 
+
+
 				<!-- Button - Mark as completed - Replace --> 
 				<xpath expr="//button[@name='set_to_completed']" position="replace">
 				</xpath>
 
 
-
 				<xpath expr="//field[@name='state']" position="before">
 
-
 					<!-- Remove --> 
-<!--
--->
 					<div class="oe_left">
 							<button 
 								type="object" 
@@ -138,8 +121,24 @@
 
 							<field name="x_machine"			attrs="{
 																	'invisible':[('x_type', '=', 'consultation'),],
-															}"	/>
+															}"	
+															/>
 
+
+							<field name="vspace"/>
+
+							<field name="consultation"/>
+
+							<field name="procedure"/>
+							
+
+							<field name="session"			attrs="{
+																	'required':[('x_type', '=', 'session'),],
+															}"	
+								/>
+							
+
+							<field name="control"/>
 
 
 					<!--					
@@ -476,12 +475,7 @@
 				<!--
 				<tree string="Appointment Tree">
 				<tree string="Appointment Tree"  	default_order='x_time'>
-
-
-					
 				<tree string="Appointment Tree"  	default_order='x_date, x_time'>
-				
-
 				<tree string="Appointment Tree"  	default_order='appointment_date'>
 				-->
 
@@ -497,49 +491,28 @@
 					<field name="appointment_end"/>
 					<field name="evaluation_ids"/>
 					<field name="x_tree"/>
+
+					<field name="x_therapist"/>
 					-->
 
 
 					<field name="name"/>
-
 					<field name="nr_clones"/>
 					<field name="nr_mac_clones"/>
-
-
-
 					<field name="patient"/>
-
-
 					<field name="doctor"/>
-<!--					
-					<field name="x_therapist"/>
--->
-
 					<field name="x_type"/>
-
-
 					<field name="x_machine"		/>
 					<field name="x_target"/>
-
-
-
 					<field name="cosmetology"/>
 					<field name="treatment"/>
-
-
-
 					<field name="consultation"/>
 					<field name="procedure"/>
 					<field name="session"/>
-					<field name="control"/>					
-					<!--
-					-->
-					
+					<field name="control"/>										
 					<field name="state"/>
 					<field name="x_date"/>
 					<field name="x_time"/>
-
-				
 				</tree>
 			</field>
 		</record>

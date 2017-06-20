@@ -64,21 +64,20 @@ class Appointment(models.Model):
 
 	procedure_cos = fields.Many2one('openhealth.procedure.cos',
 		string="Proc. - Cos",
-		
 		#ondelete='cascade', 
 	)
+
 
 
 	session = fields.Many2one('openhealth.session',
 		string="Sesión",
-		
 		#ondelete='cascade', 
 	)
 
 
+
 	control = fields.Many2one('openhealth.control',
-		string="Control",
-		
+		string="Control",		
 		#ondelete='cascade', 
 	)
 
@@ -93,6 +92,7 @@ class Appointment(models.Model):
 			string="Target", 
 			selection = app_vars._target_list, 
 			index=True,
+
 			required=True, 
 		)
 
@@ -499,6 +499,8 @@ class Appointment(models.Model):
 			string = "Paciente", 	
 
 			#default = defaults._patient,
+
+			ondelete='cascade', 			
 
 			#required=True, 
 			readonly = False, 
@@ -1019,11 +1021,8 @@ class Appointment(models.Model):
     # x_type 
 	x_type = fields.Selection(
 				selection = _type_list, 
-				
 				string="Tipo",
-
 				#default="consultation",
-				
 				required=True, 
 				)
 

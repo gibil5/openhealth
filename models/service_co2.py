@@ -421,6 +421,7 @@ class ServiceCo2(models.Model):
 			string="Acné y secuelas", 
 			default='none',	
 			)
+
 			
 	co2_lb_scar = fields.Selection(
 			selection = service_co2_vars._co2_scar_list, 
@@ -481,6 +482,7 @@ class ServiceCo2(models.Model):
 		if self.co2_lb_acneseq != 'none':	
 			self.co2_lb_acneseq = self.clear_all(self.co2_lb_acneseq)
 
+
 			self.zone = 'body_local'
 			self.pathology = self.co2_lb_acneseq
 			
@@ -488,6 +490,7 @@ class ServiceCo2(models.Model):
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 			}	
 	
+
 	
 	
 	

@@ -234,7 +234,7 @@
 							<group>	
 							</group>
 							<group>
-								<field name="evaluation_type"	invisible="0"/>
+								<field name="evaluation_type"	invisible="1"/>
 							</group>
 							
 							
@@ -282,6 +282,8 @@
 				</form>
 			</field>
 		</record>
+
+
 
 
 

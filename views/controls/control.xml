@@ -51,10 +51,13 @@
 											'default_appointment_date': evaluation_start_date, 
 											
 											'default_treatment': treatment, 
-
 											'default_x_type': 'control', 
-
 											'default_state': 'pre_scheduled', 
+
+											'default_x_target' : 'doctor', 
+
+
+											'default_control' : active_id, 
 									}" 											
 
 							string="Crear CITA"
@@ -107,10 +110,12 @@
 
 
 						<!-- Padding --> 
+<!--
 						<group></group>
 						<group></group>
 						<group></group>
 						<group></group>
+-->
 						<!--
 						<div class="oe_left" style="height: 55px;">
 						</div>
@@ -124,62 +129,125 @@
 							<field string="Próxima cita" name="appointment" domain="[('patient', '=', patient)]" options="{'no_create': True}"/>
 							-->
 							
+
 							<group>
-								<field name="procedure"/>
+								<field name="procedure"			invisible="1"	/>
 							</group>
 							<group>
-								<field name="evaluation_type"	invisible="0"/>
+								<field name="evaluation_type"	invisible="1"	/>
 							</group>
 							
+
 							
 							<group>
 								<field name="doctor" options="{'no_create': True}"/>
+
+								<field name="vspace"/>
+								<field name="appointment"/>
+
+								<field name="vspace"/>
+								<field name="evaluation_start_date"/>
+
+<!--
+								<field name="vspace"/>
+								<field name="date_actual"/>
+-->
+
+								<field name="vspace"/>
+								<field name="x_done"/>
+
 							</group>
 							<group>
 								<field name="chief_complaint"/>								
-							</group>
-							
-							
-							<group>
+
+								<field name="vspace"/>
 								<field name="laser"/>
+
 								<field name="vspace"/>
 								<field name="product"/>							
-							</group>
-							<group>
-<!--
-								<field name="observation"	required="1"/>
--->
+
+								<field name="vspace"/>
 								<field name="observation"	/>
 							</group>
+							
+							
 
-
+<!--
 							<group>
-								<field name="evaluation_start_date"/>
 							</group>
 							<group>
-								<field name="date_actual"/>
 							</group>
-
-
-
+							<group>
+							</group>
+							<group>
+							</group>
 							<group>	
-								<field name="appointment"/>
 							</group>
 							<group>
-								<field name="x_done"/>
 							</group>
-
-
+-->
 
 						</group>
 							
 
 
 						<!-- Notebook --> 
-						<!--
 						<notebook>
+
+							<!--
+																		'default_evaluation_start_date': evaluation_start_date,
+																		'default_treatment': treatment,
+							-->
+							<page string="Fotos VISIA"  		>
+								
+
+
+<!--
+								<field name="image_ids"		context="{
+																			'default_patient': patient,
+																			'default_doctor': doctor,
+																			'default_control': active_id,
+																			'default_evaluation_type': 'control',
+																		}"
+								>
+							
+									<tree string="">	
+
+										<button 
+											type="object" 
+											class="oe_highlight"	
+											string="Editar"
+											name="open_line_current" 
+										/>
+
+
+										<field name="name"/>
+										<field name="description"/>
+
+										<field name="image"			/>
+
+										<field name="patient"/>
+										<field name="doctor"/>
+										<field name="evaluation_type"/>
+										<field name="control"/>
+										<field name="date"/>
+									</tree>
+								</field>
+-->
+
+								<field
+									name="image_ids"
+									nolabel="1"
+									context="{
+										'default_owner_model': 'openhealth.control',
+										'default_owner_id': id,
+									}"
+									mode="kanban"
+								/>
+
+
+							</page>
 						</notebook>
-						-->
 
 
 

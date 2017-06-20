@@ -24,11 +24,22 @@ _hash_progress = {
 
 # Evaluation
 EVALUATION_TYPE = [
+		
 		('Pre-arraganged Appointment', 'Consulta'),
+		('consultation', 'Consulta'),
+		
 		('Ambulatory', 'Procedimiento'),
+		('procedure', 'Procedimiento'),
+
+		
 		('Periodic Control', 'Control'),
+		('control', 'Control'),
+
 		('Session', 'Sesión'),
+		('session', 'Sesión'),
+
 		]
+
 
 FITZ_TYPE = [
 		('one','I'),

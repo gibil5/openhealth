@@ -26,6 +26,19 @@ class Session(models.Model):
 
 
 
+	# Evaluation type 
+	evaluation_type = fields.Selection(
+			#selection = eval_vars.EVALUATION_TYPE, 
+			#string = 'Tipo',
+			
+			default='session', 
+			
+			#required=True, 
+			)
+
+
+
+
 	# Treatment 
 	treatment = fields.Many2one(
 			'openhealth.treatment',

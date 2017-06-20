@@ -1435,28 +1435,18 @@ class Treatment(models.Model):
 				'res_model': self._name,
 				#'res_model': 'openhealth.consultation',
 
-				#'res_id': id[0],
-				#'res_id': consultation_id,
 				'res_id': treatment_id,
 
 				'target': 'current',
 				#'target': 'inline'.
 
-
 				'flags': {
-						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-						'form': {'action_buttons': True, }
+							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+							'form': {'action_buttons': True, }
 						},
 
-
-				'context':   {
-					#'search_default_consultation': consultation_id,
-
-					#'default_patient': patient_id,
-					#'default_doctor': doctor_id,
-
-					#'default_consultation_id': consultation_id,
-				}
+				'context': {
+						}
 		}
 
 

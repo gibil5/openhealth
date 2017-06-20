@@ -104,8 +104,10 @@ class ServiceMedical(models.Model):
 	@api.onchange('med_crio')
 	def _onchange_med_crio(self):
 		if self.med_crio != 'none':
+
 			self.x_treatment = 'criosurgery'
 			self.sessions = self.med_crio
+
 			return {
 				'domain': {'service': [
 										('x_treatment', '=', self.x_treatment),

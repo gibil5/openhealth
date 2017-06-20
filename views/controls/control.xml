@@ -156,6 +156,9 @@
 								<field name="vspace"/>
 								<field name="x_done"/>
 
+								<field name="vspace"/>
+								<field name="nr_images"/>
+
 							</group>
 							<group>
 								<field name="chief_complaint"/>								
@@ -300,11 +303,12 @@
 					<field name="evaluation_start_date"/>
 
 					
+
+
+
+					<field name="nr_images"/>
+
 					<field name="x_done"/>
-
-
-
-
 
 
 

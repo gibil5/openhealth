@@ -176,6 +176,11 @@
 		'views/controls/control.xml',
 
 
+		# Images 
+		'views/images/image.xml',
+
+
+
 		# Evaluations
 		'views/evaluations/evaluation.xml',
 

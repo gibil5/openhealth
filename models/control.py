@@ -46,6 +46,30 @@ class Control(models.Model):
 
 
 
+	# Nr images 
+	nr_images = fields.Integer(
+			string = "Nr Visia", 	
+			#required=True, 
+
+			compute="_compute_nr_images",
+		)
+
+	@api.multi
+	
+	def _compute_nr_images(self):
+		for record in self:
+
+			ctr = 0
+
+			for image in record.image_ids:
+				ctr = ctr + 1
+
+			record.nr_images = ctr
+
+
+
+
+
 
 	# Evaluation type 
 	evaluation_type = fields.Selection(

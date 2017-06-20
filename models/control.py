@@ -35,16 +35,14 @@ class Control(models.Model):
 			string="Control #", 
 			default=1, 
 
-			compute='_compute_control_nr', 
+			#compute='_compute_control_nr', 
 			)
-	@api.multi
+	#@api.multi
 	#@api.depends('state')
-
-	def _compute_control_nr(self):
-		for record in self:
-
-			nr = 1
-			record.control_nr = nr  
+	#def _compute_control_nr(self):
+	#	for record in self:
+	#		nr = 1
+	#		record.control_nr = nr  
 
 
 

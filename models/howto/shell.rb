@@ -110,6 +110,20 @@ self.env['openhealth.service'].search([('name', 'like', 'S')])
 
 
 
+self.env['product.template'].search([('x_treatment', 'like', 'laser_co2')])
+
+
+#order='appointment_date desc',
+
+
+
+self.env['product.template'].search([	('x_treatment', '=', 'laser_co2'),	('x_zone', '=', 'body_local'),	('x_pathology', '=', 'acne_sequels_1')])
+
+
+
+
+
+
 
 
 

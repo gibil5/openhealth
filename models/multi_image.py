@@ -18,7 +18,7 @@ from openerp import models, fields, api
 #------------------------------------------------------------------------
 class MultiImage(models.Model):
 
-	_inherit = 'base_multi_image.owner'
+	#_inherit = 'base_multi_image.owner'
 
 	#_name =	'openhealth.image'
 

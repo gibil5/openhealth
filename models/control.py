@@ -31,6 +31,31 @@ class Control(models.Model):
 			)
 
 
+
+
+
+	# Done
+	x_done = fields.Boolean(
+			string="Realizado", 			
+			default=False,
+
+			compute='_compute_x_done', 
+			)
+
+	#@api.multi
+	@api.depends('state')
+
+	def _compute_x_done(self):
+		for record in self:
+
+			if record.state == 'done':
+				record.x_done = True 
+
+
+
+
+
+	# Control Nr
 	control_nr = fields.Integer(
 			string="Control #", 
 			default=1, 

@@ -9,6 +9,8 @@ from datetime import datetime
 
 from . import exc
 
+from . import serv_funcs
+
 
 
 
@@ -33,6 +35,22 @@ class ServiceExcilite(models.Model):
 
 
 	
+# ----------------------------------------------------------- On Changes ------------------------------------------------------
+
+	@api.onchange('time_1')
+	def _onchange_time_1(self):
+	
+		if self.time_1 != 'none':				
+			self.time_1 = self.clear_times(self.time_1)
+			self.time = self.time_1
+			
+
+			serv_funcs.product(self)
+
+			return {
+				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time)]},				
+			}	
+
 
 # ----------------------------------------------------------- Variables ------------------------------------------------------
 
@@ -62,11 +80,14 @@ class ServiceExcilite(models.Model):
 	def _onchange_vitiligo(self):
 	
 		if self.vitiligo != 'none':	
-			self.vitiligo = self.clear_all(self.vitiligo)
 
+			self.vitiligo = self.clear_all(self.vitiligo)
 			self.zone = self.vitiligo
 			self.pathology = 'vitiligo'
 			
+
+			#serv_funcs.product(self)
+
 			return {
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 			}
@@ -80,6 +101,9 @@ class ServiceExcilite(models.Model):
 			self.zone = self.psoriasis
 			self.pathology = 'psoriasis'
 			
+
+			#serv_funcs.product(self)
+
 			return {
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 			}
@@ -94,6 +118,9 @@ class ServiceExcilite(models.Model):
 			self.zone = self.alopecias
 			self.pathology = 'alopecia'
 			
+
+			#serv_funcs.product(self)
+
 			return {
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 			}
@@ -116,8 +143,6 @@ class ServiceExcilite(models.Model):
 		self.time_1 = 'none'
 		#self.clear_common_times
 		
-		
-
 
 # ServiceExcilite
 

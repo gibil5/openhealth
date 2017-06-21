@@ -1,18 +1,16 @@
-import os
-import re
-import sys
-import subprocess
-
-import openerp
-
-import unittest2
-#from openerp.tests.common import TransactionCase
-from openerp.tests import common
-#from openerp import tests
-
-#from openerp import sql_db
+#import os
+#import re
+#import sys
+#import subprocess
 #import openerp
 
+import unittest2
+
+from openerp.tests import common
+#from openerp.tests.common import TransactionCase
+#from openerp import tests
+#from openerp import sql_db
+#import openerp
 
 
 # export OPENERP_SERVER=/Users/gibil/Virtualenvs/Odoo9-min/odoo/jx_config.cfg
@@ -36,6 +34,8 @@ class TestModelPartner(common.TransactionCase):
 #class TestModelPartner(tests.common.TransactionCase):
 #class TestModelPartner(TransactionCase):
 	def test_some_action(self):
+
+		_logger.debug("Debug message")
 
 		#record = self.env['model.a'].create({'field': 'value'})
 

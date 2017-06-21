@@ -35,6 +35,15 @@ class Evaluation(models.Model):
 
 
 
+	# Done
+	x_done = fields.Boolean(
+			default=False,
+			string="Realizado", 			
+		)
+
+
+
+
 	# State 
 	state = fields.Selection(
 			selection = eval_vars._state_list, 
@@ -255,12 +264,6 @@ class Evaluation(models.Model):
 
 
 
-
-	# Completed
-	x_done = fields.Boolean(
-			default=False,
-			string="Realizado", 			
-		)
 
 
 

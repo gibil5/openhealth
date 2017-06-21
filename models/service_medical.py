@@ -4,8 +4,15 @@
 # 
 from openerp import models, fields, api
 from datetime import datetime
-from . import jxvars
+
+
+#from . import jxvars
 from . import service_medical_vars
+
+from . import serv_funcs
+
+
+
 
 class ServiceMedical(models.Model):
 	_name = 'openhealth.service.medical'
@@ -108,6 +115,12 @@ class ServiceMedical(models.Model):
 			self.x_treatment = 'criosurgery'
 			self.sessions = self.med_crio
 
+
+			self.zone = 'face_all'
+			self.pathology = 'acne' 
+
+			serv_funcs.product_medical(self)
+
 			return {
 				'domain': {'service': [
 										('x_treatment', '=', self.x_treatment),
@@ -116,18 +129,30 @@ class ServiceMedical(models.Model):
 			}
 
 
+
+
 	# Hyaluronic Acid
 	@api.onchange('med_hya')
 	def _onchange_med_hya(self):
 		
 		if self.med_hya != 'none':
+
 			self.med_hya = self.clear_all_med(self.med_hya)
+
 			self.x_treatment = 'hyaluronic_acid'
+
+
+			self.zone = '1_hypodermic'
+			self.pathology = 'rejuvenation_face'
+
+			serv_funcs.product_medical(self)
 			return {
 				'domain': {'service': [
 										('x_treatment', '=', self.x_treatment),
 										]},
 			}
+
+
 
 	# Sclerotherapy 
 	@api.onchange('med_scle')
@@ -135,6 +160,8 @@ class ServiceMedical(models.Model):
 		if self.med_scle != 'none':
 			self.med_scle = self.clear_all_med(self.med_scle)
 			self.x_treatment = 'sclerotherapy'
+
+			serv_funcs.product_medical(self)
 			return {'domain': {'service': [('x_treatment', '=', self.x_treatment),]},}
 
 	# Botulinum Toxyn 
@@ -144,6 +171,8 @@ class ServiceMedical(models.Model):
 		if self.med_bot != 'none':
 			self.med_bot = self.clear_all_med(self.med_bot)
 			self.x_treatment = 'botulinum_toxin'
+
+			serv_funcs.product_medical(self)
 			return {
 				'domain': {'service': [
 										('x_treatment', '=', self.x_treatment),
@@ -156,6 +185,8 @@ class ServiceMedical(models.Model):
 		if self.med_int != 'none':
 			self.med_int = self.clear_all_med(self.med_int)
 			self.x_treatment = 'intravenous_vitamin'
+
+			serv_funcs.product_medical(self)
 			return {
 				'domain': {'service': [
 										('x_treatment', '=', self.x_treatment),
@@ -178,6 +209,8 @@ class ServiceMedical(models.Model):
 			self.x_treatment = 'lepismatic' 
 			self.med_lep = self.clear_all_med(self.med_lep)
 
+
+			serv_funcs.product_medical(self)
 			return {'domain': {'service': [
 											('x_treatment', '=', self.x_treatment),
 											('x_zone', '=', self.zone),
@@ -195,6 +228,9 @@ class ServiceMedical(models.Model):
 			self.pathology = 		pla_dic['pathology']
 			self.zone = 			pla_dic['zone']
 			self.sessions = 		pla_dic['sessions']
+
+
+			serv_funcs.product_medical(self)
 			return {
 				'domain': {'service': [
 											('x_treatment', '=', self.x_treatment),

@@ -162,10 +162,16 @@
 								<field name="x_done"/>
 
 								<field name="vspace"/>
-								<field name="nr_images"/>
+								<field name="id"/>
+
+
+
 
 								<field name="vspace"/>
-								<field name="control_nr"/>
+								<field name="nr_images"			invisible="1"	/>
+
+								<field name="vspace"/>
+								<field name="control_nr"		invisible="1"	/>
 
 							</group>
 							<group>

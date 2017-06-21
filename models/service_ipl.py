@@ -9,13 +9,16 @@ from datetime import datetime
 
 from . import ipl
 
+from . import serv_funcs
+
+
 
 class ServiceIpl(models.Model):
 	_name = 'openhealth.service.ipl'
 	_inherit = 'openhealth.service'
 	
 
-	
+
 	# Service 
 	service = fields.Many2one(
 			'product.template',
@@ -26,7 +29,7 @@ class ServiceIpl(models.Model):
 					],
 	)
 
-
+	# Time 
 	time_1 = fields.Selection(
 			
 			#selection = ndyag._time_list, 
@@ -35,6 +38,34 @@ class ServiceIpl(models.Model):
 			string="Tiempo", 
 			default='none',	
 	)
+
+
+
+
+
+# ----------------------------------------------------------- On Changes ------------------------------------------------------
+	@api.onchange('nr_sessions_1')
+	def _onchange_nr_sessions_1(self):
+	
+		if self.nr_sessions_1 != 'none':	
+			self.nr_sessions = self.nr_sessions_1
+			
+
+			serv_funcs.product_m22(self)
+
+			return {
+				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time),('x_sessions', '=', self.nr_sessions) ]},
+			}
+			
+
+
+
+
+	
+
+
+
+
 
 
 

@@ -256,9 +256,15 @@
 
 
 		<!-- images --> 
+<!--
+			action="image_list_action"
+-->
 		<menuitem id="images_menu" name="images" parent="openhealth_menu"
 			sequence="-80"
-			action="image_list_action"/>
+
+			action="image_action"
+
+			/>
 
 			
 

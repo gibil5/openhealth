@@ -15,6 +15,8 @@ from . import exc
 from . import ipl
 from . import prodvars
 
+from . import serv_funcs
+
 
 
 class Service(models.Model):
@@ -233,6 +235,9 @@ class Service(models.Model):
 			self.time_1 = self.clear_times(self.time_1)
 			self.time = self.time_1
 			
+
+			#serv_funcs.product(self)
+
 			return {
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time)]},				
 			}

@@ -28,8 +28,10 @@
                         <field name="storage"/>
                         <field name="extension"/>
                     </group>
--->
+
                     <group string="Name"	invisible="True" >
+-->
+                    <group string="Nombre"	invisible="False" >
                         <field name="name"/>
                         <field name="storage"/>
                         <field name="extension"/>
@@ -86,12 +88,18 @@
     </field>
 </record>
 
+
+
+<!-- TREE --> 
 <record id="image_tree_view" model="ir.ui.view">
     <field name="name">Multi image tree</field>
     <field name="model">base_multi_image.image</field>
     <field name="arch" type="xml">
         <tree string="Images">
             <field name="name"/>
+
+            <field name="name_id"/>
+
             <field name="storage"/>
             <field name="owner_model"/>
             <field name="owner_id"/>
@@ -100,6 +108,9 @@
     </field>
 </record>
 
+
+
+<!-- KANBAN --> 
 <record id="image_kanban_view" model="ir.ui.view">
     <field name="name">Product multi image kanban</field>
     <field name="model">base_multi_image.image</field>

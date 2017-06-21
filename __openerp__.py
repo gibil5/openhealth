@@ -19,7 +19,7 @@
 
 		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage\n
 
-		Last built: 	19 June 2017 - Yey !
+		Last built: 	21 June 2017 - Yey !
 
 		Created: 	 	7 Sep 2016
 
@@ -63,7 +63,8 @@
 	# Very important !!!
 	# --------------
 	#'depends': ['base', 'oehealth'],
-	'depends': ['base', 'oehealth'],
+	#'depends': ['base', 'oehealth'],
+	'depends': ['base', 'oehealth', 'base_multi_image'],
 
 
 

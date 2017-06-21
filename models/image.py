@@ -1,162 +1,89 @@
 # -*- coding: utf-8 -*-
 #
-# 	*** Evaluation 
+# 	*** Image  	
 # 
-
-# Created: 				19 Jun 2017
-# Last updated: 	 	id. 
-
-
+# Created: 				 21 Jun 2017
+# Last updated: 	 	 21 Jun 2017
 
 from openerp import models, fields, api
-#from datetime import datetime
-
-from . import eval_vars
 
 
 
-#------------------------------------------------------------------------
 class Image(models.Model):
-
-	#_inherit = 'oeh.medical.evaluation'
-
-	_name =	'openhealth.image'
-
-
-
-
-	name = fields.Char(
-			string = "Nombre", 	
-			#required=True, 
-
-			compute="_compute_name",
-		)
-
-	@api.multi
 	
-	def _compute_name(self):
-		for record in self:
+	#_name = 'openhealth.control'
 
-			record.name = 'name'
-
-			#name = record.patient.name + '_' + record.date.split()[0]
-			name = record.patient.name + '_' + record.date.split()[0] + '_' + record.description
-
-			record.name = name
+	_inherit = 'base_multi_image.image'
 
 
 
 
-	image = fields.Binary(
-
-			string="Visia", 
-
-		)
-
-
-
-	date = fields.Datetime(
-
-			string = "Fecha y hora", 	
-		
-			default = fields.Date.today, 
-
-			required=True, 
-			)
-
-
-
-
-
-
-	doctor = fields.Many2one(
-			'oeh.medical.physician',
-			string = "Médico", 	
+	# Unique name
+	name_id = fields.Char(
+		'Nombre unico', 
+		required=True,
 			
-			required=True, 
-			#required=False, 
-		)
-
-
-	patient = fields.Many2one(
-			'oeh.medical.patient',
-			string = "Paciente", 	
-			#ondelete='cascade', 			
-
-			required=True, 
-		)
-
-
-
-
-	control = fields.Many2one('openhealth.control',
-			string="Control",		
-			#ondelete='cascade', 
-			required=True, 
+		compute='_compute_name_id', 
 	)
 
-
-	evaluation_type = fields.Selection(
-			selection = eval_vars.EVALUATION_TYPE, 
-			string = 'Tipo',
-			#default='', 
-			
-			required=True, 
-			)
-
-
-
-
-	IMAGE_DESCRIPTION = [
-		
-		('front', 'Frente'),
-
-		('right', 'Derecha'),
-
-		('left', 'Izquierda'),
-
-	]
-
-
-	description = fields.Selection(
-			selection = IMAGE_DESCRIPTION, 
-			string = 'Descripción',
-			
-			default='front', 
-			
-			required=True, 
-			)
-
-
-
-
-
 	@api.multi
-	def open_line_current(self):  
+	#@api.depends('state')
 
-		res_id = self.id 
+	def _compute_name_id(self):
+		for record in self:
 
-		return {
-				'type': 'ir.actions.act_window',
-				'name': ' Edit Treatment Current', 
-				'view_type': 'form',
-				'view_mode': 'form',
+			nid = 'jx'
+			
+			control = record.env['openhealth.control'].search([
+																('id', '=', record.owner_id), 
+															],
+															#order='appointment_date desc'
+															limit=1,)
+			nid = control.patient.name + '_' + control.evaluation_start_date + '_' + record.name   
 
-				'res_model': self._name,
-				#'res_model': 'openhealth.consultation',
-				'res_id': res_id,
+
+			record.name_id = nid
 
 
-				'target': 'current',
-				#'target': 'inline'.
 
-				'flags': {
-							'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-							#'form': {'action_buttons': True, }
-						},
 
-				'context': {
-						}
-		}
+
+	# Name 	
+	_name_list = [
+		('Frente', 'Frente'),
+		('Izquierda', 'Izquierda'),
+		('Derecha', 'Derecha'),
+		]
+	name = fields.Selection(
+		selection=_name_list,
+		required=True,
+		#string='Image title',
+		string='Nombre',
+		translate=True)
+
+
+
+
+	# Storage 
+	storage = fields.Selection(
+		[
+			#('url', 'URL'),
+			#('file', 'OS file'), 
+			('db', 'Database'),
+			#('filestore', 'Filestore'),
+			],
+		default='db',
+		#string='Storage', 
+		string='Almacenamiento', 
+		required=True
+		)
+
+
+	# Extension 
+	extension = fields.Char(
+		#'File extension',
+		'Extension',
+		readonly=True)
+
 
 

@@ -217,15 +217,21 @@ class Control(models.Model):
 
 
 
-
-	#observation = fields.Text(
-	observation = fields.Char(
-			string="Observación",
-			
-			#size=200,
-
+	indication = fields.Text(
+			string="Indicaciones",			
+			size=200,
 			#required=False,
-			#required=True,
+			required=True,
+			)
+
+
+
+	#observation = fields.Char(
+	observation = fields.Text(
+			string="Observación",
+			size=200,
+			#required=False,
+			required=True,
 			)
 
 

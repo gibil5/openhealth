@@ -23,7 +23,7 @@ class SampleTestCase(odooselenium.TestCase):
 
 def main():
     #unittest2.main()
-    print 'jx'
+    #print 'jx'
     tc = SampleTestCase
     tc.configure()
     #tc.test_ui()

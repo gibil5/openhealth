@@ -67,10 +67,10 @@ class Image(models.Model):
 	# Storage 
 	storage = fields.Selection(
 		[
-			#('url', 'URL'),
-			#('file', 'OS file'), 
+			('url', 'URL'),
+			('file', 'OS file'), 
 			('db', 'Database'),
-			#('filestore', 'Filestore'),
+			('filestore', 'Filestore'),
 			],
 		default='db',
 		#string='Storage', 

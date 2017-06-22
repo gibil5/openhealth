@@ -156,14 +156,16 @@
 <!--
 								<field name="vspace"/>
 								<field name="date_actual"/>
+								<field name="vspace"/>
+								<field name="id"/>
 -->
 
 								<field name="vspace"/>
 								<field name="x_done"/>
 
-								<field name="vspace"/>
-								<field name="id"/>
 
+								<field name="vspace"/>
+								<field name="indication"	/>
 
 
 
@@ -185,6 +187,7 @@
 
 								<field name="vspace"/>
 								<field name="product"/>							
+
 
 								<field name="vspace"/>
 								<field name="observation"	/>

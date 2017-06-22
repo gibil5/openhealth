@@ -87,3 +87,41 @@ class Image(models.Model):
 
 
 
+
+
+
+	# Type
+	xtype = fields.Selection(
+		[
+			('consultation', 	'Consulta'),
+			('session', 		'Sesión'), 
+			('control', 		'Control'),
+			#('procedure', 		'Procedimiento'),
+			],
+		default='control', 
+		string='Tipo', 
+		
+		required=True, 
+		#required=False, 
+	)
+
+
+
+	# Origin
+	origin = fields.Selection(
+		[
+			('visia', 			'Visia'),
+			('camera', 			'Cámara'), 
+			('echography', 		'Ecógrafo'),
+			],
+		default='visia', 
+		string='Orígen', 
+		
+		required=True, 
+		#required=False, 
+	)
+
+
+
+
+

@@ -8,6 +8,8 @@
     <field name="arch" type="xml">
         <form string="Image">
             <sheet>
+
+
                 <group>
                     <group
                         string="Owner"
@@ -31,15 +33,29 @@
 
                     <group string="Name"	invisible="True" >
 -->
-                    <group string="Nombre"	invisible="False" >
+                    <group string="Nombre"	invisible="True" >
                         <field name="name"/>
                         <field name="storage"/>
                         <field name="extension"/>
                     </group>
-
                 </group>
+
+
+
                 <group>
-                    <group string="Visia">
+                    <group string="Tipo">
+
+                        <field name="xtype"/>
+                        <field name="origin"/>
+
+                    </group>
+                </group>
+
+
+
+
+                <group>
+                    <group string="Foto">
                         <field
                             name="url"
                             attrs="{
@@ -98,12 +114,24 @@
         <tree string="Images">
             <field name="name"/>
 
+            <field name="xtype"/>
+            <field name="origin"/>
+
+            <field name="image_main"    />
+            <field name="image_main"    widget="image"/>
+<!--
+            <field name="image_small"   widget="image" />
+
+            <field name="file_db_store"/>
+            <field name="image_medium"/>
+            <field name="image_small"/>
+-->
             <field name="name_id"/>
 
             <field name="storage"/>
             <field name="owner_model"/>
             <field name="owner_id"/>
-            <field name="sequence" invisible="True"/>
+            <field name="sequence"      invisible="True"/>
         </tree>
     </field>
 </record>
@@ -160,12 +188,32 @@
     </field>
 </record>
 
+
 <record id="image_action" model="ir.actions.act_window">
     <field name="name">Multi images</field>
     <field name="res_model">base_multi_image.image</field>
     <field name="view_mode">kanban,tree,form</field>
     <field name="help">Click to add an image attached to an specific record.</field>
 </record>
+
+
+
+
+<!-- Filter --> 
+<record id="view_image_filter" model="ir.ui.view">
+    <field name="name">Image Search</field>
+    <field name="model">base_multi_image.image</field>
+    <field name="arch" type="xml">
+               
+        <search string="Imágenes">
+            <field name="name_id" />
+        </search>
+    
+    </field>               
+</record>
+
+
+
 
 <menuitem
     id="image_menu"

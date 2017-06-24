@@ -1,5 +1,19 @@
 
 
+
+
+
+.openerp .td {
+    line-height: 250%;
+}
+
+
+
+
+
+
+
+
 .openerp .rallign {
 /*
   text-align: right;
@@ -14,7 +28,6 @@
     text-align: right; 
 }
 */
-
 
 
 

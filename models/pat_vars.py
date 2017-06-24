@@ -2,6 +2,18 @@
 
 
 
+_dic_sex = {
+				'Male':	'Masculino', 
+				'Female':	'Femenino', 
+
+				#'male':	'Masculino', 
+				#'female':	'Femenino', 
+			}
+
+
+
+
+
 
 _state_list = [
         			#(False, 	'Incompleto'),
@@ -13,12 +25,6 @@ _state_list = [
 
         		]
 
-
-
-
-
-
-
 _education_level_type = [
 			('first', 'Primaria'),
 			('second', 'Secundaria'),
@@ -26,8 +32,6 @@ _education_level_type = [
 			('university', 'Universidad'),
 			('masterphd', 'Posgrado'),
 			]
-
-
 
 _FAMILY_RELATION = [
 			

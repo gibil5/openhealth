@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+<data>
+
+<record id="image_full_form_view" model="ir.ui.view">
+    <field name="name">Multi image form</field>
+    <field name="model">openhealth.image_full</field>
+    <field name="arch" type="xml">
+        <form string="Image">
+            <sheet>
+<!--
+
+                <group>
+
+                            style="height: 3000px;"
+                            widget="image"  
+                </group>
+-->
+                    <field  
+                            name="file"
+                            widget="image"  
+                            filename="filename"                            
+                            />
+ 
+            </sheet>
+        </form>
+    </field>
+</record>
+
+
+
+<!-- TREE --> 
+<record id="image_full_tree_view" model="ir.ui.view">
+    <field name="name">Multi image tree</field>
+    <field name="model">openhealth.image_full</field>
+    <field name="arch" type="xml">
+        <tree string="Images">
+
+            <field name="name"/>
+            <field name="file"/>
+  
+        </tree>
+    </field>
+</record>
+
+
+
+
+<!-- Action -->
+<record id="image_full_action" model="ir.actions.act_window">
+    <field name="name">Multi images</field>
+    <field name="res_model">openhealth.image_full</field>
+    <field name="view_mode">tree,kanban,form</field>
+    <field name="help">Click to add an image attached to an specific record.</field>
+</record>
+
+
+<menuitem
+    id="image_full_menu"
+    action="image_full_action"
+    parent="base.menu_custom"/>
+
+</data>
+</openerp>

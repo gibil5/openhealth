@@ -45,6 +45,8 @@
                 <group>
                     <group string="Tipo">
 
+                        <field name="image_full"/>
+
                         <field name="xtype"/>
                         <field name="origin"/>
 
@@ -89,15 +91,34 @@
                                 'required': [('storage', '=', 'filestore')],
                             }"/>
                     </group>
+
                     <group string="Visualizacion">
+<!--
                         <field name="image_medium"
-                               widget="image"
                                readonly="True"
+-->
+                        <field name="image_main"
+                               widget="image"
+                               readonly="False"
                                nolabel="1" />
                     </group>
                 </group>
                 <group string="Observaciones">
                     <field name="comments" nolabel="1" />
+                </group>
+
+
+
+                <group col="1">
+<!--
+                            class="oe_right oe_image_custom"   
+                            name="image_main"    
+-->                    
+                    <field  
+                            name="file_db_store"
+                            widget="image"  
+                            style="height: 3000px;"
+                            />
                 </group>
             </sheet>
         </form>
@@ -118,8 +139,9 @@
             <field name="origin"/>
 
             <field name="image_main"    />
-            <field name="image_main"    widget="image"/>
 <!--
+            <field name="image_main"    widget="image"  class="oe_right oe_image_custom"   />
+            <field name="image_main"    widget="image"  display="icon"    />
             <field name="image_small"   widget="image" />
 
             <field name="file_db_store"/>
@@ -189,10 +211,15 @@
 </record>
 
 
+
+<!-- Action -->
 <record id="image_action" model="ir.actions.act_window">
     <field name="name">Multi images</field>
     <field name="res_model">base_multi_image.image</field>
+<!--
     <field name="view_mode">kanban,tree,form</field>
+-->
+    <field name="view_mode">tree,kanban,form</field>
     <field name="help">Click to add an image attached to an specific record.</field>
 </record>
 

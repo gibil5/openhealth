@@ -45,6 +45,7 @@ from . import control
 
 
 from . import image
+from . import image_full
 #from . import multi_image
 
 

@@ -17,6 +17,34 @@ class Image(models.Model):
 
 
 
+	
+	image_full = fields.Many2one(
+			'openhealth.image_full',
+			string="Image Full",
+			#ondelete='cascade', 
+
+			#compute='_compute_image_full', 
+	)
+
+	@api.multi
+	#@api.depends('state')
+
+	def _compute_image_full(self):
+		for record in self:
+
+			#if record.image_full == False:
+				
+			name = record.name_id
+				
+			file = record.file_db_store
+			#file = record.image_main
+
+			record.image_full = record.env['openhealth.image_full'].create({
+																					'name': name,				
+																					'file': file,
+																				})
+
+
 
 	# Unique name
 	name_id = fields.Char(
@@ -31,16 +59,13 @@ class Image(models.Model):
 
 	def _compute_name_id(self):
 		for record in self:
-
 			nid = 'jx'
-			
 			control = record.env['openhealth.control'].search([
 																('id', '=', record.owner_id), 
 															],
 															#order='appointment_date desc'
 															limit=1,)
 			nid = control.patient.name + '_' + control.evaluation_start_date + '_' + record.name   
-
 
 			record.name_id = nid
 

@@ -19,7 +19,7 @@
 
 		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage\n
 
-		Last built: 	22 June 2017 - Yey !
+		Last built: 	24 June 2017 - Yey !
 
 		Created: 	 	7 Sep 2016
 
@@ -84,6 +84,7 @@
 		#'views/example_report.xml',
 		'views/order_report.xml',
 
+		'views/reports/patient_report.xml',
 
 
 
@@ -180,6 +181,9 @@
 		# Images 
 		#'views/images/image.xml',
 		'views/images/image_view.xml',
+
+		'views/images/image_full.xml',
+
 
 
 

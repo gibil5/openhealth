@@ -200,7 +200,10 @@
 							<group>
 
 								<field string='Fecha de nacimiento'  name="dob" 	required="1" />
+
 								<field string='Sexo' name="sex" 	required="1" />
+								<field name="x_sex_name" 	/>
+
 								<!--
 								<field string='Estado civil'  name="marital_status" required="1"/>									
 								-->

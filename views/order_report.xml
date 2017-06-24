@@ -3,9 +3,7 @@
 
 
 
-<!-- Order Report --> 
-
-
+        <!-- Order --> 
         <report
 
             id="report_example_model_name"

@@ -19,12 +19,44 @@ class Patient(models.Model):
 
 	_inherit = 'oeh.medical.patient'
 
-
-
 	vspace = fields.Char(
 			' ', 
 			readonly=True
 			)
+
+
+
+
+	x_sex_name = fields.Char(
+			'Sexo', 
+			required=True, 
+			compute='_compute_x_sex_name', 
+		)
+
+	@api.multi
+	#@api.depends('sex')
+	def _compute_x_sex_name(self):
+		for record in self:
+
+			record.x_sex_name = pat_vars._dic_sex[record.sex] 
+			#record.x_sex_name = record.sex
+
+
+
+
+	x_country_name = fields.Char(
+			'Pais', 
+			required=True, 
+			
+			compute='_compute_x_country_name', 
+		)
+
+	#@api.multi
+	@api.depends('country_id')
+
+	def _compute_x_country_name(self):
+		for record in self:
+			record.x_country_name = 'Peru'
 
 
 
@@ -207,6 +239,7 @@ class Patient(models.Model):
 			self.phone_1 = '4760118'
 			self.x_allergies = 'Ninguna'
 			self.x_first_contact = 'recommendation'
+
 			self.street = 'Av. San Borja Norte 610'
 			self.street2_sel = 41
 

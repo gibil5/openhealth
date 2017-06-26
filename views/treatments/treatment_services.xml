@@ -48,8 +48,10 @@
 										<field name="laser"/>				
 										<field name="treatment"/>
 										<field name="service"/>
-										<field name="consultation"/>
 										
+										<field name="zone"/>														
+
+										<field name="consultation"/>
 									</tree>
 								</field>
 

@@ -15,14 +15,41 @@ from . import pat_vars
 
 
 class Patient(models.Model):
+
 	#_name = 'openhealth.patient'	#The best solution ? So that impact is minimal ?	- Deprecated
 
 	_inherit = 'oeh.medical.patient'
+	#_inherit = ['oeh.medical.patient', 'openhealth.base']
+	#_inherits = ['oeh.medical.patient', 'openhealth.base']
 
+
+
+
+	# Vertical space 
 	vspace = fields.Char(
 			' ', 
 			readonly=True
 			)
+
+
+
+
+	# Dictionary 
+	_dic = {
+				'Male':		'Masculino', 
+				'Female':	'Femenino', 
+				'none':		'Ninguno', 
+
+				'':			'', 
+
+				
+				#'one':			'', 
+				#'two':			'', 
+				#'three':			'', 
+				#'rejuvenation_capilar':			'Rejuvenecimiento capilar', 
+				#'body_local':					'Localizado cuerpo', 
+			}
+
 
 
 
@@ -33,12 +60,16 @@ class Patient(models.Model):
 			compute='_compute_x_sex_name', 
 		)
 
+
+
+
 	@api.multi
 	#@api.depends('sex')
 	def _compute_x_sex_name(self):
 		for record in self:
 
-			record.x_sex_name = pat_vars._dic_sex[record.sex] 
+			#record.x_sex_name = pat_vars._dic_sex[record.sex] 
+			record.x_sex_name = record._dic[record.sex] 
 			#record.x_sex_name = record.sex
 
 

@@ -508,12 +508,14 @@ class ServiceCo2(models.Model):
 	# On change
 
 	@api.onchange('co2_lb_acneseq')
-	def _onchange_co2_lb_acneseq(self):		
+	def _onchange_co2_lb_acneseq(self):	
+
 		if self.co2_lb_acneseq != 'none':	
 
 			self.co2_lb_acneseq = self.clear_all(self.co2_lb_acneseq)
 
 			self.zone = 'body_local'
+
 			self.pathology = self.co2_lb_acneseq
 			
 #jx			
@@ -688,33 +690,24 @@ class ServiceCo2(models.Model):
 		self.co2_lb_cyst = 'none'
 		self.co2_lb_wart = 'none'
 
-
 		# Second 
 		self.co2_allface_acnesequels = 'none'
 		self.co2_allface_rejuvenation = 'none'
 		self.co2_allface_stains = 'none'
 
-
-		
-		
-
 		# Third
 		self.co2_lf_scar = 'none'
 		self.co2_lf_mole = 'none'
 		self.co2_lf_stains = 'none'
-		
 		self.co2_lf_keratosis = 'none'		
 		self.co2_lf_cyst = 'none'
 		self.co2_lf_wart = 'none'
 		
-
 		# First
 		self.co2_hands = 'none'
 		self.co2_neck = 'none'
 		self.co2_cheekbone = 'none'
-
 		self.co2_cheekbone_stains = 'none'
-
 		self.co2_vagina = 'none'
 		#self.co2_packages = 'none'
 

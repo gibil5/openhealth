@@ -1,0 +1,104 @@
+<openerp>
+	<data>
+
+<report
+	string="Historia Clinica - Sesiones"
+
+	id="report_patient_sessions"
+
+	model="oeh.medical.patient"
+	report_type="qweb-pdf"
+	name="openhealth.report_patient_sessions_view"            
+	file="oeh_medical_patient.report_patient"
+	/>
+
+<template id="openhealth.report_patient_sessions_view">
+	<t t-call="report.html_container">                 
+	<t t-foreach="docs" t-as="doc">
+	<t>          
+
+
+<!-- 									Page 3 - Begin 										-->
+<div class="page"     style="line-height: 200%;"     >    
+
+<h1>
+	Historia Clinica
+</h1>
+<br/>
+
+<h2>                            
+	Sesiones 
+</h2>
+<br/>
+
+
+<!-- Treatments - Sessions --> 
+<t t-foreach="doc.treatment_ids" t-as="t">
+<t t-foreach="t.session_ids" t-as="e">
+<table      style="line-height: 300%;">
+
+
+<tr>
+<th>Sesion#:</th>
+<th><t t-esc="e.evaluation_nr"/></th>
+</tr>
+
+<tr>
+<th>Fecha:</th>
+<th><t t-esc="e.evaluation_start_date"/></th>
+</tr>
+
+
+
+<tr>
+<th>Potencia (W):</th>
+<th><t t-esc="e.co2_power"/></th>
+</tr>
+
+<tr>
+<th>Frecuencia (Hz):</th>
+<th><t t-esc="e.co2_frequency"/></th>
+</tr>
+
+<tr>
+<th>Energía de pulso (mJ):</th>
+<th><t t-esc="e.co2_energy"/></th>
+</tr>
+
+<tr>
+<th>Modo de emisión:</th>
+
+<th><t t-esc="e._dic[e.co2_mode_emission]"/></th>
+
+</tr>
+
+<tr>
+<th>Modo de exposición:</th>
+
+<th><t t-esc="e._dic[e.co2_mode_exposure]"/></th>
+
+</tr>
+
+<tr>
+<th>Observaciones:</th>
+<th><t t-esc="e.co2_observations"/></th>
+</tr>
+
+</table>    
+</t>
+</t>
+
+
+
+</div>
+<!--  									End 												-->
+
+
+
+	</t>
+	</t>
+	</t>
+</template>
+
+	</data>
+</openerp>

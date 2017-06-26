@@ -23,14 +23,77 @@ from . import prodvars
 class Evaluation(models.Model):
 
 	_inherit = 'oeh.medical.evaluation'
-
 	#_name =	'openhealth.evaluation5'
-
-
 
 
 	#name = fields.Char(
 	#		)
+
+
+
+
+	# Commons
+	#vspace = fields.Char(
+	#		' ', 
+	#		readonly=True
+	#		)
+
+	#_dic = {
+	#			'Male':		'Masculino', 
+	#			'Female':	'Femenino', 
+	#			'none':		'Ninguno', 
+	#			'one':			'I', 
+	#			'two':			'II', 
+	#			'three':			'III', 
+	#			'continuous':	'Continua', 
+	#			'fractional':	'Fraccionado',
+	#			True:			'Si', 
+	#			False:		'No', 
+	#			'rejuvenation_capilar':			'Rejuvenecimiento capilar', 
+	#			'body_local':					'Localizado cuerpo', 
+	#			'':			'', 
+	#		}
+
+
+
+
+
+
+
+	# Nr images 
+	nr_images = fields.Integer(
+			string = "Nr Visia", 	
+			#required=True, 
+
+			compute="_compute_nr_images",
+		)
+
+	@api.multi
+	def _compute_nr_images(self):
+		for record in self:
+			ctr = 0
+			for image in record.image_ids:
+				ctr = ctr + 1
+			record.nr_images = ctr
+
+
+
+
+
+	# Evaluation Nr
+	evaluation_nr = fields.Integer(
+			string="Evaluation #", 
+			default=1, 
+
+			#compute='_compute_evaluation_nr', 
+			)
+	#@api.multi
+	#@api.depends('state')
+	#def _compute_evaluation_nr(self):
+	#	for record in self:
+	#		nr = 1
+	#		record.evaluation_nr = nr  
+
 
 
 
@@ -120,12 +183,6 @@ class Evaluation(models.Model):
 
 
 
-
-	# Commons
-	vspace = fields.Char(
-			' ', 
-			readonly=True
-			)
 
 
 

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# 	Order 
+# 	Test 
 # 
 
 from openerp import models, fields, api
@@ -8,10 +8,17 @@ from openerp import models, fields, api
 
 
 
-class sale_order(models.Model):
+class test(models.Model):
 	
-	_inherit='sale.order'
+	#_inherit='sale.order'
+	#_inherit='openhealth.base'
+	#_inherit=['openhealth.base', 'sale.order']
+	_inherit = ['openhealth.base', 'oeh.medical.evaluation']
 	
+	_name = 'openhealth.test'
+
+
+
 	
 	# Name 
 	name = fields.Char(
@@ -25,6 +32,4 @@ class sale_order(models.Model):
 	def _compute_name(self):
 		for record in self:
 			record.name = 'SE00' + str(record.id)
-			
-			
 			

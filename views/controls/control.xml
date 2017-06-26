@@ -164,17 +164,17 @@
 								<field name="x_done"/>
 
 
+
+								<field name="vspace"/>
+								<field name="nr_images"			invisible="0"	/>
+
+								<field name="vspace"/>
+								<field name="evaluation_nr"		invisible="1"	/>
+
+
+
 								<field name="vspace"/>
 								<field name="indication"	/>
-
-
-
-								<field name="vspace"/>
-								<field name="nr_images"			invisible="1"	/>
-
-								<field name="vspace"/>
-								<field name="control_nr"		invisible="1"	/>
-
 							</group>
 							<group>
 								<field name="procedure"			invisible="0"	/>
@@ -219,7 +219,7 @@
 
 <!--
 							<page string="Fotos VISIA"  	attrs="{
-																		'invisible':[('control_nr', 'in', [2, 4, 5] ),],
+																		'invisible':[('evaluation_nr', 'in', [2, 4, 5] ),],
 																}"	
 								>
 -->							
@@ -303,7 +303,7 @@
 					/>
 
 
-					<field name="control_nr"/>
+					<field name="evaluation_nr"/>
 
 
 

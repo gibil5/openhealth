@@ -1,0 +1,108 @@
+<openerp>
+	<data>
+
+<report
+	string="Historia Clinica - Controles"
+
+	id="report_patient_controls"
+
+	model="oeh.medical.patient"
+	report_type="qweb-pdf"
+	name="openhealth.report_patient_controls_view"            
+	file="oeh_medical_patient.report_patient"
+	/>
+
+<template id="openhealth.report_patient_controls_view">
+	<t t-call="report.html_container">                 
+	<t t-foreach="docs" t-as="doc">
+	<t>          
+
+
+<!-- 									Page 4 - Begin 										-->
+<div class="page"     style="line-height: 200%;"     >    
+
+<h1>
+	Historia Clinica
+</h1>
+<br/>
+
+<h2>                            
+	Controles
+</h2>
+<br/>
+<br/>
+
+
+
+
+<!-- Treatments - Controls --> 
+<t t-foreach="doc.treatment_ids" t-as="t">
+	
+<t t-foreach="t.control_ids" t-as="e">
+<table      style="line-height: 300%;">
+
+<tr>
+<th>Control #:</th>
+<th><t t-esc="e.evaluation_nr"/></th>
+</tr>
+
+<tr>
+<th>Fecha:</th>
+<th><t t-esc="e.evaluation_start_date"/></th>
+</tr>
+
+
+
+
+<tr>
+<th>Realizado:</th>
+<!--
+<th><t t-esc="e.x_done"/></th>
+-->
+<th><t t-esc="e._dic[e.x_done]"/></th>
+</tr>
+
+
+
+<tr>
+<th>Indicaciones:</th>
+<th><t t-esc="e.indication"/></th>
+</tr>
+
+<tr>
+<th>Observaciones:</th>
+<th><t t-esc="e.observation"/></th>
+</tr>
+
+<tr>
+<th>Nr Visia:</th>
+<th><t t-esc="e.nr_images"/></th>
+</tr>
+
+
+<!--
+<tr>
+<th>:</th>
+<th><t t-esc="e."/></th>
+</tr>
+-->
+
+
+
+
+
+</table>    
+<br/>
+<br/>
+</t>
+</t>
+</div>
+<!--  									End 												-->
+
+	</t>
+	</t>
+	</t>
+</template>
+
+	</data>
+</openerp>

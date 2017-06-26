@@ -11,6 +11,7 @@ from openerp import models, fields, api
 import datetime
 
 #from . import jxvars
+from . import eval_vars
 from . import time_funcs
 
 
@@ -21,7 +22,8 @@ class Control(models.Model):
 	_name = 'openhealth.control'
 
 	#_inherit = 'oeh.medical.evaluation'
-	_inherit = ['oeh.medical.evaluation', 'base_multi_image.owner']
+	#_inherit = ['oeh.medical.evaluation', 'base_multi_image.owner']
+	_inherit = ['oeh.medical.evaluation', 'base_multi_image.owner', 'openhealth.base']
 
 
 
@@ -55,13 +57,15 @@ class Control(models.Model):
 
 
 
-	# Control Nr
-	control_nr = fields.Integer(
+	# Evaluation Nr
+	#control_nr = fields.Integer(
+	evaluation_nr = fields.Integer(
 			string="Control #", 
 			default=1, 
 
 			#compute='_compute_control_nr', 
 			)
+
 	#@api.multi
 	#@api.depends('state')
 	#def _compute_control_nr(self):
@@ -73,7 +77,8 @@ class Control(models.Model):
 
 	# state 
 	state = fields.Selection(
-			#selection = eval_vars._state_list, 
+			selection = eval_vars._state_list, 
+			
 			#string='Estado',	
 			#default='draft',
 
@@ -110,26 +115,6 @@ class Control(models.Model):
 
 
 
-
-	# Nr images 
-	nr_images = fields.Integer(
-			string = "Nr Visia", 	
-			#required=True, 
-
-			compute="_compute_nr_images",
-		)
-
-	@api.multi
-	
-	def _compute_nr_images(self):
-		for record in self:
-
-			ctr = 0
-
-			for image in record.image_ids:
-				ctr = ctr + 1
-
-			record.nr_images = ctr
 
 
 

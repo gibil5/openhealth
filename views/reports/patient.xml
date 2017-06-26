@@ -1,0 +1,152 @@
+<openerp>
+	<data>
+
+<report
+	string="Historia Clinica - Hoja de Filiacion"
+
+	id="report_patient"
+
+	model="oeh.medical.patient"
+	report_type="qweb-pdf"
+	name="openhealth.report_patient_view"            
+	file="oeh_medical_patient.report_patient"
+	/>
+
+<template id="openhealth.report_patient_view">
+	<t t-call="report.html_container">                 
+	<t t-foreach="docs" t-as="doc">
+	<t>          
+
+
+
+
+<!-- 								Page 1 - Begin	 										-->
+<div class="page">    
+<h1>
+	Historia Clinica
+</h1>
+
+<br/>
+<h2>                            
+	Hoja de Filiación - Datos Generales
+</h2>
+<br/>
+<table style="line-height: 300%;">
+						 
+<!--
+<tr>
+<th>Estado Civil:</th>
+<th><t t-esc="doc."/></th>
+</tr>
+
+<tr>
+<th>Lugar de Nacimiento:</th>
+<th><t t-esc="doc."/></th>
+</tr>
+-->
+
+<tr>
+<th>Fecha:</th>
+<th><t t-esc="doc.x_date_created"/></th>
+</tr>
+						 
+<tr>
+<th>Apellidos y Nombres:</th>
+<th><t t-esc="doc.name"/>   </th>
+</tr>
+
+<tr>
+<th>País de Residencia:</th>
+<th><t t-esc="doc.x_country_name"/></th>
+</tr>
+
+<tr>
+<th>Direccion:</th>
+<th><t t-esc="doc.street"/></th>
+</tr>
+
+<tr>
+<th>Fecha de Nacimiento:</th>
+<th><t t-esc="doc.dob"/></th>
+</tr>
+
+<tr>
+<th>DNI:</th>
+<th><t t-esc="doc.x_dni"/></th>
+</tr>
+
+
+<tr>
+<th>Sexo:</th>
+<!--
+<th><t t-esc="doc.x_sex_name"/></th>
+-->
+<th><t t-esc="doc._dic[doc.sex]"/></th>
+
+</tr>
+
+
+<tr>
+<th>Grado de Instruccion:</th>
+<th><t t-esc="doc.x_education_level"/></th>
+</tr>
+
+<tr>
+<th>Edad:</th>
+<th><t t-esc="doc.age"/></th>
+</tr>
+
+<tr>
+<th>Correo Electronico:</th>
+<th><t t-esc="doc.email"/></th>
+</tr>
+
+<tr>
+<th>Ocupacion:</th>
+<th><t t-esc="doc.function"/></th>
+</tr>
+
+<tr>
+<th>Telefono Celular:</th>
+<th><t t-esc="doc.phone_1"/></th>
+</tr>
+
+<tr>
+<th>Telefono Fijo:</th>
+<th><t t-esc="doc.phone_2"/></th>
+</tr>
+
+<tr>
+<th>Nombre del acompanhante:</th>
+<th><t t-esc="doc.x_caregiver_last_name"/></th>
+</tr>
+
+<tr>
+<th>DNI del Acompanhante:</th>
+<th><t t-esc="doc.x_caregiver_dni"/></th>
+</tr>
+
+<tr>
+<th>Parentesco:</th>
+<!--
+<th><t t-esc="doc.x_caregiver_relation"/></th>
+-->
+<th><t t-esc="doc._dic[doc.x_caregiver_relation]"/></th>
+</tr>
+
+<!--
+<tr>
+<th>:</th>
+<th><t t-esc="doc."/></th>
+</tr>
+-->
+	</table>    
+</div> <!-- page --> 
+
+
+	</t>
+	</t>
+	</t>
+</template>
+	</data>
+</openerp>

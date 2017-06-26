@@ -1,0 +1,31 @@
+<!-- 									Page 3 - Begin 										-->
+<div class="page"     style="line-height: 200%;"     >    
+
+<h1>
+Sesiones 
+</h1>
+<br/>
+<table      style="line-height: 300%;">
+
+
+
+<!-- Treatments - Sessions --> 
+<t t-foreach="doc.treatment_ids" t-as="t">
+<t t-foreach="t.session_ids" t-as="s">
+
+<tr>
+<th>Fecha:</th>
+<th><t t-esc="s.evaluation_start_date"/></th>
+</tr>
+
+</t>
+</t>
+
+
+
+</table>    
+</div>
+<!--  									End 												-->
+
+
+

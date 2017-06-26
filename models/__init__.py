@@ -3,11 +3,18 @@
 #from . import models
 
 
+# Base 
+from . import base
+from . import test
+
+
+
+
 # In OpenHealth - Base - Deprecated
 from . import partner
 from . import patient  
 from . import product
-from . import evaluation  
+
 
 # Deprecated 
 #from . import learn_1
@@ -28,8 +35,12 @@ from . import appfuncs
 
 
 # Operational 
+
+
 from . import process 
 from . import treatment 
+from . import cosmetology				
+from . import evaluation  
 
 
 from . import physician 
@@ -98,7 +109,6 @@ from . import appointment
 
 
 # Cosmetology 	- Deprecated ? 
-from . import cosmetology				
 from . import consultation_cos
 from . import procedure_cos
 from . import session_cos

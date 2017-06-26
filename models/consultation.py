@@ -24,9 +24,10 @@ from . import app_vars
 
 class Consultation(models.Model):
 
-	_inherit = 'oeh.medical.evaluation'
-
 	_name = 'openhealth.consultation'
+
+	#_inherit = 'oeh.medical.evaluation'
+	_inherit = ['openhealth.base', 'oeh.medical.evaluation']
 	
 
 
@@ -49,7 +50,9 @@ class Consultation(models.Model):
 
 	# state 
 	state = fields.Selection(
-			#selection = eval_vars._state_list, 
+
+			selection = eval_vars._state_list, 
+		
 			#string='Estado',	
 			#default='draft',
 

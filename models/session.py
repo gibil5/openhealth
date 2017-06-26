@@ -21,7 +21,20 @@ from . import time_funcs
 
 class Session(models.Model):
 	_name = 'openhealth.session'
-	_inherit = 'oeh.medical.evaluation'
+
+	#_inherit = 'oeh.medical.evaluation'
+	_inherit = ['oeh.medical.evaluation', 'openhealth.base']
+
+
+
+
+
+
+	# Evaluation Nr
+	evaluation_nr = fields.Integer(
+			string="Sesión #", 
+			default=1, 
+			)
 
 
 

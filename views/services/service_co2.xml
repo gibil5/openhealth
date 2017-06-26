@@ -39,6 +39,8 @@
 					<field name="treatment"/>
 					<field name="service"/>
 					<field name="consultation"/>
+
+					<field name="zone"/>
 				</tree>
 			</field>
 		</record>

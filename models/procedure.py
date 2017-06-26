@@ -20,8 +20,11 @@ from . import app_vars
 
 class Procedure(models.Model):
 
-	_inherit = 'oeh.medical.evaluation'
 	_name = 'openhealth.procedure'
+
+	#_inherit = 'oeh.medical.evaluation'
+	_inherit = ['oeh.medical.evaluation', 'openhealth.base']
+
 
 
 	name = fields.Char(

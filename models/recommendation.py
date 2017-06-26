@@ -44,8 +44,8 @@ class recommendation(models.Model):
 				'target': 'current',
 
 				'flags': 	{
-							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-							'form': {'action_buttons': False, }
+							'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+							#'form': {'action_buttons': False, }
 							},
 
 				'context': {							

@@ -1528,7 +1528,7 @@ class Treatment(models.Model):
 
 
 
-	# create_recommendation
+	# create_service
 
 
 

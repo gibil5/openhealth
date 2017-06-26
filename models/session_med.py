@@ -24,7 +24,6 @@ class SessionMed(models.Model):
 	
 	_name = 'openhealth.session.med'
 	
-	#_inherit = 'oeh.medical.evaluation'
 	_inherit = 'openhealth.session'
 
 
@@ -47,8 +46,6 @@ class SessionMed(models.Model):
 	co2_energy=fields.Float(
 			string="Energía de pulso (mJ)",
 			)
-	
-	
 
 	co2_mode_emission=fields.Selection(
 			string="Modo de emisión",

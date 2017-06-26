@@ -20,7 +20,35 @@ from . import serv_funcs
 
 
 class Service(models.Model):
+
+	_inherit = 'openhealth.base', 
+
+
 	_name = 'openhealth.service'
+
+
+
+
+	#_dic = {
+	#			'Male':		'Masculino', 
+	#			'Female':	'Femenino', 
+	#			'none':		'Ninguno', 
+	#			'one':			'', 
+	#			'two':			'', 
+	#			'three':			'', 
+	#			'rejuvenation_capilar':			'Rejuvenecimiento capilar', 
+	#			'body_local':					'Localizado cuerpo', 
+	#			'':			'', 
+	#		}
+
+	#vspace = fields.Char(
+	#		' ', 
+	#		readonly=True
+	#		)
+
+
+
+
 
 
 	# Name 
@@ -180,11 +208,8 @@ class Service(models.Model):
 	# Commons 
 	def clear_all(self,token):
 		
-		#print
-		#print 'jx'
-		#print 'Clear All'
-
 		self.clear_commons()
+		
 		self.clear_local() 
 		return token
 
@@ -192,11 +217,7 @@ class Service(models.Model):
 		
 	def clear_commons(self):	
 
-		#print
-		#print 'jx'
-		#print 'Clear Commons'
-
-		self.zone = 'none'
+		#self.zone = 'none'
 		self.pathology = 'none'
 		
 
@@ -389,10 +410,7 @@ class Service(models.Model):
 
 
 	# Other
-	vspace = fields.Char(
-			' ', 
-			readonly=True
-			)
+
 			
 	title = fields.Char(
 			string='Title', 

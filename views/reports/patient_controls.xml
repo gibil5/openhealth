@@ -2,7 +2,7 @@
 	<data>
 
 <report
-	string="Historia Clinica - Controles"
+	string="Historia Clínica - Controles"
 
 	id="report_patient_controls"
 
@@ -22,7 +22,7 @@
 <div class="page"     style="line-height: 200%;"     >    
 
 <h1>
-	Historia Clinica
+	Historia Clínica
 </h1>
 <br/>
 
@@ -98,6 +98,38 @@
 </t>
 </div>
 <!--  									End 												-->
+
+
+
+<!-- Footer --> 
+<div class="footer">    
+<t t-foreach="doc.treatment_ids" t-as="t">
+
+
+<div class='row'>
+<div class='col-xs-4'>
+<b>
+Apellidos y Nombres:
+</b>
+<t t-esc="t.patient.name"/>
+</div>
+
+<div class='col-xs-5'>
+</div>
+
+<div class='col-xs-3'>
+<b>
+Historia #:
+</b>
+<t t-esc="t.patient.identification_code"/>
+</div>
+</div>
+
+
+</t>
+</div>
+<!-- Footer --> 
+
 
 	</t>
 	</t>

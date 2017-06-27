@@ -2,7 +2,7 @@
 	<data>
 
 <report
-	string="Historia Clinica - Primera Consulta"
+	string="Historia Clínica - Primera Consulta"
 
 	id="report_patient_consultation"
 
@@ -22,7 +22,7 @@
 <div class="page"     style="line-height: 200%;"     >    
 
 <h1>
-	Historia Clinica
+	Historia Clínica
 </h1>
 <br/>
 
@@ -62,7 +62,7 @@ Datos Generales
 </tr>
 
 <tr>
-	<th>Antecedentes Medicos y/o quirurgicos:</th>
+	<th>Antecedentes Médicos y/o quirúrgicos:</th>
 <th><t t-esc="c.x_antecedents"/></th>
 </tr>
 
@@ -72,7 +72,7 @@ Datos Generales
 </tr>
 
 <tr>
-<th>Diagnostico:</th>
+<th>Diagnóstico:</th>
 <th><t t-esc="c.x_diagnosis"/></th>
 </tr>
 
@@ -92,7 +92,7 @@ Datos Generales
 </tr>
 
 <tr>
-<th>Analisis de Laboratorio:</th>
+<th>Análisis de Laboratorio:</th>
 <th><t t-esc="c.x_analysis_lab"/></th>
 </tr>
 
@@ -130,6 +130,38 @@ Datos Generales
 </div>
 <!--  									End 												-->
 						 
+
+
+
+<!-- Footer --> 
+<div class="footer">    
+
+<t t-foreach="doc.treatment_ids" t-as="t">
+
+<div class='row'>
+<div class='col-xs-4'>
+<b>
+Apellidos y Nombres:
+</b>
+<t t-esc="t.patient.name"/>
+</div>
+
+<div class='col-xs-5'>
+</div>
+
+<div class='col-xs-3'>
+<b>
+Historia #:
+</b>
+<t t-esc="t.patient.identification_code"/>
+</div>
+</div>
+
+</t>
+
+</div>
+<!-- Footer --> 
+
 
 
 

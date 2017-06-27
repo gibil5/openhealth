@@ -524,7 +524,8 @@ def create_controls_go(self):
 											'appointment': appointment_id,
 											'treatment': treatment_id,
 
-											'control_nr': k+1, 
+											#'control_nr': k+1, 
+											'evaluation_nr': k+1, 
 									})
 
 

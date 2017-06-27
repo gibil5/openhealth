@@ -2,7 +2,7 @@
 	<data>
 
 <report
-	string="Historia Clinica - Hoja de Filiacion"
+	string="Historia Clínica - Hoja de Filiacion"
 
 	id="report_patient"
 
@@ -23,7 +23,7 @@
 <!-- 								Page 1 - Begin	 										-->
 <div class="page">    
 <h1>
-	Historia Clinica
+	Historia Clínica
 </h1>
 
 <br/>
@@ -61,7 +61,7 @@
 </tr>
 
 <tr>
-<th>Direccion:</th>
+<th>Dirección:</th>
 <th><t t-esc="doc.street"/></th>
 </tr>
 
@@ -87,7 +87,7 @@
 
 
 <tr>
-<th>Grado de Instruccion:</th>
+<th>Grado de Instrucción:</th>
 <th><t t-esc="doc.x_education_level"/></th>
 </tr>
 
@@ -97,32 +97,32 @@
 </tr>
 
 <tr>
-<th>Correo Electronico:</th>
+<th>Correo Electrónico:</th>
 <th><t t-esc="doc.email"/></th>
 </tr>
 
 <tr>
-<th>Ocupacion:</th>
+<th>Ocupación:</th>
 <th><t t-esc="doc.function"/></th>
 </tr>
 
 <tr>
-<th>Telefono Celular:</th>
+<th>Teléfono Celular:</th>
 <th><t t-esc="doc.phone_1"/></th>
 </tr>
 
 <tr>
-<th>Telefono Fijo:</th>
+<th>Teléfono Fijo:</th>
 <th><t t-esc="doc.phone_2"/></th>
 </tr>
 
 <tr>
-<th>Nombre del acompanhante:</th>
+<th>Nombre del acompañante:</th>
 <th><t t-esc="doc.x_caregiver_last_name"/></th>
 </tr>
 
 <tr>
-<th>DNI del Acompanhante:</th>
+<th>DNI del Acompañante:</th>
 <th><t t-esc="doc.x_caregiver_dni"/></th>
 </tr>
 
@@ -142,6 +142,36 @@
 -->
 	</table>    
 </div> <!-- page --> 
+
+
+
+
+<!-- Footer --> 
+<div class="footer">    
+
+<div class='row'>
+<div class='col-xs-4'>
+<b>
+Apellidos y Nombres:
+</b>
+<t t-esc="doc.name"/>
+</div>
+
+<div class='col-xs-5'>
+</div>
+
+<div class='col-xs-3'>
+<b>
+Historia #:
+</b>
+<t t-esc="doc.identification_code"/>
+</div>
+</div>
+
+</div>
+<!-- Footer --> 
+
+
 
 
 	</t>

@@ -85,6 +85,7 @@ class Evaluation(models.Model):
 			string="Evaluation #", 
 			default=1, 
 
+			required=True, 
 			#compute='_compute_evaluation_nr', 
 			)
 	#@api.multi

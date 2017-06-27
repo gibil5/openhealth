@@ -4,6 +4,7 @@
 # 
 #
 
+
 {
 	'name': "Open Health - MIN",
 
@@ -19,7 +20,7 @@
 
 		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage\n
 
-		Last built: 	26 June 2017 - Yey !
+		Last built: 	27 June 2017 - Yey !
 
 		Created: 	 	7 Sep 2016
 

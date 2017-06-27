@@ -565,6 +565,7 @@ class Consultation(models.Model):
 
 	x_analysis_lab = fields.Boolean(
 			string = 'Análisis de laboratorio', 
+			default=False, 
 			)
 
 	x_observations = fields.Text(

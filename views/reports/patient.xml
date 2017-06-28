@@ -2,7 +2,7 @@
 	<data>
 
 <report
-	string="Historia Clínica - Hoja de Filiacion"
+	string="HC - Hoja de Filiacion"
 
 	id="report_patient"
 
@@ -19,16 +19,44 @@
 
 
 
+<!-- Header --> 
+<div class="header">    
+	<img src='/openhealth/static/src/img/logo_chavarri.png' style="max-height: 100px;"/>
+</div>
+
+
 
 <!-- 								Page 1 - Begin	 										-->
 <div class="page">    
+
+
+<center>
 <h1>
-	Historia Clínica
+	Hoja de Filiación
 </h1>
+</center>
+
 
 <br/>
+<br/>
+
+
+
+<!-- Date --> 
+<div class='row'>
+<div class='col-xs-9'></div>
+<div class='col-xs-3'>
+<b>Fecha:</b>
+<t t-esc="doc.x_date_created"/>
+</div>
+</div>
+
+
+
+
+
 <h2>                            
-	Hoja de Filiación - Datos Generales
+	Datos Generales
 </h2>
 <br/>
 <table style="line-height: 300%;">
@@ -45,11 +73,13 @@
 </tr>
 -->
 
+<!--
 <tr>
 <th>Fecha:</th>
 <th><t t-esc="doc.x_date_created"/></th>
 </tr>
-						 
+-->
+
 <tr>
 <th>Apellidos y Nombres:</th>
 <th><t t-esc="doc.name"/>   </th>

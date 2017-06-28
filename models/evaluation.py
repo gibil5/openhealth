@@ -58,6 +58,13 @@ class Evaluation(models.Model):
 
 
 
+	# Autofill
+	x_autofill = fields.Boolean(
+		string="Autofill",
+		default=False, 
+	)
+	
+
 
 
 	# Nr images 

@@ -2,7 +2,7 @@
 	<data>
 
 <report
-	string="Historia Clínica - Primera Consulta"
+	string="HC - Primera Consulta"
 
 	id="report_patient_consultation"
 
@@ -18,18 +18,45 @@
 	<t>          
 
 
+
+<!-- Header --> 
+<div class="header">    
+	<img src='/openhealth/static/src/img/logo_chavarri.png' style="max-height: 100px;"/>
+</div>
+
+
+
 <!-- 									Page 2 - Begin 										-->
-<div class="page"     style="line-height: 200%;"     >    
+<div class="page"     style="line-height: 100%;"     >    
 
+<center>
 <h1>
-	Historia Clínica
+	Primera Consulta 
 </h1>
+</center>
+<br/>
 <br/>
 
+
+
+<!-- Date --> 
+<div class='row'>
+<div class='col-xs-9'></div>
+<div class='col-xs-3'>
+<b>Fecha:</b>
+<t t-esc="doc.x_date_created"/>
+</div>
+</div>
+
+
+
+<!--
 <h2>                            
-	Primera Consulta 
 </h2>
+-->
 <br/>
+<br/>
+
 
 <!--
 <br/>
@@ -48,17 +75,19 @@ Datos Generales
 <t t-foreach="doc.treatment_ids" t-as="t">
 <t t-foreach="t.consultation_ids" t-as="c">
 
+<!--
 <tr>
 <th>Fecha:</th>
 <th><t t-esc="c.evaluation_start_date"/></th>
 </tr>
+-->
 
 <tr>
 <th>Motivo de la Consulta:</th>
 <!--
 <th><t t-esc="c.chief_complaint"/></th>
 -->
-<th><t t-esc="c._dic[c.chief_complaint]"/></th>
+<th><t t-esc="c._cc_dic[c.chief_complaint]"/></th>
 </tr>
 
 <tr>
@@ -118,11 +147,12 @@ Datos Generales
 <th><t t-esc="s.service.name"/></th>
 </tr>
 
+<!--
+-->
 <tr>
 <th>Zona del cuerpo:</th>
-<th><t t-esc="s._dic[s.zone]"/></th>
+<th><t t-esc="s._zo_dic[s.zone]"/></th>
 </tr>
-
 
 </t>
 </t>

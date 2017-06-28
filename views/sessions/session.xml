@@ -117,15 +117,28 @@
 
 
 						<!-- Padding --> 
+<!--
 						<group></group>
 						<group></group>
 						<group></group>
 						<group></group>
+-->					
 						<!--
 						<div class="oe_left" style="height: 55px;">
 						</div>
 						-->
 
+
+
+						<!-- Autofill --> 
+						<group>
+							<group>
+							</group>
+							<group class="oe_right">							
+								<field name="x_autofill"/>
+							</group>							
+						</group>						
+						
 
 
 						<!-- Fields --> 
@@ -172,7 +185,9 @@
 
 
 							<group>
-								<field name="treatment"			/>
+								<field name="treatment"/>
+
+								<field name="evaluation_nr"/>
 							</group>
 							<group>								
 								<field name="product"/>
@@ -216,12 +231,13 @@
 				<tree string="session Tree">
 					
 
+					<field name="evaluation_nr"/>
+
+
 
 					<field name="name"/>
 					
 					<field name="appointment"/>
-
-
 
 
 					<field name="patient"  string="Paciente"/>
@@ -229,11 +245,9 @@
 					<field name="doctor"   string="Médico"/>
 					
 
-
 					<field name="chief_complaint"/>
 
 					<field name="product"/>
-
 
 
 					<field name="evaluation_start_date"/>
@@ -309,13 +323,6 @@
 
 
 
-
-		
-		
-
-		
-		
-		
 		<!-- Menus --> 
 		<!-- top level menu: no parent -->
 		<!--

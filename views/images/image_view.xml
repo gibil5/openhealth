@@ -44,9 +44,9 @@
 
                 <group>
                     <group string="Tipo">
-
+<!--
                         <field name="image_full"/>
-
+-->
                         <field name="xtype"/>
                         <field name="origin"/>
 
@@ -99,7 +99,7 @@
 -->
                         <field name="image_main"
                                widget="image"
-                               readonly="False"
+                               readonly="True"
                                nolabel="1" />
                     </group>
                 </group>
@@ -109,21 +109,24 @@
 
 
 
-                <group col="1">
 <!--
+                <group col="1">
                             class="oe_right oe_image_custom"   
                             name="image_main"    
--->                    
                     <field  
                             name="file_db_store"
                             widget="image"  
                             style="height: 3000px;"
                             />
                 </group>
+-->                    
+
             </sheet>
         </form>
     </field>
 </record>
+
+
 
 
 

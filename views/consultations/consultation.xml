@@ -389,21 +389,19 @@ DEPRECATED
 
 
 
-						<!-- Padding --> 
+						<!-- Autofill --> 
 						<group>
-
 							<group>
 								<!--
 								<field name="id"/>
 								-->
 							</group>
-
-
 							<group class="oe_right">							
 								<field name="x_autofill"/>
 							</group>							
 						</group>						
 						
+
 						<!--
 						<div class="oe_left" style="height: 55px;">
 							<field string="Tratamiento"  name="treatment"  invisible="0"/>

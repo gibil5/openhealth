@@ -47,16 +47,18 @@
 
 																		'default_chief_complaint': chief_complaint,
 
-
 																		'default_evaluation_start_date': evaluation_start_date,
 
 																		'default_product': product,
 
 																		'default_doctor': doctor,
 
-
 																		'default_treatment': treatment,
+
 																		'default_evaluation_type': 'control',
+
+
+																		'default_evaluation_nr': nr_controls + 1,
 																		}"
 							/>
 						

@@ -258,17 +258,14 @@
 		<!-- images --> 
 <!--
 			action="image_list_action"
--->
 		<menuitem id="images_full_menu" name="Images Full" parent="openhealth_menu"
 			sequence="-100"
-
 			action="image_full_action"
-
 			/>
+-->
 
 		<menuitem id="images_menu" name="Images" parent="openhealth_menu"
 			sequence="-90"
-
 			action="image_action"
 
 			/>

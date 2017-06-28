@@ -33,6 +33,20 @@ class Procedure(models.Model):
 			)
 
 
+
+
+	#nr_controls = fields.Integer(
+	#		default=7, 
+	#		compute="_compute_nr_controls",
+	#	)
+	#@api.multi
+	#@api.depends('product')
+	#def _compute_nr_controls(self):
+	#	for record in self:
+
+
+
+
 	# Machine 
 	machine = fields.Selection(
 			string="Sala", 

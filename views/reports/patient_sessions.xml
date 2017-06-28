@@ -2,7 +2,7 @@
 	<data>
 
 <report
-	string="Historia Clínica - Sesiones"
+	string="HC - Sesiones"
 
 	id="report_patient_sessions"
 
@@ -18,73 +18,177 @@
 	<t>          
 
 
+
+<!-- Header --> 
+<div class="header">    
+	<img src='/openhealth/static/src/img/logo_chavarri.png' style="max-height: 100px;"/>
+</div>
+
+
+
+
 <!-- 									Page 3 - Begin 										-->
 <div class="page"     style="line-height: 200%;"     >    
 
-<h1>
-	Historia Clínica
-</h1>
-<br/>
 
-<h2>                            
+
+
+
+
+<!--
+<center>
+<h1>
 	Sesiones 
-</h2>
+</h1>
+</center>
 <br/>
+<br/>
+-->
 
 
 <!-- Treatments - Sessions --> 
 <t t-foreach="doc.treatment_ids" t-as="t">
 <t t-foreach="t.session_ids" t-as="e">
-<table      style="line-height: 300%;">
-
-
-<tr>
-<th>Sesión#:</th>
-<th><t t-esc="e.evaluation_nr"/></th>
-</tr>
-
-<tr>
-<th>Fecha:</th>
-<th><t t-esc="e.evaluation_start_date"/></th>
-</tr>
 
 
 
-<tr>
-<th>Potencia (W):</th>
-<th><t t-esc="e.co2_power"/></th>
-</tr>
+<!-- Evaluation nr --> 
+<center>
+<h2> 
+	Sesión #:
+	<t t-esc="e.evaluation_nr"/>
+</h2>
+</center>
+<br/>
+<br/>
 
-<tr>
-<th>Frecuencia (Hz):</th>
-<th><t t-esc="e.co2_frequency"/></th>
-</tr>
 
-<tr>
-<th>Energía de pulso (mJ):</th>
-<th><t t-esc="e.co2_energy"/></th>
-</tr>
+<!--
+<div class='row'>
+<div class='col-xs-4'>
+</div>
+<div class='col-xs-8'></div>
+</div>
+-->
 
-<tr>
-<th>Modo de emisión:</th>
 
-<th><t t-esc="e._dic[e.co2_mode_emission]"/></th>
 
-</tr>
+<!-- Date --> 
+<div class='row'>
+<div class='col-xs-8'></div>
+<div class='col-xs-4'>
+<b>
+	Fecha:
+</b>
+	<t t-esc="e.evaluation_start_date"/>
+</div>
+</div>
+<br/>
+<br/>
 
-<tr>
-<th>Modo de exposición:</th>
 
-<th><t t-esc="e._dic[e.co2_mode_exposure]"/></th>
 
-</tr>
+<!-- Power --> 
+<div class='row'>
+<div class='col-xs-4'>
+<b>
+	Potencia (W):	
+</b>
+</div>
+<div class='col-xs-8'>
+	<t t-esc="e.co2_power"/>
+</div>
+</div>
+<br/>
 
-<tr>
-<th>Observaciones:</th>
-<th><t t-esc="e.co2_observations"/></th>
-</tr>
 
-</table>    
+
+
+
+
+<!-- Frequency --> 
+<div class='row'>
+<div class='col-xs-4'>	
+<b>
+Frecuencia (Hz):
+</b>
+</div>
+<div class='col-xs-8'>
+<t t-esc="e.co2_frequency"/>
+</div>
+</div>
+<br/>
+
+
+
+<!-- Energy --> 
+<div class='row'>
+<div class='col-xs-4'>
+<b>
+
+Energía de pulso (mJ):
+</b>
+</div>
+<div class='col-xs-8'>
+
+<t t-esc="e.co2_energy"/>
+</div>
+</div>
+<br/>
+
+
+
+
+<!-- Mode emission --> 
+<div class='row'>
+<div class='col-xs-4'>
+<b>
+	Modo de emisión:
+</b>
+</div>
+<div class='col-xs-8'>
+<t t-esc="e._dic[e.co2_mode_emission]"/>
+</div>
+</div>
+<br/>
+
+
+
+<!-- Mode exposure --> 
+<div class='row'>
+<div class='col-xs-4'>
+<b>
+Modo de exposición:
+</b>
+</div>
+<div class='col-xs-8'>
+<t t-esc="e._dic[e.co2_mode_exposure]"/>
+</div>
+</div>
+<br/>
+
+
+
+
+<!-- Observations --> 
+<div class='row'>
+<div class='col-xs-4'>
+<b>
+Observaciones:
+</b>
+</div>
+<div class='col-xs-8'>
+<t t-esc="e.co2_observations"/>
+</div>
+</div>
+<br/>
+
+
+<p style="page-break-after:always;"></p>
+
+
+
+
 </t>
 </t>
 
@@ -96,9 +200,11 @@
 
 
 <!-- Footer --> 
+<!--
+-->
 <div class="footer">    
-<t t-foreach="doc.treatment_ids" t-as="t">
 
+<t t-foreach="doc.treatment_ids" t-as="t">
 
 <div class='row'>
 <div class='col-xs-4'>
@@ -110,7 +216,6 @@ Apellidos y Nombres:
 
 <div class='col-xs-5'>
 </div>
-
 <div class='col-xs-3'>
 <b>
 Historia #:
@@ -118,11 +223,13 @@ Historia #:
 <t t-esc="t.patient.identification_code"/>
 </div>
 </div>
-
-
 </t>
+
 </div>
 <!-- Footer --> 
+
+
+
 
 
 

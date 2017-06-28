@@ -23,8 +23,9 @@
 
 
 				<!-- Title --> 
+
 				<xpath expr="//h1" position="replace">
-					<h1 class="jx_title">Sesión - Med</h1>	
+					<h1 class="jx_title">Sesión</h1>	
         		</xpath>
 
 
@@ -66,11 +67,14 @@
 					/>
 
 
+					<field name="evaluation_nr"/>
+
+
+
 
 					<field name="name"/>
 					
 					<field name="appointment"/>
-
 
 
 					<field name="patient"  string="Paciente"/>

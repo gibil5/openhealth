@@ -160,14 +160,11 @@ _zone_list = [
 		('areolas',		'areolas'), 
 		('armpits',		'armpits'), 
 		('arms',		'arms'), 
-
 		('back',		'back'), 
 		('belly',		'belly'), 
 		('body_local',	'body_local'), 
 		('breast',		'breast'), 
-
 		('cheekbones',	'cheekbones'), 
-
 		('face',		'face'),
 		('face_all',	'face_all'), 
 		('face_hands',	'face_hands'), 
@@ -175,29 +172,20 @@ _zone_list = [
 		('face_neck',	'face_neck'), 
 		('face_neck_hands',	'face_neck_hands'),   
 		('feet',		'feet'), 
-
 		('gluteus',		'gluteus'), 
-
 		('hands',		'hands'), 
-		
+		('head',		'head'), 
 		('legs',		'legs'), 
 		('neck',		'neck'), 
-		
 		('package',		'package'), 
-
 		('shoulders',	'shoulders'), 
-
 		('vagina',		'vagina'), 
 
 
-
-
-
-		('head',		'head'), 
 		('1_zone',		'1_zone'), 
-		('x',		'x'), 
 		('1_hypodermic','1_hypodermic'), 
 		('1_hypodermic_repair','1_hypodermic_repair'), 
+		('x',		'x'), 
 
 		('na',		'na'),
 
@@ -211,8 +199,8 @@ _zone_list = [
 
 
 
-		('',		''),
 		('none',		'none'),
+		('',		''),
 
 	]
 	

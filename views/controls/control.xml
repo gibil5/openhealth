@@ -169,7 +169,7 @@
 								<field name="nr_images"			invisible="0"	/>
 
 								<field name="vspace"/>
-								<field name="evaluation_nr"		invisible="1"	/>
+								<field name="evaluation_nr"		invisible="0"	/>
 
 
 

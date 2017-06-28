@@ -2,7 +2,7 @@
 	<data>
 
 <report
-	string="Historia Clínica - Controles"
+	string="HC - Controles"
 
 	id="report_patient_controls"
 
@@ -18,19 +18,26 @@
 	<t>          
 
 
+
+<!-- Header --> 
+<div class="header">    
+	<img src='/openhealth/static/src/img/logo_chavarri.png' style="max-height: 100px;"/>
+</div>
+
+
+
 <!-- 									Page 4 - Begin 										-->
 <div class="page"     style="line-height: 200%;"     >    
 
+<center>
 <h1>
-	Historia Clínica
+	Controles
 </h1>
+</center>
+<br/>
 <br/>
 
-<h2>                            
-	Controles
-</h2>
-<br/>
-<br/>
+
 
 
 
@@ -39,65 +46,116 @@
 <t t-foreach="doc.treatment_ids" t-as="t">
 	
 <t t-foreach="t.control_ids" t-as="e">
-<table      style="line-height: 300%;">
 
-<tr>
-<th>Control #:</th>
-<th><t t-esc="e.evaluation_nr"/></th>
-</tr>
+<br/>
 
-<tr>
-<th>Fecha:</th>
-<th><t t-esc="e.evaluation_start_date"/></th>
-</tr>
-
-
-
-
-<tr>
-<th>Realizado:</th>
-<!--
-<th><t t-esc="e.x_done"/></th>
--->
-<th><t t-esc="e._dic[e.x_done]"/></th>
-</tr>
-
-
-
-<tr>
-<th>Indicaciones:</th>
-<th><t t-esc="e.indication"/></th>
-</tr>
-
-<tr>
-<th>Observaciones:</th>
-<th><t t-esc="e.observation"/></th>
-</tr>
-
-<tr>
-<th>Nr Visia:</th>
-<th><t t-esc="e.nr_images"/></th>
-</tr>
-
-
-<!--
-<tr>
-<th>:</th>
-<th><t t-esc="e."/></th>
-</tr>
--->
+<!-- Evaluation nr --> 
+<div class='row'>
+<div class='col-xs-4'>
+<h3> 
+<b>
+	Control #:
+	<t t-esc="e.evaluation_nr"/>
+</b>
+</h3>
+</div>
+<div class='col-xs-8'></div>
+</div>
 
 
 
 
-
-</table>    
+<!-- Date --> 
+<div class='row'>
+<div class='col-xs-8'></div>
+<div class='col-xs-4'>
+<b>
+	Fecha:
+</b>
+	<t t-esc="e.evaluation_start_date"/>
+</div>
+</div>
 <br/>
 <br/>
+
+
+
+
+<!-- Done --> 
+<div class='row'>
+<div class='col-xs-4'>
+<b>
+	Realizado:
+</b>
+</div>
+<div class='col-xs-8'>
+	<t t-esc="e._dic[e.x_done]"/>
+</div>
+</div>
+<br/>
+
+
+
+
+
+<!-- Indications --> 
+<div class='row'>
+<div class='col-xs-4'>
+<b>
+	Indicaciones:
+</b>
+</div>
+<div class='col-xs-8'>
+	<t t-esc="e.indication"/>
+</div>
+</div>
+<br/>
+
+
+
+<!-- Observations --> 
+<div class='row'>
+<div class='col-xs-4'>
+<b>
+Observaciones:
+</b>
+</div>
+<div class='col-xs-8'>
+<t t-esc="e.observation"/>
+</div>
+</div>
+<br/>
+
+
+
+
+
+<!-- Nr Visia --> 
+<div class='row'>
+<div class='col-xs-4'>
+<b>
+	Nr Visia:
+</b>
+</div>
+<div class='col-xs-8'>
+	<t t-esc="e.nr_images"/>
+</div>
+</div>
+<br/>
+
+<br/>
+<br/>
+
+
+
+<p style="page-break-after:always;"></p>
+
 </t>
 </t>
 </div>
 <!--  									End 												-->
+
+
 
 
 

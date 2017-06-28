@@ -272,12 +272,7 @@ class Consultation(models.Model):
 
 
 
-	# Autofill
 
-	x_autofill = fields.Boolean(
-		string="Autofill",
-		default=False, 
-	)
 
 	@api.onchange('x_autofill')
 	
@@ -285,18 +280,20 @@ class Consultation(models.Model):
 
 		if self.x_autofill == True:
 
-			self.x_fitzpatrick = 'one'			
-			self.x_photo_aging = 'one'
+			self.x_fitzpatrick = 'two'	
 
-			self.x_diagnosis = 'a'
+			self.x_photo_aging = 'three'
 
-			self.x_antecedents = 'b'
+			self.x_diagnosis = '1. Acné activo. 2. Secuelas de acné.'
 
-			self.x_allergies_medication = 'c'
+			self.x_antecedents = 'Demostración con Punta de Diamante. Niega enfermedades y cirugías.'
 
-			self.x_observations = 'd'
+			self.x_allergies_medication = 'Niega AMs.'
 
-			self.x_indications = 'e'
+			self.x_observations = 'Cicatriz plana hiperpigmentada en pómulo derecho. Pápulas en pómulos.'
+
+			self.x_indications = 'Láser Co2 Fraccional.'
+
 
 
 

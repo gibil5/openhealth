@@ -1,0 +1,72 @@
+
+
+
+<table      style="line-height: 300%;">
+
+<tr>
+<th>Control #:</th>
+<th><t t-esc="e.evaluation_nr"/></th>
+</tr>
+
+<tr>
+<th>Fecha:</th>
+<th><t t-esc="e.evaluation_start_date"/></th>
+</tr>
+
+
+
+
+
+<tr>
+<th>
+	Realizado:
+</th>
+<th>
+	<t t-esc="e._dic[e.x_done]"/>
+</th>
+</tr>
+
+
+
+<tr>
+<th>
+	Indicaciones:
+</th>
+<th>
+	<t t-esc="e.indication"/>
+</th>
+</tr>
+
+<tr>
+<th>
+	Observaciones:
+</th>
+<th>
+	<t t-esc="e.observation"/>
+</th>
+</tr>
+
+
+
+<tr>
+<th>
+	Nr Visia:
+</th>
+<th>
+	<t t-esc="e.nr_images"/>
+</th>
+</tr>
+
+
+<!--
+<tr>
+<th>:</th>
+<th><t t-esc="e."/></th>
+</tr>
+-->
+
+
+
+
+
+</table>    

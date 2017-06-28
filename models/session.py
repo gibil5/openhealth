@@ -29,6 +29,32 @@ class Session(models.Model):
 
 
 
+	# Autofill
+	@api.onchange('x_autofill')
+	
+	def _onchange_x_autofill(self):
+
+		if self.x_autofill == True:
+
+
+			self.co2_power = 1.5
+
+			self.co2_frequency = 10
+
+			self.co2_energy = 150
+
+			self.co2_mode_emission = 'fractional'
+
+			self.co2_mode_exposure = 'one'
+
+			self.co2_observations = 'Cicatriz plana hiperpigmentada en pómulo derecho. Pápulas en pómulos.'
+
+			self.x_indications = 'Láser Co2 Fraccional.'
+
+
+
+
+
 
 	# Evaluation Nr
 	evaluation_nr = fields.Integer(
@@ -88,9 +114,17 @@ class Session(models.Model):
 
 
 
+
+
 	name = fields.Char(
-			string = 'Sesión #',
+			string = 'Nombre',
 			)
+
+	evaluation_nr = fields.Integer(
+			string="Sesión #", 
+			default=1, 
+			)
+
 
 
 

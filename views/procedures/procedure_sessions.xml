@@ -26,13 +26,15 @@
 																		'default_evaluation_start_date': evaluation_start_date,
 																		'default_product': product,
 																		'default_doctor': doctor,
-																		
 																		'default_treatment': treatment,
 																		'default_evaluation_type': 'session',
-
 																		'default_co2_mode_emission': 'continuous', 
 																		'default_co2_mode_exposure': 'one', 
 																		'default_co2_observations': 'x', 
+
+
+
+																		'default_evaluation_nr': nr_sessions + 1,
 																		}"
 						/>
 

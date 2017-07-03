@@ -166,14 +166,13 @@ Datos Generales
 <!-- Footer --> 
 <div class="footer">    
 
-<t t-foreach="doc.treatment_ids" t-as="t">
 
 <div class='row'>
 <div class='col-xs-4'>
 <b>
 Apellidos y Nombres:
 </b>
-<t t-esc="t.patient.name"/>
+<t t-esc="doc.name"/>
 </div>
 
 <div class='col-xs-5'>
@@ -183,11 +182,10 @@ Apellidos y Nombres:
 <b>
 Historia #:
 </b>
-<t t-esc="t.patient.identification_code"/>
+<t t-esc="doc.identification_code"/>
 </div>
 </div>
 
-</t>
 
 </div>
 <!-- Footer --> 

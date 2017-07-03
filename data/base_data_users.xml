@@ -11,60 +11,142 @@
 
 
 
-<!--
-        <record id="public_user" model="res.users">
-            <field name="name">Public user</field>
-            <field name="login">public</field>
-            <field name="password"></field>
-
-            <field name="groups_id" eval="[(6,0,[])]"/>
-            <field name="image" type="base64" file="base/static/img/public_user-image.png"/>
-            <field name="partner_id" ref="public_partner"/>
-            <field name="active" eval="False"/>
-        </record>
-
-        <record model="res.users" id="base.user_root">
-            <field name="partner_id" ref="base.partner_root"/>
-            <field name="company_id" ref="main_company"/>
-            <field name="company_ids" eval="[(4, ref('main_company'))]"/>
-        </record>
-
-        
-        <record id="public_partner" model="res.partner">
-            <field name="name">Public user</field>
-            <field name="active" eval="False"/>
-        </record>
--->
-
-
-<!--
-        <record id="lang_en" model="res.lang">
-            <field name="code">en_US</field>
-            <field name="name">English</field>
-            <field name="translatable">True</field>
-            <field name="grouping">[3,0]</field>
-            <field name="decimal_point">.</field>
-            <field name="thousands_sep">,</field>
-        </record>
--->
-
-
-
+        <!-- Lang --> 
         <record id="openhealth_lang_es" model="res.lang">
             <field name="code">oh_es_ES</field>
             <field name="name">Open Health - Spanish</field>
             <field name="grouping">[3,0]</field>
             <field name="decimal_point">.</field>
             <field name="thousands_sep">,</field>
-
             <field name="date_format">%d/%m/%Y</field>
-
-
             <field name="translatable">True</field>
         </record>
 
 
   
+<!--
+"Dr. Chavarri", 
+"Dr. Canales", 
+"Dr. Escudero",  
+"Dr. Vasquez", 
+"Dr. Gonzales", 
+"Dr. Alarcon", 
+
+"Dr. Monteverde", 
+"Dr. Mendez", 
+
+"Dra. Acosta", 
+"Dra. Pedemonte", 
+-->
+
+
+
+
+<!-- Dr Alarcon -->
+        <record id="dr_alarcon_clinicachavarri" model="res.users">
+            <field name="name">Dr. Alarcon</field>
+            <field name="login">dralarcon@clinicachavarri.com</field>
+            <field name="password">dralarcon</field>
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="active">True</field>
+            <field name="tz">America/Lima</field>
+        </record>
+
+<!-- Dr Vasquez -->
+        <record id="dr_vasquez_clinicachavarri" model="res.users">
+            <field name="name">Dr. Vasquez</field>
+            <field name="login">drvasquez@clinicachavarri.com</field>
+            <field name="password">drvasquez</field>
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="active">True</field>
+            <field name="tz">America/Lima</field>
+        </record>
+
+<!-- Dr Chavarri -->
+        <record id="dr_chavarri_clinicachavarri" model="res.users">
+            <field name="name">Dr. Chavarri</field>
+            <field name="login">drchavarri@clinicachavarri.com</field>
+            <field name="password">drchavarri</field>
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="active">True</field>
+            <field name="tz">America/Lima</field>
+        </record>
+
+<!-- Dr Canales -->
+        <record id="dr_canales_clinicachavarri" model="res.users">
+            <field name="name">Dr. Canales</field>
+            <field name="login">drcanales@clinicachavarri.com</field>
+            <field name="password">drcanales</field>
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="active">True</field>
+            <field name="tz">America/Lima</field>
+        </record>
+
+<!-- Dr Escudero -->
+        <record id="dr_escudero_clinicachavarri" model="res.users">
+            <field name="name">Dr. Escudero</field>
+            <field name="login">drescudero@clinicachavarri.com</field>
+            <field name="password">drescudero</field>
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="active">True</field>
+            <field name="tz">America/Lima</field>
+        </record>
+
+<!-- Dr Gonzales -->
+        <record id="dr_gonzales_clinicachavarri" model="res.users">
+            <field name="name">Dr. Gonzales</field>
+            <field name="login">drgonzales@clinicachavarri.com</field>
+            <field name="password">drgonzales</field>
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="active">True</field>
+            <field name="tz">America/Lima</field>
+        </record>
+
+<!-- Dr Monteverde -->
+        <record id="dr_monteverde_clinicachavarri" model="res.users">
+            <field name="name">Dr. Monteverde</field>
+            <field name="login">drmonteverde@clinicachavarri.com</field>
+            <field name="password">drmonteverde</field>
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="active">True</field>
+            <field name="tz">America/Lima</field>
+        </record>
+
+<!-- Dr Mendez -->
+        <record id="dr_mendez_clinicachavarri" model="res.users">
+            <field name="name">Dr. Mendez</field>
+            <field name="login">drmendez@clinicachavarri.com</field>
+            <field name="password">drmendez</field>
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="active">True</field>
+            <field name="tz">America/Lima</field>
+        </record>
+
+<!-- Dra Acosta -->
+        <record id="dra_acosta_clinicachavarri" model="res.users">
+            <field name="name">Dra. Acosta</field>
+            <field name="login">draacosta@clinicachavarri.com</field>
+            <field name="password">draacosta</field>
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="active">True</field>
+            <field name="tz">America/Lima</field>
+        </record>
+
+<!-- Dr Pedemonte -->
+        <record id="dr_pedemonte_clinicachavarri" model="res.users">
+            <field name="name">Dr. Pedemonte</field>
+            <field name="login">drpedemonte@clinicachavarri.com</field>
+            <field name="password">drpedemonte</field>
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="active">True</field>
+            <field name="tz">America/Lima</field>
+        </record>
+
+
+
+
+
+
 
 
 <!-- Renato Chavarri -->
@@ -78,15 +160,8 @@
             <field name="lang">en_EN</field>
             <field name="lang">oh_es_ES</field>
 -->            
-
-
             <field name="tz">America/Lima</field>
         </record>
-
-
-
-
-
 
 
 <!-- Almacen -->
@@ -279,6 +354,48 @@
             <field name="partner_id" ref="plataforma_partner"/>
         </record>
 
+
+
+
+
+
+
+<!--
+        <record id="public_user" model="res.users">
+            <field name="name">Public user</field>
+            <field name="login">public</field>
+            <field name="password"></field>
+
+            <field name="groups_id" eval="[(6,0,[])]"/>
+            <field name="image" type="base64" file="base/static/img/public_user-image.png"/>
+            <field name="partner_id" ref="public_partner"/>
+            <field name="active" eval="False"/>
+        </record>
+
+        <record model="res.users" id="base.user_root">
+            <field name="partner_id" ref="base.partner_root"/>
+            <field name="company_id" ref="main_company"/>
+            <field name="company_ids" eval="[(4, ref('main_company'))]"/>
+        </record>
+
+        
+        <record id="public_partner" model="res.partner">
+            <field name="name">Public user</field>
+            <field name="active" eval="False"/>
+        </record>
+-->
+
+
+<!--
+        <record id="lang_en" model="res.lang">
+            <field name="code">en_US</field>
+            <field name="name">English</field>
+            <field name="translatable">True</field>
+            <field name="grouping">[3,0]</field>
+            <field name="decimal_point">.</field>
+            <field name="thousands_sep">,</field>
+        </record>
+-->
 
     </data>
 </openerp>

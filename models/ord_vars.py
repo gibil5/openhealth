@@ -61,9 +61,11 @@ _x_state_list = [
 				#('invoice', 		'Facturado'),
 				
 
+				('done', 			'Completo'),
+				
 				('printed', 		'Impreso'),
 
-				('done', 			'Completo'),
+				
 				('cancel', 			'Cancelado'),
 	]
 
@@ -72,15 +74,20 @@ _x_state_list = [
 
 _state_list = [
 
-				#('draft', 'Quotation'),
-				#('sent', 'Quotation Sent'),
-				#('sale', 'Sale Order'),
-				#('done', 'Done'),
-				#('cancel', 'Cancelled'),
+				#('draft', 		'Quotation'),
+				#('sent', 		'Quotation Sent'),
+				#('sale', 		'Sale Order'),
+				#('done', 		'Done'),
+				#('cancel', 	'Cancelled'),
+
+				('draft', 		'Presupuesto'),
+				('sent', 		'Pagado'),
+				('sale', 		'Facturado'),				
+				('done', 		'Completo'),
+				('cancel', 		'Cancelado'),
 
 
 
-				#('pre-draft', 	'Presupuesto consulta'),
 
 				#('draft', 			'Presupuesto'),
 				#('payment', 		'Pagado'),
@@ -88,14 +95,6 @@ _state_list = [
 				#('machine', 		'Reserva de sala'),
 				#('sale', 			'Confirmado'),
 				#('invoice', 		'Facturado'),
-
-
-
-				('draft', 		'Presupuesto'),
-				#('sent', 		'Presupuesto enviado'),
-				('sale', 		'Facturado'),				
-				('done', 		'Completo'),
-				('cancel', 		'Cancelado'),
 			]
 
 

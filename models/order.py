@@ -27,6 +27,44 @@ class sale_order(models.Model):
 
 
 
+
+	# Deprecated ? 
+	#margin = fields.Float(
+	#		string="Margen"
+	#	)
+
+	validity_date = fields.Char(
+			string="Fecha de expiración"
+		)
+
+
+
+
+#jz
+	# State 
+	state = fields.Selection(
+
+			#selection = ord_vars._state_list, 
+			#selection = ord_vars._x_state_list, 
+			
+
+			string='Estado',	
+			readonly=False,
+			default='draft',
+
+			#copy=False, 
+			#index=True, 
+			#track_visibility='onchange', 
+			#compute="_compute_state",
+			)
+
+
+
+
+
+
+
+
 	# Consultation - DEPRECATED ? 
 	consultation = fields.Many2one(
 			'openhealth.consultation',
@@ -337,13 +375,7 @@ class sale_order(models.Model):
 
 
 
-	margin = fields.Float(
-			string="Margen"
-		)
 
-	validity_date = fields.Char(
-			string="Fecha de expiración"
-		)
 
 
 
@@ -438,22 +470,6 @@ class sale_order(models.Model):
 
 
 
-
-#jz
-	# state 
-	state = fields.Selection(
-
-			#selection = ord_vars._state_list, 
-			selection = ord_vars._x_state_list, 
-			string='Estado',	
-			readonly=False,
-			default='draft',
-
-			#copy=False, 
-			#index=True, 
-			#track_visibility='onchange', 
-			#compute="_compute_state",
-			)
 
 
 
@@ -1681,7 +1697,9 @@ class sale_order(models.Model):
 
 
 	@api.multi 
-	def action_confirm(self):
+	def action_confirm_deprecated(self):
+
+
 		#print 
 		#print 'jx'
 		#print 'Action confirm - Over ridden'
@@ -1706,6 +1724,7 @@ class sale_order(models.Model):
 
 		#if self.x_doctor.name != False   and   self.x_machine == False:
 		#if self.x_doctor.name != False   and   self.x_machine == False	 and 	self.x_machine_req != 'consultation':
+
 		if self.x_treatment == 'laser_co2'   and   self.x_machine == False:
 			#print 'Warning: Sala no Reservada !'
 			tra = 1 

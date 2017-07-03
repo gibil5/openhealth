@@ -255,6 +255,19 @@
 
 
 
+
+
+
+
+		<!-- companies --> 
+		<menuitem id="companies_menu" name="companies" parent="openhealth_menu"
+			sequence="-100"
+			action="company_list_action"
+			/>
+
+
+
+
 		<!-- images --> 
 <!--
 			action="image_list_action"
@@ -283,11 +296,12 @@
 
 		<!-- Order Lines  --> 
 <!--
+-->
 		<menuitem id="order_lines_menu" name="Order Lines" 
 			parent="openhealth_menu"
-			sequence="0"
+			sequence="-90"
 			action="sale.action_product_sale_list"/>
--->
+
 
 		<!-- Orders --> 
 		<menuitem id="orders_menu" name="Orders" parent="openhealth_menu"

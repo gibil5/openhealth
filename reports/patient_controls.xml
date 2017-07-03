@@ -28,7 +28,7 @@
 
 <!-- 									Page 4 - Begin 										-->
 <div class="page"     style="line-height: 200%;"     >    
-
+<!--
 <center>
 <h1>
 	Controles
@@ -36,7 +36,7 @@
 </center>
 <br/>
 <br/>
-
+-->
 
 
 
@@ -44,23 +44,19 @@
 
 <!-- Treatments - Controls --> 
 <t t-foreach="doc.treatment_ids" t-as="t">
-	
 <t t-foreach="t.control_ids" t-as="e">
 
-<br/>
+
 
 <!-- Evaluation nr --> 
-<div class='row'>
-<div class='col-xs-4'>
-<h3> 
-<b>
+<center>
+<h2> 
 	Control #:
 	<t t-esc="e.evaluation_nr"/>
-</b>
-</h3>
-</div>
-<div class='col-xs-8'></div>
-</div>
+</h2>
+</center>
+<br/>
+<br/>
 
 
 
@@ -161,15 +157,13 @@ Observaciones:
 
 <!-- Footer --> 
 <div class="footer">    
-<t t-foreach="doc.treatment_ids" t-as="t">
-
 
 <div class='row'>
 <div class='col-xs-4'>
 <b>
 Apellidos y Nombres:
 </b>
-<t t-esc="t.patient.name"/>
+<t t-esc="doc.name"/>
 </div>
 
 <div class='col-xs-5'>
@@ -179,12 +173,10 @@ Apellidos y Nombres:
 <b>
 Historia #:
 </b>
-<t t-esc="t.patient.identification_code"/>
+<t t-esc="doc.identification_code"/>
 </div>
 </div>
 
-
-</t>
 </div>
 <!-- Footer --> 
 

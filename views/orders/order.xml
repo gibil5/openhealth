@@ -43,6 +43,10 @@
 
 							statusbar_visible="draft, payment, proof, sale, invoice"
 							statusbar_visible="draft, payment, proof, sale, printed"
+							statusbar_visible="draft, payment, sale, printed"
+
+
+							statusbar_visible="draft, payment, sale, done, printed"
 -->	
 
 
@@ -52,7 +56,6 @@
 							widget="statusbar" 
 
 
-							statusbar_visible="draft, payment, sale, printed"
 					/>
 				</xpath>
 
@@ -62,24 +65,49 @@
 
 
 
-<!-- OLD Buttons - DEPRECATED --> 
+
+<!-- OLD Buttons - NOT DEPRECATED --> 
 
 				<!-- Two times important --> 
-
-
 				<!-- Quotation Send --> 
+<!--
 				<xpath expr="//button[@name='action_quotation_send']" position="replace">
 				</xpath>
 				<xpath expr="//button[@name='action_quotation_send']" position="replace">
 				</xpath>
-
-
+-->
 				<!-- Print Quotation -->
+<!--
 				<xpath expr="//button[@name='print_quotation']" position="replace">
 				</xpath>
 				<xpath expr="//button[@name='print_quotation']" position="replace">
+				</xpath>
+-->
+
+
+				<!-- Action Done --> 
+<!--
+				<xpath expr="//button[@name='action_done']" position="replace">
+				</xpath>
+-->
+
+
+
+				<!-- Confirm Sale --> 
+<!--
+				<xpath expr="//button[@name='action_confirm']" position="replace">
 				</xpath>
 
+				<xpath expr="//button[@name='action_confirm']" position="replace">
+				</xpath>
+-->
+
+
+
+
+
+
+<!-- OLD Buttons - DEPRECATED --> 
 
 
 
@@ -90,17 +118,6 @@
 				<xpath expr="//button[@name='action_confirm']" position="replace">
 				</xpath>
 				-->
-
-				<!-- Action Done --> 
-				<!--
-				-->
-				<xpath expr="//button[@name='action_done']" position="replace">
-				</xpath>
-
-
-
-
-
 
 
 				<!--
@@ -394,6 +411,32 @@
 
 
 
+				<!-- Order lines --> 
+<!--
+				<xpath expr="//field	[@name='order_line']/tree//field[@name='price_subtotal']" position="before">
+            	        <field name="x_price_vip"/>
+            	</xpath>
+
+				<xpath expr="//field	[@name='order_line']/tree//field[@name='price_subtotal']" position="replace">
+            	        <field name="price_total"/>
+            	</xpath>
+
+
+				<xpath expr="//field	[@name='order_line']/tree//field[@name='tax_id']" position="replace">
+            	</xpath>
+
+				<xpath expr="//field	[@name='order_line']/tree//field[@name='product_uom_qty']" position="replace">
+        	            <field name="product_uom_qty"	string="Cantidad"/>
+            	</xpath>
+
+
+				<xpath expr="//field	[@name='order_line']/tree//field[@name='price_unit']" position="after">
+            	        <field name="margin"/>
+            	</xpath>
+-->
+
+
+
 
 
 
@@ -552,13 +595,6 @@
 
 
 
-<!--
--->
-				<xpath expr="//button[@name='action_confirm']" position="replace">
-				</xpath>
-
-				<xpath expr="//button[@name='action_confirm']" position="replace">
-				</xpath>
 
 
 
@@ -747,21 +783,12 @@ Order Line - Tree
 					<field name="order_line">
 						<tree string="Order Line Tree">
 					
-
     	                	<field name="product_id" 		string="Producto"/>
-
         	            	<field name="name"				string="Descripción" />
-
-
-
         	            	<field name="x_partner_vip"		string="Vip"/>
-
         	            	<field name="product_uom_qty"	string="Cantidad"/>
-
             	        	<field name="price_unit"		string="Precio"/>
-
             	        	<field name="x_price_vip"		/>
-
             	        	<field name="price_subtotal"	/>
 
 						</tree>
@@ -781,18 +808,6 @@ Order Line - Tree
 -->			
 
 
-
-				<xpath expr="//field	[@name='order_line']/tree//field[@name='price_subtotal']" position="before">
-            	        <field name="x_price_vip"/>
-            	</xpath>
-
-				<xpath expr="//field	[@name='order_line']/tree//field[@name='price_subtotal']" position="replace">
-            	        <field name="price_total"/>
-            	</xpath>
-
-
-
-
 <!--
 				<xpath expr="//field	[@name='order_line']/tree//field[@name='purchase_price']" position="replace">
                 	<field name="purchase_price" invisible="1"/>
@@ -800,21 +815,15 @@ Order Line - Tree
 -->
 
 
-
-
 <!--
 				<xpath expr="//field	[@name='order_line']/tree//field[@name='name']" position="after">
         	            <field name="x_partner_vip"		string="Vip"/>
             	</xpath>
 -->
-				<xpath expr="//field	[@name='order_line']/tree//field[@name='tax_id']" position="replace">
-            	</xpath>
 
 
 
-				<xpath expr="//field	[@name='order_line']/tree//field[@name='product_uom_qty']" position="replace">
-        	            <field name="product_uom_qty"	string="Cantidad"/>
-            	</xpath>
+
 
 
 
@@ -851,13 +860,13 @@ Order Line - Tree
 
 
 
-
+<!--
 				<field name="amount_untaxed" position="replace">
 				</field>
 
 				<field name="amount_tax" position="replace">
 				</field>
-
+-->
 
 
 				
@@ -1003,7 +1012,7 @@ Order Line - Tree
 
 
 		
-		<!-- Tree view --> 
+		<!-- TREE view --> 
 		<record model="ir.ui.view" id="sale.view_order_tree">
 			<field name="name">sale.order.tree</field>
 			<field name="model">sale.order</field>
@@ -1019,6 +1028,12 @@ Order Line - Tree
 
 
 
+                    <field name="user_id"/>
+                    <field name="team_id"/>
+                    <field name="company_id"/>
+
+
+
                     <field name="partner_id"/>
 
 
@@ -1026,9 +1041,9 @@ Order Line - Tree
 
 
 
-					<field name="x_doctor"		/>
 
 <!--
+					<field name="x_doctor"		/>
 					<field name="doctor_name"		/>
 -->
 
@@ -1056,8 +1071,13 @@ Order Line - Tree
                     <field name="x_amount_total" 	sum="Total Tax Included"	widget="monetary"/>
 -->
 
-                    <field name="amount_total" 		sum="Total Tax Included"	widget="monetary"/>
 
+
+                    <field name="amount_total" 		sum="Total Tax Included"	widget="monetary"/>
+                    <field name="amount_untaxed"	sum="Total Untaxed"			widget="monetary"		/>
+
+                    <field name="margin"/>
+  
 
 
 <!--

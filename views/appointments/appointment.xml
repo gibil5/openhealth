@@ -562,12 +562,16 @@
 
 
 			<field name="context">{
-									'default_x_target': 'doctor',
+
 									'default_x_type': 'consultation',
 
 									'default_patient': 'patient',
 								}
 			</field>
+
+<!--
+									'default_x_target': 'doctor',
+-->
 
 		</record>
 
@@ -627,9 +631,12 @@
 					-->
 					<field name="domain">[
 											('x_machine', 'in', ['laser_co2_1', 'laser_co2_2', 'laser_co2_3', 'laser_excilite', 'laser_m22']),
-											('x_target', '=', 'doctor'),
 										]
 					</field>
+<!--
+											('x_target', '=', 'doctor'),
+-->
+
 					<!--
 											'default_x_machine': 'none',
 					-->

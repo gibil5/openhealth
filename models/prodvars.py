@@ -71,6 +71,10 @@ _family_list = [
 
 _treatment_list = [
 
+		('laser_m22',		'laser_m22'),
+
+
+
 		('consultation',			'consultation'), 
 
 
@@ -358,5 +362,11 @@ _pathology_list = [
 
 
 		('none',		'none'),
+
+
+		# Legacy
+		('body_local',		'body_local'), 
+		('face_local',		'face_local'), 
+
 	]
 	

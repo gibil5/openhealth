@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
 <!--
-    <data noupdate="1">
--->
     <data noupdate="0">
+-->
+    <data noupdate="1">
  
 
 <!-- Data - USERS -->
@@ -31,10 +31,8 @@
 "Dr. Vasquez", 
 "Dr. Gonzales", 
 "Dr. Alarcon", 
-
 "Dr. Monteverde", 
 "Dr. Mendez", 
-
 "Dra. Acosta", 
 "Dra. Pedemonte", 
 -->
@@ -132,11 +130,11 @@
             <field name="tz">America/Lima</field>
         </record>
 
-<!-- Dr Pedemonte -->
+<!-- Dra Pedemonte -->
         <record id="dr_pedemonte_clinicachavarri" model="res.users">
-            <field name="name">Dr. Pedemonte</field>
-            <field name="login">drpedemonte@clinicachavarri.com</field>
-            <field name="password">drpedemonte</field>
+            <field name="name">Dra. Pedemonte</field>
+            <field name="login">drapedemonte@clinicachavarri.com</field>
+            <field name="password">drapedemonte</field>
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="active">True</field>
             <field name="tz">America/Lima</field>

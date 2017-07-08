@@ -1,10 +1,17 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
 
-<!--
-	<data noupdate='0'>
--->
+
+
 	<data noupdate='1'>
+
+
+		<!-- Product Category --> 
+		<record id='cosmetology' model='product.category'>
+			<field name='name'>Cosmeatria</field>
+		</record>
+
+
 
 		<!-- Data - Services -->
 
@@ -21,6 +28,8 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
 			<field name='x_family'>cosmetology</field>
+
+			<field name='categ_id' ref="cosmetology"/>
 		</record>
 
 		<record id='tcr_boa_rwm_six' model='product.template'>
@@ -36,6 +45,8 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'></field>
 			<field name='x_family'>cosmetology</field>
+
+			<field name='categ_id' ref="cosmetology"/>
 		</record>
 
 		<record id='car_bod_rfa_30m_one' model='product.template'>
@@ -51,6 +62,8 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
 			<field name='x_family'>cosmetology</field>
+
+			<field name='categ_id' ref="cosmetology"/>
 		</record>
 
 		<record id='dit_fac_dfc_30m_six' model='product.template'>
@@ -66,6 +79,8 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'></field>
 			<field name='x_family'>cosmetology</field>
+
+			<field name='categ_id' ref="cosmetology"/>
 		</record>
 
 		<record id='tcr_boa_rwm_one' model='product.template'>
@@ -81,6 +96,8 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
 			<field name='x_family'>cosmetology</field>
+
+			<field name='categ_id' ref="cosmetology"/>
 		</record>
 
 		<record id='tca_fdn_rfa_30m_six' model='product.template'>
@@ -96,6 +113,8 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'></field>
 			<field name='x_family'>cosmetology</field>
+
+			<field name='categ_id' ref="cosmetology"/>
 		</record>
 
 		<record id='car_bod_rfa_30m_six' model='product.template'>
@@ -111,6 +130,8 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'></field>
 			<field name='x_family'>cosmetology</field>
+
+			<field name='categ_id' ref="cosmetology"/>
 		</record>
 
 		<record id='car_fac_rfa_30m_one' model='product.template'>
@@ -126,6 +147,8 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
 			<field name='x_family'>cosmetology</field>
+
+			<field name='categ_id' ref="cosmetology"/>
 		</record>
 
 		<record id='tcr_boa_rwm' model='product.template'>
@@ -141,6 +164,8 @@
 			<field name='x_sessions'>12</field>
 			<field name='x_price_vip'></field>
 			<field name='x_family'>cosmetology</field>
+
+			<field name='categ_id' ref="cosmetology"/>
 		</record>
 
 		<record id='tca_fdn_rfa_30m' model='product.template'>
@@ -156,6 +181,8 @@
 			<field name='x_sessions'>12</field>
 			<field name='x_price_vip'></field>
 			<field name='x_family'>cosmetology</field>
+
+			<field name='categ_id' ref="cosmetology"/>
 		</record>
 
 		<record id='car_fac_rfa_30m_six' model='product.template'>
@@ -171,6 +198,8 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'></field>
 			<field name='x_family'>cosmetology</field>
+
+			<field name='categ_id' ref="cosmetology"/>
 		</record>
 
 		<record id='tca_fdn_rfa_30m_one' model='product.template'>
@@ -186,6 +215,8 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
 			<field name='x_family'>cosmetology</field>
+
+			<field name='categ_id' ref="cosmetology"/>
 		</record>
 
 	</data>

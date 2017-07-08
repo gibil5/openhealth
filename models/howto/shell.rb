@@ -120,6 +120,7 @@ self.env['product.template'].search([('x_treatment', 'like', 'laser_co2')])
 self.env['product.template'].search([	('x_treatment', '=', 'laser_co2'),	('x_zone', '=', 'body_local'),	('x_pathology', '=', 'acne_sequels_1')])
 
 
+self.env['product.template'].search([('x_treatment', '=', 'laser_co2'),('x_zone', '=', 'body_local'),('list_price', '=', 50)]).name
 
 
 

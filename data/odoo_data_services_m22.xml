@@ -1,10 +1,15 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
 	
-<!--
-	<data noupdate='0'>
--->
+
+
 	<data noupdate='1'>
+
+
+		<record id='laser_m22' model='product.category'>
+			<field name='name'>Laser M22</field>
+		</record>
+
 
 		<!-- Data - Services -->
 
@@ -21,6 +26,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_fac_dep_5m_one' model='product.template'>
@@ -36,6 +42,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_fac_sta_30m_one' model='product.template'>
@@ -51,6 +58,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_fee_dep_5m_one' model='product.template'>
@@ -66,6 +74,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ndy_bol_rub_15m_one' model='product.template'>
@@ -81,6 +90,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_sho_dep_5m_one' model='product.template'>
@@ -96,6 +106,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ndy_bol_ema_15m_one' model='product.template'>
@@ -111,6 +122,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_fac_ros_30m_one' model='product.template'>
@@ -126,6 +138,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ndy_bol_tel_15m_one' model='product.template'>
@@ -141,6 +154,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_bre_dep_5m_one' model='product.template'>
@@ -156,6 +170,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_arp_dep_5m_one' model='product.template'>
@@ -171,6 +186,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ndy_bol_var_15m_one' model='product.template'>
@@ -186,6 +202,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_fac_rfa_30m_one' model='product.template'>
@@ -201,6 +218,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_fac_ros_30m_one' model='product.template'>
@@ -216,6 +234,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_han_dep_5m_one' model='product.template'>
@@ -231,6 +250,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ndy_fal_ema_15m_one' model='product.template'>
@@ -246,6 +266,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ndy_fal_rub_15m_one' model='product.template'>
@@ -261,6 +282,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_are_dep_5m_one' model='product.template'>
@@ -276,6 +298,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ndy_fal_tel_15m_one' model='product.template'>
@@ -291,6 +314,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_bel_dep_5m_one' model='product.template'>
@@ -306,6 +330,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_fac_aca_30m_one' model='product.template'>
@@ -321,6 +346,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_fac_sta_30m_one' model='product.template'>
@@ -336,6 +362,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_nec_dep_5m_one' model='product.template'>
@@ -351,6 +378,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_bac_dep_5m_one' model='product.template'>
@@ -366,6 +394,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_nec_dep_15m_one' model='product.template'>
@@ -381,6 +410,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_are_dep_15m_one' model='product.template'>
@@ -396,6 +426,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_arp_dep_15m_one' model='product.template'>
@@ -411,6 +442,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_han_dep_30m_one' model='product.template'>
@@ -426,6 +458,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_bre_dep_30m_one' model='product.template'>
@@ -441,6 +474,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_are_dep_30m_one' model='product.template'>
@@ -456,6 +490,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_sho_dep_30m_one' model='product.template'>
@@ -471,6 +506,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_arm_dep_30m_one' model='product.template'>
@@ -486,6 +522,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_sho_dep_15m_one' model='product.template'>
@@ -501,6 +538,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_bre_dep_15m_one' model='product.template'>
@@ -516,6 +554,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_fac_ros_30m_six' model='product.template'>
@@ -531,6 +570,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>6000</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_fac_dep_30m_one' model='product.template'>
@@ -546,6 +586,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_fac_sta_30m_six' model='product.template'>
@@ -561,6 +602,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>6000</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_fac_ros_30m_six' model='product.template'>
@@ -576,6 +618,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>6000</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_glu_dep_30m_one' model='product.template'>
@@ -591,6 +634,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_arp_dep_30m_one' model='product.template'>
@@ -606,6 +650,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_bel_dep_15m_one' model='product.template'>
@@ -621,6 +666,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_han_dep_15m_one' model='product.template'>
@@ -636,6 +682,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_bel_dep_30m_one' model='product.template'>
@@ -651,6 +698,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_nec_dep_30m_one' model='product.template'>
@@ -666,6 +714,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ndy_fal_tel_15m_six' model='product.template'>
@@ -681,6 +730,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>3600</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_bac_dep_30m_one' model='product.template'>
@@ -696,6 +746,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_bac_dep_15m_one' model='product.template'>
@@ -711,6 +762,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_fac_sta_30m_six' model='product.template'>
@@ -726,6 +778,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>6000</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_fee_dep_15m_one' model='product.template'>
@@ -741,6 +794,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ndy_bol_var_15m_six' model='product.template'>
@@ -756,6 +810,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>3600</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_fee_dep_30m_one' model='product.template'>
@@ -771,6 +826,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_leg_dep_30m_one' model='product.template'>
@@ -786,6 +842,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>0</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ndy_bol_tel_15m_six' model='product.template'>
@@ -801,6 +858,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>3600</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_are_dep_5m_six' model='product.template'>
@@ -816,6 +874,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>1200</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ndy_fal_rub_15m_six' model='product.template'>
@@ -831,6 +890,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>3600</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ndy_bol_ema_15m_six' model='product.template'>
@@ -846,6 +906,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>3600</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_bac_dep_5m_six' model='product.template'>
@@ -861,6 +922,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>1200</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_fee_dep_5m_six' model='product.template'>
@@ -876,6 +938,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>1200</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_fac_dep_5m_six' model='product.template'>
@@ -891,6 +954,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>1200</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_arp_dep_15m_six' model='product.template'>
@@ -906,6 +970,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>3600</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ndy_bol_rub_15m_six' model='product.template'>
@@ -921,6 +986,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>3600</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_han_dep_5m_six' model='product.template'>
@@ -936,6 +1002,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>1200</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_fac_aca_30m_six' model='product.template'>
@@ -951,6 +1018,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>6000</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_sho_dep_15m_six' model='product.template'>
@@ -966,6 +1034,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>3600</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_bac_dep_15m_six' model='product.template'>
@@ -981,6 +1050,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>3600</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_bel_dep_15m_six' model='product.template'>
@@ -996,6 +1066,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>3600</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_arp_dep_5m_six' model='product.template'>
@@ -1011,6 +1082,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>1200</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_bel_dep_5m_six' model='product.template'>
@@ -1026,6 +1098,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>1200</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_nec_dep_5m_six' model='product.template'>
@@ -1041,6 +1114,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>1200</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ndy_fal_ema_15m_six' model='product.template'>
@@ -1056,6 +1130,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>3600</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_bre_dep_15m_six' model='product.template'>
@@ -1071,6 +1146,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>3600</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_fac_rfa_30m_six' model='product.template'>
@@ -1086,6 +1162,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>6000</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_sho_dep_5m_six' model='product.template'>
@@ -1101,6 +1178,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>1200</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_fac_dep_15m_six' model='product.template'>
@@ -1116,6 +1194,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>3600</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_bre_dep_5m_six' model='product.template'>
@@ -1131,6 +1210,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>1200</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_nec_dep_15m_six' model='product.template'>
@@ -1146,6 +1226,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>3600</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_are_dep_15m_six' model='product.template'>
@@ -1161,6 +1242,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>3600</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_han_dep_15m_six' model='product.template'>
@@ -1176,6 +1258,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>3600</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_fee_dep_15m_six' model='product.template'>
@@ -1191,6 +1274,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>3600</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_arm_dep_30m_six' model='product.template'>
@@ -1206,6 +1290,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>6000</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_fac_dep_30m_six' model='product.template'>
@@ -1221,6 +1306,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>6000</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_leg_dep_30m_six' model='product.template'>
@@ -1236,6 +1322,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>6000</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_sho_dep_30m_six' model='product.template'>
@@ -1251,6 +1338,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>6000</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_bre_dep_30m_six' model='product.template'>
@@ -1266,6 +1354,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>6000</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_nec_dep_30m_six' model='product.template'>
@@ -1281,6 +1370,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>6000</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_bac_dep_30m_six' model='product.template'>
@@ -1296,6 +1386,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>6000</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_are_dep_30m_six' model='product.template'>
@@ -1311,6 +1402,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>6000</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_bel_dep_30m_six' model='product.template'>
@@ -1326,6 +1418,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>6000</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_han_dep_30m_six' model='product.template'>
@@ -1341,6 +1434,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>6000</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_glu_dep_30m_six' model='product.template'>
@@ -1356,6 +1450,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>6000</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_fee_dep_30m_six' model='product.template'>
@@ -1371,6 +1466,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>6000</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 		<record id='ipl_arp_dep_30m_six' model='product.template'>
@@ -1386,6 +1482,7 @@
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'>6000</field>
 			<field name='x_family'>laser</field>
+			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
 	</data>

@@ -28,9 +28,20 @@ class Product(models.Model):
 
 
 
+	# Origin
+	x_origin = fields.Selection(
+
+		[
+			('legacy', 'Legacy'),
+			('test', 'Test'), 
+			('production', 'Production'),
+		],
+	)
+
+
+
 
 	# Only Products 
-
 	x_brand = fields.Char(
 			string="Marca", 
 		)

@@ -103,22 +103,153 @@
 					groups="openhealth.managers"
 					/>
 
-		<menuitem 	id="sales_report_sales_menu" 
-					name="Ventas Servicios" 
-					parent="sales_reports_menu"
-					sequence="4"
 
-					action="sale.action_order_report_all"
+		<!-- All -->
+		<menuitem 	id="sales_report_sales_april_all_menu" 
+					name="Abril - Todo" 
+					parent="sales_reports_menu"
+					sequence="1"
+
+					action="action_order_report_april_all"
+					/>
+
+		<!-- All -->
+		<menuitem 	id="sales_report_sales_march_all_menu" 
+					name="Marzo - Todo" 
+					parent="sales_reports_menu"
+					sequence="2"
+
+					action="action_order_report_march_all"
 					/>
 
 
-		<menuitem 	id="sales_report_sales_menu" 
-					name="Ventas Productos" 
+
+
+
+
+		<!-- Services -->
+		<menuitem 	id="sales_report_sales_services_menu" 
+					name="Servicios" 
 					parent="sales_reports_menu"
 					sequence="4"
 
-					action="sale.action_order_report_all"
+					action="action_order_report_services"
 					/>
+
+
+		<!-- Products -->
+		<menuitem 	id="sales_report_sales_products_menu" 
+					name="Productos" 
+					parent="sales_reports_menu"
+					sequence="4"
+
+					action="action_order_report_products"
+					/>
+
+
+		<!-- Dr Chavarri -->
+		<menuitem 	id="sales_report_sales_chavarri_menu" 
+					name="Dr. Chavarri" 
+					parent="sales_reports_menu"
+					sequence="4"
+
+					action="action_order_report_dr_chavarri"
+					/>
+
+
+		<!-- Dr alarcon -->
+		<!-- Dr Canales -->
+		<!-- Dr Gonzales -->
+		<!-- Dr mendez -->
+		<!-- Dr monteverde -->
+		<!-- Dr vasquez -->
+		<!-- Dr acosta -->
+		<!-- Dr pedemonte -->
+
+<!--		
+		<menuitem 	id="sales_report_sales_alarcon_menu" 
+					name="Dr. Alarcon" 
+					parent="sales_reports_menu"
+					sequence="4"
+
+					action="action_order_report_dr_alarcon"
+					/>
+
+		<menuitem 	id="sales_report_sales_canales_menu" 
+					name="Dr. Canales" 
+					parent="sales_reports_menu"
+					sequence="4"
+
+					action="action_order_report_dr_canales"
+					/>
+
+		<menuitem 	id="sales_report_sales_gonzales_menu" 
+					name="Dr. Gonzales" 
+					parent="sales_reports_menu"
+					sequence="4"
+
+					action="action_order_report_dr_gonzales"
+					/>
+
+		<menuitem 	id="sales_report_sales_mendez_menu" 
+					name="Dr. Mendez" 
+					parent="sales_reports_menu"
+					sequence="4"
+
+					action="action_order_report_dr_mendez"
+					/>
+
+
+		<menuitem 	id="sales_report_sales_monteverde_menu" 
+					name="Dr. Monteverde" 
+					parent="sales_reports_menu"
+					sequence="4"
+
+					action="action_order_report_dr_monteverde"
+					/>
+
+
+		<menuitem 	id="sales_report_sales_vasquez_menu" 
+					name="Dr. Vasquez" 
+					parent="sales_reports_menu"
+					sequence="4"
+
+					action="action_order_report_dr_vasquez"
+					/>
+
+
+
+
+		<menuitem 	id="sales_report_sales_acosta_menu" 
+					name="Dra. Acosta" 
+					parent="sales_reports_menu"
+					sequence="4"
+
+					action="action_order_report_dra_acosta"
+					/>
+
+		<menuitem 	id="sales_report_sales_pedemonte_menu" 
+					name="Dra. Pedemonte" 
+					parent="sales_reports_menu"
+					sequence="4"
+
+					action="action_order_report_dra_pedemonte"
+					/>
+-->
+
+
+
+
+		<!-- OH Services -->
+<!--		
+		<menuitem 	id="sales_report_sales_oh_menu" 
+					name="Servicios - OH" 
+					parent="sales_reports_menu"
+					sequence="4"
+
+					action="action_order_report_oh_all"
+					/>
+-->
 
 
 
@@ -127,6 +258,7 @@
 
 
 		<!-- Config --> 
+<!--
 		<menuitem 	id="sales_config_menu" 
 					name="Configuración"
 					parent="main_sales_menu"
@@ -140,7 +272,7 @@
 					sequence="4"
 					
 					action="counter_list_action"/>
-
+-->
 
 
 

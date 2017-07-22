@@ -28,6 +28,69 @@ class sale_order(models.Model):
 
 
 
+	# Test 
+	test = fields.Char(
+		)
+
+
+
+	# Categ
+	categ = fields.Char(
+
+			compute="_compute_categ",
+		)
+
+	@api.multi
+	#@api.depends('partner_id')
+
+	def _compute_categ(self):
+		for record in self:
+
+			for line in record.order_line:
+
+				#record.categ = line.product_id.name
+				record.categ = line.product_id.categ_id.name
+
+
+
+	# Product
+	product = fields.Char(
+
+			compute="_compute_product",
+		)
+
+	@api.multi
+	#@api.depends('partner_id')
+
+	def _compute_product(self):
+		for record in self:
+
+			for line in record.order_line:
+
+				record.product = line.product_id.name
+
+
+
+
+
+
+
+
+	comment = fields.Selection(
+		[
+		('product', 'Product'),
+		('service', 'Service'),
+		], 
+		string='Comment', 
+		default='product', 
+		readonly=True
+	)
+
+
+
+
+
+
 	# Deprecated ? 
 	#margin = fields.Float(
 	#		string="Margen"
@@ -160,7 +223,8 @@ class sale_order(models.Model):
 
 
 	note = fields.Text(
-			string="Nota",		
+			#string="Nota",		
+			string="Note",		
 		)
 
 
@@ -314,8 +378,8 @@ class sale_order(models.Model):
 	# Family 
 	x_family = fields.Selection(
 
-			string = "Tipo", 	
-			#string = "Familia", 	
+			#string = "Tipo", 	
+			string = "Familia", 	
 
 			default='product',
 			

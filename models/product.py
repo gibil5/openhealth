@@ -30,7 +30,6 @@ class Product(models.Model):
 
 	# Origin
 	x_origin = fields.Selection(
-
 		[
 			('legacy', 'Legacy'),
 			('test', 'Test'), 

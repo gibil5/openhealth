@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+
+		<!-- Pivot --> 
+	   <record id="sale.view_order_product_pivot" model="ir.ui.view">
+	         <field name="name">sale.report.pivot</field>
+	         <field name="model">sale.report</field>
+	         <field name="arch" type="xml">
+
+	             <pivot string="Sales Analysis" disable_linking="True"	display_quantity="True"	>
+
+<!--	             	
+	                 <field name="team_id" type="col"/>
+
+	                <field name="price_subtotal" type="measure"	/>
+	                <field name="date" interval="month" type="row"	/>
+-->
+
+
+
+	                 <field name="date" interval="month" type="col"	/>
+	                <field name="price_subtotal" type="measure"	/>
+<!--
+	                 <field name="date" interval="day" type="col"	/>
+	                <field name="nbr" type="measure"	/>
+-->
+
+	             </pivot>
+	         </field>
+	    </record>
+
+
+
+
+		<!-- Graph --> 
+	    <record id="sale.view_order_product_graph" model="ir.ui.view">
+	         <field name="name">sale.report.graph</field>
+	         <field name="model">sale.report</field>
+	         <field name="arch" type="xml">
+	             <graph string="Sales Analysis">
+	                 <field name="date" type="row"/>
+	                 <field name="price_subtotal" type="measure"/>
+	             </graph>
+	         </field>
+	    </record>
+
+
+
+
+		<!-- Favorites -->
+	    <record id="sale.filter_isale_report_product" model="ir.filters">
+	        <field name="name">By Product</field>
+	        <field name="model_id">sale.report</field>
+	        <field name="user_id" eval="False"/>
+	        <field name="context">{'group_by': ['date:month', 'product_id']}</field>
+	    </record>
+
+	    <record id="sale.filter_isale_report_product_categ" model="ir.filters">
+	        <field name="name">By Product Categ</field>
+	        <field name="model_id">sale.report</field>
+	        <field name="user_id" eval="False"/>
+	        <field name="context">{'group_by': ['date:month', 'categ_id']}</field>
+	    </record>
+
+
+
+
+		<!-- Search  -->
+	   <record id="sale.view_order_product_search" model="ir.ui.view">
+
+			<field name="name">sale.report.search</field>
+
+			<field name="model">sale.report</field>
+
+			<field name="arch" type="xml">
+
+				<search string="Sales Analysis">
+		
+					<field name="date"/>
+
+
+					
+					<filter string="This Year" name="year" invisible="1" domain="[('date','&lt;=', time.strftime('2016-12-31')),('date','&gt;=',time.strftime('2016-01-01'))]"/>
+					
+					<filter name="Quotations" string="Quotations" domain="[('state','in', ('draft', 'sent'))]"/>
+
+					<filter name="Sales" string="Sales" domain="[('state','not in',('draft', 'cancel', 'sent'))]"/>
+					
+					<!-- jx --> 
+					<filter name="March" 	string="Marzo"  invisible="1" domain="[
+																				('date','&lt;=',time.strftime('%%Y-03-31')),
+																				('date','&gt;=',time.strftime('%%Y-03-01'))
+																			]"/>
+
+					
+
+					<separator/>
+					
+					<field name="partner_id"/>
+					<field name="product_id"/>
+					<field name="user_id"/>
+
+<!--
+					<field name="x_family"/>
+					<field name="x_cancel_reason"/>
+					<field name="note"/>
+-->
+
+					<group expand="0" string="Extended Filters">
+						<field name="categ_id" filter_domain="[('categ_id', 'child_of', self)]"/>
+						<field name="company_id" groups="base.group_multi_company"/>
+					</group>
+
+
+					<group expand="1" string="Group By">
+						<filter string="Salesperson" name="User" context="{'group_by':'user_id'}"/>
+						<filter string="Sales Team" context="{'group_by':'team_id'}"/>
+						<filter string="Partner's Country" name="country_id" context="{'group_by':'country_id'}"/>
+						<filter string="Customer" name="Customer" context="{'group_by':'partner_id'}"/>
+
+						<filter string="Product Category" name="Category" context="{'group_by':'categ_id'}" 	/>
+						
+						<filter name="status" string="Status" context="{'group_by':'state'}"/>
+						<filter string="Company" groups="base.group_multi_company" context="{'group_by':'company_id'}"/>
+
+<!--
+						<filter name="x_cancel_reason" string="Tipo" context="{'group_by':'x_cancel_reason	'}"/>
+						<filter name="note" string="Note" context="{'group_by':'note	'}"/>
+						<filter name="x_cancel_reason" />
+-->
+
+						<separator/>
+						<filter string="Order Month" context="{'group_by':'date:month'}" help="Ordered date of the sales order"/>
+					</group>
+				</search>
+			</field>
+		</record>
+
+
+
+
+
+
+	</data>
+</openerp>
+

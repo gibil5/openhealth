@@ -891,6 +891,14 @@ Order Line - Tree
 
 
 
+					<field name="vspace"/>
+
+					<field name="product"/>
+
+					<field name="categ"/>
+
+
+
 <!--
 					<field name="x_treatment"/>
 -->
@@ -1028,15 +1036,25 @@ Order Line - Tree
 
 
 
-                    <field name="user_id"/>
+<!--
+                    <field name="comment"/>
                     <field name="team_id"/>
                     <field name="company_id"/>
+-->
 
+
+                    <field name="user_id"/>
 
 
                     <field name="partner_id"/>
 
 
+					<field name="x_cancel_reason"/>
+					<field name="x_cancel_owner"/>
+
+
+                    <field name="product"/>
+                    <field name="categ"/>
 
 
 
@@ -1048,11 +1066,10 @@ Order Line - Tree
 -->
 
 
-					<field name="x_cancel_owner"/>
-					<field name="x_cancel_reason"/>
 <!--
 					<field name="x_cancel"/>
 --> 
+
 
 
 <!--
@@ -1072,12 +1089,12 @@ Order Line - Tree
 -->
 
 
-
-                    <field name="amount_total" 		sum="Total Tax Included"	widget="monetary"/>
                     <field name="amount_untaxed"	sum="Total Untaxed"			widget="monetary"		/>
 
+<!--
+                    <field name="amount_total" 		sum="Total Tax Included"	widget="monetary"/>
                     <field name="margin"/>
-  
+-->
 
 
 <!--
@@ -1089,8 +1106,8 @@ Order Line - Tree
 <!--
 					<field name="x_age"/>
 					<field name="x_group"/>
--->
 
+-->
 					<field name="x_month"/>
 					<field name="x_year"/>
 
@@ -1320,6 +1337,7 @@ Order Line - Tree
 
 
 
+
 		
 		<!-- Filter --> 
         <record id="view_medical_order_filter" model="ir.ui.view">
@@ -1354,9 +1372,6 @@ Order Line - Tree
            </field>
        </record>
 -->
-
-
-
 
 	</data>
 </openerp>

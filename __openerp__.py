@@ -20,11 +20,11 @@
 
 		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage\n
 
-		Last built: 	7 July 2017 - Yey !
+		Last built: 	21 July 2017 - Yey !
 
 		Created: 	 	7 Sep 2016
 
-		Active for: 		9 months.
+		Active for: 	9 months.
 
 		---
 
@@ -92,7 +92,13 @@
 
 
 
+		'views/reports/report_sale_search.xml',
 		'views/reports/report_sale.xml',
+		'views/reports/report_sale_doctors.xml',
+
+		
+
+		#'views/reports/oh_report_sale.xml',
 
 
 
@@ -121,8 +127,10 @@
 
 
 		# ----------------------------------------------------------- DATA ------------------------------------------------------
-		'data/base_data_physicians.xml',	
+		'data/base_data_physicians.xml',
+
 		'data/odoo_data_products.xml',
+		
 		'data/odoo_data_services_co2.xml',
 		'data/odoo_data_services_exc.xml',
 		'data/odoo_data_services_m22.xml',

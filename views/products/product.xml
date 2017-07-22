@@ -110,32 +110,43 @@
 <!--
 					<field name="x_sessions"/>	
 					<field name="x_time"/>		
+
+					<field name="x_family"/>
 -->
+
+
+
+					<field name="list_price"/>
+
+
+
+
 
 
 <!--
 					<field name="qty_available"/>
-					<field name="state"/>				
 -->
+					<field name="state"	invisible="1"	/>				
 
 
 
 <!-- Must be present --> 
 <!--
-					<field name="uom_id"/>
 -->
+					<field name="uom_id"	invisible="1"/>
+
+					<field name="qty_available"	invisible="1"/>
 
 
 
-					<field name="x_name_short"/>
-					<field name="x_family"/>
+
 
 
 <!--					
+					<field name="x_name_short"/>
 					<field name="standard_price"/>
 					<field name="x_price_vip"/>
 -->
-					<field name="list_price"/>
 
 				</tree>
 			</field>
@@ -229,6 +240,36 @@
             					]</field>
 			-->
 		</record>
+
+
+
+
+
+
+
+
+
+		
+		<!-- Filter --> 
+        <record id="product.view_product_template_filter" model="ir.ui.view">
+
+           <field name="name">Product Search</field>
+           
+           <field name="model">product.template</field>	
+
+		   <field name="arch" type="xml">
+           
+               <search string="products">
+
+                   <field name="name" />
+
+                   <field name="x_origin" />               
+               
+               </search>
+           </field>
+       </record>
+
+
 
 	</data>
 </openerp>

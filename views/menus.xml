@@ -1003,14 +1003,14 @@
 		<!-- Products -->
 
 
-
+<!--
 		<menuitem id="product_product_menu" name="Productos Productos"
 			parent="openhealth_menu"
 			sequence="19"
 
 			action="product.product_product_list_action"
 			/>
-
+-->
 
 
 

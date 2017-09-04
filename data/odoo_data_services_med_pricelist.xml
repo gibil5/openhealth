@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='utf-8'?>
+<openerp>
+	<data noupdate='0'>
+
+
+
+
+		<!-- Price List --> 
+		<record id='pricelist_vip' model='product.pricelist'>
+			<field name='name'>VIP</field>
+		</record>
+
+
+
+
+		<record id='vip_cri_faa_acn_ten' model='product.pricelist.item'>
+
+			<field name="pricelist_id" 	ref="pricelist_vip"/>
+
+			<field name="product_tmpl_id" 	ref="cri_faa_acn_ten"/>
+			<field name='fixed_price'>2700.0</field>
+
+			<field name='min_quantity'>1</field>
+			<field name='applied_on'>1_product</field>
+<!--
+			<field name='base'>list_price</field>
+			<field name='sequence'>1</field>
+-->
+		</record>
+
+		<record id="cri_faa_acn_ten" model="product.template">
+			<field name="item_id"	ref="vip_cri_faa_acn_ten" />
+		</record>
+
+
+
+
+		<record id='vip_scl_leg_var_one' model='product.pricelist.item'>
+
+			<field name="pricelist_id" 	ref="pricelist_vip"/>
+
+			<field name="product_tmpl_id" 	ref="scl_leg_var_one"/>
+			<field name='fixed_price'>1000.0</field>
+
+			<field name='min_quantity'>1</field>
+			<field name='applied_on'>1_product</field>
+		</record>
+
+		<record id="scl_leg_var_one" model="product.template">
+			<field name="item_id"	ref="vip_scl_leg_var_one" />
+		</record>
+
+
+
+
+
+
+
+
+	</data>
+</openerp>

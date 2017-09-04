@@ -4,7 +4,7 @@
 # 		*** OPEN HEALTH - Patient 
 # 
 # Created: 				26 Aug 2016
-# Last updated: 	 	 5 Apr 2017
+# Last updated: 	 	25 Aug 2017
 
 from openerp import models, fields, api
 from datetime import datetime
@@ -16,16 +16,13 @@ from . import pat_vars
 
 class Patient(models.Model):
 
-	#_name = 'openhealth.patient'	#The best solution ? So that impact is minimal ?	- Deprecated
-
+	#_name = 'openhealth.patient'		
 	_inherit = 'oeh.medical.patient'
-	#_inherit = ['oeh.medical.patient', 'openhealth.base']
-	#_inherits = ['oeh.medical.patient', 'openhealth.base']
 
 
 
 
-	# Vertical space 
+	# Commons 
 	vspace = fields.Char(
 			' ', 
 			readonly=True
@@ -33,52 +30,77 @@ class Patient(models.Model):
 
 
 
+	# Vip 
+	x_vip = fields.Boolean(
+		string="Vip",
+		default=False, 
 
-	# Dictionary 
-	_dic = {
-				'Male':		'Masculino', 
-				'Female':	'Femenino', 
-				'none':		'Ninguno', 
-
-				'':			'', 
-
-				
-				#'one':			'', 
-				#'two':			'', 
-				#'three':			'', 
-				#'rejuvenation_capilar':			'Rejuvenecimiento capilar', 
-				#'body_local':					'Localizado cuerpo', 
-			}
+		compute='_compute_x_vip', 
+	)
 
 
+	#@api.multi
+	@api.depends('x_card')
+
+	def _compute_x_vip(self):
+		for record in self:
+
+			x_card = record.env['openhealth.card'].search([
+															('patient_name','=', record.name),
+														],
+														#order='appointment_date desc',
+														limit=1,)
+
+			if x_card.name != False:
+				record.x_vip = True 
+	# 
 
 
 
-	x_sex_name = fields.Char(
-			'Sexo', 
-			required=True, 
-			compute='_compute_x_sex_name', 
+
+
+
+
+	x_card = fields.Many2one(
+			'openhealth.card',
+			string = "Tarjeta Vip", 	
+			#required=True, 
+			compute='_compute_x_card', 
+
+			store=True, 			
 		)
 
 
+	#@api.multi
+	@api.depends('name')
 
-
-	@api.multi
-	#@api.depends('sex')
-	def _compute_x_sex_name(self):
+	def _compute_x_card(self):
 		for record in self:
 
-			#record.x_sex_name = pat_vars._dic_sex[record.sex] 
-			record.x_sex_name = record._dic[record.sex] 
-			#record.x_sex_name = record.sex
+			x_card = record.env['openhealth.card'].search([
+															('patient_name','=', record.name),
+														],
+														#order='appointment_date desc',
+														limit=1,)
+
+			record.x_card = x_card
+	# 
+
+
+
+
+
+
+
+
+
 
 
 
 
 	x_country_name = fields.Char(
 			'Pais', 
-			required=True, 
-			
+			required=True, 			
 			compute='_compute_x_country_name', 
 		)
 
@@ -319,6 +341,8 @@ class Patient(models.Model):
 			)
 
 
+
+
 # ----------------------------------------------------------- Re-definitions ------------------------------------------------------
 
 	age = fields.Char(
@@ -327,10 +351,13 @@ class Patient(models.Model):
 
 	
 	sex = fields.Selection(
+
+			selection = pat_vars._sex_type_list, 
+
 			string="Sexo",
 
-			required=True, 
-			#required=False, 
+			#required=True, 
+			required=False, 
 		)
 
 
@@ -388,8 +415,8 @@ class Patient(models.Model):
 			string = 'email',  
 			placeholder = '',
 
-			required=True, 
-			#required=False, 
+			#required=True, 
+			required=False, 
 			)
 
 
@@ -447,7 +474,8 @@ class Patient(models.Model):
 			selection = pat_vars._street2_list, 
 			string = "Distrito", 	
 			
-			required=True, 
+			#required=True, 
+			required=False, 
 		)
 
 
@@ -961,9 +989,10 @@ class Patient(models.Model):
 		treatment = self.env['openhealth.treatment'].create({'patient': patient_id,})
 
 
-		x_date_created = vals['x_date_created']
-		#print x_date_created 
 
+
+		#x_date_created = vals['x_date_created']
+		#print x_date_created 
 		#self.x_year_created = 'jx'
 		#print self.x_year_created
 

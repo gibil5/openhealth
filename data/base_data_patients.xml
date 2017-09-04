@@ -12,24 +12,20 @@
 
 
 
+<!--
 	<record id="test_patient" model="oeh.medical.patient">
 
 		<field name="name">TEST TEST Test</field>
-
 		<field name="comment">test</field>
 		<field name="sex">Male</field>
 		<field name="dob">1965-06-30</field>
 		<field name="zip">55</field>
 
-
-<!--
-
 		<field name="x_date_created">2017-06-30</field>
 		<field name="x_dni">01234567</field>
--->	
 		<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
-
 	</record>
+-->	
 
 
 

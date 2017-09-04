@@ -49,7 +49,7 @@
 								class="oe_highlight"
 								states="draft,payment"						
 
-								string="Generar el Documento de Pago"
+								string="Generar Documento de Pago"
 						/>
 
 
@@ -79,6 +79,21 @@
 								string="Anular"
 						/>
 -->
+
+
+
+
+
+						<button 
+								name="order_name"
+
+								type="object" 
+								class="oe_highlight"
+								states="generated"						
+
+								string="Order name"
+						/>
+
 
 
 
@@ -118,13 +133,9 @@
 <!--								
 								<field name="name"   />													
 -->
-								<field name="order"   />													
-								
+								<field name="order"   />																				
 								<field name="vspace"   />	
-
 								<field name="partner"   readonly=""	/>													
-
-
 								<field name="vspace"   />	
 								<field name="nr_pm"   invisible="1"	/>													
 							</group>
@@ -145,34 +156,25 @@
 								<field name="total"   	invisible="0"	/>													
 								<field name="vspace"   />	
 								<field name="balance"   />													
-
 								<field name="vspace"   />	
 								<field name="confirmed"   />	
-
-
-
-								<field name="pm_total"  invisible="1" 	/>	
-																				
 							</group>
 						</group>
 
 
 
+<!--
+								<field name="pm_total"  invisible="1" 	/>												
 						<group>
 							<group>
-<!--
 								<field name="method"   />													
-
 								<field name="vspace"   />													
-
 								<field name="subtotal"   />													
--->
 							</group>
-							<group>
-
-							
+							<group>							
 							</group>
 						</group>
+-->
 
 
 

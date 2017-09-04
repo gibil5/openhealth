@@ -21,9 +21,44 @@ class sale_order(models.Model):
 	_inherit='sale.order'
 	
 
+
+
 	#name = fields.Char(
 	#		string="Presupuesto #"
 	#	)
+
+
+
+
+
+
+
+	# Type
+	#x_type = fields.Selection(
+	#		selection = ord_vars._owner_type_list, 
+	#		string='Tipo', 
+	#	)
+
+
+
+
+	# Type (product or service)
+	#x_cancel_reason = fields.Char(
+	x_cancel_reason = fields.Selection(
+			selection=ord_vars._owner_type_list, 
+			#string='Motivo de anulación', 
+			string='Tipo', 
+		)
+
+
+	# Product Odoo 
+	x_cancel_owner = fields.Char(
+			#string='Quién anula', 
+			string='Producto', 
+		)
+
+
+
 
 
 
@@ -107,8 +142,9 @@ class sale_order(models.Model):
 	# State 
 	state = fields.Selection(
 
-			#selection = ord_vars._state_list, 
+			
 			#selection = ord_vars._x_state_list, 
+			selection = ord_vars._state_list, 
 			
 
 			string='Estado',	
@@ -864,15 +900,9 @@ class sale_order(models.Model):
 			default = False
 		)
 
-	x_cancel_reason = fields.Char(
-			#string='Motivo de anulación', 
-			string='Tipo', 
-		)
 
-	x_cancel_owner = fields.Char(
-			#string='Quién anula', 
-			string='Producto', 
-		)
+
+
 
 
 
@@ -1066,8 +1096,11 @@ class sale_order(models.Model):
 		#print 'State changes'
 
 		
-		self.state = 'payment'
+
 		#self.state = 'sale'
+		#self.state = 'payment'
+		self.state = 'sent'
+
 		
 
 		#print self.state
@@ -1538,14 +1571,32 @@ class sale_order(models.Model):
 # ----------------------------------------------------------- Create order lines ------------------------------------------------------
 	#@api.multi 
 	def x_create_order_lines_target(self, target):		
+
+		print 
+		print 'jx'
+		print target
+		print 
+
 		order_id = self.id
+
 		product = self.env['product.template'].search([
 														('x_name_short','=', target),
+
+														#('x_origin','!=', 'legacy'),
+														('x_origin','=', False),
 												])
+		
 		product_id = product.id
 		price_unit = product.list_price
 		x_price_vip = product.x_price_vip
 		product_uom = product.uom_id.id
+
+		
+		print product
+		print product.id
+		print product.uom_id.id
+		print 
+
 		ol = self.order_line.create({
 										'product_id': product_id,
 										'order_id': order_id,										
@@ -1748,11 +1799,7 @@ class sale_order(models.Model):
 				#self.x_appointment_date = appointment.appointment_date
 				#self.x_duration = appointment.duration
 				#self.x_machine = appointment.x_machine 
-
-
 		#print 
-
-
 	# update_order_lines_app	
 
 
@@ -1761,64 +1808,101 @@ class sale_order(models.Model):
 
 
 	@api.multi 
-	def action_confirm_deprecated(self):
+	def action_confirm(self):
 
-
-		#print 
-		#print 'jx'
-		#print 'Action confirm - Over ridden'
+		print 
+		print 'jx'
+		print 'Action confirm - Over ridden'
 		 
-
-
+		
 		#Write your logic here
-
-
-
-		# Validate 
-		#if self.x_machine != False:
-
-
-		#print 'x_doctor.name: ', self.x_doctor.name
-		#print 'x_machine', self.x_machine
-
-
-		#print 'x_state', self.x_state
-
-
-
-		#if self.x_doctor.name != False   and   self.x_machine == False:
-		#if self.x_doctor.name != False   and   self.x_machine == False	 and 	self.x_machine_req != 'consultation':
-
-		if self.x_treatment == 'laser_co2'   and   self.x_machine == False:
-			#print 'Warning: Sala no Reservada !'
-			tra = 1 
-		else:
-			#print 'Success !!!'
-
-			#self.x_state = 'sale'
-			#self.x_confirmed = True 
-
-
-			#if self.x_family == 'consultation': 
-			if self.x_family == 'consultation'	or 	self.x_family == 'procedure': 
-				self.x_appointment.state = 'Scheduled'
-
-				#self.state = 'confirmed'
-
-
-			# State is changed here ! 
-			res = super(sale_order, self).action_confirm()
-			
-			#self.state = 'confirmed'
-
-		#else: 
-			
-		#res = super(sale_order, self).action_confirm()
+		res = super(sale_order, self).action_confirm()
 		#Write your logic here
 		
-		#print
-	# action_confirm
-	
+
+
+
+		#oid = self.id
+		#order = self.env['sale.order'].search([ ('id', '=', oid), ], order='date_order desc', limit=1)
+		#order_id = order.id
+		#partner_id = order.partner_id
+		#partner_id_id = order.partner_id.id
+		#patient_name = partner_id.name 
+		#print order 
+		#print order_id
+		#print partner_id_id
+
+
+
+		patient_name = self.partner_id.name
+		print patient_name
+
+
+
+
+		go_card = False 
+
+		order_line = self.order_line
+		for line in order_line:
+			print line
+			print line.name 
+			print line.product_id.name
+
+			if line.name == 'Tarjeta VIP':
+				go_card = True
+
+
+		if go_card:
+
+			card = self.env['openhealth.card'].search([ ('patient_name', '=', patient_name), ], order='date_created desc', limit=1)
+			card_id = card.id
+			print card 
+
+			name = '00000005'
+
+
+			return {
+
+				# Mandatory 
+				'type': 'ir.actions.act_window',
+				'name': 'Open Consultation Current',
+
+
+				# Window action 
+				'res_model': 'openhealth.card',
+				'res_id': card_id,
+
+
+				# Views 
+				"views": [[False, "form"]],
+				'view_mode': 'form',
+				'target': 'current',
+
+
+				#'view_id': view_id,
+				#"domain": [["patient", "=", self.patient.name]],
+				#'auto_search': False, 
+
+				'flags': {
+						'form': {'action_buttons': True, }
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+				},			
+
+				'context':   {
+
+					#'search_default_treatment': treatment_id,
+
+					#'default_patient': patient_id,
+					#'default_doctor': doctor_id,
+					#'default_treatment_id': treatment_id,
+
+					'default_name': name,
+					'default_patient_name': patient_name,
+				}
+			}		
+	# action_confirm	
+
+
 
 
 

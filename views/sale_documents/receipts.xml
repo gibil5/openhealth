@@ -102,7 +102,9 @@
 
 
 							<group>
+<!--
 								<field name="payment_method"   readonly="1"	/>													
+-->							
 								<field name="order"   readonly="1"	/>													
 							</group>
 

@@ -85,12 +85,25 @@
 			<field name="type">tree</field>
 			<field name="priority" eval="1"/>
 			<field name="arch" type="xml">
+<!--				
 				<tree string="Product Tree"    default_order="x_name_short" >
+-->
+	
 
+				<tree string="Product Tree"    default_order="name" >
 
 					<field name="name"/>
 
+					<field name="sale_ok"/>
+
+
+					<field name="x_name_short"/>
+
+					<field name="uom_id"	invisible="0"/>
+
 					<field name="x_origin"/>				
+
+
 
 					<field name="categ_id"/>
 
@@ -102,12 +115,16 @@
 <!--
 					<field name="x_date_created"/>
 					<field name="id"/>
+
 --> 
+
+
+<!--
 
 					<field name="x_treatment"/>				
 					<field name="x_zone"/>				
 					<field name="x_pathology"/>				
-<!--
+
 					<field name="x_sessions"/>	
 					<field name="x_time"/>		
 
@@ -116,10 +133,16 @@
 
 
 
+					<field name="standard_price"/>
 					<field name="list_price"/>
 
+					<field name="price"/>
 
-
+					<field name="x_price_vip"/>
+<!--
+					<field name="pricelist"/>
+-->
+					<field name="item_ids"/>
 
 
 
@@ -133,7 +156,6 @@
 <!-- Must be present --> 
 <!--
 -->
-					<field name="uom_id"	invisible="1"/>
 
 					<field name="qty_available"	invisible="1"/>
 
@@ -143,8 +165,6 @@
 
 
 <!--					
-					<field name="x_name_short"/>
-					<field name="standard_price"/>
 					<field name="x_price_vip"/>
 -->
 
@@ -156,15 +176,16 @@
 
 
 
+
+
 		<!-- Window action -->
-		<record model="ir.actions.act_window" id="product_template_stockable_list_action">
-			<field name="name">Productos</field>
+		<record model="ir.actions.act_window" id="product_template_stockable_wleg_list_action">
+			<field name="name">Productos - wleg</field>
 			<field name="res_model">product.template</field>
 			<field name="view_type">form</field>
-
 			<field name="view_mode">tree,form</field>
 
-            <field name="domain">[
+            <field name="domain">[            	
 									('type', '=', 'product'),
             					]</field>
 
@@ -182,12 +203,148 @@
 
 
 		<!-- Window action -->
-		<record model="ir.actions.act_window" id="product_template_list_action">
-			<field name="name">Productos</field>
+		<record model="ir.actions.act_window" id="product_template_stockable_list_action">
+<!--
+			<field name="name">Productos - No Legacy</field>
+-->
+			<field name="name">Productos - jxx</field>
+
+			<field name="res_model">product.template</field>
+			
+			<field name="view_type">form</field>
+			
+			<field name="view_mode">tree,form</field>
+
+            <field name="domain">[            	
+
+									('type', '=', 'product'),
+            	
+									('x_origin', '=', False),
+
+            					]</field>
+
+            <!--
+			<field name="context">{'order': 'x_name_short'}</field>
+            <field name="domain">[
+									('type', '=', 'service'),
+									('x_treatment', '=', 'laser_co2'),
+            					]</field>
+			-->
+		</record>
+
+
+
+
+
+
+
+
+
+
+		<!-- Window action -->
+		<record model="ir.actions.act_window" id="product_template_service_list_action">
+			<field name="name">Servicios</field>
 			<field name="res_model">product.template</field>
 			<field name="view_type">form</field>
 
 			<field name="view_mode">tree,form</field>
+
+<!--
+-->
+            <field name="domain">[            	
+									('type', '=', 'service'),
+									('x_origin', '=', False),
+            					]</field>
+
+
+			<field name="context">{'order': 'name'}</field>
+
+            <!--
+			<field name="context">{'order': 'x_name_short'}</field>
+            <field name="domain">[
+									('type', '=', 'service'),
+									('x_treatment', '=', 'laser_co2'),
+            					]</field>
+			-->
+		</record>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- TREE /list view -->
+		<!-- Window action -->
+<!--
+		<record model="ir.ui.view" id="product.product_product_tree_view">
+			<field name="name">product.product.product.tree</field>
+			<field name="model">product.product</field>
+			<field name="type">tree</field>
+			<field name="priority" eval="1"/>
+			<field name="arch" type="xml">
+				<tree string="Product Tree"    default_order="name" >
+					<field name="code"/>
+					<field name="name"/>
+					<field name="list_price"/>
+					<field name="price"		invisible="1" />
+					<field name="uom_id"/>
+					<field name="barcode"/>
+					<field name="state"	invisible="1"/>
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="product.product_product_list_action">
+			<field name="name">Productos Productos</field>
+			<field name="res_model">product.product</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+
+            <field name="domain">[
+										('x_origin', '=', False),
+            	
+            					]</field>
+		</record>
+-->
+
+		<record model="ir.actions.act_window" id="product.product_template_action_product">
+			<field name="name">Productos - Inventario</field>
+			<field name="res_model">product.template</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">kanban,tree,form</field>
+
+            <field name="domain">[
+										('x_origin', '=', False),
+										('type', '=', 'product'),        	
+            					]</field>
+		</record>
+
+
+
+
+
+
+
+		<!-- Window action -->
+		<record model="ir.actions.act_window" id="product_template_list_action">
+			<field name="name">Productos - jx</field>
+			<field name="res_model">product.template</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+
+            <field name="domain">[]</field>
 
 
 <!--
@@ -208,6 +365,16 @@
 									('x_treatment', '=', 'laser_co2'),
             					]</field>
 			-->
+
+
+
+<!--
+            <field name="domain">[
+										('x_origin', '=', False),
+            	
+            					]</field>
+-->
+
 		</record>
 
 
@@ -249,20 +416,82 @@
 
 
 
+		<!-- TREE /list view -->
+<!--
+		<record model="ir.ui.view" id="product.product_template_tree_view">
+-->	
+<!--
+-->
+	
+		<record model="ir.ui.view" id="pricelist_item_tree_view">
+
+			<field name="name">product pricelist item</field>
+
+			<field name="model">product.pricelist.item</field>
+			
+			<field name="type">tree</field>
+
+			<field name="priority" eval="1"/>
+
+
+			<field name="arch" type="xml">	
+
+				<tree string="Product Pricelist Item Tree"   >
+
+					<field name="pricelist_id"/>
+
+
+					<field name="name"/>
+
+					<field name="product_tmpl_id"/>
+
+					<field name="categ_id"/>
+
+					<field name="min_quantity"/>
+
+
+					<field name="date_start"/>
+
+					<field name="date_end"/>
+
+				</tree>
+			</field>
+		</record>
+
+
+
+		<record model="ir.actions.act_window" id="pricelist_item_list_action">
+			<field name="name">Pricelist Item</field>
+			<field name="res_model">product.pricelist.item</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first order
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+
+
+
+
 		
 		<!-- Filter --> 
         <record id="product.view_product_template_filter" model="ir.ui.view">
-
            <field name="name">Product Search</field>
-           
            <field name="model">product.template</field>	
-
 		   <field name="arch" type="xml">
-           
                <search string="products">
 
                    <field name="name" />
-
                    <field name="x_origin" />               
                
                </search>

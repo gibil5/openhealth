@@ -106,8 +106,6 @@ class Treatment(models.Model):
 
 	#@api.multi
 	@api.depends('patient')
-
-
 	def _compute_partner_id(self):
 		for record in self:
 
@@ -1647,10 +1645,15 @@ class Treatment(models.Model):
 		#print 
 		#print 'jx'
 		#print 'Create Order'
-
-
 		#print self.x_family
 		#print target
+
+
+
+		#note = 'test'
+		#note = self.partner_id.name 
+		note = self.partner_id.comment
+
 
 
 		order = self.env['sale.order'].create(
@@ -1669,8 +1672,10 @@ class Treatment(models.Model):
 
 														#'x_chief_complaint':chief_complaint,
 
-														
 														'x_family': target, 
+
+
+														'note': note, 
 													}
 												)
 

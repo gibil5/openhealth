@@ -1,10 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
-	
-
-
-	<data noupdate='1'>
-
+	<data noupdate='0'>
 
 		<!-- Product Category --> 
 		<record id='medical' model='product.category'>
@@ -13,7 +9,72 @@
 
 
 
+
+
+
+
+<!--
+			<field name='pricelist_id' ref="pricelist_vip"/>
+				<field name='pricelist_item_id' ref="pricelist_item_vip_crio"/>
+				<field name='pricelist_id'/>
+-->
+
+
+
+
 		<!-- Data - Services -->
+
+
+
+
+<!-- Vip -->
+
+		<record id='cri_faa_acn_ten' model='product.template'>
+
+			<field name='name'>CRIOCIRUGIA - Todo Rostro - Acne - 10 - jx</field>
+			
+			<field name='type'>service</field>
+			<field name='x_name_short'>cri_faa_acn_ten</field>
+			<field name='x_treatment'>criosurgery</field>
+			<field name='x_zone'>face_all</field>
+			<field name='x_pathology'>acne</field>
+			<field name='price'>3000</field>
+			<field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
+			<field name='x_time'></field>
+			<field name='x_sessions'>10</field>
+
+			<field name='x_price_vip'>2700</field>
+			
+			<field name='x_family'>medical</field>
+			<field name='categ_id' ref="medical"/>
+		</record>
+
+		<record id='scl_leg_var_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>scl_leg_var_one</field>
+			<field name='name'>ESCLEROTERAPIA - Piernas - Varices - 1</field>
+			<field name='x_treatment'>sclerotherapy</field>
+			<field name='x_zone'>legs</field>
+			<field name='x_pathology'>varices</field>
+			<field name='price'>2000</field>
+			<field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
+			<field name='x_time'></field>
+			<field name='x_sessions'>1</field>
+
+			<field name='x_price_vip'>1000</field>
+			
+			<field name='x_family'>medical</field>
+			<field name='categ_id' ref="medical"/>
+		</record>
+
+
+
+
+
+
+
+
+
 
 		<record id='pla_hea_rec' model='product.template'>
 			<field name='type'>service</field>
@@ -26,11 +87,14 @@
 			<field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
 			<field name='x_time'></field>
 			<field name='x_sessions'>2</field>
-			<field name='x_price_vip'>1200</field>
-			<field name='x_family'>medical</field>
 
+			<field name='x_price_vip'>1200</field>
+			
+			<field name='x_family'>medical</field>
 			<field name='categ_id' ref="medical"/>
 		</record>
+
+
 
 		<record id='pla_hea_rec_one' model='product.template'>
 			<field name='type'>service</field>
@@ -83,22 +147,7 @@
 			<field name='categ_id' ref="medical"/>
 		</record>
 
-		<record id='cri_faa_acn_one' model='product.template'>
-			<field name='type'>service</field>
-			<field name='x_name_short'>cri_faa_acn_one</field>
-			<field name='name'>CRIOCIRUGIA - Todo Rostro - Acne - 1</field>
-			<field name='x_treatment'>criosurgery</field>
-			<field name='x_zone'>face_all</field>
-			<field name='x_pathology'>acne</field>
-			<field name='price'>300</field>
-			<field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
-			<field name='x_time'></field>
-			<field name='x_sessions'>1</field>
-			<field name='x_price_vip'>0</field>
-			<field name='x_family'>medical</field>
 
-			<field name='categ_id' ref="medical"/>
-		</record>
 
 		<record id='hac_1hy_rfr_one' model='product.template'>
 			<field name='type'>service</field>
@@ -185,22 +234,7 @@
 			<field name='categ_id' ref="medical"/>
 		</record>
 
-		<record id='cri_faa_acn_ten' model='product.template'>
-			<field name='type'>service</field>
-			<field name='x_name_short'>cri_faa_acn_ten</field>
-			<field name='name'>CRIOCIRUGIA - Todo Rostro - Acne - 10</field>
-			<field name='x_treatment'>criosurgery</field>
-			<field name='x_zone'>face_all</field>
-			<field name='x_pathology'>acne</field>
-			<field name='price'>3000</field>
-			<field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
-			<field name='x_time'></field>
-			<field name='x_sessions'>10</field>
-			<field name='x_price_vip'>2700</field>
-			<field name='x_family'>medical</field>
 
-			<field name='categ_id' ref="medical"/>
-		</record>
 
 		<record id='pla_faa_rfa' model='product.template'>
 			<field name='type'>service</field>
@@ -253,22 +287,6 @@
 			<field name='categ_id' ref="medical"/>
 		</record>
 
-		<record id='ivc_na_na_one' model='product.template'>
-			<field name='type'>service</field>
-			<field name='x_name_short'>ivc_na_na_one</field>
-			<field name='name'>VITAMINA C ENDOVENOSA - na - na - 1</field>
-			<field name='x_treatment'>intravenous_vitamin</field>
-			<field name='x_zone'>na</field>
-			<field name='x_pathology'>na</field>
-			<field name='price'>500</field>
-			<field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
-			<field name='x_time'></field>
-			<field name='x_sessions'>1</field>
-			<field name='x_price_vip'>0</field>
-			<field name='x_family'>medical</field>
-
-			<field name='categ_id' ref="medical"/>
-		</record>
 
 		<record id='pla_faa_rfa_one' model='product.template'>
 			<field name='type'>service</field>
@@ -321,20 +339,45 @@
 			<field name='categ_id' ref="medical"/>
 		</record>
 
-		<record id='scl_leg_var_one' model='product.template'>
+
+
+
+
+
+<!-- No Vip -->
+		<record id='cri_faa_acn_one' model='product.template'>
 			<field name='type'>service</field>
-			<field name='x_name_short'>scl_leg_var_one</field>
-			<field name='name'>ESCLEROTERAPIA - Piernas - Varices - 1</field>
-			<field name='x_treatment'>sclerotherapy</field>
-			<field name='x_zone'>legs</field>
-			<field name='x_pathology'>varices</field>
-			<field name='price'>2000</field>
+			<field name='x_name_short'>cri_faa_acn_one</field>
+			<field name='name'>CRIOCIRUGIA - Todo Rostro - Acne - 1</field>
+			<field name='x_treatment'>criosurgery</field>
+			<field name='x_zone'>face_all</field>
+			<field name='x_pathology'>acne</field>
+			<field name='price'>300</field>
 			<field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
-			<field name='x_price_vip'>1000</field>
-			<field name='x_family'>medical</field>
 
+			<field name='x_price_vip'>0</field>
+			
+			<field name='x_family'>medical</field>
+			<field name='categ_id' ref="medical"/>
+		</record>
+
+		<record id='ivc_na_na_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>ivc_na_na_one</field>
+			<field name='name'>VITAMINA C ENDOVENOSA - na - na - 1</field>
+			<field name='x_treatment'>intravenous_vitamin</field>
+			<field name='x_zone'>na</field>
+			<field name='x_pathology'>na</field>
+			<field name='price'>500</field>
+			<field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
+			<field name='x_time'></field>
+			<field name='x_sessions'>1</field>
+
+			<field name='x_price_vip'>0</field>
+			
+			<field name='x_family'>medical</field>
 			<field name='categ_id' ref="medical"/>
 		</record>
 

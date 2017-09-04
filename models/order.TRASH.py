@@ -116,3 +116,68 @@
 
 
 
+
+# 29 Aug 2017
+
+
+	@api.multi 
+	def action_confirm_deprecated(self):
+
+		#print 
+		#print 'jx'
+		#print 'Action confirm - Over ridden'
+		 
+		#Write your logic here
+
+
+		# Validate 
+		#if self.x_machine != False:
+
+		#print 'x_doctor.name: ', self.x_doctor.name
+		#print 'x_machine', self.x_machine
+		#print 'x_state', self.x_state
+
+
+
+		#if self.x_doctor.name != False   and   self.x_machine == False:
+		#if self.x_doctor.name != False   and   self.x_machine == False	 and 	self.x_machine_req != 'consultation':
+
+		if self.x_treatment == 'laser_co2'   and   self.x_machine == False:
+			#print 'Warning: Sala no Reservada !'
+			tra = 1 
+		else:
+			#print 'Success !!!'
+
+			#self.x_state = 'sale'
+			#self.x_confirmed = True 
+
+
+			#if self.x_family == 'consultation': 
+			if self.x_family == 'consultation'	or 	self.x_family == 'procedure': 
+				self.x_appointment.state = 'Scheduled'
+
+				#self.state = 'confirmed'
+
+
+			# State is changed here ! 
+			res = super(sale_order, self).action_confirm()
+			
+			#self.state = 'confirmed'
+
+		#else: 
+			
+		#res = super(sale_order, self).action_confirm()
+		#Write your logic here
+		
+		#print
+	# action_confirm
+	
+
+
+
+
+
+
+
+
+

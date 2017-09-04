@@ -14,17 +14,12 @@
 
 		<!-- Form view -->
 		<record model="ir.ui.view" id="view_order_form">
-
 			<field name="name">sale.order.form</field>
-			
 			<field name="model">sale.order</field>
-
-
 			<field name="inherit_id" ref="sale.view_order_form"/>			
 	        <field name="mode">primary</field>
 	        <field name="priority" eval="1"/>
 
-	        
 			<field name="arch" type="xml">
 
 
@@ -53,9 +48,10 @@
 
 				<xpath expr="//field[@name='state']" position="replace">
 					<field 	name="state" 
+
 							widget="statusbar" 
 
-
+							statusbar_visible="draft, sent, sale, done, cancel"
 					/>
 				</xpath>
 
@@ -69,27 +65,34 @@
 <!-- OLD Buttons - NOT DEPRECATED --> 
 
 				<!-- Two times important --> 
+
+
 				<!-- Quotation Send --> 
-<!--
+				<!--
+				-->
 				<xpath expr="//button[@name='action_quotation_send']" position="replace">
 				</xpath>
 				<xpath expr="//button[@name='action_quotation_send']" position="replace">
 				</xpath>
--->
+
+
+
 				<!-- Print Quotation -->
-<!--
+				<!--
+				-->
 				<xpath expr="//button[@name='print_quotation']" position="replace">
 				</xpath>
 				<xpath expr="//button[@name='print_quotation']" position="replace">
 				</xpath>
--->
 
 
 				<!-- Action Done --> 
-<!--
+				<!--
+				-->
 				<xpath expr="//button[@name='action_done']" position="replace">
 				</xpath>
--->
+
+
 
 
 
@@ -100,7 +103,38 @@
 
 				<xpath expr="//button[@name='action_confirm']" position="replace">
 				</xpath>
+
+
+							name="action_confirm"
+							type="object" 
+							class="oe_highlight"
+							states="sent"						
+
+
+
+				<xpath expr="//button[@name='action_confirm']" position="replace">
+					<button 
+
+							string="Confirmar venta - jx"
+
+					/>
+				</xpath>
 -->
+
+				<xpath expr="//button[@name='action_confirm']" position="replace">
+				</xpath>
+
+				<xpath expr="//button[@name='action_confirm']" position="replace">
+					<button 
+
+							name="action_confirm"
+							type="object" 
+							class="oe_highlight"
+							string="Confirmar Venta"
+							states="sent"						
+					/>
+				</xpath>
+
 
 
 
@@ -194,7 +228,6 @@
 
 				<xpath expr="//field[@name='validity_date']" position="replace">
 
-					<field name="vspace" />
 					<field name="x_machine"		attrs="{	'invisible':[('patient', '=', False ),],
 															}"	/>
 				
@@ -209,6 +242,8 @@
 
 					<group	attrs="{	'invisible':[('patient', '=', False ),],
 												}"	>
+					<field name="vspace" />
+
 					<field name="patient" />
 					<field name="x_doctor" />
 <!--
@@ -304,9 +339,20 @@
 
 
 
+
+
 <xpath expr="//page[1]" position="attributes">
+
 	<attribute name='string'>Líneas</attribute> 
+<!--
+<xpath expr="//field[@name='order_line']" position="replace">
 </xpath>
+-->
+</xpath>
+
+
+
+
 
 
 <xpath expr="//page[2]" position="attributes">
@@ -319,8 +365,10 @@
 				<!-- NEW BUTTONS --> 
 <!--
 				<xpath expr="//field[@name='x_state']" position="before">
--->
 				<xpath expr="//field[@name='state']" position="before">
+				<xpath expr="//button[@name='action_quotation_send']" position="before">
+-->
+				<xpath expr="//button[@name='action_confirm']" position="before">
 				
 
 
@@ -368,6 +416,8 @@
 					<!-- Pagar -->
 <!--
 							attrs="{'invisible':	[('x_state', 'in', ['payment', 'proof', 'machine', 'sale', 'invoice'] ),	]}"
+
+							string="Módulo de Pago"
 -->					
 					<button 
 							groups="openhealth.managers,openhealth.caja"
@@ -377,7 +427,7 @@
 							class="oe_highlight"
 
 
-							string="Módulo de Pago"
+							string="Pagar"
 
 
 							states="draft"						
@@ -413,9 +463,6 @@
 
 				<!-- Order lines --> 
 <!--
-				<xpath expr="//field	[@name='order_line']/tree//field[@name='price_subtotal']" position="before">
-            	        <field name="x_price_vip"/>
-            	</xpath>
 
 				<xpath expr="//field	[@name='order_line']/tree//field[@name='price_subtotal']" position="replace">
             	        <field name="price_total"/>
@@ -435,6 +482,11 @@
             	</xpath>
 -->
 
+<!--
+				<xpath expr="//field	[@name='order_line']/tree//field[@name='price_subtotal']" position="before">
+            	        <field name="x_price_vip"/>
+            	</xpath>
+-->
 
 
 
@@ -481,18 +533,16 @@
 													('consultation_progress','in',[ False, '0.0',0.0, 0]),
 
 
+
+													('state','not in',['payment']), 
 -->
 
 					<button 
 							type="object"
-
 							name="reserve_machine" 	
-
 							class="oe_highlight"
 
-
 							string="Reservar la Sala"
-
 
 
 
@@ -500,7 +550,7 @@
 
 													('x_machine_req','not in',['laser_co2_1']), 
 
-													('state','not in',['payment']), 
+													('state','not in',['sent']), 
 
 											]}"
 
@@ -637,14 +687,19 @@
 							<div attrs="{'invisible':[	('state', '!=', 'sale'), ]}">
 								Venta
 							</div>
--->
+
+
 								Presupuesto
+-->
+							<field name="name" 	class=""	readonly="1"	/>								
 						</h3>
+<!--
+<br/>
 
 						<h4>
 							<field name="name" 	class=""	readonly="1"	/>								
 						</h4>
-
+-->
 					</group>
 
 
@@ -890,12 +945,24 @@ Order Line - Tree
 					<field name="x_family"		readonly="1"/>
 
 
+<!--
+					<field name="x_type"/>
+					<field name="x_cancel_reason"/>
+					<field name="x_cancel_owner"/>
+-->
+
+
+
 
 					<field name="vspace"/>
 
 					<field name="product"/>
 
 					<field name="categ"/>
+
+<!--
+					<field name="note" />  
+-->
 
 
 
@@ -1002,12 +1069,7 @@ Order Line - Tree
 					</field>
 					-->
 						
-				</field>
-				<!--
-				</xpath>
-				-->
-				
-				
+				</field>				
 			</field>
 		</record>
 		
@@ -1030,9 +1092,9 @@ Order Line - Tree
 					
 
 
-                    <field name="name"/>
+                    <field name="name"	 />
 
-					<field name="note" />  
+					<field name="note"   />  
 
 
 
@@ -1111,7 +1173,7 @@ Order Line - Tree
 					<field name="x_month"/>
 					<field name="x_year"/>
 
-                    <field name="date_order"		string="Fecha"/>
+                    <field name="date_order"	/>
 
 <!--
                     <field name="name" string="Order Number"/>
@@ -1140,6 +1202,8 @@ Order Line - Tree
 
 
 		
+
+
 
 
 
@@ -1231,6 +1295,8 @@ Order Line - Tree
 
 
 
+
+
 		<!-- Sales --> 
 		<record model="ir.actions.act_window" id="sale_list_action">
 			<field name="name">Ventas</field>
@@ -1253,6 +1319,44 @@ Order Line - Tree
 			</field>
 			-->
 		</record>
+
+
+		<!-- Sales Month --> 
+		<record model="ir.actions.act_window" id="sale_august_list_action">
+			<field name="name">Ventas Agosto</field>
+			<field name="res_model">sale.order</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+
+           	<field name="domain">[
+									('state', '=', 'sale'),
+
+									('date_order','&lt;=',time.strftime('2017-09-01')),
+									('date_order','&gt;=',time.strftime('2017-08-01'))
+            					]
+            </field>
+
+			<!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first invoice
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+
+
+
+
+
+
+
+
 
 
 		<!-- Sales - Consultations --> 
@@ -1284,6 +1388,16 @@ Order Line - Tree
             </field>
 		</record>
 		
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1347,15 +1461,10 @@ Order Line - Tree
                <search string="orders">
 
                    <field name="partner_id" />
-
 <!--
-                   <field name="physician" />  
--->
                    <field name="x_doctor" />               
-
-
-                   <field name="x_family" />               
-               
+                   <field name="x_family" /> 
+-->
                </search>
            </field>
        </record>

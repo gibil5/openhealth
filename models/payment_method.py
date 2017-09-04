@@ -38,6 +38,48 @@ class payment_method(models.Model):
 
 
 
+
+
+	# Order name 
+	@api.multi 
+	def order_name(self):
+		#print
+		#print 'jx'
+		
+
+		#print self.invoice.name 
+		#print self.receipt.name 
+		#print self.advertisement.name 
+		#print self.ticket_invoice.name 
+		#print self.ticket_receipt.name
+
+
+		if self.invoice.name != False:
+			self.order.name = self.invoice.name
+
+		if self.receipt.name != False:
+			self.order.name = self.receipt.name
+	
+		if self.advertisement.name != False:
+			self.order.name = self.advertisement.name
+
+		if self.sale_note.name != False:
+			self.order.name = self.sale_note.name
+
+		if self.ticket_invoice.name != False:
+			self.order.name = self.ticket_invoice.name
+
+		if self.ticket_receipt.name != False:
+			self.order.name = self.ticket_receipt.name
+
+
+		#print self.order.name 
+		#print 
+
+
+
+
+
 	confirmed = fields.Boolean(
 			default=False, 
 			readonly=True, 

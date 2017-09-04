@@ -11,11 +11,70 @@ class Partner(models.Model):
 
 
 
-	#x_owner = fields.Char(
-	#						string='Owner', 
-	#	)
-	#x_sex = fields.Char(
-	#						string='Sex', 
-	#	)
+	# Vip 
+	x_vip = fields.Boolean(
+		string="Vip",
+		default=False, 
+
+		compute='_compute_x_vip', 
+	)
+
+
+
+	@api.multi
+	#@api.depends('x_card')
+
+	def _compute_x_vip(self):
+		for record in self:
+
+			x_card = record.env['openhealth.card'].search([
+															('patient_name','=', record.name),
+														],
+														#order='appointment_date desc',
+														limit=1,)
+
+			if x_card.name != False:
+				record.x_vip = True 
+	# 
+
+
+
+
+
+
+	#property_product_pricelist = fields.Property(
+	property_product_pricelist = fields.Many2one(
+		#type='many2one', 
+		relation='product.pricelist', 
+		string="Sale Pricelist - jx", 
+		help="This pricelist will be used, instead of the default one, for sales to the current partner", 
+
+		compute='_compute_property_product_pricelist', 
+	)
+
+
+
+
+	@api.multi
+	#@api.depends('x_card')
+
+	def _compute_property_product_pricelist(self):
+		for record in self:
+
+			#x_card = record.env['openhealth.card'].search([
+			#												('patient_name','=', record.name),
+			#											],
+														#order='appointment_date desc',
+			#											limit=1,)
+
+			#if x_card.name != False:
+			#	record.property_product_pricelist = True 
+
+
+			#record.property_product_pricelist = 'VIP'
+			#record.property_product_pricelist = 'VIP' 
+			record.property_product_pricelist = False 
+	# 
+
 
 

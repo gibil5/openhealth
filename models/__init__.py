@@ -36,6 +36,8 @@ from . import appfuncs
 
 # Operational 
 
+from . import card
+
 
 from . import process 
 from . import treatment 
@@ -69,22 +71,21 @@ from . import service_ndyag
 from . import service_medical
 
 
-
-
-
 from . import sale_make_invoice_advance
+
+
+
+
 
 from . import order
 #from . import order_line
 
 
 
+
+
 #from . import sale_report
 #from . import oh_sale_report
-
-
-
-
 
 
 #from . import sale_document

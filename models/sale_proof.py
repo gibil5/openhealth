@@ -80,16 +80,22 @@ class SaleProof(models.Model):
 
 
 
+
 	# Open Order
 	@api.multi 
 	def open_order(self):
 		#print 
 		#print 'Open order'
 
+
+		self.order.name = self.name 
+
+
 		ret = self.order.open_myself()
 
 		return ret 
 	# open_order
+
 
 
 

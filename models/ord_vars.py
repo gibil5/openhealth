@@ -3,6 +3,23 @@
 
 
 
+
+
+
+_owner_type_list = [
+						('product', 			'Product'),
+						('service', 			'Servicio'),
+		]
+
+
+
+
+
+
+
+
+
+
 _dic_model = {
 
 						'receipt' : 'openhealth.receipt', 		
@@ -16,11 +33,6 @@ _dic_model = {
 
 						False :	False, 
 			}
-
-
-
-
-
 
 
 _sale_doc_type_list = [
@@ -85,6 +97,9 @@ _state_list = [
 				('sale', 		'Facturado'),				
 				('done', 		'Completo'),
 				('cancel', 		'Cancelado'),
+
+
+
 
 
 

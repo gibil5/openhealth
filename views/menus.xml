@@ -65,10 +65,15 @@
 
 
 
+
+
 		<!-- Caja --> 			
 		<menuitem 	id="sales_menu" 
 					name="Caja"
-					parent="main_sales_menu"/>
+					parent="main_sales_menu"
+
+					sequence="1"
+					/>
 
 		<menuitem 	id="sales_budget_menu" 
 					name="Presupuestos" 
@@ -76,44 +81,232 @@
 					sequence="1"
 					action="budget_list_action"/>
 
+<!--
+					action="sale_list_action"
+-->
 		<menuitem 	id="sales_invoice_menu" 
 					name="Ventas" 
 					parent="sales_menu"
 					sequence="2"
-					action="sale_list_action"/>
+					action="sale_august_list_action"
+					/>
 
+
+
+<!--
+-->
 		<menuitem 	id="sales_product_template_menu" 
 					name="Productos"
 					parent="sales_menu"
-					sequence="3"
+					sequence="4"
 
 					action="product_template_stockable_list_action"/>
 
 
 
+		<menuitem 	id="sales_product_template_services_menu" 
+					name="Servicios"
+					parent="sales_menu"
+					sequence="3"
+
+					action="product_template_service_list_action"/>
+
+
+		<!-- Ventas --> 
+<!--
+		<menuitem 	id="sales_month_menu" 
+					name="Ventas x Mes"
+					parent="main_sales_menu"
+					sequence="2"
+					/>
+
+		<menuitem 	id="sales_invoice_august_menu" 
+					name="Agosto" 
+					parent="sales_month_menu"
+					sequence="8"
+
+					action="sale_august_list_action"
+
+					/>
+-->
+
+
+
+
+
+
+
+
+		<!-- Caja --> 			
+		<menuitem 	id="sales_cards_menu" 
+					name="Vip"
+					parent="main_sales_menu"
+
+					sequence="1"
+					/>
+
+		<menuitem 	id="sales_card_sub_menu" 
+					name="Tarjetas Vip"
+					parent="sales_cards_menu"
+					sequence="4"
+
+					action="card_list_action"
+					/>
+
+		<menuitem 	id="sales_patients_sub_menu" 
+					name="Pacientes Vip"
+					parent="sales_cards_menu"
+					sequence="5"
+
+					action="patient_vip_list_action"
+					/>
+
+
+
+
+
+
+
+
+
+
 
 		<!-- Reports --> 
-<!--
-					action="sale.action_order_report_so_salesteam"
--->		
 		<menuitem 	id="sales_reports_menu" 
-					name="Reporting"
+					name="Reporting Mensual"
 					parent="main_sales_menu"
+
+					sequence="4"
 
 					groups="openhealth.managers"
 					/>
 
-
-		<!-- All -->
-		<menuitem 	id="sales_report_sales_april_all_menu" 
-					name="Abril - Todo" 
+		<!-- january -->
+		<menuitem 	id="sales_report_sales_january_all_menu" 
+					name="Enero" 
 					parent="sales_reports_menu"
-					sequence="1"
+					sequence="12"
+
+					action="action_order_report_january_all"
+					/>
+
+
+		<!-- February -->
+		<menuitem 	id="sales_report_sales_february_all_menu" 
+					name="Febrero" 
+					parent="sales_reports_menu"
+					sequence="10"
+
+					action="action_order_report_february_all"
+					/>
+
+		<!-- March -->
+		<menuitem 	id="sales_report_sales_march_all_menu" 
+					name="Marzo" 
+					parent="sales_reports_menu"
+					sequence="9"
+
+					action="action_order_report_march_all"
+					/>
+
+
+
+		<!-- April -->
+		<menuitem 	id="sales_report_sales_april_all_menu" 
+					name="Abril" 
+					parent="sales_reports_menu"
+					sequence="8"
 
 					action="action_order_report_april_all"
 					/>
 
+		<menuitem 	id="sales_report_sales_august_all_menu" 
+					name="Agosto" 
+					parent="sales_reports_menu"
+					sequence="7"
+
+					action="action_order_report_august_all"
+					/>
+
+
+
+
+		<!-- may -->
+		<!-- june -->
+		<!-- july -->
+		<!-- august -->
+		<!-- september -->
+		<!-- october -->
+		<!-- november -->
+		<!-- december -->
+
+<!--
+		<menuitem 	id="sales_report_sales_may_all_menu" 
+					name="Mayo" 
+					parent="sales_reports_menu"
+					sequence="5"
+
+					action="action_order_report_may_all"
+					/>
+
+		<menuitem 	id="sales_report_sales_june_all_menu" 
+					name="Junio" 
+					parent="sales_reports_menu"
+					sequence="6"
+
+					action="action_order_report_june_all"
+					/>
+
+		<menuitem 	id="sales_report_sales_july_all_menu" 
+					name="Julio" 
+					parent="sales_reports_menu"
+					sequence="7"
+
+					action="action_order_report_july_all"
+					/>
+
+
+		<menuitem 	id="sales_report_sales_september_all_menu" 
+					name="Setiembre" 
+					parent="sales_reports_menu"
+					sequence="9"
+
+					action="action_order_report_september_all"
+					/>
+
+		<menuitem 	id="sales_report_sales_october_all_menu" 
+					name="Octubre" 
+					parent="sales_reports_menu"
+					sequence="10"
+
+					action="action_order_report_october_all"
+					/>
+
+		<menuitem 	id="sales_report_sales_november_all_menu" 
+					name="Noviembre" 
+					parent="sales_reports_menu"
+					sequence="11"
+
+					action="action_order_report_november_all"
+					/>
+
+		<menuitem 	id="sales_report_sales_december_all_menu" 
+					name="Diciembre" 
+					parent="sales_reports_menu"
+					sequence="12"
+
+					action="action_order_report_december_all"
+					/>
+-->
+
+
+
+
+
+
+
 		<!-- All -->
+<!--
 		<menuitem 	id="sales_report_sales_march_all_menu" 
 					name="Marzo - Todo" 
 					parent="sales_reports_menu"
@@ -121,13 +314,13 @@
 
 					action="action_order_report_march_all"
 					/>
-
-
-
+-->
 
 
 
 		<!-- Services -->
+		<!-- Products -->
+<!--
 		<menuitem 	id="sales_report_sales_services_menu" 
 					name="Servicios" 
 					parent="sales_reports_menu"
@@ -137,7 +330,6 @@
 					/>
 
 
-		<!-- Products -->
 		<menuitem 	id="sales_report_sales_products_menu" 
 					name="Productos" 
 					parent="sales_reports_menu"
@@ -145,9 +337,21 @@
 
 					action="action_order_report_products"
 					/>
+-->
+
 
 
 		<!-- Dr Chavarri -->
+		<!-- Dr alarcon -->
+		<!-- Dr Canales -->
+		<!-- Dr Gonzales -->
+		<!-- Dr Mendez -->
+		<!-- Dr Monteverde -->
+		<!-- Dr Vasquez -->
+		<!-- Dra Acosta -->
+		<!-- Dra Pedemonte -->
+
+<!--	
 		<menuitem 	id="sales_report_sales_chavarri_menu" 
 					name="Dr. Chavarri" 
 					parent="sales_reports_menu"
@@ -156,17 +360,6 @@
 					action="action_order_report_dr_chavarri"
 					/>
 
-
-		<!-- Dr alarcon -->
-		<!-- Dr Canales -->
-		<!-- Dr Gonzales -->
-		<!-- Dr mendez -->
-		<!-- Dr monteverde -->
-		<!-- Dr vasquez -->
-		<!-- Dr acosta -->
-		<!-- Dr pedemonte -->
-
-<!--		
 		<menuitem 	id="sales_report_sales_alarcon_menu" 
 					name="Dr. Alarcon" 
 					parent="sales_reports_menu"
@@ -220,13 +413,7 @@
 
 
 
-		<menuitem 	id="sales_report_sales_acosta_menu" 
-					name="Dra. Acosta" 
-					parent="sales_reports_menu"
-					sequence="4"
 
-					action="action_order_report_dra_acosta"
-					/>
 
 		<menuitem 	id="sales_report_sales_pedemonte_menu" 
 					name="Dra. Pedemonte" 
@@ -235,9 +422,15 @@
 
 					action="action_order_report_dra_pedemonte"
 					/>
--->
 
+		<menuitem 	id="sales_report_sales_acosta_menu" 
+					name="Dra. Acosta" 
+					parent="sales_reports_menu"
+					sequence="5"
 
+					action="action_order_report_dra_acosta"
+					/>
+-->	
 
 
 		<!-- OH Services -->
@@ -281,6 +474,7 @@
 
 
 
+
 <!-- Appointments - jx -->
 <!--
 		<menuitem id="main_appointment_menu" 
@@ -289,14 +483,10 @@
 		<!-- Appointments -->
 		<menuitem id="main_appointment_menu_jx" 
 			sequence="-8"
-
 			name="Citas"
 
 			groups="openhealth.reception,openhealth.managers"
 			/>
-
-
-
 
 		<menuitem id="oehealth_appointment_menu" 
 			name="Citas - Médicos"
@@ -353,6 +543,28 @@
 
 					sequence="2"
 		/>
+
+
+
+
+
+
+<!-- Inventory -->
+<!--
+		<menuitem id="main_inventory_menu" 
+			sequence="-8"
+			name="Inventario"
+
+			groups="openhealth.reception,openhealth.managers"
+			/>
+
+		<menuitem id="jx_inventory_menu" 
+			name="Inventario 1"
+			parent="main_inventory_menu"
+			/>
+-->
+
+
 
 
 
@@ -419,6 +631,45 @@
 
 
 
+
+
+
+
+
+		<!-- cards --> 
+		<menuitem id="pricelist_item_menu" name="Pricelist Item" parent="openhealth_menu"
+
+			sequence="-130"
+
+			action="pricelist_item_list_action"
+			/>
+
+
+
+
+
+		<!-- cards --> 
+		<menuitem id="oh_cards_menu" name="Cards" parent="openhealth_menu"
+			sequence="-120"
+
+			action="card_list_action"
+			/>
+
+
+
+
+		<!-- patients --> 
+		<menuitem id="patients_menu" name="Patients" parent="openhealth_menu"
+			sequence="-110"
+
+			action="patient_list_action"
+			/>
+
+		<menuitem id="patients_vip_menu" name="Patients Vip" parent="openhealth_menu"
+			sequence="-110"
+
+			action="patient_vip_list_action"
+			/>
 
 
 
@@ -751,7 +1002,19 @@
 
 		<!-- Products -->
 
-		<menuitem id="product_template_menu" name="Productos"
+
+
+		<menuitem id="product_product_menu" name="Productos Productos"
+			parent="openhealth_menu"
+			sequence="19"
+
+			action="product.product_product_list_action"
+			/>
+
+
+
+
+		<menuitem id="product_template_menu" name="Productos - jx"
 			parent="openhealth_menu"
 			sequence="19"
 			action="product_template_list_action"/>

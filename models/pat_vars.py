@@ -2,6 +2,21 @@
 
 
 
+
+
+_sex_type_list = [
+
+			('Male', 'Masculino'),
+			('Female', 'Femenino'),
+
+			]
+
+
+
+
+
+
+
 _dic_sex = {
 				'Male':	'Masculino', 
 				'Female':	'Femenino', 
@@ -9,10 +24,6 @@ _dic_sex = {
 				#'male':	'Masculino', 
 				#'female':	'Femenino', 
 			}
-
-
-
-
 
 
 _state_list = [

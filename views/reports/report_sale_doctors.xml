@@ -9,6 +9,9 @@
 
 
 		<!-- Dr. Chavarri --> 
+<!--
+										'group_by': ['date:month', 'categ_id', 'product_id']
+-->		
 		<record id="action_order_report_dr_chavarri" model="ir.actions.act_window">
 			
 			<field name="name">Análisis de Ventas - Dr. Chavarri</field>
@@ -23,8 +26,8 @@
 									[
 										('user_id','=','Dr. Chavarri'), 
 										
-										('date','&lt;=',time.strftime('%%Y-03-31')),
-										('date','&gt;=',time.strftime('%%Y-03-01')), 
+										('date','&lt;=',time.strftime('%%Y-04-30')),
+										('date','&gt;=',time.strftime('%%Y-04-01'))
 									]
 			</field>
 
@@ -32,7 +35,7 @@
 			<field name="context">{
 										'search_default_Sales':1, 
 										'group_by_no_leaf':1,
-										'group_by': ['date:month', 'categ_id', 'product_id']
+										'group_by': ['categ_id']										
 									
 									}</field>
 
@@ -62,7 +65,13 @@
 									]
 			</field>
 
-			<field name="context">{'search_default_Sales':1, 'group_by_no_leaf':1,'group_by':[]}</field>
+			<field name="context">{
+										'search_default_Sales':1, 
+										'group_by_no_leaf':1,
+										'group_by': ['categ_id']										
+									
+									}</field>
+
 			<field name="help">This report performs analysis on your quotations and sales orders. Analysis check your sales revenues and sort it by different group criteria (salesman, partner, product, etc.) Use this report to perform analysis on sales not having invoiced yet. If you want to analyse your turnover, you should use the Invoice Analysis report in the Accounting application.</field>
 		</record>
 
@@ -85,7 +94,13 @@
 									]
 			</field>
 
-			<field name="context">{'search_default_Sales':1, 'group_by_no_leaf':1,'group_by':[]}</field>
+			<field name="context">{
+										'search_default_Sales':1, 
+										'group_by_no_leaf':1,
+										'group_by': ['categ_id']										
+									
+									}</field>
+
 			<field name="help">This report performs analysis on your quotations and sales orders. Analysis check your sales revenues and sort it by different group criteria (salesman, partner, product, etc.) Use this report to perform analysis on sales not having invoiced yet. If you want to analyse your turnover, you should use the Invoice Analysis report in the Accounting application.</field>
 		</record>
 
@@ -114,7 +129,13 @@
 			</field>
 
 
-			<field name="context">{'search_default_Sales':1, 'group_by_no_leaf':1,'group_by':[]}</field>
+			<field name="context">{
+										'search_default_Sales':1, 
+										'group_by_no_leaf':1,
+										'group_by': ['categ_id']										
+									
+									}</field>
+
 			<field name="help">This report performs analysis on your quotations and sales orders. Analysis check your sales revenues and sort it by different group criteria (salesman, partner, product, etc.) Use this report to perform analysis on sales not having invoiced yet. If you want to analyse your turnover, you should use the Invoice Analysis report in the Accounting application.</field>
 		</record>
 
@@ -136,7 +157,14 @@
 									]
 			</field>
 
-			<field name="context">{'search_default_Sales':1, 'group_by_no_leaf':1,'group_by':[]}</field>
+
+			<field name="context">{
+										'search_default_Sales':1, 
+										'group_by_no_leaf':1,
+										'group_by': ['categ_id']										
+									
+									}</field>
+
 			<field name="help">This report performs analysis on your quotations and sales orders. Analysis check your sales revenues and sort it by different group criteria (salesman, partner, product, etc.) Use this report to perform analysis on sales not having invoiced yet. If you want to analyse your turnover, you should use the Invoice Analysis report in the Accounting application.</field>
 		</record>
 
@@ -157,9 +185,17 @@
 									]
 			</field>
 
-			<field name="context">{'search_default_Sales':1, 'group_by_no_leaf':1,'group_by':[]}</field>
+			<field name="context">{
+										'search_default_Sales':1, 
+										'group_by_no_leaf':1,
+										'group_by': ['categ_id']										
+									
+									}</field>
+
 			<field name="help">This report performs analysis on your quotations and sales orders. Analysis check your sales revenues and sort it by different group criteria (salesman, partner, product, etc.) Use this report to perform analysis on sales not having invoiced yet. If you want to analyse your turnover, you should use the Invoice Analysis report in the Accounting application.</field>
 		</record>
+
+
 
 
 		<!-- Dr. Vasquez --> 
@@ -179,7 +215,13 @@
 									]
 			</field>
 
-			<field name="context">{'search_default_Sales':1, 'group_by_no_leaf':1,'group_by':[]}</field>
+			<field name="context">{
+										'search_default_Sales':1, 
+										'group_by_no_leaf':1,
+										'group_by': ['categ_id']										
+									
+									}</field>
+
 			<field name="help">This report performs analysis on your quotations and sales orders. Analysis check your sales revenues and sort it by different group criteria (salesman, partner, product, etc.) Use this report to perform analysis on sales not having invoiced yet. If you want to analyse your turnover, you should use the Invoice Analysis report in the Accounting application.</field>
 		</record>
 
@@ -191,7 +233,7 @@
 
 
 
-		<!-- Dr. Acosta --> 
+		<!-- Dra. Acosta --> 
 		<record id="action_order_report_dra_acosta" model="ir.actions.act_window">
 			
 			<field name="name">Análisis de Ventas - Dra. Acosta</field>
@@ -208,13 +250,19 @@
 									]
 			</field>
 
-			<field name="context">{'search_default_Sales':1, 'group_by_no_leaf':1,'group_by':[]}</field>
+			<field name="context">{
+										'search_default_Sales':1, 
+										'group_by_no_leaf':1,
+										'group_by': ['categ_id']										
+									
+									}</field>
+
 			<field name="help">This report performs analysis on your quotations and sales orders. Analysis check your sales revenues and sort it by different group criteria (salesman, partner, product, etc.) Use this report to perform analysis on sales not having invoiced yet. If you want to analyse your turnover, you should use the Invoice Analysis report in the Accounting application.</field>
 		</record>
 
 
 
-		<!-- Dr. Pedemonte --> 
+		<!-- Dra. Pedemonte --> 
 		<record id="action_order_report_dra_pedemonte" model="ir.actions.act_window">
 			
 			<field name="name">Análisis de Ventas - Dra. Pedemonte</field>
@@ -231,7 +279,13 @@
 									]
 			</field>
 
-			<field name="context">{'search_default_Sales':1, 'group_by_no_leaf':1,'group_by':[]}</field>
+			<field name="context">{
+										'search_default_Sales':1, 
+										'group_by_no_leaf':1,
+										'group_by': ['categ_id']										
+									
+									}</field>
+
 			<field name="help">This report performs analysis on your quotations and sales orders. Analysis check your sales revenues and sort it by different group criteria (salesman, partner, product, etc.) Use this report to perform analysis on sales not having invoiced yet. If you want to analyse your turnover, you should use the Invoice Analysis report in the Accounting application.</field>
 		</record>
 

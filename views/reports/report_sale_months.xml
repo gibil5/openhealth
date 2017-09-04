@@ -1,0 +1,345 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+		<!-- january --> 
+		<record id="action_order_report_january_all" model="ir.actions.act_window">
+
+			<field name="name">Reporte de Ventas - Enero</field>
+			
+			<field name="res_model">sale.report</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">pivot,graph,tree</field>
+			<field name="view_id"></field> 
+			<field name="search_view_id" ref="sale.view_order_product_search"/>
+
+		   <field name="domain">
+								[
+									('date','&lt;=',time.strftime('%%Y-02-01')),
+									('date','&gt;=',time.strftime('%%Y-01-01'))
+								]
+			</field>
+
+			<field name="context">{
+									'search_default_Sales':1, 
+									'group_by_no_leaf':1,
+									'group_by': ['categ_id']
+								}
+			</field>
+
+			<field name="help">This report performs analysis on your quotations and sales orders. Analysis check your sales revenues and sort it by different group criteria (salesman, partner, product, etc.) Use this report to perform analysis on sales not having invoiced yet. If you want to analyse your turnover, you should use the Invoice Analysis report in the Accounting application.</field>
+		</record>
+
+
+		<!-- February --> 
+		<record id="action_order_report_february_all" model="ir.actions.act_window">
+			<field name="name">Reporte de Ventas - Febrero</field>
+			<field name="res_model">sale.report</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">pivot,graph,tree</field>
+			<field name="view_id"></field>  <!-- force empty -->
+			<field name="search_view_id" ref="sale.view_order_product_search"/>
+
+		   <field name="domain">
+								[
+									('date','&lt;=',time.strftime('%%Y-03-01')), 
+									('date','&gt;=',time.strftime('%%Y-02-01'))
+								]
+			</field>
+
+			<field name="context">{
+									'search_default_Sales':1, 
+									'group_by_no_leaf':1,
+									'group_by': ['categ_id']
+								}
+			</field>
+
+			<field name="help">This report performs analysis on your quotations and sales orders. Analysis check your sales revenues and sort it by different group criteria (salesman, partner, product, etc.) Use this report to perform analysis on sales not having invoiced yet. If you want to analyse your turnover, you should use the Invoice Analysis report in the Accounting application.</field>
+		</record>
+
+
+		<!-- March --> 
+		<record id="action_order_report_march_all" model="ir.actions.act_window">
+			<field name="name">Reporte de Ventas - Marzo</field>
+			<field name="res_model">sale.report</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">pivot,graph,tree</field>
+			<field name="view_id"></field>  <!-- force empty -->
+			<field name="search_view_id" ref="sale.view_order_product_search"/>
+
+		   <field name="domain">
+								[
+									('date','&lt;=',time.strftime('%%Y-04-01')), 
+									('date','&gt;=',time.strftime('%%Y-03-01'))
+								]
+			</field>
+
+			<field name="context">{
+									'search_default_Sales':1, 
+									'group_by_no_leaf':1,
+									'group_by': ['categ_id']
+								}
+			</field>
+
+			<field name="help">This report performs analysis on your quotations and sales orders. Analysis check your sales revenues and sort it by different group criteria (salesman, partner, product, etc.) Use this report to perform analysis on sales not having invoiced yet. If you want to analyse your turnover, you should use the Invoice Analysis report in the Accounting application.</field>
+		</record>
+
+
+		<!-- April --> 
+		<record id="action_order_report_april_all" model="ir.actions.act_window">
+			<field name="name">Reporte de Ventas - Abril</field>
+			<field name="res_model">sale.report</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">pivot,graph,tree</field>
+			<field name="view_id"></field> 
+			<field name="search_view_id" ref="sale.view_order_product_search"/>
+
+		   <field name="domain">
+								[
+									('date','&lt;=',time.strftime('%%Y-05-01')),
+									('date','&gt;=',time.strftime('%%Y-04-01'))
+								]
+			</field>
+
+			<field name="context">{
+									'search_default_Sales':1, 
+									'group_by_no_leaf':1,
+									'group_by': ['categ_id']
+								}
+			</field>
+
+			<field name="help">This report performs analysis on your quotations and sales orders. Analysis check your sales revenues and sort it by different group criteria (salesman, partner, product, etc.) Use this report to perform analysis on sales not having invoiced yet. If you want to analyse your turnover, you should use the Invoice Analysis report in the Accounting application.</field>
+		</record>
+
+
+		<!-- may --> 
+		<record id="action_order_report_may_all" model="ir.actions.act_window">
+			<field name="name">Reporte de Ventas - Mayo</field>
+			<field name="res_model">sale.report</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">pivot,graph,tree</field>
+			<field name="view_id"></field> 
+			<field name="search_view_id" ref="sale.view_order_product_search"/>
+
+		   <field name="domain">
+								[
+									('date','&lt;=',time.strftime('%%Y-06-01')),
+									('date','&gt;=',time.strftime('%%Y-05-01'))
+								]
+			</field>
+
+			<field name="context">{
+									'search_default_Sales':1, 
+									'group_by_no_leaf':1,
+									'group_by': ['categ_id']
+								}
+			</field>
+
+			<field name="help">This report performs analysis on your quotations and sales orders. Analysis check your sales revenues and sort it by different group criteria (salesman, partner, product, etc.) Use this report to perform analysis on sales not having invoiced yet. If you want to analyse your turnover, you should use the Invoice Analysis report in the Accounting application.</field>
+		</record>
+
+
+		<!-- june --> 
+		<record id="action_order_report_june_all" model="ir.actions.act_window">
+			<field name="name">Reporte de Ventas - Junio</field>
+			<field name="res_model">sale.report</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">pivot,graph,tree</field>
+			<field name="view_id"></field> 
+			<field name="search_view_id" ref="sale.view_order_product_search"/>
+
+		   <field name="domain">
+								[
+									('date','&lt;=',time.strftime('%%Y-07-01')),
+									('date','&gt;=',time.strftime('%%Y-06-01'))
+								]
+			</field>
+
+			<field name="context">{
+									'search_default_Sales':1, 
+									'group_by_no_leaf':1,
+									'group_by': ['categ_id']
+								}
+			</field>
+
+			<field name="help">This report performs analysis on your quotations and sales orders. Analysis check your sales revenues and sort it by different group criteria (salesman, partner, product, etc.) Use this report to perform analysis on sales not having invoiced yet. If you want to analyse your turnover, you should use the Invoice Analysis report in the Accounting application.</field>
+		</record>
+
+
+
+
+
+
+
+
+		<!-- july --> 
+		<record id="action_order_report_july_all" model="ir.actions.act_window">
+			<field name="name">Reporte de Ventas - Julio</field>
+			<field name="res_model">sale.report</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">pivot,graph,tree</field>
+			<field name="view_id"></field> 
+			<field name="search_view_id" ref="sale.view_order_product_search"/>
+
+		   <field name="domain">
+								[
+									('date','&lt;=',time.strftime('%%Y-08-01')),
+									('date','&gt;=',time.strftime('%%Y-07-01'))
+								]
+			</field>
+
+			<field name="context">{
+									'search_default_Sales':1, 
+									'group_by_no_leaf':1,
+									'group_by': ['categ_id']
+								}
+			</field>
+
+			<field name="help">This report performs analysis on your quotations and sales orders. Analysis check your sales revenues and sort it by different group criteria (salesman, partner, product, etc.) Use this report to perform analysis on sales not having invoiced yet. If you want to analyse your turnover, you should use the Invoice Analysis report in the Accounting application.</field>
+		</record>
+
+
+
+		<!-- august --> 
+		<record id="action_order_report_august_all" model="ir.actions.act_window">
+			<field name="name">Reporte de Ventas - Agosto</field>
+			<field name="res_model">sale.report</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">pivot,graph,tree</field>
+			<field name="view_id"></field> 
+			<field name="search_view_id" ref="sale.view_order_product_search"/>
+
+		   <field name="domain">
+								[
+									('date','&lt;=',time.strftime('%%Y-09-01')),
+									('date','&gt;=',time.strftime('%%Y-08-01'))
+								]
+			</field>
+
+			<field name="context">{
+									'search_default_Sales':1, 
+									'group_by_no_leaf':1,
+									'group_by': ['categ_id']
+								}
+			</field>
+
+			<field name="help">This report performs analysis on your quotations and sales orders. Analysis check your sales revenues and sort it by different group criteria (salesman, partner, product, etc.) Use this report to perform analysis on sales not having invoiced yet. If you want to analyse your turnover, you should use the Invoice Analysis report in the Accounting application.</field>
+		</record>
+
+
+
+		<!-- september --> 
+		<record id="action_order_report_september_all" model="ir.actions.act_window">
+			<field name="name">Reporte de Ventas - Setiembre</field>
+			<field name="res_model">sale.report</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">pivot,graph,tree</field>
+			<field name="view_id"></field> 
+			<field name="search_view_id" ref="sale.view_order_product_search"/>
+
+		   <field name="domain">
+								[
+									('date','&lt;=',time.strftime('%%Y-10-01')),
+									('date','&gt;=',time.strftime('%%Y-09-01'))
+								]
+			</field>
+
+			<field name="context">{
+									'search_default_Sales':1, 
+									'group_by_no_leaf':1,
+									'group_by': ['categ_id']
+								}
+			</field>
+
+			<field name="help">This report performs analysis on your quotations and sales orders. Analysis check your sales revenues and sort it by different group criteria (salesman, partner, product, etc.) Use this report to perform analysis on sales not having invoiced yet. If you want to analyse your turnover, you should use the Invoice Analysis report in the Accounting application.</field>
+		</record>
+
+
+
+		<!-- october --> 
+		<record id="action_order_report_october_all" model="ir.actions.act_window">
+			<field name="name">Reporte de Ventas - Octubre</field>
+			<field name="res_model">sale.report</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">pivot,graph,tree</field>
+			<field name="view_id"></field> 
+			<field name="search_view_id" ref="sale.view_order_product_search"/>
+
+		   <field name="domain">
+								[
+									('date','&lt;=',time.strftime('%%Y-11-01')),
+									('date','&gt;=',time.strftime('%%Y-10-01'))
+								]
+			</field>
+
+			<field name="context">{
+									'search_default_Sales':1, 
+									'group_by_no_leaf':1,
+									'group_by': ['categ_id']
+								}
+			</field>
+
+			<field name="help">This report performs analysis on your quotations and sales orders. Analysis check your sales revenues and sort it by different group criteria (salesman, partner, product, etc.) Use this report to perform analysis on sales not having invoiced yet. If you want to analyse your turnover, you should use the Invoice Analysis report in the Accounting application.</field>
+		</record>
+
+
+
+		<!-- november --> 
+		<record id="action_order_report_november_all" model="ir.actions.act_window">
+			<field name="name">Reporte de Ventas - Noviembre</field>
+			<field name="res_model">sale.report</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">pivot,graph,tree</field>
+			<field name="view_id"></field> 
+			<field name="search_view_id" ref="sale.view_order_product_search"/>
+
+		   <field name="domain">
+								[
+									('date','&lt;=',time.strftime('%%Y-12-01')),
+									('date','&gt;=',time.strftime('%%Y-11-01'))
+								]
+			</field>
+
+			<field name="context">{
+									'search_default_Sales':1, 
+									'group_by_no_leaf':1,
+									'group_by': ['categ_id']
+								}
+			</field>
+
+			<field name="help">This report performs analysis on your quotations and sales orders. Analysis check your sales revenues and sort it by different group criteria (salesman, partner, product, etc.) Use this report to perform analysis on sales not having invoiced yet. If you want to analyse your turnover, you should use the Invoice Analysis report in the Accounting application.</field>
+		</record>
+
+
+
+		<!-- december --> 
+		<record id="action_order_report_december_all" model="ir.actions.act_window">
+			<field name="name">Reporte de Ventas - Diciembre</field>
+			<field name="res_model">sale.report</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">pivot,graph,tree</field>
+			<field name="view_id"></field> 
+			<field name="search_view_id" ref="sale.view_order_product_search"/>
+
+		   <field name="domain">
+								[
+									('date','&lt;=',time.strftime('2018-01-01')),
+									('date','&gt;=',time.strftime('%%Y-12-01'))
+								]
+			</field>
+
+			<field name="context">{
+									'search_default_Sales':1, 
+									'group_by_no_leaf':1,
+									'group_by': ['categ_id']
+								}
+			</field>
+
+			<field name="help">This report performs analysis on your quotations and sales orders. Analysis check your sales revenues and sort it by different group criteria (salesman, partner, product, etc.) Use this report to perform analysis on sales not having invoiced yet. If you want to analyse your turnover, you should use the Invoice Analysis report in the Accounting application.</field>
+		</record>
+
+
+	</data>
+</openerp>

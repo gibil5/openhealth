@@ -79,7 +79,7 @@
 			"file": "__openerp__.py",
 			"settings":
 			{
-				"buffer_size": 7460,
+				"buffer_size": 7463,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -88,7 +88,34 @@
 			"file": "views/menus.xml",
 			"settings":
 			{
-				"buffer_size": 20095,
+				"buffer_size": 20102,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/orders/order_line.xml",
+			"settings":
+			{
+				"buffer_size": 4243,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "security/ir.model.access.csv",
+			"settings":
+			{
+				"buffer_size": 4474,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "security/ir.model.access.trash.csv",
+			"settings":
+			{
+				"buffer_size": 1587,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -238,6 +265,7 @@
 	},
 	"file_history":
 	[
+		"/Users/gibil/cellar/github/openhealth/readme.txt",
 		"/Users/gibil/cellar/github/openhealth/data/odoo_data_services_med.xml",
 		"/Users/gibil/cellar/github/openhealth/data/odoo_data_services_med_pricelist.xml",
 		"/Users/gibil/cellar/github/openhealth/data/products_pricelist.xml",
@@ -292,7 +320,6 @@
 		"/Users/gibil/cellar/github/openhealth/models/invoice.py",
 		"/Users/gibil/cellar/github/openhealth/models/sale_proof.py",
 		"/Users/gibil/cellar/github/openhealth/models/payment_method.py",
-		"/Users/gibil/cellar/github/openhealth/readme.txt",
 		"/Users/gibil/cellar/github/openhealth/models/sale_report.py",
 		"/Users/gibil/cellar/github/openhealth/views/reports/report_sale_search.xml",
 		"/Users/gibil/cellar/github/openhealth/views/actions.xml",
@@ -514,7 +541,7 @@
 			"service"
 		],
 		"highlight": true,
-		"in_selection": true,
+		"in_selection": false,
 		"preserve_case": false,
 		"regex": false,
 		"replace_history":
@@ -657,7 +684,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -666,15 +693,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7460,
+						"buffer_size": 7463,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2813,
-								2813
+								278,
+								278
 							]
 						],
 						"settings":
@@ -683,10 +710,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2156.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -695,15 +722,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 20095,
+						"buffer_size": 20102,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								11100,
-								11100
+								17937,
+								17937
 							]
 						],
 						"settings":
@@ -712,14 +739,98 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 16841.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "views/orders/order_line.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4243,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1399,
+								1399
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1016.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 3,
+					"file": "security/ir.model.access.csv",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4474,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								81,
+								81
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "security/ir.model.access.trash.csv",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1587,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								58,
+								58
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
 					"file": "data/products_pricelist.xml",
 					"semi_transient": false,
 					"settings":
@@ -744,11 +855,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 6,
 					"file": "models/partner.py",
 					"semi_transient": false,
 					"settings":
@@ -773,11 +884,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 7,
 					"file": "models/patient.py",
 					"semi_transient": false,
 					"settings":
@@ -802,11 +913,11 @@
 						"translation.y": 433.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 8,
 					"file": "views/partners/partner.xml",
 					"semi_transient": false,
 					"settings":
@@ -831,11 +942,11 @@
 						"translation.y": 13.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 9,
 					"file": "views/products/product.xml",
 					"semi_transient": false,
 					"settings":
@@ -857,14 +968,14 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 7490.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 10,
 					"file": "views/patients/patient.xml",
 					"semi_transient": false,
 					"settings":
@@ -889,11 +1000,11 @@
 						"translation.y": 6703.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 11,
 					"file": "views/orders/order.xml",
 					"semi_transient": false,
 					"settings":
@@ -918,11 +1029,11 @@
 						"translation.y": 16410.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 12,
 					"file": "models/howto/shell.rb",
 					"semi_transient": false,
 					"settings":
@@ -946,7 +1057,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 11,
 					"type": "text"
 				}
 			]

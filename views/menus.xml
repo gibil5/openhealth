@@ -621,7 +621,8 @@
 		<menuitem id="main_openhealth_menu" 
 			sequence="6"
 			name="Open Health"
-			groups=""
+
+			groups="openhealth.admins"
 			/>
 
 		<menuitem id="openhealth_menu" name="Open Health"

@@ -4,15 +4,14 @@
 
  
 
-
-
-
 <!-- Categories --> 
 	   <record model="ir.module.category" id="module_openhealth_category">
 				<field name="name">Open Health</field>
 				<field name="sequence">0</field>
-				<field name="visible" eval="0" />
+				<field name="visible" eval="0" />	
 		</record>
+
+
 
 
 
@@ -20,11 +19,15 @@
 
 <!-- Groups --> 
 
-
 		<!-- Admins --> 
 		<record id="openhealth.admins" model="res.groups">
 			<field name="name">Admins</field>
 			<field name="category_id" ref="module_openhealth_category"/>
+
+				<field name="users" eval="[ 
+
+														(4, ref('base.user_root')), 
+									]"/>
 		</record>
 
 

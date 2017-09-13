@@ -160,6 +160,8 @@
             <field name="lang">en_EN</field>
             <field name="lang">oh_es_ES</field>
 -->            
+            <field name="lang">es_ES</field>
+
             <field name="tz">America/Lima</field>
         </record>
 

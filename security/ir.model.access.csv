@@ -60,7 +60,6 @@ access_openhealth_cosmetology,openhealth.cosmetology,model_openhealth_cosmetolog
 
 access_openhealth_service_cosmetology,openhealth.service.cosmetology,model_openhealth_service_cosmetology,,1,1,1,1
 
-access_openhealth_sale_document,openhealth.sale_document,model_openhealth_sale_document,,1,1,1,1
 
 access_openhealth_consultation_cos,openhealth.consultation.cos,model_openhealth_consultation_cos,,1,1,1,1
 

@@ -20,7 +20,7 @@
 
 		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Server\n
 
-		Last built: 	11 September 2017 - Yey !
+		Last built: 	13 September 2017 - Yey !
 
 		Created: 	 	7 Sep 2016
 
@@ -130,11 +130,15 @@
 
 
 
-		# ----------------------------------------------------------- DATA ------------------------------------------------------
-		'data/base_data_physicians.xml',
 
-		'data/odoo_data_products.xml',
+		# ----------------------------------------------------------- DATA ------------------------------------------------------
+
+		# Doctors
+		'data/base_data_physicians.xml',
 		
+
+		# Products 
+		'data/odoo_data_products.xml',
 		'data/odoo_data_services_co2.xml',
 		'data/odoo_data_services_exc.xml',
 		'data/odoo_data_services_m22.xml',
@@ -144,14 +148,11 @@
 
 
 
-		#'data/odoo_data_services_med_pricelist.xml',
-		'data/products_pricelist.xml',
+		# Vip cards
+		#'data/products_pricelist.xml',
+		#'data/base_data_patients.xml',	
+		#'data/odoo_data_cards.xml',	
 
-
-
-		'data/base_data_patients.xml',	
-
-		'data/odoo_data_cards.xml',	
 
 
 

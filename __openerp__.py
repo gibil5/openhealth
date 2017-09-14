@@ -20,7 +20,7 @@
 
 		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant\n
 
-		Last built: 	13 September 2017 - Yey !
+		Last built: 	14 September 2017 - Yey !
 
 		Created: 	 	7 Sep 2016
 
@@ -149,9 +149,9 @@
 
 
 		# Vip cards
-		#'data/products_pricelist.xml',
-		#'data/base_data_patients.xml',	
-		#'data/odoo_data_cards.xml',	
+		'data/products_pricelist.xml',
+		'data/base_data_patients.xml',	
+		'data/odoo_data_cards.xml',	
 
 
 

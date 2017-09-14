@@ -2,6 +2,28 @@
 
 
 
+access_sale_order_line_managers,sale.order.line.managers,model_sale_order_line,openhealth.managers,1,1,1,1
+access_sale_order_line_caja,sale.order.line.caja,model_sale_order_line,openhealth.caja,1,1,1,1
+access_sale_order_line_reception,sale.order.line.reception,model_sale_order_line,openhealth.reception,1,1,1,0
+access_sale_order_line_physicians,sale.order.line.physicians,model_sale_order_line,openhealth.physicians,1,1,1,1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 access_openhealth_sale_document,openhealth.sale_document,model_openhealth_sale_document,,1,1,1,1
 
 access_sale_order_line_managers,sale.order.line.managers,model_sale_order_line,openhealth.managers,1,1,1,1

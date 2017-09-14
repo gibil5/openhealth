@@ -398,8 +398,8 @@ class Patient(models.Model):
 			string = 'Código',  
 			#compute='_compute_zip', 
 
-			required=True, 			
-			#required=False, 			
+			#required=True, 			
+			required=False, 			
 			)
 	#@api.multi
 	@api.depends('street2','city')

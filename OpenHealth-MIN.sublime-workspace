@@ -97,7 +97,7 @@
 			"file": "security/openhealth_security.xml",
 			"settings":
 			{
-				"buffer_size": 5398,
+				"buffer_size": 5929,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -698,15 +698,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5398,
+						"buffer_size": 5929,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4794,
-								4794
+								569,
+								569
 							]
 						],
 						"settings":
@@ -715,7 +715,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 85.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

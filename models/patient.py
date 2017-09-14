@@ -120,8 +120,10 @@ class Patient(models.Model):
 		)
 
 	x_month = fields.Char(
-			string='Month', 
-			required=True, 
+			string='Month',
+
+			#required=True, 
+			required=False, 
 		)
 
 

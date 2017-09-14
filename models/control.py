@@ -205,8 +205,9 @@ class Control(models.Model):
 	indication = fields.Text(
 			string="Indicaciones",			
 			size=200,
-			#required=False,
-			required=True,
+
+			#required=True,
+			required=False,
 			)
 
 

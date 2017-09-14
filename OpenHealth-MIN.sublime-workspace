@@ -88,7 +88,7 @@
 			"file": "views/menus.xml",
 			"settings":
 			{
-				"buffer_size": 20437,
+				"buffer_size": 20785,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -355,9 +355,10 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": true,
+		"case_sensitive": false,
 		"find_history":
 		[
+			"oe health",
 			"oehealth",
 			"rcha",
 			"rev",
@@ -484,8 +485,7 @@
 			"date",
 			"payment",
 			"Mó",
-			"send",
-			"mail"
+			"send"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -631,7 +631,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -669,15 +669,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 20437,
+						"buffer_size": 20785,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								11142,
-								11142
+								11449,
+								11449
 							]
 						],
 						"settings":
@@ -686,10 +686,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 10386.0,
+						"translation.y": 10660.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -715,10 +715,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 85.0,
+						"translation.y": 57.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -748,7 +748,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -1001,7 +1001,7 @@
 		[
 			[
 				"",
-				"~/Virtualenvs/Odoo9/odoo/addons/web_calendar/web-calendar.sublime-project"
+				"~/Documents/Aptana Studio 3 Workspace/ccdata/ccData.sublime-project"
 			]
 		],
 		"width": 380.0

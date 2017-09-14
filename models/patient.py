@@ -443,8 +443,8 @@ class Patient(models.Model):
 	phone_1 = fields.Char(
 		string="Teléfono 1",
 		
-		required=True, 
-		#required=False, 
+		#required=True, 
+		required=False, 
 		)
 
 

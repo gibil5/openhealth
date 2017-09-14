@@ -567,7 +567,9 @@ class Consultation(models.Model):
 
 	x_observations = fields.Text(
 			string = 'Observaciones',
-			required=True, 
+
+			#required=True, 
+			required=False, 
 			)
 
 	x_indications = fields.Text(

@@ -632,7 +632,12 @@
 			/>
 -->
 
-		<menuitem name="oeHealth - jx" id="oehealth.oeh_medical_menu" icon="STOCK_ZOOM_IN"/>
+		<menuitem 	name="oeHealth - jx" 
+					id="oehealth.oeh_medical_menu" 
+					icon="STOCK_ZOOM_IN"
+
+					groups="openhealth.admins"
+					/>
 
 
 

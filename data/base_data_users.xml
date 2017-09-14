@@ -170,17 +170,25 @@
 
 
 
+
+
 <!-- Renato Chavarri -->
+
+        <record id="rchavarri" model="res.partner">
+            <field name="name">Renato Chavarri</field>
+            <field name="email">rchavarri@clinicachavarri.com</field>
+        </record>
+
         <record id="rchavarri_clinicachavarri" model="res.users">
             <field name="name">Renato Chavarri</field>
             <field name="login">rchavarri@clinicachavarri.com</field>
             <field name="password">rchavarri</field>
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="active">True</field>
-
+            <field name="tz">America/Lima</field>
             <field name="lang">es_ES</field>
 
-            <field name="tz">America/Lima</field>
+            <field name="partner_id" ref="rchavarri"/>
         </record>
 
 
@@ -189,16 +197,21 @@
 
 
 <!-- Victor Mori -->
+        <record id="vmori" model="res.partner">
+            <field name="name">Víctor Mori</field>
+            <field name="email">vmori@clinicachavarri.com</field>
+        </record>
+
         <record id="vmori_clinicachavarri" model="res.users">
             <field name="name">Víctor Mori</field>
             <field name="login">vmori@clinicachavarri.com</field>
             <field name="password">vmori</field>
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="active">True</field>
-
             <field name="lang">es_ES</field>
-
             <field name="tz">America/Lima</field>
+
+            <field name="partner_id" ref="vmori"/>
         </record>
 
 
@@ -206,30 +219,41 @@
 
 
 <!-- Ivan Puga -->
+        <record id="ipuga" model="res.partner">
+            <field name="name">Iván Puga</field>
+            <field name="email">ipuga@clinicachavarri.com</field>
+        </record>
+
         <record id="ipuga_clinicachavarri" model="res.users">
             <field name="name">Iván Puga</field>
             <field name="login">ipuga@clinicachavarri.com</field>
             <field name="password">ipuga</field>
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="active">True</field>
-
             <field name="lang">es_ES</field>
-
             <field name="tz">America/Lima</field>
+
+            <field name="partner_id" ref="ipuga"/>            
         </record>
 
 
+
 <!-- Percy Balboa -->
+        <record id="pbalboa" model="res.partner">
+            <field name="name">Percy Balboa</field>
+            <field name="email">pbalboa@clinicachavarri.com</field>
+        </record>
+
         <record id="pbalboa_clinicachavarri" model="res.users">
             <field name="name">Percy Balboa</field>
             <field name="login">pbalboa@clinicachavarri.com</field>
             <field name="password">pbalboa</field>
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="active">True</field>
-
             <field name="lang">es_ES</field>
-
             <field name="tz">America/Lima</field>
+
+            <field name="partner_id" ref="pbalboa"/>            
         </record>
 
 

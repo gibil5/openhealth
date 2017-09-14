@@ -153,6 +153,8 @@
 					action="card_list_action"
 					/>
 
+
+
 		<menuitem 	id="sales_patients_sub_menu" 
 					name="Pacientes Vip"
 					parent="sales_cards_menu"

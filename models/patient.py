@@ -67,7 +67,7 @@ class Patient(models.Model):
 			#required=True, 
 			compute='_compute_x_card', 
 
-			store=True, 			
+			#store=True, 			
 		)
 
 

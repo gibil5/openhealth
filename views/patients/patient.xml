@@ -348,6 +348,8 @@
 
 					<field name="x_vip"/>
 
+					<field name="x_card"/>
+
 
 					
 					<field name="x_first_contact"/>

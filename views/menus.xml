@@ -454,6 +454,7 @@
 
 		<!-- Config --> 
 <!--
+-->
 		<menuitem 	id="sales_config_menu" 
 					name="Configuración"
 					parent="main_sales_menu"
@@ -467,7 +468,6 @@
 					sequence="4"
 					
 					action="counter_list_action"/>
--->
 
 
 

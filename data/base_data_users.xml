@@ -13,6 +13,7 @@
 
         <!-- Lang --> 
 <!--
+-->
         <record id="openhealth_lang_es" model="res.lang">
             <field name="code">oh_es_ES</field>
             <field name="name">Open Health - Spanish</field>
@@ -22,7 +23,6 @@
             <field name="date_format">%d/%m/%Y</field>
             <field name="translatable">True</field>
         </record>
--->
 
 
 

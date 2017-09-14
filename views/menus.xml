@@ -615,6 +615,30 @@
 
 
 
+
+
+
+
+
+<!-- Oe Health -->
+
+		<!-- Main - Oe Health -->
+<!--
+		<menuitem id="oehealth.main_menu" 
+			sequence="6"
+			name="Oe Health - jx"
+
+			groups="openhealth.admins"
+			/>
+-->
+
+		<menuitem name="oeHealth - jx" id="oehealth.oeh_medical_menu" icon="STOCK_ZOOM_IN"/>
+
+
+
+
+
+
 <!-- Open Health -->
 
 		<!-- Main - Open Health -->
@@ -627,12 +651,6 @@
 
 		<menuitem id="openhealth_menu" name="Open Health"
 			parent="main_openhealth_menu"/>
-
-
-
-
-
-
 
 
 

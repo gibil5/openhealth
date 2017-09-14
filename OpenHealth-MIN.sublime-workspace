@@ -88,16 +88,7 @@
 			"file": "views/menus.xml",
 			"settings":
 			{
-				"buffer_size": 20288,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "data/base_data_users.xml",
-			"settings":
-			{
-				"buffer_size": 11956,
+				"buffer_size": 20437,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -107,6 +98,15 @@
 			"settings":
 			{
 				"buffer_size": 5398,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "data/base_data_users.xml",
+			"settings":
+			{
+				"buffer_size": 11956,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -631,7 +631,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -660,7 +660,7 @@
 						"translation.y": 606.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -669,15 +669,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 20288,
+						"buffer_size": 20437,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								10968,
-								10968
+								11142,
+								11142
 							]
 						],
 						"settings":
@@ -686,14 +686,43 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 10620.0,
+						"translation.y": 10386.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "security/openhealth_security.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5398,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4794,
+								4794
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 3,
 					"file": "data/base_data_users.xml",
 					"semi_transient": false,
 					"settings":
@@ -720,35 +749,6 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "security/openhealth_security.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5398,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4245,
-								4253
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 3044.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
 					"type": "text"
 				},
 				{

@@ -380,8 +380,8 @@ class Patient(models.Model):
 	street = fields.Char(
 			string = "Dirección", 	
 			
-			required=True, 
-			#required=False, 
+			#required=True, 
+			required=False, 
 		)
 
 

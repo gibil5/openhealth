@@ -94,6 +94,15 @@
 			}
 		},
 		{
+			"file": "models/patient.py",
+			"settings":
+			{
+				"buffer_size": 16322,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "security/openhealth_security.xml",
 			"settings":
 			{
@@ -358,6 +367,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"zip",
+			"phone_1",
 			"oe health",
 			"oehealth",
 			"rcha",
@@ -483,9 +494,7 @@
 			"crear pre",
 			"crear ",
 			"date",
-			"payment",
-			"Mó",
-			"send"
+			"payment"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -631,7 +640,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -660,7 +669,7 @@
 						"translation.y": 606.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -676,8 +685,8 @@
 						"selection":
 						[
 							[
-								11449,
-								11449
+								11112,
+								11112
 							]
 						],
 						"settings":
@@ -689,11 +698,40 @@
 						"translation.y": 10660.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
+					"file": "models/patient.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 16322,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5640,
+								5640
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 6593.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
 					"file": "security/openhealth_security.xml",
 					"semi_transient": false,
 					"settings":
@@ -718,11 +756,11 @@
 						"translation.y": 57.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 4,
 					"file": "data/base_data_users.xml",
 					"semi_transient": false,
 					"settings":
@@ -748,11 +786,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "security/ir.model.access.csv",
 					"semi_transient": false,
 					"settings":
@@ -776,11 +814,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "security/ir.model.access.trash.csv",
 					"semi_transient": false,
 					"settings":
@@ -804,11 +842,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
 					"file": "readme.txt",
 					"semi_transient": false,
 					"settings":
@@ -832,7 +870,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 7,
 					"type": "text"
 				}
 			]

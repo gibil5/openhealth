@@ -547,22 +547,23 @@ class Consultation(models.Model):
 
 	x_diagnosis = fields.Text(
 			string = 'Diagnóstico', 
-			required=True, 
+
+			#required=True, 
+			required=False, 
 			)
 
 	x_antecedents = fields.Text(
 			string = 'Antecedentes médicos', 
-			required=True, 
+			
+			#required=True, 
+			required=False, 
 			)
 
 	x_allergies_medication = fields.Text(
 			string = 'Alergias a medicamentos', 
-			required=True, 
-			)
-
-	x_analysis_lab = fields.Boolean(
-			string = 'Análisis de laboratorio', 
-			default=False, 
+			
+			#required=True, 
+			required=False, 
 			)
 
 	x_observations = fields.Text(
@@ -574,12 +575,18 @@ class Consultation(models.Model):
 
 	x_indications = fields.Text(
 			string = 'Indicaciones',
-			required=True, 
+
+			#required=True, 
+			required=False, 
 			)
 
 
 
 
+	x_analysis_lab = fields.Boolean(
+			string = 'Análisis de laboratorio', 			
+			default=False, 
+			)
 
 
 

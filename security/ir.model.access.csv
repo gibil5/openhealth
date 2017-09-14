@@ -2,17 +2,20 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+access_openhealth_sale_document,openhealth.sale_document,model_openhealth_sale_document,,1,1,1,1
+
+access_sale_order_line_managers,sale.order.line.managers,model_sale_order_line,openhealth.managers,1,1,1,1
+access_sale_order_line_caja,sale.order.line.caja,model_sale_order_line,openhealth.caja,1,1,1,1
+access_sale_order_line_reception,sale.order.line.reception,model_sale_order_line,openhealth.reception,1,1,1,0
+access_sale_order_line_physicians,sale.order.line.physicians,model_sale_order_line,openhealth.physicians,1,1,1,1
+
+
+
+
+
 
 
 access_openhealth_card,openhealth.card,model_openhealth_card,,1,1,1,1
-
-
-
-
-
-
-
-
 
 access_openhealth_counter,openhealth.counter,model_openhealth_counter,,1,1,1,1
 
@@ -24,23 +27,9 @@ access_sale_order_reception,sale.order.reception,model_sale_order,openhealth.rec
 
 access_sale_order_physicians,sale.order.physicians,model_sale_order,openhealth.physicians,1,1,1,1
 
-
-
-
-
-
-
-
-
-
 access_oeh_medical_appointment,oeh.medical.appointment,oehealth.model_oeh_medical_appointment,oehealth.group_oeh_medical_physician,1,1,1,1
 
 access_oeh_medical_appointment,oeh.medical.appointment,oehealth.model_oeh_medical_appointment,openhealth.reception,1,1,1,1
-
-
-
-
-
 
 
 

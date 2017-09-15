@@ -82,7 +82,7 @@ class Physician(models.Model):
 		)
 
 	work_location = fields.Char(
-			string=Dirección, 
+			string='Dirección', 
 		)
 
 
@@ -92,12 +92,12 @@ class Physician(models.Model):
 		)
 
 	work_email = fields.Char(
-			'Email'
+			'Email', 
 		)
 
 
 	work_phone = fields.Char(
-			'Teléfono fijo'
+			'Teléfono fijo', 
 		)
 
 

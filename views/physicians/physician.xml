@@ -28,10 +28,10 @@
 
 					<field name="vspace" />
 					<field name="x_therapist" />
-
+<!--
 					<field name="x_type" />
-
 					<field name="id" />
+-->
 				</xpath>
 
 			</field>

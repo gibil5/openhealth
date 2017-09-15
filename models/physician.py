@@ -12,7 +12,6 @@ from openerp import models, fields, api
 
 
 
-
 class Physician(models.Model):
 	
 
@@ -34,6 +33,70 @@ class Physician(models.Model):
 			readonly=True
 		)
 	
+
+
+
+
+
+
+	consultancy_type = fields.Selection(
+			
+			string='Tipo', 
+		)
+
+	#institution = fields.Many2one(
+	#		'oeh.medical.health.center',
+	#		string='Escuela', 
+	#	)
+
+	institution = fields.Many2one('oeh.medical.health.center',string='Institución',help="Donde el médico trabaja")
+	
+	#'institution': fields.many2one('oeh.medical.health.center','Institution',help="Institution where doctor works"),
+
+
+
+
+	is_pharmacist = fields.Boolean(
+
+			string='Farmaceútico ?', 
+		)
+
+
+
+
+	consultancy_price = fields.Integer(
+			
+			string='Precio de consulta', 
+		)
+
+
+	code = fields.Char(
+			string='Número de licencia', 
+		)
+
+
+
+	oeh_user_id = fields.Many2one(
+			'res.users', 
+			string='Responsable', 
+		)
+
+	work_location = fields.Char(
+			string='Lugar de trabajo', 
+		)
+
+
+
+	mobile_phone = fields.Char(
+			'Celular', 
+		)
+
+	work_email = fields.Char(
+			'Email'
+		)
+
+
+
 
 
 

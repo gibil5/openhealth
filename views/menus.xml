@@ -34,11 +34,23 @@
 					sequence="1"
 					action="patient_list_action"/>
 
+
 		<menuitem 	id="oeh_medical_physician_list"  
 					name="Médicos"
 					action="physician_list_action" 
 					parent="emr_menu" 
 					sequence="2"/>
+
+
+		<menuitem 	id="oeh_medical_physician_inactive_list"  
+					name="Médicos - Inactivos"
+					action="physician_inactive_list_action" 
+					parent="emr_menu" 
+					sequence="2"
+
+					groups="openhealth.admins,openhealth.managers"
+					/>
+
 
 		<!--
 		<menuitem id="physicians_menu" name="Médicos - Branch"
@@ -711,12 +723,20 @@
 
 
 
+
 		<!-- physicians --> 
-		<menuitem id="physicians_menu" name="Physicians" parent="openhealth_menu"
-			sequence="-110"
+		<menuitem id="physicians_menu" name="Doctors" parent="openhealth_menu"
+			sequence="-120"
 
 			action="physician_list_action"
 			/>
+
+		<menuitem id="physicians_inactive_menu" name="Doctors inactive" parent="openhealth_menu"
+			sequence="-120"
+
+			action="physician_inactive_list_action"
+			/>
+
 
 
 

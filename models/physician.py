@@ -86,7 +86,7 @@ class Physician(models.Model):
 		)
 
 
-
+	#mobile_phone 
 	mobile_phone = fields.Char(
 			'Celular', 
 		)
@@ -94,6 +94,14 @@ class Physician(models.Model):
 	work_email = fields.Char(
 			'Email'
 		)
+
+
+	address_id = fields.Many2one(
+
+			'res.partner', 
+			string='Institución de trabajo', 
+		)
+
 
 
 

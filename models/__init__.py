@@ -46,6 +46,8 @@ from . import evaluation
 
 
 from . import physician 
+from . import physician_line 
+
 from . import consultation
 from . import recommendation
 from . import procedure

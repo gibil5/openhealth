@@ -330,21 +330,21 @@
 
 
 		<!-- tree/list view -->
-		<!--
-		<record model="ir.ui.view" id="openhealth.patient_tree_view">
-		-->
 		<record model="ir.ui.view" id="oehealth.oeh_medical_patient_tree">
 			<field name="name">patient.tree</field>
 			<field name="model">oeh.medical.patient</field>
-			<field name="arch" type="xml">
-			
+			<field name="arch" type="xml">			
 			<!--	
 			<field name="priority" eval="1"/>
 			-->
-
 				<tree string="Patient Tree">
 
+
 					<field name="name"/>
+
+					<field name="x_spaced"/>
+
+
 
 					<field name="x_vip"/>
 

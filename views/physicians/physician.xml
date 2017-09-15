@@ -7,21 +7,20 @@
 		<!-- Form view -->
 		<record model="ir.ui.view" id="view_physicia_form">
 			<field name="name">physician.form</field>
-			
-
 			<field name="model">oeh.medical.physician</field>
-
-
 			<field name="inherit_id" ref="oehealth.oeh_medical_physician_view"/>			
-	        
-
-
 	        <field name="mode">primary</field>
 	        <field name="priority" eval="1"/>
 			<field name="arch" type="xml">
 
 
 
+				<xpath expr="//field[@name='consultancy_price']" position="before">
+				
+					<field name="active" />
+					<field name="vspace" />
+				
+				</xpath>
 
 
 
@@ -34,13 +33,6 @@
 
 					<field name="id" />
 				</xpath>
-
-
-	
-
-
-
-
 
 			</field>
 		</record>
@@ -89,7 +81,29 @@
 
 
 
+		<!-- tree/list view -->
+		<record model="ir.ui.view" id="oehealth.oeh_medical_physician_tree">
+			<field name="name">physician.tree</field>
+			<field name="model">oeh.medical.physician</field>
+			<field name="arch" type="xml">			
+			<!--	
+			<field name="priority" eval="1"/>
+			-->
+				<tree string="Physician Tree">
 
+					<field name="name"/>
+
+					<field name="active"/>
+
+					<field name="code"/>
+
+					<field name="speciality"/>
+
+					<field name="address_id"/>
+
+				</tree>
+			</field>
+		</record>
 
 	</data>
 </openerp>

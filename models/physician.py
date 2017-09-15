@@ -35,11 +35,12 @@ class Physician(models.Model):
 		)
 	
 
+
+
 	x_therapist = fields.Boolean(
-
+			string='Terapeuta', 
+			default=False,
 		)	
-
-
 
 
 	_phy_list = [

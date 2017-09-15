@@ -30,6 +30,31 @@ class Patient(models.Model):
 
 
 
+
+	# Vip 
+	x_spaced = fields.Boolean(
+		string="Spaced",
+		default=False, 
+
+		compute='_compute_spaced', 
+	)
+
+	#@api.multi
+	@api.depends('name')
+
+	def _compute_spaced(self):
+		for record in self:
+
+			if record.name[0] == ' ':
+				record.x_spaced = True
+
+
+
+
+
+
+
+
 	# Vip 
 	x_vip = fields.Boolean(
 		string="Vip",

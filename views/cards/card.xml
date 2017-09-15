@@ -75,6 +75,18 @@
 
 
 
+		<!-- Filter --> 
+        <record id="view_card_filter" model="ir.ui.view">
+           <field name="name">Card Search</field>
+           <field name="model">openhealth.card</field>		   
+		   <field name="arch" type="xml">
+               <search string="cards">
+
+					<field name="patient_name"/>
+
+               </search>           
+           </field>
+       </record>
 
 
 	</data>

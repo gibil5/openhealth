@@ -2,7 +2,7 @@
 <openerp>
 
 
-	<data noupdate="1">
+	<data noupdate="0">
  
 
 
@@ -24,6 +24,7 @@
 
 
 
+
 <!-- Acosta -->
 		<record id="dr_acosta" model="oeh.medical.physician">
 			<field name="name">Dra. Acosta</field>
@@ -31,6 +32,8 @@
 			<field name=" consultancy_type ">residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
 		</record>
+
+
 
 <!-- Pedemonte -->
 		<record id="dr_pedemonte" model="oeh.medical.physician">

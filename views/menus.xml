@@ -679,9 +679,19 @@
 
 
 
+
+		<!-- account invoice --> 
+		<menuitem id="account_invoice_menu" name="Account Invoice" parent="openhealth_menu"
+			sequence="-140"
+			action="account.action_invoice_tree"
+			/>
+
+
+
+
+
 		<!-- cards --> 
 		<menuitem id="pricelist_item_menu" name="Pricelist Item" parent="openhealth_menu"
-
 			sequence="-130"
 
 			action="pricelist_item_list_action"
@@ -696,6 +706,16 @@
 			sequence="-120"
 
 			action="card_list_action"
+			/>
+
+
+
+
+		<!-- physicians --> 
+		<menuitem id="physicians_menu" name="Physicians" parent="openhealth_menu"
+			sequence="-110"
+
+			action="physician_list_action"
 			/>
 
 

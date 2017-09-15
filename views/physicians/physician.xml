@@ -15,6 +15,26 @@
 
 
 
+
+				<xpath expr="//field[@name='institution']" position="replace">
+
+					<field name="institution" 	string='Institución'/>
+
+				</xpath>
+
+
+
+				<xpath expr="//field[@name='address_id']" position="replace">
+
+					<field name="address_id" 	string='Institución de trabajo'/>
+
+				</xpath>
+
+
+
+
+
+
 				<xpath expr="//field[@name='consultancy_price']" position="before">
 				
 					<field name="active" />
@@ -33,6 +53,12 @@
 					<field name="id" />
 -->
 				</xpath>
+
+
+
+
+
+
 
 			</field>
 		</record>

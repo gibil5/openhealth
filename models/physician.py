@@ -82,7 +82,7 @@ class Physician(models.Model):
 		)
 
 	work_location = fields.Char(
-			string='Lugar de trabajo', 
+			string=Dirección, 
 		)
 
 
@@ -96,10 +96,22 @@ class Physician(models.Model):
 		)
 
 
+	work_phone = fields.Char(
+			'Teléfono fijo'
+		)
+
+
+
 	address_id = fields.Many2one(
 
 			'res.partner', 
 			string='Institución de trabajo', 
+		)
+
+
+	speciality = fields.Many2one(
+			'oeh.medical.speciality', 
+			string='Especialidad', 
 		)
 
 

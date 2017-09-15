@@ -23,7 +23,16 @@ class PhysicianLine(models.Model):
 
 	name = fields.Selection(
 		PHY_DAY, 
-		'Dias disponible', 
+		'Dia', 
 		required=True
 	)
 
+
+	start_time = fields.Float(
+		'Inicio', 
+	)
+
+
+	end_time =  fields.Float(
+		'Final', 
+	)

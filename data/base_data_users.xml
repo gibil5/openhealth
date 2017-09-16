@@ -284,14 +284,17 @@
 <!-- Partner Categories --> 
 		<record id='staff' model='res.partner.category'>
 			<field name='name'>staff</field>
+	        <field name="active">1</field>
 		</record>
 
 		<record id='doctor' model='res.partner.category'>
 			<field name='name'>doctor</field>
+	        <field name="active">1</field>
 		</record>
 
 		<record id='customer' model='res.partner.category'>
 			<field name='name'>customer</field>
+	        <field name="active">1</field>
 		</record>
 
 
@@ -303,11 +306,10 @@
 			<field name="name">Renato Chavarri</field>
 			<field name="email">rchavarri@clinicachavarri.com</field>
 <!--
-			<field name='category_id' ref="staff_partner"/>
+	        <field eval="[(6, 0, [ref('module_name.res_partner_category_1')])]" name="category_id"/>
 -->
-			<field name='category_id'>staff</field>
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
-
 
 		<record id="rchavarri_clinicachavarri" model="res.users">
 			<field name="name">Renato Chavarri</field>
@@ -329,6 +331,8 @@
 		<record id="vmori" model="res.partner">
 			<field name="name">Víctor Mori</field>
 			<field name="email">vmori@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
 		<record id="vmori_clinicachavarri" model="res.users">
@@ -349,6 +353,8 @@
 		<record id="ipuga" model="res.partner">
 			<field name="name">Iván Puga</field>
 			<field name="email">ipuga@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
 		<record id="ipuga_clinicachavarri" model="res.users">
@@ -369,6 +375,8 @@
 		<record id="pbalboa" model="res.partner">
 			<field name="name">Percy Balboa</field>
 			<field name="email">pbalboa@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
 		<record id="pbalboa_clinicachavarri" model="res.users">
@@ -382,6 +390,8 @@
 			<field name="lang">es_ES</field>
 			<field name="partner_id" ref="pbalboa"/>            
 		</record>
+
+
 
 	</data>
 </openerp>

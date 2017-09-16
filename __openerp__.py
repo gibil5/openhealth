@@ -300,6 +300,7 @@
 
 		# Menus
 		'views/menus.xml',
+		'views/menus_openhealth.xml',
 
 
 

@@ -282,6 +282,7 @@
 
 
 <!-- Partner Categories --> 
+<!--
 		<record id='staff_partner' model='res.partner.category'>
 			<field name='name'>staff</field>
 		</record>
@@ -293,6 +294,7 @@
 		<record id='customer_partner' model='res.partner.category'>
 			<field name='name'>customer</field>
 		</record>
+-->
 
 
 

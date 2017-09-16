@@ -109,10 +109,14 @@
 
 
 		# ----------------------------------------------------------- Security ------------------------------------------------------
-		'data/base_data_users.xml',
+		#'data/base_data_users.xml',
+		'data/base_data_users_buf.xml',
+		'data/base_data_users_phy.xml',
 
 
-		'security/openhealth_security.xml',
+		#'security/openhealth_security.xml',
+		'security/openhealth_security_buf.xml',
+		
 		'security/ir.model.access.csv',
 		'security/ir.rule.xml',
 

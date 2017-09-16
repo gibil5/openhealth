@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+
+	<data noupdate="0">
+	
+
+
+
+<!-- DOCTORS -->
+
+<!-- Dr Chavarri -->
+<!-- Fernando Chavarri -->
+		<record id="fchavarri" model="res.partner">
+			<field name="name">Fernando Chavarri</field>
+			<field name="email">fchavarri@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+		</record>
+
+		<record id="fchavarri" model="res.users">
+			<field name="name">Fernando Chavarri</field>
+			<field name="login">fchavarri@clinicachavarri.com</field>
+			<field name="password">fchavarri</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+
+			<field name="lang">es_ES</field>
+		</record>
+
+
+
+
+
+<!-- Dr Alarcon -->
+<!-- Guillermon Alarcon --> 
+		<record id="galarcon" model="res.partner">
+			<field name="name">Guillermo Alarcon</field>
+			<field name="email">galarcon@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+		</record>
+
+		<record id="galarcon" model="res.users">
+			<field name="name">Guillermo Alarcon</field>
+			<field name="login">galarcon@clinicachavarri.com</field>
+			<field name="password">galarcon</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+
+			<field name="lang">es_ES</field>
+		</record>
+
+
+
+
+<!-- Dr Vasquez -->
+<!-- Javier Vasquez -->
+		<record id="jvasquez" model="res.partner">
+			<field name="name">Javier Vasquez</field>
+			<field name="email">jvasquez@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+		</record>
+
+		<record id="jvasquez" model="res.users">
+			<field name="name">Javier Vasquez</field>
+			<field name="login">jvasquez@clinicachavarri.com</field>
+			<field name="password">jvasquez</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+
+			<field name="lang">es_ES</field>
+		</record>
+
+
+
+
+
+	</data>
+</openerp> 

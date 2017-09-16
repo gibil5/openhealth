@@ -426,6 +426,7 @@ class Patient(models.Model):
 			#required=True, 			
 			required=False, 			
 			)
+
 	#@api.multi
 	@api.depends('street2','city')
 
@@ -435,6 +436,7 @@ class Patient(models.Model):
 				record.zip=pat_vars.zip_dic[record.street2]
 			else:
 				record.zip=0
+
 
 
 

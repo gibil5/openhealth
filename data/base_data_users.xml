@@ -282,19 +282,18 @@
 
 
 <!-- Partner Categories --> 
-<!--
-		<record id='staff_partner' model='res.partner.category'>
+		<record id='staff' model='res.partner.category'>
 			<field name='name'>staff</field>
 		</record>
 
-		<record id='doctor_partner' model='res.partner.category'>
+		<record id='doctor' model='res.partner.category'>
 			<field name='name'>doctor</field>
 		</record>
 
-		<record id='customer_partner' model='res.partner.category'>
+		<record id='customer' model='res.partner.category'>
 			<field name='name'>customer</field>
 		</record>
--->
+
 
 
 
@@ -306,7 +305,7 @@
 <!--
 			<field name='category_id' ref="staff_partner"/>
 -->
-			<field name='category_id'>staff_partner</field>
+			<field name='category_id'>staff</field>
 		</record>
 
 

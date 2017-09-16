@@ -78,6 +78,9 @@
 			-->
 				<tree string="Partner Tree">					
 					<field name="name"/>
+					
+					<field name="email"/>
+
 					<field name="x_vip"/>				
 					<field name="id"/>
 					<field name="comment"/>				

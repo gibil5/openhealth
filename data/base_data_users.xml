@@ -102,50 +102,6 @@ mpedemonte
 
 
 
-<!-- Dr Canales -->
-<!-- Paul Canales --> 
-		<record id="pcanales" model="res.partner">
-			<field name="name">Paul Canales</field>
-			<field name="email">pcanales@clinicachavarri.com</field>
-
-	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
-		</record>
-
-		<record id="pcanales" model="res.users">
-			<field name="name">Paul Canales</field>
-			<field name="login">ypcanales@clinicachavarri.com</field>
-			<field name="password">pcanales</field>
-			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-			<field name="active">True</field>
-			<field name="tz">America/Lima</field>
-
-			<field name="lang">es_ES</field>
-		</record>
-
-
-
-
-<!-- Dr Escudero -->
-<!-- Carlos Escudero -->
-		<record id="cescudero" model="res.partner">
-			<field name="name">Carlos Escudero</field>
-			<field name="email">cescudero@clinicachavarri.com</field>
-
-	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
-		</record>
-
-		<record id="cescudero" model="res.users">
-			<field name="name">Carlos Escudero</field>
-			<field name="login">ycescudero@clinicachavarri.com</field>
-			<field name="password">cescudero</field>
-			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-			<field name="active">True</field>
-			<field name="tz">America/Lima</field>
-
-			<field name="lang">es_ES</field>
-		</record>
-
-
 
 
 

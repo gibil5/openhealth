@@ -2,30 +2,41 @@
 <openerp>
 <!--
 	<data noupdate="1">
+	<data noupdate="0">
 -->
-	<data noupdate="1">
- 
-
-
-<!-- Data - Patients -->
+	<data> 
 
 
 
 
-<!--
+<!-- Test -->
+
+	<record id="test" model="res.partner">
+		<field name="name">Test Test</field>
+		<field name="email">test@test.com</field>
+
+		<field eval="[(6, 0, [ref('patient')])]" name="category_id"/>
+	</record>
+
 	<record id="test_patient" model="oeh.medical.patient">
 
-		<field name="name">TEST TEST Test</field>
+		<field name="name">TEST Test</field>
 		<field name="comment">test</field>
 		<field name="sex">Male</field>
 		<field name="dob">1965-06-30</field>
 		<field name="zip">55</field>
-
-		<field name="x_date_created">2017-06-30</field>
 		<field name="x_dni">01234567</field>
+
+		<field name="x_date_created">2017-09-16</field>
 		<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
+
+		<field name="lang">es_ES</field>
+		<field name="partner_id" ref="test"/>
 	</record>
--->	
+
+
+
+<!-- Data - Patients -->
 
 
 

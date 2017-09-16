@@ -83,7 +83,69 @@
 			"file": "__openerp__.py",
 			"settings":
 			{
-				"buffer_size": 7497,
+				"buffer_size": 7549,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "data/base_data_users_buf.xml",
+			"settings":
+			{
+				"buffer_size": 11723,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "data/base_data_users.xml",
+			"settings":
+			{
+				"buffer_size": 5009,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "data/base_data_users_phy.xml",
+			"settings":
+			{
+				"buffer_size": 152,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/physician.py",
+			"settings":
+			{
+				"buffer_size": 1800,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/howto/shell.rb",
+			"settings":
+			{
+				"buffer_size": 9953,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "security/openhealth_security_buf.xml",
+			"settings":
+			{
+				"buffer_size": 1883,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "security/openhealth_security.xml",
+			"settings":
+			{
+				"buffer_size": 3969,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -93,18 +155,6 @@
 			"settings":
 			{
 				"buffer_size": 12495,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<openerp>\n<!--\n\t<data noupdate=\"0\">\n-->\n\t<data>\n \n\n<!-- Data - USERS -->\n\n\n\n\n<!-- Langusages --> \n\t\t<record id=\"openhealth_lang_es\" model=\"res.lang\">\n\t\t\t<field name=\"code\">oh_es_ES</field>\n\t\t\t<field name=\"name\">Open Health - Spanish</field>\n\t\t\t<field name=\"grouping\">[3,0]</field>\n\t\t\t<field name=\"decimal_point\">.</field>\n\t\t\t<field name=\"thousands_sep\">,</field>\n\t\t\t<field name=\"date_format\">%d/%m/%Y</field>\n\t\t\t<field name=\"translatable\">True</field>\n\t\t</record>\n\n\n\n\n<!-- Partner Categories --> \n\t\t<record id='staff' model='res.partner.category'>\n\t\t\t<field name='name'>staff</field>\n\t        <field name=\"active\">1</field>\n\t\t</record>\n\n\t\t<record id='doctor' model='res.partner.category'>\n\t\t\t<field name='name'>doctor</field>\n\t        <field name=\"active\">1</field>\n\t\t</record>\n\n\t\t<record id='customer' model='res.partner.category'>\n\t\t\t<field name='name'>customer</field>\n\t        <field name=\"active\">1</field>\n\t\t</record>\n\n\n\n<!--\n\"Dr. Chavarri\", \n\"Dr. Canales\", \n\"Dr. Escudero\",  \n\"Dr. Vasquez\", \n\"Dr. Gonzales\", \n\"Dr. Alarcon\", \n\"Dr. Monteverde\", \n\"Dr. Mendez\", \n\"Dra. Acosta\", \n\"Dra. Pedemonte\", \n-->\n\n\n\n\n\n\n\n<!-- DOCTORS -->\n\n\n\n<!-- Dr Alarcon -->\n\t\t<record id=\"jalarcon\" model=\"res.partner\">\n\t\t\t<field name=\"name\">Javier Alarcon</field>\n\t\t\t<field name=\"email\">jalarcon@clinicachavarri.com</field>\n\n\t        <field eval=\"[(6, 0, [ref('doctor')])]\" name=\"category_id\"/>\n\t\t</record>\n\n\t\t<record id=\"jalarcon_clinicachavarri\" model=\"res.users\">\n\t\t\t<field name=\"name\">Javier Alarcon</field>\n\t\t\t<field name=\"login\">jalarcon@clinicachavarri.com</field>\n\t\t\t<field name=\"password\">jalarcon</field>\n\t\t\t<field name=\"image\" type=\"base64\" file=\"openhealth/static/img/res_users-6-image.jpg\"/>\n\t\t\t<field name=\"active\">True</field>\n\t\t\t<field name=\"tz\">America/Lima</field>\n\n\t\t\t<field name=\"lang\">es_ES</field>\n\t\t</record>\n\n\n\n\n<!-- Dr Vasquez -->\n\t\t<record id=\"dr_vasquez_clinicachavarri\" model=\"res.users\">\n\t\t\t<field name=\"name\">Dr. Vasquez</field>\n\t\t\t<field name=\"login\">drvasquez@clinicachavarri.com</field>\n\t\t\t<field name=\"password\">drvasquez</field>\n\t\t\t<field name=\"image\" type=\"base64\" file=\"openhealth/static/img/res_users-6-image.jpg\"/>\n\t\t\t<field name=\"active\">True</field>\n\t\t\t<field name=\"tz\">America/Lima</field>\n\n\t\t\t<field name=\"lang\">es_ES</field>\n\t\t</record>\n\n\n\n<!-- Dr Chavarri -->\n\t\t<record id=\"dr_chavarri_clinicachavarri\" model=\"res.users\">\n\t\t\t<field name=\"name\">Dr. Chavarri</field>\n\t\t\t<field name=\"login\">drchavarri@clinicachavarri.com</field>\n\t\t\t<field name=\"password\">drchavarri</field>\n\t\t\t<field name=\"image\" type=\"base64\" file=\"openhealth/static/img/res_users-6-image.jpg\"/>\n\t\t\t<field name=\"active\">True</field>\n\t\t\t<field name=\"tz\">America/Lima</field>\n\n\t\t\t<field name=\"lang\">es_ES</field>\n\t\t</record>\n\n\n\n<!-- Dr Canales -->\n\t\t<record id=\"dr_canales_clinicachavarri\" model=\"res.users\">\n\t\t\t<field name=\"name\">Dr. Canales</field>\n\t\t\t<field name=\"login\">drcanales@clinicachavarri.com</field>\n\t\t\t<field name=\"password\">drcanales</field>\n\t\t\t<field name=\"image\" type=\"base64\" file=\"openhealth/static/img/res_users-6-image.jpg\"/>\n\t\t\t<field name=\"active\">True</field>\n\t\t\t<field name=\"tz\">America/Lima</field>\n\n\t\t\t<field name=\"lang\">es_ES</field>\n\t\t</record>\n\n\n\n<!-- Dr Escudero -->\n\t\t<record id=\"dr_escudero_clinicachavarri\" model=\"res.users\">\n\t\t\t<field name=\"name\">Dr. Escudero</field>\n\t\t\t<field name=\"login\">drescudero@clinicachavarri.com</field>\n\t\t\t<field name=\"password\">drescudero</field>\n\t\t\t<field name=\"image\" type=\"base64\" file=\"openhealth/static/img/res_users-6-image.jpg\"/>\n\t\t\t<field name=\"active\">True</field>\n\t\t\t<field name=\"tz\">America/Lima</field>\n\n\t\t\t<field name=\"lang\">es_ES</field>\n\t\t</record>\n\n\n\n<!-- Dr Gonzales -->\n\t\t<record id=\"dr_gonzales_clinicachavarri\" model=\"res.users\">\n\t\t\t<field name=\"name\">Dr. Gonzales</field>\n\t\t\t<field name=\"login\">drgonzales@clinicachavarri.com</field>\n\t\t\t<field name=\"password\">drgonzales</field>\n\t\t\t<field name=\"image\" type=\"base64\" file=\"openhealth/static/img/res_users-6-image.jpg\"/>\n\t\t\t<field name=\"active\">True</field>\n\t\t\t<field name=\"tz\">America/Lima</field>\n\t\t\n\t\t\t<field name=\"lang\">es_ES</field>\n\t\t</record>\n\n\n\n<!-- Dr Monteverde -->\n<!-- Piero Monteverde -->\n\t\t<record id=\"dr_monteverde_clinicachavarri\" model=\"res.users\">\n\t\t\t<field name=\"name\">Dr. Monteverde</field>\n\t\t\t<field name=\"login\">drmonteverde@clinicachavarri.com</field>\n\t\t\t<field name=\"password\">drmonteverde</field>\n\t\t\t<field name=\"image\" type=\"base64\" file=\"openhealth/static/img/res_users-6-image.jpg\"/>\n\t\t\t<field name=\"active\">True</field>\n\t\t\t<field name=\"tz\">America/Lima</field>\n\n\t\t\t<field name=\"lang\">es_ES</field>\n\t\t</record>\n\n\n\n<!-- Dr Mendez -->\n<!-- Carlos Mendez -->\n\t\t<record id=\"dr_mendez_clinicachavarri\" model=\"res.users\">\n\t\t\t<field name=\"name\">Dr. Mendez</field>\n\t\t\t<field name=\"login\">drmendez@clinicachavarri.com</field>\n\t\t\t<field name=\"password\">drmendez</field>\n\t\t\t<field name=\"image\" type=\"base64\" file=\"openhealth/static/img/res_users-6-image.jpg\"/>\n\t\t\t<field name=\"active\">True</field>\n\t\t\t<field name=\"tz\">America/Lima</field>\n\n\t\t\t<field name=\"lang\">es_ES</field>\n\t\t</record>\n\n\n\n<!-- Dra Acosta -->\n\t\t<record id=\"dra_acosta_clinicachavarri\" model=\"res.users\">\n\t\t\t<field name=\"name\">Dra. Acosta</field>\n\t\t\t<field name=\"login\">draacosta@clinicachavarri.com</field>\n\t\t\t<field name=\"password\">draacosta</field>\n\t\t\t<field name=\"image\" type=\"base64\" file=\"openhealth/static/img/res_users-6-image.jpg\"/>\n\t\t\t<field name=\"active\">True</field>\n\t\t\t<field name=\"tz\">America/Lima</field>\n\n\t\t\t<field name=\"lang\">es_ES</field>\n\t\t</record>\n\n\n\n<!-- Dra Pedemonte -->\n\t\t<record id=\"dr_pedemonte_clinicachavarri\" model=\"res.users\">\n\t\t\t<field name=\"name\">Dra. Pedemonte</field>\n\t\t\t<field name=\"login\">drapedemonte@clinicachavarri.com</field>\n\t\t\t<field name=\"password\">drapedemonte</field>\n\t\t\t<field name=\"image\" type=\"base64\" file=\"openhealth/static/img/res_users-6-image.jpg\"/>\n\t\t\t<field name=\"active\">True</field>\n\t\t\t<field name=\"tz\">America/Lima</field>\n\n\t\t\t<field name=\"lang\">es_ES</field>\n\t\t</record>\n\n\n\n\n\n\n\n\n\n\n\n\n<!-- STAFF -->\n\n<!-- Renato Chavarri -->\n\n\t\t<record id=\"rchavarri\" model=\"res.partner\">\n\t\t\t<field name=\"name\">Renato Chavarri</field>\n\t\t\t<field name=\"email\">rchavarri@clinicachavarri.com</field>\n<!--\n\t        <field eval=\"[(6, 0, [ref('module_name.res_partner_category_1')])]\" name=\"category_id\"/>\n-->\n\t        <field eval=\"[(6, 0, [ref('staff')])]\" name=\"category_id\"/>\n\t\t</record>\n\n\t\t<record id=\"rchavarri_clinicachavarri\" model=\"res.users\">\n\t\t\t<field name=\"name\">Renato Chavarri</field>\n\t\t\t<field name=\"login\">rchavarri@clinicachavarri.com</field>\n\t\t\t<field name=\"password\">rchavarri</field>\n\t\t\t<field name=\"image\" type=\"base64\" file=\"openhealth/static/img/res_users-6-image.jpg\"/>\n\t\t\t<field name=\"active\">True</field>\n\t\t\t<field name=\"tz\">America/Lima</field>\n\n\t\t\t<field name=\"lang\">es_ES</field>\n\t\t\t<field name=\"partner_id\" ref=\"rchavarri\"/>\n\t\t</record>\n\n\n\n\n\n<!-- Victor Mori -->\n\t\t<record id=\"vmori\" model=\"res.partner\">\n\t\t\t<field name=\"name\">Víctor Mori</field>\n\t\t\t<field name=\"email\">vmori@clinicachavarri.com</field>\n\n\t        <field eval=\"[(6, 0, [ref('staff')])]\" name=\"category_id\"/>\n\t\t</record>\n\n\t\t<record id=\"vmori_clinicachavarri\" model=\"res.users\">\n\t\t\t<field name=\"name\">Víctor Mori</field>\n\t\t\t<field name=\"login\">vmori@clinicachavarri.com</field>\n\t\t\t<field name=\"password\">vmori</field>\n\t\t\t<field name=\"image\" type=\"base64\" file=\"openhealth/static/img/res_users-6-image.jpg\"/>\n\t\t\t<field name=\"active\">True</field>\n\t\t\t<field name=\"tz\">America/Lima</field>\n\n\t\t\t<field name=\"lang\">es_ES</field>\n\t\t\t<field name=\"partner_id\" ref=\"vmori\"/>\n\t\t</record>\n\n\n\n<!-- Ivan Puga -->\n\t\t<record id=\"ipuga\" model=\"res.partner\">\n\t\t\t<field name=\"name\">Iván Puga</field>\n\t\t\t<field name=\"email\">ipuga@clinicachavarri.com</field>\n\n\t        <field eval=\"[(6, 0, [ref('staff')])]\" name=\"category_id\"/>\n\t\t</record>\n\n\t\t<record id=\"ipuga_clinicachavarri\" model=\"res.users\">\n\t\t\t<field name=\"name\">Iván Puga</field>\n\t\t\t<field name=\"login\">ipuga@clinicachavarri.com</field>\n\t\t\t<field name=\"password\">ipuga</field>\n\t\t\t<field name=\"image\" type=\"base64\" file=\"openhealth/static/img/res_users-6-image.jpg\"/>\n\t\t\t<field name=\"active\">True</field>\n\t\t\t<field name=\"tz\">America/Lima</field>\n\n\t\t\t<field name=\"lang\">es_ES</field>\n\t\t\t<field name=\"partner_id\" ref=\"ipuga\"/>            \n\t\t</record>\n\n\n\n<!-- Percy Balboa -->\n\t\t<record id=\"pbalboa\" model=\"res.partner\">\n\t\t\t<field name=\"name\">Percy Balboa</field>\n\t\t\t<field name=\"email\">pbalboa@clinicachavarri.com</field>\n\n\t        <field eval=\"[(6, 0, [ref('staff')])]\" name=\"category_id\"/>\n\t\t</record>\n\n\t\t<record id=\"pbalboa_clinicachavarri\" model=\"res.users\">\n\t\t\t<field name=\"name\">Percy Balboa</field>\n\t\t\t<field name=\"login\">pbalboa@clinicachavarri.com</field>\n\t\t\t<field name=\"password\">pbalboa</field>\n\t\t\t<field name=\"image\" type=\"base64\" file=\"openhealth/static/img/res_users-6-image.jpg\"/>\n\t\t\t<field name=\"active\">True</field>\n\t\t\t<field name=\"tz\">America/Lima</field>\n\n\t\t\t<field name=\"lang\">es_ES</field>\n\t\t\t<field name=\"partner_id\" ref=\"pbalboa\"/>            \n\t\t</record>\n\n\n\n\n<!-- Raul Bustios -->\n\n\t\t<record id=\"rbustios\" model=\"res.partner\">\n\t\t\t<field name=\"name\">Raul Bustios</field>\n\t\t\t<field name=\"email\">rbustios@clinicachavarri.com</field>\n\n\t        <field eval=\"[(6, 0, [ref('staff')])]\" name=\"category_id\"/>\n\t\t</record>\n\n\t\t<record id=\"rbustios_clinicachavarri\" model=\"res.users\">\n\t\t\t<field name=\"name\">Raul Bustios</field>\n\t\t\t<field name=\"login\">rbustios@clinicachavarri.com</field>\n\t\t\t<field name=\"password\">rbustios</field>\n\t\t\t<field name=\"image\" type=\"base64\" file=\"openhealth/static/img/res_users-6-image.jpg\"/>\n\t\t\t<field name=\"active\">True</field>\n\t\t\t<field name=\"tz\">America/Lima</field>\n\n\t\t\t<field name=\"lang\">es_ES</field>\n\t\t\t<field name=\"partner_id\" ref=\"rbustios\"/>\n\t\t</record>\n\n\n\n\n\n\n\n\n\n\n<!-- GENERIC -->\n\n<!-- Medico -->\n\t\t<record id=\"medico_partner\" model=\"res.partner\">\n\t\t\t<field name=\"name\">Medico</field>\n\t\t\t<field name=\"email\">medico@clinicachavarri.com</field>\n\t\t</record>\n\n\t\t<record id=\"medico_clinicachavarri\" model=\"res.users\">\n\t\t\t<field name=\"name\">Medico</field>\n\t\t\t<field name=\"login\">medico@clinicachavarri.com</field>\n\t\t\t<field name=\"password\">medico</field>\n\t\t\t<field name=\"image\" type=\"base64\" file=\"openhealth/static/img/res_users-6-image.jpg\"/>\n\t\t\t<field name=\"active\">True</field>\n\n\t\t\t<field name=\"lang\">es_ES</field>\n\n\t\t\t<field name=\"tz\">America/Lima</field>\n\t\t\t<field name=\"partner_id\" ref=\"medico_partner\"/>\n\t\t</record>\n\n<!-- Caja -->\n\t\t<record id=\"caja_partner\" model=\"res.partner\">\n\t\t\t<field name=\"name\">Caja</field>\n\t\t\t<field name=\"email\">caja@clinicachavarri.com</field>\n\t\t</record>\n\n\t\t<record id=\"caja_clinicachavarri\" model=\"res.users\">\n\t\t\t<field name=\"name\">Caja</field>\n\t\t\t<field name=\"login\">caja@clinicachavarri.com</field>\n\t\t\t<field name=\"password\">caja</field>\n\t\t\t<field name=\"image\" type=\"base64\" file=\"openhealth/static/img/res_users-6-image.jpg\"/>\n\t\t\t<field name=\"active\">True</field>\n\n\t\t\t<field name=\"lang\">es_ES</field>\n\n\t\t\t<field name=\"tz\">America/Lima</field>\n\t\t\t<field name=\"partner_id\" ref=\"caja_partner\"/>\n\t\t</record>\n\n<!-- Plataforma -->\n\t\t<record id=\"plataforma_partner\" model=\"res.partner\">\n\t\t\t<field name=\"name\">Plataforma</field>\n\t\t\t<field name=\"email\">plataforma@clinicachavarri.com</field>\n\t\t</record>\n\n\t\t<record id=\"plataforma_clinicachavarri\" model=\"res.users\">\n\t\t\t<field name=\"name\">Plataforma</field>\n\t\t\t<field name=\"login\">plataforma@clinicachavarri.com</field>\n\t\t\t<field name=\"password\">plataforma</field>\n\t\t\t<field name=\"image\" type=\"base64\" file=\"openhealth/static/img/res_users-6-image.jpg\"/>\n\t\t\t<field name=\"active\">True</field>\n\n\t\t\t<field name=\"lang\">es_ES</field>\n\n\t\t\t<field name=\"tz\">America/Lima</field>\n\t\t\t<field name=\"partner_id\" ref=\"plataforma_partner\"/>\n\t\t</record>\n\n<!-- Pruebas -->\n\t\t<record id=\"pruebas_partner\" model=\"res.partner\">\n\t\t\t<field name=\"name\">Pruebas</field>\n\t\t\t<field name=\"email\">pruebas@clinicachavarri.com</field>\n\t\t</record>\n\n\t\t<record id=\"pruebas_clinicachavarri\" model=\"res.users\">\n\t\t\t<field name=\"name\">Pruebas</field>\n\t\t\t<field name=\"login\">pruebas@clinicachavarri.com</field>\n\t\t\t<field name=\"password\">pruebas</field>\n\t\t\t<field name=\"image\" type=\"base64\" file=\"openhealth/static/img/res_users-6-image.jpg\"/>\n\t\t\t<field name=\"active\">True</field>            \n\t\t\t<field name=\"tz\">America/Lima</field>\n\t\t\t<field name=\"partner_id\" ref=\"pruebas_partner\"/>\n\n\t\t\t<field name=\"lang\">es_ES</field>\n\t\t</record>\n\n<!-- Almacen -->\n\t\t<record id=\"almacen_partner\" model=\"res.partner\">\n\t\t\t<field name=\"name\">Almacen</field>\n\t\t\t<field name=\"email\">almacen@clinicachavarri.com</field>\n\t\t</record>\n\n\t\t<record id=\"almacen_clinicachavarri\" model=\"res.users\">\n\t\t\t<field name=\"name\">Almacen</field>\n\t\t\t<field name=\"login\">almacen@clinicachavarri.com</field>\n\t\t\t<field name=\"password\">almacen</field>\n\t\t\t<field name=\"image\" type=\"base64\" file=\"openhealth/static/img/res_users-6-image.jpg\"/>\n\t\t\t<field name=\"active\">True</field>\n\t\t\t<field name=\"tz\">America/Lima</field>\n\t\t\t<field name=\"partner_id\" ref=\"almacen_partner\"/>\n\n\t\t\t<field name=\"lang\">es_ES</field>\n\t\t</record>\n\n\t</data>\n</openerp>\n\n",
-			"file": "data/base_data_users.xml",
-			"file_size": 12948,
-			"file_write_time": 131500432840000000,
-			"settings":
-			{
-				"buffer_size": 12993,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -158,15 +208,6 @@
 			"settings":
 			{
 				"buffer_size": 3158,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/physician.py",
-			"settings":
-			{
-				"buffer_size": 1800,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -400,6 +441,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"login\">",
+			"fchavarri",
+			"galarcon",
+			"\"",
 			"Renato Chavarri",
 			"rchavarri",
 			"openhealth",
@@ -523,18 +568,25 @@
 			"product_template_stockable_list_action",
 			"action",
 			"sex",
-			"confirmar",
-			"confir",
-			"note",
-			"user",
-			"user_id"
+			"confirmar"
 		],
 		"highlight": true,
-		"in_selection": true,
+		"in_selection": false,
 		"preserve_case": false,
 		"regex": false,
 		"replace_history":
 		[
+			"login\">y",
+			"mpedemonte",
+			"dacosta",
+			"cmendez",
+			"pmonteverde",
+			"lgonzales",
+			"cescudero",
+			"pcanales",
+			"jvasquez",
+			"fchavarri",
+			"",
 			"Raul Bustios",
 			"rbustios",
 			"physician",
@@ -651,18 +703,7 @@
 			"treatment",
 			"payment_method",
 			"total",
-			"order",
-			"payment_method",
-			"saledoc_code",
-			"progress",
-			"state",
-			"treatment",
-			"month",
-			"partner",
-			"physician",
-			"caja",
-			"record.x_sale_document.",
-			"medical"
+			"order"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -673,7 +714,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -682,15 +723,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7497,
+						"buffer_size": 7549,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4781,
-								4782
+								1724,
+								1724
 							]
 						],
 						"settings":
@@ -699,14 +740,214 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 4884.0,
+						"translation.y": 1681.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "data/base_data_users_buf.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11723,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								61,
+								61
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "data/base_data_users.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5009,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1854,
+								1854
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1331.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
+					"buffer": 3,
+					"file": "data/base_data_users_phy.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 152,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								130,
+								130
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "models/physician.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1800,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								76,
+								76
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "models/howto/shell.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9953,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								287,
+								341
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 239.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "security/openhealth_security_buf.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1883,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1092,
+								1092
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1157.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "security/openhealth_security.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3969,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2381,
+								2381
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1820.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
 					"file": "views/menus.xml",
 					"semi_transient": false,
 					"settings":
@@ -728,44 +969,14 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 11183.0,
+						"translation.y": 1416.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "data/base_data_users.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 12993,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3602,
-								3602
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 282.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
+					"buffer": 9,
 					"file": "views/menus_openhealth.xml",
 					"semi_transient": false,
 					"settings":
@@ -783,17 +994,18 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/XML/XML.sublime-syntax"
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 409.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 10,
 					"file": "data/odoo_data_products.xml",
 					"semi_transient": false,
 					"settings":
@@ -818,11 +1030,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 11,
 					"file": "views/partners/partner.xml",
 					"semi_transient": false,
 					"settings":
@@ -847,11 +1059,11 @@
 						"translation.y": 1902.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 12,
 					"file": "data/base_data_physicians.xml",
 					"semi_transient": false,
 					"settings":
@@ -876,11 +1088,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 13,
 					"file": "models/patient.py",
 					"semi_transient": false,
 					"settings":
@@ -905,11 +1117,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 14,
 					"file": "views/physicians/physician.xml",
 					"semi_transient": false,
 					"settings":
@@ -934,40 +1146,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
-					"file": "models/physician.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1800,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1131,
-								1131
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
+					"buffer": 15,
 					"file": "models/physician_line.py",
 					"semi_transient": false,
 					"settings":
@@ -993,7 +1176,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 15,
 					"type": "text"
 				}
 			]

@@ -21,6 +21,11 @@
 	        <field name="active">1</field>
 		</record>
 
+		<record id='patient' model='res.partner.category'>
+			<field name='name'>patient</field>
+	        <field name="active">1</field>
+		</record>
+
 
 
 

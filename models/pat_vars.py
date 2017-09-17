@@ -81,23 +81,34 @@ _first_contact_list = [
 		]
 
 
+
+
 _street2_list = [
 
 	(1,'Lima'),
+
 	(2,'Ancón'),
 	(3,'Ate'),
 	(4,'Barranco'),
 	(5,'Breña'),
 	(6,'Carabayllo'),
+
+	(40,'Cieneguilla'),
+
 	(7,'Comas'),
 	(8,'Chaclacayo'),
 	(9,'Chorrillos'),
 	(10,'El Agustino'),
 
+	(28,'Independencia'),
+
 	(11,'Jesús María'),
 	(12,'La Molina'),
 	(13,'La Victoria'),
 	(14,'Lince'),
+
+	(39,'Los Olivos'),
+	
 	(15,'Lurigancho'),
 	(16,'Lurín'),
 	(17,'Magdalena del Mar'),
@@ -110,9 +121,16 @@ _street2_list = [
 	(23,'Punta Negra'),
 	(24,'Punta Hermosa'),
 	(25,'Rímac'),
+
+	(43,'Santa Anita'),
+
 	(26,'San Bartolo'),
+
+	(41,'San Borja'),
+
 	(27,'San Isidro'),
-	(28,'Independencia'),
+
+	
 	(29,'San Juan de Miraflores'),
 	(30,'San Luis'),
 
@@ -120,16 +138,14 @@ _street2_list = [
 	(32,'San Miguel'),
 	(33,'Santiago de Surco'),
 	(34,'Surquillo'),
-	(35,'Villa María del Triunfo'),
 	(36,'San Juan de Lurigancho'),
 	(37,'Santa María del Mar'),
 	(38,'Santa Rosa'),
-	(39,'Los Olivos'),
-	(40,'Cieneguilla'),
 
-	(41,'San Borja'),
+
+
 	(42,'Villa El Salvador'),
-	(43,'Santa Anita'),
+	(35,'Villa María del Triunfo'),
 
 ]
 

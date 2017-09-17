@@ -83,7 +83,16 @@
 			"file": "__openerp__.py",
 			"settings":
 			{
-				"buffer_size": 7549,
+				"buffer_size": 7582,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "data/base_data_patients.xml",
+			"settings":
+			{
+				"buffer_size": 877,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -92,7 +101,7 @@
 			"file": "data/base_data_users_buf.xml",
 			"settings":
 			{
-				"buffer_size": 11723,
+				"buffer_size": 11867,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -441,6 +450,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"customer",
 			"login\">",
 			"fchavarri",
 			"galarcon",
@@ -567,15 +577,15 @@
 			"price_uni",
 			"product_template_stockable_list_action",
 			"action",
-			"sex",
-			"confirmar"
+			"sex"
 		],
 		"highlight": true,
-		"in_selection": false,
+		"in_selection": true,
 		"preserve_case": false,
 		"regex": false,
 		"replace_history":
 		[
+			"patient",
 			"login\">y",
 			"mpedemonte",
 			"dacosta",
@@ -702,8 +712,7 @@
 			"x_year",
 			"treatment",
 			"payment_method",
-			"total",
-			"order"
+			"total"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -714,7 +723,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -723,15 +732,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7549,
+						"buffer_size": 7582,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1724,
-								1724
+								1920,
+								1920
 							]
 						],
 						"settings":
@@ -740,32 +749,62 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1681.0,
+						"translation.y": 1864.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "data/base_data_users_buf.xml",
+					"file": "data/base_data_patients.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11723,
+						"buffer_size": 877,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								61,
-								61
+								603,
+								603
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/XML/XML.sublime-syntax"
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "data/base_data_users_buf.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11867,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								835,
+								835
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -775,7 +814,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 3,
 					"file": "data/base_data_users.xml",
 					"semi_transient": false,
 					"settings":
@@ -787,8 +826,8 @@
 						"selection":
 						[
 							[
-								1854,
-								1854
+								1977,
+								1977
 							]
 						],
 						"settings":
@@ -798,14 +837,14 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1331.0,
+						"translation.y": 1647.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 4,
 					"file": "data/base_data_users_phy.xml",
 					"semi_transient": false,
 					"settings":
@@ -829,11 +868,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "models/physician.py",
 					"semi_transient": false,
 					"settings":
@@ -858,11 +897,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "models/howto/shell.rb",
 					"semi_transient": false,
 					"settings":
@@ -886,11 +925,11 @@
 						"translation.y": 239.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
 					"file": "security/openhealth_security_buf.xml",
 					"semi_transient": false,
 					"settings":
@@ -908,17 +947,18 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/XML/XML.sublime-syntax"
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 1157.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 8,
 					"file": "security/openhealth_security.xml",
 					"semi_transient": false,
 					"settings":
@@ -943,11 +983,11 @@
 						"translation.y": 1820.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 9,
 					"file": "views/menus.xml",
 					"semi_transient": false,
 					"settings":
@@ -972,11 +1012,11 @@
 						"translation.y": 1416.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 10,
 					"file": "views/menus_openhealth.xml",
 					"semi_transient": false,
 					"settings":
@@ -1001,11 +1041,11 @@
 						"translation.y": 409.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 11,
 					"file": "data/odoo_data_products.xml",
 					"semi_transient": false,
 					"settings":
@@ -1030,11 +1070,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 12,
 					"file": "views/partners/partner.xml",
 					"semi_transient": false,
 					"settings":
@@ -1059,11 +1099,11 @@
 						"translation.y": 1902.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 13,
 					"file": "data/base_data_physicians.xml",
 					"semi_transient": false,
 					"settings":
@@ -1088,11 +1128,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 14,
 					"file": "models/patient.py",
 					"semi_transient": false,
 					"settings":
@@ -1117,11 +1157,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 15,
 					"file": "views/physicians/physician.xml",
 					"semi_transient": false,
 					"settings":
@@ -1146,11 +1186,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 16,
 					"file": "models/physician_line.py",
 					"semi_transient": false,
 					"settings":
@@ -1176,7 +1216,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 16,
 					"type": "text"
 				}
 			]

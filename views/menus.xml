@@ -19,6 +19,7 @@
 		<menuitem 	id="main_emr_menu" 
 					sequence="-10"
 					name="Historias"
+					
 					groups="openhealth.physicians,openhealth.reception,openhealth.managers"
 					/>
 

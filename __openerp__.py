@@ -118,6 +118,8 @@
 		#'security/openhealth_security.xml',
 		'security/openhealth_security_buf.xml',
 		
+
+		
 		'security/ir.model.access.csv',
 		'security/ir.rule.xml',
 

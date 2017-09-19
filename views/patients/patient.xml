@@ -231,6 +231,9 @@
 								<field name="x_first_contact"	required="1"/>
 
 								<field name="x_first_impression"	/>
+
+								<field name="vspace"    />
+								<field name="category_id"    />
 							</group>
 
 							<group>
@@ -261,7 +264,7 @@
 		<!-- Window List action -->
 		<record model="ir.actions.act_window" id="patient_list_action">		
 
-			<field name="name">Pacientes - Kat</field>
+			<field name="name">Pacientes</field>
 		
 			<field name="res_model">oeh.medical.patient</field>
 			<field name="view_type">form</field>

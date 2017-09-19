@@ -6,13 +6,9 @@
 
 
 <!-- Partner Categories --> 
-		<record id='staff' model='res.partner.category'>
-			<field name='name'>staff</field>
-	        <field name="active">1</field>
-		</record>
 
-		<record id='doctor' model='res.partner.category'>
-			<field name='name'>doctor</field>
+		<record id='cash' model='res.partner.category'>
+			<field name='name'>cash</field>
 	        <field name="active">1</field>
 		</record>
 
@@ -21,21 +17,34 @@
 	        <field name="active">1</field>
 		</record>
 
+		<record id='doctor' model='res.partner.category'>
+			<field name='name'>doctor</field>
+	        <field name="active">1</field>
+		</record>
+
+
+
 		<record id='patient' model='res.partner.category'>
 			<field name='name'>patient</field>
 	        <field name="active">1</field>
 		</record>
 
-		<record id='cash' model='res.partner.category'>
-			<field name='name'>cash</field>
-	        <field name="active">1</field>
-		</record>
 
 		<record id='platform' model='res.partner.category'>
 			<field name='name'>platform</field>
 	        <field name="active">1</field>
 		</record>
 
+		<record id='staff' model='res.partner.category'>
+			<field name='name'>staff</field>
+	        <field name="active">1</field>
+		</record>
+
+
+		<record id='test' model='res.partner.category'>
+			<field name='name'>Test</field>
+	        <field name="active">1</field>
+		</record>
 
 
 

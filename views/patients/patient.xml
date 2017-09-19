@@ -233,7 +233,7 @@
 								<field name="x_first_impression"	/>
 
 								<field name="vspace"    />
-								<field name="category_id"    />
+								<field name="category_id"    	 widget="many2many_tags" />
 							</group>
 
 							<group>

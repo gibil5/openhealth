@@ -40,7 +40,7 @@
 
 		<record model="ir.actions.act_window" id="mail.action_contacts">
 
-			<field name="name">Contacts - jx</field>
+			<field name="name">Contacts</field>
 
 			<field name="res_model">res.partner</field>
 			

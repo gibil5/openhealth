@@ -36,6 +36,7 @@
 	        <field name="implied_ids" eval="[(4, ref('stock.group_stock_user'))]"/>
 
 			<field name="users" eval="[ 
+												(4, ref('openhealth.manager_clinicachavarri')),
 
 												(4, ref('base.user_root')), 
 												(4, ref('openhealth.rchavarri_clinicachavarri')),
@@ -57,6 +58,7 @@
 			<field name="category_id" ref="oehealth.module_oeh_medical_category"/>
 
 			<field name="users" eval="[ 
+										(4, ref('openhealth.manager_clinicachavarri')),
 
 										(4, ref('openhealth.rchavarri_clinicachavarri')),
 										(4, ref('openhealth.vmori_clinicachavarri')),
@@ -120,9 +122,10 @@
 			<field name="category_id" ref="module_openhealth_category"/>
 
 			<field name="users" eval="[ 
+										(4, ref('openhealth.manager_clinicachavarri')),
+
 				
 										(4, ref('openhealth.rchavarri_clinicachavarri')),
-
 										(4, ref('openhealth.vmori_clinicachavarri')),
 
 										(4, ref('base.user_root')), 

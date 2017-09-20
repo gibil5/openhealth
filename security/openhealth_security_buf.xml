@@ -139,6 +139,7 @@
 
 
 		<!-- staff --> 
+<!--		
 		<record id="openhealth.staff" model="res.groups">
 			<field name="name">Staff</field>
 			<field name="category_id" ref="module_openhealth_category"/>
@@ -153,7 +154,7 @@
 
 									]"/>
 		</record>
-
+-->
 
 
 

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+
+
+
+<!-- Plataforma -->
+		<record id="plataforma_partner" model="res.partner">
+			<field name="name">Plataforma</field>
+			<field name="email">plataforma@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('platform')])]" name="category_id"/>
+		</record>
+
+		<record id="plataforma_clinicachavarri" model="res.users">
+			<field name="name">Plataforma</field>
+			<field name="login">plataforma@clinicachavarri.com</field>
+			<field name="password">plataforma</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+
+			<field name="lang">es_ES</field>
+			<field name="tz">America/Lima</field>
+			<field name="partner_id" ref="plataforma_partner"/>
+		</record>
+
+
+
+
+
+	</data>
+</openerp> 

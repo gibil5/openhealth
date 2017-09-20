@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+
+
+
+
+
+<!-- Medico -->
+		<record id="medico_partner" model="res.partner">
+			<field name="name">Medico</field>
+			<field name="email">medico@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+		</record>
+
+		<record id="medico_clinicachavarri" model="res.users">
+			<field name="name">Medico</field>
+			<field name="login">medico@clinicachavarri.com</field>
+			<field name="password">medico</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+
+			<field name="lang">es_ES</field>
+			<field name="tz">America/Lima</field>
+			<field name="partner_id" ref="medico_partner"/>
+		</record>
+
+
+
+
+
+
+<!-- Fernando Chavarri -->
+
+		<record id="fchavarri" model="res.partner">
+			<field name="name">Fernando Chavarri</field>
+			<field name="email">fchavarri@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+		</record>
+
+		<record id="fchavarri_clinicachavarri" model="res.users">
+			<field name="name">Fernando Chavarri</field>
+			<field name="login">fchavarri@clinicachavarri.com</field>
+			<field name="password">fchavarri</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+
+			<field name="partner_id" ref="fchavarri"/>
+			<field name="lang">es_ES</field>
+		</record>
+
+
+
+
+
+
+<!-- Guillermon Alarcon --> 
+
+		<record id="galarcon" model="res.partner">
+			<field name="name">Guillermo Alarcon</field>
+			<field name="email">galarcon@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+		</record>
+
+		<record id="galarcon_clinicachavarri" model="res.users">
+			<field name="name">Guillermo Alarcon</field>
+			<field name="login">galarcon@clinicachavarri.com</field>
+			<field name="password">galarcon</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+
+			<field name="partner_id" ref="galarcon"/>
+			<field name="lang">es_ES</field>
+		</record>
+
+
+
+
+<!-- Javier Vasquez -->
+
+		<record id="jvasquez" model="res.partner">
+			<field name="name">Javier Vasquez</field>
+			<field name="email">jvasquez@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+		</record>
+
+		<record id="jvasquez_clinicachavarri" model="res.users">
+			<field name="name">Javier Vasquez</field>
+			<field name="login">jvasquez@clinicachavarri.com</field>
+			<field name="password">jvasquez</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+
+			<field name="partner_id" ref="jvasquez"/>
+			<field name="lang">es_ES</field>
+		</record>
+
+
+
+
+
+<!-- Leo Gonzales -->
+
+		<record id="lgonzales" model="res.partner">
+			<field name="name">Leo Gonzales</field>
+			<field name="email">lgonzales@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+		</record>
+
+		<record id="lgonzales_clinicachavarri" model="res.users">
+			<field name="name">Leo Gonzales</field>
+			<field name="login">lgonzales@clinicachavarri.com</field>
+			<field name="password">lgonzales</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+		
+			<field name="partner_id" ref="lgonzales"/>
+			<field name="lang">es_ES</field>
+		</record>
+
+
+
+
+<!-- Piero Monteverde -->
+		<record id="pmonteverde" model="res.partner">
+			<field name="name">Piero Monteverde</field>
+			<field name="email">pmonteverde@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+		</record>
+
+		<record id="pmonteverde_clinicachavarri" model="res.users">
+			<field name="name">Piero Monteverde</field>
+			<field name="login">pmonteverde@clinicachavarri.com</field>
+			<field name="password">pmonteverde</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+
+			<field name="partner_id" ref="pmonteverde"/>
+			<field name="lang">es_ES</field>
+		</record>
+
+
+
+<!-- Carlos Mendez -->
+		<record id="cmendez" model="res.partner">
+			<field name="name">Carlos Mendez</field>
+			<field name="email">cmendez@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+		</record>
+
+		<record id="cmendez_clinicachavarri" model="res.users">
+			<field name="name">Carlos Mendez</field>
+			<field name="login">cmendez@clinicachavarri.com</field>
+			<field name="password">cmendez</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+
+			<field name="partner_id" ref="cmendez"/>
+			<field name="lang">es_ES</field>
+		</record>
+
+
+
+
+
+
+
+
+
+<!-- Paul Canales --> 
+		<record id="pcanales" model="res.partner">
+			<field name="name">Paul Canales</field>
+			<field name="email">pcanales@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+		</record>
+
+		<record id="pcanales_clinicachavarri" model="res.users">
+			<field name="name">Paul Canales</field>
+			<field name="login">pcanales@clinicachavarri.com</field>
+			<field name="password">pcanales</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+
+			<field name="partner_id" ref="pcanales"/>
+			<field name="lang">es_ES</field>
+		</record>
+
+
+
+
+<!-- Carlos Escudero -->
+		<record id="cescudero" model="res.partner">
+			<field name="name">Carlos Escudero</field>
+			<field name="email">cescudero@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+		</record>
+
+		<record id="cescudero_clinicachavarri" model="res.users">
+			<field name="name">Carlos Escudero</field>
+			<field name="login">cescudero@clinicachavarri.com</field>
+			<field name="password">cescudero</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+
+			<field name="partner_id" ref="cescudero"/>
+			<field name="lang">es_ES</field>
+		</record>
+
+
+
+
+
+
+
+
+
+
+<!-- Maria Luisa Pedemonte --> 
+		<record id="mpedemonte" model="res.partner">
+			<field name="name">Maria Luisa Pedemonte</field>
+			<field name="email">mpedemonte@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+		</record>
+
+		<record id="mpedemonte_clinicachavarri" model="res.users">
+			<field name="name">Maria Luisa Pedemonte</field>
+			<field name="login">mpedemonte@clinicachavarri.com</field>
+			<field name="password">mpedemonte</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+
+			<field name="partner_id" ref="mpedemonte"/>
+			<field name="lang">es_ES</field>
+		</record>
+
+
+<!-- Desiree Acosta -->
+		<record id="dacosta" model="res.partner">
+			<field name="name">Desiree Acosta</field>
+			<field name="email">dacosta@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+		</record>
+
+		<record id="dacosta_clinicachavarri" model="res.users">
+			<field name="name">Desiree Acosta</field>
+			<field name="login">dacosta@clinicachavarri.com</field>
+			<field name="password">daacosta</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+
+			<field name="partner_id" ref="dacosta"/>
+			<field name="lang">es_ES</field>
+		</record>
+
+
+	</data>
+</openerp> 

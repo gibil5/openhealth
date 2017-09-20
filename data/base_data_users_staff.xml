@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+
+
+
+
+
+
+
+<!-- staff -->
+		<record id="staff_partner" model="res.partner">
+			<field name="name">staff</field>
+			<field name="email">staff@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
+		</record>
+
+		<record id="staff_clinicachavarri" model="res.users">
+			<field name="name">staff</field>
+			<field name="login">staff@clinicachavarri.com</field>
+			<field name="password">staff</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+
+			<field name="lang">es_ES</field>
+			<field name="tz">America/Lima</field>
+			<field name="partner_id" ref="staff_partner"/>
+		</record>
+
+
+
+
+
+
+
+<!-- Ivan Puga -->
+		<record id="ipuga" model="res.partner">
+			<field name="name">Iván Puga</field>
+			<field name="email">ipuga@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
+		</record>
+
+		<record id="ipuga_clinicachavarri" model="res.users">
+			<field name="name">Iván Puga</field>
+			<field name="login">ipuga@clinicachavarri.com</field>
+			<field name="password">ipuga</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+
+			<field name="lang">es_ES</field>
+			<field name="partner_id" ref="ipuga"/>            
+		</record>
+
+
+<!-- Percy Balboa -->
+		<record id="pbalboa" model="res.partner">
+			<field name="name">Percy Balboa</field>
+			<field name="email">pbalboa@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
+		</record>
+
+		<record id="pbalboa_clinicachavarri" model="res.users">
+			<field name="name">Percy Balboa</field>
+			<field name="login">pbalboa@clinicachavarri.com</field>
+			<field name="password">pbalboa</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+
+			<field name="lang">es_ES</field>
+			<field name="partner_id" ref="pbalboa"/>            
+		</record>
+
+
+
+
+<!-- Raul Bustios -->
+
+		<record id="rbustios" model="res.partner">
+			<field name="name">Raul Bustios</field>
+			<field name="email">rbustios@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
+		</record>
+
+		<record id="rbustios_clinicachavarri" model="res.users">
+			<field name="name">Raul Bustios</field>
+			<field name="login">rbustios@clinicachavarri.com</field>
+			<field name="password">rbustios</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+
+			<field name="lang">es_ES</field>
+			<field name="partner_id" ref="rbustios"/>
+		</record>
+
+
+	</data>
+</openerp> 

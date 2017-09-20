@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+
+
+<!-- MANAGERS -->
+
+<!--
+FERNANDO ENRIQUE CHAVARRI MICHAELS
+RENATO FAVIO CHAVARRI BUCCOLO
+VICTOR ANTONIO MORI RENGIFO
+JOSEF BERNA ESSENWANGER BALLESTEROS
+-->
+
+
+
+
+<!-- Manager -->
+		<record id="manager_partner" model="res.partner">
+			<field name="name">manager</field>
+			<field name="email">manager@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('manager')])]" name="category_id"/>
+		</record>
+
+		<record id="manager_clinicachavarri" model="res.users">
+			<field name="name">manager</field>
+			<field name="login">manager@clinicachavarri.com</field>
+			<field name="password">manager</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+
+			<field name="lang">es_ES</field>
+			<field name="tz">America/Lima</field>
+			<field name="partner_id" ref="manager_partner"/>
+		</record>
+
+
+
+
+
+<!-- Renato Chavarri -->
+
+		<record id="rchavarri" model="res.partner">
+			<field name="name">Renato Chavarri</field>
+			<field name="email">rchavarri@clinicachavarri.com</field>
+<!--
+	        <field eval="[(6, 0, [ref('module_name.res_partner_category_1')])]" name="category_id"/>
+-->
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
+		</record>
+
+		<record id="rchavarri_clinicachavarri" model="res.users">
+			<field name="name">Renato Chavarri</field>
+			<field name="login">rchavarri@clinicachavarri.com</field>
+			<field name="password">rchavarri</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+
+			<field name="lang">es_ES</field>
+			<field name="partner_id" ref="rchavarri"/>
+		</record>
+
+
+
+
+
+<!-- Victor Mori -->
+		<record id="vmori" model="res.partner">
+			<field name="name">Víctor Mori</field>
+			<field name="email">vmori@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
+		</record>
+
+		<record id="vmori_clinicachavarri" model="res.users">
+			<field name="name">Víctor Mori</field>
+			<field name="login">vmori@clinicachavarri.com</field>
+			<field name="password">vmori</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+
+			<field name="lang">es_ES</field>
+			<field name="partner_id" ref="vmori"/>
+		</record>
+
+
+
+
+<!-- JOSEF BERNA ESSENWANGER BALLESTEROS -->
+<!--
+		<record id="jessenwanger" model="res.partner">
+			<field name="name">Josef Berna Essenwanger Ballesteros</field>
+			<field name="email">jessenwanger@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
+		</record>
+
+		<record id="jessenwanger_clinicachavarri" model="res.users">
+			<field name="name">Josef Essenwanger</field>
+			<field name="login">jessenwanger@clinicachavarri.com</field>
+			<field name="password">jessenwanger</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+
+			<field name="lang">es_ES</field>
+			<field name="partner_id" ref="jessenwanger"/>
+		</record>
+-->
+
+
+	</data>
+</openerp> 

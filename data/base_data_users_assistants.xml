@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+
+
+
+
+<!-- Asistente Medico -->
+		<record id="asistentemedico_partner" model="res.partner">
+			<field name="name">Asistente Medico</field>
+			<field name="email">asistentemedico@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('doctor_assistant')])]" name="category_id"/>
+		</record>
+
+		<record id="asistentemedico_clinicachavarri" model="res.users">
+			<field name="name">Asistente medico</field>
+			<field name="login">asistentemedico@clinicachavarri.com</field>
+			<field name="password">asistentemedico</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+
+			<field name="lang">es_ES</field>
+			<field name="tz">America/Lima</field>
+			<field name="partner_id" ref="asistentemedico_partner"/>
+		</record>
+
+
+
+
+	</data>
+</openerp> 

@@ -35,12 +35,12 @@
 			<field name='name'>staff</field>
 	        <field name="active">1</field>
 		</record>
-
+<!--
 		<record id='test' model='res.partner.category'>
 			<field name='name'>Test</field>
 	        <field name="active">1</field>
 		</record>
-
+-->
 
 	</data>
 </openerp> 

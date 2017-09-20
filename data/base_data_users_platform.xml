@@ -4,6 +4,25 @@
 
 
 
+<!--
+GILDA LIZBETH NUÑEZ LA SERNA
+MARIANA STEFANIE GRIEVE RAMIREZ
+KARLA ROCIO DEL PILAR TEJADA RONDON
+IVANNA ANTUANETTE MICHELOT SALMON
+ADELI ESTHER VIDAL CUBA
+NICOLAS FELIX ESCOBAR CABRERA
+KEVIN ALONSO CALERO GALEANO
+
+gnunhez_clinicachavarri
+mgrieve_clinicachavarri
+ktejada_clinicachavarri
+imichelot_clinicachavarri
+avidal_clinicachavarri
+nescobar_clinicachavarri
+kcalero_clinicachavarri
+-->
+
+
 
 <!-- Plataforma -->
 		<record id="plataforma_partner" model="res.partner">
@@ -24,6 +43,174 @@
 			<field name="tz">America/Lima</field>
 			<field name="partner_id" ref="plataforma_partner"/>
 		</record>
+
+
+
+
+<!-- Gilda Nuñez -->
+		<record id="gnunhez_partner" model="res.partner">
+			<field name="name">Gilda Nuñez</field>
+			<field name="email">gnunhez@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('platform')])]" name="category_id"/>
+		</record>
+
+		<record id="gnunhez_clinicachavarri" model="res.users">
+			<field name="name">Gilda Nuñez</field>
+			<field name="login">gnunhez@clinicachavarri.com</field>
+			<field name="password">gnunhez</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+
+			<field name="lang">es_ES</field>
+			<field name="tz">America/Lima</field>
+			<field name="partner_id" ref="gnunhez_partner"/>
+		</record>
+
+
+
+
+
+
+
+<!-- Mariana Grieve -->
+		<record id="mgrieve" model="res.partner">
+			<field name="name">Mariana Grieve</field>
+			<field name="email">mgrieve@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+		</record>
+
+		<record id="mgrieve_clinicachavarri" model="res.users">
+			<field name="name">Mariana Grieve</field>
+			<field name="login">mgrieve@clinicachavarri.com</field>
+			<field name="password">mgrieve</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+
+			<field name="partner_id" ref="mgrieve"/>
+			<field name="lang">es_ES</field>
+		</record>
+
+
+
+
+
+<!-- Karla Tejada -->
+		<record id="ktejada" model="res.partner">
+			<field name="name">Karla Tejada</field>
+			<field name="email">ktejada@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+		</record>
+
+		<record id="ktejada_clinicachavarri" model="res.users">
+			<field name="name">Karla Tejada</field>
+			<field name="login">ktejada@clinicachavarri.com</field>
+			<field name="password">ktejada</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+
+			<field name="partner_id" ref="ktejada"/>
+			<field name="lang">es_ES</field>
+		</record>
+
+
+
+
+<!-- Ivanna Michelot -->
+		<record id="imichelot" model="res.partner">
+			<field name="name">Ivanna Michelot</field>
+			<field name="email">imichelot@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+		</record>
+
+		<record id="imichelot_clinicachavarri" model="res.users">
+			<field name="name">Ivanna Michelot</field>
+			<field name="login">imichelot@clinicachavarri.com</field>
+			<field name="password">imichelot</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+
+			<field name="partner_id" ref="imichelot"/>
+			<field name="lang">es_ES</field>
+		</record>
+
+
+
+
+<!-- Adeli Vidal -->
+		<record id="avidal" model="res.partner">
+			<field name="name">Adeli Vidal</field>
+			<field name="email">avidal@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+		</record>
+
+		<record id="avidal_clinicachavarri" model="res.users">
+			<field name="name">Adeli Vidal</field>
+			<field name="login">avidal@clinicachavarri.com</field>
+			<field name="password">avidal</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+
+			<field name="partner_id" ref="avidal"/>
+			<field name="lang">es_ES</field>
+		</record>
+
+
+
+
+
+<!-- Nicolas Escobar -->
+		<record id="nescobar" model="res.partner">
+			<field name="name">Nicolas Escobar</field>
+			<field name="email">nescobar@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+		</record>
+
+		<record id="nescobar_clinicachavarri" model="res.users">
+			<field name="name">Nicolas Escobar</field>
+			<field name="login">nescobar@clinicachavarri.com</field>
+			<field name="password">nescobar</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+
+			<field name="partner_id" ref="nescobar"/>
+			<field name="lang">es_ES</field>
+		</record>
+
+
+
+
+
+<!-- Kevin Calero -->
+		<record id="kcalero" model="res.partner">
+			<field name="name">Kevin Calero</field>
+			<field name="email">kcalero@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+		</record>
+
+		<record id="kcalero_clinicachavarri" model="res.users">
+			<field name="name">Kevin Calero</field>
+			<field name="login">kcalero@clinicachavarri.com</field>
+			<field name="password">kcalero</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+
+			<field name="partner_id" ref="kcalero"/>
+			<field name="lang">es_ES</field>
+		</record>
+
 
 
 

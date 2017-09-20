@@ -450,6 +450,8 @@ _clinicachavarri
 
 
 
+
+
 		<record id="plataforma_partner" model="res.partner">
 			<field name="name">Plataforma</field>
 			<field name="email">plataforma@clinicachavarri.com</field>
@@ -468,7 +470,6 @@ _clinicachavarri
 			<field name="tz">America/Lima</field>
 			<field name="partner_id" ref="plataforma_partner"/>
 		</record>
-
 
 
 	</data>

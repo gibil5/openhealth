@@ -20,20 +20,30 @@
 					sequence="-10"
 					name="Historias"
 					
-					groups="openhealth.physicians,openhealth.reception,openhealth.managers"
+					groups="openhealth.reception,openhealth.physicians,openhealth.managers"
 					/>
+
 
 
 		<menuitem 	id="emr_menu" 
 					name="Historias Médicas"
 					parent="main_emr_menu"
+
+					groups="openhealth.reception,openhealth.physicians,openhealth.managers"
 					/>
 
 		<menuitem 	id="emr_patients_menu" 
 					name="Pacientes" 
 					parent="emr_menu"
 					sequence="1"
-					action="patient_list_action"/>
+					action="patient_list_action"
+
+					groups="openhealth.reception,openhealth.physicians,openhealth.managers"
+					/>
+
+
+
+
 
 
 		<menuitem 	id="oeh_medical_physician_list"  

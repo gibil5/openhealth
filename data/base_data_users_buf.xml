@@ -5,53 +5,20 @@
 
 
 
-<!-- Partner Categories --> 
 
-		<record id='cash' model='res.partner.category'>
-			<field name='name'>cash</field>
-	        <field name="active">1</field>
-		</record>
+<!-- MANAGERS -->
 
-		<record id='customer' model='res.partner.category'>
-			<field name='name'>customer</field>
-	        <field name="active">1</field>
-		</record>
+<!--
+GERENTES
 
-		<record id='doctor' model='res.partner.category'>
-			<field name='name'>doctor</field>
-	        <field name="active">1</field>
-		</record>
+FERNANDO ENRIQUE CHAVARRI MICHAELS
+RENATO FAVIO CHAVARRI BUCCOLO
+VICTOR ANTONIO MORI RENGIFO
+JOSEF BERNA ESSENWANGER BALLESTEROS
+-->
 
 
 
-		<record id='patient' model='res.partner.category'>
-			<field name='name'>patient</field>
-	        <field name="active">1</field>
-		</record>
-
-
-		<record id='platform' model='res.partner.category'>
-			<field name='name'>platform</field>
-	        <field name="active">1</field>
-		</record>
-
-		<record id='staff' model='res.partner.category'>
-			<field name='name'>staff</field>
-	        <field name="active">1</field>
-		</record>
-
-
-		<record id='test' model='res.partner.category'>
-			<field name='name'>Test</field>
-	        <field name="active">1</field>
-		</record>
-
-
-
-
-
-
-<!-- STAFF -->
 
 <!-- Renato Chavarri -->
 
@@ -103,7 +70,41 @@
 
 
 
+<!-- JOSEF BERNA ESSENWANGER BALLESTEROS -->
+<!--
+		<record id="jessenwanger" model="res.partner">
+			<field name="name">Josef Berna Essenwanger Ballesteros</field>
+			<field name="email">jessenwanger@clinicachavarri.com</field>
 
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
+		</record>
+
+		<record id="jessenwanger_clinicachavarri" model="res.users">
+			<field name="name">Josef Essenwanger</field>
+			<field name="login">jessenwanger@clinicachavarri.com</field>
+			<field name="password">jessenwanger</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+
+			<field name="lang">es_ES</field>
+			<field name="partner_id" ref="jessenwanger"/>
+		</record>
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- STAFF -->
 
 <!-- Ivan Puga -->
 		<record id="ipuga" model="res.partner">
@@ -467,6 +468,7 @@ _clinicachavarri
 			<field name="tz">America/Lima</field>
 			<field name="partner_id" ref="plataforma_partner"/>
 		</record>
+
 
 
 	</data>

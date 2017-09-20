@@ -22,6 +22,8 @@
 
 <!-- Groups --> 
 
+
+		<!-- Stock Manager --> 
 		<record id="stock.group_stock_manager" model="res.groups">
 	        <field name="name">Manager</field>
 	        <field name="category_id" ref="base.module_category_warehouse_management"/>
@@ -29,9 +31,12 @@
 
 			<field name="users" eval="[ 
 
-												(4, ref('base.user_root')), 
+										(4, ref('base.user_root')), 
 
-												(4, ref('openhealth.rchavarri_clinicachavarri')),
+										(4, ref('openhealth.rchavarri_clinicachavarri')),
+
+										(4, ref('openhealth.vmori_clinicachavarri')),
+
 									]"/>
 
 	    </record>
@@ -47,9 +52,32 @@
 
 				<field name="users" eval="[ 
 
-														(4, ref('base.user_root')), 
+											(4, ref('base.user_root')), 
 									]"/>
 		</record>
+
+
+
+
+
+
+		<!-- Managers --> 
+		<record id="openhealth.managers" model="res.groups">
+			<field name="name">Managers</field>
+			<field name="category_id" ref="module_openhealth_category"/>
+
+			<field name="users" eval="[ 
+
+										(4, ref('base.user_root')), 
+
+										(4, ref('openhealth.rchavarri_clinicachavarri')),
+
+										(4, ref('openhealth.vmori_clinicachavarri')),
+
+				
+									]"/>
+		</record>
+
 
 
 
@@ -120,23 +148,6 @@
 
 
 
-
-
-		<!-- Managers --> 
-		<record id="openhealth.managers" model="res.groups">
-			<field name="name">Managers</field>
-			<field name="category_id" ref="module_openhealth_category"/>
-
-			<field name="users" eval="[ 
-
-										(4, ref('openhealth.rchavarri_clinicachavarri')),
-
-										(4, ref('openhealth.vmori_clinicachavarri')),
-
-										(4, ref('base.user_root')), 
-				
-									]"/>
-		</record>
 
 
 

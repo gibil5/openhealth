@@ -47,7 +47,10 @@
 		<!-- Users -->
 		<menuitem id="res_users_menu" name="Users" parent="openhealth_menu"
 			sequence="-150"
-			action="user_list_action"/>
+
+			action="base.action_res_users"
+
+			/>
 
 
 		<!-- Groups -->

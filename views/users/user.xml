@@ -74,6 +74,8 @@
 		</record>
 
 
+
+
 		<!-- GROUP - List action -->
 		<!-- The following tag is an action definition for a "window action", that is an action opening a view or a set of views -->
 		<record model="ir.actions.act_window" id="group_list_action">
@@ -104,9 +106,9 @@
 
 
 		<!-- USER - Tree --> 
-		<record model="ir.ui.view" id="base.view_user_tree">
+		<record model="ir.ui.view" id="base.view_users_tree">
 
-			<field name="name">res.user.tree</field>
+			<field name="name">res.users.tree</field>
 
 			<field name="model">res.users</field>
 
@@ -117,22 +119,29 @@
 				<tree string="User Tree">
 					
                     <field name="name"/>
+<!--
+                    <field name="groups_id"/>
+-->
+
+
                     <field name="login"/>
                     <field name="lang"/>
                     <field name="tz"/>
                     <field name="login_date"/>
 
-<!--
-                    <field name="groups_id"/>
--->
+
                     <field name="partner_id"/>
                     <field name="active"/>
 
-
+<!--
                     <field name="image"/>
+-->
 				</tree>
 			</field>
 		</record>
+
+
+
 
 
 		<!-- Window List action -->
@@ -141,8 +150,12 @@
 		that is an action opening a view or a set of views
 		-->
 
+<!--
 		<record model="ir.actions.act_window" id="user_list_action">
-			<field name="name">Usuarios</field>
+-->
+		<record model="ir.actions.act_window" id="base.action_res_users">
+
+			<field name="name">Users</field>
 			<field name="res_model">res.users</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>

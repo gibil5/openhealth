@@ -476,7 +476,7 @@
 					/>
 
 		<menuitem 	id="sales_counters_menu" 
-					name="Counters" 
+					name="Contadores" 
 					parent="sales_config_menu"
 					sequence="4"
 					
@@ -657,7 +657,8 @@
 <!--
             		groups="base.group_hr_manager,base.group_hr_user,base.group_user"
 -->
-        <menuitem 	name="Employees - jx"
+
+        <menuitem 	name="Employees"
 
             		id="hr.menu_hr_root"            		
 

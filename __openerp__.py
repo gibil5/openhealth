@@ -109,6 +109,10 @@
 
 
 		# ----------------------------------------------------------- Security ------------------------------------------------------
+		'data/base_data_categs.xml',
+
+
+
 		'data/base_data_users_buf.xml',
 
 		'data/base_data_patients.xml',

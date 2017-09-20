@@ -78,7 +78,7 @@ kcalero_clinicachavarri
 			<field name="name">Mariana Grieve</field>
 			<field name="email">mgrieve@clinicachavarri.com</field>
 
-	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+	        <field eval="[(6, 0, [ref('platform')])]" name="category_id"/>
 		</record>
 
 		<record id="mgrieve_clinicachavarri" model="res.users">
@@ -102,7 +102,7 @@ kcalero_clinicachavarri
 			<field name="name">Karla Tejada</field>
 			<field name="email">ktejada@clinicachavarri.com</field>
 
-	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+	        <field eval="[(6, 0, [ref('platform')])]" name="category_id"/>
 		</record>
 
 		<record id="ktejada_clinicachavarri" model="res.users">
@@ -125,7 +125,7 @@ kcalero_clinicachavarri
 			<field name="name">Ivanna Michelot</field>
 			<field name="email">imichelot@clinicachavarri.com</field>
 
-	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+	        <field eval="[(6, 0, [ref('platform')])]" name="category_id"/>
 		</record>
 
 		<record id="imichelot_clinicachavarri" model="res.users">
@@ -148,7 +148,7 @@ kcalero_clinicachavarri
 			<field name="name">Adeli Vidal</field>
 			<field name="email">avidal@clinicachavarri.com</field>
 
-	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+	        <field eval="[(6, 0, [ref('platform')])]" name="category_id"/>
 		</record>
 
 		<record id="avidal_clinicachavarri" model="res.users">
@@ -172,7 +172,7 @@ kcalero_clinicachavarri
 			<field name="name">Nicolas Escobar</field>
 			<field name="email">nescobar@clinicachavarri.com</field>
 
-	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+	        <field eval="[(6, 0, [ref('platform')])]" name="category_id"/>
 		</record>
 
 		<record id="nescobar_clinicachavarri" model="res.users">
@@ -196,7 +196,7 @@ kcalero_clinicachavarri
 			<field name="name">Kevin Calero</field>
 			<field name="email">kcalero@clinicachavarri.com</field>
 
-	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+	        <field eval="[(6, 0, [ref('platform')])]" name="category_id"/>
 		</record>
 
 		<record id="kcalero_clinicachavarri" model="res.users">

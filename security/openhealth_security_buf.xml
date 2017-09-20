@@ -48,6 +48,7 @@
 
 
 
+
 	<!-- OeHealth - Manager --> 
 		<record id="oehealth.group_oeh_medical_manager" model="res.groups">
 
@@ -66,12 +67,16 @@
 
 
 
+
 	<!-- OeHealth - Physician --> 
 		<record id="oehealth.group_oeh_medical_physician" model="res.groups">
 			<field name="name">Physician</field>
 			<field name="category_id" ref="oehealth.module_oeh_medical_category"/>
 
 			<field name="users" eval="[ 
+										(4, ref('openhealth.medico_clinicachavarri')),
+
+
 
 										(4, ref('openhealth.cescudero_clinicachavarri')),
 										(4, ref('openhealth.cmendez_clinicachavarri')),
@@ -137,6 +142,8 @@
 			<field name="category_id" ref="module_openhealth_category"/>
 			
 			<field name="users" eval="[ 
+										(4, ref('openhealth.medico_clinicachavarri')),
+
 
 										(4, ref('openhealth.cescudero_clinicachavarri')),
 										(4, ref('openhealth.cmendez_clinicachavarri')),

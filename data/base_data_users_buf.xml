@@ -472,5 +472,35 @@ _clinicachavarri
 		</record>
 
 
+
+
+
+
+		<record id="medico_partner" model="res.partner">
+			<field name="name">Medico</field>
+			<field name="email">medico@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+		</record>
+
+		<record id="medico_clinicachavarri" model="res.users">
+			<field name="name">Medico</field>
+			<field name="login">medico@clinicachavarri.com</field>
+			<field name="password">medico</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+
+			<field name="lang">es_ES</field>
+			<field name="tz">America/Lima</field>
+			<field name="partner_id" ref="medico_partner"/>
+		</record>
+
+
+
+
+
+
+
+
 	</data>
 </openerp> 

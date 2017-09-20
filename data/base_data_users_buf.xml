@@ -525,7 +525,49 @@ _clinicachavarri
 
 
 
+<!-- staff -->
+		<record id="staff_partner" model="res.partner">
+			<field name="name">staff</field>
+			<field name="email">staff@clinicachavarri.com</field>
 
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
+		</record>
+
+		<record id="staff_clinicachavarri" model="res.users">
+			<field name="name">staff</field>
+			<field name="login">staff@clinicachavarri.com</field>
+			<field name="password">staff</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+
+			<field name="lang">es_ES</field>
+			<field name="tz">America/Lima</field>
+			<field name="partner_id" ref="staff_partner"/>
+		</record>
+
+
+
+
+
+<!-- manager -->
+		<record id="manager_partner" model="res.partner">
+			<field name="name">manager</field>
+			<field name="email">manager@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('manager')])]" name="category_id"/>
+		</record>
+
+		<record id="manager_clinicachavarri" model="res.users">
+			<field name="name">manager</field>
+			<field name="login">manager@clinicachavarri.com</field>
+			<field name="password">manager</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+
+			<field name="lang">es_ES</field>
+			<field name="tz">America/Lima</field>
+			<field name="partner_id" ref="manager_partner"/>
+		</record>
 
 
 

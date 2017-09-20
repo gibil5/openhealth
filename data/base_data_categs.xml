@@ -43,6 +43,14 @@
 			<field name='name'>staff</field>
 	        <field name="active">1</field>
 		</record>
+
+
+		<record id='manager' model='res.partner.category'>
+			<field name='name'>manager</field>
+	        <field name="active">1</field>
+		</record>
+
+
 <!--
 		<record id='test' model='res.partner.category'>
 			<field name='name'>Test</field>

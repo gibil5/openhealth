@@ -50,7 +50,11 @@
 					name="Médicos"
 					action="physician_list_action" 
 					parent="emr_menu" 
-					sequence="2"/>
+					sequence="2"
+
+					groups="openhealth.managers"
+					/>
+
 
 
 		<menuitem 	id="oeh_medical_physician_inactive_list"  

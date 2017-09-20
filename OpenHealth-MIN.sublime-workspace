@@ -92,7 +92,7 @@
 			"file": "views/menus.xml",
 			"settings":
 			{
-				"buffer_size": 12789,
+				"buffer_size": 13046,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -768,15 +768,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12789,
+						"buffer_size": 13046,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								11457,
-								11457
+								11897,
+								11897
 							]
 						],
 						"settings":
@@ -785,7 +785,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 11131.0,
+						"translation.y": 11362.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

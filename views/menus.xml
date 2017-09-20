@@ -668,20 +668,33 @@
             		groups="base.group_hr_manager,base.group_hr_user,base.group_user"
 -->
 
+
+
+
         <menuitem 	name="Employees - jx"
 
             		id="hr.menu_hr_root"            		
 
             		icon="fa-user"
-
             		web_icon="hr,static/description/icon.png"
-
             		sequence="75"
 
-					groups="openhealth.admins"
+		            groups="base.group_hr_manager"
             		/>
 
+<!--
+		            groups="base.group_hr_manager,base.group_hr_user,base.group_user"
+-->
+<!--
+      <menuitem name="Employees"
+            id="menu_hr_root"
+            groups="base.group_hr_manager,base.group_hr_user,base.group_user"
+            icon="fa-user"
+            web_icon="hr,static/description/icon.png"
+            sequence="75"
 
+            />
+-->
 
 
 

@@ -92,16 +92,7 @@
 			"file": "views/menus.xml",
 			"settings":
 			{
-				"buffer_size": 12499,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "data/base_data_users_buf.xml",
-			"settings":
-			{
-				"buffer_size": 13674,
+				"buffer_size": 12789,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -110,8 +101,33 @@
 			"file": "security/openhealth_security.xml",
 			"settings":
 			{
-				"buffer_size": 4053,
+				"buffer_size": 4054,
 				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "data/base_data_users_buf.xml",
+			"settings":
+			{
+				"buffer_size": 13675,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "security/ir.model.access.csv",
+			"settings":
+			{
+				"buffer_size": 4358,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "security/ir.model.access.trash.csv",
+			"settings":
+			{
+				"buffer_size": 2643,
 				"line_ending": "Unix"
 			}
 		},
@@ -426,7 +442,7 @@
 	],
 	"find":
 	{
-		"height": 35.0
+		"height": 39.0
 	},
 	"find_in_files":
 	{
@@ -441,6 +457,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"employee",
+			"patient",
+			"plataforma",
 			"jberna",
 			"vmori",
 			"user_li",
@@ -565,10 +584,7 @@
 			"template",
 			"product_template_list_action",
 			"context",
-			"Líneas",
-			"domain",
-			"Líneas",
-			"notebook"
+			"Líneas"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -714,7 +730,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -730,8 +746,8 @@
 						"selection":
 						[
 							[
-								3180,
-								3185
+								1867,
+								1876
 							]
 						],
 						"settings":
@@ -740,10 +756,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2704.0,
+						"translation.y": 1566.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -752,15 +768,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12499,
+						"buffer_size": 12789,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1071,
-								1071
+								11457,
+								11457
 							]
 						],
 						"settings":
@@ -769,56 +785,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 529.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "data/base_data_users_buf.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 13674,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2589,
-								2589
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1235.0,
+						"translation.y": 11131.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 2,
 					"file": "security/openhealth_security.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4053,
+						"buffer_size": 4054,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3649,
-								3649
+								1045,
+								1045
 							]
 						],
 						"settings":
@@ -827,14 +814,99 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2739.0,
+						"translation.y": 495.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
+					"buffer": 3,
+					"file": "data/base_data_users_buf.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13675,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								13654,
+								13654
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 7435.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
 					"buffer": 4,
+					"file": "security/ir.model.access.csv",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4358,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								506,
+								506
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "security/ir.model.access.trash.csv",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2643,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								382,
+								382
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
 					"file": "views/users/user.xml",
 					"semi_transient": false,
 					"settings":
@@ -858,11 +930,11 @@
 						"translation.y": 2296.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 7,
 					"file": "views/menus_openhealth.xml",
 					"semi_transient": false,
 					"settings":
@@ -887,11 +959,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 8,
 					"file": "views/patients/patient.xml",
 					"semi_transient": false,
 					"settings":
@@ -916,11 +988,11 @@
 						"translation.y": 4097.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 9,
 					"file": "views/partners/partner.xml",
 					"semi_transient": false,
 					"settings":
@@ -945,11 +1017,11 @@
 						"translation.y": 207.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 10,
 					"file": "data/base_data_patients.xml",
 					"semi_transient": false,
 					"settings":
@@ -974,11 +1046,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 11,
 					"file": "data/base_data_users_phy.xml",
 					"semi_transient": false,
 					"settings":
@@ -1002,11 +1074,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 12,
 					"file": "models/physician.py",
 					"semi_transient": false,
 					"settings":
@@ -1031,11 +1103,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 13,
 					"file": "models/howto/shell.rb",
 					"semi_transient": false,
 					"settings":
@@ -1059,11 +1131,11 @@
 						"translation.y": 239.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 14,
 					"file": "data/odoo_data_products.xml",
 					"semi_transient": false,
 					"settings":
@@ -1088,11 +1160,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 15,
 					"file": "data/base_data_physicians.xml",
 					"semi_transient": false,
 					"settings":
@@ -1117,11 +1189,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 16,
 					"file": "views/physicians/physician.xml",
 					"semi_transient": false,
 					"settings":
@@ -1146,11 +1218,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 16,
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 17,
 					"file": "models/physician_line.py",
 					"semi_transient": false,
 					"settings":
@@ -1176,7 +1248,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 17,
 					"type": "text"
 				}
 			]
@@ -1184,7 +1256,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 34.0
+		"height": 25.0
 	},
 	"input":
 	{
@@ -1225,7 +1297,7 @@
 	"project": "OpenHealth-MIN.sublime-project",
 	"replace":
 	{
-		"height": 64.0
+		"height": 46.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1349,7 +1421,7 @@
 		[
 			[
 				"",
-				"~/Documents/Aptana Studio 3 Workspace/vipassana/vipassana_mac/vipassana.sublime-project"
+				"~/Virtualenvs/Odoo9/odoo/addons/web_calendar/web-calendar.sublime-project"
 			]
 		],
 		"width": 380.0

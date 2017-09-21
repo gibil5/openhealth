@@ -296,6 +296,7 @@
 
 		<!-- Almacen --> 
 <!--
+-->
 		<record id="openhealth.almacen" model="res.groups">
 			<field name="name">Almacen</field>
 			<field name="category_id" ref="module_openhealth_category"/>
@@ -307,7 +308,6 @@
 
 									]"/>
 		</record>
--->
 
 
 

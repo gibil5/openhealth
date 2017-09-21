@@ -9,9 +9,14 @@
 ELIAS MACEDONIO OCHANTE CONDEÑA
 ROSSANA GIOVANNA GARCIA RUESTA
 NANCY ROXANA MENDOZA NAVARRO
-
 MELITA TIRADO PEREIRA
 EULALIA RUIZ RUIZ
+
+yochante_clinicachavarri
+rgarcia_clinicachavarri
+nmendoza_clinicachavarri
+mtirado_clinicachavarri
+eruiz_clinicachavarri
 -->
 
 
@@ -35,8 +40,6 @@ EULALIA RUIZ RUIZ
 			<field name="tz">America/Lima</field>
 			<field name="partner_id" ref="asistente_partner"/>
 		</record>
-
-
 
 
 
@@ -129,8 +132,6 @@ EULALIA RUIZ RUIZ
 			<field name="tz">America/Lima</field>
 			<field name="partner_id" ref="mtirado_partner"/>
 		</record>
-
-
 
 
 

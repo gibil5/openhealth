@@ -15,7 +15,7 @@
 			sequence="6"
 			name="Open Health"
 
-			groups="openhealth.admins"
+			groups="openhealth.roots"
 			/>
 
 		<menuitem id="openhealth_menu" name="Open Health"

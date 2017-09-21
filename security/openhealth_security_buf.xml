@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-	<data>
+
+
+	<data noupdate='1'>
 
 
 
@@ -158,6 +160,7 @@
 
 
 		<!-- Admins --> 
+<!--
 		<record id="openhealth.admins" model="res.groups">
 			<field name="name">Admins</field>
 			<field name="category_id" ref="module_openhealth_category"/>
@@ -171,25 +174,10 @@
 
 									]"/>
 		</record>
-
-
-
-
-
-		<!-- Almacen --> 
-<!--
-		<record id="openhealth.almacen" model="res.groups">
-			<field name="name">Almacen</field>
-			<field name="category_id" ref="module_openhealth_category"/>
-
-				<field name="users" eval="[ 
-											(4, ref('openhealth.almacen_clinicachavarri')),
-
-											(4, ref('openhealth.yramirez_clinicachavarri')),
-
-									]"/>
-		</record>
 -->
+
+
+
 
 
 
@@ -217,6 +205,40 @@
 									]"/>
 
 		</record>
+
+
+
+
+
+
+
+
+
+
+		<!-- Asistentes --> 
+		<record id="openhealth.assistants" model="res.groups">
+			<field name="name">Asistentes</field>
+			<field name="category_id" ref="module_openhealth_category"/>
+
+				<field name="users" eval="[ 
+												(4, ref('openhealth.asistente_clinicachavarri')),
+
+
+												(4, ref('openhealth.yochante_clinicachavarri')),
+
+												(4, ref('openhealth.rgarcia_clinicachavarri')),
+
+												(4, ref('openhealth.nmendoza_clinicachavarri')),
+
+												(4, ref('openhealth.mtirado_clinicachavarri')),
+
+												(4, ref('openhealth.eruiz_clinicachavarri')),
+									]"/>
+		</record>
+
+
+
+
 
 
 
@@ -271,6 +293,42 @@
 
 
 
+
+		<!-- Almacen --> 
+<!--
+		<record id="openhealth.almacen" model="res.groups">
+			<field name="name">Almacen</field>
+			<field name="category_id" ref="module_openhealth_category"/>
+
+				<field name="users" eval="[ 
+											(4, ref('openhealth.almacen_clinicachavarri')),
+
+											(4, ref('openhealth.yramirez_clinicachavarri')),
+
+									]"/>
+		</record>
+-->
+
+
+
+
+
+
+		<!-- staff --> 
+		<record id="openhealth.staffs" model="res.groups">
+			<field name="name">Staff</field>
+			<field name="category_id" ref="module_openhealth_category"/>
+
+			<field name="users" eval="[ 
+
+											(4, ref('openhealth.staff_clinicachavarri')),
+				
+											(4, ref('openhealth.lloli_clinicachavarri')),
+											(4, ref('openhealth.ipuga_clinicachavarri')),
+											(4, ref('openhealth.rbustios_clinicachavarri')),
+
+									]"/>
+		</record>
 
 
 

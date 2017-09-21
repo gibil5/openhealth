@@ -1572,10 +1572,10 @@ class sale_order(models.Model):
 	#@api.multi 
 	def x_create_order_lines_target(self, target):		
 
-		print 
-		print 'jx'
-		print target
-		print 
+		#print 
+		#print 'jx'
+		#print target
+		#print 
 
 		order_id = self.id
 
@@ -1592,10 +1592,10 @@ class sale_order(models.Model):
 		product_uom = product.uom_id.id
 
 		
-		print product
-		print product.id
-		print product.uom_id.id
-		print 
+		#print product
+		#print product.id
+		#print product.uom_id.id
+		#print 
 
 		ol = self.order_line.create({
 										'product_id': product_id,
@@ -1810,9 +1810,9 @@ class sale_order(models.Model):
 	@api.multi 
 	def action_confirm(self):
 
-		print 
-		print 'jx'
-		print 'Action confirm - Over ridden'
+		#print 
+		#print 'jx'
+		#print 'Action confirm - Over ridden'
 		 
 		
 		#Write your logic here
@@ -1835,7 +1835,7 @@ class sale_order(models.Model):
 
 
 		patient_name = self.partner_id.name
-		print patient_name
+		#print patient_name
 
 
 
@@ -1844,9 +1844,9 @@ class sale_order(models.Model):
 
 		order_line = self.order_line
 		for line in order_line:
-			print line
-			print line.name 
-			print line.product_id.name
+			#print line
+			#print line.name 
+			#print line.product_id.name
 
 			if line.name == 'Tarjeta VIP':
 				go_card = True
@@ -1856,7 +1856,7 @@ class sale_order(models.Model):
 
 			card = self.env['openhealth.card'].search([ ('patient_name', '=', patient_name), ], order='date_created desc', limit=1)
 			card_id = card.id
-			print card 
+			#print card 
 
 			name = '00000005'
 

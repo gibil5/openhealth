@@ -667,9 +667,6 @@
 			<field name="x_therapist">True</field>
 		</record>
 
-
-
-
 		<record id="ava_eul_mon" model="oeh.medical.physician.line">
 			<field name="physician_id" ref="eulalia"/>
 			<field name="name">Monday</field>

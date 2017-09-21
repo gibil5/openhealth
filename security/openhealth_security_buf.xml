@@ -122,13 +122,35 @@
 			<field name="users" eval="[ 
 										(4, ref('openhealth.manager_clinicachavarri')),
 
-										(4, ref('openhealth.rchavarri_clinicachavarri')),
 										(4, ref('openhealth.vmori_clinicachavarri')),
 										(4, ref('openhealth.jessenwanger_clinicachavarri')),
+										(4, ref('openhealth.pbalboa_clinicachavarri')),
 
 										(4, ref('base.user_root')), 
 									]"/>
 		</record>
+
+
+
+
+
+		<!-- Directors --> 
+		<record id="openhealth.directors" model="res.groups">
+			<field name="name">Directors</field>
+			<field name="category_id" ref="module_openhealth_category"/>
+
+
+			<field name="users" eval="[ 
+										(4, ref('openhealth.director_clinicachavarri')),
+
+										(4, ref('openhealth.rchavarri_clinicachavarri')),
+										(4, ref('openhealth.fchavarri_clinicachavarri')),
+
+										(4, ref('base.user_root')), 
+									]"/>
+
+		</record>
+
 
 
 
@@ -148,7 +170,6 @@
 										(4, ref('openhealth.staff_clinicachavarri')),
 
 										(4, ref('openhealth.lloli_clinicachavarri')),
-										(4, ref('openhealth.pbalboa_clinicachavarri')),
 										(4, ref('openhealth.ipuga_clinicachavarri')),
 										(4, ref('openhealth.rbustios_clinicachavarri')),
 

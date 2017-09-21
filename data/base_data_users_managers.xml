@@ -39,6 +39,32 @@ JOSEF BERNA ESSENWANGER BALLESTEROS
 
 
 
+<!-- director -->
+		<record id="director_partner" model="res.partner">
+			<field name="name">Director</field>
+			<field name="email">director@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('director')])]" name="category_id"/>
+		</record>
+
+		<record id="director_clinicachavarri" model="res.users">
+			<field name="name">Director</field>
+			<field name="login">director@clinicachavarri.com</field>
+			<field name="password">director</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+
+			<field name="lang">es_ES</field>
+			<field name="tz">America/Lima</field>
+			<field name="partner_id" ref="director_partner"/>
+		</record>
+
+
+
+
+
+
+
 
 <!-- Renato Chavarri -->
 

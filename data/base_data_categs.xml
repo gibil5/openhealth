@@ -51,6 +51,11 @@
 		</record>
 
 
+		<record id='director' model='res.partner.category'>
+			<field name='name'>director</field>
+	        <field name="active">1</field>
+		</record>
+
 <!--
 		<record id='test' model='res.partner.category'>
 			<field name='name'>Test</field>

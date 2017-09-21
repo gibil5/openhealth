@@ -117,8 +117,12 @@
 
 		'data/base_data_users_managers.xml',
 		'data/base_data_users_staff.xml',
+
+		'data/base_data_users_almacen.xml',
+
 		'data/base_data_users_doctors.xml',
 		'data/base_data_users_assistants.xml',
+		
 		'data/base_data_users_platform.xml',
 		'data/base_data_users_cash.xml',
 

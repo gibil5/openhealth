@@ -5,27 +5,155 @@
 
 
 
+<!--
+ELIAS MACEDONIO OCHANTE CONDEÑA
+ROSSANA GIOVANNA GARCIA RUESTA
+NANCY ROXANA MENDOZA NAVARRO
+
+MELITA TIRADO PEREIRA
+EULALIA RUIZ RUIZ
+-->
+
+
 
 <!-- Asistente Medico -->
-		<record id="asistentemedico_partner" model="res.partner">
+		<record id="asistente_partner" model="res.partner">
 			<field name="name">Asistente Medico</field>
-			<field name="email">asistentemedico@clinicachavarri.com</field>
+			<field name="email">asistente@clinicachavarri.com</field>
 
 	        <field eval="[(6, 0, [ref('doctor_assistant')])]" name="category_id"/>
 		</record>
 
-		<record id="asistentemedico_clinicachavarri" model="res.users">
-			<field name="name">Asistente medico</field>
-			<field name="login">asistentemedico@clinicachavarri.com</field>
-			<field name="password">asistentemedico</field>
+		<record id="asistente_clinicachavarri" model="res.users">
+			<field name="name">Asistente Medico</field>
+			<field name="login">asistente@clinicachavarri.com</field>
+			<field name="password">asistente</field>
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
 			<field name="active">True</field>
 
 			<field name="lang">es_ES</field>
 			<field name="tz">America/Lima</field>
-			<field name="partner_id" ref="asistentemedico_partner"/>
+			<field name="partner_id" ref="asistente_partner"/>
 		</record>
 
+
+
+
+
+
+
+<!-- Elias Ochante -->
+		<record id="yochante_partner" model="res.partner">
+			<field name="name">Elias Ochante</field>
+			<field name="email">yochante@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('doctor_assistant')])]" name="category_id"/>
+		</record>
+
+		<record id="yochante_clinicachavarri" model="res.users">
+			<field name="name">Elias Ochante</field>
+			<field name="login">yochante@clinicachavarri.com</field>
+			<field name="password">yochante</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+
+			<field name="lang">es_ES</field>
+			<field name="tz">America/Lima</field>
+			<field name="partner_id" ref="yochante_partner"/>
+		</record>
+
+
+
+
+<!-- Rossana Garcia -->
+		<record id="rgarcia_partner" model="res.partner">
+			<field name="name">Rossana Garcia</field>
+			<field name="email">rgarcia@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('doctor_assistant')])]" name="category_id"/>
+		</record>
+
+		<record id="rgarcia_clinicachavarri" model="res.users">
+			<field name="name">Rossana Garcia</field>
+			<field name="login">rgarcia@clinicachavarri.com</field>
+			<field name="password">rgarcia</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+
+			<field name="lang">es_ES</field>
+			<field name="tz">America/Lima</field>
+			<field name="partner_id" ref="rgarcia_partner"/>
+		</record>
+
+
+
+
+<!-- Nancy Mendoza -->
+		<record id="nmendoza_partner" model="res.partner">
+			<field name="name">Nancy Mendoza</field>
+			<field name="email">nmendoza@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('doctor_assistant')])]" name="category_id"/>
+		</record>
+
+		<record id="nmendoza_clinicachavarri" model="res.users">
+			<field name="name">Nancy Mendoza</field>
+			<field name="login">nmendoza@clinicachavarri.com</field>
+			<field name="password">nmendoza</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+
+			<field name="lang">es_ES</field>
+			<field name="tz">America/Lima</field>
+			<field name="partner_id" ref="nmendoza_partner"/>
+		</record>
+
+
+
+<!-- Melita Tirado -->
+		<record id="mtirado_partner" model="res.partner">
+			<field name="name">Melita Tirado</field>
+			<field name="email">mtirado@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('doctor_assistant')])]" name="category_id"/>
+		</record>
+
+		<record id="mtirado_clinicachavarri" model="res.users">
+			<field name="name">Melita Tirado</field>
+			<field name="login">mtirado@clinicachavarri.com</field>
+			<field name="password">mtirado</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+
+			<field name="lang">es_ES</field>
+			<field name="tz">America/Lima</field>
+			<field name="partner_id" ref="mtirado_partner"/>
+		</record>
+
+
+
+
+
+
+<!-- Eulalia Ruiz -->
+		<record id="eruiz_partner" model="res.partner">
+			<field name="name">Eulalia Ruiz</field>
+			<field name="email">eruiz@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('doctor_assistant')])]" name="category_id"/>
+		</record>
+
+		<record id="eruiz_clinicachavarri" model="res.users">
+			<field name="name">Eulalia Ruiz</field>
+			<field name="login">eruiz@clinicachavarri.com</field>
+			<field name="password">eruiz</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+
+			<field name="lang">es_ES</field>
+			<field name="tz">America/Lima</field>
+			<field name="partner_id" ref="eruiz_partner"/>
+		</record>
 
 
 

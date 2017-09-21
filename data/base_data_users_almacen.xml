@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+
+
+
+<!-- Almacen -->
+		<record id="almacen_partner" model="res.partner">
+			<field name="name">Almacen</field>
+			<field name="email">almacen@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('almacen')])]" name="category_id"/>
+		</record>
+
+		<record id="almacen_clinicachavarri" model="res.users">
+			<field name="name">Almacen</field>
+			<field name="login">almacen@clinicachavarri.com</field>
+			<field name="password">almacen</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+
+			<field name="lang">es_ES</field>
+			<field name="tz">America/Lima</field>
+			<field name="partner_id" ref="almacen_partner"/>
+		</record>
+
+
+
+
+<!-- Yober Ramirez -->
+<!--
+-->
+		<record id="yramirez_partner" model="res.partner">
+			<field name="name">Yober Ramirez</field>
+			<field name="email">yramirez@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('almacen')])]" name="category_id"/>
+		</record>
+
+		<record id="yramirez_clinicachavarri" model="res.users">
+			<field name="name">Yober Ramirez</field>
+			<field name="login">yramirez@clinicachavarri.com</field>
+			<field name="password">yramirez</field>
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+
+			<field name="lang">es_ES</field>
+			<field name="tz">America/Lima</field>
+			<field name="partner_id" ref="yramirez_partner"/>
+		</record>
+
+
+
+
+	</data>
+</openerp> 

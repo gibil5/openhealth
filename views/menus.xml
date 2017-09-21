@@ -63,7 +63,7 @@
 					parent="emr_menu" 
 					sequence="2"
 
-					groups="openhealth.admins,openhealth.managers"
+					groups="openhealth.managers"
 					/>
 
 
@@ -659,13 +659,15 @@
 
 			groups="openhealth.admins"
 			/>
+
+			
+					groups="openhealth.admins"
 -->
 
 		<menuitem 	name="oeHealth - jx" 
 					id="oehealth.oeh_medical_menu" 
 					icon="STOCK_ZOOM_IN"
 
-					groups="openhealth.admins"
 					/>
 
 <!--

@@ -56,6 +56,15 @@
 	        <field name="active">1</field>
 		</record>
 
+
+<!--
+-->
+		<record id='almacen' model='res.partner.category'>
+			<field name='name'>almacen</field>
+	        <field name="active">1</field>
+		</record>
+
+
 <!--
 		<record id='test' model='res.partner.category'>
 			<field name='name'>Test</field>

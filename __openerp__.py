@@ -133,8 +133,12 @@
 
 
 
+
+		'security/openhealth_security_oe.xml',
+
 		#'security/openhealth_security.xml',
 		'security/openhealth_security_buf.xml',
+
 		
 
 		

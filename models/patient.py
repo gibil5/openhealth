@@ -921,8 +921,8 @@ class Patient(models.Model):
 			
 
 			'flags': {
-					#'form': {'action_buttons': True, }
-					'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+					'form': {'action_buttons': True, }
+					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 			},	
 
 			'context':   {

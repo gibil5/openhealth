@@ -50,6 +50,7 @@
 							type="object" 
 							class="oe_highlight"
 							string="Tratamiento" 
+							
 							name="open_treatment_current" 
 						/>
 

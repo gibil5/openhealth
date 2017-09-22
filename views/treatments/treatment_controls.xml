@@ -32,7 +32,7 @@
 								<button 
 									type="object" 
 									class="oe_highlight"	
-									string="Editar"
+									string="Entrar"
 									
 									name="open_line_current" 
 								/>

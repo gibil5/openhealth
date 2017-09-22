@@ -87,7 +87,7 @@
 					sequence="-9"
 
 					name="Caja"
-					groups="openhealth.caja,openhealth.managers"
+					groups="openhealth.caja,openhealth.managers,openhealth.directors"
 					/>
 
 
@@ -504,7 +504,7 @@
 
 
 
-<!-- Appointments - jx -->
+<!-- Citas - jx -->
 <!--
 		<menuitem id="main_appointment_menu" 
 			groups="openhealth.reception"
@@ -514,7 +514,7 @@
 			sequence="-8"
 			name="Citas"
 
-			groups="openhealth.reception,openhealth.managers"
+			groups="openhealth.reception,openhealth.managers,openhealth.directors"
 			/>
 
 		<menuitem id="oehealth_appointment_menu" 
@@ -668,6 +668,7 @@
 					id="oehealth.oeh_medical_menu" 
 					icon="STOCK_ZOOM_IN"
 
+					groups="openhealth.roots"
 					/>
 
 <!--

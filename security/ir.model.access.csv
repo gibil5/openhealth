@@ -4,12 +4,21 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+access_res_partner_managers,res.partner.managers,model_res_partner,contacts_managers,1,1,1,1
+
+access_res_partner_readers,res.partner.readers,model_res_partner,contacts_readers,1,0,0,0
+
+
+
+
+
+
+
+
 
 access_openhealth_treatment_managers,openhealth.treatment.managers,model_openhealth_treatment,openhealth.hc_managers,1,1,1,1
 
 access_openhealth_treatment_readers,openhealth.treatment.platform,model_openhealth_treatment,openhealth.hc_readers,1,0,0,0
-
-
 
 
 

@@ -24,10 +24,34 @@
 
 			<field name="arch" type="xml">
 
+<!--
+				<xpath expr="//button[@name='action_quotation_send']" position="replace">
+				</xpath>
+
+				<xpath expr="//button[contains(text(),'create')]" position="replace">
+				</xpath>
+
+				<xpath expr="//button[@string='Edit']" position="replace">
+				</xpath>
+
+
+				<xpath expr="//button[1]" position="attributes">
+				</xpath>
+
+				<xpath expr="//button[1]" position="attributes">
+					<attribute name='string'>jx</attribute> 
+				</xpath>
+
+            	<xpath expr='//form[@string="partner"]' position='attributes'>
+                	<attribute name="edit">false</attribute>
+            	</xpath>
+-->
+
+
+
+
 				<xpath expr="//field[@name='function']" position="before">
-
 					<field name="x_vip"		/>
-
 				</xpath>
 
 			</field>

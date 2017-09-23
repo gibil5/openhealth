@@ -40,6 +40,44 @@
 
 
 
+
+
+		<!-- Product Managers --> 
+		<record id="openhealth.product_managers" model="res.groups">
+			<field name="name">Product Managers</field>
+			<field name="category_id" ref="module_openhealth_category"/>
+
+			<field name="users" eval="[ 
+
+										(4, ref('openhealth.director_clinicachavarri')),
+
+									]"/>
+		</record>
+
+
+		<!-- Product Readers --> 
+		<record id="openhealth.product_readers" model="res.groups">
+			<field name="name">Product Readers</field>
+			<field name="category_id" ref="module_openhealth_category"/>
+
+			<field name="users" eval="[ 
+
+										(4, ref('openhealth.manager_clinicachavarri')),
+
+										(4, ref('openhealth.plataforma_clinicachavarri')),
+
+									]"/>
+		</record>
+
+
+
+
+
+
+
+
+
+
 		<!-- Contacts Managers --> 
 		<record id="openhealth.contacts_managers" model="res.groups">
 			<field name="name">Contacts Managers</field>
@@ -51,8 +89,6 @@
 
 									]"/>
 		</record>
-
-
 
 		<!-- Contacts Readers --> 
 		<record id="openhealth.contacts_readers" model="res.groups">

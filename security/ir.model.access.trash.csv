@@ -3,6 +3,18 @@
 
 
 
+
+access_product_template,product.template,product.model_product_template,,1,1,1,1
+
+access_product_product,product.product,product.model_product_product,,1,1,1,1
+
+
+
+
+
+
+
+
 access_res_partner_managers,res.partner.managers,res.model_res_partner,res.contacts_managers,1,1,1,1
 
 access_res_partner_managers,res.partner.managers,base.model_res_partner,res.contacts_readers,1,0,0,0

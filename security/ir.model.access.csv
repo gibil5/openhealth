@@ -4,6 +4,31 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+
+
+
+
+access_product_template_managers,product.template.managers,model_product_template,product_managers,1,1,1,1
+
+access_product_template_readers,product.template.readers,model_product_template,product_readers,1,0,0,0
+
+
+access_product_template_stock_user,product.template stock user,product.model_product_template,stock.group_stock_user,1,0,0,0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 access_res_partner_managers,res.partner.managers,model_res_partner,contacts_managers,1,1,1,1
 
 access_res_partner_readers,res.partner.readers,model_res_partner,contacts_readers,1,0,0,0
@@ -243,11 +268,9 @@ access_event,openhealth.event,model_openhealth_event,,1,1,1,1
 
 access_oeh_medical_physician,oeh.medical.physician,oehealth.model_oeh_medical_physician,oehealth.group_oeh_medical_physician,1,1,1,1
 
-access_product_product,product.product,product.model_product_product,,1,1,1,1
 
 
 
-access_product_template,product.template,product.model_product_template,,1,1,1,1
 
 
 

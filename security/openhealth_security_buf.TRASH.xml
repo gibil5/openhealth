@@ -1,0 +1,27 @@
+
+
+
+
+
+		<!-- HC Managers --> 
+		<record id="openhealth.hc_managers" model="res.groups">
+			<field name="name">HC Managers</field>
+			<field name="category_id" ref="module_openhealth_category"/>
+
+			<field name="users" eval="[ 
+
+									]"/>
+		</record>
+
+
+
+
+		<!-- HC Readers --> 
+		<record id="openhealth.hc_readers" model="res.groups">
+			<field name="name">HC Readers</field>
+			<field name="category_id" ref="module_openhealth_category"/>
+
+			<field name="users" eval="[ 
+
+									]"/>
+		</record>

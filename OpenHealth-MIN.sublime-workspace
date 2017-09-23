@@ -101,7 +101,7 @@
 			"file": "security/ir.model.access.csv",
 			"settings":
 			{
-				"buffer_size": 6749,
+				"buffer_size": 6996,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -373,7 +373,7 @@
 	],
 	"find":
 	{
-		"height": 25.0
+		"height": 39.0
 	},
 	"find_in_files":
 	{
@@ -661,7 +661,7 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -728,15 +728,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6749,
+						"buffer_size": 6996,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								303,
-								303
+								426,
+								548
 							]
 						],
 						"settings":
@@ -744,10 +744,10 @@
 							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 8.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -776,7 +776,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -805,7 +805,7 @@
 						"translation.y": 1004.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -885,7 +885,8 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/XML/XML.sublime-syntax"
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

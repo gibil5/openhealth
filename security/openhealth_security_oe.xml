@@ -93,18 +93,19 @@ Heritage
 -->
 			<field name="users" eval="[ 
 				
-											(4, ref('openhealth.manager_clinicachavarri')),
-											(4, ref('openhealth.medico_clinicachavarri')),	
-											(4, ref('openhealth.staff_clinicachavarri')),
-											(4, ref('openhealth.asistente_clinicachavarri')),
-											(4, ref('openhealth.plataforma_clinicachavarri')),
 											(4, ref('openhealth.almacen_clinicachavarri')),
 
 									]"/>
 
 	    </record>
 
-
+<!--
+											(4, ref('openhealth.manager_clinicachavarri')),
+											(4, ref('openhealth.medico_clinicachavarri')),	
+											(4, ref('openhealth.staff_clinicachavarri')),
+											(4, ref('openhealth.asistente_clinicachavarri')),
+											(4, ref('openhealth.plataforma_clinicachavarri')),
+-->
 
 
 

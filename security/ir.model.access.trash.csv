@@ -4,11 +4,6 @@
 
 
 
-access_product_product_stock_user,product_product_stock_user,product.model_product_product,stock.group_stock_user,1,0,0,0
-
-access_product_template_stock_user,product.template stock user,product.model_product_template,stock.group_stock_user,1,0,0,0
-
-
 
 
 

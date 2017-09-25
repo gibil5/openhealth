@@ -398,8 +398,6 @@
 
 
 		<!-- Almacen --> 
-<!--
--->
 		<record id="openhealth.almacens" model="res.groups">
 			<field name="name">Almacens</field>
 			<field name="category_id" ref="module_openhealth_category"/>

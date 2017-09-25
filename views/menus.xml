@@ -13,7 +13,7 @@
 
 
 
-<!-- EMR - The First !!! -->
+<!-- Historias -->
 
 		<!-- Main - EMR -->
 		<menuitem 	id="main_emr_menu" 
@@ -80,7 +80,7 @@
 
 
 
-<!-- Sales -->
+<!-- Caja -->
 
 		<!-- Main - sales -->
 		<menuitem 	id="main_sales_menu" 
@@ -162,9 +162,7 @@
 
 
 
-
-
-		<!-- Caja --> 			
+		<!-- Vip --> 			
 		<menuitem 	id="sales_cards_menu" 
 					name="Vip"
 					parent="main_sales_menu"
@@ -189,12 +187,6 @@
 
 					action="patient_vip_list_action"
 					/>
-
-
-
-
-
-
 
 
 
@@ -480,8 +472,6 @@
 
 
 		<!-- Config --> 
-<!--
--->
 		<menuitem 	id="sales_config_menu" 
 					name="Configuración"
 					parent="main_sales_menu"
@@ -504,11 +494,8 @@
 
 
 
-<!-- Citas - jx -->
-<!--
-		<menuitem id="main_appointment_menu" 
-			groups="openhealth.reception"
--->
+<!-- Citas -->
+
 		<!-- Appointments -->
 		<menuitem id="main_appointment_menu_jx" 
 			sequence="-8"
@@ -578,19 +565,48 @@
 
 
 
-<!-- Inventory -->
+
+<!-- Productos -->
 <!--
-		<menuitem id="main_inventory_menu" 
-			sequence="-8"
-			name="Inventario"
+			groups="openhealth.reception,openhealth.managers,openhealth.directors"
+-->
+		<!-- Appointments -->
+		<menuitem id="main_products_menu" 
+			sequence="-7"
+			name="Productos"
 
-			groups="openhealth.reception,openhealth.managers"
+			groups="openhealth.directors,openhealth.managers,openhealth.physicians,openhealth.assistants,openhealth.reception"
+			
 			/>
 
-		<menuitem id="jx_inventory_menu" 
-			name="Inventario 1"
-			parent="main_inventory_menu"
+
+		<menuitem id="products_menu" 
+			name="Productos"
+			parent="main_products_menu"
 			/>
+
+
+		<menuitem id="product_menu" 
+
+			name="Productos"
+
+			parent="products_menu"
+			
+			sequence="1"
+
+			action="product_template_stockable_list_action"
+			/>
+
+
+
+
+<!--
+openhealth.directors
+openhealth.managers
+openhealth.physicians
+openhealth.assistants
+openhealth.reception
+openhealth.almacens
 -->
 
 
@@ -605,6 +621,22 @@
 
 
 
+
+
+<!-- Inventory -->
+<!--
+		<menuitem id="main_inventory_menu" 
+			sequence="-8"
+			name="Inventario"
+
+			groups="openhealth.reception,openhealth.managers"
+			/>
+
+		<menuitem id="jx_inventory_menu" 
+			name="Inventario 1"
+			parent="main_inventory_menu"
+			/>
+-->
 
 
 
@@ -636,12 +668,6 @@
               		action="tabel_list_emp_action_group_by_division"  sequence="5" 
               		groups="Tabel.group_manager,Tabel.group_accountant,Tabel.group_eco"/>
 -->
-
-
-
-
-
-
 
 
 

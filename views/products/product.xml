@@ -207,7 +207,7 @@
 <!--
 			<field name="name">Productos - No Legacy</field>
 -->
-			<field name="name">Productos - jxx</field>
+			<field name="name">Productos</field>
 
 			<field name="res_model">product.template</field>
 			

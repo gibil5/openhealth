@@ -12,8 +12,32 @@
 
 
 				<notebook>
-
+<!--
 					<page string="Ventas"   		 >
+
+
+attrs="{'invisible': [('user_id', '!=', 
+
+eval="[ 
+										(4, ref('openhealth.director_clinicachavarri')),
+										(4, ref('openhealth.manager_clinicachavarri')),
+									]"
+)]}"
+uid
+
+attrs="{'invisible': [('user_id', '!=', 
+eval="[ 
+										(4, ref('openhealth.director_clinicachavarri')),
+										(4, ref('openhealth.manager_clinicachavarri')),
+									]"
+)]}"
+-->
+					<page string="Ventas"   		
+
+
+>
+
+
 <!--
 						<field name="order_ids"/>
 -->					

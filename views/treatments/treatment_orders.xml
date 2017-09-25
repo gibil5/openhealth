@@ -31,11 +31,28 @@ eval="[
 										(4, ref('openhealth.manager_clinicachavarri')),
 									]"
 )]}"
+
+
+
+
+attrs="{'invisible': [	('user_id', '!=', 1)
+]}
+"
 -->
-					<page string="Ventas"   		
 
 
+<!--
+<page string="Caja">	
+-->
+<page string="Caja"	
+groups="
+openhealth.directors, 
+openhealth.managers, 
+"
 >
+
+
+
 
 
 <!--

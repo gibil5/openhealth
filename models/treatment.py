@@ -28,6 +28,19 @@ class Treatment(models.Model):
 
 
 
+
+
+
+	user_id = fields.Many2one(
+		'res.users', 
+		string='Salesperson', 
+		index=True, 
+		track_visibility='onchange', 
+		default=lambda self: self.env.user, 
+	)
+
+
+
 # ----------------------------------------------------------- Canonical ------------------------------------------------------
 
 	# Name 

@@ -731,6 +731,11 @@ Fields
 						<group>
 							<!-- Padding --> 
 							<group>
+<!--
+-->
+								<field name="user_id"/>
+								<field name="vspace" />
+
 								<field name="partner_id"/>
 							</group>
 

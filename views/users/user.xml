@@ -106,6 +106,7 @@
 
 
 		<!-- USER - Tree --> 
+<!--
 		<record model="ir.ui.view" id="base.view_users_tree">
 
 			<field name="name">res.users.tree</field>
@@ -119,9 +120,6 @@
 				<tree string="User Tree">
 					
                     <field name="name"/>
-<!--
-                    <field name="groups_id"/>
--->
 
 
                     <field name="login"/>
@@ -133,12 +131,15 @@
                     <field name="partner_id"/>
                     <field name="active"/>
 
-<!--
-                    <field name="image"/>
--->
 				</tree>
 			</field>
 		</record>
+-->
+
+<!--
+                    <field name="groups_id"/>
+                    <field name="image"/>
+-->
 
 
 

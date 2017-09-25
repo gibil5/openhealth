@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
 
-
 	<data noupdate='0'>
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -35,8 +23,6 @@
 
 									]"/>
 		</record>
-
-
 
 
 
@@ -73,9 +59,12 @@
 
 
 
+
 <!-- Stock --> 
 
 		<!-- Managers --> 
+<!--
+-->
 		<record id="stock.group_stock_manager" model="res.groups">
 	        <field name="name">Stock - Manager</field>
 	        <field name="category_id" ref="base.module_category_warehouse_management"/>
@@ -92,6 +81,8 @@
 
 
 		<!-- Users --> 
+<!--
+-->
 		<record id="stock.group_stock_user" model="res.groups">
 	        <field name="name">Stock - User</field>
 	        <field name="category_id" ref="base.module_category_warehouse_management"/>
@@ -100,12 +91,15 @@
 			<field name="users" eval="[ 
 				
 											(4, ref('openhealth.manager_clinicachavarri')),
+											(4, ref('openhealth.medico_clinicachavarri')),	
+											(4, ref('openhealth.staff_clinicachavarri')),
+											(4, ref('openhealth.asistente_clinicachavarri')),
+											(4, ref('openhealth.plataforma_clinicachavarri')),
+											(4, ref('openhealth.almacen_clinicachavarri')),
 
-									
 									]"/>
 
 	    </record>
-
 
 
 

@@ -12,10 +12,7 @@
 		<record model="ir.ui.view" 	id="view_res_partner_form">
 			<field name="name">res.partner.form</field>
 			<field name="model">res.partner</field>
-<!--
-			<field name="inherit_id" ref="oehealth.view_res_partner_form"/>			
-			<field name="inherit_id" ref="oehealth.view_res_partner_form"/>			
--->
+
 			<field name="inherit_id" ref="base.view_partner_form"/>			
 	        
 	        <field name="mode">primary</field>
@@ -24,39 +21,15 @@
 
 			<field name="arch" type="xml">
 
-<!--
-				<xpath expr="//button[@name='action_quotation_send']" position="replace">
-				</xpath>
-
-				<xpath expr="//button[contains(text(),'create')]" position="replace">
-				</xpath>
-
-				<xpath expr="//button[@string='Edit']" position="replace">
-				</xpath>
-
-
-				<xpath expr="//button[1]" position="attributes">
-				</xpath>
-
-				<xpath expr="//button[1]" position="attributes">
-					<attribute name='string'>jx</attribute> 
-				</xpath>
-
-            	<xpath expr='//form[@string="partner"]' position='attributes'>
-                	<attribute name="edit">false</attribute>
-            	</xpath>
--->
-
-
-
-
 				<xpath expr="//field[@name='function']" position="before">
-					<field name="x_vip"		/>
 				</xpath>
 
 			</field>
 		</record>
 
+<!--
+					<field name="x_vip"		/>
+-->
 
 
 
@@ -105,17 +78,15 @@
 					
 					<field name="email"/>
 
-					<field name="x_vip"/>				
 					<field name="id"/>
 					<field name="comment"/>				
 
 
 <!--
+					<field name="x_vip"/>				
 					<field name="x_owner"/>				
 					<field name="x_sex"/>				
--->
 
-<!--					
 					<field name="x_last_name"  />
 					<field name="x_first_name"  />
 					<field name="x_full_name"  />

@@ -9,6 +9,17 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 	<!-- OeHealth - Manager --> 
 		<record id="oehealth.group_oeh_medical_manager" model="res.groups">
 
@@ -61,6 +72,7 @@
 
 
 
+
 <!-- Stock --> 
 
 		<!-- Managers --> 
@@ -93,6 +105,29 @@
 									]"/>
 
 	    </record>
+
+
+
+
+
+
+
+
+
+
+	<!-- HR - Manager --> 
+		<record id="base.group_hr_manager" 	model="res.groups">
+
+			<field name="name">HR - Manager</field>
+			
+	        <field name="category_id" ref="base.module_category_human_resources"/>
+
+			<field name="users" eval="[ 
+
+												(4, ref('openhealth.director_clinicachavarri')),
+
+									]"/>
+		</record>
 
 
 

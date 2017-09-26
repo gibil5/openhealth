@@ -245,8 +245,9 @@
 					<field name="vspace" />
 
 					<field name="patient" />
-					<field name="x_doctor" />
+					
 <!--
+					<field name="x_doctor" />
 					<field name="consultation"/>
 -->				
 					<field name="x_appointment"/>

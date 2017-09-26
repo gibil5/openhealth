@@ -1115,6 +1115,7 @@ Order Line - Tree
                     <field name="user_id"/>
 
 
+					<field name="x_doctor"		/>
                     <field name="partner_id"/>
 
 
@@ -1130,7 +1131,6 @@ Order Line - Tree
 
 
 <!--
-					<field name="x_doctor"		/>
 					<field name="doctor_name"		/>
 -->
 

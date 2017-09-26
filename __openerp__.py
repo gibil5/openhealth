@@ -92,12 +92,17 @@
 
 
 
+
+
 		'views/reports/report_sale_search.xml',
 		'views/reports/report_sale.xml',
 		'views/reports/report_sale_doctors.xml',
 
-		'views/reports/report_sale_months.xml',
 
+		'views/reports/report_sale_months.xml',
+		'views/reports/report_sale_months_platform.xml',
+
+		'views/reports/report_sale_months_physician.xml',
 
 		
 
@@ -331,7 +336,11 @@
 
 		# Menus
 		'views/menus.xml',
+
 		'views/menus_reporting.xml',
+		'views/menus_reporting_pla.xml',
+		'views/menus_reporting_phy.xml',
+		
 		'views/menus_openhealth.xml',
 
 

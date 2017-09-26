@@ -6,26 +6,28 @@
 
 
 
+
 		<!-- Pivot --> 
 <!--
-	   <record id="sale.view_order_product_pivot" model="ir.ui.view">
+	   <record id="sale.view_order_product_pivot_pla" model="ir.ui.view">
 	         
 	         <field name="name">sale.report.pivot</field>
 	         
 	         <field name="model">sale.report</field>
-
+	         
 	         <field name="arch" type="xml">
 
 	             <pivot string="Sales Analysis" disable_linking="True"	display_quantity="True"	>
 
-	                <field name="date" interval="month" type="col"	/>
-	                <field name="price_subtotal" type="measure"	/>
+	                 <field name="date" interval="month" type="col"	/>
 
 	             </pivot>
 	         </field>
-
 	    </record>
 -->
+
+
+
 
 		<!-- Graph --> 
 <!--
@@ -39,9 +41,7 @@
 	             </graph>
 	         </field>
 	    </record>
--->
-
-
+-->             
 
 
 
@@ -49,29 +49,27 @@
 
 
 		<!-- january --> 
-		<record id="action_order_report_january_all" model="ir.actions.act_window">
-
-
-
-
-
-
+		<record id="action_order_report_january_pla" model="ir.actions.act_window">
 
 			<field name="name">Reporte de Ventas - Enero</field>
 			
 			<field name="res_model">sale.report</field>
 
 			<field name="view_type">form</field>
-
+			
 			<field name="view_mode">pivot,graph,tree</field>
 			
 			<field name="view_id"></field> 
-
+			
 			<field name="search_view_id" ref="sale.view_order_product_search"/>
 
 
 		   <field name="domain">
 									[
+										'|', 
+										('categ_id','=','Consultas'), 
+										('categ_id','=','Tarjetas'),
+
 										('date','&lt;=',time.strftime('%%Y-02-01')),
 										('date','&gt;=',time.strftime('%%Y-01-01'))
 									]
@@ -90,7 +88,7 @@
 
 
 		<!-- February --> 
-		<record id="action_order_report_february_all" model="ir.actions.act_window">
+		<record id="action_order_report_february_pla" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Febrero</field>
 			<field name="res_model">sale.report</field>
 			<field name="view_type">form</field>
@@ -100,6 +98,10 @@
 
 		   <field name="domain">
 								[
+										'|', 
+										('categ_id','=','Consultas'), 
+										('categ_id','=','Tarjetas'),
+
 									('date','&lt;=',time.strftime('%%Y-03-01')), 
 									('date','&gt;=',time.strftime('%%Y-02-01'))
 								]
@@ -119,7 +121,7 @@
 
 
 		<!-- March --> 
-		<record id="action_order_report_march_all" model="ir.actions.act_window">
+		<record id="action_order_report_march_pla" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Marzo</field>
 			<field name="res_model">sale.report</field>
 			<field name="view_type">form</field>
@@ -129,6 +131,11 @@
 
 		   <field name="domain">
 								[
+
+									'|', 
+									('categ_id','=','Consultas'), 
+									('categ_id','=','Tarjetas'),
+
 
 									('date','&lt;=',time.strftime('%%Y-04-01')), 
 									('date','&gt;=',time.strftime('%%Y-03-01'))
@@ -143,11 +150,12 @@
 			</field>
 
 			<field name="help"></field>
+
 		</record>
 
 
 		<!-- April --> 
-		<record id="action_order_report_april_all" model="ir.actions.act_window">
+		<record id="action_order_report_april_pla" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Abril</field>
 			<field name="res_model">sale.report</field>
 			<field name="view_type">form</field>
@@ -157,6 +165,10 @@
 
 		   <field name="domain">
 								[
+										'|', 
+										('categ_id','=','Consultas'), 
+										('categ_id','=','Tarjetas'),
+
 									('date','&lt;=',time.strftime('%%Y-05-01')),
 									('date','&gt;=',time.strftime('%%Y-04-01'))
 								]
@@ -169,12 +181,14 @@
 								}
 			</field>
 
-			<field name="help"></field>
+			<field name="help">
+			</field>
+
 		</record>
 
 
 		<!-- may --> 
-		<record id="action_order_report_may_all" model="ir.actions.act_window">
+		<record id="action_order_report_may_pla" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Mayo</field>
 			<field name="res_model">sale.report</field>
 			<field name="view_type">form</field>
@@ -184,6 +198,10 @@
 
 		   <field name="domain">
 								[
+										'|', 
+										('categ_id','=','Consultas'), 
+										('categ_id','=','Tarjetas'),
+
 									('date','&lt;=',time.strftime('%%Y-06-01')),
 									('date','&gt;=',time.strftime('%%Y-05-01'))
 								]
@@ -196,12 +214,15 @@
 								}
 			</field>
 
-			<field name="help"></field>
+
+			<field name="help">
+			</field>
+
 		</record>
 
 
 		<!-- june --> 
-		<record id="action_order_report_june_all" model="ir.actions.act_window">
+		<record id="action_order_report_june_pla" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Junio</field>
 			<field name="res_model">sale.report</field>
 			<field name="view_type">form</field>
@@ -211,6 +232,11 @@
 
 		   <field name="domain">
 								[
+
+										'|', 
+										('categ_id','=','Consultas'), 
+										('categ_id','=','Tarjetas'),
+
 									('date','&lt;=',time.strftime('%%Y-07-01')),
 									('date','&gt;=',time.strftime('%%Y-06-01'))
 								]
@@ -223,7 +249,9 @@
 								}
 			</field>
 
-			<field name="help"></field>
+			<field name="help">
+			</field>
+
 		</record>
 
 
@@ -234,7 +262,7 @@
 
 
 		<!-- july --> 
-		<record id="action_order_report_july_all" model="ir.actions.act_window">
+		<record id="action_order_report_july_pla" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Julio</field>
 			<field name="res_model">sale.report</field>
 			<field name="view_type">form</field>
@@ -256,13 +284,15 @@
 								}
 			</field>
 
-			<field name="help"></field>
+			<field name="help">
+			</field>
+
 		</record>
 
 
 
 		<!-- august --> 
-		<record id="action_order_report_august_all" model="ir.actions.act_window">
+		<record id="action_order_report_august_pla" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Agosto</field>
 			<field name="res_model">sale.report</field>
 			<field name="view_type">form</field>
@@ -284,13 +314,15 @@
 								}
 			</field>
 
-			<field name="help"></field>
+			<field name="help">
+			</field>
+
 		</record>
 
 
 
 		<!-- september --> 
-		<record id="action_order_report_september_all" model="ir.actions.act_window">
+		<record id="action_order_report_september_pla" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Setiembre</field>
 			<field name="res_model">sale.report</field>
 			<field name="view_type">form</field>
@@ -312,13 +344,15 @@
 								}
 			</field>
 
-			<field name="help"></field>
+			<field name="help">
+			</field>
+
 		</record>
 
 
 
 		<!-- october --> 
-		<record id="action_order_report_october_all" model="ir.actions.act_window">
+		<record id="action_order_report_october_pla" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Octubre</field>
 			<field name="res_model">sale.report</field>
 			<field name="view_type">form</field>
@@ -340,13 +374,15 @@
 								}
 			</field>
 
-			<field name="help"></field>
+			<field name="help">
+			</field>
+
 		</record>
 
 
 
 		<!-- november --> 
-		<record id="action_order_report_november_all" model="ir.actions.act_window">
+		<record id="action_order_report_november_pla" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Noviembre</field>
 			<field name="res_model">sale.report</field>
 			<field name="view_type">form</field>
@@ -368,14 +404,15 @@
 								}
 			</field>
 
-			<field name="help"></field>
+			<field name="help">
+			</field>
+
 		</record>
 
 
 
-
 		<!-- december --> 
-		<record id="action_order_report_december_all" model="ir.actions.act_window">
+		<record id="action_order_report_december_pla" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Diciembre</field>
 			<field name="res_model">sale.report</field>
 			<field name="view_type">form</field>
@@ -397,8 +434,9 @@
 								}
 			</field>
 
+			<field name="help">
+			</field>
 
-			<field name="help"></field>
 		</record>
 
 

@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 #
-# 	Sale Report 
+# 	Sale Report Pla
 # 
 #
+
 
 from openerp import models, fields, api
 from . import treatment_vars
@@ -13,17 +14,26 @@ class sale_report(models.Model):
 	
 
 	_inherit='sale.report'
-	#_name = 'openhealth.report'
+
+	#_name = 'sale.report.pla'
 
 	
 
 
 	note = fields.Char(
+
 			#string="Nota",		
-			string="Note",		
+			string="Note - jx",		
 			
 			readonly=True
 		)
+
+
+
+	price_subtotal = fields.Float(
+		groups="openhealth.physicians,openhealth.managers,openhealth.directors"
+	)
+
 
 
 

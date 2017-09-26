@@ -22,12 +22,15 @@
 
 
 
-	                 <field name="date" interval="month" type="col"	/>
-	                <field name="price_subtotal" type="measure"	/>
 <!--
 	                 <field name="date" interval="day" type="col"	/>
 	                <field name="nbr" type="measure"	/>
 -->
+
+	                <field name="date" interval="month" type="col"	/>
+
+
+	                <field name="price_subtotal" type="measure"		groups="openhealth.physicians,openhealth.managers,openhealth.directors"	/>
 
 	             </pivot>
 	         </field>
@@ -51,6 +54,8 @@
 
 
 
+
+
 		<!-- Favorites -->
 	    <record id="sale.filter_isale_report_product" model="ir.filters">
 	        <field name="name">By Product</field>
@@ -65,8 +70,6 @@
 	        <field name="user_id" eval="False"/>
 	        <field name="context">{'group_by': ['date:month', 'categ_id']}</field>
 	    </record>
-
-
 
 
 		<!-- Search  -->

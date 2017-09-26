@@ -86,8 +86,8 @@ from . import order_line
 
 
 
-#from . import sale_report
 #from . import oh_sale_report
+from . import sale_report
 
 
 #from . import sale_document

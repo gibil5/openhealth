@@ -6,24 +6,18 @@
 
 
 <!-- Reports --> 
-<!--
-					groups="openhealth.caja,openhealth.managers,openhealth.directors"
--->
-
 		<menuitem 	id="main_reporting_menu" 
 					sequence="-6"
-
 					name="Reporting"
-
 					/>
 
 
 
-		<menuitem 	id="sales_reports_menu" 
-					name="Reporting Mensual"
 
+<!-- Managers --> 
+		<menuitem 	id="sales_reports_menu" 
+					name="Reporting Mensual - 2017"
 					parent="main_reporting_menu"
-					
 					sequence="4"
 
 					groups="openhealth.managers,openhealth.directors"
@@ -53,6 +47,8 @@
 
 					action="action_order_report_february_all"
 					/>
+
+
 
 		<!-- March -->
 		<menuitem 	id="sales_report_sales_march_all_menu" 

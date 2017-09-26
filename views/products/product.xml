@@ -90,6 +90,13 @@
 
 					<field name="name"/>
 
+
+					<field name="x_treatment"/>				
+					<field name="x_zone"/>				
+					<field name="list_price"/>
+
+
+
 					<field name="sale_ok"/>
 
 					<field name="uom_id"	invisible="0"/>
@@ -100,7 +107,6 @@
 
 
 					<field name="standard_price"/>
-					<field name="list_price"/>
 					<field name="price"/>
 
 

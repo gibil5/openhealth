@@ -83,16 +83,19 @@
 			"file": "__openerp__.py",
 			"settings":
 			{
-				"buffer_size": 8030,
+				"buffer_size": 8119,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "views/menus_reporting_pla.xml",
+			"contents": "<?xml version=\"1.0\"?>\n<openerp>\n\t<data>\n\n\n\n\t\t<!-- Form view -->\n\t\t<record model=\"ir.ui.view\" id=\"product_form\">\n\n\t\t\t<field name=\"name\">product.template.product.form</field>\n\t\t\t\n\t\t\t<field name=\"model\">product.template</field>\n\t\t\t\n\t\t\t<field name=\"inherit_id\" ref=\"product.product_template_form_view\"/>\t\t\t\n\n\t        <field name=\"mode\">primary</field>\n\n\t        <field name=\"priority\" eval=\"1\"/>\n\n\t\t\t<field name=\"arch\" type=\"xml\">\n\n\n\n\n\t\t\t\t<!-- Notebook --> \n\t\t\t\t<!--\n\t\t\t\t<xpath expr=\"//page\" position=\"before\">\n\t\t\t\t-->\n\t\t\t\t<xpath expr=\"//notebook\" position=\"inside\">\n\n\t\t\t\t\t<page string=\"Chavarri\"  \t\t\tsequence=\"1\">\n\n\n\t\t\t\t\t\t<group>\n\n\n\t\t\t\t\t\t\t<field name=\"x_origin\"/>\n\n\n\t\t\t\t\t\t\t<!--\n\t\t\t\t\t\t\t<field name=\"x_client_type\"/>\t\t\t\t\n\t\t\t\t\t\t\t-->\n\n\t\t\t\t\t\t\t<field name=\"x_date_created\"/>\n\t\t\t\t\t\t\t<field name=\"x_date_updated\"/>\n\t\t\t\t\t\t\t<field name=\"x_price_vip\"/>\n\n\n\t\t\t\t\t\t\t<field name=\"x_name_short\"/>\n\n\t\t\t\t\t\t\t<field name=\"x_family\"/>\n\n\t\t\t\t\t\t\t<field name=\"x_treatment\"/>\t\t\t\t\n\t\t\t\t\t\t\t<field name=\"x_zone\"/>\t\t\t\t\n\t\t\t\t\t\t\t<field name=\"x_pathology\"/>\t\t\t\t\n\t\t\t\t\t\t\t<field name=\"x_sessions\"/>\t\n\t\t\t\t\t\t\t<field name=\"x_time\"/>\t\t\t\t\n\n\n\t\t\t\t\t\t\t<!--\n\t\t\t\t\t\t\t<field name=\"type\"/>\n\t\t\t\t\t\t\t<field name=\"tax\"/>\n\t\t\t\t\t\t\t--> \n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t<!--\n\t\t\t\t\t\t\t<field name=\"list_price\"/>\n\t\t\t\t\t\t\t-->\n\t\t\t\t\t\t</group>\n\t\t\t\t\t\n\t\t\t\t\t</page>\n\t\t\t\t</xpath>\n\t\t\t</field>\n\t\t</record>\n\n\n\n\n\n\n\n\t\t<!-- TREE /list view -->\n\t\t<record model=\"ir.ui.view\" id=\"product.product_template_tree_view\">\n\t\t\t<field name=\"name\">product.template.product.tree</field>\n\t\t\t<field name=\"model\">product.template</field>\n\t\t\t<field name=\"type\">tree</field>\n\t\t\t<field name=\"priority\" eval=\"1\"/>\n\t\t\t<field name=\"arch\" type=\"xml\">\n\n\t\t\t\t<tree string=\"Product Tree\"    default_order=\"name\" >\n\n\t\t\t\t\t<field name=\"name\"/>\n\n\n\t\t\t\t\t<field name=\"x_treatment\"/>\t\t\t\t\n\t\t\t\t\t<field name=\"x_zone\"/>\t\t\t\t\n\n\n\t\t\t\t\t<field name=\"sale_ok\"/>\n\n\t\t\t\t\t<field name=\"uom_id\"\tinvisible=\"0\"/>\n\n\t\t\t\t\t<field name=\"categ_id\"/>\n\n\t\t\t\t\t<field name=\"type\"/>\n\n\n\t\t\t\t\t<field name=\"standard_price\"/>\n\t\t\t\t\t<field name=\"list_price\"/>\n\t\t\t\t\t<field name=\"price\"/>\n\n\n\t\t\t\t\t<field name=\"item_ids\"/>\n\t\t\t\t\t<field name=\"state\"\tinvisible=\"1\"\t/>\t\t\t\t\n\n\n\t\t\t\t\t<field name=\"qty_available\"\tinvisible=\"1\"/>\n\n\t\t\t\t</tree>\n\t\t\t</field>\n\t\t</record>\n\n\n<!--\n\t\t\t\t\t<field name=\"x_name_short\"/>\n\t\t\t\t\t<field name=\"x_origin\"/>\t\t\t\t\n\t\t\t\t\t<field name=\"x_price_vip\"/>\n\n\n\t\t\t\t\t<field name=\"x_date_created\"/>\n\t\t\t\t\t<field name=\"id\"/>\n\t\t\t\t\t<field name=\"x_treatment\"/>\t\t\t\t\n\t\t\t\t\t<field name=\"x_zone\"/>\t\t\t\t\n\t\t\t\t\t<field name=\"x_pathology\"/>\t\t\t\t\n\t\t\t\t\t<field name=\"x_sessions\"/>\t\n\t\t\t\t\t<field name=\"x_time\"/>\t\t\n\t\t\t\t\t<field name=\"x_family\"/>\n\t\t\t\t\t<field name=\"pricelist\"/>\n\t\t\t\t\t<field name=\"qty_available\"/>\n-->\n\n\n\n\n\n\n\n\t\t<!-- Window action -->\n\t\t<record model=\"ir.actions.act_window\" id=\"product_template_stockable_wleg_list_action\">\n\t\t\t<field name=\"name\">Productos - wleg</field>\n\t\t\t<field name=\"res_model\">product.template</field>\n\t\t\t<field name=\"view_type\">form</field>\n\t\t\t<field name=\"view_mode\">tree,form</field>\n\n            <field name=\"domain\">[            \t\n\t\t\t\t\t\t\t\t\t('type', '=', 'product'),\n            \t\t\t\t\t]</field>\n\n            <!--\n\t\t\t<field name=\"context\">{'order': 'x_name_short'}</field>\n            <field name=\"domain\">[\n\t\t\t\t\t\t\t\t\t('type', '=', 'service'),\n\t\t\t\t\t\t\t\t\t('x_treatment', '=', 'laser_co2'),\n            \t\t\t\t\t]</field>\n\t\t\t-->\n\t\t</record>\n\n\n\n\n\n\t\t<!-- Window action -->\n\t\t<record model=\"ir.actions.act_window\" id=\"product_template_stockable_list_action\">\n<!--\n\t\t\t<field name=\"name\">Productos - No Legacy</field>\n-->\n\t\t\t<field name=\"name\">Productos</field>\n\n\t\t\t<field name=\"res_model\">product.template</field>\n\t\t\t\n\t\t\t<field name=\"view_type\">form</field>\n\t\t\t\n\t\t\t<field name=\"view_mode\">kanban,tree,form</field>\n\n            <field name=\"domain\">[            \t\n\n\t\t\t\t\t\t\t\t\t('type', '=', 'product'),\n            \t\n\t\t\t\t\t\t\t\t\t('x_origin', '=', False),\n\n            \t\t\t\t\t]</field>\n\n            <!--\n\t\t\t<field name=\"context\">{'order': 'x_name_short'}</field>\n            <field name=\"domain\">[\n\t\t\t\t\t\t\t\t\t('type', '=', 'service'),\n\t\t\t\t\t\t\t\t\t('x_treatment', '=', 'laser_co2'),\n            \t\t\t\t\t]</field>\n\t\t\t-->\n\t\t</record>\n\n\n\n\n\n\n\n\n\n\n\t\t<!-- Window action -->\n\t\t<record model=\"ir.actions.act_window\" id=\"product_template_service_list_action\">\n\t\t\t<field name=\"name\">Servicios</field>\n\t\t\t<field name=\"res_model\">product.template</field>\n\t\t\t<field name=\"view_type\">form</field>\n\n\t\t\t<field name=\"view_mode\">tree,form</field>\n\n<!--\n-->\n            <field name=\"domain\">[            \t\n\t\t\t\t\t\t\t\t\t('type', '=', 'service'),\n\t\t\t\t\t\t\t\t\t('x_origin', '=', False),\n            \t\t\t\t\t]</field>\n\n\n\t\t\t<field name=\"context\">{'order': 'name'}</field>\n\n            <!--\n\t\t\t<field name=\"context\">{'order': 'x_name_short'}</field>\n            <field name=\"domain\">[\n\t\t\t\t\t\t\t\t\t('type', '=', 'service'),\n\t\t\t\t\t\t\t\t\t('x_treatment', '=', 'laser_co2'),\n            \t\t\t\t\t]</field>\n\t\t\t-->\n\t\t</record>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\t\t<!-- TREE /list view -->\n\t\t<!-- Window action -->\n<!--\n\t\t<record model=\"ir.ui.view\" id=\"product.product_product_tree_view\">\n\t\t\t<field name=\"name\">product.product.product.tree</field>\n\t\t\t<field name=\"model\">product.product</field>\n\t\t\t<field name=\"type\">tree</field>\n\t\t\t<field name=\"priority\" eval=\"1\"/>\n\t\t\t<field name=\"arch\" type=\"xml\">\n\t\t\t\t<tree string=\"Product Tree\"    default_order=\"name\" >\n\t\t\t\t\t<field name=\"code\"/>\n\t\t\t\t\t<field name=\"name\"/>\n\t\t\t\t\t<field name=\"list_price\"/>\n\t\t\t\t\t<field name=\"price\"\t\tinvisible=\"1\" />\n\t\t\t\t\t<field name=\"uom_id\"/>\n\t\t\t\t\t<field name=\"barcode\"/>\n\t\t\t\t\t<field name=\"state\"\tinvisible=\"1\"/>\n\t\t\t\t</tree>\n\t\t\t</field>\n\t\t</record>\n\n\t\t<record model=\"ir.actions.act_window\" id=\"product.product_product_list_action\">\n\t\t\t<field name=\"name\">Productos Productos</field>\n\t\t\t<field name=\"res_model\">product.product</field>\n\t\t\t<field name=\"view_type\">form</field>\n\t\t\t<field name=\"view_mode\">tree,form</field>\n\n            <field name=\"domain\">[\n\t\t\t\t\t\t\t\t\t\t('x_origin', '=', False),\n            \t\n            \t\t\t\t\t]</field>\n\t\t</record>\n-->\n\n\t\t<record model=\"ir.actions.act_window\" id=\"product.product_template_action_product\">\n\t\t\t<field name=\"name\">Productos - Inventario</field>\n\t\t\t<field name=\"res_model\">product.template</field>\n\t\t\t<field name=\"view_type\">form</field>\n\t\t\t<field name=\"view_mode\">kanban,tree,form</field>\n\n            <field name=\"domain\">[\n\t\t\t\t\t\t\t\t\t\t('x_origin', '=', False),\n\t\t\t\t\t\t\t\t\t\t('type', '=', 'product'),        \t\n            \t\t\t\t\t]</field>\n\t\t</record>\n\n\n\n\n\n\n\n\t\t<!-- Window action -->\n\t\t<record model=\"ir.actions.act_window\" id=\"product_template_list_action\">\n\t\t\t<field name=\"name\">Productos - jx</field>\n\t\t\t<field name=\"res_model\">product.template</field>\n\t\t\t<field name=\"view_type\">form</field>\n\t\t\t<field name=\"view_mode\">tree,form</field>\n\n            <field name=\"domain\">[]</field>\n\n\n<!--\n            <field name=\"domain\">[]</field>\n            <field name=\"context\">{}</field>\n            <field name=\"view_id\" eval=\"False\"/>\n\t\t\t\n\t\t\t<field name=\"help\" type=\"html\">\n\t\t\t\t<p class=\"oe_view_nocontent_create\">Create the first receipt\n\t\t\t\t</p>\n\t\t\t</field>\n-->\n\n            <!--\n\t\t\t<field name=\"context\">{'order': 'x_name_short'}</field>\n            <field name=\"domain\">[\n\t\t\t\t\t\t\t\t\t('type', '=', 'service'),\n\t\t\t\t\t\t\t\t\t('x_treatment', '=', 'laser_co2'),\n            \t\t\t\t\t]</field>\n\t\t\t-->\n\n\n\n<!--\n            <field name=\"domain\">[\n\t\t\t\t\t\t\t\t\t\t('x_origin', '=', False),\n            \t\n            \t\t\t\t\t]</field>\n-->\n\n\t\t</record>\n\n\n\n\n\n\n\t\t<!-- Window action -->\n\t\t<record model=\"ir.actions.act_window\" id=\"product_template_co2_list_action\">\n\t\t\t<field name=\"name\">Productos Co2</field>\n\t\t\t<field name=\"res_model\">product.template</field>\n\t\t\t<field name=\"view_type\">form</field>\n\t\t\t<field name=\"view_mode\">tree,form</field>\n\t\t\t            \n            <field name=\"domain\">[]</field>\n            <field name=\"context\">{}</field>\n            <field name=\"view_id\" eval=\"False\"/>\n\t\t\t\n\t\t\t<field name=\"help\" type=\"html\">\n\t\t\t\t<p class=\"oe_view_nocontent_create\">Create the first receipt\n\t\t\t\t</p>\n\t\t\t</field>\n\n\n            <!--\n\t\t\t<field name=\"context\">{'order': 'x_name_short'}</field>\n            <field name=\"domain\">[\n\t\t\t\t\t\t\t\t\t('type', '=', 'service'),\n\t\t\t\t\t\t\t\t\t('x_treatment', '=', 'laser_co2'),\n            \t\t\t\t\t]</field>\n\t\t\t-->\n\t\t</record>\n\n\n\n\n\n\n\n\n\n\t\t<!-- TREE /list view -->\n<!--\n\t\t<record model=\"ir.ui.view\" id=\"product.product_template_tree_view\">\n-->\t\n<!--\n-->\n\t\n\t\t<record model=\"ir.ui.view\" id=\"pricelist_item_tree_view\">\n\n\t\t\t<field name=\"name\">product pricelist item</field>\n\n\t\t\t<field name=\"model\">product.pricelist.item</field>\n\t\t\t\n\t\t\t<field name=\"type\">tree</field>\n\n\t\t\t<field name=\"priority\" eval=\"1\"/>\n\n\n\t\t\t<field name=\"arch\" type=\"xml\">\t\n\n\t\t\t\t<tree string=\"Product Pricelist Item Tree\"   >\n\n\t\t\t\t\t<field name=\"pricelist_id\"/>\n\n\n\t\t\t\t\t<field name=\"name\"/>\n\n\t\t\t\t\t<field name=\"product_tmpl_id\"/>\n\n\t\t\t\t\t<field name=\"categ_id\"/>\n\n\t\t\t\t\t<field name=\"min_quantity\"/>\n\n\n\t\t\t\t\t<field name=\"date_start\"/>\n\n\t\t\t\t\t<field name=\"date_end\"/>\n\n\t\t\t\t</tree>\n\t\t\t</field>\n\t\t</record>\n\n\n\n\t\t<record model=\"ir.actions.act_window\" id=\"pricelist_item_list_action\">\n\t\t\t<field name=\"name\">Pricelist Item</field>\n\t\t\t<field name=\"res_model\">product.pricelist.item</field>\n\t\t\t<field name=\"view_type\">form</field>\n\t\t\t<field name=\"view_mode\">tree,form</field>\n\t\t\t<!--\n            <field name=\"domain\">[]</field>\n            <field name=\"context\">{}</field>\n            <field name=\"view_id\" eval=\"False\"/>\n\t\t\t\n\t\t\t<field name=\"help\" type=\"html\">\n\t\t\t\t<p class=\"oe_view_nocontent_create\">Create the first order\n\t\t\t\t</p>\n\t\t\t</field>\n\t\t\t-->\n\t\t</record>\n\n\n\n\n\n\n\n\t\t\n\t\t<!-- Filter --> \n        <record id=\"product.view_product_template_filter\" model=\"ir.ui.view\">\n           <field name=\"name\">Product Search</field>\n           <field name=\"model\">product.template</field>\t\n\t\t   <field name=\"arch\" type=\"xml\">\n               <search string=\"products\">\n\n                   <field name=\"name\" />\n                   <field name=\"x_origin\" />               \n               \n               </search>\n           </field>\n       </record>\n\n\n\n\t</data>\n</openerp>\n",
+			"file": "views/products/product.xml",
+			"file_size": 9781,
+			"file_write_time": 131508566610000000,
 			"settings":
 			{
-				"buffer_size": 2738,
+				"buffer_size": 9853,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -101,60 +104,44 @@
 			"file": "views/menus_reporting.xml",
 			"settings":
 			{
-				"buffer_size": 5530,
+				"buffer_size": 5526,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "views/reports/report_sale_months_platform.xml",
+			"file": "views/menus_reporting_phy.xml",
 			"settings":
 			{
-				"buffer_size": 9913,
+				"buffer_size": 2739,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "views/reports/report_sale_months.xml",
+			"file": "views/menus_reporting_pla.xml",
 			"settings":
 			{
-				"buffer_size": 9287,
+				"buffer_size": 2732,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "views/reports/report_sale.xml",
+			"file": "views/reports/report_sale_months_physician.xml",
 			"settings":
 			{
-				"buffer_size": 4012,
+				"buffer_size": 9772,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "views/reports/oh_report_sale.xml",
+			"file": "models/sale_report.py",
 			"settings":
 			{
-				"buffer_size": 991,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/treatments/treatment_orders.xml",
-			"settings":
-			{
-				"buffer_size": 1940,
+				"buffer_size": 875,
 				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "data/odoo_data_services_consult.xml",
-			"settings":
-			{
-				"buffer_size": 1517,
 				"line_ending": "Unix"
 			}
 		},
@@ -163,6 +150,33 @@
 			"settings":
 			{
 				"buffer_size": 10347,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/reports/report_sale_months_platform.xml",
+			"settings":
+			{
+				"buffer_size": 10909,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/reports/report_sale_months.xml",
+			"settings":
+			{
+				"buffer_size": 10318,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/reports/report_sale_search.xml",
+			"settings":
+			{
+				"buffer_size": 4527,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -213,15 +227,6 @@
 			}
 		},
 		{
-			"file": "views/products/product.xml",
-			"settings":
-			{
-				"buffer_size": 9781,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "views/partners/partner.xml",
 			"settings":
 			{
@@ -243,7 +248,7 @@
 			"file": "views/orders/order.xml",
 			"settings":
 			{
-				"buffer_size": 27121,
+				"buffer_size": 27152,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -349,6 +354,16 @@
 	},
 	"file_history":
 	[
+		"/Users/gibil/cellar/github/openhealth/models/__init__.py",
+		"/Users/gibil/cellar/github/openhealth/models/sale_report_pla.py",
+		"/Users/gibil/cellar/github/openhealth/views/menus_reporting_pla.xml",
+		"/Users/gibil/cellar/github/openhealth/models/sale_report.py",
+		"/Users/gibil/cellar/github/openhealth/views/reports/report_sale_doctors.xml",
+		"/Users/gibil/cellar/github/openhealth/data/odoo_data_services_consult.xml",
+		"/Users/gibil/cellar/github/openhealth/views/treatments/treatment_orders.xml",
+		"/Users/gibil/cellar/github/openhealth/views/reports/report_sale.xml",
+		"/Users/gibil/cellar/github/openhealth/views/reports/trash.report_sale.xml",
+		"/Users/gibil/cellar/github/openhealth/views/reports/oh_report_sale.xml",
 		"/Users/gibil/cellar/github/openhealth/readme.txt",
 		"/Users/gibil/cellar/github/openhealth/views/controls/control.xml",
 		"/Users/gibil/cellar/github/openhealth/views/users/user.xml",
@@ -366,7 +381,6 @@
 		"/Users/gibil/cellar/github/openhealth/models/service_co2.py",
 		"/Users/gibil/cellar/github/openhealth/models/patient.py",
 		"/Users/gibil/cellar/github/openhealth/views/menus.xml",
-		"/Users/gibil/cellar/github/openhealth/views/treatments/treatment_orders.xml",
 		"/Users/gibil/cellar/github/openhealth/views/treatments/treatment_consultations.xml",
 		"/Users/gibil/cellar/github/openhealth/views/treatments/treatment_recommendations.xml",
 		"/Users/gibil/cellar/github/openhealth/views/treatments/treatment_services.xml",
@@ -379,7 +393,6 @@
 		"/Users/gibil/cellar/github/openhealth/data/base_data_users_staff.xml",
 		"/Users/gibil/cellar/github/openhealth/data/base_data_categs.xml",
 		"/Users/gibil/cellar/github/openhealth/security/openhealth_security_oe.xml",
-		"/Users/gibil/cellar/github/openhealth/data/odoo_data_services_consult.xml",
 		"/Users/gibil/cellar/github/openhealth/data/base_data_users_cash.xml",
 		"/Users/gibil/cellar/github/openhealth/models/physician_line.py",
 		"/Users/gibil/cellar/github/openhealth/views/physicians/physician.xml",
@@ -399,7 +412,6 @@
 		"/Users/gibil/cellar/github/openhealth/views/patients/patient_personal.xml",
 		"/Users/gibil/cellar/github/openhealth/models/pat_vars.py",
 		"/Users/gibil/cellar/github/openhealth/security/openhealth_security_buf.xml",
-		"/Users/gibil/cellar/github/openhealth/models/__init__.py",
 		"/Users/gibil/cellar/github/openhealth/views/cards/card.xml",
 		"/Users/gibil/cellar/github/openhealth/models/control.py",
 		"/Users/gibil/cellar/github/openhealth/models/consultation.py",
@@ -442,21 +454,16 @@
 		"/Users/gibil/cellar/github/openhealth/models/invoice.py",
 		"/Users/gibil/cellar/github/openhealth/models/sale_proof.py",
 		"/Users/gibil/cellar/github/openhealth/models/payment_method.py",
-		"/Users/gibil/cellar/github/openhealth/models/sale_report.py",
 		"/Users/gibil/cellar/github/openhealth/views/reports/report_sale_search.xml",
 		"/Users/gibil/cellar/github/openhealth/views/actions.xml",
 		"/Users/gibil/cellar/github/openhealth/views/base.xml",
 		"/Users/gibil/cellar/github/openhealth/models/pat_funcs.py",
-		"/Users/gibil/cellar/github/openhealth/views/reports/report_sale_doctors.xml",
-		"/Users/gibil/cellar/github/openhealth/views/reports/report_sale.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/products/product.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/treatments/treatment.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/patients/patient.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/models/__init__.py",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/views/reports/trash.report_sale.xml",
 		"/Users/gibil/cellar/github/openhealth/models/oh_sale_report.py",
-		"/Users/gibil/cellar/github/openhealth/views/reports/oh_report_sale.xml",
-		"/Users/gibil/cellar/github/openhealth/views/reports/trash.report_sale.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/data/odoo_data_services_exc.xml",
 		"/Users/gibil/Virtualenvs/Odoo9-min/odoo/addons/openhealth/data/odoo_data_services_co2.xml",
 		"/Users/gibil/cellar/github/openhealth/views/counters/counter.xml",
@@ -474,9 +481,7 @@
 		"/Users/gibil/cellar/github/openhealth/views/procedures/procedure_controls.xml",
 		"/Users/gibil/cellar/github/openhealth/models/procedure.py",
 		"/Users/gibil/cellar/github/openhealth/models/session.py",
-		"/Users/gibil/cellar/github/openhealth/views/sessions/session_med.xml",
-		"/Users/gibil/cellar/github/openhealth/views/sessions/session.xml",
-		"/Users/gibil/cellar/github/openhealth/views/procedures/procedure_sessions.xml"
+		"/Users/gibil/cellar/github/openhealth/views/sessions/session_med.xml"
 	],
 	"find":
 	{
@@ -495,6 +500,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"doctor",
+			"pla",
+			"pivot",
 			"sales_reports_menu",
 			"all",
 			"report",
@@ -619,10 +627,7 @@
 			"tree",
 			"street",
 			"zip",
-			"street2_sel",
-			"street",
-			"street2_sel",
-			"staff"
+			"street2_sel"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -630,6 +635,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"phy",
 			"sales_reports_pla_menu",
 			"pla",
 			"assistant",
@@ -756,8 +762,7 @@
 			"november",
 			"october",
 			"september",
-			"august",
-			"july"
+			"august"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -768,7 +773,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -777,15 +782,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8030,
+						"buffer_size": 8119,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1725,
-								1725
+								5152,
+								5152
 							]
 						],
 						"settings":
@@ -794,27 +799,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1126.0,
+						"translation.y": 5392.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "views/menus_reporting_pla.xml",
+					"file": "views/products/product.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2738,
+						"buffer_size": 9853,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								252,
-								252
+								1986,
+								2013
 							]
 						],
 						"settings":
@@ -823,10 +828,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 11.0,
+						"translation.y": 1536.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -835,101 +840,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5530,
+						"buffer_size": 5526,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								172,
-								172
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "views/reports/report_sale_months_platform.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 9913,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								869,
-								900
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "views/reports/report_sale_months.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 9287,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1592,
-								1592
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 683.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "views/reports/report_sale.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4012,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2994,
-								2994
+								369,
+								369
 							]
 						],
 						"settings":
@@ -945,20 +864,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "views/reports/oh_report_sale.xml",
+					"buffer": 3,
+					"file": "views/menus_reporting_phy.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 991,
+						"buffer_size": 2739,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								237,
-								237
+								461,
+								461
 							]
 						],
 						"settings":
@@ -974,49 +893,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "views/treatments/treatment_orders.xml",
+					"buffer": 4,
+					"file": "views/menus_reporting_pla.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1940,
+						"buffer_size": 2732,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								614,
-								772
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 376.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "data/odoo_data_services_consult.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1517,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
+								176,
+								176
 							]
 						],
 						"settings":
@@ -1028,11 +918,69 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "views/reports/report_sale_months_physician.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9772,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								42,
+								42
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "models/sale_report.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 875,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								422,
+								422
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 58.0,
+						"zoom_level": 1.0
+					},
 					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 7,
 					"file": "views/reports/report_sale_doctors.xml",
 					"semi_transient": false,
 					"settings":
@@ -1044,8 +992,8 @@
 						"selection":
 						[
 							[
-								629,
-								637
+								599,
+								642
 							]
 						],
 						"settings":
@@ -1054,7 +1002,65 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 221.0,
+						"translation.y": 40.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "views/reports/report_sale_months_platform.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10909,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								386,
+								386
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 751.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "views/reports/report_sale_months.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10318,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1052,
+								1052
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 690.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 10,
@@ -1062,6 +1068,35 @@
 				},
 				{
 					"buffer": 10,
+					"file": "views/reports/report_sale_search.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4527,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								851,
+								873
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 110.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
 					"file": "views/menus.xml",
 					"semi_transient": false,
 					"settings":
@@ -1086,11 +1121,11 @@
 						"translation.y": 4735.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 12,
 					"file": "security/ir.model.access.csv",
 					"semi_transient": false,
 					"settings":
@@ -1114,11 +1149,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 13,
 					"file": "security/ir.model.access.trash.csv",
 					"semi_transient": false,
 					"settings":
@@ -1142,11 +1177,11 @@
 						"translation.y": 2332.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 16,
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 14,
 					"file": "security/openhealth_security_buf.xml",
 					"semi_transient": false,
 					"settings":
@@ -1171,11 +1206,11 @@
 						"translation.y": 3851.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 15,
 					"file": "security/openhealth_security_oe.xml",
 					"semi_transient": false,
 					"settings":
@@ -1200,36 +1235,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
-					"type": "text"
-				},
-				{
-					"buffer": 15,
-					"file": "views/products/product.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 9781,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3174,
-								3174
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2623.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 17,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -1258,7 +1264,7 @@
 						"translation.y": 99.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 17,
 					"type": "text"
 				},
 				{
@@ -1287,7 +1293,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 16,
+					"stack_index": 18,
 					"type": "text"
 				},
 				{
@@ -1296,15 +1302,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 27121,
+						"buffer_size": 27152,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								12325,
-								12362
+								15694,
+								15694
 							]
 						],
 						"settings":
@@ -1313,10 +1319,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 12140.0,
+						"translation.y": 15624.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 18,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -1452,7 +1458,7 @@
 	"project": "OpenHealth-MIN.sublime-project",
 	"replace":
 	{
-		"height": 70.0
+		"height": 46.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1576,7 +1582,7 @@
 		[
 			[
 				"",
-				"~/Virtualenvs/Odoo9/odoo/addons/web_calendar/web-calendar.sublime-project"
+				"~/Documents/Aptana Studio 3 Workspace/ccdata/ccData.sublime-project"
 			]
 		],
 		"width": 380.0

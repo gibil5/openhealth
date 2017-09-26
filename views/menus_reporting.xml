@@ -1,0 +1,312 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+
+<!-- Reports --> 
+<!--
+					groups="openhealth.caja,openhealth.managers,openhealth.directors"
+-->
+
+		<menuitem 	id="main_reporting_menu" 
+					sequence="-6"
+
+					name="Reporting"
+
+					/>
+
+
+
+		<menuitem 	id="sales_reports_menu" 
+					name="Reporting Mensual"
+
+					parent="main_reporting_menu"
+					
+					sequence="4"
+
+					groups="openhealth.managers,openhealth.directors"
+					/>
+
+
+
+
+
+
+		<!-- january -->
+		<menuitem 	id="sales_report_sales_january_all_menu" 
+					name="Enero" 
+					parent="sales_reports_menu"
+					sequence="1"
+
+					action="action_order_report_january_all"
+					/>
+
+
+
+		<!-- February -->
+		<menuitem 	id="sales_report_sales_february_all_menu" 
+					name="Febrero" 
+					parent="sales_reports_menu"
+					sequence="2"
+
+					action="action_order_report_february_all"
+					/>
+
+		<!-- March -->
+		<menuitem 	id="sales_report_sales_march_all_menu" 
+					name="Marzo" 
+					parent="sales_reports_menu"
+					sequence="3"
+
+					action="action_order_report_march_all"
+					/>
+
+
+
+		<!-- April -->
+		<menuitem 	id="sales_report_sales_april_all_menu" 
+					name="Abril" 
+					parent="sales_reports_menu"
+					sequence="4"
+
+					action="action_order_report_april_all"
+					/>
+
+
+
+		<menuitem 	id="sales_report_sales_may_all_menu" 
+					name="Mayo" 
+					parent="sales_reports_menu"
+					sequence="5"
+
+					action="action_order_report_may_all"
+					/>
+
+		<menuitem 	id="sales_report_sales_june_all_menu" 
+					name="Junio" 
+					parent="sales_reports_menu"
+					sequence="6"
+
+					action="action_order_report_june_all"
+					/>
+
+		<menuitem 	id="sales_report_sales_july_all_menu" 
+					name="Julio" 
+					parent="sales_reports_menu"
+					sequence="7"
+
+					action="action_order_report_july_all"
+					/>
+
+
+
+		<menuitem 	id="sales_report_sales_august_all_menu" 
+					name="Agosto" 
+					parent="sales_reports_menu"
+					sequence="8"
+
+					action="action_order_report_august_all"
+					/>
+
+
+
+
+		<!-- may -->
+		<!-- june -->
+		<!-- july -->
+		<!-- august -->
+		<!-- september -->
+		<!-- october -->
+		<!-- november -->
+		<!-- december -->
+
+<!--
+-->
+
+
+
+		<menuitem 	id="sales_report_sales_september_all_menu" 
+					name="Setiembre" 
+					parent="sales_reports_menu"
+					sequence="9"
+
+					action="action_order_report_september_all"
+					/>
+
+		<menuitem 	id="sales_report_sales_october_all_menu" 
+					name="Octubre" 
+					parent="sales_reports_menu"
+					sequence="10"
+
+					action="action_order_report_october_all"
+					/>
+
+		<menuitem 	id="sales_report_sales_november_all_menu" 
+					name="Noviembre" 
+					parent="sales_reports_menu"
+					sequence="11"
+
+					action="action_order_report_november_all"
+					/>
+
+		<menuitem 	id="sales_report_sales_december_all_menu" 
+					name="Diciembre" 
+					parent="sales_reports_menu"
+					sequence="12"
+
+					action="action_order_report_december_all"
+					/>
+
+
+
+
+
+
+
+		<!-- All -->
+<!--
+		<menuitem 	id="sales_report_sales_march_all_menu" 
+					name="Marzo - Todo" 
+					parent="sales_reports_menu"
+					sequence="2"
+
+					action="action_order_report_march_all"
+					/>
+-->
+
+
+
+		<!-- Services -->
+		<!-- Products -->
+<!--
+		<menuitem 	id="sales_report_sales_services_menu" 
+					name="Servicios" 
+					parent="sales_reports_menu"
+					sequence="4"
+
+					action="action_order_report_services"
+					/>
+
+
+		<menuitem 	id="sales_report_sales_products_menu" 
+					name="Productos" 
+					parent="sales_reports_menu"
+					sequence="4"
+
+					action="action_order_report_products"
+					/>
+-->
+
+
+
+		<!-- Dr Chavarri -->
+		<!-- Dr alarcon -->
+		<!-- Dr Canales -->
+		<!-- Dr Gonzales -->
+		<!-- Dr Mendez -->
+		<!-- Dr Monteverde -->
+		<!-- Dr Vasquez -->
+		<!-- Dra Acosta -->
+		<!-- Dra Pedemonte -->
+
+<!--	
+		<menuitem 	id="sales_report_sales_chavarri_menu" 
+					name="Dr. Chavarri" 
+					parent="sales_reports_menu"
+					sequence="4"
+
+					action="action_order_report_dr_chavarri"
+					/>
+
+		<menuitem 	id="sales_report_sales_alarcon_menu" 
+					name="Dr. Alarcon" 
+					parent="sales_reports_menu"
+					sequence="4"
+
+					action="action_order_report_dr_alarcon"
+					/>
+
+		<menuitem 	id="sales_report_sales_canales_menu" 
+					name="Dr. Canales" 
+					parent="sales_reports_menu"
+					sequence="4"
+
+					action="action_order_report_dr_canales"
+					/>
+
+		<menuitem 	id="sales_report_sales_gonzales_menu" 
+					name="Dr. Gonzales" 
+					parent="sales_reports_menu"
+					sequence="4"
+
+					action="action_order_report_dr_gonzales"
+					/>
+
+		<menuitem 	id="sales_report_sales_mendez_menu" 
+					name="Dr. Mendez" 
+					parent="sales_reports_menu"
+					sequence="4"
+
+					action="action_order_report_dr_mendez"
+					/>
+
+
+		<menuitem 	id="sales_report_sales_monteverde_menu" 
+					name="Dr. Monteverde" 
+					parent="sales_reports_menu"
+					sequence="4"
+
+					action="action_order_report_dr_monteverde"
+					/>
+
+
+		<menuitem 	id="sales_report_sales_vasquez_menu" 
+					name="Dr. Vasquez" 
+					parent="sales_reports_menu"
+					sequence="4"
+
+					action="action_order_report_dr_vasquez"
+					/>
+
+
+
+
+
+
+		<menuitem 	id="sales_report_sales_pedemonte_menu" 
+					name="Dra. Pedemonte" 
+					parent="sales_reports_menu"
+					sequence="4"
+
+					action="action_order_report_dra_pedemonte"
+					/>
+
+		<menuitem 	id="sales_report_sales_acosta_menu" 
+					name="Dra. Acosta" 
+					parent="sales_reports_menu"
+					sequence="5"
+
+					action="action_order_report_dra_acosta"
+					/>
+-->	
+
+
+		<!-- OH Services -->
+<!--		
+		<menuitem 	id="sales_report_sales_oh_menu" 
+					name="Servicios - OH" 
+					parent="sales_reports_menu"
+					sequence="4"
+
+					action="action_order_report_oh_all"
+					/>
+-->
+
+
+
+
+
+	</data>
+</openerp>

@@ -143,8 +143,13 @@
 							</group>
 							
 
+
+
 							
-							<group>
+
+<group
+groups="openhealth.directors,openhealth.managers,openhealth.physicians,openhealth.staffs,openhealth.reception"
+>
 								<field name="doctor" options="{'no_create': True}"/>
 
 								<field name="vspace"/>
@@ -176,7 +181,11 @@
 								<field name="vspace"/>
 								<field name="indication"	/>
 							</group>
-							<group>
+
+
+<group
+groups="openhealth.directors,openhealth.managers,openhealth.physicians,openhealth.staffs,openhealth.reception"
+>
 								<field name="procedure"			invisible="0"	/>
 
 								<field name="vspace"/>
@@ -192,7 +201,7 @@
 								<field name="vspace"/>
 								<field name="observation"	/>
 							</group>
-							
+			
 							
 
 <!--

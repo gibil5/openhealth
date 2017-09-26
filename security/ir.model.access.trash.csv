@@ -154,7 +154,6 @@ access_sale_order_line_physicians,sale.order.line.physicians,model_sale_order_li
 access_openhealth_sale_document,openhealth.sale_document,model_openhealth_sale_document,,1,1,1,1
 
 
-access_sale_report,sale.report,model_sale_report,,1,1,1,1
 
 access_stock_picking_manager,stock.picking manager,model_stock_picking,openhealth.openhealth_caja,1,1,1,1
 

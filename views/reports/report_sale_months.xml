@@ -4,6 +4,23 @@
 
 
 
+<!--
+									('product_tmpl_id','in',[
+										1,
+										2, 
+										(4, ref('openhealth.con_med')),
+										]), 
+
+									('product_tmpl_id', '=', eval([ 
+																		(4, ref('openhealth.con_med')),
+																	])
+									), 
+
+
+		   						eval="[('product_tmpl_id', '=', ref('openhealth.con_med''))]
+-->
+
+
 		<!-- january --> 
 		<record id="action_order_report_january_all" model="ir.actions.act_window">
 
@@ -15,12 +32,14 @@
 			<field name="view_id"></field> 
 			<field name="search_view_id" ref="sale.view_order_product_search"/>
 
+
 		   <field name="domain">
-								[
-									('date','&lt;=',time.strftime('%%Y-02-01')),
-									('date','&gt;=',time.strftime('%%Y-01-01'))
-								]
+									[
+										('date','&lt;=',time.strftime('%%Y-02-01')),
+										('date','&gt;=',time.strftime('%%Y-01-01'))
+									]
 			</field>
+
 
 			<field name="context">{
 									'search_default_Sales':1, 

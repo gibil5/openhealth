@@ -20,7 +20,7 @@
 
 		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant\n
 
-		Last built: 	25 September 2017 - Yey !
+		Last built: 	26 September 2017 - Yey !
 
 		Created: 	 	7 Sep 2016
 
@@ -331,6 +331,7 @@
 
 		# Menus
 		'views/menus.xml',
+		'views/menus_reporting.xml',
 		'views/menus_openhealth.xml',
 
 

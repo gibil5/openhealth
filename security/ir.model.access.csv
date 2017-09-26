@@ -4,6 +4,10 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+access_sale_report,sale.report,model_sale_report,,1,1,1,1
+
+
+
 
 
 
@@ -68,6 +72,13 @@ access_sale_order_physicians,sale.order.physicians,model_sale_order,openhealth.p
 access_sale_order_reception,sale.order.reception,model_sale_order,openhealth.reception,1,0,0,0
 
 
+access_sale_order_assistants,sale.order.assistants,model_sale_order,openhealth.assistants,1,0,0,0
+
+
+
+
+
+
 
 
 access_sale_order_line_directors,sale.order.line.directors,model_sale_order_line,openhealth.directors,1,1,1,1
@@ -79,6 +90,9 @@ access_sale_order_line_caja,sale.order.line.caja,model_sale_order_line,openhealt
 access_sale_order_line_physicians,sale.order.line.physicians,model_sale_order_line,openhealth.physicians,1,1,1,1
 
 access_sale_order_line_reception,sale.order.line.reception,model_sale_order_line,openhealth.reception,1,0,0,0
+
+
+access_sale_order_line_assistants,sale.order.line.assistants,model_sale_order_line,openhealth.assistants,1,0,0,0
 
 
 
@@ -172,6 +186,8 @@ access_openhealth_control_managers,openhealth.control.managers,model_openhealth_
 
 access_openhealth_control_readers,openhealth.control.readers,model_openhealth_control,openhealth.hc_readers,1,0,0,0
 
+
+access_openhealth_control_assistants,openhealth.control.assistants,model_openhealth_control,openhealth.assistants,1,1,0,0
 
 
 

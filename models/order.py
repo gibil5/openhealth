@@ -237,8 +237,8 @@ class sale_order(models.Model):
 	x_month = fields.Char(
 			string='Month', 
 			
-			#required=False, 
 			#store=True, 
+			required=False, 
 
 			compute="_compute_x_month",
 		)
@@ -422,7 +422,9 @@ class sale_order(models.Model):
 			#selection = jxvars._family_list, 
 			selection = treatment_vars._family_list, 
 
-			required=True, 
+
+			#required=True, 
+			required=False, 
 		)
 
 
@@ -666,7 +668,9 @@ class sale_order(models.Model):
 	x_product = fields.Many2one(
 			'product.template',			
 			string="Producto",
+			
 			#required=True, 
+			required=False, 
 			
 
 			domain = [
@@ -704,7 +708,10 @@ class sale_order(models.Model):
 	# Treatment
 	x_treatment = fields.Char(
 			#string="Tratamiento",
+			
 			#required=True, 
+			required=False, 
+			
 			compute='_compute_x_treatment', 
 			)
 
@@ -735,6 +742,8 @@ class sale_order(models.Model):
 			string='Cita', 
 
 			#required=True, 
+			required=False, 
+
 			compute='_compute_x_appointment', 
 			)
 
@@ -1303,6 +1312,7 @@ class sale_order(models.Model):
 			string="Código", 
 						
 			#required=True, 
+			required=False, 
 		)
 
 
@@ -1315,6 +1325,7 @@ class sale_order(models.Model):
 			string="RUC", 
 						
 			#required=True, 
+			required=False, 
 		)
 
 
@@ -1342,7 +1353,9 @@ class sale_order(models.Model):
 			selection = app_vars._machines_list, 
 			
 			compute='_compute_x_machine', 
+		
 			#required=True, 
+			required=False, 
 		)
 
 
@@ -1355,7 +1368,9 @@ class sale_order(models.Model):
 			#readonly=True,
 
 			compute='_compute_x_appointment_date', 
+			
 			#required=True, 
+			required=False, 
 			)
 
 
@@ -1364,7 +1379,9 @@ class sale_order(models.Model):
 			#readonly=True, 
 
 			compute='_compute_x_duration', 
+			
 			#required=True, 		
+			required=False, 
 			)
 
 
@@ -1524,7 +1541,9 @@ class sale_order(models.Model):
 			string='Nr líneas',
 			
 			compute='_compute_nr_lines', 
+
 			#required=True, 
+			required=False, 
 			)
 
 	@api.multi

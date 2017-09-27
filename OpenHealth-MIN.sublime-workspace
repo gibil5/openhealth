@@ -110,7 +110,7 @@
 			"file": "models/order_line.py",
 			"settings":
 			{
-				"buffer_size": 786,
+				"buffer_size": 1019,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -874,20 +874,21 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 786,
+						"buffer_size": 1019,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								253,
-								253
+								303,
+								303
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.sublime-syntax"
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 212.0,

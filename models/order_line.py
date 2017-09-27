@@ -49,6 +49,16 @@ class sale_order_line(models.Model):
 
 
 
+	order_id = fields.Many2one('sale.order', string='Order Reference', 
+		
+		#required=True, 
+		required=False, 
+		
+		ondelete='cascade', index=True, copy=False)
+
+
+
+
 	x_price_vip = fields.Float(
 			string="Precio Vip",
 

@@ -12,15 +12,29 @@
 
  
 
-<!-- Revilla --> 
-<!--
-		<record id="dr_revilla" model="oeh.medical.physician">
-			<field name="name">Dr. Revilla</field>
+
+
+<!-- Medico -->
+		<record id="ava_med_thu" model="oeh.medical.physician.line">
+			<field name="physician_id" ref="dr_medico"/>
+			<field name="name">Thursday</field>
+			<field name="end_time">21.0166666667</field>
+			<field name="start_time">8.98333333333</field>
+		</record>
+
+		<record id="dr_medico" model="oeh.medical.physician">
+			<field name="name">Dr. Medico</field>
 			<field name="x_type">doctor</field>
 			<field name=" consultancy_type ">residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
 		</record>
--->
+
+		<record id="dr_medico" model="oeh.medical.physician">
+			<field name="line_id" ref="ava_med_thu"/>
+		</record>
+
+
+
 
 
 
@@ -749,6 +763,18 @@
 			<field name="phone"></field>
 			<field name="email">info@yourcompany.com</field>
 			<field name="website">www.yourcompany.com</field>
+		</record>
+-->
+
+
+
+<!-- Revilla --> 
+<!--
+		<record id="dr_revilla" model="oeh.medical.physician">
+			<field name="name">Dr. Revilla</field>
+			<field name="x_type">doctor</field>
+			<field name=" consultancy_type ">residential</field>
+			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
 		</record>
 -->
 

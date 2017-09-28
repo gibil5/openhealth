@@ -2,7 +2,7 @@
 #
 # 	Order 
 # 
-#
+
 
 from openerp import models, fields, api
 import datetime
@@ -20,6 +20,47 @@ class sale_order(models.Model):
 	#_name = 'openhealth.order'
 	_inherit='sale.order'
 	
+
+
+
+
+
+	# Doctor 
+
+	_dic_docuser = {
+						'Dr. Medico': 		'Medico', 
+						'Dr. Chavarri': 	'Fernando Chavarri', 
+						'Dr. Canales': 		'Paul Canales', 
+
+						'Dr. Escudero':		'Carlos Escudero', 
+						'Dr. Gonzales':		'Leo Gonzales', 
+						'Dr. Vasquez':		'Javier Vasquez', 
+						'Dr. Alarcon': 		'Guillermo Alarcon', 
+						'Dr. Monteverde':	'Piero Monteverde', 
+
+						'Dr. Mendez':		'Carlos Mendez', 
+						'Dra. Acosta':		' Desiree Acosta', 
+						'Dra. Pedemonte':	'Maria Luisa Pedemonte', 
+
+						'Eulalia':			'Eulalia Ruiz', 
+					}
+	
+
+
+	x_doctor = fields.Many2one(
+			'oeh.medical.physician',
+			string = "Médico", 	
+		)
+
+	@api.onchange('x_doctor')	
+	def _onchange_x_doctor(self):
+
+		user_name = self._dic_docuser[self.x_doctor.name]
+
+		#self.user_id = self._dic_docuser[self.x_doctor.name]
+		self.user_id = self.env['res.users'].search([('name', '=', user_name)]).id 
+
+
 
 
 
@@ -309,7 +350,6 @@ class sale_order(models.Model):
 	# Doctor name  
 	x_doctor_name = fields.Char(
 		)
-
 	doctor_name = fields.Char(
 								default = 'generic doctor',
 		)
@@ -767,11 +807,6 @@ class sale_order(models.Model):
 
 
 
-	# Doctor 
-	x_doctor = fields.Many2one(
-			'oeh.medical.physician',
-			string = "Médico", 	
-		)
 
 
 # ----------------------------------------------------------- Relational ------------------------------------------------------

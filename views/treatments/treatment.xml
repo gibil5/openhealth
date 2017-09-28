@@ -118,10 +118,11 @@ jz
 							attrs="{'invisible':[												
 													('consultation_progress','in',[ False, '0.0', 0.0, 0, '10.0', 10.0, 10]),
 												]}"
+
+
+							groups="openhealth.managers,openhealth.physicians"
 -->
 						<button 
-							groups="openhealth.managers,openhealth.physicians"
-
 
 							type="object" 
 
@@ -144,10 +145,12 @@ jz
 												('state','in',[ False, 'appointment', 'service', 'budget', 'invoice', 'procedure', 'sessions', 'controls', 'done']),
 												]}"
 							string="Crear RECOMENDACION" 
+
+
+
+							groups="openhealth.managers,openhealth.physicians"
 -->
 						<button 
-							groups="openhealth.managers,openhealth.physicians"
-
 
 							type="object" 
 
@@ -181,9 +184,11 @@ jz
 
 
 jz
+
+
+							groups="openhealth.managers,openhealth.physicians"
 -->						
 						<button 
-							groups="openhealth.managers,openhealth.physicians"
 
 
 							type="object" 
@@ -224,9 +229,10 @@ jz
 												('state','in',[ False, 'appointment', 'consultation', 'service', 'budget', 'procedure', 'sessions', 'controls', 'done']), 
 												
 												]}"
+
+							groups="openhealth.managers,openhealth.physicians"
 -->
 						<button 
-							groups="openhealth.managers,openhealth.physicians"
 
 
 							type="object" 

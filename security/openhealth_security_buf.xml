@@ -304,6 +304,7 @@
 			<field name="users" eval="[ 
 										(4, ref('openhealth.medico_clinicachavarri')),
 
+
 										(4, ref('openhealth.cescudero_clinicachavarri')),
 										(4, ref('openhealth.cmendez_clinicachavarri')),
 										(4, ref('openhealth.dacosta_clinicachavarri')),

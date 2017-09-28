@@ -39,6 +39,10 @@ _hash_doctor_code = {
 							'Eulalia 2':	'EU2',
 							'Eulalia 3':	'EU3',							
 
+
+
+							'Dr. Medico':		'CH',
+
 							False:				'', 
 		}
 

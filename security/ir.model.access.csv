@@ -71,8 +71,12 @@ access_sale_order_physicians,sale.order.physicians,model_sale_order,openhealth.p
 
 access_sale_order_reception,sale.order.reception,model_sale_order,openhealth.reception,1,0,0,0
 
-
 access_sale_order_assistants,sale.order.assistants,model_sale_order,openhealth.assistants,1,0,0,0
+
+
+
+access_sale_order_staffs,sale.order.staffs,model_sale_order,openhealth.staffs,1,0,0,0
+
 
 
 

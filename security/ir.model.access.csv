@@ -77,6 +77,7 @@ access_sale_order_assistants,sale.order.assistants,model_sale_order,openhealth.a
 
 access_sale_order_staffs,sale.order.staffs,model_sale_order,openhealth.staffs,1,0,0,0
 
+access_sale_order_almacens,sale.order.almacens,model_sale_order,openhealth.almacens,1,0,0,0
 
 
 
@@ -101,6 +102,7 @@ access_sale_order_line_assistants,sale.order.line.assistants,model_sale_order_li
 
 access_sale_order_line_staffs,sale.order.line.staffs,model_sale_order_line,openhealth.staffs,1,0,0,0
 
+access_sale_order_line_almacens,sale.order.line.almacens,model_sale_order_line,openhealth.almacens,1,0,0,0
 
 
 

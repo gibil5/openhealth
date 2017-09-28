@@ -8,7 +8,7 @@
 
 <!-- Platform --> 
 		<menuitem 	id="sales_reports_pla_menu" 
-					name="Reporting Mensual - 2017"
+					name="Reporting Mensual - 2017 - Pla"
 					parent="main_reporting_menu"
 					sequence="5"
 

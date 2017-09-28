@@ -154,6 +154,7 @@
 		</record>
 
 
+
 		<!-- April --> 
 		<record id="action_order_report_april_pla" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Abril</field>
@@ -272,6 +273,10 @@
 
 		   <field name="domain">
 								[
+										'|', 
+										('categ_id','=','Consultas'), 
+										('categ_id','=','Tarjetas'),
+
 									('date','&lt;=',time.strftime('%%Y-08-01')),
 									('date','&gt;=',time.strftime('%%Y-07-01'))
 								]
@@ -302,6 +307,10 @@
 
 		   <field name="domain">
 								[
+										'|', 
+										('categ_id','=','Consultas'), 
+										('categ_id','=','Tarjetas'),
+
 									('date','&lt;=',time.strftime('%%Y-09-01')),
 									('date','&gt;=',time.strftime('%%Y-08-01'))
 								]
@@ -366,6 +375,10 @@
 
 		   <field name="domain">
 								[
+										'|', 
+										('categ_id','=','Consultas'), 
+										('categ_id','=','Tarjetas'),
+
 									('date','&lt;=',time.strftime('%%Y-11-01')),
 									('date','&gt;=',time.strftime('%%Y-10-01'))
 								]
@@ -396,6 +409,10 @@
 
 		   <field name="domain">
 								[
+										'|', 
+										('categ_id','=','Consultas'), 
+										('categ_id','=','Tarjetas'),
+
 									('date','&lt;=',time.strftime('%%Y-12-01')),
 									('date','&gt;=',time.strftime('%%Y-11-01'))
 								]
@@ -426,6 +443,10 @@
 
 		   <field name="domain">
 								[
+										'|', 
+										('categ_id','=','Consultas'), 
+										('categ_id','=','Tarjetas'),
+
 									('date','&lt;=',time.strftime('2018-01-01')),
 									('date','&gt;=',time.strftime('%%Y-12-01'))
 								]

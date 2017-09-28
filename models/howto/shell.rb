@@ -29,6 +29,12 @@ self.env['res.partner'].search([('name', 'like', 'J')])
 
 
 
+self.env['product.pricelist'].search([('name', 'like', 'P')])
+self.env['product.pricelist'].search([('name', '=', 'Public Pricelist')])
+
+
+
+
 
 
 self.env['res.users']

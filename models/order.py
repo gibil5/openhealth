@@ -23,6 +23,26 @@ class sale_order(models.Model):
 
 
 
+	# Open Treatment
+	@api.multi 
+	def _get_default_pl(self):
+
+		pl = self.env['product.pricelist'].search([('name', '=', 'Public Pricelist')]).id 
+
+		return pl
+
+
+
+	pricelist_id = fields.Many2one(
+		'product.pricelist', 
+		
+		default=lambda self: self._get_default_pl(),
+
+		string='Pricelist', required=True, readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}, help="Pricelist for current sales order.")
+
+
+
+
 	partner_invoice_id = fields.Many2one('res.partner', string='Invoice Address', readonly=True, 
 
 		#required=True, 

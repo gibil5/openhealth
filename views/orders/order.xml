@@ -1110,6 +1110,9 @@ Order Line - Tree
 
                     <field name="name"	 />
 
+                    <field name="date_order"	/>
+
+
 					<field name="note"   />  
 
 
@@ -1189,7 +1192,6 @@ Order Line - Tree
 					<field name="x_month"/>
 					<field name="x_year"/>
 
-                    <field name="date_order"	/>
 
 <!--
                     <field name="name" string="Order Number"/>

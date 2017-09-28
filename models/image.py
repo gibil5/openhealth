@@ -68,18 +68,26 @@ class Image(models.Model):
 
 
 
+
+
 	# Name 	
-	_name_list = [
-		('Frente', 'Frente'),
-		('Izquierda', 'Izquierda'),
-		('Derecha', 'Derecha'),
-		]
-	name = fields.Selection(
-		selection=_name_list,
+	#_name_list = [
+	#	('Frente', 'Frente'),
+	#	('Izquierda', 'Izquierda'),
+	#	('Derecha', 'Derecha'),
+	#	]
+
+	#name = fields.Selection(
+	name = fields.Char(
+
+		#selection=_name_list,
+		
 		required=True,
 		#string='Image title',
 		string='Nombre',
 		translate=True)
+
+
 
 
 

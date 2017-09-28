@@ -156,8 +156,10 @@
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 
-            <field name="domain">[            	
+            <field name="domain">[  
+
 									('type', '=', 'product'),
+            
             					]</field>
 
             <!--
@@ -186,10 +188,13 @@
 			
 			<field name="view_mode">tree,kanban,form</field>
 
+<!--
+
+-->
+
             <field name="domain">[            	
 
-									('type', '=', 'product'),
-            	
+									('type', '=', 'product'),	
 									('x_origin', '=', False),
 
             					]</field>

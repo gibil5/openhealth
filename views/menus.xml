@@ -29,7 +29,7 @@
 					name="Historias Médicas"
 					parent="main_emr_menu"
 
-					groups="openhealth.reception,openhealth.assistants,openhealth.physicians,openhealth.managers,openhealth.directors"
+					groups="openhealth.reception,openhealth.staffs,openhealth.assistants,openhealth.physicians,openhealth.managers,openhealth.directors"
 					/>
 
 		<menuitem 	id="emr_patients_menu" 
@@ -38,7 +38,7 @@
 					sequence="1"
 					action="patient_list_action"
 
-					groups="openhealth.reception,openhealth.assistants,openhealth.physicians,openhealth.managers,openhealth.directors"
+					groups="openhealth.reception,openhealth.staffs,openhealth.assistants,openhealth.physicians,openhealth.managers,openhealth.directors"
 					/>
 
 
@@ -63,7 +63,7 @@
 					parent="emr_menu" 
 					sequence="2"
 
-					groups="openhealth.managers,openhealth.directors"
+					groups="openhealth.directors"
 					/>
 
 

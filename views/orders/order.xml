@@ -933,9 +933,9 @@ Order Line - Tree
 				<field name="partner_id" position="after">
 <!--				
 					<field name="x_partner_name"/>
+                    <field name="user_id"/>
 -->
 
-                    <field name="user_id"/>
 					<field name="vspace"/>
 
 					<field name="x_doctor"/>

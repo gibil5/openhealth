@@ -23,6 +23,27 @@ class sale_order(models.Model):
 
 
 
+	partner_invoice_id = fields.Many2one('res.partner', string='Invoice Address', readonly=True, 
+
+		#required=True, 
+		required=False, 
+
+		states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}, help="Invoice address for current sales order.")
+
+
+	partner_shipping_id = fields.Many2one('res.partner', string='Delivery Address', readonly=True, 
+
+		#required=True, 
+		required=False, 
+
+		states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}, help="Delivery address for current sales order.")
+
+
+
+
+
+
+
 	#name = fields.Char(
 	#		string="Presupuesto #"
 	#	)

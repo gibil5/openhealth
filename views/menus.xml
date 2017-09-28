@@ -292,19 +292,16 @@
 
 
 <!-- Productos -->
-<!--
-			groups="openhealth.reception,openhealth.managers,openhealth.directors"
--->
-		<!-- Appointments -->
 		<menuitem id="main_products_menu" 
 			sequence="-7"
 			name="Productos"
 
-			groups="openhealth.directors,openhealth.managers,openhealth.physicians,openhealth.assistants,openhealth.reception"
+			groups="openhealth.directors,openhealth.managers,openhealth.physicians,openhealth.assistants,openhealth.staffs,openhealth.reception"
 			
 			/>
 
 
+		<!-- Productos -->
 		<menuitem id="products_menu" 
 			name="Productos"
 			parent="main_products_menu"

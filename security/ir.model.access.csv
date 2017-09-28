@@ -99,6 +99,7 @@ access_sale_order_line_reception,sale.order.line.reception,model_sale_order_line
 access_sale_order_line_assistants,sale.order.line.assistants,model_sale_order_line,openhealth.assistants,1,0,0,0
 
 
+access_sale_order_line_staffs,sale.order.line.staffs,model_sale_order_line,openhealth.staffs,1,0,0,0
 
 
 

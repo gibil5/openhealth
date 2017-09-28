@@ -110,7 +110,7 @@
 			"file": "models/order_line.py",
 			"settings":
 			{
-				"buffer_size": 1019,
+				"buffer_size": 1182,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -874,15 +874,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1019,
+						"buffer_size": 1182,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								303,
-								303
+								937,
+								937
 							]
 						],
 						"settings":
@@ -891,7 +891,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 212.0,
+						"translation.y": 365.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1615,7 +1615,7 @@
 		[
 			[
 				"",
-				"~/Virtualenvs/Odoo9/odoo/addons/web_calendar/web-calendar.sublime-project"
+				"~/Documents/Aptana Studio 3 Workspace/ccdata/ccData.sublime-project"
 			]
 		],
 		"width": 380.0

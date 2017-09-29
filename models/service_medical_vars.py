@@ -127,11 +127,11 @@ _med_pla_list = [
 		#('plasma',		''),	
 
 		('plasma_head_rejuvenation_1',		'Rejuvenecimiento Capilar - 1 Sesión'),	
-
-		('plasma_head_rejuvenation_2',		'Rejuvenecimiento Capilar - 2 Sesiones'),	
+		#('plasma_head_rejuvenation_2',		'Rejuvenecimiento Capilar - 2 Sesiones'),
 		('plasma_head_rejuvenation_3',		'Rejuvenecimiento Capilar - 3 Sesiones'),	
+		
 		('plasma_face_rejuvenation_1',		'Rejuvenecimiento Facial - 1'),	
-		('plasma_face_rejuvenation_2',		'Rejuvenecimiento Facial - 2'),	
+		#('plasma_face_rejuvenation_2',		'Rejuvenecimiento Facial - 2'),	
 		('plasma_face_rejuvenation_3',		'Rejuvenecimiento Facial - 3'),	
 
 		('none',''),

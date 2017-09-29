@@ -23,6 +23,21 @@ _hash_tre_mac = {
 		'laser_ndyag': 									'laser_m22',
 
 
+
+
+		# Medical
+		'criosurgery': 				'criosurgery', 
+		'botulinum_toxin': 			'botulinum_toxin', 
+		'hyaluronic_acid': 			'hyaluronic_acid', 
+		'hyaluronic_acid_repair': 	'hyaluronic_acid_repair', 
+		'intravenous_vitamin': 		'intravenous_vitamin', 
+		'lepismatic': 				'lepismatic', 
+		'mesotherapy_nctf': 		'mesotherapy_nctf', 
+		'plasma': 					'plasma', 
+		'sclerotherapy': 			'sclerotherapy', 
+
+
+
 		False:	'', 
 	}
 

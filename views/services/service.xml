@@ -75,10 +75,10 @@
 									<field name="x_treatment" 	readonly="1"   	invisible="0"/>
 
 									<field name="vspace" />
-									<field name="zone" 			readonly="1"   	invisible="1"/>
-									<field name="pathology" 	readonly="1"  	invisible="1"/>									
-									<field name="sessions" 		readonly="1"  	invisible="1"/>									
-									<field name="time" 			readonly="1"  	invisible="1"/>									
+									<field name="zone" 			readonly="1"   	invisible="0"/>
+									<field name="pathology" 	readonly="1"  	invisible="0"/>									
+									<field name="sessions" 		readonly="1"  	invisible="0"/>									
+									<field name="time" 			readonly="1"  	invisible="0"/>									
 <!--
 									<field name="zone" 			/>
 									<field name="pathology" 	/>									

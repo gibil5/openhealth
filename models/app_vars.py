@@ -80,18 +80,36 @@ _machines_cos_list = [
 # Machines
 _machines_list = [
 
+		# Consultation 
 		('consultation','consultation'), 
 
+		# Laser 
 		('laser_co2_1','Co2 1'), 
 		('laser_co2_2','Co2 2'), 
 		('laser_co2_3','Co2 3'), 
 		('laser_excilite','Excilite'), 
 		('laser_m22','M22'), 
 
+
+		# Cos
 		('laser_triactive','Triactivo'), 
 		('chamber_reduction','Cámara de reducción'), 
 		('carboxy_diamond','Carboxiterapia - Punta de Diamante'), 
-		
+
+
+
+		# Medical 
+		('criosurgery', 			'Criocirugía'), 
+		('botulinum_toxin', 		'Toxina botulínica'), 
+		('hyaluronic_acid', 		'Acido hialurónico'), 
+		('hyaluronic_acid_repair', 	'Acido hialurónico - Repair'), 
+		('intravenous_vitamin', 	'Vitamina intravenosa'), 
+		('lepismatic', 				'Lepismático'), 
+		('mesotherapy_nctf', 		'Mesoterapia NCTF'), 
+		('plasma', 					'Plasma'), 
+		('sclerotherapy', 			'Escleroterapia'), 
+
+
 		#('none','Ninguna'), 		
 ]
 

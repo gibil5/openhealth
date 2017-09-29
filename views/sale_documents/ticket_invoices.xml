@@ -20,11 +20,11 @@
 					<h1>Ticket factura</h1>					
 				</xpath>
 
-
+<!--
 				<xpath expr="//field[@name='name']" position="replace">
 					<field name="name" />
 				</xpath>
-
+-->
 
 			</field>
 		</record>

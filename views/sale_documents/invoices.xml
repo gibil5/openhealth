@@ -20,15 +20,15 @@
 					<h1>Factura</h1>					
 				</xpath>
 
-
+<!--
 				<xpath expr="//field[@name='name']" position="replace">
-					<field name="name" />
+					<field name="name" 	readonly="1"	/>
 				</xpath>
-
+-->
 
 				<xpath expr="//field[@name='total']" position="after">
 					<field name="vspace" />
-					<field name="ruc" />
+					<field name="ruc"	required="1"		 />
 				</xpath>
 
 			</field>

@@ -21,12 +21,12 @@
 					<h1>Canje publicidad</h1>					
 				</xpath>
 
-
+<!--
 
 				<xpath expr="//field[@name='name']" position="replace">
-					<field name="name" />
+					<field name="name" 		/>
 				</xpath>
-
+-->
 
 			</field>
 		</record>

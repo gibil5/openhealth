@@ -58,12 +58,14 @@ class ServiceMedical(models.Model):
 			string="Lepismático",
 			)
 
+
 	# Plasma
 	med_pla = fields.Selection(
 			selection = service_medical_vars._med_pla_list, 
 			default='none',	
 			string="Plasma",
 			)
+
 
 	# Botulinic Toxin
 	med_bot = fields.Selection(
@@ -145,12 +147,22 @@ class ServiceMedical(models.Model):
 			self.zone = '1_hypodermic'
 			self.pathology = 'rejuvenation_face'
 
-			serv_funcs.product_medical(self)
+			#self.sessions = '1'
+
+			
+			#serv_funcs.product_medical(self)
+
+
 			return {
 				'domain': {'service': [
+										
 										('x_treatment', '=', self.x_treatment),
+
+										('x_origin', '=', False),
+
 										]},
 			}
+
 
 
 
@@ -230,13 +242,16 @@ class ServiceMedical(models.Model):
 			self.sessions = 		pla_dic['sessions']
 
 
-			serv_funcs.product_medical(self)
+			#serv_funcs.product_medical(self)
+
 			return {
 				'domain': {'service': [
 											('x_treatment', '=', self.x_treatment),
 											('x_zone', '=', self.zone),
 											('x_pathology', '=', self.pathology),										
 											('x_sessions', '=', self.sessions),
+
+											('x_origin', '=', False),
 										]},
 			}
 

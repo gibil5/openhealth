@@ -60,8 +60,12 @@ class Procedure(models.Model):
 	def _compute_machine(self):
 		for record in self:
 			tre = record.product.x_treatment
+
 			mac = cosvars._hash_tre_mac[tre]
+			
 			record.machine = mac
+
+
 
 
 

@@ -50,6 +50,11 @@ def product_m22(self):
 @api.multi
 def product_medical(self):
 
+	print 'jx'
+	print self.x_treatment
+	print self.sessions
+	print 
+
 	self.service = self.env['product.template'].search([	
 													('x_treatment', '=', self.x_treatment),	
 													

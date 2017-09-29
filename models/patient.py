@@ -389,6 +389,28 @@ class Patient(models.Model):
 
 
 
+	# Dictionary - For Reports 
+	_dic = {
+				'Male':		'Masculino', 
+				'Female':	'Femenino', 
+				'none':		'Ninguno', 
+				'':			'', 
+			}
+
+
+	#x_sex_name = fields.Char(
+	#		'Sexo', 
+	#		required=True, 
+	#		compute='_compute_x_sex_name', 
+	#	)
+	#@api.multi
+	#def _compute_x_sex_name(self):
+	#	for record in self:
+	#		record.x_sex_name = record._dic[record.sex] 
+
+
+
+
 
 
 	# For Ccdata compatibility 

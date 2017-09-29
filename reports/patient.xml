@@ -1,6 +1,7 @@
 <openerp>
 	<data>
 
+
 <report
 	string="HC - Hoja de Filiacion"
 
@@ -110,9 +111,9 @@
 <th>Sexo:</th>
 <!--
 <th><t t-esc="doc.x_sex_name"/></th>
+<th><t t-esc="doc.sex"/></th>
 -->
 <th><t t-esc="doc._dic[doc.sex]"/></th>
-
 </tr>
 
 

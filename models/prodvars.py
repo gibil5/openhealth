@@ -125,27 +125,44 @@ _treatment_list = [
 
 # Laser
 _laser_type_list = [
+
+		# Consultation 
 		('consultation',			'consultation'), 
 
 
+		# Laser 
 		('laser_co2','Laser Co2'), 
 		('laser_excilite','Laser Excilite'), 
 		('laser_ipl','Laser Ipl'), 
 		('laser_ndyag','Laser Ndyag'), 
 
-		('medical','Tratamiento médico'), 
 
+
+
+		# Medical 
+		('medical',					'Tratamiento médico'), 
+		
+		('criosurgery', 			'Criocirugía'), 
+		('botulinum_toxin', 		'Toxina botulínica'), 
+		('hyaluronic_acid', 		'Acido hialurónico'), 
+		('hyaluronic_acid_repair', 	'Acido hialurónico - Repair'), 
+		('intravenous_vitamin', 	'Vitamina intravenosa'), 
+		('lepismatic', 				'Lepismático'), 
+		('mesotherapy_nctf', 		'Mesoterapia NCTF'), 
+		('plasma', 					'Plasma'), 
+		('sclerotherapy', 			'Escleroterapia'), 
+
+
+
+
+		# Cosmetology
 		('cosmetology','Cosmiatría'), 		
 
-
-
-
 		# Cos 
-		('diamond_tip',			'diamond_tip'), 
-		('triactive_carboxytherapy_reductionchamber',			'triactive_carboxytherapy_reductionchamber'), 
-		('carboxytherapy',			'carboxytherapy'), 
-		('triactive_carboxytherapy',			'triactive_carboxytherapy'), 
-
+		('diamond_tip',									'diamond_tip'), 
+		('triactive_carboxytherapy_reductionchamber',	'triactive_carboxytherapy_reductionchamber'), 
+		('carboxytherapy',								'carboxytherapy'), 
+		('triactive_carboxytherapy',					'triactive_carboxytherapy'), 
 
 
 

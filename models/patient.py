@@ -398,6 +398,9 @@ class Patient(models.Model):
 			}
 
 
+
+
+
 	#x_sex_name = fields.Char(
 	#		'Sexo', 
 	#		required=True, 

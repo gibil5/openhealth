@@ -148,11 +148,12 @@ Datos Generales
 </tr>
 
 <!--
--->
+<th><t t-esc="s._zo_dic[s.zone]"/></th>
+<th><t t-esc="s.s.zone"/></th>
 <tr>
 <th>Zona del cuerpo:</th>
-<th><t t-esc="s._zo_dic[s.zone]"/></th>
 </tr>
+-->
 
 </t>
 </t>

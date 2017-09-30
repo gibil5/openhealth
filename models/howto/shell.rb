@@ -18,7 +18,7 @@ self.env
 
 
 
-s= self.env['product.template'].search([  ('x_treatment', '=', 'hyaluronic_acid'), ('x_sessions', '=', 1) ])
+s= self.env['product.template'].search([  ('x_treatment', '=', 'hyaluronic_acid'), ('x_sessions', '=', '1') ])
 
 
 

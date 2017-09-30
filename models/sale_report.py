@@ -12,19 +12,17 @@ from . import treatment_vars
 
 class sale_report(models.Model):
 	
-
 	_inherit='sale.report'
 
-	#_name = 'sale.report.pla'
 
-	
+
+
+
 
 
 	note = fields.Char(
-
 			#string="Nota",		
 			string="Note - jx",		
-			
 			readonly=True
 		)
 
@@ -33,6 +31,20 @@ class sale_report(models.Model):
 	price_subtotal = fields.Float(
 		groups="openhealth.physicians,openhealth.managers,openhealth.directors"
 	)
+
+
+
+
+#	x_doctor = fields.Char(
+#			string = "Doctor - jx", 	
+#	)
+
+#x_doctor: fields.char('Doctor - jx')
+
+
+#'x_doctor': fields.many2one('oeh.medical.physician','Médico')
+
+
 
 
 

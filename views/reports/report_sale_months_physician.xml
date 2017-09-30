@@ -275,7 +275,11 @@
 
 
 
+
 		<!-- september --> 
+<!--
+('user_id','=','Medico'), 
+-->
 		<record id="action_order_report_september_phy" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Setiembre - Phy</field>
 			<field name="res_model">sale.report</field>
@@ -286,7 +290,7 @@
 
 		   <field name="domain">
 								[
-										('user_id','=','Medico'), 
+										('x_doctor','=','Dr. Chavarri'), 
 
 									('date','&lt;=',time.strftime('%%Y-10-01')),
 									('date','&gt;=',time.strftime('%%Y-09-01'))

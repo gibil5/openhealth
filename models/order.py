@@ -1,7 +1,12 @@
 # -*- coding: utf-8 -*-
 #
+#
 # 	Order 
 # 
+# Created: 				26 Aug 2016
+# Last updated: 	 	29 Sep 2017
+
+
 
 
 from openerp import models, fields, api
@@ -26,39 +31,46 @@ class sale_order(models.Model):
 
 
 	# Doctor 
-
-	_dic_docuser = {
-						'Dr. Medico': 		'Medico', 
-						'Dr. Chavarri': 	'Fernando Chavarri', 
-						'Dr. Canales': 		'Paul Canales', 
-
-						'Dr. Escudero':		'Carlos Escudero', 
-						'Dr. Gonzales':		'Leo Gonzales', 
-						'Dr. Vasquez':		'Javier Vasquez', 
-						'Dr. Alarcon': 		'Guillermo Alarcon', 
-						'Dr. Monteverde':	'Piero Monteverde', 
-
-						'Dr. Mendez':		'Carlos Mendez', 
-						'Dra. Acosta':		' Desiree Acosta', 
-						'Dra. Pedemonte':	'Maria Luisa Pedemonte', 
-
-						'Eulalia':			'Eulalia Ruiz', 
-					}
+	#_dic_docuser = {
+	#					'Dr. Medico': 		'Medico', 
+	#					'Dr. Chavarri': 	'Fernando Chavarri', 
+	#					'Dr. Canales': 		'Paul Canales', 
+	#					'Dr. Escudero':		'Carlos Escudero', 
+	#					'Dr. Gonzales':		'Leo Gonzales', 
+	#					'Dr. Vasquez':		'Javier Vasquez', 
+	#					'Dr. Alarcon': 		'Guillermo Alarcon', 
+	#					'Dr. Monteverde':	'Piero Monteverde', 
+	#					'Dr. Mendez':		'Carlos Mendez', 
+	#					'Dra. Acosta':		' Desiree Acosta', 
+	#					'Dra. Pedemonte':	'Maria Luisa Pedemonte', 
+	#					'Eulalia':			'Eulalia Ruiz', 
+	#				}
 	
-
 
 	x_doctor = fields.Many2one(
 			'oeh.medical.physician',
 			string = "Médico", 	
 		)
 
-	@api.onchange('x_doctor')	
-	def _onchange_x_doctor(self):
+	#@api.onchange('x_doctor')	
+	#def _onchange_x_doctor(self):
+	#	user_name = self._dic_docuser[self.x_doctor.name]
+	#	self.user_id = self.env['res.users'].search([('name', '=', user_name)]).id 
 
-		user_name = self._dic_docuser[self.x_doctor.name]
 
-		#self.user_id = self._dic_docuser[self.x_doctor.name]
-		self.user_id = self.env['res.users'].search([('name', '=', user_name)]).id 
+
+
+
+	user_id = fields.Many2one('res.users', string='Salesperson', index=True, track_visibility='onchange', default=lambda self: self.env.user)
+
+	#@api.multi
+	#@api.depends('x_doctor')
+	#def _compute_user_id(self):
+	#	for record in self:
+	#		if record.x_doctor.name != False:
+	#			user_name = record._dic_docuser[record.x_doctor.name]
+	#			record.user_id = record.env['res.users'].search([('name', '=', user_name)]).id 
+
 
 
 
@@ -2206,6 +2218,35 @@ class sale_order(models.Model):
 
 
 
+
+
+# Write - Deprecated ?
+	@api.multi
+	def write(self,vals):
+
+		print 
+		print 'CRUD - Order - Write'
+		print 
+		print vals
+		#print 
+		#print 
+
+		#if vals['x_doctor'] != False: 
+		#	print vals['x_doctor']
+		#if vals['user_id'] != False: 
+		#	print vals['user_id']
+
+
+
+		#Write your logic here
+		res = super(sale_order, self).write(vals)
+		#Write your logic here
+		print 
+		print 
+
+		return res
+
+	# CRUD 
 
 
 

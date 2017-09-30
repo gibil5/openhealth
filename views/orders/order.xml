@@ -374,10 +374,9 @@
 
 					<!-- Treatment --> 
 <!--
+							groups="openhealth.managers"
 -->
 					<button 
-							groups="openhealth.managers"
-
 							name="open_treatment"
 
 							type="object" 
@@ -418,19 +417,14 @@
 							attrs="{'invisible':	[('x_state', 'in', ['payment', 'proof', 'machine', 'sale', 'invoice'] ),	]}"
 
 							string="Módulo de Pago"
+							groups="openhealth.managers,openhealth.caja"
 -->					
 					<button 
-							groups="openhealth.managers,openhealth.caja"
-
-
 							type="object" 
 							class="oe_highlight"
-
+							states="draft"						
 
 							string="Pagar"
-
-
-							states="draft"						
 
 							name="create_payment_method"
 							/>
@@ -543,7 +537,6 @@
 							class="oe_highlight"
 
 							string="Reservar la Sala"
-
 
 
 							attrs="{'invisible':[	'|',

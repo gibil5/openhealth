@@ -118,6 +118,8 @@
 
 		<!-- HC Managers --> 
 <!--
+-->
+
 		<record id="openhealth.hc_managers" model="res.groups">
 			<field name="name">HC Managers</field>
 			<field name="category_id" ref="module_openhealth_category"/>
@@ -126,25 +128,11 @@
 
 										(4, ref('openhealth.director_clinicachavarri')),
 
-										(4, ref('openhealth.plataforma_clinicachavarri')),
-
-
 
 										(4, ref('openhealth.medico_clinicachavarri')),
 
-										(4, ref('openhealth.cescudero_clinicachavarri')),
-										(4, ref('openhealth.cmendez_clinicachavarri')),
-										(4, ref('openhealth.dacosta_clinicachavarri')),
-										(4, ref('openhealth.fchavarri_clinicachavarri')),
-										(4, ref('openhealth.galarcon_clinicachavarri')),
-										(4, ref('openhealth.jvasquez_clinicachavarri')),
-										(4, ref('openhealth.lgonzales_clinicachavarri')),
-										(4, ref('openhealth.pcanales_clinicachavarri')),
-										(4, ref('openhealth.pmonteverde_clinicachavarri')),
-
 									]"/>
 		</record>
--->
 
 
 
@@ -152,6 +140,7 @@
 
 		<!-- HC Readers --> 
 <!--
+-->
 		<record id="openhealth.hc_readers" model="res.groups">
 			<field name="name">HC Readers</field>
 			<field name="category_id" ref="module_openhealth_category"/>
@@ -208,7 +197,6 @@
 
 									]"/>
 		</record>
--->
 
 
 

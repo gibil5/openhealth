@@ -114,6 +114,16 @@ self.env['oeh.medical.patient'].search([('name', 'like', 'Ja')])
 self.env['oeh.medical.patient'].search([('id', '=', '3025')])
 
 
+self.env['oeh.medical.patient'].search([('name', '=', '')])
+self.env['oeh.medical.patient'].search([('name', '=', 'NIZAMA CASTILLO EDICSON JIICHIRO')])
+self.env['oeh.medical.patient'].search([('name', '=', 'REVILLA RONDON Jose Javier')])
+
+
+NIZAMA CASTILLO EDICSON JIICHIRO
+REVILLA RONDON Jose Javier
+
+
+
 
 self.env['oeh.medical.physician'].search([('name', 'like', 'Fe')])
 self.env['oeh.medical.physician'].search([('id', '=', '1')])

@@ -32,6 +32,22 @@ class Patient(models.Model):
 
 
 
+
+
+
+	@api.multi
+	def card_purchase(self):  
+		print 'jx'
+
+
+
+
+
+
+
+
+
+
 	# Vip 
 	x_spaced = fields.Boolean(
 		string="Spaced",
@@ -60,6 +76,8 @@ class Patient(models.Model):
 	x_vip = fields.Boolean(
 		string="Vip",
 		default=False, 
+
+		#store=True, 			
 
 		compute='_compute_x_vip', 
 	)

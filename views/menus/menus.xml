@@ -179,15 +179,17 @@
 					/>
 
 
+<!--
+Deprecated
 
 		<menuitem 	id="sales_patients_sub_menu" 
-					name="Pacientes Vip"
+					name="Pacientes Vip - jx"
 					parent="sales_cards_menu"
 					sequence="5"
 
 					action="patient_vip_list_action"
 					/>
-
+-->
 
 
 

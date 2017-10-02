@@ -63,6 +63,21 @@
 						/>
 -->
 
+
+
+ 
+						<button 
+							type="object" 
+							class="oe_highlight oe_right"
+							string="Comprar Tarjeta Vip" 
+							
+							groups="openHealth.managers,openhealth.directors"
+
+							attrs="{'invisible':	[('x_vip', 'in', [True]),]}"
+
+							name="card_purchase" 
+						/>
+
 					</header>
 
 
@@ -294,8 +309,9 @@
 
 
 		<!-- Window List action -->
+		<!-- Deprecated -->
 		<record model="ir.actions.act_window" id="patient_vip_list_action">			
-			<field name="name">Pacientes Vip</field>
+			<field name="name">Pacientes Vip - jx</field>
 			<field name="res_model">oeh.medical.patient</field>
 			<field name="view_type">form</field>
 <!--			
@@ -307,9 +323,15 @@
 
 <!--
 									('x_vip', '=', True),
+
+									('x_card', '!=', False ),
+									('x_card.name', '!=', False ),
+									('x_vip', '=', True),
 -->
 			<field name="domain">[
-									('x_card', '!=', False),
+
+									('x_vip', '!=', False),
+				
 				]</field>
 
 			<!--

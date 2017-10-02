@@ -5,6 +5,20 @@
 
 
 
+access_openhealth_treatment_managers,openhealth.treatment.managers,model_openhealth_treatment,openhealth.hc_managers,1,1,1,1
+
+access_openhealth_treatment_readers,openhealth.treatment.platform,model_openhealth_treatment,openhealth.hc_readers,1,0,0,0
+
+
+
+
+
+
+
+
+
+
+
 
 
 

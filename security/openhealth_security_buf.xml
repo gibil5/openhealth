@@ -117,6 +117,7 @@
 
 
 		<!-- HC Managers --> 
+<!--
 		<record id="openhealth.hc_managers" model="res.groups">
 			<field name="name">HC Managers</field>
 			<field name="category_id" ref="module_openhealth_category"/>
@@ -143,11 +144,14 @@
 
 									]"/>
 		</record>
+-->
+
 
 
 
 
 		<!-- HC Readers --> 
+<!--
 		<record id="openhealth.hc_readers" model="res.groups">
 			<field name="name">HC Readers</field>
 			<field name="category_id" ref="module_openhealth_category"/>
@@ -204,7 +208,7 @@
 
 									]"/>
 		</record>
-
+-->
 
 
 
@@ -365,6 +369,7 @@
 			<field name="users" eval="[ 
 
 										(4, ref('openhealth.plataforma_clinicachavarri')),
+
 
 										(4, ref('openhealth.gnunhez_clinicachavarri')),
 										(4, ref('openhealth.mgrieve_clinicachavarri')),

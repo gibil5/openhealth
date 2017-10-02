@@ -125,6 +125,9 @@
 
 										(4, ref('openhealth.director_clinicachavarri')),
 
+										(4, ref('openhealth.reception_clinicachavarri')),
+
+
 
 										(4, ref('openhealth.medico_clinicachavarri')),
 

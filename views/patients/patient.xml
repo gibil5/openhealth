@@ -65,7 +65,7 @@
 
 
 
- 
+<!-- 
 						<button 
 							type="object" 
 							class="oe_highlight oe_right"
@@ -77,7 +77,7 @@
 
 							name="card_purchase" 
 						/>
-
+-->
 					</header>
 
 

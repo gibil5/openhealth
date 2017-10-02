@@ -318,9 +318,10 @@
 
 
 
-
+<!--
 							<field name="state"			groups="openhealth.roots"		/>
-
+-->
+							<field name="state"					/>
 
 
 

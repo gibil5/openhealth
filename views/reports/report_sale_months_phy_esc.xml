@@ -5,7 +5,7 @@
 
 
 		<!-- January --> 
-		<record id="action_order_report_january_phy" model="ir.actions.act_window">
+		<record id="action_order_report_january_esc" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Enero</field>
 			<field name="res_model">sale.report</field>
 			<field name="view_type">form</field>
@@ -14,7 +14,7 @@
 			<field name="search_view_id" ref="sale.view_order_product_search"/>
 		   <field name="domain">
 								[
-									('x_doctor','=','Dr. Chavarri'), 
+									('x_doctor','=','Dr. Escudero'), 
 
 									('date','&lt;=',time.strftime('%%Y-02-01')),
 									('date','&gt;=',time.strftime('%%Y-01-01'))
@@ -26,7 +26,7 @@
 
 
 		<!-- February --> 
-		<record id="action_order_report_february_phy" model="ir.actions.act_window">
+		<record id="action_order_report_february_esc" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Febrero</field>
 			<field name="res_model">sale.report</field>
 			<field name="view_type">form</field>
@@ -35,7 +35,7 @@
 			<field name="search_view_id" ref="sale.view_order_product_search"/>
 		   <field name="domain">
 								[
-									('user_id','=','Dr. Chavarri'), 
+									('user_id','=','Dr. Escudero'), 
 
 									('date','&lt;=',time.strftime('%%Y-03-01')), 
 									('date','&gt;=',time.strftime('%%Y-02-01'))
@@ -47,7 +47,7 @@
 
 
 		<!-- March --> 
-		<record id="action_order_report_march_phy" model="ir.actions.act_window">
+		<record id="action_order_report_march_esc" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Marzo</field>
 			<field name="res_model">sale.report</field>
 			<field name="view_type">form</field>
@@ -56,7 +56,7 @@
 			<field name="search_view_id" ref="sale.view_order_product_search"/>
 		   <field name="domain">
 								[
-									('user_id','=','Dr. Chavarri'), 
+									('user_id','=','Dr. Escudero'), 
 
 									('date','&lt;=',time.strftime('%%Y-04-01')), 
 									('date','&gt;=',time.strftime('%%Y-03-01'))
@@ -68,7 +68,7 @@
 
 
 		<!-- April --> 
-		<record id="action_order_report_april_phy" model="ir.actions.act_window">
+		<record id="action_order_report_april_esc" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Abril</field>
 			<field name="res_model">sale.report</field>
 			<field name="view_type">form</field>
@@ -77,7 +77,7 @@
 			<field name="search_view_id" ref="sale.view_order_product_search"/>
 		   <field name="domain">
 								[
-									('user_id','=','Dr. Chavarri'), 
+									('user_id','=','Dr. Escudero'), 
 
 									('date','&lt;=',time.strftime('%%Y-05-01')),
 									('date','&gt;=',time.strftime('%%Y-04-01'))
@@ -89,7 +89,7 @@
 
 
 		<!-- May --> 
-		<record id="action_order_report_may_phy" model="ir.actions.act_window">
+		<record id="action_order_report_may_esc" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Mayo</field>
 			<field name="res_model">sale.report</field>
 			<field name="view_type">form</field>
@@ -98,7 +98,7 @@
 			<field name="search_view_id" ref="sale.view_order_product_search"/>
 		   <field name="domain">
 								[
-									('user_id','=','Dr. Chavarri'), 
+									('user_id','=','Dr. Escudero'), 
 
 									('date','&lt;=',time.strftime('%%Y-06-01')),
 									('date','&gt;=',time.strftime('%%Y-05-01'))
@@ -110,7 +110,7 @@
 
 
 		<!-- June --> 
-		<record id="action_order_report_june_phy" model="ir.actions.act_window">
+		<record id="action_order_report_june_esc" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Junio</field>
 			<field name="res_model">sale.report</field>
 			<field name="view_type">form</field>
@@ -120,7 +120,7 @@
 		   <field name="domain">
 								[
 
-									('user_id','=','Dr. Chavarri'), 
+									('user_id','=','Dr. Escudero'), 
 
 									('date','&lt;=',time.strftime('%%Y-07-01')),
 									('date','&gt;=',time.strftime('%%Y-06-01'))
@@ -132,7 +132,7 @@
 
 
 		<!-- July --> 
-		<record id="action_order_report_july_phy" model="ir.actions.act_window">
+		<record id="action_order_report_july_esc" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Julio</field>
 			<field name="res_model">sale.report</field>
 			<field name="view_type">form</field>
@@ -141,7 +141,7 @@
 			<field name="search_view_id" ref="sale.view_order_product_search"/>
 		   <field name="domain">
 								[
-									('user_id','=','Dr. Chavarri'), 
+									('user_id','=','Dr. Escudero'), 
 
 									('date','&lt;=',time.strftime('%%Y-08-01')),
 									('date','&gt;=',time.strftime('%%Y-07-01'))
@@ -153,7 +153,7 @@
 
 
 		<!-- August --> 
-		<record id="action_order_report_august_phy" model="ir.actions.act_window">
+		<record id="action_order_report_august_esc" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Agosto</field>
 			<field name="res_model">sale.report</field>
 			<field name="view_type">form</field>
@@ -162,7 +162,7 @@
 			<field name="search_view_id" ref="sale.view_order_product_search"/>
 		   <field name="domain">
 								[
-									('user_id','=','Dr. Chavarri'), 
+									('user_id','=','Dr. Escudero'), 
 
 									('date','&lt;=',time.strftime('%%Y-09-01')),
 									('date','&gt;=',time.strftime('%%Y-08-01'))
@@ -175,8 +175,8 @@
 
 		<!-- September --> 
 		<!-- ('user_id','=','Medico'), -->
-		<record id="action_order_report_september_phy" model="ir.actions.act_window">
-			<field name="name">Reporte de Ventas - Setiembre - Phy</field>
+		<record id="action_order_report_september_esc" model="ir.actions.act_window">
+			<field name="name">Reporte de Ventas - Setiembre</field>
 			<field name="res_model">sale.report</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">pivot,graph,tree</field>
@@ -184,7 +184,7 @@
 			<field name="search_view_id" ref="sale.view_order_product_search"/>
 		   <field name="domain">
 								[
-									('x_doctor','=','Dr. Chavarri'), 
+									('x_doctor','=','Dr. Escudero'), 
 
 									('date','&lt;=',time.strftime('%%Y-10-01')),
 									('date','&gt;=',time.strftime('%%Y-09-01'))
@@ -196,7 +196,7 @@
 
 
 		<!-- October --> 
-		<record id="action_order_report_october_phy" model="ir.actions.act_window">
+		<record id="action_order_report_october_esc" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Octubre</field>
 			<field name="res_model">sale.report</field>
 			<field name="view_type">form</field>
@@ -205,7 +205,7 @@
 			<field name="search_view_id" ref="sale.view_order_product_search"/>
 		   <field name="domain">
 								[
-									('user_id','=','Dr. Chavarri'), 
+									('user_id','=','Dr. Escudero'), 
 
 									('date','&lt;=',time.strftime('%%Y-11-01')),
 									('date','&gt;=',time.strftime('%%Y-10-01'))
@@ -217,7 +217,7 @@
 
 
 		<!-- November --> 
-		<record id="action_order_report_november_phy" model="ir.actions.act_window">
+		<record id="action_order_report_november_esc" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Noviembre</field>
 			<field name="res_model">sale.report</field>
 			<field name="view_type">form</field>
@@ -226,7 +226,7 @@
 			<field name="search_view_id" ref="sale.view_order_product_search"/>
 		   	<field name="domain">
 								[
-									('user_id','=','Dr. Chavarri'), 
+									('user_id','=','Dr. Escudero'), 
 
 									('date','&lt;=',time.strftime('%%Y-12-01')),
 									('date','&gt;=',time.strftime('%%Y-11-01'))
@@ -238,7 +238,7 @@
 
 
 		<!-- December --> 
-		<record id="action_order_report_december_phy" model="ir.actions.act_window">
+		<record id="action_order_report_december_esc" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Diciembre</field>
 			<field name="res_model">sale.report</field>
 			<field name="view_type">form</field>
@@ -247,7 +247,7 @@
 			<field name="search_view_id" ref="sale.view_order_product_search"/>
 		   <field name="domain">
 								[
-									('user_id','=','Dr. Chavarri'), 
+									('user_id','=','Dr. Escudero'), 
 
 									('date','&lt;=',time.strftime('2018-01-01')),
 									('date','&gt;=',time.strftime('%%Y-12-01'))

@@ -6,22 +6,20 @@
 
 
 
-<!-- phytform --> 
+<!-- Physicians --> 
 		<menuitem 	id="sales_reports_phy_menu" 
 					name="Reporting Mensual - 2017 - Phy"
 					parent="main_reporting_menu"
 					sequence="5"
 
 					groups="openhealth.physicians"
-					
 					/>
 
 
 
 
 
-
-		<!-- january -->
+		<!-- January -->
 		<menuitem 	id="sales_report_sales_january_phy_menu" 
 					name="Enero" 
 					parent="sales_reports_phy_menu"
@@ -29,8 +27,6 @@
 
 					action="action_order_report_january_phy"
 					/>
-
-
 
 		<!-- February -->
 		<menuitem 	id="sales_report_sales_february_phy_menu" 
@@ -41,8 +37,6 @@
 					action="action_order_report_february_phy"
 					/>
 
-
-
 		<!-- March -->
 		<menuitem 	id="sales_report_sales_march_phy_menu" 
 					name="Marzo" 
@@ -51,8 +45,6 @@
 
 					action="action_order_report_march_phy"
 					/>
-
-
 
 		<!-- April -->
 		<menuitem 	id="sales_report_sales_april_phy_menu" 
@@ -63,8 +55,7 @@
 					action="action_order_report_april_phy"
 					/>
 
-
-
+		<!-- May -->
 		<menuitem 	id="sales_report_sales_may_phy_menu" 
 					name="Mayo" 
 					parent="sales_reports_phy_menu"
@@ -73,7 +64,7 @@
 					action="action_order_report_may_phy"
 					/>
 
-
+		<!-- June -->
 		<menuitem 	id="sales_report_sales_june_phy_menu" 
 					name="Junio" 
 					parent="sales_reports_phy_menu"
@@ -82,7 +73,7 @@
 					action="action_order_report_june_phy"
 					/>
 
-
+		<!-- July -->
 		<menuitem 	id="sales_report_sales_july_phy_menu" 
 					name="Julio" 
 					parent="sales_reports_phy_menu"
@@ -91,8 +82,7 @@
 					action="action_order_report_july_phy"
 					/>
 
-
-
+		<!-- August -->
 		<menuitem 	id="sales_report_sales_august_phy_menu" 
 					name="Agosto" 
 					parent="sales_reports_phy_menu"
@@ -101,20 +91,7 @@
 					action="action_order_report_august_phy"
 					/>
 
-
-
-
-		<!-- may -->
-		<!-- june -->
-		<!-- july -->
-		<!-- august -->
-		<!-- september -->
-		<!-- october -->
-		<!-- november -->
-		<!-- december -->
-
-
-
+		<!-- September -->
 		<menuitem 	id="sales_report_sales_september_phy_menu" 
 					name="Setiembre" 
 					parent="sales_reports_phy_menu"
@@ -123,7 +100,7 @@
 					action="action_order_report_september_phy"
 					/>
 
-
+		<!-- October -->
 		<menuitem 	id="sales_report_sales_october_phy_menu" 
 					name="Octubre" 
 					parent="sales_reports_phy_menu"
@@ -132,7 +109,7 @@
 					action="action_order_report_october_phy"
 					/>
 
-
+		<!-- November -->
 		<menuitem 	id="sales_report_sales_november_phy_menu" 
 					name="Noviembre" 
 					parent="sales_reports_phy_menu"
@@ -141,7 +118,7 @@
 					action="action_order_report_november_phy"
 					/>
 
-
+		<!-- December -->
 		<menuitem 	id="sales_report_sales_december_phy_menu" 
 					name="Diciembre" 
 					parent="sales_reports_phy_menu"

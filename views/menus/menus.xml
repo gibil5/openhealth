@@ -52,7 +52,7 @@
 					parent="emr_menu" 
 					sequence="2"
 
-					groups="openhealth.managers,openhealth.directors"
+					groups="openhealth.physicians,openhealth.managers,openhealth.directors"
 					/>
 
 

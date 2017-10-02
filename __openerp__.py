@@ -20,7 +20,7 @@
 
 		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant\n
 
-		Last built: 	30 September 2017 - Yey !
+		Last built: 	2 October 2017 - Yey !
 
 		Created: 	 	7 Sep 2016
 
@@ -102,7 +102,14 @@
 		'views/reports/report_sale_months.xml',
 		'views/reports/report_sale_months_platform.xml',
 
+
 		'views/reports/report_sale_months_physician.xml',
+		'views/reports/report_sale_months_phy_ala.xml',
+		'views/reports/report_sale_months_phy_can.xml',
+		'views/reports/report_sale_months_phy_esc.xml',
+		'views/reports/report_sale_months_phy_gon.xml',
+		'views/reports/report_sale_months_phy_mon.xml',
+		'views/reports/report_sale_months_phy_vas.xml',
 
 		
 
@@ -334,14 +341,16 @@
 
 
 
-		# Menus
-		'views/menus.xml',
 
-		'views/menus_reporting.xml',
-		'views/menus_reporting_pla.xml',
-		'views/menus_reporting_phy.xml',
+		# Menus
+		'views/menus/menus.xml',
+		'views/menus/menus_reporting.xml',
+		'views/menus/menus_reporting_pla.xml',
+
+		'views/menus/menus_reporting_phy.xml',
+		'views/menus/menus_reporting_phy_ala.xml',
 		
-		'views/menus_openhealth.xml',
+		'views/menus/menus_openhealth.xml',
 
 
 

@@ -27,6 +27,11 @@
 
 
 	<!-- OeHealth - Physician --> 
+<!--
+											(4, ref('openhealth.fchavarri_clinicachavarri')),
+											(4, ref('openhealth.cmendez_clinicachavarri')),
+											(4, ref('openhealth.dacosta_clinicachavarri')),
+-->
 		<record id="oehealth.group_oeh_medical_physician" model="res.groups">
 			<field name="name">Oe - Physician</field>
 			<field name="category_id" ref="oehealth.module_oeh_medical_category"/>
@@ -37,15 +42,13 @@
 
 
 											(4, ref('openhealth.medico_clinicachavarri')),
-											(4, ref('openhealth.cescudero_clinicachavarri')),
-											(4, ref('openhealth.cmendez_clinicachavarri')),
-											(4, ref('openhealth.dacosta_clinicachavarri')),
-											(4, ref('openhealth.fchavarri_clinicachavarri')),
+
 											(4, ref('openhealth.galarcon_clinicachavarri')),
-											(4, ref('openhealth.jvasquez_clinicachavarri')),
-											(4, ref('openhealth.lgonzales_clinicachavarri')),
 											(4, ref('openhealth.pcanales_clinicachavarri')),
+											(4, ref('openhealth.cescudero_clinicachavarri')),
+											(4, ref('openhealth.lgonzales_clinicachavarri')),
 											(4, ref('openhealth.pmonteverde_clinicachavarri')),
+											(4, ref('openhealth.jvasquez_clinicachavarri')),
 
 
 											(4, ref('openhealth.asistente_clinicachavarri')),

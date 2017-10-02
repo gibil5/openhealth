@@ -35,6 +35,12 @@ class sale_report(models.Model):
 
 
 
+	x_user_id = fields.Integer(
+		default=1, 
+	)
+
+
+
 #	x_doctor = fields.Char(
 #			string = "Doctor - jx", 	
 #	)

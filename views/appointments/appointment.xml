@@ -34,8 +34,11 @@
 							<button 
 								type="object" 
 								class="oe_highlight"
-								string="Remove" 
 								name="remove_appointment" 
+								
+								string="Remove" 
+								
+								groups="openhealth.roots"
 							/>
 					</div>
 				</xpath>
@@ -125,20 +128,14 @@
 															/>
 
 
+
 							<field name="vspace"/>
 
-							<field name="consultation"/>
+							<field name="consultation"		groups="openhealth.roots"	/>
+							<field name="procedure"			groups="openhealth.roots"	/>
+							<field name="session"			groups="openhealth.roots"	attrs="{'required':[('x_type', '=', 'session'),],}"	/>
+							<field name="control"			groups="openhealth.roots" 	/>
 
-							<field name="procedure"/>
-							
-
-							<field name="session"			attrs="{
-																	'required':[('x_type', '=', 'session'),],
-															}"	
-								/>
-							
-
-							<field name="control"/>
 
 
 					<!--					
@@ -301,6 +298,7 @@
 							<field name="x_type"/>
 
 							<field name="vspace"/>
+							<field name="vspace"/>
 
 
 
@@ -309,6 +307,7 @@
 
 							<field name="x_date"				attrs="{'invisible':[('state', '!=', 'pre_scheduled_control'),]}"/>
 
+							<field name="vspace"/>
 							<field name="vspace"/>
 
 
@@ -320,9 +319,8 @@
 
 
 
-							<field name="state"/>
+							<field name="state"			groups="openhealth.roots"		/>
 
-							<field name="vspace"/>
 
 
 
@@ -348,9 +346,8 @@
 
 							<field name="vspace"/>
 
-							<field name="treatment"		invisible="0"	readonly="0"/>
 
-
+							<field name="treatment"		groups="openhealth.roots"	readonly="0"/>
 
 							<field name="cosmetology"			
 														attrs="{

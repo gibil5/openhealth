@@ -13,6 +13,44 @@ VICTOR ANTONIO MORI RENGIFO
 JOSEF BERNA ESSENWANGER BALLESTEROS
 -->
 
+<!--
+;wFB_e,Y7#p;nNrQ
+*9a~%^A^mjmKj{9p
+@\=2XbAwyU&&9Mbc
+XzpTFe2Yf5Y"[33*
+8j5k6KCxh+bh*NU4
+B7W+_hN-CfJ*-w$%
+#NuZt-C%hFaL4uxx
+n+E=h9Ax26=g8ZQG
+
+uq@dL_F=xs?_3yBR
+-->
+
+
+<!-- director -->
+		<record id="director_partner" model="res.partner">
+			<field name="name">Director</field>
+			<field name="email">director@clinicachavarri.com</field>
+
+	        <field eval="[(6, 0, [ref('director')])]" name="category_id"/>
+		</record>
+
+		<record id="director_clinicachavarri" model="res.users">
+			<field name="name">Director</field>
+			<field name="login">director@clinicachavarri.com</field>
+
+			<field name="password">uq@dL_F=xs?_3yBR</field>
+			
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="lang">es_ES</field>
+			<field name="tz">America/Lima</field>
+			<field name="partner_id" ref="director_partner"/>
+		</record>
+
+
+
+
 
 
 
@@ -27,37 +65,16 @@ JOSEF BERNA ESSENWANGER BALLESTEROS
 		<record id="manager_clinicachavarri" model="res.users">
 			<field name="name">manager</field>
 			<field name="login">manager@clinicachavarri.com</field>
-			<field name="password">manager</field>
+
+			<field name="password">uq@dL_F=xs?_3yBR</field>
+			
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
 			<field name="active">True</field>
-
 			<field name="lang">es_ES</field>
 			<field name="tz">America/Lima</field>
 			<field name="partner_id" ref="manager_partner"/>
 		</record>
 
-
-
-
-<!-- director -->
-		<record id="director_partner" model="res.partner">
-			<field name="name">Director</field>
-			<field name="email">director@clinicachavarri.com</field>
-
-	        <field eval="[(6, 0, [ref('director')])]" name="category_id"/>
-		</record>
-
-		<record id="director_clinicachavarri" model="res.users">
-			<field name="name">Director</field>
-			<field name="login">director@clinicachavarri.com</field>
-			<field name="password">director</field>
-			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-			<field name="active">True</field>
-
-			<field name="lang">es_ES</field>
-			<field name="tz">America/Lima</field>
-			<field name="partner_id" ref="director_partner"/>
-		</record>
 
 
 
@@ -80,11 +97,12 @@ JOSEF BERNA ESSENWANGER BALLESTEROS
 		<record id="rchavarri_clinicachavarri" model="res.users">
 			<field name="name">Renato Chavarri</field>
 			<field name="login">rchavarri@clinicachavarri.com</field>
-			<field name="password">rchavarri</field>
+			
+			<field name="password">uq@dL_F=xs?_3yBR</field>
+
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
 			<field name="active">True</field>
 			<field name="tz">America/Lima</field>
-
 			<field name="lang">es_ES</field>
 			<field name="partner_id" ref="rchavarri"/>
 		</record>
@@ -104,14 +122,17 @@ JOSEF BERNA ESSENWANGER BALLESTEROS
 		<record id="vmori_clinicachavarri" model="res.users">
 			<field name="name">Victor Mori</field>
 			<field name="login">vmori@clinicachavarri.com</field>
-			<field name="password">vmori</field>
+
+			<field name="password">uq@dL_F=xs?_3yBR</field>
+			
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
 			<field name="active">True</field>
 			<field name="tz">America/Lima</field>
-
 			<field name="lang">es_ES</field>
 			<field name="partner_id" ref="vmori"/>
 		</record>
+
+
 
 
 
@@ -127,11 +148,12 @@ JOSEF BERNA ESSENWANGER BALLESTEROS
 		<record id="jessenwanger_clinicachavarri" model="res.users">
 			<field name="name">Josef Essenwanger</field>
 			<field name="login">jessenwanger@clinicachavarri.com</field>
-			<field name="password">jessenwanger</field>
+
+			<field name="password">uq@dL_F=xs?_3yBR</field>
+			
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
 			<field name="active">True</field>
 			<field name="tz">America/Lima</field>
-
 			<field name="lang">es_ES</field>
 			<field name="partner_id" ref="jessenwanger"/>
 		</record>

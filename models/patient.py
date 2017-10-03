@@ -331,10 +331,17 @@ class Patient(models.Model):
 
 		if self.x_autofill == True:
 
+
+			self.x_last_name = 'Revilla Rondon'
+			self.x_first_name = 'Toby'
+
+
 			self.sex = 'Male'
 			self.dob = '1965-05-26'
 			self.x_dni = '09817194'
-			self.email = 'tigroide55@gmail.com'
+
+			self.email = 'toby@gmail.com'
+			
 			self.phone_1 = '4760118'
 			self.x_allergies = 'Ninguna'
 			self.x_first_contact = 'recommendation'
@@ -347,7 +354,9 @@ class Patient(models.Model):
 			
 			#self.x_last_name = 'Fuchs Vibors'
 			#self.x_first_name = 'Hans'
+
 			#self.name = self.x_last_name + ' ' + self.x_first_name
+			
 			#self.street2 = 'San Borja'
 			#self.zip = 41
 			#self.city = 'Lima'
@@ -488,8 +497,8 @@ class Patient(models.Model):
 			string = 'email',  
 			placeholder = '',
 
-			#required=True, 
-			required=False, 
+			required=True, 
+			#required=False, 
 			)
 
 

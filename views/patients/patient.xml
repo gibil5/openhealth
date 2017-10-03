@@ -180,14 +180,15 @@
 								<!--	
 								<field name="x_full_name"  string="x_full_name"/>
 								-->
-								<field name="x_first_name" 	class="oe_edit_only"/>
 								<field name="x_last_name"   class="oe_edit_only"/>
+								<field name="x_first_name" 	class="oe_edit_only"/>
 							</group>
 
 							<group>
 <!--
-								<field name="x_autofill" 	/>
 -->							
+								<field name="x_autofill" 	/>
+
 								<field name="x_vip" 	/>
 								<field name="x_card" 	/>
 							</group>
@@ -235,10 +236,10 @@
 -->
 								<field name="x_state"    colors="red" />
 
-
+<!--
 								<field name="vspace"    />
 								<field name="comment"    />
-
+-->
 							</group>
 
 
@@ -247,9 +248,10 @@
 								<field name="x_first_contact"	required="1"/>
 
 								<field name="x_first_impression"	/>
-
+<!--
 								<field name="vspace"    />
 								<field name="category_id"    	 widget="many2many_tags" />
+-->
 							</group>
 
 							<group>
@@ -370,8 +372,11 @@
 
 					<field name="name"/>
 
-					<field name="x_spaced"/>
+					<field name="x_date_created"/>
 
+<!--
+					<field name="x_spaced"/>
+-->
 
 
 					<field name="x_vip"/>
@@ -407,7 +412,6 @@
 
 
 
-					<field name="x_date_created"/>
 
 <!--
 					<field name="x_year_created"/>

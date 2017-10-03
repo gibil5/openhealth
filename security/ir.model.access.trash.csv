@@ -5,6 +5,12 @@
 
 
 
+
+
+
+
+access_openhealth_treatment,openhealth.treatment,model_openhealth_treatment,,1,1,1,1
+
 access_openhealth_treatment_managers,openhealth.treatment.managers,model_openhealth_treatment,openhealth.hc_managers,1,1,1,1
 
 access_openhealth_treatment_readers,openhealth.treatment.platform,model_openhealth_treatment,openhealth.hc_readers,1,0,0,0
@@ -17,6 +23,16 @@ access_openhealth_treatment_readers,openhealth.treatment.platform,model_openheal
 
 
 
+
+
+
+
+
+
+
+access_res_partner_managers,res.partner.managers,model_res_partner,contacts_managers,1,1,1,1
+
+access_res_partner_readers,res.partner.readers,model_res_partner,contacts_readers,1,0,0,0
 
 
 

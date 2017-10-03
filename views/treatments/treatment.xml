@@ -63,6 +63,9 @@
 									}" 											
 
 							string="Crear CITA"
+
+
+							groups="openhealth.reception,openhealth.managers,openhealth.directors"
 						/>
 
 
@@ -86,17 +89,14 @@ jz
 -->
 
 						<button 
-
 							type="object" 
-
-							name="create_order_con" 
-							
-
-							
+							name="create_order_con" 							
 							class="oe_highlight"
   
+
 							string="Crear PRESUPUESTO - Consulta" 
 
+							groups="openhealth.caja,openhealth.physicians,openhealth.managers,openhealth.directors"
 
 							states="appointment"
 						/>
@@ -120,19 +120,18 @@ jz
 												]}"
 
 
-							groups="openhealth.managers,openhealth.physicians"
 -->
 						<button 
-
+							name="open_consultation_current" 
 							type="object" 
-
 							class="oe_highlight"
+
 
 							string="Crear CONSULTA" 
 							
 							states="invoice_consultation"
 
-							name="open_consultation_current" 
+							groups="openhealth.physicians,openhealth.managers,openhealth.directors"
 						/>
 
 
@@ -161,6 +160,8 @@ jz
 							states="consultation,service"
 
 							name="create_service" 
+
+							groups="openhealth.physicians,openhealth.managers,openhealth.directors"
 						/>
 
 
@@ -200,6 +201,9 @@ jz
 							string="Crear PRESUPUESTO - Procedimiento" 
 
 							states="service"
+
+
+							groups="openhealth.caja,openhealth.physicians,openhealth.managers,openhealth.directors"
 						/>
 
 
@@ -244,6 +248,8 @@ jz
 							states="budget_procedure,invoice_procedure"
 
 							name="create_procedure" 
+
+							groups="openhealth.physicians,openhealth.managers,openhealth.directors"
 						/>
 
 
@@ -303,7 +309,6 @@ jz
 
 
 								statusbar_visible="appointment, invoice_consultation, consultation, service, invoice_procedure, procedure"
-
 						/>
 
 					</header>

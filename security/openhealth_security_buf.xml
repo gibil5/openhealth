@@ -66,7 +66,9 @@
 										(4, ref('openhealth.medico_clinicachavarri')),
 										(4, ref('openhealth.staff_clinicachavarri')),
 										(4, ref('openhealth.asistente_clinicachavarri')),
+
 										(4, ref('openhealth.plataforma_clinicachavarri')),
+										(4, ref('openhealth.caja_clinicachavarri')),
 
 									]"/>
 		</record>
@@ -81,6 +83,7 @@
 
 
 		<!-- Contacts Managers --> 
+<!--
 		<record id="openhealth.contacts_managers" model="res.groups">
 			<field name="name">Contacts Managers</field>
 			<field name="category_id" ref="module_openhealth_category"/>
@@ -91,8 +94,9 @@
 
 									]"/>
 		</record>
-
+-->
 		<!-- Contacts Readers --> 
+<!--
 		<record id="openhealth.contacts_readers" model="res.groups">
 			<field name="name">Contacts Readers</field>
 			<field name="category_id" ref="module_openhealth_category"/>
@@ -102,11 +106,14 @@
 										(4, ref('openhealth.medico_clinicachavarri')),
 										(4, ref('openhealth.staff_clinicachavarri')),
 										(4, ref('openhealth.asistente_clinicachavarri')),
-										(4, ref('openhealth.plataforma_clinicachavarri')),
 										(4, ref('openhealth.almacen_clinicachavarri')),
+
+										(4, ref('openhealth.plataforma_clinicachavarri')),
+										(4, ref('openhealth.caja_clinicachavarri')),
+
 									]"/>
 		</record>
-
+-->
 
 
 
@@ -127,8 +134,6 @@
 			<field name="users" eval="[ 
 
 										(4, ref('openhealth.director_clinicachavarri')),
-
-
 										(4, ref('openhealth.medico_clinicachavarri')),
 
 									]"/>
@@ -146,55 +151,13 @@
 			<field name="category_id" ref="module_openhealth_category"/>
 
 			<field name="users" eval="[ 
-
 										(4, ref('openhealth.manager_clinicachavarri')),
-
-										(4, ref('openhealth.vmori_clinicachavarri')),
-										(4, ref('openhealth.jessenwanger_clinicachavarri')),
-										(4, ref('openhealth.pbalboa_clinicachavarri')),
-										(4, ref('openhealth.mpedemonte_clinicachavarri')),
-
-
-
-
 										(4, ref('openhealth.staff_clinicachavarri')),
-				
-										(4, ref('openhealth.lloli_clinicachavarri')),
-										(4, ref('openhealth.ipuga_clinicachavarri')),
-										(4, ref('openhealth.rbustios_clinicachavarri')),
-
-
-
-
 										(4, ref('openhealth.asistente_clinicachavarri')),
-
-										(4, ref('openhealth.yochante_clinicachavarri')),
-										(4, ref('openhealth.rgarcia_clinicachavarri')),
-										(4, ref('openhealth.nmendoza_clinicachavarri')),
-										(4, ref('openhealth.mtirado_clinicachavarri')),
-										(4, ref('openhealth.eruiz_clinicachavarri')),
-
-
-
-
-
-										(4, ref('openhealth.plataforma_clinicachavarri')),
-
-										(4, ref('openhealth.gnunhez_clinicachavarri')),
-										(4, ref('openhealth.mgrieve_clinicachavarri')),
-										(4, ref('openhealth.ktejada_clinicachavarri')),
-										(4, ref('openhealth.imichelot_clinicachavarri')),
-										(4, ref('openhealth.avidal_clinicachavarri')),
-										(4, ref('openhealth.nescobar_clinicachavarri')),
-										(4, ref('openhealth.kcalero_clinicachavarri')),
-
-
-
-
 										(4, ref('openhealth.almacen_clinicachavarri')),
 
-										(4, ref('openhealth.yramirez_clinicachavarri')),
-
+										(4, ref('openhealth.plataforma_clinicachavarri')),
+										(4, ref('openhealth.caja_clinicachavarri')),
 									]"/>
 		</record>
 

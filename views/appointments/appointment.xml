@@ -27,6 +27,10 @@
 				</xpath>
 
 
+
+<!--
+								groups="openhealth.roots"
+-->
 				<xpath expr="//field[@name='state']" position="before">
 
 					<!-- Remove --> 
@@ -36,9 +40,7 @@
 								class="oe_highlight"
 								name="remove_appointment" 
 								
-								string="Remove" 
-								
-								groups="openhealth.roots"
+								string="Eliminar" 
 							/>
 					</div>
 				</xpath>

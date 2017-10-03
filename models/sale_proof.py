@@ -18,6 +18,32 @@ class SaleProof(models.Model):
 			required=True, 
 
 			)
+
+
+
+
+
+
+	ruc = fields.Char(
+			string="RUC", 	
+			#required=True, 
+		)
+
+	address = fields.Char(
+			'Dirección', 
+	)
+
+	company = fields.Char(
+			'Razón social', 
+	)
+
+
+
+
+
+
+
+
 	family = fields.Char(
 		)
 
@@ -153,10 +179,6 @@ class SaleProof(models.Model):
 			required=True, 
 		)
 
-	ruc = fields.Char(
-			string="RUC", 	
-			#required=True, 
-		)
 
 
 

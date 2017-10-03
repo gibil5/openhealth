@@ -1917,12 +1917,19 @@ class sale_order(models.Model):
 	@api.multi 
 	def action_confirm(self):
 
-		#print 
-		#print 'jx'
-		#print 'Action confirm - Over ridden'
+		print 
+		print 'jx'
+		print 'Action confirm - Over ridden'
 		 
 		
+
+
+
 		#Write your logic here
+		if self.x_family == 'consultation'	or 	self.x_family == 'procedure': 
+			self.x_appointment.state = 'Scheduled'
+
+
 		res = super(sale_order, self).action_confirm()
 		#Write your logic here
 		

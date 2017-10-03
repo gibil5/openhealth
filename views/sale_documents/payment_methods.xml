@@ -261,7 +261,9 @@
 									<tree			editable="bottom">	
 										<field name="name"	/>
 										<field name="method"	/>
+<!--
 										<field name="currency"	/>
+-->									
 										<field name="subtotal"	class="rallign"	/>
 									</tree>
 								</field>

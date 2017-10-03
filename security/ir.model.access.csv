@@ -4,6 +4,76 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+access_res_partner_directors,res.partner.directors,model_res_partner,openhealth.directors,1,1,1,1
+
+access_res_partner_reception,res.partner.reception,model_res_partner,openhealth.reception,1,1,1,0
+
+access_res_partner_caja,res.partner.caja,model_res_partner,openhealth.caja,1,0,0,0
+
+
+
+
+
+
+
+access_oeh_medical_patient_directors,oeh.medical.patient directors,oehealth.model_oeh_medical_patient,openhealth.directors,1,1,1,1
+
+access_oeh_medical_patient_caja,oeh.medical.patient caja,oehealth.model_oeh_medical_patient,openhealth.caja,1,1,1,0
+
+access_oeh_medical_patient_reception,oeh.medical.patient reception,oehealth.model_oeh_medical_patient,openhealth.reception,1,1,1,0
+
+
+
+
+
+
+
+
+
+
+
+access_oeh_medical_physician,oeh.medical.physician,oehealth.model_oeh_medical_physician,oehealth.group_oeh_medical_physician,1,1,1,1
+
+
+
+
+access_oeh_medical_physician_directors,oeh.medical.physician directors,oehealth.model_oeh_medical_physician,openhealth.directors,1,1,1,1
+
+access_oeh_medical_physician_caja,oeh.medical.physician caja,oehealth.model_oeh_medical_physician,openhealth.caja,1,0,0,0
+
+access_oeh_medical_physician_reception,oeh.medical.physician reception,oehealth.model_oeh_medical_physician,openhealth.reception,1,0,0,0
+
+
+
+access_oeh_medical_physician_line_directors,oeh.medical.physician directors,oehealth.model_oeh_medical_physician_line,openhealth.directors,1,1,1,1
+
+access_oeh_medical_physician_line_caja,oeh.medical.physician caja,oehealth.model_oeh_medical_physician_line,openhealth.caja,1,0,0,0
+
+access_oeh_medical_physician_line_reception,oeh.medical.physician reception,oehealth.model_oeh_medical_physician_line,openhealth.reception,1,0,0,0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+access_oeh_medical_appointment,oeh.medical.appointment,oehealth.model_oeh_medical_appointment,oehealth.group_oeh_medical_physician,1,1,1,1
+
+access_oeh_medical_appointment_reception,oeh.medical.appointment reception,oehealth.model_oeh_medical_appointment,openhealth.reception,1,1,1,1
+
+access_oeh_medical_appointment_caja,oeh.medical.appointment caja,oehealth.model_oeh_medical_appointment,openhealth.caja,1,1,0,0
+
+
+
 
 
 
@@ -22,6 +92,24 @@ access_openhealth_treatment_reception,openhealth.treatment,model_openhealth_trea
 
 
 
+access_sale_order_directors,sale.order.directors,model_sale_order,openhealth.directors,1,1,1,1
+
+access_sale_order_caja,sale.order.caja,model_sale_order,openhealth.caja,1,1,1,0
+
+access_sale_order_reception,sale.order.reception,model_sale_order,openhealth.reception,1,0,0,0
+
+
+
+
+access_sale_order_managers,sale.order.managers,model_sale_order,openhealth.managers,1,1,1,1
+
+access_sale_order_physicians,sale.order.physicians,model_sale_order,openhealth.physicians,1,1,1,1
+
+access_sale_order_assistants,sale.order.assistants,model_sale_order,openhealth.assistants,1,0,0,0
+
+access_sale_order_staffs,sale.order.staffs,model_sale_order,openhealth.staffs,1,0,0,0
+
+access_sale_order_almacens,sale.order.almacens,model_sale_order,openhealth.almacens,1,0,0,0
 
 
 
@@ -29,13 +117,27 @@ access_openhealth_treatment_reception,openhealth.treatment,model_openhealth_trea
 
 
 
+access_sale_order_line_directors,sale.order.line.directors,model_sale_order_line,openhealth.directors,1,1,1,1
+
+access_sale_order_line_caja,sale.order.line.caja,model_sale_order_line,openhealth.caja,1,1,1,1
+
+access_sale_order_line_reception,sale.order.line.reception,model_sale_order_line,openhealth.reception,1,0,0,0
+
+
+
+access_sale_order_line_managers,sale.order.line.managers,model_sale_order_line,openhealth.managers,1,1,1,1
+
+access_sale_order_line_physicians,sale.order.line.physicians,model_sale_order_line,openhealth.physicians,1,1,1,1
+
+access_sale_order_line_assistants,sale.order.line.assistants,model_sale_order_line,openhealth.assistants,1,0,0,0
+
+access_sale_order_line_staffs,sale.order.line.staffs,model_sale_order_line,openhealth.staffs,1,0,0,0
+
+access_sale_order_line_almacens,sale.order.line.almacens,model_sale_order_line,openhealth.almacens,1,0,0,0
 
 
 
 
-
-
-access_sale_report,sale.report,model_sale_report,,1,1,1,1
 
 
 
@@ -70,9 +172,6 @@ access_product_template_stock_user,product.template stock user,product.model_pro
 
 
 
-access_res_partner_managers,res.partner.managers,model_res_partner,contacts_managers,1,1,1,1
-
-access_res_partner_readers,res.partner.readers,model_res_partner,contacts_readers,1,0,0,0
 
 
 
@@ -81,23 +180,6 @@ access_res_partner_readers,res.partner.readers,model_res_partner,contacts_reader
 
 
 
-access_sale_order_directors,sale.order.directors,model_sale_order,openhealth.directors,1,1,1,1
-
-access_sale_order_managers,sale.order.managers,model_sale_order,openhealth.managers,1,1,1,1
-
-access_sale_order_caja,sale.order.caja,model_sale_order,openhealth.caja,1,1,1,1
-
-access_sale_order_physicians,sale.order.physicians,model_sale_order,openhealth.physicians,1,1,1,1
-
-access_sale_order_reception,sale.order.reception,model_sale_order,openhealth.reception,1,0,0,0
-
-access_sale_order_assistants,sale.order.assistants,model_sale_order,openhealth.assistants,1,0,0,0
-
-
-
-access_sale_order_staffs,sale.order.staffs,model_sale_order,openhealth.staffs,1,0,0,0
-
-access_sale_order_almacens,sale.order.almacens,model_sale_order,openhealth.almacens,1,0,0,0
 
 
 
@@ -106,23 +188,6 @@ access_sale_order_almacens,sale.order.almacens,model_sale_order,openhealth.almac
 
 
 
-access_sale_order_line_directors,sale.order.line.directors,model_sale_order_line,openhealth.directors,1,1,1,1
-
-access_sale_order_line_managers,sale.order.line.managers,model_sale_order_line,openhealth.managers,1,1,1,1
-
-access_sale_order_line_caja,sale.order.line.caja,model_sale_order_line,openhealth.caja,1,1,1,1
-
-access_sale_order_line_physicians,sale.order.line.physicians,model_sale_order_line,openhealth.physicians,1,1,1,1
-
-access_sale_order_line_reception,sale.order.line.reception,model_sale_order_line,openhealth.reception,1,0,0,0
-
-
-access_sale_order_line_assistants,sale.order.line.assistants,model_sale_order_line,openhealth.assistants,1,0,0,0
-
-
-access_sale_order_line_staffs,sale.order.line.staffs,model_sale_order_line,openhealth.staffs,1,0,0,0
-
-access_sale_order_line_almacens,sale.order.line.almacens,model_sale_order_line,openhealth.almacens,1,0,0,0
 
 
 
@@ -133,8 +198,6 @@ access_sale_order_line_almacens,sale.order.line.almacens,model_sale_order_line,o
 access_openhealth_consultation_managers,openhealth.consultation.managers,model_openhealth_consultation,openhealth.hc_managers,1,1,1,1
 
 access_openhealth_consultation_readers,openhealth.consultation.readers,model_openhealth_consultation,openhealth.hc_readers,1,0,0,0
-
-
 
 
 
@@ -162,6 +225,9 @@ access_openhealth_recommendation_reception,openhealth.recommendation.reception,m
 
 
 
+
+
+access_sale_report,sale.report,model_sale_report,,1,1,1,1
 
 
 
@@ -251,9 +317,6 @@ access_openhealth_counter,openhealth.counter,model_openhealth_counter,,1,1,1,1
 
 
 
-access_oeh_medical_appointment,oeh.medical.appointment,oehealth.model_oeh_medical_appointment,oehealth.group_oeh_medical_physician,1,1,1,1
-
-access_oeh_medical_appointment,oeh.medical.appointment,oehealth.model_oeh_medical_appointment,openhealth.reception,1,1,1,1
 
 
 
@@ -318,7 +381,6 @@ access_event,openhealth.event,model_openhealth_event,,1,1,1,1
 
 
 
-access_oeh_medical_physician,oeh.medical.physician,oehealth.model_oeh_medical_physician,oehealth.group_oeh_medical_physician,1,1,1,1
 
 
 

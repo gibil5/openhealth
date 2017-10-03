@@ -279,34 +279,6 @@
 
 
 
-		<!-- Window List action -->
-		<record model="ir.actions.act_window" id="patient_list_action">		
-
-			<field name="name">Pacientes</field>
-		
-			<field name="res_model">oeh.medical.patient</field>
-			<field name="view_type">form</field>
-<!--			
-			<field name="view_mode">kanban,tree,form</field>
--->
-			<field name="view_mode">tree,form,kanban</field>
-			
-			<field name="context">{'order': 'name'}</field>
-
-			<field name="domain">[]</field>
-
-			<!--
-			<field name="domain">[]</field>
-			<field name="context">{}</field>
-			<field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first treatment
-				</p>
-			</field>
-			-->
-		</record>
-
-
 
 
 
@@ -358,6 +330,37 @@
 
 
 
+		<!-- Window List action -->
+		<record model="ir.actions.act_window" id="patient_list_action">		
+
+			<field name="name">Pacientes - xyz</field>
+		
+			<field name="res_model">oeh.medical.patient</field>
+
+			<field name="view_type">form</field>
+<!--			
+			<field name="view_mode">kanban,tree,form</field>
+-->
+			<field name="view_mode">tree,form,kanban</field>
+<!--
+			<field name="context">{'order': 'name'}</field>
+-->
+			<field name="context">{'order': 'x_date_created'}</field>
+
+			<field name="domain">[]</field>
+
+			<!--
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first treatment
+				</p>
+			</field>
+			-->
+		</record>
+
+
 
 		<!-- tree/list view -->
 		<record model="ir.ui.view" id="oehealth.oeh_medical_patient_tree">
@@ -366,9 +369,11 @@
 			<field name="arch" type="xml">			
 			<!--	
 			<field name="priority" eval="1"/>
-			-->
-				<tree string="Patient Tree">
 
+				<tree string="Patient Tree">
+			-->
+
+				<tree default_order='x_date_created desc'>
 
 					<field name="name"/>
 

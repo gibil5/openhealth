@@ -72,9 +72,21 @@
 			<field name="arch" type="xml">
 			<!--	
 			<field name="priority" eval="1"/>
+
+				<tree default_order='create_date desc'>
 			-->
+
 				<tree string="Partner Tree">					
+			
+
 					<field name="name"/>
+<!--
+					<field name="date"/>
+-->
+					<field name="create_date"/>
+
+
+
 					
 					<field name="email"/>
 

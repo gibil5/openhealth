@@ -3,6 +3,23 @@
 
 
 
+access_oeh_medical_physician,oeh.medical.physician,model_oeh_medical_physician,,1,1,1,1
+
+
+access_oeh_medical_physician,oeh.medical.physician,model_oeh_medical_physician,group_oeh_medical_physician,1,1,1,1
+
+
+access_oeh_medical_physician,oeh.medical.physician,oehealth.model_oeh_medical_physician,oehealth.group_oeh_medical_physician,1,1,1,1
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -14,16 +31,6 @@ access_openhealth_treatment,openhealth.treatment,model_openhealth_treatment,,1,1
 access_openhealth_treatment_managers,openhealth.treatment.managers,model_openhealth_treatment,openhealth.hc_managers,1,1,1,1
 
 access_openhealth_treatment_readers,openhealth.treatment.platform,model_openhealth_treatment,openhealth.hc_readers,1,0,0,0
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -209,9 +216,6 @@ access_openhealth_consultation,openhealth.consultation,model_openhealth_consulta
 
 access_openhealth_service_co2,openhealth.service_co2,model_openhealth_service_co2,,1,1,1,1
 
-access_oeh_medical_physician,oeh.medical.physician,model_oeh_medical_physician,group_oeh_medical_physician,1,1,1,1
-
-access_oeh_medical_physician,oeh.medical.physician,oehealth.model_oeh_medical_physician,oehealth.group_oeh_medical_physician,1,1,1,1
 
 access_oeh_medical_appointment,oeh.medical.appointment,model_oeh_medical_appointment,group_oeh_medical_physician,1,1,1,1
 

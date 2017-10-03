@@ -52,15 +52,20 @@
 							
 							context="{									
 											'search_default_doctor': physician,
+
 											'default_patient': patient, 
+											
 											'default_doctor' : physician, 
+											
 											'default_appointment_date': start_date, 
 											
 											'default_treatment': active_id, 
 
 											'default_x_target' : 'doctor', 
+											
 											'default_x_type': 'consultation', 
 									}" 											
+
 
 							string="Crear CITA"
 

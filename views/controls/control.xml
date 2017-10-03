@@ -39,6 +39,7 @@
 
 
 
+
 						<button 
 							name="%(oeh_medical_appointment_action_tree_confirmed)d"	
 							type="action" 
@@ -49,19 +50,17 @@
 											'default_patient': patient, 
 											'default_doctor' : doctor, 
 											'default_appointment_date': evaluation_start_date, 
-											
 											'default_treatment': treatment, 
 											'default_x_type': 'control', 
 											'default_state': 'pre_scheduled', 
-
 											'default_x_target' : 'doctor', 
-
-
 											'default_control' : active_id, 
 									}" 											
 
 							string="Crear CITA"
 						/>
+
+
 
 
 						<!-- State --> 

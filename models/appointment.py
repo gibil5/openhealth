@@ -1102,9 +1102,6 @@ class Appointment(models.Model):
 	@api.onchange('patient','doctor')
 	def _onchange_patient_doctor(self):
 
-		#print 
-		#print 'jx'
-		#print 'On Change PD'
 
 		if self.patient != False and self.doctor != False:
 			
@@ -1160,24 +1157,41 @@ class Appointment(models.Model):
 
 	# ----------------------------------------------------------- Indexes ------------------------------------------------------
 
-	treatment = fields.Many2one('openhealth.treatment',
+	treatment = fields.Many2one(
+			
+			'openhealth.treatment',
+			
 			string="Tratamiento",
+			
 			ondelete='cascade', 
 			
-			#required=False, 
-			required=True, 
+			required=False, 
+			#required=True, 
 
 			#compute='_compute_treatment', 
-			)
+		)
 
 
+	@api.multi
+	@api.depends('patient', 'doctor')
+	def _compute_treatment(self):
 
+		for record in self:
 
+			print 'jz'
 
+			if record.patient != False and record.doctor != False:
+				print 'jz'
+		
 
-
-
-
+				#tre = self.env['openhealth.treatment'].search([
+				#																('patient', '=', record.patient.name),
+				#																('doctor', '=', record.doctor.name),
+				#													],
+																	#order='start_date desc',
+				#													limit=1,
+				#													)
+				#record.treatment = tre
 
 
 

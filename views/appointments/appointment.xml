@@ -300,7 +300,6 @@
 							<field name="x_type"/>
 
 							<field name="vspace"/>
-							<field name="vspace"/>
 
 
 
@@ -309,7 +308,6 @@
 
 							<field name="x_date"				attrs="{'invisible':[('state', '!=', 'pre_scheduled_control'),]}"/>
 
-							<field name="vspace"/>
 							<field name="vspace"/>
 
 
@@ -350,7 +348,15 @@
 							<field name="vspace"/>
 
 
+
+
+<!--
 							<field name="treatment"		groups="openhealth.roots"	readonly="0"/>
+-->
+							<field name="treatment"		required="0"	/>
+
+
+
 
 							<field name="cosmetology"			
 														attrs="{

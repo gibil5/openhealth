@@ -111,7 +111,9 @@ access_sale_order_directors,sale.order.directors,model_sale_order,openhealth.dir
 
 access_sale_order_caja,sale.order.caja,model_sale_order,openhealth.caja,1,1,1,0
 
-access_sale_order_reception,sale.order.reception,model_sale_order,openhealth.reception,1,0,0,0
+
+
+access_sale_order_reception,sale.order.reception,model_sale_order,openhealth.reception,1,1,1,0
 
 
 

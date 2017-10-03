@@ -138,7 +138,9 @@ access_sale_order_line_directors,sale.order.line.directors,model_sale_order_line
 
 access_sale_order_line_caja,sale.order.line.caja,model_sale_order_line,openhealth.caja,1,1,1,1
 
-access_sale_order_line_reception,sale.order.line.reception,model_sale_order_line,openhealth.reception,1,0,0,0
+
+
+access_sale_order_line_reception,sale.order.line.reception,model_sale_order_line,openhealth.reception,1,1,1,0
 
 
 

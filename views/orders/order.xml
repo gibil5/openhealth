@@ -420,13 +420,15 @@
 							groups="openhealth.managers,openhealth.caja"
 -->					
 					<button 
+							name="create_payment_method"
 							type="object" 
 							class="oe_highlight"
 							states="draft"						
 
+
 							string="Pagar"
 
-							name="create_payment_method"
+							groups="openhealth.caja,openhealth.managers,openhealth.directors"
 							/>
 
 
@@ -547,6 +549,7 @@
 
 											]}"
 
+							groups="openhealth.caja,openhealth.managers,openhealth.directors"
 					/>
 
 
@@ -574,17 +577,15 @@
 -->
 
 					<button 
-									
+							name="action_confirm" 									
 							type="object" 
 							class="oe_highlight"
-
-							string="Confirmar Venta" 
-
-
 							states="payment"
 
 
-							name="action_confirm" 
+							string="Confirmar Venta" 
+
+							groups="openhealth.caja,openhealth.managers,openhealth.directors"
 					/>
 
 

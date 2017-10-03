@@ -1172,26 +1172,21 @@ class Appointment(models.Model):
 		)
 
 
-	@api.multi
-	@api.depends('patient', 'doctor')
-	def _compute_treatment(self):
-
-		for record in self:
-
-			print 'jz'
-
-			if record.patient != False and record.doctor != False:
-				print 'jz'
-		
-
-				#tre = self.env['openhealth.treatment'].search([
-				#																('patient', '=', record.patient.name),
-				#																('doctor', '=', record.doctor.name),
-				#													],
+	#@api.multi
+	#@api.depends('patient', 'doctor')
+	#def _compute_treatment(self):
+	#	for record in self:
+	#		print 'jz'
+	#		if record.patient != False and record.doctor != False:
+	#			print 'jz'
+	#			tre = self.env['openhealth.treatment'].search([
+	#																			('patient', '=', record.patient.name),
+	#																			('doctor', '=', record.doctor.name),
+	#																],
 																	#order='start_date desc',
-				#													limit=1,
-				#													)
-				#record.treatment = tre
+	#																limit=1,
+	#																)
+	#			record.treatment = tre
 
 
 

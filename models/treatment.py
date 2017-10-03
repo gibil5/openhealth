@@ -1913,3 +1913,60 @@ class Treatment(models.Model):
 
 
 
+
+# ----------------------------------------------------------- CRUD ------------------------------------------------------
+
+
+	@api.multi
+	def write(self,vals):
+
+		print 
+		print 'CRUD - Treatment - Write'
+		print 
+		print vals
+		#print 
+		#print 
+
+		#if vals['x_doctor'] != False: 
+		#	print vals['x_doctor']
+		#if vals['user_id'] != False: 
+		#	print vals['user_id']
+
+
+
+		print 'patient', self.patient.name
+		print 'physicien', self.physician.name 
+
+		app = self.env['oeh.medical.appointment'].search([
+																('patient', '=', self.patient.name), 
+																('x_type', '=', 'consultation'),
+																('doctor', '=', self.physician.name), 
+																#('x_target', '=', record.x_target),	
+														],
+														order='appointment_date desc',
+														limit=1,
+													)
+		print app 
+
+		if app.id != False:
+			app.treatment = self.id 
+			print 'id', app.id
+			print 'treatment', app.treatment 
+
+
+
+
+		#Write your logic here
+		res = super(Treatment, self).write(vals)
+		#Write your logic here
+		print 
+		print 
+
+		return res
+
+	# CRUD 
+
+
+
+
+

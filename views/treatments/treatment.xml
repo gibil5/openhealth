@@ -96,7 +96,7 @@ jz
 
 							string="Crear PRESUPUESTO - Consulta" 
 
-							groups="openhealth.caja,openhealth.physicians,openhealth.managers,openhealth.directors"
+							groups="openhealth.caja,openhealth.managers,openhealth.directors"
 
 							states="appointment"
 						/>
@@ -203,7 +203,7 @@ jz
 							states="service"
 
 
-							groups="openhealth.caja,openhealth.physicians,openhealth.managers,openhealth.directors"
+							groups="openhealth.caja,openhealth.managers,openhealth.directors"
 						/>
 
 

@@ -260,15 +260,41 @@ class Patient(models.Model):
 	x_date_created = fields.Date(
 			string = "Fecha de apertura",
 			default = fields.Date.today, 
-
 			#readonly = True, 
-			
 			required=True, 
 			)
 
+	x_datetime_created = fields.Datetime(
+			string = "Apertura",
+
+			##default = fields.Datetime.now, 
+			default = '', 
+			
+			#readonly = True, 
+
+			#required=True, 
+			required=False, 
+
+			#store=True, 
+			#compute='_compute_x_datetime_created', 
+			)
 
 
+	#@api.onchange('x_date_created')
+	#def _onchange_x_date_created(self):
+		#self.x_datetime_created = self.x_date_created  
+		#self.x_datetime_created = '10/03/2017 20:00:00'
+	#	self.x_datetime_created = '2017-10-03 20:00:00'
+	#'%Y-%m-%d %H:%M:%S'
 
+
+	#@api.multi
+	#@api.depends('state')
+	#def _compute_x_datetime_created(self):
+	#	for record in self:
+	#		if record.comment == 'legacy':
+				#record.x_datetime_created = record.x_date_created
+	#			record.x_datetime_created = ''
 
 
 
@@ -1098,6 +1124,11 @@ class Patient(models.Model):
 		patient_id = self.env['oeh.medical.patient'].search([('name', '=', name),]).id 
 		#print 'patient_id: ', patient_id
 		treatment = self.env['openhealth.treatment'].create({'patient': patient_id,})
+
+
+
+
+		#self.x_datetime_created = Datetime.now
 
 
 

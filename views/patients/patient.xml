@@ -198,7 +198,15 @@
 								<field name="x_nationality" 	/>
 							</group>
 							<group>
-								<field name="x_date_created"  readonly="1"	/>
+								
+<!--
+								<field name="x_datetime_created"  	readonly="0"	required="0"	/>
+								<field name="x_date_created"  		readonly="0"	/>
+-->							
+								<field name="x_date_created"  		readonly="1"	/>
+								
+
+
 								<field string='Custodia'  name="x_active"   visible="1"/>
 							</group>
 						</group>
@@ -367,15 +375,18 @@
 			<field name="priority" eval="1"/>
 
 				<tree string="Patient Tree">
+				<tree default_order='x_date_created desc'>
 			-->
 
 				<tree default_order='x_date_created desc'>
 
 					<field name="name"/>
 
+
 					<field name="x_date_created"/>
 
 <!--
+					<field name="x_datetime_created"/>
 					<field name="x_spaced"/>
 -->
 
@@ -393,17 +404,17 @@
 
 
 <!--
-					<field name="x_last_name"  />
-					<field name="x_first_name"  />
-					<field name="x_full_name"  />
+					<field name="id"/>
 -->
 
-
-					<field name="id"/>
 					<field string="Historia Médica"  name="identification_code"/>
 					<field name="sex"/>		
 
 <!--
+					<field name="x_last_name"  />
+					<field name="x_first_name"  />
+					<field name="x_full_name"  />
+
 					<field name="x_status"/>		
 					<field name="x_owner"/>		
 					<field name="x_sex"/>		

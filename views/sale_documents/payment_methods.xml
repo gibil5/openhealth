@@ -38,6 +38,11 @@
 								states="draft"						
 								string="Pagar"
 						/>
+
+								attrs="{'invisible':[
+															('balance', '!=', 0), 
+													]}"	
+								states="draft,payment"						
 -->
 
 					
@@ -47,7 +52,8 @@
 								name="create_saleproof"
 								type="object" 
 								class="oe_highlight"
-								states="draft,payment"						
+								states="payment"						
+
 
 								string="Generar Documento"
 						/>

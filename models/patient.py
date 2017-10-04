@@ -32,6 +32,35 @@ class Patient(models.Model):
 
 
 
+	x_nationality = fields.Selection(
+			[	
+				('peruvian', 	'Peruano'),
+				('other', 		'Otro'),
+			], 
+			'Nacionalidad', 
+			default="peruvian",
+			required=True,  
+		)
+
+
+	x_id_doc = fields.Char(
+			'Doc. identidad', 
+		)
+
+
+	x_id_doc_type = fields.Selection(
+			[	
+				('passport', 		'Pasaporte'),
+				('foreigner_card', 	'Carnet de Extranjería'),
+				('dni', 			'DNI'),
+				('other', 			'Otro'),
+			], 
+			'Tipo de documento', 
+			#default="passport",
+			#required=True,  
+		)
+
+
 
 
 

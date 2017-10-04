@@ -268,7 +268,7 @@ class Patient(models.Model):
 			string = "Apertura",
 
 			##default = fields.Datetime.now, 
-			default = '', 
+			#default = '', 
 			
 			#readonly = True, 
 

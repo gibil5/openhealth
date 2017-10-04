@@ -208,7 +208,7 @@ jz
 							states="service"
 
 
-							groups="openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
+							groups="openhealth.reception,openhealth.caja,openhealth.physicians,openhealth.managers,openhealth.directors"
 						/>
 
 

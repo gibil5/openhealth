@@ -104,12 +104,13 @@
 
 
 		'views/reports/report_sale_months_physician.xml',
-		'views/reports/report_sale_months_phy_ala.xml',
-		'views/reports/report_sale_months_phy_can.xml',
-		'views/reports/report_sale_months_phy_esc.xml',
-		'views/reports/report_sale_months_phy_gon.xml',
-		'views/reports/report_sale_months_phy_mon.xml',
-		'views/reports/report_sale_months_phy_vas.xml',
+
+		#'views/reports/report_sale_months_phy_ala.xml',
+		#'views/reports/report_sale_months_phy_can.xml',
+		#'views/reports/report_sale_months_phy_esc.xml',
+		#'views/reports/report_sale_months_phy_gon.xml',
+		#'views/reports/report_sale_months_phy_mon.xml',
+		#'views/reports/report_sale_months_phy_vas.xml',
 
 		
 

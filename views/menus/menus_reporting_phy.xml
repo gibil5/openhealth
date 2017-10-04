@@ -8,7 +8,7 @@
 
 <!-- Physicians --> 
 		<menuitem 	id="sales_reports_phy_menu" 
-					name="Reporting Mensual - 2017 - Phy"
+					name="Reporting Mensual - 2017 - Med"
 					parent="main_reporting_menu"
 					sequence="5"
 

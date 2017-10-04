@@ -97,6 +97,10 @@ access_openhealth_treatment_directors,openhealth.treatment.directors,model_openh
 
 access_openhealth_treatment_physicians,openhealth.treatment.physicians,model_openhealth_treatment,openhealth.physicians,1,1,1,0
 
+
+access_openhealth_treatment_assistants,openhealth.treatment.assistants,model_openhealth_treatment,openhealth.assistants,1,1,1,0
+
+
 access_openhealth_treatment_caja,openhealth.treatment.caja,model_openhealth_treatment,openhealth.caja,1,0,0,0
 
 access_openhealth_treatment_reception,openhealth.treatment.reception,model_openhealth_treatment,openhealth.reception,1,1,1,0

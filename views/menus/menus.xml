@@ -54,7 +54,7 @@
 					sequence="2"
 					action="treatment_list_action"
 
-					groups="openhealth.physicians,openhealth.managers,openhealth.directors"
+					groups="openhealth.assistants,openhealth.physicians,openhealth.managers,openhealth.directors"
 					/>
 
 

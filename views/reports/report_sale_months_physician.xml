@@ -14,7 +14,7 @@
 			<field name="search_view_id" ref="sale.view_order_product_search"/>
 		   <field name="domain">
 								[
-									('x_doctor','=','Dr. Chavarri'), 
+									('user_id','=','Dr. Chavarri'), 
 
 									('date','&lt;=',time.strftime('%%Y-02-01')),
 									('date','&gt;=',time.strftime('%%Y-01-01'))
@@ -184,7 +184,7 @@
 			<field name="search_view_id" ref="sale.view_order_product_search"/>
 		   <field name="domain">
 								[
-									('x_doctor','=','Dr. Chavarri'), 
+									('user_id','=','Dr. Chavarri'), 
 
 									('date','&lt;=',time.strftime('%%Y-10-01')),
 									('date','&gt;=',time.strftime('%%Y-09-01'))

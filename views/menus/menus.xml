@@ -33,6 +33,8 @@
 					/>
 
 
+
+		<!-- Patients --> 
 		<menuitem 	id="emr_patients_menu" 
 					name="Pacientes" 
 					parent="emr_menu"
@@ -45,22 +47,36 @@
 
 
 
+		<!-- Treatments -->
+		<menuitem 	id="emr_treatments_menu" 
+					name="Tratamientos" 
+					parent="emr_menu"
+					sequence="2"
+					action="treatment_list_action"
+
+					groups="openhealth.physicians,openhealth.managers,openhealth.directors"
+					/>
 
 
+
+
+<!--
+					groups="openhealth.physicians,openhealth.managers,openhealth.directors"
+-->
 		<menuitem 	id="oeh_medical_physician_list"  
 					name="Médicos"
 					action="physician_list_action" 
 					parent="emr_menu" 
-					sequence="2"
+					sequence="3"
 
-					groups="openhealth.physicians,openhealth.managers,openhealth.directors"
+					groups="openhealth.managers,openhealth.directors"
 					/>
 
 		<menuitem 	id="oeh_medical_physician_inactive_list"  
 					name="Médicos - Inactivos"
 					action="physician_inactive_list_action" 
 					parent="emr_menu" 
-					sequence="2"
+					sequence="4"
 
 					groups="openhealth.directors"
 					/>

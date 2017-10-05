@@ -20,6 +20,48 @@ imichelot_clinicachavarri
 avidal_clinicachavarri
 nescobar_clinicachavarri
 kcalero_clinicachavarri
+
+
+G6nNfz+{
+px973%H8
+
+Y:uWS4kq
+L!$m49mS
+T3!YuZ%9
+Le-gQ9g_
+4A&gCBLq
+y9E=HE3?
+H74a#esS
+Syr2+EEs
+p@pA3hJz
+
+b6Z2y+7g4z
+a9?B2Rjgay
+dwH8e?qZYT
+JSte6Z55S<
+F6ea2!Z3ps
+FvXk$Gut9S
+YV@5h_rqHV
+7&aGsya$Kx
+kLBp3=j_@+
+
+F?9g7H!J7S
+=c^!K3zEwx
+
+
+8Dd676s#CL
+4aj5@Bv_Jn
+4@$MYcZ!y!
+U+b@=9q7cd
+s-R4mW!EWW
+sTD5k-d*t$
+T=%K7Dg6WL
+
+JkqE-E2+sw
+5h_rqHV+!
+
+
+Y:uWS4kqKx		Yvanna 
 -->
 
 
@@ -43,6 +85,42 @@ kcalero_clinicachavarri
 			<field name="tz">America/Lima</field>
 			<field name="partner_id" ref="plataforma_partner"/>
 		</record>
+
+
+
+
+
+
+<!-- Ivanna Michelot -->
+		<record id="imichelot" model="res.partner">
+			<field name="name">Ivanna Michelot</field>
+<!--
+			<field name="email">imichelot@clinicachavarri.com</field>
+-->
+			<field name="email">ivannamichelot@gmail.com</field>
+
+	        <field eval="[(6, 0, [ref('platform')])]" name="category_id"/>
+		</record>
+
+		<record id="imichelot_clinicachavarri" model="res.users">
+			<field name="name">Ivanna Michelot</field>
+<!--
+			<field name="login">imichelot@clinicachavarri.com</field>
+			<field name="password">imichelot</field>
+-->
+			<field name="login">imichelot@clinicachavarri.com</field>
+			<field name="password">Y:uWS4kqKx</field>
+
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+			<field name="partner_id" ref="imichelot"/>
+			<field name="lang">es_ES</field>
+		</record>
+
+
+
+
 
 
 
@@ -114,29 +192,6 @@ kcalero_clinicachavarri
 			<field name="tz">America/Lima</field>
 
 			<field name="partner_id" ref="ktejada"/>
-			<field name="lang">es_ES</field>
-		</record>
-
-
-
-
-<!-- Ivanna Michelot -->
-		<record id="imichelot" model="res.partner">
-			<field name="name">Ivanna Michelot</field>
-			<field name="email">imichelot@clinicachavarri.com</field>
-
-	        <field eval="[(6, 0, [ref('platform')])]" name="category_id"/>
-		</record>
-
-		<record id="imichelot_clinicachavarri" model="res.users">
-			<field name="name">Ivanna Michelot</field>
-			<field name="login">imichelot@clinicachavarri.com</field>
-			<field name="password">imichelot</field>
-			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-			<field name="active">True</field>
-			<field name="tz">America/Lima</field>
-
-			<field name="partner_id" ref="imichelot"/>
 			<field name="lang">es_ES</field>
 		</record>
 

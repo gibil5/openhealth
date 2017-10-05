@@ -190,6 +190,7 @@
 				<xpath expr="//field[@name='validity_date']" position="before">
 					
 					<field name="date_order" 			string="Fecha"		readonly="1"	/>
+					
 					<field name="x_payment_method"		invisible="0"		readonly="1"	/>
 
 

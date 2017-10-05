@@ -107,10 +107,10 @@ Y:uWS4kqKx		Yvanna
 			<field name="name">Ivanna Michelot</field>
 <!--
 			<field name="login">imichelot@clinicachavarri.com</field>
-			<field name="password">imichelot</field>
+			<field name="password">Y:uWS4kqKx</field>
 -->
 			<field name="login">imichelot@clinicachavarri.com</field>
-			<field name="password">Y:uWS4kqKx</field>
+			<field name="password">imichelot</field>
 
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
 			<field name="active">True</field>

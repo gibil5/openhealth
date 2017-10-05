@@ -45,6 +45,15 @@
 			
 			<field name="view_mode">tree,form</field>
 			
+            <field name="domain">
+
+            	[
+					('category_id','=','staff'), 
+            	]
+
+            </field>
+
+
 			<!--
             <field name="domain">[]</field>
             <field name="context">{}</field>

@@ -31,8 +31,6 @@ uq@dL_F=xs?_3yBR
 		<record id="director_partner" model="res.partner">
 			<field name="name">Director</field>
 			<field name="email">director@clinicachavarri.com</field>
-
-	        <field eval="[(6, 0, [ref('director')])]" name="category_id"/>
 		</record>
 
 		<record id="director_clinicachavarri" model="res.users">
@@ -50,16 +48,10 @@ uq@dL_F=xs?_3yBR
 
 
 
-
-
-
-
 <!-- Manager -->
 		<record id="manager_partner" model="res.partner">
 			<field name="name">manager</field>
 			<field name="email">manager@clinicachavarri.com</field>
-
-	        <field eval="[(6, 0, [ref('manager')])]" name="category_id"/>
 		</record>
 
 		<record id="manager_clinicachavarri" model="res.users">
@@ -91,7 +83,11 @@ uq@dL_F=xs?_3yBR
 <!--
 	        <field eval="[(6, 0, [ref('module_name.res_partner_category_1')])]" name="category_id"/>
 -->
-	        <field eval="[(6, 0, [ref('manager')])]" name="category_id"/>
+
+
+			<field name="function">manager</field>
+
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
 		<record id="rchavarri_clinicachavarri" model="res.users">
@@ -116,7 +112,9 @@ uq@dL_F=xs?_3yBR
 			<field name="name">Victor Mori</field>
 			<field name="email">vmori@clinicachavarri.com</field>
 
-	        <field eval="[(6, 0, [ref('manager')])]" name="category_id"/>
+			<field name="function">manager</field>
+
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
 		<record id="vmori_clinicachavarri" model="res.users">
@@ -141,8 +139,6 @@ uq@dL_F=xs?_3yBR
 		<record id="jessenwanger" model="res.partner">
 			<field name="name">Josef Berna Essenwanger Ballesteros</field>
 			<field name="email">jessenwanger@clinicachavarri.com</field>
-
-	        <field eval="[(6, 0, [ref('manager')])]" name="category_id"/>
 		</record>
 
 		<record id="jessenwanger_clinicachavarri" model="res.users">

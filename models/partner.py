@@ -11,6 +11,41 @@ class Partner(models.Model):
 
 
 
+
+
+
+
+	function = fields.Selection(
+
+			[	
+				('reception', 	'Plataforma'),
+				('cash', 		'Caja'),
+				('assistant', 	'Asistente Medico'),
+				('physician', 	'Medico'),
+				('inventory', 	'Almacen'),
+				('hc', 			'Personal'),
+				('marketing', 	'Marketing'),
+				('accounting', 	'Contabilidad'),
+
+				('manager', 		'Gerente'),
+				('lawyer', 		'Abogado'),
+			], 
+		)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	# Vip 
 	x_vip = fields.Boolean(
 		string="Vip",

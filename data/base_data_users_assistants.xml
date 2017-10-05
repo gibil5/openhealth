@@ -26,7 +26,11 @@ eruiz_clinicachavarri
 			<field name="name">Asistente Medico</field>
 			<field name="email">asistente@clinicachavarri.com</field>
 
-	        <field eval="[(6, 0, [ref('doctor_assistant')])]" name="category_id"/>
+
+			<field name="function">assistant</field>
+
+
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
 		<record id="asistente_clinicachavarri" model="res.users">
@@ -50,7 +54,9 @@ eruiz_clinicachavarri
 			<field name="name">Elias Ochante</field>
 			<field name="email">yochante@clinicachavarri.com</field>
 
-	        <field eval="[(6, 0, [ref('doctor_assistant')])]" name="category_id"/>
+			<field name="function">assistant</field>
+
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
 		<record id="yochante_clinicachavarri" model="res.users">
@@ -73,7 +79,9 @@ eruiz_clinicachavarri
 			<field name="name">Rossana Garcia</field>
 			<field name="email">rgarcia@clinicachavarri.com</field>
 
-	        <field eval="[(6, 0, [ref('doctor_assistant')])]" name="category_id"/>
+			<field name="function">assistant</field>
+
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
 		<record id="rgarcia_clinicachavarri" model="res.users">
@@ -96,7 +104,9 @@ eruiz_clinicachavarri
 			<field name="name">Nancy Mendoza</field>
 			<field name="email">nmendoza@clinicachavarri.com</field>
 
-	        <field eval="[(6, 0, [ref('doctor_assistant')])]" name="category_id"/>
+			<field name="function">assistant</field>
+
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
 		<record id="nmendoza_clinicachavarri" model="res.users">
@@ -118,7 +128,9 @@ eruiz_clinicachavarri
 			<field name="name">Melita Tirado</field>
 			<field name="email">mtirado@clinicachavarri.com</field>
 
-	        <field eval="[(6, 0, [ref('doctor_assistant')])]" name="category_id"/>
+			<field name="function">assistant</field>
+
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
 		<record id="mtirado_clinicachavarri" model="res.users">
@@ -141,7 +153,9 @@ eruiz_clinicachavarri
 			<field name="name">Eulalia Ruiz</field>
 			<field name="email">eruiz@clinicachavarri.com</field>
 
-	        <field eval="[(6, 0, [ref('doctor_assistant')])]" name="category_id"/>
+			<field name="function">assistant</field>
+
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
 		<record id="eruiz_clinicachavarri" model="res.users">

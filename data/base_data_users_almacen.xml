@@ -10,7 +10,9 @@
 			<field name="name">Almacen</field>
 			<field name="email">almacen@clinicachavarri.com</field>
 
-	        <field eval="[(6, 0, [ref('almacen')])]" name="category_id"/>
+			<field name="function">inventory</field>
+
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
 		<record id="almacen_clinicachavarri" model="res.users">
@@ -35,7 +37,9 @@
 			<field name="name">Yober Ramirez</field>
 			<field name="email">yramirez@clinicachavarri.com</field>
 
-	        <field eval="[(6, 0, [ref('almacen')])]" name="category_id"/>
+			<field name="function">inventory</field>
+
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
 		<record id="yramirez_clinicachavarri" model="res.users">

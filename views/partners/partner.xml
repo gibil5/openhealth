@@ -91,17 +91,17 @@
 					<field name="name"/>
 <!--
 					<field name="date"/>
+					<field name="id"/>
 -->
-					<field name="create_date"/>
 
-
+					<field name="function"/>
 
 					
 					<field name="email"/>
 
-					<field name="id"/>
 					<field name="comment"/>				
 
+					<field name="create_date"/>
 
 <!--
 					<field name="x_vip"/>				

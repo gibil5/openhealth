@@ -71,7 +71,9 @@ Y:uWS4kqKx		Yvanna
 			<field name="name">Plataforma</field>
 			<field name="email">plataforma@clinicachavarri.com</field>
 
-	        <field eval="[(6, 0, [ref('platform')])]" name="category_id"/>
+			<field name="function">reception</field>
+
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
 		<record id="plataforma_clinicachavarri" model="res.users">
@@ -94,12 +96,11 @@ Y:uWS4kqKx		Yvanna
 <!-- Ivanna Michelot -->
 		<record id="imichelot" model="res.partner">
 			<field name="name">Ivanna Michelot</field>
-<!--
-			<field name="email">imichelot@clinicachavarri.com</field>
--->
 			<field name="email">ivannamichelot@gmail.com</field>
 
-	        <field eval="[(6, 0, [ref('platform')])]" name="category_id"/>
+			<field name="function">reception</field>
+
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
 		<record id="imichelot_clinicachavarri" model="res.users">
@@ -130,7 +131,9 @@ Y:uWS4kqKx		Yvanna
 			<field name="name">Gilda Nuñez</field>
 			<field name="email">gnunhez@clinicachavarri.com</field>
 
-	        <field eval="[(6, 0, [ref('platform')])]" name="category_id"/>
+			<field name="function">reception</field>
+
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
 		<record id="gnunhez_clinicachavarri" model="res.users">
@@ -156,7 +159,9 @@ Y:uWS4kqKx		Yvanna
 			<field name="name">Mariana Grieve</field>
 			<field name="email">mgrieve@clinicachavarri.com</field>
 
-	        <field eval="[(6, 0, [ref('platform')])]" name="category_id"/>
+			<field name="function">reception</field>
+
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
 		<record id="mgrieve_clinicachavarri" model="res.users">
@@ -180,7 +185,9 @@ Y:uWS4kqKx		Yvanna
 			<field name="name">Karla Tejada</field>
 			<field name="email">ktejada@clinicachavarri.com</field>
 
-	        <field eval="[(6, 0, [ref('platform')])]" name="category_id"/>
+			<field name="function">reception</field>
+
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
 		<record id="ktejada_clinicachavarri" model="res.users">
@@ -203,7 +210,9 @@ Y:uWS4kqKx		Yvanna
 			<field name="name">Adeli Vidal</field>
 			<field name="email">avidal@clinicachavarri.com</field>
 
-	        <field eval="[(6, 0, [ref('platform')])]" name="category_id"/>
+			<field name="function">reception</field>
+
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
 		<record id="avidal_clinicachavarri" model="res.users">
@@ -227,7 +236,9 @@ Y:uWS4kqKx		Yvanna
 			<field name="name">Nicolas Escobar</field>
 			<field name="email">nescobar@clinicachavarri.com</field>
 
-	        <field eval="[(6, 0, [ref('platform')])]" name="category_id"/>
+			<field name="function">reception</field>
+
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
 		<record id="nescobar_clinicachavarri" model="res.users">
@@ -251,7 +262,9 @@ Y:uWS4kqKx		Yvanna
 			<field name="name">Kevin Calero</field>
 			<field name="email">kcalero@clinicachavarri.com</field>
 
-	        <field eval="[(6, 0, [ref('platform')])]" name="category_id"/>
+			<field name="function">reception</field>
+
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
 		<record id="kcalero_clinicachavarri" model="res.users">
@@ -265,10 +278,6 @@ Y:uWS4kqKx		Yvanna
 			<field name="partner_id" ref="kcalero"/>
 			<field name="lang">es_ES</field>
 		</record>
-
-
-
-
 
 
 	</data>

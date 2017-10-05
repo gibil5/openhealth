@@ -26,8 +26,6 @@ rbustios_clinicachavarri
 		<record id="staff_partner" model="res.partner">
 			<field name="name">staff</field>
 			<field name="email">staff@clinicachavarri.com</field>
-
-	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
 		<record id="staff_clinicachavarri" model="res.users">
@@ -52,6 +50,8 @@ rbustios_clinicachavarri
 			<field name="name">Luis Loli</field>
 			<field name="email">lloli@clinicachavarri.com</field>
 
+			<field name="function">marketing</field>
+
 	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
@@ -73,6 +73,8 @@ rbustios_clinicachavarri
 		<record id="pbalboa" model="res.partner">
 			<field name="name">Percy Balboa</field>
 			<field name="email">pbalboa@clinicachavarri.com</field>
+
+			<field name="function">accounting</field>
 
 	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
@@ -97,6 +99,8 @@ rbustios_clinicachavarri
 			<field name="name">Ivan Puga</field>
 			<field name="email">ipuga@clinicachavarri.com</field>
 
+			<field name="function">hc</field>
+
 	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
@@ -119,6 +123,8 @@ rbustios_clinicachavarri
 		<record id="rbustios" model="res.partner">
 			<field name="name">Raul Bustios</field>
 			<field name="email">rbustios@clinicachavarri.com</field>
+
+			<field name="function">marketing</field>
 
 	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>

@@ -42,6 +42,10 @@ access_res_partner_reception,res.partner.reception,model_res_partner,openhealth.
 access_res_partner_caja,res.partner.caja,model_res_partner,openhealth.caja,1,0,0,0
 
 
+access_res_partner_reception,res.partner.reception,model_res_partner,openhealth.reception,0,0,0,0
+
+
+
 
 
 

@@ -383,24 +383,70 @@ openhealth.almacens
 
 <!-- Contacts -->
 <!--
-		<menuitem 	id="main_contacts_menu" 
+		<menuitem 	id="base.main_contacts_menu" 
 					sequence="0"
-					name="Contactos"/>
+					name="Contactos - jx"
 
-		<menuitem 	id="contacts_menu" 
-					name="Contactos"
-					parent="main_contacts_menu"/>
+					groups="openhealth.managers,openhealth.directors"
+					/>
 
+		<menuitem 	id="jx_contacts_menu" 
+					name="Contactos - jxy"
+					parent="base.main_contacts_menu"
 
-		<menuitem 	id="mbox_contacts_menu" 
+					/>
+
+		<menuitem 	id="jx_mbox_contacts_menu" 
 					name="Mailbox" 
-					parent="contacts_menu"
+					parent="jx_contacts_menu"
 					sequence="1"
-
-					action="mail.action_contacts"/>
-
-            <menuitem id="menu_config_address_book" parent="base.menu_sale_config" name="Contacts" sequence="4" groups="group_system"/>
+					action="mail.action_contacts"
+					/>
 -->
+
+
+<!--
+					parent="base.menu_sale_config" 
+					groups="group_system"
+		<menuitem 	id="menu_config_address_book" 
+
+					parent="erp_mbox_contacts_menu" 
+			
+					name="Contactos - jx" 
+					sequence="4"
+					groups="openhealth.managers,openhealth.directors"
+					 />
+-->
+
+
+
+<!--
+        id="menu_contacts"
+        action="action_contacts"
+        groups="base.group_user,base.group_partner_manager"
+-->
+    <menuitem 
+
+    	name="Contacts - xy"
+        
+        id="mail.menu_contacts"
+        
+        sequence="4"
+        
+        action="mail.action_contacts"
+        
+        web_icon="mail,static/description/icon2.png"
+
+
+		groups="openhealth.managers,openhealth.directors"
+        />
+
+
+
+
+
+
+
 
 <!--
 		<menuitem 	id="tabel_menu_emp_by_division" name="Employees by division"
@@ -408,6 +454,13 @@ openhealth.almacens
               		action="tabel_list_emp_action_group_by_division"  sequence="5" 
               		groups="Tabel.group_manager,Tabel.group_accountant,Tabel.group_eco"/>
 -->
+
+
+
+
+
+
+
 
 
 

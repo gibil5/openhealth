@@ -195,7 +195,7 @@
 
 
 		# Pricelists 
-		#'data/products_pricelist.xml',
+		'data/products_pricelist.xml',
 
 
 		# Vip cards

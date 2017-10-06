@@ -193,8 +193,12 @@
 
 
 
+
+		# Pricelists 
+		#'data/products_pricelist.xml',
+
+
 		# Vip cards
-		'data/products_pricelist.xml',
 		'data/base_data_patients.xml',	
 		'data/odoo_data_cards.xml',	
 

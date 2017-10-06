@@ -178,6 +178,178 @@
 
 
 
+# Ooor
+
+	#name = fields.Char(
+	#		string="Presupuesto #"
+	#	)
+
+	# Test 
+	#test = fields.Char(
+	#	)
+
+	# Type
+	#x_type = fields.Selection(
+	#		selection = ord_vars._owner_type_list, 
+	#		string='Tipo', 
+	#	)
+
+
+
+
+
+
+
+
+
+
+# User by Doctor 
+	# Doctor 
+	#_dic_docuser = {
+	#					'Dr. Medico': 		'Medico', 
+	#					'Dr. Chavarri': 	'Fernando Chavarri', 
+	#					'Dr. Canales': 		'Paul Canales', 
+	#					'Dr. Escudero':		'Carlos Escudero', 
+	#					'Dr. Gonzales':		'Leo Gonzales', 
+	#					'Dr. Vasquez':		'Javier Vasquez', 
+	#					'Dr. Alarcon': 		'Guillermo Alarcon', 
+	#					'Dr. Monteverde':	'Piero Monteverde', 
+	#					'Dr. Mendez':		'Carlos Mendez', 
+	#					'Dra. Acosta':		' Desiree Acosta', 
+	#					'Dra. Pedemonte':	'Maria Luisa Pedemonte', 
+	#					'Eulalia':			'Eulalia Ruiz', 
+	#				}
+	
+	#@api.onchange('x_doctor')	
+	#def _onchange_x_doctor(self):
+	#	user_name = self._dic_docuser[self.x_doctor.name]
+	#	self.user_id = self.env['res.users'].search([('name', '=', user_name)]).id 
+
+
+	#user_id = fields.Many2one('res.users', string='Salesperson', index=True, track_visibility='onchange', default=lambda self: self.env.user)
+
+	#@api.multi
+	#@api.depends('x_doctor')
+	#def _compute_user_id(self):
+	#	for record in self:
+	#		if record.x_doctor.name != False:
+	#			user_name = record._dic_docuser[record.x_doctor.name]
+	#			record.user_id = record.env['res.users'].search([('name', '=', user_name)]).id 
+
+
+
+
+
+
+
+
+
+
+# 6 Oct 2017
+
+
+	#partner_invoice_id = fields.Many2one('res.partner', string='Invoice Address', readonly=True, 
+	#	required=True, 
+		#required=False, 
+	#	states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}, help="Invoice address for current sales order.")
+
+	#partner_shipping_id = fields.Many2one('res.partner', string='Delivery Address', readonly=True, 
+	#	required=True, 
+		#required=False, 
+	#	states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}, help="Delivery address for current sales order.")
+
+
+
+
+
+	# Pricelist
+	#@api.multi 
+	#def _get_default_pl(self):
+	#	pl = self.env['product.pricelist'].search([('name', '=', 'Public Pricelist')]).id 
+	#	pl = 1 
+	#	return pl
+
+	#pricelist_id = fields.Many2one(
+	#	'product.pricelist', 
+	#	default=lambda self: self._get_default_pl(),
+	#	string='Pricelist', required=True, readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}, help="Pricelist for current sales order.")
+
+
+	#pricelist_id = fields.Many2one('product.pricelist', string='Pricelist', required=True, readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}, help="Pricelist for current sales order.")
+
+
+
+
+	# For Debugging purposes 
+	@api.multi
+	@api.onchange('partner_id')
+	def onchange_partner_id(self):
+		print 'jx'
+		print 'onchange_partner_id'
+		print self.partner_id
+		print 
+
+		"""
+		Update the following fields when the partner is changed:
+		- Pricelist
+		- Payment term
+		- Invoice address
+		- Delivery address
+		"""
+		if not self.partner_id:
+
+			print 'jx 2'
+
+			self.update({
+				'partner_invoice_id': False,
+				'partner_shipping_id': False,
+				'payment_term_id': False,
+				'fiscal_position_id': False,
+			})
+			return
+
+
+
+		addr = self.partner_id.address_get(['delivery', 'invoice'])
+
+
+		print 'jx 3'
+		print addr 
+		print 'jx 4'
+		print self.partner_id.property_payment_term_id
+		print 'jx 5'
+		print self.partner_id.property_product_pricelist.id
+		print 'jx 6'
+		print self.partner_id.property_product_pricelist
+		print 'jx 7'
+
+
+		values = {
+			'pricelist_id': self.partner_id.property_product_pricelist and self.partner_id.property_product_pricelist.id or False,
+			'payment_term_id': self.partner_id.property_payment_term_id and self.partner_id.property_payment_term_id.id or False,
+			'partner_invoice_id': addr['invoice'],
+			'partner_shipping_id': addr['delivery'],
+		}
+
+		print 'jx 10'
+
+		if self.env.user.company_id.sale_note:
+			values['note'] = self.with_context(lang=self.partner_id.lang).env.user.company_id.sale_note
+
+		if self.partner_id.user_id:
+			values['user_id'] = self.partner_id.user_id.id
+		if self.partner_id.team_id:
+			values['team_id'] = self.partner_id.team_id.id
+		self.update(values)
+
+
+
+
+
+
+
+
+
 
 
 

@@ -29,98 +29,12 @@ class sale_order(models.Model):
 
 
 
-
 	# Doctor 
-	#_dic_docuser = {
-	#					'Dr. Medico': 		'Medico', 
-	#					'Dr. Chavarri': 	'Fernando Chavarri', 
-	#					'Dr. Canales': 		'Paul Canales', 
-	#					'Dr. Escudero':		'Carlos Escudero', 
-	#					'Dr. Gonzales':		'Leo Gonzales', 
-	#					'Dr. Vasquez':		'Javier Vasquez', 
-	#					'Dr. Alarcon': 		'Guillermo Alarcon', 
-	#					'Dr. Monteverde':	'Piero Monteverde', 
-	#					'Dr. Mendez':		'Carlos Mendez', 
-	#					'Dra. Acosta':		' Desiree Acosta', 
-	#					'Dra. Pedemonte':	'Maria Luisa Pedemonte', 
-	#					'Eulalia':			'Eulalia Ruiz', 
-	#				}
-	
-
 	x_doctor = fields.Many2one(
 			'oeh.medical.physician',
 			string = "Médico", 	
 		)
 
-	#@api.onchange('x_doctor')	
-	#def _onchange_x_doctor(self):
-	#	user_name = self._dic_docuser[self.x_doctor.name]
-	#	self.user_id = self.env['res.users'].search([('name', '=', user_name)]).id 
-
-
-
-
-
-	#user_id = fields.Many2one('res.users', string='Salesperson', index=True, track_visibility='onchange', default=lambda self: self.env.user)
-
-	#@api.multi
-	#@api.depends('x_doctor')
-	#def _compute_user_id(self):
-	#	for record in self:
-	#		if record.x_doctor.name != False:
-	#			user_name = record._dic_docuser[record.x_doctor.name]
-	#			record.user_id = record.env['res.users'].search([('name', '=', user_name)]).id 
-
-
-
-
-
-
-
-	# Pricelist
-	#@api.multi 
-	#def _get_default_pl(self):
-	#	pl = self.env['product.pricelist'].search([('name', '=', 'Public Pricelist')]).id 
-	#	pl = 1 
-	#	return pl
-
-	#pricelist_id = fields.Many2one(
-	#	'product.pricelist', 
-	#	default=lambda self: self._get_default_pl(),
-	#	string='Pricelist', required=True, readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}, help="Pricelist for current sales order.")
-
-
-	#partner_invoice_id = fields.Many2one('res.partner', string='Invoice Address', readonly=True, 
-	#	required=True, 
-		#required=False, 
-	#	states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}, help="Invoice address for current sales order.")
-
-	#partner_shipping_id = fields.Many2one('res.partner', string='Delivery Address', readonly=True, 
-	#	required=True, 
-		#required=False, 
-	#	states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}, help="Delivery address for current sales order.")
-
-
-
-
-
-
-
-	#name = fields.Char(
-	#		string="Presupuesto #"
-	#	)
-
-
-
-
-
-
-
-	# Type
-	#x_type = fields.Selection(
-	#		selection = ord_vars._owner_type_list, 
-	#		string='Tipo', 
-	#	)
 
 
 
@@ -139,16 +53,6 @@ class sale_order(models.Model):
 			#string='Quién anula', 
 			string='Producto', 
 		)
-
-
-
-
-
-
-
-	# Test 
-	#test = fields.Char(
-	#	)
 
 
 
@@ -193,7 +97,7 @@ class sale_order(models.Model):
 
 
 
-
+	# Comment 
 	comment = fields.Selection(
 		[
 		('product', 'Product'),
@@ -263,7 +167,7 @@ class sale_order(models.Model):
 
 	@api.depends('x_age')
 	def _compute_x_group(self):
-    
+	
 		#self.x_group = 'NA'
 		#if self.x_age > 5 and self.x_age <= 10:
 		#	self.x_group = 'A'
@@ -1683,7 +1587,9 @@ class sale_order(models.Model):
 												])
 		
 		product_id = product.id
+
 		price_unit = product.list_price
+		
 		x_price_vip = product.x_price_vip
 		product_uom = product.uom_id.id
 

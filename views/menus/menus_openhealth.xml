@@ -82,7 +82,19 @@
 
 
 
-		<!-- cards --> 
+
+		<!-- price list --> 
+<!--
+-->
+		<menuitem id="pricelist_menu" name="Pricelist" parent="openhealth_menu"
+			sequence="-130"
+
+			action="pricelist_list_action"
+			/>
+
+
+
+		<!-- price list --> 
 		<menuitem id="pricelist_item_menu" name="Pricelist Item" parent="openhealth_menu"
 			sequence="-130"
 

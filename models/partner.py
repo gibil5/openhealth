@@ -52,3 +52,9 @@ class Partner(models.Model):
 
 
 
+
+
+
+
+
+

@@ -94,6 +94,10 @@
 					<field name="id"/>
 -->
 
+					<field name="property_product_pricelist"/>
+
+
+
 					<field name="function"/>
 
 					

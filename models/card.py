@@ -108,6 +108,9 @@ class card(models.Model):
 	@api.depends('patient_name')
 
 	def _compute_partner_id(self):
+		print 'jx'
+		print 'compute partner_id'
+
 		for record in self:
 
 			partner_id = record.env['res.partner'].search([
@@ -120,6 +123,18 @@ class card(models.Model):
 
 			record.partner_id = partner_id
 
+
+			pl = record.env['product.pricelist'].search([
+																('name','=', 'VIP'),
+															],
+															#order='appointment_date desc',
+															limit=1,)
+
+			print pl 
+			print pl.id
+
+			partner_id.property_product_pricelist = pl
+			#partner_id.save 
 	# 
 
 

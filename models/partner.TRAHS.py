@@ -37,3 +37,48 @@
 
 
 
+
+
+
+
+	property_product_pricelist = fields.Many2one(
+		relation='product.pricelist', 
+		string="Sale Pricelist", 
+		#help="This pricelist will be used, instead of the default one, for sales to the current partner", 
+		
+		compute='_compute_property_product_pricelist', 
+	)
+
+
+	@api.multi
+	#@api.depends('x_card')
+
+	def _compute_property_product_pricelist(self):
+
+		print 'jx'
+		print 'compute pl'
+
+		for record in self:
+
+			x_card = record.env['openhealth.card'].search([
+															('patient_name','=', record.name),
+														],
+														#order='appointment_date desc',
+														limit=1,)
+
+			print x_card
+
+
+			if x_card.name != False:
+
+				pl = record.env['product.pricelist'].search([
+																('name','=', 'VIP'),
+															],
+															#order='appointment_date desc',
+															limit=1,)
+				record.property_product_pricelist = pl
+
+				print pl  
+
+
+

@@ -239,13 +239,17 @@ Deprecated
 
 
 <!-- Citas -->
+<!--
+			groups="openhealth.reception,openhealth.managers,openhealth.directors"
+-->
+
 
 		<!-- Appointments -->
 		<menuitem id="main_appointment_menu_jx" 
 			sequence="-8"
 			name="Citas"
 
-			groups="openhealth.reception,openhealth.managers,openhealth.directors"
+			groups="openhealth.reception,openhealth.physicians,openhealth.managers,openhealth.directors"
 			/>
 
 		<menuitem id="oehealth_appointment_menu" 

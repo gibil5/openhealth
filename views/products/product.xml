@@ -90,6 +90,8 @@
 
 					<field name="name"/>
 
+					<field name="pricelist_id"/>
+
 					<field name="list_price"/>
 					<field name="sale_ok"/>
 					<field name="uom_id"	invisible="0"/>
@@ -125,7 +127,6 @@
 					<field name="x_sessions"/>	
 					<field name="x_time"/>		
 					<field name="x_family"/>
-					<field name="pricelist"/>
 					<field name="qty_available"/>
 -->
 

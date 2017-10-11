@@ -2,8 +2,11 @@
 <openerp>
 
 
-	
+<!--	
 	<data noupdate='1'>
+	<data>
+-->
+	<data noupdate='0'>
 
 
 		<!-- Product Category --> 

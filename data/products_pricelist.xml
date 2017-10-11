@@ -1,6 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
+<!--
 	<data noupdate='1'>
+	<data>
+-->
+	<data noupdate='0'>
 
 		<!-- 2017-08-31 -->
 		<!-- Data - Products -->
@@ -10,6 +14,7 @@
 <record id='pricelist_vip' model='product.pricelist'>
 	<field name='name'>VIP</field>
 </record>
+
 
 
 
@@ -150,7 +155,9 @@
 
 <!-- LASER CO2 FRACCIONAL - Localizado Cuerpo - Acne y Secuelas Grado 1 - 1 -->
 <record id='vip_co2_bol_as1_one' model='product.pricelist.item'>
+
 	<field name='pricelist_id' 	ref='pricelist_vip'/>
+	
 	<field name='product_tmpl_id' 	ref='co2_bol_as1_one'/>
 	<field name='fixed_price'>3000.0</field>
 	<field name='min_quantity'>1</field>

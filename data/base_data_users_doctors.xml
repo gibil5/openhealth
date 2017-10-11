@@ -17,8 +17,10 @@
 
 		<record id="medico_clinicachavarri" model="res.users">
 			<field name="name">Medico</field>
+
 			<field name="login">medico@clinicachavarri.com</field>
 			<field name="password">medico</field>
+			
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
 			<field name="active">True</field>
 

@@ -356,8 +356,8 @@
 		'views/menus/menus.xml',
 		'views/menus/menus_reporting.xml',
 		'views/menus/menus_reporting_pla.xml',
-
-		#'views/menus/menus_reporting_phy.xml',
+		'views/menus/menus_reporting_phy.xml',
+		
 		#'views/menus/menus_reporting_phy_ala.xml',
 		
 		'views/menus/menus_openhealth.xml',

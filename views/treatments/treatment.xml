@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
+
 	<data>
 
 
@@ -35,6 +36,7 @@
 
 	        <field name="context">{'group_by': ['physician']}</field>
 	    </record>
+
 
 
 

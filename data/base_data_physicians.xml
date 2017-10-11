@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
 
-
 	<data noupdate="0">
  
 
-
-
-
 <!-- Data - Physicians -->
+
 
  
 
-
-
 <!-- Medico -->
-
-
 		<record id="dr_medico" model="oeh.medical.physician">
 			<field name="name">Dr. Medico</field>
 			<field name="x_type">doctor</field>
@@ -34,6 +27,37 @@
 		<record id="dr_medico" model="oeh.medical.physician">
 			<field name="line_id" ref="ava_med_thu"/>
 		</record>
+
+
+
+
+
+<!-- Clinica Chavarri -->
+		<record id="dr_clinica_chavarri" model="oeh.medical.physician">
+			<field name="name">Clinica Chavarri</field>
+			<field name="x_type">doctor</field>
+			<field name=" consultancy_type ">residential</field>
+			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
+		</record>
+
+
+
+<!--
+		<record id="ava_med_thu" model="oeh.medical.physician.line">
+			<field name="physician_id" ref="dr_medico"/>
+			<field name="name">Thursday</field>
+			<field name="end_time">21.0166666667</field>
+			<field name="start_time">8.98333333333</field>
+		</record>
+
+		<record id="dr_medico" model="oeh.medical.physician">
+			<field name="line_id" ref="ava_med_thu"/>
+		</record>
+-->
+
+
+
+
 
 
 

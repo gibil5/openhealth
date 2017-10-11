@@ -3,6 +3,20 @@
 
 
 
+
+access_ir_property_caja,ir.property.caja,ir.model_ir_property,openhealth.caja,1,1,1,0
+
+
+
+
+
+
+
+
+
+
+
+
 access_oeh_medical_physician,oeh.medical.physician,model_oeh_medical_physician,,1,1,1,1
 
 

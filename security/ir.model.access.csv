@@ -4,6 +4,18 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+access_ir_property_caja,ir.property.caja,base.model_ir_property,openhealth.caja,1,1,1,0
+
+
+
+
+
+
+
+
+
+
+
 
 access_oeh_medical_physician,oeh.medical.physician,oehealth.model_oeh_medical_physician,oehealth.group_oeh_medical_physician,1,1,1,1
 

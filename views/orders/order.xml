@@ -12,7 +12,9 @@
 		
 
 
-		<!-- Favorites -->
+<!-- Favorites -->
+
+		<!-- By Month --> 
 	    <record id="sale.filter_sale_order_month" model="ir.filters">
 
 	        <field name="name">Por Mes</field>
@@ -28,6 +30,7 @@
 
 
 
+		<!-- By Doctor --> 
 	    <record id="sale.filter_sale_order_phy" model="ir.filters">
 
 	        <field name="name">Por Medico</field>

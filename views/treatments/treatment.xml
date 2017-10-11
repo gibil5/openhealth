@@ -5,6 +5,41 @@
 
 		<!-- TREATMENT --> 
 
+
+
+
+
+
+
+
+<!-- Favorites -->
+
+		<!-- By Month --> 
+	    <record id="openhealth.filter_tre_order_month" model="ir.filters">
+
+	        <field name="name">Por Mes</field>
+
+	        <field name="model_id">openhealth.treatment</field>
+
+	        <field name="context">{'group_by': ['start_date']}</field>
+	    </record>
+
+
+
+		<!-- By Doctor --> 
+	    <record id="openhealth.filter_tre_order_phy" model="ir.filters">
+
+	        <field name="name">Por Medico</field>
+
+	        <field name="model_id">openhealth.treatment</field>
+
+	        <field name="context">{'group_by': ['physician']}</field>
+	    </record>
+
+
+
+
+
 		<!-- Form view --> 
 		<record model="ir.ui.view" id="treatment_form_view">
 			<field name="name">treatment.form</field>

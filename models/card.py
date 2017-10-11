@@ -133,7 +133,7 @@ class card(models.Model):
 			print pl 
 			print pl.id
 
-			partner_id.property_product_pricelist = pl
+			#partner_id.property_product_pricelist = pl
 			#partner_id.save 
 	# 
 

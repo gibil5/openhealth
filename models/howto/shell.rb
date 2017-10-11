@@ -46,6 +46,9 @@ self.env['product.pricelist'].search([('name', 'like', 'P')])
 self.env['product.pricelist'].search([('name', '=', 'Public Pricelist')])
 
 
+pl = self.env['product.pricelist'].search([('name','=', 'VIP'),],limit=1,)
+
+
 
 
 

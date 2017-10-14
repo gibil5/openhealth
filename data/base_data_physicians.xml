@@ -17,6 +17,7 @@
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
 		</record>
 
+
 		<record id="ava_med_thu" model="oeh.medical.physician.line">
 			<field name="physician_id" ref="dr_medico"/>
 			<field name="name">Thursday</field>

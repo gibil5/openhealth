@@ -7,7 +7,7 @@
 			<field name="name">procedure.sessions.form</field>
 			<field name="model">openhealth.procedure</field>
 
-			<field name="priority" eval="2"/>
+			<field name="priority" eval="1"/>
 			
 			<field name="inherit_id" ref="procedure_form_view"/>
 			<field name="arch" type="xml">
@@ -16,6 +16,8 @@
 
 					<!--							
 					<page string="Sesiones"  	attrs="{'invisible':[('laser', '!=', 'laser_co2')]}"	>
+																		'default_co2_mode_exposure': 'one', 
+																		'default_co2_observations': 'x', 
 					-->
 					<page string="Sesiones">
 
@@ -29,10 +31,7 @@
 																		'default_treatment': treatment,
 																		'default_evaluation_type': 'session',
 																		'default_co2_mode_emission': 'continuous', 
-																		'default_co2_mode_exposure': 'one', 
-																		'default_co2_observations': 'x', 
-
-
+																		
 
 																		'default_evaluation_nr': nr_sessions + 1,
 																		}"

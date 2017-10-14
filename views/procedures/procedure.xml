@@ -18,14 +18,6 @@
 					<header>
 
 
-						<!-- Treatment --> 
-						<button 
-								name="open_treatment"
-								type="object" 
-								class="oe_highlight"
-
-								string="Regresar al TRATAMIENTO"
-						/>
 
 
 
@@ -91,6 +83,18 @@
 							name="create_controls" 
 						/>
 
+
+
+						<!-- Treatment --> 
+						<button 
+								name="open_treatment"
+
+								type="object" 
+								
+								class="oe_highlight oe_right"
+
+								string="Regresar al TRATAMIENTO"
+						/>
 
 
 <!--
@@ -274,9 +278,11 @@
 						</group>
 							
 
+
 						<!-- Notebook --> 
 						<notebook>
 						</notebook>
+
 
 					</sheet>
 				</form>

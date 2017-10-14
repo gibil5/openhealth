@@ -222,8 +222,6 @@ groups="openhealth.directors,openhealth.managers,openhealth.physicians,openhealt
 							
 
 
-						<!-- Notebook --> 
-						<notebook>
 
 <!--
 							<page string="Fotos VISIA"  	attrs="{
@@ -231,7 +229,23 @@ groups="openhealth.directors,openhealth.managers,openhealth.physicians,openhealt
 																}"	
 								>
 -->							
+
+						<!-- VISIA --> 
+						<notebook>
 							<page string="Fotos VISIA" >
+
+								<field
+									name="image_ids"
+									nolabel="1"
+									context="{
+												'default_owner_model': 'openhealth.control',
+												'default_owner_id': id,
+									}"
+									mode="kanban"
+								/>
+
+							</page>
+						</notebook>
 
 
 <!--
@@ -267,19 +281,6 @@ groups="openhealth.directors,openhealth.managers,openhealth.physicians,openhealt
 								</field>
 -->
 
-								<field
-									name="image_ids"
-									nolabel="1"
-									context="{
-										'default_owner_model': 'openhealth.control',
-										'default_owner_id': id,
-									}"
-									mode="kanban"
-								/>
-
-
-							</page>
-						</notebook>
 
 
 

@@ -24,46 +24,122 @@ class SessionMed(models.Model):
 	
 	_name = 'openhealth.session.med'
 	
-	_inherit = 'openhealth.session'
+	#_inherit = 'openhealth.session'
+	_inherit = ['openhealth.session', 'base_multi_image.owner']
 
 
 
 
+
+
+#def onchange_product(self,cr,uid,ids,context=None):
+#   #you can do something here
+#   return {'value':{},'warning':{'title':'warning','message':'Your message'}}
+
+
+	#@api.onchange('co2_power')
+	#def _onchange_co2_power(self):
+	#	print 'jx'
+	#	print 'onchange co2_power'
+	#	print self.co2_power
+	#	ret = session_vars.test_for_zero(self, self.co2_power)
+	#	return ret
+		#if self.co2_power == 0.0: 
+		#	return {'value':{},'warning':{'title':'warning','message':'Valor nulo'}}
+
+
+	#@api.onchange('co2_energy')
+	#def _onchange_co2_energy(self):
+	#	if self.co2_energy == 0.0: 
+	#		return {'value':{},'warning':{'title':'warning','message':'Valor nulo'}}
+
+
+
+	#error=fields.Boolean(
+			#default = False, 
+	#		compute='_compute_error', 
+	#	)
+	#@api.multi
+	#def _compute_error(self):
+	#	print 'jx'
+	#	print 'compute error'
+	#	for record in self:
+	#		print record.co2_power
+	#		if record.co2_power == 0.0: 
+	#			print 'true'
+	#			record.error = True
+	#		else: 
+	#			print 'false'
+	#			record.error = False
 
 
 	#------------------------------------------------------ Co2 ----------------------------------------------------------
 
 	# Co2 - Calibration 
 
-	co2_power=fields.Float(
+	#co2_power=fields.Float(
+	co2_power=fields.Char(
 			string="Potencia (W)",
+			default='', 
 			)
 	
-	co2_frequency=fields.Float(
+	#co2_frequency=fields.Float(
+	co2_frequency=fields.Char(
 			string="Frecuencia (Hz)",
+			default='', 
 			)
 	
-	co2_energy=fields.Float(
-			string="Energía de pulso (mJ)",
+	#co2_energy=fields.Float(
+	co2_energy=fields.Char(
+			string="Energía de Pulso (mJ)",
+			default='', 
 			)
 
+
+
+
 	co2_mode_emission=fields.Selection(
-			string="Modo de emisión",
+			string="Modo de EMISION",
 			selection=session_vars._co2_mode_emission_list, 
 			#default="x",
 			)
+
 	
 	co2_mode_exposure=fields.Selection(
-			string="Modo de exposición",
+			string="Modo de EXPOSICION",
 
 			selection=session_vars._co2_mode_exposure_list, 
 			#default="x",
 			)
 	
-	co2_observations=fields.Text(
-			string="Observaciones",
-			#default="x",
-			)
+
+
+
+
+	co2_fluency = fields.Char(
+			string="Fluencia (J/cm2)",	
+			default='', 
+		)
+
+
+	co2_density  = fields.Char(
+			string="Densidad (%)",
+			default='', 
+		)
+
+	co2_time  = fields.Char(
+			string="Tiempo de permanencia (us)",
+			default='', 	
+		)
+
+	co2_distance = fields.Char(
+			string="Distancia (um)",
+			default='', 
+		)
+
+
+
+
 
 
 

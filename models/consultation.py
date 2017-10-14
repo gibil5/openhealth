@@ -26,8 +26,8 @@ class Consultation(models.Model):
 
 	_name = 'openhealth.consultation'
 
-	#_inherit = 'oeh.medical.evaluation'
-	_inherit = ['openhealth.base', 'oeh.medical.evaluation']
+	_inherit = 'oeh.medical.evaluation'
+	#_inherit = ['openhealth.base', 'oeh.medical.evaluation']
 	
 
 

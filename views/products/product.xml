@@ -90,6 +90,8 @@
 
 					<field name="name"/>
 
+
+
 					<field name="pricelist_id"/>
 
 					<field name="list_price"/>
@@ -212,8 +214,6 @@
 
 			<field name="view_mode">tree,form</field>
 
-<!--
--->
             <field name="domain">[            	
 									('type', '=', 'service'),
 									('x_origin', '=', False),
@@ -231,6 +231,39 @@
 			-->
 		</record>
 
+
+
+
+
+		<!-- Window action -->
+		<record model="ir.actions.act_window" id="product_template_service_vip_list_action">
+			<field name="name">Servicios Vip</field>
+			<field name="res_model">product.template</field>
+			<field name="view_type">form</field>
+
+			<field name="view_mode">tree,form</field>
+
+            <field name="domain">[            	
+									
+									('type', '=', 'service'),
+									
+									('x_origin', '=', False),
+            					
+									('x_price_vip', '!=', 0.0), 
+
+            					]</field>
+
+
+			<field name="context">{'order': 'name'}</field>
+
+            <!--
+			<field name="context">{'order': 'x_name_short'}</field>
+            <field name="domain">[
+									('type', '=', 'service'),
+									('x_treatment', '=', 'laser_co2'),
+            					]</field>
+			-->
+		</record>
 
 
 
@@ -394,6 +427,11 @@
 
 					<field name="name"/>
 
+					<field name="id"/>
+
+
+
+
 					<field name="product_tmpl_id"/>
 
 					<field name="categ_id"/>
@@ -405,6 +443,9 @@
 
 					<field name="date_end"/>
 
+
+					<field name="create_date"/>
+					<field name="write_date"/>
 				</tree>
 			</field>
 		</record>
@@ -429,6 +470,41 @@
 		</record>
 
 
+
+
+
+
+
+
+
+
+
+		<!-- TREE /list view -->	
+		<record model="ir.ui.view" id="pricelist_tree_view">
+			<field name="name">product pricelist</field>
+			<field name="model">product.pricelist</field>
+			<field name="type">tree</field>
+			<field name="priority" eval="1"/>
+
+			<field name="arch" type="xml">	
+
+				<tree string="Product Pricelist Tree"   >
+
+
+					<field name="name"/>
+
+					<field name="id"/>
+
+					<field name="active"/>
+
+					<field name="item_ids"/>
+
+					<field name="create_date"/>
+					<field name="write_date"/>
+  
+				</tree>
+			</field>
+		</record>
 
 
 		<record model="ir.actions.act_window" id="pricelist_list_action">

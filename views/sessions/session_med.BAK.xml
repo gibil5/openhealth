@@ -1,0 +1,189 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+		<!-- Form --> 
+		<record model="ir.ui.view" id="session_med_form_view">
+			
+			<field name="name">session.med.form</field>
+			
+			<field name="model">openhealth.session.med</field>
+
+			<field name="inherit_id" ref="session_form_view"/>
+
+	        <field name="mode">primary</field>
+			<field name="arch" type="xml">				
+
+
+
+				<!-- <xpath expr="//field[@name='title']" position="before"> -->
+
+
+
+				<!-- Title --> 
+
+				<xpath expr="//h1" position="replace">
+					<h1 class="jx_title">Sesión</h1>	
+        		</xpath>
+
+
+
+
+        		<!-- Cosmetoloty --> 
+<!--
+				<xpath expr="//field[@name='treatment']" position="replace">
+					<field name="cosmetology"	/>
+				</xpath>
+-->
+<!--
+				<xpath expr="//field[@name='appointment']" position="after">
+-->
+				<xpath expr="//field[@name='co2_observations']" position="after">
+					<group>
+
+						<!-- VISIA --> 
+						<notebook>
+							<page string="Fotos VISIA" >
+
+								<field
+									name="image_ids"
+									nolabel="1"
+									context="{
+												'default_owner_model': 'openhealth.session_med',
+												'default_owner_id': id,
+									}"
+									mode="kanban"
+								/>
+
+							</page>
+						</notebook>
+					
+					</group>
+				</xpath>
+
+
+				<xpath expr="//field[@name='evaluation_nr']" position="after">
+
+
+					<group>
+					<group string="Laser Co2"  	attrs="{'invisible':[('laser', '!=', 'laser_co2' )]}"	>
+
+
+						<!-- Modo emision --> 
+						<field name="co2_mode_emission"			attrs = "{'required':[('laser','in',('laser_co2'))]}"/>
+
+
+						<!-- Modo exposicion --> 
+						<field name="co2_mode_exposure"			attrs = "{'required':[('laser','in',('laser_co2'))]}"/>
+
+
+						<!-- Potencia --> 
+						<field name="co2_power"					attrs = "{'required':[('laser','in',('laser_co2'))]}"	/>
+
+						
+						<!-- Energia de pulso --> 
+						<field name="co2_energy"				attrs = "{'required':[('laser','in',('laser_co2'))]}"	/>
+
+<!--
+						<field name="vspace" />
+						<field name="error" />
+-->
+					</group>
+
+					<group>
+					</group>
+
+					</group>
+				</xpath>
+
+
+
+
+			</field>						
+		</record>		
+
+
+
+
+
+
+
+		<!-- Tree --> 
+		<record model="ir.ui.view" id="session_med_tree_view">
+			<field name="name">session.med.tree</field>
+
+			<field name="model">openhealth.session.med</field>
+			
+			<field name="arch" type="xml">
+				
+				<tree string="Session Med Tree">
+					
+					<!-- Quick Button -->
+					<button 
+						type="object" 
+						class="oe_highlight"	
+						string="E"
+						name="open_line_current" 
+					/>
+
+
+					<field name="evaluation_nr"/>
+
+
+					<field name="name"/>
+					
+					<field name="appointment"/>
+
+					<field name="patient"  string="Paciente"/>
+					
+					<field name="doctor"   />
+
+					<field name="chief_complaint"/>
+
+					<field name="laser"/>
+
+					<field name="evaluation_start_date"/>
+					
+					<field name="x_done"/>
+
+					<!--
+					<field name="product"/>
+					<field name="procedure"/>
+					<field name="owner"/>
+
+					<field name="treatment_id"/>
+					<field name="duration"/>
+					<field name="nr_services"/>
+					<field name="price_total"/>
+					-->
+				</tree>
+			</field>
+		</record>
+		
+		
+
+
+		
+
+
+
+
+		<!-- Filter --> 
+        <record id="view_medical_session_med_filter" model="ir.ui.view">
+           <field name="name">session Med Search</field>
+           <field name="model">openhealth.session.med</field>		   
+           <field name="arch" type="xml">
+               <search string="sessions.med">
+
+                   <field name="treatment" />
+                   <field name="procedure" />
+               
+               </search>
+           </field>
+       </record>
+
+	</data>
+</openerp>
+

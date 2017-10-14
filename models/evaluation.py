@@ -32,6 +32,16 @@ class Evaluation(models.Model):
 
 
 
+	# Vertical space 
+	vspace = fields.Char(
+			' ', 
+			readonly=True
+			)
+
+
+
+
+
 	# Commons
 	#vspace = fields.Char(
 	#		' ', 

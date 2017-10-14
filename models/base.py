@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# 	*** Base 
+# 	*** Base - DEPRECATED ? 
 # 
 
 # Created: 				26 Jun 2017

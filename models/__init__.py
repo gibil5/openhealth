@@ -3,9 +3,10 @@
 #from . import models
 
 
+
 # Base 
-from . import base
-from . import test
+#from . import base  	- DEPRECATED ? 
+#from . import test  	- DEPRECATED ?
 
 
 

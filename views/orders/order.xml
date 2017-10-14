@@ -222,14 +222,24 @@
 
 
 
-<!--
--->
+
+				<!-- Price list --> 
+				<xpath expr="//field[@name='pricelist_id']" position="replace">
+
+					<field name="pricelist_id" 					readonly="1"	/>
+
+				</xpath>
+
+
+
+
+
+				<!-- Natives -->
 				<xpath expr="//field[@name='validity_date']" position="before">
 					
-					<field name="date_order" 			string="Fecha"		readonly="1"	/>
-					
-					<field name="x_payment_method"		invisible="0"		readonly="1"	/>
+					<field name="date_order" 			string="Fecha"		readonly="1"	/>					
 
+					<field name="x_payment_method"		invisible="0"		readonly="1"	/>
 
 					<field name="x_product"				invisible="1"	/>
 

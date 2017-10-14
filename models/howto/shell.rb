@@ -42,13 +42,60 @@ self.env['res.partner'].search([('name', 'like', 'J')])
 
 
 
+
+
 self.env['product.pricelist'].search([('name', 'like', 'P')])
+
 self.env['product.pricelist'].search([('name', '=', 'Public Pricelist')])
 
 
-pl = self.env['product.pricelist'].search([('name','=', 'VIP'),],limit=1,)
+
+p = self.env['product.pricelist'].search([('name','=', 'VIP'),],limit=1,)
+
+o.order_line.create({ 'product_id': 4043, 'order_id': 89, 'name': 'hya_1hr_ref_one_nor' })
 
 
+
+p = self.env['product.pricelist'].create({ 'name': 'jx Test 1' })
+
+
+self.env['product.pricelist'].create({ 'name': 'jx Test 1' })
+
+
+
+
+self.env['product.pricelist.item'].search_count([('name', 'like', '')])
+self.env['product.pricelist.item'].search_count([('base', 'like', '')])
+
+
+
+
+self.env['product.pricelist'].search([('name', '=', 'VIP')])
+21
+
+self.env['product.pricelist.item'].create({ 'name': 'jx Test 2' })
+
+p = self.env['product.pricelist.item'].create({ 'name': 'jx Test 2', 'pricelist_id': '21' })
+
+
+
+
+p = self.env['product.pricelist.item'].create({ 'name': 'jx Test 2', 'pricelist_id': '21', 'product_tmpl_id': '3325' })
+
+
+
+
+self.env['product.template'].search([('x_name_short', '=', 'hac_1hy_rfa_one')])
+3325
+
+
+
+
+
+p = self.env['product.pricelist.item'].create({ 'name': 'jx Test 2', 'base': 'pricelist' })
+
+
+p = self.env['product.pricelist.item'].create({ 'name': 'jx Test 2', 'base': 'pricelist', 'applied_on': '1_product', 'min_quantity': '1', 'fixed_price': '1200.0' })
 
 
 

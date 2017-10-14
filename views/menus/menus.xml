@@ -34,11 +34,22 @@
 
 
 
+		<!-- Treatments -->
+		<menuitem 	id="emr_treatments_menu" 
+					name="Tratamientos" 
+					parent="emr_menu"
+					sequence="1"
+					action="treatment_list_action"
+
+					groups="openhealth.reception,openhealth.assistants,openhealth.physicians,openhealth.managers,openhealth.directors"
+					/>
+
+
 		<!-- Patients --> 
 		<menuitem 	id="emr_patients_menu" 
 					name="Pacientes" 
 					parent="emr_menu"
-					sequence="1"
+					sequence="2"
 					action="patient_list_action"
 
 					groups="openhealth.almacens,openhealth.reception,openhealth.caja,openhealth.staffs,openhealth.assistants,openhealth.physicians,openhealth.managers,openhealth.directors"
@@ -47,15 +58,6 @@
 
 
 
-		<!-- Treatments -->
-		<menuitem 	id="emr_treatments_menu" 
-					name="Tratamientos" 
-					parent="emr_menu"
-					sequence="2"
-					action="treatment_list_action"
-
-					groups="openhealth.assistants,openhealth.physicians,openhealth.managers,openhealth.directors"
-					/>
 
 
 
@@ -156,6 +158,11 @@
 					action="product_template_service_list_action"/>
 
 
+
+
+
+
+
 		<!-- Ventas --> 
 <!--
 		<menuitem 	id="sales_month_menu" 
@@ -190,10 +197,19 @@
 		<menuitem 	id="sales_card_sub_menu" 
 					name="Tarjetas Vip"
 					parent="sales_cards_menu"
-					sequence="4"
+					sequence="1"
 
 					action="card_list_action"
 					/>
+
+
+		<menuitem 	id="vip_product_template_services_menu" 
+					name="Servicios Vip"
+					parent="sales_cards_menu"
+					sequence="2"
+
+					action="product_template_service_vip_list_action"/>
+
 
 
 <!--
@@ -241,6 +257,7 @@ Deprecated
 <!-- Citas -->
 <!--
 			groups="openhealth.reception,openhealth.managers,openhealth.directors"
+			groups="openhealth.reception,openhealth.physicians,openhealth.managers,openhealth.directors"
 -->
 
 
@@ -249,7 +266,7 @@ Deprecated
 			sequence="-8"
 			name="Citas"
 
-			groups="openhealth.reception,openhealth.physicians,openhealth.managers,openhealth.directors"
+			groups="openhealth.reception,openhealth.caja,openhealth.physicians,openhealth.managers,openhealth.directors"
 			/>
 
 		<menuitem id="oehealth_appointment_menu" 

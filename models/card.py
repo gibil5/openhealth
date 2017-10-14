@@ -12,7 +12,8 @@ from datetime import datetime
 
 
 
-class card(models.Model):
+#class card(models.Model):
+class Card(models.Model):
 
 	_name = 'openhealth.card'		
 	#_inherit = 'oeh.medical.card'
@@ -133,7 +134,12 @@ class card(models.Model):
 			print pl 
 			print pl.id
 
-			#partner_id.property_product_pricelist = pl
+
+
+			partner_id.property_product_pricelist = pl
+			print partner_id.property_product_pricelist.name 
+
+
 			#partner_id.save 
 	# 
 
@@ -166,5 +172,40 @@ class card(models.Model):
 			#required=True, 
 			required=False, 
 			)
+
+
+
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- CRUD ------------------------------------------------------
+
+	@api.model
+	def create(self,vals):
+
+		#print 
+		#print 'jx'
+		#print 'Card - Create - Override'
+		#print 
+		#print vals
+		#print 
+	
+
+
+		# Put your logic here 
+		#res = super(Patient, self).create(vals)
+		res = super(Card, self).create(vals)
+		# Put your logic here 
+
+
+
+		return res
+
+	# CRUD - Create 
 
 

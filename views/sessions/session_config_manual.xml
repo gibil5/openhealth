@@ -3,26 +3,20 @@
 	<data>
 
 
-		<!--
-		configuration
-		-->
-		<record model="ir.ui.view" id="session_configuration_form_view">
+
+		<!-- Configuration - Manual -->
+		<record model="ir.ui.view" id="session_configuration_manual_form_view">
 
 			<field name="name">session.configuration.form</field>
 
-
-<!--
-			<field name="model">openhealth.session</field>
--->
 			<field name="model">openhealth.session.med</field>
-
-
 
 			<field name="priority" eval="1"/>
 			
 			<field name="inherit_id" ref="session_med_form_view"/>
 			
 			<field name="arch" type="xml">
+
 				<notebook position="inside">
 					
 					
@@ -31,10 +25,13 @@
 -->
 
 
-					<page string="Valores empleados - Med"  		>
+					<page string="Contínua"  		>
 
 						<!-- Co2 -->
+<!--						
 						<group string="Láser Co2"  attrs="{'invisible':[('laser', '!=', 'laser_co2')]}">
+-->
+						<group		attrs="{'invisible':[('laser', '!=', 'laser_co2')]}"	>
 							<group>
 
 <!--								
@@ -44,28 +41,35 @@
 								<field name="co2_mode_emission"		required="1"/>								
 								<field name="co2_mode_exposure"		required="1"/>								
 								<field name="co2_observations"		required="1"/>
--->
+
+
+								<field name="co2_mode_emission"		default="continuous"	attrs = "{'required':[('laser','in',('laser_co2'))]}"/>
+
+								<field name="co2_mode_exposure"		attrs = "{'required':	[	
+																								('laser','in',('laser_co2')), 	
+																							]}"/>
+								<field name="vspace"/>
+
+
+								<field name="co2_observations"		attrs = "{'required':[('laser','in',('laser_co2'))]}"/>
+
 								<field name="co2_power"				attrs = "{'required':[('laser','in',('laser_co2'))]}"	/>
 
-								<field name="vspace"/>
-
-								<field name="co2_frequency"			attrs = "{'required':[('laser','in',('laser_co2'))]}"	/>
-								
-								<field name="vspace"/>
-								
 								<field name="co2_energy"			attrs = "{'required':[('laser','in',('laser_co2'))]}"	/>
-								
+
 								<field name="vspace"/>
-								
-								<field name="co2_mode_emission"		attrs = "{'required':[('laser','in',('laser_co2'))]}"/>
-								
-								<field name="vspace"/>
-								
-								<field name="co2_mode_exposure"		attrs = "{'required':[('laser','in',('laser_co2'))]}"/>
-								
-								<field name="vspace"/>
-								
-								<field name="co2_observations"		attrs = "{'required':[('laser','in',('laser_co2'))]}"/>
+-->
+
+
+
+								<!-- Frecuencia --> 
+								<field name="co2_frequency"			attrs = "{'required':[
+																							('laser','in',('laser_co2')), 
+																							('co2_mode_emission','=',('continuous')), 
+																						]}"/>
+
+
+
 							</group>
 						</group>
 						
@@ -146,5 +150,6 @@
 				</notebook>
 			</field>
 		</record>
+
 	</data>
 </openerp>

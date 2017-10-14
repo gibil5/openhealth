@@ -29,6 +29,26 @@ class sale_order(models.Model):
 
 
 
+
+#'task_date_from':fields.function(lambda *a,**k:{}, method=True, type='date',string="Task date from"),
+#'task_date_to':fields.function(lambda *a,**k:{}, method=True, type='date',string="Task date to"),
+
+	#task_date_from = fields.Date(
+	#	default = lambda *a,#**k:{}, 
+		#method=True, 
+		#type='date', 
+	#	string="Task date from", 
+	#)
+
+	#task_date_to = fields.Date(
+	#	default=lambda *a,#**k:{}, 
+		#method=True, 
+	#	string="Task date to"
+	#)
+
+
+
+
 	# Doctor 
 	x_doctor = fields.Many2one(
 			'oeh.medical.physician',
@@ -1867,7 +1887,8 @@ class sale_order(models.Model):
 			card_id = card.id
 			#print card 
 
-			name = '00000005'
+
+			#name = '00000005'
 
 
 			return {
@@ -1905,7 +1926,8 @@ class sale_order(models.Model):
 					#'default_doctor': doctor_id,
 					#'default_treatment_id': treatment_id,
 
-					'default_name': name,
+
+					#'default_name': name,
 					'default_patient_name': patient_name,
 				}
 			}		

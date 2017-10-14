@@ -365,15 +365,17 @@
 
 
 		<!-- Sessions --> 
+<!--
 		<menuitem id="sessions_menu" name="Sesiones" parent="openhealth_menu"
 			sequence="4"
 			action="session_list_action"/>
-
+-->
 		<!-- Controls --> 
+<!--
 		<menuitem id="controls_menu" name="Controles" parent="openhealth_menu"
 			sequence="5"
 			action="control_list_action"/>
-
+-->
 
 
 

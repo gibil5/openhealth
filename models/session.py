@@ -23,7 +23,17 @@ class Session(models.Model):
 	_name = 'openhealth.session'
 
 	#_inherit = 'oeh.medical.evaluation'
-	_inherit = ['oeh.medical.evaluation', 'openhealth.base']
+	#_inherit = ['oeh.medical.evaluation', 'openhealth.base']
+	#_inherit = ['oeh.medical.evaluation', 'base_multi_image.owner', 'openhealth.base']
+	_inherit = ['oeh.medical.evaluation', 'base_multi_image.owner']
+
+
+
+
+	co2_observations=fields.Text(
+			string="Observaciones",
+			#default="x",
+			)
 
 
 
@@ -80,8 +90,11 @@ class Session(models.Model):
 
 	# Treatment 
 	treatment = fields.Many2one(
+
 			'openhealth.treatment',
 			
+			'Tratamiento', 
+
 			ondelete='cascade', 
 			)
 
@@ -217,6 +230,8 @@ class Session(models.Model):
 	@api.multi
 	def open_line_current(self):  
 
+		co2_power = self.co2_power
+
 		return {
 				'type': 'ir.actions.act_window',
 				'name': 'Edit Session Current', 
@@ -227,14 +242,15 @@ class Session(models.Model):
 				'target': 'current',
 
 				'flags': {
-						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-						'form': {'action_buttons': True, }
+						'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						#'form': {'action_buttons': True, }
 						},
 				
-				'context': {}
+				'context': {
+
+							'default_co2_power': co2_power,	
+						}
 		}
-
-
 
 
 

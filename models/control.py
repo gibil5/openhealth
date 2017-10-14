@@ -22,8 +22,8 @@ class Control(models.Model):
 	_name = 'openhealth.control'
 
 	#_inherit = 'oeh.medical.evaluation'
-	#_inherit = ['oeh.medical.evaluation', 'base_multi_image.owner']
-	_inherit = ['oeh.medical.evaluation', 'base_multi_image.owner', 'openhealth.base']
+	#_inherit = ['oeh.medical.evaluation', 'base_multi_image.owner', 'openhealth.base']
+	_inherit = ['oeh.medical.evaluation', 'base_multi_image.owner']
 
 
 
@@ -387,9 +387,6 @@ class Control(models.Model):
 		#print 
 
 		return models.Model.unlink(self)
-
-
-
 
 
 

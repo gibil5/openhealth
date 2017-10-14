@@ -21,7 +21,7 @@ from . import serv_funcs
 
 class Service(models.Model):
 
-	_inherit = 'openhealth.base', 
+	#_inherit = 'openhealth.base', 
 
 
 	_name = 'openhealth.service'
@@ -46,6 +46,12 @@ class Service(models.Model):
 	#		readonly=True
 	#		)
 
+
+	# Vertical space 
+	vspace = fields.Char(
+			' ', 
+			readonly=True
+			)
 
 
 

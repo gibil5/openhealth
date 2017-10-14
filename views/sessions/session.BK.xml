@@ -3,31 +3,15 @@
 	<data>
 
 
-		<!-- Session -->
+		<!-- session -->
 			
-
-
 		<!-- Form view -->
-<!--
--->
 		<record model="ir.ui.view" id="session_form_view">
 			<field name="name">session.form</field>
 			<field name="model">openhealth.session</field>
 			<field name="arch" type="xml">
-				<form string="Evaluation">
-
-				</form>
-			</field>
-		</record>
-
-
-
-		<record model="ir.ui.view" id="session_med_form_view">
-			<field name="name">session.med.form</field>
-			<field name="model">openhealth.session.med</field>
-
-
-			<field name="arch" type="xml">
+				
+				
 				<form string="Evaluation">
 
 
@@ -195,7 +179,6 @@
 							</group>
 
 
-
 							<group>
 								<field name="appointment"  	required="0"/>	
 							</group>
@@ -205,124 +188,33 @@
 							</group>
 
 
-
-
-
-
-
-
 							<group>
 <!--								
 								<field name="treatment"		readonly="1"	/>
 -->
 
 								<field name="evaluation_nr"		readonly="1"	invisible="1"	/>
+
+
 							</group>
 
 							<group>								
 							</group>
 
-
-
-
-
-					<group  	attrs="{'invisible':[('laser', '!=', 'laser_co2' )]}"	>
-						<h2  class="jx_title" >Láser Co2</h2>
-					</group>
-					<group>								
-					</group>
-					
-
-					<group	attrs="{'invisible':[('laser', '!=', 'laser_co2' )]}"	>
-
-						<field name="co2_mode_emission"			attrs = "{'required':[('laser','in',('laser_co2'))]}"/>
-
-						<field name="co2_mode_exposure"			attrs = "{'required':[('laser','in',('laser_co2'))]}"/>
-
-						<field name="co2_power"					attrs = "{'required':[('laser','in',('laser_co2'))]}"	/>
-						
-						<field name="co2_energy"				attrs = "{'required':[('laser','in',('laser_co2'))]}"	/>
-						
-						<field name="vspace" />
-
-						<field name="co2_observations"		attrs = "{'required':[('laser','in',('laser_co2'))]}"/>
-					</group>
-
-					<group	attrs="{'invisible':[('laser', '!=', 'laser_co2' )]}"	>
-
-								<!-- Frecuencia --> 
-								<field name="co2_frequency"			attrs = "{'required':[
-																							('laser','in',('laser_co2')), 
-																							('co2_mode_emission','=',('continuous')), 
-																						]}"/>
-
-
-
-								<!-- Fluencia --> 
-								<field name="co2_fluency"			attrs = "{'required':[
-																							('laser','in',('laser_co2')), 
-																							('co2_mode_emission','=',('fractional')), 
-																						]}"/>
-
-								<!-- Densidad --> 
-								<field name="co2_density"			attrs = "{'required':[
-																							('laser','in',('laser_co2')), 
-																							('co2_mode_emission','=',('fractional')), 
-																						]}"/>
-
-								<!-- Tiempo --> 
-								<field name="co2_time"				attrs = "{'required':[
-																							('laser','in',('laser_co2')), 
-																							('co2_mode_emission','=',('fractional')), 
-																						]}"/>
-
-								<!-- Distancia --> 
-								<field name="co2_distance"			attrs = "{'required':[
-																							('laser','in',('laser_co2')), 
-																							('co2_mode_emission','=',('fractional')), 
-																						]}"/>
-
-
-					</group>
-
-
-
-
 						</group>
+							
 
 
 						<!-- Notebook --> 
 						<notebook>
 						</notebook>
-
 						
 						<group>
 <!--
 							<field name="vspace" />
 -->						
+							<field name="co2_observations"		attrs = "{'required':[('laser','in',('laser_co2'))]}"/>
 						</group>
-
-
-
-
-
-						<notebook>
-							<page string="Fotos VISIA" >
-
-								<field
-									name="image_ids"
-									nolabel="1"
-									context="{
-												'default_owner_model': 'openhealth.session.med',
-												'default_owner_id': id,
-									}"
-									mode="kanban"
-								/>
-
-							</page>
-						</notebook>
-					
-
 
 
 
@@ -336,137 +228,67 @@
 
 
 
-
-
-
-
-
-		<!-- Form --> 
-
-<!--
-		<record model="ir.ui.view" id="session_med_form_view">
-			<field name="name">session.med.form</field>
-			<field name="model">openhealth.session.med</field>
-
-
-			<field name="inherit_id" ref="session_form_view"/>
-	        <field name="mode">primary</field>
-			<field name="arch" type="xml">				
-
-
-				<xpath expr="//h1" position="replace">
-					<h1 class="jx_title">Sesión</h1>	
-        		</xpath>
-
-
-
-				<xpath expr="//field[@name='co2_observations']" position="after">
-					<group>
-
-
-						<notebook>
-							<page string="Fotos VISIA" >
-
-								<field
-									name="image_ids"
-									nolabel="1"
-									context="{
-												'default_owner_model': 'openhealth.session_med',
-												'default_owner_id': id,
-									}"
-									mode="kanban"
-								/>
-
-							</page>
-						</notebook>
-					
-
-					</group>
-				</xpath>
-
-
-				<xpath expr="//field[@name='evaluation_nr']" position="after">
-
-					<group>
-					<group string="Laser Co2"  	attrs="{'invisible':[('laser', '!=', 'laser_co2' )]}"	>
-
-						<field name="co2_mode_emission"			attrs = "{'required':[('laser','in',('laser_co2'))]}"/>
-
-						<field name="co2_mode_exposure"			attrs = "{'required':[('laser','in',('laser_co2'))]}"/>
-
-						<field name="co2_power"					attrs = "{'required':[('laser','in',('laser_co2'))]}"	/>
-						
-						<field name="co2_energy"				attrs = "{'required':[('laser','in',('laser_co2'))]}"	/>
-					</group>
-
-					<group>
-					</group>
-					</group>
-				</xpath>
-
-
-			</field>						
-		</record>		
--->
-
-
-
-
-
-
-
-
-
-
-
-
-
+		
+		
 		<!-- Tree --> 
+		<!-- Not used ? --> 
 		<record model="ir.ui.view" id="session_med_tree_view">
+
 			<field name="name">session.med.tree</field>
 
+<!--			
+			<field name="model">openhealth.session</field>
+-->
 			<field name="model">openhealth.session.med</field>
-			
+
+
 			<field name="arch" type="xml">
 				
-				<tree string="Session Med Tree">
+				<tree string="session Tree">
 					
-					<!-- Quick Button -->
-					<button 
-						type="object" 
-						class="oe_highlight"	
-						string="E"
-						name="open_line_current" 
-					/>
-
 
 					<field name="evaluation_nr"/>
+
 
 
 					<field name="name"/>
 					
 					<field name="appointment"/>
 
+
 					<field name="patient"  string="Paciente"/>
 					
-					<field name="doctor"   />
+					<field name="doctor"   string="Médico"/>
+					
 
 					<field name="chief_complaint"/>
 
-					<field name="laser"/>
+					<field name="product"/>
+
 
 					<field name="evaluation_start_date"/>
+
 					
-
-
-					<field name="nr_images"/>
-
-
-
 					<field name="x_done"/>
 
+
+
+
+					<!-- Quick Button -->
+					<button 
+
+						type="object" 
+
+						class="oe_highlight"	
+
+						string="E"
+
+						name="open_line_current" 
+					/>
+
+
+
 					<!--
-					<field name="product"/>
 					<field name="procedure"/>
 					<field name="owner"/>
 
@@ -480,15 +302,6 @@
 		</record>
 		
 		
-
-
-		
-
-
-
-
-
-
 		
 
 
@@ -514,8 +327,6 @@
 
 
 
-
-
 		<!-- Filter --> 
         <record id="view_medical_session_filter" model="ir.ui.view">
            <field name="name">session Search</field>
@@ -533,21 +344,30 @@
 
 
 
+		<!-- Menus --> 
+		<!-- top level menu: no parent -->
+		<!--
+		<menuitem id="main_openextension_menu" name="Open Health"/>
+		-->
 
-		<!-- Filter --> 
-        <record id="view_medical_session_med_filter" model="ir.ui.view">
-           <field name="name">session Med Search</field>
-           <field name="model">openhealth.session.med</field>		   
-           <field name="arch" type="xml">
-               <search string="sessions.med">
+		<!-- A first level in the left side menu is needed
+		before using action= attribute -->
+		<!--
+		<menuitem id="openextension_menu" name="Open Health"
+			parent="main_openextension_menu"/>
+		--> 
 
-                   <field name="treatment" />
-                   <field name="procedure" />
-               
-               </search>
-           </field>
-       </record>
-
+		<!-- the following menuitem should appear *after*
+		its parent openextension_menu and *after* its
+		action session_list_action -->
+		<!--
+		<menuitem id="sessions_menu" name="sessiones" parent="openextension_menu"
+			action="session_list_action"/>
+		-->
+		
+		<!-- Full id location:
+		action="openextension.session_list_action"
+		It is not required when it is the same module -->
 		
 	</data>
 </openerp>

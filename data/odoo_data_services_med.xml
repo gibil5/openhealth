@@ -2,6 +2,7 @@
 <openerp>
 	<data noupdate='0'>
 
+
 		<!-- Product Category --> 
 		<record id='medical' model='product.category'>
 			<field name='name'>Medical</field>

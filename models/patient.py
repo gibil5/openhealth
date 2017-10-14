@@ -20,6 +20,8 @@ class Patient(models.Model):
 	#_name = 'openhealth.patient'		
 	_inherit = 'oeh.medical.patient'
 
+	_order = 'x_date_created desc'
+
 
 
 

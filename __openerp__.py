@@ -20,7 +20,7 @@
 
 		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant\n
 
-		Last built: 	11 October 2017 - Yey !
+		Last built: 	13 October 2017 - Yey !
 
 		Created: 	 	10 Sep 2016
 
@@ -204,6 +204,7 @@
 		'data/products_pricelist.xml',
 
 
+
 		# Vip cards
 		'data/base_data_patients.xml',	
 		'data/odoo_data_cards.xml',	
@@ -262,7 +263,7 @@
 
 
 		# Sessions
-		'views/sessions/session.xml',
+		#'views/sessions/session.xml',
 
 
 		# Controls
@@ -379,11 +380,22 @@
 
 		# ----------------------------------------------------------- Second Level ------------------------------------------------------
 
+		# Sessions
+		'views/sessions/session.xml',
+
 		# Sessions - 2 
-		'views/sessions/session_med.xml',
-		'views/sessions/session_configuration.xml',
-		'views/sessions/session_cos.xml',
-		'views/sessions/session_measures.xml',
+		#'views/sessions/session_med.xml',
+
+
+
+		#'views/sessions/session_config_manual.xml',
+		#'views/sessions/session_config_fractional.xml',
+		#'views/sessions/session_measures.xml',
+
+		
+		#'views/sessions/session_cos.xml',
+
+
 
 
 

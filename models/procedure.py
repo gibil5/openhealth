@@ -22,8 +22,8 @@ class Procedure(models.Model):
 
 	_name = 'openhealth.procedure'
 
-	#_inherit = 'oeh.medical.evaluation'
-	_inherit = ['oeh.medical.evaluation', 'openhealth.base']
+	_inherit = 'oeh.medical.evaluation'
+	#_inherit = ['oeh.medical.evaluation', 'openhealth.base']
 
 
 

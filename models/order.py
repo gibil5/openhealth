@@ -1881,8 +1881,30 @@ class sale_order(models.Model):
 				go_card = True
 
 
+
 		if go_card:
 
+
+
+
+			# Partner 
+			pl = self.env['product.pricelist'].search([
+																('name','=', 'VIP'),
+															],
+															#order='appointment_date desc',
+															limit=1,)
+
+			self.partner_id.property_product_pricelist = pl
+
+			print 'jx'
+			print self.partner_id
+			print pl 
+			print self.partner_id.property_product_pricelist.name 
+
+
+
+
+			# Card 
 			card = self.env['openhealth.card'].search([ ('patient_name', '=', patient_name), ], order='date_created desc', limit=1)
 			card_id = card.id
 			#print card 
@@ -2177,7 +2199,5 @@ class sale_order(models.Model):
 
 
 #sale_order()
-
-
 
 

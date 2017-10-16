@@ -462,10 +462,18 @@
 
 
 
-		<menuitem id="product_template_menu" name="Productos - jx"
+		<menuitem id="product_template_menu" name="Productos"
 			parent="openhealth_menu"
 			sequence="19"
 			action="product_template_list_action"/>
+
+
+
+		<menuitem id="product_template_categories_menu" name="Product Categories" parent="openhealth_menu"
+			sequence="19"
+			action="product_category_list_action"/>
+
+
 
 
 

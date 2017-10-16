@@ -4,6 +4,16 @@
 
 
 
+<!-- Card Categories --> 
+<!--
+-->
+		<record id='legacy' model='product.category'>
+			<field name='name'>legacy</field>
+	        <field name="active">1</field>
+		</record>
+
+
+
 <!-- Partner Categories --> 
 
 		<record id='cash' model='res.partner.category'>
@@ -26,7 +36,6 @@
 			<field name='name'>doctor assistant</field>
 	        <field name="active">1</field>
 		</record>
-
 
 
 		<record id='patient' model='res.partner.category'>

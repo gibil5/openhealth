@@ -36,6 +36,21 @@ class Card(models.Model):
 
 
 
+
+
+	categ_id = fields.Many2one(
+
+			'product.category',
+
+			string="Categoria",
+		)
+
+
+
+
+
+
+
 	date_created = fields.Date(
 			string = "Fecha de Creación",
 			default = fields.Date.today, 
@@ -136,8 +151,8 @@ class Card(models.Model):
 
 
 
-			partner_id.property_product_pricelist = pl
-			print partner_id.property_product_pricelist.name 
+			#partner_id.property_product_pricelist = pl
+			#print partner_id.property_product_pricelist.name 
 
 
 			#partner_id.save 

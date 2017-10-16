@@ -194,6 +194,7 @@
 					sequence="1"
 					/>
 
+
 		<menuitem 	id="sales_card_sub_menu" 
 					name="Tarjetas Vip"
 					parent="sales_cards_menu"
@@ -203,12 +204,24 @@
 					/>
 
 
-		<menuitem 	id="vip_product_template_services_menu" 
-					name="Servicios Vip"
+		<menuitem 	id="partners_card_sub_menu" 
+					name="Clientes Vip"
 					parent="sales_cards_menu"
 					sequence="2"
 
+					action="partner_vip_list_action"
+					/>
+
+
+		<menuitem 	id="vip_product_template_services_menu" 
+					name="Servicios Vip"
+					parent="sales_cards_menu"
+					sequence="3"
+
 					action="product_template_service_vip_list_action"/>
+
+
+
 
 
 

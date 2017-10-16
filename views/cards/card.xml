@@ -7,31 +7,15 @@
 
 
 
-		<!-- Window List action -->
-		<record model="ir.actions.act_window" id="card_list_action">
-<!--
-			<field name="name">Cards</field>
--->	
-			
-			<field name="name">Tarjetas Vip</field>
 
-			<field name="res_model">openhealth.card</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form,kanban</field>
-			
-			<field name="context">{'order': 'name'}</field>
-			<field name="domain">[]</field>
 
-			<!--
-			<field name="domain">[]</field>
-			<field name="context">{}</field>
-			<field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first treatment
-				</p>
-			</field>
-			-->
-		</record>
+
+
+
+
+
+
+
 
 
 
@@ -43,6 +27,7 @@
 			<field name="name">card.tree</field>
 			<field name="model">openhealth.card</field>
 			<field name="arch" type="xml">
+
 			<!--	
 			<field name="priority" eval="1"/>
 			-->
@@ -55,14 +40,9 @@
 
 
 
-<!--
-					<field name="patient_name"/>
--->
-
 					<field name="patient"/>
+
 					<field name="partner_id"/>
-
-
 
 					<field name="date_created"/>
 
@@ -71,11 +51,37 @@
 					<field name="product"/>
 
 					<field name="days_after"/>
-
 				</tree>
 			</field>
 		</record>
+<!--
+					<field name="patient_name"/>
+-->
 
+
+
+
+
+
+		<!-- Window List action -->
+		<record model="ir.actions.act_window" id="card_list_action">			
+			<field name="name">Tarjetas Vip</field>
+			<field name="res_model">openhealth.card</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form,kanban</field>
+			
+			<field name="context">{'order': 'name'}</field>
+
+			<!--
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first treatment
+				</p>
+			</field>
+			-->
+		</record>
 
 
 
@@ -91,7 +97,6 @@
                </search>           
            </field>
        </record>
-
 
 	</data>
 </openerp>

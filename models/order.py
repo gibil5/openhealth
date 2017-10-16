@@ -1910,8 +1910,18 @@ class sale_order(models.Model):
 			#print card 
 
 
-			# Card name 
-			#name = '00000005'
+
+
+			if card.name == False: 
+
+				# Card name 
+				counter = self.env['openhealth.counter'].search([('name', '=', 'vip')])
+				counter.increase()
+
+				#name = '00000005'
+				name = str(counter.value).rjust(8, '0')
+
+
 
 
 			return {
@@ -1941,6 +1951,7 @@ class sale_order(models.Model):
 						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 				},			
 
+
 				'context':   {
 
 					#'search_default_treatment': treatment_id,
@@ -1950,7 +1961,7 @@ class sale_order(models.Model):
 					#'default_treatment_id': treatment_id,
 
 
-					#'default_name': name,
+					'default_name': name,
 					'default_patient_name': patient_name,
 				}
 			}		

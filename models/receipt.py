@@ -40,8 +40,8 @@ class Receipt(models.Model):
 		#family = vals['family']
 
 
+		# Counter 
 		counter = self.env['openhealth.counter'].search([('name', '=', 'receipt')])
-		#counter = self.env['openhealth.counter'].search([('name', '=', family)])
 		counter.increase()
 
 

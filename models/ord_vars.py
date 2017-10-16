@@ -4,6 +4,48 @@
 
 
 
+_counter_type_list = [
+
+						('receipt', 			'Boleta'),
+						('invoice', 			'Factura'),
+						('advertisement', 		'Canje Publicidad'),
+						('sale_note', 			'Canje NV'),
+						('ticket_receipt', 		'Ticket Boleta'),
+						('ticket_invoice', 		'Ticket Factura'),
+
+						('vip', 				'Tarjeta VIP'),
+
+						#('', 			''),
+		]
+
+
+
+
+
+
+
+
+
+
+
+_sale_doc_type_list = [
+
+						('receipt', 			'Boleta'),
+						('invoice', 			'Factura'),
+						('advertisement', 		'Canje Publicidad'),
+						('sale_note', 			'Canje NV'),
+						('ticket_receipt', 		'Ticket Boleta'),
+						('ticket_invoice', 		'Ticket Factura'),
+
+						#('', 			''),
+		]
+
+
+
+
+
+
+
 
 
 _owner_type_list = [
@@ -35,19 +77,6 @@ _dic_model = {
 			}
 
 
-_sale_doc_type_list = [
-						('receipt', 			'Boleta'),
-						('invoice', 			'Factura'),
-
-						('advertisement', 		'Canje Publicidad'),
-						#('sale_note', 			'Nota de Venta'),
-						('sale_note', 			'Canje NV'),
-
-						('ticket_receipt', 		'Ticket Boleta'),
-						('ticket_invoice', 		'Ticket Factura'),
-
-						#('', 			''),
-		]
 
 
 

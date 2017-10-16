@@ -30,6 +30,7 @@ class Card(models.Model):
 
 
 	name = fields.Char(
+		
 			string="Tarjeta Vip #", 
 
 			#required=True, 

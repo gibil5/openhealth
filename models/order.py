@@ -1910,6 +1910,7 @@ class sale_order(models.Model):
 			#print card 
 
 
+			# Card name 
 			#name = '00000005'
 
 

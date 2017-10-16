@@ -15,18 +15,25 @@ class counter(models.Model):
 
 
 
+
 	name = fields.Selection(
+
+			#selection=ord_vars._sale_doc_type_list, 			
+			selection=ord_vars._counter_type_list, 			
+
+
 			string="Nombre", 
 			#default='receipt', 
-			selection=ord_vars._sale_doc_type_list, 			
 		)
+
+
+
+
 
 	vspace = fields.Char(
 			' ', 
 			readonly=True
 			)
-
-
 
 
 

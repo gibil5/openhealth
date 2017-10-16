@@ -5,7 +5,7 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
-access_stock_warehouse_orderpoint_caja,stock.warehouse.orderpoint.caja,model_stock_warehouse_orderpoint,openhealth.caja,1,1,1,0
+access_stock_warehouse_orderpoint_caja,stock.warehouse.orderpoint.caja,stock.model_stock_warehouse_orderpoint,openhealth.caja,1,1,1,0
 
 
 

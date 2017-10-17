@@ -118,17 +118,17 @@
 					-->
 
 
+							<field name="x_type"/>
+
+
+
+
 							<field name="x_target"			invisible="1"	/>
-
-
-
-
 
 							<field name="x_machine"			attrs="{
 																	'invisible':[('x_type', '=', 'consultation'),],
 															}"	
 															/>
-
 
 
 							<field name="vspace"/>
@@ -296,10 +296,10 @@
 							-->
 
 
-
+<!--
 							<field name="x_type"/>
-
 							<field name="vspace"/>
+-->
 
 
 

@@ -411,6 +411,27 @@
 
 
 				<!-- NEW BUTTONS --> 
+
+				<xpath expr="//button[@name='action_confirm']" position="before">
+
+<!--
+							states="sale"						
+-->
+					<button 
+							name="open_treatment"
+							type="object" 
+							class="oe_highlight"
+
+							string="Regresar al TRATAMIENTO"
+
+
+							groups="openhealth.reception,openhealth.physicians"
+					/>
+				</xpath>
+
+
+
+
 <!--
 				<xpath expr="//field[@name='x_state']" position="before">
 				<xpath expr="//field[@name='state']" position="before">

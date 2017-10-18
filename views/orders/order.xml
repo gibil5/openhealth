@@ -1264,113 +1264,72 @@ Order Line - Tree
 
                     <field name="date_order"	/>
 
+                    <field name="state"/>
+
+
+
+
+
 
 					<field name="note"   />  
 
-
-
-<!--
-                    <field name="comment"/>
-                    <field name="team_id"/>
-                    <field name="company_id"/>
--->
-
-
-                    <field name="user_id"/>
-
+                    <field name="user_id"		string="Vendedor"	/>
 
 					<field name="x_doctor"		/>
+                    
                     <field name="partner_id"/>
 
 
-					<field name="x_cancel_reason"/>
-					<field name="x_cancel_owner"/>
 
 
                     <field name="product"/>
+
                     <field name="categ"/>
 
-
-
-
-
-<!--
-					<field name="doctor_name"		/>
--->
-
-
-<!--
-					<field name="x_cancel"/>
---> 
-
-
-
-<!--
-					<field name="x_target"/>
-					<field name="x_family"/>
--->
-
-
-
-                    <field name="state"/>
                     <field name="nr_lines"/>
 
 
+
+
 <!--
                     <field name="x_amount_total" 	sum="Total Tax Included"	widget="monetary"/>
-                    <field name="x_amount_total" 	sum="Total Tax Included"	widget="monetary"/>
--->
-
-
-                    <field name="amount_untaxed"	sum="Total Untaxed"			widget="monetary"		/>
-
-<!--
                     <field name="amount_total" 		sum="Total Tax Included"	widget="monetary"/>
                     <field name="margin"/>
 -->
+                    <field name="amount_untaxed"	sum="Total Untaxed"			widget="monetary"		/>
 
 
-<!--
-					<field name="x_doctor_name"		/>
-					<field name="x_ruc"		/>
--->
 
-
-<!--
-					<field name="x_age"/>
-					<field name="x_group"/>
-
--->
-					<field name="x_month"/>
-					<field name="x_year"/>
-
-
-<!--
-                    <field name="name" string="Order Number"/>
-                    <field name="name" string="Presupuesto #"	attrs="{'invisible':[('state', '!=', 'pre-draft')]}"/>
-                    <field name="name" string="Factura #"		attrs="{'invisible':[('state', '!=', 'sale')]}"/>
-                    <field name="id"/>
-                    <field name="invoice_status"/>
-					<field name="message_needaction" invisible="0"/>
-
-
-                    <field name="receipt"/>
-                    <field name="x_invoice"/>
-
-                    <field name="user_id"		string="Vendido por"/>
-
-                    <field name="x_chief_complaint"/>
-                    <field name="consultation"/>
-                    <field name="treatment"/>
-                    <field name="id"/>
-
-					<field name="order_line"/>
--->
 				</tree>
 			</field>
 		</record>
 
 
+<!--
+
+                    <field name="comment"/>
+                    <field name="team_id"/>
+                    <field name="company_id"/>
+
+
+					<field name="x_cancel_reason"/>
+					<field name="x_cancel_owner"/>
+
+					<field name="x_month"/>
+					<field name="x_year"/>
+
+					<field name="doctor_name"		/>
+					<field name="x_cancel"/>
+					<field name="x_target"/>
+					<field name="x_family"/>
+
+
+					<field name="x_doctor_name"		/>
+					<field name="x_ruc"		/>
+					<field name="x_age"/>
+					<field name="x_group"/>
+
+-->
 		
 
 

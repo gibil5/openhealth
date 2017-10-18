@@ -79,6 +79,8 @@ class sale_order(models.Model):
 	# Categ
 	categ = fields.Char(
 
+			'Categoria', 
+
 			compute="_compute_categ",
 		)
 
@@ -97,6 +99,8 @@ class sale_order(models.Model):
 
 	# Product
 	product = fields.Char(
+
+			'Producto', 
 
 			compute="_compute_product",
 		)

@@ -61,10 +61,6 @@
 
 
 
-
-
-
-
 				<!-- State --> 
 <!--
 							attrs="{		'invisible':[('x_family', '!=', 'procedure' ),],
@@ -835,22 +831,77 @@
 
 
 
-					<group col='5'>
+					<group col='6'>
 					
+
+
+
+						<!-- Cancel --> 
+						<group>
+							<button 
+								name="cancel_order" 	
+
+								type="object" 
+								class="oe_highlight oe_right "	
+
+								string="Anular"
+
+								groups="openhealth.caja,openhealth.managers,openhealth.directors"
+							/>
+						</group>
+
+
+
+
+
+
+						<!-- Activate --> 
+						<group>
+							<button 
+								name="activate_order" 	
+
+								type="object" 
+								class="oe_highlight oe_right "	
+
+								string="Activar"
+
+								groups="openhealth.caja,openhealth.managers,openhealth.directors"
+							/>
+						</group>
+
+
+
+
+
+
+
+
+
+
+
+
+						<!-- Cancelled -->
+						<group>
+        	            	<field name="x_cancel" nolabel="1"	readonly="1"
+
+        	            		groups="openhealth.caja,openhealth.managers,openhealth.directors" />
+						</group>
+
+
+
+
 
 						<!-- Update --> 
 						<group>
 							<button 
-								groups="openhealth.managers"
-
+								name="update_order" 	
 
 								type="object" 
-
 								class="oe_highlight"
 
 								string="Actualizar"
 
-								name="update_order" 	
+								groups="openhealth.roots"
 							/>
 						</group>
 
@@ -860,16 +911,15 @@
 						<group>
 
 							<button 
-								groups="openhealth.managers"
-
+								name="x_reset" 	
 
 								type="object" 
-
 								class="oe_highlight"
 
 								string="Reiniciar"
 
-								name="x_reset" 	
+
+								groups="openhealth.roots"
 							/>
 						
 						</group>
@@ -877,39 +927,23 @@
 
 
 
-
-
-
 						<!-- Remove --> 
 						<group>
 							<button 
-								groups="openhealth.managers"
+								name="remove_myself" 
 
-								type="object" 
-								
+								type="object" 								
 								class="oe_highlight "
 
 								string="Eliminar" 
 
-								name="remove_myself" 
+								groups="openhealth.roots"
 							/>
 						</group>
 
-						<!-- Cancel --> 
-						<group>
-							<button 
-								groups="openhealth.admins"
 
-								type="object" 
-								class="oe_highlight oe_right "	
-								string="Anular"
-								name="cancel_order" 	
-							/>
-						</group>
 
-						<group>
-        	            	<field name="x_cancel"  nolabel="1"	 groups="openhealth.admins"/>
-						</group>
+
 
 					</group>
 
@@ -1455,6 +1489,37 @@ Order Line - Tree
 			</field>
 			-->
 		</record>
+
+
+
+		<!-- Sales --> 
+		<record model="ir.actions.act_window" id="cancelled_list_action">
+
+			<field name="name">Anulados</field>
+
+			<field name="res_model">sale.order</field>
+
+			<field name="view_type">form</field>
+
+			<field name="view_mode">tree,form</field>
+
+           	<field name="domain">[
+									('state', '=', 'cancel'),
+            					]
+            </field>
+
+		</record>
+
+
+
+
+
+
+
+
+
+
+
 
 
 		<!-- Sales Month --> 

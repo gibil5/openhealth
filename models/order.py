@@ -920,18 +920,16 @@ class sale_order(models.Model):
 			#print 
 
 
+
+
+
 # ---------------------------------------------- Event --------------------------------------------------------
 
-
 	event_ids = fields.One2many(
-
 			'openhealth.event',
-		
 			'order',		
-
 			string="Eventos", 
 		)
-
 
 
 
@@ -942,15 +940,18 @@ class sale_order(models.Model):
 
 
 
-
-
-
-
 	@api.multi 
 	def cancel_order(self):
+
 		#print 
 		#print 'Cancel'
 		self.x_cancel = True
+
+
+
+		self.state = 'cancel'
+
+
 
 		ret = self.create_event()
 		#ret = order_funcs.create_event(self)
@@ -959,11 +960,13 @@ class sale_order(models.Model):
 
 
 
+
 	@api.multi 
 	def activate_order(self):
 		#print 
 		#print 'Cancel'
 		self.x_cancel = False
+		self.state = 'draft'
 
 
 

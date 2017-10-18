@@ -126,9 +126,7 @@
 					sequence="1"
 					action="budget_list_action"/>
 
-<!--
-					action="sale_august_list_action"
--->
+
 		<menuitem 	id="sales_invoice_menu" 
 					name="Ventas" 
 					parent="sales_menu"
@@ -136,6 +134,21 @@
 					
 					action="sale_list_action"
 					/>
+
+
+		<menuitem 	id="sales_cancelled_menu"  
+
+					name="Anulados" 
+			
+					parent="sales_menu"
+			
+					sequence="3"
+					
+					action="cancelled_list_action"
+					/>
+
+
+
 
 
 
@@ -153,7 +166,7 @@
 		<menuitem 	id="sales_product_template_services_menu" 
 					name="Servicios"
 					parent="sales_menu"
-					sequence="3"
+					sequence="5"
 
 					action="product_template_service_list_action"/>
 

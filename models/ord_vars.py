@@ -125,7 +125,7 @@ _state_list = [
 				('sent', 		'Pagado'),
 				('sale', 		'Facturado'),				
 				('done', 		'Completo'),
-				('cancel', 		'Cancelado'),
+				('cancel', 		'Anulado'),
 
 
 

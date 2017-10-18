@@ -230,16 +230,27 @@
 
 		# Orders
 		'views/orders/order_line.xml',
-		
 		'views/orders/order.xml',
 		#'views/orders/payment_methods.xml',
-		#'views/orders/events.xml',
 
 
 
+
+
+
+		# Events 
+		'views/orders/events.xml',
+
+
+
+
+
+
+		# Counters 
 		'views/counters/counter.xml',
 
 
+		# Companies 
 		'views/companies/company.xml',
 
 

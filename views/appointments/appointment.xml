@@ -321,7 +321,7 @@
 <!--
 							<field name="state"			groups="openhealth.roots"		/>
 -->
-							<field name="state"					/>
+							<field name="state"			readonly="1"		/>
 
 
 

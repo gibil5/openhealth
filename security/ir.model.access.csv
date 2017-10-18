@@ -4,6 +4,18 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+access_stock_picking_caja,stock.picking caja,stock.model_stock_picking,openhealth.caja,1,1,1,1
+
+access_stock_picking_manager,stock.picking manager,stock.model_stock_picking,openhealth.managers,1,1,1,1
+
+
+
+
+
+
+
+
+
 
 access_stock_warehouse_orderpoint_caja,stock.warehouse.orderpoint.caja,stock.model_stock_warehouse_orderpoint,openhealth.caja,1,1,1,0
 
@@ -382,9 +394,17 @@ access_openhealth_counter,openhealth.counter,model_openhealth_counter,,1,1,1,1
 
 
 access_stock_inventory_manager,stock.inventory manager,stock.model_stock_inventory,openhealth.caja,1,1,1,1
-access_stock_picking_manager,stock.picking manager,stock.model_stock_picking,openhealth.caja,1,1,1,1
+
+
+
+
+
+
+
+
 
 access_payment_method,openhealth.payment_method,model_openhealth_payment_method,,1,1,1,1
+
 access_payment_method_line,openhealth.payment_method_line,model_openhealth_payment_method_line,,1,1,1,1
 
 

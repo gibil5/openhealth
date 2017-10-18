@@ -118,6 +118,12 @@ access_oeh_medical_appointment_caja,oeh.medical.appointment caja,oehealth.model_
 
 access_openhealth_treatment_directors,openhealth.treatment.directors,model_openhealth_treatment,openhealth.directors,1,1,1,1
 
+
+access_openhealth_treatment_managers,openhealth.treatment.managers,model_openhealth_treatment,openhealth.managers,1,1,1,1
+
+
+
+
 access_openhealth_treatment_physicians,openhealth.treatment.physicians,model_openhealth_treatment,openhealth.physicians,1,1,1,0
 
 

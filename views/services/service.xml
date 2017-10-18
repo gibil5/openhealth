@@ -39,6 +39,7 @@
 
 
 						<!-- Cosmetology --> 
+<!--
 						<button 
 								name="open_cosmetology"
 								type="object" 
@@ -46,7 +47,7 @@
 
 								string="Regresar a la COSMIATRIA"
 						/>
-
+-->
 					</header>
 
 

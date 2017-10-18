@@ -82,13 +82,17 @@
 
 							name="x_update" 
 						/>
+
+
+							string="Tratamiento" 
 -->
 							
 
 						<button 
 							type="object" 
 							class="oe_highlight"
-							string="Tratamiento" 
+
+							string="Ultimo Tratamiento" 
 							
 							name="open_treatment_current" 
 						/>
@@ -96,12 +100,14 @@
 <!--
 							string="Crear Cosmiatría" 
 -->
+<!--
 						<button 
 							type="object" 
 							class="oe_highlight"
 							string="Cosmiatría" 
 							name="open_cosmetology_current" 
 						/>
+-->
 
 
 

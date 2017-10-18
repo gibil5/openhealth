@@ -367,6 +367,12 @@
 
 
 
+		# closings 
+		'views/closings/closings.xml',
+
+
+
+
 
 		# Menus
 		'views/menus/menus.xml',

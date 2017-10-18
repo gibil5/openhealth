@@ -23,18 +23,26 @@
 
 
 
-					<!-- Treatment --> 
-					<button 
-							name="open_treatment"
+						<!-- Treatment --> 
+						<button 
+								name="open_treatment"
+								type="object" 
+								class="oe_highlight"
 
-							type="object" 
+								string="Regresar al TRATAMIENTO"
+						/>
 
-							class="oe_highlight"
 
 
-							string="Regresar al TRATAMIENTO"
-					/>
 
+						<!-- Cosmetology --> 
+						<button 
+								name="open_cosmetology"
+								type="object" 
+								class="oe_highlight"
+
+								string="Regresar a la COSMIATRIA"
+						/>					
 
 
 

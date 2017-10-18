@@ -1058,6 +1058,16 @@ class Patient(models.Model):
 	@api.multi
 	def open_cosmetology_current(self):  
 
+
+		cosmetology_id = self.env['openhealth.cosmetology'].search([
+																		('patient','=', self.id),
+																],
+																order='start_date desc',
+																limit=1,).id
+
+
+
+
 		#print 
 		#print 'Open Cosmetology'
 		patient_id = self.id 
@@ -1072,12 +1082,22 @@ class Patient(models.Model):
 
 			# Window action 
 			'res_model': 'openhealth.cosmetology',
+			'res_id': cosmetology_id,
 
 
 			# Views 
 			"views": [[False, "form"]],
 			'view_mode': 'form',
 			'target': 'current',
+
+
+
+			'flags': {
+					'form': {'action_buttons': True, }
+					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+			},	
+
+
 
 			'context':   {
 				'search_default_patient': patient_id,

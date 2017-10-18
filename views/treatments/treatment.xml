@@ -83,6 +83,7 @@
 
 						<button 
 							name="%(oeh_medical_appointment_action_tree_confirmed)d"	
+
 							type="action" 
 							class="oe_highlight"
 							states="empty"
@@ -793,18 +794,17 @@ Fields
 
 							<group>
 
+
 								<button 
-										groups="openhealth.managers"
-			
-
+										name="reset" 	
 										type="object" 
-
 										class="oe_highlight"
 
 										string="Reset"
 
-										name="reset" 	
+										groups="openhealth.managers"			
 									/>
+
 
 							</group>
 

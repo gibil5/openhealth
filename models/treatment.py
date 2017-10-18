@@ -138,7 +138,7 @@ class Treatment(models.Model):
 
 
 
-
+	# Reset 
 	@api.multi 
 	def reset(self):
 
@@ -191,7 +191,7 @@ class Treatment(models.Model):
 		#print 
 		#print 
 
-	# x_reset
+	# reset
 
 
 

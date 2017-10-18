@@ -337,18 +337,48 @@ class sale_order(models.Model):
 
 
 
+
+
 	# Open Treatment
 	@api.multi 
 	def open_treatment(self):
 
+
 		#print 
 		#print 'Open Treatment'
+		#ret = self.treatment.open_myself()
 
 
-		ret = self.treatment.open_myself()
+
+		if self.treatment.name != False:
+			ret = self.treatment.open_myself()
+		elif self.cosmetology.name != False:
+			ret = self.cosmetology.open_myself()
+		else:
+			print 'This should not happen !'
+			ret = 0 
+
 
 		return ret 
 	# open_treatment
+
+
+
+	# Open Cosmetology
+	#@api.multi 
+	#def open_cosmetology(self):
+
+		#print 
+		#print 'Open cosmetology'
+	#	ret = self.cosmetology.open_myself()
+	
+	#	return ret 
+	# open_cosmetology
+
+
+
+
+
 
 
 
@@ -1474,6 +1504,52 @@ class sale_order(models.Model):
 
 
 
+
+
+
+	# Nr treatments 
+	nr_treatments = fields.Integer(
+			default=0,
+
+			compute='_compute_nr_treatments', 
+		)
+
+	@api.multi
+	#@api.depends('order_line')
+	
+	def _compute_nr_treatments(self):
+		for record in self:
+
+			nr = record.env['openhealth.treatment'].search_count([
+																		('physician', '=', record.x_doctor.name ), 
+																	])
+
+			record.nr_treatments = nr
+
+
+
+
+
+
+	# Nr cosmetologies 
+	nr_cosmetologies = fields.Integer(
+			default=0,
+
+			compute='_compute_nr_cosmetologies', 
+		)
+
+
+	@api.multi
+	#@api.depends('order_line')
+	
+	def _compute_nr_cosmetologies(self):
+		for record in self:
+
+			nr = record.env['openhealth.cosmetology'].search_count([
+																		('physician', '=', record.x_doctor.name ), 
+																	])
+
+			record.nr_cosmetologies = nr
 
 
 

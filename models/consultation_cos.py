@@ -31,6 +31,41 @@ class ConsultationCos(models.Model):
 
 
 
+	treatment = fields.Many2one('openhealth.treatment',
+
+			ondelete='cascade', 
+
+			string="Tratamiento",
+
+			#required=True, 
+			required=False, 
+		)
+
+
+
+
+
+
+	# Open cosmetology
+	@api.multi 
+	def open_cosmetology(self):
+
+		#print 
+		#print 'Open cosmetology'
+		ret = self.cosmetology.open_myself()
+
+		return ret 
+	# open_cosmetology
+
+
+
+
+
+
+
+
+
+
 
 	x_target = fields.Selection(
 			string="Target", 

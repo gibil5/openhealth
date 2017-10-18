@@ -34,6 +34,88 @@ class Cosmetology(models.Model):
 
 
 
+	# Reset 
+	@api.multi 
+	def reset(self):
+
+		self.state = False
+
+
+		self.service_ids.unlink()
+
+		self.consultation_ids.unlink()
+		self.procedure_ids.unlink()
+		self.session_ids.unlink()
+		#self.control_ids.unlink()
+		self.appointment_ids.unlink()
+
+		# Numbers 
+		#self.nr_budgets_cons = 0 
+		#self.nr_invoices_cons = 0 
+		#self.nr_budgets_pro = 0 
+		#self.nr_invoices_pro = 0 
+
+		for order in self.order_ids:
+			order.remove_myself()
+
+
+	# x_reset
+
+
+
+
+
+	# Open Myself
+	@api.multi 
+	def open_myself(self):
+
+		#print 
+		#print 'Open Myself'
+
+		cosmetology_id = self.id  
+
+		return {
+
+			# Mandatory 
+			'type': 'ir.actions.act_window',
+			'name': 'Open Cosmetology Current',
+
+
+			# Window action 
+			'res_model': 'openhealth.cosmetology',
+			'res_id': cosmetology_id,
+
+
+			# Views 
+			"views": [[False, "form"]],
+			'view_mode': 'form',
+			'target': 'current',
+
+
+			#'view_id': view_id,
+			#"domain": [["patient", "=", self.patient.name]],
+			#'auto_search': False, 
+
+			'flags': {
+					'form': {'action_buttons': True, }
+					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+			},			
+
+			'context':   {
+
+			}
+		}
+	# open_myself
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -562,6 +644,7 @@ class Cosmetology(models.Model):
 																	#'treatment': treatment_id,	
 																	'cosmetology': cosmetology_id,	
 
+
 																	'appointment': appointment_id,
 
 																	'patient': patient_id,
@@ -790,7 +873,7 @@ class Cosmetology(models.Model):
 
 
 			# Create order lines 
-			ret = order.x_create_order_lines()
+			#ret = order.x_create_order_lines()		# Deprecated ? 
 			#print ret 
 
 
@@ -903,7 +986,7 @@ class Cosmetology(models.Model):
 
 					procedure_id = procedure.id
 		return ret	
-# create_procedure_go
+	# create_procedure_go
 
 
 
@@ -913,7 +996,8 @@ class Cosmetology(models.Model):
 
 		if self.nr_invoices > 0:
 			#ret = cos_funcs.create_procedure_go_cos(self)
-			ret = self.create_procedure_go_cos(self)
+			#ret = self.create_procedure_go_cos(self)
+			ret = self.create_procedure_go_cos()
 
 	# create_procedure 
 

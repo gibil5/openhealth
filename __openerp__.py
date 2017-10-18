@@ -20,7 +20,7 @@
 
 		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant\n
 
-		Last built: 	17 October 2017 - Yey !
+		Last built: 	18 October 2017 - Yey !
 
 		Created: 	 	10 Sep 2016
 
@@ -307,24 +307,24 @@
 		'views/recommendations/recommendation.xml',
 
 
-
-
-
 		# Treatments 
 		'views/treatments/treatment.xml',
 
 
 
 
-		# Cosmetologies		- Deprecated ? 
-		#'views/cosmetologies/cosmetology.xml',
+
+
+		# Cosmetologies		- Deprecated ?  - No !
+		'views/cosmetologies/cosmetology.xml',
+
+
+
 
 
 
 		# Physicians 
 		'views/physicians/physician.xml',
-
-
 
 		# Patients 
 		'views/patients/patient.xml',
@@ -419,8 +419,12 @@
 		'views/services/service_ndyag_zone.xml',
 		'views/services/service_medical.xml',
 		'views/services/service_medical_zone.xml',
-		#'views/services/service_cosmetology.xml',
-		#'views/services/service_cosmetology_zone.xml',
+
+
+		# Deprecated ? - No !
+		'views/services/service_cosmetology.xml',
+		'views/services/service_cosmetology_zone.xml',
+
 
 
 

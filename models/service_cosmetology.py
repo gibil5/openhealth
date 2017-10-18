@@ -24,7 +24,28 @@ class ServiceCosmetology(models.Model):
 	
 	_inherit = 'openhealth.service'
 	
-	
+
+
+
+
+
+	# Open cosmetology
+	@api.multi 
+	def open_cosmetology(self):
+
+		#print 
+		#print 'Open cosmetology'
+		ret = self.cosmetology.open_myself()
+
+		return ret 
+	# open_cosmetology
+
+
+
+
+
+
+
 
 # ----------------------------------------------------------- Canonicals ------------------------------------------------------
 

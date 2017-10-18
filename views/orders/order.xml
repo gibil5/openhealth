@@ -416,6 +416,18 @@
 
 <!--
 							states="sale"						
+
+
+							attrs="{'invisible':	[
+															('x_doctor', 'in', [	
+																					'Eulalia', 
+																				]),	
+													]}"
+
+							attrs="{'invisible':	[
+															('nr_treatments', 'in', [0] 	),	
+													]}"
+
 -->
 					<button 
 							name="open_treatment"
@@ -427,6 +439,33 @@
 
 							groups="openhealth.reception,openhealth.physicians"
 					/>
+
+
+
+						<!-- Cosmetology --> 
+<!--
+															('x_family', 'in', ['consultation'] 	),	
+
+
+								attrs="{'invisible':	[
+															('x_doctor', 'in', [	
+																					'Dr. Chavarri', 
+																					'Dr. Canales', 
+																				]),	
+														]}"
+								attrs="{'invisible':	[
+															('nr_cosmetologies', 'in', [0] 	),	
+														]}"
+-->
+<!--
+						<button 
+								name="open_cosmetology"
+								type="object" 
+								class="oe_highlight"
+	
+								string="Regresar a la COSMIATRIA"
+						/>					
+-->
 				</xpath>
 
 
@@ -444,13 +483,15 @@
 					<!-- Treatment --> 
 <!--
 							groups="openhealth.managers"
+							attrs="{'invisible':	[
+															('nr_treatments', 'in', [0] 	),	
+													]}"
 -->
 					<button 
 							name="open_treatment"
-
 							type="object" 
-
 							class="oe_highlight"
+
 
 							string="Regresar al TRATAMIENTO"
 
@@ -770,14 +811,21 @@
 
 
 					<group>
+
 						<group class="oe_left"  style="width: 600px;">
 <!--
 							<h4><field name="name" 	class=""/></h4>
 -->					
+
 						</group>
 
 						<group class="">
-							<h5><field name="treatment" class=""	readonly="1"/></h5>
+
+							<h5>
+								<field name="treatment" 	class=""	readonly="1"/>
+								<field name="cosmetology" 	class=""	readonly="1"/>
+							</h5>
+						
 						</group>
 					</group>
 
@@ -999,6 +1047,8 @@ Order Line - Tree
                     <field name="user_id"/>
 -->
 
+
+
 					<field name="vspace"/>
 
 					<field name="x_doctor"/>
@@ -1029,6 +1079,11 @@ Order Line - Tree
 					<field name="product"/>
 					<field name="categ"/>
 
+
+
+					<field name="vspace"/>
+					<field name="nr_cosmetologies"		/>
+					<field name="nr_treatments"			/>
 
 
 <!--

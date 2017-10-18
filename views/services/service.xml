@@ -35,6 +35,18 @@
 								string="Regresar al TRATAMIENTO"
 						/>
 
+
+
+
+						<!-- Cosmetology --> 
+						<button 
+								name="open_cosmetology"
+								type="object" 
+								class="oe_highlight"
+
+								string="Regresar a la COSMIATRIA"
+						/>
+
 					</header>
 
 

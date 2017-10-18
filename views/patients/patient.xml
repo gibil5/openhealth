@@ -94,13 +94,14 @@
 						/>
 
 <!--
+							string="Crear Cosmiatría" 
+-->
 						<button 
 							type="object" 
 							class="oe_highlight"
-							string="Crear Cosmiatría" 
+							string="Cosmiatría" 
 							name="open_cosmetology_current" 
 						/>
--->
 
 
 

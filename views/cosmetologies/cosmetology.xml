@@ -18,17 +18,19 @@
 					<header>
 
 
-
+<!--
+							states="False"
+							name="create_service" 
 						<button 
 							type="object" 
 							class="oe_highlight"
 
 							string="Cita" 
 
-							states="False"
 
-							name="create_service" 
+							name="%(oeh_medical_appointment_action_tree_confirmed)d"	
 						/>
+-->
 
 
 
@@ -327,7 +329,21 @@
 							<group>
 							</group>
 							<group>
+
+
+								<button 
+										name="reset" 	
+										type="object" 
+										class="oe_highlight"
+
+										string="Reset"
+
+										groups="openhealth.managers"			
+									/>
+
 							</group>
+
+
 
 
 

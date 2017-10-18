@@ -1260,9 +1260,9 @@ Order Line - Tree
 					
 
 
-                    <field name="name"	 />
+                    <field name="name"	 		string="Referencia"		/>
 
-                    <field name="date_order"	/>
+                    <field name="date_order"	string="Fecha"	/>
 
                     <field name="state"/>
 
@@ -1296,7 +1296,7 @@ Order Line - Tree
                     <field name="amount_total" 		sum="Total Tax Included"	widget="monetary"/>
                     <field name="margin"/>
 -->
-                    <field name="amount_untaxed"	sum="Total Untaxed"			widget="monetary"		/>
+                    <field name="amount_untaxed"	sum="Total Untaxed"			widget="monetary"		string="Total"	/>
 
 
 

@@ -270,8 +270,7 @@ class sale_order(models.Model):
 
 
 	note = fields.Text(
-			#string="Nota",		
-			string="Note",		
+			"Nota",					
 		)
 
 

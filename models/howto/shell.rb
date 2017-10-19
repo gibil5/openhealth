@@ -338,6 +338,11 @@ o = self.env['sale.order'].search([('name', 'like', '191')])
 
 
 
+self.env['sale.order'].search([('name', 'like', '0113')]).date_order
+
+
+
+
 
 
 

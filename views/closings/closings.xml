@@ -9,6 +9,42 @@
 
 
 
+		
+		<!-- TREE view --> 
+		
+		<record model="ir.ui.view" id="closing_view_order_tree">
+
+			<field name="name">openhealth.closing.tree</field>
+			
+			<field name="model">openhealth.closing</field>
+			
+			<field name="arch" type="xml">
+				
+				<tree string="Closing Tree">
+					
+
+                    <field name="name"	 				/>
+
+                    <field name="date"		string="Fecha"	/>
+
+
+
+                    <field name="total"/>
+
+<!--
+                    <field name="order_ids"/>
+-->
+
+				</tree>
+			</field>
+		</record>
+
+
+
+
+
+
+
 		<record model="ir.actions.act_window" id="closings_list_action">
 			<field name="name">Closings</field>
 			<field name="res_model">openhealth.closing</field>

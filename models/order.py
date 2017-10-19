@@ -30,6 +30,19 @@ class sale_order(models.Model):
 
 
 
+
+	#order_day = fields.Char(	
+	#		'Day', 
+	#		default = lambda *a: str(date_order.strftime('%d')),
+	#	)
+
+
+
+
+
+
+
+
 #'task_date_from':fields.function(lambda *a,**k:{}, method=True, type='date',string="Task date from"),
 #'task_date_to':fields.function(lambda *a,**k:{}, method=True, type='date',string="Task date to"),
 
@@ -1577,6 +1590,13 @@ class sale_order(models.Model):
 		)
 
 
+
+
+	closing = fields.Many2one(
+			'openhealth.closing',
+			ondelete='cascade', 
+			string="Cierre", 
+		)
 
 
 

@@ -37,9 +37,10 @@ class Closing(models.Model):
 
 
 
-	date = fields.Datetime(
+	#date = fields.Datetime(
+	date = fields.Date(
 			
-			string="Fecha y hora", 
+			string="Fecha", 
 
 			default = fields.Date.today, 
 			
@@ -73,13 +74,19 @@ class Closing(models.Model):
 			print 'jx'
 			print 'compute total'
 
+
+			date = record.date + ' '
+			print 'date: ', date 
+
+
 			orders = record.env['sale.order'].search([
 
 														('state', '=', 'sale'),
 														
 														#('date_order', '=', '2017-10-18'),
 														#('date_order', 'like', '2017-10-18'),
-														('date_order', 'like', '2017-10-18 '),
+														#('date_order', 'like', '2017-10-18 '),
+														('date_order', 'like', date),
 
 #'2017-10-18 21:23:18'
 

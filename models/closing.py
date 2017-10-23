@@ -10,7 +10,8 @@
 
 
 from openerp import models, fields, api
-import datetime
+#import datetime
+from datetime import datetime
 
 
 class Closing(models.Model):
@@ -57,7 +58,8 @@ class Closing(models.Model):
 	date_time = fields.Datetime(
 			string="Fecha y Hora", 
 
-			default = fields.Date.today, 
+			#default = fields.Date.today, 
+			default = datetime.now(),
 
 			#readonly=True,
 			#required=True, 

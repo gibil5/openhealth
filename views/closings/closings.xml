@@ -41,12 +41,13 @@ Fields
 
 		                    <field name="name"/>
 
-		                    <field name="date_time"/>
+		                    <field name="date"/>
+
+		                    <field name="date_time"		readonly="1"	/>
 							
 						</group>
 						<group>
 <!--							
-		                    <field name="date"/>
 -->
 		                    <field name="total"/>
 

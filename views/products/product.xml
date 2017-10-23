@@ -118,18 +118,22 @@
 
 				<tree string="Product Tree"    default_order="name" >
 
+
 					<field name="name"/>
-
-
 
 					<field name="pricelist_id"/>
 
+
+
+					<field name="standard_price"/>
 					<field name="list_price"/>
+
+
+
 					<field name="sale_ok"/>
 					<field name="uom_id"	invisible="0"/>
 					<field name="categ_id"/>
 					<field name="type"/>
-					<field name="standard_price"/>
 					<field name="price"/>
 					<field name="item_ids"/>
 					<field name="state"	invisible="1"	/>				

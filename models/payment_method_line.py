@@ -17,6 +17,38 @@ class payment_method_line(models.Model):
 
 
 
+
+
+	# Method
+	method = fields.Selection(
+
+			selection = ord_vars._payment_method_list, 			
+
+			string="Forma de Pago", 
+			default="cash", 
+			required=True, 
+		)
+
+
+
+	# Subtotal 
+	subtotal = fields.Float(
+			string = 'Subtotal', 
+			#default=self.balance, 
+			required=True, 
+		)
+
+
+
+
+
+
+
+
+
+
+
+
 	# Test
 	#@api.multi 
 	#def x_test(self):
@@ -172,29 +204,6 @@ class payment_method_line(models.Model):
 
 
 
-	method = fields.Selection(
-
-			#string="Medio", 
-			string="Forma de Pago", 
-
-			selection = ord_vars._payment_method_list, 			
-
-			default="cash", 
-
-			required=True, 
-		)
-
-
-
-
-	subtotal = fields.Float(
-			string = 'Subtotal', 
-			#string = 'Importe', 
-
-			#default=self.balance, 
-
-			required=True, 
-		)
 
 
 

@@ -235,6 +235,11 @@
 					
 					<field name="date_order" 			string="Fecha"		readonly="1"	/>					
 
+
+					<field name="vspace"/>
+					<field name="x_type"				invisible="0"	/>
+
+
 					<field name="x_payment_method"		invisible="0"		readonly="1"	/>
 
 					<field name="x_product"				invisible="1"	/>
@@ -1261,6 +1266,9 @@ Order Line - Tree
 
 
                     <field name="name"	 		string="Referencia"		/>
+
+					<field name="x_type" />
+
 
                     <field name="date_order"	string="Fecha"	/>
 

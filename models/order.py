@@ -28,6 +28,60 @@ class sale_order(models.Model):
 
 
 
+	x_type = fields.Selection(
+
+			[	('receipt', 			'Boleta'),
+				('invoice', 			'Factura'),
+				('advertisement', 		'Canje Publicidad'),
+				('sale_note', 			'Canje NV'),
+				('ticket_receipt', 		'Ticket Boleta'),
+				('ticket_invoice', 		'Ticket Factura'),	], 
+			
+
+			string='Tipo', 
+
+			#required=True, 
+			required=False, 
+
+			compute="_compute_x_type",
+		)
+
+	@api.multi
+	#@api.depends('partner_id')
+
+	def _compute_x_type(self):
+		for record in self:
+
+			name = record.name
+			pre = name.split('-')[0]
+
+
+			if pre == 'BO' or  pre == 'BOL':
+				record.x_type = 'receipt'
+
+			elif pre == 'FA':
+				record.x_type = 'invoice'
+
+			elif pre == 'CP':
+				record.x_type = 'advertisement'
+
+			elif pre == 'CN':
+				record.x_type = 'sale_note'
+			
+			elif pre == 'TKB':
+				record.x_type = 'ticket_receipt'
+			
+			elif pre == 'TKF':
+				record.x_type = 'ticket_invoice'
+
+			#else:
+			#	print 'jx'
+			#	print 'This should not happen'
+			#	print pre 
+			#	print 
+
+
+
 
 
 

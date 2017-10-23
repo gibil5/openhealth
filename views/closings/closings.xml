@@ -9,6 +9,104 @@
 
 
 
+		<!-- FORM view --> 
+		<record model="ir.ui.view" id="closing_form_view">
+
+			<field name="name">closing.form</field>
+			
+			<field name="model">openhealth.closing</field>
+			
+			<field name="arch" type="xml">
+				
+				<form string="Clsing Form">
+					
+
+
+
+					<header>
+					</header>
+
+
+
+
+					<!-- Sheet -->	
+					<sheet>
+
+
+<!--
+Fields 
+-->
+					<group	string="Total"	>
+						<group>
+
+		                    <field name="name"/>
+
+		                    <field name="date_time"/>
+							
+						</group>
+						<group>
+<!--							
+		                    <field name="date"/>
+-->
+		                    <field name="total"/>
+
+						</group>
+					</group>
+
+
+
+					<group	string="Documentos de pago"	>
+						<group>
+
+		                    <field name="rec_tot"/>
+		                    <field name="inv_tot"/>
+		                    <field name="tkr_tot"/>
+		                    <field name="tki_tot"/>
+		                    <field name="adv_tot"/>
+		                    <field name="san_tot"/>
+							
+						</group>
+						<group>
+							
+						</group>
+					</group>
+
+
+
+					<group	string="Formas de pago"	>
+						<group>
+
+		                    <field name="cash_tot"/>
+		                    <field name="ame_tot"/>
+		                    <field name="cuo_tot"/>
+
+		                    <field name="din_tot"/>
+		                    <field name="mac_tot"/>
+		                    <field name="mad_tot"/>
+
+		                    <field name="vic_tot"/>
+		                    <field name="vid_tot"/>
+
+						</group>
+						<group>
+							
+						</group>
+					</group>
+
+
+
+
+						<notebook>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+
+
 		
 		<!-- TREE view --> 
 		
@@ -19,14 +117,23 @@
 			<field name="model">openhealth.closing</field>
 			
 			<field name="arch" type="xml">
-				
+<!--
 				<tree string="Closing Tree">
+-->
+				<tree default_order='date desc'>
 					
 
                     <field name="name"	 				/>
 
                     <field name="date"		string="Fecha"	/>
 
+
+                    <field name="rec_tot"/>
+                    <field name="inv_tot"/>
+                    <field name="tkr_tot"/>
+                    <field name="tki_tot"/>
+                    <field name="adv_tot"/>
+                    <field name="san_tot"/>
 
 
                     <field name="total"/>
@@ -46,7 +153,7 @@
 
 
 		<record model="ir.actions.act_window" id="closings_list_action">
-			<field name="name">Closings</field>
+			<field name="name">Cierres de Caja</field>
 			<field name="res_model">openhealth.closing</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>

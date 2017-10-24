@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='utf-8'?>
+<openerp>
+	<data noupdate='0'>
+
+
+
+		<!-- Product Category --> 
+<!--
+-->
+		<record id='purchased' model='product.category'>
+			<field name='name'>Proveedor</field>
+		</record>
+
+
+
+
+
+
+		<record id='seguridad_parking' model='product.template'>
+
+			<field name='type'>service</field>
+
+			<field name='name'>Seguridad y Valet Parking</field>
+
+			<field name='price'>5000</field>
+
+			<field name='categ_id' ref="purchased"/>
+
+
+<!--
+			<field name='sale_ok'>eval(False)</field>
+			<field name='purchase_ok'>False</field>
+-->
+			<field name="sale_ok" eval="False" />
+			<field name="purchase_ok" eval="True" />
+		</record>
+
+
+
+
+<!-- Supplier Info -->
+		<record id='ayo_seguridad_parking' model='product.supplierinfo'>
+
+			<field name="name" ref="supplier_ayoros"/>
+			
+			<field name="min_qty">1</field>
+			
+			<field name="delay">1</field>
+
+			<field name="price">5000</field>
+
+			<field name='product_tmpl_id' 	ref='seguridad_parking'/>
+		</record>
+
+
+
+	</data>
+</openerp>
+
+
+

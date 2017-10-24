@@ -45,12 +45,15 @@
 			<field name='x_price_vip'>1200</field>
 			<field name='x_family'>medical</field>
 
+			<field name='categ_id' ref="medical"/>
 
-			<field name='sale_ok'>True</field>
+
 <!--			
 			<field name='purchase_ok'>False</field>
+			<field name='sale_ok'>True</field>
 -->
-			<field name='categ_id' ref="medical"/>
+			<field name="sale_ok" eval="True" />
+			<field name="purchase_ok" eval="False" />
 		</record>
 
 
@@ -393,6 +396,7 @@
 			<field name='x_family'>medical</field>
 			<field name='categ_id' ref="medical"/>
 		</record>
+
 
 	</data>
 </openerp>

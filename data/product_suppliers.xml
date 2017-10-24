@@ -155,5 +155,117 @@
 
 
 
+
+
+
+
+
+
+
+		<record id='rr_hidratopic_lotion_120ml' model='product.supplierinfo'>
+			<field name="name" ref="supplier_revilla_rondon"/>
+			<field name="min_qty">1</field>
+			<field name="delay">1</field>
+
+			<field name='price'>80.0</field>
+			<field name='product_tmpl_id' 	ref='hidratopic_lotion_120ml'/>
+		</record>
+
+		<record id='rr_kit_post_laser' model='product.supplierinfo'>
+			<field name="name" ref="supplier_revilla_rondon"/>
+			<field name="min_qty">1</field>
+			<field name="delay">1</field>
+
+			<field name='price'>150.0</field>
+			<field name='product_tmpl_id' 	ref='kit_post_laser'/>
+		</record>
+
+
+
+
+
+
+
+
+		<record id='rr_mask_astringent_liquid_powder' model='product.supplierinfo'>
+			<field name="name" ref="supplier_revilla_rondon"/>
+			<field name="min_qty">1</field>
+			<field name="delay">1</field>
+
+			<field name='price'>200.0</field>
+			<field name='product_tmpl_id' 	ref='mask_astringent_liquid_powder'/>
+		</record>
+
+		<record id='rr_mask_astringent_liquid' model='product.supplierinfo'>
+			<field name="name" ref="supplier_revilla_rondon"/>
+			<field name="min_qty">1</field>
+			<field name="delay">1</field>
+
+			<field name='price'>100.0</field>
+			<field name='product_tmpl_id' 	ref='mask_astringent_liquid'/>
+		</record>
+
+		<record id='rr_mask_astringent_powder' model='product.supplierinfo'>
+			<field name="name" ref="supplier_revilla_rondon"/>
+			<field name="min_qty">1</field>
+			<field name="delay">1</field>
+
+			<field name='price'>100.0</field>
+			<field name='product_tmpl_id' 	ref='mask_astringent_powder'/>
+		</record>
+
+
+
+
+
+
+
+
+
+		<record id='rr_nctf' model='product.supplierinfo'>
+			<field name="name" ref="supplier_revilla_rondon"/>
+			<field name="min_qty">1</field>
+			<field name="delay">1</field>
+
+			<field name='price'>800.0</field>
+			<field name='product_tmpl_id' 	ref='nctf'/>
+		</record>
+
+		<record id='rr_solar_protector' model='product.supplierinfo'>
+			<field name="name" ref="supplier_revilla_rondon"/>
+			<field name="min_qty">1</field>
+			<field name="delay">1</field>
+
+			<field name='price'>200.0</field>
+			<field name='product_tmpl_id' 	ref='solar_protector'/>
+		</record>
+
+		<record id='rr_q54' model='product.supplierinfo'>
+			<field name="name" ref="supplier_revilla_rondon"/>
+			<field name="min_qty">1</field>
+			<field name="delay">1</field>
+
+			<field name='price'>350.0</field>
+			<field name='product_tmpl_id' 	ref='q54'/>
+		</record>
+
+
+
+
+
+
+
+
+
+
+		<record id='rr_tretinoina' model='product.supplierinfo'>
+			<field name="name" ref="supplier_revilla_rondon"/>
+			<field name="min_qty">1</field>
+			<field name="delay">1</field>
+
+			<field name='price'>200.0</field>
+			<field name='product_tmpl_id' 	ref='tretinoina'/>
+		</record>
+
 	</data>
 </openerp>

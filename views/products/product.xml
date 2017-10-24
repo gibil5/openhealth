@@ -136,8 +136,12 @@
 					<field name="categ_id"/>
 					<field name="type"/>
 
-					
+<!--					
 					<field name="item_ids"/>
+-->
+					<field name="seller_ids"/>
+
+
 					<field name="state"	invisible="1"	/>				
 					<field name="qty_available"	invisible="1"/>
 				</tree>

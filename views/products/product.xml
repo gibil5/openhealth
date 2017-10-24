@@ -186,7 +186,7 @@
 
 		<!-- ACTION - Purchase Service --> 
 	    <record id="service_normal_action_puchased" model="ir.actions.act_window">
-	        <field name="name">Services</field>
+	        <field name="name">Servicios</field>
 	        <field name="type">ir.actions.act_window</field>
 	        <field name="res_model">product.template</field>
 	        <field name="view_type">form</field>
@@ -267,6 +267,41 @@
 
 
 
+<!--
+            <field name="name">Purchase Orders</field>
+-->
+        <record id="purchase.purchase_form_action" model="ir.actions.act_window">
+
+            <field name="name">Ordenes de compra</field>
+            
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.order</field>
+            <field name="view_mode">tree,kanban,form,pivot,graph,calendar</field>
+
+
+
+            <field name="context">{		
+            						'search_default_todo':1, 
+            						'show_purchase': True, 
+			}</field>
+
+
+            
+            <field name="domain">[('state','not in',('draft','sent','bid', 'confirmed'))]</field>
+            <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a quotation that will be converted into a purchase order. 
+              </p><p>
+                Use this menu to search within your purchase orders by
+                references, vendor, products, etc. For each purchase order,
+                you can track the related discussion with the vendor, control
+                the products received and control the vendor bills.
+              </p>
+            </field>
+        </record>
+
+
 
 
 
@@ -277,6 +312,8 @@
       			action="product_normal_action_puchased"
           		parent="menu_procurement_management" 
 -->
+
+
 
       <!-- MENU -->
       <menuitem name="Products" 
@@ -292,7 +329,7 @@
 
 
 
-      <menuitem name="Services" 
+      <menuitem name="Servicios" 
       			
       			id="menu_procurement_service_form" 
       			
@@ -304,8 +341,17 @@
           		/>
 
 
+<!--
+        			name="Purchase Orders - jx" 
+-->
+        <menuitem 	
+        			name="Ordenes de compra" 
 
-
+        			action="purchase.purchase_form_action" 
+        			id="purchase.menu_purchase_form_action" 
+        			parent="purchase.menu_procurement_management" 
+        			sequence="6"
+        			/>
 
 
 

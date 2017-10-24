@@ -14,17 +14,22 @@
 			<field name="email">info@revillarondon.com</field>
 			<field name="lang">es_ES</field>
 
+<!--
 			<field name="customer">False</field>
 			<field name="supplier">True</field>
+-->
+			<field name="customer" eval="False" />
+			<field name="supplier" eval="True" />
 		</record>
+
 
 		<record id="supplier_ayoros" model="res.partner">
 			<field name="name">Ayoros</field>
 			<field name="email">info@ayoros.com</field>
 			<field name="lang">es_ES</field>
 
-			<field name="customer">False</field>
-			<field name="supplier">True</field>
+			<field name="customer" eval="False" />
+			<field name="supplier" eval="True" />
 		</record>
 
 

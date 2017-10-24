@@ -181,19 +181,19 @@
 			}
 		},
 		{
-			"file": "data/odoo_data_services_med.xml",
+			"file": "views/products/product.xml",
 			"settings":
 			{
-				"buffer_size": 13435,
+				"buffer_size": 14159,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "views/products/product.xml",
+			"file": "data/odoo_data_services_med.xml",
 			"settings":
 			{
-				"buffer_size": 13918,
+				"buffer_size": 13435,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -606,7 +606,7 @@
 	],
 	"find":
 	{
-		"height": 39.0
+		"height": 25.0
 	},
 	"find_in_files":
 	{
@@ -894,7 +894,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -928,6 +928,35 @@
 				},
 				{
 					"buffer": 1,
+					"file": "views/products/product.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 14159,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3988,
+								3988
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3181.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
 					"file": "data/odoo_data_services_med.xml",
 					"semi_transient": false,
 					"settings":
@@ -953,35 +982,6 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "views/products/product.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 13918,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3323,
-								3323
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2897.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
 					"type": "text"
 				},
 				{

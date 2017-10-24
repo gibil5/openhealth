@@ -6,17 +6,33 @@
 
 
 
+
+<!-- Suppliers -->
+
 		<record id="supplier_revilla_rondon" model="res.partner">
 			<field name="name">Revilla Rondon y Asociados</field>
 			<field name="email">info@revillarondon.com</field>
+			<field name="lang">es_ES</field>
 
+			<field name="customer">False</field>
+			<field name="supplier">True</field>
+		</record>
+
+		<record id="supplier_ayoros" model="res.partner">
+			<field name="name">Ayoros</field>
+			<field name="email">info@ayoros.com</field>
+			<field name="lang">es_ES</field>
+
+			<field name="customer">False</field>
 			<field name="supplier">True</field>
 		</record>
 
 
 
-<!--		
--->
+
+
+
+<!-- Supplier Info -->
 		<record id='rr_acnetopic_200ml' model='product.supplierinfo'>
 			<field name="name" ref="supplier_revilla_rondon"/>
 			<field name="min_qty">1</field>

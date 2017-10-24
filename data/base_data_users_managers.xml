@@ -33,6 +33,7 @@ uq@dL_F=xs?_3yBR
 			<field name="email">director@clinicachavarri.com</field>
 		</record>
 
+
 		<record id="director_clinicachavarri" model="res.users">
 			<field name="name">Director</field>
 			<field name="login">director@clinicachavarri.com</field>

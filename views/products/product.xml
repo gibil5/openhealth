@@ -127,6 +127,7 @@
 
 					<field name="standard_price"/>
 					<field name="list_price"/>
+					<field name="price"/>
 
 
 
@@ -134,7 +135,8 @@
 					<field name="uom_id"	invisible="0"/>
 					<field name="categ_id"/>
 					<field name="type"/>
-					<field name="price"/>
+
+					
 					<field name="item_ids"/>
 					<field name="state"	invisible="1"	/>				
 					<field name="qty_available"	invisible="1"/>

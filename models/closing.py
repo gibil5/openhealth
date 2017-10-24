@@ -260,7 +260,7 @@ class Closing(models.Model):
 
 	# Receipts - Total 
 	rec_tot = fields.Float(
-			'Recibos',
+			'Boletas Físicas',
 			default = 0, 
 			compute='_compute_rec_tot', 
 		)
@@ -303,7 +303,7 @@ class Closing(models.Model):
 
 	# Invoices - Total 
 	inv_tot = fields.Float(
-			'Facturas',
+			'Facturas Físicas',
 			default = 0, 
 			compute='_compute_inv_tot', 
 		)

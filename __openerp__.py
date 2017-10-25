@@ -203,17 +203,24 @@
 
 
 
-
 		# Suppliers 
 		'data/product_suppliers.xml',
 		'data/supplier_services.xml',
 
 
 
-
-
 		# Pricelists 
 		'data/products_pricelist.xml',
+
+
+
+
+
+
+		# Stock 
+		'views/stock/stock.xml',
+
+
 
 
 

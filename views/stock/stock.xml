@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+<!--
+        			groups="stock.group_stock_manager" 
+-->
+
+        <menuitem 	id="stock.menu_stock_sched" 
+        			name="Schedulers - jx" 
+        			parent="stock.menu_stock_root" 
+
+        			groups="openhealth.roots" 
+        			
+        			sequence="50"
+        			/>
+
+
+
+	</data>
+</openerp>

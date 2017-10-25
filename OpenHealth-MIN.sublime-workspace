@@ -181,13 +181,10 @@
 			}
 		},
 		{
-			"contents": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<openerp>\n\n\t<data noupdate='0'>\n\n\n\n\n\n<!-- OeHealth --> \n\n\t\t<!-- OeHealth - Manager --> \n\t\t<record id=\"oehealth.group_oeh_medical_manager\" model=\"res.groups\">\n\t\t\t<field name=\"name\">Oe - Manager</field>\n\t\t\t<field name=\"category_id\" ref=\"oehealth.module_oeh_medical_category\"/>\n\n\t\t\t<field name=\"users\" eval=\"[ \n\n\t\t\t\t\t\t\t\t\t\t\t(4, ref('openhealth.director_clinicachavarri')),\n\n\t\t\t\t\t\t\t\t\t\t\t(4, ref('openhealth.rchavarri_clinicachavarri')),\n\n\t\t\t\t\t\t\t\t\t]\"/>\n\t\t</record>\n\n\n\n\t\t<!-- OeHealth - Physician --> \n<!--\n\t\t\t\t\t\t\t\t\t\t\t(4, ref('openhealth.fchavarri_clinicachavarri')),\n\t\t\t\t\t\t\t\t\t\t\t(4, ref('openhealth.cmendez_clinicachavarri')),\n\t\t\t\t\t\t\t\t\t\t\t(4, ref('openhealth.dacosta_clinicachavarri')),\n-->\n\t\t<record id=\"oehealth.group_oeh_medical_physician\" model=\"res.groups\">\n\t\t\t<field name=\"name\">Oe - Physician</field>\n\t\t\t<field name=\"category_id\" ref=\"oehealth.module_oeh_medical_category\"/>\n\n\t\t\t<field name=\"users\" eval=\"[ \n\t\t\t\t\t\t\t\t\t\t\t(4, ref('openhealth.manager_clinicachavarri')),\n\t\t\t\t\t\t\t\t\t\t\t(4, ref('openhealth.vmori_clinicachavarri')),\n\n\n\t\t\t\t\t\t\t\t\t\t\t(4, ref('openhealth.medico_clinicachavarri')),\n\n\t\t\t\t\t\t\t\t\t\t\t(4, ref('openhealth.galarcon_clinicachavarri')),\n\t\t\t\t\t\t\t\t\t\t\t(4, ref('openhealth.pcanales_clinicachavarri')),\n\t\t\t\t\t\t\t\t\t\t\t(4, ref('openhealth.cescudero_clinicachavarri')),\n\t\t\t\t\t\t\t\t\t\t\t(4, ref('openhealth.lgonzales_clinicachavarri')),\n\t\t\t\t\t\t\t\t\t\t\t(4, ref('openhealth.pmonteverde_clinicachavarri')),\n\t\t\t\t\t\t\t\t\t\t\t(4, ref('openhealth.jvasquez_clinicachavarri')),\n\n\n\t\t\t\t\t\t\t\t\t\t\t(4, ref('openhealth.asistente_clinicachavarri')),\n\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t]\"/>\n\t\t</record>\n\n\n\n\n\n\n\n\n<!-- Purchase --> \n\n\t\t<!-- Purchase - Managers --> \n\t\t<record id=\"purchase.group_purchase_manager\" model=\"res.groups\">\n\t\t\t<field name=\"name\">Manager</field>\n\t\t\t<field name=\"category_id\" ref=\"base.module_category_purchase_management\"/>\n<!--\t\t\t\n\t\t\t<field name=\"implied_ids\" eval=\"[(4, ref('group_purchase_user'))]\"/>\n\t\t\t<field name=\"users\" eval=\"[(4, ref('base.user_root'))]\"/>\n-->\n\t\t\t<field name=\"users\" eval=\"[ \n\t\t\t\t\t\t\t\t\t\t\t\t(4, ref('openhealth.director_clinicachavarri')),\n\t\t\t\t\t\t\t\t\t\t\t\t(4, ref('openhealth.rchavarri_clinicachavarri')),\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t]\"/>\n\t\t\n\t\t</record>\n\n\n\n\n\n\n\n\n\n<!-- Stock --> \n\n\t\t<!-- Stock - Managers --> \n\t\t<record id=\"stock.group_stock_manager\" model=\"res.groups\">\n\t        <field name=\"name\">Stock - Manager</field>\n\t        <field name=\"category_id\" ref=\"base.module_category_warehouse_management\"/>\n<!--\nHeritage\n\t        <field name=\"implied_ids\" eval=\"[(4, ref('stock.group_stock_user'))]\"/>\n-->\n\t\t\t<field name=\"users\" eval=\"[ \n\t\t\t\t\t\t\t\t\t\t\t\t(4, ref('openhealth.director_clinicachavarri')),\n\n\t\t\t\t\t\t\t\t\t\t\t\t(4, ref('openhealth.rchavarri_clinicachavarri')),\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t]\"/>\n\t    </record>\n\n\n\n\t\t<!-- Stock - Users --> \n\t\t<record id=\"stock.group_stock_user\" model=\"res.groups\">\n\t        <field name=\"name\">Stock - User</field>\n\t        <field name=\"category_id\" ref=\"base.module_category_warehouse_management\"/>\n<!--\n\t        <field name=\"implied_ids\" eval=\"[(4, ref('stock.group_stock_user'))]\"/>\n-->\n\t\t\t<field name=\"users\" eval=\"[ \n\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t(4, ref('openhealth.almacen_clinicachavarri')),\n\n\t\t\t\t\t\t\t\t\t]\"/>\n\n\t    </record>\n\n<!--\n\t\t\t\t\t\t\t\t\t\t\t(4, ref('openhealth.manager_clinicachavarri')),\n\t\t\t\t\t\t\t\t\t\t\t(4, ref('openhealth.medico_clinicachavarri')),\t\n\t\t\t\t\t\t\t\t\t\t\t(4, ref('openhealth.staff_clinicachavarri')),\n\t\t\t\t\t\t\t\t\t\t\t(4, ref('openhealth.asistente_clinicachavarri')),\n\t\t\t\t\t\t\t\t\t\t\t(4, ref('openhealth.plataforma_clinicachavarri')),\n-->\n\n\n\n\n\n\n\n\t<!-- HR - Manager --> \n\t\t<record id=\"base.group_hr_manager\" \tmodel=\"res.groups\">\n\n\t\t\t<field name=\"name\">HR - Manager</field>\n\t\t\t\n\t        <field name=\"category_id\" ref=\"base.module_category_human_resources\"/>\n\n\t\t\t<field name=\"users\" eval=\"[ \n\n\t\t\t\t\t\t\t\t\t\t\t\t(4, ref('openhealth.director_clinicachavarri')),\n\n\t\t\t\t\t\t\t\t\t]\"/>\n\t\t</record>\n\n\n\n\n\t</data>\n</openerp>",
 			"file": "security/openhealth_security_oe.xml",
-			"file_size": 3817,
-			"file_write_time": 131533640060000000,
 			"settings":
 			{
-				"buffer_size": 3819,
+				"buffer_size": 4228,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -496,8 +493,8 @@
 	},
 	"file_history":
 	[
-		"/Users/gibil/cellar/github/openhealth/data/products_pricelist.BUF.xml",
 		"/Users/gibil/cellar/github/openhealth/readme.txt",
+		"/Users/gibil/cellar/github/openhealth/data/products_pricelist.BUF.xml",
 		"/Users/gibil/cellar/github/openhealth/models/receipt.py",
 		"/Users/gibil/cellar/github/openhealth/models/payment_method.py",
 		"/Users/gibil/cellar/github/openhealth/models/payment_method_line.py",
@@ -627,7 +624,7 @@
 	],
 	"find":
 	{
-		"height": 39.0
+		"height": 25.0
 	},
 	"find_in_files":
 	{
@@ -915,7 +912,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -931,8 +928,8 @@
 						"selection":
 						[
 							[
-								2610,
-								2610
+								307,
+								307
 							]
 						],
 						"settings":
@@ -941,10 +938,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2043.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -953,15 +950,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3819,
+						"buffer_size": 4228,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2166,
-								2166
+								2925,
+								2925
 							]
 						],
 						"settings":
@@ -970,10 +967,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1045.0,
+						"translation.y": 1445.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -1774,7 +1771,7 @@
 	"project": "OpenHealth-MIN.sublime-project",
 	"replace":
 	{
-		"height": 70.0
+		"height": 46.0
 	},
 	"save_all_on_build": true,
 	"select_file":

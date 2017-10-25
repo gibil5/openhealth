@@ -175,7 +175,36 @@
 			"file": "__openerp__.py",
 			"settings":
 			{
-				"buffer_size": 8928,
+				"buffer_size": 8971,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "<?xml version=\"1.0\"?>\n<openerp>\n\t<data>\n\n\n\n<!--\n        \t\t\tgroups=\"stock.group_stock_manager\" \n-->\n\n        <menuitem \tid=\"stock.menu_stock_sched\" \n        \t\t\tname=\"Schedulers - jx\" \n        \t\t\tparent=\"stock.menu_stock_root\" \n\n        \t\t\tgroups=\"openhealth.roots\" \n        \t\t\t\n        \t\t\tsequence=\"50\"\n        \t\t\t/>\n\n\n\n\n\n\t</data>\n</openerp>\n",
+			"file": "views/stock/stock.xml",
+			"file_size": 339,
+			"file_write_time": 131534304130000000,
+			"settings":
+			{
+				"buffer_size": 341,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "security/openhealth_security_buf.xml",
+			"settings":
+			{
+				"buffer_size": 4998,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/products/product.xml",
+			"settings":
+			{
+				"buffer_size": 17966,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -190,27 +219,10 @@
 			}
 		},
 		{
-			"file": "security/openhealth_security_buf.xml",
-			"settings":
-			{
-				"buffer_size": 4998,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "data/base_data_users_managers.xml",
 			"settings":
 			{
 				"buffer_size": 4341,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/products/product.xml",
-			"settings":
-			{
-				"buffer_size": 17966,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -624,7 +636,7 @@
 	],
 	"find":
 	{
-		"height": 25.0
+		"height": 39.0
 	},
 	"find_in_files":
 	{
@@ -639,6 +651,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"purchase",
+			"purchases",
 			"stock",
 			"ACIDO HIALURONICO",
 			"TREE",
@@ -764,8 +778,6 @@
 			"calcula",
 			"x_dni",
 			"onchange",
-			"treatment",
-			"open_lin",
 			"treatment"
 		],
 		"highlight": true,
@@ -912,7 +924,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -921,21 +933,49 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8928,
+						"buffer_size": 8971,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								307,
-								307
+								3796,
+								3796
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Python/Python.sublime-syntax",
 							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3573.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "views/stock/stock.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 341,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								319,
+								319
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -945,7 +985,65 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
+					"buffer": 2,
+					"file": "security/openhealth_security_buf.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4998,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								338,
+								354
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 6.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "views/products/product.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 17966,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								17945,
+								17966
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 12793.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
 					"file": "security/openhealth_security_oe.xml",
 					"semi_transient": false,
 					"settings":
@@ -967,35 +1065,6 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1445.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "security/openhealth_security_buf.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4998,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								241,
-								241
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
@@ -1003,7 +1072,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 5,
 					"file": "data/base_data_users_managers.xml",
 					"semi_transient": false,
 					"settings":
@@ -1028,40 +1097,11 @@
 						"translation.y": 251.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "views/products/product.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 17966,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4605,
-								4605
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 3173.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "data/product_suppliers.xml",
 					"semi_transient": false,
 					"settings":
@@ -1086,11 +1126,11 @@
 						"translation.y": 110.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
 					"file": "data/supplier_services.xml",
 					"semi_transient": false,
 					"settings":
@@ -1115,11 +1155,11 @@
 						"translation.y": 183.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 8,
 					"file": "data/odoo_data_services_med.xml",
 					"semi_transient": false,
 					"settings":
@@ -1144,11 +1184,11 @@
 						"translation.y": 374.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 9,
 					"file": "data/odoo_data_products.xml",
 					"semi_transient": false,
 					"settings":
@@ -1173,11 +1213,11 @@
 						"translation.y": 6696.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 10,
 					"file": "data/products_pricelist.xml",
 					"semi_transient": false,
 					"settings":
@@ -1201,11 +1241,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 11,
 					"file": "models/closing.py",
 					"semi_transient": false,
 					"settings":
@@ -1230,11 +1270,11 @@
 						"translation.y": 4945.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 12,
 					"file": "views/orders/order.xml",
 					"semi_transient": false,
 					"settings":
@@ -1259,11 +1299,11 @@
 						"translation.y": 21334.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 13,
 					"file": "models/order.py",
 					"semi_transient": false,
 					"settings":
@@ -1288,11 +1328,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 14,
 					"file": "models/patient.py",
 					"semi_transient": false,
 					"settings":
@@ -1317,11 +1357,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 17,
+					"stack_index": 18,
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 15,
 					"file": "models/appointment.py",
 					"semi_transient": false,
 					"settings":
@@ -1346,11 +1386,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 18,
+					"stack_index": 19,
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 16,
 					"file": "views/closings/closings.xml",
 					"semi_transient": false,
 					"settings":
@@ -1375,11 +1415,11 @@
 						"translation.y": 557.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 16,
+					"stack_index": 17,
 					"type": "text"
 				},
 				{
-					"buffer": 16,
+					"buffer": 17,
 					"file": "views/treatments/treatment.xml",
 					"semi_transient": false,
 					"settings":
@@ -1404,11 +1444,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 16,
 					"type": "text"
 				},
 				{
-					"buffer": 17,
+					"buffer": 18,
 					"file": "models/howto/shell.rb",
 					"semi_transient": false,
 					"settings":
@@ -1432,11 +1472,11 @@
 						"translation.y": 390.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 20,
+					"stack_index": 21,
 					"type": "text"
 				},
 				{
-					"buffer": 18,
+					"buffer": 19,
 					"file": "views/menus/menus.xml",
 					"semi_transient": false,
 					"settings":
@@ -1461,11 +1501,11 @@
 						"translation.y": 4388.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
-					"buffer": 19,
+					"buffer": 20,
 					"file": "models/treatment.py",
 					"semi_transient": false,
 					"settings":
@@ -1490,11 +1530,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 19,
+					"stack_index": 20,
 					"type": "text"
 				},
 				{
-					"buffer": 20,
+					"buffer": 21,
 					"file": "views/menus/menus_openhealth.xml",
 					"semi_transient": false,
 					"settings":
@@ -1519,11 +1559,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 21,
+					"stack_index": 22,
 					"type": "text"
 				},
 				{
-					"buffer": 21,
+					"buffer": 22,
 					"file": "models/sale_report.py",
 					"semi_transient": false,
 					"settings":
@@ -1548,11 +1588,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 22,
+					"stack_index": 23,
 					"type": "text"
 				},
 				{
-					"buffer": 22,
+					"buffer": 23,
 					"file": "views/services/service.xml",
 					"semi_transient": false,
 					"settings":
@@ -1577,11 +1617,11 @@
 						"translation.y": 385.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 24,
+					"stack_index": 25,
 					"type": "text"
 				},
 				{
-					"buffer": 23,
+					"buffer": 24,
 					"file": "views/patients/patient.xml",
 					"semi_transient": false,
 					"settings":
@@ -1606,11 +1646,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 23,
+					"stack_index": 24,
 					"type": "text"
 				},
 				{
-					"buffer": 24,
+					"buffer": 25,
 					"file": "views/consultations/consultation.xml",
 					"semi_transient": false,
 					"settings":
@@ -1635,11 +1675,11 @@
 						"translation.y": 197.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 25,
+					"buffer": 26,
 					"file": "views/appointments/appointment.xml",
 					"semi_transient": false,
 					"settings":
@@ -1664,11 +1704,11 @@
 						"translation.y": 5011.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 25,
+					"stack_index": 26,
 					"type": "text"
 				},
 				{
-					"buffer": 26,
+					"buffer": 27,
 					"file": "models/event.py",
 					"semi_transient": false,
 					"settings":
@@ -1693,11 +1733,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 26,
+					"stack_index": 27,
 					"type": "text"
 				},
 				{
-					"buffer": 27,
+					"buffer": 28,
 					"file": "views/orders/events.xml",
 					"semi_transient": false,
 					"settings":
@@ -1722,7 +1762,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 27,
+					"stack_index": 28,
 					"type": "text"
 				}
 			]

@@ -121,12 +121,8 @@
 
 
 
-		# ----------------------------------------------------------- Security ------------------------------------------------------
+		# ----------------------------------------------------------- Data ------------------------------------------------------
 		'data/base_data_categs.xml',
-
-
-
-
 
 		'data/base_data_users_managers.xml',
 		'data/base_data_users_staff.xml',
@@ -139,15 +135,17 @@
 		'data/base_data_users_platform.xml',
 		'data/base_data_users_cash.xml',
 
-
-
-
 		'data/base_data_patients.xml',
 
 
 
 
-		'security/openhealth_security_oe.xml',
+
+
+
+		# ----------------------------------------------------------- Security ------------------------------------------------------
+
+		'security/openhealth_security_oe.xml',		# DEPRECATED ?  
 
 		
 
@@ -181,14 +179,11 @@
 
 
 
-		# ----------------------------------------------------------- DATA ------------------------------------------------------
+		# ----------------------------------------------------------- Data ------------------------------------------------------
 
 		# Doctors
 		'data/base_data_physicians.xml',
 		
-
-
-
 
 
 		# Products 
@@ -208,7 +203,6 @@
 		'data/supplier_services.xml',
 
 
-
 		# Pricelists 
 		'data/products_pricelist.xml',
 
@@ -219,7 +213,10 @@
 
 
 
-		# purchases 
+		# ----------------------------------------------------------- Views ------------------------------------------------------
+
+
+		# Purchases 
 		'views/purchase/purchase.xml',
 
 		# Stock 

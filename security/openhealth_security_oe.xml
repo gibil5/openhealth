@@ -7,12 +7,11 @@
 
 
 
+<!-- OeHealth --> 
 
-	<!-- OeHealth - Manager --> 
+		<!-- OeHealth - Manager --> 
 		<record id="oehealth.group_oeh_medical_manager" model="res.groups">
-
 			<field name="name">Oe - Manager</field>
-			
 			<field name="category_id" ref="oehealth.module_oeh_medical_category"/>
 
 			<field name="users" eval="[ 
@@ -26,7 +25,7 @@
 
 
 
-	<!-- OeHealth - Physician --> 
+		<!-- OeHealth - Physician --> 
 <!--
 											(4, ref('openhealth.fchavarri_clinicachavarri')),
 											(4, ref('openhealth.cmendez_clinicachavarri')),
@@ -63,11 +62,46 @@
 
 
 
+<!-- Purchase --> 
+
+		<!-- Purchase - Managers --> 
+		<record id="purchase.group_purchase_manager" model="res.groups">
+			<field name="name">Manager</field>
+			<field name="category_id" ref="base.module_category_purchase_management"/>
+			<!--			
+			<field name="implied_ids" eval="[(4, ref('group_purchase_user'))]"/>
+			<field name="users" eval="[(4, ref('base.user_root'))]"/>
+			-->
+			<field name="users" eval="[ 
+											(4, ref('openhealth.director_clinicachavarri')),
+											(4, ref('openhealth.rchavarri_clinicachavarri')),							
+									]"/>
+		
+		</record>
+
+
+		<!-- Purchase - Users --> 
+		<record id="purchase.group_purchase_user" model="res.groups">
+			<field name="name">User</field>
+			<field name="category_id" ref="base.module_category_purchase_management"/>
+			<!--
+			<field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+			-->		
+			<field name="users" eval="[ 
+											(4, ref('openhealth.almacen_clinicachavarri')),
+									]"/>
+		</record>
+
+
+
+
+
+
+
+
 <!-- Stock --> 
 
 		<!-- Stock - Managers --> 
-<!--
--->
 		<record id="stock.group_stock_manager" model="res.groups">
 	        <field name="name">Stock - Manager</field>
 	        <field name="category_id" ref="base.module_category_warehouse_management"/>
@@ -77,17 +111,14 @@ Heritage
 -->
 			<field name="users" eval="[ 
 												(4, ref('openhealth.director_clinicachavarri')),
-
 												(4, ref('openhealth.rchavarri_clinicachavarri')),
 									
 									]"/>
-
 	    </record>
 
 
+
 		<!-- Stock - Users --> 
-<!--
--->
 		<record id="stock.group_stock_user" model="res.groups">
 	        <field name="name">Stock - User</field>
 	        <field name="category_id" ref="base.module_category_warehouse_management"/>

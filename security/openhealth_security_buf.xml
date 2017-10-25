@@ -41,15 +41,40 @@
 			<field name="category_id" ref="module_openhealth_category"/>
 
 
+			<field name="implied_ids" eval="[(4, ref('purchase.group_purchase_manager'))]"/>
+
+
 			<field name="users" eval="[ 
 										(4, ref('openhealth.director_clinicachavarri')),
 										(4, ref('openhealth.rchavarri_clinicachavarri')),
 										(4, ref('openhealth.fchavarri_clinicachavarri')),
 
-
 										(4, ref('base.user_root')), 
 									]"/>
 		</record>
+
+
+
+<!-- Almacen --> 
+		<record id="openhealth.almacens" model="res.groups">
+			<field name="name">Almacens</field>
+			<field name="category_id" ref="module_openhealth_category"/>
+
+
+			<field name="implied_ids" eval="[(4, ref('purchase.group_purchase_user'))]"/>
+
+
+			<field name="users" eval="[ 
+										(4, ref('openhealth.almacen_clinicachavarri')),
+										(4, ref('openhealth.yramirez_clinicachavarri')),
+
+									]"/>
+		</record>
+
+
+
+
+
 
 
 
@@ -173,18 +198,6 @@
 
 
 
-<!-- Almacen --> 
-		<record id="openhealth.almacens" model="res.groups">
-			<field name="name">Almacens</field>
-			<field name="category_id" ref="module_openhealth_category"/>
-
-			<field name="users" eval="[ 
-										(4, ref('openhealth.almacen_clinicachavarri')),
-
-										(4, ref('openhealth.yramirez_clinicachavarri')),
-
-									]"/>
-		</record>
 
 
 

@@ -64,22 +64,34 @@
 
 <!-- Purchase --> 
 
+<!--
+											(4, ref('openhealth.director_clinicachavarri')),
+											(4, ref('openhealth.rchavarri_clinicachavarri')),							
+
+
+			<field name="implied_ids" eval="[(4, ref('openhealth.directors'))]"/>
+-->
+
 		<!-- Purchase - Managers --> 
 		<record id="purchase.group_purchase_manager" model="res.groups">
 			<field name="name">Manager</field>
 			<field name="category_id" ref="base.module_category_purchase_management"/>
+
 			<!--			
 			<field name="implied_ids" eval="[(4, ref('group_purchase_user'))]"/>
-			<field name="users" eval="[(4, ref('base.user_root'))]"/>
+			<field name="users" eval="[(4, ref('base.user_root'))]"/>			
 			-->
+
 			<field name="users" eval="[ 
-											(4, ref('openhealth.director_clinicachavarri')),
-											(4, ref('openhealth.rchavarri_clinicachavarri')),							
 									]"/>
 		
 		</record>
 
 
+
+<!--
+											(4, ref('openhealth.almacen_clinicachavarri')),
+-->
 		<!-- Purchase - Users --> 
 		<record id="purchase.group_purchase_user" model="res.groups">
 			<field name="name">User</field>
@@ -88,7 +100,6 @@
 			<field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
 			-->		
 			<field name="users" eval="[ 
-											(4, ref('openhealth.almacen_clinicachavarri')),
 									]"/>
 		</record>
 
@@ -101,17 +112,19 @@
 
 <!-- Stock --> 
 
+<!--
+												(4, ref('openhealth.rchavarri_clinicachavarri')),
+-->
+
 		<!-- Stock - Managers --> 
 		<record id="stock.group_stock_manager" model="res.groups">
 	        <field name="name">Stock - Manager</field>
 	        <field name="category_id" ref="base.module_category_warehouse_management"/>
-<!--
-Heritage
+<!-- Heritage
 	        <field name="implied_ids" eval="[(4, ref('stock.group_stock_user'))]"/>
 -->
 			<field name="users" eval="[ 
 												(4, ref('openhealth.director_clinicachavarri')),
-												(4, ref('openhealth.rchavarri_clinicachavarri')),
 									
 									]"/>
 	    </record>

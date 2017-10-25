@@ -85,10 +85,21 @@
 		#'views/example_report.xml',
 		#'views/order_report.xml',
 
+
+
+		# Patient
 		'reports/patient.xml',
 		'reports/patient_consultation.xml',
 		'reports/patient_sessions.xml',
 		'reports/patient_controls.xml',
+
+
+		# Closing 
+		'reports/closing.xml',
+
+
+
+
 
 
 

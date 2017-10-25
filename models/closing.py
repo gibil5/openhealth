@@ -466,6 +466,8 @@ class Closing(models.Model):
 			compute='_compute_total', 
 		)
 
+
+
 	@api.multi
 	#@api.depends('x_appointment')
 
@@ -503,6 +505,7 @@ class Closing(models.Model):
 			record.total = amount_untaxed
 
 			print 
+
 
 
 

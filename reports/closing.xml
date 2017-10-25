@@ -1,0 +1,241 @@
+<openerp>
+	<data>
+
+
+
+<report
+	string="Cierre de Caja"
+
+	id="report_closing"
+
+	model="openhealth.closing"
+
+	report_type="qweb-pdf"
+	
+	name="openhealth.report_closing_view"            
+	
+	file="openhealth_closing.report_patient"
+/>
+
+
+		<template id="openhealth.report_closing_view">
+			<t t-call="report.html_container">                 
+			<t t-foreach="docs" t-as="doc">
+			<t>          
+
+
+
+
+
+<!-- Header --> 
+<div class="header">    
+	<img src='/openhealth/static/src/img/logo_chavarri.png' style="max-height: 100px;"/>
+</div>
+
+
+
+
+
+<!-- 								Page 1 - Begin	 										-->
+<div class="page">    
+
+<center>
+<h2>
+	Cierre de Caja
+</h2>
+</center>
+<br/>
+
+
+
+
+
+
+<br/>
+<!-- Date --> 
+<div class='row'>
+	
+	<div class='col-xs-7'>		
+		<b>Total:</b>
+		<t t-esc="doc.total"/>
+	</div>
+
+	<div class='col-xs-5'>
+		<b>Fecha y hora:</b>
+		<t t-esc="doc.date_time"/>
+	</div>
+</div>
+<br/>
+
+
+
+<!-- Title --> 
+<h3>                            
+	Documentos de Pago
+</h3>
+<!--
+<br/>
+-->
+
+
+<!-- Table --> 
+<table style="line-height: 300%;">
+
+<tr>
+<th>Boletas Físicas:</th>
+<th><t t-esc="doc.rec_tot"/></th>
+</tr>
+
+<tr>
+<th>Facturas Físicas:</th>
+<th><t t-esc="doc.inv_tot"/></th>
+</tr>
+
+<tr>
+<th>Tickets Boleta:</th>
+<th><t t-esc="doc.tkr_tot"/></th>
+</tr>
+
+<tr>
+<th>Tickets Factura:</th>
+<th><t t-esc="doc.tki_tot"/></th>
+</tr>
+
+<tr>
+<th>Canjes Publicidad:</th>
+<th><t t-esc="doc.adv_tot"/></th>
+</tr>
+
+<tr>
+<th>Canjes NV:</th>
+<th><t t-esc="doc.san_tot"/></th>
+</tr>
+
+
+<!--
+<tr>
+<th>Dirección:</th>
+<th><t t-esc="doc.street"/></th>
+</tr>
+-->
+	</table>    
+<br/>
+<br/>
+
+
+
+
+
+
+<!-- Title --> 
+<h3>                            
+	Formas de Pago
+</h3>
+<!--
+<br/>
+-->
+
+
+
+<!-- Table --> 
+<table style="line-height: 300%;">
+
+
+
+<tr>
+<th>Efectivo:</th>
+<th><t t-esc="doc.cash_tot"/></th>
+</tr>
+
+<tr>
+<th>American Express:</th>
+<th><t t-esc="doc.ame_tot"/></th>
+</tr>
+
+<tr>
+<th>Cuota Perfecta :</th>
+<th><t t-esc="doc.cuo_tot"/></th>
+</tr>
+
+<tr>
+<th>Diners:</th>
+<th><t t-esc="doc.din_tot"/></th>
+</tr>
+
+
+
+
+<tr>
+<th>Mastercard - Crédito:</th>
+<th><t t-esc="doc.mac_tot"/></th>
+</tr>
+
+<tr>
+<th>Mastercard - Débito:</th>
+<th><t t-esc="doc.mad_tot"/></th>
+</tr>
+
+
+
+
+<tr>
+<th>Visa - Crédito:</th>
+<th><t t-esc="doc.vic_tot"/></th>
+</tr>
+
+<tr>
+<th>Visa - Débito:</th>
+<th><t t-esc="doc.vid_tot"/></th>
+</tr>
+
+
+
+</table>    
+
+
+
+</div> <!-- page --> 
+
+
+
+
+
+
+
+
+<!-- Footer --> 
+<!--
+<div class="footer">    
+	<div class='row'>
+
+		<div class='col-xs-4'>
+			<b>
+			Fecha:
+			</b>
+			<t t-esc="doc.name"/>
+		</div>
+
+
+		<div class='col-xs-3'>
+		</div>
+
+
+		<div class='col-xs-5'>
+			<b>
+			Cierre de Caja #:
+			</b>
+			<t t-esc="doc.date_time"/>
+		</div>
+	
+	</div>
+</div>
+-->
+<!-- Footer --> 
+
+
+			</t>
+			</t>
+			</t>
+		</template>
+	</data>
+</openerp>

@@ -30,16 +30,16 @@
 <!-- 								Page 1 - Begin	 										-->
 <div class="page">    
 
-
 <center>
 <h1>
 	Hoja de Filiación
 </h1>
 </center>
-
-
 <br/>
 <br/>
+
+
+
 
 
 
@@ -60,6 +60,8 @@
 	Datos Generales
 </h2>
 <br/>
+
+
 <table style="line-height: 300%;">
 						 
 <!--
@@ -165,6 +167,7 @@
 <th><t t-esc="doc._dic[doc.x_caregiver_relation]"/></th>
 </tr>
 
+
 <!--
 <tr>
 <th>:</th>
@@ -173,6 +176,7 @@
 -->
 	</table>    
 </div> <!-- page --> 
+
 
 
 

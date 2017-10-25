@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+<!--
+                                groups="group_purchase_manager,base.group_configuration"
+-->
+        <menuitem       id="purchase.menu_purchase_config" 
+                                
+                                name="Configuration - jx" 
+                                
+                                parent="base.menu_purchase_root" 
+                                
+                                sequence="100" 
+                                
+                                groups="openhealth.roots,base.group_configuration"
+                                />
+
+
+
+	</data>
+</openerp>

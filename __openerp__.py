@@ -217,6 +217,11 @@
 
 
 
+
+
+		# purchases 
+		'views/purchase/purchase.xml',
+
 		# Stock 
 		'views/stock/stock.xml',
 

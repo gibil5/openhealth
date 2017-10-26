@@ -13,19 +13,17 @@
 <!-- OeHealth --> 
 
 		<!-- OeHealth - Manager --> 
+<!--
 		<record id="oehealth.group_oeh_medical_manager" model="res.groups">
 			<field name="name">Oe - Manager</field>
 			<field name="category_id" ref="oehealth.module_oeh_medical_category"/>
 
 			<field name="users" eval="[ 
-
 											(4, ref('openhealth.director_clinicachavarri')),
-
 											(4, ref('openhealth.rchavarri_clinicachavarri')),
-
 									]"/>
 		</record>
-
+-->
 
 
 
@@ -51,17 +49,19 @@
 
 -->
 
+<!--
 		<record id="oehealth.group_oeh_medical_physician" model="res.groups">
 			<field name="name">Oe - Physician</field>
 			<field name="category_id" ref="oehealth.module_oeh_medical_category"/>
 
 			<field name="users" eval="[ 
+				
 											(4, ref('openhealth.manager_clinicachavarri')),
 											(4, ref('openhealth.vmori_clinicachavarri')),
 
 									]"/>
 		</record>
-
+-->
 
 
 

@@ -1,21 +1,14 @@
 <openerp>
 	<data>
 
-
-
-<report
-	string="Cierre de Caja"
-
-	id="report_closing"
-
-	model="openhealth.closing"
-
-	report_type="qweb-pdf"
-	
-	name="openhealth.report_closing_view"            
-	
-	file="openhealth_closing.report_patient"
-/>
+		<report
+			string="Cierre de Caja"
+			id="report_closing"
+			model="openhealth.closing"
+			report_type="qweb-pdf"
+			name="openhealth.report_closing_view"            
+			file="openhealth_closing.report_patient"
+		/>
 
 
 		<template id="openhealth.report_closing_view">

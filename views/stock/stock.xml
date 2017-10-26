@@ -27,7 +27,7 @@
                                 parent="stock.menu_stock_root"
                                 sequence="100" 
 
-                                groups="group_stock_manager,base.group_configuration"
+                                groups="stock.group_stock_manager,base.group_configuration"
 
                                 />
 

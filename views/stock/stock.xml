@@ -9,7 +9,7 @@
 -->
 
         <menuitem 	id="stock.menu_stock_sched" 
-        			name="Schedulers - jx" 
+        			name="Schedulers" 
         			parent="stock.menu_stock_root" 
 
         			groups="openhealth.roots" 
@@ -20,13 +20,14 @@
 
 <!--
                                 groups="group_stock_manager,base.group_configuration"
+                                groups="openhealth.roots,base.group_configuration" 
 -->
         <menuitem       id="stock.menu_stock_config_settings" 
-                                name="Configuration - jx" 
+                                name="Configuration" 
                                 parent="stock.menu_stock_root"
                                 sequence="100" 
 
-                                groups="openhealth.roots,base.group_configuration" 
+                                groups="group_stock_manager,base.group_configuration"
 
                                 />
 

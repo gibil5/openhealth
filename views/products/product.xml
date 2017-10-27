@@ -268,11 +268,11 @@
 
 
 <!--
-            <field name="name">Purchase Orders</field>
+            <field name="name">Ordenes de compra</field>
 -->
         <record id="purchase.purchase_form_action" model="ir.actions.act_window">
 
-            <field name="name">Ordenes de compra</field>
+            <field name="name">Purchase Orders</field>
             
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">purchase.order</field>
@@ -342,10 +342,10 @@
 
 
 <!--
-        			name="Purchase Orders - jx" 
+        			name="Ordenes de compra" 
 -->
         <menuitem 	
-        			name="Ordenes de compra" 
+        			name="Purchase Orders" 
 
         			action="purchase.purchase_form_action" 
         			id="purchase.menu_purchase_form_action" 

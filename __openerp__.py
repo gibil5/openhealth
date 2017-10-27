@@ -65,8 +65,10 @@
 	# --------------
 	#'depends': ['base', 'oehealth'],
 	#'depends': ['base', 'oehealth'],
-	'depends': ['base', 'oehealth', 'base_multi_image'],
+	#'depends': ['base', 'oehealth', 'base_multi_image'],
+	'depends': ['base', 'oehealth', 'base_multi_image', 'mail', 'purchase'],
 
+#'depends': ['mail','contacts'],
 
 
 
@@ -230,6 +232,10 @@
 
 		# Purchases 
 		'views/purchase/purchase.xml',
+		'views/mail/rfq_send.xml',
+
+
+
 
 		# Stock 
 		'views/stock/stock.xml',

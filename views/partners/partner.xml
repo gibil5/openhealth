@@ -94,6 +94,10 @@
 					<field name="id"/>
 -->
 
+					<field name="lang"/>
+
+
+
 					<field name="property_product_pricelist"/>
 
 

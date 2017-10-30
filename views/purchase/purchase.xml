@@ -68,7 +68,7 @@
             
             <field name="view_mode">form</field>
             
-            <field name="view_id" ref="view_partner_form"/>
+            <field name="view_id" ref="base.view_partner_form"/>
 
             <field name="act_window_id" ref="base.action_partner_form"/>
         </record>

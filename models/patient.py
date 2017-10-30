@@ -513,7 +513,9 @@ class Patient(models.Model):
 
 
 	street = fields.Char(
-			string = "Dirección", 	
+
+			#string = "Dirección", 	
+			string = "Dirección fiscal", 	
 			
 			#required=True, 
 			required=False, 

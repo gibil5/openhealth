@@ -3,10 +3,62 @@ from openerp import models, fields, api
 
 
 
+@api.model
+def _lang_get(self):
+	languages = self.env['res.lang'].search([])
+	return [(language.code, language.name) for language in languages]
+
+
+
 class Partner(models.Model):
 	
 	_inherit = 'res.partner'
 	#_name = 'openhealth.patient'	#The best solution ? So that impact is minimal ?	- Deprecated
+
+
+
+
+
+
+
+
+
+
+
+
+
+	#lang = fields.Selection(
+		#_lang_get, 
+		#'Language',
+		#default='es_ES', 
+	#),
+
+
+	lang = fields.Selection(
+		_lang_get, 
+		'Language',
+		default='es_ES', 
+		help="If the selected language is loaded in the system, all documents related to this contact will be printed in this language. If not, it will be English."
+	)
+
+
+
+
+
+
+	x_firm = fields.Char(
+		"Razon social", 	
+		)
+
+	x_ruc = fields.Char(
+		"Ruc", 	
+	)
+
+
+
+
+
+
 
 
 	# Function 

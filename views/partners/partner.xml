@@ -8,9 +8,14 @@
 
 		<!-- Form view -->
 <!--
+		<record model="ir.ui.view" 	id="base.view_res_partner_form">
+
+		<record model="ir.ui.view" 	id="view_partner_form">
 -->
-		<record model="ir.ui.view" 	id="view_res_partner_form">
-			<field name="name">res.partner.form</field>
+		<record model="ir.ui.view" 	id="view_partner_form">
+
+			<field name="name">res.partner.form - jxy</field>
+			
 			<field name="model">res.partner</field>
 
 			<field name="inherit_id" ref="base.view_partner_form"/>			
@@ -21,8 +26,32 @@
 
 			<field name="arch" type="xml">
 
+
+
 				<xpath expr="//field[@name='function']" position="before">
 				</xpath>
+
+
+
+
+
+				<xpath expr="//field[@name='website']" position="after">
+
+					<field name="x_firm"		/>
+<!--
+					<field name="x_ruc"		/>
+-->
+				</xpath>
+
+
+
+
+<!--
+				<xpath expr="//field[@name='lang']" position="replace">
+					<field name="lang"	string="languague - jx"  default="es_ES"	/>
+				</xpath>
+-->
+
 
 			</field>
 		</record>

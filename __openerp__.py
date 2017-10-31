@@ -232,6 +232,10 @@
 
 		# Purchases 
 		'views/purchase/purchase.xml',
+		'views/purchase/purchase_rfq.xml',
+		#'views/purchase/purchase_po.xml',
+
+
 		'views/mail/rfq_send.xml',
 
 

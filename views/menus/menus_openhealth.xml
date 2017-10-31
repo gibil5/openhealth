@@ -28,6 +28,35 @@
 
 
 
+		<!-- purchase_orders --> 
+<!--		
+-->
+		<menuitem 	id="sub_purchase_orders_menu" 
+						name="Purchase Orders" 
+						parent="openhealth_menu"
+						sequence="-171"
+
+						action="purchase_form_action"/>
+
+
+		<menuitem 	id="sub_purchase_rfq_orders_menu" 
+						name="Purchase Rfq Orders" 
+						parent="openhealth_menu"
+						sequence="-170"
+						action="purchase.purchase_rfq"/>
+
+<!--
+		<menuitem 	id="sub_purchase_po_orders_menu" 
+						name="Purchase Orders" 
+						parent="openhealth_menu"
+						sequence="-170"
+						action="purchase.purchase_form_action"/>
+-->
+
+
+
+
+
 		<!-- Partners --> 
 		<menuitem id="partners_menu" name="Partners" parent="openhealth_menu"
 			sequence="-160"

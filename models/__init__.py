@@ -44,6 +44,7 @@ from . import card
 #from . import purchase_po
 from . import purchase
 from . import purchase_rfq
+from . import purchase_line_rfq
 
 
 

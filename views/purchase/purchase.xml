@@ -381,7 +381,7 @@
 -->
         <menuitem       id="purchase.menu_purchase_config" 
                                 
-                                name="Configuration - jx" 
+                                name="Configuration" 
                                 
                                 parent="base.menu_purchase_root" 
                                 
@@ -396,7 +396,7 @@
 
         <menuitem       id="base.menu_procurement_management_supplier_name" 
 
-                        name="Vendors - jx"
+                        name="Vendors"
             
                         parent="purchase.menu_procurement_management"
 

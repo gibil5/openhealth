@@ -47,6 +47,30 @@ class PurchaseOrderRfq(models.Model):
 
 
 
+	READONLY_STATES = {
+		'purchase': [('readonly', True)],
+		'done': [('readonly', True)],
+		'cancel': [('readonly', True)],
+	}
+
+
+	order_line = fields.One2many(
+
+
+		#'purchase.order.line', 
+		'purchase.order.line.rfq', 
+
+		
+		'order_id', 
+		string='Order Lines', 
+		states=READONLY_STATES, 
+		copy=True
+	)
+
+
+
+
+
 
 
 

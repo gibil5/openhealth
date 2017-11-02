@@ -238,8 +238,9 @@
 
 
 
+
 		# Mail template 
-		#'views/mail/rfq_send.xml',
+		'views/mail/rfq_send.xml',
 
 
 

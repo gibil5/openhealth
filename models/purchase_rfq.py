@@ -106,6 +106,14 @@ class PurchaseOrderRfq(models.Model):
 
 
 
+		# jx 
+		#template_id = 22
+		#template_id = 23
+		template_id = self.env['mail.template'].search([('name', '=', 'RFQ - Send by Email - jx')]).id
+
+
+
+
 		#'default_model': 'purchase.order',
 		ctx.update({
 

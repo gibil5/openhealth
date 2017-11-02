@@ -85,8 +85,8 @@ class PurchaseOrder(models.Model):
 			
 		string='Tipo', 
 
-		required=True, 
-		#required=False, 
+		#required=True, 
+		required=False, 
 
 	)
 

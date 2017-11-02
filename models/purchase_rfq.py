@@ -17,6 +17,10 @@ class PurchaseOrderRfq(models.Model):
 
 	_name = 'purchase.order.rfq'
 
+	_description = "Purchase Order Rfq"
+
+
+
 
 
 	state = fields.Selection(
@@ -77,6 +81,11 @@ class PurchaseOrderRfq(models.Model):
 
 	@api.multi
 	def action_rfq_send(self):
+
+		print 'jx'
+		print 'Action Rfq Send'
+		print 
+
 		'''
 		This function opens a window to compose an email, with the edi purchase template message loaded by default
 		'''

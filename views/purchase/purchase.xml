@@ -325,6 +325,16 @@
 
 
 
+       <menuitem       id="base.menu_procurement_management_supplier_name" 
+
+                        name="Vendors"
+            
+                        parent="purchase.menu_procurement_management"
+
+                        action="base.action_partner_supplier_form" 
+                        
+                        sequence="15"/>
+
 
 
 

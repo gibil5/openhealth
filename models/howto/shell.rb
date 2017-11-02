@@ -27,6 +27,14 @@ s= self.env['product.template'].search([  ('x_treatment', '=', 'hyaluronic_acid'
 
 
 
+self.env['ir.model.data'].search([('name', 'like', 'J')])
+
+self.env['ir.model.data'].search([('id', '=', 10)])
+
+
+
+
+
 
 
 

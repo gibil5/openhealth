@@ -175,7 +175,24 @@
 			"file": "__openerp__.py",
 			"settings":
 			{
-				"buffer_size": 9562,
+				"buffer_size": 9586,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/mail/rfq_send.xml",
+			"settings":
+			{
+				"buffer_size": 791,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/purchase_rfq.py",
+			"settings":
+			{
+				"buffer_size": 2418,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -184,48 +201,17 @@
 			"file": "models/purchase.py",
 			"settings":
 			{
-				"buffer_size": 1062,
+				"buffer_size": 1190,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "<?xml version=\"1.0\"?>\n<openerp>\n\t<data>\n\n\n\n<!--\n\t\t<record id=\"purchase_order_form\" model=\"ir.ui.view\">\n-->\n\n\t\t<!-- FORM --> \n\t\t<record id=\"purchase.purchase_order_form\" model=\"ir.ui.view\">\n\n\t\t\t<field name=\"name\">purchase.order.form</field>\n\t\t\t<field name=\"model\">purchase.order</field>\n\t\t\t<field name=\"arch\" type=\"xml\">\n\t\t\t\t<form string=\"Purchase Order\">\n\t\t\t\t<header>\n\n\n<!--                    \n\t\t\t\t\t<button name=\"action_rfq_send\" states=\"draft\" string=\"Send RFQ by Email\" type=\"object\" context=\"{'send_rfq':True}\" class=\"oe_highlight\"/>\n\t\t\t\t\t<button name=\"action_rfq_send\" states=\"sent\" string=\"Re-Send RFQ by Email\" type=\"object\" context=\"{'send_rfq':True}\"/>\n-->\n\t\t\t\t\t<button name=\"action_rfq_send\" states=\"draft\" string=\"Enviar DC por Email\" type=\"object\" context=\"{'send_rfq':True}\" class=\"oe_highlight\"/>\n\t\t\t\t\t<button name=\"action_rfq_send\" states=\"sent\" string=\"Re-enviar DC por Email\" type=\"object\" context=\"{'send_rfq':True}\"/>\n\n\n<!--\n\t\t\t\t\t<button name=\"print_quotation\" string=\"Print RFQ\" type=\"object\" states=\"draft\" class=\"oe_highlight\" groups=\"base.group_user\"/>\n\t\t\t\t\t<button name=\"print_quotation\" string=\"Re-Print RFQ\" type=\"object\" states=\"sent\" groups=\"base.group_user\"/>\n-->\n\n\n\n<!--\n\t\t\t\t\t<button name=\"button_confirm\" type=\"object\" states=\"draft\" string=\"Confirm Order\" id=\"draft_confirm\"/>\n\t\t\t\t\t<button name=\"button_confirm\" type=\"object\" states=\"sent\" string=\"Confirm Order\" class=\"oe_highlight\" id=\"bid_confirm\"/>\n-->\n\n\n\n\t\t\t\t\t<button name=\"button_approve\" type=\"object\" states='to approve' string=\"Approve Order\" class=\"oe_highlight\" groups=\"purchase.group_purchase_manager\"/>\n\n\n<!--\n\t\t\t\t\t<button name=\"action_rfq_send\" states=\"purchase\" string=\"Send PO by Email\" type=\"object\" context=\"{'send_rfq':False}\"/>\n-->\n\t\t\t\t\t<button name=\"action_rfq_send\"  states=\"purchase\"  string=\"Enviar OCS por Email\" type=\"object\" context=\"{'send_rfq':False}\"/>\n\t\t\t\t\t\n\n\n\t\t\t\t\t<button name=\"action_view_picking\" string=\"Receive Products\" type=\"object\" attrs=\"{'invisible': ['|', ('state','not in', ('purchase','done')), ('picking_count', '=', 0)]}\"/>\n\t\t\t\t\t\n\n\t\t\t\t\t<button name=\"button_draft\" states=\"cancel\" string=\"Set to Draft\" type=\"object\" />\n\t\t\t\t\t<button name=\"button_cancel\" states=\"draft,to approve,sent,purchase\" string=\"Cancel\" type=\"object\" />\n\t\t\t\t\t<button name=\"button_done\" type=\"object\" string=\"Set to Done\" states=\"purchase\"\n\t\t\t\t\t\thelp=\"If a purchase order is done, you cannot modify it manually anymore. You will not be able to receive invoices anymore for this purchase order.\"/>\n\n\n\n\n<!--\n\t\t\t\t\t<field name=\"state\" widget=\"statusbar\" statusbar_visible=\"draft,sent,purchase,done\" readonly=\"1\" />\n\t\t\t\t\t<field name=\"state\" widget=\"statusbar\" statusbar_visible=\"draft,sent,to approve,purchase,done\" readonly=\"1\" />\n-->\n<!--\n\t\t\t\t\t<field \n\t\t\t\t\t\t\tname=\"state\" \n\t\t\t\t\t\t\twidget=\"statusbar\" \t\t\t\t\t\t\t\n\t\t\t\t\t\t\treadonly=\"1\" \n\n\t\t\t\t\t\t\tattrs=\"{'invisible':[\n\t\t\t\t\t\t\t\t\t\t\t\t\t('x_type','!=','rfq')\n\t\t\t\t\t\t\t\t\t\t\t\t]}\"\n\n\t\t\t\t\t\t\tstatusbar_visible=\"draft,sent,done\" \n\t\t\t\t\t\t\t/>\n\n\n\t\t\t\t\t<field \n\t\t\t\t\t\t\tname=\"state\" \n\t\t\t\t\t\t\twidget=\"statusbar\" \t\t\t\t\t\t\t\n\t\t\t\t\t\t\treadonly=\"1\" \n\n\t\t\t\t\t\t\tattrs=\"{'invisible':[\n\t\t\t\t\t\t\t\t\t\t\t\t\t('x_type','!=','po')\n\t\t\t\t\t\t\t\t\t\t\t\t]}\"\n\n\t\t\t\t\t\t\tstatusbar_visible=\"draft,sent,to approve,purchase,done\"\n\t\t\t\t\t\t\t/>\n\n-->\n\n\n\t\t\t\t</header>\n\n\n\n\n\n\t\t\t\t<sheet>\n\n\n\t\t\t\t\t<div class=\"oe_button_box\" name=\"button_box\" attrs=\"{'invisible': [('state', 'not in', ('purchase', 'done', 'cancel'))]}\">\n\t\t\t\t\t\t<button type=\"object\"\n\t\t\t\t\t\t\tname=\"action_view_picking\"\n\t\t\t\t\t\t\tclass=\"oe_stat_button\"\n\t\t\t\t\t\t\ticon=\"fa-truck\">\n\t\t\t\t\t\t\t<field name=\"picking_count\" widget=\"statinfo\" string=\"Shipment\" help=\"Incoming Shipments\"/>\n\t\t\t\t\t\t</button>\n\t\t\t\t\t\t<button type=\"object\"  name=\"action_view_invoice\"\n\t\t\t\t\t\t\tclass=\"oe_stat_button\"\n\t\t\t\t\t\t\ticon=\"fa-pencil-square-o\">\n\t\t\t\t\t\t\t<field name=\"invoice_count\" widget=\"statinfo\" string=\"Invoices\"/>\n\t\t\t\t\t\t</button> \n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"oe_title\">\n\t\t\t\t\t\t<label string=\"Request for Quotation \" attrs=\"{'invisible': [('state','not in',('draft','sent','bid'))]}\"/>\n\t\t\t\t\t\t<label string=\"Purchase Order \" attrs=\"{'invisible': [('state','in',('draft','sent','bid'))]}\"/>\n\t\t\t\t\t\t<h1>\n\t\t\t\t\t\t\t<field name=\"name\" readonly=\"1\"/>\n\t\t\t\t\t\t</h1>\n\t\t\t\t\t</div>\n\n\n\t\t\t\t\t<group>\n\t\t\t\t\t\t<group>\n\t\t\t\t\t\t\t<field name=\"partner_id\" context=\"{'search_default_supplier':1, 'default_supplier':1, 'default_customer':0}\" domain=\"[('supplier','=',True)]\"/>\n\t\t\t\t\t\t\t<field name=\"partner_ref\"/>\n\t\t\t\t\t\t\t<field name=\"currency_id\" groups=\"base.group_multi_currency\"/>\n\t\t\t\t\t\t</group>\n\t\t\t\t\t\t<group>\n\t\t\t\t\t\t\t<field name=\"date_order\"/>\n\n\t\t\t\t\t\t\t<field name=\"x_type\"/>\n\n\t\t\t\t\t\t\t<field name=\"origin\" attrs=\"{'invisible': [('origin','=',False)]}\"/>\n\t\t\t\t\t\t\t<field name=\"company_id\" groups=\"base.group_multi_company\" options=\"{'no_create': True}\"/>\n\t\t\t\t\t\t</group>\n\t\t\t\t\t</group>\n\n\n\n\n\t\t\t\t\t<notebook>\n\t\t\t\t\t\t<page string=\"Products\">\n\t\t\t\t\t\t\t<field name=\"order_line\">\n\t\t\t\t\t\t\t\t<tree string=\"Purchase Order Lines\" editable=\"bottom\">\n\t\t\t\t\t\t\t\t\t<field name=\"product_id\" context=\"{'partner_id': parent.partner_id}\"/>\n\t\t\t\t\t\t\t\t\t<field name=\"name\"/>\n\t\t\t\t\t\t\t\t\t<field name=\"date_planned\"/>\n\t\t\t\t\t\t\t\t\t<field name=\"company_id\" groups=\"base.group_multi_company\" options=\"{'no_create': True}\"/>\n\t\t\t\t\t\t\t\t\t<field name=\"account_analytic_id\" context=\"{'default_partner_id':parent.partner_id}\" groups=\"purchase.group_analytic_accounting\"/>\n\t\t\t\t\t\t\t\t\t<field name=\"product_qty\"/>\n\t\t\t\t\t\t\t\t\t<field name=\"qty_received\" invisible=\"not context.get('show_purchase', False)\"/>\n\t\t\t\t\t\t\t\t\t<field name=\"qty_invoiced\" invisible=\"not context.get('show_purchase', False)\"/>\n\t\t\t\t\t\t\t\t\t<field name=\"product_uom\" groups=\"product.group_uom\"/>\n\t\t\t\t\t\t\t\t\t<field name=\"price_unit\"/>\n\t\t\t\t\t\t\t\t\t<field name=\"taxes_id\" widget=\"many2many_tags\" domain=\"[('type_tax_use','=','purchase')]\" context=\"{'default_type_tax_use': 'purchase'}\"/>\n\t\t\t\t\t\t\t\t\t<field name=\"price_subtotal\" widget=\"monetary\"/>\n\t\t\t\t\t\t\t\t</tree>\n\t\t\t\t\t\t\t\t<form string=\"Purchase Order Line\">\n\t\t\t\t\t\t\t\t\t<sheet>\n\t\t\t\t\t\t\t\t\t\t<group>\n\t\t\t\t\t\t\t\t\t\t\t<group>\n\t\t\t\t\t\t\t\t\t\t\t\t<field name=\"product_id\"\n\t\t\t\t\t\t\t\t\t\t\t\t\t   context=\"{'partner_id': parent.partner_id}\"/>\n\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"product_qty\"/>\n\t\t\t\t\t\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<field name=\"product_qty\" class=\"oe_inline\"/>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"oe_inline\">&#160;</span>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<field name=\"product_uom\" groups=\"product.group_uom\" class=\"oe_inline\"/>\n\t\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t\t<field name=\"price_unit\"/>\n\t\t\t\t\t\t\t\t\t\t\t</group>\n\t\t\t\t\t\t\t\t\t\t\t<group>\n\t\t\t\t\t\t\t\t\t\t\t\t<field name=\"taxes_id\" widget=\"many2many_tags\" domain=\"[('type_tax_use', '=', 'purchase')]\"/>\n\t\t\t\t\t\t\t\t\t\t\t\t<field name=\"date_planned\" widget=\"date\"/>\n\t\t\t\t\t\t\t\t\t\t\t\t<field name=\"account_analytic_id\" colspan=\"2\" groups=\"purchase.group_analytic_accounting\"/>\n\t\t\t\t\t\t\t\t\t\t\t\t<field name=\"company_id\" groups=\"base.group_multi_company\" options=\"{'no_create': True}\"/>\n\t\t\t\t\t\t\t\t\t\t\t</group>\n\t\t\t\t\t\t\t\t\t\t</group>\n\t\t\t\t\t\t\t\t\t\t<notebook>\n\t\t\t\t\t\t\t\t\t\t<page string=\"Notes\">\n\t\t\t\t\t\t\t\t\t\t\t<field name=\"name\"/>\n\t\t\t\t\t\t\t\t\t\t</page><page string=\"Invoices and Incoming Shipments\">\n\t\t\t\t\t\t\t\t\t\t\t<field name=\"invoice_lines\"/>\n\t\t\t\t\t\t\t\t\t\t\t<field name=\"move_ids\"/>\n\t\t\t\t\t\t\t\t\t\t</page>\n\t\t\t\t\t\t\t\t\t\t</notebook>\n\t\t\t\t\t\t\t\t\t</sheet>\n\t\t\t\t\t\t\t\t</form>\n\t\t\t\t\t\t\t</field>\n\t\t\t\t\t\t\t<group class=\"oe_subtotal_footer oe_right\">\n\t\t\t\t\t\t\t\t<field name=\"amount_untaxed\" widget=\"monetary\" options=\"{'currency_field': 'currency_id'}\"/>\n\t\t\t\t\t\t\t\t<field name=\"amount_tax\" widget=\"monetary\" options=\"{'currency_field': 'currency_id'}\"/>\n\t\t\t\t\t\t\t\t<div class=\"oe_subtotal_footer_separator oe_inline\">\n\t\t\t\t\t\t\t\t\t<label for=\"amount_total\"/>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<field name=\"amount_total\" nolabel=\"1\" class=\"oe_subtotal_footer_separator\" widget=\"monetary\" options=\"{'currency_field': 'currency_id'}\"/>\n\t\t\t\t\t\t\t</group>\n\t\t\t\t\t\t\t<field name=\"notes\" class=\"oe_inline\" placeholder=\"An administrator can set up default Terms and conditions in your Company settings.\"/>\n\t\t\t\t\t\t\t<div class=\"oe_clear\"/>\n\t\t\t\t\t\t</page>\n\t\t\t\t\t\t<page string=\"Deliveries &amp; Invoices\">\n\t\t\t\t\t\t\t<group>\n\t\t\t\t\t\t\t\t<group>\n\t\t\t\t\t\t\t\t\t<label for=\"date_planned\"/>\n\t\t\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t\t\t<field name=\"date_planned\" required=\"1\" attrs=\"{'readonly': [('state', 'not in', ('draft', 'sent'))]}\"/>\n\t\t\t\t\t\t\t\t\t\t<button name=\"action_set_date_planned\" context=\"{'date_planned': date_planned}\" type=\"object\"\n\t\t\t\t\t\t\t\t\t\t\tstates=\"draft,sent\"\n\t\t\t\t\t\t\t\t\t\t\tstring=\"Set date to all order lines\"\n\t\t\t\t\t\t\t\t\t\t\thelp=\"This changes the scheduled date of all order lines to the given date\"\n\t\t\t\t\t\t\t\t\t\t\tclass=\"fa fa-calendar o_icon_button oe_edit_only\"/>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<field name=\"picking_type_id\" domain=\"[('code','=','incoming')]\" options=\"{'no_create': True}\" groups=\"stock.group_locations\"/>\n\t\t\t\t\t\t\t\t\t<field name=\"dest_address_id\" groups=\"stock.group_locations\" attrs=\"{'invisible': [('default_location_dest_id_usage', '!=', 'customer')], 'required': [('default_location_dest_id_usage', '=', 'customer')]}\"/>\n\t\t\t\t\t\t\t\t\t<field name=\"default_location_dest_id_usage\" invisible=\"1\"/>\n\t\t\t\t\t\t\t\t\t<field name=\"incoterm_id\"/>\n\t\t\t\t\t\t\t\t</group>\n\t\t\t\t\t\t\t\t<group>\n\t\t\t\t\t\t\t\t\t<field name=\"invoice_status\"/>\n\t\t\t\t\t\t\t\t\t<field name=\"payment_term_id\" options=\"{'no_open': True, 'no_create': True}\" attrs=\"{'readonly': [('invoice_status','=', 'invoiced')]}\"/>\n\t\t\t\t\t\t\t\t\t<field name=\"fiscal_position_id\" attrs=\"{'readonly': [('invoice_status','=', 'invoiced')]}\" />\n\t\t\t\t\t\t\t\t\t<field name=\"date_approve\" groups=\"base.group_no_one\"/>\n\t\t\t\t\t\t\t\t</group>\n\t\t\t\t\t\t\t</group>\n\t\t\t\t\t\t</page>\n\t\t\t\t\t</notebook>\n\t\t\t\t</sheet>\n\t\t\t\t<div class=\"oe_chatter\">\n\t\t\t\t\t<field name=\"message_follower_ids\" widget=\"mail_followers\"/>\n\t\t\t\t\t<field name=\"message_ids\" widget=\"mail_thread\"/>\n\t\t\t\t</div>\n\t\t\t\t</form>\n\t\t\t</field>\n\t\t</record>\n\n\n\n\n\n\n\n\n<!--\n\t\t<record id=\"purchase_form_action\" model=\"ir.actions.act_window\">\n\t\t\t<field name=\"name\">Purchase Orders - jx</field>\n-->\n\t\t<!-- ACTION - PO --> \n\t\t<record id=\"openhealth.po_action\" model=\"ir.actions.act_window\">\n\n\t\t\t<field name=\"name\">Ordenes de C/S</field>\n\t\t\t\n\t\t\t<field name=\"type\">ir.actions.act_window</field>\n\t\t\t\n\t\t\t<field name=\"res_model\">purchase.order</field>\n\t\t\t\n\t\t\t<field name=\"view_mode\">tree,kanban,form,pivot,graph,calendar</field>\n\n<!--\n\t\t\t\t\t\t\t\t\t('state','not in',('draft','sent','bid', 'confirmed'))\n-->\n\t\t\t<field name=\"domain\">[\t\n\t\t\t\t\t\t\t\t\t('x_type','=','po'), \n\t\t\t]</field>\n\n\t\t\t<field name=\"context\">{\n\t\t\t\t\t\t\t\t\t'x_type': 'po',\n\n\t\t\t\t\t\t\t\t\t'state': 'to approve',\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t'show_purchase': True, \n\t\t\t}</field>\n\n\n<!--\n\t\t\t<field name=\"context\">{'search_default_todo':1, 'show_purchase': True}</field>\n\t\t\t<field name=\"domain\">[('state','not in',('draft','sent','bid', 'confirmed'))]</field>\n\t\t\t<field name=\"search_view_id\" ref=\"view_purchase_order_filter\"/>\n\t\t\t<field name=\"help\" type=\"html\">\n\t\t\t  <p class=\"oe_view_nocontent_create\">\n\t\t\t\tClick to create a quotation that will be converted into a purchase order. \n\t\t\t  </p><p>\n\t\t\t\tUse this menu to search within your purchase orders by\n\t\t\t\treferences, vendor, products, etc. For each purchase order,\n\t\t\t\tyou can track the related discussion with the vendor, control\n\t\t\t\tthe products received and control the vendor bills.\n\t\t\t  </p>\n\t\t\t</field>\n-->\n\t\t</record>\n\n\n\t\t<!-- MENU - PO --> \n<!--\n\t\t<menuitem \n\t\t\t\tid=\"purchase.menu_purchase_form_action\" \n\t\t\t\tname=\"Ordenes de C/S\"\n\t\t\t\taction=\"purchase.purchase_form_action\" \n\t\t\t\tparent=\"purchase.menu_procurement_management\" \n\t\t\t\tsequence=\"6\"\n\t\t\t\t/>\n-->\n\n\n\n\t\t<!-- MENU - PO --> \n\t\t<menuitem \n\t\t\t\t\tid=\"purchase.menu_purchase_po\"\n\n\t\t\t\t\tname=\"Ordenes de C/S\"\n\n\t\t\t\t\taction=\"openhealth.po_action\" \n\n\t\t\t\t\tparent=\"purchase.menu_procurement_management\"\n\t\t\t\t\t\n\t\t\t\t\tsequence=\"1\"\n\t\t\t\t\t/>\n\n\n\n\n\n\n\n\n\n\n\n   \n\t\t<!-- ACTION - RFQ --> \n\t\t<record id=\"purchase.purchase_rfq\" model=\"ir.actions.act_window\">\n\n\t\t\t<field name=\"name\">Demandas de Cotización</field>\n\t\t\t\n\t\t\t<field name=\"type\">ir.actions.act_window</field>\n\n\t\t\t<field name=\"res_model\">purchase.order</field>\n\n\n\t\t\t<field name=\"domain\">[\t\n\t\t\t\t\t\t\t\t\t('x_type','=','rfq'), \n\t\t\t]</field>\n\n\n\t\t\t<field name=\"context\">{\n\t\t\t\t\t\t\t\t\t'x_type': 'rfq',\n\t\t\t}</field>\n\n\n<!--            \n\t\t\t<field name=\"context\">{'search_default_todo':1}</field>\n\t\t\t<field name=\"domain\">[('state','in',('draft','sent','bid','cancel', 'confirmed'))]</field>\n\t\t\t<field name=\"view_mode\">tree,kanban,form,pivot,graph,calendar</field>\n\t\t\t<field name=\"search_view_id\" ref=\"purchase.view_purchase_order_filter\"/>\n\t\t\t<field name=\"help\" type=\"html\">\n\t\t\t</field>\n-->\n\t\t</record>\n\n\n\n\t\t<!-- MENU - RFQ --> \n\t\t<menuitem \n\t\t\t\t\tid=\"purchase.menu_purchase_rfq\"\n\n\t\t\t\t\tname=\"Demandas de Cotización\"\n\n\t\t\t\t\taction=\"purchase.purchase_rfq\" \n\n\t\t\t\t\tparent=\"purchase.menu_procurement_management\"\n\t\t\t\t\t\n\t\t\t\t\tsequence=\"0\"\n\t\t\t\t\t/>\n\n\n\n\n\n\n\n\n\t</data>\n</openerp>\n",
 			"file": "views/purchase/purchase.xml",
-			"file_size": 12466,
-			"file_write_time": 131539684310000000,
 			"settings":
 			{
-				"buffer_size": 12467,
+				"buffer_size": 11863,
 				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/appointments/appointment.xml",
-			"settings":
-			{
-				"buffer_size": 17821,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/order.py",
-			"settings":
-			{
-				"buffer_size": 38834,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "\n\n\n        <!-- ACTION - PO --> \n       <record id=\"purchase.purchase_form_action\" model=\"ir.actions.act_window\">\n\n            <field name=\"name\">Purchase Orders - jz</field>\n        \n            <field name=\"type\">ir.actions.act_window</field>\n        \n            <field name=\"res_model\">purchase.order</field>\n        \n            <field name=\"view_mode\">tree,kanban,form,pivot,graph,calendar</field>\n        </record>\n<!--\n            <field name=\"context\">{'search_default_todo':1, 'show_purchase': True}</field>\n            <field name=\"domain\">[('state','not in',('draft','sent','bid', 'confirmed'))]</field>\n            <field name=\"search_view_id\" ref=\"view_purchase_order_filter\"/>\n            <field name=\"help\" type=\"html\">\n            </field>\n-->        \n        <menuitem   \n                    id=\"purchase.menu_purchase_form_action\" \n                    \n                    name=\"Purchase Orders - jx\"\n\n                    action=\"purchase.purchase_form_action\" \n                    \n                    parent=\"purchase.menu_procurement_management\" \n                    sequence=\"6\"\n                    />\n\n\n\n\n\n\n<!--\n       <record id=\"purchase_form_action\" model=\"ir.actions.act_window\">\n            <field name=\"res_model\">purchase.order</field>\n\n       <record id=\"purchase.purchase_form_action\" model=\"ir.actions.act_window\">\n            <field name=\"name\">Purchase Orders - Po</field>\n            <field name=\"type\">ir.actions.act_window</field>\n\n            <field name=\"res_model\">purchase.order.po</field>\n            \n            <field name=\"view_mode\">tree,kanban,form,pivot,graph,calendar</field>\n            <field name=\"context\">{'search_default_todo':1, 'show_purchase': True}</field>\n            <field name=\"domain\">[('state','not in',('draft','sent','bid', 'confirmed'))]</field>\n            <field name=\"search_view_id\" ref=\"view_purchase_order_filter\"/>\n            <field name=\"help\" type=\"html\">\n            </field>\n        </record>\n\n-->        \n\n\n\n\n\n<!--\n        <record id=\"purchase_rfq\" model=\"ir.actions.act_window\">\n            <field name=\"name\">Requests for Quotation</field>\n            <field name=\"search_view_id\" ref=\"view_purchase_order_filter\"/>\n            <field name=\"res_model\">purchase.order.rfq</field>\n-->\n\n\n\n\n\n\n \n<!--\n        <menuitem action=\"purchase_rfq\" id=\"menu_purchase_rfq\"\n            parent=\"menu_procurement_management\"\n            sequence=\"0\"/>\n-->        \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\t\t<!-- Window List action -->\n\t\t<record model=\"ir.actions.act_window\" id=\"action_partner_supplier_form\">\n\n\t\t\t<field name=\"name\">Vendors</field>\n\n\t\t\t<field name=\"res_model\">res.partner</field>\n\n\t\t\t<field name=\"view_type\">form</field>\n\n\t\t\t<field name=\"view_mode\">tree,form</field>\n\t\t\t<!--\n            <field name=\"domain\">[]</field>\n            <field name=\"context\">{}</field>\n            <field name=\"view_id\" eval=\"False\"/>\t\t\t\n\t\t\t<field name=\"help\" type=\"html\">\n\t\t\t\t<p class=\"oe_view_nocontent_create\">Create the first partner\n\t\t\t\t</p>\n\t\t\t</field>\n\t\t\t-->\n\t\t</record>\n\n\n\n\n        <!-- Window List action -->\n        <record model=\"ir.actions.act_window\" id=\"action_partner_form\">\n            <field name=\"name\">Vendors</field>\n            <field name=\"res_model\">res.partner</field>\n            <field name=\"view_type\">form</field>\n            <field name=\"view_mode\">form</field>\n            <!--\n            <field name=\"domain\">[]</field>\n            <field name=\"context\">{}</field>\n            <field name=\"view_id\" eval=\"False\"/>            \n            <field name=\"help\" type=\"html\">\n                <p class=\"oe_view_nocontent_create\">Create the first partner\n                </p>\n            </field>\n            -->\n        </record>\n\n\n\n\n\n\n\n\n<!--\n        <record id=\"action_partner_form_view2\" model=\"ir.actions.act_window.view\">\n            <field eval=\"2\" name=\"sequence\"/>\n            <field name=\"view_mode\">form</field>\n            <field name=\"view_id\" ref=\"view_partner_form\"/>\n            <field name=\"act_window_id\" ref=\"action_partner_form\"/>\n        </record>\n-->\n        <record id=\"base.action_partner_form_view2\" model=\"ir.actions.act_window.view\">\n\n            <field eval=\"2\" name=\"sequence\"/>\n            \n            <field name=\"view_mode\">form</field>\n            \n            <field name=\"view_id\" ref=\"base.view_partner_form\"/>\n\n            <field name=\"act_window_id\" ref=\"base.action_partner_form\"/>\n        </record>\n\n\n\n\n<!--\n        <record id=\"action_partner_tree_view1\" model=\"ir.actions.act_window.view\">\n            <field name=\"sequence\" eval=\"1\"/>\n            <field name=\"view_mode\">tree</field>\n            <field name=\"view_id\" ref=\"view_partner_tree\"/>\n            <field name=\"act_window_id\" ref=\"action_partner_form\"/>\n        </record>\n-->\n        <record id=\"base.action_partner_tree_view1\" model=\"ir.actions.act_window.view\">\n\n            <field name=\"sequence\" eval=\"1\"/>\n            \n            <field name=\"view_mode\">tree</field>\n            \n            <field name=\"view_id\" ref=\"base.view_partner_tree\"/>\n            \n            <field name=\"act_window_id\" ref=\"action_partner_form\"/>\n        </record>\n\n\n\n\n\n\n\n<!--\n                                groups=\"group_purchase_manager,base.group_configuration\"\n-->\n        <menuitem       id=\"purchase.menu_purchase_config\" \n                                \n                                name=\"Configuration\" \n                                \n                                parent=\"base.menu_purchase_root\" \n                                \n                                sequence=\"100\" \n                                \n                                groups=\"openhealth.roots,base.group_configuration\"\n                                />\n\n<!--\n                        action=\"base.action_partner_supplier_form\" \n-->\n\n        <menuitem       id=\"base.menu_procurement_management_supplier_name\" \n\n                        name=\"Vendors\"\n            \n                        parent=\"purchase.menu_procurement_management\"\n\n                        action=\"action_partner_supplier_form\" \n                        \n                        sequence=\"15\"/>\n\n\n\n\n\n",
-			"file": "views/purchase/purchase.TRASH.xml",
-			"file_size": 6874,
-			"file_write_time": 131539571920000000,
-			"settings":
-			{
-				"buffer_size": 6118,
 				"line_ending": "Unix"
 			}
 		},
@@ -239,74 +225,22 @@
 			}
 		},
 		{
-			"file": "models/__init__.py",
-			"settings":
-			{
-				"buffer_size": 1910,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "readme.txt",
-			"settings":
-			{
-				"buffer_size": 47,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "views/purchase/purchase_rfq.xml",
 			"settings":
 			{
-				"buffer_size": 14271,
+				"buffer_size": 15688,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "models/partner.py",
+			"contents": "\n\n\n        <!-- ACTION - PO --> \n       <record id=\"purchase.purchase_form_action\" model=\"ir.actions.act_window\">\n\n            <field name=\"name\">Purchase Orders - jz</field>\n        \n            <field name=\"type\">ir.actions.act_window</field>\n        \n            <field name=\"res_model\">purchase.order</field>\n        \n            <field name=\"view_mode\">tree,kanban,form,pivot,graph,calendar</field>\n        </record>\n<!--\n            <field name=\"context\">{'search_default_todo':1, 'show_purchase': True}</field>\n            <field name=\"domain\">[('state','not in',('draft','sent','bid', 'confirmed'))]</field>\n            <field name=\"search_view_id\" ref=\"view_purchase_order_filter\"/>\n            <field name=\"help\" type=\"html\">\n            </field>\n-->        \n        <menuitem   \n                    id=\"purchase.menu_purchase_form_action\" \n                    \n                    name=\"Purchase Orders - jx\"\n\n                    action=\"purchase.purchase_form_action\" \n                    \n                    parent=\"purchase.menu_procurement_management\" \n                    sequence=\"6\"\n                    />\n\n\n\n\n\n\n<!--\n       <record id=\"purchase_form_action\" model=\"ir.actions.act_window\">\n            <field name=\"res_model\">purchase.order</field>\n\n       <record id=\"purchase.purchase_form_action\" model=\"ir.actions.act_window\">\n            <field name=\"name\">Purchase Orders - Po</field>\n            <field name=\"type\">ir.actions.act_window</field>\n\n            <field name=\"res_model\">purchase.order.po</field>\n            \n            <field name=\"view_mode\">tree,kanban,form,pivot,graph,calendar</field>\n            <field name=\"context\">{'search_default_todo':1, 'show_purchase': True}</field>\n            <field name=\"domain\">[('state','not in',('draft','sent','bid', 'confirmed'))]</field>\n            <field name=\"search_view_id\" ref=\"view_purchase_order_filter\"/>\n            <field name=\"help\" type=\"html\">\n            </field>\n        </record>\n\n-->        \n\n\n\n\n\n<!--\n        <record id=\"purchase_rfq\" model=\"ir.actions.act_window\">\n            <field name=\"name\">Requests for Quotation</field>\n            <field name=\"search_view_id\" ref=\"view_purchase_order_filter\"/>\n            <field name=\"res_model\">purchase.order.rfq</field>\n-->\n\n\n\n\n\n\n \n<!--\n        <menuitem action=\"purchase_rfq\" id=\"menu_purchase_rfq\"\n            parent=\"menu_procurement_management\"\n            sequence=\"0\"/>\n-->        \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\t\t<!-- Window List action -->\n\t\t<record model=\"ir.actions.act_window\" id=\"action_partner_supplier_form\">\n\n\t\t\t<field name=\"name\">Vendors</field>\n\n\t\t\t<field name=\"res_model\">res.partner</field>\n\n\t\t\t<field name=\"view_type\">form</field>\n\n\t\t\t<field name=\"view_mode\">tree,form</field>\n\t\t\t<!--\n            <field name=\"domain\">[]</field>\n            <field name=\"context\">{}</field>\n            <field name=\"view_id\" eval=\"False\"/>\t\t\t\n\t\t\t<field name=\"help\" type=\"html\">\n\t\t\t\t<p class=\"oe_view_nocontent_create\">Create the first partner\n\t\t\t\t</p>\n\t\t\t</field>\n\t\t\t-->\n\t\t</record>\n\n\n\n\n        <!-- Window List action -->\n        <record model=\"ir.actions.act_window\" id=\"action_partner_form\">\n            <field name=\"name\">Vendors</field>\n            <field name=\"res_model\">res.partner</field>\n            <field name=\"view_type\">form</field>\n            <field name=\"view_mode\">form</field>\n            <!--\n            <field name=\"domain\">[]</field>\n            <field name=\"context\">{}</field>\n            <field name=\"view_id\" eval=\"False\"/>            \n            <field name=\"help\" type=\"html\">\n                <p class=\"oe_view_nocontent_create\">Create the first partner\n                </p>\n            </field>\n            -->\n        </record>\n\n\n\n\n\n\n\n\n<!--\n        <record id=\"action_partner_form_view2\" model=\"ir.actions.act_window.view\">\n            <field eval=\"2\" name=\"sequence\"/>\n            <field name=\"view_mode\">form</field>\n            <field name=\"view_id\" ref=\"view_partner_form\"/>\n            <field name=\"act_window_id\" ref=\"action_partner_form\"/>\n        </record>\n-->\n        <record id=\"base.action_partner_form_view2\" model=\"ir.actions.act_window.view\">\n\n            <field eval=\"2\" name=\"sequence\"/>\n            \n            <field name=\"view_mode\">form</field>\n            \n            <field name=\"view_id\" ref=\"base.view_partner_form\"/>\n\n            <field name=\"act_window_id\" ref=\"base.action_partner_form\"/>\n        </record>\n\n\n\n\n<!--\n        <record id=\"action_partner_tree_view1\" model=\"ir.actions.act_window.view\">\n            <field name=\"sequence\" eval=\"1\"/>\n            <field name=\"view_mode\">tree</field>\n            <field name=\"view_id\" ref=\"view_partner_tree\"/>\n            <field name=\"act_window_id\" ref=\"action_partner_form\"/>\n        </record>\n-->\n        <record id=\"base.action_partner_tree_view1\" model=\"ir.actions.act_window.view\">\n\n            <field name=\"sequence\" eval=\"1\"/>\n            \n            <field name=\"view_mode\">tree</field>\n            \n            <field name=\"view_id\" ref=\"base.view_partner_tree\"/>\n            \n            <field name=\"act_window_id\" ref=\"action_partner_form\"/>\n        </record>\n\n\n\n\n\n\n\n<!--\n                                groups=\"group_purchase_manager,base.group_configuration\"\n-->\n        <menuitem       id=\"purchase.menu_purchase_config\" \n                                \n                                name=\"Configuration\" \n                                \n                                parent=\"base.menu_purchase_root\" \n                                \n                                sequence=\"100\" \n                                \n                                groups=\"openhealth.roots,base.group_configuration\"\n                                />\n\n<!--\n                        action=\"base.action_partner_supplier_form\" \n-->\n\n        <menuitem       id=\"base.menu_procurement_management_supplier_name\" \n\n                        name=\"Vendors\"\n            \n                        parent=\"purchase.menu_procurement_management\"\n\n                        action=\"action_partner_supplier_form\" \n                        \n                        sequence=\"15\"/>\n\n\n\n\n\n",
+			"file": "views/purchase/purchase.TRASH.xml",
+			"file_size": 6874,
+			"file_write_time": 131539571920000000,
 			"settings":
 			{
-				"buffer_size": 1744,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/partners/partner.xml",
-			"settings":
-			{
-				"buffer_size": 4784,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/orders/order.xml",
-			"settings":
-			{
-				"buffer_size": 29999,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/patient.py",
-			"settings":
-			{
-				"buffer_size": 18799,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/products/product.xml",
-			"settings":
-			{
-				"buffer_size": 17961,
-				"encoding": "UTF-8",
+				"buffer_size": 6118,
 				"line_ending": "Unix"
 			}
 		}
@@ -384,21 +318,28 @@
 	},
 	"file_history":
 	[
+		"/Users/gibil/cellar/github/openhealth/data/product_suppliers.xml",
+		"/Users/gibil/cellar/github/openhealth/security/ir.model.access.csv",
+		"/Users/gibil/cellar/github/openhealth/models/__init__.py",
+		"/Users/gibil/cellar/github/openhealth/views/products/product.xml",
+		"/Users/gibil/cellar/github/openhealth/models/patient.py",
+		"/Users/gibil/cellar/github/openhealth/views/orders/order.xml",
+		"/Users/gibil/cellar/github/openhealth/views/partners/partner.xml",
+		"/Users/gibil/cellar/github/openhealth/models/partner.py",
+		"/Users/gibil/cellar/github/openhealth/models/order.py",
+		"/Users/gibil/cellar/github/openhealth/views/appointments/appointment.xml",
+		"/Users/gibil/cellar/github/openhealth/readme.txt",
 		"/Users/gibil/cellar/github/openhealth/models/purchase_rfq.py",
 		"/Users/gibil/cellar/github/openhealth/views/menus/menus_openhealth.xml",
-		"/Users/gibil/cellar/github/openhealth/models/__init__.py",
 		"/Users/gibil/cellar/github/openhealth/views/purchase/purchase_po.xml",
 		"/Users/gibil/cellar/github/openhealth/security/openhealth_security_buf.xml",
-		"/Users/gibil/cellar/github/openhealth/security/ir.model.access.csv",
 		"/Users/gibil/cellar/github/openhealth/models/purchase_po.py",
-		"/Users/gibil/cellar/github/openhealth/readme.txt",
 		"/Users/gibil/cellar/github/openhealth/views/stock/stock.xml",
 		"/Users/gibil/cellar/github/openhealth/data/base_data_users_managers.xml",
 		"/Users/gibil/cellar/github/openhealth/models/appointment.py",
 		"/Users/gibil/cellar/github/openhealth/views/closings/closings.xml",
 		"/Users/gibil/cellar/github/openhealth/views/orders/events.xml",
 		"/Users/gibil/cellar/github/openhealth/models/event.py",
-		"/Users/gibil/cellar/github/openhealth/views/appointments/appointment.xml",
 		"/Users/gibil/cellar/github/openhealth/views/consultations/consultation.xml",
 		"/Users/gibil/cellar/github/openhealth/views/patients/patient.xml",
 		"/Users/gibil/cellar/github/openhealth/views/services/service.xml",
@@ -406,14 +347,10 @@
 		"/Users/gibil/cellar/github/openhealth/models/treatment.py",
 		"/Users/gibil/cellar/github/openhealth/models/howto/shell.rb",
 		"/Users/gibil/cellar/github/openhealth/views/treatments/treatment.xml",
-		"/Users/gibil/cellar/github/openhealth/models/patient.py",
-		"/Users/gibil/cellar/github/openhealth/models/order.py",
-		"/Users/gibil/cellar/github/openhealth/views/orders/order.xml",
 		"/Users/gibil/cellar/github/openhealth/data/products_pricelist.xml",
 		"/Users/gibil/cellar/github/openhealth/data/odoo_data_products.xml",
 		"/Users/gibil/cellar/github/openhealth/data/odoo_data_services_med.xml",
 		"/Users/gibil/cellar/github/openhealth/data/supplier_services.xml",
-		"/Users/gibil/cellar/github/openhealth/data/product_suppliers.xml",
 		"/Users/gibil/cellar/github/openhealth/views/mail/rfq_send.xml",
 		"/Users/gibil/cellar/github/openhealth/views/purchase/purchase.xml",
 		"/Users/gibil/cellar/github/openhealth/views/menus/menus.xml",
@@ -432,7 +369,6 @@
 		"/Users/gibil/cellar/github/openhealth/models/process.py",
 		"/Users/gibil/cellar/github/openhealth/models/cosmetology.py",
 		"/Users/gibil/cellar/github/openhealth/models/consultation_cos.py",
-		"/Users/gibil/cellar/github/openhealth/views/products/product.xml",
 		"/Users/gibil/cellar/github/openhealth/views/cards/card.xml",
 		"/Users/gibil/cellar/github/openhealth/models/service_cosmetology.py",
 		"/Users/gibil/cellar/github/openhealth/models/service_medical.py",
@@ -441,10 +377,8 @@
 		"/Users/gibil/cellar/github/openhealth/views/consultations/consultation_cos.xml",
 		"/Users/gibil/cellar/github/openhealth/models/card.py",
 		"/Users/gibil/cellar/github/openhealth/models/counter.py",
-		"/Users/gibil/cellar/github/openhealth/models/partner.py",
 		"/Users/gibil/cellar/github/openhealth/models/partner.TRAHS.py",
 		"/Users/gibil/cellar/github/openhealth/data/base_data_categs.xml",
-		"/Users/gibil/cellar/github/openhealth/views/partners/partner.xml",
 		"/Users/gibil/cellar/github/openhealth/data/odoo_data_cards.xml",
 		"/Users/gibil/cellar/github/openhealth/views/controls/control.xml",
 		"/Users/gibil/cellar/github/openhealth/views/sessions/session.xml",
@@ -530,6 +464,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"vendors",
+			"purchase.order",
+			"rfq_",
+			"x_type",
 			"create",
 			"rfq",
 			"purchase.order",
@@ -653,11 +591,7 @@
 			"card",
 			"caja",
 			"priceli",
-			"base",
-			"hac_1hy_rfr_one",
-			"TREE",
-			"_action",
-			"action"
+			"base"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -665,6 +599,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"rfq_line_",
+			"rfq_line",
 			"purchase_order",
 			"purchase_po_",
 			"purchase_rfq_",
@@ -790,9 +726,7 @@
 			"reception",
 			"director",
 			"reception",
-			"director",
-			"Entrar",
-			"reception"
+			"director"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -812,15 +746,73 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9562,
+						"buffer_size": 9586,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4060,
-								4060
+								4316,
+								4316
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3760.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "views/mail/rfq_send.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 791,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								444,
+								444
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "models/purchase_rfq.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2418,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								270,
+								270
 							]
 						],
 						"settings":
@@ -832,24 +824,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
+					"buffer": 3,
 					"file": "models/purchase.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1062,
+						"buffer_size": 1190,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								475,
-								475
+								266,
+								266
 							]
 						],
 						"settings":
@@ -858,27 +850,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 240.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 4,
 					"file": "views/purchase/purchase.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12467,
+						"buffer_size": 11863,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2505,
-								2610
+								11739,
+								11739
 							]
 						],
 						"settings":
@@ -888,56 +880,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1122.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "views/appointments/appointment.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 17821,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								11279,
-								11279
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 9353.0,
+						"translation.y": 5404.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "models/order.py",
+					"buffer": 5,
+					"file": "models/purchase_line_rfq.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 38834,
+						"buffer_size": 456,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								394,
-								756
+								287,
+								287
 							]
 						],
 						"settings":
@@ -953,7 +916,37 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
+					"file": "views/purchase/purchase_rfq.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 15688,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								14508,
+								14508
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
 					"file": "views/purchase/purchase.TRASH.xml",
 					"semi_transient": false,
 					"settings":
@@ -965,8 +958,8 @@
 						"selection":
 						[
 							[
-								2276,
-								2276
+								5406,
+								5406
 							]
 						],
 						"settings":
@@ -976,270 +969,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1149.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "models/purchase_line_rfq.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 456,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								317,
-								317
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "models/__init__.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1910,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								359,
-								359
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 400.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "readme.txt",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 47,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								34,
-								34
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 3288.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "views/purchase/purchase_rfq.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 14271,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1479,
-								1479
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 717.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "models/partner.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1744,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								798,
-								798
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 391.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "views/partners/partner.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4784,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								786,
-								786
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "views/orders/order.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 29999,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 681.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 13,
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "models/patient.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 18799,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								120
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 12,
-					"type": "text"
-				},
-				{
-					"buffer": 14,
-					"file": "views/products/product.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 17961,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								8320,
-								8320
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 14,
 					"type": "text"
 				}
 			]
@@ -1288,7 +1021,7 @@
 	"project": "OpenHealth-MIN.sublime-project",
 	"replace":
 	{
-		"height": 46.0
+		"height": 70.0
 	},
 	"save_all_on_build": true,
 	"select_file":

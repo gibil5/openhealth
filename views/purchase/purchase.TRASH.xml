@@ -1,0 +1,252 @@
+
+
+
+        <!-- ACTION - PO --> 
+       <record id="purchase.purchase_form_action" model="ir.actions.act_window">
+
+            <field name="name">Purchase Orders - jz</field>
+        
+            <field name="type">ir.actions.act_window</field>
+        
+            <field name="res_model">purchase.order</field>
+        
+            <field name="view_mode">tree,kanban,form,pivot,graph,calendar</field>
+        </record>
+<!--
+            <field name="context">{'search_default_todo':1, 'show_purchase': True}</field>
+            <field name="domain">[('state','not in',('draft','sent','bid', 'confirmed'))]</field>
+            <field name="search_view_id" ref="view_purchase_order_filter"/>
+            <field name="help" type="html">
+            </field>
+-->        
+        <menuitem   
+                    id="purchase.menu_purchase_form_action" 
+                    
+                    name="Purchase Orders - jx"
+
+                    action="purchase.purchase_form_action" 
+                    
+                    parent="purchase.menu_procurement_management" 
+                    sequence="6"
+                    />
+
+
+
+
+
+
+<!--
+       <record id="purchase_form_action" model="ir.actions.act_window">
+            <field name="res_model">purchase.order</field>
+
+       <record id="purchase.purchase_form_action" model="ir.actions.act_window">
+            <field name="name">Purchase Orders - Po</field>
+            <field name="type">ir.actions.act_window</field>
+
+            <field name="res_model">purchase.order.po</field>
+            
+            <field name="view_mode">tree,kanban,form,pivot,graph,calendar</field>
+            <field name="context">{'search_default_todo':1, 'show_purchase': True}</field>
+            <field name="domain">[('state','not in',('draft','sent','bid', 'confirmed'))]</field>
+            <field name="search_view_id" ref="view_purchase_order_filter"/>
+            <field name="help" type="html">
+            </field>
+        </record>
+
+-->        
+
+
+
+
+
+<!--
+        <record id="purchase_rfq" model="ir.actions.act_window">
+            <field name="name">Requests for Quotation</field>
+            <field name="search_view_id" ref="view_purchase_order_filter"/>
+            <field name="res_model">purchase.order.rfq</field>
+-->
+
+
+
+
+
+
+    
+        <!-- ACTION - RFQ --> 
+        <record id="purchase.purchase_rfq" model="ir.actions.act_window">
+
+            <field name="name">Requests for Quotation - jz</field>
+            
+            <field name="type">ir.actions.act_window</field>
+
+            <field name="res_model">purchase.order</field>
+
+<!--            
+            <field name="context">{'search_default_todo':1}</field>
+            <field name="domain">[('state','in',('draft','sent','bid','cancel', 'confirmed'))]</field>
+            <field name="view_mode">tree,kanban,form,pivot,graph,calendar</field>
+            <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>
+            <field name="help" type="html">
+            </field>
+-->
+        </record>
+
+
+
+<!--
+        <menuitem action="purchase_rfq" id="menu_purchase_rfq"
+            parent="menu_procurement_management"
+            sequence="0"/>
+-->        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- Window List action -->
+		<record model="ir.actions.act_window" id="action_partner_supplier_form">
+
+			<field name="name">Vendors</field>
+
+			<field name="res_model">res.partner</field>
+
+			<field name="view_type">form</field>
+
+			<field name="view_mode">tree,form</field>
+			<!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first partner
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+
+        <!-- Window List action -->
+        <record model="ir.actions.act_window" id="action_partner_form">
+            <field name="name">Vendors</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>            
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first partner
+                </p>
+            </field>
+            -->
+        </record>
+
+
+
+
+
+
+
+
+<!--
+        <record id="action_partner_form_view2" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_partner_form"/>
+            <field name="act_window_id" ref="action_partner_form"/>
+        </record>
+-->
+        <record id="base.action_partner_form_view2" model="ir.actions.act_window.view">
+
+            <field eval="2" name="sequence"/>
+            
+            <field name="view_mode">form</field>
+            
+            <field name="view_id" ref="base.view_partner_form"/>
+
+            <field name="act_window_id" ref="base.action_partner_form"/>
+        </record>
+
+
+
+
+<!--
+        <record id="action_partner_tree_view1" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_partner_tree"/>
+            <field name="act_window_id" ref="action_partner_form"/>
+        </record>
+-->
+        <record id="base.action_partner_tree_view1" model="ir.actions.act_window.view">
+
+            <field name="sequence" eval="1"/>
+            
+            <field name="view_mode">tree</field>
+            
+            <field name="view_id" ref="base.view_partner_tree"/>
+            
+            <field name="act_window_id" ref="action_partner_form"/>
+        </record>
+
+
+
+
+
+
+
+<!--
+                                groups="group_purchase_manager,base.group_configuration"
+-->
+        <menuitem       id="purchase.menu_purchase_config" 
+                                
+                                name="Configuration" 
+                                
+                                parent="base.menu_purchase_root" 
+                                
+                                sequence="100" 
+                                
+                                groups="openhealth.roots,base.group_configuration"
+                                />
+
+<!--
+                        action="base.action_partner_supplier_form" 
+-->
+
+        <menuitem       id="base.menu_procurement_management_supplier_name" 
+
+                        name="Vendors"
+            
+                        parent="purchase.menu_procurement_management"
+
+                        action="action_partner_supplier_form" 
+                        
+                        sequence="15"/>
+
+
+
+
+

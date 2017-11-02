@@ -34,6 +34,7 @@ class PurchaseOrderRfq(models.Model):
 			#('done', 'Completo'),
 			('done', 'Cotizado'),
 
+
 			('cancel', 'Cancelled')
 		], 
 		string='Status', 

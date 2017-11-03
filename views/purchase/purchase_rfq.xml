@@ -265,13 +265,14 @@
 
 
 <!--
+        <record id="purchase.purchase_rfq" model="ir.actions.act_window">
             <field name="res_model">purchase.order</field>
 -->
 
         <!-- ACTION - RFQ --> 
-        <record id="purchase.purchase_rfq" model="ir.actions.act_window">
+        <record id="openhealth.purchase_rfq" model="ir.actions.act_window">
 
-            <field name="name">Demandas de Cotización</field>
+            <field name="name">Demandas de Cotización - jx</field>
             
             <field name="type">ir.actions.act_window</field>
 
@@ -299,16 +300,19 @@
 
 
 
+<!--
+                    action="purchase.purchase_rfq" 
+-->
         <!-- MENU - RFQ --> 
         <menuitem 
                     id="purchase.menu_purchase_rfq"
+                    name="Demandas de Cotización - jx"
 
-                    name="Demandas de Cotización"
 
-                    action="purchase.purchase_rfq" 
+                    action="openhealth.purchase_rfq" 
+
 
                     parent="purchase.menu_procurement_management"
-                    
                     sequence="0"
                     />
 

@@ -253,7 +253,7 @@
 		<!-- ACTION - PO --> 
 		<record id="openhealth.po_action" model="ir.actions.act_window">
 
-			<field name="name">Ordenes de C/S</field>
+			<field name="name">Ordenes de C/S - jx</field>
 			
 			<field name="type">ir.actions.act_window</field>
 			
@@ -261,6 +261,7 @@
 			
 			<field name="view_mode">tree,kanban,form,pivot,graph,calendar</field>
 
+<!--
 			<field name="domain">[	
 									('x_type','=','po'), 
 			]</field>
@@ -274,7 +275,6 @@
 			}</field>
 
 
-<!--
 			<field name="context">{'search_default_todo':1, 'show_purchase': True}</field>
 			<field name="domain">[('state','not in',('draft','sent','bid', 'confirmed'))]</field>
 			<field name="search_view_id" ref="view_purchase_order_filter"/>
@@ -290,6 +290,7 @@
 			</field>
 -->
 		</record>
+
 
 
 		<!-- MENU - PO --> 
@@ -308,18 +309,17 @@
 
 		<!-- MENU - PO --> 
 <!--
+-->
 		<menuitem 
 					id="purchase.menu_purchase_po"
 
-					name="Ordenes de C/S"
+					name="Ordenes de C/S - jx"
 
 					action="openhealth.po_action" 
 
 					parent="purchase.menu_procurement_management"
-					
 					sequence="1"
 					/>
--->
 
 
 
@@ -334,9 +334,6 @@
                         action="base.action_partner_supplier_form" 
                         
                         sequence="15"/>
-
-
-
 
 
 

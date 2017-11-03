@@ -33,6 +33,26 @@ self.env['ir.model.data'].search([('id', '=', 10)])
 
 
 
+self.env['mail.template'].search([('id', '=', 10)])
+
+self.env['mail.template'].search([('name', 'like', 'jx')])
+
+
+self.env['mail.template'].search([('name', '=', 'RFQ - Send by Email - jx')])
+
+
+
+
+
+
+self.env['purchase.order']
+
+self.env['purchase.order'].search([('name', 'like', 'J')])
+
+po.unlink()
+
+
+
 
 
 

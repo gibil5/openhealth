@@ -33,22 +33,23 @@
 						action="purchase_form_action"/>
 -->
 <!--
+-->
 		<menuitem 	id="sub_purchase_orders_menu" 
 						name="Purchase Orders" 
 						parent="openhealth_menu"
 						sequence="-171"
 
-						action="purchase.purchase_form_action"
+						action="openhealth.po_action"
 						/>
+
 
 		<menuitem 	id="sub_purchase_rfq_orders_menu" 
 						name="Purchase Rfq Orders" 
 						parent="openhealth_menu"
 						sequence="-170"
 
-						action="purchase.purchase_rfq"
+						action="openhealth.purchase_rfq"
 						/>
--->
 
 
 

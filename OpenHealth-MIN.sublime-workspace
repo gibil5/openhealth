@@ -181,28 +181,19 @@
 			}
 		},
 		{
-			"file": "views/mail/rfq_send.xml",
-			"settings":
-			{
-				"buffer_size": 791,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/purchase_rfq.py",
-			"settings":
-			{
-				"buffer_size": 2418,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "models/purchase.py",
 			"settings":
 			{
-				"buffer_size": 1190,
+				"buffer_size": 933,
 				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/__init__.py",
+			"settings":
+			{
+				"buffer_size": 1908,
 				"line_ending": "Unix"
 			}
 		},
@@ -210,7 +201,61 @@
 			"file": "views/purchase/purchase.xml",
 			"settings":
 			{
-				"buffer_size": 11863,
+				"buffer_size": 11123,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/purchase_rfq.py",
+			"settings":
+			{
+				"buffer_size": 2567,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/purchase.TRASH.py",
+			"settings":
+			{
+				"buffer_size": 846,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/howto/shell.rb",
+			"settings":
+			{
+				"buffer_size": 12293,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/purchase/purchase_rfq.xml",
+			"settings":
+			{
+				"buffer_size": 15817,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "readme.txt",
+			"settings":
+			{
+				"buffer_size": 46,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/mail/rfq_send.xml",
+			"settings":
+			{
+				"buffer_size": 859,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -220,15 +265,6 @@
 			"settings":
 			{
 				"buffer_size": 456,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/purchase/purchase_rfq.xml",
-			"settings":
-			{
-				"buffer_size": 15688,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -318,8 +354,11 @@
 	},
 	"file_history":
 	[
-		"/Users/gibil/cellar/github/openhealth/data/product_suppliers.xml",
+		"/Users/gibil/cellar/github/openhealth/views/menus/menus_openhealth.xml",
+		"/Users/gibil/cellar/github/openhealth/data/base_data_users_managers.xml",
 		"/Users/gibil/cellar/github/openhealth/security/ir.model.access.csv",
+		"/Users/gibil/cellar/github/openhealth/data/product_suppliers.xml",
+		"/Users/gibil/cellar/github/openhealth/views/menus/menus.xml",
 		"/Users/gibil/cellar/github/openhealth/models/__init__.py",
 		"/Users/gibil/cellar/github/openhealth/views/products/product.xml",
 		"/Users/gibil/cellar/github/openhealth/models/patient.py",
@@ -330,12 +369,10 @@
 		"/Users/gibil/cellar/github/openhealth/views/appointments/appointment.xml",
 		"/Users/gibil/cellar/github/openhealth/readme.txt",
 		"/Users/gibil/cellar/github/openhealth/models/purchase_rfq.py",
-		"/Users/gibil/cellar/github/openhealth/views/menus/menus_openhealth.xml",
 		"/Users/gibil/cellar/github/openhealth/views/purchase/purchase_po.xml",
 		"/Users/gibil/cellar/github/openhealth/security/openhealth_security_buf.xml",
 		"/Users/gibil/cellar/github/openhealth/models/purchase_po.py",
 		"/Users/gibil/cellar/github/openhealth/views/stock/stock.xml",
-		"/Users/gibil/cellar/github/openhealth/data/base_data_users_managers.xml",
 		"/Users/gibil/cellar/github/openhealth/models/appointment.py",
 		"/Users/gibil/cellar/github/openhealth/views/closings/closings.xml",
 		"/Users/gibil/cellar/github/openhealth/views/orders/events.xml",
@@ -353,7 +390,6 @@
 		"/Users/gibil/cellar/github/openhealth/data/supplier_services.xml",
 		"/Users/gibil/cellar/github/openhealth/views/mail/rfq_send.xml",
 		"/Users/gibil/cellar/github/openhealth/views/purchase/purchase.xml",
-		"/Users/gibil/cellar/github/openhealth/views/menus/menus.xml",
 		"/Users/gibil/cellar/github/openhealth/reports/patient.xml",
 		"/Users/gibil/cellar/github/openhealth/models/closing.py",
 		"/Users/gibil/cellar/github/openhealth/reports/closing.xml",
@@ -464,6 +500,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"partner_id",
+			"almacen",
+			"cancel",
 			"vendors",
 			"purchase.order",
 			"rfq_",
@@ -588,10 +627,7 @@
 			"categ",
 			"commen",
 			"crud",
-			"card",
-			"caja",
-			"priceli",
-			"base"
+			"card"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -599,6 +635,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"director",
 			"rfq_line_",
 			"rfq_line",
 			"purchase_order",
@@ -725,8 +762,7 @@
 			"service_co2",
 			"reception",
 			"director",
-			"reception",
-			"director"
+			"reception"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -737,7 +773,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -753,8 +789,8 @@
 						"selection":
 						[
 							[
-								4316,
-								4316
+								55,
+								55
 							]
 						],
 						"settings":
@@ -763,56 +799,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3760.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "views/mail/rfq_send.xml",
+					"file": "models/purchase.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 791,
+						"buffer_size": 933,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								444,
-								444
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "models/purchase_rfq.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2418,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								270,
-								270
+								413,
+								413
 							]
 						],
 						"settings":
@@ -821,27 +828,114 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 279.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "models/purchase.py",
+					"buffer": 2,
+					"file": "models/__init__.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1190,
+						"buffer_size": 1908,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								266,
-								266
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 214.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "views/purchase/purchase.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11123,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3664,
+								3664
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1567.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "models/purchase_rfq.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2567,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								272,
+								309
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "models/purchase.TRASH.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 846,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								16,
+								16
 							]
 						],
 						"settings":
@@ -857,37 +951,122 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "views/purchase/purchase.xml",
+					"buffer": 6,
+					"file": "models/howto/shell.rb",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11863,
+						"buffer_size": 12293,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								11739,
-								11739
+								666,
+								666
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "views/purchase/purchase_rfq.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 15817,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								14568,
+								14568
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/XML/XML.sublime-syntax",
 							"tab_size": 4,
-							"translate_tabs_to_spaces": false
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 5404.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 8,
+					"file": "readme.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 46,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								33,
+								33
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "views/mail/rfq_send.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 859,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								602,
+								602
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 33.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
 					"file": "models/purchase_line_rfq.py",
 					"semi_transient": false,
 					"settings":
@@ -912,41 +1091,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "views/purchase/purchase_rfq.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 15688,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								14508,
-								14508
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
+					"buffer": 11,
 					"file": "views/purchase/purchase.TRASH.xml",
 					"semi_transient": false,
 					"settings":
@@ -972,7 +1121,7 @@
 						"translation.y": 3288.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 11,
 					"type": "text"
 				}
 			]
@@ -1021,7 +1170,7 @@
 	"project": "OpenHealth-MIN.sublime-project",
 	"replace":
 	{
-		"height": 70.0
+		"height": 46.0
 	},
 	"save_all_on_build": true,
 	"select_file":

@@ -15,78 +15,41 @@ class PurchaseOrder(models.Model):
 	
 	_inherit = 'purchase.order'
 
-	#_name = 'purchase.order.rfq'
+	_description = "Purchase Order"
 
 
 
+	state = fields.Selection([
+		('draft', 'Draft PO'),
+		('sent', 'RFQ Sent'),
+		('to approve', 'To Approve'),
+		('purchase', 'Purchase Order'),
+		('done', 'Done'),
+		('cancel', 'Cancelled')
+		], string='Status', readonly=True, index=True, copy=False, 
 
-	state = fields.Selection(
-		[
-			#('draft', 'Draft PO'),
-			('draft', 'Borrador'),
-			
-			#('sent', 'RFQ Sent'),
-			('sent', 'Enviado'),
+		#default='draft', 
+		default='purchase', 
 
-
-			#('to approve', 'To Approve'),
-			('to approve', 'Validar'),
-
-
-			#('purchase', 'Purchase Order'),
-			('purchase', 'Orden de C/S'),
-
-			
+		track_visibility='onchange')
 
 
 
+	READONLY_STATES = {
+		#'purchase': [('readonly', True)],
+		'purchase': [('readonly', False)],
+		'done': [('readonly', True)],
+		'cancel': [('readonly', True)],
+	}
+
+	partner_id = fields.Many2one('res.partner', string='Vendor', required=True, 
+		
+		states=READONLY_STATES, 
+
+		change_default=True, track_visibility='always')
 
 
-
-			('bill_ready', 'Factura lista'),
-
-			('bill_paid', 'Factura pagada'),
-
-			('product_received', 'Producto recibido'),
+	order_line = fields.One2many('purchase.order.line', 'order_id', string='Order Lines', states=READONLY_STATES, copy=True)
 
 
-
-
-			#('cancel', 'Cancelled')
-			('cancel', 'Cancelado'), 
-
-			#('done', 'Done'),
-			('done', 'Completo'),
-			#('done', 'Cotizado'),
-		], 
-		string='Status', 
-		readonly=True, 
-		index=True, 
-		copy=False, 
-		default='draft', 
-		track_visibility='onchange'
-	)
-
-
-
-
-
-
-
-
-	x_type = fields.Selection(
-
-		[	
-			#('rfq', 	'Request for quotation'),
-			#('po', 		'Purchase order'),
-			('rfq', 	'Demanda de Cotización'),
-			('po', 		'Orden de C/S'),
-		], 
-			
-		string='Tipo', 
-
-		#required=True, 
-		required=False, 
-
-	)
-
+	

@@ -184,7 +184,7 @@
 			"file": "models/purchase.py",
 			"settings":
 			{
-				"buffer_size": 1123,
+				"buffer_size": 2398,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -193,7 +193,7 @@
 			"file": "views/purchase/purchase.xml",
 			"settings":
 			{
-				"buffer_size": 11379,
+				"buffer_size": 11502,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -485,7 +485,7 @@
 	],
 	"find":
 	{
-		"height": 39.0
+		"height": 25.0
 	},
 	"find_in_files":
 	{
@@ -773,7 +773,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -811,15 +811,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1123,
+						"buffer_size": 2398,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1120,
-								1120
+								478,
+								478
 							]
 						],
 						"settings":
@@ -828,10 +828,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 483.0,
+						"translation.y": 110.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -840,15 +840,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11379,
+						"buffer_size": 11502,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9446,
-								9446
+								312,
+								312
 							]
 						],
 						"settings":
@@ -858,10 +858,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 4030.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -906,8 +906,8 @@
 						"selection":
 						[
 							[
-								14255,
-								14255
+								15783,
+								15783
 							]
 						],
 						"settings":
@@ -917,10 +917,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 4650.0,
+						"translation.y": 5085.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -1005,7 +1005,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{

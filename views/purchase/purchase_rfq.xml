@@ -319,6 +319,31 @@
 
 
 
+<!--
+            <field name="model">purchase.order</field>
+-->
+        <!-- TREE --> 
+        <record id="purchase_order_rfq_tree" model="ir.ui.view">
+
+            <field name="name">purchase.order.rfq.tree</field>
+
+            <field name="model">purchase.order.rfq</field>
+            
+            <field name="arch" type="xml">
+                <tree decoration-bf="message_unread==True" decoration-muted="state=='cancel'" decoration-info="state in ('wait','confirmed')" string="Purchase Order">
+                    <field name="message_unread" invisible="1"/>
+                    <field name="name" string="Reference"/>
+                    <field name="date_order" />
+                    <field name="partner_id"/>
+                    <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                    <field name="date_planned" invisible="context.get('quotation_only', False)"/>
+                    <field name="origin"/>
+                    <field name="amount_untaxed" sum="Total Untaxed amount" string="Untaxed" widget="monetary"/>
+                    <field name="amount_total" sum="Total amount" widget="monetary"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
 
 
 

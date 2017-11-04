@@ -19,9 +19,10 @@
 
 
 <!--                    
+					<button name="action_rfq_send" states="sent" string="Re-Send RFQ by Email" type="object" context="{'send_rfq':True}"/>
 -->
 					<button name="action_rfq_send" states="draft" string="Send RFQ by Email" type="object" context="{'send_rfq':True}" class="oe_highlight"/>
-					<button name="action_rfq_send" states="sent" string="Re-Send RFQ by Email" type="object" context="{'send_rfq':True}"/>
+					<button name="action_rfq_send" states="sent" string="Re-Enviar por Email" type="object" context="{'send_rfq':True}"/>
 
 
 <!--

@@ -44,7 +44,7 @@
 <!--
 					<button name="action_rfq_send" states="purchase" string="Send PO by Email" type="object" context="{'send_rfq':False}"/>
 -->
-					<button name="action_rfq_send" states="purchase" string="Enviado por Email" type="object" context="{'send_rfq':False}"
+					<button name="action_rfq_send" states="purchase" string="Enviar por Email" type="object" context="{'send_rfq':False}"
 							class="oe_highlight"
 						/>
 					
@@ -233,7 +233,7 @@
 		<!-- ACTION - PO --> 
 		<record id="openhealth.po_action" model="ir.actions.act_window">
 
-			<field name="name">Ordenes de C/S - jx</field>
+			<field name="name">Ordenes de C/S</field>
 			
 			<field name="type">ir.actions.act_window</field>
 			
@@ -293,7 +293,7 @@
 		<menuitem 
 					id="purchase.menu_purchase_po"
 
-					name="Ordenes de C/S - jx"
+					name="Ordenes de C/S"
 
 					action="openhealth.po_action" 
 

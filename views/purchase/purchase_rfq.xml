@@ -272,7 +272,7 @@
         <!-- ACTION - RFQ --> 
         <record id="openhealth.purchase_rfq" model="ir.actions.act_window">
 
-            <field name="name">Demandas de Cotización - jx</field>
+            <field name="name">Demandas de Cotización</field>
             
             <field name="type">ir.actions.act_window</field>
 
@@ -306,7 +306,7 @@
         <!-- MENU - RFQ --> 
         <menuitem 
                     id="purchase.menu_purchase_rfq"
-                    name="Demandas de Cotización - jx"
+                    name="Demandas de Cotización"
 
 
                     action="openhealth.purchase_rfq" 

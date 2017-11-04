@@ -42,8 +42,11 @@
 
 
 <!--
--->
 					<button name="action_rfq_send" states="purchase" string="Send PO by Email" type="object" context="{'send_rfq':False}"/>
+-->
+					<button name="action_rfq_send" states="purchase" string="Enviado por Email" type="object" context="{'send_rfq':False}"
+							class="oe_highlight"
+						/>
 					
 
 
@@ -64,10 +67,13 @@
 					<field name="state" widget="statusbar" statusbar_visible="draft,sent,to approve,purchase,done" readonly="1" />
                     <field name="state" widget="statusbar" statusbar_visible="draft,sent,purchase,done" readonly="1" />
                     <field name="state" widget="statusbar" statusbar_visible="draft,sent,bill_ready,bill_paid,product_received,done" readonly="1" />
--->
 
 
                     <field name="state" widget="statusbar" statusbar_visible="draft,sent,purchase,done" readonly="1" />
+-->
+
+
+                    <field name="state" widget="statusbar" statusbar_visible="purchase,sent,done" readonly="1" />
 				</header>
 
 

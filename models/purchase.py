@@ -21,9 +21,15 @@ class PurchaseOrder(models.Model):
 
 	state = fields.Selection([
 		('draft', 'Draft PO'),
-		('sent', 'RFQ Sent'),
+		#('sent', 'RFQ Sent'),
 		('to approve', 'To Approve'),
-		('purchase', 'Purchase Order'),
+		
+
+		#('purchase', 'Purchase Order'),
+		('purchase', 'Orden de C/S'),
+		('sent', 'Enviado'),
+		
+
 		('done', 'Done'),
 		('cancel', 'Cancelled')
 		], string='Status', readonly=True, index=True, copy=False, 
@@ -52,4 +58,9 @@ class PurchaseOrder(models.Model):
 	order_line = fields.One2many('purchase.order.line', 'order_id', string='Order Lines', states=READONLY_STATES, copy=True)
 
 
-	
+
+
+
+
+
+

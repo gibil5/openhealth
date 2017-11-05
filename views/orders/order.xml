@@ -53,10 +53,13 @@
 		<record model="ir.ui.view" id="view_order_form">
 			<field name="name">sale.order.form</field>
 			<field name="model">sale.order</field>
-			<field name="inherit_id" ref="sale.view_order_form"/>			
-	        <field name="mode">primary</field>
-	        <field name="priority" eval="1"/>
 
+			
+			<field name="inherit_id" ref="sale.view_order_form"/>	
+	        <field name="mode">primary</field>
+	        
+
+	        <field name="priority" eval="1"/>
 			<field name="arch" type="xml">
 
 

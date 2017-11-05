@@ -13,6 +13,8 @@
 
 # In OpenHealth - Base - Deprecated
 from . import partner
+from . import quotation
+
 from . import patient  
 from . import product
 

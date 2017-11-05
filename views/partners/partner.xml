@@ -40,15 +40,50 @@
 
 
 
+				<xpath expr="//field[@name='lang']" position="replace">
+
+					<field name="lang"	string="Idioma - jx"  default="es_ES"	/>
+				
+				</xpath>
+
+
 <!--
 				<xpath expr="//field[@name='function']" position="before">
 				</xpath>
 
-				<xpath expr="//field[@name='lang']" position="replace">
-					<field name="lang"	string="languague - jx"  default="es_ES"	/>
-				</xpath>
 -->
 
+
+
+
+
+
+				<notebook position="inside">
+
+							<page string="Cotizaciones">
+
+
+<!--
+								<field name="x_quotation_ids"	/>
+-->
+
+								<field name="x_quotation_ids">
+								
+
+									<tree string="Quotations">										
+										
+										<field  name="name"			/>
+											
+										<field  name="partner_id"			/>
+
+									</tree>
+
+
+								</field>
+
+							</page>
+
+				</notebook>
 
 
 

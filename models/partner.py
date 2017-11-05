@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+
+
 from openerp import models, fields, api
 #from datetime import datetime
 
@@ -27,6 +30,16 @@ class Partner(models.Model):
 
 
 
+
+
+	x_quotation_ids = fields.One2many(
+
+			'openhealth.quotation', 		
+		
+			'partner_id', 
+		
+			string="Cotizacion"
+		)
 
 
 

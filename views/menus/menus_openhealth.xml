@@ -42,7 +42,7 @@
 						action="openhealth.po_action"
 						/>
 
-
+<!--
 		<menuitem 	id="sub_purchase_rfq_orders_menu" 
 						name="Purchase Rfq Orders" 
 						parent="openhealth_menu"
@@ -50,7 +50,7 @@
 
 						action="openhealth.purchase_rfq"
 						/>
-
+-->
 
 
 <!--

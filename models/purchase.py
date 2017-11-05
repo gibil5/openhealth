@@ -21,13 +21,18 @@ class PurchaseOrder(models.Model):
 
 	state = fields.Selection([
 		('draft', 'Draft PO'),
-		#('sent', 'RFQ Sent'),
+
 		('to approve', 'To Approve'),
+		('approved', 'Approved'),
+
+
+		('sent', 'RFQ Sent'),
 		
 
 		#('purchase', 'Purchase Order'),
 		('purchase', 'Orden de C/S'),
-		('sent', 'Enviada'),
+		
+		#('sent', 'Enviada'),
 		
 
 		('done', 'Done'),
@@ -35,10 +40,29 @@ class PurchaseOrder(models.Model):
 		('cancel', 'Cancelled')
 		], string='Status', readonly=True, index=True, copy=False, 
 
-		#default='draft', 
-		default='purchase', 
+
+		default='draft', 
+		#default='purchase', 
 
 		track_visibility='onchange')
+
+
+
+
+	@api.multi
+	def button_approve(self):
+
+		#self.write({'state': 'purchase'})
+		self.write({'state': 'approved'})
+		
+		self._create_picking()
+		return {}
+
+
+
+
+
+
 
 
 

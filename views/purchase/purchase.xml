@@ -19,9 +19,10 @@
 
 
 <!--                    
+					<button name="action_rfq_send" states="draft" string="Send RFQ by Email" type="object" context="{'send_rfq':True}" class="oe_highlight"/>
 					<button name="action_rfq_send" states="sent" string="Re-Send RFQ by Email" type="object" context="{'send_rfq':True}"/>
 -->
-					<button name="action_rfq_send" states="draft" string="Send RFQ by Email" type="object" context="{'send_rfq':True}" class="oe_highlight"/>
+					<button name="action_rfq_send" states="approved" string="Send RFQ by Email" type="object" context="{'send_rfq':True}" class="oe_highlight"/>
 					<button name="action_rfq_send" states="sent" string="Re-Enviar por Email" type="object" context="{'send_rfq':True}"/>
 
 
@@ -39,7 +40,13 @@
 
 
 
+
+<!--
 					<button name="button_approve" type="object" states='to approve' string="Approve Order" class="oe_highlight" groups="purchase.group_purchase_manager"/>
+-->
+					<button name="button_approve" type="object" states='draft' string="Approve Order" class="oe_highlight" groups="purchase.group_purchase_manager"/>
+
+
 
 
 <!--
@@ -70,11 +77,11 @@
                     <field name="state" widget="statusbar" statusbar_visible="draft,sent,bill_ready,bill_paid,product_received,done" readonly="1" />
 
 
-                    <field name="state" widget="statusbar" statusbar_visible="draft,sent,purchase,done" readonly="1" />
+                    <field name="state" widget="statusbar" statusbar_visible="purchase,sent,done" readonly="1" />
 -->
 
 
-                    <field name="state" widget="statusbar" statusbar_visible="purchase,sent,done" readonly="1" />
+                    <field name="state" widget="statusbar" statusbar_visible="draft,sent,approved,purchase,done" readonly="1" />
 				</header>
 
 

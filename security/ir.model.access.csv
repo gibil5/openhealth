@@ -4,6 +4,17 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+access_openhealth_quotation,openhealth.quotation,model_openhealth_quotation,,1,1,1,1
+
+
+
+
+
+
+
+
+
+
 
 access_purchase_order_rfq_director,purchase.order.rfq.director,model_purchase_order_rfq,openhealth.directors,1,1,1,1
 access_purchase_order_rfq_line_director,purchase.order.rfq.line.director,model_purchase_order_line_rfq,openhealth.directors,1,1,1,1

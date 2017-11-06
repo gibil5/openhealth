@@ -22,7 +22,7 @@ class Quotation(models.Model):
 	# Commons 
 	vspace = fields.Char(
 			' ', 
-			readonly=True
+			readonly=True, 
 			)
 
 
@@ -43,12 +43,14 @@ class Quotation(models.Model):
 
 
 	name = fields.Char(
-		'Nombre', 
-	)
+			'Nombre', 
+			required=True, 
+		)
 
 
 	date = fields.Datetime(
 			'Fecha',
+			required=True, 
 		)
 
 

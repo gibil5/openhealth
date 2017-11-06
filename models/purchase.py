@@ -120,12 +120,15 @@ class PurchaseOrder(models.Model):
 
 
 
+
 	# Send 
 	@api.multi
 	def action_rfq_send(self):
 
+
 		#jx
-		self.state = 'sent'
+		#self.state = 'sent'
+		self.state = 'purchase'
 
 
 

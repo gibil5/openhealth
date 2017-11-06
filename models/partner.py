@@ -33,6 +33,14 @@ class Partner(models.Model):
 			readonly=True
 			)
 
+	x_firm = fields.Char(
+		"Razon social", 	
+		)
+
+	x_ruc = fields.Char(
+		"Ruc", 	
+	)
+
 
 
 
@@ -69,12 +77,6 @@ class Partner(models.Model):
 
 
 
-	#x_firm = fields.Char(
-	#	"Razon social", 	
-	#	)
-	#x_ruc = fields.Char(
-	#	"Ruc", 	
-	#)
 
 
 

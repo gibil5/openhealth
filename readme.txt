@@ -1,7 +1,12 @@
+Help me
+---------
+6
+Nov 2017 !
+
 
 Min - Ooor - Github - Travis 
 
-5 Nov 2017 !
-
+gibil5
+atojatojcha5
 
 odoo.py scaffold vipassana addons 

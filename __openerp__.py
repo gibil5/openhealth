@@ -392,7 +392,7 @@
 
 
 		# Partners
-		#'views/partners/partner.xml',
+		'views/partners/partner.xml',
 		#'views/partners/partner_vendor.xml',
 
 
@@ -434,6 +434,7 @@
 		'views/menus/menus_reporting_pla.xml',
 		'views/menus/menus_reporting_phy.xml',
 		
+
 		#'views/menus/menus_reporting_phy_ala.xml',
 		
 		'views/menus/menus_openhealth.xml',

@@ -28,10 +28,10 @@ class Partner(models.Model):
 
 
 	# Commons 
-	vspace = fields.Char(
-			' ', 
-			readonly=True
-			)
+	#vspace = fields.Char(
+	#		' ', 
+	#		readonly=True
+	#		)
 
 
 

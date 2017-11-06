@@ -69,12 +69,12 @@ class Partner(models.Model):
 
 
 
-	x_firm = fields.Char(
-		"Razon social", 	
-		)
-	x_ruc = fields.Char(
-		"Ruc", 	
-	)
+	#x_firm = fields.Char(
+	#	"Razon social", 	
+	#	)
+	#x_ruc = fields.Char(
+	#	"Ruc", 	
+	#)
 
 
 

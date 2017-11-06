@@ -296,10 +296,13 @@
 
 
 		<!-- MENU - PO --> 
+
+
 <!--
+					id="purchase.menu_purchase_po"
 -->
 		<menuitem 
-					id="purchase.menu_purchase_po"
+					id="purchase.menu_purchase_form_action" 
 
 					name="Ordenes de C/S"
 
@@ -308,6 +311,14 @@
 					parent="purchase.menu_procurement_management"
 					sequence="1"
 					/>
+
+<!--
+		<menuitem action="purchase_form_action" 
+			id="menu_purchase_form_action" 
+			parent="menu_procurement_management" sequence="6"/>
+-->
+
+
 
 
 

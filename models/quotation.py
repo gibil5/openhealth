@@ -8,9 +8,14 @@ from openerp import models, fields, api
 
 
 class Quotation(models.Model):
-	
-	#_inherit = 'res.partner'
+
+
 	_name = 'openhealth.quotation'	
+
+	#_inherit = 'res.partner'
+	#_inherit = ['base_multi_image.owner']	
+	_inherit = 'base_multi_image.owner'
+
 
 
 
@@ -24,9 +29,27 @@ class Quotation(models.Model):
 
 
 
+	#image_ids = fields.One2many(
+	#		'openhealth.image', 
+	#		'control', 
+	#		string = "Fotos", 
+	#	)
+
+
+
+
+
+
+
+
 	name = fields.Char(
-		'Cotización'
+		'Nombre', 
 	)
+
+
+	date = fields.Datetime(
+			'Fecha',
+		)
 
 
 

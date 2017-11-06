@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+
+
+		<!-- Form view -->
+		<record model="ir.ui.view" id="quotation_form_view">
+			<field name="name">quotation.form</field>
+			<field name="model">openhealth.quotation</field>
+			<field name="arch" type="xml">
+				
+				
+				<form string="Quotation">
+
+
+					<!-- Header --> 
+					<header>
+					</header>
+					
+
+					<!-- Sheet --> 
+					<sheet>
+						<group>
+
+
+							<field name="name"/>
+		
+							<field name="date"/>
+
+
+						</group>
+						<group>
+							
+						</group>
+
+
+
+
+						<!-- VISIA --> 
+						<notebook>
+							<page string="Scans" >
+
+								<field
+									name="image_ids"
+									nolabel="1"
+									context="{
+												'default_owner_model': 'openhealth.quotation',
+												'default_owner_id': id,
+									}"
+									mode="kanban"
+								/>
+
+							</page>
+						</notebook>
+
+
+					</sheet>
+
+				</form>
+
+			</field>
+		</record>
+
+
+
+	</data>
+</openerp>

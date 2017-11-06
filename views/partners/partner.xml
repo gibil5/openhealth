@@ -57,32 +57,51 @@
 
 
 
-
+				<!-- NOTEBOOK -->
 				<notebook position="inside">
 
-							<page string="Cotizaciones">
-
+					<page string="Cotizaciones">
+						<!-- <field name="x_quotation_ids"	/> -->
 
 <!--
-								<field name="x_quotation_ids"	/>
+								<field  name="partner_id" />
 -->
-
-								<field name="x_quotation_ids">
+						<field name="x_quotation_ids">
+						
+							<tree string="Quotations">										
 								
 
-									<tree string="Quotations">										
-										
-										<field  name="name"			/>
-											
-										<field  name="partner_id"			/>
-
-									</tree>
+								<field  name="name"	/>
+								<field  name="date"	/>
 
 
-								</field>
+								<field name="image_ids"		string="Scans"	/> 
 
-							</page>
+							</tree>
 
+						</field>
+
+<!--
+						<field
+							name="image_ids"
+							
+							nolabel="1"
+							context="{
+										'default_owner_model': 'openhealth.quotation',
+										'default_owner_id': id,
+							}"
+							mode="kanban"
+						/>
+
+
+						<field name="image_ids"	/> 
+-->
+						
+
+
+
+					</page>
+				
 				</notebook>
 
 

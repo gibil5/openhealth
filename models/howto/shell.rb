@@ -55,6 +55,12 @@ po.unlink()
 
 
 
+self.env['openhealth.quotation'].search([('name', 'like', '')])
+
+
+
+
+
 
 
 

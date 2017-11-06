@@ -396,6 +396,11 @@
 		'views/partners/partner_vendor.xml',
 
 
+		# Quotations 
+		'views/quotations/quotation.xml',
+
+
+
 
 
 

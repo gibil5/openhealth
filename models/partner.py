@@ -15,7 +15,12 @@ def _lang_get(self):
 
 class Partner(models.Model):
 	
+
 	_inherit = 'res.partner'
+	#_inherit = ['res.partner', 'base_multi_image.owner']
+	#_inherit = ['res.partner', 'oeh.medical.evaluation', 'base_multi_image.owner']
+
+
 	#_name = 'openhealth.patient'	#The best solution ? So that impact is minimal ?	- Deprecated
 
 

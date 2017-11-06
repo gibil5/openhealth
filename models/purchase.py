@@ -55,7 +55,8 @@ class PurchaseOrder(models.Model):
 		
 
 		#('done', 'Done'),
-		('done', 'Completo'),
+		#('done', 'Completo'),
+		('done', 'Entregado'),
 		
 
 		

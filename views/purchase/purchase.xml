@@ -331,9 +331,10 @@
 
 <!--
 					id="purchase.menu_purchase_po"
+					id="purchase.menu_purchase_form_action" 
 -->
 		<menuitem 
-					id="purchase.menu_purchase_form_action" 
+					id="openhealth.menu_purchase_po"
 
 					name="Ordenes de C/S"
 

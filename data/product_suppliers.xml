@@ -13,12 +13,12 @@
 			<field name="name">Revilla Rondon y Asociados</field>
 
 			<field name="email">jrevilla55@gmail.com</field>
-			<field name="lang">en_US</field>
+			<field name="lang">es_ES</field>
 
 
 <!--
 			<field name="email">info@revillarondon.com</field>
-			<field name="lang">es_ES</field>
+			<field name="lang">en_US</field>
 -->
 			<field name="customer" eval="False" />
 			<field name="supplier" eval="True" />

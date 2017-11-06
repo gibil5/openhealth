@@ -20,24 +20,48 @@ class PurchaseOrder(models.Model):
 
 
 	state = fields.Selection([
-		('draft', 'Draft PO'),
 
-		('to approve', 'To Approve'),
-		('approved', 'Approved'),
+		#('draft', 'Draft PO'),
+		('draft', 'Borrador'),
 
 
-		('sent', 'RFQ Sent'),
+
+
+		('validated', 'Validado'),		
+
+
+
+
+		#('sent', 'RFQ Sent'),
+		('sent', 'Enviado'),
 		
+
+
+		('to approve', 'To Approve'),		
+		#('approved', 'Approved'),
+		('approved', 'Aprobado'),
+
+
+
 
 		#('purchase', 'Purchase Order'),
-		('purchase', 'Orden de C/S'),
+		#('purchase', 'Orden de C/S'),
+		('purchase', 'Compra'),
 		
+
+
+
 		#('sent', 'Enviada'),
 		
 
-		('done', 'Done'),
+		#('done', 'Done'),
+		('done', 'Completo'),
+		
+
 		
 		('cancel', 'Cancelled')
+
+
 		], string='Status', readonly=True, index=True, copy=False, 
 
 
@@ -49,14 +73,24 @@ class PurchaseOrder(models.Model):
 
 
 
-	@api.multi
-	def button_approve(self):
+	#@api.multi
+	#def button_approve(self):
 
 		#self.write({'state': 'purchase'})
-		self.write({'state': 'approved'})
+	#	self.write({'state': 'approved'})
 		
-		self._create_picking()
-		return {}
+	#	self._create_picking()
+	#	return {}
+
+
+
+	# Send 
+	@api.multi
+	def action_validate(self):
+
+		#jx
+		self.state = 'validated'
+
 
 
 

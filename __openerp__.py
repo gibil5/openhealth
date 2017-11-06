@@ -392,12 +392,12 @@
 
 
 		# Partners
-		'views/partners/partner.xml',
-		'views/partners/partner_vendor.xml',
+		#'views/partners/partner.xml',
+		#'views/partners/partner_vendor.xml',
 
 
 		# Quotations 
-		'views/quotations/quotation.xml',
+		#'views/quotations/quotation.xml',
 
 
 

@@ -29,13 +29,13 @@ _co2_mode_exposure_list = [
 
 
 def test_for_zero(self, token):
-	print 'test_for_zero'
-	print token 
+	#print 'test_for_zero'
+	#print token 
 
 	#if token and (not token.isdigit()):
 	#if token and token == 0.0:
 	if token == 0.0:
-		print 'Error'
+		#print 'Error'
 		#return {
 		#		'warning': {
 		#			'title': 	"Error: Valor Nulo.",

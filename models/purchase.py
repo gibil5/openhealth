@@ -126,16 +126,13 @@ class PurchaseOrder(models.Model):
 	@api.multi
 	def action_rfq_send(self):
 
-
-		#jx
+		#jx Code
 		#self.state = 'sent'
 		self.state = 'purchase'
 
 
 
-		'''
-		This function opens a window to compose an email, with the edi purchase template message loaded by default
-		'''
+		# Original 
 		self.ensure_one()
 		ir_model_data = self.env['ir.model.data']
 		try:

@@ -500,8 +500,7 @@ class Closing(models.Model):
 
 			#record.total = 5.5 
 			record.total = amount_untaxed
-
-			print 
+			#print 
 
 
 

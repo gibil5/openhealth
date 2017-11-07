@@ -71,28 +71,7 @@
 
 
 
-    
-        <!-- ACTION - RFQ --> 
-        <record id="purchase.purchase_rfq" model="ir.actions.act_window">
-
-            <field name="name">Requests for Quotation - jz</field>
-            
-            <field name="type">ir.actions.act_window</field>
-
-            <field name="res_model">purchase.order</field>
-
-<!--            
-            <field name="context">{'search_default_todo':1}</field>
-            <field name="domain">[('state','in',('draft','sent','bid','cancel', 'confirmed'))]</field>
-            <field name="view_mode">tree,kanban,form,pivot,graph,calendar</field>
-            <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>
-            <field name="help" type="html">
-            </field>
--->
-        </record>
-
-
-
+ 
 <!--
         <menuitem action="purchase_rfq" id="menu_purchase_rfq"
             parent="menu_procurement_management"

@@ -29,10 +29,27 @@ class SaleProof(models.Model):
 	def print_ticket(self):
 
 		print 'jx'
-		print 'Print'
+		print 'Print Ticket'
 
 		ret = 0 
 		return ret 
+
+
+
+	# Confirm
+	@api.multi 
+	def confirm(self):
+
+		print 'jx'
+		print 'Confirm'
+
+		ret = 0 
+		return ret 
+
+
+
+
+
 
 
 
@@ -140,15 +157,27 @@ class SaleProof(models.Model):
 
 
 
+
+
+
+
+
+
+
+
+
 	# Open Order
 	@api.multi 
 	def open_order(self):
 		#print 
 		#print 'Open order'
 		self.order.name = self.name 
+
 		ret = self.order.open_myself()
+
 		return ret 
 	# open_order
+
 
 
 

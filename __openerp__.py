@@ -100,6 +100,9 @@
 		'reports/closing.xml',
 
 
+		# Ticket 
+		'reports/ticket_receipt.xml',
+		#'reports/ticket_invoice.xml',
 
 
 

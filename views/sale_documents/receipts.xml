@@ -38,9 +38,21 @@
 								
 								class="oe_highlight"
 
-								string="Confirmar"
+								string="Regresar"
 						/>						
 
+
+
+
+						<button 
+								name="confirm"
+
+								type="object" 
+								
+								class="oe_highlight"
+
+								string="Confirmar"
+						/>						
 
 
 						<button 
@@ -50,10 +62,12 @@
 
 								class="oe_highlight"
 
-								string="Imprimir Ticket"
+								string="IMPRIMIR"
 
 
-								attrs="{	'invisible':[	('family', 'in', ['receipt'] ),	],
+								attrs="{'invisible':[	
+														('family', 'in', ['receipt', 'invoice', 'advertisement', 'sale_note']),
+													],
 									}"							
 						/>	
 

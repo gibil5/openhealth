@@ -165,8 +165,8 @@ class Closing(models.Model):
 	def _compute_method_tot(self):
 		for record in self:
 
-			print 'jx'
-			print 'compute Method total'
+			#print 'jx'
+			#print 'compute Method total'
 
 			date = record.date + ' '
 
@@ -190,8 +190,8 @@ class Closing(models.Model):
 			for order in orders: 
 
 
-				print 'name: ', order.name
-				print 'date_order: ', order.date_order
+				#print 'name: ', order.name
+				#print 'date_order: ', order.date_order
 
 
 				for pm_line in order.x_payment_method.pm_line_ids: 
@@ -241,18 +241,15 @@ class Closing(models.Model):
 			record.vid_tot = vid_tot
 
 
-			print 'cash_tot: ', cash_tot, record.cash_tot
-			print 'ame_tot: ', ame_tot, record.ame_tot
-			print 'cuo_tot: ', cuo_tot, record.cuo_tot
-
-			print 'din_tot: ', record.din_tot
-			print 'mac_tot: ', record.mac_tot
-			print 'mad_tot: ', record.mad_tot
-
-			print 'vic_tot: ', record.vic_tot
-			print 'vid_tot: ', record.vid_tot
-
-			print 
+			#print 'cash_tot: ', cash_tot, record.cash_tot
+			#print 'ame_tot: ', ame_tot, record.ame_tot
+			#print 'cuo_tot: ', cuo_tot, record.cuo_tot
+			#print 'din_tot: ', record.din_tot
+			#print 'mac_tot: ', record.mac_tot
+			#print 'mad_tot: ', record.mad_tot
+			#print 'vic_tot: ', record.vic_tot
+			#print 'vid_tot: ', record.vid_tot
+			#print 
 
 
 

@@ -66,9 +66,9 @@ class Patient(models.Model):
 
 
 
-	@api.multi
-	def card_purchase(self):  
-		print 'jx'
+	#@api.multi
+	#def card_purchase(self):  
+	#	print 'jx'
 
 
 

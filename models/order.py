@@ -425,7 +425,7 @@ class sale_order(models.Model):
 		elif self.cosmetology.name != False:
 			ret = self.cosmetology.open_myself()
 		else:
-			print 'This should not happen !'
+			#print 'This should not happen !'
 			ret = 0 
 
 
@@ -1988,9 +1988,9 @@ class sale_order(models.Model):
 	@api.multi 
 	def action_confirm(self):
 
-		print 
-		print 'jx'
-		print 'Action confirm - Over ridden'
+		#print 
+		#print 'jx'
+		#print 'Action confirm - Over ridden'
 		 
 		
 
@@ -2052,10 +2052,10 @@ class sale_order(models.Model):
 
 			self.partner_id.property_product_pricelist = pl
 
-			print 'jx'
-			print self.partner_id
-			print pl 
-			print self.partner_id.property_product_pricelist.name 
+			#print 'jx'
+			#print self.partner_id
+			#print pl 
+			#print self.partner_id.property_product_pricelist.name 
 
 
 
@@ -2338,10 +2338,10 @@ class sale_order(models.Model):
 	@api.multi
 	def write(self,vals):
 
-		print 
-		print 'CRUD - Order - Write'
-		print 
-		print vals
+		#print 
+		#print 'CRUD - Order - Write'
+		#print 
+		#print vals
 		#print 
 		#print 
 
@@ -2355,8 +2355,8 @@ class sale_order(models.Model):
 		#Write your logic here
 		res = super(sale_order, self).write(vals)
 		#Write your logic here
-		print 
-		print 
+		#print 
+		#print 
 
 		return res
 

@@ -127,8 +127,8 @@ class Card(models.Model):
 	@api.depends('patient_name')
 
 	def _compute_partner_id(self):
-		print 'jx'
-		print 'compute partner_id'
+		#print 'jx'
+		#print 'compute partner_id'
 
 		for record in self:
 
@@ -149,8 +149,8 @@ class Card(models.Model):
 															#order='appointment_date desc',
 															limit=1,)
 
-			print pl 
-			print pl.id
+			#print pl 
+			#print pl.id
 
 
 

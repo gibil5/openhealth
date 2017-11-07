@@ -17,7 +17,8 @@ class TicketReceipt(models.Model):
 			string="Ticket Boleta #", 
 		)
 
-	family = fields.Char(
+
+	family = fields.Selection(
 			default='ticket_receipt', 
 		)
 

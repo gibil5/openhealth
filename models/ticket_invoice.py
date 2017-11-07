@@ -13,12 +13,12 @@ class TicketInvoice(models.Model):
 
 
 
-
 	name = fields.Char(
 			string="Ticket Factura #", 
 		)
 
-	family = fields.Char(
+
+	family = fields.Selection(
 			default='ticket_invoice', 
 		)
 

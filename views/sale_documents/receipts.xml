@@ -2,17 +2,21 @@
 <openerp>
 	<data>
 
-		<!-- Form view -->
+
+
+		<!-- FORM -->
 		<record model="ir.ui.view" id="receipt_form_view">
 			<field name="name">receipt.form</field>
 			
+
 			<field name="model">openhealth.receipt</field>
+
 
 			<!--
 			<field name="inherit_id" ref="sale.view_order_form"/>			
-	        <field name="mode">primary</field>
-	        <field name="priority" eval="1"/>
-	        -->
+			<field name="mode">primary</field>
+			<field name="priority" eval="1"/>
+			-->
 
 			<field name="arch" type="xml">
 
@@ -36,6 +40,24 @@
 
 								string="Confirmar"
 						/>						
+
+
+
+						<button 
+								name="print_ticket"
+
+								type="object" 	
+
+								class="oe_highlight"
+
+								string="Imprimir Ticket"
+
+
+								attrs="{	'invisible':[	('family', 'in', ['receipt'] ),	],
+									}"							
+						/>	
+
+
 
 <!--
 						<button 
@@ -171,9 +193,9 @@
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 			
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="view_id" eval="False"/>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>
 			
 			<field name="help" type="html">
 				<p class="oe_view_nocontent_create">Create the first receipt

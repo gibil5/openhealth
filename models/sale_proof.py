@@ -24,6 +24,41 @@ class SaleProof(models.Model):
 
 
 
+	# Print
+	@api.multi 
+	def print_ticket(self):
+
+		print 'jx'
+		print 'Print'
+
+		ret = 0 
+		return ret 
+
+
+
+
+	#family = fields.Char(
+	family = fields.Selection(
+		
+			[	
+				('receipt', 		'Recibo'),
+				('invoice', 		'Factura'),
+				
+				('ticket_receipt', 	'Ticket Recibo'),
+				('ticket_invoice', 	'Ticket Factura'),
+
+				('advertisement', 	'Canje Publicidad'),
+				('sale_note', 		'Canje NV'),
+			], 
+
+		)
+
+
+
+
+
+
+
 	ruc = fields.Char(
 			string="RUC", 	
 			#required=True, 
@@ -44,8 +79,6 @@ class SaleProof(models.Model):
 
 
 
-	family = fields.Char(
-		)
 
 
 
@@ -112,16 +145,10 @@ class SaleProof(models.Model):
 	def open_order(self):
 		#print 
 		#print 'Open order'
-
-
 		self.order.name = self.name 
-
-
 		ret = self.order.open_myself()
-
 		return ret 
 	# open_order
-
 
 
 
@@ -130,9 +157,7 @@ class SaleProof(models.Model):
 	def open_pm(self):
 		#print 
 		#print 'Open Payment method'
-
 		ret = self.payment_method.open_myself()
-
 		return ret 
 	# open_order
 

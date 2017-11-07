@@ -2,13 +2,17 @@
 <openerp>
 	<data>
 
-		<!-- Form view -->
+
+
+		<!-- FORM -->
 		<record model="ir.ui.view" id="ticket_receipt_form_view">
 			<field name="name">ticket_receipt.form</field>
-			
 			<field name="model">openhealth.ticket_receipt</field>
 
-			<field name="inherit_id" ref="receipt_form_view"/>			
+
+			<field name="inherit_id" ref="receipt_form_view"/>
+
+
 	        <field name="mode">primary</field>
 	        <field name="priority" eval="1"/>
 

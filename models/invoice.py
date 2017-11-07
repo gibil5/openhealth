@@ -17,7 +17,8 @@ class Invoice(models.Model):
 			string="Factura #", 
 		)
 
-	family = fields.Char(
+
+	family = fields.Selection(
 			default='invoice', 
 		)
 

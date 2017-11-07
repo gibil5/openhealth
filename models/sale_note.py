@@ -17,7 +17,8 @@ class SaleNote(models.Model):
 			string="CANJE NV #", 
 		)
 
-	family = fields.Char(
+
+	family = fields.Selection(
 			default='sale_note', 
 		)
 

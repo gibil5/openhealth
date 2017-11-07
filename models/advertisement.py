@@ -17,7 +17,8 @@ class Advertisement(models.Model):
 			string="Canje #", 
 		)
 
-	family = fields.Char(
+
+	family = fields.Selection(
 			default='advertisement', 
 		)
 

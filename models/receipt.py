@@ -17,9 +17,11 @@ class Receipt(models.Model):
 			string="Boleta #", 
 		)
 
-	family = fields.Char(
+
+	family = fields.Selection(
 			default='receipt', 
 		)
+
 
 
 

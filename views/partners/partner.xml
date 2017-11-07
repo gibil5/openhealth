@@ -41,7 +41,7 @@
 
 				<xpath expr="//field[@name='lang']" position="replace">
 
-					<field name="lang"	string="Idioma - jx"  default="es_ES"	/>
+					<field name="lang"	string="Idioma"  default="es_ES"	/>
 				
 				</xpath>
 

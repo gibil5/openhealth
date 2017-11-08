@@ -1097,14 +1097,14 @@ Order Line - Tree
 <!--
 					<field name="x_doctor_name"/>
 					<field name="doctor_name"/>
--->
+
 					<field name="vspace"/>
-					
-
 					<field name="x_partner_vip"/>
+-->
 					
-					<field name="vspace"/>			
+					
 
+					<field name="vspace"/>			
 					<field name="x_family"		readonly="1"/>
 
 
@@ -1117,16 +1117,16 @@ Order Line - Tree
 
 
 
+
+
+<!--
 					<field name="vspace"/>
 					<field name="product"/>
 					<field name="categ"/>
-
-
-
 					<field name="vspace"/>
 					<field name="nr_cosmetologies"		/>
 					<field name="nr_treatments"			/>
-
+-->
 
 <!--
 					<field name="vspace"/>

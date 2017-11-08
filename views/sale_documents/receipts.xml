@@ -129,6 +129,7 @@
 
 
 							<group>
+<!--
 								<field name="my_firm"   />	
 
 								<field name="my_address"   />	
@@ -136,6 +137,7 @@
 								<field name="my_phone"   />	
 
 								<field name="my_ruc"   />	
+-->						
 							</group>
 
 							<group>

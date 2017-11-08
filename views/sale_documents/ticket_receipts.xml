@@ -21,7 +21,7 @@
 
 
 				<xpath expr="//h1" position="replace">
-					<h1>Ticket boleta</h1>					
+					<h1>Ticket Boleta</h1>					
 				</xpath>
 
 <!--

@@ -5,21 +5,22 @@
 
 			string="Imprimir Ticket Factura"
 
-			model="openhealth.ticket_receipt"
+
+			model="openhealth.ticket_invoice"
 
 
-			id="report_print_ticket_receipt"
+			id="report_ticket_invoice"
 			
 			report_type="qweb-pdf"
 			
-			name="openhealth.report_ticket_receipt_view"            
+			name="openhealth.report_ticket_invoice_view"            
 			
-			file="openhealth_ticket_receipt.report_sale_proof"
+			file="openhealth_ticket_invoice.report_sale_proof"
 		/>
 
 
 
-		<template id="openhealth.report_ticket_receipt_view">
+		<template id="openhealth.report_ticket_invoice_view">
 			<t t-call="report.html_container">                 
 			<t t-foreach="docs" t-as="doc">
 			<t>          

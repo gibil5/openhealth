@@ -17,7 +17,7 @@
 
 
 				<xpath expr="//h1" position="replace">
-					<h1>Ticket factura</h1>					
+					<h1>Ticket Factura</h1>					
 				</xpath>
 
 <!--

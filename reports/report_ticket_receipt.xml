@@ -5,10 +5,11 @@
 
 			string="Imprimir Ticket Boleta"
 
+
 			model="openhealth.ticket_receipt"
 
 
-			id="report_print_ticket_receipt"
+			id="report_ticket_receipt"
 			
 			report_type="qweb-pdf"
 			
@@ -29,10 +30,11 @@
 
 
 <!-- Header --> 
+<!--
 <div class="header">    
 	<img src='/openhealth/static/src/img/logo_chavarri.png' style="max-height: 100px;"/>
 </div>
-
+-->
 
 
 
@@ -42,7 +44,7 @@
 
 <center>
 <h2>
-	Ticket
+	Ticket Boleta
 </h2>
 </center>
 <br/>

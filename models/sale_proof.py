@@ -22,6 +22,89 @@ class SaleProof(models.Model):
 
 
 
+	my_firm = fields.Char(
+			"Razon social",
+
+			compute='_compute_my_firm', 
+		)
+
+	@api.multi
+	#@api.depends('')
+	def _compute_my_firm(self):
+		for record in self:
+			record.my_firm = record.order.x_my_company.x_firm
+
+
+
+	# Ruc
+	my_ruc = fields.Char(
+
+			"Ruc",
+			compute='_compute_my_ruc', 
+		)
+
+	@api.multi
+	#@api.depends('')
+	def _compute_my_ruc(self):
+		for record in self:
+			record.my_ruc = record.order.x_my_company.x_ruc
+
+
+
+
+
+	# Phone 
+	my_phone = fields.Char(
+
+			"Teléfono",
+			compute='_compute_my_phone', 
+		)
+
+	@api.multi
+	#@api.depends('')
+	def _compute_my_phone(self):
+		for record in self:
+			record.my_phone = record.order.x_my_company.phone
+
+
+
+
+
+
+	# Address
+	my_address = fields.Char(
+
+			"Dirección",
+			compute='_compute_my_address', 
+		)
+
+	@api.multi
+	#@api.depends('')
+	def _compute_my_address(self):
+		for record in self:
+
+			com = record.order.x_my_company
+
+			record.my_address = com.street + ' - ' + com.street2 + ' - ' + com.city
+
+
+
+
+
+
+	# Ruc
+	my_ruc = fields.Char(
+
+			"Ruc",
+			compute='_compute_my_ruc', 
+		)
+
+
+
+
+
+
+
 
 
 	# Print

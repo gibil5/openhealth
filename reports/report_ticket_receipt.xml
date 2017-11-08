@@ -3,7 +3,7 @@
 
 		<report
 
-			string="Imprimir Ticket Boleta"
+			string="Ticket Boleta"
 
 			model="openhealth.ticket_receipt"
 
@@ -13,7 +13,7 @@
 			
 			name="openhealth.report_ticket_receipt_view"            
 			
-			file="openhealth_ticket_receipt.report_sale_proof"
+			file="openhealth_ticket.report_ticket_receipt"
 		/>
 
 
@@ -22,8 +22,6 @@
 			<t t-call="report.html_container">                 
 			<t t-foreach="docs" t-as="doc">
 			<t>          
-
-
 
 
 

@@ -114,18 +114,32 @@
 						<field name="vspace"   />													
 
 
-						<group>
+						<group col="1">
+
 							<group>
 <!--								
 								<field name="counter"   />		
 								<field name="code"   />	
 -->
 								<field name="order"   readonly="1"	/>													
-
 								<field name="vspace"   />	
+								<field name="name"   	invisible="1"	readonly="1"  />		
+								<field name="family"  	invisible="1" />													
+							</group>
 
-								<field name="name"   	readonly="1"  />		
 
+							<group>
+								<field name="my_firm"   />	
+
+								<field name="my_address"   />	
+
+								<field name="my_phone"   />	
+
+								<field name="my_ruc"   />	
+							</group>
+
+							<group>
+								
 								<field name="vspace"   />													
 								
 								<field name="partner" 	readonly="1"   />													
@@ -138,8 +152,8 @@
 								
 								<field name="total"   	readonly="1" />													
 
-								<field name="family"  	invisible="1" />													
 							</group>
+
 
 						</group>
 

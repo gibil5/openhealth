@@ -1092,8 +1092,13 @@ Order Line - Tree
 
 
 					<field name="vspace"/>
+                    <field name="x_my_company"/>
 
+
+					<field name="vspace"/>
 					<field name="x_doctor"/>
+
+					
 <!--
 					<field name="x_doctor_name"/>
 					<field name="doctor_name"/>

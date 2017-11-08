@@ -3,11 +3,9 @@
 
 		<report
 
-			string="Imprimir Ticket Factura"
-
+			string="Ticket Factura"
 
 			model="openhealth.ticket_invoice"
-
 
 			id="report_ticket_invoice"
 			
@@ -15,7 +13,7 @@
 			
 			name="openhealth.report_ticket_invoice_view"            
 			
-			file="openhealth_ticket_invoice.report_sale_proof"
+			file="openhealth_ticket.report_ticket_invoice"
 		/>
 
 
@@ -23,18 +21,7 @@
 		<template id="openhealth.report_ticket_invoice_view">
 			<t t-call="report.html_container">                 
 			<t t-foreach="docs" t-as="doc">
-			<t>          
-
-
-
-
-
-<!-- Header --> 
-<div class="header">    
-	<img src='/openhealth/static/src/img/logo_chavarri.png' style="max-height: 100px;"/>
-</div>
-
-
+			<t>
 
 
 
@@ -43,7 +30,7 @@
 
 <center>
 <h2>
-	Ticekt
+	Ticket Factura
 </h2>
 </center>
 <br/>

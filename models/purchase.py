@@ -4,7 +4,7 @@
 # 		*** OPEN HEALTH - Purchase   
 # 
 # Created: 				30 Oct 2017
-# Last updated: 	 	30 Oct 2017
+# Last updated: 	 	 8 Nov 2017
 
 from openerp import models, fields, api
 
@@ -14,34 +14,41 @@ from openerp import models, fields, api
 class PurchaseOrder(models.Model):
 	
 	_inherit = 'purchase.order'
-
 	_description = "Purchase Order"
 
 
 
+# New
+
+	x_cancel_reason = fields.Text(
+
+		)
+
+
+
+
+
+
+
+# Primitives 
+
+	# State 
 	state = fields.Selection([
 
 		#('draft', 'Draft PO'),
 		('draft', 'Borrador'),
 
 
-
-
 		('validated', 'Validado'),		
-
-
 
 
 		#('sent', 'RFQ Sent'),
 		('sent', 'Enviado'),
 		
 
-
 		('to approve', 'To Approve'),		
 		#('approved', 'Approved'),
 		('approved', 'Aprobado'),
-
-
 
 
 		#('purchase', 'Purchase Order'),
@@ -49,18 +56,14 @@ class PurchaseOrder(models.Model):
 		('purchase', 'Compra'),
 		
 
-
-
-		#('sent', 'Enviada'),
-		
-
 		#('done', 'Done'),
 		#('done', 'Completo'),
 		('done', 'Entregado'),
 		
 
-		
-		('cancel', 'Cancelled')
+
+		#('cancel', 'Cancelled')
+		('cancel', 'Rechazado')
 
 
 		], string='Status', readonly=True, index=True, copy=False, 
@@ -69,60 +72,25 @@ class PurchaseOrder(models.Model):
 		default='draft', 
 		#default='purchase', 
 
-		track_visibility='onchange')
+		track_visibility='onchange', 
+	)
 
 
 
 
-	#@api.multi
-	#def button_approve(self):
-
-		#self.write({'state': 'purchase'})
-	#	self.write({'state': 'approved'})
-		
-	#	self._create_picking()
-	#	return {}
 
 
 
-	# Send 
+	# Validate Button  
 	@api.multi
 	def action_validate(self):
-
 		#jx
 		self.state = 'validated'
 
 
 
 
-
-
-
-
-
-
-	READONLY_STATES = {
-		#'purchase': [('readonly', True)],
-		'purchase': [('readonly', False)],
-		'done': [('readonly', True)],
-		'cancel': [('readonly', True)],
-	}
-
-	partner_id = fields.Many2one('res.partner', string='Vendor', required=True, 
-		
-		states=READONLY_STATES, 
-
-		change_default=True, track_visibility='always')
-
-
-	order_line = fields.One2many('purchase.order.line', 'order_id', string='Order Lines', states=READONLY_STATES, copy=True)
-
-
-
-
-
-
-	# Send 
+	# Send Action 
 	@api.multi
 	def action_rfq_send(self):
 

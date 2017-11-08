@@ -33,6 +33,7 @@ class Partner(models.Model):
 			readonly=True
 			)
 
+
 	x_firm = fields.Char(
 		"Razon social", 	
 		)

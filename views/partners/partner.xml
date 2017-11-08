@@ -32,17 +32,23 @@
 <!--
 -->
 					<field name="vspace"		/>
-					<field name="x_firm"		/>					
-					<field name="x_ruc"		/>
+
+					<field name="x_firm"	attrs = "{'required':[('company_type','in',('company'))]}"	/>					
+					
+					<field name="x_ruc"		attrs = "{'required':[('company_type','in',('company'))]}"	/>
+				
 				</xpath>
 
 
 
+				<xpath expr="//field[@name='email']" position="replace">
+					<field name="email"		attrs = "{'required':[('company_type','in',('company'))]}"		/>
+				</xpath>
+
+
 
 				<xpath expr="//field[@name='lang']" position="replace">
-
 					<field name="lang"	string="Idioma"  default="es_ES"	/>
-				
 				</xpath>
 
 

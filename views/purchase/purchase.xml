@@ -170,7 +170,7 @@
 							<field name="x_type"/>
 -->
 
-							<field name="x_cancel_reason"	/>
+							<field name="x_cancel_reason"		states="cancel"		/>
 
 
 							<field name="origin" attrs="{'invisible': [('origin','=',False)]}"/>

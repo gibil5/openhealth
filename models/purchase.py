@@ -25,7 +25,7 @@ class PurchaseOrder(models.Model):
 	# Cancel Reason 
 	x_cancel_reason = fields.Text(
 
-		'Motivo de rechazo', 
+		'Motivo de Rechazo', 
 	)
 
 

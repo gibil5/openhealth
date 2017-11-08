@@ -163,11 +163,16 @@
 							<field name="partner_ref"/>
 							<field name="currency_id" groups="base.group_multi_currency"/>
 						</group>
+
 						<group>
 							<field name="date_order"/>
 <!--
 							<field name="x_type"/>
 -->
+
+							<field name="x_cancel_reason"	/>
+
+
 							<field name="origin" attrs="{'invisible': [('origin','=',False)]}"/>
 							<field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
 						</group>

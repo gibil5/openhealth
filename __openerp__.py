@@ -318,6 +318,7 @@
 		'views/sale_documents/payment_methods.xml',
 		'views/sale_documents/payment_method_line.xml',
 		
+
 		'views/sale_documents/receipts.xml',
 		'views/sale_documents/invoices.xml',
 		'views/sale_documents/advertisements.xml',

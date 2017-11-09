@@ -15,7 +15,6 @@ def _lang_get(self):
 
 class Partner(models.Model):
 	
-
 	_inherit = 'res.partner'
 	#_inherit = ['res.partner', 'base_multi_image.owner']
 	#_inherit = ['res.partner', 'oeh.medical.evaluation', 'base_multi_image.owner']
@@ -34,6 +33,13 @@ class Partner(models.Model):
 			)
 
 
+
+	x_my_company = fields.Boolean(
+			'Mi compañía ?', 
+		)
+
+
+
 	x_firm = fields.Char(
 			"Razon social", 	
 		)
@@ -46,6 +52,8 @@ class Partner(models.Model):
 
 			"DNI", 	
 		)
+
+
 
 
 

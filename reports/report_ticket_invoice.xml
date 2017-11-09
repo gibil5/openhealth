@@ -28,12 +28,190 @@
 <!-- 								Page 1 - Begin	 										-->
 <div class="page">    
 
+<!--
 <center>
 <h2>
 	Ticket Factura
 </h2>
 </center>
 <br/>
+-->
+
+
+
+
+
+
+<!-- My Firm --> 
+<br/>
+<div class='row'>
+	
+	<div class='col-xs-12'>		
+		<t t-esc="doc.my_firm"/>
+	</div>
+
+</div>
+
+
+
+<!-- My Address --> 
+<div class='row'>
+	
+	<div class='col-xs-12'>		
+		<t t-esc="doc.my_address"/>
+	</div>
+
+</div>
+
+
+
+
+
+<!-- My Phone --> 
+<div class='row'>
+	
+	<div class='col-xs-4'>		
+		<b>Telf:</b>
+	</div>
+
+	<div class='col-xs-8'>
+		<t t-esc="doc.my_phone"/>
+	</div>
+</div>
+
+
+
+<!-- My Ruc --> 
+<div class='row'>
+
+	<div class='col-xs-4'>		
+		<b>Ruc:</b>
+	</div>
+
+	<div class='col-xs-8'>
+		<t t-esc="doc.my_ruc"/>
+	</div>
+</div>
+
+
+
+<br/>
+
+
+
+<!-- Serial number --> 
+<div class='row'>
+
+	<div class='col-xs-4'>		
+		<b>Serie:</b>
+	</div>
+
+	<div class='col-xs-8'>
+		<t t-esc="doc.serial_nr"/>
+	</div>
+</div>
+
+
+
+<!-- Authorization --> 
+<div class='row'>
+
+	<div class='col-xs-4'>		
+		<b>Autorización</b>
+	</div>
+
+	<div class='col-xs-8'>
+		<t t-esc="doc.authorization"/>
+	</div>
+</div>
+
+
+
+
+<br/>
+
+
+
+
+
+
+
+
+<!-- Customer --> 
+<div class='row'>
+
+	<div class='col-xs-4'>		
+		<b>Cliente:</b>
+	</div>
+
+	<div class='col-xs-8'>
+		<t t-esc="doc.par_name"/>
+	</div>
+</div>
+
+
+
+<!-- DNI --> 
+<div class='row'>
+
+	<div class='col-xs-4'>		
+		<b>DNI:</b>
+	</div>
+
+	<div class='col-xs-8'>
+		<t t-esc="doc.par_dni"/>
+	</div>
+</div>
+
+
+
+<!-- Address --> 
+<div class='row'>
+
+	<div class='col-xs-4'>		
+		<b>Dirección:</b>
+	</div>
+
+	<div class='col-xs-8'>
+		<t t-esc="doc.par_address"/>
+	</div>
+</div>
+
+
+
+
+
+
+<!-- Firm --> 
+<div class='row'>
+	
+	<div class='col-xs-4'>		
+		<b>Raz. Social:</b>
+	</div>
+
+	<div class='col-xs-8'>
+		<t t-esc="doc.par_firm"/>
+	</div>
+
+</div>
+
+
+
+
+<!-- Ruc --> 
+<div class='row'>
+
+	<div class='col-xs-4'>		
+		<b>Ruc:</b>
+	</div>
+
+	<div class='col-xs-8'>
+		<t t-esc="doc.par_ruc"/>
+	</div>
+</div>
+
+
+
 
 
 
@@ -41,58 +219,89 @@
 
 
 <br/>
+<br/>
+
 <!-- Date --> 
 <div class='row'>
 	
-	<div class='col-xs-7'>		
-		<b>Total:</b>
-<!--
-		<t t-esc="doc.total"/>
--->
+	<div class='col-xs-4'>		
+		<b>Fecha:</b>
 	</div>
 
-	<div class='col-xs-5'>
-		<b>Fecha y hora:</b>
+	<div class='col-xs-8'>
 		<t t-esc="doc.date_created"/>
 	</div>
 </div>
+
+
+
+<!-- Name --> 
+<div class='row'>
+	
+	<div class='col-xs-4'>		
+		<b>Tick. Factura:</b>
+	</div>
+
+	<div class='col-xs-8'>
+		<t t-esc="doc.name"/>
+	</div>
+</div>
+
+
+
 <br/>
 
 
 
-<!-- Title --> 
-<h3>                            
-	Documentos de Pago
-</h3>
-<!--
+
+<!-- Line --> 
+<div class='row'>
+	
+	<div class='col-xs-12'>
+		<t t-esc="doc.order_line"/>
+	</div>
+</div>
+
+
+
 <br/>
--->
 
 
-<!-- Table --> 
-<table style="line-height: 300%;">
+<!-- Total --> 
+<div class='row'>
+	
+	<div class='col-xs-4'>		
+		<b>Total S/.:</b>
+	</div>
 
-<tr>
-<th>Boletas Físicas:</th>
-
-<th>
-<!--
-	<t t-esc="doc.rec_tot"/>
--->
-</th>
-
-</tr>
+	<div class='col-xs-8'>
+		<t t-esc="doc.total"/>
+	</div>
+</div>
 
 
 
 
-<!--
-<tr>
-<th>Dirección:</th>
-<th><t t-esc="doc.street"/></th>
-</tr>
--->
-	</table>    
+<!-- Total --> 
+<div class='row'>
+	
+	<div class='col-xs-4'>		
+		<b>Son:</b>
+	</div>
+
+	<div class='col-xs-8'>
+		<t t-esc="doc.total_in_words"/>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+<br/>
 <br/>
 <br/>
 
@@ -125,7 +334,7 @@
 		</div>
 
 
-		<div class='col-xs-5'>
+		<div class='col-xs-4'>
 			<b>
 			Cierre de Caja #:
 			</b>

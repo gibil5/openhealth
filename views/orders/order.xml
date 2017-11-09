@@ -1278,13 +1278,9 @@ Order Line - Tree
 
 					<field name="x_type" />
 
-
                     <field name="date_order"	string="Fecha"	/>
 
                     <field name="state"/>
-
-
-
 
 
 

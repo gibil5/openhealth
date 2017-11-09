@@ -68,26 +68,30 @@
 
 					<field name="name"/>
 
-                    <field name="product_id"/>
+					<field name="product_uom_qty"	string="Cnt"		/>
+
+                    <field name="price_unit"		string="P. Unit."	/>
 
                     <field name="price_subtotal" />
 
+
+  
+<!--
                     <field name="price_total"/>
 
-
-<!--
-                    <field name="price_unit"/>
+                    <field name="product_id"/>
 
                     <field name="purchase_price"/>
 
-
                     <field name="price_tax"/>
-
 
 					<field name="margin"/>
 -->
 
 
+				</tree>
+			</field>
+		</record>
 
 <!--
 					<field name="description"/>
@@ -96,10 +100,6 @@
 					<field name="order_id"/>
 					<field name="state"/>
 -->
-				</tree>
-			</field>
-		</record>
-
 
 
 

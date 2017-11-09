@@ -143,9 +143,13 @@
 
 								<field name="partner" 	readonly="1"   />													
 
+								<field name="par_firm" 		   />													
+
+								<field name="par_address" 		   />													
+
 								<field name="par_dni" 		   />													
 
-								<field name="par_address"   />	
+								<field name="par_ruc"   />	
 
 							</group>
 

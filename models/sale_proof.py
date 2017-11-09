@@ -24,6 +24,20 @@ class SaleProof(models.Model):
 
 
 
+
+# Other 
+
+	serial_nr = fields.Char(
+		)
+
+	authorization = fields.Char(
+		)
+
+
+
+
+
+
 # My Company
 
 
@@ -100,6 +114,30 @@ class SaleProof(models.Model):
 # Customer 
 
 
+
+
+	# Name
+	par_name = fields.Char(
+
+			"Nombre",
+			compute='_compute_par_name', 
+		)
+
+	@api.multi
+	#@api.depends('')
+	def _compute_par_name(self):
+		for record in self:
+
+			par = record.order.partner_id
+
+			record.par_name = par.name
+
+
+
+
+
+
+
 	# DNI
 	par_dni = fields.Char(
 
@@ -112,6 +150,7 @@ class SaleProof(models.Model):
 	def _compute_par_dni(self):
 		for record in self:
 			record.par_dni = record.order.partner_id.x_dni
+
 
 
 
@@ -131,6 +170,54 @@ class SaleProof(models.Model):
 			par = record.order.partner_id
 
 			record.par_address = par.street + ' - ' + par.street2 + ' - ' + par.city
+
+
+
+
+
+	# Ruc
+	par_ruc = fields.Char(
+
+			"Ruc",
+			compute='_compute_par_ruc', 
+		)
+
+	@api.multi
+	#@api.depends('')
+	def _compute_par_ruc(self):
+		for record in self:
+
+			par = record.order.partner_id
+
+			record.par_ruc = par.x_ruc
+
+
+
+
+
+	# Firm
+	par_firm = fields.Char(
+			"Razon social",
+
+			compute='_compute_par_firm', 
+		)
+
+	@api.multi
+	#@api.depends('')
+	def _compute_par_firm(self):
+		for record in self:
+
+			par = record.order.partner_id
+
+			record.par_firm = par.x_firm
+
+
+
+
+
+
+
+
 
 
 
@@ -160,7 +247,7 @@ class SaleProof(models.Model):
 	# Ruc
 	total_in_words = fields.Char(
 
-			"Total",
+			"",
 			compute='_compute_total_in_words', 
 		)
 
@@ -386,8 +473,9 @@ class SaleProof(models.Model):
 			required=True, 
 		)
 
+
 	total = fields.Float(
-			string = 'Total', 
+			string = 'Total S/.', 
 			required=True, 
 		)
 

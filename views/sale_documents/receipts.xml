@@ -160,14 +160,15 @@
 
 
 							<group>
-								
+<!--
 								<field name="vspace"   />													
 								
 								<field name="order_line" 		   />													
 
-								<field name="total"   			readonly="1" />													
 
 								<field name="total_in_words"   	readonly="1" />													
+-->
+								<field name="total"   			readonly="1" />													
 							</group>
 						</group>
 

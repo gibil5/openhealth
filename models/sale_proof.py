@@ -6,7 +6,7 @@
 
 from openerp import models, fields, api
 
-#from num2words import num2words
+from num2words import num2words
 
 
 
@@ -169,8 +169,8 @@ class SaleProof(models.Model):
 	def _compute_total_in_words(self):
 		for record in self:
 
-			#words = num2words(record.total, lang='es')
-			words = record.total
+			#words = record.total
+			words = num2words(record.total, lang='es')
 
 			record.total_in_words = words.title() + ' Soles'
 

@@ -25,6 +25,17 @@
 
 
 
+
+
+
+
+<!-- Header --> 
+<div class="header">    
+	<img src='/openhealth/static/src/img/logo_chavarri.png' style="max-height: 100px;"/>
+</div>
+
+
+
 <!-- 								Page 1 - Begin	 										-->
 <div class="page">    
 
@@ -38,6 +49,15 @@
 -->
 
 
+
+<br/>
+<br/>
+<h2>
+<center>
+	Ticket Factura
+</center>
+</h2>
+<br/>
 
 
 

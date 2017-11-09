@@ -1567,7 +1567,7 @@ class sale_order(models.Model):
 	vspace = fields.Char(
 			' ', 
 			readonly=True
-			)
+		)
 	
 	
 	order_line = field_One2many=fields.One2many(
@@ -1576,7 +1576,7 @@ class sale_order(models.Model):
 
 		#string='Order',
 		#compute="_compute_order_line",
-		)
+	)
 
 
 	#@api.multi

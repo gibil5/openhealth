@@ -6,6 +6,9 @@
 
 from openerp import models, fields, api
 
+from num2words import num2words
+
+
 
 class SaleProof(models.Model):
 	
@@ -21,7 +24,10 @@ class SaleProof(models.Model):
 
 
 
+# My Company
 
+
+	# Firm
 	my_firm = fields.Char(
 			"Razon social",
 
@@ -33,6 +39,7 @@ class SaleProof(models.Model):
 	def _compute_my_firm(self):
 		for record in self:
 			record.my_firm = record.order.x_my_company.x_firm
+
 
 
 
@@ -52,7 +59,6 @@ class SaleProof(models.Model):
 
 
 
-
 	# Phone 
 	my_phone = fields.Char(
 
@@ -65,7 +71,6 @@ class SaleProof(models.Model):
 	def _compute_my_phone(self):
 		for record in self:
 			record.my_phone = record.order.x_my_company.phone
-
 
 
 
@@ -92,12 +97,81 @@ class SaleProof(models.Model):
 
 
 
-	# Ruc
-	my_ruc = fields.Char(
+# Customer 
 
-			"Ruc",
-			compute='_compute_my_ruc', 
+
+	# DNI
+	par_dni = fields.Char(
+
+			"DNI",
+			compute='_compute_par_dni', 
 		)
+
+	@api.multi
+	#@api.depends('')
+	def _compute_par_dni(self):
+		for record in self:
+			record.par_dni = record.order.partner_id.x_dni
+
+
+
+
+	# Address
+	par_address = fields.Char(
+
+			"Dirección",
+			compute='_compute_par_address', 
+		)
+
+	@api.multi
+	#@api.depends('')
+	def _compute_par_address(self):
+		for record in self:
+
+			par = record.order.partner_id
+
+			record.par_address = par.street + ' - ' + par.street2 + ' - ' + par.city
+
+
+
+
+
+# Sale
+
+	# Order lines 
+	order_line = field_One2many=fields.One2many(
+
+			'sale.order.line',
+			'order_id',
+			'Order line',
+
+			compute='_compute_order_line', 			
+	)
+
+	@api.multi
+	#@api.depends('')
+	def _compute_order_line(self):
+		for record in self:
+			record.order_line = record.order.order_line
+
+
+
+
+	# Ruc
+	total_in_words = fields.Char(
+
+			"Total",
+			compute='_compute_total_in_words', 
+		)
+
+	@api.multi
+	#@api.depends('')
+	def _compute_total_in_words(self):
+		for record in self:
+
+			words = num2words(record.total, lang='es')
+
+			record.total_in_words = words.title() + ' Soles'
 
 
 

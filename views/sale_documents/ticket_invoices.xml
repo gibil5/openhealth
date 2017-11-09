@@ -29,7 +29,7 @@
 
 
 				<xpath expr="//field[@name='total']" position="after">
-
+<!--
 					<field name="vspace" />
 					
 					<field name="ruc"		required="1"		 />
@@ -37,7 +37,7 @@
 					<field name="company"	required="1"		 />
 
 					<field name="address"	required="1"		 />
-
+-->
 				</xpath>
 
 

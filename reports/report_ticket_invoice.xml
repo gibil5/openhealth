@@ -285,13 +285,15 @@
 	</div>
 -->
 
-<b>
 
 <div class='row'>
-	<t t-esc="doc.cr"/>
+	<div class='col-xs-12'>
+		<t t-esc="doc.cr"/>
+	</div>
 </div>
 
 
+<b>
 <div class='row'>
 	<div class='col-xs-4'>
 		Descr.
@@ -309,13 +311,15 @@
 		Subtotal
 	</div>
 </div>
+</b>
 
 
 <div class='row'>
-	<t t-esc="doc.cr"/>
+	<div class='col-xs-12'>
+		<t t-esc="doc.cr"/>
+	</div>
 </div>
 
-</b>
 
 
 
@@ -342,7 +346,9 @@
 </t>
 
 <div class='row'>
-	<t t-esc="doc.cr"/>
+	<div class='col-xs-12'>
+		<t t-esc="doc.cr"/>
+	</div>
 </div>
 
 

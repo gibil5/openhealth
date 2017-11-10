@@ -57,6 +57,7 @@
 	Ticket Factura
 </center>
 </h3>
+<br/>
 
 
 
@@ -64,22 +65,22 @@
 <!-- My Firm --> 
 <br/>
 <div class='row'>
-	
+<b>	
 	<div class='col-xs-12'>		
 		<t t-esc="doc.my_firm"/>
 	</div>
-
+</b>
 </div>
 
 
 
 <!-- My Address --> 
 <div class='row'>
-	
+<b>	
 	<div class='col-xs-12'>		
 		<t t-esc="doc.my_address"/>
 	</div>
-
+</b>
 </div>
 
 
@@ -277,11 +278,71 @@
 
 
 <!-- Line --> 
-<div class='row'>
 	
+<!--	
 	<div class='col-xs-12'>
-		<t t-esc="doc.order_line"/>
+		<t t-esc="doc.order_line_txt"/>
 	</div>
+-->
+
+<b>
+
+<div class='row'>
+	<t t-esc="doc.cr"/>
+</div>
+
+
+<div class='row'>
+	<div class='col-xs-4'>
+		Descr.
+	</div>
+
+	<div class='col-xs-2'>
+		Cnt
+	</div>
+
+	<div class='col-xs-3'>
+		P. Unit.
+	</div>
+
+	<div class='col-xs-3'>
+		Subtotal
+	</div>
+</div>
+
+
+<div class='row'>
+	<t t-esc="doc.cr"/>
+</div>
+
+</b>
+
+
+
+<t t-foreach="doc.order_line" t-as="line">
+<div class='row'>
+
+		<div class='col-xs-4'>
+			<t t-esc="line.name"/>
+		</div>
+
+		<div class='col-xs-2'>
+			<t t-esc="line.product_uom_qty"/>
+		</div>
+
+		<div class='col-xs-3'>
+			<t t-esc="line.price_unit"/>
+		</div>
+
+		<div class='col-xs-3'>
+			<t t-esc="line.price_subtotal"/>
+		</div>
+
+</div>
+</t>
+
+<div class='row'>
+	<t t-esc="doc.cr"/>
 </div>
 
 

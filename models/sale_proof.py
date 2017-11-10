@@ -4,6 +4,12 @@
 # 
 #
 
+
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
+
 from openerp import models, fields, api
 
 from num2words import num2words
@@ -265,10 +271,15 @@ class SaleProof(models.Model):
 			txt = 'Descripción\tCNT\tP. UNIT.\tSubtotal\n'
 
 			for line in record.order_line: 
-				#txt = txt + line.name + '\t' + line.product_uom_qty + '\t' + line.price_unit + '\t' + line.price_subtotal + '\n'
-				#txt = txt + line.name + '\n'
 				print line
 				print line.name 
+
+				#txt = txt + line.name + '\t' + line.product_uom_qty + '\t' + line.price_unit + '\t' + line.price_subtotal + '\n'
+				txt = txt + line.name + '\t' + str(line.product_uom_qty) + '\t' + str(line.price_unit) + '\t' + str(line.price_subtotal) + '\n'
+
+				#txt = txt + line.name + '\n'
+				#txt = txt + line.name 
+				#txt = txt + line.name + '\n'
 
 
 			record.order_line_txt = txt
@@ -276,6 +287,10 @@ class SaleProof(models.Model):
 
 
 
+
+	cr = fields.Char(
+			default='-------------------------------------------------------', 
+		)
 
 
 

@@ -127,6 +127,15 @@
 							</group>
 
 
+<!--
+							<group>
+								<field name="vspace"   />													
+								<field name="order_line_txt" />
+								<field name="vspace"   />													
+							</group>
+-->
+
+
 							<group>
 								<field name="my_firm"   />	
 
@@ -136,6 +145,11 @@
 
 								<field name="my_ruc"   />	
 							</group>
+
+
+
+
+
 
 							<group>
 								
@@ -169,7 +183,6 @@
 								
 								<field name="order_line" />													
 
-								<field name="order_line_txt" />
 
 								<field name="vspace"   />													
 
@@ -177,6 +190,9 @@
 
 								<field name="total_in_words"   	readonly="1" />													
 							</group>
+
+
+
 						</group>
 
 

@@ -1,6 +1,9 @@
 <openerp>
 	<data>
 
+
+<!-- Ticket Factura -->
+
 		<report
 
 			string="Ticket Factura"
@@ -25,10 +28,6 @@
 
 
 
-
-
-
-
 <!-- Header --> 
 <!--
 <div class="header">    
@@ -37,20 +36,12 @@
 -->
 
 
+
 <!-- 								Page 1 - Begin	 										-->
 <div class="page">    
 
-<!--
-<center>
-<h2>
-	Ticket Factura
-</h2>
-</center>
-<br/>
--->
 
-
-
+<!-- Title --> 
 <br/>
 <h3>
 <center>
@@ -58,7 +49,6 @@
 </center>
 </h3>
 <br/>
-
 
 
 
@@ -85,15 +75,11 @@
 
 
 
-
-
 <!-- My Phone --> 
 <div class='row'>
-	
 	<div class='col-xs-4'>		
 		<b>Telf:</b>
 	</div>
-
 	<div class='col-xs-8'>
 		<t t-esc="doc.my_phone"/>
 	</div>
@@ -103,29 +89,22 @@
 
 <!-- My Ruc --> 
 <div class='row'>
-
 	<div class='col-xs-4'>		
 		<b>Ruc:</b>
 	</div>
-
 	<div class='col-xs-8'>
 		<t t-esc="doc.my_ruc"/>
 	</div>
 </div>
-
-
-
 <br/>
 
 
 
 <!-- Serial number --> 
 <div class='row'>
-
 	<div class='col-xs-4'>		
 		<b>Serie:</b>
 	</div>
-
 	<div class='col-xs-8'>
 		<t t-esc="doc.serial_nr"/>
 	</div>
@@ -135,23 +114,14 @@
 
 <!-- Authorization --> 
 <div class='row'>
-
 	<div class='col-xs-4'>		
 		<b>Autorización</b>
 	</div>
-
 	<div class='col-xs-8'>
 		<t t-esc="doc.authorization"/>
 	</div>
 </div>
-
-
-
-
 <br/>
-
-
-
 
 
 
@@ -159,11 +129,9 @@
 
 <!-- Customer --> 
 <div class='row'>
-
 	<div class='col-xs-4'>		
 		<b>Cliente:</b>
 	</div>
-
 	<div class='col-xs-8'>
 		<t t-esc="doc.par_name"/>
 	</div>
@@ -171,15 +139,12 @@
 
 
 
-
 <!-- DNI --> 
 <!--
 <div class='row'>
-
 	<div class='col-xs-4'>		
 		<b>DNI:</b>
 	</div>
-
 	<div class='col-xs-8'>
 		<t t-esc="doc.par_dni"/>
 	</div>
@@ -190,11 +155,9 @@
 
 <!-- Address --> 
 <div class='row'>
-
 	<div class='col-xs-4'>		
 		<b>Dirección:</b>
 	</div>
-
 	<div class='col-xs-8'>
 		<t t-esc="doc.par_address"/>
 	</div>
@@ -202,55 +165,37 @@
 
 
 
-
-
-
 <!-- Firm --> 
 <div class='row'>
-	
 	<div class='col-xs-4'>		
 		<b>Raz. Social:</b>
 	</div>
-
 	<div class='col-xs-8'>
 		<t t-esc="doc.par_firm"/>
 	</div>
-
 </div>
-
 
 
 
 <!-- Ruc --> 
 <div class='row'>
-
 	<div class='col-xs-4'>		
 		<b>Ruc:</b>
 	</div>
-
 	<div class='col-xs-8'>
 		<t t-esc="doc.par_ruc"/>
 	</div>
 </div>
-
-
-
-
-
-
-
-
-
 <br/>
 <br/>
+
+
 
 <!-- Date --> 
 <div class='row'>
-	
 	<div class='col-xs-4'>		
 		<b>Fecha:</b>
 	</div>
-
 	<div class='col-xs-8'>
 		<t t-esc="doc.date_created"/>
 	</div>
@@ -260,37 +205,26 @@
 
 <!-- Name --> 
 <div class='row'>
-	
 	<div class='col-xs-4'>		
 		<b>Ticket Factura:</b>
 	</div>
-
 	<div class='col-xs-8'>
 		<t t-esc="doc.name"/>
 	</div>
 </div>
-
-
-
 <br/>
 
 
 
 
+
 <!-- Line --> 
-	
-<!--	
-	<div class='col-xs-12'>
-		<t t-esc="doc.order_line_txt"/>
-	</div>
--->
-
-
 <div class='row'>
 	<div class='col-xs-12'>
 		<t t-esc="doc.cr"/>
 	</div>
 </div>
+
 
 
 <b>
@@ -298,15 +232,12 @@
 	<div class='col-xs-4'>
 		Descr.
 	</div>
-
 	<div class='col-xs-2'>
 		Cnt
 	</div>
-
 	<div class='col-xs-3'>
 		P. Unit.
 	</div>
-
 	<div class='col-xs-3'>
 		Subtotal
 	</div>
@@ -314,55 +245,48 @@
 </b>
 
 
+
 <div class='row'>
 	<div class='col-xs-12'>
 		<t t-esc="doc.cr"/>
 	</div>
 </div>
-
 
 
 
 <t t-foreach="doc.order_line" t-as="line">
 <div class='row'>
-
 		<div class='col-xs-4'>
 			<t t-esc="line.name"/>
 		</div>
-
 		<div class='col-xs-2'>
 			<t t-esc="line.product_uom_qty"/>
 		</div>
-
 		<div class='col-xs-3'>
 			<t t-esc="line.price_unit"/>
 		</div>
-
 		<div class='col-xs-3'>
 			<t t-esc="line.price_subtotal"/>
 		</div>
-
 </div>
 </t>
+
+
 
 <div class='row'>
 	<div class='col-xs-12'>
 		<t t-esc="doc.cr"/>
 	</div>
 </div>
-
-
-
 <br/>
+
 
 
 <!-- Total --> 
 <div class='row'>
-	
 	<div class='col-xs-4'>		
 		<b>Total S/.:</b>
 	</div>
-
 	<div class='col-xs-8'>
 		<t t-esc="doc.total"/>
 	</div>
@@ -370,70 +294,22 @@
 
 
 
-
 <!-- Total --> 
 <div class='row'>
-	
 	<div class='col-xs-4'>		
 		<b>Son:</b>
 	</div>
-
 	<div class='col-xs-8'>
 		<t t-esc="doc.total_in_words"/>
 	</div>
 </div>
-
-
-
-
-
-
-
-
 <br/>
 <br/>
 <br/>
-
-
-
-
 </div> <!-- page --> 
 
 
 
-
-
-
-
-
-<!-- Footer --> 
-<!--
-<div class="footer">    
-	<div class='row'>
-
-		<div class='col-xs-4'>
-			<b>
-			Fecha:
-			</b>
-			<t t-esc="doc.name"/>
-		</div>
-
-
-		<div class='col-xs-3'>
-		</div>
-
-
-		<div class='col-xs-4'>
-			<b>
-			Cierre de Caja #:
-			</b>
-			<t t-esc="doc.date_time"/>
-		</div>
-	
-	</div>
-</div>
--->
-<!-- Footer --> 
 
 
 			</t>

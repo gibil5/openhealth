@@ -244,6 +244,44 @@ class SaleProof(models.Model):
 
 
 
+
+	# Order lines text 
+	order_line_txt = field_One2many=fields.Text(
+
+			'Order Lines Text',
+
+			#default = '', 
+			compute='_compute_order_line_txt', 			
+	)
+
+	@api.multi
+	#@api.depends('')
+	def _compute_order_line_txt(self):
+		for record in self:
+
+			print 'jx'
+			print 'Compute order line txt'
+
+			txt = 'Descripción\tCNT\tP. UNIT.\tSubtotal\n'
+
+			for line in record.order_line: 
+				#txt = txt + line.name + '\t' + line.product_uom_qty + '\t' + line.price_unit + '\t' + line.price_subtotal + '\n'
+				#txt = txt + line.name + '\n'
+				print line
+				print line.name 
+
+
+			record.order_line_txt = txt
+
+
+
+
+
+
+
+
+
+
 	# Ruc
 	total_in_words = fields.Char(
 

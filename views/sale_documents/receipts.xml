@@ -167,7 +167,11 @@
 
 								<field name="vspace"   />													
 								
-								<field name="order_line" 		   />													
+								<field name="order_line" />													
+
+								<field name="order_line_txt" />
+
+								<field name="vspace"   />													
 
 								<field name="total"   			readonly="1" />													
 

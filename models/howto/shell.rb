@@ -45,6 +45,22 @@ self.env['mail.template'].search([('name', '=', 'RFQ - Send by Email - jx')])
 
 
 
+
+
+self.env['openhealth.ticket_invoice']
+
+self.env['openhealth.ticket_invoice'].search([('name', 'like', 'J')])
+
+self.env['openhealth.ticket_invoice'].search([('name', 'like', '8')])
+
+
+
+
+
+
+
+
+
 self.env['purchase.order']
 
 self.env['purchase.order'].search([('name', 'like', 'J')])

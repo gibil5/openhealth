@@ -30,10 +30,11 @@
 
 
 <!-- Header --> 
+<!--
 <div class="header">    
 	<img src='/openhealth/static/src/img/logo_chavarri.png' style="max-height: 100px;"/>
 </div>
-
+-->
 
 
 <!-- 								Page 1 - Begin	 										-->
@@ -51,13 +52,11 @@
 
 
 <br/>
-<br/>
-<h2>
+<h3>
 <center>
 	Ticket Factura
 </center>
-</h2>
-<br/>
+</h3>
 
 
 
@@ -171,7 +170,9 @@
 
 
 
+
 <!-- DNI --> 
+<!--
 <div class='row'>
 
 	<div class='col-xs-4'>		
@@ -182,6 +183,7 @@
 		<t t-esc="doc.par_dni"/>
 	</div>
 </div>
+-->
 
 
 
@@ -259,7 +261,7 @@
 <div class='row'>
 	
 	<div class='col-xs-4'>		
-		<b>Tick. Factura:</b>
+		<b>Ticket Factura:</b>
 	</div>
 
 	<div class='col-xs-8'>

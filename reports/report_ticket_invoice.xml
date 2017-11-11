@@ -239,7 +239,7 @@
 		P. Unit.
 	</div>
 	<div class='col-xs-3'>
-		Subtotal
+		Total
 	</div>
 </div>
 </b>
@@ -279,6 +279,36 @@
 	</div>
 </div>
 <br/>
+
+
+
+
+
+
+
+
+
+<!-- Net --> 
+<div class='row'>
+	<div class='col-xs-4'>		
+		<b>Neto:</b>
+	</div>
+	<div class='col-xs-8'>
+		<t t-esc="doc.total_net"/>
+	</div>
+</div>
+
+<!-- Tax --> 
+<div class='row'>
+	<div class='col-xs-4'>		
+		<b>IGV:</b>
+	</div>
+	<div class='col-xs-8'>
+		<t t-esc="doc.total_tax"/>
+	</div>
+</div>
+
+
 
 
 

@@ -174,7 +174,6 @@ class SaleProof(models.Model):
 
 
 
-
 	# Name
 	par_name = fields.Char(
 
@@ -342,11 +341,7 @@ class SaleProof(models.Model):
 
 
 
-
-
-
-
-	# Ruc
+	# Total in Words
 	total_in_words = fields.Char(
 
 			"",
@@ -362,6 +357,51 @@ class SaleProof(models.Model):
 			words = num2words(record.total, lang='es')
 
 			record.total_in_words = words.title() + ' Soles'
+
+
+
+
+
+
+
+
+	# Total Net
+	total_net = fields.Float(
+
+			"Neto",
+			compute='_compute_total_net', 
+		)
+
+	@api.multi
+	#@api.depends('')
+	def _compute_total_net(self):
+		for record in self:
+
+			record.total_net = record.total * 0.82
+
+
+
+
+
+	# Total Net
+	total_tax = fields.Float(
+
+			"Neto",
+			compute='_compute_total_tax', 
+		)
+
+	@api.multi
+	#@api.depends('')
+	def _compute_total_tax(self):
+		for record in self:
+
+			record.total_tax = record.total * 0.18
+
+
+
+
+
+
 
 
 

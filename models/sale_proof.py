@@ -33,6 +33,22 @@ class SaleProof(models.Model):
 
 # Other 
 
+
+	cr = fields.Char(
+			default='-------------------------------------------------------------------', 
+		)
+
+
+	warning = fields.Char(
+			default='Por medio del presente, se informa que en caso de cancelación de tratamiento \
+			o de la consulta por parte del paciente, ya sea de manera expresa o tácita, este autoriza \
+			a la empresa la retención del 15% del costo del tratamiento o el 25% de la consulta, sea el caso, \
+			por concepto de gastos administrativos y gastos operativos. \
+			(Art. 67 Ley 29571, Art 40 Ley General de Salud)', 
+		)
+
+
+
 	serial_nr = fields.Char(
 		)
 
@@ -111,6 +127,43 @@ class SaleProof(models.Model):
 			com = record.order.x_my_company
 
 			record.my_address = com.street + ' - ' + com.street2 + ' - ' + com.city
+
+
+
+
+
+	# Website
+	my_website = fields.Char(
+
+			"Website",
+			compute='_compute_my_website', 
+		)
+
+	@api.multi
+	#@api.depends('')
+	def _compute_my_website(self):
+		for record in self:
+			record.my_website = record.order.x_my_company.website
+
+
+
+
+	# Email
+	my_email = fields.Char(
+
+			"Email",
+			compute='_compute_my_email', 
+		)
+
+	@api.multi
+	#@api.depends('')
+	def _compute_my_email(self):
+		for record in self:
+			record.my_email = record.order.x_my_company.email
+
+
+
+
 
 
 
@@ -287,10 +340,6 @@ class SaleProof(models.Model):
 
 
 
-
-	cr = fields.Char(
-			default='-------------------------------------------------------------------', 
-		)
 
 
 

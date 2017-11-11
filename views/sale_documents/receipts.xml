@@ -192,7 +192,13 @@
 							</group>
 
 
+							<group>
 
+								<field name="vspace"   />													
+								
+								<field name="warning" />													
+
+							</group>
 						</group>
 
 

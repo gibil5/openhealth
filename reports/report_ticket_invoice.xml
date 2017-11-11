@@ -294,7 +294,7 @@
 
 
 
-<!-- Total --> 
+<!-- Total Words --> 
 <div class='row'>
 	<div class='col-xs-4'>		
 		<b>Son:</b>
@@ -304,6 +304,42 @@
 	</div>
 </div>
 <br/>
+
+
+
+
+
+<center>
+<!-- Website --> 
+<div class='row'>
+	<div class='col-xs-12'>
+		<t t-esc="doc.my_website"/>
+	</div>
+</div>
+
+<!-- Email --> 
+<div class='row'>
+	<div class='col-xs-12'>
+		<t t-esc="doc.my_email"/>
+	</div>
+</div>
+</center>
+<br/>
+<br/>
+
+
+
+
+
+<!-- Warning --> 
+<div class='row'>
+	<div class='col-xs-12'>
+		<t t-esc="doc.warning"/>
+	</div>
+</div>
+
+
+
 <br/>
 <br/>
 </div> <!-- page --> 

@@ -22,7 +22,7 @@
 
 		Last built: 	10 November 2017 - Yey !
 
-		Created: 	 	10 Sep 2016
+		Created: 	 	11 Sep 2016
 
 		Active for: 	12 months !
 
@@ -102,7 +102,10 @@
 
 
 		# Ticket 
+		'reports/report_ticket_sale_proof.xml',
 		'reports/report_ticket_receipt.xml',
+
+		'reports/report_ticket_sale_proof.xml',
 		'reports/report_ticket_invoice.xml',
 
 

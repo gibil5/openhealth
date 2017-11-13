@@ -1,5 +1,6 @@
 <openerp>
-	<data>
+	<data noupdate='1'>
+
 
 
 <!-- Ticket Boleta -->

@@ -101,12 +101,12 @@
 
 
 
+
 		# Ticket 
 		'reports/report_ticket_sale_proof.xml',
+		'reports/report_ticket_invoice.xml',
 		'reports/report_ticket_receipt.xml',
 
-		'reports/report_ticket_sale_proof.xml',
-		'reports/report_ticket_invoice.xml',
 
 
 

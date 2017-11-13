@@ -204,7 +204,7 @@
 <!-- Name --> 
 <div class='row'>
 	<div class='col-xs-4'>		
-		<b>Ticket Factura:</b>
+		<b>Ticket:</b>
 	</div>
 	<div class='col-xs-8'>
 		<t t-esc="doc.name"/>

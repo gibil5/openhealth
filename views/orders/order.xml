@@ -1093,7 +1093,7 @@ Order Line - Tree
 
 					<field name="vspace"/>
 
-                    <field name="x_my_company"/>
+                    <field name="x_my_company"		groups="openhealth.roots"	/>
 
 
 					<field name="vspace"/>

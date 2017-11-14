@@ -167,10 +167,8 @@
 
 
 		#'security/openhealth_security_oe.xml',		# DEPRECATED !!! 
-
-		
-
 		#'security/openhealth_security.xml',
+
 
 
 		'security/openhealth_security_readers.xml',

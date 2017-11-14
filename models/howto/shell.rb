@@ -23,6 +23,13 @@ s= self.env['product.template'].search([  ('x_treatment', '=', 'hyaluronic_acid'
 
 
 
+self.env['stock.picking'].search([('name', 'like', 'J')])
+
+self.env['stock.picking'].search([('name', 'like', 'CC/OUT/00007')])
+
+
+
+
 
 
 

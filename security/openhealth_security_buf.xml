@@ -207,6 +207,7 @@
 
 
 
+
 <!-- Caja --> 
 		<record id="openhealth.caja" model="res.groups">
 			<field name="name">Caja</field>

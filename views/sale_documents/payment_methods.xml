@@ -54,7 +54,7 @@
 								class="oe_highlight"
 								states="payment"						
 
-								string="Generar Documento"
+								string="Generar"
 						/>
 
 

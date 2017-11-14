@@ -529,7 +529,9 @@ openhealth.almacens
 -->
     <menuitem 
     	name="Contacts"
+
         id="mail.menu_contacts"
+        
         sequence="4"
         
         action="mail.action_contacts"

@@ -126,7 +126,13 @@
 
 
 
-
+<!--
+            <field name="domain">
+            	[
+					('category_id','=','staff'), 
+            	]
+            </field>
+-->
 		<record model="ir.actions.act_window" id="mail.action_contacts">
 
 			<field name="name">Contacts</field>
@@ -137,14 +143,7 @@
 			
 			<field name="view_mode">tree,form</field>
 			
-            <field name="domain">
-
-            	[
-					('category_id','=','staff'), 
-            	]
-
-            </field>
-
+            <field name="domain">[]</field>
 
 			<!--
             <field name="domain">[]</field>

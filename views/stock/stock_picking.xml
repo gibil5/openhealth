@@ -5,12 +5,14 @@
 
 
 		<!-- FORM --> 
-		<record id="purchase_order_form" model="ir.ui.view">
+		<record id="stock_picking_form" model="ir.ui.view">
 
-			<field name="name">openhealth.order.form</field>
-			<field name="model">purchase.order</field>
+			<field name="name">openhealth.stock.picking</field>
+
+			<field name="model">stock.picking</field>
 			
-			<field name="inherit_id" ref="purchase.purchase_order_form"/>	
+			<field name="inherit_id" ref="stock.view_picking_form"/>	
+
 	        <field name="mode">primary</field>
 	        
 	        <field name="priority" eval="1"/>
@@ -24,14 +26,14 @@
 				</xpath>
 				-->
 
-				<xpath expr="//button[@name='button_done']" position="after">
+				<xpath expr="//button[@name='action_cancel']" position="after">
 
 					<button 
 
 							name="remove_myself"
 							type="object" 
 							class="oe_highlight"
-							string="REMOVE"
+							string="REMOVEM"
 					/>
 
 				</xpath>

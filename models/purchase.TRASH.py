@@ -1,46 +1,47 @@
+# -*- coding: utf-8 -*-
+#
+#
+# 		*** OPEN HEALTH - Purchase   
+# 
+# Created: 				30 Oct 2017
+# Last updated: 	 	 8 Nov 2017
 
-
-# 3 Nov 2017
-
-
-	state = fields.Selection(
-		[
-			#('draft', 'Draft PO'),
-			('draft', 'Borrador'),
-			
-			#('sent', 'RFQ Sent'),
-			('sent', 'Enviado'),
-
-
-			#('to approve', 'To Approve'),
-			('to approve', 'Validar'),
-
-
-			#('purchase', 'Purchase Order'),
-			('purchase', 'Orden de C/S'),
-
-			
-
-			('bill_ready', 'Factura lista'),
-			('bill_paid', 'Factura pagada'),
-			('product_received', 'Producto recibido'),
+from openerp import models, fields, api
 
 
 
 
-			#('cancel', 'Cancelled')
-			('cancel', 'Cancelado'), 
+class PurchaseOrder(models.Model):
+	
+	_inherit = 'purchase.order'
+	_description = "Purchase Order"
 
-			#('done', 'Done'),
-			('done', 'Completo'),
-			#('done', 'Cotizado'),
-		], 
-		string='Status', 
-		readonly=True, 
-		index=True, 
-		copy=False, 
-		default='draft', 
-		track_visibility='onchange'
+
+
+
+# New
+
+	@api.multi
+	def remove_myself(self):  
+
+		self.state = 'cancel'
+		self.unlink()
+
+
+
+
+
+
+
+
+
+
+
+
+	# Cancel Reason 
+	x_cancel_reason = fields.Text(
+
+		'Motivo de Rechazo', 
 	)
 
 
@@ -49,15 +50,108 @@
 
 
 
+# Primitives 
 
-	#x_type = fields.Selection(
+	# State 
+	state = fields.Selection([
 
-	#	[	
-	#		('rfq', 	'Demanda de Cotización'),
-	#		('po', 		'Orden de C/S'),
-	#	], 
-			
-	#	string='Tipo', 
+		#('draft', 'Draft PO'),
+		('draft', 'Borrador'),
 
-	#	required=False, 
-	#)
+
+		('validated', 'Validado'),		
+
+
+		#('sent', 'RFQ Sent'),
+		('sent', 'Enviado'),
+		
+
+		('to approve', 'To Approve'),		
+		#('approved', 'Approved'),
+		('approved', 'Aprobado'),
+
+
+		#('purchase', 'Purchase Order'),
+		#('purchase', 'Orden de C/S'),
+		('purchase', 'Compra'),
+		
+
+		#('done', 'Done'),
+		#('done', 'Completo'),
+		('done', 'Entregado'),
+		
+
+
+		#('cancel', 'Cancelled')
+		('cancel', 'Rechazado')
+
+
+		], string='Status', readonly=True, index=True, copy=False, 
+
+
+		default='draft', 
+		#default='purchase', 
+
+		track_visibility='onchange', 
+	)
+
+
+
+
+
+
+
+	# Validate Button  
+	@api.multi
+	def action_validate(self):
+		#jx
+		self.state = 'validated'
+
+
+
+
+	# Send Action 
+	@api.multi
+	def action_rfq_send(self):
+
+		#jx Code
+		#self.state = 'sent'
+		self.state = 'purchase'
+
+
+
+		# Original 
+		self.ensure_one()
+		ir_model_data = self.env['ir.model.data']
+		try:
+			if self.env.context.get('send_rfq', False):
+				template_id = ir_model_data.get_object_reference('purchase', 'email_template_edi_purchase')[1]
+			else:
+				template_id = ir_model_data.get_object_reference('purchase', 'email_template_edi_purchase_done')[1]
+		except ValueError:
+			template_id = False
+		try:
+			compose_form_id = ir_model_data.get_object_reference('mail', 'email_compose_message_wizard_form')[1]
+		except ValueError:
+			compose_form_id = False
+		ctx = dict(self.env.context or {})
+		ctx.update({
+			'default_model': 'purchase.order',
+			'default_res_id': self.ids[0],
+			'default_use_template': bool(template_id),
+			'default_template_id': template_id,
+			'default_composition_mode': 'comment',
+		})
+		return {
+			#'name': _('Compose Email'),
+			'type': 'ir.actions.act_window',
+			'view_type': 'form',
+			'view_mode': 'form',
+			'res_model': 'mail.compose.message',
+			'views': [(compose_form_id, 'form')],
+			'view_id': compose_form_id,
+			'target': 'new',
+			'context': ctx,
+		}
+
+

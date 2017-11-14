@@ -44,10 +44,16 @@ from . import closing
 
 
 from . import card
-#from . import purchase_po
 from . import purchase
-from . import purchase_rfq
-from . import purchase_line_rfq
+#from . import purchase_po
+#from . import purchase_rfq
+#from . import purchase_line_rfq
+
+
+from . import stock_picking 
+
+
+
 
 
 

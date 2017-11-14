@@ -131,8 +131,10 @@
 
 
 
+<!--					
 					<field name="sale_ok"/>
 					<field name="purchase_ok"/>
+-->
 
 
 					<field name="uom_id"	invisible="0"/>

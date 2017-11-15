@@ -207,6 +207,7 @@
 
 
 
+
 						<!-- Number Medical history -->
 						<div class="oe_right" >
 							<h1>
@@ -225,6 +226,9 @@
 								-->
 								<field name="x_last_name"   class="oe_edit_only"/>
 								<field name="x_first_name" 	class="oe_edit_only"/>
+
+
+								<field name="partner_id" 	string="Contacto"		/>
 							</group>
 
 							<group>

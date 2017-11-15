@@ -28,15 +28,30 @@
 
 
 
+<!--
+				<xpath expr="//field[@name='street']" position="after">
+					<field  name="street2_sel"	/>
+				</xpath>
+-->
+
+
+
 				<xpath expr="//field[@name='website']" position="after">
 <!--
 -->
-					<field  name="x_my_company"	/>
+					<field name="vspace"		/>
+
+					<field  name="x_my_company"		groups="openhealth.roots"	/>
+
 
 
 					<field name="vspace"		/>
 
 					<field  name="x_dni"	/>
+
+
+
+					<field name="vspace"		/>
 
 					<field name="x_firm"	attrs = "{'required':[('company_type','in',('company'))]}"	/>					
 					

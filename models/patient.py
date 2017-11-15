@@ -512,6 +512,9 @@ class Patient(models.Model):
 
 
 
+
+
+	# Street 
 	street = fields.Char(
 
 			string = "Dirección", 	
@@ -520,6 +523,16 @@ class Patient(models.Model):
 			#required=True, 
 			required=False, 
 		)
+
+	#@api.onchange('street')
+	#def _onchange_street(self):
+	#	print 'jx'
+	#	print 'Change Street'
+	#	partner_id.street = self.street
+	#	print 
+
+
+
 
 
 	street2 = fields.Char(
@@ -1172,4 +1185,76 @@ class Patient(models.Model):
 
 	# CRUD - Create 
 
+
+
+
+# Write 
+	@api.multi
+	def write(self,vals):
+
+		print 
+		print 'CRUD - Patient - Write'
+		print 
+		print vals
+		print 
+		#print 
+
+		#if vals['x_doctor'] != False: 
+		#	print vals['x_doctor']
+		#if vals['user_id'] != False: 
+		#	print vals['user_id']
+
+
+
+		#Write your logic here
+		res = super(Patient, self).write(vals)
+		#Write your logic here
+
+
+		# Update Partner 
+		if self.street != False:
+
+			self.partner_id.street = self.street
+
+			self.partner_id.street2 = self.street2
+
+			self.partner_id.street2_sel = self.street2_sel
+
+
+
+
+			self.partner_id.zip = self.zip
+
+			self.partner_id.city = self.city.title()
+
+			self.partner_id.state_id = self.state_id
+
+			self.partner_id.country_id = self.country_id
+
+			self.partner_id.x_dni = self.x_dni
+
+			self.partner_id.email = self.email
+
+			self.partner_id.phone = self.phone_2
+
+			self.partner_id.mobile = self.phone_1
+
+			self.partner_id.lang = 'es_ES'
+
+
+
+		if self.x_ruc != False:
+
+			self.partner_id.x_ruc = self.x_ruc
+
+			self.partner_id.x_firm = self.x_firm
+
+
+
+		#print 
+		#print 
+
+		return res
+
+	# CRUD - Write 
 

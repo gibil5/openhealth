@@ -39,7 +39,9 @@
 
 
 
+
 		<!-- Treatments -->
+		<!--
 		<menuitem 	id="emr_treatments_menu" 
 					name="Tratamientos" 
 					parent="emr_menu"
@@ -48,6 +50,8 @@
 
 					groups="openhealth.reception,openhealth.assistants,openhealth.physicians,openhealth.managers,openhealth.directors"
 					/>
+		-->
+
 
 
 		<!-- Patients --> 

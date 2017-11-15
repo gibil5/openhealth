@@ -4,6 +4,9 @@
 from openerp import models, fields, api
 #from datetime import datetime
 
+from . import pat_vars
+
+
 
 
 @api.model
@@ -53,6 +56,16 @@ class Partner(models.Model):
 			"DNI", 	
 		)
 
+
+
+	# Street 2 
+	street2_sel = fields.Selection(
+			selection = pat_vars._street2_list, 
+			string = "Distrito", 	
+			
+			#required=True, 
+			required=False, 
+		)
 
 
 

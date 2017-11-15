@@ -524,11 +524,11 @@ class Patient(models.Model):
 			required=False, 
 		)
 
-	#@api.onchange('street')
-	#def _onchange_street(self):
+	@api.onchange('street')
+	def _onchange_street(self):
 	#	print 'jx'
 	#	print 'Change Street'
-	#	partner_id.street = self.street
+		self.street = self.street.strip().title()
 	#	print 
 
 
@@ -565,6 +565,8 @@ class Patient(models.Model):
 
 
 
+
+	# Email 
 	email = fields.Char(
 			string = 'email',  
 			placeholder = '',
@@ -572,6 +574,20 @@ class Patient(models.Model):
 			required=True, 
 			#required=False, 
 			)
+
+
+	@api.onchange('email')
+	def _onchange_email(self):
+		print 'jx'
+		print 'Change email'
+		self.email = self.email.strip().lower()
+		print self.email
+		print 
+
+
+
+
+
 
 
 	country_id = fields.Many2one(
@@ -1209,6 +1225,14 @@ class Patient(models.Model):
 		#Write your logic here
 		res = super(Patient, self).write(vals)
 		#Write your logic here
+
+
+
+
+		# Validations
+		#self.email = self.email.lower()
+		#self.street = self.street.title()
+
 
 
 		# Update Partner 

@@ -142,20 +142,21 @@
 
 
 		# ----------------------------------------------------------- Data ------------------------------------------------------
-		'data/base_data_categs.xml',
 
-		'data/base_data_users_managers.xml',
-		'data/base_data_users_staff.xml',
+		# Check that data is not updated. All the time. 
 
-		'data/base_data_users_almacen.xml',
+		'data/base_data_categs.xml',			# check
 
-		'data/base_data_users_doctors.xml',
-		'data/base_data_users_assistants.xml',
-		
-		'data/base_data_users_platform.xml',
-		'data/base_data_users_cash.xml',
+		'data/base_data_users_managers.xml',	# check 
+		'data/base_data_users_staff.xml',		# check 
+		'data/base_data_users_almacen.xml',		# check 
+		'data/base_data_users_doctors.xml',		# check 
+		'data/base_data_users_assistants.xml',	# check
+		'data/base_data_users_platform.xml',	# check
+		'data/base_data_users_cash.xml',		# check 
 
-		'data/base_data_patients.xml',
+
+		#'data/base_data_patients.xml',
 
 
 
@@ -199,6 +200,9 @@
 
 
 		# ----------------------------------------------------------- Data ------------------------------------------------------
+
+		# Check that data is not updated. All the time. 
+
 
 		# Doctors
 		'data/base_data_physicians.xml',
@@ -257,7 +261,7 @@
 
 
 		# Patients 
-		'data/base_data_patients.xml',	
+		#'data/base_data_patients.xml',	
 		
 		
 		# Vip cards

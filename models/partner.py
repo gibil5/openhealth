@@ -179,7 +179,42 @@ class Partner(models.Model):
 
 
 
+
 # ----------------------------------------------------------- CRUD ------------------------------------------------------
+
+
+	@api.model
+	def create(self,vals):
+
+		print 
+		print 'CRUD - Partner - Create'
+		print vals
+		#print 
+	
+
+
+		# Here 
+		key = 'name'
+		if key in vals:
+			print vals[key]
+			vals[key] = vals[key].split().upper()
+			print vals[key]
+
+
+
+		# Put your logic here 
+		res = super(Partner, self).create(vals)
+		# Put your logic here 
+
+
+		return res
+
+	# CRUD - Create 
+
+
+
+
+
 
 # Write 
 	@api.multi
@@ -189,13 +224,14 @@ class Partner(models.Model):
 		print 'CRUD - Partner - Write'
 		print 
 		#print vals
-		print 
+		#print 
 		#print 
 
 
 
 		#if vals['name'] != False: 
 		#	vals['name'] = vals['name'].strip().upper()
+		#	print vals['name']
 
 
 
@@ -204,10 +240,14 @@ class Partner(models.Model):
 		#Write your logic here
 
 
-		print self.name 
-		#name = self.name
-		#self.name = name.strip().upper()
 		#print self.name 
+		#name = self.name
+		#self.name = self.name.upper()
+		#self.name = name.upper()
+
+
+		print self.name 
+
 		print 
 
 
@@ -217,6 +257,3 @@ class Partner(models.Model):
 
 
 # ----------------------------------------------------------- END ------------------------------------------------------
-
-
-

@@ -526,10 +526,9 @@ class Patient(models.Model):
 
 	@api.onchange('street')
 	def _onchange_street(self):
-	#	print 'jx'
-	#	print 'Change Street'
-		self.street = self.street.strip().title()
-	#	print 
+
+		if self.street != False: 
+			self.street = self.street.strip().title()
 
 
 
@@ -580,9 +579,11 @@ class Patient(models.Model):
 	def _onchange_email(self):
 		print 'jx'
 		print 'Change email'
-		self.email = self.email.strip().lower()
-		print self.email
-		print 
+
+		if self.email != False: 
+			self.email = self.email.strip().lower()
+			print self.email
+			print 
 
 
 
@@ -744,7 +745,9 @@ class Patient(models.Model):
 
 	@api.onchange('x_allergies')
 	def _onchange_x_allergies(self):
-		self.x_allergies = self.x_allergies.strip().title()
+
+		if self.x_allergies != False: 
+			self.x_allergies = self.x_allergies.strip().title()
 
 
 
@@ -1155,6 +1158,7 @@ class Patient(models.Model):
 
 # ----------------------------------------------------------- CRUD ------------------------------------------------------
 
+# Create 
 	@api.model
 	def create(self,vals):
 

@@ -733,12 +733,19 @@ class Patient(models.Model):
 
 
 
+
+	# Allergies 
 	x_allergies = fields.Char(
 			string = "Alergias", 
 
 			#required=True, 
 			#required=False, 
 			)
+
+	@api.onchange('x_allergies')
+	def _onchange_x_allergies(self):
+		self.x_allergies = self.x_allergies.strip().title()
+
 
 
 

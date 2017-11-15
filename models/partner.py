@@ -7,12 +7,11 @@ from openerp import models, fields, api
 from . import pat_vars
 
 
-
-
 @api.model
 def _lang_get(self):
 	languages = self.env['res.lang'].search([])
 	return [(language.code, language.name) for language in languages]
+
 
 
 
@@ -24,6 +23,22 @@ class Partner(models.Model):
 
 
 	#_name = 'openhealth.patient'	#The best solution ? So that impact is minimal ?	- Deprecated
+
+
+
+
+
+	# Name 
+	@api.onchange('name')
+	def _onchange_name(self):
+		print 'jx'
+		print 'Change name'
+		print self.name
+		self.name = self.name.strip().upper()
+		print self.name
+		print 
+
+
 
 
 
@@ -44,11 +59,11 @@ class Partner(models.Model):
 
 
 	x_firm = fields.Char(
-			"Razon social", 	
+			"Razón social", 	
 		)
 
 	x_ruc = fields.Char(
-			"Ruc", 	
+			"RUC", 	
 		)
 
 	x_dni = fields.Char(
@@ -161,6 +176,43 @@ class Partner(models.Model):
 			if x_card.name != False:
 				record.x_vip = True 
 
+
+
+
+# ----------------------------------------------------------- CRUD ------------------------------------------------------
+
+# Write 
+	@api.multi
+	def write(self,vals):
+
+		print 
+		print 'CRUD - Partner - Write'
+		print 
+		#print vals
+		print 
+		#print 
+
+
+
+		#if vals['name'] != False: 
+		#	vals['name'] = vals['name'].strip().upper()
+
+
+
+		#Write your logic here
+		res = super(Partner, self).write(vals)
+		#Write your logic here
+
+
+		print self.name 
+		#name = self.name
+		#self.name = name.strip().upper()
+		#print self.name 
+		print 
+
+
+		return res
+	# CRUD - Write 
 
 
 

@@ -220,15 +220,27 @@
 
 						<!-- Fields -->
 						<group>
-							<group>						
+							<group>		
+
 								<!--	
 								<field name="x_full_name"  string="x_full_name"/>
 								-->
-								<field name="x_last_name"   class="oe_edit_only"/>
-								<field name="x_first_name" 	class="oe_edit_only"/>
 
 
-								<field name="partner_id" 	string="Contacto"		/>
+<field name="x_last_name" class="oe_edit_only"	attrs="{	
+															'invisible':	[('partner_id', '!=', False)], 
+															'required':		[('partner_id', '=', False)], 
+												}"	/>
+
+
+<field name="x_first_name" class="oe_edit_only"	attrs="{	
+															'invisible':	[('partner_id', '!=', False)], 
+															'required':		[('partner_id', '=', False)], 
+												}"	/>
+
+
+
+								<field name="partner_id" 	string="Contacto"		readonly="1"	/>
 							</group>
 
 							<group>
@@ -239,6 +251,7 @@
 
 
 								<field name="x_vip" 	/>
+								
 								<field name="x_card" 	/>
 							</group>
 						</group>

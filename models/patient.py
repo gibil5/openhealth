@@ -389,8 +389,8 @@ class Patient(models.Model):
 		if self.x_autofill == True:
 
 
-			self.x_last_name = 'Revilla Rondon'
-			self.x_first_name = 'Toby'
+			#self.x_last_name = 'Revilla Rondon'
+			#self.x_first_name = 'Toby'
 
 
 			self.sex = 'Male'
@@ -568,7 +568,7 @@ class Patient(models.Model):
 
 	# Email 
 	email = fields.Char(
-			string = 'email',  
+			string = 'Email',  
 			placeholder = '',
 
 			required=True, 

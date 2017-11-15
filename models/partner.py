@@ -197,7 +197,9 @@ class Partner(models.Model):
 		key = 'name'
 		if key in vals:
 			print vals[key]
-			vals[key] = vals[key].split().upper()
+			#vals[key] = vals[key].split().upper()		# No - Watch out !
+			#vals[key] = vals[key].upper()
+			vals[key] = vals[key].strip().upper()
 			print vals[key]
 
 

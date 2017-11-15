@@ -33,10 +33,18 @@ class Partner(models.Model):
 	def _onchange_name(self):
 		print 'jx'
 		print 'Change name'
-		print self.name
-		self.name = self.name.strip().upper()
-		print self.name
-		print 
+		
+		if self.name != False: 
+			print self.name
+			
+			#self.name = self.name.strip().upper()
+			name = self.name
+			name = name.strip().upper()
+			name = " ".join(name.split())			
+			self.name = name 
+
+			print self.name
+			print 
 
 
 
@@ -199,7 +207,17 @@ class Partner(models.Model):
 			print vals[key]
 			#vals[key] = vals[key].split().upper()		# No - Watch out !
 			#vals[key] = vals[key].upper()
-			vals[key] = vals[key].strip().upper()
+
+
+			#vals[key] = vals[key].strip().upper()
+			#" ".join(sentence.split())			
+
+			name = vals[key]
+			name = name.strip().upper()
+			name = " ".join(name.split())			
+			vals[key] = name 
+
+			
 			print vals[key]
 
 

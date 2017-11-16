@@ -202,12 +202,12 @@
 		# Products 
 		'data/prods/odoo_data_products.xml',			# check 
 		
-		'data/prods/odoo_data_services_co2.xml',
-		'data/prods/odoo_data_services_exc.xml',
-		'data/prods/odoo_data_services_m22.xml',
+		'data/prods/odoo_data_services_co2.xml',		# check
+		'data/prods/odoo_data_services_exc.xml',		# check
+		'data/prods/odoo_data_services_m22.xml',		# check
 		'data/prods/odoo_data_services_med.xml',
-		'data/prods/odoo_data_services_cos.xml',
-		'data/prods/odoo_data_services_consult.xml',
+		'data/prods/odoo_data_services_cos.xml',		# check
+		'data/prods/odoo_data_services_consult.xml',	# check
 
 
 
@@ -215,16 +215,23 @@
 
 
 		# Doctors
-		'data/base_data_physicians.xml',		# check
+		'data/base_data_physicians.xml',				# check
 
 		# Suppliers 
 		'data/suppliers.xml',
 		'data/supplier_services.xml',
 
 		# Pricelists 
-		#'data/products_pricelist.xml',
 		'data/pricelists.xml',
 
+
+
+
+
+		# Deprecated 
+		#'data/base_data_patients.xml',	
+		#'data/odoo_data_cards.xml',	
+		#'views/base_data.xml',			
 
 
 
@@ -256,20 +263,8 @@
 
 
 
-		# Patients 
-		#'data/base_data_patients.xml',	
-		
-		
-		# Vip cards
-		#'data/odoo_data_cards.xml',	
 
 
-
-
-
-
-
-		#'views/base_data.xml',			# Deprecated 
 
 		# ----------------------------------------------------------- First Level ------------------------------------------------------
 

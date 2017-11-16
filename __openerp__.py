@@ -222,7 +222,8 @@
 		'data/supplier_services.xml',
 
 		# Pricelists 
-		'data/products_pricelist.xml',
+		#'data/products_pricelist.xml',
+		'data/pricelists.xml',
 
 
 

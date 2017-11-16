@@ -218,7 +218,7 @@
 		'data/base_data_physicians.xml',		# check
 
 		# Suppliers 
-		'data/product_suppliers.xml',
+		'data/suppliers.xml',
 		'data/supplier_services.xml',
 
 		# Pricelists 

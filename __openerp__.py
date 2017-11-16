@@ -20,7 +20,7 @@
 
 		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant\n
 
-		Last built: 	15 November 2017 - Yey !
+		Last built: 	16 November 2017 - Yey !
 
 		Created: 	 	11 Sep 2016
 
@@ -147,13 +147,13 @@
 
 		'data/base_data_categs.xml',			# check
 
-		'data/base_data_users_managers.xml',	# check 
-		'data/base_data_users_staff.xml',		# check 
-		'data/base_data_users_almacen.xml',		# check 
-		'data/base_data_users_doctors.xml',		# check 
-		'data/base_data_users_assistants.xml',	# check
-		'data/base_data_users_platform.xml',	# check
-		'data/base_data_users_cash.xml',		# check 
+		'data/users/base_data_users_managers.xml',	# check 
+		'data/users/base_data_users_staff.xml',		# check 
+		'data/users/base_data_users_almacen.xml',		# check 
+		'data/users/base_data_users_doctors.xml',		# check 
+		'data/users/base_data_users_assistants.xml',	# check
+		'data/users/base_data_users_platform.xml',	# check
+		'data/users/base_data_users_cash.xml',		# check 
 
 
 		#'data/base_data_patients.xml',
@@ -171,14 +171,8 @@
 		#'security/openhealth_security.xml',
 
 
-
 		'security/openhealth_security_readers.xml',
 		'security/openhealth_security_buf.xml',
-
-		
-
-		
-
 		'security/ir.model.access.csv',
 		'security/ir.rule.xml',
 
@@ -204,13 +198,13 @@
 		# Check that data is not updated. All the time. 
 
 
-		# Doctors
-		'data/base_data_physicians.xml',
-		
 
+		# Doctors
+		'data/base_data_physicians.xml',		# check
+			
 
 		# Products 
-		'data/odoo_data_products.xml',
+		'data/odoo_data_products.xml',			# check 
 		
 		'data/odoo_data_services_co2.xml',
 		'data/odoo_data_services_exc.xml',
@@ -218,7 +212,6 @@
 		'data/odoo_data_services_med.xml',
 		'data/odoo_data_services_cos.xml',
 		'data/odoo_data_services_consult.xml',
-
 
 
 		# Suppliers 

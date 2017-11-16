@@ -216,6 +216,13 @@ self.env['openhealth.learn'].search([('name', 'like', '')]).search_count()
 
 
 
+
+self.env['oeh.medical.patient'].search([('name', 'like', 'SALMON RAVENNA LAURA YOLANDA')])
+
+
+
+
+
 self.env['oeh.medical.patient'].search([('name', 'like', 'Ja')])
 
 self.env['oeh.medical.patient'].search([('id', '=', '3025')])

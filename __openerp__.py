@@ -199,10 +199,6 @@
 
 
 
-		# Doctors
-		'data/base_data_physicians.xml',		# check
-			
-
 		# Products 
 		'data/odoo_data_products.xml',			# check 
 		
@@ -214,10 +210,16 @@
 		'data/odoo_data_services_consult.xml',
 
 
+
+
+
+
+		# Doctors
+		'data/base_data_physicians.xml',		# check
+
 		# Suppliers 
 		'data/product_suppliers.xml',
 		'data/supplier_services.xml',
-
 
 		# Pricelists 
 		'data/products_pricelist.xml',

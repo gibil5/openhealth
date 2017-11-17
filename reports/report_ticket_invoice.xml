@@ -9,7 +9,7 @@
 
 			string="Ticket Factura"
 
-			model="openhealth.ticket_invoice"
+			model="sale.order"
 
 			id="report_ticket_invoice"
 			

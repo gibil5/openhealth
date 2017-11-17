@@ -20,11 +20,99 @@ from . import cosvars
 from . import treatment_vars
 
 
+from num2words import num2words
+
+
+
 class sale_order(models.Model):
 	
 	#_name = 'openhealth.order'
 	_inherit='sale.order'
 	
+
+
+
+
+
+
+
+
+	# Total Net
+	x_total_net = fields.Float(
+
+			"Neto",
+			compute='_compute_x_total_net', 
+		)
+
+	@api.multi
+	#@api.depends('')
+	def _compute_x_total_net(self):
+		for record in self:
+
+			record.x_total_net = record.amount_total * 0.82
+
+
+
+
+
+	# Total Tax
+	x_total_tax = fields.Float(
+
+			"Impuesto",
+			compute='_compute_x_total_tax', 
+		)
+
+	@api.multi
+	#@api.depends('')
+	def _compute_x_total_tax(self):
+		for record in self:
+
+			record.x_total_tax = record.amount_total * 0.18
+
+
+
+
+
+
+
+
+
+
+	# Total in Words
+	x_total_in_words = fields.Char(
+
+			"",
+			compute='_compute_x_total_in_words', 
+		)
+
+	@api.multi
+	#@api.depends('')
+	def _compute_x_total_in_words(self):
+		for record in self:
+
+			#words = record.total
+			words = num2words(record.amount_total, lang='es')
+
+			record.x_total_in_words = words.title() + ' Soles'
+
+
+
+
+
+
+	cr = fields.Char(
+			default='-------------------------------------------------------------------', 
+		)
+
+
+
+
+	x_serial_nr = fields.Char(
+		)
+
+	x_authorization = fields.Char(
+		)
+
 
 
 

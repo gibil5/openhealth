@@ -384,7 +384,7 @@ class SaleProof(models.Model):
 
 
 
-	# Total Net
+	# Total Tax
 	total_tax = fields.Float(
 
 			"Neto",

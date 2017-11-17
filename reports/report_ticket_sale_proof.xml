@@ -61,7 +61,7 @@
 <div class='row'>
 <b>	
 	<div class='col-xs-12'>		
-		<t t-esc="doc.my_firm"/>
+		<t t-esc="doc.x_my_company.name"/>
 	</div>
 </b>
 </div>
@@ -72,7 +72,7 @@
 <div class='row'>
 <b>	
 	<div class='col-xs-12'>		
-		<t t-esc="doc.my_address"/>
+		<t t-esc="doc.x_my_company.x_address"/>
 	</div>
 </b>
 </div>
@@ -85,7 +85,7 @@
 		<b>Telf:</b>
 	</div>
 	<div class='col-xs-8'>
-		<t t-esc="doc.my_phone"/>
+		<t t-esc="doc.x_my_company.phone"/>
 	</div>
 </div>
 
@@ -97,10 +97,14 @@
 		<b>Ruc:</b>
 	</div>
 	<div class='col-xs-8'>
-		<t t-esc="doc.my_ruc"/>
+		<t t-esc="doc.x_my_company.x_ruc"/>
 	</div>
 </div>
 <br/>
+
+
+
+
 
 
 
@@ -110,7 +114,7 @@
 		<b>Serie:</b>
 	</div>
 	<div class='col-xs-8'>
-		<t t-esc="doc.serial_nr"/>
+		<t t-esc="doc.x_serial_nr"/>
 	</div>
 </div>
 
@@ -122,7 +126,7 @@
 		<b>Autorización:</b>
 	</div>
 	<div class='col-xs-8'>
-		<t t-esc="doc.authorization"/>
+		<t t-esc="doc.x_authorization"/>
 	</div>
 </div>
 <br/>
@@ -132,12 +136,13 @@
 
 
 <!-- Customer --> 
+
 <div class='row'>
 	<div class='col-xs-4'>		
 		<b>Cliente:</b>
 	</div>
 	<div class='col-xs-8'>
-		<t t-esc="doc.par_name"/>
+		<t t-esc="doc.partner_id.name"/>
 	</div>
 </div>
 
@@ -149,7 +154,7 @@
 		<b>DNI:</b>
 	</div>
 	<div class='col-xs-8'>
-		<t t-esc="doc.par_dni"/>
+		<t t-esc="doc.partner_id.x_dni"/>
 	</div>
 </div>
 
@@ -161,7 +166,7 @@
 		<b>Dirección:</b>
 	</div>
 	<div class='col-xs-8'>
-		<t t-esc="doc.par_address"/>
+		<t t-esc="doc.partner_id.x_address"/>
 	</div>
 </div>
 
@@ -173,7 +178,7 @@
 		<b>Raz. Social:</b>
 	</div>
 	<div class='col-xs-8'>
-		<t t-esc="doc.par_firm"/>
+		<t t-esc="doc.partner_id.x_firm"/>
 	</div>
 </div>
 
@@ -185,11 +190,13 @@
 		<b>Ruc:</b>
 	</div>
 	<div class='col-xs-8'>
-		<t t-esc="doc.par_ruc"/>
+		<t t-esc="doc.partner_id.x_ruc"/>
 	</div>
 </div>
 <br/>
 <br/>
+
+
 
 
 
@@ -199,7 +206,7 @@
 		<b>Fecha:</b>
 	</div>
 	<div class='col-xs-8'>
-		<t t-esc="doc.date_created"/>
+		<t t-esc="doc.date_order"/>
 	</div>
 </div>
 
@@ -215,6 +222,7 @@
 	</div>
 </div>
 <br/>
+
 
 
 
@@ -289,14 +297,13 @@
 
 
 
-
 <!-- Net --> 
 <div class='row'>
 	<div class='col-xs-4'>		
 		<b>Neto:</b>
 	</div>
 	<div class='col-xs-8'>
-		<t t-esc="doc.total_net"/>
+		<t t-esc="doc.x_total_net"/>
 	</div>
 </div>
 
@@ -306,10 +313,9 @@
 		<b>IGV:</b>
 	</div>
 	<div class='col-xs-8'>
-		<t t-esc="doc.total_tax"/>
+		<t t-esc="doc.x_total_tax"/>
 	</div>
 </div>
-
 
 
 
@@ -320,23 +326,23 @@
 		<b>Total S/.:</b>
 	</div>
 	<div class='col-xs-8'>
-		<t t-esc="doc.total"/>
+		<t t-esc="doc.amount_total"/>
 	</div>
 </div>
 
 
-
 <!-- Total Words --> 
+<!--
+-->
 <div class='row'>
 	<div class='col-xs-4'>		
 		<b>Son:</b>
 	</div>
 	<div class='col-xs-8'>
-		<t t-esc="doc.total_in_words"/>
+		<t t-esc="doc.x_total_in_words"/>
 	</div>
 </div>
 <br/>
-
 
 
 
@@ -345,14 +351,14 @@
 <!-- Website --> 
 <div class='row'>
 	<div class='col-xs-12'>
-		<t t-esc="doc.my_website"/>
+		<t t-esc="doc.x_my_company.website"/>
 	</div>
 </div>
 
 <!-- Email --> 
 <div class='row'>
 	<div class='col-xs-12'>
-		<t t-esc="doc.my_email"/>
+		<t t-esc="doc.x_my_company.email"/>
 	</div>
 </div>
 </center>
@@ -366,10 +372,9 @@
 <!-- Warning --> 
 <div class='row'>
 	<div class='col-xs-12'>
-		<t t-esc="doc.warning"/>
+		<t t-esc="doc.x_my_company.x_warning"/>
 	</div>
 </div>
-
 
 
 <br/>

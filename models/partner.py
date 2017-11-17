@@ -47,6 +47,44 @@ class Partner(models.Model):
 
 
 
+
+	# Address
+	x_address = fields.Char(
+
+			"Dirección",
+			compute='_compute_x_address', 
+		)
+
+	@api.multi
+	#@api.depends('')
+	def _compute_x_address(self):
+		for record in self:
+
+			#com = record.order.x_my_company
+			if record.street != False and record.street2 != False and record.city != False:
+
+				record.x_address = record.street + ' - ' + record.street2 + ' - ' + record.city
+
+
+
+
+	# Warning 
+	x_warning = fields.Text()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	# Email 
 	email = fields.Char(
 

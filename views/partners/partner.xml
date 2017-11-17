@@ -84,8 +84,8 @@
 							attrs = "{'invisible':[('company_type','in',('person'))]}"	/>
 
 <!--
--->
 					<field name="x_warning"			attrs = "{'invisible':[('x_my_company','in',(False))]}"		/>
+-->
 
 
 					<field name="vspace"		/>

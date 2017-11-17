@@ -4,12 +4,14 @@
 
 
 <!-- Ticket Boleta -->
-
+<!--
+			model="openhealth.ticket_receipt"
+-->
 		<report
 
 			string="Ticket Boleta"
 
-			model="openhealth.ticket_receipt"
+			model="sale.order"
 
 			id="report_ticket_receipt"
 			

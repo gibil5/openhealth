@@ -69,7 +69,8 @@ class Partner(models.Model):
 
 
 	# Warning 
-	x_warning = fields.Text()
+
+	#x_warning = fields.Text()
 
 
 

@@ -20,10 +20,7 @@ class Partner(models.Model):
 	_inherit = 'res.partner'
 	#_inherit = ['res.partner', 'base_multi_image.owner']
 	#_inherit = ['res.partner', 'oeh.medical.evaluation', 'base_multi_image.owner']
-
-
 	#_name = 'openhealth.patient'	#The best solution ? So that impact is minimal ?	- Deprecated
-
 
 
 
@@ -45,6 +42,20 @@ class Partner(models.Model):
 
 			print self.name
 			print 
+
+
+
+
+
+	# Email 
+	email = fields.Char(
+
+			'Email', 
+			required=True, 
+		)
+
+
+
 
 
 
@@ -78,6 +89,56 @@ class Partner(models.Model):
 
 			"DNI", 	
 		)
+
+
+
+
+
+	phone = fields.Char(
+			
+			'Teléfono 1', 
+			required=True, 
+		)
+	
+	mobile = fields.Char(
+			
+			'Teléfono 2', 
+		)
+
+
+
+
+	#'state_id': fields.many2one("res.country.state", 'State', ondelete='restrict'),
+	#'zip': fields.char('Zip', size=24, change_default=True),
+
+	street = fields.Char(
+
+			'Calle', 
+			required=True, 
+		)
+
+	street2 = fields.Char(
+
+			'Distrito', 
+			placeholder="Distrito...", 
+			required=True, 
+		)
+
+	city = fields.Char(
+
+			'City', 
+			required=True, 
+		)
+
+	country_id = fields.Many2one(
+
+			'res.country', 
+			'Country', 
+			ondelete='restrict', 
+			required=True, 
+		)
+
+
 
 
 

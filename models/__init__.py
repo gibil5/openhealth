@@ -11,7 +11,7 @@
 
 
 
-# In OpenHealth - Base - Deprecated
+# Base
 from . import partner
 from . import quotation
 

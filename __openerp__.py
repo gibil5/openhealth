@@ -20,7 +20,7 @@
 
 		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant\n
 
-		Last built: 	16 November 2017 - Yey !
+		Last built: 	17 November 2017 - Yey !
 
 		Created: 	 	11 Sep 2016
 
@@ -61,9 +61,8 @@
 
 
 
-	# Very important !!!
-	# --------------
-	#'depends': ['base', 'oehealth'],
+	# Dependencies - Very important !
+	# ------------------------------
 	#'depends': ['base', 'oehealth'],
 	#'depends': ['base', 'oehealth', 'base_multi_image'],
 	'depends': ['base', 'oehealth', 'base_multi_image', 'mail', 'purchase'],
@@ -73,9 +72,14 @@
 
 
 
+
 	# always loaded
 	'data': [
 
+
+
+
+		# ----------------------------------------------------------- Views - Actions ------------------------------------------------------
 		'views/actions.xml',
 
 
@@ -83,7 +87,8 @@
 
 
 
-		# ----------------------------------------------------------- Reporting ------------------------------------------------------
+
+		# ----------------------------------------------------------- Reports ------------------------------------------------------
 		#'views/example_report.xml',
 		#'views/order_report.xml',
 
@@ -109,22 +114,17 @@
 
 
 
-
-
-
-
-
+		# Sales 
 		'views/reports/report_sale_search.xml',
 		'views/reports/report_sale.xml',
 		'views/reports/report_sale_doctors.xml',
-
-
 		'views/reports/report_sale_months.xml',
 		'views/reports/report_sale_months_platform.xml',
-
-
 		'views/reports/report_sale_months_physician.xml',
 
+
+
+		# Deprecated ? 
 		#'views/reports/report_sale_months_phy_ala.xml',
 		#'views/reports/report_sale_months_phy_can.xml',
 		#'views/reports/report_sale_months_phy_esc.xml',
@@ -132,9 +132,9 @@
 		#'views/reports/report_sale_months_phy_mon.xml',
 		#'views/reports/report_sale_months_phy_vas.xml',
 
-		
-
 		#'views/reports/oh_report_sale.xml',
+
+
 
 
 
@@ -145,8 +145,12 @@
 
 		# Check that data is not updated. All the time. 
 
+
+		# Categs
 		'data/base_data_categs.xml',			# check
 
+
+		# Users 
 		'data/users/base_data_users_managers.xml',	# check 
 		'data/users/base_data_users_staff.xml',		# check 
 		'data/users/base_data_users_almacen.xml',		# check 
@@ -156,7 +160,43 @@
 		'data/users/base_data_users_cash.xml',		# check 
 
 
-		#'data/base_data_patients.xml',
+
+
+
+
+		# Moved 
+
+		# Products 
+		'data/prods/odoo_data_products.xml',			# check 
+		'data/prods/odoo_data_services_co2.xml',		# check
+		'data/prods/odoo_data_services_exc.xml',		# check
+		'data/prods/odoo_data_services_m22.xml',		# check
+		'data/prods/odoo_data_services_med.xml',		# check
+		'data/prods/odoo_data_services_cos.xml',		# check
+		'data/prods/odoo_data_services_consult.xml',	# check
+
+
+		# Doctors
+		'data/base_data_physicians.xml',				# check
+
+
+		# Suppliers 
+		'data/suppliers.xml',							# check
+		'data/supplier_services.xml',					# check
+
+
+		# Pricelists 
+		'data/pricelists.xml',							# check
+
+
+
+
+		# Deprecated 
+		#'data/base_data_patients.xml',	
+		#'data/odoo_data_cards.xml',	
+		#'views/base_data.xml',			
+
+
 
 
 
@@ -182,56 +222,13 @@
 
 
 
-		# ----------------------------------------------------------- Base ------------------------------------------------------
+
+
+		# ----------------------------------------------------------- Views - Base ------------------------------------------------------
 
 		# Base - Form and List Actions - Must be the first 
 		'views/base.xml',			# Very important - All Actions should go here - Dependencies
 		'views/other.xml',
-
-
-
-
-
-
-		# ----------------------------------------------------------- Data ------------------------------------------------------
-
-		# Check that data is not updated. All the time. 
-
-
-
-		# Products 
-		'data/prods/odoo_data_products.xml',			# check 
-		
-		'data/prods/odoo_data_services_co2.xml',		# check
-		'data/prods/odoo_data_services_exc.xml',		# check
-		'data/prods/odoo_data_services_m22.xml',		# check
-		'data/prods/odoo_data_services_med.xml',
-		'data/prods/odoo_data_services_cos.xml',		# check
-		'data/prods/odoo_data_services_consult.xml',	# check
-
-
-
-
-
-
-		# Doctors
-		'data/base_data_physicians.xml',				# check
-
-		# Suppliers 
-		'data/suppliers.xml',
-		'data/supplier_services.xml',
-
-		# Pricelists 
-		'data/pricelists.xml',
-
-
-
-
-
-		# Deprecated 
-		#'data/base_data_patients.xml',	
-		#'data/odoo_data_cards.xml',	
-		#'views/base_data.xml',			
 
 
 
@@ -250,12 +247,8 @@
 		#'views/mail/rfq_send.xml',
 
 
-
-
-
 		# Stock 
 		'views/stock/stock.xml',
-
 		'views/stock/stock_picking.xml',
 
 
@@ -266,7 +259,7 @@
 
 
 
-		# ----------------------------------------------------------- First Level ------------------------------------------------------
+		# ----------------------------------------------------------- Views - First Level ------------------------------------------------------
 
 		# Users
 		'views/users/user.xml',
@@ -312,7 +305,6 @@
 		'views/sale_documents/payment_methods.xml',
 		'views/sale_documents/payment_method_line.xml',
 		
-
 		'views/sale_documents/receipts.xml',
 		'views/sale_documents/invoices.xml',
 		'views/sale_documents/advertisements.xml',
@@ -452,7 +444,7 @@
 
 
 
-		# ----------------------------------------------------------- Second Level ------------------------------------------------------
+		# ----------------------------------------------------------- Views - Second Level ------------------------------------------------------
 
 		# Sessions
 		'views/sessions/session.xml',
@@ -563,9 +555,11 @@
 
 
 
+
 	'data_jx': [
 
 	],
+
 
 
 

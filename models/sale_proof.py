@@ -227,7 +227,8 @@ class SaleProof(models.Model):
 
 			par = record.order.partner_id
 
-			record.par_address = par.street + ' - ' + par.street2 + ' - ' + par.city
+			if par.street != False and par.street2 != False and par.city != False: 
+				record.par_address = par.street + ' - ' + par.street2 + ' - ' + par.city
 
 
 

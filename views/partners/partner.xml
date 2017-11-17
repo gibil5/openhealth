@@ -28,6 +28,38 @@
 
 
 
+<!-- Goners -->
+				<xpath expr="//field[@name='fax']" position="replace">
+				</xpath>
+
+				<xpath expr="//field[@name='title']" position="replace">
+				</xpath>
+
+				<xpath expr="//field[@name='zip']" position="replace">
+				</xpath>
+
+				<xpath expr="//field[@name='state_id']" position="replace">
+				</xpath>
+
+
+
+
+
+
+				<xpath expr="//field[@name='street']" position="replace">
+					<field name="street" placeholder="Calle..." class="o_address_street"
+						attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+				</xpath>
+
+
+				<xpath expr="//field[@name='street2']" position="replace">
+					<field name="street2" placeholder="Distrito..." class="o_address_street"
+						attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+				</xpath>
+
+
+
+
 <!--
 				<xpath expr="//field[@name='street']" position="after">
 					<field  name="street2_sel"	/>
@@ -36,18 +68,29 @@
 
 
 
+				<xpath expr="//field[@name='website']" position="replace">
+					<field  name="website"	attrs = "{'invisible':[('company_type','in',('person'))]}"	/>
+				</xpath>
+
+
+
 				<xpath expr="//field[@name='website']" position="after">
-<!--
--->
-					<field name="vspace"		/>
-
-					<field  name="x_my_company"		groups="openhealth.roots"	/>
 
 
 
 					<field name="vspace"		/>
 
-					<field  name="x_dni"	/>
+					<field name="x_my_company" groups="openhealth.roots"	
+							attrs = "{'invisible':[('company_type','in',('person'))]}"	/>
+
+
+
+					<field name="vspace"		/>
+
+					<field  name="x_dni"	attrs = "{
+														'required':[('company_type','in',('person'))], 
+														'invisible':[('company_type','in',('company'))]
+													}"	/>
 
 
 
@@ -60,16 +103,39 @@
 				</xpath>
 
 
-
-				<xpath expr="//field[@name='email']" position="replace">
+<!--
 					<field name="email"		attrs = "{'required':[('company_type','in',('company'))]}"		/>
+-->
+				<xpath expr="//field[@name='email']" position="replace">
+					<field name="email"		required="1"	string="Email"		/>
 				</xpath>
 
 
 
+
+				<xpath expr="//field[@name='mobile']" position="replace">
+					<field name="mobile"	string="Teléfono 2"		/>
+				</xpath>
+
+
+
+
+
+
+
+<!-- Roots -->
 				<xpath expr="//field[@name='lang']" position="replace">
-					<field name="lang"	string="Idioma"  default="es_ES"	/>
+					<field name="lang"	string="Idioma"  default="es_ES"	groups="openhealth.roots"		/>
 				</xpath>
+
+				<xpath expr="//field[@name='category_id']" position="replace">
+					<field name="category_id" widget="many2many_tags" placeholder="Tags..."	groups="openhealth.roots"		/>
+				</xpath>
+
+				<xpath expr="//field[@name='function']" position="replace">
+					<field name="function"									groups="openhealth.roots"		/>
+				</xpath>
+
 
 
 <!--

@@ -22,7 +22,7 @@
 
 
 
-<template id="openhealth.report_ticket_invoice_view" inherit_id="openhealth.report_ticket_sale_proof_view"	 >
+<template id="openhealth.report_ticket_invoice_view" inherit_id="openhealth.report_ticket_sale_view"	 >
 
 
 

@@ -131,17 +131,6 @@
 
 
 
-			<menuitem 	id="sales_all_menu" 
-						name="Todo" 
-						parent="sales_menu"
-						sequence="1"
-						action="order_list_action"
-
-						groups="openhealth.managers,openhealth.directors"
-						/>
-
-
-
 
 			<menuitem 	id="sales_budget_menu" 
 						name="Presupuestos" 
@@ -170,6 +159,15 @@
 						action="cancelled_list_action"
 						/>
 
+
+
+			<menuitem 	id="sales_all_menu" 
+						name="Todo" 
+						parent="sales_menu"
+						sequence="5"
+						action="order_list_action"
+						groups="openhealth.managers,openhealth.directors"
+						/>
 
 
 

@@ -4,6 +4,10 @@
 
 <!-- Ticket -->
 
+<!--
+			model="openhealth.sale_proof"
+-->
+
 		<report
 
 			string="Ticket Sale"

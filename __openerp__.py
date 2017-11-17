@@ -109,8 +109,9 @@
 
 		# Ticket 
 		'reports/report_ticket_sale_proof.xml',
-		'reports/report_ticket_invoice.xml',
-		'reports/report_ticket_receipt.xml',
+		#'reports/report_ticket_invoice.xml',
+		#'reports/report_ticket_receipt.xml',
+
 
 
 
@@ -121,6 +122,7 @@
 		'views/reports/report_sale_months.xml',
 		'views/reports/report_sale_months_platform.xml',
 		'views/reports/report_sale_months_physician.xml',
+
 
 
 

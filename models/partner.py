@@ -48,6 +48,16 @@ class Partner(models.Model):
 
 
 
+	# Warning 
+	x_warning = fields.Text()
+
+
+
+
+
+
+
+
 	# Address
 	x_address = fields.Char(
 
@@ -68,8 +78,6 @@ class Partner(models.Model):
 
 
 
-	# Warning 
-	#x_warning = fields.Text()
 
 
 

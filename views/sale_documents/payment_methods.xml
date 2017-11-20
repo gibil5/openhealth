@@ -136,7 +136,7 @@
 								<field name="order"   />																				
 								<field name="vspace"   />
 
-								<field name="partner"   readonly=""	/>		
+								<field name="partner"   readonly="1"	/>		
 
 								<field name="vspace"   />	
 

@@ -445,7 +445,7 @@ class payment_method(models.Model):
 
 					('payment', 'Pagado'),
 
-					('generated', 'Documento generado'),
+					('generated', 'Generado'),
 					
 					('done', 'Confirmado'),
 

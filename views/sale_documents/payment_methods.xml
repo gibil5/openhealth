@@ -67,7 +67,7 @@
 								class="oe_highlight"
 								states="generated"						
 
-								string="Confirmar Pago"
+								string="CONFIRMAR"
 						/>
 
 <!--
@@ -85,7 +85,7 @@
 
 
 
-
+<!--
 						<button 
 								name="order_name"
 								type="object" 
@@ -94,7 +94,7 @@
 
 								string="Order name"
 						/>
-
+-->
 
 
 
@@ -102,7 +102,7 @@
 						<field 	name="state" 
 								widget="statusbar" 
 
-								statusbar_visible="draft, payment, done"
+								statusbar_visible="draft, payment, generated, done"
 						/>
 					</header>
 
@@ -297,7 +297,7 @@
 
 						<!-- Payments --> 
 						<notebook position="inside">
-							<page string="Pagos">
+							<page string="Formas de Pago">
 								<field name="pm_line_ids"	context="{
 																		'default_name': nr_pm,
 																		'default_subtotal': balance,

@@ -225,8 +225,10 @@ class payment_method(models.Model):
 	# Partner 
 	partner = fields.Many2one(
 			'res.partner',
-			string = "Cliente", 	
+			string = "Cliente", 
 			required=True, 
+
+			readonly=True, 
 		)
 
 

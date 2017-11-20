@@ -184,6 +184,12 @@
 					<field name="x_type"				invisible="0"		groups="openhealth.roots" />
 
 
+
+					<field name="vspace"/>
+                    <field name="x_serial_nr"/>
+
+
+
 					<field name="x_product"				invisible="1"	/>
 
 
@@ -1055,21 +1061,19 @@ Order Line - Tree
 				
 				
 
+
+
+
+
 				<field name="user_id" position="replace">
 				</field>
 
-
-				
 
 
 
 				<field name="partner_id" position="after">
 <!--				
 -->
-					<field name="vspace"/>
-                    <field name="x_serial_nr"/>
-
-
 					<field name="vspace"/>
                     <field name="user_id"/>
 

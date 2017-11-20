@@ -197,6 +197,8 @@ class sale_order(models.Model):
 	# Serial Number 
 	x_serial_nr = fields.Char(
 
+			'Número de serie', 
+
 			compute="_compute_x_serial_nr",
 		)
 

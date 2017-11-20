@@ -64,8 +64,9 @@
 	# Dependencies - Very important !
 	# ------------------------------
 	#'depends': ['base', 'oehealth'],
-	#'depends': ['base', 'oehealth', 'base_multi_image'],
-	'depends': ['base', 'oehealth', 'base_multi_image', 'mail', 'purchase'],
+	'depends': ['base', 'oehealth', 'base_multi_image'],
+	#'depends': ['base', 'oehealth', 'base_multi_image', 'mail', 'purchase'],
+
 
 #'depends': ['mail','contacts'],
 

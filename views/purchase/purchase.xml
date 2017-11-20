@@ -42,5 +42,110 @@
 
 
 
+
+
+
+
+
+
+
+		<!-- ACTION -->
+        <record id="purchase.purchase_rfq" model="ir.actions.act_window">
+
+            <field name="name">Ordenes de C/S</field>
+            
+            <field name="type">ir.actions.act_window</field>
+            
+            <field name="res_model">purchase.order</field>
+            
+            <field name="context">{'search_default_todo':1}</field>
+            
+
+            <field name="domain">[]</field>
+            
+
+            <field name="view_mode">tree,kanban,form,pivot,graph,calendar</field>
+            
+            <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>
+            
+        </record>
+
+
+		<!-- MENU --> 
+       <menuitem 
+	                name="Ordenes de C/S"
+
+       				action="purchase.purchase_rfq" 
+
+       				id="purchase.menu_purchase_rfq"
+            		
+            		parent="purchase.menu_procurement_management"
+            		
+            		sequence="0"
+
+            		/>
+
+
+
+
+
+
+
+
+
+		<!-- ACTION -->
+       <record id="purchase.purchase_form_action" model="ir.actions.act_window">
+
+            <field name="name">Purchase Orders - jx</field>
+        
+            <field name="type">ir.actions.act_window</field>
+        
+            <field name="res_model">purchase.order</field>
+        
+            <field name="view_mode">tree,kanban,form,pivot,graph,calendar</field>
+        
+            <field name="context">{'search_default_todo':1, 'show_purchase': True}</field>
+        
+            <field name="domain">[('state','not in',('draft','sent','bid', 'confirmed'))]</field>
+        
+<!--
+            <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>
+
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a quotation that will be converted into a purchase order. 
+              </p><p>
+                Use this menu to search within your purchase orders by
+                references, vendor, products, etc. For each purchase order,
+                you can track the related discussion with the vendor, control
+                the products received and control the vendor bills.
+              </p>
+            </field>
+-->    
+        </record>
+   
+
+
+
+		<!-- MENU --> 
+<!--		
+        <menuitem 
+	                name="Purchase Orders - jx"
+        			action="purchase.purchase_form_action" 
+        			id="purchase.menu_purchase_form_action" 
+        			parent="purchase.menu_procurement_management" 
+        			sequence="6"/>
+-->
+
+
+		<delete 	model="ir.ui.menu" 		id="purchase.menu_purchase_form_action">
+		</delete>
+
+		<delete 	model="ir.ui.menu" 		id="purchase.menu_purchase_form_action">
+		</delete>
+
+
+
+
 	</data>
 </openerp>

@@ -368,10 +368,10 @@
 
 
 <!--
--->
 <xpath expr="//page[2]" position="attributes">
 	<attribute name='invisible'>1</attribute> 
 </xpath>
+-->
 
 
 
@@ -488,6 +488,7 @@
 -->
 
 
+
 <!--
 							attrs="{'invisible':	[	
 														('x_type', 'in', ['ticket_receipt','ticket_invoice'] ),	
@@ -499,8 +500,8 @@
 														('x_type', 'in', ['receipt', 'invoice'] ),
 													]}"
 
-							states="sale"	
 
+							states="sale"	
 -->
 
 					<button 
@@ -1054,13 +1055,25 @@ Order Line - Tree
 				
 				
 
+				<field name="user_id" position="replace">
+				</field>
 
 
 				
+
+
+
 				<field name="partner_id" position="after">
 <!--				
-                    <field name="user_id"/>
 -->
+					<field name="vspace"/>
+                    <field name="x_serial_nr"/>
+
+
+					<field name="vspace"/>
+                    <field name="user_id"/>
+
+
 
 					<field name="vspace"/>
 					<field name="x_doctor"/>

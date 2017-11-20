@@ -1,13 +1,10 @@
 <openerp>
-	<data noupdate='1'>
+	<data noupdate='0'>
+
+
 
 
 <!-- Ticket -->
-
-<!--
-			model="openhealth.sale_proof"
--->
-
 		<report
 
 			string="Ticket Sale"
@@ -126,7 +123,10 @@
 		<b>Autorización:</b>
 	</div>
 	<div class='col-xs-8'>
+<!--
 		<t t-esc="doc.x_authorization"/>
+-->
+		<t t-esc="doc.user_id.name"/>
 	</div>
 </div>
 <br/>

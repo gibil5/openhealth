@@ -54,7 +54,7 @@
 								class="oe_highlight"
 								states="payment"						
 
-								string="Generar"
+								string="GENERAR"
 						/>
 
 
@@ -134,10 +134,46 @@
 								<field name="name"   />													
 -->
 								<field name="order"   />																				
-								<field name="vspace"   />	
+								<field name="vspace"   />
+
 								<field name="partner"   readonly=""	/>		
-<!--
+
 								<field name="vspace"   />	
+
+
+
+
+								<field name="dni"   	attrs="{
+
+														'invisible':[	('saledoc', 'in', ['invoice','ticket_invoice']),					], 
+
+														'required':[	('saledoc', 'in', ['receipt','ticket_receipt']),					], 
+														}"/>
+
+
+
+
+								<field name="firm"   	attrs="{
+
+														'invisible':[	('saledoc', 'in', ['receipt','ticket_receipt']),					], 
+
+														'required':[	('saledoc', 'in', ['invoice','ticket_invoice']),					], 
+														}"/>
+
+
+								<field name="ruc"   	attrs="{
+
+														'invisible':[	('saledoc', 'in', ['receipt','ticket_receipt']),					], 
+
+														'required':[	('saledoc', 'in', ['invoice','ticket_invoice']),					], 
+														}"/>
+
+
+
+
+
+								<field name="vspace"   />	
+<!--
 -->
 								<field name="nr_pm"   invisible="1"	/>													
 							</group>
@@ -191,9 +227,13 @@
 						<notebook position="inside">
 							<page string="Documento a Generar">
 							<group>
+
+								
 								<group>
 									<field name="saledoc"	widget="radio"	/>
 								</group>
+								
+
 								<group>
 									<field name="saledoc_code"		/>
 									<field name="receipt"		

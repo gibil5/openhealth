@@ -1,28 +1,28 @@
 <openerp>
-	<data noupdate='0'>
+	<data noupdate='1'>
+
 
 
 
 <!-- Ticket Factura -->
-
 		<report
-
 			string="Ticket Factura"
-
 			model="sale.order"
-
 			id="report_ticket_invoice"
-			
 			report_type="qweb-pdf"
 			
+
+
 			name="openhealth.report_ticket_invoice_view"            
 			
+
+
 			file="openhealth_ticket.report_ticket_invoice"
 		/>
 
 
 
-<template id="openhealth.report_ticket_invoice_view" inherit_id="openhealth.report_ticket_sale_view"	 >
+		<template id="openhealth.report_ticket_invoice_view" inherit_id="openhealth.report_ticket_sale_view"	 >
 
 
 

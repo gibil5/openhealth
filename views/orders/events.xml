@@ -27,7 +27,7 @@
 								 events
 							-->
 
-							<page string="Anulaciones">
+							<page string="Anulaciones"	groups='openhealth.roots'	>
 
 
 

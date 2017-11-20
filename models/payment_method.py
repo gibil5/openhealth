@@ -24,16 +24,81 @@ class payment_method(models.Model):
 	name = fields.Char(
 			#string="Medio de Pago", 
 			string="Pagos", 
+			
 			#required=True, 
 			#readonly=True, 
-			#compute='_compute_name', 
+
+			compute='_compute_name', 
 		)
 
 	#@api.depends()
-	#@api.multi
-	#def _compute_name(self):
-	#	for record in self:
-	#		record.name = 'PA-' + str(record.id) 
+	@api.multi
+	def _compute_name(self):
+		for record in self:
+			#record.name = 'PA-' + str(record.id) 
+			#record.name = str(record.id) 
+			record.name = 'PA-' + str(record.id).zfill(6)
+
+
+
+
+
+
+	# DNI
+	dni = fields.Char(
+			'DNI', 
+			compute='_compute_dni', 
+		)
+
+	@api.multi
+	#@api.depends('')
+
+	def _compute_dni(self):
+		for record in self:
+
+			#print 'jx'
+			#print 'Compute Dni'
+			record.dni = record.partner.x_dni
+			#print 
+
+
+
+
+
+	# Firm
+	firm = fields.Char(
+			'Razón social',
+			compute='_compute_firm', 
+		)
+
+	@api.multi
+	#@api.depends('')
+	def _compute_firm(self):
+		for record in self:
+
+			record.firm  = record.partner.x_firm
+
+
+
+
+
+
+
+	# Ruc
+	ruc = fields.Char(
+			'Ruc', 
+			compute='_compute_ruc', 
+		)
+
+	@api.multi
+	#@api.depends('')
+	def _compute_ruc(self):
+		for record in self:
+
+			record.ruc = record.partner.x_ruc
+
+
+
 
 
 
@@ -75,8 +140,6 @@ class payment_method(models.Model):
 
 		#print self.order.name 
 		#print 
-
-
 
 
 
@@ -174,77 +237,6 @@ class payment_method(models.Model):
 
 
 
-
-	# Create Sale Proof
-	@api.multi 
-	def create_saleproof(self):
-		#print 
-		#print 'Create Sale proof'
-
-
-		#model = dic_model[self.saledoc]
-		model = ord_vars._dic_model[self.saledoc]
-
-
-		if model != False: 
-
-
-			# Search 
-			proof = self.env[model].search([
-												('payment_method', '=', self.id),
-											])
-
-			# Create 
-			if proof.id == False:
-
-				count = self.env[model].search_count([
-																	('name','=', self.saledoc_code),
-															])
-				if count != 0: 
-
-					proof = self.env[model].create({
-																'payment_method': self.id,
-																'partner': self.partner.id,
-																'total': self.total,
-																'date_created': self.date_created,
-																'order': self.order.id,
-
-																'name': self.saledoc_code,
-														})
-			proof_id = proof.id 
-
-
-
-			return {
-					'type': 'ir.actions.act_window',
-					'name': ' New Proof Current', 
-
-					'view_type': 'form',
-					'view_mode': 'form',	
-					'target': 'current',
-
-
-					'res_model': model,
-					'res_id': proof_id,
-
-
-					'flags': 	{
-							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-							'form': {'action_buttons': True, }
-							},
-
-					'context': {
-							'default_payment_method': self.id,
-							'default_total': self.total,
-							'default_partner': self.partner.id,
-							'default_date_created': self.date_created,
-							'default_order': self.order.id,
-
-							'default_name': self.saledoc_code,
-							}
-					}
-
-	# create_saleproof
 
 
 
@@ -754,6 +746,110 @@ class payment_method(models.Model):
 	#		self.state = 'done'
 			#print self.state  
 
+
+
+
+
+
+
+# ----------------------------------------------------------- Actions ------------------------------------------------------
+
+	# Create Sale Proof
+	@api.multi 
+	def create_saleproof(self):
+
+
+
+		print 'jx'
+		print 'Create Sale proof'
+
+
+
+		# Search in the Model dic
+		model = ord_vars._dic_model[self.saledoc]
+		print model 
+
+
+
+		# The model is valid 
+		if model != False: 
+
+
+
+			# Search it exists 
+			proof = self.env[model].search([
+												('payment_method', '=', self.id),
+											])
+
+			# Create 
+			if proof.id == False:
+				print 'create'
+
+
+				count = self.env[model].search_count([('name','=', self.saledoc_code),])
+				print count
+
+
+				if count != 0: 
+
+					proof = self.env[model].create({
+														'name': self.saledoc_code,
+
+														'payment_method': self.id,
+														'order': self.order.id,
+														'partner': self.partner.id,
+																
+														'total': self.total,
+														'date_created': self.date_created,
+												})
+					#proof.save
+
+
+			proof_id = proof.id 
+			print proof
+			print self.saledoc_code
+			print self.id
+			print self.order
+			print self.partner
+			print self.total
+			print self.date_created
+			print
+
+
+			return {}
+
+
+			return {
+					'type': 'ir.actions.act_window',
+					'name': ' New Proof Current', 
+
+					'view_type': 'form',
+					'view_mode': 'form',	
+					'target': 'current',
+
+					'res_model': model,
+					'res_id': proof_id,
+
+					'flags': 	{
+									#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+									'form': {'action_buttons': True, }
+								},
+
+					'context': {
+								'default_name': self.saledoc_code,
+
+								'default_payment_method': self.id,
+								'default_order': self.order.id,
+								'default_partner': self.partner.id,
+								'default_total': self.total,		
+								'default_date_created': self.date_created,
+							}
+				}
+
+
+
+
+	# create_saleproof
 
 
 

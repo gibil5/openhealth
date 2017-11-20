@@ -3,22 +3,20 @@
 
 
 
+
 <!-- Ticket Boleta -->
-<!--
-			model="openhealth.ticket_receipt"
--->
 		<report
-
 			string="Ticket Boleta"
-
 			model="sale.order"
-
 			id="report_ticket_receipt"
-			
 			report_type="qweb-pdf"
 			
+
+
 			name="openhealth.report_ticket_receipt_view"            
 			
+
+
 			file="openhealth_ticket.report_ticket_receipt"
 		/>
 

@@ -32,10 +32,13 @@ _sale_doc_type_list = [
 
 						('receipt', 			'Boleta'),
 						('invoice', 			'Factura'),
-						('advertisement', 		'Canje Publicidad'),
-						('sale_note', 			'Canje NV'),
+
 						('ticket_receipt', 		'Ticket Boleta'),
 						('ticket_invoice', 		'Ticket Factura'),
+
+						('advertisement', 		'Canje Publicidad'),
+						('sale_note', 			'Canje NV'),
+						
 
 						#('', 			''),
 		]
@@ -113,6 +116,8 @@ _x_state_list = [
 
 
 
+
+
 _state_list = [
 
 				#('draft', 		'Quotation'),
@@ -121,24 +126,25 @@ _state_list = [
 				#('done', 		'Done'),
 				#('cancel', 	'Cancelled'),
 
+
+				#('draft', 		'Presupuesto'),
+				#('sent', 		'Pagado'),
+				#('sale', 		'Facturado'),				
+				#('done', 		'Completo'),
+				#('cancel', 		'Anulado'),
+
+
 				('draft', 		'Presupuesto'),
 				('sent', 		'Pagado'),
 				('sale', 		'Facturado'),				
+
+
+				('printed', 	'Impreso'),
+
+
 				('done', 		'Completo'),
 				('cancel', 		'Anulado'),
 
-
-
-
-
-
-
-				#('draft', 			'Presupuesto'),
-				#('payment', 		'Pagado'),
-				#('proof', 			'Comprobante'),
-				#('machine', 		'Reserva de sala'),
-				#('sale', 			'Confirmado'),
-				#('invoice', 		'Facturado'),
 			]
 
 

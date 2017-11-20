@@ -6,7 +6,7 @@
 from openerp import models, fields, api
 
 class Receipt(models.Model):
-	
+
 	_name = 'openhealth.receipt'
 
 	_inherit='openhealth.sale_proof'
@@ -32,11 +32,11 @@ class Receipt(models.Model):
 	@api.model
 	def create(self,vals):
 
-		#print 
-		#print 'Receipt - Create Override'
-		#print 
-		#print vals
-		#print 
+		print 
+		print 'Receipt - Create Override'
+		print 
+		print vals
+		print 
 	
 
 		#family = vals['family']

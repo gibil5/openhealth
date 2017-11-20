@@ -1367,6 +1367,7 @@ class sale_order(models.Model):
 
 
 				'context': {
+				
 							'default_order': self.id,
 
 							'default_name': name,
@@ -2431,6 +2432,31 @@ class sale_order(models.Model):
 		}
 
 
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Actions ------------------------------------------------------
+
+	@api.multi
+	#def print_quotation(self):
+	def print_ticket(self):
+
+		#self.filtered(lambda s: s.state == 'draft').write({'state': 'sent'})
+		#return self.env['report'].get_action(self, 'sale.report_saleorder')
+
+
+		self.state = 'printed'
+
+
+		if self.x_type == 'ticket_receipt': 
+			return self.env['report'].get_action(self, 'openhealth.report_ticket_receipt_view')
+
+		elif self.x_type == 'ticket_invoice': 
+			return self.env['report'].get_action(self, 'openhealth.report_ticket_invoice_view')
 
 
 

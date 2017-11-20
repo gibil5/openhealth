@@ -71,6 +71,9 @@
         </record>
 
 
+
+
+
 		<!-- MENU --> 
        <menuitem 
 	                name="Ordenes de C/S"
@@ -82,6 +85,7 @@
             		parent="purchase.menu_procurement_management"
             		
             		sequence="0"
+
 
             		/>
 

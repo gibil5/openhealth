@@ -1075,7 +1075,7 @@ Order Line - Tree
 <!--				
 -->
 					<field name="vspace"/>
-                    <field name="user_id"/>
+                    <field name="user_id"	string="Validación"		/>
 
 
 

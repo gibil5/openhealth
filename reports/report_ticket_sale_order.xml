@@ -218,7 +218,10 @@
 		<b>Ticket:</b>
 	</div>
 	<div class='col-xs-8'>
+<!--
 		<t t-esc="doc.name"/>
+-->
+		<t t-esc="doc.x_serial_nr"/>
 	</div>
 </div>
 <br/>

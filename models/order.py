@@ -153,16 +153,25 @@ class sale_order(models.Model):
 
 
 
-	x_type = fields.Selection(
 
+
+	# Payment Method 
+	x_payment_method = fields.Many2one(
+			'openhealth.payment_method',
+			string="Pago", 
+		)
+
+
+
+
+	# Type 
+	x_type = fields.Selection(
 			[	('receipt', 			'Boleta'),
 				('invoice', 			'Factura'),
 				('advertisement', 		'Canje Publicidad'),
 				('sale_note', 			'Canje NV'),
 				('ticket_receipt', 		'Ticket Boleta'),
 				('ticket_invoice', 		'Ticket Factura'),	], 
-			
-
 			string='Tipo', 
 
 			#required=True, 
@@ -177,66 +186,12 @@ class sale_order(models.Model):
 	def _compute_x_type(self):
 		for record in self:
 
-			name = record.name
-			pre = name.split('-')[0]
-
-
-			if pre == 'BO' or  pre == 'BOL':
-				record.x_type = 'receipt'
-
-			elif pre == 'FA':
-				record.x_type = 'invoice'
-
-			elif pre == 'CP':
-				record.x_type = 'advertisement'
-
-			elif pre == 'CN':
-				record.x_type = 'sale_note'
-			
-			elif pre == 'TKB':
-				record.x_type = 'ticket_receipt'
-			
-			elif pre == 'TKF':
-				record.x_type = 'ticket_invoice'
-
-			#else:
-			#	print 'jx'
-			#	print 'This should not happen'
-			#	print pre 
-			#	print 
+			if record.x_payment_method != False: 
+				record.x_type = record.x_payment_method.saledoc
 
 
 
 
-
-
-	#order_day = fields.Char(	
-	#		'Day', 
-	#		default = lambda *a: str(date_order.strftime('%d')),
-	#	)
-
-
-
-
-
-
-
-
-#'task_date_from':fields.function(lambda *a,**k:{}, method=True, type='date',string="Task date from"),
-#'task_date_to':fields.function(lambda *a,**k:{}, method=True, type='date',string="Task date to"),
-
-	#task_date_from = fields.Date(
-	#	default = lambda *a,#**k:{}, 
-		#method=True, 
-		#type='date', 
-	#	string="Task date from", 
-	#)
-
-	#task_date_to = fields.Date(
-	#	default=lambda *a,#**k:{}, 
-		#method=True, 
-	#	string="Task date to"
-	#)
 
 
 
@@ -520,13 +475,6 @@ class sale_order(models.Model):
 
 
 
-
-
-	# Payment Method 
-	x_payment_method = fields.Many2one(
-			'openhealth.payment_method',
-			string="Pago", 
-		)
 
 
 

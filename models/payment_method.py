@@ -620,22 +620,6 @@ class payment_method(models.Model):
 
 
 
-	# Open Order
-	@api.multi 
-	def open_order(self):
-
-		#print 
-		#print 'Open order'
-
-		self.confirmed = True 
-
-
-		ret = self.order.open_myself()
-
-		return ret 
-	# open_order
-
-
 
 
 
@@ -758,11 +742,8 @@ class payment_method(models.Model):
 	@api.multi 
 	def create_saleproof(self):
 
-
-
 		print 'jx'
-		print 'Create Sale proof'
-
+		print 'Create Sale Proof'
 
 
 		# Search in the Model dic
@@ -773,7 +754,6 @@ class payment_method(models.Model):
 
 		# The model is valid 
 		if model != False: 
-
 
 
 			# Search it exists 
@@ -788,10 +768,13 @@ class payment_method(models.Model):
 
 				count = self.env[model].search_count([('name','=', self.saledoc_code),])
 				print count
+				print 
 
+				#if count != 0: 
+				if count == 0: 
 
-				if count != 0: 
-
+					print 'GO CREATE'
+	
 					proof = self.env[model].create({
 														'name': self.saledoc_code,
 
@@ -802,11 +785,12 @@ class payment_method(models.Model):
 														'total': self.total,
 														'date_created': self.date_created,
 												})
-					#proof.save
 
 
 			proof_id = proof.id 
+			print 
 			print proof
+			print 
 			print self.saledoc_code
 			print self.id
 			print self.order
@@ -819,37 +803,61 @@ class payment_method(models.Model):
 			return {}
 
 
-			return {
-					'type': 'ir.actions.act_window',
-					'name': ' New Proof Current', 
 
-					'view_type': 'form',
-					'view_mode': 'form',	
-					'target': 'current',
+			#return {
+			#		'type': 'ir.actions.act_window',
+			#		'name': ' New Proof Current', 
 
-					'res_model': model,
-					'res_id': proof_id,
+			#		'view_type': 'form',
+			#		'view_mode': 'form',	
+			#		'target': 'current',
 
-					'flags': 	{
+			#		'res_model': model,
+			#		'res_id': proof_id,
+
+			#		'flags': 	{
 									#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-									'form': {'action_buttons': True, }
-								},
+			#						'form': {'action_buttons': True, }
+			#					},
 
-					'context': {
-								'default_name': self.saledoc_code,
-
-								'default_payment_method': self.id,
-								'default_order': self.order.id,
-								'default_partner': self.partner.id,
-								'default_total': self.total,		
-								'default_date_created': self.date_created,
-							}
-				}
-
-
+			#		'context': {
+			#					'default_name': self.saledoc_code,
+			#					'default_payment_method': self.id,
+			#					'default_order': self.order.id,
+			#					'default_partner': self.partner.id,
+			#					'default_total': self.total,		
+			#					'default_date_created': self.date_created,
+			#				}
+			#	}
 
 
 	# create_saleproof
+
+
+
+
+
+
+	# Open Order
+	@api.multi 
+	def open_order(self):
+
+		#print 
+		#print 'Open order'
+
+
+		self.confirmed = True 
+		self.order.state = 'sale' 
+
+
+		ret = self.order.open_myself()
+
+		return ret 
+	# open_order
+
+
+
+
 
 
 

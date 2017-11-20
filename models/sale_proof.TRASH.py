@@ -260,6 +260,40 @@
 
 
 
+	# Counter
+	#counter = fields.Char(
+	#		string="Counter", 
+	#		default="0", 
+	#		required=True, 
+	#	)
+
+	# Code
+	#code = fields.Char(
+	#		string="Code", 
+	#		default="x", 
+	#		required=True, 
+	#	)
+
+
+
+
+	#sale_document = fields.Many2one('openhealth.sale_document',
+	#		ondelete='cascade', 
+	#		string="Sale document",
+	#		)
+
+
+	# Open Payment Method
+	#@api.multi 
+	#def open_pm(self):
+		#print 
+		#print 'Open Payment method'
+	#	ret = self.payment_method.open_myself()
+	#	return ret 
+	# open_order
+
+
+
 
 
 

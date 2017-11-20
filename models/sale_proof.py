@@ -4,14 +4,12 @@
 # 
 #
 
-
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
 from openerp import models, fields, api
-
 from num2words import num2words
 
 
@@ -22,12 +20,15 @@ class SaleProof(models.Model):
 
 
 
-	name = fields.Char(
-			string="", 
 
-			required=True, 
-			)
 
+
+
+
+
+
+# ----------------------------------------------------------- Vars Primitives ------------------------------------------------------
+	
 
 	vspace = fields.Char(
 			' ', 
@@ -35,7 +36,7 @@ class SaleProof(models.Model):
 			)
 
 
-
+	# Family 
 	family = fields.Selection(
 		
 			[	
@@ -57,31 +58,21 @@ class SaleProof(models.Model):
 
 
 
-	ruc = fields.Char(
-			string="RUC", 
-				
-			required=False, 
-			#required=True, 
-		)
-
-	address = fields.Char(
-			'Dirección', 
-	)
-
-	company = fields.Char(
-			'Razón social', 
-	)
 
 
 
 
 
+# ----------------------------------------------------------- Vars Required ------------------------------------------------------
 
+
+
+	# Counter 
 	counter = fields.Many2one('openhealth.counter',
-			#ondelete='cascade', 
 			string="Counter",
-			required=True, 
 
+			#required=True, 
+			required=False, 
 			compute="_compute_counter",
 			)
 
@@ -92,25 +83,6 @@ class SaleProof(models.Model):
 		for record in self:
 			record.counter = self.env['openhealth.counter'].search([('name', 'like', record.family)])
 
-
-
-
-
-
-
-	# Counter
-	#counter = fields.Char(
-	#		string="Counter", 
-	#		default="0", 
-	#		required=True, 
-	#	)
-
-	# Code
-	#code = fields.Char(
-	#		string="Code", 
-	#		default="x", 
-	#		required=True, 
-	#	)
 
 
 
@@ -127,33 +99,33 @@ class SaleProof(models.Model):
 			)
 
 
+	# Partner 
+	partner = fields.Many2one(
+			'res.partner',
+			string = "Cliente", 			
+			required=True, 
+		)
+
+
+	# Total 
+	total = fields.Float(
+			string = 'Total S/.', 
+			required=True, 
+		)
+
+
+	# Name 
+	name = fields.Char(
+			string="", 
+
+			required=True, 
+			)
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-	# Open Payment Method
-	@api.multi 
-	def open_pm(self):
-		#print 
-		#print 'Open Payment method'
-		ret = self.payment_method.open_myself()
-		return ret 
-	# open_order
-
-
-
-
-
+# ----------------------------------------------------------- Vars NOT Required ------------------------------------------------------
 
 
 	payment_method = fields.Many2one('openhealth.payment_method',
@@ -164,16 +136,10 @@ class SaleProof(models.Model):
 			required=False, 
 			)
 
-	#sale_document = fields.Many2one('openhealth.sale_document',
-	#		ondelete='cascade', 
-	#		string="Sale document",
-	#		)
 
 	order = fields.Many2one(
 			'sale.order',
-
-			string="Presupuesto",
-			
+			"Presupuesto",
 			ondelete='cascade', 
 			
 			#required=True, 
@@ -182,17 +148,22 @@ class SaleProof(models.Model):
 
 
 
-	partner = fields.Many2one(
-			'res.partner',
-			string = "Cliente", 			
-			required=True, 
+	ruc = fields.Char(
+			string="RUC", 
+				
+			required=False, 
+			#required=True, 
 		)
 
+	address = fields.Char(
+			'Dirección', 
+			required=False, 
+	)
 
-	total = fields.Float(
-			string = 'Total S/.', 
-			required=True, 
-		)
+	company = fields.Char(
+			'Razón social', 
+			required=False, 
+	)
 
 
 
@@ -200,6 +171,7 @@ class SaleProof(models.Model):
 
 
 # ----------------------------------------------------------- Actions ------------------------------------------------------
+
 
 	# Open Order
 	@api.multi 

@@ -77,6 +77,29 @@ class PurchaseOrder(models.Model):
 
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 
+
+	# Clean
+	@api.multi
+	def clean_myself(self):  
+
+		print 'jx'
+		print 'Clean Myself'
+		
+		po_menu = self.env['ir.ui.menu'].search([('name', '=', 'Purchase Orders')])
+		
+		print po_menu
+		po_menu.unlink()
+		print po_menu
+		print 		
+
+		return {}
+
+
+
+
+
+
+
 	# Validate 
 	@api.multi
 	def button_validate(self):

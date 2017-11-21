@@ -25,6 +25,13 @@
 				-->
 
 
+<!--
+				<xpath expr="//field[@name='date_order']" position="after">
+					<field name="x_token" />
+				</xpath>
+-->
+
+
 
 				<xpath expr="//button[@name='button_done']" position="after">
 

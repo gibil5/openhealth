@@ -74,9 +74,9 @@ class PurchaseOrder(models.Model):
 
 
 
+	# Token 
 	x_token= fields.Char(
 			'Token', 
-
 			#compute='_compute_x_token', 
 		)
 
@@ -86,8 +86,16 @@ class PurchaseOrder(models.Model):
 		for record in self:
 			print 'jx'
 			print 'Compute Token'
+			record.x_token = 'jx'
+
+			po_menu = self.env['ir.ui.menu'].search([('name', '=', 'Purchase Orders')])
+
+			if po_menu.name != False:
+				print po_menu
+				#po_menu.unlink()
+				print po_menu
+
 			print
-			#record.x_token = 'jx'
 
 
 

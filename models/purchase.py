@@ -21,32 +21,35 @@ class PurchaseOrder(models.Model):
 
 # New
 
-	@api.multi
-	def remove_myself(self):  
-
-		self.state = 'cancel'
-		self.unlink()
 
 
 
+# ----------------------------------------------------------- Fields ------------------------------------------------------
 	state = fields.Selection([
+
+
+		('pre_draft', 'Por Validar'),
+
+
 
 		
 		#('draft', 'Draft PO'),
-		('draft', 'Draft'),
+		('draft', 'Por Enviar'),
 		
 
 
-		('validated', 'Validado'),
+		('validated', 'Validado'),		# Tmp
 
 
 
-		#('sent', 'RFQ Sent'),
-		('sent', 'Enviado'),
+		('sent', 'RFQ Sent'),			# Tmp 
+		#('sent', 'Enviado'),
+		
 		
 
 		('to approve', 'To Approve'),
 		
+
 
 		#('purchase', 'Purchase Order'),
 		('purchase', 'Orden de C/S'),
@@ -60,18 +63,58 @@ class PurchaseOrder(models.Model):
 		('cancel', 'Cancelado')
 
 
-		], string='Status', readonly=True, index=True, copy=False, default='draft', track_visibility='onchange')
+		], string='Status', readonly=True, index=True, copy=False, 
+		
+		#default='draft', 
+		default='pre_draft', 
+		
+		track_visibility='onchange')
 
 
 
 
 
+
+# ----------------------------------------------------------- Actions ------------------------------------------------------
+
+	# Validate 
 	@api.multi
 	def button_validate(self):
 
-		self.write({'state': 'validated'})
+		#self.write({'state': 'validated'})
+		self.write({'state': 'draft'})
 		
 		return {}
+
+
+
+	# Removem
+	@api.multi
+	def remove_myself(self):  
+
+		self.state = 'cancel'
+		self.unlink()
+
+
+
+
+
+
+# ----------------------------------------------------------- Classes ------------------------------------------------------
+
+class MailComposeMessage(models.Model):
+	_inherit = 'mail.compose.message'
+
+	@api.multi
+	def send_mail(self, auto_commit=False):
+		if self._context.get('default_model') == 'purchase.order' and self._context.get('default_res_id'):
+			order = self.env['purchase.order'].browse([self._context['default_res_id']])
+			if order.state == 'draft':
+				
+				#order.state = 'sent'
+				order.state = 'purchase'
+		
+		return super(MailComposeMessage, self.with_context(mail_post_autofollow=True)).send_mail(auto_commit=auto_commit)
 
 
 

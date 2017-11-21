@@ -177,6 +177,27 @@
 				<xpath expr="//button[@name='button_confirm']" position="replace">
 				</xpath>
 
+
+
+<!--
+                    <button name="button_done" type="object" string="Set to Done" states="purchase"
+                        help="If a purchase order is done, you cannot modify it manually anymore. You will not be able to receive invoices anymore for this purchase order."/>
+-->
+				<xpath expr="//button[@name='button_done']" position="replace">
+
+                    <button 
+                    		name="button_done" 
+                    		type="object" 
+                    		string="Set to Done" 
+                    		states="purchase"   
+
+							groups="openhealth.roots"
+                        />
+
+				</xpath>
+
+
+
 			</field>
 		</record>
 

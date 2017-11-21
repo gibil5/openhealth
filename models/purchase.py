@@ -38,7 +38,7 @@ class PurchaseOrder(models.Model):
 		
 
 
-		('validated', 'Validado'),		# Tmp
+		#('validated', 'Validado'),		# Tmp
 
 
 

@@ -74,6 +74,24 @@ class PurchaseOrder(models.Model):
 
 
 
+	x_token= fields.Char(
+			'Token', 
+
+			#compute='_compute_x_token', 
+		)
+
+	@api.multi
+	#@api.depends('')
+	def _compute_x_token(self):
+		for record in self:
+			print 'jx'
+			print 'Compute Token'
+			print
+			#record.x_token = 'jx'
+
+
+
+
 
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 
@@ -84,7 +102,7 @@ class PurchaseOrder(models.Model):
 
 		print 'jx'
 		print 'Clean Myself'
-		
+
 		po_menu = self.env['ir.ui.menu'].search([('name', '=', 'Purchase Orders')])
 		
 		print po_menu

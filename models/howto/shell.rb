@@ -52,6 +52,19 @@ self.env['mail.template'].search([('name', '=', 'RFQ - Send by Email - jx')])
 
 
 
+
+
+
+
+self.env['ir.ui.menu']
+self.env['ir.ui.menu']
+
+self.env['ir.ui.menu'].search([('name', 'like', 'J')])
+
+
+
+
+
 self.env['openhealth.receipt'].create()
 
 	{ 'product_id': 4043, 'order_id': 89, 'name': 'hya_1hr_ref_one_nor' })

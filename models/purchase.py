@@ -29,3 +29,49 @@ class PurchaseOrder(models.Model):
 
 
 
+	state = fields.Selection([
+
+		
+		#('draft', 'Draft PO'),
+		('draft', 'Draft'),
+		
+
+
+		('validated', 'Validado'),
+
+
+
+		#('sent', 'RFQ Sent'),
+		('sent', 'Enviado'),
+		
+
+		('to approve', 'To Approve'),
+		
+
+		#('purchase', 'Purchase Order'),
+		('purchase', 'Orden de C/S'),
+		
+
+		#('done', 'Done'),
+		('done', 'Completo'),
+		
+
+		#('cancel', 'Cancelled')
+		('cancel', 'Cancelado')
+
+
+		], string='Status', readonly=True, index=True, copy=False, default='draft', track_visibility='onchange')
+
+
+
+
+
+	@api.multi
+	def button_validate(self):
+
+		self.write({'state': 'validated'})
+		
+		return {}
+
+
+

@@ -241,13 +241,11 @@
 			}
 		},
 		{
-			"contents": "Learn\n------\n\nCreated: \t15 sep 2016\nLast mod:\tid. \n\n\n\nShell \n./odoo.py shell -d chavarri-oehealth\n\n\nself\n\nself.name\n\nself.env\n\n\n\ns= self.env['product.template'].search([  ('x_treatment', '=', 'hyaluronic_acid'), ('x_sessions', '=', '1') ])\n\n\n\n\nself.env['stock.picking'].search([('name', 'like', 'J')])\n\nself.env['stock.picking'].search([('name', 'like', 'CC/OUT/00007')])\n\n\n\n\n\n\n\n\nself.env['ir.model.data'].search([('name', 'like', 'J')])\n\nself.env['ir.model.data'].search([('id', '=', 10)])\n\n\n\nself.env['mail.template'].search([('id', '=', 10)])\n\nself.env['mail.template'].search([('name', 'like', 'jx')])\n\n\nself.env['mail.template'].search([('name', '=', 'RFQ - Send by Email - jx')])\n\n\n\n\n\n\n\n\n\n\nself.env['ir.ui.menu']\nself.env['ir.ui.menu']\n\nself.env['ir.ui.menu'].search([('name', 'like', 'J')])\n\n\n\n\n\nself.env['openhealth.receipt'].create()\n\n\t{ 'product_id': 4043, 'order_id': 89, 'name': 'hya_1hr_ref_one_nor' })\n\n\n\n\n\n\n\nself.env['openhealth.ticket_invoice']\n\nself.env['openhealth.ticket_invoice'].search([('name', 'like', 'J')])\n\nself.env['openhealth.ticket_invoice'].search([('name', 'like', '8')])\n\n\n\n\n\n\n\n\n\nself.env['purchase.order']\n\nself.env['purchase.order'].search([('name', 'like', 'J')])\n\npo.unlink()\n\n\n\n\n\nself.env['openhealth.quotation'].search([('name', 'like', '')])\n\n\n\n\n\n\n\n\nself.env['res.partner']\n\n\n\n#self.env['res.partner'].mapped('partner_id')\n\n\n\nself.env['res.partner'].search([('name', 'like', 'J')])\n\n\n\n\n\nself.env['product.pricelist'].search([('name', 'like', 'P')])\n\nself.env['product.pricelist'].search([('name', '=', 'Public Pricelist')])\n\n\n\np = self.env['product.pricelist'].search([('name','=', 'VIP'),],limit=1,)\n\no.order_line.create({ 'product_id': 4043, 'order_id': 89, 'name': 'hya_1hr_ref_one_nor' })\n\n\n\np = self.env['product.pricelist'].create({ 'name': 'jx Test 1' })\n\n\nself.env['product.pricelist'].create({ 'name': 'jx Test 1' })\n\n\n\n\nself.env['product.pricelist.item'].search_count([('name', 'like', '')])\nself.env['product.pricelist.item'].search_count([('base', 'like', '')])\n\n\n\n\nself.env['product.pricelist'].search([('name', '=', 'VIP')])\n21\n\nself.env['product.pricelist.item'].create({ 'name': 'jx Test 2' })\n\np = self.env['product.pricelist.item'].create({ 'name': 'jx Test 2', 'pricelist_id': '21' })\n\n\n\n\np = self.env['product.pricelist.item'].create({ 'name': 'jx Test 2', 'pricelist_id': '21', 'product_tmpl_id': '3325' })\n\n\n\n\nself.env['product.template'].search([('x_name_short', '=', 'hac_1hy_rfa_one')])\n3325\n\n\n\n\n\np = self.env['product.pricelist.item'].create({ 'name': 'jx Test 2', 'base': 'pricelist' })\n\n\np = self.env['product.pricelist.item'].create({ 'name': 'jx Test 2', 'base': 'pricelist', 'applied_on': '1_product', 'min_quantity': '1', 'fixed_price': '1200.0' })\n\n\n\n\nself.env['res.users']\nself.env['res.users'].search([('name', 'like', 'J')])\n\n\n\n\n\n\nself.env['res.country'].search([('name', 'like', 'Peru')])\n\n\n\n\n\nhttp://localhost:8069/web#id=12&view_type=form&model=openextension.treatment&menu_id=1314&action=797\nhttp://localhost:8069/web#id=14&view_type=form&model=openextension.treatment&menu_id=1314&action=797\n\n\nself.env['openhealth.learn'].search([('name', 'like', 'B')])\n\nself.env['openhealth.learn'].search([('name', 'like', 'J')]).do_operation()\n\n\nself.env['openhealth.learn'].search([('name', 'like', 'J')]).write({'a': 1, 'b': 2, 'c': 3})\n\nself.env['openhealth.learn'].search([('name', 'like', '')]).write({'a': 1, 'b': 2, 'c': 3})\n\n\nself.env['res.partner'].filtered(\"partner_id.is_company\")\nself.env['res.partner'].filtered(\"company_type.is_company\")\n\n\nself.env['openhealth.learn'].search([('name', 'like', '')]).sorted()\nself.env['openhealth.learn'].search([('name', 'like', '')]).sorted(key=lambda r: r.name)\n\nself.env['openhealth.learn'].search([('name', 'like', '')]).mapped(lambda r: r.a + r.b)\n\n\nself.env['openhealth.learn'].search([('name', 'like', '')]).mapped('name')\n\n\n\nself.env['openhealth.learn'].search([('id','=','1')]).name\n\n\n\n\nenv['res.partner'].sudo().create({'name': \"A Partner\"})\n\n\n\n\nself.env['openhealth.learn'].search([('name', 'like', '')]).search_count()\n\n\n\n\n\n\n\nself.env['oeh.medical.patient'].search([('name', 'like', 'SALMON RAVENNA LAURA YOLANDA')])\n\n\n\n\n\nself.env['oeh.medical.patient'].search([('name', 'like', 'Ja')])\n\nself.env['oeh.medical.patient'].search([('id', '=', '3025')])\n\n\nself.env['oeh.medical.patient'].search([('name', '=', '')])\nself.env['oeh.medical.patient'].search([('name', '=', 'NIZAMA CASTILLO EDICSON JIICHIRO')])\nself.env['oeh.medical.patient'].search([('name', '=', 'REVILLA RONDON Jose Javier')])\n\n\nNIZAMA CASTILLO EDICSON JIICHIRO\nREVILLA RONDON Jose Javier\n\n\n\n\nself.env['oeh.medical.physician'].search([('name', 'like', 'Fe')])\nself.env['oeh.medical.physician'].search([('id', '=', '1')])\n\n\n\n\n\n\n\nself.env['openhealth.service'].search([('name', 'like', 'S')])\n\n\n\n\nself.env['product.template'].search([('x_treatment', 'like', 'laser_co2')])\n\n\n#order='appointment_date desc',\n\n\n\nself.env['product.template'].search([\t('x_treatment', '=', 'laser_co2'),\t('x_zone', '=', 'body_local'),\t('x_pathology', '=', 'acne_sequels_1')])\n\n\nself.env['product.template'].search([('x_treatment', '=', 'laser_co2'),('x_zone', '=', 'body_local'),('list_price', '=', 50)]).name\n\n\n\n\n\n\n\n\nself.env['openhealth.treatment']\n\nself.env['openhealth.treatment'].search([('name', 'like', 'TR000016'),])\n\nt = self.env['openhealth.treatment'].search([('id', '=', '16'),])\n\nt = self.env['openhealth.treatment'].search([('id', '=', '02'),])\n\n\n\n\n\n\n\n\nself.env['product.template']\n\nself.env['product.template'].search([('x_zone', 'like', '1_hypodermic'),])\n\n\n\nself.env['account.invoice.line']\n\n\n\n\nself.env['product.template'].search([('type', 'like', 'service'),])\n\nself.env['product.template'].search([('type', 'like', 'consumable'),])\n\n\n\n\n\nself.env['product.template'].search([('x_treatment', 'like', 'co2'),('x_zone', 'like', 'hands')], limit=1)\n\n\nself.env['product.template'].search([('x_treatment', 'like', 'hyaluronic_acid'),('x_zone', 'like', '1_hypodermic_repair')], limit=1)\n\n\n\np = self.env['product.template'].search([('x_treatment', 'like', 'hyaluronic_acid'),('x_zone', 'like', '1_hypodermic_repair')], limit=1)\n\n\n\np = self.env['product.template'].search([('x_name_short', 'like', 'co2_han_sta'),])\n\n\n\n\n\n\n# not working\nself.env['openhealth.learn'].search([('name', 'like', '')]).filtered(lambda r: r.name == user.name)\n\nopenhealth.learn(1, 2)\n\nself.env['openhealth.learn'].do_operation()\n\nself.env['openhealth.learn'].do_msg()\n\n\n\n\n\n\n\n# Treatment \n\nself.env.ref('base.group_public')\n\nself.env.ref('openextension.treatment')\n\nt = self.env['openextension.treatment'].search([('chief_complaint', 'like', 'acne_active')], limit=1)\n\n\n\nt = self.env['openextension.treatment'].search([\t('chief_complaint', 'like', 'acne_active'), ('patient', 'like', 'Puga')\t])\n\n\nt = self.env['openextension.treatment'].search([\t('chief_complaint', 'like', 'acne_active'), ('patient', 'like', 'Revilla')\t])\n\nt = self.env['openextension.treatment'].search([\t('chief_complaint', 'like', 'acne_active'), ('patient', 'like', 'Revilla')],  order='start_date' )\n\nt = self.env['openextension.treatment'].search([\t('chief_complaint', 'like', 'acne_active'), ('patient', 'like', 'Revilla')],  order='start_date desc' )\n\nt = self.env['openextension.treatment'].search([\t('chief_complaint', 'like', 'acne_active'), ('patient', 'like', 'Revilla')],  order='start_date desc', limit=1 )\n\n\nt = self.env['openextension.treatment'].search([  ('chief_complaint', 'like', 'acne_active'), ('patient', 'like', 'Revilla'),    ],  order='start_date desc', limit=1 )\n\n\n\n\n\n'default_patient': context.get('patient_id', False),\n\n\n\n\n\n\n\nself.env['sale.order']\nself.env['sale.order'].search_count([('name', 'like', '1')])\n\nself.env['sale.order'].search([('name', 'like', '11')]).order_line.search([('name', 'like', 'CO')])\nself.env['sale.order'].search([('name', 'like', '11')]).order_line.search([('id', '=', '3201')])\n\n\n\no = self.env['sale.order'].search([('name', 'like', '103')])\n\no = self.env['sale.order'].search([('name', 'like', '109')])\n\no = self.env['sale.order'].search([('name', 'like', '119')])\n\n\n\n\no = self.env['sale.order'].search([('name', 'like', '182')])\n\no = self.env['sale.order'].search([('name', 'like', '184')])\n\n\no = self.env['sale.order'].search([('name', 'like', '191')])\n\n\n\n\nself.env['sale.order'].search([('name', 'like', '0113')])\n\nself.env['sale.order'].search([('name', 'like', '0113')]).date_order\n\n\nself.env['sale.order'].search([('date_order', 'like', '2017')])\n\n\n\n\n\n\n\n\n\no.order_line.create({ 'product_id': 4043, 'order_id': 89, 'name': 'hya_1hr_ref_one_nor' })\n\no.order_line.create({ 'product_id': 4136, 'order_id': 95, 'name': 'hya_1hr_ref_one_nor' })\n\no.order_line.create({ 'product_id': 4136, 'order_id': 95, 'name': 'ACIDO HIALURONICO - 1 Jeringa - REPAIR - Rejuvenecimiento Facial - 1 - Normal' })\n\n\n\no.order_line.create({ 'product_id': 4190, 'order_id': 105, 'name': 'lep_bac_acn_one_nor' })\n\n\n\n\n\n\nself.env['product.template'].search([('x_name_short', 'like', 'hya_1hr_ref_one_nor'),])\n\np = self.env['product.template'].search([('x_name_short', 'like', 'lep_bac_acn_one_nor')])\n\n\n\npc = self.env['product.template'].search([('x_name_short', 'like', 'co2_nec_sca')])\n\n\n\nself.env['openhealth.consultation'].search([('name', 'like', '93')])\n\nself.env['res.partner'].search([('name','=','Yvan Puga')],limit=1)\n\n\nself.env['openhealth.service.co2'].search([('name', 'like', '93')])\n\n\n\n\n\n\n\n\n\n\nself.env['sale.order'].search([('state', 'like', 'draft')])\n\no = self.env['sale.order'].search([('state', 'like', 'draft')])\n\n\nself.env['sale.order'].search([('customer', 'like', 'J')])\n\n\n\n\n\n\n\n\n\n\n\n\na = self.env['oeh.medical.appointment'].search([('name', 'like', '68')])\n\na = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', '26')])\n\na = self.env['oeh.medical.appointment'].search([('appointment_date', '=', '2016-11-26')])\n\n\na = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', '26')], limit=1)\n\n\n\na = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', '16-11-26')], limit=1)\n\na = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', '16-11-26'), ('doctor_id', '=', '1'),])\n\n\n\na = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', '16-12-6'), ('doctor', 'like', 'Chavarri'),])\n\na = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', '16-12-6'), ('patient', 'like', 'Revilla'),])\n\n\na = self.env['oeh.medical.appointment'].search([ \t('patient', 'like', 'Revilla'),\t\t('doctor', 'like', 'Chavarri'), \t\t])\n\na = self.env['oeh.medical.appointment'].search([ \t('patient', 'like', 'Revilla'),\t\t('doctor', 'like', 'Chavarri'), \t('appointment_date', 'like', '2016-12-06 15:30:00')\t])\n\n\n\n\na = self.env['oeh.medical.appointment'].search([ \t('patient', 'like', 'Revilla'),\t\t('doctor', 'like', 'Chavarri'), \t\t], limit=1)\n\n\na = self.env['oeh.medical.appointment'].search([ \t('patient', 'like', 'Revilla'),\t\t('doctor', 'like', 'Chavarri'), \t('x_type', 'like', 'consultation'), \t\t])\n\na = self.env['oeh.medical.appointment'].search([ \t('patient', 'like', 'Revilla'),\t\t('doctor', 'like', 'Chavarri'), \t('x_type', 'like', 'consultation'), \t\t], order='appointment_date desc', limit=1)\n\n\n\na = self.env['oeh.medical.appointment'].search([ \t('patient', 'like', 'Revilla'),\t\t('doctor', 'like', 'Chavarri'), \t('x_type', 'like', 'consultation'), ('appointment_date', 'like', '2016-12-06 15:30:00')\t\t])\n\n\n\n\na = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', appointment_date_str), ('doctor', '=', doctor_name), ('x_type', '=', x_type), ])\n\n\na = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', appointment_date_str), ])\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t \t])\n\na = self.env['oeh.medical.appointment'].search([('appointment_date', 'like', '16-12-23'), ])\n\n\n\n\na = self.env['oeh.medical.appointment'].search([ ('patient', 'like', 'REVILLA Javier'),\t('x_therapist', 'like', 'Eulalia'), ('x_type', 'like', 'procedure'), ], order='appointment_date desc', limit=1)\n\n\n\n\na = self.env['oeh.medical.appointment'].search([ ('appointment_date', 'like', '17-03-02'), ('patient', 'like', 'REVILLA Javier'),\t('x_therapist', 'like', 'Eulalia'), ('x_type', 'like', 'procedure'), ], order='appointment_date desc', limit=1)\n\n\na = self.env['oeh.medical.appointment'].search([ ('appointment_date', 'like', '2017-03-02 16:00:00'), ('patient', 'like', 'REVILLA Javier'),\t('x_therapist', 'like', 'Eulalia'), ('x_type', 'like', 'procedure'), ], order='appointment_date desc', limit=1)\n\n\na = self.env['oeh.medical.appointment'].search([ ('appointment_date', 'like', '2017-03-02 '), ('patient', 'like', 'REVILLA Javier'),\t('x_therapist', 'like', 'Eulalia'), ('x_type', 'like', 'procedure'), ], order='appointment_date desc', limit=1)\n\n\na = self.env['oeh.medical.appointment'].search([ ('appointment_date', 'like', '2017-03-02 17:17:36'), ('patient', 'like', 'REVILLA Javier'),\t('x_therapist', 'like', 'Eulalia'), ('x_type', 'like', 'procedure'), ], order='appointment_date desc', limit=1)\n\n\n\n\n\n\n\n\nret = a.write({'consultation': 65,})\n\n\n\n",
-			"file": "models/howto/shell.rb",
-			"file_size": 12900,
-			"file_write_time": 131556640860000000,
+			"file": "models/purchase.py",
 			"settings":
 			{
-				"buffer_size": 13011,
+				"buffer_size": 853,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
@@ -255,16 +253,8 @@
 			"file": "views/purchase/purchase.xml",
 			"settings":
 			{
-				"buffer_size": 3655,
+				"buffer_size": 5325,
 				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/purchase/purchase.TRASH.xml",
-			"settings":
-			{
-				"buffer_size": 17709,
 				"line_ending": "Unix"
 			}
 		},
@@ -450,6 +440,8 @@
 	},
 	"file_history":
 	[
+		"/Users/gibil/cellar/github/openhealth/models/howto/shell.rb",
+		"/Users/gibil/cellar/github/openhealth/views/purchase/purchase.TRASH.xml",
 		"/Users/gibil/cellar/github/openhealth/models/order.TRASH.py",
 		"/Users/gibil/cellar/github/openhealth/models/partner.py",
 		"/Users/gibil/cellar/github/openhealth/views/partners/partner.xml",
@@ -457,7 +449,6 @@
 		"/Users/gibil/cellar/github/openhealth/models/sale_proof.TRASH.py",
 		"/Users/gibil/cellar/github/openhealth/models/payment_method.TRASH.py",
 		"/Users/gibil/cellar/github/openhealth/readme.txt",
-		"/Users/gibil/cellar/github/openhealth/models/howto/shell.rb",
 		"/Users/gibil/cellar/github/openhealth/models/ord_vars.py",
 		"/Users/gibil/cellar/github/openhealth/models/__init__.py",
 		"/Users/gibil/cellar/github/openhealth/reports/report_ticket_sale_order.xml",
@@ -512,7 +503,6 @@
 		"/Users/gibil/cellar/github/openhealth/models/order.py",
 		"/Users/gibil/cellar/github/openhealth/views/products/product.xml",
 		"/Users/gibil/cellar/github/openhealth/models/purchase.TRASH.py",
-		"/Users/gibil/cellar/github/openhealth/views/purchase/purchase.TRASH.xml",
 		"/Users/gibil/cellar/github/openhealth/views/stock/stock.xml",
 		"/Users/gibil/cellar/github/openhealth/views/stock/stock_picking.xml",
 		"/Users/gibil/cellar/github/openhealth/security/openhealth_security_oe.xml",
@@ -596,6 +586,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"groups",
+			"xpath",
 			"purchase.xml",
 			"purchase",
 			"receipt",
@@ -721,9 +713,7 @@
 			"num2words",
 			"my_ruc",
 			"order_line",
-			"pa_",
-			"my_address",
-			"my_ruc"
+			"pa_"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -869,7 +859,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -895,38 +885,39 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 4085.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "models/howto/shell.rb",
+					"file": "models/purchase.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 13011,
+						"buffer_size": 853,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								960,
-								960
+								851,
+								851
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Ruby/Ruby.sublime-syntax"
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 946.0,
+						"translation.y": 519.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -935,15 +926,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3655,
+						"buffer_size": 5325,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1674,
-								1674
+								1529,
+								1529
 							]
 						],
 						"settings":
@@ -953,44 +944,14 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1214.0,
+						"translation.y": 1212.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "views/purchase/purchase.TRASH.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 17709,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								16445,
-								16726
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 6626.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
 					"file": "reports/report_ticket_sale_order.xml",
 					"semi_transient": false,
 					"settings":
@@ -1015,11 +976,11 @@
 						"translation.y": 3567.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 4,
 					"file": "models/order.py",
 					"semi_transient": false,
 					"settings":
@@ -1044,11 +1005,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 5,
 					"file": "views/orders/order.xml",
 					"semi_transient": false,
 					"settings":
@@ -1060,8 +1021,8 @@
 						"selection":
 						[
 							[
-								17841,
-								17841
+								2948,
+								3016
 							]
 						],
 						"settings":
@@ -1070,14 +1031,14 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2726.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 6,
 					"file": "models/payment_method.py",
 					"semi_transient": false,
 					"settings":
@@ -1099,14 +1060,14 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 6982.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 7,
 					"file": "views/sale_documents/payment_methods.xml",
 					"semi_transient": false,
 					"settings":
@@ -1131,11 +1092,11 @@
 						"translation.y": 2158.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 8,
 					"file": "models/sale_proof.py",
 					"semi_transient": false,
 					"settings":
@@ -1160,11 +1121,11 @@
 						"translation.y": 1744.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 9,
 					"file": "models/sale_proof.TRASH.py",
 					"semi_transient": false,
 					"settings":
@@ -1189,11 +1150,11 @@
 						"translation.y": 4604.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 10,
 					"file": "models/receipt.py",
 					"semi_transient": false,
 					"settings":
@@ -1218,11 +1179,11 @@
 						"translation.y": 321.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 11,
 					"file": "views/sale_documents/receipts.xml",
 					"semi_transient": false,
 					"settings":
@@ -1247,11 +1208,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 12,
 					"file": "reports/report_ticket_sale_proof.xml",
 					"semi_transient": false,
 					"settings":
@@ -1276,11 +1237,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 13,
 					"file": "models/patient.py",
 					"semi_transient": false,
 					"settings":
@@ -1305,11 +1266,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 14,
 					"file": "data/base_data_physicians.xml",
 					"semi_transient": false,
 					"settings":
@@ -1334,7 +1295,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 14,
 					"type": "text"
 				}
 			]

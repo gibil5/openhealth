@@ -48,17 +48,25 @@
 
 
 
+<!--
+            <field name="name">Ordenes de C/S</field>
+-->
 
 		<!-- ACTION -->
         <record id="purchase.purchase_rfq" model="ir.actions.act_window">
 
-            <field name="name">Ordenes de C/S</field>
-            
+            <field name="name">Requests for Quotation</field>
+
+
             <field name="type">ir.actions.act_window</field>
             
             <field name="res_model">purchase.order</field>
             
-            <field name="context">{'search_default_todo':1}</field>
+
+
+            <field name="context">{
+                                        'search_default_todo':1, 
+                                }</field>
             
 
             <field name="domain">[]</field>
@@ -74,9 +82,13 @@
 
 
 
+
+<!--
+                    name="Ordenes de C/S"
+                    name="Requests for Quotation"
+-->
 		<!-- MENU --> 
        <menuitem 
-	                name="Ordenes de C/S"
 
        				action="purchase.purchase_rfq" 
 

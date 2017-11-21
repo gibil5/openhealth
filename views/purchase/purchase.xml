@@ -200,7 +200,7 @@
 
 <!--
                     <button name="action_rfq_send" states="purchase" string="Send PO by Email" type="object" context="{'send_rfq':False}"/>
--->
+
 				<xpath expr="//button[@name='action_rfq_send']" position="replace">
 
 
@@ -214,6 +214,7 @@
 							groups="openhealth.roots"
                     		/>
 				</xpath>
+-->
 
 
 

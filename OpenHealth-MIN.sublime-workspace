@@ -257,7 +257,7 @@
 			"file": "views/purchase/purchase.xml",
 			"settings":
 			{
-				"buffer_size": 5711,
+				"buffer_size": 6339,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -872,7 +872,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -901,7 +901,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -931,7 +931,7 @@
 						"translation.y": 175.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -940,15 +940,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5711,
+						"buffer_size": 6339,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4903,
-								4903
+								4111,
+								4111
 							]
 						],
 						"settings":
@@ -958,10 +958,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 4202.0,
+						"translation.y": 3015.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{

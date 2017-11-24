@@ -309,15 +309,15 @@
 
 
 		# Sale Documents
-		#'views/sale_documents/payment_methods.xml',
-		#'views/sale_documents/payment_method_line.xml',
+		'views/sale_documents/payment_methods.xml',
+		'views/sale_documents/payment_method_line.xml',
 
-		#'views/sale_documents/receipts.xml',
-		#'views/sale_documents/invoices.xml',
-		#'views/sale_documents/advertisements.xml',
-		#'views/sale_documents/sale_notes.xml',
-		#'views/sale_documents/ticket_receipts.xml',
-		#'views/sale_documents/ticket_invoices.xml',
+		'views/sale_documents/receipts.xml',
+		'views/sale_documents/invoices.xml',
+		'views/sale_documents/advertisements.xml',
+		'views/sale_documents/sale_notes.xml',
+		'views/sale_documents/ticket_receipts.xml',
+		'views/sale_documents/ticket_invoices.xml',
 
 
 

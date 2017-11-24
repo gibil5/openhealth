@@ -392,7 +392,7 @@
 
 
 		# Partners
-		'views/partners/partner.xml',
+		#'views/partners/partner.xml',
 
 
 		# Quotations 

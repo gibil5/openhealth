@@ -384,7 +384,7 @@
 		'views/physicians/physician.xml',
 
 		# Patients 
-		#'views/patients/patient.xml',
+		'views/patients/patient.xml',
 
 
 
@@ -392,7 +392,7 @@
 
 
 		# Partners
-		#'views/partners/partner.xml',
+		'views/partners/partner.xml',
 
 
 		# Quotations 

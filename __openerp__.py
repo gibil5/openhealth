@@ -276,7 +276,7 @@
 
 		# Orders
 		'views/orders/order_line.xml',
-		'views/orders/order.xml',
+		#'views/orders/order.xml',
 
 
 

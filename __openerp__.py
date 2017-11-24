@@ -247,7 +247,8 @@
 
 
 		# Purchases 
-		'views/purchase/purchase.xml',
+		#'views/purchase/purchase.xml',
+
 
 		# Mail template - Deprecated 
 		#'views/mail/rfq_send.xml',

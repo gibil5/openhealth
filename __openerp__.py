@@ -385,7 +385,7 @@
 		'views/physicians/physician.xml',
 
 		# Patients 
-		'views/patients/patient.xml',
+		#'views/patients/patient.xml',
 
 
 

@@ -243,7 +243,7 @@
 			"file": "__openerp__.py",
 			"settings":
 			{
-				"buffer_size": 10073,
+				"buffer_size": 10075,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -956,15 +956,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10073,
+						"buffer_size": 10075,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6581,
-								6581
+								4898,
+								4898
 							]
 						],
 						"settings":
@@ -973,7 +973,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 6995.0,
+						"translation.y": 4392.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

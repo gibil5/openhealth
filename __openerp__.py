@@ -247,11 +247,11 @@
 
 
 		# Purchases 
-		#'views/purchase/purchase.xml',
+		'views/purchase/purchase.xml',
 
-
-		# Mail template 
+		# Mail template - Deprecated 
 		#'views/mail/rfq_send.xml',
+
 
 
 		# Stock 
@@ -276,7 +276,7 @@
 
 		# Orders
 		'views/orders/order_line.xml',
-		#'views/orders/order.xml',
+		'views/orders/order.xml',
 
 
 
@@ -311,6 +311,7 @@
 		# Sale Documents
 		'views/sale_documents/payment_methods.xml',
 		'views/sale_documents/payment_method_line.xml',
+		
 
 		'views/sale_documents/receipts.xml',
 		'views/sale_documents/invoices.xml',

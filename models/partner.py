@@ -1,18 +1,9 @@
 # -*- coding: utf-8 -*-
 
 
+
 from openerp import models, fields, api
-#from datetime import datetime
-
 from . import pat_vars
-
-
-@api.model
-def _lang_get(self):
-	languages = self.env['res.lang'].search([])
-	return [(language.code, language.name) for language in languages]
-
-
 
 
 class Partner(models.Model):
@@ -224,18 +215,11 @@ class Partner(models.Model):
 
 
 	#lang = fields.Selection(
-		#_lang_get, 
-		#'Language',
-		#default='es_ES', 
-	#),
-
-
-	lang = fields.Selection(
-		_lang_get, 
-		'Language',
-		default='es_ES', 
-		help="If the selected language is loaded in the system, all documents related to this contact will be printed in this language. If not, it will be English."
-	)
+	#	_lang_get, 
+	#	'Language',
+	#	default='es_ES', 
+	#	help="If the selected language is loaded in the system, all documents related to this contact will be printed in this language. If not, it will be English."
+	#)
 
 
 
@@ -295,8 +279,50 @@ class Partner(models.Model):
 
 
 
-# ----------------------------------------------------------- CRUD ------------------------------------------------------
 
+
+
+# ----------------------------------------------------------- Actions ------------------------------------------------------
+
+	# Removem
+	@api.multi
+	def remove_myself(self):  
+		
+		#self.street = 'a'
+		#self.x_dni = 'a'
+		#self.email = 'a'
+		#self.phone = 'a'
+
+		self.sale_order_ids.unlink()
+ 		#sale_order_ids 
+		
+		self.unlink()
+
+
+
+
+
+	x_autofill = fields.Boolean(
+		string="Autofill",
+		default=False, 
+	)
+
+	@api.onchange('x_autofill')
+	
+	def _onchange_x_autofill(self):
+
+		if self.x_autofill == True:
+
+			self.street = 'a'
+			self.street2 = 'a'
+			self.city = 'a'
+			self.country_id = 175
+			self.x_dni = 'a'
+			self.email = 'a'
+			self.phone = 'a'
+
+
+# ----------------------------------------------------------- CRUD ------------------------------------------------------
 
 	@api.model
 	def create(self,vals):
@@ -381,6 +407,13 @@ class Partner(models.Model):
 		return res
 	# CRUD - Write 
 
-
-
 # ----------------------------------------------------------- END ------------------------------------------------------
+
+
+
+#@api.model
+#def _lang_get(self):
+#	languages = self.env['res.lang'].search([])
+#	return [(language.code, language.name) for language in languages]
+
+

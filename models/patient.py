@@ -34,6 +34,54 @@ class Patient(models.Model):
 
 
 
+
+
+	# Flag  
+	x_flag = fields.Char(
+		"Flag",
+		
+		default = '', 
+		store=True, 
+	)
+
+
+
+
+	# Number of clones  
+	x_nr_clones = fields.Integer(
+			"nr_clones",
+
+			compute="_compute_x_nr_clones",
+	)
+
+	@api.multi
+	
+	def _compute_x_nr_clones(self):
+		for record in self:
+
+			record.x_nr_clones = self.env['oeh.medical.patient'].search_count([
+																				('name','=', record.name),
+																			]) 
+			if record.x_nr_clones > 1:
+
+				record.x_flag = 'error'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	x_nationality = fields.Selection(
 			[	
 				('peruvian', 	'Peruano'),
@@ -79,7 +127,7 @@ class Patient(models.Model):
 
 
 
-	# Vip 
+	# Spaced 		- ???
 	x_spaced = fields.Boolean(
 		string="Spaced",
 		default=False, 
@@ -265,6 +313,7 @@ class Patient(models.Model):
 			#readonly = True, 
 			required=True, 
 			)
+
 
 	x_datetime_created = fields.Datetime(
 			string = "Apertura",
@@ -611,6 +660,8 @@ class Patient(models.Model):
 
 
 
+
+
 	phone_1 = fields.Char(
 		string="Teléfono 1",
 		
@@ -618,14 +669,14 @@ class Patient(models.Model):
 		required=False, 
 		)
 
-
-
 	# Phone 2
 	phone_2 = fields.Char(
 		string="Teléfono 2",
 
 		required=False, 
 		)
+
+
 
 
 
@@ -913,6 +964,8 @@ class Patient(models.Model):
 
 
 
+
+
 	# Phone 1
 	@api.onchange('phone_1')
 	def _onchange_phone_1(self):
@@ -928,6 +981,8 @@ class Patient(models.Model):
 		ret = pat_funcs.test_for_digits(self, self.phone_2)
 		if ret != 0: 
 			return ret
+
+
 
 
 
@@ -1150,6 +1205,15 @@ class Patient(models.Model):
 
 
 
+
+
+
+# ----------------------------------------------------------- Actions ------------------------------------------------------
+
+	# Removem
+	#@api.multi
+	#def remove_myself(self):  	
+	#	self.unlink()
 
 
 

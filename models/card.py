@@ -57,6 +57,7 @@ class Card(models.Model):
 	date_created = fields.Date(
 			string = "Fecha de Creación",
 			default = fields.Date.today, 
+
 			#readonly = True, 
 			required=True, 
 		)
@@ -69,6 +70,7 @@ class Card(models.Model):
 	patient_name = fields.Char(
 			string = "Paciente nombre",
 			default = "", 
+			
 			#readonly=True
 			required=True, 
 			)

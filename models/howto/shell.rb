@@ -62,6 +62,18 @@ self.env['ir.ui.menu']
 self.env['ir.ui.menu'].search([('name', 'like', 'J')])
 
 
+self.env['ir.ui.menu'].search([('name', '=', 'Requests for Quotation')])
+
+self.env['ir.ui.menu'].search([('name', '=', 'Purchase Orders')])
+
+self.env['ir.ui.menu'].search([('name', '=', '')])
+
+
+
+
+
+
+
 
 
 

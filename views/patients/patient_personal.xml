@@ -87,9 +87,14 @@
 				<field  name="phone" />
 				-->
 
-				<field name="phone_1" 	required="1"/>
-				
+<!--
+				<field name="phone_1" 	required="1"/>				
 				<field  name="phone_2" />
+-->
+
+				<field name="phone" 	required="1"/>				
+				<field  name="mobile" 	/>
+
 
 
 				<field  name="vspace" />

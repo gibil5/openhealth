@@ -435,7 +435,10 @@
 
 
 
-		<!-- tree/list view -->
+
+
+
+		<!-- TREE -list view -->
 		<record model="ir.ui.view" id="oehealth.oeh_medical_patient_tree">
 			<field name="name">patient.tree</field>
 			<field name="model">oeh.medical.patient</field>
@@ -448,12 +451,28 @@
 				<tree default_order='x_date_created desc'>
 			-->
 
+<!--
 				<tree string="Patient Tree">
+-->
+				<tree string="Patient Tree"  	colors="red:x_nr_clones!=1;"  >
+				
 
 					<field name="name"/>
 
+					<field name="x_flag"/>
+
+					<field name="x_nr_clones"/>
+
+
+
 
 					<field name="x_date_created"/>
+					<field name="x_datetime_created"/>
+
+					<field name="date"/>
+
+
+
 
 <!--
 					<field name="x_datetime_created"/>

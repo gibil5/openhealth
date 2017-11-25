@@ -201,10 +201,12 @@
 <!--
 					<button name="button_confirm" type="object" states="draft" string="Confirm Order" id="draft_confirm"/>
 -->
+
 <!--
+-->
 				<xpath expr="//button[@name='button_confirm']" position="replace">
 				</xpath>
--->
+
 
 
 

@@ -145,7 +145,7 @@
 					<field name="state" widget="statusbar" statusbar_visible="pre_draft,draft,purchase,done" readonly="1" />
 -->
 				<xpath expr="//field[@name='state']" position="replace">
-					<field name="state" widget="statusbar" statusbar_visible="pre_draft,draft,sent,purchase,done" readonly="1" />
+					<field name="state" widget="statusbar" statusbar_visible="pre_draft,draft,purchase,done" readonly="1" />
 				</xpath>
 
 

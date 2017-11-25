@@ -4,56 +4,99 @@
 
 
 
-<!--
-        			groups="stock.group_stock_manager" 
--->
-
-        <menuitem 	id="stock.menu_stock_sched" 
-        			name="Schedulers" 
-        			parent="stock.menu_stock_root" 
-
-        			groups="openhealth.roots" 
-        			
-        			sequence="50"
-        			/>
-
 
 <!--
-                                groups="group_stock_manager,base.group_configuration"
-                                groups="openhealth.roots,base.group_configuration" 
+		<field name="user_id" eval="False"/>
+		<field name="context">{'group_by': ['date:month', 'product_id']}</field>
 -->
-        <menuitem       id="stock.menu_stock_config_settings" 
-                                name="Configuration" 
-                                parent="stock.menu_stock_root"
-                                sequence="100" 
 
-                                groups="stock.group_stock_manager,base.group_configuration"
 
-                                />
+
+
+<!-- Favorites -->
+<!--
+-->
+	<!-- By Product --> 
+	<record id="stock.filter_stock_move_by_product_director" model="ir.filters">
+		<field name="name">Por Producto</field>
+		<field name="model_id">stock.move</field>
+		<field name="context">{'group_by': ['product_id']}</field>
+		<field name="active" eval="True" />
+		<field name="is_default" eval="True" />
+
+
+		<field name="user_id" eval="ref('openhealth.director_clinicachavarri')" />
+	    </record>
+
+
+
+	<!-- By Product --> 
+	<record id="stock.filter_stock_move_by_product_almacen" model="ir.filters">
+		<field name="name">Por Producto</field>
+		<field name="model_id">stock.move</field>
+		<field name="context">{'group_by': ['product_id']}</field>
+		<field name="active" eval="True" />
+		<field name="is_default" eval="True" />
+
+
+		<field name="user_id" eval="ref('openhealth.almacen_clinicachavarri')" />
+	    </record>
+
+
+
+	<!-- By Product --> 
+	<record id="stock.filter_stock_move_by_product_root" model="ir.filters">
+		<field name="name">Por Producto</field>
+		<field name="model_id">stock.move</field>
+		<field name="context">{'group_by': ['product_id']}</field>
+		<field name="active" eval="True" />
+		<field name="is_default" eval="True" />
+
+
+		<field name="user_id" eval="ref('base.user_root')" />
+	    </record>
+
+
+
+
+
+
 
 
 <!--
-
-        <record id="openhealth.action_traceability" model="ir.actions.act_window">
-                <field name="name">Tracea</field>
-                        
-                <field name="type">ir.actions.act_window</field>
-                        
-                <field name="res_model">purchase.order</field>
-                        
-                <field name="view_mode">tree,kanban,form,pivot,graph,calendar</field>
-        </record>
-
-
-
-        <menuitem       id="stock.menu_traceability" 
-                                name="Kardex" 
-                                parent="stock.menu_stock_root" 
-                                action="action_traceability" 
-                                sequence="150"
-                                />
-
+groups="stock.group_stock_manager" 
 -->
+	<menuitem 	id="stock.menu_stock_sched" 
+
+				name="Schedulers" 
+		
+				parent="stock.menu_stock_root" 
+
+				groups="openhealth.roots" 
+				
+				sequence="50"
+				/>
+
+
+<!--
+groups="group_stock_manager,base.group_configuration"
+groups="openhealth.roots,base.group_configuration" 
+-->
+	<menuitem       id="stock.menu_stock_config_settings" 
+		
+				name="Configuration" 
+		
+				parent="stock.menu_stock_root"
+		
+				sequence="100" 
+
+				groups="stock.group_stock_manager,base.group_configuration"
+
+				/>
+
+
+
+
 
 	</data>
 </openerp>

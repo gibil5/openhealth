@@ -585,7 +585,7 @@ openhealth.almacens
 					groups="openhealth.admins"
 -->
 
-		<menuitem 	name="oeHealth - jx" 
+		<menuitem 	name="oeHealth" 
 					id="oehealth.oeh_medical_menu" 
 					icon="STOCK_ZOOM_IN"
 
@@ -599,7 +599,7 @@ openhealth.almacens
 
 
 
-        <menuitem 	name="Employees - jx"
+        <menuitem 	name="Employees"
 
             		id="hr.menu_hr_root"            		
 

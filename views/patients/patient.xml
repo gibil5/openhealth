@@ -453,8 +453,9 @@
 
 <!--
 				<tree string="Patient Tree">
--->
 				<tree string="Patient Tree"  	colors="red:x_nr_clones!=1;"  >
+-->
+				<tree string="Patient Tree"  	colors="red:x_flag=='error';"  >
 				
 
 					<field name="name"/>
@@ -462,6 +463,8 @@
 					<field name="x_flag"/>
 
 					<field name="x_nr_clones"/>
+
+					<field name="x_lowcase"/>
 
 
 

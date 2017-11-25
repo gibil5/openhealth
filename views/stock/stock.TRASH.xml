@@ -1,0 +1,25 @@
+
+
+
+
+<!--
+24 Nov 2017
+-->
+
+<!--
+
+        <record id="openhealth.action_traceability" model="ir.actions.act_window">
+                <field name="name">Tracea</field>
+                <field name="type">ir.actions.act_window</field>
+                <field name="res_model">purchase.order</field>
+                <field name="view_mode">tree,kanban,form,pivot,graph,calendar</field>
+        </record>
+
+        <menuitem       id="stock.menu_traceability" 
+                                name="Kardex" 
+                                parent="stock.menu_stock_root" 
+                                action="action_traceability" 
+                                sequence="150"
+                                />
+
+-->

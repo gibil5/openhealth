@@ -42,8 +42,8 @@ class PurchaseOrder(models.Model):
 
 
 
-		('sent', 'RFQ Sent'),			# Tmp 
-		#('sent', 'Enviado'),
+		#('sent', 'RFQ Sent'),			# Tmp 
+		('sent', 'Enviado'),
 		
 		
 
@@ -104,6 +104,16 @@ class PurchaseOrder(models.Model):
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 
 
+
+
+
+
+
+
+
+
+
+
 	# Clean
 	@api.multi
 	def clean_myself(self):  
@@ -149,6 +159,25 @@ class PurchaseOrder(models.Model):
 
 
 
+	# Confirm 
+	@api.multi
+	def button_confirm(self):
+		for order in self:
+			if order.state not in ['draft', 'sent']:
+				continue
+			order._add_supplier_to_product()
+			# Deal with double validation process
+			if order.company_id.po_double_validation == 'one_step'\
+					or (order.company_id.po_double_validation == 'two_step'\
+						and order.amount_total < self.env.user.company_id.currency_id.compute(order.company_id.po_double_validation_amount, order.currency_id))\
+					or order.user_has_groups('purchase.group_purchase_manager'):
+				order.button_approve()
+			else:
+				order.write({'state': 'to approve'})
+		return {}
+
+
+
 # ----------------------------------------------------------- Classes ------------------------------------------------------
 
 class MailComposeMessage(models.Model):
@@ -159,11 +188,13 @@ class MailComposeMessage(models.Model):
 		if self._context.get('default_model') == 'purchase.order' and self._context.get('default_res_id'):
 			order = self.env['purchase.order'].browse([self._context['default_res_id']])
 			if order.state == 'draft':
-				
-				#order.state = 'sent'
-				order.state = 'purchase'
-		
+
+				order.state = 'sent'
+				#order.state = 'purchase'		
+
+				# jx
+				order.button_confirm()
+
+
 		return super(MailComposeMessage, self.with_context(mail_post_autofollow=True)).send_mail(auto_commit=auto_commit)
-
-
 

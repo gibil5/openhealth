@@ -133,9 +133,10 @@
 					<field name="state" widget="statusbar" statusbar_visible="draft,sent,purchase,done" readonly="1" />
 					<field name="state" widget="statusbar" statusbar_visible="draft,validated,sent,purchase,done" readonly="1" />
 					<field name="state" widget="statusbar" statusbar_visible="pre_draft,draft,sent,purchase,done" readonly="1" />
+					<field name="state" widget="statusbar" statusbar_visible="pre_draft,draft,purchase,done" readonly="1" />
 -->
 				<xpath expr="//field[@name='state']" position="replace">
-					<field name="state" widget="statusbar" statusbar_visible="pre_draft,draft,purchase,done" readonly="1" />
+					<field name="state" widget="statusbar" statusbar_visible="pre_draft,draft,sent,purchase,done" readonly="1" />
 				</xpath>
 
 
@@ -191,8 +192,10 @@
 <!--
 					<button name="button_confirm" type="object" states="draft" string="Confirm Order" id="draft_confirm"/>
 -->
+<!--
 				<xpath expr="//button[@name='button_confirm']" position="replace">
 				</xpath>
+-->
 
 
 

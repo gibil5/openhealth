@@ -36,8 +36,9 @@ class Patient(models.Model):
 
 
 
-	# Flag  
+	# QC - Flag  
 	x_flag = fields.Char(
+
 		"Flag",
 		
 		default = '', 
@@ -47,9 +48,10 @@ class Patient(models.Model):
 
 
 
-	# Number of clones  
+
+	# QC - Number of clones  
 	x_nr_clones = fields.Integer(
-			"nr_clones",
+			"QC - Nrc",
 
 			compute="_compute_x_nr_clones",
 	)
@@ -62,9 +64,37 @@ class Patient(models.Model):
 			record.x_nr_clones = self.env['oeh.medical.patient'].search_count([
 																				('name','=', record.name),
 																			]) 
-			if record.x_nr_clones > 1:
 
+			if record.x_nr_clones > 1:
 				record.x_flag = 'error'
+
+			else:
+				record.x_flag = ''
+
+
+
+
+
+	# QC - Lowcase
+	x_lowcase = fields.Boolean(
+
+			"QC - Low",
+
+			compute="_compute_x_lowcase",
+	)
+
+
+	@api.multi
+	def _compute_x_lowcase(self):
+		for record in self:
+			#if name != name.upper.strip:
+			if record.name != record.name.upper():
+				record.x_lowcase = True
+				record.x_flag = 'error'
+			else:
+				record.x_lowcase = False
+	#			record.x_flag = ''
+
 
 
 

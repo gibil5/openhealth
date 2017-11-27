@@ -284,6 +284,7 @@ class Partner(models.Model):
 
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 
+
 	# Removem
 	@api.multi
 	def remove_myself(self):  
@@ -293,10 +294,18 @@ class Partner(models.Model):
 		#self.email = 'a'
 		#self.phone = 'a'
 
+
 		self.sale_order_ids.unlink()
- 		#sale_order_ids 
+
+		self.invoice_ids.unlink()
+
+
+
+		#self.purchase_order_count = 0 
+
 		
 		self.unlink()
+
 
 
 
@@ -313,13 +322,19 @@ class Partner(models.Model):
 
 		if self.x_autofill == True:
 
-			self.street = 'a'
-			self.street2 = 'a'
-			self.city = 'a'
+			self.street = 'x'
+			self.street2 = 'x'
+			self.city = 'x'
 			self.country_id = 175
-			self.x_dni = 'a'
-			self.email = 'a'
-			self.phone = 'a'
+			self.x_dni = 'x'
+			self.email = 'x'
+			self.phone = 'x'
+
+
+			for invoice in self.invoice_ids:
+				invoice.state = 'draft'
+
+
 
 
 # ----------------------------------------------------------- CRUD ------------------------------------------------------

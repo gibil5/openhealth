@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		
+
+
+		<!-- FORM -->
+		<record model="ir.ui.view" id="account_invoice_form">
+			<field name="name">account.invoice.form</field>
+			<field name="model">account.invoice</field>
+			
+			<field name="inherit_id" ref="sale.account_invoice_form"/>	
+	        <field name="mode">extension</field>
+
+	        <field name="priority" eval="1"/>
+			<field name="arch" type="xml">
+
+
+
+				<xpath expr="//button[@name='action_cancel_draft']" position="after">
+
+					<button 
+							name="remove_myself"
+							type="object" 
+							class="oe_highlight"
+							string="REMOVEM"
+
+							groups="openhealth.roots"
+					/>
+
+
+				</xpath>
+
+
+				<xpath expr="//field[@name='partner_id']" position="after">
+					<field 	name="state" 	readonly="0"		/>
+				</xpath>
+
+
+
+				<xpath expr="//field[@name='number']" position="replace">
+					<field 	name="number" 	readonly="0"		/>
+				</xpath>
+
+
+
+
+			</field>
+
+		</record>
+
+
+	</data>
+</openerp>

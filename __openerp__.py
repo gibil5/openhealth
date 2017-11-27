@@ -187,13 +187,20 @@
 		'data/base_data_physicians.xml',				# check
 
 
-		# Suppliers 
-		'data/suppliers.xml',							# check
-		'data/supplier_services.xml',					# check
+
 
 
 		# Pricelists 
 		'data/pricelists.xml',							# check
+
+
+
+
+
+		# Suppliers 
+		'data/suppliers.xml',							# check
+		#'data/supplier_services.xml',					# check
+
 
 
 
@@ -280,6 +287,10 @@
 		'views/orders/order_line.xml',
 		'views/orders/order.xml',
 
+
+
+		# Account invoice
+		'views/account_invoices/account_invoice.xml',
 
 
 
@@ -389,7 +400,7 @@
 
 		
 		# Patients 
-		#'views/patients/patient.xml',
+		'views/patients/patient.xml',
 
 
 

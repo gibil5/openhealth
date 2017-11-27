@@ -67,6 +67,8 @@
 				<xpath expr="//button[@name='action_rfq_send']" position="replace">
 
 					<button 
+							id="send_mail"
+
 							name="action_rfq_send" 
 
 							states="draft" 
@@ -74,9 +76,10 @@
 							string="Enviar por Email" 
 							
 							type="object" 
+							
 							context="{'send_rfq':True}" 
+							
 							class="oe_highlight"/>
-
 				</xpath>
 
 

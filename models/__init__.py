@@ -101,6 +101,7 @@ from . import order
 from . import order_line
 
 
+from . import account_invoice
 
 
 

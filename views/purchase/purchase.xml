@@ -133,11 +133,17 @@
 
 					<button 
 							name="button_cancel" 
+
 							states="draft,to approve,sent,purchase" 
+							
 							string="Cancelar" 
+							
 							type="object" 
 
 							groups="openhealth.roots,openhealth.managers,openhealth.directors"
+
+
+							class="jx_cancel"
 					/>
 				
 				</xpath>

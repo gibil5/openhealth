@@ -269,7 +269,7 @@
 			"file": "views/purchase/purchase.xml",
 			"settings":
 			{
-				"buffer_size": 7718,
+				"buffer_size": 7756,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -1047,15 +1047,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7718,
+						"buffer_size": 7756,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5269,
-								5269
+								5123,
+								5123
 							]
 						],
 						"settings":

@@ -224,20 +224,20 @@
 
 
 <!--
-                    <button name="button_done" type="object" string="Set to Done" states="purchase"
-                        help="If a purchase order is done, you cannot modify it manually anymore. You will not be able to receive invoices anymore for this purchase order."/>
+					<button name="button_done" type="object" string="Set to Done" states="purchase"
+						help="If a purchase order is done, you cannot modify it manually anymore. You will not be able to receive invoices anymore for this purchase order."/>
 				<xpath expr="//button[@name='button_done']" position="replace">
-                    <button 
-                    		name="button_done" 
+					<button 
+							name="button_done" 
 
-                    		type="object" 
-                    		
-                    		string="Set to Done" 
-                    		
-                    		states="purchase"   
+							type="object" 
+							
+							string="Set to Done" 
+							
+							states="purchase"   
 
 							groups="openhealth.roots"
-                        />
+						/>
 				</xpath>
 -->
 
@@ -246,33 +246,55 @@
 				</xpath>
 
 
-
-
-
-
 <!--
-                    <button name="action_rfq_send" states="purchase" string="Send PO by Email" type="object" context="{'send_rfq':False}"/>
+					<button name="action_rfq_send" states="purchase" string="Send PO by Email" type="object" context="{'send_rfq':False}"/>
 
 				<xpath expr="//button[@name='action_rfq_send']" position="replace">
 
 
-                    <button 
-                    		name="action_rfq_send" 
-                    		states="purchase" 
-                    		string="Send PO by Email" 
-                    		type="object" 
-                    		context="{'send_rfq':False}"
+					<button 
+							name="action_rfq_send" 
+							states="purchase" 
+							string="Send PO by Email" 
+							type="object" 
+							context="{'send_rfq':False}"
 
 							groups="openhealth.roots"
-                    		/>
+							/>
 				</xpath>
 -->
+
+
+
+
+
+
+				<xpath expr="//field[@name='partner_id']" position="replace">
+
+					<field 
+							name="partner_id" 
+							
+							context="{'search_default_supplier':1, 'default_supplier':1, 'default_customer':0}" 
+
+							domain="[('supplier','=',True)]"
+
+
+							string='Vendor - jx'
+
+							options="{'no_create': True}"
+						/>
+
+				</xpath>
 
 
 
 
 			</field>
 		</record>
+
+
+
+
 
 
 

@@ -20,7 +20,9 @@ class Patient(models.Model):
 	#_name = 'openhealth.patient'		
 	_inherit = 'oeh.medical.patient'
 
-	_order = 'x_date_created desc'
+	#_order = 'x_date_created desc'
+	_order = 'write_date desc'
+
 
 
 
@@ -30,6 +32,13 @@ class Patient(models.Model):
 			' ', 
 			readonly=True
 			)
+
+
+
+
+	x_nothing = fields.Char(
+		'Nothing', 
+	)
 
 
 

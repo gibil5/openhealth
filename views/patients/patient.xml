@@ -460,12 +460,18 @@
 
 					<field name="name"/>
 
+					<field name="write_date"/>
+
+
+
+
 					<field name="x_flag"/>
+<!--
 
 					<field name="x_nr_clones"/>
 
 					<field name="x_lowcase"/>
-
+-->
 
 
 

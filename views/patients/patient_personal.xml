@@ -92,7 +92,7 @@
 				<field  name="phone_2" />
 -->
 
-				<field name="phone" 	required="1"/>				
+				<field name="phone" 	required="0"/>				
 				<field  name="mobile" 	/>
 
 

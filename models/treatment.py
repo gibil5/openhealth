@@ -185,6 +185,9 @@ class Treatment(models.Model):
 
 
 
+		# Important
+		self.patient.x_nothing = 'Nothing'
+
 
 
 		#print 

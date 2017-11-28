@@ -9,9 +9,10 @@
 		<record id="supplier_revilla_rondon" model="res.partner">
 <!--
 			<field name="name">Revilla Rondon y Asociados</field>
+			<field name="name">XX</field>
 -->		
 
-			<field name="name">XX</field>
+			<field name="name">Y</field>
 
 			<field name="email">jrevilla55@gmail.com</field>
 			<field name="lang">es_ES</field>

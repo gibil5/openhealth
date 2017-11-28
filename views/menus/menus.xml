@@ -359,15 +359,44 @@ Deprecated
 			parent="main_appointment_menu_jx"
 			/>
 
+
+
+
+
+
+
 		<!-- Confirmed --> 
 		<menuitem 
 					action="oeh_medical_appointment_action_tree_confirmed" 
 					
 					parent="oehealth_appointment_menu"  
+
 					id="oeh_medical_appointment_list_1" 
 
 					sequence="1"
 		/>
+
+
+
+		<!-- Auto --> 
+		<menuitem 
+					action="oeh_medical_appointment_action_auto" 
+					
+					parent="oehealth_appointment_menu"  
+
+					id="oeh_medical_appointment_list_auto" 
+
+					sequence="2"
+
+
+					groups="openhealth.roots"
+		/>
+
+
+
+
+
+
 
 		<!-- Machines --> 
 		<menuitem 
@@ -375,7 +404,7 @@ Deprecated
 					parent="oehealth_appointment_menu"  
 					id="oeh_medical_appointment_list_3"
 
-					sequence="2"
+					sequence="3"
 		/>
 
 		<!-- Controls --> 
@@ -383,8 +412,10 @@ Deprecated
 					action="oeh_medical_appointment_action_tree_controls" 
 					parent="oehealth_appointment_menu"  
 					id="oeh_medical_appointment_list_2" 
-					sequence="3"
+					sequence="4"
 		/>
+
+
 
 
 		<!-- Confirmed - Cos --> 

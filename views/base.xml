@@ -39,9 +39,13 @@
 Here
 -->
 		<record id="oeh_medical_appointment_action_tree_confirmed" model="ir.actions.act_window">
+
 					<field name="name">Citas confirmadas</field>
+			
 					<field name="res_model">oeh.medical.appointment</field>
+			
 					<field name="view_type">form</field>
+
 					<field name="view_mode">calendar,tree,form</field>  
 
 

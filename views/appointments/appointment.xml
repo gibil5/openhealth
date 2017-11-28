@@ -529,6 +529,87 @@
 
 
 
+
+		<record id="oeh_medical_appointment_action_auto" model="ir.actions.act_window">
+
+					<field name="name">Auto</field>
+			
+					<field name="res_model">oeh.medical.appointment</field>
+			
+					<field name="view_type">form</field>
+
+					<field name="view_mode">form,calendar,tree</field>  
+
+
+<!--
+					<field name="doctor_id">1</field>
+											('doctor', '=', 'Dr. Chavarri'),
+-->
+
+
+					<field name="domain">[
+											('state', 'in', ['pre_scheduled','Scheduled', 'Completed', 'Invoiced']),
+											('x_target', '=', 'doctor'),
+										]
+					</field>
+
+
+<!--
+											'default_doctor': 'Dr. Chavarri',
+											'default_doctor': default_doctor_id,
+											'default_doctor': 1,
+-->
+					<field name="context">{
+
+											'default_x_target': 'doctor',
+											'default_x_type': 'consultation',
+
+										}
+
+<!--
+					<field name="context" eval="{
+
+													'default_category_id': [(6,0,[ref('warranty.registrant_tag')])] 
+						
+												}"/>
+-->
+
+					</field>
+
+
+
+					<field name="view_id" eval="False"/>
+<!--
+					<field name="help" type="html">
+					  <p class="oe_view_nocontent_create">
+						Click to add a new appointment.
+					  </p><p>
+						oeHealth appointment screen can easily find all of your appointment details;
+					  </p>
+					</field>
+-->
+		</record>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		<!-- Window action -->
 		<!--
 		-->
@@ -697,9 +778,13 @@
 
 		<!-- Confirmed - Cos -->  
 		<record id="oeh_medical_appointment_action_tree_confirmed_cos" model="ir.actions.act_window">
+
 					<field name="name">Citas confirmadas - Cos</field>
+			
 					<field name="res_model">oeh.medical.appointment</field>
+			
 					<field name="view_type">form</field>
+			
 					<field name="view_mode">calendar,tree,form</field>     
 					<!--
 											('x_target', '=', 'doctor'),

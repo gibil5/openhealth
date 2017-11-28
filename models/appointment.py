@@ -46,6 +46,14 @@ class Appointment(models.Model):
 
 
 
+	default_doctor_id = fields.Integer(
+
+			default=1, 
+		)
+
+
+
+
 
 # ----------------------------------------------------------- Relational  ------------------------------------------------------
 
@@ -127,7 +135,9 @@ class Appointment(models.Model):
 			'oeh.medical.physician',			
 			string = "Médico", 
 
+
 			#default=defaults._doctor,
+
 			
 			required=True, 
 			#required=False, 

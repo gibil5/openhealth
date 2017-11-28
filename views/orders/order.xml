@@ -1071,6 +1071,54 @@ Order Line - Tree
 
 
 
+
+<!--
+							attrs="{'readonly': ['|', ('qty_invoiced', '&gt;', 0), ('procurement_ids', '!=', [])]}"
+-->
+				<field name="product_id" position="replace">
+
+					<field 
+							name="product_id"
+
+							context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}"
+
+							options="{'no_create': True}"
+					/>
+
+				</field>
+
+
+
+
+
+
+
+
+
+<!--
+							options='{"always_reload": True}'
+-->
+				<field name="partner_id" position="replace">
+
+					<field 
+							name="partner_id" 
+
+							domain="[('customer','=',True)]" 
+							
+							context="{'search_default_customer':1, 'show_address': 1}" 
+
+
+							options='{
+										"always_reload": True, 
+										"no_create": True
+									}'
+						/>
+
+				</field>
+
+
+
+
 				<field name="partner_id" position="after">
 <!--				
 -->
@@ -1242,7 +1290,14 @@ Order Line - Tree
 					</field>
 					-->
 						
-				</field>				
+				</field>	
+
+
+
+
+
+
+
 			</field>
 		</record>
 		

@@ -362,14 +362,11 @@
 
 
 
+<!-- Translate for Order Lines  -->
 <xpath expr="//page[1]" position="attributes">
-
 	<attribute name='string'>Líneas</attribute> 
-<!--
-<xpath expr="//field[@name='order_line']" position="replace">
 </xpath>
--->
-</xpath>
+
 
 
 
@@ -919,6 +916,14 @@
 						</group>
 						<group class="">
 							<h5>
+
+<!--
+								<field name="treatment" 	readonly="1"	string="TR"/>
+								TRATAMIENTO
+								<field name="treatment" widget="url"	string="TR"	/>
+								<a href="https://external_site_invoice?num=400">TRA</a>
+-->
+
 								<field name="treatment" 	readonly="1"/>
 							</h5>
 						</group>

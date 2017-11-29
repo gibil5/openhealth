@@ -2117,8 +2117,8 @@ class sale_order(models.Model):
 	def action_confirm(self):
 
 		#print 
-		#print 'jx'
-		#print 'Action confirm - Over ridden'
+		print 'jx'
+		print 'Action confirm - Over ridden'
 		 
 		
 

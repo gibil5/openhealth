@@ -849,7 +849,9 @@ class payment_method(models.Model):
 
 
 		self.confirmed = True 
-		self.order.state = 'sale' 
+
+		#self.order.state = 'sale' 
+
 
 
 		ret = self.order.open_myself()

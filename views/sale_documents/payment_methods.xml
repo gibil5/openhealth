@@ -63,11 +63,12 @@
 -->
 						<button 
 								name="open_order"
+
 								type="object" 
 								class="oe_highlight"
 								states="generated"						
 
-								string="CONFIRMAR"
+								string="REGRESAR"
 						/>
 
 <!--

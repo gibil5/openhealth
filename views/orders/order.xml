@@ -1123,7 +1123,7 @@ Order Line - Tree
 <!--				
 -->
 					<field name="vspace"/>
-                    <field name="user_id"	string="Validación"		/>
+                    <field name="user_id"	string="Validación"		readonly="1"		/>
 
 
 

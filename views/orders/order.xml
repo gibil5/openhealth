@@ -21,6 +21,7 @@
 
 <!--
 							statusbar_visible="draft, sent, sale, done, cancel"
+							statusbar_visible="draft, sent, sale, printed, cancel"
 -->
 				<!-- State --> 
 				<xpath expr="//field[@name='state']" position="replace">
@@ -28,7 +29,8 @@
 
 							widget="statusbar" 
 
-							statusbar_visible="draft, sent, sale, printed, cancel"
+
+							statusbar_visible="draft, sent, sale"
 					/>
 				</xpath>
 
@@ -110,7 +112,7 @@
 							name="action_confirm"
 							type="object" 
 							class="oe_highlight"
-							string="Confirmar Venta"
+							string="CONFIRMAR"
 							states="sent"						
 					/>
 				</xpath>
@@ -667,6 +669,12 @@
 													('state','not in',['payment']), 
 -->
 
+
+
+
+
+<!-- RESERVAR LA SALA - DEPRECATED ? -->
+<!--
 					<button 
 							type="object"
 							name="reserve_machine" 	
@@ -685,7 +693,7 @@
 
 							groups="openhealth.caja,openhealth.managers,openhealth.directors"
 					/>
-
+-->
 
 
 
@@ -717,7 +725,7 @@
 							states="payment"
 
 
-							string="Confirmar Venta" 
+							string="CONFIRMAR - jx" 
 
 							groups="openhealth.caja,openhealth.managers,openhealth.directors"
 					/>

@@ -17,6 +17,50 @@ class Image(models.Model):
 
 
 
+
+
+
+# ----------------------------------------------------------- Fields ------------------------------------------------------
+
+
+	# Type
+	xtype = fields.Selection(
+		[
+			('consultation', 	'Consulta'),
+			('session', 		'Sesión'), 
+			('control', 		'Control'),
+			#('procedure', 		'Procedimiento'),
+			],
+		default='control', 
+		string='Tipo', 
+		
+		required=True, 
+		#required=False, 
+	)
+
+
+
+	# Origin
+	origin = fields.Selection(
+		[
+			('visia', 			'Visia'),
+			('camera', 			'Cámara'), 
+			('echography', 		'Ecógrafo'),
+			],
+		default='visia', 
+		string='Orígen', 
+		
+		required=True, 
+		#required=False, 
+	)
+
+
+
+
+
+
+
+
 	
 	#image_full = fields.Many2one(
 	#		'openhealth.image_full',
@@ -115,37 +159,4 @@ class Image(models.Model):
 
 
 
-
-
-
-	# Type
-	xtype = fields.Selection(
-		[
-			('consultation', 	'Consulta'),
-			('session', 		'Sesión'), 
-			('control', 		'Control'),
-			#('procedure', 		'Procedimiento'),
-			],
-		default='control', 
-		string='Tipo', 
-		
-		required=True, 
-		#required=False, 
-	)
-
-
-
-	# Origin
-	origin = fields.Selection(
-		[
-			('visia', 			'Visia'),
-			('camera', 			'Cámara'), 
-			('echography', 		'Ecógrafo'),
-			],
-		default='visia', 
-		string='Orígen', 
-		
-		required=True, 
-		#required=False, 
-	)
 

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<openerp>
+	<data>
+
+
+
+		<record id="stock_move_selector_default_view" model="stock.move.selector">
+
+			<field name="name">this</field>
+			
+		</record>
+
+
+
+	</data>
+</openerp>

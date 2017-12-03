@@ -120,9 +120,6 @@
 
 							<field name="x_type"/>
 
-
-
-
 							<field name="x_target"			invisible="1"	/>
 
 							<field name="x_machine"			attrs="{
@@ -131,27 +128,18 @@
 															/>
 
 
-							<field name="vspace"/>
 
+
+
+							<!--
+							<field name="vspace"/>
 							<field name="consultation"		groups="openhealth.roots"	/>
 							<field name="procedure"			groups="openhealth.roots"	/>
 							<field name="session"			groups="openhealth.roots"	attrs="{'required':[('x_type', '=', 'session'),],}"	/>
 							<field name="control"			groups="openhealth.roots" 	/>
-
-
-
-					<!--					
-					<group>
-						<group>
-						</group>
-
-						<group>							
-						</group>							
-					</group>						
-					-->
-
-			
+							-->
 				</xpath>
+
 
 
 
@@ -159,61 +147,11 @@
 				<!-- Doctor --> 
 				<xpath expr="//field[@name='doctor']" position="replace">					
 					
-					<!--
-					<field name="vspace"	attrs="{'invisible':[('x_machine', '!=', False),]}"/>
 
-					<field name="doctor"	attrs="{'invisible':[('x_machine', '!=', False),]}"/>				
-
-
-					<field name="vspace"	attrs="{'invisible':[('x_target', '!=', 'machine'),]}"/>
-
-					<field name="doctor"	attrs="{'readonly':[('x_machine', '!=', 'False'),]}"/>
-
-
-					<field name="doctor"	attrs="{'readonly':[('x_target', '=', 'machine'),]}"/>				
-					-->
-
-
-
-					<!--
-					<field name="x_machine"		attrs="{
-														'invisible':[('x_target', '!=', 'machine'),],
-														'required':[('x_target', '=', 'machine'),],
-														}"/>
-
-
-
-					<field name="x_therapist"		required="0"	/>	
-
-
-
-
-					<field name="doctor"		attrs="{
-														'invisible':[('x_target', '!=', 'doctor'),],
-														}"	/>
-														
-					
-					<field name="x_therapist"		attrs="{
-														'invisible':[('x_target', '!=', 'therapist'),],
-														}"	/>
-					-->
-
-
-
-
-					<field name="doctor"			domain="[('x_type', '=', x_target )]"	/>
-
-
-
+					<field name="doctor"	domain="[('x_type', '=', x_target )]"	options="{'no_create': True}"	/>
 
 
 					<field name="vspace"/>
-					
-
-					<!--
-					<field name="x_doctor_code"/>									
-					<field name="vspace"/>
-					-->				
 				</xpath>
 
 
@@ -353,7 +291,12 @@
 <!--
 							<field name="treatment"		groups="openhealth.roots"	readonly="0"/>
 -->
-							<field name="treatment"		required="0"	/>
+
+
+
+
+							<field name="treatment"		/>
+
 
 
 
@@ -558,22 +501,16 @@
 											'default_doctor': 'Dr. Chavarri',
 											'default_doctor': default_doctor_id,
 											'default_doctor': 1,
+
+											'default_appointment_date': current_date,
 -->
 					<field name="context">{
 
 											'default_x_target': 'doctor',
 											'default_x_type': 'consultation',
 
+											'default_appointment_date': time.strftime('%Y-%m-%d 14:00:00'),
 										}
-
-<!--
-					<field name="context" eval="{
-
-													'default_category_id': [(6,0,[ref('warranty.registrant_tag')])] 
-						
-												}"/>
--->
-
 					</field>
 
 

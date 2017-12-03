@@ -4,15 +4,14 @@
 #
 
 # Created: 				14 Nov 2016
-# Last updated: 	 	 26 Mar 2017
+# Last updated: 	 	01 Dec 2017
 
 from openerp import models, fields, api
-#from datetime import datetime
+
 import datetime
 
 from . import appfuncs
 from . import time_funcs
-#from . import jxvars
 from . import defaults
 from . import app_vars
 from . import eval_vars
@@ -23,33 +22,216 @@ class Appointment(models.Model):
 
 	_inherit = 'oeh.medical.appointment'
 
-	#_name = 'openhealth.appointment'
-
-
 
 
 	name = fields.Char(
-
 			string="Cita #", 
-
-			#default='',
-
-			#compute='_compute_name', 
 			required=True, 
-			)
+		)
 
 	vspace = fields.Char(
 			' ', 
 			readonly=True
+		)
+
+
+
+
+
+
+
+
+
+
+
+	# ----------------------------------------------------------- Treatment ------------------------------------------------------
+
+	# Treatement 
+	treatment = fields.Many2one(			
+			'openhealth.treatment',
+			string="Tratamiento",
+			ondelete='cascade', 
+
+			required=True, 
+		)
+
+
+
+	# Treatement assignment
+	@api.onchange('patient','doctor')
+	def _onchange_patient_doctor(self):
+
+		print 'jx'
+		print 'On change - Patient Doctor'
+
+		if self.patient.name != False and self.doctor.name != False:
+			treatment = self.env['openhealth.treatment'].search([
+																		('patient', '=', self.patient.name),			
+																		('physician', '=', self.doctor.name),					
+																	],
+																	order='start_date desc',
+																	limit=1,
+																)
+
+			if treatment.name == False: 
+				print 
+				print 'Create Treatement'
+				treatment = self.env['openhealth.treatment'].create({
+																		'patient': self.patient.id,
+																		'physician': self.doctor.id,
+																	})
+
+
+			if treatment.name != False: 
+
+				self.treatment = treatment
+			
+			else: 
+				print 
+				print 'ERROR !!!'
+				print 'This sould not happem !'
+				print 
+
+
+		print self.treatment
+		print 
+	# _onchange_patient_doctor
+
+
+
+
+# ----------------------------------------------------------- Fields - Canonical ------------------------------------------------------
+
+
+
+	# Date 
+	appointment_date = fields.Datetime(
+			string="Fecha", 
+			readonly=False,
+			#states={'Scheduled': [('readonly', False)]}), 
+		)
+	#'appointment_date': fields.datetime('Appointment Date',required=True, readonly=True,states={'Scheduled': [('readonly', False)]}),
+
+
+
+	# Date end 
+	appointment_end = fields.Datetime(
+			string="Fecha fin", 		
+			readonly=True, 
 			)
 
 
 
-
-	default_doctor_id = fields.Integer(
-
-			default=1, 
+	# Doctor 
+	doctor = fields.Many2one(
+			'oeh.medical.physician',			
+			string = "Médico", 
+			required=True, 
+			readonly = False, 
 		)
+
+
+
+
+	# State 
+	APPOINTMENT_STATUS = [			
+			('Scheduled', 				'Confirmado'),
+			('pre_scheduled',	 		'No confirmado'),
+			('pre_scheduled_control', 	'Pre-cita'),
+			('error', 					'Error'),
+
+			# Oe Health 
+			#('Scheduled', 'Scheduled'),
+			#('Completed', 'Completed'),
+			#('Invoiced', 'Invoiced'),
+			#('Completed', 'Completo'),
+			#('Invoiced', 'Facturado'),
+		]
+
+	state = fields.Selection(
+			selection = APPOINTMENT_STATUS, 
+			string="Estado",
+			default='pre_scheduled',
+			readonly=False, 
+			required=True, 
+		)
+
+
+	# Patient
+	patient = fields.Many2one(
+			'oeh.medical.patient',
+			string = "Paciente", 	
+			ondelete='cascade', 			
+			#required=True, 
+			readonly = False, 
+		)
+
+
+
+	# Target 
+	x_target = fields.Selection(
+			string="Target", 
+			selection = app_vars._target_list, 
+			index=True,
+			required=True, 
+		)
+
+
+
+
+	# Duration 
+	duration = fields.Float(
+			string="Duración (h)", 			
+			compute='_compute_duration', 
+			readonly=True, 
+		)
+
+	#@api.multi
+	@api.depends('x_type')
+	def _compute_duration(self):
+		for record in self:	
+			if record.x_type == 'consultation'   or   record.x_type == 'procedure'   or   record.x_type == 'session':
+				record.duration = 0.5
+			elif record.x_type == 'control':
+				record.duration = 0.25
+
+
+
+
+
+	x_machine = fields.Selection(
+			string="Sala", 
+			selection = app_vars._machines_list, 
+			#required=True, 
+		)
+
+
+	# Create procedure 
+	x_create_procedure_automatic = fields.Boolean(			
+			string="¿ Crear Cita para el Procedimiento ?",
+			default=True, 
+		)
+
+
+
+
+
+	# Type 
+	_type_list = [
+        			('consultation', 'Consulta'),
+        			('procedure', 'Procedimiento'),
+        			('session', 'Sesión'),
+        			('control', 'Control'),
+        		]
+
+	x_type = fields.Selection(
+				selection = _type_list, 
+				string="Tipo",
+				required=True, 
+				)
+
+
+
 
 
 
@@ -58,97 +240,35 @@ class Appointment(models.Model):
 # ----------------------------------------------------------- Relational  ------------------------------------------------------
 
 	consultation = fields.Many2one('openhealth.consultation',
-		string="Consulta",
-
-		#ondelete='cascade', 			# Very important. 
-	)
-
+			string="Consulta",
+			#ondelete='cascade', 			# Very important. 
+		)
 
 	procedure = fields.Many2one('openhealth.procedure',
-		string="Procedimiento",
-
-		#ondelete='cascade', 
-	)
+			string="Procedimiento",
+			#ondelete='cascade', 
+		)
 
 	procedure_cos = fields.Many2one('openhealth.procedure.cos',
-		string="Proc. - Cos",
-		#ondelete='cascade', 
-	)
-
-
+			string="Proc. - Cos",
+			#ondelete='cascade', 
+		)
 
 	session = fields.Many2one('openhealth.session',
-		string="Sesión",
-		#ondelete='cascade', 
-	)
-
-
+			string="Sesión",
+			#ondelete='cascade', 
+		)
 
 	control = fields.Many2one('openhealth.control',
-		string="Control",		
-		#ondelete='cascade', 
-	)
-
-
-
-
-
-
-
-
-	x_target = fields.Selection(
-			string="Target", 
-			selection = app_vars._target_list, 
-			index=True,
-
-			required=True, 
+			string="Control",		
+			#ondelete='cascade', 
 		)
 
 
 
 
 
-	#@api.multi 
-	#def get_x_target(self):
-	#	return self.x_target
 
-
-	#x_target = 'therapist'
-
-	#x_target = get_x_target
-	#x_target = self.x_target
-
-
-
-
-	#@api.multi
-	#def _compute_x_type(self):
-	#	for record in self:
-	#		record.x_type = record.x_target
-
-
-
-
-
-	# Doctor 
-	doctor = fields.Many2one(
-			'oeh.medical.physician',			
-			string = "Médico", 
-
-
-			#default=defaults._doctor,
-
-			
-			required=True, 
-			#required=False, 
-			readonly = False, 
-			
-
-			#domain = [						
-						#('x_type', '=', 'therapist'),
-						#('x_type', '=', _compute_x_type ),
-			#		],
-			)
 
 
 
@@ -208,9 +328,6 @@ class Appointment(models.Model):
 
 
 
-	#x_tree = fields.Boolean(
-	#	)
-
 
 
 
@@ -242,13 +359,9 @@ class Appointment(models.Model):
 	# State short 
 	_hash_state = {
 						#False:				'', 
-
 						'Scheduled':				'1',
-
 						'pre_scheduled':			'2',
-
 						'pre_scheduled_control':	'3',
-
 						'error':					'55',
 					}
 
@@ -279,30 +392,18 @@ class Appointment(models.Model):
 							'laser_co2_2':		'C2',
 							'laser_co2_3':		'C3',
 							
-							#'laser_co2_1':		'Co2_1',
-							#'laser_co2_2':		'Co2_2',
-							#'laser_co2_3':		'Co2_3',
-
-
 							'laser_excilite':	'Exc',
 
 							'laser_m22':		'M22',
-
-
-
 
 							'laser_triactive':		'Tri',
 							'chamber_reduction':	'Cam',
 							'carboxy_diamond':		'CaDi',
 						}
 
-
-
 	x_machine_short = fields.Char(
 			compute='_compute_x_machine_short',
 		)
-
-
 
 
 	#@api.multi
@@ -321,13 +422,8 @@ class Appointment(models.Model):
 
 
 
-	x_machine = fields.Selection(
-			string="Sala", 
 
-			selection = app_vars._machines_list, 
 
-			#required=True, 
-		)
 
 
 
@@ -344,177 +440,6 @@ class Appointment(models.Model):
 
 
 
-
-	x_error = fields.Integer(			
-			default = 0, 
-			required=True, 
-		)
-
-
-	# Create procedure 
-	x_create_procedure_automatic = fields.Boolean(
-			
-			#string="¿ Crear procedimiento de manera automática ?",
-			string="¿ Crear Cita para el Procedimiento ?",
-
-			default=True, 
-			
-			#required=True, 
-		)
-
-
-
-
-
-
-	# Chief complaint 
-	x_chief_complaint = fields.Selection(			# Necessary 
-			string = 'Motivo de consulta', 
-
-			#selection = jxvars._pathology_list, 
-			#selection = jxvars._chief_complaint_list, 
-			selection = eval_vars._chief_complaint_list, 
-
-			#required=True, 
-			)
-
-
-	#jxx
-	@api.onchange('x_chief_complaint')
-
-	def _onchange_x_chief_complaint(self):
-
-		#print 
-		#print 'On change Chief complaint'
-
-
-		if self.x_chief_complaint != False:	
-
-			#t = self.env['openhealth.treatment'].search([	
-			#													('chief_complaint', 'like', self.x_chief_complaint), 
-			#													('patient', 'like', self.patient.name),
-			#												])
-
-			t = self.env['openhealth.treatment'].search([
-																#('chief_complaint', 'like', 'acne_active'), 
-																('chief_complaint', 'like', self.x_chief_complaint), 
-
-																#('patient', 'like', 'Revilla')], 
-																('patient', 'like', self.patient.name),
-
-
-																#('physician', 'like', 'Chavarri'),
-																('physician', 'like', self.doctor.name),
-
-
-																],
-																order='start_date desc',
-																limit=1,
-															)
-
-
-			#print t
-			#if not (t == False  or  t == nil):
-
-
-
-			#if t != False:
-			if len(t) == 1:
-				#print 'found'
-				self.treatment = t.id
-
-
-
-			else:
-				tra = 1 
-				#print 'empty'
-
-				#self.open_treatment_current()
-
-				#return {
-				#	'warning': {
-				#		'Cita': "Error: El Tratamiento no existe.",
-						#'Para el paciente': self.patient.name,
-				#	}}
-
-
-			
-			#print self.treatment 
-
-		#print 
-
-
-
-
-
-
-
-	APPOINTMENT_STATUS = [
-			
-			# jx 
-			('Scheduled', 		'Confirmado'),
-			('pre_scheduled', 	'No confirmado'),
-			('pre_scheduled_control', 	'Pre-cita'),
-
-
-			('error', 			'Error'),
-
-
-			# OeHealth 
-			#('Scheduled', 'Scheduled'),
-			#('Completed', 'Completed'),
-			#('Invoiced', 'Invoiced'),
-			#('Completed', 'Completo'),
-			#('Invoiced', 'Facturado'),
-		]
-
-
-
-	state = fields.Selection(
-
-			selection = APPOINTMENT_STATUS, 
-			string="Estado",
-			
-			default='pre_scheduled',
-
-			readonly=False, 
-			required=True, 
-		)
-
-
-
-
-
-	APPOINTMENT_STATUS_PROXY = [
-									('pre_scheduled', 	'No confirmado'),
-									('Scheduled', 		'Confirmado'),
-								]
-
-	x_state_proxy = fields.Selection(
-			selection = APPOINTMENT_STATUS_PROXY, 
-		)
-
-
-
-
-
-
-
-
-	# Patient def
-
-	patient = fields.Many2one(
-			'oeh.medical.patient',
-			
-			string = "Paciente", 	
-
-			#default = defaults._patient,
-
-			ondelete='cascade', 			
-
-			#required=True, 
-			readonly = False, 
-		)
 
 
 
@@ -573,57 +498,25 @@ class Appointment(models.Model):
 
 
 	# On change - Machine
-
 	@api.onchange('x_machine')
-
 	def _onchange_x_machine(self):
-
-		#print 
-		#print 'On change Machine'
-
-
 		if self.x_machine != False:	
-
-			#print self.x_machine 
-
-			#print self.doctor.name
-			#print self.patient.name
-			#print self.appointment_date
-			#print self.x_date
-			#print self.duration
-			#print self.appointment_end
-			#print 
-
 			self.x_error = 0
 
-
-
 			# Check for collisions 
-
-			#ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, self.x_machine)
-			#ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, self.x_machine, 'machine')
 			ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, self.x_machine, 'machine', self.x_type)
 
 
-
 			if ret != 0:	# Error 
-
 				self.x_error = 1
 				self.x_machine = False
-
 				return {
 							'warning': {
 									'title': "Error: Colisión !",
 									'message': 'La sala ya está reservada: ' + start + ' - ' + end + '.',
 						}}
 
-
-
-			else: 			# Success 
-
-				#print 'Success !'
-				#print 
-				
+			else: 			# Success 				
 
 				# Treatment 
 				self.treatment = self.env['openhealth.treatment'].search([
@@ -637,9 +530,6 @@ class Appointment(models.Model):
 														)
 
 				#print self.treatment 
-
-
-
 		#print
 
 
@@ -658,20 +548,10 @@ class Appointment(models.Model):
 
 		#print 
 		#print 'On change Doctor'
-		#print self.x_machine
-		#print self.doctor.name
 
 
 
 		if self.doctor.name != False:
-
-			#print self.doctor.name
-			#print self.patient.name
-			#print self.appointment_date
-			#print self.x_date
-			#print self.duration
-			#print self.appointment_end
-			#print 
 
 			self.x_error = 0
 
@@ -679,40 +559,47 @@ class Appointment(models.Model):
 
 
 			# Check for collisions
-			ret = 0 
+			#ret = 0 
+			ret = 1
 
 
-			#ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, False, 'doctor')
-			ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, False, 'doctor', self.x_type)
-
-
-			#print ret 
-
+			#appointment_date = self.appointment_date
+			date_format = "%Y-%m-%d %H:%M:%S"
+			delta = datetime.timedelta(hours=self.duration)
 
 
 
-			if ret != 0:	# Error 
+			# Auto behavior - Look for free slot 		
+			while ret !=0:
 
-				#print 'Error: Collision !'
-				#print 
+				print self.appointment_date
+				print 
 
-				self.x_error = 1
-				self.doctor = False
-
-				return {
-							'warning': {
-									'title': "Error: Colisión !",
-									'message': 'Cita ya existente, con el ' + doctor_name + ": " + start + ' - ' + end + '.',
-						}}
+				ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, False, 'doctor', self.x_type)
 
 
-			else: 			# Success  
-				tra = 1
-				#print 'Success !'
-				#print 
+
+				if ret != 0: 
+
+					# New ad 
+					sd = datetime.datetime.strptime(self.appointment_date, date_format)
+					ad_dt = delta + sd
+					ad = ad_dt.strftime("%Y-%m-%d %H:%M:%S")
+					
+
+					self.appointment_date = ad
 
 
-		#print 
+
+			# Check - Deprecated 
+			#if ret == 0:	# Success 
+			#	tra = 1
+			#else: 			#   Error
+			#	self.x_error = 1
+			#	self.doctor = False
+			#	return {'warning': {'title': "Error: Colisión !",
+			#						'message': 'Cita ya existente, con el ' + doctor_name + ": " + start + ' - ' + end + '.',
+			#						}}
 
 	# _onchange_doctor
 
@@ -721,12 +608,9 @@ class Appointment(models.Model):
 
 
 
-	# Date 
-	appointment_date = fields.Datetime(
-			string="Fecha", 
-			readonly=False,
-			#states={'Scheduled': [('readonly', False)]})
-			)
+
+
+
 
 
 
@@ -734,33 +618,23 @@ class Appointment(models.Model):
 	x_date = fields.Date(
 			string="Fecha", 
 
-			#default = fields.Date.today, 
 			compute="_compute_x_date",
-			#required=True, 
 		)
 
 	#@api.multi
 	@api.depends('appointment_date')
-
 	def _compute_x_date(self):
-
 		date_format = "%Y-%m-%d %H:%M:%S"
-		#date_format = "%Y-%m-%d"
-
 		for record in self:
-			#record.x_date = record.appointment_date
-			#record.x_date = record.appointment_date.strftime("%Y-%m-%d")
-
 			dt = datetime.datetime.strptime(record.appointment_date, date_format)
-
-
 			record.x_date = dt.strftime("%Y-%m-%d")
 
 
 
 
-	#x_time = fields.Date(
-	#x_time = fields.Datetime(
+
+
+
 	x_time = fields.Char(
 			string="Hora", 
 
@@ -801,11 +675,6 @@ class Appointment(models.Model):
 
 
 
-	# Date end 
-	appointment_end = fields.Datetime(
-			string="Fecha fin", 		
-			readonly=True, 
-			)
 
 
 
@@ -854,27 +723,17 @@ class Appointment(models.Model):
 	# Color x_type id 
 	_hash_colors_x_type = {
 
-
 			'Procedimiento': 1,
 			'procedure': 1,
-
 			'Consulta': 2,
 			'consultation': 2,
-
-
-
 			'procedure_pre_scheduled': 3,
-			
-
 			'Sesion': 4,
 			'session': 4,
-
-			
 			'Control': 5,
 			'control': 5,
 			
 		}
-
 
 	color_x_type_id = fields.Integer(
 			default=1,
@@ -902,20 +761,13 @@ class Appointment(models.Model):
 
 
 	# Duration
-
-
 	_hash_duration = {
 					'0.25' 	: 0.25, 
-
      				'0.5' 	: 0.5, 
-
      				#'0.75' 	: 0.75, 
      				#'1.0' 	: 1.0, 
      				#'2.0' 	: 2.0, 
 				}
-
-
-
 
 	_duration_list = [
         			('0.25', 	'15 min'),
@@ -925,8 +777,6 @@ class Appointment(models.Model):
         			#('1.0', 	'60 min'),
         			#('2.0', 	'120 min'),
         		]
-
-
 
 
      # Duration min 
@@ -947,60 +797,11 @@ class Appointment(models.Model):
 
 
 
-	#@api.onchange('x_type')
-	#def _onchange_x_type(self):
-	#	if self.x_type != False:	
-	#		if self.x_type == 'consultation'  or  self.x_type == 'procedure':
-	#			self.x_duration_min = '0.5'
-	#		elif self.x_type == 'control':
-	#			self.x_duration_min = '0.25'
 
 
 
 
 
-
-
-	#@api.onchange('x_duration_min')
-	#def _onchange_x_duration_min(self):
-	#	if self.x_duration_min != False:	
-			#self.duration = self._hash_duration[self.x_duration_min]
-	#		self.duration = self._hash_duration[self.x_duration_min]
-
-
-
-
-
-
-
-
-
-	# Duration 
-
-	duration = fields.Float(
-			string="Duración (h)", 			
-			compute='_compute_duration', 
-			readonly=True, 
-		)
-
-
-
-	#@api.multi
-	@api.depends('x_type')
-	
-	def _compute_duration(self):
-
-		for record in self:	
-
-			#if record.x_type == 'consultation'  or  record.x_type == 'procedure':
-			if record.x_type == 'consultation'   or   record.x_type == 'procedure'   or   record.x_type == 'session':
-
-				record.duration = 0.5
-
-			elif record.x_type == 'control':
-			#elif record.x_type == 'control'  or  record.x_type == 'session':
-
-				record.duration = 0.25
 
 
 
@@ -1010,31 +811,6 @@ class Appointment(models.Model):
 
 
 	
-
-
-	# Type 
-	_type_list = [
-        			('consultation', 'Consulta'),
-        			#('procedure', 'Procedimiento'),
-        			('procedure', 'Procedimiento'),
-        			('session', 'Sesión'),
-        			('control', 'Control'),
-
-        			#('Consulta', 'Consulta'),
-        			#('Procedimiento', 'Procedimiento'),
-        			#('Sesion', 'Sesión'),
-        			#('Control', 'Control'),
-        		]
-
-
-
-    # x_type 
-	x_type = fields.Selection(
-				selection = _type_list, 
-				string="Tipo",
-				#default="consultation",
-				required=True, 
-				)
 
 
 
@@ -1078,26 +854,15 @@ class Appointment(models.Model):
 
 	x_type_cal = fields.Selection(
 				selection = _type_cal_list, 
-				#string="Tipo",
 
-				
 				compute='_compute_x_type_cal', 
-				)
-
-
-	#@api.onchange('x_type')
-	#def _onchange_x_type(self):
-	#	self.x_type_cal = self._type_cal_dic[self.x_type]
-
-
+		)
 
 	#@api.multi
 	@api.depends('x_type')
 	
 	def _compute_x_type_cal(self):
-
 		for record in self:	
-
 			record.x_type_cal = self._type_cal_dic[record.x_type]
 
 
@@ -1107,152 +872,7 @@ class Appointment(models.Model):
 
 
 
-	# ----------------------------------------------------------- On Change - Patient Doctor ------------------------------------------------------
 
-	@api.onchange('patient','doctor')
-	def _onchange_patient_doctor(self):
-
-
-		if self.patient != False and self.doctor != False:
-			
-
-
-			if self.x_target == 'doctor': 	
-				
-				treatment = self.env['openhealth.treatment'].search([
-																				('patient', 'like', self.patient.name),
-																				
-																				('physician', 'like', self.doctor.name),
-																			
-																			],
-																				order='start_date desc',
-																				limit=1,
-																			)
-				self.treatment = treatment
-
-
-
-			else: 
-
-				cosmetology = self.env['openhealth.cosmetology'].search([
-																				('patient', 'like', self.patient.name),
-																				
-																				('physician', 'like', self.doctor.name),
-																			
-																			],
-																				order='start_date desc',
-																				limit=1,
-																			)
-				self.cosmetology = cosmetology
-			
-
-
-			#print 
-
-	# _onchange_patient_doctor
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	# ----------------------------------------------------------- Indexes ------------------------------------------------------
-
-	treatment = fields.Many2one(
-			
-			'openhealth.treatment',
-			
-			string="Tratamiento",
-			
-			ondelete='cascade', 
-			
-			required=False, 
-			#required=True, 
-
-			#compute='_compute_treatment', 
-		)
-
-
-	#@api.multi
-	#@api.depends('patient', 'doctor')
-	#def _compute_treatment(self):
-	#	for record in self:
-	#		print 'jz'
-	#		if record.patient != False and record.doctor != False:
-	#			print 'jz'
-	#			tre = self.env['openhealth.treatment'].search([
-	#																			('patient', '=', record.patient.name),
-	#																			('doctor', '=', record.doctor.name),
-	#																],
-																	#order='start_date desc',
-	#																limit=1,
-	#																)
-	#			record.treatment = tre
-
-
-
-
-
-
-	#@api.multi
-	#@api.depends('patient', 'doctor')
-	#def _compute_treatment(self):
-	#	for record in self:
-	#		if record.patient != False and record.doctor != False:
-				#treatment = self.env['openhealth.treatment'].search([
-				#																('patient', 'like', self.patient.name),
-				#																('doctor', 'like', self.doctor.name),
-				#															],
-				#																order='start_date desc',
-				#																limit=1,
-				#															)
-				#record.treatment = treatment
-				#record.treatment.id = 3
-	#			#print 'jx'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	#@api.multi
-	#@api.depends('start_date')
-
-	#def _compute_name(self):
-	#	#print 'compute name'
-	#	for record in self:
-	#		idx = record.id
-	#		if idx < 10:
-	#			pre = 'AP000'
-	#		elif idx < 100:
-	#			pre = 'AP00'
-	#		elif idx < 1000:
-	#			pre = 'AP0'
-	#		else:
-	#			pre = 'AP'
-	#		record.name =  pre + str(idx) 
-	#	#print self.name 
-	#	#print 
 
 
 
@@ -1262,39 +882,20 @@ class Appointment(models.Model):
 # ----------------------------------------------------------- Open ------------------------------------------------------
 
 	def open_popup(self):
-	#def open_current(self):
-
-		#the best thing you can calculate the default values 
-		# however you like then pass them to the context
-
-		#print 
-		#print 'open popup'
-		#print 
 
 		return {
-
-        	'type': 'ir.actions.act_window',
-
-        	'name': 'Import Module',
-
-        	'view_type': 'form',
-
-        	'view_mode': 'form',
-
-
-			#'target': 'new',
-			'target': 'current',
-
-
-        	'res_model': 'oeh.medical.appointment',
-
-
-        	#'context': {
-        	#		#'default_partner_id':value, 			
-        	#		#'default_other_field':othervalues        			
-        	#		},
-
-    		}
+		        	'type': 'ir.actions.act_window',
+		        	'name': 'Import Module',
+		        	'view_type': 'form',
+		        	'view_mode': 'form',
+					#'target': 'new',
+					'target': 'current',
+		        	'res_model': 'oeh.medical.appointment',
+		        	#'context': {
+		        	#		#'default_partner_id':value, 			
+		        	#		#'default_other_field':othervalues        			
+		        	#		},
+		    	}
 	# open_popup
 
 
@@ -1470,81 +1071,26 @@ class Appointment(models.Model):
 		#print 
 	
 
+		# Create Procedure 
+
 		appointment_date = vals['appointment_date']
 		x_type = vals['x_type']
-
 		if 'doctor' in vals:
-			doctor = vals['doctor']
-			#print "doctor: ", doctor
-		
-
+			doctor = vals['doctor']		
 		if 'patient' in vals:
 			patient = vals['patient']
-			#print "patient: ", patient
-
-
 		if 'treatment' in vals:
 			treatment = vals['treatment']
-			#print "treatment: ", treatment
-
-
-
-		# Cosmetology 
 		if 'cosmetology' in vals:
 			cosmetology = vals['cosmetology']
-			#print "cosmetology: ", cosmetology
-
-
-
-
 		x_create_procedure_automatic = vals['x_create_procedure_automatic']
-		#x_chief_complaint = vals['x_chief_complaint']
 
-
-		#print "appointment date: ", appointment_date
-		#print "x_type: ", x_type
-		
-
-		#print "x_create_procedure_automatic: ", x_create_procedure_automatic 
-		#print x_chief_complaint
-		#print
-
-
-		#print self.treatment
-
-
-
-
-
-		# Create Procedure 
 		if x_type == 'consultation'  and  x_create_procedure_automatic:
-
-
-
-			# Consultation 
 			date_format = "%Y-%m-%d %H:%M:%S"
-
 			adate_con = datetime.datetime.strptime(appointment_date, date_format)
-
 			delta_fix = datetime.timedelta(hours=1.5)
-			
 			adate_base = adate_con + delta_fix
-
-
-
-			
-
-
-
-
-			#app = appfuncs.create_app_procedure(self, adate_base, doctor, patient, treatment, x_create_procedure_automatic, False)
-			#app = appfuncs.create_app_procedure(self, adate_base, doctor, patient, treatment, x_create_procedure_automatic)
-			#app = appfuncs.create_appointment_procedure(self, adate_base, doctor, patient, treatment, x_create_procedure_automatic)
 			app = appfuncs.create_appointment_procedure(self, adate_base, doctor, patient, treatment, cosmetology, x_create_procedure_automatic)
-			#print app 
-
-
-
 
 
 
@@ -1553,14 +1099,7 @@ class Appointment(models.Model):
 		res = super(Appointment, self).create(vals)
 
 		return res
-
 	# create - CRUD
 
-
-
 # CRUD
-
-
-
-
 

@@ -1,24 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
-	<data>
+	<data noupdate='1'>
 
 
-<!-- DEPRECATED ? --> 
+<!-- THIS IS VERY DEPRECATED !!! --> 
 
-<!-- Suppliers -->
-		<record id="supplier_revilla_rondon" model="res.partner">
-<!--
-			<field name="name">Revilla Rondon y Asociados</field>
-			<field name="name">XX</field>
--->		
 
-			<field name="name">Y</field>
-
-			<field name="email">jrevilla55@gmail.com</field>
-			<field name="lang">es_ES</field>
-			<field name="customer" eval="False" />
-			<field name="supplier" eval="True" />
-		</record>
+<!-- Ayoros -->
 <!--
 		<record id="supplier_ayoros" model="res.partner">
 			<field name="name">Ayoros</field>
@@ -34,7 +22,27 @@
 
 
 
+<!-- Revilla -->
+<!-- 
+			<field name="name">Revilla Rondon y Asociados</field>
+			<field name="name">XX</field>
+-->
+		<record id="supplier_revilla_rondon" model="res.partner">
+			<field name="name">Y</field>
+			<field name="email">jrevilla55@gmail.com</field>
+			<field name="lang">es_ES</field>
+			<field name="customer" eval="False" />
+			<field name="supplier" eval="True" />
+		</record>
+
+
+
+
+
+
 <!-- Supplier Info -->
+<!--
+
 		<record id='rr_acnetopic_200ml' model='product.supplierinfo'>
 			<field name="name" ref="supplier_revilla_rondon"/>
 			<field name="min_qty">1</field>
@@ -62,11 +70,6 @@
 			<field name='product_tmpl_id' 	ref='anti_red'/>
 		</record>
 
-
-
-
-
-
 		<record id='rr_cream_vitamins' model='product.supplierinfo'>
 			<field name="name" ref="supplier_revilla_rondon"/>
 			<field name="min_qty">1</field>
@@ -75,7 +78,6 @@
 			<field name="price">200</field>
 			<field name='product_tmpl_id' 	ref='cream_vitamins'/>
 		</record>
-
 
 		<record id='rr_cream_vitamins_aec' model='product.supplierinfo'>
 			<field name="name" ref="supplier_revilla_rondon"/>
@@ -86,7 +88,6 @@
 			<field name='product_tmpl_id' 	ref='cream_vitamins_aec'/>
 		</record>
 
-
 		<record id='rr_dermatopic_lotion_120ml' model='product.supplierinfo'>
 			<field name="name" ref="supplier_revilla_rondon"/>
 			<field name="min_qty">1</field>
@@ -95,7 +96,6 @@
 			<field name="price">80</field>
 			<field name='product_tmpl_id' 	ref='dermatopic_lotion_120ml'/>
 		</record>
-
 
 		<record id='rr_dermatopic_sulfur_90gr' model='product.supplierinfo'>
 			<field name="name" ref="supplier_revilla_rondon"/>
@@ -268,14 +268,6 @@
 		</record>
 
 
-
-
-
-
-
-
-
-
 		<record id='rr_tretinoina' model='product.supplierinfo'>
 			<field name="name" ref="supplier_revilla_rondon"/>
 			<field name="min_qty">1</field>
@@ -284,6 +276,7 @@
 			<field name='price'>200.0</field>
 			<field name='product_tmpl_id' 	ref='tretinoina'/>
 		</record>
+-->
 
 	</data>
 </openerp>

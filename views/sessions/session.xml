@@ -311,11 +311,14 @@
 
 								<field
 									name="image_ids"
+
 									nolabel="1"
+									
 									context="{
 												'default_owner_model': 'openhealth.session.med',
 												'default_owner_id': id,
 									}"
+									
 									mode="kanban"
 								/>
 

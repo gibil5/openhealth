@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+		<!-- ACTION --> 
+		<record id="stock.action_move_form2" model="ir.actions.act_window">
+
+			<field name="name">Stock Moves - jx</field>
+			
+			<field name="res_model">stock.move</field>
+			
+			<field name="type">ir.actions.act_window</field>
+			
+			<field name="view_type">form</field>
+			
+			<field name="view_id" ref="stock.view_move_tree"/>
+			
+			<field name="search_view_id" ref="stock.view_move_search"/>
+			
+			<field name="context">{}</field>
+
+<!--
+									('name', '=', 'TOKEN'),
+-->
+			<field name="domain">[
+
+				
+								]
+			</field>
+		</record>
+
+
+
+
+
+
+
+	<!-- FAVS -->
+	<!-- By Product --> 
+	<record id="stock.filter_stock_move_by_product_director" model="ir.filters">
+		<field name="name">Por Producto</field>
+		<field name="model_id">stock.move</field>
+		<field name="context">{'group_by': ['product_id']}</field>
+		<field name="active" eval="True" />
+		<field name="is_default" eval="True" />
+		<field name="user_id" eval="ref('openhealth.director_clinicachavarri')" />
+		</record>
+
+	<!-- By Product --> 
+	<record id="stock.filter_stock_move_by_product_almacen" model="ir.filters">
+		<field name="name">Por Producto</field>
+		<field name="model_id">stock.move</field>
+		<field name="context">{'group_by': ['product_id']}</field>
+		<field name="active" eval="True" />
+		<field name="is_default" eval="True" />
+		<field name="user_id" eval="ref('openhealth.almacen_clinicachavarri')" />
+		</record>
+
+	<!-- By Product --> 
+	<record id="stock.filter_stock_move_by_product_root" model="ir.filters">
+		<field name="name">Por Producto</field>
+		<field name="model_id">stock.move</field>
+		<field name="context">{'group_by': ['product_id']}</field>
+		<field name="active" eval="True" />
+		<field name="is_default" eval="True" />
+		<field name="user_id" eval="ref('base.user_root')" />
+	</record>
+
+
+	</data>
+</openerp>

@@ -25,6 +25,10 @@ class Treatment(models.Model):
 	_inherit = 'openhealth.process'	
 	_name = 'openhealth.treatment'
 
+	_order = 'start_date desc'
+
+
+
 
 
 
@@ -167,9 +171,9 @@ class Treatment(models.Model):
 
 
 		# Numbers 
-		self.nr_budgets_cons = 0 
+		#self.nr_budgets_cons = 0 
+		#self.nr_budgets_pro = 0 
 		self.nr_invoices_cons = 0 
-		self.nr_budgets_pro = 0 
 		self.nr_invoices_pro = 0 
 
 
@@ -325,13 +329,12 @@ class Treatment(models.Model):
 
 
 
+			#if record.nr_budgets_cons > 0:
+			#	state = 'budget_consultation'
 
-			if record.nr_budgets_cons > 0:
-				state = 'budget_consultation'
 
 			if record.nr_invoices_cons > 0:
 				state = 'invoice_consultation'
-
 
 
 
@@ -345,14 +348,11 @@ class Treatment(models.Model):
 
 
 
-
-
-			if record.nr_budgets_pro > 0:
-				state = 'budget_procedure'
+			#if record.nr_budgets_pro > 0:
+			#	state = 'budget_procedure'
 
 			if record.nr_invoices_pro > 0:
 				state = 'invoice_procedure'
-
 
 
 
@@ -502,21 +502,49 @@ class Treatment(models.Model):
 
 
 
-	# Number of budgets - Consultations
-	nr_budgets_cons = fields.Integer(
-			string="Presupuestos Consultas",
-			compute="_compute_nr_budgets_cons",
-	)
-	@api.multi
-	def _compute_nr_budgets_cons(self):
-		for record in self:
 
-			record.nr_budgets_cons=self.env['sale.order'].search_count([
-																	('treatment','=', record.id),
-																	('x_family','=', 'consultation'),
 
-																	('state','=', 'draft'),
-																	]) 
+	# Number of budgets - Consultations 			# DEP ? 
+	#nr_budgets_cons = fields.Integer(
+	#		string="Presupuestos Consultas",
+	#		compute="_compute_nr_budgets_cons",
+	#)
+	#@api.multi
+	#def _compute_nr_budgets_cons(self):
+	#	for record in self:
+	#		record.nr_budgets_cons=self.env['sale.order'].search_count([
+	#																('treatment','=', record.id),
+	#																('x_family','=', 'consultation'),
+	#																('state','=', 'draft'),
+	#																]) 
+
+	# Number of budgets - Proc   					# DEP ?  
+	#nr_budgets_pro = fields.Integer(
+	#		string="Presupuestos - Pro",
+	#		compute="_compute_nr_budgets_pro",
+	#)
+	#@api.multi
+	#def _compute_nr_budgets_pro(self):
+	#	for record in self:
+	#		record.nr_budgets_pro=self.env['sale.order'].search_count([
+	#																	('treatment','=', record.id),
+	#																	('x_family','=', 'procedure'),
+	#																	('state','=', 'draft'),
+	#																]) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	# Number of invoices - Consultations
 	nr_invoices_cons = fields.Integer(
@@ -542,22 +570,9 @@ class Treatment(models.Model):
 
 
 
-	# Number of budgets - Proc
-	nr_budgets_pro = fields.Integer(
-			string="Presupuestos - Pro",
-			compute="_compute_nr_budgets_pro",
-	)
-	@api.multi
-	def _compute_nr_budgets_pro(self):
-		for record in self:
 
-			record.nr_budgets_pro=self.env['sale.order'].search_count([
-																		('treatment','=', record.id),
-																		
-																		('x_family','=', 'procedure'),
 
-																		('state','=', 'draft'),
-																	]) 
+
 
 	# Number of invoices - Proc
 	nr_invoices_pro = fields.Integer(

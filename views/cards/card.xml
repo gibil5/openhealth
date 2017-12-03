@@ -1,11 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-
 <openerp>
 	<data>
 
 
 
+		<!-- FORM --> 
+		<record model="ir.ui.view" id="card_form_view">
+			<field name="name">openhealth.card</field>
+			<field name="model">openhealth.card</field>
+			<field name="arch" type="xml">
+				
+				<form string="Card Form">
+					
+
+					<header>
+
+						<button 
+								name="remove_myself"
+								type="object" 
+								class="oe_highlight"
+								string="REMOVEM"
+
+								groups="openhealth.roots"
+						/>
+						
+					</header>
+
+
+
+					<sheet>
+
+						
+						<group>
+							<field name="name"/>
+
+							<field name="patient_name"/>
+
+							<field name="date_created"/>
+						</group>
+
+
+						<notebook>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
 
 
 
@@ -18,11 +58,7 @@
 
 
 
-
-
-
-
-		<!-- tree/list view -->
+		<!-- TREE -->
 		<record model="ir.ui.view" id="openhealth.card_tree_view">
 			<field name="name">card.tree</field>
 			<field name="model">openhealth.card</field>
@@ -40,10 +76,12 @@
 
 
 
+					<field name="patient_name"/>
+<!--
 					<field name="patient"/>
 
 					<field name="partner_id"/>
-
+-->
 					<field name="date_created"/>
 
 					<field name="date_product"/>
@@ -55,7 +93,6 @@
 			</field>
 		</record>
 <!--
-					<field name="patient_name"/>
 -->
 
 
@@ -85,15 +122,15 @@
 
 
 
+
+
 		<!-- Filter --> 
         <record id="view_card_filter" model="ir.ui.view">
            <field name="name">Card Search</field>
            <field name="model">openhealth.card</field>		   
 		   <field name="arch" type="xml">
                <search string="cards">
-
 					<field name="patient_name"/>
-
                </search>           
            </field>
        </record>

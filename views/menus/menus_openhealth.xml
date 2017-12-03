@@ -64,6 +64,25 @@
 
 
 
+		<!-- Stock Move Selector --> 
+		<menuitem id="stock_move_selector_form_menu" name="Stock Move Selector Form" parent="openhealth_menu"
+
+			sequence="-170"
+
+			action="openhealth.stock_move_selector_form_action"
+			/>
+
+
+		<menuitem id="stock_move_selector_menu" name="Stock Move Selector" parent="openhealth_menu"
+
+			sequence="-170"
+
+			action="openhealth.stock_move_selector_list_action"
+			/>
+
+
+
+
 
 		<!-- Partners --> 
 		<menuitem id="partners_menu" name="Partners" parent="openhealth_menu"

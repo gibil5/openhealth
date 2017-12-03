@@ -13,6 +13,9 @@ class Partner(models.Model):
 	#_inherit = ['res.partner', 'oeh.medical.evaluation', 'base_multi_image.owner']
 	#_name = 'openhealth.patient'	#The best solution ? So that impact is minimal ?	- Deprecated
 
+	_order = 'write_date desc'
+
+
 
 
 
@@ -252,28 +255,78 @@ class Partner(models.Model):
 		)
 
 
+
+
+
+	# Pricelist 
+	#property_product_pricelist = fields.Many2one(
+	#		'product.pricelist',
+	#		'Sale Pricelist - jx',
+	#		#compute='_compute_ppl', 
+	#	)
+
+	#@api.multi
+	#@api.depends('x_card')
+	#def _compute_ppl(self):
+	#	print 'jx'
+	#	print 'Compute PPL'
+	#	for record in self:
+	#		record.property_product_pricelist = False
+
+
+
+
+
+
+
 	# Vip 
 	x_vip = fields.Boolean(
-		string="Vip",
+		string="VIP",
 		default=False, 
 
 		compute='_compute_x_vip', 
 	)
 
 
-
-
 	@api.multi
 	#@api.depends('x_card')
 	def _compute_x_vip(self):
+
+		#print 'jx'
+		#print 'Compute Partner x Vip'
+
 		for record in self:
+
 			x_card = record.env['openhealth.card'].search([
 															('patient_name','=', record.name),
 														],
 														#order='appointment_date desc',
 														limit=1,)
+			
 			if x_card.name != False:
 				record.x_vip = True 
+				#pricelist_name = 'VIP'
+
+				record.action_ppl_vip()
+
+			else:
+				record.x_vip = False 
+				#pricelist_name = 'Public Pricelist'
+				
+				record.action_ppl_public()
+
+
+
+			# Pricelist 
+			#pricelist = self.env['product.pricelist'].search([
+			#															('name','=', pricelist_name),
+			#													],
+															#order='appointment_date desc',
+			#												limit=1,)
+			#print pricelist
+			#print record.property_product_pricelist
+			#record.property_product_pricelist = pricelist
+			#print record.property_product_pricelist
 
 
 
@@ -283,6 +336,54 @@ class Partner(models.Model):
 
 
 # ----------------------------------------------------------- Actions ------------------------------------------------------
+
+
+	# PPL 
+	@api.multi
+	def action_ppl_public(self):  
+
+		print 'jx'
+		print 'PPL Public'
+
+
+		pricelist_name = 'Public Pricelist'
+
+
+		# Pricelist 
+		pricelist = self.env['product.pricelist'].search([
+																	('name','=', pricelist_name),
+															],
+														#order='appointment_date desc',
+														limit=1,)
+
+
+		self.property_product_pricelist = pricelist
+
+
+
+
+	# PPL 
+	@api.multi
+	def action_ppl_vip(self):  
+
+		pricelist_name = 'VIP'
+
+
+		# Pricelist 
+		pricelist = self.env['product.pricelist'].search([
+																	('name','=', pricelist_name),
+															],
+														#order='appointment_date desc',
+														limit=1,)
+
+		self.property_product_pricelist = pricelist
+
+
+
+
+
+
+
 
 
 	# Removem

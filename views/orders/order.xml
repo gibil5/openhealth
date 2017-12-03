@@ -10,9 +10,9 @@
 			<field name="model">sale.order</field>
 			
 			<field name="inherit_id" ref="sale.view_order_form"/>	
-	        <field name="mode">primary</field>
+			<field name="mode">primary</field>
 
-	        <field name="priority" eval="1"/>
+			<field name="priority" eval="1"/>
 			<field name="arch" type="xml">
 
 
@@ -174,7 +174,10 @@
 				<!-- Natives -->
 				<xpath expr="//field[@name='validity_date']" position="before">
 					
+					<field name="x_partner_vip"/>
+
 					<field name="date_order" 			string="Fecha"		readonly="1"	/>					
+
 
 
 
@@ -188,7 +191,7 @@
 
 
 					<field name="vspace"/>
-                    <field name="x_serial_nr"/>
+					<field name="x_serial_nr"/>
 
 
 
@@ -345,12 +348,12 @@
 
 
 <xpath expr="//page[@string='Other Information']" position="attributes" >
-    <attribute name="invisible">1</attribute>
+	<attribute name="invisible">1</attribute>
 </xpath>
 
 
 <xpath expr="/form/notebook/page[@string='Other Information']" position="attributes">
-    <attribute name="invisible">1</attribute>
+	<attribute name="invisible">1</attribute>
 </xpath>
 
 
@@ -597,27 +600,27 @@
 <!--
 
 				<xpath expr="//field	[@name='order_line']/tree//field[@name='price_subtotal']" position="replace">
-            	        <field name="price_total"/>
-            	</xpath>
+						<field name="price_total"/>
+				</xpath>
 
 
 				<xpath expr="//field	[@name='order_line']/tree//field[@name='tax_id']" position="replace">
-            	</xpath>
+				</xpath>
 
 				<xpath expr="//field	[@name='order_line']/tree//field[@name='product_uom_qty']" position="replace">
-        	            <field name="product_uom_qty"	string="Cantidad"/>
-            	</xpath>
+						<field name="product_uom_qty"	string="Cantidad"/>
+				</xpath>
 
 
 				<xpath expr="//field	[@name='order_line']/tree//field[@name='price_unit']" position="after">
-            	        <field name="margin"/>
-            	</xpath>
+						<field name="margin"/>
+				</xpath>
 -->
 
 <!--
 				<xpath expr="//field	[@name='order_line']/tree//field[@name='price_subtotal']" position="before">
-            	        <field name="x_price_vip"/>
-            	</xpath>
+						<field name="x_price_vip"/>
+				</xpath>
 -->
 
 
@@ -857,9 +860,9 @@
 
 						<!-- Cancelled -->
 						<group>
-        	            	<field name="x_cancel" nolabel="1"	readonly="1"
+							<field name="x_cancel" nolabel="1"	readonly="1"
 
-        	            		groups="openhealth.managers,openhealth.directors" />
+								groups="openhealth.managers,openhealth.directors" />
 						</group>
 
 
@@ -985,13 +988,13 @@ Order Line - Tree
 					<field name="order_line">
 						<tree string="Order Line Tree">
 					
-    	                	<field name="product_id" 		string="Producto"/>
-        	            	<field name="name"				string="Descripción" />
-        	            	<field name="x_partner_vip"		string="Vip"/>
-        	            	<field name="product_uom_qty"	string="Cantidad"/>
-            	        	<field name="price_unit"		string="Precio"/>
-            	        	<field name="x_price_vip"		/>
-            	        	<field name="price_subtotal"	/>
+							<field name="product_id" 		string="Producto"/>
+							<field name="name"				string="Descripción" />
+							<field name="x_partner_vip"		string="Vip"/>
+							<field name="product_uom_qty"	string="Cantidad"/>
+							<field name="price_unit"		string="Precio"/>
+							<field name="x_price_vip"		/>
+							<field name="price_subtotal"	/>
 
 						</tree>
 					</field>
@@ -1000,27 +1003,27 @@ Order Line - Tree
 
 
 				<xpath expr="//field[@name='price_subtotal']" position="before">
-            	        <field name="x_price_vip"/>
+						<field name="x_price_vip"/>
 				</xpath>
 
 
 				<xpath expr="//field	[@name='order_line']/tree//field[@name='price_unit']" position="after">
-                	<field name="purchase_price" groups="base.group_user"  string='jx'/>
-            	</xpath>
+					<field name="purchase_price" groups="base.group_user"  string='jx'/>
+				</xpath>
 -->			
 
 
 <!--
 				<xpath expr="//field	[@name='order_line']/tree//field[@name='purchase_price']" position="replace">
-                	<field name="purchase_price" invisible="1"/>
-            	</xpath>
+					<field name="purchase_price" invisible="1"/>
+				</xpath>
 -->
 
 
 <!--
 				<xpath expr="//field	[@name='order_line']/tree//field[@name='name']" position="after">
-        	            <field name="x_partner_vip"		string="Vip"/>
-            	</xpath>
+						<field name="x_partner_vip"		string="Vip"/>
+				</xpath>
 -->
 
 
@@ -1087,18 +1090,153 @@ Order Line - Tree
 
 <!--
 							attrs="{'readonly': ['|', ('qty_invoiced', '&gt;', 0), ('procurement_ids', '!=', [])]}"
--->
 				<field name="product_id" position="replace">
-
 					<field 
 							name="product_id"
-
 							context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}"
-
+							
 							options="{'no_create': True}"
 					/>
+				</field>
+-->
+
+
+
+
+
+<!--
+											<field name="product_id"
+												context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}"
+												attrs="{'readonly': ['|', ('qty_invoiced', '&gt;', 0), ('procurement_ids', '!=', [])]}"
+											   />
+-->
+
+
+<!--
+				<field name="order_line" position="replace">
+
+						   <field name="order_line" mode="tree,kanban"
+								attrs="{'readonly': [('state', 'in', ('done','cancel'))]}">
+								<form string="Sales Order Lines">
+									<group>
+										<group>
+
+											<field name="product_id"
+												
+												context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}"
+
+												string='Product - jx'
+
+												options="{'no_create': True}"
+											   />
+											
+											<field name="invoice_status" invisible="1"/>
+											<field name="qty_to_invoice" invisible="1"/>
+											<field name="qty_delivered_updateable" invisible="1"/>
+											<field name="procurement_ids" invisible="1"/>
+											<field name="price_subtotal" invisible="1"/>
+											<label for="product_uom_qty" string="Ordered Quantity"/>
+											<div>
+												<field
+													context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'uom_qty_change':True, 'company_id': parent.company_id}"
+													name="product_uom_qty" class="oe_inline"/>
+												<field name="product_uom" groups="product.group_uom" class="oe_inline oe_no_button"
+													attrs="{'readonly': [('state', 'in', ('sale','done', 'cancel'))]}"/>
+											</div>
+											<label for="qty_delivered" string="Delivered Quantity" invisible="not context.get('show_sale')"/>
+											<div invisible="not context.get('show_sale')">
+												<field name="qty_delivered" attrs="{'readonly': [('qty_delivered_updateable', '=', False)]}"/>
+											</div>
+											<label for="qty_invoiced" string="Invoiced Quantity" invisible="not context.get('show_sale')"/>
+											<div invisible="not context.get('show_sale')">
+												<field name="qty_invoiced" invisible="not context.get('show_sale')"/>
+											</div>
+											<field name="price_unit"/>
+											<label for="discount" groups="sale.group_discount_per_so_line"/>
+											<div name="discount" groups="sale.group_discount_per_so_line">
+												<field name="discount" class="oe_inline"/> %%
+											</div>
+										</group>
+										<group>
+											<field name="tax_id" widget="many2many_tags" domain="[('type_tax_use','=','sale'),('company_id','=',parent.company_id)]"
+												attrs="{'readonly': [('qty_invoiced', '&gt;', 0)]}"/>
+											<label for="customer_lead"/>
+											<div>
+												<field name="customer_lead" class="oe_inline"/> days
+											</div>
+										</group>
+									</group>
+									<label for="name"/>
+									<field name="name"/>
+									<div groups="base.group_no_one">
+										<label for="invoice_lines"/>
+										<field name="invoice_lines"/>
+									</div>
+									<field name="state" invisible="1"/>
+								</form>
+								<tree string="Sales Order Lines" editable="bottom" decoration-info="invoice_status=='to invoice'">
+									<field name="sequence" widget="handle"/>
+									<field name="product_id"
+										attrs="{'readonly': ['|', ('qty_invoiced', '&gt;', 0), ('procurement_ids', '!=', [])]}"
+										context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}"
+									   />
+									<field name="name"/>
+									<field name="product_uom_qty"
+										string="Ordered Qty"
+										context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}"
+									/>
+									<field name="qty_delivered" invisible="not context.get('show_sale')"
+										attrs="{'readonly': [('qty_delivered_updateable', '=', False)]}"/>
+									<field name="qty_invoiced"
+										invisible="not context.get('show_sale')"/>
+									<field name="qty_to_invoice" invisible="1"/>
+									<field name="product_uom"
+										attrs="{'readonly': [('state', 'in', ('sale','done', 'cancel'))]}"
+										context="{'company_id': parent.company_id}"
+										groups="product.group_uom" options='{"no_open": True}'/>
+									<field name="price_unit"
+										attrs="{'readonly': [('qty_invoiced', '&gt;', 0)]}"/>
+									<field name="tax_id" widget="many2many_tags" domain="[('type_tax_use','=','sale'),('company_id','=',parent.company_id)]"
+										attrs="{'readonly': [('qty_invoiced', '&gt;', 0)]}"/>
+									<field name="discount" groups="sale.group_discount_per_so_line"/>
+									<field name="price_subtotal" widget="monetary"/>
+									<field name="qty_delivered_updateable" invisible="1"/>
+									<field name="procurement_ids" invisible="1"/>
+									<field name="state" invisible="1"/>
+									<field name="invoice_status" invisible="1"/>
+									<field name="customer_lead" invisible="1"/>
+								</tree>
+								<kanban class="o_kanban_mobile">
+									<field name="product_id"/>
+									<field name="product_uom_qty"/>
+									<field name="product_uom" groups="product.group_uom"/>
+									<field name="price_subtotal"/>
+									<templates>
+										<t t-name="kanban-box">
+											<div t-attf-class="oe_kanban_card oe_kanban_global_click">
+												<div class="row">
+													<div class="col-xs-12">
+														<strong><span><t t-esc="record.product_id.value"/></span></strong>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-xs-8 text-muted">
+														<span><t t-esc="record.product_uom_qty.value"/> <t t-esc="record.product_uom.value"/></span>
+													</div>
+													<div class="col-xs-4 text-muted">
+														<span class="pull-right text-right"><t t-esc="record.price_subtotal.value"/></span>
+													</div>
+												</div>
+											</div>
+										</t>
+									</templates>
+								</kanban>
+							</field>
+
 
 				</field>
+-->
+
 
 
 
@@ -1136,7 +1274,7 @@ Order Line - Tree
 <!--				
 -->
 					<field name="vspace"/>
-                    <field name="user_id"	string="Validación"		readonly="1"		/>
+					<field name="user_id"	string="Validación"		readonly="1"		/>
 
 
 
@@ -1146,7 +1284,7 @@ Order Line - Tree
 
 
 					<field name="vspace"			groups="openhealth.roots"	/>
-                    <field name="x_my_company"		groups="openhealth.roots"	/>
+					<field name="x_my_company"		groups="openhealth.roots"	/>
 
 
 
@@ -1157,7 +1295,6 @@ Order Line - Tree
 					<field name="doctor_name"/>
 
 					<field name="vspace"/>
-					<field name="x_partner_vip"/>
 -->
 					
 					
@@ -1333,42 +1470,42 @@ Order Line - Tree
 					
 
 
-                    <field name="name"	 		string="Referencia"		/>
+					<field name="name"	 		string="Referencia"		/>
 
 					<field name="x_type" />
 
-                    <field name="date_order"	string="Fecha"	/>
+					<field name="date_order"	string="Fecha"	/>
 
-                    <field name="state"/>
+					<field name="state"/>
 
 
 
 					<field name="note"   />  
 
-                    <field name="user_id"		string="Vendedor"	/>
+					<field name="user_id"		string="Vendedor"	/>
 
 					<field name="x_doctor"		/>
-                    
-                    <field name="partner_id"/>
+					
+					<field name="partner_id"/>
 
 
 
 
-                    <field name="product"/>
+					<field name="product"/>
 
-                    <field name="categ"/>
+					<field name="categ"/>
 
-                    <field name="nr_lines"/>
+					<field name="nr_lines"/>
 
 
 
 
 <!--
-                    <field name="x_amount_total" 	sum="Total Tax Included"	widget="monetary"/>
-                    <field name="amount_total" 		sum="Total Tax Included"	widget="monetary"/>
-                    <field name="margin"/>
+					<field name="x_amount_total" 	sum="Total Tax Included"	widget="monetary"/>
+					<field name="amount_total" 		sum="Total Tax Included"	widget="monetary"/>
+					<field name="margin"/>
 -->
-                    <field name="amount_untaxed"	sum="Total Untaxed"			widget="monetary"		string="Total"	/>
+					<field name="amount_untaxed"	sum="Total Untaxed"			widget="monetary"		string="Total"	/>
 
 
 
@@ -1379,9 +1516,9 @@ Order Line - Tree
 
 <!--
 
-                    <field name="comment"/>
-                    <field name="team_id"/>
-                    <field name="company_id"/>
+					<field name="comment"/>
+					<field name="team_id"/>
+					<field name="company_id"/>
 
 
 					<field name="x_cancel_reason"/>
@@ -1423,9 +1560,9 @@ Order Line - Tree
 			
 			<!--
 			<field name="view_mode">form,tree</field>
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="view_id" eval="False"/>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>
 			<field name="help" type="html">
 				<p class="oe_view_nocontent_create">Create the first order
 				</p>
@@ -1450,9 +1587,9 @@ Order Line - Tree
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 			<!--
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="view_id" eval="False"/>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>
 			
 			<field name="help" type="html">
 				<p class="oe_view_nocontent_create">Create the first order
@@ -1474,16 +1611,16 @@ Order Line - Tree
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 
-            <field name="domain">[
+			<field name="domain">[
 									('state', '=', 'draft'),
-            					]
-            </field>
+								]
+			</field>
 
 			<!--
-            <field name="domain">[]</field>
-            
-            <field name="context">{}</field>
-            <field name="view_id" eval="False"/>
+			<field name="domain">[]</field>
+			
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>
 			
 			<field name="help" type="html">
 				<p class="oe_view_nocontent_create">Create the first budget
@@ -1505,15 +1642,15 @@ Order Line - Tree
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 
-           	<field name="domain">[
+			<field name="domain">[
 									('state', '=', 'sale'),
-            					]
-            </field>
+								]
+			</field>
 
 			<!--
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="view_id" eval="False"/>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>
 			<field name="help" type="html">
 				<p class="oe_view_nocontent_create">Create the first invoice
 				</p>
@@ -1536,10 +1673,10 @@ Order Line - Tree
 
 			<field name="view_mode">tree,form</field>
 
-           	<field name="domain">[
+			<field name="domain">[
 									('state', '=', 'cancel'),
-            					]
-            </field>
+								]
+			</field>
 
 		</record>
 
@@ -1562,18 +1699,18 @@ Order Line - Tree
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 
-           	<field name="domain">[
+			<field name="domain">[
 									('state', '=', 'sale'),
 
 									('date_order','&lt;=',time.strftime('2017-09-01')),
 									('date_order','&gt;=',time.strftime('2017-08-01'))
-            					]
-            </field>
+								]
+			</field>
 
 			<!--
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="view_id" eval="False"/>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>
 			<field name="help" type="html">
 				<p class="oe_view_nocontent_create">Create the first invoice
 				</p>
@@ -1600,11 +1737,11 @@ Order Line - Tree
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 
-           	<field name="domain">[
+			<field name="domain">[
 									('state', '=', 'sale'),
 									('x_family', '=', 'consultation'),
-            					]
-            </field>
+								]
+			</field>
 		</record>
 
 
@@ -1615,11 +1752,11 @@ Order Line - Tree
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 
-           	<field name="domain">[
+			<field name="domain">[
 									('state', '=', 'sale'),
 									('x_family', '=', 'procedure'),
-            					]
-            </field>
+								]
+			</field>
 		</record>
 		
 
@@ -1643,8 +1780,8 @@ Order Line - Tree
 
 		<!--
 		<record id="user_group_id" model="res.groups">
-    		<field name="name">Open Health User Group</field>
-    		<field name="category_id" ref="base.module_category_sales_management"/>
+			<field name="name">Open Health User Group</field>
+			<field name="category_id" ref="base.module_category_sales_management"/>
 		</record>
 		-->
 
@@ -1688,32 +1825,32 @@ Order Line - Tree
 
 		
 		<!-- Filter --> 
-        <record id="view_medical_order_filter" model="ir.ui.view">
-           <field name="name">Order Search</field>
-           <field name="model">sale.order</field>		   
+		<record id="view_medical_order_filter" model="ir.ui.view">
+		   <field name="name">Order Search</field>
+		   <field name="model">sale.order</field>		   
 		   <field name="arch" type="xml">
-               <search string="orders">
+			   <search string="orders">
 
-                   <field name="partner_id" />
+				   <field name="partner_id" />
 <!--
-                   <field name="x_doctor" />               
-                   <field name="x_family" /> 
+				   <field name="x_doctor" />               
+				   <field name="x_family" /> 
 -->
-               </search>
-           </field>
-       </record>
+			   </search>
+		   </field>
+	   </record>
 
 
 <!--
-        <record id="view_medical_order_filter_phy" model="ir.ui.view">
-           <field name="name">Order Search</field>
-           <field name="model">sale.order</field>		   
+		<record id="view_medical_order_filter_phy" model="ir.ui.view">
+		   <field name="name">Order Search</field>
+		   <field name="model">sale.order</field>		   
 		   <field name="arch" type="xml">
-               <search string="orders">
-                   <field name="x_doctor" />                           
-               </search>
-           </field>
-       </record>
+			   <search string="orders">
+				   <field name="x_doctor" />                           
+			   </search>
+		   </field>
+	   </record>
 -->
 
 
@@ -1722,28 +1859,28 @@ Order Line - Tree
 
 <!-- Favorites -->
 		<!-- By Month --> 
-	    <record id="sale.filter_sale_order_month" model="ir.filters">
+		<record id="sale.filter_sale_order_month" model="ir.filters">
 
-	        <field name="name">Por Mes</field>
+			<field name="name">Por Mes</field>
 
-	        <field name="model_id">sale.order</field>
+			<field name="model_id">sale.order</field>
 <!--	        
-	        <field name="user_id" eval="False"/>
-	        <field name="context">{'group_by': ['date:month', 'product_id']}</field>
+			<field name="user_id" eval="False"/>
+			<field name="context">{'group_by': ['date:month', 'product_id']}</field>
 -->
-	        <field name="context">{'group_by': ['date_order']}</field>
-	    </record>
+			<field name="context">{'group_by': ['date_order']}</field>
+		</record>
 
 
 		<!-- By Doctor --> 
-	    <record id="sale.filter_sale_order_phy" model="ir.filters">
+		<record id="sale.filter_sale_order_phy" model="ir.filters">
 
-	        <field name="name">Por Medico</field>
+			<field name="name">Por Medico</field>
 
-	        <field name="model_id">sale.order</field>
+			<field name="model_id">sale.order</field>
 
-	        <field name="context">{'group_by': ['x_doctor']}</field>
-	    </record>
+			<field name="context">{'group_by': ['x_doctor']}</field>
+		</record>
 
 
 	</data>

@@ -9,7 +9,6 @@ import datetime
 
 @api.multi
 
-#def check_for_collisions(self, appointment_date, doctor_name, duration, x_machine, target):
 def check_for_collisions(self, appointment_date, doctor_name, duration, x_machine, target, x_type):
 
 
@@ -26,46 +25,33 @@ def check_for_collisions(self, appointment_date, doctor_name, duration, x_machin
 
 
 
-		# Always a total check
+		# Build the existing appointments array
 
 		if target == 'doctor':
 			app_ids = self.env['oeh.medical.appointment'].search([
 																	('appointment_date', 'like', dt), 
-
 																	('doctor', '=', doctor_name), 
 																])
 
 		if target == 'machine':
 			app_ids = self.env['oeh.medical.appointment'].search([
 																	('appointment_date', 'like', dt), 
-
 																	('x_machine', '=', x_machine),
 																])
 
 
 		# Cosmetology  
-		if target == 'therapist':
-
-
-			if x_type == 'consultation':
-				
-				app_ids = self.env['oeh.medical.appointment'].search([
-																		('appointment_date', 'like', dt), 
-
-																		('x_therapist', '=', doctor_name), 
-																	])
-
-
-			else:
-
-				app_ids = self.env['oeh.medical.appointment'].search([
-																		('appointment_date', 'like', dt), 
-
-																		#('x_therapist', '=', doctor_name), 
-																		#('x_machine_cos', '=', x_machine),
-																		('x_machine', '=', x_machine),
-																	])
-
+		#if target == 'therapist':
+		#	if x_type == 'consultation':
+		#		app_ids = self.env['oeh.medical.appointment'].search([
+		#																('appointment_date', 'like', dt), 
+		#																('x_therapist', '=', doctor_name), 
+		#															])
+		#	else:
+		#		app_ids = self.env['oeh.medical.appointment'].search([
+		#																('appointment_date', 'like', dt), 
+		#																('x_machine', '=', x_machine),
+		#															])
 
 
 
@@ -79,7 +65,7 @@ def check_for_collisions(self, appointment_date, doctor_name, duration, x_machin
 
 
 
-		# Appointment end 
+		# Build the Appointment end 
 		date_format = "%Y-%m-%d %H:%M:%S"
 		delta = datetime.timedelta(hours=duration)
 		sd = datetime.datetime.strptime(appointment_date, date_format)
@@ -99,9 +85,7 @@ def check_for_collisions(self, appointment_date, doctor_name, duration, x_machin
 
 		for app in app_ids:
 
-
 			#print app
-
 
 			start = app.appointment_date
 			end = app.appointment_end
@@ -145,11 +129,8 @@ def check_for_collisions(self, appointment_date, doctor_name, duration, x_machin
 
 
 
-
 		# Passed test - All is Ok 
 		return 0, '', '', '' 
-
-
 
 	# check_for_collisions
 
@@ -166,20 +147,10 @@ def check_for_collisions(self, appointment_date, doctor_name, duration, x_machin
 
 @api.multi
 
-#def create_app_procedure(self, adate_base, doctor_id, patient_id, treatment_id, x_create_procedure_automatic, flag_machine):
-#def create_app_procedure(self, adate_base, doctor_id, patient_id, treatment_id, x_create_procedure_automatic):
-#def create_appointment_procedure(self, adate_base, doctor_id, patient_id, treatment_id, x_create_procedure_automatic):
 def create_appointment_procedure(self, adate_base, doctor_id, patient_id, treatment_id, cosmetology_id, x_create_procedure_automatic):
-
-
-		#flag_machine = False 
-
-
 
 		#print 
 		#print 'Create App Procedure'
-
-
 
 
 

@@ -460,6 +460,10 @@
 
 					<field name="name"/>
 
+					<field name="x_vip"/>
+					<field name="x_card"/>
+
+
 					<field name="write_date"/>
 
 
@@ -489,9 +493,6 @@
 -->
 
 
-					<field name="x_vip"/>
-
-					<field name="x_card"/>
 
 
 					

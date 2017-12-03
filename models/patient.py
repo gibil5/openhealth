@@ -192,7 +192,7 @@ class Patient(models.Model):
 
 	# Vip 
 	x_vip = fields.Boolean(
-		string="Vip",
+		string="VIP",
 		default=False, 
 
 		#store=True, 			
@@ -225,7 +225,7 @@ class Patient(models.Model):
 
 	x_card = fields.Many2one(
 			'openhealth.card',
-			string = "Tarjeta Vip", 	
+			string = "Tarjeta VIP", 	
 			#required=True, 
 			compute='_compute_x_card', 
 
@@ -482,26 +482,30 @@ class Patient(models.Model):
 
 
 			self.sex = 'Male'
+
 			self.dob = '1965-05-26'
+			
 			self.x_dni = '09817194'
 
-			self.email = 'toby@gmail.com'
+			self.email = 'jrevilla55@gmail.com'
 			
-			self.phone_1 = '4760118'
+			self.phone = '4760118'
+
 			self.x_allergies = 'Ninguna'
+
 			self.x_first_contact = 'recommendation'
 
 			self.street = 'Av. San Borja Norte 610'
+			
 			self.street2_sel = 41
 
 
 			self.comment = 'test'
 			
+			
 			#self.x_last_name = 'Fuchs Vibors'
 			#self.x_first_name = 'Hans'
-
 			#self.name = self.x_last_name + ' ' + self.x_first_name
-			
 			#self.street2 = 'San Borja'
 			#self.zip = 41
 			#self.city = 'Lima'
@@ -1265,13 +1269,9 @@ class Patient(models.Model):
 	@api.model
 	def create(self,vals):
 
-		#print 
-		#print 'jx: begin'
 		#print 'jx'
 		#print 'Patient - Create - Override'
-		#print 
 		#print vals
-		#print 
 	
 
 
@@ -1281,38 +1281,13 @@ class Patient(models.Model):
 
 
 
-
-
 		# My logic 
-
-		# Create a Treatment - When Patient is created
-		name = vals['name']
-		#print 'name: ', name 
-		patient_id = self.env['oeh.medical.patient'].search([('name', '=', name),]).id 
-		#print 'patient_id: ', patient_id
-		treatment = self.env['openhealth.treatment'].create({'patient': patient_id,})
-
-
-
-
-		#self.x_datetime_created = Datetime.now
-
-
-
-
-		#x_date_created = vals['x_date_created']
-		#print x_date_created 
-		#self.x_year_created = 'jx'
-		#print self.x_year_created
-
-
-
-		#print 'jx: end '
-		#print 
-
+		# Create a Treatment - When Patient is created - DEPRECATED !
+		#name = vals['name']
+		#patient_id = self.env['oeh.medical.patient'].search([('name', '=', name),]).id 
+		#treatment = self.env['openhealth.treatment'].create({'patient': patient_id,})
 
 		return res
-
 	# CRUD - Create 
 
 
@@ -1373,9 +1348,13 @@ class Patient(models.Model):
 
 			self.partner_id.email = self.email
 
-			self.partner_id.phone = self.phone_2
 
-			self.partner_id.mobile = self.phone_1
+
+			self.partner_id.phone = self.phone
+
+			self.partner_id.mobile = self.mobile
+
+
 
 			self.partner_id.lang = 'es_ES'
 

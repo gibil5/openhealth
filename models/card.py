@@ -18,20 +18,24 @@ class Card(models.Model):
 	_name = 'openhealth.card'		
 	#_inherit = 'oeh.medical.card'
 
+	_order = 'date_created desc'
 
 
 
-	# Commons 
+
+
+
+# ----------------------------------------------------------- Commons ------------------------------------------------------
 	vspace = fields.Char(
 			' ', 
 			readonly=True
 			)
 
 
+# ----------------------------------------------------------- Fields ------------------------------------------------------
 
-	name = fields.Char(
-		
-			string="Tarjeta Vip #", 
+	name = fields.Char(		
+			"Tarjeta Vip #", 
 
 			#required=True, 
 			required=False, 
@@ -39,38 +43,19 @@ class Card(models.Model):
 
 
 
-
-
-	categ_id = fields.Many2one(
-
-			'product.category',
-
-			string="Categoria",
-		)
-
-
-
-
-
-
-
 	date_created = fields.Date(
-			string = "Fecha de Creación",
-			default = fields.Date.today, 
+			"Fecha de Creación",
 
+			default = fields.Date.today, 
 			#readonly = True, 
 			required=True, 
 		)
 
 
-
-
-
-
 	patient_name = fields.Char(
-			string = "Paciente nombre",
-			default = "", 
+			"Paciente nombre",
 			
+			default = "", 
 			#readonly=True
 			required=True, 
 			)
@@ -81,9 +66,17 @@ class Card(models.Model):
 
 
 
+	categ_id = fields.Many2one(
+			'product.category',
+			string="Categoria",
+		)
+
+
+
+
 	patient = fields.Many2one(
 			'oeh.medical.patient',
-			string = "Paciente", 	
+			"Paciente", 	
 			#required=True, 
 			compute='_compute_patient', 
 
@@ -199,19 +192,59 @@ class Card(models.Model):
 
 
 
+# ----------------------------------------------------------- Actions ------------------------------------------------------
+	
+	# Removem
+	@api.multi
+	def remove_myself(self):  
+				
+		self.unlink()
+
 
 
 
 
 # ----------------------------------------------------------- CRUD ------------------------------------------------------
 
+	@api.multi
+	def unlink(self):
+
+		print 'jx'
+		print 'CRUD - Card - Unlink'
+		print 
+		
+
+
+		# Partner - Pricelist 
+		pl = self.env['product.pricelist'].search([
+															('name','=', 'Public Pricelist'),
+													],
+													#order='appointment_date desc',
+													limit=1,)
+		
+		self.partner_id.property_product_pricelist = pl
+
+
+
+		# Put your logic here 
+		res = models.Model.unlink(self)
+		# Or here 
+				
+		return res 
+
+
+
+
+
+
+
 	@api.model
 	def create(self,vals):
 
-		#print 
-		#print 'jx'
-		#print 'Card - Create - Override'
-		#print 
+		print 'jx'
+		print 'CRUD - Card - Create'
+		print 
+
 		#print vals
 		#print 
 	
@@ -224,8 +257,18 @@ class Card(models.Model):
 
 
 
+
+		# Partner - Pricelist 
+		#pl = self.env['product.pricelist'].search([
+		#													('name','=', 'VIP'),
+		#											],
+													#order='appointment_date desc',
+		#											limit=1,)
+		#print pl
+		#print self.partner_id
+		#print self.partner_id.property_product_pricelist
+		#self.partner_id.property_product_pricelist = pl
+
 		return res
 
 	# CRUD - Create 
-
-

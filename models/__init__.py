@@ -50,7 +50,9 @@ from . import purchase
 #from . import purchase_line_rfq
 
 
+
 from . import stock_picking 
+from . import stock_move_selector
 
 
 
@@ -66,20 +68,21 @@ from . import evaluation
 from . import physician 
 from . import physician_line 
 
+
 from . import consultation
 from . import recommendation
 from . import procedure
-
-
 from . import session 
 from . import session_med
-
 from . import control
 
 
-from . import image
-from . import image_full
-#from . import multi_image
+
+
+from . import image  			
+#from . import image_full		# Deprecated ?
+#from . import multi_image		# Deprecated 
+
 
 
 

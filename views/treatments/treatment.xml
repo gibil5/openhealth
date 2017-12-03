@@ -85,8 +85,12 @@
 							name="%(oeh_medical_appointment_action_tree_confirmed)d"	
 
 							type="action" 
+
 							class="oe_highlight"
+
+
 							states="empty"
+
 							
 							context="{									
 											'search_default_doctor': physician,
@@ -129,6 +133,7 @@ jz
 											'default_treatment': active_id, 
 										}" 
 							name="create_order" 
+							string="Crear PRESUPUESTO - Consulta" 
 -->
 
 						<button 
@@ -231,6 +236,7 @@ jz
 
 
 							groups="openhealth.managers,openhealth.physicians"
+							string="Crear PRESUPUESTO - Procedimiento" 
 -->						
 						<button 
 
@@ -347,14 +353,18 @@ jz
 
 								statusbar_visible="appointment, invoice_consultation, consultation, service, invoice_procedure, procedure, sessions, controls"
 -->						
+
 						<field 	name="state" 
+
 								widget="statusbar" 
 
 
-								statusbar_visible="appointment, invoice_consultation, consultation, service, invoice_procedure, procedure"
+								statusbar_visible="appointment, invoice_consultation, consultation, service, invoice_procedure, procedure, sessions, controls"
 						/>
 
 					</header>
+
+
 
 
 
@@ -433,32 +443,22 @@ jz
 
 
 
-								<!-- Budgets - Con -->
+<!-- Budgets - Cons - DEPRECATED -->
 <!--
-									name="%(budget_list_action)d"	
--->								
 								<button type="action" class="oe_stat_button" icon="fa-list"
-
 										name="%(order_form_action)d"	
-									
-
-
 										context="{									
 													'search_default_partner_id': partner_id, 
 													'search_default_x_doctor': physician, 
-												
 													'search_default_x_family': 'consultation', 
-
 													'default_partner_id': partner_id, 
 												}" 	
-
-
-										attrs="{ 'invisible':[	('nr_budgets_cons','=',0), 	]}"
-									>
-
-
+										attrs="{ 'invisible':[	('nr_budgets_cons','=',0), 	]}">
 									<field string="Presu - Con" name="nr_budgets_cons" widget="statinfo"/>
 								</button>
+-->								
+
+
 
 
 
@@ -634,30 +634,20 @@ jz
 
 
 
-								<!-- Budgets -->
+<!-- Nr Budgets Pro - DEPRECATED -->
+<!--
 								<button type="action" class="oe_stat_button" icon="fa-list"
-
 										name="%(order_form_action)d"	
-
-
 										context="{									
 													'search_default_partner_id': partner_id, 
 													'search_default_x_doctor': physician, 
-
 													'search_default_x_family': 'procedure', 
-
 													'default_partner_id': partner_id, 
 												}" 	
-
-
-
-										attrs="{ 'invisible':[	('nr_budgets_pro','=',0), ]}"
-								>
-
-
+										attrs="{ 'invisible':[	('nr_budgets_pro','=',0), ]}">
 									<field string="Presu - Pro" name="nr_budgets_pro" widget="statinfo"/>
 								</button>
-
+-->
 
 
 
@@ -823,7 +813,7 @@ Fields
 
 								<field name="treatment_open"	invisible="1"	/>
 
-								<field name="chief_complaint"		required="1"/>
+								<field name="chief_complaint"/>
 
 <!--
 								<field name="vspace" />

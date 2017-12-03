@@ -92,8 +92,10 @@
 				<field  name="phone_2" />
 -->
 
-				<field name="phone" 	required="0"/>				
+				<field name="phone" 	/>	
+
 				<field  name="mobile" 	/>
+
 
 
 

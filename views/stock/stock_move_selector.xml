@@ -1,0 +1,178 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+		<!-- FORM --> 
+		<record id="stock_move_selector_form" model="ir.ui.view">
+			<field name="name">stock.move.selector</field>
+			<field name="model">stock.move.selector</field>
+			<field name="arch" type="xml">
+
+				<form string="Stock Move Selector Form">
+
+
+					<header>
+<!--
+						<button 
+								name="remove_myself"
+								type="object" 
+								class="oe_highlight"
+								string="REMOVEM"
+
+								groups="openhealth.roots"
+						/>
+-->
+
+						<button 
+								name="open_stock_moves"
+								
+								type="object" 
+								
+								class="oe_highlight"
+								
+								string="KARDEX"
+						/>
+					</header>
+
+
+
+					<sheet>
+
+						
+						<group>
+							<field name="name"/>
+
+							<field name="product_id"/>
+						</group>
+
+
+						<notebook>
+						</notebook>
+					</sheet>
+
+
+				</form>
+			</field>
+		</record>
+
+
+
+
+
+		<!-- TREE -->
+		<record model="ir.ui.view" id="stock_move_selector_tree">
+
+			<field name="name">stock.move.selector.tree</field>
+			
+			<field name="model">stock.move.selector</field>
+			
+			<field name="arch" type="xml">
+
+			<!--	
+			<field name="priority" eval="1"/>
+			-->
+
+				<tree string="Card Tree">
+
+					<field name="name"/>
+
+					<field name="product_id"/>
+
+					<field name="id"/>
+				</tree>
+			</field>
+		</record>
+
+
+
+
+<!--
+			<field name="view_id" ref="stock.view_move_tree"/>			
+
+			<field name="search_view_id" ref="stock.view_move_search"/>
+-->
+
+		<!-- ACTION --> 	
+		<record id="openhealth.stock_move_selector_list_action" model="ir.actions.act_window">
+
+			<field name="name">Stock Move Selector - Tree</field>
+			
+			<field name="res_model">stock.move.selector</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="view_type">form</field>
+
+			<field name="view_mode">tree,form,kanban</field>
+
+			<field name="context">{}</field>
+			<field name="domain">[]
+			</field>
+		</record>
+
+
+
+
+
+		<!-- ACTION --> 	
+		<record id="openhealth.stock_move_selector_form_action" model="ir.actions.act_window">
+
+			<field name="name">KARDEX Form</field>
+			
+			<field name="res_model">stock.move.selector</field>
+			
+			<field name="type">ir.actions.act_window</field>
+<!--
+			<field name="view_type">form</field>
+-->		
+			<field name="view_mode">form,tree,kanban</field>
+
+
+
+<!--
+			<field name="view_id" ref="stock_move_selector_default_view"/>
+			<field name="context">{}</field>
+			<field name="res_id">7</field>
+
+
+			<field name="context">{'res_id': 7}</field>
+
+			<field name="context">{
+										'res_id': 7, 
+									}</field>
+-->
+
+			<field name="res_id" ref="stock_move_selector_default_view"/>
+
+			
+			<field name="domain">[]</field>
+		</record>
+
+
+
+
+
+
+
+
+
+<!--
+        			action="action_move_form2" 
+-->
+        <menuitem 
+        			action="stock_move_selector_form_action" 
+
+        			id="menu_action_move_selector" 
+        			
+        			parent="stock.menu_warehouse_report" 
+        			
+        			sequence="131"
+
+        			/>
+
+
+
+
+
+	</data>
+</openerp>

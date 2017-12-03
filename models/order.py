@@ -34,6 +34,16 @@ class sale_order(models.Model):
 
 
 
+	order_line = fields.One2many(
+			'sale.order.line', 
+			'order_id', 
+			string='Order Lines', 
+			states={'cancel': [('readonly', True)], 'done': [('readonly', True)]}, 
+			copy=True, 
+		)
+
+
+
 
 
 
@@ -1083,9 +1093,6 @@ class sale_order(models.Model):
 
 	x_partner_vip = fields.Boolean(
 			'Vip', 
-
-			#readonly=True
-			
 			default=False, 
 
 			compute="_compute_partner_vip",
@@ -1095,23 +1102,37 @@ class sale_order(models.Model):
 
 	def _compute_partner_vip(self):
 		for record in self:
+			
 			#print 
 			#print 'jx'
 			#print 'Compute Partner Vip'
-			rec_set = self.env['sale.order'].search([
-															('partner_id','=', record.partner_id.id),
-															('state','=', 'sale'),
+
+
+			#rec_set = self.env['sale.order'].search([
+			#												('partner_id','=', record.partner_id.id),
+			#												('state','=', 'sale'),
+			#											]) 			
+			#for rec in rec_set:
+			#	for line in rec.order_line:
+			#		if line.name == 'Tarjeta VIP':
+			#			record.x_partner_vip = True 
+
+
+
+			count = self.env['openhealth.card'].search_count([
+																('patient_name','=', record.partner_id.name),
 														]) 
-			for rec in rec_set:
-				#print rec
-				for line in rec.order_line:
-					#print line
-					#print line.name 
-					if line.name == 'Tarjeta VIP':
-						#print 'Gotcha !!!'
-						record.x_partner_vip = True 
-					
-					#print 
+
+			#print count 
+
+
+			if count == 0:
+				record.x_partner_vip = False 
+
+			else:	
+				record.x_partner_vip = True 
+
+
 			#print 
 			#print 
 			#print 
@@ -2169,21 +2190,20 @@ class sale_order(models.Model):
 		if go_card:
 
 
-
-
-			# Partner 
+			# Partner pricelist - Vip
 			pl = self.env['product.pricelist'].search([
 																('name','=', 'VIP'),
 															],
 															#order='appointment_date desc',
 															limit=1,)
-
 			self.partner_id.property_product_pricelist = pl
+
 
 			#print 'jx'
 			#print self.partner_id
 			#print pl 
 			#print self.partner_id.property_product_pricelist.name 
+
 
 
 
@@ -2195,8 +2215,12 @@ class sale_order(models.Model):
 
 
 
-
+			# Create 
 			if card.name == False: 
+
+				print 'jx'
+				print 'Create Card'
+
 
 				# Card name 
 				counter = self.env['openhealth.counter'].search([('name', '=', 'vip')])
@@ -2206,7 +2230,18 @@ class sale_order(models.Model):
 				name = str(counter.value).rjust(8, '0')
 
 
+				card = self.env['openhealth.card'].create({
+																	'name': name,
+																	'patient_name': self.partner_id.name,
+															})
 
+				print card
+				print name 
+				print self.partner_id.name				
+				print
+
+
+			return{}
 
 			return {
 
@@ -2214,17 +2249,14 @@ class sale_order(models.Model):
 				'type': 'ir.actions.act_window',
 				'name': 'Open Consultation Current',
 
-
 				# Window action 
 				'res_model': 'openhealth.card',
 				'res_id': card_id,
-
 
 				# Views 
 				"views": [[False, "form"]],
 				'view_mode': 'form',
 				'target': 'current',
-
 
 				#'view_id': view_id,
 				#"domain": [["patient", "=", self.patient.name]],
@@ -2235,16 +2267,11 @@ class sale_order(models.Model):
 						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 				},			
 
-
 				'context':   {
-
 					#'search_default_treatment': treatment_id,
-
 					#'default_patient': patient_id,
 					#'default_doctor': doctor_id,
 					#'default_treatment_id': treatment_id,
-
-
 					'default_name': name,
 					'default_patient_name': patient_name,
 				}

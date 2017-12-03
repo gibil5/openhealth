@@ -6,7 +6,7 @@
 
 
 
-		<!-- Form view -->
+		<!-- FORM -->
 		<record model="ir.ui.view" 	id="view_partner_form_jxyz">
 			<field name="name">res.partner.form - jxyz</field>
 			<field name="model">res.partner</field>
@@ -34,8 +34,34 @@
 
 							groups="openhealth.roots"
 					/>
+					<field name="x_autofill"/>
+
+
+
+
 
 <!--
+					<button 
+							name="action_ppl_public"
+							type="object" 
+							class="oe_highlight"
+							
+							string="PPL Public"
+
+							groups="openhealth.roots"
+					/>
+
+					<button 
+							name="action_ppl_vip"
+							type="object" 
+							class="oe_highlight"
+							
+							string="PPL Vip"
+
+							groups="openhealth.roots"
+					/>
+					
+
 					<button 
 							name="autofill"
 							type="object" 
@@ -46,7 +72,6 @@
 					/>
 -->
 
-					<field name="x_autofill"/>
 
 				</xpath>
 
@@ -178,6 +203,10 @@
 
 
 				<xpath expr="//field[@name='function']" position="replace">
+					<field name="x_vip"		/>
+
+					<field name="vspace"		/>
+
 					<field name="function"									groups="openhealth.roots"		/>
 				</xpath>
 
@@ -246,7 +275,6 @@
 		</record>
 
 <!--
-					<field name="x_vip"		/>
 -->
 
 

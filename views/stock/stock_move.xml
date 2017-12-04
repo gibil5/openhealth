@@ -7,7 +7,7 @@
 		<!-- ACTION --> 
 		<record id="stock.action_move_form2" model="ir.actions.act_window">
 
-			<field name="name">Stock Moves - jx</field>
+			<field name="name">Stock Moves</field>
 			
 			<field name="res_model">stock.move</field>
 			

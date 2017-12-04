@@ -145,22 +145,38 @@
 
 
 
+<!--
+        <menuitem id="stock.menu_warehouse_report" name="Reports" sequence="99" parent="stock.menu_stock_root" groups="group_stock_manager"/>
+-->
+        <menuitem 
+        			id="menu_warehouse_kardex" 
+
+        			name="KARDEX" 
+        			
+        			sequence="2" 
+        			
+        			parent="stock.menu_stock_root" 
+        			
+        		/>
 
 
 
 <!--
         			action="action_move_form2" 
+        			parent="stock.menu_warehouse_report" 
 -->
         <menuitem 
         			action="stock_move_selector_form_action" 
 
         			id="menu_action_move_selector" 
         			
-        			parent="stock.menu_warehouse_report" 
+        			parent="menu_warehouse_kardex" 
         			
         			sequence="131"
 
         			/>
+
+
 
 
 		<!-- Stock Move Selector --> 

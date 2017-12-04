@@ -4,12 +4,12 @@
 
 
 
-
+<!--
 		<record id="empty_product" model="product.product">
 			<field name="name">_</field>
 			<field name="type">product</field>
 		</record>
-
+-->
 
 
 

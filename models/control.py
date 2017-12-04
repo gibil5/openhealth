@@ -57,6 +57,7 @@ class Control(models.Model):
 
 
 
+
 	# Evaluation Nr
 	#control_nr = fields.Integer(
 	evaluation_nr = fields.Integer(

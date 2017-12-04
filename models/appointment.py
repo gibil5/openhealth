@@ -344,8 +344,15 @@ class Appointment(models.Model):
 		for record in self:
 
 			#record.x_display = record.x_patient_name_short + ' - '  + record.x_doctor_code + ' - ' + record.x_type_cal 
+
+
+			#record.x_display = record.x_patient_name_short + ' - '  + record.x_doctor_code 
 			record.x_display = record.x_patient_name_short + ' - '  + record.x_doctor_code + ' - ' + record.x_type_cal + ' - ' + record.x_state_short
 			
+
+
+
+
 
 			#if record.x_machine != False	or 	record.x_machine_cos != False:
 			if record.x_machine != False:

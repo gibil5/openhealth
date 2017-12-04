@@ -2134,20 +2134,198 @@ class sale_order(models.Model):
 
 
 
+
+
+
+# ----------------------------------------------------------- Buttons - Order  ------------------------------------------------------
+
+	@api.multi
+	def remove_myself(self):  
+		#print 
+		#print 
+		#print 'Remove Myself'
+		#print self.name 
+		self.x_reset()
+		self.unlink()
+
+		#self.x_appointment.x_machine = 'none'
+		#order_id = self.id
+		#print "id: ", order_id
+		# Search 
+		#rec_set = self.env['sale.order'].browse([order_id])
+		#print "rec_set: ", rec_set
+		# Write
+		#ret = rec_set.write({
+		#						'state': 'draft',
+								#'x_machine': 'none',
+		#					})
+		#print ret
+
+		#for rec in rec_set:
+		#	rec.x_reset
+		# Unlink 
+		#ret = rec_set.unlink()
+		#print "ret: ", ret
+		
+
+		#print 
+		#print 
+	# remove_myself
+
+
+
+
+
+
+# ----------------------------------------------------------- Nr Mac Clones  ------------------------------------------------------
+
+	@api.multi 
+	def get_nr_mc(self):
+		nr_mac_clones =	self.env['oeh.medical.appointment'].search_count([
+																			('appointment_date','=', self.x_appointment.appointment_date),													
+																			('x_machine','=', self.x_appointment.x_machine),
+																		]) 
+		return nr_mac_clones
+
+
+
+
+
+
+
+
+	#----------------------------------------------------------- Quick Button ------------------------------------------------------------
+
+	@api.multi
+	def open_line_current(self):  
+
+		consultation_id = self.id 
+
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' Edit Order Current', 
+				'view_type': 'form',
+				'view_mode': 'form',
+				'res_model': self._name,
+				'res_id': consultation_id,
+				'target': 'current',
+				'flags': {
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						'form': {'action_buttons': True, }
+						},
+				'context': {}
+		}
+
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Actions ------------------------------------------------------
+
+	# Reserve machine 
+	@api.multi 
+	def reserve_machine(self):
+
+		print 'jx'
+		print 'Reserve Machine'
+		print 
+		date_format = "%Y-%m-%d %H:%M:%S"
+		duration = self.x_appointment.duration 
+		delta = datetime.timedelta(hours=duration)
+
+
+
+		# Easiest first 
+		m_dic = {
+
+					'laser_co2_1': 			['laser_co2_1', 'laser_co2_2', 'laser_co2_3'], 
+					'laser_excilite': 		['laser_excilite'], 
+					'laser_m22': 			['laser_m22'], 
+					'laser_triactive': 		['laser_triactive'], 
+					'chamber_reduction': 	['chamber_reduction'], 
+					'carboxy_diamond': 		['carboxy_diamond'], 
+
+					'consultation':			[], 
+			}
+
+
+
+		m_list = m_dic[self.x_machine_req]
+
+		ad_str = self.x_appointment.appointment_date
+
+		k = 1.
+		out = False 
+
+
+		while not out		and  	  k < 6: 		
+
+			for x_machine_req in m_list: 
+
+				if not out: 				
+					self.x_appointment.appointment_date = ad_str
+
+					self.x_appointment.x_machine = x_machine_req
+
+					nr_mc = self.get_nr_mc()
+
+
+					if nr_mc == 1:		# Success - Get out 
+						out = True 
+
+
+
+			if not out: 	# Error - Change the date 
+				ad = datetime.datetime.strptime(self.x_appointment.appointment_date, date_format) 
+				ad_dt = delta + ad
+				ad_str = ad_dt.strftime("%Y-%m-%d %H:%M:%S")
+
+				k = k + 1.
+	
+	# reserve_machine
+
+
+
+
+
+
+
+
+
+	# Action confirm 
 	@api.multi 
 	def action_confirm(self):
 
+
 		#print 
 		print 'jx'
-		print 'Action confirm - Over ridden'
+		print 'Action confirm - Overridden'
 		 
 		
 
 
 
-		#Write your logic here
+
+
+		#Write your logic here - Begin
+
+		# Change State to Scheduled 
 		if self.x_family == 'consultation'	or 	self.x_family == 'procedure': 
 			self.x_appointment.state = 'Scheduled'
+
+
+
+		# Reserve machine 
+		if self.x_family == 'procedure': 
+			self.reserve_machine()
+
+		#Write your logic here - End 
+
+
 
 
 		res = super(sale_order, self).action_confirm()
@@ -2284,210 +2462,22 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Buttons - Order  ------------------------------------------------------
 
+
+
+
+	# Print Ticket 
 	@api.multi
-	def remove_myself(self):  
-		#print 
-		#print 
-		#print 'Remove Myself'
-		#print self.name 
-		self.x_reset()
-		self.unlink()
-
-		#self.x_appointment.x_machine = 'none'
-		#order_id = self.id
-		#print "id: ", order_id
-		# Search 
-		#rec_set = self.env['sale.order'].browse([order_id])
-		#print "rec_set: ", rec_set
-		# Write
-		#ret = rec_set.write({
-		#						'state': 'draft',
-								#'x_machine': 'none',
-		#					})
-		#print ret
-
-		#for rec in rec_set:
-		#	rec.x_reset
-		# Unlink 
-		#ret = rec_set.unlink()
-		#print "ret: ", ret
-		
-
-		#print 
-		#print 
-	# remove_myself
-
-
-
-
-
-
-# ----------------------------------------------------------- Nr Mac Clones  ------------------------------------------------------
-
-	@api.multi 
-	def get_nr_mc(self):
-		nr_mac_clones =	self.env['oeh.medical.appointment'].search_count([
-																			('appointment_date','=', self.x_appointment.appointment_date),													
-																			('x_machine','=', self.x_appointment.x_machine),
-																		]) 
-		return nr_mac_clones
-
-
-
-
-# ----------------------------------------------------------- Button - Reseve Machine  ------------------------------------------------------
-
-	@api.multi 
-	def reserve_machine(self):
-		#print
-		#print 
-		#print 'jx'
-		#print 'Reserve Machine'
-		#print 
-		date_format = "%Y-%m-%d %H:%M:%S"
-		duration = self.x_appointment.duration 
-		delta = datetime.timedelta(hours=duration)
-
-
-		# Easiest first 
-		#self.x_appointment.x_machine = self.x_machine_req
-		#m_list = ['laser_co2_1', 'laser_co2_2', 'laser_co2_3']
-
-
-		m_dic = {
-					'consultation':			[], 
-
-
-					'laser_co2_1': 			['laser_co2_1', 'laser_co2_2', 'laser_co2_3'], 
-
-					'laser_excilite': 		['laser_excilite'], 
-				
-					'laser_m22': 			['laser_m22'], 
-
-
-
-					'laser_triactive': 		['laser_triactive'], 
-					
-					'chamber_reduction': 	['chamber_reduction'], 
-					
-					'carboxy_diamond': 		['carboxy_diamond'], 
-			}
-
-
-
-		m_list = m_dic[self.x_machine_req]
-
-		ad_str = self.x_appointment.appointment_date
-
-
-		k = 1.
-		out = False 
-
-
-
-		while not out		and  	  k < 6: 		
-
-
-
-			for x_machine_req in m_list: 
-
-
-
-				if not out: 				
-					self.x_appointment.appointment_date = ad_str
-
-					self.x_appointment.x_machine = x_machine_req
-
-					nr_mc = self.get_nr_mc()
-
-
-
-					#print k
-					#print self.x_appointment.appointment_date				
-					#print nr_mc
-
-
-
-					if nr_mc == 1:		# Success - Get out 
-						out = True 
-
-
-
-					#print out 
-					#print 
-
-
-
-
-			if not out: 	# Error - Change the date 
-				ad = datetime.datetime.strptime(self.x_appointment.appointment_date, date_format) 
-				ad_dt = delta + ad
-				ad_str = ad_dt.strftime("%Y-%m-%d %H:%M:%S")
-
-				k = k + 1.
-	# reserve_machine
-
-
-
-
-
-
-
-
-
-
-	#----------------------------------------------------------- Quick Button ------------------------------------------------------------
-
-	@api.multi
-	def open_line_current(self):  
-
-		consultation_id = self.id 
-
-		return {
-				'type': 'ir.actions.act_window',
-				'name': ' Edit Order Current', 
-				'view_type': 'form',
-				'view_mode': 'form',
-				'res_model': self._name,
-				'res_id': consultation_id,
-				'target': 'current',
-				'flags': {
-						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-						'form': {'action_buttons': True, }
-						},
-				'context': {}
-		}
-
-
-
-
-
-
-
-
-
-# ----------------------------------------------------------- Actions ------------------------------------------------------
-
-	@api.multi
-	#def print_quotation(self):
 	def print_ticket(self):
-
-		#self.filtered(lambda s: s.state == 'draft').write({'state': 'sent'})
-		#return self.env['report'].get_action(self, 'sale.report_saleorder')
-
-
-
-		#self.state = 'printed'
-
-
 
 		if self.x_type == 'ticket_receipt': 
 			return self.env['report'].get_action(self, 'openhealth.report_ticket_receipt_view')
 
 		elif self.x_type == 'ticket_invoice': 
 			return self.env['report'].get_action(self, 'openhealth.report_ticket_invoice_view')
+
+	# print_ticket	
+
 
 
 

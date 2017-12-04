@@ -183,7 +183,13 @@
 							
 
 							<group>
-								<field name="chief_complaint"	readonly="1"	/>								
+								<field name="x_done"/>
+								
+								<field name="vspace"/>
+
+								<field name="chief_complaint"	readonly="1"	/>
+
+
 							</group>
 							
 							

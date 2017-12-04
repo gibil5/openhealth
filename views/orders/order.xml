@@ -108,11 +108,11 @@
 
 				<xpath expr="//button[@name='action_confirm']" position="replace">
 					<button 
-
 							name="action_confirm"
+							string="CONFIRMAR"
+							
 							type="object" 
 							class="oe_highlight"
-							string="CONFIRMAR"
 							states="sent"						
 					/>
 				</xpath>
@@ -244,12 +244,19 @@
 
 
 
-				<xpath expr="//field[@name='validity_date']" position="replace">
 
+
+
+<!--
 					<field name="x_machine"		attrs="{	'invisible':[('patient', '=', False ),],
 															}"	/>
+-->
+				<xpath expr="//field[@name='validity_date']" position="replace">
+
+					<field name="x_machine"/>
 				
 				</xpath>
+
 
 
 
@@ -679,11 +686,13 @@
 <!-- RESERVAR LA SALA - DEPRECATED ? -->
 <!--
 					<button 
-							type="object"
 							name="reserve_machine" 	
+							string="Reservar la Sala"
+
+
+							type="object"
 							class="oe_highlight"
 
-							string="Reservar la Sala"
 
 
 							attrs="{'invisible':[	'|',
@@ -722,14 +731,13 @@
 -->
 
 					<button 
-							name="action_confirm" 									
+							name="action_confirm" 		
+							string="CONFIRMAR - jx" 
+
+
 							type="object" 
 							class="oe_highlight"
 							states="payment"
-
-
-							string="CONFIRMAR - jx" 
-
 							groups="openhealth.caja,openhealth.managers,openhealth.directors"
 					/>
 

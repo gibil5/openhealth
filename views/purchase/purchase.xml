@@ -118,12 +118,15 @@
 
 
 
+
+<!-- Here -->
 <!--
+				<xpath expr="//button[@name='print_quotation']" position="replace">
+				</xpath>
+				<xpath expr="//button[@name='print_quotation']" position="replace">
+				</xpath>
 -->
-				<xpath expr="//button[@name='print_quotation']" position="replace">
-				</xpath>
-				<xpath expr="//button[@name='print_quotation']" position="replace">
-				</xpath>
+
 
 
 

@@ -20,7 +20,7 @@
 
 		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant\n
 
-		Last built: 	3 December 2017 - Yey !
+		Last built: 	4 December 2017 - Yey !
 
 		Created: 	 	11 Sep 2016
 
@@ -273,8 +273,9 @@
 		'views/stock/stock_move.xml',
 
 
-		#'data/stock_move_data.xml',
-		#'views/stock/stock_move_selector.xml',
+		'data/stock_move_data.xml',
+		
+		'views/stock/stock_move_selector.xml',
 
 
 

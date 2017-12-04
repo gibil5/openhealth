@@ -121,6 +121,9 @@
 
 					<field name="name"/>
 
+					<field name="id"/>
+
+
 					<field name="x_origin"/>				
 
 					<field name="pricelist_id"/>
@@ -157,7 +160,6 @@
 
 
 <!--
-					<field name="id"/>
 					<field name="x_treatment"/>				
 					<field name="x_zone"/>
 

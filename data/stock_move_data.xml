@@ -4,10 +4,23 @@
 
 
 
+		<record id="empty_product" model="product.product">
+			<field name="name">_</field>
+			<field name="type">product</field>
+		</record>
+
+
+
+
 		<record id="stock_move_selector_default_view" model="stock.move.selector">
 
-			<field name="name">this</field>
-			
+			<field name="name">This</field>
+
+<!--	
+			<field name="product_id">3524</field>
+-->
+			<field name="product_id" ref="empty_product"/>
+	
 		</record>
 
 

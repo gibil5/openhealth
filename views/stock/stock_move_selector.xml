@@ -27,9 +27,7 @@
 
 						<button 
 								name="open_stock_moves"
-								
 								type="object" 
-								
 								class="oe_highlight"
 								
 								string="KARDEX"
@@ -40,12 +38,13 @@
 
 					<sheet>
 
+
 						
 						<group>
 							<field name="name"	invisible="1"	/>
-
 							<field name="product_id"/>
 						</group>
+
 
 
 						<notebook>
@@ -90,15 +89,12 @@
 
 <!--
 			<field name="view_id" ref="stock.view_move_tree"/>			
-
 			<field name="search_view_id" ref="stock.view_move_search"/>
 -->
 
 		<!-- ACTION --> 	
 		<record id="openhealth.stock_move_selector_list_action" model="ir.actions.act_window">
-
 			<field name="name">Stock Move Selector - Tree</field>
-			
 			<field name="res_model">stock.move.selector</field>
 			<field name="type">ir.actions.act_window</field>
 			<field name="view_type">form</field>
@@ -116,11 +112,8 @@
 
 		<!-- ACTION --> 	
 		<record id="openhealth.stock_move_selector_form_action" model="ir.actions.act_window">
-
 			<field name="name">KARDEX</field>
-			
 			<field name="res_model">stock.move.selector</field>
-			
 			<field name="type">ir.actions.act_window</field>
 <!--
 			<field name="view_type">form</field>
@@ -134,6 +127,7 @@
 			<field name="context">{'res_id': 7}</field>
 			<field name="res_id">7</field>
 -->
+
 			<field name="res_id" ref="stock_move_selector_default_view"/>
 
 			

@@ -274,7 +274,7 @@
 
 
 		'data/stock_move_data.xml',
-		'views/stock/stock_move_selector.xml',
+		#'views/stock/stock_move_selector.xml',
 
 
 

@@ -110,7 +110,8 @@
 
 
 		# Ticket 
-		#'reports/report_ticket_sale_proof.xml',		# DEP
+		'reports/deprecated/report_ticket_sale_proof.xml',		# DEP
+
 
 		'reports/report_ticket_sale_order.xml',
 		'reports/report_ticket_invoice.xml',

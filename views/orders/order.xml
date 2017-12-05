@@ -186,7 +186,12 @@
 					<field name="x_payment_method"		invisible="0"		readonly="1"	/>
 
 
+
+<!--
 					<field name="x_type"				invisible="0"		groups="openhealth.roots" />
+-->
+					<field name="x_type"/>
+
 
 
 
@@ -563,6 +568,9 @@
 
 							string="Módulo de Pago"
 							groups="openhealth.managers,openhealth.caja"
+
+
+							groups="openhealth.caja,openhealth.managers,openhealth.directors"
 -->					
 					<button 
 							name="create_payment_method"
@@ -574,7 +582,7 @@
 							string="PAGAR"
 
 
-							groups="openhealth.caja,openhealth.managers,openhealth.directors"
+							groups="openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
 							/>
 
 

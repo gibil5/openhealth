@@ -392,7 +392,7 @@ Deprecated
 					sequence="2"
 
 
-					groups="openhealth.roots"
+					groups="openhealth.reception,openhealth.managers,openhealth.directors"
 		/>
 
 

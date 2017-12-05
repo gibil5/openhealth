@@ -19,16 +19,22 @@ class StockPicking(models.Model):
 
 
 
+
 # New
 
 	@api.multi
 	def remove_myself(self):  
 
+		print 'jx'
+		print 'Remove myself'
+
 		#self.pack_operation_exist = False
 
-		self.pack_operation_ids.unlink()
-
 		self.state = 'cancel'
+
+		self.pack_operation_pack_ids.unlink()
+		self.pack_operation_product_ids.unlink()
+		self.pack_operation_ids.unlink()
 
 		self.unlink()
 

@@ -18,11 +18,6 @@ self.env
 
 
 
-s= self.env['product.template'].search([  ('x_treatment', '=', 'hyaluronic_acid'), ('x_sessions', '=', '1') ])
-
-
-
-self.env['product.product'].search([('name', 'like', 'TOKEN')])
 
 
 
@@ -34,11 +29,18 @@ self.env['stock.picking'].search([('name', 'like', 'J')])
 
 self.env['stock.picking'].search([('name', 'like', 'CC/OUT/00007')])
 
+self.env['stock.picking.type'].search([('name', '=', 'Customer Sale')])
 
 
 
 
 
+
+
+
+
+s= self.env['product.template'].search([  ('x_treatment', '=', 'hyaluronic_acid'), ('x_sessions', '=', '1') ])
+self.env['product.product'].search([('name', 'like', 'TOKEN')])
 
 
 self.env['ir.model.data'].search([('name', 'like', 'J')])

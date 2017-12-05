@@ -111,13 +111,15 @@
 
 
 <!-- Caja -->
-
+<!--
+					groups="openhealth.caja,openhealth.managers,openhealth.directors"
+-->
 		<!-- Main - sales -->
 		<menuitem 	id="main_sales_menu" 
 					sequence="-9"
 
 					name="Caja"
-					groups="openhealth.caja,openhealth.managers,openhealth.directors"
+					groups="openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
 					/>
 
 

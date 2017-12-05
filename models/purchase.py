@@ -110,17 +110,9 @@ class PurchaseOrder(models.Model):
 
 
 
+
+
 # ----------------------------------------------------------- Actions ------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
 
 
 	# Clean
@@ -130,10 +122,18 @@ class PurchaseOrder(models.Model):
 		print 'jx'
 		print 'Clean Myself'
 
-		po_menu = self.env['ir.ui.menu'].search([('name', '=', 'Purchase Orders')])
-		
+
+		po_menu = self.env['ir.ui.menu'].search([('name', '=', 'Purchase Orders')])	
+
 		print po_menu
-		po_menu.unlink()
+
+		po_menu.groups="openhealth.roots"
+
+
+
+
+		#po_menu.unlink()
+
 		print po_menu
 		print 		
 

@@ -517,6 +517,8 @@ access_account_invoice,account.invoice,account.model_account_invoice,,1,1,1,1
 access_stock_move,stock.move,stock.model_stock_move,,1,1,1,1
 
 
+access_stock_move_selector,stock.move.selector,model_stock_move_selector,,1,1,1,1
+
 
 
 

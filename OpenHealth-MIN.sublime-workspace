@@ -269,20 +269,28 @@
 			}
 		},
 		{
-			"file": "data/stock_move_data.xml",
+			"file": "views/menus/menus.xml",
 			"settings":
 			{
-				"buffer_size": 588,
+				"buffer_size": 11673,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "models/stock_move.py",
+			"file": "views/stock/stock_move_selector.xml",
 			"settings":
 			{
-				"buffer_size": 311,
+				"buffer_size": 4080,
 				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/stock/stock.xml",
+			"settings":
+			{
+				"buffer_size": 749,
 				"line_ending": "Unix"
 			}
 		},
@@ -296,19 +304,10 @@
 			}
 		},
 		{
-			"file": "data/prods/odoo_data_products.xml",
+			"file": "security/ir.model.access.csv",
 			"settings":
 			{
-				"buffer_size": 12767,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/stock/stock_move_selector.xml",
-			"settings":
-			{
-				"buffer_size": 3666,
-				"encoding": "UTF-8",
+				"buffer_size": 11404,
 				"line_ending": "Unix"
 			}
 		},
@@ -318,14 +317,6 @@
 			{
 				"buffer_size": 1514,
 				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/stock_picking.py",
-			"settings":
-			{
-				"buffer_size": 440,
 				"line_ending": "Unix"
 			}
 		}
@@ -403,20 +394,33 @@
 	},
 	"file_history":
 	[
+		"/Users/gibil/cellar/github/openhealth/data/stock_move_data.xml",
+		"/Users/gibil/cellar/github/openhealth/models/stock_picking.py",
+		"/Users/gibil/cellar/github/openhealth/views/services/service_co2_zone.xml",
+		"/Users/gibil/cellar/github/openhealth/data/prods/odoo_data_products.xml",
+		"/Users/gibil/cellar/github/openhealth/models/stock_move.py",
+		"/Users/gibil/cellar/github/openhealth/views/sessions/session.xml",
+		"/Users/gibil/cellar/github/openhealth/models/control.py",
+		"/Users/gibil/cellar/github/openhealth/models/session.py",
+		"/Users/gibil/cellar/github/openhealth/models/evaluation.py",
+		"/Users/gibil/cellar/github/openhealth/views/appointments/appointment.xml",
+		"/Users/gibil/cellar/github/openhealth/views/appointments/calendar.xml",
+		"/Users/gibil/cellar/github/openhealth/models/appointment.py",
 		"/Users/gibil/cellar/github/openhealth/models/order.py",
+		"/Users/gibil/cellar/github/openhealth/views/orders/order.xml",
+		"/Users/gibil/cellar/github/openhealth/reports/report_ticket_invoice.xml",
+		"/Users/gibil/cellar/github/openhealth/reports/report_ticket_sale_order.xml",
+		"/Users/gibil/cellar/github/openhealth/reports/report_ticket_sale_proof.xml",
+		"/Users/gibil/cellar/github/openhealth/views/products/product.xml",
 		"/Users/gibil/cellar/github/openhealth/models/__init__.py",
 		"/Users/gibil/cellar/github/openhealth/models/partner.py",
 		"/Users/gibil/cellar/github/openhealth/views/partners/partner.xml",
 		"/Users/gibil/cellar/github/openhealth/views/purchase/purchase.xml",
 		"/Users/gibil/cellar/github/openhealth/data/suppliers.xml",
-		"/Users/gibil/cellar/github/openhealth/views/sessions/session.xml",
 		"/Users/gibil/cellar/github/openhealth/views/menus/menus_openhealth.xml",
-		"/Users/gibil/cellar/github/openhealth/views/products/product.xml",
-		"/Users/gibil/cellar/github/openhealth/data/stock_move_data.xml",
 		"/Users/gibil/cellar/github/openhealth/models/howto/shell.rb",
 		"/Users/gibil/cellar/github/openhealth/readme.txt",
 		"/Users/gibil/cellar/github/openhealth/security/openhealth_security_buf.xml",
-		"/Users/gibil/cellar/github/openhealth/data/prods/odoo_data_products.xml",
 		"/Users/gibil/cellar/github/openhealth/data/base_data_physicians.xml",
 		"/Users/gibil/cellar/github/openhealth/data/base_data_categs.xml",
 		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_managers.xml",
@@ -427,14 +431,10 @@
 		"/Users/gibil/cellar/github/openhealth/views/patients/patient.xml",
 		"/Users/gibil/cellar/github/openhealth/models/patient.py",
 		"/Users/gibil/cellar/github/openhealth/models/card.py",
-		"/Users/gibil/cellar/github/openhealth/models/appointment.py",
-		"/Users/gibil/cellar/github/openhealth/views/appointments/appointment.xml",
-		"/Users/gibil/cellar/github/openhealth/views/orders/order.xml",
 		"/Users/gibil/cellar/github/openhealth/models/treatment.py",
 		"/Users/gibil/cellar/github/openhealth/views/cards/card.xml",
 		"/Users/gibil/cellar/github/openhealth/views/stock/stock.xml",
 		"/Users/gibil/cellar/github/openhealth/views/stock/stock_picking.xml",
-		"/Users/gibil/cellar/github/openhealth/models/stock_picking.py",
 		"/Users/gibil/cellar/github/openhealth/models/appfuncs.py",
 		"/Users/gibil/cellar/github/openhealth/views/orders/order_line.TRASH.xml",
 		"/Users/gibil/cellar/github/openhealth/views/orders/order_line.xml",
@@ -448,7 +448,6 @@
 		"/Users/gibil/cellar/github/openhealth/models/image_full.py",
 		"/Users/gibil/cellar/github/openhealth/models/image.py",
 		"/Users/gibil/cellar/github/openhealth/views/images/image_view.xml",
-		"/Users/gibil/cellar/github/openhealth/models/session.py",
 		"/Users/gibil/cellar/github/openhealth/models/session_med.py",
 		"/Users/gibil/cellar/github/openhealth/models/purchase.py",
 		"/Users/gibil/cellar/github/openhealth/models/appointment.TRASH.py",
@@ -463,14 +462,11 @@
 		"/Users/gibil/cellar/github/openhealth/views/treatments/treatment_orders.xml",
 		"/Users/gibil/cellar/github/openhealth/views/treatments/treatment_appointments.xml",
 		"/Users/gibil/cellar/github/openhealth/models/defaults.py",
-		"/Users/gibil/cellar/github/openhealth/views/appointments/calendar.xml",
 		"/Users/gibil/cellar/github/openhealth/views/base.xml",
 		"/Users/gibil/cellar/github/openhealth/models/receipt.py",
 		"/Users/gibil/cellar/github/openhealth/views/sale_documents/receipts.xml",
-		"/Users/gibil/cellar/github/openhealth/reports/report_ticket_sale_proof.xml",
 		"/Users/gibil/cellar/github/openhealth/models/sale_proof.TRASH.py",
 		"/Users/gibil/cellar/github/openhealth/models/sale_proof.py",
-		"/Users/gibil/cellar/github/openhealth/reports/report_ticket_sale_order.xml",
 		"/Users/gibil/cellar/github/openhealth/views/purchase/purchase.TRASH.xml",
 		"/Users/gibil/cellar/github/openhealth/views/stock/stock.TRASH.xml",
 		"/Users/gibil/cellar/github/openhealth/views/account_invoices/account_invoice.xml",
@@ -479,7 +475,6 @@
 		"/Users/gibil/cellar/github/openhealth/models/order.TRASH.py",
 		"/Users/gibil/cellar/github/openhealth/models/payment_method.TRASH.py",
 		"/Users/gibil/cellar/github/openhealth/reports/report_ticket_receipt.xml",
-		"/Users/gibil/cellar/github/openhealth/reports/report_ticket_invoice.xml",
 		"/Users/gibil/cellar/github/openhealth/views/orders/events.xml",
 		"/Users/gibil/cellar/github/openhealth/data/prods/odoo_data_services_med.xml",
 		"/Users/gibil/cellar/github/openhealth/data/prods/odoo_data_services_m22.xml",
@@ -526,11 +521,7 @@
 		"/Users/gibil/cellar/github/openhealth/models/quotation.py",
 		"/Users/gibil/cellar/github/openhealth/models/sale_note.py",
 		"/Users/gibil/cellar/github/openhealth/models/advertisement.py",
-		"/Users/gibil/cellar/github/openhealth/models/invoice.py",
-		"/Users/gibil/cellar/github/openhealth/models/closing.py",
-		"/Users/gibil/cellar/github/openhealth/models/control.py",
-		"/Users/gibil/cellar/github/openhealth/models/purchase_line_rfq.py",
-		"/Users/gibil/cellar/github/openhealth/views/mail/rfq_send.xml"
+		"/Users/gibil/cellar/github/openhealth/models/invoice.py"
 	],
 	"find":
 	{
@@ -549,6 +540,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"x_machine",
+			"action_confi",
+			"x_done",
+			"session.",
+			"state",
 			"parent",
 			"open",
 			"x_type",
@@ -671,12 +667,7 @@
 			"remove",
 			"TREE",
 			"date",
-			"total_net",
-			"validate",
-			"sale.order",
-			"confirma",
-			"state",
-			"groups"
+			"total_net"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -822,7 +813,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -838,182 +829,8 @@
 						"selection":
 						[
 							[
-								4900,
-								4900
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "data/stock_move_data.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 588,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								566,
-								566
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "models/stock_move.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 311,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								300,
-								300
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "views/stock/stock_move.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1865,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								307,
-								307
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "data/prods/odoo_data_products.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 12767,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 18.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "views/stock/stock_move_selector.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3666,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2448,
-								2448
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1940.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "models/stock_move_selector.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1514,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								157,
-								157
+								7662,
+								7670
 							]
 						],
 						"settings":
@@ -1029,25 +846,170 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "models/stock_picking.py",
+					"buffer": 1,
+					"file": "views/menus/menus.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 440,
+						"buffer_size": 11673,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								171,
-								171
+								291,
+								291
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.sublime-syntax"
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 301.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "views/stock/stock_move_selector.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4080,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2953,
+								2968
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2505.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "views/stock/stock.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 749,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								176,
+								176
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 360.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "views/stock/stock_move.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1865,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								977,
+								977
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "security/ir.model.access.csv",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11404,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11392,
+								11392
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 9354.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "models/stock_move_selector.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1514,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								210,
+								210
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

@@ -132,6 +132,7 @@
 			<field name="res_id">7</field>
 -->
 
+
 			<field name="res_id" ref="stock_move_selector_default_view"/>
 
 			
@@ -143,18 +144,19 @@
 
 
 
+
+
 <!--
         <menuitem id="stock.menu_warehouse_report" name="Reports" sequence="99" parent="stock.menu_stock_root" groups="group_stock_manager"/>
 -->
         <menuitem 
         			id="menu_warehouse_kardex" 
-
         			name="KARDEX" 
-        			
         			sequence="2" 
-        			
         			parent="stock.menu_stock_root" 
+
         			
+					groups="openhealth.almacens,openhealth.managers,openhealth.directors"
         		/>
 
 
@@ -165,29 +167,37 @@
 -->
         <menuitem 
         			action="stock_move_selector_form_action" 
-
         			id="menu_action_move_selector" 
-        			
         			parent="menu_warehouse_kardex" 
-        			
         			sequence="131"
 
-        			/>
 
+					groups="openhealth.almacens,openhealth.managers,openhealth.directors"
+        		/>
+
+<!--
+				groups="stock.group_stock_manager,base.group_configuration"
+
+				groups="openhealth.almacens,openhealth.managers,openhealth.directors"
+-->
 
 
 
 		<!-- Stock Move Selector --> 
 		<menuitem id="stock_move_selector_form_menu" name="Stock Move Selector Form" parent="openhealth_menu"
-			sequence="-170"
-			action="openhealth.stock_move_selector_form_action"
+					sequence="-170"
+					action="openhealth.stock_move_selector_form_action"
+
+
+					groups="openhealth.almacens,openhealth.managers,openhealth.directors"
 			/>
+
+
 
 		<menuitem id="stock_move_selector_menu" name="Stock Move Selector" parent="openhealth_menu"
-			sequence="-170"
-			action="openhealth.stock_move_selector_list_action"
+					sequence="-170"
+					action="openhealth.stock_move_selector_list_action"
 			/>
-
 
 
 	</data>

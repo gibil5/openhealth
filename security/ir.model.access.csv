@@ -4,15 +4,21 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+access_stock_picking,stock.picking,stock.model_stock_picking,,1,1,1,1
+
+access_account_invoice,account.invoice,account.model_account_invoice,,1,1,1,1
+
+access_stock_move,stock.move,stock.model_stock_move,,1,1,1,1
+
+access_stock_move_selector,stock.move.selector,model_stock_move_selector,,1,1,1,1
+
+
+
+
+
+
+
 access_openhealth_quotation,openhealth.quotation,model_openhealth_quotation,,1,1,1,1
-
-
-
-
-
-
-
-
 
 
 
@@ -43,10 +49,6 @@ access_openhealth_closing_directors,openhealth.closing.directors,model_openhealt
 
 
 
-
-access_stock_picking_caja,stock.picking caja,stock.model_stock_picking,openhealth.caja,1,1,1,1
-
-access_stock_picking_manager,stock.picking manager,stock.model_stock_picking,openhealth.managers,1,1,1,1
 
 
 
@@ -510,14 +512,6 @@ access_event,openhealth.event,model_openhealth_event,,1,1,1,1
 
 
 
-
-
-access_account_invoice,account.invoice,account.model_account_invoice,,1,1,1,1
-
-access_stock_move,stock.move,stock.model_stock_move,,1,1,1,1
-
-
-access_stock_move_selector,stock.move.selector,model_stock_move_selector,,1,1,1,1
 
 
 

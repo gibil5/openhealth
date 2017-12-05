@@ -29,6 +29,12 @@ self.env['stock.picking'].search([('name', 'like', 'J')])
 
 self.env['stock.picking'].search([('name', 'like', 'CC/OUT/00007')])
 
+
+self.env['stock.picking'].search([('name', 'like', ' AL/OUT/03779 ')])
+AL/OUT/03779
+
+
+
 self.env['stock.picking.type'].search([('name', '=', 'Customer Sale')])
 
 

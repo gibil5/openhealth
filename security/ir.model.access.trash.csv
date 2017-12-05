@@ -2,6 +2,15 @@
 
 
 
+access_stock_picking_caja,stock.picking caja,stock.model_stock_picking,openhealth.caja,1,1,1,1
+
+access_stock_picking_manager,stock.picking manager,stock.model_stock_picking,openhealth.managers,1,1,1,1
+
+
+
+
+
+
 
 
 access_ir_property_caja,ir.property.caja,ir.model_ir_property,openhealth.caja,1,1,1,0

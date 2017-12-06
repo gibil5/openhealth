@@ -1,5 +1,5 @@
 <openerp>
-	<data noupdate='1'>
+	<data noupdate='0'>
 
 
 
@@ -26,11 +26,23 @@
 				</h3>					
 			</xpath>
 
+
+
 			<xpath expr="//div[@id='ruc']" position="replace">
 			</xpath>
 
 			<xpath expr="//div[@id='firm']" position="replace">
 			</xpath>
+
+
+
+			<xpath expr="//div[@id='tax']" position="replace">
+			</xpath>
+
+			<xpath expr="//div[@id='net']" position="replace">
+			</xpath>
+
+
 
 		</template>
 	</data>

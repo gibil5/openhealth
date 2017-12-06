@@ -301,7 +301,7 @@
 
 
 <!-- Net --> 
-<div class='row'>
+<div class='row'	id='net'	>
 	<div class='col-xs-8'>		
 		<b>Neto S/.:</b>
 	</div>
@@ -312,8 +312,10 @@
 
 </div>
 
+
+
 <!-- Tax --> 
-<div class='row'>
+<div class='row'	id='tax'	>
 	<div class='col-xs-8'>		
 		<b>IGV S/.:</b>
 	</div>

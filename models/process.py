@@ -37,6 +37,15 @@ class Process(models.Model):
 
 
 
+	chief_complaint = fields.Selection(
+			string = 'Motivo de consulta', 						
+			selection = eval_vars._chief_complaint_list, 
+
+			required=False, 
+		)
+
+
+
 
 
 
@@ -80,11 +89,6 @@ class Process(models.Model):
 
 
 
-	chief_complaint = fields.Selection(
-			string = 'Motivo de consulta', 						
-			selection = eval_vars._chief_complaint_list, 
-			required=False, 
-			)
 
 
 

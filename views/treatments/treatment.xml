@@ -813,7 +813,9 @@ Fields
 
 								<field name="treatment_open"	invisible="1"	/>
 
-								<field name="chief_complaint"/>
+
+								<field name="chief_complaint"	required="1"	/>
+
 
 <!--
 								<field name="vspace" />

@@ -30,11 +30,11 @@ _counter_type_list = [
 
 _sale_doc_type_list = [
 
-						('receipt', 			'Boleta'),
-						('invoice', 			'Factura'),
-
 						('ticket_receipt', 		'Ticket Boleta'),
 						('ticket_invoice', 		'Ticket Factura'),
+
+						('receipt', 			'Boleta'),
+						('invoice', 			'Factura'),
 
 						('advertisement', 		'Canje Publicidad'),
 						('sale_note', 			'Canje NV'),

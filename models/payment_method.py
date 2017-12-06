@@ -738,6 +738,8 @@ class payment_method(models.Model):
 
 
 
+
+
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 
 	# Create Sale Proof
@@ -751,6 +753,7 @@ class payment_method(models.Model):
 		# Search in the Model dic
 		model = ord_vars._dic_model[self.saledoc]
 		print model 
+
 
 
 
@@ -802,36 +805,15 @@ class payment_method(models.Model):
 			print
 
 
-			return {}
 
 
+			# Open Order 
+			#self.open_order()
+			self.confirmed = True 
+			ret = self.order.open_myself()
+			return ret 
 
-			#return {
-			#		'type': 'ir.actions.act_window',
-			#		'name': ' New Proof Current', 
-
-			#		'view_type': 'form',
-			#		'view_mode': 'form',	
-			#		'target': 'current',
-
-			#		'res_model': model,
-			#		'res_id': proof_id,
-
-			#		'flags': 	{
-									#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-			#						'form': {'action_buttons': True, }
-			#					},
-
-			#		'context': {
-			#					'default_name': self.saledoc_code,
-			#					'default_payment_method': self.id,
-			#					'default_order': self.order.id,
-			#					'default_partner': self.partner.id,
-			#					'default_total': self.total,		
-			#					'default_date_created': self.date_created,
-			#				}
-			#	}
-
+			#return {}
 
 	# create_saleproof
 
@@ -844,15 +826,9 @@ class payment_method(models.Model):
 	@api.multi 
 	def open_order(self):
 
-		#print 
-		#print 'Open order'
-
 
 		self.confirmed = True 
-
 		#self.order.state = 'sale' 
-
-
 
 		ret = self.order.open_myself()
 

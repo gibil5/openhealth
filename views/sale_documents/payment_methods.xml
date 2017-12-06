@@ -103,6 +103,8 @@
 						<field 	name="state" 
 								widget="statusbar" 
 
+								invisible="1"
+								
 								statusbar_visible="draft, payment, generated, done"
 						/>
 					</header>

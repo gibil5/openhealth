@@ -382,14 +382,25 @@ access_openhealth_procedure_readers,openhealth.procedure.readers,model_openhealt
 
 
 
+
+
+
+
 access_openhealth_session_med_managers,openhealth.session_med.managers,model_openhealth_session_med,openhealth.hc_managers,1,1,1,1
 
 access_openhealth_session_med_readers,openhealth.session_med.readers,model_openhealth_session_med,openhealth.hc_readers,1,0,0,0
 
-
 access_openhealth_session_managers,openhealth.session.managers,model_openhealth_session,openhealth.hc_managers,1,1,1,1
 
 access_openhealth_session_readers,openhealth.session.readers,model_openhealth_session,openhealth.hc_readers,1,0,0,0
+
+
+
+
+access_openhealth_session_med_assistants,openhealth.session_med.assistants,model_openhealth_session_med,openhealth.assistants,1,1,0,0
+
+
+
 
 
 

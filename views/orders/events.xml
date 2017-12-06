@@ -23,11 +23,12 @@
 					
 
 
-							<!--
-								 events
-							-->
-
+<!--
+Events
 							<page string="Anulaciones"	groups='openhealth.roots'	>
+-->
+
+							<page string="Anulaciones">
 
 
 

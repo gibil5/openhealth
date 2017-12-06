@@ -47,19 +47,23 @@ class Session(models.Model):
 		if self.x_autofill == True:
 
 
+			self.co2_mode_emission = 'fractional'
+			self.co2_mode_exposure = 'continuous'
+			self.co2_observations = 'Cicatriz plana hiperpigmentada en pómulo derecho. Pápulas en pómulos.'
+
+
 			self.co2_power = 1.5
+			self.co2_energy = 150
+
 
 			self.co2_frequency = 10
 
-			self.co2_energy = 150
+			self.co2_fluency = 20
+			self.co2_density = 30
+			self.co2_time = 40
+			self.co2_distance = 50
 
-			self.co2_mode_emission = 'fractional'
-
-			self.co2_mode_exposure = 'one'
-
-			self.co2_observations = 'Cicatriz plana hiperpigmentada en pómulo derecho. Pápulas en pómulos.'
-
-			self.x_indications = 'Láser Co2 Fraccional.'
+			#self.x_indications = 'Láser Co2 Fraccional.'
 
 
 

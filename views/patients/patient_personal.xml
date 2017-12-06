@@ -101,9 +101,9 @@
 
 				<field  name="vspace" />
 
-				<field  name="x_firm" 	required="1"	/>
+				<field  name="x_firm" 	required="0"	/>
 
-				<field  name="x_ruc" 	required="1"	/>
+				<field  name="x_ruc" 	required="0"	/>
 			
 			</group>
 		</group>

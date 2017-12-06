@@ -5,26 +5,16 @@
 
 
 		<!-- FORM --> 
+<!--
+-->
 		<record id="stock_picking_form" model="ir.ui.view">
-
 			<field name="name">openhealth.stock.picking</field>
-
 			<field name="model">stock.picking</field>
-			
 			<field name="inherit_id" ref="stock.view_picking_form"/>	
-
 			<field name="mode">primary</field>
-			
 			<field name="priority" eval="1"/>
-
-
 			<field name="arch" type="xml">
 
-
-				<!--
-				<xpath expr="//field[@name='name']" position="after">
-				</xpath>
-				-->
 
 				<xpath expr="//button[@name='action_cancel']" position="after">
 
@@ -41,6 +31,100 @@
 
 			</field>
 		</record>
+
+
+
+<!--
+		<record id="stock_picking_form" model="ir.ui.view">
+			<field name="name">stock.picking</field>
+			<field name="model">stock.picking</field>
+			<field name="arch" type="xml">
+				<form string="Transfer">
+					<sheet>
+						<group>
+							<field name="name"/>
+							<field name="state"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+-->
+
+
+
+
+
+
+
+
+
+
+		<!-- FORM --> 
+		<record id="stock_pack_operation_form" model="ir.ui.view">
+			<field name="name">stock.pack.operation</field>
+			<field name="model">stock.pack.operation</field>
+			<field name="inherit_id" ref="stock.view_pack_operation_details_form"/>	
+			<field name="mode">primary</field>
+			<field name="priority" eval="1"/>
+			<field name="arch" type="xml">
+
+				<xpath expr="//field[@name='location_id']" position="after">
+					<field name="state"/>
+
+					<button 
+
+							name="remove_myself"
+							
+							type="object" 
+							class="oe_highlight"
+							string="REMOVEM"
+					/>
+
+
+
+				</xpath>
+
+			</field>
+		</record>
+
+
+
+
+
+<!--
+		<record id="stock_pack_operation_form" model="ir.ui.view">
+			<field name="name">stock.pack.operation</field>
+			<field name="model">stock.pack.operation</field>
+			<field name="arch" type="xml">
+				<form string="Pack Operation">
+					<sheet>
+
+						
+						<group>
+
+							<field name="display_name"/>
+
+							<field name="date"/>
+
+							<field name="picking_id"/>
+
+							<field name="state"/>
+
+						</group>
+
+
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+-->
+
+
+
+
+
 
 
 
@@ -77,6 +161,94 @@
 			</field>
 		</record>
 
+
+
+
+		<!-- TREE view --> 
+		<record id="stock_pack_operation_tree" model="ir.ui.view">
+			<field name="name">stock.pack.operation.tree</field>
+			<field name="model">stock.pack.operation</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="display_name"/>
+
+					<field name="date"/>
+
+					<field name="picking_id"/>
+
+					<field name="state"/>
+
+				</tree>
+			</field>
+		</record>
+
+
+
+
+
+
+		<!-- ACTION --> 
+		<record id="stock_picking_list_action" model="ir.actions.act_window">
+			<field name="name">stock.picking</field>
+			<field name="res_model">stock.picking</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="view_type">form</field>
+			<field name="context">{}</field>
+			<field name="domain">[]
+			</field>
+		</record>
+
+		<!-- ACTION --> 
+		<record id="stock_pack_operation_list_action" model="ir.actions.act_window">
+			<field name="name">stock.pack.operation</field>
+			<field name="res_model">stock.pack.operation</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="view_type">form</field>
+			<field name="context">{}</field>
+			<field name="domain">[]
+			</field>
+		</record>
+
+
+
+
+		<!-- stock picking --> 
+		<menuitem id="stock_picking_menu" name="Stock pickings" 
+			parent="openhealth_menu"
+			sequence="103"
+			action="stock_picking_list_action"/>
+
+		<!-- stock pack.operation --> 
+		<menuitem id="stock_pack_operation_menu" name="Stock pack operations" 
+			parent="openhealth_menu"
+			sequence="104"
+			action="stock_pack_operation_list_action"/>
+
+
+
+
+
+
+
+		<!-- Filter --> 
+		<record id="view_stock_pack_operation_filter" model="ir.ui.view">
+
+		   <field name="name">stock.pack.operation Search</field>
+		   
+		   <field name="model">stock.pack.operation</field>		   
+		   
+		   <field name="arch" type="xml">
+
+			   <search string="stock pack operations">
+
+				   <field name="picking_id" />
+<!--
+				   <field name="x_doctor" />               
+				   <field name="x_family" /> 
+-->
+			   </search>
+		   </field>
+	   </record>
 
 
 

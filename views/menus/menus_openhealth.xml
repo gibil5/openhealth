@@ -563,6 +563,7 @@
 			sequence="100"
 			action="account_invoice_line_list_action"/>
 
+
 		<!-- Procurement Order --> 
 		<menuitem id="procurement_order_menu" name="Procurement Order" 
 			parent="openhealth_menu"
@@ -570,11 +571,18 @@
 			action="procurement_order_list_action"/>
 
 
+
 		<!-- stock move --> 
 		<menuitem id="stock_move_menu" name="Stock moves" 
 			parent="openhealth_menu"
 			sequence="102"
 			action="stock_move_list_action"/>
+
+
+
+
+
+
 
 
 

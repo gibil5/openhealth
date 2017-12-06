@@ -30,13 +30,33 @@ class StockPicking(models.Model):
 
 		#self.pack_operation_exist = False
 
-		self.state = 'cancel'
+		#self.picking_type_id = False
 
-		self.pack_operation_pack_ids.unlink()
-		self.pack_operation_product_ids.unlink()
-		self.pack_operation_ids.unlink()
+		#self.state = 'draft'
+
+
+
+
+
+
+		#for po in self.pack_operation_pack_ids:
+		#	po.state = 'draft'
+		
+		#for po in self.pack_operation_product_ids:
+		#	po.state = 'draft'
+		
+		#for po in self.pack_operation_ids:
+		#	po.state = 'draft'
+
+		#self.pack_operation_pack_ids.unlink()
+		#self.pack_operation_product_ids.unlink()
+		#self.pack_operation_ids.unlink()
+
+
 
 		self.unlink()
+
+
 
 
 

@@ -840,11 +840,15 @@
 					<group>
 						<group class="oe_left"  style="width: 600px;">
 
-							<group col='6'			groups="openhealth.managers,openhealth.directors"		>
+							<group col='6'			groups="openhealth.caja,openhealth.managers,openhealth.directors"		>
 
 
 
 
+
+<!--
+								groups="openhealth.managers,openhealth.directors"
+-->
 						<!-- Cancel --> 
 						<group>
 							<button 
@@ -855,9 +859,11 @@
 
 								string="Anular"
 
-								groups="openhealth.managers,openhealth.directors"
+								groups="openhealth.caja,openhealth.managers,openhealth.directors"
 							/>
 						</group>
+
+
 
 
 						<!-- Activate --> 
@@ -874,11 +880,16 @@
 							/>
 						</group>
 
+
+<!--
+								groups="openhealth.managers,openhealth.directors" />
+-->
 						<!-- Cancelled -->
 						<group>
 							<field name="x_cancel" nolabel="1"	readonly="1"
 
-								groups="openhealth.managers,openhealth.directors" />
+
+								groups="openhealth.caja,openhealth.managers,openhealth.directors" />
 						</group>
 
 
@@ -1481,9 +1492,25 @@ Order Line - Tree
 			<field name="name">sale.order.tree</field>
 			<field name="model">sale.order</field>
 			<field name="arch" type="xml">
-				
-				<tree string="Order Tree">
-					
+
+
+
+				<tree string="Order Tree"
+colors="
+
+red:state=='draft';
+
+green:state=='sent';
+
+blue:state=='sale';
+
+grey:state in ('cancel')
+
+"
+>
+
+
+
 
 
 					<field name="name"	 		string="Referencia"		/>

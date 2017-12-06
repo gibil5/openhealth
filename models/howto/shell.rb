@@ -35,6 +35,17 @@ AL/OUT/03779
 
 
 
+
+
+self.env['stock.picking'].search([('name', 'like', 'AL/OUT/03823')])
+AL/OUT/03823
+
+sp = self.env['stock.picking'].search([('name', 'like', 'AL/OUT/03823')])
+
+
+
+
+
 self.env['stock.picking.type'].search([('name', '=', 'Customer Sale')])
 
 

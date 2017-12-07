@@ -1,15 +1,27 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
-	<data noupdate='1'>
+	<data noupdate='0'>
 
 
 
-		<!-- Product Categories --> 
+		<!-- Product Categories - Parent --> 
+		<record id='platform_product_categ' model='product.category'>
+			<field name='name'>Plataforma</field>
+		</record>
+
+
+		<!-- Product Categories - Children --> 
 		<record id='topical' model='product.category'>
 			<field name='name'>Cremas</field>
+
+			<field name='parent_id' 	ref='platform_product_categ'/>
 		</record>
+
+
 		<record id='card' model='product.category'>
 			<field name='name'>Tarjetas</field>
+
+			<field name='parent_id' 	ref='platform_product_categ'/>
 		</record>
 
 
@@ -20,17 +32,16 @@
 		<record id='acnetopic_200ml' model='product.template'>
 			<field name='type'>product</field>
 			<field name='x_name_short'>acnetopic_200ml</field>
-			<field name='name'>ACNETOPIC 200ml</field>
+
+			<field name='name'>ACNETOPIC 200 ML</field>
+			
 			<field name='x_family'>topical</field>
 			<field name='x_brand'>MEDISCIENCE</field>
-
-
 			<field name='price'>120.0</field>
 			<field name='standard_price'>120.0</field>			
-
-			
 			<field name='x_price_vip'></field>
 			<field name='x_date_created'>2017-03-28 20:15:18 UTC</field>
+
 			<field name='categ_id' ref="topical"/>
 		</record>
 
@@ -39,13 +50,13 @@
 		<record id='anti_red' model='product.template'>
 			<field name='type'>product</field>
 			<field name='x_name_short'>anti_red</field>
+
 			<field name='name'>ANTIRROJECES</field>
+			
 			<field name='x_family'>topical</field>
 			<field name='x_brand'>EURODERMA</field>
-
 			<field name='price'>150.0</field>
 			<field name='standard_price'>150.0</field>
-			
 			<field name='x_price_vip'></field>
 			<field name='x_date_created'>2017-03-28 20:15:18 UTC</field>
 			<field name='categ_id' ref="topical"/>
@@ -56,15 +67,16 @@
 		<record id='aloe_vital' model='product.template'>
 			<field name='type'>product</field>
 			<field name='x_name_short'>aloe_vital</field>
-			<field name='name'>Aloe Vital</field>
+
+			<field name='name'>ALOE VITAL</field>
+
 			<field name='x_family'>topical</field>
-			<field name='x_brand'>CLINICA CHAVARRI</field>
-			
+			<field name='x_brand'>CLINICA CHAVARRI</field>			
 			<field name='price'>200.0</field>
 			<field name='standard_price'>200.0</field>
-			
 			<field name='x_price_vip'></field>
 			<field name='x_date_created'>2017-03-28 20:15:18 UTC</field>
+			
 			<field name='categ_id' ref="topical"/>
 		</record>
 
@@ -79,28 +91,29 @@
 		<record id='cream_vitamins' model='product.template'>
 			<field name='type'>product</field>
 			<field name='x_name_short'>cream_vitamins</field>
-			<field name='name'>Crema con Vitaminas</field>
+
+			<field name='name'>CREMA CON VITAMINAS</field>
+
 			<field name='x_family'>topical</field>
 			<field name='x_brand'>CLINICA CHAVARRI</field>
-
 			<field name='price'>200.0</field>
 			<field name='standard_price'>200.0</field>
-			
 			<field name='x_price_vip'></field>
 			<field name='x_date_created'>2017-03-28 20:15:18 UTC</field>
+			
 			<field name='categ_id' ref="topical"/>
 		</record>
 
 		<record id='cream_vitamins_aec' model='product.template'>
 			<field name='type'>product</field>
 			<field name='x_name_short'>cream_vitamins_aec</field>
-			<field name='name'>Crema con Vitaminas A, E, C</field>
+			
+			<field name='name'>CREMA CON VITAMINAS A, E, C</field>
+
 			<field name='x_family'>topical</field>
 			<field name='x_brand'>BOTICA FRANCESA</field>
-
 			<field name='price'>200.0</field>
 			<field name='standard_price'>200.0</field>
-
 			<field name='x_price_vip'></field>
 			<field name='x_date_created'>2017-03-28 20:15:18 UTC</field>
 
@@ -110,13 +123,13 @@
 		<record id='dermatopic_lotion_120ml' model='product.template'>
 			<field name='type'>product</field>
 			<field name='x_name_short'>dermatopic_lotion_120ml</field>
-			<field name='name'>DERMATOPIC LOCION 120ml</field>
+
+			<field name='name'>DERMATOPIC LOCION 120 ML</field>
+			
 			<field name='x_family'>topical</field>
 			<field name='x_brand'>MEDISCIENCE</field>
-
 			<field name='price'>80.0</field>
 			<field name='standard_price'>80.0</field>
-
 			<field name='x_price_vip'></field>
 			<field name='x_date_created'>2017-03-28 20:15:18 UTC</field>
 
@@ -126,21 +139,18 @@
 		<record id='dermatopic_sulfur_90gr' model='product.template'>
 			<field name='type'>product</field>
 			<field name='x_name_short'>dermatopic_sulfur_90gr</field>
-			<field name='name'>DERMATOPIC SULFUR 90gr</field>
+
+			<field name='name'>DERMATOPIC SULFUR 90 GR</field>
+			
 			<field name='x_family'>topical</field>
 			<field name='x_brand'>MEDISCIENCE</field>
-
 			<field name='price'>80.0</field>
 			<field name='standard_price'>80.0</field>
-
 			<field name='x_price_vip'></field>
 			<field name='x_date_created'>2017-03-28 20:15:18 UTC</field>
 
 			<field name='categ_id' ref="topical"/>
 		</record>
-
-
-
 
 
 
@@ -151,7 +161,9 @@
 		<record id='depigmentation_aha' model='product.template'>
 			<field name='type'>product</field>
 			<field name='x_name_short'>depigmentation_aha</field>
-			<field name='name'>Despigmentante AHA</field>
+
+			<field name='name'>DESPIGMENTANTE AHA</field>
+			
 			<field name='x_family'>topical</field>
 			<field name='x_brand'>CLINICA CHAVARRI</field>
 			<field name='x_price_vip'></field>			
@@ -166,7 +178,9 @@
 		<record id='depigmentation_bfd8' model='product.template'>
 			<field name='type'>product</field>
 			<field name='x_name_short'>depigmentation_bfd8</field>
-			<field name='name'>Despigmentante BF-D8</field>
+
+			<field name='name'>DESPIGMENTANTE BF-D8</field>
+			
 			<field name='x_family'>topical</field>
 			<field name='x_brand'>BOTICA FRANCESA</field>			
 			<field name='x_price_vip'></field>
@@ -181,7 +195,9 @@
 		<record id='depigmentation_gliko' model='product.template'>
 			<field name='type'>product</field>
 			<field name='x_name_short'>depigmentation_gliko</field>
-			<field name='name'>Despigmentante GLI-KO</field>
+
+			<field name='name'>DESPIGMENTANTE GLI-KO</field>
+			
 			<field name='x_family'>topical</field>
 			<field name='x_brand'>CLINICA CHAVARRI</field>			
 			<field name='x_price_vip'></field>
@@ -201,7 +217,9 @@
 		<record id='depigmentation_hq' model='product.template'>
 			<field name='type'>product</field>
 			<field name='x_name_short'>depigmentation_hq</field>
-			<field name='name'>Despigmentante HQ</field>
+
+			<field name='name'>DESPIGMENTANTE HQ</field>
+			
 			<field name='x_family'>topical</field>
 			<field name='x_brand'>CLINICA CHAVARRI</field>			
 			<field name='x_price_vip'></field>
@@ -216,7 +234,9 @@
 		<record id='depigmentation_santa_teresa' model='product.template'>
 			<field name='type'>product</field>
 			<field name='x_name_short'>depigmentation_santa_teresa</field>
-			<field name='name'>Despigmentante Santa Teresa</field>
+
+			<field name='name'>DESPIGMENTANTE SANTA TERESA</field>
+			
 			<field name='x_family'>topical</field>
 			<field name='x_brand'>BOTICA SANTA TERESA</field>
 			<field name='x_price_vip'></field>
@@ -231,7 +251,9 @@
 		<record id='depigmentation_no_hidroquinone' model='product.template'>
 			<field name='type'>product</field>
 			<field name='x_name_short'>depigmentation_no_hidroquinone</field>
-			<field name='name'>Despigmentante Sin Hidroquinona</field>
+
+			<field name='name'>DESPIGMENTANTE SIN HIDROQUINONA</field>
+			
 			<field name='x_family'>topical</field>
 			<field name='x_brand'>BOTICA FRANCESA</field>			
 			<field name='x_price_vip'></field>
@@ -255,7 +277,9 @@
 		<record id='hidratopic_lotion_120ml' model='product.template'>
 			<field name='type'>product</field>
 			<field name='x_name_short'>hidratopic_lotion_120ml</field>
-			<field name='name'>HIDRATOPIC LOCION 120ml</field>
+
+			<field name='name'>HIDRATOPIC LOCION 120 ML</field>
+			
 			<field name='x_family'>topical</field>
 			<field name='x_brand'>MEDISCIENCE</field>
 			<field name='x_price_vip'></field>
@@ -270,7 +294,9 @@
 		<record id='kit_post_laser' model='product.template'>
 			<field name='type'>product</field>
 			<field name='x_name_short'>kit_post_laser</field>
-			<field name='name'>Kit post laser</field>
+			
+			<field name='name'>KIT POST LASER</field>
+			
 			<field name='x_family'>kit</field>
 			<field name='x_brand'>BOTICA VILLEGAS</field>
 			<field name='x_price_vip'></field>
@@ -288,11 +314,12 @@
 
 
 
-
 		<record id='mask_astringent_liquid_powder' model='product.template'>
 			<field name='type'>product</field>
 			<field name='x_name_short'>mask_astringent_liquid_powder</field>
-			<field name='name'>Mascara astringente (Liquido + Polvo)</field>
+
+			<field name='name'>MASCARA ASTRINGENTE (LIQUIDO + POLVO)</field>
+			
 			<field name='x_family'>topical</field>
 			<field name='x_brand'>CLINICA CHAVARRI</field>			
 			<field name='x_price_vip'></field>
@@ -307,7 +334,9 @@
 		<record id='mask_astringent_liquid' model='product.template'>
 			<field name='type'>product</field>
 			<field name='x_name_short'>mask_astringent_liquid</field>
-			<field name='name'>Mascara astringente Liquido</field>
+
+			<field name='name'>MASCARA ASTRINGENTE LIQUIDO</field>
+			
 			<field name='x_family'>topical</field>
 			<field name='x_brand'>CLINICA CHAVARRI</field>			
 			<field name='x_price_vip'></field>
@@ -322,7 +351,9 @@
 		<record id='mask_astringent_powder' model='product.template'>
 			<field name='type'>product</field>
 			<field name='x_name_short'>mask_astringent_powder</field>
-			<field name='name'>Mascara astringente Polvo</field>
+
+			<field name='name'>MASCARA ASTRINGENTE POLVO</field>
+			
 			<field name='x_family'>topical</field>
 			<field name='x_brand'>CLINICA CHAVARRI</field>			
 			<field name='x_price_vip'></field>
@@ -341,14 +372,12 @@
 
 
 
-
-
-
-
 		<record id='nctf' model='product.template'>
 			<field name='type'>product</field>
 			<field name='x_name_short'>nctf</field>
+
 			<field name='name'>NCTF</field>
+			
 			<field name='x_family'>topical</field>
 			<field name='x_brand'>FILORGA</field>
 			<field name='x_price_vip'></field>
@@ -363,7 +392,9 @@
 		<record id='solar_protector' model='product.template'>
 			<field name='type'>product</field>
 			<field name='x_name_short'>solar_protector</field>
-			<field name='name'>Protector solar</field>
+
+			<field name='name'>PROTECTOR SOLAR</field>
+			
 			<field name='x_family'>topical</field>
 			<field name='x_brand'>CLINICA CHAVARRI</field>
 			<field name='x_price_vip'></field>
@@ -378,7 +409,9 @@
 		<record id='q54' model='product.template'>
 			<field name='type'>product</field>
 			<field name='x_name_short'>q54</field>
+
 			<field name='name'>Q54</field>
+			
 			<field name='x_family'>topical</field>
 			<field name='x_brand'>DROGUERIA ZOMAX</field>
 			<field name='x_price_vip'></field>
@@ -403,13 +436,14 @@
 		<record id='tretinoina' model='product.template'>
 			<field name='type'>product</field>
 			<field name='x_name_short'>tretinoina</field>
-			<field name='name'>Tretinoina</field>
+
+			<field name='name'>TRETINOINA</field>
+			
 			<field name='x_family'>topical</field>
 			<field name='x_brand'>CLINICA CHAVARRI</field>			
 			<field name='x_price_vip'></field>
 			<field name='x_date_created'>2017-03-28 20:15:18 UTC</field>
 			<field name='categ_id' ref="topical"/>
-
 			<field name='price'>200.0</field>
 			<field name='standard_price'>200.0</field>
 		</record>
@@ -429,13 +463,13 @@
 		<record id='vip_card' model='product.template'>
 			<field name='type'>product</field>
 			<field name='x_name_short'>vip_card</field>
-			<field name='name'>Tarjeta VIP</field>
+
+			<field name='name'>TARJETA VIP</field>
+			
 			<field name='x_family'>card</field>
 			<field name='x_brand'>CLINICA CHAVARRI</field>
-
 			<field name='price'>300.0</field>
 			<field name='standard_price'>0.0</field>
-
 			<field name='x_price_vip'></field>
 			<field name='x_date_created'>2017-03-28 20:15:18 UTC</field>
 

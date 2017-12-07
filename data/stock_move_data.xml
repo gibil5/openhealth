@@ -26,7 +26,7 @@
 			<field name="product_id" search="[('name','=','TOKEN')]"/>
 -->
 
-			<field name="product_id" search="[('name','=','ACNETOPIC 200ml')]"/>
+			<field name="product_id" search="[('name','=','ACNETOPIC 200 ML')]"/>
 		</record>
 
 

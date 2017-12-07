@@ -583,13 +583,14 @@ class Treatment(models.Model):
 	def _compute_nr_invoices_pro(self):
 		for record in self:
 
+
 			record.nr_invoices_pro=self.env['sale.order'].search_count([
 																
-																	('treatment','=', record.id),
-																	
-																	('x_family','=', 'procedure'),
+																		('treatment','=', record.id),
+																		
+																		('x_family','=', 'procedure'),
 
-																	('state','=', 'sale'),
+																		('state','=', 'sale'),
 																	]) 
 
 
@@ -1814,6 +1815,8 @@ class Treatment(models.Model):
 
 
 	# create_budget 
+
+
 
 
 

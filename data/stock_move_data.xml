@@ -5,11 +5,11 @@
 
 
 <!--
+-->
 		<record id="empty_product" model="product.product">
 			<field name="name">_</field>
 			<field name="type">product</field>
 		</record>
--->
 
 
 
@@ -21,12 +21,13 @@
 			<field name="product_id">3524</field>
 
 
-			<field name="product_id" ref="empty_product"/>
 
 			<field name="product_id" search="[('name','=','TOKEN')]"/>
--->
 
 			<field name="product_id" search="[('name','like','ACNETOPIC 200 ML')]"/>
+-->
+
+			<field name="product_id" ref="empty_product"/>
 		</record>
 
 

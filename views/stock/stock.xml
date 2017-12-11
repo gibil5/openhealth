@@ -31,14 +31,54 @@ groups="stock.group_stock_manager"
 				groups="openhealth.roots" 
 				
 				sequence="50"
+		/>
+
+
+		<menuitem 
+				action="stock.action_procurement_compute" 
+				id="stock.menu_procurement_compute" 
+				parent="stock.menu_stock_sched" 
+				sequence="2"
+
+				groups="openhealth.roots" 
+			/>
+
+<!--
+				groups="stock.group_stock_manager"
+-->
+		<menuitem 
+				action="procurement.action_compute_schedulers" 
+				id="stock.menu_stock_proc_schedulers" 
+				parent="stock.menu_stock_sched" 
+				sequence="1" 
+
+				groups="openhealth.roots" 
+			/>
+
+
+
+<!--
+				groups="stock.group_stock_manager"
+-->
+		<menuitem 
+				action="procurement.procurement_order_action_exceptions" 
+				id="stock.menu_stock_procurement_action" 
+				parent="stock.menu_warehouse_report" 
+				sequence="150" 
+
+				groups="openhealth.roots"
 				/>
+
+
+
 
 
 <!--
 groups="group_stock_manager,base.group_configuration"
 groups="openhealth.roots,base.group_configuration" 
 -->
-	<menuitem       id="stock.menu_stock_config_settings" 
+	<menuitem      
+				id="stock.menu_stock_config_settings" 
 		
 				name="Configuration" 
 		
@@ -49,6 +89,25 @@ groups="openhealth.roots,base.group_configuration"
 				groups="stock.group_stock_manager,base.group_configuration"
 
 				/>
+
+
+
+
+	<menuitem
+				id="stock.menu_reordering_rules_config"
+
+				action="stock.action_orderpoint_form"
+				
+				name="Reordering Rules" 
+				
+				parent="stock.menu_stock_inventory_control" 
+				
+				sequence="2"
+
+
+				groups="openhealth.roots" 
+			/>
+
 
 
 

@@ -1138,9 +1138,12 @@ class Patient(models.Model):
 
 
 		treatment_id = self.env['openhealth.treatment'].search([
+																		
 																		('patient','=', self.id),
+																
 																],
-																order='start_date desc',
+																#order='start_date desc',
+																order='write_date desc',
 																limit=1,).id
 
 

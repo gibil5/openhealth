@@ -25,7 +25,9 @@ class Treatment(models.Model):
 	_inherit = 'openhealth.process'	
 	_name = 'openhealth.treatment'
 
-	_order = 'start_date desc'
+
+	#_order = 'start_date desc'
+	_order = 'write_date desc'
 
 
 

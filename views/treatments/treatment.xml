@@ -864,67 +864,62 @@ Fields
 
 
 
-		<!-- Tree view --> 
+		<!-- TREE view --> 
 		<record model="ir.ui.view" id="treatment_tree_view">
 			<field name="name">treatment.tree</field>
 			<field name="model">openhealth.treatment</field>
 			<field name="arch" type="xml">
+
 <!--				
-				<tree string="Treatment Tree">
--->
 				<tree default_order='start_date desc'>
+-->
+				<tree string="Treatment Tree">
 					
 					<field name="name"/>
 
 
+
+
+
+					<field name="write_date"/>
+
 					<field name="start_date"/>
 
+
+
+
+
 					<field name="state"/>
-
-
-
-					<!--
-					<field name="treatment_open"/>
-
-
-					<field name="id"/>
-					<field name="partner_id"/>
-
-					-->
-
-
-
-
 
 					<field name="patient"/>
 					
 					<field name="physician"/>
 					
-
-					<!--
-					<field name="end_date"/>
-					-->
-
 					<field name="duration"/>
-
 
 					<field name="chief_complaint"	string="Motivo"/>
 
 
+
+
 <!--
+					<field name="end_date"/>
+
+					<field name="treatment_open"/>
+					<field name="id"/>
+					<field name="partner_id"/>
+
 					<field name="nr_appointments"/>					
 					<field name="nr_consultations"	string="Consultas"	style="text-align:center;"/>
 					<field name="nr_orders"/>
 					<field name="nr_procedures"		string="Procedimientos"	style="color:red;"/>
 					<field name="nr_controls"/>
 					<field name="nr_sessions"/>
--->
 
-					<!--
 					<field name="nr_evaluations"/>
 					<field name="nr_services"/>
 					<field name="price_total"/>
-					-->
+-->
 				</tree>
 			</field>
 		</record>

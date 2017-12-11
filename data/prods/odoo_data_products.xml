@@ -10,6 +10,7 @@
 		</record>
 
 
+
 		<!-- Product Categories - Children --> 
 		<record id='topical' model='product.category'>
 			<field name='name'>Cremas</field>
@@ -17,12 +18,28 @@
 			<field name='parent_id' 	ref='platform_product_categ'/>
 		</record>
 
-
 		<record id='card' model='product.category'>
 			<field name='name'>Tarjetas</field>
 
 			<field name='parent_id' 	ref='platform_product_categ'/>
 		</record>
+
+
+		<record id='testing' model='product.category'>
+			<field name='name'>Testing Plataforma</field>
+
+			<field name='parent_id' 	ref='platform_product_categ'/>
+		</record>
+
+
+		<record id='kits' model='product.category'>
+			<field name='name'>Kits</field>
+
+			<field name='parent_id' 	ref='platform_product_categ'/>
+		</record>
+
+
+
 
 
 

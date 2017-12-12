@@ -113,5 +113,48 @@ groups="openhealth.roots,base.group_configuration"
 
 
 
+
+
+        <record id="stock.stock_picking_type_action" model="ir.actions.act_window">
+
+            <field name="name">Inventory - jx</field>
+            
+            <field name="res_model">stock.picking.type</field>
+            
+            <field name="type">ir.actions.act_window</field>
+            
+            <field name="view_type">form</field>
+            
+            <field name="view_mode">kanban,form</field>
+            
+
+
+
+			<field name="domain">[
+									('name', '!=', 'Customer Sale'),
+								]
+			</field>
+
+
+
+
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new picking type.
+              </p><p>
+                The picking type system allows you to assign each stock
+                operation a specific type which will alter its views accordingly.
+                On the picking type you could e.g. specify if packing is needed by default,
+                if it should show the customer.
+              </p>
+            </field>
+        </record>
+
+
+
+
+
+
+
 	</data>
 </openerp>

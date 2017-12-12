@@ -7,7 +7,9 @@
 
 <!-- Reports --> 
 		<menuitem 	id="main_reporting_menu" 
+
 					sequence="-6"
+			
 					name="Reporting"
 					/>
 
@@ -16,8 +18,11 @@
 
 <!-- Managers --> 
 		<menuitem 	id="sales_reports_menu" 
+
 					name="Reporting Mensual - 2017"
+			
 					parent="main_reporting_menu"
+			
 					sequence="4"
 
 					groups="openhealth.managers,openhealth.directors"

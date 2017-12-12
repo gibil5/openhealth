@@ -5,18 +5,13 @@
 
 
 <!-- 
-Paul Canales
+Physician
 -->
 
-<!--
-									('user_id','=','Dr. Canales'), 
-									('user_id','=','Administrator'), 
-									('partner_id','=','Dr. Canales'), 
-									('partner_id','=','Paul Canales'), 
--->
+
 
 		<!-- December --> 
-		<record id="action_order_report_december_can" model="ir.actions.act_window">
+		<record id="action_order_report_december_xxx" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Diciembre</field>
 			<field name="res_model">sale.report</field>
 			<field name="view_type">form</field>
@@ -25,7 +20,7 @@ Paul Canales
 			<field name="search_view_id" ref="sale.view_order_product_search"/>
 		   <field name="domain">
 								[
-									('x_doctor','=','Dr. Canales'), 
+									('x_doctor','=',user_id), 
 
 									('date','&lt;=',time.strftime('2018-01-01')),
 									('date','&gt;=',time.strftime('%%Y-12-01'))
@@ -34,6 +29,7 @@ Paul Canales
 			<field name="context">{'search_default_Sales':1,'group_by_no_leaf':1,'group_by': ['categ_id']}</field>
 			<field name="help"></field>
 		</record>
+
 
 
 

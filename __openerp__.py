@@ -453,15 +453,34 @@
 
 
 
+
 		# Menus
 		'views/menus/menus.xml',
+
 		'views/menus/menus_reporting.xml',
+		
 		'views/menus/menus_reporting_pla.xml',
+		
 		'views/menus/menus_reporting_phy.xml',
 		
 
-		#'views/menus/menus_reporting_phy_ala.xml',
+
+
+		'views/reports/report_sale_months_phy_ala.xml',
+		'views/menus/menus_reporting_phy_ala.xml',
+
+
+		'views/reports/report_sale_months_phy_can.xml',
+		'views/menus/menus_reporting_phy_can.xml',
+
+
+
+
+
 		
+
+
+		# Menus - Open Health 
 		'views/menus/menus_openhealth.xml',
 
 

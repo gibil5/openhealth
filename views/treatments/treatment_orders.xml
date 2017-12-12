@@ -41,11 +41,18 @@ attrs="{'invisible': [	('user_id', '!=', 1)
 -->
 
 
+
 <!--
 <page string="Caja">	
--->
-<page string="Caja"	
+
+
 groups="openhealth.directors,openhealth.managers"
+-->
+
+<page string="Caja"	
+
+groups="openhealth.directors,openhealth.managers,openhealth.physicians"
+
 >
 
 

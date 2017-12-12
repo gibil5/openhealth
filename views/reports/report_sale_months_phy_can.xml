@@ -20,6 +20,7 @@ Paul Canales
 
 
 									('x_doctor','=',user_id), 
+									('user_id','=',user_id), 
 -->
 
 		<!-- December --> 
@@ -33,7 +34,7 @@ Paul Canales
 		   <field name="domain">
 								[
 
-									('user_id','=',user_id), 
+									('x_doctor_uid','=',user_id), 
 
 
 

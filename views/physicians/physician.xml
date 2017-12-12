@@ -32,8 +32,9 @@
 
 
 				<xpath expr="//field[@name='consultancy_price']" position="before">
-
+<!--
 					<field name="x_user_name" />
+-->
 					<field name="vspace" />
 
 

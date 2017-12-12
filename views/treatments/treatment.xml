@@ -873,7 +873,20 @@ Fields
 <!--				
 				<tree default_order='start_date desc'>
 -->
-				<tree string="Treatment Tree">
+
+				<tree string="Treatment Tree"
+
+colors="
+
+red:state=='empty';
+
+blue:state=='controls'
+
+"
+
+>
+
+
 					
 					<field name="name"/>
 

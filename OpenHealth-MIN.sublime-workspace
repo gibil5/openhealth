@@ -280,7 +280,7 @@
 			"file": "views/stock/stock.xml",
 			"settings":
 			{
-				"buffer_size": 1453,
+				"buffer_size": 1723,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -577,6 +577,7 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"exceptions",
 			"TREE",
 			"crear presupuesto - procedimiento",
 			"crear presupuesto",
@@ -703,8 +704,7 @@
 			"cancel",
 			"button_do",
 			"x_can",
-			"x_canc",
-			"print"
+			"x_canc"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -888,15 +888,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1453,
+						"buffer_size": 1723,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								386,
-								386
+								932,
+								932
 							]
 						],
 						"settings":
@@ -905,7 +905,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 473.0,
+						"translation.y": 887.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1320,7 +1320,7 @@
 		[
 			[
 				"",
-				"~/Virtualenvs/Odoo9/odoo/addons/web_calendar/web-calendar.sublime-project"
+				"~/cellar/github/rails/cctester/Cc-Tester.sublime-project"
 			],
 			[
 				"\t",

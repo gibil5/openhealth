@@ -1506,6 +1506,7 @@ Look for the Minimalist experience !!!
 
 
 				<tree string="Order Tree"
+
 colors="
 
 red:state=='draft';

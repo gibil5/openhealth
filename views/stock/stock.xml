@@ -131,7 +131,7 @@ groups="openhealth.roots,base.group_configuration"
 
 
 			<field name="domain">[
-									('name', '!=', 'Customer Sale'),
+									('name', '!=', 'Delivery Orders'),
 								]
 			</field>
 

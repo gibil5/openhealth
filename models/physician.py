@@ -35,6 +35,11 @@ class Physician(models.Model):
 	
 
 
+	x_user_name = fields.Char(
+			'Nombre de usuario', 
+		)
+
+
 
 
 

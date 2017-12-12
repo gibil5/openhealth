@@ -277,18 +277,10 @@
 			}
 		},
 		{
-			"file": "views/reports/report_sale_months_physician.xml",
+			"file": "views/menus/menus_reporting_phy_can.xml",
 			"settings":
 			{
-				"buffer_size": 9257,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/reports/report_sale_months_phy.xml",
-			"settings":
-			{
-				"buffer_size": 9266,
+				"buffer_size": 2990,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -297,34 +289,24 @@
 			"file": "views/reports/report_sale_months_phy_can.xml",
 			"settings":
 			{
-				"buffer_size": 9455,
+				"buffer_size": 9593,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "views/reports/report_sale_doctors.xml",
+			"file": "views/stock/stock_move_selector.xml",
 			"settings":
 			{
-				"buffer_size": 10347,
-				"encoding": "UTF-8",
+				"buffer_size": 4065,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "views/menus/menus.xml",
+			"file": "views/reports/report_sale_months_phy.xml",
 			"settings":
 			{
-				"buffer_size": 11840,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/menus/menus_reporting_phy_ala.xml",
-			"settings":
-			{
-				"buffer_size": 2933,
+				"buffer_size": 9266,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -339,10 +321,28 @@
 			}
 		},
 		{
-			"file": "views/menus/menus_reporting_phy_can.xml",
+			"file": "views/menus/menus_reporting_phy_ala.xml",
 			"settings":
 			{
 				"buffer_size": 2933,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/menus/menus.xml",
+			"settings":
+			{
+				"buffer_size": 11840,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/reports/report_sale_doctors.xml",
+			"settings":
+			{
+				"buffer_size": 10347,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -396,15 +396,6 @@
 			"settings":
 			{
 				"buffer_size": 1174,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/orders/order.xml",
-			"settings":
-			{
-				"buffer_size": 37256,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -510,6 +501,9 @@
 	},
 	"file_history":
 	[
+		"/Users/gibil/cellar/github/openhealth/views/orders/order.xml",
+		"/Users/gibil/cellar/github/openhealth/views/stock/stock.xml",
+		"/Users/gibil/cellar/github/openhealth/views/reports/report_sale_months_physician.xml",
 		"/Users/gibil/cellar/github/openhealth/views/reports/report_sale.xml",
 		"/Users/gibil/cellar/github/openhealth/views/reports/report_sale_search.xml",
 		"/Users/gibil/cellar/github/openhealth/views/reports/report_sale_doctors.xml",
@@ -517,7 +511,6 @@
 		"/Users/gibil/cellar/github/openhealth/readme.txt",
 		"/Users/gibil/cellar/github/openhealth/views/patients/patient.xml",
 		"/Users/gibil/cellar/github/openhealth/models/patient.py",
-		"/Users/gibil/cellar/github/openhealth/views/stock/stock.xml",
 		"/Users/gibil/cellar/github/openhealth/tests/test_1.html",
 		"/Users/gibil/cellar/github/openhealth/tests/test_1.rb",
 		"/Users/gibil/cellar/github/openhealth/data/suppliers.xml",
@@ -547,7 +540,6 @@
 		"/Users/gibil/cellar/github/openhealth/security/openhealth_security_readers.xml",
 		"/Users/gibil/cellar/github/openhealth/security/ir.model.access.csv",
 		"/Users/gibil/cellar/github/openhealth/models/stock_move_selector.py",
-		"/Users/gibil/cellar/github/openhealth/views/orders/order.xml",
 		"/Users/gibil/cellar/github/openhealth/views/stock/stock_move_selector.xml",
 		"/Users/gibil/cellar/github/openhealth/views/stock/stock_move.xml",
 		"/Users/gibil/cellar/github/openhealth/models/howto/shell.rb",
@@ -636,8 +628,7 @@
 		"/Users/gibil/cellar/github/openhealth/security/openhealth_security_oe.xml",
 		"/Users/gibil/cellar/github/openhealth/reports/report_ticket_rec_buffer.xml",
 		"/Users/gibil/cellar/github/openhealth/reports/report_ticket_inv_buffer.xml",
-		"/Users/gibil/cellar/github/openhealth/reports/report_ticket_buffer.xml",
-		"/Users/gibil/cellar/github/openhealth/models/ticket_invoice.py"
+		"/Users/gibil/cellar/github/openhealth/reports/report_ticket_buffer.xml"
 	],
 	"find":
 	{
@@ -656,6 +647,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"domain",
 			"doctor",
 			"doctor - x",
 			"report_sale",
@@ -782,8 +774,7 @@
 			"page",
 			"user_id",
 			"phone",
-			"teléfono",
-			"context"
+			"teléfono"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -945,8 +936,8 @@
 						"selection":
 						[
 							[
-								2216,
-								2216
+								16,
+								16
 							]
 						],
 						"settings":
@@ -955,27 +946,114 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1867.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "views/reports/report_sale_months_physician.xml",
+					"file": "views/menus/menus_reporting_phy_can.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9257,
+						"buffer_size": 2990,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								150,
-								150
+								2967,
+								2967
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2113.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "views/reports/report_sale_months_phy_can.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9593,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1057,
+								1057
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 279.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "views/stock/stock_move_selector.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4065,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								255,
+								255
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1867.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "views/reports/report_sale_months_phy.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9266,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								40,
+								40
 							]
 						],
 						"settings":
@@ -991,49 +1069,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "views/reports/report_sale_months_phy.xml",
+					"buffer": 5,
+					"file": "views/menus/menus_reporting_phy.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9266,
+						"buffer_size": 2716,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								133,
-								133
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "views/reports/report_sale_months_phy_can.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 9455,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								9455
+								184,
+								184
 							]
 						],
 						"settings":
@@ -1046,64 +1095,6 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "views/reports/report_sale_doctors.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10347,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "views/menus/menus.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 11840,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								628,
-								628
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1795.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
 					"type": "text"
 				},
 				{
@@ -1132,24 +1123,53 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
 					"buffer": 7,
-					"file": "views/menus/menus_reporting_phy.xml",
+					"file": "views/menus/menus.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2716,
+						"buffer_size": 11840,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2266,
-								2266
+								628,
+								628
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "views/reports/report_sale_doctors.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10347,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								21,
+								21
 							]
 						],
 						"settings":
@@ -1162,35 +1182,6 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "views/menus/menus_reporting_phy_can.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2933,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								403,
-								403
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
 					"type": "text"
 				},
 				{
@@ -1219,7 +1210,7 @@
 						"translation.y": 408.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
@@ -1248,7 +1239,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
@@ -1306,7 +1297,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
@@ -1335,7 +1326,7 @@
 						"translation.y": 650.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
@@ -1364,40 +1355,11 @@
 						"translation.y": 872.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
 					"buffer": 15,
-					"file": "views/orders/order.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 37256,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7324,
-								7345
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 7519.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 13,
-					"type": "text"
-				},
-				{
-					"buffer": 16,
 					"file": "models/process.py",
 					"semi_transient": false,
 					"settings":
@@ -1422,11 +1384,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 16,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
-					"buffer": 17,
+					"buffer": 16,
 					"file": "tests/patient.rb",
 					"semi_transient": false,
 					"settings":
@@ -1450,11 +1412,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 17,
+					"stack_index": 16,
 					"type": "text"
 				},
 				{
-					"buffer": 18,
+					"buffer": 17,
 					"file": "models/order.py",
 					"semi_transient": false,
 					"settings":
@@ -1479,7 +1441,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 18,
+					"stack_index": 17,
 					"type": "text"
 				}
 			]

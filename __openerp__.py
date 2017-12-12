@@ -161,7 +161,9 @@
 		'data/users/base_data_users_managers.xml',	# check 
 		'data/users/base_data_users_staff.xml',		# check 
 		'data/users/base_data_users_almacen.xml',		# check 
+
 		'data/users/base_data_users_doctors.xml',		# check 
+		
 		'data/users/base_data_users_assistants.xml',	# check
 		'data/users/base_data_users_platform.xml',	# check
 		'data/users/base_data_users_cash.xml',		# check 

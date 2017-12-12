@@ -34,6 +34,66 @@ class sale_order(models.Model):
 
 
 
+
+	# Doctor 
+	x_doctor = fields.Many2one(
+			'oeh.medical.physician',
+			string = "Médico", 	
+		)
+
+
+
+
+	x_doctor_uid = fields.Many2one(
+			'res.users',
+			string = "Médico Uid", 	
+
+			compute='_compute_x_doctor_uid', 
+		)
+
+
+
+	@api.multi
+	#@api.depends('')
+	def _compute_x_doctor_uid(self):
+
+		for record in self:
+
+
+			_dic_phy = {
+
+							'Dr. Canales' : 'Paul Canales', 
+
+						}		
+
+
+			if record.x_doctor.name != False: 
+				
+				name = _dic_phy[record.x_doctor.name]
+
+
+				uid = self.env['res.users'].search([
+	
+															#('name', '=', 'Paul Canales'),
+															('name', '=', name),
+	
+													],
+													order='date desc',
+													limit=1,
+												)
+
+
+				record.x_doctor_uid = uid
+
+
+
+
+
+
+
+
+
+	# Order Line 
 	order_line = fields.One2many(
 			'sale.order.line', 
 			'order_id', 
@@ -260,11 +320,6 @@ class sale_order(models.Model):
 
 
 
-	# Doctor 
-	x_doctor = fields.Many2one(
-			'oeh.medical.physician',
-			string = "Médico", 	
-		)
 
 
 

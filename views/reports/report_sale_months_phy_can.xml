@@ -13,6 +13,13 @@ Paul Canales
 									('user_id','=','Administrator'), 
 									('partner_id','=','Dr. Canales'), 
 									('partner_id','=','Paul Canales'), 
+
+									('x_doctor','=','Dr. Canales'), 
+
+									('user_id','=',user_id), 
+
+
+									('x_doctor','=',user_id), 
 -->
 
 		<!-- December --> 
@@ -25,13 +32,30 @@ Paul Canales
 			<field name="search_view_id" ref="sale.view_order_product_search"/>
 		   <field name="domain">
 								[
-									('x_doctor','=','Dr. Canales'), 
+
+									('user_id','=',user_id), 
+
+
 
 									('date','&lt;=',time.strftime('2018-01-01')),
 									('date','&gt;=',time.strftime('%%Y-12-01'))
 								]
 			</field>
-			<field name="context">{'search_default_Sales':1,'group_by_no_leaf':1,'group_by': ['categ_id']}</field>
+
+
+<!--
+									'user_id':'Dr. Canales',
+-->
+			<field name="context">{
+									'search_default_Sales':1,
+									'group_by_no_leaf':1,
+									'group_by': ['categ_id'],
+									
+									'user_id':uid,
+								}
+			</field>
+			
+
 			<field name="help"></field>
 		</record>
 

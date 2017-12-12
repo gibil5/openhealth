@@ -14,7 +14,8 @@
 
 					parent="main_reporting_menu"
 
-					groups="openhealth.roots"
+
+					groups="openhealth.roots,openhealth.physicians"
 					/>
 
 
@@ -32,7 +33,7 @@
 			
 					sequence="5"
 
-					groups="openhealth.roots"
+					groups="openhealth.roots,openhealth.physicians"
 					/>
 
 
@@ -138,14 +139,21 @@
 					action="action_order_report_november_can"
 					/>
 
+
+
+
 		<!-- December -->
 		<menuitem 	id="sales_report_sales_december_can_menu" 
+
 					name="Diciembre" 
+			
 					parent="sales_reports_can_menu"
+			
 					sequence="12"
 
 					action="action_order_report_december_can"
-					/>
+
+				/>
 
 	</data>
 </openerp>

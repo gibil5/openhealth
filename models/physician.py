@@ -16,9 +16,9 @@ class Physician(models.Model):
 	
 
 	_inherit = 'oeh.medical.physician'	
-	
 	#_name = 'openhealth.physician'
 	
+
 
 
 

@@ -1308,8 +1308,8 @@ Order Line - Tree
 
 					<field name="x_doctor"/>
 <!--
-					<field name="x_doctor_uid"/>
 -->
+					<field name="x_doctor_uid"/>
 
 
 

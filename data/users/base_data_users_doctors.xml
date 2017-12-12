@@ -61,8 +61,7 @@
 
 
 
-<!-- Guillermon Alarcon --> 
-
+<!-- Guillermo Alarcon --> 
 		<record id="galarcon" model="res.partner">
 			<field name="name">Guillermo Alarcon</field>
 			<field name="email">galarcon@clinicachavarri.com</field>

@@ -60,28 +60,31 @@ class sale_order(models.Model):
 		for record in self:
 
 
-			_dic_phy = {
+			#_dic_phy = {
+			#				'Dr. Canales' : 'Paul Canales', 
+			#			}		
 
-							'Dr. Canales' : 'Paul Canales', 
-
-						}		
 
 
 			if record.x_doctor.name != False: 
-				
-				name = _dic_phy[record.x_doctor.name]
 
 
-				uid = self.env['res.users'].search([
-	
+				#name = _dic_phy[record.x_doctor.name]
+				#name = record.x_doctor.x_user_name
+				#name = record.x_doctor.x_user_name.name
+
+
+				#uid = self.env['res.users'].search([
 															#('name', '=', 'Paul Canales'),
-															('name', '=', name),
-	
-													],
-													order='date desc',
-													limit=1,
-												)
+				#											('name', '=', name),
+				#									],
+				#									order='date desc',
+				#									limit=1,
+				#								)
 
+
+
+				uid = record.x_doctor.x_user_name.id
 
 				record.x_doctor_uid = uid
 

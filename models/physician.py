@@ -35,8 +35,13 @@ class Physician(models.Model):
 	
 
 
-	x_user_name = fields.Char(
-			'Nombre de usuario', 
+	#x_user_name = fields.Char(
+	x_user_name = fields.Many2one(
+
+		
+			'res.users',
+		
+			string = "Nombre de usuario", 	
 		)
 
 

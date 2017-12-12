@@ -96,8 +96,9 @@
 			<field name=" consultancy_type ">residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
 
-
+<!--
 			<field name="x_user_name">Fernando Chavarri</field>
+-->
 		</record>
 
 
@@ -172,8 +173,9 @@
 			<field name="x_type">doctor</field>
 			<field name=" consultancy_type ">residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
-
+<!--
 			<field name="x_user_name">Paul Canales</field>
+-->
 		</record>
 
 

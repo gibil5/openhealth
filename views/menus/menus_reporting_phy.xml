@@ -6,13 +6,17 @@
 
 
 
+<!--
+					groups="openhealth.physicians"
+-->
+
 <!-- Physicians --> 
 		<menuitem 	id="sales_reports_phy_menu" 
-					name="Reporting Mensual - 2017 - Med"
+					name="Reporting - Todos"
 					parent="main_reporting_menu"
 					sequence="5"
 
-					groups="openhealth.physicians"
+					groups="openhealth.roots,openhealth.directors"
 					/>
 
 

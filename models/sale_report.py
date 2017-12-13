@@ -23,7 +23,8 @@ class sale_report(osv.osv):
 		'user_id': fields.many2one('res.users', 'Salesperson', readonly=True),
 
 
-		'x_doctor': fields.many2one('oeh.medical.physician', 'Doctor - xyz', readonly=True), 
+		'x_doctor': fields.many2one('oeh.medical.physician', 'Doctor', readonly=True), 
+		'x_doctor_uid': fields.many2one('res.users', 'Doctor - User name - jx', readonly=True), 
 
 
 		'price_total': fields.float('Total Price', readonly=True),
@@ -65,6 +66,7 @@ class sale_report(osv.osv):
 					s.user_id as user_id,
 
 					s.x_doctor as x_doctor, 
+					s.x_doctor_uid as x_doctor_uid, 
 
 					s.company_id as company_id,
 					extract(epoch from avg(date_trunc('day',s.date_order)-date_trunc('day',s.create_date)))/(24*60*60)::decimal(16,2) as delay,
@@ -110,6 +112,7 @@ class sale_report(osv.osv):
 
 					s.user_id,
 					s.x_doctor, 
+					s.x_doctor_uid, 
 					
 					s.state,
 					s.company_id,

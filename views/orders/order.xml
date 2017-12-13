@@ -1538,18 +1538,19 @@ grey:state in ('cancel')
 
 					<field name="state"/>
 
-
-
-					<field name="note"   />  
-
 					<field name="user_id"		string="Vendedor"	/>
+
+					
+
 
 					<field name="x_doctor"		/>
 					
+					<field name="x_doctor_uid"		/>
+					
+
+
+
 					<field name="partner_id"/>
-
-
-
 
 					<field name="product"/>
 
@@ -1557,17 +1558,7 @@ grey:state in ('cancel')
 
 					<field name="nr_lines"/>
 
-
-
-
-<!--
-					<field name="x_amount_total" 	sum="Total Tax Included"	widget="monetary"/>
-					<field name="amount_total" 		sum="Total Tax Included"	widget="monetary"/>
-					<field name="margin"/>
--->
 					<field name="amount_untaxed"	sum="Total Untaxed"			widget="monetary"		string="Total"	/>
-
-
 
 				</tree>
 			</field>
@@ -1575,6 +1566,12 @@ grey:state in ('cancel')
 
 
 <!--
+					<field name="note"   />  
+					<field name="x_amount_total" 	sum="Total Tax Included"	widget="monetary"/>
+					<field name="amount_total" 		sum="Total Tax Included"	widget="monetary"/>
+					<field name="margin"/>
+
+
 
 					<field name="comment"/>
 					<field name="team_id"/>

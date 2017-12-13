@@ -48,31 +48,30 @@ class sale_order(models.Model):
 			'res.users',
 			string = "Médico Uid", 	
 
-			compute='_compute_x_doctor_uid', 
+			#compute='_compute_x_doctor_uid', 
 		)
+
+
+	@api.onchange('x_doctor')
+	
+	def _onchange_x_doctor(self):
+
+			if self.x_doctor.name != False: 
+
+				uid = self.x_doctor.x_user_name.id
+				
+				self.x_doctor_uid = uid
+
+
+
 
 
 
 	@api.multi
 	#@api.depends('')
 	def _compute_x_doctor_uid(self):
-
 		for record in self:
-
-
-			#_dic_phy = {
-			#				'Dr. Canales' : 'Paul Canales', 
-			#			}		
-
-
-
 			if record.x_doctor.name != False: 
-
-
-				#name = _dic_phy[record.x_doctor.name]
-				#name = record.x_doctor.x_user_name
-				#name = record.x_doctor.x_user_name.name
-
 
 				#uid = self.env['res.users'].search([
 															#('name', '=', 'Paul Canales'),
@@ -82,10 +81,7 @@ class sale_order(models.Model):
 				#									limit=1,
 				#								)
 
-
-
 				uid = record.x_doctor.x_user_name.id
-
 				record.x_doctor_uid = uid
 
 

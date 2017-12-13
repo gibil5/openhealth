@@ -52,15 +52,13 @@ class sale_order(models.Model):
 		)
 
 
-	@api.onchange('x_doctor')
-	
-	def _onchange_x_doctor(self):
 
-			if self.x_doctor.name != False: 
 
-				uid = self.x_doctor.x_user_name.id
-				
-				self.x_doctor_uid = uid
+	#@api.onchange('x_doctor')
+	#def _onchange_x_doctor(self):
+	#		if self.x_doctor.name != False: 
+	#			uid = self.x_doctor.x_user_name.id
+	#			self.x_doctor_uid = uid
 
 
 
@@ -2367,6 +2365,17 @@ class sale_order(models.Model):
 
 		#Write your logic here - Begin
 
+
+
+		# Doctor User Name 
+		if self.x_doctor.name != False: 
+			uid = self.x_doctor.x_user_name.id
+			self.x_doctor_uid = uid
+
+
+
+
+
 		# Change State to Scheduled 
 		if self.x_family == 'consultation'	or 	self.x_family == 'procedure': 
 			self.x_appointment.state = 'Scheduled'
@@ -2538,7 +2547,14 @@ class sale_order(models.Model):
 
 
 
+
+
 # ----------------------------------------------------------- CRUD ------------------------------------------------------
+
+
+
+
+
 
 	@api.multi
 	def unlink(self):
@@ -2560,12 +2576,13 @@ class sale_order(models.Model):
 
 
 
+
 # Write - Deprecated ?
 	@api.multi
 	def write(self,vals):
 
-		#print 
-		#print 'CRUD - Order - Write'
+		print 'jx'
+		print 'CRUD - Order - Write'
 		#print 
 		#print vals
 		#print 
@@ -2578,20 +2595,24 @@ class sale_order(models.Model):
 
 
 
+
+
+
 		#Write your logic here
 		res = super(sale_order, self).write(vals)
 		#Write your logic here
 		#print 
 		#print 
 
+
+		#if self.x_doctor.name != False: 
+		#	uid = self.x_doctor.x_user_name.id	
+		#	self.x_doctor_uid = uid
+
+
 		return res
 
 	# CRUD 
 
 
-
-
-
 #sale_order()
-
-

@@ -24,7 +24,7 @@ class sale_report(osv.osv):
 
 
 		'x_doctor': fields.many2one('oeh.medical.physician', 'Doctor', readonly=True), 
-		'x_doctor_uid': fields.many2one('res.users', 'Doctor - User name - jx', readonly=True), 
+		'x_doctor_uid': fields.many2one('res.users', 'Doctor - User name', readonly=True), 
 
 
 		'price_total': fields.float('Total Price', readonly=True),

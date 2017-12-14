@@ -48,6 +48,7 @@ class sale_order(models.Model):
 			'res.users',
 			string = "Médico Uid", 	
 
+			readonly = True, 
 			#compute='_compute_x_doctor_uid', 
 		)
 

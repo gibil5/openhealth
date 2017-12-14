@@ -114,6 +114,22 @@ class PurchaseOrder(models.Model):
 
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 
+	# Print 
+	@api.multi
+	def print_quotation(self):
+		
+		print 'jx'
+		print 'Print quotation'
+
+		#self.write({'state': "sent"})
+		
+
+		#return self.env['report'].get_action(self, 'purchase.report_purchasequotation')
+		return self.env['report'].get_action(self, 'openhealth.report_purchasequotation')
+
+
+
+
 
 	# Clean
 	@api.multi

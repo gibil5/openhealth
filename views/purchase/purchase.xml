@@ -125,7 +125,39 @@
 				</xpath>
 				<xpath expr="//button[@name='print_quotation']" position="replace">
 				</xpath>
+
+				
+                    <button name="print_quotation" string="Print RFQ" type="object" states="draft" class="oe_highlight" groups="base.group_user"/>
+                    <button name="print_quotation" string="Re-Print RFQ" type="object" states="sent" groups="base.group_user"/>
 -->
+
+				<xpath expr="//button[@name='print_quotation']" position="replace">
+					<button 
+							name="print_quotation" 
+							string="Print RFQ - jx" 
+							type="object" 
+						
+							states="pre_draft" 
+						
+							class="oe_highlight" 
+							groups="base.group_user"
+						/>
+				</xpath>
+
+				<xpath expr="//button[@name='print_quotation']" position="replace">
+					<button 
+							name="print_quotation" 
+
+							string="IMPRIMIR" 
+							
+							type="object" 
+
+							states="pre_draft" 
+							
+							groups="base.group_user"
+						/>
+				</xpath>
+
 
 
 
@@ -286,7 +318,18 @@
 				</xpath>
 
 
+
+
+				<xpath expr="//field[@name='dest_address_id']" position="replace">
+
+					<field name="dest_address_id"	/>
 				
+				</xpath>
+				
+
+
+
+
 
 				<xpath expr="//field[@name='product_id']" position="replace">
 
@@ -300,6 +343,8 @@
 						/>
 				
 				</xpath>
+
+
 
 
 

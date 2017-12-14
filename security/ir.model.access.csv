@@ -4,6 +4,27 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+access_product_supplierinfo,product.supplierinfo,product.model_product_supplierinfo,,1,1,1,1
+
+
+
+access_res_partner_directors,res.partner.directors,model_res_partner,openhealth.directors,1,1,1,1
+
+access_res_partner_reception,res.partner.reception,model_res_partner,openhealth.reception,1,1,1,0
+
+access_res_partner_caja,res.partner.caja,model_res_partner,openhealth.caja,1,1,1,0
+
+access_res_partner_almacen,res.partner.almacen,model_res_partner,openhealth.almacens,1,1,1,0
+
+
+
+
+
+
+
+
+
+
 access_stock_picking,stock.picking,stock.model_stock_picking,,1,1,1,1
 
 access_account_invoice,account.invoice,account.model_account_invoice,,1,1,1,1
@@ -107,13 +128,6 @@ access_oeh_medical_physician_line_reception,oeh.medical.physician reception,oehe
 
 
 
-
-
-access_res_partner_directors,res.partner.directors,model_res_partner,openhealth.directors,1,1,1,1
-
-access_res_partner_reception,res.partner.reception,model_res_partner,openhealth.reception,1,1,1,0
-
-access_res_partner_caja,res.partner.caja,model_res_partner,openhealth.caja,1,1,1,0
 
 
 

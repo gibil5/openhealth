@@ -18,13 +18,22 @@ class sale_order_line(models.Model):
 
 
 
+
+
 	product_uom_qty = fields.Float(
 		string='Quantity', 
-		#digits=dp.get_precision('Product Unit of Measure'), 
+
 		#required=True, 
+
+		#digits=dp.get_precision('Product Unit of Measure'), 		
+		#digits=(16, 1), 
+		digits=(16, 0), 
+
 		required=False,
 		default=1.0
 	)
+
+
 
 
 	product_uom = fields.Many2one(

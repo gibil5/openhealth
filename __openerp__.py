@@ -20,7 +20,7 @@
 
 		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant\n
 
-		Last built: 	12 December 2017 - Yey !
+		Last built: 	13 December 2017 - Yey !
 
 		Created: 	 	11 Sep 2016
 
@@ -115,6 +115,10 @@
 		'reports/report_ticket_sale_order.xml',
 		'reports/report_ticket_invoice.xml',
 		'reports/report_ticket_receipt.xml',
+
+
+		#'reports/report_purchasequotation_template.xml',
+		'reports/report_purchasequotation.xml',
 
 
 
@@ -229,7 +233,9 @@
 
 		'security/openhealth_security_readers.xml',
 		'security/openhealth_security_buf.xml',
+
 		'security/ir.model.access.csv',
+		
 		'security/ir.rule.xml',
 
 

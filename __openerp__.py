@@ -117,8 +117,7 @@
 		'reports/report_ticket_receipt.xml',
 
 
-		#'reports/report_purchasequotation_template.xml',
-		'reports/report_purchasequotation.xml',
+		#'reports/report_purchasequotation.xml',
 
 
 

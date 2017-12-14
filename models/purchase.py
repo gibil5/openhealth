@@ -9,8 +9,6 @@
 from openerp import models, fields, api
 
 
-
-
 class PurchaseOrder(models.Model):
 	
 	_inherit = 'purchase.order'
@@ -19,12 +17,125 @@ class PurchaseOrder(models.Model):
 
 
 
-# New
+	#@api.model
+	#def _default_payment_term_id(self):
+	#	type_obj = self.env['account.payment.term']
+
+	#	types = type_obj.search([
+	#								('name', '=', 'CONTADO'), 
+	#							],
+	#								order='create_date desc',
+	#								limit=1,
+	#							)
+	#	return types
 
 
+
+	@api.model
+	def _default_dest_address_id(self):
+
+		type_obj = self.env['res.partner']
+
+		types = type_obj.search([
+									('name', '=', 'Clinica Chavarri'), 
+								],
+
+									order='date desc',
+									limit=1,
+								)
+		return types
 
 
 # ----------------------------------------------------------- Fields ------------------------------------------------------
+
+
+
+
+
+	dest_address_id = fields.Many2one(
+				'res.partner', 
+				string='Drop Ship Address', 
+				#states=READONLY_STATES,
+				#default=_default_dest_address_id,			
+				
+				compute='_compute_default_address_id', 
+		)
+
+
+	@api.multi
+	#@api.depends('')
+	def _compute_default_address_id(self):
+		for record in self:
+
+			type_obj = self.env['res.partner']
+
+
+			daid = type_obj.search([
+										('name', '=', 'Clinica Chavarri'), 
+									],
+
+										order='date desc',
+										limit=1,
+									)
+
+
+			record.dest_address_id = daid
+
+
+
+
+
+
+
+
+	payment_term_id = fields.Many2one(
+			'account.payment.term', 
+
+			#'Payment Term',
+			'Condición de pago',
+			
+			#default=_default_payment_term_id,			
+		)
+
+
+
+
+
+	amount_untaxed = fields.Monetary(
+
+			#string='Untaxed Amount', 
+			string='TOTAL NETO', 
+		
+			store=True, 
+			readonly=True, 
+			compute='_amount_all', 
+			track_visibility='always'
+		)
+	
+
+	amount_tax = fields.Monetary(
+
+			#string='Taxes', 
+			string='TOTAL IGV', 
+		
+			store=True, 
+			readonly=True, 
+			compute='_amount_all'
+		)
+	
+	amount_total = fields.Monetary(
+
+			#string='Total', 
+			string='TOTAL', 
+		
+			store=True, 
+			readonly=True, 
+			compute='_amount_all'
+		)
+
+
+
+
 
 	# Cancel Reason 
 	x_cancel_reason = fields.Text(

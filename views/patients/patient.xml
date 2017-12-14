@@ -1,55 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!--
-	*** OPEN HEALTH
-
-	Created: 			26 Aug 2016
-	Last updated: 	 	25 Aug 2017
--->
-
 <openerp>
 	<data>
 
 
 
-
-
-<!-- Favorites -->
-
-		<!-- By Month --> 
-	    <record id="openhealth.filter_patient_month" model="ir.filters">
-
-	        <field name="name">Por Mes</field>
-
-	        <field name="model_id">oeh.medical.patient</field>
-
-	        <field name="context">{
-	        					
-	        						'group_by': ['x_date_created'], 
-									'order':	'x_date_created desc', 
-
-	        					}</field>
-	    </record>
-
-
-
-		<!-- By Vip --> 
-<!--		
-	    <record id="openhealth.filter_patient_vip" model="ir.filters">
-
-	        <field name="name">Por VIP</field>
-
-	        <field name="model_id">oeh.medical.patient</field>
-
-	        <field name="context">{'group_by': ['x_vip']}</field>
-	    </record>
--->
-
-
-
-
-
-
+		<!-- FORM --> 
 		<record model="ir.ui.view" id="oeh_medical_patient_view">
 			<field name="name">Patient</field>
 			<field name="model">oeh.medical.patient</field>			
@@ -343,6 +298,7 @@
 				</form>
 			</field>
 		</record>
+		<!-- FORM --> 
 
 
 
@@ -351,46 +307,68 @@
 
 
 
-
-
-
-
-		<!-- Window List action -->
-		<!-- Deprecated -->
-		<record model="ir.actions.act_window" id="patient_vip_list_action">			
-			<field name="name">Pacientes Vip - jx</field>
-			<field name="res_model">oeh.medical.patient</field>
-			<field name="view_type">form</field>
-<!--			
-			<field name="view_mode">kanban,tree,form</field>
--->
-			<field name="view_mode">tree,form,kanban</field>
-			
-			<field name="context">{'order': 'name'}</field>
+		<!-- TREE -->
+		<record model="ir.ui.view" id="oehealth.oeh_medical_patient_tree">
+			<field name="name">patient.tree</field>
+			<field name="model">oeh.medical.patient</field>
+			<field name="arch" type="xml">			
 
 <!--
-									('x_vip', '=', True),
-
-									('x_card', '!=', False ),
-									('x_card.name', '!=', False ),
-									('x_vip', '=', True),
+				<tree string="Patient Tree">
+				<tree string="Patient Tree"  	colors="red:x_nr_clones!=1;"  >
 -->
-			<field name="domain">[
-
-									('x_vip', '!=', False),
+				<tree string="Patient Tree"  	colors="red:x_flag=='error';"  >
 				
-				]</field>
 
-			<!--
-			<field name="domain">[]</field>
-			<field name="context">{}</field>
-			<field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first treatment
-				</p>
+					<field name="name"/>
+
+					<field name="x_dni"/>		
+
+
+
+					<field name="x_vip"/>
+
+					<field name="x_card"/>
+
+					<field name="write_date"/>
+
+					<field name="x_flag"/>
+
+					<field name="x_date_created"/>
+
+					<field name="x_datetime_created"/>
+
+					<field name="date"/>
+
+					<field name="x_first_contact"/>
+
+					<field name="comment"/>
+
+					<field string="Historia Médica"  name="identification_code"/>
+
+					<field name="sex"/>		
+
+					<field name="dob"/>
+					
+					<field name="age"/>
+				</tree>
 			</field>
-			-->
 		</record>
+<!--
+					<field name="x_nr_clones"/>
+					<field name="x_lowcase"/>
+					<field name="id"/>
+					<field name="x_datetime_created"/>
+					<field name="x_spaced"/>
+					<field name="x_last_name"  />
+					<field name="x_first_name"  />
+					<field name="x_full_name"  />
+					<field name="x_status"/>		
+					<field name="x_owner"/>		
+					<field name="x_sex"/>		
+					<field name="x_year_created"/>
+					<field name="x_month_created"/>
+-->
 
 
 
@@ -399,11 +377,7 @@
 
 
 
-
-
-
-
-		<!-- Window List action -->
+		<!-- ACTION -->
 		<record model="ir.actions.act_window" id="patient_list_action">		
 
 			<field name="name">Pacientes</field>
@@ -436,104 +410,24 @@
 
 
 
-
-
-		<!-- TREE -list view -->
-		<record model="ir.ui.view" id="oehealth.oeh_medical_patient_tree">
-			<field name="name">patient.tree</field>
-			<field name="model">oeh.medical.patient</field>
-			<field name="arch" type="xml">			
-			<!--	
-			<field name="priority" eval="1"/>
-
-				<tree string="Patient Tree">
-				<tree default_order='x_date_created desc'>
-				<tree default_order='x_date_created desc'>
-			-->
-
-<!--
-				<tree string="Patient Tree">
-				<tree string="Patient Tree"  	colors="red:x_nr_clones!=1;"  >
--->
-				<tree string="Patient Tree"  	colors="red:x_flag=='error';"  >
+		<!-- ACTION -->
+		<record model="ir.actions.act_window" id="patient_vip_list_action">			
+			<field name="name">Pacientes Vip - jx</field>
+			<field name="res_model">oeh.medical.patient</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form,kanban</field>
+			<field name="context">{'order': 'name'}</field>
+			<field name="domain">[
+									('x_vip', '!=', False),
 				
+				]</field>
 
-					<field name="name"/>
-
-					<field name="x_vip"/>
-					<field name="x_card"/>
-
-
-					<field name="write_date"/>
-
-
-
-
-					<field name="x_flag"/>
-<!--
-
-					<field name="x_nr_clones"/>
-
-					<field name="x_lowcase"/>
--->
-
-
-
-					<field name="x_date_created"/>
-					<field name="x_datetime_created"/>
-
-					<field name="date"/>
-
-
-
-
-<!--
-					<field name="x_datetime_created"/>
-					<field name="x_spaced"/>
--->
-
-
-
-
-					
-					<field name="x_first_contact"/>
-
-
-					<field name="comment"/>
-
-
-<!--
-					<field name="id"/>
--->
-
-					<field string="Historia Médica"  name="identification_code"/>
-					<field name="sex"/>		
-
-<!--
-					<field name="x_last_name"  />
-					<field name="x_first_name"  />
-					<field name="x_full_name"  />
-
-					<field name="x_status"/>		
-					<field name="x_owner"/>		
-					<field name="x_sex"/>		
--->
-
-					<field name="x_dni"/>		
-
-
-
-
-<!--
-					<field name="x_year_created"/>
-					<field name="x_month_created"/>
--->
-
-
-					<field name="dob"/>
-					
-					<field name="age"/>
-				</tree>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first treatment
+				</p>
 			</field>
 		</record>
 
@@ -541,32 +435,60 @@
 
 
 
-		<!-- Menus --> 
-		<!-- top level menu: no parent -->
-		<!--
-		<menuitem id="openhealth_patient_menu" name="OpenHealth - Base"/>
+
+
+
+
+
+		<!-- FAVS -->
+
+		<!-- By Month --> 
+		<record id="openhealth.filter_patient_month" model="ir.filters">
+			<field name="name">Por Mes</field>
+			<field name="model_id">oeh.medical.patient</field>
+			<field name="context">{
+									'group_by': ['x_date_created'], 
+									'order':	'x_date_created desc', 
+								}</field>
+		</record>
+
+		<!-- By Vip --> 
+		<!--		
+		<record id="openhealth.filter_patient_vip" model="ir.filters">
+			<field name="name">Por VIP</field>
+			<field name="model_id">oeh.medical.patient</field>
+			<field name="context">{'group_by': ['x_vip']}</field>
+		</record>
 		-->
 
 
-		<!-- A first level in the left side menu is needed before using action= attribute -->
-		<!--
-		<menuitem id="openextension_menu" name="Open Health"
-			parent="main_openextension_menu"/>
-		--> 
 
 
-		<!-- the following menuitem should appear *after*
-		its parent openextension_menu and *after* its
-		action treatment_list_action -->
-		<!--
-		<menuitem id="openhealth_patients_jx_menu" name="Pacientes" 
-			parent="openhealth_patient_menu"
-			action="patient_list_action"/>
-		-->
 
-		<!-- Full id location:
-		action="openextension.treatment_list_action"
-		It is not required when it is the same module -->
+
+
+
+		<!-- FILTER --> 
+		<record id="patient_view_template_filter" model="ir.ui.view">
+			<field name="name">Patient Search</field>
+			<field name="model">oeh.medical.patient</field>
+		   	<field name="arch" type="xml">
+
+				<search string="patients">
+
+
+				<field 	name="name" 
+
+						filter_domain="['|',('name','ilike',self),('x_dni','ilike',self)]"/>
+
+
+			   
+
+			   </search>
+		   </field>
+	   </record>
+
+
 
 	</data>
 </openerp>

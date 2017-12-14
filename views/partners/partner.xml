@@ -144,10 +144,23 @@
 
 <!--
 -->
+
+
+
 					<field name="x_warning"			attrs = "{'invisible':[('x_my_company','in',(False))]}"		/>
 
+					<field name="vspace"		/>
+
+
+
+					<field name="x_warning_purchase"			attrs = "{'invisible':[('x_my_company','in',(False))]}"		/>
 
 					<field name="vspace"		/>
+
+
+
+
+
 
 					<field  name="x_dni"	attrs = "{
 														'required':[('company_type','in',('person'))], 

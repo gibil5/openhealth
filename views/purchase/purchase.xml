@@ -127,8 +127,8 @@
 				</xpath>
 
 				
-                    <button name="print_quotation" string="Print RFQ" type="object" states="draft" class="oe_highlight" groups="base.group_user"/>
-                    <button name="print_quotation" string="Re-Print RFQ" type="object" states="sent" groups="base.group_user"/>
+					<button name="print_quotation" string="Print RFQ" type="object" states="draft" class="oe_highlight" groups="base.group_user"/>
+					<button name="print_quotation" string="Re-Print RFQ" type="object" states="sent" groups="base.group_user"/>
 -->
 
 				<xpath expr="//button[@name='print_quotation']" position="replace">
@@ -320,28 +320,16 @@
 
 
 
-				<xpath expr="//field[@name='dest_address_id']" position="replace">
-
-					<field name="dest_address_id"	/>
 				
-				</xpath>
-				
-
-
 
 
 
 				<xpath expr="//field[@name='product_id']" position="replace">
-
 					<field 	
-						
 							name="product_id" 
-
 							context="{'partner_id': parent.partner_id}"
-
 							options="{'no_create': True}"
 						/>
-				
 				</xpath>
 
 
@@ -350,9 +338,112 @@
 
 
 
+<!--
+<field name="amount_untaxed" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+
+<field name="amount_tax" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+
+
+<div class="oe_subtotal_footer_separator oe_inline">
+<label for="amount_total"/>
+</div>
+
+<field name="amount_total" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+
+-->
+
+
+				<xpath expr="//field[@name='amount_untaxed']" position="replace">
+					<field 
+							name="amount_untaxed" 
+							widget="monetary" 
+							options="{'currency_field': 'currency_id'}"
+
+							string="TOTAL NETO"
+					/>
+				</xpath>
+
+
+				<xpath expr="//field[@name='amount_tax']" position="replace">
+					<field 
+							name="amount_tax" 
+							widget="monetary" 
+							options="{'currency_field': 'currency_id'}"
+
+							string="TOTAL IGV"
+							/>
+				</xpath>
+
+
+				<xpath expr="//field[@name='amount_total']" position="replace">
+
+					<field 
+							name="amount_total" 
+							nolabel="1" 
+							class="oe_subtotal_footer_separator" 
+							widget="monetary" 
+							options="{'currency_field': 'currency_id'}"
+
+							string="TOTAL"
+							/>
+				</xpath>
+
+
+
+<!--
+<field name="payment_term_id" options="{'no_open': True, 'no_create': True}" attrs="{'readonly': [('invoice_status','=', 'invoiced')]}"/>
+-->
+
+				<xpath expr="//field[@name='payment_term_id']" position="replace">
+					<field 
+							name="payment_term_id" 
+							options="{'no_open': True, 'no_create': True}" 
+							attrs="{'readonly': [('invoice_status','=', 'invoiced')]}"
+
+
+							string="Condición de pago"
+						/>
+				</xpath>
+
+
+
+				<xpath expr="//field[@name='incoterm_id']" position="replace">
+				</xpath>
+
+				<xpath expr="//field[@name='fiscal_position_id']" position="replace">
+				</xpath>
+
+
+
+<!--
+					<field name="dest_address_id" groups="stock.group_locations" attrs="{'invisible': [('default_location_dest_id_usage', '!=', 'customer')], 'required': [('default_location_dest_id_usage', '=', 'customer')]}"/>
+-->
+				<xpath expr="//field[@name='dest_address_id']" position="replace">
+					<field 
+							name="dest_address_id"	
+
+							string="Lugar de entrega"
+						/>				
+				</xpath>
+
+
+
+
+
+
+<!-- 
+Chatter - Deprecated !!!
+Look for the Minimalist experience !!!
+-->
+				<field name="message_follower_ids" position="replace">
+				</field>
+				
+				<field name="message_ids" position="replace">
+				</field>
+
 			</field>
 		</record>
-
+		<!-- FORM --> 
 
 
 

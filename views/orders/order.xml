@@ -1476,6 +1476,7 @@ Order Line - Tree
 
 
 
+
 <!-- 
 Chatter - Deprecated !!!
 Look for the Minimalist experience !!!
@@ -1490,6 +1491,7 @@ Look for the Minimalist experience !!!
 				</field>
 				<field name="message_ids" position="replace">
 				</field>
+
 
 			</field>
 		</record>

@@ -42,9 +42,20 @@ class Partner(models.Model):
 
 
 
-	# Warning 
-	x_warning = fields.Text()
 
+	# Warning Sales
+	x_warning = fields.Text(
+
+			'Condiciones de Venta', 
+		)
+
+
+
+	# Warning Purchase 
+	x_warning_purchase = fields.Text(
+
+			'Condiciones de Compra', 
+		)
 
 
 

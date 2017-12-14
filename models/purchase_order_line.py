@@ -38,4 +38,14 @@ class PurchaseOrderLine(models.Model):
 
 
 
+	#x_default_code = fields.Char(
+	#		string='Código', 
+	#	)
+
+
+
+
+
+
+
 

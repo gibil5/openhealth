@@ -788,20 +788,29 @@
 
 
 
+
 		
-		<!-- Filter --> 
+		<!-- FILTER --> 
         <record id="product.view_product_template_filter" model="ir.ui.view">
            <field name="name">Product Search</field>
            <field name="model">product.template</field>	
 		   <field name="arch" type="xml">
                <search string="products">
 
-                   <field name="name" />
+				<field 	name="name" 
+
+                    	filter_domain="['|',('name','ilike',self),('default_code','ilike',self)]"/>
+
+
+<!--
                    <field name="x_origin" />               
+                   <field name="default_code" />
+-->
                
                </search>
            </field>
        </record>
+
 
 
 

@@ -1,53 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
-
 	<data>
 
 
-		<!-- TREATMENT --> 
 
-
-
-
-
-
-
-
-<!-- Favorites -->
-
-		<!-- By Month --> 
-	    <record id="openhealth.filter_tre_order_month" model="ir.filters">
-
-	        <field name="name">Por Mes</field>
-
-	        <field name="model_id">openhealth.treatment</field>
-
-	        <field name="context">{'group_by': ['start_date']}</field>
-	    </record>
-
-
-
-		<!-- By Doctor --> 
-	    <record id="openhealth.filter_tre_order_phy" model="ir.filters">
-
-	        <field name="name">Por Medico</field>
-
-	        <field name="model_id">openhealth.treatment</field>
-
-	        <field name="context">{'group_by': ['physician']}</field>
-	    </record>
-
-
-
-
-
-
-		<!-- Form view --> 
+		<!-- FORM --> 
 		<record model="ir.ui.view" id="treatment_form_view">
 			<field name="name">treatment.form</field>
 			<field name="model">openhealth.treatment</field>
 			<field name="arch" type="xml">
-				
 				<form string="Treatment Form">
 					
 
@@ -58,55 +19,22 @@
 
 
 						<!-- Create Appointment --> 
-						<!--
-							context="{									
-											'search_default_treatment': active_id,
-										}" 											
-							name="%(appointment_form_action)d"	
-
-
-							attrs="{'invisible':[
-												
-												('state','in',[ 'appointment', 'consultation', 'service', 'budget', 'invoice', 'procedure', 'sessions', 'controls', 'done']), 
-
-												]}"
-
-
-							states="False"
-
-							string="Crear Cita" 
-
-							type="object" 
-							name="open_appointment" 
-						-->
-
-
 						<button 
 							name="%(oeh_medical_appointment_action_tree_confirmed)d"	
-
 							type="action" 
-
 							class="oe_highlight"
-
-
 							states="empty"
-
 							
 							context="{									
 											'search_default_doctor': physician,
-
 											'default_patient': patient, 
-											
 											'default_doctor' : physician, 
-											
 											'default_appointment_date': start_date, 
-											
 											'default_treatment': active_id, 
-
 											'default_x_target' : 'doctor', 
-											
 											'default_x_type': 'consultation', 
 									}" 											
+
 
 
 							string="Crear CITA"
@@ -118,57 +46,22 @@
 
 
 
-
-
-<!--
-jz
-
-							type="action" 
-							name="%(order_form_action)d"	
-
-
-							context="{									
-											'search_default_treatment': active_id,
-											'default_partner_id': partner_id, 
-											'default_treatment': active_id, 
-										}" 
-							name="create_order" 
-							string="Crear PRESUPUESTO - Consulta" 
--->
-
+						<!-- Create Budget Consultation --> 
 						<button 
 							type="object" 
 							name="create_order_con" 							
 							class="oe_highlight"
+							states="appointment"
   
-
 							string="Crear PRESUPUESTO - Consulta" 
 
 							groups="openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
 
-							states="appointment"
 						/>
 
 
 
-
-
-
 						<!-- Create Consultation --> 
-<!--
-							attrs="{'invisible':[
-												
-												('state','in',[ False, 'empty', 'consultation', 'service', 'budget', 'invoice', 'procedure', 'sessions', 'controls', 'done']), 
-
-												]}"
-
-							states="appointment"
-							attrs="{'invisible':[												
-													('consultation_progress','in',[ False, '0.0', 0.0, 0, '10.0', 10.0, 10]),
-												]}"
-
-
--->
 						<button 
 							name="open_consultation_current" 
 							type="object" 
@@ -185,18 +78,7 @@ jz
 
 
 
-
 						<!-- Create Service --> 
-<!--						
-							attrs="{'invisible':[
-												('state','in',[ False, 'appointment', 'service', 'budget', 'invoice', 'procedure', 'sessions', 'controls', 'done']),
-												]}"
-							string="Crear RECOMENDACION" 
-
-
-
-							groups="openhealth.managers,openhealth.physicians"
--->
 						<button 
 
 							type="object" 
@@ -214,32 +96,8 @@ jz
 
 
 
+
 						<!-- Create Order --> 
-<!--
-							attrs="{'invisible':[
-												('state','in',[ False, 'appointment', 'consultation', 'budget', 'invoice', 'procedure', 'sessions', 'controls', 'done']),
-												]}"
-
-
-
-										'search_default_doctor': physician, 										
-										'default_patient': patient, 
-										'default_doctor' : physician
-
-							name="create_budget" 
-							context="{
-										'default_x_family': 'procedure', 
-									}" 
-
-
-jz
-
-
-							groups="openhealth.managers,openhealth.physicians"
-							string="Crear PRESUPUESTO - Procedimiento" 
-
-							groups="openhealth.reception,openhealth.caja,openhealth.physicians,openhealth.managers,openhealth.directors"
--->						
 						<button 
 
 
@@ -259,37 +117,9 @@ jz
 
 
 
+
 						<!-- Pay --> 
-<!--
 						<button 
-							type="object" 
-							class="oe_highlight"
-
-							string="Pagar en Caja" 
-
-							attrs="{'invisible':[
-												('state','in',[ False, 'appointment', 'consultation', 'service', 'invoice', 'procedure', 'sessions', 'controls', 'done']),
-												]}"
-
-							name="create_invoice" 
-						/>
--->
-
-
-						<!-- Create Procedure --> 
-<!--
-							attrs="{ 
-									'invisible':[
-												
-												('state','in',[ False, 'appointment', 'consultation', 'service', 'budget', 'procedure', 'sessions', 'controls', 'done']), 
-												
-												]}"
-
-							groups="openhealth.managers,openhealth.physicians"
--->
-						<button 
-
-
 							type="object" 
 
 							class="oe_highlight"
@@ -307,64 +137,16 @@ jz
 
 
 
-						<!-- Create Sessions --> 
-<!--
-						<button 
-							type="object" 
-							class="oe_highlight"
-
-							string="Crear SESIONES" 
-
-
-							states="procedure"
-
-							name="create_sessions" 
-						/>
--->						
-
-
-
-
-
-						<!-- Create Controls --> 
-<!--
-						<button 
-							type="object" 
-							class="oe_highlight"
-
-							string="Crear CONTROLES" 
-
-							states="sessions"
-
-							name="create_controls" 
-						/>
--->						
-
-
-
-
-
-
 						<!-- State --> 
-<!--
-								statusbar_visible="appointment, consultation, service, budget, invoice, procedure, sessions, controls,  done"
-
-								statusbar_visible="False, appointment, consultation, service, budget, invoice, procedure, sessions, controls,  done"
-
-								statusbar_visible="appointment, budget_consultation, invoice_consultation, consultation, service, budget_procedure, invoice_procedure, procedure, sessions, controls"
-
-								statusbar_visible="appointment, invoice_consultation, consultation, service, invoice_procedure, procedure, sessions, controls"
--->						
-
 						<field 	name="state" 
-
 								widget="statusbar" 
-
 
 								statusbar_visible="appointment, invoice_consultation, consultation, service, invoice_procedure, procedure, sessions, controls"
 						/>
 
 					</header>
+
+
 
 
 
@@ -860,11 +642,15 @@ Fields
 				</form>
 			</field>
 		</record>
+		<!-- FORM --> 
 
 
 
 
-		<!-- TREE view --> 
+
+
+
+		<!-- TREE --> 
 		<record model="ir.ui.view" id="treatment_tree_view">
 			<field name="name">treatment.tree</field>
 			<field name="model">openhealth.treatment</field>
@@ -877,30 +663,16 @@ Fields
 				<tree string="Treatment Tree"
 
 colors="
-
 red:state=='empty';
-
 blue:state=='controls'
-
 "
-
 >
 
-
-					
 					<field name="name"/>
-
-
-
-
 
 					<field name="write_date"/>
 
 					<field name="start_date"/>
-
-
-
-
 
 					<field name="state"/>
 
@@ -911,35 +683,30 @@ blue:state=='controls'
 					<field name="duration"/>
 
 					<field name="chief_complaint"	string="Motivo"/>
-
-
-
-
+				</tree>
+			</field>
+		</record>
 <!--
 					<field name="end_date"/>
-
 					<field name="treatment_open"/>
 					<field name="id"/>
 					<field name="partner_id"/>
-
 					<field name="nr_appointments"/>					
 					<field name="nr_consultations"	string="Consultas"	style="text-align:center;"/>
 					<field name="nr_orders"/>
 					<field name="nr_procedures"		string="Procedimientos"	style="color:red;"/>
 					<field name="nr_controls"/>
 					<field name="nr_sessions"/>
-
 					<field name="nr_evaluations"/>
 					<field name="nr_services"/>
 					<field name="price_total"/>
 -->
-				</tree>
-			</field>
-		</record>
 		
 		
 		
 		
+
+
 
 
 		<!-- Search -->
@@ -956,33 +723,9 @@ blue:state=='controls'
 		-->
 
 
-		<!-- Filter --> 
-		<record id="view_medical_treatment_filter" model="ir.ui.view">
-		   <field name="name">Treatment Search</field>
-		   <field name="model">openhealth.treatment</field>
-		   <!--
-		   <field name="priority" eval="8" />		   
-		   -->
-		   <field name="arch" type="xml">
-			   
-			   <search string="Treatments">
-				   
-				   <!--
-				   <field name="name" />	   
-				   -->
-				   <field name="patient" />
-				   
-				   
-				   <!--
-				   <newline />
-				   <group expand="0" string="Group By...">
-					   <filter string="Patient" domain="[]" context="{'group_by':'patient'}" />
-				   </group>
-				   -->
-			   </search>
 
-		   </field>
-	   </record>
+
+
 
 		<!-- Window Form Action -->
 		<record model="ir.actions.act_window" id="treatment_form_action">
@@ -994,6 +737,21 @@ blue:state=='controls'
 
 
 
+		<!-- FAVS -->
+
+		<!-- By Month --> 
+	    <record id="openhealth.filter_tre_order_month" model="ir.filters">
+	        <field name="name">Por Mes</field>
+	        <field name="model_id">openhealth.treatment</field>
+	        <field name="context">{'group_by': ['start_date']}</field>
+	    </record>
+
+		<!-- By Doctor --> 
+	    <record id="openhealth.filter_tre_order_phy" model="ir.filters">
+	        <field name="name">Por Medico</field>
+	        <field name="model_id">openhealth.treatment</field>
+	        <field name="context">{'group_by': ['physician']}</field>
+	    </record>
 
 
 
@@ -1002,34 +760,39 @@ blue:state=='controls'
 
 
 
+		<!-- Filter --> 
+		<record id="view_medical_treatment_filter" model="ir.ui.view">
+		   <field name="name">Treatment Search</field>
+		   <field name="model">openhealth.treatment</field>
+		   <field name="arch" type="xml">
+			   
+			   <search string="Treatments">
+				   
+				   <!--
+				   <field name="name" />	
+
+				   <field name="patient" />
+				   <field name="physician" />
+				   -->
 
 
-		<!-- Menus --> 
-		<!-- top level menu: no parent -->
-		<!--
-		<menuitem id="main_openextension_menu" name="Open Health 5"/>
-		-->
+
+					<field 	name="patient" 
+
+                    	filter_domain="['|',('patient','ilike',self),('physician','ilike',self)]"/>
 
 
-		<!-- A first level in the left side menu is needed
-		before using action= attribute -->
-		<!--
-		<menuitem id="openextension_menu" name="Open Health 5"
-			parent="main_openextension_menu"/>
-		--> 
 
-
-		<!-- the following menuitem should appear *after*
-		its parent openextension_menu and *after* its
-		action treatment_list_action -->
-		<!--
-		<menuitem id="treatments_menu" name="Tratamientos" parent="openextension_menu"
-			action="treatment_list_action"/>
-		--> 
-
-		<!-- Full id location:
-		action="openhealth.treatment_list_action"
-		It is not required when it is the same module -->
+				   
+				   <!--
+				   <newline />
+				   <group expand="0" string="Group By...">
+					   <filter string="Patient" domain="[]" context="{'group_by':'patient'}" />
+				   </group>
+				   -->
+			   </search>
+		   </field>
+	   </record>
 
 
 	</data>

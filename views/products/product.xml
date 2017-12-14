@@ -22,6 +22,14 @@
 
 
 
+				<xpath expr="//field[@name='invoice_policy']" position="after">
+
+						<field name="default_code"/>
+
+				</xpath>
+
+
+
 				<!-- Notebook --> 
 				<!--
 				<xpath expr="//page" position="before">
@@ -121,7 +129,9 @@
 
 					<field name="name"/>
 
-					<field name="id"/>
+					<field name="default_code"/>
+
+
 
 
 					<field name="x_origin"/>				
@@ -137,6 +147,8 @@
 
 
 <!--					
+					<field name="id"/>
+
 					<field name="sale_ok"/>
 					<field name="purchase_ok"/>
 -->

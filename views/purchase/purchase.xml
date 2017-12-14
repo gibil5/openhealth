@@ -429,6 +429,22 @@
 
 
 
+				<xpath expr="//field[@name='picking_type_id']" position="replace">
+				</xpath>
+
+
+
+				<xpath expr="//field[@name='invoice_status']" position="replace">
+
+					<field 
+							name="invoice_status"	
+
+							invisible="1"	
+						/>				
+
+				</xpath>
+
+
 
 
 <!-- 

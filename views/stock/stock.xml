@@ -4,11 +4,33 @@
 
 
 
+		<!-- ACTION --> 
+		<record id="stock.stock_picking_type_action" model="ir.actions.act_window">
+			<field name="name">Inventory - jx</field>
+			<field name="res_model">stock.picking.type</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">kanban,form</field>
+			
 
-<!--
-		<field name="user_id" eval="False"/>
-		<field name="context">{'group_by': ['date:month', 'product_id']}</field>
--->
+			<field name="domain">[
+									('name', '!=', 'Órdenes de entrega'),
+									('name', '!=', 'Customer Sale'),
+								]
+			</field>
+
+
+			<field name="help" type="html">
+			  <p class="oe_view_nocontent_create">
+				Click to create a new picking type.
+			  </p><p>
+				The picking type system allows you to assign each stock
+				operation a specific type which will alter its views accordingly.
+				On the picking type you could e.g. specify if packing is needed by default,
+				if it should show the customer.
+			  </p>
+			</field>
+		</record>
 
 
 
@@ -18,27 +40,29 @@
 
 
 
-
+		<!-- MENU ITEMS --> 
 <!--
 groups="stock.group_stock_manager" 
 -->
-	<menuitem 	id="stock.menu_stock_sched" 
+
+		<!-- Schedulers --> 		
+		<menuitem 	
+				id="stock.menu_stock_sched" 		
+				parent="stock.menu_stock_root" 
+				sequence="50"
+
 
 				name="Schedulers" 
-		
-				parent="stock.menu_stock_root" 
-
 				groups="openhealth.roots" 
 				
-				sequence="50"
 		/>
-
 
 		<menuitem 
 				action="stock.action_procurement_compute" 
 				id="stock.menu_procurement_compute" 
 				parent="stock.menu_stock_sched" 
 				sequence="2"
+
 
 				groups="openhealth.roots" 
 			/>
@@ -52,8 +76,11 @@ groups="stock.group_stock_manager"
 				parent="stock.menu_stock_sched" 
 				sequence="1" 
 
+
 				groups="openhealth.roots" 
 			/>
+
+
 
 
 
@@ -66,8 +93,10 @@ groups="stock.group_stock_manager"
 				parent="stock.menu_warehouse_report" 
 				sequence="150" 
 
+
 				groups="openhealth.roots"
-				/>
+			/>
+
 
 
 
@@ -76,82 +105,40 @@ groups="stock.group_stock_manager"
 <!--
 groups="group_stock_manager,base.group_configuration"
 groups="openhealth.roots,base.group_configuration" 
+
+
+groups="stock.group_stock_manager,base.group_configuration"
 -->
-	<menuitem      
+
+		<!-- Configuration --> 
+		<menuitem      
 				id="stock.menu_stock_config_settings" 
+				parent="stock.menu_stock_root"
+				sequence="100" 
 		
+
 				name="Configuration" 
 		
-				parent="stock.menu_stock_root"
-		
-				sequence="100" 
-
-				groups="stock.group_stock_manager,base.group_configuration"
-
-				/>
-
-
-
-
-	<menuitem
-				id="stock.menu_reordering_rules_config"
-
-				action="stock.action_orderpoint_form"
-				
-				name="Reordering Rules" 
-				
-				parent="stock.menu_stock_inventory_control" 
-				
-				sequence="2"
-
-
 				groups="openhealth.roots" 
+
 			/>
 
 
 
 
 
+		<!-- Reordering Rules --> 
+		<menuitem
+				id="stock.menu_reordering_rules_config"
+				action="stock.action_orderpoint_form"
+				parent="stock.menu_stock_inventory_control" 
+				sequence="2"
 
 
+				name="Reordering Rules" 
 
-        <record id="stock.stock_picking_type_action" model="ir.actions.act_window">
-
-            <field name="name">Inventory - jx</field>
-            
-            <field name="res_model">stock.picking.type</field>
-            
-            <field name="type">ir.actions.act_window</field>
-            
-            <field name="view_type">form</field>
-            
-            <field name="view_mode">kanban,form</field>
-            
-
-
-
-
-			<field name="domain">[
-									('name', '!=', 'Órdenes de entrega'),
-									('name', '!=', 'Customer Sale'),
-								]
-			</field>
-
-
-
-
-            <field name="help" type="html">
-              <p class="oe_view_nocontent_create">
-                Click to create a new picking type.
-              </p><p>
-                The picking type system allows you to assign each stock
-                operation a specific type which will alter its views accordingly.
-                On the picking type you could e.g. specify if packing is needed by default,
-                if it should show the customer.
-              </p>
-            </field>
-        </record>
-
+				groups="openhealth.roots" 
+			/>
 
 
 

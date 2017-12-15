@@ -119,7 +119,7 @@
 
 
 		'reports/paper_format.xml',
-		'reports/report_purchasequotation.xml',
+		#'reports/report_purchasequotation.xml',
 
 
 

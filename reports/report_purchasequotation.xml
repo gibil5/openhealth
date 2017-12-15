@@ -4,9 +4,14 @@
 
 
 
+<!--
+			id="report_purchasequotation"
+-->
+
 <!-- Orden de C/S -->
 		<report
-			id="report_purchasequotation"
+			id="report_purchasequotation_bis"
+			
 			name="openhealth.report_purchasequotation"            
 			model="purchase.order"
 			report_type="qweb-pdf"

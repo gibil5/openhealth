@@ -328,10 +328,7 @@
 
 
 
-		<!-- tree/list view -->
-		<!--
-		<record model="ir.ui.view" id="openhealth.patient_tree_view">
-		-->
+		<!-- TREE -->
 		<record model="ir.ui.view" id="base.view_partner_tree">
 
 			<field name="name">res.partner.tree</field>
@@ -354,14 +351,15 @@
 
 					<field name="lang"/>
 
+					<field name="property_supplier_payment_term_id"/>
+
+
+
 
 
 					<field name="property_product_pricelist"/>
 
-
-
 					<field name="function"/>
-
 					
 					<field name="email"/>
 

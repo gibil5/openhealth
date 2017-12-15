@@ -119,7 +119,7 @@
 
 
 		'reports/paper_format.xml',
-		#'reports/report_purchasequotation.xml',
+		'reports/report_purchasequotation.xml',
 
 
 
@@ -264,7 +264,7 @@
 
 
 		# Purchases 
-		#'views/purchase/purchase.xml',
+		'views/purchase/purchase.xml',
 
 
 

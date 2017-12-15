@@ -264,7 +264,7 @@
 
 
 		# Purchases 
-		'views/purchase/purchase.xml',
+		#'views/purchase/purchase.xml',
 
 
 

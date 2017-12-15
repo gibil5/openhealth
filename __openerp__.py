@@ -117,6 +117,8 @@
 		'reports/report_ticket_receipt.xml',
 
 
+
+		'reports/paper_format.xml',
 		'reports/report_purchasequotation.xml',
 
 

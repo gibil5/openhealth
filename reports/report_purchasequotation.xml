@@ -6,19 +6,22 @@
 
 <!-- Orden de C/S -->
 		<report
+			id="report_purchasequotation"
+			name="openhealth.report_purchasequotation"            
+			model="purchase.order"
+			report_type="qweb-pdf"
 
 			string="Orden de C/S"
-
-			model="purchase.order"
-			
-			id="report_purchasequotation"
-			
-			report_type="qweb-pdf"
-			
-			name="openhealth.report_purchasequotation"            
-			
 			file="openhealth_rfq.report_purchasequotation"
+
+
+
+			paperformat="paperformat_euro"
 		/>
+
+<!--
+			paperformat="European A4"
+-->
 
 
 
@@ -103,7 +106,7 @@
 		<div class='row'>
 
 			<div class='col-xs-12'>
-				<t t-esc="doc.dest_address_id.name"/>
+				<b><t t-esc="doc.dest_address_id.name"/></b>
 			</div>
 
 
@@ -137,7 +140,7 @@
 		<div class='row'>
 		
 			<div class='col-xs-12'>
-				Fecha: <t t-esc="doc.date_order"/>
+				<b>Fecha: <t t-esc="doc.date_order"/></b>
 			</div>
 		
 		</div>
@@ -161,10 +164,10 @@
 
 
 
-			<h2>ORDEN DE COMPRA: <span t-field="doc.name"/></h2>
+<h3>ORDEN DE COMPRA: <span t-field="doc.name"/></h3>
 
 
-<br/>
+
 <br/>
 <br/>
 
@@ -178,9 +181,14 @@ t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [
 -->
 
 
-<!-- Row --> 
+
+
+
+
+<!-- SUPPLIER --> 
 <div class="row">
 	<div class="col-xs-12">
+
 
 
 <!-- Name --> 
@@ -193,6 +201,7 @@ t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [
 	</div>
 </div>
 <br/>
+
 
 
 <!-- address --> 
@@ -264,39 +273,85 @@ t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [
 
 
 <br/>
-<br/>
+
+
+
+<!-- ORDER LINES -->
 			<table class="table table-condensed">
 
 				<thead>
 					<tr>
+
+
+<!--
+						<th class="text-center"><strong>FECHA</strong></th>
+-->
+						
+
 						<th><strong>PRODUCTO</strong></th>
 
-						<th class="text-center"><strong>FECHA</strong></th>
-						
-						<th class="text-right"><strong>CANTIDAD</strong></th>
+						<th class="text-right"><strong>CANT.</strong></th>
+
+						<th class="text-right"><strong>UNIDAD</strong></th>
+
+
+
+
+						<th class="text-right"><strong>DCTOS.</strong></th>
+
+						<th class="text-right"><strong>PRECIO UNIT.</strong></th>
+
+						<th class="text-right"><strong>TOTAL</strong></th>
+
 					</tr>
 				</thead>
+
 
 
 				<tbody>
 
 					<tr t-foreach="doc.order_line" t-as="order_line">
 
-						<td>
-							<span t-field="order_line.name"/>
-						</td>
-						
 
+						
+<!--
 						<td class="text-center">
 							<span t-field="order_line.date_planned"/>
 						</td>
+-->
 						
-						<td class="text-right">
-						
-							<span t-field="order_line.product_qty"/>
-						
-							<span t-field="order_line.product_uom" groups="product.group_uom"/>
+
+						<td>
+							<span t-field="order_line.name"/>
 						</td>
+
+						<td class="text-right">						
+							<span t-field="order_line.product_qty"/>
+						</td>
+
+						<td class="text-right">						
+							<span t-field="order_line.product_uom" />
+						</td>
+
+
+
+
+						<td class="text-right">						
+							<span t-field="order_line.discount"/>
+						</td>
+
+						<td class="text-right">						
+							<span t-field="order_line.price_unit"/>
+						</td>
+
+						<td class="text-right">						
+							<span t-field="order_line.price_subtotal"/>
+						</td>
+
+
+
+
+
 					</tr>
 				</tbody>
 			</table>
@@ -306,7 +361,95 @@ t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [
 
 
 
-<!-- TOTAL --> 
+
+
+<!-- TOTALS --> 
+<div class="row"	style="font-size: 100%">
+
+	<div class='col-xs-4'>		
+	</div>
+
+	<div class='col-xs-3'>		
+	</div>
+
+	<div class='col-xs-3'>		
+		<b>TOTAL NETO</b>
+	</div>
+	
+	<div class='col-xs-1'>		
+		S/.
+	</div>
+
+	<div class='col-xs-1'>		
+		<t t-esc="doc.amount_untaxed"/>
+	</div>
+
+
+
+	<div class='col-xs-4'>		
+	</div>
+
+	<div class='col-xs-3'>		
+	</div>
+
+	<div class='col-xs-3'>		
+		<b>TOTAL IGV</b>
+	</div>
+	
+	<div class='col-xs-1'>		
+		S/.
+	</div>
+
+	<div class='col-xs-1'>		
+		<t t-esc="doc.amount_tax"/>
+	</div>
+
+
+
+
+
+
+	<div class='col-xs-4'>		
+	</div>
+
+	<div class='col-xs-3'>		
+	</div>
+
+
+	<div class='col-xs-5'>		
+------------------------------------------------
+	</div>
+
+	
+
+
+
+
+
+
+
+	<div class='col-xs-4'>		
+	</div>
+
+	<div class='col-xs-3'>		
+	</div>
+
+	<div class='col-xs-3'>		
+		<b>TOTAL</b>
+	</div>
+	
+	<div class='col-xs-1'>		
+		S/.
+	</div>
+
+	<div class='col-xs-1'>		
+		<t t-esc="doc.amount_total"/>
+	</div>
+
+
+</div>
+
+
 
 
 
@@ -320,25 +463,75 @@ t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [
 <br/>
 
 
-<!-- Row --> 
+<!-- CONDITIONS --> 
+<div class="row"	style="font-size: 80%">
+
+	<div class='col-xs-12'>		
+		<b>CONDICIONES</b>
+	</div>
+
+	<div class='col-xs-12'>
+		<t t-esc="doc.dest_address_id.x_warning_purchase"/>
+	</div>
+
+</div>
+
+
+
+
+
+
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+<br/>
+
+<!-- SIGNATURES --> 
 <div class="row">
+<center>
 	<div class="col-xs-12">
 
 
-<!-- Name --> 
-<div class='row'>
-	<div class='col-xs-3'>		
-		<b>CONDICIONES:</b>
+
+	<div class='col-xs-4'>		
+--------------------------------
 	</div>
-	<div class='col-xs-9'>
-		<t t-esc="doc.dest_address_id.x_warning_purchase"/>
+
+	<div class='col-xs-4'>		
+--------------------------------
 	</div>
-</div>
-<br/>
+
+	<div class='col-xs-4'>		
+--------------------------------
+	</div>
 
 
+
+
+	<div class='col-xs-4'>		
+		<b>SOLICITANTE</b>
 	</div>
+
+
+	<div class='col-xs-4'>		
+		<b>REVISADO</b>
+	</div>
+
+
+	<div class='col-xs-4'>		
+		<b>GERENCIA</b>
+	</div>
+
+
+
+	</div>
+</center>
 </div>
+
+
 
 
 

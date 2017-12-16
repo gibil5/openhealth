@@ -94,15 +94,26 @@
 			/>
 
 
+
+
 		<!-- Groups -->
 		<menuitem id="res_groups_menu" name="Groups" parent="openhealth_menu"
 			sequence="-150"
 			action="group_list_action"/>
 
+		<menuitem id="res_groups_cc_menu" name="Groups CC" parent="openhealth_menu"
+			sequence="-150"
+			action="group_list_action_cc"/>
+
+
+
+
+
+
 
 		<!-- Langs -->
 		<menuitem id="res_langs_menu" name="Langs" parent="openhealth_menu"
-			sequence="-150"
+			sequence="-145"
 			action="lang_list_action"/>
 
 

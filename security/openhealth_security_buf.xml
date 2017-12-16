@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
 
-
 	<data noupdate='0'>
 
 
@@ -40,17 +39,17 @@
 										(4, ref('base.user_root')), 
 -->
 		<record id="openhealth.directors" model="res.groups">
-			<field name="name">Directors</field>
+			<field name="name">Directores</field>
 			<field name="category_id" ref="module_openhealth_category"/>
+
+
+			<field name="comment">cc</field>
 
 
 			<field name="implied_ids" eval="[(4, ref('purchase.group_purchase_manager'))]"/>
 			<field name="implied_ids" eval="[(4, ref('stock.group_stock_manager'))]"/>
 			<field name="implied_ids" eval="[(4, ref('base.group_hr_manager'))]"/>
-
-
 			<field name="implied_ids" eval="[(4, ref('oehealth.group_oeh_medical_manager'))]"/>
-
 
 			<field name="users" eval="[ 
 										(4, ref('openhealth.director_clinicachavarri')),
@@ -72,16 +71,15 @@
 
 <!-- Almacen  Manager --> 
 		<record id="openhealth.almacen_managers" model="res.groups">
-
 			<field name="name">Almacen Managers</field>
-			
 			<field name="category_id" ref="module_openhealth_category"/>
 
 
-			<field name="implied_ids" eval="[(4, ref('purchase.group_purchase_user'))]"/>
-						
-			<field name="implied_ids" eval="[(4, ref('stock.group_stock_manager'))]"/>
+			<field name="comment">cc</field>
 
+
+			<field name="implied_ids" eval="[(4, ref('purchase.group_purchase_user'))]"/>
+			<field name="implied_ids" eval="[(4, ref('stock.group_stock_manager'))]"/>
 
 			<field name="users" eval="[ 
 										(4, ref('openhealth.almacen_clinicachavarri')),
@@ -100,15 +98,17 @@
 			<field name="name">Almacens</field>
 			<field name="category_id" ref="module_openhealth_category"/>
 
+<!--
+			<field name="comment">cc</field>
+-->
+
 			<field name="implied_ids" eval="[(4, ref('purchase.group_purchase_user'))]"/>
 			<field name="implied_ids" eval="[(4, ref('stock.group_stock_user'))]"/>
-
 <!--
 										(4, ref('openhealth.almacen_clinicachavarri')),
 										(4, ref('openhealth.yramirez_clinicachavarri')),
 -->
 			<field name="users" eval="[ 
-
 									]"/>
 		</record>
 
@@ -130,8 +130,12 @@
 			<field name="category_id" ref="module_openhealth_category"/>
 
 
-			<field name="implied_ids" eval="[(4, ref('oehealth.group_oeh_medical_physician'))]"/>
 
+			<field name="comment">cc</field>
+
+
+
+			<field name="implied_ids" eval="[(4, ref('oehealth.group_oeh_medical_physician'))]"/>
 
 			<field name="users" eval="[ 
 										(4, ref('openhealth.manager_clinicachavarri')),
@@ -158,9 +162,11 @@
 
 
 
+			<field name="comment">cc</field>
+
+
+
 			<field name="implied_ids" eval="[(4, ref('oehealth.group_oeh_medical_physician'))]"/>
-
-
 
 			<field name="users" eval="[ 
 										(4, ref('openhealth.medico_clinicachavarri')),
@@ -190,8 +196,10 @@
 			<field name="category_id" ref="module_openhealth_category"/>
 
 
-			<field name="implied_ids" eval="[(4, ref('oehealth.group_oeh_medical_physician'))]"/>
+			<field name="comment">cc</field>
 
+
+			<field name="implied_ids" eval="[(4, ref('oehealth.group_oeh_medical_physician'))]"/>
 
 			<field name="users" eval="[ 
 										(4, ref('openhealth.asistente_clinicachavarri')),
@@ -216,6 +224,10 @@
 		<record id="openhealth.reception" model="res.groups">
 			<field name="name">Plataforma</field>
 			<field name="category_id" ref="module_openhealth_category"/>
+
+
+			<field name="comment">cc</field>
+
 
 			<field name="users" eval="[ 
 
@@ -245,10 +257,12 @@
 			<field name="name">Caja</field>
 			<field name="category_id" ref="module_openhealth_category"/>
 
-			<field name="users" eval="[ 
 
+			<field name="comment">cc</field>
+
+
+			<field name="users" eval="[ 
 										(4, ref('openhealth.caja_clinicachavarri')),
-				
 										(4, ref('openhealth.gnunhez_clinicachavarri')),
 									]"/>
 		</record>
@@ -267,10 +281,12 @@
 			<field name="name">Staff</field>
 			<field name="category_id" ref="module_openhealth_category"/>
 
-			<field name="users" eval="[ 
 
+			<field name="comment">cc</field>
+
+
+			<field name="users" eval="[ 
 										(4, ref('openhealth.staff_clinicachavarri')),
-				
 										(4, ref('openhealth.lloli_clinicachavarri')),
 										(4, ref('openhealth.ipuga_clinicachavarri')),
 										(4, ref('openhealth.rbustios_clinicachavarri')),

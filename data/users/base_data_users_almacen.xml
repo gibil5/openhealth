@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-	<data noupdate='1'>
+	<data noupdate='0'>
 
 
 
@@ -9,14 +9,15 @@
 		<record id="almacen_partner" model="res.partner">
 			<field name="name">Almacen</field>
 			<field name="email">almacen@clinicachavarri.com</field>
-
 			<field name="function">inventory</field>
-
 	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
+
 		<record id="almacen_clinicachavarri" model="res.users">
-			<field name="name">Almacen</field>
+
+			<field name="name">ALMACEN</field>
+			
 			<field name="login">almacen@clinicachavarri.com</field>
 			<field name="password">almacen</field>
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-	<data noupdate='1'>
+	<data noupdate='0'>
 
 
 
@@ -11,12 +11,13 @@
 		<record id="medico_partner" model="res.partner">
 			<field name="name">Medico</field>
 			<field name="email">medico@clinicachavarri.com</field>
-
 	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
 		</record>
 
+
 		<record id="medico_clinicachavarri" model="res.users">
-			<field name="name">Medico</field>
+
+			<field name="name">MEDICO</field>
 
 			<field name="login">medico@clinicachavarri.com</field>
 			<field name="password">medico</field>

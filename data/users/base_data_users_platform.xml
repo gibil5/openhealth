@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-	<data noupdate='1'>
+	<data noupdate='0'>
 
 
 
@@ -70,14 +70,15 @@ Y:uWS4kqKx		Yvanna
 		<record id="plataforma_partner" model="res.partner">
 			<field name="name">Plataforma</field>
 			<field name="email">plataforma@clinicachavarri.com</field>
-
 			<field name="function">reception</field>
-
 	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
+
 		<record id="plataforma_clinicachavarri" model="res.users">
-			<field name="name">Plataforma</field>
+
+			<field name="name">PLATAFORMA</field>
+			
 			<field name="login">plataforma@clinicachavarri.com</field>
 			<field name="password">plataforma</field>
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>

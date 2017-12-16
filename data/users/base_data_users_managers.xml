@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-	<data noupdate='1'>
+	<data noupdate='0'>
 	
 
 
@@ -35,8 +35,11 @@ uq@dL_F=xs?_3yBR
 		</record>
 
 
+
 		<record id="director_clinicachavarri" model="res.users">
-			<field name="name">Director</field>
+
+			<field name="name">DIRECTOR</field>
+			
 			<field name="login">director@clinicachavarri.com</field>
 <!--
 			<field name="password">uq@dL_F=xs?_3yBR</field>
@@ -52,14 +55,19 @@ uq@dL_F=xs?_3yBR
 
 
 
+
+
 <!-- Manager -->
 		<record id="manager_partner" model="res.partner">
-			<field name="name">manager</field>
+			<field name="name">Manager</field>
 			<field name="email">manager@clinicachavarri.com</field>
 		</record>
 
+
 		<record id="manager_clinicachavarri" model="res.users">
-			<field name="name">manager</field>
+
+			<field name="name">MANAGER</field>
+			
 			<field name="login">manager@clinicachavarri.com</field>
 <!--
 			<field name="password">uq@dL_F=xs?_3yBR</field>

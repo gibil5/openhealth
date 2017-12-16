@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-	<data noupdate='1'>
+	<data noupdate='0'>
 
 
 
@@ -28,8 +28,11 @@ rbustios_clinicachavarri
 			<field name="email">staff@clinicachavarri.com</field>
 		</record>
 
+
 		<record id="staff_clinicachavarri" model="res.users">
-			<field name="name">staff</field>
+
+			<field name="name">STAFF</field>
+			
 			<field name="login">staff@clinicachavarri.com</field>
 			<field name="password">staff</field>
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>

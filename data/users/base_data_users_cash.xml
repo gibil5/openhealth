@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-	<data noupdate='1'>
+	<data noupdate='0'>
 
 
 
@@ -13,8 +13,11 @@
 	        <field eval="[(6, 0, [ref('cash')])]" name="category_id"/>
 		</record>
 
+
 		<record id="caja_clinicachavarri" model="res.users">
-			<field name="name">Caja</field>
+
+			<field name="name">CAJA</field>
+			
 			<field name="login">caja@clinicachavarri.com</field>
 			<field name="password">caja</field>
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>

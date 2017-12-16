@@ -87,11 +87,20 @@
 
 		<!-- Users -->
 		<menuitem id="res_users_menu" name="Users" parent="openhealth_menu"
-			sequence="-150"
+			sequence="-155"
 
 			action="base.action_res_users"
 
 			/>
+
+		<menuitem id="res_users_inactive_menu" name="Users inactive" parent="openhealth_menu"
+			sequence="-155"
+
+			action="base.action_res_users_inactive"
+
+			/>
+
+
 
 
 

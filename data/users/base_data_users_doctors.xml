@@ -101,9 +101,10 @@
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
 			<field name="active">True</field>
 			<field name="tz">America/Lima</field>
-
 			<field name="partner_id" ref="jvasquez"/>
 			<field name="lang">es_ES</field>
+
+			<field name="active" eval="False" />
 		</record>
 
 

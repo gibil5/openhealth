@@ -126,9 +126,7 @@ rbustios_clinicachavarri
 		<record id="rbustios" model="res.partner">
 			<field name="name">Raul Bustios</field>
 			<field name="email">rbustios@clinicachavarri.com</field>
-
 			<field name="function">marketing</field>
-
 	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
@@ -139,9 +137,10 @@ rbustios_clinicachavarri
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
 			<field name="active">True</field>
 			<field name="tz">America/Lima</field>
-
 			<field name="lang">es_ES</field>
 			<field name="partner_id" ref="rbustios"/>
+
+			<field name="active" eval="False" />
 		</record>
 
 

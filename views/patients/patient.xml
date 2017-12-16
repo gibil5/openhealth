@@ -52,17 +52,27 @@
 							name="open_treatment_current" 
 						/>
 
+
+
+
+
 <!--
 							string="Crear Cosmiatría" 
 -->
 <!--
+-->
 						<button 
 							type="object" 
 							class="oe_highlight"
-							string="Cosmiatría" 
+
+							string="Ultima Cosmiatría" 
+							
 							name="open_cosmetology_current" 
 						/>
--->
+
+
+
+
 
 
 
@@ -145,6 +155,7 @@
 								icon="fa-list">
 								<field string="Tratamientos" name="x_treatment_count" widget="statinfo"/>
 							</button>
+
 
 
 							<!-- Appointments -->

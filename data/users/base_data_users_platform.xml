@@ -206,6 +206,7 @@ Y:uWS4kqKx		Yvanna
 
 
 
+
 <!-- Adeli Vidal -->
 		<record id="avidal" model="res.partner">
 			<field name="name">Adeli Vidal</field>
@@ -221,11 +222,13 @@ Y:uWS4kqKx		Yvanna
 			<field name="login">avidal@clinicachavarri.com</field>
 			<field name="password">avidal</field>
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-			<field name="active">True</field>
 			<field name="tz">America/Lima</field>
 
 			<field name="partner_id" ref="avidal"/>
 			<field name="lang">es_ES</field>
+
+
+			<field name="active" eval="False" />
 		</record>
 
 

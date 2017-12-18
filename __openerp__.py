@@ -97,10 +97,11 @@
 
 
 		# Patient
-		#'reports/patient.xml',
-		#'reports/patient_consultation.xml',
-		#'reports/patient_sessions.xml',
-		#'reports/patient_controls.xml',
+		'reports/patient.xml',
+		'reports/patient_consultation.xml',
+		'reports/patient_sessions.xml',
+		'reports/patient_controls.xml',
+
 
 
 

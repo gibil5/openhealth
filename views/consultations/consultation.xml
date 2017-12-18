@@ -17,7 +17,20 @@
 				<form string="Evaluation">
 
 
+<!--
+								attrs="{'invisible':
+														[
+															('treatment', '=', False),
+														]
+										}"
 
+
+								attrs="{'invisible':
+														[
+															('cosmetology', '!=', False),
+														]
+										}"
+-->
 					<!-- Header --> 
 					<header>
 
@@ -29,6 +42,8 @@
 								type="object" 
 								class="oe_highlight"
 
+
+
 								string="Regresar al TRATAMIENTO"
 						/>
 
@@ -37,14 +52,27 @@
 
 						<!-- Cosmetology --> 
 <!--
+
+								attrs="{'invisible':
+														[
+															('cosmetology', '=', False),
+														]
+										}"
+-->
 						<button 
 								name="open_cosmetology"
 								type="object" 
 								class="oe_highlight"
 
+
+								attrs="{'invisible':
+														[
+															('treatment', '!=', False),
+														]
+										}"
+
 								string="Regresar a la COSMIATRIA"
 						/>					
--->
 
 
 
@@ -572,6 +600,12 @@ DEPRECATED
 		</record>
 		
 		
+		
+
+
+
+
+
 		
 		
 		<!-- Search -->

@@ -64,7 +64,11 @@ class Appointment(models.Model):
 		print 'jx'
 		print 'On change - Patient Doctor'
 
-		if self.patient.name != False and self.doctor.name != False:
+
+		#if self.patient.name != False and self.doctor.name != False:
+		if self.patient.name != False and self.doctor.name != False		and 	self.x_target != 'therapist'	:
+
+
 			treatment = self.env['openhealth.treatment'].search([
 																		('patient', '=', self.patient.name),			
 																		('physician', '=', self.doctor.name),					
@@ -199,11 +203,54 @@ class Appointment(models.Model):
 
 
 
+	# Machine 
 	x_machine = fields.Selection(
 			string="Sala", 
+
 			selection = app_vars._machines_list, 
+			
 			#required=True, 
 		)
+
+
+
+
+
+	#@api.onchange('x_target')
+	#def _onchange_x_target(self):
+	
+	#	if self.x_target == 'therapist':	
+			
+			#self.x_machine = [
+			#					('laser_triactive','Triactivo'), 
+			#					('chamber_reduction','Cámara de reducción'), 
+			#					('carboxy_diamond','Carboxiterapia - Punta de Diamante'), 								
+			#				]
+
+
+			#return {
+			#			'domain': 	{	'x_machine': [
+			#											#('x_pathology', '=', self.pathology)
+			#											('x_zone', '=', self.zone),
+			#										]
+			#						},
+			#}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	# Create procedure 
@@ -222,6 +269,9 @@ class Appointment(models.Model):
         			('procedure', 'Procedimiento'),
         			('session', 'Sesión'),
         			('control', 'Control'),
+
+        			('cosmetology', 'Cosmiatría'),
+
         		]
 
 	x_type = fields.Selection(
@@ -509,6 +559,7 @@ class Appointment(models.Model):
 	def _onchange_x_machine(self):
 		if self.x_machine != False:	
 			self.x_error = 0
+
 
 			# Check for collisions 
 			ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, self.x_machine, 'machine', self.x_type)

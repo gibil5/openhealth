@@ -969,13 +969,16 @@ class sale_order(models.Model):
 			required=False, 
 			
 
+
 			domain = [
-						('x_treatment', '=', 'laser_co2'),						
+						#('x_treatment', '=', 'laser_co2'),						
+						('x_origin', '=', False),						
 					],
 
 
 			compute='_compute_x_product', 
-			)
+		)
+
 
 
 	#@api.multi
@@ -986,10 +989,25 @@ class sale_order(models.Model):
 
 			flag = False
 
+
+
 			for line in record.order_line:
-				if line.product_id.x_treatment == 'laser_co2':
+
+
+				tre = line.product_id.x_treatment
+
+
+
+				#if line.product_id.x_treatment == 'laser_co2':
+				#if 	line.product_id.x_treatment == 'laser_co2'	or 	line.product_id.x_treatment == 'laser_excilite':
+				#if tre == 'laser_co2' 		or 		tre == 'laser_excilite': 
+				if tre == 'laser_co2' 		or 	tre == 'laser_excilite'		or 	tre == 'laser_ipl'		or tre == 'laser_ndyag'	: 
+
+
 					product = line.product_id.id
 					flag = True 
+
+
 
 
 			if flag: 
@@ -1071,6 +1089,10 @@ class sale_order(models.Model):
 																	limit=1,
 																)
 			
+			else:
+				app = False
+
+
 
 			#if record.x_appointment != False:
 			#if record.x_appointment.name != False:
@@ -2286,59 +2308,70 @@ class sale_order(models.Model):
 		print 'jx'
 		print 'Reserve Machine'
 		print 
-		date_format = "%Y-%m-%d %H:%M:%S"
-		duration = self.x_appointment.duration 
-		delta = datetime.timedelta(hours=duration)
 
 
 
-		# Easiest first 
-		m_dic = {
-
-					'laser_co2_1': 			['laser_co2_1', 'laser_co2_2', 'laser_co2_3'], 
-					'laser_excilite': 		['laser_excilite'], 
-					'laser_m22': 			['laser_m22'], 
-					'laser_triactive': 		['laser_triactive'], 
-					'chamber_reduction': 	['chamber_reduction'], 
-					'carboxy_diamond': 		['carboxy_diamond'], 
-
-					'consultation':			[], 
-			}
+		# There is an appointment 
+		if self.x_appointment.name == False: 
+			print 'There is no Appointment'
 
 
-
-		m_list = m_dic[self.x_machine_req]
-
-		ad_str = self.x_appointment.appointment_date
-
-		k = 1.
-		out = False 
+		else: 
+			date_format = "%Y-%m-%d %H:%M:%S"
+			duration = self.x_appointment.duration 
+			delta = datetime.timedelta(hours=duration)
 
 
-		while not out		and  	  k < 6: 		
+			# Easiest first 
+			m_dic = {
 
-			for x_machine_req in m_list: 
+						'laser_co2_1': 			['laser_co2_1', 'laser_co2_2', 'laser_co2_3'], 
+						'laser_excilite': 		['laser_excilite'], 
+						'laser_m22': 			['laser_m22'], 
+						'laser_triactive': 		['laser_triactive'], 
+						'chamber_reduction': 	['chamber_reduction'], 
+						'carboxy_diamond': 		['carboxy_diamond'], 
 
-				if not out: 				
-					self.x_appointment.appointment_date = ad_str
-
-					self.x_appointment.x_machine = x_machine_req
-
-					nr_mc = self.get_nr_mc()
-
-
-					if nr_mc == 1:		# Success - Get out 
-						out = True 
+						'consultation':			[], 
+				}
 
 
 
-			if not out: 	# Error - Change the date 
-				ad = datetime.datetime.strptime(self.x_appointment.appointment_date, date_format) 
-				ad_dt = delta + ad
-				ad_str = ad_dt.strftime("%Y-%m-%d %H:%M:%S")
+			print 'x machine req'
+			print self.x_machine_req
 
-				k = k + 1.
-	
+
+			m_list = m_dic[self.x_machine_req]
+
+			ad_str = self.x_appointment.appointment_date
+
+			k = 1.
+			out = False 
+
+
+
+
+			while not out		and  	  k < 6: 		
+
+				for x_machine_req in m_list: 
+
+					if not out: 				
+
+						self.x_appointment.appointment_date = ad_str
+						self.x_appointment.x_machine = x_machine_req
+						nr_mc = self.get_nr_mc()
+
+						if nr_mc == 1:		# Success - Get out 
+							out = True 
+
+				if not out: 	# Error - Change the date 
+					ad = datetime.datetime.strptime(self.x_appointment.appointment_date, date_format) 
+					ad_dt = delta + ad
+					ad_str = ad_dt.strftime("%Y-%m-%d %H:%M:%S")
+
+					k = k + 1.
+		
+
 	# reserve_machine
 
 
@@ -2374,12 +2407,10 @@ class sale_order(models.Model):
 			self.x_doctor_uid = uid
 
 
-
-
-
 		# Change State to Scheduled 
 		if self.x_family == 'consultation'	or 	self.x_family == 'procedure': 
-			self.x_appointment.state = 'Scheduled'
+			if self.x_appointment.name != False: 
+				self.x_appointment.state = 'Scheduled'
 
 
 
@@ -2416,7 +2447,9 @@ class sale_order(models.Model):
 
 
 
+		# Create Card 
 		go_card = False 
+
 
 		order_line = self.order_line
 		for line in order_line:
@@ -2424,12 +2457,15 @@ class sale_order(models.Model):
 			#print line.name 
 			#print line.product_id.name
 
-			if line.name == 'Tarjeta VIP':
+			if line.name == 'Tarjeta VIP' or line.name == 'TARJETA VIP':
 				go_card = True
 
 
 
 		if go_card:
+
+
+			print 'Create VIP Card'
 
 
 			# Partner pricelist - Vip

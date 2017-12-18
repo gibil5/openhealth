@@ -27,13 +27,6 @@ class AppointmentCos(models.Model):
 
 
 
-
-
-
-
-
-
-
 	#x_therapist = fields.Many2one(
 			#'openhealth.therapist',
 	#		'oeh.medical.physician',

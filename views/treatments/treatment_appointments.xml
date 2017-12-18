@@ -51,8 +51,6 @@
 
 								<field name="x_type"/>
 
-
-
 								<field name="treatment"/>
 <!--								
 								<field name="consultation"/>
@@ -70,6 +68,8 @@
 						</field>				
 
 					</page>
+
+					
 				</notebook>
 			</field>
 		</record>

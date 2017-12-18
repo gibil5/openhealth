@@ -146,14 +146,31 @@
 						<div class="oe_left" style="width: 100px;">
 
 
-							<!-- Treatment --> 
+
+							<!-- Treatments --> 
 							<button type="action" class="oe_stat_button" 
 								name="%(treatment_form_action)d"	
 								context="{
-										'search_default_patient': active_id,	
+											'search_default_patient': active_id,	
 										}" 											
 								icon="fa-list">
 								<field string="Tratamientos" name="x_treatment_count" widget="statinfo"/>
+							</button>
+
+
+
+							<!-- Cosmetologies --> 
+							<button type="action" class="oe_stat_button" 
+
+								name="%(cosmetology_form_action)d"	
+								
+								context="{
+											'search_default_patient': active_id,	
+										}" 	
+
+								icon="fa-list">
+
+								<field string="Cosmiatrías" name="x_nr_cosmetologies" widget="statinfo"/>
 							</button>
 
 

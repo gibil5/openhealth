@@ -8,6 +8,9 @@ _family_list = [
 		('product','Producto'), 
 		('consultation','Consulta'), 
 		('procedure','Procedimiento'), 
+
+
+		('cosmetology','Cosmiatría'), 
 ]
 
 

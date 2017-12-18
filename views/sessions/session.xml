@@ -22,6 +22,7 @@
 
 
 
+
 		<record model="ir.ui.view" id="session_med_form_view">
 			<field name="name">session.med.form</field>
 			<field name="model">openhealth.session.med</field>

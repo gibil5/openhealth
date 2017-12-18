@@ -23,6 +23,7 @@
 							name="%(oeh_medical_appointment_action_tree_confirmed)d"	
 							type="action" 
 							class="oe_highlight"
+
 							states="empty"
 							
 							context="{									
@@ -40,7 +41,7 @@
 							string="Crear CITA"
 
 
-							groups="openhealth.reception,openhealth.managers,openhealth.directors"
+							groups="openhealth.roots,openhealth.reception,openhealth.managers,openhealth.directors"
 						/>
 
 
@@ -55,7 +56,7 @@
   
 							string="Crear PRESUPUESTO - Consulta" 
 
-							groups="openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
+							groups="openhealth.roots,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
 
 						/>
 
@@ -72,7 +73,7 @@
 							
 							states="invoice_consultation"
 
-							groups="openhealth.physicians,openhealth.managers,openhealth.directors"
+							groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
 						/>
 
 
@@ -91,7 +92,7 @@
 
 							name="create_service" 
 
-							groups="openhealth.physicians,openhealth.managers,openhealth.directors"
+							groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
 						/>
 
 
@@ -112,7 +113,7 @@
 							states="service"
 
 
-							groups="openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
+							groups="openhealth.roots,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
 						/>
 
 
@@ -130,7 +131,7 @@
 
 							name="create_procedure" 
 
-							groups="openhealth.physicians,openhealth.managers,openhealth.directors"
+							groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
 						/>
 
 
@@ -288,7 +289,7 @@ jz
 									name="%(consultation_form_action)d"	
 									
 									context="{									
-											'search_default_treatment': active_id,
+												'search_default_treatment': active_id,
 											}" 	
 
 									icon="fa-list"
@@ -576,7 +577,7 @@ Fields
 
 										string="Reset"
 
-										groups="openhealth.managers"			
+										groups="openhealth.roots,openhealth.managers"			
 									/>
 
 

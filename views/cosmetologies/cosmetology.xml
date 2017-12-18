@@ -18,19 +18,25 @@
 					<header>
 
 
+
+
 <!--
-							states="False"
-							name="create_service" 
-						<button 
-							type="object" 
-							class="oe_highlight"
-
-							string="Cita" 
-
-
-							name="%(oeh_medical_appointment_action_tree_confirmed)d"	
-						/>
+								states="False"
+								name="create_service" 
+								name="%(oeh_medical_appointment_action_tree_confirmed)d"	
 -->
+
+						<!-- Appointment --> 
+						<button 
+								class="oe_highlight"
+								type="object" 
+								name="create_appointment"
+
+								states="empty"
+	
+								string="Cita" 
+						/>
+
 
 
 
@@ -52,7 +58,7 @@
 
 							class="oe_highlight"
 
-							string="Servicio" 
+							string="Recomendación" 
 
 							states="appointment"
 
@@ -145,23 +151,33 @@
 
 
 
-						<!-- Create Sessions --> 
+
+
 						<!--
 							attrs="{ 
 									'invisible':[			
 												('state','in',[ False, 'consultation', 'service', 'budget', 'invoice', 'sessions', 'controls', 'done']), 
 												]}"
 						-->
+
+
+						<!-- Sessions --> 
 						<button 
-							type="object" 
-							class="oe_highlight"
+								type="object" 
+								class="oe_highlight"
 
-							string="Sesiones" 
+								string="Sesiones" 
 
-							states="procedure"
+								states="procedure"
 
-							name="create_sessions" 
+								name="create_sessions" 
 						/>
+
+
+
+
+
+
 
 
 
@@ -210,28 +226,69 @@
 							
 
 
-
+<!--
+												'default_cosmetology': active_id,
+												'search_default_cosmetology': active_id,
+												'search_default_patient': patient,
+-->
 								<!-- appointments -->
 								<button type="action" class="oe_stat_button" 
-									name="%(service_list_action)d"	
+
+									name="%(oeh_medical_appointment_list_action)d"	
+									
+
 									context="{									
-											'search_default_treatment': active_id,
+												'search_default_cosmetology': active_id,
+												'search_default_patient': patient,
+												'search_default_doctor': physician,
 											}" 											
+									
+
 									icon="fa-list">
 									<field string="Citas" name="nr_appointments" widget="statinfo"/>
 								</button>							
 
 
 
-								<!-- Services -->
-								<button type="action" class="oe_stat_button" 
+
+
+<!--
 									name="%(service_list_action)d"	
+
+
 									context="{									
-											'search_default_treatment': active_id,
+												'search_default_cosmetology': active_id,
 											}" 											
+									
+									type="object" 
+									name = "open_service"
+
+									name="%(service_cosmetology_list_action)d"	
+-->
+
+
+
+								<!-- Services -->
+								<button 
+									class="oe_stat_button" 
+
+
+									type="action" 
+
+									name="%(service_cosmetology_form_action)d"	
+
+									context="{									
+												'search_default_cosmetology': active_id,
+											}" 											
+
+									
 									icon="fa-list">
-									<field string="Servicios" name="nr_services" widget="statinfo"/>
+									
+									<field string="Recomendaciones" name="nr_services" widget="statinfo"/>
 								</button>
+
+
+
 
 
 								<!-- budgets -->
@@ -330,16 +387,16 @@
 							</group>
 							<group>
 
-
+								<!-- Reset --> 
 								<button 
-										name="reset" 	
-										type="object" 
-										class="oe_highlight"
+									name="reset" 	
+									type="object" 
+									class="oe_highlight"
 
-										string="Reset"
+									string="Reset"
 
-										groups="openhealth.managers"			
-									/>
+									groups="openhealth.roots"			
+								/>
 
 							</group>
 
@@ -389,9 +446,270 @@
 
 
 
-						<notebook>
+				<notebook>
 
-						</notebook>
+
+
+					<page string="Citas">
+						<!--
+						<field name="appointment_ids"/>
+						-->
+						<field name="appointment_ids"		>
+							<tree string=""		default_order="appointment_date"	create="false" >	
+								
+								<field name="name"	invisible="1"/>
+
+								<field name="patient"	invisible="1"/>
+								
+								<field name="doctor"	invisible="1"/>
+
+								<field name="x_type"/>
+
+								<field name="cosmetology"/>
+					
+								<field name="state"/>
+
+								<field name="x_date"/>
+
+								<field name="x_time"/>
+
+								<field name="x_machine"/>								
+							</tree>
+						</field>				
+					</page>
+
+
+
+
+							<page string="Recomendaciones">
+<!--
+								<field name="service_ids"/>	
+-->							
+								<field name="service_ids">									
+									<tree string="Services"		create="false" >	
+
+
+										<button 
+											type="object" 
+											class="oe_highlight"	
+											string="Entrar"
+											name="open_line_current" 
+										/>
+
+
+										<field name="name"/>
+<!--
+-->
+										<field name="name_short"/>
+
+										<field name="service"/>
+
+										<field name="cosmetology"/>
+
+					
+					
+										<!--
+										<field name="laser"/>				
+
+										<field name="id"/>
+										<field name="laser"/>				
+										<field name="treatment"/>
+										<field name="service"/>
+										<field name="zone"/>														
+										<field name="consultation"/>
+										-->
+									</tree>
+								</field>
+
+							</page>
+
+
+
+
+
+
+
+
+
+
+					<page string="Caja">
+						<!--
+						<field name="order_ids"/>
+						-->					
+						<field name="order_ids">		
+
+							<tree string="Caja"	create="false" 	>										
+
+
+								<!-- Hot Button -->
+								<button 
+									name="open_line_current" 
+									type="object" 
+									class="oe_highlight"	
+									string="Entrar"
+								/>
+
+
+								<field  name="name"	string="Presupuesto #"/>
+
+								<field  name="partner_id"/>
+
+								<field  name="x_doctor"/>
+<!--
+								<field name="x_target"/>
+-->
+
+								<field name="x_family"/>
+
+								<field name="state"/>
+
+								<field name="nr_lines"/>
+
+								<field name="amount_total"/>
+
+								<field name="date_order"/>					
+							</tree>
+						</field>
+
+					</page>
+
+
+
+
+
+
+
+
+							<page string="Consulta">
+
+								<field name="consultation_ids">
+									
+									<!--
+									<tree editable="bottom">										
+	                                -->
+									<tree string="Consultas"	create="false" >										
+										
+
+										<!-- Hot Button -->
+										<button 
+											name="open_line_current" 
+											type="object" 
+											class="oe_highlight"
+												
+											string="Entrar"
+										/>
+
+
+										<!--
+										<field string="Consulta #"  name="name"/>
+										<field string='Tipo' name="evaluation_type"/>		
+										<field name="treatment_id"/>
+										<field string="Tratamiento" name="treatment"/>
+
+										-->
+										<field  name="name"/>
+										<field name="appointment"/>
+										<field string="Paciente" name="patient"/>
+										<field string="Médico" name="doctor"/>
+										<field name="chief_complaint"/>
+										<field name="evaluation_start_date"		string = "Fecha"/>
+		
+
+										<field name="progress"		widget="progressbar"/>
+																												
+									</tree>
+								</field>
+							</page>
+
+
+
+
+					<page string="Procedimiento">
+
+						<!--
+						<field name="procedure_ids"/>
+						--> 
+						<field name="procedure_ids">
+							<tree string="Procedimientos"		create="false" >
+
+
+								<!-- Button -->
+								<button 
+									type="object" 
+									class="oe_highlight"	
+									string="Entrar"
+									
+									name="open_line_current" 
+								/>
+
+
+								<field name="name"/>
+								<field name="appointment"/>
+								<field string="Paciente" name="patient"/>
+								<field string="Médico" name="doctor"/>
+								<!--
+								<field string='Tipo' name="evaluation_type"/>
+								--> 
+								<field name="chief_complaint"/>
+								<field name="product"/>
+								<field name="evaluation_start_date"/>
+								<!--
+								<field name="treatment"/>
+								-->
+							</tree>
+						</field>
+					</page>
+
+
+
+
+
+
+
+					<page string="Sesiones">
+
+<!--
+						<field name="session_ids"/>
+-->
+						<field name="session_ids">
+							<tree string="Sesiones"		create="false" >
+
+
+								<button 
+									type="object" 
+									class="oe_highlight"	
+									string="Entrar"
+									
+									name="open_line_current" 
+								/>
+
+
+
+								<field name="name"/>
+								<field name="appointment"/>
+								<field  name="patient"/>
+								<field  name="doctor"/>
+								<field name="chief_complaint"/>
+								<field name="product"/>
+								<field name="evaluation_start_date"/>
+							</tree>
+						</field>
+
+					</page>
+
+
+
+
+
+
+
+
+
+
+				</notebook>
+
+
+
 
 					</sheet>
 				</form>
@@ -450,6 +768,38 @@
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 		</record>
+
+
+
+
+
+
+
+		<!-- Filter --> 
+		<record id="view_cosmetology_filter" model="ir.ui.view">
+
+		   <field name="name">Cosmetology Search</field>
+		   
+		   <field name="model">openhealth.cosmetology</field>
+		   
+		   <field name="arch" type="xml">
+			   
+			   <search string="Cosmetologies">
+				   
+				   <!--
+				   <field name="name" />	
+				   <field name="physician" />
+
+					<field 	name="patient" 
+                    	filter_domain="['|',('patient','ilike',self),('physician','ilike',self)]"/>
+				   -->
+
+				   <field name="patient" />
+
+				   
+			   </search>
+		   </field>
+	   </record>
 
 
 	</data>

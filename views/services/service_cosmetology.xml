@@ -6,6 +6,7 @@
 		<!-- Form --> 
 		<record model="ir.ui.view" id="service_cosmetology_form_view">
 			<field name="name">service.cosmetology.form</field>
+
 			<field name="model">openhealth.service.cosmetology</field>
 
 			<field name="inherit_id" ref="service_form_view"/>
@@ -27,9 +28,12 @@
 
 				<xpath expr="//field[@name='laser']" position="replace"> 
 					
-					<field name="family"/>
-	
+					<field name="family"	invisible="1"	/>
+<!--
 					<field name="vspace"/>
+					<field name="service"/>
+-->
+
 				</xpath>
 
 
@@ -52,15 +56,30 @@
 			<field name="model">openhealth.service.cosmetology</field>
 			<field name="arch" type="xml">
 				<tree string="Service Tree">
+					
 					<field name="name"/>
+
+					<field name="cosmetology"/>
+
+
+<!--					
 					<field name="id"/>
+-->				
+
 					<field name="laser"/>				
-					<field name="treatment"/>
+					
 					<field name="service"/>
+<!--					
 					<field name="consultation"/>
+-->
 				</tree>
 			</field>
 		</record>
+
+
+
+
+
 
 
 

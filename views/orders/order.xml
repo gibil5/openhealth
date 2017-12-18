@@ -200,7 +200,7 @@
 
 
 
-					<field name="x_product"				invisible="1"	/>
+					<field name="x_product"				invisible="0"		readonly="0"	/>
 
 
 <!--
@@ -566,6 +566,8 @@
 
 
 							groups="openhealth.caja,openhealth.managers,openhealth.directors"
+
+							groups="openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
 -->					
 					<button 
 							name="create_payment_method"
@@ -577,7 +579,8 @@
 							string="PAGAR"
 
 
-							groups="openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
+						groups="openhealth.roots,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
+						
 							/>
 
 
@@ -835,7 +838,7 @@
 					<group>
 						<group class="oe_left"  style="width: 600px;">
 
-							<group col='6'			groups="openhealth.caja,openhealth.managers,openhealth.directors"		>
+							<group col='6'	groups="openhealth.roots,openhealth.caja,openhealth.managers,openhealth.directors"		>
 
 
 
@@ -902,6 +905,7 @@
 
 								string="RESET"
 
+
 								groups="openhealth.roots"
 							/>
 						
@@ -957,7 +961,12 @@
 								<a href="https://external_site_invoice?num=400">TRA</a>
 -->
 
+
+
 								<field name="treatment" 	readonly="1"/>
+
+								<field name="cosmetology" 	readonly="1"/>
+
 							</h5>
 						</group>
 					</group>
@@ -1330,7 +1339,7 @@ Order Line - Tree
 					
 
 					<field name="vspace"/>			
-					<field name="x_family"		readonly="1"		groups="openhealth.roots"	/>
+					<field name="x_family"		readonly="0"		groups="openhealth.roots"	/>
 
 
 <!--
@@ -1372,7 +1381,7 @@ Order Line - Tree
 -->
 
 					<field name="vspace"/>
-					<field name="x_machine_req"		invisible="1"/>
+					<field name="x_machine_req"		invisible="0"/>
 
 
 <!--

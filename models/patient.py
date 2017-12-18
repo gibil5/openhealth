@@ -1054,49 +1054,61 @@ class Patient(models.Model):
 
 
 
+
 # ----------------------------------------------------------- Computes ------------------------------------------------------
-
-
 
 	# Treatment count  
 	x_treatment_count = fields.Integer(
-			compute='_compute_x_treatment_count',
 			string = "Número de tratammientos",
 			default = 0, 
-			)
 
+			compute='_compute_x_treatment_count',
+		)
+
+	
 	@api.multi
 	#@api.depends('x_allergies')
+
 	def _compute_x_treatment_count(self):
+
 		for record in self:
-			#record.x_treatment_count = 5
-			sub_total = 0 
+			count = 0 
+
 			for tr in record.treatment_ids:   
-				sub_total = sub_total + 1  
-			record.x_treatment_count = sub_total  
+				count = count + 1  
+
+			record.x_treatment_count = count  
 
 
 
 
 
+	x_nr_cosmetologies = fields.Integer(
 
-	# Ooor - For consistency 
-	#nr_treatments = fields.Integer(
-	#		compute='_compute_nr_treatments',
-	#		string = "Número de vacunas",
-	#		default = 55, 
-	#		)
+			'Nr Cosmiatrías', 
 
-	#@api.multi
-	#def _compute_nr_treatements(self):
-	#	for record in self:
-	#		record.nr_treatments = 5  
+			default=0, 
+
+			compute='_compute_x_nr_cosmetologies',
+		)
+
 	
-			#record.x_nr_treatments = 5  
-			#sub_total = 0 
-			#for tr in record.treatment_ids:   
-			#	sub_total = sub_total + 1  
-			#record.x_nr_treatments= sub_total  
+	@api.multi
+	#@api.depends('x_allergies')
+
+	def _compute_x_nr_cosmetologies(self):
+
+		for record in self:
+			
+			count = 0 
+
+			for tr in record.cosmetology_ids:   
+				count = count + 1  
+
+			record.x_nr_cosmetologies = count  
+
+
+
 
 
 
@@ -1121,6 +1133,7 @@ class Patient(models.Model):
 		#print 'Update'
 
 		self.x_date_created = self.x_date_created
+
 
 
 

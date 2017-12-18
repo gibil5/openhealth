@@ -7,51 +7,107 @@
 		<!-- Form --> 
 		<record model="ir.ui.view" id="session_cos_form_view">
 			<field name="name">session.cos.form</field>
-			
 			<field name="model">openhealth.session.cos</field>
 
-			<field name="inherit_id" ref="session_form_view"/>
-	        <field name="mode">primary</field>
-			<field name="arch" type="xml">				
+
+			<field name="arch" type="xml">
+				<form string="Evaluation">
 
 
 
-				<!-- <xpath expr="//field[@name='title']" position="before"> -->
+					<!-- Header --> 
+					<header>
+					</header>
+
+					
+
+							
+					<!-- Sheet --> 
+					<sheet>
 
 
 
-				<!-- Title --> 
-				<xpath expr="//h1" position="replace">
-					<h1>Sesión - Cos</h1>					
-        		</xpath>
+						<!-- Id -->
+						<div>						
+
+							<!-- Persona --> 
+							<div class="oe_left"  style="width: 300px;">
+								<div class="oe_title" >
+
+									<h1 class="jx_title">Sesión Cosmiatría</h1>	
+
+								</div>								
+								<group></group>
+								<h2>
+									<field name="patient"/>
+								</h2>
+							</div>
+
+
+
+							<!-- Buttons --> 
+							<div class="oe_left" style="width: 300px;" name="buttons">
+								
+
+								
+							</div>
+						
+						
+							<!-- Number --> 
+							<div class="oe_right" >
+								<div class="oe_title" >
+
+<!--
+									<label class="oe_edit_only" for="name" string="sesión #"/>
+									<label class="" for="name" string="Sesión #"	readonly="1"	/>
+-->
+
+									<field name="name" 		readonly="1"	/>
+
+									<h1><field name="cosmetology" 	readonly="1"	/></h1>
+<!--
+									<h1><field name="name" class="oe_inline"/></h1>
+									<h1><field name="treatment" class="oe_inline"/></h1>
+-->
+
+
+								</div>
+							</div>
+						</div>
 
 
 
 
-        		<!-- Cosmetoloty --> 
-				<xpath expr="//field[@name='treatment']" position="replace">
-					<field name="cosmetology"	/>
-				</xpath>
+						<group>
+							<group>
+
+								<field name="procedure_applied"	/>
+
+								<field name="vspace"/>																
+
+								<field name="comments"	/>
+
+							</group>
+							<group></group>
+						</group>
+
+
+
+						<!-- Notebook --> 
+						<notebook>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
 
 
 
 
-        		<!-- Comments --> 
-				<xpath expr="//field[@name='product']" position="after">
-
-					<field name="comments"	/>
-
-					<field name="vspace"/>								
-					<field name="procedure_applied"	/>
-				
-				</xpath>
 
 
 
 
-
-			</field>						
-		</record>		
 
 
 

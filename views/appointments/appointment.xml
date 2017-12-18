@@ -120,12 +120,21 @@
 
 							<field name="x_type"/>
 
-							<field name="x_target"			invisible="1"	/>
+							
+							<field name="x_target"			invisible="0"	/>
+
+
+
+
+<!--
+																		'required':[('x_target', '=', 'therapist'),],
+-->
 
 							<field name="x_machine"			attrs="{
-																	'invisible':[('x_type', '=', 'consultation'),],
+																		'invisible':[('x_type', '=', 'consultation'),],
+
 															}"	
-															/>
+								/>
 
 
 
@@ -296,15 +305,20 @@
 
 
 
-							<field name="treatment"		/>
 
 
+							<field name="treatment"		
+														attrs="{
+																	'invisible':[('x_target', '!=', 'doctor'),],
+																	'required':[('x_target', '==', 'doctor'),],
+														}"	/>
 
 
 
 							<field name="cosmetology"			
 														attrs="{
 																	'invisible':[('x_target', '!=', 'therapist'),],
+																	'required':[('x_target', '==', 'therapist'),],
 														}"	/>
 
 

@@ -38,28 +38,28 @@ class Cosmetology(models.Model):
 	@api.multi 
 	def reset(self):
 
-		self.state = False
+		#self.state = False
+		self.state = 'empty'
 
 
 		self.service_ids.unlink()
 
 		self.consultation_ids.unlink()
+
 		self.procedure_ids.unlink()
+		
 		self.session_ids.unlink()
+		
 		#self.control_ids.unlink()
+		
 		self.appointment_ids.unlink()
 
-		# Numbers 
-		#self.nr_budgets_cons = 0 
-		#self.nr_invoices_cons = 0 
-		#self.nr_budgets_pro = 0 
-		#self.nr_invoices_pro = 0 
 
 		for order in self.order_ids:
 			order.remove_myself()
 
 
-	# x_reset
+	# reset
 
 
 
@@ -196,16 +196,18 @@ class Cosmetology(models.Model):
 
 	# State 
 	_state_list = [
-        			#('empty', 			'Inicio'),
-
+        			('empty', 			'Inicio'),
 
         			('appointment', 	'Cita'),
 
-        			('service', 		'Servicio'),
+        			('service', 		'Recomendación'),
         			
         			('budget', 			'Presupuesto'),
 
+
         			('invoice', 		'Facturado'),
+        			#('invoice', 		'Pagado'),
+
         			
 					('consultation', 	'Consulta'),
 
@@ -219,24 +221,24 @@ class Cosmetology(models.Model):
         		]
 
 
+
+
 	state = fields.Selection(
 			selection = _state_list, 
-			string='State', 			
-			default = False, 
+			string='State', 
+
+			#default = False, 
+			default = 'empty', 
 
 			compute="_compute_state",
 		)
 
 
-
 	def _compute_state(self):
 		for record in self:
 
-
-			state = False
-
-
-
+			#state = False
+			state = 'empty'
 
 
 			if record.nr_appointments > 0:
@@ -246,17 +248,17 @@ class Cosmetology(models.Model):
 			if record.nr_services > 0:
 				state = 'service'
 
+
 			if record.nr_budgets > 0:
 				state = 'budget'
+
 
 			if record.nr_invoices > 0:
 				state = 'invoice'
 
 
-
 			if record.nr_consultations > 0:
 				state = 'consultation'
-
 
 
 			if record.nr_procedures > 0:
@@ -266,10 +268,8 @@ class Cosmetology(models.Model):
 				state = 'sessions'
 
 
-
 			#if record.nr_controls > 0:
 			#	state = 'controls'
-
 
 
 			record.state = state
@@ -567,11 +567,79 @@ class Cosmetology(models.Model):
 
 
 # ----------------------------------------------------------- Create Appointment ------------------------------------------------------
-	#@api.multi 
-	#def create_appointment(self):
-		#print 
-		#print 'jx'
-		#print 'Create Appointment'
+	@api.multi 
+	def create_appointment(self):
+		
+		print 'jx'
+		print 'Create Appointment'
+
+
+		# Defaults 
+		cosmetology_id = self.id 
+		patient_id = self.patient.id
+		doctor_id = self.physician.id
+
+		#x_type = 'procedure'
+		x_type = 'cosmetology'
+
+		x_target = 'therapist'
+
+
+		return {
+
+			# Mandatory 
+			'type': 'ir.actions.act_window',
+			'name': 'Open Appointment Current',
+
+			# Model
+			'res_model': 'oeh.medical.appointment',
+			#'res_model': 'oeh.medical.appointment.cos',
+			#'res_id': consultation_id,
+
+
+
+			# Views 
+			"views": [[False, "form"]],
+
+			'view_mode': 'form',
+
+			'target': 'current',
+
+			#'view_id': view_id,
+
+			#"domain": [["patient", "=", self.patient.name]],
+
+			#'auto_search': False, 
+
+
+			'flags': {
+					#'form': {'action_buttons': True, }
+					'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+					},			
+
+
+
+			'context':   {
+
+				#'search_default_cosmetology': cosmetology_id,
+
+				'default_patient': patient_id,
+
+				'default_doctor': doctor_id,
+
+				'default_cosmetology': cosmetology_id,
+
+				'default_x_type': x_type,
+
+				'default_x_target': x_target,
+			}
+		}
+
+	# create_appointment
+
+
+
+
 
 
 
@@ -590,15 +658,12 @@ class Cosmetology(models.Model):
 		#print 'Create Consultation'
 
 
-		#treatment_id = self.id 
+
 		cosmetology_id = self.id 
 		patient_id = self.patient.id
-		chief_complaint = self.chief_complaint
-
-
 		doctor_id = self.physician.id
-		#therapist_id = self.therapist.id
 
+		chief_complaint = self.chief_complaint
 
 
 
@@ -615,14 +680,12 @@ class Cosmetology(models.Model):
 		# Apointment 
 		appointment = self.env['oeh.medical.appointment'].search([ 	
 														
-															('patient', 'like', self.patient.name),		
-															
+																	('patient', 'like', self.patient.name),		
+		
+																	('doctor', 'like', self.physician.name), 	
 
-															('doctor', 'like', self.physician.name), 	
-															#('x_therapist', 'like', self.therapist.name), 	
-															
-
-															('x_type', 'like', 'consultation'), 
+																	#('x_type', 'like', 'consultation'), 
+																	('x_type', '=', 'cosmetology'), 
 														
 														], 
 														order='appointment_date desc', limit=1)
@@ -760,6 +823,58 @@ class Cosmetology(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Open Service ------------------------------------------------------
+	@api.multi 
+	def open_service(self):
+
+
+		cosmetology_id = self.id 
+
+
+		return {
+				'type': 'ir.actions.act_window',
+
+				'name': 'Service List', 
+
+
+				#'view_type': 'form',				
+				'view_type': 'tree',				
+
+				'view_mode': 'form',				
+				#'view_mode': 'tree',				
+
+
+				'res_model': 'openhealth.service.cosmetology',	
+
+				#'res_id': consultation_id,
+				
+				#'target': 'current',
+
+				'flags': 	{
+							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+							'form': {'action_buttons': True, }
+							},
+
+				'context': {
+
+							'search_default_cosmetology': cosmetology_id,
+							#'default_family': family,
+							#'default_laser': laser,
+
+
+							#'default_zone': zone,
+							#'default_pathology': pathology,
+							}
+				}
+
+	# open_service
+
+
+
+
+
+
 # ----------------------------------------------------------- Create Service ------------------------------------------------------
 	@api.multi 
 	def create_service(self):
@@ -772,6 +887,7 @@ class Cosmetology(models.Model):
 		cosmetology_id = self.id 
 
 		family = 'cosmetology'
+
 		laser = 'cosmetology'
 
 		#zone = ''	
@@ -799,6 +915,7 @@ class Cosmetology(models.Model):
 							'default_cosmetology': cosmetology_id,
 
 							'default_family': family,
+
 							'default_laser': laser,
 
 							#'default_zone': zone,
@@ -834,6 +951,8 @@ class Cosmetology(models.Model):
 
 
 
+		x_family = 'cosmetology'
+
 
 
 		# Order - Search
@@ -864,6 +983,7 @@ class Cosmetology(models.Model):
 														'x_chief_complaint':chief_complaint,
 
 
+														'x_family': x_family,
 														#'x_appointment': appointment_id,	
 														#'consultation':self.id,
 													}
@@ -872,9 +992,23 @@ class Cosmetology(models.Model):
 			#print order_id
 
 
+
+
 			# Create order lines 
 			#ret = order.x_create_order_lines()		# Deprecated ? 
+			
+
+			#target_line = 'con_med'
+			#target_line = 'dit_fac_dfc_30m_one'
+			#ret = order.x_create_order_lines_target(target_line)
+  			
+			for service in self.service_ids:  			
+				target_line = service.name_short
+				ret = order.x_create_order_lines_target(target_line)
+			
+
 			#print ret 
+
 
 
 		#print 
@@ -919,6 +1053,9 @@ class Cosmetology(models.Model):
 							
 							'default_x_chief_complaint': chief_complaint,	
 							#'default_x_appointment': appointment_id,	
+
+
+							'default_x_family': x_family,
 						}
 			}
 

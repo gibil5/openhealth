@@ -26,11 +26,20 @@
 					<header>
 
 
+<!--
+-->
 						<!-- Treatment --> 
 						<button 
 								name="open_treatment"
 								type="object" 
 								class="oe_highlight"
+
+
+								attrs="{'invisible':
+														[
+															('family', '=', 'cosmetology'),
+														]
+										}"
 
 								string="Regresar al TRATAMIENTO"
 						/>
@@ -40,14 +49,23 @@
 
 						<!-- Cosmetology --> 
 <!--
+-->
 						<button 
 								name="open_cosmetology"
 								type="object" 
 								class="oe_highlight"
 
+
+								attrs="{'invisible':
+														[
+															('family', '!=', 'cosmetology'),
+														]
+										}"
+
+
 								string="Regresar a la COSMIATRIA"
 						/>
--->
+
 					</header>
 
 
@@ -108,8 +126,9 @@
 									<field name="sessions" 		readonly="1"  	invisible="1"/>									
 									<field name="time" 			readonly="1"  	invisible="1"/>									
 
-									<field name="family" 		readonly="1"   	invisible="0"/>
 									-->
+
+									<field name="family" 		readonly="1"   	invisible="1"/>
 								</group>
 								
 								

@@ -234,7 +234,9 @@ class Session(models.Model):
 	@api.multi
 	def open_line_current(self):  
 
+
 		co2_power = self.co2_power
+
 
 		return {
 				'type': 'ir.actions.act_window',

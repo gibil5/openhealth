@@ -162,6 +162,7 @@
 
 							<!-- Cosmetologies --> 
 <!--
+-->
 							<button type="action" class="oe_stat_button" 
 
 								name="%(cosmetology_form_action)d"	
@@ -174,7 +175,6 @@
 
 								<field string="Cosmiatrías" name="x_nr_cosmetologies" widget="statinfo"/>
 							</button>
--->
 
 
 

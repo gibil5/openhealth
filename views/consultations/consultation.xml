@@ -50,29 +50,6 @@
 
 
 
-						<!-- Cosmetology --> 
-<!--
-
-								attrs="{'invisible':
-														[
-															('cosmetology', '=', False),
-														]
-										}"
--->
-						<button 
-								name="open_cosmetology"
-								type="object" 
-								class="oe_highlight"
-
-
-								attrs="{'invisible':
-														[
-															('treatment', '!=', False),
-														]
-										}"
-
-								string="Regresar a la COSMIATRIA"
-						/>					
 
 
 

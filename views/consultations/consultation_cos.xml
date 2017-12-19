@@ -27,6 +27,36 @@
 
 
 
+
+        		<!-- Button --> 
+				<xpath expr="//button[@name='open_treatment']" position="replace">
+
+
+						<!-- Cosmetology --> 
+<!--
+								attrs="{'invisible':
+														[
+															('treatment', '!=', False),
+														]
+										}"
+-->
+						<button 
+								name="open_cosmetology"
+								type="object" 
+								class="oe_highlight"
+
+
+								string="Regresar a la COSMIATRIA"
+						/>		
+
+				</xpath>
+
+
+
+
+
+
+
         		<!-- Cosmetology --> 
 				<xpath expr="//field[@name='treatment']" position="replace">
 					<field name="cosmetology"	/>

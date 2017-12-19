@@ -186,21 +186,25 @@ access_oeh_medical_appointment_caja,oeh.medical.appointment caja,oehealth.model_
 
 access_openhealth_treatment_directors,openhealth.treatment.directors,model_openhealth_treatment,openhealth.directors,1,1,1,1
 
-
 access_openhealth_treatment_managers,openhealth.treatment.managers,model_openhealth_treatment,openhealth.managers,1,1,1,1
-
-
-
 
 access_openhealth_treatment_physicians,openhealth.treatment.physicians,model_openhealth_treatment,openhealth.physicians,1,1,1,0
 
-
 access_openhealth_treatment_assistants,openhealth.treatment.assistants,model_openhealth_treatment,openhealth.assistants,1,1,1,0
-
 
 access_openhealth_treatment_caja,openhealth.treatment.caja,model_openhealth_treatment,openhealth.caja,1,0,0,0
 
 access_openhealth_treatment_reception,openhealth.treatment.reception,model_openhealth_treatment,openhealth.reception,1,1,1,0
+
+
+
+access_openhealth_treatment_archivers,openhealth.treatment.archivers,model_openhealth_treatment,openhealth.archivers,1,1,1,0
+
+
+
+
+
+
 
 
 
@@ -212,12 +216,7 @@ access_sale_order_directors,sale.order.directors,model_sale_order,openhealth.dir
 
 access_sale_order_caja,sale.order.caja,model_sale_order,openhealth.caja,1,1,1,0
 
-
-
 access_sale_order_reception,sale.order.reception,model_sale_order,openhealth.reception,1,1,1,0
-
-
-
 
 access_sale_order_managers,sale.order.managers,model_sale_order,openhealth.managers,1,1,1,1
 
@@ -228,6 +227,12 @@ access_sale_order_assistants,sale.order.assistants,model_sale_order,openhealth.a
 access_sale_order_staffs,sale.order.staffs,model_sale_order,openhealth.staffs,1,0,0,0
 
 access_sale_order_almacens,sale.order.almacens,model_sale_order,openhealth.almacens,1,0,0,0
+
+
+
+access_sale_order_archivers,sale.order.archivers,model_sale_order,openhealth.archivers,1,0,0,0
+
+
 
 
 

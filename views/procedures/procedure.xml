@@ -34,7 +34,7 @@
 
 
 						<button 
-							groups="openhealth.roots,openhealth.managers,openhealth.physicians"
+							groups="openhealth.roots,openhealth.archivers,openhealth.managers,openhealth.physicians"
 
 
 							type="object" 
@@ -69,7 +69,7 @@
 						-->
 
 						<button 
-							groups="openhealth.roots,openhealth.managers,openhealth.physicians"
+							groups="openhealth.roots,openhealth.archivers,openhealth.managers,openhealth.physicians"
 
 
 							type="object" 

@@ -27,7 +27,7 @@
 					sequence="-10"
 					name="Historias"
 					
-					groups="openhealth.roots,openhealth.reception,openhealth.staffs,openhealth.assistants,openhealth.physicians,openhealth.managers,openhealth.directors"
+					groups="openhealth.roots,openhealth.archivers,openhealth.reception,openhealth.staffs,openhealth.assistants,openhealth.physicians,openhealth.managers,openhealth.directors"
 					/>
 
 
@@ -38,7 +38,7 @@
 					name="Historias Médicas"
 					parent="main_emr_menu"
 
-					groups="openhealth.roots,openhealth.reception,openhealth.staffs,openhealth.assistants,openhealth.physicians,openhealth.managers,openhealth.directors"
+					groups="openhealth.roots,openhealth.archivers,openhealth.reception,openhealth.staffs,openhealth.assistants,openhealth.physicians,openhealth.managers,openhealth.directors"
 					/>
 
 
@@ -57,6 +57,7 @@
 
 
 
+
 		<!-- Treatments -->
 		<menuitem 	id="emr_treatments_menu" 
 					name="Tratamientos" 
@@ -68,6 +69,21 @@
 				
 					/>
 
+
+		<!-- Treatments Legacy -->
+		<menuitem 	id="emr_treatments_legacy_menu" 
+
+					name="Tratamientos Legacy" 
+			
+					parent="emr_menu"
+			
+					sequence="2"
+			
+					action="treatment_legacy_list_action"
+
+				groups="openhealth.roots,openhealth.archivers,openhealth.directors"
+				
+					/>
 
 
 

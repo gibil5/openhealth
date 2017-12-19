@@ -5,17 +5,13 @@
 
 
 
+
 <!-- Categories --> 
 	   <record model="ir.module.category" id="module_openhealth_category">
 				<field name="name">Open Health</field>
 				<field name="sequence">0</field>
 				<field name="visible" eval="0" />	
 		</record>
-
-
-
-
-
 
 
 
@@ -28,6 +24,47 @@
 														(4, ref('base.user_root')), 
 									]"/>
 		</record>
+
+
+
+
+
+
+
+
+
+<!-- Archivers -->
+<!--
+-->
+		<record id="openhealth.archivers" model="res.groups">
+			
+			<field name="name">Archivadores</field>
+			
+			<field name="category_id" ref="module_openhealth_category"/>
+
+			<field name="comment">cc</field>
+
+
+
+
+<!--
+			<field name="implied_ids" eval="[(4, ref('openhealth.physicians'))]"/>
+-->
+
+			<field name="implied_ids" eval="[(4, ref('oehealth.group_oeh_medical_physician'))]"/>
+
+
+
+			<field name="users" eval="[ 
+
+										(4, ref('openhealth.archivo_clinicachavarri')),
+
+										(4, ref('openhealth.nescobar_clinicachavarri')),
+										(4, ref('openhealth.kcalero_clinicachavarri')),
+
+									]"/>
+		</record>
+
 
 
 
@@ -142,7 +179,6 @@
 										(4, ref('openhealth.vmori_clinicachavarri')),
 										(4, ref('openhealth.jessenwanger_clinicachavarri')),
 										(4, ref('openhealth.pbalboa_clinicachavarri')),
-										(4, ref('openhealth.mpedemonte_clinicachavarri')),
 
 									]"/>
 		</record>
@@ -233,13 +269,13 @@
 										(4, ref('openhealth.plataforma_clinicachavarri')),
 										
 										(4, ref('openhealth.imichelot_clinicachavarri')),
+										
 										(4, ref('openhealth.gnunhez_clinicachavarri')),
+										
 										(4, ref('openhealth.mgrieve_clinicachavarri')),
 										(4, ref('openhealth.ktejada_clinicachavarri')),
 										(4, ref('openhealth.avidal_clinicachavarri')),
-										(4, ref('openhealth.nescobar_clinicachavarri')),
-										(4, ref('openhealth.kcalero_clinicachavarri')),
-
+										
 									]"/>
 		</record>
 
@@ -252,6 +288,8 @@
 
 
 <!-- Caja --> 
+<!--
+-->
 		<record id="openhealth.caja" model="res.groups">
 			<field name="name">Caja</field>
 			<field name="category_id" ref="module_openhealth_category"/>
@@ -262,7 +300,8 @@
 
 			<field name="users" eval="[ 
 										(4, ref('openhealth.caja_clinicachavarri')),
-										(4, ref('openhealth.gnunhez_clinicachavarri')),
+
+										(4, ref('openhealth.mpedemonte_clinicachavarri')),
 									]"/>
 		</record>
 
@@ -286,6 +325,7 @@
 
 			<field name="users" eval="[ 
 										(4, ref('openhealth.staff_clinicachavarri')),
+
 										(4, ref('openhealth.lloli_clinicachavarri')),
 										(4, ref('openhealth.ipuga_clinicachavarri')),
 										(4, ref('openhealth.rbustios_clinicachavarri')),

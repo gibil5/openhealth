@@ -119,20 +119,40 @@
 
 
 
-						<!-- Pay --> 
+
+						<!-- Create Procedure --> 
 						<button 
 							type="object" 
-
 							class="oe_highlight"
-
-							string="Crear PROCEDIMIENTO" 
-
 							states="budget_procedure,invoice_procedure"
+
 
 							name="create_procedure" 
 
+
+							string="Crear PROCEDIMIENTO" 
 							groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
 						/>
+
+
+
+						<!-- Create New Procedure --> 
+						<button 
+							type="object" 
+							class="oe_highlight"
+
+
+							states="empty"
+
+
+							name="create_new_procedure" 
+
+
+							string="Crear Nuevo PROCEDIMIENTO" 
+
+							groups="openhealth.roots,openhealth.archivers,openhealth.managers,openhealth.directors"
+						/>
+
 
 
 
@@ -589,8 +609,10 @@ Fields
 
 
 							<group>
-								<field name="physician"			required="1"/>									
+								<field name="physician"			required="0"/>									
+
 								<field name="vspace" />
+
 								<field name="chief_complaint"	required="1"	/>
 
 							</group>							

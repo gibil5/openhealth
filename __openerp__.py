@@ -81,7 +81,7 @@
 
 
 		# ----------------------------------------------------------- Views - Actions ------------------------------------------------------
-		'views/actions.xml',
+		#'views/actions.xml',
 
 
 
@@ -232,11 +232,14 @@
 
 
 		#'security/openhealth_security_oe.xml',		# DEPRECATED !!! 
-		#'security/openhealth_security.xml',
+
 
 
 		'security/openhealth_security_readers.xml',
-		'security/openhealth_security_buf.xml',
+		
+		#'security/openhealth_security_buf.xml',
+		'security/openhealth_security.xml',
+
 
 		'security/ir.model.access.csv',
 		
@@ -474,13 +477,15 @@
 
 		# Menus
 		'views/menus/menus.xml',
+
+
+
+		# Menus - Reporting 
 		'views/menus/menus_reporting.xml',
 		'views/menus/menus_reporting_pla.xml',
 		
-
 		#'views/reports/report_sale_months_phy_ala.xml',
 		#'views/menus/menus_reporting_phy_ala.xml',
-
 
 		'views/menus/menus_reporting_phy.xml',
 		'views/reports/report_sale_months_phy_can.xml',

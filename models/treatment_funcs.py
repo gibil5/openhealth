@@ -101,13 +101,10 @@ def create_procedure_go(self):
 
 	patient = self.patient.id
 
-
-	#therapist = self.therapist.id
 	doctor = self.physician.id
 
-
-
 	chief_complaint = self.chief_complaint
+
 
 
 

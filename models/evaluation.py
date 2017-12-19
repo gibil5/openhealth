@@ -290,10 +290,17 @@ class Evaluation(models.Model):
 
 	# Product
 	product = fields.Many2one(
+		
 			'product.template',
+		
 			string="Producto",
+		
 			#required=True, 
-			)
+
+			domain = [
+						('x_origin', '=', False),
+					],
+		)
 	
 
 

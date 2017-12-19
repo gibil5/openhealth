@@ -147,22 +147,115 @@ Here
 
 
 
-		<!-- Treatment - List action -->
+
+		
+		<!-- Session --> 
+		<record model="ir.actions.act_window" id="session_list_action">
+			<field name="name">sessiones</field>
+			<field name="res_model">openhealth.session</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first session
+				</p>
+			</field>
+			
+		</record>
+
+
+
+		<!-- Session Med --> 
+		<record model="ir.actions.act_window" id="session_med_form_action">
+			<field name="name">Sesiones Med</field>
+			<field name="res_model">openhealth.session.med</field>
+			<field name="view_type">form</field>
+
+			<field name="view_mode">tree,form</field>
+			
+			<!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first session
+				</p>
+			</field>
+			-->
+		</record>		
+
+
+
+
+
+
+
+
+
+
+		<!-- Treatment -->
 			<record model="ir.actions.act_window" id="treatment_list_action">
 			<field name="name">Tratamientos</field>
 			<field name="res_model">openhealth.treatment</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 
+
+<!--
             <field name="domain">[]</field>
-            <field name="context">{}</field>
-            
+										('chief_complaint', '!=', False),
+-->
+			<field name="domain">[
+										('physician', '!=', False),
+								]
+			</field>
+
+
+            <field name="context">{}</field>            
             <field name="view_id" eval="False"/>
 			<field name="help" type="html">
 				<p class="oe_view_nocontent_create">Create the first treatment
 				</p>
 			</field>
 		</record>
+
+
+		<!-- Treatment Legacy -->
+			<record model="ir.actions.act_window" id="treatment_legacy_list_action">
+			<field name="name">Tratamientos Legacy</field>
+			<field name="res_model">openhealth.treatment</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+
+
+<!--
+										('chief_complaint', '=', False),
+-->
+
+			<field name="domain">[
+										('physician', '=', False),
+								]
+			</field>
+
+
+            <field name="context">{}</field>            
+            <field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first treatment
+				</p>
+			</field>
+		</record>
+
+
+
+
+
+
+
 
 
 
@@ -351,29 +444,6 @@ Here
 
 
 		
-		
-		<!-- Window List action -->
-		<!--
-		The following tag is an action definition for a "window action",
-		that is an action opening a view or a set of views
-		-->
-		<record model="ir.actions.act_window" id="session_list_action">
-			<field name="name">sessiones</field>
-			<field name="res_model">openhealth.session</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-			
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="view_id" eval="False"/>
-			
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first session
-				</p>
-			</field>
-			
-		</record>
-
 
 
 		

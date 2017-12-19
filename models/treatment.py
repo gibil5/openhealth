@@ -1880,7 +1880,6 @@ class Treatment(models.Model):
 			'res_id': consultation_id,
 
 
-
 			# Views 
 			"views": [[False, "form"]],
 
@@ -1900,6 +1899,7 @@ class Treatment(models.Model):
 
 			#'context':   {
 			#	'search_default_treatment': treatment_id,
+
 			#	'default_patient': patient_id,
 			#	'default_doctor': doctor_id,
 			#	'default_treatment': treatment_id,				
@@ -1914,6 +1914,77 @@ class Treatment(models.Model):
 
 
 
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Button - Create New Procedure ------------------------------------------------------
+
+	@api.multi
+	def create_new_procedure(self):
+
+		print 
+		print 'jx'
+		print 'Create New Procedure'
+
+
+		#if self.nr_invoices_pro > 0:
+		#	ret = treatment_funcs.create_procedure_go(self)
+
+
+		patient_id = self.patient.id
+		doctor_id = self.physician.id
+		treatment_id = self.id 
+		chief_complaint = self.chief_complaint
+		evaluation_start_date = self.start_date
+
+
+		return {
+
+			# Mandatory 
+			'type': 'ir.actions.act_window',
+			'name': 'Open Procedure Current',
+
+
+			# Window action 
+			'res_model': 'openhealth.procedure',
+			#'res_id': order.id,
+
+
+			# Views 
+			"views": [[False, "form"]],
+
+			'view_mode': 'form',
+
+			'target': 'current',
+
+
+			#'view_id': view_id,
+			#"domain": [["patient", "=", self.patient.name]],
+			#'auto_search': False, 
+
+			'flags': {
+						#'form': {'action_buttons': True, }
+						'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+				},			
+
+
+			'context': {
+
+						'default_patient': patient_id,
+						'default_doctor': doctor_id,
+						'default_treatment': treatment_id,				
+						'default_chief_complaint': chief_complaint,
+
+
+						'default_evaluation_start_date': evaluation_start_date,
+				}
+		}
+
+	# create_new_procedure 
 
 
 
@@ -2103,13 +2174,5 @@ class Treatment(models.Model):
 
 		return res
 	# CRUD 
-
-
-
-
-
-
-
-
 
 

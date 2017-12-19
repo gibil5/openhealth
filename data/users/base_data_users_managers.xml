@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-	<data noupdate='1'>
+	<data noupdate='0'>
 	
 
 
@@ -28,6 +28,45 @@ uq@dL_F=xs?_3yBR
 
 
 
+
+
+
+<!-- Archivo -->
+		<record id="archivo_partner" model="res.partner">
+			<field name="name">Archivo</field>
+			<field name="email">archivo@clinicachavarri.com</field>
+		</record>
+
+
+
+		<record id="archivo_clinicachavarri" model="res.users">
+
+			<field name="name">ARCHIVO</field>
+			
+			<field name="login">archivo@clinicachavarri.com</field>
+
+			<field name="password">archivo</field>
+
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+
+			<field name="active">True</field>
+			
+			<field name="lang">es_ES</field>
+			
+			<field name="tz">America/Lima</field>
+			
+			<field name="partner_id" ref="archivo_partner"/>
+		</record>
+
+
+
+
+
+
+
+
+
+
 <!-- Director -->
 		<record id="director_partner" model="res.partner">
 			<field name="name">Director</field>
@@ -52,6 +91,7 @@ uq@dL_F=xs?_3yBR
 			<field name="tz">America/Lima</field>
 			<field name="partner_id" ref="director_partner"/>
 		</record>
+
 
 
 

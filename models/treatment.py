@@ -36,7 +36,134 @@ class Treatment(models.Model):
 
 
 
+# ----------------------------------------------------------- Important ------------------------------------------------------
 
+	# Open 
+	#treatment_open = fields.Boolean(
+	#		string="Abierto",
+	#		default=True,
+	#)
+
+
+
+
+	# Closed 
+	treatment_closed = fields.Boolean(
+
+			string="De Alta",
+		
+			default=False,
+		)
+
+
+	end_date = fields.Date(
+
+			string="Fecha fin", 
+		
+			#default = fields.Date.today
+			default = False, 
+
+			#compute='_compute_end_date', 
+		)
+
+
+
+	#@api.multi
+	#@api.depends('start_date', 'end_date')
+
+	#def _compute_end_date(self):
+	#	for record in self:
+	#		if not record.treatment_closed:
+	#			record.end_date = False
+	#		else:
+	#			record.end_date = record.today_date
+
+
+
+
+	@api.onchange('treatment_closed')
+	def _onchange_treatment_closed(self):
+
+		if self.treatment_closed: 	
+
+			self.end_date = self.today_date
+
+		else: 
+			self.end_date = False
+
+
+
+
+
+
+
+
+
+
+
+	# Today 
+	today_date = fields.Date(
+			string="Fecha hoy", 
+
+			#default = fields.Date.today
+
+			compute='_compute_today_date', 
+		)
+
+	@api.multi
+	#@api.depends('start_date')
+
+	def _compute_today_date(self):
+		for record in self:
+
+			#record.today_date = datetime.today().strftime("%m/%d/%Y")
+			record.today_date = datetime.today().strftime('%Y-%m-%d')
+
+
+
+
+
+
+	# Duration 
+	duration = fields.Integer(
+			#string="Días", 
+			default = 0,
+
+			compute='_compute_duration', 
+		)
+
+
+	@api.multi
+	#@api.depends('start_date', 'end_date')
+
+	def _compute_duration(self):
+		for record in self:
+			date_format = "%Y-%m-%d"
+
+			a = datetime.strptime(record.start_date, date_format)
+			
+
+			#if record.treatment_open:
+			if not record.treatment_closed:
+
+				b = datetime.strptime(record.today_date, date_format)
+			
+			else:
+				
+				b = datetime.strptime(record.end_date, date_format)
+			
+
+			delta = b - a
+			record.duration = delta.days + 1 
+
+
+
+
+
+
+
+
+	# User 
 	user_id = fields.Many2one(
 		'res.users', 
 		string='Salesperson', 
@@ -218,12 +345,6 @@ class Treatment(models.Model):
 
 
 
-	duration = fields.Integer(
-			#string="Días", 
-			default = 0,
-			compute='_compute_duration', 
-			)
-
 
 # ----------------------------------------------------------- Relational ------------------------------------------------------
 	
@@ -330,14 +451,12 @@ class Treatment(models.Model):
 				state = 'appointment'
 
 
-
 			#if record.nr_budgets_cons > 0:
 			#	state = 'budget_consultation'
 
 
 			if record.nr_invoices_cons > 0:
 				state = 'invoice_consultation'
-
 
 
 			#if record.nr_consultations > 0:
@@ -349,23 +468,31 @@ class Treatment(models.Model):
 				state = 'service'
 
 
-
 			#if record.nr_budgets_pro > 0:
 			#	state = 'budget_procedure'
+
 
 			if record.nr_invoices_pro > 0:
 				state = 'invoice_procedure'
 
 
-
 			if record.nr_procedures > 0:
 				state = 'procedure'
+
 
 			if record.nr_sessions > 0:
 				state = 'sessions'
 
+
 			if record.nr_controls > 0:
 				state = 'controls'
+
+
+
+
+			if record.treatment_closed:
+				state = 'done'
+
 
 
 
@@ -557,12 +684,13 @@ class Treatment(models.Model):
 	def _compute_nr_invoices_cons(self):
 		for record in self:
 
+
 			record.nr_invoices_cons=self.env['sale.order'].search_count([
-																	('treatment','=', record.id),
+																			('treatment','=', record.id),
 
-																	('x_family','=', 'consultation'),
+																			('x_family','=', 'consultation'),
 
-																	('state','=', 'sale'),
+																			('state','=', 'sale'),
 																	]) 
 
 
@@ -588,11 +716,11 @@ class Treatment(models.Model):
 
 			record.nr_invoices_pro=self.env['sale.order'].search_count([
 																
-																		('treatment','=', record.id),
-																		
-																		('x_family','=', 'procedure'),
+																			('treatment','=', record.id),
+																			
+																			('x_family','=', 'procedure'),
 
-																		('state','=', 'sale'),
+																			('state','=', 'sale'),
 																	]) 
 
 
@@ -750,13 +878,6 @@ class Treatment(models.Model):
 
 
 
-
-
-	# Open 
-	treatment_open = fields.Boolean(
-			string="Abierto",
-			default=True,
-	)
 
 
 
@@ -1023,38 +1144,11 @@ class Treatment(models.Model):
 
 
 
-	end_date = fields.Date(
-			string="Fecha fin", 
-			default = fields.Date.today
-			)
-
-
-	today_date = fields.Date(
-			string="Fecha hoy", 
-			default = fields.Date.today
-			)
 
 
 
 
 
-	@api.multi
-	#@api.depends('start_date', 'end_date')
-
-
-	def _compute_duration(self):
-		for record in self:
-			date_format = "%Y-%m-%d"
-			a = datetime.strptime(record.start_date, date_format)
-			
-			if record.treatment_open:
-				b = datetime.strptime(record.today_date, date_format)
-				
-			else:
-				b = datetime.strptime(record.end_date, date_format)
-			
-			delta = b - a
-			record.duration = delta.days + 1 
 
 
 

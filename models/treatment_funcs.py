@@ -143,56 +143,38 @@ def create_procedure_go(self):
 
 
 
-	#for line in self.order_ids.order_line:
-	for line in self.order_pro_ids.order_line:
 
+#jxx
 
-		#if self.nr_procedures < self.order_ids.nr_lines:
-		if self.nr_procedures < self.order_pro_ids.nr_lines:
+	#for line in self.order_pro_ids.order_line:
+	for order in self.order_pro_ids:
 
-			product = line.product_id.id
-			
-
-			if line.product_id.type == 'service':
-				
-				procedure = self.procedure_ids.create({
-														'patient':patient,
-
-														'doctor':doctor,
-														#'therapist':therapist,
-														
-														'treatment':treatment,		
-														#'cosmetology':cosmetology,		
-
-														'product':product,
-														'evaluation_start_date':evaluation_start_date,
+		if order.state == 'sale': 
+	
+			for line in order.order_line:
 
 
 
-														'chief_complaint':chief_complaint,
+				#if self.nr_procedures < self.order_pro_ids.nr_lines:
+				if self.nr_procedures < order.nr_lines:
 
+					product = line.product_id.id
+					
+					if line.product_id.type == 'service':
+						
+						procedure = self.procedure_ids.create({
+																'patient':patient,
+																'doctor':doctor,														
+																'treatment':treatment,		
+																'product':product,
+																'evaluation_start_date':evaluation_start_date,
+																'chief_complaint':chief_complaint,
+																'appointment': appointment_id,
+															})
 
+						procedure_id = procedure.id
 
-														'appointment': appointment_id,
-													})
-
-
-				procedure_id = procedure.id
-
-				#print 
-				#print procedure 
-				#print procedure_id
-
-
-				#self.update_appointment(appointment_id, procedure_id, 'procedure')
-				ret = jrfuncs.update_appointment_go(self, appointment_id, procedure_id, 'procedure')
-
-
-				#print appointment
-				#print appointment.procedure
-				#print appointment.procedure.id
-
-				#print 
+						ret = jrfuncs.update_appointment_go(self, appointment_id, procedure_id, 'procedure')
 
 	return ret	
 

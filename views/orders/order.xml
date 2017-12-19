@@ -838,119 +838,79 @@
 					<group>
 						<group class="oe_left"  style="width: 600px;">
 
-							<group col='6'	groups="openhealth.roots,openhealth.caja,openhealth.managers,openhealth.directors"		>
+
+
+							<group col='6'		groups="openhealth.roots,openhealth.caja,openhealth.managers,openhealth.directors">
 
 
 
 
 
-<!--
-								groups="openhealth.managers,openhealth.directors"
--->
-						<!-- Cancel --> 
-						<group>
-							<button 
-								name="cancel_order" 	
+								<!-- Cancel --> 
+								<group>
+									<button 
+											name="cancel_order" 	
+											type="object" 
+											class="oe_highlight oe_right "	
 
-								type="object" 
-								class="oe_highlight oe_right "	
 
-								string="Anular"
+											string="Anular"
 
-								groups="openhealth.caja,openhealth.managers,openhealth.directors"
-							/>
-						</group>
+											groups="openhealth.roots,openhealth.caja,openhealth.managers,openhealth.directors"
+									/>
+								</group>
 
 
 
-
-						<!-- Activate --> 
-						<group>
-							<button 
-								name="activate_order" 	
-
-								type="object" 
-								class="oe_highlight oe_right "	
-
-								string="Activar"
-
-								groups="openhealth.managers,openhealth.directors"
-							/>
-						</group>
+								<!-- Activate --> 
+								<group>
+									<button 
+											name="activate_order" 	
+											type="object" 
+											class="oe_highlight oe_right "	
 
 
-<!--
-								groups="openhealth.managers,openhealth.directors" />
--->
-						<!-- Cancelled -->
-						<group>
-							<field name="x_cancel" nolabel="1"	readonly="1"
+											string="Activar"
 
-
-								groups="openhealth.caja,openhealth.managers,openhealth.directors" />
-						</group>
+											groups="openhealth.roots,openhealth.managers,openhealth.directors"
+									/>
+								</group>
 
 
 
+								<!-- Cancelled -->
+								<group>
+									<field 
+											name="x_cancel" 
+											nolabel="1"	
+											readonly="1"
+
+
+											groups="openhealth.roots,openhealth.caja,openhealth.managers,openhealth.directors" />
+								</group>
 
 
 
-						<!-- Reset --> 
-						<group>
-
-							<button 
-								name="x_reset" 	
-								type="object" 
-								class="oe_highlight"
-
-								string="RESET"
+								<!-- Reset --> 
+								<group>
+									<button 
+											name="x_reset" 	
+											type="object" 
+											class="oe_highlight"
 
 
-								groups="openhealth.roots"
-							/>
-						
-						</group>
+											string="RESET"
 
-
-
-						<!-- Remove - DEPRECATED ?		--> 
-						<!--
-						<group>
-							<button 
-								name="remove_myself" 
-
-								type="object" 								
-								class="oe_highlight "
-
-								string="REMOVEM" 
-
-								groups="openhealth.roots"
-							/>
-						</group>
-						-->
-
-
-
-						<!-- Update - DEPRECATED		--> 
-						<!--
-						<group>
-							<button 
-								name="update_order" 	
-								type="object" 
-								class="oe_highlight"
-
-								string="Actualizar"
-
-								groups="openhealth.roots"
-							/>
-						</group>
-						--> 
-
-
-
+											groups="openhealth.roots"
+									/>
+								</group>
 							</group>
-
 						</group>
+
+
+
+
+
 						<group class="">
 							<h5>
 
@@ -1525,7 +1485,6 @@ Look for the Minimalist experience !!!
 				<tree string="Order Tree"
 
 colors="
-
 red:state=='draft';
 
 green:state=='sent';
@@ -1533,8 +1492,8 @@ green:state=='sent';
 blue:state=='sale';
 
 grey:state in ('cancel')
-
 "
+
 >
 
 

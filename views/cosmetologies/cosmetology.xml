@@ -417,7 +417,10 @@
 
 
 							<group>
+<!--
 								<field name="process_open"/>
+-->						
+
 							</group>
 							<group>
 								<field name="end_date"/>

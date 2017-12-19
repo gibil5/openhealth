@@ -56,6 +56,7 @@ _hash_progress = {
 _state_list = [
 
 				('empty', 			'Inicio'),		# OK
+
 				('appointment', 	'Cita'),		# OK
 
 
@@ -64,21 +65,35 @@ _state_list = [
 
 
 				
-				('invoice_consultation', 	'Caja - Con'),			# OK 
+				#('invoice_consultation', 	'Caja - Con'),			# OK 
+				('invoice_consultation', 	'Facturado'),			# OK 
+
+
 				('consultation', 			'Consulta'),			# OK
-				('service', 				'Recomendación'),		# OK
 				
 
+				('service', 				'Recomendación'),		# OK
+				
 
 				#('budget_procedure', 		'Presupuesto-P'),	# Dep ? 
 
 
 
-				('invoice_procedure', 		'Caja - Pro'),				# OK
+				#('invoice_procedure', 		'Caja - Pro'),				# OK
+				('invoice_procedure', 		'Facturado'),				# OK
+
+
+
 				('procedure', 				'Procedimiento'),			# OK
+				
+
 				('sessions', 				'Sesiones'),				# OK
+				
+
 				('controls', 				'Controles'),				# OK
-				('done', 					'Completo'),				# OK 
+
+
+				('done', 					'Alta'),					# OK 
 			]
 
 

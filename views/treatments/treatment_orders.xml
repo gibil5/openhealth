@@ -51,6 +51,8 @@ groups="openhealth.directors,openhealth.managers"
 groups="openhealth.directors,openhealth.managers,openhealth.physicians"
 -->
 
+
+
 <page string="Caja"	
 
 groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.physicians"
@@ -65,8 +67,22 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 						<field name="order_ids"/>
 -->					
 
-						<field name="order_ids">									
-							<tree string="Consultas"	create="false" 	>										
+
+						<field name="order_ids">
+
+							<tree string="Prespuestos"	create="false" 	
+
+colors="
+red:state=='draft';
+
+green:state=='sent';
+
+blue:state=='sale';
+
+grey:state in ('cancel')
+"
+
+>										
 
 
 

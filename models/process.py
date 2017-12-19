@@ -6,8 +6,6 @@
 # Created: 				18 Feb 2017
 # Last updated: 	 	Id.
 
-
-
 from openerp import models, fields, api
 
 
@@ -23,7 +21,30 @@ class Process(models.Model):
 	_name = 'openhealth.process'
 	
 
+	# Important - Inherited by: Treatment, Cosmetology 
 
+
+
+
+
+# ----------------------------------------------------------- Important ------------------------------------------------------
+
+	# Open 
+	#process_open = fields.Boolean(
+	#		string="Abierto",
+	#		default=True,
+	#)
+
+
+
+
+
+
+
+	end_date = fields.Date(
+			string="Fecha fin", 
+			default = fields.Date.today
+			)
 
 
 
@@ -158,19 +179,6 @@ class Process(models.Model):
 
 
 
-
-
-	# Open 
-	process_open = fields.Boolean(
-			string="Abierto",
-			default=True,
-	)
-
-
-	end_date = fields.Date(
-			string="Fecha fin", 
-			default = fields.Date.today
-			)
 
 
 	nr_procedures = fields.Integer(

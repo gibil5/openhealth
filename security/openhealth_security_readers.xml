@@ -88,9 +88,6 @@
 
 
 <!--
-										(4, ref('openhealth.archivo_clinicachavarri')),
-										(4, ref('openhealth.nescobar_clinicachavarri')),
-										(4, ref('openhealth.kcalero_clinicachavarri')),
 -->
 
 <!-- HC Managers --> 
@@ -102,6 +99,8 @@
 			<field name="users" eval="[ 
 
 										(4, ref('openhealth.archivo_clinicachavarri')),
+										(4, ref('openhealth.nescobar_clinicachavarri')),
+										(4, ref('openhealth.kcalero_clinicachavarri')),
 
 
 

@@ -52,7 +52,8 @@ class Appointment(models.Model):
 			string="Tratamiento",
 			ondelete='cascade', 
 
-			required=True, 
+			#required=True, 
+			required=False, 
 		)
 
 

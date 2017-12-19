@@ -89,8 +89,6 @@
 
 			<field name="users" eval="[ 
 
-										(4, ref('base.user_root')), 
-
 										(4, ref('openhealth.director_clinicachavarri')),
 										(4, ref('openhealth.rchavarri_clinicachavarri')),
 

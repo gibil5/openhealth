@@ -609,7 +609,7 @@ Fields
 
 
 							<group>
-								<field name="physician"			required="0"/>									
+								<field name="physician"			required="1"/>									
 
 								<field name="vspace" />
 

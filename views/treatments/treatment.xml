@@ -626,9 +626,9 @@ Fields
 								<field name="today_date"		invisible="1"		/>
 
 
-<!--
+
 								<field name="treatment_closed"	invisible="0"	/>
--->
+
 
 <!--
 								<field name="consultation_progress"		/>

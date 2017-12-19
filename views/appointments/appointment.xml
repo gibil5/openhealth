@@ -307,22 +307,22 @@
 
 
 <!--
-																	'invisible':[('x_target', '!=', 'doctor'),],
 -->
 							<field name="treatment"		
 														attrs="{
 																	'required':[('x_target', '=', 'doctor'),],
+																	'invisible':[('x_target', '!=', 'doctor'),],
 														}"	/>
 
 
 
 
 <!--
-																	'invisible':[('x_target', '!=', 'therapist'),],
 -->
 							<field name="cosmetology"			
 														attrs="{
 																	'required':[('x_target', '=', 'therapist'),],
+																	'invisible':[('x_target', '!=', 'therapist'),],
 														}"	/>
 
 

@@ -317,9 +317,15 @@ class Treatment(models.Model):
 
 
 
+		# Alta 
+		self.treatment_closed = False
+
+
 
 		# Important
 		self.patient.x_nothing = 'Nothing'
+
+
 
 
 

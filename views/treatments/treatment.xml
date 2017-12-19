@@ -150,7 +150,7 @@
 
 							string="Crear Nuevo PROCEDIMIENTO" 
 
-							groups="openhealth.roots,openhealth.archivers,openhealth.managers,openhealth.directors"
+							groups="openhealth.archivers,openhealth.managers,openhealth.directors"
 						/>
 
 

@@ -976,6 +976,7 @@ class sale_order(models.Model):
 					],
 
 
+
 			compute='_compute_x_product', 
 		)
 
@@ -993,7 +994,6 @@ class sale_order(models.Model):
 
 			for line in record.order_line:
 
-
 				tre = line.product_id.x_treatment
 
 
@@ -1001,8 +1001,8 @@ class sale_order(models.Model):
 				#if line.product_id.x_treatment == 'laser_co2':
 				#if 	line.product_id.x_treatment == 'laser_co2'	or 	line.product_id.x_treatment == 'laser_excilite':
 				#if tre == 'laser_co2' 		or 		tre == 'laser_excilite': 
-				if tre == 'laser_co2' 		or 	tre == 'laser_excilite'		or 	tre == 'laser_ipl'		or tre == 'laser_ndyag'	: 
-
+				#if tre == 'laser_co2' 		or 	tre == 'laser_excilite'		or 	tre == 'laser_ipl'		or tre == 'laser_ndyag'	: 
+				if tre == 'laser_co2' 	or 	tre == 'laser_excilite'	or 	tre == 'laser_ipl'	or tre == 'laser_ndyag'		or tre == 'consultation': 
 
 					product = line.product_id.id
 					flag = True 

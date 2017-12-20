@@ -76,13 +76,13 @@ def create_order_lines(self, laser, order_id):
 
 @api.multi
 
-#def create_procedure_go(self, process):
 def create_procedure_go(self):
 
 
-	#print 
-	#print 'Create Procedure Go'
-	#print 
+	print 
+	print 'jx'
+	print 'Create Procedure Go'
+	print 
 
 	#name = 'name'
 
@@ -114,13 +114,32 @@ def create_procedure_go(self):
 
 
 	appointment = self.env['oeh.medical.appointment'].search([ 	
-																('patient', 'like', self.patient.name),		
-																('doctor', 'like', self.physician.name), 	
-																('x_type', 'like', 'procedure'), 
+																#('patient', 'like', self.patient.name),		
+																#('doctor', 'like', self.physician.name), 	
+																#('x_type', 'like', 'procedure'), 
+																('patient', '=', self.patient.name),		
+																('doctor', '=', self.physician.name), 	
+																('x_type', '=', 'procedure'), 
 														], 
 															order='appointment_date desc', limit=1)
 
-	#print appointment
+	
+
+	print appointment
+	print appointment.state
+
+
+
+	# Change App state 
+	#appointment.state = 'completed'
+
+
+
+	print appointment.state
+
+
+
+
 	appointment_id = appointment.id
 
 
@@ -158,7 +177,9 @@ def create_procedure_go(self):
 					product = line.product_id.id
 					
 					if line.product_id.type == 'service':
-						
+			
+
+
 						procedure = self.procedure_ids.create({
 																'patient':patient,
 																'doctor':doctor,														
@@ -170,6 +191,7 @@ def create_procedure_go(self):
 															})
 
 						procedure_id = procedure.id
+
 
 						ret = jrfuncs.update_appointment_go(self, appointment_id, procedure_id, 'procedure')
 

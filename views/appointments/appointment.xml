@@ -423,19 +423,13 @@
 
 
 
-		<!-- service tree/list view -->
+		<!-- TREE -->
 		<record model="ir.ui.view" id="oehealth.oeh_medical_appointment_tree">
-			<field name="name">oeh.medical.appointment.tree</field>
-			
-<!--
-			<field name="model">oeh.medical.appointment</field>
--->
-			<field name="model">oeh.medical.appointment</field>
-			
 
+			<field name="name">oeh.medical.appointment.tree</field>			
+			<field name="model">oeh.medical.appointment</field>
 			<field name="type">tree</field>
 			<field name="priority" eval="1"/>
-
 			<field name="arch" type="xml">
 				
 
@@ -465,8 +459,15 @@
 
 
 					<field name="name"/>
-					<field name="nr_clones"/>
-					<field name="nr_mac_clones"/>
+
+					<field name="id"/>
+
+<!--
+-->
+					<field name="nr_clones"		invisible="1"	/>
+					<field name="nr_mac_clones"	invisible="1"	/>
+
+
 					<field name="patient"/>
 					<field name="doctor"/>
 					<field name="x_type"/>

@@ -2407,10 +2407,14 @@ class sale_order(models.Model):
 			self.x_doctor_uid = uid
 
 
+
+
 		# Change State to Scheduled 
 		if self.x_family == 'consultation'	or 	self.x_family == 'procedure': 
 			if self.x_appointment.name != False: 
-				self.x_appointment.state = 'Scheduled'
+				#self.x_appointment.state = 'Scheduled'
+				self.x_appointment.state = 'invoiced'
+
 
 
 

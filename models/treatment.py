@@ -1402,7 +1402,7 @@ class Treatment(models.Model):
 	# Consultation - NEW
 	# --------------------
 
-
+#jx
 	@api.multi
 	def open_consultation_current(self):  
 
@@ -1415,11 +1415,15 @@ class Treatment(models.Model):
 		treatment_id = self.id 
 		chief_complaint = self.chief_complaint
 
+
+
 		# Date 
 		GMT = time_funcs.Zone(0,False,'GMT')
 		#print 'GMT: ', GMT
 		evaluation_start_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
 		#print 'evaluation_start_date: ', evaluation_start_date 
+
+
 
 		# Apointment 
 		appointment = self.env['oeh.medical.appointment'].search([ 	
@@ -1433,7 +1437,6 @@ class Treatment(models.Model):
 
 
 
-
 		# Search  
 		consultation = self.env['openhealth.consultation'].search([
 																		('treatment','=', self.id),
@@ -1444,6 +1447,14 @@ class Treatment(models.Model):
 		# Create if it does not exist 
 		if consultation.name == False:
 			#print 'create consultation'
+
+
+
+
+			# Change App state 
+			##appointment.state = 'completed'
+			appointment.state = 'Scheduled'
+
 
 
 
@@ -2008,6 +2019,7 @@ class Treatment(models.Model):
 
 		#if self.nr_invoices > 0:
 		if self.nr_invoices_pro > 0:
+
 
 			ret = treatment_funcs.create_procedure_go(self)
 

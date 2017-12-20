@@ -140,17 +140,29 @@ class Appointment(models.Model):
 
 	# State 
 	APPOINTMENT_STATUS = [			
+			
 			('Scheduled', 				'Confirmado'),
+			
 			('pre_scheduled',	 		'No confirmado'),
+			
 			('pre_scheduled_control', 	'Pre-cita'),
+			
 			('error', 					'Error'),
+
+
+
+
+			#('completed', 				'Completo'),
+			('invoiced', 				'Facturado'),
+
+
+
 
 			# Oe Health 
 			#('Scheduled', 'Scheduled'),
 			#('Completed', 'Completed'),
 			#('Invoiced', 'Invoiced'),
-			#('Completed', 'Completo'),
-			#('Invoiced', 'Facturado'),
+
 		]
 
 	state = fields.Selection(
@@ -160,6 +172,9 @@ class Appointment(models.Model):
 			readonly=False, 
 			required=True, 
 		)
+
+
+
 
 
 	# Patient
@@ -421,6 +436,11 @@ class Appointment(models.Model):
 						'pre_scheduled':			'2',
 						'pre_scheduled_control':	'3',
 						'error':					'55',
+
+
+						
+						#'completed':				'20',
+						'invoiced':					'10',
 					}
 
 

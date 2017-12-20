@@ -18,29 +18,392 @@
 
 
 
-		<template id="openhealth.report_ticket_receipt_view"	inherit_id="openhealth.report_ticket_sale_view"	>
-
-			<xpath expr="//h3" position="replace">
-				<h3>
-					Ticket Boleta
-				</h3>					
-			</xpath>
+		<template id="openhealth.report_ticket_receipt_view">
 
 
 
-			<xpath expr="//div[@id='ruc']" position="replace">
-			</xpath>
-
-			<xpath expr="//div[@id='firm']" position="replace">
-			</xpath>
+			<t t-call="report.html_container">                 
+			<t t-foreach="docs" t-as="doc">
+			<t>
 
 
 
-			<xpath expr="//div[@id='tax']" position="replace">
-			</xpath>
+<!-- Header --> 
+<!--
+<div class="header">    
+	<img src='/openhealth/static/src/img/logo_chavarri.png' style="max-height: 100px;"/>
+</div>
+-->
 
-			<xpath expr="//div[@id='net']" position="replace">
-			</xpath>
+
+
+<!-- 								Page 1 - Begin	 										-->
+<div class="page">    
+
+
+<!-- Title --> 
+<br/>
+<center>
+<h3>
+	Ticket Recibo - Nex
+</h3>
+</center>
+<br/>
+
+
+
+<!-- My Firm --> 
+<br/>
+<div class='row'>
+<b>	
+	<div class='col-xs-12'>		
+		<t t-esc="doc.x_my_company.name"/>
+	</div>
+</b>
+</div>
+
+
+
+<!-- My Address --> 
+<div class='row'>
+<b>	
+	<div class='col-xs-12'>		
+		<t t-esc="doc.x_my_company.x_address"/>
+	</div>
+</b>
+</div>
+
+
+
+<!-- My Phone --> 
+<div class='row'>
+	<div class='col-xs-4'>		
+		<b>Telf:</b>
+	</div>
+	<div class='col-xs-8'>
+		<t t-esc="doc.x_my_company.phone"/>
+	</div>
+</div>
+
+
+
+<!-- My Ruc --> 
+<div class='row'>
+	<div class='col-xs-4'>		
+		<b>Ruc:</b>
+	</div>
+	<div class='col-xs-8'>
+		<t t-esc="doc.x_my_company.x_ruc"/>
+	</div>
+</div>
+<br/>
+
+
+
+
+
+
+
+<!-- Serial number --> 
+<div class='row'>
+	<div class='col-xs-4'>		
+		<b>Serie:</b>
+	</div>
+	<div class='col-xs-8'>
+		<t t-esc="doc.x_serial_nr"/>
+	</div>
+</div>
+
+
+
+<!-- Authorization --> 
+<div class='row'>
+	<div class='col-xs-4'>		
+		<b>Autorización:</b>
+	</div>
+	<div class='col-xs-8'>
+<!--
+		<t t-esc="doc.x_authorization"/>
+-->
+		<t t-esc="doc.user_id.name"/>
+	</div>
+</div>
+<br/>
+
+
+
+
+
+<!-- Customer --> 
+
+<div class='row'>
+	<div class='col-xs-4'>		
+		<b>Cliente:</b>
+	</div>
+	<div class='col-xs-8'>
+		<t t-esc="doc.partner_id.name"/>
+	</div>
+</div>
+
+
+
+<!-- DNI --> 
+<div class='row'	id='dni'	>
+	<div class='col-xs-4'>		
+		<b>DNI:</b>
+	</div>
+	<div class='col-xs-8'>
+		<t t-esc="doc.partner_id.x_dni"/>
+	</div>
+</div>
+
+
+
+<!-- Address --> 
+<div class='row'>
+	<div class='col-xs-4'>		
+		<b>Dirección:</b>
+	</div>
+	<div class='col-xs-8'>
+		<t t-esc="doc.partner_id.x_address"/>
+	</div>
+</div>
+
+
+
+
+
+<!-- Firm --> 
+<!--
+<div class='row'	id='firm'	>
+	<div class='col-xs-4'>		
+		<b>Raz. Social:</b>
+	</div>
+	<div class='col-xs-8'>
+		<t t-esc="doc.partner_id.x_firm"/>
+	</div>
+</div>
+-->
+
+
+<!-- Ruc --> 
+<!--
+<div class='row'	id='ruc'	>
+	<div class='col-xs-4'>		
+		<b>Ruc:</b>
+	</div>
+	<div class='col-xs-8'>
+		<t t-esc="doc.partner_id.x_ruc"/>
+	</div>
+</div>
+<br/>
+<br/>
+-->
+
+
+
+
+<!-- Date --> 
+<div class='row'>
+	<div class='col-xs-4'>		
+		<b>Fecha:</b>
+	</div>
+	<div class='col-xs-8'>
+		<t t-esc="doc.date_order"/>
+	</div>
+</div>
+
+
+
+<!-- Name --> 
+<div class='row'>
+	<div class='col-xs-4'>		
+		<b>Ticket:</b>
+	</div>
+	<div class='col-xs-8'>
+<!--
+		<t t-esc="doc.name"/>
+-->
+		<t t-esc="doc.x_serial_nr"/>
+	</div>
+</div>
+<br/>
+
+
+
+
+
+
+<!-- Line --> 
+<div class='row'>
+	<div class='col-xs-12'>
+		<t t-esc="doc.cr"/>
+	</div>
+</div>
+
+
+
+<b>
+<div class='row'>
+	<div class='col-xs-4'>
+		Descr.
+	</div>
+	<div class='col-xs-2'>
+		Cnt
+	</div>
+	<div class='col-xs-3'>
+		P. Unit.
+	</div>
+	<div class='col-xs-3'>
+		Total
+	</div>
+</div>
+</b>
+
+
+
+<div class='row'>
+	<div class='col-xs-12'>
+		<t t-esc="doc.cr"/>
+	</div>
+</div>
+
+
+
+<t t-foreach="doc.order_line" t-as="line">
+<div class='row'>
+		<div class='col-xs-4'>
+			<t t-esc="line.name"/>
+		</div>
+		<div class='col-xs-2'>
+			<t t-esc="line.product_uom_qty"/>
+		</div>
+		<div class='col-xs-3'>
+			<t t-esc="line.price_unit"/>
+		</div>
+		<div class='col-xs-3'>
+			<t t-esc="line.price_subtotal"/>
+		</div>
+</div>
+</t>
+
+
+
+<div class='row'>
+	<div class='col-xs-12'>
+		<t t-esc="doc.cr"/>
+	</div>
+</div>
+<br/>
+
+
+
+
+
+
+
+
+<!-- Net --> 
+<!--
+<div class='row'	id='net'	>
+	<div class='col-xs-8'>		
+		<b>Neto S/.:</b>
+	</div>
+
+	<div class='col-xs-4 text-right'>
+		<t t-esc="doc.x_total_net"/>
+	</div>
+
+</div>
+-->
+
+<!-- Tax --> 
+<!--
+<div class='row'	id='tax'	>
+	<div class='col-xs-8'>		
+		<b>IGV S/.:</b>
+	</div>
+
+	<div class='col-xs-4 text-right'>
+		<t t-esc="doc.x_total_tax"/>
+	</div>
+
+</div>
+-->
+
+
+
+
+<!-- Total --> 
+<div class='row'>
+	<div class='col-xs-8'>		
+		<b>Total S/.:</b>
+	</div>
+	<div class='col-xs-4 text-right'>
+		<t t-esc="doc.amount_total"/>
+	</div>
+</div>
+
+
+<!-- Total Words --> 
+<!--
+-->
+<div class='row'>
+	<div class='col-xs-4'>		
+		<b>Son:</b>
+	</div>
+	<div class='col-xs-8'>
+		<t t-esc="doc.x_total_in_words"/>
+	</div>
+</div>
+<br/>
+
+
+
+
+<center>
+<!-- Website --> 
+<div class='row'>
+	<div class='col-xs-12'>
+		<t t-esc="doc.x_my_company.website"/>
+	</div>
+</div>
+
+<!-- Email --> 
+<div class='row'>
+	<div class='col-xs-12'>
+		<t t-esc="doc.x_my_company.email"/>
+	</div>
+</div>
+</center>
+<br/>
+
+
+
+
+
+
+<!-- Warning --> 
+<div class='row'>
+	<div class='col-xs-12'>
+		<t t-esc="doc.x_my_company.x_warning"/>
+	</div>
+</div>
+
+
+<br/>
+<br/>
+</div> <!-- page --> 
+
+
+
+
+
+			</t>
+			</t>
+			</t>
+
+
 
 
 

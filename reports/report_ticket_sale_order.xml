@@ -23,6 +23,8 @@
 
 
 		<template id="openhealth.report_ticket_sale_view">
+
+
 			<t t-call="report.html_container">                 
 			<t t-foreach="docs" t-as="doc">
 			<t>
@@ -397,6 +399,8 @@
 			</t>
 			</t>
 			</t>
+
+
 		</template>
 	</data>
 </openerp>

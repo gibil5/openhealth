@@ -19,6 +19,33 @@ access_openhealth_procedure_cos_readers,openhealth.procedure.cos.readers,model_o
 
 
 
+access_openhealth_session_managers,openhealth.session.managers,model_openhealth_session,openhealth.hc_managers,1,1,1,1
+
+access_openhealth_session_readers,openhealth.session.readers,model_openhealth_session,openhealth.hc_readers,1,0,0,0
+
+
+
+access_openhealth_session_med_managers,openhealth.session_med.managers,model_openhealth_session_med,openhealth.hc_managers,1,1,1,1
+
+access_openhealth_session_med_readers,openhealth.session_med.readers,model_openhealth_session_med,openhealth.hc_readers,1,0,0,0
+
+access_openhealth_session_med_assistants,openhealth.session_med.assistants,model_openhealth_session_med,openhealth.assistants,1,1,0,0
+
+
+
+access_openhealth_session_cos_managers,openhealth.session_cos.managers,model_openhealth_session_cos,openhealth.hc_managers,1,1,1,1
+
+access_openhealth_session_cos_readers,openhealth.session_cos.readers,model_openhealth_session_cos,openhealth.hc_readers,1,0,0,0
+
+access_openhealth_session_cos_assistants,openhealth.session_cos.assistants,model_openhealth_session_cos,openhealth.assistants,1,1,0,0
+
+
+
+
+
+
+
+
 
 
 
@@ -424,19 +451,6 @@ access_openhealth_service_ndyag_readers,openhealth.service_ndyag.readers,model_o
 
 
 
-
-access_openhealth_session_med_managers,openhealth.session_med.managers,model_openhealth_session_med,openhealth.hc_managers,1,1,1,1
-
-access_openhealth_session_med_readers,openhealth.session_med.readers,model_openhealth_session_med,openhealth.hc_readers,1,0,0,0
-
-access_openhealth_session_managers,openhealth.session.managers,model_openhealth_session,openhealth.hc_managers,1,1,1,1
-
-access_openhealth_session_readers,openhealth.session.readers,model_openhealth_session,openhealth.hc_readers,1,0,0,0
-
-
-
-
-access_openhealth_session_med_assistants,openhealth.session_med.assistants,model_openhealth_session_med,openhealth.assistants,1,1,0,0
 
 
 

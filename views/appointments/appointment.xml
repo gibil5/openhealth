@@ -261,7 +261,7 @@
 <!--
 															attrs="{'invisible':[('state', '!=', 'pre_scheduled_control'),]}"
 -->
-							<field name="x_date"			invisible="1"	/>
+							<field name="x_date"			groups="openhealth.roots"	/>
 
 
 

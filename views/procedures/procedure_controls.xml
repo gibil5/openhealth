@@ -42,12 +42,15 @@
 							</tree>
 						</field>				
 						-->
+
+<!--
+
+																		'default_evaluation_start_date': evaluation_start_date,
+-->						
 						<field name="control_ids"		context="{
 																		'default_patient': patient,
 
 																		'default_chief_complaint': chief_complaint,
-
-																		'default_evaluation_start_date': evaluation_start_date,
 
 																		'default_product': product,
 
@@ -57,9 +60,15 @@
 
 																		'default_evaluation_type': 'control',
 
-
 																		'default_evaluation_nr': nr_controls + 1,
-																		}"
+
+
+
+																		'default_control_date': evaluation_start_date,
+
+
+																		'default_appointment': appointment,
+																}"
 							/>
 						
 						

@@ -10,7 +10,9 @@
 		<!-- Form view -->
 		<record model="ir.ui.view" id="control_form_view">
 			<field name="name">control.form</field>
+
 			<field name="model">openhealth.control</field>
+			
 			<field name="arch" type="xml">
 				
 				
@@ -39,27 +41,42 @@
 
 
 
-
-						<button 
+<!--
 							name="%(oeh_medical_appointment_action_tree_confirmed)d"	
+											'default_appointment_date': evaluation_start_date, 
+											'default_appointment_date': write_date, 
+-->
+
+
+
+<!--
+						<button 
+
+							name="%(oeh_medical_appointment_control_action)d"	
+							
 							type="action" 
+							
 							class="oe_highlight"
 							
 							context="{									
 											'search_default_doctor': doctor,
 											'default_patient': patient, 
 											'default_doctor' : doctor, 
-											'default_appointment_date': evaluation_start_date, 
-											'default_treatment': treatment, 
 											'default_x_type': 'control', 
 											'default_state': 'pre_scheduled', 
 											'default_x_target' : 'doctor', 
+							
+											'default_treatment': treatment, 
+
+											'default_procedure': procedure, 
+
 											'default_control' : active_id, 
 									}" 											
 
+
 							string="Crear CITA"
 						/>
-
+-->
 
 
 
@@ -157,8 +174,15 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 								<field name="appointment"/>
 
 								<field name="vspace"/>
-								
+
+
+<!--								
 								<field name="evaluation_start_date"/>
+-->
+								<field name="control_date"/>
+
+
+
 
 <!--
 								<field name="vspace"/>
@@ -301,7 +325,7 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 
 		
 		
-		<!-- Tree --> 
+		<!-- TREE --> 
 		<record model="ir.ui.view" id="control_tree_view">
 			<field name="name">control.tree</field>
 			<field name="model">openhealth.control</field>
@@ -341,8 +365,11 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 					
 					<field name="laser"/>
 
-					<field name="evaluation_start_date"/>
 
+<!--
+					<field name="evaluation_start_date"/>
+-->
+					<field name="control_date"/>
 					
 
 

@@ -34,6 +34,35 @@
 
 
 
+		<!-- Control -->  
+		<record id="oeh_medical_appointment_control_action" model="ir.actions.act_window">
+
+					<field name="name">Citas Control</field>
+			
+					<field name="res_model">oeh.medical.appointment</field>
+
+					<field name="view_type">form</field>
+					
+					<field name="view_mode">form,calendar,tree</field>  
+					
+					<field name="view_id" eval="False"/>
+
+
+		            <field name="domain">[]</field>
+
+
+					<field name="context">{
+											'default_x_target': 'doctor',
+											'default_x_type': 'control',
+										}
+					</field>
+		</record>
+
+
+
+
+
+
 		<!-- Confirmed -->  
 		<record id="oeh_medical_appointment_action_tree_confirmed" model="ir.actions.act_window">
 

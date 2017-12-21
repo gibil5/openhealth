@@ -694,7 +694,9 @@ class Appointment(models.Model):
 
 
 
+	#x_date = fields.Datetime(
 	x_date = fields.Date(
+
 			string="Fecha", 
 
 			compute="_compute_x_date",
@@ -705,7 +707,10 @@ class Appointment(models.Model):
 	def _compute_x_date(self):
 		date_format = "%Y-%m-%d %H:%M:%S"
 		for record in self:
+
 			dt = datetime.datetime.strptime(record.appointment_date, date_format)
+			
+			#record.x_date = dt.strftime(date_format)
 			record.x_date = dt.strftime("%Y-%m-%d")
 
 

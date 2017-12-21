@@ -26,6 +26,7 @@ class Control(models.Model):
 
 
 
+
 	# Name 
 	name = fields.Char(
 			#string = 'Control #',
@@ -38,10 +39,46 @@ class Control(models.Model):
 
 
 
-	# Dates 
-	evaluation_start_date = fields.Date(	
+
+	# Control date 
+	control_date = fields.Datetime(
+	
 			string = "Fecha", 	
+	
 			#required=True, 
+		
+			compute='_compute_control_date', 
+		)
+
+	@api.multi
+	#@api.depends('state')
+
+	def _compute_control_date(self):
+		for record in self:
+
+			#record.control_date = record.appointment.x_date
+			record.control_date = record.appointment.appointment_date
+
+
+
+
+
+
+
+
+
+
+
+
+
+	# Dates 
+	#evaluation_start_date = fields.Date(	
+	evaluation_start_date = fields.Datetime(
+	
+			string = "Fecha - jx", 	
+	
+			#required=True, 
+			required=False, 
 		
 			compute='_compute_evaluation_start_date', 
 		)
@@ -52,29 +89,11 @@ class Control(models.Model):
 	def _compute_evaluation_start_date(self):
 		for record in self:
 
-			record.evaluation_start_date = record.appointment.x_date
-			
-
-
-	#@api.onchange('appointment')
-	#def _onchange_appointment(self):
-	#	self.evaluation_start_date = self.appointment.x_date
+			#record.evaluation_start_date = record.appointment.x_date
+			record.evaluation_start_date = record.appointment.appointment_date
 
 
 
-
-
-
-
-
-	#date_actual = fields.Date(
-	#		string = "Fecha real", 	
-			#required=True, 
-	#	)
-
-	#@api.onchange('evaluation_start_date')
-	#def _onchange_evaluation_start_date(self):
-	#	self.date_actual = self.evaluation_start_date
 
 
 
@@ -113,14 +132,7 @@ class Control(models.Model):
 			default=1, 
 
 			#compute='_compute_control_nr', 
-			)
-
-	#@api.multi
-	#@api.depends('state')
-	#def _compute_control_nr(self):
-	#	for record in self:
-	#		nr = 1
-	#		record.control_nr = nr  
+		)
 
 
 
@@ -132,7 +144,7 @@ class Control(models.Model):
 			#default='draft',
 
 			compute='_compute_state', 
-			)
+		)
 
 	@api.multi
 	#@api.depends('state')
@@ -154,13 +166,6 @@ class Control(models.Model):
 
 			record.state = state
 
-
-
-	#image_ids = fields.One2many(
-	#		'openhealth.image', 
-	#		'control', 
-	#		string = "Fotos", 
-	#	)
 
 
 
@@ -219,16 +224,11 @@ class Control(models.Model):
 
 
 	# Appointments 
-
 	appointment_ids = fields.One2many(
-
 			'oeh.medical.appointment', 
-			#'openhealth.appointment', 
-
-
 			'control', 
 			string = "Citas", 
-			)
+		)
 
 
 
@@ -264,42 +264,10 @@ class Control(models.Model):
 			required=False, 
 			)
 
-	
-	#@api.multi
-	#@api.depends('evaluation_start_date')
-	#def _compute_evaluation_next_date(self):
-	#	date_format = "%d days, 0:00:00"
-	#	delta = datetime.timedelta(weeks=1)
-	#	to = datetime.datetime.today()
-	#	next_week = delta + to
-	#	for record in self:
-	#		record.evaluation_next_date = next_week
 
 
 
-	#@api.onchange('evaluation_start_date')
-	#def _onchange_evaluation_start_date(self):
-
-	#	date_format = "%Y-%m-%d"
-	#	delta = datetime.timedelta(weeks=1)
-	#	sd = datetime.datetime.strptime(self.evaluation_start_date, date_format)
-	#	next_week = delta + sd
-
-	#	self.evaluation_next_date = next_week
-
-		#print
-		#print 'onchange'
-		#print self.evaluation_start_date
-		#print sd 
-		#print next_week
-		#print 
-
-
-
-
-
-	# Relational 
-
+	# Procedure  
 	procedure = fields.Many2one('openhealth.procedure',
 			string="Procedimiento",
 			readonly=True,
@@ -312,10 +280,12 @@ class Control(models.Model):
 
 			
 
-# ----------------------------------------------------------- Open ------------------------------------------------------
+# ----------------------------------------------------------- Actions ------------------------------------------------------
 
+	# Open Appointment 
 	@api.multi
 	def open_appointment(self):  
+
 
 		#print 
 		#print 'open appointment'
@@ -379,8 +349,7 @@ class Control(models.Model):
 
 
 
-	#----------------------------------------------------------- Quick Button ------------------------------------------------------------
-
+	# Open Line 
 	@api.multi
 	def open_line_current(self):  
 
@@ -405,8 +374,8 @@ class Control(models.Model):
 
 
 
-# ----------------------------------------------------------- CRUD ------------------------------------------------------
 
+# ----------------------------------------------------------- CRUD ------------------------------------------------------
 
 	@api.multi
 	def unlink(self):

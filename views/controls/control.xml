@@ -77,6 +77,8 @@
 						<!-- Id -->
 						<div>						
 
+
+
 							<!-- Persona --> 
 							<div class="oe_left"  style="width: 300px;">
 								
@@ -92,13 +94,12 @@
 
 
 
-							<!-- Buttons --> 
-							<div class="oe_left" style="width: 300px;" name="buttons">
-								
 
-								
+							<!-- Buttons --> 
+							<div class="oe_left" style="width: 300px;" name="buttons">		
 							</div>
 						
+
 						
 							<!-- Number --> 
 							<div class="oe_right" >
@@ -147,14 +148,16 @@
 							
 
 <group
-groups="openhealth.directors,openhealth.managers,openhealth.physicians,openhealth.staffs,openhealth.reception"
+groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.physicians,openhealth.staffs,openhealth.reception"
 >
 								<field name="doctor" options="{'no_create': True}"/>
 
 								<field name="vspace"/>
+
 								<field name="appointment"/>
 
 								<field name="vspace"/>
+								
 								<field name="evaluation_start_date"/>
 
 <!--
@@ -165,25 +168,30 @@ groups="openhealth.directors,openhealth.managers,openhealth.physicians,openhealt
 -->
 
 								<field name="vspace"/>
+
 								<field name="x_done"/>
 
 
 
 								<field name="vspace"/>
+								
 								<field name="nr_images"			invisible="0"	/>
 
 								<field name="vspace"/>
+								
 								<field name="evaluation_nr"		invisible="0"	/>
 
 
 
 								<field name="vspace"/>
+								
 								<field name="indication"	/>
 							</group>
 
 
+
 <group
-groups="openhealth.directors,openhealth.managers,openhealth.physicians,openhealth.staffs,openhealth.reception"
+groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.physicians,openhealth.staffs,openhealth.reception"
 >
 								<field name="procedure"			invisible="0"	/>
 

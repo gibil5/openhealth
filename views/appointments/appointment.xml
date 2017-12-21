@@ -251,13 +251,22 @@
 
 
 
-							<field name="appointment_date"		attrs="{'invisible':[('state', '=', 'pre_scheduled_control'),]}"/>
 
-							<field name="x_date"				attrs="{'invisible':[('state', '!=', 'pre_scheduled_control'),]}"/>
+<!--
+															attrs="{'invisible':[('state', '=', 'pre_scheduled_control'),]}"
+-->
+							<field name="appointment_date"		
+								/>
+
+<!--
+															attrs="{'invisible':[('state', '!=', 'pre_scheduled_control'),]}"
+-->
+							<field name="x_date"			invisible="1"	/>
+
+
+
 
 							<field name="vspace"/>
-
-
 
 							<field name="duration"/>	
 

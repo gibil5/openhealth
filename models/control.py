@@ -22,15 +22,63 @@ class Control(models.Model):
 	_name = 'openhealth.control'
 
 	#_inherit = 'oeh.medical.evaluation'
-	#_inherit = ['oeh.medical.evaluation', 'base_multi_image.owner', 'openhealth.base']
 	_inherit = ['oeh.medical.evaluation', 'base_multi_image.owner']
 
 
 
+	# Name 
 	name = fields.Char(
 			#string = 'Control #',
 			string = 'Nombre',
-			)
+		)
+
+
+
+
+
+
+
+	# Dates 
+	evaluation_start_date = fields.Date(	
+			string = "Fecha", 	
+			#required=True, 
+		
+			compute='_compute_evaluation_start_date', 
+		)
+
+	@api.multi
+	#@api.depends('state')
+
+	def _compute_evaluation_start_date(self):
+		for record in self:
+
+			record.evaluation_start_date = record.appointment.x_date
+			
+
+
+	#@api.onchange('appointment')
+	#def _onchange_appointment(self):
+	#	self.evaluation_start_date = self.appointment.x_date
+
+
+
+
+
+
+
+
+	#date_actual = fields.Date(
+	#		string = "Fecha real", 	
+			#required=True, 
+	#	)
+
+	#@api.onchange('evaluation_start_date')
+	#def _onchange_evaluation_start_date(self):
+	#	self.date_actual = self.evaluation_start_date
+
+
+
+
 
 
 
@@ -156,22 +204,6 @@ class Control(models.Model):
 
 
 
-	# Dates 
-
-	evaluation_start_date = fields.Date(
-			#string = "Fecha programada", 	
-			string = "Fecha", 	
-			required=True, 
-			)
-
-	date_actual = fields.Date(
-			string = "Fecha real", 	
-			#required=True, 
-			)
-
-	@api.onchange('evaluation_start_date')
-	def _onchange_evaluation_start_date(self):
-		self.date_actual = self.evaluation_start_date
 
 
 

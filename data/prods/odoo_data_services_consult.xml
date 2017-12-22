@@ -1,13 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
-	<data noupdate='1'>
+	<data noupdate='0'>
 
 
-
-		<!-- Product Category --> 
-		<record id='consultation' model='product.category'>
-			<field name='name'>Consultas</field>
-		</record>
 
 
 

@@ -71,17 +71,20 @@ _family_list = [
 
 _treatment_list = [
 
-		('laser_m22',		'laser_m22'),
+
+		('consultation',		'consultation'), 
 
 
+		('laser_quick',			'laser_quick'),
 
-		('consultation',			'consultation'), 
 
+		('laser_co2',			'laser_co2'),
+		('laser_excilite',		'laser_excilite'),
+		('laser_ipl',			'laser_ipl'),
+		('laser_ndyag',			'laser_ndyag'),
 
-		('laser_co2',		'laser_co2'),
-		('laser_excilite',	'laser_excilite'),
-		('laser_ipl',		'laser_ipl'),
-		('laser_ndyag',		'laser_ndyag'),
+		('laser_m22',			'laser_m22'),
+
 
 
 		('criosurgery',			'criosurgery'),
@@ -178,6 +181,13 @@ _laser_type_list = [
 
 _zone_list = [ 
 
+		# Quick 
+		('face_all_neck',	'face_all_neck'), 
+		('face_all_hands',	'face_all_hands'), 
+		('neck_hands',		'neck_hands'), 
+
+
+		# Other 
 		('areolas',		'areolas'), 
 		('armpits',		'armpits'), 
 		('arms',		'arms'), 
@@ -186,12 +196,14 @@ _zone_list = [
 		('body_local',	'body_local'), 
 		('breast',		'breast'), 
 		('cheekbones',	'cheekbones'), 
+
 		('face',		'face'),
 		('face_all',	'face_all'), 
 		('face_hands',	'face_hands'), 
 		('face_local',	'face_local'), 
 		('face_neck',	'face_neck'), 
 		('face_neck_hands',	'face_neck_hands'),   
+		
 		('feet',		'feet'), 
 		('gluteus',		'gluteus'), 
 		('hands',		'hands'), 
@@ -234,7 +246,21 @@ _zone_list = [
 _pathology_list = [ 
 
 
-		# 2017
+
+		# Quick 
+		('tatoo_1',		'tatoo_1'), 
+		('tatoo_2',		'tatoo_2'), 
+		('tatoo_3',		'tatoo_3'), 
+		('tatoo_4',		'tatoo_4'), 
+
+		('rejuvenation_1',	'rejuvenation_1'),
+		('rejuvenation_2',	'rejuvenation_2'),
+
+
+
+
+
+		# Other 
 		('wart',		'wart'), 
 		('wart_1',		'wart_1'), 
 		('wart_2',		'wart_2'), 

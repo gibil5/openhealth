@@ -1,14 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
-	<data noupdate='1'>
-
-
-
-		<!-- Product Category --> 
-		<record id='laser_co2' model='product.category'>
-			<field name='name'>Laser Co2</field>
-		</record>
-
+	<data noupdate='0'>
 
 
 

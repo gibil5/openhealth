@@ -1,12 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
-	<data noupdate='1'>
+	<data noupdate='0'>
 
-
-
-		<record id='laser_m22' model='product.category'>
-			<field name='name'>Laser M22</field>
-		</record>
 
 
 		<!-- Data - Services -->

@@ -4,7 +4,7 @@
 
 
 
-		<!-- Form view -->
+		<!-- FORM -->
 		<record model="ir.ui.view" id="product_form">
 
 			<field name="name">product.template.product.form</field>
@@ -88,7 +88,7 @@
 
 
 
-		<!-- TREE /list view -->
+		<!-- TREE -->
 		<record model="ir.ui.view" id="product.product_category_list_view">
 			<field name="name">product.category.tree</field>
 			<field name="model">product.category</field>
@@ -102,6 +102,7 @@
 
 					<field name="id"/>
 
+					<field name="parent_id"/>
 				</tree>
 			</field>
 		</record>
@@ -116,7 +117,7 @@
 
 
 
-		<!-- TREE /list view -->
+		<!-- TREE -->
 		<record model="ir.ui.view" id="product.product_template_tree_view">
 			<field name="name">product.template.product.tree</field>
 			
@@ -129,18 +130,21 @@
 				<tree string="Product Tree"    default_order="name" >
 
 
+
 					<field name="name"/>
+					<field name="x_name_short"/>
+
+
+<!--
 					<field name="default_code"/>
-
-
-
 					<field name="x_origin"/>				
-
+-->
 
 
 
 					<field name="pricelist_id"/>
 					<field name="x_price_vip"/>
+					<field name="x_price_vip_return"/>
 					<field name="item_ids"/>
 
 
@@ -456,12 +460,11 @@
 
 
 
-		<!-- Window action -->
+		<!-- Service All -->
 		<record model="ir.actions.act_window" id="product_template_service_list_action">
 			<field name="name">Servicios</field>
 			<field name="res_model">product.template</field>
 			<field name="view_type">form</field>
-
 			<field name="view_mode">tree,form</field>
 
             <field name="domain">[            	
@@ -480,6 +483,142 @@
             					]</field>
 			-->
 		</record>
+
+
+
+
+		<!-- Service Laser quick -->
+		<record model="ir.actions.act_window" id="product_template_service_quick_list_action">
+			<field name="name">Quick Laser</field>
+			<field name="res_model">product.template</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+
+            <field name="domain">[            	
+									('type', '=', 'service'),
+									('x_origin', '=', False),
+
+									('x_treatment', '=', 'laser_quick'),
+            					
+            					]</field>
+
+			<field name="context">{}</field>
+		</record>
+
+
+
+
+
+
+
+
+		<!-- Service Laser Co2 -->
+		<record model="ir.actions.act_window" id="product_template_service_co2_list_action">
+			<field name="name">Laser Co2</field>
+			<field name="res_model">product.template</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+
+            <field name="domain">[            	
+									('type', '=', 'service'),
+									('x_origin', '=', False),
+									('x_treatment', '=', 'laser_co2'),
+            					]</field>
+
+			<field name="context">{}</field>
+		</record>
+
+
+
+
+		<!-- Service Laser excilite -->
+		<record model="ir.actions.act_window" id="product_template_service_excilite_list_action">
+			<field name="name">Laser excilite</field>
+			<field name="res_model">product.template</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+
+            <field name="domain">[            	
+									('type', '=', 'service'),
+									('x_origin', '=', False),
+									('x_treatment', '=', 'laser_excilite'),
+            					]</field>
+
+			<field name="context">{}</field>
+		</record>
+
+
+
+
+		<!-- Service Laser ipl -->
+		<record model="ir.actions.act_window" id="product_template_service_ipl_list_action">
+			<field name="name">Laser ipl</field>
+			<field name="res_model">product.template</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+
+            <field name="domain">[            	
+									('type', '=', 'service'),
+									('x_origin', '=', False),
+									('x_treatment', '=', 'laser_ipl'),
+            					]</field>
+
+			<field name="context">{}</field>
+		</record>
+
+
+
+
+
+		<!-- Service Laser ndyag -->
+		<record model="ir.actions.act_window" id="product_template_service_ndyag_list_action">
+			<field name="name">Laser ndyag</field>
+			<field name="res_model">product.template</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+
+            <field name="domain">[            	
+									('type', '=', 'service'),
+									('x_origin', '=', False),
+									('x_treatment', '=', 'laser_ndyag'),
+            					]</field>
+
+			<field name="context">{}</field>
+		</record>
+
+
+
+
+
+		<!-- Service Laser medical -->
+		<record model="ir.actions.act_window" id="product_template_service_medical_list_action">
+			<field name="name">Tratamientos Médicos</field>
+			<field name="res_model">product.template</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+
+            <field name="domain">[            	
+									('type', '=', 'service'),
+									('x_origin', '=', False),
+									('x_family', '=', 'medical'),
+            					]</field>
+
+			<field name="context">{}</field>
+		</record>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

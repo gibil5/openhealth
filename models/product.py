@@ -35,6 +35,23 @@ class Product(models.Model):
 
 
 
+
+	# Price Vip
+	x_price_vip = fields.Float(
+		)
+
+
+	# Price Vip Return 
+	x_price_vip_return = fields.Float(
+		)
+
+
+
+
+
+
+
+
 	uom = fields.Many2one(
 			'product.uom',
 			required=False, 
@@ -111,12 +128,11 @@ class Product(models.Model):
 	x_date_updated = fields.Date(
 			)
 
+
 	x_date_created = fields.Date(
+
 			)
 
-	x_price_vip = fields.Float(
-			#string = 'Precio VIP - nex',
-		)
 
 
 

@@ -1265,17 +1265,19 @@ Order Line - Tree
 
 				<field name="partner_id" position="after">
 <!--				
+					<field name="user_id"	string="Validación"		readonly="1"		/>
 -->
 					<field name="vspace"/>
-					<field name="user_id"	string="Validación"		readonly="1"		/>
 
+
+					<field name="user_id"	string="Generado por"		readonly="1"		/>
 
 
 					<field name="vspace"/>
 
 
 
-					<field name="x_doctor"/>
+					<field name="x_doctor"		required="1"/>
 <!--
 -->
 					<field name="x_doctor_uid"	invisible="1"/>
@@ -1508,8 +1510,11 @@ grey:state in ('cancel')
 
 					<field name="state"/>
 
-					<field name="user_id"		string="Vendedor"	/>
 
+<!--
+					<field name="user_id"		string="Vendedor"	/>
+-->
+					<field name="user_id"		string="Generado por"	/>
 					
 
 

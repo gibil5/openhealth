@@ -139,7 +139,8 @@
 					sequence="-9"
 
 					name="Caja"
-					groups="openhealth.roots,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
+					
+					groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
 					/>
 
 
@@ -199,10 +200,12 @@
 
 
 
+
+
 <!-- Productos --> 			
 		<menuitem 	id="prods_menu" 
 
-					name="Línea"
+					name="Productos"
 			
 					parent="main_sales_menu"
 
@@ -219,13 +222,83 @@
 
 
 
-			<menuitem 	id="prods_services_menu" 
-						name="Servicios"
-						parent="prods_menu"
+
+
+
+<!-- Services -->
+		<menuitem 	id="services_menu" 
+
+					name="Servicios"
+			
+					parent="main_sales_menu"
+
+					sequence="3"
+					/>
+
+
+
+			<menuitem 	id="prods_services_quick_menu" 
+						name="QUICK LASER"
+						parent="services_menu"
+						sequence="0"
+						action="product_template_service_quick_list_action"/>
+
+
+
+
+
+
+			<menuitem 	id="prods_services_co2_menu" 
+						name="Laser Co2"
+						parent="services_menu"
+						sequence="1"
+						action="product_template_service_co2_list_action"/>
+
+
+
+
+			<menuitem 	id="prods_services_excilite_menu" 
+						name="Laser Excilite"
+						parent="services_menu"
 						sequence="2"
+						action="product_template_service_excilite_list_action"/>
 
+
+
+
+			<menuitem 	id="prods_services_ipl_menu" 
+						name="Laser IPL"
+						parent="services_menu"
+						sequence="3"
+						action="product_template_service_ipl_list_action"/>
+
+
+
+
+			<menuitem 	id="prods_services_ndyag_menu" 
+						name="Laser Ndyag"
+						parent="services_menu"
+						sequence="4"
+						action="product_template_service_ndyag_list_action"/>
+
+
+
+
+			<menuitem 	id="prods_services_medical_menu" 
+						name="T. Médico"
+						parent="services_menu"
+						sequence="5"
+						action="product_template_service_medical_list_action"/>
+
+
+
+<!--
+			<menuitem 	id="prods_services_menu" 
+						name="Todos"
+						parent="services_menu"
+						sequence="10"
 						action="product_template_service_list_action"/>
-
+-->
 
 
 
@@ -260,7 +333,7 @@
 					name="Vip"
 					parent="main_sales_menu"
 
-					sequence="3"
+					sequence="4"
 					/>
 
 
@@ -299,7 +372,7 @@
 					name="Cierres de caja"
 					parent="main_sales_menu"
 
-					sequence="4"
+					sequence="5"
 					/>
 
 

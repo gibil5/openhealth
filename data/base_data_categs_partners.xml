@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-	<data noupdate='1'>
-
-
-
-<!-- Card Categories --> 
-<!--
--->
-		<record id='legacy' model='product.category'>
-			<field name='name'>legacy</field>
-	        <field name="active">1</field>
-		</record>
+	<data noupdate='0'>
 
 
 
@@ -80,6 +70,7 @@
 	        <field name="active">1</field>
 		</record>
 -->
+
 
 	</data>
 </openerp> 

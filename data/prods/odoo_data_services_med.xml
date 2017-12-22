@@ -1,35 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
-	<data noupdate='1'>
-
-
-
-		<!-- Product Category --> 
-		<record id='medical' model='product.category'>
-			<field name='name'>Medical</field>
-		</record>
-
-
-
-
-
-
-
-<!--
-			<field name='pricelist_id' ref="pricelist_vip"/>
-				<field name='pricelist_item_id' ref="pricelist_item_vip_crio"/>
-				<field name='pricelist_id'/>
--->
-
+	<data noupdate='0'>
 
 
 
 		<!-- Data - Services - Medical -->
-
-
-
-
-
 
 
 		<record id='hac_1hy_rfa_one' model='product.template'>

@@ -162,8 +162,14 @@
 		# Check that data is not updated. All the time. 
 
 
+
 		# Categs
-		'data/base_data_categs.xml',			# check
+		#'data/base_data_categs.xml',			# check
+		'data/base_data_categs_partners.xml',			# check
+		'data/base_data_categs_prods.xml',			# check
+
+
+
 
 
 		# Users 

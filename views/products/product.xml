@@ -139,13 +139,13 @@
 					<field name="default_code"/>
 					<field name="x_origin"/>				
 
-					<field name="x_price_vip"/>
+					<field name="x_price_vip_return"/>
 -->
 
 
 
 					<field name="pricelist_id"/>
-					<field name="x_price_vip_return"/>
+					<field name="x_price_vip"/>
 					<field name="item_ids"/>
 
 

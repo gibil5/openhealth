@@ -464,7 +464,7 @@
 
 
 		# Products
-		#'views/products/product.xml',		
+		'views/products/product.xml',		
 
 
 

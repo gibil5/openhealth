@@ -620,9 +620,9 @@ Fields
 							<group>
 								<field name="start_date"/>
 
-								<field name="duration"			invisible="0" />
+								<field name="duration"			invisible="1" />
 
-								<field name="end_date"/>
+								<field name="end_date"			invisible="1"	/>
 
 								<field name="today_date"		invisible="1"		/>
 

@@ -81,15 +81,28 @@ class Treatment(models.Model):
 
 
 
-	@api.onchange('treatment_closed')
-	def _onchange_treatment_closed(self):
+	#@api.onchange('treatment_closed')
+	#def _onchange_treatment_closed(self):
+		
+	#	print 'jx'
+	#	print 'On Change Treatment Closed'
 
-		if self.treatment_closed: 	
+	#	print self.treatment_closed
+	#	print self.today_date
+	#	print self.end_date
 
-			self.end_date = self.today_date
+	#	if self.treatment_closed: 		
+			
+			#self.end_date = self.today_date
+			#self.end_date = datetime.today().strftime('%Y-%m-%d')
+	#		self.end_date = datetime.today()
 
-		else: 
-			self.end_date = False
+
+
+
+		
+		#else: 
+		#	self.end_date = False
 
 
 
@@ -105,7 +118,7 @@ class Treatment(models.Model):
 	today_date = fields.Date(
 			string="Fecha hoy", 
 
-			#default = fields.Date.today
+			default = fields.Date.today, 
 
 			compute='_compute_today_date', 
 		)
@@ -129,7 +142,7 @@ class Treatment(models.Model):
 			#string="Días", 
 			default = 0,
 
-			compute='_compute_duration', 
+			#compute='_compute_duration', 
 		)
 
 
@@ -137,21 +150,38 @@ class Treatment(models.Model):
 	#@api.depends('start_date', 'end_date')
 
 	def _compute_duration(self):
+
+		print 
+		print 'jx'
+		print 'Compute Duration'
+
 		for record in self:
+
+			print record.start_date
+			print record.today_date
+
+			print 
+
 			date_format = "%Y-%m-%d"
 
 			a = datetime.strptime(record.start_date, date_format)
+
+			b = datetime.strptime(record.today_date, date_format)
 			
 
 			#if record.treatment_open:
-			if not record.treatment_closed:
+			#if not record.treatment_closed:
+			#	if record.today_date != False: 
+			#		b = datetime.strptime(record.today_date, date_format)
+			
+			#else:
 
-				b = datetime.strptime(record.today_date, date_format)
+
+			#if record.treatment_closed:
+			#	if record.end_date != False: 
+			#		b = datetime.strptime(record.end_date, date_format)
 			
-			else:
-				
-				b = datetime.strptime(record.end_date, date_format)
-			
+
 
 			delta = b - a
 			record.duration = delta.days + 1 

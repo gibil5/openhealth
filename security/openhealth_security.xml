@@ -269,7 +269,7 @@
 
 										(4, ref('openhealth.plataforma_clinicachavarri')),
 										
-										
+
 										(4, ref('openhealth.ctorrealba_clinicachavarri')),
 
 
@@ -291,8 +291,6 @@
 
 
 <!-- Caja --> 
-<!--
--->
 		<record id="openhealth.caja" model="res.groups">
 			<field name="name">Caja</field>
 			<field name="category_id" ref="module_openhealth_category"/>
@@ -328,6 +326,10 @@
 
 			<field name="users" eval="[ 
 										(4, ref('openhealth.staff_clinicachavarri')),
+
+
+										(4, ref('openhealth.lmasias_clinicachavarri')),
+
 
 										(4, ref('openhealth.lloli_clinicachavarri')),
 										(4, ref('openhealth.ipuga_clinicachavarri')),

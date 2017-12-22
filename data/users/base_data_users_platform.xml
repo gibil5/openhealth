@@ -75,7 +75,7 @@ Y:uWS4kqKx		Yvanna
 		</record>
 
 		<record id="plataforma_clinicachavarri" model="res.users">
-			
+
 			<field name="name">PLATAFORMA</field>
 			
 			<field name="login">plataforma@clinicachavarri.com</field>
@@ -100,9 +100,7 @@ Y:uWS4kqKx		Yvanna
 		<record id="ctorrealba" model="res.partner">
 			<field name="name">Claudia Torrealba</field>
 			<field name="email">ctorrealba@clinicachavarri.com</field>
-
 			<field name="function">reception</field>
-
 	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 

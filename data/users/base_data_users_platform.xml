@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-	<data noupdate='1'>
+	<data noupdate='0'>
 
 
 
@@ -74,9 +74,8 @@ Y:uWS4kqKx		Yvanna
 	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
-
 		<record id="plataforma_clinicachavarri" model="res.users">
-
+			
 			<field name="name">PLATAFORMA</field>
 			
 			<field name="login">plataforma@clinicachavarri.com</field>
@@ -88,6 +87,42 @@ Y:uWS4kqKx		Yvanna
 			<field name="tz">America/Lima</field>
 			<field name="partner_id" ref="plataforma_partner"/>
 		</record>
+
+
+
+
+
+
+
+
+
+<!-- Claudia Torrealba -->
+		<record id="ctorrealba" model="res.partner">
+			<field name="name">Claudia Torrealba</field>
+			<field name="email">ctorrealba@clinicachavarri.com</field>
+
+			<field name="function">reception</field>
+
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
+		</record>
+
+		<record id="ctorrealba_clinicachavarri" model="res.users">
+			<field name="name">Claudia Torrealba</field>
+			<field name="login">ctorrealba@clinicachavarri.com</field>
+			<field name="password">ctorrealba</field>
+
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+			<field name="partner_id" ref="ctorrealba"/>
+			<field name="lang">es_ES</field>
+		</record>
+
+
+
+
+
+
 
 
 
@@ -230,7 +265,6 @@ Y:uWS4kqKx		Yvanna
 
 			<field name="active" eval="False" />
 		</record>
-
 
 
 

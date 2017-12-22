@@ -7,8 +7,6 @@
 		<!-- 2017-08-31 -->
 		<!-- Data - Products -->
 
-
-
 		<record id='pricelist_vip' model='product.pricelist'>
 			<field name='name'>VIP</field>
 		</record>

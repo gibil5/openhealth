@@ -20,7 +20,7 @@
 
 		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant\n
 
-		Last built: 	21 December 2017 - Yey !
+		Last built: 	22 December 2017 - Yey !
 
 		Created: 	 	11 Sep 2016
 
@@ -187,8 +187,6 @@
 
 
 
-
-		# Moved 
 
 		# Products 
 		'data/prods/odoo_data_products.xml',			# check 

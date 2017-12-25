@@ -1,13 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
-	<data noupdate='0'>
-
-
+	<data noupdate='1'>
 
 
 
 		<!-- Data - Services - Consultations -->
-
 		<record id='con_med' model='product.template'>
 			<field name='type'>service</field>
 			<field name='x_name_short'>con_med</field>

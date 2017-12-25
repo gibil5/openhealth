@@ -206,7 +206,11 @@
 
 
 		# Pricelists 
-		'data/pricelists.xml',							# check
+		'data/pricelists.xml',							
+
+		'data/pricelist_quick.xml',						
+
+		'data/pricelist_quick_return.xml',						
 
 
 
@@ -275,6 +279,9 @@
 
 
 		# Purchases 
+		#'views/purchase/purchase_report.xml',			# Deprecated
+		#'views/purchase/purchase_report_view.xml',		# Deprecated 
+
 		'views/purchase/purchase.xml',
 
 

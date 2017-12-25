@@ -12,6 +12,7 @@
 			<field name="view_type">form</field>
 			
 			<field name="view_id" ref="stock.view_move_tree"/>
+			
 			<field name="search_view_id" ref="stock.view_move_search"/>
 			
 

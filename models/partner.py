@@ -4,11 +4,13 @@
 
 from openerp import models, fields, api
 from . import pat_vars
+from . import pat_funcs
 
 
 class Partner(models.Model):
 	
 	_inherit = 'res.partner'
+
 	#_inherit = ['res.partner', 'base_multi_image.owner']
 	#_inherit = ['res.partner', 'oeh.medical.evaluation', 'base_multi_image.owner']
 	#_name = 'openhealth.patient'	#The best solution ? So that impact is minimal ?	- Deprecated
@@ -36,6 +38,51 @@ class Partner(models.Model):
 
 			print self.name
 			print 
+
+
+
+
+
+
+	# DNI 
+	x_dni = fields.Char(
+			"DNI", 	
+		)
+
+	# Test and validate
+	@api.onchange('x_dni')
+	def _onchange_x_dni(self):
+		ret = pat_funcs.test_for_digits(self, self.x_dni)
+		if ret != 0: 
+			return ret
+		ret = pat_funcs.test_for_length(self, self.x_dni, 8)
+		if ret != 0: 
+			return ret
+
+
+
+
+	# RUC
+	x_ruc = fields.Char(
+			"RUC", 	
+		)
+
+	# Test and validate
+	@api.onchange('x_ruc')
+	def _onchange_x_ruc(self):
+		ret = pat_funcs.test_for_digits(self, self.x_ruc)
+		if ret != 0: 
+			return ret
+		
+		ret = pat_funcs.test_for_length(self, self.x_ruc, 11)
+		if ret != 0: 
+			return ret
+
+
+
+
+
+
 
 
 
@@ -132,14 +179,20 @@ class Partner(models.Model):
 			"Razón social", 	
 		)
 
-	x_ruc = fields.Char(
-			"RUC", 	
-		)
 
-	x_dni = fields.Char(
 
-			"DNI", 	
-		)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

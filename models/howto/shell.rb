@@ -56,8 +56,24 @@ self.env['stock.picking.type'].search([('name', '=', 'Customer Sale')])
 
 
 
+
+
+
+p = self.env['product.template'].search([('name', '=', 'QUICKLASER - Cuello + Manos - Rejuvenecimiento - 1')])
+p.item_ids
+
+p.item_ids.search([('pricelist_id', 'like', 'VIP')])
+
+
+
+
+
+
 s= self.env['product.template'].search([  ('x_treatment', '=', 'hyaluronic_acid'), ('x_sessions', '=', '1') ])
+
 self.env['product.product'].search([('name', 'like', 'TOKEN')])
+
+
 
 
 self.env['ir.model.data'].search([('name', 'like', 'J')])
@@ -168,8 +184,6 @@ self.env['product.pricelist'].search([('name', '=', 'Public Pricelist')])
 
 
 
-
-
 p = self.env['product.pricelist'].search([('name','=', 'VIP'),],limit=1,)
 
 o.order_line.create({ 'product_id': 4043, 'order_id': 89, 'name': 'hya_1hr_ref_one_nor' })
@@ -190,12 +204,31 @@ self.env['product.pricelist.item'].search_count([('base', 'like', '')])
 
 
 
+
+
+
+
+
+
+
+
+
 self.env['product.pricelist'].search([('name', '=', 'VIP')])
+
+
+p = self.env['product.pricelist'].search([('name', '=', 'VIP Return')])
+
+
+p.item_ids.search([('name', '=', 'QUICKLASER - Cuello + Manos - Rejuvenecimiento - 1')])
+
+
+
 21
 
 self.env['product.pricelist.item'].create({ 'name': 'jx Test 2' })
 
 p = self.env['product.pricelist.item'].create({ 'name': 'jx Test 2', 'pricelist_id': '21' })
+
 
 
 

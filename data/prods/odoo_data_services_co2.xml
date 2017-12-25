@@ -1,11 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
-	<data noupdate='0'>
+	<data noupdate='1'>
 
 
 
 		<!-- Data - Services -->
-
 		<record id='co2_faa_rf3_one' model='product.template'>
 			<field name='type'>service</field>
 			<field name='x_name_short'>co2_faa_rf3_one</field>

@@ -33,6 +33,20 @@ class sale_order(models.Model):
 
 
 
+	# Pricelist 
+	pricelist_id = fields.Many2one(
+			'product.pricelist', 
+			
+			string='Pricelist - jx', 
+			
+			required=True, 
+			readonly=True, 
+			states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}, 
+			help="Pricelist for current sales order.", 
+		)
+
+
+
 
 
 	# Doctor 

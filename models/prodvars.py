@@ -193,7 +193,11 @@ _zone_list = [
 		('arms',		'arms'), 
 		('back',		'back'), 
 		('belly',		'belly'), 
-		('body_local',	'body_local'), 
+
+
+		('body_local',	'Localizado Cuerpo'), 
+
+		
 		('breast',		'breast'), 
 		('cheekbones',	'cheekbones'), 
 

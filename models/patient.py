@@ -36,6 +36,32 @@ class Patient(models.Model):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+	x_dni = fields.Char(
+			string = "DNI", 	
+
+			#required=True, 
+			#required=False, 
+		)
+
+
+
+
+
+
+
+
+
 	x_nothing = fields.Char(
 		'Nothing', 
 	)
@@ -819,13 +845,6 @@ class Patient(models.Model):
 
 
 
-	x_dni = fields.Char(
-			string = "DNI", 	
-
-			#required=True, 
-			#required=False, 
-			)
-
 
 
 
@@ -995,15 +1014,6 @@ class Patient(models.Model):
 
 
 
-	# DNI 
-	@api.onchange('x_dni')
-	def _onchange_x_dni(self):
-		ret = pat_funcs.test_for_digits(self, self.x_dni)
-		if ret != 0: 
-			return ret
-		ret = pat_funcs.test_for_length(self, self.x_dni, 8)
-		if ret != 0: 
-			return ret
 
 
 

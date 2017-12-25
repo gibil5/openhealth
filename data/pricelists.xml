@@ -1,15 +1,35 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
-	<data noupdate='1'>
+	<data noupdate='0'>
 
 
 
-		<!-- 2017-08-31 -->
-		<!-- Data - Products -->
-
+		<!-- VIP -->
 		<record id='pricelist_vip' model='product.pricelist'>
 			<field name='name'>VIP</field>
 		</record>
+
+
+
+		<!-- VIP Return -->
+		<record id='pricelist_vip_return' model='product.pricelist'>
+			<field name='name'>VIP Return</field>
+		</record>
+
+
+
+
+<!-- Quick Laser --> 
+<!--
+<record id='vip_quick_neck_hands_rejuvenation_1' model='product.pricelist.item'>
+	<field name='pricelist_id' 	ref='pricelist_vip'/>
+	<field name='min_quantity'>1</field>
+	<field name='applied_on'>1_product</field>
+	
+	<field name="product_tmpl_id" 		search="[('x_name_short','=','quick_neck_hands_rejuvenation_1')]"/>
+	<field name='fixed_price'>4601</field>	
+</record>
+-->
 
 
 

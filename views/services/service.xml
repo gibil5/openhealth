@@ -105,13 +105,17 @@
 
 									<field name="vspace" />
 
-									<field name="zone" 			readonly="1"   	invisible="1"/>
+
+									<field name="zone" 			/>
+
+
 									<field name="pathology" 	readonly="1"  	invisible="1"/>									
 									<field name="sessions" 		readonly="1"  	invisible="1"/>									
 									<field name="time" 			readonly="1"  	invisible="1"/>									
 
 <!--
-									<field name="zone" 			/>
+									<field name="zone" 			readonly="1"   	invisible="0"/>
+
 									<field name="pathology" 	/>									
 									<field name="sessions" 		/>									
 									<field name="time" 			/>									
@@ -121,7 +125,6 @@
 
 									<!--								
 									<field name="x_treatment" 	readonly="1"   	invisible="1"/>
-									<field name="zone" 			readonly="1"   	invisible="1"/>
 									<field name="pathology" 	readonly="1"  	invisible="1"/>									
 									<field name="sessions" 		readonly="1"  	invisible="1"/>									
 									<field name="time" 			readonly="1"  	invisible="1"/>									
@@ -163,10 +166,14 @@
 <!--
 									<field name="service" 	widget="radio" />
 -->
+
 									<field name="service" widget="radio"	attrs="{ 'invisible':[
+
 																										('zone', '=', False ),
 																										('x_treatment', '=', False ),
+
 																								],}"/>
+
 									<field name="price" />
 								</group>
 							</group>

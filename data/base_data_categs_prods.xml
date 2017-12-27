@@ -4,6 +4,20 @@
 
 
 
+
+<!-- Quick --> 
+		<record id='laser_quick' model='product.category'>
+			<field name='name'>Quick Laser</field>
+			<field name='parent_id' 	ref='laser_service_categ'/>
+		</record>
+
+
+
+
+
+
+
+
 <!-- Legacy --> 
 		<record id='legacy' model='product.category'>
 			<field name='name'>legacy</field>
@@ -59,20 +73,9 @@
 
 <!-- Services --> 
 
-
-
 		<!-- Parent --> 
 		<record id='laser_service_categ' model='product.category'>
 			<field name='name'>Laser</field>
-		</record>
-
-
-
-		<!-- Quick --> 
-		<record id='laser_quick' model='product.category'>
-			<field name='name'>Quick Laser</field>
-
-			<field name='parent_id' 	ref='laser_service_categ'/>
 		</record>
 
 

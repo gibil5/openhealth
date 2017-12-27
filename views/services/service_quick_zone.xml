@@ -1,0 +1,214 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="service_quick_zone_form_view">
+			<field name="name">service.quick.zone.form</field>
+			<field name="model">openhealth.service.quick</field>
+			<field name="inherit_id" ref="service_quick_form_view"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='notebook_over']" position="after">
+				<notebook>				
+
+
+
+
+					<!-- Body local -->
+					<page string="Localizado Cuerpo">
+
+						<group col="3">
+							<group>
+							</group>
+
+							<group>
+							</group>
+
+							<group>
+							</group>
+						</group>
+
+					</page>
+
+
+
+
+					<!-- Face local -->
+					<page string="Localizado Rostro">
+
+						<group col="3">
+							<group>
+							</group>
+
+							<group>
+							</group>
+
+							<group>
+							</group>
+						</group>
+
+					</page>
+
+
+					<!-- Face all -->
+					<page string="Todo Rostro">
+
+						<group col="3">
+							<group>
+							</group>
+
+							<group>
+							</group>
+
+							<group>
+							</group>
+						</group>
+
+					</page>
+
+
+					<!-- Face all neck -->
+					<page string="Todo Rostro Cuello">
+
+						<group col="3">
+							<group>
+							</group>
+
+							<group>
+							</group>
+
+							<group>
+							</group>
+						</group>
+
+					</page>
+
+
+					<!-- Face all Hands -->
+					<page string="Todo Rostro Manos">
+
+						<group col="3">
+							<group>
+							</group>
+
+							<group>
+							</group>
+
+							<group>
+							</group>
+						</group>
+
+					</page>
+
+
+
+
+
+
+
+
+
+
+
+					<!-- Neck -->
+					<page string="Cuello">
+						
+						<group col="3">
+							<group>
+								<field name="quick_neck_rejuvenation" widget="radio"/>	
+							</group>
+
+							<group>
+							</group>
+
+							<group>
+							</group>
+						</group>
+
+						
+						<hr></hr>
+
+
+						<!--
+						<hr></hr>
+						<group col="2">		
+						</group>
+						-->
+
+					</page>
+
+
+					<!-- Hands -->
+					<page string="Manos">
+
+						<group col="3">
+							<group>
+							</group>
+
+							<group>
+							</group>
+
+							<group>
+							</group>
+						</group>
+
+					</page>
+
+
+
+
+
+
+					<!-- Neck Hands -->
+					<page string="Cuello y Manos">
+						
+						<group col="3">
+							<group>
+								<field name="quick_neck_hands_rejuvenation" widget="radio"/>
+							</group>
+
+							<group>
+							</group>
+
+							<group>
+							</group>
+						</group>
+
+					</page>
+
+
+
+
+					<!-- Cheekbones -->
+					<page string="Pómulos">
+
+						<group col="3">
+							<group>
+							</group>
+
+							<group>
+							</group>
+
+							<group>
+							</group>
+						</group>
+
+					</page>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				</notebook>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</openerp>

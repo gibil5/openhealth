@@ -31,12 +31,12 @@
 
 
 <!-- QUICKLASER - Cuello - Rejuvenecimiento Cuello  - 1 -->
-<record id='vip_return_quick_neck_rejuvenation_neck_1' model='product.pricelist.item'>
+<record id='vip_return_quick_neck_rejuvenation_1' model='product.pricelist.item'>
 	<field name='pricelist_id' 	ref='pricelist_vip_return'/>
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 
-	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_neck_rejuvenation_neck_1')]"/>
+	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_neck_rejuvenation_1')]"/>
 
 	<field name='fixed_price'>  	0 </field>
 </record>

@@ -12,7 +12,7 @@
 			
 			<field name="model">openhealth.treatment</field>
 
-			<field name="priority" eval="2"/>
+			<field name="priority" eval="-1"/>
 			
 			<field name="inherit_id" ref="treatment_form_view"/>
 			
@@ -21,18 +21,62 @@
 
 
 				<notebook position="inside">
-
 					<page string="Recomendaciones">
-					
-
 						<notebook>
 
+
+
+
+
+<!-- Quick --> 
+							<page string="QUICK"   		  >
+
+								<field name="service_quick_ids">	
+
+									<tree string="Services"		create="true" >	
+
+
+										<button 
+											type="object" 
+											class="oe_highlight"	
+											string="Entrar"
+											name="open_line_current" 
+										/>
+
+
+										<field name="name"/>
+
+										<field name="laser"/>				
+
+										<field name="treatment"/>
+
+										<field name="service"/>
+										
+										<field name="zone"/>														
+
+										<field name="consultation"/>
+									</tree>
+								</field>
+
+							</page>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Co2 --> 
 							<page string="CO2"   		attrs="{'invisible':[('nr_services_co2', '=', 0)]}"  >
-<!--
-								<field name="service_co2_ids"/>	
--->							
-								<field name="service_co2_ids">									
+
+								<field name="service_co2_ids">	
+
 									<tree string="Services"		create="false" >	
+
 
 										<button 
 											type="object" 
@@ -58,11 +102,11 @@
 							</page>
 
 
-
+<!-- Excilite --> 
 							<page string="EXCILITE"  	attrs="{'invisible':[('nr_services_excilite', '=', 0)]}"	>
-<!--
+								<!--
 								<field name="service_excilite_ids"/>
--->
+								-->
 								<field name="service_excilite_ids">	
 
 									<tree string="Services">	
@@ -85,10 +129,11 @@
 							</page>
 
 
+<!-- Ipl --> 
 							<page string="IPL"   		attrs="{'invisible':[('nr_services_ipl', '=', 0)]}"  >
-<!--
+								<!--
 								<field name="service_ipl_ids"/>	
--->
+								-->
 								<field name="service_ipl_ids">									
 									<tree string="Services">	
 										<button 
@@ -109,10 +154,13 @@
 							</page>
 
 
+
+
+<!-- Ndyag --> 
 							<page string="NDYAG"   		attrs="{'invisible':[('nr_services_ndyag', '=', 0)]}"  >
-<!--								
+								<!--								
 								<field name="service_ndyag_ids"/>						
--->
+								-->
 								<field name="service_ndyag_ids">									
 									<tree string="Services">	
 										<button 
@@ -134,10 +182,12 @@
 							</page>
 
 
+
+<!-- Medical --> 
 							<page string="Medical"   		attrs="{'invisible':[('nr_services_medical', '=', 0)]}"  >
-<!--
+								<!--
 								<field name="service_medical_ids"/>						
--->
+								-->
 								<field name="service_medical_ids">									
 									<tree string="Services">	
 										<button 
@@ -155,6 +205,8 @@
 									</tree>
 								</field>
 							</page>
+
+
 						</notebook>
 					</page>
 				</notebook>

@@ -90,12 +90,25 @@ from . import image
 
 
 
+
+#from . import zone_category
+from . import zone
+
+
+#from . import pathology_category
+from . import pathology
+
+
+
 from . import service
 from . import service_co2
 from . import service_excilite
 from . import service_ipl
 from . import service_ndyag
 from . import service_medical
+
+from . import service_quick
+
 
 
 from . import sale_make_invoice_advance

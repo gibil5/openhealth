@@ -165,14 +165,17 @@
 
 <!--
 									<field name="service" 	widget="radio" />
--->
 
 									<field name="service" widget="radio"	attrs="{ 'invisible':[
 
 																										('zone', '=', False ),
+																			
 																										('x_treatment', '=', False ),
 
 																								],}"/>
+-->
+									<field name="service" 	widget="radio" />
+
 
 									<field name="price" />
 								</group>

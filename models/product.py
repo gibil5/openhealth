@@ -81,30 +81,39 @@ class Product(models.Model):
 
 
 
-	# Canonical 
+
+
+# ----------------------------------------------------------- Canonical ------------------------------------------------------
+
+	x_level = fields.Selection(
+			selection=prodvars._level_list,
+		)	
+
+
 
 	x_family = fields.Selection(
 			selection=prodvars._family_list,
 		)	
 
+
 	x_treatment = fields.Selection(
 			selection=prodvars._treatment_list,
 		)	
+
 	
 	x_zone = fields.Selection(
 			selection=prodvars._zone_list,
 		)	
+
 	
 	x_pathology = fields.Selection(
 			selection=prodvars._pathology_list,
 		)
 
+
 	x_sessions = fields.Char(
 			default="",
 		)
-
-
-
 
 
 	x_time = fields.Char(

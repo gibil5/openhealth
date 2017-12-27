@@ -393,6 +393,18 @@ class Treatment(models.Model):
 
 
 
+
+	# quick
+	service_quick_ids = fields.One2many(
+			'openhealth.service.quick', 
+			'treatment', 
+			string="Servicios quick"
+			)
+
+
+
+
+
 	# Co2
 	service_co2_ids = fields.One2many(
 			'openhealth.service.co2', 
@@ -574,6 +586,10 @@ class Treatment(models.Model):
 	def _compute_nr_services(self):
 		for record in self:
 
+
+			quick =		self.env['openhealth.service.quick'].search_count([('treatment','=', record.id),]) 
+
+
 			co2 =		self.env['openhealth.service.co2'].search_count([('treatment','=', record.id),]) 
 			exc = 		self.env['openhealth.service.excilite'].search_count([('treatment','=', record.id),]) 
 			ipl = 		self.env['openhealth.service.ipl'].search_count([('treatment','=', record.id),]) 
@@ -581,7 +597,28 @@ class Treatment(models.Model):
 			medical =	self.env['openhealth.service.medical'].search_count([('treatment','=', record.id),]) 
 
 
-			record.nr_services = co2 + exc + ipl + ndyag + medical
+
+			#record.nr_services = co2 + exc + ipl + ndyag + medical
+			record.nr_services = quick + co2 + exc + ipl + ndyag + medical
+
+
+
+
+
+
+	# Quick
+	nr_services_quick = fields.Integer(
+			string="Servicios Quick",
+			compute="_compute_nr_services_quick",
+	)
+	@api.multi
+	def _compute_nr_services_quick(self):
+		for record in self:
+
+			services =		self.env['openhealth.service.quick'].search_count([('treatment','=', record.id),]) 
+			
+			record.nr_services_quick = services 
+
 
 
 
@@ -600,7 +637,6 @@ class Treatment(models.Model):
 			services =		self.env['openhealth.service.co2'].search_count([('treatment','=', record.id),]) 
 			
 			record.nr_services_co2 = services 
-
 
 
 

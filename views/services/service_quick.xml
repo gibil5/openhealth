@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+		<!-- FORM --> 
+		<record model="ir.ui.view" id="service_quick_form_view">
+			<field name="name">service.quick.form</field>
+			<field name="model">openhealth.service.quick</field>
+
+			<field name="inherit_id" ref="service_form_view"/>
+
+	        <field name="mode">primary</field>
+			
+			<field name="arch" type="xml">		
+
+
+				<!-- <xpath expr="//field[@name='title']" position="before"> -->
+			
+				<xpath expr="//h1" position="replace">
+
+					<h1>Láser Quick</h1>					
+        		
+        		</xpath>
+
+
+
+				<xpath expr="//field[@name='laser']" position="replace">
+				</xpath>
+
+
+				<xpath expr="//field[@name='service']" position="replace">
+						<field name="service" 	widget="radio"	 />
+				</xpath>
+
+
+
+				<xpath expr="//field[@name='zone']" position="replace">
+						<field name="zone" />
+						
+						<field name="vspace" />
+
+						<field name="nex_zone"  	widget="radio" />
+
+						<field name="vspace" />
+
+						<field name="nex_pathology"  	widget="radio" />
+				</xpath>
+
+
+
+
+			</field>
+						
+		</record>		
+
+
+
+
+		<!-- TREE -->
+		<record model="ir.ui.view" id="service_quick_tree_view">
+			<field name="name">service.quick.tree</field>
+			<field name="model">openhealth.service.quick</field>
+			<field name="arch" type="xml">
+				<tree string="Service Tree">
+					<field name="name"/>
+					<field name="id"/>
+					<field name="laser"/>				
+					<field name="treatment"/>
+					<field name="service"/>
+					<field name="consultation"/>
+
+					<field name="zone"/>
+				</tree>
+			</field>
+		</record>
+
+
+
+
+
+
+
+
+
+
+		<!-- Filter --> 
+        <record id="view_service_quick_filter" model="ir.ui.view">
+           <field name="name">Service Quick Search</field>
+           <field name="model">openhealth.service.quick</field>		   
+		   <field name="arch" type="xml">
+               <search string="service.quick">
+
+                   <field name="treatment" />
+                   <field name="consultation" />
+               
+               </search>
+           </field>
+       </record>
+
+
+
+
+	</data>
+</openerp>

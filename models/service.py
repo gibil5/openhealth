@@ -29,6 +29,56 @@ class Service(models.Model):
 
 
 
+	# Zone 
+	zone = fields.Selection(
+			selection = prodvars._zone_list, 
+			string="Zona", 
+		)
+
+	nex_zone = fields.Many2one(
+			'openhealth.zone',
+			string="Nex Zone", 
+		)
+
+
+
+
+	# Pathology
+	pathology = fields.Selection(
+			selection = prodvars._pathology_list, 
+			string="Patología", 
+			)
+
+
+	nex_pathology = fields.Many2one(
+			'openhealth.pathology',
+			string="Nex Pathology", 
+		)
+
+
+
+
+
+	# Service 
+	service = fields.Many2one(
+			'product.template',
+
+			domain = [
+						('type', '=', 'service'),
+					],
+
+			string="Servicio",
+			required=True, 
+			)
+
+
+
+
+
+
+
+
+
 	#_dic = {
 	#			'Male':		'Masculino', 
 	#			'Female':	'Femenino', 
@@ -95,17 +145,6 @@ class Service(models.Model):
 
 
 
-	# Service 
-	service = fields.Many2one(
-			'product.template',
-
-			domain = [
-						('type', '=', 'service'),
-					],
-
-			string="Servicio",
-			required=True, 
-			)
 
 
 
@@ -143,23 +182,8 @@ class Service(models.Model):
 
 
 
-	zone = fields.Selection(
-
-			#selection = jxvars._zone_list, 
-			selection = prodvars._zone_list, 
-		
-			string="Zona", 
-			)
 
 
-	pathology = fields.Selection(
-			#selection = jxvars._pathology_list, 
-			#selection = service_vars._pathology_list, 
-
-			selection = prodvars._pathology_list, 
-			
-			string="Patología", 
-			)
 
 
 

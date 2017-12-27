@@ -20,7 +20,7 @@
 
 		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant\n
 
-		Last built: 	22 December 2017 - Yey !
+		Last built: 	27 December 2017 - Yey !
 
 		Created: 	 	11 Sep 2016
 
@@ -172,6 +172,11 @@
 
 
 
+
+
+
+
+
 		# Users 
 		'data/users/base_data_users_managers.xml',	# check 
 		'data/users/base_data_users_staff.xml',		# check 
@@ -196,6 +201,17 @@
 		'data/prods/odoo_data_services_med.xml',		# check
 		'data/prods/odoo_data_services_cos.xml',		# check
 		'data/prods/odoo_data_services_consult.xml',	# check
+
+
+
+
+		'data/prods/data_zones.xml',			
+
+		'data/prods/data_pathologies.xml',			
+
+
+
+
 
 
 		# Doctors
@@ -407,6 +423,16 @@
 		'views/services/service.xml',
 
 
+
+
+		# Pathologies
+		'views/pathologies/pathology.xml',
+
+		'views/zones/zone.xml',
+
+
+
+
 		# Procedures
 		'views/procedures/procedure.xml',
 
@@ -564,17 +590,33 @@
 		# Services - 2  
 		'views/services/service_co2.xml',
 		'views/services/service_co2_zone.xml',
+
 		'views/services/service_excilite.xml',
 		'views/services/service_excilite_zone.xml',
+		
 		'views/services/service_ipl.xml',
 		'views/services/service_ipl_zone.xml',
+		
 		'views/services/service_ndyag.xml',
 		'views/services/service_ndyag_zone.xml',
+		
 		'views/services/service_medical.xml',
 		'views/services/service_medical_zone.xml',
 
 
-		# Deprecated ? - No !
+
+
+		# Service Quick
+		'views/services/service_quick.xml',
+		'views/services/service_quick_zone.xml',
+
+
+
+
+
+
+
+		# Cosmetology
 		'views/services/service_cosmetology.xml',
 		'views/services/service_cosmetology_zone.xml',
 
@@ -599,11 +641,10 @@
 
 
 
+
 		# Treatments - 2 
 		'views/treatments/treatment_consultations.xml',
-
 		'views/treatments/treatment_orders.xml',
-		
 		'views/treatments/treatment_procedures.xml',
 		'views/treatments/treatment_appointments.xml',
 		'views/treatments/treatment_reservations.xml',

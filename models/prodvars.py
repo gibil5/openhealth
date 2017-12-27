@@ -3,6 +3,296 @@
 
 
 
+
+# Zone 
+_level_list = [ 
+
+		('1',	'1'), 
+		('2',	'2'), 
+		('3',	'3'), 
+		('4',	'4'), 
+	]
+
+
+
+
+# Zone 
+_zone_list = [ 
+
+		# Quick 
+		('face_all_neck',	'Todo Rostro Cuello'), 
+		('face_all_hands',	'Todo Rostro Manos'), 
+		('neck_hands',		'Cuello Manos'), 
+
+
+
+		# Other 
+		('areolas',		'areolas'), 
+		('armpits',		'armpits'), 
+		('arms',		'arms'), 
+		('back',		'back'), 
+		('belly',		'belly'), 
+
+
+		('body_local',	'Localizado Cuerpo'), 
+
+		
+		('breast',		'breast'), 
+
+		#('cheekbones',	'cheekbones'), 
+		('cheekbones',	'Pómulos'), 
+
+
+		('face',		'face'),
+		
+		#('face_all',	'face_all'), 
+		('face_all',	'Todo Rostro'), 
+		
+
+		#('face_hands',	'face_hands'), 
+		('face_hands',	'Rostro Manos'), 
+
+
+		('face_local',	'Localizado Rostro'), 
+
+
+		#('face_neck',	'face_neck'), 
+		('face_neck',	'Rostro Cuello'), 
+
+
+		('face_neck_hands',	'face_neck_hands'),   
+		
+		('feet',		'feet'), 
+		('gluteus',		'gluteus'), 
+
+		('hands',		'Manos'), 
+		
+		('head',		'head'), 
+		('legs',		'legs'), 
+
+		('neck',		'Cuello'), 
+		
+		('package',		'package'), 
+		('shoulders',	'shoulders'), 
+		('vagina',		'vagina'), 
+
+
+		('1_zone',		'1_zone'), 
+		('1_hypodermic','1_hypodermic'), 
+		('1_hypodermic_repair','1_hypodermic_repair'), 
+		('x',		'x'), 
+
+		('na',		'na'),
+
+
+
+
+		# Cosmetology
+		('body_all',		'body_all'),
+		('body',		'body'),
+		('face_doublechin_neck',		'face_doublechin_neck'),
+
+
+
+		('none',		'none'),
+		('',		''),
+
+	]
+	
+
+
+
+_pathology_list = [ 
+
+
+		# Quick 
+		('tatoo',		'tatoo'), 
+		#('tatoo_1',		'tatoo_1'), 
+		#('tatoo_2',		'tatoo_2'), 
+		#('tatoo_3',		'tatoo_3'), 
+		#('tatoo_4',		'tatoo_4'), 
+
+		('rejuvenation',	'rejuvenation'),
+		#('rejuvenation_1',	'rejuvenation_1'),
+		#('rejuvenation_2',	'rejuvenation_2'),
+		#('rejuvenation_3',	'rejuvenation_3'),
+		#('rejuvenation_4',	'rejuvenation_4'),
+
+
+
+
+
+		# Other 
+		('wart',		'wart'), 
+		('wart_1',		'wart_1'), 
+		('wart_2',		'wart_2'), 
+		('wart_3',		'wart_3'), 
+		('wart_4',		'wart_4'), 
+		('wart_5',		'wart_5'), 
+
+		('keratosis',	'keratosis'),
+		('keratosis_1',	'keratosis_1'),
+		('keratosis_2',	'keratosis_2'),
+		('keratosis_3',	'keratosis_3'),
+		('keratosis_4',	'keratosis_4'),
+		('keratosis_5',	'keratosis_5'),
+
+		('stains',		'stains'),
+		('stains_1',	'stains_1'),
+		('stains_2',	'stains_2'),
+		('stains_3',	'stains_3'),
+		('stains_4',	'stains_4'),
+		('stains_5',	'stains_5'),
+
+		('cyst',		'cyst'),
+		('cyst_1',		'cyst_1'),
+		('cyst_2',		'cyst_2'),
+		('cyst_3',		'cyst_3'),
+		('cyst_4',		'cyst_4'),
+		('cyst_5',		'cyst_5'),
+
+		('acne_sequels',	'acne_sequels'),
+		('acne_sequels_1',	'acne_sequels_1'),
+		('acne_sequels_2',	'acne_sequels_2'),
+		('acne_sequels_3',	'acne_sequels_3'),
+		('acne_sequels_4',	'acne_sequels_4'),
+		('acne_sequels_5',	'acne_sequels_5'),
+
+
+		('mole',		'mole'),
+		('mole_1',		'mole_1'),
+		('mole_2',		'mole_2'),
+		('mole_3',		'mole_3'),
+		('mole_4',		'mole_4'),
+		('mole_5',		'mole_5'),
+
+
+		('scar',		'scar'),
+		('scar_1',		'scar_1'),
+		('scar_2',		'scar_2'),
+		('scar_3',		'scar_3'),
+		('scar_4',		'scar_4'),
+		('scar_5',		'scar_5'),
+
+
+
+		('rejuvenation_face',	'rejuvenation_face'),
+		('rejuvenation_face_repair',	'rejuvenation_face_repair'),
+
+		('rejuvenation_face_1',	'rejuvenation_face_1'),
+		('rejuvenation_face_2',	'rejuvenation_face_2'),
+		('rejuvenation_face_3',	'rejuvenation_face_3'),
+		('rejuvenation_face_4',	'rejuvenation_face_4'),
+		('rejuvenation_face_5',	'rejuvenation_face_5'),
+
+
+
+		('rejuvenation_neck',	'rejuvenation_neck'),
+		('rejuvenation_neck_1',	'rejuvenation_neck_1'),
+		('rejuvenation_neck_2',	'rejuvenation_neck_2'),
+		('rejuvenation_neck_3',	'rejuvenation_neck_3'),
+		('rejuvenation_neck_4',	'rejuvenation_neck_4'),
+		('rejuvenation_neck_5',	'rejuvenation_neck_5'),
+
+
+		('rejuvenation_hands',	'rejuvenation_hands'),
+		('rejuvenation_hands_1',	'rejuvenation_hands_1'),
+		('rejuvenation_hands_2',	'rejuvenation_hands_2'),
+		('rejuvenation_hands_3',	'rejuvenation_hands_3'),
+		('rejuvenation_hands_4',	'rejuvenation_hands_4'),
+		('rejuvenation_hands_5',	'rejuvenation_hands_5'),
+
+
+
+
+
+
+
+
+
+		('rejuvenation_face_neck',	'rejuvenation_face_neck'),
+
+
+
+
+		('acne',			'acne'),
+
+		
+		('acne_active',			'acne_active'),
+		('alopecia',			'alopecia'),
+
+
+		('depilation',			'depilation'),
+
+		('emangiomas',		'emangiomas'),
+
+
+		('polyp',		'polyp'), 
+		('ruby_point',	'ruby_point'),
+
+		('monalisa_touch',	'monalisa_touch'),
+
+		('psoriasis',			'psoriasis'),
+		
+
+
+		('rejuvenation_face_hands',			'rejuvenation_face_hands'),
+		('rejuvenation_face_neck_hands',	'rejuvenation_face_neck_hands'),
+		('rosacea',			'rosacea'),
+		('ruby_points',		'ruby_points'),
+				
+
+		('telangiectasia',	'telangiectasia'),
+		
+		('varices',			'varices'),
+		('vitiligo',			'vitiligo'),
+
+
+
+		('x',		'x'), 
+		('rejuvenation_capilar',		'rejuvenation_capilar'), 
+		('na',		'na'),
+
+
+
+
+		# Cosmetology
+		('deep_face_cleansing',		'deep_face_cleansing'), 
+
+		('reaffirmation',		'reaffirmation'), 
+		
+		('reduction_weight_measures',		'reduction_weight_measures'), 
+
+		('',		''), 
+		('',		''), 
+		('',		''), 
+
+
+		('none',		'none'),
+
+
+		# Legacy
+		('body_local',		'body_local'), 
+		('face_local',		'face_local'), 
+
+	]
+	
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
 _time_list = [
 		
 		('15 min','15 min'),	
@@ -179,241 +469,6 @@ _laser_type_list = [
 
 
 
-_zone_list = [ 
-
-		# Quick 
-		('face_all_neck',	'face_all_neck'), 
-		('face_all_hands',	'face_all_hands'), 
-		('neck_hands',		'neck_hands'), 
-
-
-		# Other 
-		('areolas',		'areolas'), 
-		('armpits',		'armpits'), 
-		('arms',		'arms'), 
-		('back',		'back'), 
-		('belly',		'belly'), 
-
-
-		('body_local',	'Localizado Cuerpo'), 
-
-		
-		('breast',		'breast'), 
-		('cheekbones',	'cheekbones'), 
-
-		('face',		'face'),
-		('face_all',	'face_all'), 
-		('face_hands',	'face_hands'), 
-		('face_local',	'face_local'), 
-		('face_neck',	'face_neck'), 
-		('face_neck_hands',	'face_neck_hands'),   
-		
-		('feet',		'feet'), 
-		('gluteus',		'gluteus'), 
-		('hands',		'hands'), 
-		('head',		'head'), 
-		('legs',		'legs'), 
-		('neck',		'neck'), 
-		('package',		'package'), 
-		('shoulders',	'shoulders'), 
-		('vagina',		'vagina'), 
-
-
-		('1_zone',		'1_zone'), 
-		('1_hypodermic','1_hypodermic'), 
-		('1_hypodermic_repair','1_hypodermic_repair'), 
-		('x',		'x'), 
-
-		('na',		'na'),
-
-
-
-
-		# Cosmetology
-		('body_all',		'body_all'),
-		('body',		'body'),
-		('face_doublechin_neck',		'face_doublechin_neck'),
-
-
-
-		('none',		'none'),
-		('',		''),
-
-	]
 	
 	
-	
-
-	
-	
-	
-_pathology_list = [ 
-
-
-
-		# Quick 
-		('tatoo_1',		'tatoo_1'), 
-		('tatoo_2',		'tatoo_2'), 
-		('tatoo_3',		'tatoo_3'), 
-		('tatoo_4',		'tatoo_4'), 
-
-		('rejuvenation_1',	'rejuvenation_1'),
-		('rejuvenation_2',	'rejuvenation_2'),
-
-
-
-
-
-		# Other 
-		('wart',		'wart'), 
-		('wart_1',		'wart_1'), 
-		('wart_2',		'wart_2'), 
-		('wart_3',		'wart_3'), 
-		('wart_4',		'wart_4'), 
-		('wart_5',		'wart_5'), 
-
-		('keratosis',	'keratosis'),
-		('keratosis_1',	'keratosis_1'),
-		('keratosis_2',	'keratosis_2'),
-		('keratosis_3',	'keratosis_3'),
-		('keratosis_4',	'keratosis_4'),
-		('keratosis_5',	'keratosis_5'),
-
-		('stains',		'stains'),
-		('stains_1',	'stains_1'),
-		('stains_2',	'stains_2'),
-		('stains_3',	'stains_3'),
-		('stains_4',	'stains_4'),
-		('stains_5',	'stains_5'),
-
-		('cyst',		'cyst'),
-		('cyst_1',		'cyst_1'),
-		('cyst_2',		'cyst_2'),
-		('cyst_3',		'cyst_3'),
-		('cyst_4',		'cyst_4'),
-		('cyst_5',		'cyst_5'),
-
-		('acne_sequels',	'acne_sequels'),
-		('acne_sequels_1',	'acne_sequels_1'),
-		('acne_sequels_2',	'acne_sequels_2'),
-		('acne_sequels_3',	'acne_sequels_3'),
-		('acne_sequels_4',	'acne_sequels_4'),
-		('acne_sequels_5',	'acne_sequels_5'),
-
-
-		('mole_1',		'mole_1'),
-		('mole_2',		'mole_2'),
-		('mole_3',		'mole_3'),
-		('mole_4',		'mole_4'),
-		('mole_5',		'mole_5'),
-
-		('scar',		'scar'),
-		('scar_1',		'scar_1'),
-		('scar_2',		'scar_2'),
-		('scar_3',		'scar_3'),
-		('scar_4',		'scar_4'),
-		('scar_5',		'scar_5'),
-
-
-
-		('rejuvenation_face',	'rejuvenation_face'),
-		('rejuvenation_face_repair',	'rejuvenation_face_repair'),
-
-		('rejuvenation_face_1',	'rejuvenation_face_1'),
-		('rejuvenation_face_2',	'rejuvenation_face_2'),
-		('rejuvenation_face_3',	'rejuvenation_face_3'),
-		('rejuvenation_face_4',	'rejuvenation_face_4'),
-		('rejuvenation_face_5',	'rejuvenation_face_5'),
-
-
-
-		('rejuvenation_neck',	'rejuvenation_neck'),
-		('rejuvenation_neck_1',	'rejuvenation_neck_1'),
-		('rejuvenation_neck_2',	'rejuvenation_neck_2'),
-		('rejuvenation_neck_3',	'rejuvenation_neck_3'),
-		('rejuvenation_neck_4',	'rejuvenation_neck_4'),
-		('rejuvenation_neck_5',	'rejuvenation_neck_5'),
-
-
-		('rejuvenation_hands',	'rejuvenation_hands'),
-		('rejuvenation_hands_1',	'rejuvenation_hands_1'),
-		('rejuvenation_hands_2',	'rejuvenation_hands_2'),
-		('rejuvenation_hands_3',	'rejuvenation_hands_3'),
-		('rejuvenation_hands_4',	'rejuvenation_hands_4'),
-		('rejuvenation_hands_5',	'rejuvenation_hands_5'),
-
-
-
-
-
-
-
-
-
-		('rejuvenation_face_neck',	'rejuvenation_face_neck'),
-
-
-
-
-		('acne',			'acne'),
-
-		
-		('acne_active',			'acne_active'),
-		('alopecia',			'alopecia'),
-
-
-		('depilation',			'depilation'),
-
-		('emangiomas',		'emangiomas'),
-
-
-		('polyp',		'polyp'), 
-		('ruby_point',	'ruby_point'),
-
-		('monalisa_touch',	'monalisa_touch'),
-
-		('psoriasis',			'psoriasis'),
-		
-
-
-		('rejuvenation_face_hands',			'rejuvenation_face_hands'),
-		('rejuvenation_face_neck_hands',	'rejuvenation_face_neck_hands'),
-		('rosacea',			'rosacea'),
-		('ruby_points',		'ruby_points'),
-				
-
-		('telangiectasia',	'telangiectasia'),
-		
-		('varices',			'varices'),
-		('vitiligo',			'vitiligo'),
-
-
-
-		('x',		'x'), 
-		('rejuvenation_capilar',		'rejuvenation_capilar'), 
-		('na',		'na'),
-
-
-
-
-		# Cosmetology
-		('deep_face_cleansing',		'deep_face_cleansing'), 
-
-		('reaffirmation',		'reaffirmation'), 
-		
-		('reduction_weight_measures',		'reduction_weight_measures'), 
-
-		('',		''), 
-		('',		''), 
-		('',		''), 
-
-
-		('none',		'none'),
-
-
-		# Legacy
-		('body_local',		'body_local'), 
-		('face_local',		'face_local'), 
-
-	]
 	

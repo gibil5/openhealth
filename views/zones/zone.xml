@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+		<!-- TREE -->	
+		<record model="ir.ui.view" id="zone_tree_view">
+			<field name="name">openhealth zone</field>
+			<field name="model">openhealth.zone</field>
+			<field name="type">tree</field>
+			<field name="priority" eval="1"/>
+
+			<field name="arch" type="xml">	
+
+				<tree string="Openhealth zone Tree"   >
+
+
+					<field name="name"/>
+
+					<field name="laser_quick"/>
+
+					<field name="laser_co2"/>
+					<field name="laser_excilite"/>
+					<field name="laser_ipl"/>
+					<field name="laser_ndyag"/>
+  
+				</tree>
+			</field>
+		</record>
+
+
+
+
+
+
+		<record model="ir.actions.act_window" id="zone_list_action">
+			<field name="name">zone</field>
+			<field name="res_model">openhealth.zone</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+			<!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first order
+				</p>
+			</field>
+			-->
+		</record>
+
+
+	</data>
+</openerp>

@@ -33,8 +33,24 @@
 
 	'data': [
 
-		'data/prods/odoo_data_products.xml',			# check 
+		'data/base_data_categs_partners.xml',			# check
+		'data/base_data_categs_prods.xml',			# check
 
+
+		# Users 
+		'data/users/base_data_users_managers.xml',	# check 
+		'data/users/base_data_users_staff.xml',		# check 
+		'data/users/base_data_users_almacen.xml',		# check 
+		'data/users/base_data_users_doctors.xml',		# check 
+		'data/users/base_data_users_assistants.xml',	# check
+		'data/users/base_data_users_platform.xml',	# check
+		'data/users/base_data_users_cash.xml',		# check 
+
+
+
+
+		# Products 
+		'data/prods/odoo_data_products.xml',			# check 
 		'data/prods/odoo_data_services_co2.xml',		# check
 		'data/prods/odoo_data_services_exc.xml',		# check
 		'data/prods/odoo_data_services_m22.xml',		# check

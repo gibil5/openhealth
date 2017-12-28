@@ -4,42 +4,61 @@
 
 
 
-<!-- Dependencies - Actions --> 
+<!-- Actions --> 
 
 
 
 
-<!--
-		<record model="ir.actions.act_window" id="image_list_action">
-			<field name="name">images</field>
-			<field name="res_model">openhealth.image</field>
+
+
+
+
+		<!-- Account Invoice Line -->
+		<record model="ir.actions.act_window" id="account_invoice_line_list_action">
+			<field name="name">AIL</field>
+			<field name="res_model">account.invoice.line</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
-			
             <field name="domain">[]</field>
             <field name="context">{}</field>
             <field name="view_id" eval="False"/>
-			
 			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first image
+				<p class="oe_view_nocontent_create">Create the first receipt
 				</p>
 			</field>
-			
 		</record>
--->
 
 
+		<!-- Procurement Order --> 
+		<record model="ir.actions.act_window" id="procurement_order_list_action">
+			<field name="name">AIL</field>
+			<field name="res_model">procurement.order</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first receipt
+				</p>
+			</field>
+		</record>
 
 
-
-
-
-
-
-
-
-
-
+		<!-- Stock Move --> 
+		<record model="ir.actions.act_window" id="stock_move_list_action">
+			<field name="name">AIL</field>
+			<field name="res_model">stock.move</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first receipt
+				</p>
+			</field>
+		</record>
 
 
 

@@ -65,10 +65,8 @@
 	# ------------------------------
 	#'depends': ['base', 'oehealth'],
 	'depends': ['base', 'oehealth', 'base_multi_image'],
-	#'depends': ['base', 'oehealth', 'base_multi_image', 'mail', 'purchase'],
 
 
-#'depends': ['mail','contacts'],
 
 
 
@@ -80,8 +78,15 @@
 
 
 
-		# ----------------------------------------------------------- Views - Actions ------------------------------------------------------
-		#'views/actions.xml',		# Deprecated !
+
+
+		# ----------------------------------------------------------- Views - Base Actions ------------------------------------------------------
+
+		# Base - Form and List Actions - Must be the first 
+		'views/base.xml',										# Very important - All Actions should go here - Dependencies
+		
+
+
 
 
 
@@ -113,15 +118,9 @@
 
 
 		# Ticket 
-		#'reports/report_ticket_sale_proof.xml',		# DEP ? 
-
-
 		'reports/report_ticket_sale_order.xml',
 		'reports/report_ticket_invoice.xml',
 		'reports/report_ticket_receipt.xml',
-
-
-
 		'reports/paper_format.xml',
 		'reports/report_purchasequotation.xml',
 
@@ -239,19 +238,9 @@
 
 		# ----------------------------------------------------------- Security ------------------------------------------------------
 
-
-		#'security/openhealth_security_oe.xml',		# DEPRECATED !!! 
-
-
-
 		'security/openhealth_security.xml',
 		'security/openhealth_security_readers.xml',
-		
-		#'security/openhealth_security_buf.xml',
-
-
 		'security/ir.model.access.csv',
-		
 		'security/ir.rule.xml',
 
 
@@ -260,13 +249,6 @@
 
 
 
-
-
-		# ----------------------------------------------------------- Views - Base ------------------------------------------------------
-
-		# Base - Form and List Actions - Must be the first 
-		'views/base.xml',			# Very important - All Actions should go here - Dependencies
-		'views/other.xml',
 
 
 

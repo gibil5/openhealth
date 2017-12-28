@@ -34,6 +34,26 @@
 
 
 
+
+
+
+
+
+
+
+
+		<!-- Window action -->
+		<!--
+		-->
+		<record model="ir.actions.act_window" id="oeh_medical_appointment_list_action">
+			<field name="name">Citas</field>
+			<field name="res_model">oeh.medical.appointment</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+
+
 		<!-- Control -->  
 		<record id="oeh_medical_appointment_control_action" model="ir.actions.act_window">
 

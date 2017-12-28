@@ -328,9 +328,21 @@
 							</group>
 						</group>
 
-						
+		
+
+
+
 						<notebook>
+			
+							<page string="Servicios Quick">
+
+								<field name="x_service_quick_ids"/>
+								
+							</page>
+
 						</notebook>
+
+
 
 					</sheet>
 				</form>

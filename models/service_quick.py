@@ -20,6 +20,31 @@ class ServiceQuick(models.Model):
 	
 
 
+
+
+	# Patient 
+	patient = fields.Many2one(
+
+			'oeh.medical.patient', 
+
+			#compute='_compute_patient', 
+		)
+
+	#@api.multi
+	#def _compute_patient(self):
+	#	print 'jx'
+	#	print 'compute patient'
+	#	for record in self:
+	#		record.patient = record.treatment.patient
+
+
+
+
+
+
+
+
+
 	# Zone 
 	nex_zone = fields.Many2one(
 			'openhealth.zone',

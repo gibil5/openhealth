@@ -27,15 +27,35 @@ class Patient(models.Model):
 
 
 
-	# Commons 
-	vspace = fields.Char(
-			' ', 
-			readonly=True
-			)
 
 
 
+	x_service_quick_ids = fields.One2many(
+			'openhealth.service.quick', 
+			'patient', 
 
+			#domain = [
+			#			('patient', '=', name),
+			#		],
+			
+			compute='_compute_service_quick_ids', 
+		)
+
+	@api.multi
+	def _compute_service_quick_ids(self):
+	#	print 'jx'
+	#	print 'compute patient'
+		
+		for record in self:
+		
+			services = self.env['openhealth.service.quick'].search([
+																		('patient', '=', record.name),			
+																	],
+																	order='create_date asc',
+																	#limit=1,
+																)
+
+			record.x_service_quick_ids = services
 
 
 
@@ -57,16 +77,9 @@ class Patient(models.Model):
 
 
 
-
-
-
-
-
 	x_nothing = fields.Char(
 		'Nothing', 
 	)
-
-
 
 
 
@@ -144,6 +157,11 @@ class Patient(models.Model):
 
 
 
+	# Commons 
+	vspace = fields.Char(
+			' ', 
+			readonly=True
+			)
 
 
 

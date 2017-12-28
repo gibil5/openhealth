@@ -107,6 +107,24 @@
 					/>
 
 
+
+
+		<menuitem 	id="oeh_medical_therapeut_list"  
+					
+					name="Cosmeatras"
+					
+					action="therapeut_list_action" 
+					
+					parent="emr_menu" 
+					
+					sequence="3"
+
+					groups="openhealth.roots,openhealth.managers,openhealth.directors"
+					/>
+
+
+
+
 		<menuitem 	id="oeh_medical_physician_inactive_list"  
 					name="Médicos - Inactivos"
 					action="physician_inactive_list_action" 
@@ -115,6 +133,8 @@
 
 					groups="openhealth.roots,openhealth.directors"
 					/>
+
+
 
 
 		<!--

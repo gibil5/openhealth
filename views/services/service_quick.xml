@@ -64,14 +64,29 @@
 			<field name="model">openhealth.service.quick</field>
 			<field name="arch" type="xml">
 				<tree string="Service Tree">
+
 					<field name="name"/>
-					<field name="id"/>
+					
+					<field name="create_date"/>
+
+<!--
+					<field name="id"/>					
 					<field name="laser"/>				
-					<field name="treatment"/>
-					<field name="service"/>
 					<field name="consultation"/>
+-->				
+					
+
+					<field name="treatment"/>
+					
+					<field name="service"/>
+					
+					<field name="pathology"/>
 
 					<field name="zone"/>
+				
+
+
+					<field name="comeback"/>
 				</tree>
 			</field>
 		</record>

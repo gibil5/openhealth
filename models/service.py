@@ -9,22 +9,64 @@
 from openerp import models, fields, api
 from datetime import datetime
 
-
-
 from . import exc
 from . import ipl
 from . import prodvars
-
 from . import serv_funcs
+
 
 
 
 class Service(models.Model):
 
+	_name = 'openhealth.service'
+
 	#_inherit = 'openhealth.base', 
 
 
-	_name = 'openhealth.service'
+
+
+	comeback = fields.Boolean(
+
+			string='Regreso', 
+		)
+
+
+
+
+
+	# Patient 
+	patient = fields.Many2one(
+			'oeh.medical.patient', 
+		)
+
+	#@api.onchange('write_date')
+	#def _onchange_write_date(self):
+	#@api.onchange('service')
+	#def _onchange_service(self):
+	#@api.onchange('nex_zone')
+	#def _onchange_nex_zone(self):
+
+	#	print 'jx'
+	#	print 'On change Write date'
+	#	print self.treatment.patient
+	#	print self.treatment.patient.name 
+
+	#	self.patient = self.treatment.patient.name
+
+	#	print self.patient
+
+
+
+
+
+
+
+	# Treatment (for Product)
+	x_treatment = fields.Selection(
+			selection=prodvars._treatment_list,
+			string="Tratamiento", 			
+		)	
 
 
 
@@ -47,8 +89,7 @@ class Service(models.Model):
 	pathology = fields.Selection(
 			selection = prodvars._pathology_list, 
 			string="Patología", 
-			)
-
+		)
 
 	nex_pathology = fields.Many2one(
 			'openhealth.pathology',
@@ -69,7 +110,7 @@ class Service(models.Model):
 
 			string="Servicio",
 			required=True, 
-			)
+		)
 
 
 
@@ -173,12 +214,6 @@ class Service(models.Model):
 
 
 
-	x_treatment = fields.Selection(
-
-			selection=prodvars._treatment_list,
-			
-			string="Tratamiento", 			
-		)	
 
 
 

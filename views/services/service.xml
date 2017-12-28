@@ -146,8 +146,8 @@
 
 									<field name="vspace" />
 <!--
-									<field name="patient" 	readonly="0" 	string='' 	/>
 -->
+									<field name="patient" 	readonly="0" 	string='' 	/>
 								</group>
 								
 

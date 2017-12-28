@@ -336,8 +336,8 @@
 			
 							<page string="Servicios Quick">
 <!--
-								<field name="x_service_quick_ids"/>
 -->							
+								<field name="x_service_quick_ids"/>
 							</page>
 
 						</notebook>

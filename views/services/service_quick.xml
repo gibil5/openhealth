@@ -42,12 +42,12 @@
 						<field name="vspace" />
 
 <!--
+-->
 						<field name="nex_zone"  	widget="radio" />
 
 						<field name="vspace" />
 
 						<field name="nex_pathology"  	widget="radio" />
--->
 				</xpath>
 
 

@@ -509,22 +509,13 @@
 
 
 
+
+		<!-- Action --> 
 		<record id="oeh_medical_appointment_action_auto" model="ir.actions.act_window">
-
-					<field name="name">Auto</field>
-			
+					<field name="name">Auto</field>			
 					<field name="res_model">oeh.medical.appointment</field>
-			
 					<field name="view_type">form</field>
-
 					<field name="view_mode">form,calendar,tree</field>  
-
-
-<!--
-					<field name="doctor_id">1</field>
-											('doctor', '=', 'Dr. Chavarri'),
--->
-
 
 					<field name="domain">[
 											('state', 'in', ['pre_scheduled','Scheduled', 'Completed', 'Invoiced']),
@@ -533,18 +524,9 @@
 					</field>
 
 
-<!--
-											'default_doctor': 'Dr. Chavarri',
-											'default_doctor': default_doctor_id,
-											'default_doctor': 1,
-
-											'default_appointment_date': current_date,
--->
 					<field name="context">{
-
 											'default_x_target': 'doctor',
 											'default_x_type': 'consultation',
-
 											'default_appointment_date': time.strftime('%Y-%m-%d 14:00:00'),
 										}
 					</field>
@@ -552,15 +534,6 @@
 
 
 					<field name="view_id" eval="False"/>
-<!--
-					<field name="help" type="html">
-					  <p class="oe_view_nocontent_create">
-						Click to add a new appointment.
-					  </p><p>
-						oeHealth appointment screen can easily find all of your appointment details;
-					  </p>
-					</field>
--->
 		</record>
 
 
@@ -568,64 +541,20 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		<!-- Menu -->
-		<!--
-		<menuitem id="oeh_medical_appointment_menu" name="Citas"
-			parent="openhealth_menu"
-			action="oeh_medical_appointment_list_action"/>
-		-->
-
-
-
-
-
-
-
-
-
-
-
-		<!-- Window action -->
-
+		<!-- Action --> 
 		<!-- Appointment --> 
 		<record model="ir.actions.act_window" id="oeh_medical_preappointment_list_action">
 			<field name="name">Citas - jz</field>
 			<field name="res_model">oeh.medical.appointment</field>
 			<field name="view_type">form</field>
-
 			<field name="view_mode">tree,form</field>
 
-
 			<field name="context">{
-
 									'default_x_type': 'consultation',
-
 									'default_patient': 'patient',
 								}
 			</field>
-
-<!--
-									'default_x_target': 'doctor',
--->
-
 		</record>
-
-
-
 
 
 
@@ -633,34 +562,10 @@
 		<!-- Appointment - Cos --> 
 		<record model="ir.actions.act_window" id="oeh_medical_preappointment_list_action_cos">
 			<field name="name">Citas - Cos</field>
-
 			<field name="res_model">oeh.medical.appointment</field>
-			
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 		</record>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -670,38 +575,18 @@
 					<field name="res_model">oeh.medical.appointment</field>
 					<field name="view_type">form</field>
 					<field name="view_mode">calendar,tree,form</field>
-					<!--
-
-											('x_machine', 'in', ['laser_co2_1', 'laser_co2_2', 'laser_co2_3', 'laser_excilite', 'laser_m22']),
-											('x_target', '=', 'machine'),
-
-
-											('x_machine', '!=', 'False'),
-					-->
 					<field name="domain">[
 											('x_machine', 'in', ['laser_co2_1', 'laser_co2_2', 'laser_co2_3', 'laser_excilite', 'laser_m22']),
 										]
 					</field>
-<!--
-											('x_target', '=', 'doctor'),
--->
 
-					<!--
-											'default_x_machine': 'none',
-					-->
 					<field name="context">{
 											'default_x_target': 'doctor',
 											'default_x_type': 'procedure',
 						}
 					</field>
+
 					<field name="view_id" eval="False"/>
-					<field name="help" type="html">
-					  <p class="oe_view_nocontent_create">
-						Click to add a new appointment.
-					  </p><p>
-						oeHealth appointment screen can easily find all of your appointment details;
-					  </p>
-					</field>
 		</record>
 
 		<!-- Controls -->
@@ -723,13 +608,6 @@
 										}
 					</field>
 					<field name="view_id" eval="False"/>
-					<field name="help" type="html">
-					  <p class="oe_view_nocontent_create">
-						Click to add a new appointment.
-					  </p><p>
-						oeHealth appointment screen can easily find all of your appointment details;
-					  </p>
-					</field>
 		</record>
 
 
@@ -768,13 +646,6 @@
 										}
 					</field>
 					<field name="view_id" eval="False"/>
-					<field name="help" type="html">
-					  <p class="oe_view_nocontent_create">
-						Click to add a new appointment.
-					  </p><p>
-						oeHealth appointment screen can easily find all of your appointment details;
-					  </p>
-					</field>
 		</record>
 
 
@@ -783,82 +654,32 @@
 
 		<!-- Machines - Cos -->
 		<record id="oeh_medical_appointment_action_tree_machines_cos" model="ir.actions.act_window">
-
 					<field name="name">Reserva de salas - Cos</field>
-
-			
-					<field name="res_model">oeh.medical.appointment</field>
-
-					
+					<field name="res_model">oeh.medical.appointment</field>					
 					<field name="view_type">form</field>
 					<field name="view_mode">calendar,tree,form</field>
-					
-					<!--
-
-											('x_machine', 'in', ['laser_co2_1', 'laser_co2_2', 'laser_co2_3', 'laser_excilite', 'laser_m22']),
-											('x_target', '=', 'machine'),
-
-
-											('x_machine_cos', '!=', 'False'),
-					-->
-
 
 					<field name="domain">[
 
 											('x_target', '=', 'therapist'),
-
 											('x_type', '=', 'procedure'),
-
 											('x_machine', 'in', ['laser_triactive', 'chamber_reduction', 'carboxy_diamond', ]),
 										]
 					</field>
 					
 
-
-					<!--
-											'default_x_machine': 'none',
-											'default_x_target': 'doctor',
-
-											'default_x_machine_cos': 'laser_triactive',
-					-->
 					<field name="context">{
-
-											'default_x_target': 'therapist',
-						
+											'default_x_target': 'therapist',						
 											'default_x_type': 'procedure',
-						
 										}
 					</field>
 
 
 					<field name="view_id" eval="False"/>
-					<field name="help" type="html">
-					  <p class="oe_view_nocontent_create">
-						Click to add a new appointment.
-					  </p><p>
-						oeHealth appointment screen can easily find all of your appointment details;
-					  </p>
-					</field>
 		</record>
 
-<!--
-		<menuitem 
-					action="oehealth.oeh_medical_physician_action_tree1" 
-					parent="oehealth.oeh_medical_appointment_menu"  
-					id="oehealth.oeh_medical_my_physician_profile"
-					sequence="10"
-		/>
 
-		<menuitem 	action="oehealth.oeh_medical_appointment_action_tree" 
-					parent="oehealth.oeh_medical_appointment_menu"  
-					id="oehealth.oeh_medical_appointment_list" 
-					sequence="11"/>
 
-		<menuitem 	action="oehealth.oeh_medical_prescription_action_tree" 
-					id="oehealth.oeh_medical_prescription_list" 
-					parent="oehealth.oeh_medical_appointment_menu" 
-					sequence="12"/>
--->
 
 
 

@@ -213,26 +213,6 @@
 
 
 
-		<!-- stock picking --> 
-<!--
-		<menuitem id="stock_picking_menu" name="Stock pickings" 
-
-			parent="openhealth_menu"
-			
-			sequence="103"
-			action="stock_picking_list_action"/>
--->
-		<!-- stock pack.operation --> 
-<!--
-		<menuitem id="stock_pack_operation_menu" name="Stock pack operations" 
-			parent="openhealth_menu"
-			sequence="104"
-			action="stock_pack_operation_list_action"/>
--->
-
-
-
-
 
 
 		<!-- Filter --> 

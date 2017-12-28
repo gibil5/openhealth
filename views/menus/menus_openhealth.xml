@@ -228,6 +228,13 @@
 
 
 
+
+
+
+
+
+
+
 		<!-- companies --> 
 		<menuitem id="companies_menu" name="companies" parent="openhealth_menu"
 			sequence="-100"
@@ -358,6 +365,11 @@
 
 
 
+		<menuitem 
+			id="oeh_medical_appointment_menu" 
+			name="Citas"
+			parent="openhealth_menu"
+			action="oeh_medical_appointment_list_action"/>
 
 
 		<menuitem id="oeh_medical_preappointment_menu" 
@@ -374,6 +386,26 @@
 			action="oeh_medical_preappointment_list_action_cos"/>
 
 -->
+<!--
+		<menuitem 
+					action="oehealth.oeh_medical_physician_action_tree1" 
+					parent="oehealth.oeh_medical_appointment_menu"  
+					id="oehealth.oeh_medical_my_physician_profile"
+					sequence="10"
+		/>
+
+		<menuitem 	action="oehealth.oeh_medical_appointment_action_tree" 
+					parent="oehealth.oeh_medical_appointment_menu"  
+					id="oehealth.oeh_medical_appointment_list" 
+					sequence="11"/>
+
+		<menuitem 	action="oehealth.oeh_medical_prescription_action_tree" 
+					id="oehealth.oeh_medical_prescription_list" 
+					parent="oehealth.oeh_medical_appointment_menu" 
+					sequence="12"/>
+-->
+
+
 
 
 
@@ -614,6 +646,22 @@
 			parent="openhealth_menu"
 			sequence="102"
 			action="stock_move_list_action"/>
+
+
+
+		<menuitem 
+			id="stock_picking_menu" 
+			name="Stock pickings" 
+			parent="openhealth_menu"
+			sequence="103"
+			action="stock_picking_list_action"/>
+
+		<menuitem 
+			id="stock_pack_operation_menu" 
+			name="Stock pack operations" 
+			parent="openhealth_menu"
+			sequence="104"
+			action="stock_pack_operation_list_action"/>
 
 
 

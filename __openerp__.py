@@ -482,27 +482,6 @@
 		# Menus
 		'views/menus/menus.xml',
 
-
-
-
-
-		# Menus - Reporting - Disabled, for the moment...
-		#'views/menus/menus_reporting.xml',
-		#'views/menus/menus_reporting_pla.xml',
-		#'views/menus/menus_reporting_phy.xml',
-		#'views/reports/report_sale_months_phy_can.xml',
-		#'views/menus/menus_reporting_phy_can.xml',
-
-
-
-		# Deprecated
-		#'views/reports/report_sale_months_phy_ala.xml',
-		#'views/menus/menus_reporting_phy_ala.xml',
-
-
-
-
-
 		
 
 
@@ -514,7 +493,6 @@
 
 
 
-		# Statics  
 		# Style 
 		'views/openhealth.xml',		
 
@@ -527,12 +505,12 @@
 
 		# Sessions
 		'views/sessions/session.xml',
+		'views/sessions/session_cos.xml',
 
-		# Sessions - 2 
+
+
+		# Sessions - Deprecated 
 		#'views/sessions/session_med.xml',
-
-
-
 		#'views/sessions/session_config_manual.xml',
 		#'views/sessions/session_config_fractional.xml',
 		#'views/sessions/session_measures.xml',
@@ -540,7 +518,6 @@
 		
 
 
-		'views/sessions/session_cos.xml',
 
 
 
@@ -567,7 +544,6 @@
 		
 		'views/services/service_medical.xml',
 		'views/services/service_medical_zone.xml',
-
 
 
 
@@ -618,17 +594,6 @@
 		'views/treatments/treatment_services.xml',
 
 
-
-
-
-		# Cosmetologies - 2 
-		#'views/cosmetologies/cosmetology_services.xml',
-		#'views/cosmetologies/cosmetology_orders.xml',
-		#'views/cosmetologies/cosmetology_procedures.xml',
-		#'views/cosmetologies/cosmetology_sessions.xml',
-		#'views/cosmetologies/cosmetology_appointments.xml',
-		#'views/cosmetologies/cosmetology_consultations.xml',
-		#'views/cosmetologies/cosmetology_reservations.xml',
 
 
 

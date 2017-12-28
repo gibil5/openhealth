@@ -164,7 +164,6 @@
 
 
 		# Categs
-		#'data/base_data_categs.xml',			# check
 		'data/base_data_categs_partners.xml',			# check
 		'data/base_data_categs_prods.xml',			# check
 
@@ -181,9 +180,7 @@
 		'data/users/base_data_users_managers.xml',	# check 
 		'data/users/base_data_users_staff.xml',		# check 
 		'data/users/base_data_users_almacen.xml',		# check 
-
 		'data/users/base_data_users_doctors.xml',		# check 
-		
 		'data/users/base_data_users_assistants.xml',	# check
 		'data/users/base_data_users_platform.xml',	# check
 		'data/users/base_data_users_cash.xml',		# check 
@@ -233,16 +230,6 @@
 
 		# Suppliers 
 		'data/suppliers.xml',							# DEPRECATED - Very 
-		#'data/supplier_services.xml',					# DEPRECATED - Very
-
-
-
-
-
-		# Deprecated 
-		#'data/base_data_patients.xml',	
-		#'data/odoo_data_cards.xml',	
-		#'views/base_data.xml',			
 
 
 

@@ -59,6 +59,26 @@
 		'data/prods/odoo_data_services_consult.xml',	# check
 
 
+		# Doctors
+		'data/base_data_physicians.xml',				# check
+
+
+
+
+
+		# Pricelists 
+		'data/pricelists.xml',							
+		'data/pricelist_quick.xml',						
+		'data/pricelist_quick_return.xml',						
+
+
+
+
+
+		# Suppliers 
+		'data/suppliers.xml',							# DEPRECATED - Very 
+
+
 
 		],
 

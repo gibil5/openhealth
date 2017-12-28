@@ -36,8 +36,10 @@
 
 
 
-				<xpath expr="//field[@name='zone']" position="replace">
-						<field name="zone" />
+
+				<xpath expr="//field[@name='pathology']" position="replace">
+
+						<field name="pathology" />
 						
 						<field name="vspace" />
 
@@ -45,8 +47,7 @@
 -->
 						<field name="nex_zone"  	widget="radio" />
 
-						<field name="vspace" />
-
+o
 						<field name="nex_pathology"  	widget="radio" />
 				</xpath>
 

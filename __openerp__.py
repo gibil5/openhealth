@@ -549,7 +549,7 @@
 
 		# Service Quick
 		'views/services/service_quick.xml',
-		'views/services/service_quick_zone.xml',
+		#'views/services/service_quick_zone.xml',
 
 
 

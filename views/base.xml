@@ -8,11 +8,6 @@
 
 
 
-
-
-
-
-
 		<!-- Account Invoice Line -->
 		<record model="ir.actions.act_window" id="account_invoice_line_list_action">
 			<field name="name">AIL</field>

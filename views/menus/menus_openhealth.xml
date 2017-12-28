@@ -378,6 +378,8 @@
 			sequence="-10"
 			action="oeh_medical_preappointment_list_action"/>
 
+
+
 <!--
 		<menuitem id="oeh_medical_preappointment_menu_cos" 
 			name="Citas - Cos"
@@ -385,8 +387,7 @@
 			sequence="-9"
 			action="oeh_medical_preappointment_list_action_cos"/>
 
--->
-<!--
+
 		<menuitem 
 					action="oehealth.oeh_medical_physician_action_tree1" 
 					parent="oehealth.oeh_medical_appointment_menu"  
@@ -394,10 +395,12 @@
 					sequence="10"
 		/>
 
+
 		<menuitem 	action="oehealth.oeh_medical_appointment_action_tree" 
 					parent="oehealth.oeh_medical_appointment_menu"  
 					id="oehealth.oeh_medical_appointment_list" 
 					sequence="11"/>
+
 
 		<menuitem 	action="oehealth.oeh_medical_prescription_action_tree" 
 					id="oehealth.oeh_medical_prescription_list" 

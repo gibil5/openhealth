@@ -416,6 +416,23 @@ access_sale_report,sale.report,model_sale_report,,1,1,1,1
 
 
 
+access_openhealth_pathology_managers,openhealth.pathology.managers,model_openhealth_pathology,openhealth.hc_managers,1,1,1,1
+
+access_openhealth_pathology_readers,openhealth.pathology.readers,model_openhealth_pathology,openhealth.hc_readers,1,0,0,0
+
+access_openhealth_zone_managers,openhealth.zone.managers,model_openhealth_zone,openhealth.hc_managers,1,1,1,1
+
+access_openhealth_zone_readers,openhealth.zone.readers,model_openhealth_zone,openhealth.hc_readers,1,0,0,0
+
+
+
+
+
+
+access_openhealth_service_quick_managers,openhealth.service_quick.managers,model_openhealth_service_quick,openhealth.hc_managers,1,1,1,1
+
+access_openhealth_service_quick_readers,openhealth.service_quick.readers,model_openhealth_service_quick,openhealth.hc_readers,1,0,0,0
+
 
 
 
@@ -425,9 +442,11 @@ access_openhealth_service_co2_readers,openhealth.service_co2.readers,model_openh
 
 
 
+
 access_openhealth_service_excilite_managers,openhealth.service_excilite.managers,model_openhealth_service_excilite,openhealth.hc_managers,1,1,1,1
 
 access_openhealth_service_excilite_readers,openhealth.service_excilite.readers,model_openhealth_service_excilite,openhealth.hc_readers,1,0,0,0
+
 
 
 

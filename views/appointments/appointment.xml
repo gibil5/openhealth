@@ -515,7 +515,7 @@
 
 
 
-		<!-- Filter --> 
+		<!-- FILTER --> 
         <record id="oehealth.view_oeh_medical_appointment_filter" model="ir.ui.view">
            <field name="name">Appointment Search</field>
            <field name="model">oeh.medical.appointment</field>

@@ -24,8 +24,12 @@ class ServiceQuick(models.Model):
 
 	# Patient 
 	patient = fields.Many2one(
-
 			'oeh.medical.patient', 
+
+			string="", 
+			
+			required=True, 
+
 
 			#compute='_compute_patient', 
 		)

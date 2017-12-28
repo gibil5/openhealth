@@ -31,7 +31,14 @@
 <!-- Quick --> 
 							<page string="QUICK"   		  >
 
-								<field name="service_quick_ids">	
+								<field 
+										name="service_quick_ids"
+
+										context="{
+													'default_patient': patient,
+										}"
+
+									>	
 
 									<tree string="Services"		create="true" >	
 
@@ -56,6 +63,8 @@
 
 										<field name="consultation"/>
 									</tree>
+
+
 								</field>
 
 							</page>

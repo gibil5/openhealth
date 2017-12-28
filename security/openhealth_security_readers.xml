@@ -11,6 +11,7 @@
 <!-- Product Managers --> 
 		<record id="openhealth.product_managers" model="res.groups">
 			<field name="name">Product Managers</field>
+			
 			<field name="category_id" ref="module_openhealth_category"/>
 
 			<field name="users" eval="[ 

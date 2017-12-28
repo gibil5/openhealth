@@ -244,10 +244,10 @@
 
 
 
+		'security/openhealth_security.xml',
 		'security/openhealth_security_readers.xml',
 		
 		#'security/openhealth_security_buf.xml',
-		'security/openhealth_security.xml',
 
 
 		'security/ir.model.access.csv',

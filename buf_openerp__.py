@@ -219,9 +219,7 @@
 
 		# Pricelists 
 		'data/pricelists.xml',							
-
 		'data/pricelist_quick.xml',						
-
 		'data/pricelist_quick_return.xml',						
 
 
@@ -696,5 +694,4 @@
 	#'js': ['static/src/js/progressbar.js'],
 
 }
-
 

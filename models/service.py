@@ -26,10 +26,13 @@ class Service(models.Model):
 
 
 
-	comeback = fields.Boolean(
 
-			string='Regreso', 
+	# Comeback 
+	comeback = fields.Boolean(
+			string='Regreso', 			
 		)
+
+
 
 
 

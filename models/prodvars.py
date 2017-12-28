@@ -106,13 +106,16 @@ _pathology_list = [
 
 
 		# Quick 
-		('tatoo',		'tatoo'), 
+		#('tatoo',			'tatoo'), 
+		('tatoo',			'Tatuaje'), 
 		#('tatoo_1',		'tatoo_1'), 
 		#('tatoo_2',		'tatoo_2'), 
 		#('tatoo_3',		'tatoo_3'), 
 		#('tatoo_4',		'tatoo_4'), 
 
-		('rejuvenation',	'rejuvenation'),
+
+		#('rejuvenation',	'rejuvenation'),
+		('rejuvenation',	'Rejuvenecimiento'),
 		#('rejuvenation_1',	'rejuvenation_1'),
 		#('rejuvenation_2',	'rejuvenation_2'),
 		#('rejuvenation_3',	'rejuvenation_3'),
@@ -123,35 +126,47 @@ _pathology_list = [
 
 
 		# Other 
-		('wart',		'wart'), 
+		#('wart',		'wart'), 
+		('wart',		'Verruga'), 
 		('wart_1',		'wart_1'), 
 		('wart_2',		'wart_2'), 
 		('wart_3',		'wart_3'), 
 		('wart_4',		'wart_4'), 
 		('wart_5',		'wart_5'), 
 
-		('keratosis',	'keratosis'),
+
+		#('keratosis',	'keratosis'),
+		('keratosis',	'Queratosis'),
 		('keratosis_1',	'keratosis_1'),
 		('keratosis_2',	'keratosis_2'),
 		('keratosis_3',	'keratosis_3'),
 		('keratosis_4',	'keratosis_4'),
 		('keratosis_5',	'keratosis_5'),
 
-		('stains',		'stains'),
+
+
+		#('stains',		'stains'),
+		('stains',		'Manchas'),
 		('stains_1',	'stains_1'),
 		('stains_2',	'stains_2'),
 		('stains_3',	'stains_3'),
 		('stains_4',	'stains_4'),
 		('stains_5',	'stains_5'),
 
-		('cyst',		'cyst'),
+
+
+		#('cyst',		'cyst'),
+		('cyst',		'Quiste'),
 		('cyst_1',		'cyst_1'),
 		('cyst_2',		'cyst_2'),
 		('cyst_3',		'cyst_3'),
 		('cyst_4',		'cyst_4'),
 		('cyst_5',		'cyst_5'),
 
-		('acne_sequels',	'acne_sequels'),
+
+
+		#('acne_sequels',	'acne_sequels'),
+		('acne_sequels',	'Acné y secuelas'),
 		('acne_sequels_1',	'acne_sequels_1'),
 		('acne_sequels_2',	'acne_sequels_2'),
 		('acne_sequels_3',	'acne_sequels_3'),
@@ -159,7 +174,8 @@ _pathology_list = [
 		('acne_sequels_5',	'acne_sequels_5'),
 
 
-		('mole',		'mole'),
+		#('mole',		'mole'),
+		('mole',		'Lunar'),
 		('mole_1',		'mole_1'),
 		('mole_2',		'mole_2'),
 		('mole_3',		'mole_3'),
@@ -167,7 +183,9 @@ _pathology_list = [
 		('mole_5',		'mole_5'),
 
 
-		('scar',		'scar'),
+
+		#('scar',		'scar'),
+		('scar',		'Cicatriz'),
 		('scar_1',		'scar_1'),
 		('scar_2',		'scar_2'),
 		('scar_3',		'scar_3'),

@@ -29,6 +29,24 @@ class Patient(models.Model):
 
 
 
+
+	x_nr_quick_hands = fields.Integer(
+			default=0, 
+		)
+
+	x_nr_quick_body_local = fields.Integer(
+			default=0, 
+		)
+
+	x_nr_quick_face_local = fields.Integer(
+			default=0, 
+		)
+
+
+
+
+
+
 	x_service_quick_ids = fields.One2many(
 			'openhealth.service.quick', 
 			'patient', 

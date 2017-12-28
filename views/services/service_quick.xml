@@ -86,8 +86,6 @@ o
 					<field name="pathology"/>
 
 					<field name="zone"/>
-				
-
 
 					<field name="comeback"/>
 				</tree>

@@ -21,7 +21,9 @@
 
 
 				<notebook position="inside">
+
 					<page string="Recomendaciones">
+					
 						<notebook>
 
 
@@ -30,6 +32,7 @@
 
 <!-- Quick --> 
 							<page string="QUICK"   		  >
+
 
 								<field 
 										name="service_quick_ids"
@@ -53,15 +56,16 @@
 
 										<field name="name"/>
 
-										<field name="laser"/>				
 
 										<field name="treatment"/>
 
 										<field name="service"/>
 										
-										<field name="zone"/>														
+										<field name="pathology"/>														
 
-										<field name="consultation"/>
+										<field name="zone"/>
+
+										<field name="comeback"/>
 									</tree>
 
 

@@ -21,13 +21,51 @@ class ServiceQuick(models.Model):
 
 
 
+	# Comeback 
+	comeback = fields.Boolean(
+
+			string='Regreso', 
+			
+			compute='_compute_comeback', 
+		)
+
+
+	@api.multi
+
+	def _compute_comeback(self):
+
+		for record in self:
+
+			comeback = False
+			
+			zone = record.zone
+			
+
+			#for service in record.patient.x_service_quick_ids:
+			#	if zone == service.zone: 
+			#		comeback = True
+
+
+			record.comeback = comeback
+
+
+
+
+
+
+
+
+
+
+
+
 
 	# Patient 
 	patient = fields.Many2one(
 			'oeh.medical.patient', 
 
 			string="", 
-			
+
 			required=True, 
 
 

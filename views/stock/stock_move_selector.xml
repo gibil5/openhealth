@@ -184,11 +184,10 @@
 
 
 		<!-- Stock Move Selector --> 
+<!--
 		<menuitem id="stock_move_selector_form_menu" name="Stock Move Selector Form" parent="openhealth_menu"
 					sequence="-170"
 					action="openhealth.stock_move_selector_form_action"
-
-
 					groups="openhealth.almacens,openhealth.managers,openhealth.directors"
 			/>
 
@@ -198,7 +197,7 @@
 					sequence="-170"
 					action="openhealth.stock_move_selector_list_action"
 			/>
-
+-->
 
 	</data>
 </openerp>

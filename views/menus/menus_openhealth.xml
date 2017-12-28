@@ -68,16 +68,18 @@
 
 
 		<!-- Pathologies --> 
+<!--
 		<menuitem id="pathologies_menu" name="Pathologies" parent="openhealth_menu"
 			sequence="-180"
 			action="pathology_list_action"/>
+-->
 
-
-		<!-- zoneies --> 
+		<!-- Zones --> 
+<!--
 		<menuitem id="zones_menu" name="Zones" parent="openhealth_menu"
 			sequence="-180"
 			action="zone_list_action"/>
-
+-->
 
 
 

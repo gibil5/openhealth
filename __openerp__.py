@@ -205,9 +205,8 @@
 
 
 
-		'data/prods/data_zones.xml',			
-
-		'data/prods/data_pathologies.xml',			
+		#'data/prods/data_zones.xml',			
+		#'data/prods/data_pathologies.xml',			
 
 
 

@@ -201,8 +201,8 @@
 
 
 
-		#'data/prods/data_zones.xml',			
-		#'data/prods/data_pathologies.xml',			
+		'data/prods/data_zones.xml',			
+		'data/prods/data_pathologies.xml',			
 
 
 
@@ -647,20 +647,13 @@
 		'views/appointments/appointment_cos.xml',
 
 
-		],
+	],
 
 
 
 
 
-
-	#'data_jx': [],
-
-
-
-
-
-	# only loaded in demonstration mode
+	# Only loaded in demonstration mode
 	'demo': [
 		#'demo/demo.xml',
 	],

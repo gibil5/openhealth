@@ -31,7 +31,11 @@
 
 	'depends': ['base', 'oehealth', 'base_multi_image'],
 
-	'data': [],
+	'data': [
+
+		'data/prods/odoo_data_products.xml',			# check 
+
+	],
 
 	'demo': [],
 

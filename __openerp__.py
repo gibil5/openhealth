@@ -392,8 +392,8 @@
 
 
 		# Pathologies
-		#'views/pathologies/pathology.xml',
-		#'views/zones/zone.xml',
+		'views/pathologies/pathology.xml',
+		'views/zones/zone.xml',
 
 
 

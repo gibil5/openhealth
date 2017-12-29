@@ -10,6 +10,8 @@ from . import serv_funcs
 from . import prodvars
 
 
+
+
 class ServiceQuick(models.Model):
 
 	_inherit = 'openhealth.service'
@@ -17,13 +19,52 @@ class ServiceQuick(models.Model):
 	_name = 'openhealth.service.quick'
 
 	
-	
+
+
+
+	# Get Nr Zones 
+	@api.multi
+	def get_nr_zones(self, zone): 
+
+		if zone == 'hands':
+			nr = self.patient.x_nr_quick_hands
+
+		elif zone == 'body_local':
+			nr = self.patient.x_nr_quick_body_local
+
+		elif zone == 'face_local':
+			nr = self.patient.x_nr_quick_face_local
+
+		elif zone == 'cheekbones':
+			nr = self.patient.x_nr_quick_cheekbones
+
+		elif zone == 'face_all':
+			nr = self.patient.x_nr_quick_face_all
+
+		elif zone == 'face_all_hands':
+			nr = self.patient.x_nr_quick_face_all_hands
+
+		elif zone == 'face_all_neck':
+			nr = self.patient.x_nr_quick_face_all_neck
+
+		elif zone == 'neck':
+			nr = self.patient.x_nr_quick_neck
+
+		else:
+			print 'Error: This should not happen !'
+			nr = -1
+
+
+
+		return nr 
+
+
+
 
 
 
 	# Comeback 
 	comeback = fields.Boolean(
-
 			string='Regreso', 
 			
 			compute='_compute_comeback', 
@@ -36,14 +77,13 @@ class ServiceQuick(models.Model):
 
 		for record in self:
 
-			comeback = False
-			
-			zone = record.zone
-			
+			zone = record.zone			
+			nr = record.get_nr_zones(zone)
 
-			#for service in record.patient.x_service_quick_ids:
-			#	if zone == service.zone: 
-			#		comeback = True
+			if nr > 1:
+				comeback = True
+			else:
+				comeback = False
 
 
 			record.comeback = comeback

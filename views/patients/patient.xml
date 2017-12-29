@@ -337,6 +337,34 @@
 							<page string="Servicios Quick">
 <!--
 -->							
+<group>
+	<group>
+								<field name="x_nr_quick_hands"			string="Manos"	/>
+
+								<field name="x_nr_quick_body_local"		string="Localizado Cuerpo"	/>
+
+								<field name="x_nr_quick_face_local"		string="Localizado Rostro"		/>
+
+
+
+								<field name="x_nr_quick_cheekbones"		string="Pómulos" />
+
+								<field name="x_nr_quick_face_all"		string="Todo Rostro"	/>
+
+								<field name="x_nr_quick_face_all_hands"	string="Todo Rostro Manos"	/>
+
+
+
+								<field name="x_nr_quick_face_all_neck"	string="Todo Rostro Cuello"	/>
+
+								<field name="x_nr_quick_neck"			string="Cuello"	/>
+	</group>
+</group>
+
+
+
+
+
 
 
 								<field name="x_service_quick_ids"/>

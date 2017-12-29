@@ -29,18 +29,205 @@ class Patient(models.Model):
 
 
 
-
+	# Hands 
 	x_nr_quick_hands = fields.Integer(
+			string='Manos', 
 			default=0, 
+
+			compute='_compute_nr_quick_hands', 
 		)
 
+	@api.multi
+	def _compute_nr_quick_hands(self):
+		
+		zone = 'hands', 
+
+		for record in self:		
+			record.x_nr_quick_hands =	self.env['openhealth.service.quick'].search_count([																							
+																								('patient', '=', record.name),			
+																								('zone', '=', zone),			
+																					]) 
+
+
+	# Body Local 
 	x_nr_quick_body_local = fields.Integer(
+			string='Localizado Cuerpo', 
 			default=0, 
+
+			compute='_compute_nr_quick_body_local', 
 		)
 
+	@api.multi
+	def _compute_nr_quick_body_local(self):
+		
+		zone = 'body_local', 
+
+		for record in self:		
+			record.x_nr_quick_body_local =	self.env['openhealth.service.quick'].search_count([																							
+																								('patient', '=', record.name),			
+																								('zone', '=', zone),			
+																					]) 
+
+
+
+	# Face Local 
 	x_nr_quick_face_local = fields.Integer(
+			string='Localizado Rostro', 
 			default=0, 
+
+			compute='_compute_nr_quick_face_local', 
 		)
+
+	@api.multi
+	def _compute_nr_quick_face_local(self):
+		
+		zone = 'face_local', 
+
+		for record in self:		
+			record.x_nr_quick_face_local =	self.env['openhealth.service.quick'].search_count([																							
+																								('patient', '=', record.name),			
+																								('zone', '=', zone),			
+																					]) 
+
+
+
+
+
+	# Cheekbones 
+	x_nr_quick_cheekbones = fields.Integer(
+			string='Pómulos', 
+			default=0, 
+
+			compute='_compute_nr_quick_cheekbones', 
+		)
+
+	@api.multi
+	def _compute_nr_quick_cheekbones(self):
+		
+		zone = 'cheekbones', 
+
+		for record in self:		
+			record.x_nr_quick_cheekbones =	self.env['openhealth.service.quick'].search_count([																							
+																								('patient', '=', record.name),			
+																								('zone', '=', zone),			
+																					]) 
+
+
+
+
+	# face_all 
+	x_nr_quick_face_all = fields.Integer(
+			string='Todo Rostro', 
+			default=0, 
+
+			compute='_compute_nr_quick_face_all', 
+		)
+
+	@api.multi
+	def _compute_nr_quick_face_all(self):
+		
+		zone = 'face_all', 
+
+		for record in self:		
+			record.x_nr_quick_face_all =	self.env['openhealth.service.quick'].search_count([																							
+																								('patient', '=', record.name),			
+																								('zone', '=', zone),			
+																					]) 
+
+
+
+
+	# face_all_hands 
+	x_nr_quick_face_all_hands = fields.Integer(
+			string='Todo Rostro Manos', 
+			default=0, 
+
+			compute='_compute_nr_quick_face_all_hands', 
+		)
+
+	@api.multi
+	def _compute_nr_quick_face_all_hands(self):
+		
+		zone = 'face_all_hands', 
+
+		for record in self:		
+			record.x_nr_quick_face_all_hands =	self.env['openhealth.service.quick'].search_count([																							
+																								('patient', '=', record.name),			
+																								('zone', '=', zone),			
+																					]) 
+
+
+
+
+
+
+
+
+	# face_all_neck 
+	x_nr_quick_face_all_neck = fields.Integer(
+			string='Todo Rostro Cuello', 
+			default=0, 
+
+			compute='_compute_nr_quick_face_all_neck', 
+		)
+
+	@api.multi
+	def _compute_nr_quick_face_all_neck(self):
+		
+		zone = 'face_all_neck', 
+
+		for record in self:		
+			record.x_nr_quick_face_all_neck =	self.env['openhealth.service.quick'].search_count([																							
+																								('patient', '=', record.name),			
+																								('zone', '=', zone),			
+																					]) 
+
+
+
+
+
+
+
+	# neck 
+	x_nr_quick_neck = fields.Integer(
+			string='Cuello', 
+			default=0, 
+
+			compute='_compute_nr_quick_neck', 
+		)
+
+	@api.multi
+	def _compute_nr_quick_neck(self):
+		
+		zone = 'neck', 
+
+		for record in self:		
+			record.x_nr_quick_neck =	self.env['openhealth.service.quick'].search_count([																							
+																								('patient', '=', record.name),			
+																								('zone', '=', zone),			
+																					]) 
+
+
+
+
+
+
+
+
+
+
+#cheekbones
+#face_all  
+#face_all_hands
+#face_all_neck
+#neck 
+#neck_hands  
+
+
+
+
+
+
 
 
 

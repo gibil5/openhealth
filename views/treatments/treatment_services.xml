@@ -37,9 +37,26 @@
 								<field 
 										name="service_quick_ids"
 
+
 										context="{
 													'default_patient': patient,
+
+
+													'default_nr_hands_i': 			nr_quick_hands,
+													'default_nr_body_local_i': 		nr_quick_body_local,
+													'default_nr_face_local_i': 		nr_quick_face_local,
+
+
+													'default_nr_cheekbones': 		nr_quick_cheekbones,
+													'default_nr_face_all': 			nr_quick_face_all,
+													'default_nr_face_all_hands': 	nr_quick_face_all_hands,
+
+													'default_nr_face_all_neck': 	nr_quick_face_all_neck,
+													'default_nr_neck': 				nr_quick_neck,
+													'default_nr_neck_hands': 		nr_quick_neck_hands,
+
 										}"
+
 
 									>	
 
@@ -54,11 +71,11 @@
 										/>
 
 
+
+<!--
 										<field name="name"/>
-
-
 										<field name="treatment"/>
-
+-->
 										<field name="service"/>
 										
 										<field name="pathology"/>														
@@ -66,6 +83,13 @@
 										<field name="zone"/>
 
 										<field name="comeback"/>
+
+
+										<field name="price"/>
+										<field name="price_vip"/>
+										<field name="price_vip_return"/>
+
+										<field name="price_applied"/>
 									</tree>
 
 

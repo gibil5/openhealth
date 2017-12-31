@@ -100,6 +100,9 @@ from . import pathology
 
 
 
+from . import counter_raw
+
+
 from . import service
 from . import service_co2
 from . import service_excilite

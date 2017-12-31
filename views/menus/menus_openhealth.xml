@@ -263,10 +263,22 @@
 
 
 
+
 		<!-- Counters --> 
 		<menuitem id="counters_menu" name="Counters" parent="openhealth_menu"
 			sequence="-80"
 			action="counter_list_action"/>
+
+
+		<!-- Counters Raw --> 
+<!--		
+		<menuitem id="counters_raw_menu" name="Counters Raw" parent="openhealth_menu"
+			sequence="-80"
+			action="counter_raw_list_action"/>
+-->
+
+
+
 
 
 
@@ -512,6 +524,19 @@
 			parent="openhealth_menu"
 			sequence="10"
 			action="service_list_action"/>
+
+
+
+
+
+		<!-- Services Quick --> 
+		<menuitem id="service_quick_menu" name="Services Quick"
+			parent="openhealth_menu"
+			sequence="11"
+			action="service_quick_list_action"/>
+
+
+
 
 
 		<!-- Services Co2 --> 

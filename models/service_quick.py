@@ -26,29 +26,52 @@ class ServiceQuick(models.Model):
 	@api.multi
 	def get_nr_zones(self, zone): 
 
+
 		if zone == 'hands':
-			nr = self.patient.x_nr_quick_hands
+			#nr = self.patient.x_nr_quick_hands
+			nr = self.nr_hands_i
+
 
 		elif zone == 'body_local':
-			nr = self.patient.x_nr_quick_body_local
+			#nr = self.patient.x_nr_quick_body_local
+			nr = self.nr_body_local_i
 
 		elif zone == 'face_local':
-			nr = self.patient.x_nr_quick_face_local
+			#nr = self.patient.x_nr_quick_face_local
+			nr = self.nr_face_local_i
+
+
+
 
 		elif zone == 'cheekbones':
-			nr = self.patient.x_nr_quick_cheekbones
+			#nr = self.patient.x_nr_quick_cheekbones
+			nr = self.nr_cheekbones
 
 		elif zone == 'face_all':
-			nr = self.patient.x_nr_quick_face_all
+			#nr = self.patient.x_nr_quick_face_all
+			nr = self.nr_face_all
 
 		elif zone == 'face_all_hands':
-			nr = self.patient.x_nr_quick_face_all_hands
+			#nr = self.patient.x_nr_quick_face_all_hands
+			nr = self.nr_face_all_hands
+
+
+
 
 		elif zone == 'face_all_neck':
-			nr = self.patient.x_nr_quick_face_all_neck
+			#nr = self.patient.x_nr_quick_face_all_neck
+			nr = self.nr_face_all_neck
 
 		elif zone == 'neck':
-			nr = self.patient.x_nr_quick_neck
+			#nr = self.patient.x_nr_quick_neck
+			nr = self.nr_neck
+
+		elif zone == 'neck_hands':
+			#nr = self.patient.x_nr_quick_neck
+			nr = self.nr_neck_hands
+
+
+
 
 		else:
 			print 'Error: This should not happen !'
@@ -78,9 +101,12 @@ class ServiceQuick(models.Model):
 		for record in self:
 
 			zone = record.zone			
+			
 			nr = record.get_nr_zones(zone)
 
-			if nr > 1:
+
+			#if nr > 1:
+			if nr > 0:
 				comeback = True
 			else:
 				comeback = False
@@ -91,6 +117,53 @@ class ServiceQuick(models.Model):
 
 
 
+
+
+	# Price Vip Return
+	price_vip_return = fields.Float(
+			compute='_compute_price_vip_return', 
+
+			string='Precio Vip Return', 
+		) 
+
+	#@api.multi
+	@api.depends('service')
+
+	def _compute_price_vip_return(self):
+		for record in self:
+			record.price_vip_return= (record.service.x_price_vip_return)
+
+
+
+
+
+
+
+	# Price Applied
+	price_applied = fields.Float(
+			
+			string='Precio Aplicado', 
+
+			compute='_compute_price_applied', 
+		) 
+
+	#@api.multi
+	@api.depends('service')
+
+	def _compute_price_applied(self):
+		for record in self:
+
+			if record.patient.x_vip: 
+
+				if record.comeback 		and 	record.service.x_price_vip_return != 0: 
+					record.price_applied = record.service.x_price_vip_return
+
+				else:
+					record.price_applied = record.service.x_price_vip
+
+
+			else:
+				record.price_applied = record.service.list_price
 
 
 
@@ -284,6 +357,39 @@ class ServiceQuick(models.Model):
 
 
 
+
+# ----------------------------------------------------------- CRUD ------------------------------------------------------
+
+# Create 
+	@api.model
+	def create(self,vals):
+
+		print 'jx'
+		print 'Service Quick - Create - Override'
+		print vals
+	
+
+
+		# My logic 		
+		#self.nr_hands_i = 7
+		#self.nr_body_local_i = 7
+		#self.nr_face_local_i = 7
+		#vals['nr_hands_i'] = 7
+		#vals['nr_hands_i'] = self.patient.x_nr_quick_hands
+
+
+
+
+		# Put your logic here 
+		res = super(ServiceQuick, self).create(vals)
+		# Put your logic here 
+
+
+
+
+
+		return res
+	# CRUD - Create 
 
 
 

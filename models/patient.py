@@ -19,8 +19,42 @@ class Patient(models.Model):
 
 	_inherit = 'oeh.medical.patient'
 
-	#_order = 'x_date_created desc'
 	_order = 'write_date desc'
+
+
+
+
+
+
+	# Service Quick Ids 
+	x_service_quick_ids = fields.One2many(
+			'openhealth.service.quick', 
+			'patient', 
+
+
+			compute='_compute_service_quick_ids', 
+		)
+
+	@api.multi
+	def _compute_service_quick_ids(self):
+		
+		#print 'jx'
+		#print 'Compute service quick ids'
+		
+		
+		for record in self:		
+			services = self.env['openhealth.service.quick'].search([
+																		('patient', '=', record.name),			
+																	],
+																	order='create_date asc',
+																	#limit=1,
+																)
+			record.x_service_quick_ids = services
+
+
+
+
+
 
 
 
@@ -31,9 +65,10 @@ class Patient(models.Model):
 
 	# Hands 
 	x_nr_quick_hands = fields.Integer(
-			string='Manos', 
-			default=0, 
 
+			string='Manos', 
+		
+			default=0, 
 			compute='_compute_nr_quick_hands', 
 		)
 
@@ -51,9 +86,10 @@ class Patient(models.Model):
 
 	# Body Local 
 	x_nr_quick_body_local = fields.Integer(
-			string='Localizado Cuerpo', 
-			default=0, 
 
+			string='Localizado Cuerpo', 
+		
+			default=0, 
 			compute='_compute_nr_quick_body_local', 
 		)
 
@@ -72,9 +108,10 @@ class Patient(models.Model):
 
 	# Face Local 
 	x_nr_quick_face_local = fields.Integer(
-			string='Localizado Rostro', 
-			default=0, 
 
+			string='Localizado Rostro', 
+		
+			default=0, 
 			compute='_compute_nr_quick_face_local', 
 		)
 
@@ -93,11 +130,14 @@ class Patient(models.Model):
 
 
 
+
+
 	# Cheekbones 
 	x_nr_quick_cheekbones = fields.Integer(
-			string='Pómulos', 
-			default=0, 
 
+			string='Pómulos', 
+		
+			default=0, 
 			compute='_compute_nr_quick_cheekbones', 
 		)
 
@@ -114,12 +154,12 @@ class Patient(models.Model):
 
 
 
-
 	# face_all 
 	x_nr_quick_face_all = fields.Integer(
-			string='Todo Rostro', 
-			default=0, 
 
+			string='Todo Rostro', 
+		
+			default=0, 
 			compute='_compute_nr_quick_face_all', 
 		)
 
@@ -139,9 +179,10 @@ class Patient(models.Model):
 
 	# face_all_hands 
 	x_nr_quick_face_all_hands = fields.Integer(
-			string='Todo Rostro Manos', 
-			default=0, 
 
+			string='Todo Rostro Manos', 
+		
+			default=0, 
 			compute='_compute_nr_quick_face_all_hands', 
 		)
 
@@ -165,9 +206,10 @@ class Patient(models.Model):
 
 	# face_all_neck 
 	x_nr_quick_face_all_neck = fields.Integer(
-			string='Todo Rostro Cuello', 
-			default=0, 
 
+			string='Todo Rostro Cuello', 
+		
+			default=0, 
 			compute='_compute_nr_quick_face_all_neck', 
 		)
 
@@ -184,15 +226,12 @@ class Patient(models.Model):
 
 
 
-
-
-
-
 	# neck 
 	x_nr_quick_neck = fields.Integer(
-			string='Cuello', 
-			default=0, 
 
+			string='Cuello', 
+		
+			default=0, 
 			compute='_compute_nr_quick_neck', 
 		)
 
@@ -209,7 +248,25 @@ class Patient(models.Model):
 
 
 
+	# neck_hands 
+	x_nr_quick_neck_hands = fields.Integer(
 
+			string='Cuello y Manos', 
+		
+			default=0, 
+			compute='_compute_nr_quick_neck_hands', 
+		)
+
+	@api.multi
+	def _compute_nr_quick_neck_hands(self):
+		
+		zone = 'neck_hands', 
+
+		for record in self:		
+			record.x_nr_quick_neck_hands =	self.env['openhealth.service.quick'].search_count([																							
+																								('patient', '=', record.name),			
+																								('zone', '=', zone),			
+																					]) 
 
 
 
@@ -233,33 +290,6 @@ class Patient(models.Model):
 
 
 
-
-	x_service_quick_ids = fields.One2many(
-			'openhealth.service.quick', 
-			'patient', 
-
-			#domain = [
-			#			('patient', '=', name),
-			#		],
-			
-			compute='_compute_service_quick_ids', 
-		)
-
-	@api.multi
-	def _compute_service_quick_ids(self):
-	#	print 'jx'
-	#	print 'compute patient'
-		
-		for record in self:
-		
-			services = self.env['openhealth.service.quick'].search([
-																		('patient', '=', record.name),			
-																	],
-																	order='create_date asc',
-																	#limit=1,
-																)
-
-			record.x_service_quick_ids = services
 
 
 
@@ -1613,6 +1643,19 @@ class Patient(models.Model):
 			self.partner_id.x_ruc = self.x_ruc
 
 			self.partner_id.x_firm = self.x_firm
+
+
+
+
+
+		# Counters 
+		#print 'Counters'
+		#for service in self.x_service_quick_ids:
+		#	print service
+		#	service.nr_hands_i = 5
+		#	service.nr_body_local_i = 5
+		#	service.nr_face_local_i = 5 
+
 
 
 

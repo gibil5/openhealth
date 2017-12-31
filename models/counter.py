@@ -33,7 +33,7 @@ class counter(models.Model):
 	vspace = fields.Char(
 			' ', 
 			readonly=True
-			)
+		)
 
 
 

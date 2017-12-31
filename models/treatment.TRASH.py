@@ -68,3 +68,25 @@
 		return res
 
 	# CRUD 
+
+
+
+
+
+
+
+
+
+
+# 30 Dec 2017
+
+	# Open 
+	#treatment_open = fields.Boolean(
+	#		string="Abierto",
+	#		default=True,
+	#)
+
+
+
+
+

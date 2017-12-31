@@ -27,6 +27,97 @@ class Service(models.Model):
 
 
 
+
+
+
+	nr_hands_i = fields.Integer(
+	#nr_hands = fields.Integer(
+			'hands', 
+			default=0, 
+			required=True,
+		)
+
+	nr_body_local_i = fields.Integer(
+	#nr_body_local = fields.Integer(
+			'body local', 
+			default = 0, 
+			required=True,
+		)
+
+	nr_face_local_i = fields.Integer(
+	#nr_face_local = fields.Integer(
+			'face local', 
+			default = 0, 
+			required=True,
+		)
+
+
+
+
+	nr_cheekbones = fields.Integer(
+			'cheek', 
+			default=0, 
+			required=True,
+		)
+
+	nr_face_all = fields.Integer(
+			'face all', 
+			default=0, 
+			required=True,
+		)
+	nr_face_all_hands = fields.Integer(
+			'face all hands', 
+			default=0, 
+			required=True,
+		)
+
+
+
+
+	nr_face_all_neck = fields.Integer(
+			'face all neck', 
+			default=0, 
+			required=True,
+		)
+
+	nr_neck = fields.Integer(
+			'neck', 
+			default=0, 
+			required=True,
+		)
+
+	nr_neck_hands = fields.Integer(
+			'neck hands', 
+			default=0, 
+			required=True,
+		)
+
+
+
+
+	#nr_hands = fields.Many2one(
+	#		'openhealth.counter_raw',
+	#		required=False,
+	#	)
+
+	#nr_body_local = fields.Many2one(
+	#		'openhealth.counter_raw',
+	#		required=False,
+	#	)
+
+	#nr_face_local = fields.Many2one(
+	#		'openhealth.counter_raw',
+	#		required=False,
+	#	)
+
+
+
+
+
+
+
+
+
 	# Comeback 
 	comeback = fields.Boolean(
 			string='Regreso', 			
@@ -439,12 +530,14 @@ class Service(models.Model):
 
 
 
+
+
 	#Price 
 	price = fields.Float(
 			compute='_compute_price', 
-			#string='Price'
-			string='Precio (S/.)'
-			) 
+
+			string='Precio Standard', 
+		) 
 
 	#@api.multi
 	@api.depends('service')
@@ -457,13 +550,12 @@ class Service(models.Model):
 
 
 
-
 	# Price VIP
 	price_vip = fields.Float(
 			compute='_compute_price_vip', 
-			#string='price_vip'
-			string='Precio VIP (S/.)'
-			) 
+			
+			string='Precio VIP', 
+		) 
 
 	#@api.multi
 	@api.depends('service')
@@ -477,8 +569,9 @@ class Service(models.Model):
 
 
 
-	# Other
 
+
+	# Other
 			
 	title = fields.Char(
 			string='Title', 
@@ -521,6 +614,4 @@ class Service(models.Model):
 		}
 
 	# open_line_current 
-
-
 

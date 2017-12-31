@@ -43,12 +43,29 @@
 						
 						<field name="vspace" />
 
-<!--
--->
 						<field name="nex_zone"  	widget="radio" />
 
-o
 						<field name="nex_pathology"  	widget="radio" />
+
+
+
+						<field name="vspace" />
+
+
+
+<!--
+-->
+						<field name="nr_hands_i"/>
+						<field name="nr_body_local_i"/>			
+						<field name="nr_face_local_i"/>
+
+						<field name="nr_cheekbones"/>
+						<field name="nr_face_all"/>
+						<field name="nr_face_all_hands"/>
+
+						<field name="nr_face_all_neck"/>
+						<field name="nr_neck"/>
+						<field name="nr_neck_hands"/>
 				</xpath>
 
 
@@ -68,26 +85,39 @@ o
 			<field name="arch" type="xml">
 				<tree string="Service Tree">
 
-					<field name="name"/>
-					
-					<field name="create_date"/>
 
 <!--
 					<field name="id"/>					
 					<field name="laser"/>				
 					<field name="consultation"/>
--->				
-					
-
 					<field name="treatment"/>
-					
-					<field name="service"/>
-					
+
+
+					<field name="name"/>					
+					<field name="create_date"/>
 					<field name="pathology"/>
+-->				
+
+					<field name="service"/>					
 
 					<field name="zone"/>
 
 					<field name="comeback"/>
+
+
+<!--
+-->
+						<field name="nr_hands_i"/>
+						<field name="nr_body_local_i"/>			
+						<field name="nr_face_local_i"/>
+
+						<field name="nr_cheekbones"/>
+						<field name="nr_face_all"/>
+						<field name="nr_face_all_hands"/>
+
+						<field name="nr_face_all_neck"/>
+						<field name="nr_neck"/>
+						<field name="nr_neck_hands"/>
 				</tree>
 			</field>
 		</record>

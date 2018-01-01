@@ -33,17 +33,102 @@ class sale_order(models.Model):
 
 
 
+
+	#amount_untaxed = fields.Monetary(string='Untaxed Amount', store=True, readonly=True, compute='_amount_all', track_visibility='always')
+	#amount_tax = fields.Monetary(string='Taxes', store=True, readonly=True, compute='_amount_all', track_visibility='always')
+	#amount_total = fields.Monetary(string='Total', store=True, readonly=True, compute='_amount_all', track_visibility='always')
+
+
+
+
+
+	#@api.onchange('order_line')
+	#def _onchange_order_line(self):
+	@api.onchange('partner_id')
+	def _onchange_partner_id(self):
+
+
+			if self.pricelist_id.name != False: 
+
+				pl = self.env['product.pricelist'].search([
+																('name', '=', 'VIP Return'), 
+														],
+														#order='appointment_date desc',
+														limit=1,
+													)
+				#self.pricelist_id = pl
+				self.pricelist_ret_id = pl
+
+
+
+
+	# Pricelist 
+	pricelist_ret_id = fields.Many2one(
+			'product.pricelist', 
+			string='Pricelist Return', 
+
+			#required=True, 
+			
+			readonly=True, 
+			
+			#states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}, 
+			#help="Pricelist for current sales order.", 
+		)
+
+
+
+
+
 	# Pricelist 
 	pricelist_id = fields.Many2one(
 			'product.pricelist', 
-			
-			string='Pricelist - jx', 
-			
+			string='Pricelist', 
 			required=True, 
 			readonly=True, 
 			states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}, 
 			help="Pricelist for current sales order.", 
 		)
+
+
+
+
+
+
+	
+	patient = fields.Many2one(
+			'oeh.medical.patient',
+			string='Paciente', 
+
+			compute='_compute_patient', 
+		)
+
+
+	@api.multi
+
+	def _compute_patient(self):
+
+		for record in self:
+
+
+			patient = self.env['oeh.medical.patient'].search([
+																('name', '=', self.partner_id.name), 
+														],
+														#order='appointment_date desc',
+														limit=1,
+													)
+			
+			record.patient = patient
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1904,13 +1989,6 @@ class sale_order(models.Model):
 
 
 
-	
-	patient = fields.Many2one(
-		
-			'oeh.medical.patient',
-
-			string='Paciente', 
-	)
 	
 	
 	

@@ -135,12 +135,12 @@
 
 
 <!-- QUICKLASER - Localizado Cuerpo - Cicatriz - 1 -->
-<record id='vip_quick_body_local_scar' model='product.pricelist.item'>
+<record id='vip_quick_body_local_scar_1' model='product.pricelist.item'>
 	<field name='pricelist_id' 	ref='pricelist_vip'/>
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 
-	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_scar')]"/>
+	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_scar_1')]"/>
 
 	<field name='fixed_price'>750.00</field>
 </record>
@@ -148,12 +148,12 @@
 
 
 <!-- QUICKLASER - Localizado Cuerpo - Cicatriz - 2 -->
-<record id='vip_quick_body_local_scar' model='product.pricelist.item'>
+<record id='vip_quick_body_local_scar_2' model='product.pricelist.item'>
 	<field name='pricelist_id' 	ref='pricelist_vip'/>
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 
-	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_scar')]"/>
+	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_scar_2')]"/>
 
 	<field name='fixed_price'>2300.00</field>
 </record>
@@ -161,12 +161,12 @@
 
 
 <!-- QUICKLASER - Localizado Cuerpo - Cicatriz - 3 -->
-<record id='vip_quick_body_local_scar' model='product.pricelist.item'>
+<record id='vip_quick_body_local_scar_3' model='product.pricelist.item'>
 	<field name='pricelist_id' 	ref='pricelist_vip'/>
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 
-	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_scar')]"/>
+	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_scar_3')]"/>
 
 	<field name='fixed_price'>4600.00</field>
 </record>
@@ -174,12 +174,12 @@
 
 
 <!-- QUICKLASER - Localizado Cuerpo - Cicatriz - 4 -->
-<record id='vip_quick_body_local_scar' model='product.pricelist.item'>
+<record id='vip_quick_body_local_scar_4' model='product.pricelist.item'>
 	<field name='pricelist_id' 	ref='pricelist_vip'/>
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 
-	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_scar')]"/>
+	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_scar_4')]"/>
 
 	<field name='fixed_price'>6900.00</field>
 </record>
@@ -187,12 +187,12 @@
 
 
 <!-- QUICKLASER - Localizado Cuerpo - Lunar - 1 -->
-<record id='vip_quick_body_local_mole' model='product.pricelist.item'>
+<record id='vip_quick_body_local_mole_1' model='product.pricelist.item'>
 	<field name='pricelist_id' 	ref='pricelist_vip'/>
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 
-	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_mole')]"/>
+	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_mole_1')]"/>
 
 	<field name='fixed_price'>750.00</field>
 </record>
@@ -200,12 +200,12 @@
 
 
 <!-- QUICKLASER - Localizado Cuerpo - Lunar - 2 -->
-<record id='vip_quick_body_local_mole' model='product.pricelist.item'>
+<record id='vip_quick_body_local_mole_2' model='product.pricelist.item'>
 	<field name='pricelist_id' 	ref='pricelist_vip'/>
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 
-	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_mole')]"/>
+	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_mole_2')]"/>
 
 	<field name='fixed_price'>2300.00</field>
 </record>
@@ -213,12 +213,12 @@
 
 
 <!-- QUICKLASER - Localizado Cuerpo - Lunar - 3 -->
-<record id='vip_quick_body_local_mole' model='product.pricelist.item'>
+<record id='vip_quick_body_local_mole_3' model='product.pricelist.item'>
 	<field name='pricelist_id' 	ref='pricelist_vip'/>
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 
-	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_mole')]"/>
+	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_mole_3')]"/>
 
 	<field name='fixed_price'>4600.00</field>
 </record>
@@ -226,12 +226,12 @@
 
 
 <!-- QUICKLASER - Localizado Cuerpo - Lunar - 4 -->
-<record id='vip_quick_body_local_mole' model='product.pricelist.item'>
+<record id='vip_quick_body_local_mole_4' model='product.pricelist.item'>
 	<field name='pricelist_id' 	ref='pricelist_vip'/>
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 
-	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_mole')]"/>
+	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_mole_4')]"/>
 
 	<field name='fixed_price'>6900.00</field>
 </record>
@@ -304,12 +304,12 @@
 
 
 <!-- QUICKLASER - Localizado Cuerpo - Queratosis - 2 -->
-<record id='vip_quick_body_local_keratosis' model='product.pricelist.item'>
+<record id='vip_quick_body_local_keratosis_2' model='product.pricelist.item'>
 	<field name='pricelist_id' 	ref='pricelist_vip'/>
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 
-	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_keratosis')]"/>
+	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_keratosis_2')]"/>
 
 	<field name='fixed_price'>2300.00</field>
 </record>
@@ -317,12 +317,12 @@
 
 
 <!-- QUICKLASER - Localizado Cuerpo - Queratosis - 3 -->
-<record id='vip_quick_body_local_keratosis' model='product.pricelist.item'>
+<record id='vip_quick_body_local_keratosis_3' model='product.pricelist.item'>
 	<field name='pricelist_id' 	ref='pricelist_vip'/>
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 
-	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_keratosis')]"/>
+	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_keratosis_3')]"/>
 
 	<field name='fixed_price'>4600.00</field>
 </record>
@@ -330,12 +330,12 @@
 
 
 <!-- QUICKLASER - Localizado Cuerpo - Queratosis - 4 -->
-<record id='vip_quick_body_local_keratosis' model='product.pricelist.item'>
+<record id='vip_quick_body_local_keratosis_4' model='product.pricelist.item'>
 	<field name='pricelist_id' 	ref='pricelist_vip'/>
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 
-	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_keratosis')]"/>
+	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_keratosis_4')]"/>
 
 	<field name='fixed_price'>6900.00</field>
 </record>
@@ -343,12 +343,12 @@
 
 
 <!-- QUICKLASER - Localizado Cuerpo - Quiste - 1 -->
-<record id='vip_quick_body_local_cyst' model='product.pricelist.item'>
+<record id='vip_quick_body_local_cyst_1' model='product.pricelist.item'>
 	<field name='pricelist_id' 	ref='pricelist_vip'/>
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 
-	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_cyst')]"/>
+	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_cyst_1')]"/>
 
 	<field name='fixed_price'>750.00</field>
 </record>
@@ -356,12 +356,12 @@
 
 
 <!-- QUICKLASER - Localizado Cuerpo - Quiste - 2 -->
-<record id='vip_quick_body_local_cyst' model='product.pricelist.item'>
+<record id='vip_quick_body_local_cyst_2' model='product.pricelist.item'>
 	<field name='pricelist_id' 	ref='pricelist_vip'/>
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 
-	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_cyst')]"/>
+	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_cyst_2')]"/>
 
 	<field name='fixed_price'>2300.00</field>
 </record>
@@ -369,12 +369,12 @@
 
 
 <!-- QUICKLASER - Localizado Cuerpo - Quiste - 3 -->
-<record id='vip_quick_body_local_cyst' model='product.pricelist.item'>
+<record id='vip_quick_body_local_cyst_3' model='product.pricelist.item'>
 	<field name='pricelist_id' 	ref='pricelist_vip'/>
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 
-	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_cyst')]"/>
+	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_cyst_3')]"/>
 
 	<field name='fixed_price'>4600.00</field>
 </record>
@@ -382,12 +382,12 @@
 
 
 <!-- QUICKLASER - Localizado Cuerpo - Quiste - 4 -->
-<record id='vip_quick_body_local_cyst' model='product.pricelist.item'>
+<record id='vip_quick_body_local_cyst_4' model='product.pricelist.item'>
 	<field name='pricelist_id' 	ref='pricelist_vip'/>
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 
-	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_cyst')]"/>
+	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_cyst_4')]"/>
 
 	<field name='fixed_price'>6900.00</field>
 </record>
@@ -395,12 +395,12 @@
 
 
 <!-- QUICKLASER - Localizado Cuerpo - Tatuaje - 1 -->
-<record id='vip_quick_body_local_tatoo' model='product.pricelist.item'>
+<record id='vip_quick_body_local_tatoo_1' model='product.pricelist.item'>
 	<field name='pricelist_id' 	ref='pricelist_vip'/>
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 
-	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_tatoo')]"/>
+	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_tatoo_1')]"/>
 
 	<field name='fixed_price'>750.00</field>
 </record>
@@ -408,12 +408,12 @@
 
 
 <!-- QUICKLASER - Localizado Cuerpo - Tatuaje - 2 -->
-<record id='vip_quick_body_local_tatoo' model='product.pricelist.item'>
+<record id='vip_quick_body_local_tatoo_2' model='product.pricelist.item'>
 	<field name='pricelist_id' 	ref='pricelist_vip'/>
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 
-	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_tatoo')]"/>
+	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_tatoo_2')]"/>
 
 	<field name='fixed_price'>2300.00</field>
 </record>
@@ -421,12 +421,12 @@
 
 
 <!-- QUICKLASER - Localizado Cuerpo - Tatuaje - 3 -->
-<record id='vip_quick_body_local_tatoo' model='product.pricelist.item'>
+<record id='vip_quick_body_local_tatoo_3' model='product.pricelist.item'>
 	<field name='pricelist_id' 	ref='pricelist_vip'/>
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 
-	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_tatoo')]"/>
+	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_tatoo_3')]"/>
 
 	<field name='fixed_price'>4600.00</field>
 </record>
@@ -434,12 +434,12 @@
 
 
 <!-- QUICKLASER - Localizado Cuerpo - Tatuaje - 4 -->
-<record id='vip_quick_body_local_tatoo' model='product.pricelist.item'>
+<record id='vip_quick_body_local_tatoo_4' model='product.pricelist.item'>
 	<field name='pricelist_id' 	ref='pricelist_vip'/>
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 
-	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_tatoo')]"/>
+	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_tatoo_4')]"/>
 
 	<field name='fixed_price'>6900.00</field>
 </record>
@@ -447,12 +447,12 @@
 
 
 <!-- QUICKLASER - Localizado Cuerpo - Verruga - 1 -->
-<record id='vip_quick_body_local_wart' model='product.pricelist.item'>
+<record id='vip_quick_body_local_wart_1' model='product.pricelist.item'>
 	<field name='pricelist_id' 	ref='pricelist_vip'/>
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 
-	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_wart')]"/>
+	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_wart_1')]"/>
 
 	<field name='fixed_price'>750.00</field>
 </record>
@@ -460,12 +460,12 @@
 
 
 <!-- QUICKLASER - Localizado Cuerpo - Verruga - 2 -->
-<record id='vip_quick_body_local_wart' model='product.pricelist.item'>
+<record id='vip_quick_body_local_wart_2' model='product.pricelist.item'>
 	<field name='pricelist_id' 	ref='pricelist_vip'/>
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 
-	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_wart')]"/>
+	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_wart_2')]"/>
 
 	<field name='fixed_price'>2300.00</field>
 </record>
@@ -473,12 +473,12 @@
 
 
 <!-- QUICKLASER - Localizado Cuerpo - Verruga - 3 -->
-<record id='vip_quick_body_local_wart' model='product.pricelist.item'>
+<record id='vip_quick_body_local_wart_3' model='product.pricelist.item'>
 	<field name='pricelist_id' 	ref='pricelist_vip'/>
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 
-	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_wart')]"/>
+	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_wart_3')]"/>
 
 	<field name='fixed_price'>4600.00</field>
 </record>
@@ -486,12 +486,12 @@
 
 
 <!-- QUICKLASER - Localizado Cuerpo - Verruga - 4 -->
-<record id='vip_quick_body_local_wart' model='product.pricelist.item'>
+<record id='vip_quick_body_local_wart_4' model='product.pricelist.item'>
 	<field name='pricelist_id' 	ref='pricelist_vip'/>
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 
-	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_wart')]"/>
+	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_body_local_wart_4')]"/>
 
 	<field name='fixed_price'>6900.00</field>
 </record>
@@ -759,12 +759,12 @@
 
 
 <!-- QUICKLASER - Localizado Rostro - Tatuaje - 1 -->
-<record id='vip_quick_face_local_tatoo' model='product.pricelist.item'>
+<record id='vip_quick_face_local_tatoo_1' model='product.pricelist.item'>
 	<field name='pricelist_id' 	ref='pricelist_vip'/>
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 
-	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_face_local_tatoo')]"/>
+	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_face_local_tatoo_1')]"/>
 
 	<field name='fixed_price'>750.00</field>
 </record>
@@ -772,12 +772,12 @@
 
 
 <!-- QUICKLASER - Localizado Rostro - Tatuaje - 2 -->
-<record id='vip_quick_face_local_tatoo' model='product.pricelist.item'>
+<record id='vip_quick_face_local_tatoo_2' model='product.pricelist.item'>
 	<field name='pricelist_id' 	ref='pricelist_vip'/>
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 
-	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_face_local_tatoo')]"/>
+	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_face_local_tatoo_2')]"/>
 
 	<field name='fixed_price'>2300.00</field>
 </record>
@@ -785,12 +785,12 @@
 
 
 <!-- QUICKLASER - Localizado Rostro - Tatuaje - 3 -->
-<record id='vip_quick_face_local_tatoo' model='product.pricelist.item'>
+<record id='vip_quick_face_local_tatoo_3' model='product.pricelist.item'>
 	<field name='pricelist_id' 	ref='pricelist_vip'/>
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 
-	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_face_local_tatoo')]"/>
+	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_face_local_tatoo_3')]"/>
 
 	<field name='fixed_price'>4600.00</field>
 </record>
@@ -798,12 +798,12 @@
 
 
 <!-- QUICKLASER - Localizado Rostro - Tatuaje - 4 -->
-<record id='vip_quick_face_local_tatoo' model='product.pricelist.item'>
+<record id='vip_quick_face_local_tatoo_4' model='product.pricelist.item'>
 	<field name='pricelist_id' 	ref='pricelist_vip'/>
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 
-	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_face_local_tatoo')]"/>
+	<field name="product_tmpl_id" 	search="[('x_name_short','=','quick_face_local_tatoo_4')]"/>
 
 	<field name='fixed_price'>6900.00</field>
 </record>

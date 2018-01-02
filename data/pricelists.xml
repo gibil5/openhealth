@@ -12,10 +12,11 @@
 
 
 		<!-- VIP Return -->
+<!--		
 		<record id='pricelist_vip_return' model='product.pricelist'>
 			<field name='name'>VIP Return</field>
 		</record>
-
+-->
 
 
 

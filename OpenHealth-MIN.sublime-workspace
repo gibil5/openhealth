@@ -371,7 +371,7 @@
 			"file": "__openerp__.py",
 			"settings":
 			{
-				"buffer_size": 9819,
+				"buffer_size": 9823,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -380,15 +380,15 @@
 			"file": "data/pricelist_quick.xml",
 			"settings":
 			{
-				"buffer_size": 2192,
+				"buffer_size": 39061,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "data/pricelist_quick.BUF.xml",
+			"file": "data/pricelists.xml",
 			"settings":
 			{
-				"buffer_size": 1398,
+				"buffer_size": 766,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -584,6 +584,8 @@
 	},
 	"file_history":
 	[
+		"/Users/gibil/cellar/github/openhealth/data/pricelist_quick.BUF.xml",
+		"/Users/gibil/cellar/github/openhealth/readme.txt",
 		"/Users/gibil/cellar/github/openhealth/data/pricelist_quick.xml",
 		"/Users/gibil/cellar/github/openhealth/data/pricelist_quick_return.xml",
 		"/Users/gibil/cellar/github/openhealth/models/tmp.py",
@@ -591,7 +593,6 @@
 		"/Users/gibil/cellar/github/openhealth/views/orders/order_ol.xml",
 		"/Users/gibil/cellar/github/openhealth/models/treatment.py",
 		"/Users/gibil/cellar/github/openhealth/models/__init__.py",
-		"/Users/gibil/cellar/github/openhealth/readme.txt",
 		"/Users/gibil/cellar/github/openhealth/models/treatment.TRASH.py",
 		"/Users/gibil/cellar/github/openhealth/views/menus/menus_openhealth.xml",
 		"/Users/gibil/cellar/github/openhealth/models/patient.TRASH.py",
@@ -659,7 +660,6 @@
 		"/Users/gibil/cellar/github/openhealth/views/treatments/treatment_recommendations.xml",
 		"/Users/gibil/cellar/github/openhealth/data/pricelists.xml",
 		"/Users/gibil/cellar/github/openhealth/models/howto/shell.rb",
-		"/Users/gibil/cellar/github/openhealth/data/pricelist_quick.BUF.xml",
 		"/Users/gibil/cellar/github/openhealth/data/prods/odoo_data_services_med.xml",
 		"/Users/gibil/cellar/github/openhealth/data/prods/odoo_data_services_m22.xml",
 		"/Users/gibil/cellar/github/openhealth/data/prods/odoo_data_services_exc.xml",
@@ -1003,7 +1003,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -1012,15 +1012,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9819,
+						"buffer_size": 9823,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4004,
-								4004
+								3927,
+								3932
 							]
 						],
 						"settings":
@@ -1032,7 +1032,7 @@
 						"translation.y": 3373.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -1041,44 +1041,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2192,
+						"buffer_size": 39061,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								471,
-								471
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 538.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "data/pricelist_quick.BUF.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1398,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1398,
-								1398
+								504,
+								504
 							]
 						],
 						"settings":
@@ -1090,7 +1061,36 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "data/pricelists.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 766,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								341,
+								341
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -1516,7 +1516,7 @@
 	"project": "OpenHealth-MIN.sublime-project",
 	"replace":
 	{
-		"height": 70.0
+		"height": 46.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1664,7 +1664,7 @@
 		[
 			[
 				"",
-				"~/Virtualenvs/Odoo9/odoo/addons/web_calendar/web-calendar.sublime-project"
+				"~/Documents/Aptana Studio 3 Workspace/ccdata/ccData.sublime-project"
 			],
 			[
 				"\t",

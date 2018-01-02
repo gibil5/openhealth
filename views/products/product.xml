@@ -149,16 +149,18 @@
 
 
 
-					<field name="pricelist_id"/>
+
+					<field name="list_price"/>
 					<field name="x_price_vip"/>
 					<field name="x_price_vip_return"/>
+
+					<field name="pricelist_id"/>
 					<field name="item_ids"/>
 
 
 
 
 					<field name="standard_price"/>
-					<field name="list_price"/>
 					<field name="price"/>
 
 

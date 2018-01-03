@@ -445,5 +445,71 @@
 
 
 
+# 3 Jan 2018
+
+	#@api.onchange('partner_id')
+	#def _onchange_partner_id(self):
+
+	#		if self.pricelist_id.name != False: 
+
+	#			pl = self.env['product.pricelist'].search([
+	#															('name', '=', 'VIP Return'), 
+	#													],
+														#order='appointment_date desc',
+	#													limit=1,
+	#												)
+				#self.pricelist_id = pl
+	#			self.pricelist_ret_id = pl
+
+
+
+	# Pricelist 
+	#pricelist_ret_id = fields.Many2one(
+	#		'product.pricelist', 
+	#		string='Pricelist Return', 
+			#required=True, 
+	#		readonly=True, 
+			#states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}, 
+			#help="Pricelist for current sales order.", 
+	#	)
+
+
+
+
+
+
+
+
+	#order_line = field_One2many=fields.One2many(
+	#	'sale.order.line',
+	#	'order_id',
+		#string='Order',
+		#compute="_compute_order_line",
+	#)
+
+	#@api.multi
+	#@api.depends('x_partner_vip')
+	
+	#def _compute_order_line(self):
+	#	for record in self:
+	#		#print 'compute_order_line'
+	#		#print record.x_partner_vip 
+	#		ret = record.update_order_lines()
+	#		#print ret 
+
+
+
+
+
+
+
+
+
+	#amount_untaxed = fields.Monetary(string='Untaxed Amount', store=True, readonly=True, compute='_amount_all', track_visibility='always')
+	#amount_tax = fields.Monetary(string='Taxes', store=True, readonly=True, compute='_amount_all', track_visibility='always')
+	#amount_total = fields.Monetary(string='Total', store=True, readonly=True, compute='_amount_all', track_visibility='always')
+
+
+
 
 

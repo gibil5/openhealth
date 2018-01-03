@@ -63,9 +63,10 @@
 
 
 					<field name="price_unit"			/>
+<!--					
 					<field name="x_price_vip"			/>
 					<field name="x_price_vip_return"			/>
-
+-->
 
 
 					<field name="tax_id"			/>

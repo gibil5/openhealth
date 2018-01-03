@@ -93,11 +93,11 @@
 
 
 										<field name="price"/>
-<!--
+
+
 										<field name="price_vip"/>
 										<field name="price_vip_return"/>
 										<field name="price_applied"/>
--->
 									</tree>
 
 

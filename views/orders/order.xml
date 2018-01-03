@@ -228,7 +228,9 @@
 				<xpath expr="//field[@name='pricelist_id']" position="replace">
 					<field name="pricelist_id" 					readonly="1"	/>
 
+<!--
 					<field name="pricelist_ret_id" 		readonly="0"		/>
+-->
 				</xpath>
 
 

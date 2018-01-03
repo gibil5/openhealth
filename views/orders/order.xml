@@ -423,10 +423,12 @@
 
 		<field name="product_uom"		invisible="1"	/>
 
-
+<!--
 		<field name="x_price_std"			/>
 		<field name="x_price_vip"			/>
 		<field name="x_price_vip_return"			/>
+-->
+
 
 		<field name="tax_id"			/>
 

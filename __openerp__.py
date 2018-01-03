@@ -20,7 +20,7 @@
 
 		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant\n
 
-		Last built: 	2 January 2018 - Rebirth !!!
+		Last built: 	3 January 2018 - Rebirth !!!
 
 		Created: 	 	11 Sep 2016
 
@@ -415,6 +415,7 @@
 
 		# Recommendation
 		'views/recommendations/recommendation.xml',
+
 
 
 		# Treatments 

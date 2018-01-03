@@ -71,16 +71,17 @@ class sale_order_line(models.Model):
 		for record in self:
 
 			if record.x_comeback: 
-				#record.price_unit = 55
 				record.price_unit = record.product_id.x_price_vip_return
 
 			else:		
 
 				#if True: 
-				if record.order_id.pricelist_id.name == 'VIP': 
+				#if record.order_id.pricelist_id.name == 'VIP': 
+				if record.order_id.pricelist_id.name == 'VIP'		and 	record.x_price_vip != 0: 
 					record.price_unit = record.x_price_vip
+
 				else: 
-					record.price_unit = record.list_price
+					record.price_unit = record.x_price_std
 
 
 

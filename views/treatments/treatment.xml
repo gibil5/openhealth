@@ -62,6 +62,7 @@
 
 
 
+
 						<!-- Create Consultation --> 
 						<button 
 							name="open_consultation_current" 
@@ -78,7 +79,9 @@
 
 
 
-
+<!--
+							string="Crear RECOMENDACION" 
+-->
 						<!-- Create Service --> 
 						<button 
 
@@ -86,7 +89,7 @@
 
 							class="oe_highlight"
 
-							string="Crear RECOMENDACION" 
+							string="RECOMENDACION" 
 
 							states="consultation,service"
 
@@ -98,6 +101,9 @@
 
 
 
+<!--
+							string="Crear PRESUPUESTO - Procedimiento" 
+-->
 						<!-- Create Order --> 
 						<button 
 
@@ -108,7 +114,7 @@
 
 							class="oe_highlight"
   
-							string="Crear PRESUPUESTO - Procedimiento" 
+							string="PRESUPUESTO" 
 
 							states="service"
 
@@ -137,23 +143,22 @@
 
 
 
+
+
 						<!-- Create New Procedure --> 
+<!--
+							groups="openhealth.archivers,openhealth.managers,openhealth.directors"
+-->
 						<button 
 							type="object" 
 							class="oe_highlight"
-
-
-							states="empty"
-
-
 							name="create_new_procedure" 
-
 
 							string="Crear Nuevo PROCEDIMIENTO" 
 
-							groups="openhealth.archivers,openhealth.managers,openhealth.directors"
+							states="empty"
+							groups="openhealth.archivers"
 						/>
-
 
 
 

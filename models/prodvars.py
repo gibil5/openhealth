@@ -441,7 +441,11 @@ _laser_type_list = [
 		('consultation',			'consultation'), 
 
 
+
 		# Laser 
+		('laser_quick','QuickLaser'), 
+
+
 		('laser_co2','Laser Co2'), 
 		('laser_excilite','Laser Excilite'), 
 		('laser_ipl','Laser Ipl'), 

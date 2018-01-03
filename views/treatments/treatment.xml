@@ -658,6 +658,7 @@ Fields
 
 
 
+<!--
 <group col='3'>
 	<group>
 								<field name="nr_quick_hands"		/>
@@ -677,15 +678,8 @@ Fields
 								<field name="nr_quick_neck_hands"/>
 	</group>
 
-<!--
-	<group>
-	</group>
-	<group>
-	</group>
-	<group>
-	</group>
--->
 </group>
+-->
 
 						<notebook>
 						</notebook>

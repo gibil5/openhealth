@@ -228,9 +228,7 @@
 				<xpath expr="//field[@name='pricelist_id']" position="replace">
 					<field name="pricelist_id" 					readonly="1"	/>
 
-<!--
 					<field name="pricelist_ret_id" 		readonly="0"		/>
--->
 				</xpath>
 
 
@@ -425,20 +423,16 @@
 
 		<field name="product_uom"		invisible="1"	/>
 
-<!--
+
 		<field name="x_price_std"			/>
 		<field name="x_price_vip"			/>
 		<field name="x_price_vip_return"			/>
--->
-
 
 		<field name="tax_id"			/>
 
 		<field name="price_subtotal" />
 
-<!--
 		<field name="x_comeback" />
--->
 	</tree>
 
 </field>

@@ -340,7 +340,6 @@
 
 
 <!--
--->							
 <group col='3'>
 	<group>
 								<field name="x_nr_quick_hands"			/>
@@ -360,6 +359,7 @@
 								<field name="x_nr_quick_neck_hands"		/>
 	</group>
 </group>
+-->							
 
 
 								<field name="x_service_quick_ids"	/>

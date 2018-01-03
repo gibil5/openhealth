@@ -63,10 +63,9 @@
 
 
 					<field name="price_unit"			/>
-<!--					
 					<field name="x_price_vip"			/>
 					<field name="x_price_vip_return"			/>
--->
+
 
 
 					<field name="tax_id"			/>
@@ -76,9 +75,8 @@
 
 <!--
 					<field name="x_test" />
-
-					<field name="x_comeback" />
 -->
+					<field name="x_comeback" />
 
 
 				</tree>

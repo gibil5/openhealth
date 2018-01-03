@@ -55,7 +55,6 @@
 
 
 <!--
--->
 						<field name="nr_hands_i"		invisible="1"	/>
 						<field name="nr_body_local_i"	invisible="1"	/>			
 						<field name="nr_face_local_i"	invisible="1"	/>
@@ -67,6 +66,7 @@
 						<field name="nr_face_all_neck"	invisible="1"	/>
 						<field name="nr_neck"			invisible="1"	/>
 						<field name="nr_neck_hands"		invisible="1"	/>
+-->
 				</xpath>
 
 
@@ -118,7 +118,6 @@
 
 
 <!--
--->
 						<field name="nr_hands_i"/>
 						<field name="nr_body_local_i"/>			
 						<field name="nr_face_local_i"/>
@@ -130,6 +129,7 @@
 						<field name="nr_face_all_neck"/>
 						<field name="nr_neck"/>
 						<field name="nr_neck_hands"/>
+-->
 				</tree>
 			</field>
 		</record>

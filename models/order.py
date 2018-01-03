@@ -41,8 +41,7 @@ class sale_order(models.Model):
 	def test_bug(self):
 
 		print 'jx'
-		print 'Test Bug'
-
+		print 'Test and Hunt !'
 
 		target_line = 'quick_body_local_cyst_2'
 		
@@ -90,7 +89,6 @@ class sale_order(models.Model):
 		#price_unit = product.list_price
 		#x_price_vip = product.x_price_vip
 		#product_uom = product.uom_id.id
-
 		#print product
 		#print product.id
 		#print product.uom_id.id

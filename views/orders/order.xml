@@ -432,7 +432,9 @@
 
 		<field name="price_subtotal" />
 
+<!--
 		<field name="x_comeback" />
+-->
 	</tree>
 
 </field>

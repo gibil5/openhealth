@@ -26,6 +26,16 @@ class Service(models.Model):
 
 
 
+	# Treatement 
+	treatment = fields.Many2one('openhealth.treatment',
+			ondelete='cascade', 			
+			string="Tratamiento", 
+			readonly=True, 
+			)
+
+
+
+
 
 
 
@@ -34,21 +44,27 @@ class Service(models.Model):
 	#nr_hands = fields.Integer(
 			'hands', 
 			#default=0, 
-			required=True,
+
+			#required=True,
+			required=False,
 		)
 
 	nr_body_local_i = fields.Integer(
 	#nr_body_local = fields.Integer(
 			'body local', 
 			#default = 0, 
-			required=True,
+			
+			#required=True,
+			required=False,
 		)
 
 	nr_face_local_i = fields.Integer(
 	#nr_face_local = fields.Integer(
 			'face local', 
 			#default = 0, 
-			required=True,
+			
+			#required=True,
+			required=False,
 		)
 
 
@@ -59,18 +75,24 @@ class Service(models.Model):
 	nr_cheekbones = fields.Integer(
 			'cheek', 
 			#default=0, 
-			required=True,
+			
+			#required=True,
+			required=False,
 		)
 
 	nr_face_all = fields.Integer(
 			'face all', 
 			#default=0, 
-			required=True,
+			
+			#required=True,
+			required=False,
 		)
 	nr_face_all_hands = fields.Integer(
 			'face all hands', 
 			#default=0, 
-			required=True,
+			
+			#required=True,
+			required=False,
 		)
 
 
@@ -81,19 +103,25 @@ class Service(models.Model):
 	nr_face_all_neck = fields.Integer(
 			'face all neck', 
 			#default=0, 
-			required=True,
+			
+			#required=True,
+			required=False,
 		)
 
 	nr_neck = fields.Integer(
 			'neck', 
 			#default=0, 
-			required=True,
+			
+			#required=True,
+			required=False,
 		)
 
 	nr_neck_hands = fields.Integer(
 			'neck hands', 
 			#default=0, 
-			required=True,
+			
+			#required=True,
+			required=False,
 		)
 
 
@@ -335,12 +363,6 @@ class Service(models.Model):
 
 # ----------------------------------------------------------- Relationals ------------------------------------------------------
 
-	# Treatement 
-	treatment = fields.Many2one('openhealth.treatment',
-			ondelete='cascade', 			
-			string="Tratamiento", 
-			readonly=True, 
-			)
 
 
 	cosmetology = fields.Many2one('openhealth.cosmetology',

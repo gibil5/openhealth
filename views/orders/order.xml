@@ -392,9 +392,13 @@
 
 
 
+
+
+<!-- Order Lines --> 
+<!--
+-->
+
 <xpath expr="//page[1]/field[@name='order_line']" position="replace">
-
-
 	
 <field name="order_line">
 
@@ -412,14 +416,7 @@
 
 
 
-		<field name="name"			invisible="1"	/>
-
-
-
-<!--
-		<field name="patient"/>
--->
-
+		<field name="name"			invisible="0"	/>
 
 
 		<field name="product_uom_qty"			/>
@@ -427,42 +424,33 @@
 		<field name="product_uom"		invisible="1"	/>
 
 
-
-
 		<field name="x_price_std"			/>
 		<field name="x_price_vip"			/>
 		<field name="x_price_vip_return"			/>
 
-
-
 		<field name="tax_id"			/>
+
+		<field name="price_subtotal" />
+
+		<field name="x_comeback" />
+	</tree>
+
+</field>
+</xpath>
+
+
 
 
 <!--
 		<field name="price_unit"			/>
--->
-
-
-
-
-		<field name="price_subtotal" />
-
-
-<!--
 		<field name="x_price_subtotal" />
 		<field name="x_test" />
 -->
 
 
-		<field name="x_comeback" />
-
-	</tree>
-
-</field>
 
 
 
-</xpath>
 
 
 
@@ -891,6 +879,21 @@
 					/>
 -->
 
+
+
+
+
+<!--
+					<button 
+							type="object" 
+							class="oe_highlight"
+
+
+							name="test_bug"
+
+							string="Test"
+							/>
+-->
 				</xpath>
 
 
@@ -1710,29 +1713,6 @@ grey:state in ('cancel')
 		
 
 
-
-		<!-- Window List action -->
-		<!--
-		The following tag is an action definition for a "window action",
-		that is an action opening a view or a set of views
-		-->
-		<record model="ir.actions.act_window" id="order_list_action">
-			<field name="name">Orders</field>
-			<field name="res_model">sale.order</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-			<!--
-			<field name="domain">[]</field>
-			<field name="context">{}</field>
-			<field name="view_id" eval="False"/>
-			
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first order
-				</p>
-			</field>
-			-->
-		</record>
-		
 
 
 

@@ -17,8 +17,9 @@ from . import jrfuncs
 
 def create_order_lines(self, laser, order_id):
 
-	#print 
-	#print 'Create Order Lines'
+	print 
+	print 'Create Order Lines'
+
 
 	order = self.env['sale.order'].search([(
 												'id','=', order_id),
@@ -34,6 +35,9 @@ def create_order_lines(self, laser, order_id):
 
 	_model = {
 
+				'quick':		'openhealth.service.quick',
+
+
 				'co2':			'openhealth.service.co2',
 				'excilite':		'openhealth.service.excilite',
 				'ipl':			'openhealth.service.ipl',
@@ -43,17 +47,17 @@ def create_order_lines(self, laser, order_id):
 
 	}
 
-	#print _model[laser]
 
+	#print _model[laser]
 	#print 
 
 
 	rec_set = self.env[_model[laser]].search([(
 																		'treatment','=', self.id),
-																	],
-																		#order='appointment_date desc',
-																		#limit=1,						
-																	)		
+												],
+												#order='appointment_date desc',
+												#limit=1,						
+											)		
 
 	if rec_set != False: 
 
@@ -61,6 +65,9 @@ def create_order_lines(self, laser, order_id):
 
 			target_line = service.service.x_name_short
 					
+			print service
+			print target_line
+
 			ret = order.x_create_order_lines_target(target_line)
 					
 			#print ret 
@@ -174,17 +181,42 @@ def create_procedure_go(self):
 				#if self.nr_procedures < self.order_pro_ids.nr_lines:
 				if self.nr_procedures < order.nr_lines:
 
-					product = line.product_id.id
+
+
+					product_product = line.product_id
+
+
+
+					#product = self.env['product.product'].search([
+					product_template = self.env['product.template'].search([
+																				('x_name_short','=', product_product.x_name_short),
+																				('x_origin','=', False),
+												])
 					
+
+
+
+
+					#product = product_template.id
+
+
 					if line.product_id.type == 'service':
 			
+
+
+
 
 
 						procedure = self.procedure_ids.create({
 																'patient':patient,
 																'doctor':doctor,														
-																'treatment':treatment,		
-																'product':product,
+																'treatment':treatment,	
+
+
+																#'product':product,
+																'product':product_template.id,
+
+																
 																'evaluation_start_date':evaluation_start_date,
 																'chief_complaint':chief_complaint,
 																'appointment': appointment_id,

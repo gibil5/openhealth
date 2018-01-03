@@ -40,6 +40,20 @@ class Treatment(models.Model):
 
 
 
+
+	# quick
+	service_quick_ids = fields.One2many(
+			'openhealth.service.quick', 
+			'treatment', 
+			string="Servicios quick"
+			)
+
+
+
+
+
+
+
 	# Quick Hands
 	nr_quick_hands = fields.Integer(
 			default=11, 
@@ -481,6 +495,10 @@ class Treatment(models.Model):
 
 		# Unlinks
 		#print 'Unlinks'
+
+		self.service_quick_ids.unlink()
+
+
 		self.service_co2_ids.unlink()
 		self.service_excilite_ids.unlink()
 		self.service_ipl_ids.unlink()
@@ -558,12 +576,6 @@ class Treatment(models.Model):
 
 
 
-	# quick
-	service_quick_ids = fields.One2many(
-			'openhealth.service.quick', 
-			'treatment', 
-			string="Servicios quick"
-			)
 
 
 
@@ -2073,20 +2085,22 @@ class Treatment(models.Model):
 #jz
 			order_id = order.id
 
+
+
+			ret = treatment_funcs.create_order_lines(self, 'quick', order_id)
+
+
+
+
 			ret = treatment_funcs.create_order_lines(self, 'co2', order_id)
-			#print ret
 
 			ret = treatment_funcs.create_order_lines(self, 'excilite', order_id)
-			#print ret 
 
 			ret = treatment_funcs.create_order_lines(self, 'ipl', order_id)
-			#print ret 
 
 			ret = treatment_funcs.create_order_lines(self, 'ndyag', order_id)
-			#print ret 
 
 			ret = treatment_funcs.create_order_lines(self, 'medical', order_id)
-			#print ret 
 
 
 
@@ -2249,7 +2263,6 @@ class Treatment(models.Model):
 
 		#if self.nr_invoices > 0:
 		if self.nr_invoices_pro > 0:
-
 
 			ret = treatment_funcs.create_procedure_go(self)
 

@@ -78,9 +78,16 @@
 -->
 										<field name="service"/>
 										
-										<field name="pathology"/>														
+
+										<field name="name_short"/>
+
 
 										<field name="zone"/>
+										<field name="pathology"/>														
+
+
+
+
 
 										<field name="comeback"/>
 

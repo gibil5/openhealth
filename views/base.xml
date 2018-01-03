@@ -392,6 +392,53 @@
 
 
 
+		<!-- Sale Order -->
+		<record model="ir.actions.act_window" id="order_list_action">
+			<field name="name">Orders</field>
+			<field name="res_model">sale.order</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+
+			<!--
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>
+			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first order
+				</p>
+			</field>
+			-->
+		</record>
+		
+
+		<!-- Sale Order Line -->
+		<record model="ir.actions.act_window" id="order_line_list_action">
+			<field name="name">Order Lines</field>
+			<field name="res_model">sale.order.line</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+			<!--
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>
+			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first order
+				</p>
+			</field>
+			-->
+		</record>
+		
+
+
+
+
+
+
+
+
 
 
 		<!-- Service quick -->
@@ -914,74 +961,209 @@
 
 
 
-		<!-- Window action -->
+
+
+
+
+
+
+		<!-- Product Product Quick -->
+		<record model="ir.actions.act_window" id="product_product_quick_list_action">
+			<field name="name">Products Products Quick</field>
+			<field name="res_model">product.product</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			            
+            <field name="domain">[
+
+									('x_treatment', '=', 'laser_quick'),
+            	
+            					]</field>
+
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+
+            <!--
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first receipt
+				</p>
+			</field>
+
+			<field name="context">{'order': 'x_name_short'}</field>
+            <field name="domain">[
+									('type', '=', 'service'),
+									('x_treatment', '=', 'laser_co2'),
+            					]</field>
+			-->
+		</record>
+
+
+
+
+
+
+
+
+
+		<!-- Product Template Quick -->
+		<record model="ir.actions.act_window" id="product_template_quick_list_action">
+			<field name="name">Products Template Quick</field>
+			<field name="res_model">product.template</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			            
+            <field name="domain">[
+									('x_treatment', '=', 'laser_quick'),
+            					]</field>
+
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+
+            <!--
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first receipt
+				</p>
+			</field>
+
+			<field name="context">{'order': 'x_name_short'}</field>
+            <field name="domain">[
+									('type', '=', 'service'),
+									('x_treatment', '=', 'laser_co2'),
+            					]</field>
+			-->
+		</record>
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- Product Template Co2 -->
+		<record model="ir.actions.act_window" id="product_template_co2_list_action">
+			<field name="name">Productos Co2 - jx</field>
+			<field name="res_model">product.template</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			            
+
+            <field name="domain">[
+									('x_treatment', '=', 'laser_co2'),
+            					]</field>
+
+
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+
+            <!--
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first receipt
+				</p>
+			</field>
+
+			<field name="context">{'order': 'x_name_short'}</field>
+            <field name="domain">[
+									('type', '=', 'service'),
+									('x_treatment', '=', 'laser_co2'),
+            					]</field>
+			-->
+		</record>
+
+
+
+
+
+
+
+		<!-- Product Template Excilite -->
 		<record model="ir.actions.act_window" id="product_template_excilite_list_action">
 			<field name="name">Products</field>
 			<field name="res_model">product.template</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
-			<!--
-			<field name="context">{'order': 'x_name_short'}</field>
+
+
             <field name="domain">[
-									('type', '=', 'service'),
 									('x_treatment', '=', 'laser_excilite'),
             					]</field>
+			
+
+
+			<!--
+			<field name="context">{'order': 'x_name_short'}</field>
+            
 			-->
 		</record>
 
 
 
-		<!-- Window action -->
+
+
+
+
+		<!-- Product Template Ipl -->
 		<record model="ir.actions.act_window" id="product_template_ipl_list_action">
 			<field name="name">Products</field>
 			<field name="res_model">product.template</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
+
+            <field name="domain">[
+									('x_treatment', '=', 'laser_ipl'),
+            					]</field>
+
 			<!--
 			<field name="context">{'order': 'x_name_short'}</field>
             
-            <field name="domain">[
-									('type', '=', 'service'),
-									('x_treatment', '=', 'laser_ipl'),
-            					]</field>
 			-->
 		</record>
 
 
 
 
-		<!-- Window action -->
+		<!-- Product Template Ndyag -->
 		<record model="ir.actions.act_window" id="product_template_ndyag_list_action">
 			<field name="name">Products</field>
 			<field name="res_model">product.template</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
+
+
+            <field name="domain">[
+									('x_treatment', '=', 'laser_ndyag'),
+            					]</field>
+
+
 			<!--
 			<field name="context">{'order': 'x_name_short'}</field>
             
-            <field name="domain">[
-									('type', '=', 'service'),
-									('x_treatment', '=', 'laser_ndyag'),
-            					]</field>
 			-->
 		</record>
 
 
 
-		<!-- Window action -->
+		<!-- Product Template Medical -->
 		<record model="ir.actions.act_window" id="product_template_medical_list_action">
 			<field name="name">Products</field>
 			<field name="res_model">product.template</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 
+
+            <field name="domain">[
+									('x_family', '=', 'medical'),
+            					]</field>
+
+
 			<!--
 			<field name="context">{'order': 'x_name_short'}</field>
             
-            <field name="domain">[
-									('type', '=', 'service'),
-									('x_family', '=', 'medical'),
-            					]</field>
 			-->
 		</record>
 

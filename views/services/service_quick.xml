@@ -20,7 +20,7 @@
 			
 				<xpath expr="//h1" position="replace">
 
-					<h1>Láser Quick</h1>					
+					<h1>QuickLaser</h1>					
         		
         		</xpath>
 
@@ -37,15 +37,16 @@
 
 
 
-				<xpath expr="//field[@name='pathology']" position="replace">
+				<xpath expr="//field[@name='x_treatment']" position="before">
 
-						<field name="pathology" />
+						<field name="nex_zone"  		string='Zona'		widget="radio" />
+
 						
-						<field name="vspace" />
+<!--
+						<field name="pathology"			invisible="0" 	/>
+						<field name="vspace" 			/>
+-->
 
-						<field name="nex_zone"  	widget="radio" />
-
-						<field name="nex_pathology"  	widget="radio" />
 
 
 
@@ -55,20 +56,31 @@
 
 <!--
 -->
-						<field name="nr_hands_i"/>
-						<field name="nr_body_local_i"/>			
-						<field name="nr_face_local_i"/>
+						<field name="nr_hands_i"		invisible="1"	/>
+						<field name="nr_body_local_i"	invisible="1"	/>			
+						<field name="nr_face_local_i"	invisible="1"	/>
 
-						<field name="nr_cheekbones"/>
-						<field name="nr_face_all"/>
-						<field name="nr_face_all_hands"/>
+						<field name="nr_cheekbones"		invisible="1"	/>
+						<field name="nr_face_all"		invisible="1"	/>
+						<field name="nr_face_all_hands"	invisible="1"	/>
 
-						<field name="nr_face_all_neck"/>
-						<field name="nr_neck"/>
-						<field name="nr_neck_hands"/>
+						<field name="nr_face_all_neck"	invisible="1"	/>
+						<field name="nr_neck"			invisible="1"	/>
+						<field name="nr_neck_hands"		invisible="1"	/>
 				</xpath>
 
 
+
+				<xpath expr="//field[@name='consultation']" position="before">
+						<field name="nex_pathology"  	string='Patología'	widget="radio" />
+				</xpath>
+
+
+
+				<xpath expr="//field[@name='price']" position="after">
+					<field name="price_vip" />
+					<field name="price_vip_return" />
+				</xpath>
 
 
 			</field>

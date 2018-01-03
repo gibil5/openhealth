@@ -85,6 +85,91 @@
 
 
 
+		<!-- Services Quick --> 
+		<menuitem id="service_quick_menu" name="Services QUICK"
+			parent="openhealth_menu"
+			sequence="-180"
+			action="service_quick_list_action"/>
+
+
+		<menuitem id="product_template_quick_menu" name="Products Template QUICK"
+			parent="openhealth_menu"
+			sequence="-180"
+			action="product_template_quick_list_action"/>
+
+
+		<menuitem id="product_product_quick_menu" name="Products Products QUICK"
+			parent="openhealth_menu"
+			sequence="-180"
+			action="product_product_quick_list_action"/>
+
+
+
+
+
+
+
+		<menuitem id="product_template_co2_menu" name="Productos Co2"
+			parent="openhealth_menu"
+			sequence="-170"
+			action="product_template_co2_list_action"/>
+
+		<menuitem id="product_template_excilite_menu" name="Productos Excilite"
+			parent="openhealth_menu"
+			sequence="-170"
+			action="product_template_excilite_list_action"/>
+
+
+
+
+
+
+
+		<menuitem id="product_template_ipl_menu" name="Productos ipl"
+			parent="openhealth_menu"
+			sequence="-170"
+			action="product_template_ipl_list_action"/>
+
+
+		<menuitem id="product_template_ndyag_menu" name="Productos ndyag"
+			parent="openhealth_menu"
+			sequence="-170"
+			action="product_template_ndyag_list_action"/>
+
+		<menuitem id="product_template_medical_menu" name="Productos Medical"
+			parent="openhealth_menu"
+			sequence="-170"
+			action="product_template_medical_list_action"/>
+
+
+
+
+
+
+
+		<!-- Order Lines  --> 
+<!--
+			action="sale.action_product_sale_list"
+-->
+		<menuitem id="order_lines_menu" name="Order Lines" 
+			parent="openhealth_menu"
+			sequence="-165"
+
+			action="order_line_list_action"
+			/>
+
+
+		<!-- Orders --> 
+		<menuitem id="orders_menu" name="Orders" parent="openhealth_menu"
+			sequence="-165"
+			action="order_list_action"
+			/>
+
+
+
+
+
+
 
 		<!-- Partners --> 
 		<menuitem id="partners_menu" name="Partners" parent="openhealth_menu"
@@ -282,19 +367,6 @@
 
 
 
-		<!-- Order Lines  --> 
-<!--
--->
-		<menuitem id="order_lines_menu" name="Order Lines" 
-			parent="openhealth_menu"
-			sequence="-90"
-			action="sale.action_product_sale_list"/>
-
-
-		<!-- Orders --> 
-		<menuitem id="orders_menu" name="Orders" parent="openhealth_menu"
-			sequence="-70"
-			action="order_list_action"/>
 
 
 
@@ -529,13 +601,6 @@
 
 
 
-		<!-- Services Quick --> 
-		<menuitem id="service_quick_menu" name="Services Quick"
-			parent="openhealth_menu"
-			sequence="11"
-			action="service_quick_list_action"/>
-
-
 
 
 
@@ -616,34 +681,7 @@
 
 
 
-		<menuitem id="product_template_co2_menu" name="Productos Co2"
-			parent="openhealth_menu"
-			sequence="20"
-			action="product_template_co2_list_action"/>
 
-
-
-		<menuitem id="product_template_excilite_menu" name="Productos Excilite"
-			parent="openhealth_menu"
-			sequence="21"
-			action="product_template_excilite_list_action"/>
-
-
-		<menuitem id="product_template_ipl_menu" name="Productos ipl"
-			parent="openhealth_menu"
-			sequence="22"
-			action="product_template_ipl_list_action"/>
-
-
-		<menuitem id="product_template_ndyag_menu" name="Productos ndyag"
-			parent="openhealth_menu"
-			sequence="23"
-			action="product_template_ndyag_list_action"/>
-
-		<menuitem id="product_template_medical_menu" name="Productos Medical"
-			parent="openhealth_menu"
-			sequence="24"
-			action="product_template_medical_list_action"/>
 
 
 

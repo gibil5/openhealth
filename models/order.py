@@ -34,13 +34,129 @@ class sale_order(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Test and Hunt ------------------------------------------------------
+	# Test Bug 
+	@api.multi 
+	def test_bug(self):
+
+		print 'jx'
+		print 'Test Bug'
+
+
+		target_line = 'quick_body_local_cyst_2'
+		
+		print target_line
+
+		ret = self.x_create_order_lines_target(target_line)
+		
+		print ret  
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Create order lines ------------------------------------------------------
+	#@api.multi 
+	def x_create_order_lines_target(self, target):		
+
+		print 
+		print 'jx'
+		print 'Create Order Lines Target'
+		print target
+		#print 
+
+		order_id = self.id
+
+
+
+		#product = self.env['product.template'].search([
+		product = self.env['product.product'].search([
+														('x_name_short','=', target),
+														('x_origin','=', False),
+												])
+		
+
+		print product
+		print product.id
+		print product.name
+		print product.x_name_short
+
+
+
+		#product_id = product.id
+		#price_unit = product.list_price
+		#x_price_vip = product.x_price_vip
+		#product_uom = product.uom_id.id
+
+		#print product
+		#print product.id
+		#print product.uom_id.id
+		#print 
+
+
+
+# jx - Here !
+		ol = self.order_line.create({
+										'product_id': product.id,
+										'order_id': order_id,										
+
+
+										#'name': target,
+										#'name': product.name,
+										#'state':'draft',
+										#'price_unit': price_unit,
+										#'x_price_vip': x_price_vip,
+										#'product_uom': product_uom, 
+									})
+		
+		print ol
+		print ol.product_id
+		print ol.product_id.name 
+
+
+		return self.nr_lines
+
+	
+
+
+
+
+
+
+
+
+
+
+
+	# Order Line 
+	order_line = fields.One2many(
+			'sale.order.line', 
+			'order_id', 
+			string='Order Lines', 
+			states={'cancel': [('readonly', True)], 'done': [('readonly', True)]}, 
+			copy=True, 
+		)
+
+
+	
+	#order_line = field_One2many=fields.One2many(
+	#	'sale.order.line',
+	#	'order_id',
+		#string='Order',
+		#compute="_compute_order_line",
+	#)
+
+
+
+
+
+
 	#amount_untaxed = fields.Monetary(string='Untaxed Amount', store=True, readonly=True, compute='_amount_all', track_visibility='always')
 	#amount_tax = fields.Monetary(string='Taxes', store=True, readonly=True, compute='_amount_all', track_visibility='always')
 	#amount_total = fields.Monetary(string='Total', store=True, readonly=True, compute='_amount_all', track_visibility='always')
-
-
-
-
 
 	#@api.onchange('order_line')
 	#def _onchange_order_line(self):
@@ -99,7 +215,7 @@ class sale_order(models.Model):
 			'oeh.medical.patient',
 			string='Paciente', 
 
-			compute='_compute_patient', 
+			#compute='_compute_patient', 
 		)
 
 
@@ -190,14 +306,6 @@ class sale_order(models.Model):
 
 
 
-	# Order Line 
-	order_line = fields.One2many(
-			'sale.order.line', 
-			'order_id', 
-			string='Order Lines', 
-			states={'cancel': [('readonly', True)], 'done': [('readonly', True)]}, 
-			copy=True, 
-		)
 
 
 
@@ -1101,7 +1209,9 @@ class sale_order(models.Model):
 				#if 	line.product_id.x_treatment == 'laser_co2'	or 	line.product_id.x_treatment == 'laser_excilite':
 				#if tre == 'laser_co2' 		or 		tre == 'laser_excilite': 
 				#if tre == 'laser_co2' 		or 	tre == 'laser_excilite'		or 	tre == 'laser_ipl'		or tre == 'laser_ndyag'	: 
-				if tre == 'laser_co2' 	or 	tre == 'laser_excilite'	or 	tre == 'laser_ipl'	or tre == 'laser_ndyag'		or tre == 'consultation': 
+
+				#if tre == 'laser_co2' 	or 	tre == 'laser_excilite'	or 	tre == 'laser_ipl'	or tre == 'laser_ndyag'		or tre == 'consultation': 
+				if  	tre == 'laser_quick'  	or 		tre == 'laser_co2' 	or 	tre == 'laser_excilite'	or 	tre == 'laser_ipl'	or tre == 'laser_ndyag'		or tre == 'consultation': 
 
 					product = line.product_id.id
 					flag = True 
@@ -1877,14 +1987,6 @@ class sale_order(models.Model):
 			readonly=True
 		)
 	
-	
-	order_line = field_One2many=fields.One2many(
-		'sale.order.line',
-		'order_id',
-
-		#string='Order',
-		#compute="_compute_order_line",
-	)
 
 
 	#@api.multi
@@ -2056,53 +2158,6 @@ class sale_order(models.Model):
 
 
 
-
-
-
-
-# ----------------------------------------------------------- Create order lines ------------------------------------------------------
-	#@api.multi 
-	def x_create_order_lines_target(self, target):		
-
-		#print 
-		#print 'jx'
-		#print target
-		#print 
-
-		order_id = self.id
-
-		product = self.env['product.template'].search([
-														('x_name_short','=', target),
-
-														#('x_origin','!=', 'legacy'),
-														('x_origin','=', False),
-												])
-		
-		product_id = product.id
-
-		price_unit = product.list_price
-		
-		x_price_vip = product.x_price_vip
-		product_uom = product.uom_id.id
-
-		
-		#print product
-		#print product.id
-		#print product.uom_id.id
-		#print 
-
-		ol = self.order_line.create({
-										'product_id': product_id,
-										'order_id': order_id,										
-										'state':'draft',
-										'name': target,
-										'price_unit': price_unit,
-										'x_price_vip': x_price_vip,
-										'product_uom': product_uom, 
-									})
-		return self.nr_lines
-
-	
 
 
 
@@ -2416,6 +2471,8 @@ class sale_order(models.Model):
 
 			# Easiest first 
 			m_dic = {
+
+						'laser_quick': 			['laser_quick'], 
 
 						'laser_co2_1': 			['laser_co2_1', 'laser_co2_2', 'laser_co2_3'], 
 						'laser_excilite': 		['laser_excilite'], 

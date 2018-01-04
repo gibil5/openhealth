@@ -155,11 +155,12 @@
 
 
 									<field name="vspace" />
-<!--
--->
 									<field name="patient" 	readonly="0" 	invisible="1"	/>
 
+
+<!--
 									<field name="physician" 	 	invisible="1"	/>
+-->
 								</group>
 								
 

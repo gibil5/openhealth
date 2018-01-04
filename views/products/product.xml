@@ -48,10 +48,14 @@
 
 							<field name="x_date_updated"/>
 							
-							<field name="x_price_vip"/>
 
 
 							<field name="x_name_short"/>
+							<field name="x_price_vip"/>
+							<field name="x_price_vip_return"/>
+
+
+
 
 							<field name="x_family"/>
 

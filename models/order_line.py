@@ -36,12 +36,17 @@ class sale_order_line(models.Model):
 			if 	not record.order_id.x_partner_vip: 				# Not VIP
 					record.price_unit = record.x_price_std
 
+
 			else: 												# VIP
+	
 				if record.x_comeback    and  	record.x_price_vip_return != 0: 
 					record.price_unit = record.product_id.x_price_vip_return
 
 				else: 
-					record.price_unit = record.x_price_vip
+					if record.x_price_vip != 0: 
+						record.price_unit = record.x_price_vip
+					else:
+						record.price_unit = record.x_price_std
 
 
 

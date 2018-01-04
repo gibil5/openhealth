@@ -9,11 +9,8 @@
 
 
 from openerp import models, fields, api
+
 from datetime import datetime
-
-
-
-#from . import jxvars
 from . import eval_vars
 from . import prodvars
 
@@ -23,11 +20,75 @@ from . import prodvars
 class Evaluation(models.Model):
 
 	_inherit = 'oeh.medical.evaluation'
+
 	#_name =	'openhealth.evaluation5'
 
 
-	#name = fields.Char(
-	#		)
+
+
+	# Zone 
+	zone = fields.Selection(
+			selection = prodvars._zone_list, 
+			string="Zona",
+
+			compute='_compute_zone', 			
+			)
+	
+	#@api.multi
+	@api.depends('product')
+	def _compute_zone(self):
+		for record in self:
+			record.zone = record.product.x_zone
+
+
+
+
+	# Pathology 
+	pathology = fields.Selection(
+			selection = prodvars._pathology_list, 
+			string="Patología", 			
+
+			compute='_compute_pathology', 			
+			)
+	
+	#@api.multi
+	@api.depends('product')
+	def _compute_pathology(self):
+		for record in self:
+			record.pathology = record.product.x_pathology
+
+
+
+
+
+
+
+	# level 
+	level = fields.Selection(
+
+			selection = prodvars._level_list, 
+		
+			string="Nivel",
+
+			compute='_compute_level', 			
+			)
+	
+	#@api.multi
+	@api.depends('product')
+	def _compute_level(self):
+		for record in self:
+			record.level = record.product.x_level
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -37,33 +98,6 @@ class Evaluation(models.Model):
 			' ', 
 			readonly=True
 			)
-
-
-
-
-
-	# Commons
-	#vspace = fields.Char(
-	#		' ', 
-	#		readonly=True
-	#		)
-
-	#_dic = {
-	#			'Male':		'Masculino', 
-	#			'Female':	'Femenino', 
-	#			'none':		'Ninguno', 
-	#			'one':			'I', 
-	#			'two':			'II', 
-	#			'three':			'III', 
-	#			'continuous':	'Continua', 
-	#			'fractional':	'Fraccionado',
-	#			True:			'Si', 
-	#			False:		'No', 
-	#			'rejuvenation_capilar':			'Rejuvenecimiento capilar', 
-	#			'body_local':					'Localizado cuerpo', 
-	#			'':			'', 
-	#		}
-
 
 
 
@@ -208,10 +242,6 @@ class Evaluation(models.Model):
 
 
 
-	#patient_id = fields.Integer(
-	#		default=3025, 
-	#)
-
 
 
 
@@ -233,20 +263,6 @@ class Evaluation(models.Model):
 			required=True, 
 			#required=False, 
 			)
-
-
-
-
-	#therapist = fields.Many2one(
-	#		'openhealth.therapist',
-
-			#string = "Terapeuta", 	
-	#		string = "Cosmeatra", 	
-
-			#required=True, 
-	#		required=False, 
-	#		)
-
 
 
 
@@ -331,21 +347,6 @@ class Evaluation(models.Model):
 
 
 
-
-	zone = fields.Selection(
-
-			#selection = jxvars._zone_list, 
-			selection = prodvars._zone_list, 
-
-			string="Zona", 			
-			compute='_compute_zone', 			
-			)
-	
-	#@api.multi
-	@api.depends('product')
-	def _compute_zone(self):
-		for record in self:
-			record.zone = record.product.x_zone
 
 
 

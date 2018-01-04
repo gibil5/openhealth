@@ -43,18 +43,27 @@
 								/>
 
 
+								<field name="product"/>
+
+								<field name="chief_complaint"/>
+
+
+								<field name="zone"/>
+
+
+
+								<field name="evaluation_start_date"/>
+
+								<!--
+								<field name="pathology"/>
+
 
 								<field name="name"/>
 								<field name="appointment"/>
 								<field string="Paciente" name="patient"/>
 								<field string="Médico" name="doctor"/>
-								<!--
+
 								<field string='Tipo' name="evaluation_type"/>
-								--> 
-								<field name="chief_complaint"/>
-								<field name="product"/>
-								<field name="evaluation_start_date"/>
-								<!--
 								<field name="treatment"/>
 								-->
 								

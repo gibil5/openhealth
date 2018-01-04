@@ -75,11 +75,11 @@
 <!--
 										<field name="name"/>
 										<field name="treatment"/>
+										<field name="name_short"/>
 -->
 										<field name="service"/>
 										
 
-										<field name="name_short"/>
 
 
 										<field name="zone"/>

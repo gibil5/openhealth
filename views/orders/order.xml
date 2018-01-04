@@ -418,7 +418,7 @@
 
 
 
-		<field name="name"			invisible="0"	/>
+		<field name="name"			invisible="1"	/>
 
 
 		<field name="product_uom_qty"			/>

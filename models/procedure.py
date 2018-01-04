@@ -5,17 +5,13 @@
 # Created: 				 1 Nov 2016
 # Last updated: 	 	 20 Jun 2017
 
-
-
 from openerp import models, fields, api
-from datetime import datetime
 
-#from . import jxvars
+from datetime import datetime
 from . import time_funcs
 from . import procedure_funcs
 from . import cosvars
 from . import app_vars
-
 
 
 class Procedure(models.Model):

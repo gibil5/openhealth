@@ -88,8 +88,36 @@
 		<!-- Services Quick --> 
 		<menuitem id="service_quick_menu" name="Services QUICK"
 			parent="openhealth_menu"
-			sequence="-180"
+			sequence="-200"
 			action="service_quick_list_action"/>
+
+
+
+
+
+
+<!--
+-->
+		<menuitem id="product_template_menu" name="Products Template"
+			parent="openhealth_menu"
+			sequence="-190"
+			action="product_template_list_action"/>
+
+
+		<menuitem id="product_product_menu" name="Products Product"
+			parent="openhealth_menu"
+			sequence="-190"
+			action="product.product_product_list_action"
+			/>
+
+
+
+
+
+
+
+
+
 
 
 		<menuitem id="product_template_quick_menu" name="Products Template QUICK"
@@ -653,22 +681,6 @@
 
 		<!-- Products -->
 
-
-<!--
-		<menuitem id="product_product_menu" name="Productos Productos"
-			parent="openhealth_menu"
-			sequence="19"
-
-			action="product.product_product_list_action"
-			/>
--->
-
-
-
-		<menuitem id="product_template_menu" name="Productos"
-			parent="openhealth_menu"
-			sequence="19"
-			action="product_template_list_action"/>
 
 
 

@@ -39,6 +39,7 @@
 
 										context="{
 													'default_patient': patient,
+
 													'default_physician': physician,
 
 													'default_nr_hands_i': 			nr_quick_hands,
@@ -77,8 +78,9 @@
 										
 										<field name="pathology"/>														
 
+<!--
 										<field name="physician"/>
-
+-->
 
 
 										<field name="comeback"/>

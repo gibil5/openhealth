@@ -25,6 +25,18 @@
 
 
 
+
+				<xpath expr="//field[@name='zone']" position="replace">
+						<field name="zone" 			groups="openhealth.roots"/>
+				</xpath>
+
+				<xpath expr="//field[@name='pathology']" position="replace">
+						<field name="pathology" 			groups="openhealth.roots"/>
+				</xpath>
+
+
+
+
 			</field>
 						
 		</record>		

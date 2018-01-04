@@ -8,20 +8,40 @@
 
 from openerp import models, fields, api
 
-
-
-#from . import jxvars
 from . import eval_vars
 from . import treatment_vars
-
-
 
 class Process(models.Model):
 	
 	_name = 'openhealth.process'
 	
-
 	# Important - Inherited by: Treatment, Cosmetology 
+
+
+
+
+	# Patient 
+	patient = fields.Many2one(
+			'oeh.medical.patient',
+			string="Paciente",
+			index=True, 
+			ondelete='cascade', 
+			#required=True, 
+		)
+
+
+
+	# Physician
+	physician = fields.Many2one(
+			'oeh.medical.physician',
+			string="Médico",
+			index=True
+		)
+	
+
+
+
+
 
 
 
@@ -34,6 +54,7 @@ class Process(models.Model):
 	#		string="Abierto",
 	#		default=True,
 	#)
+
 
 
 
@@ -68,29 +89,6 @@ class Process(models.Model):
 
 
 
-
-
-	patient = fields.Many2one(
-			'oeh.medical.patient',
-
-			string="Paciente",
-			
-			index=True, 
-			ondelete='cascade', 
-			#required=True, 
-			)
-
-
-
-	physician = fields.Many2one(
-
-			'oeh.medical.physician',
-		
-			string="Médico",
-			
-			index=True
-			)
-	
 
 
 	#therapist = fields.Many2one(

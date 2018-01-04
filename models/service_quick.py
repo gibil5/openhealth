@@ -22,6 +22,32 @@ class ServiceQuick(models.Model):
 
 
 
+	# Patient 
+	patient = fields.Many2one(
+			'oeh.medical.patient', 
+			string="", 
+
+			required=True, 
+		)
+
+
+	# Physician
+	physician = fields.Many2one(
+			'oeh.medical.physician',
+			string="Médico",
+			index=True, 
+
+			required=True, 
+		)
+	
+
+
+
+
+
+
+
+
 	# Get Nr Zones 
 	@api.multi
 	def get_nr_zones(self, zone): 
@@ -171,26 +197,6 @@ class ServiceQuick(models.Model):
 
 
 
-
-
-	# Patient 
-	patient = fields.Many2one(
-			'oeh.medical.patient', 
-
-			string="", 
-
-			required=True, 
-
-
-			#compute='_compute_patient', 
-		)
-
-	#@api.multi
-	#def _compute_patient(self):
-	#	print 'jx'
-	#	print 'compute patient'
-	#	for record in self:
-	#		record.patient = record.treatment.patient
 
 
 

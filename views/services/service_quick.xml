@@ -30,8 +30,27 @@
 				</xpath>
 
 
+
 				<xpath expr="//field[@name='service']" position="replace">
+<!--
 						<field name="service" 	widget="radio"	 />
+-->
+						<field name="service" widget="radio"	attrs="{ 'invisible':[
+																										('zone', '=', False ),
+																										('x_treatment', '=', False ),
+
+																								],}"/>
+				</xpath>
+
+
+
+
+				<xpath expr="//field[@name='zone']" position="replace">
+						<field name="zone" 			groups="openhealth.roots"/>
+				</xpath>
+
+				<xpath expr="//field[@name='pathology']" position="replace">
+						<field name="pathology" 			groups="openhealth.roots"/>
 				</xpath>
 
 
@@ -107,18 +126,21 @@
 
 					<field name="name"/>					
 					<field name="create_date"/>
-					<field name="pathology"/>
 -->				
 
 					<field name="service"/>					
 
 					<field name="zone"/>
 
-					<field name="comeback"/>
+					<field name="pathology"/>
+
+					<field name="physician"/>
+
+
+					<field name="comeback"	string='Retorno'	/>
 
 
 <!--
--->
 						<field name="nr_hands_i"/>
 						<field name="nr_body_local_i"/>			
 						<field name="nr_face_local_i"/>
@@ -130,6 +152,7 @@
 						<field name="nr_face_all_neck"/>
 						<field name="nr_neck"/>
 						<field name="nr_neck_hands"/>
+-->
 				</tree>
 			</field>
 		</record>

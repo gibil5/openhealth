@@ -37,15 +37,13 @@
 								<field 
 										name="service_quick_ids"
 
-
 										context="{
 													'default_patient': patient,
-
+													'default_physician': physician,
 
 													'default_nr_hands_i': 			nr_quick_hands,
 													'default_nr_body_local_i': 		nr_quick_body_local,
 													'default_nr_face_local_i': 		nr_quick_face_local,
-
 
 													'default_nr_cheekbones': 		nr_quick_cheekbones,
 													'default_nr_face_all': 			nr_quick_face_all,
@@ -54,14 +52,10 @@
 													'default_nr_face_all_neck': 	nr_quick_face_all_neck,
 													'default_nr_neck': 				nr_quick_neck,
 													'default_nr_neck_hands': 		nr_quick_neck_hands,
-
 										}"
-
-
 									>	
 
 									<tree string="Services"		create="true" >	
-
 
 										<button 
 											type="object" 
@@ -79,32 +73,54 @@
 -->
 										<field name="service"/>
 										
-
-
-
 										<field name="zone"/>
+										
 										<field name="pathology"/>														
 
-
+										<field name="physician"/>
 
 
 
 										<field name="comeback"/>
 
 
+
 										<field name="price"/>
-
-
 										<field name="price_vip"/>
 										<field name="price_vip_return"/>
 										<field name="price_applied"/>
+									
 									</tree>
-
-
 								</field>
-
 							</page>
 
+
+							
+							<page string="Histórico"   	groups="openhealth.roots,openhealth.directors"	  >
+
+
+								<group col='3'	string='Quick'	>
+									<group>
+										<field name="nr_quick_hands"		/>
+										<field name="nr_quick_body_local"		/>
+										<field name="nr_quick_face_local"		/>
+									</group>
+									
+									<group>
+										<field name="nr_quick_cheekbones"/>
+										<field name="nr_quick_face_all"/>
+										<field name="nr_quick_face_all_hands"/>
+									</group>
+									
+									<group>
+										<field name="nr_quick_face_all_neck"/>
+										<field name="nr_quick_neck"/>
+										<field name="nr_quick_neck_hands"/>
+									</group>
+								</group>
+
+
+							</page>
 
 
 

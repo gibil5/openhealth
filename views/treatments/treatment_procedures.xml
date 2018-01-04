@@ -24,7 +24,7 @@
 					-->
 
 
-					<page string="Procedimiento">
+					<page string="Procedimientos">
 
 						<!--
 						<field name="procedure_ids" context="{'patient': 'Javier Revilla'}"/>

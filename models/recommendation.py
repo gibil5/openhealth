@@ -33,6 +33,7 @@ class recommendation(models.Model):
 
 
 		patient_id = self.treatment.patient.id
+		physician_id = self.treatment.physician.id
 
 
 
@@ -86,6 +87,7 @@ class recommendation(models.Model):
 				'context': {							
 
 								'default_patient': patient_id,
+								'default_physician': physician_id,
 
 
 								'default_nr_hands_i': nr_hands, 

@@ -56,6 +56,9 @@ class Treatment(models.Model):
 
 	# Quick Hands
 	nr_quick_hands = fields.Integer(
+
+			string='Manos', 
+
 			default=11, 
 
 			compute='_compute_nr_quick_hands', 
@@ -73,6 +76,9 @@ class Treatment(models.Model):
 
 	# Quick Body Local
 	nr_quick_body_local = fields.Integer(
+
+			string='Localizado Cuerpo', 
+
 			default=11, 
 
 			compute='_compute_nr_quick_body_local', 
@@ -91,6 +97,9 @@ class Treatment(models.Model):
 
 	# Quick Face Local
 	nr_quick_face_local = fields.Integer(
+
+			string='Localizado Rostro', 
+
 			default=11, 
 
 			compute='_compute_nr_quick_face_local', 
@@ -114,6 +123,9 @@ class Treatment(models.Model):
 
 	# Quick cheekbones
 	nr_quick_cheekbones = fields.Integer(
+
+			string='Pómulos', 
+
 			default=11, 
 
 			compute='_compute_nr_quick_cheekbones', 
@@ -130,6 +142,9 @@ class Treatment(models.Model):
 
 	# Quick face_all
 	nr_quick_face_all = fields.Integer(
+
+			string='Todo Rostro', 
+
 			default=11, 
 
 			compute='_compute_nr_quick_face_all', 
@@ -147,6 +162,9 @@ class Treatment(models.Model):
 
 	# Quick face_all_hands
 	nr_quick_face_all_hands = fields.Integer(
+
+			string='Todo Rostro Manos', 
+
 			default=11, 
 
 			compute='_compute_nr_quick_face_all_hands', 
@@ -168,6 +186,9 @@ class Treatment(models.Model):
 
 	# Quick face_all_neck
 	nr_quick_face_all_neck = fields.Integer(
+
+			string='Todo Rostro Cuello', 
+
 			default=11, 
 
 			compute='_compute_nr_quick_face_all_neck', 
@@ -185,6 +206,9 @@ class Treatment(models.Model):
 
 	# Quick neck
 	nr_quick_neck = fields.Integer(
+
+			string='Cuello', 
+
 			default=11, 
 
 			compute='_compute_nr_quick_neck', 
@@ -202,6 +226,9 @@ class Treatment(models.Model):
 
 	# Quick neck_hands
 	nr_quick_neck_hands = fields.Integer(
+
+			string='Cuello Manos', 
+
 			default=11, 
 
 			compute='_compute_nr_quick_neck_hands', 

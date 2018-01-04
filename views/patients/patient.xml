@@ -330,18 +330,30 @@
 
 		
 
+<group>
+	<group>
+	</group>
+	<group>
+	</group>
+</group>
 
 
 						<notebook>
 
-							<page string="Servicios Quick">
+
+							<page string="QuickLaser">
+
+								<field name="x_service_quick_ids"	/>
+
+							</page>
 
 
 
 
-<!--
--->							
-<group col='3'>
+							<page string="Histórico"   	groups="openhealth.roots, openhealth.directors"	  >
+
+
+<group col='3'	string='Quick'	>
 	<group>
 								<field name="x_nr_quick_hands"			/>
 								<field name="x_nr_quick_body_local"		/>
@@ -362,18 +374,14 @@
 </group>
 
 
-								<field name="x_service_quick_ids"	/>
-
 							</page>
 
+
+
+
+
+
 						</notebook>
-
-
-
-
-
-
-
 					</sheet>
 				</form>
 			</field>

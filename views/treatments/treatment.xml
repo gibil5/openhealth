@@ -656,36 +656,15 @@ Fields
 
 						</group>
 
-
-
-<group col='3'>
-	<group>
-								<field name="nr_quick_hands"		/>
-								<field name="nr_quick_body_local"		/>
-								<field name="nr_quick_face_local"		/>
-	</group>
-	
-	<group>
-								<field name="nr_quick_cheekbones"/>
-								<field name="nr_quick_face_all"/>
-								<field name="nr_quick_face_all_hands"/>
-	</group>
-	
-	<group>
-								<field name="nr_quick_face_all_neck"/>
-								<field name="nr_quick_neck"/>
-								<field name="nr_quick_neck_hands"/>
-	</group>
-
-<!--
+<group>
 	<group>
 	</group>
 	<group>
 	</group>
-	<group>
-	</group>
--->
 </group>
+
+
+
 
 						<notebook>
 						</notebook>

@@ -97,11 +97,11 @@
 
 
 <!--
--->
 		<menuitem id="product_template_menu" name="Products Template"
 			parent="openhealth_menu"
 			sequence="-190"
 			action="product_template_list_action"/>
+-->
 
 
 		<menuitem id="product_product_menu" name="Products Product"

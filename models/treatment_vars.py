@@ -66,7 +66,9 @@ _state_list = [
 
 				
 				#('invoice_consultation', 	'Caja - Con'),			# OK 
-				('invoice_consultation', 	'Facturado'),			# OK 
+				#('invoice_consultation', 	'Facturado'),			# OK 
+				('invoice_consultation', 	'Caja'),			# OK 
+
 
 
 				('consultation', 			'Consulta'),			# OK
@@ -79,13 +81,18 @@ _state_list = [
 
 
 
+
 				#('invoice_procedure', 		'Caja - Pro'),				# OK
-				('invoice_procedure', 		'Facturado'),				# OK
+				#('invoice_procedure', 		'Facturado'),				# OK
+				('invoice_procedure', 		'Caja'),				# OK
 
 
 
-				('procedure', 				'Procedimiento'),			# OK
-				
+
+				#('procedure', 				'Procedimiento'),			# OK
+				('procedure', 				'Proc.'),			# OK
+
+
 
 				('sessions', 				'Sesiones'),				# OK
 				

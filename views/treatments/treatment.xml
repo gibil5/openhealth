@@ -80,7 +80,7 @@
 
 
 <!--
-							string="Crear RECOMENDACION" 
+							string="RECOMENDACION" 
 -->
 						<!-- Create Service --> 
 						<button 
@@ -89,7 +89,7 @@
 
 							class="oe_highlight"
 
-							string="RECOMENDACION" 
+							string="Crear RECOMENDACION" 
 
 							states="consultation,service"
 
@@ -102,7 +102,7 @@
 
 
 <!--
-							string="Crear PRESUPUESTO - Procedimiento" 
+							string="PRESUPUESTO" 
 -->
 						<!-- Create Order --> 
 						<button 
@@ -114,7 +114,9 @@
 
 							class="oe_highlight"
   
-							string="PRESUPUESTO" 
+  
+							string="Crear PRESUPUESTO - Procedimiento" 
+
 
 							states="service"
 

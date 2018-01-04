@@ -37,6 +37,10 @@
 
 
 
+
+<!--
+								string="CO2"
+-->
 							<!-- CO2 --> 
 							<button 
 								type="object" 
@@ -44,7 +48,7 @@
 
 								name="create_service_co2" 	
 
-								string="CO2"
+								string="LASER CO2"
 							/>
 
 

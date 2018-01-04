@@ -49,13 +49,14 @@
 
 
 								<field name="zone"/>
+								<field name="pathology"/>
+								<field name="level"/>
 
 
 
 								<field name="evaluation_start_date"/>
 
 								<!--
-								<field name="pathology"/>
 
 
 								<field name="name"/>

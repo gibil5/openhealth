@@ -103,12 +103,12 @@
 
 
 <!--
+-->
 		<menuitem id="product_product_menu" name="Products Product"
 			parent="openhealth_menu"
 			sequence="-190"
-			action="product.product_product_list_action"
+			action="product_product_list_action"
 			/>
--->
 
 
 

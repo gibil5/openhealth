@@ -715,17 +715,6 @@
 			</field>
 		</record>
 
-		<record model="ir.actions.act_window" id="product.product_product_list_action">
-			<field name="name">Productos Productos</field>
-			<field name="res_model">product.product</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-
-            <field name="domain">[
-										('x_origin', '=', False),
-            	
-            					]</field>
-		</record>
 -->
 
 		<record model="ir.actions.act_window" id="product.product_template_action_product">
@@ -759,7 +748,26 @@
 
 
 
-		<!-- Window action -->
+
+
+
+
+
+
+		<!-- Product Product --> 
+		<record model="ir.actions.act_window" id="product_product_list_action">
+			<field name="name">Productos Productos</field>
+			<field name="res_model">product.product</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+
+            <field name="domain">[]</field>
+		</record>
+
+
+
+
+		<!-- Product Template --> 
 		<record model="ir.actions.act_window" id="product_template_list_action">
 			<field name="name">Productos - jx</field>
 			<field name="res_model">product.template</field>
@@ -768,33 +776,13 @@
 
             <field name="domain">[]</field>
 
-
 <!--
-            <field name="domain">[]</field>
             <field name="context">{}</field>
-            <field name="view_id" eval="False"/>
-			
+            <field name="view_id" eval="False"/>			
 			<field name="help" type="html">
 				<p class="oe_view_nocontent_create">Create the first receipt
 				</p>
 			</field>
--->
-
-            <!--
-			<field name="context">{'order': 'x_name_short'}</field>
-            <field name="domain">[
-									('type', '=', 'service'),
-									('x_treatment', '=', 'laser_co2'),
-            					]</field>
-			-->
-
-
-
-<!--
-            <field name="domain">[
-										('x_origin', '=', False),
-            	
-            					]</field>
 -->
 
 		</record>

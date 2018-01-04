@@ -511,7 +511,7 @@ Deprecated
 					sequence="2"
 
 
-					groups="openhealth.reception,openhealth.physicians,openhealth.managers,openhealth.directors"
+					groups="openhealth.roots,openhealth.reception,openhealth.physicians,openhealth.managers,openhealth.directors"
 		/>
 
 

@@ -134,8 +134,9 @@
 
 					<field name="pathology"/>
 
+<!--
 					<field name="physician"/>
-
+-->
 
 					<field name="comeback"	string='Retorno'	/>
 

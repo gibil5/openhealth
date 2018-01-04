@@ -429,6 +429,7 @@
 		<field name="x_price_std"			/>
 		<field name="x_price_vip"			/>
 		<field name="x_price_vip_return"			/>
+		<field name="price_unit"			/>
 
 		<field name="tax_id"			/>
 
@@ -444,7 +445,6 @@
 
 
 <!--
-		<field name="price_unit"			/>
 		<field name="x_price_subtotal" />
 		<field name="x_test" />
 -->

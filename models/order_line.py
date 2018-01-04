@@ -16,6 +16,8 @@ class sale_order_line(models.Model):
 
 
 
+
+
 	# Price Unit
 	price_unit = fields.Float(
 		'Unit Price', 
@@ -31,18 +33,55 @@ class sale_order_line(models.Model):
 
 		for record in self:
 
-			if record.x_comeback: 
-				record.price_unit = record.product_id.x_price_vip_return
+			if 	not record.order_id.x_partner_vip: 				# Not VIP
+					record.price_unit = record.x_price_std
 
-			else:		
-
-				#if True: 
-				#if record.order_id.pricelist_id.name == 'VIP': 
-				if record.order_id.pricelist_id.name == 'VIP'		and 	record.x_price_vip != 0: 
-					record.price_unit = record.x_price_vip
+			else: 												# VIP
+				if record.x_comeback    and  	record.x_price_vip_return != 0: 
+					record.price_unit = record.product_id.x_price_vip_return
 
 				else: 
-					record.price_unit = record.x_price_std
+					record.price_unit = record.x_price_vip
+
+
+
+			#if record.x_comeback: 
+			#if 	record.order_id.x_partner_vip  		and			record.x_comeback: 
+			#	record.price_unit = record.product_id.x_price_vip_return
+
+			#else:		
+				#if True: 
+				#if record.order_id.pricelist_id.name == 'VIP': 
+
+				#if record.order_id.pricelist_id.name == 'VIP'		and 	record.x_price_vip != 0: 
+			#	if record.order_id.x_partner_vip		and 	record.x_price_vip != 0: 
+			#		record.price_unit = record.x_price_vip
+			#	else: 
+			#		record.price_unit = record.x_price_std
+
+
+
+
+
+
+	# Comeback 
+	x_comeback = fields.Boolean(
+			string='Regreso', 		
+
+			compute='_compute_comeback', 
+		)
+
+
+	@api.multi
+	def _compute_comeback(self):
+
+		for record in self:
+
+			record.x_comeback = False
+
+			for service in record.order_id.patient.x_service_quick_ids:
+				if service.service.name == record.name  	and 	service.comeback: 
+					record.x_comeback = True
 
 
 
@@ -113,26 +152,6 @@ class sale_order_line(models.Model):
 
 
 
-
-
-	# Comeback 
-	x_comeback = fields.Boolean(
-			string='Regreso', 		
-
-			compute='_compute_comeback', 
-		)
-
-
-	@api.multi
-	def _compute_comeback(self):
-
-		for record in self:
-
-			record.x_comeback = False
-
-			for service in record.order_id.patient.x_service_quick_ids:
-				if service.service.name == record.name  	and 	service.comeback: 
-					record.x_comeback = True
 
 
 

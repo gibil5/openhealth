@@ -156,8 +156,11 @@
 						<group>
 							<group>
 							</group>
-							<group class="oe_right">							
+							<group class="oe_right">
+<!--
 								<field name="x_autofill"/>
+-->						
+								<field name="x_autofill" 	groups="openhealth.roots"		/>
 							</group>							
 						</group>						
 						

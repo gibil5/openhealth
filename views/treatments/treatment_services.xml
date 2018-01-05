@@ -12,7 +12,7 @@
 			
 			<field name="model">openhealth.treatment</field>
 
-			<field name="priority" eval="-1"/>
+			<field name="priority" eval="4"/>
 			
 			<field name="inherit_id" ref="treatment_form_view"/>
 			

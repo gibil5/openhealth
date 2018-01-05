@@ -341,7 +341,7 @@
 						<notebook>
 
 
-							<page string="QuickLaser">
+							<page string="QuickLaser"	groups="openhealth.roots,openhealth.directors"		>
 
 								<field name="x_service_quick_ids"	/>
 
@@ -350,7 +350,7 @@
 
 
 
-							<page string="Histórico"   	groups="openhealth.roots, openhealth.directors"	  >
+							<page string="Histórico"   	groups="openhealth.roots,openhealth.directors"	  >
 
 
 <group col='3'	string='Quick'	>

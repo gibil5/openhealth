@@ -1,24 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-	<data noupdate='1'>
-
-
-
-<!--
-LUIS CARLOS LOLI PUENTE
-RAUL EDUARDO BUSTIOS TERAN 
-PERCY JOSIMAR BOLBOA TOLEDO
-IVAN MAURICIO PUGA CARRANZA
-
-MARIA LUISA PEDEMONTE ROSAS		???
-
-
-staff_clinicachavarri
-lloli_clinicachavarri
-pbalboa_clinicachavarri
-ipuga_clinicachavarri
-rbustios_clinicachavarri
--->
+	<data>
 
 
 
@@ -30,50 +12,21 @@ rbustios_clinicachavarri
 
 
 		<record id="staff_clinicachavarri" model="res.users">
-
 			<field name="name">STAFF</field>
-			
 			<field name="login">staff@clinicachavarri.com</field>
+			
+<!--
 			<field name="password">staff</field>
-			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-			<field name="active">True</field>
+-->		
+			<field name="password">Smu49HXe</field>
 
+
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
 			<field name="lang">es_ES</field>
 			<field name="tz">America/Lima</field>
 			<field name="partner_id" ref="staff_partner"/>
-		</record>
-
-
-
-
-
-<!--
-Leonardo Masias
-lmasias@clinicachavarri.com
--->
-
-
-<!-- Leonardo Masias -->
-		<record id="lmasias" model="res.partner">
-			<field name="name">Leonardo Masias</field>
-			<field name="email">lmasias@clinicachavarri.com</field>
-			<field name="function">marketing</field>
-	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
-		</record>
-
-		<record id="lmasias_clinicachavarri" model="res.users">
-			<field name="name">Leonardo Masias</field>
-			<field name="login">lmasias@clinicachavarri.com</field>
-			<field name="password">lmasias</field>
-			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
 			<field name="active">True</field>
-			<field name="tz">America/Lima</field>
-
-			<field name="lang">es_ES</field>
-			<field name="partner_id" ref="lmasias"/>            
 		</record>
-
-
 
 
 
@@ -94,14 +47,21 @@ lmasias@clinicachavarri.com
 		<record id="lloli_clinicachavarri" model="res.users">
 			<field name="name">Luis Loli</field>
 			<field name="login">lloli@clinicachavarri.com</field>
+			
+<!--
 			<field name="password">lloli</field>
-			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-			<field name="active">True</field>
-			<field name="tz">America/Lima</field>
+-->		
+			<field name="password">6apLZLpS</field>
 
+
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="tz">America/Lima</field>
 			<field name="lang">es_ES</field>
 			<field name="partner_id" ref="lloli"/>            
+			<field name="active">True</field>
 		</record>
+
+
 
 
 
@@ -109,23 +69,27 @@ lmasias@clinicachavarri.com
 		<record id="pbalboa" model="res.partner">
 			<field name="name">Percy Balboa</field>
 			<field name="email">pbalboa@clinicachavarri.com</field>
-
 			<field name="function">accounting</field>
-
 	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
 		<record id="pbalboa_clinicachavarri" model="res.users">
 			<field name="name">Percy Balboa</field>
 			<field name="login">pbalboa@clinicachavarri.com</field>
-			<field name="password">pbalboa</field>
-			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-			<field name="active">True</field>
-			<field name="tz">America/Lima</field>
 
+<!--
+			<field name="password">pbalboa</field>
+-->		
+			<field name="password">kPh2C52W</field>
+
+
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="tz">America/Lima</field>
 			<field name="lang">es_ES</field>
 			<field name="partner_id" ref="pbalboa"/>            
+			<field name="active">True</field>
 		</record>
+
 
 
 
@@ -134,47 +98,56 @@ lmasias@clinicachavarri.com
 		<record id="ipuga" model="res.partner">
 			<field name="name">Ivan Puga</field>
 			<field name="email">ipuga@clinicachavarri.com</field>
-
 			<field name="function">hc</field>
-
 	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
 		<record id="ipuga_clinicachavarri" model="res.users">
 			<field name="name">Ivan Puga</field>
 			<field name="login">ipuga@clinicachavarri.com</field>
+			
+<!--
 			<field name="password">ipuga</field>
-			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-			<field name="active">True</field>
-			<field name="tz">America/Lima</field>
+-->		
+			<field name="password">jVP4Q2tt</field>
 
+
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="tz">America/Lima</field>
 			<field name="lang">es_ES</field>
 			<field name="partner_id" ref="ipuga"/>            
+			<field name="active">True</field>
 		</record>
 
 
 
 
-<!-- Raul Bustios -->
-		<record id="rbustios" model="res.partner">
-			<field name="name">Raul Bustios</field>
-			<field name="email">rbustios@clinicachavarri.com</field>
+
+<!-- Leonardo Masias -->
+		<record id="lmasias" model="res.partner">
+			<field name="name">Leonardo Masias</field>
+			<field name="email">lmasias@clinicachavarri.com</field>
 			<field name="function">marketing</field>
 	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
-		<record id="rbustios_clinicachavarri" model="res.users">
-			<field name="name">Raul Bustios</field>
-			<field name="login">rbustios@clinicachavarri.com</field>
-			<field name="password">rbustios</field>
+		<record id="lmasias_clinicachavarri" model="res.users">
+			<field name="name">Leonardo Masias</field>
+			<field name="login">lmasias@clinicachavarri.com</field>
+			
+<!--
+			<field name="password">lmasias</field>
+-->		
+			<field name="password">TS4e3CLr</field>
+
+
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-			<field name="active">True</field>
 			<field name="tz">America/Lima</field>
 			<field name="lang">es_ES</field>
-			<field name="partner_id" ref="rbustios"/>
-
-			<field name="active" eval="False" />
+			<field name="partner_id" ref="lmasias"/>            
+			<field name="active">True</field>
 		</record>
+
 
 
 	</data>

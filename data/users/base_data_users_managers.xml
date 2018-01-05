@@ -1,70 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-	<data noupdate='1'>
+	<data>
 	
-
-
-<!-- MANAGERS -->
-
-<!--
-FERNANDO ENRIQUE CHAVARRI MICHAELS
-RENATO FAVIO CHAVARRI BUCCOLO
-VICTOR ANTONIO MORI RENGIFO
-JOSEF BERNA ESSENWANGER BALLESTEROS
--->
-
-<!--
-;wFB_e,Y7#p;nNrQ
-*9a~%^A^mjmKj{9p
-@\=2XbAwyU&&9Mbc
-XzpTFe2Yf5Y"[33*
-8j5k6KCxh+bh*NU4
-B7W+_hN-CfJ*-w$%
-#NuZt-C%hFaL4uxx
-n+E=h9Ax26=g8ZQG
-
-uq@dL_F=xs?_3yBR
--->
-
-
-
-
-
-
-<!-- Archivo -->
-		<record id="archivo_partner" model="res.partner">
-			<field name="name">Archivo</field>
-			<field name="email">archivo@clinicachavarri.com</field>
-		</record>
-
-
-
-		<record id="archivo_clinicachavarri" model="res.users">
-
-			<field name="name">ARCHIVO</field>
-			
-			<field name="login">archivo@clinicachavarri.com</field>
-
-			<field name="password">archivo</field>
-
-			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-
-			<field name="active">True</field>
-			
-			<field name="lang">es_ES</field>
-			
-			<field name="tz">America/Lima</field>
-			
-			<field name="partner_id" ref="archivo_partner"/>
-		</record>
-
-
-
-
-
-
-
-
 
 
 <!-- Director -->
@@ -73,24 +10,60 @@ uq@dL_F=xs?_3yBR
 			<field name="email">director@clinicachavarri.com</field>
 		</record>
 
-
-
 		<record id="director_clinicachavarri" model="res.users">
-
 			<field name="name">DIRECTOR</field>
-			
 			<field name="login">director@clinicachavarri.com</field>
+
 <!--
 			<field name="password">uq@dL_F=xs?_3yBR</field>
--->		
 			<field name="password">director</field>
+-->		
+			<field name="password">sFU6M7ER</field>
+
 
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-			<field name="active">True</field>
 			<field name="lang">es_ES</field>
 			<field name="tz">America/Lima</field>
 			<field name="partner_id" ref="director_partner"/>
+			<field name="active">True</field>
 		</record>
+
+
+
+<!-- Renato Chavarri -->
+		<record id="rchavarri" model="res.partner">
+			<field name="name">Renato Chavarri</field>
+			<field name="email">rchavarri@clinicachavarri.com</field>
+<!--
+	        <field eval="[(6, 0, [ref('module_name.res_partner_category_1')])]" name="category_id"/>
+-->
+			<field name="function">manager</field>
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
+		</record>
+
+
+		<record id="rchavarri_clinicachavarri" model="res.users">
+			<field name="name">Renato Chavarri</field>
+			<field name="login">rchavarri@clinicachavarri.com</field>
+
+<!--			
+			<field name="password">uq@dL_F=xs?_3yBR</field>
+			<field name="password">rchavarri</field>
+-->
+			<field name="password">RrpmT59D</field>
+
+
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="tz">America/Lima</field>
+			<field name="lang">es_ES</field>
+			<field name="partner_id" ref="rchavarri"/>
+			<field name="active">True</field>
+		</record>
+
+
+
+
+
 
 
 
@@ -105,59 +78,28 @@ uq@dL_F=xs?_3yBR
 
 
 		<record id="manager_clinicachavarri" model="res.users">
-
 			<field name="name">MANAGER</field>
-			
 			<field name="login">manager@clinicachavarri.com</field>
+
 <!--
 			<field name="password">uq@dL_F=xs?_3yBR</field>
--->		
 			<field name="password">manager</field>
+-->		
+			<field name="password">P6J3paNK</field>
+
 
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-			<field name="active">True</field>
 			<field name="lang">es_ES</field>
 			<field name="tz">America/Lima</field>
 			<field name="partner_id" ref="manager_partner"/>
-		</record>
-
-
-
-
-
-
-
-
-
-<!-- Renato Chavarri -->
-
-		<record id="rchavarri" model="res.partner">
-			<field name="name">Renato Chavarri</field>
-			<field name="email">rchavarri@clinicachavarri.com</field>
-<!--
-	        <field eval="[(6, 0, [ref('module_name.res_partner_category_1')])]" name="category_id"/>
--->
-
-
-			<field name="function">manager</field>
-
-	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
-		</record>
-
-		<record id="rchavarri_clinicachavarri" model="res.users">
-			<field name="name">Renato Chavarri</field>
-			<field name="login">rchavarri@clinicachavarri.com</field>
-<!--			
-			<field name="password">uq@dL_F=xs?_3yBR</field>
--->
-			<field name="password">rchavarri</field>
-
-			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
 			<field name="active">True</field>
-			<field name="tz">America/Lima</field>
-			<field name="lang">es_ES</field>
-			<field name="partner_id" ref="rchavarri"/>
 		</record>
+
+
+
+
+
+
 
 
 
@@ -167,25 +109,26 @@ uq@dL_F=xs?_3yBR
 		<record id="vmori" model="res.partner">
 			<field name="name">Victor Mori</field>
 			<field name="email">vmori@clinicachavarri.com</field>
-
 			<field name="function">manager</field>
-
 	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
 		<record id="vmori_clinicachavarri" model="res.users">
 			<field name="name">Victor Mori</field>
 			<field name="login">vmori@clinicachavarri.com</field>
+
 <!--
 			<field name="password">uq@dL_F=xs?_3yBR</field>
--->
 			<field name="password">vmori</field>
+-->
+			<field name="password">D435MTtV</field>
+
 			
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-			<field name="active">True</field>
 			<field name="tz">America/Lima</field>
 			<field name="lang">es_ES</field>
 			<field name="partner_id" ref="vmori"/>
+			<field name="active">True</field>
 		</record>
 
 
@@ -203,13 +146,17 @@ uq@dL_F=xs?_3yBR
 			<field name="name">Josef Essenwanger</field>
 			<field name="login">jessenwanger@clinicachavarri.com</field>
 
+<!--
 			<field name="password">uq@dL_F=xs?_3yBR</field>
+-->
+			<field name="password">eVxgVY2G</field>
+
 			
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-			<field name="active">True</field>
 			<field name="tz">America/Lima</field>
 			<field name="lang">es_ES</field>
 			<field name="partner_id" ref="jessenwanger"/>
+			<field name="active">True</field>
 		</record>
 
 

@@ -33,8 +33,6 @@
 
 
 
-
-
 <!-- Fernando Chavarri -->
 		<record id="fchavarri" model="res.partner">
 			<field name="name">Fernando Chavarri</field>
@@ -58,7 +56,6 @@
 			<field name="lang">es_ES</field>
 			<field name="active">True</field>
 		</record>
-
 
 
 
@@ -92,9 +89,6 @@
 
 
 
-
-
-
 <!-- Leo Gonzales -->
 		<record id="lgonzales" model="res.partner">
 			<field name="name">Leo Gonzales</field>
@@ -123,12 +117,6 @@
 
 
 
-
-
-
-
-
-
 <!-- Piero Monteverde -->
 		<record id="pmonteverde" model="res.partner">
 			<field name="name">Piero Monteverde</field>
@@ -143,7 +131,7 @@
 <!--
 			<field name="password">pmonteverde</field>
 -->		
-			<field name="password">pmonteverde</field>
+			<field name="password">czPS79x8</field>
 
 
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
@@ -152,6 +140,8 @@
 			<field name="lang">es_ES</field>
 			<field name="active">True</field>
 		</record>
+
+
 
 
 
@@ -169,7 +159,7 @@
 <!--
 			<field name="password">cmendez</field>
 -->		
-			<field name="password">cmendez</field>
+			<field name="password">mHmCa6SW</field>
 
 
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
@@ -178,10 +168,6 @@
 			<field name="lang">es_ES</field>
 			<field name="active">True</field>
 		</record>
-
-
-
-
 
 
 
@@ -201,7 +187,7 @@
 <!--
 			<field name="password">pcanales</field>
 -->		
-			<field name="password">pcanales</field>
+			<field name="password">CX5Xf6nJ</field>
 
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
 			<field name="tz">America/Lima</field>
@@ -209,6 +195,7 @@
 			<field name="lang">es_ES</field>
 			<field name="active">True</field>
 		</record>
+
 
 
 
@@ -227,7 +214,7 @@
 <!--
 			<field name="password">cescudero</field>
 -->		
-			<field name="password">cescudero</field>
+			<field name="password">eDL2MZUd</field>
 
 
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
@@ -236,6 +223,8 @@
 			<field name="lang">es_ES</field>
 			<field name="active">True</field>
 		</record>
+
+
 
 	</data>
 </openerp> 

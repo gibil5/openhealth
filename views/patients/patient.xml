@@ -233,9 +233,9 @@
 
 							<group>
 <!--
-								<field name="x_autofill" 	groups="openhealth.roots"		/>
--->							
 								<field name="x_autofill" 		/>
+-->							
+								<field name="x_autofill" 	groups="openhealth.roots"		/>
 
 
 

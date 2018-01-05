@@ -150,10 +150,15 @@
 							-->
 
 
+
+<!--
+Deprecated - 4 Jan 2018
 							<field name="consultation"		groups="openhealth.roots"	/>
 							<field name="procedure"			groups="openhealth.roots"	/>
 							<field name="session"			groups="openhealth.roots"	/>
 							<field name="control"			groups="openhealth.roots" 	/>
+
+-->
 				</xpath>
 
 

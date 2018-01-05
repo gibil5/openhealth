@@ -30,8 +30,52 @@
 
 
 
+<!-- Co2 --> 
+							<page string="CO2"   		attrs="{'invisible':[('nr_services_co2', '=', 0)]}"  >
+
+								<field name="service_co2_ids">	
+
+									<tree string="Services"		create="false" >	
+
+
+										<button 
+											type="object" 
+											class="oe_highlight"	
+											string="Entrar"
+											name="open_line_current" 
+										/>
+
+										<field name="name"/>
+										<!--
+										<field name="id"/>
+										-->
+										<field name="laser"/>				
+										<field name="treatment"/>
+										<field name="service"/>
+										
+										<field name="zone"/>														
+
+										<field name="consultation"/>
+									</tree>
+								</field>
+
+							</page>
+
+
+
+
+
+
+
+
+
+
+
 <!-- Quick --> 
-							<page string="QUICK"   		  >
+<!--
+							<page string="QUICK"			attrs="{'invisible':[('nr_services_quick', '=', 0)]}"			>
+-->
+							<page string="QUICK">
 
 
 								<field 
@@ -79,11 +123,7 @@
 
 										<field name="physician"/>
 
-
-
 										<field name="comeback"/>
-
-
 
 										<field name="price"/>
 										<field name="price_vip"/>
@@ -95,9 +135,14 @@
 							</page>
 
 
-							
-							<page string="Histórico"   	groups="openhealth.roots,openhealth.directors"	  >
 
+<!--							
+							<page string="Histórico"   	groups="openhealth.roots,openhealth.directors"	  
+														attrs="{'invisible':[('nr_services_quick', '=', 0)]}"
+								>
+-->
+
+							<page string="Histórico"   	groups="openhealth.roots,openhealth.directors"	  >
 
 								<group col='3'	string='Quick'	>
 									<group>
@@ -119,7 +164,6 @@
 									</group>
 								</group>
 
-
 							</page>
 
 
@@ -131,36 +175,11 @@
 
 
 
-<!-- Co2 --> 
-							<page string="CO2"   		attrs="{'invisible':[('nr_services_co2', '=', 0)]}"  >
-
-								<field name="service_co2_ids">	
-
-									<tree string="Services"		create="false" >	
 
 
-										<button 
-											type="object" 
-											class="oe_highlight"	
-											string="Entrar"
-											name="open_line_current" 
-										/>
 
-										<field name="name"/>
-										<!--
-										<field name="id"/>
-										-->
-										<field name="laser"/>				
-										<field name="treatment"/>
-										<field name="service"/>
-										
-										<field name="zone"/>														
 
-										<field name="consultation"/>
-									</tree>
-								</field>
 
-							</page>
 
 
 <!-- Excilite --> 

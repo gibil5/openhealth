@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-	<data noupdate='1'>
-
+	<data>
 
 
 
@@ -9,24 +8,63 @@
 		<record id="caja_partner" model="res.partner">
 			<field name="name">Caja</field>
 			<field name="email">caja@clinicachavarri.com</field>
-
 	        <field eval="[(6, 0, [ref('cash')])]" name="category_id"/>
 		</record>
 
 
 		<record id="caja_clinicachavarri" model="res.users">
-
 			<field name="name">CAJA</field>
-			
 			<field name="login">caja@clinicachavarri.com</field>
-			<field name="password">caja</field>
-			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-			<field name="active">True</field>
 
+<!--
+			<field name="password">caja</field>
+-->
+			<field name="password">bvR3VKUQ</field>
+
+			
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
 			<field name="lang">es_ES</field>
 			<field name="tz">America/Lima</field>
 			<field name="partner_id" ref="caja_partner"/>
+			<field name="active">True</field>
 		</record>
+
+
+
+
+
+
+
+<!-- Maria Luisa Pedemonte --> 
+		<record id="mpedemonte" model="res.partner">
+			<field name="name">Maria Luisa Pedemonte</field>
+			<field name="email">mpedemonte@clinicachavarri.com</field>
+<!--
+	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+-->
+	        <field eval="[(6, 0, [ref('cash')])]" name="category_id"/>
+		</record>
+
+
+		<record id="mpedemonte_clinicachavarri" model="res.users">
+			<field name="name">Maria Luisa Pedemonte</field>			
+			<field name="login">mpedemonte@clinicachavarri.com</field>
+
+<!--
+			<field name="password">mpedemonte</field>
+-->		
+			<field name="password">R8redpKE</field>
+
+
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="tz">America/Lima</field>
+			<field name="partner_id" ref="mpedemonte"/>
+			<field name="lang">es_ES</field>
+			<field name="active">True</field>
+		</record>
+
+
+
 
 
 	</data>

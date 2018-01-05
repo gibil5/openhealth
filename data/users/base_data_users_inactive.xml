@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+
+
+<!-- Javier Vasquez -->
+		<record id="jvasquez" model="res.partner">
+			<field name="name">Javier Vasquez</field>
+			<field name="email">jvasquez@clinicachavarri.com</field>
+	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+		</record>
+
+		<record id="jvasquez_clinicachavarri" model="res.users">
+			<field name="name">Javier Vasquez</field>
+			<field name="login">jvasquez@clinicachavarri.com</field>
+			
+<!--
+			<field name="password">jvasquez</field>
+-->		
+			<field name="password">jvasquez</field>
+
+
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+			<field name="partner_id" ref="jvasquez"/>
+			<field name="lang">es_ES</field>
+			<field name="active" eval="False" />
+		</record>
+
+
+
+<!-- Desiree Acosta -->
+		<record id="dacosta" model="res.partner">
+			<field name="name">Desiree Acosta</field>
+			<field name="email">dacosta@clinicachavarri.com</field>
+	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+		</record>
+
+		<record id="dacosta_clinicachavarri" model="res.users">
+			<field name="name">Desiree Acosta</field>
+			<field name="login">dacosta@clinicachavarri.com</field>
+			
+<!--
+			<field name="password">daacosta</field>
+-->		
+			<field name="password">daacosta</field>
+
+
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="tz">America/Lima</field>
+			<field name="partner_id" ref="dacosta"/>
+			<field name="lang">es_ES</field>
+			<field name="active" eval="False" />
+		</record>
+
+
+
+
+
+
+
+
+
+
+<!-- Adeli Vidal -->
+		<record id="avidal" model="res.partner">
+			<field name="name">Adeli Vidal</field>
+			<field name="email">avidal@clinicachavarri.com</field>
+			<field name="function">reception</field>
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
+		</record>
+
+		<record id="avidal_clinicachavarri" model="res.users">
+			<field name="name">Adeli Vidal</field>
+			<field name="login">avidal@clinicachavarri.com</field>
+
+<!--			
+			<field name="password">avidal</field>
+-->		
+			<field name="password">b8Gb59DQ</field>
+
+
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="tz">America/Lima</field>
+			<field name="partner_id" ref="avidal"/>
+			<field name="lang">es_ES</field>
+
+			<field name="active" eval="False" />
+		</record>
+
+
+
+	</data>
+</openerp> 

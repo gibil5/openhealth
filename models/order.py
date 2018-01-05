@@ -35,6 +35,42 @@ class sale_order(models.Model):
 
 
 
+
+	# Patient 
+	patient = fields.Many2one(
+			'oeh.medical.patient',
+			string='Paciente', 
+
+
+			compute='_compute_patient', 
+		)
+
+
+	@api.multi
+	def _compute_patient(self):
+
+		for record in self:
+
+			patient = self.env['oeh.medical.patient'].search([
+																('name', '=', self.partner_id.name), 
+														],
+														#order='appointment_date desc',
+														limit=1,
+													)
+			
+			record.patient = patient
+
+
+
+
+
+
+
+
+
+
+
+
 # ----------------------------------------------------------- Test and Hunt ------------------------------------------------------
 	# Test Bug 
 	@api.multi 
@@ -160,33 +196,6 @@ class sale_order(models.Model):
 
 
 
-
-
-
-	
-	patient = fields.Many2one(
-			'oeh.medical.patient',
-			string='Paciente', 
-
-			#compute='_compute_patient', 
-		)
-
-
-	@api.multi
-
-	def _compute_patient(self):
-
-		for record in self:
-
-
-			patient = self.env['oeh.medical.patient'].search([
-																('name', '=', self.partner_id.name), 
-														],
-														#order='appointment_date desc',
-														limit=1,
-													)
-			
-			record.patient = patient
 
 
 

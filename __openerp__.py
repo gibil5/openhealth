@@ -175,14 +175,21 @@
 
 
 
+		# Users - With pw
+		'data/users/base_data_users_platform.xml',	
+		'data/users/base_data_users_cash.xml',		
+		'data/users/base_data_users_doctors.xml',		
+		'data/users/base_data_users_inactive.xml',	
+
+
+
 		# Users 
-		'data/users/base_data_users_managers.xml',	# check 
-		'data/users/base_data_users_staff.xml',		# check 
-		'data/users/base_data_users_almacen.xml',		# check 
-		'data/users/base_data_users_doctors.xml',		# check 
-		'data/users/base_data_users_assistants.xml',	# check
-		'data/users/base_data_users_platform.xml',	# check
-		'data/users/base_data_users_cash.xml',		# check 
+		'data/users/base_data_users_managers.xml',	
+		'data/users/base_data_users_staff.xml',		
+		'data/users/base_data_users_almacen.xml',		
+		'data/users/base_data_users_assistants.xml',	
+
+
 
 
 

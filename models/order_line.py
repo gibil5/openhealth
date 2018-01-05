@@ -20,7 +20,10 @@ class sale_order_line(models.Model):
 
 	# Price Unit
 	price_unit = fields.Float(
-		'Unit Price', 
+
+		#'Unit Price', 
+		'Precio', 
+		
 		required=True, 
 		digits=dp.get_precision('Product Price'), 
 		default=0.0, 
@@ -103,7 +106,10 @@ class sale_order_line(models.Model):
 
 	# Price std
 	x_price_std = fields.Float(
+			
 			string="Precio Std",
+			#string="Precio",
+			
 			required=False, 
 
 			compute='_compute_price_std', 
@@ -139,7 +145,10 @@ class sale_order_line(models.Model):
 
 	# Price Vip Return
 	x_price_vip_return = fields.Float(
-			string="Precio Vip Return",
+
+			#string="Precio Vip Return",
+			string="Precio Vip R",
+		
 			required=False, 
 
 			compute='_compute_price_vip_return', 

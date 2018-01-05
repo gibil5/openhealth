@@ -361,6 +361,39 @@ jz
 
 
 
+
+
+
+
+
+
+
+								<!-- Nr of Services - quick --> 
+								<button type="action" class="oe_stat_button" icon="fa-list"
+
+									name="%(service_quick_list_action)d"	
+
+									attrs="{ 'invisible':[	('nr_services_quick','=',0), ]}"
+
+									context="{									
+											'search_default_treatment': active_id,
+											}" 											
+									>
+
+									<field string="Rec. Quick" name="nr_services_quick" widget="statinfo"/>
+								</button>
+
+
+
+
+
+
+
+
+
+
+
+
 								<!-- Nr of Services - Co2 --> 
 								<button type="action" class="oe_stat_button" icon="fa-list"
 
@@ -373,8 +406,11 @@ jz
 											}" 											
 									>
 
-									<field string="Recomendacion" name="nr_services_co2" widget="statinfo"/>
+									<field string="Rec. Co2" name="nr_services_co2" widget="statinfo"/>
 								</button>
+
+
+
 
 
 

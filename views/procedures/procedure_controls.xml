@@ -16,8 +16,13 @@
 
 					<!--							
 					<page string="Controles">
-					-->
 					<page string="Controles"  	attrs="{'invisible':[('laser', '!=', 'laser_co2')]}"	>
+					-->
+
+					<page string="Controles"  	attrs="{'invisible':[
+																		('laser', '!=', 'laser_quick'), 
+																		('laser', '!=', 'laser_co2'), 
+																	]}"	>
 
 
 

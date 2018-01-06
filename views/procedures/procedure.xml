@@ -69,18 +69,20 @@
 						-->
 
 						<button 
-							groups="openhealth.roots,openhealth.archivers,openhealth.managers,openhealth.physicians"
-
-
+							name="create_controls" 
 							type="object" 
-
 							class="oe_highlight"
 
 							string="Crear Controles"
 
-							attrs="{'invisible':[('laser', '!=', 'laser_co2')]}"
 
-							name="create_controls" 
+							attrs="{'invisible':[
+													('laser', '!=', 'laser_quick'), 
+													('laser', '!=', 'laser_co2'), 
+												]}"
+
+
+							groups="openhealth.roots,openhealth.archivers,openhealth.managers,openhealth.physicians"
 						/>
 
 
@@ -164,9 +166,9 @@
 							
 
 
+
 								<!-- Nr Sessions --> 
 								<button type="action" class="oe_stat_button" icon="fa-list"
-
 									name="%(session_med_form_action)d"	
 
 									attrs="{ 'invisible':[	('nr_sessions','=',0), ]}"
@@ -175,21 +177,29 @@
 											'search_default_procedure': active_id,
 											}" 											
 									>
-									
 									<field string="Sesiones" name="nr_sessions" widget="statinfo"/>
 								</button>	
 
 
 
 
+
 								<!-- Nr Controls --> 								
-								<button type="action" class="oe_stat_button" 	attrs="{'invisible':[('laser', '!=', 'laser_co2')]}"
+								<button type="action" class="oe_stat_button" 	
 
 									name="%(control_form_action)d"	
 
 									context="{									
 											'search_default_procedure': active_id,
 											}" 											
+
+
+									attrs="{'invisible':[
+																('laser', '!=', 'laser_quick'), 
+																('laser', '!=', 'laser_co2'), 
+														]}"
+
+
 									icon="fa-list">
 									
 									<field string="Controles" name="nr_controls" widget="statinfo"/>

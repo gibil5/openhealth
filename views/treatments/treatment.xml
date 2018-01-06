@@ -637,6 +637,7 @@ Fields
 							<group>
 
 
+
 								<button 
 										name="reset" 	
 										type="object" 
@@ -644,9 +645,19 @@ Fields
 
 										string="Reset"
 
-										groups="openhealth.roots,openhealth.managers"			
+										groups="openhealth.roots"			
 									/>
 
+
+								<button 
+										name="reset_quick" 	
+										type="object" 
+										class="oe_highlight"
+
+										string="Reset Quick"
+
+										groups="openhealth.roots"			
+									/>
 
 							</group>
 

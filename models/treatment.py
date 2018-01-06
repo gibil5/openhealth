@@ -33,13 +33,77 @@ class Treatment(models.Model):
 
 
 
+# ----------------------------------------------------------- Reset ------------------------------------------------------
+
+
+	# Reset Quick 
+	@api.multi 
+	def reset_quick(self):
+
+
+		# Services 
+		self.service_quick_ids.unlink()
+
+
+		# Orders 
+		for order in self.order_ids:
+
+			if order.x_machine_req == 'laser_quick': 
+				order.remove_myself()
+
+
+
+
+	
+	# Reset 
+	@api.multi 
+	def reset(self):
+
+		#print 'jx'
+		#print 'Reset'
+
+
+		# Unlinks
+		self.service_quick_ids.unlink()
+		self.service_co2_ids.unlink()
+		self.service_excilite_ids.unlink()
+		self.service_ipl_ids.unlink()
+		self.service_ndyag_ids.unlink()
+		self.service_medical_ids.unlink()
+		self.consultation_ids.unlink()
+		self.procedure_ids.unlink()
+		self.session_ids.unlink()
+		self.control_ids.unlink()
+		self.appointment_ids.unlink()
+
+
+		# Numbers 
+		self.nr_invoices_cons = 0 
+		self.nr_invoices_pro = 0 
+
+
+
+		# Orders 
+		for order in self.order_ids:
+			order.remove_myself()
+
+
+
+		# Alta 
+		self.treatment_closed = False
+
+
+
+		# Important
+		self.patient.x_nothing = 'Nothing'
+
+	# reset
+
+
 
 
 
 # ----------------------------------------------------------- Important ------------------------------------------------------
-
-
-
 
 	# quick
 	service_quick_ids = fields.One2many(
@@ -505,74 +569,6 @@ class Treatment(models.Model):
 
 
 
-
-	# Reset 
-	@api.multi 
-	def reset(self):
-
-		#print 
-		#print 
-		#print 'jx'
-		#print 'Treatment - Reset'
-
-		#self.state = 'draft'
-		#self.x_payment_method.unlink()
-		#self.x_appointment.x_machine = False
-
-
-		# Unlinks
-		#print 'Unlinks'
-
-		self.service_quick_ids.unlink()
-
-
-		self.service_co2_ids.unlink()
-		self.service_excilite_ids.unlink()
-		self.service_ipl_ids.unlink()
-		self.service_ndyag_ids.unlink()
-		self.service_medical_ids.unlink()
-		self.consultation_ids.unlink()
-		self.procedure_ids.unlink()
-		self.session_ids.unlink()
-		self.control_ids.unlink()
-		self.appointment_ids.unlink()
-
-
-		# Numbers 
-		#self.nr_budgets_cons = 0 
-		#self.nr_budgets_pro = 0 
-		self.nr_invoices_cons = 0 
-		self.nr_invoices_pro = 0 
-
-
-
-		# Orders 
-		#self.order_ids.unlink()
-		for order in self.order_ids:
-			#print order 
-			#print order.name
-
-			order.remove_myself()
-
-
-
-		# Alta 
-		self.treatment_closed = False
-
-
-
-		# Important
-		self.patient.x_nothing = 'Nothing'
-
-
-
-
-
-		#print 
-		#print 
-		#print 
-
-	# reset
 
 
 

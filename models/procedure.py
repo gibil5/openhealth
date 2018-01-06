@@ -91,8 +91,11 @@ class Procedure(models.Model):
 	def _compute_number_controls(self):
 		for record in self:
 			if record.laser != 'consultation':
-				if record.laser == 'laser_co2':
+
+				#if record.laser == 'laser_co2':
+				if record.laser == 'laser_co2'  		or 		record.laser == 'laser_quick':
 					record.number_controls = 6
+				
 				else: 
 					record.number_controls = 0
 

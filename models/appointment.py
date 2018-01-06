@@ -19,9 +19,7 @@ from . import eval_vars
 
 
 class Appointment(models.Model):
-
 	_inherit = 'oeh.medical.appointment'
-
 
 
 	name = fields.Char(
@@ -36,6 +34,53 @@ class Appointment(models.Model):
 
 
 
+
+
+
+
+	# ----------------------------------------------------------- Dates ------------------------------------------------------
+	
+	# Date 
+	appointment_date = fields.Datetime(
+			string="Fecha", 
+			readonly=False,
+			#states={'Scheduled': [('readonly', False)]}), 
+		
+			default = fields.Date.today, 
+		)
+
+	#'appointment_date': fields.datetime('Appointment Date',required=True, readonly=True,states={'Scheduled': [('readonly', False)]}),
+
+
+
+	# Date end 
+	appointment_end = fields.Datetime(
+			string="Fecha fin", 		
+			readonly=True, 
+			)
+
+
+
+
+
+
+	# X Date 
+	x_date = fields.Date(
+			string="Fecha", 
+
+			compute="_compute_x_date",
+		)
+
+	#@api.multi
+	@api.depends('appointment_date')
+	def _compute_x_date(self):
+		date_format = "%Y-%m-%d %H:%M:%S"
+		for record in self:
+
+			dt = datetime.datetime.strptime(record.appointment_date, date_format)
+			
+			#record.x_date = dt.strftime(date_format)
+			record.x_date = dt.strftime("%Y-%m-%d")
 
 
 
@@ -108,22 +153,6 @@ class Appointment(models.Model):
 # ----------------------------------------------------------- Fields - Canonical ------------------------------------------------------
 
 
-
-	# Date 
-	appointment_date = fields.Datetime(
-			string="Fecha", 
-			readonly=False,
-			#states={'Scheduled': [('readonly', False)]}), 
-		)
-	#'appointment_date': fields.datetime('Appointment Date',required=True, readonly=True,states={'Scheduled': [('readonly', False)]}),
-
-
-
-	# Date end 
-	appointment_end = fields.Datetime(
-			string="Fecha fin", 		
-			readonly=True, 
-			)
 
 
 
@@ -691,27 +720,6 @@ class Appointment(models.Model):
 
 
 
-
-
-
-	#x_date = fields.Datetime(
-	x_date = fields.Date(
-
-			string="Fecha", 
-
-			compute="_compute_x_date",
-		)
-
-	#@api.multi
-	@api.depends('appointment_date')
-	def _compute_x_date(self):
-		date_format = "%Y-%m-%d %H:%M:%S"
-		for record in self:
-
-			dt = datetime.datetime.strptime(record.appointment_date, date_format)
-			
-			#record.x_date = dt.strftime(date_format)
-			record.x_date = dt.strftime("%Y-%m-%d")
 
 
 

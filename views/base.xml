@@ -63,6 +63,8 @@
 
 
 
+
+
 		<!-- Appointment -->
 		<record model="ir.actions.act_window" id="oeh_medical_appointment_list_action">
 			<field name="name">Citas</field>
@@ -73,12 +75,21 @@
 
 
 
+
+
+
+<!--
+											'default_appointment_date': time.strftime('%Y-%m-%d 14:00:00'),
+-->
+
 		<!-- Appointment Auto --> 
 		<record id="oeh_medical_appointment_action_auto" model="ir.actions.act_window">
 					<field name="name">Auto</field>			
 					<field name="res_model">oeh.medical.appointment</field>
 					<field name="view_type">form</field>
 					<field name="view_mode">form,calendar,tree</field>  
+					<field name="view_id" eval="False"/>
+
 
 					<field name="domain">[
 											('state', 'in', ['pre_scheduled','Scheduled', 'Completed', 'Invoiced']),
@@ -90,13 +101,9 @@
 					<field name="context">{
 											'default_x_target': 'doctor',
 											'default_x_type': 'consultation',
-											'default_appointment_date': time.strftime('%Y-%m-%d 14:00:00'),
+
 										}
 					</field>
-
-
-
-					<field name="view_id" eval="False"/>
 		</record>
 
 

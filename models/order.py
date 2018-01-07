@@ -34,6 +34,71 @@ class sale_order(models.Model):
 
 
 
+# ----------------------------------------------------------- Important ------------------------------------------------------
+
+	# Serial Number 
+	x_serial_nr = fields.Char(
+
+			'Número de serie', 
+
+			compute="_compute_x_serial_nr",
+		)
+
+
+
+	@api.multi
+	#@api.depends('partner_id')
+
+	def _compute_x_serial_nr(self):
+		for record in self:
+
+			if record.x_payment_method != False: 
+				serial_nr = ''
+
+
+
+
+				if record.x_type == 'ticket_receipt':
+					serial_nr = record.x_payment_method.ticket_receipt.name 
+
+
+				elif record.x_type == 'ticket_invoice':
+					serial_nr = record.x_payment_method.ticket_invoice.name 
+
+
+
+
+
+				elif record.x_type == 'receipt':
+					serial_nr = record.x_payment_method.receipt.name 
+
+				elif record.x_type == 'invoice':
+					serial_nr = record.x_payment_method.invoice.name 
+
+
+				elif record.x_type == 'advertisement':
+					serial_nr = record.x_payment_method.advertisement.name 
+
+				elif record.x_type == 'sale_note':
+					serial_nr = record.x_payment_method.sale_note.name 
+
+
+
+				record.x_serial_nr = serial_nr
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	# Patient 
@@ -427,55 +492,6 @@ class sale_order(models.Model):
 				record.x_type = record.x_payment_method.saledoc
 
 
-
-
-
-
-	# Serial Number 
-	x_serial_nr = fields.Char(
-
-			'Número de serie', 
-
-			compute="_compute_x_serial_nr",
-		)
-
-
-	@api.multi
-	#@api.depends('partner_id')
-
-	def _compute_x_serial_nr(self):
-		for record in self:
-
-			if record.x_payment_method != False: 
-				serial_nr = ''
-
-
-
-				if record.x_type == 'receipt':
-					serial_nr = record.x_payment_method.receipt.name 
-
-				elif record.x_type == 'invoice':
-					serial_nr = record.x_payment_method.invoice.name 
-
-
-
-				elif record.x_type == 'ticket_receipt':
-					serial_nr = record.x_payment_method.ticket_receipt.name 
-
-				elif record.x_type == 'ticket_invoice':
-					serial_nr = record.x_payment_method.ticket_invoice.name 
-
-
-
-				elif record.x_type == 'advertisement':
-					serial_nr = record.x_payment_method.advertisement.name 
-
-				elif record.x_type == 'sale_note':
-					serial_nr = record.x_payment_method.sale_note.name 
-
-
-
-				record.x_serial_nr = serial_nr
 
 
 

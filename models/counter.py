@@ -2,7 +2,6 @@
 #
 # 	counter
 # 
-#
 
 from openerp import models, fields, api
 
@@ -16,27 +15,47 @@ class counter(models.Model):
 
 
 
-	name = fields.Selection(
 
-			#selection=ord_vars._sale_doc_type_list, 			
-			selection=ord_vars._counter_type_list, 			
+	# Prefix 
+	prefix = fields.Char(
+			string="Prefijo", 
+		)
 
 
-			string="Nombre", 
-			#default='receipt', 
+
+	# Padding
+	padding = fields.Integer(
+			string="Padding",
+			default=0,  
 		)
 
 
 
 
+	# Total 
+	total = fields.Char(
 
-	vspace = fields.Char(
-			' ', 
-			readonly=True
+			string="Total", 
+		
+			compute='_compute_total', 
 		)
 
+	@api.multi
+	#@api.depends()
+	def _compute_total(self):
+		
+		for record in self:
+		
+			#record.total = record.prefix + str(record.value)
+			record.total = record.prefix + str(record.value).zfill(record.padding)
 
 
+
+
+
+
+
+	# Value 
 	value = fields.Integer(
 			string="Valor", 
 			default=1, 
@@ -52,26 +71,14 @@ class counter(models.Model):
 
 
 
-	# Date created 
-	date_created = fields.Datetime(
-			string="Fecha de creación", 
-			default = fields.Date.today,
-			#readonly=True,
-			required=True, 
-			)
-
-
-	# Date modified
-	date_modified = fields.Datetime(
-			string="Ultima modificación", 
-			default = fields.Date.today,
-			#readonly=True,
-			required=True, 
-			)
 
 
 
 
+
+
+
+# ----------------------------------------------------------- Actions ------------------------------------------------------
 
 	# Increase
 	@api.multi 
@@ -91,5 +98,47 @@ class counter(models.Model):
 	def reset(self):
 		self.value = 1
 		self.date_modified = fields.datetime.now()
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+	vspace = fields.Char(
+			' ', 
+			readonly=True
+		)
+
+
+
+
+	# Name
+	name = fields.Selection(
+			selection=ord_vars._counter_type_list, 			
+			string="Nombre", 
+			#default='receipt', 
+		)
+
+
+
+	# Date created 
+	date_created = fields.Datetime(
+			string="Fecha de creación", 
+			default = fields.Date.today,
+			#readonly=True,
+			required=True, 
+			)
+
+
+	# Date modified
+	date_modified = fields.Datetime(
+			string="Ultima modificación", 
+			default = fields.Date.today,
+			#readonly=True,
+			required=True, 
+			)
 
 

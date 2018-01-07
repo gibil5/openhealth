@@ -8,7 +8,8 @@
 			
 			<field name="model">openhealth.ticket_invoice</field>
 
-			<field name="inherit_id" ref="receipt_form_view"/>			
+			<field name="inherit_id" ref="receipt_form_view"/>
+						
 	        <field name="mode">primary</field>
 	        <field name="priority" eval="1"/>
 
@@ -20,16 +21,49 @@
 					<h1>Ticket Factura</h1>					
 				</xpath>
 
+
+
 <!--
 				<xpath expr="//field[@name='name']" position="replace">
 					<field name="name" />
 				</xpath>
 -->
+				<xpath expr="//field[@name='name']" position="after">
+
+					
+					<field name="vspace" />
+
+					<field name="serial_nr" />
 
 
 
-				<xpath expr="//field[@name='total']" position="after">
+					<field name="vspace" />
+
+					<field name="prefix" />
+
+
+
+					<field name="vspace" />
+					
+					<field name="counter" />
+
+
+
+
+					<field name="vspace" />
+					<field name="vspace" />
+				</xpath>
+
+
+
+
+
+
+
+
+
 <!--
+				<xpath expr="//field[@name='total']" position="after">
 					<field name="vspace" />
 					
 					<field name="ruc"		required="1"		 />
@@ -37,8 +71,10 @@
 					<field name="company"	required="1"		 />
 
 					<field name="address"	required="1"		 />
--->
 				</xpath>
+-->
+
+
 
 
 			</field>

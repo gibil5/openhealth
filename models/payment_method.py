@@ -2,14 +2,10 @@
 #
 # 	payment_method 
 # 
-#
 
 from openerp import models, fields, api
 
-
-
 from . import ord_vars
-
 
 
 class payment_method(models.Model):
@@ -21,6 +17,30 @@ class payment_method(models.Model):
 
 
 
+
+
+	# Serial Number 
+	#serial_nr = fields.Char(
+	#		string="Nr de Serie", 
+	#	)
+
+
+
+	# Prefix 
+	#prefix = fields.Char(
+	#		string="Prefijo", 
+	#	)
+
+
+
+
+
+
+
+
+
+
+	# Name 
 	name = fields.Char(
 			#string="Medio de Pago", 
 			string="Pagos", 
@@ -38,6 +58,8 @@ class payment_method(models.Model):
 			#record.name = 'PA-' + str(record.id) 
 			#record.name = str(record.id) 
 			record.name = 'PA-' + str(record.id).zfill(6)
+
+
 
 
 

@@ -2,17 +2,24 @@
 #
 # 	ticket_invoice 
 # 
-#
+
 from openerp import models, fields, api
+
 
 class TicketInvoice(models.Model):
 	
-	_name = 'openhealth.ticket_invoice'
-
 	_inherit='openhealth.sale_proof'
 
+	_name = 'openhealth.ticket_invoice'
 
 
+
+
+
+
+
+	# ----------------------------------------------------------- Primitives ------------------------------------------------------
+	
 	name = fields.Char(
 			string="Ticket Factura #", 
 		)
@@ -21,6 +28,8 @@ class TicketInvoice(models.Model):
 	family = fields.Selection(
 			default='ticket_invoice', 
 		)
+
+
 
 
 

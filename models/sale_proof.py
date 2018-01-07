@@ -2,21 +2,63 @@
 #
 # 	Sale proof 
 # 
-#
 
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-
 from openerp import models, fields, api
 from num2words import num2words
-
 
 
 class SaleProof(models.Model):
 	
 	_name = 'openhealth.sale_proof'
+
+
+
+
+
+# ----------------------------------------------------------- Important ------------------------------------------------------
+
+	# Serial Number 
+	serial_nr = fields.Char(
+			string="Nr de Serie", 
+		)
+
+
+
+	# Prefix 
+	prefix = fields.Char(
+			string="Prefijo", 
+		)
+
+
+
+
+
+	# Counter 
+	counter = fields.Many2one(
+
+			'openhealth.counter',
+			
+			string="Counter",
+
+			#required=True, 
+			required=False, 
+			
+			compute="_compute_counter",
+		)
+
+
+	@api.multi
+	#@api.depends('saledoc')
+
+	def _compute_counter(self):
+
+		for record in self:
+		
+			record.counter = self.env['openhealth.counter'].search([('name', 'like', record.family)])
 
 
 
@@ -64,24 +106,6 @@ class SaleProof(models.Model):
 
 
 # ----------------------------------------------------------- Vars Required ------------------------------------------------------
-
-
-
-	# Counter 
-	counter = fields.Many2one('openhealth.counter',
-			string="Counter",
-
-			#required=True, 
-			required=False, 
-			compute="_compute_counter",
-			)
-
-	@api.multi
-	#@api.depends('saledoc')
-
-	def _compute_counter(self):
-		for record in self:
-			record.counter = self.env['openhealth.counter'].search([('name', 'like', record.family)])
 
 
 

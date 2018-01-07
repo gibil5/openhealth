@@ -431,12 +431,12 @@ Deprecated
 
 <!-- Config --> 
 		<menuitem 	id="sales_config_menu" 
-					name="Configuración"
 					parent="main_sales_menu"
-
-					groups="openhealth.managers"
-
 					sequence="5"
+
+					name="Configuración"
+
+					groups="openhealth.roots,openhealth.caja,openhealth.managers,openhealth.directors"
 					/>
 
 		<menuitem 	id="sales_counters_menu" 

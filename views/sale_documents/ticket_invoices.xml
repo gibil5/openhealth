@@ -31,16 +31,6 @@
 				<xpath expr="//field[@name='name']" position="after">
 
 					
-					<field name="vspace" />
-
-					<field name="serial_nr" />
-
-
-
-					<field name="vspace" />
-
-					<field name="prefix" />
-
 
 
 					<field name="vspace" />

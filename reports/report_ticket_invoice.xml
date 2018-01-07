@@ -1,5 +1,5 @@
 <openerp>
-	<data noupdate='0'>
+	<data>
 
 
 
@@ -7,8 +7,11 @@
 <!-- Ticket Factura -->
 		<report
 			string="Ticket Factura"
+
 			model="sale.order"
+			
 			id="report_ticket_invoice"
+			
 			report_type="qweb-pdf"
 			
 			name="openhealth.report_ticket_invoice_view"            
@@ -108,9 +111,14 @@
 		<b>Serie:</b>
 	</div>
 	<div class='col-xs-8'>
+<!--
 		<t t-esc="doc.x_serial_nr"/>
+-->
+		<t t-esc="doc.x_payment_method.ticket_invoice.counter.prefix"/>
+
 	</div>
 </div>
+
 
 
 
@@ -218,10 +226,12 @@
 		<b>Ticket:</b>
 	</div>
 	<div class='col-xs-8'>
+
 <!--
 		<t t-esc="doc.name"/>
 -->
 		<t t-esc="doc.x_serial_nr"/>
+
 	</div>
 </div>
 <br/>

@@ -47,6 +47,7 @@
 		</record>
 
 <!--
+-->
 		<record id="cramirez_clinicachavarri" model="res.users">
 			<field name="name">Cinthya Ramirez</field>
 			<field name="login">cramirez@clinicachavarri.com</field>
@@ -61,7 +62,6 @@
 			<field name="partner_id" ref="cramirez"/>
 			<field name="lang">es_ES</field>
 		</record>
--->
 
 
 

@@ -48,7 +48,7 @@
 <br/>
 <center>
 <h3>
-	Ticket Recibo
+	Ticket Boleta
 </h3>
 </center>
 <br/>
@@ -108,35 +108,31 @@
 
 
 <!-- Serial number --> 
+<!--
 <div class='row'>
 	<div class='col-xs-4'>		
 		<b>Serie:</b>
 	</div>
 	<div class='col-xs-8'>
-
-<!--
--->
 		<t t-esc="doc.x_payment_method.ticket_receipt.counter.prefix"/>
-
 	</div>
 </div>
+-->
 
 
 
 <!-- Authorization --> 
+<!--
 <div class='row'>
 	<div class='col-xs-4'>		
 		<b>Autorización:</b>
 	</div>
 	<div class='col-xs-8'>
-<!--
-		<t t-esc="doc.x_authorization"/>
--->
 		<t t-esc="doc.user_id.name"/>
 	</div>
 </div>
 <br/>
-
+-->
 
 
 

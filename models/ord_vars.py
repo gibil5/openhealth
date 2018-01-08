@@ -6,6 +6,9 @@
 
 _counter_type_list = [
 
+						('emr', 				'Historias'),
+
+
 						('receipt', 			'Boleta'),
 						('invoice', 			'Factura'),
 						('advertisement', 		'Canje Publicidad'),

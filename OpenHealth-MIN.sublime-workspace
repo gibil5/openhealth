@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"cou",
+				"counter"
+			],
+			[
+				"la",
+				"laser_co2"
+			],
+			[
 				"Pre",
 				"Precio"
 			],
@@ -156,10 +164,6 @@
 				"order_pro_ids"
 			],
 			[
-				"la",
-				"laser_m22"
-			],
-			[
 				"x_m",
 				"x_machine_req"
 			],
@@ -262,10 +266,6 @@
 			[
 				"phon",
 				"phone_2"
-			],
-			[
-				"cou",
-				"country_id"
 			],
 			[
 				"rep",
@@ -395,33 +395,25 @@
 			"file": "__openerp__.py",
 			"settings":
 			{
-				"buffer_size": 9861,
+				"buffer_size": 9903,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "models/appointment.py",
+			"file": "data/users/pwds.xml",
 			"settings":
 			{
-				"buffer_size": 19628,
+				"buffer_size": 2305,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "views/appointments/appointment.xml",
+			"file": "data/users/base_data_users_platform.xml",
 			"settings":
 			{
-				"buffer_size": 10464,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/base.xml",
-			"settings":
-			{
-				"buffer_size": 27355,
+				"buffer_size": 8241,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -500,6 +492,33 @@
 	},
 	"file_history":
 	[
+		"/Users/gibil/cellar/github/openhealth/views/menus/menus.xml",
+		"/Users/gibil/cellar/github/openhealth/data/users/pwds.xml",
+		"/Users/gibil/cellar/github/openhealth/reports/report_ticket_receipt.xml",
+		"/Users/gibil/cellar/github/openhealth/reports/report_ticket_invoice.xml",
+		"/Users/gibil/cellar/github/openhealth/views/sale_documents/ticket_invoices.xml",
+		"/Users/gibil/cellar/github/openhealth/views/sale_documents/ticket_receipts.xml",
+		"/Users/gibil/cellar/github/openhealth/views/counters/counter.xml",
+		"/Users/gibil/cellar/github/openhealth/models/counter.py",
+		"/Users/gibil/cellar/github/openhealth/models/order.py",
+		"/Users/gibil/cellar/github/openhealth/readme.txt",
+		"/Users/gibil/cellar/github/openhealth/views/sale_documents/receipts.xml",
+		"/Users/gibil/cellar/github/openhealth/views/sale_documents/sale_documents.xml",
+		"/Users/gibil/cellar/github/openhealth/models/ticket_invoice.py",
+		"/Users/gibil/cellar/github/openhealth/models/sale_proof.py",
+		"/Users/gibil/cellar/github/openhealth/models/payment_method.py",
+		"/Users/gibil/cellar/github/openhealth/views/procedures/procedure.xml",
+		"/Users/gibil/cellar/github/openhealth/models/treatment_funcs.py",
+		"/Users/gibil/cellar/github/openhealth/views/procedures/procedure_controls.xml",
+		"/Users/gibil/cellar/github/openhealth/models/treatment.py",
+		"/Users/gibil/cellar/github/openhealth/models/treatment_funcs.TRASH.py",
+		"/Users/gibil/cellar/github/openhealth/views/treatments/treatment.xml",
+		"/Users/gibil/cellar/github/openhealth/views/base.xml",
+		"/Users/gibil/cellar/github/openhealth/views/appointments/appointment.xml",
+		"/Users/gibil/cellar/github/openhealth/models/patient.py",
+		"/Users/gibil/cellar/github/openhealth/models/appointment.py",
+		"/Users/gibil/cellar/github/openhealth/views/treatments/treatment_orders.xml",
+		"/Users/gibil/cellar/github/openhealth/models/procedure.py",
 		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_cash.xml",
 		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_doctors.xml",
 		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_assistants.xml",
@@ -509,34 +528,24 @@
 		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_platform.xml",
 		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_managers.xml",
 		"/Users/gibil/cellar/github/openhealth/data/users/tmp.xml",
-		"/Users/gibil/cellar/github/openhealth/data/users/pwds.xml",
-		"/Users/gibil/cellar/github/openhealth/models/treatment.py",
-		"/Users/gibil/cellar/github/openhealth/views/treatments/treatment.xml",
 		"/Users/gibil/cellar/github/openhealth/views/services/service.xml",
 		"/Users/gibil/cellar/github/openhealth/views/orders/order.xml",
 		"/Users/gibil/cellar/github/openhealth/views/orders/order_line.xml",
 		"/Users/gibil/cellar/github/openhealth/models/order_line.py",
 		"/Users/gibil/cellar/github/openhealth/views/treatments/treatment_services.xml",
-		"/Users/gibil/cellar/github/openhealth/models/order.py",
 		"/Users/gibil/cellar/github/openhealth/data/users/pwds",
 		"/Users/gibil/cellar/github/openhealth/models/purchase.py",
-		"/Users/gibil/cellar/github/openhealth/readme.txt",
 		"/Users/gibil/cellar/github/openhealth/views/services/service_quick.xml",
-		"/Users/gibil/cellar/github/openhealth/views/base.xml",
 		"/Users/gibil/cellar/github/openhealth/data/prods/odoo_data_products.xml",
-		"/Users/gibil/cellar/github/openhealth/views/menus/menus.xml",
 		"/Users/gibil/cellar/github/openhealth/views/menus/menus_openhealth.xml",
 		"/Users/gibil/cellar/github/openhealth/views/products/product.xml",
-		"/Users/gibil/cellar/github/openhealth/views/appointments/appointment.xml",
 		"/Users/gibil/cellar/github/openhealth/views/sessions/session.xml",
 		"/Users/gibil/cellar/github/openhealth/views/consultations/consultation.xml",
 		"/Users/gibil/cellar/github/openhealth/views/treatments/treatment_procedures.xml",
 		"/Users/gibil/cellar/github/openhealth/views/treatments/treatment_consultations.xml",
-		"/Users/gibil/cellar/github/openhealth/views/treatments/treatment_orders.xml",
 		"/Users/gibil/cellar/github/openhealth/views/treatments/treatment_appointments.xml",
 		"/Users/gibil/cellar/github/openhealth/views/patients/patient_control_docs.xml",
 		"/Users/gibil/cellar/github/openhealth/views/patients/patient.xml",
-		"/Users/gibil/cellar/github/openhealth/models/procedure.py",
 		"/Users/gibil/cellar/github/openhealth/views/recommendations/recommendation.xml",
 		"/Users/gibil/cellar/github/openhealth/models/treatment_vars.py",
 		"/Users/gibil/cellar/github/openhealth/views/services/service_co2.xml",
@@ -554,9 +563,6 @@
 		"/Users/gibil/cellar/github/openhealth/models/order_line.tmp.py",
 		"/Users/gibil/cellar/github/openhealth/models/cosvars.py",
 		"/Users/gibil/cellar/github/openhealth/models/app_vars.py",
-		"/Users/gibil/cellar/github/openhealth/models/appointment.py",
-		"/Users/gibil/cellar/github/openhealth/models/treatment_funcs.py",
-		"/Users/gibil/cellar/github/openhealth/models/patient.py",
 		"/Users/gibil/cellar/github/openhealth/data/pricelist_quick.xml",
 		"/Users/gibil/cellar/github/openhealth/data/pricelists.xml",
 		"/Users/gibil/cellar/github/openhealth/data/pricelist_quick.BUF.xml",
@@ -567,8 +573,6 @@
 		"/Users/gibil/cellar/github/openhealth/models/__init__.py",
 		"/Users/gibil/cellar/github/openhealth/models/treatment.TRASH.py",
 		"/Users/gibil/cellar/github/openhealth/models/patient.TRASH.py",
-		"/Users/gibil/cellar/github/openhealth/models/counter.py",
-		"/Users/gibil/cellar/github/openhealth/views/counters/counter.xml",
 		"/Users/gibil/cellar/github/openhealth/models/counter_raw.py",
 		"/Users/gibil/cellar/github/openhealth/views/sessions/session_med.xml",
 		"/Users/gibil/cellar/github/openhealth/views/services/service_quick_zone.xml",
@@ -615,19 +619,7 @@
 		"/Users/gibil/cellar/github/openhealth/views/controls/control.xml",
 		"/Users/gibil/cellar/github/openhealth/models/control.py",
 		"/Users/gibil/cellar/github/openhealth/views/stock/stock.xml",
-		"/Users/gibil/cellar/github/openhealth/data/stock_move_data.xml",
-		"/Users/gibil/cellar/github/openhealth/views/purchase/purchase.xml",
-		"/Users/gibil/cellar/github/openhealth/views/purchase/purchase_report_view.xml",
-		"/Users/gibil/cellar/github/openhealth/views/purchase/purchase_report.xml",
-		"/Users/gibil/cellar/github/openhealth/data/base_data_categs.xml",
-		"/Users/gibil/cellar/github/openhealth/views/procedures/procedure_controls.xml",
-		"/Users/gibil/cellar/github/openhealth/models/control.TRASH.py",
-		"/Users/gibil/cellar/github/openhealth/models/procedure_med.py",
-		"/Users/gibil/cellar/github/openhealth/models/jrfuncs.py",
-		"/Users/gibil/cellar/github/openhealth/views/procedures/procedure_cos.xml",
-		"/Users/gibil/cellar/github/openhealth/views/sessions/session_cos.TRASH.xml",
-		"/Users/gibil/cellar/github/openhealth/views/sessions/session_cos.xml",
-		"/Users/gibil/cellar/github/openhealth/views/partners/partner.xml"
+		"/Users/gibil/cellar/github/openhealth/data/stock_move_data.xml"
 	],
 	"find":
 	{
@@ -646,6 +638,20 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"ivanna",
+			"michelot",
+			"name",
+			"prefix",
+			"date",
+			"serial",
+			"prefix",
+			"serial",
+			"counter",
+			"x_serial_nr",
+			"caja",
+			"create_proc",
+			"reset",
+			"default",
 			"date",
 			"auto",
 			"<field name=\"name\">",
@@ -759,28 +765,17 @@
 			"neck",
 			"vip",
 			"co2",
-			"nr_hands",
-			"nr_hands_i",
-			"hands",
-			"x_allergies",
-			"counter",
-			"counter_raw",
-			"nr_hands",
-			"comeback",
-			"create",
-			"hands",
-			"body",
-			"treatment_ids",
-			"patient",
-			"appointment",
-			"medical_appointment"
+			"nr_hands"
 		],
 		"highlight": true,
-		"in_selection": false,
+		"in_selection": true,
 		"preserve_case": false,
 		"regex": false,
 		"replace_history":
 		[
+			"cinthya",
+			"ramirez",
+			"total",
 			"",
 			"quick",
 			"pathology",
@@ -905,21 +900,18 @@
 			"x_total_",
 			"x_total_in_words",
 			"x_my_company",
-			"partner_id.",
-			"x_address",
-			"data/prods/",
-			"data/users/"
+			"partner_id."
 		],
 		"reverse": false,
 		"show_context": true,
 		"use_buffer2": true,
-		"whole_word": true,
+		"whole_word": false,
 		"wrap": true
 	},
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -928,15 +920,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9861,
+						"buffer_size": 9903,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3347,
-								3347
+								138,
+								138
 							]
 						],
 						"settings":
@@ -948,82 +940,52 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "models/appointment.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 19628,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								752,
-								752
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 12.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "views/appointments/appointment.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10464,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7342,
-								7346
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 6099.0,
-						"zoom_level": 1.0
-					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "views/base.xml",
+					"buffer": 1,
+					"file": "data/users/pwds.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 27355,
+						"buffer_size": 2305,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2778,
-								2778
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "data/users/base_data_users_platform.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8241,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								831,
+								831
 							]
 						],
 						"settings":
@@ -1032,10 +994,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1192.0,
+						"translation.y": 340.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -1094,6 +1056,10 @@
 		"selected_items":
 		[
 			[
+				"c",
+				"~/cellar/github/openhealth/views/counters/counter.xml"
+			],
+			[
 				"t",
 				"~/cellar/github/openhealth/views/treatments/treatment_services.xml"
 			],
@@ -1136,10 +1102,6 @@
 			[
 				"a",
 				"~/cellar/github/openhealth/models/appointment.py"
-			],
-			[
-				"c",
-				"~/cellar/github/openhealth/views/consultations/consultation.xml"
 			],
 			[
 				"sec",

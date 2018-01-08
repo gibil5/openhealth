@@ -119,7 +119,9 @@ class counter(models.Model):
 
 	# Name
 	name = fields.Selection(
+
 			selection=ord_vars._counter_type_list, 			
+
 			string="Nombre", 
 			#default='receipt', 
 		)

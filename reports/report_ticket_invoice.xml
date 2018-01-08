@@ -113,8 +113,8 @@
 	<div class='col-xs-8'>
 
 <!--
-		<t t-esc="doc.x_payment_method.ticket_invoice.counter.prefix"/>
 -->
+		<t t-esc="doc.x_payment_method.ticket_invoice.counter.prefix"/>
 
 	</div>
 </div>

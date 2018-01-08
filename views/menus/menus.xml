@@ -461,13 +461,15 @@ Deprecated
 -->
 
 
+
 		<!-- Appointments -->
 		<menuitem id="main_appointment_menu_jx" 
 			sequence="-8"
 			name="Citas"
 
-			groups="openhealth.roots,openhealth.reception,openhealth.caja,openhealth.physicians,openhealth.managers,openhealth.directors"
+			groups="openhealth.roots,openhealth.assistants,openhealth.reception,openhealth.caja,openhealth.physicians,openhealth.managers,openhealth.directors"
 			/>
+
 
 
 		<menuitem id="oehealth_appointment_menu" 

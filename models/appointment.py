@@ -498,6 +498,7 @@ class Appointment(models.Model):
 
 
 							'laser_quick':		'Quick',
+							'criosurgery':		'Crio',
 
 
 

@@ -111,10 +111,10 @@
 		<b>Serie:</b>
 	</div>
 	<div class='col-xs-8'>
+
 <!--
-		<t t-esc="doc.x_serial_nr"/>
--->
 		<t t-esc="doc.x_payment_method.ticket_invoice.counter.prefix"/>
+-->
 
 	</div>
 </div>

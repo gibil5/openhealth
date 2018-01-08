@@ -83,7 +83,8 @@
 								<field name="value"   />													
 								
 								<field name="vspace" />
-								
+
+<!--								
 								<field name="prefix"   />													
 
 								<field name="vspace" />
@@ -93,6 +94,7 @@
 								<field name="vspace" />
 
 								<field name="total"   />													
+-->
 							</group>
 
 							<group></group>

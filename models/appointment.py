@@ -495,6 +495,12 @@ class Appointment(models.Model):
 	_hash_x_machine = {
 							False:				'', 
 
+
+
+							'laser_quick':		'Quick',
+
+
+
 							'laser_co2_1':		'C1',
 							'laser_co2_2':		'C2',
 							'laser_co2_3':		'C3',

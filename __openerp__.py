@@ -212,7 +212,11 @@
 
 
 		# Products 
-		'data/prods/odoo_data_products.xml',			# check 
+		'data/prods/odoo_data_products.xml',			 
+		'data/prods/odoo_data_products_new.xml',			
+
+
+
 		'data/prods/odoo_data_services_co2.xml',		# check
 		'data/prods/odoo_data_services_exc.xml',		# check
 		'data/prods/odoo_data_services_m22.xml',		# check

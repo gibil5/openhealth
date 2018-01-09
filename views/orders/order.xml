@@ -1647,6 +1647,11 @@ grey:state in ('cancel')
 
 					<field name="x_serial_nr" />
 
+					<field name="partner_id"/>
+
+					<field name="product"/>
+
+
 
 
 					<field name="date_order"	string="Fecha"	/>
@@ -1656,6 +1661,8 @@ grey:state in ('cancel')
 
 <!--
 					<field name="user_id"		string="Vendedor"	/>
+					<field name="x_doctor_uid"		/>
+					<field name="categ"/>
 -->
 					<field name="user_id"		string="Generado por"	/>
 					
@@ -1663,16 +1670,12 @@ grey:state in ('cancel')
 
 					<field name="x_doctor"		/>
 					
-					<field name="x_doctor_uid"		/>
 					
 
 
 
-					<field name="partner_id"/>
 
-					<field name="product"/>
 
-					<field name="categ"/>
 
 					<field name="nr_lines"/>
 

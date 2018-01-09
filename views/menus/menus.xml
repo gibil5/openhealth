@@ -221,6 +221,29 @@
 
 
 
+<!-- Closings --> 			
+		<menuitem 	id="sales_closings_menu" 
+					name="Cierres de caja"
+					parent="main_sales_menu"
+
+					sequence="2"
+					/>
+
+
+			<menuitem 	id="sales_closings_sub_menu" 						
+						name="Cierres de caja"
+						parent="sales_closings_menu"
+						sequence="1"
+
+						action="closings_list_action"
+						/>
+
+
+
+
+
+
+
 
 <!-- Productos --> 			
 		<menuitem 	id="prods_menu" 
@@ -229,7 +252,7 @@
 			
 					parent="main_sales_menu"
 
-					sequence="2"
+					sequence="3"
 					/>
 
 
@@ -252,7 +275,7 @@
 			
 					parent="main_sales_menu"
 
-					sequence="3"
+					sequence="4"
 					/>
 
 
@@ -348,12 +371,12 @@
 
 
 
-		<!-- Vip --> 			
+<!-- Vip --> 			
 		<menuitem 	id="sales_cards_menu" 
 					name="Vip"
 					parent="main_sales_menu"
 
-					sequence="4"
+					sequence="5"
 					/>
 
 
@@ -387,26 +410,6 @@
 
 
 
-		<!-- Closings --> 			
-		<menuitem 	id="sales_closings_menu" 
-					name="Cierres de caja"
-					parent="main_sales_menu"
-
-					sequence="5"
-					/>
-
-
-
-			<menuitem 	id="sales_closings_sub_menu" 
-						
-						name="Cierres de caja"
-						
-						parent="sales_closings_menu"
-						
-						sequence="1"
-
-						action="closings_list_action"
-						/>
 
 
 

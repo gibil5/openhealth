@@ -644,10 +644,13 @@
 
 
 							name="print_ticket"
+
 							string="IMPRIMIR"
 
 
 
+
+							groups="openhealth.roots"
 
 
 

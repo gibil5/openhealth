@@ -455,12 +455,13 @@
 
 
 
+		<field name="x_vip_inprog" 		string="vinp"	/>
+
+
+
 
 		
 		<field name="price_unit"		string="Precio"	/>
-
-
-
 
 		<field name="tax_id"			/>
 

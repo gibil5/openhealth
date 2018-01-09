@@ -4,8 +4,6 @@
 
 
 
-
-
 		<!-- ACNECLEAN -->
 		<record id='acneclean' model='product.template'>
 
@@ -29,6 +27,39 @@
 			<field name='x_price_vip'></field>
 			<field name='x_date_created'>2018-01-09 00:00:00 UTC</field>
 		</record>
+
+
+
+
+		<!-- VIP CARD -->
+		<record id='vip_card' model='product.template'>
+
+			<field name='type'>product</field>
+			
+			<field name='x_name_short'>vip_card</field>
+
+			<field name='name'>TARJETA VIP</field>
+			
+			<field name='categ_id' ref="card"/>
+
+			<field name='default_code'>57</field>
+
+
+
+
+			<field name='price'>300.0</field>
+			
+			<field name='standard_price'>0.0</field>
+
+			<field name='x_family'>card</field>
+			
+			<field name='x_brand'>CLINICA CHAVARRI</field>
+			
+			<field name='x_price_vip'></field>
+			
+			<field name='x_date_created'>2017-03-28 20:15:18 UTC</field>
+		</record>
+
 
 
 

@@ -37,6 +37,8 @@ def create_order_lines(self, laser, order_id):
 
 				'quick':		'openhealth.service.quick',
 
+				'vip':		'openhealth.service.vip',
+
 
 				'co2':			'openhealth.service.co2',
 				'excilite':		'openhealth.service.excilite',

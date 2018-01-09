@@ -580,13 +580,13 @@
 
 		# Service Quick
 		'views/services/service_quick.xml',
-		#'views/services/service_quick_zone.xml',
+
 
 
 
 
 		# Service Vip
-		'views/services/service_vip.xml',
+		#'views/services/service_vip.xml',
 
 
 

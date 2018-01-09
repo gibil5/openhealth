@@ -1,6 +1,41 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
-	<data noupdate='1'>
+	<data noupdate='0'>
+
+
+
+		<!-- Data - Products -->
+		<record id='acneclean' model='product.template'>
+
+			<field name='type'>product</field>
+			
+			<field name='x_name_short'>acneclean</field>
+
+			<field name='name'>ACNECLEAN 50 GR</field>
+
+			<field name='default_code'>788</field>
+
+			<field name='categ_id' ref="topical"/>
+
+			<field name='price'>200.0</field>
+
+			<field name='standard_price'>200.0</field>
+
+
+			<field name='x_family'>topical</field>
+			<field name='x_brand'></field>
+			<field name='x_price_vip'></field>
+			<field name='x_date_created'>2018-01-09 00:00:00 UTC</field>
+		</record>
+
+
+
+
+
+
+
+
+
 
 
 

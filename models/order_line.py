@@ -15,6 +15,24 @@ class sale_order_line(models.Model):
 
 
 
+	# Vip in progress 
+	x_vip_inprog = fields.Boolean(
+			default=False, 
+		
+			compute='_compute_vip_inprog', 
+		)
+
+	@api.multi
+	def _compute_vip_inprog(self):
+
+		for record in self:
+
+			record.x_vip_inprog = False
+
+
+
+
+
 
 
 
@@ -37,14 +55,19 @@ class sale_order_line(models.Model):
 		for record in self:
 
 
-			if record.x_price_manual != False: 						# Manual 
+
+			if record.x_price_manual != False: 						# Manual 				
 				record.price_unit = record.x_price_manual
+
 
 
 			else: 
 				
-				if 	not record.order_id.x_partner_vip: 				# Not VIP
+
+				#if 	not record.order_id.x_partner_vip: 				
+				if 		not record.order_id.x_partner_vip  		and  	not record.x_vip_inprog: 				# Not VIP
 					record.price_unit = record.x_price_std
+
 
 
 				else: 												# VIP

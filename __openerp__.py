@@ -586,7 +586,7 @@
 
 
 		# Service Vip
-		#'views/services/service_vip.xml',
+		'views/services/service_vip.xml',
 
 
 

@@ -35,7 +35,6 @@
 
 
 <!-- vip --> 
-<!--
 							<page string="VIP"   		attrs="{'invisible':[('nr_services_vip', '=', 0)]}"  >
 
 								<field name="service_vip_ids">	
@@ -57,7 +56,7 @@
 								</field>
 
 							</page>
--->
+
 
 
 

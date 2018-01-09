@@ -451,10 +451,8 @@
 -->
 		<record model="ir.actions.act_window" id="service_vip_list_action">
 			<field name="name">Servicios vip</field>
-<!--
+
 			<field name="res_model">openhealth.service.vip</field>
--->		
-			<field name="res_model">openhealth.service.quick</field>
 
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>

@@ -36,12 +36,12 @@
 
 
 				<xpath expr="//field[@name='zone']" position="replace">
-						<field name="zone" 			/>
+						<field name="zone" 		invisible="1"	/>
 				</xpath>
 
 
 				<xpath expr="//field[@name='pathology']" position="replace">
-						<field name="pathology" 			/>
+						<field name="pathology" 	invisible="1"			/>
 				</xpath>
 
 

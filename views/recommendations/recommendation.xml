@@ -27,7 +27,6 @@
 
 
 							<!-- Vip --> 
-<!--
 							<button 
 								type="object" 
 								class="oe_highlight"	
@@ -36,7 +35,7 @@
 
 								string="VIP"
 							/>
--->
+
 
 
 

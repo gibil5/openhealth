@@ -238,7 +238,16 @@
 								
 
 								<group>
-									<field name="saledoc_code"		/>
+									
+
+
+									<field name="saledoc_code"			groups="openhealth.roots"			/>
+
+
+
+
+
+
 									<field name="receipt"		
 															readonly="0"
 															attrs="{'invisible':[

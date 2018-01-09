@@ -447,6 +447,7 @@
 
 
 		<!-- Service vip -->
+<!--		
 		<record model="ir.actions.act_window" id="service_vip_list_action">
 			<field name="name">Servicios vip</field>
 			<field name="res_model">openhealth.service.vip</field>
@@ -458,7 +459,7 @@
                     			}
 			</field>
 		</record>
-
+-->
 
 
 

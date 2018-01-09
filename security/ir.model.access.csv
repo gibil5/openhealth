@@ -429,9 +429,21 @@ access_openhealth_zone_readers,openhealth.zone.readers,model_openhealth_zone,ope
 
 
 
+
+
 access_openhealth_service_quick_managers,openhealth.service_quick.managers,model_openhealth_service_quick,openhealth.hc_managers,1,1,1,1
 
 access_openhealth_service_quick_readers,openhealth.service_quick.readers,model_openhealth_service_quick,openhealth.hc_readers,1,0,0,0
+
+
+access_openhealth_service_vip_managers,openhealth.service_vip.managers,model_openhealth_service_vip,openhealth.hc_managers,1,1,1,1
+
+access_openhealth_service_vip_readers,openhealth.service_vip.readers,model_openhealth_service_vip,openhealth.hc_readers,1,0,0,0
+
+
+
+
+
 
 
 

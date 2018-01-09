@@ -1645,6 +1645,10 @@ grey:state in ('cancel')
 
 					<field name="x_type" />
 
+					<field name="x_serial_nr" />
+
+
+
 					<field name="date_order"	string="Fecha"	/>
 
 					<field name="state"/>

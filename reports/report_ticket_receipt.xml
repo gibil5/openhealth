@@ -138,7 +138,6 @@
 
 
 <!-- Customer --> 
-
 <div class='row'>
 	<div class='col-xs-4'>		
 		<b>Cliente:</b>
@@ -224,9 +223,6 @@
 		<b>Ticket:</b>
 	</div>
 	<div class='col-xs-8'>
-<!--
-		<t t-esc="doc.name"/>
--->
 		<t t-esc="doc.x_serial_nr"/>
 	</div>
 </div>
@@ -307,7 +303,6 @@
 
 
 <!-- Net --> 
-<!--
 <div class='row'	id='net'	>
 	<div class='col-xs-8'>		
 		<b>Neto S/.:</b>
@@ -318,10 +313,8 @@
 	</div>
 
 </div>
--->
 
 <!-- Tax --> 
-<!--
 <div class='row'	id='tax'	>
 	<div class='col-xs-8'>		
 		<b>IGV S/.:</b>
@@ -332,7 +325,6 @@
 	</div>
 
 </div>
--->
 
 
 
@@ -349,8 +341,6 @@
 
 
 <!-- Total Words --> 
-<!--
--->
 <div class='row'>
 	<div class='col-xs-4'>		
 		<b>Son:</b>

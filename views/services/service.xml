@@ -119,6 +119,8 @@
 
 									<field name="zone" 			invisible="0"						/>
 
+									<field name="vspace" />
+
 									<field name="pathology" 	readonly="0"  	invisible="0"		/>									
 
 
@@ -196,11 +198,22 @@
 
 																								],}"/>
 
-
-
 									<field name="vspace" />
+								</group>
+							</group>
 
+
+							<group>
+								<group>
 									<field name="price" />
+
+									<field name="price_vip" />
+								</group>
+
+								<group>
+<!--
+									<field name="price_manual" />
+-->
 								</group>
 							</group>
 

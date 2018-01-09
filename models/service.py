@@ -26,6 +26,16 @@ class Service(models.Model):
 
 
 
+	# Price Manual 
+	price_manual = fields.Float(
+
+			string="Precio Manual",
+		)
+
+
+
+
+
 	# Patient 
 	patient = fields.Many2one(
 			'oeh.medical.patient', 

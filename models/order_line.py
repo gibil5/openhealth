@@ -100,6 +100,29 @@ class sale_order_line(models.Model):
 
 
 
+	# Price manual
+	x_price_manual = fields.Float(
+			
+			string="Precio manual",
+			
+			required=False, 
+
+			#compute='_compute_price_manual', 
+		)
+
+	#@api.multi
+	#def _compute_price_manual(self):
+	#	for record in self:
+	#		record.x_price_manual = record.product_id.list_price
+
+
+
+
+
+
+
+
+
 
 
 

@@ -59,17 +59,19 @@ class sale_order(models.Model):
 
 
 				if record.x_type == 'ticket_invoice':
-					#serial_nr = record.x_payment_method.ticket_invoice.name 
 
-					serial_nr = record.x_payment_method.ticket_invoice.counter.total 
+					#serial_nr = record.x_payment_method.ticket_invoice.counter.total 
+					#serial_nr = record.x_payment_method.ticket_invoice.name 
+					serial_nr = record.x_payment_method.saledoc_code 
 
 
 
 
 				elif record.x_type == 'ticket_receipt':
+					
+					#serial_nr = record.x_payment_method.ticket_receipt.counter.total 
 					#serial_nr = record.x_payment_method.ticket_receipt.name 
-
-					serial_nr = record.x_payment_method.ticket_receipt.counter.total 
+					serial_nr = record.x_payment_method.saledoc_code 
 
 
 

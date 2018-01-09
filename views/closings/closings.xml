@@ -55,22 +55,21 @@ Fields
 					</group>
 
 
-
+<!--
 					<group	string="Documentos de pago"	>
 						<group>
-
 		                    <field name="rec_tot"/>
 		                    <field name="inv_tot"/>
 		                    <field name="tkr_tot"/>
 		                    <field name="tki_tot"/>
 		                    <field name="adv_tot"/>
 		                    <field name="san_tot"/>
-							
 						</group>
-						<group>
-							
-						</group>
+
+						<group></group>
 					</group>
+-->
+
 
 
 

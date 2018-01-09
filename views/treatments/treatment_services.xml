@@ -30,6 +30,49 @@
 
 
 
+
+
+
+
+<!-- vip --> 
+							<page string="VIP"   		attrs="{'invisible':[('nr_services_vip', '=', 0)]}"  >
+
+								<field name="service_vip_ids">	
+
+									<tree string="Services"		create="false" >	
+
+
+										<button 
+											type="object" 
+											class="oe_highlight"	
+											string="Entrar"
+											name="open_line_current" 
+										/>
+
+
+										<field name="service"/>										
+										
+										<!--
+										<field name="name"/>
+										<field name="id"/>
+										<field name="laser"/>				
+										<field name="treatment"/>
+										<field name="zone"/>														
+										<field name="consultation"/>
+										-->
+
+									</tree>
+								</field>
+
+							</page>
+
+
+
+
+
+
+
+
 <!-- Co2 --> 
 							<page string="CO2"   		attrs="{'invisible':[('nr_services_co2', '=', 0)]}"  >
 

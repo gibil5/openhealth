@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+		<!-- FORM --> 
+		<record model="ir.ui.view" id="service_vip_form_view">
+
+			<field name="name">service.vip.form</field>
+			
+			<field name="model">openhealth.service.vip</field>
+
+			<field name="inherit_id" ref="service_form_view"/>
+
+	        <field name="mode">primary</field>
+			
+			<field name="arch" type="xml">		
+
+			
+				<xpath expr="//h1" position="replace">
+
+					<h1>Tarjeta Vip</h1>					
+        		
+        		</xpath>
+
+
+				<xpath expr="//field[@name='service']" position="replace">
+						<field name="service" 			/>
+				</xpath>
+
+<!--
+-->
+				<xpath expr="//field[@name='laser']" position="replace">
+				</xpath>
+
+
+				<xpath expr="//field[@name='zone']" position="replace">
+						<field name="zone" 			/>
+				</xpath>
+
+
+				<xpath expr="//field[@name='pathology']" position="replace">
+						<field name="pathology" 			/>
+				</xpath>
+
+
+
+			</field>						
+		</record>		
+
+
+
+
+
+
+
+
+
+
+
+		<!-- TREE -->
+		<record model="ir.ui.view" id="service_vip_tree_view">
+			<field name="name">service.vip.tree</field>
+			<field name="model">openhealth.service.vip</field>
+			<field name="arch" type="xml">
+				<tree string="Service Tree">
+
+
+					<field name="service"/>					
+
+					<field name="physician"/>
+
+
+				</tree>
+			</field>
+		</record>
+
+
+
+
+
+
+
+
+
+	</data>
+</openerp>

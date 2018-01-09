@@ -364,6 +364,23 @@ jz
 
 
 
+								<!-- Nr of Services - vip --> 
+								<button type="action" class="oe_stat_button" icon="fa-list"
+
+									name="%(service_vip_list_action)d"	
+
+									attrs="{ 'invisible':[	('nr_services_vip','=',0), ]}"
+
+									context="{									
+											'search_default_treatment': active_id,
+											}" 											
+									>
+
+									<field string="Rec. vip" name="nr_services_vip" widget="statinfo"/>
+								</button>
+
+
+
 
 
 

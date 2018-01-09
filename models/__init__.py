@@ -112,6 +112,9 @@ from . import service_medical
 
 from . import service_quick
 
+from . import service_vip
+
+
 
 
 from . import sale_make_invoice_advance

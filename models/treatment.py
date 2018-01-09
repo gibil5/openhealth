@@ -105,6 +105,22 @@ class Treatment(models.Model):
 
 # ----------------------------------------------------------- Important ------------------------------------------------------
 
+
+	# vip
+	service_vip_ids = fields.One2many(
+			'openhealth.service.vip', 
+			'treatment', 
+			string="Servicios vip"
+			)
+
+
+
+
+
+
+
+
+
 	# quick
 	service_quick_ids = fields.One2many(
 			'openhealth.service.quick', 
@@ -788,6 +804,9 @@ class Treatment(models.Model):
 
 			quick =		self.env['openhealth.service.quick'].search_count([('treatment','=', record.id),]) 
 
+			vip =		self.env['openhealth.service.vip'].search_count([('treatment','=', record.id),]) 
+
+
 
 			co2 =		self.env['openhealth.service.co2'].search_count([('treatment','=', record.id),]) 
 			exc = 		self.env['openhealth.service.excilite'].search_count([('treatment','=', record.id),]) 
@@ -798,7 +817,32 @@ class Treatment(models.Model):
 
 
 			#record.nr_services = co2 + exc + ipl + ndyag + medical
-			record.nr_services = quick + co2 + exc + ipl + ndyag + medical
+			#record.nr_services = quick + co2 + exc + ipl + ndyag + medical
+			record.nr_services = vip + quick + co2 + exc + ipl + ndyag + medical
+
+
+
+
+
+
+
+	# vip
+	nr_services_vip = fields.Integer(
+			string="Servicios vip",
+			compute="_compute_nr_services_vip",
+	)
+	@api.multi
+	def _compute_nr_services_vip(self):
+		for record in self:
+
+			services =		self.env['openhealth.service.vip'].search_count([('treatment','=', record.id),]) 
+			
+			record.nr_services_vip = services 
+
+
+
+
+
 
 
 

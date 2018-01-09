@@ -127,13 +127,24 @@ Fields
 
                     <field name="date"		string="Fecha"	/>
 
-
+<!--
                     <field name="rec_tot"/>
                     <field name="inv_tot"/>
                     <field name="tkr_tot"/>
                     <field name="tki_tot"/>
                     <field name="adv_tot"/>
                     <field name="san_tot"/>
+-->
+
+                    <field name="cash_tot"/>
+                    <field name="ame_tot"/>
+                    <field name="cuo_tot"/>
+                    <field name="din_tot"/>
+                    <field name="mac_tot"/>
+                    <field name="mad_tot"/>
+                    <field name="vic_tot"/>
+                    <field name="vid_tot"/>
+
 
 
                     <field name="total"/>

@@ -36,36 +36,30 @@ class sale_order_line(models.Model):
 
 		for record in self:
 
-			if 	not record.order_id.x_partner_vip: 				# Not VIP
+
+			if record.x_price_manual != False: 						# Manual 
+				record.price_unit = record.x_price_manual
+
+
+			else: 
+				
+				if 	not record.order_id.x_partner_vip: 				# Not VIP
 					record.price_unit = record.x_price_std
 
 
-			else: 												# VIP
-	
-				if record.x_comeback    and  	record.x_price_vip_return != 0: 
-					record.price_unit = record.product_id.x_price_vip_return
+				else: 												# VIP
+		
+					if record.x_comeback    and  	record.x_price_vip_return != 0: 
+						record.price_unit = record.product_id.x_price_vip_return
 
-				else: 
-					if record.x_price_vip != 0: 
-						record.price_unit = record.x_price_vip
-					else:
-						record.price_unit = record.x_price_std
+					else: 
+						if record.x_price_vip != 0: 
+							record.price_unit = record.x_price_vip
+						else:
+							record.price_unit = record.x_price_std
 
 
 
-			#if record.x_comeback: 
-			#if 	record.order_id.x_partner_vip  		and			record.x_comeback: 
-			#	record.price_unit = record.product_id.x_price_vip_return
-
-			#else:		
-				#if True: 
-				#if record.order_id.pricelist_id.name == 'VIP': 
-
-				#if record.order_id.pricelist_id.name == 'VIP'		and 	record.x_price_vip != 0: 
-			#	if record.order_id.x_partner_vip		and 	record.x_price_vip != 0: 
-			#		record.price_unit = record.x_price_vip
-			#	else: 
-			#		record.price_unit = record.x_price_std
 
 
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-	<data noupdate='0'>
+	<data>
 
 
 
@@ -51,6 +51,9 @@
 										(4, ref('openhealth.lgonzales_clinicachavarri')),
 										(4, ref('openhealth.pcanales_clinicachavarri')),
 										(4, ref('openhealth.pmonteverde_clinicachavarri')),
+
+										(4, ref('openhealth.lache_clinicachavarri')),
+
 
 										
 										(4, ref('openhealth.staff_clinicachavarri')),
@@ -120,6 +123,7 @@
 										(4, ref('openhealth.pcanales_clinicachavarri')),
 										(4, ref('openhealth.pmonteverde_clinicachavarri')),
 
+										(4, ref('openhealth.lache_clinicachavarri')),
 									]"/>
 		</record>
 

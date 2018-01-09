@@ -4,6 +4,100 @@
 
 
 
+<!-- Guillermo Alarcon --> 
+		<record id="galarcon" model="res.partner">
+			<field name="name">Guillermo Alarcon</field>
+			<field name="email">galarcon@clinicachavarri.com</field>
+	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+		</record>
+
+		<record id="galarcon_clinicachavarri" model="res.users">
+			<field name="name">Guillermo Alarcon</field>
+			<field name="login">galarcon@clinicachavarri.com</field>
+
+
+			<field name="password">gpDp3MLr</field>
+
+			
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="tz">America/Lima</field>
+			<field name="partner_id" ref="galarcon"/>
+			<field name="lang">es_ES</field>
+
+			<field name="active" eval="False" />
+		</record>
+
+
+
+
+
+<!-- Carlos Mendez -->
+		<record id="cmendez" model="res.partner">
+			<field name="name">Carlos Mendez</field>
+			<field name="email">cmendez@clinicachavarri.com</field>
+	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+		</record>
+
+		<record id="cmendez_clinicachavarri" model="res.users">
+			<field name="name">Carlos Mendez</field>
+			<field name="login">cmendez@clinicachavarri.com</field>
+			
+
+			<field name="password">mHmCa6SW</field>
+
+
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="tz">America/Lima</field>
+			<field name="partner_id" ref="cmendez"/>
+			<field name="lang">es_ES</field>
+
+			<field name="active" eval="False" />
+		</record>
+
+
+
+
+
+<!-- Javier Vasquez -->
+		<record id="jvasquez" model="res.partner">
+			<field name="name">Javier Vasquez</field>
+			<field name="email">jvasquez@clinicachavarri.com</field>
+	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+		</record>
+
+		<record id="jvasquez_clinicachavarri" model="res.users">
+			<field name="name">Javier Vasquez</field>
+			<field name="login">jvasquez@clinicachavarri.com</field>
+			
+
+			<field name="password">b8Gb59DQ</field>
+
+
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+			<field name="partner_id" ref="jvasquez"/>
+			<field name="lang">es_ES</field>
+
+			<field name="active" eval="False" />
+		</record>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- Raul Bustios -->
 		<record id="rbustios" model="res.partner">
@@ -28,6 +122,7 @@
 			<field name="tz">America/Lima</field>
 			<field name="lang">es_ES</field>
 			<field name="partner_id" ref="rbustios"/>
+
 			<field name="active" eval="False" />
 		</record>
 
@@ -42,32 +137,6 @@
 
 
 
-
-
-<!-- Javier Vasquez -->
-		<record id="jvasquez" model="res.partner">
-			<field name="name">Javier Vasquez</field>
-			<field name="email">jvasquez@clinicachavarri.com</field>
-	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
-		</record>
-
-		<record id="jvasquez_clinicachavarri" model="res.users">
-			<field name="name">Javier Vasquez</field>
-			<field name="login">jvasquez@clinicachavarri.com</field>
-			
-<!--
-			<field name="password">jvasquez</field>
--->		
-			<field name="password">b8Gb59DQ</field>
-
-
-			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-			<field name="active">True</field>
-			<field name="tz">America/Lima</field>
-			<field name="partner_id" ref="jvasquez"/>
-			<field name="lang">es_ES</field>
-			<field name="active" eval="False" />
-		</record>
 
 
 

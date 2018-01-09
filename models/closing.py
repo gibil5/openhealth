@@ -275,11 +275,14 @@ class Closing(models.Model):
 			date = record.date + ' '
 
 			orders = record.env['sale.order'].search([
-														('state', '=', 'sale'),														
+														('state', '=', 'sale'),	
+
+														#('date_order', '=', date),
 														('date_order', 'like', date),
 
-														#('x_type', '=', 'receipt'),														
-														('name', 'like', 'BO-'),														
+														('x_type', '=', 'receipt'),														
+														
+														#('name', 'like', 'BO-'),														
 												])
 
 			total = 0 
@@ -314,8 +317,12 @@ class Closing(models.Model):
 			date = record.date + ' '
 			orders = record.env['sale.order'].search([
 														('state', '=', 'sale'),														
+														
 														('date_order', 'like', date),
-														('name', 'like', 'FA-'),														
+
+														#('name', 'like', 'FA-'),														
+														('x_type', '=', 'invoice'),
+
 												])
 			total = 0 
 			for order in orders: 
@@ -342,9 +349,13 @@ class Closing(models.Model):
 		for record in self:
 			date = record.date + ' '
 			orders = record.env['sale.order'].search([
-														('state', '=', 'sale'),														
+														('state', '=', 'sale'),	
+
 														('date_order', 'like', date),
-														('name', 'like', 'TKF-'),														
+														
+														#('name', 'like', 'TKF-'),														
+														('x_type', '=', 'ticket_invoice'),
+
 												])
 			total = 0 
 			for order in orders: 
@@ -372,9 +383,12 @@ class Closing(models.Model):
 		for record in self:
 			date = record.date + ' '
 			orders = record.env['sale.order'].search([
-														('state', '=', 'sale'),														
+														('state', '=', 'sale'),	
+
 														('date_order', 'like', date),
-														('name', 'like', 'TKB-'),														
+														
+														#('name', 'like', 'TKB-'),														
+														('x_type', '=', 'ticket_receipt'),
 												])
 			total = 0 
 			for order in orders: 
@@ -404,9 +418,13 @@ class Closing(models.Model):
 		for record in self:
 			date = record.date + ' '
 			orders = record.env['sale.order'].search([
-														('state', '=', 'sale'),														
+														('state', '=', 'sale'),	
+
 														('date_order', 'like', date),
-														('name', 'like', 'CP-'),														
+														
+														#('name', 'like', 'CP-'),														
+														('x_type', '=', 'advertisement'),
+
 												])
 			total = 0 
 			for order in orders: 
@@ -432,9 +450,12 @@ class Closing(models.Model):
 		for record in self:
 			date = record.date + ' '
 			orders = record.env['sale.order'].search([
-														('state', '=', 'sale'),														
+														('state', '=', 'sale'),	
+
 														('date_order', 'like', date),
-														('name', 'like', 'CN-'),														
+														
+														#('name', 'like', 'CN-'),														
+														('x_type', '=', 'sale_note'),
 												])
 			total = 0 
 			for order in orders: 

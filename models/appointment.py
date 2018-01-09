@@ -498,7 +498,19 @@ class Appointment(models.Model):
 
 
 							'laser_quick':		'Quick',
+					
 							'criosurgery':		'Crio',
+
+
+							'botulinum_toxin': 			'Botox', 
+							'hyaluronic_acid': 			'Hial', 
+							'hyaluronic_acid_repair': 	'Hial - R', 
+							'intravenous_vitamin': 		'Vit Intra', 
+							'lepismatic': 				'Lepi', 
+							'mesotherapy_nctf': 		'Meso', 
+							'plasma': 					'Plas', 
+							'sclerotherapy': 			'Escle', 
+
 
 
 

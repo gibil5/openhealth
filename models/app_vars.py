@@ -104,8 +104,13 @@ _machines_list = [
 
 
 
+
+
+
 		# Medical 
 		('criosurgery', 			'Criocirugía'), 
+
+		
 		('botulinum_toxin', 		'Toxina botulínica'), 
 		('hyaluronic_acid', 		'Acido hialurónico'), 
 		('hyaluronic_acid_repair', 	'Acido hialurónico - Repair'), 

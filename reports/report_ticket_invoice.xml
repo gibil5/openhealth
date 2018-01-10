@@ -209,7 +209,12 @@
 		<b>Fecha:</b>
 	</div>
 	<div class='col-xs-8'>
+
+<!--
 		<t t-esc="doc.date_order"/>
+-->
+		<t t-esc="doc.x_date_order_corr"/>
+
 	</div>
 </div>
 

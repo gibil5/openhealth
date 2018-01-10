@@ -15,6 +15,10 @@ class sale_order_line(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Important ------------------------------------------------------
+
+
 	# Vip in progress 
 	x_vip_inprog = fields.Boolean(
 			default=False, 
@@ -27,13 +31,10 @@ class sale_order_line(models.Model):
 
 		for record in self:
 
-			#record.x_vip_inprog = False
-
 			for line in record.order_id.order_line:
 				
 				#if line.product_id.x_short_name == 'vip_card': 
-				if line.product_id.default_code == '57': 
-				
+				if line.product_id.default_code == '57': 				
 					record.x_vip_inprog = True
 
 
@@ -218,14 +219,7 @@ class sale_order_line(models.Model):
 
 
 
-
-
-
-
-
-
-
-
+# ----------------------------------------------------------- Standard ------------------------------------------------------
 
 	product_uom_qty = fields.Float(
 		string='Quantity', 

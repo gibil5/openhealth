@@ -7,21 +7,14 @@
 # Last updated: 	 	29 Sep 2017
 
 
-
-
 from openerp import models, fields, api
 import datetime
-
-#from . import jxvars
 from . import app_vars
 from . import ord_vars
 from . import appfuncs
 from . import cosvars
 from . import treatment_vars
-
-
 from num2words import num2words
-
 
 
 class sale_order(models.Model):
@@ -29,16 +22,6 @@ class sale_order(models.Model):
 	#_name = 'openhealth.order'
 	_inherit='sale.order'
 	
-
-
-
-
-
-
-
-
-
-
 
 
 

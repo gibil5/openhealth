@@ -1665,9 +1665,10 @@ grey:state in ('cancel')
 
 					<field name="date_order"	string="Fecha"	/>
 
+
 <!--
-					<field name="x_date_order_corr"	string="Fec"	/>
 -->
+					<field name="x_date_order_corr"	string="Fec"	/>
 
 
 

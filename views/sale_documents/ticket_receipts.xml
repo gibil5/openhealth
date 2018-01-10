@@ -36,8 +36,8 @@
 
 					<field name="vspace" />
 <!--					
-					<field name="serial_nr" />
 -->
+					<field name="serial_nr" />
 				</xpath>
 
 

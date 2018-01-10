@@ -568,6 +568,7 @@ class Service(models.Model):
 
 
 
+
 	# Price VIP
 	price_vip = fields.Float(
 			compute='_compute_price_vip', 

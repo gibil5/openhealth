@@ -2149,7 +2149,7 @@ class Treatment(models.Model):
 
 		#elif target == 'procedure':
 		else:
-#jz
+#jxx
 			order_id = order.id
 
 
@@ -2157,6 +2157,7 @@ class Treatment(models.Model):
 			ret = treatment_funcs.create_order_lines(self, 'quick', order_id)
 
 			ret = treatment_funcs.create_order_lines(self, 'vip', order_id)
+
 
 
 

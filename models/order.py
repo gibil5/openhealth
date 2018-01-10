@@ -228,7 +228,7 @@ class sale_order(models.Model):
 
 
 
-# jx - Here !
+#jxx
 		ol = self.order_line.create({
 										'product_id': product.id,
 										'order_id': order_id,										

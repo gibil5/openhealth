@@ -63,18 +63,21 @@ def create_order_lines(self, laser, order_id):
 
 	if rec_set != False: 
 
+
+
+#jxx
 		for service in rec_set: 
+
 
 			target_line = service.service.x_name_short
 					
-			print service
-			print target_line
+			#print service
+			#print target_line
 
 			ret = order.x_create_order_lines_target(target_line)
+
 					
 			#print ret 
-
-
 	return 0
 
 

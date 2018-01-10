@@ -152,11 +152,21 @@
 				<tree string="counter Tree">					
 
 					<field name="name"/>
+
 					<field name="value"/>
+
+					<field name="padding"/>
+
+					<field name="prefix"/>
+
 					
+					<field name="total"/>
+
 				</tree>
 			</field>
 		</record>
+
+
 
 
 

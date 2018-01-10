@@ -36,8 +36,13 @@ class Advertisement(models.Model):
 		#print vals
 		#print 
 	
+
 		counter = self.env['openhealth.counter'].search([('name', '=', 'advertisement')])		
+
+		vals['serial_nr'] = counter.total
+
 		counter.increase()
+
 
 
 		#Write your logic here

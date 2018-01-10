@@ -778,6 +778,9 @@ class payment_method(models.Model):
 
 
 
+		serial_nr = 'x'
+
+
 
 		# The model is valid 
 		if model != False: 
@@ -806,11 +809,19 @@ class payment_method(models.Model):
 														'name': self.saledoc_code,
 
 														'payment_method': self.id,
+
 														'order': self.order.id,
+														
 														'partner': self.partner.id,
 																
 														'total': self.total,
+														
 														'date_created': self.date_created,
+
+
+
+														'serial_nr': serial_nr,
+
 												})
 
 
@@ -825,6 +836,36 @@ class payment_method(models.Model):
 			print self.total
 			print self.date_created
 			print
+
+
+
+
+
+
+			# Sale doc code 
+			if self.saledoc == 'ticket_receipt': 
+				self.saledoc_code = self.ticket_receipt.serial_nr
+
+			elif self.saledoc == 'ticket_invoice': 
+				self.saledoc_code = self.ticket_invoice.serial_nr
+
+
+
+			elif self.saledoc == 'invoice': 
+				self.saledoc_code = self.invoice.serial_nr
+
+			elif self.saledoc == 'receipt': 
+				self.saledoc_code = self.receipt.serial_nr
+
+
+
+
+			elif self.saledoc == 'advertisement': 
+				self.saledoc_code = self.advertisement.serial_nr
+
+			elif self.saledoc == 'sale_note': 
+				self.saledoc_code = self.sale_note.serial_nr
+
 
 
 

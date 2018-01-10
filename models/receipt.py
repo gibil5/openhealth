@@ -32,19 +32,21 @@ class Receipt(models.Model):
 	@api.model
 	def create(self,vals):
 
-		print 
-		print 'Receipt - Create Override'
-		print 
-		print vals
-		print 
+		#print 
+		#print 'Receipt - Create Override'
+		#print 
+		#print vals
+		#print 
 	
-
-		#family = vals['family']
 
 
 		# Counter 
 		counter = self.env['openhealth.counter'].search([('name', '=', 'receipt')])
+
+		vals['serial_nr'] = counter.total
+
 		counter.increase()
+
 
 
 		#Write your logic here

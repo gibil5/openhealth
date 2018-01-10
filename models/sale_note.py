@@ -36,8 +36,13 @@ class SaleNote(models.Model):
 		#print vals
 		#print 
 	
+
 		counter = self.env['openhealth.counter'].search([('name', '=', 'sale_note')])		
+
+		vals['serial_nr'] = counter.total
+
 		counter.increase()
+
 
 
 		#Write your logic here

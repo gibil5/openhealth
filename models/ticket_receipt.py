@@ -30,19 +30,26 @@ class TicketReceipt(models.Model):
 	@api.model
 	def create(self,vals):
 
-		#print 
-		#print 'Create Override'
+		#print 'jx'
+		#print 'Create Ticket Receipt'
 		#print 
 		#print vals
 		#print 
 	
-		counter = self.env['openhealth.counter'].search([('name', '=', 'ticket_receipt')])		
+
+
+		counter = self.env['openhealth.counter'].search([('name', '=', 'ticket_receipt')])	
+
+		vals['serial_nr'] = counter.total
+
 		counter.increase()
+
 
 
 		#Write your logic here
 		res = super(TicketReceipt, self).create(vals)
 		#Write your logic here
+
 
 		return res
 

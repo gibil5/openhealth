@@ -49,10 +49,11 @@
 
 
 						<button 
-								name="create_saleproof"
 								type="object" 
 								class="oe_highlight"
 								states="payment"						
+
+								name="create_saleproof"
 
 								string="GENERAR"
 						/>

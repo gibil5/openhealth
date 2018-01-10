@@ -34,7 +34,66 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Important ------------------------------------------------------
+
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Date corrected ------------------------------------------------------
+
+	#date_order = fields.Datetime(string='Order Date', required=True, readonly=True, index=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}, copy=False, default=fields.Datetime.now)
+
+
+	x_date_order_corr = fields.Datetime(
+		string='Order Date Corr', 
+		#required=True, 
+		#readonly=True, 
+		#index=True, 
+		#states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}, 
+		#copy=False, 
+		#default=fields.Datetime.now
+
+
+			compute="_compute_date_order_corr",
+	)
+
+	@api.multi
+	#@api.depends('partner_id')
+
+	def _compute_date_order_corr(self):
+		for record in self:
+
+			#record.x_date_order_corr = record.date_order
+
+
+
+			DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
+
+			#date_field1 = datetime.strptime(date_field1, DATETIME_FORMAT)
+			#date_field2 = datetime.strptime(date_field2, DATETIME_FORMAT)
+			#date_field2 = date_field1 + timedelta(hours=5,minutes=30)
+
+			date_field1 = datetime.datetime.strptime(record.date_order, DATETIME_FORMAT)
+
+			#date_field2 = datetime.strptime(date_field2, DATETIME_FORMAT)
+
+			#date_field2 = date_field1 + datetime.timedelta(hours=5,minutes=0)
+			date_field2 = date_field1 + datetime.timedelta(hours=-5,minutes=0)
+
+
+			record.x_date_order_corr = date_field2
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Serial Number ------------------------------------------------------
 
 	# Serial Number 
 	x_serial_nr = fields.Char(
@@ -53,45 +112,8 @@ class sale_order(models.Model):
 		for record in self:
 
 			if record.x_payment_method != False: 
-				serial_nr = ''
 
-
-
-
-				if record.x_type == 'ticket_invoice':
-
-					#serial_nr = record.x_payment_method.ticket_invoice.counter.total 
-					#serial_nr = record.x_payment_method.ticket_invoice.name 
-					serial_nr = record.x_payment_method.saledoc_code 
-
-
-
-
-				elif record.x_type == 'ticket_receipt':
-					
-					#serial_nr = record.x_payment_method.ticket_receipt.counter.total 
-					#serial_nr = record.x_payment_method.ticket_receipt.name 
-					serial_nr = record.x_payment_method.saledoc_code 
-
-
-
-
-
-
-				elif record.x_type == 'receipt':
-					serial_nr = record.x_payment_method.receipt.name 
-
-				elif record.x_type == 'invoice':
-					serial_nr = record.x_payment_method.invoice.name 
-
-
-				elif record.x_type == 'advertisement':
-					serial_nr = record.x_payment_method.advertisement.name 
-
-				elif record.x_type == 'sale_note':
-					serial_nr = record.x_payment_method.sale_note.name 
-
-
+				serial_nr = record.x_payment_method.saledoc_code 
 
 				record.x_serial_nr = serial_nr
 

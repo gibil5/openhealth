@@ -40,13 +40,19 @@ class TicketInvoice(models.Model):
 	def create(self,vals):
 
 		#print 
-		#print 'Create Override'
+		#print 'Create Ticket Invoice'
 		#print 
 		#print vals
 		#print 
 	
+
+
 		counter = self.env['openhealth.counter'].search([('name', '=', 'ticket_invoice')])		
+
+		vals['serial_nr'] = counter.total
+
 		counter.increase()
+
 
 
 		#Write your logic here

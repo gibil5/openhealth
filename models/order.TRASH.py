@@ -513,3 +513,40 @@
 
 
 
+
+# 10 Jan 2018
+
+				#serial_nr = ''
+
+				#if record.x_type == 'ticket_invoice':
+					#serial_nr = record.x_payment_method.ticket_invoice.counter.total 
+					#serial_nr = record.x_payment_method.ticket_invoice.name 
+				#	serial_nr = record.x_payment_method.saledoc_code 
+
+
+				#elif record.x_type == 'ticket_receipt':
+					#serial_nr = record.x_payment_method.ticket_receipt.counter.total 
+					#serial_nr = record.x_payment_method.ticket_receipt.name 
+				#	serial_nr = record.x_payment_method.saledoc_code 
+
+
+				#elif record.x_type == 'receipt':
+				#	serial_nr = record.x_payment_method.receipt.name 
+
+
+				#elif record.x_type == 'invoice':
+				#	serial_nr = record.x_payment_method.invoice.name 
+
+
+				#elif record.x_type == 'advertisement':
+				#	serial_nr = record.x_payment_method.advertisement.name 
+
+				#elif record.x_type == 'sale_note':
+				#	serial_nr = record.x_payment_method.sale_note.name 
+
+
+
+
+
+
+

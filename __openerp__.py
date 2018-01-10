@@ -20,7 +20,7 @@
 
 		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant\n
 
-		Last built: 	9 January 2018 - Rebirth !!!
+		Last built: 	10 January 2018 - Rebirth !!!
 
 		Created: 	 	11 Sep 2016
 

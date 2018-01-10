@@ -21,10 +21,7 @@ class SaleProof(models.Model):
 
 # ----------------------------------------------------------- Important ------------------------------------------------------
 
-	# Serial Number 
-	#serial_nr = fields.Char(
-	#		string="Nr de Serie", 
-	#	)
+
 
 	# Prefix 
 	#prefix = fields.Char(
@@ -32,6 +29,12 @@ class SaleProof(models.Model):
 	#	)
 
 
+
+
+	# Serial Number 
+	serial_nr = fields.Char(
+			string="Nr de Serie", 
+		)
 
 
 
@@ -141,7 +144,7 @@ class SaleProof(models.Model):
 			string="", 
 
 			required=True, 
-			)
+		)
 
 
 

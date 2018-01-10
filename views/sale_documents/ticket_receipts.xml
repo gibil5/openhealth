@@ -34,10 +34,11 @@
 
 				<xpath expr="//field[@name='name']" position="after">
 
-
 					<field name="vspace" />
-					
+<!--					
 					<field name="counter" />
+-->
+					<field name="serial_nr" />
 				</xpath>
 
 

@@ -34,8 +34,6 @@
 
 
 <!-- Archivers -->
-<!--
--->
 		<record id="openhealth.archivers" model="res.groups">
 			
 			<field name="name">Archivadores</field>
@@ -178,8 +176,12 @@
 										(4, ref('openhealth.manager_clinicachavarri')),
 
 										(4, ref('openhealth.vmori_clinicachavarri')),
+
 										(4, ref('openhealth.jessenwanger_clinicachavarri')),
+										
 										(4, ref('openhealth.pbalboa_clinicachavarri')),
+
+										(4, ref('openhealth.lloli_clinicachavarri')),
 
 									]"/>
 		</record>
@@ -330,15 +332,17 @@
 			<field name="comment">cc</field>
 
 
+<!--
+										(4, ref('openhealth.lloli_clinicachavarri')),
+-->
 			<field name="users" eval="[ 
 										(4, ref('openhealth.staff_clinicachavarri')),
 
 
 										(4, ref('openhealth.lmasias_clinicachavarri')),
 
-
-										(4, ref('openhealth.lloli_clinicachavarri')),
 										(4, ref('openhealth.ipuga_clinicachavarri')),
+										
 										(4, ref('openhealth.rbustios_clinicachavarri')),
 
 									]"/>

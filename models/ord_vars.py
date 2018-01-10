@@ -137,9 +137,17 @@ _state_list = [
 				#('cancel', 		'Anulado'),
 
 
+
 				('draft', 		'Presupuesto'),
-				('sent', 		'Pagado'),
-				('sale', 		'Facturado'),				
+				
+
+				#('sent', 		'Pagado'),
+				('sent', 		'Generado'),
+
+
+				#('sale', 		'Facturado'),				
+				('sale', 		'Pagado'),				
+
 
 
 				('printed', 	'Impreso'),

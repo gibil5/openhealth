@@ -178,28 +178,29 @@
 
 
 
-			<menuitem 	id="sales_budget_menu" 
-						name="Presupuestos" 
-						parent="sales_menu"
-						sequence="2"
-						action="budget_list_action"/>
-
-
 			<menuitem 	id="sales_invoice_menu" 
 						name="Ventas" 
 						parent="sales_menu"
-						sequence="3"
+						sequence="2"
 						
 						action="sale_list_action"
 						/>
 
 
-			<menuitem 	id="sales_cancelled_menu"  
 
-						name="Anulados" 
-				
+			<menuitem 	id="sales_budget_menu" 
+						name="Presupuestos" 
 						parent="sales_menu"
-				
+						sequence="3"
+
+						action="budget_list_action"
+						/>
+
+
+
+			<menuitem 	id="sales_cancelled_menu"  
+						name="Anulados" 
+						parent="sales_menu"
 						sequence="4"
 						
 						action="cancelled_list_action"
@@ -213,8 +214,8 @@
 						name="Todo" 
 						parent="sales_menu"
 						sequence="5"
-						action="order_list_action"
 
+						action="order_list_action"
 						/>
 
 
@@ -375,8 +376,10 @@
 		<menuitem 	id="sales_cards_menu" 
 					name="Vip"
 					parent="main_sales_menu"
-
 					sequence="5"
+
+					groups="openhealth.roots,openhealth.caja,openhealth.directors"
+
 					/>
 
 
@@ -431,7 +434,9 @@ Deprecated
 
 
 
-
+<!--
+					groups="openhealth.roots,openhealth.caja,openhealth.managers,openhealth.directors"
+-->
 <!-- Config --> 
 		<menuitem 	id="sales_config_menu" 
 					parent="main_sales_menu"
@@ -439,7 +444,7 @@ Deprecated
 
 					name="Configuración"
 
-					groups="openhealth.roots,openhealth.caja,openhealth.managers,openhealth.directors"
+					groups="openhealth.roots,openhealth.caja,openhealth.directors"
 					/>
 
 		<menuitem 	id="sales_counters_menu" 
@@ -461,6 +466,8 @@ Deprecated
 <!--
 			groups="openhealth.reception,openhealth.managers,openhealth.directors"
 			groups="openhealth.reception,openhealth.physicians,openhealth.managers,openhealth.directors"
+
+			groups="openhealth.roots,openhealth.assistants,openhealth.reception,openhealth.caja,openhealth.physicians,openhealth.managers,openhealth.directors"
 -->
 
 
@@ -470,7 +477,7 @@ Deprecated
 			sequence="-8"
 			name="Citas"
 
-			groups="openhealth.roots,openhealth.assistants,openhealth.reception,openhealth.caja,openhealth.physicians,openhealth.managers,openhealth.directors"
+			groups="openhealth.roots,openhealth.assistants,openhealth.reception,openhealth.caja,openhealth.physicians,openhealth.directors"
 			/>
 
 

@@ -690,6 +690,7 @@
 							groups="openhealth.caja,openhealth.managers,openhealth.directors"
 
 							groups="openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
+						groups="openhealth.roots,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
 -->					
 					<button 
 							name="create_payment_method"
@@ -701,7 +702,7 @@
 							string="PAGAR"
 
 
-						groups="openhealth.roots,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
+							groups="openhealth.roots,openhealth.reception,openhealth.caja,openhealth.directors"
 						
 							/>
 
@@ -982,7 +983,7 @@
 
 
 
-							<group col='6'		groups="openhealth.roots,openhealth.caja,openhealth.managers,openhealth.directors">
+							<group col='6'		groups="openhealth.roots,openhealth.caja,openhealth.directors">
 
 
 
@@ -1654,21 +1655,25 @@ grey:state in ('cancel')
 
 					<field name="product"/>
 
+					<field name="nr_lines"/>
+
+
+
 					<field name="amount_untaxed"	sum="Total Untaxed"			widget="monetary"		string="Total"	/>
 
 
 
 					<field name="date_order"	string="Fecha"	/>
 
+<!--
 					<field name="x_date_order_corr"	string="Fec"	/>
+-->
 
-
-
-					<field name="state"/>
 
 
 					<field name="user_id"		string="Generado por"	/>
 
+					<field name="state"/>
 
 <!--
 					<field name="user_id"		string="Vendedor"	/>
@@ -1687,7 +1692,6 @@ grey:state in ('cancel')
 
 
 
-					<field name="nr_lines"/>
 
 
 				</tree>

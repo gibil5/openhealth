@@ -401,6 +401,8 @@
 <!-- Order Lines --> 
 
 <!--
+-->
+
 <xpath expr="//page[1]/field[@name='order_line']" position="replace">
 	
 <field name="order_line">
@@ -428,31 +430,19 @@
 
 
 
+
 		<field name="x_price_std"			/>
 
 		<field name="x_price_manual"			/>
 
-
-
-
-
 		<field name="x_price_vip"			/>
-		<field name="x_price_vip"			attrs="{ 'invisible':[
-																		('x_price_vip', '=', 0 ),
-																],}"/>
-
-
 
 		<field name="x_price_vip_return"			/>
-		<field name="x_price_vip_return"		attrs="{ 'invisible':[
-																		('x_price_vip_return', '=', 0 ),
-																],}"/>
 
 		<field name="x_comeback" 		string="R"	/>
 
-
-
 		<field name="x_vip_inprog" 		string="vinp"	/>
+
 
 
 
@@ -463,12 +453,9 @@
 		<field name="tax_id"			/>
 
 		<field name="price_subtotal" />
-
 	</tree>
-
 </field>
 </xpath>
--->
 
 
 

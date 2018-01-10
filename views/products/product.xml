@@ -180,6 +180,10 @@
 					<field name="x_name_short"/>
 
 
+					<field name="sale_ok"/>
+					<field name="purchase_ok"/>
+
+
 <!--
 					<field name="id"/>
 					<field name="x_name_short"/>

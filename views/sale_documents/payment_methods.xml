@@ -42,7 +42,8 @@
 								attrs="{'invisible':[
 															('balance', '!=', 0), 
 													]}"	
-								states="draft,payment"						
+								states="draft,payment"	
+
 -->
 
 					
@@ -51,6 +52,7 @@
 						<button 
 								type="object" 
 								class="oe_highlight"
+
 								states="payment"						
 
 								name="create_saleproof"
@@ -59,9 +61,11 @@
 						/>
 
 
+
+
+
 						<!-- Back to Order --> 
 <!--
--->
 						<button 
 								name="open_order"
 
@@ -72,7 +76,6 @@
 								string="REGRESAR"
 						/>
 
-<!--
 						<button 
 								name="open_order"
 								type="object" 
@@ -104,7 +107,7 @@
 						<field 	name="state" 
 								widget="statusbar" 
 
-								invisible="1"
+								invisible="0"
 								
 								statusbar_visible="draft, payment, generated, done"
 						/>
@@ -138,46 +141,34 @@
 								<field name="name"   />													
 -->
 								<field name="order"   />																				
-								<field name="vspace"   />
 
 								<field name="partner"   readonly="1"	/>		
 
-								<field name="vspace"   />	
+								<field name="dni"   attrs="{
+															'invisible':[	('saledoc', 'in', ['invoice','ticket_invoice']),], 
+															'required':[	('saledoc', 'in', ['receipt','ticket_receipt']),], 
+															}"/>
 
 
 
 
-								<field name="dni"   	attrs="{
-
-														'invisible':[	('saledoc', 'in', ['invoice','ticket_invoice']),					], 
-
-														'required':[	('saledoc', 'in', ['receipt','ticket_receipt']),					], 
+								<field name="firm"   attrs="{
+															'invisible':[	('saledoc', 'in', ['receipt','ticket_receipt']),], 
+															'required':[	('saledoc', 'in', ['invoice','ticket_invoice']),], 
 														}"/>
 
 
-
-
-								<field name="firm"   	attrs="{
-
-														'invisible':[	('saledoc', 'in', ['receipt','ticket_receipt']),					], 
-
-														'required':[	('saledoc', 'in', ['invoice','ticket_invoice']),					], 
-														}"/>
-
-
-								<field name="ruc"   	attrs="{
-
-														'invisible':[	('saledoc', 'in', ['receipt','ticket_receipt']),					], 
-
-														'required':[	('saledoc', 'in', ['invoice','ticket_invoice']),					], 
+								<field name="ruc"   attrs="{
+															'invisible':[	('saledoc', 'in', ['receipt','ticket_receipt']),], 
+															'required':[	('saledoc', 'in', ['invoice','ticket_invoice']),], 
 														}"/>
 
 
 
 
 
-								<field name="vspace"   />	
 <!--
+								<field name="vspace"   />	
 -->
 								<field name="nr_pm"   invisible="1"	/>													
 							</group>

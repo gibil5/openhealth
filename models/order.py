@@ -1632,16 +1632,10 @@ class sale_order(models.Model):
 		balance = self.x_amount_total - self.pm_total
 
 		
-		#print nr_pm
-		#print name
-		#print method
-		#print 
-
 
 
 
 		# Create 
-		#if payment_method_id == False:
 		self.x_payment_method = self.env['openhealth.payment_method'].create({
 																				'order': self.id,
 
@@ -1661,10 +1655,28 @@ class sale_order(models.Model):
 
 																				'date_created': self.date_order,
 
-
 																				#'saledoc': 'receipt', 
+
+
 																			})
 		payment_method_id = self.x_payment_method.id 
+
+
+
+		# Create Lines 
+		name = '1'
+		method = 'cash'
+		subtotal = self.x_amount_total
+		payment_method = self.x_payment_method.id
+
+
+		ret = self.x_payment_method.pm_line_ids.create({
+																	'name': name,
+																	'method': method ,
+																	'subtotal': subtotal,
+
+																	'payment_method': payment_method, 
+										})
 
 
 
@@ -1700,8 +1712,9 @@ class sale_order(models.Model):
 
 
 				'flags': 	{
-							'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-							#'form': {'action_buttons': True, }
+							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+							#'form': {'action_buttons': False, }
+							'form': {'action_buttons': False, 'options': {'mode': 'edit'}  }
 							},
 
 
@@ -2552,6 +2565,7 @@ class sale_order(models.Model):
 
 
 
+# ----------------------------------------------------------- Action Confirm ------------------------------------------------------
 
 	# Action confirm 
 	@api.multi 
@@ -2566,26 +2580,20 @@ class sale_order(models.Model):
 
 
 
-
-
 		#Write your logic here - Begin
 
-
-
-		# Doctor User Name 
+		# Doctor User Name - For Reporting 
 		if self.x_doctor.name != False: 
 			uid = self.x_doctor.x_user_name.id
 			self.x_doctor_uid = uid
 
 
 
-
-		# Change State to Scheduled 
+		# Change State - To Invoiced 
 		if self.x_family == 'consultation'	or 	self.x_family == 'procedure': 
 			if self.x_appointment.name != False: 
 				#self.x_appointment.state = 'Scheduled'
 				self.x_appointment.state = 'invoiced'
-
 
 
 
@@ -2598,21 +2606,14 @@ class sale_order(models.Model):
 
 
 
+
+		# The actual procedure 
 		res = super(sale_order, self).action_confirm()
 		#Write your logic here
 		
 
 
 
-		#oid = self.id
-		#order = self.env['sale.order'].search([ ('id', '=', oid), ], order='date_order desc', limit=1)
-		#order_id = order.id
-		#partner_id = order.partner_id
-		#partner_id_id = order.partner_id.id
-		#patient_name = partner_id.name 
-		#print order 
-		#print order_id
-		#print partner_id_id
 
 
 
@@ -2622,23 +2623,19 @@ class sale_order(models.Model):
 
 
 
-		# Create Card 
+		# Create Card ? 
 		go_card = False 
-
 
 		order_line = self.order_line
 		for line in order_line:
-			#print line
-			#print line.name 
-			#print line.product_id.name
 
 			if line.name == 'Tarjeta VIP' or line.name == 'TARJETA VIP':
 				go_card = True
 
 
 
+		# Create Card 
 		if go_card:
-
 
 			print 'Create VIP Card'
 
@@ -2652,23 +2649,16 @@ class sale_order(models.Model):
 			self.partner_id.property_product_pricelist = pl
 
 
-			#print 'jx'
-			#print self.partner_id
-			#print pl 
-			#print self.partner_id.property_product_pricelist.name 
 
 
-
-
-
-			# Card 
+			# Card Search 
 			card = self.env['openhealth.card'].search([ ('patient_name', '=', patient_name), ], order='date_created desc', limit=1)
 			card_id = card.id
 			#print card 
 
 
 
-			# Create 
+			# Card Create 
 			if card.name == False: 
 
 				print 'jx'
@@ -2679,7 +2669,7 @@ class sale_order(models.Model):
 				counter = self.env['openhealth.counter'].search([('name', '=', 'vip')])
 				counter.increase()
 
-				#name = '00000005'
+
 				name = str(counter.value).rjust(8, '0')
 
 
@@ -2693,42 +2683,8 @@ class sale_order(models.Model):
 				print self.partner_id.name				
 				print
 
-
 			return{}
 
-			return {
-
-				# Mandatory 
-				'type': 'ir.actions.act_window',
-				'name': 'Open Consultation Current',
-
-				# Window action 
-				'res_model': 'openhealth.card',
-				'res_id': card_id,
-
-				# Views 
-				"views": [[False, "form"]],
-				'view_mode': 'form',
-				'target': 'current',
-
-				#'view_id': view_id,
-				#"domain": [["patient", "=", self.patient.name]],
-				#'auto_search': False, 
-
-				'flags': {
-						'form': {'action_buttons': True, }
-						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-				},			
-
-				'context':   {
-					#'search_default_treatment': treatment_id,
-					#'default_patient': patient_id,
-					#'default_doctor': doctor_id,
-					#'default_treatment_id': treatment_id,
-					'default_name': name,
-					'default_patient_name': patient_name,
-				}
-			}		
 	# action_confirm	
 
 

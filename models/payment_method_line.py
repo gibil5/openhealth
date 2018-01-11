@@ -183,7 +183,7 @@ class payment_method_line(models.Model):
 
 			'openhealth.payment_method',
 
-			string="Módulo de Pago",
+			#string="Módulo de Pago",
 
 			ondelete='cascade', 
 

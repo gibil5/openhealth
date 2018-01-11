@@ -1,0 +1,65 @@
+						
+						<group class="oe_left"  style="width: 600px;">
+							<group col='6'		groups="openhealth.roots,openhealth.caja,openhealth.directors">
+
+
+
+
+								<!-- Cancel --> 
+								<group>
+									<button 
+											name="cancel_order" 	
+											type="object" 
+											class="oe_highlight oe_right "	
+
+											string="Anular"
+
+											groups="openhealth.roots,openhealth.caja,openhealth.managers,openhealth.directors"
+									/>
+								</group>
+
+
+								<!-- Activate --> 
+								<group>
+									<button 
+											name="activate_order" 	
+											type="object" 
+											class="oe_highlight oe_right "	
+
+											string="Activar"
+
+											groups="openhealth.roots,openhealth.managers,openhealth.directors"
+									/>
+								</group>
+
+
+
+								<!-- Cancelled -->
+								<group>
+									<field 
+											name="x_cancel" 
+											nolabel="1"	
+											readonly="1"
+
+											groups="openhealth.roots,openhealth.caja,openhealth.managers,openhealth.directors" />
+								</group>
+
+
+
+								<!-- Reset --> 
+								<group>
+									<button 
+											name="x_reset" 	
+											type="object" 
+											class="oe_highlight"
+
+											string="RESET"
+
+											groups="openhealth.roots"
+									/>
+								</group>
+
+								
+							</group>
+						</group>
+

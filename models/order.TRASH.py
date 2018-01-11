@@ -550,3 +550,83 @@
 
 
 
+# 11 Jan 2017
+
+		#oid = self.id
+		#order = self.env['sale.order'].search([ ('id', '=', oid), ], order='date_order desc', limit=1)
+		#order_id = order.id
+		#partner_id = order.partner_id
+		#partner_id_id = order.partner_id.id
+		#patient_name = partner_id.name 
+		#print order 
+		#print order_id
+		#print partner_id_id
+
+
+
+			#print line
+			#print line.name 
+			#print line.product_id.name
+
+
+			#print 'jx'
+			#print self.partner_id
+			#print pl 
+			#print self.partner_id.property_product_pricelist.name 
+
+
+
+
+
+			#return {
+
+				# Mandatory 
+			#	'type': 'ir.actions.act_window',
+
+			#	'name': 'Open Card',
+
+				# Window action 
+			#	'res_model': 'openhealth.card',
+
+			#	'res_id': card_id,
+
+				# Views 
+			#	"views": [[False, "form"]],
+				
+			#	'view_mode': 'form',
+				
+			#	'target': 'current',
+
+				#'view_id': view_id,
+				#"domain": [["patient", "=", self.patient.name]],
+				#'auto_search': False, 
+
+			#	'flags': {
+			#			'form': {'action_buttons': True, }
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+			#	},			
+
+			#	'context':   {
+			#		'default_name': name,
+			#		'default_patient_name': patient_name,
+			#	}
+			#}
+
+
+
+
+
+
+
+		#if payment_method_id == False:
+
+
+
+		#print nr_pm
+		#print name
+		#print method
+		#print 
+
+
+
+

@@ -4,32 +4,198 @@
 # 
 
 from openerp import models, fields, api
-
 from . import ord_vars
-
 
 class payment_method(models.Model):
 	
-	_name = 'openhealth.payment_method'
-
 	#_inherit='openhealth.sale_document'
 
+	_name = 'openhealth.payment_method'
 
 
 
 
 
-	# Serial Number 
-	#serial_nr = fields.Char(
-	#		string="Nr de Serie", 
-	#	)
+
+	# Pm Lines 
+	pm_line_ids = fields.One2many(
+
+			'openhealth.payment_method_line',
+
+			'payment_method',
+
+			string="Pago #", 
+		)
 
 
 
-	# Prefix 
-	#prefix = fields.Char(
-	#		string="Prefijo", 
-	#	)
+
+
+
+	# On change Sale Doc 
+	@api.onchange('saledoc')
+	
+	def _onchange_saledoc(self):
+
+		print 'jx'
+		print 'onchange - Saledoc'
+
+
+
+		# State 
+		#if self.balance == 0.0		and		self.saledoc != False:
+		if self.balance == 0.0:
+			self.state = 'payment'
+
+
+
+		# Create Pm Line
+		#print 'Create Pm Line'
+
+		#name = '1'
+		#method = 'cash'
+		#subtotal = self.total
+		#payment_method = self._origin.id
+
+		#print name 
+		#print method
+		#print subtotal
+		#print payment_method
+
+
+		#ret = self.pm_line_ids.create({
+		#															'name': name,
+		#															'method': method ,
+		#															'subtotal': subtotal,
+		#															'payment_method': payment_method, 
+		#								})
+		#print ret 
+
+
+
+
+
+		# Generate Saledoc Code - Deprecated ? 
+		pre = {
+				'receipt':	'BO-1-', 
+				'invoice':	'FA-1-', 
+				'advertisement':	'CP-1-', 
+				'sale_note':		'CN-1-', 
+				'ticket_receipt':	'TKB-1-', 
+				'ticket_invoice':	'TKF-1-', 
+		}
+
+
+		counter = self.env['openhealth.counter'].search([('name', '=', self.saledoc)])
+
+		out = False 
+
+		while not out:
+
+			ctr = counter.value
+			name = pre[self.saledoc] + str(ctr).rjust(4, '0')
+			model = ord_vars._dic_model[self.saledoc]
+			count = self.env[model].search_count([
+													('name','=', name),
+											]) 
+			if count == 0:
+				out = True
+			else:
+				counter.increase()
+
+		self.saledoc_code = name
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	# Total 
+	total = fields.Float(
+			string = 'Total a pagar', 
+			required=True, 
+		)
+
+
+	@api.onchange('total')
+	
+	def _onchange_total(self):
+
+		print 'jx'
+		print 'onchange - Total'
+
+
+
+
+
+
+
+
+
+	# Total Paid
+	pm_total = fields.Float(
+			string = 'Total pagado', 
+			required=True, 
+
+			default=0, 
+			compute="_compute_pm_total",
+		)
+
+	@api.multi
+	#@api.depends('total', 'pm_total')
+	def _compute_pm_total(self):
+		for record in self:
+
+			pm_total = 0
+
+			for line in record.pm_line_ids:
+				s = line.subtotal
+				pm_total = pm_total + s
+
+			record.pm_total = record.pm_total + pm_total
+
+
+
+
+
+
+
+	# Balance 
+	balance = fields.Float(
+			string = 'Saldo', 
+			required=True, 
+			readonly=True, 
+
+			compute="_compute_balance",
+		)
+
+	@api.multi
+	#@api.depends('total', 'pm_total')
+	def _compute_balance(self):
+
+		#print 'Compute Balance'
+		
+		for record in self:
+			record.balance = record.total - record.pm_total 
+
+			#if record.balance == 0.0:
+			#if record.total == record.pm_total:
+				#print 'Gotcha'
+				#record.state = 'done'
+				#print record.state  
+
+
+
 
 
 
@@ -42,9 +208,7 @@ class payment_method(models.Model):
 
 	# Name 
 	name = fields.Char(
-			#string="Medio de Pago", 
-			string="Pagos", 
-			
+			string="Pagos", 			
 			#required=True, 
 			#readonly=True, 
 
@@ -406,51 +570,6 @@ class payment_method(models.Model):
 			#compute="_compute_saledoc_code",
 		)
 
-	@api.onchange('saledoc')
-	
-	def _onchange_saledoc(self):
-
-		#print
-		#print 'onchange - Saledoc'
-
-		pre = {
-				'receipt':	'BO-1-', 
-				'invoice':	'FA-1-', 
-
-				'advertisement':	'CP-1-', 
-				'sale_note':		'CN-1-', 
-
-				'ticket_receipt':	'TKB-1-', 
-				'ticket_invoice':	'TKF-1-', 
-		}
-
-
-		counter = self.env['openhealth.counter'].search([('name', '=', self.saledoc)])
-
-		out = False 
-
-
-
-		while not out:
-
-			ctr = counter.value
-			name = pre[self.saledoc] + str(ctr).rjust(4, '0')
-		
-
-			model = ord_vars._dic_model[self.saledoc]
-			count = self.env[model].search_count([
-												('name','=', name),
-											]) 
-			if count == 0:
-				out = True
-			else:
-				counter.increase()
-
-
-
-		self.saledoc_code = name
-
-
 
 
 
@@ -504,8 +623,15 @@ class payment_method(models.Model):
 			#if	record.env['openhealth.sale_document'].search_count([('order','=', record.id),]):
 			#	record.state = 'proof'
 
-			if record.balance == 0.0:
+
+
+
+			#if record.balance == 0.0 	and 	record.state == 'generated': 
+			#if record.balance == 0.0:
+			if record.balance == 0.0		and		record.saledoc != False:
 				record.state = 'payment'
+
+
 
 
 			if	record.env['openhealth.receipt'].search_count([('payment_method','=', record.id),])			or \
@@ -515,8 +641,16 @@ class payment_method(models.Model):
 				record.env['openhealth.ticket_receipt'].search_count([('payment_method','=', record.id),])	or \
 				record.env['openhealth.ticket_invoice'].search_count([('payment_method','=', record.id),]):
 				
+
 				#record.state = 'done'
 				record.state = 'generated'
+
+
+
+
+
+
+
 
 			if record.confirmed:
 				record.state = 'done'
@@ -629,17 +763,6 @@ class payment_method(models.Model):
 
 
 
-	# Payment Method 
-	pm_line_ids = fields.One2many(
-
-			'openhealth.payment_method_line',
-
-			'payment_method',		
-			string="Pago #", 
-		)
-
-
-
 
 
 
@@ -677,33 +800,6 @@ class payment_method(models.Model):
 
 
 
-	total = fields.Float(
-			string = 'Total a pagar', 
-			required=True, 
-		)
-
-
-
-	pm_total = fields.Float(
-			string = 'Total pagado', 
-			required=True, 
-
-			default=0, 
-			compute="_compute_pm_total",
-		)
-
-	@api.multi
-	#@api.depends('total', 'pm_total')
-	def _compute_pm_total(self):
-		for record in self:
-
-			pm_total = 0
-
-			for line in record.pm_line_ids:
-				s = line.subtotal
-				pm_total = pm_total + s
-
-			record.pm_total = record.pm_total + pm_total
 
 
 
@@ -712,30 +808,7 @@ class payment_method(models.Model):
 
 
 
-	balance = fields.Float(
-			string = 'Saldo', 
-			required=True, 
-			readonly=True, 
 
-			compute="_compute_balance",
-		)
-
-	@api.multi
-	#@api.depends('total', 'pm_total')
-	def _compute_balance(self):
-
-		#print 'Compute Balance'
-		
-		for record in self:
-			record.balance = record.total - record.pm_total 
-
-			#if record.balance == 0.0:
-			#if record.total == record.pm_total:
-				#print 'Gotcha'
-				#record.state = 'done'
-				#print record.state  
-
-		#print 
 
 
 
@@ -870,13 +943,22 @@ class payment_method(models.Model):
 
 
 
+
+
+			# Action confirm ?
+
+
+
 			# Open Order 
-			#self.open_order()
 			self.confirmed = True 
 			ret = self.order.open_myself()
-			return ret 
+
+
+
 
 			#return {}
+			return ret 
+
 
 	# create_saleproof
 
@@ -918,12 +1000,19 @@ class payment_method(models.Model):
 		#print vals
 		#print 
 		
-	
+
 
 		#order = vals['order']
 		#nr_pm = self.env['openhealth.payment_method'].search_count([('order','=', order),]) 
 		#name = 'MP-' + str(nr_pm + 1)
 		#vals['name'] = name
+
+
+
+
+		#total = vals['total']
+
+
 
 
 		#Write your logic here

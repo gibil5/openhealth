@@ -20,6 +20,7 @@ from num2words import num2words
 class sale_order(models.Model):
 	
 	#_name = 'openhealth.order'
+
 	_inherit='sale.order'
 	
 
@@ -29,6 +30,8 @@ class sale_order(models.Model):
 
 
 # ----------------------------------------------------------- Partner DNI ------------------------------------------------------
+	
+	# DNI 
 	x_partner_dni = fields.Char(
 			'DNI', 
 		)

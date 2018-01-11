@@ -143,6 +143,14 @@
 
 
 
+# 10 Jan 2018
+
+	#_inherit = ['res.partner', 'base_multi_image.owner']
+	#_inherit = ['res.partner', 'oeh.medical.evaluation', 'base_multi_image.owner']
+	#_name = 'openhealth.patient'	#The best solution ? So that impact is minimal ?	- Deprecated
+
+
+
 
 
 

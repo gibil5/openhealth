@@ -347,6 +347,13 @@
 			
 
 					<field name="name"/>
+
+					<field name="x_dni"/>
+
+					<field name="write_date"/>
+
+
+
 <!--
 					<field name="date"/>
 					<field name="id"/>

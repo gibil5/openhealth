@@ -642,6 +642,9 @@
 		'views/patients/patient_appointments.xml',
 		'views/patients/patient_cosmetologies.xml',
 
+		'views/patients/patient_quick.xml',
+
+
 
 
 		# Appointments - 2

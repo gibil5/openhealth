@@ -6,13 +6,10 @@
 # Created: 				26 Aug 2016
 # Last updated: 	 	25 Aug 2017
 
-
 from openerp import models, fields, api
 from datetime import datetime
-
 from . import pat_funcs
 from . import pat_vars
-
 
 
 class Patient(models.Model):
@@ -25,6 +22,59 @@ class Patient(models.Model):
 
 
 
+
+# ----------------------------------------------------------- DNI RUC ------------------------------------------------------
+
+
+
+	# Test DNI 
+	@api.onchange('x_dni')
+
+	def _onchange_x_dni(self):
+	
+		# For Digits 
+		ret = pat_funcs.test_for_digits(self, self.x_dni)
+		if ret != 0: 
+			return ret
+	
+		# For Length 
+		ret = pat_funcs.test_for_length(self, self.x_dni, 8)
+		if ret != 0: 
+			return ret
+
+
+
+
+	# Test RUC
+	@api.onchange('x_ruc')
+	
+	def _onchange_x_ruc(self):
+		
+		# For Digits 
+		ret = pat_funcs.test_for_digits(self, self.x_ruc)
+		if ret != 0: 
+			return ret
+		
+		# For Length 
+		ret = pat_funcs.test_for_length(self, self.x_ruc, 11)
+		if ret != 0: 
+			return ret
+
+
+
+
+
+
+	#x_dni = fields.Char(
+	#		string = "DNI", 	
+
+			#required=True, 
+			#required=False, 
+	#	)
+
+
+
+# ----------------------------------------------------------- Quick ------------------------------------------------------
 
 	# Service Quick Ids 
 	x_service_quick_ids = fields.One2many(
@@ -300,13 +350,6 @@ class Patient(models.Model):
 
 
 
-
-	x_dni = fields.Char(
-			string = "DNI", 	
-
-			#required=True, 
-			#required=False, 
-		)
 
 
 

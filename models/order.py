@@ -26,6 +26,42 @@ class sale_order(models.Model):
 
 
 
+
+
+# ----------------------------------------------------------- Partner DNI ------------------------------------------------------
+	x_partner_dni = fields.Char(
+			'DNI', 
+		)
+
+
+	@api.onchange('x_partner_dni')
+	
+	def _onchange_x_partner_dni(self):
+		
+		print 'jx'
+		print 'On Change Dni'
+		print 
+
+
+		if self.x_partner_dni != False: 
+			
+			partner_id = self.env['res.partner'].search([
+														#('patient', '=', self.patient.name),			
+														('x_dni', '=', self.x_partner_dni),					
+												],
+													order='write_date desc',
+													limit=1,
+												)
+		
+			print partner_id
+			print partner_id.id
+
+			#self.partner_id = partner_id
+			self.partner_id = partner_id.id
+
+
+
+
 # ----------------------------------------------------------- Date corrected ------------------------------------------------------
 
 	#date_order = fields.Datetime(string='Order Date', required=True, readonly=True, index=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}, copy=False, default=fields.Datetime.now)

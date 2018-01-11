@@ -1368,10 +1368,7 @@ Order Line - Tree
 
 
 <!--
-							options='{"always_reload": True}'
--->
 				<field name="partner_id" position="replace">
-
 
 					<field 
 							name="partner_id" 
@@ -1388,6 +1385,19 @@ Order Line - Tree
 						/>
 
 				</field>
+-->
+
+
+
+
+
+
+				<field name="partner_id" position="before">
+
+					<field name="x_partner_dni"/>
+
+					<field name="vspace"/>
+				</field>
 
 
 
@@ -1399,15 +1409,16 @@ Order Line - Tree
 -->
 					<field name="vspace"/>
 
-
-					<field name="user_id"	string="Generado por"		readonly="1"		/>
+<!--
+-->
+					<field name="user_id"	string="Generado por"		readonly="1"	groups="openhealth.roots"	/>
 
 
 					<field name="vspace"/>
 
 
 
-					<field name="x_doctor"		required="1"/>
+					<field name="x_doctor"		required="1"		widget="radio"		/>
 <!--
 -->
 					<field name="x_doctor_uid"	invisible="1"/>
@@ -1415,6 +1426,7 @@ Order Line - Tree
 
 
 					<field name="vspace"			groups="openhealth.roots"	/>
+
 					<field name="x_my_company"		groups="openhealth.roots"	/>
 
 
@@ -1473,7 +1485,7 @@ Order Line - Tree
 -->
 
 					<field name="vspace"/>
-					<field name="x_machine_req"		invisible="0"/>
+					<field name="x_machine_req"			invisible="0"	groups="openhealth.roots"	/>
 
 
 <!--

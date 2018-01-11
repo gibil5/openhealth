@@ -16,10 +16,20 @@ class counter(models.Model):
 
 
 
+	# separator 
+	separator = fields.Char(
+			string="Separador",
+			#default='',  
+		)
+
+
+
+
 	# Prefix 
 	prefix = fields.Char(
 			string="Prefijo", 
 		)
+
 
 
 
@@ -46,10 +56,17 @@ class counter(models.Model):
 		
 		for record in self:
 		
+
+
 			if record.prefix != False:
 				#record.total = record.prefix + str(record.value)
 				#record.total = record.prefix + str(record.value).zfill(record.padding)
-				record.total = record.prefix  +  '-'  +  str(record.value).zfill(record.padding)
+				#record.total = record.prefix  +  '-'  +  str(record.value).zfill(record.padding)
+
+				if record.separator != False: 
+					record.total = record.prefix  +  record.separator  +  str(record.value).zfill(record.padding)
+				else:
+					record.total = record.prefix  +  str(record.value).zfill(record.padding)
 
 
 

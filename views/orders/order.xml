@@ -790,8 +790,9 @@
 
 				<field name="partner_id" position="before">
 
-
+<!--
 					<field name="x_partner_dni"/>
+-->
 
 					<field name="vspace"/>
 				</field>

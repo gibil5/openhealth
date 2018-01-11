@@ -2626,18 +2626,28 @@ class sale_order(models.Model):
 		# Create Card ? 
 		go_card = False 
 
+
 		order_line = self.order_line
 		for line in order_line:
 
-			if line.name == 'Tarjeta VIP' or line.name == 'TARJETA VIP':
+			print line 
+			print line.name 
+
+
+			#if line.name == 'Tarjeta VIP' or line.name == 'TARJETA VIP':
+			if line.product_id.x_name_short == 'vip_card':
+
+				print 'gotcha'
+				
 				go_card = True
 
+				print go_card
 
 
 		# Create Card 
 		if go_card:
 
-			print 'Create VIP Card'
+			print 'Search VIP Card'
 
 
 			# Partner pricelist - Vip
@@ -2646,6 +2656,9 @@ class sale_order(models.Model):
 															],
 															#order='appointment_date desc',
 															limit=1,)
+
+			print pl
+
 			self.partner_id.property_product_pricelist = pl
 
 
@@ -2654,7 +2667,7 @@ class sale_order(models.Model):
 			# Card Search 
 			card = self.env['openhealth.card'].search([ ('patient_name', '=', patient_name), ], order='date_created desc', limit=1)
 			card_id = card.id
-			#print card 
+			print card 
 
 
 
@@ -2662,16 +2675,19 @@ class sale_order(models.Model):
 			if card.name == False: 
 
 				print 'jx'
-				print 'Create Card'
+				print 'Create VIP Card'
+
 
 
 				# Card name 
 				counter = self.env['openhealth.counter'].search([('name', '=', 'vip')])
+
+
+
+				#name = str(counter.value).rjust(8, '0')
+				name = counter.total
+
 				counter.increase()
-
-
-				name = str(counter.value).rjust(8, '0')
-
 
 				card = self.env['openhealth.card'].create({
 																	'name': name,

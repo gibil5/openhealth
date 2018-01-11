@@ -88,11 +88,16 @@
 								
 								<field name="vspace" />
 
-<!--								
--->
 								<field name="prefix"   />													
 
 								<field name="vspace" />
+
+<!--								
+								<field name="separator"   />													
+-->
+
+								<field name="vspace" />
+
 
 								<field name="padding"   />													
 

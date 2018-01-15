@@ -21,7 +21,7 @@ class sale_order_report(models.Model):
 	# Total 
 	amount_total_report = fields.Float(
 			
-			'Total', 
+			'Total S/.', 
 		
 			default='0', 
 

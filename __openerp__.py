@@ -336,21 +336,24 @@
 
 
 
+
+
 		# Orders
 		'views/orders/order_line.xml',
 		'views/orders/order.xml',
+
+
+		# Order Report 
+		'views/orders/order_report.xml',
+
+
+
+		# Deprecated
 		#'views/orders/events.xml',
-
-
-
-
 		#'views/orders/order_ol.xml',
 
 
 
-
-		# Order Report 
-		#'views/orders/order_report.xml',
 
 
 

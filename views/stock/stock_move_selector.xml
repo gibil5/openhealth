@@ -132,9 +132,7 @@
 			<field name="res_id">7</field>
 -->
 
-
 			<field name="res_id" ref="stock_move_selector_default_view"/>
-
 			
 			<field name="domain">[]</field>
 		</record>
@@ -180,6 +178,8 @@
 
 				groups="openhealth.almacens,openhealth.managers,openhealth.directors"
 -->
+
+
 
 
 

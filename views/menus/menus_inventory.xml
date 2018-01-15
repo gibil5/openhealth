@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+<!-- Menus --> 
+
+
+
+<!--
+        <menuitem id="stock.menu_warehouse_report" name="Reports" sequence="99" parent="stock.menu_stock_root" groups="group_stock_manager"/>
+-->
+
+
+<!-- Kardex -->
+        <menuitem 
+        			id="menu_warehouse_kardex" 
+        			parent="stock.menu_stock_root" 
+
+        			name="KARDEX - jx" 
+        			
+        			sequence="2" 
+        			
+
+        			
+					groups="openhealth.roots,openhealth.almacens,openhealth.managers,openhealth.directors"
+        		/>
+
+
+
+<!--
+				groups="stock.group_stock_manager,base.group_configuration"
+				groups="openhealth.almacens,openhealth.managers,openhealth.directors"
+
+        			action="action_move_form2" 
+        			parent="stock.menu_warehouse_report" 
+-->
+
+
+<!-- Move Selector --> 
+        <menuitem 
+        			id="menu_action_move_selector" 
+        			parent="menu_warehouse_kardex" 
+
+        			name="KARDEX - jxx" 
+
+        			action="stock_move_selector_form_action" 
+        			sequence="131"
+
+					groups="openhealth.roots,openhealth.almacens,openhealth.managers,openhealth.directors"
+        		/>
+
+
+
+
+
+
+		<!-- Stock Move Selector --> 
+		<!--
+		<menuitem id="stock_move_selector_form_menu" name="Stock Move Selector Form" parent="openhealth_menu"
+					sequence="-170"
+					action="openhealth.stock_move_selector_form_action"
+					groups="openhealth.almacens,openhealth.managers,openhealth.directors"
+			/>
+
+
+		<menuitem id="stock_move_selector_menu" name="Stock Move Selector" parent="openhealth_menu"
+					sequence="-170"
+					action="openhealth.stock_move_selector_list_action"
+			/>
+		-->
+
+
+
+	</data>
+</openerp>

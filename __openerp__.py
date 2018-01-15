@@ -310,9 +310,8 @@
 		'views/stock/stock.xml',
 		'views/stock/stock_picking.xml',
 		'views/stock/stock_move.xml',
-
-
 		'data/stock_move_data.xml',
+
 		'views/stock/stock_move_selector.xml',
 
 
@@ -526,15 +525,16 @@
 
 		# Menus
 		'views/menus/menus.xml',
-
 		'views/menus/menus_reporting.xml',
+		'views/menus/menus_openhealth.xml',
 
 
+		'views/menus/menus_inventory.xml',
 		
 
 
-		# Menus - Open Health 
-		'views/menus/menus_openhealth.xml',
+
+
 
 
 

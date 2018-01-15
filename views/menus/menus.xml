@@ -619,7 +619,6 @@
 
 
 <!-- Contacts --> 			
-
 		<menuitem 	id="mail.menu_contacts"
 	    			name="Contacts"
 			        sequence="4"
@@ -632,11 +631,7 @@
 
 
 
-
-
-
 <!-- Oe Health -->
-
 		<menuitem 	id="oehealth.oeh_medical_menu" 
 					name="oeHealth" 
 					icon="STOCK_ZOOM_IN"
@@ -646,10 +641,7 @@
 
 
 
-
-
 <!-- Employees -->
-
         <menuitem 	name="Employees"
             		id="hr.menu_hr_root"            		
             		icon="fa-user"

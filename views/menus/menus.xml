@@ -15,30 +15,22 @@
 
 <!-- Historias -->
 
-<!--
-					groups="openhealth.almacens,openhealth.reception,openhealth.caja,openhealth.staffs,openhealth.assistants,openhealth.physicians,openhealth.managers,openhealth.directors"
 
-					groups="openhealth.almacens,openhealth.reception,openhealth.staffs,openhealth.assistants,openhealth.physicians,openhealth.managers,openhealth.directors"
-
-					groups="openhealth.reception,openhealth.staffs,openhealth.assistants,openhealth.physicians,openhealth.managers,openhealth.directors"
--->
 		<!-- Main - EMR -->
 		<menuitem 	id="main_emr_menu" 
 					sequence="-10"
 					name="Historias"
 					
-					groups="openhealth.roots,openhealth.archivers,openhealth.reception,openhealth.staffs,openhealth.assistants,openhealth.physicians,openhealth.managers,openhealth.directors"
+					groups="openhealth.roots,openhealth.caja,openhealth.archivers,openhealth.reception,openhealth.staffs,openhealth.assistants,openhealth.physicians,openhealth.managers,openhealth.directors"
 					/>
 
 
 
-<!--
--->
 		<menuitem 	id="emr_menu" 
 					name="Historias Médicas"
 					parent="main_emr_menu"
 
-					groups="openhealth.roots,openhealth.archivers,openhealth.reception,openhealth.staffs,openhealth.assistants,openhealth.physicians,openhealth.managers,openhealth.directors"
+					groups="openhealth.roots,openhealth.caja,openhealth.archivers,openhealth.reception,openhealth.staffs,openhealth.assistants,openhealth.physicians,openhealth.managers,openhealth.directors"
 					/>
 
 
@@ -151,9 +143,7 @@
 
 
 <!-- Caja -->
-<!--
-					groups="openhealth.caja,openhealth.managers,openhealth.directors"
--->
+
 		<!-- Main - sales -->
 		<menuitem 	id="main_sales_menu" 
 					sequence="-9"
@@ -167,7 +157,7 @@
 
 
 
-<!-- Caja --> 			
+		<!-- Caja --> 			
 		<menuitem 	id="sales_menu" 
 					name="Caja"
 					parent="main_sales_menu"
@@ -178,6 +168,8 @@
 
 
 
+
+			<!-- Ventas --> 			
 			<menuitem 	id="sales_invoice_menu" 
 						name="Ventas" 
 						parent="sales_menu"
@@ -188,6 +180,7 @@
 
 
 
+			<!-- Prespuestos --> 			
 			<menuitem 	id="sales_budget_menu" 
 						name="Presupuestos" 
 						parent="sales_menu"
@@ -195,6 +188,8 @@
 
 						action="budget_list_action"
 						/>
+
+
 
 
 
@@ -222,17 +217,53 @@
 
 
 
-<!-- Closings --> 			
-		<menuitem 	id="sales_closings_menu" 
-					name="Cierres de caja"
+
+
+
+
+<!-- Reports --> 			
+		<menuitem 	id="order_report_menu" 
+					name="Reporte de Ventas"
 					parent="main_sales_menu"
 
 					sequence="2"
 					/>
 
+			<menuitem 	id="order_report_sales_month_menu" 
+
+						name="Del Mes"
+			
+						parent="order_report_menu"
+						sequence="1"
+
+						action="order_report_month_list_action"
+						/>
+
+			<menuitem 	id="order_report_sales_day_menu" 
+
+						name="Del Día"
+			
+						parent="order_report_menu"
+						sequence="1"
+
+						action="order_report_day_list_action"
+						/>
+
+
+
+
+
+
+<!-- Closings --> 			
+		<menuitem 	id="sales_closings_menu" 
+					name="Cierres de caja"
+					parent="main_sales_menu"
+
+					sequence="3"
+					/>
 
 			<menuitem 	id="sales_closings_sub_menu" 						
-						name="Cierres de caja"
+						name="Diarios"
 						parent="sales_closings_menu"
 						sequence="1"
 
@@ -245,202 +276,10 @@
 
 
 
-
-<!-- Productos --> 			
-		<menuitem 	id="prods_menu" 
-
-					name="Productos"
-			
-					parent="main_sales_menu"
-
-					sequence="3"
-					/>
-
-
-			<menuitem 	id="prods_product_menu" 
-						name="Productos"
-						parent="prods_menu"
-						sequence="1"
-
-						action="product_template_stockable_list_action"/>
-
-
-
-
-
-
-<!-- Services -->
-		<menuitem 	id="services_menu" 
-
-					name="Servicios"
-			
-					parent="main_sales_menu"
-
-					sequence="4"
-					/>
-
-
-
-			<menuitem 	id="prods_services_quick_menu" 
-						name="QUICK LASER"
-						parent="services_menu"
-						sequence="0"
-						action="product_template_service_quick_list_action"/>
-
-
-
-
-
-
-			<menuitem 	id="prods_services_co2_menu" 
-						name="Laser Co2"
-						parent="services_menu"
-						sequence="1"
-						action="product_template_service_co2_list_action"/>
-
-
-
-
-			<menuitem 	id="prods_services_excilite_menu" 
-						name="Laser Excilite"
-						parent="services_menu"
-						sequence="2"
-						action="product_template_service_excilite_list_action"/>
-
-
-
-
-			<menuitem 	id="prods_services_ipl_menu" 
-						name="Laser IPL"
-						parent="services_menu"
-						sequence="3"
-						action="product_template_service_ipl_list_action"/>
-
-
-
-
-			<menuitem 	id="prods_services_ndyag_menu" 
-						name="Laser Ndyag"
-						parent="services_menu"
-						sequence="4"
-						action="product_template_service_ndyag_list_action"/>
-
-
-
-
-			<menuitem 	id="prods_services_medical_menu" 
-						name="T. Médico"
-						parent="services_menu"
-						sequence="5"
-						action="product_template_service_medical_list_action"/>
-
-
-
-<!--
-			<menuitem 	id="prods_services_menu" 
-						name="Todos"
-						parent="services_menu"
-						sequence="10"
-						action="product_template_service_list_action"/>
--->
-
-
-
-
-
-
-		<!-- Ventas --> 
-<!--
-		<menuitem 	id="sales_month_menu" 
-					name="Ventas x Mes"
-					parent="main_sales_menu"
-					sequence="2"
-					/>
-
-		<menuitem 	id="sales_invoice_august_menu" 
-					name="Agosto" 
-					parent="sales_month_menu"
-					sequence="8"
-
-					action="sale_august_list_action"
-
-					/>
--->
-
-
-
-
-
-
-<!-- Vip --> 			
-		<menuitem 	id="sales_cards_menu" 
-					name="Vip"
-					parent="main_sales_menu"
-					sequence="5"
-
-					groups="openhealth.roots,openhealth.caja,openhealth.directors"
-
-					/>
-
-
-			<menuitem 	id="sales_card_sub_menu" 
-						name="Tarjetas Vip"
-						parent="sales_cards_menu"
-						sequence="1"
-
-						action="card_list_action"
-						/>
-
-
-			<menuitem 	id="partners_card_sub_menu" 
-						name="Clientes Vip"
-						parent="sales_cards_menu"
-						sequence="2"
-
-						action="partner_vip_list_action"
-						/>
-
-
-			<menuitem 	id="vip_product_template_services_menu" 
-						name="Servicios Vip"
-						parent="sales_cards_menu"
-						sequence="3"
-
-						action="product_template_service_vip_list_action"/>
-
-
-
-
-
-
-
-
-
-<!--
-Deprecated
-
-		<menuitem 	id="sales_patients_sub_menu" 
-					name="Pacientes Vip - jx"
-					parent="sales_cards_menu"
-					sequence="5"
-
-					action="patient_vip_list_action"
-					/>
--->
-
-
-
-
-
-
-
-<!--
-					groups="openhealth.roots,openhealth.caja,openhealth.managers,openhealth.directors"
--->
 <!-- Config --> 
 		<menuitem 	id="sales_config_menu" 
 					parent="main_sales_menu"
-					sequence="5"
+					sequence="4"
 
 					name="Configuración"
 
@@ -462,15 +301,9 @@ Deprecated
 
 
 
+
+
 <!-- Citas -->
-<!--
-			groups="openhealth.reception,openhealth.managers,openhealth.directors"
-			groups="openhealth.reception,openhealth.physicians,openhealth.managers,openhealth.directors"
-
-			groups="openhealth.roots,openhealth.assistants,openhealth.reception,openhealth.caja,openhealth.physicians,openhealth.managers,openhealth.directors"
--->
-
-
 
 		<!-- Appointments -->
 		<menuitem id="main_appointment_menu_jx" 
@@ -614,12 +447,14 @@ Deprecated
 			sequence="-7"
 			name="Productos"
 
-			groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.physicians,openhealth.assistants,openhealth.staffs,openhealth.reception"
+			groups="openhealth.roots,openhealth.caja,openhealth.directors,openhealth.managers,openhealth.physicians,openhealth.assistants,openhealth.staffs,openhealth.reception"
 			
 			/>
 
 
+
 		<!-- Productos -->
+<!--		
 		<menuitem id="products_menu" 
 			name="Productos"
 			parent="main_products_menu"
@@ -627,132 +462,113 @@ Deprecated
 
 
 		<menuitem id="product_menu" 
-
 			name="Productos"
-
 			parent="products_menu"
-			
 			sequence="1"
 
 			action="product_template_stockable_list_action"
 			/>
-
-
-
-
-<!--
-openhealth.directors
-openhealth.managers
-openhealth.physicians
-openhealth.assistants
-openhealth.reception
-openhealth.almacens
 -->
 
 
 
 
+<!-- Productos --> 			
+		<menuitem 	id="prods_menu" 
 
-
-
-
-
-
-
-
-
-
-
-<!-- Inventory -->
-<!--
-		<menuitem id="main_inventory_menu" 
-			sequence="-8"
-			name="Inventario"
-
-			groups="openhealth.reception,openhealth.managers"
-			/>
-
-		<menuitem id="jx_inventory_menu" 
-			name="Inventario 1"
-			parent="main_inventory_menu"
-			/>
--->
-
-
-
-
-<!-- Contacts -->
-<!--
-		<menuitem 	id="base.main_contacts_menu" 
-					sequence="0"
-					name="Contactos - jx"
-
-					groups="openhealth.managers,openhealth.directors"
-					/>
-
-		<menuitem 	id="jx_contacts_menu" 
-					name="Contactos - jxy"
-					parent="base.main_contacts_menu"
-
-					/>
-
-		<menuitem 	id="jx_mbox_contacts_menu" 
-					name="Mailbox" 
-					parent="jx_contacts_menu"
-					sequence="1"
-					action="mail.action_contacts"
-					/>
--->
-
-
-<!--
-					parent="base.menu_sale_config" 
-					groups="group_system"
-		<menuitem 	id="menu_config_address_book" 
-
-					parent="erp_mbox_contacts_menu" 
+					name="Productos"
 			
-					name="Contactos - jx" 
+					parent="main_products_menu"
+
 					sequence="4"
-					groups="openhealth.managers,openhealth.directors"
-					 />
--->
+					/>
+
+
+			<menuitem 	id="prods_product_menu" 
+						name="Productos"
+						parent="prods_menu"
+						sequence="1"
+
+						action="product_template_stockable_list_action"/>
+
+
+
+
+
+
+<!-- Services -->
+		<menuitem 	id="services_menu" 
+
+					name="Servicios"
+			
+					parent="main_products_menu"
+
+					sequence="4"
+					/>
+
+
+
+			<menuitem 	id="prods_services_quick_menu" 
+						name="QUICK LASER"
+						parent="services_menu"
+						sequence="0"
+						action="product_template_service_quick_list_action"/>
+
+
+
+
+
+
+			<menuitem 	id="prods_services_co2_menu" 
+						name="Laser Co2"
+						parent="services_menu"
+						sequence="1"
+						action="product_template_service_co2_list_action"/>
+
+
+
+
+			<menuitem 	id="prods_services_excilite_menu" 
+						name="Laser Excilite"
+						parent="services_menu"
+						sequence="2"
+						action="product_template_service_excilite_list_action"/>
+
+
+
+
+			<menuitem 	id="prods_services_ipl_menu" 
+						name="Laser IPL"
+						parent="services_menu"
+						sequence="3"
+						action="product_template_service_ipl_list_action"/>
+
+
+
+
+			<menuitem 	id="prods_services_ndyag_menu" 
+						name="Laser Ndyag"
+						parent="services_menu"
+						sequence="4"
+						action="product_template_service_ndyag_list_action"/>
+
+
+
+
+			<menuitem 	id="prods_services_medical_menu" 
+						name="T. Médico"
+						parent="services_menu"
+						sequence="5"
+						action="product_template_service_medical_list_action"/>
 
 
 
 <!--
-        id="menu_contacts"
-        action="action_contacts"
-        groups="base.group_user,base.group_partner_manager"
-
-		groups="openhealth.managers,openhealth.directors"
--->
-    <menuitem 
-    	name="Contacts"
-
-        id="mail.menu_contacts"
-        
-        sequence="4"
-        
-        action="mail.action_contacts"
-        
-        web_icon="mail,static/description/icon2.png"
-        
-        groups="base.group_user,base.group_partner_manager"
-        />
-
-
-
-
-
-
-
-
-<!--
-		<menuitem 	id="tabel_menu_emp_by_division" name="Employees by division"
-              		parent="tabel_menu"
-              		action="tabel_list_emp_action_group_by_division"  sequence="5" 
-              		groups="Tabel.group_manager,Tabel.group_accountant,Tabel.group_eco"/>
+			<menuitem 	id="prods_services_menu" 
+						name="Todos"
+						parent="services_menu"
+						sequence="10"
+						action="product_template_service_list_action"/>
 -->
 
 
@@ -760,6 +576,57 @@ openhealth.almacens
 
 
 
+<!-- Vip --> 			
+		<menuitem 	id="sales_cards_menu" 
+					name="Vip"
+					parent="services_menu"
+					sequence="5"
+
+					groups="openhealth.roots,openhealth.caja,openhealth.directors"
+					/>
+
+
+			<menuitem 	id="sales_card_sub_menu" 
+						name="Tarjetas Vip"
+						parent="sales_cards_menu"
+						sequence="1"
+
+						action="card_list_action"
+					/>
+
+
+			<menuitem 	id="partners_card_sub_menu" 
+						name="Clientes Vip"
+						parent="sales_cards_menu"
+						sequence="2"
+
+						action="partner_vip_list_action"
+					/>
+
+
+			<menuitem 	id="vip_product_template_services_menu" 
+						name="Servicios Vip"
+						parent="sales_cards_menu"
+						sequence="3"
+
+						action="product_template_service_vip_list_action"
+					/>
+
+
+
+
+
+
+
+<!-- Contacts --> 			
+
+		<menuitem 	id="mail.menu_contacts"
+	    			name="Contacts"
+			        sequence="4"
+			        action="mail.action_contacts"
+			        web_icon="mail,static/description/icon2.png"
+			        groups="base.group_user,base.group_partner_manager"
+				/>
 
 
 
@@ -770,37 +637,21 @@ openhealth.almacens
 
 <!-- Oe Health -->
 
-		<!-- Main - Oe Health -->
-<!--
-		<menuitem id="oehealth.main_menu" 
-			sequence="6"
-			name="Oe Health - jx"
-
-			groups="openhealth.admins"
-			/>
-
-			
-					groups="openhealth.admins"
--->
-
-		<menuitem 	name="oeHealth" 
-					id="oehealth.oeh_medical_menu" 
+		<menuitem 	id="oehealth.oeh_medical_menu" 
+					name="oeHealth" 
 					icon="STOCK_ZOOM_IN"
 
 					groups="openhealth.roots"
-					/>
-
-<!--
-            		groups="base.group_hr_manager,base.group_hr_user,base.group_user"
--->
+				/>
 
 
 
+
+
+<!-- Employees -->
 
         <menuitem 	name="Employees"
-
             		id="hr.menu_hr_root"            		
-
             		icon="fa-user"
             		web_icon="hr,static/description/icon.png"
             		sequence="75"
@@ -808,47 +659,8 @@ openhealth.almacens
 		            groups="base.group_hr_manager"
             		/>
 
-<!--
-		            groups="base.group_hr_manager,base.group_hr_user,base.group_user"
--->
-<!--
-      <menuitem name="Employees"
-            id="menu_hr_root"
-            groups="base.group_hr_manager,base.group_hr_user,base.group_user"
-            icon="fa-user"
-            web_icon="hr,static/description/icon.png"
-            sequence="75"
-
-            />
--->
 
 
 
-
-
-
-		<!-- Sales -->
-		<!--
-		<menuitem id="main_sales_menu" name="Sales jx"/>
-		--> 
-
-		<!-- Medical Histories -->
-		<!--
-		<menuitem id="main_openextension_menu" name="Medical Histories"/>
-
-		<menuitem id="openextension_menu" name="Medical Histories"
-			parent="main_openextension_menu"/>
-
-		<menuitem id="patients_menu" name="Pacientes" parent="openextension_menu"
-			action="patient_list_action"/>
-
-		<menuitem id="main_medicalhistories_menu" name="Medical Histories"/>
-
-		<menuitem id="medicalhistories_menu" name="Medical Histories"
-			parent="main_medicalhistories_menu"/>
-
-		<menuitem id="patients_menu" name="Pacientes" parent="medicalhistories_menu"
-			action="patient_list_action"/>
-		--> 
 	</data>
 </openerp>

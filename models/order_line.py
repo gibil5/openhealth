@@ -16,6 +16,45 @@ class sale_order_line(models.Model):
 
 
 
+	x_date_created = fields.Datetime(
+
+			string='Fecha', 
+		)
+
+
+
+
+
+	# Patient 
+	patient_id = fields.Many2one(
+			'oeh.medical.patient',
+			string='Paciente', 
+		)
+
+
+
+
+
+
+	order_report_id = fields.Many2one(
+
+		'openhealth.order.report', 
+		
+		string='Order Report Reference', 		
+		required=False, 
+		ondelete='cascade', index=True, copy=False
+	)
+
+
+
+
+
+	order_id = fields.Many2one('sale.order', string='Order Reference', 		
+		required=False, 
+		ondelete='cascade', index=True, copy=False
+	)
+
+
 # ----------------------------------------------------------- Important ------------------------------------------------------
 
 

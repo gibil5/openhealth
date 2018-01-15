@@ -793,7 +793,7 @@
 					<field name="x_partner_dni"/>
 
 					<field name="vspace"/>
-					
+
 				</field>
 
 
@@ -804,7 +804,7 @@
 					
 					<field name="vspace"/>
 
-					<field name="x_doctor"		required="1"		widget="radio"		/>
+					<field name="x_doctor"		required="1"			/>
 
 
 
@@ -1022,7 +1022,9 @@ grey:state in ('cancel')
 
 		<!-- Budgets --> 
 		<record model="ir.actions.act_window" id="budget_list_action">
+
 			<field name="name">Presupuestos</field>
+			
 			<field name="res_model">sale.order</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
@@ -1031,6 +1033,13 @@ grey:state in ('cancel')
 									('state', '=', 'draft'),
 								]
 			</field>
+
+
+<!--
+									'x_doctor': 'Dr. Chavarri', 
+-->
+			<field name="context">{}</field>
+
 
 			<!--
 			<field name="domain">[]</field>

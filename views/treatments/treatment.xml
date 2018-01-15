@@ -65,7 +65,9 @@
 
 						<!-- Create Consultation --> 
 						<button 
-							name="open_consultation_current" 
+							
+							name="create_consultation" 
+							
 							type="object" 
 							class="oe_highlight"
 
@@ -697,7 +699,13 @@ Fields
 
 								<field name="today_date"		invisible="1"		/>
 
+
+
 								<field name="treatment_closed"	invisible="0"	/>
+
+								<field name="vspace" />
+
+								<field name="user_id"/>
 
 <!--
 								<field name="consultation_progress"		/>

@@ -20,7 +20,7 @@
 
 		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant\n
 
-		Last built: 	11 January 2018 - Rebirth !!!
+		Last built: 	15 January 2018 - Rebirth !!!
 
 		Created: 	 	11 Sep 2016
 
@@ -266,8 +266,11 @@
 		# ----------------------------------------------------------- Security ------------------------------------------------------
 
 		'security/openhealth_security.xml',
+
 		'security/openhealth_security_readers.xml',
+		
 		'security/ir.model.access.csv',
+		
 		'security/ir.rule.xml',
 
 
@@ -336,8 +339,18 @@
 		# Orders
 		'views/orders/order_line.xml',
 		'views/orders/order.xml',
+		#'views/orders/events.xml',
+
+
+
 
 		#'views/orders/order_ol.xml',
+
+
+
+		# Order Report 
+		'views/orders/order_report.xml',
+
 
 
 
@@ -348,9 +361,6 @@
 
 
 
-
-		# Events 
-		'views/orders/events.xml',
 
 
 
@@ -640,12 +650,15 @@
 
 		# Patients - 2 
 		'views/patients/patient_personal.xml',
-		'views/patients/patient_treatments.xml',
+		#'views/patients/patient_treatments.xml',
 		'views/patients/patient_control_docs.xml',
 		'views/patients/patient_appointments.xml',
-		'views/patients/patient_cosmetologies.xml',
+		
+		#'views/patients/patient_cosmetologies.xml',
 
 		'views/patients/patient_quick.xml',
+
+		'views/patients/patient_sales.xml',
 
 
 

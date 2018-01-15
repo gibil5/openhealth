@@ -126,6 +126,12 @@ from . import sale_make_invoice_advance
 from . import order
 from . import order_line
 
+from . import order_report
+from . import order_line_report
+
+
+
+
 
 from . import account_invoice
 

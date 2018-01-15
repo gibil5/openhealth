@@ -65,6 +65,8 @@ class Treatment(models.Model):
 
 		# Unlinks
 		self.service_quick_ids.unlink()
+		self.service_vip_ids.unlink()
+
 		self.service_co2_ids.unlink()
 		self.service_excilite_ids.unlink()
 		self.service_ipl_ids.unlink()
@@ -1713,16 +1715,47 @@ class Treatment(models.Model):
 
 #jx
 	@api.multi
-	def open_consultation_current(self):  
+	#def open_consultation_current(self):  
+	def create_consultation(self):  
 
-		#print 
-		#print 'jx'
-		#print 'Open Consultation Current'
+
+		print 'jx'
+		print 'Create Consultation'
+
 
 		patient_id = self.patient.id
-		doctor_id = self.physician.id
 		treatment_id = self.id 
 		chief_complaint = self.chief_complaint
+
+
+
+
+		# Doctor 
+		#doctor_id = self.physician.id
+
+		#print self.user_id
+		#print self.user_id.name 
+
+		user_id = self.env.user.id 
+		user_name =  self.env.user.name 
+		print user_id
+		print user_name
+
+
+		doctor = self.env['oeh.medical.physician'].search([ 	
+																('x_user_name', '=', user_name),		
+															], 
+															#order='appointment_date desc', 
+															limit=1
+															)
+
+		print doctor
+		print doctor.id 
+		print doctor.name 
+		doctor_id = doctor.id 
+
+
+
 
 
 
@@ -1770,14 +1803,14 @@ class Treatment(models.Model):
 			# Consultation 
 			consultation = self.env['openhealth.consultation'].create(
 													{
-
-														'patient': patient_id,
-														'doctor': doctor_id,
+														'patient': patient_id,													
 														'treatment': treatment_id,	
-
 														'evaluation_start_date': evaluation_start_date,
 														'chief_complaint': chief_complaint,
 														'appointment': appointment_id,
+
+
+														'doctor': doctor_id,
 													}
 												)
 			consultation_id = consultation.id 

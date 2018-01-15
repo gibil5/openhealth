@@ -22,6 +22,242 @@ class Patient(models.Model):
 
 
 
+	# Estado de cuenta
+	x_order_report = fields.Many2one(
+			
+			'openhealth.order.report',		
+			
+			string="Estado de cuenta",		
+		)
+
+
+
+# ----------------------------------------------------------- Order Report ------------------------------------------------------
+
+	# Generate 
+	@api.multi 
+	def generate_order_report(self):
+		print 'jx'
+		print 'Generate'
+
+		self.remove_order_report()
+		
+		res_id = self.create_order_report()
+
+		self.update_order_report()
+
+
+
+
+		return {
+				'type': 'ir.actions.act_window',
+				
+				'name': ' New Order Report', 
+
+				'view_type': 'form',
+
+				'view_mode': 'form',	
+				
+				'target': 'current',
+
+				'res_model': 'openhealth.order.report',				
+				
+				'res_id': res_id,
+
+				'flags': 	{
+								#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+								'form': {'action_buttons': True, }
+							},
+
+				'context': {
+								#'default_order': self.id,
+								#'default_name': name,
+								#'default_x_type': x_type,
+							}
+				}
+	# create_event
+
+
+
+
+
+
+
+
+
+	# Remove 
+	@api.multi 
+	def remove_order_report(self):
+		print 'jx'
+		print 'Remove'
+
+		self.x_order_report = False
+
+
+
+
+	# Create 
+	@api.multi 
+	def create_order_report(self):
+		print 'jx'
+		print 'Create'
+
+
+		#if self.x_order_report != False: 
+		#	self.x_order_line_ids.unlink()
+
+		#else: 
+
+		#name = 'Estado de cuenta'
+		name = 'EC - ' + self.partner_id.name
+
+
+		#self.x_order_report = self.env['sale.order'].create(
+		order_report_id = self.env['openhealth.order.report'].create(
+														{
+															'name': name, 
+
+															'partner_id': self.partner_id.id,
+																													
+															'state':'sale',
+
+															#'subtotal':0,
+															#'pricelist_id': self.property_product_pricelist.id,	
+															#'patient': self.id,	
+															#'x_doctor': self.physician.id,	
+															#'treatment': self.id,
+															#'x_family': target, 
+															#'note': note, 
+														}
+													).id
+
+
+		self.x_order_report = order_report_id
+		
+
+		return order_report_id
+
+
+
+
+
+
+	# Update 
+	@api.multi 
+	def update_order_report(self):
+		print 'jx'
+		print 'Update'
+
+
+
+		partner_id = self.partner_id.name
+
+		orders = self.env['sale.order'].search([
+															('partner_id', '=', partner_id),			
+													],
+													#order='start_date desc',
+													#limit=1,
+												)
+		#print orders
+
+
+		for order in orders: 
+			#print 
+			#print order.name 
+			for line in order.order_line: 
+
+				#print line.product_id
+				#print line.name
+				#print line.price_subtotal
+				#print line.create_date
+
+
+
+				#ret = self.x_order_report.order_line.create({
+
+				ret = self.x_order_line_ids.create({
+															
+															'product_id': line.product_id.id,
+
+															'name': line.name,
+															
+															'price_subtotal': line.price_subtotal,
+
+
+															'x_date_created': line.create_date,
+
+
+															#'order_id': self.x_order_report.id,
+															'order_report_id': self.x_order_report.id,
+													})
+
+
+
+
+
+
+
+
+
+
+	# Estado de cuenta - Lines 
+	x_order_line_ids = fields.One2many(
+
+			'sale.order.line',			 
+			#'openhealth.order.line.report',			 
+
+			'patient_id', 
+		
+			string="Estado de cuenta",
+		)
+
+
+
+
+
+
+	@api.multi
+	def _compute_x_order_line_ids(self):
+		
+		print 'jx'
+		print 'Compute Order ids'
+		
+		
+		for record in self:		
+
+			record.x_order_line_ids.unlink()
+
+			partner_id = record.partner_id.name
+
+			orders = self.env['sale.order'].search([
+															('partner_id', '=', partner_id),			
+													],
+													#order='start_date desc',
+													#limit=1,
+												)
+			print orders
+
+			for order in orders: 
+				print 
+				print order.name 
+				for line in order.order_line: 
+					print line.product_id
+					print line.name
+					print line.price_subtotal
+					print line.create_date
+
+					#ret = record.x_order_line_ids.create({
+					#											'product_id': line.product_id.id,
+					#											'name': line.name,
+					#											'price_subtotal': line.price_subtotal,
+					#									})
+
+
+
+
+
+
+
 
 # ----------------------------------------------------------- DNI RUC ------------------------------------------------------
 

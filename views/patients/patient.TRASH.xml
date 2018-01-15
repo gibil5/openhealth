@@ -28,3 +28,22 @@
 		</record>
 -->
 
+
+
+<!--
+13 Jan 2018
+-->
+
+<!-- 
+						<button 
+							type="object" 
+							class="oe_highlight oe_right"
+							string="Comprar Tarjeta Vip" 
+							
+							groups="openHealth.managers,openhealth.directors"
+
+							attrs="{'invisible':	[('x_vip', 'in', [True]),]}"
+
+							name="card_purchase" 
+						/>
+-->

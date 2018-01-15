@@ -1,0 +1,679 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		
+
+
+		<!-- FORM -->
+		<record model="ir.ui.view" id="view_order_report_form">
+
+			<field name="name">sale.order.report.form</field>
+			
+			<field name="model">openhealth.order.report</field>
+			
+
+			<field name="inherit_id" ref="sale.view_order_form"/>	
+			
+
+			<field name="mode">primary</field>
+
+			<field name="priority" eval="1"/>
+			
+			<field name="arch" type="xml">
+
+
+
+
+<!--
+New
+-->
+<!--
+				<notebook position="inside">
+
+				
+				
+
+				</notebook>
+
+<xpath expr="//page[1]" position="attributes">
+	<attribute name='string'>Líneas</attribute> 
+</xpath>
+
+-->
+
+
+
+
+				<xpath expr="//page[1]" position="before">
+
+					<page string="Estado de Cuenta">
+				
+						<field name="order_line_report" 	/>
+
+					</page>
+
+				</xpath>
+
+
+
+
+<!--
+				<xpath expr="/form/notebook/page[@string='Other Information']" position="attributes">
+-->
+				<xpath expr="//notebook" position="after">
+
+
+					<group  col="3"  >
+						
+						<group></group>
+
+						<group></group>
+
+						<group>						
+							<field name="amount_total_report" 	/>
+						</group>
+
+					</group>
+
+
+				
+				</xpath>
+
+
+
+
+
+
+<!--
+				<xpath expr="//page[@name='Other Information']" position="replace">
+				</xpath>
+				<xpath expr="//page[1]" position="replace">
+				</xpath>
+-->
+
+
+
+
+<!--
+				<xpath expr="//page[1]" position="attributes">
+					<attribute name='invisible'>1</attribute> 
+				</xpath>
+
+
+				<xpath expr="//page[2]" position="attributes">
+					<attribute name='invisible'>1</attribute> 
+				</xpath>
+
+-->
+
+				<xpath expr="//page[2]" position="attributes">
+					<attribute name='invisible'>1</attribute> 
+				</xpath>
+
+				<xpath expr="//page[3]" position="attributes">
+					<attribute name='invisible'>1</attribute> 
+				</xpath>
+
+
+				<xpath expr="//page[2]" position="attributes">
+					<attribute name='invisible'>1</attribute> 
+				</xpath>
+
+
+
+
+
+
+
+<!--
+				<xpath expr="//page[1]" position="replace">
+				</xpath>
+-->
+
+
+
+<!--
+Old
+-->
+				<!-- State --> 
+				<xpath expr="//field[@name='state']" position="replace">
+					<field 	name="state" 
+
+							widget="statusbar" 
+
+
+							statusbar_visible="draft, sent, sale"
+					/>
+				</xpath>
+
+
+
+
+
+
+
+
+<!-- OLD Buttons - NOT DEPRECATED --> 
+
+				<!-- Two times important --> 
+
+
+				<!-- Quotation Send --> 
+				<xpath expr="//button[@name='action_quotation_send']" position="replace">
+				</xpath>
+				<xpath expr="//button[@name='action_quotation_send']" position="replace">
+				</xpath>
+
+
+
+
+				<!-- Print Quotation -->
+				<xpath expr="//button[@name='print_quotation']" position="replace">
+				</xpath>
+				<xpath expr="//button[@name='print_quotation']" position="replace">
+				</xpath>
+
+
+
+
+				<!-- Action Done --> 
+				<xpath expr="//button[@name='action_done']" position="replace">
+				</xpath>
+
+
+
+
+
+				<!-- Confirm Sale --> 
+<!--
+				<xpath expr="//button[@name='action_confirm']" position="replace">
+				</xpath>
+
+				<xpath expr="//button[@name='action_confirm']" position="replace">
+				</xpath>
+
+
+							name="action_confirm"
+							type="object" 
+							class="oe_highlight"
+							states="sent"						
+
+
+
+				<xpath expr="//button[@name='action_confirm']" position="replace">
+					<button 
+
+							string="Confirmar venta - jx"
+
+					/>
+				</xpath>
+-->
+
+				<xpath expr="//button[@name='action_confirm']" position="replace">
+				</xpath>
+
+				<xpath expr="//button[@name='action_confirm']" position="replace">
+					<button 
+							name="action_confirm"
+							string="CONFIRMAR"
+							
+							type="object" 
+							class="oe_highlight"
+							states="sent"						
+					/>
+				</xpath>
+
+
+
+
+
+
+
+<!-- OLD Buttons - DEPRECATED --> 
+
+
+
+				<!-- Action Confirm --> 
+				<!--
+				<xpath expr="//button[@name='action_confirm']" position="replace">
+				</xpath>
+				<xpath expr="//button[@name='action_confirm']" position="replace">
+				</xpath>
+				-->
+
+
+				<!--
+				<xpath expr="//page[@name='Other Information']" position="replace">
+
+				</xpath>
+				-->
+
+
+
+
+
+
+				<!-- Create Invoice --> 
+<!--
+				<xpath expr="//button[contains(text(),'Create')]" position="replace">
+
+				<xpath expr="//button[@name='225']" position="replace">
+				<xpath expr="//button[@string='Create Invoice']" position="replace">
+				</xpath>
+-->
+
+
+				<xpath expr="//button[@type='action']" position="replace">
+				</xpath>
+				<xpath expr="//button[@type='action']" position="replace">
+				</xpath>
+
+
+
+
+
+
+
+
+
+
+				<!-- Natives -->
+				<xpath expr="//field[@name='validity_date']" position="before">
+					
+					<field name="x_partner_vip"/>
+
+					<field name="vspace"/>
+
+					<field name="date_order" 			string="Fecha"		readonly="1"	/>					
+
+					<field name="vspace"/>
+
+
+
+<!--
+					<field name="x_sale_document_type"	invisible="1"	readonly="1"	/>
+					<field name="vspace"/>
+					<field name="x_sale_document"/>
+					<field name="vspace" />
+					<field name="x_amount_total" />
+					<field name="pm_total" />
+					<field name="x_payment_complete" />
+					<field name="vspace" />
+-->			
+				</xpath>
+
+
+
+
+
+				<!-- Price list --> 
+				<xpath expr="//field[@name='pricelist_id']" position="replace">
+					<field name="pricelist_id" 					readonly="1"	/>
+				</xpath>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- REPLACES -->
+				<xpath expr="//field[@name='validity_date']" position="replace">
+				</xpath>
+
+				<xpath expr="//field[@name='payment_term_id']" position="replace">
+				</xpath>
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				<!-- NEW BUTTONS --> 
+
+				<xpath expr="//button[@name='action_confirm']" position="before">
+
+<!--
+							states="sale"						
+
+
+							attrs="{'invisible':	[
+															('x_doctor', 'in', [	
+																					'Eulalia', 
+																				]),	
+													]}"
+
+							attrs="{'invisible':	[
+															('nr_treatments', 'in', [0] 	),	
+													]}"
+
+-->
+
+
+
+<!-- DEPRECATED -->
+<!--
+					<button 
+							name="open_treatment"
+							type="object" 
+							class="oe_highlight"
+							string="Regresar al TRATAMIENTO"
+
+							groups="openhealth.reception,openhealth.physicians"
+					/>
+-->
+
+
+
+
+
+						<!-- Cosmetology --> 
+<!--
+															('x_family', 'in', ['consultation'] 	),	
+
+
+								attrs="{'invisible':	[
+															('x_doctor', 'in', [	
+																					'Dr. Chavarri', 
+																					'Dr. Canales', 
+																				]),	
+														]}"
+								attrs="{'invisible':	[
+															('nr_cosmetologies', 'in', [0] 	),	
+														]}"
+-->
+<!--
+						<button 
+								name="open_cosmetology"
+								type="object" 
+								class="oe_highlight"
+	
+								string="Regresar a la COSMIATRIA"
+						/>					
+-->
+				</xpath>
+
+
+
+
+<!--
+				<xpath expr="//field[@name='x_state']" position="before">
+				<xpath expr="//field[@name='state']" position="before">
+				<xpath expr="//button[@name='action_quotation_send']" position="before">
+-->
+				<xpath expr="//button[@name='action_confirm']" position="before">
+				
+
+
+					<!-- Print  --> 
+					<button 
+							type="object" 
+							class="oe_highlight"
+
+							name="print_ticket"
+
+							string="IMPRIMIR"
+
+							groups="openhealth.roots"
+					/>
+
+				</xpath>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				<!-- Buttons --> 
+<!--				
+				<xpath expr="//button[@name='print_quotation']" position="replace">
+				</xpath>
+-->
+				<xpath expr="//button[@name='action_cancel']" position="replace">
+				</xpath>
+
+
+
+
+
+
+
+				<!-- Remove -->
+				<xpath expr="//field[@name='name']" position="replace">
+
+					<group>
+						<h3>
+							<field name="name" 		readonly="1"	/>								
+						</h3>
+					</group>
+
+<!--
+					<group>
+						<group class="">
+							<h5>
+								<field name="treatment" 	readonly="1"/>
+								<field name="cosmetology" 	readonly="1"/>
+							</h5>
+						</group>
+					</group>
+-->
+					<group></group>
+
+
+
+					<group></group>
+					<group></group>
+				</xpath>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+				<field name="state" position="before">
+
+									<button 
+											name="cancel_order" 	
+											type="object" 
+											class="oe_highlight oe_right "	
+
+											string="Anular"
+
+											groups="openhealth.roots,openhealth.caja,openhealth.managers,openhealth.directors"
+									/>
+				</field>
+-->
+
+
+
+
+
+
+
+<!--
+				<field name="partner_id" position="after">
+						<field name="user_id"		string="Generado por"		readonly="1"	groups="openhealth.roots"	/>
+				</field>	
+-->
+
+
+
+
+
+
+
+
+
+<!-- 
+Chatter - Deprecated !!!
+Look for the Minimalist experience !!!
+-->
+<!--
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+-->
+				<field name="message_follower_ids" position="replace">
+				</field>
+
+				<field name="message_ids" position="replace">
+				</field>
+
+
+			</field>
+		</record>
+		
+		
+
+
+
+
+
+
+		<!-- Sales Month --> 
+		<record model="ir.actions.act_window" id="order_report_month_list_action">
+
+			<field name="name">Ventas - Del Mes</field>
+			
+			<field name="res_model">sale.order</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+
+
+<!--
+('date_order','&lt;',datetime.datetime.now()+relativedelta(months=1).strftime('%%Y-%%m-01')), 
+('date_order','&gt;=',time.strftime('%%Y-%%m-01')), 
+
+('date_order','&lt;',(context_today()+relativedelta(months=1)).strftime('%%Y-%%m-01')), 
+('date_order','&gt;=',time.strftime('%%Y-%%m-01'))
+
+									('date_order','&lt;',( datetime.datetime.now() +relativedelta(months=1)).strftime('%Y-%m-01')), 
+-->
+
+			<field name="domain">[
+									('state', '=', 'sale'),
+									('date_order','&gt;=', time.strftime('%Y-%m-01')),
+									('date_order','&lt;', time.strftime('%Y-%m-31')),
+								]
+			</field>
+
+			<!--
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			-->
+		</record>
+
+
+
+
+
+		<!-- Sales Day --> 
+		<record model="ir.actions.act_window" id="order_report_day_list_action">
+
+			<field name="name">Ventas - Del Día</field>
+			
+			<field name="res_model">sale.order</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+
+<!--
+										('date_order', '>=', context_today().strftime('%Y-%m-%d')),
+										('date_order', '<', (context_today() + datetime.timedelta(1)).strftime('%Y-%m-%d')  ),
+
+[
+]
+
+
+-->
+			<field name="domain">[
+
+									('state', '=', 'sale'),
+									('date_order', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 00:00:00')),
+									('date_order', '&lt;=', datetime.datetime.now().strftime('%Y-%m-%d 23:23:59')),
+															
+								]</field>
+
+
+			<!--
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+
+			<field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first invoice
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+
+
+
+
+
+
+	</data>
+</openerp>

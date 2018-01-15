@@ -33,9 +33,9 @@
 						<button 
 							type="object" 
 							class="oe_highlight"
-							string="Update" 
-
 							name="x_update" 
+
+							string="Update" 
 						/>
 
 
@@ -46,10 +46,9 @@
 						<button 
 							type="object" 
 							class="oe_highlight"
-
-							string="Ultimo Tratamiento" 
-							
 							name="open_treatment_current" 
+
+							string="Ultimo Tratamiento" 							
 						/>
 
 
@@ -57,38 +56,59 @@
 
 
 <!--
-							string="Crear Cosmiatría" 
--->
-<!--
--->
+Cosmetology 
 						<button 
 							type="object" 
 							class="oe_highlight"
-
-							string="Ultima Cosmiatría" 
-							
 							name="open_cosmetology_current" 
-						/>
 
-
-
-
-
-
-
-<!-- 
-						<button 
-							type="object" 
-							class="oe_highlight oe_right"
-							string="Comprar Tarjeta Vip" 
-							
-							groups="openHealth.managers,openhealth.directors"
-
-							attrs="{'invisible':	[('x_vip', 'in', [True]),]}"
-
-							name="card_purchase" 
+							string="Ultima Cosmiatría" 							
 						/>
 -->
+
+
+
+
+
+						<button 
+							type="object" 
+							class="oe_highlight"
+							name="generate_order_report" 
+
+							string="Estado de Cuenta" 
+						/>
+
+
+
+<!--
+						<button 
+							type="object" 
+							class="oe_highlight"							
+							name="update_order_report" 
+
+							string="Actualizar" 
+						/>
+
+						<button 
+							type="object" 
+							class="oe_highlight"
+							name="create_order_report" 
+
+							string="Crear" 
+							
+						/>
+
+						<button 
+							type="object" 
+							class="oe_highlight"
+							name="remove_order_report" 
+
+							string="Eliminar" 							
+						/>
+-->
+
+
+
 					</header>
 
 
@@ -312,38 +332,34 @@
 								<field name="x_first_contact"	required="1"/>
 								<field name="x_first_impression"	/>
 <!--
-								<field name="vspace"    />
-								<field name="category_id"    	 widget="many2many_tags" />
 -->
 							</group>
 
 
+
+<!--
 							<group>
-								<!--
+								<field name="category_id"    	 widget="many2many_tags" />
 								<field string='Blood Type' name="blood_type"/>
 								<field string='Rh'  name="rh"/>
 								<field string='Family Physician'  name="doctor" options="{'no_create': True}"/>
 								<field string='Responsible' name="oeh_patient_user_id" options="{'no_create': True}"/>
-								-->
 							</group>
+-->
 						</group>
 
-		
 
+		
+<!--
 <group>
 	<group>
 	</group>
 	<group>
 	</group>
 </group>
+-->
 
-
-						<notebook>
-
-
-
-
-						</notebook>
+						<notebook></notebook>
 					</sheet>
 				</form>
 			</field>

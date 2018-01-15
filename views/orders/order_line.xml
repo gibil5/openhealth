@@ -45,38 +45,38 @@
 
 <!--
 										attrs="{'readonly': ['|', ('qty_invoiced', '&gt;', 0), ('procurement_ids', '!=', [])]}"
--->
 					<field name="product_id"
 										context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}"
 									   />
+-->
 
 
 
-					<field name="name"/>
+					<field name="product_id" />
 
-
+					<field name="x_date_created" />
 
 					<field name="product_uom_qty"			/>
 
-					<field name="product_uom"			/>
-
-
-
-					<field name="price_unit"			/>
-					<field name="x_price_vip"			/>
-					<field name="x_price_vip_return"			/>
-
-
-
-					<field name="tax_id"			/>
 
 					<field name="price_subtotal" />
 
 
+
 <!--
+					<field name="product_uom"			/>
+
+					<field name="create_date" />
+					<field name="order_id"/>
+					<field name="order_report_id"/>
+					<field name="name"/>
+					<field name="price_unit"			/>
+					<field name="x_price_vip"			/>
+					<field name="x_price_vip_return"			/>
+					<field name="tax_id"			/>
 					<field name="x_test" />
--->
 					<field name="x_comeback" />
+-->
 
 
 				</tree>

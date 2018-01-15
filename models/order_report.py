@@ -13,7 +13,7 @@ class sale_order_report(models.Model):
 
 	_name = 'openhealth.order.report'
 
-    _description = "Openhealth Order Report"
+	_description = "Openhealth Order Report"
 
 
 

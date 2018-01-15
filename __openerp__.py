@@ -662,7 +662,8 @@
 
 		'views/patients/patient_quick.xml',
 
-		'views/patients/patient_sales.xml',
+		#'views/patients/patient_sales.xml',
+
 
 
 

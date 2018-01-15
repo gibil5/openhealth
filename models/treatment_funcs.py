@@ -3,10 +3,45 @@
 from datetime import datetime,tzinfo,timedelta
 from openerp import models, fields, api
 
-
-
 from . import time_funcs
 from . import jrfuncs
+
+
+
+
+
+
+
+#------------------------------------------------ Get Actual Doctor ---------------------------------------------------
+
+# Get Actual Doctor 
+@api.multi
+def get_actual_doctor(self):
+
+
+	print 'jx'
+	print 'Get Actual Doctor'
+
+	
+	#user_id = self.env.user.id 
+	user_name =  self.env.user.name 
+	
+	#print user_name
+
+	doctor = self.env['oeh.medical.physician'].search([ 	
+																('x_user_name', '=', user_name),		
+															], 
+															#order='appointment_date desc', 
+															limit=1
+															)
+
+	#print doctor.id 
+	#print doctor.name 
+	
+	doctor_id = doctor.id 
+	
+	return doctor_id
+
 
 
 
@@ -17,7 +52,7 @@ from . import jrfuncs
 @api.multi
 def create_order_lines(self, laser, order_id):
 
-	print 
+	print 'jx'
 	print 'Create Order Lines'
 
 
@@ -99,8 +134,16 @@ def create_procedure_go(self):
 	# Init 
 	treatment = self.id
 	patient = self.patient.id
-	doctor = self.physician.id
 	chief_complaint = self.chief_complaint
+
+
+
+
+	# Doctor 
+	#doctor = self.physician.id
+	doctor = get_actual_doctor(self)
+
+
 
 
 	# Time 
@@ -146,7 +189,9 @@ def create_procedure_go(self):
 			
 						procedure = self.procedure_ids.create({
 																'patient':patient,
+
 																'doctor':doctor,														
+																
 																'treatment':treatment,	
 																'product':product_template.id,																
 																'evaluation_start_date':evaluation_start_date,

@@ -1730,28 +1730,10 @@ class Treatment(models.Model):
 
 
 
+
 		# Doctor 
 		#doctor_id = self.physician.id
-
-		#print self.user_id
-		#print self.user_id.name 
-
-
-		user_id = self.env.user.id 
-		user_name =  self.env.user.name 
-		#print user_name
-
-		doctor = self.env['oeh.medical.physician'].search([ 	
-																('x_user_name', '=', user_name),		
-															], 
-															#order='appointment_date desc', 
-															limit=1
-															)
-
-		#print doctor
-		#print doctor.id 
-		#print doctor.name 
-		doctor_id = doctor.id 
+		doctor_id = treatment_funcs.get_actual_doctor(self)
 
 
 
@@ -2147,26 +2129,25 @@ class Treatment(models.Model):
 
 
 
+		# Doctor 
+		doctor_id = treatment_funcs.get_actual_doctor(self)
+
+
+
 		order = self.env['sale.order'].create(
 													{
 														'treatment': self.id,
-
 														'partner_id': self.partner_id.id,
-														
 														'patient': self.patient.id,	
-														
-														'x_doctor': self.physician.id,	
-														
-														#'consultation':self.id,
-														
 														'state':'draft',
-
-														#'x_chief_complaint':chief_complaint,
-
 														'x_family': target, 
-
-
 														'note': note, 
+														#'consultation':self.id,														
+														#'x_chief_complaint':chief_complaint,
+														
+
+														#'x_doctor': self.physician.id,	
+														'x_doctor': doctor_id,	
 													}
 												)
 

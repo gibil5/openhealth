@@ -14,6 +14,7 @@ from . import appfuncs
 from . import time_funcs
 from . import procedure_funcs_cos
 
+from . import treatment_funcs
 
 
 
@@ -21,11 +22,9 @@ from . import procedure_funcs_cos
 
 @api.multi
 
-#def create_sessions_go(self):
 def create_sessions_go(self, model):
 
 		from datetime import datetime
-
 
 
 		#print 
@@ -36,53 +35,40 @@ def create_sessions_go(self, model):
 
 
 # Initial conditions 
-		#print 'Initial conditions'
-
+		
+		# Vars 
 		procedure_id = self.id 
-
 		patient_id = self.patient.id		
-		
 		chief_complaint = self.chief_complaint
-		
-
-
 		evaluation_type = 'Session'
-		
 		product_id = self.product.id
-		
 		treatment_id = self.treatment.id
-		
 		cosmetology_id = self.cosmetology.id
-		
-
-
 		laser = self.laser
 		
 
 
-		#therapist_id = self.therapist.id
-		doctor_id = self.doctor.id
+
+		# Doctor 
+		#doctor_id = self.doctor.id
+		doctor_id = treatment_funcs.get_actual_doctor(self)
 
 
 
+
+
+
+		# Appointment 
 		duration = 0.5
-
 		x_type = 'session'
-		
 		state = 'pre_scheduled'
-		
 		x_create_procedure_automatic = False 
-
-
-
-
-		#machine = self.machine_cos
 		machine = self.machine
-
 
 
 		#therapist_name = self.therapist.name 
 		doctor_name = self.doctor.name 
+
 
 
 
@@ -402,12 +388,22 @@ def create_controls_go(self):
 
 # Initial conditions  
 	patient_id = self.patient.id	
-	doctor_id = self.doctor.id	
 	doctor_name = self.doctor.name
 	product_id = self.product.id
 	chief_complaint = self.chief_complaint
 	procedure_id = self.id
 	treatment_id = self.treatment.id
+
+
+
+
+
+	# Doctor 
+	#doctor_id = self.doctor.id
+	doctor_id = treatment_funcs.get_actual_doctor(self)
+
+
+
 
 	# Start date 
 	GMT = time_funcs.Zone(0,False,'GMT')

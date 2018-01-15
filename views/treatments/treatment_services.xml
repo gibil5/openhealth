@@ -82,14 +82,20 @@
 										<field name="name"/>
 										<!--
 										<field name="id"/>
+										<field name="consultation"/>
 										-->
+
 										<field name="laser"/>				
+										
 										<field name="treatment"/>
+										
 										<field name="service"/>
 										
 										<field name="zone"/>														
 
-										<field name="consultation"/>
+
+										<field name="physician"/>
+
 									</tree>
 								</field>
 

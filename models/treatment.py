@@ -1708,7 +1708,7 @@ class Treatment(models.Model):
 
 
 
-	# ----------------------------------------------------- Open Consultation ------------------------------------------------------------
+	# ----------------------------------------------------- Create Consultation ------------------------------------------------------------
 
 	# Consultation - NEW
 	# --------------------
@@ -1736,11 +1736,10 @@ class Treatment(models.Model):
 		#print self.user_id
 		#print self.user_id.name 
 
+
 		user_id = self.env.user.id 
 		user_name =  self.env.user.name 
-		print user_id
-		print user_name
-
+		#print user_name
 
 		doctor = self.env['oeh.medical.physician'].search([ 	
 																('x_user_name', '=', user_name),		
@@ -1749,9 +1748,9 @@ class Treatment(models.Model):
 															limit=1
 															)
 
-		print doctor
-		print doctor.id 
-		print doctor.name 
+		#print doctor
+		#print doctor.id 
+		#print doctor.name 
 		doctor_id = doctor.id 
 
 
@@ -1769,9 +1768,15 @@ class Treatment(models.Model):
 
 		# Apointment 
 		appointment = self.env['oeh.medical.appointment'].search([ 	
-																('patient', 'like', self.patient.name),		
-																('doctor', 'like', self.physician.name), 	
-																('x_type', 'like', 'consultation'), 
+
+																	#('patient', 'like', self.patient.name),		
+																	#('doctor', 'like', self.physician.name), 	
+																	#('x_type', 'like', 'consultation'), 
+
+																	('patient', '=', self.patient.name),		
+																	('doctor', '=', self.physician.name),
+																	('x_type', '=', 'consultation'),
+			
 															], 
 															order='appointment_date desc', limit=1)
 		#print 'appointment: ', appointment

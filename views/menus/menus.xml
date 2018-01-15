@@ -222,6 +222,7 @@
 
 
 <!-- Reports --> 			
+<!--
 		<menuitem 	id="order_report_menu" 
 					name="Reporte de Ventas"
 					parent="main_sales_menu"
@@ -248,7 +249,7 @@
 
 						action="order_report_day_list_action"
 						/>
-
+-->
 
 
 

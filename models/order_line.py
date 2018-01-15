@@ -10,7 +10,10 @@ import openerp.addons.decimal_precision as dp
 
 class sale_order_line(models.Model):
 	_inherit='sale.order.line'
+
 	#_name = 'openhealth.order_line'
+
+	_order = 'x_date_created asc'
 
 
 

@@ -48,6 +48,7 @@
         			action="stock_move_selector_form_action" 
         			sequence="131"
 
+
 					groups="openhealth.roots,openhealth.almacens,openhealth.managers,openhealth.directors"
         		/>
 

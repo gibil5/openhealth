@@ -17,6 +17,18 @@
 
 
 					<header>
+
+
+						<button 
+								name="generate_kardex"
+
+								type="object" 
+								
+								class="oe_highlight"
+								
+								string="Generar"
+						/>
+
 					</header>
 
 
@@ -27,10 +39,12 @@
 						<group>
 							<field name="name"		/>
 
+							<field name="product"		/>
 
 							<field name="stock_move_ids"/>
 
 							<field name="amount_total"/>
+
 						</group>
 
 

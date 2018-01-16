@@ -316,8 +316,8 @@
 
 
 
-		# Kardex 
-		#'views/kardex/kardex.xml',
+		# Kardex
+		'views/kardex/kardex.xml',
 
 
 

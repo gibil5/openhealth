@@ -24,7 +24,7 @@
         			
 
         			
-					groups="openhealth.roots,openhealth.almacens,openhealth.managers,openhealth.directors"
+					groups="openhealth.roots,openhealth.almacen_managers,openhealth.almacens,openhealth.managers,openhealth.directors"
         		/>
 
 

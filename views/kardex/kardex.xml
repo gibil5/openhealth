@@ -41,7 +41,6 @@
 
 							<field name="product"		/>
 
-							<field name="stock_move_ids"/>
 
 							<field name="amount_total"/>
 
@@ -50,6 +49,32 @@
 
 
 						<notebook>
+							<page		string="Kardex"	>
+
+<!--							
+								<field name="stock_move_ids"/>
+-->
+								<field name="stock_move_ids">
+
+									<tree string="Kardex"		default_order="date asc">	
+
+										<field name="name"	/>
+
+										<field name="product_id"	/>
+<!--
+-->
+										<field name="date"	/>
+										
+										<field name="product_uom_qty"	/>
+										
+										
+										
+
+									</tree>
+								</field>
+							
+
+							</page>
 						</notebook>
 					</sheet>
 

@@ -39,7 +39,7 @@ class Kardex(models.Model):
 		print 'jx'
 		print 'Generate'
 
-		#self.remove_kardex()
+		self.remove_kardex()
 		
 		#res_id = self.create_kardex()
 
@@ -102,7 +102,8 @@ class Kardex(models.Model):
 
 				ret = self.stock_move_ids.create({
 																
-																'name': move.name,
+																#'name': move.name,
+																'name': move.picking_id.name,
 
 																'product_id': move.product_id.id,
 

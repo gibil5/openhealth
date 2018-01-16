@@ -107,9 +107,12 @@ class StockMoveSelector(models.Model):
 
 
 
+
 			"domain": 	[
 							["product_id", "=", self.product_id.id], 
+							#['state', '=', 'done'],
 						],
+
 
 
 

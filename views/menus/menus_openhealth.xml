@@ -85,6 +85,21 @@
 
 
 
+
+
+		<!-- Services Quick --> 
+		<menuitem id="kardex_menu" name="KARDEX"
+			parent="openhealth_menu"
+			sequence="-210"
+			action="kardex_list_action"
+			/>
+
+
+
+
+
+
+
 		<!-- Services Quick --> 
 		<menuitem id="service_quick_menu" name="Services QUICK"
 			parent="openhealth_menu"

@@ -46,7 +46,7 @@
         			id="menu_action_move_selector" 
         			parent="menu_warehouse_kardex" 
 
-        			name="KARDEX - jxx" 
+        			name="KARDEX - jxx"
 
         			action="stock_move_selector_form_action" 
         			sequence="131"

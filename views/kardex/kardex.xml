@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+		<!-- FORM --> 
+		<record id="kardex_form" model="ir.ui.view">
+
+			<field name="name">openhealth.kardex</field>
+			
+			<field name="model">openhealth.kardex</field>
+			
+			<field name="arch" type="xml">
+
+				<form string="Kardex Form">
+
+
+					<header>
+					</header>
+
+
+
+					<sheet>
+
+
+						<group>
+							<field name="name"		/>
+
+
+							<field name="stock_move_ids"/>
+
+							<field name="amount_total"/>
+						</group>
+
+
+
+						<notebook>
+						</notebook>
+					</sheet>
+
+
+				</form>
+			</field>
+		</record>
+
+
+
+
+
+		<!-- TREE -->
+		<record model="ir.ui.view" id="kardex_tree">
+
+			<field name="name">openhealth.kardex.tree</field>
+			
+			<field name="model">openhealth.kardex</field>
+			
+			<field name="arch" type="xml">
+
+			<!--	
+			<field name="priority" eval="1"/>
+			-->
+
+				<tree string="Card Tree">
+
+					<field name="name"/>
+
+					<field name="stock_move_ids"/>
+
+					<field name="amount_total"/>
+
+				</tree>
+			</field>
+		</record>
+
+
+
+
+
+
+
+		<!-- ACTION --> 	
+		<record id="kardex_list_action" model="ir.actions.act_window">
+			
+			<field name="name">Kardex - Tree</field>
+			
+			<field name="res_model">openhealth.kardex</field>
+			
+			<field name="type">ir.actions.act_window</field>
+			
+			<field name="view_type">form</field>
+
+			<field name="view_mode">tree,form,kanban</field>
+
+			<field name="context">{}</field>
+			
+			<field name="domain">[]</field>
+		</record>
+
+
+
+
+
+
+	</data>
+</openerp>

@@ -60,6 +60,10 @@ from . import stock_pack_operation
 
 
 
+from . import kardex
+from . import kardex_move
+
+
 
 
 

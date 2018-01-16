@@ -7,10 +7,12 @@
 
 
 from openerp import models, fields, api
+
 from datetime import datetime
 from datetime import tzinfo
 
 #from . import jxvars	 - DEPRECATED
+
 from . import treatment_funcs
 from . import time_funcs
 from . import treatment_vars

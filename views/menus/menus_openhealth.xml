@@ -87,13 +87,15 @@
 
 
 
-		<!-- Services Quick --> 
+
+		<!-- Kardex --> 
+<!--		
 		<menuitem id="kardex_menu" name="KARDEX"
 			parent="openhealth_menu"
 			sequence="-210"
 			action="kardex_list_action"
 			/>
-
+-->
 
 
 

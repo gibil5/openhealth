@@ -315,7 +315,9 @@
 		'views/stock/stock_move_selector.xml',
 
 
-		'views/kardex/kardex.xml',
+
+		# Kardex 
+		#'views/kardex/kardex.xml',
 
 
 

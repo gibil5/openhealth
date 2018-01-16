@@ -21,9 +21,9 @@ class StockMove(models.Model):
 
 
 
-	kardex_id = fields.Many2one(
-			'openhealth.kardex', 
-		)
+	#kardex_id = fields.Many2one(
+	#		'openhealth.kardex', 
+	#	)
 
 
 

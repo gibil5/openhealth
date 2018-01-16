@@ -35,6 +35,9 @@
 
         			action="action_move_form2" 
         			parent="stock.menu_warehouse_report" 
+
+
+					groups="openhealth.roots,openhealth.almacens,openhealth.managers,openhealth.directors"
 -->
 
 
@@ -49,7 +52,6 @@
         			sequence="131"
 
 
-					groups="openhealth.roots,openhealth.almacens,openhealth.managers,openhealth.directors"
         		/>
 
 

@@ -37,10 +37,9 @@
 
 
 						<group>
-							<field name="name"		/>
-
 							<field name="product"		/>
 
+							<field name="name"		/>
 
 							<field name="amount_total"/>
 
@@ -60,16 +59,24 @@
 
 										<field name="name"	/>
 
+
+										<field name="location"	/>
+
+										<field name="location_dest"	/>
+
+			
 										<field name="product_id"	/>
-<!--
--->
+
 										<field name="date"	/>
 										
-										<field name="product_uom_qty"	/>
-										
-										
-										
 
+
+										<field name="product_uom_qty"	/>
+
+										<field name="coeff"	/>
+										
+										<field name="qty"	/>
+										
 									</tree>
 								</field>
 							
@@ -102,12 +109,15 @@
 
 				<tree string="Card Tree">
 
-					<field name="name"/>
-
-					<field name="stock_move_ids"/>
+					<field name="product"/>
 
 					<field name="amount_total"/>
 
+
+<!--
+					<field name="name"/>
+					<field name="stock_move_ids"/>
+-->
 				</tree>
 			</field>
 		</record>

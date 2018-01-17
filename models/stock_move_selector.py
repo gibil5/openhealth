@@ -47,10 +47,14 @@ class StockMoveSelector(models.Model):
 
 			'Producto', 
 
+
 			domain = [
 						('type', '=', 'product'),
 						('x_origin', '=', False),
+
+						('sale_ok', '=', True),
 					],
+
 
 
 			required="0", 

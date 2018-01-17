@@ -18,7 +18,7 @@
         			id="menu_warehouse_kardex" 
         			parent="stock.menu_stock_root" 
 
-        			name="KARDEX - jx" 
+        			name="KARDEX" 
         			
         			sequence="2" 
         			
@@ -46,7 +46,7 @@
         			id="menu_action_move_selector" 
         			parent="menu_warehouse_kardex" 
 
-        			name="KARDEX - jxx"
+        			name="KARDEX"
 
         			action="stock_move_selector_form_action" 
         			sequence="131"

@@ -26,7 +26,7 @@
 								
 								class="oe_highlight"
 								
-								string="Generar"
+								string="Actualizar"
 						/>
 
 					</header>
@@ -37,11 +37,15 @@
 
 
 						<group>
-							<field name="product"		/>
 
-							<field name="name"		/>
+							<group>
+								<field name="product"		/>
+								<field name="name"		/>
+							</group>
 
-							<field name="amount_total"/>
+							<group>
+								<field name="amount_total"/>
+							</group>
 
 						</group>
 

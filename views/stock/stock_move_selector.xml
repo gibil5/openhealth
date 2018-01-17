@@ -26,9 +26,10 @@
 -->
 
 						<button 
-								name="open_stock_moves"
 								type="object" 
 								class="oe_highlight"
+
+								name="create_kardex"
 								
 								string="KARDEX"
 						/>

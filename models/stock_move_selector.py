@@ -60,68 +60,93 @@ class StockMoveSelector(models.Model):
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 
 
-
-	# Open Myself
+	# Create Kardex 
 	@api.multi 
-	def open_stock_moves(self):
+	def create_kardex(self):
+
+		print 'jx'
+		print 'Create Kardex'
+
+		product_name = self.product_id.name
+		product_id = self.product_id.id
+
+			
+		kardex = self.env['openhealth.kardex'].search([
+
+														#('state', '=', 'done'),			
+														('product', '=', product_name),			
+			
+												],
+												#order='start_date desc',
+												limit=1,
+												)
+		
+		if kardex.name == False: 
+		
+			print 'Create'
+
+			kardex = self.env['openhealth.kardex'].create({
+
+															'product': product_id, 
+
+														})
 
 
 
-		#product_id = self.product_id 
+		# Generate 
+		kardex.generate_kardex()
 
+
+		kardex_id = kardex.id
+		print kardex
+		print kardex_id
+		print kardex.product.name
+		print 
 
 
 		return {
 
-			# Mandatory 
 			'type': 'ir.actions.act_window',
 
-			'name': 'Open Stock Moves',
+			'name': 'Open Kardex',
+			
+			'res_model': 'openhealth.kardex',
+			
 
 
-			# Window action 
-			'res_model': 'stock.move',
+			'res_id': kardex_id,
 
-			#'res_id': treatment_id,
 
 
 			# Views 
-			#"views": [[False, "form"]],
-			"views": [[False, "tree"]],
 
-			#'view_mode': 'form',
-			'view_mode': 'tree',
-			
+			"views": [[False, "form"]],
+			#"views": [[False, "tree"]],
+
+			'view_mode': 'form',
+			#'view_mode': 'tree',
 
 			'target': 'current',
-
-
+			
 			#'view_id': view_id,
+			
 			#'auto_search': False, 
 
 
 			'flags': {
-					'form': {'action_buttons': True, }
-					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						'form': {'action_buttons': True, }
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 			},			
 
 
-
-
-			"domain": 	[
-							["product_id", "=", self.product_id.id], 
-							#['state', '=', 'done'],
-						],
-
-
-
+			#"domain": [
+			#			["product_id", "=", self.product_id.id], 
+						#['state', '=', 'done'],
+			#		],
 
 			'context':   {}
 		}
-	# open_myself
-
-
-
+	# create_kardex
 
 
 

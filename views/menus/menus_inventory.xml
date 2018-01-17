@@ -79,19 +79,69 @@
 				groups="openhealth.roots"
 				/>
 
-
+<!--
+				groups="openhealth.roots"
+-->
 <!-- Stock moves -->
 	<menuitem 		action="stock.action_move_form2" 
 				id="stock.menu_action_move_form2" 
 				parent="stock.menu_warehouse_report" 
 				sequence="130"
 
-				groups="openhealth.roots"
 				/>
 
 
 
 
+<!--
+				groups="stock.group_stock_manager"
+-->
+<!-- Procurement exceptions -->
+		<menuitem 
+				action="procurement.procurement_order_action_exceptions" 
+				id="stock.menu_stock_procurement_action" 
+				parent="stock.menu_warehouse_report" 
+				sequence="150" 
+
+
+				groups="openhealth.roots"
+			/>
+
+
+
+
+
+
+
+<!-- Configuration --> 
+	<menuitem      
+				id="stock.menu_stock_config_settings" 
+				parent="stock.menu_stock_root"
+				sequence="100" 
+		
+
+				name="Configuration" 
+		
+				groups="openhealth.roots" 
+
+			/>
+
+
+
+
+
+<!-- Reordering Rules --> 
+	<menuitem
+				id="stock.menu_reordering_rules_config"
+				action="stock.action_orderpoint_form"
+				parent="stock.menu_stock_inventory_control" 
+				sequence="2"
+
+
+				name="Reordering Rules" 
+
+				groups="openhealth.roots" 
+			/>
 
 
 
@@ -101,7 +151,9 @@
 
 
 
-		<!-- Stock Move Selector --> 
+
+
+<!-- Stock Move Selector --> 
 		<!--
 		<menuitem id="stock_move_selector_form_menu" name="Stock Move Selector Form" parent="openhealth_menu"
 					sequence="-170"

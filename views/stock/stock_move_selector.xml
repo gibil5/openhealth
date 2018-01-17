@@ -44,10 +44,13 @@
 						<group>
 							<field name="name"	invisible="1"	/>
 
+
 <!--
 							<field name="product_id"/>
 -->
 							<field name="product_id" 	widget="radio"	/>
+
+
 						</group>
 
 

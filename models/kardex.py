@@ -42,7 +42,8 @@ class Kardex(models.Model):
 
 
 	product = fields.Many2one(
-			'product.product'
+			'product.product', 
+			'Producto', 
 		)
 
 
@@ -157,7 +158,7 @@ class Kardex(models.Model):
 	# Total 
 	amount_total = fields.Float(
 			
-			'Total', 
+			'Cantidad Total', 
 			
 			default='0', 
 

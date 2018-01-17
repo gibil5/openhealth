@@ -5,11 +5,13 @@
 
 
 		<!-- FORM --> 
-<!--
--->
+		
+		<!-- Stock Picking -->
 		<record id="stock_picking_form" model="ir.ui.view">
 			<field name="name">openhealth.stock.picking</field>
+	
 			<field name="model">stock.picking</field>
+	
 			<field name="inherit_id" ref="stock.view_picking_form"/>	
 			<field name="mode">primary</field>
 			<field name="priority" eval="1"/>
@@ -24,9 +26,61 @@
 							type="object" 
 							class="oe_highlight"
 							string="REMOVEM"
+
+							groups="openhealth.roots"
 					/>
 
 				</xpath>
+
+
+
+				<xpath expr="//button[@name='action_confirm']" position="replace">
+
+					<button 
+							name="action_confirm" 
+							states="draft" 
+							string="Mark as Todo" 
+							type="object" 
+							class="oe_highlight" 
+
+							groups="openhealth.roots"
+						/>
+
+				</xpath>
+
+
+				<xpath expr="//button[@name='action_cancel']" position="replace">
+					
+					<button 
+							name="action_cancel" 
+							states="assigned,confirmed,partially_available,draft,waiting" 
+							string="Cancel" 
+							type="object"
+
+							groups="openhealth.roots"
+						/>
+
+				</xpath>
+
+
+
+
+
+
+
+				<xpath expr="//field[@name='location_id']" position="replace">
+					
+					<field name="location_id"	string="Orígen"		readonly="1"	/>
+
+				</xpath>
+
+
+				<xpath expr="//field[@name='location_dest_id']" position="replace">
+
+					<field name="location_dest_id"		string="Destino"		readonly="1"		/>
+
+				</xpath>
+
 
 
 			</field>
@@ -61,6 +115,8 @@
 
 
 		<!-- FORM --> 
+
+		<!-- Stock Operation -->		
 		<record id="stock_pack_operation_form" model="ir.ui.view">
 			<field name="name">stock.pack.operation</field>
 			<field name="model">stock.pack.operation</field>
@@ -69,21 +125,25 @@
 			<field name="priority" eval="1"/>
 			<field name="arch" type="xml">
 
+
+
 				<xpath expr="//field[@name='location_id']" position="after">
 					<field name="state"/>
 
 					<button 
-
 							name="remove_myself"
 							
 							type="object" 
 							class="oe_highlight"
 							string="REMOVEM"
 					/>
-
-
-
 				</xpath>
+
+
+
+
+
+
 
 			</field>
 		</record>

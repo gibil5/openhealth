@@ -40,7 +40,7 @@
 
 							<group>
 								<field name="product"		/>
-								<field name="name"		/>
+								<field name="name"		groups="openhealth.roots"			/>
 							</group>
 
 							<group>
@@ -59,7 +59,7 @@
 -->
 								<field name="stock_move_ids">
 
-									<tree string="Kardex"		default_order="date asc">	
+									<tree string="Kardex"		default_order="date desc">	
 
 										<field name="name"	/>
 
@@ -75,10 +75,12 @@
 										
 
 
-										<field name="product_uom_qty"	/>
+										<field name="product_uom_qty"	groups="openhealth.roots"		/>
 
-										<field name="coeff"	/>
+										<field name="coeff"				groups="openhealth.roots"	/>
 										
+
+
 										<field name="qty"	/>
 										
 									</tree>

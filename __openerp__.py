@@ -308,7 +308,9 @@
 
 		# Stock 
 		'views/stock/stock.xml',
+
 		'views/stock/stock_picking.xml',
+		
 		'views/stock/stock_move.xml',
 		'data/stock_move_data.xml',
 

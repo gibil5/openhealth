@@ -2,6 +2,7 @@
 
 from openerp import models, fields, api
 
+import openerp.addons.decimal_precision as dp
 
 
 
@@ -10,6 +11,7 @@ class StockMove(models.Model):
 	_inherit = 'stock.move'
 
 	_description = "Stock Move"
+
 
 	#_order = 'create_date desc'
 	#_order = 'date desc'
@@ -21,13 +23,28 @@ class StockMove(models.Model):
 
 
 
-	#kardex_id = fields.Many2one(
-	#		'openhealth.kardex', 
-	#	)
 
 
 
 
+
+	# Quantity 
+	product_uom_qty = fields.Float(
+			
+			'Quantity', 
+			
+
+			#digits_compute=dp.get_precision('Product Unit of Measure'),
+			digits=(16, 0), 
+
+
+			required=True, 
+			
+			states={'done': [('readonly', True)]},
+			
+			help="jx "
+
+		)
 
 
 

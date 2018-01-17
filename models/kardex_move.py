@@ -18,10 +18,12 @@ class KardexMove(models.Model):
 
 
 	location_dest = fields.Char(
+			'Destino', 
 		)
 
 
 	location = fields.Char(
+			'Orígen', 
 		)
 
 
@@ -30,6 +32,7 @@ class KardexMove(models.Model):
 
 
 	coeff = fields.Float(
+			'Coef', 
 
 			default="1", 
 			
@@ -53,10 +56,16 @@ class KardexMove(models.Model):
 					record.coeff = 1
 
 
-			elif record.location == 'Inventory loss' and record.location_dest == 'General': 
+
+
+			#elif record.location == 'Inventory loss' and record.location_dest == 'General': 
+			elif (record.location == 'Inventory loss' and record.location_dest == 'General')  or  (record.location == 'Pérdidas de inventario' and record.location_dest == 'Existencias'): 
 				record.coeff = 1
 
-			elif record.location == 'General' and record.location_dest == 'Inventory loss': 
+
+
+			#elif record.location == 'General' and record.location_dest == 'Inventory loss': 
+			elif (record.location == 'General' and record.location_dest == 'Inventory loss')  or  (record.location == 'Existencias' and record.location_dest == 'Pérdidas de inventario'): 
 				record.coeff = -1
 
 
@@ -65,7 +74,8 @@ class KardexMove(models.Model):
 
 
 	qty = fields.Float(
-			'Quantity', 
+			#'Quantity', 
+			'Cantidad', 
 
 			compute='_compute_qty', 
 		)
@@ -85,6 +95,7 @@ class KardexMove(models.Model):
 
 
 	name = fields.Char(
+			'Nombre', 
 		)
 
 
@@ -96,7 +107,10 @@ class KardexMove(models.Model):
 
 
 	date = fields.Datetime(
-			'Date', 
+
+			#'Date', 
+			'Fecha', 
+		
 			required=True, 
 			#select=True, 
 			#help="Move date: scheduled date until move is done, then date of actual move processing", 
@@ -104,9 +118,16 @@ class KardexMove(models.Model):
 		)
 	
 
+
+
 	product_id = fields.Many2one(
 			'product.product', 
-			'Product', 
+
+
+			#'Product', 
+			'Producto', 
+
+
 			required=True, 
 			#select=True, 
 
@@ -119,7 +140,10 @@ class KardexMove(models.Model):
 
 
 	product_uom_qty = fields.Float(
-			'Quantity', 
+
+			#'Quantity', 
+			'Cantidad T', 
+		
 			#digits_compute=dp.get_precision('Product Unit of Measure'),
 			required=True, 
 			#states={'done': [('readonly', True)]},

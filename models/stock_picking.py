@@ -20,6 +20,7 @@ class StockPicking(models.Model):
 
 
 
+
 # New
 
 	@api.multi

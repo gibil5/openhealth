@@ -9,23 +9,23 @@
 
 
 <!--
-        <menuitem id="stock.menu_warehouse_report" name="Reports" sequence="99" parent="stock.menu_stock_root" groups="group_stock_manager"/>
+	<menuitem id="stock.menu_warehouse_report" name="Reports" sequence="99" parent="stock.menu_stock_root" groups="group_stock_manager"/>
 -->
 
 
 <!-- Kardex -->
-        <menuitem 
-        			id="menu_warehouse_kardex" 
-        			parent="stock.menu_stock_root" 
+	<menuitem 
+				id="menu_warehouse_kardex" 
+				parent="stock.menu_stock_root" 
 
-        			name="KARDEX" 
-        			
-        			sequence="2" 
-        			
+				name="KARDEX" 
+				
+				sequence="2" 
+				
 
-        			
+				
 					groups="openhealth.roots,openhealth.almacen_managers,openhealth.almacens,openhealth.managers,openhealth.directors"
-        		/>
+			/>
 
 
 
@@ -33,26 +33,68 @@
 				groups="stock.group_stock_manager,base.group_configuration"
 				groups="openhealth.almacens,openhealth.managers,openhealth.directors"
 
-        			action="action_move_form2" 
-        			parent="stock.menu_warehouse_report" 
+				action="action_move_form2" 
+				parent="stock.menu_warehouse_report" 
 
 
 					groups="openhealth.roots,openhealth.almacens,openhealth.managers,openhealth.directors"
 -->
 
 
-<!-- Move Selector --> 
-        <menuitem 
-        			id="menu_action_move_selector" 
-        			parent="menu_warehouse_kardex" 
+<!-- Kardex --> 
+	<menuitem 
+				id="menu_action_move_selector" 
+				parent="menu_warehouse_kardex" 
 
-        			name="KARDEX"
+				name="KARDEX"
 
-        			action="stock_move_selector_form_action" 
-        			sequence="131"
+				action="stock_move_selector_form_action" 
+				sequence="131"
 
 
-        		/>
+			/>
+
+
+
+<!--
+				groups="stock.group_stock_manager,stock.group_stock_user"
+-->
+<!-- All Transfers --> 
+	<menuitem 		id="stock.all_picking" 
+				name="All Transfers" 
+				parent="stock.menu_stock_warehouse_mgmt" 
+				sequence="2" 
+				action="stock.action_picking_tree_all" 
+
+				groups="openhealth.roots"
+			/>
+
+
+<!-- Inventory Adjustments -->
+	<menuitem 		action="stock.action_inventory_form" 
+				id="stock.menu_action_inventory_form" 
+				parent="stock.menu_stock_inventory_control" 
+				sequence="30"
+
+				groups="openhealth.roots"
+				/>
+
+
+<!-- Stock moves -->
+	<menuitem 		action="stock.action_move_form2" 
+				id="stock.menu_action_move_form2" 
+				parent="stock.menu_warehouse_report" 
+				sequence="130"
+
+				groups="openhealth.roots"
+				/>
+
+
+
+
+
+
+
 
 
 

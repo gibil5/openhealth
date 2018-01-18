@@ -17,6 +17,46 @@ class PurchaseOrder(models.Model):
 
 
 
+
+	READONLY_STATES = {
+		
+		#'purchase': [('readonly', True)],
+		'purchase': [('readonly', False)],
+		
+		'done': [('readonly', True)],
+		
+		'cancel': [('readonly', True)],
+	}
+
+
+
+	order_line = fields.One2many(
+			'purchase.order.line', 
+			'order_id', 
+			string='Order Lines', 
+
+			states=READONLY_STATES, 
+			
+			copy=True, 
+		)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	#@api.model
 	#def _default_payment_term_id(self):
 	#	type_obj = self.env['account.payment.term']

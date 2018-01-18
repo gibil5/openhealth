@@ -75,12 +75,25 @@
 				</xpath>
 
 
+
 				<!-- Destination --> 
 				<xpath expr="//field[@name='location_dest_id']" position="replace">
 
 					<field name="location_dest_id"		string="Destino"		readonly="0"		/>
 
 				</xpath>
+
+
+
+
+				<!-- Min Date --> 
+				<xpath expr="//field[@name='min_date']" position="replace">
+
+					<field name="min_date"				required="1"		/>
+
+				</xpath>
+
+
 
 
 

@@ -20,6 +20,44 @@ class StockPicking(models.Model):
 
 
 
+	#location_dest_id = fields.Many2one(
+	#		'stock.location', 
+	#		required=True,
+	#		string="Destination Location Zone",
+	#		default=_default_location_destination, 
+	#		readonly=True, 
+	#		states={'draft': [('readonly', False)]}
+	#	)
+
+
+
+	#min_date = fields.function(
+	#		get_min_max_date, 
+	#		multi="min_max_date", 
+	#		fnct_inv=_set_min_date,
+	#		store={'stock.move': (_get_pickings_dates_priority, ['date_expected', 'picking_id'], 20)}, type='datetime', states={'done': [('readonly', True)], 'cancel': [('readonly', True)]}, string='Scheduled Date', select=1, help="Scheduled time for the first part of the shipment to be processed. Setting manually a value here would set it as expected date for all the stock moves.", 
+	#		track_visibility='onchange'
+	#	)
+
+
+
+	@api.onchange('min_date')
+
+	def _onchange_min_date(self):
+	
+		usage = 'internal'
+
+		return {
+
+				'domain': {'location_dest_id': [
+													('usage', '=', usage),
+							]},
+			}
+
+
+
+
+
 
 # New
 

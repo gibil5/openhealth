@@ -140,6 +140,8 @@ from . import order_line_report
 
 
 from . import account_invoice
+from . import account_invoice_line
+
 
 
 

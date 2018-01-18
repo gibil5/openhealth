@@ -8,6 +8,7 @@
 		<record id="purchase_order_form" model="ir.ui.view">
 
 			<field name="name">openhealth.order.form</field>
+
 			<field name="model">purchase.order</field>
 			
 			<field name="inherit_id" ref="purchase.purchase_order_form"/>	
@@ -202,6 +203,7 @@
 
 
 <!--
+							groups="openhealth.roots,openhealth.managers,openhealth.directors"
 -->
 				<xpath expr="//button[@name='action_rfq_send']" position="before">
 
@@ -212,7 +214,8 @@
 
 							string="Validar" 
 							
-							groups="openhealth.roots,openhealth.managers,openhealth.directors"
+
+							groups="openhealth.roots,openhealth.managers,openhealth.directors,openhealth.almacen_managers"
 
 
 							type="object" 

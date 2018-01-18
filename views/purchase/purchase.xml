@@ -209,17 +209,14 @@
 
 					<button 
 							name="button_validate" 
-
 							states="pre_draft" 
-
-							string="Validar" 
-							
-
-							groups="openhealth.roots,openhealth.managers,openhealth.directors,openhealth.almacen_managers"
-
-
 							type="object" 
 							class="oe_highlight"
+
+
+							string="Validar" 
+
+							groups="openhealth.roots,openhealth.managers,openhealth.directors,openhealth.almacen_managers"
 						/>
 
 				</xpath>

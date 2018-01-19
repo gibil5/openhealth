@@ -220,8 +220,13 @@
 
 						<field name="vspace" />
 
+						<field name="treatment" 	readonly="1"/>
+
+						<field name="vspace" />
+
 						<field name="patient" 	invisible="0"	groups="openhealth.roots"			/>
 
+					
 					</group>
 				</xpath>
 
@@ -752,7 +757,6 @@
 					<group></group>
 					<group></group>
 				</xpath>
-
 
 
 

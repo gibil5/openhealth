@@ -222,6 +222,8 @@ class Evaluation(models.Model):
 			ondelete='cascade', 
 
 			required=True, 
+
+			readonly=True, 
 			)
 
 
@@ -253,7 +255,10 @@ class Evaluation(models.Model):
 			ondelete='cascade', 			
 
 			required=True, 
+
+			readonly=True, 
 	)
+
 
 
 	doctor = fields.Many2one(
@@ -262,7 +267,9 @@ class Evaluation(models.Model):
 			
 			required=True, 
 			#required=False, 
-			)
+
+			readonly=True, 
+		)
 
 
 
@@ -276,7 +283,9 @@ class Evaluation(models.Model):
 		
 			#default = fields.Date.today, 
 			required=True, 
-			)
+
+			readonly=True, 
+		)
 
 
 

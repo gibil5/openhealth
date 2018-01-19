@@ -169,25 +169,27 @@
 
 
 
+			<!-- Prespuestos --> 			
+			<menuitem 	id="sales_budget_menu" 
+						name="Presupuestos" 
+						parent="sales_menu"
+						sequence="2"
+
+						action="budget_list_action"
+						/>
+
+
 			<!-- Ventas --> 			
 			<menuitem 	id="sales_invoice_menu" 
 						name="Ventas" 
 						parent="sales_menu"
-						sequence="2"
+						sequence="3"
 						
 						action="sale_list_action"
 						/>
 
 
 
-			<!-- Prespuestos --> 			
-			<menuitem 	id="sales_budget_menu" 
-						name="Presupuestos" 
-						parent="sales_menu"
-						sequence="3"
-
-						action="budget_list_action"
-						/>
 
 
 
@@ -579,7 +581,9 @@
 <!-- Vip --> 			
 		<menuitem 	id="sales_cards_menu" 
 					name="Vip"
-					parent="services_menu"
+
+					parent="main_products_menu"
+					
 					sequence="5"
 
 					groups="openhealth.roots,openhealth.caja,openhealth.directors"
@@ -626,7 +630,9 @@
 			        web_icon="mail,static/description/icon2.png"
 			        groups="base.group_user,base.group_partner_manager"
 				/>
-
+<!--
+Action in partner.xml
+-->
 
 
 

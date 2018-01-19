@@ -1787,9 +1787,14 @@ class Treatment(models.Model):
 
 
 		# Doctor 
-		#doctor_id = self.physician.id
 		doctor_id = treatment_funcs.get_actual_doctor(self)
 
+		print doctor_id
+
+		if doctor_id == False: 
+			doctor_id = self.physician.id
+
+		print doctor_id
 
 
 

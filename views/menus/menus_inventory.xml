@@ -161,6 +161,59 @@
 
 
 
+<!--
+				groups="base.group_no_one"
+-->
+
+<!-- Operations --> 
+	<menuitem 		id="stock.menu_stock_warehouse_mgmt" 
+				name="Operations" 
+				parent="stock.menu_stock_root" 
+				sequence="2" 
+
+
+				groups="openhealth.roots,openhealth.almacen_managers" 
+			/>
+
+<!--
+				groups="stock.group_stock_manager,stock.group_stock_user"
+-->
+
+<!-- All Transfers --> 
+	<menuitem 		id="stock.all_picking" 
+				name="All Transfers" 
+				parent="stock.menu_stock_warehouse_mgmt" 
+				sequence="2" 
+				action="stock.action_picking_tree_all" 
+
+				groups="openhealth.roots" 
+			/>
+
+
+
+<!-- Internal Transfers --> 
+	<menuitem 		id="stock.internal_picking" 
+				
+				name="Transferencias internas" 
+				
+				parent="stock.menu_stock_warehouse_mgmt" 
+				
+				sequence="1" 
+				
+				action="action_picking_tree_internal" 
+
+				groups="openhealth.roots,openhealth.almacen_managers" 
+			/>
+
+
+
+
+
+
+
+
+
+
 
 
 <!-- Stock Move Selector --> 

@@ -147,7 +147,12 @@ def create_procedure_go(self):
 
 	# Doctor 
 	#doctor = self.physician.id
+
 	doctor = get_actual_doctor(self)
+
+	if doctor == False: 
+		doctor = self.physician.id 
+
 
 
 

@@ -52,6 +52,9 @@ def create_sessions_go(self, model):
 		# Doctor 
 		#doctor_id = self.doctor.id
 		doctor_id = treatment_funcs.get_actual_doctor(self)
+	
+		if doctor_id == False: 
+			doctor_id = self.doctor.id 
 
 
 
@@ -398,9 +401,13 @@ def create_controls_go(self):
 
 
 
+
 	# Doctor 
 	#doctor_id = self.doctor.id
 	doctor_id = treatment_funcs.get_actual_doctor(self)
+
+	if doctor_id == False: 
+		doctor_id = self.doctor.id 
 
 
 

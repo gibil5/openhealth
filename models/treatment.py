@@ -2192,8 +2192,12 @@ class Treatment(models.Model):
 		# Doctor 
 		doctor_id = treatment_funcs.get_actual_doctor(self)
 
+		if doctor_id == False: 
+			doctor_id = self.physician.id 
 
 
+
+		# Create Order 
 		order = self.env['sale.order'].create(
 													{
 														'treatment': self.id,

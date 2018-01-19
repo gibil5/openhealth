@@ -667,7 +667,19 @@ Fields
 										groups="openhealth.roots"			
 									/>
 
+<!--
+								<button 
+										name="reset_half" 	
+										type="object" 
+										class="oe_highlight"
 
+										string="Reset Half"
+
+										groups="openhealth.roots"			
+									/>
+-->
+
+<!--
 								<button 
 										name="reset_quick" 	
 										type="object" 
@@ -677,7 +689,7 @@ Fields
 
 										groups="openhealth.roots"			
 									/>
-
+-->
 							</group>
 
 

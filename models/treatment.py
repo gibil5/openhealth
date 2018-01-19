@@ -35,7 +35,60 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Reset ------------------------------------------------------
+# ----------------------------------------------------------- Reset Half ------------------------------------------------------
+
+	# Reset Half
+	@api.multi 
+	def reset_half(self):
+
+		print 'jx'
+		print 'Reset Half'
+
+
+		# Unlinks
+		self.service_quick_ids.unlink()
+		self.service_vip_ids.unlink()
+		self.service_co2_ids.unlink()
+		self.service_excilite_ids.unlink()
+		self.service_ipl_ids.unlink()
+		self.service_ndyag_ids.unlink()
+		self.service_medical_ids.unlink()		
+		self.procedure_ids.unlink()
+		self.session_ids.unlink()
+		self.control_ids.unlink()
+
+		#self.consultation_ids.unlink()
+		#self.appointment_ids.unlink()
+
+
+
+		# Alta 
+		self.treatment_closed = False
+
+
+
+		# Orders 
+		for order in self.order_ids:
+			
+			if order.x_family != 'consultation':
+			
+				order.remove_myself()
+
+
+		# Numbers 
+		#self.nr_invoices_cons = 0 
+		self.nr_invoices_pro = 0 
+
+
+
+	# reset_half
+
+
+
+
+
+
+
 
 
 	# Reset Quick 
@@ -2183,6 +2236,7 @@ class Treatment(models.Model):
 
 
 			ret = treatment_funcs.create_order_lines(self, 'co2', order_id)
+
 
 			ret = treatment_funcs.create_order_lines(self, 'excilite', order_id)
 

@@ -222,8 +222,10 @@ class sale_order(models.Model):
 
 # ----------------------------------------------------------- Create order lines ------------------------------------------------------
 	#@api.multi 
-	def x_create_order_lines_target(self, target):		
+	#def x_create_order_lines_target(self, target):		
+	def x_create_order_lines_target(self, target, price_manual):		
 
+		
 		print 
 		print 'jx'
 		print 'Create Order Lines Target'
@@ -263,6 +265,9 @@ class sale_order(models.Model):
 		ol = self.order_line.create({
 										'product_id': product.id,
 										'order_id': order_id,										
+
+										'x_price_manual': price_manual, 
+
 
 
 										#'name': target,

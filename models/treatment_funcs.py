@@ -52,6 +52,7 @@ def get_actual_doctor(self):
 @api.multi
 def create_order_lines(self, laser, order_id):
 
+
 	print 'jx'
 	print 'Create Order Lines'
 
@@ -72,7 +73,7 @@ def create_order_lines(self, laser, order_id):
 
 				'quick':		'openhealth.service.quick',
 
-				'vip':		'openhealth.service.vip',
+				'vip':			'openhealth.service.vip',
 
 
 				'co2':			'openhealth.service.co2',
@@ -105,11 +106,16 @@ def create_order_lines(self, laser, order_id):
 
 
 			target_line = service.service.x_name_short
+
+			price_manual = service.price_manual
+
 					
 			#print service
 			#print target_line
 
-			ret = order.x_create_order_lines_target(target_line)
+
+			#ret = order.x_create_order_lines_target(target_line)
+			ret = order.x_create_order_lines_target(target_line, price_manual)
 
 					
 			#print ret 

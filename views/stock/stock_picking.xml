@@ -307,13 +307,16 @@
             <field name="view_mode">tree,kanban,form,calendar</field>
             
 
+<!--
+									('picking_type_id', '=', 'Internal Transfers'),
+-->
             <field name="domain">[
 
-									('picking_type_id', '=', 'Internal Transfers'),
+									('picking_type_id', '=', 'Transferencias internas'),
 
             					]</field>
             
-            
+
             <field name="context">{
                     'contact_display': 'partner_address',
             }

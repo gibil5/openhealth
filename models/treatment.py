@@ -2215,9 +2215,16 @@ class Treatment(models.Model):
 			else:
 				target_line = 'con_med'
 
+
+
+			
+			price_manual = 0
+
 			#print target_line 
-			ret = order.x_create_order_lines_target(target_line)
+			#ret = order.x_create_order_lines_target(target_line)
+			ret = order.x_create_order_lines_target(target_line, price_manual)
 			#print ret 
+
 
 
 

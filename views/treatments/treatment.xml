@@ -668,6 +668,7 @@ Fields
 									/>
 
 <!--
+-->
 								<button 
 										name="reset_half" 	
 										type="object" 
@@ -677,7 +678,6 @@ Fields
 
 										groups="openhealth.roots"			
 									/>
--->
 
 <!--
 								<button 

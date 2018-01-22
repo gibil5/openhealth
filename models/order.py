@@ -169,7 +169,7 @@ class sale_order(models.Model):
 			string='Paciente', 
 
 
-			#compute='_compute_patient', 
+			compute='_compute_patient', 
 		)
 
 

@@ -69,8 +69,9 @@
 
 										<field name="name"	/>
 
+<!--
 										<field name="location_source"	/>
-
+-->
 										<field name="location_dest"	/>
 			
 										<field name="product_id"	/>

@@ -179,7 +179,7 @@
 					<field name="email"		attrs = "{'required':[('company_type','in',('company'))]}"		/>
 -->
 				<xpath expr="//field[@name='email']" position="replace">
-					<field name="email"		required="1"	string="Email"		/>
+					<field name="email"		required="0"	string="Email"		/>
 				</xpath>
 
 

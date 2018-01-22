@@ -163,7 +163,9 @@ class Partner(models.Model):
 	email = fields.Char(
 
 			'Email', 
-			required=True, 
+			
+			#required=True, 
+			required=False, 
 		)
 
 
@@ -232,20 +234,26 @@ class Partner(models.Model):
 	street = fields.Char(
 
 			'Calle', 
-			required=True, 
+
+			#required=True, 
+			required=False, 
 		)
 
 	street2 = fields.Char(
 
 			'Distrito', 
 			placeholder="Distrito...", 
-			required=True, 
+			
+			#required=True, 
+			required=False, 
 		)
 
 	city = fields.Char(
 
 			'City', 
-			required=True, 
+			
+			#required=True, 
+			required=False, 
 		)
 
 	country_id = fields.Many2one(
@@ -253,7 +261,9 @@ class Partner(models.Model):
 			'res.country', 
 			'Country', 
 			ondelete='restrict', 
-			required=True, 
+			
+			#required=True, 
+			required=False, 
 		)
 
 

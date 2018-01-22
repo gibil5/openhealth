@@ -177,7 +177,9 @@
 
 					<field name="name"/>
 					<field name="default_code"/>
-					<field name="x_name_short"/>
+					<field name="categ_id"/>
+
+
 
 
 					<field name="sale_ok"/>
@@ -185,6 +187,8 @@
 
 
 <!--
+					<field name="x_name_short"/>
+
 					<field name="id"/>
 					<field name="x_name_short"/>
 					<field name="x_zone"/>				
@@ -204,7 +208,6 @@
 
 
 					<field name="uom_id"	invisible="0"/>
-					<field name="categ_id"/>
 					<field name="type"/>
 
 					<field name="seller_ids"/>

@@ -259,23 +259,18 @@
 
 <b>
 <div class='row'>
-
-	<div class='col-md-4'>
-		DES
+	<div class='col-xs-4'>
+		Descr.
 	</div>
-
-	<div class='col-md-2'>
-		CNT
+	<div class='col-xs-2'>
+		Cnt
 	</div>
-	
-	<div class='col-md-3'>
-		PUNIT
+	<div class='col-xs-3'>
+		P. Unit.
 	</div>
-	
-	<div class='col-md-3'>
-		TOT
+	<div class='col-xs-3'>
+		Total
 	</div>
-
 </div>
 </b>
 

@@ -25,13 +25,42 @@
 						/>
 -->
 
+						
 						<button 
 								type="object" 
 								class="oe_highlight"
-
 								name="create_kardex"
+
 								
-								string="KARDEX"
+								context="{'location': 'general'}"
+								
+								string="GENERAL"
+						/>
+
+
+
+						<button 
+								type="object" 
+								class="oe_highlight"
+								name="create_kardex"
+
+
+								context="{'location': 'platform'}"
+								
+								string="CREMAS DESPACHO"
+						/>
+
+
+
+						<button 
+								type="object" 
+								class="oe_highlight"
+								name="create_kardex"
+
+
+								context="{'location': 'all'}"
+								
+								string="Todo"
 						/>
 					</header>
 

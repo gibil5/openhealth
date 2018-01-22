@@ -18,8 +18,6 @@ class StockPicking(models.Model):
 
 
 
-
-
 	#location_dest_id = fields.Many2one(
 	#		'stock.location', 
 	#		required=True,
@@ -41,18 +39,17 @@ class StockPicking(models.Model):
 
 
 
-	@api.onchange('min_date')
 
-	def _onchange_min_date(self):
+	#@api.onchange('min_date')
+	#def _onchange_min_date(self):
 	
-		usage = 'internal'
+	#	usage = 'internal'
 
-		return {
-
-				'domain': {'location_dest_id': [
-													('usage', '=', usage),
-							]},
-			}
+	#	return {
+	#				'domain': {'location_dest_id': [
+	#													('usage', '=', usage),
+	#							]},
+	#		}
 
 
 
@@ -68,13 +65,8 @@ class StockPicking(models.Model):
 		print 'Remove myself'
 
 		#self.pack_operation_exist = False
-
 		#self.picking_type_id = False
-
 		#self.state = 'draft'
-
-
-
 
 
 

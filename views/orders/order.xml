@@ -101,6 +101,8 @@
 				</xpath>
 
 				<xpath expr="//button[@name='action_confirm']" position="replace">
+
+
 					<button 
 							name="action_confirm"
 							string="CONFIRMAR"
@@ -109,6 +111,31 @@
 							class="oe_highlight"
 							states="sent"						
 					/>
+
+
+
+<!--
+					<button 
+							name="validate_stock_picking"
+							
+							string="Validar"
+							
+							type="object" 
+							class="oe_highlight"
+					/>
+
+
+					<button 
+							name="do_transfer"
+							
+							string="Hacer Trans"
+							
+							type="object" 
+							class="oe_highlight"
+					/>
+-->
+
+
 				</xpath>
 
 

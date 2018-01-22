@@ -2596,6 +2596,57 @@ class sale_order(models.Model):
 
 
 
+# ----------------------------------------------------------- Validate Stock Picking ------------------------------------------------------
+
+
+	@api.multi 
+	def do_transfer(self):
+
+		#print 
+		print 'jx'
+		print 'Do Transfer'
+
+		print self.picking_ids
+
+		for pick in self.picking_ids: 
+
+			#ret = pick.do_new_transfer()
+			ret = pick.do_transfer()
+
+			print ret
+
+
+
+
+
+
+	# Action confirm 
+	@api.multi 
+	def validate_stock_picking(self):
+
+		#print 
+		print 'jx'
+		print 'Validate Stock Picking'
+
+
+		print self.picking_ids
+
+
+		for pick in self.picking_ids: 
+		
+			print pick
+
+			print pick.name 
+
+			ret = pick.force_assign()
+			print ret
+
+
+
+
+
+
+
 # ----------------------------------------------------------- Action Confirm ------------------------------------------------------
 
 	# Action confirm 
@@ -2675,6 +2726,8 @@ class sale_order(models.Model):
 				print go_card
 
 
+
+
 		# Create Card 
 		if go_card:
 
@@ -2730,8 +2783,15 @@ class sale_order(models.Model):
 				print self.partner_id.name				
 				print
 
-			return{}
+			#return{}
 
+
+
+
+
+		# Validate Stock Picking 
+		self.validate_stock_picking()
+		self.do_transfer()
 	# action_confirm	
 
 

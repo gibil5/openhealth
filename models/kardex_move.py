@@ -17,12 +17,31 @@ class KardexMove(models.Model):
 
 
 
+	# Location 
+	location = fields.Selection(
+			[	
+				('all', 			'Todo'),
+
+				('general', 			'General'),
+				('platform', 			'Plataforma'),
+				('laser_2', 			'Laser 2'),
+			], 
+		)
+
+
+
+
+
+
+
+
+
 	location_dest = fields.Char(
 			'Destino', 
 		)
 
 
-	location = fields.Char(
+	location_source = fields.Char(
 			'Orígen', 
 		)
 
@@ -46,27 +65,55 @@ class KardexMove(models.Model):
 		for record in self:
 
 
-			if record.name != False:
-
-				#if 'OUT' in record.name: 
-				if 'OUT' in record.name  	or   'INT' in record.name: 
-					record.coeff = -1
-
-				else:
-					record.coeff = 1
+			coeff = 0 
 
 
 
 
-			#elif record.location == 'Inventory loss' and record.location_dest == 'General': 
-			elif (record.location == 'Inventory loss' and record.location_dest == 'General')  or  (record.location == 'Pérdidas de inventario' and record.location_dest == 'Existencias'): 
-				record.coeff = 1
+			if record.location == 'general': 
+
+				if record.name != False:
+
+					if record.location_source == 'General'		or 	record.location_source == 'Existencias': 
+							coeff = -1
+
+					elif record.location_source == 'Vendors'	or 	record.location_source == 'Vendedores': 
+							coeff = 1
+
+
+				elif (record.location_source == 'Inventory loss' and record.location_dest == 'General')  or  (record.location_source == 'Pérdidas de inventario' and record.location_dest == 'Existencias'): 
+					coeff = 1
+
+				elif (record.location_source == 'General' and record.location_dest == 'Inventory loss')  or  (record.location_source == 'Existencias' and record.location_dest == 'Pérdidas de inventario'): 
+					coeff = -1
 
 
 
-			#elif record.location == 'General' and record.location_dest == 'Inventory loss': 
-			elif (record.location == 'General' and record.location_dest == 'Inventory loss')  or  (record.location == 'Existencias' and record.location_dest == 'Pérdidas de inventario'): 
-				record.coeff = -1
+
+
+			elif record.location == 'platform': 
+	
+				coeff = 0 
+
+				if record.name != False:
+
+
+					if record.location_source == 'Cremas Despacho': 
+						coeff = -1
+
+
+					elif 'INT' in record.name: 
+						coeff = 1
+
+
+
+
+			elif record.location == 'all': 
+				coeff = 1
+
+
+
+			record.coeff = coeff
 
 
 

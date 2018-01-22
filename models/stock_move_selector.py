@@ -63,13 +63,34 @@ class StockMoveSelector(models.Model):
 
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 
+	# Create Kardex 
+	#@api.multi 
+	#def create_kardex_platform(self):
+
+
+
 
 	# Create Kardex 
 	@api.multi 
+	#def create_kardex_general(self):
 	def create_kardex(self):
+
 
 		print 'jx'
 		print 'Create Kardex'
+
+
+		context = self._context.copy()
+
+
+		print 
+		#print context
+		#print context['params']
+		location = context['location']
+		print location
+		print 
+
+
 
 		product_name = self.product_id.name
 		product_id = self.product_id.id
@@ -79,6 +100,8 @@ class StockMoveSelector(models.Model):
 
 														#('state', '=', 'done'),			
 														('product', '=', product_name),			
+
+														('location', '=', location),			
 			
 												],
 												#order='start_date desc',
@@ -87,13 +110,13 @@ class StockMoveSelector(models.Model):
 		
 		if kardex.name == False: 
 		
-			print 'Create'
+			#print 'Create'
 
 			kardex = self.env['openhealth.kardex'].create({
-
 															'product': product_id, 
-
+															'location': location, 
 														})
+
 
 
 
@@ -102,10 +125,7 @@ class StockMoveSelector(models.Model):
 
 
 		kardex_id = kardex.id
-		print kardex
-		print kardex_id
-		print kardex.product.name
-		print 
+
 
 
 		return {
@@ -116,10 +136,7 @@ class StockMoveSelector(models.Model):
 			
 			'res_model': 'openhealth.kardex',
 			
-
-
 			'res_id': kardex_id,
-
 
 
 			# Views 

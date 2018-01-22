@@ -4,6 +4,75 @@
 
 
 
+
+
+
+
+
+
+		<!-- TREE view --> 
+<!--		
+		  <record id="stock.stock_move_tree" model="ir.ui.view">
+
+				<field name="name">stock.move.tree</field>
+			
+				<field name="model">stock.move</field>
+			
+				<field eval="8" name="priority"/>
+			
+				<field name="arch" type="xml">
+
+					<tree decoration-muted="state == 'cancel'" decoration-danger="(state not in ('cancel','done')) and date > current_date" string="Moves" create="0">
+
+						<field name="name" invisible="1"/>
+						
+						<field name="picking_id" string="Reference"/>
+						
+						<field name="origin"/>
+						
+						<field name="picking_type_id" invisible="1"/>
+						
+						<field name="create_date" invisible="1" groups="base.group_no_one"/>
+						
+						<field name="product_id" on_change="onchange_product_id(product_id,location_id,location_dest_id, False)"/>
+						
+						<field name="product_uom_qty" on_change="onchange_quantity(product_id, product_uom_qty, product_uom)"/>
+						
+						<field name="product_uom" options="{'no_open': True, 'no_create': True}" string="Unit of Measure" groups="product.group_uom"/>
+						
+						<button name="%(stock.move_scrap)d"
+							string="Scrap Products" type="action"
+							icon="terp-gtk-jump-to-ltr" context="{'scrap': True}"
+							states="draft,waiting,confirmed,assigned"
+							groups="stock.group_stock_user"/>
+
+
+						<field name="location_id" groups="stock.group_locations"/>						
+
+						<field name="location_dest_id" groups="stock.group_locations"/>
+						
+						<field name="location_id" />						
+
+						<field name="location_dest_id" />
+
+
+
+						<field name="date" groups="base.group_no_one"/>
+						
+						<field name="date_expected"/>
+						
+						<field name="state"/>
+					</tree>
+				
+				</field>
+			</record>
+-->
+
+
+
+
+
+
 		<!-- ACTION --> 
 		<record id="stock.action_move_form2" model="ir.actions.act_window">
 			<field name="name">Stock Moves</field>

@@ -41,18 +41,25 @@
 -->
 
 
+
+
 <!-- Kardex --> 
 	<menuitem 
 				id="menu_action_move_selector" 
 				parent="menu_warehouse_kardex" 
+				sequence="131"
 
 				name="KARDEX"
 
 				action="stock_move_selector_form_action" 
-				sequence="131"
-
-
 			/>
+
+
+
+
+
+
+
 
 
 

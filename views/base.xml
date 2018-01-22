@@ -40,6 +40,7 @@
 		</record>
 
 
+
 		<!-- Stock Move --> 
 		<record model="ir.actions.act_window" id="stock_move_list_action">
 			<field name="name">AIL</field>

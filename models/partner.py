@@ -217,7 +217,8 @@ class Partner(models.Model):
 	phone = fields.Char(
 			
 			'Teléfono 1', 
-			required=True, 
+			#required=True, 
+			required=False, 
 		)
 	
 	mobile = fields.Char(

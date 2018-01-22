@@ -242,10 +242,10 @@ class payment_method(models.Model):
 	def _compute_dni(self):
 		for record in self:
 
-			#print 'jx'
-			#print 'Compute Dni'
 			record.dni = record.partner.x_dni
-			#print 
+
+
+
 
 
 

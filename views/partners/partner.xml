@@ -193,6 +193,13 @@
 
 
 
+				<xpath expr="//field[@name='phone']" position="replace">
+					<field name="phone"		required="0"		/>
+				</xpath>
+
+
+
+
 
 
 <!-- Roots -->

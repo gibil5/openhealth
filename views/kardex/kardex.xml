@@ -43,8 +43,8 @@
 							<group>
 								<field name="product"		/>
 
-								<field name="location"		/>
 <!--
+								<field name="location"		/>
 								<field name="name"		groups="openhealth.roots"			/>
 -->						
 							</group>

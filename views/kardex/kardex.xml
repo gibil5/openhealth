@@ -117,7 +117,9 @@
 
 					<field name="product"/>
 
+<!--
 					<field name="location"/>
+-->
 
 					<field name="amount_total"/>
 

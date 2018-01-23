@@ -143,7 +143,7 @@
 
 		# Sales 
 
-		'views/reports/report_sale_pivots.xml',
+		#'views/reports/report_sale_pivots.xml',
 		'views/reports/report_sale_graphs.xml',
 		'views/reports/report_sale_favorites.xml',
 

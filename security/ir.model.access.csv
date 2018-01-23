@@ -5,6 +5,7 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 access_mrp_bom,mrp.bom,mrp.model_mrp_bom,,1,1,1,1
+access_mrp_bom_line,mrp.bom.line,mrp.model_mrp_bom_line,,1,1,1,1
 
 
 

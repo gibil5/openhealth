@@ -4,6 +4,14 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+access_sale_report_day,sale.report.day,model_sale_report_day,,1,1,1,1
+
+
+
+
+
+
+
 access_mrp_bom,mrp.bom,mrp.model_mrp_bom,,1,1,1,1
 access_mrp_bom_line,mrp.bom.line,mrp.model_mrp_bom_line,,1,1,1,1
 
@@ -11,6 +19,8 @@ access_mrp_bom_line,mrp.bom.line,mrp.model_mrp_bom_line,,1,1,1,1
 access_mrp_bom_caja,mrp.bom.caja,mrp.model_mrp_bom,openhealth.caja,1,1,1,1
 
 access_mrp_bom_line_caja,mrp.bom.line.caja,mrp.model_mrp_bom_line,openhealth.caja,1,1,1,1
+
+
 
 
 
@@ -304,7 +314,11 @@ access_sale_order_reception,sale.order.reception,model_sale_order,openhealth.rec
 
 access_sale_order_managers,sale.order.managers,model_sale_order,openhealth.managers,1,1,1,1
 
-access_sale_order_physicians,sale.order.physicians,model_sale_order,openhealth.physicians,1,1,1,1
+
+
+access_sale_order_physicians,sale.order.physicians,model_sale_order,openhealth.physicians,1,1,1,0
+
+
 
 access_sale_order_assistants,sale.order.assistants,model_sale_order,openhealth.assistants,1,0,0,0
 

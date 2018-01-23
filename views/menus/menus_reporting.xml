@@ -43,6 +43,19 @@
 
 
 
+		<!-- Day -->
+		<menuitem 	id="sales_report_sales_day_menu" 
+
+					name="Diario" 
+			
+					parent="sales_reports_menu"
+			
+					sequence="2"
+
+					action="action_order_report_day"
+				/>
+
+
 
 
 

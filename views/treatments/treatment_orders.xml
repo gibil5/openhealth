@@ -67,10 +67,14 @@ groups="openhealth.roots,openhealth.reception,openhealth.directors,openhealth.ma
 
 <!--
 						<field name="order_ids"/>
+						<field name="order_ids"		readonly="1"		>
+attrs="{'readonly':[('state ', '=', 'done')]}"
 -->					
 
 
-						<field name="order_ids">
+
+						<field name="order_ids"			>
+
 
 							<tree string="Prespuestos"	create="false" 	
 

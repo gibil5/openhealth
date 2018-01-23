@@ -145,8 +145,14 @@ from . import account_invoice_line
 
 
 
+
 #from . import oh_sale_report
 from . import sale_report
+from . import sale_report_month
+from . import sale_report_day 
+
+
+
 
 
 #from . import sale_document

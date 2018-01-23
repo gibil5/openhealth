@@ -1413,28 +1413,50 @@ class Treatment(models.Model):
 
 
 
+	# Deprecated ???
+	#order_pro_ids = fields.One2many(
+	#		'sale.order',			 
+	#		'treatment', 
+	#		string="Presupuestos",
+	#		domain = [
+	#					('x_family', '=', 'procedure'),
+	#				],
+	#		)
+
+
+
+
+
+	READONLY_STATES = {
+
+		#'purchase': [('readonly', True)],
+		#'cancel': [('readonly', True)],
+		'done': 	[('readonly', True)],
+		#'service': 	[('readonly', True)],
+
+	}
+
+
 	# orders 
 	order_ids = fields.One2many(
 			'sale.order',			 
 			'treatment', 
 			string="Presupuestos",
-			domain = [
+			
+
+			#states=READONLY_STATES,
+
+
+			#domain = [
 						#('state', '=', 'order'),
 						#('state', 'in', ['order', 'done'])
-					],
-			)
+			#		],
+		)
 
 
-	order_pro_ids = fields.One2many(
-			'sale.order',			 
-			'treatment', 
-			
-			string="Presupuestos",
 
-			domain = [
-						('x_family', '=', 'procedure'),
-					],
-			)
+
+
 
 
 

@@ -4,6 +4,51 @@
 
 
 
+# State - Current !!
+_state_list = [
+
+				#('draft', 		'Quotation'),
+				#('sent', 		'Quotation Sent'),
+				#('sale', 		'Sale Order'),
+				#('done', 		'Done'),
+				#('cancel', 	'Cancelled'),
+
+				#('draft', 		'Presupuesto'),
+				#('sent', 		'Pagado'),
+				#('sale', 		'Facturado'),				
+				#('done', 		'Completo'),
+				#('cancel', 		'Anulado'),
+
+
+
+
+				('draft', 		'Presupuesto'),
+
+				#('sent', 		'Pagado'),
+				('sent', 		'Generado'),
+
+				#('sale', 		'Facturado'),				
+				('sale', 		'Pagado'),				
+
+
+
+
+				('printed', 	'Impreso'),
+				('done', 		'Completo'),
+				('cancel', 		'Anulado'),
+
+			]
+
+
+
+
+
+
+
+
+
+
+
 _counter_type_list = [
 
 						('emr', 				'Historias'),
@@ -89,74 +134,24 @@ _dic_model = {
 
 
 
-_x_state_list = [
-				('draft', 			'Presupuesto'),
-
-				('payment', 		'Pagado'),
-
+# Deprecated ?
+#_x_state_list = [
+#				('draft', 			'Presupuesto'),
+#				('payment', 		'Pagado'),
 				#('proof', 		    'Comprobante'),
 				#('machine', 		'Reservación de Sala'),
-
-
 				#('sale', 			'Venta'),
-				('sale', 			'Confirmado'),
-
+#				('sale', 			'Confirmado'),
 				#('confirmed', 		'Confirmado'),
-
-
-
 				#('invoice', 		'Facturado'),
-				
-
-				('done', 			'Completo'),
-				
-				('printed', 		'Impreso'),
-
-				
-				('cancel', 			'Cancelado'),
-	]
+#				('done', 			'Completo'),
+#				('printed', 		'Impreso'),
+#				('cancel', 			'Cancelado'),
+#]
 
 
 
 
-
-
-_state_list = [
-
-				#('draft', 		'Quotation'),
-				#('sent', 		'Quotation Sent'),
-				#('sale', 		'Sale Order'),
-				#('done', 		'Done'),
-				#('cancel', 	'Cancelled'),
-
-
-				#('draft', 		'Presupuesto'),
-				#('sent', 		'Pagado'),
-				#('sale', 		'Facturado'),				
-				#('done', 		'Completo'),
-				#('cancel', 		'Anulado'),
-
-
-
-				('draft', 		'Presupuesto'),
-				
-
-				#('sent', 		'Pagado'),
-				('sent', 		'Generado'),
-
-
-				#('sale', 		'Facturado'),				
-				('sale', 		'Pagado'),				
-
-
-
-				('printed', 	'Impreso'),
-
-
-				('done', 		'Completo'),
-				('cancel', 		'Anulado'),
-
-			]
 
 
 

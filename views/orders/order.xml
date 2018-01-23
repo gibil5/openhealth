@@ -877,6 +877,8 @@
 
 											string="Anular"
 
+											states="draft,sent"
+
 											groups="openhealth.roots,openhealth.caja,openhealth.managers,openhealth.directors"
 									/>
 								</group>
@@ -892,7 +894,7 @@
 
 											string="Activar"
 
-											groups="openhealth.roots,openhealth.managers,openhealth.directors"
+											groups="openhealth.roots,openhealth.directors"
 									/>
 								</group>
 

@@ -692,6 +692,7 @@ class sale_order(models.Model):
 			selection = ord_vars._state_list, 
 			
 
+
 			string='Estado',	
 			readonly=False,
 			default='draft',

@@ -7,54 +7,81 @@
 
 
 <!-- Reports --> 
-		<menuitem 	id="main_reporting_menu" 
-					sequence="-6"
+<menuitem 	id="main_reporting_menu" 
+			sequence="-6"
 
-					name="Reporting"
-					/>
-
-
+			name="Reporting"
+		/>
 
 
-		<!-- Mensual --> 
+
+
+		<!-- Sales --> 
 		<menuitem 	id="sales_reports_menu" 
 					parent="main_reporting_menu"
-					sequence="4"
+					sequence="1"
 
-					name="Reporting Mensual - 2017"			
+					name="Ventas"			
 
 					groups="openhealth.caja,openhealth.managers,openhealth.directors"
 					/>
 
 
 
+				<!-- January -->
+				<menuitem 	id="sales_report_sales_january_all_menu" 
+							name="Por Mes" 				
+							parent="sales_reports_menu"
+							sequence="1"
+
+							action="action_order_report_january_all"
+						/>
 
 
 
+				<!-- Day -->
+				<menuitem 	id="sales_report_sales_day_menu" 
+							name="Diario" 
+							parent="sales_reports_menu"
+							sequence="2"
 
-		<!-- january -->
-		<menuitem 	id="sales_report_sales_january_all_menu" 
-					name="Enero" 
-					parent="sales_reports_menu"
-					sequence="1"
-
-					action="action_order_report_january_all"
-				/>
-
+							action="action_order_report_day"
+						/>
 
 
-		<!-- Day -->
-		<menuitem 	id="sales_report_sales_day_menu" 
 
-					name="Diario" 
-			
-					parent="sales_reports_menu"
+		<!-- Kardex --> 
+		<menuitem 	id="kardex_report_menu" 
+
+					parent="main_reporting_menu"
 			
 					sequence="2"
 
-					action="action_order_report_day"
+					name="Kardex"			
+
 				/>
 
+
+
+				<!-- Cremas -->
+				<menuitem 	id="kardex_report_cremas_menu" 
+							name="Cremas" 				
+							parent="kardex_report_menu"
+							sequence="1"
+
+							action="stock_move_selector_cremas_form_action" 
+						/>
+
+
+
+				<!-- Consumibles -->
+				<menuitem 	id="kardex_report_consu_menu" 
+							name="Consumibles" 				
+							parent="kardex_report_menu"
+							sequence="2"
+
+							action="stock_move_selector_consu_form_action" 
+						/>
 
 
 

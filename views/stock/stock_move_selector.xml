@@ -4,6 +4,65 @@
 
 
 
+		<!-- Cremas --> 
+		<record model="ir.ui.view" id="selector_cremas_form_view">
+
+			<field name="name">stock.move.selector.cremas.form</field>
+
+			<field name="model">stock.move.selector.cremas</field>
+
+			<field name="inherit_id" ref="stock_move_selector_form"/>
+
+	        <field name="mode">primary</field>
+			
+			<field name="priority" eval="1"/>
+
+			<field name="arch" type="xml">		
+
+
+				<xpath expr="//field[@name='name']" position="replace">
+						<field name="name" 	/>
+				</xpath>
+
+
+			</field>
+						
+		</record>		
+
+
+		<!-- Consu --> 
+		<record model="ir.ui.view" id="selector_consu_form_view">
+
+			<field name="name">stock.move.selector.consu.form</field>
+
+			<field name="model">stock.move.selector.consu</field>
+
+			<field name="inherit_id" ref="stock_move_selector_form"/>
+
+	        <field name="mode">primary</field>
+			
+			<field name="priority" eval="1"/>
+
+			<field name="arch" type="xml">		
+
+
+				<xpath expr="//field[@name='name']" position="replace">
+						<field name="name" 	/>
+				</xpath>
+
+
+			</field>
+						
+		</record>		
+
+
+
+
+
+
+
+
+
 		<!-- FORM --> 
 		<record id="stock_move_selector_form" model="ir.ui.view">
 			<field name="name">stock.move.selector</field>
@@ -29,12 +88,13 @@
 						<button 
 								type="object" 
 								class="oe_highlight"
-								name="create_kardex"
-
-								
+								name="create_kardex"								
 								context="{'location': 'general'}"
 								
+
 								string="GENERAL"
+
+								groups="openhealth.roots,openhealth.almacen_managers"
 						/>
 
 
@@ -43,10 +103,9 @@
 								type="object" 
 								class="oe_highlight"
 								name="create_kardex"
-
-
 								context="{'location': 'platform'}"
 								
+
 								string="CREMAS DESPACHO"
 						/>
 
@@ -56,11 +115,12 @@
 								type="object" 
 								class="oe_highlight"
 								name="create_kardex"
-
-
 								context="{'location': 'all'}"
 								
+
 								string="Todo"
+
+								groups="openhealth.roots"
 						/>
 					</header>
 
@@ -150,11 +210,100 @@
 
 
 
-		<!-- ACTION --> 	
+
+
+
+
+
+<!--
+			<field name="res_model">stock.move.selector</field>
+-->
+
+		<!-- ACTION - Consu --> 	
+		<record id="openhealth.stock_move_selector_consu_form_action" model="ir.actions.act_window">
+			<field name="name">KARDEX - Consumibles</field>
+
+			<field name="res_model">stock.move.selector.consu</field>
+			
+			<field name="type">ir.actions.act_window</field>
+			<field name="view_mode">form,tree,kanban</field>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+
+
+			<field name="res_id" ref="stock_move_selector_consu_default_view"/>	
+			
+			<field name="target">inline</field>
+
+
+
+<!--
+			<field name="view_type">form</field>
+			<field name="view_id" ref="stock_move_selector_default_view"/>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="context">{'res_id': 7}</field>
+			<field name="res_id">7</field>
+-->
+		</record>
+
+
+
+
+
+
+
+<!--
+			<field name="res_model">stock.move.selector</field>
+-->
+
+		<!-- ACTION - Cremas --> 	
+		<record id="openhealth.stock_move_selector_cremas_form_action" model="ir.actions.act_window">
+
+			<field name="name">KARDEX - Cremas</field>
+
+			<field name="res_model">stock.move.selector.cremas</field>
+			
+			<field name="type">ir.actions.act_window</field>
+
+			<field name="view_mode">form,tree,kanban</field>
+
+			<field name="domain">[]</field>
+
+			<field name="context">{}</field>
+
+
+			<field name="res_id" ref="stock_move_selector_cremas_default_view"/>	
+
+			<field name="target">inline</field>
+
+<!--
+
+			<field name="view_type">form</field>
+			<field name="view_id" ref="stock_move_selector_default_view"/>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="context">{'res_id': 7}</field>
+			<field name="res_id">7</field>
+-->
+		</record>
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- ACTION  --> 	
 		<record id="openhealth.stock_move_selector_form_action" model="ir.actions.act_window">
 
 			<field name="name">KARDEX</field>
-			
+
 			<field name="res_model">stock.move.selector</field>
 			
 			<field name="type">ir.actions.act_window</field>
@@ -163,21 +312,17 @@
 
 			<field name="res_id" ref="stock_move_selector_default_view"/>
 			
+			<field name="target">inline</field>
 
 <!--
 									('state', '=', 'done'),
+									('categ_id', '=', 'Consumibles'),						
+										('categ_id', '=', 'Cremas'),						
 -->
-			<field name="domain">[
 
-
-				]</field>
-
+			<field name="domain">[]</field>
 
 			<field name="context">{}</field>
-
-
-			<field name="target">inline</field>
-
 
 
 <!--
@@ -201,6 +346,7 @@
 			<field name="res_id">7</field>
 -->
 		</record>
+
 
 
 

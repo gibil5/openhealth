@@ -12,7 +12,6 @@
 			<field name="inherit_id" ref="service_form_view"/>
 	        <field name="mode">primary</field>
 			
-			
 			<field name="arch" type="xml">		
 
 				<!-- <xpath expr="//field[@name='title']" position="before"> -->

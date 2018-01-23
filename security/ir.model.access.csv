@@ -32,9 +32,15 @@ access_mrp_bom_line_caja,mrp.bom.line.caja,mrp.model_mrp_bom_line,openhealth.caj
 access_openhealth_order_report_caja,openhealth.order.report.caja,model_openhealth_order_report,openhealth.caja,1,1,1,0
 
 
+
 access_openhealth_kardex_almacen_managers,openhealth.kardex.almacen_managers,model_openhealth_kardex,openhealth.almacen_managers,1,1,1,0
 
 access_openhealth_kardex_move_almacen_managers,openhealth.kardex_move.almacen_managers,model_openhealth_kardex_move,openhealth.almacen_managers,1,1,1,1
+
+
+access_openhealth_kardex_caja,openhealth.kardex.caja,model_openhealth_kardex,openhealth.caja,1,1,1,0
+
+access_openhealth_kardex_move_caja,openhealth.kardex_move.caja,model_openhealth_kardex_move,openhealth.caja,1,1,1,1
 
 
 
@@ -120,6 +126,14 @@ access_account_invoice,account.invoice,account.model_account_invoice,,1,1,1,1
 access_stock_move,stock.move,stock.model_stock_move,,1,1,1,1
 
 access_stock_move_selector,stock.move.selector,model_stock_move_selector,,1,1,1,1
+
+
+
+access_stock_move_selector_cremas,stock.move.selector.cremas,model_stock_move_selector_cremas,,1,1,1,1
+
+access_stock_move_selector_consu,stock.move.selector.consu,model_stock_move_selector_consu,,1,1,1,1
+
+
 
 
 

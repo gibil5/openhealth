@@ -30,8 +30,8 @@ class Servicevip(models.Model):
 						#('type', '=', 'service'),
 						#('type', '=', 'product'),
 						
-						('default_code', '=', '57'),
-
+						#('default_code', '=', '57'),
+						('default_code', '=', '495'),
 					],
 
 

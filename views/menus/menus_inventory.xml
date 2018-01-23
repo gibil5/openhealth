@@ -44,6 +44,7 @@
 
 
 <!-- Kardex --> 
+<!--
 	<menuitem 
 				id="menu_action_move_selector" 
 				parent="menu_warehouse_kardex" 
@@ -51,9 +52,9 @@
 
 				name="KARDEX"
 
-				action="stock_move_selector_form_action" 
+				action="stock_move_selector_cremas_form_action" 
 			/>
-
+-->
 
 
 

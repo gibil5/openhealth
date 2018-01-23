@@ -54,7 +54,15 @@ from . import purchase_order_line
 
 
 from . import stock_picking 
+
+
+
 from . import stock_move_selector
+from . import stock_move_selector_cremas
+from . import stock_move_selector_consu
+
+
+
 
 from . import stock_move
 

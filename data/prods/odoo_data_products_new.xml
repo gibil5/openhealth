@@ -42,7 +42,9 @@
 			
 			<field name='categ_id' ref="card"/>
 
-			<field name='default_code'>57</field>
+
+
+			<field name='default_code'>495</field>
 
 
 

@@ -7,6 +7,7 @@
 
 
 		<!-- Day --> 
+<!--		
 		<record id="action_order_report_day" model="ir.actions.act_window">
 
 			<field name="name">Reporte de Ventas - Diario</field>
@@ -17,11 +18,6 @@
 
 			<field name="view_mode">pivot,graph,tree</field>
 			
-<!--
-			<field name="view_id"></field> 
-			<field name="help"></field>
--->
-
 			<field name="search_view_id" ref="sale.view_order_product_search"/>
 
 
@@ -35,9 +31,6 @@
 
 
 
-<!--
-									'group_by': ['categ_id']
--->
 			<field name="context">{
 									'search_default_Sales':1, 
 									'group_by_no_leaf':1,
@@ -47,7 +40,7 @@
 
 
 		</record>
-
+-->
 
 
 

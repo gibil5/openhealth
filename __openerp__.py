@@ -20,7 +20,7 @@
 
 		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant\n
 
-		Last built: 	22 January 2018 - Rebirth !!!
+		Last built: 	23 January 2018 - Rebirth !!!
 
 		Created: 	 	11 Sep 2016
 
@@ -144,10 +144,16 @@
 		# Sales 
 		'views/reports/report_sale_search.xml',
 		'views/reports/report_sale.xml',
-		'views/reports/report_sale_doctors.xml',
+
+
+
 		'views/reports/report_sale_months.xml',
+
+
 		'views/reports/report_sale_months_platform.xml',
 		'views/reports/report_sale_months_physician.xml',
+		'views/reports/report_sale_doctors.xml',
+
 
 
 

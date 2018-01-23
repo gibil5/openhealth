@@ -40,6 +40,7 @@
 
 
 				<!-- Day -->
+<!--				
 				<menuitem 	id="sales_report_sales_day_menu" 
 							name="Diario" 
 							parent="sales_reports_menu"
@@ -47,10 +48,11 @@
 
 							action="action_order_report_day"
 						/>
-
+-->
 
 
 		<!-- Kardex --> 
+
 		<menuitem 	id="kardex_report_menu" 
 
 					parent="main_reporting_menu"
@@ -64,6 +66,7 @@
 
 
 				<!-- Cremas -->
+<!--				
 				<menuitem 	id="kardex_report_cremas_menu" 
 							name="Cremas" 				
 							parent="kardex_report_menu"
@@ -71,10 +74,11 @@
 
 							action="stock_move_selector_cremas_form_action" 
 						/>
-
+-->
 
 
 				<!-- Consumibles -->
+<!--				
 				<menuitem 	id="kardex_report_consu_menu" 
 							name="Consumibles" 				
 							parent="kardex_report_menu"
@@ -85,7 +89,7 @@
 
 							groups="openhealth.roots,openhealth.almacen_managers,openhealth.directors"
 						/>
-
+-->
 
 
 

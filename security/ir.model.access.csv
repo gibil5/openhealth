@@ -8,6 +8,11 @@ access_mrp_bom,mrp.bom,mrp.model_mrp_bom,,1,1,1,1
 access_mrp_bom_line,mrp.bom.line,mrp.model_mrp_bom_line,,1,1,1,1
 
 
+access_mrp_bom_caja,mrp.bom.caja,mrp.model_mrp_bom,openhealth.caja,1,1,1,1
+
+access_mrp_bom_line_caja,mrp.bom.line.caja,mrp.model_mrp_bom_line,openhealth.caja,1,1,1,1
+
+
 
 
 

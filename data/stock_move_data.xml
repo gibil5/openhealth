@@ -31,8 +31,9 @@
 <!--
 			<field name="product_id" search="[('x_name_short','=','solar_protector')]"/>
 			<field name="product_id" search="[('default_code','=','066')]"/>
--->
 			<field name="product_id" search="[('default_code','=','010')]"/>
+-->
+			<field name="product_id" search="[('default_code','=','066')]"/>
 		</record>
 
 

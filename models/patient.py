@@ -22,17 +22,113 @@ class Patient(models.Model):
 
 
 
-	# Estado de cuenta
-	x_order_report = fields.Many2one(
+
+# ----------------------------------------------------------- Hard wired ------------------------------------------------------
+
+
+	# READY 
+
+	# Email 
+	#email = fields.Char(
+	#		string = 'Email',  
+	#		placeholder = '',
+	#		required=True, 
+			#required=False, 
+	#	)
+
+
+	#x_dni = fields.Char(
+	#		string = "DNI", 	
+			#required=True, 
+			#required=False, 
+	#	)
+
+
+
+
+
+	# IN PROG 
+
+	#country_id = fields.Many2one(
+	#		'res.country', 
+	#		string = 'País', 
+
+	#		default = 175,	# Peru
+
+			#required=False, 
+	#		required=True, 
+	#	)
+
+
+
+	#city = fields.Selection(
+	#		selection = pat_vars._city_list, 
+	#		string = 'Departamento',  
+	#		default = 'lima', 
+
+	#		required=True, 
+			#required=False, 
+	#	)
+
+
+
+	#street2 = fields.Char(
+	#		string = "Distrito", 	
 			
-			'openhealth.order.report',		
+			#required=True, 
+	#		required=False, 
+	#	)
+
+
+
+	#street2_sel = fields.Selection(
+	#		selection = pat_vars._street2_list, 
+	#		string = "Distrito", 	
 			
-			string="Estado de cuenta",		
-		)
+			#required=True, 
+	#		required=False, 
+	#	)
+
+
+
+
+
+
+	#street = fields.Char(
+	#		string = "Dirección", 	
+
+	#		required=False, 
+	#	)
+
+
+
+
+
+
+	#zip = fields.Integer(
+	#		string = 'Código',  
+			#compute='_compute_zip', 
+
+			#required=True, 			
+	#		required=False, 			
+	#	)
+
+
+
+
+
 
 
 
 # ----------------------------------------------------------- Order Report ------------------------------------------------------
+
+	# Estado de cuenta
+	x_order_report = fields.Many2one(			
+			'openhealth.order.report',		
+			string="Estado de cuenta",		
+		)
+
+
 
 	# Generate 
 	@api.multi 
@@ -300,13 +396,6 @@ class Patient(models.Model):
 
 
 
-
-	#x_dni = fields.Char(
-	#		string = "DNI", 	
-
-			#required=True, 
-			#required=False, 
-	#	)
 
 
 
@@ -1056,9 +1145,18 @@ class Patient(models.Model):
 			
 			self.street2_sel = 41
 
-
 			self.comment = 'test'
-			
+
+
+
+			self.x_ruc = '09817194123'
+
+			self.x_firm = 'Revilla y Asociados'
+
+			self.mobile = '991960734'
+
+
+
 			
 			#self.x_last_name = 'Fuchs Vibors'
 			#self.x_first_name = 'Hans'
@@ -1163,16 +1261,6 @@ class Patient(models.Model):
 
 
 
-	# Street 
-	street = fields.Char(
-
-			string = "Dirección", 	
-			#string = "Dirección fiscal", 	
-			
-			#required=True, 
-			required=False, 
-		)
-
 	@api.onchange('street')
 	def _onchange_street(self):
 
@@ -1183,22 +1271,6 @@ class Patient(models.Model):
 
 
 
-	street2 = fields.Char(
-			string = "Distrito", 	
-			
-			#required=True, 
-			required=False, 
-		)
-
-
-
-	zip = fields.Integer(
-			string = 'Código',  
-			#compute='_compute_zip', 
-
-			#required=True, 			
-			required=False, 			
-			)
 
 	#@api.multi
 	@api.depends('street2','city')
@@ -1214,14 +1286,6 @@ class Patient(models.Model):
 
 
 
-	# Email 
-	email = fields.Char(
-			string = 'Email',  
-			placeholder = '',
-
-			required=True, 
-			#required=False, 
-			)
 
 
 	@api.onchange('email')
@@ -1240,50 +1304,64 @@ class Patient(models.Model):
 
 
 
-	country_id = fields.Many2one(
-			'res.country', 
-			string = 'País', 
-			default = 175,	# Peru
-
-			#required=False, 
-			required=True, 
-			)
-
-	city = fields.Selection(
-			selection = pat_vars._city_list, 
-			string = 'Departamento',  
-			default = 'lima', 
-
-			required=True, 
-			#required=False, 
-		)
 
 
 
 
 
-	phone_1 = fields.Char(
-		string="Teléfono 1",
-		
-		#required=True, 
-		required=False, 
-		)
+	# Phone 1
+	#@api.onchange('phone_1')
+	#def _onchange_phone_1(self):
+	#	ret = pat_funcs.test_for_digits(self, self.phone_1)
+	#	if ret != 0: 
+	#		return ret
+
+
 
 	# Phone 2
-	phone_2 = fields.Char(
-		string="Teléfono 2",
-
-		required=False, 
-		)
-
-
+	#@api.onchange('phone_2')
+	#def _onchange_phone_2(self):
+	#	ret = pat_funcs.test_for_digits(self, self.phone_2)
+	#	if ret != 0: 
+	#		return ret
 
 
+	# Deprecated ? 
+	#phone_1 = fields.Char(
+	#	string="Teléfono 1",
+		
+		#required=True, 
+	#	required=False, 
+	#	)
 
+	#phone_2 = fields.Char(
+	#	string="Teléfono 2",
+
+	#	required=False, 
+	#	)
+
+
+
+
+
+	# Phone 3 - Caregiver 
+	@api.onchange('phone_3')
+	def _onchange_phone_3(self):
+		ret = pat_funcs.test_for_digits(self, self.phone_3)
+		if ret != 0: 
+			return ret
+
+	# Caregiver 
 	phone_3 = fields.Char(
 		string="Teléfono",
 		required=False, 
 		)
+
+
+
+
+
+
 
 
 	street2_char = fields.Char(
@@ -1292,13 +1370,6 @@ class Patient(models.Model):
 		)
 
 
-	street2_sel = fields.Selection(
-			selection = pat_vars._street2_list, 
-			string = "Distrito", 	
-			
-			#required=True, 
-			required=False, 
-		)
 
 
 	function = fields.Char(
@@ -1550,34 +1621,6 @@ class Patient(models.Model):
 
 
 
-	# Phone 1
-	@api.onchange('phone_1')
-	def _onchange_phone_1(self):
-		ret = pat_funcs.test_for_digits(self, self.phone_1)
-		if ret != 0: 
-			return ret
-
-
-
-	# Phone 2
-	@api.onchange('phone_2')
-	def _onchange_phone_2(self):
-		ret = pat_funcs.test_for_digits(self, self.phone_2)
-		if ret != 0: 
-			return ret
-
-
-
-
-
-	# Phone 3 - Caregiver 
-	@api.onchange('phone_3')
-	def _onchange_phone_3(self):
-		ret = pat_funcs.test_for_digits(self, self.phone_3)
-		if ret != 0: 
-			return ret
-
-
 
 	@api.onchange('street2_sel')
 	def _onchange_street2_sel(self):
@@ -1820,14 +1863,17 @@ class Patient(models.Model):
 
 
 
+
+
 # ----------------------------------------------------------- CRUD ------------------------------------------------------
 
 # Create 
 	@api.model
 	def create(self,vals):
 
-		#print 'jx'
-		#print 'Patient - Create - Override'
+		print 'jx'
+		print 'CRUD - Patient - Create'
+		print 
 		#print vals
 	
 
@@ -1838,11 +1884,25 @@ class Patient(models.Model):
 
 
 
+
 		# My logic 
 		# Create a Treatment - When Patient is created - DEPRECATED !
 		#name = vals['name']
 		#patient_id = self.env['oeh.medical.patient'].search([('name', '=', name),]).id 
 		#treatment = self.env['openhealth.treatment'].create({'patient': patient_id,})
+
+
+
+
+
+		# Update Partner 
+		#print self.street  
+		#if self.street != False:
+		#if True:
+		#	print 'Update Partner !'
+		#	self.partner_id.street = self.street
+
+
 
 		return res
 	# CRUD - Create 
@@ -1854,17 +1914,18 @@ class Patient(models.Model):
 	@api.multi
 	def write(self,vals):
 
-		print 
+		print 'jx'
 		print 'CRUD - Patient - Write'
 		print 
-		print vals
-		print 
+		#print vals
+		#print 
 		#print 
 
 		#if vals['x_doctor'] != False: 
 		#	print vals['x_doctor']
 		#if vals['user_id'] != False: 
 		#	print vals['user_id']
+
 
 
 
@@ -1875,71 +1936,62 @@ class Patient(models.Model):
 
 
 
+		# Lang 
+		#self.lang = 'es_ES'
+
+
+
+
+
+
 		# Validations
 		#self.email = self.email.lower()
 		#self.street = self.street.title()
 
 
 
+
+
+
 		# Update Partner 
-		if self.street != False:
+		#if self.street != False:
 
-			self.partner_id.street = self.street
+		#	print 'Update Partner !'
 
-			self.partner_id.street2 = self.street2
+		#	self.partner_id.street = self.street
 
-			self.partner_id.street2_sel = self.street2_sel
+		#	self.partner_id.street2 = self.street2
 
+		#	self.partner_id.street2_sel = self.street2_sel
 
+		#	self.partner_id.zip = self.zip
 
+		#	self.partner_id.city = self.city.title()
 
-			self.partner_id.zip = self.zip
+		#	self.partner_id.state_id = self.state_id
 
-			self.partner_id.city = self.city.title()
+		#	self.partner_id.country_id = self.country_id
 
-			self.partner_id.state_id = self.state_id
+		#	self.partner_id.x_dni = self.x_dni
 
-			self.partner_id.country_id = self.country_id
+		#	self.partner_id.email = self.email
 
-			self.partner_id.x_dni = self.x_dni
+		#	self.partner_id.phone = self.phone
 
-			self.partner_id.email = self.email
+		#	self.partner_id.mobile = self.mobile
 
-
-
-			self.partner_id.phone = self.phone
-
-			self.partner_id.mobile = self.mobile
-
-
-
-			self.partner_id.lang = 'es_ES'
-
-
-
-		if self.x_ruc != False:
-
-			self.partner_id.x_ruc = self.x_ruc
-
-			self.partner_id.x_firm = self.x_firm
+		#	self.partner_id.lang = 'es_ES'
 
 
 
 
+		#if self.x_ruc != False:
 
-		# Counters 
-		#print 'Counters'
-		#for service in self.x_service_quick_ids:
-		#	print service
-		#	service.nr_hands_i = 5
-		#	service.nr_body_local_i = 5
-		#	service.nr_face_local_i = 5 
+		#	self.partner_id.x_ruc = self.x_ruc
+
+		#	self.partner_id.x_firm = self.x_firm
 
 
-
-
-		#print 
-		#print 
 
 		return res
 

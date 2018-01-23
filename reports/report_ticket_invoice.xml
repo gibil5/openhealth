@@ -121,16 +121,22 @@
 
 <!-- Authorization --> 
 <!--
+-->
 <div class='row'>
 	<div class='col-xs-4'>		
-		<b>Autorización:</b>
+		<b>Autorización</b>
 	</div>
 	<div class='col-xs-8'>
+
+<!--
 		<t t-esc="doc.user_id.name"/>
+-->
+		<t t-esc="doc.x_my_company.x_authorization"/>
+
+
 	</div>
 </div>
 <br/>
--->
 
 
 

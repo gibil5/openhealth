@@ -23,12 +23,192 @@ class Partner(models.Model):
 
 
 
-# ----------------------------------------------------------- DNI RUC ------------------------------------------------------
 
-	# DNI 
+
+# ----------------------------------------------------------- My Company ------------------------------------------------------
+
+
+
+	# Autorization 
+	x_authorization = fields.Char(
+			string='Autorización', 
+		)
+
+
+
+	# Warning Sales
+	x_warning = fields.Text(
+			'Condiciones de Venta', 
+		)
+
+
+
+	# Warning Purchase 
+	x_warning_purchase = fields.Text(
+			'Condiciones de Compra', 
+		)
+
+
+
+
+
+# ----------------------------------------------------------- Lang ------------------------------------------------------
+	@api.model
+	def _lang_get(self):
+		languages = self.env['res.lang'].search([])
+		return [(language.code, language.name) for language in languages]
+
+
+	lang = fields.Selection(
+			_lang_get, 
+			'Language',
+			help="", 
+		)
+
+
+
+# ----------------------------------------------------------- Hard wired ------------------------------------------------------
+
+
+	# READY 
+	phone = fields.Char(
+			#'Teléfono 1', 
+			'Fijo', 
+			#required=True, 
+			required=False, 
+		)
+	
+	mobile = fields.Char(
+			'Celular', 
+		)
+
+
 	x_dni = fields.Char(
 			"DNI", 	
 		)
+
+
+	x_firm = fields.Char(
+			"Razón social", 	
+		)
+
+
+	x_ruc = fields.Char(
+			"RUC", 	
+		)
+
+
+
+	email = fields.Char(
+
+			string = 'Email',  
+			placeholder = '',
+			
+			required=True, 
+		)
+
+
+
+
+
+	# IN PROG 
+	
+	country_id = fields.Many2one(
+			'res.country', 
+			string = 'País', 
+			
+			default = 175,	# Peru
+
+			#ondelete='restrict', 			
+
+			required=True, 
+		)
+
+
+
+	#city = fields.Char(
+	#		'City', 
+	#		required=False, 
+	#	)
+
+
+	city = fields.Selection(
+			selection = pat_vars._city_list, 
+			string = 'Departamento',  
+			default = 'lima', 
+
+			required=True, 
+		)
+
+
+
+
+
+	#street2 = fields.Char(
+	#		'Distrito', 
+	#		placeholder="Distrito...", 		
+			#required=True, 
+	#		required=False, 
+	#	)
+
+
+	street2 = fields.Char(
+			string = "Distrito", 	
+			
+			#required=True, 
+			required=False, 
+		)
+
+
+
+	street2_sel = fields.Selection(
+			selection = pat_vars._street2_list, 
+			string = "Distrito", 	
+			
+			#required=True, 
+			required=False, 
+		)
+
+
+
+
+	#street = fields.Char(
+	#		'Calle', 
+	#		required=False, 
+	#	)
+
+
+	street = fields.Char(
+			string = "Dirección", 	
+
+			required=False, 
+		)
+
+
+
+
+
+
+
+	#zip = fields.Integer(
+	#		string = 'Código',  
+
+	#		required=False, 			
+	#	)
+
+
+
+	zip = fields.Char(
+			#'Zip', 
+			string = 'Código',  
+
+			size=24, 
+			change_default=True, 
+		)
+
+
+# ----------------------------------------------------------- DNI RUC ------------------------------------------------------
+
 
 
 	# Test and validate
@@ -45,10 +225,6 @@ class Partner(models.Model):
 
 
 
-	# RUC
-	x_ruc = fields.Char(
-			"RUC", 	
-		)
 
 	# Test and validate
 	@api.onchange('x_ruc')
@@ -104,20 +280,6 @@ class Partner(models.Model):
 
 
 
-	# Warning Sales
-	x_warning = fields.Text(
-
-			'Condiciones de Venta', 
-		)
-
-
-
-	# Warning Purchase 
-	x_warning_purchase = fields.Text(
-
-			'Condiciones de Compra', 
-		)
-
 
 
 
@@ -159,15 +321,6 @@ class Partner(models.Model):
 
 
 
-	# Email 
-	email = fields.Char(
-
-			'Email', 
-			
-			#required=True, 
-			required=False, 
-		)
-
 
 
 
@@ -191,9 +344,6 @@ class Partner(models.Model):
 
 
 
-	x_firm = fields.Char(
-			"Razón social", 	
-		)
 
 
 
@@ -213,76 +363,12 @@ class Partner(models.Model):
 
 
 
-
-	phone = fields.Char(
-			
-			'Teléfono 1', 
-			#required=True, 
-			required=False, 
-		)
-	
-	mobile = fields.Char(
-			
-			'Teléfono 2', 
-		)
 
 
 
 
 	#'state_id': fields.many2one("res.country.state", 'State', ondelete='restrict'),
 	#'zip': fields.char('Zip', size=24, change_default=True),
-
-	street = fields.Char(
-
-			'Calle', 
-
-			#required=True, 
-			required=False, 
-		)
-
-	street2 = fields.Char(
-
-			'Distrito', 
-			placeholder="Distrito...", 
-			
-			#required=True, 
-			required=False, 
-		)
-
-	city = fields.Char(
-
-			'City', 
-			
-			#required=True, 
-			required=False, 
-		)
-
-	country_id = fields.Many2one(
-
-			'res.country', 
-			'Country', 
-			ondelete='restrict', 
-			
-			#required=True, 
-			required=False, 
-		)
-
-
-
-
-
-	# Street 2 
-	street2_sel = fields.Selection(
-			selection = pat_vars._street2_list, 
-			string = "Distrito", 	
-			
-			#required=True, 
-			required=False, 
-		)
-
-
-
-
 
 
 
@@ -550,13 +636,16 @@ class Partner(models.Model):
 			#vals[key] = vals[key].strip().upper()
 			#" ".join(sentence.split())			
 
+
+
+			# Compact Name
 			name = vals[key]
 			name = name.strip().upper()
 			name = " ".join(name.split())			
 			vals[key] = name 
 
 			
-			print vals[key]
+			#print vals[key]
 
 
 

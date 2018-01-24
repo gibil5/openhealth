@@ -788,8 +788,10 @@ class Treatment(models.Model):
 				state = 'service'
 
 
-			#if record.nr_budgets_pro > 0:
-			#	state = 'budget_procedure'
+
+			if record.nr_budgets_pro > 0:
+				state = 'budget_procedure'
+
 
 
 			if record.nr_invoices_pro > 0:
@@ -1019,19 +1021,21 @@ class Treatment(models.Model):
 	#																('state','=', 'draft'),
 	#																]) 
 
+
+
 	# Number of budgets - Proc   					# DEP ?  
-	#nr_budgets_pro = fields.Integer(
-	#		string="Presupuestos - Pro",
-	#		compute="_compute_nr_budgets_pro",
-	#)
-	#@api.multi
-	#def _compute_nr_budgets_pro(self):
-	#	for record in self:
-	#		record.nr_budgets_pro=self.env['sale.order'].search_count([
-	#																	('treatment','=', record.id),
-	#																	('x_family','=', 'procedure'),
-	#																	('state','=', 'draft'),
-	#																]) 
+	nr_budgets_pro = fields.Integer(
+			string="Presupuestos - Pro",
+			compute="_compute_nr_budgets_pro",
+	)
+	@api.multi
+	def _compute_nr_budgets_pro(self):
+		for record in self:
+			record.nr_budgets_pro=self.env['sale.order'].search_count([
+																		('treatment','=', record.id),
+																		('x_family','=', 'procedure'),
+																		('state','=', 'draft'),
+																	]) 
 
 
 

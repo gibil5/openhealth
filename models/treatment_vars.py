@@ -69,15 +69,16 @@ _state_list = [
 				#('invoice_consultation', 	'Facturado'),			# OK 
 				('invoice_consultation', 	'Caja'),			# OK 
 
-
-
 				('consultation', 			'Consulta'),			# OK
 				
-
-				('service', 				'Recomendación'),		# OK
+				#('service', 				'Recomendación'),		# OK
+				('service', 				'Recom.'),		# OK
 				
 
-				#('budget_procedure', 		'Presupuesto-P'),	# Dep ? 
+
+
+
+				('budget_procedure', 		'Pres. Creado'),	# Dep ? 
 
 
 

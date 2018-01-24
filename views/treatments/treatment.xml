@@ -129,13 +129,17 @@
 
 
 
-
+<!--
+							states="budget_procedure,invoice_procedure"
+-->
 
 						<!-- Create Procedure --> 
 						<button 
 							type="object" 
 							class="oe_highlight"
-							states="budget_procedure,invoice_procedure"
+
+
+							states="invoice_procedure"
 
 
 							name="create_procedure" 
@@ -169,13 +173,15 @@
 
 <!--
 								statusbar_visible="appointment, invoice_consultation, consultation, service, invoice_procedure, procedure, sessions, controls"
+
+								statusbar_visible="appointment, invoice_consultation, consultation, service, invoice_procedure, procedure, sessions, controls, done"
 -->
 						<!-- State --> 
 						<field 	name="state" 
 								widget="statusbar" 
 
 
-								statusbar_visible="appointment, invoice_consultation, consultation, service, invoice_procedure, procedure, sessions, controls, done"
+								statusbar_visible="appointment, invoice_consultation, consultation, service, budget_procedure, invoice_procedure, procedure, sessions, controls, done"
 						/>
 
 					</header>
@@ -507,6 +513,7 @@ jz
 
 <!-- Nr Budgets Pro - DEPRECATED -->
 <!--
+-->
 								<button type="action" class="oe_stat_button" icon="fa-list"
 										name="%(order_form_action)d"	
 										context="{									
@@ -516,9 +523,10 @@ jz
 													'default_partner_id': partner_id, 
 												}" 	
 										attrs="{ 'invisible':[	('nr_budgets_pro','=',0), ]}">
-									<field string="Presu - Pro" name="nr_budgets_pro" widget="statinfo"/>
+
+									<field string="Pres. Creado" name="nr_budgets_pro" widget="statinfo"/>
+								
 								</button>
--->
 
 
 

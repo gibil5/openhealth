@@ -339,6 +339,16 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 
 				<tree string="Control Tree"
 
+colors="
+
+red:state=='draft';
+
+green:state=='inprogress';
+
+blue:state=='done'
+
+"
+
 
 
 >
@@ -371,6 +381,10 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 					<field name="control_date"/>
 					
 					<field name="nr_images"/>
+
+
+
+					<field name="state"/>
 
 					<field name="x_done"/>
 

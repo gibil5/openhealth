@@ -153,15 +153,23 @@ class Control(models.Model):
 
 			state = 'draft'
 
-			if record.nr_images > 0:
-				state = 'inprogress'
 
-			if record.nr_images > 2:
+
+			#if record.nr_images > 0:
+			#	state = 'inprogress'
+
+			#if record.nr_images > 2:
+			#	state = 'done'
+			#	for image in record.image_ids:
+			#		if image.name not in ['Frente', 'Derecha', 'Izquierda', 'frente', 'derecha', 'izquierda', 'FRENTE', 'DERECHA', 'IZQUIERDA', ]:
+			#			state = 'inprogress'
+
+
+
+
+			if record.x_done: 
 				state = 'done'
 
-				for image in record.image_ids:
-					if image.name not in ['Frente', 'Derecha', 'Izquierda', 'frente', 'derecha', 'izquierda', 'FRENTE', 'DERECHA', 'IZQUIERDA', ]:
-						state = 'inprogress'
 
 			record.state = state
 

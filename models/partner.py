@@ -203,7 +203,7 @@ class Partner(models.Model):
 			string = 'Código',  
 
 			size=24, 
-			change_default=True, 
+			#change_default=True, 
 		)
 
 

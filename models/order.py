@@ -169,7 +169,7 @@ class sale_order(models.Model):
 			string='Paciente', 
 
 
-			compute='_compute_patient', 
+			#compute='_compute_patient', 
 		)
 
 
@@ -185,7 +185,8 @@ class sale_order(models.Model):
 														limit=1,
 													)
 			
-			record.patient = patient
+			if patient.name != False:
+				record.patient = patient
 
 
 

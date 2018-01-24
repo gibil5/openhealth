@@ -25,32 +25,8 @@
 																	]}"	>
 
 
-
-						<!--
-						<field name="control_ids">
-							<tree string="">	
-								<field string="Control #"  name="name"/>
-
-								<field string="Paciente" name="patient"/>
-
-								<field string="Médico" name="doctor"/>
-
-								<field name="evaluation_start_date"/>
-								
-								<field name="product" invisible="0"/>
-								
-								<field name="laser" invisible="1"/>
-
-								<field string='Tipo' name="evaluation_type"/>
-
-								<field name="procedure"/>
-							</tree>
-						</field>				
-						-->
-
+						
 <!--
-
-																		'default_evaluation_start_date': evaluation_start_date,
 -->						
 						<field name="control_ids"		context="{
 																		'default_patient': patient,
@@ -67,16 +43,14 @@
 
 																		'default_evaluation_nr': nr_controls + 1,
 
-
-
 																		'default_control_date': evaluation_start_date,
-
 
 																		'default_appointment': appointment,
 																}"
 							/>
-						
-						
+
+
+
 						
 
 					</page>

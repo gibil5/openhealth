@@ -242,22 +242,13 @@
 
 
 
-
+<!--
 				<xpath expr="//field[@name='x_serial_nr']" position="after">
 					<group>
-
-						<field name="vspace" />
-
-						<field name="treatment" 	readonly="1"/>
-
-						<field name="vspace" />
-
-						<field name="patient" 	invisible="0"	groups="openhealth.roots"			/>
-
 					
 					</group>
 				</xpath>
-
+-->
 
 
 
@@ -839,20 +830,9 @@
 
 					<field name="x_doctor"		required="1"			/>
 
+					<field name="vspace"/>
 
-
-
-
-<!-- Only for Roots --> 
-	
-						<field name="x_doctor_uid"	invisible="1"/>
-						<field name="user_id"		string="Generado por"		readonly="1"	groups="openhealth.roots"	/>
-						<field name="x_my_company"	groups="openhealth.roots"	/>
-						<field name="x_family"		readonly="0"		groups="openhealth.roots"	/>
-						<field name="x_machine_req"			invisible="0"	groups="openhealth.roots"	/>
-						<field name="x_product"		invisible="0"		readonly="0"	groups="openhealth.roots"	/>
-						<field name="x_machine"		groups="openhealth.roots"		/>
-
+					<field name="treatment" 	readonly="1"/>
 
 				</field>	
 

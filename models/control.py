@@ -108,17 +108,16 @@ class Control(models.Model):
 			string="Realizado", 			
 			default=False,
 
-			compute='_compute_x_done', 
-			)
+			#compute='_compute_x_done', 
+		)
+
 
 	#@api.multi
-	@api.depends('state')
-
-	def _compute_x_done(self):
-		for record in self:
-
-			if record.state == 'done':
-				record.x_done = True 
+	#@api.depends('state')
+	#def _compute_x_done(self):
+	#	for record in self:
+	#		if record.state == 'done':
+	#			record.x_done = True 
 
 
 

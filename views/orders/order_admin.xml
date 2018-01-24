@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+		<!-- Order - Admin -->
+		<record model="ir.ui.view" id="order_admin_form_view">
+			<field name="name">order.admin.form</field>
+			<field name="model">sale.order</field>
+			
+			<field name="priority" eval="2"/>
+			
+			<field name="inherit_id" ref="sale.view_order_form"/>
+			<field name="arch" type="xml">
+
+
+				<notebook position="inside">
+					
+
+
+<!--
+							<page string="Admin"		groups='openhealth.roots'	>
+-->
+
+							<page string="Admin"	groups='openhealth.roots'	 >
+
+
+								<group>
+	
+
+									<!-- Only for Roots --> 
+									<field name="patient" 	invisible="0"			/>
+
+									<field name="vspace" />
+
+									<field name="x_doctor_uid"	invisible="1"				/>
+									<field name="user_id"		string="Generado por"		readonly="1"/>
+									<field name="x_my_company"	/>
+									<field name="x_family"		readonly="0"				/>
+									<field name="x_machine_req"			invisible="0"		/>
+									<field name="x_product"		invisible="0" 	readonly="0"		/>
+									<field name="x_machine"		/>
+								
+								</group>
+
+
+							</page>
+
+				</notebook>
+
+
+			</field>
+		</record>
+	</data>
+</openerp>

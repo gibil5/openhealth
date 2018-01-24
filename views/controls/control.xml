@@ -326,6 +326,8 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 
 
 
+
+
 		
 		
 		<!-- TREE --> 
@@ -335,7 +337,11 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 			<field name="arch" type="xml">
 				
 
-				<tree string="Control Tree">
+				<tree string="Control Tree"
+
+
+
+>
 					
 
 					<!-- Quick Button -->
@@ -347,53 +353,41 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 					/>
 
 
+
 					<field name="evaluation_nr"/>
-
-
 
 					<field name="name"/>
 					
 					<field name="appointment"/>
 
-<!--
-					<field name="treatment"/>
--->
-
 					<field name="patient"  string="Paciente"/>
 					
 					<field name="doctor"   string="Médico"/>
-
 
 					<field name="chief_complaint"/>
 					
 					<field name="laser"/>
 
-
-<!--
-					<field name="evaluation_start_date"/>
--->
 					<field name="control_date"/>
 					
-
-
-
 					<field name="nr_images"/>
 
 					<field name="x_done"/>
 
 
 
-					<!--
-					<field name="procedure"/>
-
-					<field name="product"/>
-
-					<field name="appointment"	string="Cita #"/>
-					-->
 				</tree>
 			</field>
 		</record>
 		
+<!--
+					<field name="procedure"/>
+					<field name="product"/>
+					<field name="appointment"	string="Cita #"/>
+
+					<field name="evaluation_start_date"/>
+					<field name="treatment"/>
+-->
 		
 		
 

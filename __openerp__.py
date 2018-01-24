@@ -20,7 +20,7 @@
 
 		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant\n
 
-		Last built: 	23 January 2018 - Rebirth !!!
+		Last built: 	24 January 2018 - Rebirth !!!
 
 		Created: 	 	11 Sep 2016
 
@@ -360,6 +360,12 @@
 		# Orders
 		'views/orders/order_line.xml',
 		'views/orders/order.xml',
+
+
+		'views/orders/order_admin.xml',
+
+
+
 
 
 		# Order Report 

@@ -23,7 +23,58 @@ class Patient(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Not Deprecated ------------------------------------------------------
+	
+
+	# Stree2 Char - If Province 
+	street2_char = fields.Char(
+			string = "Distrito Prov.", 	
+		)
+
+
+	# Street2 ?
+	@api.onchange('street2_char')
+	def _onchange_street2_char(self):
+		self.street2 = self.street2_char
+
+
+
+
+
+
+# ----------------------------------------------------------- On changes ------------------------------------------------------
+
+	# Zip  Street2
+	@api.onchange('street2_sel')
+	def _onchange_street2_sel(self):
+		self.street2 = pat_vars.zip_dic_inv[self.street2_sel]
+		self.zip = self.street2_sel
+
+
+
+
+	# Street 
+	@api.onchange('street')
+	def _onchange_street(self):
+		if self.street != False: 
+			self.street = self.street.strip().title()
+
+
+
+	# Email 
+	@api.onchange('email')
+	def _onchange_email(self):
+		if self.email != False: 
+			self.email = self.email.strip().lower()
+
+
+
+
+
+
 # ----------------------------------------------------------- Hard wired ------------------------------------------------------
+
 
 
 	# READY 
@@ -114,6 +165,14 @@ class Patient(models.Model):
 	#	)
 
 
+	# Deprecated 
+	#@api.multi
+	#def _compute_zip(self):
+	#	for record in self:
+	#		if (record.street2 in pat_vars.zip_dic) and (record.city == 'lima')  :
+	#			record.zip=pat_vars.zip_dic[record.street2]
+	#		else:
+	#			record.zip=0
 
 
 
@@ -1261,26 +1320,6 @@ class Patient(models.Model):
 
 
 
-	@api.onchange('street')
-	def _onchange_street(self):
-
-		if self.street != False: 
-			self.street = self.street.strip().title()
-
-
-
-
-
-
-	#@api.multi
-	@api.depends('street2','city')
-
-	def _compute_zip(self):
-		for record in self:
-			if (record.street2 in pat_vars.zip_dic) and (record.city == 'lima')  :
-				record.zip=pat_vars.zip_dic[record.street2]
-			else:
-				record.zip=0
 
 
 
@@ -1288,15 +1327,9 @@ class Patient(models.Model):
 
 
 
-	@api.onchange('email')
-	def _onchange_email(self):
-		print 'jx'
-		print 'Change email'
 
-		if self.email != False: 
-			self.email = self.email.strip().lower()
-			print self.email
-			print 
+
+
 
 
 
@@ -1363,11 +1396,6 @@ class Patient(models.Model):
 
 
 
-
-	street2_char = fields.Char(
-			string = "Distrito", 	
-			#required=True, 
-		)
 
 
 
@@ -1622,16 +1650,7 @@ class Patient(models.Model):
 
 
 
-	@api.onchange('street2_sel')
-	def _onchange_street2_sel(self):
-		self.street2 = pat_vars.zip_dic_inv[self.street2_sel]
-		self.zip = self.street2_sel
 
-
-
-	@api.onchange('street2_char')
-	def _onchange_street2_char(self):
-		self.street2 = self.street2_char
 
 
 

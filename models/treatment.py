@@ -1413,15 +1413,17 @@ class Treatment(models.Model):
 
 
 
-	# Deprecated ???
-	#order_pro_ids = fields.One2many(
-	#		'sale.order',			 
-	#		'treatment', 
-	#		string="Presupuestos",
-	#		domain = [
-	#					('x_family', '=', 'procedure'),
-	#				],
-	#		)
+
+
+	# Important !!
+	order_pro_ids = fields.One2many(
+			'sale.order',			 
+			'treatment', 
+			string="Presupuestos",
+			domain = [
+						('x_family', '=', 'procedure'),
+					],
+		)
 
 
 

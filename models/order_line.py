@@ -76,7 +76,8 @@ class sale_order_line(models.Model):
 			for line in record.order_id.order_line:
 				
 				#if line.product_id.x_short_name == 'vip_card': 
-				if line.product_id.default_code == '57': 				
+				#if line.product_id.default_code == '57': 				
+				if line.product_id.default_code == '495': 				
 					record.x_vip_inprog = True
 
 

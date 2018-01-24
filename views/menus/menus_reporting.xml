@@ -60,7 +60,7 @@
 
 					name="Kardex"			
 
-					groups="openhealth.caja,openhealth.roots,openhealth.directors"
+					groups="openhealth.roots,openhealth.caja,openhealth.almacen_managers,openhealth.directors"
 				/>
 
 
@@ -74,6 +74,7 @@
 							sequence="1"
 
 							action="stock_move_selector_cremas_form_action" 
+							
 						/>
 
 

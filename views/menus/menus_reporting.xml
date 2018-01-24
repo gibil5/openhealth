@@ -54,12 +54,13 @@
 
 
 		<!-- Kardex --> 
-
 		<menuitem 	id="kardex_report_menu" 
 					parent="main_reporting_menu"
 					sequence="2"
 
 					name="Kardex"			
+
+					groups="openhealth.caja,openhealth.roots,openhealth.directors"
 				/>
 
 

@@ -513,7 +513,6 @@ jz
 
 <!-- Nr Budgets Pro - DEPRECATED -->
 <!--
--->
 								<button type="action" class="oe_stat_button" icon="fa-list"
 										name="%(order_form_action)d"	
 										context="{									
@@ -527,6 +526,7 @@ jz
 									<field string="Pres. Creado" name="nr_budgets_pro" widget="statinfo"/>
 								
 								</button>
+-->
 
 
 

@@ -8,6 +8,8 @@
 
 		<!-- Day --> 
 <!--		
+-->
+
 		<record id="action_order_report_day" model="ir.actions.act_window">
 
 			<field name="name">Reporte de Ventas - Diario</field>
@@ -40,7 +42,6 @@
 
 
 		</record>
--->
 
 
 

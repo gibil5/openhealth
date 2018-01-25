@@ -4,33 +4,6 @@
 
 
 
-<!-- Caja -->
-		<record id="caja_partner" model="res.partner">
-			<field name="name">Caja</field>
-			<field name="email">caja@clinicachavarri.com</field>
-	        <field eval="[(6, 0, [ref('cash')])]" name="category_id"/>
-		</record>
-
-
-		<record id="caja_clinicachavarri" model="res.users">
-			<field name="name">CAJA</field>
-			<field name="login">caja@clinicachavarri.com</field>
-
-<!--
-			<field name="password">caja</field>
--->
-			<field name="password">bvR3VKUQ</field>
-
-			
-			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-			<field name="lang">es_ES</field>
-			<field name="tz">America/Lima</field>
-			<field name="partner_id" ref="caja_partner"/>
-			<field name="active">True</field>
-		</record>
-
-
-
 
 
 

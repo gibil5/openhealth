@@ -3,6 +3,9 @@
 # 	*** OPEN HEALTH - MIN
 # 
 #
+###############################
+
+
 
 
 {
@@ -211,6 +214,12 @@
 		'data/users/base_data_users_staff.xml',		
 		'data/users/base_data_users_almacen.xml',		
 		'data/users/base_data_users_managers.xml',	
+
+
+		# Users Generics 
+		'data/users/base_data_users_generics.xml',	
+
+
 
 
 

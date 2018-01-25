@@ -4,34 +4,6 @@
 
 
 
-<!-- staff -->
-		<record id="staff_partner" model="res.partner">
-			<field name="name">staff</field>
-			<field name="email">staff@clinicachavarri.com</field>
-		</record>
-
-
-		<record id="staff_clinicachavarri" model="res.users">
-			<field name="name">STAFF</field>
-			<field name="login">staff@clinicachavarri.com</field>
-			
-<!--
-			<field name="password">staff</field>
--->		
-			<field name="password">Smu49HXe</field>
-
-
-			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-			<field name="lang">es_ES</field>
-			<field name="tz">America/Lima</field>
-			<field name="partner_id" ref="staff_partner"/>
-			<field name="active">True</field>
-		</record>
-
-
-
-
-
 
 
 

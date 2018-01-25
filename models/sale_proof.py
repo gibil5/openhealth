@@ -34,6 +34,8 @@ class SaleProof(models.Model):
 	# Serial Number 
 	serial_nr = fields.Char(
 			string="Nr de Serie", 
+
+			readonly=True, 
 		)
 
 

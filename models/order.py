@@ -42,8 +42,19 @@ class sale_order(models.Model):
 	
 	# DNI 
 	x_partner_dni = fields.Char(
-			'DNI', 
+			string='DNI', 
+
+
+			states={
+						'draft': 	[('readonly', False)], 
+
+						'sent': 	[('readonly', True)], 
+						'sale': 	[('readonly', True)], 
+						'cancel': 	[('readonly', True)], 
+						'done': 	[('readonly', True)], 
+					}, 
 		)
+
 
 
 	@api.onchange('x_partner_dni')
@@ -375,6 +386,16 @@ class sale_order(models.Model):
 			string = "Médico", 	
 
 			default = _get_default_doctor, 
+
+
+			states={
+						'draft': 	[('readonly', False)], 
+						'sent': 	[('readonly', True)], 
+						'sale': 	[('readonly', True)], 
+						'cancel': 	[('readonly', True)], 
+						'done': 	[('readonly', True)], 
+					}, 
+
 		)
 
 

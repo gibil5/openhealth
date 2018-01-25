@@ -16,17 +16,88 @@ class payment_method(models.Model):
 
 
 
+	# States 
+	READONLY_STATES = {
+
+
+		'draft': 		[('readonly', False)], 
+
+		'payment': 		[('readonly', True)], 
+		'generated': 	[('readonly', True)], 
+		'done': 		[('readonly', True)], 
+	
+	}
+
+
+
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+	# Total 
+	total = fields.Float(
+			string = 'Total a pagar', 
+			required=True, 
+
+			states=READONLY_STATES, 
+		)
+
+
+
+	# Date created 
+	date_created = fields.Datetime(
+			string="Fecha", 
+			required=True, 
+
+			states=READONLY_STATES, 
+		)
+
+
+	# Saledoc 
+	saledoc = fields.Selection(
+			string="Documento de Pago", 
+			selection=ord_vars._sale_doc_type_list, 
+			
+			states=READONLY_STATES, 
+		)
+
+
+
+
+	# Saledoc Code 
+	saledoc_code = fields.Char(
+			string="No", 
+			readonly=False, 
+			#compute="_compute_saledoc_code",
+
+			states=READONLY_STATES, 
+		)
+
+
+
 
 	# Pm Lines 
 	pm_line_ids = fields.One2many(
-
 			'openhealth.payment_method_line',
-
 			'payment_method',
-
 			string="Pago #", 
+			
+			states=READONLY_STATES, 
 		)
 
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- On changes ------------------------------------------------------
+
+
+	#@api.onchange('total')
+	#def _onchange_total(self):
+	#	print 'jx'
+	#	print 'onchange - Total'
 
 
 
@@ -119,20 +190,6 @@ class payment_method(models.Model):
 
 
 
-
-	# Total 
-	total = fields.Float(
-			string = 'Total a pagar', 
-			required=True, 
-		)
-
-
-	@api.onchange('total')
-	
-	def _onchange_total(self):
-
-		print 'jx'
-		print 'onchange - Total'
 
 
 
@@ -350,12 +407,6 @@ class payment_method(models.Model):
 
 
 
-	# Date created 
-	date_created = fields.Datetime(
-			string="Fecha", 
-			#readonly=True,
-			required=True, 
-			)
 
 
 
@@ -546,29 +597,11 @@ class payment_method(models.Model):
 
 
 	
-	# Saledoc 
-	saledoc = fields.Selection(
-			#string="Documento de venta", 
-			string="Documento de Pago", 
-
-			#selection=_saledoc_list, 
-			selection=ord_vars._sale_doc_type_list, 
-			
-			#default='receipt', 
-			#required=True, 
-		)
 
 
 
 
 
-	# Sale doc code 
-	saledoc_code = fields.Char(
-			string="No", 
-			readonly=False, 
-
-			#compute="_compute_saledoc_code",
-		)
 
 
 

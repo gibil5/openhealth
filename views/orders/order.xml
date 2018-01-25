@@ -830,11 +830,11 @@
 					
 					<field name="vspace"/>
 
-					<field name="x_doctor"		required="1"			/>
+					<field name="x_doctor"		required="1"		/>
 
 					<field name="vspace"/>
 
-					<field name="treatment" 	readonly="1"/>
+					<field name="treatment" 	readonly="1"		/>
 
 				</field>	
 

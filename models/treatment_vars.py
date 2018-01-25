@@ -13,7 +13,7 @@ _state_list = [
 
 
 
-				#('budget_consultation', 	'Presupuesto-C'),		# Dep ? 
+				('budget_consultation', 	'Pres C - Creado'),		# Dep ? 
 
 
 				
@@ -30,7 +30,7 @@ _state_list = [
 
 
 
-				('budget_procedure', 		'Pres. Creado'),	# Dep ? 
+				('budget_procedure', 		'Pres. P - Creado'),	# Dep ? 
 
 
 

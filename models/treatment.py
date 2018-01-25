@@ -771,8 +771,8 @@ class Treatment(models.Model):
 				state = 'appointment'
 
 
-			#if record.nr_budgets_cons > 0:
-			#	state = 'budget_consultation'
+			if record.nr_budgets_cons > 0:
+				state = 'budget_consultation'
 
 
 			if record.nr_invoices_cons > 0:
@@ -1008,18 +1008,18 @@ class Treatment(models.Model):
 
 
 	# Number of budgets - Consultations 			# DEP ? 
-	#nr_budgets_cons = fields.Integer(
-	#		string="Presupuestos Consultas",
-	#		compute="_compute_nr_budgets_cons",
-	#)
-	#@api.multi
-	#def _compute_nr_budgets_cons(self):
-	#	for record in self:
-	#		record.nr_budgets_cons=self.env['sale.order'].search_count([
-	#																('treatment','=', record.id),
-	#																('x_family','=', 'consultation'),
-	#																('state','=', 'draft'),
-	#																]) 
+	nr_budgets_cons = fields.Integer(
+			string="Presupuestos Consultas",
+			compute="_compute_nr_budgets_cons",
+	)
+	@api.multi
+	def _compute_nr_budgets_cons(self):
+		for record in self:
+			record.nr_budgets_cons=self.env['sale.order'].search_count([
+																	('treatment','=', record.id),
+																	('x_family','=', 'consultation'),
+																	('state','=', 'draft'),
+																	]) 
 
 
 
@@ -1883,7 +1883,7 @@ class Treatment(models.Model):
 														'treatment': treatment_id,	
 														'evaluation_start_date': evaluation_start_date,
 														'chief_complaint': chief_complaint,
-														
+
 														'appointment': appointment_id,
 
 

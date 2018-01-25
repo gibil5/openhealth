@@ -63,11 +63,11 @@
 				<xpath expr="//field[@name='reference']" position="replace">
 
 					<field 	name="reference" 	string="Referencia"		/>
-<!--				
+				
 					<field 	name="x_delivery_order" 			/>
 
 					<field 	name="x_invoice_number" 			/>
--->
+
 				</xpath>
 
 

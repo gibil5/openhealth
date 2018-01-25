@@ -46,13 +46,17 @@
 
 
 
-
+<!--
+							states="appointment"
+-->
 						<!-- Create Budget Consultation --> 
 						<button 
 							type="object" 
 							name="create_order_con" 							
 							class="oe_highlight"
-							states="appointment"
+
+
+							states="empty,appointment"
   
 							string="Crear PRESUPUESTO - Consulta" 
 

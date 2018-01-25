@@ -2,57 +2,9 @@
 
 
 
-# Family
-_family_list = [
-#		('private','Private'), 
-		('product','Producto'), 
-		('consultation','Consulta'), 
-		('procedure','Procedimiento'), 
 
 
-		('cosmetology','Cosmiatría'), 
-]
-
-
-
-
-_hash_progress = {
-
-
-					#False:          0, 
-					'empty':          0, 
-
-
-					'appointment': 			10, 
-
-					'budget_consultation':  15, 
-
-					'invoice_consultation': 20,
-
-
-
-
-
-					'consultation': 	30,
-					'service': 			40, 
-
-
-					'budget_procedure': 			50, 
-					'invoice_procedure': 			60,
-
-
-					'procedure': 		70, 
-					'sessions': 		80, 
-					'controls': 		90, 
-
-					'done': 			100, 
-
-		}
-
-
-
-
-
+# State 
 _state_list = [
 
 				('empty', 			'Inicio'),		# OK
@@ -102,6 +54,65 @@ _state_list = [
 
 
 				('done', 					'Alta'),					# OK 
-			]
+]
+
+
+
+
+
+
+
+
+
+
+
+
+# Family
+_family_list = [
+#		('private','Private'), 
+		('product','Producto'), 
+		('consultation','Consulta'), 
+		('procedure','Procedimiento'), 
+
+
+		('cosmetology','Cosmiatría'), 
+]
+
+
+
+
+# Progress 
+_hash_progress = {
+
+
+					#False:          0, 
+					'empty':          0, 
+
+
+					'appointment': 			10, 
+
+					'budget_consultation':  15, 
+
+					'invoice_consultation': 20,
+
+
+
+
+
+					'consultation': 	30,
+					'service': 			40, 
+
+
+					'budget_procedure': 			50, 
+					'invoice_procedure': 			60,
+
+
+					'procedure': 		70, 
+					'sessions': 		80, 
+					'controls': 		90, 
+
+					'done': 			100, 
+
+}
 
 

@@ -38,7 +38,7 @@
 									<field name="user_id"		string="Generado por"		readonly="1"/>
 									<field name="x_my_company"	/>
 									<field name="x_family"		readonly="0"				/>
-									<field name="x_machine_req"			invisible="0"		/>
+									<field name="x_machine_req"					/>
 									<field name="x_product"		invisible="0" 	readonly="0"		/>
 									<field name="x_machine"		/>
 								

@@ -380,12 +380,14 @@ _family_list = [
 _treatment_list = [
 
 
+		('vip_card',		'vip_card'), 
+
+
+
+
 		('consultation',		'consultation'), 
 
-
 		('laser_quick',			'laser_quick'),
-
-
 		('laser_co2',			'laser_co2'),
 		('laser_excilite',		'laser_excilite'),
 		('laser_ipl',			'laser_ipl'),

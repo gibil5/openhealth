@@ -6,8 +6,14 @@
 
 _hash_tre_mac = {
 		
-		'consultation': 'consultation', 
 
+		'vip_card': 'vip_card', 
+
+
+
+
+
+		'consultation': 'consultation', 
 
 
 		'triactive_carboxytherapy': 					'laser_triactive',

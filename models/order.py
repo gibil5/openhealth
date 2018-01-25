@@ -303,7 +303,16 @@ class sale_order(models.Model):
 			'sale.order.line', 
 			'order_id', 
 			string='Order Lines', 
-			states={'cancel': [('readonly', True)], 'done': [('readonly', True)]}, 
+
+			readonly=False, 
+
+			#states={
+			#			'cancel': 	[('readonly', True)], 
+			#			'done': 	[('readonly', True)], 
+			#			'sent': 	[('readonly', True)], 
+			#			'sale': 	[('readonly', True)], 
+			#		}, 
+			
 			copy=True, 
 		)
 
@@ -1215,8 +1224,8 @@ class sale_order(models.Model):
 			compute='_compute_x_machine_req', 
 		)
 
-	#@api.multi
-	@api.depends('x_product')
+	@api.multi
+	#@api.depends('x_product')
 
 	def _compute_x_machine_req(self):
 		for record in self:

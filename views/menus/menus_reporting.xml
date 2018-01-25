@@ -23,7 +23,8 @@
 
 					name="Ventas"			
 
-					groups="openhealth.caja,openhealth.managers,openhealth.directors"
+
+					groups="openhealth.caja,openhealth.reception,openhealth.managers,openhealth.directors"
 					/>
 
 
@@ -60,7 +61,7 @@
 
 					name="Kardex"			
 
-					groups="openhealth.roots,openhealth.caja,openhealth.almacen_managers,openhealth.directors"
+					groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.almacen_managers,openhealth.directors"
 				/>
 
 

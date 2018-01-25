@@ -204,6 +204,8 @@ class Partner(models.Model):
 
 			size=24, 
 			#change_default=True, 
+
+			required=False, 
 		)
 
 

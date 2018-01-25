@@ -476,6 +476,8 @@
 
 							groups="openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
 						groups="openhealth.roots,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
+
+							groups="openhealth.roots,openhealth.reception,openhealth.caja,openhealth.directors"
 -->					
 					<button 
 							name="create_payment_method"
@@ -487,7 +489,7 @@
 							string="PAGAR"
 
 
-							groups="openhealth.roots,openhealth.reception,openhealth.caja,openhealth.directors"
+							groups="openhealth.roots,openhealth.caja,openhealth.directors"
 						
 						/>
 
@@ -913,6 +915,32 @@
 
 
 				</field>
+
+
+
+
+
+<!-- Order Lines  -->
+<xpath expr="//field[@name='order_line']" position="attributes">
+
+
+<!--
+<attribute name='readonly'>1</attribute> 
+attrs="{'readonly': [('state', 'in', ('done','cancel'))]}">
+-->
+
+	<attribute name='attrs'>{'readonly': [('state', 'in', ('sent','sale','done','cancel'))]}</attribute> 
+
+</xpath>
+
+
+
+
+
+
+
+
+
 
 
 <!-- 

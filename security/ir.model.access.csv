@@ -352,15 +352,18 @@ access_sale_order_archivers,sale.order.archivers,model_sale_order,openhealth.arc
 
 
 
-access_sale_order_line_directors,sale.order.line.directors,model_sale_order_line,openhealth.directors,1,1,1,1
+
+
+
 
 access_sale_order_line_caja,sale.order.line.caja,model_sale_order_line,openhealth.caja,1,1,1,1
 
+access_sale_order_line_reception,sale.order.line.reception,model_sale_order_line,openhealth.reception,1,1,1,1
 
 
-access_sale_order_line_reception,sale.order.line.reception,model_sale_order_line,openhealth.reception,1,1,1,0
 
 
+access_sale_order_line_directors,sale.order.line.directors,model_sale_order_line,openhealth.directors,1,1,1,1
 
 access_sale_order_line_managers,sale.order.line.managers,model_sale_order_line,openhealth.managers,1,1,1,1
 

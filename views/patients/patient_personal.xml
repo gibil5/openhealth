@@ -70,7 +70,7 @@
 								<!--
 								<field name="zip" class="oe_no_button" style="width: 37%" options="{&quot;no_open&quot;: True}" on_change="onchange_state(state_id)"   />
 								-->
-								<field name="zip" 	required="1"	class="oe_no_button" style="width: 37%" options="{&quot;no_open&quot;: True}" on_change="onchange_state(state_id)"   	attrs="{'invisible':[('city', '!=', 'lima')]}" />
+								<field name="zip" 	required="0"	class="oe_no_button" style="width: 37%" options="{&quot;no_open&quot;: True}" on_change="onchange_state(state_id)"   	attrs="{'invisible':[('city', '!=', 'lima')]}" />
 
 								<field name="street"  	required="1" /> 
 

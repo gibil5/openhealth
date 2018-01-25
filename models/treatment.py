@@ -1869,8 +1869,9 @@ class Treatment(models.Model):
 
 
 			# Change App state 
-			##appointment.state = 'completed'
-			appointment.state = 'Scheduled'
+			if appointment.name != False: 
+				#appointment.state = 'completed'
+				appointment.state = 'Scheduled'
 
 
 
@@ -1882,6 +1883,7 @@ class Treatment(models.Model):
 														'treatment': treatment_id,	
 														'evaluation_start_date': evaluation_start_date,
 														'chief_complaint': chief_complaint,
+														
 														'appointment': appointment_id,
 
 

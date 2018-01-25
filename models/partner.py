@@ -135,6 +135,7 @@ class Partner(models.Model):
 	city = fields.Selection(
 			selection = pat_vars._city_list, 
 			string = 'Departamento',  
+			
 			default = 'lima', 
 
 			required=True, 

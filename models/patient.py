@@ -30,6 +30,7 @@ class Patient(models.Model):
 	# Stree2 Char - If Province 
 	street2_char = fields.Char(
 			string = "Distrito Prov.", 	
+			required=False, 
 		)
 
 
@@ -1186,6 +1187,9 @@ class Patient(models.Model):
 			#self.x_first_name = 'Toby'
 
 
+
+
+
 			self.sex = 'Male'
 
 			self.dob = '1965-05-26'
@@ -1200,13 +1204,20 @@ class Patient(models.Model):
 
 			self.x_first_contact = 'recommendation'
 
+
+
+
+			self.city = 'arequipa'
+
 			self.street = 'Av. San Borja Norte 610'
 			
-			self.street2_sel = 41
+			#self.street2_sel = 41
+
+
+
+
 
 			self.comment = 'test'
-
-
 
 			self.x_ruc = '09817194123'
 

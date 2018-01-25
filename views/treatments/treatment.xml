@@ -271,8 +271,9 @@ jz
 
 
 
-<!-- Budgets - Cons - DEPRECATED -->
+<!-- Budgets - Cons - IMPORTANT -->
 <!--
+-->								
 								<button type="action" class="oe_stat_button" icon="fa-list"
 										name="%(order_form_action)d"	
 										context="{									
@@ -284,7 +285,6 @@ jz
 										attrs="{ 'invisible':[	('nr_budgets_cons','=',0), 	]}">
 									<field string="Presu - Con" name="nr_budgets_cons" widget="statinfo"/>
 								</button>
--->								
 
 
 
@@ -515,7 +515,7 @@ jz
 
 
 
-<!-- Nr Budgets Pro - DEPRECATED -->
+<!-- Nr Budgets Pro - IMPORTANT -->
 <!--
 -->
 								<button type="action" class="oe_stat_button" icon="fa-list"

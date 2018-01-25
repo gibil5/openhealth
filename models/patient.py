@@ -1207,9 +1207,9 @@ class Patient(models.Model):
 
 
 
-			self.city = 'arequipa'
+			#self.city = 'arequipa'
 
-			self.street = 'Av. San Borja Norte 610'
+			#self.street = 'Av. San Borja Norte 610'
 			
 			#self.street2_sel = 41
 

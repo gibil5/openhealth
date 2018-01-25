@@ -12,11 +12,47 @@ class AccountInvoice(models.Model):
 	_description = "Account Invoice"
 
 
-	# Commons 
+
+# ----------------------------------------------------------- Constants ------------------------------------------------------
+
 	vspace = fields.Char(
 			' ', 
 			readonly=True
 			)
+
+
+
+
+
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+
+	# Vendor 
+	partner_id = fields.Many2one(
+			'res.partner', 
+
+			#string='Partner', 
+			string='Proveedor', 
+			
+			change_default=True,
+			required=True, 
+			readonly=True, 
+			states={'draft': [('readonly', False)]},
+			track_visibility='always'
+		)
+
+
+
+
+	x_delivery_order = fields.Char(
+			string="Número de guia de remisión", 
+		)
+
+	x_invoice_number = fields.Char(
+			string="Número de factura", 
+		)
+
+
 
 
 

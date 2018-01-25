@@ -20,6 +20,26 @@ class Process(models.Model):
 
 
 
+
+
+
+
+# ----------------------------------------------------------- Constants ------------------------------------------------------
+
+	# States 
+	READONLY_STATES = {
+		'empty': 		[('readonly', False)], 
+		#'done': 		[('readonly', True)], 	
+	}
+
+
+
+
+
+
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+
 	# Patient 
 	patient = fields.Many2one(
 			'oeh.medical.patient',
@@ -27,7 +47,11 @@ class Process(models.Model):
 			index=True, 
 			ondelete='cascade', 
 			#required=True, 
+			
+			readonly=True, 
+			states=READONLY_STATES, 
 		)
+
 
 
 
@@ -35,10 +59,31 @@ class Process(models.Model):
 	physician = fields.Many2one(
 			'oeh.medical.physician',
 			string="Médico",
-			index=True
+			index=True,
+	
+			readonly=True, 
+			states=READONLY_STATES, 
 		)
 	
 
+
+	chief_complaint = fields.Selection(
+			string = 'Motivo de consulta', 						
+			selection = eval_vars._chief_complaint_list, 
+			required=False, 
+
+			readonly=True, 
+			states=READONLY_STATES, 
+		)
+
+
+	start_date = fields.Date(
+			string="Fecha inicio", 
+			default = fields.Date.today, 
+
+			readonly=True, 
+			states=READONLY_STATES, 
+		)
 
 
 
@@ -79,14 +124,6 @@ class Process(models.Model):
 
 
 
-	chief_complaint = fields.Selection(
-			string = 'Motivo de consulta', 						
-			selection = eval_vars._chief_complaint_list, 
-
-			required=False, 
-		)
-
-
 
 
 
@@ -118,10 +155,6 @@ class Process(models.Model):
 			default = 0,
 			)
 
-	start_date = fields.Date(
-			string="Fecha inicio", 
-			default = fields.Date.today
-			)
 
 	price_total = fields.Float(
 			string='Total', 

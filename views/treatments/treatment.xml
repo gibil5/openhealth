@@ -725,6 +725,8 @@ Fields
 
 
 
+								<field name="vspace" />
+
 								<field name="treatment_closed"	invisible="0"	/>
 
 								<field name="vspace" />

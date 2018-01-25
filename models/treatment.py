@@ -27,11 +27,39 @@ class Treatment(models.Model):
 	_inherit = 'openhealth.process'	
 	_name = 'openhealth.treatment'
 
-
 	#_order = 'start_date desc'
 	_order = 'write_date desc'
 
 
+
+
+
+# ----------------------------------------------------------- Constants ------------------------------------------------------
+
+	# States 
+	READONLY_STATES = {
+		'empty': 		[('readonly', False)], 
+		#'done': 		[('readonly', True)], 	
+	}
+
+
+
+
+
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+	# User 
+	user_id = fields.Many2one(
+			'res.users', 
+			string='Salesperson', 
+			index=True, 
+			track_visibility='onchange', 
+			default=lambda self: self.env.user, 
+
+
+			readonly=True, 
+			states=READONLY_STATES, 
+		)
 
 
 
@@ -535,14 +563,6 @@ class Treatment(models.Model):
 
 
 
-	# User 
-	user_id = fields.Many2one(
-		'res.users', 
-		string='Salesperson', 
-		index=True, 
-		track_visibility='onchange', 
-		default=lambda self: self.env.user, 
-	)
 
 
 

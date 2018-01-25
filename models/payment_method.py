@@ -16,16 +16,13 @@ class payment_method(models.Model):
 
 
 
+# ----------------------------------------------------------- Constants ------------------------------------------------------
 	# States 
 	READONLY_STATES = {
-
-
 		'draft': 		[('readonly', False)], 
-
 		'payment': 		[('readonly', True)], 
 		'generated': 	[('readonly', True)], 
-		'done': 		[('readonly', True)], 
-	
+		'done': 		[('readonly', True)], 	
 	}
 
 

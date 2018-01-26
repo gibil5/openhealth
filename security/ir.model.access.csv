@@ -4,6 +4,15 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+access_product_selector,product.selector,model_openhealth_product_selector,,1,1,1,1
+
+
+
+
+
+
+
+
 access_sale_report_day,sale.report.day,model_sale_report_day,,1,1,1,1
 
 

@@ -39,6 +39,19 @@ class sale_order(models.Model):
 
 
 
+
+
+		context = self._context.copy()
+		#print context
+		#print context['params']
+		x_type = context['x_type']
+
+
+
+
+
+		#x_type = 'product'
+
  		order_id = self.id
 
  		print order_id
@@ -83,6 +96,7 @@ class sale_order(models.Model):
 				
 								'default_order_id': order_id ,
 
+								'default_x_type': x_type ,
 							}
 				}
 

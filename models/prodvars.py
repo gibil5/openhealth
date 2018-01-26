@@ -348,14 +348,11 @@ _sessions_list = [
 
 _family_list = [
 
-		('consultation',			'consultation'), 
-
-
-
+		# Service 
+		('consultation',	'consultation'), 
 		('laser',			'laser'),
 		('medical',			'medical'), 
-
-		#('deprecated',			'deprecated'), 
+		('cosmetology',		'cosmetology'),
 
 
 		# Product
@@ -364,11 +361,8 @@ _family_list = [
 		('card',			'Tarjeta'),
 
 
-		# Cosmetology
-		('cosmetology',			'Cosmiatría'),
-
 		('none',		'none'),
-		]
+]
 
 
 

@@ -460,14 +460,12 @@
 -->
 					<button 
 							name="create_orderline"
-							
 							type="object" 
-							
 							class="oe_highlight"
-							
 							states="draft"						
 
-
+							
+							context="{'x_type': 'product'}"
 
 							string="Agregar PRODUCTO"
 
@@ -475,6 +473,21 @@
 						
 						/>
 
+
+					<button 
+							name="create_orderline"
+							type="object" 
+							class="oe_highlight"
+							states="draft"						
+
+							
+							context="{'x_type': 'service'}"
+
+							string="Agregar SERVICIO"
+
+							groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors"
+						
+						/>
 
 
 

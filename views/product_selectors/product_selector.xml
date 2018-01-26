@@ -57,6 +57,27 @@
 -->
 								<field name="default_code" />
 
+
+<!--
+
+																		'required':[('city', '!=', 'lima')],
+-->
+								<field name="family"
+															attrs="{
+																		'invisible':[('x_type', '==', 'product')], 
+																}"
+								 />
+
+
+
+								<field name="treatment"
+															attrs="{
+																		'invisible':[('x_type', '==', 'product')], 
+																}"
+								 />
+
+
+
 								<field name="product_id" />
 
 
@@ -72,7 +93,8 @@
 							<group>
 								<field name="product_uom_qty" />
 
-								<field name="type" 	invisible="1"	/>
+								<field name="x_type" 	readonly="1"	/>
+
 <!--
 								<field name="order_id" 		/>
 -->						

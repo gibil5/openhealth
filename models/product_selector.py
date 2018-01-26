@@ -86,10 +86,114 @@ class ProductSelector(models.Model):
 
 
 
+	treatment = fields.Selection(
 
-	type= fields.Selection(
+			selection=[
 
-			#_get_product_template_type_wrapper, 
+							('laser_quick',		'Quick'), 
+							('laser_co2',		'Co2'), 
+							('laser_excilite',	'Excilite'), 
+							('laser_ipl',		'IPL'), 
+							('laser_ndyag',		'NDYAG'), 
+
+				],
+
+			string='Tratamiento', 
+		)
+
+	@api.onchange('treatment')
+	
+	def _onchange_treatment(self):
+
+		print 'jx'
+		print 'On change treatment'
+
+		if self.treatment != False: 
+
+			if self.x_type == 'service': 
+
+				return {
+						'domain': {'product_id': [
+													
+													('type', '=', self.x_type),
+													('x_origin', '=', False),
+													('x_family', '=', self.family),
+													('x_treatment', '=', self.treatment),
+									]},
+				}
+
+
+
+
+
+
+
+
+
+
+	family = fields.Selection(
+
+			selection=[
+							# Service 
+							('consultation',	'Consultas'), 
+							('laser',			'Láser'),
+							('medical',			'Tratamientos Médicos'), 
+							('cosmetology',		'Cosmiatría'),
+
+
+							# Product
+							#('topical',			'Tópico'),
+							#('kit',				'Kit'),
+							#('card',			'Tarjeta'),
+							#('none',		'none'),
+				],
+
+			string='Familia', 
+		)
+
+	@api.onchange('family')
+	
+	def _onchange_family(self):
+
+		print 'jx'
+		print 'On change family'
+
+		if self.family != False: 
+
+
+			if self.x_type == 'service': 
+
+				return {
+						'domain': {'product_id': [
+													
+													('type', '=', self.x_type),
+													('x_origin', '=', False),
+													('x_family', '=', self.family),
+									]},
+				}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	x_type= fields.Selection(
 
 			selection=[
 							#('emr', 				'Historias'),
@@ -97,12 +201,46 @@ class ProductSelector(models.Model):
 							('product', 				'Producto'),
 						], 
 
-			string='Product Type', 
+			string='Tipo', 
 			#required=True,
 		)
 
+	@api.onchange('x_type')
+	
+	def _onchange_x_type(self):
+
+		print 'jx'
+		print 'On change x_type'
+
+		if self.x_type != False: 
 
 
+			if self.x_type == 'product': 
+
+				return {
+						'domain': {'product_id': [
+													#('x_treatment', '=', self.laser),
+													#('x_zone', '=', self.zone),
+													#('x_pathology', '=', self.pathology)
+													('type', '=', self.x_type),
+													('x_origin', '=', False),
+													('categ_id', '=', 'Cremas'),
+									]},
+				}
+
+
+			elif self.x_type == 'service': 
+
+				return {
+						'domain': {'product_id': [
+													#('x_treatment', '=', self.laser),
+													#('x_zone', '=', self.zone),
+													#('x_pathology', '=', self.pathology)
+													('type', '=', self.x_type),
+													('x_origin', '=', False),
+													#('x_family', 'in', ['laser','medical']),
+									]},
+				}
 
 
 
@@ -112,8 +250,6 @@ class ProductSelector(models.Model):
 	default_code = fields.Char(
 			string="Código", 
 		)
-
-
 
 	@api.onchange('default_code')
 	def _onchange_default_code(self):

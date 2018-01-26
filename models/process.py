@@ -72,8 +72,9 @@ class Process(models.Model):
 			selection = eval_vars._chief_complaint_list, 
 			required=False, 
 
-			readonly=True, 
-			states=READONLY_STATES, 
+			#readonly=True, 
+			readonly=False, 
+			#states=READONLY_STATES, 
 		)
 
 

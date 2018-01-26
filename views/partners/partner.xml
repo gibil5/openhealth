@@ -21,7 +21,7 @@
 
 
 
-
+<!-- Buttons -->
 				<xpath expr="//field[@name='name']" position="after">
 
 					<field name="vspace"/>
@@ -77,16 +77,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
 <!-- Goners -->
 				<xpath expr="//field[@name='fax']" position="replace">
 				</xpath>
@@ -99,6 +89,23 @@
 
 				<xpath expr="//field[@name='state_id']" position="replace">
 				</xpath>
+
+
+
+
+
+
+<!-- Modified --> 
+
+				<xpath expr="//field[@name='city']" position="replace">
+					<field  name="city"		required="0"	/>
+				</xpath>
+
+				<xpath expr="//field[@name='country_id']" position="replace">
+					<field  name="country_id"		required="0"	/>
+				</xpath>
+
+
 
 
 
@@ -167,20 +174,25 @@
 
 
 
-
-
+<!--
 					<field  name="x_dni"	attrs = "{
 														'required':[('company_type','in',('person'))], 
 														'invisible':[('company_type','in',('company'))]
 													}"	/>
+					<field name="x_firm"	attrs = "{'required':[('company_type','in',('company'))]}"	/>					
+					
+					<field name="x_ruc"		attrs = "{'required':[('company_type','in',('company'))]}"	/>
+-->
+
+					<field  name="x_dni"		/>
 
 
 
 					<field name="vspace"		/>
 
-					<field name="x_firm"	attrs = "{'required':[('company_type','in',('company'))]}"	/>					
+					<field name="x_firm"		/>					
 					
-					<field name="x_ruc"		attrs = "{'required':[('company_type','in',('company'))]}"	/>
+					<field name="x_ruc"			/>
 				
 				</xpath>
 

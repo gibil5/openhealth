@@ -139,17 +139,12 @@
 							<group>
 <!--								
 								<field name="name"   />													
--->
-								<field name="order"   />																				
 
-								<field name="partner"   readonly="1"	/>		
 
 								<field name="dni"   attrs="{
 															'invisible':[	('saledoc', 'in', ['invoice','ticket_invoice']),], 
 															'required':[	('saledoc', 'in', ['receipt','ticket_receipt']),], 
 															}"/>
-
-
 
 
 								<field name="firm"   attrs="{
@@ -162,6 +157,43 @@
 															'invisible':[	('saledoc', 'in', ['receipt','ticket_receipt']),], 
 															'required':[	('saledoc', 'in', ['invoice','ticket_invoice']),], 
 														}"/>
+
+
+
+															'invisible':[	('saledoc', 'in', ['invoice','ticket_invoice']),], 
+-->
+								<field name="order"   />																				
+
+								<field name="partner"   readonly="1"	/>		
+
+
+
+
+								<field name="dni"   
+													attrs="{
+															'required':[	('saledoc', 'in', ['receipt','ticket_receipt']),], 
+															}"
+									/>				
+
+
+
+								<field name="firm"   
+													attrs="{
+															'required':[	('saledoc', 'in', ['invoice','ticket_invoice']),], 
+														}"
+									/>				
+
+
+								<field name="ruc"   
+  													attrs="{
+															'required':[	('saledoc', 'in', ['invoice','ticket_invoice']),], 
+														}"
+
+
+									/>		
+
+
+
 
 
 
@@ -189,6 +221,11 @@
 								<field name="total"   	invisible="0"	/>													
 								<field name="vspace"   />	
 								<field name="balance"   />	
+
+
+
+								<field name="vspace"   />	
+								<field name="comment"   />	
 <!--
 								<field name="vspace"   />	
 								<field name="confirmed"   />	

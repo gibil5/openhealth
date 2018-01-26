@@ -6,7 +6,7 @@
 from openerp import models, fields, api
 from . import ord_vars
 
-class payment_method(models.Model):
+class PaymentMethod(models.Model):
 	
 	#_inherit='openhealth.sale_document'
 
@@ -28,6 +28,11 @@ class payment_method(models.Model):
 
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+
+	comment = fields.Text(
+
+		)
 
 
 	# Total 
@@ -87,16 +92,41 @@ class payment_method(models.Model):
 
 
 
+	# Dni
+	dni = fields.Char(
+			'DNI', 
+
+		)
+
+
+	# Firm
+	firm = fields.Char(
+			'Razón social',
+
+		)
+
+
+	# Ruc
+	ruc = fields.Char(
+			'Ruc', 
+
+		)
+
+
+
+
+	# Partner 
+	partner = fields.Many2one(
+			'res.partner',
+			string = "Cliente", 
+			required=True, 
+
+			readonly=True, 
+		)
+
 
 
 # ----------------------------------------------------------- On changes ------------------------------------------------------
-
-
-	#@api.onchange('total')
-	#def _onchange_total(self):
-	#	print 'jx'
-	#	print 'onchange - Total'
-
 
 
 
@@ -115,6 +145,8 @@ class payment_method(models.Model):
 		#if self.balance == 0.0		and		self.saledoc != False:
 		if self.balance == 0.0:
 			self.state = 'payment'
+
+
 
 
 
@@ -285,58 +317,11 @@ class payment_method(models.Model):
 
 
 
-	# DNI
-	dni = fields.Char(
-			'DNI', 
-			compute='_compute_dni', 
-		)
-
-	@api.multi
-	#@api.depends('')
-
-	def _compute_dni(self):
-		for record in self:
-
-			record.dni = record.partner.x_dni
 
 
 
 
 
-
-
-
-	# Firm
-	firm = fields.Char(
-			'Razón social',
-			compute='_compute_firm', 
-		)
-
-	@api.multi
-	#@api.depends('')
-	def _compute_firm(self):
-		for record in self:
-
-			record.firm  = record.partner.x_firm
-
-
-
-
-
-
-
-	# Ruc
-	ruc = fields.Char(
-			'Ruc', 
-			compute='_compute_ruc', 
-		)
-
-	@api.multi
-	#@api.depends('')
-	def _compute_ruc(self):
-		for record in self:
-
-			record.ruc = record.partner.x_ruc
 
 
 
@@ -456,15 +441,6 @@ class payment_method(models.Model):
 
 
 
-
-	# Partner 
-	partner = fields.Many2one(
-			'res.partner',
-			string = "Cliente", 
-			required=True, 
-
-			readonly=True, 
-		)
 
 
 
@@ -1020,6 +996,58 @@ class payment_method(models.Model):
 
 	# ----------------------------------------------------------- CRUD ------------------------------------------------------
 
+
+
+
+	# Write 
+	@api.multi
+	def write(self,vals):
+
+		print 'jx'
+		print 'Payment Method  - Write'
+		#print 
+		print vals
+		#print self.partner.name
+
+
+
+		#if vals['dni'] != False: 
+		if 'dni' in vals: 
+			dni = vals['dni']
+			#print self.partner.x_dni
+			self.partner.x_dni = dni 
+			#print self.partner.x_dni
+
+
+		#if vals['ruc'] != False: 
+		if 'ruc' in vals: 
+			ruc = vals['ruc']
+			#print self.partner.x_ruc
+			self.partner.x_ruc = ruc 
+			#print self.partner.x_ruc
+
+
+		if 'firm' in vals: 
+			firm = vals['firm']
+			#print self.partner.x_firm
+			self.partner.x_firm = firm 
+			#print self.partner.x_firm
+
+		#print
+
+
+
+		#Write your logic here
+		res = super(PaymentMethod, self).write(vals)
+		#Write your logic here
+
+		return res
+
+
+
+
+
+
 	# Create 
 	@api.model
 	def create(self,vals):
@@ -1047,7 +1075,7 @@ class payment_method(models.Model):
 
 
 		#Write your logic here
-		res = super(payment_method, self).create(vals)
+		res = super(PaymentMethod, self).create(vals)
 		#Write your logic here
 
 		return res

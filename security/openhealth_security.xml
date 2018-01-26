@@ -71,6 +71,8 @@
 <!-- Directors --> 
 <!--
 										(4, ref('base.user_root')), 
+
+										(4, ref('openhealth.fchavarri_clinicachavarri')),
 -->
 		<record id="openhealth.directors" model="res.groups">
 			<field name="name">Directores</field>
@@ -90,7 +92,6 @@
 										(4, ref('openhealth.director_clinicachavarri')),
 										(4, ref('openhealth.rchavarri_clinicachavarri')),
 
-										(4, ref('openhealth.fchavarri_clinicachavarri')),
 									]"/>
 		</record>
 

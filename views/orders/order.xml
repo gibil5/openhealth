@@ -456,7 +456,7 @@
 
 
 
-
+<!--
 					<button 
 							name="create_orderline"
 							
@@ -473,7 +473,7 @@
 							groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors"
 						
 						/>
-
+-->
 
 
 

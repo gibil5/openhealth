@@ -162,7 +162,10 @@ class ProductSelector(models.Model):
 
 	product_uom_qty = fields.Float(
 			string='Quantity', 
-			digits=dp.get_precision('Product Unit of Measure'), 
+
+			#digits=dp.get_precision('Product Unit of Measure'), 
+			digits=(16, 0), 
+			
 			required=True, 
 			
 			#default=1.0,

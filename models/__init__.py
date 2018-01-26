@@ -144,6 +144,11 @@ from . import order_report
 from . import order_line_report
 
 
+from . import product_selector
+
+
+
+
 
 
 

@@ -4,6 +4,34 @@
 		"selected_items":
 		[
 			[
+				"de",
+				"default_code"
+			],
+			[
+				"def",
+				"default_code"
+			],
+			[
+				"p",
+				"product"
+			],
+			[
+				"pro",
+				"product"
+			],
+			[
+				"pri",
+				"price_subtotal"
+			],
+			[
+				"price",
+				"price_unit"
+			],
+			[
+				"or",
+				"order_id"
+			],
+			[
 				"re",
 				"reference"
 			],
@@ -44,10 +72,6 @@
 				"doctor_id"
 			],
 			[
-				"pri",
-				"price_manual"
-			],
-			[
 				"pr",
 				"product_id"
 			],
@@ -66,10 +90,6 @@
 			[
 				"ka",
 				"kardex"
-			],
-			[
-				"p",
-				"product"
 			],
 			[
 				"produ",
@@ -120,16 +140,8 @@
 				"remove_order_report"
 			],
 			[
-				"or",
-				"order"
-			],
-			[
 				"un",
 				"unlink"
-			],
-			[
-				"price",
-				"price_subtotal"
 			],
 			[
 				"se",
@@ -176,10 +188,6 @@
 				"x_vip_inprog"
 			],
 			[
-				"de",
-				"default_code"
-			],
-			[
 				"ad",
 				"Advetisement"
 			],
@@ -198,10 +206,6 @@
 			[
 				"Lo",
 				"Localizado"
-			],
-			[
-				"pro",
-				"product_template"
 			],
 			[
 				"prod",
@@ -322,10 +326,6 @@
 			[
 				"ac",
 				"active"
-			],
-			[
-				"def",
-				"default_order"
 			],
 			[
 				"in",
@@ -487,16 +487,113 @@
 			"file": "__openerp__.py",
 			"settings":
 			{
-				"buffer_size": 10513,
+				"buffer_size": 10589,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "models/account_invoice.py",
+			"file": "models/product_selector.py",
 			"settings":
 			{
-				"buffer_size": 1129,
+				"buffer_size": 2636,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/product.py",
+			"settings":
+			{
+				"buffer_size": 1855,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/product_selectors/product_selector.xml",
+			"settings":
+			{
+				"buffer_size": 1388,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/order_line.py",
+			"settings":
+			{
+				"buffer_size": 4835,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/orders/order_line.xml",
+			"settings":
+			{
+				"buffer_size": 3777,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/order.py",
+			"settings":
+			{
+				"buffer_size": 48277,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/stock_move_selector.py",
+			"settings":
+			{
+				"buffer_size": 2435,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/partner.py",
+			"settings":
+			{
+				"buffer_size": 9603,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/orders/order.xml",
+			"settings":
+			{
+				"buffer_size": 22775,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/services/service.xml",
+			"settings":
+			{
+				"buffer_size": 5708,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/treatment.py",
+			"settings":
+			{
+				"buffer_size": 43863,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/treatments/treatment.xml",
+			"settings":
+			{
+				"buffer_size": 18512,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -506,6 +603,15 @@
 			"settings":
 			{
 				"buffer_size": 1598,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/account_invoice.py",
+			"settings":
+			{
+				"buffer_size": 1129,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -533,33 +639,6 @@
 			"settings":
 			{
 				"buffer_size": 3075,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/treatment.py",
-			"settings":
-			{
-				"buffer_size": 43863,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/treatments/treatment.xml",
-			"settings":
-			{
-				"buffer_size": 18512,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/order.py",
-			"settings":
-			{
-				"buffer_size": 47329,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -647,6 +726,7 @@
 	},
 	"file_history":
 	[
+		"/Users/gibil/cellar/github/openhealth/models/__init__.py",
 		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_assistants.xml",
 		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_staff.xml",
 		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_managers.xml",
@@ -719,7 +799,6 @@
 		"/Users/gibil/cellar/github/openhealth/views/reports/report_sale_search.xml",
 		"/Users/gibil/cellar/github/openhealth/security/openhealth_security.xml",
 		"/Users/gibil/cellar/github/openhealth/views/services/service_co2.xml",
-		"/Users/gibil/cellar/github/openhealth/models/__init__.py",
 		"/Users/gibil/cellar/github/openhealth/__openerp__.py",
 		"/Users/gibil/cellar/github/openhealth/models/sale_report_day.py",
 		"/Users/gibil/cellar/github/openhealth/models/sale_report_month.py",
@@ -793,6 +872,15 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"type",
+			"order.xml",
+			"order",
+			"create_",
+			"order_line",
+			"create_",
+			"create_orderline",
+			"actions -",
+			"actions",
 			"user_id",
 			"physician = fi",
 			"total = fie",
@@ -911,16 +999,7 @@
 			"get_precision",
 			"dp.",
 			"stock_picking",
-			"kardex",
-			"coeff",
-			"patient",
-			"compu",
-			"calcu",
-			"line",
-			"order",
-			"order_report",
-			"stock",
-			"stock_move_selector"
+			"kardex"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1075,15 +1154,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10513,
+						"buffer_size": 10589,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5924,
-								5943
+								5710,
+								5710
 							]
 						],
 						"settings":
@@ -1092,27 +1171,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 6385.0,
+						"translation.y": 5960.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "models/account_invoice.py",
+					"file": "models/product_selector.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1129,
+						"buffer_size": 2636,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								828,
-								844
+								1090,
+								1090
 							]
 						],
 						"settings":
@@ -1121,7 +1200,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 323.0,
+						"translation.y": 649.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1129,19 +1208,48 @@
 				},
 				{
 					"buffer": 2,
-					"file": "views/account_invoices/account_invoice.xml",
+					"file": "models/product.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1598,
+						"buffer_size": 1855,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								896,
-								896
+								1662,
+								1663
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 7.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "views/product_selectors/product_selector.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1388,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								953,
+								953
 							]
 						],
 						"settings":
@@ -1150,27 +1258,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 635.0,
+						"translation.y": 685.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "models/stock_picking.py",
+					"buffer": 4,
+					"file": "models/order_line.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1756,
+						"buffer_size": 4835,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								507,
-								507
+								272,
+								497
 							]
 						],
 						"settings":
@@ -1178,28 +1286,57 @@
 							"syntax": "Packages/Python/Python.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 24.0,
-						"translation.y": 0.0,
+						"translation.x": 0.0,
+						"translation.y": 104.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "models/stock_picking.TRASH.py",
+					"buffer": 5,
+					"file": "views/orders/order_line.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3399,
+						"buffer_size": 3777,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3397,
-								3397
+								3757,
+								3777
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2503.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "models/order.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 48277,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8034,
+								8034
 							]
 						],
 						"settings":
@@ -1208,27 +1345,56 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1207.0,
+						"translation.y": 8268.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "models/stock_move_selector.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2435,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "models/process.py",
+					"buffer": 8,
+					"file": "models/partner.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3075,
+						"buffer_size": 9603,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								574,
-								702
+								78,
+								78
 							]
 						],
 						"settings":
@@ -1237,14 +1403,72 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 9,
+					"file": "views/orders/order.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 22775,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7060,
+								7060
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 7492.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "views/services/service.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5708,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3875,
+								3907
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3104.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
 					"file": "models/treatment.py",
 					"semi_transient": false,
 					"settings":
@@ -1256,8 +1480,8 @@
 						"selection":
 						[
 							[
-								793,
-								793
+								26992,
+								26992
 							]
 						],
 						"settings":
@@ -1266,14 +1490,14 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 195.0,
+						"translation.y": 29169.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 12,
 					"file": "views/treatments/treatment.xml",
 					"semi_transient": false,
 					"settings":
@@ -1298,24 +1522,140 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "models/order.py",
+					"buffer": 13,
+					"file": "views/account_invoices/account_invoice.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 47329,
+						"buffer_size": 1598,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								401,
-								401
+								1183,
+								1183
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 785.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "models/account_invoice.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1129,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								828,
+								844
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 323.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "models/stock_picking.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1756,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								507,
+								507
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 24.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 16,
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "models/stock_picking.TRASH.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3399,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3397,
+								3397
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1207.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 17,
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "models/process.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3075,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								574,
+								702
 							]
 						],
 						"settings":
@@ -1327,11 +1667,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 18,
 					"file": "models/payment_method.py",
 					"semi_transient": false,
 					"settings":
@@ -1356,7 +1696,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 18,
 					"type": "text"
 				}
 			]

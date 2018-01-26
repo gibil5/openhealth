@@ -19,6 +19,29 @@ class sale_order_line(models.Model):
 
 
 
+
+
+
+# ----------------------------------------------------------- Actions ------------------------------------------------------
+
+	@api.multi
+	def create_myself(self):  
+
+		print 
+		print 'jx'
+		print 'Create Myself'
+		print 
+
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
+
 	x_date_created = fields.Datetime(
 
 			string='Fecha', 

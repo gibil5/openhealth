@@ -457,6 +457,34 @@
 
 
 
+					<button 
+							name="create_orderline"
+							
+							type="object" 
+							
+							class="oe_highlight"
+							
+							states="draft"						
+
+
+
+							string="Agregar PRODUCTO"
+
+							groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors"
+						
+						/>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -19,16 +19,117 @@ from num2words import num2words
 
 class sale_order(models.Model):
 	
-	#_name = 'openhealth.order'
-
 	_inherit='sale.order'
+
+	#_name = 'openhealth.order'
 	
 
 
 
 
 
-	# Patient 
+# ----------------------------------------------------- Create Order Line ------------------------------------------------------------
+
+	@api.multi
+	def create_orderline(self):  
+
+		print 
+		print 'jx'
+		print 'Create Order Line'
+
+
+
+ 		order_id = self.id
+
+ 		print order_id
+
+
+
+		print 
+		return {
+				'type': 'ir.actions.act_window',
+
+				'name': ' New Orderline Selector Current', 
+
+				'view_type': 'form',
+				
+				'view_mode': 'form',	
+				
+				
+
+				#'target': 'current',
+				'target': 'new',
+
+
+
+				#'res_id': payment_method_id,
+
+
+				#'res_model': 'sale.order.line',	
+				'res_model': 'openhealth.product.selector',	
+
+
+
+
+
+				'flags': 	{
+								#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+								#'form': {'action_buttons': False, }
+								'form': {'action_buttons': False, 'options': {'mode': 'edit'}  }
+							},
+
+
+				'context': {
+				
+								'default_order_id': order_id ,
+
+							}
+				}
+
+	# create_orderline
+
+
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+	# Order Line 
+	order_line = fields.One2many(
+			'sale.order.line', 
+			'order_id', 
+			string='Order Lines', 
+
+			readonly=False, 
+
+			#states={
+			#			'cancel': 	[('readonly', True)], 
+			#			'done': 	[('readonly', True)], 
+			#			'sent': 	[('readonly', True)], 
+			#			'sale': 	[('readonly', True)], 
+			#		}, 
+			
+			copy=True, 
+		)
+
+
+
+
+
+
+
+
+
+
+
+
+
+	# Patient - For Reporting 
 	patient_id = fields.Many2one(
 			'oeh.medical.patient',
 			string='Paciente', 
@@ -37,8 +138,6 @@ class sale_order(models.Model):
 
 
 
-
-# ----------------------------------------------------------- Partner DNI ------------------------------------------------------
 	
 	# DNI 
 	x_partner_dni = fields.Char(
@@ -305,27 +404,6 @@ class sale_order(models.Model):
 
 
 
-
-
-
-
-	# Order Line 
-	order_line = fields.One2many(
-			'sale.order.line', 
-			'order_id', 
-			string='Order Lines', 
-
-			readonly=False, 
-
-			#states={
-			#			'cancel': 	[('readonly', True)], 
-			#			'done': 	[('readonly', True)], 
-			#			'sent': 	[('readonly', True)], 
-			#			'sale': 	[('readonly', True)], 
-			#		}, 
-			
-			copy=True, 
-		)
 
 
 	

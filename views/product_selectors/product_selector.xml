@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		
+
+
+
+
+
+
+		<!-- FORM -->
+		<record model="ir.ui.view" id="view_product_selector_form">
+
+			<field name="name">openhealth.product.selector.form</field>
+			
+			<field name="model">openhealth.product.selector</field>
+
+<!--			
+			<field name="inherit_id" ref="sale.view_order_line_form"/>	
+			<field name="mode">primary</field>
+			<field name="priority" eval="1"/>
+			<field name="arch" type="xml">
+-->		
+			
+			
+			<field name="arch" type="xml">
+
+				<form string="Product Selector - Form">
+
+					<header>
+
+<!--
+								states="draft"						
+								groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors"
+-->
+						<button 
+								name="create_orderline"
+
+								type="object" 
+								
+								class="oe_highlight"
+								
+
+								string="Agregar"
+							/>
+
+
+					</header>
+					
+
+					<sheet>
+						<group>
+
+
+							<group>
+<!--								
+-->
+								<field name="default_code" />
+
+								<field name="product_id" />
+
+
+<!--							
+								<field name="name" />
+								<field name="price_unit" />
+								<field name="price_subtotal" />
+-->
+							</group>
+
+
+
+							<group>
+								<field name="product_uom_qty" />
+
+								<field name="type" 	invisible="1"	/>
+<!--
+								<field name="order_id" 		/>
+-->						
+							</group>
+						</group>
+
+
+					</sheet>
+				
+
+					<notebook>
+					</notebook>				
+				
+				</form>
+			</field>
+		</record>
+
+
+
+	</data>
+</openerp>
+
+
+

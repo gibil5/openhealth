@@ -15,14 +15,10 @@
 			<field name="name">service.form</field>
 			<field name="model">openhealth.service</field>
 			
+
+
 			<field name="arch" type="xml">
-				
-				
 				<form string="Service - Form">
-
-
-
-					<!-- Header --> 
 					<header>
 
 

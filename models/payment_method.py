@@ -29,12 +29,13 @@ class payment_method(models.Model):
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
 
+
 	# Total 
 	total = fields.Float(
 			string = 'Total a pagar', 
 			required=True, 
 
-			states=READONLY_STATES, 
+			#states=READONLY_STATES, 
 		)
 
 
@@ -44,7 +45,7 @@ class payment_method(models.Model):
 			string="Fecha", 
 			required=True, 
 
-			states=READONLY_STATES, 
+			#states=READONLY_STATES, 
 		)
 
 
@@ -53,7 +54,7 @@ class payment_method(models.Model):
 			string="Documento de Pago", 
 			selection=ord_vars._sale_doc_type_list, 
 			
-			states=READONLY_STATES, 
+			#states=READONLY_STATES, 
 		)
 
 
@@ -65,7 +66,7 @@ class payment_method(models.Model):
 			readonly=False, 
 			#compute="_compute_saledoc_code",
 
-			states=READONLY_STATES, 
+			#states=READONLY_STATES, 
 		)
 
 
@@ -77,7 +78,7 @@ class payment_method(models.Model):
 			'payment_method',
 			string="Pago #", 
 			
-			states=READONLY_STATES, 
+			#states=READONLY_STATES, 
 		)
 
 

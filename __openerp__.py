@@ -382,7 +382,7 @@
 
 
 		# Product Selector 
-		#'views/product_selectors/product_selector.xml',
+		'views/product_selectors/product_selector.xml',
 
 
 

@@ -114,26 +114,34 @@ from . import image
 
 
 
+# Zones
 from . import zone
 from . import zone_quick
 from . import zone_co2
 from . import zone_excilite
+from . import zone_ipl
+from . import zone_ndyag
+
+
+
 
 
 
 from . import counter_raw
 
 
+
+
+# Services 
 from . import service
 from . import service_co2
 from . import service_excilite
 from . import service_ipl
 from . import service_ndyag
 from . import service_medical
-
 from . import service_quick
-
 from . import service_vip
+
 
 
 

@@ -386,6 +386,8 @@ _city_list = [
 			('tacna','Tacna'),
 			('trujillo','Trujillo'),
 			('tumbes','Tumbes'),
+
+			('',''),
 		]
 
 

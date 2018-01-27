@@ -26,8 +26,29 @@
 
 				<notebook position="inside">
 					<page string="Personal">
+
+<!--
 						<group>
+							<group>  
+							</group>
+
 							<group>
+							</group>
+						</group>
+-->
+
+						<group>
+
+
+<!--
+																								'invisible':[('x_foreign', '!=', False)],
+-->
+							<!-- First Group - Address Peru --> 
+							<group  
+																					attrs="{
+																								'required':[('x_foreign', '=', False)],
+																							}"
+								>
 								
 							
 								<!--
@@ -58,12 +79,21 @@
 								-->
 
 
+<!-- Country --> 
 								<field name="country_id" class="oe_no_button" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"
-																readonly="1"
+																readonly="0"
 								/>
 								
 
-								<field name="city" style="width: 40%"/>
+
+
+<!-- Only Peru --> 
+								<field name="city" style="width: 40%"		
+																					attrs="{
+																								'required':[('x_foreign', '=', False)],
+																							}"
+
+									/>
 
 
 
@@ -72,23 +102,27 @@
 <!-- Only Lima --> 
 								<field name="street2_sel"    	required="0"		attrs="{
 																								'invisible':[('city', '!=', 'lima')],
-																								'required':[('city', '=', 'lima')],
-																							}"/>
+																								'required':[
+																												('city', '=', 'lima'), 
+																												('x_foreign', '=', False), 
+																											],
+
+																							}"
+																						/>
 
 
 
 <!-- Not Lima --> 
 								<field name="street2_char" 		required="0"		attrs="{
 																								'invisible':[('city', '==', 'lima')], 
-																								'required':[('city', '!=', 'lima')],
+																								'required':[
+																												('city', '!=', 'lima'),
+																												('x_foreign', '=', False), 
+																											],
 																							}"/>
 
 
-								
-
-
-
-
+							
 								<field name="street2" 			invisible="1"/>
 
 
@@ -100,54 +134,75 @@
 
 																					attrs="{
 																								'invisible':[('city', '!=', 'lima')],
-																								'required':[('city', '=', 'lima')],
+																								
+																								'required':[
+																												('city', '=', 'lima'), 
+																												('x_foreign', '=', False), 
+																											],
 																							}" 
 
 								/>
 
 
+								<field name="street"  	
+																					attrs="{
+																								'required':[('x_foreign', '=', False)],
+																							}" 
+
+									/> 
+
+							</group>
 
 
 
-								<field name="street"  	required="1" /> 
-
-
-								<!--
-								<field name="x_country_residence"  required="1"/>
-								<field string="Sitio web"  name="website" widget="url" placeholder="e.g. www.odoo.com"/>
-								--> 
-			</group>
-
-
-			<group>
-				<field string="email" name="email" widget="email" />
-				<!--
-				<field name="mobile" />
-				<field string="Teléfono" name="phone" placeholder="e.g. +32.81.81.37.00"/>
-				<field string="Teléfono 2" name="phone" placeholder=""/>
-				<field  name="phone" />
-				-->
+<!-- Second Group --> 
+<!-- Foreign --> 
 
 <!--
-				<field name="phone_1" 	required="1"/>				
-				<field  name="phone_2" />
+																										'invisible':[('x_foreign', '=', False)],
 -->
+							<group>
 
-				<field name="phone" 	/>	
-
-				<field  name="mobile" 	/>
-
+								<field  name="x_foreign" />
 
 
+								<field name="x_address_foreign"  	
 
-				<field  name="vspace" />
+																							attrs="{
+																										'required':[('x_foreign', '!=', False)],
+																									}" 
 
-				<field  name="x_firm" 	required="0"	/>
+										/> 
+							</group>
+						</group>
 
-				<field  name="x_ruc" 	required="0"	/>
-			
-			</group>
-		</group>
+
+
+
+
+
+						<group>
+
+
+<!-- Third Group --> 
+							<group>
+								<field name="email" 	string="Email"		widget="email" />
+								<field name="phone" 	/>	
+								<field name="mobile" 	/>
+							</group>
+
+
+<!-- Fourth Group --> 
+							<group>
+								<field  name="x_firm" 	required="0"	/>
+								<field  name="x_ruc" 	required="0"	/>
+							</group>
+
+
+						</group>
+
+
+
 
 
 		<hr></hr>

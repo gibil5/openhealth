@@ -111,7 +111,8 @@ class Partner(models.Model):
 
 
 
-	# IN PROG 
+
+	# Address
 	
 	country_id = fields.Many2one(
 			'res.country', 
@@ -123,6 +124,20 @@ class Partner(models.Model):
 
 			required=True, 
 		)
+
+	#@api.onchange('country_id')
+	#def _onchange_country_id(self):
+	#	print 
+	#	print 'jx'
+	#	print 'On change Country id'
+	#	print self.country_id
+	#	print self.country_id.name 
+		#self.x_country_name = self.country_id.name 
+
+
+
+
+
 
 
 
@@ -187,27 +202,103 @@ class Partner(models.Model):
 
 
 
-
-
-
-
 	#zip = fields.Integer(
 	#		string = 'Código',  
-
 	#		required=False, 			
 	#	)
-
-
 
 	zip = fields.Char(
 			#'Zip', 
 			string = 'Código',  
-
 			size=24, 
 			#change_default=True, 
-
 			required=False, 
 		)
+
+
+
+
+
+
+
+	# Only for foreign addresses
+
+	x_foreign = fields.Boolean(
+			string="Dirección en el extranjero", 
+		)
+
+	@api.onchange('x_foreign')
+	def _onchange_x_foreign(self):
+
+		print 'jx'
+		print 'On change foreign'
+		
+		if self.x_foreign:
+			#self.city = False
+			self.city = ""
+
+
+
+	x_address_foreign = fields.Text(
+			string=".", 
+		)
+
+	#x_country_name = fields.Char(
+	#		readonly=False, 	
+			#compute='_compute_x_country_name', 
+	#	)
+
+
+	#@api.multi
+	#@api.depends('country_id')
+	#def _compute_x_country_name(self):
+	#	print 'jx'
+	#	print 'Compute Country Name'
+	#	for record in self:
+	#		record.x_country_name = record.country_id.name 
+	#		print record.x_country_name
+
+
+
+
+
+
+
+	#x_country_name = fields.Char(
+	#		'Pais', 
+	#		required=True, 			
+	#		compute='_compute_x_country_name', 
+	#	)
+
+	#@api.multi
+	#@api.depends('country_id')
+
+	#def _compute_x_country_name(self):
+	#	for record in self:
+	#		record.x_country_name = 'Peru'
+
+
+
+
+
+
+	#@api.multi
+	#@api.depends('')
+	#def _compute_x_country_name(self):
+	#	for record in self:
+	#		#cid = record.country_id.id
+	#		cid = 175
+	#		country = self.env['res.country'].search([
+	#													('id', '=', cid),					
+	#											],
+													#order='write_date desc',
+	#												limit=1,
+	#											)
+	#		record.x_country_name = country.name 
+
+
+
+
 
 
 # ----------------------------------------------------------- DNI RUC ------------------------------------------------------

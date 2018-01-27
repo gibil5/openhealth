@@ -966,18 +966,6 @@ class Patient(models.Model):
 
 
 
-	x_country_name = fields.Char(
-			'Pais', 
-			required=True, 			
-			compute='_compute_x_country_name', 
-		)
-
-	#@api.multi
-	@api.depends('country_id')
-
-	def _compute_x_country_name(self):
-		for record in self:
-			record.x_country_name = 'Peru'
 
 
 
@@ -1183,52 +1171,32 @@ class Patient(models.Model):
 		if self.x_autofill == True:
 
 
-			#self.x_last_name = 'Revilla Rondon'
-			#self.x_first_name = 'Toby'
-
-
-
-
-
+			# Personal 
 			self.sex = 'Male'
-
 			self.dob = '1965-05-26'
-			
 			self.x_dni = '09817194'
-
 			self.email = 'jrevilla55@gmail.com'
-			
 			self.phone = '4760118'
-
 			self.x_allergies = 'Ninguna'
-
 			self.x_first_contact = 'recommendation'
-
-
-
-
-			#self.city = 'arequipa'
-
-
-			self.street = 'Av. San Borja Norte 610'
-			
-			self.street2_sel = 41
-
-
-
-
-
 			self.comment = 'test'
-
 			self.x_ruc = '09817194123'
-
 			self.x_firm = 'Revilla y Asociados'
-
 			self.mobile = '991960734'
 
 
 
-			
+
+			# Address 
+			#self.city = 'arequipa'
+			#self.street = 'Av. San Borja Norte 610'			
+			#self.street2_sel = 41
+
+
+
+
+			#self.x_last_name = 'Revilla Rondon'
+			#self.x_first_name = 'Toby'
 			#self.x_last_name = 'Fuchs Vibors'
 			#self.x_first_name = 'Hans'
 			#self.name = self.x_last_name + ' ' + self.x_first_name

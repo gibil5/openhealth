@@ -11,6 +11,8 @@ from openerp import models, fields, api
 
 import openerp.addons.decimal_precision as dp
 
+from . import prodvars
+
 
 
 class ProductSelector(models.Model):
@@ -121,6 +123,49 @@ class ProductSelector(models.Model):
 													('x_treatment', '=', self.treatment),
 									]},
 				}
+
+
+
+
+
+
+
+
+
+	zone = fields.Selection(
+
+			#selection=[
+			#				('laser_quick',		'Quick'), 
+			#	],
+
+			selection=prodvars._zone_list,
+			
+			string='Zona', 
+		)
+
+	@api.onchange('zone')
+	
+	def _onchange_zone(self):
+
+		print 'jx'
+		print 'On change zone'
+
+		if self.zone != False: 
+
+			if self.x_type == 'service': 
+
+				return {
+						'domain': {'product_id': [
+													('type', '=', self.x_type),
+													('x_origin', '=', False),
+													('x_family', '=', self.family),
+													('x_treatment', '=', self.treatment),
+													('x_zone', '=', self.zone),
+
+									]},
+				}
+
+
 
 
 

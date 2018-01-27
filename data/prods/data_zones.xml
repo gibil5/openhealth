@@ -4,6 +4,10 @@
 
 
 
+<!-- Highly Deprecated !!! -->
+
+
+
 		<!-- Body local -->
 		<record id='zone_body_local' model='openhealth.zone'>
 			<field name='name'>Localizado Cuerpo</field>

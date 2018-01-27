@@ -105,12 +105,19 @@ from . import image
 
 
 
+
+# Deprecated ? 
 #from . import zone_category
-from . import zone
-
-
 #from . import pathology_category
-from . import pathology
+#from . import pathology
+
+
+
+
+from . import zone
+from . import zone_quick
+from . import zone_co2
+from . import zone_excilite
 
 
 

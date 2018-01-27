@@ -249,8 +249,15 @@
 
 
 
-		'data/prods/data_zones.xml',			
-		'data/prods/data_pathologies.xml',			
+
+
+
+		# Highly Deprecated !
+		#'data/prods/data_zones.xml',			
+		#'data/prods/data_pathologies.xml',			
+		#'views/pathologies/pathology.xml',
+		#'views/zones/zone.xml',
+
 
 
 
@@ -478,9 +485,9 @@
 
 
 
-		# Pathologies
-		'views/pathologies/pathology.xml',
-		'views/zones/zone.xml',
+
+
+
 
 
 

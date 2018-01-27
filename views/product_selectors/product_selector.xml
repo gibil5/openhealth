@@ -73,6 +73,16 @@
 								<field name="treatment"
 															attrs="{
 																		'invisible':[('x_type', '==', 'product')], 
+																		'invisible':[('family', '!=', 'laser')], 
+																}"
+								 />
+
+
+
+								<field name="zone"
+															attrs="{
+																		'invisible':[('x_type', '==', 'product')], 
+																		'invisible':[('family', '!=', 'laser')], 
 																}"
 								 />
 

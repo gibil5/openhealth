@@ -19,6 +19,7 @@ _level_list = [
 # Zone 
 _zone_list = [ 
 
+
 		# Quick 
 		('face_all_neck',	'Todo Rostro Cuello'), 
 		('face_all_hands',	'Todo Rostro Manos'), 

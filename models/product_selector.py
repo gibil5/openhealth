@@ -40,6 +40,13 @@ class ProductSelector(models.Model):
 		print 'jx'
 		print 'Create Orderline'
 
+		
+		print self.product_id
+		print self.name
+		print self.order_id
+		print self.product_uom_qty
+
+
 
 		ret = self.order_id.order_line.create({
 
@@ -51,9 +58,7 @@ class ProductSelector(models.Model):
 
 													'product_uom_qty': self.product_uom_qty, 
 
-
 													#'price_subtotal': line.price_subtotal,
-			
 												})
 
 		print ret

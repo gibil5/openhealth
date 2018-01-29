@@ -41,6 +41,7 @@ class sale_order(models.Model):
 
 		# Init Vars 
 		context = self._context.copy()
+		
  		order_id = self.id
 
 		x_type = context['x_type']
@@ -69,9 +70,19 @@ class sale_order(models.Model):
  			res.default_code = ''
  			res.product_id = False
  			res.product_uom_qty = 1 
-	 		
 	 		res.x_type = x_type
-	 		
+
+
+	 		res.order_id = order_id
+
+
+
+	 		if x_type == 'product': 
+	 			res.treatment = False
+	 			res.zone = False
+	 			res.family = False
+
+
 	 		#res.reset()
  			
 	 		

@@ -153,7 +153,8 @@ class Partner(models.Model):
 			
 			default = 'lima', 
 
-			required=True, 
+			#required=True, 
+			required=False, 
 		)
 
 

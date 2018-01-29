@@ -165,7 +165,7 @@
 
 								<field  name="x_foreign" />
 
-
+<!--
 								<field name="x_address_foreign"  	
 
 																							attrs="{
@@ -173,6 +173,7 @@
 																									}" 
 
 										/> 
+-->
 							</group>
 						</group>
 

@@ -263,7 +263,7 @@
 
 
 		# Zone
-		'views/zones/zone.xml',
+		#'views/zones/zone.xml',
 		'data/prods/data_zones_quick.xml',			 
 		'data/prods/data_zones_co2.xml',			 
 		'data/prods/data_zones_excilite.xml',			 

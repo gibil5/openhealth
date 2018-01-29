@@ -166,6 +166,24 @@ class sale_order(models.Model):
 
 # ----------------------------------------------------------- On Changes ------------------------------------------------------
 
+	# Partner  
+	@api.onchange('partner_id')
+	
+	def _onchange_partner_id(self):		
+		print 'jx'
+		print 'On Change Partner'
+		print 
+
+		#if self.partner_id.name != False	and 	self.x_partner_dni == False: 
+		if self.partner_id.name != False: 
+			print 'gotcha !'
+			self.x_partner_dni = self.partner_id.x_dni
+
+
+
+
+
+	# Dni 
 	@api.onchange('x_partner_dni')
 	
 	def _onchange_x_partner_dni(self):		

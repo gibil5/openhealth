@@ -86,6 +86,19 @@
 
 
 
+		<!-- product_selector --> 
+		<menuitem id="product_selector_menu" name="product selector"
+
+			parent="openhealth_menu"
+			
+			sequence="-220"
+			
+			action="product_selector_list_action"
+			/>
+
+
+
+
 
 
 		<!-- Kardex --> 

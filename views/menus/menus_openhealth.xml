@@ -88,7 +88,6 @@
 
 
 		<!-- Zones --> 
-<!--
 		<menuitem id="zones_quick_menu" 
 			name="Zones quick" 
 			parent="openhealth_menu"
@@ -131,7 +130,7 @@
 
 			action="zone_ndyag_list_action"
 			/>
--->
+
 
 
 

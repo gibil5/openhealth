@@ -89,7 +89,7 @@
 
 		<!-- Zones --> 
 		<menuitem id="zones_quick_menu" 
-			name="Zones quick" 
+			name="Zones Quick" 
 			parent="openhealth_menu"
 			sequence="-230"
 
@@ -106,7 +106,7 @@
 
 
 		<menuitem id="zones_excilite_menu" 
-			name="Zones excilite" 
+			name="Zones Excilite" 
 			parent="openhealth_menu"
 			sequence="-230"
 
@@ -116,7 +116,7 @@
 
 
 		<menuitem id="zones_ipl_menu" 
-			name="Zones ipl" 
+			name="Zones Ipl" 
 			parent="openhealth_menu"
 			sequence="-230"
 
@@ -124,7 +124,7 @@
 			/>
 
 		<menuitem id="zones_ndyag_menu" 
-			name="Zones ndyag" 
+			name="Zones Ndyag" 
 			parent="openhealth_menu"
 			sequence="-230"
 

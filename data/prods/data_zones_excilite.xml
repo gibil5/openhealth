@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='utf-8'?>
+<openerp>
+	<data noupdate='0'>
+
+
+
+<!-- excilite --> 
+
+
+
+		<!-- areolas -->
+		<record id='excilite_areolas' model='openhealth.zone'>
+			<field name='name'>Areolas</field>
+			<field name='name_short'>areolas</field>
+			<field name='treatment'>laser_excilite</field>
+		</record>
+
+		<!-- armpits -->
+		<record id='excilite_armpits' model='openhealth.zone'>
+			<field name='name'>Axilas</field>
+			<field name='name_short'>armpits</field>
+			<field name='treatment'>laser_excilite</field>
+		</record>
+
+		<!-- arms -->
+		<record id='excilite_arms' model='openhealth.zone'>
+			<field name='name'>Brazos</field>
+			<field name='name_short'>arms</field>
+			<field name='treatment'>laser_excilite</field>
+		</record>
+
+
+
+
+
+		<!-- back -->
+		<record id='excilite_back' model='openhealth.zone'>
+			<field name='name'>Espalda</field>
+			<field name='name_short'>back</field>
+			<field name='treatment'>laser_excilite</field>
+		</record>
+
+		<!-- belly -->
+		<record id='excilite_belly' model='openhealth.zone'>
+			<field name='name'>Vientre</field>
+			<field name='name_short'>belly</field>
+			<field name='treatment'>laser_excilite</field>
+		</record>
+		
+		<!-- breast -->
+		<record id='excilite_breast' model='openhealth.zone'>
+			<field name='name'>Pecho</field>
+			<field name='name_short'>breast</field>
+			<field name='treatment'>laser_excilite</field>
+		</record>
+
+
+
+
+
+		<!-- face -->
+		<record id='excilite_face' model='openhealth.zone'>
+			<field name='name'>Rostro</field>
+			<field name='name_short'>face</field>
+			<field name='treatment'>laser_excilite</field>
+		</record>
+
+		<!-- feet -->
+		<record id='excilite_feet' model='openhealth.zone'>
+			<field name='name'>Pies</field>
+			<field name='name_short'>feet</field>
+			<field name='treatment'>laser_excilite</field>
+		</record>
+
+		<!-- gluteus -->
+		<record id='excilite_gluteus' model='openhealth.zone'>
+			<field name='name'>Glúteos</field>
+			<field name='name_short'>gluteus</field>
+			<field name='treatment'>laser_excilite</field>
+		</record>
+
+
+
+
+
+
+
+
+
+
+
+		<!-- Hands -->
+		<record id='excilite_hands' model='openhealth.zone'>
+			<field name='name'>Manos</field>
+			<field name='name_short'>hands</field>
+			<field name='treatment'>laser_excilite</field>
+		</record>
+
+		<!-- legs -->
+		<record id='excilite_legs' model='openhealth.zone'>
+			<field name='name'>Piernas</field>
+			<field name='name_short'>legs</field>
+			<field name='treatment'>laser_excilite</field>
+		</record>
+
+		<!-- Neck -->
+		<record id='excilite_neck' model='openhealth.zone'>
+			<field name='name'>Cuello</field>
+			<field name='name_short'>neck</field>
+			<field name='treatment'>laser_excilite</field>
+		</record>
+
+
+
+
+		<!-- shoulders -->
+		<record id='excilite_shoulders' model='openhealth.zone'>
+			<field name='name'>Hombros</field>
+			<field name='name_short'>shoulders</field>
+			<field name='treatment'>laser_excilite</field>
+		</record>
+
+
+
+
+
+	</data>
+</openerp>

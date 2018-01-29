@@ -74,12 +74,65 @@
 			action="pathology_list_action"/>
 -->
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 		<!-- Zones --> 
-<!--
-		<menuitem id="zones_menu" name="Zones" parent="openhealth_menu"
-			sequence="-180"
-			action="zone_list_action"/>
--->
+		<menuitem id="zones_quick_menu" 
+			name="Zones quick" 
+			parent="openhealth_menu"
+			sequence="-230"
+
+			action="zone_quick_list_action"
+			/>
+
+		<menuitem id="zones_co2_menu" 
+			name="Zones Co2" 
+			parent="openhealth_menu"
+			sequence="-230"
+
+			action="zone_co2_list_action"
+			/>
+
+
+		<menuitem id="zones_excilite_menu" 
+			name="Zones excilite" 
+			parent="openhealth_menu"
+			sequence="-230"
+
+			action="zone_excilite_list_action"
+			/>
+
+
+
+		<menuitem id="zones_ipl_menu" 
+			name="Zones ipl" 
+			parent="openhealth_menu"
+			sequence="-230"
+
+			action="zone_ipl_list_action"
+			/>
+
+		<menuitem id="zones_ndyag_menu" 
+			name="Zones ndyag" 
+			parent="openhealth_menu"
+			sequence="-230"
+
+			action="zone_ndyag_list_action"
+			/>
+
+
+
 
 
 
@@ -88,11 +141,8 @@
 
 		<!-- product_selector --> 
 		<menuitem id="product_selector_menu" name="product selector"
-
 			parent="openhealth_menu"
-			
 			sequence="-220"
-			
 			action="product_selector_list_action"
 			/>
 

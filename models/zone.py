@@ -13,6 +13,9 @@ class Zone(models.Model):
 
 	_name = 'openhealth.zone'
 
+	_order = 'name_short asc'
+
+
 
 
 	name = fields.Char(
@@ -24,3 +27,13 @@ class Zone(models.Model):
 		)
 
 
+	treatment = fields.Selection(
+
+			selection=[
+							('laser_quick',		'Quick'), 
+							('laser_co2',		'Co2'), 
+							('laser_excilite',	'Excilite'), 
+							('laser_ipl',		'ipl'), 
+							('laser_ndyag',		'ndyag'), 
+				],
+		)

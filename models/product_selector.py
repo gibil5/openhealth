@@ -67,6 +67,48 @@ class ProductSelector(models.Model):
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
 
+
+	# Zone 
+	zone = fields.Many2one(
+
+			'openhealth.zone', 
+			
+			string='Zona', 
+		)
+
+
+
+
+	zone_co2 = fields.Many2one(
+
+			'openhealth.zone.co2', 
+			
+			string='Zona Co2', 
+		)
+
+
+	zone_quick = fields.Many2one(
+
+			'openhealth.zone.quick', 
+			
+			string='Zona quick', 
+		)
+
+
+	zone_excilite = fields.Many2one(
+
+			'openhealth.zone.excilite', 
+			
+			string='Zona excilite', 
+		)
+
+
+
+
+
+
+
+	# Name 
 	name = fields.Text(
 			string='Description', 
 			required=True,
@@ -80,69 +122,67 @@ class ProductSelector(models.Model):
 
 	def _compute_name(self):
 		for record in self:
-
 			if record.product_id.name != False: 
 				record.name = record.product_id.name 
 
 
 
+	# Code 
+	default_code = fields.Char(
+			string="Código", 
+		)
 
 
+
+
+	# Treatment 
 	treatment = fields.Selection(
-
 			selection=[
-
 							('laser_quick',		'Quick'), 
 							('laser_co2',		'Co2'), 
 							('laser_excilite',	'Excilite'), 
 							('laser_ipl',		'IPL'), 
 							('laser_ndyag',		'NDYAG'), 
-
 				],
-
 			string='Tratamiento', 
 		)
 
-	@api.onchange('treatment')
-	
-	def _onchange_treatment(self):
-
-		print 'jx'
-		print 'On change treatment'
-
-		if self.treatment != False: 
-
-			if self.x_type == 'service': 
-
-				return {
-						'domain': {'product_id': [
-													
-													('type', '=', self.x_type),
-													('x_origin', '=', False),
-													('x_family', '=', self.family),
-													('x_treatment', '=', self.treatment),
-									]},
-				}
 
 
 
+	# Family  
+	family = fields.Selection(
+			selection=[
+							# Service 
+							('consultation',	'Consultas'), 
+							('laser',			'Láser'),
+							('medical',			'Tratamientos Médicos'), 
+							('cosmetology',		'Cosmiatría'),
+				],
 
-
-
-
-
-
-	zone = fields.Selection(
-
-			#selection=[
-			#				('laser_quick',		'Quick'), 
-			#	],
-
-			selection=prodvars._zone_list,
-			
-			string='Zona', 
+			string='Familia', 
 		)
 
+
+	# Type 
+	x_type= fields.Selection(
+			selection=[
+							#('emr', 				'Historias'),
+							('service', 				'Servicio'),
+							('product', 				'Producto'),
+						], 
+
+			string='Tipo', 
+			#required=True,
+		)
+
+
+
+# ----------------------------------------------------------- On changes ------------------------------------------------------
+
+
+
+	# Zone 
 	@api.onchange('zone')
 	
 	def _onchange_zone(self):
@@ -154,15 +194,64 @@ class ProductSelector(models.Model):
 
 			if self.x_type == 'service': 
 
+
 				return {
-						'domain': {'product_id': [
+
+							'domain': {
+
+										'product_id': [
+														('x_origin', '=', False),
+
+														('type', '=', self.x_type),
+														('x_family', '=', self.family),
+														('x_treatment', '=', self.treatment),
+
+														('x_zone', '=', self.zone.name_short),
+													], 
+									},
+				}
+
+
+
+
+
+
+
+
+
+
+	# Treatment 
+	@api.onchange('treatment')
+	
+	def _onchange_treatment(self):
+
+		print 'jx'
+		print 'On change treatment'
+
+		if self.treatment != False: 
+
+
+			print self.treatment
+
+
+			if self.x_type == 'service': 
+
+				return {
+						'domain': {
+
+									'product_id': [
+													
 													('type', '=', self.x_type),
 													('x_origin', '=', False),
 													('x_family', '=', self.family),
 													('x_treatment', '=', self.treatment),
-													('x_zone', '=', self.zone),
+												], 
 
-									]},
+									'zone': [
+													('treatment', '=', self.treatment),
+												], 
+
+								},
 				}
 
 
@@ -176,25 +265,10 @@ class ProductSelector(models.Model):
 
 
 
-	family = fields.Selection(
-
-			selection=[
-							# Service 
-							('consultation',	'Consultas'), 
-							('laser',			'Láser'),
-							('medical',			'Tratamientos Médicos'), 
-							('cosmetology',		'Cosmiatría'),
 
 
-							# Product
-							#('topical',			'Tópico'),
-							#('kit',				'Kit'),
-							#('card',			'Tarjeta'),
-							#('none',		'none'),
-				],
 
-			string='Familia', 
-		)
+
 
 	@api.onchange('family')
 	
@@ -238,17 +312,6 @@ class ProductSelector(models.Model):
 
 
 
-	x_type= fields.Selection(
-
-			selection=[
-							#('emr', 				'Historias'),
-							('service', 				'Servicio'),
-							('product', 				'Producto'),
-						], 
-
-			string='Tipo', 
-			#required=True,
-		)
 
 	@api.onchange('x_type')
 	
@@ -292,9 +355,6 @@ class ProductSelector(models.Model):
 
 
 
-	default_code = fields.Char(
-			string="Código", 
-		)
 
 	@api.onchange('default_code')
 	def _onchange_default_code(self):
@@ -335,7 +395,9 @@ class ProductSelector(models.Model):
 			domain=[('sale_ok', '=', True)], 
 			change_default=True, 
 			ondelete='restrict', 
-			required=True,
+
+			#required=True,
+			required=False,
 		)
 
 

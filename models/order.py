@@ -39,22 +39,44 @@ class sale_order(models.Model):
 
 
 
-
-
+		# Init Vars 
 		context = self._context.copy()
-		#print context
-		#print context['params']
-		x_type = context['x_type']
-
-
-
-
-
-		#x_type = 'product'
-
  		order_id = self.id
 
- 		print order_id
+		x_type = context['x_type']
+
+		#print context
+		#print context['params']
+ 		#print order_id
+
+ 		res_id = False
+
+
+
+
+ 		# Search Model 
+ 		res = self.env['openhealth.product.selector'].search([
+																#('patient', '=', self.patient.name),
+															],
+																#order='write_date desc',
+																limit=1,
+															)
+ 		if res.id != False: 
+ 			
+ 			res_id = res.id 
+	 		print res_id
+
+ 			res.default_code = ''
+ 			res.product_id = False
+ 			res.product_uom_qty = 1 
+	 		
+	 		res.x_type = x_type
+	 		
+	 		#res.reset()
+ 			
+	 		
+
+
 
 
 
@@ -75,7 +97,8 @@ class sale_order(models.Model):
 
 
 
-				#'res_id': payment_method_id,
+				'res_id': res_id,
+
 
 
 				#'res_model': 'sale.order.line',	

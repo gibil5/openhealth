@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='utf-8'?>
+<openerp>
+	<data noupdate='0'>
+
+
+
+<!-- co2 --> 
+
+
+
+		<!-- Body local -->
+		<record id='co2_body_local' model='openhealth.zone'>
+
+			<field name='name'>Localizado Cuerpo</field>
+
+			<field name='name_short'>body_local</field>
+
+			<field name='treatment'>laser_co2</field>
+			
+		</record>
+
+
+
+		<!-- Cheekbones -->
+		<record id='co2_cheekbones' model='openhealth.zone'>
+			<field name='name'>Pómulos</field>
+			<field name='name_short'>cheekbones</field>
+			<field name='treatment'>laser_co2</field>
+		</record>
+
+
+
+
+
+
+		<!-- Face all -->
+		<record id='co2_face_all' model='openhealth.zone'>
+			<field name='name'>Todo Rostro</field>
+			<field name='name_short'>face_all</field>
+			<field name='treatment'>laser_co2</field>
+		</record>
+
+
+		<!-- Face local -->
+		<record id='co2_face_local' model='openhealth.zone'>
+			<field name='name'>Localizado Rostro</field>			
+			<field name='name_short'>face_local</field>
+			<field name='treatment'>laser_co2</field>
+		</record>
+
+
+
+		<!-- Hands -->
+		<record id='co2_hands' model='openhealth.zone'>
+			<field name='name'>Manos</field>
+			<field name='name_short'>hands</field>
+			<field name='treatment'>laser_co2</field>
+		</record>
+
+
+		<!-- Neck -->
+		<record id='co2_neck' model='openhealth.zone'>
+			<field name='name'>Cuello</field>
+			<field name='name_short'>neck</field>
+			<field name='treatment'>laser_co2</field>
+		</record>
+
+
+
+
+		<!-- vagina -->
+		<record id='co2_vagina' model='openhealth.zone'>
+			<field name='name'>Vagina</field>
+			<field name='name_short'>vagina</field>
+			<field name='treatment'>laser_co2</field>
+		</record>
+
+
+
+
+
+
+	</data>
+</openerp>

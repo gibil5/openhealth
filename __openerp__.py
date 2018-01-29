@@ -236,9 +236,6 @@
 		# Products 
 		'data/prods/odoo_data_products.xml',			 
 		'data/prods/odoo_data_products_new.xml',			
-
-
-
 		'data/prods/odoo_data_services_co2.xml',		# check
 		'data/prods/odoo_data_services_exc.xml',		# check
 		'data/prods/odoo_data_services_m22.xml',		# check
@@ -252,12 +249,27 @@
 
 
 
+
+
+
+
 		# Highly Deprecated !
 		#'data/prods/data_zones.xml',			
 		#'data/prods/data_pathologies.xml',			
 		#'views/pathologies/pathology.xml',
-		#'views/zones/zone.xml',
 
+
+
+
+		# Zone
+		'views/zones/zone.xml',
+
+		'data/prods/data_zones_quick.xml',			 
+		'data/prods/data_zones_co2.xml',			 
+		'data/prods/data_zones_excilite.xml',			 
+
+		'data/prods/data_zones_ipl.xml',			 
+		'data/prods/data_zones_ndyag.xml',			 
 
 
 

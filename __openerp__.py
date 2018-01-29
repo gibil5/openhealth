@@ -261,12 +261,13 @@
 
 
 
-
 		# Zone
-		#'views/zones/zone.xml',
+		'views/zones/zone.xml',
+
 		'data/prods/data_zones_quick.xml',			 
 		'data/prods/data_zones_co2.xml',			 
 		'data/prods/data_zones_excilite.xml',			 
+
 		'data/prods/data_zones_ipl.xml',			 
 		'data/prods/data_zones_ndyag.xml',			 
 
@@ -715,7 +716,7 @@
 
 
 		# Patients - 2 
-		#'views/patients/patient_personal.xml',
+		'views/patients/patient_personal.xml',
 		'views/patients/patient_control_docs.xml',
 		'views/patients/patient_appointments.xml',
 		'views/patients/patient_quick.xml',

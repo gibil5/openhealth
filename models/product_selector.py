@@ -349,7 +349,7 @@ class ProductSelector(models.Model):
 			
 			required=True, 
 			
-			#default=1.0,
+			default=1.0,
 		)
 
 

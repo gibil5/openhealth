@@ -134,15 +134,6 @@ class sale_order(models.Model):
 
 
 
-
-
-
-
-
-
-
-
-
 	# Patient - For Reporting 
 	patient_id = fields.Many2one(
 			'oeh.medical.patient',
@@ -170,14 +161,17 @@ class sale_order(models.Model):
 
 
 
+
+
+
+# ----------------------------------------------------------- On Changes ------------------------------------------------------
+
 	@api.onchange('x_partner_dni')
 	
-	def _onchange_x_partner_dni(self):
-		
+	def _onchange_x_partner_dni(self):		
 		print 'jx'
 		print 'On Change Dni'
 		print 
-
 
 		if self.x_partner_dni != False: 
 			
@@ -188,7 +182,7 @@ class sale_order(models.Model):
 													order='write_date desc',
 													limit=1,
 												)
-		
+
 			print partner_id
 			print partner_id.id
 
@@ -1771,22 +1765,28 @@ class sale_order(models.Model):
 	@api.multi 
 	def create_payment_method(self):
 
+
 		#print 
 		#print 'Create Payment Method'
 
 
 
+		# Init vars 
 		#nr_pm = self.env['openhealth.payment_method'].search_count([('order','=', self.id),]) 
 		#name = 'Pago ' + str(nr_pm + 1)
+		#total = self.x_amount_total
+
 		name = 'Pago'
 		method = 'cash'
-
-
-
-		#total = self.x_amount_total
 		balance = self.x_amount_total - self.pm_total
 
 		
+
+
+		# For Receipts and Invoices  
+		dni = self.partner_id.x_dni
+		firm = self.partner_id.x_firm
+		ruc = self.partner_id.x_ruc
 
 
 
@@ -1813,6 +1813,10 @@ class sale_order(models.Model):
 																				#'saledoc': 'receipt', 
 
 
+
+																				'dni': dni,
+																				'firm': firm,
+																				'ruc': ruc,
 																			})
 		payment_method_id = self.x_payment_method.id 
 
@@ -1884,9 +1888,12 @@ class sale_order(models.Model):
 							'default_pm_total': self.pm_total,
 							'default_partner': self.partner_id.id,
 							'default_date_created': self.date_order,
-			
-
 							#'default_saledoc': 'receipt', 
+
+
+							'default_dni': dni,
+							'default_firm': firm,
+							'default_ruc': ruc,
 							}
 				}
 

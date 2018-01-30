@@ -872,7 +872,14 @@
 -->
 				<field name="patient" position="before">
 	
-					<field name="x_partner_dni"/>
+
+					<field name="x_partner_dni"
+															attrs="{
+																		'readonly':[('patient', '!=', False)], 
+																}"
+
+						/>
+
 
 					<field name="vspace"/>
 
@@ -985,6 +992,8 @@
 <!--
 <attribute name='readonly'>1</attribute> 
 attrs="{'readonly': [('state', 'in', ('done','cancel'))]}">
+
+	<attribute name='readonly'>1</attribute> 
 -->
 
 	<attribute name='attrs'>{'readonly': [('state', 'in', ('sent','sale','done','cancel'))]}</attribute> 

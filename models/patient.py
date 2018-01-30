@@ -23,6 +23,18 @@ class Patient(models.Model):
 
 
 
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+	#identification_code=fields.Char(
+	#		'Patient ID',
+	#		size=256, 
+	#		help='Patient Identifier provided by the Health Center',
+	#		readonly=True
+	#	)
+
+
+
+
 
 # ----------------------------------------------------------- Not Deprecated ------------------------------------------------------
 	
@@ -1189,8 +1201,8 @@ class Patient(models.Model):
 
 			# Address 
 			#self.city = 'arequipa'
-			#self.street = 'Av. San Borja Norte 610'			
-			#self.street2_sel = 41
+			self.street2_sel = 41
+			self.street = 'Av. San Borja Norte 610'			
 
 
 

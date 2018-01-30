@@ -88,7 +88,7 @@
 
 
 
-								<field name="product_id" />
+								<field name="product_id" 		required="1"		/>
 
 
 <!--							

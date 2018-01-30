@@ -4,45 +4,43 @@
 
 
 
-<!-- Ticket Boleta -->
-		<report
-			string="Ticket Boleta"
+<report
+	
+	id="report_ticket_receipt_nex"
+	
+	model="sale.order"
+	
+	string="Ticket Boleta Nex"
+	
+	report_type="qweb-pdf"
 
-			model="sale.order"
-			
-			id="report_ticket_receipt"
-			
-			report_type="qweb-pdf"
-			
-			name="openhealth.report_ticket_receipt_view"            
-			
-			file="openhealth_ticket.report_ticket_receipt"
-		/>
+	name="openhealth.report_ticket_receipt_nex"
+
+	file="openhealth.report_ticket_receipt_nex"
+
+	attachment_use="True"
+
+	attachment="(object.state in ('open','paid')) and
+		('INV'+(object.number or '').replace('/','')+'.pdf')"
+
+
+/>
 
 
 
-		<template id="openhealth.report_ticket_receipt_view">
 
 
-
-			<t t-call="report.html_container">                 
-			<t t-foreach="docs" t-as="doc">
+<template id="report_ticket_receipt_nex">
+	<t t-call="report.html_container">
+		<t t-foreach="docs" t-as="doc">	
+<!--
+			<t t-call="report.external_layout">
+-->		
 			<t>
 
-
-
-<!-- Header --> 
-<!--
-<div class="header">    
-	<img src='/openhealth/static/src/img/logo_chavarri.png' style="max-height: 100px;"/>
-</div>
--->
-
-
-
-<!-- 								Page 1 - Begin	 										-->
-<div class="page">    
-
+				<div class="page">
+	
+	
 
 <!-- Title --> 
 <br/>
@@ -64,7 +62,6 @@
 	</div>
 </b>
 </div>
-
 
 
 <!-- My Address --> 
@@ -105,23 +102,6 @@
 
 
 
-
-
-<!-- Serial number --> 
-<!--
-<div class='row'>
-	<div class='col-xs-4'>		
-		<b>Serie:</b>
-	</div>
-	<div class='col-xs-8'>
-		<t t-esc="doc.x_payment_method.ticket_receipt.counter.prefix"/>
-	</div>
-</div>
--->
-
-
-
-
 <!-- Authorization --> 
 <div class='row'>
 	<div class='col-xs-4'>		
@@ -146,8 +126,6 @@
 	</div>
 </div>
 
-
-
 <!-- DNI --> 
 <div class='row'	id='dni'	>
 	<div class='col-xs-4'>		
@@ -158,8 +136,6 @@
 	</div>
 </div>
 
-
-
 <!-- Address --> 
 <div class='row'>
 	<div class='col-xs-4'>		
@@ -169,37 +145,8 @@
 		<t t-esc="doc.partner_id.x_address"/>
 	</div>
 </div>
-
-
-
-
-
-<!-- Firm --> 
-<!--
-<div class='row'	id='firm'	>
-	<div class='col-xs-4'>		
-		<b>Raz. Social:</b>
-	</div>
-	<div class='col-xs-8'>
-		<t t-esc="doc.partner_id.x_firm"/>
-	</div>
-</div>
--->
-
-
-<!-- Ruc --> 
-<!--
-<div class='row'	id='ruc'	>
-	<div class='col-xs-4'>		
-		<b>Ruc:</b>
-	</div>
-	<div class='col-xs-8'>
-		<t t-esc="doc.partner_id.x_ruc"/>
-	</div>
-</div>
 <br/>
-<br/>
--->
+
 
 
 
@@ -229,6 +176,7 @@
 	</div>
 </div>
 <br/>
+
 
 
 
@@ -317,104 +265,15 @@
 
 
 
-<!-- Net --> 
-<div class='row'	id='net'	>
-	<div class='col-xs-8'>		
-		<b>Neto S/.:</b>
-	</div>
 
-	<div class='col-xs-4 text-right'>
-		<t t-esc="doc.x_total_net"/>
-	</div>
-
-</div>
-
-<!-- Tax --> 
-<div class='row'	id='tax'	>
-	<div class='col-xs-8'>		
-		<b>IGV S/.:</b>
-	</div>
-
-	<div class='col-xs-4 text-right'>
-		<t t-esc="doc.x_total_tax"/>
-	</div>
-
-</div>
-
-
-
-
-<!-- Total --> 
-<div class='row'>
-	<div class='col-xs-8'>		
-		<b>Total S/.:</b>
-	</div>
-	<div class='col-xs-4 text-right'>
-		<t t-esc="doc.amount_total"/>
-	</div>
-</div>
-
-
-<!-- Total Words --> 
-<div class='row'>
-	<div class='col-xs-4'>		
-		<b>Son:</b>
-	</div>
-	<div class='col-xs-8'>
-		<t t-esc="doc.x_total_in_words"/>
-	</div>
-</div>
-<br/>
-
-
-
-
-<center>
-<!-- Website --> 
-<div class='row'>
-	<div class='col-xs-12'>
-		<t t-esc="doc.x_my_company.website"/>
-	</div>
-</div>
-
-<!-- Email --> 
-<div class='row'>
-	<div class='col-xs-12'>
-		<t t-esc="doc.x_my_company.email"/>
-	</div>
-</div>
-</center>
-<br/>
-
-
-
-
-
-
-<!-- Warning --> 
-<div class='row'>
-	<div class='col-xs-12'>
-		<t t-esc="doc.x_my_company.x_warning"/>
-	</div>
-</div>
-
-
-<br/>
-<br/>
-</div> <!-- page --> 
-
-
-
-
-
+				</div>
 			</t>
-			</t>
-			</t>
+		</t>
+	</t>
+</template>
 
 
 
 
-
-		</template>
 	</data>
 </openerp>

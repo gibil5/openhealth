@@ -30,7 +30,10 @@
 	
 
 									<!-- Only for Roots --> 
-									<field name="patient" 	invisible="0"			/>
+
+
+									<field name="partner_id"				/>
+
 
 									<field name="vspace" />
 

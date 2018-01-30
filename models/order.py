@@ -147,6 +147,32 @@ class sale_order(models.Model):
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
 
+
+	# Partner 
+	partner_id = fields.Many2one(
+			'res.partner',
+			string = "Cliente", 	
+			ondelete='cascade', 			
+
+			#required=True, 
+			required=False, 
+		)
+
+
+	# Patient 
+	patient = fields.Many2one(
+			'oeh.medical.patient',
+			string='Paciente', 
+			#compute='_compute_patient', 
+			
+			required=True, 
+		)
+
+
+
+
+
+
 	# Order Line 
 	order_line = fields.One2many(
 			'sale.order.line', 
@@ -200,6 +226,32 @@ class sale_order(models.Model):
 
 # ----------------------------------------------------------- On Changes ------------------------------------------------------
 
+
+	# Patient  
+	@api.onchange('patient')
+	
+	def _onchange_patient(self):	
+
+		print 'jx'
+		print 'On Change Patient'
+		print 
+
+		#if self.partner_id.name != False	and 	self.x_partner_dni == False: 
+		#if self.partner_id.name != False: 
+		if self.patient.name != False: 
+			
+			print 'gotcha !'
+
+			self.partner_id = self.patient.partner_id.id 
+
+
+
+
+
+
+
+
+
 	# Partner  
 	@api.onchange('partner_id')
 	
@@ -210,6 +262,7 @@ class sale_order(models.Model):
 
 		#if self.partner_id.name != False	and 	self.x_partner_dni == False: 
 		if self.partner_id.name != False: 
+			
 			print 'gotcha !'
 			self.x_partner_dni = self.partner_id.x_dni
 
@@ -227,20 +280,34 @@ class sale_order(models.Model):
 
 		if self.x_partner_dni != False: 
 			
+
+
+			# Partner 
 			partner_id = self.env['res.partner'].search([
-														#('patient', '=', self.patient.name),			
-														('x_dni', '=', self.x_partner_dni),					
+															#('patient', '=', self.patient.name),			
+															('x_dni', '=', self.x_partner_dni),					
 												],
 													order='write_date desc',
 													limit=1,
 												)
-
 			print partner_id
 			print partner_id.id
-
-			#self.partner_id = partner_id
 			self.partner_id = partner_id.id
 
+
+
+
+			# Patient 
+			patient = self.env['oeh.medical.patient'].search([
+																#('patient', '=', self.patient.name),			
+																('x_dni', '=', self.x_partner_dni),					
+												],
+													order='write_date desc',
+													limit=1,
+												)
+			print patient
+			print patient.id
+			self.patient = patient.id
 
 
 
@@ -333,30 +400,19 @@ class sale_order(models.Model):
 
 
 
-	# Patient 
-	patient = fields.Many2one(
-			'oeh.medical.patient',
-			string='Paciente', 
 
 
-			#compute='_compute_patient', 
-		)
-
-
-	@api.multi
-	def _compute_patient(self):
-
-		for record in self:
-
-			patient = self.env['oeh.medical.patient'].search([
-																('name', '=', self.partner_id.name), 
-														],
+	#@api.multi
+	#def _compute_patient(self):
+	#	for record in self:
+	#		patient = self.env['oeh.medical.patient'].search([
+	#															('name', '=', self.partner_id.name), 
+	#													],
 														#order='appointment_date desc',
-														limit=1,
-													)
-			
-			if patient.name != False:
-				record.patient = patient
+	#													limit=1,
+	#												)
+	#		if patient.name != False:
+	#			record.patient = patient
 
 
 
@@ -1134,16 +1190,6 @@ class sale_order(models.Model):
 
 
 
-
-	# Partner 
-	partner_id = fields.Many2one(
-			'res.partner',
-			string = "Cliente", 	
-
-			ondelete='cascade', 			
-
-			required=True, 
-		)
 
 
 

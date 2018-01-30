@@ -153,4 +153,24 @@
 
 
 
+# 29 Jan 2018
+
+
+			#vals[key] = vals[key].split().upper()		# No - Watch out !
+			#vals[key] = vals[key].upper()
+			#vals[key] = vals[key].strip().upper()
+			#" ".join(sentence.split())			
+
+
+
+
+#@api.model
+#def _lang_get(self):
+#	languages = self.env['res.lang'].search([])
+#	return [(language.code, language.name) for language in languages]
+
+
+
+
+
 

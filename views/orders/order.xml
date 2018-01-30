@@ -855,8 +855,23 @@
 
 
 
-				<field name="partner_id" position="before">
 
+				<field name="partner_id" position="replace">
+<!--
+					<field name="partner_id"	groups="openhealth.roots"			/>
+-->
+					<field name="patient" 				/>
+
+				</field>
+
+
+
+
+<!--
+				<field name="partner_id" position="before">
+-->
+				<field name="patient" position="before">
+	
 					<field name="x_partner_dni"/>
 
 					<field name="vspace"/>
@@ -866,8 +881,10 @@
 
 
 
-
+<!--
 				<field name="partner_id" position="after">
+-->
+				<field name="patient" position="after">
 					
 					<field name="vspace"/>
 

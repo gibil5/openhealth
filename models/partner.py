@@ -710,43 +710,51 @@ class Partner(models.Model):
 
 # ----------------------------------------------------------- CRUD ------------------------------------------------------
 
+	# Create 
 	@api.model
 	def create(self,vals):
 
 		print 
 		print 'CRUD - Partner - Create'
-		print vals
+		#print vals
 		#print 
 	
-
 
 		# Here 
 		key = 'name'
 		if key in vals:
-			print vals[key]
-			#vals[key] = vals[key].split().upper()		# No - Watch out !
-			#vals[key] = vals[key].upper()
-
-
-			#vals[key] = vals[key].strip().upper()
-			#" ".join(sentence.split())			
-
-
 
 			# Compact Name
+			#print vals[key]
 			name = vals[key]
 			name = name.strip().upper()
 			name = " ".join(name.split())			
 			vals[key] = name 
-
-			
 			#print vals[key]
+
 
 
 
 		# Put your logic here 
 		res = super(Partner, self).create(vals)
 		# Put your logic here 
+
+
+
+
+		# Create Patient
+		#print 'Create Patient'
+		#print name  
+		#print res 
+		#name = res.name 
+		#print name  
+		#patient = self.env['oeh.medical.patient'].create({
+		#													'name': name, 
+		#	})
+		#print patient
+		#print patient.name 
+
+
 
 
 		return res
@@ -795,14 +803,4 @@ class Partner(models.Model):
 
 		return res
 	# CRUD - Write 
-
-# ----------------------------------------------------------- END ------------------------------------------------------
-
-
-
-#@api.model
-#def _lang_get(self):
-#	languages = self.env['res.lang'].search([])
-#	return [(language.code, language.name) for language in languages]
-
 

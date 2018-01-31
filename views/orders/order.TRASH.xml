@@ -707,3 +707,34 @@ Order Line - Tree
 
 
 
+<!--
+31 Jan 2018
+-->
+
+<!--
+
+				<xpath expr="//field	[@name='order_line']/tree//field[@name='price_subtotal']" position="replace">
+						<field name="price_total"/>
+				</xpath>
+
+
+				<xpath expr="//field	[@name='order_line']/tree//field[@name='tax_id']" position="replace">
+				</xpath>
+
+				<xpath expr="//field	[@name='order_line']/tree//field[@name='product_uom_qty']" position="replace">
+						<field name="product_uom_qty"	string="Cantidad"/>
+				</xpath>
+
+
+				<xpath expr="//field	[@name='order_line']/tree//field[@name='price_unit']" position="after">
+						<field name="margin"/>
+				</xpath>
+
+				<xpath expr="//field	[@name='order_line']/tree//field[@name='price_subtotal']" position="before">
+						<field name="x_price_vip"/>
+				</xpath>
+-->
+
+
+
+

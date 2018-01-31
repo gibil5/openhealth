@@ -6,17 +6,18 @@
 
 <!-- Ticket Factura -->
 		<report
-			string="Ticket Factura"
-
-			model="sale.order"
-			
 			id="report_ticket_invoice"
 			
+			model="sale.order"
+			
+			string="Ticket Factura"
+
 			report_type="qweb-pdf"
 			
 			name="openhealth.report_ticket_invoice_view"            
 			
 			file="openhealth_ticket.report_ticket_invoice"
+
 		/>
 
 

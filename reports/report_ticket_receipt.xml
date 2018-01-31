@@ -6,24 +6,23 @@
 
 <!-- Ticket Boleta -->
 		<report
-			string="Ticket Boleta"
+			id="report_ticket_receipt"
 
 			model="sale.order"
-			
-			id="report_ticket_receipt"
-			
+
+			string="Ticket Boleta"
+
 			report_type="qweb-pdf"
 			
 			name="openhealth.report_ticket_receipt_view"            
 			
 			file="openhealth_ticket.report_ticket_receipt"
+
 		/>
 
 
 
 		<template id="openhealth.report_ticket_receipt_view">
-
-
 
 			<t t-call="report.html_container">                 
 			<t t-foreach="docs" t-as="doc">

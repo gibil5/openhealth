@@ -18,13 +18,17 @@
 
 	file="openhealth.report_ticket_receipt_nex"
 
+
+
+	paperformat="appointment_receipt"
+/>
+
+<!--
 	attachment_use="True"
 
 	attachment="(object.state in ('open','paid')) and
 		('INV'+(object.number or '').replace('/','')+'.pdf')"
-
-
-/>
+-->
 
 
 
@@ -64,6 +68,7 @@
 </div>
 
 
+
 <!-- My Address --> 
 <div class='row'>
 <b>	
@@ -75,76 +80,72 @@
 
 
 
+
+
+
+
+<br/>
+
 <!-- My Phone --> 
-<div class='row'>
-	<div class='col-xs-4'>		
-		<b>Telf:</b>
-	</div>
-	<div class='col-xs-8'>
-		<t t-esc="doc.x_my_company.phone"/>
-	</div>
-</div>
-
-
-
 <!-- My Ruc --> 
-<div class='row'>
-	<div class='col-xs-4'>		
-		<b>Ruc:</b>
-	</div>
-	<div class='col-xs-8'>
-		<t t-esc="doc.x_my_company.x_ruc"/>
-	</div>
-</div>
-<br/>
-
-
-
-
-
 <!-- Authorization --> 
-<div class='row'>
-	<div class='col-xs-4'>		
-		<b>Autorización</b>
-	</div>
-	<div class='col-xs-8'>
-		<t t-esc="doc.x_my_company.x_authorization"/>
-	</div>
-</div>
-<br/>
+<table style="width:100%">
 
+<!--
+  <tr>
+    <th>Telf</th>
+    <th>Lastname</th> 
+    <th>Age</th>
+  </tr>
+-->
+
+  <tr>
+    <td><b>Telf:</b></td>
+    <td><t t-esc="doc.x_my_company.phone"/></td> 
+    <td></td>
+  </tr>
+
+  <tr>
+    <td><b>Ruc:</b></td>
+    <td><t t-esc="doc.x_my_company.x_ruc"/></td> 
+    <td></td>
+  </tr>
+
+  <tr>
+    <td><b>Autorización:</b></td>
+    <td><t t-esc="doc.x_my_company.x_authorization"/></td> 
+    <td></td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+<br/>
 
 
 
 <!-- Customer --> 
-<div class='row'>
-	<div class='col-xs-4'>		
-		<b>Cliente:</b>
-	</div>
-	<div class='col-xs-8'>
-		<t t-esc="doc.partner_id.name"/>
-	</div>
-</div>
-
 <!-- DNI --> 
-<div class='row'	id='dni'	>
-	<div class='col-xs-4'>		
-		<b>DNI:</b>
-	</div>
-	<div class='col-xs-8'>
-		<t t-esc="doc.partner_id.x_dni"/>
-	</div>
-</div>
-
 <!-- Address --> 
-<div class='row'>
-	<div class='col-xs-4'>		
-		<b>Dirección:</b>
-	</div>
-	<div class='col-xs-8'>
-		<t t-esc="doc.partner_id.x_address"/>
-	</div>
-</div>
+<table style="width:100%">
+  <tr>
+    <td><b>Cliente:</b></td>
+    <td><t t-esc="doc.partner_id.name"/></td> 
+  </tr>
+
+  <tr>
+    <td><b>DNI:</b></td>
+    <td><t t-esc="doc.partner_id.x_dni"/></td> 
+  </tr>
+
+  <tr>
+    <td><b>Dirección:</b></td>
+    <td><t t-esc="doc.partner_id.x_address"/></td> 
+  </tr>
+</table>
 <br/>
 
 
@@ -152,29 +153,18 @@
 
 
 <!-- Date --> 
-<div class='row'>
-	<div class='col-xs-4'>		
-		<b>Fecha:</b>
-	</div>
-	<div class='col-xs-8'>
-<!--
-		<t t-esc="doc.date_order"/>
--->
-		<t t-esc="doc.x_date_order_corr"/>
-	
-	</div>
-</div>
-
-
 <!-- Serial Number --> 
-<div class='row'>
-	<div class='col-xs-4'>		
-		<b>Ticket:</b>
-	</div>
-	<div class='col-xs-8'>
-		<t t-esc="doc.x_serial_nr"/>
-	</div>
-</div>
+<table style="width:100%">
+  <tr>
+    <td><b>Fecha:</b></td>
+    <td><t t-esc="doc.x_date_order_corr"/></td> 
+  </tr>
+
+  <tr>
+    <td><b>Ticket:</b></td>
+    <td><t t-esc="doc.x_serial_nr"/></td> 
+  </tr>
+</table>
 <br/>
 
 
@@ -184,82 +174,80 @@
 
 
 <!-- Line --> 
-<div class='row'>
-	<div class='col-xs-12'>
+<table style="width:100%">
+  <tr>
+    <td>--------------------------------------------------------------</td>
+  </tr>
+</table>
+
+
+
 <!--
-		<t t-esc="doc.cr"/>
+<table style="width:100%">
+  <tr>
+    <td>Desc.</td>
+    <td>Cnt</td>
+    <td>P.Unit</td>
+    <td>Tot.</td>
+  </tr>
+</table>
 -->
-		<h5>--------------------------------------------------------------</h5>
-	</div>
-</div>
-
-
-<!-- Description --> 
-<b>
-<div class='row'>
-	<div class='col-xs-4'>
-		Descr.
-	</div>
-	<div class='col-xs-2'>
-		Cnt
-	</div>
-	<div class='col-xs-3'>
-		P. Unit.
-	</div>
-	<div class='col-xs-3'>
-		Total
-	</div>
-</div>
-</b>
-
-
-<!-- Line --> 
-<div class='row'>
-	<div class='col-xs-12'>
-<!--
-		<t t-esc="doc.cr"/>
--->
-<h5>--------------------------------------------------------------</h5>
-	</div>
-</div>
 
 
 
+
+<table style="width:100%">
+
+  <tr>
+    <th>Desc.</th>
+    <th>Cnt</th>
+    <th>PUnit</th>
+    <th>Total</th>
+  </tr>
 
 
 <!-- Items --> 
 <t t-foreach="doc.order_line" t-as="line">
-<div class='row'>
-		<div class='col-xs-4'>
-			<t t-esc="line.name"/>
-		</div>
-		<div class='col-xs-2'>
-			<t t-esc="line.product_uom_qty"/>
-		</div>
-		<div class='col-xs-3'>
-			<t t-esc="line.price_unit"/>
-		</div>
-		<div class='col-xs-3'>
-			<t t-esc="line.price_subtotal"/>
-		</div>
-</div>
+
+<tr>
+
+<td>
+<!--
+<t t-esc="line.name"/>
+<t t-esc="line.display_name"/>
+-->
+<t t-esc="line.x_description"/>
+</td>
+
+
+<td>
+<t t-esc="line.product_uom_qty"/>
+</td>
+
+<td>
+<t t-esc="line.price_unit"/>
+</td>
+
+<td>
+<t t-esc="line.price_subtotal"/>
+</td>
+</tr>
+
 </t>
+
+</table>
+
+
+
 
 
 
 <!-- Line --> 
-<div class='row'>
-	<div class='col-xs-12'>
-<!--
-		<t t-esc="doc.cr"/>
--->
-		<h5>--------------------------------------------------------------</h5>
-	</div>
-</div>
-<br/>
-
-
-
+<table style="width:100%">
+  <tr>
+    <td>--------------------------------------------------------------</td>
+  </tr>
+</table>
 
 
 

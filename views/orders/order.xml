@@ -985,6 +985,7 @@
 
 
 
+
 <!-- Order Lines  -->
 <xpath expr="//field[@name='order_line']" position="attributes">
 
@@ -994,16 +995,27 @@
 attrs="{'readonly': [('state', 'in', ('done','cancel'))]}">
 
 	<attribute name='readonly'>1</attribute> 
--->
 
 	<attribute name='attrs'>{'readonly': [('state', 'in', ('sent','sale','done','cancel'))]}</attribute> 
+
+-->
+
+	<attribute name='attrs'>{'readonly': [('state', 'in', ('done','cancel'))]}</attribute> 
 
 </xpath>
 
 
 
 
+<!--
+<xpath expr="//tree[@string='Sales Order Lines']/field[@name='name']" position="after">
+	<field name="display_name"/>
+-->
+<xpath expr="//tree/field[@name='name']" position="after">
 
+	<field name="x_description"/>
+
+</xpath>
 
 
 

@@ -36,10 +36,13 @@
 				-->
 				<xpath expr="//notebook" position="inside">
 
-					<page string="Chavarri"  			sequence="1">
+					<page string="Clínica Chavarri"  			sequence="1">
 
 
 						<group>
+
+							<field name="description"/>
+
 
 
 							<field name="x_origin"/>
@@ -48,14 +51,11 @@
 
 							<field name="x_date_updated"/>
 							
-
-
 							<field name="x_name_short"/>
+							
 							<field name="x_price_vip"/>
+							
 							<field name="x_price_vip_return"/>
-
-
-
 
 							<field name="x_family"/>
 
@@ -95,24 +95,6 @@
 
 
 
-		<!-- TREE -->
-		<record model="ir.ui.view" id="product.product_category_list_view">
-			<field name="name">product.category.tree</field>
-			<field name="model">product.category</field>
-			<field name="type">tree</field>
-			<field name="priority" eval="1"/>
-			<field name="arch" type="xml">
-
-				<tree string="Product Category Tree"    default_order="name" >
-
-					<field name="name"/>
-
-					<field name="id"/>
-
-					<field name="parent_id"/>
-				</tree>
-			</field>
-		</record>
 
 
 
@@ -120,7 +102,7 @@
 
 
 
-		<!-- TREE -->
+		<!-- TREE - Product Product -->
 		<record model="ir.ui.view" id="product.product_product_tree_view">
 			<field name="name">product.product.product.tree</field>
 			
@@ -134,6 +116,10 @@
 
 
 					<field name="name"/>
+
+					<field name="description"/>
+
+
 
 					<field name="default_code"/>
 					
@@ -167,7 +153,7 @@
 
 
 
-		<!-- TREE -->
+		<!-- TREE - Product Template -->
 		<record model="ir.ui.view" id="product.product_template_tree_view">
 			<field name="name">product.template.product.tree</field>
 			
@@ -181,6 +167,11 @@
 
 
 					<field name="name"/>
+
+					<field name="description"/>
+
+
+
 					<field name="default_code"/>
 					<field name="categ_id"/>
 
@@ -965,6 +956,24 @@
 
 
 
+		<!-- TREE -->
+		<record model="ir.ui.view" id="product.product_category_list_view">
+			<field name="name">product.category.tree</field>
+			<field name="model">product.category</field>
+			<field name="type">tree</field>
+			<field name="priority" eval="1"/>
+			<field name="arch" type="xml">
+
+				<tree string="Product Category Tree"    default_order="name" >
+
+					<field name="name"/>
+
+					<field name="id"/>
+
+					<field name="parent_id"/>
+				</tree>
+			</field>
+		</record>
 
 	</data>
 </openerp>

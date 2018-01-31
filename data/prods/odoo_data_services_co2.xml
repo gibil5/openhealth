@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
-	<data noupdate='1'>
+	<data noupdate='0'>
 
 
 
@@ -9,6 +9,9 @@
 
 			<field name='name'>LASER CO2 FRACCIONAL - Todo Rostro - Rejuvenecimiento Facial Grado 3 - 1</field>
 			<field name='x_name_short'>co2_faa_rf3_one</field>
+
+			<field name='description'>Co2 T Rostro Rejuv 3</field>
+
 
 
 			<field name='default_code'>100</field>
@@ -32,6 +35,9 @@
 
 			<field name='name'>LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento Cuello Grado 1 - 1</field>
 			<field name='x_name_short'>co2_nec_rn1_one</field>
+
+			<field name='description'>Co2 Cuello Rejuv 1</field>
+
 
 
 			<field name='default_code'>101</field>

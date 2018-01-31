@@ -22,32 +22,58 @@ class sale_order_line(models.Model):
 
 
 
-# ----------------------------------------------------------- Actions ------------------------------------------------------
+# ----------------------------------------------------------- On Changes ------------------------------------------------------
 
-	@api.multi
-	def create_myself(self):  
-
-		print 
-		print 'jx'
-		print 'Create Myself'
-		print 
-
-
-
-
-
+	# Product  
+	#@api.onchange('product_id')
+	#def _onchange_product_id(self):
+	#	print 'jx'
+	#	print 'Change Product'
+		#if self.product_id.description != False: 
+	#	self.name = self.product_id.description 
 
 
 
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
 
-	x_date_created = fields.Datetime(
+	# Description  
+	x_description = fields.Text(
 
-			string='Fecha', 
+			string='Description', 
+		
+			#required=True, 
+
+			compute='_compute_x_description', 
 		)
 
 
+	@api.multi
+	def _compute_x_description(self):
+		for record in self:
+
+			record.x_description = record.product_id.description
+
+
+
+
+
+
+
+
+
+	# Name 
+	name = fields.Text(
+			string='Description', 
+			required=True, 
+		)
+
+
+
+	# Date Created 
+	x_date_created = fields.Datetime(
+			string='Fecha', 
+		)
 
 
 
@@ -282,6 +308,15 @@ class sale_order_line(models.Model):
 
 
 
+# ----------------------------------------------------------- Actions ------------------------------------------------------
+
+	@api.multi
+	def create_myself(self):  
+
+		print 
+		print 'jx'
+		print 'Create Myself'
+		print 
 
 
 

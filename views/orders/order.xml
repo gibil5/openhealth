@@ -987,8 +987,8 @@ attrs="{'readonly': [('state', 'in', ('done','cancel'))]}">
 -->
 <xpath expr="//tree/field[@name='name']" position="after">
 <!--
-	<field name="x_description"/>
 -->
+	<field name="x_description"/>
 </xpath>
 
 

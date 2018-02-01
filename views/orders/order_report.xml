@@ -626,7 +626,7 @@ Look for the Minimalist experience !!!
 									('state', '=', 'sale'),
 
 									('x_date_order_corr','&gt;=', time.strftime('%Y-01-01')),
-									
+
 									('x_date_order_corr','&lt;', time.strftime('%Y-02-01')),
 
 								]
@@ -668,13 +668,21 @@ Look for the Minimalist experience !!!
 ]
 
 
+
+									('x_date_order_corr', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 00:00:00')),
+									('x_date_order_corr', '&lt;=', datetime.datetime.now().strftime('%Y-%m-%d 23:23:59')),
+
+
+									('date_order', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 00:00:00')),
+									('date_order', '&lt;=', datetime.datetime.now().strftime('%Y-%m-%d 23:23:59')),
 -->
 			<field name="domain">[
 
 									('state', '=', 'sale'),
+															
 									('date_order', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 00:00:00')),
 									('date_order', '&lt;=', datetime.datetime.now().strftime('%Y-%m-%d 23:23:59')),
-															
+
 								]</field>
 
 

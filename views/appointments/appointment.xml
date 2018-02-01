@@ -33,16 +33,26 @@
 -->
 				<xpath expr="//field[@name='state']" position="before">
 
+
+
 					<!-- Remove --> 
 					<div class="oe_left">
+							
 							<button 
 								type="object" 
 								class="oe_highlight"
 								name="remove_appointment" 
-								
+					
+
+								groups="openhealth.roots,openhealth.reception"
+
+
 								string="Eliminar" 
 							/>
+					
 					</div>
+
+
 				</xpath>
 
 

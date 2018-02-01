@@ -263,8 +263,8 @@
 
 
 		# Important 
-		'data/prods/data_pathologies.xml',			
-		'views/pathologies/pathology.xml',
+		#'views/pathologies/pathology.xml',
+		#'data/prods/data_pathologies.xml',			
 		#'data/prods/data_nexzones.xml',	
 
 

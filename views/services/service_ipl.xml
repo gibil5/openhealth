@@ -34,8 +34,9 @@
 					<field name="treatment"/>
 					<field name="service"/>
 					<field name="consultation"/>
-
+<!--
 					<field name="state"/>
+-->
 				</tree>
 			</field>
 		</record>

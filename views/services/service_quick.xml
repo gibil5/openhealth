@@ -136,8 +136,10 @@
 
 					<field name="comeback"	string='Retorno'	/>
 
-
+<!--
 					<field name="state"/>
+-->
+
 
 
 <!--

@@ -113,9 +113,9 @@
 
 <!-- Quick --> 
 <!--
-							<page string="QUICK"			attrs="{'invisible':[('nr_services_quick', '=', 0)]}"			>
--->
 							<page string="QUICK">
+-->
+							<page string="QUICK"			attrs="{'invisible':[('nr_services_quick', '=', 0)]}"			>
 
 
 								<field 
@@ -172,19 +172,13 @@
 									
 									</tree>
 								</field>
-							</page>
 
 
 
-<!--							
-							<page string="Histórico"   	groups="openhealth.roots,openhealth.directors"	  
-														attrs="{'invisible':[('nr_services_quick', '=', 0)]}"
-								>
--->
 
-							<page string="Histórico"   	groups="openhealth.roots"	  >
+								<group col='3'	string='Quick'		groups="openhealth.roots"			>
 
-								<group col='3'	string='Quick'	>
+
 									<group>
 										<field name="nr_quick_hands"		/>
 										<field name="nr_quick_body_local"		/>
@@ -205,6 +199,18 @@
 								</group>
 
 							</page>
+
+
+
+<!--							
+							<page string="Histórico"   	groups="openhealth.roots,openhealth.directors"	  
+														attrs="{'invisible':[('nr_services_quick', '=', 0)]}"
+								>
+
+							<page string="Histórico"   	groups="openhealth.roots"	  >
+
+							</page>
+-->
 
 
 

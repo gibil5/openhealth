@@ -82,6 +82,7 @@ class sale_order(models.Model):
 
 
  			res.price_manual_flag = False
+ 			res.price_manual = 0
 
 
 

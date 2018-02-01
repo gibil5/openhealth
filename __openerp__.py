@@ -258,14 +258,14 @@
 
 
 		# Highly Deprecated !
-
-
-
 		#'data/prods/data_zones.xml',	
-		'data/prods/data_nexzones.xml',	
-		'data/prods/data_pathologies.xml',			
 		
+
+
+		# Important 
+		'data/prods/data_pathologies.xml',			
 		'views/pathologies/pathology.xml',
+		#'data/prods/data_nexzones.xml',	
 
 
 

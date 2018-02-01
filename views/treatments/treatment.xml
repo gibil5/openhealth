@@ -163,6 +163,8 @@
 Add Procedures 
 -->
 <!--
+-->
+
 						<button 
 							type="object" 
 							class="oe_highlight"
@@ -208,7 +210,6 @@ Add Procedures
 
 							groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
 						/>
--->
 
 
 
@@ -788,7 +789,7 @@ Fields
 <!--
 -->
 								<field name="add_procedures" />
-								
+
 							</group>							
 							<group>
 								<field name="start_date"/>

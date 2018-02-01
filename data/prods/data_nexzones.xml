@@ -4,6 +4,10 @@
 
 
 
+<!-- Important -->
+
+
+
 		<!-- Body local -->
 		<record id='zone_body_local' model='openhealth.nexzone'>
 			<field name='name'>Localizado Cuerpo</field>

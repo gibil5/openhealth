@@ -137,11 +137,13 @@ from . import counter_raw
 
 # Deprecated ? 
 #from . import zone_category
+#from . import pathology_category
+
+
 
 
 
 # Important 
-#from . import pathology_category
 from . import nexzone
 from . import pathology
 

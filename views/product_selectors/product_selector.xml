@@ -103,6 +103,24 @@
 							<group>
 								<field name="product_uom_qty" />
 
+
+								<field name="price_manual_flag" />
+
+
+
+								<field name="price_manual" 
+																attrs="{
+																	
+																		'invisible':[('price_manual_flag', '==', False)], 
+																		'required':[('price_manual_flag', '!=', False)], 
+																	
+																	}"
+									/>
+
+
+
+
+
 								<field name="x_type" 	readonly="1"	/>
 
 <!--

@@ -58,6 +58,12 @@ class ProductSelector(models.Model):
 
 													'product_uom_qty': self.product_uom_qty, 
 
+
+
+													'x_price_manual': self.price_manual, 
+
+
+
 													#'price_subtotal': line.price_subtotal,
 												})
 
@@ -71,6 +77,28 @@ class ProductSelector(models.Model):
 
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+
+	price_manual_flag = fields.Boolean(
+			
+			string="Precio manual",
+			
+			required=False, 
+		)
+
+
+
+
+	# Price manual
+	price_manual = fields.Float(
+			
+			string="Valor",
+			
+			required=False, 
+		)
+	
+
+
 
 
 	# Zone 

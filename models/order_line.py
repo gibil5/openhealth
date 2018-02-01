@@ -144,6 +144,7 @@ class sale_order_line(models.Model):
 		digits=dp.get_precision('Product Price'), 
 		default=0.0, 
 	
+	
 		compute='_compute_price_unit', 
 	)
 

@@ -81,6 +81,10 @@ class sale_order(models.Model):
 	 		res.order_id = order_id
 
 
+ 			res.price_manual_flag = False
+
+
+
 
 	 		if x_type == 'product': 
 	 			res.treatment = False

@@ -66,13 +66,13 @@
 
 						<!-- State --> 
 <!--						
+-->
 						<field 	name="state" 
 								widget="statusbar" 
 
 
 								statusbar_visible="draft, done, budget, procedure"
 						/>
--->
 					</header>
 
 
@@ -103,7 +103,6 @@
 						
 						<field name="title"  invisible="0" />													
 									
-
 							<group>
 								<group>
 								</group>
@@ -112,7 +111,7 @@
 								</group>
 							</group>
 
-
+<!--
 							<group>
 								<group>
 									
@@ -122,7 +121,7 @@
 								<group>									
 								</group>
 							</group>
-
+-->
 
 							<group>
 								<group>

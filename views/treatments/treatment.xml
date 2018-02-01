@@ -786,8 +786,9 @@ Fields
 								<field name="vspace" />
 
 <!--
-								<field name="add_procedures" />
 -->
+								<field name="add_procedures" />
+								
 							</group>							
 							<group>
 								<field name="start_date"/>

@@ -120,8 +120,10 @@ grey:state in ('cancel')
 								<field name="date_order"/>					
 
 
-
+<!--
 								<field name="x_procedure_created"/>
+-->
+
 
 <!--
 								<field name="x_target"/>

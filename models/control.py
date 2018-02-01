@@ -5,15 +5,11 @@
 # Created: 				 1 Nov 2016
 # Last updated: 	 	 20 Jun 2017
 
-
-
 from openerp import models, fields, api
-import datetime
 
-#from . import jxvars
+import datetime
 from . import eval_vars
 from . import time_funcs
-
 
 
 
@@ -27,15 +23,43 @@ class Control(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+	# state 
+	state = fields.Selection(
+
+			selection = eval_vars._state_list, 
+			
+			compute='_compute_state', 
+		)
+
+
+	@api.multi
+	#@api.depends('state')
+
+	def _compute_state(self):
+		for record in self:
+
+			state = 'draft'
+
+			if record.x_done: 
+				state = 'done'
+
+			record.state = state
+
+
+
+
+
+
+
+
 	# Name 
 	name = fields.Char(
 			#string = 'Control #',
 			string = 'Nombre',
 		)
-
-
-
-
 
 
 
@@ -135,43 +159,7 @@ class Control(models.Model):
 
 
 
-	# state 
-	state = fields.Selection(
-			selection = eval_vars._state_list, 
-			
-			#string='Estado',	
-			#default='draft',
 
-			compute='_compute_state', 
-		)
-
-	@api.multi
-	#@api.depends('state')
-
-	def _compute_state(self):
-		for record in self:
-
-			state = 'draft'
-
-
-
-			#if record.nr_images > 0:
-			#	state = 'inprogress'
-
-			#if record.nr_images > 2:
-			#	state = 'done'
-			#	for image in record.image_ids:
-			#		if image.name not in ['Frente', 'Derecha', 'Izquierda', 'frente', 'derecha', 'izquierda', 'FRENTE', 'DERECHA', 'IZQUIERDA', ]:
-			#			state = 'inprogress'
-
-
-
-
-			if record.x_done: 
-				state = 'done'
-
-
-			record.state = state
 
 
 

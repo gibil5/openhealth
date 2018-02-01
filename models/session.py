@@ -2,30 +2,54 @@
 #
 # 	*** Session 	
 # 
-
 # Created: 				 1 Nov 2016
 # Last updated: 	 	 7 Dec 2016 
 
-
-
 from openerp import models, fields, api
+
 from datetime import datetime
-
-
-
-from . import jxvars
+#from . import jxvars
 from . import time_funcs
-
-
+from . import eval_vars
 
 
 class Session(models.Model):
+
 	_name = 'openhealth.session'
 
-	#_inherit = 'oeh.medical.evaluation'
-	#_inherit = ['oeh.medical.evaluation', 'openhealth.base']
-	#_inherit = ['oeh.medical.evaluation', 'base_multi_image.owner', 'openhealth.base']
 	_inherit = ['oeh.medical.evaluation', 'base_multi_image.owner']
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+	# state 
+	state = fields.Selection(
+
+			selection = eval_vars._state_list, 
+			
+			compute='_compute_state', 
+		)
+
+
+	@api.multi
+	#@api.depends('state')
+
+	def _compute_state(self):
+		for record in self:
+
+			state = 'draft'
+
+			if record.x_done: 
+				state = 'done'
+
+			record.state = state
+
+
 
 
 

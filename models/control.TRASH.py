@@ -81,5 +81,33 @@
 
 
 
+# 1 Feb 2018
+
+	def _compute_state(self):
+		for record in self:
+
+			state = 'draft'
+
+
+			#if record.nr_images > 0:
+			#	state = 'inprogress'
+
+			#if record.nr_images > 2:
+			#	state = 'done'
+			#	for image in record.image_ids:
+			#		if image.name not in ['Frente', 'Derecha', 'Izquierda', 'frente', 'derecha', 'izquierda', 'FRENTE', 'DERECHA', 'IZQUIERDA', ]:
+			#			state = 'inprogress'
+
+
+
+			if record.x_done: 
+				state = 'done'
+
+
+			record.state = state
+
+
+
+
 
 

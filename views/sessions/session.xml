@@ -441,8 +441,25 @@
 			<field name="model">openhealth.session.med</field>
 			
 			<field name="arch" type="xml">
-				
-				<tree string="Session Med Tree">
+
+
+
+				<tree string="Session Med Tree"
+
+
+colors="
+
+red:state=='draft';
+
+green:state=='inprogress';
+
+blue:state=='done'
+
+"
+
+>
+
+
 					
 					<!-- Quick Button -->
 					<button 
@@ -470,11 +487,12 @@
 
 					<field name="evaluation_start_date"/>
 					
-
-
 					<field name="nr_images"/>
 
 
+
+
+					<field name="state"/>
 
 					<field name="x_done"/>
 

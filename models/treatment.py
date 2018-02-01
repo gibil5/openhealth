@@ -23,9 +23,11 @@ from . import treatment_vars
 class Treatment(models.Model):
 
 	#_inherit = 'openextension.treatment'
-
 	_inherit = 'openhealth.process'	
+
+
 	_name = 'openhealth.treatment'
+
 
 	#_order = 'start_date desc'
 	_order = 'write_date desc'
@@ -47,6 +49,41 @@ class Treatment(models.Model):
 
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+
+	# orders 
+	order_ids = fields.One2many(
+			'sale.order',			 
+			'treatment', 
+			string="Presupuestos",
+			
+
+			#states=READONLY_STATES,
+
+
+			#domain = [
+						#('state', '=', 'order'),
+						#('state', 'in', ['order', 'done'])
+			#		],
+		)
+
+
+
+
+	# Important !!
+	order_pro_ids = fields.One2many(
+			'sale.order',			 
+			'treatment', 
+			string="Presupuestos",
+
+			domain = [
+						('x_family', '=', 'procedure'),
+					],
+		)
+
+
+
+
 
 
 	# Add Procedures 
@@ -1452,15 +1489,6 @@ class Treatment(models.Model):
 
 
 
-	# Important !!
-	order_pro_ids = fields.One2many(
-			'sale.order',			 
-			'treatment', 
-			string="Presupuestos",
-			domain = [
-						('x_family', '=', 'procedure'),
-					],
-		)
 
 
 
@@ -1475,22 +1503,6 @@ class Treatment(models.Model):
 
 	}
 
-
-	# orders 
-	order_ids = fields.One2many(
-			'sale.order',			 
-			'treatment', 
-			string="Presupuestos",
-			
-
-			#states=READONLY_STATES,
-
-
-			#domain = [
-						#('state', '=', 'order'),
-						#('state', 'in', ['order', 'done'])
-			#		],
-		)
 
 
 

@@ -2785,16 +2785,20 @@ class sale_order(models.Model):
 			# Easiest first 
 			m_dic = {
 
-						'laser_quick': 			['laser_quick'], 
+						'consultation':			[], 
 
+						'laser_quick': 			['laser_quick'], 
 						'laser_co2_1': 			['laser_co2_1', 'laser_co2_2', 'laser_co2_3'], 
 						'laser_excilite': 		['laser_excilite'], 
 						'laser_m22': 			['laser_m22'], 
+
+
 						'laser_triactive': 		['laser_triactive'], 
 						'chamber_reduction': 	['chamber_reduction'], 
 						'carboxy_diamond': 		['carboxy_diamond'], 
 
-						'consultation':			[], 
+
+						'':						[], 
 				}
 
 

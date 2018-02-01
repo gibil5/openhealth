@@ -175,7 +175,9 @@
 					<field name="default_code"/>
 					<field name="categ_id"/>
 
+
 					<field name="x_family"/>
+					<field name="x_treatment"/>				
 
 
 

@@ -17,6 +17,11 @@ from . import treatment_vars
 from num2words import num2words
 
 
+#from calendar import monthrange
+#from datetime import datetime
+
+
+
 class sale_order(models.Model):
 	
 	_inherit='sale.order'

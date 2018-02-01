@@ -225,6 +225,8 @@
 
 <!-- Reports --> 			
 <!--
+order_report.xml
+-->
 		<menuitem 	id="order_report_menu" 
 					name="Reporte de Ventas"
 					parent="main_sales_menu"
@@ -237,6 +239,7 @@
 						name="Del Mes"
 			
 						parent="order_report_menu"
+						
 						sequence="1"
 
 						action="order_report_month_list_action"
@@ -252,7 +255,6 @@
 						action="order_report_day_list_action"
 						/>
 
--->
 
 
 

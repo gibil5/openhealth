@@ -597,7 +597,9 @@ Look for the Minimalist experience !!!
 			<field name="name">Ventas - Del Mes</field>
 			
 			<field name="res_model">sale.order</field>
+
 			<field name="view_type">form</field>
+
 			<field name="view_mode">tree,form</field>
 
 
@@ -609,12 +611,24 @@ Look for the Minimalist experience !!!
 ('date_order','&gt;=',time.strftime('%%Y-%%m-01'))
 
 									('date_order','&lt;',( datetime.datetime.now() +relativedelta(months=1)).strftime('%Y-%m-01')), 
+
+
+									('date_order','&lt;', time.strftime('%Y-%m-31')),				## Very Dangerous !
+									
+									('date_order','&lt;', time.strftime('%Y-%m-28')),
+									('date_order','&lt;', time.strftime('%Y-%m-28')),
+
+									('date_order','&gt;=', time.strftime('%Y-%m-01')),
+									('date_order','&lt;', time.strftime('%Y-03-01')),
 -->
 
 			<field name="domain">[
 									('state', '=', 'sale'),
-									('date_order','&gt;=', time.strftime('%Y-%m-01')),
-									('date_order','&lt;', time.strftime('%Y-%m-31')),
+
+									('x_date_order_corr','&gt;=', time.strftime('%Y-01-01')),
+									
+									('x_date_order_corr','&lt;', time.strftime('%Y-02-01')),
+
 								]
 			</field>
 

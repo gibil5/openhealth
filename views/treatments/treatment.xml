@@ -162,13 +162,7 @@
 <!--
 Add Procedures 
 -->
-
 <!--
-
-							states="controls"
--->
-
-						<!-- Create Service --> 
 						<button 
 							type="object" 
 							class="oe_highlight"
@@ -185,10 +179,6 @@ Add Procedures
 						/>
 
 
-						<!-- Create Order --> 
-<!--
-							states="controls"
--->
 
 						<button 
 							type="object" 
@@ -205,10 +195,7 @@ Add Procedures
 						/>
 
 
-						<!-- Create Procedure --> 
-<!--
-							states="controls"
--->
+
 						<button 
 							type="object" 
 							class="oe_highlight"
@@ -221,7 +208,7 @@ Add Procedures
 
 							groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
 						/>
-
+-->
 
 
 

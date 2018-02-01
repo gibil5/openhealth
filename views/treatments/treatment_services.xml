@@ -93,8 +93,11 @@
 										
 										<field name="zone"/>														
 
-
 										<field name="physician"/>
+
+
+
+										<field name="state"/>
 
 									</tree>
 								</field>
@@ -169,7 +172,10 @@
 										<field name="price_vip"/>
 										<field name="price_vip_return"/>
 										<field name="price_applied"/>
-									
+					
+
+										<field name="state"/>
+
 									</tree>
 								</field>
 
@@ -249,6 +255,9 @@
 										<field name="treatment"/>
 										<field name="service"/>
 										<field name="consultation"/>
+
+
+										<field name="state"/>
 									</tree>
 								</field>
 
@@ -274,6 +283,9 @@
 										<field name="treatment"/>
 										<field name="service"/>
 										<field name="consultation"/>
+
+
+										<field name="state"/>
 									</tree>
 								</field>
 
@@ -302,6 +314,9 @@
 										<field name="treatment"/>
 										<field name="service"/>
 										<field name="consultation"/>
+
+
+										<field name="state"/>
 									</tree>
 								</field>
 
@@ -328,6 +343,9 @@
 										<field name="treatment"/>
 										<field name="service"/>
 										<field name="consultation"/>
+
+
+										<field name="state"/>
 									</tree>
 								</field>
 							</page>

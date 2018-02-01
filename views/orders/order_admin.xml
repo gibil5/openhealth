@@ -37,9 +37,9 @@
 
 									<field name="vspace" />
 
-
+<!--
 									<field name="x_procedure_created" />
-
+-->
 
 									<field name="x_doctor_uid"	invisible="1"				/>
 									<field name="user_id"		string="Generado por"		readonly="1"/>

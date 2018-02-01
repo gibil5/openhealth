@@ -5,16 +5,14 @@
 # Created: 				20 Sep 2016
 # Last updated: 	 	12 Oct 2016
 
-
 from openerp import models, fields, api
 from datetime import datetime
-
 from . import exc
 from . import ipl
 from . import prodvars
+
 from . import serv_funcs
-
-
+from . import serv_vars
 
 
 class Service(models.Model):
@@ -22,6 +20,29 @@ class Service(models.Model):
 	_name = 'openhealth.service'
 
 	#_inherit = 'openhealth.base', 
+
+
+
+
+
+
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+
+
+	state = fields.Selection(
+
+			#selection = _state_list, 
+			selection = serv_vars._state_list, 
+		
+			string='Estado', 			
+
+			default = 'draft', 
+
+			#compute="_compute_state",
+		)
+
+
 
 
 

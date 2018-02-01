@@ -90,12 +90,20 @@ def create_order_lines(self, laser, order_id):
 	#print 
 
 
-	rec_set = self.env[_model[laser]].search([(
-																		'treatment','=', self.id),
+
+	# Services 
+	rec_set = self.env[_model[laser]].search([
+											
+														('treatment','=', self.id),
+
+														('state','=', 'draft'),
+											
 												],
-												#order='appointment_date desc',
-												#limit=1,						
+											#order='appointment_date desc',
+											#limit=1,						
 											)		
+
+
 
 	if rec_set != False: 
 
@@ -116,6 +124,11 @@ def create_order_lines(self, laser, order_id):
 
 			#ret = order.x_create_order_lines_target(target_line)
 			ret = order.x_create_order_lines_target(target_line, price_manual)
+
+
+
+			# Update state 
+			service.state = 'budget'
 
 					
 			#print ret 
@@ -178,11 +191,25 @@ def create_procedure_go(self):
 	ret = 0
 	for order in self.order_pro_ids:
 
-		if order.state == 'sale': 
+
+
+
+		#if order.state == 'sale': 
+		if order.state == 'sale' 	and 	not order.x_procedure_created: 
+
+			
+			order.x_procedure_created = True
+
+
+
 	
 			for line in order.order_line:
 
-				if self.nr_procedures < order.nr_lines:
+
+
+				#if self.nr_procedures < order.nr_lines:			# ?
+
+
 
 					product_product = line.product_id
 

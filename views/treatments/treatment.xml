@@ -85,21 +85,26 @@
 
 
 
+
+
+
+
+
+
 <!--
 							string="RECOMENDACION" 
+							states="consultation,service"
 -->
 						<!-- Create Service --> 
 						<button 
-
 							type="object" 
-
 							class="oe_highlight"
-
 							string="Crear RECOMENDACION" 
+							name="create_service" 
+
 
 							states="consultation,service"
 
-							name="create_service" 
 
 							groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
 						/>
@@ -109,18 +114,14 @@
 
 <!--
 							string="PRESUPUESTO" 
+
+							states="service"
 -->
 						<!-- Create Order --> 
 						<button 
-
-
 							type="object" 
-
 							name="create_order_pro" 
-
 							class="oe_highlight"
-  
-  
 							string="Crear PRESUPUESTO - Procedimiento" 
 
 
@@ -135,23 +136,105 @@
 
 <!--
 							states="budget_procedure,invoice_procedure"
+
+							states="invoice_procedure"
 -->
 
 						<!-- Create Procedure --> 
 						<button 
 							type="object" 
 							class="oe_highlight"
+							name="create_procedure" 
+							string="Crear PROCEDIMIENTO" 
 
 
 							states="invoice_procedure"
 
 
-							name="create_procedure" 
-
-
-							string="Crear PROCEDIMIENTO" 
 							groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
 						/>
+
+
+
+
+
+
+<!--
+Add Procedures 
+-->
+
+<!--
+
+							states="controls"
+-->
+
+						<!-- Create Service --> 
+						<button 
+							type="object" 
+							class="oe_highlight"
+							string="RECOMENDACION" 
+							name="create_service" 
+
+
+
+							attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
+
+
+
+							groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
+						/>
+
+
+						<!-- Create Order --> 
+<!--
+							states="controls"
+-->
+
+						<button 
+							type="object" 
+							name="create_order_pro" 
+							class="oe_highlight"
+							string="PRESUPUESTO" 
+
+
+							attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
+
+
+						groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
+					
+						/>
+
+
+						<!-- Create Procedure --> 
+<!--
+							states="controls"
+-->
+						<button 
+							type="object" 
+							class="oe_highlight"
+							name="create_procedure" 
+							string="PROCEDIMIENTO" 
+
+
+							attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
+
+
+							groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
+						/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -713,6 +796,10 @@ Fields
 
 								<field name="chief_complaint"	required="1"	/>
 
+								<field name="vspace" />
+
+
+								<field name="add_procedures" />
 							</group>							
 							<group>
 								<field name="start_date"/>

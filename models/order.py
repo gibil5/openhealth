@@ -159,6 +159,12 @@ class sale_order(models.Model):
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
 
+	# Proc Created 
+	x_procedure_created = fields.Boolean(
+			default=False, 
+		)
+
+
 
 	# Partner 
 	partner_id = fields.Many2one(

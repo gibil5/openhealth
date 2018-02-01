@@ -62,6 +62,17 @@
 								string="Regresar a la COSMIATRIA"
 						/>
 
+
+
+						<!-- State --> 
+<!--						
+						<field 	name="state" 
+								widget="statusbar" 
+
+
+								statusbar_visible="draft, done, budget, procedure"
+						/>
+-->
 					</header>
 
 
@@ -100,18 +111,27 @@
 									<h1><field name="treatment" class="oe_inline"/></h1>
 								</group>
 							</group>
-									
 
 
 							<group>
 								<group>
+									
+									<field name="state" />
+
+								</group>
+								<group>									
+								</group>
+							</group>
+
+
+							<group>
+								<group>
+
 									<field name="laser" 		readonly="1"  		invisible="0"/>	
 
 									<field name="x_treatment" 	readonly="1"   		invisible="1"/>
 
 									<field name="vspace" />
-
-
 
 									<field name="zone" 			invisible="0"						/>
 
@@ -119,15 +139,14 @@
 
 									<field name="pathology" 	readonly="0"  	invisible="0"		/>									
 
-
-									
 									<field name="sessions" 		readonly="1"  	invisible="1"/>									
 									
 									<field name="time" 			readonly="1"  	invisible="1"/>									
 
+
+
 <!--
 									<field name="zone" 			readonly="1"   	invisible="0"/>
-
 									<field name="pathology" 	/>									
 									<field name="sessions" 		/>									
 									<field name="time" 			/>									

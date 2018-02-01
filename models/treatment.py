@@ -48,6 +48,19 @@ class Treatment(models.Model):
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
 
+
+	# Add Procedures 
+	add_procedures = fields.Boolean(
+			string="Agregar Procedimientos", 
+			default=False, 
+		)	
+
+
+
+
+
+
+
 	# User 
 	user_id = fields.Many2one(
 			'res.users', 

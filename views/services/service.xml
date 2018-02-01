@@ -71,7 +71,7 @@
 								widget="statusbar" 
 
 
-								statusbar_visible="draft, done, budget, procedure"
+								statusbar_visible="draft, budget"
 						/>
 					</header>
 

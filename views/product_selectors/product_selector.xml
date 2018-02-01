@@ -104,9 +104,9 @@
 								<field name="product_uom_qty" />
 
 
+
+<!--
 								<field name="price_manual_flag" />
-
-
 
 								<field name="price_manual" 
 																attrs="{
@@ -116,7 +116,7 @@
 																	
 																	}"
 									/>
-
+-->
 
 
 

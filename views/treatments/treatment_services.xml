@@ -182,7 +182,7 @@
 								>
 -->
 
-							<page string="Histórico"   	groups="openhealth.roots,openhealth.directors"	  >
+							<page string="Histórico"   	groups="openhealth.roots"	  >
 
 								<group col='3'	string='Quick'	>
 									<group>

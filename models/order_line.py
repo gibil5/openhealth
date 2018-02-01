@@ -39,12 +39,10 @@ class sale_order_line(models.Model):
 
 	# Description  
 	x_description = fields.Text(
-
 			string='Description', 
-		
 			#required=True, 
 
-			compute='_compute_x_description', 
+			#compute='_compute_x_description', 
 		)
 
 

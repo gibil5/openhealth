@@ -1209,12 +1209,12 @@ grey:state in ('cancel')
 
 
 		<!-- Sales Month --> 
+<!--		
 		<record model="ir.actions.act_window" id="sale_august_list_action">
 			<field name="name">Ventas Agosto</field>
 			<field name="res_model">sale.order</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
-
 			<field name="domain">[
 									('state', '=', 'sale'),
 
@@ -1223,7 +1223,6 @@ grey:state in ('cancel')
 								]
 			</field>
 
-			<!--
 			<field name="domain">[]</field>
 			<field name="context">{}</field>
 			<field name="view_id" eval="False"/>
@@ -1231,8 +1230,8 @@ grey:state in ('cancel')
 				<p class="oe_view_nocontent_create">Create the first invoice
 				</p>
 			</field>
-			-->
 		</record>
+			-->
 
 
 
@@ -1375,29 +1374,22 @@ grey:state in ('cancel')
 
 <!-- Favorites -->
 		<!-- By Month --> 
+<!--		
 		<record id="sale.filter_sale_order_month" model="ir.filters">
-
 			<field name="name">Por Mes</field>
-
 			<field name="model_id">sale.order</field>
-<!--	        
-			<field name="user_id" eval="False"/>
-			<field name="context">{'group_by': ['date:month', 'product_id']}</field>
--->
 			<field name="context">{'group_by': ['date_order']}</field>
 		</record>
-
+-->
 
 		<!-- By Doctor --> 
+<!--		
 		<record id="sale.filter_sale_order_phy" model="ir.filters">
-
 			<field name="name">Por Medico</field>
-
 			<field name="model_id">sale.order</field>
-
 			<field name="context">{'group_by': ['x_doctor']}</field>
 		</record>
-
+-->
 
 	</data>
 </openerp>

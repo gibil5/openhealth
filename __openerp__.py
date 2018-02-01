@@ -132,7 +132,7 @@
 
 		'reports/report_ticket_receipt.xml',
 		
-		'reports/report_ticket_receipt_nex.xml',
+		#'reports/report_ticket_receipt_nex.xml',
 
 
 
@@ -591,11 +591,10 @@
 
 		# Menus
 		'views/menus/menus.xml',
-		'views/menus/menus_reporting.xml',
-		'views/menus/menus_openhealth.xml',
 
-
-		'views/menus/menus_inventory.xml',
+		#'views/menus/menus_reporting.xml',
+		#'views/menus/menus_openhealth.xml',
+		#'views/menus/menus_inventory.xml',
 		
 
 
@@ -723,6 +722,7 @@
 		'views/patients/patient_control_docs.xml',
 		'views/patients/patient_appointments.xml',
 		'views/patients/patient_quick.xml',
+		
 		#'views/patients/patient_treatments.xml',
 		#'views/patients/patient_cosmetologies.xml',
 

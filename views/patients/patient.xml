@@ -509,6 +509,7 @@ Cosmetology
 		<!-- FAVS -->
 
 		<!-- By Month --> 
+<!--		
 		<record id="openhealth.filter_patient_month" model="ir.filters">
 			<field name="name">Por Mes</field>
 			<field name="model_id">oeh.medical.patient</field>
@@ -517,7 +518,7 @@ Cosmetology
 									'order':	'x_date_created desc', 
 								}</field>
 		</record>
-
+-->
 		<!-- By Vip --> 
 		<!--		
 		<record id="openhealth.filter_patient_vip" model="ir.filters">

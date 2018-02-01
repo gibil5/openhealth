@@ -85,6 +85,8 @@ class sale_order(models.Model):
  			res.price_manual = 0
 
 
+	 		res.family = False
+
 
 
 	 		if x_type == 'product': 

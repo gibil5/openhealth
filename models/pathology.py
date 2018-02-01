@@ -17,6 +17,30 @@ class Pathology(models.Model):
 
 
 
+
+
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+
+	zone_ids = fields.One2many(
+
+			#'openhealth.zone', 
+			'openhealth.nexzone', 
+
+			'pathology', 
+		)
+
+
+
+
+
+
+
+
+
+
+
+
 	# Name 
 	name = fields.Char(
 		)
@@ -28,10 +52,6 @@ class Pathology(models.Model):
 
 
 
-	zone_ids = fields.One2many(
-			'openhealth.zone', 
-			'pathology', 
-		)
 
 
 

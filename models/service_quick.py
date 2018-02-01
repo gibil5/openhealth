@@ -10,15 +10,88 @@ from . import serv_funcs
 from . import prodvars
 
 
-
-
 class ServiceQuick(models.Model):
 
 	_inherit = 'openhealth.service'
 
 	_name = 'openhealth.service.quick'
 
+
+
 	
+
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+
+	# Pathology
+	nex_pathology = fields.Many2one(
+
+			'openhealth.pathology',
+		
+			string="Nex Pathology", 
+
+			domain = [
+						('treatment', '=', 'laser_quick'),
+					],
+		)
+
+
+	@api.onchange('nex_pathology')
+	def _onchange_nex_pathology(self):
+		if self.nex_pathology != False:	
+			self.pathology = self.nex_pathology.name_short
+			return {
+						'domain': {'service': [
+												('x_treatment', '=', 'laser_quick'),
+												('x_pathology', '=', self.pathology),
+												('x_zone', '=', self.zone)			
+										]},
+			}
+
+
+
+
+
+	# Zone 
+	nex_zone = fields.Many2one(
+			'openhealth.zone',
+			string="Nex Zone", 
+
+			domain = [
+						#('categ', '=', 'laser_quick'),
+						('treatment', '=', 'laser_quick'),
+					],
+		)
+
+
+	@api.onchange('nex_zone')
+	def _onchange_nex_zone(self):
+
+		if self.nex_zone != False:	
+
+			self.zone = self.nex_zone.name_short
+
+			return {
+
+				'domain': {		
+								'service': 	[
+												('x_treatment', '=', 'laser_quick'),
+												('x_zone', '=', self.zone),
+											], 
+
+								'nex_pathology': [
+													(self.nex_zone.name_short, '=', True),
+												], 
+						},
+				}
+
+
+
+
+
+
+
+
 
 
 
@@ -206,43 +279,6 @@ class ServiceQuick(models.Model):
 
 
 
-	# Zone 
-	nex_zone = fields.Many2one(
-			'openhealth.zone',
-			string="Nex Zone", 
-
-			domain = [
-						#('categ', '=', 'laser_quick'),
-						('treatment', '=', 'laser_quick'),
-					],
-		)
-
-
-	@api.onchange('nex_zone')
-	def _onchange_nex_zone(self):
-
-		if self.nex_zone != False:	
-
-			self.zone = self.nex_zone.name_short
-
-
-			#if self.nex_zone == 'body_local': 
-
-
-			return {
-
-				'domain': {		
-								'service': 	[
-												('x_treatment', '=', 'laser_quick'),
-												('x_zone', '=', self.zone),
-											], 
-
-								'nex_pathology': [
-													#('body_local', '=', True),
-													(self.nex_zone.name_short, '=', True),
-												], 
-						},
-				}
 
 
 
@@ -250,35 +286,6 @@ class ServiceQuick(models.Model):
 
 
 
-
-
-	# Pathology
-	nex_pathology = fields.Many2one(
-			'openhealth.pathology',
-			string="Nex Pathology", 
-
-			domain = [
-						('treatment', '=', 'laser_quick'),
-					],
-		)
-
-
-
-	@api.onchange('nex_pathology')
-
-	def _onchange_nex_pathology(self):
-
-		if self.nex_pathology != False:	
-
-			self.pathology = self.nex_pathology.name_short
-
-			return {
-						'domain': {'service': [
-												('x_treatment', '=', 'laser_quick'),
-												('x_pathology', '=', self.pathology),
-												('x_zone', '=', self.zone)			
-										]},
-			}
 
 
 

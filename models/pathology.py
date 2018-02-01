@@ -31,67 +31,6 @@ class Pathology(models.Model):
 		)
 
 
-
-
-
-
-
-
-
-
-
-
-	# Name 
-	name = fields.Char(
-		)
-
-	# Name short
-	name_short = fields.Char(
-		)
-
-
-
-
-
-
-
-	body_local = fields.Boolean(
-		)
-
-	face_local = fields.Boolean(
-		)
-
-	face_all = fields.Boolean(
-		)
-
-
-
-
-	face_all_hands = fields.Boolean(
-		)
-
-	face_all_neck = fields.Boolean(
-		)
-
-	cheekbones = fields.Boolean(
-		)
-
-
-
-	hands = fields.Boolean(
-		)
-
-	neck = fields.Boolean(
-		)
-
-	neck_hands = fields.Boolean(
-		)
-
-
-
-
-
-
 	treatment = fields.Selection(
 
 			[
@@ -104,6 +43,50 @@ class Pathology(models.Model):
 			], 
 
 		)
+
+
+
+
+
+
+
+
+
+
+	name = fields.Char(
+		)
+
+	name_short = fields.Char(
+		)
+
+	body_local = fields.Boolean(
+		)
+
+	face_local = fields.Boolean(
+		)
+
+	face_all = fields.Boolean(
+		)
+
+	face_all_hands = fields.Boolean(
+		)
+
+	face_all_neck = fields.Boolean(
+		)
+
+	cheekbones = fields.Boolean(
+		)
+
+	hands = fields.Boolean(
+		)
+
+	neck = fields.Boolean(
+		)
+
+	neck_hands = fields.Boolean(
+		)
+
+
 
 
 

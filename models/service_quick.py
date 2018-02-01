@@ -54,7 +54,10 @@ class ServiceQuick(models.Model):
 
 	# Zone 
 	nex_zone = fields.Many2one(
-			'openhealth.zone',
+
+			#'openhealth.zone',
+			'openhealth.nexzone',
+
 			string="Nex Zone", 
 
 			domain = [
@@ -65,6 +68,7 @@ class ServiceQuick(models.Model):
 
 
 	@api.onchange('nex_zone')
+
 	def _onchange_nex_zone(self):
 
 		if self.nex_zone != False:	
@@ -80,7 +84,9 @@ class ServiceQuick(models.Model):
 											], 
 
 								'nex_pathology': [
+
 													(self.nex_zone.name_short, '=', True),
+								
 												], 
 						},
 				}

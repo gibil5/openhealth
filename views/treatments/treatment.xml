@@ -168,7 +168,7 @@ Add Procedures
 						<button 
 							type="object" 
 							class="oe_highlight"
-							string="RECOMENDACION" 
+							string="RECOMENDACIONES" 
 							name="create_service" 
 
 
@@ -202,7 +202,7 @@ Add Procedures
 							type="object" 
 							class="oe_highlight"
 							name="create_procedure" 
-							string="PROCEDIMIENTO" 
+							string="PROCEDIMIENTOS" 
 
 
 							attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
@@ -788,7 +788,6 @@ Fields
 
 <!--
 -->
-								<field name="add_procedures" />
 
 							</group>							
 							<group>
@@ -808,8 +807,11 @@ Fields
 
 								<field name="vspace" />
 
-								<field name="user_id"/>
+								<field name="add_procedures" />
 
+								<field name="vspace" />
+
+								<field name="user_id"			groups="openhealth.roots"		/>
 <!--
 								<field name="consultation_progress"		/>
 								<field name="price_total"/>

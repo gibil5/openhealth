@@ -19,7 +19,7 @@
 																		'default_co2_mode_exposure': 'one', 
 																		'default_co2_observations': 'x', 
 					-->
-					<page string="Sesiones - jx">
+					<page string="Sesiones">
 
 						<field name="session_ids"	
 

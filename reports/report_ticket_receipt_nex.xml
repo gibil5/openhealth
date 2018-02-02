@@ -1,12 +1,13 @@
 <openerp>
-	<data noupdate='0'>
+	<data>
 
 
 
 
+<!-- Ticket Boleta Nex -->
 <report
 	
-	id="report_ticket_receipt_nex"
+	id="report_ticket_receipt_nexx"
 	
 	model="sale.order"
 	
@@ -14,9 +15,11 @@
 	
 	report_type="qweb-pdf"
 
-	name="openhealth.report_ticket_receipt_nex"
 
-	file="openhealth.report_ticket_receipt_nex"
+
+	name="openhealth.report_ticket_receipt_name_nex"
+
+	file="openhealth.report_ticket_receipt_file_nex"
 
 
 
@@ -33,8 +36,11 @@
 
 
 
-
+<!--
 <template id="report_ticket_receipt_nex">
+-->
+<template id="report_ticket_receipt_name_nex">
+
 	<t t-call="report.html_container">
 		<t t-foreach="docs" t-as="doc">	
 <!--

@@ -168,7 +168,9 @@
 
 					<field name="name"/>
 
-					<field name="description"/>
+					<field name="x_name_ticket"/>
+
+
 
 
 
@@ -186,6 +188,9 @@
 
 
 <!--
+					<field name="description"/>
+
+
 					<field name="x_name_short"/>
 
 					<field name="id"/>

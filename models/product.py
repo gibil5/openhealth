@@ -6,29 +6,94 @@
 # Last updated: 	 19 Feb 2017
 
 from openerp import models, fields, api
+
 from datetime import datetime
-
-
-
 from . import prodvars
-
+from . import prod_funcs
 
 
 class Product(models.Model):
+
 	#_name = 'openhealth.service'
+
 	_inherit = 'product.template'
 
 
 
 
-	#'base': fields.selection(
 
-	#	[('list_price', 'Public Price'), ('standard_price', 'Cost'), ('pricelist', 'Other Pricelist')], 
 
-	#	string="Based on", 
-	#	required=True,
-	#	help='Base price for computation. \n Public Price: The base price will be the Sale/public Price. \n Cost Price : The base price will be the cost price. \n Other Pricelist : Computation of the base price based on another Pricelist.'
-	#),
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+
+
+	# For Tickets 
+	x_name_ticket = fields.Char(
+
+			#'x_name_ticket',
+		
+			default="x", 
+
+
+			compute='_compute_x_name_ticket', 
+		)
+
+
+	@api.multi
+	#@api.depends('state')
+	
+	def _compute_x_name_ticket(self):
+		
+		print 'jx'
+		print 'compute x_name_ticket'
+
+		for record in self:
+		
+			print 'jx'
+			print record.x_name_ticket
+			
+
+
+			#record.x_name_ticket = record.x_name_short
+			#record.x_name_ticket = prod_funcs.get_ticket_name(self, record.x_treatment, record.x_zone, record.x_pathology, record.x_family)
+			record.x_name_ticket = prod_funcs.get_ticket_name(self, record.x_treatment, record.x_zone, record.x_pathology, record.x_family, record.type)
+			
+
+
+			print record.x_name_ticket
+
+
+
+
+
+
+
+
+
+	# Description - For Tickets 
+	description = fields.Text(
+
+			'Description',
+		
+			default="x", 
+
+			#translate=True,
+			#help="A precise description of the Product, used only for internal information purposes."
+
+			#compute='_compute_description', 
+		)
+
+
+	#@api.multi
+	#@api.depends('state')
+	#def _compute_description(self):
+	#	print 'jx'
+	#	print 'compute description'
+	#	for record in self:
+	#		print 'jx'
+	#		print record.description
+	#		record.description = record.x_name_short
+	#		print record.description
 
 
 
@@ -41,23 +106,18 @@ class Product(models.Model):
 		)
 
 
+
 	# Price Vip Return 
 	x_price_vip_return = fields.Float(
 		)
 
 
 
-
-
-
-
-
+	# Unit of measure 
 	uom = fields.Many2one(
 			'product.uom',
 			required=False, 
 		)
-
-
 
 
 	# Origin

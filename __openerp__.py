@@ -23,7 +23,7 @@
 
 		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant\n
 
-		Last built: 	1 February 2018 - Rebirth !!!
+		Last built: 	2 February 2018 - Rebirth !!!
 
 		Created: 	 	11 Sep 2016
 
@@ -126,13 +126,18 @@
 
 
 		# Ticket 
-		#'reports/report_ticket_sale_order.xml',
-		
+		#'reports/report_ticket_sale_order.xml',		# Deprecated !
 		'reports/report_ticket_invoice.xml',
-
 		'reports/report_ticket_receipt.xml',
 		
-		#'reports/report_ticket_receipt_nex.xml',
+
+
+		# New Tickets 
+		'reports/report_ticket_receipt_nex.xml',
+
+
+
+
 
 
 

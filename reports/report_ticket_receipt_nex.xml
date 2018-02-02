@@ -1,5 +1,5 @@
 <openerp>
-	<data>
+	<data noupdate='0'>
 
 
 
@@ -92,36 +92,36 @@
 <table style="width:100%">
 
 <!--
-  <tr>
-    <th>Telf</th>
-    <th>Lastname</th> 
-    <th>Age</th>
-  </tr>
+	<tr>
+		<th>Telf</th>
+		<th>Lastname</th> 
+		<th>Age</th>
+	</tr>
 -->
 
-  <tr>
-    <td><b>Telf:</b></td>
-    <td><t t-esc="doc.x_my_company.phone"/></td> 
-    <td></td>
-  </tr>
+	<tr>
+		<td><b>Telf:</b></td>
+		<td><t t-esc="doc.x_my_company.phone"/></td> 
+		<td></td>
+	</tr>
 
-  <tr>
-    <td><b>Ruc:</b></td>
-    <td><t t-esc="doc.x_my_company.x_ruc"/></td> 
-    <td></td>
-  </tr>
+	<tr>
+		<td><b>Ruc:</b></td>
+		<td><t t-esc="doc.x_my_company.x_ruc"/></td> 
+		<td></td>
+	</tr>
 
-  <tr>
-    <td><b>Autorización:</b></td>
-    <td><t t-esc="doc.x_my_company.x_authorization"/></td> 
-    <td></td>
-  </tr>
+	<tr>
+		<td><b>Autorización:</b></td>
+		<td><t t-esc="doc.x_my_company.x_authorization"/></td> 
+		<td></td>
+	</tr>
 
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
 </table>
 <br/>
 
@@ -131,20 +131,20 @@
 <!-- DNI --> 
 <!-- Address --> 
 <table style="width:100%">
-  <tr>
-    <td><b>Cliente:</b></td>
-    <td><t t-esc="doc.partner_id.name"/></td> 
-  </tr>
+	<tr>
+		<td><b>Cliente:</b></td>
+		<td><t t-esc="doc.partner_id.name"/></td> 
+	</tr>
 
-  <tr>
-    <td><b>DNI:</b></td>
-    <td><t t-esc="doc.partner_id.x_dni"/></td> 
-  </tr>
+	<tr>
+		<td><b>DNI:</b></td>
+		<td><t t-esc="doc.partner_id.x_dni"/></td> 
+	</tr>
 
-  <tr>
-    <td><b>Dirección:</b></td>
-    <td><t t-esc="doc.partner_id.x_address"/></td> 
-  </tr>
+	<tr>
+		<td><b>Dirección:</b></td>
+		<td><t t-esc="doc.partner_id.x_address"/></td> 
+	</tr>
 </table>
 <br/>
 
@@ -155,15 +155,15 @@
 <!-- Date --> 
 <!-- Serial Number --> 
 <table style="width:100%">
-  <tr>
-    <td><b>Fecha:</b></td>
-    <td><t t-esc="doc.x_date_order_corr"/></td> 
-  </tr>
+	<tr>
+		<td><b>Fecha:</b></td>
+		<td><t t-esc="doc.x_date_order_corr"/></td> 
+	</tr>
 
-  <tr>
-    <td><b>Ticket:</b></td>
-    <td><t t-esc="doc.x_serial_nr"/></td> 
-  </tr>
+	<tr>
+		<td><b>Ticket:</b></td>
+		<td><t t-esc="doc.x_serial_nr"/></td> 
+	</tr>
 </table>
 <br/>
 
@@ -175,21 +175,21 @@
 
 <!-- Line --> 
 <table style="width:100%">
-  <tr>
-    <td>--------------------------------------------------------------</td>
-  </tr>
+	<tr>
+		<td>--------------------------------------------------------------</td>
+	</tr>
 </table>
 
 
 
 <!--
 <table style="width:100%">
-  <tr>
-    <td>Desc.</td>
-    <td>Cnt</td>
-    <td>P.Unit</td>
-    <td>Tot.</td>
-  </tr>
+	<tr>
+		<td>Desc.</td>
+		<td>Cnt</td>
+		<td>P.Unit</td>
+		<td>Tot.</td>
+	</tr>
 </table>
 -->
 
@@ -198,12 +198,12 @@
 
 <table style="width:100%">
 
-  <tr>
-    <th>Desc.</th>
-    <th>Cnt</th>
-    <th>PUnit</th>
-    <th>Total</th>
-  </tr>
+	<tr>
+		<th>Desc.</th>
+		<th>Cnt</th>
+		<th>PUnit</th>
+		<th>Total</th>
+	</tr>
 
 
 <!-- Items --> 
@@ -244,9 +244,9 @@
 
 <!-- Line --> 
 <table style="width:100%">
-  <tr>
-    <td>--------------------------------------------------------------</td>
-  </tr>
+	<tr>
+		<td>--------------------------------------------------------------</td>
+	</tr>
 </table>
 
 

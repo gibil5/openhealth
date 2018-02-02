@@ -28,16 +28,25 @@
 context="{
 
 'default_patient': patient,
+
 'default_treatment': treatment,
+
 'default_doctor': doctor,
+
 'default_chief_complaint': chief_complaint,
-'default_evaluation_start_date': evaluation_start_date,
+
+
+
+'default_state': 'draft',
 
 }"
 
 />
 
 
+<!--
+'default_evaluation_start_date': evaluation_start_date,
+-->
 
 
 

@@ -2,18 +2,15 @@
 #
 # 	*** Procedure 	
 #
+#
 # Created: 				 1 Nov 2016
 # Last updated: 	 	 20 Jun 2017
 
-
-
 from openerp import models, fields, api
 
-#from . import jrfuncs
 from . import appfuncs
 from . import time_funcs
 from . import procedure_funcs_cos
-
 from . import treatment_funcs
 
 
@@ -27,8 +24,7 @@ def create_sessions_go(self, model):
 		from datetime import datetime
 
 
-		#print 
-		#print 
+		#print 'jx'
 		#print 'Create Sessions - Go'
 		#print 
 
@@ -36,7 +32,7 @@ def create_sessions_go(self, model):
 
 # Initial conditions 
 		
-		# Vars 
+
 		procedure_id = self.id 
 		patient_id = self.patient.id		
 		chief_complaint = self.chief_complaint
@@ -47,16 +43,11 @@ def create_sessions_go(self, model):
 		laser = self.laser
 		
 
-
-
-		# Doctor 
-		#doctor_id = self.doctor.id
+		# Actual Doctor 
 		doctor_id = treatment_funcs.get_actual_doctor(self)
 	
 		if doctor_id == False: 
 			doctor_id = self.doctor.id 
-
-
 
 
 
@@ -69,10 +60,7 @@ def create_sessions_go(self, model):
 		machine = self.machine
 
 
-		#therapist_name = self.therapist.name 
 		doctor_name = self.doctor.name 
-
-
 
 
 		
@@ -83,53 +71,19 @@ def create_sessions_go(self, model):
 
 
 
-		#date_format = "%Y-%m-%d %H:%M:%S"
-		#app_date = datetime.strptime(self.evaluation_start_date, date_format).strftime("%Y-%m-%d ")
-		#app_date = self.evaluation_start_date
-
-
-		#print GMT
-		#print evaluation_start_date 
-		#print app_date
-		#print 
-		#print 
-		
 
 
 
-
-
-
-
-
-
-
-# Clean Appointments 
-		#print 
-		#print 'Clean Appointments'
-
-		#rec_set = self.env['oeh.medical.appointment'].search([
-																#('procedure', '=', self.id), 	
-																#('procedure_cos', '=', self.id), 
-		#														(self.key, '=', self.id), 
-		#													])
-		#ret = rec_set.unlink()
-		#print "ret: ", ret
 
 
 
 
 # Clean Sessions 
-		#print 
-		#print 'Clean Sessions'
-
-		#rec_set = self.env['openhealth.session.cos'].search([
-		#rec_set = self.env[self.model].search([
-		rec_set = self.env[model].search([
-																('procedure', '=', self.id), 
-															])
-		ret = rec_set.unlink()
-		#print "ret: ", ret
+		#rec_set = self.env[model].search([
+		#										('procedure', '=', self.id), 
+		#									])
+		#ret = rec_set.unlink()
+		
 
 
 
@@ -171,32 +125,21 @@ def create_sessions_go(self, model):
 
 
 
-		#for k in range(0,1): 
-		#for k in range(0,2): 
-		#for k in range(0,6): 
+		#for k in range(0,1): 						# Testing 
 		for k in range(0,self.number_sessions): 
-
-
 
 			#print k
 
-
 			delta = 0 
 			nr_days = k_dic[k] + delta 
-
-
-
 
 
 			# session date 
 			#session_date = procedure_funcs.get_control_date(self, evaluation_start_date, nr_days)
 			session_date = get_control_date(self, evaluation_start_date, nr_days)
 
-
 			session_date_str = session_date.strftime("%Y-%m-%d")		
 			
-
-
 
 
 
@@ -247,9 +190,10 @@ def create_sessions_go(self, model):
 
 
 
-				#print 'appointment_date: ', appointment_date
 
+				# Create Appointment 
 				appointment = self.env['oeh.medical.appointment'].create({
+
 																		'appointment_date': appointment_date_str,
 																		'duration': duration,
 																		'x_type': x_type,
@@ -258,28 +202,13 @@ def create_sessions_go(self, model):
 																		'doctor': doctor_id,
 																		'x_create_procedure_automatic': x_create_procedure_automatic,
 																		'x_machine': machine,
-
-																		#'x_chief_complaint': chief_complaint, 
-																		
-
-
 																		'treatment': treatment_id, 
-																		'cosmetology': cosmetology_id, 
-																		
-																		#'x_target': 'therapist',
+																		'cosmetology': cosmetology_id, 																		
 																		'x_target': self.target,
-
-
-																		#'procedure_cos': self.id,
 																		self.key: self.id,
+
 																	})
-
-
-
-
 				#print appointment 
-
-
 
 			appointment_id = appointment.id
 			#print appointment
@@ -289,39 +218,12 @@ def create_sessions_go(self, model):
 
 
 
-			# Crrate Session 
+
+# Create Session 
 			#print 'Create Session'
-
-			#print session_date
-			#print patient_id
-			#print doctor_id
-			#print evaluation_type
-			
-			#print 
-
-			#print product_id
-			#print laser
-			#print appointment_id
-
-			#print 
-
-			#print treatment_id
-			#print cosmetology_id
-			#print chief_complaint
-
-			#print 
-			#print procedure_id
-
-
-
-			#session = self.env['openhealth.session.cos'].create(
-			#session = self.env[self.model].create(
 			session = self.env[model].create(
 												{
-
-													#'evaluation_start_date': evaluation_start_date,
 													'evaluation_start_date':session_date,
-
 
 													'patient': patient_id,
 
@@ -335,14 +237,11 @@ def create_sessions_go(self, model):
 
 													'appointment': appointment_id,
 
+													'treatment': treatment_id,	
 
-
-													'treatment': treatment_id,				
 													'cosmetology': cosmetology_id,				
 
-
 													'chief_complaint': chief_complaint,
-
 
 													'procedure': procedure_id,				
 												}
@@ -350,20 +249,6 @@ def create_sessions_go(self, model):
 			session_id = session.id 
 			#print session
 			#print session_id
-
-
-
-			# Update - Deprecated - For Cos 
-			#ret = jrfuncs.update_appointment_go(self, appointment_id, session_id, 'session')
-
-
-
-			#print appointment
-			#print appointment.session
-			#print appointment.session.id
-			#print 
-			#print 
-			#print 
 
 
 		ret = 0

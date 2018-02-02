@@ -82,6 +82,13 @@
 							string="Crear CITA"
 						/>
 
+
+
+						<!-- State --> 
+						<field 	name="state" 
+							widget="statusbar" 
+							statusbar_visible="draft, inprogress, done"
+						/>
 					</header>
 
 					
@@ -469,9 +476,9 @@ blue:state=='done'
 						name="open_line_current" 
 					/>
 
-
+<!--
 					<field name="evaluation_nr"/>
-
+-->
 
 					<field name="name"/>
 					

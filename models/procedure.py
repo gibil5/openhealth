@@ -23,23 +23,103 @@ class Procedure(models.Model):
 
 
 
+
+
+
+# ----------------------------------------------------------- Actions ------------------------------------------------------
+
+	# Create Sessions 
+	@api.multi	
+	def create_sessions(self): 
+		model = 'openhealth.session.med'
+
+		ret = procedure_funcs.create_sessions_go(self, model)
+	# create_sessions
+
+
+
+	# Create Controls 
+	@api.multi	
+	def create_controls(self):
+	
+		ret = procedure_funcs.create_controls_go(self)
+	# create_controls
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+
+
+	# Sessions Number
+	nr_sessions = fields.Integer(
+			
+			string="Sesiones",
+			
+			compute="_compute_nr_sessions",
+	)
+	
+	#@api.multi
+	@api.depends('session_ids')
+	
+	def _compute_nr_sessions(self):
+	
+		for record in self:
+	
+			ctr = 0 
+			for c in record.session_ids:
+				ctr = ctr + 1
+			record.nr_sessions = ctr
+
+
+			#sessions = self.env['openhealth.session'].search([
+																#('name','like', record.patient.name),	
+			#													('procedure','=', record.id),
+			#												],
+			#												order='evaluation_start_date asc',
+															#limit=1,
+			#										)
+			#ctr = 1
+			#for session in sessions: 
+			#	session.evaluation_nr = ctr
+			#	ctr = ctr + 1
+
+
+
+
+
+
+
+	# Sessions for the Procedure 
+	number_sessions = fields.Integer(
+			string="Sesiones",
+			compute="_compute_number_sessions",
+	)
+
+	#@api.multi
+	@api.depends('product')
+	def _compute_number_sessions(self):
+		for record in self:
+			record.number_sessions = record.product.x_sessions
+
+
+
+
+
+
+
+
+
+
+
 	name = fields.Char(
 			#string = 'Procedimiento #',
 			string = 'Proc #',
-			)
-
-
-
-
-	#nr_controls = fields.Integer(
-	#		default=7, 
-	#		compute="_compute_nr_controls",
-	#	)
-	#@api.multi
-	#@api.depends('product')
-	#def _compute_nr_controls(self):
-	#	for record in self:
-
+		)
 
 
 
@@ -64,18 +144,6 @@ class Procedure(models.Model):
 
 
 
-
-	# Sessions - Quantity 
-	number_sessions = fields.Integer(
-			string="Sesiones",
-			compute="_compute_number_sessions",
-	)
-	
-	#@api.multi
-	@api.depends('product')
-	def _compute_number_sessions(self):
-		for record in self:
-			record.number_sessions = record.product.x_sessions
 
 
 
@@ -191,21 +259,6 @@ class Procedure(models.Model):
 
 
 
-	# Sessions - Number
-	nr_sessions = fields.Integer(
-			string="Sesiones",
-			compute="_compute_nr_sessions",
-	)
-	
-	#@api.multi
-	@api.depends('session_ids')
-	def _compute_nr_sessions(self):
-		for record in self:
-			ctr = 0 
-			for c in record.session_ids:
-				ctr = ctr + 1
-			record.nr_sessions = ctr
-
 	
 	
 	
@@ -215,12 +268,6 @@ class Procedure(models.Model):
 
 	#------------------------------------ Buttons -----------------------------------------
 
-
-#jx 
-	# Create Controls 
-	@api.multi
-	def create_controls(self):
-		ret = procedure_funcs.create_controls_go(self)
 
 
 
@@ -324,13 +371,5 @@ class Procedure(models.Model):
 		)
 
 
-
-# ----------------------------------------------------------- Create Sessions  ------------------------------------------------------
-	@api.multi
-	def create_sessions(self): 
-
-		model = 'openhealth.session.med'
-		ret = procedure_funcs.create_sessions_go(self, model)
-	# create_sessions
 
 

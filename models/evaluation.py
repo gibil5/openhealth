@@ -2,11 +2,8 @@
 #
 # 	*** Evaluation 
 # 
-
 # Created: 				26 Aug 2016
 # Last updated: 	 	28 Oct 2016
-
-
 
 from openerp import models, fields, api
 
@@ -15,13 +12,31 @@ from . import eval_vars
 from . import prodvars
 
 
-
-#------------------------------------------------------------------------
 class Evaluation(models.Model):
 
 	_inherit = 'oeh.medical.evaluation'
 
 	#_name =	'openhealth.evaluation5'
+
+
+
+
+
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+	#evaluation_start_date = fields.Date(
+	evaluation_start_date = fields.Datetime(
+
+			string = "Fecha y hora", 	
+		
+			#default = fields.Date.today, 
+			
+			required=True, 
+
+			readonly=True, 
+		)
+
+
 
 
 
@@ -163,6 +178,7 @@ class Evaluation(models.Model):
 	state = fields.Selection(
 			selection = eval_vars._state_list, 
 			string='Estado',	
+			
 			default='draft',
 
 			#compute='_compute_state', 
@@ -276,16 +292,6 @@ class Evaluation(models.Model):
 
 
 
-	#evaluation_start_date = fields.Date(
-	evaluation_start_date = fields.Datetime(
-
-			string = "Fecha y hora", 	
-		
-			#default = fields.Date.today, 
-			required=True, 
-
-			readonly=True, 
-		)
 
 
 

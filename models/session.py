@@ -27,11 +27,69 @@ class Session(models.Model):
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
 
+
+	# Evaluation Number 
+	evaluation_nr = fields.Integer(
+		
+			string="Sesión #", 
+		
+			default=1, 
+
+			#compute='_compute_evaluation_nr', 
+		)
+
+
+	#@api.multi
+	#@api.depends('state')
+	#def _compute_evaluation_nr(self):
+	#	for record in self:
+	#		record.evaluation_nr = record.procedure.nr_sessions + 1
+
+
+
+
+
+
+
+	# Procedure  
+	procedure = fields.Many2one(
+
+			'openhealth.procedure',
+			
+			string="Procedimiento",			
+			readonly=True,
+			ondelete='cascade', 
+		)
+
+
+
+
+	# Date 
+	evaluation_start_date = fields.Datetime(
+
+			string = "Fecha y hora", 	
+		
+			default = fields.Date.today, 
+			
+			required=True, 
+
+			readonly=True, 
+		)
+
+
+
+
+
+
+
+
 	# state 
 	state = fields.Selection(
 
 			selection = eval_vars._state_list, 
 			
+			default='draft',
+
 			compute='_compute_state', 
 		)
 
@@ -94,11 +152,6 @@ class Session(models.Model):
 
 
 
-	# Evaluation Nr
-	evaluation_nr = fields.Integer(
-			string="Sesión #", 
-			default=1, 
-			)
 
 
 
@@ -161,26 +214,11 @@ class Session(models.Model):
 			string = 'Nombre',
 			)
 
-	evaluation_nr = fields.Integer(
-			string="Sesión #", 
-			default=1, 
-			)
 
 
 
 
 
-	# Relational 
-	procedure = fields.Many2one(
-
-			'openhealth.procedure',
-			
-			string="Procedimiento",
-			
-			readonly=True,
-			
-			ondelete='cascade', 
-			)
 			
 
 

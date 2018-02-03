@@ -35,8 +35,8 @@ class ProductManager(models.Model):
 
 		products = self.env['product.template'].search([
 																
-
-																('x_treatment', '=', self.treatment),
+																#('x_treatment', '=', self.treatment),
+																('x_treatment', '=', 'laser_co2'),
 																('x_origin', '=', False),
 													
 													],

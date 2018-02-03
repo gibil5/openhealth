@@ -19,11 +19,52 @@ class Product(models.Model):
 	_inherit = 'product.template'
 
 
+	#_order = 'x_name_short'
+	#_order = 'name'
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Actions ------------------------------------------------------
+
+	# Update 
+	@api.multi 
+	def update_level(self):
+
+		#print 'jx'
+		#print 'Update Product'
+
+		self.x_level = self.x_pathology[-1]
+
+		#print self.x_level
 
 
 
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+
+
+	# Partner 
+	product_manager_id = fields.Many2one(
+	
+			'openhealth.product.manager',
+			
+			#string = "Cliente", 	
+			#ondelete='cascade', 			
+			#required=True, 
+			#required=False, 
+		)
+
+
+
+
+
+
+
 
 
 

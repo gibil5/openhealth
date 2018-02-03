@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		
+
+
+		<!-- FORM -->
+		<record model="ir.ui.view" id="view_product_manager_form">
+
+			<field name="name">openhealth.product.manager.form</field>
+			
+			<field name="model">openhealth.product.manager</field>
+
+<!--			
+			<field name="inherit_id" ref="sale.view_order_line_form"/>	
+			<field name="mode">primary</field>
+			<field name="priority" eval="1"/>
+			<field name="arch" type="xml">
+-->		
+			
+			
+			<field name="arch" type="xml">
+
+				<form string="Product manager - Form">
+
+					<header>
+
+<!--
+								states="draft"						
+								groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors"
+-->
+						<button 
+								type="object" 
+								class="oe_highlight"
+
+								name="update_products"								
+
+								string="Update Products"
+							/>
+
+
+					</header>
+					
+
+					<sheet>
+						<group>
+
+
+							<group>
+<!--								
+-->
+								<field name="name" />
+
+								<field name="treatment"	/>
+
+							</group>
+
+
+
+							<group>
+							</group>
+						</group>
+
+
+					</sheet>
+
+				
+
+					<notebook>
+					</notebook>				
+				
+				</form>
+			</field>
+		</record>
+
+
+
+
+
+
+		<!-- ACTION --> 	
+		<record id="product_manager_list_action" model="ir.actions.act_window">
+
+			<field name="name">product manager - Tree</field>
+			
+			<field name="res_model">openhealth.product.manager</field>
+			
+			<field name="type">ir.actions.act_window</field>
+			
+			<field name="view_type">form</field>
+
+			<field name="view_mode">tree,form,kanban</field>
+
+			<field name="context">{}</field>
+			
+			<field name="domain">[]
+			
+			</field>
+		</record>
+
+
+
+
+	</data>
+</openerp>
+
+

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
-	<data noupdate='1'>
+	<data noupdate='0'>
 
 
 
@@ -197,13 +197,21 @@
 			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
+
 		<record id='ipl_fac_rfa_30m_one' model='product.template'>
 			<field name='type'>service</field>
 			<field name='x_name_short'>ipl_fac_rfa_30m_one</field>
 			<field name='name'>LASER M22 IPL - Rostro - Rejuvenecimiento Facial - 1 - 30 min</field>
 			<field name='x_treatment'>laser_ipl</field>
+			
+
 			<field name='x_zone'>face</field>
+<!--
 			<field name='x_pathology'>rejuvenation_face</field>
+-->
+			<field name='x_pathology'>rejuvenation</field>
+			
+
 			<field name='price'>1800</field>
 			<field name='x_date_created'>2017-03-29 15:32:29 UTC</field>
 			<field name='x_time'>30 min</field>
@@ -1141,13 +1149,21 @@
 			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
+
 		<record id='ipl_fac_rfa_30m_six' model='product.template'>
 			<field name='type'>service</field>
 			<field name='x_name_short'>ipl_fac_rfa_30m_six</field>
 			<field name='name'>LASER M22 IPL - Rostro - Rejuvenecimiento Facial - 6 - 30 min</field>
 			<field name='x_treatment'>laser_ipl</field>
+			
+
 			<field name='x_zone'>face</field>
+<!--
 			<field name='x_pathology'>rejuvenation_face</field>
+-->
+			<field name='x_pathology'>rejuvenation</field>
+
+
 			<field name='price'>10800</field>
 			<field name='x_date_created'>2017-03-29 15:32:30 UTC</field>
 			<field name='x_time'>30 min</field>
@@ -1156,6 +1172,7 @@
 			<field name='x_family'>laser</field>
 			<field name='categ_id' ref="laser_m22"/>
 		</record>
+
 
 		<record id='ipl_sho_dep_5m_six' model='product.template'>
 			<field name='type'>service</field>

@@ -8,6 +8,7 @@ from openerp import models, fields, api
 # Progress 
 _hap = {
 			
+			# Treatment 
 			'laser_quick':         	'Quick', 
 			'laser_co2':          	'Co2', 
 			'laser_excilite':       'Exc', 
@@ -22,6 +23,7 @@ _hap = {
 			'plasma':         		'Plasma', 
 			'botulinum_toxin':      'Botox', 
 			'intravenous_vitamin':  'Vita Int', 
+
 
 
 			# Zona 
@@ -49,18 +51,56 @@ _hap = {
 
 
 			'face': 				'Rostro', 
+
 			'arms': 				'Brazos', 
+			
 			'gluteus': 				'Gluteos', 
+			
 			'feet': 				'Pies', 
+			
 			'armpits': 				'Axilas', 
+			
 			'shoulders': 			'Hombros', 
+			
 			'belly': 				'Vientre', 
+			
 			'areolas': 				'Ariolas', 
+			
 			'back': 				'Espalda', 
+			
 			'breast': 				'Pecho', 
+			
 			'legs': 				'Piernas', 
 
-			#'neck_hands': 			'Cuello Manos', 
+
+
+
+
+			# Patho
+			'acne_sequels': 		'Acn sec', 
+			'cyst': 				'Quis', 
+			'keratosis': 			'Quer', 
+			'mole': 				'Lun', 
+			'rejuvenation': 		'Rejuv', 
+			'scar': 				'Cic', 
+			'stains': 				'Man', 
+			'tatoo': 				'Tat', 
+			'wart': 				'Verr', 
+
+			'alopecia': 			'Alo', 
+			'psoriasis': 			'Pso', 
+			'vitiligo': 			'Viti', 
+
+			'depilation': 			'Depi', 
+			'acne_active': 			'Acné act', 
+			'rosacea': 				'Ros', 
+
+
+			'emangiomas': 			'Hem', 
+			'ruby_points': 			'P Rubi', 
+			'telangiectasia': 		'Tela', 
+			'varices': 				'Var', 
+
 }
 
 
@@ -86,6 +126,8 @@ def get_ticket_name(self, treatment, zone, pathology, family, x_type):
 		if family == 'laser': 
 			#name_ticket = _hap[treatment] + ' ' + zone + ' ' + pathology 
 			name_ticket = _hap[treatment] + ' ' + _hap[zone] + ' ' + pathology 
+			#name_ticket = _hap[treatment] + ' ' + _hap[zone] + ' ' + _hap[pathology]
+		
 		else:
 			#name_ticket = treatment + ' ' + zone + ' ' + pathology 
 			name_ticket = _hap[treatment] + ' ' + zone + ' ' + pathology 

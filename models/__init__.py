@@ -179,6 +179,7 @@ from . import order_line_report
 
 
 from . import product_selector
+from . import product_manager
 
 
 

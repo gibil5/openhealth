@@ -189,8 +189,9 @@
 
 					<field name="name"/>
 <!--
-					<field name="x_name_ticket"/>
 -->
+					<field name="x_name_ticket"/>
+
 					<field name="x_name_short"/>
 
 

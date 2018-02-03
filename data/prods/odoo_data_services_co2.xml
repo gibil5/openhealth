@@ -48,7 +48,7 @@
 			<field name='type'>service</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>neck</field>
-			<field name='x_pathology'>rejuvenation_neck_1</field>
+			<field name='x_pathology'>rejuvenation_neck</field>
 			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
@@ -138,7 +138,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Todo Rostro - Acne y Secuelas Grado 1 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>face_all</field>
-			<field name='x_pathology'>acne_sequels_1</field>
+			<field name='x_pathology'>acne_sequels</field>
 			<field name='price'>10000</field>
 			<field name='x_date_created'>2017-03-29 15:32:03 UTC</field>
 			<field name='x_time'></field>
@@ -155,7 +155,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Todo Rostro - Rejuvenecimiento Facial Grado 1 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>face_all</field>
-			<field name='x_pathology'>rejuvenation_face_1</field>
+			<field name='x_pathology'>rejuvenation_face</field>
 			<field name='price'>10000</field>
 			<field name='x_date_created'>2017-03-29 15:32:03 UTC</field>
 			<field name='x_time'></field>
@@ -172,7 +172,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Pomulos - Manchas Grado 2 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>cheekbones</field>
-			<field name='x_pathology'>stains_2</field>
+			<field name='x_pathology'>stains</field>
 			<field name='price'>6000</field>
 			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
 			<field name='x_time'></field>
@@ -206,7 +206,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Pomulos - Manchas Grado 1 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>cheekbones</field>
-			<field name='x_pathology'>stains_1</field>
+			<field name='x_pathology'>stains</field>
 			<field name='price'>5000</field>
 			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
 			<field name='x_time'></field>
@@ -223,7 +223,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Todo Rostro - Manchas Grado 2 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>face_all</field>
-			<field name='x_pathology'>stains_2</field>
+			<field name='x_pathology'>stains</field>
 			<field name='price'>12000</field>
 			<field name='x_date_created'>2017-03-29 15:32:03 UTC</field>
 			<field name='x_time'></field>
@@ -240,7 +240,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Pomulos - Acne y Secuelas Grado 1 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>cheekbones</field>
-			<field name='x_pathology'>acne_sequels_1</field>
+			<field name='x_pathology'>acne_sequels</field>
 			<field name='price'>5000</field>
 			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
 			<field name='x_time'></field>
@@ -274,7 +274,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Todo Rostro - Rejuvenecimiento Facial Grado 2 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>face_all</field>
-			<field name='x_pathology'>rejuvenation_face_2</field>
+			<field name='x_pathology'>rejuvenation_face</field>
 			<field name='price'>12000</field>
 			<field name='x_date_created'>2017-03-29 15:32:03 UTC</field>
 			<field name='x_time'></field>
@@ -291,7 +291,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Todo Rostro - Acne y Secuelas Grado 2 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>face_all</field>
-			<field name='x_pathology'>acne_sequels_2</field>
+			<field name='x_pathology'>acne_sequels</field>
 			<field name='price'>12000</field>
 			<field name='x_date_created'>2017-03-29 15:32:03 UTC</field>
 			<field name='x_time'></field>
@@ -357,7 +357,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Todo Rostro - Manchas Grado 1 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>face_all</field>
-			<field name='x_pathology'>stains_1</field>
+			<field name='x_pathology'>stains</field>
 			<field name='price'>10000</field>
 			<field name='x_date_created'>2017-03-29 15:32:03 UTC</field>
 			<field name='x_time'></field>
@@ -374,7 +374,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Pomulos - Acne y Secuelas Grado 2 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>cheekbones</field>
-			<field name='x_pathology'>acne_sequels_2</field>
+			<field name='x_pathology'>acne_sequels</field>
 			<field name='price'>6000</field>
 			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
 			<field name='x_time'></field>
@@ -459,7 +459,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Localizado Rostro - Queratosis Grado 2 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>face_local</field>
-			<field name='x_pathology'>keratosis_2</field>
+			<field name='x_pathology'>keratosis</field>
 			<field name='price'>2000</field>
 			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
 			<field name='x_time'></field>
@@ -614,7 +614,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Manos - Rejuvenecimiento Manos Grado 1 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>hands</field>
-			<field name='x_pathology'>rejuvenation_hands_1</field>
+			<field name='x_pathology'>rejuvenation_hands</field>
 			<field name='price'>5000</field>
 			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
 			<field name='x_time'></field>
@@ -648,7 +648,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Localizado Rostro - Manchas Grado 2 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>face_local</field>
-			<field name='x_pathology'>stains_2</field>
+			<field name='x_pathology'>stains</field>
 			<field name='price'>2000</field>
 			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
 			<field name='x_time'></field>
@@ -665,7 +665,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Localizado Rostro - Lunar Grado 1 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>face_local</field>
-			<field name='x_pathology'>mole_1</field>
+			<field name='x_pathology'>mole</field>
 			<field name='price'>1000</field>
 			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
 			<field name='x_time'></field>
@@ -682,7 +682,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento Cuello Grado 2 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>neck</field>
-			<field name='x_pathology'>rejuvenation_neck_2</field>
+			<field name='x_pathology'>rejuvenation_neck</field>
 			<field name='price'>6000</field>
 			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
 			<field name='x_time'></field>
@@ -699,7 +699,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Localizado Rostro - Queratosis Grado 1 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>face_local</field>
-			<field name='x_pathology'>keratosis_1</field>
+			<field name='x_pathology'>keratosis</field>
 			<field name='price'>1000</field>
 			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
 			<field name='x_time'></field>
@@ -750,7 +750,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Manos - Rejuvenecimiento Manos Grado 2 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>hands</field>
-			<field name='x_pathology'>rejuvenation_hands_2</field>
+			<field name='x_pathology'>rejuvenation_hands</field>
 			<field name='price'>6000</field>
 			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
 			<field name='x_time'></field>
@@ -801,7 +801,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Localizado Rostro - Lunar Grado 2 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>face_local</field>
-			<field name='x_pathology'>mole_2</field>
+			<field name='x_pathology'>mole</field>
 			<field name='price'>2000</field>
 			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
 			<field name='x_time'></field>
@@ -818,7 +818,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Localizado Rostro - Manchas Grado 1 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>face_local</field>
-			<field name='x_pathology'>stains_1</field>
+			<field name='x_pathology'>stains</field>
 			<field name='price'>1000</field>
 			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
 			<field name='x_time'></field>
@@ -886,7 +886,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Localizado Rostro - Cicatriz Grado 1 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>face_local</field>
-			<field name='x_pathology'>scar_1</field>
+			<field name='x_pathology'>scar</field>
 			<field name='price'>1000</field>
 			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
 			<field name='x_time'></field>
@@ -937,7 +937,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Localizado Cuerpo - Manchas Grado 1 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>body_local</field>
-			<field name='x_pathology'>stains_1</field>
+			<field name='x_pathology'>stains</field>
 			<field name='price'>1000</field>
 			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
 			<field name='x_time'></field>
@@ -1039,7 +1039,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Localizado Rostro - Verruga Grado 1 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>face_local</field>
-			<field name='x_pathology'>wart_1</field>
+			<field name='x_pathology'>wart</field>
 			<field name='price'>1000</field>
 			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
 			<field name='x_time'></field>
@@ -1073,7 +1073,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Localizado Rostro - Quiste Grado 1 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>face_local</field>
-			<field name='x_pathology'>cyst_1</field>
+			<field name='x_pathology'>cyst</field>
 			<field name='price'>1000</field>
 			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
 			<field name='x_time'></field>
@@ -1090,7 +1090,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Localizado Cuerpo - Manchas Grado 2 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>body_local</field>
-			<field name='x_pathology'>stains_2</field>
+			<field name='x_pathology'>stains</field>
 			<field name='price'>2000</field>
 			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
 			<field name='x_time'></field>
@@ -1124,7 +1124,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Localizado Rostro - Cicatriz Grado 2 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>face_local</field>
-			<field name='x_pathology'>scar_2</field>
+			<field name='x_pathology'>scar</field>
 			<field name='price'>2000</field>
 			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
 			<field name='x_time'></field>
@@ -1158,7 +1158,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Localizado Rostro - Verruga Grado 2 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>face_local</field>
-			<field name='x_pathology'>wart_2</field>
+			<field name='x_pathology'>wart</field>
 			<field name='price'>2000</field>
 			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
 			<field name='x_time'></field>
@@ -1175,7 +1175,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Localizado Rostro - Quiste Grado 2 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>face_local</field>
-			<field name='x_pathology'>cyst_2</field>
+			<field name='x_pathology'>cyst</field>
 			<field name='price'>2000</field>
 			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
 			<field name='x_time'></field>
@@ -1192,7 +1192,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Localizado Cuerpo - Acne y Secuelas Grado 1 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>body_local</field>
-			<field name='x_pathology'>acne_sequels_1</field>
+			<field name='x_pathology'>acne_sequels</field>
 			<field name='price'>6000</field>
 			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
 			<field name='x_time'></field>
@@ -1243,7 +1243,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Localizado Cuerpo - Acne y Secuelas Grado 2 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>body_local</field>
-			<field name='x_pathology'>acne_sequels_2</field>
+			<field name='x_pathology'>acne_sequels</field>
 			<field name='price'>7000</field>
 			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
 			<field name='x_time'></field>
@@ -1345,7 +1345,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Localizado Cuerpo - Verruga Grado 2 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>body_local</field>
-			<field name='x_pathology'>wart_2</field>
+			<field name='x_pathology'>wart</field>
 			<field name='price'>2000</field>
 			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
 			<field name='x_time'></field>
@@ -1362,7 +1362,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Localizado Cuerpo - Quiste Grado 2 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>body_local</field>
-			<field name='x_pathology'>cyst_2</field>
+			<field name='x_pathology'>cyst</field>
 			<field name='price'>2000</field>
 			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
 			<field name='x_time'></field>
@@ -1396,7 +1396,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Localizado Cuerpo - Queratosis Grado 2 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>body_local</field>
-			<field name='x_pathology'>keratosis_2</field>
+			<field name='x_pathology'>keratosis</field>
 			<field name='price'>2000</field>
 			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
 			<field name='x_time'></field>
@@ -1430,7 +1430,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Localizado Cuerpo - Lunar Grado 2 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>body_local</field>
-			<field name='x_pathology'>mole_2</field>
+			<field name='x_pathology'>mole</field>
 			<field name='price'>2000</field>
 			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
 			<field name='x_time'></field>
@@ -1498,7 +1498,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Localizado Cuerpo - Quiste Grado 1 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>body_local</field>
-			<field name='x_pathology'>cyst_1</field>
+			<field name='x_pathology'>cyst</field>
 			<field name='price'>1000</field>
 			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
 			<field name='x_time'></field>
@@ -1549,7 +1549,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Localizado Cuerpo - Cicatriz Grado 1 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>body_local</field>
-			<field name='x_pathology'>scar_1</field>
+			<field name='x_pathology'>scar</field>
 			<field name='price'>1000</field>
 			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
 			<field name='x_time'></field>
@@ -1566,7 +1566,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Localizado Cuerpo - Lunar Grado 1 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>body_local</field>
-			<field name='x_pathology'>mole_1</field>
+			<field name='x_pathology'>mole</field>
 			<field name='price'>1000</field>
 			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
 			<field name='x_time'></field>
@@ -1583,7 +1583,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Localizado Cuerpo - Queratosis Grado 1 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>body_local</field>
-			<field name='x_pathology'>keratosis_1</field>
+			<field name='x_pathology'>keratosis</field>
 			<field name='price'>1000</field>
 			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
 			<field name='x_time'></field>
@@ -1651,7 +1651,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Localizado Cuerpo - Verruga Grado 1 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>body_local</field>
-			<field name='x_pathology'>wart_1</field>
+			<field name='x_pathology'>wart</field>
 			<field name='price'>1000</field>
 			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
 			<field name='x_time'></field>
@@ -1668,7 +1668,7 @@
 			<field name='name'>LASER CO2 FRACCIONAL - Localizado Cuerpo - Cicatriz Grado 2 - 1</field>
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>body_local</field>
-			<field name='x_pathology'>scar_2</field>
+			<field name='x_pathology'>scar</field>
 			<field name='price'>2000</field>
 			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
 			<field name='x_time'></field>

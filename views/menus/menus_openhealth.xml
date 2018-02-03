@@ -81,6 +81,7 @@
 
 
 		<!-- Product Managers --> 
+<!--
 		<menuitem id="product_manager_menu" 
 			name="Product Manager" 
 			parent="openhealth_menu"
@@ -88,7 +89,7 @@
 
 			action="product_manager_list_action"
 			/>
-
+-->
 
 
 

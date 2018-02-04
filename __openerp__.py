@@ -289,6 +289,16 @@
 
 
 
+		# Allergy 
+		'views/allergies/allergy.xml',
+
+
+
+
+
+
+
+
 
 
 		# Doctors

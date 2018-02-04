@@ -23,7 +23,82 @@ class Patient(models.Model):
 
 
 
+
+
+# ----------------------------------------------------------- Defaults ------------------------------------------------------
+
+	@api.model
+	def _get_default_id_code(self):
+		
+		#print 'jx'
+		#print 'Get Default Id Code'
+
+
+		name = 'emr'
+		#counter = self.env['openhealth.counter'].search([('name', '=', name)])
+ 		counter = self.env['openhealth.counter'].search([
+																('name', '=', name), 
+															],
+																#order='write_date desc',
+																limit=1,
+															)
+		#print counter
+
+
+		default_id_code = '13'
+
+		if counter.total != False: 
+			#print counter.total 
+			default_id_code = counter.total
+			counter.increase()
+
+
+
+		return default_id_code
+
+
+
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+
+	# Allergies 
+	#x_allergies = fields.Char(
+	x_allergies = fields.Many2one(
+
+			'openhealth.allergy', 
+
+			string = "Alergias", 
+
+			#required=True, 
+			#required=False, 
+		)
+
+
+
+	#@api.onchange('x_allergies')
+	#def _onchange_x_allergies(self):
+	#	if self.x_allergies != False: 
+	#		self.x_allergies = self.x_allergies.strip().title()
+
+
+
+
+
+
+
+
+
+	# Id Code 
+	x_id_code = fields.Char(
+			
+			default=_get_default_id_code, 
+
+		)
+
+
+
+
+
 
 	#identification_code=fields.Char(
 	#		'Patient ID',
@@ -1468,21 +1543,6 @@ class Patient(models.Model):
 
 
 
-
-
-	# Allergies 
-	x_allergies = fields.Char(
-			string = "Alergias", 
-
-			#required=True, 
-			#required=False, 
-			)
-
-	@api.onchange('x_allergies')
-	def _onchange_x_allergies(self):
-
-		if self.x_allergies != False: 
-			self.x_allergies = self.x_allergies.strip().title()
 
 
 

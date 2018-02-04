@@ -80,6 +80,24 @@
 
 
 
+
+
+		<!-- Allergies --> 
+		<menuitem 
+			id="allergies_quick_menu" 
+			name="Alergias" 
+			parent="openhealth_menu"
+			sequence="-250"
+
+			action="allergy_list_action"
+			/>
+
+
+
+
+
+
+
 		<!-- Product Managers --> 
 <!--
 -->

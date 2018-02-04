@@ -217,7 +217,11 @@ Cosmetology
 						<!-- Number Medical history -->
 						<div class="oe_right" >
 							<h1>
-								<field string="Número:"  name="identification_code"/>
+
+								<field string="Número HC:"  name="x_id_code"/>
+
+								<field string="Número:"  	invisible="1"	name="identification_code"/>
+
 							</h1>
 						</div>
 
@@ -388,9 +392,11 @@ Cosmetology
 
 					<field name="name"/>
 
+					<field name="x_id_code"/>		
+
+
+
 					<field name="x_dni"/>		
-
-
 
 					<field name="x_vip"/>
 

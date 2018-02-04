@@ -15,8 +15,14 @@
 from . import partner
 from . import quotation
 
+
+
+
+from . import allergy  
+
 from . import patient  
 from . import product
+
 
 
 

@@ -22,6 +22,43 @@ class Partner(models.Model):
 
 
 
+# ----------------------------------------------------------- Defaults ------------------------------------------------------
+	#@api.model
+	#def _get_default_team(self):
+		#default_team_id = self.env['crm.team']._get_default_team_id()
+		#return self.env['crm.team'].browse(default_team_id)
+
+
+
+	#@api.model
+	#def _get_default_id_code(self):
+	#	default_id_code = '55'
+	#	return default_id_code
+
+
+
+# ----------------------------------------------------------- Code ------------------------------------------------------
+	
+
+	x_id_code = fields.Char(
+			
+			#'Patient ID',
+			'Nr Historia Médica',
+			size=256, 
+
+
+			#default='55', 
+			#default=_get_default_team
+			#default=_get_default_id_code, 
+
+
+			#help='Patient Identifier provided by the Health Center',
+
+			#readonly=True, 
+			readonly=False, 
+		)
+
+
 
 
 

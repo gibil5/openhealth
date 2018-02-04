@@ -97,9 +97,9 @@ class Product(models.Model):
 
 			#record.x_name_ticket = record.x_name_short
 			#record.x_name_ticket = prod_funcs.get_ticket_name(self, record.x_treatment, record.x_zone, record.x_pathology, record.x_family)
-			record.x_name_ticket = prod_funcs.get_ticket_name(self, record.x_treatment, record.x_zone, record.x_pathology, record.x_family, record.type)
+			#record.x_name_ticket = prod_funcs.get_ticket_name(self, record.x_treatment, record.x_zone, record.x_pathology, record.x_family, record.type)
+			record.x_name_ticket = prod_funcs.get_ticket_name(self, record.x_treatment, record.x_zone, record.x_pathology, record.x_family, record.type, record.x_name_short)
 			
-
 
 			print record.x_name_ticket
 

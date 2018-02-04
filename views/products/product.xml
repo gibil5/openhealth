@@ -513,7 +513,10 @@
             <field name="domain">[            	
 
 									('type', '=', 'product'),	
+
 									('x_origin', '=', False),
+
+									('categ_id', '=', 'Cremas'),
 
             					]</field>
 

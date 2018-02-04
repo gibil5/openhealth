@@ -34,7 +34,14 @@ _face_list = [
 		('stains',	'Manchas'),
 		('acne_active',	'Acné activo'),
 		
-		('rejuvenation_facial',	'Rejuvenecimiento facial'),	
+
+
+		#('rejuvenation_facial',	'Rejuvenecimiento facial'),	
+		#('rejuvenation_face',	'Rejuvenecimiento facial'),	
+		('rejuvenation',	'Rejuvenecimiento'),	
+		
+
+
 		('depilation',	'Depilación'),	
 		
 		('none',''),

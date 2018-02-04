@@ -4,22 +4,22 @@
 
 
 
-<!-- Ticket Boleta Nex -->
+<!-- Ticket Factura Nex -->
 <report
 	
-	id="report_ticket_receipt_nexx"
+	id="report_ticket_invoice_nex"
 	
 	model="sale.order"
 	
-	string="Ticket Boleta Nex"
+	string="Ticket Factura Nex"
 	
 	report_type="qweb-pdf"
 
 
-	name="openhealth.report_ticket_receipt_nex_view"
+	name="openhealth.report_ticket_invoice_nex_view"
 
 
-	file="openhealth.report_ticket_receipt_file_nex"
+	file="openhealth.report_ticket_invoice_file_nex"
 
 	paperformat="appointment_receipt"
 />
@@ -35,9 +35,9 @@
 
 
 <!--
-<template id="report_ticket_receipt_nex">
+<template id="report_ticket_invoice_nex">
 -->
-<template id="report_ticket_receipt_nex_view">
+<template id="report_ticket_invoice_nex_view">
 
 	<t t-call="report.html_container">
 		<t t-foreach="docs" t-as="doc">	
@@ -54,10 +54,12 @@
 <br/>
 <center>
 <h3>
-	Ticket Boleta
+	Ticket Factura
 </h3>
 </center>
 <br/>
+
+
 
 
 
@@ -127,6 +129,7 @@
 
 
 
+
 <!-- Customer --> 
 <!-- DNI --> 
 <!-- Address --> 
@@ -142,10 +145,23 @@
 	</tr>
 
 
+<!--
 	<tr>
 		<td><b>DNI:</b></td>
 		<td><t t-esc="doc.partner_id.x_dni"/></td> 
 	</tr>
+-->
+
+	<tr>
+		<td><b>Razón Social:</b></td>
+		<td><t t-esc="doc.partner_id.x_firm"/></td> 
+	</tr>
+
+	<tr>
+		<td><b>Ruc:</b></td>
+		<td><t t-esc="doc.partner_id.x_ruc"/></td> 
+	</tr>
+
 </table>
 <br/>
 
@@ -241,8 +257,9 @@
 </tr>
 
 </t>
-
 </table>
+
+
 
 
 
@@ -281,8 +298,7 @@
 
 
 
-
-<!-- Total Words --> 
+<!-- Total --> 
 <table style="width:100%">
 
 	<tr>
@@ -300,9 +316,6 @@
 -->
 
 	<tr>
-<!--
-		<td align="right" ><t t-esc="doc.x_total_cents"/> Céntimos</td> 
--->
 		<td align="right" ><t t-esc="doc.x_total_cents"/> 00/100</td> 
 	</tr>
 
@@ -344,7 +357,6 @@
 	</tr>
 </table>
 <br/>
-
 
 
 

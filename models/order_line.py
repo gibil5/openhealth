@@ -22,27 +22,53 @@ class sale_order_line(models.Model):
 
 
 
-# ----------------------------------------------------------- On Changes ------------------------------------------------------
-
-	# Product  
-	#@api.onchange('product_id')
-	#def _onchange_product_id(self):
-	#	print 'jx'
-	#	print 'Change Product'
-		#if self.product_id.description != False: 
-	#	self.name = self.product_id.description 
-
-
 
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+
+
+	x_qty = fields.Integer(
+
+
+			compute='_compute_x_qty', 
+		)
+
+
+	@api.multi
+	def _compute_x_qty(self):
+		for record in self:
+
+			record.x_qty = record.product_uom_qty
+
+
+
+
+
+
+
+	# Quantity
+	product_uom_qty = fields.Float(
+		string='Quantity', 
+
+		digits=(16, 0), 
+		
+		required=False,
+		default=1.0
+	)
+
+
+
+
+
+
 
 	# Description  
 	x_description = fields.Text(
 			string='Description', 
 			#required=True, 
 
-			#compute='_compute_x_description', 
+			compute='_compute_x_description', 
 		)
 
 
@@ -50,7 +76,9 @@ class sale_order_line(models.Model):
 	def _compute_x_description(self):
 		for record in self:
 
-			record.x_description = record.product_id.description
+			#record.x_description = record.product_id.description
+			#record.x_description = record.product_id.x_name_short
+			record.x_description = record.product_id.x_name_ticket
 
 
 
@@ -103,6 +131,26 @@ class sale_order_line(models.Model):
 		required=False, 
 		ondelete='cascade', index=True, copy=False
 	)
+
+
+
+
+
+
+
+# ----------------------------------------------------------- On Changes ------------------------------------------------------
+
+	# Product  
+	#@api.onchange('product_id')
+	#def _onchange_product_id(self):
+	#	print 'jx'
+	#	print 'Change Product'
+		#if self.product_id.description != False: 
+	#	self.name = self.product_id.description 
+
+
+
+
 
 
 # ----------------------------------------------------------- Important ------------------------------------------------------
@@ -321,12 +369,6 @@ class sale_order_line(models.Model):
 
 # ----------------------------------------------------------- Standard ------------------------------------------------------
 
-	product_uom_qty = fields.Float(
-		string='Quantity', 
-		digits=(16, 0), 
-		required=False,
-		default=1.0
-	)
 
 
 	product_uom = fields.Many2one(

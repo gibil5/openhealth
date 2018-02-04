@@ -206,6 +206,7 @@
 			
 
 			<field name='x_zone'>face</field>
+
 <!--
 			<field name='x_pathology'>rejuvenation_face</field>
 -->
@@ -1158,6 +1159,7 @@
 			
 
 			<field name='x_zone'>face</field>
+
 <!--
 			<field name='x_pathology'>rejuvenation_face</field>
 -->

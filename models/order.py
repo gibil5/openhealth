@@ -17,6 +17,9 @@ from . import treatment_vars
 from num2words import num2words
 
 
+import math 
+
+
 #from calendar import monthrange
 #from datetime import datetime
 
@@ -158,6 +161,118 @@ class sale_order(models.Model):
 
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+
+
+	# Total in Words
+	x_total_in_words = fields.Char(
+			"",
+
+			compute='_compute_x_total_in_words', 
+		)
+
+	@api.multi
+	#@api.depends('')
+
+	def _compute_x_total_in_words(self):
+	
+		for record in self:
+
+			words = num2words(record.amount_total, lang='es')
+
+
+
+			if 'punto' in words:
+				words = words.split('punto')[0]			
+
+
+
+			record.x_total_in_words = words.title() + ' Soles'
+
+
+
+
+
+
+
+
+	#x_total_cents = fields.Float(
+	x_total_cents = fields.Integer(
+
+			"Céntimos",
+
+			compute='_compute_x_total_cents', 
+		)
+
+	@api.multi
+	#@api.depends('')
+
+	def _compute_x_total_cents(self):
+
+		for record in self:
+
+			#frac, whole = math.modf(2.5)
+			frac, whole = math.modf(record.amount_total)
+			
+			record.x_total_cents = frac * 100
+
+
+
+
+
+
+
+	# Net
+	x_total_net = fields.Float(
+			"Neto",
+			compute='_compute_x_total_net', 
+		)
+
+	@api.multi
+	#@api.depends('')
+
+	def _compute_x_total_net(self):
+
+		for record in self:
+
+			#record.x_total_net = record.amount_total * 0.82
+			x = record.amount_total / 1.18
+
+			g = float("{0:.2f}".format(x))
+
+			record.x_total_net = g
+
+
+
+
+	# Tax
+	x_total_tax = fields.Float(
+			"Impuesto",
+			compute='_compute_x_total_tax', 
+		)
+
+	@api.multi
+	#@api.depends('')
+	def _compute_x_total_tax(self):
+		for record in self:
+
+			#record.x_total_tax = record.amount_total * 0.18
+			x = record.x_total_net * 0.18
+
+			g = float("{0:.2f}".format(x))
+
+			record.x_total_tax = g
+
+
+
+
+
+
+
+
+
+
+
 
 	# Proc Created 
 	x_procedure_created = fields.Boolean(
@@ -666,63 +781,12 @@ class sale_order(models.Model):
 
 
 
-	# Total Net
-	x_total_net = fields.Float(
-
-			"Neto",
-			compute='_compute_x_total_net', 
-		)
-
-	@api.multi
-	#@api.depends('')
-	def _compute_x_total_net(self):
-		for record in self:
-
-			record.x_total_net = record.amount_total * 0.82
-
-
-
-
-
-	# Total Tax
-	x_total_tax = fields.Float(
-
-			"Impuesto",
-			compute='_compute_x_total_tax', 
-		)
-
-	@api.multi
-	#@api.depends('')
-	def _compute_x_total_tax(self):
-		for record in self:
-
-			record.x_total_tax = record.amount_total * 0.18
 
 
 
 
 
 
-
-
-
-
-	# Total in Words
-	x_total_in_words = fields.Char(
-
-			"",
-			compute='_compute_x_total_in_words', 
-		)
-
-	@api.multi
-	#@api.depends('')
-	def _compute_x_total_in_words(self):
-		for record in self:
-
-			#words = record.total
-			words = num2words(record.amount_total, lang='es')
-
-			record.x_total_in_words = words.title() + ' Soles'
 
 
 
@@ -3059,11 +3123,26 @@ class sale_order(models.Model):
 	@api.multi
 	def print_ticket(self):
 
+
+
 		if self.x_type == 'ticket_receipt': 
-			return self.env['report'].get_action(self, 'openhealth.report_ticket_receipt_view')
+
+			#name = 'openhealth.report_ticket_receipt_view'
+			name = 'openhealth.report_ticket_receipt_nex_view'
+
+			#return self.env['report'].get_action(self, 'openhealth.report_ticket_receipt_view')
+			return self.env['report'].get_action(self, name)
+
+
 
 		elif self.x_type == 'ticket_invoice': 
-			return self.env['report'].get_action(self, 'openhealth.report_ticket_invoice_view')
+
+			#name = 'openhealth.report_ticket_invoice_view'
+			name = 'openhealth.report_ticket_invoice_nex_view'
+
+			#return self.env['report'].get_action(self, 'openhealth.report_ticket_invoice_view')
+			return self.env['report'].get_action(self, name)
+
 
 	# print_ticket	
 

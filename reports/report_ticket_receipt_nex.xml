@@ -200,12 +200,27 @@
 
 <table style="width:100%">
 
+<!--
 	<tr>
 		<th>Desc.</th>
 		<th>Cnt</th>
 		<th>PUnit</th>
 		<th>Total</th>
+
+		<td>Desc.</td>
+		<td>Cnt</td>
+		<td>PUnit</td>
+		<td>Total</td>
 	</tr>
+-->
+
+	<tr>
+		<td><b>Desc</b></td>
+		<td><b>Cnt</b></td>
+		<td><b>PUnit</b></td>
+		<td><b>Total</b></td>
+	</tr>
+
 
 
 <!-- Items --> 

@@ -287,7 +287,7 @@
 	</tr>
 
 	<tr>
-		<td><b>IGV S/.</b></td>
+		<td><b>I.G.V. 18% S/.</b></td>
 		<td align="right" ><t t-esc="doc.x_total_tax"/></td> 
 	</tr>
 
@@ -322,7 +322,12 @@
 <!--
 		<td align="right" ><t t-esc="doc.x_total_cents"/> Céntimos</td> 
 -->
-		<td align="right" ><t t-esc="doc.x_total_cents"/> 00/100</td> 
+		<td align="right" >Y <t t-esc="doc.x_total_cents"/>/100</td> 
+	</tr>
+
+
+	<tr>
+		<td align="right" >Soles</td> 
 	</tr>
 
 </table>

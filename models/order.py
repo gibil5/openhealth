@@ -187,7 +187,8 @@ class sale_order(models.Model):
 
 
 
-			record.x_total_in_words = words.title() + ' Soles'
+			#record.x_total_in_words = words.title() + ' Soles'
+			record.x_total_in_words = words.title()
 
 
 

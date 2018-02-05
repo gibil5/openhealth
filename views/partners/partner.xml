@@ -252,9 +252,9 @@
 
 
 				<xpath expr="//field[@name='function']" position="replace">
-
+<!--
 					<field name="x_id_code"		string="Nr Id"	/>
-
+-->
 
 
 					<field name="x_vip"		/>

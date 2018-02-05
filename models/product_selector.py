@@ -130,33 +130,49 @@ class ProductSelector(models.Model):
 			'openhealth.zone', 
 			
 			string='Zona', 
+
+			#create_edit=False, 
+		)
+
+
+	# Product 
+	product_id = fields.Many2one(
+			'product.product', 
+			string='Product', 
+			domain=[('sale_ok', '=', True)], 
+			change_default=True, 
+			ondelete='restrict', 
+
+			#required=True,
+			required=False,
+
+			#create_edit=False, 
 		)
 
 
 
 
-	zone_co2 = fields.Many2one(
-
-			'openhealth.zone.co2', 
-			
-			string='Zona Co2', 
-		)
 
 
-	zone_quick = fields.Many2one(
-
-			'openhealth.zone.quick', 
-			
-			string='Zona quick', 
-		)
 
 
-	zone_excilite = fields.Many2one(
 
-			'openhealth.zone.excilite', 
-			
-			string='Zona excilite', 
-		)
+
+
+	#zone_co2 = fields.Many2one(
+	#		'openhealth.zone.co2', 
+	#		string='Zona Co2', 
+	#	)
+
+	#zone_quick = fields.Many2one(
+	#		'openhealth.zone.quick', 
+	#		string='Zona quick', 
+	#	)
+
+	#zone_excilite = fields.Many2one(
+	#		'openhealth.zone.excilite', 
+	#		string='Zona excilite', 
+	#	)
 
 
 
@@ -445,16 +461,6 @@ class ProductSelector(models.Model):
 
 
 
-	product_id = fields.Many2one(
-			'product.product', 
-			string='Product', 
-			domain=[('sale_ok', '=', True)], 
-			change_default=True, 
-			ondelete='restrict', 
-
-			#required=True,
-			required=False,
-		)
 
 
 

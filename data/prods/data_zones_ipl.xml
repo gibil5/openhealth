@@ -10,7 +10,7 @@
 
 		<!-- areolas -->
 		<record id='ipl_areolas' model='openhealth.zone'>
-			<field name='name'>Areolas</field>
+			<field name='name'>Ariolas</field>
 			<field name='name_short'>areolas</field>
 			<field name='treatment'>laser_ipl</field>
 		</record>

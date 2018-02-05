@@ -833,8 +833,10 @@
 				<field name="partner_id" position="replace">
 <!--
 					<field name="partner_id"	groups="openhealth.roots"			/>
+
+					<field name="patient" 					options="{'no_create': True, 'no_create_edit':True}"		/>
 -->
-					<field name="patient" 				/>
+					<field name="patient" 					options="{'no_create': False, 'no_create_edit':True}"		/>
 
 				</field>
 
@@ -869,7 +871,7 @@
 					
 					<field name="vspace"/>
 
-					<field name="x_doctor"		required="1"		/>
+					<field name="x_doctor"		required="1"		options="{'no_create': True, 'no_create_edit':True}"			/>
 
 					<field name="vspace"/>
 
@@ -990,6 +992,8 @@ attrs="{'readonly': [('state', 'in', ('done','cancel'))]}">
 
 
 
+
+<!-- Hide --> 
 <xpath expr="//tree/field[@name='price_unit']" position="replace">
 	<field name="price_unit"	readonly="1"			/>
 </xpath>
@@ -997,11 +1001,6 @@ attrs="{'readonly': [('state', 'in', ('done','cancel'))]}">
 <xpath expr="//tree/field[@name='tax_id']" position="replace">
 	<field name="tax_id"	readonly="1"		invisible="1"		/>
 </xpath>
-
-
-
-
-
 
 <xpath expr="//tree/field[@name='name']" position="replace">
 	<field name="name"	readonly="1"	invisible="1"		/>
@@ -1013,6 +1012,25 @@ attrs="{'readonly': [('state', 'in', ('done','cancel'))]}">
 
 
 
+<!-- Change --> 
+<xpath expr="//tree/field[@name='product_id']" position="replace">
+
+<!--
+	<field name="product_id"		options="{'no_create':False, 'no_create_edit':True}"	/>
+-->
+	<field name="product_id"		options="{'no_create': True, 'no_create_edit':True}"	/>
+
+</xpath>
+
+
+
+
+
+
+
+
+
+<!-- Add --> 
 <xpath expr="//tree/field[@name='name']" position="after">
 	<field name="x_price_manual"/>
 </xpath>
@@ -1021,11 +1039,6 @@ attrs="{'readonly': [('state', 'in', ('done','cancel'))]}">
 	<field name="x_description"/>
 </xpath>
 
-
-
-
-<!--
--->
 <xpath expr="//tree/field[@name='product_uom_qty']" position="after">
 	<field name="x_qty"/>
 </xpath>

@@ -34,6 +34,29 @@ class ProductSelector(models.Model):
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 
 	@api.multi
+	def reset(self):  
+
+		print 
+		print 'jx'
+		print 'Reset'
+
+
+ 		# Reset 
+ 		self.default_code = ''
+ 		self.product_id = False
+ 		self.price_manual_flag = False
+ 		self.price_manual = 0
+	 	self.family = False
+	 	self.treatment = False
+	 	self.zone = False
+	 	self.family = False
+
+
+
+
+
+
+	@api.multi
 	def create_orderline(self):  
 
 		print 

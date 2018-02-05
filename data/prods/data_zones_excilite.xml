@@ -10,7 +10,7 @@
 
 		<!-- areolas -->
 		<record id='excilite_areolas' model='openhealth.zone'>
-			<field name='name'>Areolas</field>
+			<field name='name'>Ariolas</field>
 			<field name='name_short'>areolas</field>
 			<field name='treatment'>laser_excilite</field>
 		</record>

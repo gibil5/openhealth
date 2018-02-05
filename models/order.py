@@ -73,32 +73,43 @@ class sale_order(models.Model):
  		if res.id != False: 
  			
  			res_id = res.id 
-	 		print res_id
-
- 			res.default_code = ''
- 			res.product_id = False
- 			res.product_uom_qty = 1 
-	 		res.x_type = x_type
+	 		#print res_id
 
 
+
+
+ 			#res.default_code = ''
+ 			#res.product_id = False
+	 		#res.x_type = x_type
+ 			#res.price_manual_flag = False
+ 			#res.price_manual = 0
+	 		#res.family = False
+	 		#res.treatment = False
+	 		#res.zone = False
+	 		#res.family = False
+
+	 		#if x_type == 'product': 
+	 		#	res.treatment = False
+	 		#	res.zone = False
+	 		#	res.family = False
+
+
+
+
+ 			# Reset 
+	 		res.reset()
+
+
+	 		# Initialize 
 	 		res.order_id = order_id
-
-
- 			res.price_manual_flag = False
- 			res.price_manual = 0
-
-
-	 		res.family = False
+ 			res.product_uom_qty = 1 
+		 	res.x_type = x_type
 
 
 
-	 		if x_type == 'product': 
-	 			res.treatment = False
-	 			res.zone = False
-	 			res.family = False
 
 
-	 		#res.reset()
+
  			
 	 		
 

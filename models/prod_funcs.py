@@ -218,6 +218,12 @@ _hac = {
 
 			'token': 					'Token', 
 
+
+			# Proliant 
+			'dexpantenol_5ml':			'Dexpantenol 5ml', 
+			'fillderma_ultra': 			'Fillderma ultra', 
+			'formula_1':				'Fórmula 1', 
+
 }
 
 

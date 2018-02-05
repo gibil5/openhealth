@@ -243,7 +243,8 @@ def get_ticket_name(self, treatment, zone, pathology, family, x_type, name_short
 	print 'jx'
 	print 'Get Ticket Name'
 
-	name_ticket = 'jx'
+	#name_ticket = 'jx'
+	name_ticket = 'x'
 
 
 

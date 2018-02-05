@@ -570,6 +570,21 @@ order_report.xml
 
 
 
+
+
+			<menuitem 	id="prods_services_consultation_menu" 
+						name="Consultas"
+						parent="services_menu"
+						sequence="6"
+						action="product_template_service_consultation_list_action"/>
+
+
+
+
+
+
+
+
 <!--
 			<menuitem 	id="prods_services_menu" 
 						name="Todos"

@@ -689,6 +689,24 @@
 
 
 
+		<!-- Service Consultations -->
+		<record model="ir.actions.act_window" id="product_template_service_consultation_list_action">
+			<field name="name">Caser consultation</field>
+			<field name="res_model">product.template</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+
+            <field name="domain">[            	
+									('type', '=', 'service'),
+
+									('x_origin', '=', False),
+									
+									('x_treatment', '=', 'consultation'),
+            					
+            					]</field>
+
+			<field name="context">{}</field>
+		</record>
 
 
 

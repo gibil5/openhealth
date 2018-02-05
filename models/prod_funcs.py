@@ -9,6 +9,8 @@ from openerp import models, fields, api
 _hap = {
 			
 			# Treatment 
+			#'consultation':          'Consulta', 
+
 			'laser_quick':         	'Quick', 
 			'laser_co2':          	'Co2', 
 			'laser_excilite':       'Exc', 
@@ -156,6 +158,9 @@ _hap = {
 
 
 _hac = {
+			'con_med': 				'Consulta Médica', 
+			'con_gyn': 				'Consulta Ginecológica', 
+
 
 			'acnetopic_200ml': 				'Acnetopic', 
 
@@ -251,6 +256,7 @@ def get_ticket_name(self, treatment, zone, pathology, family, x_type, name_short
 	# Service 
 	if x_type == 'service': 
 
+
 		if family == 'laser': 
 			#name_ticket = _hap[treatment] + ' ' + zone + ' ' + pathology 
 
@@ -259,9 +265,13 @@ def get_ticket_name(self, treatment, zone, pathology, family, x_type, name_short
 			else: 
 				name_ticket = _hap[treatment] + ' ' + _hap[zone] + ' ' + pathology 
 
-		else:
+
+		elif family == 'consultation': 
 			#name_ticket = treatment + ' ' + zone + ' ' + pathology 
-			name_ticket = _hap[treatment] + ' ' + zone + ' ' + pathology 
+			#name_ticket = _hap[treatment] + ' ' + zone + ' ' + pathology 
+			name_ticket = _hac[name_short] 
+
+
 
 
 

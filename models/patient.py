@@ -61,6 +61,14 @@ class Patient(models.Model):
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
 
 
+	# Id Code 
+	x_id_code = fields.Char(
+			default=_get_default_id_code, 
+		)
+
+
+
+
 	# Allergies 
 	#x_allergies = fields.Char(
 	x_allergies = fields.Many2one(
@@ -88,12 +96,6 @@ class Patient(models.Model):
 
 
 
-	# Id Code 
-	x_id_code = fields.Char(
-			
-			default=_get_default_id_code, 
-
-		)
 
 
 

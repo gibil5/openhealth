@@ -25,17 +25,43 @@ class Card(models.Model):
 
 
 
-# ----------------------------------------------------------- Commons ------------------------------------------------------
-	vspace = fields.Char(
-			' ', 
-			readonly=True
-			)
+# ----------------------------------------------------------- Defaults ------------------------------------------------------
+
+	@api.model
+	def _get_default_name(self):
 
 
-# ----------------------------------------------------------- Fields ------------------------------------------------------
+		name = 'vip'
 
+		#counter = self.env['openhealth.counter'].search([('name', '=', name)])
+ 		counter = self.env['openhealth.counter'].search([
+																('name', '=', name), 
+															],
+																#order='write_date desc',
+																limit=1,
+															)
+
+		default_name = '13'
+
+		if counter.total != False: 
+
+			default_name = counter.total
+			counter.increase()
+
+
+		return default_name
+
+
+
+
+
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+	# Name 
 	name = fields.Char(		
 			"Tarjeta Vip #", 
+
+			default=_get_default_name, 
 
 			#required=True, 
 			required=False, 
@@ -188,6 +214,10 @@ class Card(models.Model):
 
 
 
+	vspace = fields.Char(
+			' ', 
+			readonly=True
+		)
 
 
 

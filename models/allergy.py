@@ -13,13 +13,15 @@ class Allergy(models.Model):
 
 	_name = 'openhealth.allergy'
 
-	_order = 'name_short asc'
+	#_order = 'name_short asc'
+	_order = 'name asc'
 
 
 
 
 	name = fields.Char(
 			string="Nombre", 
+			required=True, 
 		)
 
 

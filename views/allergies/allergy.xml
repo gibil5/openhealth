@@ -44,7 +44,7 @@
 
 					<field name="name"/>
 
-					<field name="name_short"/>
+					<field name="name_short"	groups="openhealth.roots"			/>
 
 
 <!--

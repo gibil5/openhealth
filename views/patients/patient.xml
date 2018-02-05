@@ -391,9 +391,9 @@ Cosmetology
 				
 
 					<field name="name"/>
-
+<!--
 					<field name="x_id_code"/>		
-
+-->
 
 
 					<field name="x_dni"/>		

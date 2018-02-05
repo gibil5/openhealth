@@ -84,6 +84,7 @@
 
 		<!-- Allergies --> 
 <!--
+-->
 		<menuitem 
 			id="allergies_quick_menu" 
 			name="Alergias" 
@@ -92,7 +93,6 @@
 
 			action="allergy_list_action"
 			/>
--->
 
 
 

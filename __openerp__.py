@@ -290,7 +290,7 @@
 
 
 		# Allergy 
-		#'views/allergies/allergy.xml',
+		'views/allergies/allergy.xml',
 
 
 

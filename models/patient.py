@@ -62,10 +62,10 @@ class Patient(models.Model):
 
 
 	# Allergies 
-	x_allergies = fields.Char(
-	#x_allergies = fields.Many2one(
+	#x_allergies = fields.Char(
+	x_allergies = fields.Many2one(
 
-			#'openhealth.allergy', 
+			'openhealth.allergy', 
 
 			string = "Alergias", 
 

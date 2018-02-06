@@ -99,6 +99,12 @@
 		<th>Lastname</th> 
 		<th>Age</th>
 	</tr>
+
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
 -->
 
 	<tr>
@@ -113,17 +119,22 @@
 		<td></td>
 	</tr>
 
+
+
+
+
+	<tr>
+		<td><b>Serie:</b></td>
+		<td><t t-esc="doc.x_my_company.x_series"/></td> 
+		<td></td>
+	</tr>
+
 	<tr>
 		<td><b>Autorización:</b></td>
 		<td><t t-esc="doc.x_my_company.x_authorization"/></td> 
 		<td></td>
 	</tr>
 
-	<tr>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
 </table>
 <br/>
 

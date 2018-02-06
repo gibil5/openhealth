@@ -164,21 +164,26 @@ Add Procedures
 -->
 <!--
 							attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
+-->
 						<button 
 							type="object" 
 							class="oe_highlight"
 							
-							string="Agregar Procedimientos" 
+							string="Agregar Proc." 
 							
 							name="toggle_add_procedures" 
 
 							states="controls"
 
 
+
+							attrs="{ 'invisible':[	('add_procedures','!=',False), 	]}"
+
+
+
 							groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
 						/>
 
--->
 
 
 
@@ -187,7 +192,7 @@ Add Procedures
 						<button 
 							type="object" 
 							class="oe_highlight"
-							string="RECOMENDACIONES" 
+							string="RECOM." 
 							name="create_service" 
 
 
@@ -221,7 +226,7 @@ Add Procedures
 							type="object" 
 							class="oe_highlight"
 							name="create_procedure" 
-							string="PROCEDIMIENTOS" 
+							string="PROC." 
 
 
 							attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"

@@ -13,7 +13,7 @@ _state_list = [
 
 
 
-				('budget_consultation', 	'Pres C - Creado'),		# Dep ? 
+				('budget_consultation', 	'Pres C - Creado'),		# Important	
 
 
 				
@@ -30,7 +30,8 @@ _state_list = [
 
 
 
-				('budget_procedure', 		'Pres. P - Creado'),	# Dep ? 
+				#('budget_procedure', 		'Pres. P - Creado'),	#  Important
+				('budget_procedure', 		'Presu Creado'),		
 
 
 
@@ -50,7 +51,8 @@ _state_list = [
 				('sessions', 				'Sesiones'),				# OK
 				
 
-				('controls', 				'Controles'),				# OK
+				#('controls', 				'Controles'),				# OK
+				('controls', 				'Control'),					
 
 
 				('done', 					'Alta'),					# OK 

@@ -65,11 +65,18 @@ class Partner(models.Model):
 # ----------------------------------------------------------- My Company ------------------------------------------------------
 
 
+	# Series 
+	x_series = fields.Char(
+			string='Serie', 
+		)
+
+
 
 	# Autorization 
 	x_authorization = fields.Char(
 			string='Autorización', 
 		)
+
 
 
 

@@ -153,14 +153,20 @@
 
 					<field name="vspace"		/>
 
-					<field name="x_authorization"			attrs = "{'invisible':[('x_my_company','in',(False))]}"		/>
+					<field name="x_series"			attrs = "{'invisible':[('x_my_company','in',(False))]}"		/>
+
 
 					<field name="vspace"		/>
 
+					<field name="x_authorization"			attrs = "{'invisible':[('x_my_company','in',(False))]}"		/>
+
+
+
+
+					<field name="vspace"		/>
 
 					<field name="x_warning"			attrs = "{'invisible':[('x_my_company','in',(False))]}"		/>
 
-					<field name="vspace"		/>
 
 
 
@@ -177,6 +183,8 @@
 					
 					<field name="x_ruc"		attrs = "{'required':[('company_type','in',('company'))]}"	/>
 -->
+
+					<field name="vspace"		/>
 
 					<field  name="x_dni"		/>
 

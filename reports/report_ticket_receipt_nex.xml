@@ -119,12 +119,12 @@
 
 
 <!--
+-->
 	<tr>
 		<td><b>Serie:</b></td>
 		<td><t t-esc="doc.x_my_company.x_series"/></td> 
 		<td></td>
 	</tr>
--->
 
 	<tr>
 		<td><b>Autorización:</b></td>

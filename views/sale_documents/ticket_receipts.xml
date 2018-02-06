@@ -31,15 +31,12 @@
 -->
 
 
-
+<!--
 				<xpath expr="//field[@name='name']" position="after">
-
 					<field name="vspace" />
-<!--					
--->
 					<field name="serial_nr" />
 				</xpath>
-
+-->
 
 			</field>
 		</record>

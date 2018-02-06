@@ -158,6 +158,10 @@
 
 								<field name="vspace"   />													
 
+								<field name="serial_nr" />
+
+								<field name="vspace"   />													
+
 								<field name="partner" 			readonly="1"   />
 								
 								<field name="vspace"   />													

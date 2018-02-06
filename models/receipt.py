@@ -13,16 +13,32 @@ class Receipt(models.Model):
 
 
 
+
+
+
+
+
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+	# Name 
 	name = fields.Char(
 			string="Boleta #", 
 		)
 
-
+	# Family 
 	family = fields.Selection(
 			default='receipt', 
 		)
 
 
+
+
+	# Serial Number 
+	#serial_nr = fields.Char(
+	#		string="Nr de Serie", 
+	#		default=_get_default_serial_nr(), 
+	#		readonly=True, 
+	#	)
 
 
 
@@ -40,12 +56,12 @@ class Receipt(models.Model):
 	
 
 
+
 		# Counter 
-		counter = self.env['openhealth.counter'].search([('name', '=', 'receipt')])
+		#counter = self.env['openhealth.counter'].search([('name', '=', 'receipt')])
+		#vals['serial_nr'] = counter.total
+		#counter.increase()
 
-		vals['serial_nr'] = counter.total
-
-		counter.increase()
 
 
 

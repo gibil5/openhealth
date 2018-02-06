@@ -19,15 +19,8 @@ class SaleProof(models.Model):
 
 
 
-# ----------------------------------------------------------- Important ------------------------------------------------------
 
-
-
-	# Prefix 
-	#prefix = fields.Char(
-	#		string="Prefijo", 
-	#	)
-
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
 
 
 
@@ -35,8 +28,12 @@ class SaleProof(models.Model):
 	serial_nr = fields.Char(
 			string="Nr de Serie", 
 
+			#default=_get_default_serial_nr, 
+
 			readonly=True, 
 		)
+
+
 
 
 
@@ -61,10 +58,15 @@ class SaleProof(models.Model):
 
 		for record in self:
 		
-			record.counter = self.env['openhealth.counter'].search([('name', 'like', record.family)])
+			#record.counter = self.env['openhealth.counter'].search([('name', 'like', record.family)])
+			record.counter = self.env['openhealth.counter'].search([('name', '=', record.family)])
 
 
 
+	# Prefix 
+	#prefix = fields.Char(
+	#		string="Prefijo", 
+	#	)
 
 
 

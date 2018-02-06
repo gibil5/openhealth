@@ -857,7 +857,7 @@ class PaymentMethod(models.Model):
 
 
 
-		serial_nr = 'x'
+		#serial_nr = 'x'
 
 
 
@@ -899,8 +899,7 @@ class PaymentMethod(models.Model):
 
 
 
-														'serial_nr': serial_nr,
-
+														#'serial_nr': serial_nr,
 												})
 
 

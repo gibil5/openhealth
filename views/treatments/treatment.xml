@@ -163,7 +163,26 @@
 Add Procedures 
 -->
 <!--
+							attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
+						<button 
+							type="object" 
+							class="oe_highlight"
+							
+							string="Agregar Procedimientos" 
+							
+							name="toggle_add_procedures" 
+
+							states="controls"
+
+
+							groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
+						/>
+
 -->
+
+
+
+
 
 						<button 
 							type="object" 

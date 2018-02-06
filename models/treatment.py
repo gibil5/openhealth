@@ -48,6 +48,21 @@ class Treatment(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Actions ------------------------------------------------------
+
+	# Toggle Add Procedures 
+	@api.multi 
+	def toggle_add_procedures(self):
+
+		print 'jx'
+		print 'Toggle Add Procedures'
+
+		self.add_procedures = not self.add_procedures 
+
+
+
+
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
 
 

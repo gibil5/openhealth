@@ -61,9 +61,7 @@ class TicketReceipt(models.Model):
 	# Serial Number 
 	serial_nr = fields.Char(
 			#string="Nr de Serie", 
-	
 			default=_get_default_serial_nr, 
-	
 			#readonly=True, 
 		)
 

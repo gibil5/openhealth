@@ -1266,7 +1266,23 @@ class Patient(models.Model):
 			self.x_dni = '09817194'
 			self.email = 'jrevilla55@gmail.com'
 			self.phone = '4760118'
-			self.x_allergies = 'Ninguna'
+
+
+
+			#self.x_allergies = 'Ninguna'
+			name = 'Ninguna'
+	 		allergy = self.env['openhealth.allergy'].search([
+																('name', '=', name), 
+															],
+																#order='write_date desc',
+																limit=1,
+														) 		
+			allergy_id = allergy.id
+	 		if allergy_id != False: 
+				self.x_allergies = allergy_id 
+
+
+			
 			self.x_first_contact = 'recommendation'
 			self.comment = 'test'
 			self.x_ruc = '09817194123'

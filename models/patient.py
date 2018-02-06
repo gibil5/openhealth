@@ -1263,7 +1263,9 @@ class Patient(models.Model):
 			# Personal 
 			self.sex = 'Male'
 			self.dob = '1965-05-26'
-			self.x_dni = '09817194'
+
+			self.x_dni = '09817195'
+			
 			self.email = 'jrevilla55@gmail.com'
 			self.phone = '4760118'
 

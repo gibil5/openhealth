@@ -164,25 +164,22 @@ Add Procedures
 -->
 <!--
 							attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
--->
+							attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
 						<button 
 							type="object" 
+
 							class="oe_highlight"
 							
-							string="Agregar Proc." 
+							string="Proc. Adicionales" 
 							
 							name="toggle_add_procedures" 
 
 							states="controls"
 
 
-
-							attrs="{ 'invisible':[	('add_procedures','!=',False), 	]}"
-
-
-
 							groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
 						/>
+-->
 
 
 
@@ -831,11 +828,38 @@ Fields
 
 								<field name="vspace" />
 
-								<field name="add_procedures" />
 
+<!--
+								<field name="user_id"			groups="openhealth.roots"		/>
 								<field name="vspace" />
 
-								<field name="user_id"			groups="openhealth.roots"		/>
+-->
+								<field name="add_procedures"	invisible="1"		 />
+
+
+<!--
+Add Procedures 
+-->
+<!--
+-->
+									<button 
+										type="object" 
+
+										class="oe_highlight"
+										
+										string="Proc. Adicionales" 
+										
+										name="toggle_add_procedures" 
+
+										states="controls"
+
+
+										groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
+									/>
+
+
+
+
 <!--
 								<field name="consultation_progress"		/>
 								<field name="price_total"/>

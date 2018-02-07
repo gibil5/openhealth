@@ -191,7 +191,10 @@
 
 
 <!-- Line --> 
+<!--
 <table style="width:100%">
+-->
+<table style="width:80%">
 	<tr>
 		<td  align="justify"  >
 -------------------------------------------------------------------------------
@@ -282,7 +285,10 @@
 
 
 <!-- Line --> 
+<!--
 <table style="width:100%">
+-->
+<table style="width:80%">
 	<tr>
 		<td  align="justify"  >
 -------------------------------------------------------------------------------
@@ -362,7 +368,10 @@
 
 
 <!-- Web --> 
+<!--
 <table style="width:100%">
+-->
+<table style="width:80%">
 	<tr>
 		<td align="center" >
 			<t t-esc="doc.x_my_company.website"/>
@@ -373,7 +382,10 @@
 
 
 <!-- Email --> 
+<!--
 <table style="width:100%">
+-->
+<table style="width:80%">
 	<tr>
 		<td align="center" >
 			<t t-esc="doc.x_my_company.email"/>

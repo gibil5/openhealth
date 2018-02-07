@@ -143,7 +143,10 @@
 <!-- Customer --> 
 <!-- DNI --> 
 <!-- Address --> 
+<!--
 <table style="width:100%">
+-->
+<table style="width:80%">
 	<tr>
 		<td><b>Cliente:</b></td>
 		<td><t t-esc="doc.partner_id.name"/></td> 
@@ -212,8 +215,10 @@
 
 
 
-
+<!--
 <table style="width:100%">
+-->
+<table style="width:80%">
 
 <!--
 	<tr>
@@ -293,7 +298,10 @@
 
 
 <!-- Total --> 
+<!--
 <table style="width:100%">
+-->
+<table style="width:80%">
 	<tr>
 		<td><b>Neto S/.</b></td>
 		<td align="right" ><t t-esc="doc.x_total_net"/></td> 
@@ -315,7 +323,10 @@
 
 
 <!-- Total Words --> 
+<!--
 <table style="width:100%">
+-->
+<table style="width:80%">
 
 	<tr>
 		<td><b>Son:</b></td>
@@ -373,7 +384,10 @@
 
 
 <!-- Disclaimer --> 
+<!--
 <table style="width:100%">
+-->
+<table style="width:80%">
 	<tr>
 		<td>
 			<t t-esc="doc.x_my_company.x_warning"/>

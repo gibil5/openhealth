@@ -354,16 +354,15 @@ order_report.xml
 
 		<!-- Auto --> 
 		<menuitem 
-					action="oeh_medical_appointment_action_auto" 
-					
+					id="oeh_medical_appointment_list_auto" 					
 					parent="oehealth_appointment_menu"  
-
-					id="oeh_medical_appointment_list_auto" 
-
 					sequence="2"
 
 
 					groups="openhealth.roots,openhealth.reception,openhealth.physicians,openhealth.managers,openhealth.directors"
+
+
+					action="oeh_medical_appointment_action_auto" 
 		/>
 
 

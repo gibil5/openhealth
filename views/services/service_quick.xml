@@ -110,21 +110,37 @@
 
 
 		<!-- TREE -->
+<!--		
+-->
 		<record model="ir.ui.view" id="service_quick_tree_view">
 			<field name="name">service.quick.tree</field>
 			<field name="model">openhealth.service.quick</field>
+
+			<field name="inherit_id" ref="service_tree_view"/>
+			<field name="mode">primary</field>
+			
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='service']" position="replace">
+					<field name="service" />
+
+
+				</xpath>
+        	</field>
+
+		</record>
+
+
+<!--
 			<field name="arch" type="xml">
 				<tree string="Service Tree">
 
 
-<!--
 					<field name="id"/>					
 					<field name="laser"/>				
 					<field name="consultation"/>
 					<field name="treatment"/>
 					<field name="name"/>					
 					<field name="create_date"/>
--->				
 
 					<field name="service"/>					
 
@@ -140,7 +156,7 @@
 					<field name="state"/>
 
 
-<!--
+
 						<field name="nr_hands_i"/>
 						<field name="nr_body_local_i"/>			
 						<field name="nr_face_local_i"/>
@@ -152,10 +168,10 @@
 						<field name="nr_face_all_neck"/>
 						<field name="nr_neck"/>
 						<field name="nr_neck_hands"/>
--->
 				</tree>
 			</field>
 		</record>
+-->				
 
 
 

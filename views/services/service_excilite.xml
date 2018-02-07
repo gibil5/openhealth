@@ -27,31 +27,46 @@
 		<record model="ir.ui.view" id="service_excilite_tree_view">
 			<field name="name">service.tree</field>
 			<field name="model">openhealth.service.excilite</field>
+
+			<field name="inherit_id" ref="service_tree_view"/>
+			<field name="mode">primary</field>
+			
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='service']" position="replace">
+					<field name="service" />
+				</xpath>
+        	</field>
+
+		</record>
+
+<!--
 			<field name="arch" type="xml">
 				
 				<tree string="Service Tree">
 				
-					<!--
-					-->
 
 					<field name="name"/>
 					<field name="id"/>
-
 					<field name="laser"/>				
-					
 					<field name="treatment"/>
-					<!--
-					<field name="zone"/>
-					<field name="pathology"/>
-					-->
+					<field name="service"/>
+					<field name="consultation"/>
+
+
 					<field name="service"/>
 
-					<field name="consultation"/>
+					<field name="zone"/>
+
+					<field name="pathology"/>
+
+					<field name="physician"/>
+
+					<field name="state"/>
 				
 				</tree>
 			</field>
 		</record>
-
+-->
 
 
 

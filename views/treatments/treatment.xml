@@ -748,6 +748,7 @@ Fields
 
 							
 						<group>
+
 							<!-- Padding --> 
 							<group>
 <!--
@@ -755,7 +756,24 @@ Fields
 								<field name="vspace" />
 -->
 								<field name="partner_id"		invisible="1"	/>
+
+
+
+								<button 
+										type="object" 
+										class="oe_highlight"
+
+										name="reset_procs" 	
+
+										string="Reset Procs"
+
+										groups="openhealth.roots"			
+									/>
+
 							</group>
+
+
+
 
 							<group>
 
@@ -794,7 +812,13 @@ Fields
 										groups="openhealth.roots"			
 									/>
 -->
+
+
+
+
 							</group>
+
+
 
 
 
@@ -834,7 +858,7 @@ Fields
 								<field name="vspace" />
 
 -->
-								<field name="add_procedures"	invisible="1"		 />
+								<field name="add_procedures"	invisible="0"		 />
 
 
 <!--

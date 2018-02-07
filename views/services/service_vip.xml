@@ -60,23 +60,46 @@
 
 
 		<!-- TREE -->
+<!--
+-->
 		<record model="ir.ui.view" id="service_vip_tree_view">
 			<field name="name">service.vip.tree</field>
 			<field name="model">openhealth.service.vip</field>
+
+			<field name="inherit_id" ref="service_tree_view"/>
+			<field name="mode">primary</field>
+			
+			<field name="arch" type="xml">
+
+
+				<xpath expr="//field[@name='zone']" position="replace">
+				</xpath>
+
+				<xpath expr="//field[@name='pathology']" position="replace">
+				</xpath>
+
+
+        	</field>
+
+		</record>
+
+
+<!--
 			<field name="arch" type="xml">
 				<tree string="Service Tree">
 
 
 					<field name="service"/>					
 
+
 					<field name="physician"/>
 
 
+					<field name="state"/>					
 				</tree>
 			</field>
 		</record>
-
-
+-->
 
 
 

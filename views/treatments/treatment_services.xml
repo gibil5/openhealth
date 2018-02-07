@@ -37,6 +37,10 @@
 <!-- vip --> 
 							<page string="VIP"   		attrs="{'invisible':[('nr_services_vip', '=', 0)]}"  >
 
+								<field name="service_vip_ids"/>	
+
+
+<!--
 								<field name="service_vip_ids">	
 
 									<tree string="Services"		create="false" >	
@@ -50,10 +54,12 @@
 										/>
 
 
-										<field name="service"/>										
+										<field name="service"/>	
 										
 									</tree>
 								</field>
+-->
+
 
 							</page>
 
@@ -67,6 +73,9 @@
 <!-- Co2 --> 
 							<page string="CO2"   		attrs="{'invisible':[('nr_services_co2', '=', 0)]}"  >
 
+								<field name="service_co2_ids"/>	
+
+<!--
 								<field name="service_co2_ids">	
 
 									<tree string="Services"		create="false" >	
@@ -80,10 +89,7 @@
 										/>
 
 										<field name="name"/>
-										<!--
-										<field name="id"/>
-										<field name="consultation"/>
-										-->
+
 
 										<field name="laser"/>				
 										
@@ -96,15 +102,19 @@
 										<field name="physician"/>
 
 
-
 										<field name="state"/>
 
 									</tree>
 								</field>
+-->
 
 							</page>
 
 
+										<!--
+										<field name="id"/>
+										<field name="consultation"/>
+										-->
 
 
 
@@ -119,6 +129,8 @@
 							<page string="QUICK">
 -->
 							<page string="QUICK"			attrs="{'invisible':[('nr_services_quick', '=', 0)]}"			>
+
+
 
 
 								<field 
@@ -142,7 +154,20 @@
 										}"
 									>	
 
-									<tree string="Services"		create="true" >	
+
+
+									<tree string="Services"		create="true" 
+
+colors="
+
+red:state=='draft';
+
+blue:state=='budget'
+
+"
+										>	
+
+
 
 										<button 
 											type="object" 
@@ -167,6 +192,8 @@
 										<field name="physician"/>
 
 										<field name="comeback"/>
+
+
 
 										<field name="price"/>
 										<field name="price_vip"/>
@@ -236,9 +263,13 @@
 
 <!-- Excilite --> 
 							<page string="EXCILITE"  	attrs="{'invisible':[('nr_services_excilite', '=', 0)]}"	>
+
+
 								<!--
-								<field name="service_excilite_ids"/>
 								-->
+								<field name="service_excilite_ids"/>
+
+<!--
 								<field name="service_excilite_ids">	
 
 									<tree string="Services">	
@@ -260,15 +291,21 @@
 										<field name="state"/>
 									</tree>
 								</field>
+-->
+
 
 							</page>
 
 
 <!-- Ipl --> 
 							<page string="IPL"   		attrs="{'invisible':[('nr_services_ipl', '=', 0)]}"  >
+
+
 								<!--
-								<field name="service_ipl_ids"/>	
 								-->
+								<field name="service_ipl_ids"/>	
+
+<!--
 								<field name="service_ipl_ids">									
 									<tree string="Services">	
 										<button 
@@ -288,7 +325,7 @@
 										<field name="state"/>
 									</tree>
 								</field>
-
+-->
 							</page>
 
 
@@ -296,9 +333,13 @@
 
 <!-- Ndyag --> 
 							<page string="NDYAG"   		attrs="{'invisible':[('nr_services_ndyag', '=', 0)]}"  >
+
+
 								<!--								
-								<field name="service_ndyag_ids"/>						
 								-->
+								<field name="service_ndyag_ids"/>						
+
+<!--
 								<field name="service_ndyag_ids">									
 									<tree string="Services">	
 										<button 
@@ -319,16 +360,23 @@
 										<field name="state"/>
 									</tree>
 								</field>
-
+-->
 							</page>
 
 
 
+
+
+
 <!-- Medical --> 
-							<page string="Medical"   		attrs="{'invisible':[('nr_services_medical', '=', 0)]}"  >
+							<page string="Tratamientos Médicos"   		attrs="{'invisible':[('nr_services_medical', '=', 0)]}"  >
+
+
 								<!--
-								<field name="service_medical_ids"/>						
 								-->
+								<field name="service_medical_ids"/>						
+
+<!--
 								<field name="service_medical_ids">									
 									<tree string="Services">	
 										<button 
@@ -348,6 +396,8 @@
 										<field name="state"/>
 									</tree>
 								</field>
+-->
+
 							</page>
 
 

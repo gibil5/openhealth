@@ -616,8 +616,9 @@
 		'views/menus/menus.xml',
 		'views/menus/menus_openhealth.xml',
 
-		#'views/menus/menus_reporting.xml',
-		#'views/menus/menus_inventory.xml',
+		# Dangerous ! 
+		'views/menus/menus_reporting.xml',
+		'views/menus/menus_inventory.xml',
 		
 
 

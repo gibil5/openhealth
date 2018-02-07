@@ -283,8 +283,22 @@
 			<field name="name">service.tree</field>
 			<field name="model">openhealth.service</field>
 			<field name="arch" type="xml">
-				<tree string="Service Tree">
 
+
+				<tree string="Service Tree"
+
+colors="
+
+red:state=='draft';
+
+blue:state=='budget'
+
+"
+
+					>
+
+
+<!--
 					<field name="name"/>
 					
 					<field name="id"/>
@@ -293,14 +307,25 @@
 					
 					<field name="consultation"/>
 
-
 					<field name="treatment"/>
 					
 					<field name="service"/>
+-->
+
+					<field name="service"/>
+
+					<field name="zone"/>
+
+					<field name="pathology"/>
+
+					<field name="physician"/>
+
+					<field name="state"/>
 					
 				</tree>
 			</field>
 		</record>
+
 
 
 

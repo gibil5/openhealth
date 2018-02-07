@@ -79,6 +79,8 @@
 
 
 
+
+
 <!--
 											'default_appointment_date': time.strftime('%Y-%m-%d 14:00:00'),
 -->
@@ -99,13 +101,17 @@
 					</field>
 
 
+
 					<field name="context">{
 											'default_x_target': 'doctor',
 											'default_x_type': 'consultation',
 
+											'default_appointment_date': time.strftime('%Y-%m-%d 14:00:00'),
 										}
 					</field>
 		</record>
+
+
 
 
 

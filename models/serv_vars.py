@@ -8,10 +8,11 @@ _state_list = [
 
 					('draft', 		'Inicio'),			
 
+					#('budget', 	'Presupuesto'),		
+					('budget', 		'Presupuestado'),		
+
+
 					#('done', 		'Completo'),			
-
-					('budget', 		'Presupuesto'),		
-
 					#('procedure', 	'Procedimiento'),			
 ]
 

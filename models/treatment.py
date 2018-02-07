@@ -53,12 +53,29 @@ class Treatment(models.Model):
 
 	# Toggle Add Procedures 
 	@api.multi 
+	def reset_procs(self):
+
+		print 'jx'
+		print 'Reset Procedures'
+
+		#self.add_procedures = not self.add_procedures 
+		self.add_procedures = False 
+
+
+
+
+
+
+	# Toggle Add Procedures 
+	@api.multi 
 	def toggle_add_procedures(self):
 
 		print 'jx'
 		print 'Toggle Add Procedures'
 
 		self.add_procedures = not self.add_procedures 
+
+
 
 
 
@@ -157,6 +174,10 @@ class Treatment(models.Model):
 
 		# Alta 
 		self.treatment_closed = False
+
+
+		# Add procedures 
+		self.add_procedures = False
 
 
 

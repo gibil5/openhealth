@@ -1,5 +1,5 @@
 <openerp>
-	<data>
+	<data noupdate='1'>
 
 
 
@@ -27,22 +27,19 @@
 
 			<field name="margin_left">3</field>			
 			<field name="margin_right">3</field>
--->
+
 			<field name="margin_left">10</field>			
 			<field name="margin_right">0</field>
+-->
 
 
 			<field name="header_spacing">0</field>
+
 			<field name="margin_top">0</field>
 
 
 
-
-
-
-
-			<field name="margin_bottom">3</field>
-			
+			<field name="margin_bottom">3</field>			
 
 			<field name="dpi">130</field>
 

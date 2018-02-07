@@ -160,6 +160,7 @@ _hap = {
 _hac = {
 			'con_med': 				'Consulta Médica', 
 			'con_gyn': 				'Consulta Ginecológica', 
+			'con_med_zero': 		'Consulta Médica - Costo Zero', 
 
 
 			'acnetopic_200ml': 				'Acnetopic', 
@@ -269,7 +270,9 @@ def get_ticket_name(self, treatment, zone, pathology, family, x_type, name_short
 		elif family == 'consultation': 
 			#name_ticket = treatment + ' ' + zone + ' ' + pathology 
 			#name_ticket = _hap[treatment] + ' ' + zone + ' ' + pathology 
-			name_ticket = _hac[name_short] 
+
+			if name_short in _hac: 
+				name_ticket = _hac[name_short] 
 
 
 

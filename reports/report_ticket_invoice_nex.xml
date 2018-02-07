@@ -146,7 +146,7 @@
 <!-- Customer --> 
 <!-- DNI --> 
 <!-- Address --> 
-<table style="width:100%">
+<table style="width:80%">
 	<tr>
 		<td><b>Cliente:</b></td>
 		<td><t t-esc="doc.partner_id.name"/></td> 
@@ -204,7 +204,7 @@
 
 
 <!-- Line --> 
-<table style="width:100%">
+<table style="width:80%">
 	<tr>
 		<td  align="justify"  >
 -------------------------------------------------------------------------------
@@ -229,7 +229,7 @@
 
 
 
-<table style="width:100%">
+<table style="width:80%">
 
 <!--
 	<tr>
@@ -288,7 +288,7 @@
 
 
 <!-- Line --> 
-<table style="width:100%">
+<table style="width:80%">
 	<tr>
 		<td  align="justify"  >
 -------------------------------------------------------------------------------
@@ -304,7 +304,7 @@
 
 
 <!-- Total --> 
-<table style="width:100%">
+<table style="width:80%">
 	<tr>
 		<td><b>Neto S/.</b></td>
 		<td align="right" ><t t-esc="doc.x_total_net"/></td> 
@@ -325,7 +325,7 @@
 
 
 <!-- Total --> 
-<table style="width:100%">
+<table style="width:80%">
 
 	<tr>
 		<td><b>Son:</b></td>
@@ -357,7 +357,7 @@
 
 
 <!-- Web --> 
-<table style="width:100%">
+<table style="width:80%">
 	<tr>
 		<td align="center" >
 			<t t-esc="doc.x_my_company.website"/>
@@ -368,7 +368,7 @@
 
 
 <!-- Email --> 
-<table style="width:100%">
+<table style="width:80%">
 	<tr>
 		<td align="center" >
 			<t t-esc="doc.x_my_company.email"/>
@@ -379,7 +379,7 @@
 
 
 <!-- Disclaimer --> 
-<table style="width:100%">
+<table style="width:80%">
 	<tr>
 		<td>
 			<t t-esc="doc.x_my_company.x_warning"/>

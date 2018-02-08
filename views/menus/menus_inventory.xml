@@ -78,14 +78,20 @@
 			/>
 
 
+
+
+
 <!-- Inventory Adjustments -->
 	<menuitem 		action="stock.action_inventory_form" 
 				id="stock.menu_action_inventory_form" 
 				parent="stock.menu_stock_inventory_control" 
 				sequence="30"
 
-				groups="openhealth.roots"
+				groups="openhealth.roots,stock.group_stock_manager"
 				/>
+
+
+
 
 <!--
 				groups="openhealth.roots"

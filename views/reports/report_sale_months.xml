@@ -50,7 +50,7 @@
 
 
 
-		<!-- january --> 
+<!-- january --> 
 		<record id="action_order_report_january_all" model="ir.actions.act_window">
 
 			<field name="name">Reporte de Ventas - Enero</field>
@@ -112,7 +112,7 @@
 
 
 
-		<!-- February --> 
+<!-- February --> 
 		<record id="action_order_report_february_all" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Febrero</field>
 			<field name="res_model">sale.report</field>

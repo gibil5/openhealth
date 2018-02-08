@@ -24,18 +24,19 @@
 					name="Ventas"			
 
 
-					groups="openhealth.caja,openhealth.reception,openhealth.managers,openhealth.directors"
+					groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.managers,openhealth.directors"
 					/>
 
-
-
+<!--
+							action="action_order_report_january_all"
+-->
 				<!-- January -->
 				<menuitem 	id="sales_report_sales_january_all_menu" 
 							name="Por Mes" 				
 							parent="sales_reports_menu"
 							sequence="1"
 
-							action="action_order_report_january_all"
+							action="action_order_report_february_all"
 						/>
 
 

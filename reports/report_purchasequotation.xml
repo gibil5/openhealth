@@ -38,66 +38,13 @@
 			<t t-call="report.html_container">                 
 				<t t-foreach="docs" t-as="doc">
 					<t>
+
+
 						<div class="page">
 							<div class="oe_structure"/>
 
 
 
-
-
-
-<!-- Row --> 
-<div class="row">
-	
-
-
-	<!-- Address --> 
-	<div class="col-xs-8">
-
-		<!-- Name --> 
-		<div class='row'>
-
-			<div class='col-xs-12'>
-				<b><t t-esc="doc.dest_address_id.name"/></b>
-			</div>
-
-
-			<div class='col-xs-12'>
-				<t t-esc="doc.dest_address_id.x_address"/>
-			</div>
-
-
-
-			<div class='col-xs-12'>
-				RUC: <t t-esc="doc.dest_address_id.x_ruc"/>
-			</div>
-
-
-			<div class='col-xs-12'>
-				<t t-esc="doc.dest_address_id.email"/>
-			</div>
-
-
-			<div class='col-xs-12'>
-				<t t-esc="doc.dest_address_id.phone"/>
-			</div>
-		</div>
-
-	</div>
-
-
-	<!-- Date --> 
-	<div class="col-xs-4">
-		<div class='row'>
-			<div class='col-xs-12'>
-				<b>Fecha: <t t-esc="doc.date_order"/></b>
-			</div>
-		</div>
-	</div>
-
-
-</div>
-<!-- Row --> 
 
 
 
@@ -112,30 +59,44 @@
 
 	<tr>
 		<td>
-			<b><t t-esc="doc.dest_address_id.name"/></b>
+			<b><t t-esc="doc.x_my_company.name"/></b>
 		</td>
 
 		<td>
-			Fecha Nex:<t t-esc="doc.date_order"/>
+			Fecha:<t t-esc="doc.date_order"/>
 		</td> 
 	</tr>
 
 
 	<tr>
 		<td>
-			<b><t t-esc="doc.dest_address_id.x_address"/></b>
+			<t t-esc="doc.x_my_company.x_address"/>
 		</td>
-
 		<td></td> 
 	</tr>
 
+	<tr>
+		<td>
+			Ruc: <t t-esc="doc.x_my_company.x_ruc"/>
+		</td>
+		<td></td> 
+	</tr>
+
+	<tr>
+		<td>
+			Mail: <t t-esc="doc.x_my_company.email"/>
+		</td>
+		<td></td> 
+	</tr>
+
+	<tr>
+		<td>
+			Teléfono: <t t-esc="doc.x_my_company.phone"/>
+		</td>
+		<td></td> 
+	</tr>
 
 </table>
-
-
-
-
-
 <br/>
 <br/>
 
@@ -145,7 +106,7 @@
 
 
 
-
+<!-- My Title --> 
 <h3>ORDEN DE COMPRA: <span t-field="doc.name"/></h3>
 
 
@@ -154,110 +115,164 @@
 <br/>
 
 
-<!--
-<strong>Proveedor:</strong>
-<div 
-t-field="doc.partner_id" 
-t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;, &quot;fax&quot;], &quot;no_marker&quot;: true, &quot;phone_icons&quot;: true}"
-					/>
--->
-
-
-
 
 
 <!-- My Partner --> 
-
-<!-- SUPPLIER --> 
-<div class="row">
-	<div class="col-xs-12">
+<table style="width:100%">
 
 
+	<tr>
 
-<!-- Name --> 
-<div class='row'>
-	<div class='col-xs-5'>		
-		<b>PROVEEDOR:</b>
-	</div>
-	<div class='col-xs-7'>
-		<t t-esc="doc.partner_id.name"/>
-	</div>
-</div>
+		<td>
+			<b>PROVEEDOR:</b>
+		</td> 
+
+		<td>
+			<b><t t-esc="doc.partner_id.name"/></b>
+		</td>
+
+	</tr>
+
+
+	<tr>
+		<td>
+			Dirección:
+		</td> 
+		<td>
+			<t t-esc="doc.partner_id.x_address"/>
+		</td>
+	</tr>
+
+
+	<tr>
+		<td>
+			Ruc:
+		</td> 
+		<td>
+			<t t-esc="doc.partner_id.x_ruc"/>
+		</td>
+		<td></td> 
+	</tr>
+
+
+	<tr>
+		<td>
+			Email:
+		</td> 
+		<td>
+			<t t-esc="doc.partner_id.email"/>
+		</td>
+	</tr>
+
+
+	<tr>
+		<td>
+			Teléfono:
+		</td> 
+		<td>
+			<t t-esc="doc.partner_id.phone"/>
+		</td>
+		<td></td> 
+	</tr>
+
+</table>
+<br/>
 <br/>
 
 
 
-<!-- address --> 
-<div class='row'>
-	<div class='col-xs-5'>		
-		<b>DIRECCION:</b>
-	</div>
-	<div class='col-xs-7'>
-		<t t-esc="doc.partner_id.x_address"/>
-	</div>
-</div>
-<br/>
 
 
 
-<!-- Phone --> 
-<div class='row'>
-	<div class='col-xs-5'>		
-		<b>TELEFONO:</b>
-	</div>
-	<div class='col-xs-7'>
-		<t t-esc="doc.partner_id.phone"/>
-	</div>
-</div>
-<br/>
+
+
+
+
+
+
 
 
 
 <!-- Conditions --> 
-<div class='row'>
-	<div class='col-xs-5'>		
-		<b>CONDICION DE PAGO:</b>
-	</div>
-	<div class='col-xs-7'>
-		<t t-esc="doc.payment_term_id.name"/>
-	</div>
-</div>
+<table style="width:100%">
+
+
+	<tr>
+		<td>
+			<b>CONDICION DE PAGO:</b>
+		</td> 
+
+		<td>
+			<t t-esc="doc.payment_term_id.name"/>
+		</td>
+	</tr>
+
+
+
+	<tr>
+		<td>
+			. 
+		</td> 
+		<td>
+			. 
+		</td> 
+	</tr>
+
+
+
+	<tr>
+		<td>
+			<b>FECHA DE ENTREGA:</b>
+		</td> 
+
+		<td>
+			<t t-esc="doc.date_planned.split()[0]"/>
+<!--
+			<t t-esc="doc.dest_address_id.x_address"/>
+-->	
+		</td>
+	</tr>
+
+
+</table>
 <br/>
+<br/>
+<br/>
+
+
 
 
 
 
 <!-- Date and Place --> 
-<div class='row'>
-
-	<div class='col-xs-5'>		
-		<b>FECHA, LUGAR DE ENTREGA:</b>
-	</div>
+<!--
+<table style="width:100%">
 
 
-	<div class='col-xs-7'>
-		<t t-esc="doc.date_planned.split()[0]"/>
-		<t t-esc="doc.dest_address_id.x_address"/>
-	</div>
+	<tr>
+		<td>
+			<b>FECHA DE ENTREGA:</b>
+		</td> 
 
-</div>
-<br/>
+		<td>
+			<t t-esc="doc.date_planned.split()[0]"/>
+			<t t-esc="doc.dest_address_id.x_address"/>
+		</td>
+	</tr>
 
 
-
-
-
-				</div>
-			</div>
+</table>
+-->	
 
 
 
-<br/>
+
 
 
 
 <!-- ORDER LINES -->
 			<table class="table table-condensed">
+  
 
 				<thead>
 					<tr>
@@ -268,18 +283,15 @@ t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [
 -->
 						
 
-						<th><strong>PRODUCTO</strong></th>
+						<th><strong>PRODUCTO............................</strong></th>
 
-						<th class="text-right"><strong>CANT.</strong></th>
+						<th class="text-right"><strong>CANT.....</strong></th>
 
-						<th class="text-right"><strong>UNIDAD</strong></th>
+						<th class="text-right"><strong>UNID.........</strong></th>
 
+						<th class="text-right"><strong>DCTOS(%).....</strong></th>
 
-
-
-						<th class="text-right"><strong>DCTOS.(%)</strong></th>
-
-						<th class="text-right"><strong>PRECIO UNIT.</strong></th>
+						<th class="text-right"><strong>PUNIT.....</strong></th>
 
 						<th class="text-right"><strong>TOTAL</strong></th>
 
@@ -335,91 +347,8 @@ t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [
 					</tr>
 				</tbody>
 			</table>
-
-
-
-
-
-
-
-
-<!-- TOTALS --> 
-<div class="row"	style="font-size: 100%">
-
-
-
-	<div class='col-xs-6'>		
-	</div>
-
-
-	<div class='col-xs-3'>		
-		<b>TOTAL NETO</b>
-	</div>
-	
-	<div class='col-xs-1'>		
-		S/.
-	</div>
-
-	<div class='col-xs-2  text-right' >		
-		<t t-esc="doc.amount_untaxed"/>
-	</div>
-
-
-
-
-	<div class='col-xs-6'>		
-	</div>
-
-	<div class='col-xs-3'>		
-		<b>TOTAL IGV</b>
-	</div>
-	
-	<div class='col-xs-1'>		
-		S/.
-	</div>
-
-	<div class='col-xs-2  text-right' >		
-		<t t-esc="doc.amount_tax"/>
-	</div>
-
-
-
-
-
-
-	<div class='col-xs-6'>		
-	</div>
-
-
-	<div class='col-xs-6'>		
-----------------------------------------------------------------
-	</div>
-
-	
-
-
-
-
-
-
-
-	<div class='col-xs-6'>		
-	</div>
-
-	<div class='col-xs-3'>		
-		<b>TOTAL</b>
-	</div>
-	
-	<div class='col-xs-1'>		
-		S/.
-	</div>
-
-	<div class='col-xs-2  text-right' >		
-		<t t-esc="doc.amount_total"/>
-	</div>
-
-
-</div>
+<br/>
+<br/>
 
 
 
@@ -430,23 +359,85 @@ t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [
 
 
 
+
+<!-- Totals --> 
+<table style="width:100%">
+
+	<tr>
+		<td>
+			<b>NETO</b>
+		</td> 
+
+		<td>
+			S/.
+		</td> 
+
+		<td>
+			<t t-esc="doc.amount_untaxed"/>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<b>IGV %</b>
+		</td> 
+
+		<td>
+			S/.
+		</td> 
+
+		<td>
+			<t t-esc="doc.amount_tax"/>
+		</td>
+	</tr>
+
+
+	<tr>
+		<td>
+			<b>TOTAL</b>
+		</td> 
+
+		<td>
+			S/.
+		</td> 
+
+		<td>
+			<t t-esc="doc.amount_total"/>
+		</td>
+	</tr>
+
+
+</table>
 <br/>
 <br/>
 <br/>
 
 
-<!-- CONDITIONS --> 
-<div class="row"	style="font-size: 80%">
 
-	<div class='col-xs-12'>		
-		<b>CONDICIONES</b>
-	</div>
 
-	<div class='col-xs-12'>
-		<t t-esc="doc.dest_address_id.x_warning_purchase"/>
-	</div>
 
-</div>
+
+<!-- Conditions --> 
+<table style="width:100%">
+
+
+	<tr>
+		<td>
+			<b>CONDICIONES:</b>
+		</td> 
+
+		<td>
+			<t t-esc="doc.x_my_company.x_warning_purchase"/>
+		</td>
+	</tr>
+
+</table>
+<br/>
+<br/>
+
+
+
+
 
 
 
@@ -461,47 +452,44 @@ t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [
 
 <br/>
 
-<!-- SIGNATURES --> 
-<div class="row">
-<center>
-	<div class="col-xs-12">
 
 
 
-	<div class='col-xs-4'>		
+
+
+
+<!-- Signatures --> 
+<table style="width:100%">
+
+	<tr>
+		<td   	align="center">
 --------------------------------
-	</div>
+		</td> 
 
-	<div class='col-xs-4'>		
+		<td   	align="center">
 --------------------------------
-	</div>
+		</td> 
 
-	<div class='col-xs-4'>		
+		<td   	align="center">
 --------------------------------
-	</div>
+		</td>
+	</tr>
 
 
+	<tr>
+		<td   	align="center">
+			<b>SOLICITANTE</b>
+		</td> 
 
+		<td   	align="center">
+			<b>REVISADO</b>
+		</td> 
 
-	<div class='col-xs-4'>		
-		<b>SOLICITANTE</b>
-	</div>
-
-
-	<div class='col-xs-4'>		
-		<b>REVISADO</b>
-	</div>
-
-
-	<div class='col-xs-4'>		
-		<b>GERENCIA</b>
-	</div>
-
-
-
-	</div>
-</center>
-</div>
+		<td   	align="center">
+			<b>GERENCIA</b>
+		</td>
+	</tr>
+</table>
 
 
 
@@ -516,6 +504,8 @@ t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [
 			</t>
 			</t>
 		</template>
+
+
 
 	</data>
 </openerp>

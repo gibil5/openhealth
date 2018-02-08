@@ -34,6 +34,15 @@
 
 
 
+<!-- Date --> 
+				<xpath expr="//field[@name='date_order']" position="after">
+					<field name="x_my_company" />
+				</xpath>
+
+
+
+
+
 				<xpath expr="//button[@name='button_done']" position="after">
 
 					<button 

@@ -4,8 +4,7 @@
 
 
 
-		<!-- FORM --> 
-		
+		<!-- FORM --> 		
 		<!-- Stock Picking -->
 		<record id="stock_picking_form" model="ir.ui.view">
 			<field name="name">openhealth.stock.picking</field>

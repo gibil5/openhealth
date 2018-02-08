@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+		<!-- FORM - Stock inventory -->
+		<record id="stock_inventory_form" model="ir.ui.view">
+
+			<field name="name">stock.inventory.form</field>
+	
+			<field name="model">stock.inventory</field>
+	
+			<field name="inherit_id" ref="stock.view_inventory_form"/>	
+
+			<field name="mode">primary</field>
+			
+			<field name="priority" eval="1"/>
+			
+			<field name="arch" type="xml">
+
+
+<!--
+				<xpath expr="//button[@name='action_cancel']" position="after">
+
+					<button 
+
+							name="remove_myself"
+							type="object" 
+							class="oe_highlight"
+							string="REMOVEM"
+
+							groups="openhealth.roots"
+					/>
+
+				</xpath>
+-->
+
+
+
+<!--
+							groups="stock.group_stock_manager"
+-->
+	
+<!-- Validate --> 
+				<xpath expr="//button[@name='action_done']" position="replace">
+
+					<button 
+							name="action_done" 
+
+							states="confirm" 
+							string="Validate Inventory - jx" 
+							type="object" 
+							class="oe_highlight" 
+
+
+							groups="openhealth.roots"
+
+						/>
+
+				</xpath>
+
+
+
+<!-- Cancel --> 
+				<xpath expr="//button[@name='action_cancel_inventory']" position="replace">
+
+					<button 
+							name="action_cancel_inventory" 
+
+							states="confirm" 
+							string="Cancel Inventory" 
+							type="object"
+
+							groups="openhealth.roots"
+						/>
+
+				</xpath>
+
+
+
+			</field>
+		</record>
+
+
+
+
+	</data>
+</openerp>

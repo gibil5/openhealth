@@ -271,8 +271,13 @@
 
 
 <!-- ORDER LINES -->
-			<table class="table table-condensed">
-  
+<!--
+			<table class="table table-condensed"			>
+-->
+			
+			<table   style="width:100%"
+				>
+
 
 				<thead>
 					<tr>
@@ -283,15 +288,15 @@
 -->
 						
 
-						<th><strong>PRODUCTO............................</strong></th>
+						<th><strong>PRODUCTO</strong></th>
 
-						<th class="text-right"><strong>CANT.....</strong></th>
+						<th class="text-right"><strong>CANT</strong></th>
 
-						<th class="text-right"><strong>UNID.........</strong></th>
+						<th class="text-right"><strong>UNID</strong></th>
 
-						<th class="text-right"><strong>DCTOS(%).....</strong></th>
+						<th class="text-right"><strong>DCTOS(%)</strong></th>
 
-						<th class="text-right"><strong>PUNIT.....</strong></th>
+						<th class="text-right"><strong>PUNIT</strong></th>
 
 						<th class="text-right"><strong>TOTAL</strong></th>
 
@@ -465,15 +470,16 @@
 
 	<tr>
 		<td   	align="center">
---------------------------------
+----------------------------------------------------------------
+
 		</td> 
 
 		<td   	align="center">
---------------------------------
+----------------------------------------------------------------
 		</td> 
 
 		<td   	align="center">
---------------------------------
+----------------------------------------------------------------
 		</td>
 	</tr>
 

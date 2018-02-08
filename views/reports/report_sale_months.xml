@@ -12,7 +12,6 @@
 -->
 
 		<!-- Day -->
-		<!-- Feb -->  
 		<record id="action_order_report_day" model="ir.actions.act_window">
 
 			<field name="name">Reporte de Ventas - Diario</field>
@@ -141,7 +140,9 @@
 
 			<field name="context">{
 									'search_default_Sales':1, 
+									
 									'group_by_no_leaf':1,
+
 									'group_by': ['product_id'],
 								}
 			</field>

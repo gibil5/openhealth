@@ -30,6 +30,9 @@
 					name="Historias Médicas"
 					parent="main_emr_menu"
 
+					sequence="1"
+
+
 					groups="openhealth.roots,openhealth.caja,openhealth.archivers,openhealth.reception,openhealth.staffs,openhealth.assistants,openhealth.physicians,openhealth.managers,openhealth.directors"
 					/>
 
@@ -135,6 +138,39 @@
 
 					action="oehealth.oeh_medical_physician_action_tree" 
 		-->
+
+
+
+
+<!-- Config --> 
+		<menuitem 	id="emr_config_menu" 
+					parent="main_emr_menu"
+					sequence="2"
+
+					name="Configuración"
+
+					groups="openhealth.roots,openhealth.reception,openhealth.directors"
+					/>
+
+		<menuitem 	id="emr_counters_menu" 
+					name="Contador Historias" 
+					parent="emr_config_menu"
+					sequence="4"
+					
+					action="counter_list_action"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

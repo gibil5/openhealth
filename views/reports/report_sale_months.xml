@@ -6,12 +6,13 @@
 
 
 
-		<!-- Day --> 
 <!--		
 										('date','&lt;=',time.strftime('%%Y-02-01')),
 										('date','&gt;=',time.strftime('%%Y-01-01'))
 -->
 
+		<!-- Day -->
+		<!-- Feb -->  
 		<record id="action_order_report_day" model="ir.actions.act_window">
 
 			<field name="name">Reporte de Ventas - Diario</field>
@@ -52,7 +53,7 @@
 
 
 
-<!-- january --> 
+<!-- January --> 
 		<record id="action_order_report_january_all" model="ir.actions.act_window">
 
 			<field name="name">Reporte de Ventas - Enero</field>
@@ -114,7 +115,13 @@
 
 
 
+<!--
+									'group_by': ['categ_id']
+-->
+
+
 <!-- February --> 
+
 		<record id="action_order_report_february_all" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Febrero</field>
 			<field name="res_model">sale.report</field>
@@ -123,6 +130,7 @@
 			<field name="view_id"></field>  <!-- force empty -->
 			<field name="search_view_id" ref="sale.view_order_product_search"/>
 
+
 		   <field name="domain">
 								[
 									('date','&lt;=',time.strftime('%%Y-03-01')), 
@@ -130,12 +138,14 @@
 								]
 			</field>
 
+
 			<field name="context">{
 									'search_default_Sales':1, 
 									'group_by_no_leaf':1,
-									'group_by': ['categ_id']
+									'group_by': ['product_id'],
 								}
 			</field>
+
 
 			<field name="help"></field>
 		</record>
@@ -143,7 +153,9 @@
 
 
 
-		<!-- March --> 
+
+
+<!-- March --> 
 		<record id="action_order_report_march_all" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Marzo</field>
 			<field name="res_model">sale.report</field>

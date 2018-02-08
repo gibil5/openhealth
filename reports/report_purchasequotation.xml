@@ -377,7 +377,7 @@
 			S/.
 		</td> 
 
-		<td>
+		<td 	align="right">
 			<t t-esc="doc.amount_untaxed"/>
 		</td>
 	</tr>
@@ -391,7 +391,7 @@
 			S/.
 		</td> 
 
-		<td>
+		<td 	align="right">
 			<t t-esc="doc.amount_tax"/>
 		</td>
 	</tr>
@@ -406,7 +406,7 @@
 			S/.
 		</td> 
 
-		<td>
+		<td 	align="right">
 			<t t-esc="doc.amount_total"/>
 		</td>
 	</tr>

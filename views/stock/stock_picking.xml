@@ -17,6 +17,7 @@
 			<field name="arch" type="xml">
 
 
+
 				<xpath expr="//button[@name='action_cancel']" position="after">
 
 					<button 
@@ -33,6 +34,7 @@
 
 
 
+
 				<xpath expr="//button[@name='action_confirm']" position="replace">
 
 					<button 
@@ -46,6 +48,7 @@
 						/>
 
 				</xpath>
+
 
 
 				<xpath expr="//button[@name='action_cancel']" position="replace">
@@ -66,16 +69,17 @@
 
 
 
-				<!-- Source -->
+<!-- Source -->
 				<xpath expr="//field[@name='location_id']" position="replace">
 					
-					<field name="location_id"	string="Orígen"		readonly="1"	/>
+					<field name="location_id"	string="Orígen"		readonly="0"	/>
 
 				</xpath>
 
 
 
-				<!-- Destination --> 
+
+<!-- Destination --> 
 				<xpath expr="//field[@name='location_dest_id']" position="replace">
 
 					<field name="location_dest_id"		string="Destino"		readonly="0"		/>
@@ -85,7 +89,7 @@
 
 
 
-				<!-- Min Date --> 
+<!-- Min Date --> 
 				<xpath expr="//field[@name='min_date']" position="replace">
 
 					<field name="min_date"				required="1"		/>

@@ -40,13 +40,25 @@ class StockPicking(models.Model):
 
 
 
+
 	@api.onchange('min_date')
 	def _onchange_min_date(self):	
+
 		usage = 'internal'
+		
 		return {
-					'domain': {'location_dest_id': [
-														('usage', '=', usage),
-								]},
+					'domain': {
+
+									'location_dest_id': [
+															('usage', '=', usage),
+													], 
+
+
+									'location_id': [
+															('usage', '=', usage),
+													], 
+
+							},
 			}
 
 

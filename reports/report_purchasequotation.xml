@@ -63,7 +63,7 @@
 		</td>
 
 		<td>
-			Fecha:<t t-esc="doc.date_order"/>
+			<t t-esc="doc.date_order"/>
 		</td> 
 	</tr>
 
@@ -84,14 +84,14 @@
 
 	<tr>
 		<td>
-			Mail: <t t-esc="doc.x_my_company.email"/>
+			<t t-esc="doc.x_my_company.email"/>
 		</td>
 		<td></td> 
 	</tr>
 
 	<tr>
 		<td>
-			Teléfono: <t t-esc="doc.x_my_company.phone"/>
+			<t t-esc="doc.x_my_company.phone"/>
 		</td>
 		<td></td> 
 	</tr>
@@ -425,7 +425,9 @@
 		<td>
 			<b>CONDICIONES:</b>
 		</td> 
-
+	</tr>
+	
+	<tr>
 		<td>
 			<t t-esc="doc.x_my_company.x_warning_purchase"/>
 		</td>

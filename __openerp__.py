@@ -143,11 +143,7 @@
 
 
 
-
-
-
-
-		# Purchase  
+		# Purchases
 		'reports/report_purchasequotation.xml',
 
 
@@ -156,8 +152,9 @@
 
 
 
-		# Sales 
 
+
+		# Sales 
 		'views/reports/report_sale_pivots.xml',
 		'views/reports/report_sale_graphs.xml',
 		'views/reports/report_sale_favorites.xml',

@@ -6,6 +6,7 @@
 
 
 
+<!-- Pos --> 
 		<record id="appointment_receipt" model="report.paperformat">
 
 			<field name="name">Appointment Receipt - Nex</field>
@@ -70,7 +71,7 @@
 
 
 
-
+<!-- A4 --> 
 		<record id="paperformat_euro" model="report.paperformat">
 
 			<field name="name">European A4 - jx</field>

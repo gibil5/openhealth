@@ -18,6 +18,9 @@ class PurchaseOrder(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Constants ------------------------------------------------------
+
 	READONLY_STATES = {
 		
 		#'purchase': [('readonly', True)],
@@ -30,6 +33,51 @@ class PurchaseOrder(models.Model):
 
 
 
+
+
+
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+
+	# My Company 
+	x_my_company = fields.Many2one(
+			'res.partner',
+			string = "Mi compañía", 	
+			domain = [
+						('company_type', '=', 'company'),
+					],
+
+
+			compute="_compute_x_my_company",
+		)
+
+
+	@api.multi
+	#@api.depends('partner_id')
+
+	def _compute_x_my_company(self):
+
+		for record in self:
+
+				company = self.env['res.partner'].search([
+															#('name', '=', 'Clinica Chavarri'),
+															('x_my_company', '=', True),
+													],
+													order='date desc',
+													limit=1,
+					)
+			
+				record.x_my_company = company													
+
+
+
+
+
+
+
+
+
+	# Order Line 
 	order_line = fields.One2many(
 			'purchase.order.line', 
 			'order_id', 

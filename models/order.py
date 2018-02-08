@@ -823,18 +823,15 @@ class sale_order(models.Model):
 
 
 	x_my_company = fields.Many2one(
-
 			'res.partner',
 			string = "Mi compañía", 	
-
-
 			domain = [
 						('company_type', '=', 'company'),
 					],
 
-
 			compute="_compute_x_my_company",
 		)
+
 
 	@api.multi
 	#@api.depends('partner_id')
@@ -850,9 +847,6 @@ class sale_order(models.Model):
 													limit=1,
 					)
 			
-				#print 'jx'
-				#print com 
-				#print 
 				record.x_my_company = com 													
 
 

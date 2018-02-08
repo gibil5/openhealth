@@ -1,0 +1,53 @@
+
+
+<!--
+8 Feb 2018
+-->
+
+
+
+<!-- Title --> 
+<!--
+<br/>
+<center>
+<h3>
+	Orden de C/S
+</h3>
+</center>
+<br/>
+-->
+
+
+
+
+<!--
+			<div class="row mt32 mb32">
+
+				<div class="col-xs-6">
+
+
+					<strong>Enviar a:</strong>
+					<div t-if="doc.dest_address_id">
+
+						<div 
+
+							t-field="doc.dest_address_id" 
+
+							t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;, &quot;fax&quot;], &quot;no_marker&quot;: true, &quot;phone_icons&quot;: true}"
+						/>
+					
+					</div>
+
+				</div>
+
+
+
+				<div class="col-xs-5 col-xs-offset-1">
+					<strong>Proveedor:</strong>
+					<div 
+						t-field="doc.partner_id" 
+						t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;, &quot;fax&quot;], &quot;no_marker&quot;: true, &quot;phone_icons&quot;: true}"
+					/>
+				</div>
+			</div>
+-->

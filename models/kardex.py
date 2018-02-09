@@ -19,11 +19,13 @@ class Kardex(models.Model):
 
 	# Date Begin 
 	date_begin = fields.Date(
+			string="Fecha Inicio", 
 			default = fields.Date.today, 
 		)
 
 	# Date End
 	date_end = fields.Date(
+			string="Fecha Final", 
 			default = fields.Date.today, 
 		)
 
@@ -99,6 +101,14 @@ class Kardex(models.Model):
 
 
 
+	vspace = fields.Char(
+			' ', 
+			readonly=True
+		)
+
+
+
+
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 
 	# Generate 
@@ -108,10 +118,10 @@ class Kardex(models.Model):
 		print 'jx'
 		print 'Generate'
 
-		self.remove_kardex()
-		
-		#res_id = self.create_kardex()
 
+		self.remove_kardex()
+
+		#res_id = self.create_kardex()
 		self.update_kardex()
 
 
@@ -143,12 +153,12 @@ class Kardex(models.Model):
 
 		if self.product.name != False: 
 
-
 			product_id = self.product.id 
-
 			kardex_id = self.id 
 
-
+			
+			date_begin = self.date_begin
+			date_end = self.date_end
 
 
 			if self.location == 'platform':
@@ -167,16 +177,19 @@ class Kardex(models.Model):
 
 
 
+
 			elif self.location == 'general': 
 
 				moves = self.env['stock.move'].search([
 															('product_id', '=', product_id),			
 															('state', '=', 'done'),		
 
+															('date', '>=', date_begin),		
+															('date', '<=', date_end),		
+
+
 
 															#('location_id', 'not like', 'Cremas Despacho'),		
-
-
 															#('location_id', 'like', 'Cremas Despacho'),		
 															#('location_id', '=', 'AL/General/Cremas Despacho'),		
 															#('location_id', 'like', 'General'),		

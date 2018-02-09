@@ -99,8 +99,8 @@
 							<group>
 								
 <!--								
-								<field name="x_type"   	/>		
 -->
+								<field name="x_type"   	/>		
 
 								<field name="vspace" />
 							</group>
@@ -170,9 +170,9 @@
 
 
 					<field name="name"/>
-<!--
+
 					<field name="x_type"/>
--->
+
 					<field name="value"/>
 
 					<field name="total"/>
@@ -224,9 +224,7 @@
 
 
             <field name="domain">[  
-
 										('x_type', '=', 'medical'),
-
             					]
             </field>
 

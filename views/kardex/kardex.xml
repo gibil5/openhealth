@@ -16,25 +16,25 @@
 				<form string="Kardex Form">
 
 
+
+<!-- Header -->
 					<header>
-
-
 
 						<button 
 								name="generate_kardex"
-
-								type="object" 
-								
+								type="object" 								
 								class="oe_highlight"
 								
 								string="Actualizar"
 						/>
 
-
 					</header>
 
 
 
+
+
+<!-- Sheet -->
 					<sheet>
 
 

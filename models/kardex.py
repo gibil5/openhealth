@@ -1,13 +1,32 @@
 # -*- coding: utf-8 -*-
-
+#
+#
 from openerp import models, fields, api
-
 
 class Kardex(models.Model):
 
 	#_inherit = 'openhealth.process'	
 	_order = 'product'
 	_name = 'openhealth.kardex'
+
+
+
+
+
+
+# ----------------------------------------------------------- Primitves ------------------------------------------------------
+
+
+	# Date Begin 
+	date_begin = fields.Date(
+			default = fields.Date.today, 
+		)
+
+	# Date End
+	date_end = fields.Date(
+			default = fields.Date.today, 
+		)
+
 
 
 
@@ -80,7 +99,7 @@ class Kardex(models.Model):
 
 
 
-# ----------------------------------------------------------- Generate ------------------------------------------------------
+# ----------------------------------------------------------- Actions ------------------------------------------------------
 
 	# Generate 
 	@api.multi 

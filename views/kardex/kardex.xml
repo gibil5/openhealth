@@ -54,12 +54,12 @@
 							<group>
 								<field name="amount_total"/>
 <!--
+-->	
 								<field name="vspace"/>
 
 								<field name="date_end"/>
 
 								<field name="date_begin"/>
--->	
 							</group>
 
 

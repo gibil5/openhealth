@@ -2,6 +2,10 @@
 
 from openerp import models, fields, api
 
+import unidecode
+import kardex_funcs 
+import kardex_vars 
+
 
 
 
@@ -41,9 +45,79 @@ class KardexMove(models.Model):
 		)
 
 
+	location_dest_tra = fields.Char(
+			'Destino t', 
+
+			compute='_compute_location_dest_tra', 
+		)
+
+	@api.multi
+	def _compute_location_dest_tra(self):
+		
+		print 'jx'
+		print 'Compute Location dest Tra'
+
+		for record in self:
+
+			foo = record.location_dest
+
+			#dest = kardex_funcs.clean(foo)
+			bar = " ".join(foo.split())
+			bar = unidecode.unidecode(bar)
+			dest = bar 
+
+
+			if dest in kardex_vars._hlo: 
+				dest_tra = kardex_vars._hlo[dest]
+				record.location_dest_tra = dest_tra
+
+
+
+
+
+
+
 	location_source = fields.Char(
 			'Orígen', 
 		)
+
+
+
+
+
+
+
+
+	location_source_tra = fields.Char(
+			'Orígen t', 
+
+			compute='_compute_location_source_tra', 
+		)
+
+	@api.multi
+	def _compute_location_source_tra(self):
+		
+		print 'jx'
+		print 'Compute Location Source Tra'
+
+		for record in self:
+
+			foo = record.location_source
+
+
+			#source = kardex_funcs.clean(foo)
+			bar = " ".join(foo.split())
+			bar = unidecode.unidecode(bar)
+			source = bar 
+
+
+			if source in kardex_vars._hlo: 
+				source_tra = kardex_vars._hlo[source]
+				record.location_source_tra = source_tra
+
+
+
+
 
 
 

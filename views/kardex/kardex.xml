@@ -53,11 +53,15 @@
 
 							<group>
 								<field name="amount_total"/>
-<!--
--->	
+
 								<field name="vspace"/>
 
+
+<!--
 								<field name="date_all"/>
+-->	
+
+
 
 								<field name="date_end"/>
 

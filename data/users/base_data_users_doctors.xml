@@ -67,6 +67,7 @@
 
 
 
+
 <!-- Piero Monteverde -->
 		<record id="pmonteverde" model="res.partner">
 			<field name="name">Piero Monteverde</field>

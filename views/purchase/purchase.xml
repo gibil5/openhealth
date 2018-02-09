@@ -154,19 +154,27 @@
 						/>
 				</xpath>
 
+
+
+
+
+<!--
+							states="pre_draft" 
+-->
+<!-- Print --> 
 				<xpath expr="//button[@name='print_quotation']" position="replace">
 					<button 
+							type="object" 
 							name="print_quotation" 
+							class="oe_highlight" 
 
 							string="IMPRIMIR" 
-							
-							type="object" 
 
-							states="pre_draft" 
-							
+														
 							groups="base.group_user"
 						/>
 				</xpath>
+
 
 
 
@@ -509,6 +517,8 @@ Look for the Minimalist experience !!!
 
 
 
+
+
 <!--
 					name="Ordenes de C/S"
 					name="Requests for Quotation"
@@ -520,6 +530,28 @@ Look for the Minimalist experience !!!
 					parent="purchase.menu_procurement_management"
 					sequence="0"
 					/>
+
+
+		<menuitem 
+					id="purchase.menu_purchase_form_action" 
+					parent="purchase.menu_procurement_management" sequence="6"					
+					name = 'Purchase Orders - jx'
+
+
+					groups="openhealth.roots"
+					
+					action="purchase.purchase_form_action" 
+				/>
+
+
+
+
+
+
+
+
+
+
 
 
 

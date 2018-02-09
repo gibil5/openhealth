@@ -2,15 +2,43 @@
 #
 # 	counter
 # 
-
 from openerp import models, fields, api
-
-from . import ord_vars
+#from . import ord_vars
+from . import count_vars
 
 
 class counter(models.Model):
 	
 	_name = 'openhealth.counter'
+
+
+
+
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
+	
+	# Type
+	x_type = fields.Selection(
+
+			selection=count_vars._counter_type_list, 			
+
+			string="Tipo", 
+			#default='receipt', 
+		)
+
+
+
+
+
+
+
+	# Name
+	name = fields.Selection(
+
+			#selection=ord_vars._counter_type_list, 			
+			selection=count_vars._counter_name_list, 			
+
+			string="Nombre", 
+		)
 
 
 
@@ -134,14 +162,6 @@ class counter(models.Model):
 
 
 
-	# Name
-	name = fields.Selection(
-
-			selection=ord_vars._counter_type_list, 			
-
-			string="Nombre", 
-			#default='receipt', 
-		)
 
 
 

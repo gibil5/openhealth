@@ -49,25 +49,6 @@ _state_list = [
 
 
 
-_counter_type_list = [
-
-						('emr', 				'Historias'),
-
-
-						('receipt', 			'Boleta'),
-						('invoice', 			'Factura'),
-						('advertisement', 		'Canje Publicidad'),
-						('sale_note', 			'Canje NV'),
-						('ticket_receipt', 		'Ticket Boleta'),
-						('ticket_invoice', 		'Ticket Factura'),
-
-						('vip', 				'Tarjeta VIP'),
-
-						#('', 			''),
-		]
-
-
-
 
 
 

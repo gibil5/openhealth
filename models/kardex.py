@@ -16,6 +16,14 @@ class Kardex(models.Model):
 
 # ----------------------------------------------------------- Primitves ------------------------------------------------------
 
+	# Dates all
+	date_all = fields.Boolean(
+			string="Todo", 
+			default=False, 
+		)
+
+
+
 
 	# Date Begin 
 	date_begin = fields.Date(
@@ -178,26 +186,41 @@ class Kardex(models.Model):
 
 
 
+
 			elif self.location == 'general': 
 
-				moves = self.env['stock.move'].search([
+
+
+				if self.date_all: 
+
+					moves = self.env['stock.move'].search([
+															('product_id', '=', product_id),			
+															('state', '=', 'done'),		
+
+															#('date', '>=', date_begin),		
+															#('date', '<=', date_end),		
+
+														],
+															#order='start_date desc',
+															#limit=1,
+													)
+
+				else: 
+
+					moves = self.env['stock.move'].search([
 															('product_id', '=', product_id),			
 															('state', '=', 'done'),		
 
 															('date', '>=', date_begin),		
 															('date', '<=', date_end),		
 
-
-
-															#('location_id', 'not like', 'Cremas Despacho'),		
-															#('location_id', 'like', 'Cremas Despacho'),		
-															#('location_id', '=', 'AL/General/Cremas Despacho'),		
-															#('location_id', 'like', 'General'),		
-															#('location_id', '=', 'General'),		
 														],
-														#order='start_date desc',
-														#limit=1,
-														)
+															#order='start_date desc',
+															#limit=1,
+													)
+
+
+
 
 
 			elif self.location == 'all': 

@@ -152,12 +152,16 @@
 					groups="openhealth.roots,openhealth.reception,openhealth.directors"
 					/>
 
+<!--
+					action="counter_list_action"
+-->
 		<menuitem 	id="emr_counters_menu" 
 					name="Contador Historias" 
 					parent="emr_config_menu"
 					sequence="4"
 					
-					action="counter_list_action"/>
+					action="counter_medical_list_action"
+				/>
 
 
 
@@ -329,10 +333,20 @@ order_report.xml
 					groups="openhealth.roots,openhealth.caja,openhealth.directors"
 					/>
 
+
+
 		<menuitem 	id="sales_counters_menu" 
-					name="Contadores" 
+					name="Contadores Caja" 
 					parent="sales_config_menu"
-					sequence="4"
+					sequence="1"
+					
+					action="counter_sale_list_action"/>
+
+
+		<menuitem 	id="all_counters_menu" 
+					name="Contadores Todos" 
+					parent="sales_config_menu"
+					sequence="2"
 					
 					action="counter_list_action"/>
 

@@ -18,7 +18,9 @@
 			
 			report_type="qweb-pdf"
 
-			string="Orden de C/S"
+
+			string="Orden de C/S - Nex"
+
 
 			file="openhealth_rfq.report_purchasequotation"
 

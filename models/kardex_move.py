@@ -2,7 +2,7 @@
 
 from openerp import models, fields, api
 
-import unidecode
+#import unidecode
 import kardex_funcs 
 import kardex_vars 
 

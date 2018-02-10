@@ -4,57 +4,6 @@
 
 
 
-		<!-- Cremas --> 
-		<record model="ir.ui.view" id="selector_cremas_form_view">
-
-			<field name="name">stock.move.selector.cremas.form</field>
-
-			<field name="model">stock.move.selector.cremas</field>
-
-			<field name="inherit_id" ref="stock_move_selector_form"/>
-
-	        <field name="mode">primary</field>
-			
-			<field name="priority" eval="1"/>
-
-			<field name="arch" type="xml">		
-
-
-				<xpath expr="//field[@name='name']" position="replace">
-						<field name="name" 	/>
-				</xpath>
-
-
-			</field>
-						
-		</record>		
-
-
-		<!-- Consu --> 
-		<record model="ir.ui.view" id="selector_consu_form_view">
-
-			<field name="name">stock.move.selector.consu.form</field>
-
-			<field name="model">stock.move.selector.consu</field>
-
-			<field name="inherit_id" ref="stock_move_selector_form"/>
-
-	        <field name="mode">primary</field>
-			
-			<field name="priority" eval="1"/>
-
-			<field name="arch" type="xml">		
-
-
-				<xpath expr="//field[@name='name']" position="replace">
-						<field name="name" 	/>
-				</xpath>
-
-
-			</field>
-						
-		</record>		
-
 
 
 
@@ -152,6 +101,77 @@
 				</form>
 			</field>
 		</record>
+
+
+
+
+
+
+
+		<!-- Cremas --> 
+		<record model="ir.ui.view" id="selector_cremas_form_view">
+
+			<field name="name">stock.move.selector.cremas.form</field>
+
+			<field name="model">stock.move.selector.cremas</field>
+
+			<field name="inherit_id" ref="stock_move_selector_form"/>
+
+	        <field name="mode">primary</field>
+			
+			<field name="priority" eval="1"/>
+
+			<field name="arch" type="xml">		
+
+
+				<xpath expr="//field[@name='name']" position="replace">
+						<field name="name" 	/>
+				</xpath>
+
+
+			</field>
+						
+		</record>		
+
+
+		<!-- Consu --> 
+		<record model="ir.ui.view" id="selector_consu_form_view">
+
+			<field name="name">stock.move.selector.consu.form</field>
+
+			<field name="model">stock.move.selector.consu</field>
+
+			<field name="inherit_id" ref="stock_move_selector_form"/>
+
+	        <field name="mode">primary</field>
+			
+			<field name="priority" eval="1"/>
+
+			<field name="arch" type="xml">		
+
+
+				<xpath expr="//field[@name='name']" position="replace">
+						<field name="name" 	/>
+				</xpath>
+
+
+			</field>
+						
+		</record>		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

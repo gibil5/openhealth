@@ -68,7 +68,6 @@
 
 
 				<!-- Cremas -->
-				<!-- Consumibles -->
 <!--				
 -->
 				<menuitem 	id="kardex_report_cremas_menu" 
@@ -81,6 +80,7 @@
 						/>
 
 
+				<!-- Consumibles -->
 				<menuitem 	id="kardex_report_consu_menu" 
 							name="Consumibles" 				
 							parent="kardex_report_menu"

@@ -77,13 +77,11 @@ class KardexMove(models.Model):
 
 
 
+
+	# Source 
 	location_source = fields.Char(
 			'Orígen', 
 		)
-
-
-
-
 
 
 

@@ -373,14 +373,17 @@
 
 		# Stock 
 		'views/stock/stock.xml',
-		'views/stock/stock_picking.xml',
-		'views/stock/stock_move.xml',
-		'data/stock_move_data.xml',
-		'views/stock/stock_move_selector.xml',
-
-
-
 		'views/stock/stock_inventory.xml',
+
+
+
+		#'views/stock/stock_picking.xml',
+		#'views/stock/stock_move.xml',
+		#'data/stock_move_data.xml',
+		#'views/stock/stock_move_selector.xml',
+
+
+
 
 
 

@@ -2,8 +2,10 @@
 
 from openerp import models, fields, api
 
-#import unidecode
-import kardex_funcs 
+import unidecode
+
+#import kardex_funcs 
+
 import kardex_vars 
 
 
@@ -64,7 +66,7 @@ class KardexMove(models.Model):
 			#dest = kardex_funcs.clean(foo)
 			bar = " ".join(foo.split())
 			
-			#bar = unidecode.unidecode(bar)
+			bar = unidecode.unidecode(bar)
 			
 			dest = bar 
 
@@ -108,7 +110,7 @@ class KardexMove(models.Model):
 			#source = kardex_funcs.clean(foo)
 			bar = " ".join(foo.split())
 
-			#bar = unidecode.unidecode(bar)
+			bar = unidecode.unidecode(bar)
 			
 			source = bar 
 

@@ -24,7 +24,7 @@
 		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant\n
 
 
-		Last built: 	9 February 2018 - Rebirth !!!
+		Last built: 	10 February 2018 - Rebirth !!!
 
 
 		Created: 	 	11 Sep 2016
@@ -100,10 +100,6 @@
 
 
 		# ----------------------------------------------------------- Reports ------------------------------------------------------
-		#'views/example_report.xml',
-		#'views/order_report.xml',
-
-
 
 
 		# Patient
@@ -128,7 +124,6 @@
 
 
 		# Ticket 
-		#'reports/report_ticket_sale_order.xml',		# Deprecated !
 		'reports/report_ticket_invoice.xml',
 		'reports/report_ticket_receipt.xml',
 		
@@ -179,15 +174,6 @@
 
 
 
-		# Deprecated ? 
-		#'views/reports/report_sale_months_phy_ala.xml',
-		#'views/reports/report_sale_months_phy_can.xml',
-		#'views/reports/report_sale_months_phy_esc.xml',
-		#'views/reports/report_sale_months_phy_gon.xml',
-		#'views/reports/report_sale_months_phy_mon.xml',
-		#'views/reports/report_sale_months_phy_vas.xml',
-
-		#'views/reports/oh_report_sale.xml',
 
 
 
@@ -262,8 +248,6 @@
 
 
 
-		# Deprecated ? 
-		#'data/prods/data_zones.xml',	
 		
 
 
@@ -311,7 +295,6 @@
 		'data/pricelists.xml',							
 		'data/pricelist_quick.xml',						
 
-		#'data/pricelist_quick_return.xml',						# DEP
 
 
 
@@ -356,17 +339,12 @@
 
 
 		# Purchases 
-		#'views/purchase/purchase_report.xml',			# Deprecated
-		#'views/purchase/purchase_report_view.xml',		# Deprecated 
-
 		'views/purchase/purchase.xml',
 
 
 
 
 
-		# Mail template - Deprecated 
-		#'views/mail/rfq_send.xml',
 
 
 
@@ -444,9 +422,6 @@
 
 
 
-		# Deprecated
-		#'views/orders/events.xml',
-		#'views/orders/order_ol.xml',
 
 
 
@@ -478,9 +453,6 @@
 
 
 
-		# DEPRECATED 
-		#'views/sale_documents/sale_documents.xml',
-
 
 
 
@@ -499,8 +471,6 @@
 
 
 
-		# Sessions
-		#'views/sessions/session.xml',
 
 
 
@@ -511,9 +481,6 @@
 
 
 		# Images 
-		#'views/images/image.xml',			# Deprecated ? 
-		#'views/images/image_full.xml',		# Deprecated ? 
-		
 		'views/images/image_view.xml',
 
 
@@ -654,11 +621,6 @@
 
 
 
-		# Sessions - Deprecated 
-		#'views/sessions/session_med.xml',
-		#'views/sessions/session_config_manual.xml',
-		#'views/sessions/session_config_fractional.xml',
-		#'views/sessions/session_measures.xml',
 
 		
 
@@ -755,15 +717,6 @@
 		'views/patients/patient_appointments.xml',
 		'views/patients/patient_quick.xml',
 		
-		#'views/patients/patient_treatments.xml',
-		#'views/patients/patient_cosmetologies.xml',
-
-
-
-
-		# Deprecated
-		#'views/patients/patient_sales.xml',
-
 
 
 

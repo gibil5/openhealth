@@ -2,9 +2,9 @@
 
 from openerp import models, fields, api
 
-import unidecode
 
-#import kardex_funcs 
+import unidecode			# Centos: yum install python-unidecode
+
 
 import kardex_vars 
 

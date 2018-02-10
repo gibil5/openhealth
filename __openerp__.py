@@ -311,7 +311,7 @@
 
 
 		# Users - Inactive - With pw
-		#'data/users/base_data_users_inactive.xml',	
+		'data/users/base_data_users_inactive.xml',	
 
 
 

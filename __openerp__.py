@@ -228,15 +228,15 @@
 
 
 
-		# Products 
-		'data/prods/odoo_data_products.xml',			 
-		'data/prods/odoo_data_products_new.xml',			
-		'data/prods/odoo_data_services_co2.xml',		# check
-		'data/prods/odoo_data_services_exc.xml',		# check
-		'data/prods/odoo_data_services_m22.xml',		# check
-		'data/prods/odoo_data_services_med.xml',		# check
-		'data/prods/odoo_data_services_cos.xml',		# check
-		'data/prods/odoo_data_services_consult.xml',	# check
+		# Products - Tmp 
+		#'data/prods/odoo_data_products.xml',			 
+		#'data/prods/odoo_data_products_new.xml',			
+		#'data/prods/odoo_data_services_co2.xml',		# check
+		#'data/prods/odoo_data_services_exc.xml',		# check
+		#'data/prods/odoo_data_services_m22.xml',		# check
+		#'data/prods/odoo_data_services_med.xml',		# check
+		#'data/prods/odoo_data_services_cos.xml',		# check
+		#'data/prods/odoo_data_services_consult.xml',	# check
 
 
 
@@ -311,15 +311,13 @@
 
 
 
+
 		# ----------------------------------------------------------- Security ------------------------------------------------------
 
 		'security/openhealth_security.xml',
-
-		#'security/openhealth_security_readers.xml',
-		
-		'security/ir.model.access.csv',
-		
-		'security/ir.rule.xml',
+		#'security/openhealth_security_readers.xml',		# tmp 
+		#'security/ir.model.access.csv',					# tmp
+		#'security/ir.rule.xml',							# tmp 
 
 
 		

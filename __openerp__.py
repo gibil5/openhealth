@@ -729,6 +729,17 @@
 
 
 
+		# ----------------------------------------------------------- Menus ------------------------------------------------------
+		
+		'views/menus/menus.xml',
+		'views/menus/menus_openhealth.xml',
+		'views/menus/menus_reporting.xml',
+		'views/menus/menus_inventory.xml',
+
+
+
+
+
 		# ----------------------------------------------------------- Security Rules ------------------------------------------------------
 
 		'security/openhealth_security_readers.xml',		  
@@ -740,12 +751,6 @@
 
 
 
-		# ----------------------------------------------------------- Menus ------------------------------------------------------
-		
-		'views/menus/menus.xml',
-		#'views/menus/menus_openhealth.xml',
-		#'views/menus/menus_reporting.xml',
-		#'views/menus/menus_inventory.xml',
 		
 
 

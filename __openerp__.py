@@ -201,25 +201,6 @@
 
 
 
-		# Users - With pw
-		'data/users/base_data_users_platform.xml',	
-		'data/users/base_data_users_cash.xml',		
-		'data/users/base_data_users_doctors.xml',		
-		'data/users/base_data_users_assistants.xml',	
-		'data/users/base_data_users_staff.xml',		
-		'data/users/base_data_users_almacen.xml',		
-		'data/users/base_data_users_managers.xml',	
-
-
-		# Users Generics 
-		'data/users/base_data_users_generics.xml',	
-
-
-
-
-
-		# Users - Inactive - With pw
-		'data/users/base_data_users_inactive.xml',	
 
 
 
@@ -350,15 +331,13 @@
 		# Stock 
 		'views/stock/stock.xml',
 		'views/stock/stock_inventory.xml',
-
-
-
 		'views/stock/stock_picking.xml',
-		'views/stock/stock_move.xml',
-		
-		'data/stock_move_data.xml',
 
-		'views/stock/stock_move_selector.xml',
+
+		# Tmp 
+		#'views/stock/stock_move.xml',
+		#'data/stock_move_data.xml',
+		#'views/stock/stock_move_selector.xml',
 
 
 
@@ -720,6 +699,39 @@
 		# Appointments - 2
 		'views/appointments/calendar.xml',
 		'views/appointments/appointment_cos.xml',
+
+
+
+
+
+
+
+
+
+
+
+		# ----------------------------------------------------------- Users ------------------------------------------------------
+
+		# Tmp 
+
+		# Users - With pw
+		#'data/users/base_data_users_platform.xml',	
+		#'data/users/base_data_users_cash.xml',		
+		#'data/users/base_data_users_doctors.xml',		
+		#'data/users/base_data_users_assistants.xml',	
+		#'data/users/base_data_users_staff.xml',		
+		#'data/users/base_data_users_almacen.xml',		
+		#'data/users/base_data_users_managers.xml',	
+
+
+		# Users Generics 
+		#'data/users/base_data_users_generics.xml',	
+
+
+		# Users - Inactive - With pw
+		#'data/users/base_data_users_inactive.xml',	
+
+
 
 
 	],

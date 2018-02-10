@@ -70,7 +70,9 @@ from . import stock_move_selector_consu
 
 
 
-from . import stock_move
+#from . import stock_move
+
+
 
 from . import stock_pack_operation 
 

@@ -6,6 +6,6 @@
 #import openerp.addons.openextension
 
 
-from . import controllers
+#from . import controllers
 from . import models
 import openerp.addons.oehealth

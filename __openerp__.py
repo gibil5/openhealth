@@ -229,7 +229,7 @@
 
 
 		# Products - Tmp 
-		#'data/prods/odoo_data_products.xml',			 
+		'data/prods/odoo_data_products.xml',			 
 		#'data/prods/odoo_data_products_new.xml',			
 		#'data/prods/odoo_data_services_co2.xml',		# check
 		#'data/prods/odoo_data_services_exc.xml',		# check
@@ -355,6 +355,7 @@
 
 		'views/stock/stock_picking.xml',
 		'views/stock/stock_move.xml',
+		
 		'data/stock_move_data.xml',
 
 		'views/stock/stock_move_selector.xml',
@@ -585,13 +586,11 @@
 
 
 
-		# Menus
-		'views/menus/menus.xml',
-		'views/menus/menus_openhealth.xml',
-
-		# Dangerous ! 
-		'views/menus/menus_reporting.xml',
-		'views/menus/menus_inventory.xml',
+		# Menus - Tmp 
+		#'views/menus/menus.xml',
+		#'views/menus/menus_openhealth.xml',
+		#'views/menus/menus_reporting.xml',
+		#'views/menus/menus_inventory.xml',
 		
 
 

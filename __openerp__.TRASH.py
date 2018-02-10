@@ -1,4 +1,14 @@
 
+
+
+
+
+	#'depends': ['base', 'oehealth'],
+
+
+
+
+
 		#'views/example_report.xml',
 		#'views/order_report.xml',
 

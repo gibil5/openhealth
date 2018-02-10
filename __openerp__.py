@@ -68,7 +68,6 @@
 
 	# Dependencies - Very important !
 	# ------------------------------
-	#'depends': ['base', 'oehealth'],
 	'depends': ['base', 'oehealth', 'base_multi_image'],
 
 
@@ -153,19 +152,9 @@
 		'views/reports/report_sale_pivots.xml',
 		'views/reports/report_sale_graphs.xml',
 		'views/reports/report_sale_favorites.xml',
-
-
-
-
 		'views/reports/report_sale_search.xml',
-		
 		'views/reports/report_sale.xml',
-
-
-
 		'views/reports/report_sale_months.xml',
-
-
 		'views/reports/report_sale_months_platform.xml',
 		'views/reports/report_sale_months_physician.xml',
 		'views/reports/report_sale_doctors.xml',
@@ -208,16 +197,6 @@
 
 
 
-
-		# Products - Tmp 
-		#'data/prods/odoo_data_products.xml',			 
-		#'data/prods/odoo_data_products_new.xml',			
-		#'data/prods/odoo_data_services_co2.xml',		# check
-		#'data/prods/odoo_data_services_exc.xml',		# check
-		#'data/prods/odoo_data_services_m22.xml',		# check
-		#'data/prods/odoo_data_services_med.xml',		# check
-		#'data/prods/odoo_data_services_cos.xml',		# check
-		#'data/prods/odoo_data_services_consult.xml',	# check
 
 
 
@@ -323,9 +302,6 @@
 		# ----------------------------------------------------------- Security ------------------------------------------------------
 
 		'security/openhealth_security.xml',
-		#'security/openhealth_security_readers.xml',		# tmp 
-		#'security/ir.model.access.csv',					# tmp
-		#'security/ir.rule.xml',							# tmp 
 
 
 		
@@ -361,10 +337,6 @@
 		'views/stock/stock_picking.xml',
 
 
-		# Tmp 
-		#'views/stock/stock_move.xml',
-		#'data/stock_move_data.xml',
-		#'views/stock/stock_move_selector.xml',
 
 
 
@@ -592,12 +564,6 @@
 
 
 
-		# Menus - Tmp 
-		#'views/menus/menus.xml',
-		#'views/menus/menus_openhealth.xml',
-		#'views/menus/menus_reporting.xml',
-		#'views/menus/menus_inventory.xml',
-		
 
 
 
@@ -735,6 +701,54 @@
 
 
 
+		# ----------------------------------------------------------- Products ------------------------------------------------------
+
+		# Products - Tmp 
+		'data/prods/odoo_data_products.xml',			 
+		'data/prods/odoo_data_products_new.xml',			
+		'data/prods/odoo_data_services_co2.xml',		
+		'data/prods/odoo_data_services_exc.xml',		
+		'data/prods/odoo_data_services_m22.xml',		
+		'data/prods/odoo_data_services_med.xml',		
+		'data/prods/odoo_data_services_cos.xml',		
+		'data/prods/odoo_data_services_consult.xml',	
+
+
+
+
+
+
+		# ----------------------------------------------------------- Kardex ------------------------------------------------------
+
+		# Tmp 
+		#'views/stock/stock_move.xml',
+		#'data/stock_move_data.xml',
+		#'views/stock/stock_move_selector.xml',
+
+
+
+
+
+
+		# ----------------------------------------------------------- Security Rules ------------------------------------------------------
+
+		#'security/openhealth_security_readers.xml',		# tmp 
+		#'security/ir.model.access.csv',					# tmp
+		#'security/ir.rule.xml',							# tmp 
+
+
+
+
+
+
+		# ----------------------------------------------------------- Menus ------------------------------------------------------
+		
+		# Menus - Tmp 
+		#'views/menus/menus.xml',
+		#'views/menus/menus_openhealth.xml',
+		#'views/menus/menus_reporting.xml',
+		#'views/menus/menus_inventory.xml',
+		
 
 
 

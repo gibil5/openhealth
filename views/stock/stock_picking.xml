@@ -101,11 +101,11 @@
 
 <!-- Type --> 
 				<xpath expr="//field[@name='origin']" position="after">
-<!--
+
 					<field name="vspace"/>
 
 					<field name="x_type"/>
--->
+
 				</xpath>
 
 

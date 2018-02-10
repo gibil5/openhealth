@@ -86,14 +86,10 @@
 
 
 										<field name="location_source"	/>
+										<field name="location_source_tra"	/>
 
 										<field name="location_dest"	/>
-
-
-<!--
-										<field name="location_source_tra"	/>
 										<field name="location_dest_tra"	/>
--->
 
 			
 										<field name="product_id"	/>

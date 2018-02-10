@@ -292,10 +292,37 @@
 
 
 
+		# ----------------------------------------------------------- Users ------------------------------------------------------
+
+		# Tmp 
+
+		# Users - With pw
+		'data/users/base_data_users_platform.xml',	
+		'data/users/base_data_users_cash.xml',		
+		'data/users/base_data_users_doctors.xml',		
+		'data/users/base_data_users_assistants.xml',	
+		'data/users/base_data_users_staff.xml',		
+		'data/users/base_data_users_almacen.xml',		
+		'data/users/base_data_users_managers.xml',	
+
+
+		# Users Generics 
+		'data/users/base_data_users_generics.xml',	
+
+
+		# Users - Inactive - With pw
+		#'data/users/base_data_users_inactive.xml',	
+
+
+
+
+
+
+
 
 		# ----------------------------------------------------------- Security ------------------------------------------------------
 
-		#'security/openhealth_security.xml',
+		'security/openhealth_security.xml',
 		#'security/openhealth_security_readers.xml',		# tmp 
 		#'security/ir.model.access.csv',					# tmp
 		#'security/ir.rule.xml',							# tmp 
@@ -709,27 +736,6 @@
 
 
 
-
-		# ----------------------------------------------------------- Users ------------------------------------------------------
-
-		# Tmp 
-
-		# Users - With pw
-		#'data/users/base_data_users_platform.xml',	
-		#'data/users/base_data_users_cash.xml',		
-		#'data/users/base_data_users_doctors.xml',		
-		#'data/users/base_data_users_assistants.xml',	
-		#'data/users/base_data_users_staff.xml',		
-		#'data/users/base_data_users_almacen.xml',		
-		#'data/users/base_data_users_managers.xml',	
-
-
-		# Users Generics 
-		#'data/users/base_data_users_generics.xml',	
-
-
-		# Users - Inactive - With pw
-		#'data/users/base_data_users_inactive.xml',	
 
 
 

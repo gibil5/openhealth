@@ -20,30 +20,33 @@
 	'description': """
 
 		Clínica Chavarri\n
-		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant\n
+		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant - Testcafe - User Stories - Auto Backup\n
 
 
 		Last built: 	12 February 2018 - Rebirth !!!
 
 
 		Created: 	 	11 Sep 2016
+		
 		Active for: 	15 months !!!
+
 		---
 
 
 
 		Additional modules:
-		- MRP (Manufacturing Ressource Planning). 
-		- Purchase. 
+			- MRP (Manufacturing Ressource Planning). 
+			- Purchase. 
 
 
 		External:
-		- Multi base image. 
-		- Data backup. 
+			- Oehealth. 
+			- Base multi image. 
+			- Auto backup. 
 
 		Python:
-		- Unidecode. 
-
+			- Unidecode. 
+			- pysftp.
 
 
 			

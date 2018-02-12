@@ -742,7 +742,7 @@
 		'security/ir.rule.xml',							  
 
 		
-		'security/ir.model.access.csv',					 
+		#'security/ir.model.access.csv',					 
 
 	],
 

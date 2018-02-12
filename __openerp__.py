@@ -20,7 +20,6 @@
 	'description': """
 
 		Clínica Chavarri\n
-
 		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant\n
 
 
@@ -28,20 +27,22 @@
 
 
 		Created: 	 	11 Sep 2016
-
 		Active for: 	15 months !!!
-
 		---
 
 
+
 		Additional modules:
-		- Manufacturing. 
+		- MRP (Manufacturing Ressource Planning). 
 		
+
 
 		External:
 		- Multi base image. 
 		- Data backup. 
 
+		Python:
+		- Unidecode. 
 
 
 
@@ -739,11 +740,9 @@
 
 		'security/openhealth_security_readers.xml',		  
 		'security/ir.rule.xml',							  
+
 		
-		#'security/ir.model.access.csv',					 
-
-
-
+		'security/ir.model.access.csv',					 
 
 	],
 

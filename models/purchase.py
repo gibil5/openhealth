@@ -364,8 +364,10 @@ class PurchaseOrder(models.Model):
 	@api.multi
 	def button_validate(self):
 
+
 		#self.write({'state': 'validated'})
 		self.write({'state': 'draft'})
+
 		
 		return {}
 
@@ -412,6 +414,7 @@ class MailComposeMessage(models.Model):
 		if self._context.get('default_model') == 'purchase.order' and self._context.get('default_res_id'):
 			order = self.env['purchase.order'].browse([self._context['default_res_id']])
 			if order.state == 'draft':
+
 
 				order.state = 'sent'
 				#order.state = 'purchase'		

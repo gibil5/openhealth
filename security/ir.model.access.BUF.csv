@@ -4,14 +4,34 @@
 
 
 
+access_openhealth_sale_proof,access_openhealth_sale_proof,model_openhealth_sale_proof,,1,1,1,1
+
+access_openhealth_service,access_openhealth_service,model_openhealth_service,,1,1,1,1
+
+access_openhealth_zone_quick,access_openhealth_zone_quick,model_openhealth_zone_quick,,1,1,1,1
+
+access_openhealth_zone_co2,access_openhealth_zone_co2,model_openhealth_zone_co2,,1,1,1,1
+
+access_openhealth_zone_excilite,access_openhealth_zone_excilite,model_openhealth_zone_excilite,,1,1,1,1
+
+access_openhealth_zone_ipl,access_openhealth_zone_ipl,model_openhealth_zone_ipl,,1,1,1,1
+
+access_openhealth_zone_ndyag,access_openhealth_zone_ndyag,model_openhealth_zone_ndyag,,1,1,1,1
+
+access_openhealth_counter_raw,access_openhealth_counter_raw,model_openhealth_counter_raw,,1,1,1,1
+
+access_openhealth_order_line_report,access_openhealth_order_line_report,model_openhealth_order_line_report,,1,1,1,1
+
+access_openhealth_product_manager,access_openhealth_product_manager,model_openhealth_product_manager,,1,1,1,1
+
+access_sale_report_month,access_sale_report_month,model_sale_report_month,,1,1,1,1
 
 
 
 
 
 
-access_purchase_order_rfq_director,purchase.order.rfq.director,model_purchase_order_rfq,openhealth.directors,1,1,1,1
-access_purchase_order_rfq_line_director,purchase.order.rfq.line.director,model_purchase_order_line_rfq,openhealth.directors,1,1,1,1
-access_purchase_order_rfq_almacen,purchase.order.rfq.almacen,model_purchase_order_rfq,openhealth.almacens,1,1,1,0
-access_purchase_order_rfq_line_almacen,purchase.order.rfq.line.almacen,model_purchase_order_line_rfq,openhealth.almacens,1,1,1,0
+
+
+
 

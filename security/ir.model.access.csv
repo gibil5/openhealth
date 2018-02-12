@@ -4,21 +4,47 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+access_openhealth_sale_proof,access_openhealth_sale_proof,model_openhealth_sale_proof,,1,1,1,1
+
+access_openhealth_service,access_openhealth_service,model_openhealth_service,,1,1,1,1
+
+access_openhealth_zone_quick,access_openhealth_zone_quick,model_openhealth_zone_quick,,1,1,1,1
+
+access_openhealth_zone_co2,access_openhealth_zone_co2,model_openhealth_zone_co2,,1,1,1,1
+
+access_openhealth_zone_excilite,access_openhealth_zone_excilite,model_openhealth_zone_excilite,,1,1,1,1
+
+access_openhealth_zone_ipl,access_openhealth_zone_ipl,model_openhealth_zone_ipl,,1,1,1,1
+
+access_openhealth_zone_ndyag,access_openhealth_zone_ndyag,model_openhealth_zone_ndyag,,1,1,1,1
+
+access_openhealth_counter_raw,access_openhealth_counter_raw,model_openhealth_counter_raw,,1,1,1,1
+
+access_openhealth_order_line_report,access_openhealth_order_line_report,model_openhealth_order_line_report,,1,1,1,1
+
+access_openhealth_product_manager,access_openhealth_product_manager,model_openhealth_product_manager,,1,1,1,1
+
+access_sale_report_month,access_sale_report_month,model_sale_report_month,,1,1,1,1
+
+
+
+
+
+
+
+
+
+
+
+
+
 access_allergy,allergy,model_openhealth_allergy,,1,1,1,1
-
-
-
-
 
 access_nexzone,nexzone,model_openhealth_nexzone,,1,1,1,1
 
 access_product_selector,product.selector,model_openhealth_product_selector,,1,1,1,1
 
 access_sale_report_day,sale.report.day,model_sale_report_day,,1,1,1,1
-
-
-
-
 
 
 

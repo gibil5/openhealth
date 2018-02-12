@@ -34,7 +34,7 @@
 
 		Additional modules:
 		- MRP (Manufacturing Ressource Planning). 
-		
+		- Purchase. 
 
 
 		External:
@@ -742,7 +742,7 @@
 		'security/ir.rule.xml',							  
 
 		
-		#'security/ir.model.access.csv',					 
+		'security/ir.model.access.csv',					 
 
 	],
 

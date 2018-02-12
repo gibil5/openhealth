@@ -34,22 +34,17 @@
 		---
 
 
+		Additional modules:
+		- Manufacturing. 
+		
 
-		This is my first extension for oeHealth.
+		External:
+		- Multi base image. 
+		- Data backup. 
 
-		It provides the following objects:
-			- Patients,
-			- Treatments,
-			- Evaluations,
-			- Consultations,
-			- Procedures,
-			- Controls,
-			- Sessions,
-			- Services,
-			- Orders,
-			- Appointments,
-			- Calendar, 
-			- ...
+
+
+
 			
 			
 	""",
@@ -745,20 +740,13 @@
 		'security/openhealth_security_readers.xml',		  
 		'security/ir.rule.xml',							  
 		
-		'security/ir.model.access.csv',					 
-
-
-
-
-
-
-		
-
+		#'security/ir.model.access.csv',					 
 
 
 
 
 	],
+
 
 
 
@@ -768,12 +756,7 @@
 	'demo': [
 		#'demo/demo.xml',
 	],
-	
-	
-	# Static - CSS - STYLE
+	# Static - Style Css 
 	'css': ['static/src/css/jx.css'],
-
-
 	'js': [''],
-
 }

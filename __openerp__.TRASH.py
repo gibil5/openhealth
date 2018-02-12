@@ -1,5 +1,30 @@
 
 
+# 12 Feb 2018
+
+
+		This is my first extension for oeHealth.
+
+		It provides the following objects:
+			- Patients,
+			- Treatments,
+			- Evaluations,
+			- Consultations,
+			- Procedures,
+			- Controls,
+			- Sessions,
+			- Services,
+			- Orders,
+			- Appointments,
+			- Calendar, 
+			- ...
+
+
+
+
+
+
+
 
 
 

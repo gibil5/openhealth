@@ -165,8 +165,12 @@ class Kardex(models.Model):
 			kardex_id = self.id 
 
 			
-			date_begin = self.date_begin
-			date_end = self.date_end
+			#date_begin = self.date_begin
+			#date_end = self.date_end
+
+
+
+
 
 
 			if self.location == 'platform':
@@ -191,33 +195,29 @@ class Kardex(models.Model):
 
 
 
-				if self.date_all: 
+				#if self.date_all: 
+				if True: 
 
 					moves = self.env['stock.move'].search([
+
 															('product_id', '=', product_id),			
 															('state', '=', 'done'),		
-
-															#('date', '>=', date_begin),		
-															#('date', '<=', date_end),		
 
 														],
 															#order='start_date desc',
 															#limit=1,
 													)
 
-				else: 
-
-					moves = self.env['stock.move'].search([
-															('product_id', '=', product_id),			
-															('state', '=', 'done'),		
-
-															('date', '>=', date_begin),		
-															('date', '<=', date_end),		
-
-														],
-															#order='start_date desc',
-															#limit=1,
-													)
+				#else: 
+				#	moves = self.env['stock.move'].search([
+				#											('product_id', '=', product_id),			
+				#											('state', '=', 'done'),		
+				#											('date', '>=', date_begin),		
+				#											('date', '<=', date_end),		
+				#										],
+				#											#order='start_date desc',
+				#											#limit=1,
+				#									)
 
 
 

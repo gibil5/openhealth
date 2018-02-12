@@ -56,15 +56,16 @@
 
 								<field name="vspace"/>
 
+
+
 <!--
--->	
 								<field name="date_all"/>
-
-
-
 								<field name="date_end"/>
-
 								<field name="date_begin"/>
+-->	
+
+
+
 							</group>
 
 

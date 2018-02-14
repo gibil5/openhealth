@@ -48,6 +48,8 @@
 		<!-- TREE view --> 
 <!--		
 		  <record id="stock.stock_move_tree" model="ir.ui.view">
+-->
+		  <record id="stock.view_move_tree" model="ir.ui.view">
 
 				<field name="name">stock.move.tree</field>
 			
@@ -59,8 +61,15 @@
 
 					<tree decoration-muted="state == 'cancel'" decoration-danger="(state not in ('cancel','done')) and date > current_date" string="Moves" create="0">
 
+
 						<field name="name" invisible="1"/>
+
 						
+
+						<field name="x_categ_id"/>
+
+
+
 						<field name="picking_id" string="Reference"/>
 						
 						<field name="origin"/>
@@ -101,7 +110,6 @@
 				
 				</field>
 			</record>
--->
 
 
 
@@ -135,6 +143,7 @@
 				
 									('location_id', 'not like', 'Cremas Despacho'),
 
+									('x_categ_id', '=', 'Cremas'),
 				]</field>
 
 

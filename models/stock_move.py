@@ -34,7 +34,25 @@ class StockMove(models.Model):
 			#change_default=True, 
 			#domain="[('type','=','normal')]" ,
 			#help="Select category for the current product"
+
+
+			compute='_compute_x_categ_id', 
 		)
+
+
+	@api.multi
+	#@api.depends('state')
+	
+	def _compute_x_categ_id(self):
+		
+		print 'jx'
+		print 'compute x_categ_id'
+
+		for record in self:
+
+			record.x_categ_id = record.product_id.categ_id
+
+
 
 
 

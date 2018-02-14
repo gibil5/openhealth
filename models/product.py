@@ -47,6 +47,16 @@ class Product(models.Model):
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
 
 
+	categ_id = fields.Many2one(
+			'product.category',
+			'Internal Category', 
+			required=True, 
+			change_default=True, 
+			domain="[('type','=','normal')]" ,
+			help="Select category for the current product"
+		)
+
+
 
 	# Partner 
 	product_manager_id = fields.Many2one(

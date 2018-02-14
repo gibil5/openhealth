@@ -25,6 +25,18 @@ class StockMove(models.Model):
 
 
 
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+	x_categ_id = fields.Many2one(
+			'product.category',
+			'Internal Category', 
+			#required=True, 
+			#change_default=True, 
+			#domain="[('type','=','normal')]" ,
+			#help="Select category for the current product"
+		)
+
+
 
 
 

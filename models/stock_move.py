@@ -27,6 +27,38 @@ class StockMove(models.Model):
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
 
+	# Corrected Quantity 
+	x_qty = fields.Float(
+	
+			'Qty - Corr', 
+			
+			digits=(16, 0), 
+
+
+			compute='_compute_x_qty', 
+		)
+
+	@api.multi
+
+	def _compute_x_qty(self):
+		
+		#print 'jx'
+		#print 'compute x_qty'
+
+		for record in self:
+
+			coeff = -1
+
+			record.x_qty = record.product_uom_qty * coeff
+
+
+
+
+
+
+
+
+
 	x_note = fields.Char()
 
 
@@ -70,20 +102,14 @@ class StockMove(models.Model):
 
 	# Quantity 
 	product_uom_qty = fields.Float(
-			
 			'Quantity', 
 			
-
 			#digits_compute=dp.get_precision('Product Unit of Measure'),
 			digits=(16, 0), 
 
-
-			required=True, 
-			
+			required=True, 			
 			states={'done': [('readonly', True)]},
-			
-			help="jx "
-
+			help="jx ", 
 		)
 
 

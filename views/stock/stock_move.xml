@@ -146,9 +146,13 @@
 -->
 
 			<field name="domain">[
+
 									('state', '=', 'done'),
+				
 									('location_id', 'not like', 'Cremas Despacho'),
 
+									(('location_id', 'not like', 'Inventory loss') and  ('location_dest_id', 'not like', 'Cremas Despacho')  ), 
+				
 				]</field>
 
 

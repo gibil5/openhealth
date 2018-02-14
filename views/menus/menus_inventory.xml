@@ -101,17 +101,13 @@
 <!-- Stock moves -->
 	<menuitem 		
 				id="stock.menu_action_move_form2" 
-
 				parent="stock.menu_warehouse_report" 
-
 				sequence="130"
 
 
 				action="stock.action_move_form2" 
 								
-
 				groups="openhealth.roots,stock.group_stock_manager"
-
 			/>
 
 

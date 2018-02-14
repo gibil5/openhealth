@@ -93,16 +93,28 @@
 
 
 
+
+
 <!--
 				groups="openhealth.roots"
 -->
 <!-- Stock moves -->
-	<menuitem 		action="stock.action_move_form2" 
+	<menuitem 		
 				id="stock.menu_action_move_form2" 
+
 				parent="stock.menu_warehouse_report" 
+
 				sequence="130"
 
-				/>
+
+				action="stock.action_move_form2" 
+								
+
+				groups="openhealth.roots,stock.group_stock_manager"
+
+			/>
+
+
 
 
 
@@ -231,6 +243,16 @@
 
 
 
+<!-- Inventory Valuation --> 
+<!--
+	<menuitem 
+				id="menu_quants" 
+				name="Inventory Valuation" 
+				parent="stock.menu_warehouse_report" 
+				sequence="120" 
+				action="quantsact"
+			/>
+-->
 
 
 

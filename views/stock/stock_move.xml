@@ -133,6 +133,8 @@
 
 									('state', '=', 'done'),
 				
+									('location_id', 'not like', 'Cremas Despacho'),
+
 				]</field>
 
 

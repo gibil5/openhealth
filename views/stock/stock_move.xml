@@ -146,6 +146,9 @@
 									('x_categ_id', '=', False),
 
 									(('location_id', 'not like', 'Inventory loss') and  ('location_dest_id', 'not like', 'Cremas Despacho')  ), 
+
+
+									('location_id', 'not like', 'Inventory loss'), 
 -->
 
 			<field name="domain">[
@@ -154,7 +157,6 @@
 				
 									('location_id', 'not like', 'Cremas Despacho'),
 
-									('location_id', 'not like', 'Inventory loss'), 
 				
 				]</field>
 

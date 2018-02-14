@@ -129,8 +129,10 @@
 			
 
 			<field name="context">{
+
 									'group_by': ['product_id'], 
 
+				
 				}</field>
 
 <!--
@@ -143,7 +145,7 @@
 				
 									('location_id', 'not like', 'Cremas Despacho'),
 
-									('x_categ_id', '=', 'Cremas'),
+									('x_categ_id', '!=', 'Consumibles'),
 
 				]</field>
 

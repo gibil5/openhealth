@@ -84,8 +84,12 @@
 
 
 						
+
 						<field name="product_uom_qty" on_change="onchange_quantity(product_id, product_uom_qty, product_uom)"/>
 						
+						<field name="x_qty" 	sum="Total Corr"	/>
+
+
 
 
 						<field name="product_uom" options="{'no_open': True, 'no_create': True}" string="Unit of Measure" groups="product.group_uom"/>
@@ -142,8 +146,10 @@
 -->
 			<field name="context">{
 
+
 									'group_by': ['product_id'], 
 				
+
 				}</field>
 
 <!--

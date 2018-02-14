@@ -142,9 +142,9 @@
 									('state', '=', 'done'),
 				
 									('location_id', 'not like', 'Cremas Despacho'),
-<!--
+
 									('x_categ_id', '=', 'Cremas'),
--->
+
 				]</field>
 
 

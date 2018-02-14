@@ -67,7 +67,6 @@
 						
 <!--
 						<field name="x_categ_id"/>
-						<field name="x_categ_id"/>
 -->
 
 
@@ -92,10 +91,12 @@
 							groups="stock.group_stock_user"/>
 
 
+
+<!--
 						<field name="location_id" groups="stock.group_locations"/>						
 
 						<field name="location_dest_id" groups="stock.group_locations"/>
-						
+-->					
 						<field name="location_id" />						
 
 						<field name="location_dest_id" />

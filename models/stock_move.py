@@ -27,6 +27,11 @@ class StockMove(models.Model):
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
 
+	x_note = fields.Char()
+
+
+
+
 	x_categ_id = fields.Many2one(
 			'product.category',
 			'Internal Category', 
@@ -36,12 +41,17 @@ class StockMove(models.Model):
 			#help="Select category for the current product"
 
 
+			store=True, 
 			compute='_compute_x_categ_id', 
 		)
 
 
-	@api.multi
-	#@api.depends('state')
+
+	#@api.multi
+	#@api.depends('__last_update')
+	#@api.depends('name')
+	@api.depends('x_note')
+
 	
 	def _compute_x_categ_id(self):
 		
@@ -52,7 +62,7 @@ class StockMove(models.Model):
 
 			record.x_categ_id = record.product_id.categ_id
 
-
+			print record.x_categ_id  
 
 
 

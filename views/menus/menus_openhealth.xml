@@ -843,11 +843,14 @@
 
 
 
+
+
 		<!-- stock move --> 
 		<menuitem id="stock_move_menu" name="Stock moves" 
 			parent="openhealth_menu"
 			sequence="102"
 			action="stock_move_list_action"/>
+
 
 
 

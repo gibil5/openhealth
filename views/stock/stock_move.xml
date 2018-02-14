@@ -26,9 +26,9 @@
 
 
 				<xpath expr="//field[@name='product_id']" position="after">
-
+<!--
 					<field name="name"/>
-
+-->
 					<field name="id"/>
 
 				</xpath>
@@ -66,8 +66,9 @@
 
 						
 <!--
--->
 						<field name="x_categ_id"/>
+						<field name="x_categ_id"/>
+-->
 
 
 						<field name="picking_id" string="Reference"/>
@@ -127,25 +128,26 @@
 			
 			<field name="search_view_id" ref="stock.view_move_search"/>
 			
-
+<!--
+									'group_by': ['product_id'], 
+									'group_by': ['x_categ_id'], 
+									'group_by': ['x_categ_id','product_id'], 
+-->
 			<field name="context">{
 
 									'group_by': ['product_id'], 
-
 				
 				}</field>
 
 <!--
 									('name', '=', 'TOKEN'),
+									('x_categ_id', '!=', 'Consumibles'),
+									('x_categ_id', '=', False),
 -->
 
 			<field name="domain">[
-
 									('state', '=', 'done'),
-				
 									('location_id', 'not like', 'Cremas Despacho'),
-
-									('x_categ_id', '!=', 'Consumibles'),
 
 				]</field>
 

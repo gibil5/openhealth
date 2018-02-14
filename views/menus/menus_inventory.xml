@@ -193,6 +193,8 @@
 				groups="stock.group_stock_manager,stock.group_stock_user"
 -->
 
+
+
 <!-- All Transfers --> 
 	<menuitem 		id="stock.all_picking" 
 				name="All Transfers" 
@@ -205,6 +207,8 @@
 
 
 
+
+
 <!-- Internal Transfers --> 
 	<menuitem 		id="stock.internal_picking" 
 				
@@ -213,8 +217,12 @@
 				parent="stock.menu_stock_warehouse_mgmt" 
 				
 				sequence="1" 
+
+
 				
 				action="action_picking_tree_internal" 
+
+
 
 				groups="openhealth.roots,openhealth.almacen_managers" 
 			/>

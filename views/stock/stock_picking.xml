@@ -329,12 +329,15 @@
             <field name="domain">[
 
 									('picking_type_id', '=', 'Transferencias internas'),
+									('state', '!=', 'cancel'),
 
             					]</field>
             
 
             <field name="context">{
+
                     'contact_display': 'partner_address',
+            
             }
             </field>
             

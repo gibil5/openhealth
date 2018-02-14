@@ -128,7 +128,13 @@
 <!--
 									('name', '=', 'TOKEN'),
 -->
-			<field name="domain">[]</field>
+
+			<field name="domain">[
+
+									('state', '=', 'done'),
+				
+				]</field>
+
 
 		</record>
 

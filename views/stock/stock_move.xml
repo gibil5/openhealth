@@ -66,8 +66,8 @@
 
 						
 <!--
-						<field name="x_categ_id"/>
 -->
+						<field name="x_categ_id"/>
 
 
 						<field name="picking_id" string="Reference"/>

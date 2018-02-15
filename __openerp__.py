@@ -723,7 +723,8 @@
 		'data/stock_move_data.xml',
 		'views/stock/stock_move_selector.xml',
 
-		'views/stock/stock_move_all.xml',
+
+		#'views/stock/stock_move_all.xml',
 
 
 
@@ -733,7 +734,7 @@
 		
 		'views/menus/menus.xml',
 		'views/menus/menus_openhealth.xml',
-		'views/menus/menus_reporting.xml',
+		#'views/menus/menus_reporting.xml',
 		'views/menus/menus_inventory.xml',
 
 

@@ -1,7 +1,6 @@
+# -*- coding: utf-8 -*-
 
 from openerp import models, fields, api
-
-
 
 
 class StockMoveSelector(models.Model):
@@ -13,13 +12,22 @@ class StockMoveSelector(models.Model):
 
 
 
-	sms_active_id = fields.Integer(
-			default=7,
-		)
+
+# ----------------------------------------------------------- New ------------------------------------------------------
 
 
 
 
+
+
+
+
+
+
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
+	
+
+	# Name 
 	name = fields.Char(
 
 			'Name',
@@ -39,14 +47,12 @@ class StockMoveSelector(models.Model):
 
 
 
-
-	product_id = fields.Many2one(
-			
+	# Product 
+	product_id = fields.Many2one(			
 			'product.product',
 			#'product.template',
-
 			'Producto', 
-
+			required=True, 
 
 
 			domain = [
@@ -54,20 +60,18 @@ class StockMoveSelector(models.Model):
 						('x_origin', '=', False),
 						('sale_ok', '=', True),
 					],
-
-
-
-			required=True, 
 		)
 
 
+
+
+	sms_active_id = fields.Integer(
+			default=7,
+		)
+
+
+
 # ----------------------------------------------------------- Actions ------------------------------------------------------
-
-	# Create Kardex 
-	#@api.multi 
-	#def create_kardex_platform(self):
-
-
 
 
 	# Create Kardex 

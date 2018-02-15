@@ -148,7 +148,9 @@ class KardexMove(models.Model):
 
 
 
+
 			if record.location == 'general': 
+
 
 				if record.name != False:
 
@@ -162,32 +164,33 @@ class KardexMove(models.Model):
 				elif (record.location_source == 'Inventory loss' and record.location_dest == 'General')  or  (record.location_source == 'Pérdidas de inventario' and record.location_dest == 'Existencias'): 
 					coeff = 1
 
+
 				elif (record.location_source == 'General' and record.location_dest == 'Inventory loss')  or  (record.location_source == 'Existencias' and record.location_dest == 'Pérdidas de inventario'): 
 					coeff = -1
 
 
 
 
+				if (record.location_source == 'General' and record.location_dest == 'Customers')  or  (record.location_source == 'Existencias' and record.location_dest == 'Clientes'): 
+					coeff = 0
+
+
+
+
+
 
 			elif record.location == 'platform': 
-	
 				coeff = 0 
-
 				if record.name != False:
-
-
 					if record.location_source == 'Cremas Despacho': 
 						coeff = -1
-
-
 					elif 'INT' in record.name: 
 						coeff = 1
 
 
-
-
 			elif record.location == 'all': 
 				coeff = 1
+
 
 
 

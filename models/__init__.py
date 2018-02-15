@@ -73,6 +73,12 @@ from . import stock_picking
 from . import stock_move
 
 
+from . import stock_move_all
+from . import stock_move_min
+
+
+
+
 
 
 from . import stock_pack_operation 

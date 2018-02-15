@@ -1,0 +1,38 @@
+
+		<!-- FORM --> 
+		<record id="stock_move_all_form" model="ir.ui.view">
+			<field name="name">stock.move.all</field>
+			<field name="model">stock.move.all</field>
+			<field name="arch" type="xml">
+
+
+
+				<form string="Form">
+
+
+
+
+<!--		
+					<field name="stock_moves" widget='many2many_list' context="{'tree_view_ref':'_new_tree.product_product_tree'}">
+-->
+<!--
+					<field name="stock_moves" >
+					<field name="stock_moves" widget='many2many_list' context="{'tree_view_ref':'_new_tree.product_product_tree'}">
+						<tree string="Stock Moves" >
+							<field name="name"/>
+						</tree> 
+					</field>
+-->			
+
+
+
+<!--
+					<footer>
+						<button string="Cancel" class="oe_link" special="cancel"/>
+						<button name="make_order" type="object" string="Generate Order" class="oe_highlight"/>
+					</footer>
+-->
+				</form>
+
+			</field>
+		</record>

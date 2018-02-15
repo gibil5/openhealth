@@ -4,6 +4,41 @@
 
 
 
+	<!-- FAVS -->
+	<!-- By Product --> 
+	<record id="stock.filter_stock_move_by_product_director" model="ir.filters">
+		<field name="name">Por Producto</field>
+		<field name="model_id">stock.move</field>
+		<field name="context">{'group_by': ['product_id']}</field>
+		<field name="active" eval="True" />
+		<field name="is_default" eval="True" />
+		<field name="user_id" eval="ref('openhealth.director_clinicachavarri')" />
+		</record>
+
+	<!-- By Product --> 
+	<record id="stock.filter_stock_move_by_product_almacen" model="ir.filters">
+		<field name="name">Por Producto</field>
+		<field name="model_id">stock.move</field>
+		<field name="context">{'group_by': ['product_id']}</field>
+		<field name="active" eval="True" />
+		<field name="is_default" eval="True" />
+		<field name="user_id" eval="ref('openhealth.almacen_clinicachavarri')" />
+		</record>
+
+	<!-- By Product --> 
+	<record id="stock.filter_stock_move_by_product_root" model="ir.filters">
+		<field name="name">Por Producto</field>
+		<field name="model_id">stock.move</field>
+		<field name="context">{'group_by': ['product_id']}</field>
+		<field name="active" eval="True" />
+		<field name="is_default" eval="True" />
+		<field name="user_id" eval="ref('base.user_root')" />
+	</record>
+
+
+
+
+
 		<!-- FORM -->
 		<record model="ir.ui.view" id="view_stock_move_form">
 
@@ -66,13 +101,14 @@
 
 						
 <!--
--->
 						<field name="x_categ_id"/>
+						<field name="x_qty" 	sum="Total Corr"	/>
+-->
 
 
 
 
-						<field name="picking_id" string="Reference - jx"/>
+						<field name="picking_id" string="Reference"/>
 						
 						<field name="origin"/>
 						
@@ -87,7 +123,6 @@
 
 						<field name="product_uom_qty" on_change="onchange_quantity(product_id, product_uom_qty, product_uom)"/>
 						
-						<field name="x_qty" 	sum="Total Corr"	/>
 
 
 
@@ -154,7 +189,9 @@
 
 <!--
 									('name', '=', 'TOKEN'),
+									
 									('x_categ_id', '!=', 'Consumibles'),
+
 									('x_categ_id', '=', False),
 
 									(('location_id', 'not like', 'Inventory loss') and  ('location_dest_id', 'not like', 'Cremas Despacho')  ), 
@@ -180,37 +217,45 @@
 
 
 
+		<!-- ACTION --> 
+		<!-- Stock Moves - Cremas --> 
+		<record id="action_stock_move_cremas" model="ir.actions.act_window">
+			
+			<field name="name">Kardex - Cremas</field>
+			
+			<field name="res_model">stock.move</field>
+			
+			<field name="type">ir.actions.act_window</field>
+			
+			<field name="view_type">form</field>
+			
+			<field name="view_id" ref="stock.view_move_tree"/>
+			
+			<field name="search_view_id" ref="stock.view_move_search"/>
+			
 
-	<!-- FAVS -->
-	<!-- By Product --> 
-	<record id="stock.filter_stock_move_by_product_director" model="ir.filters">
-		<field name="name">Por Producto</field>
-		<field name="model_id">stock.move</field>
-		<field name="context">{'group_by': ['product_id']}</field>
-		<field name="active" eval="True" />
-		<field name="is_default" eval="True" />
-		<field name="user_id" eval="ref('openhealth.director_clinicachavarri')" />
+
+			<field name="context">{
+									'group_by': ['product_id'], 
+				}</field>
+
+
+
+			<field name="domain">[
+									('state', '=', 'done'),				
+									('location_id', 'not like', 'Cremas Despacho'),
+				
+				]</field>
+
+
 		</record>
 
-	<!-- By Product --> 
-	<record id="stock.filter_stock_move_by_product_almacen" model="ir.filters">
-		<field name="name">Por Producto</field>
-		<field name="model_id">stock.move</field>
-		<field name="context">{'group_by': ['product_id']}</field>
-		<field name="active" eval="True" />
-		<field name="is_default" eval="True" />
-		<field name="user_id" eval="ref('openhealth.almacen_clinicachavarri')" />
-		</record>
 
-	<!-- By Product --> 
-	<record id="stock.filter_stock_move_by_product_root" model="ir.filters">
-		<field name="name">Por Producto</field>
-		<field name="model_id">stock.move</field>
-		<field name="context">{'group_by': ['product_id']}</field>
-		<field name="active" eval="True" />
-		<field name="is_default" eval="True" />
-		<field name="user_id" eval="ref('base.user_root')" />
-	</record>
+
+
+
+
+
 
 
 	</data>

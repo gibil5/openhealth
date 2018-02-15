@@ -25,6 +25,8 @@
 		</record>
 
 
+
+
 		<!-- Kardex default view - Consu -->
 		<record id="stock_move_selector_consu_default_view" model="stock.move.selector.consu">
 			<field name="name">This</field>
@@ -62,6 +64,8 @@
 			<field name="product_id" search="[('x_name_short','=','solar_protector')]"/>
 -->
 		</record>
+
+
 
 
 	</data>

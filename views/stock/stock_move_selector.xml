@@ -54,8 +54,7 @@
 								name="create_kardex"
 								context="{'location': 'platform'}"
 								
-
-								string="CREMAS DESPACHO"
+								string="DESPACHO"
 						/>
 
 
@@ -206,6 +205,69 @@
 
 
 
+
+
+
+		<!-- ACTION  --> 	
+		<record id="openhealth.stock_move_selector_form_action" model="ir.actions.act_window">
+
+			<field name="name">KARDEX</field>
+
+			<field name="res_model">stock.move.selector</field>
+			
+			<field name="type">ir.actions.act_window</field>
+
+			<field name="view_mode">form,tree,kanban</field>
+
+			<field name="res_id" ref="stock_move_selector_default_view"/>
+			
+			<field name="target">inline</field>
+
+<!--
+									('state', '=', 'done'),
+									('categ_id', '=', 'Consumibles'),						
+										('categ_id', '=', 'Cremas'),						
+-->
+
+			<field name="domain">[]</field>
+
+			<field name="context">{}</field>
+
+
+<!--
+			<field name="target">inline</field>
+			<field name="target">new</field>
+			<field name="target">current</field>
+
+
+									'target': 'inline',
+									'target': 'new',
+-->
+
+
+<!--
+			<field name="view_type">form</field>
+			<field name="view_id" ref="stock_move_selector_default_view"/>
+
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="context">{'res_id': 7}</field>
+			<field name="res_id">7</field>
+-->
+		</record>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--
 			<field name="view_id" ref="stock.view_move_tree"/>			
 			<field name="search_view_id" ref="stock.view_move_search"/>
@@ -273,8 +335,11 @@
 
 
 
+
+
+
+
 <!--
-			<field name="res_model">stock.move.selector</field>
 -->
 
 		<!-- ACTION - Cremas --> 	
@@ -315,57 +380,43 @@
 
 
 
+		<!-- ACTION - Cremas --> 	
+		<record id="stock_move_all_form_action" model="ir.actions.act_window">
 
+			<field name="name">Stock Move - All - jx</field>
 
-
-
-		<!-- ACTION  --> 	
-		<record id="openhealth.stock_move_selector_form_action" model="ir.actions.act_window">
-
-			<field name="name">KARDEX</field>
-
-			<field name="res_model">stock.move.selector</field>
+			<field name="res_model">stock.move.all</field>
 			
 			<field name="type">ir.actions.act_window</field>
 
 			<field name="view_mode">form,tree,kanban</field>
-
-			<field name="res_id" ref="stock_move_selector_default_view"/>
-			
-			<field name="target">inline</field>
-
-<!--
-									('state', '=', 'done'),
-									('categ_id', '=', 'Consumibles'),						
-										('categ_id', '=', 'Cremas'),						
--->
 
 			<field name="domain">[]</field>
 
 			<field name="context">{}</field>
 
 
+
 <!--
+			<field name="res_id"/>	
+
 			<field name="target">inline</field>
-			<field name="target">new</field>
-			<field name="target">current</field>
 
 
-									'target': 'inline',
-									'target': 'new',
--->
+			<field name="res_id" ref="stock_move_all_default_view"/>	
 
 
-<!--
+
 			<field name="view_type">form</field>
 			<field name="view_id" ref="stock_move_selector_default_view"/>
-
 			<field name="domain">[]</field>
 			<field name="context">{}</field>
 			<field name="context">{'res_id': 7}</field>
 			<field name="res_id">7</field>
 -->
 		</record>
+
+
 
 
 

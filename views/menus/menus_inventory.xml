@@ -95,20 +95,6 @@
 
 
 
-<!--
-				groups="openhealth.roots"
--->
-<!-- Stock moves -->
-	<menuitem 		
-				id="stock.menu_action_move_form2" 
-				parent="stock.menu_warehouse_report" 
-				sequence="130"
-
-
-				action="stock.action_move_form2" 
-								
-				groups="openhealth.roots,stock.group_stock_manager"
-			/>
 
 
 
@@ -239,37 +225,38 @@
 
 
 
-<!-- Inventory Valuation --> 
+
+
+
 <!--
-	<menuitem 
-				id="menu_quants" 
-				name="Inventory Valuation" 
+				groups="openhealth.roots,stock.group_stock_manager"
+-->
+<!-- Stock moves -->
+	<menuitem 		
+				id="stock.menu_action_move_form2" 
 				parent="stock.menu_warehouse_report" 
-				sequence="120" 
-				action="quantsact"
+				sequence="130"
+
+
+				action="stock.action_move_form2" 
+								
+				groups="openhealth.roots"
+			/>
+
+
+<!--
+	<menuitem 		
+				id="menu_stock_move_cremas" 
+				parent="stock.menu_warehouse_report" 
+				sequence="140"
+				
+				action="action_stock_move_cremas" 
+
+				groups="openhealth.roots,stock.group_stock_manager"
 			/>
 -->
 
 
-
-
-
-
-
-<!-- Stock Move Selector --> 
-		<!--
-		<menuitem id="stock_move_selector_form_menu" name="Stock Move Selector Form" parent="openhealth_menu"
-					sequence="-170"
-					action="openhealth.stock_move_selector_form_action"
-					groups="openhealth.almacens,openhealth.managers,openhealth.directors"
-			/>
-
-
-		<menuitem id="stock_move_selector_menu" name="Stock Move Selector" parent="openhealth_menu"
-					sequence="-170"
-					action="openhealth.stock_move_selector_list_action"
-			/>
-		-->
 
 
 

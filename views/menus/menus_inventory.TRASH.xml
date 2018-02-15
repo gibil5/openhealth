@@ -1,0 +1,38 @@
+
+
+<!-- 15 Feb 2018 --> 
+
+
+<!-- Inventory Valuation --> 
+<!--
+	<menuitem 
+				id="menu_quants" 
+				name="Inventory Valuation" 
+				parent="stock.menu_warehouse_report" 
+				sequence="120" 
+				action="quantsact"
+			/>
+-->
+
+
+
+
+
+
+
+<!-- Stock Move Selector --> 
+		<!--
+		<menuitem id="stock_move_selector_form_menu" name="Stock Move Selector Form" parent="openhealth_menu"
+					sequence="-170"
+					action="openhealth.stock_move_selector_form_action"
+					groups="openhealth.almacens,openhealth.managers,openhealth.directors"
+			/>
+
+
+		<menuitem id="stock_move_selector_menu" name="Stock Move Selector" parent="openhealth_menu"
+					sequence="-170"
+					action="openhealth.stock_move_selector_list_action"
+			/>
+		-->
+
+

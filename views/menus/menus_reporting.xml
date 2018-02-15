@@ -55,12 +55,13 @@
 
 
 
-		<!-- Kardex --> 
+<!-- Kardex by Product --> 
 		<menuitem 	id="kardex_report_menu" 
 					parent="main_reporting_menu"
 					sequence="2"
 
-					name="Kardex"			
+
+					name="Kardex por Producto"			
 
 					groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.almacen_managers,openhealth.directors"
 				/>
@@ -68,8 +69,6 @@
 
 
 				<!-- Cremas -->
-<!--				
--->
 				<menuitem 	id="kardex_report_cremas_menu" 
 							name="Cremas" 				
 							parent="kardex_report_menu"
@@ -95,6 +94,62 @@
 
 							groups="openhealth.roots,openhealth.almacen_managers,openhealth.directors"
 						/>
+
+
+
+
+
+
+
+
+<!-- Kardex All --> 
+		<menuitem 	id="kardex_all_report_menu" 
+					parent="main_reporting_menu"
+					sequence="3"
+
+
+					name="Kardex Todo"			
+
+					groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.almacen_managers,openhealth.directors"
+				/>
+
+
+
+
+				<!-- Cremas -->
+				<menuitem 	id="kardex_all_cremas_report_menu" 
+
+							name="Generar" 				
+					
+							parent="kardex_all_report_menu"
+							sequence="1"
+
+
+							action="stock_move_all_form_action" 
+							
+						/>
+
+
+
+				<!-- Tree -->
+				<menuitem 	id="stock_move_min_list_report_menu" 
+
+							name="Visualizar" 				
+					
+							parent="kardex_all_report_menu"
+
+							sequence="2"
+
+
+							action="stock_move_min_list_action" 
+							
+						/>
+
+
+
+
+
+
 
 
 

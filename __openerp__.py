@@ -721,9 +721,8 @@
 
 		'views/stock/stock_move.xml',
 		'data/stock_move_data.xml',
-		
-		#'views/stock/stock_move_selector.xml',
-		#'views/stock/stock_move_all.xml',
+		'views/stock/stock_move_selector.xml',
+		'views/stock/stock_move_all.xml',
 
 
 
@@ -731,10 +730,10 @@
 
 		# ----------------------------------------------------------- Menus ------------------------------------------------------
 		
-		#'views/menus/menus.xml',
-		#'views/menus/menus_openhealth.xml',
-		#'views/menus/menus_reporting.xml',
-		#'views/menus/menus_inventory.xml',
+		'views/menus/menus.xml',
+		'views/menus/menus_openhealth.xml',
+		'views/menus/menus_reporting.xml',
+		'views/menus/menus_inventory.xml',
 
 
 
@@ -742,11 +741,9 @@
 
 		# ----------------------------------------------------------- Security Rules ------------------------------------------------------
 
-		'security/openhealth_security_readers.xml',		  
-		'security/ir.rule.xml',							  
-
-		
-		'security/ir.model.access.csv',					 
+		'security/openhealth_security_readers.xml',
+		'security/ir.rule.xml',
+		'security/ir.model.access.csv',
 
 	],
 

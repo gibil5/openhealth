@@ -4,8 +4,6 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
-access_openhealth_stock_move_all,access_openhealth_stock_move_all,model_stock_move_all,,1,1,1,1
-access_openhealth_stock_move_min,access_openhealth_stock_move_min,model_stock_move_min,,1,1,1,1
 
 
 

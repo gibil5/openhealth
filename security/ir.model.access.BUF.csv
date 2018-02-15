@@ -4,6 +4,14 @@
 
 
 
+access_openhealth_stock_move_all,access_openhealth_stock_move_all,model_stock_move_all,,1,1,1,1
+access_openhealth_stock_move_min,access_openhealth_stock_move_min,model_stock_move_min,,1,1,1,1
+
+
+
+
+
+
 access_openhealth_sale_proof,access_openhealth_sale_proof,model_openhealth_sale_proof,,1,1,1,1
 
 access_openhealth_service,access_openhealth_service,model_openhealth_service,,1,1,1,1

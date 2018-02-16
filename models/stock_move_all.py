@@ -104,13 +104,18 @@ class StockMoveAll(models.Model):
 
 
 
-		# Stock move mins 		
+
+
+		# Stock move mins - Unlink !
 		stock_move_mins = self.env['stock.move.min'].search([
 																#('state','=','done')
-											],
-												#order='write_date desc',
-												#limit=1,
-											)
+
+																('x_type','=',self.name)
+
+														],
+																#order='write_date desc',
+																#limit=1,
+														)
 		print stock_move_mins
 		stock_move_mins.unlink()
 		print stock_move_mins

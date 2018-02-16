@@ -87,7 +87,27 @@ class StockMoveAll(models.Model):
 		print 'Reset'
 
 		self.stock_move_min_ids.unlink()
+		
 		self.product_id = False 
+
+
+
+		# Stock move mins 		
+		stock_move_mins = self.env['stock.move.min'].search([
+																#('state','=','done')
+											],
+												#order='write_date desc',
+												#limit=1,
+											)
+		print stock_move_mins
+		stock_move_mins.unlink()
+		print stock_move_mins
+		print
+
+
+
+
+
 
 
 

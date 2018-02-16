@@ -11,9 +11,11 @@ class StockMoveAll(models.Model):
 
 
 
-	# Name 
+
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
+
 	name = fields.Char(
-			string='Name',
+			string='Nombre',
 		)
 
 
@@ -37,7 +39,8 @@ class StockMoveAll(models.Model):
 	product_id = fields.Many2one(
 			'product.product', 
 			
-			'Product', 
+			'Producto', 
+
 			#select=True, 
 			domain=[
 					

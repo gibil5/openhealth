@@ -83,28 +83,28 @@
 
 									<tree string="Kardex"		default_order="date desc">	
 
-										<field name="name"	/>
+
+
+										<field name="name"		groups="openhealth.roots"	/>
 
 
 
-										<field name="location_source"	/>
-										<field name="location_dest"	/>
 
 <!--
 										<field name="location_source_tra"	/>
 										<field name="location_dest_tra"	/>
+
+										<field name="product_uom_qty"	groups="openhealth.roots"		/>
+										<field name="coeff"				groups="openhealth.roots"	/>
 -->
 
-			
+
+										
 										<field name="product_id"	/>
-
-										<field name="date"	/>
-										
-										<field name="product_uom_qty"	groups="openhealth.roots"		/>
-
-										<field name="coeff"				groups="openhealth.roots"	/>
-										
 										<field name="qty"	/>
+										<field name="location_source"	/>
+										<field name="location_dest"	/>
+										<field name="date"	/>
 
 									</tree>
 								</field>

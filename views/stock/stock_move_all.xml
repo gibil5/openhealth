@@ -4,59 +4,7 @@
 
 
 
-		<!-- By Product --> 
-		<record id="filter_stock_move_all_by_product" model="ir.filters">
-			<field name="name">Por Producto</field>
-			<field name="model_id">stock.move.all</field>
-
-			<field name="context">{'group_by': ['product_id']}</field>
-			
-			<field name="active" eval="True" />
-			<field name="is_default" eval="True" />
-
-<!--			
-			<field name="user_id" eval="ref('base.user_root')" />
--->
-
-		</record>
-
-
-
-
-
-
-        <record id="stock_move_all_search" model="ir.ui.view">
-
-            <field name="name">stock.move.all.search</field>
-            
-            <field name="model">stock.move.all</field>
-            
-            <field eval="3" name="priority"/>
-            
-            <field name="arch" type="xml">
-                <search string="Stock move.alls">
-
-                    <group expand="0" string="Group By">
-                        <filter string="Product" name="by_product" domain="[]"  context="{'group_by':'product_id'}"/>
-                    </group>
-                </search>
-            </field>
-        </record>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		<!-- FORM --> 
+<!-- FORM --> 
 		<record id="stock_move_all_form" model="ir.ui.view">
 			<field name="name">stock.move.all</field>
 			<field name="model">stock.move.all</field>
@@ -100,7 +48,9 @@
 							</group>
 
 							<group>
+<!--
 								<field name="product_id"		/>
+-->
 							</group>
 						</group>
 
@@ -169,54 +119,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		<!-- Kardex default view - Cremas -->
-<!--
-		<record id="stock_move_all_default_view" model="stock.move.all">
-
-			<field name="name">This</field>
-
-		</record>
--->
-
-		<record id="stock_move_all_default_view" model="stock.move.all">
-
-
-<!--
-			<button 
-						type="object" 
-						class="oe_highlight"
-						name="create_kardex"								
-						
-
-						string="Acutalizar"
-
-						groups="openhealth.roots,openhealth.almacen_managers"
-				/>
--->
-
-
-		</record>
-
-
-
-
-
-
-		<!-- TREE -->
+<!-- TREE -->
 		<record model="ir.ui.view" id="stock_move_min_tree">
 
 			<field name="name">stock.move.min.tree</field>
@@ -225,18 +128,23 @@
 			
 			<field name="arch" type="xml">
 
-			<!--	
-			<field name="priority" eval="1"/>
-			-->
+
+<!--
+				<tree string="stock move min Tree" 	default_order="product_id asc,date desc"   >
+-->
 
 				<tree string="stock move min Tree">
 
 
 					<field name="product_id"/>
 
-					<field name="name"/>
 
-					<field name="picking"/>
+
+					<field name="name"		groups="openhealth.roots"		/>
+
+					<field name="picking"	groups="openhealth.roots"		/>
+
+
 
 					<field name="qty"/>
 
@@ -254,8 +162,8 @@
 
 
 
-<!-- ACTION --> 
-<!-- Stock Move Min --> 
+
+<!-- ACTION - Stock Move Min --> 
 		<record id="stock_move_min_list_action" model="ir.actions.act_window">
 			<field name="name">Stock Move Min</field>
 			<field name="res_model">stock.move.min</field>
@@ -266,21 +174,16 @@
 
 <!--			
 			<field name="type">ir.actions.act_window</field>
-
-			<field name="view_id" ref="stock.view_move_tree"/>
-			
+			<field name="view_id" ref="stock.view_move_tree"/>			
 			<field name="search_view_id" ref="stock.view_move_search"/>
-
+			<field name="context">{}</field>
+			<field name="domain">[]</field>
 
 
 			<field name="domain">[
 									('state', '=', 'done'),				
-									('location_id', 'not like', 'Cremas Despacho'),
-				]</field>
-			<field name="context">{}</field>
-			<field name="context">{
-									'group_by': ['product_id'], 
-				}</field>
+			]</field>
+
 -->		
 
 
@@ -288,7 +191,7 @@
 
 			<field name="context">{
 									'group_by': ['product_id'], 
-				}</field>
+			}</field>
 
 		</record>
 
@@ -301,8 +204,7 @@
 
 
 
-<!-- ACTION -->
-<!-- Stock Move All --> 	
+<!-- ACTION - Stock Move All --> 	
 		<record id="stock_move_all_form_action" model="ir.actions.act_window">
 
 			<field name="name">Stock Move - All - jx</field>
@@ -318,21 +220,17 @@
 			<field name="context">{}</field>
 
 
-			<field name="target">current</field>
+
+			<field name="res_id" ref="stock_move_all_default_view"/>	
+
 
 <!--
-			<field name="res_id" ref="stock_move_all_default_view"/>	
+			<field name="target">current</field>
+
+
 			<field name="target">inline</field>
-
-
-
-
 			<field name="view_type">form</field>
-			<field name="view_id" ref="stock_move_selector_default_view"/>
-			<field name="domain">[]</field>
-			<field name="context">{}</field>
-			<field name="context">{'res_id': 7}</field>
-			<field name="res_id">7</field>
+			<field name="view_id" ref="stock_move_selector_default_view"/>			
 -->
 		</record>
 
@@ -340,11 +238,15 @@
 
 
 
+		<!-- DEFAULT view -->
+<!--
+		<record id="stock_move_all_default_view" model="stock.move.all">
+			<field name="name">This</field>
+		</record>
 
-
-
-
-
+-->
+		<record id="stock_move_all_default_view" model="stock.move.all">
+		</record>
 
 
 

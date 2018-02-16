@@ -108,7 +108,7 @@
 					sequence="3"
 
 
-					name="Kardex Todo"			
+					name="Kardex Todo - Cremas"			
 
 					groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.almacen_managers,openhealth.directors"
 				/>

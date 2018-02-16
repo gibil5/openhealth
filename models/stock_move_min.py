@@ -11,14 +11,14 @@ class StockMoveMin(models.Model):
 
 	_description = "Stock Move Min"
 
-	_order = 'product_id'
+	_order = 'product_id,date desc'
 
 
 
 
 
 	name = fields.Char(
-			string='Name',
+			string='Descripción',
 		)
 
 
@@ -39,7 +39,8 @@ class StockMoveMin(models.Model):
 	product_id = fields.Many2one(
 			'product.product', 
 			
-			'Product', 
+			'Producto', 
+
 			#required=True, 
 			select=True, 
 			domain=[('type', 'in', ['product', 'consu'])], 
@@ -49,29 +50,29 @@ class StockMoveMin(models.Model):
 
 
 	date = fields.Datetime(
-			string="Date", 
+			string="Fecha", 
 		)
 
 
 	picking = fields.Char(
-			string="Reference", 
+			string="Referencia", 
 		)
 
 
 
 	qty = fields.Float(
-			string="Qty", 
+			string="Cantidad", 
 		)
 
 
 
 
 	source = fields.Char(
-			'Source', 
+			'Origen', 
 		)
 
 	destination = fields.Char(
-			'Destination', 
+			'Destino', 
 		)
 
 

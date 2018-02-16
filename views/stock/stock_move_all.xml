@@ -254,12 +254,15 @@
 
 
 
-		<!-- ACTION --> 
+<!-- ACTION --> 
+<!-- Stock Move Min --> 
 		<record id="stock_move_min_list_action" model="ir.actions.act_window">
 			<field name="name">Stock Move Min</field>
 			<field name="res_model">stock.move.min</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
+
+
 
 <!--			
 			<field name="type">ir.actions.act_window</field>
@@ -267,15 +270,14 @@
 			<field name="view_id" ref="stock.view_move_tree"/>
 			
 			<field name="search_view_id" ref="stock.view_move_search"/>
+
+
+
 			<field name="domain">[
 									('state', '=', 'done'),				
 									('location_id', 'not like', 'Cremas Despacho'),
-				
 				]</field>
-
-
 			<field name="context">{}</field>
-
 			<field name="context">{
 									'group_by': ['product_id'], 
 				}</field>
@@ -289,6 +291,53 @@
 				}</field>
 
 		</record>
+
+
+
+
+
+
+
+
+
+
+<!-- ACTION -->
+<!-- Stock Move All --> 	
+		<record id="stock_move_all_form_action" model="ir.actions.act_window">
+
+			<field name="name">Stock Move - All - jx</field>
+
+			<field name="res_model">stock.move.all</field>
+			
+			<field name="type">ir.actions.act_window</field>
+
+			<field name="view_mode">form,tree,kanban</field>
+
+			<field name="domain">[]</field>
+
+			<field name="context">{}</field>
+
+
+			<field name="target">current</field>
+
+<!--
+			<field name="res_id" ref="stock_move_all_default_view"/>	
+			<field name="target">inline</field>
+
+
+
+
+			<field name="view_type">form</field>
+			<field name="view_id" ref="stock_move_selector_default_view"/>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="context">{'res_id': 7}</field>
+			<field name="res_id">7</field>
+-->
+		</record>
+
+
+
 
 
 

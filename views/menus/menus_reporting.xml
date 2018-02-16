@@ -122,6 +122,7 @@
 							name="Generar" 				
 					
 							parent="kardex_all_report_menu"
+							
 							sequence="1"
 
 

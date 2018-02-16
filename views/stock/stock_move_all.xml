@@ -33,6 +33,8 @@
 								name="reset"
 								
 								string="Clear"
+
+								groups="openhealth.roots"								
 						/>
 					</header>
 

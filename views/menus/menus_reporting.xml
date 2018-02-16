@@ -134,7 +134,9 @@
 
 
 
-
+<!--
+							action="stock_move_min_list_action" 							
+-->
 				<!-- Visualize -->
 				<menuitem 	id="stock_move_min_list_report_menu" 
 							parent="kardex_all_report_menu"
@@ -143,7 +145,7 @@
 
 							name="Visualizar" 				
 
-							action="stock_move_min_list_action" 							
+							action="stock_move_min_topical_list_action" 							
 						/>
 
 

@@ -23,16 +23,26 @@ class StockMoveMin(models.Model):
 
 
 
+	x_type = fields.Selection(
+
+			[	
+				('topical', 		'Cremas'),
+				('consumable', 		'Consumibles'),
+			], 
+
+
+			string='Tipo',
+		)
+
+
+
+
+
 
 
 	stock_move_all_id = fields.Many2one(
 		'stock.move.all', 
 	)
-
-
-
-
-
 
 
 

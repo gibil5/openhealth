@@ -157,8 +157,13 @@
 				<tree string="stock move min Tree">
 
 
-					<field name="product_id"/>
 
+					<field name="x_type"/>
+
+
+
+
+					<field name="product_id"/>
 
 
 					<field name="name"		groups="openhealth.roots"		/>
@@ -212,6 +217,42 @@
 
 
 
+
+
+
+<!-- ACTION - Stock Move Min - Topical --> 
+		<record id="stock_move_min_topical_list_action" model="ir.actions.act_window">
+			<field name="name">Stock Move Min - Cremas</field>
+			<field name="res_model">stock.move.min</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+
+
+			<field name="domain">[
+									('x_type', '=', 'topical'),				
+			]</field>
+
+			
+			<field name="context">{
+									'group_by': ['product_id'], 
+			}</field>
+
+<!--			
+			<field name="type">ir.actions.act_window</field>
+			<field name="view_id" ref="stock.view_move_tree"/>			
+			<field name="search_view_id" ref="stock.view_move_search"/>
+			<field name="context">{}</field>
+			<field name="domain">[]</field>
+			<field name="domain">[
+									('state', '=', 'done'),				
+			]</field>
+-->		
+		</record>
+
+
+
+
+
 <!-- ACTION - Stock Move Min - Consu --> 
 		<record id="stock_move_min_consu_list_action" model="ir.actions.act_window">
 			<field name="name">Stock Move Min - Consu</field>
@@ -219,7 +260,11 @@
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 
-			<field name="domain">[]</field>
+
+			<field name="domain">[
+									('x_type', '=', 'consumable'),				
+			]</field>
+
 			
 			<field name="context">{
 									'group_by': ['product_id'], 

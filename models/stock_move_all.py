@@ -14,8 +14,17 @@ class StockMoveAll(models.Model):
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
 
-	name = fields.Char(
+	#name = fields.Char(
+	name = fields.Selection(
+
+			[	
+				('topical', 		'Cremas'),
+				('consumable', 		'Consumibles'),
+			], 
+
+
 			string='Nombre',
+			required=True, 
 		)
 
 
@@ -112,6 +121,11 @@ class StockMoveAll(models.Model):
 
 
 
+	_hac = {
+				'consumable': 			'Consumibles', 
+				'topical': 				'Cremas', 
+		}
+
 
 
 
@@ -157,7 +171,9 @@ class StockMoveAll(models.Model):
 
 
  			#if move.product_id.default_code == '01': 
- 			if move.product_id.categ_id.name == 'Cremas': 
+ 			#if move.product_id.categ_id.name == 'Cremas': 
+ 			if move.product_id.categ_id.name == self._hac[self.name]: 
+
 
 
  				if not ( 
@@ -206,12 +222,12 @@ class StockMoveAll(models.Model):
 
 
 
+
 					# Create 
 		 			stock_move_min = self.stock_move_min_ids.create({
 																		'name': move.name,
 																		'product_id': move.product_id.id, 
 																		'date': move.date,
-
 
 																		'qty': move.product_uom_qty * coeff, 
 
@@ -220,23 +236,19 @@ class StockMoveAll(models.Model):
 																		'picking': move.picking_id.name, 
 
 
+
+																		'x_type': self.name, 
+
+
+
 																		'stock_move_all_id': self.id, 
 		 			})
+
+
 
 		 			print stock_move_min
 		 			print 
 
-
-
-		 			#stock_move = self.stock_moves.create({
-					#													'name': move.name,
-					#													'product_id': move.product_id.id, 
-					#													'date': move.date,
-
-					#													'stock_move_all_id': self.id, 
-		 			#})
-		 			#print stock_move
-		 			#print 
 
 
 

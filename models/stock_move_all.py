@@ -173,24 +173,29 @@ class StockMoveAll(models.Model):
  							(source=='Cremas Despacho'  and  destination=='Pérdidas de inventario') 	#or 
  						): 
 
-					print move
-					print move.name
-					print move.product_id
-					print move.date 
-					print 
+
+					#print move
+					#print move.name
+					#print move.product_id
+					#print move.date 
+					#print 
 
 
-					# Coeff 
+					# Coeff Negative !!!
 					if (
 						
 							(source=='General' and destination=='Inventory loss')				or
 							(source=='Existencias' and destination=='Pérdidas de inventario')	or
 
 							(source=='General' and destination=='Cremas Despacho')				or
-							(source=='Existencias' and destination=='Cremas Despacho')				#or
+							(source=='Existencias' and destination=='Cremas Despacho')			or
+
+							(source=='General' and destination=='Rebaja')						or
+							(source=='Existencias' and destination=='Rebaja')					#or
 						
 						): 
 						coeff = -1 
+
 					else:
 						coeff = 1
 

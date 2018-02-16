@@ -157,9 +157,9 @@
 				<tree string="stock move min Tree">
 
 
-
+<!--
 					<field name="x_type"/>
-
+-->
 
 
 
@@ -227,11 +227,11 @@
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 
-
+<!--
 			<field name="domain">[
 									('x_type', '=', 'topical'),				
 			]</field>
-
+-->
 			
 			<field name="context">{
 									'group_by': ['product_id'], 
@@ -260,11 +260,11 @@
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 
-
+<!--
 			<field name="domain">[
 									('x_type', '=', 'consumable'),				
 			]</field>
-
+-->
 			
 			<field name="context">{
 									'group_by': ['product_id'], 

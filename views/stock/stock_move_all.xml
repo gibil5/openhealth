@@ -4,6 +4,25 @@
 
 
 
+
+<!-- DEFAULT view -->
+		<!--
+		<record id="stock_move_all_default_view" model="stock.move.all">
+			<field name="name">This</field>
+		</record>
+		-->
+
+		<record id="stock_move_all_default_view" model="stock.move.all">
+		</record>
+
+		<record id="stock_move_all_consu_default_view" model="stock.move.all">
+		</record>
+
+
+
+
+
+
 <!-- FORM --> 
 		<record id="stock_move_all_form" model="ir.ui.view">
 			<field name="name">stock.move.all</field>
@@ -172,7 +191,11 @@
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 
-
+			<field name="domain">[]</field>
+			
+			<field name="context">{
+									'group_by': ['product_id'], 
+			}</field>
 
 <!--			
 			<field name="type">ir.actions.act_window</field>
@@ -180,22 +203,41 @@
 			<field name="search_view_id" ref="stock.view_move_search"/>
 			<field name="context">{}</field>
 			<field name="domain">[]</field>
-
-
 			<field name="domain">[
 									('state', '=', 'done'),				
 			]</field>
-
 -->		
+		</record>
 
+
+
+
+<!-- ACTION - Stock Move Min - Consu --> 
+		<record id="stock_move_min_consu_list_action" model="ir.actions.act_window">
+			<field name="name">Stock Move Min - Consu</field>
+			<field name="res_model">stock.move.min</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
 
 			<field name="domain">[]</field>
-
+			
 			<field name="context">{
 									'group_by': ['product_id'], 
 			}</field>
 
+<!--			
+			<field name="type">ir.actions.act_window</field>
+			<field name="view_id" ref="stock.view_move_tree"/>			
+			<field name="search_view_id" ref="stock.view_move_search"/>
+			<field name="context">{}</field>
+			<field name="domain">[]</field>
+			<field name="domain">[
+									('state', '=', 'done'),				
+			]</field>
+-->		
 		</record>
+
+
 
 
 
@@ -221,15 +263,10 @@
 
 			<field name="context">{}</field>
 
-
-
 			<field name="res_id" ref="stock_move_all_default_view"/>	
-
 
 <!--
 			<field name="target">current</field>
-
-
 			<field name="target">inline</field>
 			<field name="view_type">form</field>
 			<field name="view_id" ref="stock_move_selector_default_view"/>			
@@ -240,15 +277,43 @@
 
 
 
-		<!-- DEFAULT view -->
+
+
+<!-- ACTION - Stock Move All - Consu --> 	
+		<record id="stock_move_all_consu_form_action" model="ir.actions.act_window">
+
+			<field name="name">Stock Move - All - Consu</field>
+
+			<field name="res_model">stock.move.all</field>
+			
+			<field name="type">ir.actions.act_window</field>
+
+			<field name="view_mode">form,tree,kanban</field>
+
+			<field name="domain">[]</field>
+
+			<field name="context">{}</field>
+
+
+			<field name="res_id" ref="stock_move_all_consu_default_view"/>	
+
 <!--
-		<record id="stock_move_all_default_view" model="stock.move.all">
-			<field name="name">This</field>
+			<field name="target">current</field>
+			<field name="target">inline</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="stock_move_selector_default_view"/>			
+-->
 		</record>
 
--->
-		<record id="stock_move_all_default_view" model="stock.move.all">
-		</record>
+
+
+
+
+
+
+
+
+
 
 
 

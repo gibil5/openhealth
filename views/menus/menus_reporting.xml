@@ -5,18 +5,23 @@
 
 
 
+<!--
+			name="Reporting"
+-->
 
 <!-- Reports --> 
 <menuitem 	id="main_reporting_menu" 
 			sequence="-6"
 
-			name="Reporting"
+			name="Kardex"
 		/>
 
 
 
 
-		<!-- Sales --> 
+
+<!-- Sales --> 
+<!--
 		<menuitem 	id="sales_reports_menu" 
 					parent="main_reporting_menu"
 					sequence="1"
@@ -27,10 +32,8 @@
 					groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.managers,openhealth.directors"
 					/>
 
-<!--
-							action="action_order_report_january_all"
--->
-				<!-- January -->
+
+
 				<menuitem 	id="sales_report_sales_january_all_menu" 
 							name="Por Mes" 				
 							parent="sales_reports_menu"
@@ -41,9 +44,6 @@
 
 
 
-				<!-- Day -->
-<!--				
--->
 				<menuitem 	id="sales_report_sales_day_menu" 
 							name="Diario" 
 							parent="sales_reports_menu"
@@ -51,6 +51,9 @@
 
 							action="action_order_report_day"
 						/>
+
+-->
+
 
 
 
@@ -65,6 +68,7 @@
 
 					groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.almacen_managers,openhealth.directors"
 				/>
+
 
 
 
@@ -102,7 +106,7 @@
 
 
 
-<!-- Kardex All --> 
+<!-- Kardex All - Cremas --> 
 		<menuitem 	id="kardex_all_report_menu" 
 					parent="main_reporting_menu"
 					sequence="3"
@@ -116,37 +120,77 @@
 
 
 
-				<!-- Cremas -->
-				<menuitem 	id="kardex_all_cremas_report_menu" 
 
-							name="Generar" 				
-					
+				<!-- Generate -->
+				<menuitem 	id="kardex_all_cremas_generate_menu" 
 							parent="kardex_all_report_menu"
-							
 							sequence="1"
 
 
-							action="stock_move_all_form_action" 
-							
+							name="Generar" 				
+					
+							action="stock_move_all_form_action" 		
 						/>
 
 
 
-				<!-- Tree -->
+
+				<!-- Visualize -->
 				<menuitem 	id="stock_move_min_list_report_menu" 
-
-							name="Visualizar" 				
-					
 							parent="kardex_all_report_menu"
-
 							sequence="2"
 
 
-							action="stock_move_min_list_action" 
-							
+							name="Visualizar" 				
+
+							action="stock_move_min_list_action" 							
 						/>
 
 
+
+
+
+
+
+<!-- Kardex All - Consumibles --> 
+		<menuitem 	id="kardex_all_consu_report_menu" 
+					parent="main_reporting_menu"
+					sequence="4"
+
+
+					name="Kardex Todo - Consumibles"			
+
+					groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.almacen_managers,openhealth.directors"
+				/>
+
+
+
+
+
+				<!-- Generate -->
+				<menuitem 	id="kardex_all_consu_generate_menu" 
+							parent="kardex_all_consu_report_menu"
+							sequence="1"
+
+
+							name="Generar" 				
+					
+							action="stock_move_all_consu_form_action" 		
+						/>
+
+
+
+
+				<!-- Visualize -->
+				<menuitem 	id="stock_move_min_consu_list_report_menu" 
+							parent="kardex_all_consu_report_menu"
+							sequence="2"
+
+
+							name="Visualizar" 				
+
+							action="stock_move_min_consu_list_action" 							
+						/>
 
 
 

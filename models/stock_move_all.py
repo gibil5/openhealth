@@ -142,10 +142,12 @@ class StockMoveAll(models.Model):
  							(source=='Inventory loss'  and  destination=='Cremas Despacho') 	or 
  							(source=='Cremas Despacho'  and  destination=='Customers') 			or
  							(source=='General'  and  destination=='Customers') 					or
+ 							(source=='Cremas Despacho'  and  destination=='Inventory loss') 	or 
  					
  							(source=='Pérdidas de inventario'  and  destination=='Cremas Despacho') 	or 
  							(source=='Cremas Despacho'  and  destination=='Clientes') 			or
- 							(source=='Existencias'  and  destination=='Clientes') 					#or
+ 							(source=='Existencias'  and  destination=='Clientes') 				or
+ 							(source=='Cremas Despacho'  and  destination=='Pérdidas de inventario') 	#or 
  						): 
 
 					print move

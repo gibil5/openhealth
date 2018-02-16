@@ -191,8 +191,11 @@ class StockMoveAll(models.Model):
 							(source=='Existencias' and destination=='Cremas Despacho')			or
 
 							(source=='General' and destination=='Rebaja')						or
-							(source=='Existencias' and destination=='Rebaja')					#or
-						
+							(source=='Existencias' and destination=='Rebaja')					or
+
+							(source=='General' and destination=='Sala Láser 2')					or
+							(source=='Existencias' and destination=='Sala Láser 2')				#or
+
 						): 
 						coeff = -1 
 

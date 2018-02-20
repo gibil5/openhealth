@@ -340,14 +340,6 @@
 
 
 
-
-
-
-
-
-
-
-
 		# Kardex
 		'views/kardex/kardex.xml',
 
@@ -719,7 +711,7 @@
 
 
 
-		# ----------------------------------------------------------- Kardex ------------------------------------------------------
+		# ----------------------------------------------------------- Stock Moves ------------------------------------------------------
 
 		'views/stock/stock_move.xml',
 		'data/stock_move_data.xml',
@@ -734,7 +726,12 @@
 		
 		'views/menus/menus.xml',
 		'views/menus/menus_openhealth.xml',
+
+
+		'views/menus/menus_kardex.xml',
 		'views/menus/menus_reporting.xml',
+
+		
 		'views/menus/menus_inventory.xml',
 
 

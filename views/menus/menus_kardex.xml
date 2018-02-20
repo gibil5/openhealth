@@ -1,0 +1,179 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+
+<!-- Kardex --> 
+<menuitem 	id="main_reporting_menu" 
+			sequence="-6"
+
+			name="Kardex"
+		/>
+
+
+
+
+
+<!-- Kardex by Product --> 
+		<menuitem 	id="kardex_report_menu" 
+					parent="main_reporting_menu"
+					sequence="2"
+
+					name="Kardex por Producto"			
+
+					groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.almacen_managers,openhealth.directors"
+				/>
+
+
+				<!-- Cremas -->
+				<menuitem 	id="kardex_report_cremas_menu" 
+							name="Cremas" 				
+							parent="kardex_report_menu"
+							sequence="1"
+
+							action="stock_move_selector_cremas_form_action" 							
+						/>
+
+
+				<!-- Consumibles -->
+				<menuitem 	id="kardex_report_consu_menu" 
+							name="Consumibles" 				
+							parent="kardex_report_menu"
+							sequence="2"
+
+							action="stock_move_selector_consu_form_action" 
+
+							groups="openhealth.roots,openhealth.almacen_managers,openhealth.directors"
+						/>
+
+
+
+
+
+
+
+
+<!-- Kardex All - Cremas --> 
+		<menuitem 	id="kardex_all_report_menu" 
+					parent="main_reporting_menu"
+					sequence="3"
+
+
+					name="Kardex Todo - Cremas"			
+
+					groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.almacen_managers,openhealth.directors"
+				/>
+
+
+
+
+
+				<!-- Generate -->
+				<menuitem 	id="kardex_all_cremas_generate_menu" 
+							parent="kardex_all_report_menu"
+							sequence="1"
+
+
+							name="Generar" 				
+					
+							action="stock_move_all_form_action" 		
+						/>
+
+
+
+<!--
+							action="stock_move_min_list_action" 							
+-->
+				<!-- Visualize -->
+				<menuitem 	id="stock_move_min_list_report_menu" 
+							parent="kardex_all_report_menu"
+							sequence="2"
+
+
+							name="Visualizar" 				
+
+							action="stock_move_min_topical_list_action" 							
+						/>
+
+
+
+				<!-- Print -->
+				<menuitem 	id="stock_move_min_topical_print_menu" 
+							parent="kardex_all_report_menu"
+							sequence="3"
+
+
+							name="Imprimir" 				
+
+							action="stock_move_min_topical_nog_list_action"
+						/>
+
+
+
+
+
+
+
+
+<!-- Kardex All - Consumibles --> 
+		<menuitem 	id="kardex_all_consu_report_menu" 
+					parent="main_reporting_menu"
+					sequence="4"
+
+
+					name="Kardex Todo - Consumibles"			
+
+					groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.almacen_managers,openhealth.directors"
+				/>
+
+
+
+
+
+				<!-- Generate -->
+				<menuitem 	id="kardex_all_consu_generate_menu" 
+							parent="kardex_all_consu_report_menu"
+							sequence="1"
+
+
+							name="Generar" 				
+					
+							action="stock_move_all_consu_form_action" 		
+						/>
+
+
+
+
+				<!-- Visualize -->
+				<menuitem 	id="stock_move_min_consu_list_report_menu" 
+							parent="kardex_all_consu_report_menu"
+							sequence="2"
+
+
+							name="Visualizar" 				
+
+							action="stock_move_min_consu_list_action" 							
+						/>
+
+
+
+				<!-- Print -->
+				<menuitem 	id="stock_move_min_consu_print_menu" 
+							parent="kardex_all_consu_report_menu"
+							sequence="3"
+
+
+							name="Imprimir" 				
+
+							action="stock_move_min_consu_nog_list_action"
+						/>
+
+
+
+
+
+
+	</data>
+</openerp>

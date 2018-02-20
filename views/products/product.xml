@@ -35,10 +35,11 @@
 				<!-- Notebook --> 
 				<!--
 				<xpath expr="//notebook" position="inside">
+					<page string="Clínica Chavarri"  			sequence="1">
 				-->
 				<xpath expr="//page" position="before">
 
-					<page string="Clínica Chavarri"  			sequence="1">
+					<page string="Clínica Chavarri"  			sequence="10">
 
 
 						<group>

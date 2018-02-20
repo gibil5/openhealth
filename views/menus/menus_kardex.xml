@@ -10,6 +10,9 @@
 			sequence="-6"
 
 			name="Kardex"
+
+			
+			groups="openhealth.roots,openhealth.almacen_managers,openhealth.directors"
 		/>
 
 

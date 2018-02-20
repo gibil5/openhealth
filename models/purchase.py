@@ -322,9 +322,10 @@ class PurchaseOrder(models.Model):
 
 		#self.write({'state': "sent"})
 		
+
 		#return self.env['report'].get_action(self, 'purchase.report_purchasequotation')
 		#return self.env['report'].get_action(self, 'openhealth.report_purchasequotation')
-		return self.env['report'].get_action(self, 'openhealth.report_purchasequotation')
+		#return self.env['report'].get_action(self, 'openhealth.report_purchasequotation')
 
 
 

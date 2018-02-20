@@ -82,9 +82,37 @@
 
 
 
+
+		<!-- Stock Move Min Topical --> 
+		<menuitem 
+			id="stock_move_min_topical_menu" 
+			name="Stock Move Min Topical" 
+			parent="openhealth_menu"
+			sequence="-270"
+
+			action="stock_move_min_topical_nog_list_action"
+			/>
+
+
+		<!-- Stock Move Min consu --> 
+		<menuitem 
+			id="stock_move_min_consu_menu" 
+			name="Stock Move Min Consu" 
+			parent="openhealth_menu"
+			sequence="-260"
+
+			action="stock_move_min_consu_nog_list_action"
+			/>
+
+
+
+
+
+
+
+
+
 		<!-- Allergies --> 
-<!--
--->
 		<menuitem 
 			id="allergies_quick_menu" 
 			name="Alergias" 

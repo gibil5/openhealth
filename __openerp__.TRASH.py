@@ -64,14 +64,8 @@
 
 
 
-		#'views/purchase/purchase_report.xml',			# Deprecated
-		#'views/purchase/purchase_report_view.xml',		# Deprecated 
 
 
-
-
-		# Mail template - Deprecated 
-		#'views/mail/rfq_send.xml',
 
 
 

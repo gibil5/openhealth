@@ -25,7 +25,7 @@
 		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant - Testcafe - User Stories - Auto Backup\n
 
 
-		Last built: 	16 February 2018 - Rebirth !!!
+		Last built: 	19 February 2018 - Rebirth !!!
 
 
 		Created: 	 	11 Sep 2016
@@ -746,6 +746,20 @@
 		'security/openhealth_security_readers.xml',
 		'security/ir.rule.xml',
 		'security/ir.model.access.csv',
+
+
+
+
+
+		# ----------------------------------------------------------- Purchase ------------------------------------------------------
+		'views/purchase/purchase_report.xml',			# Deprecated
+		'views/purchase/purchase_report_view.xml',		# Deprecated 
+
+
+		# Mail template - Deprecated 
+		'views/mail/rfq_send.xml',
+
+
 
 	],
 

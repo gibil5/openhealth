@@ -63,13 +63,10 @@
 					parent="main_reporting_menu"
 					sequence="2"
 
-
 					name="Kardex por Producto"			
 
 					groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.almacen_managers,openhealth.directors"
 				/>
-
-
 
 
 				<!-- Cremas -->
@@ -78,12 +75,8 @@
 							parent="kardex_report_menu"
 							sequence="1"
 
-							action="stock_move_selector_cremas_form_action" 
-							
+							action="stock_move_selector_cremas_form_action" 							
 						/>
-
-
-
 
 
 				<!-- Consumibles -->
@@ -93,8 +86,6 @@
 							sequence="2"
 
 							action="stock_move_selector_consu_form_action" 
-
-
 
 							groups="openhealth.roots,openhealth.almacen_managers,openhealth.directors"
 						/>
@@ -150,6 +141,20 @@
 
 
 
+				<!-- Print -->
+				<menuitem 	id="stock_move_min_topical_print_menu" 
+							parent="kardex_all_report_menu"
+							sequence="3"
+
+
+							name="Imprimir" 				
+
+							action="stock_move_min_topical_nog_list_action"
+						/>
+
+
+
+
 
 
 
@@ -196,6 +201,16 @@
 
 
 
+				<!-- Print -->
+				<menuitem 	id="stock_move_min_consu_print_menu" 
+							parent="kardex_all_consu_report_menu"
+							sequence="3"
+
+
+							name="Imprimir" 				
+
+							action="stock_move_min_consu_nog_list_action"
+						/>
 
 
 

@@ -73,6 +73,7 @@
 
 <!--
 							states="draft" 
+							string="Enviar por Email" 
 -->
 				<xpath expr="//button[@name='action_rfq_send']" position="replace">
 
@@ -88,8 +89,8 @@
 
 							states="draft" 
 
-							string="Enviar por Email" 
-							/>
+							string="Confirmar la Compra" 
+						/>
 				</xpath>
 
 
@@ -160,6 +161,7 @@
 
 <!--
 							states="pre_draft" 
+							string="IMPRIMIR" 
 -->
 <!-- Print --> 
 				<xpath expr="//button[@name='print_quotation']" position="replace">
@@ -168,8 +170,8 @@
 							name="print_quotation" 
 							class="oe_highlight" 
 
-							string="IMPRIMIR" 
 
+							string="Imprimir" 
 														
 							groups="base.group_user"
 						/>

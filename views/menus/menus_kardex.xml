@@ -15,7 +15,9 @@
 
 
 
-
+<!--
+					groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.almacen_managers,openhealth.directors"
+-->
 <!-- Kardex by Product --> 
 		<menuitem 	id="kardex_report_menu" 
 					parent="main_reporting_menu"
@@ -23,7 +25,7 @@
 
 					name="Kardex por Producto"			
 
-					groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.almacen_managers,openhealth.directors"
+					groups="openhealth.roots,openhealth.almacen_managers,openhealth.directors"
 				/>
 
 
@@ -54,7 +56,9 @@
 
 
 
-
+<!--
+					groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.almacen_managers,openhealth.directors"
+-->
 <!-- Kardex All - Cremas --> 
 		<menuitem 	id="kardex_all_report_menu" 
 					parent="main_reporting_menu"
@@ -63,7 +67,7 @@
 
 					name="Kardex Todo - Cremas"			
 
-					groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.almacen_managers,openhealth.directors"
+					groups="openhealth.roots,openhealth.almacen_managers,openhealth.directors"
 				/>
 
 

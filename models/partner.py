@@ -440,7 +440,9 @@ class Partner(models.Model):
 			#com = record.order.x_my_company
 			if record.street != False and record.street2 != False and record.city != False:
 
-				record.x_address = record.street + ' - ' + record.street2 + ' - ' + record.city
+
+				#record.x_address = record.street + ' - ' + record.street2 + ' - ' + record.city
+				record.x_address = record.street.title() + ' - ' + record.street2.title() + ' - ' + record.city.title()
 
 
 

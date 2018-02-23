@@ -63,6 +63,9 @@ class Patient(models.Model):
 
 	# Id Code 
 	x_id_code = fields.Char(
+
+			'Nr Historia Médica',
+
 			default=_get_default_id_code, 
 		)
 

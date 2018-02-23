@@ -264,9 +264,13 @@ class Treatment(models.Model):
 		self.treatment_closed = False
 
 
-
 		# Important
 		self.patient.x_nothing = 'Nothing'
+
+
+
+		# Add Procs 
+		self.add_procedures = False 
 
 	# reset
 

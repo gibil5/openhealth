@@ -756,20 +756,6 @@ Fields
 								<field name="vspace" />
 -->
 								<field name="partner_id"		invisible="1"	/>
-
-
-
-								<button 
-										type="object" 
-										class="oe_highlight"
-
-										name="reset_procs" 	
-
-										string="Reset Procs"
-
-										groups="openhealth.roots"			
-									/>
-
 							</group>
 
 
@@ -789,8 +775,20 @@ Fields
 										groups="openhealth.roots"			
 									/>
 
+
+
+								<button 
+										type="object" 
+										class="oe_highlight"
+										name="reset_procs" 	
+
+										string="Reset Procs"
+
+										groups="openhealth.roots"			
+									/>
+
+
 <!--
--->
 								<button 
 										name="reset_half" 	
 										type="object" 
@@ -800,6 +798,8 @@ Fields
 
 										groups="openhealth.roots"			
 									/>
+-->
+
 
 <!--
 								<button 

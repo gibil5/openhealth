@@ -78,6 +78,11 @@
 <!--
 								<field name="product_id"		/>
 -->
+
+								<field name="write_date"	string="Fecha de actualización"	/>
+
+								<field name="write_uid"		string="Actualizado por"	/>
+
 							</group>
 						</group>
 

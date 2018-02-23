@@ -272,7 +272,9 @@
 
 <!-- ACTION - Stock Move Min - Topical --> 
 		<record id="stock_move_min_topical_nog_list_action" model="ir.actions.act_window">
-			<field name="name">Stock Move Min - Cremas</field>
+
+			<field name="name">Kardex Almacén General - Cremas</field>
+			
 			<field name="res_model">stock.move.min</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
@@ -290,7 +292,9 @@
 
 <!-- ACTION - Stock Move Min - Consu --> 
 		<record id="stock_move_min_consu_nog_list_action" model="ir.actions.act_window">
-			<field name="name">Stock Move Min - Consu</field>
+			
+			<field name="name">Kardex Almacén General - Consumibles</field>
+			
 			<field name="res_model">stock.move.min</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>

@@ -103,18 +103,28 @@
 								<field name="x_type"   	/>		
 
 								<field name="vspace" />
+
 							</group>
-
-
 						</group>
 
 
 
 
+						<group>							
+							<group>
+							</group>
+							<group>
+							</group>
+						</group>
 
 
+
+
+<!--
 						<group		groups="openhealth.root"		>
-							
+-->
+
+						<group>							
 							<group>
 								<field name="prefix"   />													
 
@@ -129,11 +139,11 @@
 
 
 							<group>
-								<field name="date_created"  	readonly="1" 	invisible="0"	/>
+								<field name="date_created"  	readonly="1" 	invisible="1"	/>
 
 								<field name="vspace" />
 
-								<field name="date_modified"  	readonly="1" 	invisible="0"	/>
+								<field name="date_modified"  	readonly="1" 	invisible="1"	/>
 							</group>
 
 						</group>

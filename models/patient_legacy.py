@@ -15,13 +15,17 @@ from datetime import datetime
 
 class PatientLegacy(models.Model):
 
-	#_inherit = 'oeh.medical.patient'
 
 	#_order = 'write_date desc'
 
 	_description = 'Patient Legacy'
 
-	_name = 'openhealth.patient.legacy'
+
+
+	_inherit = 'openhealth.legacy'
+
+	#_name = 'openhealth.patient.legacy'
+	_name = 'openhealth.legacy.patient'
 
 
 

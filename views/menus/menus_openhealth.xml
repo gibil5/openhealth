@@ -9,10 +9,14 @@
 
 
 
-
+<!--
+			sequence="6"
+-->
 		<!-- Main - Open Health -->
 		<menuitem id="main_openhealth_menu" 
-			sequence="6"
+
+			sequence="1"
+			
 			name="Open Health"
 
 			groups="openhealth.roots"
@@ -80,16 +84,25 @@
 
 
 
-		<!-- Patient Legacy --> 
+		<!-- Legacy Patient --> 
 		<menuitem 
-				id="patient_legacy_menu" 
-				name="Patient Legacy" 
+				id="legacy_menu" 
+				name="Legacy" 
 				parent="openhealth_menu"
 				sequence="-280"
 
-				action="patient_legacy_list_action"
+				action="legacy_list_action"
 			/>
 
+		<!-- Legacy Patient --> 
+		<menuitem 
+				id="legacy_patient_menu" 
+				name="Legacy Patient" 
+				parent="openhealth_menu"
+				sequence="-279"
+
+				action="legacy_patient_list_action"
+			/>
 
 
 

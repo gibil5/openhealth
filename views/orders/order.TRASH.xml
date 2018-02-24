@@ -738,3 +738,60 @@ Order Line - Tree
 
 
 
+
+
+
+
+
+
+
+
+
+<!-- 
+24 Feb 2018
+--> 
+
+		<!-- Menus --> 
+		<!-- top level menu: no parent -->
+		<menuitem id="main_openextension_menu" name="Open Health"/>
+
+
+		<!-- A first level in the left side menu is needed
+		before using action= attribute -->
+		<menuitem id="openextension_menu" name="Open Health"
+			parent="main_openextension_menu"/>
+
+		<!-- the following menuitem should appear *after*
+		its parent openextension_menu and *after* its
+		action order_list_action -->
+		<!--
+		<menuitem id="orders_menu" name="Treatments" parent="openextension_menu"
+		-->
+
+
+		<!--
+		<menuitem id="orders_menu" name="Presupuestos jx" parent="openextension_menu"
+			action="order_list_action"  group="group_openhealth_user"/>
+		-->
+		<menuitem id="orders_menu" name="Presupuestos jx" parent="openextension_menu"
+			action="order_list_action"/>
+
+
+
+
+
+		<!-- Full id location:
+		action="openextension.order_list_action"
+		It is not required when it is the same module -->
+
+
+		<!--
+		<record id="user_group_id" model="res.groups">
+			<field name="name">Open Health User Group</field>
+			<field name="category_id" ref="base.module_category_sales_management"/>
+		</record>
+		-->
+
+
+
+

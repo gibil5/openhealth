@@ -26,6 +26,11 @@ from . import product
 
 
 
+from . import patient_legacy
+
+
+
+
 # Deprecated 
 #from . import learn_1
 #from . import quotation

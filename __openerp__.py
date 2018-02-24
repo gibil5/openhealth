@@ -26,13 +26,13 @@
 
 
 
-		Last built: 	23 February 2018 - Rebirth !!!
+		Last built: 	24 February 2018 - Rebirth !!!
 
 
 
 		Created: 	 	11 Sep 2016
 		
-		Active for: 	15 months !!!
+		Active for: 	17 months !!!		(Lu Feb 2018)
 
 		---
 
@@ -759,6 +759,12 @@
 		'views/mail/rfq_send.xml',
 
 
+
+
+
+
+		# ----------------------------------------------------------- Legacy ------------------------------------------------------
+		'views/legacy/patient_legacy.xml',
 
 	],
 

@@ -80,6 +80,23 @@
 
 
 
+		<!-- Patient Legacy --> 
+		<menuitem 
+				id="patient_legacy_menu" 
+				name="Patient Legacy" 
+				parent="openhealth_menu"
+				sequence="-280"
+
+				action="patient_legacy_list_action"
+			/>
+
+
+
+
+
+
+
+
 
 
 

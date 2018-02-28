@@ -96,8 +96,11 @@
 
 
 
+<!--
 				<xpath expr="//field[@name='price']" position="after">
 					<field name="price_vip" />
+-->
+				<xpath expr="//field[@name='price_vip']" position="after">
 					<field name="price_vip_return" />
 				</xpath>
 

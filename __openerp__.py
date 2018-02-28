@@ -390,7 +390,7 @@
 
 
 		# Order Report 
-		'views/orders/order_report.xml',
+		#'views/orders/order_report.xml',
 
 
 

@@ -832,10 +832,10 @@ Fields
 								<field name="vspace" />
 
 
-								<field name="x_vip_inprog"/>
 
 
 <!--
+								<field name="x_vip_inprog"/>
 -->
 
 							</group>							

@@ -304,6 +304,8 @@ class sale_order(models.Model):
 		)
 
 
+
+
 	# Patient 
 	patient = fields.Many2one(
 			'oeh.medical.patient',
@@ -311,6 +313,13 @@ class sale_order(models.Model):
 			#compute='_compute_patient', 
 			
 			required=True, 
+
+			states={
+						'cancel': 	[('readonly', True)], 
+						'done': 	[('readonly', True)], 
+						'sent': 	[('readonly', True)], 
+						'sale': 	[('readonly', True)], 
+					}, 
 		)
 
 
@@ -326,12 +335,14 @@ class sale_order(models.Model):
 
 			readonly=False, 
 
-			#states={
-			#			'cancel': 	[('readonly', True)], 
-			#			'done': 	[('readonly', True)], 
-			#			'sent': 	[('readonly', True)], 
-			#			'sale': 	[('readonly', True)], 
-			#		}, 
+
+			states={
+						'cancel': 	[('readonly', True)], 
+						'done': 	[('readonly', True)], 
+						'sent': 	[('readonly', True)], 
+						'sale': 	[('readonly', True)], 
+					}, 
+
 			
 			copy=True, 
 		)

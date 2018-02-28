@@ -1034,17 +1034,20 @@ attrs="{'readonly': [('state', 'in', ('done','cancel'))]}">
 
 
 <!-- Add --> 
+<!--
 <xpath expr="//tree/field[@name='name']" position="after">
 	<field name="x_price_manual"/>
 </xpath>
+<xpath expr="//tree/field[@name='product_uom_qty']" position="after">
+	<field name="x_qty"/>
+</xpath>
+-->
+
 
 <xpath expr="//tree/field[@name='name']" position="after">
 	<field name="x_description"/>
 </xpath>
 
-<xpath expr="//tree/field[@name='product_uom_qty']" position="after">
-	<field name="x_qty"/>
-</xpath>
 
 
 

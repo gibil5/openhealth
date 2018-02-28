@@ -1,48 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from datetime import datetime,tzinfo,timedelta
 from openerp import models, fields, api
 
+from datetime import datetime,tzinfo,timedelta
 from . import time_funcs
 from . import jrfuncs
-
-
-
-
-
-
-
-#------------------------------------------------ Get Actual Doctor ---------------------------------------------------
-
-# Get Actual Doctor 
-@api.multi
-def get_actual_doctor(self):
-
-
-	print 'jx'
-	print 'Get Actual Doctor'
-
-	
-	#user_id = self.env.user.id 
-	user_name =  self.env.user.name 
-	
-	#print user_name
-
-	doctor = self.env['oeh.medical.physician'].search([ 	
-																('x_user_name', '=', user_name),		
-															], 
-															#order='appointment_date desc', 
-															limit=1
-															)
-
-	#print doctor.id 
-	#print doctor.name 
-	
-	doctor_id = doctor.id 
-	
-	return doctor_id
-
-
 
 
 
@@ -117,13 +79,19 @@ def create_order_lines(self, laser, order_id):
 
 			price_manual = service.price_manual
 
+			price_applied = service.price_applied
+
 					
 			#print service
 			#print target_line
 
 
+
+
 			#ret = order.x_create_order_lines_target(target_line)
-			ret = order.x_create_order_lines_target(target_line, price_manual)
+			#ret = order.x_create_order_lines_target(target_line, price_manual)
+			ret = order.x_create_order_lines_target(target_line, price_manual, price_applied)
+
 
 
 
@@ -134,6 +102,40 @@ def create_order_lines(self, laser, order_id):
 			#print ret 
 	return 0
 
+
+
+
+
+
+#------------------------------------------------ Get Actual Doctor ---------------------------------------------------
+
+# Get Actual Doctor 
+@api.multi
+def get_actual_doctor(self):
+
+
+	print 'jx'
+	print 'Get Actual Doctor'
+
+	
+	#user_id = self.env.user.id 
+	user_name =  self.env.user.name 
+	
+	#print user_name
+
+	doctor = self.env['oeh.medical.physician'].search([ 	
+																('x_user_name', '=', user_name),		
+															], 
+															#order='appointment_date desc', 
+															limit=1
+															)
+
+	#print doctor.id 
+	#print doctor.name 
+	
+	doctor_id = doctor.id 
+	
+	return doctor_id
 
 
 

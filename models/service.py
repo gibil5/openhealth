@@ -28,6 +28,17 @@ class Service(models.Model):
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
 
+	# Price Applied
+	price_applied = fields.Float(
+			#string='Precio Aplicado', 
+
+			#compute='_compute_price_applied', 
+		) 
+
+
+
+
+
 
 
 	state = fields.Selection(

@@ -606,7 +606,8 @@ class sale_order(models.Model):
 # ----------------------------------------------------------- Create order lines ------------------------------------------------------
 	#@api.multi 
 	#def x_create_order_lines_target(self, target):		
-	def x_create_order_lines_target(self, target, price_manual):		
+	#def x_create_order_lines_target(self, target, price_manual):		
+	def x_create_order_lines_target(self, target, price_manual, price_applied):		
 
 		
 		print 
@@ -630,6 +631,10 @@ class sale_order(models.Model):
 		print product.id
 		print product.name
 		print product.x_name_short
+
+
+		print product.categ_id
+		print product.categ_id.name
 
 
 
@@ -661,6 +666,8 @@ class sale_order(models.Model):
 										#'product_uom': product_uom, 
 		#							})
 
+
+		# Manual price  
 		if price_manual != 0: 
 
 			ol = self.order_line.create({
@@ -681,12 +688,36 @@ class sale_order(models.Model):
 		
 
 		#elif self.x_vip_inprog: 	
+		elif product.categ_id.name == 'Quick Laser': 	
 		
+			print 'gotcha !'
+
+			#price_quick = 77
+			price_quick = price_applied
+
+
+			ol = self.order_line.create({
+											'product_id': product.id,
+											'order_id': order_id,										
+
+
+											'price_unit': price_quick,
+
+
+											#'x_price_manual': price_manual, 
+											#'name': target,
+											#'name': product.name,
+											#'state':'draft',
+											#'x_price_vip': x_price_vip,
+											#'product_uom': product_uom, 
+										})
 
 
 
+
+
+		# Normal case 
 		else: 		
-
 			ol = self.order_line.create({
 										'product_id': product.id,
 										'order_id': order_id,										
@@ -700,6 +731,7 @@ class sale_order(models.Model):
 										#'x_price_vip': x_price_vip,
 										#'product_uom': product_uom, 
 									})
+
 
 
 

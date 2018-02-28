@@ -290,11 +290,20 @@ class Patient(models.Model):
 		print 'jx'
 		print 'Generate'
 
+
+		# Clean 
 		self.remove_order_report()
 		
-		res_id = self.create_order_report()
 
-		self.update_order_report()
+		# Create
+		#res_id = self.create_order_report()
+		self.x_order_report = self.create_order_report()
+		res_id = self.x_order_report.id
+
+
+		# Update 
+		#self.update_order_report()
+		self.x_order_report.update_order_report()
 
 
 
@@ -333,14 +342,11 @@ class Patient(models.Model):
 
 
 
-
-
 	# Remove 
 	@api.multi 
 	def remove_order_report(self):
-		print 'jx'
-		print 'Remove'
-
+		#print 'jx'
+		#print 'Remove'
 		self.x_order_report = False
 
 
@@ -353,16 +359,9 @@ class Patient(models.Model):
 		print 'Create'
 
 
-		#if self.x_order_report != False: 
-		#	self.x_order_line_ids.unlink()
-
-		#else: 
-
-		#name = 'Estado de cuenta'
 		name = 'EC - ' + self.partner_id.name
 
 
-		#self.x_order_report = self.env['sale.order'].create(
 		order_report_id = self.env['openhealth.order.report'].create(
 														{
 															'name': name, 
@@ -381,7 +380,7 @@ class Patient(models.Model):
 													).id
 
 
-		self.x_order_report = order_report_id
+		#self.x_order_report = order_report_id
 		
 
 		return order_report_id
@@ -391,116 +390,12 @@ class Patient(models.Model):
 
 
 
-	# Update 
-	@api.multi 
-	def update_order_report(self):
-		print 'jx'
-		print 'Update'
-
-
-
-		partner_id = self.partner_id.name
-
-
-		orders = self.env['sale.order'].search([
-															('partner_id', '=', partner_id),			
-															('state', '=', 'sale'),			
-													],
-													#order='start_date desc',
-													#limit=1,
-												)
-
-		#print orders
-
-
-		for order in orders: 
-			#print 
-			#print order.name 
-			for line in order.order_line: 
-				#print line.product_id
-				#print line.name
-				#print line.price_subtotal
-				#print line.create_date
-
-
-				ret = self.x_order_line_ids.create({
-															'product_id': line.product_id.id,
-															'name': line.name,
-															'price_subtotal': line.price_subtotal,
-															'x_date_created': line.create_date,
-															'order_report_id': self.x_order_report.id,
-															#'order_id': self.x_order_report.id,
-													})
-
-
-
-
-
-
-
-
-
-
-	# Estado de cuenta - Lines 
-	x_order_line_ids = fields.One2many(
-
-			'sale.order.line',			 
-			'patient_id', 
-		
-			string="Estado de cuenta",
-		)
-
-
-
-
-
-
-	@api.multi
-	def _compute_x_order_line_ids(self):
-		
-		print 'jx'
-		print 'Compute Order ids'
-		
-		
-		for record in self:		
-
-			record.x_order_line_ids.unlink()
-
-			partner_id = record.partner_id.name
-
-			orders = self.env['sale.order'].search([
-															('partner_id', '=', partner_id),			
-													],
-													#order='start_date desc',
-													#limit=1,
-												)
-			print orders
-
-			for order in orders: 
-				print 
-				print order.name 
-				for line in order.order_line: 
-					print line.product_id
-					print line.name
-					print line.price_subtotal
-					print line.create_date
-
-					#ret = record.x_order_line_ids.create({
-					#											'product_id': line.product_id.id,
-					#											'name': line.name,
-					#											'price_subtotal': line.price_subtotal,
-					#									})
-
-
-
 
 
 
 
 
 # ----------------------------------------------------------- DNI RUC ------------------------------------------------------
-
-
 
 	# Test DNI 
 	@api.onchange('x_dni')

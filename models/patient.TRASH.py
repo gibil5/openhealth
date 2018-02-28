@@ -80,3 +80,45 @@
 
 
 
+# 28 Feb 2018
+
+	# Estado de cuenta - Lines 
+	#x_order_line_ids = fields.One2many(
+	#		'sale.order.line',			 
+	#		'patient_id', 
+	#		string="Estado de cuenta",
+	#	)
+
+
+	#@api.multi
+	#def _compute_x_order_line_ids(self):
+	#	print 'jx'
+	#	print 'Compute Order ids'
+	#	for record in self:		
+	#		record.x_order_line_ids.unlink()
+	#		partner_id = record.partner_id.name
+	#		orders = self.env['sale.order'].search([
+	#														('partner_id', '=', partner_id),			
+	#												],
+	#												#order='start_date desc',
+	#												#limit=1,
+	#											)
+	#		print orders
+	#		for order in orders: 
+	#			print 
+	#			print order.name 
+	#			for line in order.order_line: 
+	#				print line.product_id
+	#				print line.name
+	#				print line.price_subtotal
+	#				print line.create_date
+					#ret = record.x_order_line_ids.create({
+					#											'product_id': line.product_id.id,
+					#											'name': line.name,
+					#											'price_subtotal': line.price_subtotal,
+					#									})
+
+
+
+
+

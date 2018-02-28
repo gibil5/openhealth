@@ -47,8 +47,10 @@ New
 				<xpath expr="//page[1]" position="before">
 
 					<page string="Estado de Cuenta">
-				
+<!--
 						<field name="order_line_report" 	/>
+-->
+						<field name="order_line_ids" 	/>
 
 					</page>
 
@@ -69,8 +71,10 @@ New
 
 						<group></group>
 
-						<group>						
+						<group>	
+<!--
 							<field name="amount_total_report" 	/>
+-->					
 						</group>
 
 					</group>
@@ -212,6 +216,7 @@ Old
 				<xpath expr="//button[@name='action_confirm']" position="replace">
 				</xpath>
 
+
 				<xpath expr="//button[@name='action_confirm']" position="replace">
 					<button 
 							name="action_confirm"
@@ -279,18 +284,18 @@ Old
 
 				<!-- Natives -->
 				<xpath expr="//field[@name='validity_date']" position="before">
-					
-					<field name="x_partner_vip"/>
 
-					<field name="vspace"/>
 
 					<field name="date_order" 			string="Fecha"		readonly="1"	/>					
 
-					<field name="vspace"/>
-
+					<field name="amount_total_report" 	/>
 
 
 <!--
+					<field name="x_partner_vip"/>
+					<field name="vspace"/>
+					<field name="vspace"/>
+
 					<field name="x_sale_document_type"	invisible="1"	readonly="1"	/>
 					<field name="vspace"/>
 					<field name="x_sale_document"/>
@@ -308,7 +313,9 @@ Old
 
 				<!-- Price list --> 
 				<xpath expr="//field[@name='pricelist_id']" position="replace">
+<!--
 					<field name="pricelist_id" 					readonly="1"	/>
+-->			
 				</xpath>
 
 
@@ -445,7 +452,10 @@ Old
 				
 
 
+
+
 					<!-- Print  --> 
+<!--					
 					<button 
 							type="object" 
 							class="oe_highlight"
@@ -455,6 +465,23 @@ Old
 							string="IMPRIMIR"
 
 							groups="openhealth.roots"
+					/>
+-->
+
+
+
+
+<!--
+							groups="openhealth.roots"
+-->
+					<!-- Update  --> 
+					<button 
+							type="object" 
+							class="oe_highlight"
+
+							name="update_order_report"
+
+							string="Actualizar"
 					/>
 
 				</xpath>

@@ -66,6 +66,7 @@
 								<field name="price_unit" />
 
 								<field name="price_subtotal" />
+
 							</group>
 
 
@@ -109,14 +110,17 @@
 
 
 
+
 					<field name="product_id" />
 
 					<field name="x_date_created" />
 
 					<field name="product_uom_qty"			/>
 
-
 					<field name="price_subtotal" />
+
+
+					<field name="price_total" />
 
 
 

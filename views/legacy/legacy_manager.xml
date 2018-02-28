@@ -5,21 +5,52 @@
 
 
 		<!-- FORM --> 
-		<record model="ir.ui.view" id="legacy_patient_view">
+		<record model="ir.ui.view" id="legacy_manager_view">
 
-			<field name="name">Legacy Patient</field>
+			<field name="name">Legacy manager</field>
 			
-			<field name="model">openhealth.legacy.patient</field>			
+			<field name="model">openhealth.legacy.manager</field>			
 			
 			<field name="type">form</field>
 			
 			<field name="priority" eval="1"/>
 
 			<field name="arch" type="xml">
-				<form string="Legacy Patient">
+				<form string="Legacy manager">
 
+<!--
+							string="Ultimo Tratamiento" 							
+-->
 					<header>
+
+
+						<button 
+							type="object" 
+
+							class="oe_highlight"
+
+							name="create_data" 
+
+							string="create data" 							
+						/>
+
+
+
+
+
+						<button 
+							type="object" 
+
+							class="oe_highlight"
+
+							name="update_data" 
+
+							string="update data" 							
+						/>
+
+
 					</header>
+
 
 					<sheet>
 
@@ -27,16 +58,16 @@
 						<group>
 							<group>		
 
-								<field name="CODIGOhistoria" 	/>
 
-								<field name="NombreCompleto" 	/>
+								<field name="name" 	/>
 
-								<field name="NumeroDocumento" 	/>
-
-								<field name="FechaRegistro" 	/>
+								<field name="source" 	/>
+								<field name="target" 	/>
 
 							</group>
 							<group>		
+								<field name="x_type" 	/>
+								<field name="write_date" 	/>
 							</group>
 						</group>
 
@@ -54,19 +85,15 @@
 		<!-- TREE -->
 		<record model="ir.ui.view" id="legacy_tree">
 			<field name="name">legacy.tree</field>
-			<field name="model">openhealth.legacy.patient</field>
+			<field name="model">openhealth.legacy.manager</field>
 			<field name="arch" type="xml">			
 
 				<tree string="Legacy Tree"    >
 				
 
-					<field name="CODIGOhistoria" 	/>
-
-					<field name="NombreCompleto" 	/>
-
-					<field name="NumeroDocumento" 	/>
-
-					<field name="FechaRegistro" 	/>
+					<field name="name" 	/>
+					<field name="x_type" 	/>
+					<field name="write_date" 	/>
 
 
 				</tree>
@@ -80,11 +107,11 @@
 
 
 		<!-- ACTION -->
-		<record model="ir.actions.act_window" id="legacy_patient_list_action">		
+		<record model="ir.actions.act_window" id="legacy_manager_list_action">		
 
-			<field name="name">Legacy Patients</field>
+			<field name="name">Legacy Managers</field>
 		
-			<field name="res_model">openhealth.legacy.patient</field>
+			<field name="res_model">openhealth.legacy.manager</field>
 
 			<field name="view_type">form</field>
 <!--			

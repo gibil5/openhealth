@@ -193,7 +193,7 @@ class sale_order_line(models.Model):
 		default=0.0, 
 	
 	
-		compute='_compute_price_unit', 
+		#compute='_compute_price_unit', 
 	)
 
 	@api.multi

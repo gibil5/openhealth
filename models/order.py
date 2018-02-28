@@ -633,13 +633,13 @@ class sale_order(models.Model):
 
 
 
+
 #jxx
-		ol = self.order_line.create({
-										'product_id': product.id,
-										'order_id': order_id,										
+		#ol = self.order_line.create({
+		#								'product_id': product.id,
+		#								'order_id': order_id,										
 
-										'x_price_manual': price_manual, 
-
+		#								'x_price_manual': price_manual, 
 
 
 										#'name': target,
@@ -648,8 +648,50 @@ class sale_order(models.Model):
 										#'price_unit': price_unit,
 										#'x_price_vip': x_price_vip,
 										#'product_uom': product_uom, 
-									})
+		#							})
+
+		if price_manual != 0: 
+
+			ol = self.order_line.create({
+											'product_id': product.id,
+											'order_id': order_id,										
+
+											'x_price_manual': price_manual, 
+
+											'price_unit': price_manual,
+
+											#'name': target,
+											#'name': product.name,
+											#'state':'draft',
+											#'x_price_vip': x_price_vip,
+											#'product_uom': product_uom, 
+										})
+
 		
+
+		#elif self.x_vip_inprog: 	
+		
+
+
+
+		else: 		
+
+			ol = self.order_line.create({
+										'product_id': product.id,
+										'order_id': order_id,										
+
+										#'x_price_manual': price_manual, 
+
+										#'name': target,
+										#'name': product.name,
+										#'state':'draft',
+										#'price_unit': price_unit,
+										#'x_price_vip': x_price_vip,
+										#'product_uom': product_uom, 
+									})
+
+
+
 		print ol
 		print ol.product_id
 		print ol.product_id.name 

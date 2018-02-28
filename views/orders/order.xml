@@ -232,7 +232,7 @@
 
 				<!-- Price list --> 
 				<xpath expr="//field[@name='pricelist_id']" position="replace">
-					<field name="pricelist_id" 					readonly="1"	/>
+					<field name="pricelist_id" 					readonly="0"	/>
 				</xpath>
 
 
@@ -993,10 +993,13 @@ attrs="{'readonly': [('state', 'in', ('done','cancel'))]}">
 
 
 
+
 <!-- Hide --> 
+<!--
 <xpath expr="//tree/field[@name='price_unit']" position="replace">
 	<field name="price_unit"	readonly="1"			/>
 </xpath>
+-->
 
 <xpath expr="//tree/field[@name='tax_id']" position="replace">
 	<field name="tax_id"	readonly="1"		invisible="1"		/>

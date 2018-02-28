@@ -5,33 +5,55 @@
 # Created: 			 26 Aug 2016
 # Last updated: 	 21 Feb 2017
 
-
 from openerp import models, fields, api
 
 from datetime import datetime
 from datetime import tzinfo
-
-#from . import jxvars	 - DEPRECATED
-
 from . import treatment_funcs
 from . import time_funcs
 from . import treatment_vars
-
-
-
 
 class Treatment(models.Model):
 
 	#_inherit = 'openextension.treatment'
 	_inherit = 'openhealth.process'	
 
-
 	_name = 'openhealth.treatment'
-
 
 	#_order = 'start_date desc'
 	_order = 'write_date desc'
 
+
+
+
+# ----------------------------------------------------------- Important ------------------------------------------------------
+
+	# Vip in progress 
+	x_vip_inprog = fields.Boolean(
+
+			string="Vip en progreso", 
+
+			default=False, 
+		
+			compute='_compute_vip_inprog', 
+		)
+
+	@api.multi
+	def _compute_vip_inprog(self):
+
+		for record in self:
+
+			#for line in record.order_id.order_line:				
+			#	if line.product_id.default_code == '495': 				
+			#		record.x_vip_inprog = True
+
+			nr_vip = self.env['openhealth.service.vip'].search_count([		
+																		('treatment','=', record.id),
+																		#('state','=', 'draft'),
+				]) 
+
+			if nr_vip > 0: 
+				record.x_vip_inprog = True 
 
 
 
@@ -2287,8 +2309,8 @@ class Treatment(models.Model):
 
 
 	@api.multi 
-	#def create_order(self):
 	def create_order(self, target):
+
 
 		#print 
 		#print 'jx'
@@ -2298,17 +2320,37 @@ class Treatment(models.Model):
 
 
 
-		#note = 'test'
-		#note = self.partner_id.name 
+		# Note 
 		note = self.partner_id.comment
-
-
 
 		# Doctor 
 		doctor_id = treatment_funcs.get_actual_doctor(self)
-
 		if doctor_id == False: 
 			doctor_id = self.physician.id 
+
+
+
+
+		# Pricelist 
+		if self.x_vip_inprog: 
+
+	 		pl = self.env['product.pricelist'].search([
+																('name', 'like', 'VIP'), 
+														],
+															#order='write_date desc',
+															limit=1,
+														)
+	 	else: 
+
+	 		pl = self.env['product.pricelist'].search([
+																('name', 'like', 'Public Pricelist'), 
+														],
+															#order='write_date desc',
+															limit=1,
+														)
+	 	pl_id = pl.id 
+
+
 
 
 
@@ -2321,12 +2363,13 @@ class Treatment(models.Model):
 														'state':'draft',
 														'x_family': target, 
 														'note': note, 
+														'x_doctor': doctor_id,	
+
 														#'consultation':self.id,														
 														#'x_chief_complaint':chief_complaint,
-														
-
 														#'x_doctor': self.physician.id,	
-														'x_doctor': doctor_id,	
+
+														'pricelist_id': pl_id, 
 													}
 												)
 

@@ -366,10 +366,9 @@ class Patient(models.Model):
 		order_report_id = self.env['openhealth.order.report'].create(
 														{
 															'name': name, 
-
-															'partner_id': self.partner_id.id,
-																													
+															'partner_id': self.partner_id.id,											
 															'state':'sale',
+
 
 															#'subtotal':0,
 															#'pricelist_id': self.property_product_pricelist.id,	
@@ -402,12 +401,15 @@ class Patient(models.Model):
 
 		partner_id = self.partner_id.name
 
+
 		orders = self.env['sale.order'].search([
 															('partner_id', '=', partner_id),			
+															('state', '=', 'sale'),			
 													],
 													#order='start_date desc',
 													#limit=1,
 												)
+
 		#print orders
 
 
@@ -415,30 +417,19 @@ class Patient(models.Model):
 			#print 
 			#print order.name 
 			for line in order.order_line: 
-
 				#print line.product_id
 				#print line.name
 				#print line.price_subtotal
 				#print line.create_date
 
 
-
-				#ret = self.x_order_report.order_line.create({
-
 				ret = self.x_order_line_ids.create({
-															
 															'product_id': line.product_id.id,
-
 															'name': line.name,
-															
 															'price_subtotal': line.price_subtotal,
-
-
 															'x_date_created': line.create_date,
-
-
-															#'order_id': self.x_order_report.id,
 															'order_report_id': self.x_order_report.id,
+															#'order_id': self.x_order_report.id,
 													})
 
 
@@ -454,8 +445,6 @@ class Patient(models.Model):
 	x_order_line_ids = fields.One2many(
 
 			'sale.order.line',			 
-			#'openhealth.order.line.report',			 
-
 			'patient_id', 
 		
 			string="Estado de cuenta",

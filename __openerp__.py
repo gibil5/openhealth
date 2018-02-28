@@ -26,7 +26,7 @@
 
 
 
-		Last built: 	24 February 2018 - Rebirth !!!
+		Last built: 	28 February 2018 - Rebirth !!!
 
 
 
@@ -763,8 +763,9 @@
 
 
 		# ----------------------------------------------------------- Legacy ------------------------------------------------------
-		'views/legacy/legacy.xml',
-		'views/legacy/patient_legacy.xml',
+		#'views/legacy/legacy.xml',
+		#'views/legacy/legacy_patient.xml',
+		#'views/legacy/legacy_manager.xml',
 
 
 

@@ -27,8 +27,14 @@ from . import product
 
 
 from . import legacy
-from . import patient_legacy
 from . import legacy_manager
+from . import legacy_patient
+#from . import patient_legacy
+
+
+
+from . import data
+from . import data_analyzer
 
 
 

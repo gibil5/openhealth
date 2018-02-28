@@ -88,6 +88,7 @@
 		<!-- Legacy Manager --> 
 		<!-- Legacy Patient --> 
 <!--
+-->
 		<menuitem 
 				id="legacy_menu" 
 				name="Legacy" 
@@ -118,7 +119,6 @@
 
 				action="legacy_patient_list_action"
 			/>
--->
 
 
 

@@ -390,7 +390,7 @@
 
 
 		# Order Report 
-		#'views/orders/order_report.xml',
+		'views/orders/order_report.xml',
 
 
 
@@ -763,9 +763,9 @@
 
 
 		# ----------------------------------------------------------- Legacy ------------------------------------------------------
-		#'views/legacy/legacy.xml',
-		#'views/legacy/legacy_patient.xml',
-		#'views/legacy/legacy_manager.xml',
+		'views/legacy/legacy.xml',
+		'views/legacy/legacy_patient.xml',
+		'views/legacy/legacy_manager.xml',
 
 
 

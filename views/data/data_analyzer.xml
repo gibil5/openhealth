@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+
+
+		<!-- FORM --> 
+		<record model="ir.ui.view" id="data_analyzer_view">
+
+			<field name="name">data analyzer</field>
+			
+			<field name="model">openhealth.data.analyzer</field>			
+			
+			<field name="type">form</field>
+			
+			<field name="priority" eval="1"/>
+
+			<field name="arch" type="xml">
+				<form string="data analyzer">
+
+
+					<header>
+
+<!--
+								states="sent"						
+-->
+						<button 
+								type="object" 
+								class="oe_highlight"
+
+								name="update_data"
+
+								string="Update"								
+						/>
+
+
+					</header>
+
+
+					<sheet>
+
+
+						<group>
+							<group>		
+								<field name="name" 	/>
+
+								<field name="model" 	/>
+
+								<field name="count" 	/>
+							</group>
+							<group>		
+							</group>
+						</group>
+
+
+
+
+						<notebook></notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+
+
+		<!-- TREE -->
+		<record model="ir.ui.view" id="data_analyzer_tree">
+			<field name="name">data.analyzer.tree</field>
+			<field name="model">openhealth.data.analyzer</field>
+			<field name="arch" type="xml">			
+
+				<tree string="data Tree"    >
+				
+
+					<field name="name" 	/>
+
+					<field name="model" 	/>
+
+					<field name="count" 	/>
+
+
+				</tree>
+			</field>
+		</record>
+
+
+
+
+
+
+
+		<!-- ACTION -->
+		<record model="ir.actions.act_window" id="data_analyzer_list_action">		
+
+			<field name="name">data analyzers</field>
+		
+			<field name="res_model">openhealth.data.analyzer</field>
+
+			<field name="view_type">form</field>
+<!--			
+			<field name="view_mode">kanban,tree,form</field>
+-->
+			<field name="view_mode">tree,form,kanban</field>
+
+
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+
+			<!--
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first treatment
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+	</data>
+</openerp>

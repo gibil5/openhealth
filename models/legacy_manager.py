@@ -35,6 +35,27 @@ class LegacyManager(models.Model):
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
 
+
+	ratio = fields.Float(
+		)
+
+	delta = fields.Integer(
+		)
+
+
+
+
+	source_count = fields.Integer(
+		)
+
+	target_count = fields.Integer(
+		)
+
+
+
+
+
+
 	name = fields.Char(
 			#string='Nombre',
 			required=True, 
@@ -65,7 +86,70 @@ class LegacyManager(models.Model):
 
 
 
+
 # ----------------------------------------------------------- Actions ------------------------------------------------------
+
+
+	# Synchronize
+	@api.multi 
+	def synchronize(self):
+
+		print 'jx'
+		print 'Synchronize'
+
+
+ 		models = self.env[self.source.model].search([
+														
+														#('name', '=', name), 
+														('NombreCompleto', '!=', 'AAA'), 
+
+												],
+
+														order='FechaRegistro desc',
+
+														#limit=10,
+														#limit=100,
+											)
+
+ 		count = 0 
+
+		for model in models: 
+			
+
+			#print model 
+			#print model.NombreCompleto 
+			#print model.FechaRegistro 
+
+
+			name = model.NombreCompleto
+
+
+ 			patient = self.env[self.target.model].search([
+															('name', '=', name), 
+											],
+		#												#order='write_date desc',
+														limit=1,
+											)
+ 			#print patient
+
+ 			#if patient == False: 
+ 			if patient.name == False: 
+ 				print 'Create !'
+				print model 
+				print model.NombreCompleto 
+				print model.FechaRegistro 
+	 			print patient
+
+	 			count = count + 1
+
+			print 
+
+
+		print count
+		print 
+
+
+
 
 
 	# Update 
@@ -121,11 +205,22 @@ class LegacyManager(models.Model):
 		print 'jx'
 		print 'Update Data'
 
+
 		self.source.update_data()
+		self.source_count = self.source.count  
 
 		self.target.update_data()
+		self.target_count = self.target.count  
 
+
+		# Parameters 
+		self.ratio = (	float(self.target_count) / float(self.source_count)  ) * 100.
+		self.delta = self.source_count - self.target_count
+		
 		print
+
+
+
 
 
 

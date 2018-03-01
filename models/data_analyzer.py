@@ -3,14 +3,10 @@
 #
 # 		*** OPEN HEALTH - data_analyzer 
 # 
-
 # Created: 				24 Feb 2018
 # Last updated: 	 	id
-
-
+#
 from openerp import models, fields, api
-
-
 
 class DataAnalyzer(models.Model):
 
@@ -20,42 +16,13 @@ class DataAnalyzer(models.Model):
 
 	_description = 'data_analyzer'
 
-
-
 	_name = 'openhealth.data.analyzer'
 
 
 
 
 
-
-
-# ----------------------------------------------------------- Primitives ------------------------------------------------------
-
-
-	count = fields.Integer(
-		)
-
-
-
-
-
-	name = fields.Char(
-			required=True, 
-		)
-
-	model = fields.Selection(
-
-			[	
-				('openhealth.legacy.patient', 		'openhealth.legacy.patient'),
-				('oeh.medical.patient', 			'oeh.medical.patient'),
-			], 
-
-			required=True, 
-		)
-
-
-
+# ----------------------------------------------------------- Actions ------------------------------------------------------
 
 	# Update 
 	@api.multi 
@@ -73,10 +40,47 @@ class DataAnalyzer(models.Model):
 		#									)
 
 
+
 		self.count = self.env[self.model].search_count([																							
-														#('zone', '=', zone),			
-												]) 
+															#('zone', '=', zone),			
+													]) 
+
+
+
+		#if self.model == 'openhealth.legacy.patient': 
+		#	self.count = self.env[self.model].search_count([																							
+																#('zone', '=', zone),			
+		#												]) 
+		#else: 
+		#	self.count = self.env[self.model].search_count([																							
+																#('zone', '=', zone),			
+		#												]) 
+
 
 		print
+
+
+
+
+
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+	count = fields.Integer(
+		)
+
+
+	name = fields.Char(
+			required=True, 
+		)
+
+	model = fields.Selection(
+
+			[	
+				('openhealth.legacy.patient', 		'openhealth.legacy.patient'),
+				('oeh.medical.patient', 			'oeh.medical.patient'),
+			], 
+
+			required=True, 
+		)
 
 

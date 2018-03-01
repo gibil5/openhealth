@@ -121,5 +121,36 @@
 
 
 
+
+
+<!--
+				<field 	name="name" 
+						filter_domain="['|',('name','ilike',self),('x_dni','ilike',self)]"/>
+-->
+
+		<!-- FILTER --> 
+		<record id="legacy_patient_view_template_filter" model="ir.ui.view">
+
+			<field name="name">LP Search</field>
+			
+			<field name="model">openhealth.legacy.patient</field>
+		   	
+		   	<field name="arch" type="xml">
+
+
+				<search string="Legacy Patients">
+
+
+					<field 	name="NombreCompleto"/>
+
+
+			   </search>
+
+		   </field>
+	   </record>
+
+
+
+
 	</data>
 </openerp>

@@ -86,7 +86,6 @@
 								<field name="target_count" 	/>
 							</group>
 						</group>
--->
 
 
 						<group>
@@ -97,6 +96,7 @@
 								<field name="delta" 	/>
 							</group>
 						</group>
+-->
 
 						<notebook></notebook>
 					</sheet>

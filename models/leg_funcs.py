@@ -12,36 +12,105 @@ import datetime
 
 
 
+
+
 #------------------------------------------------ Functions ---------------------------------------------------
+
+def create_patient(self, name, hc_code, doc_code, sex, 		date_record, date_created, date_birth, 		address, district, phone, mobile, email, comment):
+
+
+	_hac = {
+				'F': 				'Female', 
+				'M': 				'Male', 
+			}
+
+
+	sex_h = _hac[sex]
+
+
+
+	ret = self.env['oeh.medical.patient'].create({
+
+															'name': name,
+
+															'x_id_code': hc_code,
+
+															'x_dni': doc_code,
+
+															'sex': sex_h,
+
+
+
+															'x_date_record': date_record,
+
+															'x_date_created': date_created,
+															
+															'x_datetime_created': date_created,
+
+															'dob': date_birth,
+
+
+
+															'street': address,
+
+															'x_district': district,
+
+															'phone': phone,
+
+															'mobile': mobile,
+
+															'email': email,
+
+
+															'comment': comment,
+
+													})
+
+	print ret 
+
+
+
+
 
 def correct_time(self, date):
 
-	print 'jx'
-	print 'Correct'
-	print date 
+	#print 'jx'
+	#print 'Correct'
+	#print date 
 
 
+
+	#if date != False  and  year >= 1900:
 	if date != False: 
 
-		DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
 
-		date_field1 = datetime.datetime.strptime(date, DATETIME_FORMAT)
-
-
-		date_corr = date_field1 + datetime.timedelta(hours=+5,minutes=0)
+		#1876-10-10 00:00:00
+		year = int(date.split('-')[0])
+		#print year 
 
 
-		return date_corr
+		if year >= 1900:
+
+
+			DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
+
+
+			date_field1 = datetime.datetime.strptime(date, DATETIME_FORMAT)
+
+
+			date_corr = date_field1 + datetime.timedelta(hours=+5,minutes=0)
+
+
+			return date_corr
 
 
 
 
 def get_date_from_char(self, date_char):
 
-	print 'jx'
-	print 'Get date from c'
-
-	print date_char
+	#print 'jx'
+	#print 'Get date from c'
+	#print date_char
 
 
 
@@ -73,5 +142,5 @@ def get_date_from_char(self, date_char):
 		date_d = c
 
 
-		print date_d
+		#print date_d
 		return date_d

@@ -384,43 +384,64 @@ Cosmetology
 			<field name="arch" type="xml">			
 
 <!--
-				<tree string="Patient Tree">
 				<tree string="Patient Tree"  	colors="red:x_nr_clones!=1;"  >
--->
 				<tree string="Patient Tree"  	colors="red:x_flag=='error';"  >
+-->
+				<tree string="Patient Tree">
 				
 
 					<field name="name"/>
-<!--
--->
-					<field name="x_id_code"/>		
 
+					<field name="x_id_code"/>		
 
 					<field name="x_dni"/>		
 
-					<field name="x_vip"/>
 
-					<field name="x_card"/>
-
-
-
-					<field name="write_date"	string="Última modificación"	/>
-
-					<field name="x_flag"	invisible="1"/>
 
 					<field name="x_date_created"/>
 
+					<field name="x_datetime_created"/>
+
+					<field name="x_date_record"/>
+
+
+
+					<field name="dob"/>
+					<field name="sex"/>		
+
+					<field name="street"/>		
+					<field name="x_district"/>		
+
+					<field name="phone"/>
+					<field name="mobile"/>
+
+
+
+					<field name="email"/>		
 
 
 					<field name="comment"/>
 
 
 
-					<field name="sex"/>		
+<!--
+					<field name="phone_1"/>
+					<field name="phone_2"/>
 
-					<field name="dob"/>
+					<field name="street_2"/>		
+
+					<field name="x_flag"	invisible="1"/>
+
+
+					<field name="write_date"	string="Última modificación"	/>
+
 					
 					<field name="age"/>
+
+					<field name="x_vip"/>
+
+					<field name="x_card"/>
+-->
 				</tree>
 			</field>
 		</record>
@@ -559,7 +580,6 @@ Cosmetology
 						filter_domain="['|',('name','ilike',self),('x_dni','ilike',self)]"/>
 
 
-			   
 
 			   </search>
 		   </field>

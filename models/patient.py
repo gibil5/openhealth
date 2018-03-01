@@ -24,6 +24,44 @@ class Patient(models.Model):
 
 
 
+	# District  
+	x_district = fields.Char(
+			string='Distrito', 
+		)
+
+
+
+	# Date record 
+	x_date_record = fields.Datetime(
+			string='Fecha Registro', 
+		)
+
+
+
+	# Date created
+	x_date_created = fields.Date(
+			string = "Fecha de Apertura",
+			default = fields.Date.today, 
+			required=True, 
+
+
+			#readonly = True, 
+		)
+
+	# Date time created 
+	x_datetime_created = fields.Datetime(
+			string = "Fecha de Creación",
+			required=False, 
+
+
+			#default = fields.Datetime.now, 
+			#readonly = True, 
+			#store=True, 
+			#compute='_compute_x_datetime_created', 
+		)
+
+
+
 
 # ----------------------------------------------------------- Defaults ------------------------------------------------------
 
@@ -1017,29 +1055,8 @@ class Patient(models.Model):
 
 
 
-	# Date created
-	x_date_created = fields.Date(
-			string = "Fecha de apertura",
-			default = fields.Date.today, 
-			#readonly = True, 
-			required=True, 
-			)
 
 
-	x_datetime_created = fields.Datetime(
-			string = "Apertura",
-
-			##default = fields.Datetime.now, 
-			#default = '', 
-			
-			#readonly = True, 
-
-			#required=True, 
-			required=False, 
-
-			#store=True, 
-			#compute='_compute_x_datetime_created', 
-			)
 
 
 	#@api.onchange('x_date_created')
@@ -1851,9 +1868,9 @@ class Patient(models.Model):
 	@api.model
 	def create(self,vals):
 
-		print 'jx'
-		print 'CRUD - Patient - Create'
-		print 
+		#print 'jx'
+		#print 'CRUD - Patient - Create'
+		#print 
 		#print vals
 	
 

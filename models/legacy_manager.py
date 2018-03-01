@@ -9,6 +9,8 @@
 
 
 from openerp import models, fields, api
+import unidecode 
+from . import leg_funcs
 
 
 
@@ -98,55 +100,137 @@ class LegacyManager(models.Model):
 		print 'Synchronize'
 
 
- 		models = self.env[self.source.model].search([
+ 		#models = self.env[self.source.model].search([
+ 		models_all = self.env[self.source.model].search([
 														
 														#('name', '=', name), 
 														('NombreCompleto', '!=', 'AAA'), 
 
 												],
 
-														order='FechaRegistro desc',
+														#order='FechaRegistro desc',
+														order='FechaCreacion desc',
 
 														#limit=10,
+														#limit=30,
 														#limit=100,
 											)
 
  		count = 0 
+ 		count_create = 0 
+ 		
+ 		#max_count = 10 
+ 		#max_count = 30 
+ 		#max_count = 50 
+ 		#max_count = 100
+ 		max_count = 1000
+ 		#max_count = 2000
+ 		#max_count = 20000
+
+
+
+		models = models_all[:max_count]
+
+
 
 		for model in models: 
 			
-
-			#print model 
-			#print model.NombreCompleto 
-			#print model.FechaRegistro 
+			#while count < max_count:
 
 
-			name = model.NombreCompleto
+				#print model 
+				#print model.FechaRegistro 
+				#print model.NombreCompleto 
+				#print model.NumeroDocumento 
+				#print model.FechaCreacion 
 
 
- 			patient = self.env[self.target.model].search([
-															('name', '=', name), 
-											],
-		#												#order='write_date desc',
-														limit=1,
-											)
- 			#print patient
 
- 			#if patient == False: 
- 			if patient.name == False: 
- 				print 'Create !'
-				print model 
-				print model.NombreCompleto 
-				print model.FechaRegistro 
-	 			print patient
+				#pre_name = model.NombreCompleto
+				#name = " ".join(pre_name.split())
 
-	 			count = count + 1
 
-			print 
+				foo = model.NombreCompleto			
+				name = " ".join(foo.split())			# Strip white spaces, beginning, end and middle. 
+				name = name.upper()						# To uppercase 
+				#name = unidecode.unidecode(bar)		# Remove accents. Bad, removes also Ñ.
+
+
+
+				#print name 
+
+
+	 			patient = self.env[self.target.model].search([
+																('name', '=', name), 
+												],
+			#												#order='write_date desc',
+															limit=1,
+												)
+	 			#print patient
+
+	 			#if patient == False: 
+	 			if patient.name == False: 
+	 				print 
+
+	 				print 'Create !'
+
+					print model 
+					
+
+					# Ids 
+					name = model.NombreCompleto 
+					hc_code = model.CODIGOhistoria 
+					doc_code = model.NumeroDocumento 
+					sex = model.Sexo 
+
+
+					# Dates 
+					date_record = model.FechaRegistro_d
+					date_created = model.FechaCreacion_d
+					date_birth = model.FechaNacimiento_d 
+
+
+					# Contact
+					address = model.Direccion 
+					district = model.Distrito 
+
+					phone = model.Telefono1 
+					mobile = model.Telefono2 
+					
+					email = model.Correo 
+
+
+					comment = 'legacy, lm, created'
+
+
+		 			print patient
+
+
+
+
+		 			ret = leg_funcs.create_patient(self, 	name, hc_code, doc_code, sex, 
+		 													date_record, date_created, date_birth, 
+		 													address, district, phone, mobile, email, 
+		 													comment
+		 											)
+
+		 			print ret 
+
+
+		 			count_create = count_create + 1
+				print 
+
+
+		
+				print count
+				count = count + 1 
+
 
 
 		print count
+		print count_create
 		print 
+
 
 
 

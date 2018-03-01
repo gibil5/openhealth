@@ -6,11 +6,10 @@
 # Created: 				26 Aug 2016
 # Last updated: 	 	25 Aug 2017
 
-
 from openerp import models, fields, api
-
 from . import pat_vars
 from . import pat_funcs
+
 
 
 class Partner(models.Model):
@@ -760,8 +759,8 @@ class Partner(models.Model):
 	@api.model
 	def create(self,vals):
 
-		print 
-		print 'CRUD - Partner - Create'
+		#print 
+		#print 'CRUD - Partner - Create'
 		#print vals
 		#print 
 	

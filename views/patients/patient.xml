@@ -402,8 +402,8 @@ Cosmetology
 
 					<field name="x_datetime_created"/>
 <!--
-					<field name="x_date_record"/>
 -->
+					<field name="x_date_record"/>
 
 
 					<field name="dob"/>
@@ -412,8 +412,8 @@ Cosmetology
 					<field name="street"/>
 
 <!--
-					<field name="x_district"/>		
 -->
+					<field name="x_district"/>		
 
 					<field name="phone"/>
 					<field name="mobile"/>

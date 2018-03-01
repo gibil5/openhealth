@@ -401,16 +401,19 @@ Cosmetology
 					<field name="x_date_created"/>
 
 					<field name="x_datetime_created"/>
-
+<!--
 					<field name="x_date_record"/>
-
+-->
 
 
 					<field name="dob"/>
 					<field name="sex"/>		
 
-					<field name="street"/>		
+					<field name="street"/>
+
+<!--
 					<field name="x_district"/>		
+-->
 
 					<field name="phone"/>
 					<field name="mobile"/>

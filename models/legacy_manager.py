@@ -123,7 +123,8 @@ class LegacyManager(models.Model):
  		#max_count = 10 
  		#max_count = 30 
  		#max_count = 50 
- 		max_count = 100
+ 		#max_count = 100
+ 		max_count = 200
  		#max_count = 1000
  		#max_count = 2000
  		#max_count = 20000
@@ -158,7 +159,7 @@ class LegacyManager(models.Model):
 
 
 
-				#print name 
+				print name 
 
 
 	 			patient = self.env[self.target.model].search([

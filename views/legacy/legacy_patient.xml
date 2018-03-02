@@ -4,6 +4,41 @@
 
 
 
+
+
+<!--
+				<field 	name="name" 
+						filter_domain="['|',('name','ilike',self),('x_dni','ilike',self)]"/>
+
+					<field 	name="NombreCompleto"/>
+-->
+
+		<!-- FILTER --> 
+		<record id="legacy_patient_view_template_filter" model="ir.ui.view">
+
+			<field name="name">LP Search</field>
+			
+			<field name="model">openhealth.legacy.patient</field>
+		   	
+		   	<field name="arch" type="xml">
+
+
+				<search string="Legacy Patients">
+
+
+				<field 	name="NombreCompleto" 
+						filter_domain="['|',('NombreCompleto','ilike',self),('NumeroDocumento','ilike',self)]"/>
+
+
+			   </search>
+
+		   </field>
+	   </record>
+
+
+
+
+
 		<!-- FORM --> 
 		<record model="ir.ui.view" id="legacy_patient_view">
 
@@ -99,13 +134,11 @@
 			<field name="res_model">openhealth.legacy.patient</field>
 
 			<field name="view_type">form</field>
-<!--			
-			<field name="view_mode">kanban,tree,form</field>
--->
+
 			<field name="view_mode">tree,form,kanban</field>
 
-
 			<field name="domain">[]</field>
+			
 			<field name="context">{}</field>
 
 			<!--
@@ -124,33 +157,123 @@
 
 
 <!--
-				<field 	name="name" 
-						filter_domain="['|',('name','ilike',self),('x_dni','ilike',self)]"/>
-
-					<field 	name="NombreCompleto"/>
+			<field name="res_model">openhealth.legacy.patient</field>
 -->
+		<!-- ACTION -->
+		<record model="ir.actions.act_window" id="patient_hc_mod_list_action">		
 
-		<!-- FILTER --> 
-		<record id="legacy_patient_view_template_filter" model="ir.ui.view">
+			<field name="name">Patients - Hc Mod</field>
+		
+			<field name="res_model">oeh.medical.patient</field>
 
-			<field name="name">LP Search</field>
+			<field name="view_type">form</field>
+
+			<field name="view_mode">tree,form,kanban</field>
+
+			<field name="context">{}</field>
+
+
+
+			<field name="domain">[
+									('x_id_code', '=', '0010000005002'),
+				
+				]</field>
 			
-			<field name="model">openhealth.legacy.patient</field>
-		   	
-		   	<field name="arch" type="xml">
+
+			<!--
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first treatment
+				</p>
+			</field>
+			-->
+		</record>
 
 
-				<search string="Legacy Patients">
 
 
-				<field 	name="NombreCompleto" 
-						filter_domain="['|',('NombreCompleto','ilike',self),('NumeroDocumento','ilike',self)]"/>
 
 
-			   </search>
+		<!-- ACTION -->
+		<record model="ir.actions.act_window" id="patient_hc_not_mod_list_action">		
 
-		   </field>
-	   </record>
+			<field name="name">Patients - Hc Not Mod</field>
+		
+			<field name="res_model">oeh.medical.patient</field>
+
+			<field name="view_type">form</field>
+
+			<field name="view_mode">tree,form,kanban</field>
+
+			<field name="context">{}</field>
+
+
+
+			<field name="domain">[
+									('x_id_code', '!=', '0010000005002'),
+				
+				]</field>
+			
+
+			<!--
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first treatment
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+
+
+
+		<!-- ACTION -->
+		<record model="ir.actions.act_window" id="patient_hc_false_list_action">		
+
+			<field name="name">Patients - Hc False</field>
+		
+			<field name="res_model">oeh.medical.patient</field>
+
+			<field name="view_type">form</field>
+
+			<field name="view_mode">tree,form,kanban</field>
+
+			<field name="context">{}</field>
+
+
+
+			<field name="domain">[
+									('x_id_code', '=', False),
+				
+				]</field>
+			
+
+			<!--
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first treatment
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+
+
+
+
+
+
+
 
 
 

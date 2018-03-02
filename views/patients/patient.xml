@@ -83,6 +83,20 @@ Cosmetology
 <!--
 						<button 
 							type="object" 
+							class="oe_highlight"
+
+							name="correct_comment" 
+
+							string="Correct comment" 
+						/>
+-->
+
+
+
+
+<!--
+						<button 
+							type="object" 
 							class="oe_highlight"							
 							name="update_order_report" 
 
@@ -332,8 +346,15 @@ Cosmetology
 
 
 							<group>
-								<field name="x_allergies"		required="1"/>
+<!--
+								<field name="x_allergies"		required="0"/>								
+								<field name="x_first_contact"	required="0"/>
+-->
+								<field name="x_allergies"		required="1"/>								
 								<field name="x_first_contact"	required="1"/>
+
+
+
 								<field name="x_first_impression"	/>
 <!--
 -->
@@ -396,6 +417,9 @@ Cosmetology
 
 					<field name="x_dni"/>		
 
+					<field name="comment"/>
+
+
 
 
 					<field name="x_date_created"/>
@@ -423,7 +447,6 @@ Cosmetology
 					<field name="email"/>		
 
 
-					<field name="comment"/>
 
 
 
@@ -517,6 +540,7 @@ Cosmetology
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form,kanban</field>
 			<field name="context">{'order': 'name'}</field>
+			
 			<field name="domain">[
 									('x_vip', '!=', False),
 				

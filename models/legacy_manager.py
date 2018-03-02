@@ -115,8 +115,13 @@ class LegacyManager(models.Model):
 
 
 
- 		max_count = 10
+ 		#max_count = 10
+ 		#max_count = 100
+ 		#max_count = 1000
+ 		max_count = 3000
  		#max_count = 20000
+
+
 
 		patients = patients_all[:max_count]
 
@@ -127,7 +132,41 @@ class LegacyManager(models.Model):
 
 	 	for patient in patients:
 
+
+
 	 		name = patient.name 
+
+	 		print name 
+	 		
+
+	 		abort = False
+
+
+			nr = self.env['openhealth.legacy.patient'].search_count([																							
+																			('NombreCompleto', '=', name),			
+
+																		]) 
+			
+
+			if nr == 0: 
+				name = name.title()
+				print name 
+				print 'Titling'
+
+
+				nr = self.env['openhealth.legacy.patient'].search_count([																							
+																			('NombreCompleto', '=', name),			
+
+																		]) 
+
+				if nr == 0: 
+					print 'This should not happen !!!'
+					print nr 
+					abort = True 
+
+
+
+
 
 	 		patient_leg = self.env['openhealth.legacy.patient'].search([
 																			('NombreCompleto', '=', name), 
@@ -135,12 +174,40 @@ class LegacyManager(models.Model):
 															#order='write_date desc',
 															limit=1,
 												)
+
 	 		
+
+
 	 		if patient.x_id_code != patient_leg.CODIGOhistoria: 
 
 	 			print 'gotcha !'
 
+	 			print patient_leg.CODIGOhistoria
+	 			print patient.x_id_code
 
+
+
+	 			#if patient_leg.CODIGOhistoria != False: 
+	 			if not abort: 
+
+	 				comment = 'legacy, corr hd'
+	 				
+	 				patient.x_id_code = patient_leg.CODIGOhistoria
+	 				patient.comment = comment
+	 				patient.x_dni = patient_leg.NumeroDocumento
+
+
+
+
+
+
+	 			print patient.x_id_code
+
+
+
+	 		
+
+	 		print 
 
 
 

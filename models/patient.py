@@ -23,6 +23,23 @@ class Patient(models.Model):
 
 
 
+	# Correct  
+	@api.multi 
+	def correct_comment(self):
+
+		print 'jx'
+		print 'Correct Comment'
+
+	 	comment = 'legacy, corr hd'
+
+		self.comment = comment
+
+
+
+
+
+
+
 
 	# District  
 	x_district = fields.Char(
@@ -59,6 +76,8 @@ class Patient(models.Model):
 			#store=True, 
 			#compute='_compute_x_datetime_created', 
 		)
+
+
 
 
 
@@ -1911,9 +1930,9 @@ class Patient(models.Model):
 	@api.multi
 	def write(self,vals):
 
-		print 'jx'
-		print 'CRUD - Patient - Write'
-		print 
+		#print 'jx'
+		#print 'CRUD - Patient - Write'
+		#print 
 		#print vals
 		#print 
 		#print 

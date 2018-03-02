@@ -727,12 +727,8 @@
 		# ----------------------------------------------------------- Menus ------------------------------------------------------
 		
 		'views/menus/menus.xml',
-
-
 		'views/menus/menus_kardex.xml',
 		'views/menus/menus_reporting.xml',
-
-		
 		'views/menus/menus_inventory.xml',
 
 
@@ -768,6 +764,9 @@
 		'views/legacy/legacy_manager.xml',
 
 		'views/data/data_analyzer.xml',
+
+
+		'views/menus/menus_legacy.xml',
 
 
 

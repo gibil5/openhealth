@@ -815,9 +815,9 @@ class Partner(models.Model):
 	@api.multi
 	def write(self,vals):
 
-		print 
-		print 'CRUD - Partner - Write'
-		print 
+		#print 
+		#print 'CRUD - Partner - Write'
+		#print 
 		#print vals
 		#print 
 		#print 
@@ -841,9 +841,10 @@ class Partner(models.Model):
 		#self.name = name.upper()
 
 
-		print self.name 
 
-		print 
+		#print self.name 
+		#print 
+
 
 
 		return res

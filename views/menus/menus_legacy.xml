@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+
+
+<!-- Legacy --> 
+<menuitem 	id="main_legacy_menu" 
+
+			sequence="-7"
+
+			name="Legacy"
+
+			
+			groups="openhealth.roots,openhealth.directors"
+		/>
+
+
+
+
+
+<!-- Kardex by Product --> 
+		<menuitem 	id="patient_legacy_menu" 
+
+					parent="main_legacy_menu"
+			
+					sequence="1"
+
+					name="Patient"			
+				/>
+
+
+
+
+
+		<menuitem 
+				id="patient_legacy_manager_menu" 
+
+				name="Manager" 
+				
+				parent="patient_legacy_menu"
+				
+				sequence="1"
+
+				action="legacy_manager_list_action"
+			/>
+
+
+
+		<menuitem 
+				id="patient_legacy_all_list_menu" 
+				
+				name="All" 
+				
+				parent="patient_legacy_menu"
+				
+				sequence="2"
+
+				action="legacy_patient_list_action"
+			/>
+
+
+
+
+		<menuitem 
+				id="patient_legacy_hc_mod_list_menu" 
+				
+				name="Hc Mod" 
+				
+				parent="patient_legacy_menu"
+				
+				sequence="3"
+
+				action="patient_hc_mod_list_action"
+			/>
+
+
+
+		<menuitem 
+				id="patient_legacy_hc_not_mod_list_menu" 
+				
+				name="Hc Not Mod" 
+				
+				parent="patient_legacy_menu"
+				
+				sequence="4"
+
+				action="patient_hc_not_mod_list_action"
+			/>
+
+
+
+
+		<menuitem 
+				id="patient_legacy_hc_false_list_menu" 
+				
+				name="Hc False" 
+				
+				parent="patient_legacy_menu"
+				
+				sequence="5"
+
+				action="patient_hc_false_list_action"
+			/>
+
+
+
+
+
+	</data>
+</openerp>

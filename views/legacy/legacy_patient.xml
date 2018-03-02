@@ -298,21 +298,39 @@
 				]</field>
 			
 
-			<!--
-			<field name="domain">[]</field>
-			<field name="context">{}</field>
-			<field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first treatment
-				</p>
-			</field>
-			-->
 		</record>
 
 
 
 
 
+
+
+
+
+
+
+		<!-- ACTION -->
+		<record model="ir.actions.act_window" id="patient_mark_name_list_action">		
+
+			<field name="name">Patients - Mark Name</field>
+		
+			<field name="res_model">oeh.medical.patient</field>
+
+			<field name="view_type">form</field>
+
+			<field name="view_mode">tree,form,kanban</field>
+
+			<field name="context">{}</field>
+
+
+
+			<field name="domain">[
+									('x_mark', '=', 'name'),
+				
+				]</field>
+			
+		</record>
 
 
 

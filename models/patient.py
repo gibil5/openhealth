@@ -26,14 +26,21 @@ class Patient(models.Model):
 	# Correct  
 	@api.multi 
 	def correct_comment(self):
-
 		print 'jx'
 		print 'Correct Comment'
-
 	 	comment = 'legacy, corr hd'
-
 		self.comment = comment
 
+
+
+
+
+
+
+	# Mark  
+	x_mark = fields.Char(
+			string='Mark', 
+		)
 
 
 

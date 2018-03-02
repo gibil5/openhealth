@@ -21,7 +21,7 @@
 
 
 
-<!-- Kardex by Product --> 
+<!-- Patient --> 
 		<menuitem 	id="patient_legacy_menu" 
 
 					parent="main_legacy_menu"
@@ -91,9 +91,66 @@
 			/>
 
 
+		<menuitem 
+				id="patient_legacy_hc_false_list_menu" 
+				
+				name="Hc False" 
+				
+				parent="patient_legacy_menu"
+				
+				sequence="7"
+
+				action="patient_hc_false_list_action"
+			/>
 
 
 
+
+
+
+
+
+		<menuitem 
+				id="patient_mark_name_list_menu" 
+				
+				name="Mark Name" 
+				
+				parent="patient_legacy_menu"
+				
+				sequence="8"
+
+				action="patient_mark_name_list_action"
+			/>
+
+
+
+
+
+
+
+
+
+<!-- Legacy Prod --> 
+<menuitem 	id="main_legacy_prod_menu" 
+
+			sequence="-7"
+
+			name="Legacy Prod"
+
+			
+			groups="openhealth.roots,openhealth.directors"
+		/>
+
+
+<!-- Patient --> 
+		<menuitem 	id="patient_legacy_prod_menu" 
+
+					parent="main_legacy_prod_menu"
+			
+					sequence="1"
+
+					name="Patient"			
+				/>
 
 
 
@@ -102,7 +159,7 @@
 				
 				name="Hc Mod - Prod" 
 				
-				parent="patient_legacy_menu"
+				parent="patient_legacy_prod_menu"
 				
 				sequence="5"
 
@@ -115,32 +172,13 @@
 				
 				name="Hc Not Mod - Prod" 
 				
-				parent="patient_legacy_menu"
+				parent="patient_legacy_prod_menu"
 				
 				sequence="6"
 
 				action="patient_hc_not_mod_prod_list_action"
 			/>
 
-
-
-
-
-
-
-
-
-		<menuitem 
-				id="patient_legacy_hc_false_list_menu" 
-				
-				name="Hc False" 
-				
-				parent="patient_legacy_menu"
-				
-				sequence="7"
-
-				action="patient_hc_false_list_action"
-			/>
 
 
 

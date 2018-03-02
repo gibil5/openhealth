@@ -65,7 +65,20 @@
 							string="synchro hc code" 							
 						/>
 
+
+
+						<button 
+							type="object" 
+							class="oe_highlight"
+
+							name="mark_name" 
+
+							string="Mark Name" 							
+						/>
+
 					</header>
+
+
 
 
 					<sheet>

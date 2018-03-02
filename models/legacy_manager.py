@@ -92,6 +92,96 @@ class LegacyManager(models.Model):
 
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 
+
+	# Mark 
+	@api.multi 
+	def mark_name(self):
+
+		print 'jx'
+		print 'Mark Name'
+
+
+ 		#max_count = 10
+ 		#max_count = 100 
+ 		#max_count = 1000 
+ 		#max_count = 2000 
+ 		#max_count = 4000 
+ 		#max_count = 8000 
+ 		max_count = 20000 
+
+
+	 	patients_all = self.env['oeh.medical.patient'].search([
+																	#('name', '=', name), 
+																	#('x_id_code', '=', hc_code), 
+															],
+															#order='write_date desc',
+
+															#limit=1,
+															limit=max_count,
+														)
+
+
+
+
+		patients = patients_all[:max_count]
+	 	print patients
+
+
+
+	 	for patient in patients:
+
+
+	 		# Name 
+	 		name = patient.name 
+
+	 		#print name 
+	 		
+			nr = self.env['oeh.medical.patient'].search_count([
+																										
+																	('name', '=', name),			
+
+															]) 
+			
+			#print nr 
+
+			if nr > 1: 
+
+				print 'gotcha !'
+		 		print name 
+				patient.x_mark = 'name'
+
+
+
+
+
+			# Titleize 
+	 		name = patient.name.title()
+
+	 		#print name 
+	 		
+			nr = self.env['oeh.medical.patient'].search_count([
+																										
+																	('name', '=', name),			
+
+															]) 
+			
+			#print nr 
+
+			if nr > 0: 
+
+				print 'gotcha !'
+		 		print name 
+				patient.x_mark = 'name'
+
+
+
+
+
+
+
+
+
+
 	# Synchronize
 	@api.multi 
 	def synchro_hc_code(self):
@@ -136,7 +226,6 @@ class LegacyManager(models.Model):
 
 
 	 	for patient in patients:
-
 
 
 	 		name = patient.name 

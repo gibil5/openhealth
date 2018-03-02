@@ -34,6 +34,13 @@ class Legacy(models.Model):
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
 
 
+	# Mark  
+	mark = fields.Char(
+			string='Mark', 
+		)
+
+
+
 
 	vspace = fields.Char(
 			' ', 

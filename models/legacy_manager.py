@@ -100,7 +100,12 @@ class LegacyManager(models.Model):
 		print 'Synchro HC code'
 
 	 	
-		hc_code = '0010000005002'
+	 	
+		#hc_code = '0010000005002'
+		hc_code = '0010000005000'
+
+ 
+
 
 
 	 	patients_all = self.env['oeh.medical.patient'].search([

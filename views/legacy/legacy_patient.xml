@@ -159,6 +159,7 @@
 <!--
 			<field name="res_model">openhealth.legacy.patient</field>
 -->
+
 		<!-- ACTION -->
 		<record model="ir.actions.act_window" id="patient_hc_mod_list_action">		
 
@@ -179,21 +180,7 @@
 				
 				]</field>
 			
-
-			<!--
-			<field name="domain">[]</field>
-			<field name="context">{}</field>
-			<field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first treatment
-				</p>
-			</field>
-			-->
 		</record>
-
-
-
-
 
 
 		<!-- ACTION -->
@@ -215,18 +202,75 @@
 									('x_id_code', '!=', '0010000005002'),
 				
 				]</field>
-			
 
-			<!--
-			<field name="domain">[]</field>
-			<field name="context">{}</field>
-			<field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first treatment
-				</p>
-			</field>
-			-->
+
 		</record>
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- ACTION -->
+		<record model="ir.actions.act_window" id="patient_hc_mod_prod_list_action">		
+
+			<field name="name">Patients - Hc Mod</field>
+		
+			<field name="res_model">oeh.medical.patient</field>
+
+			<field name="view_type">form</field>
+
+			<field name="view_mode">tree,form,kanban</field>
+
+			<field name="context">{}</field>
+
+
+
+			<field name="domain">[
+									('x_id_code', '=', '0010000005000'),
+				
+				]</field>
+			
+		</record>
+
+
+		<!-- ACTION -->
+		<record model="ir.actions.act_window" id="patient_hc_not_mod_prod_list_action">		
+
+			<field name="name">Patients - Hc Not Mod</field>
+		
+			<field name="res_model">oeh.medical.patient</field>
+
+			<field name="view_type">form</field>
+
+			<field name="view_mode">tree,form,kanban</field>
+
+			<field name="context">{}</field>
+
+
+
+			<field name="domain">[
+									('x_id_code', '!=', '0010000005000'),
+				
+				]</field>
+
+
+		</record>
+
+
+
+
+
+
+
+
+
 
 
 

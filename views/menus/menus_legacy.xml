@@ -64,6 +64,7 @@
 
 
 
+
 		<menuitem 
 				id="patient_legacy_hc_mod_list_menu" 
 				
@@ -75,7 +76,6 @@
 
 				action="patient_hc_mod_list_action"
 			/>
-
 
 
 		<menuitem 
@@ -93,6 +93,43 @@
 
 
 
+
+
+
+
+		<menuitem 
+				id="patient_legacy_hc_mod_prod_list_menu" 
+				
+				name="Hc Mod - Prod" 
+				
+				parent="patient_legacy_menu"
+				
+				sequence="5"
+
+				action="patient_hc_mod_prod_list_action"
+			/>
+
+
+		<menuitem 
+				id="patient_legacy_hc_not_mod_prod_list_menu" 
+				
+				name="Hc Not Mod - Prod" 
+				
+				parent="patient_legacy_menu"
+				
+				sequence="6"
+
+				action="patient_hc_not_mod_prod_list_action"
+			/>
+
+
+
+
+
+
+
+
+
 		<menuitem 
 				id="patient_legacy_hc_false_list_menu" 
 				
@@ -100,7 +137,7 @@
 				
 				parent="patient_legacy_menu"
 				
-				sequence="5"
+				sequence="7"
 
 				action="patient_hc_false_list_action"
 			/>

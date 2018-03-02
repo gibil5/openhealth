@@ -53,6 +53,18 @@
 
 							string="synchronize" 							
 						/>
+
+
+
+						<button 
+							type="object" 
+							class="oe_highlight"
+
+							name="synchro_hc_code" 
+
+							string="synchro hc code" 							
+						/>
+
 					</header>
 
 

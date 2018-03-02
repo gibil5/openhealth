@@ -92,6 +92,62 @@ class LegacyManager(models.Model):
 
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 
+	# Synchronize
+	@api.multi 
+	def synchro_hc_code(self):
+
+		print 'jx'
+		print 'Synchro HC code'
+
+	 	
+		hc_code = '0010000005002'
+
+
+	 	patients_all = self.env['oeh.medical.patient'].search([
+																#('name', '=', name), 
+																('x_id_code', '=', hc_code), 
+												],
+															#order='write_date desc',
+															#limit=1,
+												)
+
+	 	#print patients_all
+
+
+
+ 		max_count = 10
+ 		#max_count = 20000
+
+		patients = patients_all[:max_count]
+
+	 	print patients
+
+
+
+
+	 	for patient in patients:
+
+	 		name = patient.name 
+
+	 		patient_leg = self.env['openhealth.legacy.patient'].search([
+																			('NombreCompleto', '=', name), 
+												],
+															#order='write_date desc',
+															limit=1,
+												)
+	 		
+	 		if patient.x_id_code != patient_leg.CODIGOhistoria: 
+
+	 			print 'gotcha !'
+
+
+
+
+
+
+
+
+
 
 	# Synchronize
 	@api.multi 
@@ -130,7 +186,6 @@ class LegacyManager(models.Model):
  		#max_count = 5000
  		max_count = 10000
  		#max_count = 20000
-
 
 
 		models = models_all[:max_count]

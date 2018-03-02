@@ -100,7 +100,7 @@ class LegacyManager(models.Model):
 		print 'Synchro HC code'
 
 	 	
-	 	
+
 		#hc_code = '0010000005002'
 		hc_code = '0010000005000'
 
@@ -120,8 +120,8 @@ class LegacyManager(models.Model):
 
 
 
- 		max_count = 10
- 		#max_count = 100
+ 		#max_count = 10
+ 		max_count = 100
  		#max_count = 1000
  		#max_count = 3000
  		#max_count = 20000

@@ -7,11 +7,11 @@
 
 
 <!-- Legacy --> 
-<menuitem 	id="main_legacy_menu" 
+<menuitem 	id="main_qc_menu" 
 
 			sequence="-7"
 
-			name="Legacy"
+			name="Quality Control"
 
 			
 			groups="openhealth.roots,openhealth.directors"
@@ -21,26 +21,25 @@
 
 
 
-<!-- Patient --> 
-		<menuitem 	id="patient_legacy_menu" 
 
-					parent="main_legacy_menu"
+
+<!-- Managers --> 
+		<menuitem 	id="qc_legacy_manager_menu" 
+
+					parent="main_qc_menu"
 			
 					sequence="1"
 
-					name="Patient"			
+					name="Manager"			
 				/>
 
 
-
-
-
 		<menuitem 
-				id="patient_legacy_manager_menu" 
+				id="legacy_manager_list_menu" 
 
-				name="Manager" 
+				name="Managers" 
 				
-				parent="patient_legacy_menu"
+				parent="qc_legacy_manager_menu"
 				
 				sequence="1"
 
@@ -49,10 +48,27 @@
 
 
 
+
+
+
+
+
+<!-- Patients --> 
+		<menuitem 	id="patient_legacy_menu" 
+
+					parent="main_qc_menu"
+			
+					sequence="2"
+
+					name="Patients"			
+				/>
+
+
+
 		<menuitem 
 				id="patient_legacy_all_list_menu" 
 				
-				name="All" 
+				name="Legacy - All" 
 				
 				parent="patient_legacy_menu"
 				
@@ -130,12 +146,12 @@
 
 
 
-<!-- Legacy Prod --> 
-<menuitem 	id="main_legacy_prod_menu" 
+<!-- Qc Prod --> 
+<menuitem 	id="main_qc_prod_menu" 
 
 			sequence="-7"
 
-			name="Legacy Prod"
+			name="QC Prod"
 
 			
 			groups="openhealth.roots,openhealth.directors"
@@ -145,7 +161,7 @@
 <!-- Patient --> 
 		<menuitem 	id="patient_legacy_prod_menu" 
 
-					parent="main_legacy_prod_menu"
+					parent="main_qc_prod_menu"
 			
 					sequence="1"
 

@@ -76,6 +76,17 @@
 							string="Mark Name" 							
 						/>
 
+
+
+
+						<button 
+							type="object" 
+							class="oe_highlight"
+
+							name="clear_mark_name" 
+
+							string="Clear Marks" 							
+						/>
 					</header>
 
 

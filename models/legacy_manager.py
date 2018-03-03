@@ -95,10 +95,44 @@ class LegacyManager(models.Model):
 
 	# Mark 
 	@api.multi 
+	def clear_mark_name(self):
+
+		print 'jx'
+		print 'Clear Mark Name'
+
+		# Clear 
+	 	patients_all = self.env['oeh.medical.patient'].search([
+																	('x_mark', '=', 'name'), 
+															],
+
+															#order='write_date desc',
+															#limit=1,
+														)
+	 	for patient in patients_all:
+	 		patient.x_mark = False
+
+
+
+
+
+
+
+
+
+	# Mark 
+	@api.multi 
 	def mark_name(self):
 
 		print 'jx'
 		print 'Mark Name'
+
+
+
+
+
+
+
+
 
 
  		#max_count = 10

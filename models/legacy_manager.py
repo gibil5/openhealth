@@ -225,11 +225,20 @@ class LegacyManager(models.Model):
 
 	 	
 
-		#hc_code = '0010000005002'
-		hc_code = '0010000005000'
+		#hc_code = '0010000005002'		# Dev 
+		hc_code = '0010000005000'		# Prod 
 
  
 
+
+
+
+		# Max 
+ 		#max_count = 10
+ 		#max_count = 100
+ 		#max_count = 1000
+ 		max_count = 3000
+ 		#max_count = 20000
 
 
 	 	patients_all = self.env['oeh.medical.patient'].search([
@@ -238,17 +247,14 @@ class LegacyManager(models.Model):
 												],
 															#order='write_date desc',
 															#limit=1,
+															limit=max_count,
 												)
 
 	 	#print patients_all
 
 
 
- 		#max_count = 10
- 		#max_count = 100
- 		#max_count = 1000
- 		max_count = 3000
- 		#max_count = 20000
+
 
 
 

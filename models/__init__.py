@@ -31,6 +31,9 @@ from . import legacy_manager
 from . import legacy_patient
 #from . import patient_legacy
 
+from . import legacy_order
+
+
 
 
 from . import data

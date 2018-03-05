@@ -65,7 +65,10 @@ class sale_order_line(models.Model):
 
 	# Description  
 	x_description = fields.Text(
-			string='Description', 
+
+			#string='Description', 
+			string='Nombre compacto', 
+		
 			#required=True, 
 
 			compute='_compute_x_description', 

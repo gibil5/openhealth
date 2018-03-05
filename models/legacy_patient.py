@@ -9,10 +9,10 @@
 
 
 from openerp import models, fields, api
-from datetime import datetime
 
+#from datetime import datetime
+#from datetime import timedelta
 from . import leg_funcs
-from datetime import timedelta
 
 
 
@@ -26,7 +26,6 @@ class PatientLegacy(models.Model):
 
 
 
-	#_name = 'openhealth.patient.legacy'
 	_name = 'openhealth.legacy.patient'
 
 

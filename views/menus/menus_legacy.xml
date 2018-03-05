@@ -200,5 +200,36 @@
 
 
 
+
+
+<!-- Orders --> 
+		<menuitem 	id="order_legacy_menu" 
+
+					parent="main_qc_menu"
+			
+					sequence="3"
+
+					name="Orders"			
+				/>
+
+
+
+		<menuitem 
+				id="order_legacy_all_list_menu" 
+				
+				name="Legacy - All" 
+				
+				parent="order_legacy_menu"
+				
+				sequence="2"
+
+				action="legacy_order_list_action"
+			/>
+
+
+
+
+
+
 	</data>
 </openerp>

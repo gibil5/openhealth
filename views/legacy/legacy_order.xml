@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+
+
+
+
+<!--
+				<field 	name="name" 
+						filter_domain="['|',('name','ilike',self),('x_dni','ilike',self)]"/>
+
+					<field 	name="NombreCompleto"/>
+
+				<field 	name="NombreCompleto" 
+						filter_domain="['|',('NombreCompleto','ilike',self),('NumeroDocumento','ilike',self)]"/>
+-->
+
+		<!-- FILTER --> 
+		<record id="legacy_order_view_template_filter" model="ir.ui.view">
+
+			<field name="name">LP Search</field>
+			
+			<field name="model">openhealth.legacy.order</field>
+		   	
+		   	<field name="arch" type="xml">
+
+
+				<search string="Legacy orders">
+
+
+					<field 	name="NombreCompleto"/>
+
+
+			   </search>
+
+		   </field>
+	   </record>
+
+
+
+
+
+		<!-- FORM --> 
+		<record model="ir.ui.view" id="legacy_order_view">
+
+			<field name="name">Legacy order</field>
+			
+			<field name="model">openhealth.legacy.order</field>			
+			
+			<field name="type">form</field>
+			
+			<field name="priority" eval="1"/>
+
+			<field name="arch" type="xml">
+				<form string="Legacy order">
+
+					<header>
+					</header>
+
+					<sheet>
+
+
+						<group>
+							<group>		
+
+								<field name="NombreCompleto" 	/>
+
+
+								<field name="nombreejecutivo" 	/>
+								<field name="NumeroSerie" 	/>
+								<field name="NumeroFactura" 	/>
+
+
+
+								<field name="tipodocumento" 	/>
+
+
+								<field name="FechaFactura" 	/>
+								<field name="FechaFactura_d" 	/>
+
+
+								<field name="moneda" 	/>
+								<field name="neto" 	/>
+								<field name="igv" 	/>
+								<field name="total" 	/>
+
+
+								<field name="descripcion" 	/>
+								<field name="cantidadtotal" 	/>
+								<field name="precioventa" 	/>
+								<field name="totalitem" 	/>
+
+							</group>
+							<group>		
+							</group>
+						</group>
+
+
+						<notebook></notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+
+
+		<!-- TREE -->
+		<record model="ir.ui.view" id="legacy_order_tree">
+			<field name="name">legacy.order.tree</field>
+			<field name="model">openhealth.legacy.order</field>
+			<field name="arch" type="xml">			
+
+				<tree string="Legacy Tree"    >
+				
+
+					<field name="NombreCompleto" 	/>
+
+
+
+				</tree>
+			</field>
+		</record>
+
+
+
+
+
+
+
+		<!-- ACTION -->
+		<record model="ir.actions.act_window" id="legacy_order_list_action">		
+
+			<field name="name">Legacy orders</field>
+		
+			<field name="res_model">openhealth.legacy.order</field>
+
+			<field name="view_type">form</field>
+
+			<field name="view_mode">tree,form,kanban</field>
+
+			<field name="domain">[]</field>
+			
+			<field name="context">{}</field>
+
+			<!--
+			<field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first treatment
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+
+
+
+
+
+
+	</data>
+</openerp>

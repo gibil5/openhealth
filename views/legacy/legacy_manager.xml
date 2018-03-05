@@ -23,7 +23,7 @@
 -->
 					<header>
 
-
+<!--
 						<button 
 							type="object" 
 							class="oe_highlight"
@@ -32,7 +32,7 @@
 
 							string="create data" 							
 						/>
-
+-->
 
 
 						<button 
@@ -45,14 +45,16 @@
 						/>
 
 
+
 						<button 
 							type="object" 
 							class="oe_highlight"
 
-							name="synchronize" 
+							name="synchronize_new" 
 
-							string="synchronize" 							
+							string="synchronize New" 							
 						/>
+
 
 
 
@@ -62,7 +64,7 @@
 
 							name="synchro_hc_code" 
 
-							string="synchro hc code" 							
+							string="synchro HC code" 							
 						/>
 
 

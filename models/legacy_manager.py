@@ -352,10 +352,27 @@ class LegacyManager(models.Model):
 
 	# Synchronize
 	@api.multi 
-	def synchronize(self):
+	def synchronize_new(self):
 
 		print 'jx'
 		print 'Synchronize'
+
+
+
+
+ 		#max_count = 10 
+ 		#max_count = 30 
+ 		#max_count = 50 
+ 		#max_count = 100
+ 		#max_count = 200
+ 		#max_count = 1000
+ 		#max_count = 2000
+ 		#max_count = 5000
+ 		max_count = 10000
+ 		#max_count = 20000
+
+
+
 
 
  		#models = self.env[self.source.model].search([
@@ -372,22 +389,12 @@ class LegacyManager(models.Model):
 														#limit=10,
 														#limit=30,
 														#limit=100,
+														limit=max_count,
 											)
 
  		count = 0 
  		count_create = 0 
  		
- 		#max_count = 10 
- 		#max_count = 30 
- 		#max_count = 50 
- 		#max_count = 100
- 		#max_count = 200
- 		#max_count = 1000
- 		#max_count = 2000
- 		#max_count = 5000
- 		max_count = 10000
- 		#max_count = 20000
-
 
 		models = models_all[:max_count]
 

@@ -418,17 +418,20 @@ class LegacyManager(models.Model):
 
 
 				foo = model.NombreCompleto			
-				name = " ".join(foo.split())			# Strip white spaces, beginning, end and middle. 
-				name = name.upper()						# To uppercase 
-				#name = unidecode.unidecode(bar)		# Remove accents. Bad, removes also Ñ.
+				name_compact = " ".join(foo.split())			# Strip white spaces, beginning, end and middle. 
+				name_compact_upper = name_compact.upper()		# To uppercase 
+				#name = unidecode.unidecode(bar)				# Remove accents. Bad, removes also Ñ.
 
 
 
-				print name 
+				print name_compact_upper 
 
 
 	 			patient = self.env[self.target.model].search([
-																('name', '=', name), 
+																
+																#('name', '=', name), 
+																('name', '=', name_compact_upper), 
+												
 												],
 			#												#order='write_date desc',
 															limit=1,
@@ -445,7 +448,10 @@ class LegacyManager(models.Model):
 					
 
 					# Ids 
-					name = model.NombreCompleto 
+					#name = model.NombreCompleto 
+					name = name_compact_upper 
+
+
 					hc_code = model.CODIGOhistoria 
 					doc_code = model.NumeroDocumento 
 					sex = model.Sexo 
@@ -457,16 +463,16 @@ class LegacyManager(models.Model):
 					date_birth = model.FechaNacimiento_d 
 
 
+
 					# Contact
 					address = model.Direccion 
 					district = model.Distrito 
-
 					phone = model.Telefono1 
 					mobile = model.Telefono2 
-					
 					email = model.Correo 
 
 
+					# Comment 
 					comment = 'legacy, lm, created'
 
 

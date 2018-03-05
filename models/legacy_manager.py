@@ -368,8 +368,8 @@ class LegacyManager(models.Model):
  		#max_count = 1000
  		#max_count = 2000
  		#max_count = 5000
- 		max_count = 10000
- 		#max_count = 20000
+ 		#max_count = 10000
+ 		max_count = 20000
 
 
 

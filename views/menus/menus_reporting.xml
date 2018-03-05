@@ -10,8 +10,33 @@
 
 			sequence="-6"
 
-			name="Reporting"
+			name="Reporte de Ventas"
+
+
+			groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.managers,openhealth.directors"
+
 		/>
+
+
+
+
+		<menuitem 	id="sales_reporting_daily_menu" 
+					parent="main_reporting_sales_menu"
+					sequence="1"
+					name="Diario"			
+
+					/>
+
+
+
+				<menuitem 	id="sales_reporting_sales_daily" 
+							name="Diario" 
+							parent="sales_reporting_daily_menu"
+							sequence="2"
+
+							action="action_order_report_day"
+						/>
+
 
 
 
@@ -26,30 +51,42 @@
 			
 					sequence="1"
 
-					name="Ventas"			
-
-
-					groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.managers,openhealth.directors"
+					name="Por mes"
 					/>
 
 
 
+
 				<menuitem 	id="sales_report_sales_january_all_menu" 
-							name="Por Mes" 				
+							name="Enero" 				
 							parent="sales_reports_menu"
 							sequence="1"
+
+							action="action_order_report_january_all"
+						/>
+
+
+
+
+
+
+				<menuitem 	id="sales_report_sales_february_all_menu" 
+							name="Febrero" 				
+							parent="sales_reports_menu"
+							sequence="2"
 
 							action="action_order_report_february_all"
 						/>
 
 
 
-				<menuitem 	id="sales_report_sales_day_menu" 
-							name="Diario" 
-							parent="sales_reports_menu"
-							sequence="2"
 
-							action="action_order_report_day"
+				<menuitem 	id="sales_report_sales_march_all_menu" 
+							name="Marzo" 				
+							parent="sales_reports_menu"
+							sequence="3"
+
+							action="action_order_report_march_all"
 						/>
 
 

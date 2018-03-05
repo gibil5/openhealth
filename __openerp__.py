@@ -158,9 +158,11 @@
 		'views/reports/report_sale_search.xml',
 		'views/reports/report_sale.xml',
 		'views/reports/report_sale_months.xml',
-		'views/reports/report_sale_months_platform.xml',
-		'views/reports/report_sale_months_physician.xml',
-		'views/reports/report_sale_doctors.xml',
+
+
+		#'views/reports/report_sale_months_platform.xml',
+		#'views/reports/report_sale_months_physician.xml',
+		#'views/reports/report_sale_doctors.xml',
 
 
 

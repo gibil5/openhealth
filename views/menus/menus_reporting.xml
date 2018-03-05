@@ -7,14 +7,10 @@
 
 <!-- Reports --> 
 <menuitem 	id="main_reporting_sales_menu" 
-
 			sequence="-6"
-
 			name="Reporte de Ventas"
 
-
 			groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.managers,openhealth.directors"
-
 		/>
 
 

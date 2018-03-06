@@ -240,7 +240,7 @@
 
 				<!-- Price list --> 
 				<xpath expr="//field[@name='pricelist_id']" position="replace">
-					<field name="pricelist_id" 					readonly="0"	/>
+					<field name="pricelist_id" 					readonly="1"	/>
 				</xpath>
 
 

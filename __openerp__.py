@@ -26,7 +26,7 @@
 
 
 
-		Last built: 	5 March 2018 - Rebirth !!!
+		Last built: 	6 March 2018 - Rebirth !!!
 
 
 
@@ -768,9 +768,13 @@
 
 
 
+		#'views/legacy/legacy_manager_order.xml',
+		#'views/legacy/legacy_manager_patient.xml',
 
-		'views/legacy/legacy_order.xml',
-		'views/menus/menus_legacy.xml',
+		#'views/legacy/legacy_order.xml',
+
+		
+		#'views/menus/menus_legacy.xml',
 
 
 

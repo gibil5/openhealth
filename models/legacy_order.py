@@ -48,16 +48,10 @@ class OrderLegacy(models.Model):
 	
 	NumeroFactura = fields.Char()
 	
-	
-
-
-
 	NombreCompleto = fields.Char()
 	
 	tipodocumento = fields.Char()
 	
-
-
 	moneda = fields.Char()
 	
 	neto = fields.Char()
@@ -66,17 +60,32 @@ class OrderLegacy(models.Model):
 	
 	total = fields.Char()
 	
-
-	
 	descripcion = fields.Char()
 	
-	cantidadtotal = fields.Char()
-	
 	precioventa = fields.Char()
+	
+	FechaFactura = fields.Char()
+
+
+
+	cantidadtotal = fields.Char()
 	
 	totalitem = fields.Char()
 
 
+# ----------------------------------------------------------- Computed ------------------------------------------------------
+
+
+	serial_nr = fields.Char(
+
+			compute='_compute_serial_nr', 
+		)
+
+	@api.multi
+	def _compute_serial_nr(self):		
+		for record in self:		
+
+			record.serial_nr = record.NumeroSerie + '-' + record.NumeroFactura
 
 
 
@@ -85,9 +94,22 @@ class OrderLegacy(models.Model):
 
 
 
+	Punit = fields.Float(
 
-	# Dates
-	FechaFactura = fields.Char()
+			compute='_compute_Punit', 
+		)
+
+	@api.multi
+	def _compute_Punit(self):		
+		for record in self:		
+
+			record.Punit = float(record.totalitem) / float(record.cantidadtotal)
+
+
+
+
+
+
 
 
 

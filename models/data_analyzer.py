@@ -41,9 +41,22 @@ class DataAnalyzer(models.Model):
 
 
 
-		self.count = self.env[self.model].search_count([																							
-															#('zone', '=', zone),			
-													]) 
+		if self.name == 'order': 
+
+			self.count = self.env[self.model].search_count([
+
+																#('zone', '=', zone),			
+																('note', '!=', 'legacy'),			
+														
+														]) 
+
+		else: 
+
+			self.count = self.env[self.model].search_count([
+				
+														]) 
+
+
 
 
 
@@ -76,8 +89,13 @@ class DataAnalyzer(models.Model):
 	model = fields.Selection(
 
 			[	
+
 				('openhealth.legacy.patient', 		'openhealth.legacy.patient'),
 				('oeh.medical.patient', 			'oeh.medical.patient'),
+
+				('openhealth.legacy.order', 		'openhealth.legacy.order'),
+				('sale.order', 						'sale.order'),
+
 			], 
 
 			required=True, 

@@ -79,9 +79,17 @@ class sale_order_line(models.Model):
 	def _compute_x_description(self):
 		for record in self:
 
-			#record.x_description = record.product_id.description
-			#record.x_description = record.product_id.x_name_short
-			record.x_description = record.product_id.x_name_ticket
+
+			if record.product_id.x_name_short in ['generic_product','generic_service']: 
+
+				#record.x_description = record.product_id.name
+				record.x_description = record.name
+			
+
+			else: 
+				#record.x_description = record.product_id.description
+				#record.x_description = record.product_id.x_name_short
+				record.x_description = record.product_id.x_name_ticket
 
 
 

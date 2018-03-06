@@ -16,6 +16,7 @@
 			<field name="priority" eval="1"/>
 
 			<field name="arch" type="xml">
+
 				<form string="Legacy manager">
 
 <!--
@@ -24,6 +25,7 @@
 					<header>
 
 <!--
+-->
 						<button 
 							type="object" 
 							class="oe_highlight"
@@ -32,7 +34,6 @@
 
 							string="create data" 							
 						/>
--->
 
 
 						<button 
@@ -57,7 +58,7 @@
 
 
 
-
+<!--
 						<button 
 							type="object" 
 							class="oe_highlight"
@@ -66,7 +67,6 @@
 
 							string="synchro HC code" 							
 						/>
-
 
 
 						<button 
@@ -79,8 +79,6 @@
 						/>
 
 
-
-
 						<button 
 							type="object" 
 							class="oe_highlight"
@@ -89,6 +87,9 @@
 
 							string="Clear Marks" 							
 						/>
+-->
+
+
 					</header>
 
 
@@ -101,10 +102,7 @@
 							<group>		
 								<field name="name" 	/>
 
-<!--
-								<field name="source" 	/>
-								<field name="target" 	/>
--->
+								<field name="max_count" 	/>
 							</group>
 							<group>		
 								<field name="x_type" 	/>
@@ -141,6 +139,8 @@
 				</form>
 			</field>
 		</record>
+
+
 
 
 

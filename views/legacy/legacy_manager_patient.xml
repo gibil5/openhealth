@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+
+
+		<!-- FORM --> 
+		<record model="ir.ui.view" id="legacy_manager_patient_view">
+
+			<field name="name">Legacy manager</field>
+			
+			<field name="model">openhealth.legacy.manager.patient</field>			
+<!--			
+			<field name="type">form</field>
+-->		
+			<field name="inherit_id" ref="legacy_manager_view"/>	
+
+			<field name="mode">primary</field>
+
+			<field name="priority" eval="1"/>
+
+			<field name="arch" type="xml">
+
+
+
+
+				<xpath expr="//field[@name='name']" position="replace">
+					
+					<field 	name="name" />
+				
+				</xpath>
+
+
+			</field>
+		</record>
+
+
+
+
+
+
+
+		<!-- TREE -->
+<!--
+-->
+		<record model="ir.ui.view" id="legacy_tree">
+			<field name="name">legacy.tree</field>
+			<field name="model">openhealth.legacy.manager.patient</field>
+			<field name="arch" type="xml">			
+
+				<tree string="Legacy Tree"    >
+
+					<field name="name" 	/>
+					<field name="x_type" 	/>
+					<field name="write_date" 	/>
+
+				</tree>
+			</field>
+		</record>
+
+
+
+
+
+
+		<!-- ACTION -->
+		<record model="ir.actions.act_window" id="legacy_manager_patient_list_action">		
+
+			<field name="name">Legacy Managers Orders</field>
+		
+			<field name="res_model">openhealth.legacy.manager.patient</field>
+
+			<field name="view_type">form</field>
+<!--			
+			<field name="view_mode">kanban,tree,form</field>
+-->
+			<field name="view_mode">tree,form,kanban</field>
+
+
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+
+			<!--
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first treatment
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+	</data>
+</openerp>

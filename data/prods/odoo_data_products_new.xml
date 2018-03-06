@@ -12,7 +12,7 @@
 			<field name='name'>Producto Genérico</field>
 			<field name='description'></field>
 			<field name='x_name_short'>generic_product</field>
-			<field name='default_code'>001</field>
+			<field name='default_code'>501</field>
 
 
 			<field name='price'>0.0</field>
@@ -38,7 +38,7 @@
 			<field name='name'>Servicio Genérico</field>
 			<field name='description'></field>
 			<field name='x_name_short'>generic_service</field>
-			<field name='default_code'>002</field>
+			<field name='default_code'>502</field>
 
 
 			<field name='price'>0.0</field>

@@ -101,6 +101,13 @@
 				<xpath expr="//button[@name='action_confirm']" position="replace">
 				</xpath>
 
+
+
+
+<!--
+							states="sent"						
+							states="sent,sale"						
+-->
 				<xpath expr="//button[@name='action_confirm']" position="replace">
 
 
@@ -110,6 +117,7 @@
 							
 							type="object" 
 							class="oe_highlight"
+
 							states="sent"						
 					/>
 
@@ -1134,6 +1142,12 @@ grey:state in ('cancel')
 
 					<field name="state"/>
 
+
+					<field name="comment"/>
+					<field name="note"/>
+<!--
+					<field name="x_note"/>
+-->
 				</tree>
 			</field>
 		</record>

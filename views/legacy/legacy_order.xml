@@ -72,7 +72,6 @@
 								<field name="NumeroFactura" 	/>
 
 
-
 								<field name="tipodocumento" 	/>
 
 
@@ -107,6 +106,7 @@
 
 
 
+
 		<!-- TREE -->
 		<record model="ir.ui.view" id="legacy_order_tree">
 			<field name="name">legacy.order.tree</field>
@@ -116,9 +116,35 @@
 				<tree string="Legacy Tree"    >
 				
 
+					<field name="FechaFactura_d" 	/>
+
 					<field name="NombreCompleto" 	/>
+					<field name="descripcion" 	/>
+					<field name="nombreejecutivo" 	/>
+
+					<field name="NumeroSerie" 	/>
+					<field name="NumeroFactura" 	/>
+
+					<field name="serial_nr" 	/>
+
+					<field name="tipodocumento" 	/>
 
 
+<!--
+					<field name="FechaFactura" 	/>
+					<field name="moneda" 	/>
+
+					<field name="neto" 	/>
+					<field name="igv" 	/>
+					<field name="total" 	/>
+
+					<field name="precioventa" 	/>
+-->
+
+
+					<field name="Punit" 	/>
+					<field name="cantidadtotal" 	/>
+					<field name="totalitem" 	/>
 
 				</tree>
 			</field>

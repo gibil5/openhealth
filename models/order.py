@@ -524,7 +524,8 @@ class sale_order(models.Model):
 
 			'Número de serie', 
 
-			compute="_compute_x_serial_nr",
+
+			#compute="_compute_x_serial_nr",
 		)
 
 
@@ -3069,6 +3070,20 @@ class sale_order(models.Model):
 
 
 		#Write your logic here - Begin
+
+
+		# Serial Number 
+		if self.x_payment_method.saledoc_code != False: 
+
+			self.x_serial_nr = self.x_payment_method.saledoc_code 
+
+
+
+
+
+
+
+
 
 		# Doctor User Name - For Reporting 
 		if self.x_doctor.name != False: 

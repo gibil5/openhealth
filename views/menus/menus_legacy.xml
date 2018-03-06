@@ -51,6 +51,35 @@
 
 
 
+		<menuitem 
+				id="legacy_manager_patient_list_menu" 
+
+				name="Managers Patients" 
+				
+				parent="qc_legacy_manager_menu"
+				
+				sequence="2"
+
+				action="legacy_manager_patient_list_action"
+			/>
+
+
+		<menuitem 
+				id="legacy_manager_order_list_menu" 
+
+				name="Managers Orders" 
+				
+				parent="qc_legacy_manager_menu"
+				
+				sequence="3"
+
+				action="legacy_manager_order_list_action"
+			/>
+
+
+
+
+
 
 
 <!-- Patients --> 
@@ -68,7 +97,7 @@
 		<menuitem 
 				id="patient_legacy_all_list_menu" 
 				
-				name="Legacy - All" 
+				name="Legacy Patients - All" 
 				
 				parent="patient_legacy_menu"
 				
@@ -217,7 +246,7 @@
 		<menuitem 
 				id="order_legacy_all_list_menu" 
 				
-				name="Legacy - All" 
+				name="Legacy Orders - All" 
 				
 				parent="order_legacy_menu"
 				

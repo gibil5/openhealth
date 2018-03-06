@@ -102,8 +102,8 @@
 							<group>		
 								<field name="name" 	/>
 <!--
-								<field name="max_count" 	/>
 -->
+								<field name="max_count" 	/>
 							</group>
 							<group>		
 								<field name="x_type" 	/>

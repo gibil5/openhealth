@@ -2386,10 +2386,20 @@ class Treatment(models.Model):
 
 			
 			price_manual = 0
+			
+			#price_applied = service.price_applied
+			price_applied = 0
+
+
 
 			#print target_line 
 			#ret = order.x_create_order_lines_target(target_line)
-			ret = order.x_create_order_lines_target(target_line, price_manual)
+			
+
+			#ret = order.x_create_order_lines_target(target_line, price_manual)
+			ret = order.x_create_order_lines_target(target_line, price_manual, price_applied)
+			
+
 			#print ret 
 
 

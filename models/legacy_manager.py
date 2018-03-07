@@ -231,9 +231,14 @@ class LegacyManager(models.Model):
 		self.target_count = self.target.count  
 
 
+
 		# Parameters 
-		self.ratio = (	float(self.target_count) / float(self.source_count)  ) * 100.
+
+		if self.source_count != 0:
+			self.ratio = (	float(self.target_count) / float(self.source_count)  ) * 100.
+
 		self.delta = self.source_count - self.target_count
+
 		
 		print
 

@@ -148,7 +148,7 @@
 
 
 		<!-- TREE -->
-		<record model="ir.ui.view" id="legacy_tree">
+		<record model="ir.ui.view" id="legacy_manager_tree">
 			<field name="name">legacy.tree</field>
 			<field name="model">openhealth.legacy.manager</field>
 			<field name="arch" type="xml">			

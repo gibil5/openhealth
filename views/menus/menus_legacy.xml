@@ -34,6 +34,7 @@
 				/>
 
 
+<!--
 		<menuitem 
 				id="legacy_manager_list_menu" 
 
@@ -45,6 +46,7 @@
 
 				action="legacy_manager_list_action"
 			/>
+-->
 
 
 

@@ -43,7 +43,7 @@
 		<!-- TREE -->
 <!--
 -->
-		<record model="ir.ui.view" id="legacy_tree">
+		<record model="ir.ui.view" id="legacy_manager_patient_tree">
 			<field name="name">legacy.tree</field>
 			<field name="model">openhealth.legacy.manager.patient</field>
 			<field name="arch" type="xml">			

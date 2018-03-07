@@ -38,6 +38,7 @@ class LegacyManager(models.Model):
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
 
 	max_count = fields.Integer(
+			required=True, 
 		)
 
 

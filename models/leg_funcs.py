@@ -14,7 +14,82 @@ import datetime
 
 
 
-#------------------------------------------------ Functions ---------------------------------------------------
+#------------------------------------------------ Create order ---------------------------------------------------
+
+def create_order(self, serial_nr, pricelist_id, partner_id, state, 
+																note):
+
+
+	print 'jx'
+	print 'Create Order'
+
+
+	order = self.env['sale.order'].create({
+
+											'x_serial_nr': serial_nr,
+
+											'note': note,
+											
+											'pricelist_id': pricelist_id,
+
+											'partner_id': partner_id,
+
+											'state': state,
+
+
+											#'name': name,
+										})
+
+	print order 
+
+
+	name = 'test'
+	price_unit = 55
+	product_uom_qty = 2
+
+
+
+	name = 'Producto Genérico'
+	product = self.env['product.product'].search([
+														('name', '=', name), 
+													],
+														#order='write_date desc',
+														limit=1,
+													)
+	product_id = product.id
+	print product
+	print product_id
+
+
+
+	order_id = order.id
+
+
+
+	ol = order.order_line.create({
+									'name': name,
+
+
+									'product_id': product_id,
+
+									'order_id': order_id,
+
+									'price_unit': price_unit, 
+									
+									'product_uom_qty': product_uom_qty, 
+
+		})
+	
+	print ol
+
+
+
+	return order
+
+
+
+
+#------------------------------------------------ Create Patient ---------------------------------------------------
 
 def create_patient(self, name, hc_code, doc_code, sex, 		date_record, date_created, date_birth, 		address, district, phone, mobile, email, comment):
 
@@ -72,6 +147,10 @@ def create_patient(self, name, hc_code, doc_code, sex, 		date_record, date_creat
 
 
 
+
+
+#------------------------------------------------ Correct Time ---------------------------------------------------
+
 def correct_time(self, date):
 
 	#print 'jx'
@@ -105,6 +184,9 @@ def correct_time(self, date):
 
 
 
+
+
+#------------------------------------------------ Date From Char ---------------------------------------------------
 
 def get_date_from_char(self, date_char):
 

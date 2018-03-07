@@ -32,7 +32,7 @@
 
 							name="create_data" 
 
-							string="create data" 							
+							string="Init data" 							
 						/>
 
 
@@ -42,7 +42,7 @@
 
 							name="update_data" 
 
-							string="update data" 							
+							string="Update data" 							
 						/>
 
 
@@ -53,7 +53,7 @@
 
 							name="synchronize_new" 
 
-							string="synchronize New" 							
+							string="Create New" 							
 						/>
 
 

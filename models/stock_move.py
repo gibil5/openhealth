@@ -86,14 +86,10 @@ class StockMove(models.Model):
 
 	
 	def _compute_x_categ_id(self):
-		
-		print 'jx'
-		print 'compute x_categ_id'
-
+		#print 'jx'
+		#print 'compute x_categ_id'
 		for record in self:
-
 			record.x_categ_id = record.product_id.categ_id
-
 			print record.x_categ_id  
 
 

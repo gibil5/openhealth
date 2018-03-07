@@ -6,6 +6,7 @@
 
 
 
+		<!-- FILTER --> 
 <!--
 				<field 	name="name" 
 						filter_domain="['|',('name','ilike',self),('x_dni','ilike',self)]"/>
@@ -14,9 +15,7 @@
 
 				<field 	name="NombreCompleto" 
 						filter_domain="['|',('NombreCompleto','ilike',self),('NumeroDocumento','ilike',self)]"/>
--->
 
-		<!-- FILTER --> 
 		<record id="legacy_order_view_template_filter" model="ir.ui.view">
 
 			<field name="name">LP Search</field>
@@ -36,6 +35,7 @@
 
 		   </field>
 	   </record>
+-->
 
 
 
@@ -65,18 +65,15 @@
 							<group>		
 
 								<field name="NombreCompleto" 	/>
-
-
-								<field name="nombreejecutivo" 	/>
 								<field name="NumeroSerie" 	/>
 								<field name="NumeroFactura" 	/>
+								<field name="serial_nr" 	/>
 
 
+<!--
+								<field name="nombreejecutivo" 	/>
 								<field name="tipodocumento" 	/>
 
-
-								<field name="FechaFactura" 	/>
-								<field name="FechaFactura_d" 	/>
 
 
 								<field name="moneda" 	/>
@@ -85,11 +82,15 @@
 								<field name="total" 	/>
 
 
+
+-->
+								<field name="FechaFactura" 	/>
+								<field name="FechaFactura_d" 	/>
+
 								<field name="descripcion" 	/>
 								<field name="cantidadtotal" 	/>
 								<field name="precioventa" 	/>
 								<field name="totalitem" 	/>
-
 							</group>
 							<group>		
 							</group>
@@ -182,6 +183,37 @@
 
 
 
+
+
+
+		<!-- Filter --> 
+		<record id="view_legacy_order_filter" model="ir.ui.view">
+		   <field name="name">Legacy Order Search</field>
+		   <field name="model">openhealth.legacy.order</field>		   
+		   <field name="arch" type="xml">
+
+			   <search string="Legacy Orders">
+
+
+
+				<field 	name="serial_nr" 
+						
+						filter_domain="['|',('serial_nr','ilike',self),('NombreCompleto','ilike',self)]"/>
+
+
+<!--
+				   	<field name="serial_nr" />
+					<field 	name="NombreCompleto"/>
+
+
+				   	<field name="partner_id" />
+
+				   	<field name="x_doctor" />               
+				   	<field name="x_family" /> 
+-->
+			   </search>
+		   </field>
+	   </record>
 
 
 

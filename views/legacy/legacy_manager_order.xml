@@ -25,9 +25,24 @@
 
 
 				<xpath expr="//field[@name='name']" position="replace">
-					
 					<field 	name="name" />
-				
+				</xpath>
+
+
+
+				<xpath expr="//button[@name='synchronize_new']" position="after">
+
+					<button 
+							type="object" 
+							
+							class="oe_highlight"
+
+							name="update_serial_nrs" 
+
+							string="Update SNr" 							
+					/>
+
+
 				</xpath>
 
 

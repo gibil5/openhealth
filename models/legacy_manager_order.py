@@ -25,11 +25,36 @@ class LegacyManagerOrder(models.Model):
 
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 
+
+	# Update Serial Nr 
+	@api.multi 
+	def update_serial_nrs(self):
+
+		print 'jx'
+		print 'Update SNr'
+
+
+		models = self.env['openhealth.legacy.order'].search([
+																#('serial_nr', '=', serial_nr), 												
+												],
+																#order='FechaFactura_d desc',
+																#limit=max_count,
+											)
+
+		for model in models: 
+			model.serial_nr = model.NumeroSerie + '-' + model.NumeroFactura
+
+
+
+
+
+
+
 	# Synchronize 
 	@api.multi 
 	def synchronize_new(self):
 
-		print 'jx'
+		print 
 		print 'Synchronize Order'
 
 
@@ -37,14 +62,14 @@ class LegacyManagerOrder(models.Model):
 
 
  		models_all = self.env[self.source.model].search([
-														#('name', '=', name), 
-														#('NombreCompleto', '!=', 'AAA'), 
+															#('name', '=', name), 
+															#('NombreCompleto', '!=', 'AAA'), 
 												],
-														#order='FechaFactura_d desc',
-														limit=max_count,
+															#order='FechaFactura_d desc',
+															limit=max_count,
 											)
- 		print models_all
- 		print max_count
+ 		#print models_all
+ 		#print max_count
 
 
 
@@ -59,6 +84,7 @@ class LegacyManagerOrder(models.Model):
 				foo = model.NombreCompleto			
 				name_compact = " ".join(foo.split())			# Strip white spaces, beginning, end and middle. 
 				name_compact_upper = name_compact.upper()		# To uppercase 
+
 
 				print 
 				print name_compact_upper 
@@ -79,18 +105,21 @@ class LegacyManagerOrder(models.Model):
 	 				
 	 				print 'Patient does not exist.'
 	 				print 'Will not be created.'
+	 				print 
 	 				#print 'This should not happen !'
 
 	 			
 
 	 			else: 	# Patient exists 
 
-	 				print 'Search order'
+	 				#print 'Search order'
 
 	 				serial_nr = model.serial_nr
 
-	 				print serial_nr
+	 				#print serial_nr
 
+
+	 				# Search Order 
 		 			order = self.env['sale.order'].search([
 																	
 																	#('name', '=', name), 
@@ -102,19 +131,30 @@ class LegacyManagerOrder(models.Model):
 																limit=1,
 													)
 
-					print order 
-					print order.name 
+					#print order 
+					#print order.name 
 
 
-		 			if order.name == False: 
+		 			
 
-		 				print 
+		 			if order.name != False: 			# Order exists.
+
+		 				print 'Order exists !'
+
+
+
+		 			else: 								# Does not exist. Create ! 
+		 			
 		 				print 'Create !'
 
 
 		 				note = 'lm, created'
 
+		 				date = model.FechaFactura_d
 
+
+
+		 				# Pricelist 
 		 				name_pl = 'Public Pricelist'
 		 				pricelist = self.env['product.pricelist'].search([
 																			('name', '=', name_pl), 
@@ -128,6 +168,9 @@ class LegacyManagerOrder(models.Model):
 
 
 		 				name = model.NombreCompleto
+
+
+		 				# Partner 
 		 				partner = self.env['res.partner'].search([
 																			('name', '=', name), 
 																	],
@@ -139,17 +182,31 @@ class LegacyManagerOrder(models.Model):
 
 
 
+		 				# Patient 
+		 				patient = self.env['oeh.medical.patient'].search([
+																			('name', '=', name), 
+																	],
+																			#order='write_date desc',
+																			limit=1,
+																	)
+		 				patient_id = patient.id
+
+
+
+		 				# State 
 		 				state = 'sale'
 
 
 
-			 			order_nex = leg_funcs.create_order(self, 	serial_nr, pricelist_id, partner_id, state, 
+
+		 				# Create Order 
+			 			order_nex = leg_funcs.create_order(self, 	serial_nr, pricelist_id, partner_id, patient_id, state, max_count, date, 
 			 												#name, hc_code, doc_code, sex, 
 		 													#date_record, date_created, date_birth, 
 		 													#address, district, phone, mobile, email, 
 		 													note
 		 											)
-			 			print order_nex
+			 			#print order_nex
 
 			 			
 

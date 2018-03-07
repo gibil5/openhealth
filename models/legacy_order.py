@@ -73,19 +73,32 @@ class OrderLegacy(models.Model):
 	totalitem = fields.Char()
 
 
+
+
+
+
+
+# ----------------------------------------------------------- Actions ------------------------------------------------------
+
+
+
+
+
+
 # ----------------------------------------------------------- Computed ------------------------------------------------------
 
 
 	serial_nr = fields.Char(
 
-			compute='_compute_serial_nr', 
+			#compute='_compute_serial_nr', 
 		)
 
-	@api.multi
-	def _compute_serial_nr(self):		
-		for record in self:		
+	#@api.multi
+	#def _compute_serial_nr(self):		
+	#	for record in self:		
+	#		record.serial_nr = record.NumeroSerie + '-' + record.NumeroFactura
 
-			record.serial_nr = record.NumeroSerie + '-' + record.NumeroFactura
+
 
 
 

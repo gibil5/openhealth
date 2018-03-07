@@ -3286,13 +3286,12 @@ class sale_order(models.Model):
 	@api.multi
 	def write(self,vals):
 
-		print 'jx'
-		print 'CRUD - Order - Write'
+		#print 'jx'
+		#print 'CRUD - Order - Write'
 		#print 
 		#print vals
 		#print 
 		#print 
-
 		#if vals['x_doctor'] != False: 
 		#	print vals['x_doctor']
 		#if vals['user_id'] != False: 
@@ -3300,20 +3299,16 @@ class sale_order(models.Model):
 
 
 
-
-
-
 		#Write your logic here
 		res = super(sale_order, self).write(vals)
 		#Write your logic here
-		#print 
-		#print 
+
+
 
 
 		#if self.x_doctor.name != False: 
 		#	uid = self.x_doctor.x_user_name.id	
 		#	self.x_doctor_uid = uid
-
 
 		return res
 

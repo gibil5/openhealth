@@ -16,12 +16,11 @@ import datetime
 
 #------------------------------------------------ Create order ---------------------------------------------------
 
-def create_order(self, serial_nr, pricelist_id, partner_id, state, 
+def create_order(self, serial_nr, pricelist_id, partner_id, patient_id, state, max_count, date, 
 																note):
 
-
-	print 'jx'
-	print 'Create Order'
+	#print 'jx'
+	#print 'Create Order'
 
 
 	order = self.env['sale.order'].create({
@@ -36,11 +35,14 @@ def create_order(self, serial_nr, pricelist_id, partner_id, state,
 
 											'state': state,
 
+											'patient': patient_id,
+
+											'date_order': date,
 
 											#'name': name,
 										})
 
-	print order 
+	#print order 
 
 
 	name = 'test'
@@ -57,8 +59,9 @@ def create_order(self, serial_nr, pricelist_id, partner_id, state,
 														limit=1,
 													)
 	product_id = product.id
-	print product
-	print product_id
+	
+	#print product
+	#print product_id
 
 
 
@@ -66,23 +69,46 @@ def create_order(self, serial_nr, pricelist_id, partner_id, state,
 
 
 
-	ol = order.order_line.create({
-									'name': name,
 
 
-									'product_id': product_id,
+	# All lines 
+ 	models = self.env['openhealth.legacy.order'].search([
+															#('name', '=', name), 
+															#('NombreCompleto', '!=', 'AAA'), 
 
-									'order_id': order_id,
+															('serial_nr', '=', serial_nr), 
+												
+												],
+															#order='FechaFactura_d desc',
+															#limit=max_count,
+											)
 
-									'price_unit': price_unit, 
-									
-									'product_uom_qty': product_uom_qty, 
-
-		})
-	
-	print ol
+ 	#print models
 
 
+ 	for model in models: 
+ 	#if False: 
+
+ 		#print 'Create Order Line'
+ 		#print model
+
+
+		name = model.descripcion
+		product_uom_qty = model.cantidadtotal
+		price_unit = model.Punit 		
+
+
+		ol = order.order_line.create({
+										'name': name,
+										'product_uom_qty': product_uom_qty, 
+										'price_unit': price_unit, 
+
+										'product_id': product_id,
+										'order_id': order_id,
+								})
+		
+		#print ol
+		#print 
 
 	return order
 

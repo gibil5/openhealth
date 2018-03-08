@@ -75,6 +75,11 @@ class OrderLegacy(models.Model):
 
 
 
+	amount_total = fields.Float(
+
+			default=55, 
+		)
+
 
 
 

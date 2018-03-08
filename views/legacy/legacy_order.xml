@@ -145,7 +145,13 @@
 
 					<field name="Punit" 	/>
 					<field name="cantidadtotal" 	/>
-					<field name="totalitem" 	/>
+
+					<field name="totalitem"/>
+
+<!--
+                    <field name="amount_total" sum="Total Tax Included" widget="monetary"/>
+-->
+					<field name="amount_total" 	sum="Total"		/>
 
 				</tree>
 			</field>

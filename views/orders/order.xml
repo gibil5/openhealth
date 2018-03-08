@@ -1172,6 +1172,8 @@ Look for the Minimalist experience !!!
 
 										('date_order','&lt;=',time.strftime('2018-12-31')),
 										('date_order','&gt;=',time.strftime('2018-01-01')),
+
+										('note', '!=', 'observed'),
 				
 								]
 			</field>
@@ -1205,6 +1207,8 @@ Look for the Minimalist experience !!!
 									
 									('date_order','&lt;=',time.strftime('%Y-12-31')),
 									('date_order','&gt;=',time.strftime('%Y-01-01')),
+
+										('note', '!=', 'observed'),
 				
 								]
 			</field>
@@ -1234,6 +1238,8 @@ Look for the Minimalist experience !!!
 
 									('date_order','&lt;=',time.strftime('%Y-12-31')),
 									('date_order','&gt;=',time.strftime('%Y-01-01')),
+
+										('note', '!=', 'observed'),
 								]
 			</field>
 
@@ -1262,6 +1268,8 @@ Look for the Minimalist experience !!!
 
 									('date_order','&lt;=',time.strftime('%Y-12-31')),
 									('date_order','&gt;=',time.strftime('%Y-01-01')),
+
+										('note', '!=', 'observed'),
 								]
 			</field>
 		</record>

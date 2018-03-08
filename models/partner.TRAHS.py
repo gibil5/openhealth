@@ -174,3 +174,23 @@
 
 
 
+
+# 8 Mar 2018
+
+# ----------------------------------------------------------- Defaults ------------------------------------------------------
+	#@api.model
+	#def _get_default_team(self):
+		#default_team_id = self.env['crm.team']._get_default_team_id()
+		#return self.env['crm.team'].browse(default_team_id)
+
+	#@api.model
+	#def _get_default_id_code(self):
+	#	default_id_code = '55'
+	#	return default_id_code
+
+
+
+
+	
+
+

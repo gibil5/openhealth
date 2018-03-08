@@ -16,11 +16,22 @@ import datetime
 
 #------------------------------------------------ Create order ---------------------------------------------------
 
-def create_order(self, serial_nr, pricelist_id, partner_id, patient_id, state, max_count, date, 
+def create_order(self, serial_nr, pricelist_id, partner_id, patient_id, state, 
+																#max_count, 
+																date, 
 																note):
 
-	#print 'jx'
-	#print 'Create Order'
+	print
+	print 'Create Order'
+
+	print serial_nr
+	print pricelist_id
+	print partner_id
+	print patient_id
+	print state
+	#print max_count
+	print date
+	print note
 
 
 	order = self.env['sale.order'].create({
@@ -89,13 +100,25 @@ def create_order(self, serial_nr, pricelist_id, partner_id, patient_id, state, m
  	for model in models: 
  	#if False: 
 
- 		#print 'Create Order Line'
+ 		print 'Create Order Line'
  		#print model
 
 
 		name = model.descripcion
 		product_uom_qty = model.cantidadtotal
 		price_unit = model.Punit 		
+
+
+		if name == False: 
+			name = 'x'
+
+
+
+		print name
+		print product_uom_qty
+		print price_unit
+		print product_id
+		print order_id
 
 
 		ol = order.order_line.create({
@@ -115,14 +138,20 @@ def create_order(self, serial_nr, pricelist_id, partner_id, patient_id, state, m
 
 
 
+
+
 #------------------------------------------------ Create Patient ---------------------------------------------------
 
-def create_patient(self, name, hc_code, doc_code, sex, 		date_record, date_created, date_birth, 		address, district, phone, mobile, email, comment):
+#def create_patient(self, name, hc_code, doc_code, sex, 		date_record, date_created, date_birth, 		address, district, phone, mobile, email, comment):
+def create_patient(self, 	name, hc_code, doc_code, sex, 		date_record, date_created, date_birth, 		address, district, phone, mobile, email, 
+							comment, 
+							completeness):
 
 
 	_hac = {
 				'F': 				'Female', 
 				'M': 				'Male', 
+				False:				False, 
 			}
 
 
@@ -140,8 +169,6 @@ def create_patient(self, name, hc_code, doc_code, sex, 		date_record, date_creat
 
 															'sex': sex_h,
 
-
-
 															'x_date_record': date_record,
 
 															'x_date_created': date_created,
@@ -149,8 +176,6 @@ def create_patient(self, name, hc_code, doc_code, sex, 		date_record, date_creat
 															'x_datetime_created': date_created,
 
 															'dob': date_birth,
-
-
 
 															'street': address,
 
@@ -162,9 +187,11 @@ def create_patient(self, name, hc_code, doc_code, sex, 		date_record, date_creat
 
 															'email': email,
 
-
 															'comment': comment,
 
+
+
+															'x_completeness': completeness,
 													})
 
 	print ret 

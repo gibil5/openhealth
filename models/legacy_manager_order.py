@@ -100,15 +100,49 @@ class LegacyManagerOrder(models.Model):
 												)
 	 			#print patient
 
-	 			#if patient == False: 
-	 			if patient.name == False: 
+
+
+	 			if patient.name == False: 						# Patien Does not exist. 
 	 				
+
 	 				print 'Patient does not exist.'
-	 				print 'Will not be created.'
-	 				print 
+	 				print 'Create Patient !'
+
+	 				#print 'Will not be created.'
+	 				#print 
 	 				#print 'This should not happen !'
 
 	 			
+
+	 				name = name_compact_upper
+	 				comment = 'lm, created'
+	 				completeness = 1
+
+	 				hc_code = False
+	 				doc_code = False
+	 				sex = False
+	 				date_record = False
+	 				date_created = False
+	 				date_birth = False
+	 				address = False
+	 				district = False
+	 				phone = False
+	 				mobile = False
+	 				email = False
+
+
+		 			ret = leg_funcs.create_patient(self, 	name, hc_code, doc_code, sex, 
+		 													date_record, date_created, date_birth, 
+		 													address, district, phone, mobile, email, 
+		 													comment,
+		 													completeness
+		 											)
+
+		 			print ret 
+
+
+
+
 
 	 			else: 	# Patient exists 
 
@@ -145,7 +179,7 @@ class LegacyManagerOrder(models.Model):
 
 		 			else: 								# Does not exist. Create ! 
 		 			
-		 				print 'Create !'
+		 				print 'Create Order !'
 
 
 		 				note = 'lm, created'
@@ -167,7 +201,11 @@ class LegacyManagerOrder(models.Model):
 
 
 
-		 				name = model.NombreCompleto
+
+		 				#name = model.NombreCompleto
+		 				name = name_compact_upper
+		 				print name 
+
 
 
 		 				# Partner 
@@ -200,11 +238,10 @@ class LegacyManagerOrder(models.Model):
 
 
 		 				# Create Order 
-			 			order_nex = leg_funcs.create_order(self, 	serial_nr, pricelist_id, partner_id, patient_id, state, max_count, date, 
-			 												#name, hc_code, doc_code, sex, 
-		 													#date_record, date_created, date_birth, 
-		 													#address, district, phone, mobile, email, 
-		 													note
+			 			order_nex = leg_funcs.create_order(self, 	serial_nr, pricelist_id, partner_id, patient_id, state, 
+			 												#max_count, 
+			 												date, 
+		 													note, 
 		 											)
 			 			#print order_nex
 
@@ -252,7 +289,88 @@ class LegacyManagerOrder(models.Model):
 
 
 
+
+
+
+
+
+	# Update Amount Total 
+	@api.multi 
+	def update_amount_total(self):
+
+		print
+		print 'Update Amount Total'
+
+
+		#models = self.env['openhealth.legacy.order'].search([
+		models = self.env['sale.order'].search([
+																#('amount_total', '=', amount_total), 
+																
+																('note', '=', 'lm, created'), 
+
+												],
+																#order='FechaFactura_d desc',
+																#limit=max_count,
+											)
+
+		amount_total = 0 
+
+
+		for model in models: 
+
+			amount_total = amount_total + model.amount_total
+
+
+
+		self.amount_total = amount_total
+
+
+
+
+
+
+
+	# Update Amount Total Legacy
+	@api.multi 
+	def update_amount_total_legacy(self):
+
+		print
+		print 'Update Amount Total Legacy'
+
+
+		models = self.env['openhealth.legacy.order'].search([
+																#('amount_total_legacy', '=', amount_total_legacy), 												
+												],
+																#order='FechaFactura_d desc',
+																#limit=max_count,
+											)
+
+		amount_total_legacy = 0 
+
+		for model in models: 
+			amount_total_legacy = amount_total_legacy + float(model.totalitem) 
+
+		self.amount_total_legacy = amount_total_legacy
+
+
+
+
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+	amount_total = fields.Float(
+			string="Amount Total", 
+		)
+
+	amount_total_legacy = fields.Float(
+			string="Amount Total Legacy", 
+		)
+
+
+
+
+
+
+
 
 	x_type = fields.Selection(
 			[	

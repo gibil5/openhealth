@@ -413,7 +413,11 @@ Cosmetology
 
 					<field name="name"/>
 
+
+					<field name="x_completeness"/>		
+
 					<field name="x_mark"/>		
+
 
 
 					<field name="x_id_code"/>		

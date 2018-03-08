@@ -53,7 +53,7 @@
 
 							name="synchronize_new" 
 
-							string="Create New" 							
+							string="Create new" 							
 						/>
 
 
@@ -135,7 +135,11 @@
 							</group>
 						</group>
 
+
+
 						<notebook></notebook>
+
+
 					</sheet>
 				</form>
 			</field>

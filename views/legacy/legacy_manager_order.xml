@@ -30,20 +30,71 @@
 
 
 
+<!--
 				<xpath expr="//button[@name='synchronize_new']" position="after">
-
 					<button 
 							type="object" 
-							
 							class="oe_highlight"
 
 							name="update_serial_nrs" 
 
 							string="Update SNr" 							
 					/>
-
-
 				</xpath>
+-->
+
+
+				<xpath expr="//button[@name='synchronize_new']" position="after">
+					<button 
+							type="object" 
+							class="oe_highlight"
+
+							name="update_amount_total" 
+
+							string="Update AT" 							
+					/>
+				</xpath>
+
+
+
+				<xpath expr="//button[@name='synchronize_new']" position="after">
+					<button 
+							type="object" 
+							class="oe_highlight"
+
+							name="update_amount_total_legacy" 
+
+							string="Update ATL" 							
+					/>
+				</xpath>
+
+
+
+
+
+				<xpath expr="//notebook" position="inside">
+
+					<page string="Totals">
+
+
+						<group>
+							<group>
+								<field 	name="amount_total_legacy" />
+							</group>
+
+
+							<group>
+								<field 	name="amount_total" />
+							</group>
+						</group>
+
+					
+					</page>
+				
+				</xpath>
+
+
+
 
 
 			</field>

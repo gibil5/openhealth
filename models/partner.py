@@ -5,12 +5,10 @@
 # 
 # Created: 				26 Aug 2016
 # Last updated: 	 	25 Aug 2017
-
+#
 from openerp import models, fields, api
 from . import pat_vars
 from . import pat_funcs
-
-
 
 class Partner(models.Model):
 	
@@ -21,18 +19,16 @@ class Partner(models.Model):
 
 
 
-# ----------------------------------------------------------- Defaults ------------------------------------------------------
-	#@api.model
-	#def _get_default_team(self):
-		#default_team_id = self.env['crm.team']._get_default_team_id()
-		#return self.env['crm.team'].browse(default_team_id)
+
+# ----------------------------------------------------------- QC ------------------------------------------------------
+
+	x_completeness = fields.Integer(
+			string="Completeness", 
+		)
 
 
 
-	#@api.model
-	#def _get_default_id_code(self):
-	#	default_id_code = '55'
-	#	return default_id_code
+
 
 
 

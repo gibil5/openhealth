@@ -66,10 +66,10 @@ class Patient(models.Model):
 	x_date_created = fields.Date(
 			string = "Fecha de Apertura",
 			default = fields.Date.today, 
-			required=True, 
-
-
 			#readonly = True, 
+			
+			#required=True, 
+			required=False, 
 		)
 
 	# Date time created 

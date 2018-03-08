@@ -68,6 +68,7 @@ class OrderLegacy(models.Model):
 
 
 
+
 	cantidadtotal = fields.Char()
 	
 	totalitem = fields.Char()
@@ -75,10 +76,9 @@ class OrderLegacy(models.Model):
 
 
 
-	amount_total = fields.Float(
-
-			default=55, 
-		)
+	#amount_total = fields.Float(
+	#		default=55, 
+	#	)
 
 
 

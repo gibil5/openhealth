@@ -16,8 +16,13 @@ from . import cosvars
 from . import treatment_vars
 from num2words import num2words
 
-
 import math 
+
+
+
+import time 
+from openerp import tools
+
 
 
 #from calendar import monthrange

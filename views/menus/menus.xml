@@ -209,16 +209,6 @@
 
 
 
-			<!-- Ventas --> 			
-			<menuitem 	id="sales_invoice_menu" 
-						name="Ventas" 
-						parent="sales_menu"
-						sequence="3"
-						
-						action="sale_list_action"
-						/>
-
-
 			<!-- Prespuestos --> 			
 			<menuitem 	id="sales_budget_menu" 
 						name="Presupuestos" 
@@ -230,13 +220,20 @@
 
 
 
+			<!-- Ventas --> 			
+			<menuitem 	id="sales_invoice_menu" 
+						name="Ventas" 
+						parent="sales_menu"
+						sequence="3"
+						
+						action="sale_list_action"
+						/>
 
 
 
 
 
-
-
+			<!-- Anulados --> 			
 			<menuitem 	id="sales_cancelled_menu"  
 						name="Anulados" 
 						parent="sales_menu"
@@ -246,15 +243,30 @@
 						/>
 
 
-<!--
-						groups="openhealth.managers,openhealth.directors"
--->
+
+
+			<!-- Todo --> 			
 			<menuitem 	id="sales_all_menu" 
 						name="Todo" 
 						parent="sales_menu"
 						sequence="5"
 
 						action="order_list_action"
+						/>
+
+
+
+
+
+			<!-- Observed --> 			
+			<menuitem 	id="sales_observed_menu" 
+
+						name="Observado" 
+				
+						parent="sales_menu"
+						sequence="6"
+
+						action="observed_list_action"
 						/>
 
 

@@ -76,7 +76,7 @@
 
 					<page string="Totals">
 
-
+<!--
 						<group>
 							<group>
 								<field 	name="amount_total_legacy" />
@@ -87,7 +87,7 @@
 								<field 	name="amount_total" />
 							</group>
 						</group>
-
+-->
 					
 					</page>
 				

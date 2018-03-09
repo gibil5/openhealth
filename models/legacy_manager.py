@@ -224,6 +224,7 @@ class LegacyManager(models.Model):
 		print 'Update Data'
 
 
+		# Data Analyzers 
 		self.source.update_data()
 		self.source_count = self.source.count  
 
@@ -233,10 +234,8 @@ class LegacyManager(models.Model):
 
 
 		# Parameters 
-
 		if self.source_count != 0:
 			self.ratio = (	float(self.target_count) / float(self.source_count)  ) * 100.
-
 		self.delta = self.source_count - self.target_count
 
 		

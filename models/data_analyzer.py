@@ -41,16 +41,20 @@ class DataAnalyzer(models.Model):
 
 
 
-		if self.name == 'order': 
+
+		if self.name == 'order': 				# Target Order 
 
 			self.count = self.env[self.model].search_count([
 
 																#('zone', '=', zone),			
-																('note', '!=', 'legacy'),			
+																#('note', '!=', 'legacy'),			
+																('note', 'not in', ['legacy','observed']),			
 														
 														]) 
 
-		else: 
+
+
+		else: 									# Source Order Legacy 
 
 			self.count = self.env[self.model].search_count([
 				

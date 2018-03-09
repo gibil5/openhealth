@@ -25,11 +25,13 @@
 			<field name="search_view_id" ref="sale.view_order_product_search"/>
 
 
-
+<!--
+										('note', 'not in', ['observed']),
+-->
 		   <field name="domain">
 									[
 										('date','&lt;=',time.strftime('%%Y-03-01')),
-										('date','&gt;=',time.strftime('%%Y-02-01'))
+										('date','&gt;=',time.strftime('%%Y-02-01')), 
 									]
 			</field>
 
@@ -78,7 +80,7 @@
 			<field name="domain">
 									[
 										('date','&lt;=',time.strftime('%%Y-02-01')),
-										('date','&gt;=',time.strftime('%%Y-01-01'))
+										('date','&gt;=',time.strftime('%%Y-01-01')), 
 									]
 			</field>
 
@@ -133,7 +135,7 @@
 		   <field name="domain">
 								[
 									('date','&lt;=',time.strftime('%%Y-03-01')), 
-									('date','&gt;=',time.strftime('%%Y-02-01'))
+									('date','&gt;=',time.strftime('%%Y-02-01')), 									
 								]
 			</field>
 
@@ -171,9 +173,8 @@
 
 		   <field name="domain">
 								[
-
 									('date','&lt;=',time.strftime('%%Y-04-01')), 
-									('date','&gt;=',time.strftime('%%Y-03-01'))
+									('date','&gt;=',time.strftime('%%Y-03-01')), 
 								]
 			</field>
 
@@ -188,6 +189,16 @@
 
 			<field name="help"></field>
 		</record>
+
+
+
+
+
+
+
+
+
+
 
 
 		<!-- April --> 

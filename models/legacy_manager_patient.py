@@ -203,6 +203,9 @@ class LegacyManagerPatient(models.Model):
 					# Comment 
 					comment = 'legacy, lm, created'
 
+	 				completeness = 0
+
+
 
 		 			print patient
 
@@ -212,7 +215,8 @@ class LegacyManagerPatient(models.Model):
 		 			ret = leg_funcs.create_patient(self, 	name, hc_code, doc_code, sex, 
 		 													date_record, date_created, date_birth, 
 		 													address, district, phone, mobile, email, 
-		 													comment
+		 													comment, 
+		 													completeness		 													
 		 											)
 
 		 			print ret 

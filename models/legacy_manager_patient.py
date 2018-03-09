@@ -108,37 +108,19 @@ class LegacyManagerPatient(models.Model):
 		print 'Synchronize'
 
 
+ 		max_count = self.max_count
 
 
- 		#max_count = 10 
- 		#max_count = 30 
- 		#max_count = 50 
- 		#max_count = 100
- 		#max_count = 200
- 		#max_count = 1000
- 		#max_count = 2000
- 		#max_count = 5000
- 		#max_count = 10000
- 		max_count = 20000
-
-
-
-
-
- 		#models = self.env[self.source.model].search([
  		models_all = self.env[self.source.model].search([
 														
-														#('name', '=', name), 
-														('NombreCompleto', '!=', 'AAA'), 
+															#('name', '=', name), 
+															('NombreCompleto', '!=', 'AAA'), 
 
 												],
 
 														#order='FechaRegistro desc',
 														order='FechaCreacion desc',
 
-														#limit=10,
-														#limit=30,
-														#limit=100,
 														limit=max_count,
 											)
 
@@ -163,8 +145,6 @@ class LegacyManagerPatient(models.Model):
 
 
 
-				#pre_name = model.NombreCompleto
-				#name = " ".join(pre_name.split())
 
 
 				foo = model.NombreCompleto			

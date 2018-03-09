@@ -319,12 +319,12 @@ class sale_order(models.Model):
 			
 			required=True, 
 
-			states={
-						'cancel': 	[('readonly', True)], 
-						'done': 	[('readonly', True)], 
-						'sent': 	[('readonly', True)], 
-						'sale': 	[('readonly', True)], 
-					}, 
+			#states={
+			#			'cancel': 	[('readonly', True)], 
+			#			'done': 	[('readonly', True)], 
+			#			'sent': 	[('readonly', True)], 
+			#			'sale': 	[('readonly', True)], 
+			#		}, 
 		)
 
 

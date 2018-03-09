@@ -266,6 +266,9 @@
 						parent="sales_menu"
 						sequence="6"
 
+
+						groups="openhealth.roots"
+
 						action="observed_list_action"
 						/>
 

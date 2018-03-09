@@ -117,10 +117,8 @@ class LegacyManagerPatient(models.Model):
 															('NombreCompleto', '!=', 'AAA'), 
 
 												],
-
 														#order='FechaRegistro desc',
-														order='FechaCreacion desc',
-
+														#order='FechaCreacion desc',
 														limit=max_count,
 											)
 

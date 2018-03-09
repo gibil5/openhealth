@@ -1124,7 +1124,12 @@ Look for the Minimalist experience !!!
 
 					<field name="x_serial_nr" />
 
+
+
+					<field name="patient"/>
 					<field name="partner_id"/>
+
+
 
 					<field name="product"/>
 

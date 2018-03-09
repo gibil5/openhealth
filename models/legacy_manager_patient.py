@@ -9,8 +9,8 @@
 
 
 from openerp import models, fields, api
+from . import leg_funcs
 #import unidecode 
-#from . import leg_funcs
 
 
 

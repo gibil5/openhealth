@@ -9,6 +9,7 @@ from openerp import models, fields, api
 
 #from datetime import timedelta
 import datetime
+from . import leg_vars
 
 
 
@@ -140,22 +141,91 @@ def create_order(self, serial_nr, pricelist_id, partner_id, patient_id, state,
 
 
 
-#------------------------------------------------ Create Patient ---------------------------------------------------
 
-#def create_patient(self, name, hc_code, doc_code, sex, 		date_record, date_created, date_birth, 		address, district, phone, mobile, email, comment):
+
+
+
+#------------------------------------------------ Update Patient ---------------------------------------------------
+
+def update_patient(self, 	
+							patient, 
+							name, 
+							hc_code, 
+							doc_code, 
+							sex, 		
+							date_record, 
+							date_created, 
+							date_birth, 		
+							address, 
+							district, 
+							phone, 
+							mobile, 
+							email, 
+							comment, 
+							completeness,
+							):
+
+	patient.name = name 
+
+	patient.x_id_code = hc_code
+	
+	patient.x_dni = doc_code
+	
+
+	#patient.sex = sex
+	patient.sex = leg_vars._hac[sex]
+
+
+
+	patient.x_date_record = date_record
+
+	patient.x_date_created = date_created
+
+	patient.x_datetime_created = date_created
+
+	patient.dob = date_birth
+
+
+
+
+	patient.street = address
+
+	patient.x_district = district
+
+	patient.phone = phone
+
+	patient.mobile = mobile
+
+	patient.email = email
+
+
+	patient.comment = comment
+
+
+	patient.completeness = completeness
+
+
+	return patient 
+
+
+
+
+
+#------------------------------------------------ Create Patient ---------------------------------------------------
 def create_patient(self, 	name, hc_code, doc_code, sex, 		date_record, date_created, date_birth, 		address, district, phone, mobile, email, 
 							comment, 
 							completeness):
 
 
-	_hac = {
-				'F': 				'Female', 
-				'M': 				'Male', 
-				False:				False, 
-			}
+	#_hac = {
+	#			'F': 				'Female', 
+	#			'M': 				'Male', 
+	#			False:				False, 
+	#		}
 
 
-	sex_h = _hac[sex]
+	#sex_h = _hac[sex]
+	sex_h = leg_vars._hac[sex]
 
 
 
@@ -188,8 +258,6 @@ def create_patient(self, 	name, hc_code, doc_code, sex, 		date_record, date_crea
 															'email': email,
 
 															'comment': comment,
-
-
 
 															'x_completeness': completeness,
 													})

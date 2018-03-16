@@ -1120,18 +1120,23 @@ Look for the Minimalist experience !!!
 
 					<field name="name"	 		string="Referencia"		/>
 
+
+<!--
 					<field name="x_type" />
+					<field name="comment"/>
+					<field name="note"/>
+					<field name="partner_id"/>
+					<field name="product"/>
+					<field name="x_date_order_corr"	string="Fec"	/>
+-->
+
+
 
 					<field name="x_serial_nr" />
 
 
 
 					<field name="patient"/>
-					<field name="partner_id"/>
-
-
-
-					<field name="product"/>
 
 					<field name="nr_lines"/>
 
@@ -1139,15 +1144,11 @@ Look for the Minimalist experience !!!
 
 					<field name="date_order"	string="Fecha"	/>
 
-					<field name="x_date_order_corr"	string="Fec"	/>
-
 					<field name="user_id"		string="Generado por"	/>
 
 					<field name="state"/>
 
 
-					<field name="comment"/>
-					<field name="note"/>
 <!--
 					<field name="x_note"/>
 -->

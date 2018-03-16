@@ -31,6 +31,25 @@
 				</xpath>
 
 
+
+
+				<xpath expr="//button[@name='synchronize_new']" position="after">
+
+					<button 
+							type="object" 
+							class="oe_highlight"
+
+							name="update_existing_patients" 
+
+							string="Update Existing Patients" 							
+					/>
+				
+				</xpath>
+
+
+
+
+
 			</field>
 		</record>
 

@@ -27,11 +27,14 @@
 
 <!--
 										('note', 'not in', ['observed']),
+
+										('date','&lt;=',time.strftime('%%Y-03-01')),
+										('date','&gt;=',time.strftime('%%Y-02-01')), 
 -->
 		   <field name="domain">
 									[
-										('date','&lt;=',time.strftime('%%Y-03-01')),
-										('date','&gt;=',time.strftime('%%Y-02-01')), 
+										('date','&lt;=',time.strftime('%%Y-04-01')),
+										('date','&gt;=',time.strftime('%%Y-03-01')), 
 									]
 			</field>
 

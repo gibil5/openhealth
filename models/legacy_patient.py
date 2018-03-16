@@ -60,6 +60,7 @@ class PatientLegacy(models.Model):
 
 
 
+
 	FechaCreacion_d = fields.Datetime(
 
 			compute='_compute_FechaCreacion_d', 
@@ -74,6 +75,8 @@ class PatientLegacy(models.Model):
 			record.FechaCreacion_d = leg_funcs.correct_time(self,record.FechaCreacion_d)
 
 	
+
+
 
 	
 	FechaNacimiento_d = fields.Datetime(

@@ -11,6 +11,7 @@
 from openerp import models, fields, api
 from . import leg_funcs
 #import unidecode 
+from . import leg_vars
 
 
 
@@ -32,26 +33,14 @@ class LegacyManagerPatient(models.Model):
 
 
 
-# ----------------------------------------------------------- Primitives ------------------------------------------------------
-
-	x_type = fields.Selection(
-
-			[	
-				('patient', 					'patient'),
-				('order', 						'order'),
-			], 
-
-			string='Type',
-			
-			default='patient', 
-
-			required=True, 
-		)
-
 
 
 
 # ----------------------------------------------------------- Actions ------------------------------------------------------
+
+
+
+
 
 	# Create Data  
 	@api.multi 
@@ -243,41 +232,58 @@ class LegacyManagerPatient(models.Model):
 
 
 
-	# Synchronize - HC Code 
+	# Update Existing Patients 
 	@api.multi 
-	def synchro_hc_code(self):
+	#def synchro_hc_code(self):
+	def update_existing_patients(self):
+
 
 		print 'jx'
-		print 'Synchro HC code'
+		print 'Update Existing Patients'
 
 	 	
 
+
+
+		# Search criteria 
+
 		#hc_code = '0010000005002'		# Dev 
-		hc_code = '0010000005000'		# Prod 
+		#hc_code = '0010000005000'		# Prod 
 
- 
+		hc_code = False
+		x_dni = False
+		dob = False
+		sex = False
+		x_date_created = False
 
-
-
-
-		# Max 
- 		#max_count = 10
- 		#max_count = 100
- 		#max_count = 1000
- 		max_count = 3000
- 		#max_count = 20000
+		#name = 'ZAMBRANO OSPINAL AGAR LEONOR'
+		#name = 'YLLACONZA SALCEDO ALICIA INES'
 
 
+
+
+		# Max count 
+ 		max_count = self.max_count
+
+
+
+ 		# Select 
 	 	patients_all = self.env['oeh.medical.patient'].search([
+																('x_id_code', '=', 	hc_code), 
+																('x_dni', '=', 		x_dni),
+																('dob', '=', 		dob),
+																('sex', '=', 		sex),
+																('x_date_created', '=', x_date_created),
+
+
 																#('name', '=', name), 
-																('x_id_code', '=', hc_code), 
 												],
 															#order='write_date desc',
 															#limit=1,
 															limit=max_count,
 												)
 
-	 	#print patients_all
+	 	print patients_all
 
 
 
@@ -285,22 +291,16 @@ class LegacyManagerPatient(models.Model):
 
 
 
-		patients = patients_all[:max_count]
+	 	# Loop 
+	 	for patient in patients_all:
 
-	 	print patients
-
-
-
-
-	 	for patient in patients:
-
-
+	 		
 	 		name = patient.name 
 
 	 		print name 
 	 		
+	 		patient_legacy_exists = True
 
-	 		abort = False
 
 
 			nr = self.env['openhealth.legacy.patient'].search_count([																							
@@ -309,26 +309,26 @@ class LegacyManagerPatient(models.Model):
 																		]) 
 			
 
-			if nr == 0: 
+			# Test if exists in Legacy Patients 
+			if nr == 0: 				
 				name = name.title()
 				print name 
-				print 'Titling'
-
-
+				#print 'Titling'
 				nr = self.env['openhealth.legacy.patient'].search_count([																							
-																			('NombreCompleto', '=', name),			
-
+																			('NombreCompleto', '=', name),
 																		]) 
-
 				if nr == 0: 
-					print 'This should not happen !!!'
-					print nr 
-					abort = True 
+					#print 'This should not happen !!!'
+					print 'Legacy Patient does not exist !!!'
+					#print nr 
+					patient_legacy_exists = False 
 
 
 
 
 
+
+			# Legacy Patient 
 	 		patient_leg = self.env['openhealth.legacy.patient'].search([
 																			('NombreCompleto', '=', name), 
 												],
@@ -337,40 +337,101 @@ class LegacyManagerPatient(models.Model):
 												)
 
 	 		
+	 		
 
 
-	 		if patient.x_id_code != patient_leg.CODIGOhistoria: 
+	 		# Update Patient 
+	 		if patient_legacy_exists: 
 
 	 			print 'gotcha !'
-
 	 			print patient_leg.CODIGOhistoria
 	 			print patient.x_id_code
 
 
 
-	 			#if patient_leg.CODIGOhistoria != False: 
-	 			if not abort: 
 
-	 				comment = 'legacy, corr hd'
-	 				
-	 				patient.x_id_code = patient_leg.CODIGOhistoria
-	 				patient.comment = comment
-	 				patient.x_dni = patient_leg.NumeroDocumento
+ 				# Init vars from Legacy 
+				name = name
+
+				# Personal 
+				hc_code = patient_leg.CODIGOhistoria 
+				doc_code = patient_leg.NumeroDocumento 				
+				sex = patient_leg.Sexo 
+
+				# Dates 
+				date_record = patient_leg.FechaRegistro_d
+				date_created = patient_leg.FechaCreacion_d
+				date_birth = patient_leg.FechaNacimiento_d 
+
+				# Contact
+				address = patient_leg.Direccion 
+				district = patient_leg.Distrito 
+				phone = patient_leg.Telefono1 
+				mobile = patient_leg.Telefono2 
+				email = patient_leg.Correo 
+
+				# Comment 
+ 				comment = 'legacy, corr all'
+ 				completeness = 1
 
 
 
 
 
+ 				# Update Patient 
+				patient.name = name 
 
-	 			print patient.x_id_code
+				patient.x_id_code = hc_code
+				
+				patient.x_dni = doc_code
+				
+				patient.sex = leg_vars._hac[sex]
 
+				patient.x_date_record = date_record
 
+				patient.x_date_created = date_created
 
-	 		
+				patient.x_datetime_created = date_created
 
+				patient.dob = date_birth
+
+				patient.street = address
+
+				patient.x_district = district
+
+				patient.phone = phone
+
+				patient.mobile = mobile
+
+				patient.email = email
+
+				patient.comment = comment
+
+				patient.completeness = completeness
 	 		print 
 
 
+
+
+
+
+
+
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+	x_type = fields.Selection(
+
+			[	
+				('patient', 					'patient'),
+				('order', 						'order'),
+			], 
+
+			string='Type',
+			
+			default='patient', 
+
+			required=True, 
+		)
 
 
 

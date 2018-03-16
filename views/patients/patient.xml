@@ -414,9 +414,12 @@ Cosmetology
 					<field name="name"/>
 
 <!--
-					<field name="x_completeness"/>		
--->
+					<field name="x_completeness"/>	
+
+
 					<field name="x_mark"/>		
+					<field name="x_datetime_created"/>
+-->
 
 
 
@@ -424,34 +427,22 @@ Cosmetology
 
 					<field name="x_dni"/>		
 
-					<field name="comment"/>
-
-
-
-
 					<field name="x_date_created"/>
-
-					<field name="x_datetime_created"/>
-<!--
--->
-					<field name="x_date_record"/>
-
 
 					<field name="dob"/>
 					<field name="sex"/>		
 
-					<field name="street"/>
-
-<!--
--->
-					<field name="x_district"/>		
-
 					<field name="phone"/>
 					<field name="mobile"/>
 
-
-
 					<field name="email"/>		
+
+
+
+					<field name="x_date_record"		groups='openhealth.roots'	/>
+					<field name="street"			groups='openhealth.roots'	/>
+					<field name="x_district"		groups='openhealth.roots'	/>		
+					<field name="comment"			groups='openhealth.roots'	/>
 
 
 

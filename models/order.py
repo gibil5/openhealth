@@ -771,7 +771,10 @@ class sale_order(models.Model):
 	pricelist_id = fields.Many2one(
 			'product.pricelist', 
 			string='Pricelist', 
-			required=True, 
+
+			#required=True, 
+			required=False, 
+			
 			readonly=True, 
 			states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}, 
 			help="Pricelist for current sales order.", 

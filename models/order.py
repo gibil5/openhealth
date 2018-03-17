@@ -41,6 +41,26 @@ class sale_order(models.Model):
 
 
 
+
+
+	currency_id = fields.Many2one(
+			"res.currency", 
+			related='pricelist_id.currency_id', 
+			string="Currency", 
+			readonly=True, 
+
+			#required=True, 
+			required=False, 
+
+		)
+
+
+
+
+
+
+
+
 # ----------------------------------------------------- Create Order Line ------------------------------------------------------------
 
 	@api.multi
@@ -55,68 +75,68 @@ class sale_order(models.Model):
 		# Init Vars 
 		context = self._context.copy()
 		
- 		order_id = self.id
+		order_id = self.id
 
 		x_type = context['x_type']
 
 		#print context
 		#print context['params']
- 		#print order_id
+		#print order_id
 
- 		res_id = False
-
-
+		res_id = False
 
 
- 		# Search Model 
- 		res = self.env['openhealth.product.selector'].search([
+
+
+		# Search Model 
+		res = self.env['openhealth.product.selector'].search([
 																#('patient', '=', self.patient.name),
 															],
 																#order='write_date desc',
 																limit=1,
 															)
- 		if res.id != False: 
- 			
- 			res_id = res.id 
-	 		#print res_id
+		if res.id != False: 
+			
+			res_id = res.id 
+			#print res_id
 
 
 
 
- 			#res.default_code = ''
- 			#res.product_id = False
-	 		#res.x_type = x_type
- 			#res.price_manual_flag = False
- 			#res.price_manual = 0
-	 		#res.family = False
-	 		#res.treatment = False
-	 		#res.zone = False
-	 		#res.family = False
+			#res.default_code = ''
+			#res.product_id = False
+			#res.x_type = x_type
+			#res.price_manual_flag = False
+			#res.price_manual = 0
+			#res.family = False
+			#res.treatment = False
+			#res.zone = False
+			#res.family = False
 
-	 		#if x_type == 'product': 
-	 		#	res.treatment = False
-	 		#	res.zone = False
-	 		#	res.family = False
-
-
-
-
- 			# Reset 
-	 		res.reset()
-
-
-	 		# Initialize 
-	 		res.order_id = order_id
- 			res.product_uom_qty = 1 
-		 	res.x_type = x_type
+			#if x_type == 'product': 
+			#	res.treatment = False
+			#	res.zone = False
+			#	res.family = False
 
 
 
 
+			# Reset 
+			res.reset()
 
 
- 			
-	 		
+			# Initialize 
+			res.order_id = order_id
+			res.product_uom_qty = 1 
+			res.x_type = x_type
+
+
+
+
+
+
+			
+			
 
 
 

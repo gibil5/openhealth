@@ -4,6 +4,21 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+access_product_pricelist,jx.product.pricelist,product.model_product_pricelist,openhealth.reception,1,1,1,1
+access_product_pricelist_item,jx.product.pricelist.item,product.model_product_pricelist_item,openhealth.reception,1,1,1,1
+
+
+access_product_template_managers,product.template.managers,model_product_template,product_managers,1,1,1,1
+access_product_template_readers,product.template.readers,model_product_template,product_readers,1,1,1,1
+
+
+
+
+
+
+
+
+
 access_openhealth_stock_move_all,access_openhealth_stock_move_all,model_stock_move_all,,1,1,1,1
 access_openhealth_stock_move_min,access_openhealth_stock_move_min,model_stock_move_min,,1,1,1,1
 
@@ -410,9 +425,6 @@ access_sale_order_line_almacens,sale.order.line.almacens,model_sale_order_line,o
 
 
 
-
-access_product_template_managers,product.template.managers,model_product_template,product_managers,1,1,1,1
-access_product_template_readers,product.template.readers,model_product_template,product_readers,1,0,0,0
 
 
 

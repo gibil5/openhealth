@@ -48,6 +48,7 @@
 
 <!--
 							states="appointment"
+
 -->
 						<!-- Create Budget Consultation --> 
 						<button 
@@ -57,6 +58,7 @@
 
 
 							states="empty,appointment"
+
   
 							string="Crear PRESUPUESTO - Consulta" 
 

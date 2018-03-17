@@ -792,8 +792,8 @@ class sale_order(models.Model):
 			'product.pricelist', 
 			string='Pricelist', 
 
-			#required=True, 
-			required=False, 
+			required=True, 
+			#required=False, 
 			
 			readonly=True, 
 			states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}, 

@@ -2313,8 +2313,8 @@ class Treatment(models.Model):
 
 
 		#print 
-		#print 'jx'
-		#print 'Create Order'
+		print 'jx'
+		print 'Create Order'
 		#print self.x_family
 		#print target
 
@@ -2340,15 +2340,31 @@ class Treatment(models.Model):
 															#order='write_date desc',
 															limit=1,
 														)
+		 	pl_id = pl.id 
+
 	 	else: 
 
 	 		pl = self.env['product.pricelist'].search([
 																('name', 'like', 'Public Pricelist'), 
+																#('name', '=', 'Public Pricelist'), 
 														],
 															#order='write_date desc',
 															limit=1,
 														)
-	 	pl_id = pl.id 
+
+		 	#pl_id = pl.id 
+		 	pl_id = 1
+
+
+
+	 	print self.x_vip_inprog
+	 	print pl
+	 	print pl.name
+	 	print pl.id
+
+
+	 	#pl_id = pl.id 
+	 	#pl_id = 1
 
 
 

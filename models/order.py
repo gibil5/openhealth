@@ -43,16 +43,49 @@ class sale_order(models.Model):
 
 
 
-	currency_id = fields.Many2one(
-			"res.currency", 
-			related='pricelist_id.currency_id', 
-			string="Currency", 
-			readonly=True, 
 
-			#required=True, 
-			required=False, 
 
+	treatment = fields.Many2one(
+			'openhealth.treatment',
+			ondelete='cascade', 
+			string="Tratamiento",
+
+			#readonly=True, 
+			readonly=False, 
 		)
+
+
+	@api.onchange('x_doctor')
+	def _onchange_x_doctor(self):
+
+		print 'jx'		
+
+		if self.x_doctor.name != False: 
+			#uid = self.x_doctor.x_user_name.id
+			#self.x_doctor_uid = uid
+
+
+			treatment = self.env['openhealth.treatment'].search([
+															
+																	('patient', '=', self.patient.name), 
+															
+																	('physician', '=', self.x_doctor.name), 
+													],
+														order='write_date desc',
+														limit=1,
+													)
+
+			print treatment
+			self.treatment = treatment
+
+
+			#if self.treatment.name != False: 
+			#	self.treatment = treatment
+			#else: 
+			#	self.treatment = False
+
+
+
 
 
 
@@ -197,6 +230,18 @@ class sale_order(models.Model):
 
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+
+	currency_id = fields.Many2one(
+			"res.currency", 
+			related='pricelist_id.currency_id', 
+			string="Currency", 
+			readonly=True, 
+
+			#required=True, 
+			required=False, 
+
+		)
 
 
 
@@ -495,6 +540,8 @@ class sale_order(models.Model):
 # ----------------------------------------------------------- Date corrected ------------------------------------------------------
 
 	#date_order = fields.Datetime(string='Order Date', required=True, readonly=True, index=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}, copy=False, default=fields.Datetime.now)
+
+
 
 
 	x_date_order_corr = fields.Datetime(
@@ -865,11 +912,6 @@ class sale_order(models.Model):
 
 
 
-	#@api.onchange('x_doctor')
-	#def _onchange_x_doctor(self):
-	#		if self.x_doctor.name != False: 
-	#			uid = self.x_doctor.x_user_name.id
-	#			self.x_doctor_uid = uid
 
 
 
@@ -991,7 +1033,8 @@ class sale_order(models.Model):
 			#required=True, 
 			required=False, 
 
-			compute="_compute_x_type",
+
+			#compute="_compute_x_type",
 		)
 
 	@api.multi
@@ -1007,8 +1050,31 @@ class sale_order(models.Model):
 
 
 
+	@api.multi
+	def update_type(self):
+		print 'update type'
+		if self.x_payment_method != False: 
+			self.x_type = self.x_payment_method.saledoc
+			print self.x_type
 
 
+
+
+
+
+
+	#@api.onchange('x_payment_method')
+	#def _onchange_x_payment_method(self):
+
+	@api.onchange('x_serial_nr')
+	
+	def _onchange_x_serial_nr(self):
+	
+		print 'jx'
+		print 'On change serial nr'
+		if self.x_payment_method.saledoc != False: 
+			self.x_type = self.x_payment_method.saledoc
+			print self.x_type
 
 
 
@@ -2550,12 +2616,6 @@ class sale_order(models.Model):
 
 # ----------------------------------------------------------- Relationals ------------------------------------------------------
 
-	treatment = fields.Many2one(
-			'openhealth.treatment',
-			ondelete='cascade', 
-			string="Tratamiento", 
-		)
-
 
 
 
@@ -3104,6 +3164,9 @@ class sale_order(models.Model):
 		if self.x_payment_method.saledoc_code != False: 
 
 			self.x_serial_nr = self.x_payment_method.saledoc_code 
+
+			self.x_type = self.x_payment_method.saledoc
+
 
 
 

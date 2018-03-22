@@ -7,6 +7,10 @@ from openerp import models, fields, api
 
 # Progress 
 _hap = {
+
+
+
+			
 			
 			# Treatment 
 			#'consultation':          'Consulta', 
@@ -17,14 +21,27 @@ _hap = {
 			'laser_ipl':         	'Ipl', 
 			'laser_ndyag':        	'Ndy', 
 
-			'hyaluronic_acid':      'Hial', 
-			'criosurgery':         	'Crio', 
-			'sclerotherapy':        'Escl', 
-			'lepismatic':         	'Lepi', 
-			'mesotherapy_nctf':     'Meso', 
+
+
+			# Medical 
+			'criosurgery':         	'Criocirugía', 
 			'plasma':         		'Plasma', 
-			'botulinum_toxin':      'Botox', 
-			'intravenous_vitamin':  'Vita Int', 
+			'botulinum_toxin':      'Toxina Botulínica', 
+			'hyaluronic_acid':      'Acido Hialurónico', 
+			'sclerotherapy':        'Escleroterapia', 
+			'lepismatic':         	'Lepismático', 
+			'mesotherapy_nctf':     'Mesoterapia nctf', 
+			'intravenous_vitamin':  'Vit C Endovenosa', 
+
+
+
+
+			# Cosmetology 
+			'carboxytherapy':       'Carboxiterapia', 
+			'diamond_tip':			'Punta Diamante', 
+			'triactive_carboxytherapy': 					'Triac + Carbo', 
+			'triactive_carboxytherapy_reductionchamber': 	'Triac + Carbo + CR', 
+
 
 
 
@@ -253,6 +270,8 @@ def get_ticket_name(self, treatment, zone, pathology, family, x_type, name_short
 	name_ticket = 'x'
 
 
+	print x_type, family, treatment, zone, pathology, name_short
+
 
 	# Service 
 	if x_type == 'service': 
@@ -267,12 +286,23 @@ def get_ticket_name(self, treatment, zone, pathology, family, x_type, name_short
 				name_ticket = _hap[treatment] + ' ' + _hap[zone] + ' ' + pathology 
 
 
-		elif family == 'consultation': 
-			#name_ticket = treatment + ' ' + zone + ' ' + pathology 
-			#name_ticket = _hap[treatment] + ' ' + zone + ' ' + pathology 
 
+
+		elif family == 'consultation': 
 			if name_short in _hac: 
 				name_ticket = _hac[name_short] 
+
+
+
+
+		#elif family == 'medical': 
+		else: 
+			if treatment in _hap: 
+				name_ticket = _hap[treatment] 
+
+
+
+
 
 
 
@@ -287,6 +317,8 @@ def get_ticket_name(self, treatment, zone, pathology, family, x_type, name_short
 
 
 
+	print name_ticket
+	print 
 
 	return name_ticket
 

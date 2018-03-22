@@ -57,6 +57,8 @@
 			<field name='categ_id' ref="medical"/>
 		</record>
 
+
+
 		<record id='scl_leg_var_one' model='product.template'>
 			<field name='type'>service</field>
 			<field name='x_name_short'>scl_leg_var_one</field>

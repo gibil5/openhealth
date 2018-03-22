@@ -208,7 +208,7 @@
 
 					<field name="vspace"/>
 
-					<field name="date_order" 			string="Fecha"		readonly="1"	/>					
+					<field name="date_order" 			string="Fecha"		readonly="0"	/>					
 
 					<field name="vspace"/>
 
@@ -478,7 +478,7 @@
 
 							string="Agregar PRODUCTO"
 
-							groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors"
+							groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors,openhealth.physicians"
 						
 						/>
 
@@ -494,7 +494,7 @@
 
 							string="Agregar SERVICIO"
 
-							groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors"
+							groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors,openhealth.physicians"
 						
 						/>
 
@@ -884,7 +884,7 @@
 
 					<field name="vspace"/>
 
-					<field name="treatment" 	readonly="1"		/>
+					<field name="treatment" 		/>
 
 				</field>	
 
@@ -900,7 +900,9 @@
 
 
 
-
+<!--
+											states="draft,sent"
+-->
 								<!-- Cancel --> 
 								<group>
 									<button 
@@ -910,7 +912,6 @@
 
 											string="Anular"
 
-											states="draft,sent"
 
 											groups="openhealth.roots,openhealth.caja,openhealth.managers,openhealth.directors"
 									/>
@@ -1123,7 +1124,6 @@ Look for the Minimalist experience !!!
 
 
 <!--
-					<field name="x_type" />
 					<field name="comment"/>
 					<field name="note"/>
 					<field name="partner_id"/>
@@ -1134,6 +1134,9 @@ Look for the Minimalist experience !!!
 
 
 					<field name="x_serial_nr" />
+
+					<field name="x_type" />
+
 
 
 
@@ -1376,11 +1379,40 @@ Look for the Minimalist experience !!!
 
 		
 		<!-- FILTER --> 
+<!--
 		<record id="view_medical_order_filter" model="ir.ui.view">
+-->
+		<record id="view_medical_order_search" model="ir.ui.view">
 		   <field name="name">Order Search</field>
 		   <field name="model">sale.order</field>		   
 		   <field name="arch" type="xml">
+
 			   <search string="orders">
+
+
+
+<!--
+												('date_order', '&lt;=', datetime.datetime.now().strftime('%Y-%m-%d 23:23:59')), 
+-->
+					<filter string="Hoy" domain="[
+												
+												('date_order', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 05:00:00')),
+											
+											]"/>
+
+
+
+					<filter string="Este Mes" domain="[
+														('date_order','&gt;=',time.strftime('%Y-%m-01')),
+											]"/>
+
+
+
+					<filter string="Este Año" domain="[
+														('date_order','&gt;=',time.strftime('%%Y-01-01')), 
+											]"/>
+
+
 
 				   <field name="partner_id" />
 					<!--
@@ -1388,9 +1420,9 @@ Look for the Minimalist experience !!!
 				   <field name="x_family" /> 
 					-->
 			   </search>
+		   
 		   </field>
 	   </record>
-
 
 
 	</data>

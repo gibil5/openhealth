@@ -27,6 +27,26 @@ class PurchaseOrderLine(models.Model):
 
 
 
+
+	x_price_unit_wo_tax = fields.Float(
+			string='Precio unitario', 
+			#required=True, 
+			digits=dp.get_precision('Product Price')
+		)
+
+	@api.onchange('price_unit')
+	def _onchange_price_unit(self):
+
+		print 'jx'		
+		print 'on change pu'
+
+		self.x_price_unit_wo_tax = self.price_unit / 1.18 
+
+
+
+
+
+
 	price_unit = fields.Float(
 			string='Unit Price', 
 			required=True, 

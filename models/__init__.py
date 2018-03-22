@@ -66,6 +66,9 @@ from . import appfuncs
 # Operational 
 
 from . import closing
+from . import scheduler 
+
+
 
 
 from . import card

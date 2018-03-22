@@ -4,6 +4,32 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+access_openhealth_order_report_caja,openhealth.order.report.caja,model_openhealth_order_report,openhealth.caja,1,1,1,1
+access_openhealth_order_report_reception,openhealth.order.report.reception,model_openhealth_order_report,openhealth.reception,1,1,1,1
+
+access_openhealth_order_report,openhealth.order.report,model_openhealth_order_report,,1,1,1,1
+
+access_openhealth_order_line_report,access_openhealth_order_line_report,model_openhealth_order_line_report,,1,1,1,1
+
+
+
+
+
+
+
+access_oeh_medical_appointment,oeh.medical.appointment,oehealth.model_oeh_medical_appointment,oehealth.group_oeh_medical_physician,1,1,1,1
+access_oeh_medical_appointment_caja,oeh.medical.appointment caja,oehealth.model_oeh_medical_appointment,openhealth.caja,1,1,0,0
+access_oeh_medical_appointment_reception,oeh.medical.appointment reception,oehealth.model_oeh_medical_appointment,openhealth.reception,1,1,1,1
+
+
+
+
+
+
+
+
+
+
 access_product_pricelist,jx.product.pricelist,product.model_product_pricelist,openhealth.reception,1,1,1,1
 access_product_pricelist_item,jx.product.pricelist.item,product.model_product_pricelist_item,openhealth.reception,1,1,1,1
 
@@ -43,7 +69,6 @@ access_openhealth_zone_ndyag,access_openhealth_zone_ndyag,model_openhealth_zone_
 
 access_openhealth_counter_raw,access_openhealth_counter_raw,model_openhealth_counter_raw,,1,1,1,1
 
-access_openhealth_order_line_report,access_openhealth_order_line_report,model_openhealth_order_line_report,,1,1,1,1
 
 access_openhealth_product_manager,access_openhealth_product_manager,model_openhealth_product_manager,,1,1,1,1
 
@@ -85,7 +110,6 @@ access_mrp_bom_line_caja,mrp.bom.line.caja,mrp.model_mrp_bom_line,openhealth.caj
 
 
 
-access_openhealth_order_report_caja,openhealth.order.report.caja,model_openhealth_order_report,openhealth.caja,1,1,1,0
 
 
 
@@ -311,11 +335,6 @@ access_oeh_medical_patient_reception,oeh.medical.patient reception,oehealth.mode
 
 
 
-access_oeh_medical_appointment,oeh.medical.appointment,oehealth.model_oeh_medical_appointment,oehealth.group_oeh_medical_physician,1,1,1,1
-
-access_oeh_medical_appointment_reception,oeh.medical.appointment reception,oehealth.model_oeh_medical_appointment,openhealth.reception,1,1,1,1
-
-access_oeh_medical_appointment_caja,oeh.medical.appointment caja,oehealth.model_oeh_medical_appointment,openhealth.caja,1,1,0,0
 
 
 

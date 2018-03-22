@@ -18,8 +18,10 @@
 					<field name="date"/>
 
 
-					
+
+<!--					
 					<filter string="This Year" name="year" invisible="1" domain="[('date','&lt;=', time.strftime('2016-12-31')),('date','&gt;=',time.strftime('2016-01-01'))]"/>	
+-->
 
 
 
@@ -36,18 +38,19 @@
 																	('categ_id','in',('Cremas','Kits','Tarjetas')), 
 																	('categ_id','not in',('Quick','Co2','Consultas')), 
 																	('categ_id','not in',('Consultas', 'Quick')),
--->
 
-					<filter name="Sales" string="Sales" domain="[
-																	
-																	('state','=','sale'),
+
 
 																	('categ_id','not in',('Consultas')), 
 																	('categ_id','not in',('Quick Laser')), 
 																	('categ_id','not in',('Laser Co2')), 
 																	('categ_id','not in',('Laser Excilite')), 
 																	('categ_id','not in',('Laser M22')), 
-																
+-->
+
+
+					<filter name="Sales" string="Sales" domain="[
+																			('state','=','sale'),
 																]"/>
 
 

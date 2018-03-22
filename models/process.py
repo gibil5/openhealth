@@ -67,6 +67,7 @@ class Process(models.Model):
 	
 
 
+
 	chief_complaint = fields.Selection(
 			string = 'Motivo de consulta', 						
 			selection = eval_vars._chief_complaint_list, 
@@ -76,6 +77,7 @@ class Process(models.Model):
 			readonly=False, 
 			#states=READONLY_STATES, 
 		)
+
 
 
 	start_date = fields.Date(

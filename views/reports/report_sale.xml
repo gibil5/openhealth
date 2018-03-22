@@ -31,7 +31,9 @@
 										'|', 
 										('categ_id','=','Medical'), 
 										'|', 
-										('categ_id','=','Laser Co2'),('categ_id','=','Laser Excilite'),
+										('categ_id','=','Laser Co2'),										
+										'|', 
+										('categ_id','=','Laser Excilite'),
 
 									('date','&lt;=',time.strftime('%%Y-04-30')),
 									('date','&gt;=',time.strftime('%%Y-04-01'))

@@ -98,9 +98,8 @@ class Patient(models.Model):
 		#print 'Get Default Id Code'
 
 
-		name = 'emr'
 
-		#counter = self.env['openhealth.counter'].search([('name', '=', name)])
+		name = 'emr'
  		
  		counter = self.env['openhealth.counter'].search([
 																('name', '=', name), 
@@ -114,9 +113,10 @@ class Patient(models.Model):
 		default_id_code = '13'
 
 		if counter.total != False: 
-			#print counter.total 
 			default_id_code = counter.total
-			counter.increase()
+
+
+			#counter.increase()		# Not here ! 
 
 
 
@@ -1894,11 +1894,14 @@ class Patient(models.Model):
 	@api.model
 	def create(self,vals):
 
-		#print 'jx'
-		#print 'CRUD - Patient - Create'
-		#print 
+		print 
+		print 'jx'
+		print 'CRUD - Patient - Create'
+		print 
 		#print vals
 	
+
+
 
 
 		# Put your logic here 
@@ -1907,23 +1910,17 @@ class Patient(models.Model):
 
 
 
+		name = 'emr'
 
-		# My logic 
-		# Create a Treatment - When Patient is created - DEPRECATED !
-		#name = vals['name']
-		#patient_id = self.env['oeh.medical.patient'].search([('name', '=', name),]).id 
-		#treatment = self.env['openhealth.treatment'].create({'patient': patient_id,})
+ 		counter = self.env['openhealth.counter'].search([
+																('name', '=', name), 
+														],
+															#order='write_date desc',
+															limit=1,
+														)
+		print counter
+		counter.increase()		# Here !!!
 
-
-
-
-
-		# Update Partner 
-		#print self.street  
-		#if self.street != False:
-		#if True:
-		#	print 'Update Partner !'
-		#	self.partner_id.street = self.street
 
 
 
@@ -1937,9 +1934,10 @@ class Patient(models.Model):
 	@api.multi
 	def write(self,vals):
 
-		#print 'jx'
-		#print 'CRUD - Patient - Write'
-		#print 
+		print 
+		print 'jx'
+		print 'CRUD - Patient - Write'
+		print 
 		#print vals
 		#print 
 		#print 

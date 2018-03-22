@@ -24,6 +24,20 @@
 
 
 					<header>
+
+
+						<button 
+								type="object" 
+								class="oe_highlight"
+
+
+								name="update_totals"
+
+								string="Actualizar"
+								
+						/>
+
+
 					</header>
 
 
@@ -43,8 +57,11 @@ Fields
 
 		                    <field name="date"/>
 
+<!--
 		                    <field name="date_time"		readonly="1"	/>
-							
+-->
+
+
 						</group>
 						<group>
 <!--							
@@ -56,19 +73,21 @@ Fields
 
 
 <!--
+-->
 					<group	string="Documentos de pago"	>
 						<group>
-		                    <field name="rec_tot"/>
-		                    <field name="inv_tot"/>
 		                    <field name="tkr_tot"/>
 		                    <field name="tki_tot"/>
+
+		                    <field name="rec_tot"/>
+		                    <field name="inv_tot"/>
+
 		                    <field name="adv_tot"/>
 		                    <field name="san_tot"/>
 						</group>
 
 						<group></group>
 					</group>
--->
 
 
 
@@ -78,8 +97,9 @@ Fields
 
 		                    <field name="cash_tot"/>
 		                    <field name="ame_tot"/>
+<!--		                    
 		                    <field name="cuo_tot"/>
-
+-->
 		                    <field name="din_tot"/>
 		                    <field name="mac_tot"/>
 		                    <field name="mad_tot"/>
@@ -127,15 +147,9 @@ Fields
 
                     <field name="date"		string="Fecha"	/>
 
-<!--
-                    <field name="rec_tot"/>
-                    <field name="inv_tot"/>
-                    <field name="tkr_tot"/>
-                    <field name="tki_tot"/>
-                    <field name="adv_tot"/>
-                    <field name="san_tot"/>
--->
 
+
+<!--
                     <field name="cash_tot"/>
                     <field name="ame_tot"/>
                     <field name="cuo_tot"/>
@@ -144,6 +158,16 @@ Fields
                     <field name="mad_tot"/>
                     <field name="vic_tot"/>
                     <field name="vid_tot"/>
+-->
+
+                    <field name="tkr_tot"/>
+                    <field name="tki_tot"/>
+
+                    <field name="rec_tot"/>
+                    <field name="inv_tot"/>
+
+                    <field name="adv_tot"/>
+                    <field name="san_tot"/>
 
 
 

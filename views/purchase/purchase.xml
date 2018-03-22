@@ -20,6 +20,36 @@
 			<field name="arch" type="xml">
 
 
+
+
+
+
+
+				<xpath expr="//field[@name='price_unit']" position="after">
+					
+					<field name="x_price_unit_wo_tax" widget="monetary"/>
+				
+				</xpath>
+
+
+
+				<xpath expr="//field[@name='price_subtotal']" position="replace">
+					
+					<field name="price_total" widget="monetary"/>
+				
+				</xpath>
+
+
+				<xpath expr="//field[@name='price_total']" position="before">
+					
+					<field name="price_tax" widget="monetary"/>
+				
+				</xpath>
+
+
+
+
+
 				<!--
 				<xpath expr="//field[@name='name']" position="after">
 				</xpath>

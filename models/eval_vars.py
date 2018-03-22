@@ -88,9 +88,15 @@ _chief_complaint_list = [
 			#('none',''), 
 
 
+
 			# Begin
+
+
 			('acne_active','Acné Activo'),
 			('acne_sequels','Acné y Secuelas'),
+
+			('tatoo','Tatuaje'),
+
 			('alopecia','Alopecias'),
 			('scar','Cicatriz'),
 			('depilation','Depilación'),
@@ -116,6 +122,7 @@ _chief_complaint_list = [
 			('wart','Verruga'),
 			('vitiligo','Vitiligo'),
 			# End 		
+
 
 			]
 

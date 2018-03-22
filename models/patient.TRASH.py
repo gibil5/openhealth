@@ -122,3 +122,26 @@
 
 
 
+
+
+
+
+
+# 17 Mar 2017
+
+		# My logic 
+		# Create a Treatment - When Patient is created - DEPRECATED !
+		#name = vals['name']
+		#patient_id = self.env['oeh.medical.patient'].search([('name', '=', name),]).id 
+		#treatment = self.env['openhealth.treatment'].create({'patient': patient_id,})
+
+
+		# Update Partner 
+		#print self.street  
+		#if self.street != False:
+		#if True:
+		#	print 'Update Partner !'
+		#	self.partner_id.street = self.street
+
+
+

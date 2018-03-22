@@ -122,9 +122,11 @@ class Partner(models.Model):
 		)
 
 
+
 	x_dni = fields.Char(
 			"DNI", 	
 		)
+
 
 
 	x_firm = fields.Char(

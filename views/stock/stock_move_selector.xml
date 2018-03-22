@@ -84,9 +84,9 @@
 
 <!--
 							<field name="product_id"/>
--->
 							<field name="product_id" 	widget="radio"	/>
-
+-->
+							<field name="product_id"/>
 
 						</group>
 

@@ -1,24 +1,215 @@
 # -*- coding: utf-8 -*-
 #
-#
 # 	Closing 
 # 
 # Created: 				18 Oct 2017
 # Last updated: 	 	18 Oct 2017
 #
 
-
-
 from openerp import models, fields, api
-#import datetime
-from datetime import datetime
+
+import datetime
+
+import clos_funcs
+
 
 
 class Closing(models.Model):
 	
 	#_inherit='sale.closing'
+
 	_name = 'openhealth.closing'
 	
+
+
+# ----------------------------------------------------------- Actions ------------------------------------------------------
+
+	# Update 
+	@api.multi
+	def update_totals(self):  
+
+		print 'jx'
+		print 'Update totals'
+
+
+
+
+
+		# Total 
+		x_type = 'all'
+		#orders = clos_funcs.get_orders(self, self.date)
+		orders = clos_funcs.get_orders(self, self.date, x_type)
+		print 'orders: ', orders
+		print 
+
+		amount_untaxed = 0 
+		count = 0 
+		for order in orders: 
+	
+			order.update_type()
+	
+			amount_untaxed = amount_untaxed + order.amount_untaxed 
+			count = count + 1
+		self.total = amount_untaxed
+
+
+
+
+		#orders = self.env['sale.order'].search([
+		#												('state', '=', 'sale'),	
+		#												('date_order', 'like', date),
+		#												('x_type', '=', 'receipt'),																												
+		#										])
+
+		
+
+		# Receipts
+		x_type = 'receipt'
+		
+		orders = clos_funcs.get_orders(self, self.date, x_type)
+		
+		total = 0 
+		for order in orders: 
+			total = total + order.amount_untaxed 
+		self.rec_tot = total
+
+
+
+		# Invoices
+		x_type = 'invoice'
+		
+		orders = clos_funcs.get_orders(self, self.date, x_type)
+		
+		total = 0 
+		for order in orders: 
+			total = total + order.amount_untaxed 
+		self.inv_tot = total
+
+
+
+		# Ticket Invoices
+		x_type = 'ticket_invoice'
+		
+		orders = clos_funcs.get_orders(self, self.date, x_type)
+		
+		total = 0 
+		for order in orders: 
+			total = total + order.amount_untaxed 
+		self.tki_tot = total
+
+
+
+
+		# Ticket Receipts
+		x_type = 'ticket_receipt'
+		
+		orders = clos_funcs.get_orders(self, self.date, x_type)
+		
+		total = 0 
+		for order in orders: 
+			total = total + order.amount_untaxed 
+		self.tkr_tot = total
+
+
+
+
+		# Advertisement
+		x_type = 'advertisement'
+		
+		orders = clos_funcs.get_orders(self, self.date, x_type)
+		
+		total = 0 
+		for order in orders: 
+			total = total + order.amount_untaxed 
+		self.adv_tot = total
+
+
+
+
+		# Sale notes 
+		x_type = 'sale_note'
+		
+		orders = clos_funcs.get_orders(self, self.date, x_type)
+		
+		total = 0 
+		for order in orders: 
+			total = total + order.amount_untaxed 
+		self.san_tot = total
+
+
+
+
+		# Payment methods 
+		x_type = 'all'
+		orders = clos_funcs.get_orders(self, self.date, x_type)
+
+
+		cash_tot = 0 
+		ame_tot = 0 
+		cuo_tot = 0 
+		din_tot = 0 
+		mac_tot = 0 
+		mad_tot = 0 
+		vic_tot = 0 
+		vid_tot = 0 
+
+
+
+		for order in orders: 
+
+			for pm_line in order.x_payment_method.pm_line_ids: 
+					
+
+				if pm_line.method == 'cash':
+					cash_tot = cash_tot + pm_line.subtotal  
+
+				elif pm_line.method == 'american_express':
+					ame_tot = ame_tot + pm_line.subtotal  
+
+				elif pm_line.method == 'cuota_perfecta':
+					cuo_tot = cuo_tot + pm_line.subtotal  
+
+
+
+				elif pm_line.method == 'diners':
+					din_tot = din_tot + pm_line.subtotal  
+
+				elif pm_line.method == 'credit_master':
+					mac_tot = mac_tot + pm_line.subtotal  
+
+				elif pm_line.method == 'debit_master':
+					mad_tot = mad_tot + pm_line.subtotal  
+
+
+
+				elif pm_line.method == 'credit_visa':
+					vic_tot = vic_tot + pm_line.subtotal  
+
+				elif pm_line.method == 'debit_visa':
+					vid_tot = vid_tot + pm_line.subtotal  
+
+
+
+
+
+		self.cash_tot = cash_tot
+		self.ame_tot = ame_tot
+		self.cuo_tot = cuo_tot
+		self.din_tot = din_tot
+		self.mac_tot = mac_tot
+		self.mad_tot = mad_tot
+		self.vic_tot = vic_tot
+		self.vid_tot = vid_tot
+
+
+
+
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
+	# Other 
+	vspace = fields.Char(
+			' ', 
+			readonly=True
+		)
 
 
 	# Name 
@@ -26,10 +217,8 @@ class Closing(models.Model):
 			string="Cierre de Caja #", 
 			compute='_compute_name', 
 		)
-
 	@api.multi
 	#@api.depends('x_appointment')
-
 	def _compute_name(self):
 		for record in self:
 			record.name = record.date 
@@ -37,16 +226,7 @@ class Closing(models.Model):
 
 
 
-
-	vspace = fields.Char(
-			' ', 
-			readonly=True
-		)
-
-
-
-
-	# Date 
+	# Dates
 	date = fields.Date(
 			string="Fecha", 
 			default = fields.Date.today, 
@@ -54,13 +234,10 @@ class Closing(models.Model):
 			required=True, 
 		)
 
-
 	date_time = fields.Datetime(
 			string="Fecha y Hora", 
-
 			#default = fields.Date.today, 
-			default = datetime.now(),
-
+			default = datetime.datetime.now(),
 			#readonly=True,
 			#required=True, 
 		)
@@ -70,12 +247,25 @@ class Closing(models.Model):
 
 
 
+# Total absolute
+	total = fields.Float(
+			'Total',
+			default = 0, 
+
+			#compute='_compute_total', 
+		)
+
+
+
+
+# Total partials - Form of payment 
+
 	# Cash  
 	cash_tot = fields.Float(
 			'Efectivo',
 			default = 0, 
 
-			compute='_compute_method_tot', 
+			#compute='_compute_method_tot', 
 		)
 
 	# ame  
@@ -83,7 +273,7 @@ class Closing(models.Model):
 			'American Express',
 			default = 0, 
 
-			compute='_compute_method_tot', 
+			#compute='_compute_method_tot', 
 		)
 
 	# cuo  
@@ -91,7 +281,7 @@ class Closing(models.Model):
 			'Cuota Perfecta',
 			default = 0, 
 
-			compute='_compute_method_tot', 
+			#compute='_compute_method_tot', 
 		)
 
 
@@ -102,7 +292,7 @@ class Closing(models.Model):
 			'Diners',
 			default = 0, 
 
-			compute='_compute_method_tot', 
+			#compute='_compute_method_tot', 
 		)
 
 	# mac  
@@ -110,7 +300,7 @@ class Closing(models.Model):
 			'Mastercard - Crédito',
 			default = 0, 
 
-			compute='_compute_method_tot', 
+			#compute='_compute_method_tot', 
 		)
 
 	# mad  
@@ -118,12 +308,8 @@ class Closing(models.Model):
 			'Mastercard - Débito',
 			default = 0, 
 
-			compute='_compute_method_tot', 
+			#compute='_compute_method_tot', 
 		)
-
-
-
-
 
 
 	# vic  
@@ -131,7 +317,7 @@ class Closing(models.Model):
 			'Visa - Crédito',
 			default = 0, 
 
-			compute='_compute_method_tot', 
+			#compute='_compute_method_tot', 
 		)
 
 
@@ -140,7 +326,7 @@ class Closing(models.Model):
 			'Visa - Débito',
 			default = 0, 
 
-			compute='_compute_method_tot', 
+			#compute='_compute_method_tot', 
 		)
 
 
@@ -148,396 +334,59 @@ class Closing(models.Model):
 
 
 
-
-
-
-	# Method 
-	method_tot = fields.Float(
-			'Metodo',
-			default = 0, 
-
-			compute='_compute_method_tot', 
-		)
-
-	@api.multi
-	#@api.depends('x_appointment')
-
-	def _compute_method_tot(self):
-		for record in self:
-
-			#print 'jx'
-			#print 'compute Method total'
-
-			date = record.date + ' '
-
-			orders = record.env['sale.order'].search([
-														('state', '=', 'sale'),														
-														('date_order', 'like', date),
-												])
-
-			cash_tot = 0 
-			ame_tot = 0 
-			cuo_tot = 0 
-
-			din_tot = 0 
-			mac_tot = 0 
-			mad_tot = 0 
-
-			vic_tot = 0 
-			vid_tot = 0 
-
-
-			for order in orders: 
-
-
-				#print 'name: ', order.name
-				#print 'date_order: ', order.date_order
-
-
-				for pm_line in order.x_payment_method.pm_line_ids: 
-					
-
-					if pm_line.method == 'cash':
-						cash_tot = cash_tot + pm_line.subtotal  
-
-					elif pm_line.method == 'american_express':
-						ame_tot = ame_tot + pm_line.subtotal  
-
-					elif pm_line.method == 'cuota_perfecta':
-						cuo_tot = cuo_tot + pm_line.subtotal  
-
-
-
-					elif pm_line.method == 'diners':
-						din_tot = din_tot + pm_line.subtotal  
-
-					elif pm_line.method == 'credit_master':
-						mac_tot = mac_tot + pm_line.subtotal  
-
-					elif pm_line.method == 'debit_master':
-						mad_tot = mad_tot + pm_line.subtotal  
-
-
-
-					elif pm_line.method == 'credit_visa':
-						vic_tot = vic_tot + pm_line.subtotal  
-
-					elif pm_line.method == 'debit_visa':
-						vid_tot = vid_tot + pm_line.subtotal  
-
-
-
-
-
-			record.cash_tot = cash_tot
-			record.ame_tot = ame_tot
-			record.cuo_tot = cuo_tot
-
-			record.din_tot = din_tot
-			record.mac_tot = mac_tot
-			record.mad_tot = mad_tot
-
-			record.vic_tot = vic_tot
-			record.vid_tot = vid_tot
-
-
-			#print 'cash_tot: ', cash_tot, record.cash_tot
-			#print 'ame_tot: ', ame_tot, record.ame_tot
-			#print 'cuo_tot: ', cuo_tot, record.cuo_tot
-			#print 'din_tot: ', record.din_tot
-			#print 'mac_tot: ', record.mac_tot
-			#print 'mad_tot: ', record.mad_tot
-			#print 'vic_tot: ', record.vic_tot
-			#print 'vid_tot: ', record.vid_tot
-			#print 
-
-
-
-
-
-	# Receipts - Total 
+# Total partials - Proof of payment 
+	
+	# Receipts  
 	rec_tot = fields.Float(
 			'Boletas',
 			default = 0, 
-			compute='_compute_rec_tot', 
+
+			#compute='_compute_rec_tot', 
 		)
 
-	@api.multi
-	#@api.depends('x_appointment')
-
-	def _compute_rec_tot(self):
-
-
-		for record in self:
-			#print 'jx'
-			#print 'compute REC total'
-
-			date = record.date + ' '
-
-			orders = record.env['sale.order'].search([
-														('state', '=', 'sale'),	
-
-														#('date_order', '=', date),
-														('date_order', 'like', date),
-
-														('x_type', '=', 'receipt'),														
-														
-														#('name', 'like', 'BO-'),														
-												])
-
-			total = 0 
-
-			for order in orders: 
-				total = total + order.amount_untaxed 
-
-			record.rec_tot = total
-
-			#print 'orders: ', orders
-			#print 
-
-
-
-
-
-
-
-	# Invoices - Total 
+	# Invoices  
 	inv_tot = fields.Float(
 			'Facturas',
 			default = 0, 
-			compute='_compute_inv_tot', 
+
+			#compute='_compute_inv_tot', 
 		)
 
 
-	@api.multi
-	#@api.depends('x_appointment')
-
-	def _compute_inv_tot(self):
-		for record in self:
-			date = record.date + ' '
-			orders = record.env['sale.order'].search([
-														('state', '=', 'sale'),														
-														
-														('date_order', 'like', date),
-
-														#('name', 'like', 'FA-'),														
-														('x_type', '=', 'invoice'),
-
-												])
-			total = 0 
-			for order in orders: 
-				total = total + order.amount_untaxed 
-			record.inv_tot = total
-
-
-
-
-
-
-	# Ticket Invoices - Total 
+	# Ticket Invoices  
 	tki_tot = fields.Float(
 			'Tickets Factura',
 			default = 0, 
-			compute='_compute_tki_tot', 
+
+			#compute='_compute_tki_tot', 
 		)
 
 
-	@api.multi
-	#@api.depends('x_appointment')
 
-	def _compute_tki_tot(self):
-		for record in self:
-			date = record.date + ' '
-			orders = record.env['sale.order'].search([
-														('state', '=', 'sale'),	
-
-														('date_order', 'like', date),
-														
-														#('name', 'like', 'TKF-'),														
-														('x_type', '=', 'ticket_invoice'),
-
-												])
-			total = 0 
-			for order in orders: 
-				total = total + order.amount_untaxed 
-			record.tki_tot = total
-
-
-
-
-
-
-
-	# Ticket Receipt - Total 
+	# Ticket Receipts 
 	tkr_tot = fields.Float(
 			'Tickets Boleta',
 			default = 0, 
-			compute='_compute_tkr_tot', 
+
+			#compute='_compute_tkr_tot', 
 		)
 
 
-	@api.multi
-	#@api.depends('x_appointment')
-
-	def _compute_tkr_tot(self):
-		for record in self:
-			date = record.date + ' '
-			orders = record.env['sale.order'].search([
-														('state', '=', 'sale'),	
-
-														('date_order', 'like', date),
-														
-														#('name', 'like', 'TKB-'),														
-														('x_type', '=', 'ticket_receipt'),
-												])
-			total = 0 
-			for order in orders: 
-				total = total + order.amount_untaxed 
-			record.tkr_tot = total
-
-
-
-
-
-
-
-
-
-	# Advetisement - Total 
+	# Advetisements 
 	adv_tot = fields.Float(
 			'Canjes Publicidad',
 			default = 0, 
-			compute='_compute_adv_tot', 
+			
+			#compute='_compute_adv_tot', 
 		)
 
-
-	@api.multi
-	#@api.depends('x_appointment')
-
-	def _compute_adv_tot(self):
-		for record in self:
-			date = record.date + ' '
-			orders = record.env['sale.order'].search([
-														('state', '=', 'sale'),	
-
-														('date_order', 'like', date),
-														
-														#('name', 'like', 'CP-'),														
-														('x_type', '=', 'advertisement'),
-
-												])
-			total = 0 
-			for order in orders: 
-				total = total + order.amount_untaxed 
-			record.adv_tot = total
-
-
-
-
-
-	# Sale Note - Total 
+	# Sale Notes 
 	san_tot = fields.Float(
 			'Canjes NV',
 			default = 0, 
-			compute='_compute_san_tot', 
+			
+			#compute='_compute_san_tot', 
 		)
-
-
-	@api.multi
-	#@api.depends('x_appointment')
-
-	def _compute_san_tot(self):
-		for record in self:
-			date = record.date + ' '
-			orders = record.env['sale.order'].search([
-														('state', '=', 'sale'),	
-
-														('date_order', 'like', date),
-														
-														#('name', 'like', 'CN-'),														
-														('x_type', '=', 'sale_note'),
-												])
-			total = 0 
-			for order in orders: 
-				total = total + order.amount_untaxed 
-			record.san_tot = total
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	# Total 
-	total = fields.Float(
-			'Total',
-			default = 0, 
-			compute='_compute_total', 
-		)
-
-
-
-	@api.multi
-	#@api.depends('x_appointment')
-
-	def _compute_total(self):
-		for record in self:
-
-			#print 'jx'
-			#print 'compute total'
-
-			date = record.date + ' '
-			#print 'date: ', date 
-
-
-			orders = record.env['sale.order'].search([
-														('state', '=', 'sale'),														
-														#('date_order', 'like', '2017-10-18 '),
-														('date_order', 'like', date),
-												])
-
-			#print 'orders: ', orders
-
-
-			amount_untaxed = 0 
-			count = 0 
-
-			for order in orders: 
-				amount_untaxed = amount_untaxed + order.amount_untaxed 
-				count = count + 1
-
-
-			#print 'amount_untaxed: ', amount_untaxed
-			#print 'count: ', count
-
-			#record.total = 5.5 
-			record.total = amount_untaxed
-			#print 
-
-
-
-
-	# orders 
-	#order_ids = fields.One2many(
-	#		'sale.order',			 
-	#		'closing', 
-	#		string="Ventas",
-	#		domain = [
-	#					('state', '=', 'sale'),
-	#					('date_order', '=', '2017-10-18'),
-	#				],
-	#	)
-
-
 
 
 

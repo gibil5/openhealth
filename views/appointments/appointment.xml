@@ -23,8 +23,39 @@
 
 
 				<!-- Button - Mark as completed - Replace --> 
-				<xpath expr="//button[@name='set_to_completed']" position="replace">
+<!--
+				<xpath expr="//form[0]" attrs="replace">
+	<attribute name='string'>Líneas</attribute> 
+
+					<attribute name='create'>False</attribute> 
+
+				<xpath expr="//form" position="attributes">
+					<attribute name='edit'>False</attribute> 
 				</xpath>
+-->
+			
+
+
+
+
+
+<!--
+				<xpath expr="//button[@name='save']" position="replace">
+
+							<button 
+								type="object" 
+								class="oe_highlight"
+								name="save" 
+					
+								groups="openhealth.roots,openhealth.reception"
+
+
+								string="Save - jx" 
+							/>
+				</xpath>
+-->
+
+
 
 
 
@@ -82,13 +113,25 @@
 
 
 
+
 				<!-- Patient --> 
 				<!--
+												attrs="{
+																'readonly':[('patient', '!=', False)], 
+														}"
 				-->
-				<xpath expr="//field[@name='patient']" position="replace">					
-					<field name="patient"	string="patient_r"/>					
+				<xpath expr="//field[@name='patient']" position="replace">
+
+					<field name="patient"	string="patient_r"
+
+
+						/>					
+				
 					<field name="vspace"/>
 				</xpath>
+
+
+
 
 
 
@@ -174,12 +217,28 @@ Deprecated - 4 Jan 2018
 
 
 
+<!--
+																'readonly': [('doctor','=',False)], 
+																'readonly':[('patient', '!=', False)], 
+
+
+												attrs="{
+																'readonly':[('doctor', '!=', False)], 
+														}"
+-->
 
 				<!-- Doctor --> 
 				<xpath expr="//field[@name='doctor']" position="replace">					
 					
 
-					<field name="doctor"	domain="[('x_type', '=', x_target )]"	options="{'no_create': True}"	/>
+					<field name="doctor"	
+												domain="[('x_type', '=', x_target )]"	
+
+												options="{		'no_create': True, 
+
+												
+														}"	
+						/>
 
 
 					<field name="vspace"/>

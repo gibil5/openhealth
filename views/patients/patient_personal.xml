@@ -91,7 +91,8 @@
 <!--
 																								'invisible':[('x_foreign', '!=', False)],
 -->
-								<field name="city" style="width: 40%"		
+								<field name="city" style="width: 40%"				string="Departamento"
+									
 																					attrs="{
 																								'required':[('x_foreign', '=', False)],
 																							}"

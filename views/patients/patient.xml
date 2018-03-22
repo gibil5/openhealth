@@ -40,13 +40,16 @@
 
 
 							string="Tratamiento" 
+
+
 -->
 							
 
 						<button 
 							type="object" 
-							class="oe_highlight"
 							name="open_treatment_current" 
+
+							class="oe_highlight"
 
 							string="Ultimo Tratamiento" 							
 						/>
@@ -251,6 +254,8 @@ Cosmetology
 								-->
 
 
+
+
 <field name="x_last_name" class="oe_edit_only"	attrs="{	
 															'invisible':	[('partner_id', '!=', False)], 
 															'required':		[('partner_id', '=', False)], 
@@ -273,7 +278,7 @@ Cosmetology
 <!--
 								<field name="x_autofill" 		/>
 -->							
-								<field name="x_autofill" 	groups="openhealth.roots"		/>
+								<field name="x_autofill" 	groups="openhealth.roots,openhealth.reception"		/>
 
 
 
@@ -333,7 +338,7 @@ Cosmetology
 								/>
 
 
-								<field name="x_dni"  	required="1"		attrs="{'invisible':[	('x_nationality', '!=', 'peruvian'), ]}"
+								<field name="x_dni"  		required="1"		attrs="{'invisible':[	('x_nationality', '!=', 'peruvian'), ]}"
 								/>
 
 
@@ -394,11 +399,30 @@ Cosmetology
 
 
 
+<!--
+<record id="view_patient_root_list" model="ir.ui.view">
+	<field name="name">patient.tree.root</field>
+	<field name="model">oeh.medical.patient</field>
+
+	<field name="inherit_id" ref="oehealth.oeh_medical_patient_tree"/>
+
+	<field name="groups_id" eval="[(4, ref('my_group_xmlid_with_more_access')))]"/>
+	<field name="groups_id" eval="[(4, ref('openhealth.roots')))]"/>
+
+
+	<field name="arch" type="xml">
+
+		<xpath expr="//tree" position="attributes">
+			<attribute name="create">true</attribute>
+		</xpath>
+	
+	</field>
+</record>
+-->
 
 
 
-
-		<!-- TREE -->
+<!-- TREE -->
 		<record model="ir.ui.view" id="oehealth.oeh_medical_patient_tree">
 			<field name="name">patient.tree</field>
 			<field name="model">oeh.medical.patient</field>
@@ -407,9 +431,17 @@ Cosmetology
 <!--
 				<tree string="Patient Tree"  	colors="red:x_nr_clones!=1;"  >
 				<tree string="Patient Tree"  	colors="red:x_flag=='error';"  >
--->
+
+
+				<tree create="false" edit="false" >
+				<tree create="false" edit="true" >
 				<tree string="Patient Tree">
+-->
+
+				<tree string="Patient Tree"  default_order='x_id_code desc'>
 				
+
+
 
 					<field name="name"/>
 
@@ -498,24 +530,23 @@ Cosmetology
 
 
 
-		<!-- ACTION -->
+
+
+<!-- ACTION -->
 		<record model="ir.actions.act_window" id="patient_list_action">		
-
 			<field name="name">Pacientes</field>
-		
 			<field name="res_model">oeh.medical.patient</field>
-
 			<field name="view_type">form</field>
-<!--			
-			<field name="view_mode">kanban,tree,form</field>
--->
 			<field name="view_mode">tree,form,kanban</field>
-<!--
-			<field name="context">{'order': 'name'}</field>
--->
 			<field name="context">{'order': 'x_date_created'}</field>
 
-			<field name="domain">[]</field>
+
+
+			<field name="domain">[
+									('x_id_code', '!=', False), 
+				]</field>
+
+
 
 			<!--
 			<field name="domain">[]</field>
@@ -527,6 +558,41 @@ Cosmetology
 			</field>
 			-->
 		</record>
+
+
+
+
+<!-- ACTION -->
+		<record model="ir.actions.act_window" id="patient_no_idcode_list_action">		
+			<field name="name">Pacientes sin Número de Historia</field>
+			<field name="res_model">oeh.medical.patient</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form,kanban</field>
+			<field name="context">{'order': 'x_date_created'}</field>
+
+
+
+			<field name="domain">[
+
+									('x_id_code', '=', False), 
+				]</field>
+
+
+
+			<!--
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first treatment
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+
 
 
 

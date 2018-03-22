@@ -160,7 +160,10 @@ class Appointment(models.Model):
 	doctor = fields.Many2one(
 			'oeh.medical.physician',			
 			string = "Médico", 
+
 			required=True, 
+			#required=False, 
+			
 			readonly = False, 
 		)
 

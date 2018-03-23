@@ -24,11 +24,22 @@
 
 
 
+<!--
+				<xpath expr="//field[@name='price_total']" position="before">
+				</xpath>
+-->
 
-				<xpath expr="//field[@name='price_unit']" position="after">
+				<xpath expr="//field[@name='price_unit']" position="replace">
+
+					<field name="price_unit" widget="monetary"	string="Precio unitario"	/>
+				</xpath>
+
+
+				<xpath expr="//field[@name='price_unit']" position="before">
 					
-					<field name="x_price_unit_wo_tax" widget="monetary"/>
+					<field name="x_price_unit_wo_tax" widget="monetary"  string="Precio unitario Neto"  />
 				
+					<field name="price_tax" widget="monetary"	string="Igv"	/>
 				</xpath>
 
 
@@ -40,11 +51,15 @@
 				</xpath>
 
 
-				<xpath expr="//field[@name='price_total']" position="before">
+
+
+
+				<xpath expr="//field[@name='taxes_id']" position="replace">
 					
-					<field name="price_tax" widget="monetary"/>
+					<field name="taxes_id" string="Tipo de Imp."/>
 				
 				</xpath>
+
 
 
 

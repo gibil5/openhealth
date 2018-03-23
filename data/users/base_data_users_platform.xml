@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-	<data noupdate='1'>
+	<data noupdate='0'>
+
+
+
+
+
+<!-- Nicolas Escobar -->
+		<record id="nescobar" model="res.partner">
+			<field name="name">Nicolas Escobar</field>
+			<field name="email">nescobar@clinicachavarri.com</field>
+			<field name="function">reception</field>
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
+		</record>
+
+		<record id="nescobar_clinicachavarri" model="res.users">
+			<field name="name">Nicolas Escobar</field>
+			<field name="login">nescobar@clinicachavarri.com</field>
+
+<!--			
+			<field name="password">nescobar</field>
+-->
+			<field name="password">DnXZh7FW</field>
+
+			
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+			<field name="partner_id" ref="nescobar"/>
+			<field name="lang">es_ES</field>
+		</record>
 
 
 
@@ -197,31 +226,6 @@
 
 
 
-
-<!-- Nicolas Escobar -->
-		<record id="nescobar" model="res.partner">
-			<field name="name">Nicolas Escobar</field>
-			<field name="email">nescobar@clinicachavarri.com</field>
-			<field name="function">reception</field>
-	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
-		</record>
-
-		<record id="nescobar_clinicachavarri" model="res.users">
-			<field name="name">Nicolas Escobar</field>
-			<field name="login">nescobar@clinicachavarri.com</field>
-
-<!--			
-			<field name="password">nescobar</field>
--->
-			<field name="password">DnXZh7FW</field>
-
-			
-			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-			<field name="active">True</field>
-			<field name="tz">America/Lima</field>
-			<field name="partner_id" ref="nescobar"/>
-			<field name="lang">es_ES</field>
-		</record>
 
 
 

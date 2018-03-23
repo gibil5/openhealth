@@ -38,9 +38,9 @@
 -->
 
 
+
 						<!-- Increase --> 
 <!--						
--->
 						<button 
 								name="increase"
 								type="object" 
@@ -48,9 +48,6 @@
 
 								string="+"
 						/>						
-						<!-- Decrease --> 
-<!--						
--->
 						<button 
 								name="decrease"
 								type="object" 
@@ -58,6 +55,9 @@
 
 								string="-"
 						/>						
+-->
+
+
 
 					</header>
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-	<data noupdate='1'>
+	<data noupdate='0'>
 
 
 
@@ -57,7 +57,6 @@
 
 										(4, ref('openhealth.archivo_clinicachavarri')),
 
-										(4, ref('openhealth.nescobar_clinicachavarri')),
 										(4, ref('openhealth.kcalero_clinicachavarri')),
 
 									]"/>
@@ -208,6 +207,10 @@
 			<field name="implied_ids" eval="[(4, ref('oehealth.group_oeh_medical_physician'))]"/>
 
 			<field name="users" eval="[ 
+
+										(4, ref('openhealth.nescobar_clinicachavarri')),
+
+
 										(4, ref('openhealth.medico_clinicachavarri')),
 
 										(4, ref('openhealth.fchavarri_clinicachavarri')),
@@ -224,6 +227,8 @@
 										(4, ref('openhealth.jvasquez_clinicachavarri')),
 										(4, ref('openhealth.cmendez_clinicachavarri')),
 										(4, ref('openhealth.dacosta_clinicachavarri')),
+
+
 
 									]"/>
 

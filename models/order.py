@@ -888,13 +888,13 @@ class sale_order(models.Model):
 			default = _get_default_doctor, 
 
 
-			states={
-						'draft': 	[('readonly', False)], 
-						'sent': 	[('readonly', True)], 
-						'sale': 	[('readonly', True)], 
-						'cancel': 	[('readonly', True)], 
-						'done': 	[('readonly', True)], 
-					}, 
+			#states={
+			#			'draft': 	[('readonly', False)], 
+			#			'sent': 	[('readonly', True)], 
+			#			'sale': 	[('readonly', True)], 
+			#			'cancel': 	[('readonly', True)], 
+			#			'done': 	[('readonly', True)], 
+			#		}, 
 
 		)
 
@@ -3159,20 +3159,10 @@ class sale_order(models.Model):
 
 		#Write your logic here - Begin
 
-
-		# Serial Number 
+		# Serial Number and Type
 		if self.x_payment_method.saledoc_code != False: 
-
 			self.x_serial_nr = self.x_payment_method.saledoc_code 
-
 			self.x_type = self.x_payment_method.saledoc
-
-
-
-
-
-
-
 
 
 
@@ -3180,22 +3170,9 @@ class sale_order(models.Model):
 		if self.x_doctor.name != False: 
 			uid = self.x_doctor.x_user_name.id
 			self.x_doctor_uid = uid
-
-
-
-		# Change State - To Invoiced 
-		if self.x_family == 'consultation'	or 	self.x_family == 'procedure': 
-			if self.x_appointment.name != False: 
-				#self.x_appointment.state = 'Scheduled'
-				self.x_appointment.state = 'invoiced'
-
-
-
-		# Reserve machine 
-		if self.x_family == 'procedure': 
-			self.reserve_machine()
-
+		
 		#Write your logic here - End 
+
 
 
 
@@ -3209,42 +3186,61 @@ class sale_order(models.Model):
 
 
 
+		# Family 
+		for line in self.order_line:
+
+			if line.product_id.categ_id.name == 'Consultas':
+				print 'gotcha'
+				print 'family is consultation'
+				self.x_family = 'consultation'
+
+			elif line.product_id.categ_id.name in ['Quick Laser', 'Laser Co2', 'Laser Excilite', 'Laser M22', 'Medical']: 
+				print 'gotcha'
+				print 'family is procedure'
+				self.x_family = 'procedure'
 
 
+
+		# Appointment State - To Invoiced 
+		if self.x_family == 'consultation'	or 	self.x_family == 'procedure': 
+			if self.x_appointment.name != False: 
+				self.x_appointment.state = 'invoiced'
+
+		# Reserve Machine if Procedure 
+		if self.x_family == 'procedure': 
+			self.reserve_machine()
+
+
+
+
+
+
+
+		# Patient 
 		patient_name = self.partner_id.name
 		#print patient_name
 
 
 
 
-		# Create Card ? 
+
+		# Card 
 		go_card = False 
-
-
 		order_line = self.order_line
 		for line in order_line:
-
 			print line 
 			print line.name 
-
-
 			#if line.name == 'Tarjeta VIP' or line.name == 'TARJETA VIP':
 			if line.product_id.x_name_short == 'vip_card':
-
-				print 'gotcha'
-				
+				#print 'gotcha'
 				go_card = True
-
 				print go_card
-
-
 
 
 		# Create Card 
 		if go_card:
 
 			print 'Go Card'
-
 
 
 			# Pricelist Vip - For Partner
@@ -3259,12 +3255,10 @@ class sale_order(models.Model):
 
 
 
-
 			# Search Card
 			card = self.env['openhealth.card'].search([ ('patient_name', '=', patient_name), ], order='date_created desc', limit=1)
 			card_id = card.id
 			print card 
-
 
 
 
@@ -3299,9 +3293,10 @@ class sale_order(models.Model):
 
 
 
-		# Validate Stock Picking 
+		# Stock Picking - Validate 
 		self.validate_stock_picking()
 		self.do_transfer()
+		
 	# action_confirm	
 
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-	<data noupdate='1'>
+	<data noupdate='0'>
 
 
 
@@ -15,6 +15,10 @@
 			<field name="category_id" ref="module_openhealth_category"/>
 
 			<field name="users" eval="[ 
+
+										(4, ref('openhealth.nescobar_clinicachavarri')),
+
+
 										(4, ref('openhealth.director_clinicachavarri')),
 										(4, ref('openhealth.rchavarri_clinicachavarri')),
 										(4, ref('openhealth.fchavarri_clinicachavarri')),
@@ -33,6 +37,9 @@
 			<field name="category_id" ref="module_openhealth_category"/>
 
 			<field name="users" eval="[ 
+
+
+
 
 										(4, ref('openhealth.manager_clinicachavarri')),
 										(4, ref('openhealth.vmori_clinicachavarri')),
@@ -80,7 +87,6 @@
 										(4, ref('openhealth.mgrieve_clinicachavarri')),
 										(4, ref('openhealth.ktejada_clinicachavarri')),
 										(4, ref('openhealth.avidal_clinicachavarri')),
-										(4, ref('openhealth.nescobar_clinicachavarri')),
 										(4, ref('openhealth.kcalero_clinicachavarri')),
 
 
@@ -102,8 +108,10 @@
 
 			<field name="users" eval="[ 
 
-										(4, ref('openhealth.archivo_clinicachavarri')),
 										(4, ref('openhealth.nescobar_clinicachavarri')),
+
+
+										(4, ref('openhealth.archivo_clinicachavarri')),
 										(4, ref('openhealth.kcalero_clinicachavarri')),
 
 
@@ -135,6 +143,8 @@
 			<field name="category_id" ref="module_openhealth_category"/>
 
 			<field name="users" eval="[ 
+
+
 										(4, ref('openhealth.manager_clinicachavarri')),
 										(4, ref('openhealth.vmori_clinicachavarri')),
 										(4, ref('openhealth.jessenwanger_clinicachavarri')),
@@ -166,7 +176,7 @@
 										(4, ref('openhealth.mgrieve_clinicachavarri')),
 										(4, ref('openhealth.ktejada_clinicachavarri')),
 										(4, ref('openhealth.avidal_clinicachavarri')),
-										(4, ref('openhealth.nescobar_clinicachavarri')),
+
 										(4, ref('openhealth.kcalero_clinicachavarri')),
 
 

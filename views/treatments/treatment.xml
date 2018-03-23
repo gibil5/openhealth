@@ -376,7 +376,9 @@ jz
 													'search_default_x_family': 'consultation', 
 													'default_partner_id': partner_id, 
 												}" 	
+
 										attrs="{ 'invisible':[	('nr_budgets_cons','=',0), 	]}">
+									
 									<field string="Presu - Con" name="nr_budgets_cons" widget="statinfo"/>
 								</button>
 

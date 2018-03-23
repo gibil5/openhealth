@@ -375,11 +375,15 @@ order_report.xml
 					action="counter_sale_list_action"/>
 
 
+
+
 		<menuitem 	id="all_counters_menu" 
 					name="Contadores Todos" 
 					parent="sales_config_menu"
 					sequence="2"
 					
+					groups="openhealth.roots,openhealth.directors"
+
 					action="counter_list_action"/>
 
 

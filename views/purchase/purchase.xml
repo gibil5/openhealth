@@ -25,6 +25,7 @@
 
 
 <!--
+-->
 
 				<xpath expr="//field[@name='price_unit']" position="replace">
 
@@ -52,7 +53,6 @@
 					<field name="taxes_id" string="Tipo de Imp."/>
 				
 				</xpath>
--->
 
 
 

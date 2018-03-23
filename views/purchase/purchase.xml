@@ -25,9 +25,6 @@
 
 
 <!--
-				<xpath expr="//field[@name='price_total']" position="before">
-				</xpath>
--->
 
 				<xpath expr="//field[@name='price_unit']" position="replace">
 
@@ -43,7 +40,6 @@
 				</xpath>
 
 
-
 				<xpath expr="//field[@name='price_subtotal']" position="replace">
 					
 					<field name="price_total" widget="monetary"/>
@@ -51,14 +47,12 @@
 				</xpath>
 
 
-
-
-
 				<xpath expr="//field[@name='taxes_id']" position="replace">
 					
 					<field name="taxes_id" string="Tipo de Imp."/>
 				
 				</xpath>
+-->
 
 
 

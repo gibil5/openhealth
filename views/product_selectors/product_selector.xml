@@ -70,7 +70,8 @@
 
 
 
-								<field name="treatment"
+								<field name="treatment"		string="Procedimiento"
+
 															attrs="{
 																		'invisible':[('x_type', '==', 'product')], 
 																		'invisible':[('family', '!=', 'laser')], 
@@ -99,7 +100,8 @@
 
 
 
-								<field name="product_id" 	
+								<field name="product_id" 	string="Producto"
+
 															required="1"		
 
 															options="{'no_create': True, 'no_create_edit':True}"
@@ -119,28 +121,20 @@
 
 							<group>
 								<field name="product_uom_qty" />
+								<field name="x_type" 	readonly="1"	/>
 
 
 
 <!--
--->
 								<field name="price_manual_flag" />
 
 								<field name="price_manual" 
-																attrs="{
-																	
+																attrs="{																	
 																		'invisible':[('price_manual_flag', '==', False)], 
 																		'required':[('price_manual_flag', '!=', False)], 
-																	
 																	}"
 									/>
 
-
-
-
-								<field name="x_type" 	readonly="1"	/>
-
-<!--
 								<field name="order_id" 		/>
 -->						
 							</group>

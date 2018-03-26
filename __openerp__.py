@@ -753,17 +753,17 @@
 
 
 		# ----------------------------------------------------------- Security Rules ------------------------------------------------------
-		#'security/openhealth_security_readers.xml',
-		#'security/ir.rule.xml',
-		#'security/ir.model.access.csv',
+		'security/openhealth_security_readers.xml',
+		'security/ir.rule.xml',
+		'security/ir.model.access.csv',
 
 
 		# ----------------------------------------------------------- Products ------------------------------------------------------
 
 		# Products - Tmp 
-		#'data/prods/odoo_data_products.xml',			 
-		#'data/prods/odoo_data_products_new.xml',			
-		#'data/prods/odoo_data_services_co2.xml',		
+		'data/prods/odoo_data_products.xml',			 
+		'data/prods/odoo_data_products_new.xml',			
+		'data/prods/odoo_data_services_co2.xml',		
 		#'data/prods/odoo_data_services_exc.xml',		
 		#'data/prods/odoo_data_services_m22.xml',		
 		#'data/prods/odoo_data_services_med.xml',		

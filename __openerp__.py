@@ -708,14 +708,6 @@
 		'reports/closing.xml',
 
 
-		# ----------------------------------------------------------- Menus ------------------------------------------------------
-		
-		#'views/menus/menus.xml',
-		#'views/menus/menus_reporting.xml',
-		#'views/menus/menus_kardex.xml',
-		#'views/menus/menus_inventory.xml',
-
-
 
 
 
@@ -771,17 +763,24 @@
 		'data/prods/odoo_data_services_cos.xml',		
 
 
+
+
 		# ----------------------------------------------------------- Stock Moves ------------------------------------------------------
 
-		#'views/stock/stock_move.xml',
-		#'data/stock_move_data.xml',
-		#'views/stock/stock_move_selector.xml',
-		#'views/stock/stock_move_all.xml',
+		'views/stock/stock_move.xml',
+		'data/stock_move_data.xml',
+		'views/stock/stock_move_selector.xml',
+		'views/stock/stock_move_all.xml',
 
 
-		# ----------------------------------------------------------- Edge ------------------------------------------------------
-		#'views/menus/menus_openhealth.xml',
 
+		# ----------------------------------------------------------- Menus ------------------------------------------------------
+		
+		'views/menus/menus.xml',
+		'views/menus/menus_reporting.xml',
+		'views/menus/menus_kardex.xml',
+		'views/menus/menus_inventory.xml',
+		'views/menus/menus_openhealth.xml',
 
 	],
 

@@ -704,13 +704,16 @@
 
 
 
+		# Closing 
+		'reports/closing.xml',
+
 
 		# ----------------------------------------------------------- Menus ------------------------------------------------------
 		
-		#'views/menus/menus.xml',
-		#'views/menus/menus_reporting.xml',
-		#'views/menus/menus_kardex.xml',
-		#'views/menus/menus_inventory.xml',
+		'views/menus/menus.xml',
+		'views/menus/menus_reporting.xml',
+		'views/menus/menus_kardex.xml',
+		'views/menus/menus_inventory.xml',
 
 
 
@@ -747,8 +750,6 @@
 
 		
 
-		# Closing 
-		#'reports/closing.xml',
 
 
 		# ----------------------------------------------------------- Security Rules ------------------------------------------------------

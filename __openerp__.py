@@ -745,46 +745,37 @@
 
 
 
+		
 
+		# Closing 
+		#'reports/closing.xml',
 
 
 		# ----------------------------------------------------------- Security Rules ------------------------------------------------------
-		'security/openhealth_security_readers.xml',
-		'security/ir.rule.xml',
-		'security/ir.model.access.csv',
-
-
-
-
-
-
-
-		# Closing 
-		'reports/closing.xml',
-
+		#'security/openhealth_security_readers.xml',
+		#'security/ir.rule.xml',
+		#'security/ir.model.access.csv',
 
 
 		# ----------------------------------------------------------- Products ------------------------------------------------------
 
 		# Products - Tmp 
-		'data/prods/odoo_data_products.xml',			 
-		'data/prods/odoo_data_products_new.xml',			
-		'data/prods/odoo_data_services_co2.xml',		
-		'data/prods/odoo_data_services_exc.xml',		
-		'data/prods/odoo_data_services_m22.xml',		
-		'data/prods/odoo_data_services_med.xml',		
-		'data/prods/odoo_data_services_consult.xml',	
-		'data/prods/odoo_data_services_cos.xml',		
-
+		#'data/prods/odoo_data_products.xml',			 
+		#'data/prods/odoo_data_products_new.xml',			
+		#'data/prods/odoo_data_services_co2.xml',		
+		#'data/prods/odoo_data_services_exc.xml',		
+		#'data/prods/odoo_data_services_m22.xml',		
+		#'data/prods/odoo_data_services_med.xml',		
+		#'data/prods/odoo_data_services_consult.xml',	
+		#'data/prods/odoo_data_services_cos.xml',		
 
 
 		# ----------------------------------------------------------- Stock Moves ------------------------------------------------------
 
-		'views/stock/stock_move.xml',
-		'data/stock_move_data.xml',
-		'views/stock/stock_move_selector.xml',
-		'views/stock/stock_move_all.xml',
-
+		#'views/stock/stock_move.xml',
+		#'data/stock_move_data.xml',
+		#'views/stock/stock_move_selector.xml',
+		#'views/stock/stock_move_all.xml',
 
 
 		# ----------------------------------------------------------- Edge ------------------------------------------------------
@@ -792,9 +783,6 @@
 
 
 	],
-
-
-
 
 
 

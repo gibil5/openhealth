@@ -124,7 +124,9 @@ Fields
 
 
 						<group>
+<!--
 		                    <field name="total_proof"/>
+-->					
 						</group>
 
 					</group>
@@ -150,7 +152,9 @@ Fields
 						</group>
 
 						<group>
+<!--
 		                    <field name="total_form"/>
+-->					
 						</group>
 
 					</group>
@@ -186,11 +190,11 @@ Fields
 					
 
                     <field name="name"	 				/>
-
+<!--
                     <field name="total_form"/>
 
                     <field name="total_proof"/>
-
+-->
                     <field name="total"/>
 
 

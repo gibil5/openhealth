@@ -1052,10 +1052,10 @@ class sale_order(models.Model):
 
 	@api.multi
 	def update_type(self):
-		print 'update type'
+		#print 'update type'
 		if self.x_payment_method != False: 
 			self.x_type = self.x_payment_method.saledoc
-			print self.x_type
+			#print self.x_type
 
 
 

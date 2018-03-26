@@ -58,7 +58,6 @@ Fields
 		                    <field name="date"/>
 
 <!--
-		                    <field name="date_time"		readonly="1"	/>
 -->
 
 
@@ -74,19 +73,60 @@ Fields
 
 <!--
 -->
-					<group	string="Documentos de pago"	>
+					<group	string="Documentos de pago"		col="2"			>
+
 						<group>
+
 		                    <field name="tkr_tot"/>
+		                    <field name="serial_nr_first_tkr"		/>
+		                    <field name="serial_nr_last_tkr"		/>
+
+		                    <field name="vspace"/>
+
+
 		                    <field name="tki_tot"/>
+		                    <field name="serial_nr_first_tki"		/>
+		                    <field name="serial_nr_last_tki"		/>
+
+		                    <field name="vspace"/>
+
+
 
 		                    <field name="rec_tot"/>
+		                    <field name="serial_nr_first_rec"		/>
+		                    <field name="serial_nr_last_rec"		/>
+
+
+		                    <field name="vspace"/>
+
 		                    <field name="inv_tot"/>
+		                    <field name="serial_nr_first_inv"		/>
+		                    <field name="serial_nr_last_inv"		/>
+
+
+		                    <field name="vspace"/>
+
+
 
 		                    <field name="adv_tot"/>
+		                    <field name="serial_nr_first_adv"		/>
+		                    <field name="serial_nr_last_adv"		/>
+
+		                    <field name="vspace"/>
+
 		                    <field name="san_tot"/>
+		                    <field name="serial_nr_first_san"		/>
+		                    <field name="serial_nr_last_san"		/>
+
+		                    <field name="vspace"/>
+
 						</group>
 
-						<group></group>
+
+						<group>
+		                    <field name="total_proof"/>
+						</group>
+
 					</group>
 
 
@@ -108,9 +148,11 @@ Fields
 		                    <field name="vid_tot"/>
 
 						</group>
+
 						<group>
-							
+		                    <field name="total_form"/>
 						</group>
+
 					</group>
 
 
@@ -145,11 +187,18 @@ Fields
 
                     <field name="name"	 				/>
 
-                    <field name="date"		string="Fecha"	/>
+                    <field name="total_form"/>
+
+                    <field name="total_proof"/>
+
+                    <field name="total"/>
 
 
 
 <!--
+                    <field name="date"		string="Fecha"	/>
+
+
                     <field name="cash_tot"/>
                     <field name="ame_tot"/>
                     <field name="cuo_tot"/>
@@ -158,7 +207,6 @@ Fields
                     <field name="mad_tot"/>
                     <field name="vic_tot"/>
                     <field name="vid_tot"/>
--->
 
                     <field name="tkr_tot"/>
                     <field name="tki_tot"/>
@@ -168,10 +216,9 @@ Fields
 
                     <field name="adv_tot"/>
                     <field name="san_tot"/>
+-->
 
 
-
-                    <field name="total"/>
 
 <!--
                     <field name="order_ids"/>

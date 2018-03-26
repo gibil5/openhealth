@@ -61,7 +61,9 @@ class Process(models.Model):
 			string="Médico",
 			index=True,
 	
-			readonly=True, 
+			#readonly=True, 
+			readonly=False, 
+
 			states=READONLY_STATES, 
 		)
 	

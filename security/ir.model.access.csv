@@ -4,6 +4,33 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+access_printing_printer,access_printing_printer,base_report_to_printer.model_printing_printer,,1,1,1,1
+access_printing_action,access_printing_action,base_report_to_printer.model_printing_action,,1,1,1,1
+access_printing_report_xml_action,access_printing_printer_report_xml_action,base_report_to_printer.model_printing_report_xml_action,,1,1,1,1
+
+
+
+
+
+
+
+access_openhealth_legacy,access_openhealth_legacy,model_openhealth_legacy,,1,1,1,1
+access_openhealth_data,access_openhealth_data,model_openhealth_data,,1,1,1,1
+access_openhealth_legacy,access_openhealth_legacy,model_openhealth_legacy,,1,1,1,1
+access_openhealth_legacy_order,access_openhealth_legacy_order,model_openhealth_legacy_order,,1,1,1,1
+access_openhealth_data_analyzer,access_openhealth_data_analyzer,model_openhealth_data_analyzer,,1,1,1,1
+access_openhealth_legacy_manager_order,access_openhealth_legacy_manager_order,model_openhealth_legacy_manager_order,,1,1,1,1
+access_openhealth_legacy_patient,access_openhealth_legacy_patient,model_openhealth_legacy_patient,,1,1,1,1
+access_openhealth_data,access_openhealth_data,model_openhealth_data,,1,1,1,1
+
+access_openhealth_legacy_manager,access_openhealth_legacy_manager,model_openhealth_legacy_manager,,1,1,1,1
+access_openhealth_legacy_manager_patient,access_openhealth_legacy_manager_patient,model_openhealth_legacy_manager_patient,,1,1,1,1
+
+
+
+
+
+
 access_openhealth_order_report_caja,openhealth.order.report.caja,model_openhealth_order_report,openhealth.caja,1,1,1,1
 access_openhealth_order_report_reception,openhealth.order.report.reception,model_openhealth_order_report,openhealth.reception,1,1,1,1
 
@@ -95,11 +122,6 @@ access_product_selector,product.selector,model_openhealth_product_selector,,1,1,
 access_sale_report_day,sale.report.day,model_sale_report_day,,1,1,1,1
 
 
-
-access_mrp_bom,mrp.bom,mrp.model_mrp_bom,,1,1,1,1
-access_mrp_bom_line,mrp.bom.line,mrp.model_mrp_bom_line,,1,1,1,1
-access_mrp_bom_caja,mrp.bom.caja,mrp.model_mrp_bom,openhealth.caja,1,1,1,1
-access_mrp_bom_line_caja,mrp.bom.line.caja,mrp.model_mrp_bom_line,openhealth.caja,1,1,1,1
 
 
 

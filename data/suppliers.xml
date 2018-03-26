@@ -26,14 +26,25 @@
 <!-- 
 			<field name="name">Revilla Rondon y Asociados</field>
 			<field name="name">XX</field>
--->
+			<field name="lang">es_ES</field>
+
 		<record id="supplier_revilla_rondon" model="res.partner">
 			<field name="name">Y</field>
 			<field name="email">jrevilla55@gmail.com</field>
-			<field name="lang">es_ES</field>
 			<field name="customer" eval="False" />
 			<field name="supplier" eval="True" />
 		</record>
+-->
+		<record id="supplier_revilla_y_asociados_inc" model="res.partner">
+			<field name="name">Revilla y Asociados Inc</field>
+			<field name="email">jrevilla55@gmail.com</field>
+			<field name="customer" eval="False" />
+			<field name="supplier" eval="True" />
+		</record>
+
+
+
+
 
 
 

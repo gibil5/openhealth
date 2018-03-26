@@ -12,17 +12,20 @@
 		</record>
 		-->
 
-		<record id="stock_move_all_default_view" model="stock.move.all">
+
+
+
 <!--
 			<field name="name">Kardex Almacén General - Cremas - Generar</field>
--->	
+			<field name="name">Kardex Almacén General - Consumibles - Generar</field>
+		<record id="stock_move_all_default_view" model="stock.move.all">
+			<field name="name">This</field>
 		</record>
 
 		<record id="stock_move_all_consu_default_view" model="stock.move.all">
-<!--		
-			<field name="name">Kardex Almacén General - Consumibles - Generar</field>
--->	
+			<field name="name">This</field>
 		</record>
+-->	
 
 
 
@@ -355,9 +358,11 @@
 
 			<field name="context">{}</field>
 
-			<field name="res_id" ref="stock_move_all_default_view"/>	
 
 <!--
+			<field name="res_id" ref="stock_move_all_default_view"/>	
+
+
 			<field name="target">current</field>
 			<field name="target">inline</field>
 			<field name="view_type">form</field>
@@ -387,9 +392,11 @@
 			<field name="context">{}</field>
 
 
-			<field name="res_id" ref="stock_move_all_consu_default_view"/>	
 
 <!--
+			<field name="res_id" ref="stock_move_all_consu_default_view"/>	
+
+
 			<field name="target">current</field>
 			<field name="target">inline</field>
 			<field name="view_type">form</field>

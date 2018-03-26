@@ -292,7 +292,9 @@
 										(4, ref('openhealth.mgrieve_clinicachavarri')),
 										(4, ref('openhealth.ktejada_clinicachavarri')),
 										(4, ref('openhealth.avidal_clinicachavarri')),
-										
+
+										(4, ref('openhealth.cramirez_clinicachavarri')),
+
 									]"/>
 		</record>
 

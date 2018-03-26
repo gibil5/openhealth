@@ -23,7 +23,9 @@
 <!-- Legacy --> 
 		<record id='legacy' model='product.category'>
 			<field name='name'>legacy</field>
+<!--
 	        <field name="active">1</field>
+-->
 		</record>
 
 

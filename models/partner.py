@@ -145,7 +145,8 @@ class Partner(models.Model):
 			string = 'Email',  
 			placeholder = '',
 			
-			required=True, 
+			#required=True, 
+			required=False, 
 		)
 
 

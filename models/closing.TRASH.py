@@ -4,6 +4,13 @@
 
 
 
+	date_time = fields.Datetime(
+			string="Fecha y Hora", 
+			#default = fields.Date.today, 
+			default = datetime.datetime.now(),
+			#readonly=True,
+			#required=True, 
+		)
 
 
 

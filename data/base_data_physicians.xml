@@ -13,7 +13,7 @@
 		<record id="dr_medico" model="oeh.medical.physician">
 			<field name="name">Dr. Medico</field>
 			<field name="x_type">doctor</field>
-			<field name=" consultancy_type ">residential</field>
+			<field name="consultancy_type">Residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
 		</record>
 
@@ -37,7 +37,7 @@
 		<record id="dr_clinica_chavarri" model="oeh.medical.physician">
 			<field name="name">Clinica Chavarri</field>
 			<field name="x_type">doctor</field>
-			<field name=" consultancy_type ">residential</field>
+			<field name="consultancy_type">Residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
 		</record>
 
@@ -70,7 +70,12 @@
 		<record id="dr_acosta" model="oeh.medical.physician">
 			<field name="name">Dra. Acosta</field>
 			<field name="x_type">doctor</field>
-			<field name=" consultancy_type ">residential</field>
+
+			<field name="consultancy_type">Residential</field>
+<!--
+			<field groups="technical name" name="standard_price"/> .
+-->
+
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
 		</record>
 
@@ -81,7 +86,7 @@
 		<record id="dr_pedemonte" model="oeh.medical.physician">
 			<field name="name">Dra. Pedemonte</field>
 			<field name="x_type">doctor</field>
-			<field name=" consultancy_type ">residential</field>
+			<field name="consultancy_type">Residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
 		</record>
 
@@ -93,7 +98,7 @@
 		<record id="dr_chavarri" model="oeh.medical.physician">
 			<field name="name">Dr. Chavarri</field>
 			<field name="x_type">doctor</field>
-			<field name=" consultancy_type ">residential</field>
+			<field name="consultancy_type">Residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
 
 <!--
@@ -171,7 +176,7 @@
 		<record id="dr_canales" model="oeh.medical.physician">
 			<field name="name">Dr. Canales</field>
 			<field name="x_type">doctor</field>
-			<field name=" consultancy_type ">residential</field>
+			<field name="consultancy_type">Residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
 <!--
 			<field name="x_user_name">Paul Canales</field>
@@ -249,7 +254,7 @@
 		<record id="dr_escudero" model="oeh.medical.physician">
 			<field name="name">Dr. Escudero</field>
 			<field name="x_type">doctor</field>
-			<field name=" consultancy_type ">residential</field>
+			<field name="consultancy_type">Residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
 		</record>
 
@@ -328,7 +333,7 @@
 		<record id="dr_gonzales" model="oeh.medical.physician">
 			<field name="name">Dr. Gonzales</field>
 			<field name="x_type">doctor</field>
-			<field name=" consultancy_type ">residential</field>
+			<field name="consultancy_type">Residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
 		</record>
 
@@ -402,7 +407,7 @@
 		<record id="dr_vasquez" model="oeh.medical.physician">
 			<field name="name">Dr. Vasquez</field>
 			<field name="x_type">doctor</field>
-			<field name=" consultancy_type ">residential</field>
+			<field name="consultancy_type">Residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
 		</record>
 
@@ -480,7 +485,7 @@
 		<record id="dr_alarcon" model="oeh.medical.physician">
 			<field name="name">Dr. Alarcón</field>
 			<field name="x_type">doctor</field>
-			<field name=" consultancy_type ">residential</field>
+			<field name="consultancy_type">Residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
 		</record>
 
@@ -559,7 +564,7 @@
 		<record id="dr_mendez" model="oeh.medical.physician">
 			<field name="name">Dr. Mendez</field>
 			<field name="x_type">doctor</field>
-			<field name=" consultancy_type ">residential</field>
+			<field name="consultancy_type">Residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
 		</record>
 
@@ -634,7 +639,7 @@
 		<record id="dr_monteverde" model="oeh.medical.physician">
 			<field name="name">Dr. Monteverde</field>
 			<field name="x_type">doctor</field>
-			<field name=" consultancy_type ">residential</field>
+			<field name="consultancy_type">Residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
 		</record>
 
@@ -710,7 +715,7 @@
 		<record id="eulalia" model="oeh.medical.physician">
 			<field name="name">Eulalia</field>
 			<field name="x_type">therapist</field>
-			<field name=" consultancy_type ">residential</field>
+			<field name="consultancy_type">Residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
 			<field name="x_therapist">True</field>
 		</record>
@@ -807,7 +812,7 @@
 		<record id="dr_revilla" model="oeh.medical.physician">
 			<field name="name">Dr. Revilla</field>
 			<field name="x_type">doctor</field>
-			<field name=" consultancy_type ">residential</field>
+			<field name="consultancy_type">Residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
 		</record>
 -->

@@ -12,15 +12,16 @@ import datetime
 # ----------------------------------------------------------- Funcs ------------------------------------------------------
 
 @api.multi
-#def get_dates(self, date):
-#def get_orders(self, date):
 def get_orders(self, date, x_type):
 
 
-	print 'jx'
-	print 'Get Orders'
+	#print 'jx'
+	#print 'Get Orders'
+	#print date 
 
-	print date 
+
+	count = 0 
+
 
 
 	#DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
@@ -38,37 +39,54 @@ def get_orders(self, date, x_type):
 	if x_type == 'all': 
 		
 		orders = self.env['sale.order'].search([
-												('state', '=', 'sale'),														
-																												
-												('date_order', '>=', date_begin),
-
-												('date_order', '<', date_end),									
+													('state', '=', 'sale'),
+													('date_order', '>=', date_begin),
+													('date_order', '<', date_end),
 											])
+
+
+		count = self.env['sale.order'].search_count([
+													('state', '=', 'sale'),
+													('date_order', '>=', date_begin),
+													('date_order', '<', date_end),
+											])
+
 
 
 	else: 
 
 		orders = self.env['sale.order'].search([
-												('state', '=', 'sale'),														
-																												
-												('date_order', '>=', date_begin),
+													('state', '=', 'sale'),
+													('date_order', '>=', date_begin),
+													('date_order', '<', date_end),
+													('x_type', '=', x_type),
+											],
+												order='x_serial_nr asc',
+												#limit=1,
+											)
 
-												('date_order', '<', date_end),									
-												
-												('x_type', '=', x_type),																												
-											])
+		count = self.env['sale.order'].search_count([
+													('state', '=', 'sale'),
+													('date_order', '>=', date_begin),
+													('date_order', '<', date_end),
+													('x_type', '=', x_type),
+											],
+												#order='x_serial_nr asc',
+												#limit=1,
+											)
 
 
 
 
 
 
-	print date_begin
-	print date_end
-	print orders  
+
+	#print date_begin
+	#print date_end
+	#print orders  
 	
-	#return date_begin, date_end
-	return orders  
+	#return orders 
+	return orders, count
 
 
 
@@ -78,17 +96,13 @@ def get_orders(self, date, x_type):
 
 
 # ----------------------------------------------------------- Funcs ------------------------------------------------------
-@api.multi
-def update_orders(self, date):
-
-	print 'jx'
-	print 'Get Orders'
-
-
-	orders = get_orders(self, date)
-	print orders
-
-	for order in orders: 
-		order.update_type()
+#@api.multi
+#def update_orders(self, date):
+#	print 'jx'
+#	print 'Get Orders'
+#	orders = get_orders(self, date)
+#	print orders
+#	for order in orders: 
+#		order.update_type()
 		#print order.x_type 
 

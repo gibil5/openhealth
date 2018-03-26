@@ -6,6 +6,34 @@
 
 
 
+
+
+<!-- Cinthya Ramirez -->
+		<record id="cramirez" model="res.partner">
+			<field name="name">Cinthya Ramirez</field>
+			<field name="email">cramirez@clinicachavarri.com</field>
+			<field name="function">reception</field>
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
+		</record>
+
+		<record id="cramirez_clinicachavarri" model="res.users">
+			<field name="name">Cinthya Ramirez</field>
+			<field name="login">cramirez@clinicachavarri.com</field>
+
+			<field name="password">Q6m3a8jr</field>
+
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+			<field name="partner_id" ref="cramirez"/>
+			<field name="lang">es_ES</field>
+		</record>
+
+
+
+
+
+
 <!-- Nicolas Escobar -->
 		<record id="nescobar" model="res.partner">
 			<field name="name">Nicolas Escobar</field>
@@ -28,33 +56,6 @@
 			<field name="active">True</field>
 			<field name="tz">America/Lima</field>
 			<field name="partner_id" ref="nescobar"/>
-			<field name="lang">es_ES</field>
-		</record>
-
-
-
-
-
-
-
-<!-- Cinthya Ramirez -->
-		<record id="cramirez" model="res.partner">
-			<field name="name">Cinthya Ramirez</field>
-			<field name="email">cramirez@clinicachavarri.com</field>
-			<field name="function">reception</field>
-	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
-		</record>
-
-		<record id="cramirez_clinicachavarri" model="res.users">
-			<field name="name">Cinthya Ramirez</field>
-			<field name="login">cramirez@clinicachavarri.com</field>
-
-			<field name="password">Q6m3a8jr</field>
-
-			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-			<field name="active">True</field>
-			<field name="tz">America/Lima</field>
-			<field name="partner_id" ref="cramirez"/>
 			<field name="lang">es_ES</field>
 		</record>
 

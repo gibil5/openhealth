@@ -26,7 +26,7 @@
 
 
 
-		Last built: 	23 March 2018 - Rebirth !!!
+		Last built: 	26 March 2018 - Rebirth !!!
 
 
 
@@ -112,8 +112,6 @@
 
 
 
-		# Closing 
-		'reports/closing.xml',
 
 
 
@@ -250,6 +248,7 @@
 
 
 		# Doctors
+		'data/base_data_physicians_lines.xml',				# check
 		'data/base_data_physicians.xml',				# check
 
 
@@ -698,6 +697,73 @@
 
 
 
+
+
+
+
+
+
+
+
+		# ----------------------------------------------------------- Menus ------------------------------------------------------
+		
+		'views/menus/menus.xml',
+		'views/menus/menus_reporting.xml',
+		'views/menus/menus_kardex.xml',
+		'views/menus/menus_inventory.xml',
+
+
+
+
+
+
+
+
+
+		# ----------------------------------------------------------- Purchase ------------------------------------------------------
+		'views/purchase/purchase_report.xml',			# Deprecated
+		'views/purchase/purchase_report_view.xml',		# Deprecated 
+
+
+		# Mail template - Deprecated 
+		#'views/mail/rfq_send.xml',
+
+
+
+
+
+
+		# ----------------------------------------------------------- Legacy ------------------------------------------------------
+		'views/legacy/legacy.xml',
+		'views/legacy/legacy_patient.xml',
+		'views/legacy/legacy_manager.xml',
+		'views/data/data_analyzer.xml',
+		'views/legacy/legacy_manager_order.xml',
+		'views/legacy/legacy_manager_patient.xml',
+		'views/legacy/legacy_order.xml',
+		'views/menus/menus_legacy.xml',
+
+
+
+
+
+
+		# ----------------------------------------------------------- Security Rules ------------------------------------------------------
+		'security/openhealth_security_readers.xml',
+		'security/ir.rule.xml',
+		'security/ir.model.access.csv',
+
+
+
+
+
+
+
+		# Closing 
+		'reports/closing.xml',
+
+
+
 		# ----------------------------------------------------------- Products ------------------------------------------------------
 
 		# Products - Tmp 
@@ -707,11 +773,8 @@
 		'data/prods/odoo_data_services_exc.xml',		
 		'data/prods/odoo_data_services_m22.xml',		
 		'data/prods/odoo_data_services_med.xml',		
-		'data/prods/odoo_data_services_cos.xml',		
 		'data/prods/odoo_data_services_consult.xml',	
-
-
-
+		'data/prods/odoo_data_services_cos.xml',		
 
 
 
@@ -724,65 +787,9 @@
 
 
 
-
-
-		# ----------------------------------------------------------- Menus ------------------------------------------------------
-		
-		'views/menus/menus.xml',
-		'views/menus/menus_kardex.xml',
-		'views/menus/menus_reporting.xml',
-		'views/menus/menus_inventory.xml',
-
-
-
-
-
-		# ----------------------------------------------------------- Security Rules ------------------------------------------------------
-
-		'security/openhealth_security_readers.xml',
-		'security/ir.rule.xml',
-		'security/ir.model.access.csv',
-
-
-
-
-
-		# ----------------------------------------------------------- Purchase ------------------------------------------------------
-		'views/purchase/purchase_report.xml',			# Deprecated
-		'views/purchase/purchase_report_view.xml',		# Deprecated 
-
-
-		# Mail template - Deprecated 
-		'views/mail/rfq_send.xml',
-
-
-
-
-
-
-		# ----------------------------------------------------------- Legacy ------------------------------------------------------
-		'views/legacy/legacy.xml',
-		'views/legacy/legacy_patient.xml',
-		'views/legacy/legacy_manager.xml',
-		'views/data/data_analyzer.xml',
-
-
-
-		'views/legacy/legacy_manager_order.xml',
-		'views/legacy/legacy_manager_patient.xml',
-
-		'views/legacy/legacy_order.xml',
-
-		'views/menus/menus_legacy.xml',
-
-
-
-
-
-
-
 		# ----------------------------------------------------------- Edge ------------------------------------------------------
 		'views/menus/menus_openhealth.xml',
+
 
 	],
 

@@ -208,7 +208,7 @@
 
 					<field name="vspace"/>
 
-					<field name="date_order" 			string="Fecha"		readonly="1"	/>					
+					<field name="date_order" 			string="Fecha"		readonly="0"	/>					
 
 					<field name="vspace"/>
 

@@ -22,6 +22,95 @@ class Closing(models.Model):
 	
 
 
+
+
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
+	
+	# Dates
+	date = fields.Date(
+			string="Fecha", 
+			default = fields.Date.today, 
+			#readonly=True,
+			required=True, 
+		)
+
+
+
+# Total Form 
+	total_form = fields.Float(
+			'Total Formas de pago',
+			default = 0, 
+		)
+
+
+
+# Total Proof 
+	total_proof = fields.Float(
+			'Total Documentos de pago',
+			default = 0, 
+		)
+
+
+
+# Serial numbers 
+	serial_nr_first_tkr = fields.Char(
+			string="De:", 
+		)	
+	serial_nr_last_tkr = fields.Char(
+			string="A:", 
+		)
+
+
+	serial_nr_first_tki = fields.Char(
+			string="De:", 
+		)
+	serial_nr_last_tki = fields.Char(
+			string="A:", 
+		)
+
+
+
+
+	serial_nr_first_rec = fields.Char(
+			string="De:", 
+		)	
+	serial_nr_last_rec = fields.Char(
+			string="A:", 
+		)
+
+	serial_nr_first_inv = fields.Char(
+			string="De:", 
+		)	
+	serial_nr_last_inv = fields.Char(
+			string="A:", 
+		)
+
+
+
+
+	serial_nr_first_adv = fields.Char(
+			string="De:", 
+		)	
+	serial_nr_last_adv = fields.Char(
+			string="A:", 
+		)
+
+
+	serial_nr_first_san = fields.Char(
+			string="De:", 
+		)	
+	serial_nr_last_san = fields.Char(
+			string="A:", 
+		)
+
+
+
+
+
+
+
+
+
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 
 	# Update 
@@ -35,19 +124,14 @@ class Closing(models.Model):
 
 
 
-		# Total 
-		x_type = 'all'
-		#orders = clos_funcs.get_orders(self, self.date)
-		orders = clos_funcs.get_orders(self, self.date, x_type)
-		print 'orders: ', orders
-		print 
 
+# Total 
+		x_type = 'all'
+		orders,count = clos_funcs.get_orders(self, self.date, x_type)
 		amount_untaxed = 0 
 		count = 0 
 		for order in orders: 
-	
 			order.update_type()
-	
 			amount_untaxed = amount_untaxed + order.amount_untaxed 
 			count = count + 1
 		self.total = amount_untaxed
@@ -55,47 +139,43 @@ class Closing(models.Model):
 
 
 
-		#orders = self.env['sale.order'].search([
-		#												('state', '=', 'sale'),	
-		#												('date_order', 'like', date),
-		#												('x_type', '=', 'receipt'),																												
-		#										])
 
 		
 
+
+
+# Proof 
 		# Receipts
 		x_type = 'receipt'
 		
-		orders = clos_funcs.get_orders(self, self.date, x_type)
+		orders,count = clos_funcs.get_orders(self, self.date, x_type)
 		
 		total = 0 
 		for order in orders: 
 			total = total + order.amount_untaxed 
 		self.rec_tot = total
 
+		if count != 0: 
+			self.serial_nr_first_rec = orders[0].x_serial_nr
+			self.serial_nr_last_rec = orders[-1].x_serial_nr
+
+
 
 
 		# Invoices
 		x_type = 'invoice'
 		
-		orders = clos_funcs.get_orders(self, self.date, x_type)
+		orders,count = clos_funcs.get_orders(self, self.date, x_type)
 		
 		total = 0 
 		for order in orders: 
 			total = total + order.amount_untaxed 
 		self.inv_tot = total
 
+		if count != 0: 
+			self.serial_nr_first_inv = orders[0].x_serial_nr
+			self.serial_nr_last_inv = orders[-1].x_serial_nr
 
-
-		# Ticket Invoices
-		x_type = 'ticket_invoice'
-		
-		orders = clos_funcs.get_orders(self, self.date, x_type)
-		
-		total = 0 
-		for order in orders: 
-			total = total + order.amount_untaxed 
-		self.tki_tot = total
 
 
 
@@ -103,12 +183,40 @@ class Closing(models.Model):
 		# Ticket Receipts
 		x_type = 'ticket_receipt'
 		
-		orders = clos_funcs.get_orders(self, self.date, x_type)
 		
+		orders,count = clos_funcs.get_orders(self, self.date, x_type)
+		
+		#print orders
+		#print orders[0].x_serial_nr
+		#print orders[-1].x_serial_nr
+
 		total = 0 
 		for order in orders: 
 			total = total + order.amount_untaxed 
 		self.tkr_tot = total
+
+		if count != 0: 
+			self.serial_nr_first_tkr = orders[0].x_serial_nr
+			self.serial_nr_last_tkr = orders[-1].x_serial_nr
+
+
+
+		# Ticket Invoices
+		x_type = 'ticket_invoice'
+		
+		orders,count = clos_funcs.get_orders(self, self.date, x_type)
+		
+		total = 0 
+		for order in orders: 
+			total = total + order.amount_untaxed 
+		self.tki_tot = total
+
+		if count != 0: 
+			self.serial_nr_first_tki = orders[0].x_serial_nr
+			self.serial_nr_last_tki = orders[-1].x_serial_nr
+
+
+
 
 
 
@@ -116,12 +224,17 @@ class Closing(models.Model):
 		# Advertisement
 		x_type = 'advertisement'
 		
-		orders = clos_funcs.get_orders(self, self.date, x_type)
+		orders,count = clos_funcs.get_orders(self, self.date, x_type)
 		
 		total = 0 
 		for order in orders: 
 			total = total + order.amount_untaxed 
 		self.adv_tot = total
+
+		if count != 0: 
+			self.serial_nr_first_adv = orders[0].x_serial_nr
+			self.serial_nr_last_adv = orders[-1].x_serial_nr
+
 
 
 
@@ -129,29 +242,42 @@ class Closing(models.Model):
 		# Sale notes 
 		x_type = 'sale_note'
 		
-		orders = clos_funcs.get_orders(self, self.date, x_type)
+		orders,count = clos_funcs.get_orders(self, self.date, x_type)
 		
 		total = 0 
 		for order in orders: 
 			total = total + order.amount_untaxed 
 		self.san_tot = total
 
+		if count != 0: 
+			self.serial_nr_first_san = orders[0].x_serial_nr
+			self.serial_nr_last_san = orders[-1].x_serial_nr
 
 
 
+
+		# Total Proof 
+		self.total_proof = self.rec_tot + self.inv_tot + self.tkr_tot + self.tki_tot + self.adv_tot + self.san_tot
+
+
+
+
+
+# Form
 		# Payment methods 
 		x_type = 'all'
-		orders = clos_funcs.get_orders(self, self.date, x_type)
+		orders,count = clos_funcs.get_orders(self, self.date, x_type)
 
 
 		cash_tot = 0 
 		ame_tot = 0 
-		cuo_tot = 0 
 		din_tot = 0 
 		mac_tot = 0 
 		mad_tot = 0 
 		vic_tot = 0 
 		vid_tot = 0 
+
+		#cuo_tot = 0 
 
 
 
@@ -165,9 +291,6 @@ class Closing(models.Model):
 
 				elif pm_line.method == 'american_express':
 					ame_tot = ame_tot + pm_line.subtotal  
-
-				elif pm_line.method == 'cuota_perfecta':
-					cuo_tot = cuo_tot + pm_line.subtotal  
 
 
 
@@ -190,17 +313,29 @@ class Closing(models.Model):
 
 
 
+				#elif pm_line.method == 'cuota_perfecta':
+				#	cuo_tot = cuo_tot + pm_line.subtotal  
+
+
+
+
 
 
 		self.cash_tot = cash_tot
 		self.ame_tot = ame_tot
-		self.cuo_tot = cuo_tot
 		self.din_tot = din_tot
+
 		self.mac_tot = mac_tot
 		self.mad_tot = mad_tot
+		
 		self.vic_tot = vic_tot
 		self.vid_tot = vid_tot
 
+		#self.cuo_tot = cuo_tot
+
+
+
+		self.total_form = self.cash_tot + self.ame_tot + self.din_tot + self.mac_tot + self.mad_tot + self.vic_tot + self.vid_tot 	#+ self.cuo_tot 
 
 
 
@@ -224,23 +359,6 @@ class Closing(models.Model):
 			record.name = record.date 
 
 
-
-
-	# Dates
-	date = fields.Date(
-			string="Fecha", 
-			default = fields.Date.today, 
-			#readonly=True,
-			required=True, 
-		)
-
-	date_time = fields.Datetime(
-			string="Fecha y Hora", 
-			#default = fields.Date.today, 
-			default = datetime.datetime.now(),
-			#readonly=True,
-			#required=True, 
-		)
 
 
 
@@ -276,13 +394,13 @@ class Closing(models.Model):
 			#compute='_compute_method_tot', 
 		)
 
-	# cuo  
-	cuo_tot = fields.Float(
-			'Cuota Perfecta',
-			default = 0, 
 
-			#compute='_compute_method_tot', 
-		)
+
+	# cuo  
+	#cuo_tot = fields.Float(
+	#		'Cuota Perfecta',
+	#		default = 0, 
+	#	)
 
 
 

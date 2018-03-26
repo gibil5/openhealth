@@ -90,6 +90,8 @@
 										(4, ref('openhealth.kcalero_clinicachavarri')),
 
 
+										(4, ref('openhealth.cramirez_clinicachavarri')),
+
 									]"/>
 		</record>
 
@@ -183,6 +185,8 @@
 										(4, ref('openhealth.caja_clinicachavarri')),
 										(4, ref('openhealth.gnunhez_clinicachavarri')),
 
+
+										(4, ref('openhealth.cramirez_clinicachavarri')),
 									]"/>
 		</record>
 

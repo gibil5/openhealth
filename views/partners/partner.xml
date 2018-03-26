@@ -345,47 +345,15 @@
 
 
 
-<!--
-
-            <field name="domain">[]</field>
--->
-		<record model="ir.actions.act_window" id="mail.action_contacts">
-
-			<field name="name">Contacts</field>
-
-			<field name="res_model">res.partner</field>
-			
-			<field name="view_type">form</field>
-			
-			<field name="view_mode">tree,form</field>
-			
-            <field name="domain">[]</field>
-
-            <field name="context">{}</field>
-
-			<!--
-            <field name="domain">
-            	[
-					('category_id','=','staff'), 
-            	]
-            </field>
-
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="view_id" eval="False"/>			
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first partner
-				</p>
-			</field>
-			-->
-		</record>
 
 
 
 
 
 
-		<!-- TREE -->
+
+
+<!-- TREE -->
 		<record model="ir.ui.view" id="base.view_partner_tree">
 
 			<field name="name">res.partner.tree</field>
@@ -450,6 +418,61 @@
 				</tree>
 			</field>
 		</record>
+
+
+
+
+<!-- ACTION -->
+		<record model="ir.actions.act_window" id="mail.action_contacts">
+
+			<field name="name">Contacts</field>
+
+			<field name="res_model">res.partner</field>
+			
+			<field name="view_type">form</field>
+			
+			<field name="view_mode">tree,form</field>
+			
+            <field name="domain">[]</field>
+
+            <field name="context">{}</field>
+
+
+            <field name="view_id" ref="base.view_partner_tree"/>
+
+
+			<field name="view_ids" eval="[			(5, 0, 0),
+												    (0, 0, {'view_mode': 'tree', 'view_id': ref('base.view_partner_tree')}),
+												    (0, 0, {'view_mode': 'form', 'view_id': ref('base.view_partner_form')}),
+											]
+										"/>
+
+
+			<!--
+												    (0, 0, {'view_mode': 'kanban', 'view_id': ref('base.view_partner_kanban')}),
+
+
+            <field name="domain">
+            	[
+					('category_id','=','staff'), 
+            	]
+            </field>
+
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first partner
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+
+
+
 
 
 

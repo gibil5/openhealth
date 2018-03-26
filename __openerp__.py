@@ -553,7 +553,7 @@
 
 
 		# closings 
-		'views/closings/closings.xml',
+		#'views/closings/closings.xml',
 
 
 
@@ -788,7 +788,7 @@
 
 
 		# ----------------------------------------------------------- Edge ------------------------------------------------------
-		'views/menus/menus_openhealth.xml',
+		#'views/menus/menus_openhealth.xml',
 
 
 	],

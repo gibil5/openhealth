@@ -87,7 +87,9 @@ Fields
 
 						<group>
 		                    <field name="total_form"/>
+<!--
 		                    <field name="total_cards"/>
+-->					
 						</group>
 					</group>
 

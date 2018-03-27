@@ -71,8 +71,30 @@ Fields
 					</group>
 
 
-<!--
--->
+
+
+<!-- Form -->
+					<group	string="Formas de pago"	>
+						<group>
+		                    <field name="cash_tot"/>
+		                    <field name="ame_tot"/>
+		                    <field name="din_tot"/>
+		                    <field name="mac_tot"/>
+		                    <field name="mad_tot"/>
+		                    <field name="vic_tot"/>
+		                    <field name="vid_tot"/>
+						</group>
+
+						<group>
+		                    <field name="total_form"/>
+		                    <field name="total_cards"/>
+						</group>
+					</group>
+
+
+
+
+<!-- Proof -->
 					<group	string="Documentos de pago"		col="2"			>
 
 						<group>
@@ -122,38 +144,13 @@ Fields
 
 						</group>
 
-
 						<group>
 		                    <field name="total_proof"/>
 						</group>
-
 					</group>
 
 
 
-
-					<group	string="Formas de pago"	>
-						<group>
-
-		                    <field name="cash_tot"/>
-		                    <field name="ame_tot"/>
-<!--		                    
-		                    <field name="cuo_tot"/>
--->
-		                    <field name="din_tot"/>
-		                    <field name="mac_tot"/>
-		                    <field name="mad_tot"/>
-
-		                    <field name="vic_tot"/>
-		                    <field name="vid_tot"/>
-
-						</group>
-
-						<group>
-		                    <field name="total_form"/>
-						</group>
-
-					</group>
 
 
 

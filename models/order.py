@@ -539,7 +539,22 @@ class sale_order(models.Model):
 
 # ----------------------------------------------------------- Date corrected ------------------------------------------------------
 
-	#date_order = fields.Datetime(string='Order Date', required=True, readonly=True, index=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}, copy=False, default=fields.Datetime.now)
+	date_order = fields.Datetime(
+		#string='Order Date', 
+		#required=True, 
+
+		#readonly=True, 
+
+		#index=True, 
+
+		states={	'draft': [('readonly', False)], 
+					'sent': [('readonly', False)], 
+					'sale': [('readonly', False)], 
+				}, 
+		
+		#copy=False, 
+		#default=fields.Datetime.now
+		)
 
 
 
@@ -3182,6 +3197,11 @@ class sale_order(models.Model):
 		res = super(sale_order, self).action_confirm()
 		#Write your logic here
 		
+
+
+		
+		# Date
+		self.date_order = datetime.datetime.now()
 
 
 

@@ -36,12 +36,6 @@ class Closing(models.Model):
 
 
 
-# Total Form 
-	total_form = fields.Float(
-			'Total Formas de pago',
-			default = 0, 
-		)
-
 
 
 # Total Proof 
@@ -49,6 +43,23 @@ class Closing(models.Model):
 			'Total Documentos de pago',
 			default = 0, 
 		)
+
+
+# Total Form 
+	total_form = fields.Float(
+			'Total Formas de pago',
+			default = 0, 
+		)
+
+
+# Total Form 
+	total_cards = fields.Float(
+			'Total Tarjetas',
+			default = 0, 
+		)
+
+
+
 
 
 
@@ -335,7 +346,11 @@ class Closing(models.Model):
 
 
 
-		self.total_form = self.cash_tot + self.ame_tot + self.din_tot + self.mac_tot + self.mad_tot + self.vic_tot + self.vid_tot 	#+ self.cuo_tot 
+
+		self.total_form = self.cash_tot + self.ame_tot + self.din_tot + self.mac_tot + self.mad_tot + self.vic_tot + self.vid_tot 		#+ self.cuo_tot 
+
+		self.total_cards = self.ame_tot + self.din_tot + self.mac_tot + self.mad_tot + self.vic_tot + self.vid_tot 						#+ self.cuo_tot 
+
 
 
 

@@ -769,8 +769,8 @@
 
 		# ----------------------------------------------------------- Stock Min ------------------------------------------------------
 
-		'views/stock_min/stock_min_inventory.xml',
-		'views/stock_min/stock_min_inventory_line.xml',
+		#'views/stock_min/stock_min_inventory.xml',
+		#'views/stock_min/stock_min_inventory_line.xml',
 
 
 
@@ -785,7 +785,7 @@
 		#'data/prods/data_products_consu.xml',			 
 		
 		
-		
+
 		'data/prods/odoo_data_services_co2.xml',		
 		'data/prods/odoo_data_services_exc.xml',		
 		'data/prods/odoo_data_services_m22.xml',		
@@ -808,7 +808,7 @@
 		'views/menus/menus.xml',
 		'views/menus/menus_reporting.xml',
 		'views/menus/menus_inventory.xml',
-		'views/menus/menus_openhealth.xml',
+		#'views/menus/menus_openhealth.xml',
 
 	],
 

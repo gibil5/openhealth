@@ -789,7 +789,7 @@
 
 		# Products - Tmp 
 		'data/prods/odoo_data_products.xml',			 
-		'data/prods/odoo_data_products_new.xml',			
+		#'data/prods/odoo_data_products_new.xml',			
 		
 		#'data/prods/data_products_consu.xml',			 
 		

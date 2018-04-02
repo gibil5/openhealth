@@ -9,6 +9,7 @@
 
 		<!-- ACNETOPIC WASH -->
 <!--		
+-->
 		<record id='acne_topic_wash' model='product.template'>
 			<field name='type'>product</field>
 			<field name='x_name_short'>acne_topic_wash</field>
@@ -26,12 +27,13 @@
 			<field name='x_price_vip'></field>
 			<field name='x_date_created'>2018-01-09 00:00:00 UTC</field>
 		</record>
--->
+
 
 
 
 		<!-- Bepanthen -->
 <!--
+-->
 		<record id='bepanthen' model='product.template'>
 			<field name='x_name_short'>bepanthen</field>
 			
@@ -48,7 +50,6 @@
 			<field name='x_price_vip'></field>
 			<field name='x_price_vip_return'>4</field>
 		</record>
--->
 
 
 
@@ -57,6 +58,7 @@
 
 		<!-- DESPIGMENTANTE GLI-KO -->
 <!--		
+-->
 		<record id='depigmentation_gliko' model='product.template'>
 			<field name='type'>product</field>
 			<field name='x_name_short'>depigmentation_gliko</field>
@@ -74,7 +76,6 @@
 			<field name='price'>300.0</field>
 			<field name='standard_price'>300.0</field>
 		</record>
--->
 
 
 
@@ -83,6 +84,7 @@
 
 		<!-- Gasa de kit -->
 <!--		
+-->
 		<record id='gause' model='product.template'>
 			<field name='x_name_short'>gause</field>
 
@@ -97,12 +99,12 @@
 			<field name='x_price_vip'></field>
 			<field name='x_price_vip_return'>4</field>
 		</record>
--->
 
 
 
 		<!-- Notil -->
 <!--
+-->
 		<record id='notil' model='product.template'>
 			<field name='x_name_short'>notil</field>
 
@@ -119,12 +121,13 @@
 			<field name='x_price_vip'></field>
 			<field name='x_price_vip_return'>4</field>
 		</record>
--->
+
 
 
 
 		<!-- Redoxon -->	
 <!--		
+-->
 		<record id='redoxon' model='product.template'>
 			<field name='x_name_short'>redoxon</field>
 
@@ -141,7 +144,6 @@
 			<field name='x_price_vip'></field>
 			<field name='x_price_vip_return'>4</field>
 		</record>
--->
 
 
 
@@ -149,6 +151,7 @@
 
 		<!-- Suero Fisiológico -->	
 <!--		
+-->
 		<record id='serum' model='product.template'>
 			<field name='x_name_short'>serum</field>
 
@@ -165,7 +168,6 @@
 			<field name='x_price_vip'></field>
 			<field name='x_price_vip_return'>4</field>
 		</record>
--->
 
 
 

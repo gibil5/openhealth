@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-	<data noupdate='1'>
+	<data noupdate='0'>
 
+
+
+<!--
+galarcon
+cmendez
+jvasquez
+dacosta
+
+rbustios
+
+avidal
+-->
 
 
 <!-- Guillermo Alarcon --> 
@@ -197,6 +209,33 @@
 			<field name="lang">es_ES</field>
 
 			<field name="active" eval="False" />
+		</record>
+
+
+
+<!-- Kevin Calero -->
+		<record id="kcalero" model="res.partner">
+			<field name="name">Kevin Calero</field>
+			<field name="email">kcalero@clinicachavarri.com</field>
+			<field name="function">reception</field>
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
+		</record>
+
+		<record id="kcalero_clinicachavarri" model="res.users">
+			<field name="name">Kevin Calero</field>
+			<field name="login">kcalero@clinicachavarri.com</field>
+
+<!--			
+			<field name="password">kcalero</field>
+-->		
+			<field name="password">EbYDCz3H</field>
+
+
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+			<field name="partner_id" ref="kcalero"/>
+			<field name="lang">es_ES</field>
 		</record>
 
 

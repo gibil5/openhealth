@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		
+
+
+<!-- FORM view --> 
+		<record model="ir.ui.view" id="stock_min_inventory_line_form_view">
+
+			<field name="name">openhealth.stock.min.inventory.line.form</field>
+			
+			<field name="model">openhealth.stock.min.inventory.line</field>
+			
+			<field name="arch" type="xml">
+				
+				<form string="Stock Min inventory Form">
+					
+
+
+
+					<header>
+<!--
+						<button 
+								type="object" 
+								class="oe_highlight"
+								name="update_qtys"
+								string="Actualizar"
+						/>
+-->
+					</header>
+
+
+
+
+
+
+					<sheet>
+
+						<group		>
+							<group>
+			                    <field name="name"/>
+
+			                    <field name="code"/>
+			                    
+			                    <field name="description"/>
+			                    
+			                    <field name="qty"/>
+
+			                    <field name="units"/>
+							</group>
+							<group>
+			                    <field name="state"/>
+							</group>
+						</group>
+
+
+
+						<notebook>
+
+
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+
+
+		
+<!-- TREE view --> 
+		
+		<record model="ir.ui.view" id="stock_min_inventory_line_view_order_tree">
+
+			<field name="name">openhealth.stock.min.inventory.line.tree</field>
+			
+			<field name="model">openhealth.stock.min.inventory.line</field>
+			
+			<field name="arch" type="xml">
+
+				<tree string="Stock min inventory Tree">
+					
+                   			 	<field name="product_id"	 				/>
+
+			                    <field name="code"/>
+			                    
+			                    <field name="description"/>
+
+			                    <field name="inventory_id"/>
+			                    
+			                    <field name="categ"/>
+
+			                    <field name="state"/>
+
+			                    <field name="qty"/>
+<!--
+			                    <field name="units"/>
+-->
+				</tree>
+			</field>
+		</record>
+
+
+
+
+
+
+<!-- ACTION -->
+		<record model="ir.actions.act_window" id="stock_min_inventory_line_list_action">
+			<field name="name">Inventory Lines</field>
+			<field name="res_model">openhealth.stock.min.inventory.line</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+			
+			<field name="limit">150</field>
+
+			<!--
+            <field name="view_id" eval="False"/>
+			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first order
+				</p>
+			</field>
+			-->
+		</record>
+		
+
+	</data>
+</openerp>

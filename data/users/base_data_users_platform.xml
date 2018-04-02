@@ -7,6 +7,32 @@
 
 
 
+<!-- Paulo Ramirez -->
+		<record id="pramirez" model="res.partner">
+			<field name="name">Paulo Ramirez</field>
+			<field name="email">pramirez@clinicachavarri.com</field>
+			<field name="function">reception</field>
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
+		</record>
+
+		<record id="pramirez_clinicachavarri" model="res.users">
+			<field name="name">Paulo Ramirez</field>
+			<field name="login">pramirez@clinicachavarri.com</field>
+
+			<field name="password">4YgDw9wq</field>
+
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+
+			<field name="partner_id" ref="pramirez"/>
+			
+			<field name="lang">es_ES</field>
+		</record>
+
+
+
+
 
 <!-- Cinthya Ramirez -->
 		<record id="cramirez" model="res.partner">
@@ -231,31 +257,6 @@
 
 
 
-
-<!-- Kevin Calero -->
-		<record id="kcalero" model="res.partner">
-			<field name="name">Kevin Calero</field>
-			<field name="email">kcalero@clinicachavarri.com</field>
-			<field name="function">reception</field>
-	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
-		</record>
-
-		<record id="kcalero_clinicachavarri" model="res.users">
-			<field name="name">Kevin Calero</field>
-			<field name="login">kcalero@clinicachavarri.com</field>
-
-<!--			
-			<field name="password">kcalero</field>
--->		
-			<field name="password">EbYDCz3H</field>
-
-
-			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-			<field name="active">True</field>
-			<field name="tz">America/Lima</field>
-			<field name="partner_id" ref="kcalero"/>
-			<field name="lang">es_ES</field>
-		</record>
 
 
 	</data>

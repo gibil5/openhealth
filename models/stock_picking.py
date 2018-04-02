@@ -22,12 +22,10 @@ class StockPicking(models.Model):
 
 	x_type = fields.Selection(
 
-
 			selection=[
 						('test', 			'test'),
 						('legacy', 			'legacy'),
 					], 
-
 
 			string="Tipo", 
 		)	
@@ -43,23 +41,25 @@ class StockPicking(models.Model):
 
 
 
+	
+
 	# ----------------------------------------------------------- On Changes ------------------------------------------------------
 
-	@api.onchange('min_date')
-	def _onchange_min_date(self):	
-		usage = 'internal'
-		return {
-					'domain': {
-									'location_dest_id': [
-															('usage', '=', usage),
-														], 
-
-									'location_id': 		[
-															('usage', '=', usage),
-														], 
-
-							},
-			}
+	#@api.onchange('min_date')
+	#def _onchange_min_date(self):	
+	#	usage = 'internal'
+	#	return {
+	#				'domain': {
+	#								'location_dest_id': [
+	#														('usage', '=', usage),
+	#													], 
+	#
+	#								'location_id': 		[
+	#														('usage', '=', usage),
+	#													], 
+	#
+	#						},
+	#		}
 
 
 
@@ -68,14 +68,11 @@ class StockPicking(models.Model):
 
 	# ----------------------------------------------------------- Actions ------------------------------------------------------
 
-	@api.multi
-	def remove_myself(self):  
-
-		print 'jx'
-		print 'Remove myself'
-
-
-		self.unlink()
+	#@api.multi
+	#def remove_myself(self):  
+	#	print 'jx'
+	#	print 'Remove myself'
+	#	self.unlink()
 
 
 

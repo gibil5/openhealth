@@ -9,7 +9,7 @@
 
 
 
-		<!-- FORM view --> 
+<!-- FORM view --> 
 		<record model="ir.ui.view" id="closing_form_view">
 
 			<field name="name">closing.form</field>
@@ -169,7 +169,7 @@ Fields
 
 
 		
-		<!-- TREE view --> 
+<!-- TREE view --> 
 		
 		<record model="ir.ui.view" id="closing_view_order_tree">
 
@@ -232,7 +232,7 @@ Fields
 
 
 
-
+<!-- ACTION -->
 		<record model="ir.actions.act_window" id="closings_list_action">
 			<field name="name">Cierres de Caja</field>
 			<field name="res_model">openhealth.closing</field>

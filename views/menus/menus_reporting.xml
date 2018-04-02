@@ -23,17 +23,50 @@
 
 					sequence="1"
 					
-					name="Diario"			
+					name="Ventas del Día"			
 
 				/>
 
-				<menuitem 	id="sales_reporting_sales_daily" 
-							name="Diario" 
+
+
+
+
+
+				<menuitem 	id="sales_reporting_sales_daily_prods" 
+
+							name="Productos" 
+					
 							parent="sales_reporting_daily_menu"
 
 							sequence="1"
 
-							action="action_order_report_day"
+							action="action_order_report_day_prods"
+						/>
+
+
+
+				<menuitem 	id="sales_reporting_sales_daily_servs" 
+
+							name="Servicios" 
+					
+							parent="sales_reporting_daily_menu"
+
+							sequence="2"
+
+							action="action_order_report_day_servs"
+						/>
+
+
+
+				<menuitem 	id="sales_reporting_sales_daily_all" 
+							
+							name="Todo" 
+							
+							parent="sales_reporting_daily_menu"
+
+							sequence="3"
+
+							action="action_order_report_day_all"
 						/>
 
 

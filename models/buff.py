@@ -1,8 +1,22 @@
 
 
 
-			date_begin, date_end = clos_funcs.get_dates(self, record.date)
+			
+			self.inventory_line.create({
 
+													'product_id': stock_min_funcs.get_product_id(self, line.code),
 
-														('date_order', '>', date_begin),
-														('date_order', '<', date_end),									
+													'code': line.code,
+															
+													'description': line.description,
+
+													'qty': line.qty,
+
+													'units': line.units,
+
+													#'state': 'done', 
+													'state': line.state, 
+
+													'inventory_id': self.id,
+				})
+

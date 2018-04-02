@@ -52,12 +52,13 @@
 			<field name="implied_ids" eval="[(4, ref('oehealth.group_oeh_medical_physician'))]"/>
 
 
-
+<!--
+										(4, ref('openhealth.kcalero_clinicachavarri')),
+-->
 			<field name="users" eval="[ 
 
 										(4, ref('openhealth.archivo_clinicachavarri')),
 
-										(4, ref('openhealth.kcalero_clinicachavarri')),
 
 									]"/>
 		</record>
@@ -192,7 +193,12 @@
 
 
 
-
+<!--
+										(4, ref('openhealth.galarcon_clinicachavarri')),
+										(4, ref('openhealth.cmendez_clinicachavarri')),
+										(4, ref('openhealth.jvasquez_clinicachavarri')),
+										(4, ref('openhealth.dacosta_clinicachavarri')),
+-->
 <!-- Medicos --> 
 		<record id="openhealth.physicians" model="res.groups">
 			<field name="name">Medicos</field>
@@ -208,26 +214,17 @@
 
 			<field name="users" eval="[ 
 
-										(4, ref('openhealth.nescobar_clinicachavarri')),
-
-
 										(4, ref('openhealth.medico_clinicachavarri')),
+
+										(4, ref('openhealth.nescobar_clinicachavarri')),
 
 										(4, ref('openhealth.fchavarri_clinicachavarri')),
 										(4, ref('openhealth.pcanales_clinicachavarri')),
 										(4, ref('openhealth.lgonzales_clinicachavarri')),
 										(4, ref('openhealth.pmonteverde_clinicachavarri')),
-
-										(4, ref('openhealth.lache_clinicachavarri')),
-
 										(4, ref('openhealth.cescudero_clinicachavarri')),
 
-
-										(4, ref('openhealth.galarcon_clinicachavarri')),
-										(4, ref('openhealth.jvasquez_clinicachavarri')),
-										(4, ref('openhealth.cmendez_clinicachavarri')),
-										(4, ref('openhealth.dacosta_clinicachavarri')),
-
+										(4, ref('openhealth.lache_clinicachavarri')),
 
 
 									]"/>
@@ -269,7 +266,9 @@
 
 
 
-
+<!--
+										(4, ref('openhealth.avidal_clinicachavarri')),
+-->
 <!-- Plataforma --> 
 		<record id="openhealth.reception" model="res.groups">
 			<field name="name">Plataforma</field>
@@ -291,9 +290,9 @@
 										(4, ref('openhealth.gnunhez_clinicachavarri')),
 										(4, ref('openhealth.mgrieve_clinicachavarri')),
 										(4, ref('openhealth.ktejada_clinicachavarri')),
-										(4, ref('openhealth.avidal_clinicachavarri')),
 
 										(4, ref('openhealth.cramirez_clinicachavarri')),
+										(4, ref('openhealth.pramirez_clinicachavarri')),
 
 									]"/>
 		</record>
@@ -331,6 +330,12 @@
 
 
 
+<!--
+										(4, ref('openhealth.lloli_clinicachavarri')),
+
+										(4, ref('openhealth.rbustios_clinicachavarri')),
+-->
+
 <!-- Staff --> 
 		<record id="openhealth.staffs" model="res.groups">
 			<field name="name">Staff</field>
@@ -340,19 +345,13 @@
 			<field name="comment">cc</field>
 
 
-<!--
-										(4, ref('openhealth.lloli_clinicachavarri')),
--->
 			<field name="users" eval="[ 
 										(4, ref('openhealth.staff_clinicachavarri')),
-
 
 										(4, ref('openhealth.lmasias_clinicachavarri')),
 
 										(4, ref('openhealth.ipuga_clinicachavarri')),
 										
-										(4, ref('openhealth.rbustios_clinicachavarri')),
-
 									]"/>
 		</record>
 

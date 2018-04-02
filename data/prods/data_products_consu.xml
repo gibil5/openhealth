@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='utf-8'?>
+<openerp>
+	<data noupdate='0'>
+
+
+
+
+
+
+		<!-- Bepanthen -->
+<!--
+		<record id='bepanthen_two' model='product.template'>
+
+			<field name='type'>product</field>
+			
+			<field name='name'>Bepanthen 2</field>
+			<field name='description'></field>
+
+			<field name='x_name_short'>bepanthen</field>
+			
+			<field name='default_code'>395</field>
+
+			<field name='categ_id' ref="topical"/>
+
+			<field name='price'></field>
+			<field name='standard_price'></field>
+			<field name='x_price_vip'></field>
+			<field name='x_price_vip_return'>4</field>
+		</record>
+-->
+
+
+
+
+		<!-- Bepanthen -->
+<!--		
+		<record id='bepanthen' model='product.template'>
+			<field name='name'>Bepanthen</field>
+			<field name='x_name_short'>bepanthen</field>
+			<field name='default_code'>395</field>
+
+			<field name='type'>product</field>
+			<field name='description'></field>
+			<field name='categ_id' ref="topical"/>
+
+			<field name='price'></field>
+			<field name='standard_price'></field>
+			<field name='x_price_vip'></field>
+			<field name='x_price_vip_return'>4</field>
+		</record>
+-->
+
+
+
+		<!-- Toxina Botulínica -->
+		<record id='botox' model='product.template'>
+			<field name='x_name_short'>botox</field>
+
+			<field name='name'>TOXINA BOTULINICA</field>
+
+			<field name='default_code'></field>
+
+
+			<field name='type'>product</field>
+			<field name='description'></field>
+			<field name='categ_id' ref="consumable"/>
+			<field name='price'></field>
+			<field name='standard_price'></field>
+			<field name='x_price_vip'></field>
+			<field name='x_price_vip_return'>4</field>
+		</record>
+
+
+
+
+		<!-- PAPEL HIGIENICO ELITE DE 4 -->	
+		<record id='toilette_paper_elite' model='product.template'>
+			<field name='name'>PAPEL HIGIENICO ELITE DE 4</field>
+			<field name='x_name_short'>toilette_paper_elite</field>
+			<field name='default_code'>66</field>
+
+			<field name='type'>product</field>
+			<field name='description'></field>
+
+			<field name='categ_id' ref="consumable"/>
+
+			<field name='price'></field>
+			<field name='standard_price'></field>
+			<field name='x_price_vip'></field>
+			<field name='x_price_vip_return'>4</field>
+		</record>
+
+
+		<!-- VITAMINA C ENDOVENOSA -->	
+		<record id='vitamin_c_intravenous' model='product.template'>
+			<field name='name'>VITAMINA C ENDOVENOSA</field>
+			<field name='x_name_short'>vitamin_c_intravenous</field>
+			<field name='default_code'>10</field>
+
+			<field name='type'>product</field>
+			<field name='description'></field>
+
+			<field name='categ_id' ref="consumable"/>
+
+			<field name='price'></field>
+			<field name='standard_price'></field>
+			<field name='x_price_vip'></field>
+			<field name='x_price_vip_return'>4</field>
+		</record>
+
+
+		<!-- GEL ELECTROGEL -->	
+		<record id='gel_electrogel' model='product.template'>
+			<field name='name'>GEL ELECTROGEL</field>
+			<field name='x_name_short'>gel_electrogel</field>
+			<field name='default_code'>48</field>
+
+			<field name='type'>product</field>
+			<field name='description'></field>
+
+			<field name='categ_id' ref="consumable"/>
+
+			<field name='price'></field>
+			<field name='standard_price'></field>
+			<field name='x_price_vip'></field>
+			<field name='x_price_vip_return'>4</field>
+		</record>
+
+
+
+
+	</data>
+</openerp>

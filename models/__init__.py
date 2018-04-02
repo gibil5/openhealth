@@ -83,6 +83,13 @@ from . import purchase_order_line
 
 
 
+from . import stock_min
+from . import stock_min_inventory
+from . import stock_min_inventory_line
+
+
+
+
 
 from . import stock_move_selector
 from . import stock_move_selector_cremas

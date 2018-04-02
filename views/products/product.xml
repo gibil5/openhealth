@@ -49,35 +49,20 @@
 
 
 
-							<field name="x_origin"/>
-
-							<field name="x_date_created"/>
-
-							<field name="x_date_updated"/>
-							
-							<field name="x_name_short"/>
-							
-							<field name="x_price_vip"/>
-							
-							<field name="x_price_vip_return"/>
-
-							<field name="x_family"/>
-
-							<field name="x_treatment"/>				
-							
-							<field name="x_zone"/>				
-							
-							<field name="x_pathology"/>				
-
-
 <!--
--->
-							<field name="x_level"/>				
-
-
-
+-->						
+							<field name="x_origin"/>
+							<field name="x_date_created"/>
+							<field name="x_date_updated"/>
 							<field name="x_sessions"/>	
-
+							<field name="x_name_short"/>							
+							<field name="x_price_vip"/>
+							<field name="x_price_vip_return"/>
+							<field name="x_family"/>
+							<field name="x_treatment"/>				
+							<field name="x_zone"/>				
+							<field name="x_pathology"/>				
+							<field name="x_level"/>				
 							<field name="x_time"/>				
 
 						</group>
@@ -146,16 +131,12 @@
 
 					<field name="default_code"/>
 					
+<!--
 					<field name="x_zone"/>				
-
 					<field name="x_pathology"/>				
-
 					<field name="x_level"/>				
 
-
-<!--					
 					<field name="x_name_short"/>
-
 					<field name="id"/>
 					<field name="uom_id"	invisible="0"/>
 -->
@@ -193,18 +174,16 @@
 
 
 					<field name="name"/>
-<!--
--->
-					<field name="x_name_ticket"/>
-
-					<field name="x_name_short"/>
-
-
-
 
 					<field name="default_code"/>
+
+
 					<field name="categ_id"/>
 
+<!--
+					<field name="x_name_short"/>
+
+					<field name="x_name_ticket"/>
 
 					<field name="x_family"/>
 
@@ -213,6 +192,7 @@
 					<field name="x_pathology"/>				
 					<field name="x_level"/>				
 					<field name="x_sessions"/>	
+-->
 
 
 
@@ -234,8 +214,10 @@
 
 
 					<field name="list_price"/>
+<!--
 					<field name="x_price_vip"/>
 					<field name="x_price_vip_return"/>
+-->				
 					<field name="pricelist_id"/>
 					<field name="item_ids"/>
 					<field name="standard_price"/>

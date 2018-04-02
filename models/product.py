@@ -11,6 +11,9 @@ from datetime import datetime
 from . import prodvars
 from . import prod_funcs
 
+from openerp.exceptions import ValidationError
+
+
 
 class Product(models.Model):
 
@@ -18,12 +21,59 @@ class Product(models.Model):
 
 	_inherit = 'product.template'
 
-	_order = 'x_name_short'
-
-	#_order = 'name'
-
+	#_order = 'x_name_short'
+	_order = 'name'
 
 
+
+
+	#default_code = fields.related('product_variant_ids', 'default_code', type='char', string='Internal Reference'),	
+	#_sql_constraints = [
+	#						('ref_unique','unique(default_code)', 'reference must be unique!')
+	#					]     
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Constraints ------------------------------------------------------
+
+	@api.constrains('default_code')
+
+	def _check_something(self):
+
+		for record in self:
+
+			#if record.default_code == False:
+			if record.default_code == '0':
+				raise ValidationError("Default code not valid: %s" % record.default_code)
+
+
+	
+			# count 
+			if record.default_code != False: 
+				count = self.env['product.template'].search_count([
+																	('default_code', '=', record.default_code),
+											])
+				if count > 1: 
+					raise ValidationError("Default code already exists: %s" % record.default_code)
+
+
+		# all records passed the test, don't return anything
+
+
+
+
+
+# ----------------------------------------------------------- Keys ------------------------------------------------------
+	
+	x_name_short = fields.Char(
+		)
+	#_sql_constraints = [
+	#						('x_name_short_unique','unique(x_name_short)', 'x_name_short must be unique!')
+	#					]     
 
 
 
@@ -235,8 +285,6 @@ class Product(models.Model):
 
 
 
-	x_name_short = fields.Char(
-		)
 
 
 

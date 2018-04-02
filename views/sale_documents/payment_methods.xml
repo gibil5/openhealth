@@ -376,12 +376,16 @@
 			<field name="arch" type="xml">
 				<tree string="payment_method Tree">
 					
+					<field name="create_date"/>
+					<field name="write_date"/>
+
 					<field name="name"/>
 <!--
-					<field name="method"  />
 					
 					<field name="subtotal"   />
+					<field name="method"  />
 -->				
+					<field name="order"  />
 				</tree>
 			</field>
 		</record>

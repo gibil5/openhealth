@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-	<data noupdate='1'>
+	<data noupdate='0'>
 
 
 
@@ -21,9 +21,9 @@
 			<field name="login">plataforma@clinicachavarri.com</field>
 
 <!--
-			<field name="password">Q6m3a8jr</field>
--->
 			<field name="password">plataforma</field>
+-->
+			<field name="password">Q6m3a8jr</field>
 
 
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
@@ -50,9 +50,9 @@
 			<field name="login">caja@clinicachavarri.com</field>
 
 <!--
-			<field name="password">bvR3VKUQ</field>
--->
 			<field name="password">caja</field>
+-->
+			<field name="password">bvR3VKUQ</field>
 
 			
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
@@ -80,9 +80,9 @@
 			<field name="login">medico@clinicachavarri.com</field>
 			
 <!--
-			<field name="password">jrVT35yR</field>
--->		
 			<field name="password">medico</field>
+-->		
+			<field name="password">jrVT35yR</field>
 
 
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
@@ -112,9 +112,9 @@
 			<field name="login">archivo@clinicachavarri.com</field>
 
 <!--
-			<field name="password">BU6xujxj</field>
--->
 			<field name="password">archivo</field>
+-->
+			<field name="password">BU6xujxj</field>
 
 
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
@@ -171,9 +171,9 @@
 			<field name="login">asistente@clinicachavarri.com</field>
 			
 <!--
-			<field name="password">aRb8BuQv</field>
--->		
 			<field name="password">asistente</field>
+-->		
+			<field name="password">aRb8BuQv</field>
 
 
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>

@@ -315,6 +315,8 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>4000</field>
 			<field name='x_family'>laser</field>
+
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_faa_rf5_one' model='product.template'>

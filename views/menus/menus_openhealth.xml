@@ -32,6 +32,39 @@
 
 
 
+
+		<!-- Stock Min Inventory -->
+<!--
+-->
+		<menuitem id="stock_min_inventory_menu" name="Stock Min Inventory" parent="openhealth_menu"
+			sequence="-310"
+			action="stock_min_inventory_list_action"/>
+
+		<menuitem id="stock_min_inventory_line_menu" name="Stock Min Inventory Line" parent="openhealth_menu"
+			sequence="-309"
+			action="stock_min_inventory_line_list_action"/>
+
+
+
+
+
+		<!-- payment_methods -->
+		<menuitem id="payment_methods_menu" name="Payment methods" parent="openhealth_menu"
+			sequence="-300"
+			action="payment_method_list_action"/>
+
+
+		<!-- payment_methods line -->
+		<menuitem id="payment_method_line_menu" name="Payment method Line" parent="openhealth_menu"
+			
+			sequence="-290"
+			
+			action="openhealth_payment_method_line_form_action"
+			/>
+
+
+
+
 		<!-- purchase_orders --> 
 <!--		
 						action="purchase_form_action"/>
@@ -128,7 +161,11 @@
 
 
 
+
+
 		<!-- Stock Move Min Topical --> 
+		<!-- Stock Move Min consu --> 
+<!--
 		<menuitem 
 			id="stock_move_min_topical_menu" 
 			name="Stock Move Min Topical" 
@@ -138,8 +175,6 @@
 			action="stock_move_min_topical_nog_list_action"
 			/>
 
-
-		<!-- Stock Move Min consu --> 
 		<menuitem 
 			id="stock_move_min_consu_menu" 
 			name="Stock Move Min Consu" 
@@ -148,7 +183,7 @@
 
 			action="stock_move_min_consu_nog_list_action"
 			/>
-
+-->
 
 
 
@@ -637,20 +672,6 @@
 
 
 
-
-		<!-- payment_methods -->
-		<menuitem id="payment_methods_menu" name="Payment methods" parent="openhealth_menu"
-			sequence="-30"
-			action="payment_method_list_action"/>
-
-
-		<!-- payment_methods line -->
-		<menuitem id="payment_method_line_menu" name="Payment method Line" parent="openhealth_menu"
-			
-			sequence="-30"
-			
-			action="openhealth_payment_method_line_form_action"
-			/>
 
 
 

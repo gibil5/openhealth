@@ -96,6 +96,8 @@ _chief_complaint_list = [
 			('acne_sequels','Acné y Secuelas'),
 
 			('tatoo','Tatuaje'),
+			('cosmetology','Cosmiatria'),
+
 
 			('alopecia','Alopecias'),
 			('scar','Cicatriz'),

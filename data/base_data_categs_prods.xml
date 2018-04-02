@@ -5,6 +5,36 @@
 
 
 
+		<!-- Consumibles --> 
+		<record id='consumable' model='product.category'>
+			<field name='name'>Consumibles</field>
+		</record>
+
+
+		<!-- Cremas --> 
+		<record id='topical' model='product.category'>
+			<field name='name'>Cremas</field>
+		</record>
+
+
+		<!-- Test --> 
+		<record id='test' model='product.category'>
+			<field name='name'>Test</field>
+		</record>
+
+		<!-- Legacy --> 
+		<record id='legacy' model='product.category'>
+			<field name='name'>legacy</field>
+		</record>
+
+
+
+
+
+
+
+
+
 <!-- Quick --> 
 		<record id='laser_quick' model='product.category'>
 			<field name='name'>Quick Laser</field>
@@ -20,13 +50,6 @@
 
 
 
-<!-- Legacy --> 
-		<record id='legacy' model='product.category'>
-			<field name='name'>legacy</field>
-<!--
-	        <field name="active">1</field>
--->
-		</record>
 
 
 
@@ -58,12 +81,6 @@
 		</record>
 
 
-		<record id='testing' model='product.category'>
-			<field name='name'>Testing Pla</field>
-<!--
-			<field name='parent_id' 	ref='platform_product_categ'/>
--->
-		</record>
 
 
 		<record id='kits' model='product.category'>

@@ -232,7 +232,9 @@
 					<field name="name"/>
 					
 
+					<field name="location_id"/>
 					<field name="location_dest_id"/>
+
 					<field name="partner_id"/>
 
 
@@ -250,6 +252,8 @@
 				</tree>
 			</field>
 		</record>
+
+
 
 
 

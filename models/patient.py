@@ -1910,16 +1910,19 @@ class Patient(models.Model):
 
 
 
-		name = 'emr'
 
- 		counter = self.env['openhealth.counter'].search([
-																('name', '=', name), 
-														],
-															#order='write_date desc',
-															limit=1,
-														)
-		print counter
-		counter.increase()		# Here !!!
+
+		# Increase Counter 
+		#name = 'emr'
+ 		#counter = self.env['openhealth.counter'].search([
+		#														('name', '=', name), 
+		#												],
+		#													#order='write_date desc',
+		#													limit=1,
+		#												)
+		#print counter
+		#counter.increase()		# Here !!!
+
 
 
 

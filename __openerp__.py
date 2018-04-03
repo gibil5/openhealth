@@ -306,7 +306,7 @@
 
 		# ----------------------------------------------------------- Security ------------------------------------------------------
 
-		#'security/openhealth_security.xml',
+		'security/openhealth_security.xml',
 
 
 		

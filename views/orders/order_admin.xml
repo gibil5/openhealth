@@ -21,9 +21,10 @@
 
 <!--
 							<page string="Admin"		groups='openhealth.roots'	>
+							<page string="Admin"	groups='openhealth.roots'	 >
 -->
 
-							<page string="Admin"	groups='openhealth.roots'	 >
+							<page string="Admin">
 
 
 								<group>

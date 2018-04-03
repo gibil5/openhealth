@@ -1141,7 +1141,13 @@ Look for the Minimalist experience !!!
 
 					<field name="nr_lines"/>
 
+
+
+					<field name="x_family" />
+
 					<field name="amount_untaxed"	sum="Total Untaxed"			widget="monetary"		string="Total"	/>
+
+
 
 					<field name="date_order"	string="Fecha"	/>
 

@@ -73,7 +73,9 @@ _state_list = [
 _family_list = [
 #		('private','Private'), 
 		('product','Producto'), 
+
 		('consultation','Consulta'), 
+		
 		('procedure','Procedimiento'), 
 
 

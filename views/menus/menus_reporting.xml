@@ -44,8 +44,9 @@
 							action="action_order_report_day_prods"
 						/>
 
-<!--
 
+<!--
+-->
 				<menuitem 	id="sales_reporting_sales_daily_servs" 
 
 							name="Servicios" 
@@ -69,7 +70,6 @@
 
 							action="action_order_report_day_all"
 						/>
--->
 
 
 

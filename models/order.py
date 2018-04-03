@@ -1480,7 +1480,10 @@ class sale_order(models.Model):
 			#string = "Tipo", 	
 			string = "Familia", 	
 
-			default='product',
+
+			#default='product',
+			default='consultation',
+
 			
 			#selection = jxvars._family_list, 
 			selection = treatment_vars._family_list, 

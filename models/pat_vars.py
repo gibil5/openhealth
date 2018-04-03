@@ -361,6 +361,10 @@ _street2_list_old = [
 _city_list = [
 			('lima','Lima'),
 			('abancay','Abancay'),
+
+			#('huaraz','Huaraz'),
+			('ancash','Ancash'),
+
 			('arequipa','Arequipa'),
 			('ayacucho','Ayacucho'),
 			('cajamarca','Cajamarca'),
@@ -374,7 +378,7 @@ _city_list = [
 			('huancayo','Huancayo'),
 			#('huanuco','Huánuco'),
 			('huanuco','Huanuco'),
-			('huaraz','Huaraz'),
+			
 			('ica','Ica'),
 			('iquitos','Iquitos'),
 			('moquegua','Moquegua'),

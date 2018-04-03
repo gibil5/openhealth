@@ -35,6 +35,7 @@
 
 
 
+				<!-- Todo --> 
 				<xpath expr="//button[@name='action_confirm']" position="replace">
 
 					<button 
@@ -51,6 +52,26 @@
 
 
 
+<!--
+							groups="stock.group_stock_user" 
+-->
+				<!-- Validate -->
+				<xpath expr="//button[@name='do_new_transfer']" position="replace">
+					<button 
+							type="object" class="oe_highlight"
+							name="do_new_transfer" 
+							states="draft,partially_available,assigned" 
+
+							string="Validate - jx" 
+
+							groups="openhealth.roots"
+					/>
+				</xpath>
+
+
+
+
+				<!-- Cancel --> 
 				<xpath expr="//button[@name='action_cancel']" position="replace">
 					
 					<button 
@@ -63,6 +84,10 @@
 						/>
 
 				</xpath>
+
+
+
+
 
 
 

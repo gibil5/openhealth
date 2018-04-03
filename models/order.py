@@ -879,10 +879,7 @@ class sale_order(models.Model):
 	@api.multi
 	def _get_default_doctor(self): 
 
-
-		#name = 'Dr. Chavarri'
 		name = 'Clinica Chavarri'
-
 
 		doctor = self.env['oeh.medical.physician'].search([
 																		('name', '=', name),			
@@ -890,8 +887,8 @@ class sale_order(models.Model):
 																	#order='start_date desc',
 																	limit=1,
 																)
-
 		return doctor.id 
+
 
 
 
@@ -900,7 +897,8 @@ class sale_order(models.Model):
 			'oeh.medical.physician',
 			string = "Médico", 	
 
-			default = _get_default_doctor, 
+
+			#default = _get_default_doctor, 
 
 
 			#states={

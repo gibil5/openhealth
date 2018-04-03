@@ -198,11 +198,10 @@
 
 
 
+
 <!--
-							states="pre_draft" 
-							string="IMPRIMIR" 
 -->
-<!-- Print --> 
+				<!-- Print --> 
 				<xpath expr="//button[@name='print_quotation']" position="replace">
 					<button 
 							type="object" 
@@ -219,10 +218,42 @@
 
 
 
+				<!-- Receive prods --> 
+				<xpath expr="//button[@name='action_view_picking']" position="replace">
+
+					<button 
+							name="action_view_picking" 
+							string="Receive Products" 
+							type="object" 
+							attrs="{'invisible': ['|', ('state','not in', ('purchase','done')), ('picking_count', '=', 0)]}"
+
+							groups="openhealth.roots"
+					/>
+
+				</xpath>
+
+
+
+				<!-- Receive prods - Sheet --> 
+<!--
+				<xpath expr="//button[@name='action_view_picking']" position="replace">
+
+						<button type="object"
+							name="action_view_picking"
+							class="oe_stat_button"
+							icon="fa-truck">
+							<field name="picking_count" widget="statinfo" string="Shipment" help="Incoming Shipments"/>
+
+							groups="openhealth.roots"							
+						</button>
+				
+				</xpath>
+-->
 
 
 
 
+				<!-- Cancel -->
 				<xpath expr="//button[@name='button_cancel']" position="replace">
 
 					<button 

@@ -18,9 +18,11 @@
 
 
 		<!-- RSP -->
+<!--
 		<menuitem id="rsp_menu" name="Report Sale Product" parent="openhealth_menu"
 			sequence="-320"
 			action="rsp_list_action"/>
+-->
 
 
 		<!-- Stock Min Inventory -->

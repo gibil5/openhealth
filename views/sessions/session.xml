@@ -4,18 +4,11 @@
 
 
 		<!-- Session -->
-			
-
-
-		<!-- Form view -->
-<!--
--->
 		<record model="ir.ui.view" id="session_form_view">
 			<field name="name">session.form</field>
 			<field name="model">openhealth.session</field>
 			<field name="arch" type="xml">
 				<form string="Evaluation">
-
 				</form>
 			</field>
 		</record>
@@ -23,6 +16,8 @@
 
 
 
+
+		<!-- Session MED -->
 		<record model="ir.ui.view" id="session_med_form_view">
 			<field name="name">session.med.form</field>
 			<field name="model">openhealth.session.med</field>
@@ -264,6 +259,7 @@
 
 						<field name="co2_observations"		attrs = "{'required':[('laser','in',('laser_co2'))]}"/>
 					</group>
+
 
 					<group	attrs="{'invisible':[('laser', '!=', 'laser_co2' )]}"	>
 

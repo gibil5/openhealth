@@ -580,6 +580,9 @@
 
 		# Sessions
 		'views/sessions/session.xml',
+		
+		'views/sessions/session_config_manual.xml',
+		
 		'views/sessions/session_cos.xml',
 
 

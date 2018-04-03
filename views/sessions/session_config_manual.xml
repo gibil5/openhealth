@@ -22,58 +22,16 @@
 					
 <!--
 					<page string="Valores empleados - Med"  	attrs="{'invisible':[('cosmetology', '!=', False)]}"	>
--->
-
-
 					<page string="Contínua"  		>
-
-						<!-- Co2 -->
-<!--						
-						<group string="Láser Co2"  attrs="{'invisible':[('laser', '!=', 'laser_co2')]}">
--->
-						<group		attrs="{'invisible':[('laser', '!=', 'laser_co2')]}"	>
-							<group>
-
-<!--								
-								<field name="co2_power"				required="1"/>
-								<field name="co2_frequency"			required="1"/>
-								<field name="co2_energy"			required="1"/>
-								<field name="co2_mode_emission"		required="1"/>								
-								<field name="co2_mode_exposure"		required="1"/>								
-								<field name="co2_observations"		required="1"/>
-
-
-								<field name="co2_mode_emission"		default="continuous"	attrs = "{'required':[('laser','in',('laser_co2'))]}"/>
-
-								<field name="co2_mode_exposure"		attrs = "{'required':	[	
-																								('laser','in',('laser_co2')), 	
-																							]}"/>
-								<field name="vspace"/>
-
-
-								<field name="co2_observations"		attrs = "{'required':[('laser','in',('laser_co2'))]}"/>
-
-								<field name="co2_power"				attrs = "{'required':[('laser','in',('laser_co2'))]}"	/>
-
-								<field name="co2_energy"			attrs = "{'required':[('laser','in',('laser_co2'))]}"	/>
-
-								<field name="vspace"/>
 -->
 
 
-
-								<!-- Frecuencia --> 
-								<field name="co2_frequency"			attrs = "{'required':[
-																							('laser','in',('laser_co2')), 
-																							('co2_mode_emission','=',('continuous')), 
-																						]}"/>
+					<page string="Valores empleados" >
 
 
 
-							</group>
-						</group>
-						
-						
+
+
 
 
 						<!-- Excilite --> 
@@ -95,7 +53,9 @@
 						</group>
 						
 						
-						
+
+
+
 
 						<!-- Ipl --> 
 						<!--
@@ -128,7 +88,9 @@
 						
 
 
-						
+
+
+
 						<!-- Ndyag --> 
 						<!--
 						<group string="Láser M22-NDYAG">

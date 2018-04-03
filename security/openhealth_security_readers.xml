@@ -16,6 +16,7 @@
 
 			<field name="users" eval="[ 
 
+										(4, ref('openhealth.archivo_clinicachavarri')),
 										(4, ref('openhealth.nescobar_clinicachavarri')),
 
 

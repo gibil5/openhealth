@@ -15,17 +15,22 @@
 
 <!-- Historias -->
 
-
+<!--
+					groups="openhealth.roots,openhealth.caja,openhealth.archivers,openhealth.reception,openhealth.staffs,openhealth.assistants,openhealth.physicians,openhealth.managers,openhealth.directors"
+-->
 		<!-- Main - EMR -->
 		<menuitem 	id="main_emr_menu" 
 					sequence="-10"
 					name="Historias"
 					
-					groups="openhealth.roots,openhealth.caja,openhealth.archivers,openhealth.reception,openhealth.staffs,openhealth.assistants,openhealth.physicians,openhealth.managers,openhealth.directors"
 					/>
 
 
+<!--
+					groups="openhealth.roots,openhealth.caja,openhealth.archivers,openhealth.reception,openhealth.staffs,openhealth.assistants,openhealth.physicians,openhealth.managers,openhealth.directors"
 
+
+-->
 		<menuitem 	id="emr_menu" 
 					name="Historias Médicas"
 					parent="main_emr_menu"
@@ -33,14 +38,15 @@
 					sequence="1"
 
 
-					groups="openhealth.roots,openhealth.caja,openhealth.archivers,openhealth.reception,openhealth.staffs,openhealth.assistants,openhealth.physicians,openhealth.managers,openhealth.directors"
 					/>
 
 
 
 
 
-
+<!--
+					groups="openhealth.roots,openhealth.almacens,openhealth.reception,openhealth.caja,openhealth.staffs,openhealth.assistants,openhealth.physicians,openhealth.managers,openhealth.directors"
+-->
 		<!-- Patients --> 
 		<menuitem 	id="emr_patients_menu" 
 					name="Pacientes" 
@@ -48,10 +54,12 @@
 					sequence="1"
 					action="patient_list_action"
 
-					groups="openhealth.roots,openhealth.almacens,openhealth.reception,openhealth.caja,openhealth.staffs,openhealth.assistants,openhealth.physicians,openhealth.managers,openhealth.directors"
 					/>
 
 
+<!--
+					groups="openhealth.roots,openhealth.almacens,openhealth.reception,openhealth.caja,openhealth.staffs,openhealth.assistants,openhealth.physicians,openhealth.managers,openhealth.directors"
+-->
 
 		<!-- Patients no id code --> 
 		<menuitem 	id="emr_patients_no_idcode_menu" 
@@ -61,7 +69,6 @@
 
 					action="patient_no_idcode_list_action"
 
-					groups="openhealth.roots,openhealth.almacens,openhealth.reception,openhealth.caja,openhealth.staffs,openhealth.assistants,openhealth.physicians,openhealth.managers,openhealth.directors"
 					/>
 
 
@@ -69,7 +76,9 @@
 
 
 
-
+<!--
+				groups="openhealth.roots,openhealth.reception,openhealth.assistants,openhealth.physicians,openhealth.managers,openhealth.directors"
+-->
 		<!-- Treatments -->
 		<menuitem 	id="emr_treatments_menu" 
 					name="Tratamientos" 
@@ -77,12 +86,14 @@
 					sequence="3"
 					action="treatment_list_action"
 
-				groups="openhealth.roots,openhealth.reception,openhealth.assistants,openhealth.physicians,openhealth.managers,openhealth.directors"
 				
 					/>
 
 
+
+
 		<!-- Treatments Legacy -->
+<!--
 		<menuitem 	id="emr_treatments_legacy_menu" 
 
 					name="Tratamientos Legacy" 
@@ -96,7 +107,7 @@
 				groups="openhealth.roots,openhealth.archivers,openhealth.directors"
 				
 					/>
-
+-->
 
 
 

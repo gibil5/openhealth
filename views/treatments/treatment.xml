@@ -69,15 +69,16 @@
 
 
 
+
+
+
 						<!-- Create Consultation --> 
 						<button 
+							type="object" 
+							class="oe_highlight"
 							
 							name="create_consultation" 
 							
-							type="object" 
-							class="oe_highlight"
-
-
 							string="Crear CONSULTA" 
 							
 							states="invoice_consultation"
@@ -86,6 +87,23 @@
 						/>
 
 
+						<!-- Create Consultation --> 
+						<button 
+							type="object" 
+							class="oe_highlight"
+							name="create_consultation" 
+							
+							string="CON" 
+							
+							groups="openhealth.archivers"
+						/>
+
+
+
+
+
+
+
 
 
 
@@ -94,52 +112,80 @@
 
 
 <!--
-							string="RECOMENDACION" 
-							states="consultation,service"
 -->
 						<!-- Create Service --> 
 						<button 
 							type="object" 
 							class="oe_highlight"
-							string="Crear RECOMENDACION" 
 							name="create_service" 
 
+							string="Crear RECOMENDACION" 
 
 							states="consultation,service"
 
-
 							groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
 						/>
+
+
+						<!-- Create Service --> 
+						<button 
+							type="object" 
+							class="oe_highlight"
+							name="create_service" 
+
+							string="REC" 
+
+							groups="openhealth.archivers"
+						/>
+
+
+
+
 
 
 
 
 <!--
 							string="PRESUPUESTO" 
-
 							states="service"
 -->
+
 						<!-- Create Order --> 
 						<button 
 							type="object" 
-							name="create_order_pro" 
 							class="oe_highlight"
+							name="create_order_pro" 
+
 							string="Crear PRESUPUESTO - Procedimiento" 
 
-
 							states="service"
-
 
 					groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
 					
 						/>
 
+						<!-- Create Order --> 
+						<button 
+							type="object" 
+							class="oe_highlight"
+							name="create_order_pro" 
+
+							string="PresPro" 
+
+							groups="openhealth.archivers"
+					
+						/>
+
+
+
+
+
+
+
+
 
 
 <!--
-							states="budget_procedure,invoice_procedure"
-
-							states="invoice_procedure"
 -->
 
 						<!-- Create Procedure --> 
@@ -147,14 +193,25 @@
 							type="object" 
 							class="oe_highlight"
 							name="create_procedure" 
+							
 							string="Crear PROCEDIMIENTO" 
-
 
 							states="invoice_procedure"
 
-
 							groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
 						/>
+
+						<button 
+							type="object" 
+							class="oe_highlight"
+							name="create_procedure" 
+							
+							string="PRO" 
+
+							groups="openhealth.archivers"
+						/>
+
+
 
 
 

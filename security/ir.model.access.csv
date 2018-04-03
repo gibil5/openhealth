@@ -4,6 +4,21 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+access_openhealth_order_report_caja,openhealth.order.report.caja,model_openhealth_order_report,openhealth.caja,1,1,1,1
+access_openhealth_order_report_reception,openhealth.order.report.reception,model_openhealth_order_report,openhealth.reception,1,1,1,1
+
+access_openhealth_order_report_archivers,openhealth.order.report.archivers,model_openhealth_order_report,openhealth.archivers,1,1,1,1
+
+
+
+access_openhealth_order_line_report,access_openhealth_order_line_report,model_openhealth_order_line_report,,1,1,1,1
+
+
+
+
+
+
+
 access_openhealth_closing_caja,openhealth.closing.caja,model_openhealth_closing,openhealth.caja,1,1,1,0
 access_openhealth_closing_directors,openhealth.closing.directors,model_openhealth_closing,openhealth.directors,1,1,1,1
 access_openhealth_closing_managers,openhealth.closing.managers,model_openhealth_closing,openhealth.managers,1,1,1,1
@@ -39,12 +54,6 @@ access_openhealth_legacy_manager_patient,access_openhealth_legacy_manager_patien
 
 
 
-access_openhealth_order_report_caja,openhealth.order.report.caja,model_openhealth_order_report,openhealth.caja,1,1,1,1
-access_openhealth_order_report_reception,openhealth.order.report.reception,model_openhealth_order_report,openhealth.reception,1,1,1,1
-
-access_openhealth_order_report,openhealth.order.report,model_openhealth_order_report,,1,1,1,1
-
-access_openhealth_order_line_report,access_openhealth_order_line_report,model_openhealth_order_line_report,,1,1,1,1
 
 
 
@@ -427,7 +436,7 @@ access_sale_order_almacens,sale.order.almacens,model_sale_order,openhealth.almac
 
 
 
-access_sale_order_archivers,sale.order.archivers,model_sale_order,openhealth.archivers,1,0,0,0
+access_sale_order_archivers,sale.order.archivers,model_sale_order,openhealth.archivers,1,1,1,1
 
 
 
@@ -461,6 +470,7 @@ access_sale_order_line_staffs,sale.order.line.staffs,model_sale_order_line,openh
 access_sale_order_line_almacens,sale.order.line.almacens,model_sale_order_line,openhealth.almacens,1,0,0,0
 
 
+access_sale_order_line_archivers,sale.order.line.archivers,model_sale_order_line,openhealth.archivers,1,1,1,1
 
 
 
@@ -535,6 +545,8 @@ access_openhealth_consultation_cos,openhealth.consultation.cos,model_openhealth_
 access_openhealth_recommendation_directors,openhealth.recommendation.directors,model_openhealth_recommendation,openhealth.directors,1,1,1,1
 
 access_openhealth_recommendation_physicians,openhealth.recommendation.physicians,model_openhealth_recommendation,openhealth.physicians,1,1,1,1
+
+access_openhealth_recommendation_archivers,openhealth.recommendation.archivers,model_openhealth_recommendation,openhealth.archivers,1,1,1,1
 
 
 

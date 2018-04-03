@@ -19,19 +19,14 @@
 
 	'description': """
 
-		Last built: 	2 April 2018 - Rebirth !!!
-
+		Last built: 	3 April 2018 - Rebirth !!!
 		
 		Recuerda que tu Trabajo es la INFORMACION no la Informática. 
 
 
-		Good Order is the Beginning of All Good Things. 
 
 		Clínica Chavarri\n
 		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant - Testcafe - User Stories - Auto Backup\n
-
-
-
 
 
 
@@ -39,6 +34,7 @@
 		
 		Active for: 	17 months !!!		(Lu Feb 2018)
 
+		Good Order is the Beginning of All Good Things. 
 		---
 
 

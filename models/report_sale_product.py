@@ -8,7 +8,7 @@ from openerp import models, fields, api
 
 #import datetime
 
-import clos_funcs
+import resap_funcs
 
 
 
@@ -24,6 +24,10 @@ class ReportSaleProduct(models.Model):
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
 	
+
+	name = fields.Char()
+
+
 	# Dates
 	date = fields.Date(
 			string="Fecha", 
@@ -33,7 +37,7 @@ class ReportSaleProduct(models.Model):
 		)
 
 
-
+	qty = fields.Integer()
 
 
 
@@ -48,10 +52,32 @@ class ReportSaleProduct(models.Model):
 		print 'jx'
 		print 'Update report'
 
-# Total 
-		x_type = 'all'
-		orders,count = clos_funcs.get_orders(self, self.date, x_type)
 
+
+		# Orders 
+		orders,count = resap_funcs.get_orders(self, self.date)
+
+
+
+
+		# Categ 
+		#categ_name = 'Cremas'
+		#categ =  self.env['product.category'].search([
+		#												('name', '=', categ_name),
+		#										],
+													#order='x_serial_nr asc',
+		#											limit=1,
+		#										)
+		#categ_id = categ.id 
+
+
+
+
+		# Order lines
+		for order in orders: 
+			for line in order.order_line: 
+				if line.product_id.categ_id.name == 'Cremas': 
+					print line.product_id.name 
 
 
 

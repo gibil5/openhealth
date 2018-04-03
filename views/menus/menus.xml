@@ -333,6 +333,8 @@ order_report.xml
 
 
 
+
+
 <!-- Closings --> 			
 		<menuitem 	id="sales_closings_menu" 
 					name="Cierres de caja"
@@ -348,6 +350,7 @@ order_report.xml
 
 						action="closings_list_action"
 						/>
+
 
 
 

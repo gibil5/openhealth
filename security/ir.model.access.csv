@@ -4,6 +4,13 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+access_openhealth_closing_caja,openhealth.closing.caja,model_openhealth_closing,openhealth.caja,1,1,1,0
+access_openhealth_closing_directors,openhealth.closing.directors,model_openhealth_closing,openhealth.directors,1,1,1,1
+access_openhealth_closing_managers,openhealth.closing.managers,model_openhealth_closing,openhealth.managers,1,1,1,1
+
+
+
+
 
 
 
@@ -246,9 +253,6 @@ access_stock_move_selector_consu,stock.move.selector.consu,model_stock_move_sele
 
 access_openhealth_quotation,openhealth.quotation,model_openhealth_quotation,,1,1,1,1
 
-access_openhealth_closing_caja,openhealth.closing.caja,model_openhealth_closing,openhealth.caja,1,1,1,0
-
-access_openhealth_closing_directors,openhealth.closing.directors,model_openhealth_closing,openhealth.directors,1,1,1,1
 
 
 

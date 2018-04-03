@@ -137,9 +137,11 @@
 					<field name="x_level"/>				
 
 					<field name="x_name_short"/>
+
+-->
 					<field name="id"/>
 					<field name="uom_id"	invisible="0"/>
--->
+
 
 					<field name="price"/>
 					<field name="list_price"/>

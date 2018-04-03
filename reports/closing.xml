@@ -42,7 +42,6 @@
 <br/>
 
 
-
 <center>
 <h3>
 	Cierre de Caja
@@ -61,7 +60,6 @@
 		<t t-esc="doc.total"/>
 </h4>                            
 
-
 <!-- Date --> 
 <h4>                            
 		<b>Fecha:</b>
@@ -72,7 +70,10 @@
 
 
 
+
+<!--
 <br/>
+-->
 <!-- Title --> 
 <h3>                            
 	Documentos de Pago
@@ -83,8 +84,7 @@
 
 
 <!-- Table --> 
-<table style="line-height: 300%;">
-
+<table style="line-height: 200%;">
 
 
 
@@ -182,24 +182,19 @@
 
 
 <tr>
-<th>------------------</th>
-<th>------------</th>
-</tr>
-
-<tr>
 <th>Total:</th>
 <th><t t-esc="doc.total_proof"/></th>
 </tr>
 
 
-	</table>    
+</table>    
+
+
+
+
+
+
 <br/>
-
-
-
-
-
-
 <!-- Title --> 
 <h3>                            
 	Formas de Pago
@@ -225,12 +220,14 @@
 <th><t t-esc="doc.ame_tot"/></th>
 </tr>
 
+
 <!--
 <tr>
 <th>Cuota Perfecta :</th>
 <th><t t-esc="doc.cuo_tot"/></th>
 </tr>
 -->
+
 
 <tr>
 <th>Diners:</th>
@@ -266,20 +263,14 @@
 
 
 
-<tr>
-<th>------------------</th>
-<th>------------</th>
-</tr>
+
 
 <tr>
 <th>Total:</th>
 <th><t t-esc="doc.total_form"/></th>
 </tr>
 
-
-
 </table>    
-
 
 
 </div> <!-- page --> 

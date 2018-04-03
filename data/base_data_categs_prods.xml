@@ -17,10 +17,32 @@
 		</record>
 
 
+
+
 		<!-- Test --> 
+<!--
+		<record id='testing' model='product.category'>
+			<field name='name'>Testing</field>
+		</record>
+
 		<record id='test' model='product.category'>
 			<field name='name'>Test</field>
 		</record>
+-->
+
+
+		<record id='testing' model='product.category'>
+			<field name='name'>Testing Pla</field>
+<!--
+			<field name='parent_id' 	ref='platform_product_categ'/>
+-->
+		</record>
+
+
+
+
+
+
 
 		<!-- Legacy --> 
 		<record id='legacy' model='product.category'>

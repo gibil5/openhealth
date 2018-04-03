@@ -777,9 +777,15 @@
 
 
 		# ----------------------------------------------------------- Stock Min ------------------------------------------------------
-
 		'views/stock_min/stock_min_inventory.xml',
 		'views/stock_min/stock_min_inventory_line.xml',
+
+
+
+
+
+		# ----------------------------------------------------------- RSP ------------------------------------------------------
+		'views/report_sale/report_sale_product.xml',
 
 
 
@@ -788,9 +794,10 @@
 		# ----------------------------------------------------------- Products ------------------------------------------------------
 
 		# Products - Tmp 
-		'data/prods/odoo_data_products.xml',			 
+		'data/prods/odoo_data_products.xml',	
+
+
 		'data/prods/odoo_data_products_new.xml',			
-		
 		#'data/prods/data_products_consu.xml',			 
 		
 		
@@ -807,9 +814,9 @@
 
 		# ----------------------------------------------------------- Menus ------------------------------------------------------
 		
-		#'views/menus/menus_reporting.xml',
 
 		'views/menus/menus.xml',
+		'views/menus/menus_reporting.xml',
 		'views/menus/menus_inventory.xml',
 		'views/menus/menus_openhealth.xml',
 

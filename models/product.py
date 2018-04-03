@@ -40,27 +40,19 @@ class Product(models.Model):
 
 # ----------------------------------------------------------- Constraints ------------------------------------------------------
 
-	@api.constrains('default_code')
+	#@api.constrains('default_code')
+	#def _check_something(self):
+	#	for record in self:
+	#		if record.default_code == '0':
+	#			raise ValidationError("Default code not valid: %s" % record.default_code)
 
-	def _check_something(self):
-
-		for record in self:
-
-			#if record.default_code == False:
-			if record.default_code == '0':
-				raise ValidationError("Default code not valid: %s" % record.default_code)
-
-
-	
 			# count 
-			if record.default_code != False: 
-				count = self.env['product.template'].search_count([
-																	('default_code', '=', record.default_code),
-											])
-				if count > 1: 
-					raise ValidationError("Default code already exists: %s" % record.default_code)
-
-
+	#		if record.default_code != False: 
+	#			count = self.env['product.template'].search_count([
+	#																('default_code', '=', record.default_code),
+	#										])
+	#			if count > 1: 
+	#				raise ValidationError("Default code already exists: %s" % record.default_code)
 		# all records passed the test, don't return anything
 
 

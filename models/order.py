@@ -3263,8 +3263,10 @@ class sale_order(models.Model):
 			self.reserve_machine()
 
 
+
+
 		# Create Proc 
-		self.treatment.create_procedure()
+		#self.treatment.create_procedure()
 
 
 

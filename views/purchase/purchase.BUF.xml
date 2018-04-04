@@ -6,13 +6,17 @@
 
 		<!-- FORM --> 
 		<record id="purchase_order_form" model="ir.ui.view">
+
 			<field name="name">openhealth.order.form</field>
 
 			<field name="model">purchase.order</field>
 			
 			<field name="inherit_id" ref="purchase.purchase_order_form"/>	
 			<field name="mode">primary</field>
+			
 			<field name="priority" eval="1"/>
+
+
 			<field name="arch" type="xml">
 
 
@@ -20,10 +24,96 @@
 
 
 
-<!-- Buttons -->
+<!--
+Prices in purchase line
+-->
+				<xpath expr="//field[@name='price_unit']" position="replace">
+
+					<field name="price_unit" widget="monetary"	string="Precio unitario"	/>
+				</xpath>
 
 
-				<!-- Confirmar --> 
+				<xpath expr="//field[@name='price_unit']" position="before">
+					
+					<field name="x_price_unit_wo_tax" widget="monetary"  string="Precio unitario Neto"  />
+				
+					<field name="price_tax" widget="monetary"	string="Igv"	/>
+				</xpath>
+
+
+				<xpath expr="//field[@name='price_subtotal']" position="replace">
+					
+					<field name="price_total" widget="monetary"/>
+				
+				</xpath>
+
+
+				<xpath expr="//field[@name='taxes_id']" position="replace">
+					
+					<field name="taxes_id" string="Tipo de Imp."/>
+				
+				</xpath>
+
+
+
+
+
+
+				<!--
+				<xpath expr="//field[@name='name']" position="after">
+				</xpath>
+				-->
+
+
+<!--
+				<xpath expr="//field[@name='date_order']" position="after">
+					<field name="x_token" />
+				</xpath>
+-->
+
+
+
+<!-- Date --> 
+				<xpath expr="//field[@name='date_order']" position="after">
+					<field name="x_my_company" />
+				</xpath>
+
+
+
+
+
+				<xpath expr="//button[@name='button_done']" position="after">
+
+					<button 
+							name="remove_myself"
+							type="object" 
+							class="oe_highlight"
+							string="REMOVEM"
+
+							groups="openhealth.roots"
+					/>
+
+
+					<button 
+							name="clean_myself"
+							type="object" 
+							class="oe_highlight"
+
+							string="CLEANM"
+
+							groups="openhealth.roots"
+					/>
+				</xpath>
+
+
+
+
+
+
+<!--
+							states="draft" 
+							string="Enviar por Email" 
+-->
 				<xpath expr="//button[@name='action_rfq_send']" position="replace">
 
 					<button 
@@ -31,7 +121,10 @@
 							name="action_rfq_send" 							
 							type="object" 
 							context="{'send_rfq':True}" 
+							
 							class="oe_highlight"
+
+
 
 							states="draft" 
 
@@ -41,7 +134,32 @@
 
 
 
-				<!-- Replace --> 
+<!--
+
+					<button name="action_rfq_send" states="sent" string="Re-Send RFQ by Email" type="object" context="{'send_rfq':True}"/>
+-->
+<!--
+				<xpath expr="//button[@name='action_rfq_send']" position="replace">
+					<button 
+							name="action_rfq_send" 
+
+							states="sent" 
+
+							string="Re-Enviar por Email" 
+
+							type="object" 
+							context="{'send_rfq':True}"/>
+				</xpath>
+-->
+
+
+
+
+<!--
+				<xpath expr="//button[@name='action_rfq_send']" position="replace">
+
+				<xpath expr="//button[@string='Create Invoice']" position="replace">
+-->
 				<xpath expr="//button[@name='action_rfq_send' and @states='purchase']" position="replace">
 				</xpath>
 
@@ -51,7 +169,18 @@
 
 
 
-				<!-- Print -->
+<!-- Here -->
+<!--
+				<xpath expr="//button[@name='print_quotation']" position="replace">
+				</xpath>
+				<xpath expr="//button[@name='print_quotation']" position="replace">
+				</xpath>
+
+				
+					<button name="print_quotation" string="Print RFQ" type="object" states="draft" class="oe_highlight" groups="base.group_user"/>
+					<button name="print_quotation" string="Re-Print RFQ" type="object" states="sent" groups="base.group_user"/>
+-->
+
 				<xpath expr="//button[@name='print_quotation']" position="replace">
 					<button 
 							name="print_quotation" 
@@ -68,6 +197,10 @@
 
 
 
+
+
+<!--
+-->
 				<!-- Print --> 
 				<xpath expr="//button[@name='print_quotation']" position="replace">
 					<button 
@@ -85,9 +218,9 @@
 
 
 
-
-				<!-- Receive Prods --> 
+				<!-- Receive prods --> 
 				<xpath expr="//button[@name='action_view_picking']" position="replace">
+
 					<button 
 							name="action_view_picking" 
 							string="Receive Products" 
@@ -96,69 +229,59 @@
 
 							groups="openhealth.roots"
 					/>
+
 				</xpath>
 
 
 
+				<!-- Receive prods - Sheet --> 
+<!--
+				<xpath expr="//button[@name='action_view_picking']" position="replace">
+
+						<button type="object"
+							name="action_view_picking"
+							class="oe_stat_button"
+							icon="fa-truck">
+							<field name="picking_count" widget="statinfo" string="Shipment" help="Incoming Shipments"/>
+
+							groups="openhealth.roots"							
+						</button>
+				
+				</xpath>
+-->
 
 
 
 
 				<!-- Cancel -->
 				<xpath expr="//button[@name='button_cancel']" position="replace">
-					<button 
-							class="jx_cancel"
-							type="object" 
-							name="button_cancel" 
-							states="draft,to approve,sent,purchase" 
 
+					<button 
+							name="button_cancel" 
+
+							states="draft,to approve,sent,purchase" 
+							
 							string="Cancelar" 
+							
+							type="object" 
 
 							groups="openhealth.roots,openhealth.managers,openhealth.directors"
+
+
+							class="jx_cancel"
 					/>
+				
 				</xpath>
 
 
 
 
-
-
-
-
-
-
-				<!-- Validar -->
-				<xpath expr="//button[@name='action_rfq_send']" position="before">
-					<button 
-							name="button_validate" 
-							states="pre_draft" 
-							type="object" 
-							class="oe_highlight"
-
-							string="Validar" 
-
-							groups="openhealth.roots,openhealth.managers,openhealth.directors,openhealth.almacen_managers"
-						/>
-				</xpath>
-
-
-
-				<!-- Confirm --> 
-				<xpath expr="//button[@name='button_confirm']" position="replace">
-				</xpath>
-
-
-
-				<!-- Done -->
-				<xpath expr="//button[@name='button_done']" position="replace">
-				</xpath>
-
-
-
-
-
-
-<!-- Statusbar -->
+<!--
+					<field name="state" widget="statusbar" statusbar_visible="draft,sent,purchase,done" readonly="1" />
+					<field name="state" widget="statusbar" statusbar_visible="draft,validated,sent,purchase,done" readonly="1" />
+					<field name="state" widget="statusbar" statusbar_visible="pre_draft,draft,sent,purchase,done" readonly="1" />
+					<field name="state" widget="statusbar" statusbar_visible="pre_draft,draft,purchase,done" readonly="1" />
+-->
 				<xpath expr="//field[@name='state']" position="replace">
 					<field name="state" widget="statusbar" statusbar_visible="pre_draft,draft,purchase,done" readonly="1" />
 				</xpath>
@@ -168,55 +291,110 @@
 
 
 
-
-
-<!-- Fields -->
-
-
-				<!--
-				Prices in purchase line
-				-->
-<!--				
--->
-				<xpath expr="//field[@name='price_unit']" position="replace">
-
-					<field name="price_unit" widget="monetary"	string="Prec. unit."	/>
-				</xpath>
-
-
-				<xpath expr="//field[@name='price_unit']" position="before">
-					
-					<field name="x_price_unit_wo_tax" widget="monetary"  string="Prec. unit. Neto"  />
-				
-					<field name="price_tax" widget="monetary"	string="Igv"	/>
-				</xpath>
-
-
-				<xpath expr="//field[@name='price_subtotal']" position="replace">
-					
-					<field name="price_total" widget="monetary"/>
-				
-				</xpath>
-
-
-				<xpath expr="//field[@name='taxes_id']" position="replace">
-					
-					<field name="taxes_id" string="Tipo Imp."/>
-				
-				</xpath>
-
-
-
-
-
-				<!-- My Company --> 
 <!--
-				<xpath expr="//field[@name='date_order']" position="after">
-					<field name="x_my_company" />
+							groups="openhealth.roots,openhealth.managers,openhealth.directors"
+-->
+				<xpath expr="//button[@name='action_rfq_send']" position="before">
+
+					<button 
+							name="button_validate" 
+							states="pre_draft" 
+							type="object" 
+							class="oe_highlight"
+
+
+							string="Validar" 
+
+							groups="openhealth.roots,openhealth.managers,openhealth.directors,openhealth.almacen_managers"
+						/>
+
 				</xpath>
+
+
+
+<!--
+					<button name="button_confirm" type="object" states="sent" string="Confirm Order" class="oe_highlight" id="bid_confirm"/>
+
+
+				<xpath expr="//button[@name='button_confirm']" position="replace">
+					<button 
+							name="button_confirm" 
+							type="object" 
+
+							string="Confirmar" 
+							
+							class="oe_highlight" 
+							id="bid_confirm"
+
+							states="sent" 
+						/>
+				</xpath>
+-->
+
+
+
+
+
+<!--
+					<button name="button_confirm" type="object" states="draft" string="Confirm Order" id="draft_confirm"/>
+-->
+
+<!--
+-->
+				<xpath expr="//button[@name='button_confirm']" position="replace">
+				</xpath>
+
+
+
+
+<!--
+					<button name="button_done" type="object" string="Set to Done" states="purchase"
+						help="If a purchase order is done, you cannot modify it manually anymore. You will not be able to receive invoices anymore for this purchase order."/>
+				<xpath expr="//button[@name='button_done']" position="replace">
+					<button 
+							name="button_done" 
+
+							type="object" 
+							
+							string="Set to Done" 
+							
+							states="purchase"   
+
+							groups="openhealth.roots"
+						/>
+				</xpath>
+-->
+
+
+				<xpath expr="//button[@name='button_done']" position="replace">
+				</xpath>
+
+
+<!--
+					<button name="action_rfq_send" states="purchase" string="Send PO by Email" type="object" context="{'send_rfq':False}"/>
+
+				<xpath expr="//button[@name='action_rfq_send']" position="replace">
+
+
+					<button 
+							name="action_rfq_send" 
+							states="purchase" 
+							string="Send PO by Email" 
+							type="object" 
+							context="{'send_rfq':False}"
+
+							groups="openhealth.roots"
+							/>
+				</xpath>
+-->
+
+
+
+
 
 
 				<xpath expr="//field[@name='partner_id']" position="replace">
+
 					<field 
 							name="partner_id" 							
 							context="{'search_default_supplier':1, 'default_supplier':1, 'default_customer':0}" 
@@ -225,7 +403,14 @@
 
 							options="{'no_create': True}"
 						/>
+
 				</xpath>
+
+
+
+
+				
+
 
 
 				<xpath expr="//field[@name='product_id']" position="replace">
@@ -235,15 +420,28 @@
 							options="{'no_create': True}"
 						/>
 				</xpath>
+
+
+
+
+
+
+
+<!--
+<field name="amount_untaxed" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+
+<field name="amount_tax" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+
+
+<div class="oe_subtotal_footer_separator oe_inline">
+<label for="amount_total"/>
+</div>
+
+<field name="amount_total" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+
 -->
 
 
-
-
-
-
-				<!-- Total Neto -->
-<!--				
 				<xpath expr="//field[@name='amount_untaxed']" position="replace">
 					<field 
 							name="amount_untaxed" 
@@ -278,13 +476,13 @@
 							string="TOTAL"
 							/>
 				</xpath>
+
+
+
+<!--
+<field name="payment_term_id" options="{'no_open': True, 'no_create': True}" attrs="{'readonly': [('invoice_status','=', 'invoiced')]}"/>
 -->
 
-
-
-
-				<!-- Payment Term -->
-<!--				
 				<xpath expr="//field[@name='payment_term_id']" position="replace">
 					<field 
 							name="payment_term_id" 
@@ -298,55 +496,59 @@
 
 
 
-
 				<xpath expr="//field[@name='incoterm_id']" position="replace">
 				</xpath>
 
 				<xpath expr="//field[@name='fiscal_position_id']" position="replace">
 				</xpath>
+
+
+
+<!--
+					<field name="dest_address_id" groups="stock.group_locations" attrs="{'invisible': [('default_location_dest_id_usage', '!=', 'customer')], 'required': [('default_location_dest_id_usage', '=', 'customer')]}"/>
 -->
-
-
-				<!-- Lugar de entrega -->
-<!--				
 				<xpath expr="//field[@name='dest_address_id']" position="replace">
 					<field 
 							name="dest_address_id"	
+
 							string="Lugar de entrega"
 						/>				
 				</xpath>
 
 
 
+
 				<xpath expr="//field[@name='picking_type_id']" position="replace">
 				</xpath>
--->
 
 
 
-				<!-- Invoice status --> 
-<!--				
 				<xpath expr="//field[@name='invoice_status']" position="replace">
 
 					<field 
 							name="invoice_status"	
+
 							invisible="1"	
 						/>				
+
 				</xpath>
+
+
+
+
+<!-- 
+Chatter - Deprecated !!!
+Look for the Minimalist experience !!!
 -->
-
-
-
-				<!-- Chatter -->
-<!--				
 				<field name="message_follower_ids" position="replace">
 				</field>
+				
 				<field name="message_ids" position="replace">
 				</field>
--->
 
 			</field>
 		</record>
+		<!-- FORM --> 
 
 
 
@@ -359,7 +561,9 @@
 
 
 
-
+<!--
+			<field name="name">Ordenes de C/S</field>
+-->
 
 		<!-- ACTION -->
 		<record id="purchase.purchase_rfq" model="ir.actions.act_window">
@@ -371,8 +575,11 @@
 								}</field>
 			
 
+
 			<field name="domain">[]</field>
 			
+
+
 			<field name="view_mode">tree,kanban,form,pivot,graph,calendar</field>
 			<field name="search_view_id" ref="purchase.view_purchase_order_filter"/>
 		</record>
@@ -384,6 +591,10 @@
 
 
 
+<!--
+					name="Ordenes de C/S"
+					name="Requests for Quotation"
+-->
 		<!-- MENU --> 
 	   <menuitem 
 					action="purchase.purchase_rfq" 
@@ -391,6 +602,7 @@
 					parent="purchase.menu_procurement_management"
 					sequence="0"
 					/>
+
 
 		<menuitem 
 					id="purchase.menu_purchase_form_action" 
@@ -402,6 +614,10 @@
 					
 					action="purchase.purchase_form_action" 
 				/>
+
+
+
+
 
 
 
@@ -446,6 +662,10 @@ grey:state in ('cancel', 'done')
 
 
 					<field name="product_id" />
+<!--
+					<field name="order_line" />
+					<field name="notes" />
+-->
 
 					<field name="date_planned" invisible="context.get('quotation_only', False)"/>
 					<field name="origin"/>
@@ -457,6 +677,15 @@ grey:state in ('cancel', 'done')
 		</record>
 
 
+
+
+ <!--
+<tree string="Issue Tracker Tree" fonts="bold:message_unread==True" 
+
+colors="black:state=='open';blue:state=='pending';grey:state in ('cancel', 'done')"
+
+>
+-->
 
 
 

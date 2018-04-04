@@ -17,6 +17,17 @@
 
 
 
+
+		<!-- Account Tax -->
+		<menuitem id="account_tax_menu" name="Account Tax" parent="openhealth_menu"
+			sequence="10"
+
+			action="account.action_tax_form"
+			/>
+
+
+
+
 		<!-- RSP -->
 <!--
 		<menuitem id="rsp_menu" name="Report Sale Product" parent="openhealth_menu"
@@ -27,11 +38,11 @@
 
 		<!-- Stock Min Inventory -->
 		<menuitem id="stock_min_inventory_menu" name="Stock Min Inventory" parent="openhealth_menu"
-			sequence="-310"
+			sequence="30"
 			action="stock_min_inventory_list_action"/>
 
 		<menuitem id="stock_min_inventory_line_menu" name="Stock Min Inventory Line" parent="openhealth_menu"
-			sequence="-309"
+			sequence="31"
 			action="stock_min_inventory_line_list_action"/>
 
 

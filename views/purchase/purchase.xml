@@ -177,33 +177,28 @@
 				Prices in purchase line
 				-->
 				<xpath expr="//field[@name='price_unit']" position="replace">
-
 					<field name="price_unit" widget="monetary"	string="Prec. unit."	/>
 				</xpath>
 
 
 				<xpath expr="//field[@name='price_unit']" position="before">
-					
 					<field name="x_price_unit_wo_tax" widget="monetary"  string="Prec. unit. Neto"  />
-				
 					<field name="price_tax" widget="monetary"	string="Igv"	/>
 				</xpath>
 
 
 				<xpath expr="//field[@name='price_subtotal']" position="replace">
-					
 					<field name="price_total" widget="monetary"/>
-				
 				</xpath>
 
 
-<!--				
-				<xpath expr="//field[@name='taxes_id']" position="replace">
-					
+
+				<!-- Unstable - Deprecated --> 
+				<!--				
+				<xpath expr="//field[@name='taxes_id']" position="replace">	
 					<field name="taxes_id" string="Tipo Imp."/>
-				
 				</xpath>
--->
+				-->
 
 
 
@@ -222,7 +217,6 @@
 							name="partner_id" 							
 							context="{'search_default_supplier':1, 'default_supplier':1, 'default_customer':0}" 
 							domain="[('supplier','=',True)]"
-
 
 							options="{'no_create': True}"
 						/>

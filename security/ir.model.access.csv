@@ -345,7 +345,7 @@ access_oeh_medical_patient_caja,oeh.medical.patient caja,oehealth.model_oeh_medi
 
 access_oeh_medical_patient_reception,oeh.medical.patient reception,oehealth.model_oeh_medical_patient,openhealth.reception,1,1,1,0
 
-
+access_oeh_medical_patient_archivers,oeh.medical.patient archivers,oehealth.model_oeh_medical_patient,openhealth.archivers,1,1,1,0
 
 
 

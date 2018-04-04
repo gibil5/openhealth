@@ -19,7 +19,7 @@
 
 	'description': """
 
-		Last built: 	3 April 2018 - Rebirth !!!
+		Last built: 	4 April 2018 - Rebirth !!!
 		
 		Recuerda que tu Trabajo es la INFORMACION no la Informática. 
 
@@ -326,7 +326,7 @@
 
 
 		# Purchases 
-		'views/purchase/purchase.xml',
+		#'views/purchase/purchase.xml',
 
 
 

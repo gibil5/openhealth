@@ -165,7 +165,7 @@
 							
 
 <group
-groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.physicians,openhealth.staffs,openhealth.reception"
+groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.physicians,openhealth.staffs,openhealth.reception,openhealth.archivers"
 >
 								<field name="doctor" options="{'no_create': True}"/>
 
@@ -218,7 +218,7 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 
 
 <group
-groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.physicians,openhealth.staffs,openhealth.reception"
+groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.physicians,openhealth.staffs,openhealth.reception,openhealth.archivers"
 >
 								<field name="procedure"			invisible="0"	/>
 

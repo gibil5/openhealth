@@ -182,17 +182,17 @@
 
 
 
-<!-- Karla Tejada -->
+<!-- Karla Tejeda -->
 		<record id="ktejada" model="res.partner">
-			<field name="name">Karla Tejada</field>
-			<field name="email">ktejada@clinicachavarri.com</field>
+			<field name="name">Karla Tejeda</field>
+			<field name="email">ktejeda@clinicachavarri.com</field>
 			<field name="function">reception</field>
 	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
 		<record id="ktejada_clinicachavarri" model="res.users">
-			<field name="name">Karla Tejada</field>
-			<field name="login">ktejada@clinicachavarri.com</field>
+			<field name="name">Karla Tejeda</field>
+			<field name="login">ktejeda@clinicachavarri.com</field>
 
 <!--
 			<field name="password">ktejada</field>

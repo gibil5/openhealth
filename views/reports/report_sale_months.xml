@@ -55,7 +55,7 @@
 			<field name="context">{
 									'search_default_Sales':1, 
 									'group_by_no_leaf':1,
-									'group_by': ['product_id'],
+									'group_by': ['product_id','partner_id'],
 								}
 			</field>
 

@@ -177,7 +177,6 @@
 				Prices in purchase line
 				-->
 <!--				
--->
 				<xpath expr="//field[@name='price_unit']" position="replace">
 
 					<field name="price_unit" widget="monetary"	string="Prec. unit."	/>
@@ -204,6 +203,8 @@
 					<field name="taxes_id" string="Tipo Imp."/>
 				
 				</xpath>
+-->
+
 
 
 

@@ -765,7 +765,7 @@
 
 
 		# ----------------------------------------------------------- Stock Moves - Deprecated ------------------------------------------------------
-		#'data/stock_move_data.xml',
+		'data/stock_move_data.xml',
 		#'views/stock/stock_move.xml',
 		#'views/stock/stock_move_selector.xml',
 		#'views/stock/stock_move_all.xml',
@@ -795,7 +795,8 @@
 		# Products - Tmp 
 		'data/prods/odoo_data_products.xml',	
 
-		#'data/prods/odoo_data_products_new.xml',			
+		'data/prods/odoo_data_products_new.xml',	
+
 		#'data/prods/data_products_consu.xml',			 
 		
 

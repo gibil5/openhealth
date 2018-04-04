@@ -43,7 +43,71 @@ class sale_order(models.Model):
 
 
 
+# ----------------------------------------------------------- Date Order ------------------------------------------------------
 
+	date_order = fields.Datetime(
+		#string='Order Date', 
+		#required=True, 
+		#readonly=True, 
+		#index=True, 
+
+		states={	
+					'draft': [('readonly', False)], 
+					'sent': [('readonly', False)], 
+					'sale': [('readonly', True)], 
+					
+					'editable': [('readonly', False)], 
+				}, 
+
+		#write=['openhealth.roots'], 
+		
+		#copy=False, 
+		#default=fields.Datetime.now
+	)
+
+
+
+
+	# State 
+	state = fields.Selection(
+
+			selection = ord_vars._state_list, 
+			
+			string='Estado',	
+			readonly=False,
+			default='draft',
+
+			#copy=False, 
+			#index=True, 
+			#track_visibility='onchange', 
+			#compute="_compute_state",
+		)
+
+
+
+
+	@api.multi
+	def state_change(self):  
+
+		print 
+		print 'jx'
+		print 'State Change'
+
+		print self.state 
+
+
+		if self.state == 'sale': 
+			self.state = 'editable'
+		elif self.state == 'editable': 
+			self.state = 'sale'
+
+
+		print self.state 
+
+
+
+
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
 
 	treatment = fields.Many2one(
 			'openhealth.treatment',
@@ -538,25 +602,8 @@ class sale_order(models.Model):
 
 
 
+
 # ----------------------------------------------------------- Date Order ------------------------------------------------------
-
-	#date_order = fields.Datetime(
-		#string='Order Date', 
-		#required=True, 
-		#readonly=True, 
-		#index=True, 
-
-	#	states={	'draft': [('readonly', False)], 
-	#				'sent': [('readonly', False)], 
-	#				'sale': [('readonly', False)], 
-	#			}, 
-		
-		#copy=False, 
-		#default=fields.Datetime.now
-	#)
-
-
-
 
 
 	x_date_order_corr = fields.Datetime(
@@ -1188,26 +1235,6 @@ class sale_order(models.Model):
 
 
 
-
-#jz
-	# State 
-	state = fields.Selection(
-
-			
-			#selection = ord_vars._x_state_list, 
-			selection = ord_vars._state_list, 
-			
-
-
-			string='Estado',	
-			readonly=False,
-			default='draft',
-
-			#copy=False, 
-			#index=True, 
-			#track_visibility='onchange', 
-			#compute="_compute_state",
-			)
 
 
 
@@ -3222,15 +3249,22 @@ class sale_order(models.Model):
 
 
 
+
 		# Appointment State - To Invoiced 
 		if self.x_family == 'consultation'	or 	self.x_family == 'procedure': 
 			if self.x_appointment.name != False: 
 				self.x_appointment.state = 'invoiced'
 
+
+
+
 		# Reserve Machine if Procedure 
 		if self.x_family == 'procedure': 
 			self.reserve_machine()
 
+
+		# Create Proc 
+		self.treatment.create_procedure()
 
 
 

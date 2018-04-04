@@ -32,12 +32,14 @@ _state_list = [
 
 
 
-
 				('printed', 	'Impreso'),
 				('done', 		'Completo'),
 				('cancel', 		'Anulado'),
 
+
+				('editable', 	'e'),
 			]
+
 
 
 

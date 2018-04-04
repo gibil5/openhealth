@@ -23,6 +23,7 @@
 <!--
 							statusbar_visible="draft, sent, sale, done, cancel"
 							statusbar_visible="draft, sent, sale, printed, cancel"
+							statusbar_visible="draft, sent, sale"
 -->
 				<!-- State --> 
 				<xpath expr="//field[@name='state']" position="replace">
@@ -31,7 +32,7 @@
 							widget="statusbar" 
 
 
-							statusbar_visible="draft, sent, sale"
+							statusbar_visible="draft, sent, sale, editable"
 					/>
 				</xpath>
 
@@ -208,7 +209,24 @@
 
 					<field name="vspace"/>
 
-					<field name="date_order" 			string="Fecha"		readonly="0"	/>					
+
+<!--
+					<field name="date_order" 			string="Fecha"		readonly="0"	/>
+
+																			attrs="{
+																						'readonly':[('x_foreign', '=', False)],
+																					}"
+					<field name="date_order" 			string="Fecha"		readonly="1"	groups="openhealth.caja"		/>					
+
+					<field name="date_order" 			string="Fecha"		readonly="0"	groups="openhealth.roots"		/>					
+-->
+
+					<field name="date_order" 			string="Fecha"		readonly="0"	/>
+					
+
+
+
+
 
 					<field name="vspace"/>
 
@@ -434,31 +452,35 @@
 					<button 
 							type="object" 
 							class="oe_highlight"
-
-
 							name="print_ticket"
 
 							string="IMPRIMIR"
 
-
-
-
 							groups="openhealth.roots,openhealth.caja"
 
 
-
-
 							attrs="{'invisible':[	'|',
-
 													('x_type','not in',['ticket_invoice','ticket_receipt']), 
-
 													('state','not in',['sale']), 
-
 											]}"
+						/>
 
-					/>
 
 
+
+
+
+					<button 
+							type="object" 
+							class="oe_highlight"
+							name="state_change"
+
+							string="State"
+
+							groups="openhealth.roots"
+
+							states="sale,editable"
+						/>
 
 
 

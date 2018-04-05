@@ -376,3 +376,93 @@
 
 
 
+
+
+
+
+
+	# On change - Balance
+	#@api.onchange('balance')
+	
+	#def _onchange_balance(self):
+		
+		#print 'Onchange Balance'
+
+		#if self.balance == 0.0:
+	#	if self.total == self.pm_total:
+			#print 'Gotcha'
+	#		self.state = 'done'
+			#print self.state  
+
+
+	# Open Order
+	#@api.multi 
+	#def open_order(self):
+	#	self.confirmed = True 
+	#	ret = self.order.open_myself()
+	#	return ret 
+	# open_order
+
+
+
+
+
+
+
+	# Create 
+	@api.model
+	def create(self,vals):
+
+
+		#order = vals['order']
+		#nr_pm = self.env['openhealth.payment_method'].search_count([('order','=', order),]) 
+		#name = 'MP-' + str(nr_pm + 1)
+		#vals['name'] = name
+
+
+
+
+		#total = vals['total']
+
+
+
+
+
+
+	# Open Myself
+	@api.multi 
+	def open_myself(self):
+		payment_method_id = self.id  
+
+		return {
+				# Mandatory 
+				'type': 'ir.actions.act_window',
+				'name': 'Open payment method Current',
+
+				# Window action 
+				'res_model': 'openhealth.payment_method',
+				'res_id': payment_method_id,
+
+				# Views 
+				"views": [[False, "form"]],
+				'view_mode': 'form',
+				'target': 'current',
+
+				#'view_id': view_id,
+				#"domain": [["patient", "=", self.patient.name]],
+				#'auto_search': False, 
+
+				'flags': {
+						'form': {'action_buttons': True, }
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+				},			
+
+				'context':   {}
+			}
+	# open_myself
+
+
+
+
+
+

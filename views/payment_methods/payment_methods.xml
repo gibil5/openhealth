@@ -18,20 +18,18 @@
 						<button 
 								type="object" 
 								class="oe_highlight"
-								states="payment"						
-								name="create_saleproof"
+								states="paid"
+								name="go_back"
 
-								string="GENERAR"
+								string="Regresar"
 						/>
 
 
 						<!-- State --> 
 						<field 	name="state" 
 								widget="statusbar" 
-
 								invisible="0"
-								
-								statusbar_visible="draft, payment, generated, done"
+								statusbar_visible="draft, paid, done"
 						/>
 					</header>
 

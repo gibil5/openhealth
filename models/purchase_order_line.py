@@ -27,6 +27,43 @@ class PurchaseOrderLine(models.Model):
 
 
 
+	@api.multi
+	def _get_default_tax(self): 
+
+		print 'Get Default Tax'
+
+		#name = 'IGV 18% Compra'
+		name = 'Percepción IGV 18%'
+
+		tax = self.env['account.tax'].search([
+													('name', '=', name),			
+												],
+												#order='start_date desc',
+												limit=1,
+											)
+		print tax
+		print tax.name
+		print tax.id 
+		return tax.id 
+
+
+
+
+	# Taxes 
+	taxes_id = fields.Many2many(
+			'account.tax', 
+			string='Taxes', 
+			domain=['|', ('active', '=', False), ('active', '=', True)], 
+
+			#default = _get_default_tax, 			
+		)
+
+
+
+
+
+
+
 
 	x_price_unit_wo_tax = fields.Float(
 			string='Precio unitario', 

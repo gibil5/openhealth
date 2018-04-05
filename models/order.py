@@ -23,6 +23,7 @@ import math
 import time 
 from openerp import tools
 
+import count_funcs
 
 
 #from calendar import monthrange
@@ -603,10 +604,11 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Date Order ------------------------------------------------------
+# ----------------------------------------------------------- Ticket - Date Order Corr ------------------------------------------------------
 
 
-	x_date_order_corr = fields.Datetime(
+	#x_date_order_corr = fields.Datetime(
+	x_date_order_corr = fields.Char(
 		string='Order Date Corr', 
 		#required=True, 
 		#readonly=True, 
@@ -629,12 +631,14 @@ class sale_order(models.Model):
 
 
 
-			DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
+
 
 			#date_field1 = datetime.strptime(date_field1, DATETIME_FORMAT)
 			#date_field2 = datetime.strptime(date_field2, DATETIME_FORMAT)
 			#date_field2 = date_field1 + timedelta(hours=5,minutes=30)
 
+
+			DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
 			date_field1 = datetime.datetime.strptime(record.date_order, DATETIME_FORMAT)
 
 			#date_field2 = datetime.strptime(date_field2, DATETIME_FORMAT)
@@ -642,6 +646,14 @@ class sale_order(models.Model):
 			#date_field2 = date_field1 + datetime.timedelta(hours=5,minutes=0)
 			date_field2 = date_field1 + datetime.timedelta(hours=-5,minutes=0)
 
+
+
+
+			DATETIME_FORMAT_2 = "%d-%m-%Y %H:%M:%S"
+
+			#date_field2 = datetime.datetime.strptime(date_field2, DATETIME_FORMAT_2)
+
+			date_field2 = date_field2.strftime(DATETIME_FORMAT_2)
 
 			record.x_date_order_corr = date_field2
 
@@ -3202,10 +3214,35 @@ class sale_order(models.Model):
 
 		#Write your logic here - Begin
 
+
 		# Serial Number and Type
-		if self.x_payment_method.saledoc_code != False: 
-			self.x_serial_nr = self.x_payment_method.saledoc_code 
+		#if self.x_payment_method.name != False: 
+		#if self.x_payment_method.saledoc_code != False: 
+		if self.x_payment_method.saledoc != False: 
+			
+
 			self.x_type = self.x_payment_method.saledoc
+
+
+			#self.x_serial_nr = self.x_payment_method.saledoc_code 
+
+			
+
+	 		counter = self.env['openhealth.counter'].search([
+																	('name', '=', self.x_type), 
+																],
+																	#order='write_date desc',
+																	limit=1,
+																)
+
+			name = count_funcs.get_name(self, counter.prefix, counter.separator, counter.padding, counter.value)
+
+			self.x_serial_nr = name
+
+
+			counter.increase()				# Here !
+
+
 
 
 
@@ -3312,37 +3349,23 @@ class sale_order(models.Model):
 
 
 
+
 			# Search Card
 			card = self.env['openhealth.card'].search([ ('patient_name', '=', patient_name), ], order='date_created desc', limit=1)
 			card_id = card.id
 			print card 
 
-
-
 			# Create Card 
 			if card.name == False: 
-
-				print 'jx'
-				print 'Create VIP Card'
-
-
-
-				# Card name 
-				#counter = self.env['openhealth.counter'].search([('name', '=', 'vip')])
-				#name = counter.total
-				#counter.increase()
-
-
 				card = self.env['openhealth.card'].create({
-																	#'name': name,
 																	'patient_name': self.partner_id.name,
 															})
-
-
-				print card
-				print card.name
-				print self.partner_id.name				
-				print
+				#print 'jx'
+				#print 'Create VIP Card'
+				#print card
+				#print card.name
+				#print self.partner_id.name				
+				#print
 
 			#return{}
 

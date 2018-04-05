@@ -184,9 +184,9 @@ Fields
 
                     <field name="name"	 				/>
 
-                    <field name="total_form"/>
+                    <field name="cash_tot"	string="Total Efectivo"	/>
 
-                    <field name="total_proof"/>
+                    <field name="total_cards"/>
 
                     <field name="total"/>
 
@@ -196,7 +196,9 @@ Fields
                     <field name="date"		string="Fecha"	/>
 
 
-                    <field name="cash_tot"/>
+                    <field name="total_form"/>
+                    <field name="total_proof"/>
+
                     <field name="ame_tot"/>
                     <field name="cuo_tot"/>
                     <field name="din_tot"/>
@@ -207,10 +209,8 @@ Fields
 
                     <field name="tkr_tot"/>
                     <field name="tki_tot"/>
-
                     <field name="rec_tot"/>
                     <field name="inv_tot"/>
-
                     <field name="adv_tot"/>
                     <field name="san_tot"/>
 -->

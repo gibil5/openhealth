@@ -72,10 +72,10 @@ class counter(models.Model):
 
 	# Total 
 	total = fields.Char(
-
 			string="Total", 
 		
-			compute='_compute_total', 
+
+			#compute='_compute_total', 
 		)
 
 	@api.multi

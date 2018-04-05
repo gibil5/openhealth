@@ -1,0 +1,61 @@
+
+
+
+
+
+
+
+									<field name="saledoc_code"			groups="openhealth.roots"			/>
+
+
+
+
+
+
+									<field name="receipt"		
+															readonly="0"
+															attrs="{'invisible':[
+																				('saledoc','in',[ False, 'invoice', 'advertisement', 'sale_note', 'ticket_receipt', 'ticket_invoice', 'none',]),
+															]}"
+										/>
+									<field name="invoice"		
+															readonly="1"
+
+															attrs="{'invisible':[
+																				('saledoc','in',[ False, 'receipt', 'advertisement', 'sale_note', 'ticket_receipt', 'ticket_invoice', 'none',]),
+															]}"
+										/>
+								
+
+									<field name="advertisement"		
+															readonly="1"
+															attrs="{'invisible':[
+																				('saledoc','in',[ False, 'receipt', 'invoice', 'sale_note', 'ticket_receipt', 'ticket_invoice', 'none',]),
+															]}"
+										/>
+
+
+									<field name="sale_note"		
+															readonly="1"
+															attrs="{'invisible':[
+																				('saledoc','in',[ False, 'receipt', 'invoice', 'advertisement', 'advertisement', 'ticket_receipt', 'ticket_invoice', 'none',]),
+															]}"
+										/>
+
+
+
+									<field name="ticket_receipt"		
+															readonly="1"
+															attrs="{'invisible':[
+																				('saledoc','in',[ False, 'receipt', 'invoice', 'advertisement', 'sale_note', 'sale_note', 'ticket_invoice', 'none',]),
+															]}"
+										/>
+
+
+									<field name="ticket_invoice"		
+															readonly="1"
+															attrs="{'invisible':[
+																				('saledoc','in',[ False, 'receipt', 'advertisement', 'sale_note', 'ticket_receipt', 'invoice', 'none',]),
+															]}"
+										/>
+

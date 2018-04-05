@@ -630,3 +630,15 @@
 
 
 
+# 5 April 2018
+
+				# Card name 
+				#counter = self.env['openhealth.counter'].search([('name', '=', 'vip')])
+				#name = counter.total
+				#counter.increase()
+
+
+
+
+
+

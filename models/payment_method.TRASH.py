@@ -1,200 +1,378 @@
 
 
-# 18 nov 2017
 
 
-			return {
-					'type': 'ir.actions.act_window',
-					'name': ' New Proof Current', 
+# 5 April 2018
 
-					'view_type': 'form',
-					'view_mode': 'form',	
-					'target': 'current',
+		# Generate Saledoc Code - Deprecated !!!
+		#pre = {
+		#		'receipt':	'BO-1-', 
+		#		'invoice':	'FA-1-', 
+		#		'advertisement':	'CP-1-', 
+		#		'sale_note':		'CN-1-', 
+		#		'ticket_receipt':	'TKB-1-', 
+		#		'ticket_invoice':	'TKF-1-', 
+		#}
 
-					'res_model': model,
-					'res_id': proof_id,
 
-					'flags': 	{
-									#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-									'form': {'action_buttons': True, }
-								},
+		#counter = self.env['openhealth.counter'].search([('name', '=', self.saledoc)])
 
-					'context': {
-								'default_payment_method': self.id,
-								'default_total': self.total,							
-								'default_date_created': self.date_created,
-								'default_order': self.order.id,
-								'default_name': self.saledoc_code,
-								'default_partner': self.partner.id,
-								'default_my_firm': self.order.x_my_company.x_firm, 
-								'default_my_address': self.order.x_my_company.x_address, 
-								'default_my_ruc': self.order.x_my_company.x_ruc, 
-								'default_my_phone': self.order.x_my_company.phone, 
-							}
-					}
+		#out = False 
 
+		#while not out:
 
+		#	ctr = counter.value
+		#	name = pre[self.saledoc] + str(ctr).rjust(4, '0')
+		#	model = ord_vars._dic_model[self.saledoc]
+		#	count = self.env[model].search_count([
+		#											('name','=', name),
+		#									]) 
+		#	if count == 0:
+		#		out = True
+		#	else:
+		#		counter.increase()
 
+		#self.saledoc_code = name
 
 
 
 
 
 
-# 6 Dec 2017
 
-			#return {
-			#		'type': 'ir.actions.act_window',
-			#		'name': ' New Proof Current', 
 
-			#		'view_type': 'form',
-			#		'view_mode': 'form',	
-			#		'target': 'current',
 
-			#		'res_model': model,
-			#		'res_id': proof_id,
 
-			#		'flags': 	{
-									#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-			#						'form': {'action_buttons': True, }
-			#					},
 
-			#		'context': {
-			#					'default_name': self.saledoc_code,
-			#					'default_payment_method': self.id,
-			#					'default_order': self.order.id,
-			#					'default_partner': self.partner.id,
-			#					'default_total': self.total,		
-			#					'default_date_created': self.date_created,
-			#				}
-			#	}
 
 
 
 
+	# Receipt
+	receipt = fields.Many2one(
+			'openhealth.receipt',
+			string = "Boleta", 			
+			#ondelete='cascade', 
 
+			compute="_compute_receipt",
+		)
 
+	@api.multi
+	#@api.depends('saledoc')
 
-# 11 Jan 2018
+	def _compute_receipt(self):
+		for record in self:
+			record.receipt = record.env['openhealth.receipt'].search([('payment_method', '=', record.id),])
 
-	# Serial Number 
-	#serial_nr = fields.Char(
-	#		string="Nr de Serie", 
-	#	)
+	
 
 
 
-	# Prefix 
-	#prefix = fields.Char(
-	#		string="Prefijo", 
-	#	)
 
+	# Invoice
+	invoice = fields.Many2one(
+			'openhealth.invoice',
+			string = "Factura", 			
+			#ondelete='cascade', 
 
+			compute="_compute_invoice",
+		)
 
+	@api.multi
+	#@api.depends('saledoc')
 
+	def _compute_invoice(self):
+		for record in self:
+			record.invoice = record.env['openhealth.invoice'].search([('payment_method', '=', record.id),])
 
 
 
-# 25 Jan 2018
-	# Deprecated 
-	#@api.onchange('total')	
-	#def _onchange_total(self):
-	#	print 'jx'
-	#	print 'onchange - Total'
 
 
 
+	# Ticket Receipt
+	ticket_receipt = fields.Many2one(
+			'openhealth.ticket_receipt',
+			string = "Ticket Boleta", 			
+			#ondelete='cascade', 
 
+			compute="_compute_ticket_receipt",
+		)
+	@api.multi
+	#@api.depends('saledoc')
 
+	def _compute_ticket_receipt(self):
+		for record in self:
+			record.ticket_receipt = record.env['openhealth.ticket_receipt'].search([('payment_method', '=', record.id),])
 
 
-# 26 Jan 2018
 
 
-			#compute='_compute_ruc', 
-			#compute='_compute_dni', 
-			#compute='_compute_firm', 
 
-	#@api.multi
-	#@api.depends('')
-	#def _compute_dni(self):
-	#	for record in self:
-	#		record.dni = record.partner.x_dni
+	# Ticket Invoice
+	ticket_invoice = fields.Many2one(
+			'openhealth.ticket_invoice',
+			string = "Ticket Factura", 			
+			#ondelete='cascade', 
 
+			compute="_compute_ticket_invoice",
+		)
+	@api.multi
+	#@api.depends('saledoc')
 
+	def _compute_ticket_invoice(self):
+		for record in self:
+			record.ticket_invoice = record.env['openhealth.ticket_invoice'].search([('payment_method', '=', record.id),])
 
-	#@api.multi
-	#@api.depends('')
-	#def _compute_firm(self):
-	#	for record in self:
-	#		record.firm  = record.partner.x_firm
 
-	#@api.multi
-	#@api.depends('')
-	#def _compute_ruc(self):
-	#	for record in self:
-	#		record.ruc = record.partner.x_ruc
 
 
 
 
 
+	# Advertisement
+	advertisement = fields.Many2one(
+			'openhealth.advertisement',
+			string = "Canje publicidad", 			
+			#ondelete='cascade', 
 
+			compute="_compute_advertisement",
+		)
+	@api.multi
+	#@api.depends('saledoc')
 
+	def _compute_advertisement(self):
+		for record in self:
+			record.advertisement = record.env['openhealth.advertisement'].search([('payment_method', '=', record.id),])
 
 
 
 
-	# On change Dni
-	#@api.onchange('dni')
-	#def _onchange_dni(self):
-	#	print 'jx'
-	#	print 'On change - Dni'
 
-	#	if self.dni != False:
-	#		print 'gotcha !'
-			#print self.partner 
-			#print self.partner.name 
-			#print self.partner.x_dni
-			#self.partner.x_dni = self.dni
-			#print self.partner.x_dni
-			#self.firm = self.dni  
 
 
-#partner_id = self.partner.id 
-#return {
-#'value': {
-#	'partner_id': partner_id,
-#	'comment': 'I was changed automatically!',
-	#'order_lines': [
-	#		(1, 13, {'discount': 30, 'quantity': 10}),
-	#		(1, 14, {'discount': 15, 'quantity': 34}),
-	#   ]
-#	}
-#}
+	# Sale note 
+	sale_note = fields.Many2one(
+			'openhealth.sale_note',
+			string = "Nota de venta", 			
+			#ondelete='cascade', 
 
+			compute="_compute_sale_note",
+		)
+	@api.multi
+	#@api.depends('saledoc')
 
+	def _compute_sale_note(self):
+		for record in self:
+			record.sale_note = record.env['openhealth.sale_note'].search([('payment_method', '=', record.id),])
 
-	# On change Firm
-	@api.onchange('firm')
-	def _onchange_firm(self):
+
+
+
+
+
+
+
+	# Order name 
+	@api.multi 
+	def order_name(self):
+		#print
+		#print 'jx'
+		
+		#print self.invoice.name 
+		#print self.receipt.name 
+		#print self.advertisement.name 
+		#print self.ticket_invoice.name 
+		#print self.ticket_receipt.name
+
+
+		if self.invoice.name != False:
+			self.order.name = self.invoice.name
+
+		if self.receipt.name != False:
+			self.order.name = self.receipt.name
+	
+		if self.advertisement.name != False:
+			self.order.name = self.advertisement.name
+
+		if self.sale_note.name != False:
+			self.order.name = self.sale_note.name
+
+		if self.ticket_invoice.name != False:
+			self.order.name = self.ticket_invoice.name
+
+		if self.ticket_receipt.name != False:
+			self.order.name = self.ticket_receipt.name
+
+		#print self.order.name 
+		#print 
+
+
+
+
+
+
+
+
+
+
+	# Saledoc Code 
+	saledoc_code = fields.Char(
+			string="No", 
+			readonly=False, 
+			#compute="_compute_saledoc_code",
+
+			#states=READONLY_STATES, 
+		)
+
+
+
+
+
+
+
+
+	# Create Sale Proof
+	@api.multi 
+	def create_saleproof(self):
+
 		print 'jx'
-		print 'On change - Firm'
-
-		if self.firm != False:
-			print 'gotcha !'
-			self.partner.x_firm = self.firm
+		print 'Create Sale Proof'
 
 
-	# On change Ruc
-	@api.onchange('ruc')
-	def _onchange_ruc(self):
-		print 'jx'
-		print 'On change - Ruc'
+		# Search in the Model dic
+		model = ord_vars._dic_model[self.saledoc]
+		print model 
 
-		if self.ruc != False:
-			print 'gotcha !'
-			self.partner.x_ruc = self.ruc
+
+
+		#serial_nr = 'x'
+
+
+
+		# The model is valid 
+		if model != False: 
+
+
+			# Search it exists 
+			proof = self.env[model].search([
+												('payment_method', '=', self.id),
+											])
+
+			# Create 
+			if proof.id == False:
+				print 'create'
+
+
+				count = self.env[model].search_count([('name','=', self.saledoc_code),])
+				print count
+				print 
+
+				#if count != 0: 
+				if count == 0: 
+
+					print 'GO CREATE'
+	
+					proof = self.env[model].create({
+														'name': self.saledoc_code,
+
+														'payment_method': self.id,
+
+														'order': self.order.id,
+														
+														'partner': self.partner.id,
+																
+														'total': self.total,
+														
+														'date_created': self.date_created,
+
+
+
+														#'serial_nr': serial_nr,
+												})
+
+
+			proof_id = proof.id 
+			print 
+			print proof
+			print 
+			print self.saledoc_code
+			print self.id
+			print self.order
+			print self.partner
+			print self.total
+			print self.date_created
+			print
+
+
+
+
+
+
+			# Sale doc code 
+			if self.saledoc == 'ticket_receipt': 
+				self.saledoc_code = self.ticket_receipt.serial_nr
+
+			elif self.saledoc == 'ticket_invoice': 
+				self.saledoc_code = self.ticket_invoice.serial_nr
+
+
+
+			elif self.saledoc == 'invoice': 
+				self.saledoc_code = self.invoice.serial_nr
+
+			elif self.saledoc == 'receipt': 
+				self.saledoc_code = self.receipt.serial_nr
+
+
+
+
+			elif self.saledoc == 'advertisement': 
+				self.saledoc_code = self.advertisement.serial_nr
+
+			elif self.saledoc == 'sale_note': 
+				self.saledoc_code = self.sale_note.serial_nr
+
+
+
+
+
+
+
+			# Action confirm ?
+
+
+
+			# Open Order 
+			self.confirmed = True 
+			ret = self.order.open_myself()
+
+
+
+
+			#return {}
+			return ret 
+
+	# create_saleproof
+
+
+
+
+
+
+
+	def _compute_state(self):
+
+
+			#if	record.env['openhealth.receipt'].search_count([('payment_method','=', record.id),])			or \
+			#	record.env['openhealth.invoice'].search_count([('payment_method','=', record.id),])			or \
+			#	record.env['openhealth.advertisement'].search_count([('payment_method','=', record.id),])	or \
+			#	record.env['openhealth.sale_note'].search_count([('payment_method','=', record.id),])		or \
+			#	record.env['openhealth.ticket_receipt'].search_count([('payment_method','=', record.id),])	or \
+			#	record.env['openhealth.ticket_invoice'].search_count([('payment_method','=', record.id),]):
+				
+			#	record.state = 'generated'
+
 
 
 

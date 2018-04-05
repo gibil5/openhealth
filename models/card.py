@@ -10,9 +10,11 @@
 from openerp import models, fields, api
 from datetime import datetime
 
+import count_funcs
 
 
-#class card(models.Model):
+
+
 class Card(models.Model):
 
 	_name = 'openhealth.card'		
@@ -31,25 +33,28 @@ class Card(models.Model):
 	def _get_default_name(self):
 
 
-		name = 'vip'
-
-		#counter = self.env['openhealth.counter'].search([('name', '=', name)])
+		name_ctr = 'vip'
  		counter = self.env['openhealth.counter'].search([
-																('name', '=', name), 
+																('name', '=', name_ctr), 
 															],
 																#order='write_date desc',
 																limit=1,
 															)
 
-		default_name = '13'
-
-		if counter.total != False: 
-
-			default_name = counter.total
-			counter.increase()
+		#default_name = '13'
 
 
-		return default_name
+		name = count_funcs.get_name(self, counter.prefix, counter.separator, counter.padding, counter.value)
+
+		counter.increase()
+
+
+		#if counter.total != False: 
+		#default_name = counter.total
+		
+		
+		#return default_name
+		return name
 
 
 
@@ -66,6 +71,8 @@ class Card(models.Model):
 			#required=True, 
 			required=False, 
 		)
+
+
 
 
 

@@ -11,6 +11,9 @@ from datetime import datetime
 from . import pat_funcs
 from . import pat_vars
 
+import count_funcs
+
+
 
 class Patient(models.Model):
 
@@ -132,7 +135,7 @@ class Patient(models.Model):
 
 			'Nr Historia Médica',
 
-			default=_get_default_id_code, 
+			#default=_get_default_id_code, 
 		)
 
 
@@ -1904,44 +1907,51 @@ class Patient(models.Model):
 
 
 
+		# Assign and Increase Counter 
+		if 'x_id_code' in vals: 
+
+			name_ctr = 'emr'
+
+	 		counter = self.env['openhealth.counter'].search([
+																	('name', '=', name_ctr), 
+															],
+																#order='write_date desc',
+																limit=1,
+															)
+
+
+			name = count_funcs.get_name(self, counter.prefix, counter.separator, counter.padding, counter.value)
+
+			vals['x_id_code'] = name 
+
+			counter.increase()		# Here !!!
+
+
+			#print 'Gotcha !'
+			#print counter
+			#print name 
+			#print 'Increased'
+
+
+
+
+
+
+
 		# Put your logic here 
 		res = super(Patient, self).create(vals)
 		# Put your logic here 
 
 
 
-		print self.x_id_code
-
-
-		# Assign and Increase Counter 
-		#if self.x_id_code == False: 
-		if False: 
-
-			print 'Gotcha !'
-
-			name = 'emr'
-	 		counter = self.env['openhealth.counter'].search([
-																	('name', '=', name), 
-															],
-																#order='write_date desc',
-																limit=1,
-															)
-			print counter
-			print counter.total
-
-			self.x_id_code = counter.total
-			print self.x_id_code
-
-			counter.increase()		# Here !!!
-			print counter.total
-
-			print 'Increased'
-
+		#print self.x_id_code
 
 
 
 		return res
 	# CRUD - Create 
+
+
 
 
 
@@ -1965,68 +1975,9 @@ class Patient(models.Model):
 
 
 
-
 		#Write your logic here
 		res = super(Patient, self).write(vals)
 		#Write your logic here
-
-
-
-
-		# Lang 
-		#self.lang = 'es_ES'
-
-
-
-
-
-
-		# Validations
-		#self.email = self.email.lower()
-		#self.street = self.street.title()
-
-
-
-
-
-
-		# Update Partner 
-		#if self.street != False:
-
-		#	print 'Update Partner !'
-
-		#	self.partner_id.street = self.street
-
-		#	self.partner_id.street2 = self.street2
-
-		#	self.partner_id.street2_sel = self.street2_sel
-
-		#	self.partner_id.zip = self.zip
-
-		#	self.partner_id.city = self.city.title()
-
-		#	self.partner_id.state_id = self.state_id
-
-		#	self.partner_id.country_id = self.country_id
-
-		#	self.partner_id.x_dni = self.x_dni
-
-		#	self.partner_id.email = self.email
-
-		#	self.partner_id.phone = self.phone
-
-		#	self.partner_id.mobile = self.mobile
-
-		#	self.partner_id.lang = 'es_ES'
-
-
-
-
-		#if self.x_ruc != False:
-
-		#	self.partner_id.x_ruc = self.x_ruc
-
-		#	self.partner_id.x_firm = self.x_firm
 
 
 

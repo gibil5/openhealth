@@ -4,9 +4,23 @@
 
 
 
-# Base 
+# Deprecated 
 #from . import base  	- DEPRECATED ? 
 #from . import test  	- DEPRECATED ?
+
+
+
+# Deprecated 
+#from . import sale_document
+#from . import sale_proof
+#from . import invoice
+#from . import receipt
+#from . import advertisement
+#from . import sale_note
+#from . import ticket_receipt
+#from . import ticket_invoice
+
+
 
 
 
@@ -254,16 +268,10 @@ from . import sale_report_day
 
 
 
-#from . import sale_document
-from . import sale_proof
 
-from . import invoice
-from . import receipt
 
-from . import advertisement
-from . import sale_note
-from . import ticket_receipt
-from . import ticket_invoice
+
+
 
 
 

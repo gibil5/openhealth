@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+
+
+
+		<!-- FILTER --> 
+<!--		
+		<record id="patient_view_template_filter" model="ir.ui.view">
+			<field name="name">Patient Search</field>
+			<field name="model">oeh.medical.patient</field>
+		   	<field name="arch" type="xml">
+
+				<search string="patients">
+
+				<field 	name="name" 
+
+						filter_domain="['|',('name','ilike',self),('x_dni','ilike',self)]"/>
+
+			   </search>
+		   </field>
+	   </record>
+-->
+
+
+
+		<!-- FILTER --> 
+		<record id="oehealth.view_oeh_medical_patient_filter" model="ir.ui.view">
+			<field name="name">Patient Search Modified</field>
+			<field name="model">oeh.medical.patient</field>
+		   	<field name="arch" type="xml">
+
+				<search string="patients">
+
+
+					<!--
+					<separator orientation="vertical"/>
+					<field name="name" select="1"/>
+					<field name="ssn" string="SSN" select="1"/>
+					<field name="identification_code" string="SSN" select="1"/>
+					<field name="oeh_patient_user_id"/>
+					<newline/>
+					<group expand="0" string="Group By..." colspan="11" col="11">
+						<filter string="Sex" icon="terp-personal" domain="[]" context="{'group_by':'sex'}"/>
+						<filter string="Doctor" icon="terp-personal" domain="[]" context="{'group_by':'doctor'}"/>
+					</group>
+					-->
+
+
+					<field 	name="name" 				filter_domain="['|',('name','ilike',self),('x_dni','ilike',self)]"/>
+
+			   </search>
+
+		   </field>
+	   </record>
+
+
+
+	</data>
+</openerp>

@@ -145,3 +145,58 @@
 
 
 
+
+
+
+
+
+# 5 April 2018
+
+		# Lang 
+		#self.lang = 'es_ES'
+
+
+		# Validations
+		#self.email = self.email.lower()
+		#self.street = self.street.title()
+
+
+
+		# Update Partner 
+		#if self.street != False:
+
+		#	print 'Update Partner !'
+
+		#	self.partner_id.street = self.street
+
+		#	self.partner_id.street2 = self.street2
+
+		#	self.partner_id.street2_sel = self.street2_sel
+
+		#	self.partner_id.zip = self.zip
+
+		#	self.partner_id.city = self.city.title()
+
+		#	self.partner_id.state_id = self.state_id
+
+		#	self.partner_id.country_id = self.country_id
+
+		#	self.partner_id.x_dni = self.x_dni
+
+		#	self.partner_id.email = self.email
+
+		#	self.partner_id.phone = self.phone
+
+		#	self.partner_id.mobile = self.mobile
+
+		#	self.partner_id.lang = 'es_ES'
+
+
+		#if self.x_ruc != False:
+
+		#	self.partner_id.x_ruc = self.x_ruc
+
+		#	self.partner_id.x_firm = self.x_firm
+
+
+

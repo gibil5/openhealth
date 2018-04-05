@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+
+<!--
+		<record id="view_medical_order_filter" model="ir.ui.view">
+-->
+
+<!-- FILTER --> 
+		<record id="view_medical_order_search" model="ir.ui.view">
+		   <field name="name">sale.order.search</field>
+		   <field name="model">sale.order</field>		   
+		   <field name="arch" type="xml">
+
+			   <search string="orders">
+
+
+<!--
+												('date_order', '&lt;=', datetime.datetime.now().strftime('%Y-%m-%d 23:23:59')), 
+-->
+					<filter string="Hoy" domain="[											
+															('date_order', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 05:00:00')),
+											]"/>
+
+
+					<filter string="Este Mes" domain="[
+															('date_order','&gt;=',time.strftime('%Y-%m-01')),
+											]"/>
+
+
+					<filter string="Este Año" domain="[
+															('date_order','&gt;=',time.strftime('%%Y-01-01')), 
+											]"/>
+
+
+					<separator/>
+
+
+					<filter string="Enero" domain="[
+															('date_order','&gt;=','2018-01-01'),
+															('date_order','&lt;=','2018-02-01'),
+											]"/>
+
+					<filter string="Febrero" domain="[
+															('date_order','&gt;=','2018-02-01'),
+															('date_order','&lt;=','2018-03-01'),
+											]"/>
+
+					<filter string="Marzo" domain="[
+															('date_order','&gt;=','2018-03-01'),
+															('date_order','&lt;=','2018-04-01'),
+											]"/>
+
+					<filter string="Abril" domain="[
+															('date_order','&gt;=','2018-04-01'),
+															('date_order','&lt;=','2018-05-01'),
+											]"/>
+
+
+<!--
+
+					<filter string="Mayo" domain="[
+															('date_order','&gt;=','2018-05-01'),
+															('date_order','&lt;=','2018-06-01'),
+											]"/>
+
+					<filter string="Junio" domain="[
+															('date_order','&gt;=','2018-06-01'),
+															('date_order','&lt;=','2018-07-01'),
+											]"/>
+
+
+
+
+					<filter string="Julio" domain="[
+															('date_order','&gt;=','2018-07-01'),
+															('date_order','&lt;=','2018-08-01'),
+											]"/>
+
+					<filter string="Agosto" domain="[
+															('date_order','&gt;=','2018-08-01'),
+															('date_order','&lt;=','2018-09-01'),
+											]"/>
+
+					<filter string="Setiembre" domain="[
+															('date_order','&gt;=','2018-09-01'),
+															('date_order','&lt;=','2018-10-01'),
+											]"/>
+
+					<filter string="Octubre" domain="[
+															('date_order','&gt;=','2018-10-01'),
+															('date_order','&lt;=','2018-11-01'),
+											]"/>
+
+
+					<filter string="Noviembre" domain="[
+															('date_order','&gt;=','2018-11-01'),
+															('date_order','&lt;=','2018-12-01'),
+											]"/>
+
+					<filter string="Diciembre" domain="[
+															('date_order','&gt;=','2018-12-01'),
+															('date_order','&lt;=','2019-01-01'),
+											]"/>
+-->
+
+
+
+
+				   <field name="partner_id" />
+
+
+					<!--
+				   <field name="x_doctor" />               
+				   <field name="x_family" /> 
+					-->
+			   </search>
+		   
+		   </field>
+	   </record>
+
+
+	</data>
+</openerp>

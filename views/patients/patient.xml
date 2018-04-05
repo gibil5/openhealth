@@ -653,30 +653,5 @@ Cosmetology
 
 
 
-
-
-
-
-		<!-- FILTER --> 
-		<record id="patient_view_template_filter" model="ir.ui.view">
-			<field name="name">Patient Search</field>
-			<field name="model">oeh.medical.patient</field>
-		   	<field name="arch" type="xml">
-
-				<search string="patients">
-
-
-				<field 	name="name" 
-
-						filter_domain="['|',('name','ilike',self),('x_dni','ilike',self)]"/>
-
-
-
-			   </search>
-		   </field>
-	   </record>
-
-
-
 	</data>
 </openerp>

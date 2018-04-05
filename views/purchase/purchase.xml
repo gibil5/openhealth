@@ -107,10 +107,10 @@
 				<!-- Cancel -->
 				<xpath expr="//button[@name='button_cancel']" position="replace">
 					<button 
-							class="jx_cancel"
 							type="object" 
 							name="button_cancel" 
-							states="draft,to approve,sent,purchase" 
+
+							states="pre_draft,draft,to approve,sent,purchase" 
 
 							string="Cancelar" 
 

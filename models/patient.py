@@ -1910,19 +1910,32 @@ class Patient(models.Model):
 
 
 
+		print self.x_id_code
 
 
-		# Increase Counter 
-		#name = 'emr'
- 		#counter = self.env['openhealth.counter'].search([
-		#														('name', '=', name), 
-		#												],
-		#													#order='write_date desc',
-		#													limit=1,
-		#												)
-		#print counter
-		#counter.increase()		# Here !!!
+		# Assign and Increase Counter 
+		#if self.x_id_code == False: 
+		if False: 
 
+			print 'Gotcha !'
+
+			name = 'emr'
+	 		counter = self.env['openhealth.counter'].search([
+																	('name', '=', name), 
+															],
+																#order='write_date desc',
+																limit=1,
+															)
+			print counter
+			print counter.total
+
+			self.x_id_code = counter.total
+			print self.x_id_code
+
+			counter.increase()		# Here !!!
+			print counter.total
+
+			print 'Increased'
 
 
 

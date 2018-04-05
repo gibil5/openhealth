@@ -84,8 +84,6 @@ class counter(models.Model):
 		
 		for record in self:
 		
-
-
 			if record.prefix != False:
 				#record.total = record.prefix + str(record.value)
 				#record.total = record.prefix + str(record.value).zfill(record.padding)

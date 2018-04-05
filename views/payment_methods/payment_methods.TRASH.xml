@@ -1,5 +1,98 @@
 
 
+						<!-- Pay --> 
+<!--
+						<button 
+								name="create_pm_line"
+								type="object" 
+								class="oe_highlight"
+								states="draft"						
+								string="Pagar"
+						/>
+
+								attrs="{'invisible':[
+															('balance', '!=', 0), 
+													]}"	
+								states="draft,payment"	
+
+-->
+
+
+
+						<!-- Back to Order --> 
+<!--
+						<button 
+								name="open_order"
+
+								type="object" 
+								class="oe_highlight"
+								states="generated"						
+
+								string="REGRESAR"
+						/>
+
+						<button 
+								name="open_order"
+								type="object" 
+								class="oe_highlight"
+
+								states="done"						
+
+								string="Anular"
+						/>
+-->
+
+
+
+
+<!--
+						<button 
+								name="order_name"
+								type="object" 
+								class="oe_highlight"
+								states="generated"						
+
+								string="Order name"
+						/>
+-->
+
+
+
+<!--								
+								<field name="name"   />													
+
+
+								<field name="dni"   attrs="{
+															'invisible':[	('saledoc', 'in', ['invoice','ticket_invoice']),], 
+															'required':[	('saledoc', 'in', ['receipt','ticket_receipt']),], 
+															}"/>
+
+
+								<field name="firm"   attrs="{
+															'invisible':[	('saledoc', 'in', ['receipt','ticket_receipt']),], 
+															'required':[	('saledoc', 'in', ['invoice','ticket_invoice']),], 
+														}"/>
+
+
+								<field name="ruc"   attrs="{
+															'invisible':[	('saledoc', 'in', ['receipt','ticket_receipt']),], 
+															'required':[	('saledoc', 'in', ['invoice','ticket_invoice']),], 
+														}"/>
+
+
+
+															'invisible':[	('saledoc', 'in', ['invoice','ticket_invoice']),], 
+-->
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -58,4 +151,73 @@
 																				('saledoc','in',[ False, 'receipt', 'advertisement', 'sale_note', 'ticket_receipt', 'invoice', 'none',]),
 															]}"
 										/>
+
+
+
+
+
+
+<!--
+								<field name="code" 		attrs="{'invisible':[
+																					('method', '!=', 'debit_visa'), 
+																					('method', '!=', 'debit_master'), 
+																					('method', '!=', 'credit_visa'), 
+																					('method', '!=', 'credit_master'), 
+																					('method', '!=', 'diners'), 
+																					('method', '!=', 'american_express'), 
+																			]}"			/>
+-->
+
+
+
+
+<!--
+								<field name="vspace"   />	
+								<field name="comment"   />	
+								<field name="vspace"   />	
+								<field name="confirmed"   />	
+-->						
+
+
+
+
+
+
+<!--
+								<field name="pm_total"  invisible="1" 	/>												
+						<group>
+							<group>
+								<field name="method"   />													
+								<field name="vspace"   />													
+								<field name="subtotal"   />													
+							</group>
+							<group>							
+							</group>
+						</group>
+-->
+
+
+
+
+
+						<!-- Sale document --> 
+<!--
+						<notebook position="inside">
+							<page string="Documento a Generar">
+							</page>
+						</notebook>
+-->
+<!--							
+-->
+
+<!--							
+								<field name="date_created"/>
+-->						
+
+
+<!--
+								<field name="vspace"   />	
+-->
+
+
 

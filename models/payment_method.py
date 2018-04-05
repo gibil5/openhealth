@@ -61,7 +61,10 @@ class PaymentMethod(models.Model):
 
 	# Saledoc 
 	saledoc = fields.Selection(
-			string="Documento de Pago", 
+
+			#string="Documento de Pago", 
+			string="Tipo", 
+		
 			selection=ord_vars._sale_doc_type_list, 
 			
 			#states=READONLY_STATES, 
@@ -562,7 +565,9 @@ class PaymentMethod(models.Model):
 
 	order = fields.Many2one(
 			'sale.order',
-			string="Presupuesto",
+
+			string="Venta",
+			
 			ondelete='cascade', 
 			required=True, 
 			readonly=True, 

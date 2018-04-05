@@ -4,103 +4,25 @@
 
 
 
-		<!-- Form view -->
+		<!-- FORM -->
 		<record model="ir.ui.view" id="payment_method_form_view">
 			<field name="name">payment.method.form</field>
 			<field name="model">openhealth.payment_method</field>
-			<!--
-			<field name="inherit_id" ref="sale.view_order_form"/>			
-	        <field name="mode">primary</field>
-	        <field name="priority" eval="1"/>
-	        -->
 			<field name="arch" type="xml">
 
 				<form string="Payment Method - Form">
 
-
-
-					<!-- Header --> 
-<!--
-						states="sale"						
--->
 					<header>
 
-
-
-
-
-						<!-- Pay --> 
-<!--
-						<button 
-								name="create_pm_line"
-								type="object" 
-								class="oe_highlight"
-								states="draft"						
-								string="Pagar"
-						/>
-
-								attrs="{'invisible':[
-															('balance', '!=', 0), 
-													]}"	
-								states="draft,payment"	
-
--->
-
-					
-
-
+						<!-- Generate --> 
 						<button 
 								type="object" 
 								class="oe_highlight"
-
 								states="payment"						
-
 								name="create_saleproof"
 
 								string="GENERAR"
 						/>
-
-
-
-
-
-						<!-- Back to Order --> 
-<!--
-						<button 
-								name="open_order"
-
-								type="object" 
-								class="oe_highlight"
-								states="generated"						
-
-								string="REGRESAR"
-						/>
-
-						<button 
-								name="open_order"
-								type="object" 
-								class="oe_highlight"
-
-								states="done"						
-
-								string="Anular"
-						/>
--->
-
-
-
-
-<!--
-						<button 
-								name="order_name"
-								type="object" 
-								class="oe_highlight"
-								states="generated"						
-
-								string="Order name"
-						/>
--->
-
 
 
 						<!-- State --> 
@@ -122,12 +44,9 @@
 					<!-- Sheet --> 
 					<sheet>
 						
-<!--
-						<h1><field name="order"   /></h1>
-						<h1><field name="order" class="oe_inline"/></h1>
--->
 
 						<h1>Módulo de Pago</h1>
+
 
 						<group>
 							<group>
@@ -137,221 +56,124 @@
 
 						<group>
 							<group>
-<!--								
-								<field name="name"   />													
-
-
-								<field name="dni"   attrs="{
-															'invisible':[	('saledoc', 'in', ['invoice','ticket_invoice']),], 
-															'required':[	('saledoc', 'in', ['receipt','ticket_receipt']),], 
-															}"/>
-
-
-								<field name="firm"   attrs="{
-															'invisible':[	('saledoc', 'in', ['receipt','ticket_receipt']),], 
-															'required':[	('saledoc', 'in', ['invoice','ticket_invoice']),], 
-														}"/>
-
-
-								<field name="ruc"   attrs="{
-															'invisible':[	('saledoc', 'in', ['receipt','ticket_receipt']),], 
-															'required':[	('saledoc', 'in', ['invoice','ticket_invoice']),], 
-														}"/>
-
-
-
-															'invisible':[	('saledoc', 'in', ['invoice','ticket_invoice']),], 
--->
-								<field name="order"   />																				
 
 								<field name="partner"   readonly="1"	/>		
 
 
 
 
-								<field name="dni"   
-													attrs="{
-															'required':[	('saledoc', 'in', ['receipt','ticket_receipt']),], 
-															}"
+								<field name="dni"   		attrs="{
+																		'required':[	('saledoc', 'in', ['receipt','ticket_receipt']),], 
+																}"
 									/>				
 
 
 
-								<field name="firm"   
-													attrs="{
-															'required':[	('saledoc', 'in', ['invoice','ticket_invoice']),], 
-														}"
+								<field name="firm"   		attrs="{
+																		'required':[	('saledoc', 'in', ['invoice','ticket_invoice']),], 
+																}"
 									/>				
 
 
-								<field name="ruc"   
-  													attrs="{
-															'required':[	('saledoc', 'in', ['invoice','ticket_invoice']),], 
-														}"
+								<field name="ruc"   		attrs="{
+																		'required':[	('saledoc', 'in', ['invoice','ticket_invoice']),], 
+																}"
 
 
 									/>		
 
 
-
-
-
-
-
-
-<!--
-								<field name="vspace"   />	
--->
 								<field name="nr_pm"   invisible="1"	/>													
 							</group>
 
 
 							<group>
-<!--
-								<field name="code" 		attrs="{'invisible':[
-																					('method', '!=', 'debit_visa'), 
-																					('method', '!=', 'debit_master'), 
-																					('method', '!=', 'credit_visa'), 
-																					('method', '!=', 'credit_master'), 
-																					('method', '!=', 'diners'), 
-																					('method', '!=', 'american_express'), 
-																			]}"			/>
--->
-
+								<field name="order"   />																				
 								<field name="total"   	invisible="0"	/>													
-								<field name="vspace"   />	
 								<field name="balance"   />	
-
-
-
-<!--
-								<field name="vspace"   />	
-								<field name="comment"   />	
-								<field name="vspace"   />	
-								<field name="confirmed"   />	
--->						
 							</group>
 						</group>
 
 
 
-<!--
-								<field name="pm_total"  invisible="1" 	/>												
 						<group>
 							<group>
-								<field name="method"   />													
-								<field name="vspace"   />													
-								<field name="subtotal"   />													
+								<field name="saledoc"	widget="radio"	/>
 							</group>
-							<group>							
-							</group>
+							<group></group>
 						</group>
--->
+
+
 
 
 
 <!-- Notebook --> 
 
-
-
-
-						<!-- Sale document --> 
-						<notebook position="inside">
-							<page string="Documento a Generar">
-							<group>
-								<group>
-									<field name="saledoc"	widget="radio"	/>
-								</group>
-								
-								<group>
-									<field name="date_created"/>
-								</group>
-							</group>
-							</page>
-						</notebook>
-
-
-
-
 						<!-- Payments --> 
 						<notebook position="inside">
-							<page string="Formas de Pago">
+							<page string="Formas">
 								<field name="pm_line_ids"	context="{
-																		'default_name': nr_pm,
-																		'default_subtotal': balance,
-																		'default_payment_method': active_id,
+																			'default_name': nr_pm,
+																			'default_subtotal': balance,
+																			'default_payment_method': active_id,
 																		}"  class="rallign"	>
 									<tree			editable="bottom">	
 										<field name="name"	/>
 										<field name="method"	/>
-<!--
-										<field name="currency"	/>
--->									
 										<field name="subtotal"	class="rallign"	/>
+										<!--
+										<field name="currency"	/>
+										-->									
 									</tree>
 								</field>
 							</page>
 						</notebook>
-
-
-
 					</sheet>
 				</form>
-
-
-				
 			</field>
 		</record>
 
 
 
 
-		<!-- Tree view --> 
+
+
+
+
+
+		<!-- TREE --> 
 		<record model="ir.ui.view" id="payment_method_tree_view">
 			<field name="name">payment_method.tree</field>
 			<field name="model">openhealth.payment_method</field>
 			<field name="arch" type="xml">
 				<tree string="payment_method Tree">
-					
 					<field name="create_date"/>
 					<field name="write_date"/>
-
 					<field name="name"/>
+					<field name="order"  />
 <!--
-					
 					<field name="subtotal"   />
 					<field name="method"  />
 -->				
-					<field name="order"  />
 				</tree>
 			</field>
 		</record>
 
 
-
-
-		<!-- Window List action -->
-		<!--
-		The following tag is an action definition for a "window action",
-		that is an action opening a view or a set of views
-		-->
+		<!-- ACTION -->
 		<record model="ir.actions.act_window" id="payment_method_list_action">
 			<field name="name">Boletas</field>
 			<field name="res_model">openhealth.payment_method</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
-			
             <field name="domain">[]</field>
             <field name="context">{}</field>
-            <field name="view_id" eval="False"/>
-			
+            <field name="view_id" eval="False"/>	
 			<field name="help" type="html">
 				<p class="oe_view_nocontent_create">Create the first payment_method
 				</p>
 			</field>
-			
 		</record>
 
 	</data>
 </openerp>
-

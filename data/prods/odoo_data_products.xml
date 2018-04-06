@@ -510,6 +510,7 @@
 
 		<!-- Token -->
 <!--
+-->			
 		<record id='token_bis' model='product.template'>
 			<field name='type'>product</field>
 			<field name='name'>TOKEN</field>
@@ -528,7 +529,6 @@
 
 			<field name='categ_id' ref="topical"/>
 		</record>
--->			
 
 
 

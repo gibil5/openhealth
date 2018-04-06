@@ -17,10 +17,9 @@
 
 
 
-
+<!-- Daily --> 
 		<menuitem 	id="sales_reporting_daily_menu" 
 					parent="main_reporting_sales_menu"
-
 					sequence="1"
 					
 					name="Ventas del Día"			
@@ -31,16 +30,12 @@
 
 
 
-
-
 				<menuitem 	id="sales_reporting_sales_daily_prods" 
+							parent="sales_reporting_daily_menu"
+							sequence="1"
 
 							name="Productos" 
 					
-							parent="sales_reporting_daily_menu"
-
-							sequence="1"
-
 							action="action_order_report_day_prods"
 						/>
 
@@ -48,25 +43,21 @@
 <!--
 -->
 				<menuitem 	id="sales_reporting_sales_daily_servs" 
+							parent="sales_reporting_daily_menu"
+							sequence="2"
 
 							name="Servicios" 
 					
-							parent="sales_reporting_daily_menu"
-
-							sequence="2"
-
 							action="action_order_report_day_servs"
 						/>
 
 
 
 				<menuitem 	id="sales_reporting_sales_daily_all" 
-							
-							name="Todo" 
-							
 							parent="sales_reporting_daily_menu"
-
 							sequence="3"
+
+							name="Todo" 
 
 							action="action_order_report_day_all"
 						/>
@@ -75,17 +66,12 @@
 
 
 
-<!-- Sales --> 
-<!--
--->
+<!-- Monthly --> 
 		<menuitem 	id="sales_reports_menu" 
-
 					parent="main_reporting_sales_menu"
-			
 					sequence="2"
 
 					name="Por mes"
-
 
 					groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.managers,openhealth.directors"
 					/>
@@ -93,13 +79,13 @@
 
 
 
-				<menuitem 	id="sales_report_sales_january_all_menu" 
-							name="Enero" 				
+				<menuitem 	id="sales_report_sales_january_menu" 
 							parent="sales_reports_menu"
-
 							sequence="1"
 
-							action="action_order_report_january_all"
+							name="Enero" 				
+
+							action="action_order_report_january"
 						/>
 
 
@@ -107,27 +93,38 @@
 
 
 
-				<menuitem 	id="sales_report_sales_february_all_menu" 
-							name="Febrero" 				
+				<menuitem 	id="sales_report_sales_february_menu" 
 							parent="sales_reports_menu"
-							
 							sequence="2"
 
-							action="action_order_report_february_all"
+							name="Febrero" 				
+
+							action="action_order_report_february"
 						/>
 
 
 
 
-				<menuitem 	id="sales_report_sales_march_all_menu" 
-							name="Marzo" 				
+				<menuitem 	id="sales_report_sales_march_menu" 
 							parent="sales_reports_menu"
-							
 							sequence="3"
 
-							action="action_order_report_march_all"
+							name="Marzo" 				
+
+							action="action_order_report_march"
 						/>
 
+
+
+
+				<menuitem 	id="sales_report_sales_april_menu" 
+							parent="sales_reports_menu"
+							sequence="4"
+
+							name="Abril" 				
+
+							action="action_order_report_april"
+						/>
 
 
 

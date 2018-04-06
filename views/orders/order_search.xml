@@ -6,14 +6,18 @@
 
 
 <!--
-		<record id="view_medical_order_filter" model="ir.ui.view">
+		<record id="view_medical_order_search" model="ir.ui.view">
 -->
 
+
 <!-- FILTER --> 
-		<record id="view_medical_order_search" model="ir.ui.view">
-		   <field name="name">sale.order.search</field>
+
+		<record id="sale.view_sales_order_filter" model="ir.ui.view">
+
+		   <field name="name">sale.order.search.modified</field>
 		   <field name="model">sale.order</field>		   
 		   <field name="arch" type="xml">
+
 
 			   <search string="orders">
 

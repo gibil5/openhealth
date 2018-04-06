@@ -14,6 +14,117 @@ class PaymentMethod(models.Model):
 
 
 
+# ----------------------------------------------------------- Computes ------------------------------------------------------
+
+	# Name 
+	name = fields.Char(
+			string="Pagos", 
+
+			compute='_compute_name', 
+		)
+	@api.multi
+	def _compute_name(self):
+
+		for record in self:
+			record.name = 'PA-' + str(record.id).zfill(6)
+
+
+
+	# state 
+	state = fields.Selection(
+			selection = [
+							('draft', 'Inicio'),
+							('paid', 'Pagado'),
+							('done', 'Confirmado'),
+						], 
+			string='Estado',	
+			default='draft',
+
+			compute="_compute_state",
+		)
+
+
+	@api.multi
+	#@api.depends('state')
+	def _compute_state(self):
+
+		for record in self:
+			record.state = 'draft'
+			if record.balance == 0.0		and		record.saledoc != False:
+				record.state = 'paid'
+			if record.confirmed:
+				record.state = 'done'
+
+
+
+
+
+
+
+
+	# Balance 
+	balance = fields.Float(
+			string = 'Saldo', 
+			#required=True, 
+			readonly=True, 
+
+			default=0, 
+
+			#compute="_compute_balance",
+		)
+
+	#@api.multi
+	#def _compute_balance(self):		
+	#	for record in self:
+	#		record.balance = record.total - record.pm_total 
+
+
+
+
+
+
+
+	# Nr Payments
+	nr_pm = fields.Char(
+
+			default=2, 
+
+			#compute="_compute_nr_pm",
+		)
+
+	#@api.multi
+	#@api.depends('date_order')
+	#def _compute_nr_pm(self):
+	#	for record in self:
+	#		nr = record.env['openhealth.payment_method_line'].search_count([('payment_method','=', record.id),]) 
+	#		record.nr_pm = str(nr + 1)
+
+
+
+
+
+
+	@api.onchange('pm_line_ids')
+	def _onchange_pm_line_ids(self):
+
+		pm_total = 0
+		
+		ctr = 1
+
+		for line in self.pm_line_ids:
+				pm_total = pm_total + line.subtotal
+				ctr = ctr + 1 
+
+		self.balance = self.total - pm_total 
+		self.nr_pm = ctr
+
+
+
+
+
+
+
+
 
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 	# go_back
@@ -44,45 +155,6 @@ class PaymentMethod(models.Model):
 
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
-
-	# state 
-	state = fields.Selection(
-			selection = [
-							('draft', 'Inicio'),
-							('paid', 'Pagado'),
-							#('generated', 'Generado'),
-							('done', 'Confirmado'),
-							#('cancel', 'Cancelled'),
-						], 
-			string='Estado',	
-			default='draft',
-			compute="_compute_state",
-		)
-
-
-	@api.multi
-	#@api.depends('state')
-	def _compute_state(self):
-		for record in self:
-			record.state = 'draft'
-			if record.balance == 0.0		and		record.saledoc != False:
-				record.state = 'paid'
-			if record.confirmed:
-				record.state = 'done'
-
-
-
-
-	# Name 
-	name = fields.Char(
-			string="Pagos", 			
-			compute='_compute_name', 
-		)
-	@api.multi
-	def _compute_name(self):
-		for record in self:
-			record.name = 'PA-' + str(record.id).zfill(6)
-
 
 
 
@@ -225,70 +297,6 @@ class PaymentMethod(models.Model):
 
 
 
-
-
-	# Total Paid
-	pm_total = fields.Float(
-			string = 'Total pagado', 
-			required=True, 
-
-			default=0, 
-			compute="_compute_pm_total",
-		)
-
-	@api.multi
-	#@api.depends('total', 'pm_total')
-	def _compute_pm_total(self):
-		for record in self:
-
-			pm_total = 0
-
-			for line in record.pm_line_ids:
-				s = line.subtotal
-				pm_total = pm_total + s
-
-			record.pm_total = record.pm_total + pm_total
-
-
-
-
-
-
-
-	# Balance 
-	balance = fields.Float(
-			string = 'Saldo', 
-			required=True, 
-			readonly=True, 
-
-			compute="_compute_balance",
-		)
-
-	@api.multi
-	def _compute_balance(self):		
-		for record in self:
-			record.balance = record.total - record.pm_total 
-
-
-
-
-
-
-
-	# Nr pm
-	nr_pm = fields.Char(
-			compute="_compute_nr_pm",
-		)
-
-	@api.multi
-	#@api.depends('date_order')
-	def _compute_nr_pm(self):
-		#print
-		#print 'PML - compute nr pm'
-		#print 
-		for record in self:
-			nr = record.env['openhealth.payment_method_line'].search_count([('payment_method','=', record.id),]) 
-			record.nr_pm = str(nr + 1)
 
 
 

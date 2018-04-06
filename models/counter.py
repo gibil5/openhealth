@@ -3,8 +3,9 @@
 # 	counter
 # 
 from openerp import models, fields, api
-#from . import ord_vars
-from . import count_vars
+
+import count_vars
+import count_funcs
 
 
 class counter(models.Model):
@@ -14,51 +15,66 @@ class counter(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Computes - Solved ------------------------------------------------------
+
+	# Total 
+	total = fields.Char(
+			string="Total", 		
+		)
+
+
+
+
+
+
+# ----------------------------------------------------------- Onchanges ------------------------------------------------------
+
+	# Value 
+	value = fields.Integer(
+			string="Valor", 
+			default=1, 
+		)
+
+	@api.onchange('value')
+	def _onchange_value(self):
+
+		# Date 
+		self.date_modified = fields.datetime.now()
+
+		# Total 
+		name = count_funcs.get_name(self, self.prefix, self.separator, self.padding, self.value)
+		self.total = name
+
+
+
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
 	
 	# Type
 	x_type = fields.Selection(
-
 			selection=count_vars._counter_type_list, 			
-
 			string="Tipo", 
 			#default='receipt', 
 		)
 
 
-
-
-
-
-
 	# Name
 	name = fields.Selection(
-
-			#selection=ord_vars._counter_type_list, 			
 			selection=count_vars._counter_name_list, 			
-
 			string="Nombre", 
 		)
 
 
-
-
-
-	# separator 
+	# Separator 
 	separator = fields.Char(
 			string="Separador",
-			#default='',  
 		)
-
-
 
 
 	# Prefix 
 	prefix = fields.Char(
 			string="Prefijo", 
 		)
-
-
 
 
 	# Padding
@@ -69,49 +85,6 @@ class counter(models.Model):
 
 
 
-
-	# Total 
-	total = fields.Char(
-			string="Total", 
-		
-
-			#compute='_compute_total', 
-		)
-
-	@api.multi
-	#@api.depends()
-	def _compute_total(self):
-		
-		for record in self:
-		
-			if record.prefix != False:
-				#record.total = record.prefix + str(record.value)
-				#record.total = record.prefix + str(record.value).zfill(record.padding)
-				#record.total = record.prefix  +  '-'  +  str(record.value).zfill(record.padding)
-
-				if record.separator != False: 
-					record.total = record.prefix  +  record.separator  +  str(record.value).zfill(record.padding)
-				else:
-					record.total = record.prefix  +  str(record.value).zfill(record.padding)
-
-
-
-
-
-
-
-	# Value 
-	value = fields.Integer(
-			string="Valor", 
-			default=1, 
-		)
-
-	@api.onchange('value')
-	def _onchange_value(self):
-		#print
-		#print 'onchange - Value'
-		#print 
-		self.date_modified = fields.datetime.now()
 
 
 
@@ -152,15 +125,11 @@ class counter(models.Model):
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
 
+	# Vspace 
 	vspace = fields.Char(
 			' ', 
 			readonly=True
 		)
-
-
-
-
-
 
 
 	# Date created 

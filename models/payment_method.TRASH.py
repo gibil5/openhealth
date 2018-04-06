@@ -466,3 +466,27 @@
 
 
 
+
+
+	# Total Paid
+	#pm_total = fields.Float(
+	#		string = 'Total pagado', 
+	#		required=True, 
+	#		default=0, 
+
+	#		compute="_compute_pm_total",
+	#	)
+
+	#@api.multi
+	#@api.depends('total', 'pm_total')
+	#def _compute_pm_total(self):
+	#	for record in self:
+
+	#		pm_total = 0
+
+	#		for line in record.pm_line_ids:
+	#			s = line.subtotal
+	#			pm_total = pm_total + s
+
+	#		record.pm_total = record.pm_total + pm_total
+

@@ -4,19 +4,11 @@
 
 
 
-		<!-- Form view -->
+
+		<!-- FORM -->
 		<record model="ir.ui.view" id="counter_form_view">
-
 			<field name="name">counter.form</field>
-			
 			<field name="model">openhealth.counter</field>
-
-			<!--
-			<field name="inherit_id" ref="sale.view_order_form"/>			
-	        <field name="mode">primary</field>
-	        <field name="priority" eval="1"/>
-	        -->
-
 			<field name="arch" type="xml">
 
 				<form string="counter - Form">
@@ -24,136 +16,48 @@
 
 					<!-- Header --> 
 					<header>
-						
-
-						<!-- Reset --> 
-<!--
-						<button 
-								name="reset"
-								type="object" 
-								class="oe_highlight"
-
-								string="Reinicializar"
-						/>						
--->
-
-
-
-						<!-- Increase --> 
-<!--						
-						<button 
-								name="increase"
-								type="object" 
-								class="oe_highlight"
-
-								string="+"
-						/>						
-						<button 
-								name="decrease"
-								type="object" 
-								class="oe_highlight"
-
-								string="-"
-						/>						
--->
-
-
-
 					</header>
-
-
-
 
 
 
 					<!-- Sheet --> 
 					<sheet>
-
 						<h1>Contadores</h1>
 						<h2></h2>
 
 						
-						<field name="vspace" />
-						<field name="vspace"   />													
-
-
-
 						<group>
 							<group>
-								
 								<field name="name"   	readonly="0"		/>		
-								
 								<field name="vspace" />
-								
 								<field name="value"   />													
-								
 								<field name="vspace" />
 
 								<field name="total"   />													
-
-
+							
 							</group>
-
-
-
-							<group>
-								
-<!--								
--->
+							<group>								
 								<field name="x_type"   	/>		
-
-								<field name="vspace" />
-
 							</group>
 						</group>
 
-
-
-
-						<group>							
-							<group>
-							</group>
-							<group>
-							</group>
-						</group>
-
-
-
-
-<!--
-						<group		groups="openhealth.root"		>
--->
 
 						<group>							
 							<group>
 								<field name="prefix"   />													
-
 								<field name="vspace" />
-
 								<field name="separator"   />													
-
 								<field name="vspace" />
-
 								<field name="padding"   />																					
 							</group>
-
-
 							<group>
 								<field name="date_created"  	readonly="1" 	invisible="1"	/>
-
 								<field name="vspace" />
-
 								<field name="date_modified"  	readonly="1" 	invisible="1"	/>
 							</group>
-
 						</group>
-
-
-
-
 					</sheet>
-				</form>
-				
+				</form>				
 			</field>
 		</record>
 
@@ -167,32 +71,18 @@
 
 
 
-		<!-- Tree/List view -->
+		<!-- TREE -->
 		<record model="ir.ui.view" id="openhealth.counter_tree_view">
-
 			<field name="name">openhealth.counter.tree</field>
 			<field name="model">openhealth.counter</field>
 			<field name="arch" type="xml">
-
-
-
 				<tree string="counter Tree">					
-
-
 					<field name="name"/>
-
 					<field name="x_type"/>
-
 					<field name="value"/>
-
 					<field name="total"/>
-
-
-
 					<field name="padding"		groups="openhealth.roots"	/>
-
 					<field name="prefix"		groups="openhealth.roots"	/>
-
 				</tree>
 			</field>
 		</record>
@@ -203,18 +93,16 @@
 
 
 
-		<!-- Action -->
+		<!-- ACTION -->
 		<record model="ir.actions.act_window" id="counter_list_action">
 			<field name="name">counters</field>
 			<field name="res_model">openhealth.counter</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
-
 			<!--
             <field name="domain">[]</field>
             <field name="context">{}</field>
             <field name="view_id" eval="False"/>
-			
 			<field name="help" type="html">
 				<p class="oe_view_nocontent_create">Create the first counter
 				</p>
@@ -223,22 +111,17 @@
 		</record>
 
 
-
-
-		<!-- Action -->
+		<!-- ACTION -->
 		<record model="ir.actions.act_window" id="counter_medical_list_action">
 			<field name="name">counters</field>
 			<field name="res_model">openhealth.counter</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 
-
             <field name="domain">[  
 										('x_type', '=', 'medical'),
             					]
             </field>
-
-
 
 			<!--
             <field name="domain">[]</field>
@@ -253,26 +136,17 @@
 		</record>
 
 
-
-
-
-
-		<!-- Action -->
+		<!-- ACTION -->
 		<record model="ir.actions.act_window" id="counter_sale_list_action">
 			<field name="name">counters</field>
 			<field name="res_model">openhealth.counter</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 
-
             <field name="domain">[  
-
 										('x_type', '=', 'sale'),
-
             					]
             </field>
-
-
 
 			<!--
             <field name="domain">[]</field>
@@ -285,36 +159,5 @@
 			</field>
 			-->
 		</record>
-
-
-
-
-
-
-
-
-
-
-		<!-- Window List action -->
-<!--
-		<record model="ir.actions.act_window" id="counter_raw_list_action">
-			<field name="name">counters raw</field>
-			<field name="res_model">openhealth.counter_raw</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="view_id" eval="False"/>
-			
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first counter
-				</p>
-			</field>
-		</record>
--->
-
-
-
 	</data>
 </openerp>

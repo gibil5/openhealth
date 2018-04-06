@@ -4,7 +4,7 @@
 # 		*** OPEN HEALTH - Patient 
 # 
 # Created: 				26 Aug 2016
-# Last updated: 	 	25 Aug 2017
+#
 
 from openerp import models, fields, api
 from datetime import datetime
@@ -235,107 +235,7 @@ class Patient(models.Model):
 
 
 
-# ----------------------------------------------------------- Hard wired ------------------------------------------------------
-
-
-
-	# READY 
-
-	# Email 
-	#email = fields.Char(
-	#		string = 'Email',  
-	#		placeholder = '',
-	#		required=True, 
-			#required=False, 
-	#	)
-
-
-	#x_dni = fields.Char(
-	#		string = "DNI", 	
-			#required=True, 
-			#required=False, 
-	#	)
-
-
-
-
-
-	# IN PROG 
-
-	#country_id = fields.Many2one(
-	#		'res.country', 
-	#		string = 'País', 
-
-	#		default = 175,	# Peru
-
-			#required=False, 
-	#		required=True, 
-	#	)
-
-
-
-	#city = fields.Selection(
-	#		selection = pat_vars._city_list, 
-	#		string = 'Departamento',  
-	#		default = 'lima', 
-
-	#		required=True, 
-			#required=False, 
-	#	)
-
-
-
-	#street2 = fields.Char(
-	#		string = "Distrito", 	
-			
-			#required=True, 
-	#		required=False, 
-	#	)
-
-
-
-	#street2_sel = fields.Selection(
-	#		selection = pat_vars._street2_list, 
-	#		string = "Distrito", 	
-			
-			#required=True, 
-	#		required=False, 
-	#	)
-
-
-
-
-
-
-	#street = fields.Char(
-	#		string = "Dirección", 	
-
-	#		required=False, 
-	#	)
-
-
-
-
-
-
-	#zip = fields.Integer(
-	#		string = 'Código',  
-			#compute='_compute_zip', 
-
-			#required=True, 			
-	#		required=False, 			
-	#	)
-
-
-	# Deprecated 
-	#@api.multi
-	#def _compute_zip(self):
-	#	for record in self:
-	#		if (record.street2 in pat_vars.zip_dic) and (record.city == 'lima')  :
-	#			record.zip=pat_vars.zip_dic[record.street2]
-	#		else:
-	#			record.zip=0
-
+# ----------------------------------------------------------- Personal are Hard wired to Partner ------------------------------------------------------
 
 
 

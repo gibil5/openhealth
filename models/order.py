@@ -2199,6 +2199,7 @@ class sale_order(models.Model):
 
 		name = 'Pago'
 		method = 'cash'
+
 		balance = self.x_amount_total - self.pm_total
 
 		
@@ -2219,20 +2220,20 @@ class sale_order(models.Model):
 																			
 																				'method': method,
 																			
-																				'subtotal': balance,
-																			
-																				'pm_total': self.pm_total,
+																				'subtotal': balance,																			
 																			
 																				'total': self.x_amount_total,
 
-																				'balance': balance, 
+																				#'pm_total': self.pm_total,
+
+																				#'balance': balance, 
+																				#'balance': 0, 
 
 																				'partner': self.partner_id.id, 
 
 																				'date_created': self.date_order,
 
 																				#'saledoc': 'receipt', 
-
 
 
 																				'dni': dni,

@@ -111,49 +111,49 @@
 
 
 		<!-- TREE - Product Product -->
+<!--		
+-->
 		<record model="ir.ui.view" id="product.product_product_tree_view">
 			<field name="name">product.product.product.tree</field>
-			
 			<field name="model">product.product</field>
-			
 			<field name="type">tree</field>
 			<field name="priority" eval="1"/>
 			<field name="arch" type="xml">
 
-				<tree string="Product Tree"    default_order="name" >
-
+				<tree string="Product Tree - Mod"    default_order="name" >
 
 					<field name="name"/>
 
 					<field name="description"/>
 
-
-
 					<field name="default_code"/>
 					
-<!--
-					<field name="x_zone"/>				
-					<field name="x_pathology"/>				
-					<field name="x_level"/>				
-
-					<field name="x_name_short"/>
-
--->
 					<field name="id"/>
+
 					<field name="uom_id"	invisible="0"/>
 
 
+
 					<field name="price"/>
+
 					<field name="list_price"/>
+
 					<field name="categ_id"/>
+
 					<field name="type"/>
 
-<!--
--->
 					<field name="state"	invisible="1"	/>				
 				</tree>
 			</field>
 		</record>
+
+<!--
+					<field name="x_zone"/>				
+					<field name="x_pathology"/>				
+					<field name="x_level"/>				
+					<field name="x_name_short"/>
+
+-->
 
 
 
@@ -162,27 +162,58 @@
 		<!-- TREE - Product Template -->
 		<record model="ir.ui.view" id="product.product_template_tree_view">
 			<field name="name">product.template.product.tree</field>
-			
 			<field name="model">product.template</field>
-			
 			<field name="type">tree</field>
 			<field name="priority" eval="1"/>
 			<field name="arch" type="xml">
 
-<!--
-				<tree string="Product Tree"    default_order="name" >
--->
-				<tree string="Product Tree"   >
 
+				<tree string="Product Tree - Mod"   >
 
 					<field name="name"/>
 
 					<field name="default_code"/>
 
-
 					<field name="categ_id"/>
 
+					<field name="sale_ok"/>
+
+					<field name="purchase_ok"/>
+
+
+
+
+					<field name="list_price"/>
+
+					<field name="pricelist_id"/>
+
+					<field name="item_ids"/>
+
+					<field name="standard_price"/>
+
+					<field name="price"/>
+
+
+
+
+					<field name="uom_id"	invisible="0"/>
+
+					<field name="type"/>
+
+					<field name="seller_ids"/>
+
+					<field name="state"	invisible="1"	/>	
+
+					<field name="qty_available"	invisible="1"/>
+				</tree>
+			</field>
+		</record>
+
 <!--
+					<field name="x_price_vip"/>
+					<field name="x_price_vip_return"/>
+
+
 					<field name="x_name_short"/>
 
 					<field name="x_name_ticket"/>
@@ -194,19 +225,10 @@
 					<field name="x_pathology"/>				
 					<field name="x_level"/>				
 					<field name="x_sessions"/>	
--->
 
 
 
-					<field name="sale_ok"/>
-					<field name="purchase_ok"/>
-
-
-<!--
 					<field name="description"/>
-
-
-
 					<field name="id"/>
 					<field name="x_name_short"/>
 					<field name="x_zone"/>				
@@ -214,30 +236,6 @@
 					<field name="x_level"/>				
 -->
 
-
-					<field name="list_price"/>
-<!--
-					<field name="x_price_vip"/>
-					<field name="x_price_vip_return"/>
--->				
-					<field name="pricelist_id"/>
-					<field name="item_ids"/>
-					<field name="standard_price"/>
-					<field name="price"/>
-
-
-
-					<field name="uom_id"	invisible="0"/>
-					<field name="type"/>
-
-					<field name="seller_ids"/>
-
-
-					<field name="state"	invisible="1"	/>				
-					<field name="qty_available"	invisible="1"/>
-				</tree>
-			</field>
-		</record>
 
 
 <!--
@@ -249,8 +247,6 @@
 
 					<field name="x_treatment"/>				
 					<field name="x_zone"/>
-
-
 
 
 					<field name="x_name_short"/>

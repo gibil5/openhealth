@@ -510,11 +510,9 @@
 
 		<!-- Token -->
 <!--
-			<field name='categ_id' ref="test"/>
--->			
 		<record id='token_bis' model='product.template'>
 			<field name='type'>product</field>
-			<field name='name'>TOKEN - BIS</field>
+			<field name='name'>TOKEN</field>
 			<field name='description'></field>
 			<field name='x_name_short'>token_bis</field>
 			
@@ -530,6 +528,7 @@
 
 			<field name='categ_id' ref="topical"/>
 		</record>
+-->			
 
 
 
@@ -575,9 +574,6 @@
 
 			<field name='categ_id' ref="legacy"/>
 		</record>
-
-
-
 
 
 	</data>

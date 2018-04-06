@@ -13,7 +13,7 @@
 			<field name='x_zone'>armpits</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>300</field>
-			<field name='x_date_created'>2017-03-29 15:32:14 UTC</field>
+
 			<field name='x_time'>5 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -29,7 +29,7 @@
 			<field name='x_zone'>breast</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>600</field>
-			<field name='x_date_created'>2017-03-29 15:32:15 UTC</field>
+
 			<field name='x_time'>15 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -45,7 +45,7 @@
 			<field name='x_zone'>hands</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>600</field>
-			<field name='x_date_created'>2017-03-29 15:32:15 UTC</field>
+
 			<field name='x_time'>15 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -61,7 +61,7 @@
 			<field name='x_zone'>neck</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>600</field>
-			<field name='x_date_created'>2017-03-29 15:32:15 UTC</field>
+
 			<field name='x_time'>15 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -77,7 +77,7 @@
 			<field name='x_zone'>feet</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>300</field>
-			<field name='x_date_created'>2017-03-29 15:32:14 UTC</field>
+
 			<field name='x_time'>5 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -93,7 +93,7 @@
 			<field name='x_zone'>shoulders</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>600</field>
-			<field name='x_date_created'>2017-03-29 15:32:15 UTC</field>
+
 			<field name='x_time'>15 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -109,7 +109,7 @@
 			<field name='x_zone'>face</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>300</field>
-			<field name='x_date_created'>2017-03-29 15:32:14 UTC</field>
+
 			<field name='x_time'>5 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -125,7 +125,7 @@
 			<field name='x_zone'>back</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>300</field>
-			<field name='x_date_created'>2017-03-29 15:32:14 UTC</field>
+
 			<field name='x_time'>5 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -141,7 +141,7 @@
 			<field name='x_zone'>breast</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>300</field>
-			<field name='x_date_created'>2017-03-29 15:32:14 UTC</field>
+
 			<field name='x_time'>5 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -157,7 +157,7 @@
 			<field name='x_zone'>hands</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>300</field>
-			<field name='x_date_created'>2017-03-29 15:32:14 UTC</field>
+
 			<field name='x_time'>5 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -173,7 +173,7 @@
 			<field name='x_zone'>armpits</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>600</field>
-			<field name='x_date_created'>2017-03-29 15:32:15 UTC</field>
+
 			<field name='x_time'>15 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -189,7 +189,7 @@
 			<field name='x_zone'>neck</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>300</field>
-			<field name='x_date_created'>2017-03-29 15:32:14 UTC</field>
+
 			<field name='x_time'>5 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -205,7 +205,7 @@
 			<field name='x_zone'>face</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>1000</field>
-			<field name='x_date_created'>2017-03-29 15:32:15 UTC</field>
+
 			<field name='x_time'>30 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -221,7 +221,7 @@
 			<field name='x_zone'>legs</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>600</field>
-			<field name='x_date_created'>2017-03-29 15:32:15 UTC</field>
+
 			<field name='x_time'>15 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -237,7 +237,7 @@
 			<field name='x_zone'>feet</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>600</field>
-			<field name='x_date_created'>2017-03-29 15:32:15 UTC</field>
+
 			<field name='x_time'>15 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -253,7 +253,7 @@
 			<field name='x_zone'>belly</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>300</field>
-			<field name='x_date_created'>2017-03-29 15:32:14 UTC</field>
+
 			<field name='x_time'>5 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -269,7 +269,7 @@
 			<field name='x_zone'>gluteus</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>300</field>
-			<field name='x_date_created'>2017-03-29 15:32:14 UTC</field>
+
 			<field name='x_time'>5 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -285,7 +285,7 @@
 			<field name='x_zone'>face</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>600</field>
-			<field name='x_date_created'>2017-03-29 15:32:15 UTC</field>
+
 			<field name='x_time'>15 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -301,7 +301,7 @@
 			<field name='x_zone'>areolas</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>300</field>
-			<field name='x_date_created'>2017-03-29 15:32:14 UTC</field>
+
 			<field name='x_time'>5 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -317,7 +317,7 @@
 			<field name='x_zone'>back</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>600</field>
-			<field name='x_date_created'>2017-03-29 15:32:15 UTC</field>
+
 			<field name='x_time'>15 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -333,7 +333,7 @@
 			<field name='x_zone'>areolas</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>600</field>
-			<field name='x_date_created'>2017-03-29 15:32:15 UTC</field>
+
 			<field name='x_time'>15 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -349,7 +349,7 @@
 			<field name='x_zone'>legs</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>300</field>
-			<field name='x_date_created'>2017-03-29 15:32:14 UTC</field>
+
 			<field name='x_time'>5 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -365,7 +365,7 @@
 			<field name='x_zone'>arms</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>600</field>
-			<field name='x_date_created'>2017-03-29 15:32:15 UTC</field>
+
 			<field name='x_time'>15 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -381,7 +381,7 @@
 			<field name='x_zone'>arms</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>300</field>
-			<field name='x_date_created'>2017-03-29 15:32:14 UTC</field>
+
 			<field name='x_time'>5 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -397,7 +397,7 @@
 			<field name='x_zone'>belly</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>600</field>
-			<field name='x_date_created'>2017-03-29 15:32:15 UTC</field>
+
 			<field name='x_time'>15 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -413,7 +413,7 @@
 			<field name='x_zone'>shoulders</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>300</field>
-			<field name='x_date_created'>2017-03-29 15:32:14 UTC</field>
+
 			<field name='x_time'>5 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -429,7 +429,7 @@
 			<field name='x_zone'>neck</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>1000</field>
-			<field name='x_date_created'>2017-03-29 15:32:15 UTC</field>
+
 			<field name='x_time'>30 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -445,7 +445,7 @@
 			<field name='x_zone'>gluteus</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>600</field>
-			<field name='x_date_created'>2017-03-29 15:32:15 UTC</field>
+
 			<field name='x_time'>15 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -461,7 +461,7 @@
 			<field name='x_zone'>areolas</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>1000</field>
-			<field name='x_date_created'>2017-03-29 15:32:15 UTC</field>
+
 			<field name='x_time'>30 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -477,7 +477,7 @@
 			<field name='x_zone'>shoulders</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>1000</field>
-			<field name='x_date_created'>2017-03-29 15:32:15 UTC</field>
+
 			<field name='x_time'>30 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -493,7 +493,7 @@
 			<field name='x_zone'>arms</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>1000</field>
-			<field name='x_date_created'>2017-03-29 15:32:15 UTC</field>
+
 			<field name='x_time'>30 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -509,7 +509,7 @@
 			<field name='x_zone'>legs</field>
 			<field name='x_pathology'>psoriasis</field>
 			<field name='price'>300</field>
-			<field name='x_date_created'>2017-03-29 15:32:15 UTC</field>
+
 			<field name='x_time'>5 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -525,7 +525,7 @@
 			<field name='x_zone'>belly</field>
 			<field name='x_pathology'>psoriasis</field>
 			<field name='price'>300</field>
-			<field name='x_date_created'>2017-03-29 15:32:15 UTC</field>
+
 			<field name='x_time'>5 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -541,7 +541,7 @@
 			<field name='x_zone'>feet</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>1000</field>
-			<field name='x_date_created'>2017-03-29 15:32:15 UTC</field>
+
 			<field name='x_time'>30 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -557,7 +557,7 @@
 			<field name='x_zone'>armpits</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>1000</field>
-			<field name='x_date_created'>2017-03-29 15:32:15 UTC</field>
+
 			<field name='x_time'>30 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -573,7 +573,7 @@
 			<field name='x_zone'>face</field>
 			<field name='x_pathology'>psoriasis</field>
 			<field name='price'>600</field>
-			<field name='x_date_created'>2017-03-29 15:32:15 UTC</field>
+
 			<field name='x_time'>15 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -589,7 +589,7 @@
 			<field name='x_zone'>shoulders</field>
 			<field name='x_pathology'>psoriasis</field>
 			<field name='price'>300</field>
-			<field name='x_date_created'>2017-03-29 15:32:15 UTC</field>
+
 			<field name='x_time'>5 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -605,7 +605,7 @@
 			<field name='x_zone'>back</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>1000</field>
-			<field name='x_date_created'>2017-03-29 15:32:15 UTC</field>
+
 			<field name='x_time'>30 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -621,7 +621,7 @@
 			<field name='x_zone'>gluteus</field>
 			<field name='x_pathology'>psoriasis</field>
 			<field name='price'>300</field>
-			<field name='x_date_created'>2017-03-29 15:32:15 UTC</field>
+
 			<field name='x_time'>5 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -637,7 +637,7 @@
 			<field name='x_zone'>hands</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>1000</field>
-			<field name='x_date_created'>2017-03-29 15:32:15 UTC</field>
+
 			<field name='x_time'>30 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -653,7 +653,7 @@
 			<field name='x_zone'>breast</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>1000</field>
-			<field name='x_date_created'>2017-03-29 15:32:15 UTC</field>
+
 			<field name='x_time'>30 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -669,7 +669,7 @@
 			<field name='x_zone'>areolas</field>
 			<field name='x_pathology'>psoriasis</field>
 			<field name='price'>300</field>
-			<field name='x_date_created'>2017-03-29 15:32:15 UTC</field>
+
 			<field name='x_time'>5 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -685,7 +685,7 @@
 			<field name='x_zone'>face</field>
 			<field name='x_pathology'>psoriasis</field>
 			<field name='price'>300</field>
-			<field name='x_date_created'>2017-03-29 15:32:15 UTC</field>
+
 			<field name='x_time'>5 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -701,7 +701,7 @@
 			<field name='x_zone'>breast</field>
 			<field name='x_pathology'>psoriasis</field>
 			<field name='price'>300</field>
-			<field name='x_date_created'>2017-03-29 15:32:15 UTC</field>
+
 			<field name='x_time'>5 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -717,7 +717,7 @@
 			<field name='x_zone'>gluteus</field>
 			<field name='x_pathology'>vitiligo</field>
 			<field name='price'>1000</field>
-			<field name='x_date_created'>2017-03-29 15:32:15 UTC</field>
+
 			<field name='x_time'>30 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
@@ -733,7 +733,7 @@
 			<field name='x_zone'>back</field>
 			<field name='x_pathology'>psoriasis</field>
 			<field name='price'>300</field>
-			<field name='x_date_created'>2017-03-29 15:32:15 UTC</field>
+
 			<field name='x_time'>5 min</field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>

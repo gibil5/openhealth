@@ -180,5 +180,46 @@
 
 
 
+
+
+		<menuitem id="kardex_admin_menu"
+
+					parent="main_reporting_menu"
+
+				 	name="Admin"
+
+			/>
+
+
+		<!-- stock --> 
+<!--		
+-->
+		<menuitem id="stock_move_menu" name="Stock moves" 
+
+			parent="kardex_admin_menu"
+
+			sequence="102"
+			action="stock_move_list_action"/>
+
+		<menuitem 
+			id="stock_picking_menu" 
+			name="Stock pickings" 
+
+			parent="kardex_admin_menu"
+
+			sequence="103"
+			action="stock_picking_list_action"/>
+
+		<menuitem 
+			id="stock_pack_operation_menu" 
+			name="Stock pack operations" 
+
+			parent="kardex_admin_menu"
+
+			sequence="104"
+			action="stock_pack_operation_list_action"/>
+
+
+
 	</data>
 </openerp>

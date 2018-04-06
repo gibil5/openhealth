@@ -24,7 +24,7 @@
 		Stability by Design !
 		More Configuration and less programming. Near than zero hacking.  
 
-
+		La Estabilidad se consigue pour la disminución, no por el aumento. 
 
 		Clínica Chavarri\n
 		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant - Testcafe - User Stories - Auto Backup\n

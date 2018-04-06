@@ -1254,3 +1254,47 @@ Order Line - Tree
 -->
 
 
+
+
+
+
+
+
+
+<!--
+				<xpath expr="//button[@name='action_confirm']" position="replace">
+				</xpath>
+
+				<xpath expr="//button[@name='action_confirm']" position="replace">
+				</xpath>
+
+
+				<xpath expr="//button[@name='action_confirm']" position="replace">
+					<button 
+							string="Confirmar venta - jx"
+					/>
+				</xpath>
+-->
+
+
+
+
+
+
+
+
+
+<!--
+				<field name="state" position="before">
+
+									<button 
+											name="cancel_order" 	
+											type="object" 
+											class="oe_highlight oe_right "	
+
+											string="Anular"
+
+											groups="openhealth.roots,openhealth.caja,openhealth.managers,openhealth.directors"
+									/>
+				</field>
+-->

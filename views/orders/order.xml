@@ -7,28 +7,21 @@
 		<!-- FORM -->
 		<record model="ir.ui.view" id="view_order_form">
 			<field name="name">sale.order.form</field>
-			<field name="model">sale.order</field>
-			
+			<field name="model">sale.order</field>			
 			<field name="inherit_id" ref="sale.view_order_form"/>	
 			<field name="mode">primary</field>
-
 			<field name="priority" eval="1"/>
-			
+
+
 			<field name="arch" type="xml">
 
 
 
-
-
-<!--
--->
 				<!-- State --> 
 				<xpath expr="//field[@name='state']" position="replace">
 					<field 	name="state" 
-
 							widget="statusbar" 
-
-
+							
 							statusbar_visible="draft, sent, sale, editable"
 					/>
 				</xpath>
@@ -44,7 +37,6 @@
 
 				<!-- Two times important --> 
 
-
 				<!-- Quotation Send --> 
 				<xpath expr="//button[@name='action_quotation_send']" position="replace">
 				</xpath>
@@ -52,15 +44,11 @@
 				</xpath>
 
 
-
-
 				<!-- Print Quotation -->
 				<xpath expr="//button[@name='print_quotation']" position="replace">
 				</xpath>
 				<xpath expr="//button[@name='print_quotation']" position="replace">
 				</xpath>
-
-
 
 
 				<!-- Action Done --> 
@@ -72,46 +60,21 @@
 
 
 				<!-- Confirm Sale --> 
-<!--
-				<xpath expr="//button[@name='action_confirm']" position="replace">
-				</xpath>
-
 				<xpath expr="//button[@name='action_confirm']" position="replace">
 				</xpath>
 
 
-							name="action_confirm"
+
+
+				<!-- Confirm -->
+				<xpath expr="//button[@name='action_confirm']" position="replace">
+					<button 
 							type="object" 
 							class="oe_highlight"
-							states="sent"						
-
-
-
-				<xpath expr="//button[@name='action_confirm']" position="replace">
-					<button 
-
-							string="Confirmar venta - jx"
-
-					/>
-				</xpath>
--->
-
-				<xpath expr="//button[@name='action_confirm']" position="replace">
-				</xpath>
-
-
-
-
-<!--
--->
-				<xpath expr="//button[@name='action_confirm']" position="replace">
-					<button 
 							name="action_confirm"
+
 							string="CONFIRMAR"
 							
-							type="object" 
-							class="oe_highlight"
-
 							states="sent"						
 					/>
 				</xpath>
@@ -174,8 +137,6 @@
 
 
 				<!-- Price list --> 
-<!--				
--->
 				<xpath expr="//field[@name='pricelist_id']" position="replace">
 					<field name="pricelist_id" 					readonly="1"	/>
 				</xpath>
@@ -362,12 +323,6 @@
 
 
 
-
-
-
-
-
-
 				<!-- Buttons --> 
 <!--				
 				<xpath expr="//button[@name='print_quotation']" position="replace">
@@ -415,7 +370,7 @@
 
 
 
-
+				<!-- User --> 
 				<field name="user_id" position="replace">
 				</field>
 
@@ -424,26 +379,7 @@
 
 
 
-<!--
-				<field name="state" position="before">
-
-									<button 
-											name="cancel_order" 	
-											type="object" 
-											class="oe_highlight oe_right "	
-
-											string="Anular"
-
-											groups="openhealth.roots,openhealth.caja,openhealth.managers,openhealth.directors"
-									/>
-				</field>
--->
-
-
-
-
-
-
+				<!-- Partner --> 
 				<field name="partner_id" position="replace">
 <!--
 					<field name="partner_id"	groups="openhealth.roots"			/>
@@ -724,40 +660,21 @@ Look for the Minimalist experience !!!
 					>
 
 
-
 					<field name="name"	 		string="Referencia"		/>
-
-
-<!--
-					<field name="comment"/>
-					<field name="note"/>
-					<field name="partner_id"/>
-					<field name="product"/>
-					<field name="x_date_order_corr"	string="Fec"	/>
--->
-
-
 
 					<field name="x_serial_nr" />
 
 					<field name="x_type" />
 
-
-
-
 					<field name="patient"/>
 
 					<field name="nr_lines"/>
 
-
-
 					<field name="x_family" />
+
 					<field name="x_product"/>
 
-
 					<field name="amount_untaxed"	sum="Total Untaxed"			widget="monetary"		string="Total"	/>
-
-
 
 					<field name="date_order"	string="Fecha"	/>
 
@@ -767,6 +684,12 @@ Look for the Minimalist experience !!!
 
 
 <!--
+					<field name="comment"/>
+					<field name="note"/>
+					<field name="partner_id"/>
+					<field name="product"/>
+					<field name="x_date_order_corr"	string="Fec"	/>
+
 					<field name="x_note"/>
 -->
 				</tree>
@@ -777,29 +700,26 @@ Look for the Minimalist experience !!!
 
 
 
+
+
+
+
 <!--
 										('date_order','&gt;=',time.strftime('%%Y-01-01'))
 										('date_order','&lt;=',time.strftime('%%Y-12-31')),
-
 -->
 
-		<!-- ACTION - All -->
+		<!-- ACTION - 2018 -->
 		<record model="ir.actions.act_window" id="order_list_action">
-
 			<field name="name">Todo</field>
-			
 			<field name="res_model">sale.order</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 
-
 			<field name="domain">[
-
 										('date_order','&lt;=',time.strftime('2018-12-31')),
 										('date_order','&gt;=',time.strftime('2018-01-01')),
-
 										('note', 'not in', ['observed']),
-				
 								]
 			</field>
 
@@ -820,13 +740,10 @@ Look for the Minimalist experience !!!
 
 		<!-- ACTION - Budgets -->
 		<record model="ir.actions.act_window" id="budget_list_action">
-
 			<field name="name">Presupuestos</field>
-			
 			<field name="res_model">sale.order</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
-			
 			<field name="context">{}</field>
 
 			<field name="domain">[
@@ -852,8 +769,7 @@ Look for the Minimalist experience !!!
 
 
 
-
-		<!-- ACTION - Sales -->
+		<!-- Action - Ventas -->
 		<record model="ir.actions.act_window" id="sale_list_action">
 			<field name="name">Ventas - Confirmadas</field>
 			<field name="res_model">sale.order</field>
@@ -884,7 +800,7 @@ Look for the Minimalist experience !!!
 
 
 
-		<!-- ACTION - Cancelled -->
+		<!-- Action - Cancelled -->
 		<record model="ir.actions.act_window" id="cancelled_list_action">
 			<field name="name">Anulados</field>
 			<field name="res_model">sale.order</field>
@@ -904,11 +820,7 @@ Look for the Minimalist experience !!!
 
 
 
-
-
-
-
-		<!-- ACTION - Observed -->
+		<!-- Action - Observed -->
 		<record model="ir.actions.act_window" id="observed_list_action">
 			<field name="name">Observado</field>
 			<field name="res_model">sale.order</field>
@@ -925,16 +837,7 @@ Look for the Minimalist experience !!!
 
 
 
-
-
-
-
-
-
-
-		<!-- Sales - Consultations --> 
-<!--
--->
+		<!-- Action - Consultations --> 
 		<record model="ir.actions.act_window" id="sale_cons_list_action">
 			<field name="name">Ventas</field>
 			<field name="res_model">sale.order</field>
@@ -950,9 +853,7 @@ Look for the Minimalist experience !!!
 
 
 
-		<!-- Sales - Procedures --> 
-<!--		
--->		
+		<!-- Action - Procedures --> 
 		<record model="ir.actions.act_window" id="sale_proc_list_action">
 			<field name="name">Ventas</field>
 			<field name="res_model">sale.order</field>
@@ -968,9 +869,7 @@ Look for the Minimalist experience !!!
 
 
 
-		<!-- Window Form Action --> 
-<!--
--->
+		<!-- Action - All --> 
 		<record model="ir.actions.act_window" id="order_form_action">
 			<field name="name">orders</field>
 			<field name="res_model">sale.order</field>

@@ -23,9 +23,7 @@
 			<field name='price'></field>
 			<field name='standard_price'></field>
 			<field name='x_family'>topical</field>
-			<field name='x_brand'></field>
 			<field name='x_price_vip'></field>
-			<field name='x_date_created'>2018-01-09 00:00:00 UTC</field>
 		</record>
 
 
@@ -68,9 +66,7 @@
 			<field name='default_code'>393</field>
 
 			<field name='x_family'>topical</field>
-			<field name='x_brand'>CLINICA CHAVARRI</field>			
 			<field name='x_price_vip'></field>
-			<field name='x_date_created'>2017-03-28 20:15:18 UTC</field>
 			<field name='categ_id' ref="topical"/>
 
 			<field name='price'>300.0</field>

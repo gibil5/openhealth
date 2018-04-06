@@ -874,8 +874,383 @@ Order Line - Tree
 
 
 
+<!--
+6 April 2018
+-->
+
+<!-- RESERVAR LA SALA - DEPRECATED ? -->
+<!--
+					<button 
+							name="reserve_machine" 	
+							string="Reservar la Sala"
+
+
+							type="object"
+							class="oe_highlight"
 
 
 
+							attrs="{'invisible':[	'|',
+
+													('x_machine_req','not in',['laser_co2_1']), 
+
+													('state','not in',['sent']), 
+
+											]}"
+
+							groups="openhealth.caja,openhealth.managers,openhealth.directors"
+					/>
+-->
+
+
+
+
+<!--
+							attrs="{'invisible':
+												[
+													('pm_complete', '=', False),
+												]
+									}"
+
+
+							attrs="{'invisible':	[('x_state', 'in', ['draft', 'payment', 'proof',   'sale', 'invoice'] ),	]}"
+							states="proof"						
+
+							attrs="{'invisible':	[('x_state', 'in', ['draft', 'payment',  'machine', 'sale', 'invoice'] ),	]}"
+
+
+							states="machine"
+-->
+
+
+
+
+
+<!--
+							attrs="{'invisible':	[('x_state', 'in', ['payment', 'proof', 'machine', 'sale', 'invoice'] ),	]}"
+
+							string="Módulo de Pago"
+							groups="openhealth.managers,openhealth.caja"
+
+
+							groups="openhealth.caja,openhealth.managers,openhealth.directors"
+
+							groups="openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
+						groups="openhealth.roots,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
+
+							groups="openhealth.roots,openhealth.reception,openhealth.caja,openhealth.directors"
+-->					
+
+
+
+
+
+					<!--
+
+							attrs="{'invisible':	[('x_state', 'in', ['draft', 'proof',  'machine', 'sale', 'invoice'] ),	]}"
+					<button 
+							type="object" 
+							class="oe_highlight"
+
+							string="Módulo de Pago" 
+
+
+							states="payment"						
+
+
+							name="create_sale_document" 
+					/>
+					-->
+
+
+
+
+
+
+					<!-- Reserve Machine --> 
+<!--
+							states="proof"						
+							attrs="{'invisible':	[('x_state', 'in', ['draft', 'payment',  'machine', 'sale', 'invoice'] ),	]}"
+
+
+							attrs="{'invisible':	[('x_family', 'in', ['consultation'] 	),	]}"
+
+							states="proof"
+
+														('state','=','proof'),
+							attrs="{'invisible':	[
+														('x_family','!=','procedure'), 
+
+													]}"
+
+																('x_machine','!=',''), 
+
+
+																('x_machine','=',False), 
+
+
+
+																'|',
+																('x_family','!=','procedure'),
+
+																('state','!=','proof'), 
+
+																('x_machine_req','=','laser_co2_1'), 
+
+													('consultation_progress','in',[ False, '0.0',0.0, 0]),
+
+
+
+													('state','not in',['payment']), 
+-->
+
+
+
+
+
+
+
+
+
+<!--
+					<button 
+							name="validate_stock_picking"
+							
+							string="Validar"
+							
+							type="object" 
+							class="oe_highlight"
+					/>
+
+
+					<button 
+							name="do_transfer"
+							
+							string="Hacer Trans"
+							
+							type="object" 
+							class="oe_highlight"
+					/>
+-->
+
+
+
+
+
+
+
+
+				<!-- Action Confirm --> 
+				<!--
+				<xpath expr="//button[@name='action_confirm']" position="replace">
+				</xpath>
+				<xpath expr="//button[@name='action_confirm']" position="replace">
+				</xpath>
+				-->
+
+
+				<!--
+				<xpath expr="//page[@name='Other Information']" position="replace">
+
+				</xpath>
+				-->
+
+
+
+
+
+
+				<!-- Create Invoice --> 
+<!--
+				<xpath expr="//button[contains(text(),'Create')]" position="replace">
+
+				<xpath expr="//button[@name='225']" position="replace">
+				<xpath expr="//button[@string='Create Invoice']" position="replace">
+				</xpath>
+-->
+
+
+
+
+<!--
+				<xpath expr="//field[@name='x_serial_nr']" position="after">
+					<group>
+					
+					</group>
+				</xpath>
+-->
+
+
+
+
+
+
+
+<!--
+							states="sale"						
+
+
+							attrs="{'invisible':	[
+															('x_doctor', 'in', [	
+																					'Eulalia', 
+																				]),	
+													]}"
+
+							attrs="{'invisible':	[
+															('nr_treatments', 'in', [0] 	),	
+													]}"
+
+-->
+
+
+<!-- DEPRECATED -->
+<!--
+					<button 
+							name="open_treatment"
+							type="object" 
+							class="oe_highlight"
+							string="Regresar al TRATAMIENTO"
+
+							groups="openhealth.reception,openhealth.physicians"
+					/>
+-->
+
+
+
+
+
+						<!-- Cosmetology --> 
+<!--
+															('x_family', 'in', ['consultation'] 	),	
+
+
+								attrs="{'invisible':	[
+															('x_doctor', 'in', [	
+																					'Dr. Chavarri', 
+																					'Dr. Canales', 
+																				]),	
+														]}"
+								attrs="{'invisible':	[
+															('nr_cosmetologies', 'in', [0] 	),	
+														]}"
+-->
+<!--
+						<button 
+								name="open_cosmetology"
+								type="object" 
+								class="oe_highlight"
+	
+								string="Regresar a la COSMIATRIA"
+						/>					
+-->
+
+
+
+
+
+
+
+
+
+
+					<!-- Treatment --> 
+<!--
+							groups="openhealth.managers"
+							attrs="{'invisible':	[
+															('nr_treatments', 'in', [0] 	),	
+													]}"
+-->
+
+
+<!-- DEPRECATED -->
+<!--
+					<button 
+							name="open_treatment"
+							type="object" 
+							class="oe_highlight"
+
+
+							string="Regresar al TRATAMIENTO"
+
+							states="sale"						
+					/>
+-->
+
+
+
+<!--
+							attrs="{'invisible':	[	
+														('x_type', 'in', ['ticket_receipt','ticket_invoice'] ),	
+
+													]}"
+
+
+							attrs="{'invisible':	[
+														('x_type', 'in', ['receipt', 'invoice'] ),
+													]}"
+
+
+							states="sale"	
+-->
+
+
+
+
+
+
+
+
+
+
+					<!-- Print --> 
+<!--
+					<button 
+							name="print_order"
+							type="object" 
+							class="oe_highlight"
+							string="Imprimir"
+
+							attrs="{'invisible':	[	
+												('x_sale_document_type', 'in', ['receipt', 'invoice', 'advertisement', 'sale_note', False, ] ),
+												]
+										}"
+					/>
+-->
+
+
+
+
+
+
+
+					<!-- Create Invoice --> 
+<!--
+
+					<button 
+							type="object"
+							class="oe_highlight"
+							string="Crear Factura"
+						
+							states="sale"		
+
+							name="x_create_invoice" 	
+					/>
+-->
+
+
+
+
+
+<!--
+					<button 
+							type="object" 
+							class="oe_highlight"
+
+
+							name="test_bug"
+
+							string="Test"
+							/>
+-->
 
 

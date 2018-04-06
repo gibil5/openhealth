@@ -6,40 +6,38 @@
 # Created: 				26 Aug 2016
 # Last updated: 	 	29 Sep 2017
 
-
 from openerp import models, fields, api
 import datetime
-from . import app_vars
-from . import ord_vars
-from . import appfuncs
-from . import cosvars
-from . import treatment_vars
+import app_vars
+import ord_vars
+import appfuncs
+import cosvars
+import treatment_vars
 from num2words import num2words
-
 import math 
-
-
-
 import time 
 from openerp import tools
 
 import count_funcs
 
 
-#from calendar import monthrange
-#from datetime import datetime
-
-
-
 class sale_order(models.Model):
 	
 	_inherit='sale.order'
-
 	#_name = 'openhealth.order'
 	
 
 
 
+
+
+# ----------------------------------------------------------- Compute - Solving ------------------------------------------------------
+
+	# Product
+	x_product = fields.Char(		
+			string="Producto",	
+			required=False, 			
+		)
 
 
 
@@ -1196,23 +1194,6 @@ class sale_order(models.Model):
 
 
 
-	# Product
-	product = fields.Char(
-
-			'Producto', 
-
-			compute="_compute_product",
-		)
-
-	@api.multi
-	#@api.depends('partner_id')
-
-	def _compute_product(self):
-		for record in self:
-
-			for line in record.order_line:
-
-				record.product = line.product_id.name
 
 
 
@@ -1636,43 +1617,14 @@ class sale_order(models.Model):
 
 	@api.multi 
 	def x_reset(self):
-
-		#print 
-		#print 'jx'
-		#print 'Reset'
-
-
-
-		#self.procedure_ids.unlink()
 		self.x_payment_method.unlink()
+		self.state = 'draft'			# This works. 
+		self.x_confirmed = False
 	
 
 
-		#self.x_sale_document_type = False
-		#self.x_sale_document.unlink()
 
 
-
-
-		#self.x_appointment.unlink()
-		#self.x_appointment = False
-		#self.x_appointment.x_machine = False
-#jz
-		if self.x_appointment.x_machine != False:
-			self.x_appointment.x_machine = False
-
-
-
-
-		#self.pre_state = 'draft'
-		self.state = 'draft'			# This works. 
-		self.x_confirmed = False
-
-		#print 
-		#print 
-		#print 
-
-	# x_reset
 
 
 
@@ -1743,109 +1695,6 @@ class sale_order(models.Model):
 
 
 
-
-	# Machine Required  
-	x_machine_req = fields.Char(
-
-			string='Sala req.',
-
-			compute='_compute_x_machine_req', 
-		)
-
-	@api.multi
-	#@api.depends('x_product')
-
-	def _compute_x_machine_req(self):
-		for record in self:
-
-			tre = record.x_product.x_treatment
-
-			mac = cosvars._hash_tre_mac[tre]
-
-			record.x_machine_req = mac
-
-
-
-
-
-
-	# Product
-	x_product = fields.Many2one(
-			'product.template',			
-			string="Producto",
-			
-			#required=True, 
-			required=False, 
-			
-
-
-			domain = [
-						#('x_treatment', '=', 'laser_co2'),						
-						('x_origin', '=', False),						
-					],
-
-
-
-			compute='_compute_x_product', 
-		)
-
-
-
-	#@api.multi
-	@api.depends('order_line')
-
-	def _compute_x_product(self):
-		for record in self:
-
-			flag = False
-
-
-
-			for line in record.order_line:
-
-				tre = line.product_id.x_treatment
-
-
-
-				#if line.product_id.x_treatment == 'laser_co2':
-				#if 	line.product_id.x_treatment == 'laser_co2'	or 	line.product_id.x_treatment == 'laser_excilite':
-				#if tre == 'laser_co2' 		or 		tre == 'laser_excilite': 
-				#if tre == 'laser_co2' 		or 	tre == 'laser_excilite'		or 	tre == 'laser_ipl'		or tre == 'laser_ndyag'	: 
-
-				#if tre == 'laser_co2' 	or 	tre == 'laser_excilite'	or 	tre == 'laser_ipl'	or tre == 'laser_ndyag'		or tre == 'consultation': 
-				if  	tre == 'laser_quick'  	or 		tre == 'laser_co2' 	or 	tre == 'laser_excilite'	or 	tre == 'laser_ipl'	or tre == 'laser_ndyag'		or tre == 'consultation': 
-
-					product = line.product_id.id
-					flag = True 
-
-
-
-
-			if flag: 
-				record.x_product = product
-
-
-
-
-
-
-
-	# Treatment
-	x_treatment = fields.Char(
-			#string="Tratamiento",
-			
-			#required=True, 
-			required=False, 
-			
-			compute='_compute_x_treatment', 
-			)
-
-	#@api.multi
-	@api.depends('x_product')
-	def _compute_x_treatment(self):
-		for record in self:
-			record.x_treatment = record.x_product.x_treatment
-	# _compute_x_treatment
 
 
 
@@ -2511,19 +2360,6 @@ class sale_order(models.Model):
 
 
 
-	# Machine 
-	x_machine = fields.Selection(
-			#string="Máquina", 
-			string="Sala", 
-			#selection = jxvars._machines_list, 
-			selection = app_vars._machines_list, 
-			
-			compute='_compute_x_machine', 
-		
-			#required=True, 
-			required=False, 
-		)
-
 
 
 
@@ -2584,12 +2420,6 @@ class sale_order(models.Model):
 
 
 
-	#@api.multi
-	@api.depends('x_appointment')
-
-	def _compute_x_machine(self):
-		for record in self:
-			record.x_machine = record.x_appointment.x_machine
 
 
 
@@ -2936,13 +2766,6 @@ class sale_order(models.Model):
 				appointment_id = appointment.id
 
 				
-				#print self.x_doctor
-				#print self.patient
-
-				
-				#print appointment  
-				#print appointment_id  
-
 
 
 				# Line  
@@ -2950,18 +2773,13 @@ class sale_order(models.Model):
 				line.x_doctor_name = appointment.doctor.name
 				line.x_duration = appointment.duration 
 				
-				#line.x_machine_oldachine = appointment.x_machine
-				line.x_machine = False
+
+				#line.x_machine = False
 
 
 				# Self 
 				self.x_appointment = appointment
 
-				#self.x_doctor = appointment.doctor
-				#self.x_appointment_date = appointment.appointment_date
-				#self.x_duration = appointment.duration
-				#self.x_machine = appointment.x_machine 
-		#print 
 	# update_order_lines_app	
 
 
@@ -2976,36 +2794,9 @@ class sale_order(models.Model):
 
 	@api.multi
 	def remove_myself(self):  
-		#print 
-		#print 
-		#print 'Remove Myself'
-		#print self.name 
 		self.x_reset()
 		self.unlink()
 
-		#self.x_appointment.x_machine = 'none'
-		#order_id = self.id
-		#print "id: ", order_id
-		# Search 
-		#rec_set = self.env['sale.order'].browse([order_id])
-		#print "rec_set: ", rec_set
-		# Write
-		#ret = rec_set.write({
-		#						'state': 'draft',
-								#'x_machine': 'none',
-		#					})
-		#print ret
-
-		#for rec in rec_set:
-		#	rec.x_reset
-		# Unlink 
-		#ret = rec_set.unlink()
-		#print "ret: ", ret
-		
-
-		#print 
-		#print 
-	# remove_myself
 
 
 
@@ -3056,89 +2847,6 @@ class sale_order(models.Model):
 
 
 
-
-
-
-# ----------------------------------------------------------- Actions ------------------------------------------------------
-
-	# Reserve machine 
-	@api.multi 
-	def reserve_machine(self):
-
-		print 'jx'
-		print 'Reserve Machine'
-		print 
-
-
-
-		# There is an appointment 
-		if self.x_appointment.name == False: 
-			print 'There is no Appointment'
-
-
-		else: 
-			date_format = "%Y-%m-%d %H:%M:%S"
-			duration = self.x_appointment.duration 
-			delta = datetime.timedelta(hours=duration)
-
-
-			# Easiest first 
-			m_dic = {
-
-						'consultation':			[], 
-
-						'laser_quick': 			['laser_quick'], 
-						'laser_co2_1': 			['laser_co2_1', 'laser_co2_2', 'laser_co2_3'], 
-						'laser_excilite': 		['laser_excilite'], 
-						'laser_m22': 			['laser_m22'], 
-
-
-						'laser_triactive': 		['laser_triactive'], 
-						'chamber_reduction': 	['chamber_reduction'], 
-						'carboxy_diamond': 		['carboxy_diamond'], 
-
-
-						'':						[], 
-				}
-
-
-
-			print 'x machine req'
-			print self.x_machine_req
-
-
-			m_list = m_dic[self.x_machine_req]
-
-			ad_str = self.x_appointment.appointment_date
-
-			k = 1.
-			out = False 
-
-
-
-
-			while not out		and  	  k < 6: 		
-
-				for x_machine_req in m_list: 
-
-					if not out: 				
-
-						self.x_appointment.appointment_date = ad_str
-						self.x_appointment.x_machine = x_machine_req
-						nr_mc = self.get_nr_mc()
-
-						if nr_mc == 1:		# Success - Get out 
-							out = True 
-
-				if not out: 	# Error - Change the date 
-					ad = datetime.datetime.strptime(self.x_appointment.appointment_date, date_format) 
-					ad_dt = delta + ad
-					ad_str = ad_dt.strftime("%Y-%m-%d %H:%M:%S")
-
-					k = k + 1.
-		
-
-	# reserve_machine
 
 
 
@@ -3206,7 +2914,7 @@ class sale_order(models.Model):
 
 
 		#print 
-		print 'jx'
+		print 
 		print 'Action confirm - Overridden'
 		 
 		
@@ -3217,15 +2925,12 @@ class sale_order(models.Model):
 
 
 		# Serial Number and Type
-		#if self.x_payment_method.name != False: 
-		#if self.x_payment_method.saledoc_code != False: 
 		if self.x_payment_method.saledoc != False: 
-			
+
+			print 'Serial number'
+
 
 			self.x_type = self.x_payment_method.saledoc
-
-
-			#self.x_serial_nr = self.x_payment_method.saledoc_code 
 
 			
 
@@ -3249,6 +2954,9 @@ class sale_order(models.Model):
 
 		# Doctor User Name - For Reporting 
 		if self.x_doctor.name != False: 
+
+			print 'Dr name'
+
 			uid = self.x_doctor.x_user_name.id
 			self.x_doctor_uid = uid
 		
@@ -3273,17 +2981,43 @@ class sale_order(models.Model):
 
 
 		# Family 
+		out = False
 		for line in self.order_line:
 
-			if line.product_id.categ_id.name == 'Consultas':
-				print 'gotcha'
-				print 'family is consultation'
-				self.x_family = 'consultation'
+			print 'Family'
 
-			elif line.product_id.categ_id.name in ['Quick Laser', 'Laser Co2', 'Laser Excilite', 'Laser M22', 'Medical']: 
-				print 'gotcha'
-				print 'family is procedure'
-				self.x_family = 'procedure'
+			if not out: 
+
+				if line.product_id.categ_id.name == 'Consultas':
+					print 'gotcha'
+					print 'family is consultation'
+					self.x_family = 'consultation'
+	
+					self.x_product = line.product_id.x_name_ticket
+
+					out = True
+
+				elif line.product_id.categ_id.name in ['Quick Laser', 'Laser Co2', 'Laser Excilite', 'Laser M22', 'Medical']: 
+					print 'gotcha'
+					print 'family is procedure'
+					self.x_family = 'procedure'
+
+					self.x_product = line.product_id.x_name_ticket
+
+					out = True
+
+
+				elif line.product_id.categ_id.name == 'Cosmeatria':
+					self.x_family = 'cosmetology'
+
+					self.x_product = line.product_id.x_name_ticket
+
+					out = True
+
+				else: 
+					self.x_family = 'product'
+
+					self.x_product = line.product_id.x_name_ticket
 
 
 
@@ -3296,9 +3030,10 @@ class sale_order(models.Model):
 
 
 
+
 		# Reserve Machine if Procedure 
-		if self.x_family == 'procedure': 
-			self.reserve_machine()
+		#if self.x_family == 'procedure': 
+		#	self.reserve_machine()
 
 
 
@@ -3335,7 +3070,7 @@ class sale_order(models.Model):
 		# Create Card 
 		if go_card:
 
-			print 'Go Card'
+			print 'Card'
 
 
 			# Pricelist Vip - For Partner
@@ -3375,6 +3110,7 @@ class sale_order(models.Model):
 
 
 		# Stock Picking - Validate 
+		print 'Picking'
 		self.validate_stock_picking()
 		self.do_transfer()
 		

@@ -19,9 +19,10 @@
 
 	'description': """
 
-		Last built: 	5 April 2018 - Rebirth !!!
+		Last built: 	6 April 2018 
 		
-		Recuerda que tu Trabajo es la INFORMACION no la Informática. 
+		Stability by Design !
+		More Configuration and less programming. Near than zero hacking.  
 
 
 
@@ -398,10 +399,11 @@
 
 
 
-		# Product Selector 
-		'views/product_selectors/product_selector.xml',
 
-		'views/product_managers/product_manager.xml',
+		# Deprecated ? 
+		# Product Selector 
+		#'views/product_selectors/product_selector.xml',
+		#'views/product_managers/product_manager.xml',
 
 
 

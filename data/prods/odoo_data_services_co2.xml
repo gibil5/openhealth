@@ -23,7 +23,7 @@
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>face_all</field>
 			<field name='x_pathology'>rejuvenation_face_3</field>
-			<field name='x_date_created'>2017-03-29 15:32:03 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_family'>laser</field>
@@ -49,7 +49,7 @@
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>neck</field>
 			<field name='x_pathology'>rejuvenation_neck_1</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_family'>laser</field>
@@ -73,7 +73,7 @@
 			<field name='x_treatment'>laser_co2</field>
 			<field name='x_zone'>face_all</field>
 			<field name='x_pathology'>stains_3</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_family'>laser</field>
@@ -89,7 +89,7 @@
 			<field name='x_zone'>face_all</field>
 			<field name='x_pathology'>acne_sequels_3</field>
 			<field name='price'>14000</field>
-			<field name='x_date_created'>2017-03-29 15:32:03 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>7000</field>
@@ -106,7 +106,7 @@
 			<field name='x_zone'>cheekbones</field>
 			<field name='x_pathology'>acne_sequels_3</field>
 			<field name='price'>7000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>3500</field>
@@ -123,7 +123,7 @@
 			<field name='x_zone'>face_all</field>
 			<field name='x_pathology'>acne_sequels_5</field>
 			<field name='price'>18000</field>
-			<field name='x_date_created'>2017-03-29 15:32:03 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>9000</field>
@@ -140,7 +140,7 @@
 			<field name='x_zone'>face_all</field>
 			<field name='x_pathology'>acne_sequels_1</field>
 			<field name='price'>10000</field>
-			<field name='x_date_created'>2017-03-29 15:32:03 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>5000</field>
@@ -157,7 +157,7 @@
 			<field name='x_zone'>face_all</field>
 			<field name='x_pathology'>rejuvenation_face_1</field>
 			<field name='price'>10000</field>
-			<field name='x_date_created'>2017-03-29 15:32:03 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>5000</field>
@@ -174,7 +174,7 @@
 			<field name='x_zone'>cheekbones</field>
 			<field name='x_pathology'>stains_2</field>
 			<field name='price'>6000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>3000</field>
@@ -191,7 +191,7 @@
 			<field name='x_zone'>face_all</field>
 			<field name='x_pathology'>rejuvenation_face_4</field>
 			<field name='price'>16000</field>
-			<field name='x_date_created'>2017-03-29 15:32:03 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>8000</field>
@@ -208,7 +208,7 @@
 			<field name='x_zone'>cheekbones</field>
 			<field name='x_pathology'>stains_1</field>
 			<field name='price'>5000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>2500</field>
@@ -225,7 +225,7 @@
 			<field name='x_zone'>face_all</field>
 			<field name='x_pathology'>stains_2</field>
 			<field name='price'>12000</field>
-			<field name='x_date_created'>2017-03-29 15:32:03 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>6000</field>
@@ -242,7 +242,7 @@
 			<field name='x_zone'>cheekbones</field>
 			<field name='x_pathology'>acne_sequels_1</field>
 			<field name='price'>5000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>2500</field>
@@ -259,7 +259,7 @@
 			<field name='x_zone'>face_all</field>
 			<field name='x_pathology'>acne_sequels_4</field>
 			<field name='price'>16000</field>
-			<field name='x_date_created'>2017-03-29 15:32:03 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>8000</field>
@@ -276,7 +276,7 @@
 			<field name='x_zone'>face_all</field>
 			<field name='x_pathology'>rejuvenation_face_2</field>
 			<field name='price'>12000</field>
-			<field name='x_date_created'>2017-03-29 15:32:03 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>6000</field>
@@ -293,7 +293,7 @@
 			<field name='x_zone'>face_all</field>
 			<field name='x_pathology'>acne_sequels_2</field>
 			<field name='price'>12000</field>
-			<field name='x_date_created'>2017-03-29 15:32:03 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>6000</field>
@@ -310,7 +310,7 @@
 			<field name='x_zone'>cheekbones</field>
 			<field name='x_pathology'>acne_sequels_4</field>
 			<field name='price'>8000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>4000</field>
@@ -327,7 +327,7 @@
 			<field name='x_zone'>face_all</field>
 			<field name='x_pathology'>rejuvenation_face_5</field>
 			<field name='price'>18000</field>
-			<field name='x_date_created'>2017-03-29 15:32:03 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>9000</field>
@@ -344,7 +344,7 @@
 			<field name='x_zone'>face_all</field>
 			<field name='x_pathology'>stains_5</field>
 			<field name='price'>18000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>9000</field>
@@ -361,7 +361,7 @@
 			<field name='x_zone'>face_all</field>
 			<field name='x_pathology'>stains_1</field>
 			<field name='price'>10000</field>
-			<field name='x_date_created'>2017-03-29 15:32:03 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>5000</field>
@@ -378,7 +378,7 @@
 			<field name='x_zone'>cheekbones</field>
 			<field name='x_pathology'>acne_sequels_2</field>
 			<field name='price'>6000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>3000</field>
@@ -395,7 +395,7 @@
 			<field name='x_zone'>face_all</field>
 			<field name='x_pathology'>stains_4</field>
 			<field name='price'>16000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>8000</field>
@@ -412,7 +412,7 @@
 			<field name='x_zone'>cheekbones</field>
 			<field name='x_pathology'>acne_sequels_5</field>
 			<field name='price'>9000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>4500</field>
@@ -429,7 +429,7 @@
 			<field name='x_zone'>cheekbones</field>
 			<field name='x_pathology'>stains_3</field>
 			<field name='price'>7000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>3500</field>
@@ -446,7 +446,7 @@
 			<field name='x_zone'>cheekbones</field>
 			<field name='x_pathology'>stains_4</field>
 			<field name='price'>8000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>4000</field>
@@ -463,7 +463,7 @@
 			<field name='x_zone'>face_local</field>
 			<field name='x_pathology'>keratosis_2</field>
 			<field name='price'>2000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>1000</field>
@@ -480,7 +480,7 @@
 			<field name='x_zone'>cheekbones</field>
 			<field name='x_pathology'>stains_5</field>
 			<field name='price'>9000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>4500</field>
@@ -497,7 +497,7 @@
 			<field name='x_zone'>face_local</field>
 			<field name='x_pathology'>stains_3</field>
 			<field name='price'>3000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>1500</field>
@@ -514,7 +514,7 @@
 			<field name='x_zone'>neck</field>
 			<field name='x_pathology'>rejuvenation_neck_3</field>
 			<field name='price'>7000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>3500</field>
@@ -531,7 +531,7 @@
 			<field name='x_zone'>face_local</field>
 			<field name='x_pathology'>keratosis_5</field>
 			<field name='price'>5000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>2500</field>
@@ -548,7 +548,7 @@
 			<field name='x_zone'>face_local</field>
 			<field name='x_pathology'>keratosis_4</field>
 			<field name='price'>4000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>2000</field>
@@ -565,7 +565,7 @@
 			<field name='x_zone'>face_local</field>
 			<field name='x_pathology'>keratosis_3</field>
 			<field name='price'>3000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>1500</field>
@@ -582,7 +582,7 @@
 			<field name='x_zone'>hands</field>
 			<field name='x_pathology'>rejuvenation_hands_3</field>
 			<field name='price'>7000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>3500</field>
@@ -599,7 +599,7 @@
 			<field name='x_zone'>hands</field>
 			<field name='x_pathology'>rejuvenation_hands_5</field>
 			<field name='price'>9000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>4500</field>
@@ -618,7 +618,7 @@
 			<field name='x_zone'>hands</field>
 			<field name='x_pathology'>rejuvenation_hands_1</field>
 			<field name='price'>5000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>2500</field>
@@ -635,7 +635,7 @@
 			<field name='x_zone'>neck</field>
 			<field name='x_pathology'>rejuvenation_neck_4</field>
 			<field name='price'>8000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>4000</field>
@@ -652,7 +652,7 @@
 			<field name='x_zone'>face_local</field>
 			<field name='x_pathology'>stains_2</field>
 			<field name='price'>2000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>1000</field>
@@ -669,7 +669,7 @@
 			<field name='x_zone'>face_local</field>
 			<field name='x_pathology'>mole_1</field>
 			<field name='price'>1000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>500</field>
@@ -686,7 +686,7 @@
 			<field name='x_zone'>neck</field>
 			<field name='x_pathology'>rejuvenation_neck_2</field>
 			<field name='price'>6000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>3000</field>
@@ -703,7 +703,7 @@
 			<field name='x_zone'>face_local</field>
 			<field name='x_pathology'>keratosis_1</field>
 			<field name='price'>1000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>500</field>
@@ -720,7 +720,7 @@
 			<field name='x_zone'>face_local</field>
 			<field name='x_pathology'>stains_5</field>
 			<field name='price'>5000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>2500</field>
@@ -737,7 +737,7 @@
 			<field name='x_zone'>hands</field>
 			<field name='x_pathology'>rejuvenation_hands_4</field>
 			<field name='price'>8000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>4000</field>
@@ -754,7 +754,7 @@
 			<field name='x_zone'>hands</field>
 			<field name='x_pathology'>rejuvenation_hands_2</field>
 			<field name='price'>6000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>3000</field>
@@ -771,7 +771,7 @@
 			<field name='x_zone'>neck</field>
 			<field name='x_pathology'>rejuvenation_neck_5</field>
 			<field name='price'>9000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>4500</field>
@@ -788,7 +788,7 @@
 			<field name='x_zone'>face_local</field>
 			<field name='x_pathology'>stains_4</field>
 			<field name='price'>4000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>2000</field>
@@ -805,7 +805,7 @@
 			<field name='x_zone'>face_local</field>
 			<field name='x_pathology'>mole_2</field>
 			<field name='price'>2000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>1000</field>
@@ -822,7 +822,7 @@
 			<field name='x_zone'>face_local</field>
 			<field name='x_pathology'>stains_1</field>
 			<field name='price'>1000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>500</field>
@@ -839,7 +839,7 @@
 			<field name='x_zone'>face_local</field>
 			<field name='x_pathology'>mole_3</field>
 			<field name='price'>3000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>1500</field>
@@ -856,7 +856,7 @@
 			<field name='x_zone'>face_local</field>
 			<field name='x_pathology'>mole_4</field>
 			<field name='price'>4000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>2000</field>
@@ -873,7 +873,7 @@
 			<field name='x_zone'>face_local</field>
 			<field name='x_pathology'>cyst_5</field>
 			<field name='price'>5000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>2500</field>
@@ -890,7 +890,7 @@
 			<field name='x_zone'>face_local</field>
 			<field name='x_pathology'>scar_1</field>
 			<field name='price'>1000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>500</field>
@@ -907,7 +907,7 @@
 			<field name='x_zone'>face_local</field>
 			<field name='x_pathology'>scar_5</field>
 			<field name='price'>5000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>2500</field>
@@ -924,7 +924,7 @@
 			<field name='x_zone'>face_local</field>
 			<field name='x_pathology'>scar_4</field>
 			<field name='price'>4000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>2000</field>
@@ -941,7 +941,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>stains_1</field>
 			<field name='price'>1000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>500</field>
@@ -958,7 +958,7 @@
 			<field name='x_zone'>face_local</field>
 			<field name='x_pathology'>mole_5</field>
 			<field name='price'>5000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>2500</field>
@@ -975,7 +975,7 @@
 			<field name='x_zone'>face_local</field>
 			<field name='x_pathology'>cyst_3</field>
 			<field name='price'>3000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>1500</field>
@@ -992,7 +992,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>stains_5</field>
 			<field name='price'>5000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>2500</field>
@@ -1009,7 +1009,7 @@
 			<field name='x_zone'>face_local</field>
 			<field name='x_pathology'>scar_3</field>
 			<field name='price'>3000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>1500</field>
@@ -1026,7 +1026,7 @@
 			<field name='x_zone'>face_local</field>
 			<field name='x_pathology'>wart_3</field>
 			<field name='price'>3000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>1500</field>
@@ -1043,7 +1043,7 @@
 			<field name='x_zone'>face_local</field>
 			<field name='x_pathology'>wart_1</field>
 			<field name='price'>1000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>500</field>
@@ -1060,7 +1060,7 @@
 			<field name='x_zone'>face_local</field>
 			<field name='x_pathology'>wart_5</field>
 			<field name='price'>5000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>2500</field>
@@ -1077,7 +1077,7 @@
 			<field name='x_zone'>face_local</field>
 			<field name='x_pathology'>cyst_1</field>
 			<field name='price'>1000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>500</field>
@@ -1094,7 +1094,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>stains_2</field>
 			<field name='price'>2000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>1000</field>
@@ -1111,7 +1111,7 @@
 			<field name='x_zone'>face_local</field>
 			<field name='x_pathology'>cyst_4</field>
 			<field name='price'>4000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>2000</field>
@@ -1128,7 +1128,7 @@
 			<field name='x_zone'>face_local</field>
 			<field name='x_pathology'>scar_2</field>
 			<field name='price'>2000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>1000</field>
@@ -1145,7 +1145,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>stains_4</field>
 			<field name='price'>4000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>2000</field>
@@ -1162,7 +1162,7 @@
 			<field name='x_zone'>face_local</field>
 			<field name='x_pathology'>wart_2</field>
 			<field name='price'>2000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>1000</field>
@@ -1179,7 +1179,7 @@
 			<field name='x_zone'>face_local</field>
 			<field name='x_pathology'>cyst_2</field>
 			<field name='price'>2000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>1000</field>
@@ -1196,7 +1196,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>acne_sequels_1</field>
 			<field name='price'>6000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>3000</field>
@@ -1213,7 +1213,7 @@
 			<field name='x_zone'>face_local</field>
 			<field name='x_pathology'>wart_4</field>
 			<field name='price'>4000</field>
-			<field name='x_date_created'>2017-03-29 15:32:04 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>2000</field>
@@ -1230,7 +1230,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>stains_3</field>
 			<field name='price'>3000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>1500</field>
@@ -1247,7 +1247,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>acne_sequels_2</field>
 			<field name='price'>7000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>3500</field>
@@ -1264,7 +1264,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>acne_sequels_3</field>
 			<field name='price'>8000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>4000</field>
@@ -1281,7 +1281,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>mole_5</field>
 			<field name='price'>5000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>2500</field>
@@ -1298,7 +1298,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>keratosis_4</field>
 			<field name='price'>4000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>2000</field>
@@ -1315,7 +1315,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>cyst_3</field>
 			<field name='price'>3000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>1500</field>
@@ -1332,7 +1332,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>wart_5</field>
 			<field name='price'>5000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>2500</field>
@@ -1349,7 +1349,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>wart_2</field>
 			<field name='price'>2000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>1000</field>
@@ -1366,7 +1366,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>cyst_2</field>
 			<field name='price'>2000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>1000</field>
@@ -1383,7 +1383,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>acne_sequels_4</field>
 			<field name='price'>10000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>5000</field>
@@ -1400,7 +1400,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>keratosis_2</field>
 			<field name='price'>2000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>1000</field>
@@ -1417,7 +1417,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>mole_4</field>
 			<field name='price'>4000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>2000</field>
@@ -1434,7 +1434,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>mole_2</field>
 			<field name='price'>2000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>1000</field>
@@ -1451,7 +1451,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>keratosis_5</field>
 			<field name='price'>5000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>2500</field>
@@ -1468,7 +1468,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>wart_4</field>
 			<field name='price'>4000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>2000</field>
@@ -1485,7 +1485,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>acne_sequels_5</field>
 			<field name='price'>12000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>6000</field>
@@ -1502,7 +1502,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>cyst_1</field>
 			<field name='price'>1000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>500</field>
@@ -1519,7 +1519,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>keratosis_3</field>
 			<field name='price'>3000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>1500</field>
@@ -1536,7 +1536,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>wart_3</field>
 			<field name='price'>3000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>1500</field>
@@ -1553,7 +1553,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>scar_1</field>
 			<field name='price'>1000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>500</field>
@@ -1570,7 +1570,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>mole_1</field>
 			<field name='price'>1000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>500</field>
@@ -1587,7 +1587,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>keratosis_1</field>
 			<field name='price'>1000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>500</field>
@@ -1604,7 +1604,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>cyst_4</field>
 			<field name='price'>4000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>2000</field>
@@ -1621,7 +1621,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>mole_3</field>
 			<field name='price'>3000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>1500</field>
@@ -1638,7 +1638,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>cyst_5</field>
 			<field name='price'>5000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>2500</field>
@@ -1655,7 +1655,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>wart_1</field>
 			<field name='price'>1000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>500</field>
@@ -1672,7 +1672,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>scar_2</field>
 			<field name='price'>2000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>1000</field>
@@ -1689,7 +1689,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>scar_3</field>
 			<field name='price'>3000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>1500</field>
@@ -1706,7 +1706,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>scar_4</field>
 			<field name='price'>4000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>2000</field>
@@ -1723,7 +1723,7 @@
 			<field name='x_zone'>body_local</field>
 			<field name='x_pathology'>scar_5</field>
 			<field name='price'>5000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>2500</field>
@@ -1740,7 +1740,7 @@
 			<field name='x_zone'>vagina</field>
 			<field name='x_pathology'>monalisa_touch</field>
 			<field name='price'>3000</field>
-			<field name='x_date_created'>2017-03-29 15:32:05 UTC</field>
+
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'>1500</field>

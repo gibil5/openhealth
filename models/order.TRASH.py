@@ -642,3 +642,215 @@
 
 
 
+
+
+
+
+
+# 6 April 2018
+
+
+
+
+
+
+# ----------------------------------------------------------- Reserve Machine ------------------------------------------------------
+
+# The Machine Design Atrocity 
+
+
+	# Reserve machine 
+	@api.multi 
+	def reserve_machine(self):
+
+		print 'jx'
+		print 'Reserve Machine'
+		print 
+
+
+
+		# There is an appointment 
+		if self.x_appointment.name == False: 
+			print 'There is no Appointment'
+
+
+		else: 
+			date_format = "%Y-%m-%d %H:%M:%S"
+			duration = self.x_appointment.duration 
+			delta = datetime.timedelta(hours=duration)
+
+
+			# Easiest first 
+			m_dic = {
+
+						'consultation':			[], 
+
+						'laser_quick': 			['laser_quick'], 
+						'laser_co2_1': 			['laser_co2_1', 'laser_co2_2', 'laser_co2_3'], 
+						'laser_excilite': 		['laser_excilite'], 
+						'laser_m22': 			['laser_m22'], 
+
+
+						'laser_triactive': 		['laser_triactive'], 
+						'chamber_reduction': 	['chamber_reduction'], 
+						'carboxy_diamond': 		['carboxy_diamond'], 
+
+
+						'':						[], 
+				}
+
+
+
+			print 'x machine req'
+			print self.x_machine_req
+
+
+			m_list = m_dic[self.x_machine_req]
+
+			ad_str = self.x_appointment.appointment_date
+
+			k = 1.
+			out = False 
+
+
+
+
+			while not out		and  	  k < 6: 		
+
+				for x_machine_req in m_list: 
+
+					if not out: 				
+
+						self.x_appointment.appointment_date = ad_str
+						self.x_appointment.x_machine = x_machine_req
+						nr_mc = self.get_nr_mc()
+
+						if nr_mc == 1:		# Success - Get out 
+							out = True 
+
+				if not out: 	# Error - Change the date 
+					ad = datetime.datetime.strptime(self.x_appointment.appointment_date, date_format) 
+					ad_dt = delta + ad
+					ad_str = ad_dt.strftime("%Y-%m-%d %H:%M:%S")
+
+					k = k + 1.
+		
+
+	# reserve_machine
+
+
+	# Machine Required  
+	#x_machine_req = fields.Char(
+	#		string='Sala req.',
+	#		compute='_compute_x_machine_req', 
+	#	)
+
+	#@api.multi
+	#@api.depends('x_product')
+	#def _compute_x_machine_req(self):
+	#	for record in self:
+	#		tre = record.x_product.x_treatment
+	#		mac = cosvars._hash_tre_mac[tre]
+	#		record.x_machine_req = mac
+
+
+
+	# Machine 
+	#x_machine = fields.Selection(
+	#		string="Sala", 
+	#		selection = app_vars._machines_list, 
+	#		required=False, 
+			
+	#		compute='_compute_x_machine', 		
+	#	)
+
+	#@api.multi
+	#@api.depends('x_appointment')
+	#def _compute_x_machine(self):
+	#	for record in self:
+	#		record.x_machine = record.x_appointment.x_machine
+
+
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Compute - Solving ------------------------------------------------------
+
+
+
+	# Treatment
+	#x_treatment = fields.Char(
+	#		required=False, 			
+	#		compute='_compute_x_treatment', 
+	#		)
+
+	#@api.multi
+	#@api.depends('x_product')
+	#def _compute_x_treatment(self):
+	#	for record in self:
+	#		record.x_treatment = record.x_product.x_treatment
+
+
+
+
+	# Product
+	#product = fields.Char(
+	#		'Producto', 
+
+	#		compute="_compute_product",
+	#	)
+
+	#@api.multi
+	#@api.depends('partner_id')
+
+	#def _compute_product(self):
+	#	for record in self:
+	#		for line in record.order_line:
+	#			record.product = line.product_id.name
+
+
+
+
+	# Product
+	#x_product = fields.Many2one(
+			#'product.template',			
+	#		string="Producto",	
+	#		required=False, 
+			
+			#domain = [			
+			#			('x_origin', '=', False),						
+			#		],
+
+			#compute='_compute_x_product', 
+	#	)
+
+
+
+	#@api.multi
+	#@api.depends('order_line')
+	#def _compute_x_product(self):
+	#	for record in self:
+	#		flag = False
+	#		for line in record.order_line:
+	#			tre = line.product_id.x_treatment
+	#			if  tre == 'laser_quick'  or 	tre == 'laser_co2' 	or 	tre == 'laser_excilite'	or 	tre == 'laser_ipl'	or tre == 'laser_ndyag'		or tre == 'consultation': 
+	
+	#				product = line.product_id.id
+	
+	#				flag = True 
+	#		if flag: 
+	#			record.x_product = product
+
+
+
+
+
+
+
+
+

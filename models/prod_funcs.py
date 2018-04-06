@@ -4,13 +4,9 @@ from openerp import models, fields, api
 
 
 
-
 # Progress 
 _hap = {
 
-
-
-			
 			
 			# Treatment 
 			#'consultation':          'Consulta', 
@@ -259,18 +255,14 @@ _hac = {
 
 # Get Ticket Name 
 @api.multi
-#def get_ticket_name(self, treatment, zone, pathology, family, x_type):
 def get_ticket_name(self, treatment, zone, pathology, family, x_type, name_short):
 
+	#print 'jx'
+	#print 'Get Ticket Name'
+	#print x_type, name_short, family, treatment, zone, pathology
 
-	print 'jx'
-	print 'Get Ticket Name'
 
-	#name_ticket = 'jx'
 	name_ticket = 'x'
-
-
-	print x_type, family, treatment, zone, pathology, name_short
 
 
 	# Service 
@@ -287,21 +279,14 @@ def get_ticket_name(self, treatment, zone, pathology, family, x_type, name_short
 
 
 
-
 		elif family == 'consultation': 
 			if name_short in _hac: 
 				name_ticket = _hac[name_short] 
 
 
-
-
-		#elif family == 'medical': 
 		else: 
 			if treatment in _hap: 
 				name_ticket = _hap[treatment] 
-
-
-
 
 
 
@@ -317,12 +302,10 @@ def get_ticket_name(self, treatment, zone, pathology, family, x_type, name_short
 
 
 
-	print name_ticket
-	print 
+	#print name_ticket
+	#print 
 
 	return name_ticket
-
-
 
 
 

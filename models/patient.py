@@ -1798,7 +1798,6 @@ class Patient(models.Model):
 	def create(self,vals):
 
 		print 
-		print 'jx'
 		print 'CRUD - Patient - Create'
 		print 
 		#print vals
@@ -1827,10 +1826,13 @@ class Patient(models.Model):
 			counter.increase()		# Here !!!
 
 
-			#print 'Gotcha !'
-			#print counter
-			#print name 
-			#print 'Increased'
+			print 'Gotcha !'
+			print counter
+			print name 
+			print 'Increased'
+
+		else:
+			print 'NOT Assigned nor Increased !'
 
 
 
@@ -1872,6 +1874,19 @@ class Patient(models.Model):
 		#	print vals['x_doctor']
 		#if vals['user_id'] != False: 
 		#	print vals['user_id']
+
+
+
+
+		# Assign and Increase Counter 
+		if 'x_id_code' in vals: 
+			print 'Assigned and Increased'
+
+			print vals['x_id_code']
+
+		else:
+			print 'NOT Assigned nor Increased !'
+
 
 
 

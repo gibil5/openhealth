@@ -758,11 +758,12 @@ class Partner(models.Model):
 	@api.model
 	def create(self,vals):
 
-		#print 
-		#print 'CRUD - Partner - Create'
-		#print vals
-		#print 
+		print 
+		print 'CRUD - Partner - Create'
+		print vals
+		print 
 	
+
 
 		# Here 
 		key = 'name'

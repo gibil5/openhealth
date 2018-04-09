@@ -110,6 +110,9 @@
 
 		#'views/product_managers/product_manager.xml',
 
+		# Account invoice
+		#'views/account_invoices/account_invoice.xml',
+
 
 
 
@@ -459,8 +462,6 @@
 
 
 
-		# Account invoice
-		#'views/account_invoices/account_invoice.xml',
 
 
 

@@ -4,7 +4,13 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
-access_openhealth_order_report_nex,openhealth.order.report_nex,model_openhealth_order_report_nex,,1,1,1,1
+
+
+
+
+
+
+
 
 access_openhealth_closing,openhealth.closing,model_openhealth_closing,,1,1,1,0
 access_openhealth_closing_physicians,openhealth.closing.physicians,model_openhealth_closing,openhealth.physicians,0,0,0,0

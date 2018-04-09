@@ -314,7 +314,9 @@ class Patient(models.Model):
 	x_allergies = fields.Many2one(
 			'openhealth.allergy', 
 			string = "Alergias", 
-			required=True, 
+
+			#required=True, 
+			required=False, 
 		)
 
 

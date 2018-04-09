@@ -81,6 +81,8 @@ Cosmetology
 							name="generate_order_report" 
 
 							string="EC" 
+
+							groups="openhealth.roots"
 						/>
 
 

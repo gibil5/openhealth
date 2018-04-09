@@ -176,8 +176,11 @@ _hap = {
 # Products 
 _hac = {
 
+			'acne_topic_wash': 		'Acnetopic Wash', 
+
 			'generic_product': 		'Producto genérico', 
 			'generic_service': 		'Servicio genérico', 
+
 
 
 

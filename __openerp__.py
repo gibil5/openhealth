@@ -114,10 +114,10 @@
 
 
 		# ----------------------------------------------------------- Stock Moves - Deprecated ??? ------------------------------------------------------
-		#'data/stock_move_data.xml',
-		#'views/stock/stock_move.xml',
-		#'views/stock/stock_move_selector.xml',
-		#'views/stock/stock_move_all.xml',
+		'data/stock_move_data.xml',
+		'views/stock/stock_move.xml',
+		'views/stock/stock_move_selector.xml',
+		'views/stock/stock_move_all.xml',
 		#'views/menus/menus_kardex.xml',
 
 

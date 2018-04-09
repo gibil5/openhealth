@@ -4,7 +4,7 @@
 # 	Order 
 # 
 # Created: 				26 Aug 2016
-# Last updated: 	 	29 Sep 2017
+#
 
 from openerp import models, fields, api
 import datetime
@@ -17,15 +17,54 @@ from num2words import num2words
 import math 
 import time 
 from openerp import tools
-
 import count_funcs
-
 
 class sale_order(models.Model):
 	
 	_inherit='sale.order'
 	#_name = 'openhealth.order'
 	
+
+
+
+
+
+# ----------------------------------------------------------- Deprecated ------------------------------------------------------
+
+	#receipt = fields.Many2one(
+	#	'openhealth.receipt',
+	#	string='Boleta de venta',
+	#)
+
+	#x_invoice = fields.Many2one(
+	#	'openhealth.invoice',
+	#	string='Factura',
+	#)
+
+	#x_advertisement = fields.Many2one(
+	#	'openhealth.advertisement',		
+	#	string='Canje',
+	#	)
+
+	#x_sale_note = fields.Many2one(
+	#	'openhealth.sale_note',		
+	#	string='Nota de venta',
+	#	)
+
+	#x_ticket_receipt = fields.Many2one(
+	#	'openhealth.ticket_receipt',		
+	#	string='Ticket Boleta',
+	#	)
+
+	#x_ticket_invoice = fields.Many2one(
+	#	'openhealth.ticket_invoice',		
+	#	string='Ticket Factura',
+	#	)
+
+
+
+
+
 
 
 
@@ -2261,54 +2300,6 @@ class sale_order(models.Model):
 
 # ---------------------------------------------- Vars --------------------------------------------------------
 
-	#x_receipt = fields.One2many(
-	receipt = fields.Many2one(
-
-		'openhealth.receipt',
-		
-		#'order',
-
-		string='Boleta de venta',
-		)
-
-
-
-	#x_invoice = fields.One2many(
-	x_invoice = fields.Many2one(
-
-		'openhealth.invoice',
-		
-		#'order',
-
-		string='Factura',
-		)
-
-
-
-
-	x_advertisement = fields.Many2one(
-		'openhealth.advertisement',		
-		string='Canje',
-		)
-
-	x_sale_note = fields.Many2one(
-		'openhealth.sale_note',		
-		string='Nota de venta',
-		)
-
-	x_ticket_receipt = fields.Many2one(
-		'openhealth.ticket_receipt',		
-		string='Ticket Boleta',
-		)
-
-	x_ticket_invoice = fields.Many2one(
-		'openhealth.ticket_invoice',		
-		string='Ticket Factura',
-		)
-
-
-
-
 
 
 
@@ -3250,9 +3241,9 @@ class sale_order(models.Model):
 
 
 
-# Write - Deprecated ?
-	@api.multi
-	def write(self,vals):
+# Write - Deprecated !
+	#@api.multi
+	#def write(self,vals):
 
 		#print 'jx'
 		#print 'CRUD - Order - Write'
@@ -3268,7 +3259,7 @@ class sale_order(models.Model):
 
 
 		#Write your logic here
-		res = super(sale_order, self).write(vals)
+	#	res = super(sale_order, self).write(vals)
 		#Write your logic here
 
 
@@ -3278,7 +3269,7 @@ class sale_order(models.Model):
 		#	uid = self.x_doctor.x_user_name.id	
 		#	self.x_doctor_uid = uid
 
-		return res
+	#	return res
 
 	# CRUD 
 

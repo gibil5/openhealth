@@ -20,6 +20,24 @@ class Partner(models.Model):
 
 
 
+# ----------------------------------------------------------- Indexed ------------------------------------------------------
+	x_dni = fields.Char(
+			"DNI", 	
+			index=True, 
+		)
+	
+	name = fields.Char(
+			'Name', 
+			select=True,
+			index=True, 
+		)
+
+
+
+
+
+
+
 # ----------------------------------------------------------- QC ------------------------------------------------------
 
 	x_completeness = fields.Integer(
@@ -30,11 +48,8 @@ class Partner(models.Model):
 
 
 
-
-
 # ----------------------------------------------------------- Code ------------------------------------------------------
 	
-
 	x_id_code = fields.Char(
 			
 			#'Patient ID',
@@ -123,10 +138,6 @@ class Partner(models.Model):
 
 
 
-	x_dni = fields.Char(
-			"DNI", 	
-		)
-
 
 
 	x_firm = fields.Char(
@@ -167,26 +178,6 @@ class Partner(models.Model):
 			required=True, 
 		)
 
-	#@api.onchange('country_id')
-	#def _onchange_country_id(self):
-	#	print 
-	#	print 'jx'
-	#	print 'On change Country id'
-	#	print self.country_id
-	#	print self.country_id.name 
-		#self.x_country_name = self.country_id.name 
-
-
-
-
-
-
-
-
-	#city = fields.Char(
-	#		'City', 
-	#		required=False, 
-	#	)
 
 
 	city = fields.Selection(
@@ -203,12 +194,6 @@ class Partner(models.Model):
 
 
 
-	#street2 = fields.Char(
-	#		'Distrito', 
-	#		placeholder="Distrito...", 		
-			#required=True, 
-	#		required=False, 
-	#	)
 
 
 	street2 = fields.Char(
@@ -231,10 +216,6 @@ class Partner(models.Model):
 
 
 
-	#street = fields.Char(
-	#		'Calle', 
-	#		required=False, 
-	#	)
 
 
 	street = fields.Char(
@@ -245,10 +226,6 @@ class Partner(models.Model):
 
 
 
-	#zip = fields.Integer(
-	#		string = 'Código',  
-	#		required=False, 			
-	#	)
 
 	zip = fields.Char(
 			#'Zip', 
@@ -286,58 +263,8 @@ class Partner(models.Model):
 			string=".", 
 		)
 
-	#x_country_name = fields.Char(
-	#		readonly=False, 	
-			#compute='_compute_x_country_name', 
-	#	)
 
 
-	#@api.multi
-	#@api.depends('country_id')
-	#def _compute_x_country_name(self):
-	#	print 'jx'
-	#	print 'Compute Country Name'
-	#	for record in self:
-	#		record.x_country_name = record.country_id.name 
-	#		print record.x_country_name
-
-
-
-
-
-
-
-	#x_country_name = fields.Char(
-	#		'Pais', 
-	#		required=True, 			
-	#		compute='_compute_x_country_name', 
-	#	)
-
-	#@api.multi
-	#@api.depends('country_id')
-
-	#def _compute_x_country_name(self):
-	#	for record in self:
-	#		record.x_country_name = 'Peru'
-
-
-
-
-
-
-	#@api.multi
-	#@api.depends('')
-	#def _compute_x_country_name(self):
-	#	for record in self:
-	#		#cid = record.country_id.id
-	#		cid = 175
-	#		country = self.env['res.country'].search([
-	#													('id', '=', cid),					
-	#											],
-													#order='write_date desc',
-	#												limit=1,
-	#											)
-	#		record.x_country_name = country.name 
 
 
 
@@ -760,8 +687,8 @@ class Partner(models.Model):
 
 		print 
 		print 'CRUD - Partner - Create'
-		print vals
-		print 
+		#print vals
+		#print 
 	
 
 

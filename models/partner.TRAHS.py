@@ -194,3 +194,115 @@
 	
 
 
+
+
+
+
+
+
+
+# 7 April 2018
+
+
+
+	#x_country_name = fields.Char(
+	#		readonly=False, 	
+			#compute='_compute_x_country_name', 
+	#	)
+
+
+	#@api.multi
+	#@api.depends('country_id')
+	#def _compute_x_country_name(self):
+	#	print 'jx'
+	#	print 'Compute Country Name'
+	#	for record in self:
+	#		record.x_country_name = record.country_id.name 
+	#		print record.x_country_name
+
+
+
+
+
+
+
+	#x_country_name = fields.Char(
+	#		'Pais', 
+	#		required=True, 			
+	#		compute='_compute_x_country_name', 
+	#	)
+
+	#@api.multi
+	#@api.depends('country_id')
+
+	#def _compute_x_country_name(self):
+	#	for record in self:
+	#		record.x_country_name = 'Peru'
+
+
+
+
+
+
+	#@api.multi
+	#@api.depends('')
+	#def _compute_x_country_name(self):
+	#	for record in self:
+	#		#cid = record.country_id.id
+	#		cid = 175
+	#		country = self.env['res.country'].search([
+	#													('id', '=', cid),					
+	#											],
+													#order='write_date desc',
+	#												limit=1,
+	#											)
+	#		record.x_country_name = country.name 
+
+
+
+
+
+
+
+
+# Geographical 
+
+	#street2 = fields.Char(
+	#		'Distrito', 
+	#		placeholder="Distrito...", 		
+			#required=True, 
+	#		required=False, 
+	#	)
+
+
+	#@api.onchange('country_id')
+	#def _onchange_country_id(self):
+	#	print 
+	#	print 'jx'
+	#	print 'On change Country id'
+	#	print self.country_id
+	#	print self.country_id.name 
+		#self.x_country_name = self.country_id.name 
+
+
+
+	#city = fields.Char(
+	#		'City', 
+	#		required=False, 
+	#	)
+
+
+	#street = fields.Char(
+	#		'Calle', 
+	#		required=False, 
+	#	)
+
+
+	#zip = fields.Integer(
+	#		string = 'Código',  
+	#		required=False, 			
+	#	)
+
+
+
+

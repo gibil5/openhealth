@@ -19,7 +19,7 @@
 
 	'description': """
 
-		Last built: 	6 April 2018 
+		Last built: 	9 April 2018 
 		
 		Stability by Design !
 		More Configuration and less programming. Near than zero hacking.  
@@ -101,6 +101,24 @@
 
 		# Mail template - Deprecated 
 		#'views/mail/rfq_send.xml',
+
+
+
+
+
+		# ----------------------------------------------------------- Deprecated ??? ------------------------------------------------------
+
+		#'views/product_managers/product_manager.xml',
+
+
+
+
+		# ----------------------------------------------------------- Stock Moves - Deprecated ??? ------------------------------------------------------
+		#'data/stock_move_data.xml',
+		#'views/stock/stock_move.xml',
+		#'views/stock/stock_move_selector.xml',
+		#'views/stock/stock_move_all.xml',
+		#'views/menus/menus_kardex.xml',
 
 
 
@@ -402,15 +420,14 @@
 
 		'views/orders/order_search.xml',
 
+		
+		# Product Selector - To choose a product more easily 
+		'views/product_selectors/product_selector.xml',
 
 
 
 
 
-		# Deprecated ? 
-		# Product Selector 
-		#'views/product_selectors/product_selector.xml',
-		#'views/product_managers/product_manager.xml',
 
 
 
@@ -421,7 +438,8 @@
 
 
 		# Order Report 
-		'views/orders/order_report.xml',
+		#'views/orders/order_report.xml',
+		'views/orders/order_report_nex.xml',
 
 
 
@@ -787,12 +805,6 @@
 
 
 
-		# ----------------------------------------------------------- Stock Moves - Deprecated ------------------------------------------------------
-		#'data/stock_move_data.xml',
-		#'views/stock/stock_move.xml',
-		#'views/stock/stock_move_selector.xml',
-		#'views/stock/stock_move_all.xml',
-		#'views/menus/menus_kardex.xml',
 
 
 
@@ -817,13 +829,10 @@
 
 		# Products - Tmp 
 		'data/prods/odoo_data_products.xml',	
-
 		'data/prods/odoo_data_products_new.xml',	
-
 		#'data/prods/data_products_consu.xml',			 
 		
 
-		
 		'data/prods/odoo_data_services_co2.xml',		
 		'data/prods/odoo_data_services_exc.xml',		
 		'data/prods/odoo_data_services_m22.xml',		
@@ -832,10 +841,6 @@
 		'data/prods/odoo_data_services_cos.xml',		
 
 
-		
-
-
-		
 
 	],
 

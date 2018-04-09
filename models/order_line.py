@@ -13,11 +13,33 @@ class sale_order_line(models.Model):
 
 	#_name = 'openhealth.order_line'
 
-	_order = 'x_date_created asc'
+	#_order = 'x_date_created asc'
 
 
 
 
+
+
+# ----------------------------------------------------------- Sale Order Report ------------------------------------------------------
+
+	order_report_id = fields.Many2one(
+
+		'openhealth.order.report.nex', 
+		
+		string='Order Report Reference', 		
+		required=False, 
+	#	ondelete='cascade', index=True, copy=False
+	)
+
+
+
+
+
+# ----------------------------------------------------------- Deprecated ------------------------------------------------------
+	# Date Created 
+	x_date_created = fields.Datetime(
+			string='Fecha', 
+		)
 
 
 
@@ -27,9 +49,7 @@ class sale_order_line(models.Model):
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
 
 
-
 	x_qty = fields.Integer(
-
 
 			compute='_compute_x_qty', 
 		)
@@ -107,10 +127,6 @@ class sale_order_line(models.Model):
 
 
 
-	# Date Created 
-	x_date_created = fields.Datetime(
-			string='Fecha', 
-		)
 
 
 
@@ -125,14 +141,6 @@ class sale_order_line(models.Model):
 
 
 
-	order_report_id = fields.Many2one(
-
-		'openhealth.order.report', 
-		
-		string='Order Report Reference', 		
-		required=False, 
-		ondelete='cascade', index=True, copy=False
-	)
 
 
 

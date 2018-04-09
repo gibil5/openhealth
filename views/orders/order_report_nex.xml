@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+
+<!-- FORM view --> 
+		<record model="ir.ui.view" id="order_report_nex_form_view">
+
+			<field name="name">openhealth.order.report.nex.form</field>
+			
+			<field name="model">openhealth.order.report.nex</field>
+			
+			<field name="arch" type="xml">
+				
+				<form string="OR Form">
+					
+
+
+					<header>
+						<button 
+								type="object" 
+								class="oe_highlight"
+
+								name="update_order_report"
+
+								string="Actualizar"								
+						/>
+					</header>
+
+
+
+
+					<!-- Sheet -->	
+					<sheet>
+
+
+<!--
+Fields 
+-->
+						<group	string="Estado de Cuenta"	>
+							<group>
+
+			                    <field name="partner_id"/>
+
+			                    <field name="create_date"	string="Fecha"	/>
+<!--
+			                    <field name="name"/>
+
+			                    <field name="state"/>
+-->
+							</group>
+
+							<group>
+			                    <field name="amount_total_report"/>
+							</group>
+						</group>
+
+
+						<notebook>
+							<page>
+								<field name="order_line_ids"/>
+							</page>
+						</notebook>
+						
+
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+
+
+		
+<!-- TREE view --> 
+		
+		<record model="ir.ui.view" id="order_report_nex_tree">
+
+			<field name="name">openhealth.order.report.nex.tree</field>
+			
+			<field name="model">openhealth.order.report.nex</field>
+			
+			<field name="arch" type="xml">
+
+				<tree default_order='create_date desc'>
+					
+
+                    <field name="name"	 				/>
+
+
+
+<!--
+                    <field name="date"		string="Fecha"	/>
+
+-->
+
+				</tree>
+			</field>
+		</record>
+
+
+
+
+
+
+<!-- ACTION -->
+		<record model="ir.actions.act_window" id="order_report_nex_list_action">
+			<field name="name">Cierres de Caja</field>
+			<field name="res_model">openhealth.order.report.nex</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+			<!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first order
+				</p>
+			</field>
+			-->
+		</record>
+		
+
+
+
+	</data>
+</openerp>

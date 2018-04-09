@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-#
-# 		*** OPEN HEALTH - Patient 
+#		Patient 
 # 
 # Created: 				26 Aug 2016
 #
@@ -10,82 +9,263 @@ from openerp import models, fields, api
 from datetime import datetime
 from . import pat_funcs
 from . import pat_vars
-
 import count_funcs
-
 
 
 class Patient(models.Model):
 
 	_inherit = 'oeh.medical.patient'
 
-	_order = 'write_date desc'
+	#_order = 'write_date desc'
+	_order = 'create_date desc'
 
 
 
 
 
-
-	# Correct  
-	@api.multi 
-	def correct_comment(self):
-		print 'jx'
-		print 'Correct Comment'
-	 	comment = 'legacy, corr hd'
-		self.comment = comment
-
-
-
-
-
-
-
-	# Mark  
-	x_mark = fields.Char(
-			string='Mark', 
-		)
-
-
-
-
-
-
-
-	# District  
-	x_district = fields.Char(
-			string='Distrito', 
-		)
-
-
-
-	# Date record 
-	x_date_record = fields.Datetime(
-			string='Fecha Registro', 
-		)
-
+# ----------------------------------------------------------- Legacy ------------------------------------------------------
 
 
 	# Date created
 	x_date_created = fields.Date(
 			string = "Fecha de Apertura",
 			default = fields.Date.today, 
-			#readonly = True, 
-			
-			#required=True, 
-			required=False, 
+			#readonly = True,
+			required=False,
+		)
+	x_date_record = fields.Datetime(
+			string='Fecha Registro', 
 		)
 
-	# Date time created 
-	x_datetime_created = fields.Datetime(
-			string = "Fecha de Creación",
-			required=False, 
+	x_district = fields.Char(
+			string='Distrito', 
+		)
 
+	# Correction comment 
+	@api.multi 
+	def correct_comment(self):
+		print 'jx'
+		print 'Correct Comment'
+	 	comment = 'legacy, corr hd'
+		self.comment = comment
+	
+
+
+
+
+# ----------------------------------------------------------- Deprecated ? ------------------------------------------------------
+
+	# Date time created 
+	#x_datetime_created = fields.Datetime(
+	#		string = "Fecha de Creación",
+	#		required=False, 
 
 			#default = fields.Datetime.now, 
 			#readonly = True, 
 			#store=True, 
 			#compute='_compute_x_datetime_created', 
-		)
+	#	)
+
+
+	#@api.onchange('x_date_created')
+	#def _onchange_x_date_created(self):
+	#	self.x_year_created = self.x_date_created.split('-')[0]
+	#	self.x_month_created = self.x_date_created.split('-')[1]
+
+
+
+	#x_year = fields.Char(
+	#		string='Year', 
+	#		required=False, 
+	#	)
+
+	#x_month = fields.Char(
+	#		string='Month',
+			#required=True, 
+	#		required=False, 
+	#	)
+
+	#x_year_created = fields.Char(
+	#		string='Year created', 
+			#default = '', 
+			#required=False, 
+	#		index=True, 
+			#compute='_compute_x_year_created', 
+	#	)
+
+	#x_month_created = fields.Char(
+	#		string='Month created', 
+			#default = '', 
+			#required=True, 
+			#compute='_compute_x_month_created', 
+	#	)
+
+
+
+
+
+
+	#x_status = fields.Char(
+	#		string='Status', 
+	#		default = '00', 
+			#required=False, 
+	#		required=True, 
+	#	)
+
+
+
+
+
+	# Mark  
+	#x_mark = fields.Char(
+	#		string='Mark', 
+	#	)
+
+
+	#@api.onchange('x_allergies')
+	#def _onchange_x_allergies(self):
+	#	if self.x_allergies != False: 
+	#		self.x_allergies = self.x_allergies.strip().title()
+
+
+
+	#identification_code=fields.Char(
+	#		'Patient ID',
+	#		size=256, 
+	#		help='Patient Identifier provided by the Health Center',
+	#		readonly=True
+	#	)
+
+
+
+
+	#x_nothing = fields.Char(
+	#	'Nothing', 
+	#)
+
+
+	# QC - Flag  
+	#x_flag = fields.Char(
+	#	"Flag",
+	#	default = '', 
+	#	store=True, 
+	#)
+
+
+
+
+	# Commons 
+	#vspace = fields.Char(
+	#		' ', 
+	#		readonly=True
+	#		)
+
+
+
+
+
+
+
+	#x_state = fields.Selection(
+	#		selection = pat_vars._state_list, 
+	#		string='Estado', 			
+	#		default = 'active', 
+
+	#		compute='_compute_x_state', 
+	#	)
+
+	#@api.multi
+	#@api.depends('state')
+	#def _compute_x_state(self):
+	#	for record in self:
+	#		flag = False
+	#		for treatment in record.treatment_ids:
+	#			if treatment.progress == False: 
+	#				flag = True
+	#		if flag:
+	#			record.x_state = 'incomplete'
+	#		else:
+	#			record.x_state = 'active'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Quality control ------------------------------------------------------
+
+
+	# QC - Number of clones  
+	x_nr_clones = fields.Integer(
+			"QC - Nrc",
+
+			#compute="_compute_x_nr_clones",
+	)
+	#@api.multi
+	#def _compute_x_nr_clones(self):
+	#	for record in self:
+	#		record.x_nr_clones = self.env['oeh.medical.patient'].search_count([
+	#																			('name','=', record.name),
+	#																		])
+	#		if record.x_nr_clones > 1:
+	#			record.x_flag = 'error'
+	#		else:
+	#			record.x_flag = ''
+
+
+
+
+	# QC - Lowcase
+	x_lowcase = fields.Boolean(
+			"QC - Low",
+
+			#compute="_compute_x_lowcase",
+	)
+	#@api.multi
+	#def _compute_x_lowcase(self):
+	#	for record in self:
+	#		if record.name != record.name.upper():
+	#			record.x_lowcase = True
+	#			record.x_flag = 'error'
+	#		else:
+	#			record.x_lowcase = False
+
+
+
+
+	# Spaced 		- ?
+	x_spaced = fields.Boolean(
+		string="Spaced",
+		default=False, 
+
+		#compute='_compute_spaced', 
+	)
+
+	#@api.multi
+	#@api.depends('name')
+	#def _compute_spaced(self):
+	#	for record in self:
+	#		if record.name[0] == ' ':
+	#			record.x_spaced = True
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -97,33 +277,20 @@ class Patient(models.Model):
 	@api.model
 	def _get_default_id_code(self):
 		
-		#print 'jx'
-		#print 'Get Default Id Code'
 
-
-
-		name = 'emr'
+		name_ctr = 'emr'
  		
  		counter = self.env['openhealth.counter'].search([
-																('name', '=', name), 
+																('name', '=', name_ctr), 
 														],
 															#order='write_date desc',
 															limit=1,
 														)
-		#print counter
 
+		name = count_funcs.get_name(self, counter.prefix, counter.separator, counter.padding, counter.value)
 
-		default_id_code = '13'
+		return name
 
-		if counter.total != False: 
-			default_id_code = counter.total
-
-
-			#counter.increase()		# Not here ! 
-
-
-
-		return default_id_code
 
 
 
@@ -132,33 +299,26 @@ class Patient(models.Model):
 
 	# Id Code 
 	x_id_code = fields.Char(
-
 			'Nr Historia Médica',
 
-			#default=_get_default_id_code, 
+			#default='xxx', 
+			default=_get_default_id_code, 
 		)
+
+
 
 
 
 
 	# Allergies 
-	#x_allergies = fields.Char(
 	x_allergies = fields.Many2one(
-
 			'openhealth.allergy', 
-
 			string = "Alergias", 
-
-			#required=True, 
-			#required=False, 
+			required=True, 
 		)
 
 
 
-	#@api.onchange('x_allergies')
-	#def _onchange_x_allergies(self):
-	#	if self.x_allergies != False: 
-	#		self.x_allergies = self.x_allergies.strip().title()
 
 
 
@@ -172,14 +332,6 @@ class Patient(models.Model):
 
 
 
-
-
-	#identification_code=fields.Char(
-	#		'Patient ID',
-	#		size=256, 
-	#		help='Patient Identifier provided by the Health Center',
-	#		readonly=True
-	#	)
 
 
 
@@ -235,7 +387,11 @@ class Patient(models.Model):
 
 
 
-# ----------------------------------------------------------- Personal are Hard wired to Partner ------------------------------------------------------
+
+
+# ----------------------------------------------------------- Personal now Hard wired to Partner ------------------------------------------------------
+
+
 
 
 
@@ -244,33 +400,41 @@ class Patient(models.Model):
 # ----------------------------------------------------------- Order Report ------------------------------------------------------
 
 	# Estado de cuenta
-	x_order_report = fields.Many2one(			
-			'openhealth.order.report',		
+	#x_order_report = fields.Many2one(			
+	order_report_nex = fields.Many2one(			
+			#'openhealth.order.report',		
+			'openhealth.order.report.nex',		
 			string="Estado de cuenta",		
 		)
+
 
 
 
 	# Generate 
 	@api.multi 
 	def generate_order_report(self):
+
 		print 'jx'
 		print 'Generate'
 
 
+
 		# Clean 
+		print 'Clean'
 		self.remove_order_report()
 		
 
+
 		# Create
-		#res_id = self.create_order_report()
-		self.x_order_report = self.create_order_report()
-		res_id = self.x_order_report.id
+		print 'Create Or'
+		self.order_report_nex = self.create_order_report()
+		res_id = self.order_report_nex.id
+
 
 
 		# Update 
-		#self.update_order_report()
-		self.x_order_report.update_order_report()
+		print 'Update'
+		self.order_report_nex.update_order_report()
 
 
 
@@ -286,7 +450,8 @@ class Patient(models.Model):
 				
 				'target': 'current',
 
-				'res_model': 'openhealth.order.report',				
+				#'res_model': 'openhealth.order.report',				
+				'res_model': 'openhealth.order.report.nex',				
 				
 				'res_id': res_id,
 
@@ -312,9 +477,10 @@ class Patient(models.Model):
 	# Remove 
 	@api.multi 
 	def remove_order_report(self):
-		#print 'jx'
-		#print 'Remove'
-		self.x_order_report = False
+		print 'jx'
+		print 'Remove'
+		self.order_report_nex = False
+
 
 
 
@@ -322,32 +488,38 @@ class Patient(models.Model):
 	# Create 
 	@api.multi 
 	def create_order_report(self):
-		print 'jx'
-		print 'Create'
+
+		print
+		print 'Create Order Report'
 
 
 		name = 'EC - ' + self.partner_id.name
 
 
-		order_report_id = self.env['openhealth.order.report'].create(
-														{
-															'name': name, 
-															'partner_id': self.partner_id.id,											
-															'state':'sale',
+		print name, self.partner_id.id
 
 
-															#'subtotal':0,
-															#'pricelist_id': self.property_product_pricelist.id,	
-															#'patient': self.id,	
-															#'x_doctor': self.physician.id,	
-															#'treatment': self.id,
-															#'x_family': target, 
-															#'note': note, 
-														}
+		#order_report_id = self.env['openhealth.order.report'].create(
+		
+		order_report_id = self.env['openhealth.order.report.nex'].create(
+																		{
+																			'name': name, 
+																			'partner_id': self.partner_id.id,											
+																			
+																			#'state':'sale',
+
+
+																			#'subtotal':0,
+																			#'pricelist_id': self.property_product_pricelist.id,	
+																			#'patient': self.id,	
+																			#'x_doctor': self.physician.id,	
+																			#'treatment': self.id,
+																			#'x_family': target, 
+																			#'note': note, 
+																		}
 													).id
 
 
-		#self.x_order_report = order_report_id
 		
 
 		return order_report_id
@@ -653,12 +825,6 @@ class Patient(models.Model):
 
 
 
-#cheekbones
-#face_all  
-#face_all_hands
-#face_all_neck
-#neck 
-#neck_hands  
 
 
 
@@ -684,92 +850,20 @@ class Patient(models.Model):
 
 
 
-	x_nothing = fields.Char(
-		'Nothing', 
-	)
 
 
 
 
-	# QC - Flag  
-	x_flag = fields.Char(
 
-		"Flag",
-		
-		default = '', 
-		store=True, 
-	)
 
 
 
 
 
-	# QC - Number of clones  
-	x_nr_clones = fields.Integer(
-			"QC - Nrc",
 
-			compute="_compute_x_nr_clones",
-	)
 
-	@api.multi
-	
-	def _compute_x_nr_clones(self):
-		for record in self:
 
-			record.x_nr_clones = self.env['oeh.medical.patient'].search_count([
-																				('name','=', record.name),
-																			]) 
-
-			if record.x_nr_clones > 1:
-				record.x_flag = 'error'
-
-			else:
-				record.x_flag = ''
-
-
-
-
-
-	# QC - Lowcase
-	x_lowcase = fields.Boolean(
-
-			"QC - Low",
-
-			compute="_compute_x_lowcase",
-	)
-
-
-	@api.multi
-	def _compute_x_lowcase(self):
-		for record in self:
-			#if name != name.upper.strip:
-			if record.name != record.name.upper():
-				record.x_lowcase = True
-				record.x_flag = 'error'
-			else:
-				record.x_lowcase = False
-	#			record.x_flag = ''
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	# Commons 
-	vspace = fields.Char(
-			' ', 
-			readonly=True
-			)
-
+# ----------------------------------------------------------- Personal ------------------------------------------------------
 
 
 	x_nationality = fields.Selection(
@@ -797,56 +891,14 @@ class Patient(models.Model):
 			], 
 			'Tipo de documento', 
 			#default="passport",
-			#required=True,  
 		)
 
 
 
 
-
-	#@api.multi
-	#def card_purchase(self):  
-	#	print 'jx'
-
-
-
-
-
-
-
-
-
-
-	# Spaced 		- ???
-	x_spaced = fields.Boolean(
-		string="Spaced",
-		default=False, 
-
-		compute='_compute_spaced', 
-	)
-
-	#@api.multi
-	@api.depends('name')
-
-	def _compute_spaced(self):
-		for record in self:
-
-			if record.name[0] == ' ':
-				record.x_spaced = True
-
-
-
-
-
-
-
-
-	# Vip 
 	x_vip = fields.Boolean(
 		string="VIP",
 		default=False, 
-
-		#store=True, 			
 
 		compute='_compute_x_vip', 
 	)
@@ -857,7 +909,6 @@ class Patient(models.Model):
 
 	def _compute_x_vip(self):
 		for record in self:
-
 			x_card = record.env['openhealth.card'].search([
 															('patient_name','=', record.name),
 														],
@@ -866,7 +917,6 @@ class Patient(models.Model):
 
 			if x_card.name != False:
 				record.x_vip = True 
-	# 
 
 
 
@@ -878,9 +928,8 @@ class Patient(models.Model):
 			'openhealth.card',
 			string = "Tarjeta VIP", 	
 			#required=True, 
-			compute='_compute_x_card', 
 
-			#store=True, 			
+			compute='_compute_x_card', 
 		)
 
 
@@ -897,172 +946,6 @@ class Patient(models.Model):
 														limit=1,)
 
 			record.x_card = x_card
-	# 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	x_year = fields.Char(
-			string='Year', 
-			required=False, 
-		)
-
-	x_month = fields.Char(
-			string='Month',
-
-			#required=True, 
-			required=False, 
-		)
-
-
-
-	# Year created  
-	x_year_created = fields.Char(
-			string='Year created', 
-			#default = '', 
-			#required=False, 
-
-			index=True, 
-			#compute='_compute_x_year_created', 
-		)
-
-	#@api.multi
-	#@api.depends('x_date_created')
-
-	#def _compute_x_year_created(self):
-	#	for record in self:
-	#		#print 
-	#		#print 'Compute x_year_created'
-	#		record.x_year_created = record.x_date_created.split('-')[0]
-
-
-	@api.onchange('x_date_created')
-	
-	def _onchange_x_date_created(self):
-
-		self.x_year_created = self.x_date_created.split('-')[0]
-
-		self.x_month_created = self.x_date_created.split('-')[1]
-
-
-
-
-
-
-	# Month created
-	x_month_created = fields.Char(
-			string='Month created', 
-			#default = '', 
-			#required=True, 
-
-			#compute='_compute_x_month_created', 
-		)
-
-	#@api.multi
-	#@api.depends('x_date_created')
-
-	#def _compute_x_month_created(self):
-	#	for record in self:
-	#		#print 
-	#		#print 'Compute x_month_created'
-	#		record.x_month_created = record.x_date_created.split('-')[1]
-
-
-
-
-
-
-
-
-
-	#@api.onchange('x_date_created')
-	#def _onchange_x_date_created(self):
-		#self.x_datetime_created = self.x_date_created  
-		#self.x_datetime_created = '10/03/2017 20:00:00'
-	#	self.x_datetime_created = '2017-10-03 20:00:00'
-	#'%Y-%m-%d %H:%M:%S'
-
-
-	#@api.multi
-	#@api.depends('state')
-	#def _compute_x_datetime_created(self):
-	#	for record in self:
-	#		if record.comment == 'legacy':
-				#record.x_datetime_created = record.x_date_created
-	#			record.x_datetime_created = ''
-
-
-
-
-
-
-
-
-	x_status = fields.Char(
-			string='Status', 
-
-			default = '00', 
-
-			#required=False, 
-			required=True, 
-		)
-
-
-
-	x_state = fields.Selection(
-
-			selection = pat_vars._state_list, 
-
-			string='Estado', 			
-
-			#default = False, 
-			default = 'active', 
-
-			compute='_compute_x_state', 
-		)
-
-
-
-	@api.multi
-	#@api.depends('state')
-
-	def _compute_x_state(self):
-		for record in self:
-			#print 
-			#print 'jx'
-			#print 'Compute x_state'
-
-			#record.x_state = treatment_vars._hash_x_state[record.state]
-
-			flag = False
-
-
-			for treatment in record.treatment_ids:
-				if treatment.progress == False: 
-					flag = True
-
-			if flag:
-				record.x_state = 'incomplete'
-			else:
-				record.x_state = 'active'
-
-			#print 
-
-
-
 
 
 
@@ -1214,27 +1097,13 @@ class Patient(models.Model):
 
 
 
-	#x_sex_name = fields.Char(
-	#		'Sexo', 
-	#		required=True, 
-	#		compute='_compute_x_sex_name', 
-	#	)
-	#@api.multi
-	#def _compute_x_sex_name(self):
-	#	for record in self:
-	#		record.x_sex_name = record._dic[record.sex] 
 
 
 
 
-
-
-	# For Ccdata compatibility 
-
+	# Date of Birth  
 	dob = fields.Date(
 			string="Fecha nacimiento",
-
-			#required=True, 
 			required=False, 
 		)
 
@@ -1243,76 +1112,18 @@ class Patient(models.Model):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	# Phone 1
-	#@api.onchange('phone_1')
-	#def _onchange_phone_1(self):
-	#	ret = pat_funcs.test_for_digits(self, self.phone_1)
-	#	if ret != 0: 
-	#		return ret
-
-
-
-	# Phone 2
-	#@api.onchange('phone_2')
-	#def _onchange_phone_2(self):
-	#	ret = pat_funcs.test_for_digits(self, self.phone_2)
-	#	if ret != 0: 
-	#		return ret
-
-
-	# Deprecated ? 
-	#phone_1 = fields.Char(
-	#	string="Teléfono 1",
-		
-		#required=True, 
-	#	required=False, 
-	#	)
-
-	#phone_2 = fields.Char(
-	#	string="Teléfono 2",
-
-	#	required=False, 
-	#	)
-
-
-
-
-
 	# Phone 3 - Caregiver 
-	@api.onchange('phone_3')
-	def _onchange_phone_3(self):
-		ret = pat_funcs.test_for_digits(self, self.phone_3)
-		if ret != 0: 
-			return ret
-
-	# Caregiver 
 	phone_3 = fields.Char(
 		string="Teléfono",
 		required=False, 
 		)
 
 
+	@api.onchange('phone_3')
+	def _onchange_phone_3(self):
+		ret = pat_funcs.test_for_digits(self, self.phone_3)
+		if ret != 0: 
+			return ret
 
 
 
@@ -1322,6 +1133,7 @@ class Patient(models.Model):
 
 
 
+	# Function
 	function = fields.Char(
 			string = 'Ocupación',  
 			placeholder = '',
@@ -1807,32 +1619,34 @@ class Patient(models.Model):
 
 
 		# Assign and Increase Counter 
-		if 'x_id_code' in vals: 
+		#if 'x_id_code' in vals: 
 
-			name_ctr = 'emr'
+		#	name_ctr = 'emr'
 
-	 		counter = self.env['openhealth.counter'].search([
-																	('name', '=', name_ctr), 
-															],
+	 	#	counter = self.env['openhealth.counter'].search([
+		#															('name', '=', name_ctr), 
+		#													],
 																#order='write_date desc',
-																limit=1,
-															)
+		#														limit=1,
+		#													)
 
 
-			name = count_funcs.get_name(self, counter.prefix, counter.separator, counter.padding, counter.value)
+		#	name = count_funcs.get_name(self, counter.prefix, counter.separator, counter.padding, counter.value)
 
-			vals['x_id_code'] = name 
+		#	vals['x_id_code'] = name 
 
-			counter.increase()		# Here !!!
+		#	counter.increase()		# Here !!!
 
 
-			print 'Gotcha !'
-			print counter
-			print name 
-			print 'Increased'
+		#	print 'Gotcha !'
+		#	print counter
+		#	print name 
+		#	print 'Increased'
 
-		else:
-			print 'NOT Assigned nor Increased !'
+		#else:
+		#	print 'NOT Assigned nor Increased !'
+
+
 
 
 
@@ -1843,6 +1657,23 @@ class Patient(models.Model):
 		# Put your logic here 
 		res = super(Patient, self).create(vals)
 		# Put your logic here 
+
+
+
+
+
+		# Increase - Must be after creation 
+		name_ctr = 'emr'
+	 	counter = self.env['openhealth.counter'].search([
+																	('name', '=', name_ctr), 
+															],
+																#order='write_date desc',
+																limit=1,
+															)
+		counter.increase()		# Here !!!
+		print 'Increased'
+
+
 
 
 
@@ -1879,13 +1710,11 @@ class Patient(models.Model):
 
 
 		# Assign and Increase Counter 
-		if 'x_id_code' in vals: 
-			print 'Assigned and Increased'
-
-			print vals['x_id_code']
-
-		else:
-			print 'NOT Assigned nor Increased !'
+		#if 'x_id_code' in vals: 
+		#	print 'Assigned and Increased'
+		#	print vals['x_id_code']
+		#else:
+		#	print 'NOT Assigned nor Increased !'
 
 
 

@@ -4,6 +4,12 @@
 
 
 
+#_state_list = [
+#					('incomplete', 	'FICHA INCOMPLETA'),
+#       			('active', 	'Activo'),
+#        		]
+
+
 
 
 # Zone 
@@ -113,15 +119,10 @@ _dic_sex = {
 			}
 
 
-_state_list = [
-        			#(False, 	'Incompleto'),
 
-					#('incomplete', 	'Ficha incompleta'),
-					('incomplete', 	'FICHA INCOMPLETA'),
 
-        			('active', 	'Activo'),
 
-        		]
+
 
 _education_level_type = [
 			('first', 'Primaria'),

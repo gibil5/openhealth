@@ -306,3 +306,119 @@
 
 
 
+
+
+
+
+
+
+
+
+# 7 April 2018
+
+	#x_sex_name = fields.Char(
+	#		'Sexo', 
+	#		required=True, 
+	#		compute='_compute_x_sex_name', 
+	#	)
+	#@api.multi
+	#def _compute_x_sex_name(self):
+	#	for record in self:
+	#		record.x_sex_name = record._dic[record.sex] 
+
+
+
+
+	# Phone 1
+	#@api.onchange('phone_1')
+	#def _onchange_phone_1(self):
+	#	ret = pat_funcs.test_for_digits(self, self.phone_1)
+	#	if ret != 0: 
+	#		return ret
+
+
+
+	# Phone 2
+	#@api.onchange('phone_2')
+	#def _onchange_phone_2(self):
+	#	ret = pat_funcs.test_for_digits(self, self.phone_2)
+	#	if ret != 0: 
+	#		return ret
+
+
+	# Deprecated ? 
+	#phone_1 = fields.Char(
+	#	string="Teléfono 1",
+		
+		#required=True, 
+	#	required=False, 
+	#	)
+
+	#phone_2 = fields.Char(
+	#	string="Teléfono 2",
+
+	#	required=False, 
+	#	)
+
+
+
+
+
+
+
+# 8 April 2018
+
+# Deprecated
+
+
+	#@api.multi
+	#@api.depends('x_date_created')
+
+	#def _compute_x_month_created(self):
+	#	for record in self:
+	#		#print 
+	#		#print 'Compute x_month_created'
+	#		record.x_month_created = record.x_date_created.split('-')[1]
+
+
+
+
+
+
+
+
+
+	#@api.onchange('x_date_created')
+	#def _onchange_x_date_created(self):
+		#self.x_datetime_created = self.x_date_created  
+		#self.x_datetime_created = '10/03/2017 20:00:00'
+	#	self.x_datetime_created = '2017-10-03 20:00:00'
+	#'%Y-%m-%d %H:%M:%S'
+
+
+	#@api.multi
+	#@api.depends('state')
+	#def _compute_x_datetime_created(self):
+	#	for record in self:
+	#		if record.comment == 'legacy':
+				#record.x_datetime_created = record.x_date_created
+	#			record.x_datetime_created = ''
+
+
+
+
+
+	#@api.multi
+	#@api.depends('x_date_created')
+
+	#def _compute_x_year_created(self):
+	#	for record in self:
+	#		#print 
+	#		#print 'Compute x_year_created'
+	#		record.x_year_created = record.x_date_created.split('-')[0]
+
+
+
+
+
+

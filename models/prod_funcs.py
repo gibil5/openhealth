@@ -4,8 +4,11 @@ from openerp import models, fields, api
 
 
 
-# Progress 
+# Family, Treatment, Zone, Pathology 
 _hap = {
+
+			'x': 'x', 
+			'laser_m22': 			'M22', 
 
 			
 			# Treatment 
@@ -170,7 +173,14 @@ _hap = {
 
 
 
+# Products 
 _hac = {
+
+			'generic_product': 		'Producto genérico', 
+			'generic_service': 		'Servicio genérico', 
+
+
+
 			'con_med': 				'Consulta Médica', 
 			'con_gyn': 				'Consulta Ginecológica', 
 			'con_med_zero': 		'Consulta Médica - Costo Zero', 
@@ -257,9 +267,26 @@ _hac = {
 @api.multi
 def get_ticket_name(self, treatment, zone, pathology, family, x_type, name_short):
 
-	#print 'jx'
-	#print 'Get Ticket Name'
-	#print x_type, name_short, family, treatment, zone, pathology
+	
+	print
+	print 'Get Ticket Name'
+	print x_type, name_short, family, treatment, zone, pathology
+	print 
+
+
+
+	if family == False: 
+		family = 'x'
+
+	if treatment == False: 
+		treatment = 'x'
+
+	if zone == False: 
+		zone = 'x'
+
+	if pathology == False: 
+		pathology = 'x'
+
 
 
 	name_ticket = 'x'

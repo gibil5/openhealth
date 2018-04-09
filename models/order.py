@@ -1502,7 +1502,7 @@ class sale_order(models.Model):
 
 
 			#default='product',
-			default='consultation',
+			#default='consultation',
 
 			
 			#selection = jxvars._family_list, 
@@ -2035,9 +2035,15 @@ class sale_order(models.Model):
 	@api.multi 
 	def create_payment_method(self):
 
-
 		#print 
 		#print 'Create Payment Method'
+
+
+
+		# Update Descriptors
+		self.update_descriptors()
+
+
 
 
 
@@ -2905,6 +2911,100 @@ class sale_order(models.Model):
 
 
 
+# ----------------------------------------------------------- Update Descriptors All ------------------------------------------------------
+
+	# Action confirm 
+	@api.multi 
+	def update_descriptors_all(self):
+
+
+		#print 
+		print 
+		print 'Update descriptors All'
+		print 
+
+		orders = self.env['sale.order'].search([
+													('state', '=', 'sale'),
+													#('date_order', '>=', date_begin),
+													#('date_order', '<', date_end),
+													#('x_type', '=', x_type),
+											],
+												#order='x_serial_nr asc',
+												order='date_order desc',
+												limit=2000,
+											)
+		print orders 
+
+
+		for order in orders: 
+			order.update_descriptors()
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Update Descriptors ------------------------------------------------------
+
+	# Action confirm 
+	@api.multi 
+	def update_descriptors(self):
+
+
+		#print 
+		#print 
+		#print 'Update descriptors'
+
+
+		out = False
+		for line in self.order_line:
+
+			#print 'Family'
+
+			if not out: 
+
+				if line.product_id.categ_id.name == 'Consultas':
+
+					self.x_family = 'consultation'
+	
+					self.x_product = line.product_id.x_name_ticket
+
+					out = True
+
+
+				elif line.product_id.categ_id.name in ['Quick Laser', 'Laser Co2', 'Laser Excilite', 'Laser M22', 'Medical']: 
+
+					self.x_family = 'procedure'
+
+					self.x_product = line.product_id.x_name_ticket
+
+					out = True
+
+
+
+				elif line.product_id.categ_id.name == 'Cosmeatria':
+
+					self.x_family = 'cosmetology'
+
+					self.x_product = line.product_id.x_name_ticket
+
+					out = True
+
+
+				else: 
+					
+					self.x_family = 'product'
+
+					self.x_product = line.product_id.x_name_ticket
+
+
+
+		#print self.x_family
+		#print self.x_product
+
+
+
 
 # ----------------------------------------------------------- Action Confirm ------------------------------------------------------
 
@@ -2974,55 +3074,20 @@ class sale_order(models.Model):
 
 
 		
-		# Date
+
+		# Date must be that of the Sale, not the budget. 
 		self.date_order = datetime.datetime.now()
 
 
 
 
-		# Family 
-		out = False
-		for line in self.order_line:
-
-			print 'Family'
-
-			if not out: 
-
-				if line.product_id.categ_id.name == 'Consultas':
-					print 'gotcha'
-					print 'family is consultation'
-					self.x_family = 'consultation'
-	
-					self.x_product = line.product_id.x_name_ticket
-
-					out = True
-
-				elif line.product_id.categ_id.name in ['Quick Laser', 'Laser Co2', 'Laser Excilite', 'Laser M22', 'Medical']: 
-					print 'gotcha'
-					print 'family is procedure'
-					self.x_family = 'procedure'
-
-					self.x_product = line.product_id.x_name_ticket
-
-					out = True
-
-
-				elif line.product_id.categ_id.name == 'Cosmeatria':
-					self.x_family = 'cosmetology'
-
-					self.x_product = line.product_id.x_name_ticket
-
-					out = True
-
-				else: 
-					self.x_family = 'product'
-
-					self.x_product = line.product_id.x_name_ticket
+		# Update Descriptors (family and product) 
+		self.update_descriptors()
 
 
 
 
-		# Appointment State - To Invoiced 
+		# Change Appointment State - To Invoiced 
 		if self.x_family == 'consultation'	or 	self.x_family == 'procedure': 
 			if self.x_appointment.name != False: 
 				self.x_appointment.state = 'invoiced'
@@ -3110,9 +3175,9 @@ class sale_order(models.Model):
 
 
 		# Stock Picking - Validate 
-		print 'Picking'
-		self.validate_stock_picking()
-		self.do_transfer()
+		#print 'Picking'
+		#self.validate_stock_picking()
+		#self.do_transfer()
 		
 	# action_confirm	
 

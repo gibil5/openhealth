@@ -7,85 +7,31 @@
 		<record model="ir.ui.view" id="view_appointment">
 			<field name="name">oeh.medical.appointment.form</field>
 			<field name="model">oeh.medical.appointment</field>
+
 			<field name="inherit_id" ref="oehealth.oeh_medical_appointment_view"/>			
+			
 			<field name="mode">primary</field>
 			<field name="priority" eval="1"/>
+
+
 			<field name="arch" type="xml">
 
 
-				<!-- Buttons -->
-				<!--
-				<xpath expr="//field[@name='name']" position="after">
-				<xpath expr="//header" position="inside">
-				-->
 
-
-
-
-				<!-- Button - Mark as completed - Replace --> 
-<!--
-				<xpath expr="//form[0]" attrs="replace">
-	<attribute name='string'>Líneas</attribute> 
-
-					<attribute name='create'>False</attribute> 
-
-				<xpath expr="//form" position="attributes">
-					<attribute name='edit'>False</attribute> 
-				</xpath>
--->
-			
-
-
-
-
-
-<!--
-				<xpath expr="//button[@name='save']" position="replace">
-
-							<button 
-								type="object" 
-								class="oe_highlight"
-								name="save" 
-					
-								groups="openhealth.roots,openhealth.reception"
-
-
-								string="Save - jx" 
-							/>
-				</xpath>
--->
-
-
-
-
-
-<!--
-								groups="openhealth.roots"
--->
+				<!-- Remove --> 
 				<xpath expr="//field[@name='state']" position="before">
-
-
-
-					<!-- Remove --> 
-					<div class="oe_left">
-							
+					<div class="oe_left">							
 							<button 
 								type="object" 
 								class="oe_highlight"
 								name="remove_appointment" 
 					
+								string="Eliminar" 
 
 								groups="openhealth.roots,openhealth.reception"
-
-
-								string="Eliminar" 
 							/>
-					
 					</div>
-
-
 				</xpath>
-
 
 
 				<!--
@@ -101,145 +47,63 @@
 
 
 
-
+				<!-- Name --> 
 				<xpath expr="//field[@name='name']" position="after">					
-<!--
-					<field name="nr_clones"/>
-					<field name="nr_mac_clones"/>
-					<field name="vspace"/>
--->
 				</xpath>
+
+
 
 
 
 
 
 				<!-- Patient --> 
-				<!--
-												attrs="{
-																'readonly':[('patient', '!=', False)], 
-														}"
-				-->
+<!--				
+-->
 				<xpath expr="//field[@name='patient']" position="replace">
 
-					<field name="patient"	string="patient_r"
 
-
+					<field name="patient"	string="patient_r"  
+																context="{'x_id_code': 'xx'}"
 						/>					
+
 				
 					<field name="vspace"/>
+
 				</xpath>
-
-
-
+<!--
+<field name="test" nolabel="1" context="{'product_id': active_id, 'only_with_stock': True}">
+-->
 
 
 
 
 				<!-- Institution --> 
 				<xpath expr="//field[@name='institution']" position="replace">
-					<!--											
-					<field name="institution"/>		
-
-					<field name="x_duration_min"	attrs="{	'readonly':[('x_type', '!=', 'session')], 
-	
-																'invisible':[('x_type', '!=', 'session')]	}"/>
-							<field name="x_machine"		attrs="{'invisible':[('x_type', '!=', 'procedure')]}"/>
-							<field name="x_machine_cos"		attrs="{'invisible':[('x_type', '!=', 'procedure')]}"/>
-
-
-							<field name="x_machine"		/>
-
-							<field name="x_machine_cos"	/>
-
-
-																	'invisible':[('x_target', '!=', 'doctor'),],
-																	'invisible':[('x_target', '!=', 'therapist'),],
-
-
-
-							<field name="x_machine_cos"		attrs="{
-																	'invisible':[('x_machine_cos', '=', False),],
-															}"	/>
-
-							<field name="x_machine"			attrs="{
-																	'invisible':[('x_machine', '=', False),],
-															}"	/>
-
-
-							<field name="x_target"			/>
-					-->
-
 
 							<field name="x_type"/>
-
 							
 							<field name="x_target"			invisible="0"	/>
 
-
-
-
-<!--
-																		'required':[('x_target', '=', 'therapist'),],
--->
-
 							<field name="x_machine"			attrs="{
 																		'invisible':[('x_type', '=', 'consultation'),],
-
 															}"	
 								/>
-
-
-
-
-
-							<!--
-							<field name="vspace"/>
-							<field name="consultation"		groups="openhealth.roots"	/>
-							<field name="procedure"			groups="openhealth.roots"	/>
-							<field name="session"			groups="openhealth.roots"	attrs="{'required':[('x_type', '=', 'session'),],}"	/>
-
-
-							-->
-
-
-
-<!--
-Deprecated - 4 Jan 2018
-							<field name="consultation"		groups="openhealth.roots"	/>
-							<field name="procedure"			groups="openhealth.roots"	/>
-							<field name="session"			groups="openhealth.roots"	/>
-							<field name="control"			groups="openhealth.roots" 	/>
-
--->
 				</xpath>
 
 
 
 
-<!--
-																'readonly': [('doctor','=',False)], 
-																'readonly':[('patient', '!=', False)], 
 
-
-												attrs="{
-																'readonly':[('doctor', '!=', False)], 
-														}"
--->
 
 				<!-- Doctor --> 
 				<xpath expr="//field[@name='doctor']" position="replace">					
-					
 
 					<field name="doctor"	
 												domain="[('x_type', '=', x_target )]"	
-
 												options="{		'no_create': True, 
-
-												
-														}"	
+															}"	
 						/>
-
 
 					<field name="vspace"/>
 				</xpath>
@@ -250,50 +114,26 @@ Deprecated - 4 Jan 2018
 
 
 
-
+				<!-- Date --> 
 				<xpath expr="//field[@name='appointment_date']" position="replace">					
-				<!--
-				-->
 				</xpath>
 
 
 
 
 
-
+				<!-- Patient Status --> 
 				<xpath expr="//field[@name='patient_status']" position="replace">
-					<!--
-					<field name="appointment_end"	/>
-					<field name="patient_status"	/>
-					-->
 				</xpath>
 
 
+				<!-- Duration --> 
 				<xpath expr="//field[@name='duration']" position="replace">
-							<!--
-							<field name="x_target"/>
-							<field name="vspace"/>
-							<field name="vspace"/>
-							-->
 				</xpath>
 
 
-
-
-
-
-
-
-
-				<!--
-				<xpath expr="//field[@name='patient_status']" position="replace">
-				</xpath>
-				-->
-
+				<!-- Urgency --> 
 				<xpath expr="//field[@name='urgency_level']" position="replace">
-					<!--
-					<field name="urgency_level"/>	
-					-->
 				</xpath>
 
 
@@ -304,48 +144,16 @@ Deprecated - 4 Jan 2018
 
 				<!-- Notebook --> 
 				<xpath expr="//notebook" position="before">
-				<!--
-				<field name="patient_status" position="after">
-				-->
 
 					<group col="2">
 
-					<!--
-					-->
 
 						<group >
 
-							<!--
-							<field name="evaluation_ids"/>
-							<field name="x_date"/>
-							<field name="x_error"/>
-							<field name="state"		readonly="0"/>
-							<field name="x_type_cal"/>
-							-->
 
+							<field name="appointment_date"/>
 
-<!--
-							<field name="x_type"/>
-							<field name="vspace"/>
--->
-
-
-
-
-
-<!--
-															attrs="{'invisible':[('state', '=', 'pre_scheduled_control'),]}"
--->
-							<field name="appointment_date"		
-								/>
-
-<!--
-															attrs="{'invisible':[('state', '!=', 'pre_scheduled_control'),]}"
--->
 							<field name="x_date"			groups="openhealth.roots"	/>
-
-
-
 
 							<field name="vspace"/>
 
@@ -353,51 +161,10 @@ Deprecated - 4 Jan 2018
 
 							<field name="vspace"/>
 
-
-
-<!--
-							<field name="state"			groups="openhealth.roots"		/>
-							<field name="state"			readonly="1"		/>
--->
 							<field name="state"/>
-
-
-
-<!--
-
-							<field name="treatment"		attrs="{
-																	'invisible':[('x_target', '!=', 'doctor'),],
-																	'required':[('x_target', '=', 'doctor'),],
-														}"	/>
-
-
-
-							<field name="cosmetology"		/>
-
-
-
-							<field name="treatment"		attrs="{
-																	'invisible':[('x_target', '!=', 'doctor'),],
-																	'required':[('x_target', '=', 'doctor'),],
-														}"	/>
--->
-
 
 							<field name="vspace"/>
 
-
-
-
-<!--
-							<field name="treatment"		groups="openhealth.roots"	readonly="0"/>
--->
-
-
-
-
-
-<!--
--->
 							<field name="treatment"		
 														attrs="{
 																	'required':[('x_target', '=', 'doctor'),],
@@ -407,102 +174,36 @@ Deprecated - 4 Jan 2018
 
 
 
-<!--
--->
 							<field name="cosmetology"			
 														attrs="{
 																	'required':[('x_target', '=', 'therapist'),],
 																	'invisible':[('x_target', '!=', 'therapist'),],
 														}"	/>
-
-
-
-
-
-							<!--
-							<field name="treatment"		attrs="{'invisible':[('x_type', '!=', 'consultation')]}"/>
-
-							<field name="consultation"	attrs="{'invisible':[('x_type', '!=', 'consultation')]}"/>
-
-							<field name="procedure"   	attrs="{'invisible':[('x_type', '!=', 'procedure')]}"/>
-
-							<field name="session"		attrs="{'invisible':[('x_type', '!=', 'session')]}"/>
-
-							<field name="control"		attrs="{'invisible':[('x_type', '!=', 'control')]}"/>
-							-->
-
 						</group>
+
 
 
 
 
 						<group>
-							<!--
-							<calendar string="Calendar"  	date_start="appointment_date" date_delay="duration"  display="[patient]"   
-															color="color_doctor_id"   quick_add="False" mode="day">
-								<field name="patient"/>       
-							</calendar>
-							-->
-
-
-
 							<field name="x_create_procedure_automatic"	attrs="{'invisible':[('x_type', '!=', 'consultation')]}"  />
-
-
 							<field name="vspace"/>							
 							<field name="vspace"/>
-							<!--
-							<field name="x_chief_complaint"				attrs="{'invisible':[('x_type', '!=', 'consultation')]}"/>
-							-->
-
-
-							<!--
-							<group>
-								<button 
-									type="object" 
-									class="oe_highlight"
-									string="Buscar Tratamiento" 
-									attrs="{'invisible':[('x_type', '!=', 'consultation')]}"
-
-									name="search_treatment" 
-								/>
-							</group>
-
-							<group>
-								<button 
-									type="object" 
-									class="oe_highlight"
-									string="Crear Tratamiento" 
-									attrs="{'invisible':[('x_type', '!=', 'consultation')]}"
-									name="create_treatment" 
-								/>
-							</group>
-							-->
 						</group>
 					</group>
 
 
 
-
+<!--
+-->
 					<group col="2">
-
 						<group >
 						</group>
-
 						<group >
 						</group>
-
-
-
 					</group>
 
-				<!--
-				</field>
-				-->
 				</xpath>
-
-
-
 			</field>
 		</record>
 
@@ -515,7 +216,6 @@ Deprecated - 4 Jan 2018
 
 		<!-- TREE -->
 		<record model="ir.ui.view" id="oehealth.oeh_medical_appointment_tree">
-
 			<field name="name">oeh.medical.appointment.tree</field>			
 			<field name="model">oeh.medical.appointment</field>
 			<field name="type">tree</field>
@@ -523,41 +223,17 @@ Deprecated - 4 Jan 2018
 			<field name="arch" type="xml">
 				
 
-
 				<!--
 				<tree string="Appointment Tree">
 				<tree string="Appointment Tree"  	default_order='x_time'>
 				<tree string="Appointment Tree"  	default_order='x_date, x_time'>
 				<tree string="Appointment Tree"  	default_order='appointment_date'>
 				-->
-
-
 				<tree string="Appointment Tree"  	default_order='appointment_date'	colors="red:nr_clones!=1;"  >
-				
-					<!--
-					<field name="x_duration_min"/>
-					<field name="x_chief_complaint"/>					
-					<field name="appointment_end"/>
-					<field name="duration"/>
-					<field name="appointment_date"/>
-					<field name="appointment_end"/>
-					<field name="evaluation_ids"/>
-					<field name="x_tree"/>
-
-					<field name="x_therapist"/>
-					-->
-
-
 					<field name="name"/>
-
 					<field name="id"/>
-
-<!--
--->
 					<field name="nr_clones"		invisible="1"	/>
 					<field name="nr_mac_clones"	invisible="1"	/>
-
-
 					<field name="patient"/>
 					<field name="doctor"/>
 					<field name="x_type"/>
@@ -576,14 +252,17 @@ Deprecated - 4 Jan 2018
 			</field>
 		</record>
 
-
-
-
-
-
-
-
-
+					<!--
+					<field name="x_duration_min"/>
+					<field name="x_chief_complaint"/>					
+					<field name="appointment_end"/>
+					<field name="duration"/>
+					<field name="appointment_date"/>
+					<field name="appointment_end"/>
+					<field name="evaluation_ids"/>
+					<field name="x_tree"/>
+					<field name="x_therapist"/>
+					-->
 
 
 
@@ -595,14 +274,10 @@ Deprecated - 4 Jan 2018
            <field name="model">oeh.medical.appointment</field>
 		   <field name="arch" type="xml">
                <search string="appointments">
-
                    <field name="doctor" />               
-
                </search>
            </field>
        </record>
-
-
-
+       
 	</data>
 </openerp>

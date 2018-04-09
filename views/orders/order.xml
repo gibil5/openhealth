@@ -238,6 +238,7 @@
 
 
 					<!-- State --> 
+<!--
 					<button 
 							type="object" 
 							class="oe_highlight"
@@ -249,6 +250,39 @@
 
 							groups="openhealth.roots"
 						/>
+-->
+
+
+					<!-- Update Descriptors --> 
+					<button 
+							type="object" 
+							class="oe_highlight"
+
+							name="update_descriptors"
+
+							string="Update"
+
+							states="sale,editable"
+
+							groups="openhealth.roots"
+						/>
+
+					<!-- Update All --> 
+					<button 
+							type="object" 
+							class="oe_highlight"
+
+							name="update_descriptors_all"
+
+							string="Update All"
+
+							states="sale,editable"
+
+							groups="openhealth.roots"
+						/>
+
+
+
 
 
 
@@ -429,7 +463,9 @@
 
 					<field name="vspace"/>
 
-					<field name="x_family"		readonly="1"	/>
+					<field name="x_family"	/>
+					
+					<field name="x_product"	/>
 				</field>	
 
 

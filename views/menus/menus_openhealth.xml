@@ -18,6 +18,18 @@
 
 
 
+
+		<!-- Account Move --> 
+		<menuitem id="account_move_menu" name="Account Move" parent="openhealth_menu"
+			sequence="2"
+			action="account.action_move_journal_line"
+			/>
+
+
+
+
+
+
 		<!-- Account Tax -->
 		<menuitem id="account_tax_menu" name="Account Tax" parent="openhealth_menu"
 			sequence="10"

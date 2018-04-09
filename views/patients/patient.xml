@@ -72,13 +72,15 @@ Cosmetology
 
 
 
-
+<!--
+							string="Estado de Cuenta" 
+-->
 						<button 
 							type="object" 
 							class="oe_highlight"
 							name="generate_order_report" 
 
-							string="Estado de Cuenta" 
+							string="EC" 
 						/>
 
 
@@ -307,8 +309,9 @@ Cosmetology
 <!--
 								<field name="x_datetime_created"  	readonly="0"	required="0"	/>
 								<field name="x_date_created"  		readonly="0"	/>
--->							
 								<field name="x_date_created"  		readonly="1"	/>
+-->							
+								<field name="create_date"  			readonly="1"	/>
 
 
 
@@ -330,8 +333,6 @@ Cosmetology
 								-->
 								
 
-<!--
--->
 								<field name="x_id_doc_type"  required="0"		attrs="{'invisible':[	('x_nationality', '=', 'peruvian'), ]}"
 								/>
 								<field name="x_id_doc"  	required="0"		attrs="{'invisible':[	('x_nationality', '=', 'peruvian'), ]}"
@@ -345,7 +346,10 @@ Cosmetology
 
 
 								<field string='Sexo' name="sex" 	required="1" />
+								
+<!--
 								<field name="x_state"    colors="red" 	groups="openhealth.roots"	/>
+-->
 							
 							</group>
 
@@ -433,12 +437,14 @@ Cosmetology
 				<tree string="Patient Tree"  	colors="red:x_flag=='error';"  >
 
 
+				<tree string="Patient Tree">
 				<tree create="false" edit="false" >
 				<tree create="false" edit="true" >
 				<tree string="Patient Tree">
+				<tree string="Patient Tree"  default_order='x_id_code desc'>
 -->
 
-				<tree string="Patient Tree"  default_order='x_id_code desc'>
+				<tree string="Patient Tree">
 				
 
 
@@ -451,26 +457,23 @@ Cosmetology
 
 					<field name="x_mark"/>		
 					<field name="x_datetime_created"/>
+					<field name="x_date_created"/>
 -->
 
 
 
 					<field name="x_id_code"/>		
-
 					<field name="x_dni"/>		
-
-					<field name="x_date_created"/>
-
 					<field name="dob"/>
 					<field name="sex"/>		
-
 					<field name="phone"/>
 					<field name="mobile"/>
-
 					<field name="email"/>		
 
 
 
+
+					<!-- Legacy --> 
 					<field name="x_date_record"		groups='openhealth.roots'	/>
 					<field name="street"			groups='openhealth.roots'	/>
 					<field name="x_district"		groups='openhealth.roots'	/>		
@@ -538,7 +541,8 @@ Cosmetology
 			<field name="res_model">oeh.medical.patient</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form,kanban</field>
-			<field name="context">{'order': 'x_date_created'}</field>
+
+			<field name="context">{}</field>
 
 
 
@@ -568,7 +572,8 @@ Cosmetology
 			<field name="res_model">oeh.medical.patient</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form,kanban</field>
-			<field name="context">{'order': 'x_date_created'}</field>
+
+			<field name="context">{}</field>
 
 
 

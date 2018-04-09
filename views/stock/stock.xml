@@ -4,7 +4,10 @@
 
 
 
+
+
 		<!-- ACTION --> 
+<!--
 		<record id="stock.stock_picking_type_action" model="ir.actions.act_window">
 			<field name="name">Inventory</field>
 			<field name="res_model">stock.picking.type</field>
@@ -13,10 +16,6 @@
 			<field name="view_mode">kanban,form</field>
 			
 
-<!--
-									('name', '!=', 'Órdenes de entrega'),
-									('name', '!=', 'Customer Sale'),
--->
 			<field name="domain">[
 									('code', '!=', 'internal'),
 								]
@@ -35,7 +34,7 @@
 			  </p>
 			</field>
 		</record>
-
+-->
 
 
 

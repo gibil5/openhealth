@@ -23,17 +23,30 @@
 
 
 
+
 # Deprecated ?
 #from . import product_manager
-#from . import product_selector
+#from . import order_report
+#from . import order_line_report
 
 
 
 
 
-
+# Very important 
+from . import product_selector
 
 from . import report_sale_product
+
+
+
+
+
+
+
+from . import order_report_nex
+
+
 
 
 
@@ -246,8 +259,10 @@ from . import sale_make_invoice_advance
 from . import order
 from . import order_line
 
-from . import order_report
-from . import order_line_report
+
+
+
+
 
 
 

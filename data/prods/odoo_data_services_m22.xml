@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
-	<data noupdate='1'>
+	<data noupdate='0'>
 
 
 
@@ -334,10 +334,16 @@
 			<field name='categ_id' ref="laser_m22"/>
 		</record>
 
+
+
 		<record id='ipl_fac_aca_30m_one' model='product.template'>
 			<field name='type'>service</field>
 			<field name='x_name_short'>ipl_fac_aca_30m_one</field>
-			<field name='name'>LASER M22 IPL - Rostro - Acné Activo - 1 - 30 min</field>
+<!--
+			<field name='name'>LASER M22 IPL - Rostro - Acne Activo - 1 - 30 min</field>
+-->
+			<field name='name'>LASER M22 IPL - Rostro - Acne Activo - 1 - 30 min</field>
+			
 			<field name='x_treatment'>laser_ipl</field>
 			<field name='x_zone'>face</field>
 			<field name='x_pathology'>acne_active</field>
@@ -349,6 +355,8 @@
 			<field name='x_family'>laser</field>
 			<field name='categ_id' ref="laser_m22"/>
 		</record>
+
+
 
 		<record id='ipl_fac_sta_30m_one' model='product.template'>
 			<field name='type'>service</field>
@@ -1009,7 +1017,7 @@
 		<record id='ipl_fac_aca_30m_six' model='product.template'>
 			<field name='type'>service</field>
 			<field name='x_name_short'>ipl_fac_aca_30m_six</field>
-			<field name='name'>LASER M22 IPL - Rostro - Acné Activo - 6 - 30 min</field>
+			<field name='name'>LASER M22 IPL - Rostro - Acne Activo - 6 - 30 min</field>
 			<field name='x_treatment'>laser_ipl</field>
 			<field name='x_zone'>face</field>
 			<field name='x_pathology'>acne_active</field>

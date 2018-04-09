@@ -443,10 +443,12 @@ Cosmetology
 				<tree create="false" edit="false" >
 				<tree create="false" edit="true" >
 				<tree string="Patient Tree">
+					
 				<tree string="Patient Tree"  default_order='x_id_code desc'>
+				<tree string="Patient Tree">
 -->
 
-				<tree string="Patient Tree">
+				<tree string="Patient Tree"  default_order='x_id_code desc'>
 				
 
 

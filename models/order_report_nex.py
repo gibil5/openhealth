@@ -21,6 +21,19 @@ class sale_order_report_nex(models.Model):
 
 
 
+# ----------------------------------------------------------- Critical ------------------------------------------------------
+	# Lines
+	#order_line_ids = fields.One2many(
+	#		'sale.order.line',			 
+	#		'order_report_id', 
+	#		string="Estado de cuenta",
+	#	)
+
+
+
+
+
+
 
 # ----------------------------------------------------------- Nex ------------------------------------------------------
 
@@ -41,12 +54,6 @@ class sale_order_report_nex(models.Model):
 
 
 
-	# Lines
-	order_line_ids = fields.One2many(
-			'sale.order.line',			 
-			'order_report_id', 
-			string="Estado de cuenta",
-		)
 
 
 

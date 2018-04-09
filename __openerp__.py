@@ -113,6 +113,8 @@
 
 
 
+
+
 		# ----------------------------------------------------------- Stock Moves - Deprecated ??? ------------------------------------------------------
 		'data/stock_move_data.xml',
 		'views/stock/stock_move.xml',
@@ -142,7 +144,7 @@
 		'views/menus/menus.xml',
 		'views/menus/menus_reporting.xml',
 		'views/menus/menus_inventory.xml',
-		'views/menus/menus_openhealth.xml',
+		#'views/menus/menus_openhealth.xml',
 
 
 

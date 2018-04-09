@@ -127,6 +127,7 @@
 		# ----------------------------------------------------------- Recent ------------------------------------------------------
 		# Order Report 
 		#'views/orders/order_report_nex.xml',
+		#'views/product_selectors/product_selector.xml',
 
 
 
@@ -430,8 +431,6 @@
 		'views/orders/order_search.xml',
 
 		
-		# Product Selector - To choose a product more easily 
-		'views/product_selectors/product_selector.xml',
 
 
 

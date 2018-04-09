@@ -460,7 +460,7 @@
 
 
 		# Account invoice
-		'views/account_invoices/account_invoice.xml',
+		#'views/account_invoices/account_invoice.xml',
 
 
 

@@ -124,11 +124,20 @@
 
 
 
+		# ----------------------------------------------------------- Recent ------------------------------------------------------
+		# Order Report 
+		#'views/orders/order_report_nex.xml',
+
+
+
+
+
+
 		# ----------------------------------------------------------- Menus ------------------------------------------------------
 		'views/menus/menus.xml',
 		'views/menus/menus_reporting.xml',
 		'views/menus/menus_inventory.xml',
-		'views/menus/menus_openhealth.xml',
+		#'views/menus/menus_openhealth.xml',
 
 
 
@@ -437,9 +446,6 @@
 
 
 
-		# Order Report 
-		#'views/orders/order_report.xml',
-		'views/orders/order_report_nex.xml',
 
 
 

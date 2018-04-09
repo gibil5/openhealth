@@ -118,6 +118,8 @@
 
 
 
+
+
 		# ----------------------------------------------------------- Stock Moves - Deprecated ??? ------------------------------------------------------
 		'data/stock_move_data.xml',
 		'views/stock/stock_move.xml',
@@ -134,8 +136,7 @@
 
 		# ----------------------------------------------------------- Recent ------------------------------------------------------
 
-		
-		#'views/orders/order_report_nex.xml',
+		'views/orders/order_report_nex.xml',
 
 		'views/product_selectors/product_selector.xml',
 

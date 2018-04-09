@@ -132,7 +132,8 @@
 
 		# ----------------------------------------------------------- Security ------------------------------------------------------
 
-		#'security/openhealth_security.xml',
+		#'security/ir.model.access.csv',
+		'security/openhealth_security.xml',
 
 
 
@@ -795,7 +796,6 @@
 		# ----------------------------------------------------------- Security Rules ------------------------------------------------------
 		'security/openhealth_security_readers.xml',
 		'security/ir.rule.xml',
-		'security/ir.model.access.csv',
 
 
 

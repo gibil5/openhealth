@@ -142,7 +142,8 @@
 		'views/orders/order_report_nex.xml',
 
 
-		#'views/report_sale/report_sale_product.xml',
+		'views/report_sale/report_sale_product.xml',
+
 
 
 

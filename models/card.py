@@ -20,10 +20,21 @@ class Card(models.Model):
 	_name = 'openhealth.card'		
 	#_inherit = 'oeh.medical.card'
 
-	_order = 'date_created desc'
+	
+	#_order = 'date_created desc'
+	_order = 'name desc'
 
 
 
+
+
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+
+	active = fields.Boolean(
+			default=True, 
+		)
+	
 
 
 

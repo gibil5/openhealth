@@ -430,6 +430,8 @@
 
 
 
+
+
 		<!-- Day - Prods -->
 		<record id="action_order_report_day_prods" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Diario</field>

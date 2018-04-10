@@ -8,7 +8,7 @@ from openerp import models, fields, api
 import ord_vars
 
 
-class sale_order_report_nex(models.Model):
+class order_report_nex(models.Model):
 
 	_name = 'openhealth.order.report.nex'
 
@@ -24,8 +24,14 @@ class sale_order_report_nex(models.Model):
 # ----------------------------------------------------------- Critical ------------------------------------------------------
 	# Lines
 	order_line_ids = fields.One2many(
-			'sale.order.line',			 
-			'order_report_id', 
+
+			
+			#'sale.order.line',			 
+			'openhealth.order.report.nex.line', 
+
+
+			'order_report_nex_id', 
+
 			string="Estado de cuenta",
 		)
 
@@ -131,25 +137,23 @@ class sale_order_report_nex(models.Model):
 				print line.product_uom_qty
 				
 				print line.create_date
-
+				print 
 
 
 				#ret = self.x_order_line_ids.create({
 				ret = self.order_line_ids.create({
-															'product_id': line.product_id.id,
-
 															'name': line.name,
 
-															'x_date_created': line.create_date,															
+															'product_id': line.product_id.id,
 
-															#'price_subtotal': line.price_subtotal,
-															#'price_total': line.price_total,
 															'price_unit': line.price_unit,
 															
 															'product_uom_qty': line.product_uom_qty, 
 
+															'order_report_nex_id': self.id,
 
-															'order_report_id': self.id,
+
+															'x_date_created': line.create_date,															
 													})
 
 				print ret 

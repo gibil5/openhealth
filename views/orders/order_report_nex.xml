@@ -58,11 +58,41 @@ Fields
 						</group>
 
 
+
 						<notebook>
 							<page>
+<!--								
 								<field name="order_line_ids"/>
+-->						
+
+								<field name="order_line_ids"		>
+
+									<tree string=""		default_order="create_date"	>	
+						
+
+										<field name="product_id"		/>
+
+										<field name="price_unit"		/>
+
+										<field name="product_uom_qty"		/>
+
+										<field name="price_subtotal"		/>
+
+										<field name="x_date_created"	string="Fecha"	/>
+
+<!--
+										<field name="create_date"	string="Fecha"	/>
+										<field name="price_total"		/>
+										<field name="name"		/>
+-->
+									</tree>
+								</field>
+
+
+
 							</page>
 						</notebook>
+
 						
 
 					</sheet>

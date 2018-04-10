@@ -74,6 +74,7 @@ Cosmetology
 
 <!--
 							string="Estado de Cuenta" 
+							groups="openhealth.roots"
 -->
 						<button 
 							type="object" 
@@ -82,7 +83,6 @@ Cosmetology
 
 							string="EC" 
 
-							groups="openhealth.roots"
 						/>
 
 

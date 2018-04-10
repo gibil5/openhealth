@@ -20,16 +20,18 @@ class sale_order_line(models.Model):
 
 
 
-# ----------------------------------------------------------- Sale Order Report ------------------------------------------------------
+# ----------------------------------------------------------- Sale Order Report - Deprecated ------------------------------------------------------
 
-	order_report_id = fields.Many2one(
+	#order_report_id = fields.Many2one(
 
-		'openhealth.order.report.nex', 
+	#	'openhealth.order.report.nex', 
 		
-		string='Order Report Reference', 		
-		required=False, 
+	#	string='Order Report Reference', 		
+	#	required=False, 
 	#	ondelete='cascade', index=True, copy=False
-	)
+	#)
+
+
 
 
 

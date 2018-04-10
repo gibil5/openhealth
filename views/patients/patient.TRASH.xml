@@ -47,3 +47,52 @@
 							name="card_purchase" 
 						/>
 -->
+
+
+
+
+
+
+
+<!--
+10 Apr 2018
+-->
+		
+<!--
+<group>
+	<group>
+	</group>
+	<group>
+	</group>
+</group>
+-->
+
+
+
+
+<!--
+<record id="view_patient_root_list" model="ir.ui.view">
+	<field name="name">patient.tree.root</field>
+	<field name="model">oeh.medical.patient</field>
+
+	<field name="inherit_id" ref="oehealth.oeh_medical_patient_tree"/>
+
+	<field name="groups_id" eval="[(4, ref('my_group_xmlid_with_more_access')))]"/>
+	<field name="groups_id" eval="[(4, ref('openhealth.roots')))]"/>
+
+
+	<field name="arch" type="xml">
+
+		<xpath expr="//tree" position="attributes">
+			<attribute name="create">true</attribute>
+		</xpath>
+	
+	</field>
+</record>
+-->
+
+
+
+
+
+

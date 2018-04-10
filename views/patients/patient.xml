@@ -385,17 +385,8 @@ Cosmetology
 						</group>
 
 
-		
-<!--
-<group>
-	<group>
-	</group>
-	<group>
-	</group>
-</group>
--->
-
-						<notebook></notebook>
+						<notebook>
+						</notebook>
 					</sheet>
 				</form>
 			</field>
@@ -405,26 +396,8 @@ Cosmetology
 
 
 
-<!--
-<record id="view_patient_root_list" model="ir.ui.view">
-	<field name="name">patient.tree.root</field>
-	<field name="model">oeh.medical.patient</field>
-
-	<field name="inherit_id" ref="oehealth.oeh_medical_patient_tree"/>
-
-	<field name="groups_id" eval="[(4, ref('my_group_xmlid_with_more_access')))]"/>
-	<field name="groups_id" eval="[(4, ref('openhealth.roots')))]"/>
 
 
-	<field name="arch" type="xml">
-
-		<xpath expr="//tree" position="attributes">
-			<attribute name="create">true</attribute>
-		</xpath>
-	
-	</field>
-</record>
--->
 
 
 
@@ -454,26 +427,18 @@ Cosmetology
 
 
 					<field name="name"/>
-
-<!--
-					<field name="x_completeness"/>	
-
-
-					<field name="x_mark"/>		
-					<field name="x_datetime_created"/>
-					<field name="x_date_created"/>
--->
-
-
-
 					<field name="x_id_code"/>		
 					<field name="x_dni"/>		
+
+
+					<field name="create_date"	string="Fecha de creación"		/>
+
+
 					<field name="dob"/>
 					<field name="sex"/>		
 					<field name="phone"/>
 					<field name="mobile"/>
 					<field name="email"/>		
-
 
 
 
@@ -486,29 +451,20 @@ Cosmetology
 
 
 
-
-<!--
-					<field name="phone_1"/>
-					<field name="phone_2"/>
-
-					<field name="street_2"/>		
-
-					<field name="x_flag"	invisible="1"/>
-
-
-					<field name="write_date"	string="Última modificación"	/>
-
-					
-					<field name="age"/>
-
-					<field name="x_vip"/>
-
-					<field name="x_card"/>
--->
 				</tree>
 			</field>
 		</record>
 <!--
+					<field name="phone_1"/>
+					<field name="phone_2"/>
+					<field name="street_2"/>		
+					<field name="x_flag"	invisible="1"/>
+					<field name="write_date"	string="Última modificación"	/>
+					<field name="age"/>
+					<field name="x_vip"/>
+					<field name="x_card"/>
+
+
 					<field name="x_first_contact"/>
 					<field name="x_datetime_created"/>
 					<field name="date"/>
@@ -528,6 +484,11 @@ Cosmetology
 					<field name="x_sex"/>		
 					<field name="x_year_created"/>
 					<field name="x_month_created"/>
+
+					<field name="x_completeness"/>	
+					<field name="x_mark"/>		
+					<field name="x_datetime_created"/>
+					<field name="x_date_created"/>
 -->
 
 

@@ -19,7 +19,7 @@
 
 	'description': """
 
-		Last built: 	9 April 2018 
+		Last built: 	10 April 2018 
 		
 		Stability by Design !
 		More Configuration and less programming. Near than zero hacking.  
@@ -137,11 +137,12 @@
 
 		# ----------------------------------------------------------- Recent ------------------------------------------------------
 
-		'views/product_selectors/product_selector.xml',
-
 		'security/ir.model.access.csv',
-
+		'views/product_selectors/product_selector.xml',
 		'views/orders/order_report_nex.xml',
+
+
+		#'views/report_sale/report_sale_product.xml',
 
 
 
@@ -834,7 +835,6 @@
 
 
 		# ----------------------------------------------------------- RSP ------------------------------------------------------
-		'views/report_sale/report_sale_product.xml',
 
 
 

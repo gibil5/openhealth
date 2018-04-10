@@ -4,8 +4,6 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
-access_openhealth_order_report_nex,openhealth.order.report.nex,model_openhealth_order_report_nex,,1,1,1,1
-access_openhealth_order_report_nex_line,openhealth.order.report.nex.line,model_openhealth_order_report_nex_line,,1,1,1,1
 
 
 

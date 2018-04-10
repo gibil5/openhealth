@@ -23,10 +23,10 @@
 
 		<!-- RSP -->
 <!--
--->
 		<menuitem id="rsp_menu" name="Report Sale Product" parent="openhealth_menu"
 			sequence="1"
 			action="rsp_list_action"/>
+-->
 
 
 

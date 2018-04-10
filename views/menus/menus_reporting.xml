@@ -29,7 +29,7 @@
 
 
 
-
+<!--
 				<menuitem 	id="report_sale_product_submenu" 
 
 							parent="report_sale_product_menu"
@@ -40,7 +40,7 @@
 					
 							action="rsp_list_action"
 						/>
-
+-->
 
 
 

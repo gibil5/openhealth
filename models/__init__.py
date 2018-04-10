@@ -41,8 +41,8 @@
 
 
 
-#from . import product_counter 
-#from . import report_sale_product
+from . import product_counter 
+from . import report_sale_product
 
 
 

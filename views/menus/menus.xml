@@ -709,6 +709,7 @@ order_report.xml
 					/>
 
 
+
 			<menuitem 	id="sales_card_sub_menu" 
 						name="Tarjetas Vip"
 						parent="sales_cards_menu"
@@ -717,11 +718,22 @@ order_report.xml
 						action="card_list_action"
 					/>
 
+			<menuitem 	id="sales_card_inactive_sub_menu" 
+						name="Tarjetas Vip - Anuladas"
+						parent="sales_cards_menu"
+						sequence="2"
+
+						action="card_inactive_list_action"
+					/>
+
+
+
+
 
 			<menuitem 	id="partners_card_sub_menu" 
 						name="Clientes Vip"
 						parent="sales_cards_menu"
-						sequence="2"
+						sequence="3"
 
 						action="partner_vip_list_action"
 					/>
@@ -730,7 +742,7 @@ order_report.xml
 			<menuitem 	id="vip_product_template_services_menu" 
 						name="Servicios Vip"
 						parent="sales_cards_menu"
-						sequence="3"
+						sequence="4"
 
 						action="product_template_service_vip_list_action"
 					/>

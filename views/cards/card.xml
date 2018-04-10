@@ -30,15 +30,20 @@
 
 					<sheet>
 
-						
 						<group>
-							<field name="name"/>
+							<group>
+								<field name="name"/>
 
-							<field name="patient_name"/>
+								<field name="patient_name"/>
 
-							<field name="date_created"/>
+								<field name="date_created"/>
+							</group>
+							
+							<group>
+								<field name="active"/>
+							</group>
+
 						</group>
-
 
 						<notebook>
 						</notebook>
@@ -107,6 +112,38 @@
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form,kanban</field>
 			
+			<field name="domain">[]</field>
+			<field name="context">{'order': 'name'}</field>
+
+			<!--
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first treatment
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+
+
+		<!-- Window List action -->
+		<record model="ir.actions.act_window" id="card_inactive_list_action">			
+			<field name="name">Tarjetas Vip - Desactivadas</field>
+			<field name="res_model">openhealth.card</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form,kanban</field>
+			
+
+			<field name="domain">[
+									('active', '=', False),
+				
+				]</field>
+
+
+
 			<field name="context">{'order': 'name'}</field>
 
 			<!--

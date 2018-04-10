@@ -140,7 +140,7 @@
 
 		'security/ir.model.access.csv',
 
-		#'views/orders/order_report_nex.xml',
+		'views/orders/order_report_nex.xml',
 
 
 

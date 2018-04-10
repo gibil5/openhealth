@@ -420,7 +420,7 @@
 
 					<field name="patient" 					options="{'no_create': True, 'no_create_edit':True}"		/>
 -->
-					<field name="patient" 					options="{'no_create': False, 'no_create_edit':True}"		/>
+					<field name="patient" 		required="1"			options="{'no_create': False, 'no_create_edit':True}"		/>
 
 				</field>
 

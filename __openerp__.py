@@ -110,6 +110,7 @@
 
 		#'views/product_managers/product_manager.xml',
 
+
 		# Account invoice
 		#'views/account_invoices/account_invoice.xml',
 
@@ -150,7 +151,8 @@
 		'views/menus/menus.xml',
 		'views/menus/menus_reporting.xml',
 		'views/menus/menus_inventory.xml',
-		#'views/menus/menus_openhealth.xml',
+		
+		'views/menus/menus_openhealth.xml',
 
 
 
@@ -830,8 +832,10 @@
 
 
 
+
 		# ----------------------------------------------------------- RSP ------------------------------------------------------
-		#'views/report_sale/report_sale_product.xml',
+		'views/report_sale/report_sale_product.xml',
+
 
 
 

@@ -19,6 +19,21 @@
 
 
 
+
+
+		<!-- RSP -->
+<!--
+-->
+		<menuitem id="rsp_menu" name="Report Sale Product" parent="openhealth_menu"
+			sequence="1"
+			action="rsp_list_action"/>
+
+
+
+
+
+
+
 		<!-- Account Move --> 
 		<menuitem id="account_move_menu" name="Account Move" parent="openhealth_menu"
 			sequence="2"
@@ -40,12 +55,6 @@
 
 
 
-		<!-- RSP -->
-<!--
-		<menuitem id="rsp_menu" name="Report Sale Product" parent="openhealth_menu"
-			sequence="-320"
-			action="rsp_list_action"/>
--->
 
 
 		<!-- Stock Min Inventory -->

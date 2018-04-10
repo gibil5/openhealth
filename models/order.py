@@ -484,7 +484,8 @@ class sale_order(models.Model):
 			string='Paciente', 
 			#compute='_compute_patient', 
 			
-			required=True, 
+			#required=True, 
+			required=False, 
 
 			#states={
 			#			'cancel': 	[('readonly', True)], 

@@ -187,8 +187,8 @@ class payment_method_line(models.Model):
 
 			ondelete='cascade', 
 
-			required=True, 
-			#required=False, 
+			#required=True, 
+			required=False, 
 			
 			#readonly=True, 
 		)

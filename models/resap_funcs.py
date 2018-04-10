@@ -40,6 +40,18 @@ def get_orders(self, date):
 
 
 
+	# Categ 
+	#categ_name = 'Cremas'
+	#categ =  self.env['product.category'].search([
+	#												('name', '=', categ_name),
+	#										],
+												#order='x_serial_nr asc',
+	#											limit=1,
+	#										)
+	#categ_id = categ.id 
+
+
+
 
 
 

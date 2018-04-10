@@ -59,17 +59,16 @@ Fields
 
 
 
-						<notebook>
-							<page>
 <!--								
 								<field name="order_line_ids"/>
 -->						
 
-								<field name="order_line_ids"		>
 
+						<notebook>
+							<page>
+								<field name="order_line_ids"		>
 									<tree string=""		default_order="create_date"	>	
 						
-
 										<field name="product_id"		/>
 
 										<field name="price_unit"		/>
@@ -87,9 +86,6 @@ Fields
 -->
 									</tree>
 								</field>
-
-
-
 							</page>
 						</notebook>
 

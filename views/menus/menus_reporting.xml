@@ -17,6 +17,36 @@
 
 
 
+
+<!-- Daily --> 
+		<menuitem 	id="report_sale_product_menu" 
+					parent="main_reporting_sales_menu"
+					sequence="0"
+					
+					name="Venta de Productos"			
+
+				/>
+
+
+
+
+				<menuitem 	id="report_sale_product_submenu" 
+
+							parent="report_sale_product_menu"
+					
+							sequence="1"
+
+							name="Por Fecha" 
+					
+							action="rsp_list_action"
+						/>
+
+
+
+
+
+
+
 <!-- Daily --> 
 		<menuitem 	id="sales_reporting_daily_menu" 
 					parent="main_reporting_sales_menu"

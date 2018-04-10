@@ -23,6 +23,21 @@ class order_report_nex_line(models.Model):
 
 
 
+	# Report Sale Product 
+	report_sale_product_id = fields.Many2one(
+
+		'openhealth.report.sale.product', 
+		
+		string='Report Reference', 		
+		ondelete='cascade', 
+	)
+
+
+
+
+
+
+	# Order Report Nex 
 	order_report_nex_id = fields.Many2one(
 
 		#'sale.order', 

@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-
-
 from openerp import models, fields, api
 
 
@@ -18,7 +16,7 @@ class AccountInvoice(models.Model):
 	vspace = fields.Char(
 			' ', 
 			readonly=True
-			)
+		)
 
 
 
@@ -28,29 +26,30 @@ class AccountInvoice(models.Model):
 
 
 	# Vendor 
-	partner_id = fields.Many2one(
-			'res.partner', 
+	#partner_id = fields.Many2one(
+	#		'res.partner', 
 
 			#string='Partner', 
-			string='Proveedor', 
+	#		string='Proveedor', 
 			
-			change_default=True,
-			required=True, 
-			readonly=True, 
-			states={'draft': [('readonly', False)]},
-			track_visibility='always'
-		)
+	#		change_default=True,
+	#		required=True, 
+	#		readonly=True, 
+	#		states={'draft': [('readonly', False)]},
+	#		track_visibility='always'
+	#	)
 
 
 
 
-	x_delivery_order = fields.Char(
-			string="Número de guia de remisión", 
-		)
+	#x_delivery_order = fields.Char(
+	#		string="Número de guia de remisión", 
+	#	)
 
-	x_invoice_number = fields.Char(
-			string="Número de factura", 
-		)
+
+	#x_invoice_number = fields.Char(
+	#		string="Número de factura", 
+	#	)
 
 
 
@@ -61,12 +60,10 @@ class AccountInvoice(models.Model):
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 
 	# Removem
-	@api.multi
-	def remove_myself(self):  
-		
-		self.state = 'cancel'
-		
-		self.unlink()
+	#@api.multi
+	#def remove_myself(self):  
+	#	self.state = 'cancel'
+	#	self.unlink()
 
 
 

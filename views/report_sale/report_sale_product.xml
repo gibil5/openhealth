@@ -20,20 +20,14 @@
 
 
 					<header>
-
-
 						<button 
 								type="object" 
 								class="oe_highlight"
 
-
-								name="update_totals"
+								name="update_report"
 
 								string="Actualizar"
-								
 						/>
-
-
 					</header>
 
 
@@ -43,17 +37,14 @@
 					<sheet>
 
 
-<!--
-Fields 
--->
 					<group	string="Venta de Productos"	>
 						<group>
 
+
 		                    <field name="name"/>
 
-		                    <field name="date"/>
-
 <!--
+		                    <field name="date"/>
 -->
 
 
@@ -61,7 +52,8 @@ Fields
 						<group>
 <!--							
 -->
-		                    <field name="qty"/>
+		                    <field name="total_qty"/>
+		                    <field name="total"/>
 
 						</group>
 					</group>
@@ -69,9 +61,70 @@ Fields
 
 
 
+						<notebook>
+							
+							<page	string="Cantidades"	>
+
+								<field name="product_counter_ids"		>
+									<tree string=""		default_order="create_date"	>	
+						
+										<field name="name"		/>
+
+										<field name="qty"		/>
+
+										<field name="total"		/>
+
+
+<!--
+										<field name="product_id"		/>
+
+										<field name="price_unit"		/>
+
+										<field name="product_uom_qty"		/>
+
+										<field name="price_subtotal"		/>
+
+										<field name="x_date_created"	string="Fecha"	/>
+-->
+									</tree>
+								</field>
+							</page>
+						</notebook>
+
+
+
 
 						<notebook>
+
+							<page	string="Detalle"		>
+							
+								<field name="order_line_ids"		>
+									<tree string=""		default_order="create_date"	>	
+						
+										<field name="product_id"		/>
+
+										<field name="price_unit"		/>
+
+										<field name="product_uom_qty"		/>
+
+										<field name="price_subtotal"		/>
+
+										<field name="x_date_created"	string="Fecha"	/>
+
+<!--
+										<field name="name"		/>
+-->
+									</tree>
+								</field>
+							</page>
 						</notebook>
+
+
+
+
+
+
+
 					</sheet>
 				</form>
 			</field>
@@ -94,15 +147,16 @@ Fields
 <!--
 				<tree string="Closing Tree">
 -->
-				<tree default_order='date desc'>
+				<tree default_order='name desc'>
 					
 
+
                     <field name="name"	 				/>
-
+<!--
                     <field name="date"/>
-
-                    <field name="qty"/>
-
+-->
+                    <field name="total_qty"/>
+                    <field name="total"/>
 
 
 				</tree>
@@ -116,7 +170,9 @@ Fields
 
 <!-- ACTION -->
 		<record model="ir.actions.act_window" id="rsp_list_action">
-			<field name="name">RSP</field>
+
+			<field name="name">Venta de Productos - Por Fecha</field>
+			
 			<field name="res_model">openhealth.report.sale.product</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>

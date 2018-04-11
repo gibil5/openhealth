@@ -25,8 +25,8 @@ class order_report_nex(models.Model):
 	# Lines
 	order_line_ids = fields.One2many(
 		
-			#'sale.order.line',			 
-			'openhealth.order.report.nex.line', 
+			#'openhealth.order.report.nex.line', 
+			'openhealth.report.order_line', 
 
 			'order_report_nex_id', 
 			string="Estado de cuenta",

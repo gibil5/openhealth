@@ -9,15 +9,63 @@ import datetime
 
 
 
-# ----------------------------------------------------------- Funcs ------------------------------------------------------
+
+
+# ----------------------------------------------------------- Get orders ------------------------------------------------------
+@api.multi
+#def get_orders(self, date):
+def get_orders_filter(self, date_begin, date_end):
+
+	print
+	print 'Get Orders Two'
+
+
+
+	# Orders 
+	orders = self.env['sale.order'].search([
+													('state', '=', 'sale'),
+													('date_order', '>=', date_begin),
+													('date_order', '<', date_end),
+
+													#('categ_id', '=', categ_id),
+											],
+												order='x_serial_nr asc',
+												#limit=1,
+											)
+	# Count 
+	count = self.env['sale.order'].search_count([
+													('state', '=', 'sale'),
+													('date_order', '>=', date_begin),
+													('date_order', '<', date_end),
+
+													#('categ_id', '=', categ_id),
+											],
+												#order='x_serial_nr asc',
+												#limit=1,
+											)
+
+
+
+
+
+	count = 0 
+
+	return orders, count
+
+
+
+
+
+
+# ----------------------------------------------------------- Get orders ------------------------------------------------------
 
 @api.multi
 #def get_orders(self, date, categ_name):
 def get_orders(self, date):
 
 
-	#print 'jx'
-	#print 'Get Orders'
+	print
+	print 'Get Orders One'
 	#print date 
 
 
@@ -89,6 +137,5 @@ def get_orders(self, date):
 	#print date_end
 	#print orders  
 	
-	#return orders 
 	return orders, count
 

@@ -4,19 +4,37 @@
 # 
 
 from openerp import models, fields, api
-
 import openerp.addons.decimal_precision as dp
-
-
 
 
 class order_report_nex_line(models.Model):
 
 	#_inherit='sale.order.line'
 
-	_name = 'openhealth.order.report.nex.line'
 
-	_description = "Openhealth Order Report Nex Line"
+	#_name = 'openhealth.order.report.nex.line'
+	_name = 'openhealth.report.order_line'
+
+
+	#_description = "Openhealth Order Report Nex Line"
+	_description = "Openhealth Report Order Line"
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Handles ------------------------------------------------------
+	
+	# Report Sale 
+	report_sale_id = fields.Many2one(
+
+		'openhealth.report.sale', 
+		
+		string='Report Reference', 		
+		ondelete='cascade', 
+	)
 
 
 
@@ -35,23 +53,29 @@ class order_report_nex_line(models.Model):
 
 
 
-
-
 	# Order Report Nex 
 	order_report_nex_id = fields.Many2one(
 
-		#'sale.order', 
 		'openhealth.order.report.nex', 
 		
-		string='Order Reference', 		
+		string='Report Reference', 		
 		ondelete='cascade', 
-
-		#required=False, 
-		#index=True, 
-		#copy=False
 	)
 
 
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+	name = fields.Text(
+		string='Description', 
+		required=True, 
+		)
 
 
 
@@ -62,13 +86,6 @@ class order_report_nex_line(models.Model):
 
 
 
-
-
-
-	name = fields.Text(
-		string='Description', 
-		required=True, 
-		)
 	
 
 	product_id = fields.Many2one(
@@ -128,7 +145,9 @@ class order_report_nex_line(models.Model):
 
 
 
-	#@api.depends('product_uom_qty', 'discount', 'price_unit', 'tax_id')
+# ----------------------------------------------------------- Computes ------------------------------------------------------
+
+	# Compute Amount 
 	@api.depends('product_uom_qty', 'price_unit')
 	def _compute_amount(self):
 		for line in self:
@@ -139,27 +158,6 @@ class order_report_nex_line(models.Model):
 				'price_subtotal': total,
 			})
 
-
-
-
-
-
-	#@api.depends('product_uom_qty', 'discount', 'price_unit', 'tax_id')
-	#def _compute_amount(self):
-		"""
-		Compute the amounts of the SO line.
-		"""
-	#   for line in self:
-			
-	#		price = line.price_unit * (1 - (line.discount or 0.0) / 100.0)
-			
-			#taxes = line.tax_id.compute_all(price, line.order_id.currency_id, line.product_uom_qty, product=line.product_id, partner=line.order_id.partner_id)
-			
-	#		line.update({
-				#'price_tax': taxes['total_included'] - taxes['total_excluded'],
-	#			'price_total': taxes['total_included'],
-	#			'price_subtotal': taxes['total_excluded'],
-	#		})
 
 
 

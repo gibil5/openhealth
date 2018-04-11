@@ -2,16 +2,15 @@
 #
 # 	ReportSaleProduct 
 # 
-#
 
 from openerp import models, fields, api
-#import datetime
 import resap_funcs
 
 
 class ReportSaleProduct(models.Model):
 	
-	#_inherit='sale.closing'
+	#_inherit = 'openhealth.report'
+	_inherit = 'openhealth.report.sale'
 
 	_name = 'openhealth.report.sale.product'
 	
@@ -21,9 +20,10 @@ class ReportSaleProduct(models.Model):
 
 
 
+
 # ----------------------------------------------------------- Relational ------------------------------------------------------
 	
-	# Product Counters 
+	# Item Counter
 	product_counter_ids = fields.One2many(
 		
 			'openhealth.product.counter', 
@@ -37,15 +37,54 @@ class ReportSaleProduct(models.Model):
 
 
 
-	# Lines
+	# Order Lines
 	order_line_ids = fields.One2many(
 		
-			'openhealth.order.report.nex.line', 
+			#'openhealth.order.report.nex.line', 
+			'openhealth.report.order_line', 
 
 			'report_sale_product_id', 
 			
 			#string="Estado de cuenta",
 		)
+
+
+
+
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Create Lines ------------------------------------------------------
+
+	# Create Lines 
+	@api.multi
+	def create_lines(self, orders):  
+
+		for order in orders: 
+
+			for line in order.order_line: 
+				
+				if line.product_id.categ_id.name == 'Cremas': 
+
+
+					ret = self.order_line_ids.create({
+															'name': line.name,
+
+															'product_id': line.product_id.id,
+															
+															'price_unit': line.price_unit,
+
+															'product_uom_qty': line.product_uom_qty, 
+															
+															'x_date_created': line.create_date,															
+
+															'report_sale_product_id': self.id,
+													})
 
 
 
@@ -70,62 +109,36 @@ class ReportSaleProduct(models.Model):
 
 
 		# Orders 
-		#categ_name = 'Cremas'
-		#orders,count = resap_funcs.get_orders(self, self.date, categ_name)
-		#orders,count = resap_funcs.get_orders(self, self.date)
 		orders,count = resap_funcs.get_orders(self, self.name)
 		print orders, count
-
+		print 
 
 
 
 
 
 		# Order lines
-		for order in orders: 
-			print order 
-			for line in order.order_line: 
-				
-				if line.product_id.categ_id.name == 'Cremas': 
-					print 'Gotcha'
-					print line.product_id.name 
-
-					ret = self.order_line_ids.create({
-															'name': line.name,
-															'product_id': line.product_id.id,
-															'price_unit': line.price_unit,
-
-															'product_uom_qty': line.product_uom_qty, 
-															
-															'x_date_created': line.create_date,															
-
-															'report_sale_product_id': self.id,
-													})
-
-					print ret 
-					print 
+		self.create_lines(orders)
 
 
 
-		# Lines
+
+
+		# Item Counter 
 		total_qty = 0
 		total = 0 
 		for order_line in self.order_line_ids: 
 
 
+
 			name = order_line.product_id.name
 			qty = order_line.product_uom_qty
-
-
-			#total = order_line.price_subtotal 
 			subtotal = order_line.price_total 
-
-
-
 
 
 			total_qty = total_qty + qty
 			total = total + subtotal
+
 
 
 
@@ -139,11 +152,11 @@ class ReportSaleProduct(models.Model):
 												limit=1,
 											)
 
-			print prod_ctr
+			#print prod_ctr
 
 
 			if prod_ctr.name != False: 
-				print prod_ctr.name 
+				#print prod_ctr.name 
 				
 				prod_ctr.increase_qty(qty)
 
@@ -163,7 +176,7 @@ class ReportSaleProduct(models.Model):
 															'report_sale_product_id': self.id,
 													})
 
-				print ret 
+				#print ret 
 
 
 
@@ -171,9 +184,10 @@ class ReportSaleProduct(models.Model):
 
 		self.total_qty = total_qty
 		self.total = total
-		print self.total_qty
-		print self.total
-		print 
+		#print self.total_qty
+		#print self.total
+		#print 
+
 
 
 
@@ -182,7 +196,7 @@ class ReportSaleProduct(models.Model):
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
 
 
-	# Name
+
 	name = fields.Date(
 			string="Fecha", 
 			default = fields.Date.today, 
@@ -194,18 +208,6 @@ class ReportSaleProduct(models.Model):
 
 
 
-	total_qty = fields.Integer(
-			string="Cantidad", 
-		)
-
-	total = fields.Float(
-			string="Total", 
-		)
 
 
 
-
-	vspace = fields.Char(
-			' ', 
-			readonly=True
-		)

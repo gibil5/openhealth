@@ -5,6 +5,124 @@
 
 
 
+
+
+
+
+<!-- Parents --> 
+
+		<!-- Laser --> 
+		<record id='laser_service_categ' model='product.category'>
+			<field name='name'>Laser</field>
+		</record>
+
+
+
+		<!-- Procedure --> 
+		<record id='procedure_categ' model='product.category'>
+			<field name='name'>Procedimiento</field>
+		</record>
+
+
+
+		<!-- Consultation --> 
+		<record id='consultation_categ' model='product.category'>
+			<field name='name'>Consulta</field>
+		</record>
+
+
+
+
+
+<!-- Services --> 
+
+
+
+		<!-- Quick --> 
+		<record id='laser_quick' model='product.category'>
+			<field name='name'>Quick Laser</field>
+<!--
+			<field name='parent_id' 	ref='laser_service_categ'/>
+			<field name='parent_id' 	ref='procedure_service_categ'/>
+-->	
+		</record>
+
+
+
+
+		<!-- Co2 --> 
+		<record id='laser_co2' model='product.category'>
+<!--
+			<field name='name'>Laser Co2</field>
+-->
+			<field name='name'>Procedimiento</field>
+
+<!--
+			<field name='parent_id' 	ref='laser_service_categ'/>
+-->
+			<field name='parent_id' 	ref='procedure_service_categ'/>
+		</record>
+
+
+
+
+		<!-- Excilite --> 
+		<record id='laser_excilite' model='product.category'>
+			<field name='name'>Laser Excilite</field>
+<!--			
+			<field name='parent_id' 	ref='laser_service_categ'/>
+			<field name='parent_id' 	ref='procedure_service_categ'/>
+-->
+		</record>
+
+
+
+		<!-- M22 --> 
+		<record id='laser_m22' model='product.category'>
+			<field name='name'>Laser M22</field>
+<!--
+			<field name='parent_id' 	ref='laser_service_categ'/>
+			<field name='parent_id' 	ref='procedure_service_categ'/>
+-->
+		</record>
+
+
+
+
+
+
+		<!-- Medical --> 
+		<record id='medical' model='product.category'>
+			<field name='name'>Medical</field>
+<!--
+			<field name='parent_id' 	ref='procedure_service_categ'/>
+-->
+		</record>
+
+
+
+
+		<!-- Consultation --> 
+		<record id='consultation' model='product.category'>
+			<field name='name'>Consultas</field>
+<!--
+			<field name='parent_id' 	ref='consultation_service_categ'/>
+-->
+		</record>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		<!-- Consumibles --> 
 		<record id='consumable' model='product.category'>
 			<field name='name'>Consumibles</field>
@@ -57,14 +175,6 @@
 
 
 
-<!-- Quick --> 
-		<record id='laser_quick' model='product.category'>
-			<field name='name'>Quick Laser</field>
-<!--
-			<field name='parent_id' 	ref='laser_service_categ'/>
--->	
-		</record>
-
 
 
 
@@ -94,6 +204,11 @@
 -->
 		</record>
 
+
+
+
+
+
 		<record id='card' model='product.category'>
 			<field name='name'>Tarjetas</field>
 <!--			
@@ -113,61 +228,6 @@
 		</record>
 
 
-
-
-
-
-
-
-<!-- Services --> 
-
-		<!-- Parent --> 
-		<record id='laser_service_categ' model='product.category'>
-			<field name='name'>Laser</field>
-		</record>
-
-
-		<!-- Co2 --> 
-		<record id='laser_co2' model='product.category'>
-			<field name='name'>Laser Co2</field>
-<!--
-			<field name='parent_id' 	ref='laser_service_categ'/>
--->
-		</record>
-
-
-		<!-- Excilite --> 
-		<record id='laser_excilite' model='product.category'>
-			<field name='name'>Laser Excilite</field>
-<!--			
-			<field name='parent_id' 	ref='laser_service_categ'/>
--->
-		</record>
-
-
-		<!-- M22 --> 
-		<record id='laser_m22' model='product.category'>
-			<field name='name'>Laser M22</field>
-<!--
-			<field name='parent_id' 	ref='laser_service_categ'/>
--->
-		</record>
-
-
-
-
-
-
-		<!-- Medical --> 
-		<record id='medical' model='product.category'>
-			<field name='name'>Medical</field>
-		</record>
-
-
-		<!-- Consultation --> 
-		<record id='consultation' model='product.category'>
-			<field name='name'>Consultas</field>
-		</record>
 
 
 

@@ -1,34 +1,9 @@
 # -*- coding: utf-8 -*-
 
+
 #from . import models
 
-
-
-# Deprecated 
-#from . import base  	- DEPRECATED ? 
-#from . import test  	- DEPRECATED ?
-
-
-
-# Deprecated 
-#from . import sale_document
-
-#from . import sale_proof
-#from . import invoice
-#from . import receipt
-#from . import advertisement
-#from . import sale_note
-#from . import ticket_receipt
-#from . import ticket_invoice
-
-
-
-
-
-# Deprecated ?
-#from . import product_manager
-#from . import order_report
-#from . import order_line_report
+#from . import order_report_nex_line
 
 
 
@@ -37,12 +12,25 @@
 
 
 
-
-
+# Reports
+from . import report
+from . import report_sale
+from . import report_sale_product
+from . import report_order_line
 
 
 from . import product_counter 
-from . import report_sale_product
+
+
+
+
+
+from . import sale_report
+from . import sale_report_month
+from . import sale_report_day 
+
+
+
 
 
 
@@ -55,7 +43,6 @@ from . import product_selector
 
 
 from . import order_report_nex
-from . import order_report_nex_line
 
 
 from . import account_invoice
@@ -106,11 +93,6 @@ from . import data_analyzer
 
 
 
-# Deprecated 
-#from . import learn_1
-#from . import quotation
-#from . import pathology
-#from . import therapist 
 
 
 
@@ -289,30 +271,6 @@ from . import order_line
 
 
 
-
-
-
-
-
-
-
-
-#from . import oh_sale_report
-from . import sale_report
-from . import sale_report_month
-from . import sale_report_day 
-
-
-
-
-
-
-
-
-
-
-
-
 from . import counter
 
 from . import payment_method
@@ -320,7 +278,6 @@ from . import payment_method_line
 
 
 from . import event 
-
 
 from . import appointment 
 

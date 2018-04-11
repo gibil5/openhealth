@@ -46,8 +46,8 @@ class ProductCounter(models.Model):
 	@api.multi
 	def increase_qty(self, qty):  
 
-		print
-		print 'Increase Qty'
+		#print
+		#print 'Increase Qty'
 
 		self.qty = self.qty + qty 
 
@@ -58,20 +58,10 @@ class ProductCounter(models.Model):
 	@api.multi
 	def increase_total(self, total):  
 
-		print
-		print 'Increase Qty'
+		#print
+		#print 'Increase Total'
 
 		self.total = self.total + total 
-
-
-
-
-
-
-
-
-
-
 
 
 

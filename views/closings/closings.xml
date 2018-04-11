@@ -64,7 +64,10 @@ Fields
 <!--							
 -->
 		                    <field name="total"/>
-
+<!--
+		                    <field name="total_cash"		/>
+-->
+		                    <field name="total_cards"/>
 						</group>
 					</group>
 
@@ -184,7 +187,9 @@ Fields
 
                     <field name="name"	 				/>
 
-                    <field name="cash_tot"	string="Total Efectivo"	/>
+<!--
+                    <field name="total_cash"/>
+-->
 
                     <field name="total_cards"/>
 

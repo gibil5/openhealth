@@ -32,6 +32,7 @@ class Card(models.Model):
 
 
 	active = fields.Boolean(
+			string="Activa", 
 			default=True, 
 		)
 	

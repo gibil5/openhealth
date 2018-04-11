@@ -50,23 +50,16 @@ Fields
 -->
 					<group	string="Total"	>
 						<group>
-
 		                    <field name="name"/>
 
 		                    <field name="date"/>
-
-<!--
--->
-
-
 						</group>
 						<group>
-<!--							
--->
 		                    <field name="total"/>
 <!--
-		                    <field name="total_cash"		/>
 -->
+		                    <field name="total_cash"		/>
+
 		                    <field name="total_cards"/>
 						</group>
 					</group>
@@ -188,8 +181,8 @@ Fields
                     <field name="name"	 				/>
 
 <!--
-                    <field name="total_cash"/>
 -->
+                    <field name="total_cash"/>
 
                     <field name="total_cards"/>
 

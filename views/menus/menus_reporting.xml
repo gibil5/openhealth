@@ -24,16 +24,11 @@
 					sequence="0"
 					
 					name="Venta de Productos"			
-
 				/>
 
 
-
-
 				<menuitem 	id="report_sale_product_submenu" 
-
 							parent="report_sale_product_menu"
-					
 							sequence="1"
 
 							name="Por Fecha" 
@@ -47,7 +42,9 @@
 
 
 
+
 <!-- Daily --> 
+<!--
 		<menuitem 	id="sales_reporting_daily_menu" 
 					parent="main_reporting_sales_menu"
 					sequence="1"
@@ -70,8 +67,7 @@
 						/>
 
 
-<!--
--->
+
 				<menuitem 	id="sales_reporting_sales_daily_servs" 
 							parent="sales_reporting_daily_menu"
 							sequence="2"
@@ -91,6 +87,7 @@
 
 							action="action_order_report_day_all"
 						/>
+-->
 
 
 

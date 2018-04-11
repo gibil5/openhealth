@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
-	<data noupdate='1'>
+	<data noupdate='0'>
 
 
 
@@ -19,7 +19,7 @@
 			<field name='x_price_vip'>1200</field>
 			<field name='x_family'>medical</field>
 
-			<field name='categ_id' ref="medical"/>
+			<field name='categ_id' ref="procedure_categ"/>
 
 
 <!--			
@@ -54,7 +54,7 @@
 			<field name='x_price_vip'>2700</field>
 			
 			<field name='x_family'>medical</field>
-			<field name='categ_id' ref="medical"/>
+			<field name='categ_id' ref="procedure_categ"/>
 		</record>
 
 
@@ -74,7 +74,7 @@
 			<field name='x_price_vip'>1000</field>
 			
 			<field name='x_family'>medical</field>
-			<field name='categ_id' ref="medical"/>
+			<field name='categ_id' ref="procedure_categ"/>
 		</record>
 
 
@@ -101,7 +101,7 @@
 			<field name='x_price_vip'>1200</field>
 			
 			<field name='x_family'>medical</field>
-			<field name='categ_id' ref="medical"/>
+			<field name='categ_id' ref="procedure_categ"/>
 		</record>
 
 
@@ -120,7 +120,7 @@
 			<field name='x_price_vip'>800</field>
 			<field name='x_family'>medical</field>
 
-			<field name='categ_id' ref="medical"/>
+			<field name='categ_id' ref="procedure_categ"/>
 		</record>
 
 		<record id='pla_hea_rec' model='product.template'>
@@ -137,7 +137,7 @@
 			<field name='x_price_vip'>1600</field>
 			<field name='x_family'>medical</field>
 
-			<field name='categ_id' ref="medical"/>
+			<field name='categ_id' ref="procedure_categ"/>
 		</record>
 
 		<record id='men_faa_rfa' model='product.template'>
@@ -154,7 +154,7 @@
 			<field name='x_price_vip'>4000</field>
 			<field name='x_family'>medical</field>
 
-			<field name='categ_id' ref="medical"/>
+			<field name='categ_id' ref="procedure_categ"/>
 		</record>
 
 
@@ -173,7 +173,7 @@
 			<field name='x_price_vip'>1000</field>
 			<field name='x_family'>medical</field>
 
-			<field name='categ_id' ref="medical"/>
+			<field name='categ_id' ref="procedure_categ"/>
 		</record>
 
 		<record id='lep_faa_sta_one' model='product.template'>
@@ -190,7 +190,7 @@
 			<field name='x_price_vip'>1500</field>
 			<field name='x_family'>medical</field>
 
-			<field name='categ_id' ref="medical"/>
+			<field name='categ_id' ref="procedure_categ"/>
 		</record>
 
 		<record id='lep_bac_acn_one' model='product.template'>
@@ -207,7 +207,7 @@
 			<field name='x_price_vip'>1500</field>
 			<field name='x_family'>medical</field>
 
-			<field name='categ_id' ref="medical"/>
+			<field name='categ_id' ref="procedure_categ"/>
 		</record>
 
 		<record id='men_faa_rfa' model='product.template'>
@@ -224,7 +224,7 @@
 			<field name='x_price_vip'>2500</field>
 			<field name='x_family'>medical</field>
 
-			<field name='categ_id' ref="medical"/>
+			<field name='categ_id' ref="procedure_categ"/>
 		</record>
 
 
@@ -242,7 +242,7 @@
 			<field name='x_price_vip'>1200</field>
 			<field name='x_family'>medical</field>
 
-			<field name='categ_id' ref="medical"/>
+			<field name='categ_id' ref="procedure_categ"/>
 		</record>
 
 		<record id='pla_faa_rfa' model='product.template'>
@@ -259,7 +259,7 @@
 			<field name='x_price_vip'>1600</field>
 			<field name='x_family'>medical</field>
 
-			<field name='categ_id' ref="medical"/>
+			<field name='categ_id' ref="procedure_categ"/>
 		</record>
 
 		<record id='lep_faa_acn_one' model='product.template'>
@@ -276,7 +276,7 @@
 			<field name='x_price_vip'>1500</field>
 			<field name='x_family'>medical</field>
 
-			<field name='categ_id' ref="medical"/>
+			<field name='categ_id' ref="procedure_categ"/>
 		</record>
 
 
@@ -294,7 +294,7 @@
 			<field name='x_price_vip'>800</field>
 			<field name='x_family'>medical</field>
 
-			<field name='categ_id' ref="medical"/>
+			<field name='categ_id' ref="procedure_categ"/>
 		</record>
 
 		<record id='bot_1zo_rfa_one' model='product.template'>
@@ -311,7 +311,7 @@
 			<field name='x_price_vip'>700</field>
 			<field name='x_family'>medical</field>
 
-			<field name='categ_id' ref="medical"/>
+			<field name='categ_id' ref="procedure_categ"/>
 		</record>
 
 		<record id='lep_bac_sta_one' model='product.template'>
@@ -328,7 +328,7 @@
 			<field name='x_price_vip'>1500</field>
 			<field name='x_family'>medical</field>
 
-			<field name='categ_id' ref="medical"/>
+			<field name='categ_id' ref="procedure_categ"/>
 		</record>
 
 
@@ -352,7 +352,7 @@
 			<field name='x_price_vip'>0</field>
 			
 			<field name='x_family'>medical</field>
-			<field name='categ_id' ref="medical"/>
+			<field name='categ_id' ref="procedure_categ"/>
 		</record>
 
 		<record id='ivc_na_na_one' model='product.template'>
@@ -370,7 +370,7 @@
 			<field name='x_price_vip'>0</field>
 			
 			<field name='x_family'>medical</field>
-			<field name='categ_id' ref="medical"/>
+			<field name='categ_id' ref="procedure_categ"/>
 		</record>
 
 

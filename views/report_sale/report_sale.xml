@@ -117,6 +117,10 @@
 						
 										<field name="product_id"		/>
 
+
+										<field name="patient"		/>
+
+
 										<field name="price_unit"		/>
 
 										<field name="product_uom_qty"		/>

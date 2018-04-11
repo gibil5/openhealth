@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
-	<data noupdate='1'>
+	<data noupdate='0'>
 
 
 
@@ -19,7 +19,7 @@
 			<field name='x_date_created'>2017-05-09 05:55:55 UTC</field>
 			<field name='x_family'>consultation</field>
 
-			<field name='categ_id' ref="consultation"/>
+			<field name='categ_id' ref="consultation_categ"/>
 		</record>
 
 		<record id='con_gyn' model='product.template'>
@@ -36,7 +36,7 @@
 			<field name='x_date_created'>2017-05-09 05:55:55 UTC</field>
 			<field name='x_family'>consultation</field>
 
-			<field name='categ_id' ref="consultation"/>
+			<field name='categ_id' ref="consultation_categ"/>
 		</record>
 
 	</data>

@@ -37,9 +37,11 @@ class ReportSale(models.Model):
 	categ = fields.Selection(
 
 			[	
-				('Cremas', 				'Cremas'),
-				('Consultas', 			'Consultas'),
-				('Procedimientos', 		'Procedimientos'),
+				#('Cremas', 			'Cremas'),
+				('Cremas', 				'Productos'),
+
+				('Consulta', 			'Consulta'),
+				('Procedimiento', 		'Procedimiento'),
 			], 
 
 		)
@@ -100,6 +102,9 @@ class ReportSale(models.Model):
 			ret = self.order_line_ids.create({
 														'name': line.name,
 														'product_id': line.product_id.id,
+
+														'patient': line.order_id.patient.id,
+
 														'price_unit': line.price_unit,
 														'product_uom_qty': line.product_uom_qty, 
 														'x_date_created': line.create_date,															

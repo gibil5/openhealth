@@ -86,6 +86,29 @@ class order_report_nex_line(models.Model):
 
 
 
+
+
+	#partner_id = fields.Many2one(
+	#	'res.partner', 
+		
+	#	string='Cliente', 
+	#	required=True, 		
+	#	)
+	
+
+
+
+	patient = fields.Many2one(
+		'oeh.medical.patient',
+
+		string='Paciente', 
+		#required=True, 		
+		)
+
+
+
+
+
 	
 
 	product_id = fields.Many2one(

@@ -77,6 +77,10 @@ class ReportSaleProduct(models.Model):
 
 															'product_id': line.product_id.id,
 															
+
+															'patient': order.patient.id,
+
+
 															'price_unit': line.price_unit,
 
 															'product_uom_qty': line.product_uom_qty, 

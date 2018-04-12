@@ -31,37 +31,16 @@ class sale_order(models.Model):
 
 # ----------------------------------------------------------- Deprecated ------------------------------------------------------
 
-	#receipt = fields.Many2one(
-	#	'openhealth.receipt',
-	#	string='Boleta de venta',
-	#)
 
-	#x_invoice = fields.Many2one(
-	#	'openhealth.invoice',
-	#	string='Factura',
-	#)
-
-	#x_advertisement = fields.Many2one(
-	#	'openhealth.advertisement',		
-	#	string='Canje',
-	#	)
-
-	#x_sale_note = fields.Many2one(
-	#	'openhealth.sale_note',		
-	#	string='Nota de venta',
-	#	)
-
-	#x_ticket_receipt = fields.Many2one(
-	#	'openhealth.ticket_receipt',		
-	#	string='Ticket Boleta',
-	#	)
-
-	#x_ticket_invoice = fields.Many2one(
-	#	'openhealth.ticket_invoice',		
-	#	string='Ticket Factura',
-	#	)
-
-
+	# Test Bug 
+	#@api.multi 
+	#def test_bug(self):
+	#	print 'jx'
+	#	print 'Test and Hunt !'
+	#	target_line = 'quick_body_local_cyst_2'
+	#	print target_line
+	#	ret = self.x_create_order_lines_target(target_line)
+	#	print ret  
 
 
 
@@ -146,6 +125,11 @@ class sale_order(models.Model):
 
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+	x_confirmed = fields.Boolean(
+			default=False, 
+		)
+
 
 	treatment = fields.Many2one(
 			'openhealth.treatment',
@@ -701,59 +685,27 @@ class sale_order(models.Model):
 
 
 
+
 # ----------------------------------------------------------- Serial Number ------------------------------------------------------
 
 	# Serial Number 
 	x_serial_nr = fields.Char(
-
 			'Número de serie', 
-
 
 			#compute="_compute_x_serial_nr",
 		)
 
 
-
-	@api.multi
-	#@api.depends('partner_id')
-
-	def _compute_x_serial_nr(self):
-		for record in self:
-
-			if record.x_payment_method != False: 
-
-				serial_nr = record.x_payment_method.saledoc_code 
-
-				record.x_serial_nr = serial_nr
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	#@api.multi
-	#def _compute_patient(self):
+	#@api.depends('partner_id')
+	#def _compute_x_serial_nr(self):
 	#	for record in self:
-	#		patient = self.env['oeh.medical.patient'].search([
-	#															('name', '=', self.partner_id.name), 
-	#													],
-														#order='appointment_date desc',
-	#													limit=1,
-	#												)
-	#		if patient.name != False:
-	#			record.patient = patient
+	#		if record.x_payment_method != False: 
+	#			serial_nr = record.x_payment_method.saledoc_code 
+	#			record.x_serial_nr = serial_nr
+
+
+
 
 
 
@@ -767,20 +719,6 @@ class sale_order(models.Model):
 
 
 # ----------------------------------------------------------- Test and Hunt ------------------------------------------------------
-	# Test Bug 
-	@api.multi 
-	def test_bug(self):
-
-		print 'jx'
-		print 'Test and Hunt !'
-
-		target_line = 'quick_body_local_cyst_2'
-		
-		print target_line
-
-		ret = self.x_create_order_lines_target(target_line)
-		
-		print ret  
 
 
 
@@ -790,13 +728,10 @@ class sale_order(models.Model):
 
 # ----------------------------------------------------------- Create order lines ------------------------------------------------------
 	#@api.multi 
-	#def x_create_order_lines_target(self, target):		
-	#def x_create_order_lines_target(self, target, price_manual):		
 	def x_create_order_lines_target(self, target, price_manual, price_applied):		
 
 		
 		print 
-		print 'jx'
 		print 'Create Order Lines Target'
 		print target
 		#print 
@@ -813,108 +748,68 @@ class sale_order(models.Model):
 		
 
 		print product
-		print product.id
 		print product.name
-		print product.x_name_short
-
-
-		print product.categ_id
-		print product.categ_id.name
-
-
-
-		#product_id = product.id
-		#price_unit = product.list_price
-		#x_price_vip = product.x_price_vip
-		#product_uom = product.uom_id.id
-		#print product
 		#print product.id
-		#print product.uom_id.id
-		#print 
+		#print product.x_name_short
+		#print product.categ_id
+		#print product.categ_id.name
 
 
 
 
-#jxx
-		#ol = self.order_line.create({
-		#								'product_id': product.id,
-		#								'order_id': order_id,										
-
-		#								'x_price_manual': price_manual, 
 
 
-										#'name': target,
-										#'name': product.name,
-										#'state':'draft',
-										#'price_unit': price_unit,
-										#'x_price_vip': x_price_vip,
-										#'product_uom': product_uom, 
-		#							})
+# Order line creation  - With the correct price 
 
 
-		# Manual price  
+		# Manual Price  
 		if price_manual != 0: 
+
+			print 'Manual Price'
 
 			ol = self.order_line.create({
 											'product_id': product.id,
 											'order_id': order_id,										
 
-											'x_price_manual': price_manual, 
-
 											'price_unit': price_manual,
 
-											#'name': target,
-											#'name': product.name,
-											#'state':'draft',
-											#'x_price_vip': x_price_vip,
-											#'product_uom': product_uom, 
+											'x_price_manual': price_manual, 
 										})
 
 		
 
-		#elif self.x_vip_inprog: 	
-		elif product.categ_id.name == 'Quick Laser': 	
 		
-			print 'gotcha !'
+		
+		# Quick Laer 
+		#elif product.categ_id.name == 'Quick Laser': 	
+		elif product.x_treatment == 'laser_quick': 	
+		
 
-			#price_quick = 77
+			print 'Quick Laser Price'
+
 			price_quick = price_applied
 
 
 			ol = self.order_line.create({
 											'product_id': product.id,
-											'order_id': order_id,										
-
+											'order_id': order_id,
 
 											'price_unit': price_quick,
-
-
-											#'x_price_manual': price_manual, 
-											#'name': target,
-											#'name': product.name,
-											#'state':'draft',
-											#'x_price_vip': x_price_vip,
-											#'product_uom': product_uom, 
 										})
 
 
 
 
 
-		# Normal case 
-		else: 		
+		# Normal cases 
+		else: 
+
+			print 'Normal Price'		
+			
+
 			ol = self.order_line.create({
-										'product_id': product.id,
-										'order_id': order_id,										
-
-										#'x_price_manual': price_manual, 
-
-										#'name': target,
-										#'name': product.name,
-										#'state':'draft',
-										#'price_unit': price_unit,
-										#'x_price_vip': x_price_vip,
-										#'product_uom': product_uom, 
+											'product_id': product.id,
+											'order_id': order_id,
 									})
 
 
@@ -1196,41 +1091,6 @@ class sale_order(models.Model):
 
 
 
-	# Type (product or service)
-	#x_cancel_reason = fields.Char(
-	x_cancel_reason = fields.Selection(
-			selection=ord_vars._owner_type_list, 
-			#string='Motivo de anulación', 
-			string='Tipo', 
-		)
-
-
-	# Product Odoo 
-	x_cancel_owner = fields.Char(
-			#string='Quién anula', 
-			string='Producto', 
-		)
-
-
-
-	# Categ
-	categ = fields.Char(
-
-			'Categoria', 
-
-			compute="_compute_categ",
-		)
-
-	@api.multi
-	#@api.depends('partner_id')
-
-	def _compute_categ(self):
-		for record in self:
-
-			for line in record.order_line:
-
-				#record.categ = line.product_id.name
-				record.categ = line.product_id.categ_id.name
 
 
 
@@ -1241,26 +1101,11 @@ class sale_order(models.Model):
 
 
 
-	# Comment 
-	comment = fields.Selection(
-		[
-		('product', 'Product'),
-		('service', 'Service'),
-		], 
-		string='Comment', 
-		default='product', 
-		readonly=True
-	)
 
 
 
 
 
-
-	# Deprecated ? 
-	#margin = fields.Float(
-	#		string="Margen"
-	#	)
 
 	validity_date = fields.Char(
 			string="Fecha de expiración"
@@ -1276,152 +1121,12 @@ class sale_order(models.Model):
 
 
 
-	# Consultation - DEPRECATED ? 
-	consultation = fields.Many2one(
-			'openhealth.consultation',
-			string="Consulta",
-			ondelete='cascade', 
-		)
-
-
-
-	# Ooor 
-	x_age = fields.Integer(string='Age', default=52, help='Age of student')
-
-	x_group = fields.Char(string='Group', compute='_compute_x_group', help='Group of student', store=True)
-
-	@api.depends('x_age')
-	def _compute_x_group(self):
-	
-		#self.x_group = 'NA'
-		#if self.x_age > 5 and self.x_age <= 10:
-		#	self.x_group = 'A'
-		#elif self.x_age > 10 and self.x_age <= 12:
-		#	self.x_group = 'B'
-		#elif self.x_age > 12:
-		#	self.x_group = 'C'
-
-		for record in self:
-			record.x_group = 'NA'
-			if record.x_age > 5 and record.x_age <= 10:
-				record.x_group = 'A'
-			elif record.x_age > 10 and record.x_age <= 12:
-				record.x_group = 'B'
-			elif record.x_age > 12:
-				record.x_group = 'C'
-
-
-
-
-	# Year
-	x_year = fields.Char(
-			compute="_compute_x_year",
-
-			string='Year', 
-
-			#store=True, 
-
-			default=False, 
-		)
-
-	#@api.multi
-	@api.one
-	@api.depends('date_order')
-	def _compute_x_year(self):
-		#print 
-		#print 'Compute X Year'
-
-		#date = datetime.datetime.strptime(self.date_order, date_format)
-		#self.x_year = date.year
-		#print self.x_year
-		#print 
-		#self.fats = self.name.fats
-
-		for record in self:
-			date_format = "%Y-%m-%d %H:%M:%S"
-			date = datetime.datetime.strptime(record.date_order, date_format)
-			record.x_year = date.year
-
-
-
-
-	# Month 
-	x_month = fields.Char(
-			string='Month', 
-			
-			#store=True, 
-			required=False, 
-
-			compute="_compute_x_month",
-		)
-
-	#@api.multi
-	@api.depends('date_order')
-	def _compute_x_month(self):
-		for record in self:
-			#record.x_month = 'jz'
-
-			date_format = "%Y-%m-%d %H:%M:%S"
-			date = datetime.datetime.strptime(record.date_order, date_format)
-			record.x_month = date.month
 
 
 
 
 
 
-	note = fields.Text(
-			"Nota",					
-		)
-
-
-
-	# Doctor name  
-	x_doctor_name = fields.Char(
-		)
-	doctor_name = fields.Char(
-								default = 'generic doctor',
-		)
-
-
-
-
-
-
-	# Consistency 
-
-	#subtotal = fields.Float(
-	#		string = 'Sub-total', 
-			#required=True, 
-	#	)
-
-	#method = fields.Selection(
-	#		string="Medio", 
-	#		selection = ord_vars._payment_method_list, 			
-	#		required=True, 
-	#	)
-
-	# Number of paymethods  
-	#pm_complete = fields.Boolean(
-	#							default = False, 
-	#							readonly=False,
-								#string="Pm Complete",
-								#compute="_compute_pm_complete",
-	#)
-
-
-
-
-
-
-	# Print Order
-	#@api.multi 
-	#def print_order(self):
-		#print 
-		#print 'Print Order'
-		#ret = self.treatment.open_myself()
-		#return ret 
-	# open_treatment
 
 
 
@@ -1440,12 +1145,8 @@ class sale_order(models.Model):
 	@api.multi 
 	def open_treatment(self):
 
-
 		#print 
 		#print 'Open Treatment'
-		#ret = self.treatment.open_myself()
-
-
 
 		if self.treatment.name != False:
 			ret = self.treatment.open_myself()
@@ -1455,20 +1156,18 @@ class sale_order(models.Model):
 			#print 'This should not happen !'
 			ret = 0 
 
-
 		return ret 
 	# open_treatment
+
 
 
 
 	# Open Cosmetology
 	#@api.multi 
 	#def open_cosmetology(self):
-
 		#print 
 		#print 'Open cosmetology'
 	#	ret = self.cosmetology.open_myself()
-	
 	#	return ret 
 	# open_cosmetology
 
@@ -1562,181 +1261,16 @@ class sale_order(models.Model):
 
 
 
-	
 
 
 
-	#compute="_compute_x_doctor_name",
-	#@api.multi
-	#@api.depends('x_doctor')
-
-	#def _compute_x_doctor_name(self):
-	#	for record in self:
-	#		record.x_doctor_name = record.x_doctor.name 
-
-
-
-
-	# Doctor name  
-	x_partner_name = fields.Char(
-									default = 'generic partner',
-									#compute="_compute_x_partner_name",
-	)
-	
-	#@api.multi
-	#@api.depends('partner_id')
-
-	#def _compute_x_partner_name(self):
-	#	for record in self:
-	#		record.x_partner_name = record.partner_id.name 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	# Number of paymethods  
-	#pm_complete = fields.Boolean(
-	#							default = False, 
-	#							readonly=False,
-								#string="Pm Complete",
-								#compute="_compute_pm_complete",
-	#)
-	
-	#@api.multi
-	#@api.depends('pm_total')
-
-	#def _compute_pm_complete(self):
-	#	#print 'Compute Pm Complete'
-	#	for record in self:
-	#		if record.pm_total == record.x_amount_total: 
-	#			#print 'Equal !'
-	#			record.pm_complete = True
-				#record.state = 'payment'
-	#		else:
-	#			#print 'Not Equal'
-	#		#print record.pm_total
-	#		#print record.x_amount_total
-	#		#print record.pm_complete
-	#		#print record.state
-
-
-
-
-
-	# Payment Complete
-	x_payment_complete = fields.Boolean(
-								#default = False, 
-								#readonly=False,
-								#string="Pm Complete",
-	)
-
-
-
-
-
+# ----------------------------------------------------------- Reset ------------------------------------------------------
 	@api.multi 
 	def x_reset(self):
 		self.x_payment_method.unlink()
 		self.state = 'draft'			# This works. 
 		self.x_confirmed = False
 	
-
-
-
-
-
-
-
-
-
-
-
-	x_confirmed = fields.Boolean(
-			default=False, 
-		)
-
-
-
-
-	# Total of Payments
-	pm_total = fields.Float(
-								#string="Total",
-								#compute="_compute_pm_total",
-	)
-	
-	@api.multi
-	#@api.depends('x_payment_method')
-
-	def _compute_pm_total(self):
-		for record in self:
-			total = 0.0
-			for pm in record.x_payment_method:
-				total = total + pm.subtotal
-			record.pm_total = total
-			record.x_payment_complete = True
-	# _compute_pm_total
-
-
-
-
-
-	# Target 
-	x_target = fields.Selection(
-			string="Target", 
-
-			#selection = jxvars._target_list, 
-			selection = app_vars._target_list, 
-
-			compute='_compute_x_target', 
-		)
-
-
-
-
-	#@api.multi
-	@api.depends('x_doctor')
-
-	def _compute_x_target(self):
-		for record in self:
-
-			#if record.x_doctor.name != False: 
-			if record.treatment.name != False: 
-				record.x_target = 'doctor'
-
-			#if record.x_therapist.name != False: 
-			if record.cosmetology.name != False: 
-				record.x_target = 'therapist'
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1916,14 +1450,15 @@ class sale_order(models.Model):
 
 
 
-# ---------------------------------------------- Event --------------------------------------------------------
 
+# ---------------------------------------------- Cancel --------------------------------------------------------
+
+	# Event 
 	event_ids = fields.One2many(
 			'openhealth.event',
 			'order',		
 			string="Eventos", 
 		)
-
 
 
 	x_cancel = fields.Boolean(
@@ -1932,25 +1467,14 @@ class sale_order(models.Model):
 		)
 
 
-
 	@api.multi 
 	def cancel_order(self):
-
 		#print 
 		#print 'Cancel'
 		self.x_cancel = True
-
-
-
 		self.state = 'cancel'
-
-
-
 		ret = self.create_event()
-		#ret = order_funcs.create_event(self)
-
 		return(ret)
-
 
 
 
@@ -1963,7 +1487,6 @@ class sale_order(models.Model):
 
 
 
-
 	@api.multi 
 	def create_event(self):
 		nr_pm = self.env['openhealth.event'].search_count([('order','=', self.id),]) 
@@ -1973,19 +1496,15 @@ class sale_order(models.Model):
 		return {
 				'type': 'ir.actions.act_window',
 				'name': ' New PM Current', 
-
 				'view_type': 'form',
 				'view_mode': 'form',	
 				'target': 'current',
-
 				'res_model': 'openhealth.event',				
 				#'res_id': receipt_id,
-
 				'flags': 	{
 								#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 								'form': {'action_buttons': True, }
 							},
-
 				'context': {
 								'default_order': self.id,
 								'default_name': name,
@@ -1993,8 +1512,6 @@ class sale_order(models.Model):
 							}
 				}
 	# create_event
-
-
 
 
 
@@ -2088,14 +1605,13 @@ class sale_order(models.Model):
 
 
 		# Init vars 
-		#nr_pm = self.env['openhealth.payment_method'].search_count([('order','=', self.id),]) 
-		#name = 'Pago ' + str(nr_pm + 1)
-		#total = self.x_amount_total
-
 		name = 'Pago'
 		method = 'cash'
 
-		balance = self.x_amount_total - self.pm_total
+
+
+		#balance = self.x_amount_total - self.pm_total
+		balance = self.x_amount_total
 
 		
 
@@ -2110,30 +1626,23 @@ class sale_order(models.Model):
 		# Create 
 		self.x_payment_method = self.env['openhealth.payment_method'].create({
 																				'order': self.id,
-
-																				'name': name,
-																			
+																				'name': name,																			
 																				'method': method,
-																			
-																				'subtotal': balance,																			
-																			
+																				'subtotal': balance,
 																				'total': self.x_amount_total,
-
-																				#'pm_total': self.pm_total,
-
-																				#'balance': balance, 
-																				#'balance': 0, 
-
 																				'partner': self.partner_id.id, 
-
 																				'date_created': self.date_order,
-
-																				#'saledoc': 'receipt', 
 
 
 																				'dni': dni,
 																				'firm': firm,
 																				'ruc': ruc,
+
+
+																				#'saledoc': 'receipt', 
+																				#'pm_total': self.pm_total,
+																				#'balance': balance, 
+																				#'balance': 0, 
 																			})
 		payment_method_id = self.x_payment_method.id 
 
@@ -2202,15 +1711,15 @@ class sale_order(models.Model):
 							'default_method': method,
 							'default_subtotal': balance,
 							'default_total': self.x_amount_total,
-							'default_pm_total': self.pm_total,
 							'default_partner': self.partner_id.id,
 							'default_date_created': self.date_order,
-							#'default_saledoc': 'receipt', 
-
-
 							'default_dni': dni,
 							'default_firm': firm,
 							'default_ruc': ruc,
+
+
+							#'default_saledoc': 'receipt', 
+							#'default_pm_total': self.pm_total,
 							}
 				}
 
@@ -2387,13 +1896,6 @@ class sale_order(models.Model):
 
 
 
-	#@api.multi
-	#@api.depends('x_appointment')
-	#def _compute_x_doctor(self):
-	#	for record in self:
-	#		record.x_doctor = record.x_appointment.doctor
-
-
 
 
 
@@ -2426,12 +1928,6 @@ class sale_order(models.Model):
 
 
 
-
-	# Chief complaint 
-	#x_chief_complaint = fields.Selection(
-	#		string = 'Motivo de consulta', 
-	#		selection = jxvars._chief_complaint_list, 
-	#		)
 
 
 
@@ -2512,11 +2008,6 @@ class sale_order(models.Model):
 
 
 
-	closing = fields.Many2one(
-			'openhealth.closing',
-			ondelete='cascade', 
-			string="Cierre", 
-		)
 
 
 
@@ -2536,10 +2027,6 @@ class sale_order(models.Model):
 	
 	
 	
-
-	#x_copy_created = fields.Boolean(
-	#	default=False,
-	#)
 
 		
 
@@ -2855,48 +2342,29 @@ class sale_order(models.Model):
 
 # ----------------------------------------------------------- Validate Stock Picking ------------------------------------------------------
 
-
 	@api.multi 
 	def do_transfer(self):
-
-		#print 
 		print 'jx'
 		print 'Do Transfer'
-
 		print self.picking_ids
-
 		for pick in self.picking_ids: 
-
-			#ret = pick.do_new_transfer()
 			ret = pick.do_transfer()
-
 			print ret
 
 
-
-
-
-
-	# Action confirm 
+	# From Action confirm 
 	@api.multi 
 	def validate_stock_picking(self):
-
-		#print 
 		print 'jx'
 		print 'Validate Stock Picking'
-
-
 		print self.picking_ids
-
-
 		for pick in self.picking_ids: 
-		
 			print pick
-
 			print pick.name 
-
 			ret = pick.force_assign()
 			print ret
+
+
 
 
 
@@ -2956,7 +2424,10 @@ class sale_order(models.Model):
 
 			if not out: 
 
-				if line.product_id.categ_id.name == 'Consultas':
+
+				# Consultations
+				#if line.product_id.categ_id.name == 'Consultas':
+				if line.product_id.categ_id.name == 'Consulta':
 
 					self.x_family = 'consultation'
 	
@@ -2965,7 +2436,10 @@ class sale_order(models.Model):
 					out = True
 
 
-				elif line.product_id.categ_id.name in ['Quick Laser', 'Laser Co2', 'Laser Excilite', 'Laser M22', 'Medical']: 
+
+				# Procedures
+				#elif line.product_id.categ_id.name in ['Quick Laser', 'Laser Co2', 'Laser Excilite', 'Laser M22', 'Medical']: 
+				elif line.product_id.categ_id.name in ['Procedimiento', 'Quick Laser', 'Laser Co2', 'Laser Excilite', 'Laser M22', 'Medical']: 
 
 					self.x_family = 'procedure'
 
@@ -2975,6 +2449,7 @@ class sale_order(models.Model):
 
 
 
+				# Cosmetology 
 				elif line.product_id.categ_id.name == 'Cosmeatria':
 
 					self.x_family = 'cosmetology'
@@ -2984,6 +2459,7 @@ class sale_order(models.Model):
 					out = True
 
 
+				# Products 
 				else: 
 					
 					self.x_family = 'product'
@@ -2994,6 +2470,26 @@ class sale_order(models.Model):
 
 		#print self.x_family
 		#print self.x_product
+
+
+
+
+
+
+# ----------------------------------------------------------- Print ------------------------------------------------------
+
+	@api.multi
+	def print_ticket(self):
+
+		if self.x_type == 'ticket_receipt': 
+			name = 'openhealth.report_ticket_receipt_nex_view'
+			return self.env['report'].get_action(self, name)
+
+		elif self.x_type == 'ticket_invoice': 
+			name = 'openhealth.report_ticket_invoice_nex_view'
+			return self.env['report'].get_action(self, name)
+
+
 
 
 
@@ -3176,103 +2672,3 @@ class sale_order(models.Model):
 
 
 
-
-
-
-
-
-
-
-	# Print Ticket 
-	@api.multi
-	def print_ticket(self):
-
-
-
-		if self.x_type == 'ticket_receipt': 
-
-			#name = 'openhealth.report_ticket_receipt_view'
-			name = 'openhealth.report_ticket_receipt_nex_view'
-
-			#return self.env['report'].get_action(self, 'openhealth.report_ticket_receipt_view')
-			return self.env['report'].get_action(self, name)
-
-
-
-		elif self.x_type == 'ticket_invoice': 
-
-			#name = 'openhealth.report_ticket_invoice_view'
-			name = 'openhealth.report_ticket_invoice_nex_view'
-
-			#return self.env['report'].get_action(self, 'openhealth.report_ticket_invoice_view')
-			return self.env['report'].get_action(self, name)
-
-
-	# print_ticket	
-
-
-
-
-
-
-
-
-
-# ----------------------------------------------------------- CRUD ------------------------------------------------------
-
-
-	@api.multi
-	def unlink(self):
-
-		#print 
-		#print 'Order - Unlink - Override'
-		#print 
-		
-		for invoice in self:
-
-			if invoice.state not in ('draft', 'cancel'):
-				#print 'jx - Warning'				
-				#raise Warning(('You cannot delete an invoice which is not draft or cancelled. You should refund it instead. - jx'))
-				tra = 1 
-				
-		return models.Model.unlink(self)
-
-
-
-
-
-
-# Write - Deprecated !
-	#@api.multi
-	#def write(self,vals):
-
-		#print 'jx'
-		#print 'CRUD - Order - Write'
-		#print 
-		#print vals
-		#print 
-		#print 
-		#if vals['x_doctor'] != False: 
-		#	print vals['x_doctor']
-		#if vals['user_id'] != False: 
-		#	print vals['user_id']
-
-
-
-		#Write your logic here
-	#	res = super(sale_order, self).write(vals)
-		#Write your logic here
-
-
-
-
-		#if self.x_doctor.name != False: 
-		#	uid = self.x_doctor.x_user_name.id	
-		#	self.x_doctor_uid = uid
-
-	#	return res
-
-	# CRUD 
-
-
-#sale_order()

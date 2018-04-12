@@ -19,7 +19,7 @@
 
 	'description': """
 
-		Last built: 	11 April 2018 
+		Last built: 	12 April 2018 
 		
 		Stability by Design !
 		More Configuration and less programming. Near than zero hacking.  

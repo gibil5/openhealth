@@ -40,8 +40,9 @@ class ReportSale(models.Model):
 				#('Cremas', 			'Cremas'),
 				('Cremas', 				'Productos'),
 
-				('Consulta', 			'Consulta'),
-				('Procedimiento', 		'Procedimiento'),
+				('Consulta', 			'Consultas'),
+				('Procedimiento', 		'Procedimientos'),
+				('Cosmeatria', 			'Cosmeatria'),
 			], 
 
 		)

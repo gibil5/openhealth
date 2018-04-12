@@ -23,8 +23,10 @@
 					<!-- Sheet --> 
 					<sheet>
 						<h1>Contadores</h1>
+
 						<h2></h2>
 
+						<field name="vspace" />
 						
 						<group>
 							<group>
@@ -32,9 +34,9 @@
 								<field name="vspace" />
 								<field name="value"   />													
 								<field name="vspace" />
-
+<!--
 								<field name="total"   />													
-							
+-->						
 							</group>
 							<group>								
 								<field name="x_type"   	/>		
@@ -42,13 +44,13 @@
 						</group>
 
 
-						<group>							
+						<group   groups="openhealth.roots"	 >							
 							<group>
-								<field name="prefix"   />													
-								<field name="vspace" />
-								<field name="separator"   />													
-								<field name="vspace" />
-								<field name="padding"   />																					
+								<field name="prefix"  			 />
+								<field name="vspace" 			/>
+								<field name="separator"  		 />
+								<field name="vspace" 			/>
+								<field name="padding"   		/>
 							</group>
 							<group>
 								<field name="date_created"  	readonly="1" 	invisible="1"	/>

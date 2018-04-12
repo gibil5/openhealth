@@ -97,9 +97,11 @@
 			<field name='type'>product</field>
 			<field name='x_name_short'>cream_vitamins</field>
 
+
 			<field name='name'>CREMA CON VITAMINAS</field>
 
-			<field name='default_code'></field>
+			<field name='default_code'>786</field>
+
 
 			<field name='x_family'>topical</field>
 			<field name='price'>200.0</field>
@@ -116,9 +118,11 @@
 			<field name='type'>product</field>
 			<field name='x_name_short'>cream_vitamins_aec</field>
 			
+
 			<field name='name'>CREMA CON VITAMINAS A, E, C</field>
 
-			<field name='default_code'></field>
+			<field name='default_code'>655</field>
+
 
 			<field name='x_family'>topical</field>			
 			<field name='price'>200.0</field>

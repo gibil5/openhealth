@@ -252,7 +252,7 @@
 			<menuitem 	id="sales_invoice_menu" 
 						name="Ventas" 
 						parent="sales_menu"
-						sequence="3"
+						sequence="1"
 						
 						action="sale_list_action"
 						/>
@@ -614,14 +614,14 @@ order_report.xml
 
 
 
+
+
+<!-- Laser -->
 			<menuitem 	id="prods_services_quick_menu" 
 						name="QUICK LASER"
 						parent="services_menu"
 						sequence="0"
 						action="product_template_service_quick_list_action"/>
-
-
-
 
 
 
@@ -633,13 +633,11 @@ order_report.xml
 
 
 
-
 			<menuitem 	id="prods_services_excilite_menu" 
 						name="Laser Excilite"
 						parent="services_menu"
 						sequence="2"
 						action="product_template_service_excilite_list_action"/>
-
 
 
 
@@ -661,6 +659,7 @@ order_report.xml
 
 
 
+<!-- Medical -->
 			<menuitem 	id="prods_services_medical_menu" 
 						name="T. Médico"
 						parent="services_menu"
@@ -670,13 +669,22 @@ order_report.xml
 
 
 
-
+<!-- Consultation -->
 			<menuitem 	id="prods_services_consultation_menu" 
 						name="Consultas"
 						parent="services_menu"
 						sequence="6"
 						action="product_template_service_consultation_list_action"/>
 
+
+
+<!-- Cosmetology -->
+			<menuitem 	id="prods_services_cosetology_menu" 
+						name="Cosmeatria"
+						parent="services_menu"
+						sequence="7"
+
+						action="product_template_service_cosmetology_list_action"/>
 
 
 

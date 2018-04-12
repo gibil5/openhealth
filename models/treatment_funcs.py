@@ -81,15 +81,8 @@ def create_order_lines(self, laser, order_id):
 
 			price_applied = service.price_applied
 
+
 					
-			#print service
-			#print target_line
-
-
-
-
-			#ret = order.x_create_order_lines_target(target_line)
-			#ret = order.x_create_order_lines_target(target_line, price_manual)
 			ret = order.x_create_order_lines_target(target_line, price_manual, price_applied)
 
 

@@ -42,10 +42,24 @@ class Consultation(models.Model):
 
 
 
+# ----------------------------------------------------------- Deprecated ------------------------------------------------------
+	
+	# Order line 
+	#pre_order = fields.One2many(		
+	#		'sale.order',		
+	#		'consultation', 
+	#		string="Pre Order",
+	#		domain = [
+	#					('state', '=', 'draft'),
+	#				],
+	#		)
 
 
 
 
+
+
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
 
 
 	# state 
@@ -328,19 +342,6 @@ class Consultation(models.Model):
 
 
 
-	# Order line 
-
-	pre_order = fields.One2many(		
-			'sale.order',		
-			'consultation', 
-			string="Pre Order",
-			
-			domain = [
-						('state', '=', 'draft'),
-
-						#('x_family', '=', 'private'),
-					],
-			)
 
 
 

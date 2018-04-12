@@ -60,3 +60,18 @@
 																#'product':product,
 
 
+
+
+
+
+# 12 Apr 2018
+
+			#print service
+			#print target_line
+
+
+
+
+			#ret = order.x_create_order_lines_target(target_line)
+			#ret = order.x_create_order_lines_target(target_line, price_manual)
+

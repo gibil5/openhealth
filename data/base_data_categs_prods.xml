@@ -32,6 +32,15 @@
 
 
 
+		<!-- Consultation --> 
+		<record id='consultation_service_categ' model='product.category'>
+			<field name='name'>Consulta Legacy</field>
+		</record>
+
+
+
+
+
 
 
 <!-- Services --> 

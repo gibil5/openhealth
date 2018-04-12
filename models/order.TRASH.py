@@ -854,3 +854,123 @@
 
 
 
+# 12 Apr 2018
+
+
+# Order line creation 
+		#product_id = product.id
+		#price_unit = product.list_price
+		#x_price_vip = product.x_price_vip
+		#product_uom = product.uom_id.id
+		#print product
+		#print product.id
+		#print product.uom_id.id
+		#print 
+
+
+#jxx
+		#ol = self.order_line.create({
+		#								'product_id': product.id,
+		#								'order_id': order_id,										
+
+		#								'x_price_manual': price_manual, 
+
+
+										#'name': target,
+										#'name': product.name,
+										#'state':'draft',
+										#'price_unit': price_unit,
+										#'x_price_vip': x_price_vip,
+										#'product_uom': product_uom, 
+		#							})
+
+
+
+
+
+
+
+											#'name': target,
+											#'name': product.name,
+											#'state':'draft',
+											#'x_price_vip': x_price_vip,
+											#'product_uom': product_uom, 
+
+
+											#'x_price_manual': price_manual, 
+											#'name': target,
+											#'name': product.name,
+											#'state':'draft',
+											#'x_price_vip': x_price_vip,
+											#'product_uom': product_uom, 
+
+
+
+
+										#'x_price_manual': price_manual, 
+										#'name': target,
+										#'name': product.name,
+										#'state':'draft',
+										#'price_unit': price_unit,
+										#'x_price_vip': x_price_vip,
+										#'product_uom': product_uom, 
+
+
+
+
+
+
+	# Consistency 
+
+	#subtotal = fields.Float(
+	#		string = 'Sub-total', 
+			#required=True, 
+	#	)
+
+	#method = fields.Selection(
+	#		string="Medio", 
+	#		selection = ord_vars._payment_method_list, 			
+	#		required=True, 
+	#	)
+
+	# Number of paymethods  
+	#pm_complete = fields.Boolean(
+	#							default = False, 
+	#							readonly=False,
+								#string="Pm Complete",
+								#compute="_compute_pm_complete",
+	#)
+
+
+
+	# Print Order
+	#@api.multi 
+	#def print_order(self):
+		#print 
+		#print 'Print Order'
+		#ret = self.treatment.open_myself()
+		#return ret 
+	# open_treatment
+
+
+
+
+
+		#nr_pm = self.env['openhealth.payment_method'].search_count([('order','=', self.id),]) 
+		#name = 'Pago ' + str(nr_pm + 1)
+		#total = self.x_amount_total
+
+
+
+	#@api.multi
+	#@api.depends('x_appointment')
+	#def _compute_x_doctor(self):
+	#	for record in self:
+	#		record.x_doctor = record.x_appointment.doctor
+
+
+
+
+
+
+

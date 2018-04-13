@@ -52,7 +52,6 @@
 			<field name='name'>Quick Laser</field>
 <!--
 			<field name='parent_id' 	ref='laser_service_categ'/>
-			<field name='parent_id' 	ref='procedure_service_categ'/>
 -->	
 		</record>
 
@@ -61,13 +60,9 @@
 
 		<!-- Co2 --> 
 		<record id='laser_co2' model='product.category'>
-<!--
--->
 			<field name='name'>Laser Co2</field>
-
 <!--
 			<field name='parent_id' 	ref='laser_service_categ'/>
-			<field name='parent_id' 	ref='procedure_service_categ'/>
 -->
 		</record>
 
@@ -79,7 +74,6 @@
 			<field name='name'>Laser Excilite</field>
 <!--			
 			<field name='parent_id' 	ref='laser_service_categ'/>
-			<field name='parent_id' 	ref='procedure_service_categ'/>
 -->
 		</record>
 
@@ -90,7 +84,6 @@
 			<field name='name'>Laser M22</field>
 <!--
 			<field name='parent_id' 	ref='laser_service_categ'/>
-			<field name='parent_id' 	ref='procedure_service_categ'/>
 -->
 		</record>
 

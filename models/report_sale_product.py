@@ -24,9 +24,10 @@ class ReportSaleProduct(models.Model):
 # ----------------------------------------------------------- Relational ------------------------------------------------------
 	
 	# Item Counter
-	product_counter_ids = fields.One2many(
+	item_counter_ids = fields.One2many(
 		
-			'openhealth.product.counter', 
+			#'openhealth.product.counter', 
+			'openhealth.item.counter', 
 
 			'report_sale_product_id', 
 			
@@ -107,7 +108,7 @@ class ReportSaleProduct(models.Model):
 
 		# Clean 
 		self.order_line_ids.unlink()
-		self.product_counter_ids.unlink()
+		self.item_counter_ids.unlink()
 
 
 
@@ -128,58 +129,44 @@ class ReportSaleProduct(models.Model):
 
 
 
+
+
 		# Item Counter 
 		total_qty = 0
 		total = 0 
 		for order_line in self.order_line_ids: 
 
-
-
 			name = order_line.product_id.name
 			qty = order_line.product_uom_qty
 			subtotal = order_line.price_total 
-
-
 			total_qty = total_qty + qty
 			total = total + subtotal
 
 
 
-
-
-			prod_ctr = self.env['openhealth.product.counter'].search([
+			prod_ctr = self.env['openhealth.item.counter'].search([
 																		('name', '=', name),
-
 																		('report_sale_product_id', '=', self.id),
 											],
 												#order='x_serial_nr asc',
 												limit=1,
 											)
-
 			#print prod_ctr
 
 
-			if prod_ctr.name != False: 
-				#print prod_ctr.name 
-				
+			# Create or update 
+			if prod_ctr.name != False: 				
 				prod_ctr.increase_qty(qty)
-
 				prod_ctr.increase_total(subtotal)
 
-
-
-			else:
-
-				ret = self.product_counter_ids.create({
+			else:		# Create 
+				ret = self.item_counter_ids.create({
 															'name': name,
 															'qty': qty, 
 															'total': subtotal, 
 
-															#'product_id': line.product_id.id,
-
 															'report_sale_product_id': self.id,
 													})
-
 				#print ret 
 
 
@@ -188,8 +175,6 @@ class ReportSaleProduct(models.Model):
 
 		self.total_qty = total_qty
 		self.total = total
-		#print self.total_qty
-		#print self.total
 		#print 
 
 

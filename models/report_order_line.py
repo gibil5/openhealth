@@ -27,14 +27,27 @@ class order_report_nex_line(models.Model):
 
 # ----------------------------------------------------------- Handles ------------------------------------------------------
 	
+
+
 	# Report Sale 
-	report_sale_id = fields.Many2one(
+	#report_sale_id = fields.Many2one(
+	report_sale_a_id = fields.Many2one(
 
 		'openhealth.report.sale', 
 		
 		string='Report Reference', 		
 		ondelete='cascade', 
 	)
+
+	report_sale_b_id = fields.Many2one(
+
+		'openhealth.report.sale', 
+		
+		string='Report Reference', 		
+		ondelete='cascade', 
+	)
+
+
 
 
 
@@ -104,6 +117,18 @@ class order_report_nex_line(models.Model):
 		string='Paciente', 
 		#required=True, 		
 		)
+
+
+
+
+	doctor = fields.Many2one(
+
+			'oeh.medical.physician',
+		
+			string = "Médico", 	
+		)
+
+
 
 
 

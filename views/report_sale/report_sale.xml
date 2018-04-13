@@ -52,29 +52,46 @@
 
 						</group>
 						<group>
-<!--							
--->
 		                    <field name="total_qty"/>
-		                    <field name="total"/>
 
+		                    <field name="total"/>
 						</group>
 					</group>
 
 
 
 
-
+<!-- Filter --> 
 						<notebook>
+
 							<page	string="Filtro"	>
 								<group>
 									<group>
+<!--
 										<field name="categ"		/>
+-->
+										<field name="categ_a"		/>
 									</group>
 									
 									<group>
+										<field name="categ_b"		/>
+									</group>
+								</group>
+
+								
+								<group>
+									<group>
+
+										<field name="doctor"		/>
+
+									</group>
+									<group>
+
+
 									</group>
 								</group>
 							</page>
+
 						</notebook>
 
 
@@ -82,13 +99,51 @@
 
 
 
-
-
-<!--
+<!-- Sales --> 
 						<notebook>
-							
-							<page	string="Target"	>
-								<field name="product_counter_ids"		>
+
+							<page	string="Ventas - A"		>
+								<field name="order_line_a_ids"		>
+									<tree string=""		default_order="create_date"	>	
+										<field name="product_id"		/>
+										<field name="patient"		/>
+
+										<field name="doctor"		/>
+
+										<field name="price_unit"		/>
+										<field name="product_uom_qty"		/>
+										<field name="price_subtotal"		/>
+
+										<field name="x_date_created"	string="Fecha"	/>
+									</tree>
+								</field>
+							</page>
+
+							<page	string="B"		>
+								<field name="order_line_b_ids"		>
+									<tree string=""		default_order="create_date"	>	
+										<field name="product_id"		/>
+										<field name="patient"		/>
+
+										<field name="doctor"		/>
+
+										<field name="price_unit"		/>
+										<field name="product_uom_qty"		/>
+										<field name="price_subtotal"		/>
+										
+										<field name="x_date_created"	string="Fecha"	/>
+									</tree>
+								</field>
+							</page>
+						</notebook>
+
+
+
+<!-- Items -->
+						<notebook>
+
+							<page	string="Pacientes - A"	>
+								<field name="item_counter_a_ids"		>
 									<tree string=""		default_order="create_date"	>	
 						
 										<field name="name"		/>
@@ -97,45 +152,56 @@
 
 										<field name="total"		/>
 
+										<field name="categ"		/>
 									</tree>
 								</field>
 							</page>
+						
+
+							<page	string="B"	>
+								<field name="item_counter_b_ids"		>
+									<tree string=""		default_order="create_date"	>	
+						
+										<field name="name"		/>
+
+										<field name="qty"		/>
+
+										<field name="total"		/>
+
+										<field name="categ"		/>
+									</tree>
+								</field>
+							</page>
+
+
+
+
+							<page	string="A - B"	>
+
+								<field name="item_counter_c_ids"		>
+									<tree string=""		default_order="create_date"	>	
+						
+										<field name="name"		/>
+
+										<field name="qty"		/>
+
+										<field name="total"		/>
+
+										<field name="categ"		/>
+									</tree>
+								</field>
+
+							</page>
 						</notebook>
--->
+
 
 
 
 		                    <field name="vspace"/>
 
 
-						<notebook>
-
-							<page	string="Ventas"		>
-							
-								<field name="order_line_ids"		>
-									<tree string=""		default_order="create_date"	>	
-						
-										<field name="product_id"		/>
 
 
-										<field name="patient"		/>
-
-
-										<field name="price_unit"		/>
-
-										<field name="product_uom_qty"		/>
-
-										<field name="price_subtotal"		/>
-
-										<field name="x_date_created"	string="Fecha"	/>
-
-<!--
-										<field name="name"		/>
--->
-									</tree>
-								</field>
-							</page>
-						</notebook>
 
 
 

@@ -70,7 +70,9 @@ class Report(models.Model):
 		)
 
 
-	date_begin = fields.Datetime(
+
+	#date_begin = fields.Datetime(
+	date_begin = fields.Date(
 			string="Fecha Inicio", 
 			default = fields.Date.today, 
 			#readonly=True,
@@ -78,7 +80,8 @@ class Report(models.Model):
 		)
 
 
-	date_end = fields.Datetime(
+	#date_end = fields.Datetime(
+	date_end = fields.Date(
 			string="Fecha Fin", 
 			default = fields.Date.today, 
 			#readonly=True,

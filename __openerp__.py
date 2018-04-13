@@ -147,6 +147,7 @@
 
 		'views/report_sale/report_sale.xml',
 
+		'views/report_sale/item_counter.xml',
 
 
 

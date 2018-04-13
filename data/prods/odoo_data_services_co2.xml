@@ -28,7 +28,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 
@@ -56,7 +56,7 @@
 			<field name='x_time'></field>
 			<field name='x_sessions'>1</field>
 			<field name='x_family'>laser</field>
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 
@@ -81,7 +81,7 @@
 			<field name='x_sessions'>1</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 
@@ -100,7 +100,7 @@
 			<field name='x_price_vip'>7000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_che_as3_one' model='product.template'>
@@ -117,7 +117,7 @@
 			<field name='x_price_vip'>3500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_faa_as5_one' model='product.template'>
@@ -134,7 +134,7 @@
 			<field name='x_price_vip'>9000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_faa_as1_one' model='product.template'>
@@ -151,7 +151,7 @@
 			<field name='x_price_vip'>5000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_faa_rf1_one' model='product.template'>
@@ -168,7 +168,7 @@
 			<field name='x_price_vip'>5000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_che_st2_one' model='product.template'>
@@ -185,7 +185,7 @@
 			<field name='x_price_vip'>3000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_faa_rf4_one' model='product.template'>
@@ -202,7 +202,7 @@
 			<field name='x_price_vip'>8000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_che_st1_one' model='product.template'>
@@ -219,7 +219,7 @@
 			<field name='x_price_vip'>2500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_faa_st2_one' model='product.template'>
@@ -236,7 +236,7 @@
 			<field name='x_price_vip'>6000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_che_as1_one' model='product.template'>
@@ -253,7 +253,7 @@
 			<field name='x_price_vip'>2500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_faa_as4_one' model='product.template'>
@@ -270,7 +270,7 @@
 			<field name='x_price_vip'>8000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_faa_rf2_one' model='product.template'>
@@ -287,7 +287,7 @@
 			<field name='x_price_vip'>6000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_faa_as2_one' model='product.template'>
@@ -304,7 +304,7 @@
 			<field name='x_price_vip'>6000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_che_as4_one' model='product.template'>
@@ -321,7 +321,7 @@
 			<field name='x_price_vip'>4000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_faa_rf5_one' model='product.template'>
@@ -338,7 +338,7 @@
 			<field name='x_price_vip'>9000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_faa_st5_one' model='product.template'>
@@ -355,7 +355,7 @@
 			<field name='x_price_vip'>9000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_faa_st1_one' model='product.template'>
@@ -372,7 +372,7 @@
 			<field name='x_price_vip'>5000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_che_as2_one' model='product.template'>
@@ -389,7 +389,7 @@
 			<field name='x_price_vip'>3000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_faa_st4_one' model='product.template'>
@@ -406,7 +406,7 @@
 			<field name='x_price_vip'>8000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_che_as5_one' model='product.template'>
@@ -423,7 +423,7 @@
 			<field name='x_price_vip'>4500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_che_st3_one' model='product.template'>
@@ -440,7 +440,7 @@
 			<field name='x_price_vip'>3500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_che_st4_one' model='product.template'>
@@ -457,7 +457,7 @@
 			<field name='x_price_vip'>4000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_fal_ke2_one' model='product.template'>
@@ -474,7 +474,7 @@
 			<field name='x_price_vip'>1000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_che_st5_one' model='product.template'>
@@ -491,7 +491,7 @@
 			<field name='x_price_vip'>4500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_fal_st3_one' model='product.template'>
@@ -508,7 +508,7 @@
 			<field name='x_price_vip'>1500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_nec_rn3_one' model='product.template'>
@@ -525,7 +525,7 @@
 			<field name='x_price_vip'>3500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_fal_ke5_one' model='product.template'>
@@ -542,7 +542,7 @@
 			<field name='x_price_vip'>2500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_fal_ke4_one' model='product.template'>
@@ -559,7 +559,7 @@
 			<field name='x_price_vip'>2000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_fal_ke3_one' model='product.template'>
@@ -576,7 +576,7 @@
 			<field name='x_price_vip'>1500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_han_rh3_one' model='product.template'>
@@ -593,7 +593,7 @@
 			<field name='x_price_vip'>3500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_han_rh5_one' model='product.template'>
@@ -610,7 +610,7 @@
 			<field name='x_price_vip'>4500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 
@@ -629,7 +629,7 @@
 			<field name='x_price_vip'>2500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_nec_rn4_one' model='product.template'>
@@ -646,7 +646,7 @@
 			<field name='x_price_vip'>4000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_fal_st2_one' model='product.template'>
@@ -663,7 +663,7 @@
 			<field name='x_price_vip'>1000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_fal_mo1_one' model='product.template'>
@@ -680,7 +680,7 @@
 			<field name='x_price_vip'>500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_nec_rn2_one' model='product.template'>
@@ -697,7 +697,7 @@
 			<field name='x_price_vip'>3000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_fal_ke1_one' model='product.template'>
@@ -714,7 +714,7 @@
 			<field name='x_price_vip'>500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_fal_st5_one' model='product.template'>
@@ -731,7 +731,7 @@
 			<field name='x_price_vip'>2500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_han_rh4_one' model='product.template'>
@@ -748,7 +748,7 @@
 			<field name='x_price_vip'>4000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_han_rh2_one' model='product.template'>
@@ -765,7 +765,7 @@
 			<field name='x_price_vip'>3000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_nec_rn5_one' model='product.template'>
@@ -782,7 +782,7 @@
 			<field name='x_price_vip'>4500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_fal_st4_one' model='product.template'>
@@ -799,7 +799,7 @@
 			<field name='x_price_vip'>2000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_fal_mo2_one' model='product.template'>
@@ -816,7 +816,7 @@
 			<field name='x_price_vip'>1000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_fal_st1_one' model='product.template'>
@@ -833,7 +833,7 @@
 			<field name='x_price_vip'>500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_fal_mo3_one' model='product.template'>
@@ -850,7 +850,7 @@
 			<field name='x_price_vip'>1500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_fal_mo4_one' model='product.template'>
@@ -867,7 +867,7 @@
 			<field name='x_price_vip'>2000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_fal_cy5_one' model='product.template'>
@@ -884,7 +884,7 @@
 			<field name='x_price_vip'>2500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_fal_sc1_one' model='product.template'>
@@ -901,7 +901,7 @@
 			<field name='x_price_vip'>500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_fal_sc5_one' model='product.template'>
@@ -918,7 +918,7 @@
 			<field name='x_price_vip'>2500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_fal_sc4_one' model='product.template'>
@@ -935,7 +935,7 @@
 			<field name='x_price_vip'>2000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_st1_one' model='product.template'>
@@ -952,7 +952,7 @@
 			<field name='x_price_vip'>500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_fal_mo5_one' model='product.template'>
@@ -969,7 +969,7 @@
 			<field name='x_price_vip'>2500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_fal_cy3_one' model='product.template'>
@@ -986,7 +986,7 @@
 			<field name='x_price_vip'>1500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_st5_one' model='product.template'>
@@ -1003,7 +1003,7 @@
 			<field name='x_price_vip'>2500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_fal_sc3_one' model='product.template'>
@@ -1020,7 +1020,7 @@
 			<field name='x_price_vip'>1500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_fal_wa3_one' model='product.template'>
@@ -1037,7 +1037,7 @@
 			<field name='x_price_vip'>1500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_fal_wa1_one' model='product.template'>
@@ -1054,7 +1054,7 @@
 			<field name='x_price_vip'>500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_fal_wa5_one' model='product.template'>
@@ -1071,7 +1071,7 @@
 			<field name='x_price_vip'>2500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_fal_cy1_one' model='product.template'>
@@ -1088,7 +1088,7 @@
 			<field name='x_price_vip'>500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_st2_one' model='product.template'>
@@ -1105,7 +1105,7 @@
 			<field name='x_price_vip'>1000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_fal_cy4_one' model='product.template'>
@@ -1122,7 +1122,7 @@
 			<field name='x_price_vip'>2000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_fal_sc2_one' model='product.template'>
@@ -1139,7 +1139,7 @@
 			<field name='x_price_vip'>1000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_st4_one' model='product.template'>
@@ -1156,7 +1156,7 @@
 			<field name='x_price_vip'>2000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_fal_wa2_one' model='product.template'>
@@ -1173,7 +1173,7 @@
 			<field name='x_price_vip'>1000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_fal_cy2_one' model='product.template'>
@@ -1190,7 +1190,7 @@
 			<field name='x_price_vip'>1000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_as1_one' model='product.template'>
@@ -1207,7 +1207,7 @@
 			<field name='x_price_vip'>3000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_fal_wa4_one' model='product.template'>
@@ -1224,7 +1224,7 @@
 			<field name='x_price_vip'>2000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_st3_one' model='product.template'>
@@ -1241,7 +1241,7 @@
 			<field name='x_price_vip'>1500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_as2_one' model='product.template'>
@@ -1258,7 +1258,7 @@
 			<field name='x_price_vip'>3500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_as3_one' model='product.template'>
@@ -1275,7 +1275,7 @@
 			<field name='x_price_vip'>4000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_mo5_one' model='product.template'>
@@ -1292,7 +1292,7 @@
 			<field name='x_price_vip'>2500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_ke4_one' model='product.template'>
@@ -1309,7 +1309,7 @@
 			<field name='x_price_vip'>2000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_cy3_one' model='product.template'>
@@ -1326,7 +1326,7 @@
 			<field name='x_price_vip'>1500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_wa5_one' model='product.template'>
@@ -1343,7 +1343,7 @@
 			<field name='x_price_vip'>2500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_wa2_one' model='product.template'>
@@ -1360,7 +1360,7 @@
 			<field name='x_price_vip'>1000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_cy2_one' model='product.template'>
@@ -1377,7 +1377,7 @@
 			<field name='x_price_vip'>1000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_as4_one' model='product.template'>
@@ -1394,7 +1394,7 @@
 			<field name='x_price_vip'>5000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_ke2_one' model='product.template'>
@@ -1411,7 +1411,7 @@
 			<field name='x_price_vip'>1000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_mo4_one' model='product.template'>
@@ -1428,7 +1428,7 @@
 			<field name='x_price_vip'>2000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_mo2_one' model='product.template'>
@@ -1445,7 +1445,7 @@
 			<field name='x_price_vip'>1000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_ke5_one' model='product.template'>
@@ -1462,7 +1462,7 @@
 			<field name='x_price_vip'>2500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_wa4_one' model='product.template'>
@@ -1479,7 +1479,7 @@
 			<field name='x_price_vip'>2000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_as5_one' model='product.template'>
@@ -1496,7 +1496,7 @@
 			<field name='x_price_vip'>6000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_cy1_one' model='product.template'>
@@ -1513,7 +1513,7 @@
 			<field name='x_price_vip'>500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_ke3_one' model='product.template'>
@@ -1530,7 +1530,7 @@
 			<field name='x_price_vip'>1500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_wa3_one' model='product.template'>
@@ -1547,7 +1547,7 @@
 			<field name='x_price_vip'>1500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_sc1_one' model='product.template'>
@@ -1564,7 +1564,7 @@
 			<field name='x_price_vip'>500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_mo1_one' model='product.template'>
@@ -1581,7 +1581,7 @@
 			<field name='x_price_vip'>500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_ke1_one' model='product.template'>
@@ -1598,7 +1598,7 @@
 			<field name='x_price_vip'>500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_cy4_one' model='product.template'>
@@ -1615,7 +1615,7 @@
 			<field name='x_price_vip'>2000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_mo3_one' model='product.template'>
@@ -1632,7 +1632,7 @@
 			<field name='x_price_vip'>1500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_cy5_one' model='product.template'>
@@ -1649,7 +1649,7 @@
 			<field name='x_price_vip'>2500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_wa1_one' model='product.template'>
@@ -1666,7 +1666,7 @@
 			<field name='x_price_vip'>500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_sc2_one' model='product.template'>
@@ -1683,7 +1683,7 @@
 			<field name='x_price_vip'>1000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_sc3_one' model='product.template'>
@@ -1700,7 +1700,7 @@
 			<field name='x_price_vip'>1500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_sc4_one' model='product.template'>
@@ -1717,7 +1717,7 @@
 			<field name='x_price_vip'>2000</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_bol_sc5_one' model='product.template'>
@@ -1734,7 +1734,7 @@
 			<field name='x_price_vip'>2500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 		<record id='co2_vag_mon_one' model='product.template'>
@@ -1751,7 +1751,7 @@
 			<field name='x_price_vip'>1500</field>
 			<field name='x_family'>laser</field>
 
-			<field name='categ_id' ref="procedure_categ"/>
+			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
 	</data>

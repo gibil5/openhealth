@@ -24,15 +24,25 @@
 		<!-- RSP -->
 <!--
 -->
+		<menuitem id="report_sale_menu" name="Report Sale" parent="openhealth_menu"
+			sequence="1"
+			action="report_sale_list_action"/>
+
+
+			<menuitem id="report_sale_c_menu" name="C" parent="report_sale_menu"
+				sequence="1"
+				action="item_counter_c_list_action"/>
+
+
+
+
 		<menuitem id="rsp_menu" name="Report Sale Product" parent="openhealth_menu"
 			sequence="2"
 			action="rsp_list_action"/>
 
 
 
-		<menuitem id="report_sale_menu" name="Report Sale" parent="openhealth_menu"
-			sequence="1"
-			action="report_sale_list_action"/>
+
 
 
 

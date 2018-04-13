@@ -65,7 +65,7 @@
 							
 							<page	string="Cantidades"	>
 
-								<field name="product_counter_ids"		>
+								<field name="item_counter_ids"		>
 									<tree string=""		default_order="create_date"	>	
 						
 										<field name="name"		/>

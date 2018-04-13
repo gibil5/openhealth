@@ -5,9 +5,6 @@
 
 
 
-
-
-
 <!-- Elias Ochante -->
 		<record id="yochante_partner" model="res.partner">
 			<field name="name">Elias Ochante</field>
@@ -22,8 +19,9 @@
 			
 <!--
 			<field name="password">yochante</field>
--->		
 			<field name="password">s7VEutKW</field>
+-->		
+			<field name="password">s7veutkw</field>
 
 
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
@@ -50,8 +48,9 @@
 			
 <!--
 			<field name="password">rgarcia</field>
--->		
 			<field name="password">2ppGAB4Y</field>
+-->		
+			<field name="password">2ppgab4y</field>
 
 
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
@@ -78,8 +77,9 @@
 			
 <!--
 			<field name="password">nmendoza</field>
--->		
 			<field name="password">NTu7AXhV</field>
+-->		
+			<field name="password">ntu7axhv</field>
 
 
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
@@ -105,8 +105,9 @@
 			
 <!--
 			<field name="password">mtirado</field>
--->		
 			<field name="password">8ECMLfF7</field>
+-->		
+			<field name="password">8ecmlff7</field>
 
 
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
@@ -133,8 +134,9 @@
 			
 <!--
 			<field name="password">eruiz</field>
--->		
 			<field name="password">eMKAt9uE</field>
+-->		
+			<field name="password">emkat9ue</field>
 
 
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
@@ -143,8 +145,6 @@
 			<field name="partner_id" ref="eruiz_partner"/>
 			<field name="active">True</field>
 		</record>
-
-
 
 	</data>
 </openerp> 

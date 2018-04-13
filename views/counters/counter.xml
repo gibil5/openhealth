@@ -82,7 +82,9 @@
 					<field name="name"/>
 					<field name="x_type"/>
 					<field name="value"/>
+<!--
 					<field name="total"/>
+-->				
 					<field name="padding"		groups="openhealth.roots"	/>
 					<field name="prefix"		groups="openhealth.roots"	/>
 				</tree>

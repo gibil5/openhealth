@@ -974,3 +974,212 @@
 
 
 
+
+
+
+
+
+# 13 Apr 2018
+
+
+
+# ----------------------------------------------------------- Button - Update Order ------------------------------------------------------
+
+	@api.multi 
+	def update_order(self):
+
+		# Order 
+		order_id = self.id
+
+		# Appointment 
+		appointment = self.env['oeh.medical.appointment'].search([ 	
+																	('patient', 'like', self.patient.name),	
+																	('doctor', 'like', self.x_doctor.name), 	
+																	('x_type', 'like', 'procedure'), 
+																], 
+																	order='appointment_date desc', limit=1)
+		appointment_id = appointment.id
+		self.x_appointment = appointment_id
+
+
+
+
+		# Lines 
+		ret = self.order_line.unlink()
+
+		# Cosmetology 
+		for service in self.cosmetology.service_ids:
+			#print service
+
+			line = self.update_line(	
+										order_id, 
+										service.service.id, 
+										service.service.x_name_short, 
+										service.service.list_price, 
+										service.service.uom_id.id,
+										service.service.x_price_vip
+									)
+			#print 
+
+
+
+		# Doctor 
+		#for service in self.consultation.service_co2_ids:
+		for service in self.treatment.service_co2_ids:
+			#print service
+
+			line = self.update_line(	
+										order_id, 
+										service.service.id, 
+										service.service.x_name_short, 
+										service.service.list_price, 
+										service.service.uom_id.id,
+
+										service.service.x_price_vip
+									)
+			#print 
+		
+		for service in self.consultation.service_excilite_ids:
+			#print service
+			line = self.update_line(	
+										order_id, 
+										service.service.id, 
+										service.service.x_name_short, 
+										service.service.list_price, 										
+										service.service.uom_id.id,
+
+										service.service.x_price_vip
+									)
+
+		for service in self.consultation.service_ipl_ids:
+			#print service
+			line = self.update_line(	order_id, 
+										service.service.id, 
+										service.service.x_name_short, 
+										service.service.list_price, 
+										service.service.uom_id.id,
+
+										service.service.x_price_vip
+									)
+
+		for service in self.consultation.service_ndyag_ids:
+			#print service
+			line = self.update_line(	order_id, 
+										service.service.id, 
+										service.service.x_name_short, 
+										service.service.list_price, 
+										service.service.uom_id.id,
+
+										service.service.x_price_vip
+									)
+
+		for service in self.consultation.service_medical_ids:
+			#print service
+			line = self.update_line(	order_id, 
+										service.service.id, 
+										service.service.x_name_short, 
+										service.service.list_price, 
+										service.service.uom_id.id,
+
+										service.service.x_price_vip
+									)
+
+		#print 
+
+	# update_order 
+
+
+	# Update Order lines app 
+	@api.multi 
+	def update_order_lines_app(self):
+
+		#print 
+		#print 'jx'
+		#print 'Update Order Lines'
+
+
+		for line in self.order_line:
+
+			#print line
+
+
+			product_id = line.product_id
+
+
+			# If Service 
+			if product_id.type == 'service':
+
+
+
+				appointment = self.env['oeh.medical.appointment'].search([ 	
+															('doctor', 'like', self.x_doctor.name), 	
+															('patient', 'like', self.patient.name),		
+															('x_type', 'like', 'procedure'), 
+															('x_target', '=', 'doctor'), 
+															#('state', 'like', 'pre_scheduled'), 
+														], 
+														order='appointment_date desc', limit=1)
+
+				appointment_id = appointment.id
+
+				
+
+
+				# Line  
+				line.x_appointment_date = appointment.appointment_date
+				line.x_doctor_name = appointment.doctor.name
+				line.x_duration = appointment.duration 
+				
+
+				#line.x_machine = False
+
+
+				# Self 
+				self.x_appointment = appointment
+
+	# update_order_lines_app	
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Button - Update Lines ------------------------------------------------------
+	@api.multi 
+	def update_line(self, order_id, product_id, name, list_price, uom_id, x_price_vip):
+		order = self.env['sale.order'].search([
+															('id', '=', order_id),
+															#('name', 'like', name),
+													])
+		line = order.order_line.create({
+											'order_id': order.id,
+											'product_id': product_id,
+											'name': name,
+											'product_uom': uom_id, 
+											'x_price_vip': x_price_vip, 
+											'x_partner_vip': self.x_partner_vip
+										})
+		return line
+	# update_line
+
+
+
+
+
+	# Order lines 
+	@api.multi 
+	def clean_order_lines(self):
+		if self.state == 'draft':
+			ret = self.remove_order_lines()
+
+
+
+
+
+
+
+
+
+
+

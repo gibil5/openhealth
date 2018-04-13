@@ -1,31 +1,63 @@
 # -*- coding: utf-8 -*-
 #
-# 	ProductCounter
+# 	ItemCounter
 # 
 #
 
 from openerp import models, fields, api
 
-
-
-class ProductCounter(models.Model):
+class ItemCounter(models.Model):
 	
 	#_inherit='sale.closing'
 
-	_name = 'openhealth.product.counter'
+	#_name = 'openhealth.product.counter'
+	_name = 'openhealth.item.counter'
 	
 
 
 
-	name = fields.Char()
 
-	qty = fields.Integer(
-			string="Cantidad", 
+
+
+	categ = fields.Selection(
+
+			[	
+				('a', 		'A'),
+				('b', 		'B'),
+				('c', 		'C'),
+			], 
+
 		)
 
-	total = fields.Float(
-			string="Total", 
-		)
+
+
+# ----------------------------------------------------------- Relational ------------------------------------------------------
+
+	# Report Sale 
+	report_sale_a_id = fields.Many2one(
+
+		'openhealth.report.sale', 
+		
+		string='Report Reference', 		
+		ondelete='cascade', 
+	)
+
+	report_sale_b_id = fields.Many2one(
+
+		'openhealth.report.sale', 
+		
+		string='Report Reference', 		
+		ondelete='cascade', 
+	)
+
+	report_sale_c_id = fields.Many2one(
+
+		'openhealth.report.sale', 
+		
+		string='Report Reference', 		
+		ondelete='cascade', 
+	)
+
 
 
 
@@ -42,6 +74,12 @@ class ProductCounter(models.Model):
 
 
 
+
+
+
+
+
+# ----------------------------------------------------------- Actions ------------------------------------------------------
 	# Increase 
 	@api.multi
 	def increase_qty(self, qty):  
@@ -64,6 +102,22 @@ class ProductCounter(models.Model):
 		self.total = self.total + total 
 
 
+
+
+
+
+# ----------------------------------------------------------- Vars ------------------------------------------------------
+	name = fields.Char()
+
+
+	qty = fields.Integer(
+			string="Cantidad", 
+		)
+
+
+	total = fields.Float(
+			string="Total", 
+		)
 
 
 

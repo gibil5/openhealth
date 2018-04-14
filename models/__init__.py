@@ -177,6 +177,7 @@ from . import physician
 
 
 
+from . import appointment 
 from . import consultation
 from . import recommendation
 from . import procedure
@@ -282,7 +283,6 @@ from . import payment_method_line
 
 from . import event 
 
-from . import appointment 
 
 
 
@@ -290,7 +290,6 @@ from . import appointment
 # Cosmetology 	- Deprecated ? 
 from . import cosmetology				
 from . import cos_classes
-
 #from . import consultation_cos
 #from . import procedure_cos
 #from . import session_cos

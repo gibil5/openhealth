@@ -5,9 +5,32 @@
 
 from openerp import models, fields, api
 from datetime import datetime
-from . import service_quick_vars
 from . import serv_funcs
 from . import prodvars
+
+#from . import service_quick_vars
+
+
+
+
+# ----------------------------------------------------------- Constants ------------------------------------------------------
+
+_rejuvenation_2_list = [
+		('rejuvenation_1','1'),	
+		('rejuvenation_2','2'),			
+		('none',''),
+	]
+
+_rejuvenation_4_list = [
+		('rejuvenation_1','1'),	
+		('rejuvenation_2','2'),			
+		('rejuvenation_3','3'),	
+		('rejuvenation_4','4'),	
+		('none',''),
+	]
+
+
+
 
 
 class ServiceQuick(models.Model):
@@ -353,9 +376,10 @@ class ServiceQuick(models.Model):
 # ---------------------------------------------- Zones --------------------------------------------------------
 
 	# Neck  
-	#neck_rejuvenation = fields.Selection(
 	quick_neck_rejuvenation = fields.Selection(
-			selection = service_quick_vars._rejuvenation_4_list, 
+
+			#selection = service_quick_vars._rejuvenation_4_list, 
+			selection = _rejuvenation_4_list, 
 		
 			string="Rejuvenecimiento", 
 		
@@ -367,7 +391,8 @@ class ServiceQuick(models.Model):
 	#neck_hands_rejuvenation = fields.Selection(
 	quick_neck_hands_rejuvenation = fields.Selection(
 
-			selection = service_quick_vars._rejuvenation_2_list, 
+			#selection = service_quick_vars._rejuvenation_2_list, 
+			selection = _rejuvenation_2_list, 
 		
 			string="Rejuvenecimiento", 
 		

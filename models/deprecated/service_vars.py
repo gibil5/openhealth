@@ -7,11 +7,6 @@
 
 
 
-
-
-
-
-
 # Pathology
 _pathology_list = [
 

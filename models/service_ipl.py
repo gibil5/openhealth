@@ -7,9 +7,10 @@ from openerp import models, fields, api
 from datetime import datetime
 
 
+from . import serv_funcs
+
 from . import ipl
 
-from . import serv_funcs
 
 
 

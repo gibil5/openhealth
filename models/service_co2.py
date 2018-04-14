@@ -7,10 +7,10 @@ from openerp import models, fields, api
 from datetime import datetime
 
 
-#from . import jxvars
+from . import serv_funcs
+
 from . import service_co2_vars
 
-from . import serv_funcs
 
 
 

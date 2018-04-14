@@ -6,11 +6,36 @@
 from openerp import models, fields, api
 from datetime import datetime
 
+import serv_funcs
+
+#import ndyag
 
 
-from . import ndyag
 
-from . import serv_funcs
+
+_time_list = [
+		('15 min','15 min'),			
+		('none',''),
+]	
+
+
+_face_list = [
+		('telangiectasia','Telangectacias'),	
+		('ruby_points','Puntos rubí'),
+		('emangiomas','Hemangiomas'),
+		('none',''),
+]
+
+_body_list = [
+		('telangiectasia','Telangectacias'),	
+		('ruby_points','Puntos rubí'),
+		('emangiomas','Hemangiomas'),
+		('varices',	'Várices'),	
+		('none',''),
+]
+
+
+
 
 
 
@@ -32,7 +57,10 @@ class ServiceNdyag(models.Model):
 	)
 	
 	time_1 = fields.Selection(
-			selection = ndyag._time_list, 
+	
+			#selection = ndyag._time_list, 
+			selection = _time_list, 
+	
 			string="Tiempo", 
 			default='none',	
 	)
@@ -68,13 +96,19 @@ class ServiceNdyag(models.Model):
 	# Propietary	
 	
 	face = fields.Selection(
-			selection = ndyag._face_list, 
+			
+			#selection = ndyag._face_list, 
+			selection = _face_list, 
+			
 			string="Todo rostro", 
 			default='none',	
 	)
 			
 	body = fields.Selection(
-			selection = ndyag._body_list, 
+
+			#selection = ndyag._body_list, 
+			selection = _body_list, 
+		
 			string="Todo cuerpo", 
 			default='none',	
 	)

@@ -7,12 +7,23 @@
 
 from openerp import models, fields, api
 from datetime import datetime
-from . import exc
-from . import ipl
 from . import prodvars
-
 from . import serv_funcs
-from . import serv_vars
+
+#from . import serv_vars
+#from . import exc
+from . import ipl
+
+
+
+# ----------------------------------------------------------- Constants ------------------------------------------------------
+_time_list = [
+			('15 min','15 min'),	
+			('30 min','30 min'),
+			('none',''),
+			]
+
+
 
 
 class Service(models.Model):
@@ -26,7 +37,7 @@ class Service(models.Model):
 
 
 
-# ----------------------------------------------------------- Primitives ------------------------------------------------------
+	# ----------------------------------------------------------- Primitives ------------------------------------------------------
 
 	# Price Applied
 	price_applied = fields.Float(
@@ -42,15 +53,14 @@ class Service(models.Model):
 
 
 	state = fields.Selection(
-
-			#selection = _state_list, 
-			selection = serv_vars._state_list, 
+			[
+				('draft', 		'Inicio'),			
+				('budget', 		'Presupuestado'),	
+			], 
+			#selection = serv_vars._state_list, 
 		
 			string='Estado', 			
-
 			default = 'draft', 
-
-			#compute="_compute_state",
 		)
 
 
@@ -451,7 +461,10 @@ class Service(models.Model):
 
 
 	time_1 = fields.Selection(
-			selection = exc._time_list, 
+
+			#selection = exc._time_list, 
+			selection = _time_list, 
+
 			string="Tiempo", 
 			default='none',	
 			)

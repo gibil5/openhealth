@@ -5,11 +5,9 @@
 from openerp import models, fields, api
 from datetime import datetime
 
+import serv_funcs
 
-#from . import jxvars
-from . import service_medical_vars
-
-from . import serv_funcs
+import service_medical_vars
 
 
 

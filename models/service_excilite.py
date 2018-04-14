@@ -6,10 +6,71 @@
 from openerp import models, fields, api
 from datetime import datetime
 
+import serv_funcs
 
-from . import exc
+#import exc
 
-from . import serv_funcs
+
+
+
+
+# ----------------------------------------------------------- Constants ------------------------------------------------------
+_time_list = [
+			('15 min','15 min'),	
+			('30 min','30 min'),
+			('none',''),
+			]
+
+_vitiligo_list = [
+			('belly',	'Abdomen'),	
+			('areolas',	'Ariolas'),
+			('armpits',	'Axilas'),
+			('arms',	'Brazos'),	
+			('neck',	'Cuello'),
+			('back',	'Espalda'),
+			('gluteus',	'Glúteos'),	
+			('shoulders','Hombros'),
+			('hands',	'Manos'),
+			('breast',	'Pecho'),	
+			('legs',	'Piernas'),
+			('feet',	'Pies'),
+			('face',	'Rostro'),
+			('none',''),
+			]
+			
+_psoriasis_list = [
+			('belly',	'Abdomen'),	
+			('areolas',	'Ariolas'),
+			('armpits',	'Axilas'),
+			('arms',	'Brazos'),	
+			('neck',	'Cuello'),
+			('back',	'Espalda'),
+			('gluteus',	'Glúteos'),	
+			('shoulders','Hombros'),
+			('hands',	'Manos'),
+			('breast',	'Pecho'),	
+			('legs',	'Piernas'),
+			('feet',	'Pies'),
+			('face',	'Rostro'),
+			('none',''),
+			]
+			
+_alopecias_list = [
+			('belly',	'Abdomen'),	
+			('areolas',	'Ariolas'),
+			('armpits',	'Axilas'),
+			('arms',	'Brazos'),	
+			('neck',	'Cuello'),
+			('back',	'Espalda'),
+			('gluteus',	'Glúteos'),	
+			('shoulders','Hombros'),
+			('hands',	'Manos'),
+			('breast',	'Pecho'),	
+			('legs',	'Piernas'),
+			('feet',	'Pies'),
+			('face',	'Rostro'),
+			('none',''),
+			]
 
 
 
@@ -17,9 +78,10 @@ from . import serv_funcs
 class ServiceExcilite(models.Model):
 	_name = 'openhealth.service.excilite'
 	_inherit = 'openhealth.service'
-	
-	
 
+
+
+	# ----------------------------------------------------------- Vars ------------------------------------------------------
 	
 	# Service 
 	service = fields.Many2one(
@@ -55,19 +117,28 @@ class ServiceExcilite(models.Model):
 # ----------------------------------------------------------- Variables ------------------------------------------------------
 
 	psoriasis = fields.Selection(
-			selection = exc._psoriasis_list, 
+			
+			#selection = exc._psoriasis_list, 
+			selection = _psoriasis_list, 
+			
 			string="Psoriasis", 
 			default='none',	
 			)
 
 	vitiligo = fields.Selection(
-			selection = exc._vitiligo_list, 
+
+			#selection = exc._vitiligo_list, 
+			selection = _vitiligo_list, 
+		
 			string="Vitiligo", 
 			default='none',	
 			)
 		
 	alopecias = fields.Selection(
-			selection = exc._alopecias_list, 
+
+			#selection = exc._alopecias_list, 
+			selection = _alopecias_list, 
+
 			string="Alopecias", 
 			default='none',	
 			)

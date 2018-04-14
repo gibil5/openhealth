@@ -4,6 +4,7 @@
 from openerp import tools
 from openerp.osv import fields, osv
 
+
 class sale_report(osv.osv):
 	_name = "sale.report"
 	_description = "Sales Orders Statistics"

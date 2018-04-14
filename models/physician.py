@@ -1,90 +1,46 @@
 # -*- coding: utf-8 -*-
 #
-#
-# 		*** OPEN HEALTH - Physician
+# 		*** Physician
 # 
 # Created: 				6 Mar 2017
-# Last updated: 	 	Id.
-
-
+#
 
 from openerp import models, fields, api
 
 
 
 class Physician(models.Model):
-	
-
 	_inherit = 'oeh.medical.physician'	
 	#_name = 'openhealth.physician'
 	
-
-
-
-
-	#name = fields.Char(
-	#		string="Terapeuta #", 
-			#compute='_compute_name', 
-	#	)
-
 
 	vspace = fields.Char(
 			' ', 
 			readonly=True
 		)
 	
-
-
-	#x_user_name = fields.Char(
-	x_user_name = fields.Many2one(
-
-		
+	x_user_name = fields.Many2one(		
 			'res.users',
-		
 			string = "Nombre de usuario", 	
 		)
 
-
-
-
-
-
-	consultancy_type = fields.Selection(
-			
+	consultancy_type = fields.Selection(			
 			string='Tipo', 
 		)
 
-	#institution = fields.Many2one(
-	#		'oeh.medical.health.center',
-	#		string='Escuela', 
-	#	)
-
 	institution = fields.Many2one('oeh.medical.health.center',string='Institución',help="Donde el médico trabaja")
 	
-	#'institution': fields.many2one('oeh.medical.health.center','Institution',help="Institution where doctor works"),
-
-
-
-
 	is_pharmacist = fields.Boolean(
-
 			string='Farmaceútico ?', 
 		)
 
-
-
-
-	consultancy_price = fields.Integer(
-			
+	consultancy_price = fields.Integer(			
 			string='Precio de consulta', 
 		)
-
 
 	code = fields.Char(
 			string='Número de licencia', 
 		)
-
-
 
 	oeh_user_id = fields.Many2one(
 			'res.users', 
@@ -124,36 +80,49 @@ class Physician(models.Model):
 			string='Especialidad', 
 		)
 
-
-
-
-
-
-
 	x_therapist = fields.Boolean(
 			string='Terapeuta', 
 			default=False,
 		)	
 
-
-	_phy_list = [
-
-		('therapist','therapist'), 
-		('doctor','doctor'), 
-
-		#('',''), 
-
-	]
-
-
-
 	x_type = fields.Selection(
+			[
+				('therapist','therapist'), 
+				('doctor','doctor'), 
+			], 
 			string='Tipo', 
-
-			selection = _phy_list, 
-
-			#default='therapist',
 		)
 
 
+
+#
+# 		*** Physician Line
+#
+class PhysicianLine(models.Model):
+	_inherit = 'oeh.medical.physician.line'  
+
+	# Array containing different days name
+	PHY_DAY = [
+		('Monday', 'Lunes'),
+		('Tuesday', 'Martes'),
+		('Wednesday', 'Miercoles'),
+		('Thursday', 'Jueves'),
+		('Friday', 'Viernes'),
+		('Saturday', 'Sabado'),
+		('Sunday', 'Domingo'),
+		]
+
+	name = fields.Selection(
+		PHY_DAY, 
+		'Dia', 
+		required=True
+	)
+
+	start_time = fields.Float(
+		'Inicio', 
+	)
+
+	end_time =  fields.Float(
+		'Final', 
+	)
 

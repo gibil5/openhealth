@@ -26,8 +26,9 @@ from . import product_counter
 
 
 from . import sale_report
-from . import sale_report_month
-from . import sale_report_day 
+from . import sale_report_md
+#from . import sale_report_month
+#from . import sale_report_day 
 
 
 
@@ -167,12 +168,13 @@ from . import kardex_move
 
 from . import process 
 from . import treatment 
-from . import cosmetology				
 from . import evaluation  
 
 
+
 from . import physician 
-from . import physician_line 
+#from . import physician_line 
+
 
 
 from . import consultation
@@ -286,10 +288,13 @@ from . import appointment
 
 
 # Cosmetology 	- Deprecated ? 
-from . import consultation_cos
-from . import procedure_cos
-from . import session_cos
-from . import service_cosmetology
-from . import appointment_cos
+from . import cosmetology				
+from . import cos_classes
+
+#from . import consultation_cos
+#from . import procedure_cos
+#from . import session_cos
+#from . import service_cosmetology
+#from . import appointment_cos
 
 

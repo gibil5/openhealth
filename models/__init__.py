@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 
-
 #from . import models
 
+
+
+
+# Deprecated 
 #from . import order_report_nex_line
-
-
-
+#from . import quotation
 
 
 
@@ -47,7 +48,7 @@ from . import order_report_nex
 
 
 from . import account_invoice
-from . import account_invoice_line
+#from . import account_invoice_line
 
 
 
@@ -62,15 +63,14 @@ from . import account_invoice_line
 
 # Base
 from . import partner
-from . import quotation
+from . import patient  
+from . import product
 
 
 
 
 from . import allergy  
 
-from . import patient  
-from . import product
 
 
 

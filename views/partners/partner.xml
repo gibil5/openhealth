@@ -285,54 +285,22 @@
 
 
 
-
-
-				<!-- NOTEBOOK -->
-				<notebook position="inside">
-
-					<page string="Cotizaciones">
-						<!-- <field name="x_quotation_ids"	/> -->
-
+<!-- Quotation - Deprecated ! -->
 <!--
-								<field  name="partner_id" />
--->
+				<notebook position="inside">
+					<page string="Cotizaciones">
 						<field name="x_quotation_ids">
-						
 							<tree string="Quotations">										
-								
-
 								<field  name="name"	/>
 								<field  name="date"	/>
-
-
 								<field name="image_ids"		string="Scans"	/> 
-
 							</tree>
-
 						</field>
-
-<!--
-						<field
-							name="image_ids"
-							
-							nolabel="1"
-							context="{
-										'default_owner_model': 'openhealth.quotation',
-										'default_owner_id': id,
-							}"
-							mode="kanban"
-						/>
-
-
-						<field name="image_ids"	/> 
--->
-						
-
-
-
 					</page>
-				
 				</notebook>
+-->
+
+
 
 
 

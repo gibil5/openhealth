@@ -590,7 +590,7 @@
 
 
 		# Quotations 
-		'views/quotations/quotation.xml',
+		#'views/quotations/quotation.xml',
 
 
 

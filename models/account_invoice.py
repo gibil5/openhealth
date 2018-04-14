@@ -3,15 +3,14 @@
 from openerp import models, fields, api
 
 
-class AccountInvoice(models.Model):
-	
-	_inherit = 'account.invoice'
 
+class AccountInvoice(models.Model):	
+	_inherit = 'account.invoice'
 	_description = "Account Invoice"
 
 
 
-# ----------------------------------------------------------- Constants ------------------------------------------------------
+	# ----------------------------------------------------------- Constants ------------------------------------------------------
 
 	vspace = fields.Char(
 			' ', 
@@ -22,8 +21,7 @@ class AccountInvoice(models.Model):
 
 
 
-# ----------------------------------------------------------- Primitives ------------------------------------------------------
-
+	# ----------------------------------------------------------- Primitives ------------------------------------------------------
 
 	# Vendor 
 	#partner_id = fields.Many2one(
@@ -40,8 +38,6 @@ class AccountInvoice(models.Model):
 	#	)
 
 
-
-
 	#x_delivery_order = fields.Char(
 	#		string="Número de guia de remisión", 
 	#	)
@@ -53,17 +49,28 @@ class AccountInvoice(models.Model):
 
 
 
-
-
-
-
-# ----------------------------------------------------------- Actions ------------------------------------------------------
+	# ----------------------------------------------------------- Actions ------------------------------------------------------
 
 	# Removem
 	#@api.multi
 	#def remove_myself(self):  
 	#	self.state = 'cancel'
 	#	self.unlink()
+
+
+
+class AccountInvoiceLine(models.Model):
+	_inherit = "account.invoice.line"
+	_description = "Invoice Line"
+	_order = "invoice_id,sequence,id"
+
+	quantity = fields.Float(
+			string='Quantity', 
+			#digits=dp.get_precision('Product Unit of Measure'),
+			digits=(16, 0), 
+			required=True, 
+			default=1, 
+		)
 
 
 

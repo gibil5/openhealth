@@ -20,6 +20,17 @@ class Partner(models.Model):
 
 
 
+# ----------------------------------------------------------- Deprecated ------------------------------------------------------
+	#x_quotation_ids = fields.One2many(
+	#		'openhealth.quotation', 		
+	#		'partner_id', 
+	#		string="Cotizacion"
+	#	)
+
+
+
+
+
 # ----------------------------------------------------------- Indexed ------------------------------------------------------
 	x_dni = fields.Char(
 			"DNI", 	
@@ -445,14 +456,6 @@ class Partner(models.Model):
 
 
 
-	x_quotation_ids = fields.One2many(
-
-			'openhealth.quotation', 		
-		
-			'partner_id', 
-		
-			string="Cotizacion"
-		)
 
 
 

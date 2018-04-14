@@ -1181,5 +1181,293 @@
 
 
 
+			#res.default_code = ''
+			#res.product_id = False
+			#res.x_type = x_type
+			#res.price_manual_flag = False
+			#res.price_manual = 0
+			#res.family = False
+			#res.treatment = False
+			#res.zone = False
+			#res.family = False
+
+			#if x_type == 'product': 
+			#	res.treatment = False
+			#	res.zone = False
+			#	res.family = False
+
+
+
+
+
+
+			#record.x_date_order_corr = record.date_order
+			#date_field1 = datetime.strptime(date_field1, DATETIME_FORMAT)
+			#date_field2 = datetime.strptime(date_field2, DATETIME_FORMAT)
+			#date_field2 = date_field1 + timedelta(hours=5,minutes=30)
+
+			#date_field2 = datetime.strptime(date_field2, DATETIME_FORMAT)
+			#date_field2 = date_field1 + datetime.timedelta(hours=5,minutes=0)
+
+			#date_field2 = datetime.datetime.strptime(date_field2, DATETIME_FORMAT_2)
+
+
+
+
+
+
+			#compute="_compute_x_serial_nr",
+
+	#@api.multi
+	#@api.depends('partner_id')
+	#def _compute_x_serial_nr(self):
+	#	for record in self:
+	#		if record.x_payment_method != False: 
+	#			serial_nr = record.x_payment_method.saledoc_code 
+	#			record.x_serial_nr = serial_nr
+
+
+
+
+
+
+
+
+
+			#if record.x_target == 'doctor': 
+			#	app = self.env['oeh.medical.appointment'].search([
+			#														('patient', '=', record.patient.name), 
+			#														('x_type', '=', 'procedure'),
+			#														('x_target', '=', record.x_target),
+			#														('doctor', '=', record.x_doctor.name), 
+			#												],
+			#												order='appointment_date desc',
+			#												limit=1,)
+
+
+			#else:		# therapist 
+			#	app = self.env['oeh.medical.appointment'].search([
+			#														('patient', '=', record.patient.name), 
+			#														('x_type', '=', 'procedure'),
+			#														('x_target', '=', record.x_target),
+
+			#														('x_therapist', '=', record.x_therapist.name), 
+			#												],
+			#												order='appointment_date desc',
+			#												limit=1,)
+
+			
+
+
+
+
+
+
+			#print 
+			#print 'jx'
+			#print 'Compute Partner Vip'
+
+
+			#rec_set = self.env['sale.order'].search([
+			#												('partner_id','=', record.partner_id.id),
+			#												('state','=', 'sale'),
+			#											]) 			
+			#for rec in rec_set:
+			#	for line in rec.order_line:
+			#		if line.name == 'Tarjeta VIP':
+			#			record.x_partner_vip = True 
+
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Deprecated ------------------------------------------------------
+
+	#currency_id = fields.Many2one(
+	#		"res.currency", 
+	#		related='pricelist_id.currency_id', 
+	#		string="Currency", 
+	#		readonly=True, 
+	#		required=False, 
+	#	)
+
+
+	# Patient - For Reporting 
+	#patient_id = fields.Many2one(
+	#		'oeh.medical.patient',
+	#		string='Paciente', 
+	#	)
+
+
+	#cr = fields.Char(
+	#		#default='-------------------------------------------------------------------', 
+	#		default='--------------------------------------------------------------', 
+	#	)
+
+
+	# Number of saledocs  
+	#nr_saledocs = fields.Integer(
+	#		string="Documentos de venta",
+	#		compute="_compute_nr_saledocs",
+	#)
+	#@api.multi
+	#def _compute_nr_saledocs(self):
+	#	for record in self:
+	#		receipt =			self.env['openhealth.receipt'].search_count([('order','=', record.id),]) 
+	#		invoice =			self.env['openhealth.invoice'].search_count([('order','=', record.id),]) 
+	#		advertisement =		self.env['openhealth.advertisement'].search_count([('order','=', record.id),]) 
+	#		sale_note =			self.env['openhealth.sale_note'].search_count([('order','=', record.id),]) 
+	#		ticket_receipt =	self.env['openhealth.ticket_receipt'].search_count([('order','=', record.id),]) 
+	#		ticket_invoice =	self.env['openhealth.ticket_invoice'].search_count([('order','=', record.id),]) 
+	#		record.nr_saledocs= receipt + invoice + advertisement + sale_note + ticket_receipt + ticket_receipt
+
+
+
+	# Number of paymethods  
+	#nr_pay_methods = fields.Integer(
+	#		string="Documentos de venta",
+
+	#		compute="_compute_nr_pay_methods",
+	#)
+	#@api.multi
+	#def _compute_nr_pay_methods(self):
+	#	for record in self:
+	#		pm = self.env['openhealth.payment_method'].search_count([('order','=', record.id),]) 
+	#		record.nr_pay_methods = pm
+
+
+
+	#@api.multi 
+	#def create_sale_document(self):
+		# Search 
+	#	sale_document_id = self.env['openhealth.sale_document'].search([('order','=',self.id),]).id
+		# Create 
+	#	if sale_document_id == False:
+	#		sale_document = self.env['openhealth.sale_document'].create({
+	#																		'order': self.id,
+	#																		'total': self.x_amount_total, 
+	#																		'partner': self.partner_id.id,				
+	#																	})
+	#		sale_document_id = sale_document.id 
+	#	self.sale_document = sale_document_id
+
+		# State
+	#	self.state = 'proof'
+
+	#	return {
+	#			'type': 'ir.actions.act_window',
+	#			'name': ' New sale_document Current', 
+	#			'view_type': 'form',
+	#			'view_mode': 'form',	
+	#			'target': 'current',
+	#			'res_model': 'openhealth.sale_document',				
+	#			'res_id': sale_document_id,
+	#			'flags': 	{
+							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+	#						'form': {'action_buttons': True, }
+	#						},
+	#			'context': {
+	#						'default_order': self.id,
+	#						'default_total': self.x_amount_total,
+	#						'default_partner': self.partner_id.id,
+	#						}
+	#			}
+	# create_sale_document
+
+
+
+
+	#x_payment_method_code = fields.Char(
+	#		string="Código", 						
+	#		required=False, 
+	#	)
+
+
+	#x_appointment_date = fields.Datetime(
+	#		string="Fecha", 
+	#		required=False, 
+
+	#		compute='_compute_x_appointment_date', 			
+	#		)
+
+
+	#x_duration = fields.Float(
+	#		string="Duración (h)", 
+	#		required=False, 
+
+	#		compute='_compute_x_duration', 			
+	#		)
+
+
+
+	#@api.depends('x_appointment')
+	#def _compute_x_appointment_date(self):
+	#	for record in self:
+	#		record.x_appointment_date = record.x_appointment.appointment_date
+
+
+
+	#@api.depends('x_appointment')
+	#def _compute_x_duration(self):
+	#	for record in self:
+	#		record.x_duration = record.x_appointment.duration
+
+
+	#validity_date = fields.Char(
+	#		string="Fecha de expiración"
+	#	)
+
+
+	#x_confirmed = fields.Boolean(
+	#		default=False, 
+	#	)
+
+
+
+	# Nr treatments 
+	#nr_treatments = fields.Integer(
+	#		default=0,
+	#		compute='_compute_nr_treatments', 
+	#	)
+	#@api.multi
+	#def _compute_nr_treatments(self):
+	#	for record in self:
+	#		nr = record.env['openhealth.treatment'].search_count([
+	#																	('physician', '=', record.x_doctor.name ), 
+	#																])
+	#		record.nr_treatments = nr
+
+
+	# Nr cosmetologies 
+	#nr_cosmetologies = fields.Integer(
+	#		default=0,
+	#		compute='_compute_nr_cosmetologies', 
+	#	)
+	#@api.multi
+	#def _compute_nr_cosmetologies(self):
+	#	for record in self:
+	#		nr = record.env['openhealth.cosmetology'].search_count([
+	#																	('physician', '=', record.x_doctor.name ), 
+	#																])
+	#		record.nr_cosmetologies = nr
+
+
+
+
+
+
+
+
+				#print 'jx'
+				#print 'Create VIP Card'
+				#print card
+				#print card.name
+				#print self.partner_id.name				
+				#print
+
 
 

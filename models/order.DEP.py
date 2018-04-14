@@ -2,7 +2,7 @@
 
 
 
-# ----------------------------------------------------------- Test Bug ------------------------------------------------------
+# ----------------------------------------------------------- Test and Hunt ------------------------------------------------------
 	# Test Bug 
 	#@api.multi 
 	#def test_bug(self):
@@ -72,28 +72,54 @@
 
 
 
-	#----------------------------------------------------------- Quick Button ------------------------------------------------------------
 
+
+
+	# Open Cosmetology
+	#@api.multi 
+	#def open_cosmetology(self):
+		#print 
+		#print 'Open cosmetology'
+	#	ret = self.cosmetology.open_myself()
+	#	return ret 
+	# open_cosmetology
+
+
+
+
+
+
+	# Open Treatment
+	@api.multi 
+	def open_treatment(self):
+
+		if self.treatment.name != False:
+			ret = self.treatment.open_myself()
+		elif self.cosmetology.name != False:
+			ret = self.cosmetology.open_myself()
+		else:
+			#print 'This should not happen !'
+			ret = 0 
+
+		return ret 
+
+
+
+
+
+
+
+	# Default Doctor
 	@api.multi
-	def open_line_current(self):  
-
-		consultation_id = self.id 
-
-		return {
-				'type': 'ir.actions.act_window',
-				'name': ' Edit Order Current', 
-				'view_type': 'form',
-				'view_mode': 'form',
-				'res_model': self._name,
-				'res_id': consultation_id,
-				'target': 'current',
-				'flags': {
-						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-						'form': {'action_buttons': True, }
-						},
-				'context': {}
-		}
-
+	def _get_default_doctor(self): 
+		name = 'Clinica Chavarri'
+		doctor = self.env['oeh.medical.physician'].search([
+																		('name', '=', name),			
+																	],
+																	#order='start_date desc',
+																	limit=1,
+																)
+		return doctor.id 
 
 
 

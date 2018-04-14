@@ -127,8 +127,9 @@ from . import purchase_order_line
 
 
 from . import stock_min
-from . import stock_min_inventory
-from . import stock_min_inventory_line
+#from . import stock_min_inventory
+#from . import stock_min_inventory_line
+
 
 
 
@@ -203,11 +204,11 @@ from . import image
 
 # Zones
 from . import zone
-from . import zone_quick
-from . import zone_co2
-from . import zone_excilite
-from . import zone_ipl
-from . import zone_ndyag
+#from . import zone_quick
+#from . import zone_co2
+#from . import zone_excilite
+#from . import zone_ipl
+#from . import zone_ndyag
 
 
 

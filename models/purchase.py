@@ -4,13 +4,14 @@
 # 		*** OPEN HEALTH - Purchase   
 # 
 # Created: 				30 Oct 2017
-# Last updated: 	 	14 Nov 2017
+#
 
 from openerp import models, fields, api
 
 
-class PurchaseOrder(models.Model):
-	
+
+
+class PurchaseOrder(models.Model):	
 	_inherit = 'purchase.order'
 	_description = "Purchase Order"
 
@@ -19,23 +20,11 @@ class PurchaseOrder(models.Model):
 
 
 
+	# ----------------------------------------------------------- Constants ------------------------------------------------------
 
-
-
-
-
-
-
-
-# ----------------------------------------------------------- Constants ------------------------------------------------------
-
-	READONLY_STATES = {
-		
-		#'purchase': [('readonly', True)],
+	READONLY_STATES = {		
 		'purchase': [('readonly', False)],
-		
 		'done': [('readonly', True)],
-		
 		'cancel': [('readonly', True)],
 	}
 
@@ -43,8 +32,37 @@ class PurchaseOrder(models.Model):
 
 
 
+	# ----------------------------------------------------------- Deprecated ? ------------------------------------------------------
+	# Token 
+	x_token= fields.Char(
+			'Token', 
 
-# ----------------------------------------------------------- Primitives ------------------------------------------------------
+			#compute='_compute_x_token', 
+		)
+
+
+	#@api.multi
+	#@api.depends('')
+	#def _compute_x_token(self):
+	#	for record in self:
+	#		print 'jx'
+	#		print 'Compute Token'
+	#		record.x_token = 'jx'
+	#		po_menu = self.env['ir.ui.menu'].search([('name', '=', 'Purchase Orders')])
+	#		if po_menu.name != False:
+	#			print po_menu
+				#po_menu.unlink()
+	#			print po_menu
+	#		print
+
+
+
+	# ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+	# Cancel Reason 
+	x_cancel_reason = fields.Text(
+		'Motivo de Rechazo', 
+	)
 
 
 	# My Company 
@@ -55,7 +73,6 @@ class PurchaseOrder(models.Model):
 						('company_type', '=', 'company'),
 					],
 
-
 			compute="_compute_x_my_company",
 		)
 
@@ -64,22 +81,14 @@ class PurchaseOrder(models.Model):
 	#@api.depends('partner_id')
 
 	def _compute_x_my_company(self):
-
 		for record in self:
-
 				company = self.env['res.partner'].search([
-															#('name', '=', 'Clinica Chavarri'),
 															('x_my_company', '=', True),
 													],
 													order='date desc',
 													limit=1,
 					)
-			
 				record.x_my_company = company													
-
-
-
-
 
 
 
@@ -90,69 +99,31 @@ class PurchaseOrder(models.Model):
 			'purchase.order.line', 
 			'order_id', 
 			string='Order Lines', 
-
 			states=READONLY_STATES, 
-			
 			copy=True, 
 		)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	#@api.model
-	#def _default_payment_term_id(self):
-	#	type_obj = self.env['account.payment.term']
-
-	#	types = type_obj.search([
-	#								('name', '=', 'CONTADO'), 
-	#							],
-	#								order='create_date desc',
-	#								limit=1,
-	#							)
-	#	return types
-
-
-
 	@api.model
 	def _default_dest_address_id(self):
-
 		type_obj = self.env['res.partner']
-
 		types = type_obj.search([
 									('name', '=', 'Clinica Chavarri'), 
 								],
-
 									order='date desc',
 									limit=1,
 								)
 		return types
 
 
-# ----------------------------------------------------------- Fields ------------------------------------------------------
 
-
-
+	# ----------------------------------------------------------- Fields ------------------------------------------------------
 
 
 	dest_address_id = fields.Many2one(
 				'res.partner', 
 				string='Drop Ship Address', 
-				#states=READONLY_STATES,
-				#default=_default_dest_address_id,			
 				
 				compute='_compute_default_address_id', 
 		)
@@ -162,46 +133,25 @@ class PurchaseOrder(models.Model):
 	#@api.depends('')
 	def _compute_default_address_id(self):
 		for record in self:
-
 			type_obj = self.env['res.partner']
-
-
 			daid = type_obj.search([
 										('name', '=', 'Clinica Chavarri'), 
 									],
-
 										order='date desc',
 										limit=1,
 									)
-
-
 			record.dest_address_id = daid
-
-
-
-
-
 
 
 
 	payment_term_id = fields.Many2one(
 			'account.payment.term', 
-
-			#'Payment Term',
 			'Condición de pago',
-			
-			#default=_default_payment_term_id,			
 		)
 
 
-
-
-
 	amount_untaxed = fields.Monetary(
-
-			#string='Untaxed Amount', 
-			string='TOTAL NETO', 
-		
+			string='TOTAL NETO', 		
 			store=True, 
 			readonly=True, 
 			compute='_amount_all', 
@@ -210,20 +160,14 @@ class PurchaseOrder(models.Model):
 	
 
 	amount_tax = fields.Monetary(
-
-			#string='Taxes', 
-			string='TOTAL IGV', 
-		
+			string='TOTAL IGV', 		
 			store=True, 
 			readonly=True, 
 			compute='_amount_all'
 		)
 	
 	amount_total = fields.Monetary(
-
-			#string='Total', 
-			string='TOTAL', 
-		
+			string='TOTAL', 		
 			store=True, 
 			readonly=True, 
 			compute='_amount_all'
@@ -232,165 +176,58 @@ class PurchaseOrder(models.Model):
 
 
 
-
-	# Cancel Reason 
-	x_cancel_reason = fields.Text(
-		'Motivo de Rechazo', 
-	)
-
-
-
-
 	state = fields.Selection([
-
-
-		('pre_draft', 'Por Validar'),
-
-
-
-		
-		#('draft', 'Draft PO'),
+		('pre_draft', 'Por Validar'),		
 		('draft', 'Por Enviar'),
-		
-
-
-		#('validated', 'Validado'),		# Tmp
-
-
-
-		#('sent', 'RFQ Sent'),			# Tmp 
 		('sent', 'Enviado'),
-		
-		
-
 		('to approve', 'To Approve'),
-		
-
-
-		#('purchase', 'Purchase Order'),
 		('purchase', 'Orden de C/S'),
-		
-
-		#('done', 'Done'),
 		('done', 'Completo'),
-		
-
-		#('cancel', 'Cancelled')
 		('cancel', 'Cancelado')
-
-
-		], string='Status', readonly=True, index=True, copy=False, 
-		
-		#default='draft', 
+		], 
+		string='Status', 
+		readonly=True, 
+		index=True, 
+		copy=False, 
 		default='pre_draft', 
-		
-		track_visibility='onchange')
-
-
-
-
-
-	# Token 
-	x_token= fields.Char(
-			'Token', 
-			#compute='_compute_x_token', 
+		track_visibility='onchange'
 		)
 
-	@api.multi
-	#@api.depends('')
-	def _compute_x_token(self):
-		for record in self:
-			print 'jx'
-			print 'Compute Token'
-			record.x_token = 'jx'
-
-			po_menu = self.env['ir.ui.menu'].search([('name', '=', 'Purchase Orders')])
-
-			if po_menu.name != False:
-				print po_menu
-				#po_menu.unlink()
-				print po_menu
-
-			print
 
 
 
-
-
-
-
-# ----------------------------------------------------------- Actions ------------------------------------------------------
+	# ----------------------------------------------------------- Actions ------------------------------------------------------
 
 	# Print 
 	@api.multi
 	def print_quotation(self):
-		
-		print 'jx'
-		print 'Print quotation'
-
-		#self.write({'state': "sent"})
-		
-
-		#return self.env['report'].get_action(self, 'purchase.report_purchasequotation')
-		#return self.env['report'].get_action(self, 'openhealth.report_purchasequotation')
+		#print 'jx'
+		#print 'Print quotation'
 		return self.env['report'].get_action(self, 'openhealth.report_purchasequotation')
-
-
 
 
 
 	# Clean
 	@api.multi
 	def clean_myself(self):  
-
-		print 'jx'
-		print 'Clean Myself'
-
-
 		po_menu = self.env['ir.ui.menu'].search([('name', '=', 'Purchase Orders')])	
-
-		print po_menu
-
 		po_menu.groups="openhealth.roots"
-
-
-
-
-		#po_menu.unlink()
-
-		print po_menu
-		print 		
-
 		return {}
-
-
-
-
 
 
 
 	# Validate 
 	@api.multi
 	def button_validate(self):
-
-
-		#self.write({'state': 'validated'})
-		self.write({'state': 'draft'})
-
-		
+		self.write({'state': 'draft'})		
 		return {}
-
 
 
 	# Removem
 	@api.multi
 	def remove_myself(self):  
-
 		self.state = 'cancel'
 		self.unlink()
-
-
-
 
 
 
@@ -413,6 +250,7 @@ class PurchaseOrder(models.Model):
 
 
 
+
 # ----------------------------------------------------------- Classes ------------------------------------------------------
 
 class MailComposeMessage(models.Model):
@@ -424,7 +262,6 @@ class MailComposeMessage(models.Model):
 			order = self.env['purchase.order'].browse([self._context['default_res_id']])
 			if order.state == 'draft':
 
-
 				order.state = 'sent'
 				#order.state = 'purchase'		
 
@@ -433,4 +270,8 @@ class MailComposeMessage(models.Model):
 
 
 		return super(MailComposeMessage, self.with_context(mail_post_autofollow=True)).send_mail(auto_commit=auto_commit)
+
+
+
+
 

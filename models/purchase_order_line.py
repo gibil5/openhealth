@@ -4,12 +4,10 @@
 # 		*** OPEN HEALTH - Purchase Order line  
 # 
 # Created: 				13 Dec 2017
-# Last updated: 	 	13 Dec 2017
+#
 
 from openerp import models, fields, api
-
 import openerp.addons.decimal_precision as dp
-
 from datetime import datetime
 from openerp.tools import DEFAULT_SERVER_DATETIME_FORMAT
 from openerp import api, fields, models, _, SUPERUSER_ID
@@ -17,33 +15,26 @@ from openerp import api, fields, models, _, SUPERUSER_ID
 
 
 class PurchaseOrderLine(models.Model):
-	
 	_inherit = 'purchase.order.line'
-	
 	_description = "Purchase Order Line"
-
-
 
 
 
 
 	@api.multi
 	def _get_default_tax(self): 
-
-		print 'Get Default Tax'
-
-		#name = 'IGV 18% Compra'
+		#print 'Get Default Tax'
 		name = 'Percepción IGV 18%'
-
 		tax = self.env['account.tax'].search([
 													('name', '=', name),			
 												],
 												#order='start_date desc',
 												limit=1,
 											)
-		print tax
-		print tax.name
-		print tax.id 
+		#print tax
+		#print tax.name
+		#print tax.id 
+		
 		return tax.id 
 
 
@@ -57,11 +48,6 @@ class PurchaseOrderLine(models.Model):
 
 			#default = _get_default_tax, 			
 		)
-
-
-
-
-
 
 
 
@@ -81,20 +67,12 @@ class PurchaseOrderLine(models.Model):
 
 
 
-
-
-
 	price_unit = fields.Float(
 			string='Unit Price', 
 			required=True, 
 			digits=dp.get_precision('Product Price')
 		)
 
-
-
-	#@api.onchange('price_subtotal')
-	#def _onchange_price_subtotal(self):
-	#	self.price_unit = 55
 
 
 	@api.onchange('product_id')
@@ -157,19 +135,5 @@ class PurchaseOrderLine(models.Model):
 			required=True, 
 			index=True
 		)
-
-
-
-
-
-	#x_default_code = fields.Char(
-	#		string='Código', 
-	#	)
-
-
-
-
-
-
 
 

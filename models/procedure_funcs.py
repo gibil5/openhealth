@@ -10,8 +10,10 @@ from openerp import models, fields, api
 
 from . import appfuncs
 from . import time_funcs
-from . import procedure_funcs_cos
 from . import treatment_funcs
+
+from . import procedure_funcs_cos
+
 
 
 

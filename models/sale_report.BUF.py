@@ -6,7 +6,7 @@
 
 
 from openerp import models, fields, api
-from . import treatment_vars
+
 
 
 

@@ -13,7 +13,6 @@ from openerp import models, fields, api
 from datetime import datetime,tzinfo,timedelta
 
 
-#from . import jxvars
 from . import cosvars
 from . import jrfuncs
 from . import eval_vars

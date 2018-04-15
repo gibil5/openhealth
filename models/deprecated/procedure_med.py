@@ -3,7 +3,6 @@ from datetime import datetime
 
 
 
-from . import jxvars
 from . import medvars
 from . import time_funcs
 from . import jrfuncs
@@ -13,11 +12,12 @@ from . import procedure_funcs_med
 
 
 
+
+
 class Proceduremed(models.Model):
 	
 	_name = 'openhealth.procedure.med'
 	
-	#_inherit = 'oeh.medical.evaluation'
 	_inherit = 'openhealth.procedure'
 
 

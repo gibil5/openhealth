@@ -11,16 +11,14 @@ from datetime import datetime
 from datetime import tzinfo
 from . import treatment_funcs
 from . import time_funcs
-from . import treatment_vars
+
+#from . import treatment_vars
+
 
 class Treatment(models.Model):
 
-	#_inherit = 'openextension.treatment'
-	_inherit = 'openhealth.process'	
-
 	_name = 'openhealth.treatment'
-
-	#_order = 'start_date desc'
+	_inherit = 'openhealth.process'	
 	_order = 'write_date desc'
 
 
@@ -28,12 +26,65 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Actions ------------------------------------------------------
 
-	#@api.multi 
-	#def update_state(self):
-	#	print 'jx'
-	#	print 'Update State'
+	# ----------------------------------------------------------- Deprecated ? ------------------------------------------------------
+
+	# Family 
+	x_family = fields.Selection(
+			#selection = treatment_vars._family_list, 
+			selection = [
+							('product','Producto'), 
+							('consultation','Consulta'), 
+							('procedure','Procedimiento'), 
+							('cosmetology','Cosmiatría'), 
+			], 
+			string = "Tipo",
+		)
+
+
+
+
+
+
+
+	# ----------------------------------------------------------- Const ------------------------------------------------------
+
+
+	# State 
+	_state_list = [
+
+				('empty', 			'Inicio'),		# OK
+				('appointment', 	'Cita'),		# OK
+				('budget_consultation', 	'Pres C - Creado'),		# Important	
+
+				#('invoice_consultation', 	'Caja - Con'),			# OK 
+				#('invoice_consultation', 	'Facturado'),			# OK 
+				('invoice_consultation', 	'Caja'),			# OK 
+
+				('consultation', 			'Consulta'),			# OK
+				
+				#('service', 				'Recomendación'),		# OK
+				('service', 				'Recom.'),		# OK
+				
+				#('budget_procedure', 		'Pres. P - Creado'),	#  Important
+				('budget_procedure', 		'Presu Creado'),		
+
+				#('invoice_procedure', 		'Caja - Pro'),				# OK
+				#('invoice_procedure', 		'Facturado'),				# OK
+				('invoice_procedure', 		'Caja'),				# OK
+
+				#('procedure', 				'Procedimiento'),			# OK
+				('procedure', 				'Proc.'),			# OK
+
+				('sessions', 				'Sesiones'),				# OK
+				
+				#('controls', 				'Controles'),				# OK
+				('controls', 				'Control'),					
+
+				('done', 					'Alta'),					# OK 
+]
+
+
 
 
 
@@ -793,13 +844,6 @@ class Treatment(models.Model):
 
 
 
-	# Family 
-	x_family = fields.Selection(
-			string = "Tipo", 	
-			
-			#selection = jxvars._family_list, 
-			selection = treatment_vars._family_list, 
-		)
 
 
 
@@ -888,8 +932,8 @@ class Treatment(models.Model):
 	# State 
 	state = fields.Selection(
 
-			#selection = _state_list, 
-			selection = treatment_vars._state_list, 
+			selection = _state_list, 
+			#selection = treatment_vars._state_list, 
 		
 			string='Estado', 			
 

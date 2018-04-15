@@ -9,7 +9,10 @@
 from openerp import models, fields, api
 
 from . import eval_vars
-from . import treatment_vars
+
+#from . import treatment_vars
+
+
 
 class Process(models.Model):
 	
@@ -169,28 +172,48 @@ class Process(models.Model):
 
 
 
-#	_state_list = [
-#        			#('empty', 			'Inicio'),
-#        			('one', 	'Uno'),
-#        			('two', 		'Dos'),
-#        			('three', 			'Tres'),
-#        			('done', 			'Completo'),
-#        		]
 
-
+	_state_list = [
+        			('one', 		'Uno'),
+        			('two', 		'Dos'),
+        			('three', 		'Tres'),
+        			('done', 		'Completo'),
+        		]
+	
 	state = fields.Selection(
-
-			#selection = _state_list, 
-			selection = treatment_vars._state_list, 
-
+	
+			selection = _state_list, 
+			#selection = treatment_vars._state_list, 
+	
 			string='Estado', 	
-					
 			default = False, 
 		)
 
 
 
 
+
+
+
+
+
+
+
+	# Progress 
+	_hash_progress = {
+					'empty':          0, 
+					'appointment': 			10, 
+					'budget_consultation':  15, 
+					'invoice_consultation': 20,
+					'consultation': 	30,
+					'service': 			40, 
+					'budget_procedure': 			50, 
+					'invoice_procedure': 			60,
+					'procedure': 		70, 
+					'sessions': 		80, 
+					'controls': 		90, 
+					'done': 			100, 
+	}
 
 
 	progress = fields.Float(
@@ -200,16 +223,15 @@ class Process(models.Model):
 			compute='_compute_progress', 
 		)
 
+
 	@api.multi
 	#@api.depends('state')
 
 	def _compute_progress(self):
 		for record in self:
-			#print 
-			#print 'jx'
-			#print 'Compute progress'
-			record.progress = treatment_vars._hash_progress[record.state]
-			#print 
+
+			#record.progress = treatment_vars._hash_progress[record.state]
+			record.progress = _hash_progress[record.state]
 
 
 

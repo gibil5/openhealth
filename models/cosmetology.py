@@ -10,10 +10,10 @@ from openerp import models, fields, api
 from datetime import datetime
 
 from . import cosvars
-from . import jxvars
 from . import time_funcs
-#from . import cos_funcs
-#from . import procedure_funcs
+
+
+#from . import jxvars
 
 
 

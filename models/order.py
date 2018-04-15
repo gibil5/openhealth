@@ -11,12 +11,16 @@ import app_vars
 import ord_vars
 import appfuncs
 import cosvars
-import treatment_vars
 from num2words import num2words
 import math 
 import time 
 from openerp import tools
 import count_funcs
+
+
+#import treatment_vars
+
+
 
 class sale_order(models.Model):
 	
@@ -177,7 +181,15 @@ class sale_order(models.Model):
 	# Family 
 	x_family = fields.Selection(
 			string = "Familia", 	
-			selection = treatment_vars._family_list, 
+			
+			#selection = treatment_vars._family_list, 
+			selection = [
+							('product','Producto'), 
+							('consultation','Consulta'), 
+							('procedure','Procedimiento'), 
+							('cosmetology','Cosmiatría'), 
+			], 
+			
 			required=False, 
 		)
 
@@ -942,7 +954,8 @@ class sale_order(models.Model):
 													('state', '=', 'sale'),
 											],
 												order='date_order desc',
-												limit=2000,
+												#limit=2000,
+												limit=100,
 											)
 		#print orders 
 

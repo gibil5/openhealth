@@ -405,7 +405,7 @@
 		# Stock 
 		'views/stock/stock.xml',
 		'views/stock/stock_inventory.xml',
-		'views/stock/stock_picking.xml',
+		#'views/stock/stock_picking.xml',
 
 
 
@@ -863,7 +863,7 @@
 		# ----------------------------------------------------------- Menus ------------------------------------------------------
 		'views/menus/menus.xml',
 		'views/menus/menus_reporting.xml',
-		'views/menus/menus_inventory.xml',
+		#'views/menus/menus_inventory.xml',
 		'views/menus/menus_openhealth.xml',
 
 

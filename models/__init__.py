@@ -5,9 +5,18 @@
 
 
 
-# Deprecated 
+# Highly Deprecated !
 #from . import order_report_nex_line
 #from . import quotation
+#from . import stock_picking 
+#from . import stock_pack_operation 
+#from . import purchase_po
+#from . import purchase_rfq
+#from . import purchase_line_rfq
+#from . import scheduler 
+#from . import sale_make_invoice_advance
+
+
 
 
 
@@ -65,6 +74,7 @@ from . import account_invoice
 from . import partner
 from . import patient  
 from . import product
+from . import counter
 
 
 
@@ -76,7 +86,6 @@ from . import allergy
 
 
 from . import legacy
-
 from . import legacy_manager
 from . import legacy_manager_patient
 from . import legacy_manager_order
@@ -97,8 +106,8 @@ from . import data_analyzer
 
 
 # After Travis
-#from . import openhealth.models.appfuncs 
 from . import appfuncs 
+#from . import openhealth.models.appfuncs 
 #from openhealth.models import appfuncs 
 
 
@@ -108,7 +117,6 @@ from . import appfuncs
 # Operational 
 
 from . import closing
-#from . import scheduler 
 
 
 
@@ -119,9 +127,6 @@ from . import purchase
 from . import purchase_order_line
 
 
-#from . import purchase_po
-#from . import purchase_rfq
-#from . import purchase_line_rfq
 
 
 
@@ -143,24 +148,24 @@ from . import stock_move_selector
 
 
 
-from . import stock_picking 
+
+
 
 
 from . import stock_move
-from . import stock_move_all
-from . import stock_move_min
+#from . import stock_move_min
+#from . import stock_move_all
 
 
 
 
 
 
-from . import stock_pack_operation 
 
 
 
 from . import kardex
-from . import kardex_move
+#from . import kardex_move
 
 
 
@@ -256,7 +261,6 @@ from . import service_vip
 
 
 
-from . import sale_make_invoice_advance
 
 
 
@@ -264,24 +268,13 @@ from . import sale_make_invoice_advance
 
 from . import order
 from . import order_line
-
-
-
-
-
-
-
-
-
-
-
-from . import counter
-
 from . import payment_method
 from . import payment_method_line
-
-
 from . import event 
+
+
+
+
 
 
 

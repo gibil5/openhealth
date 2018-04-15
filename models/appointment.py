@@ -10,11 +10,12 @@ from openerp import models, fields, api
 
 import datetime
 
-from . import appfuncs
 from . import time_funcs
 from . import defaults
 from . import app_vars
 from . import eval_vars
+
+import appfuncs
 
 
 

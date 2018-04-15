@@ -45,6 +45,8 @@
 #from . import counter_raw
 #from . import image_full		# Deprecated ?
 #from . import multi_image		# Deprecated 
+#from . import legacy_patient
+#from . import legacy_order
 
 
 
@@ -100,8 +102,7 @@ from . import legacy
 from . import legacy_manager
 from . import legacy_manager_patient
 from . import legacy_manager_order
-from . import legacy_patient
-from . import legacy_order
+
 
 
 
@@ -116,12 +117,6 @@ from . import data_analyzer
 
 
 # After Travis
-from . import appfuncs 
-
-
-
-
-
 
 
 
@@ -147,6 +142,8 @@ from . import evaluation
 
 
 from . import appointment 
+#from . import appfuncs 
+
 from . import consultation
 from . import recommendation
 from . import procedure

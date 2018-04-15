@@ -8,15 +8,34 @@
 #
 from openerp import models, fields, api
 
+
+
+
+
+
+class Data(models.Model):
+
+	_name = 'openhealth.data'
+	_description = 'Data'
+
+
+	vspace = fields.Char(
+			' ', 
+			readonly=True
+		)
+
+
+
+
+
+
+
 class DataAnalyzer(models.Model):
 
-	_inherit = 'openhealth.data'
-
-	#_order = 'write_date desc'
-
-	_description = 'data_analyzer'
-
 	_name = 'openhealth.data.analyzer'
+	_inherit = 'openhealth.data'
+	_description = 'data_analyzer'
+	#_order = 'write_date desc'
 
 
 

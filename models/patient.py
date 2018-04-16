@@ -44,7 +44,7 @@ class Patient(models.Model):
 
 	# Cancel
 	@api.multi 
-	def cancel_patient(self):
+	def deactivate_patient(self):
 
 		print
 		print 'Cancel Patient'

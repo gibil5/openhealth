@@ -92,14 +92,14 @@ Cosmetology
 
 
 
-						<!-- Cancel --> 
+						<!-- Deactivate --> 
 						<button 
 							type="object" 
 							class="oe_highlight oe_right"
 
-							name="cancel_patient" 
+							name="deactivate_patient" 
 
-							string="Anular" 
+							string="Desactivar" 
 						/>
 
 
@@ -111,6 +111,8 @@ Cosmetology
 							name="activate_patient" 
 
 							string="Activar" 
+
+							groups="openhealth.roots"
 						/>
 
 

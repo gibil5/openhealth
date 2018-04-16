@@ -3,7 +3,6 @@
 
 # 16 Dec 2017
 
-
 	# Ooor - For consistency 
 	#nr_treatments = fields.Integer(
 	#		compute='_compute_nr_treatments',
@@ -21,6 +20,7 @@
 			#for tr in record.treatment_ids:   
 			#	sub_total = sub_total + 1  
 			#record.x_nr_treatments= sub_total  
+
 
 
 
@@ -366,10 +366,10 @@
 
 
 
+
 # 8 April 2018
 
 # Deprecated
-
 
 	#@api.multi
 	#@api.depends('x_date_created')
@@ -383,17 +383,14 @@
 
 
 
-
-
-
-
-
 	#@api.onchange('x_date_created')
 	#def _onchange_x_date_created(self):
 		#self.x_datetime_created = self.x_date_created  
 		#self.x_datetime_created = '10/03/2017 20:00:00'
 	#	self.x_datetime_created = '2017-10-03 20:00:00'
 	#'%Y-%m-%d %H:%M:%S'
+
+
 
 
 	#@api.multi
@@ -407,7 +404,6 @@
 
 
 
-
 	#@api.multi
 	#@api.depends('x_date_created')
 
@@ -416,6 +412,143 @@
 	#		#print 
 	#		#print 'Compute x_year_created'
 	#		record.x_year_created = record.x_date_created.split('-')[0]
+
+
+
+
+
+# 16 Apr 2018
+
+
+
+	# Date time created 
+	#x_datetime_created = fields.Datetime(
+	#		string = "Fecha de Creación",
+	#		required=False, 
+
+			#default = fields.Datetime.now, 
+			#readonly = True, 
+			#store=True, 
+			#compute='_compute_x_datetime_created', 
+	#	)
+
+
+	#@api.onchange('x_date_created')
+	#def _onchange_x_date_created(self):
+	#	self.x_year_created = self.x_date_created.split('-')[0]
+	#	self.x_month_created = self.x_date_created.split('-')[1]
+
+
+
+	#x_year = fields.Char(
+	#		string='Year', 
+	#		required=False, 
+	#	)
+
+	#x_month = fields.Char(
+	#		string='Month',
+			#required=True, 
+	#		required=False, 
+	#	)
+
+	#x_year_created = fields.Char(
+	#		string='Year created', 
+			#default = '', 
+			#required=False, 
+	#		index=True, 
+			#compute='_compute_x_year_created', 
+	#	)
+
+	#x_month_created = fields.Char(
+	#		string='Month created', 
+			#default = '', 
+			#required=True, 
+			#compute='_compute_x_month_created', 
+	#	)
+
+
+
+
+	#x_status = fields.Char(
+	#		string='Status', 
+	#		default = '00', 
+			#required=False, 
+	#		required=True, 
+	#	)
+
+
+
+
+	# Mark  
+	#x_mark = fields.Char(
+	#		string='Mark', 
+	#	)
+
+
+	#@api.onchange('x_allergies')
+	#def _onchange_x_allergies(self):
+	#	if self.x_allergies != False: 
+	#		self.x_allergies = self.x_allergies.strip().title()
+
+
+
+	#identification_code=fields.Char(
+	#		'Patient ID',
+	#		size=256, 
+	#		help='Patient Identifier provided by the Health Center',
+	#		readonly=True
+	#	)
+
+
+
+
+	#x_nothing = fields.Char(
+	#	'Nothing', 
+	#)
+
+
+	# QC - Flag  
+	#x_flag = fields.Char(
+	#	"Flag",
+	#	default = '', 
+	#	store=True, 
+	#)
+
+
+
+
+	# Commons 
+	#vspace = fields.Char(
+	#		' ', 
+	#		readonly=True
+	#		)
+
+
+
+
+
+	#x_state = fields.Selection(
+	#		selection = pat_vars._state_list, 
+	#		string='Estado', 			
+	#		default = 'active', 
+
+	#		compute='_compute_x_state', 
+	#	)
+
+
+	#@api.multi
+	#@api.depends('state')
+	#def _compute_x_state(self):
+	#	for record in self:
+	#		flag = False
+	#		for treatment in record.treatment_ids:
+	#			if treatment.progress == False: 
+	#				flag = True
+	#		if flag:
+	#			record.x_state = 'incomplete'
+	#		else:
+	#			record.x_state = 'active'
+
 
 
 

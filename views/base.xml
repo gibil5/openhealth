@@ -594,7 +594,6 @@
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 
-
 <!--
             <field name="domain">[]</field>
 										('chief_complaint', '!=', False),
@@ -612,6 +611,37 @@
 				</p>
 			</field>
 		</record>
+
+
+
+
+		<!-- Treatment -->
+			<record model="ir.actions.act_window" id="treatment_inactive_list_action">
+			<field name="name">Tratamientos Inactivos</field>
+			<field name="res_model">openhealth.treatment</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+
+
+			<field name="domain">[
+										('active', '=', False),
+								]
+			</field>
+
+
+            <field name="context">{}</field>            
+            <field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first treatment
+				</p>
+			</field>
+		</record>
+
+
+
+
+
+
 
 
 		<!-- Treatment Legacy -->

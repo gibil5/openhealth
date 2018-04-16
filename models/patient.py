@@ -6,9 +6,11 @@
 #
 
 from openerp import models, fields, api
+
 from datetime import datetime
-from . import pat_funcs
-from . import pat_vars
+import pat_funcs
+import pat_vars
+
 import count_funcs
 
 
@@ -23,8 +25,215 @@ class Patient(models.Model):
 
 
 
-# ----------------------------------------------------------- Legacy ------------------------------------------------------
 
+
+# ----------------------------------------------------------- Deprecated ? ------------------------------------------------------
+
+	#x_state = fields.Selection(		
+	#	pat_vars._state_list, 
+	#	string="Estado", 
+		#default='draft', 
+		#default='done', 
+	#	default='active', 
+	#)
+
+
+
+
+# ----------------------------------------------------------- Active ------------------------------------------------------
+
+	# Cancel
+	@api.multi 
+	def cancel_patient(self):
+
+		print
+		print 'Cancel Patient'
+
+
+		self.active = False
+
+		self.partner_id.active = False
+
+
+
+		# Treatments
+ 		treatments = self.env['openhealth.treatment'].search([
+																('patient', '=', self.name), 
+														],
+															#order='write_date desc',
+															#limit=1,
+														)
+ 		for treatment in treatments: 
+ 			treatment.active = False
+
+
+
+
+		# Conter  
+		name_ctr = 'emr'
+ 		
+ 		counter = self.env['openhealth.counter'].search([
+																('name', '=', name_ctr), 
+														],
+															#order='write_date desc',
+															limit=1,
+														)
+ 		counter.decrease()
+
+
+
+
+
+
+	# Activate Patient 
+	@api.multi 
+	def activate_patient(self):
+
+		print
+		print 'Activate Patient'
+
+
+		self.active = True
+
+		self.partner_id.active = True
+
+
+
+
+
+		# Treatments
+ 		#treatments = self.env['openhealth.treatment'].search([
+		#														('patient', '=', self.name), 
+		#												],
+															#order='write_date desc',
+															#limit=1,
+		#												)
+ 		#for treatment in treatments: 
+ 		#	treatment.active = True
+
+
+
+
+
+
+		# Conter  
+		name_ctr = 'emr'
+ 		
+ 		counter = self.env['openhealth.counter'].search([
+																('name', '=', name_ctr), 
+														],
+															#order='write_date desc',
+															limit=1,
+														)
+ 		counter.increase()
+
+
+
+
+
+
+# ----------------------------------------------------------- HC Number ------------------------------------------------------
+
+	# Get Hc Number 
+	@api.model
+	def _get_default_id_code(self):
+
+		name_ctr = 'emr'
+ 		
+ 		counter = self.env['openhealth.counter'].search([
+																('name', '=', name_ctr), 
+														],
+															#order='write_date desc',
+															limit=1,
+														)
+
+		name = count_funcs.get_name(self, counter.prefix, counter.separator, counter.padding, counter.value)
+
+		return name
+
+
+
+
+	# Id Code 
+	x_id_code = fields.Char(
+			'Nr Historia Médica',
+			default=_get_default_id_code, 
+		)
+
+
+
+
+
+
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+
+	# Allergies 
+	x_allergies = fields.Many2one(
+			'openhealth.allergy', 
+			string = "Alergias", 
+
+			#required=True, 
+			required=False, 
+		)
+
+
+	
+	# Stree2 Char - If Province 
+	street2_char = fields.Char(
+			string = "Distrito Prov.", 	
+			required=False, 
+		)
+
+
+	# Street2 ?
+	@api.onchange('street2_char')
+	def _onchange_street2_char(self):
+		self.street2 = self.street2_char
+
+
+
+
+
+
+
+# ----------------------------------------------------------- On changes ------------------------------------------------------
+
+	# Zip  Street2
+	@api.onchange('street2_sel')
+	def _onchange_street2_sel(self):
+		self.street2 = pat_vars.zip_dic_inv[self.street2_sel]
+		self.zip = self.street2_sel
+
+
+	# Street 
+	@api.onchange('street')
+	def _onchange_street(self):
+		if self.street != False: 
+			self.street = self.street.strip().title()
+
+
+	# Email 
+	@api.onchange('email')
+	def _onchange_email(self):
+		if self.email != False: 
+			self.email = self.email.strip().lower()
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Personal - Now Hard wired to Partner ------------------------------------------------------
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Legacy ------------------------------------------------------
 
 	# Date created
 	x_date_created = fields.Date(
@@ -33,6 +242,7 @@ class Patient(models.Model):
 			#readonly = True,
 			required=False,
 		)
+
 	x_date_record = fields.Datetime(
 			string='Fecha Registro', 
 		)
@@ -53,358 +263,11 @@ class Patient(models.Model):
 
 
 
-# ----------------------------------------------------------- Deprecated ? ------------------------------------------------------
 
-	# Date time created 
-	#x_datetime_created = fields.Datetime(
-	#		string = "Fecha de Creación",
-	#		required=False, 
-
-			#default = fields.Datetime.now, 
-			#readonly = True, 
-			#store=True, 
-			#compute='_compute_x_datetime_created', 
-	#	)
-
-
-	#@api.onchange('x_date_created')
-	#def _onchange_x_date_created(self):
-	#	self.x_year_created = self.x_date_created.split('-')[0]
-	#	self.x_month_created = self.x_date_created.split('-')[1]
-
-
-
-	#x_year = fields.Char(
-	#		string='Year', 
-	#		required=False, 
-	#	)
-
-	#x_month = fields.Char(
-	#		string='Month',
-			#required=True, 
-	#		required=False, 
-	#	)
-
-	#x_year_created = fields.Char(
-	#		string='Year created', 
-			#default = '', 
-			#required=False, 
-	#		index=True, 
-			#compute='_compute_x_year_created', 
-	#	)
-
-	#x_month_created = fields.Char(
-	#		string='Month created', 
-			#default = '', 
-			#required=True, 
-			#compute='_compute_x_month_created', 
-	#	)
-
-
-
-
-
-
-	#x_status = fields.Char(
-	#		string='Status', 
-	#		default = '00', 
-			#required=False, 
-	#		required=True, 
-	#	)
-
-
-
-
-
-	# Mark  
-	#x_mark = fields.Char(
-	#		string='Mark', 
-	#	)
-
-
-	#@api.onchange('x_allergies')
-	#def _onchange_x_allergies(self):
-	#	if self.x_allergies != False: 
-	#		self.x_allergies = self.x_allergies.strip().title()
-
-
-
-	#identification_code=fields.Char(
-	#		'Patient ID',
-	#		size=256, 
-	#		help='Patient Identifier provided by the Health Center',
-	#		readonly=True
-	#	)
-
-
-
-
-	#x_nothing = fields.Char(
-	#	'Nothing', 
-	#)
-
-
-	# QC - Flag  
-	#x_flag = fields.Char(
-	#	"Flag",
-	#	default = '', 
-	#	store=True, 
-	#)
-
-
-
-
-	# Commons 
-	#vspace = fields.Char(
-	#		' ', 
-	#		readonly=True
-	#		)
-
-
-
-
-
-
-
-	#x_state = fields.Selection(
-	#		selection = pat_vars._state_list, 
-	#		string='Estado', 			
-	#		default = 'active', 
-
-	#		compute='_compute_x_state', 
-	#	)
-
-	#@api.multi
-	#@api.depends('state')
-	#def _compute_x_state(self):
-	#	for record in self:
-	#		flag = False
-	#		for treatment in record.treatment_ids:
-	#			if treatment.progress == False: 
-	#				flag = True
-	#		if flag:
-	#			record.x_state = 'incomplete'
-	#		else:
-	#			record.x_state = 'active'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# ----------------------------------------------------------- Quality control ------------------------------------------------------
-
-
-	# QC - Number of clones  
-	x_nr_clones = fields.Integer(
-			"QC - Nrc",
-
-			#compute="_compute_x_nr_clones",
-	)
-	#@api.multi
-	#def _compute_x_nr_clones(self):
-	#	for record in self:
-	#		record.x_nr_clones = self.env['oeh.medical.patient'].search_count([
-	#																			('name','=', record.name),
-	#																		])
-	#		if record.x_nr_clones > 1:
-	#			record.x_flag = 'error'
-	#		else:
-	#			record.x_flag = ''
-
-
-
-
-	# QC - Lowcase
-	x_lowcase = fields.Boolean(
-			"QC - Low",
-
-			#compute="_compute_x_lowcase",
-	)
-	#@api.multi
-	#def _compute_x_lowcase(self):
-	#	for record in self:
-	#		if record.name != record.name.upper():
-	#			record.x_lowcase = True
-	#			record.x_flag = 'error'
-	#		else:
-	#			record.x_lowcase = False
-
-
-
-
-	# Spaced 		- ?
-	x_spaced = fields.Boolean(
-		string="Spaced",
-		default=False, 
-
-		#compute='_compute_spaced', 
-	)
-
-	#@api.multi
-	#@api.depends('name')
-	#def _compute_spaced(self):
-	#	for record in self:
-	#		if record.name[0] == ' ':
-	#			record.x_spaced = True
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# ----------------------------------------------------------- Defaults ------------------------------------------------------
-
-	@api.model
-	def _get_default_id_code(self):
-		
-
-		name_ctr = 'emr'
- 		
- 		counter = self.env['openhealth.counter'].search([
-																('name', '=', name_ctr), 
-														],
-															#order='write_date desc',
-															limit=1,
-														)
-
-		name = count_funcs.get_name(self, counter.prefix, counter.separator, counter.padding, counter.value)
-
-		return name
-
-
-
-
-# ----------------------------------------------------------- Primitives ------------------------------------------------------
-
-
-	# Id Code 
-	x_id_code = fields.Char(
-			'Nr Historia Médica',
-
-			#default='xxx', 
-			default=_get_default_id_code, 
-		)
-
-
-
-
-
-
-	# Allergies 
-	x_allergies = fields.Many2one(
-			'openhealth.allergy', 
-			string = "Alergias", 
-
-			#required=True, 
-			required=False, 
-		)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# ----------------------------------------------------------- Not Deprecated ------------------------------------------------------
-	
-
-	# Stree2 Char - If Province 
-	street2_char = fields.Char(
-			string = "Distrito Prov.", 	
-			required=False, 
-		)
-
-
-	# Street2 ?
-	@api.onchange('street2_char')
-	def _onchange_street2_char(self):
-		self.street2 = self.street2_char
-
-
-
-
-
-
-# ----------------------------------------------------------- On changes ------------------------------------------------------
-
-	# Zip  Street2
-	@api.onchange('street2_sel')
-	def _onchange_street2_sel(self):
-		self.street2 = pat_vars.zip_dic_inv[self.street2_sel]
-		self.zip = self.street2_sel
-
-
-
-
-	# Street 
-	@api.onchange('street')
-	def _onchange_street(self):
-		if self.street != False: 
-			self.street = self.street.strip().title()
-
-
-
-	# Email 
-	@api.onchange('email')
-	def _onchange_email(self):
-		if self.email != False: 
-			self.email = self.email.strip().lower()
-
-
-
-
-
-
-
-
-# ----------------------------------------------------------- Personal now Hard wired to Partner ------------------------------------------------------
-
-
-
-
-
-
-
-# ----------------------------------------------------------- Order Report ------------------------------------------------------
+# ----------------------------------------------------------- Estado de Cuenta ------------------------------------------------------
 
 	# Estado de cuenta
-	#x_order_report = fields.Many2one(			
 	order_report_nex = fields.Many2one(			
-			#'openhealth.order.report',		
 			'openhealth.order.report.nex',		
 			string="Estado de cuenta",		
 		)

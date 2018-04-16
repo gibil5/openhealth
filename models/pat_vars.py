@@ -4,10 +4,18 @@
 
 
 
-#_state_list = [
-#					('incomplete', 	'FICHA INCOMPLETA'),
-#       			('active', 	'Activo'),
-#        		]
+_state_list = [
+					#('incomplete', 	'FICHA INCOMPLETA'),
+
+       				('active', 	'Activo'),
+
+       				#('draft', 	'Inicio'),
+       				#('done', 	'Completo'),
+       				('cancel', 	'Anulado'),
+        		]
+
+
+
 
 
 

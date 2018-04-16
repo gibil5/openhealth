@@ -893,9 +893,11 @@ Fields
 
 								<field name="vspace" />
 
-
 								<field name="x_vip_inprog"/>
 
+								<field name="vspace" />
+
+								<field name="active"/>
 
 <!--
 -->

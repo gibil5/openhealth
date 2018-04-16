@@ -47,6 +47,7 @@
 <!--
 					groups="openhealth.roots,openhealth.almacens,openhealth.reception,openhealth.caja,openhealth.staffs,openhealth.assistants,openhealth.physicians,openhealth.managers,openhealth.directors"
 -->
+
 		<!-- Patients --> 
 		<menuitem 	id="emr_patients_menu" 
 					name="Pacientes" 
@@ -57,6 +58,32 @@
 					/>
 
 
+
+		<!-- Patients --> 
+		<menuitem 	id="emr_patients_inactive_menu" 
+					name="Pacientes inactivos" 
+					parent="emr_menu"
+					sequence="2"
+					action="patient_inactive_list_action"
+
+					/>
+
+		<!-- Partners --> 
+		<menuitem 	id="emr_partners_inactive_menu" 
+					name="Partners inactivos" 
+					parent="emr_menu"
+					sequence="3"
+					action="partner_inactive_list_action"
+
+					/>
+
+
+
+
+
+
+
+
 <!--
 					groups="openhealth.roots,openhealth.almacens,openhealth.reception,openhealth.caja,openhealth.staffs,openhealth.assistants,openhealth.physicians,openhealth.managers,openhealth.directors"
 -->
@@ -65,7 +92,7 @@
 		<menuitem 	id="emr_patients_no_idcode_menu" 
 					name="Pacientes Sin Nr de H." 
 					parent="emr_menu"
-					sequence="2"
+					sequence="4"
 
 					action="patient_no_idcode_list_action"
 
@@ -83,11 +110,26 @@
 		<menuitem 	id="emr_treatments_menu" 
 					name="Tratamientos" 
 					parent="emr_menu"
-					sequence="3"
+					sequence="5"
 					action="treatment_list_action"
 
 				
 					/>
+
+		<!-- Treatments --> 
+		<menuitem 	id="emr_treatments_inactive_menu" 
+					name="Tratamientos inactivos" 
+					parent="emr_menu"
+					sequence="6"
+
+					action="treatment_inactive_list_action"
+
+					/>
+
+
+
+
+
 
 
 
@@ -124,7 +166,7 @@
 					name="Médicos"
 					action="physician_list_action" 
 					parent="emr_menu" 
-					sequence="5"
+					sequence="7"
 
 					groups="openhealth.roots,openhealth.managers,openhealth.directors"
 					/>
@@ -140,7 +182,7 @@
 					
 					parent="emr_menu" 
 					
-					sequence="6"
+					sequence="8"
 
 					groups="openhealth.roots,openhealth.managers,openhealth.directors"
 					/>
@@ -152,7 +194,7 @@
 					name="Médicos - Inactivos"
 					action="physician_inactive_list_action" 
 					parent="emr_menu" 
-					sequence="7"
+					sequence="8"
 
 					groups="openhealth.roots,openhealth.directors"
 					/>
@@ -166,6 +208,9 @@
 
 					action="oehealth.oeh_medical_physician_action_tree" 
 		-->
+
+
+
 
 
 

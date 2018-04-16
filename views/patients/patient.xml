@@ -72,10 +72,14 @@ Cosmetology
 
 
 
+
+
 <!--
 							string="Estado de Cuenta" 
 							groups="openhealth.roots"
 -->
+
+						<!-- EC -->
 						<button 
 							type="object" 
 							class="oe_highlight"
@@ -84,6 +88,32 @@ Cosmetology
 							string="EC" 
 
 						/>
+
+
+
+
+						<!-- Cancel --> 
+						<button 
+							type="object" 
+							class="oe_highlight oe_right"
+
+							name="cancel_patient" 
+
+							string="Anular" 
+						/>
+
+
+						<!-- Activate --> 
+						<button 
+							type="object" 
+							class="oe_highlight oe_right"
+
+							name="activate_patient" 
+
+							string="Activar" 
+						/>
+
+
 
 
 
@@ -129,6 +159,15 @@ Cosmetology
 -->
 
 
+
+<!--
+						<field 	name="x_state" 
+
+								widget="statusbar" 
+								
+								statusbar_visible="active, cancel"
+						/>
+-->
 
 					</header>
 
@@ -280,6 +319,8 @@ Cosmetology
 
 							<group>
 <!--
+								<field name="active" 	/>
+
 								<field name="x_autofill" 		/>
 -->							
 								<field name="x_autofill" 	groups="openhealth.roots,openhealth.reception"		/>
@@ -502,21 +543,18 @@ Cosmetology
 
 
 
-<!-- ACTION -->
+		<!-- ACTION -->
 		<record model="ir.actions.act_window" id="patient_list_action">		
 			<field name="name">Pacientes</field>
 			<field name="res_model">oeh.medical.patient</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form,kanban</field>
-
 			<field name="context">{}</field>
-
 
 
 			<field name="domain">[
 									('x_id_code', '!=', False), 
 				]</field>
-
 
 
 			<!--
@@ -529,6 +567,40 @@ Cosmetology
 			</field>
 			-->
 		</record>
+
+
+
+		<!-- ACTION -->
+		<record model="ir.actions.act_window" id="patient_inactive_list_action">		
+			<field name="name">Pacientes Inactivos</field>
+			<field name="res_model">oeh.medical.patient</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form,kanban</field>
+			<field name="context">{}</field>
+
+			<field name="domain">[
+									('active', '=', False), 
+				]</field>
+
+
+			<!--
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first treatment
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+
+
+
+
+
 
 
 

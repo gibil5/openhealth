@@ -45,13 +45,6 @@
 
 
 
-# ----------------------------------------------------------- Buttons - Order  ------------------------------------------------------
-
-	@api.multi
-	def remove_myself(self):  
-		self.x_reset()
-		self.unlink()
-
 
 
 
@@ -120,6 +113,76 @@
 																	limit=1,
 																)
 		return doctor.id 
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Appointment ------------------------------------------------------
+
+# In Action Confirm
+
+		#if self.x_family == 'consultation'	or 	self.x_family == 'procedure': 
+		#	if self.x_appointment.name != False: 
+		#		self.x_appointment.state = 'invoiced'
+
+
+
+	# Appointment 
+	x_appointment = fields.Many2one(
+			'oeh.medical.appointment',
+			string='Cita', 
+			required=False, 
+
+			compute='_compute_x_appointment', 
+		)
+
+
+
+	@api.multi
+	#@api.depends('x_appointment')
+
+	def _compute_x_appointment(self):
+		for record in self:
+
+			# Procedure 
+			if record.x_family == 'procedure':				
+				app = self.env['oeh.medical.appointment'].search([
+																	('patient', '=', record.patient.name), 
+																	('x_type', '=', 'procedure'),
+																	('doctor', '=', record.x_doctor.name), 
+																	#('x_target', '=', record.x_target),	
+																],
+																	order='appointment_date desc',
+																	limit=1,
+																)
+			# Consultation or Product 
+			elif record.x_family == 'consultation'	or  record.x_family == 'product':			
+
+				app = self.env['oeh.medical.appointment'].search([
+																	('patient', '=', record.patient.name), 
+																	('x_type', '=', 'consultation'),
+																	('doctor', '=', record.x_doctor.name), 
+																	#('x_target', '=', record.x_target),	
+																],
+																	order='appointment_date desc',
+																	limit=1,
+																)
+			
+			else:
+				app = False
+
+			record.x_appointment = app
+
+		# compute_x_appointment
+
+
+
+
+
 
 
 

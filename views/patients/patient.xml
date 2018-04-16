@@ -341,7 +341,9 @@ Cosmetology
 								/>
 
 
-								<field name="x_dni"  		required="1"		attrs="{'invisible':[	('x_nationality', '!=', 'peruvian'), ]}"
+								<field name="x_dni"  							attrs="{
+																							'required':[	('x_nationality', '=', 'peruvian'), ]
+																						}"
 								/>
 
 

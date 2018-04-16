@@ -35,6 +35,7 @@ class Partner(models.Model):
 	x_dni = fields.Char(
 			"DNI", 	
 			index=True, 
+			required=False, 
 		)
 	
 	name = fields.Char(

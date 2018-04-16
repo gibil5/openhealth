@@ -239,7 +239,6 @@
 
 					<!-- State --> 
 <!--
--->
 					<button 
 							type="object" 
 							class="oe_highlight"
@@ -251,13 +250,16 @@
 
 							groups="openhealth.roots"
 						/>
+-->
+
 
 
 					<!-- Update Descriptors --> 
+					<!-- Update All --> 
+<!--
 					<button 
 							type="object" 
 							class="oe_highlight"
-
 							name="update_descriptors"
 
 							string="Update"
@@ -267,11 +269,10 @@
 							groups="openhealth.roots"
 						/>
 
-					<!-- Update All --> 
+
 					<button 
 							type="object" 
 							class="oe_highlight"
-
 							name="update_descriptors_all"
 
 							string="Update All"
@@ -280,12 +281,29 @@
 
 							groups="openhealth.roots"
 						/>
+-->
+
+
+
+<!--
+					<button 
+							type="object" 
+							class="oe_highlight"
+							
+							name="test_clean_services"
+
+							string="Test Clean Servs"
+
+							groups="openhealth.roots"
+						/>
+-->
 
 
 
 
 
 
+<!-- Add Prods and Servs --> 
 
 					<!-- Add Prod -->
 					<button 
@@ -344,7 +362,26 @@
 							groups="openhealth.caja,openhealth.managers,openhealth.directors"
 					/>
 
+
+
+
+
+					<!-- Test --> 
+					<button 
+							type="object" 
+
+							class="oe_highlight"
+
+							name="test_units"
+
+							string="Test Units"
+
+							groups="openhealth.roots"
+						/>
+				
 				</xpath>
+
+
 
 
 

@@ -2263,52 +2263,6 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Button - Create Order Pro  ------------------------------------------------------
-	@api.multi 
-	def create_order_con(self):
-
-		target = 'consultation'
-
-
-		order = self.create_order(target)		
-		#print order 
-
-
-
-		return {
-
-			# Mandatory 
-			'type': 'ir.actions.act_window',
-			'name': 'Open Order Current',
-
-			# Window action 
-			'res_model': 'sale.order',
-
-
-			'res_id': order.id,
-
-
-			# Views 
-			"views": [[False, "form"]],
-			'view_mode': 'form',
-			'target': 'current',
-
-			#'view_id': view_id,
-			#"domain": [["patient", "=", self.patient.name]],
-			#'auto_search': False, 
-			
-			'flags': {
-					'form': {'action_buttons': True, }
-					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-					},			
-
-
-			'context': {}
-		}
-
-	# create_order_con
-
-
 
 
 # ----------------------------------------------------------- Button - Create Order Pro  ------------------------------------------------------
@@ -2316,43 +2270,40 @@ class Treatment(models.Model):
 	def create_order_pro(self):
 
 		target = 'procedure'
-
-
 		order = self.create_order(target)		
-		#print order 
-
 
 
 		return {
 
-			# Mandatory 
-			'type': 'ir.actions.act_window',
-			'name': 'Open Order Current',
+				# Created 
+				'res_id': order.id,
+
+				# Mandatory 
+				'type': 'ir.actions.act_window',
+				'name': 'Open Order Current',
 
 
-			# Window action 
-			'res_model': 'sale.order',
-			'res_id': order.id,
+				# Window action 
+				'res_model': 'sale.order',
 
 
-			# Views 
-			"views": [[False, "form"]],
+				# Views 
+				"views": [[False, "form"]],
 
-			'view_mode': 'form',
-			'target': 'current',
-
-
-			#'view_id': view_id,
-			#"domain": [["patient", "=", self.patient.name]],
-			#'auto_search': False, 
-
-			'flags': {
-					'form': {'action_buttons': True, }
-					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-					},			
+				'view_mode': 'form',
+				'target': 'current',
 
 
-			'context': {}
+				#'view_id': view_id,
+				#"domain": [["patient", "=", self.patient.name]],
+				#'auto_search': False, 
+
+				'flags': {
+						'form': {'action_buttons': True, }
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						},			
+
+				'context': {}
 		}
 
 	# create_order_pro
@@ -2361,25 +2312,64 @@ class Treatment(models.Model):
 
 
 
+# ----------------------------------------------------------- Button - Create Order Con  ------------------------------------------------------
+	@api.multi 
+	def create_order_con(self):
+
+		# Init 
+		target = 'consultation'
+		order = self.create_order(target)		
+
+
+		return {
+				# Created 
+				'res_id': order.id,
+
+				# Mandatory 
+				'type': 'ir.actions.act_window',
+				'name': 'Open Order Current',
+
+				# Window action 
+				'res_model': 'sale.order',
+
+				# Views 
+				"views": [[False, "form"]],
+				'view_mode': 'form',
+				'target': 'current',
+
+				#'view_id': view_id,
+				#"domain": [["patient", "=", self.patient.name]],
+				#'auto_search': False, 
+				
+				'flags': {
+						'form': {'action_buttons': True, }
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						},			
+
+
+				'context': {}
+		}
+
+	# create_order_con
+
+
+
 
 # ----------------------------------------------------------- Button - Create Order  ------------------------------------------------------
-#jz
 
-
+	# Create Order - By Doctor 
 	@api.multi 
 	def create_order(self, target):
 
-
-		#print 
-		print 'jx'
+		print
 		print 'Create Order'
 		#print self.x_family
-		#print target
-
+		print target
 
 
 		# Note 
-		note = self.partner_id.comment
+		#note = self.partner_id.comment
+
 
 		# Doctor 
 		doctor_id = treatment_funcs.get_actual_doctor(self)
@@ -2387,11 +2377,8 @@ class Treatment(models.Model):
 			doctor_id = self.physician.id 
 
 
-
-
 		# Pricelist 
 		if self.x_vip_inprog: 
-
 	 		pl = self.env['product.pricelist'].search([
 																('name', 'like', 'VIP'), 
 														],
@@ -2401,7 +2388,6 @@ class Treatment(models.Model):
 		 	pl_id = pl.id 
 
 	 	else: 
-
 	 		pl = self.env['product.pricelist'].search([
 																('name', 'like', 'Public Pricelist'), 
 																#('name', '=', 'Public Pricelist'), 
@@ -2409,92 +2395,59 @@ class Treatment(models.Model):
 															#order='write_date desc',
 															limit=1,
 														)
-
+	 		# jx - Hack !
 		 	#pl_id = pl.id 
 		 	pl_id = 1
 
 
-
-	 	print self.x_vip_inprog
-	 	print pl
-	 	print pl.name
-	 	print pl.id
-
+	 	#print self.x_vip_inprog
+	 	#print pl
+	 	#print pl.name
+	 	#print pl.id
 
 	 	#pl_id = pl.id 
-	 	#pl_id = 1
-
-
 
 
 
 		# Create Order 
 		order = self.env['sale.order'].create(
 													{
-														'treatment': self.id,
+														'x_doctor': doctor_id,	
 														'partner_id': self.partner_id.id,
 														'patient': self.patient.id,	
 														'state':'draft',
-														'x_family': target, 
-														'note': note, 
-														'x_doctor': doctor_id,	
-
-														#'consultation':self.id,														
-														#'x_chief_complaint':chief_complaint,
-														#'x_doctor': self.physician.id,	
-
 														'pricelist_id': pl_id, 
+
+														'x_family': target, 
+
+														'treatment': self.id,
+														#'note': note, 
 													}
 												)
 
 
-
 		# Create order lines 
 		if target == 'consultation':
+
 			if self.chief_complaint in ['monalisa_touch']:
 				target_line = 'con_gyn'
 			else:
 				target_line = 'con_med'
 
-
-
-			
 			price_manual = 0
-			
-			#price_applied = service.price_applied
 			price_applied = 0
 
-
-
-			#print target_line 
-			#ret = order.x_create_order_lines_target(target_line)
-			
-
-			#ret = order.x_create_order_lines_target(target_line, price_manual)
 			ret = order.x_create_order_lines_target(target_line, price_manual, price_applied)
 			
 
-			#print ret 
-
-
-
-
-		#elif target == 'procedure':
-		else:
-#jxx
+		else:  		# Procedures 
 			order_id = order.id
-
-
-
-			ret = treatment_funcs.create_order_lines(self, 'quick', order_id)
 
 			ret = treatment_funcs.create_order_lines(self, 'vip', order_id)
 
-
-
+			ret = treatment_funcs.create_order_lines(self, 'quick', order_id)
 
 			ret = treatment_funcs.create_order_lines(self, 'co2', order_id)
-
 
 			ret = treatment_funcs.create_order_lines(self, 'excilite', order_id)
 
@@ -2504,10 +2457,6 @@ class Treatment(models.Model):
 
 			ret = treatment_funcs.create_order_lines(self, 'medical', order_id)
 
-
-
-
-		#print 
 
 		return order
 	# create_order

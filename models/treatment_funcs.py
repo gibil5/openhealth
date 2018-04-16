@@ -15,8 +15,8 @@ from . import jrfuncs
 def create_order_lines(self, laser, order_id):
 
 
-	print 'jx'
-	print 'Create Order Lines'
+	#print 'jx'
+	#print 'Create Order Lines'
 
 
 	order = self.env['sale.order'].search([(

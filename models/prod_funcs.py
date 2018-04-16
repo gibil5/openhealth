@@ -270,11 +270,10 @@ _hac = {
 @api.multi
 def get_ticket_name(self, treatment, zone, pathology, family, x_type, name_short):
 
-	
-	print
-	print 'Get Ticket Name'
-	print x_type, name_short, family, treatment, zone, pathology
-	print 
+	#print
+	#print 'Get Ticket Name'
+	#print x_type, name_short, family, treatment, zone, pathology
+	#print 
 
 
 

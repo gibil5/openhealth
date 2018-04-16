@@ -241,7 +241,7 @@
 			<menuitem 	id="sales_budget_menu" 
 						name="Presupuestos" 
 						parent="sales_menu"
-						sequence="2"
+						sequence="1"
 
 						action="budget_list_action"
 						/>
@@ -252,7 +252,7 @@
 			<menuitem 	id="sales_invoice_menu" 
 						name="Ventas" 
 						parent="sales_menu"
-						sequence="1"
+						sequence="2"
 						
 						action="sale_list_action"
 						/>

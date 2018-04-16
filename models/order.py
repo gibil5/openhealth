@@ -49,12 +49,12 @@ class sale_order(models.Model):
 		)
 
 	# Update payment method type 
-	@api.onchange('x_serial_nr')	
-	def _onchange_x_serial_nr(self):
+	#@api.onchange('x_serial_nr')	
+	#def _onchange_x_serial_nr(self):
 		#print 'jx'
 		#print 'On change serial nr'
-		if self.x_payment_method.saledoc != False: 
-			self.x_type = self.x_payment_method.saledoc
+	#	if self.x_payment_method.saledoc != False: 
+	#		self.x_type = self.x_payment_method.saledoc
 			#print self.x_type
 
 
@@ -134,7 +134,7 @@ class sale_order(models.Model):
 
 	# To update type from batch 
 	@api.multi
-	def update_type(self):
+	def update_type_batch(self):
 		#print 'update type'
 		if self.x_payment_method != False: 
 			self.x_type = self.x_payment_method.saledoc
@@ -610,159 +610,7 @@ class sale_order(models.Model):
 													limit=1,
 												)
 			self.patient = patient.id
-
-
-
-
-
-
-
-
-# ----------------------------------------------------------- Create order lines ------------------------------------------------------
-	
-	# For Doctor Budget creation 
-	#@api.multi 
-	def x_create_order_lines_target(self, target, price_manual, price_applied):		
-		
-		print 
-		print 'Create Order Lines Target'
-		print target
-
-		order_id = self.id
-
-		product = self.env['product.product'].search([
-														('x_name_short','=', target),
-														('x_origin','=', False),
-												])
-		
-
-		print product
-		print product.name
-		#print product.id
-		#print product.x_name_short
-		#print product.categ_id
-		#print product.categ_id.name
-
-
-
-
-
-
-# Order line creation  - With the correct price 
-
-
-		# Manual Price  
-		if price_manual != 0: 
-
-			print 'Manual Price'
-
-			ol = self.order_line.create({
-											'product_id': product.id,
-											'order_id': order_id,										
-											'price_unit': price_manual,
-											'x_price_manual': price_manual, 
-										})
-
-		
-
-		
-		
-		# Quick Laer 
-		#elif product.categ_id.name == 'Quick Laser': 	
-		elif product.x_treatment == 'laser_quick': 	
-		
-
-			print 'Quick Laser Price'
-
-			price_quick = price_applied
-
-
-			ol = self.order_line.create({
-											'product_id': product.id,
-											'order_id': order_id,
-											'price_unit': price_quick,
-										})
-
-
-
-
-
-		# Normal cases 
-		else: 
-
-			print 'Normal Price'		
-			
-
-			ol = self.order_line.create({
-											'product_id': product.id,
-											'order_id': order_id,
-									})
-
-
-
-
-		print ol
-		print ol.product_id
-		print ol.product_id.name 
-
-		return self.nr_lines
-
-	
-
-
-
-
-
-# ----------------------------------------------------------- Relational ------------------------------------------------------
-
-	# Appointment 
-	x_appointment = fields.Many2one(
-			'oeh.medical.appointment',
-			string='Cita', 
-			required=False, 
-
-			compute='_compute_x_appointment', 
-		)
-
-
-
-	@api.multi
-	#@api.depends('x_appointment')
-
-	def _compute_x_appointment(self):
-		for record in self:
-
-			# Procedure 
-			if record.x_family == 'procedure':				
-				app = self.env['oeh.medical.appointment'].search([
-																	('patient', '=', record.patient.name), 
-																	('x_type', '=', 'procedure'),
-																	('doctor', '=', record.x_doctor.name), 
-																	#('x_target', '=', record.x_target),	
-																],
-																	order='appointment_date desc',
-																	limit=1,
-																)
-			# Consultation or Product 
-			elif record.x_family == 'consultation'	or  record.x_family == 'product':			
-
-				app = self.env['oeh.medical.appointment'].search([
-																	('patient', '=', record.patient.name), 
-																	('x_type', '=', 'consultation'),
-																	('doctor', '=', record.x_doctor.name), 
-																	#('x_target', '=', record.x_target),	
-																],
-																	order='appointment_date desc',
-																	limit=1,
-																)
-			
-			else:
-				app = False
-
-			record.x_appointment = app
-
-
-
+	# _onchange_x_partner_dni
 
 
 
@@ -846,8 +694,8 @@ class sale_order(models.Model):
 			sub = 0.0
 			for line in record.order_line:
 				sub = sub + line.price_subtotal 
-			if sub == 0.0:
-				sub = float(record.x_ruc)
+			#if sub == 0.0:
+			#	sub = float(record.x_ruc)
 			record.x_amount_total = sub
 
 
@@ -1037,64 +885,107 @@ class sale_order(models.Model):
 
 
 
+# ----------------------------------------------------------- Update Appointments ------------------------------------------------------
+
+	# Update Apps
+	@api.multi 
+	def update_appointment(self):
+
+		if self.x_family == 'consultation': 
+			for app in self.treatment.appointment_ids: 
+				if app.x_type == 'consultation': 
+					app.state = 'invoiced'
+
+		if self.x_family == 'procedure': 
+			for app in self.treatment.appointment_ids: 
+				if app.x_type == 'procedure': 
+					app.state = 'invoiced'
+
+
+
+# ----------------------------------------------------------- Create Card ------------------------------------------------------
+
+	# Update Apps
+	@api.multi 
+	def create_card(self):
+
+		# Detect 
+		card_sale = False 
+		order_line = self.order_line
+		for line in order_line:
+			if line.product_id.x_name_short == 'vip_card':
+				card_sale = True
+
+
+		# If Detected 
+		if card_sale:
+
+			
+			# Search 
+			card = self.env['openhealth.card'].search([ ('patient_name', '=', self.partner_id.name), ], order='date_created desc', limit=1)
+			
+
+			# Create
+			if card.name == False: 
+				card = self.env['openhealth.card'].create({
+																	'patient_name': self.partner_id.name,
+															})
+
+
+
+			# Update Pricelist - In Partner
+			pl = self.env['product.pricelist'].search([
+																('name','=', 'VIP'),
+															],
+															#order='appointment_date desc',
+															limit=1,)
+			self.partner_id.property_product_pricelist = pl
+
+
+
+
+
+
 # ----------------------------------------------------------- Action Confirm ------------------------------------------------------
 
 	# Action confirm 
 	@api.multi 
 	def action_confirm(self):
 
-
-		#print 
 		print 
 		print 'Action confirm - Overridden'
 		 
 		
-
-
-
-		#Write your logic here - Begin
+#Write your logic here - Begin
 
 
 		# Serial Number and Type
 		if self.x_payment_method.saledoc != False: 
 
 			print 'Serial number'
-
-
-			self.x_type = self.x_payment_method.saledoc
-
 			
-
+			self.x_type = self.x_payment_method.saledoc
 	 		counter = self.env['openhealth.counter'].search([
 																	('name', '=', self.x_type), 
 																],
 																	#order='write_date desc',
 																	limit=1,
 																)
-
 			name = count_funcs.get_name(self, counter.prefix, counter.separator, counter.padding, counter.value)
-
 			self.x_serial_nr = name
-
 
 			counter.increase()				# Here !
 
 
 
 
-
-		# Doctor User Name - For Reporting 
+		# Doctor User Name - For Sale Reporting 
 		if self.x_doctor.name != False: 
-
 			print 'Dr name'
-
 			uid = self.x_doctor.x_user_name.id
 			self.x_doctor_uid = uid
-		
-		#Write your logic here - End 
 
-
-
+#Write your logic here - End 
 
 
 
@@ -1103,12 +994,9 @@ class sale_order(models.Model):
 		#Write your logic here
 		
 
-
 		
-
 		# Date must be that of the Sale, not the budget. 
 		self.date_order = datetime.datetime.now()
-
 
 
 
@@ -1117,20 +1005,8 @@ class sale_order(models.Model):
 
 
 
-
 		# Change Appointment State - To Invoiced 
-		if self.x_family == 'consultation'	or 	self.x_family == 'procedure': 
-			if self.x_appointment.name != False: 
-				self.x_appointment.state = 'invoiced'
-
-
-
-
-
-		# Reserve Machine if Procedure 
-		#if self.x_family == 'procedure': 
-		#	self.reserve_machine()
-
+		self.update_appointment()
 
 
 
@@ -1139,68 +1015,24 @@ class sale_order(models.Model):
 
 
 
-
-
-
-		# Patient 
-		patient_name = self.partner_id.name
-		#print patient_name
+		# Vip Card 
+		self.create_card()
 
 
 
 
-
-		# Card 
-		go_card = False 
-		order_line = self.order_line
-		for line in order_line:
-			print line 
-			print line.name 
-			#if line.name == 'Tarjeta VIP' or line.name == 'TARJETA VIP':
-			if line.product_id.x_name_short == 'vip_card':
-				#print 'gotcha'
-				go_card = True
-				print go_card
-
-
-		# Create Card 
-		if go_card:
-
-			print 'Card'
-
-			# Pricelist Vip - For Partner
-			pl = self.env['product.pricelist'].search([
-																('name','=', 'VIP'),
-															],
-															#order='appointment_date desc',
-															limit=1,)
-			print pl
-			self.partner_id.property_product_pricelist = pl
+		# Reserve Machine if Procedure 					# Deprecated !
+		#if self.x_family == 'procedure': 
+		#	self.reserve_machine()
 
 
 
-
-
-			# Search Card
-			card = self.env['openhealth.card'].search([ ('patient_name', '=', patient_name), ], order='date_created desc', limit=1)
-			card_id = card.id
-			print card 
-
-			# Create Card 
-			if card.name == False: 
-				card = self.env['openhealth.card'].create({
-																	'patient_name': self.partner_id.name,
-															})
-
-			#return{}
-
-
-
-		# Stock Picking - Validate 
+		# Stock Picking - Validate 						# Deprecated !
 		#print 'Picking'
 		#self.validate_stock_picking()
 		#self.do_transfer()
 		
+
 	# action_confirm	
 
 
@@ -1280,11 +1112,147 @@ class sale_order(models.Model):
 # ----------------------------------------------------------- Update Order ------------------------------------------------------
 
 	# Update colors (state)
+	#@api.multi 
+	#def update_order_nex(self):
+		#print 
+		#print 'Update Order Nex'
+		#print 
+
+
+
+
+# ----------------------------------------------------------- For Treatment Reset  ------------------------------------------------------
+	@api.multi
+	def remove_myself(self):  
+		self.x_reset()
+		self.unlink()
+
+
+
+
+
+# ----------------------------------------------------------- Create order lines ------------------------------------------------------
+	
+	# For  Budget creation from Treatment - By Doctors 
 	@api.multi 
-	def update_order_nex(self):
+	def x_create_order_lines_target(self, target, price_manual, price_applied):		
+		
+		print 
+		print 'Create Order Lines with Target'
+		print target
+
+
+		order_id = self.id
+
+		product = self.env['product.product'].search([
+														('x_name_short','=', target),
+														('x_origin','=', False),
+												])
+		#print product
+		#print product.name
+		#print product.x_treatment
+
+
+
+# Order line creation  - With the correct price 
+
+		# Manual Price  
+		if price_manual != 0: 
+			
+			#print 'Manual Price'
+
+			ol = self.order_line.create({
+											'product_id': product.id,
+											'order_id': order_id,										
+											'price_unit': price_manual,
+											'x_price_manual': price_manual, 
+										})
+
+		# Quick Laser 
+		#elif product.categ_id.name == 'Quick Laser': 	
+		elif product.x_treatment == 'laser_quick': 	
+			
+			#print 'Quick Laser Price'
+			
+			price_quick = price_applied
+
+			ol = self.order_line.create({
+											'product_id': product.id,
+											'order_id': order_id,
+											'price_unit': price_quick,
+										})
+
+		# Normal case
+		else: 
+			
+			#print 'Normal Price'		
+			
+			ol = self.order_line.create({
+											'product_id': product.id,
+											'order_id': order_id,
+									})
+
+
+		return self.nr_lines
+	# x_create_order_lines_target	
+
+
+
+
+# ----------------------------------------------------------- Testing  ------------------------------------------------------
+
+	# Unit Testing 
+	@api.multi
+	def test_units(self):  
 
 		print 
-		print 'Update Order Nex'
+		print 'Unit Testing Begin'
+
+		self.treatment.create_order('consultation')
+
+		self.test_clean_services()
+		self.treatment.create_order('procedure')
+
+		self.update_descriptors_all()
+
+		self.update_type_batch()
+
+		self.state_change()
+		self.state_change()
+
+		self.x_type = 'ticket_receipt'
+		self.print_ticket()
+		self.x_type = 'ticket_invoice'
+		self.print_ticket()
+
+
+		self.cancel_order()
+		self.activate_order()
+		self.state = 'sale'
+
 		print 
+		print 'Unit Testing End'
+		print 
+
+
+
+
+	# Clean Services 
+	@api.multi
+	def test_clean_services(self):  
+		for service in self.treatment.service_vip_ids:
+			service.state = 'draft'
+		for service in self.treatment.service_co2_ids:
+			service.state = 'draft'
+		for service in self.treatment.service_quick_ids:
+			service.state = 'draft'
+		for service in self.treatment.service_excilite_ids:
+			service.state = 'draft'
+		for service in self.treatment.service_ipl_ids:
+			service.state = 'draft'
+		for service in self.treatment.service_ndyag_ids:
+			service.state = 'draft'
+		for service in self.treatment.service_medical_ids:
+			service.state = 'draft'
 
 

@@ -307,11 +307,13 @@
 
 					<!-- Add Prod -->
 					<button 
-							name="create_orderline"
 							type="object" 
 							class="oe_highlight"
-							states="draft"						
+
+							name="open_product_selector"
 							context="{'x_type': 'product'}"
+
+							states="draft"						
 
 							string="Agregar PRODUCTO"
 
@@ -322,11 +324,13 @@
 
 					<!-- Add Serv -->
 					<button 
-							name="create_orderline"
 							type="object" 
 							class="oe_highlight"
-							states="draft"						
+
+							name="open_product_selector"
 							context="{'x_type': 'service'}"
+
+							states="draft"						
 
 							string="Agregar SERVICIO"
 

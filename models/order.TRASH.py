@@ -1471,3 +1471,53 @@
 
 
 
+
+
+# 16 Apr 2018
+
+#import treatment_vars
+#import app_vars
+#import cosvars
+#import appfuncs
+#import time 
+
+
+	#x_authorization = fields.Char(
+	#	)
+
+	#x_ruc = fields.Char(
+	#		string="RUC", 						
+	#		required=False, 
+	#	)
+
+
+
+	# Update payment method type 
+	#@api.onchange('x_serial_nr')	
+	#def _onchange_x_serial_nr(self):
+		#print 'jx'
+		#print 'On change serial nr'
+	#	if self.x_payment_method.saledoc != False: 
+	#		self.x_type = self.x_payment_method.saledoc
+			#print self.x_type
+
+
+
+	#@api.multi
+	#def _compute_x_type(self):
+	#	for record in self:
+	#		if record.x_payment_method != False: 
+	#			record.x_type = record.x_payment_method.saledoc
+
+
+
+	#@api.multi
+	#def _compute_x_doctor_uid(self):
+	#	for record in self:
+	#		if record.x_doctor.name != False: 
+	#			uid = record.x_doctor.x_user_name.id
+	#			record.x_doctor_uid = uid
+
+
+
+

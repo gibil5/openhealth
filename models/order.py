@@ -1,25 +1,19 @@
 # -*- coding: utf-8 -*-
 #
-#
+
 # 	Order 
 # 
 # Created: 				26 Aug 2016
 #
+
 from openerp import models, fields, api
+
 import datetime
-import app_vars
 import ord_vars
-import appfuncs
-import cosvars
 from num2words import num2words
 import math 
-import time 
 from openerp import tools
 import count_funcs
-
-
-#import treatment_vars
-
 
 
 class sale_order(models.Model):
@@ -28,39 +22,19 @@ class sale_order(models.Model):
 	
 
 
-
 # ----------------------------------------------------------- Deprecated ------------------------------------------------------
 
-	#x_authorization = fields.Char(
-	#	)
-
-	#x_ruc = fields.Char(
-	#		string="RUC", 						
-	#		required=False, 
-	#	)
 
 
 
 
-# ----------------------------------------------------------- Serial Number ------------------------------------------------------
+# ----------------------------------------------------------- Vars ------------------------------------------------------
 
+	# Serial Number 
 	x_serial_nr = fields.Char(
 			'Número de serie',
 		)
 
-	# Update payment method type 
-	#@api.onchange('x_serial_nr')	
-	#def _onchange_x_serial_nr(self):
-		#print 'jx'
-		#print 'On change serial nr'
-	#	if self.x_payment_method.saledoc != False: 
-	#		self.x_type = self.x_payment_method.saledoc
-			#print self.x_type
-
-
-
-
-# ----------------------------------------------------------- Date Order ------------------------------------------------------
 
 	# Date 
 	date_order = fields.Datetime(
@@ -73,8 +47,6 @@ class sale_order(models.Model):
 	)
 
 
-
-
 	# State 
 	state = fields.Selection(
 			selection = ord_vars._state_list, 
@@ -84,7 +56,6 @@ class sale_order(models.Model):
 		)
 
 
-
 	# For Admin Sale Editing 
 	@api.multi
 	def state_change(self):  
@@ -92,7 +63,6 @@ class sale_order(models.Model):
 			self.state = 'editable'
 		elif self.state == 'editable': 
 			self.state = 'sale'
-
 
 
 	# Pricelist 
@@ -106,14 +76,11 @@ class sale_order(models.Model):
 		)
 
 
-
-
 	# Payment Method 
 	x_payment_method = fields.Many2one(
 			'openhealth.payment_method',
 			string="Pago", 
 		)
-
 
 
 
@@ -126,9 +93,7 @@ class sale_order(models.Model):
 				('ticket_receipt', 		'Ticket Boleta'),
 				('ticket_invoice', 		'Ticket Factura'),	], 
 			string='Tipo', 
-			required=False, 
-
-			#compute="_compute_x_type",
+			required=False,
 		)
 
 
@@ -141,12 +106,6 @@ class sale_order(models.Model):
 			#print self.x_type
 
 
-	#@api.multi
-	#def _compute_x_type(self):
-	#	for record in self:
-	#		if record.x_payment_method != False: 
-	#			record.x_type = record.x_payment_method.saledoc
-
 
 
 
@@ -157,39 +116,23 @@ class sale_order(models.Model):
 			string = "Médico",
 		)
 
-
-
-
 	x_doctor_uid = fields.Many2one(
 			'res.users',
 			string = "Médico Uid", 	
-			readonly = True, 
-
-			#compute='_compute_x_doctor_uid', 
+			readonly = True,
 		)
-
-	#@api.multi
-	#def _compute_x_doctor_uid(self):
-	#	for record in self:
-	#		if record.x_doctor.name != False: 
-	#			uid = record.x_doctor.x_user_name.id
-	#			record.x_doctor_uid = uid
-
 
 
 
 	# Family 
 	x_family = fields.Selection(
 			string = "Familia", 	
-			
-			#selection = treatment_vars._family_list, 
 			selection = [
 							('product','Producto'), 
 							('consultation','Consulta'), 
 							('procedure','Procedimiento'), 
 							('cosmetology','Cosmiatría'), 
 			], 
-			
 			required=False, 
 		)
 
@@ -223,9 +166,6 @@ class sale_order(models.Model):
 			
 	
 
-
-
-
 	# Partner Vip 
 	x_partner_vip = fields.Boolean(
 			'Vip', 
@@ -248,10 +188,7 @@ class sale_order(models.Model):
 
 
 
-
-
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
-
 
 	# Treatment 
 	treatment = fields.Many2one(
@@ -260,8 +197,6 @@ class sale_order(models.Model):
 			string="Tratamiento",
 			readonly=False, 
 		)
-
-
 
 
 	@api.onchange('x_doctor')
@@ -289,11 +224,12 @@ class sale_order(models.Model):
 
 
 
-
+	# For User Interface 
 	vspace = fields.Char(
 			' ', 
 			readonly=True
 		)
+
 
 
 # ----------------------------------------------------------- Relationals ------------------------------------------------------
@@ -303,11 +239,7 @@ class sale_order(models.Model):
 
 	# Buttons  - Agregar Producto Servicio
 	@api.multi
-	def create_orderline(self):  
-
-		#print 
-		#print 'jx'
-		#print 'Create Order Line'
+	def open_product_selector(self):  
 
 
 		# Init Vars 
@@ -316,9 +248,6 @@ class sale_order(models.Model):
 		x_type = context['x_type']
 		res_id = False
 
-		#print context
-		#print context['params']
-		#print order_id
 
 
 		# Search Model 
@@ -327,6 +256,10 @@ class sale_order(models.Model):
 																#order='write_date desc',
 																limit=1,
 															)
+		#print 'Open Product Selector'
+		#print context
+		#print context['params']
+		#print order_id
 		#print res.id
 		
 
@@ -363,16 +296,14 @@ class sale_order(models.Model):
 								'default_x_type': x_type ,
 							}
 				}
-	# create_orderline
+	# open_product_selector
 
 
 
 
 
 
-
-
-# ----------------------------------------------------------- Tickets ------------------------------------------------------
+# ----------------------------------------------------------- Print Tickets ------------------------------------------------------
 
 	# Total in Words
 	x_total_in_words = fields.Char(
@@ -616,7 +547,7 @@ class sale_order(models.Model):
 
 
 
-# ---------------------------------------------- Cancel Events --------------------------------------------------------
+# ---------------------------------------------- Cancel - Event creation --------------------------------------------------------
 
 	# Event 
 	event_ids = fields.One2many(
@@ -679,7 +610,7 @@ class sale_order(models.Model):
 
 
 
-# ---------------------------------------------- Create PM --------------------------------------------------------
+# ---------------------------------------------- Create Payment Method --------------------------------------------------------
 
 	# Amount total 
 	x_amount_total = fields.Float(
@@ -816,16 +747,11 @@ class sale_order(models.Model):
 	@api.multi 
 	def update_descriptors(self):
 
-		#print 
-		#print 'Update descriptors'
-
 		out = False
+
 		for line in self.order_line:
 
-			#print 'Family'
-
 			if not out: 
-
 
 				# Consultations
 				#if line.product_id.categ_id.name == 'Consultas':
@@ -835,14 +761,12 @@ class sale_order(models.Model):
 					out = True
 
 
-
 				# Procedures
 				#elif line.product_id.categ_id.name in ['Quick Laser', 'Laser Co2', 'Laser Excilite', 'Laser M22', 'Medical']: 
 				elif line.product_id.categ_id.name in ['Procedimiento', 'Quick Laser', 'Laser Co2', 'Laser Excilite', 'Laser M22', 'Medical']: 
 					self.x_family = 'procedure'
 					self.x_product = line.product_id.x_name_ticket
 					out = True
-
 
 
 				# Cosmetology 
@@ -858,9 +782,12 @@ class sale_order(models.Model):
 					self.x_product = line.product_id.x_name_ticket
 
 
+		#print 
+		#print 'Update descriptors'
 		#print self.x_family
 		#print self.x_product
 
+	#update_descriptors
 
 
 
@@ -884,10 +811,9 @@ class sale_order(models.Model):
 
 
 
-
 # ----------------------------------------------------------- Update Appointments ------------------------------------------------------
 
-	# Update Apps
+	# Update Appointment in Treatment 
 	@api.multi 
 	def update_appointment(self):
 
@@ -903,9 +829,10 @@ class sale_order(models.Model):
 
 
 
+
 # ----------------------------------------------------------- Create Card ------------------------------------------------------
 
-	# Update Apps
+	# Create Vip Card 
 	@api.multi 
 	def create_card(self):
 
@@ -933,12 +860,14 @@ class sale_order(models.Model):
 
 
 
-			# Update Pricelist - In Partner
+			# Serarch Pricelist 
 			pl = self.env['product.pricelist'].search([
 																('name','=', 'VIP'),
 															],
 															#order='appointment_date desc',
 															limit=1,)
+
+			# Update Partner 
 			self.partner_id.property_product_pricelist = pl
 
 
@@ -956,8 +885,8 @@ class sale_order(models.Model):
 		print 'Action confirm - Overridden'
 		 
 		
-#Write your logic here - Begin
 
+#Write your logic here - Begin
 
 		# Serial Number and Type
 		if self.x_payment_method.saledoc != False: 
@@ -1044,12 +973,11 @@ class sale_order(models.Model):
 	def x_reset(self):
 		self.x_payment_method.unlink()
 		self.state = 'draft'			# This works. 
-		#self.x_confirmed = False
 
 
 
 
-	#----------------------------------------------------------- Quick Button ------------------------------------------------------------
+	#----------------------------------------------------------- Quick Button - For Treatment ------------------------------------------------------------
 
 	# For Treatments Quick access
 	@api.multi
@@ -1071,6 +999,7 @@ class sale_order(models.Model):
 						},
 				'context': {}
 		}
+
 
 
 
@@ -1121,7 +1050,7 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- For Treatment Reset  ------------------------------------------------------
+# ----------------------------------------------------------- Reset - For Treatment   ------------------------------------------------------
 	@api.multi
 	def remove_myself(self):  
 		self.x_reset()
@@ -1130,10 +1059,9 @@ class sale_order(models.Model):
 
 
 
-
 # ----------------------------------------------------------- Create order lines ------------------------------------------------------
 	
-	# For  Budget creation from Treatment - By Doctors 
+	# For  Budget creation - From Treatment - By Doctors 
 	@api.multi 
 	def x_create_order_lines_target(self, target, price_manual, price_applied):		
 		
@@ -1199,7 +1127,7 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Testing  ------------------------------------------------------
+# ----------------------------------------------------------- Testing Units ------------------------------------------------------
 
 	# Unit Testing 
 	@api.multi
@@ -1236,7 +1164,6 @@ class sale_order(models.Model):
 
 
 
-
 	# Clean Services 
 	@api.multi
 	def test_clean_services(self):  
@@ -1254,5 +1181,7 @@ class sale_order(models.Model):
 			service.state = 'draft'
 		for service in self.treatment.service_medical_ids:
 			service.state = 'draft'
+
+
 
 

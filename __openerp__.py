@@ -126,7 +126,7 @@
 		'data/stock_move_data.xml',
 		'views/stock/stock_move.xml',
 		'views/stock/stock_move_selector.xml',
-		'views/stock/stock_move_all.xml',
+		#'views/stock/stock_move_all.xml',
 
 
 

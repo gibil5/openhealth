@@ -108,11 +108,10 @@
 		#'views/account_invoices/account_invoice.xml',
 
 
-
-
 		# ----------------------------------------------------------- Deprecated ??? ------------------------------------------------------
 
 		#'views/product_managers/product_manager.xml',
+		#'views/menus/menus_kardex.xml',
 
 
 
@@ -128,7 +127,6 @@
 		'views/stock/stock_move.xml',
 		'views/stock/stock_move_selector.xml',
 		'views/stock/stock_move_all.xml',
-		#'views/menus/menus_kardex.xml',
 
 
 
@@ -140,16 +138,12 @@
 
 		# ----------------------------------------------------------- Recent ------------------------------------------------------
 
-		'security/ir.model.access.csv',
-		'views/product_selectors/product_selector.xml',
-		'views/orders/order_report_nex.xml',
-
-
-		'views/report_sale/report_sale_product.xml',
-
-		'views/report_sale/report_sale.xml',
-
-		'views/report_sale/item_counter.xml',
+		#'security/ir.model.access.csv',
+		#'views/product_selectors/product_selector.xml',
+		#'views/orders/order_report_nex.xml',
+		#'views/report_sale/report_sale_product.xml',
+		#'views/report_sale/report_sale.xml',
+		#'views/report_sale/item_counter.xml',
 
 
 
@@ -863,10 +857,11 @@
 
 
 		# ----------------------------------------------------------- Menus ------------------------------------------------------
-		'views/menus/menus.xml',
-		'views/menus/menus_reporting.xml',
+		#'views/menus/menus.xml',
+		#'views/menus/menus_reporting.xml',
+		#'views/menus/menus_openhealth.xml',
+
 		#'views/menus/menus_inventory.xml',
-		'views/menus/menus_openhealth.xml',
 
 
 	],

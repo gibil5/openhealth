@@ -783,14 +783,14 @@
 
 
 		# ----------------------------------------------------------- Legacy ------------------------------------------------------
-		'views/legacy/legacy.xml',
-		'views/legacy/legacy_patient.xml',
-		'views/legacy/legacy_manager.xml',
-		'views/data/data_analyzer.xml',
-		'views/legacy/legacy_manager_order.xml',
-		'views/legacy/legacy_manager_patient.xml',
-		'views/legacy/legacy_order.xml',
-		'views/menus/menus_legacy.xml',
+		#'views/legacy/legacy.xml',
+		#'views/legacy/legacy_patient.xml',
+		#'views/legacy/legacy_manager.xml',
+		#'views/data/data_analyzer.xml',
+		#'views/legacy/legacy_manager_order.xml',
+		#'views/legacy/legacy_manager_patient.xml',
+		#'views/legacy/legacy_order.xml',
+		#'views/menus/menus_legacy.xml',
 
 
 

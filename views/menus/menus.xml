@@ -416,15 +416,16 @@ order_report.xml
 
 					sequence="3"
 					/>
-
+<!--
 			<menuitem 	id="sales_closings_sub_menu" 						
 						name="Diarios"
 						parent="sales_closings_menu"
 						sequence="1"
 
 						action="closings_list_action"
-						/>
 
+						/>
+-->
 
 
 

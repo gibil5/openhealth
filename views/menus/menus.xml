@@ -417,6 +417,7 @@ order_report.xml
 					sequence="3"
 					/>
 <!--
+-->
 			<menuitem 	id="sales_closings_sub_menu" 						
 						name="Diarios"
 						parent="sales_closings_menu"
@@ -425,7 +426,6 @@ order_report.xml
 						action="closings_list_action"
 
 						/>
--->
 
 
 

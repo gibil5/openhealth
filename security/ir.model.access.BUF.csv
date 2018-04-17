@@ -4,14 +4,20 @@
 
 
 
+access_openhealth_product_counter,openhealth.product.counter,model_openhealth_product_counter,,1,1,1,1
+
+
+
+
+
+
+
+
+
+
+
+
 access_openhealth_order_report_nex_line,openhealth.order.report.nex.line,model_openhealth_order_report_nex_line,,1,1,1,1
-
-
-
-
-
-
-
 
 
 
@@ -19,9 +25,7 @@ access_openhealth_order_report,openhealth.order.report,model_openhealth_order_re
 
 
 
-
 access_db_backup,access_db_backup,model_db_backup,,1,1,1,1
-
 
 
 

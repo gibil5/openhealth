@@ -135,7 +135,7 @@
 		'data/stock_move_data.xml',
 		'views/stock/stock_move.xml',
 		'views/stock/stock_move_selector.xml',
-		#'views/stock/stock_move_all.xml',
+		'views/stock/stock_move_all.xml',
 
 
 
@@ -147,7 +147,7 @@
 
 		# ----------------------------------------------------------- Recent ------------------------------------------------------
 
-		#'security/ir.model.access.csv',
+		'security/ir.model.access.csv',
 		'views/product_selectors/product_selector.xml',
 		'views/orders/order_report_nex.xml',
 		'views/report_sale/report_sale_product.xml',
@@ -787,14 +787,14 @@
 
 
 		# ----------------------------------------------------------- Legacy ------------------------------------------------------
-		#'views/legacy/legacy.xml',
-		#'views/legacy/legacy_patient.xml',
-		#'views/legacy/legacy_manager.xml',
-		#'views/data/data_analyzer.xml',
-		#'views/legacy/legacy_manager_order.xml',
-		#'views/legacy/legacy_manager_patient.xml',
-		#'views/legacy/legacy_order.xml',
-		#'views/menus/menus_legacy.xml',
+		'views/legacy/legacy.xml',
+		'views/legacy/legacy_patient.xml',
+		'views/legacy/legacy_manager.xml',
+		'views/data/data_analyzer.xml',
+		'views/legacy/legacy_manager_order.xml',
+		'views/legacy/legacy_manager_patient.xml',
+		'views/legacy/legacy_order.xml',
+		'views/menus/menus_legacy.xml',
 
 
 

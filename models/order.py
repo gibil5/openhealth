@@ -940,7 +940,7 @@ class sale_order(models.Model):
 
 
 		# Create Proc 
-		self.treatment.create_procedure()
+		#self.treatment.create_procedure()
 
 
 

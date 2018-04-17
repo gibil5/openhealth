@@ -823,8 +823,8 @@
 
 
 		# ----------------------------------------------------------- Stock Min ------------------------------------------------------
-		'views/stock_min/stock_min_inventory.xml',
-		'views/stock_min/stock_min_inventory_line.xml',
+		#'views/stock_min/stock_min_inventory.xml',
+		#'views/stock_min/stock_min_inventory_line.xml',
 
 
 

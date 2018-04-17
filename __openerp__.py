@@ -112,6 +112,10 @@
 
 		#'data/prods/data_products_consu.xml',			 
 
+		# Users - Inactive - With pw
+		#'data/users/base_data_users_inactive.xml',	
+
+
 
 		# ----------------------------------------------------------- Deprecated ??? ------------------------------------------------------
 
@@ -144,11 +148,11 @@
 		# ----------------------------------------------------------- Recent ------------------------------------------------------
 
 		#'security/ir.model.access.csv',
-		#'views/product_selectors/product_selector.xml',
-		#'views/orders/order_report_nex.xml',
-		#'views/report_sale/report_sale_product.xml',
-		#'views/report_sale/report_sale.xml',
-		#'views/report_sale/item_counter.xml',
+		'views/product_selectors/product_selector.xml',
+		'views/orders/order_report_nex.xml',
+		'views/report_sale/report_sale_product.xml',
+		'views/report_sale/report_sale.xml',
+		'views/report_sale/item_counter.xml',
 
 
 
@@ -364,8 +368,6 @@
 		'data/users/base_data_users_generics.xml',	
 
 
-		# Users - Inactive - With pw
-		#'data/users/base_data_users_inactive.xml',	
 
 
 
@@ -391,9 +393,8 @@
 		# ----------------------------------------------------------- Views ------------------------------------------------------
 
 
-
 		# Purchases 
-		#'views/purchase/purchase.xml',
+		'views/purchase/purchase.xml',
 
 
 
@@ -608,7 +609,7 @@
 
 
 		# Cards 
-		#'views/cards/card.xml',
+		'views/cards/card.xml',
 
 
 

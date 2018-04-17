@@ -605,7 +605,7 @@
 
 
 		# Cards 
-		'views/cards/card.xml',
+		#'views/cards/card.xml',
 
 
 

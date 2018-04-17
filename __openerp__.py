@@ -815,7 +815,7 @@
 
 
 		# closings 
-		#'views/closings/closings.xml',
+		'views/closings/closings.xml',
 
 
 
@@ -827,8 +827,8 @@
 
 
 		# ----------------------------------------------------------- Stock Min ------------------------------------------------------
-		#'views/stock_min/stock_min_inventory.xml',
-		#'views/stock_min/stock_min_inventory_line.xml',
+		'views/stock_min/stock_min_inventory.xml',
+		'views/stock_min/stock_min_inventory_line.xml',
 
 
 

@@ -570,10 +570,10 @@
 
 
 		
-		# Patients 
-		'views/patients/patient.xml',
 
-		'views/patients/patient_search.xml',
+		# Patients 
+		#'views/patients/patient.xml',
+		#'views/patients/patient_search.xml',
 
 
 

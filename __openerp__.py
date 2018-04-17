@@ -811,7 +811,7 @@
 
 
 		# closings 
-		'views/closings/closings.xml',
+		#'views/closings/closings.xml',
 
 
 

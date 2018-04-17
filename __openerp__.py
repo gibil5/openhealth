@@ -115,6 +115,9 @@
 		# Users - Inactive - With pw
 		#'data/users/base_data_users_inactive.xml',	
 
+		#'views/stock/stock_picking.xml',
+
+		#'views/menus/menus_inventory.xml',
 
 
 		# ----------------------------------------------------------- Deprecated ??? ------------------------------------------------------
@@ -122,6 +125,8 @@
 		#'views/product_managers/product_manager.xml',
 		#'views/menus/menus_kardex.xml',
 
+
+		# ----------------------------------------------------------- RSP ------------------------------------------------------
 
 
 
@@ -407,7 +412,6 @@
 		# Stock 
 		'views/stock/stock.xml',
 		'views/stock/stock_inventory.xml',
-		#'views/stock/stock_picking.xml',
 
 
 
@@ -835,7 +839,6 @@
 
 
 
-		# ----------------------------------------------------------- RSP ------------------------------------------------------
 
 
 
@@ -864,7 +867,6 @@
 		'views/menus/menus_reporting.xml',
 		'views/menus/menus_openhealth.xml',
 
-		#'views/menus/menus_inventory.xml',
 
 
 	],

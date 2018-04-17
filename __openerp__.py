@@ -107,6 +107,11 @@
 		# Account invoice
 		#'views/account_invoices/account_invoice.xml',
 
+		# Quotations 
+		#'views/quotations/quotation.xml',
+
+		#'data/prods/data_products_consu.xml',			 
+
 
 		# ----------------------------------------------------------- Deprecated ??? ------------------------------------------------------
 
@@ -572,8 +577,8 @@
 		
 
 		# Patients 
-		#'views/patients/patient.xml',
-		#'views/patients/patient_search.xml',
+		'views/patients/patient.xml',
+		'views/patients/patient_search.xml',
 
 
 
@@ -585,8 +590,6 @@
 
 
 
-		# Quotations 
-		#'views/quotations/quotation.xml',
 
 
 
@@ -735,10 +738,10 @@
 
 
 		# Patients - 2 
-		#'views/patients/patient_personal.xml',
-		#'views/patients/patient_control_docs.xml',
-		#'views/patients/patient_appointments.xml',
-		#'views/patients/patient_quick.xml',
+		'views/patients/patient_personal.xml',
+		'views/patients/patient_control_docs.xml',
+		'views/patients/patient_appointments.xml',
+		'views/patients/patient_quick.xml',
 		
 
 
@@ -843,7 +846,6 @@
 		# Products - Tmp 
 		'data/prods/odoo_data_products.xml',	
 		'data/prods/odoo_data_products_new.xml',	
-		#'data/prods/data_products_consu.xml',			 
 		
 		'data/prods/odoo_data_services_co2.xml',		
 		'data/prods/odoo_data_services_exc.xml',		

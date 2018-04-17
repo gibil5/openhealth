@@ -735,10 +735,10 @@
 
 
 		# Patients - 2 
-		'views/patients/patient_personal.xml',
-		'views/patients/patient_control_docs.xml',
-		'views/patients/patient_appointments.xml',
-		'views/patients/patient_quick.xml',
+		#'views/patients/patient_personal.xml',
+		#'views/patients/patient_control_docs.xml',
+		#'views/patients/patient_appointments.xml',
+		#'views/patients/patient_quick.xml',
 		
 
 

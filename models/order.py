@@ -565,8 +565,7 @@ class sale_order(models.Model):
 
 	@api.multi 
 	def cancel_order(self):
-		#print 
-		#print 'Cancel'
+
 		self.x_cancel = True
 		self.state = 'cancel'
 		ret = self.create_event()
@@ -575,10 +574,10 @@ class sale_order(models.Model):
 
 	@api.multi 
 	def activate_order(self):
-		#print 
-		#print 'Cancel'
+
 		self.x_cancel = False
-		self.state = 'draft'
+		#self.state = 'draft'
+		self.state = 'sale'
 
 
 	@api.multi 

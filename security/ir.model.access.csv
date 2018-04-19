@@ -8,6 +8,8 @@ access_openhealth_account_contasis,openhealth.account.contasis,model_openhealth_
 
 access_openhealth_account_line,openhealth.account.line,model_openhealth_account_line,,1,1,1,1
 
+access_openhealth_account_line_contasis,openhealth.account.line.contasis,model_openhealth_account_line_contasis,,1,1,1,1
+
 
 
 

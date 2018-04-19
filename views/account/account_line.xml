@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		
+
+
+
+
+		<!-- TREE --> 
+		<record model="ir.ui.view" id="account_line_view_order_tree">
+
+			<field name="name">openhealth.account.line.tree</field>
+			
+			<field name="model">openhealth.account.line</field>
+			
+			<field name="arch" type="xml">
+
+				<tree string="Account Line Tree">
+					
+
+                    <field name="serial_nr"/>
+
+                    <field name="date"/>
+                    
+                    <field name="patient"/>
+
+                    <field name="amount"/>
+
+
+				</tree>
+			</field>
+		</record>
+
+
+
+
+
+
+		<!-- ACTION -->
+		<record model="ir.actions.act_window" id="account_line_list_action">
+			<field name="name">line</field>
+
+			<field name="res_model">openhealth.account.line</field>
+			
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+			<!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first order
+				</p>
+			</field>
+			-->
+		</record>
+		
+
+	</data>
+</openerp>

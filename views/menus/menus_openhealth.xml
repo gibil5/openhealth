@@ -7,13 +7,24 @@
 <!-- Open Health -->
 		<menuitem id="main_openhealth_menu_nex" 
 			sequence="1"
-			name="Open Health - Nex"
+
+			name="Open Health"
+			
 			groups="openhealth.roots"
 			/>
 
-		<menuitem id="openhealth_menu" name="Open Health"
+
+		<menuitem id="openhealth_menu" name="Dev"
 			parent="main_openhealth_menu_nex"/>
 
+
+
+
+
+		<!-- Account Contasis -->
+		<menuitem id="account_conta_menu" name="Contasis" parent="openhealth_menu"
+			sequence="1"
+			action="account_contasis_list_action"/>
 
 
 
@@ -23,7 +34,6 @@
 
 		<!-- RSP -->
 <!--
--->
 		<menuitem id="report_sale_menu" name="Report Sale" parent="openhealth_menu"
 			sequence="1"
 			action="report_sale_list_action"/>
@@ -39,6 +49,7 @@
 		<menuitem id="rsp_menu" name="Report Sale Product" parent="openhealth_menu"
 			sequence="2"
 			action="rsp_list_action"/>
+-->
 
 
 

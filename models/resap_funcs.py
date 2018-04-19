@@ -12,8 +12,9 @@ import datetime
 
 
 # ----------------------------------------------------------- Get orders ------------------------------------------------------
+
+# Provides sales between begin date and end date. 
 @api.multi
-#def get_orders(self, date):
 def get_orders_filter(self, date_bx, date_ex):
 
 	print

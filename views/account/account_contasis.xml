@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		
+
+
+
+
+
+		<!-- FORM --> 
+		<record model="ir.ui.view" id="account_contasis_form_view">
+			<field name="name">account.contasis.form</field>
+			
+			<field name="model">openhealth.account.contasis</field>
+			
+			<field name="arch" type="xml">
+				<form string="Account Contasis Form">
+					
+
+
+
+					<header>
+						<button 
+								type="object" 
+								class="oe_highlight"
+
+								name="update_totals"
+
+								string="Actualizar"								
+						/>
+					</header>
+
+
+
+
+					<!-- Sheet -->	
+					<sheet>
+
+
+						<group	string="Total"	>
+							<group>
+			                    <field name="name"/>
+
+			                    <field name="date"/>
+			                    <field name="date_begin"/>
+			                    <field name="date_end"/>
+							</group>
+
+							<group>
+			                    <field name="total_amount"/>
+			                    <field name="total_count"/>
+							</group>
+						</group>
+
+
+
+
+						<!-- Form -->
+						<group	string=""	>
+							<group>
+							</group>
+
+							<group>
+							</group>
+						</group>
+
+
+
+
+						<!-- Notebook --> 
+						<notebook>
+							<page>
+<!--
+-->
+			                    <field name="account_line"/>
+
+							</page>
+						</notebook>
+
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+
+
+		
+		<!-- TREE --> 
+		<record model="ir.ui.view" id="account_contasis_view_order_tree">
+
+			<field name="name">openhealth.account.contasis.tree</field>
+			
+			<field name="model">openhealth.account.contasis</field>
+			
+			<field name="arch" type="xml">
+
+				<tree string="Account Contasis Tree" default_order='date desc'>
+					
+
+                    <field name="name"	 				/>
+
+                    <field name="date"			string="Fecha"	/>
+
+                    <field name="date_begin"	string="Fecha Inicio"	/>
+                    <field name="date_end"		string="Fecha Fin"	/>
+
+                    <field name="total_amount"/>
+
+                    <field name="total_count"/>
+
+
+				</tree>
+			</field>
+		</record>
+
+
+
+
+
+
+		<!-- ACTION -->
+		<record model="ir.actions.act_window" id="account_contasis_list_action">
+			<field name="name">Contasis</field>
+
+			<field name="res_model">openhealth.account.contasis</field>
+			
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+			<!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first order
+				</p>
+			</field>
+			-->
+		</record>
+		
+
+	</data>
+</openerp>

@@ -153,6 +153,7 @@
 		# ----------------------------------------------------------- Recent ------------------------------------------------------
 
 		'security/ir.model.access.csv',
+		
 		'views/product_selectors/product_selector.xml',
 		'views/orders/order_report_nex.xml',
 		'views/report_sale/report_sale_product.xml',

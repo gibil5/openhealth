@@ -10,7 +10,7 @@
 
 			name="Open Health"
 			
-			groups="openhealth.roots"
+			groups="openhealth.roots,openhealth.managers"
 			/>
 
 

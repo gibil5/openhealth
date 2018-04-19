@@ -68,12 +68,18 @@
 
 
 						<!-- Notebook --> 
-						<notebook>
-							<page>
-<!--
--->
+						<notebook>	
+							<page	string="Ventas"		>
+
 			                    <field name="account_line"/>
 
+							</page>
+						
+
+							<page	string="Contasis"		>
+<!--
+-->
+			                    <field name="account_line_contasis"/>
 							</page>
 						</notebook>
 

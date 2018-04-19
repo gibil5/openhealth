@@ -35,6 +35,11 @@ class AccountContasis(models.Model):
 		)
 
 
+	# Lines Contasis
+	account_line_contasis = fields.One2many(
+			'openhealth.account.line.contasis', 
+			'account_id', 
+		)
 
 
 
@@ -43,6 +48,7 @@ class AccountContasis(models.Model):
 	
 	# Name 
 	name = fields.Char(
+			string="Nombre", 		
 		)
 
 	vspace = fields.Char(
@@ -83,13 +89,13 @@ class AccountContasis(models.Model):
 
 	# Totals
 	total_amount = fields.Float(
-			'Total',
+			'Total Monto',
 			#default = 0, 
 		)
 
 	# Totals
 	total_count = fields.Integer(
-			'Total',
+			'Total Ventas',
 			#default = 0, 
 		)
 
@@ -114,6 +120,10 @@ class AccountContasis(models.Model):
 
 
 
+		# Clear 
+		self.account_line.unlink()
+		self.account_line_contasis.unlink()
+
 
 
 		# Totals 
@@ -130,22 +140,59 @@ class AccountContasis(models.Model):
 			serial_nr = order.x_serial_nr
 			date = order.date_order
 			patient = order.patient.id  
-			amount = order.amount_untaxed
+
+
+
+			amount = order.amount_total
+			amount_net = order.x_total_net
+			amount_tax = order.x_total_tax
+
+
+			
+			x_type = order.x_type
+
+			if x_type == "ticket_invoice": 
+				document = order.patient.x_ruc
+			else: 
+				document = order.patient.x_dni
+
+
 
 
 			self.account_line.create({
-
-										'serial_nr': serial_nr, 
-
-										'date': date,
-
 										'patient': patient, 
 
+										'serial_nr': serial_nr, 
+										'x_type': x_type, 
+										'document': document, 
+
+										'date': date,
+										'date_time': date,
+
 										'amount': amount,
+										'amount_net': amount_net,
+										'amount_tax': amount_tax,
 
 										'account_id': self.id, 
 				})
 
+
+			self.account_line_contasis.create({
+										'patient': patient, 
+
+										'serial_nr': serial_nr, 
+										'x_type': x_type, 
+										'document': document, 
+
+										'date': date,
+										'date_time': date,
+
+										'amount': amount,
+										'amount_net': amount_net,
+										'amount_tax': amount_tax,
+
+										'account_id': self.id, 
+				})
 
 
 

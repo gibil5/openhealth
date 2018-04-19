@@ -20,10 +20,20 @@
 
                     <field name="serial_nr"/>
 
+                    <field name="x_type"/>
+
+
+<!--
                     <field name="date"/>
-                    
+-->                
+                    <field name="date_time"/>
+
+                    <field name="document"/>
+
                     <field name="patient"/>
 
+                    <field name="amount_net"/>
+                    <field name="amount_tax"/>
                     <field name="amount"/>
 
 

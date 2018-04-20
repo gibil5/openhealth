@@ -373,20 +373,16 @@
 
 
 		# Purchases 
-		#'views/purchase/purchase.xml',
-
-
+		'views/purchase/purchase.xml',
 
 
 		# Stock 
-		#'views/stock/stock.xml',
-		#'views/stock/stock_inventory.xml',
-
-
+		'views/stock/stock.xml',
+		'views/stock/stock_inventory.xml',
 
 
 		# Kardex
-		#'views/kardex/kardex.xml',
+		'views/kardex/kardex.xml',
 
 
 
@@ -399,10 +395,10 @@
 
 
 		# Users
-		#'views/users/user.xml',
+		'views/users/user.xml',
 
 		# Groups 
-		#'views/groups/groups.xml',
+		'views/groups/groups.xml',
 
 
 
@@ -412,64 +408,27 @@
 
 
 		# Orders
-		#'views/orders/order_line.xml',
-		#'views/orders/order.xml',
-		#'views/orders/order_admin.xml',
-		#'views/orders/order_search.xml',
+		'views/orders/order_line.xml',
+		'views/orders/order.xml',
+		'views/orders/order_admin.xml',
+		'views/orders/order_search.xml',
 
+		# Payment methods 
+		'views/payment_methods/payment_methods.xml',
+		'views/payment_methods/payment_method_line.xml',
 		
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		# Counters 
-		#'views/counters/counter.xml',
+		'views/counters/counter.xml',
 
 
 		# Companies 
-		#'views/companies/company.xml',
+		'views/companies/company.xml',
 
 
 
 
-
-
-
-
-		# Sale Documents
-		#'views/payment_methods/payment_methods.xml',
-		#'views/payment_methods/payment_method_line.xml',
 		
 
 
@@ -481,25 +440,25 @@
 
 
 		# Controls
-		#'views/controls/control.xml',
+		'views/controls/control.xml',
 
 
 
 
 		# Images 
-		#'views/images/image_view.xml',
+		'views/images/image_view.xml',
 
 
 
 
 		# Evaluations
-		#'views/evaluations/evaluation.xml',
+		'views/evaluations/evaluation.xml',
 
 
 
 
 		# Services
-		#'views/services/service.xml',
+		'views/services/service.xml',
 
 
 

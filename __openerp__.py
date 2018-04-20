@@ -151,7 +151,7 @@
 
 		# ----------------------------------------------------------- Recent ------------------------------------------------------
 
-		#'security/ir.model.access.csv',
+		'security/ir.model.access.csv',
 		
 		'views/product_selectors/product_selector.xml',
 		#'views/orders/order_report_nex.xml',
@@ -235,12 +235,12 @@
 
 
 		# Sales 
-		#'views/reports/report_sale_pivots.xml',
-		#'views/reports/report_sale_graphs.xml',
-		#'views/reports/report_sale_favorites.xml',
-		#'views/reports/report_sale_search.xml',
-		#'views/reports/report_sale.xml',
-		#'views/reports/report_sale_months.xml',
+		'views/reports/report_sale_pivots.xml',
+		'views/reports/report_sale_graphs.xml',
+		'views/reports/report_sale_favorites.xml',
+		'views/reports/report_sale_search.xml',
+		'views/reports/report_sale.xml',
+		'views/reports/report_sale_months.xml',
 
 
 
@@ -668,21 +668,21 @@
 
 		'data/prods/odoo_data_products.xml',	
 		'data/prods/odoo_data_products_new.xml',	
-		#'data/prods/odoo_data_services_co2.xml',		
-		#'data/prods/odoo_data_services_exc.xml',		
-		#'data/prods/odoo_data_services_m22.xml',		
-		#'data/prods/odoo_data_services_med.xml',		
-		#'data/prods/odoo_data_services_consult.xml',	
-		#'data/prods/odoo_data_services_cos.xml',		
+		'data/prods/odoo_data_services_co2.xml',		
+		'data/prods/odoo_data_services_exc.xml',		
+		'data/prods/odoo_data_services_m22.xml',		
+		'data/prods/odoo_data_services_med.xml',		
+		'data/prods/odoo_data_services_consult.xml',	
+		'data/prods/odoo_data_services_cos.xml',		
 
 
 
 
 
 		# ----------------------------------------------------------- Menus ------------------------------------------------------
-		#'views/menus/menus.xml',
+		'views/menus/menus.xml',
 		#'views/menus/menus_reporting.xml',
-		#'views/menus/menus_openhealth.xml',
+		'views/menus/menus_openhealth.xml',
 
 	],
 

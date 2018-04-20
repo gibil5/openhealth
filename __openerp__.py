@@ -20,7 +20,7 @@
 	'description': """
 
 
-		Last built: 	19 April 2018 
+		Last built: 	20 April 2018 
 
 		
 		Stability by Design !
@@ -126,7 +126,6 @@
 		#'views/menus/menus_kardex.xml',
 
 
-		# ----------------------------------------------------------- RSP ------------------------------------------------------
 
 
 
@@ -137,10 +136,10 @@
 
 
 		# ----------------------------------------------------------- Stock Moves - Deprecated ??? ------------------------------------------------------
-		'data/stock_move_data.xml',
-		'views/stock/stock_move.xml',
-		'views/stock/stock_move_selector.xml',
-		'views/stock/stock_move_all.xml',
+		#'data/stock_move_data.xml',
+		#'views/stock/stock_move.xml',
+		#'views/stock/stock_move_selector.xml',
+		#'views/stock/stock_move_all.xml',
 
 
 
@@ -152,18 +151,17 @@
 
 		# ----------------------------------------------------------- Recent ------------------------------------------------------
 
-		'security/ir.model.access.csv',
+		#'security/ir.model.access.csv',
 		
-		'views/product_selectors/product_selector.xml',
-		'views/orders/order_report_nex.xml',
-		'views/report_sale/report_sale_product.xml',
-		'views/report_sale/report_sale.xml',
-		'views/report_sale/item_counter.xml',
+		#'views/product_selectors/product_selector.xml',
+		#'views/orders/order_report_nex.xml',
+		#'views/report_sale/report_sale_product.xml',
+		#'views/report_sale/report_sale.xml',
+		#'views/report_sale/item_counter.xml',
 
 
-
-		'views/account/account_contasis.xml',
-		'views/account/account_line.xml',
+		#'views/account/account_contasis.xml',
+		#'views/account/account_line.xml',
 
 
 
@@ -178,7 +176,7 @@
 		# ----------------------------------------------------------- Views - Base Actions ------------------------------------------------------
 
 		# Base - Form and List Actions - Must be the first 
-		'views/base.xml',										# Very important - All Actions should go here - Dependencies
+		#'views/base.xml',										# Very important - All Actions should go here - Dependencies
 		
 
 
@@ -193,10 +191,10 @@
 
 
 		# Patient
-		'reports/patient.xml',
-		'reports/patient_consultation.xml',
-		'reports/patient_sessions.xml',
-		'reports/patient_controls.xml',
+		#'reports/patient.xml',
+		#'reports/patient_consultation.xml',
+		#'reports/patient_sessions.xml',
+		#'reports/patient_controls.xml',
 
 
 
@@ -207,19 +205,19 @@
 
 
 		# Formats
-		'reports/paper_format.xml',
+		#'reports/paper_format.xml',
 
 
 
 		# Ticket 
-		'reports/report_ticket_invoice.xml',
-		'reports/report_ticket_receipt.xml',
+		#'reports/report_ticket_invoice.xml',
+		#'reports/report_ticket_receipt.xml',
 		
 
 
 		# New Tickets 
-		'reports/report_ticket_receipt_nex.xml',
-		'reports/report_ticket_invoice_nex.xml',
+		#'reports/report_ticket_receipt_nex.xml',
+		#'reports/report_ticket_invoice_nex.xml',
 
 
 
@@ -227,7 +225,7 @@
 
 
 		# Purchases
-		'reports/report_purchasequotation.xml',
+		#'reports/report_purchasequotation.xml',
 
 
 
@@ -238,12 +236,12 @@
 
 
 		# Sales 
-		'views/reports/report_sale_pivots.xml',
-		'views/reports/report_sale_graphs.xml',
-		'views/reports/report_sale_favorites.xml',
-		'views/reports/report_sale_search.xml',
-		'views/reports/report_sale.xml',
-		'views/reports/report_sale_months.xml',
+		#'views/reports/report_sale_pivots.xml',
+		#'views/reports/report_sale_graphs.xml',
+		#'views/reports/report_sale_favorites.xml',
+		#'views/reports/report_sale_search.xml',
+		#'views/reports/report_sale.xml',
+		#'views/reports/report_sale_months.xml',
 
 
 
@@ -266,8 +264,8 @@
 
 
 		# Categs
-		'data/base_data_categs_partners.xml',			# check
-		'data/base_data_categs_prods.xml',			# check
+		#'data/base_data_categs_partners.xml',			
+		#'data/base_data_categs_prods.xml',			
 
 
 
@@ -301,27 +299,27 @@
 
 
 		# Important 
-		'views/pathologies/pathology.xml',
-		'data/prods/data_pathologies.xml',			
-		'data/prods/data_nexzones.xml',	
+		#'views/pathologies/pathology.xml',
+		#'data/prods/data_pathologies.xml',			
+		#'data/prods/data_nexzones.xml',	
 
 
 
 
 		# Zone
-		'views/zones/zone.xml',
+		#'views/zones/zone.xml',
 
-		'data/prods/data_zones_quick.xml',			 
-		'data/prods/data_zones_co2.xml',			 
-		'data/prods/data_zones_excilite.xml',			 
-		'data/prods/data_zones_ipl.xml',			 
-		'data/prods/data_zones_ndyag.xml',			 
+		#'data/prods/data_zones_quick.xml',			 
+		#'data/prods/data_zones_co2.xml',			 
+		#'data/prods/data_zones_excilite.xml',			 
+		#'data/prods/data_zones_ipl.xml',			 
+		#'data/prods/data_zones_ndyag.xml',			 
 
 
 
 
 		# Allergy 
-		'views/allergies/allergy.xml',
+		#'views/allergies/allergy.xml',
 
 
 
@@ -333,16 +331,16 @@
 
 
 		# Doctors
-		'data/base_data_physicians_lines.xml',				# check
-		'data/base_data_physicians.xml',				# check
+		#'data/base_data_physicians_lines.xml',				# check
+		#'data/base_data_physicians.xml',				# check
 
 
 
 
 
 		# Pricelists 
-		'data/pricelists.xml',							
-		'data/pricelist_quick.xml',						
+		#'data/pricelists.xml',							
+		#'data/pricelist_quick.xml',						
 
 
 
@@ -350,7 +348,7 @@
 
 
 		# Suppliers 
-		'data/suppliers.xml',							# DEPRECATED - Very 
+		#'data/suppliers.xml',							# DEPRECATED - Very 
 
 
 
@@ -362,20 +360,18 @@
 
 		# ----------------------------------------------------------- Users ------------------------------------------------------
 
-		# Tmp 
-
 		# Users - With pw
-		'data/users/base_data_users_platform.xml',	
-		'data/users/base_data_users_cash.xml',		
-		'data/users/base_data_users_doctors.xml',		
-		'data/users/base_data_users_assistants.xml',	
-		'data/users/base_data_users_staff.xml',		
-		'data/users/base_data_users_almacen.xml',		
-		'data/users/base_data_users_managers.xml',	
+		#'data/users/base_data_users_platform.xml',	
+		#'data/users/base_data_users_cash.xml',		
+		#'data/users/base_data_users_doctors.xml',		
+		#'data/users/base_data_users_assistants.xml',	
+		#'data/users/base_data_users_staff.xml',		
+		#'data/users/base_data_users_almacen.xml',		
+		#'data/users/base_data_users_managers.xml',	
 
 
 		# Users Generics 
-		'data/users/base_data_users_generics.xml',	
+		#'data/users/base_data_users_generics.xml',	
 
 
 
@@ -404,25 +400,20 @@
 
 
 		# Purchases 
-		'views/purchase/purchase.xml',
-
-
-
-
-
+		#'views/purchase/purchase.xml',
 
 
 
 
 		# Stock 
-		'views/stock/stock.xml',
-		'views/stock/stock_inventory.xml',
+		#'views/stock/stock.xml',
+		#'views/stock/stock_inventory.xml',
 
 
 
 
 		# Kardex
-		'views/kardex/kardex.xml',
+		#'views/kardex/kardex.xml',
 
 
 
@@ -435,10 +426,10 @@
 
 
 		# Users
-		'views/users/user.xml',
+		#'views/users/user.xml',
 
 		# Groups 
-		'views/groups/groups.xml',
+		#'views/groups/groups.xml',
 
 
 
@@ -448,11 +439,10 @@
 
 
 		# Orders
-		'views/orders/order_line.xml',
-		'views/orders/order.xml',
-		'views/orders/order_admin.xml',
-
-		'views/orders/order_search.xml',
+		#'views/orders/order_line.xml',
+		#'views/orders/order.xml',
+		#'views/orders/order_admin.xml',
+		#'views/orders/order_search.xml',
 
 		
 
@@ -491,11 +481,11 @@
 
 
 		# Counters 
-		'views/counters/counter.xml',
+		#'views/counters/counter.xml',
 
 
 		# Companies 
-		'views/companies/company.xml',
+		#'views/companies/company.xml',
 
 
 
@@ -505,8 +495,8 @@
 
 
 		# Sale Documents
-		'views/payment_methods/payment_methods.xml',
-		'views/payment_methods/payment_method_line.xml',
+		#'views/payment_methods/payment_methods.xml',
+		#'views/payment_methods/payment_method_line.xml',
 		
 
 
@@ -518,25 +508,25 @@
 
 
 		# Controls
-		'views/controls/control.xml',
+		#'views/controls/control.xml',
 
 
 
 
 		# Images 
-		'views/images/image_view.xml',
+		#'views/images/image_view.xml',
 
 
 
 
 		# Evaluations
-		'views/evaluations/evaluation.xml',
+		#'views/evaluations/evaluation.xml',
 
 
 
 
 		# Services
-		'views/services/service.xml',
+		#'views/services/service.xml',
 
 
 
@@ -549,23 +539,23 @@
 
 
 		# Procedures
-		'views/procedures/procedure.xml',
+		#'views/procedures/procedure.xml',
 
 
 
 		# Consultation
-		'views/consultations/consultation.xml',
+		#'views/consultations/consultation.xml',
 
 
 
 
 		# Recommendation
-		'views/recommendations/recommendation.xml',
+		#'views/recommendations/recommendation.xml',
 
 
 
 		# Treatments 
-		'views/treatments/treatment.xml',
+		#'views/treatments/treatment.xml',
 
 
 
@@ -573,7 +563,7 @@
 
 
 		# Cosmetologies		- Deprecated ?  - No !
-		'views/cosmetologies/cosmetology.xml',
+		#'views/cosmetologies/cosmetology.xml',
 
 
 
@@ -581,65 +571,39 @@
 
 
 		# Physicians 
-		'views/physicians/physician.xml',
+		#'views/physicians/physician.xml',
 
 
 		
 
 		# Patients 
-		'views/patients/patient.xml',
-		'views/patients/patient_search.xml',
+		#'views/patients/patient.xml',
+		#'views/patients/patient_search.xml',
 
 
 
 
 		# Partners
-		'views/partners/partner.xml',
-
-
-
-
-
-
-
+		#'views/partners/partner.xml',
 
 
 
 
 		# Appointments
-		'views/appointments/appointment.xml',
-
+		#'views/appointments/appointment.xml',
 
 
 		# Products
-		'views/products/product.xml',		
-
-
+		#'views/products/product.xml',		
 
 
 		# Cards 
-		'views/cards/card.xml',
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		#'views/cards/card.xml',
 
 
 
 		# Style 
-		'views/openhealth.xml',		
+		#'views/openhealth.xml',		
 
 
 
@@ -649,66 +613,43 @@
 		# ----------------------------------------------------------- Views - Second Level ------------------------------------------------------
 
 		# Sessions
-		'views/sessions/session.xml',
+		#'views/sessions/session.xml',
 		
-		'views/sessions/session_config_manual.xml',
+		#'views/sessions/session_config_manual.xml',
 		
-		'views/sessions/session_cos.xml',
-
-
-
-
-		
-
-
-
-
+		#'views/sessions/session_cos.xml',
 
 
 
 		# Evaluations - 2
-		'views/evaluations/evaluation_oeh.xml',
-
+		#'views/evaluations/evaluation_oeh.xml',
 
 
 
 		# Services - 2  
-		'views/services/service_co2.xml',
-		'views/services/service_co2_zone.xml',
-
-		'views/services/service_excilite.xml',
-		'views/services/service_excilite_zone.xml',
-		
-		'views/services/service_ipl.xml',
-		'views/services/service_ipl_zone.xml',
-		
-		'views/services/service_ndyag.xml',
-		'views/services/service_ndyag_zone.xml',
-		
-		'views/services/service_medical.xml',
-		'views/services/service_medical_zone.xml',
+		#'views/services/service_co2.xml',
+		#'views/services/service_co2_zone.xml',
+		#'views/services/service_excilite.xml',
+		#'views/services/service_excilite_zone.xml',
+		#'views/services/service_ipl.xml',
+		#'views/services/service_ipl_zone.xml',
+		#'views/services/service_ndyag.xml',
+		#'views/services/service_ndyag_zone.xml',
+		#'views/services/service_medical.xml',
+		#'views/services/service_medical_zone.xml',
 
 
 
-		# Service Quick
-		'views/services/service_quick.xml',
-
-
-
-
-
-		# Service Vip
-		'views/services/service_vip.xml',
-
-
+		#'views/services/service_quick.xml',
+		#'views/services/service_vip.xml',
 
 
 
 
 
 		# Cosmetology
-		'views/services/service_cosmetology.xml',
-		'views/services/service_cosmetology_zone.xml',
+		#'views/services/service_cosmetology.xml',
+		#'views/services/service_cosmetology_zone.xml',
 
 
 
@@ -716,67 +657,50 @@
 
 
 		# Procedures - 2  
-		'views/procedures/procedure_controls.xml',
-		'views/procedures/procedure_sessions.xml',		
-		'views/procedures/procedure_cos.xml',
-		'views/procedures/procedure_cos_sessions.xml',		
+		#'views/procedures/procedure_controls.xml',
+		#'views/procedures/procedure_sessions.xml',		
+		#'views/procedures/procedure_cos.xml',
+		#'views/procedures/procedure_cos_sessions.xml',		
 
 
 
 		# Consultation - 2
-		'views/consultations/consultation_med.xml',
-		'views/consultations/consultation_med_first.xml',
-		'views/consultations/consultation_cos.xml',
-		'views/consultations/consultation_cos_first.xml',
+		#'views/consultations/consultation_med.xml',
+		#'views/consultations/consultation_med_first.xml',
+		#'views/consultations/consultation_cos.xml',
+		#'views/consultations/consultation_cos_first.xml',
 
 
 
 
 		# Treatments - 2 
-		'views/treatments/treatment_consultations.xml',
-		'views/treatments/treatment_orders.xml',
-		'views/treatments/treatment_procedures.xml',
-		'views/treatments/treatment_appointments.xml',
-		'views/treatments/treatment_reservations.xml',
-		'views/treatments/treatment_sessions.xml',
-		'views/treatments/treatment_controls.xml',
-		'views/treatments/treatment_services.xml',
-
-
-
+		#'views/treatments/treatment_consultations.xml',
+		#'views/treatments/treatment_orders.xml',
+		#'views/treatments/treatment_procedures.xml',
+		#'views/treatments/treatment_appointments.xml',
+		#'views/treatments/treatment_reservations.xml',
+		#'views/treatments/treatment_sessions.xml',
+		#'views/treatments/treatment_controls.xml',
+		#'views/treatments/treatment_services.xml',
 
 
 
 		# Patients - 2 
-		'views/patients/patient_personal.xml',
-		'views/patients/patient_control_docs.xml',
-		'views/patients/patient_appointments.xml',
-		'views/patients/patient_quick.xml',
+		#'views/patients/patient_personal.xml',
+		#'views/patients/patient_control_docs.xml',
+		#'views/patients/patient_appointments.xml',
+		#'views/patients/patient_quick.xml',
 		
 
 
-
 		# Appointments - 2
-		'views/appointments/calendar.xml',
-		'views/appointments/appointment_cos.xml',
-
-
-
-
-
-
-
-
-
-
-
-
-
+		#'views/appointments/calendar.xml',
+		#'views/appointments/appointment_cos.xml',
 
 
 
 		# Closing 
-		'reports/closing.xml',
+		#'reports/closing.xml',
 
 
 
@@ -787,8 +711,8 @@
 
 
 		# ----------------------------------------------------------- Purchase ------------------------------------------------------
-		'views/purchase/purchase_report.xml',			# Deprecated
-		'views/purchase/purchase_report_view.xml',		# Deprecated 
+		#'views/purchase/purchase_report.xml',			# Deprecated
+		#'views/purchase/purchase_report_view.xml',		# Deprecated 
 
 
 
@@ -796,14 +720,14 @@
 
 
 		# ----------------------------------------------------------- Legacy ------------------------------------------------------
-		'views/legacy/legacy.xml',
-		'views/legacy/legacy_patient.xml',
-		'views/legacy/legacy_manager.xml',
-		'views/data/data_analyzer.xml',
-		'views/legacy/legacy_manager_order.xml',
-		'views/legacy/legacy_manager_patient.xml',
-		'views/legacy/legacy_order.xml',
-		'views/menus/menus_legacy.xml',
+		#'views/legacy/legacy.xml',
+		#'views/legacy/legacy_patient.xml',
+		#'views/legacy/legacy_manager.xml',
+		#'views/data/data_analyzer.xml',
+		#'views/legacy/legacy_manager_order.xml',
+		#'views/legacy/legacy_manager_patient.xml',
+		#'views/legacy/legacy_order.xml',
+		#'views/menus/menus_legacy.xml',
 
 
 
@@ -812,39 +736,21 @@
 
 
 		# ----------------------------------------------------------- Security Rules ------------------------------------------------------
-		'security/openhealth_security_readers.xml',
-		'security/ir.rule.xml',
-		'security/openhealth_security.xml',
-
-
-
-
-
+		#'security/openhealth_security_readers.xml',
+		#'security/ir.rule.xml',
+		#'security/openhealth_security.xml',
 
 
 
 		# closings 
-		'views/closings/closings.xml',
-
-
-
-
-
-
+		#'views/closings/closings.xml',
 
 
 
 
 		# ----------------------------------------------------------- Stock Min ------------------------------------------------------
-		'views/stock_min/stock_min_inventory.xml',
-		'views/stock_min/stock_min_inventory_line.xml',
-
-
-
-
-
-
-
+		#'views/stock_min/stock_min_inventory.xml',
+		#'views/stock_min/stock_min_inventory_line.xml',
 
 
 
@@ -852,27 +758,23 @@
 
 		# ----------------------------------------------------------- Products ------------------------------------------------------
 
-		# Products - Tmp 
-		'data/prods/odoo_data_products.xml',	
-		'data/prods/odoo_data_products_new.xml',	
-		
-		'data/prods/odoo_data_services_co2.xml',		
-		'data/prods/odoo_data_services_exc.xml',		
-		'data/prods/odoo_data_services_m22.xml',		
-		'data/prods/odoo_data_services_med.xml',		
-		'data/prods/odoo_data_services_consult.xml',	
-		'data/prods/odoo_data_services_cos.xml',		
+		#'data/prods/odoo_data_products.xml',	
+		#'data/prods/odoo_data_products_new.xml',	
+		#'data/prods/odoo_data_services_co2.xml',		
+		#'data/prods/odoo_data_services_exc.xml',		
+		#'data/prods/odoo_data_services_m22.xml',		
+		#'data/prods/odoo_data_services_med.xml',		
+		#'data/prods/odoo_data_services_consult.xml',	
+		#'data/prods/odoo_data_services_cos.xml',		
 
 
 
 
 
 		# ----------------------------------------------------------- Menus ------------------------------------------------------
-		'views/menus/menus.xml',
-		'views/menus/menus_reporting.xml',
-		'views/menus/menus_openhealth.xml',
-
-
+		#'views/menus/menus.xml',
+		#'views/menus/menus_reporting.xml',
+		#'views/menus/menus_openhealth.xml',
 
 	],
 

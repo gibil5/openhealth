@@ -175,7 +175,7 @@
 		# ----------------------------------------------------------- Views - Base Actions ------------------------------------------------------
 
 		# Base - Form and List Actions - Must be the first 
-		#'views/base.xml',										# Very important - All Actions should go here - Dependencies
+		'views/base.xml',										# Very important - All Actions should go here - Dependencies
 		
 
 
@@ -190,10 +190,10 @@
 
 
 		# Patient
-		#'reports/patient.xml',
-		#'reports/patient_consultation.xml',
-		#'reports/patient_sessions.xml',
-		#'reports/patient_controls.xml',
+		'reports/patient.xml',
+		'reports/patient_consultation.xml',
+		'reports/patient_sessions.xml',
+		'reports/patient_controls.xml',
 
 
 
@@ -204,19 +204,19 @@
 
 
 		# Formats
-		#'reports/paper_format.xml',
+		'reports/paper_format.xml',
 
 
 
 		# Ticket 
-		#'reports/report_ticket_invoice.xml',
-		#'reports/report_ticket_receipt.xml',
+		'reports/report_ticket_invoice.xml',
+		'reports/report_ticket_receipt.xml',
 		
 
 
 		# New Tickets 
-		#'reports/report_ticket_receipt_nex.xml',
-		#'reports/report_ticket_invoice_nex.xml',
+		'reports/report_ticket_receipt_nex.xml',
+		'reports/report_ticket_invoice_nex.xml',
 
 
 

@@ -970,6 +970,9 @@ class Patient(models.Model):
 	dob = fields.Date(
 			string="Fecha nacimiento",
 			required=False, 
+
+			#default="1965-05-26"
+			default="2000-01-01"
 		)
 
 

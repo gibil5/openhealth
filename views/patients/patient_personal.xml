@@ -106,14 +106,17 @@
 <!-- Only Lima --> 
 <!--
 																								'invisible':[('x_foreign', '!=', False)],
--->
-								<field name="street2_sel"    	required="0"		attrs="{
-																								'invisible':[('city', '!=', 'lima')],
 
+
+
+Relax ! 																								
 																								'required':[
 																												('city', '=', 'lima'), 
 																												('x_foreign', '=', False), 
 																											],
+-->
+								<field name="street2_sel"    	required="0"		attrs="{
+																								'invisible':[('city', '!=', 'lima')],
 																							}"
 																						/>
 
@@ -140,28 +143,33 @@
 																								'invisible':[('x_foreign', '!=', False)],
 -->
 
-								<!--
+<!--
 								<field name="zip" class="oe_no_button" style="width: 37%" options="{&quot;no_open&quot;: True}" on_change="onchange_state(state_id)"   />
-								-->
+
+
+Relax ! 
+																								'required':[
+																												('city', '=', 'lima'), 
+																												('x_foreign', '=', False), 
+																											],
+-->
 								<field name="zip" 	required="0"	class="oe_no_button" style="width: 37%" options="{&quot;no_open&quot;: True}" on_change="onchange_state(state_id)"   	
 
 																					attrs="{
 																								'invisible':[('city', '!=', 'lima')],
 																								
-																								'required':[
-																												('city', '=', 'lima'), 
-																												('x_foreign', '=', False), 
-																											],
 																							}" 
 
 								/>
 
 <!--
 																								'invisible':[('x_foreign', '!=', False)],
--->
-								<field name="street"  	
-																					attrs="{
+
+Relax !
 																								'required':[('x_foreign', '=', False)],
+-->
+								<field name="street"  	required="0"
+																					attrs="{
 																							}" 
 
 									/> 

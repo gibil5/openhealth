@@ -47,14 +47,14 @@
 
 <!-- Title --> 
 <!--
--->
 <br/>
+<br/>
+-->
 <center>
 <h2>
 	Ticket Boleta
 </h2>
 </center>
-<br/>
 
 
 
@@ -192,7 +192,7 @@
 <table style="width:100%">
 	<tr>
 		<td  align="justify"  >
-----------------------------------------------------------------
+----------------------------------
 		</td>
 	</tr>
 </table>
@@ -286,7 +286,7 @@
 <table style="width:100%">
 	<tr>
 		<td  align="justify"  >
-----------------------------------------------------------------
+----------------------------------
 		</td>
 	</tr>
 </table>
@@ -395,15 +395,15 @@
 <!-- Disclaimer --> 
 <!--
 <table style="width:80%">
+<br/>
 -->
-<table style="width:100%">
+<table style="width:90%">
 	<tr>
 		<td>
 			<t t-esc="doc.x_my_company.x_warning"/>
 		</td>
 	</tr>
 </table>
-<br/>
 
 
 

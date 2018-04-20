@@ -379,7 +379,8 @@ class Partner(models.Model):
 
 
 				#record.x_address = record.street + ' - ' + record.street2 + ' - ' + record.city
-				record.x_address = record.street.title() + ' - ' + record.street2.title() + ' - ' + record.city.title()
+				#record.x_address = record.street.title() + ' - ' + record.street2.title() + ' - ' + record.city.title()
+				record.x_address = record.street.title() + ' ' + record.street2.title() + ' - ' + record.city.title()
 
 
 

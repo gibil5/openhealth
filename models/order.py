@@ -99,7 +99,7 @@ class sale_order(models.Model):
 
 	# To update type from batch 
 	@api.multi
-	def update_type_batch(self):
+	def update_type(self):
 		#print 'update type'
 		if self.x_payment_method != False: 
 			self.x_type = self.x_payment_method.saledoc
@@ -1142,7 +1142,7 @@ class sale_order(models.Model):
 
 		self.update_descriptors_all()
 
-		self.update_type_batch()
+		self.update_type()
 
 		self.state_change()
 		self.state_change()

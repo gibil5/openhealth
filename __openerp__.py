@@ -623,8 +623,8 @@
 
 
 		# ----------------------------------------------------------- Purchase ------------------------------------------------------
-		#'views/purchase/purchase_report.xml',			# Deprecated
-		#'views/purchase/purchase_report_view.xml',		# Deprecated 
+		'views/purchase/purchase_report.xml',			# Deprecated
+		'views/purchase/purchase_report_view.xml',		# Deprecated 
 
 
 
@@ -632,14 +632,14 @@
 
 
 		# ----------------------------------------------------------- Legacy ------------------------------------------------------
-		#'views/legacy/legacy.xml',
-		#'views/legacy/legacy_patient.xml',
-		#'views/legacy/legacy_manager.xml',
-		#'views/data/data_analyzer.xml',
-		#'views/legacy/legacy_manager_order.xml',
-		#'views/legacy/legacy_manager_patient.xml',
-		#'views/legacy/legacy_order.xml',
-		#'views/menus/menus_legacy.xml',
+		'views/legacy/legacy.xml',
+		'views/legacy/legacy_patient.xml',
+		'views/legacy/legacy_manager.xml',
+		'views/data/data_analyzer.xml',
+		'views/legacy/legacy_manager_order.xml',
+		'views/legacy/legacy_manager_patient.xml',
+		'views/legacy/legacy_order.xml',
+		'views/menus/menus_legacy.xml',
 
 
 
@@ -651,14 +651,14 @@
 
 
 		# closings 
-		#'views/closings/closings.xml',
+		'views/closings/closings.xml',
 
 
 
 
 		# ----------------------------------------------------------- Stock Min ------------------------------------------------------
-		#'views/stock_min/stock_min_inventory.xml',
-		#'views/stock_min/stock_min_inventory_line.xml',
+		'views/stock_min/stock_min_inventory.xml',
+		'views/stock_min/stock_min_inventory_line.xml',
 
 
 
@@ -666,8 +666,8 @@
 
 		# ----------------------------------------------------------- Products ------------------------------------------------------
 
-		#'data/prods/odoo_data_products.xml',	
-		#'data/prods/odoo_data_products_new.xml',	
+		'data/prods/odoo_data_products.xml',	
+		'data/prods/odoo_data_products_new.xml',	
 		#'data/prods/odoo_data_services_co2.xml',		
 		#'data/prods/odoo_data_services_exc.xml',		
 		#'data/prods/odoo_data_services_m22.xml',		

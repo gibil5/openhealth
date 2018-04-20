@@ -19,9 +19,10 @@ from . import report_sale_product
 from . import report_order_line
 from . import product_counter 
 
-from . import sale_report
-from . import sale_report_md
-from . import order_report_nex
+
+#from . import sale_report
+#from . import sale_report_md
+#from . import order_report_nex
 
 
 

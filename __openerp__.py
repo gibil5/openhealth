@@ -475,31 +475,24 @@
 
 
 		# Procedures
-		#'views/procedures/procedure.xml',
-
+		'views/procedures/procedure.xml',
 
 
 		# Consultation
-		#'views/consultations/consultation.xml',
-
-
+		'views/consultations/consultation.xml',
 
 
 		# Recommendation
-		#'views/recommendations/recommendation.xml',
-
+		'views/recommendations/recommendation.xml',
 
 
 		# Treatments 
-		#'views/treatments/treatment.xml',
+		'views/treatments/treatment.xml',
 
 
 
-
-
-
-		# Cosmetologies		- Deprecated ?  - No !
-		#'views/cosmetologies/cosmetology.xml',
+		# Cosmetologies
+		'views/cosmetologies/cosmetology.xml',
 
 
 
@@ -507,39 +500,39 @@
 
 
 		# Physicians 
-		#'views/physicians/physician.xml',
+		'views/physicians/physician.xml',
 
 
 		
 
 		# Patients 
-		#'views/patients/patient.xml',
-		#'views/patients/patient_search.xml',
+		'views/patients/patient.xml',
+		'views/patients/patient_search.xml',
 
 
 
 
 		# Partners
-		#'views/partners/partner.xml',
+		'views/partners/partner.xml',
 
 
 
 
 		# Appointments
-		#'views/appointments/appointment.xml',
+		'views/appointments/appointment.xml',
 
 
 		# Products
-		#'views/products/product.xml',		
+		'views/products/product.xml',		
 
 
 		# Cards 
-		#'views/cards/card.xml',
+		'views/cards/card.xml',
 
 
 
 		# Style 
-		#'views/openhealth.xml',		
+		'views/openhealth.xml',		
 
 
 

@@ -74,7 +74,6 @@ access_stock_move_selector_cremas,stock.move.selector.cremas,model_stock_move_se
 
 access_stock_move_selector_consu,stock.move.selector.consu,model_stock_move_selector_consu,,1,1,1,1
 
-access_openhealth_quotation,openhealth.quotation,model_openhealth_quotation,,1,1,1,1
 
 access_stock_warehouse_orderpoint_caja,stock.warehouse.orderpoint.caja,stock.model_stock_warehouse_orderpoint,openhealth.caja,1,1,1,0
 

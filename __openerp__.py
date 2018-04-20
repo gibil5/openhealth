@@ -234,14 +234,6 @@
 
 
 
-		# Sales 
-		#'views/reports/report_sale_pivots.xml',
-		#'views/reports/report_sale_graphs.xml',
-		#'views/reports/report_sale_favorites.xml',
-		#'views/reports/report_sale_search.xml',
-		#'views/reports/report_sale.xml',
-		#'views/reports/report_sale_months.xml',
-
 
 
 
@@ -679,9 +671,21 @@
 
 
 
+		# ----------------------------------------------------------- Reports ------------------------------------------------------
+		# Sales 
+		'views/reports/report_sale_pivots.xml',
+		'views/reports/report_sale_graphs.xml',
+		'views/reports/report_sale_favorites.xml',
+		'views/reports/report_sale_search.xml',
+		'views/reports/report_sale.xml',
+		'views/reports/report_sale_months.xml',
+
+
+
+
 		# ----------------------------------------------------------- Menus ------------------------------------------------------
 		'views/menus/menus.xml',
-		#'views/menus/menus_reporting.xml',
+		'views/menus/menus_reporting.xml',
 		'views/menus/menus_openhealth.xml',
 
 	],

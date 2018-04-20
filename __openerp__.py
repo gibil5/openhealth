@@ -542,94 +542,77 @@
 		# ----------------------------------------------------------- Views - Second Level ------------------------------------------------------
 
 		# Sessions
-		#'views/sessions/session.xml',
-		
-		#'views/sessions/session_config_manual.xml',
-		
-		#'views/sessions/session_cos.xml',
-
+		'views/sessions/session.xml',
+		'views/sessions/session_config_manual.xml',
+		'views/sessions/session_cos.xml',
 
 
 		# Evaluations - 2
-		#'views/evaluations/evaluation_oeh.xml',
-
+		'views/evaluations/evaluation_oeh.xml',
 
 
 		# Services - 2  
-		#'views/services/service_co2.xml',
-		#'views/services/service_co2_zone.xml',
-		#'views/services/service_excilite.xml',
-		#'views/services/service_excilite_zone.xml',
-		#'views/services/service_ipl.xml',
-		#'views/services/service_ipl_zone.xml',
-		#'views/services/service_ndyag.xml',
-		#'views/services/service_ndyag_zone.xml',
-		#'views/services/service_medical.xml',
-		#'views/services/service_medical_zone.xml',
-
-
-
-		#'views/services/service_quick.xml',
-		#'views/services/service_vip.xml',
-
-
+		'views/services/service_co2.xml',
+		'views/services/service_co2_zone.xml',
+		'views/services/service_excilite.xml',
+		'views/services/service_excilite_zone.xml',
+		'views/services/service_ipl.xml',
+		'views/services/service_ipl_zone.xml',
+		'views/services/service_ndyag.xml',
+		'views/services/service_ndyag_zone.xml',
+		'views/services/service_medical.xml',
+		'views/services/service_medical_zone.xml',
+		'views/services/service_quick.xml',
+		'views/services/service_vip.xml',
 
 
 
 		# Cosmetology
-		#'views/services/service_cosmetology.xml',
-		#'views/services/service_cosmetology_zone.xml',
-
-
-
-
+		'views/services/service_cosmetology.xml',
+		'views/services/service_cosmetology_zone.xml',
 
 
 		# Procedures - 2  
-		#'views/procedures/procedure_controls.xml',
-		#'views/procedures/procedure_sessions.xml',		
-		#'views/procedures/procedure_cos.xml',
-		#'views/procedures/procedure_cos_sessions.xml',		
+		'views/procedures/procedure_controls.xml',
+		'views/procedures/procedure_sessions.xml',		
+		'views/procedures/procedure_cos.xml',
+		'views/procedures/procedure_cos_sessions.xml',		
 
 
 
 		# Consultation - 2
-		#'views/consultations/consultation_med.xml',
-		#'views/consultations/consultation_med_first.xml',
-		#'views/consultations/consultation_cos.xml',
-		#'views/consultations/consultation_cos_first.xml',
-
+		'views/consultations/consultation_med.xml',
+		'views/consultations/consultation_med_first.xml',
+		'views/consultations/consultation_cos.xml',
+		'views/consultations/consultation_cos_first.xml',
 
 
 
 		# Treatments - 2 
-		#'views/treatments/treatment_consultations.xml',
-		#'views/treatments/treatment_orders.xml',
-		#'views/treatments/treatment_procedures.xml',
-		#'views/treatments/treatment_appointments.xml',
-		#'views/treatments/treatment_reservations.xml',
-		#'views/treatments/treatment_sessions.xml',
-		#'views/treatments/treatment_controls.xml',
-		#'views/treatments/treatment_services.xml',
-
+		'views/treatments/treatment_consultations.xml',
+		'views/treatments/treatment_orders.xml',
+		'views/treatments/treatment_procedures.xml',
+		'views/treatments/treatment_appointments.xml',
+		'views/treatments/treatment_reservations.xml',
+		'views/treatments/treatment_sessions.xml',
+		'views/treatments/treatment_controls.xml',
+		'views/treatments/treatment_services.xml',
 
 
 		# Patients - 2 
-		#'views/patients/patient_personal.xml',
-		#'views/patients/patient_control_docs.xml',
-		#'views/patients/patient_appointments.xml',
-		#'views/patients/patient_quick.xml',
+		'views/patients/patient_personal.xml',
+		'views/patients/patient_control_docs.xml',
+		'views/patients/patient_appointments.xml',
+		'views/patients/patient_quick.xml',
 		
 
-
 		# Appointments - 2
-		#'views/appointments/calendar.xml',
-		#'views/appointments/appointment_cos.xml',
-
+		'views/appointments/calendar.xml',
+		'views/appointments/appointment_cos.xml',
 
 
 		# Closing 
-		#'reports/closing.xml',
+		'reports/closing.xml',
 
 
 

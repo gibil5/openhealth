@@ -4,7 +4,7 @@
 
 # Highly Deprecated !
 from . import sale_report
-#from . import sale_report_md
+from . import sale_report_md
 
 
 

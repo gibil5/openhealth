@@ -153,15 +153,14 @@
 
 		#'security/ir.model.access.csv',
 		
-		#'views/product_selectors/product_selector.xml',
-		#'views/orders/order_report_nex.xml',
-		#'views/report_sale/report_sale_product.xml',
-		#'views/report_sale/report_sale.xml',
-		#'views/report_sale/item_counter.xml',
+		'views/product_selectors/product_selector.xml',
+		'views/orders/order_report_nex.xml',
+		'views/report_sale/report_sale_product.xml',
+		'views/report_sale/report_sale.xml',
+		'views/report_sale/item_counter.xml',
 
-
-		#'views/account/account_contasis.xml',
-		#'views/account/account_line.xml',
+		'views/account/account_contasis.xml',
+		'views/account/account_line.xml',
 
 
 

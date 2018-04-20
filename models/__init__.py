@@ -2,6 +2,13 @@
 
 #from . import models
 
+# Highly Deprecated !
+#from . import sale_report
+#from . import sale_report_md
+#from . import order_report_nex
+
+
+
 
 
 # Accounting
@@ -20,9 +27,6 @@ from . import report_order_line
 from . import product_counter 
 
 
-#from . import sale_report
-#from . import sale_report_md
-#from . import order_report_nex
 
 
 

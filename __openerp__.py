@@ -348,6 +348,10 @@
 
 
 
+		# ----------------------------------------------------------- Security Rules ------------------------------------------------------
+		'security/openhealth_security_readers.xml',
+		'security/ir.rule.xml',
+		'security/openhealth_security.xml',
 
 
 
@@ -667,10 +671,6 @@
 
 
 
-		# ----------------------------------------------------------- Security Rules ------------------------------------------------------
-		#'security/openhealth_security_readers.xml',
-		#'security/ir.rule.xml',
-		#'security/openhealth_security.xml',
 
 
 

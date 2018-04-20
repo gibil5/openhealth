@@ -224,7 +224,7 @@
 
 
 		# Purchases
-		#'reports/report_purchasequotation.xml',
+		'reports/report_purchasequotation.xml',
 
 
 
@@ -263,8 +263,8 @@
 
 
 		# Categs
-		#'data/base_data_categs_partners.xml',			
-		#'data/base_data_categs_prods.xml',			
+		'data/base_data_categs_partners.xml',			
+		'data/base_data_categs_prods.xml',			
 
 
 
@@ -273,46 +273,25 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		
 
 
 
 		# Important 
-		#'views/pathologies/pathology.xml',
-		#'data/prods/data_pathologies.xml',			
-		#'data/prods/data_nexzones.xml',	
+		'views/pathologies/pathology.xml',
+		'data/prods/data_pathologies.xml',			
+		'data/prods/data_nexzones.xml',	
 
 
 
 
 		# Zone
-		#'views/zones/zone.xml',
+		'views/zones/zone.xml',
 
-		#'data/prods/data_zones_quick.xml',			 
-		#'data/prods/data_zones_co2.xml',			 
-		#'data/prods/data_zones_excilite.xml',			 
-		#'data/prods/data_zones_ipl.xml',			 
-		#'data/prods/data_zones_ndyag.xml',			 
+		'data/prods/data_zones_quick.xml',			 
+		'data/prods/data_zones_co2.xml',			 
+		'data/prods/data_zones_excilite.xml',			 
+		'data/prods/data_zones_ipl.xml',			 
+		'data/prods/data_zones_ndyag.xml',			 
 
 
 

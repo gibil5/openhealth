@@ -297,28 +297,23 @@
 
 
 		# Allergy 
-		#'views/allergies/allergy.xml',
-
-
-
-
-
+		'views/allergies/allergy.xml',
 
 
 
 
 
 		# Doctors
-		#'data/base_data_physicians_lines.xml',				# check
-		#'data/base_data_physicians.xml',				# check
+		'data/base_data_physicians_lines.xml',			
+		'data/base_data_physicians.xml',				
 
 
 
 
 
 		# Pricelists 
-		#'data/pricelists.xml',							
-		#'data/pricelist_quick.xml',						
+		'data/pricelists.xml',							
+		'data/pricelist_quick.xml',						
 
 
 
@@ -326,7 +321,7 @@
 
 
 		# Suppliers 
-		#'data/suppliers.xml',							# DEPRECATED - Very 
+		'data/suppliers.xml',							# DEPRECATED - Very 
 
 
 
@@ -339,17 +334,17 @@
 		# ----------------------------------------------------------- Users ------------------------------------------------------
 
 		# Users - With pw
-		#'data/users/base_data_users_platform.xml',	
-		#'data/users/base_data_users_cash.xml',		
-		#'data/users/base_data_users_doctors.xml',		
-		#'data/users/base_data_users_assistants.xml',	
-		#'data/users/base_data_users_staff.xml',		
-		#'data/users/base_data_users_almacen.xml',		
-		#'data/users/base_data_users_managers.xml',	
+		'data/users/base_data_users_platform.xml',	
+		'data/users/base_data_users_cash.xml',		
+		'data/users/base_data_users_doctors.xml',		
+		'data/users/base_data_users_assistants.xml',	
+		'data/users/base_data_users_staff.xml',		
+		'data/users/base_data_users_almacen.xml',		
+		'data/users/base_data_users_managers.xml',	
 
 
-		# Users Generics 
-		#'data/users/base_data_users_generics.xml',	
+		# Generics 
+		'data/users/base_data_users_generics.xml',	
 
 
 

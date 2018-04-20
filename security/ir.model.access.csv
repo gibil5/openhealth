@@ -37,7 +37,6 @@ access_openhealth_treatment_physicians,openhealth.treatment.physicians,model_ope
 access_openhealth_counter,openhealth.counter,model_openhealth_counter,,1,1,1,1
 access_openhealth_counter_caja,openhealth.counter.caja,model_openhealth_counter,openhealth.caja,1,1,0,0
 
-access_openhealth_product_manager,access_openhealth_product_manager,model_openhealth_product_manager,,1,1,1,1
 
 access_product_selector,product.selector,model_openhealth_product_selector,,1,1,1,1
 

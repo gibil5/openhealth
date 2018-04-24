@@ -34,39 +34,46 @@
 
 
 <!-- 								Page 1 - Begin	 										-->
-<div class="page">    
+<div class="page">  
+
+
+<!--
+--> 
 <br/>
 <br/>
+
 <br/>
 <br/>
 <br/>
 
 
 <center>
-<h3>
+<h4>
 	Cierre de Caja
-</h3>
+</h4>
 </center>
+<!--
 <br/>
-
+-->
 
 
 
 
 
 <!-- Total --> 
-<h4>                            
+<h5>                            
 		<b>Total:</b>
 		<t t-esc="doc.total"/>
-</h4>                            
+</h5>                            
 
 <!-- Date --> 
-<h4>                            
+<h5>                            
 		<b>Fecha:</b>
 		<t t-esc="doc.date"/>	
-</h4>                            
+</h5>
+<!--                            
 <br/>
-
+-->
 
 
 
@@ -75,12 +82,15 @@
 <br/>
 -->
 <!-- Title --> 
-<h3>                            
+<h4>                            
 	Documentos de Pago
-</h3>
+</h4>
 <!--
 <br/>
 -->
+
+
+
 
 
 <!-- Table --> 
@@ -90,8 +100,10 @@
 
 <tr>
 <th>Boletas:</th>
+
 <th><t t-esc="doc.rec_tot"/></th>
 </tr>
+
 
 <tr>
 <th>De:</th>
@@ -129,7 +141,7 @@
 
 
 <tr>
-<th>Tickets Boleta:</th>
+<th>Tic. Boleta:</th>
 <th><t t-esc="doc.tkr_tot"/></th>
 </tr>
 
@@ -150,7 +162,7 @@
 
 
 <tr>
-<th>Tickets Factura:</th>
+<th>Tic. Factura:</th>
 <th><t t-esc="doc.tki_tot"/></th>
 </tr>
 
@@ -193,12 +205,13 @@
 
 
 
-
+<!--
 <br/>
+-->
 <!-- Title --> 
-<h3>                            
+<h4>                            
 	Formas de Pago
-</h3>
+</h4>
 <!--
 <br/>
 -->
@@ -271,6 +284,11 @@
 </tr>
 
 </table>    
+
+
+
+
+
 
 
 </div> <!-- page --> 

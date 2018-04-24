@@ -20,7 +20,7 @@
 	'description': """
 
 
-		Last built: 	23 April 2018 
+		Last built: 	24 April 2018 
 
 		
 		Stability by Design !
@@ -118,6 +118,8 @@
 		#'views/stock/stock_picking.xml',
 
 		#'views/menus/menus_inventory.xml',
+
+		#'data/base_data_physicians_lines.xml',			
 
 
 		# ----------------------------------------------------------- Deprecated ??? ------------------------------------------------------
@@ -296,8 +298,13 @@
 
 
 		# Doctors
-		'data/base_data_physicians_lines.xml',			
 		'data/base_data_physicians.xml',				
+
+		'data/base_data_physicians_inactive.xml',				
+
+		'data/base_data_physicians_new.xml',				
+
+
 
 
 
@@ -333,6 +340,11 @@
 		'data/users/base_data_users_staff.xml',		
 		'data/users/base_data_users_almacen.xml',		
 		'data/users/base_data_users_managers.xml',	
+
+
+		'data/users/base_data_users_doctors_new.xml',		
+
+
 
 
 		# Generics 

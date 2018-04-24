@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data noupdate='0'>
+
+
+
+
+<!--
+rloayza@clinicachavarri.com
+lcastillo@clinicachavarri.com
+cabriojo@clinicachavarri.com
+--> 
+
+
+<!-- Rodrigo Loayza -->
+<!-- Luis Castillo -->
+<!-- Carlos Abriojo -->
+
+
+
+
+
+<!-- Rodrigo Loayza -->
+		<record id="rloayza" model="res.partner">
+			<field name="name">Rodrigo Loayza</field>
+			<field name="email">rloayza@clinicachavarri.com</field>
+	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+		</record>
+
+
+
+
+		<record id="rloayza_clinicachavarri" model="res.users">
+			<field name="name">Rodrigo Loayza</field>
+			<field name="login">rloayza@clinicachavarri.com</field>
+			
+<!--
+			<field name="password">T2asF4Dp</field>
+-->		
+			<field name="password">rloayza</field>
+
+
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="tz">America/Lima</field>
+			<field name="partner_id" ref="rloayza"/>
+			<field name="lang">es_ES</field>
+			<field name="active">True</field>
+		</record>
+
+
+
+
+
+
+
+<!-- Luis Castillo -->
+		<record id="lcastillo" model="res.partner">
+			<field name="name">Luis Castillo</field>
+			<field name="email">lcastillo@clinicachavarri.com</field>
+	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+		</record>
+
+
+
+
+		<record id="lcastillo_clinicachavarri" model="res.users">
+			<field name="name">Luis Castillo</field>
+			<field name="login">lcastillo@clinicachavarri.com</field>
+			
+<!--
+			<field name="password">T2asF4Dp</field>
+-->		
+			<field name="password">lcastillo</field>
+
+
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="tz">America/Lima</field>
+			<field name="partner_id" ref="lcastillo"/>
+			<field name="lang">es_ES</field>
+			<field name="active">True</field>
+		</record>
+
+
+
+
+
+
+
+<!-- Carlos Abriojo -->
+		<record id="cabriojo" model="res.partner">
+			<field name="name">Carlos Abriojo</field>
+			<field name="email">cabriojo@clinicachavarri.com</field>
+	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+		</record>
+
+
+
+
+		<record id="cabriojo_clinicachavarri" model="res.users">
+			<field name="name">Carlos Abriojo</field>
+			<field name="login">cabriojo@clinicachavarri.com</field>
+			
+<!--
+			<field name="password">T2asF4Dp</field>
+-->		
+			<field name="password">cabriojo</field>
+
+
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="tz">America/Lima</field>
+			<field name="partner_id" ref="cabriojo"/>
+			<field name="lang">es_ES</field>
+			<field name="active">True</field>
+		</record>
+
+
+
+
+	</data>
+</openerp> 

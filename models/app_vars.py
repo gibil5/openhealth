@@ -12,19 +12,27 @@ _hash_doctor_code = {
 							#'Dr. Alarcon':		'Dr. Al',
 							#'Dr. Vasquez':		'Dr. Va',
 
+							#'Dra. Acosta':		'AC',
+							#'Dr. Alarcón':		'AL',
+
+
 
 							# Physicians 
-							#'Dra. Acosta':		'AC',
 							'Dr. Canales':		'CA',
 							'Dr. Chavarri':		'CH',
 							'Dr. Gonzales':		'GO',
 							'Dr. Escudero':		'ES',
 							'Dr. Vasquez':		'VA',
 							'Dr. Alarcon':		'AL',
-							#'Dr. Alarcón':		'AL',
-
 							'Dr. Mendez':		'ME',
 							'Dr. Monteverde':	'MO',
+
+
+							'Dr. Loayza':		'LO',
+							'Dr. Castillo':		'CS',
+							'Dr. Abriojo':		'AB',
+
+
 
 
 							# Lasers  

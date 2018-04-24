@@ -31,8 +31,6 @@
 
 
 <!-- Directors --> 
-<!--
--->
 		<record id="openhealth.directors" model="res.groups">
 			<field name="name">Directores</field>
 			<field name="category_id" ref="module_openhealth_category"/>
@@ -202,6 +200,9 @@
 										(4, ref('openhealth.jvasquez_clinicachavarri')),
 										(4, ref('openhealth.dacosta_clinicachavarri')),
 
+										(4, ref('openhealth.lache_clinicachavarri')),
+
+
 										(4, ref('openhealth.fchavarri_clinicachavarri')),
 -->
 <!-- Medicos --> 
@@ -220,17 +221,18 @@
 			<field name="users" eval="[ 
 
 										(4, ref('openhealth.medico_clinicachavarri')),
-
 										(4, ref('openhealth.nescobar_clinicachavarri')),
-
 
 										(4, ref('openhealth.pcanales_clinicachavarri')),
 										(4, ref('openhealth.lgonzales_clinicachavarri')),
 										(4, ref('openhealth.pmonteverde_clinicachavarri')),
 										(4, ref('openhealth.cescudero_clinicachavarri')),
 
-										(4, ref('openhealth.lache_clinicachavarri')),
 
+
+										(4, ref('openhealth.rloayza_clinicachavarri')),
+										(4, ref('openhealth.lcastillo_clinicachavarri')),
+										(4, ref('openhealth.cabriojo_clinicachavarri')),
 
 									]"/>
 

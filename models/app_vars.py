@@ -28,7 +28,7 @@ _hash_doctor_code = {
 							'Dr. Monteverde':	'MO',
 
 
-							'Dr. Loayza':		'LO',
+							'Dr. Loaiza':		'LO',
 							'Dr. Castillo':		'CS',
 							'Dr. Abriojo':		'AB',
 

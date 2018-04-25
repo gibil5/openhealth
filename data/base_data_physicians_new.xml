@@ -10,10 +10,10 @@
 
 
 
-		<!-- Rodrigo Loayza -->
+		<!-- Rodrigo Loaiza -->
 		<record id="dr_loayza" model="oeh.medical.physician">
 
-			<field name="name">Dr. Loayza</field>
+			<field name="name">Dr. Loaiza</field>
 			
 			<field name="x_type">doctor</field>
 			

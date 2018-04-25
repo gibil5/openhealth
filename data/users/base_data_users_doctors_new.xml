@@ -22,8 +22,8 @@ cabriojo@clinicachavarri.com
 
 <!-- Rodrigo Loayza -->
 		<record id="rloayza" model="res.partner">
-			<field name="name">Rodrigo Loayza</field>
-			<field name="email">rloayza@clinicachavarri.com</field>
+			<field name="name">Rodrigo Loaiza</field>
+			<field name="email">rloaiza@clinicachavarri.com</field>
 	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
 		</record>
 
@@ -31,13 +31,15 @@ cabriojo@clinicachavarri.com
 
 
 		<record id="rloayza_clinicachavarri" model="res.users">
-			<field name="name">Rodrigo Loayza</field>
-			<field name="login">rloayza@clinicachavarri.com</field>
+			<field name="name">Rodrigo Loaiza</field>
+			<field name="login">rloaiza@clinicachavarri.com</field>
 			
 <!--
 			<field name="password">rloayza</field>
 -->		
 			<field name="password">w5DMja5F</field>
+
+			<field name="x_user_name">Rodrigo Loaiza</field>
 
 
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
@@ -72,6 +74,7 @@ cabriojo@clinicachavarri.com
 -->		
 			<field name="password">rJ54Fvfr</field>
 
+			<field name="x_user_name">Luis Castillo</field>
 
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
 			<field name="tz">America/Lima</field>
@@ -105,6 +108,7 @@ cabriojo@clinicachavarri.com
 -->		
 			<field name="password">aQk4Aq68</field>
 
+			<field name="x_user_name">Carlos Abriojo</field>
 
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
 			<field name="tz">America/Lima</field>

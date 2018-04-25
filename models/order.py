@@ -733,7 +733,7 @@ class sale_order(models.Model):
 											],
 												order='date_order desc',
 												#limit=2000,
-												limit=100,
+												limit=300,
 											)
 		#print orders 
 

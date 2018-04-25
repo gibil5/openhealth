@@ -20,7 +20,9 @@
 	'description': """
 
 
-		Last built: 	24 April 2018 
+
+		Last built: 	25 April 2018 
+
 
 		
 		Stability by Design !
@@ -29,7 +31,7 @@
 		La Estabilidad se consigue pour la disminución, no por el aumento. 
 
 		Clínica Chavarri\n
-		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant - Testcafe - User Stories - Auto Backup - Unit Testing\n
+		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant - Testcafe - User Stories - Auto Backup - Unit Testing - Less but Better\n
 
 
 

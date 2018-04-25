@@ -73,12 +73,6 @@
 </h5>
 <!--                            
 <br/>
--->
-
-
-
-
-<!--
 <br/>
 -->
 <!-- Title --> 
@@ -93,9 +87,12 @@
 
 
 
-<!-- Table --> 
-<table style="line-height: 200%;">
 
+<!-- Table --> 
+<!--
+<table style="line-height: 200%;">
+-->
+<table style="line-height: 200%;">
 
 
 <tr>
@@ -198,8 +195,9 @@
 <th><t t-esc="doc.total_proof"/></th>
 </tr>
 
-
 </table>    
+
+
 
 
 
@@ -218,8 +216,12 @@
 
 
 
+
 <!-- Table --> 
+<!--
 <table style="line-height: 300%;">
+-->
+<table style="line-height: 270%;">
 
 
 

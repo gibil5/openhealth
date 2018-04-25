@@ -40,8 +40,9 @@
 						<group	string="Total"	>
 							<group>
 			                    <field name="name"/>
-
+<!--
 			                    <field name="date"/>
+-->
 			                    <field name="date_begin"/>
 			                    <field name="date_end"/>
 							</group>

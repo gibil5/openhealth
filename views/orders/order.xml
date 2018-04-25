@@ -256,7 +256,6 @@
 
 					<!-- Update Descriptors --> 
 					<!-- Update All --> 
-<!--
 					<button 
 							type="object" 
 							class="oe_highlight"
@@ -281,6 +280,7 @@
 
 							groups="openhealth.roots"
 						/>
+<!--
 -->
 
 

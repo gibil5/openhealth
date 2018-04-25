@@ -754,7 +754,8 @@ class sale_order(models.Model):
 
 				# Consultations
 				#if line.product_id.categ_id.name == 'Consultas':
-				if line.product_id.categ_id.name == 'Consulta':
+				#if line.product_id.categ_id.name == 'Consulta':
+				if line.product_id.categ_id.name in ['Consulta','Consultas']:
 					self.x_family = 'consultation'
 					self.x_product = line.product_id.x_name_ticket
 					out = True

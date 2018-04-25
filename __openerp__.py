@@ -163,6 +163,7 @@
 		'views/report_sale/report_sale.xml',
 		'views/report_sale/item_counter.xml',
 
+
 		'views/account/account_contasis.xml',
 		'views/account/account_line.xml',
 

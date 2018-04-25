@@ -32,6 +32,8 @@
 						<!--
 						<field name="x_order_line_ids"	/>
 
+
+
 						<field name="x_order_line_ids">
 							<tree string="Ventas"		default_order="date_order desc">	
 

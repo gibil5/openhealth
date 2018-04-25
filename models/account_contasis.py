@@ -36,10 +36,10 @@ class AccountContasis(models.Model):
 
 
 	# Lines Contasis
-	account_line_contasis = fields.One2many(
-			'openhealth.account.line.contasis', 
-			'account_id', 
-		)
+	#account_line_contasis = fields.One2many(
+	#		'openhealth.account.line.contasis', 
+	#		'account_id', 
+	#	)
 
 
 
@@ -122,7 +122,7 @@ class AccountContasis(models.Model):
 
 		# Clear 
 		self.account_line.unlink()
-		self.account_line_contasis.unlink()
+		#self.account_line_contasis.unlink()
 
 
 
@@ -177,22 +177,22 @@ class AccountContasis(models.Model):
 				})
 
 
-			self.account_line_contasis.create({
-										'patient': patient, 
+			#self.account_line_contasis.create({
+			#							'patient': patient, 
 
-										'serial_nr': serial_nr, 
-										'x_type': x_type, 
-										'document': document, 
+			#							'serial_nr': serial_nr, 
+			#							'x_type': x_type, 
+			#							'document': document, 
 
-										'date': date,
-										'date_time': date,
+			#							'date': date,
+			#							'date_time': date,
 
-										'amount': amount,
-										'amount_net': amount_net,
-										'amount_tax': amount_tax,
+			#							'amount': amount,
+			#							'amount_net': amount_net,
+			#							'amount_tax': amount_tax,
 
-										'account_id': self.id, 
-				})
+			#							'account_id': self.id, 
+			#	})
 
 
 

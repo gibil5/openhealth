@@ -18,10 +18,13 @@
 				<tree string="Account Line Tree">
 					
 
+                    <field name="account_id"/>
+
+
+
                     <field name="serial_nr"/>
 
                     <field name="x_type"/>
-
 
 <!--
                     <field name="date"/>

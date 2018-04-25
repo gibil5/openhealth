@@ -28,6 +28,11 @@
 
 
 
+		<menuitem id="account_conta_export_menu" name="Exportar" parent="openhealth_menu"
+			sequence="2"
+			action="account_line_list_action"/>
+
+
 
 
 

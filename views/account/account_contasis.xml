@@ -28,6 +28,18 @@
 
 								string="Actualizar"								
 						/>
+
+
+						<button 
+								class="oe_highlight"
+
+								type="action" 
+
+
+								name="%(account_line_list_action)d" 
+
+								string="Exportar"								
+						/>
 					</header>
 
 
@@ -72,16 +84,46 @@
 						<notebook>	
 							<page	string="Ventas"		>
 
+<!--
 			                    <field name="account_line"/>
+-->
+
+
+								<field name="account_line">
+									<tree string="Ventas">	
+
+					                    <field name="serial_nr"/>
+
+					                    <field name="x_type"/>
+
+					<!--
+					                    <field name="date"/>
+					-->                
+					                    <field name="date_time"/>
+
+					                    <field name="document"/>
+
+					                    <field name="patient"/>
+	<!--
+					                    <field name="amount_net"/>
+					                    <field name="amount_tax"/>
+	-->
+					                    <field name="amount"/>
+
+				                	</tree>
+								</field>
+
 
 							</page>
 						
 
-							<page	string="Contasis"		>
 <!--
--->
+							<page	string="Contasis"		>
 			                    <field name="account_line_contasis"/>
 							</page>
+-->
+
+
 						</notebook>
 
 					</sheet>
@@ -121,6 +163,7 @@
 				</tree>
 			</field>
 		</record>
+
 
 
 

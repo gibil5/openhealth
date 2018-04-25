@@ -28,7 +28,8 @@
 		Stability by Design !
 		More Configuration and less programming. Near than zero hacking.  
 
-		La Estabilidad se consigue pour la disminución, no por el aumento. 
+		La Estabilidad se consigue pour la disminución, no por el aumento. Less but Better. 
+
 
 		Clínica Chavarri\n
 		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant - Testcafe - User Stories - Auto Backup - Unit Testing - Less but Better\n

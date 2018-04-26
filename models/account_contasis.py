@@ -4,23 +4,21 @@
 # 
 # Created: 				18 April 2018
 #
-#
 
 from openerp import models, fields, api
-
 import datetime
-
 import resap_funcs
 
-
-
 class AccountContasis(models.Model):
-	
-	#_inherit='sale.closing'
 
+	#_inherit='sale.closing'
 	_name = 'openhealth.account.contasis'
-	
 	_order = 'create_date desc'
+
+
+
+
+
 
 
 
@@ -33,13 +31,6 @@ class AccountContasis(models.Model):
 			'openhealth.account.line', 
 			'account_id', 
 		)
-
-
-	# Lines Contasis
-	#account_line_contasis = fields.One2many(
-	#		'openhealth.account.line.contasis', 
-	#		'account_id', 
-	#	)
 
 
 
@@ -132,6 +123,8 @@ class AccountContasis(models.Model):
 		amount_sum = 0 
 		count = 0 
 
+
+
 		for order in orders: 
 			
 			amount_sum = amount_sum + order.amount_untaxed 
@@ -159,7 +152,7 @@ class AccountContasis(models.Model):
 
 
 
-			self.account_line.create({
+			line = self.account_line.create({
 										'patient': patient, 
 
 										'serial_nr': serial_nr, 
@@ -193,6 +186,11 @@ class AccountContasis(models.Model):
 
 			#							'account_id': self.id, 
 			#	})
+
+
+
+			line.update_fields()
+
 
 
 

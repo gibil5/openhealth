@@ -98,3 +98,11 @@ script:
 
 after_success:
   - travis_after_tests_success
+
+
+
+# jx: 26 Apr 2018
+notifications:
+  email:
+    - jrevillatest@gmail.com
+

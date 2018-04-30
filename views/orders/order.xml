@@ -261,7 +261,7 @@
 							class="oe_highlight"
 							name="update_descriptors"
 
-							string="Update"
+							string="Update Des"
 
 							states="sale,editable"
 
@@ -274,7 +274,7 @@
 							class="oe_highlight"
 							name="update_descriptors_all"
 
-							string="Update All"
+							string="Update Des All"
 
 							states="sale,editable"
 
@@ -382,7 +382,70 @@
 
 							groups="openhealth.roots"
 						/>
+
+
+
+
+
+					<!-- Update Type Legacy --> 
+					<button 
+							type="object" 
+							class="oe_highlight"
+
+							name="update_type_legacy"
+
+							string="Update Type"
+
+							states="sale,editable"
+
+							groups="openhealth.roots"
+						/>
 				
+
+
+
+					<!-- Update Type Legacy All --> 
+					<button 
+							type="object" 
+							class="oe_highlight"
+
+							name="update_type_legacy_jan"
+
+							string="Up Type Jan"
+
+							states="sale,editable"
+
+							groups="openhealth.roots"
+						/>
+
+
+					<button 
+							type="object" 
+							class="oe_highlight"
+
+							name="update_type_legacy_feb"
+
+							string="Up Type Feb"
+
+							states="sale,editable"
+
+							groups="openhealth.roots"
+						/>
+
+
+					<button 
+							type="object" 
+							class="oe_highlight"
+
+							name="update_type_legacy_mar"
+
+							string="Up Type Mar"
+
+							states="sale,editable"
+
+							groups="openhealth.roots"
+						/>
+
 				</xpath>
 
 
@@ -517,7 +580,9 @@
 
 						
 						<group class="oe_left"  style="width: 600px;">
-							<group col='4'		groups="openhealth.roots,openhealth.caja,openhealth.directors">
+
+
+							<group col='5'		groups="openhealth.roots,openhealth.caja,openhealth.directors">
 
 
 
@@ -570,12 +635,26 @@
 
 								<!-- Reset --> 
 								<group>
+
 									<button 
 											name="x_reset" 	
 											type="object" 
 											class="oe_highlight"
 
 											string="RESET"
+
+											groups="openhealth.roots"
+									/>
+								</group>
+
+
+								<group>
+									<button 
+											name="remove_myself" 	
+											type="object" 
+											class="oe_highlight"
+
+											string="Remove"
 
 											groups="openhealth.roots"
 									/>

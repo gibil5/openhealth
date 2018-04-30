@@ -6,8 +6,13 @@
 #
 
 from openerp import models, fields, api
+
 import datetime
+
 import resap_funcs
+
+import acc_funcs
+
 
 class AccountContasis(models.Model):
 
@@ -125,71 +130,100 @@ class AccountContasis(models.Model):
 
 
 
+		# Loop 
 		for order in orders: 
 			
 			amount_sum = amount_sum + order.amount_untaxed 
 			count = count + 1
 		
+		
+			# Vars Order 
 			serial_nr = order.x_serial_nr
 			date = order.date_order
-			patient = order.patient.id  
+			patient = order.patient.id 
+
+			x_type = order.x_type
 
 
 
-			amount = order.amount_total
-			amount_net = order.x_total_net
-			amount_tax = order.x_total_tax
+			# Document and Document type 
+			if x_type in ['invoice', 'ticket_invoice']: 	# Ruc 
+				document = order.patient.x_ruc
+				document_type = '6'
+
+			else: 
+				if order.patient.x_dni != False: 			# Dni
+					document = order.patient.x_dni
+					document_type = '1'
+
+				else: 
+					document = order.patient.x_id_doc
+					document_type = acc_funcs._doc_type[order.patient.x_id_doc_type]
+
+
+
+
+
+			# Name and Doc type 		
+			#if x_type in ['invoice', 'ticket_invoice']:			# Ruc
+			#	self.nombre = self.patient.x_firm 
+			#	document_type = '6'
+			#else: 														
+			#	self.nombre = self.patient.name 
+
+			#	if self.patient.x_dni != False: 		# Dni 
+			#		document_type = '1'
+			#	else: 
+			#		document_type = acc_funcs._doc_type[self.patient.x_id_doc_type]
+
+
+
+
 
 
 			
-			x_type = order.x_type
-
-			if x_type == "ticket_invoice": 
-				document = order.patient.x_ruc
-			else: 
-				document = order.patient.x_dni
+			#amount = order.amount_total
+			#amount_net = order.x_total_net
+			#amount_tax = order.x_total_tax
 
 
+			# Lines 
+			for line in order.order_line:
 
 
-			line = self.account_line.create({
-										'patient': patient, 
+				amount = line.price_subtotal
 
-										'serial_nr': serial_nr, 
-										'x_type': x_type, 
-										'document': document, 
-
-										'date': date,
-										'date_time': date,
-
-										'amount': amount,
-										'amount_net': amount_net,
-										'amount_tax': amount_tax,
-
-										'account_id': self.id, 
-				})
-
-
-			#self.account_line_contasis.create({
-			#							'patient': patient, 
-
-			#							'serial_nr': serial_nr, 
-			#							'x_type': x_type, 
-			#							'document': document, 
-
-			#							'date': date,
-			#							'date_time': date,
-
-			#							'amount': amount,
-			#							'amount_net': amount_net,
-			#							'amount_tax': amount_tax,
-
-			#							'account_id': self.id, 
-			#	})
+				amount_net, amount_tax = acc_funcs.get_net_tax(self, amount)
 
 
 
-			line.update_fields()
+				acc_line = self.account_line.create({
+					
+														'patient': patient, 
+
+														'serial_nr': serial_nr, 
+														'x_type': x_type, 
+
+
+														'document': document, 					# Id Doc
+														'document_type': document_type, 		# Id Doc Type 
+
+
+														'date': date,
+														'date_time': date,
+
+
+														'amount': amount,
+														'amount_net': amount_net,
+														'amount_tax': amount_tax,
+
+														'account_id': self.id, 
+					})
+
+
+				acc_line.update_fields()
+
+
 
 
 

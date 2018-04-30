@@ -21,7 +21,7 @@
 
 
 
-		Last built: 	26 April 2018 
+		Last built: 	30 April 2018 
 
 
 		
@@ -647,6 +647,7 @@
 		'views/legacy/legacy_manager_order.xml',
 		'views/legacy/legacy_manager_patient.xml',
 		'views/legacy/legacy_order.xml',
+		
 		'views/menus/menus_legacy.xml',
 
 

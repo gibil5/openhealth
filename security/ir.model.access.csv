@@ -140,6 +140,9 @@ access_product_pricelist,product.pricelist,product.model_product_pricelist,openh
 access_product_pricelist_item,jx.product.pricelist.item,product.model_product_pricelist_item,openhealth.reception,1,1,1,1
 
 
+
+
+access_sale_order_roots,sale.order.roots,model_sale_order,openhealth.roots,1,1,1,1
 access_sale_order,sale.order,model_sale_order,,1,1,1,0
 access_sale_order_caja,sale.order.caja,model_sale_order,openhealth.caja,1,1,1,0
 access_sale_order_reception,sale.order.reception,model_sale_order,openhealth.reception,1,1,1,0

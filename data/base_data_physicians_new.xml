@@ -20,6 +20,10 @@
 			<field name="consultancy_type">Residential</field>
 			
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
+<!--
+			<field name="x_user_name">Rodrigo Loaiza</field>
+			Incorrect syntax. Is an integer. 
+-->
 		</record>
 
 
@@ -98,6 +102,9 @@
 			<field name="consultancy_type">Residential</field>
 			
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
+<!--
+			<field name="x_user_name">Luis Castillo</field>
+-->
 		</record>
 
 
@@ -181,6 +188,9 @@
 			<field name="consultancy_type">Residential</field>
 			
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
+<!--
+			<field name="x_user_name">Carlos Abriojo</field>
+-->
 		</record>
 
 

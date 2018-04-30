@@ -22,7 +22,142 @@ class sale_order(models.Model):
 	
 
 
-# ----------------------------------------------------------- Deprecated ------------------------------------------------------
+
+# ----------------------------------------------------------- Actions ------------------------------------------------------
+
+	# Update Jan 
+	@api.multi
+	def update_type_legacy_jan(self):
+
+		print 
+		print 'Update Type Legacy Jan'
+
+
+		# Legacy
+ 		models = self.env['sale.order'].search([
+																('date_order', '>=', '2018-01-01'), 
+																('date_order', '<', '2018-02-01'), 
+																#('date_order', '>=', '2018-02-01'), 
+																#('date_order', '<', '2018-03-01'), 
+																#('date_order', '>=', '2018-03-01'), 
+																#('date_order', '<', '2018-04-01'), 
+
+													],
+																order='date_order asc',
+																#limit=1000,
+												)
+ 		print models
+
+ 		for model in models: 
+ 			#print model.date_order
+ 			if model.x_type == False: 
+ 				model.update_type_legacy()
+ 		#print 
+
+
+
+
+
+	# Update Feb
+	@api.multi
+	def update_type_legacy_feb(self):
+
+		print 
+		print 'Update Type Legacy Feb'
+
+
+		# Legacy
+ 		models = self.env['sale.order'].search([
+																#('date_order', '>=', '2018-01-01'), 
+																#('date_order', '<', '2018-02-01'), 
+																('date_order', '>=', '2018-02-01'), 
+																('date_order', '<', '2018-03-01'), 
+																#('date_order', '>=', '2018-03-01'), 
+																#('date_order', '<', '2018-04-01'), 
+
+													],
+																order='date_order asc',
+																#limit=1000,
+												)
+ 		print models
+
+ 		for model in models: 
+ 			#print model.date_order
+ 			if model.x_type == False: 
+ 				model.update_type_legacy()
+ 		#print 
+
+
+
+
+
+
+	# Update Mar
+	@api.multi
+	def update_type_legacy_mar(self):
+
+		print 
+		print 'Update Type Legacy Mar'
+
+
+		# Legacy
+ 		models = self.env['sale.order'].search([
+																#('date_order', '>=', '2018-01-01'), 
+																#('date_order', '<', '2018-02-01'), 
+																#('date_order', '>=', '2018-02-01'), 
+																#('date_order', '<', '2018-03-01'), 
+																('date_order', '>=', '2018-03-01'), 
+																('date_order', '<', '2018-04-01'), 
+
+													],
+																order='date_order asc',
+																#limit=1000,
+												)
+ 		print models
+
+ 		for model in models: 
+ 			#print model.date_order
+ 			if model.x_type == False: 
+ 				model.update_type_legacy()
+ 		#print 
+
+
+
+
+
+
+
+
+
+
+ 	# Update Type Legacy 
+	@api.multi
+	def update_type_legacy(self):
+
+		print 
+		print 'Update Type Legacy'
+
+
+
+		# Legacy
+ 		model = self.env['openhealth.legacy.order'].search([
+																#('name', '=', name), 
+																#('NombreCompleto', '!=', 'AAA'), 
+
+																('serial_nr', '=', self.x_serial_nr), 
+													
+													],
+																#order='FechaFactura_d desc',
+																limit=1,
+												)
+ 		print model.serial_nr
+ 		print model.tipodocumento
+ 		print 
+
+ 		if self.x_type == False: 
+
+ 			#if model.tipodocumento in ord_vars._dic_type_leg: 
+ 			self.x_type = ord_vars._dic_type_leg[model.tipodocumento]
 
 
 

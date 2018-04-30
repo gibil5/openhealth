@@ -17,61 +17,106 @@
 
 				<tree string="Account Line Tree">
 					
-
-
+<!--
                     <field name="cuo_mes"/>
-
-                    <field name="cuo_sd"/>
-
-                    <field name="cuo_asi"/>
+-->
 
 
-
-                    <field name="fecha_emi"/>
-
-                    <field name="fecha_ven"/>
+                    <field name="fecha"/>
+                    <field name="fechavencimiento"/>
 
 
 
-                    <field name="cdp_t"/>
 
-                    <field name="cdp_ser"/>
-
-                    <field name="cdp_num"/>
-
-
-
-                    <field name="doc_t"/>
-                    <field name="doc_num"/>
-                    <field name="ape_nom"/>
+                    <field name="tipodocumento"/>
+                    <field name="numeroserie"/>
+                    <field name="numerofactura"/>
 
 
 
-                    <field name="val_exp"/>
+
+                    <field name="tipodoc"/>
+                    <field name="numdoc"/>
+                    <field name="nombre"/>
 
 
 
-                    <field name="bas_imp"/>
-                    <field name="imp_tot_exo"/>
-                    <field name="imp_tot_ina"/>
+                    <field name="EXPortacion"/>
 
 
+                    <field name="neto"/>
+                    <field name="exonerado"/>
+                    <field name="inafecto"/>
                     <field name="isc"/>
                     <field name="igv"/>
-                    <field name="otr"/>
+                    <field name="otros"/>
+                    <field name="total"/>
 
-                    <field name="imp_tot"/>
-                    <field name="tc"/>
+                    <field name="tipocambio"/>
 
 
-                    <field name="refmod_fecha"/>
-                    <field name="refmod_t"/>
-                    <field name="refmod_ser"/>
-                    <field name="refmod_num"/>
+
+
+                    <field name="fechar"/>
+                    <field name="tipor"/>
+                    <field name="serier"/>
+                    <field name="numr"/>
+
+
+
+
+                    <field name="moneda"/>
+                    <field name="dolares"/>
+                    <field name="fechavencimiento2"/>
+                    <field name="condicion"/>
+                    <field name="ccosto"/>
+                    <field name="ccosto2"/>
+
+
+
+
+
+
+                    <field name="cuentab"/>
+                    <field name="cuentao"/>
+                    <field name="cuentacontable"/>
+
+
+
+                    <field name="regimen"/>
+                    <field name="porcen"/>
+                    <field name="importer"/>
+
+
+
+                    <field name="seried"/>
+                    <field name="numdocr"/>
+                    <field name="fechad"/>
+                    <field name="codigop"/>
+
+
+
+                    <field name="porigv"/>
+                    <field name="glosa"/>
+
+
+
+                    <field name="mediop"/>
+                    <field name="comd"/>
+                    <field name="importec"/>
+
 
 
 
 <!--
+                    <field name="cuo_sd"/>
+                    <field name="cuo_asi"/>
+
+
+
+
+
+
                     <field name="account_id"/>
 
 
@@ -104,9 +149,7 @@
 		<!-- ACTION -->
 		<record model="ir.actions.act_window" id="account_line_list_action">
 			<field name="name">line</field>
-
 			<field name="res_model">openhealth.account.line</field>
-			
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 			
@@ -121,7 +164,148 @@
 			</field>
 			-->
 		</record>
-		
+
+
+
+
+
+
+		<!-- ACTION -->
+		<record model="ir.actions.act_window" id="account_line_01_list_action">
+			<field name="name">Lines 01</field>
+			<field name="res_model">openhealth.account.line</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+			<field name="domain">[
+									('cuo_mes', '=', '01'),
+								]
+			</field>
+
+			<!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first order
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+
+
+		<!-- ACTION -->
+		<record model="ir.actions.act_window" id="account_line_02_list_action">
+			<field name="name">Lines 02</field>
+			<field name="res_model">openhealth.account.line</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+			<field name="domain">[
+									('cuo_mes', '=', '02'),
+								]
+			</field>
+
+			<!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first order
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+
+		<!-- ACTION -->
+		<record model="ir.actions.act_window" id="account_line_03_list_action">
+			<field name="name">Lines 03</field>
+			<field name="res_model">openhealth.account.line</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+			<field name="domain">[
+									('cuo_mes', '=', '03'),
+								]
+			</field>
+
+			<!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first order
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+		<!-- ACTION -->
+		<record model="ir.actions.act_window" id="account_line_04_list_action">
+			<field name="name">Lines 04</field>
+			<field name="res_model">openhealth.account.line</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+			<field name="domain">[
+									('cuo_mes', '=', '04'),
+								]
+			</field>
+
+			<!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first order
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+
+
+
+
+
+
+		<!-- FILTER --> 
+		<record id="acount_line_filter" model="ir.ui.view">
+
+			<field name="name">Account Line Search</field>
+
+			<field name="model">openhealth.account.line</field>
+
+		   	<field name="arch" type="xml">
+
+				<search string="Account Lines">
+
+
+					<field 	name="numerofactura"	/>
+
+
+			   </search>
+
+		   </field>
+	   </record>
+
+
+
+	
 
 	</data>
 </openerp>

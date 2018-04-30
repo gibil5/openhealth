@@ -6,8 +6,8 @@
 #
 
 from openerp import models, fields, api
-import datetime
 
+import datetime
 
 import acc_funcs
 
@@ -17,7 +17,9 @@ class AccountLine(models.Model):
 	
 	#_inherit='sale.closing'
 	_name = 'openhealth.account.line'
-	_order = 'date_time asc'
+
+	#_order = 'date_time asc'
+	_order = 'tipodocumento,numerofactura asc'
 
 
 
@@ -27,47 +29,35 @@ class AccountLine(models.Model):
 # ----------------------------------------------------------- Contasis ------------------------------------------------------
 
 
-	# Codigo Unico Ope
-	cuo_mes = fields.Char(
-			'MES', 
-		)
-
-	cuo_sd = fields.Char(
-			'SD', 
-		)
-
-	cuo_asi = fields.Char(
-			'ASI', 
-		)
-
-
-
-
 	# Fechas 
-	fecha_emi = fields.Char(
-			'FECHA DE EMISIÓN DEL CdP', 
+	fecha = fields.Char(
+			'fecha', 
 		)
 
-	fecha_ven = fields.Char(
-			'FECHA DE VEN. Y/O PAGO.', 
+	fechavencimiento = fields.Char(
+			'fechavencimiento', 
 		)
+
 
 
 
 
 	# Comprobante de pago 
-	cdp_t = fields.Char(
-			'T', 
+	tipodocumento = fields.Char(
+			'tipodocumento', 
 		)
 
-	cdp_ser = fields.Char(
-			#'N° SERIE O N° DE SERIE DE LA  MAQ. REGIS.', 
-			'N° SERIE', 
+	numeroserie = fields.Char(
+			'numeroserie', 
 		)
 
-	cdp_num = fields.Char(
-			'NUMERO', 
+	numerofactura = fields.Char(
+			'numerofactura', 
 		)
+
+
+
+
 
 
 
@@ -75,44 +65,51 @@ class AccountLine(models.Model):
 
 
 	# Documento de identidad
-	doc_t = fields.Char(
-			'T', 
+	tipodoc = fields.Char(
+			'tipodoc', 
 		)
 
-	doc_num = fields.Char(
-			'NÚMERO', 
+	numdoc = fields.Char(
+			'numdoc', 
 		)
 
 
-	ape_nom = fields.Char(
-			#'APELLIDOS Y NOMBRES,  DENOMINACIÓN O RAZÓN SOCIAL', 
-			'APELLIDOS Y NOMBRES', 
+
+
+	# Name 
+	nombre = fields.Char(
+			'nombre', 
 		)
+
+
 
 
 
 
 
 	# Exportacion
-	val_exp = fields.Char(
-			'VALOR FACT. DE LA EXPORT.', 
+	EXPortacion = fields.Char(
+			'EXPortacion', 
+			default='0', 
 		)
 
 
 
 
 	# Importe
-	bas_imp = fields.Char(
-			'BASE IMPONIBLE DE LA OPERACIÓN GRAVADA', 
+	neto = fields.Char(
+			'neto', 
 		)
 
 
-	imp_tot_exo = fields.Char(
-			'EXONERADA', 
+	exonerado = fields.Char(
+			'exonerado', 
+			default='0', 
 		)
 
-	imp_tot_ina = fields.Char(
-			'INAFECTA', 
+	inafecto = fields.Char(
+			'inafecto', 
+			default='0', 
 		)
 
 
@@ -120,51 +117,183 @@ class AccountLine(models.Model):
 
 
 	isc = fields.Char(
-			'ISC', 
+			'isc', 
+			default='0', 
 		)
-
 
 	igv = fields.Char(
-			'IGV Y/O IPM', 
+			'igv', 
 		)
 
-	otr = fields.Char(
-			'OTROS TRIB. Y CARG. NO PART.  B. IMPONIBLE', 
+	otros = fields.Char(
+			'otros', 
+			default='0', 
 		)
 
 
 
 
-
-
-	imp_tot = fields.Char(
-			'IMPORTE TOTAL DEL CdP', 
+	total = fields.Char(
+			'total', 
 		)
 
-	tc = fields.Char(
-			'T/C', 
+	tipocambio = fields.Char(
+			'tipocambio', 
+			default='3.3', 
 		)
+
+
 
 
 
 
 
 	# Referencia modificada
-	refmod_fecha = fields.Char(
-			'FECHA', 
+	fechar = fields.Char(
+			'fechar', 
 		)
 
-	refmod_t = fields.Char(
-			'T', 
+	tipor = fields.Char(
+			'tipor', 
 		)
 
-	refmod_ser = fields.Char(
-			'SERIE', 
+	serier = fields.Char(
+			'serier', 
 		)
 
-	refmod_num = fields.Char(
-			'N° DEL CdP', 
+	numr = fields.Char(
+			'numr', 
 		)
+
+
+
+
+	moneda = fields.Char(
+			'moneda', 
+			default='S', 
+		)
+
+	dolares = fields.Char(
+			'dolares', 
+			default='0', 
+		)
+
+	fechavencimiento2 = fields.Char(
+			'fechavencimiento2', 
+		)
+
+	condicion = fields.Char(
+			'condicion', 
+			default='CON', 
+		)
+
+	ccosto = fields.Char(
+			'ccosto', 
+		)
+
+	ccosto2 = fields.Char(
+			'ccosto2', 
+		)
+
+
+
+
+
+
+	cuentab = fields.Char(
+			'cuentab', 
+			default='701101001', 
+		)
+
+	cuentao = fields.Char(
+			'cuentao', 
+			#default='CON', 
+		)
+
+	cuentacontable = fields.Char(
+			'cuentacontable', 
+			default='121210001', 
+		)
+
+
+
+
+
+
+	regimen = fields.Char(
+			'regimen', 
+			default='0', 
+		)
+
+	porcen = fields.Char(
+			'porcen', 
+			default='0', 
+		)
+
+	importer = fields.Char(
+			'importer', 
+			default='0', 
+		)
+
+
+
+
+
+	seried = fields.Char(
+			'seried', 
+			#default='0', 
+		)
+
+	numdocr = fields.Char(
+			'numdocr', 
+			#default='CON', 
+		)
+
+	fechad = fields.Char(
+			'fechad', 
+			#default='CON', 
+		)
+
+	codigop = fields.Char(
+			'codigop', 
+			#default='CON', 
+		)
+
+
+
+
+
+	porigv = fields.Char(
+			'porigv', 
+			#default='CON', 
+		)
+
+	glosa = fields.Char(
+			'glosa', 
+			default='POR VENTA DE 01-', 
+		)
+
+
+
+
+
+	mediop = fields.Char(
+			'mediop', 
+			#default='CON', 
+		)
+
+	comd = fields.Char(
+			'comd', 
+			#default='CON', 
+		)
+
+	importec = fields.Char(
+			'importec', 
+			default='0', 
+		)
+
+
+
 
 
 
@@ -177,22 +306,84 @@ class AccountLine(models.Model):
 	@api.multi
 	def update_fields(self):  
 
-		print 'jx'
-		print 'Update Contasis'
-
-
-		self.ape_nom = self.patient.name 
-
-		self.doc_num = self.document
+		#print 'jx'
+		#print 'Update Contasis'
 
 
 
-		self.cdp_ser = self.serial_nr.split('-')[0]
 
-		self.cdp_num = self.serial_nr.split('-')[1]
 
-		self.cdp_t = acc_funcs._h_type[self.x_type]
+		# Name 
+		if self.x_type in ['invoice', 'ticket_invoice']:			# Ruc
+			self.nombre = self.patient.x_firm 
 
+			#doc_type = '6'
+
+		else: 														
+			self.nombre = self.patient.name 
+
+			#if self.patient.x_dni != False: 		# Dni 
+			#	doc_type = '1'
+			#else: 
+			#	doc_type = acc_funcs._doc_type[self.patient.x_id_doc_type]
+
+
+
+
+
+		# Id Doc 
+		self.tipodoc = self.document_type
+		self.numdoc = self.document
+
+
+
+
+
+		# Serial number 
+		if self.serial_nr != False: 
+			self.numeroserie = self.serial_nr.split('-')[0]
+			self.numerofactura = self.serial_nr.split('-')[1]
+
+			self.glosa = self.glosa + self.serial_nr
+
+
+
+
+		self.tipodocumento = acc_funcs._h_type[self.x_type]
+
+
+
+
+		# Dates	- Must be converteed to a datetime object, before converting to the proper format. 
+		DATETIME_FORMAT = "%Y-%m-%d"
+		self.fecha  = datetime.datetime.strptime(self.date, DATETIME_FORMAT).strftime('%d/%m/%Y')
+		self.fechavencimiento  = datetime.datetime.strptime(self.date, DATETIME_FORMAT).strftime('%d/%m/%Y')
+		self.fechavencimiento2 = self.fechavencimiento
+
+		# Month 
+		self.cuo_mes =  datetime.datetime.strptime(self.date, DATETIME_FORMAT).strftime('%m')
+
+
+
+
+		# Constants 
+		#self.EXPortacion = '0.00'
+		#self.exonerad = '0.00'
+		#self.inafecto = '0.00'
+		#self.isc = '0.00'
+		#self.otros = '0.00'
+		#self.tipor = '00'
+		#self.tipocambio = '3.2100'
+
+
+
+
+		# Actual amount
+		self.total = self.amount
+		self.neto = self.amount_net 
+		self.igv = self.amount_tax 
+
+		self.porigv = self.igv
 
 
 
@@ -224,9 +415,16 @@ class AccountLine(models.Model):
 			#required=False,
 		)
 
+
+
+
 	document = fields.Char(
 			string="Documento", 
 		)
+	document_type = fields.Char(
+			string="Tipo Documento", 
+		)
+
 
 
 
@@ -258,6 +456,34 @@ class AccountLine(models.Model):
 	amount_tax = fields.Float(
 			string="Impuesto", 
 		)
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Deprecated ------------------------------------------------------
+	
+	# Codigo Unico Ope
+	cuo_mes = fields.Char(
+			'MES', 
+		)
+
+
+	#cuo_sd = fields.Char(
+	#		'SD', 
+	#	)
+
+	#cuo_asi = fields.Char(
+	#		'ASI', 
+	#	)
+
+
+		#self.cuo_asi = 
+		#self.cuo_sd = '02'
+
+
 
 
 

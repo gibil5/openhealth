@@ -4,6 +4,27 @@
 
 
 
+_dic_type_leg = {
+
+						'BOL' : 'receipt', 		
+						'FAC' : 'invoice', 		
+
+						'TKB' : 	'ticket_receipt', 		
+						'TKF' : 	'ticket_invoice', 
+
+						'advertisement' : 	'advertisement', 		
+						'CE' : 		'sale_note', 		
+
+						False: False, 
+			}
+
+
+
+
+
+
+
+
 # State - Current !!
 _state_list = [
 

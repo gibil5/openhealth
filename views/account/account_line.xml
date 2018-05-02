@@ -146,6 +146,32 @@
 
 
 
+
+
+		<!-- Window Form Action -->
+		<record model="ir.actions.act_window" id="account_line_form_action">
+
+			<field name="name">Plantilla de Contasis</field>
+			
+			<field name="res_model">openhealth.account.line</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+
+			<field name="domain">[
+									('account_id', '=', active_id),
+								]
+			</field>
+
+			<field name="limit">1000</field>
+		</record>
+
+
+
+
+
+
+
+
 		<!-- ACTION -->
 		<record model="ir.actions.act_window" id="account_line_list_action">
 			<field name="name">line</field>
@@ -263,6 +289,7 @@
 								]
 			</field>
 
+
 			<!--
             <field name="domain">[]</field>
             <field name="context">{}</field>
@@ -285,27 +312,25 @@
 
 		<!-- FILTER --> 
 		<record id="acount_line_filter" model="ir.ui.view">
-
 			<field name="name">Account Line Search</field>
-
 			<field name="model">openhealth.account.line</field>
-
 		   	<field name="arch" type="xml">
-
 				<search string="Account Lines">
-
 
 					<field 	name="numerofactura"	/>
 
+					
+					<group expand="1" string="Group By">
+						<filter name="tipodoc" context="{'group_by':'tipodoc'}"/>
+						<separator/>						
+						<filter name="tipodocumento" context="{'group_by':'tipodocumento'}"/>
+					</group>
 
 			   </search>
-
 		   </field>
 	   </record>
 
 
-
-	
 
 	</data>
 </openerp>

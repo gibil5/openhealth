@@ -34,19 +34,14 @@
 
 
 						<!-- Back to Order --> 
-<!--
-								states="done"						
--->
+<!--						
 						<button 
 								name="open_pm"
-
 								type="object" 
-
 								class="oe_highlight"
-
-
 								string="Regresar"
 						/>
+-->
 
 					
 					</header>
@@ -154,18 +149,27 @@ attrs="{'invisible':[
 			<field name="arch" type="xml">
 				<tree string="payment_method_line Tree">
 					
-					<field name="create_date"/>
-					<field name="write_date"/>
 
+					<field name="date_time"/>
+					<field name="x_type"/>
+					<field name="serial_nr"/>
+					<field name="patient"   />													
 
-					<field name="name"/>
 					<field name="method"  />				
 					<field name="subtotal"   />
 
-					<field name="payment_method"   />
+
 
 <!--
+					<field name="account_id"   />
+					<field name="currency"  />				
+
+					<field name="create_date"/>
+					<field name="write_date"/>
+					<field name="name"/>
+					<field name="payment_method"   />
 -->				
+
 				</tree>
 			</field>
 		</record>
@@ -176,42 +180,68 @@ attrs="{'invisible':[
 
 
 
+		<!-- Window Form Action -->
+		<record model="ir.actions.act_window" id="payment_line_form_action">
+
+			<field name="name">Reconciliación de Tarjetas</field>
+			
+			<field name="res_model">openhealth.payment_method_line</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+
+			<field name="domain">[
+									('account_id', '=', active_id),
+								]
+			</field>
+
+			<field name="limit">1000</field>
+		</record>
+
+
+
+
+
 
 		<!-- Window Form Action --> 
 		<record model="ir.actions.act_window" id="openhealth_payment_method_line_form_action">
-			
 			<field name="name">Payment method line</field>
-
 			<field name="res_model">openhealth.payment_method_line</field>
-			
 			<field name="view_type">form</field>
-
 			<field name="view_mode">tree, form</field>
-
+            
             <field name="domain">[]</field>
-			
 			<field name="context">{}</field>
-
-
-			<!--
-			<field name="context">{'default_subtotal': balance,}
-			</field>
-			<field name="view_mode">form,tree</field>
-            
-            <field name="domain">[]</field>
-            
-            <field name="context">{}</field>
-            
-            <field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first order
-				</p>
-			</field>
-			-->
 		</record>
-		
-		
 
+
+
+
+
+
+
+
+		<!-- FILTER --> 
+		<record id="payment_line_filter" model="ir.ui.view">
+			<field name="name">payment Line Search</field>
+			<field name="model">openhealth.payment_method_line</field>
+		   	<field name="arch" type="xml">
+				<search string="payment Lines">
+<!--
+					<field 	name="numerofactura"	/>
+						<separator/>
+						<filter name="tipodocumento" context="{'group_by':'tipodocumento'}"/>
+-->
+					
+					<field 	name="patient"	/>
+
+					<group expand="1" string="Group By">
+						<filter name="Tipo" context="{'group_by':'method'}"/>
+						<filter name="Paciente" context="{'group_by':'patient'}"/>
+					</group>
+
+			   </search>
+		   </field>
+	   </record>
 
 	</data>
 </openerp>

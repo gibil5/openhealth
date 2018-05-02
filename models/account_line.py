@@ -6,12 +6,8 @@
 #
 
 from openerp import models, fields, api
-
 import datetime
-
 import acc_funcs
-
-
 
 class AccountLine(models.Model):
 	
@@ -21,6 +17,17 @@ class AccountLine(models.Model):
 	#_order = 'date_time asc'
 	_order = 'tipodocumento,numerofactura asc'
 
+
+
+
+
+
+
+# ----------------------------------------------------------- Relational ------------------------------------------------------
+
+	account_id = fields.Many2one(
+			'openhealth.account.contasis'
+		)
 
 
 
@@ -388,14 +395,15 @@ class AccountLine(models.Model):
 
 
 
-# ----------------------------------------------------------- Relational ------------------------------------------------------
 
-	account_id = fields.Many2one(
-			'openhealth.account.contasis'
+
+# ----------------------------------------------------------- Meta ------------------------------------------------------
+
+	patient = fields.Many2one(
+			'oeh.medical.patient', 
+			string="Nombre", 
 		)
 
-
-# ----------------------------------------------------------- Primitives ------------------------------------------------------
 
 	serial_nr = fields.Char(
 			string="Nr. de serie", 
@@ -415,19 +423,6 @@ class AccountLine(models.Model):
 			#required=False,
 		)
 
-
-
-
-	document = fields.Char(
-			string="Documento", 
-		)
-	document_type = fields.Char(
-			string="Tipo Documento", 
-		)
-
-
-
-
 	date = fields.Date(
 		)
 
@@ -437,14 +432,20 @@ class AccountLine(models.Model):
 
 
 
-	patient = fields.Many2one(
-			'oeh.medical.patient', 
-			string="Nombre", 
+
+
+	# Id Document 
+	document = fields.Char(
+			string="Documento", 
+		)
+
+	document_type = fields.Char(
+			string="Tipo Documento", 
 		)
 
 
 
-
+	# Amount 
 	amount = fields.Float(
 			string="Total", 
 		)
@@ -482,9 +483,5 @@ class AccountLine(models.Model):
 
 		#self.cuo_asi = 
 		#self.cuo_sd = '02'
-
-
-
-
 
 

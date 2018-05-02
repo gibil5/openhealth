@@ -30,17 +30,45 @@
 						/>
 
 
+
+<!--
+								name="%(account_line_list_action)d" 
+											'search_default_cuo_mes': '04',	
+-->
 						<button 
 								class="oe_highlight"
-
 								type="action" 
 
+								string="Contasis"								
 
-								name="%(account_line_list_action)d" 
+								name="%(account_line_form_action)d"	
 
-								string="Exportar"								
+								context="{
+											'search_default_account_id': active_id,	
+										}" 											
+
 						/>
+
+
+
+						<button 
+								class="oe_highlight"
+								type="action" 
+
+								string="Tarjetas"								
+
+								name="%(payment_line_form_action)d"	
+
+								context="{
+											'search_default_account_id': active_id,	
+										}" 											
+
+						/>
+
+
 					</header>
+
+
 
 
 
@@ -144,16 +172,21 @@
 			<field name="model">openhealth.account.contasis</field>
 			
 			<field name="arch" type="xml">
-
+<!--
 				<tree string="Account Contasis Tree" default_order='date desc'>
+-->
+				<tree string="Account Contasis Tree">
 					
 
+<!--
+                    <field name="date"			string="Fecha"	/>
+-->
                     <field name="name"	 				/>
 
-                    <field name="date"			string="Fecha"	/>
-
                     <field name="date_begin"	string="Fecha Inicio"	/>
+
                     <field name="date_end"		string="Fecha Fin"	/>
+
 
                     <field name="total_amount"/>
 
@@ -172,11 +205,13 @@
 
 		<!-- ACTION -->
 		<record model="ir.actions.act_window" id="account_contasis_list_action">
-			<field name="name">Contasis</field>
+			
+			<field name="name">Ventas</field>
 
 			<field name="res_model">openhealth.account.contasis</field>
 			
 			<field name="view_type">form</field>
+			
 			<field name="view_mode">tree,form</field>
 			
 			<!--

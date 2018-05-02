@@ -125,13 +125,21 @@
 
 				   <field name="partner_id" />
 
-
 					<!--
 				   <field name="x_doctor" />               
 				   <field name="x_family" /> 
 					-->
-			   </search>
-		   
+
+
+					<!-- Group By --> 
+					<group expand="1" string="Group By">
+
+						<filter name="Tipo" context="{'group_by':'x_type'}"/>
+
+					</group>
+
+
+			   </search>		   
 		   </field>
 	   </record>
 

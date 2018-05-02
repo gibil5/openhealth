@@ -1129,7 +1129,6 @@ blue:state=='controls'
 				   
 				   <!--
 				   <field name="name" />	
-
 				   <field name="patient" />
 				   <field name="physician" />
 				   -->
@@ -1141,6 +1140,15 @@ blue:state=='controls'
                     	filter_domain="['|',('patient','ilike',self),('physician','ilike',self)]"/>
 
 
+
+					<group expand="1" string="Group By">
+
+						<filter name="Médico" context="{'group_by':'physician'}"/>
+
+<!--
+						<filter name="Estado" context="{'group_by':'state'}"/>
+-->
+					</group>
 
 				   
 				   <!--

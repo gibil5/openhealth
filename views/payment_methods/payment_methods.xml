@@ -158,6 +158,7 @@
 		</record>
 
 
+
 		<!-- ACTION -->
 		<record model="ir.actions.act_window" id="payment_method_list_action">
 			<field name="name">Boletas</field>

@@ -21,7 +21,7 @@
 
 
 
-		Last built: 	30 April 2018 
+		Last built: 	2 May 2018 
 
 
 		
@@ -163,6 +163,8 @@
 		'views/report_sale/report_sale.xml',
 		'views/report_sale/item_counter.xml',
 
+
+		'views/payment_methods/payment_method_line.xml',
 
 		'views/account/account_line.xml',
 		'views/account/account_contasis.xml',
@@ -425,7 +427,6 @@
 
 		# Payment methods 
 		'views/payment_methods/payment_methods.xml',
-		'views/payment_methods/payment_method_line.xml',
 		
 
 

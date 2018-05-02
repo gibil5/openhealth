@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # 	PaymentMethod 
-
-
+#
 from openerp import models, fields, api
 from . import ord_vars
 
@@ -10,6 +9,23 @@ class PaymentMethod(models.Model):
 	
 	#_inherit='openhealth.sale_document'
 	_name = 'openhealth.payment_method'
+
+
+
+
+
+
+# ----------------------------------------------------------- Relational ------------------------------------------------------
+
+	# Lines 
+	pm_line_ids = fields.One2many(
+			'openhealth.payment_method_line',
+			'payment_method',
+			string="Pago #", 
+			
+			#states=READONLY_STATES, 
+		)
+
 
 
 
@@ -205,14 +221,6 @@ class PaymentMethod(models.Model):
 
 
 
-	# Pm Lines 
-	pm_line_ids = fields.One2many(
-			'openhealth.payment_method_line',
-			'payment_method',
-			string="Pago #", 
-			
-			#states=READONLY_STATES, 
-		)
 
 
 

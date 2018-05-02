@@ -1,21 +1,91 @@
 # -*- coding: utf-8 -*-
 #
-# 	payment_method_line
+# 	payment method line
 # 
 #
-
 from openerp import models, fields, api
-
-
 from . import ord_vars
-
 
 class payment_method_line(models.Model):
 	
 	_name = 'openhealth.payment_method_line'
 
+	_order = 'date_time asc'
 
 
+
+
+
+# ----------------------------------------------------------- Relational ------------------------------------------------------
+
+	payment_method = fields.Many2one(
+
+			'openhealth.payment_method',
+
+			ondelete='cascade', 
+
+			required=False, 			
+		)
+
+
+
+	account_id = fields.Many2one(
+
+			'openhealth.account.contasis',
+
+			ondelete='cascade', 
+		)
+
+
+
+
+# ----------------------------------------------------------- Meta ------------------------------------------------------
+
+	patient = fields.Many2one(
+			'oeh.medical.patient', 
+			string="Nombre", 
+		)
+
+
+	serial_nr = fields.Char(
+			string="Nr. de serie", 
+		)
+
+
+	x_type = fields.Selection(
+			[	('receipt', 			'Boleta'),
+				('invoice', 			'Factura'),
+				('advertisement', 		'Canje Publicidad'),
+				('sale_note', 			'Canje NV'),
+				('ticket_receipt', 		'Ticket Boleta'),
+				('ticket_invoice', 		'Ticket Factura'),	], 
+
+			string='Tipo', 
+			
+			#required=False,
+		)
+
+
+	date_time = fields.Datetime(
+			string="Fecha", 
+		)
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
+	# Name 
+	name = fields.Char(
+			#string="Pago", 
+			string="#", 
+			required=True, 
+
+			#compute="_compute_name",
+		)
 
 
 
@@ -41,74 +111,6 @@ class payment_method_line(models.Model):
 
 
 
-
-
-
-
-
-
-
-
-	# Test
-	#@api.multi 
-	#def x_test(self):
-		#print
-		#print 'X Test'
-		#print id
-
-		#ctr = 5
-		#self.name = 'Pago - ' + str(ctr)
-		#self.name = 'Pago - '
-
-		#for record in self:
-			#print record.name
-			#print record.payment_method
-		
-		#print 
-
-
-
-
-
-	# Name 
-	name = fields.Char(
-			#string="Medio de Pago", 
-			#string="Pago", 
-			string="#", 
-
-			required=True, 
-			#required=False, 
-			
-			#readonly=True, 
-			#compute="_compute_name",
-		)
-
-	@api.multi
-	#@api.depends('date_order')
-	def _compute_name(self):
-		#print
-		#print 'PML - compute name'
-		#print 
-
-		for record in self:
-
-			ctr = 0
-
-			#pm = record.env['openhealth.payment_method'].search([
-			#															('id','=', record.payment_method)[0].id,
-			#													],
-																#order='appointment_date desc',
-			#													limit=1,)
-			#for line in pm.pm_line_ids:
-			#	ctr = ctr+1
-
-			#print ctr
-			record.name = 'Pago - ' + str(ctr)
-
-		#print 
-
-
-
 	# Currency 
 	currency = fields.Char(
 			string="Moneda", 
@@ -117,149 +119,8 @@ class payment_method_line(models.Model):
 
 
 
-
-	# Open Order
-	@api.multi 
-	def open_pm(self):
-
-		#print 
-		#print 'Open Pm'
-
-
-
-		payment_method_id = self.payment_method.id  
-
-		#saledoc = 'receipt'
-
-		#self.payment_method.saledoc = saledoc
-
-		return {
-
-			# Mandatory 
-			'type': 'ir.actions.act_window',
-			'name': 'Open Order Current',
-
-
-			# Window action 
-			'res_model': 'openhealth.payment_method',
-			'res_id': payment_method_id,
-
-
-			# Views 
-			"views": [[False, "form"]],
-			'view_mode': 'form',
-			'target': 'current',
-
-
-			#'view_id': view_id,
-			#"domain": [["patient", "=", self.patient.name]],
-			#'auto_search': False, 
-
-			'flags': {
-					#'form': {'action_buttons': True, }
-					'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-			},			
-
-			'context':   {
-
-							#'default_saledoc': saledoc,
-			}
-		}
-
-
-	# open_pm
-
-
-
-
-
-
-
-
-
-
-
-	payment_method = fields.Many2one(
-
-			'openhealth.payment_method',
-
-			#string="Módulo de Pago",
-
-			ondelete='cascade', 
-
-			#required=True, 
-			required=False, 
-			
-			#readonly=True, 
-		)
-
-
-
-
 	vspace = fields.Char(
 			' ', 
 			readonly=True
 			)
-
-
-
-
-
-
-
-	#@api.onchange('subtotal')
-	#def _onchange_subtotal(self):
-	#	self.balance = self.total - (self.pm_total + self.subtotal)
-
-
-
-
-	#code = fields.Char(
-	#		string="Codigo", 
-			#required=True, 
-	#	)
-
-
-
-
-
-# ----------------------------------------------------------- CRUD ------------------------------------------------------
-
-# Create 
-	@api.model
-	def create(self,vals):
-		#print 
-		#print 'PML - Create - Override'
-		#print 
-		#print vals
-		#print 
-	
-	
-
-			
-		#Write your logic here
-		res = super(payment_method_line, self).create(vals)
-		#Write your logic here
-		return res
-
-
-
-# Write 
-	@api.multi
-	def write(self,vals):
-
-		#print 
-		#print 'PML - Write - Override'
-		#print 
-		#print vals
-
-		res = super(payment_method_line, self).write(vals)
-		#Write your logic here
-		#print 
-		#print 
-
-		return res
-
-
-
 

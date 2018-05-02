@@ -17,8 +17,8 @@ import datetime
 @api.multi
 def get_orders_filter(self, date_bx, date_ex):
 
-	print
-	print 'Get Orders Two'
+	#print
+	#print 'Get Orders Two'
 
 
 

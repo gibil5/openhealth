@@ -121,7 +121,6 @@
 									<tree string="Ventas">	
 
 
-					                    <field name="name"/>
 
 
 
@@ -136,6 +135,8 @@
 
 					                    <field name="patient"/>
 	<!--
+					                    <field name="name"/>
+
 					                    <field name="document"/>
 					                    <field name="amount_net"/>
 					                    <field name="amount_tax"/>

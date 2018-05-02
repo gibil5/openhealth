@@ -66,10 +66,14 @@
 															('date_order','&lt;','2018-04-01'),
 											]"/>
 
+
+
 					<filter string="Abril" domain="[
 															('date_order','&gt;=','2018-04-01'),
-															('date_order','&lt;','2018-05-01'),
+															('date_order','&lt;','2018-05-01 05:00:00'),
 											]"/>
+
+
 
 					<filter string="Mayo" domain="[
 															('date_order','&gt;=','2018-05-01'),

@@ -865,22 +865,24 @@ Look for the Minimalist experience !!!
 <!--
 										('date_order','&gt;=',time.strftime('%%Y-01-01'))
 										('date_order','&lt;=',time.strftime('%%Y-12-31')),
+
+										('date_order','&lt;=',time.strftime('2018-12-31')),
+										('date_order','&gt;=',time.strftime('2018-01-01')),
+										('note', 'not in', ['observed']),
 -->
 
 		<!-- ACTION - 2018 -->
 		<record model="ir.actions.act_window" id="order_list_action">
+
 			<field name="name">Todo</field>
+			
 			<field name="res_model">sale.order</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 
-			<field name="domain">[
-										('date_order','&lt;=',time.strftime('2018-12-31')),
-										('date_order','&gt;=',time.strftime('2018-01-01')),
-										('note', 'not in', ['observed']),
-								]
-			</field>
 
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
 
 			<!--
 			<field name="domain">[]</field>

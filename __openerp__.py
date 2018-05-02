@@ -164,11 +164,10 @@
 		'views/report_sale/item_counter.xml',
 
 
-		'views/payment_methods/payment_method_line.xml',
-
-		'views/account/account_line.xml',
-		'views/account/account_contasis.xml',
-		'views/menus/menus_openhealth.xml',
+		#'views/payment_methods/payment_method_line.xml',
+		#'views/account/account_line.xml',
+		#'views/account/account_contasis.xml',
+		#'views/menus/menus_openhealth.xml',
 
 
 

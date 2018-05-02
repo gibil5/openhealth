@@ -14,8 +14,8 @@ class AccountLine(models.Model):
 	#_inherit='sale.closing'
 	_name = 'openhealth.account.line'
 
-	#_order = 'date_time asc'
-	_order = 'tipodocumento,numerofactura asc'
+	_order = 'date_time asc'
+	#_order = 'tipodocumento,numerofactura asc'
 
 
 
@@ -398,6 +398,14 @@ class AccountLine(models.Model):
 
 
 # ----------------------------------------------------------- Meta ------------------------------------------------------
+
+
+	name = fields.Char(
+			'Nr', 
+		)
+
+
+
 
 	patient = fields.Many2one(
 			'oeh.medical.patient', 

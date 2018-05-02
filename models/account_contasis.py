@@ -166,6 +166,9 @@ class AccountContasis(models.Model):
 
 
 				acc_line = self.account_line.create({
+														'name': order.name, 
+
+
 														'patient': patient, 
 														'serial_nr': serial_nr, 
 														'x_type': x_type, 

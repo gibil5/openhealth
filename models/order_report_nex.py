@@ -94,7 +94,7 @@ class order_report_nex(models.Model):
 	@api.multi 
 	def update_order_report(self):
 
-		print 'jx'
+		print
 		print 'Update'
 
 
@@ -115,7 +115,7 @@ class order_report_nex(models.Model):
 													#limit=1,
 												)
 		print orders
-
+		print 
 
 
 		# Loop Create
@@ -125,19 +125,17 @@ class order_report_nex(models.Model):
 
 
 			for line in order.order_line: 
-				print line.product_id
-				print line.name
-
-				print line.price_subtotal
-				print line.price_total
-				print line.price_unit				
-				print line.product_uom_qty
 				
-				print line.create_date
-				print 
+				#print line.product_id
+				#print line.name
+				#print line.price_subtotal
+				#print line.price_total
+				#print line.price_unit				
+				#print line.product_uom_qty
+				#print line.create_date
+				#print 
 
 
-				#ret = self.x_order_line_ids.create({
 				ret = self.order_line_ids.create({
 															'name': line.name,
 
@@ -153,14 +151,11 @@ class order_report_nex(models.Model):
 															'x_date_created': line.create_date,															
 													})
 
-				print ret 
-				print ret.price_subtotal
-				print ret.price_total
-				print ret.price_unit				
-				print ret.product_uom_qty
-				print 
-
-
-
+				#print ret 
+				#print ret.price_subtotal
+				#print ret.price_total
+				#print ret.price_unit				
+				#print ret.product_uom_qty
+				#print 
 
 

@@ -115,7 +115,9 @@
 
 		<!-- CREMA CON VITAMINAS A, E, C -->
 		<record id='cream_vitamins_aec' model='product.template'>
+
 			<field name='type'>product</field>
+			
 			<field name='x_name_short'>cream_vitamins_aec</field>
 			
 

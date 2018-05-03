@@ -437,6 +437,7 @@ class AccountLine(models.Model):
 	product_type = fields.Selection(
 			[	('service', 			'Servicio'),
 				('product', 			'Producto'),
+				('consu', 				'Consumible'),
 			], 
 			string='Tipo Prod', 
 			#required=False,

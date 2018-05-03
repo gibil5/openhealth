@@ -7,6 +7,8 @@ from openerp import models, fields, api
 _cuentab = {
 				'service':			'704110001', 
 				'product': 			'701101001', 
+
+				'consu': 			'701101001', 
 		}
 
 

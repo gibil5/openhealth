@@ -136,17 +136,23 @@
 					-->
 
 
+
+
 					<!-- Group By --> 
 					<group expand="1" string="Group By">
-
 						<filter name="Tipo" context="{'group_by':'x_type'}"/>
 
+						<separator/>
+
+						<filter name="Familia" context="{'group_by':'x_family'}"/>
+						<filter name="Producto" context="{'group_by':'x_product'}"/>
 					</group>
 
 
 			   </search>		   
 		   </field>
 	   </record>
+
 
 
 	</data>

@@ -163,25 +163,28 @@ class AccountContasis(models.Model):
 
 				amount = line.price_subtotal
 				amount_net, amount_tax = acc_funcs.get_net_tax(self, amount)
+				
+				product = line.product_id.id
 
 
 				acc_line = self.account_line.create({
 														'name': order.name, 
-
-
 														'patient': patient, 
+
+														
+														'product': product, 
+
+
 														'serial_nr': serial_nr, 
 														'x_type': x_type, 
-
 														'document': document, 					# Id Doc
 														'document_type': document_type, 		# Id Doc Type 
-
 														'date': date,
 														'date_time': date,
-
 														'amount': amount,
 														'amount_net': amount_net,
 														'amount_tax': amount_tax,
+
 														'account_id': self.id, 
 					})
 

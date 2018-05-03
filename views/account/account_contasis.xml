@@ -134,6 +134,13 @@
 					                    <field name="date_time"/>
 
 					                    <field name="patient"/>
+
+
+
+					                    <field name="product"/>
+					                    <field name="product_type"/>
+
+
 	<!--
 					                    <field name="name"/>
 

@@ -209,7 +209,7 @@ class AccountLine(models.Model):
 
 	cuentab = fields.Char(
 			'cuentab', 
-			default='701101001', 
+			#default='701101001', 
 		)
 
 	cuentao = fields.Char(
@@ -318,6 +318,13 @@ class AccountLine(models.Model):
 
 
 
+		# Product
+		self.product_type = self.product.type 
+
+		self.cuentab = acc_funcs._cuentab[self.product_type]
+
+
+
 
 
 		# Name 
@@ -411,6 +418,25 @@ class AccountLine(models.Model):
 			'oeh.medical.patient', 
 			string="Nombre", 
 		)
+
+
+
+	product = fields.Many2one(
+			'product.product', 
+			string="Producto", 
+		)
+
+	product_type = fields.Selection(
+			[	('service', 			'Servicio'),
+				('product', 			'Producto'),
+			], 
+			string='Tipo Prod', 
+			#required=False,
+		)
+
+
+
+
 
 
 	serial_nr = fields.Char(

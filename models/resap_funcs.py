@@ -48,27 +48,30 @@ def get_orders_filter(self, date_bx, date_ex):
 
 	# Orders 
 	orders = self.env['sale.order'].search([
-													('state', '=', 'sale'),
 
-													('date_order', '>=', date_begin),
-													
+													#('state', '=', 'sale'),
+													('state', 'in', ['sale','cancel']),
+
+
+													('date_order', '>=', date_begin),													
 													('date_order', '<', date_end),
 
-													
 													#('categ_id', '=', categ_id),
 											],
 												order='x_serial_nr asc',
 												#limit=1,
 											)
+
 	# Count 
 	count = self.env['sale.order'].search_count([
-													('state', '=', 'sale'),
+
+													#('state', '=', 'sale'),
+													('state', 'in', ['sale','cancel']),
 													
+
 													('date_order', '>=', date_begin),
-													
 													('date_order', '<', date_end),
 
-													
 													#('categ_id', '=', categ_id),
 											],
 												#order='x_serial_nr asc',

@@ -392,12 +392,19 @@ class AccountLine(models.Model):
 
 
 
-		# Actual amount
-		self.total = self.amount
-		self.neto = self.amount_net 
-		self.igv = self.amount_tax 
 
-		self.porigv = self.igv
+		# Actual amount
+		if self.state == 'cancel': 
+			self.total = 0
+			self.neto = 0 
+			self.igv = 0 
+			self.porigv = 0
+
+		else: 
+			self.total = self.amount
+			self.neto = self.amount_net 
+			self.igv = self.amount_tax 
+			self.porigv = self.igv
 
 
 
@@ -421,6 +428,7 @@ class AccountLine(models.Model):
 
 
 
+
 	product = fields.Many2one(
 			'product.product', 
 			string="Producto", 
@@ -433,6 +441,19 @@ class AccountLine(models.Model):
 			string='Tipo Prod', 
 			#required=False,
 		)
+
+
+	state = fields.Selection(
+			[	('sale', 			'Venta'),
+				('cancel', 			'Anulado'),
+			], 
+			string='Estado', 
+			#required=False,
+		)
+
+
+
+
 
 
 

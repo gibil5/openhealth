@@ -143,6 +143,10 @@ class AccountContasis(models.Model):
 			x_type = order.x_type
 
 
+			state = order.state
+
+
+
 			# Document and Document type 
 			if x_type in ['invoice', 'ticket_invoice']: 	# Ruc 
 				document = order.patient.x_ruc
@@ -173,6 +177,7 @@ class AccountContasis(models.Model):
 
 														
 														'product': product, 
+														'state': state, 
 
 
 														'serial_nr': serial_nr, 

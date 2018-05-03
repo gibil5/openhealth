@@ -150,6 +150,8 @@
 	-->
 					                    <field name="amount"/>
 
+
+					                    <field name="state"/>
 				                	</tree>
 								</field>
 

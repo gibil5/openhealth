@@ -136,22 +136,24 @@
 					                    <field name="patient"/>
 
 
-
+<!--
 					                    <field name="product"/>
 					                    <field name="product_type"/>
+					                    <field name="state"/>
+-->
+
 
 
 	<!--
 					                    <field name="name"/>
-
 					                    <field name="document"/>
 					                    <field name="amount_net"/>
 					                    <field name="amount_tax"/>
 	-->
+
+
 					                    <field name="amount"/>
-
-
-					                    <field name="state"/>
+				                	
 				                	</tree>
 								</field>
 

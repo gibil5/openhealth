@@ -434,13 +434,17 @@ order_report.xml
 
 
 <!-- Config --> 
+
+<!--
+					groups="openhealth.roots,openhealth.caja,openhealth.directors"
+-->
 		<menuitem 	id="sales_config_menu" 
 					parent="main_sales_menu"
 					sequence="4"
 
 					name="Configuración"
 
-					groups="openhealth.roots,openhealth.caja,openhealth.directors"
+					groups="openhealth.roots"
 					/>
 
 

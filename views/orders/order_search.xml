@@ -145,7 +145,12 @@
 						<separator/>
 
 						<filter name="Familia" context="{'group_by':'x_family'}"/>
+
 						<filter name="Producto" context="{'group_by':'x_product'}"/>
+
+						<filter name="Médico" context="{'group_by':'x_doctor'}"/>
+
+						<filter name="Generado por" context="{'group_by':'user_id'}"/>
 					</group>
 
 

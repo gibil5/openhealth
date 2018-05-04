@@ -21,7 +21,7 @@
 
 
 
-		Last built: 	3 May 2018 
+		Last built: 	4 May 2018 
 
 
 		
@@ -131,15 +131,6 @@
 		#'views/menus/menus_kardex.xml',
 
 
-
-
-
-
-
-
-
-
-
 		# ----------------------------------------------------------- Stock Moves - Deprecated ??? ------------------------------------------------------
 		#'data/stock_move_data.xml',
 		#'views/stock/stock_move.xml',
@@ -153,10 +144,12 @@
 
 
 
+
 		# ----------------------------------------------------------- Recent ------------------------------------------------------
 
 		'security/ir.model.access.csv',
 		
+
 		'views/product_selectors/product_selector.xml',
 		'views/orders/order_report_nex.xml',
 		'views/report_sale/report_sale_product.xml',
@@ -167,6 +160,7 @@
 		'views/payment_methods/payment_method_line.xml',
 		'views/account/account_line.xml',
 		'views/account/account_contasis.xml',
+
 		'views/menus/menus_openhealth.xml',
 
 

@@ -113,7 +113,7 @@
 
 					<field name="x_payment_method"		invisible="0"		readonly="1"	/>
 
-					<field name="x_type"				readonly="1"  />
+					<field name="x_type"/>
 
 					<field name="vspace"/>
 					
@@ -254,49 +254,10 @@
 
 
 
-					<!-- Update Descriptors --> 
-					<!-- Update All --> 
-					<button 
-							type="object" 
-							class="oe_highlight"
-							name="update_descriptors"
-
-							string="Update Des"
-
-							states="sale,editable"
-
-							groups="openhealth.roots"
-						/>
-
-
-					<button 
-							type="object" 
-							class="oe_highlight"
-							name="update_descriptors_all"
-
-							string="Update Des All"
-
-							states="sale,editable"
-
-							groups="openhealth.roots"
-						/>
-<!--
--->
 
 
 
-<!--
-					<button 
-							type="object" 
-							class="oe_highlight"
-							
-							name="test_clean_services"
 
-							string="Test Clean Servs"
-
-							groups="openhealth.roots"
-						/>
--->
 
 
 
@@ -370,7 +331,59 @@
 
 
 
+
+					<!-- Update Descriptors --> 
+					<!-- Update All --> 
+
+<!--
+					<button 
+							type="object" 
+							class="oe_highlight"
+							name="update_descriptors"
+
+							string="Update Des"
+
+							states="sale,editable"
+
+							groups="openhealth.roots"
+						/>
+
+
+					<button 
+							type="object" 
+							class="oe_highlight"
+							name="update_descriptors_all"
+
+							string="Update Des All"
+
+							states="sale,editable"
+
+							groups="openhealth.roots"
+						/>
+-->
+
+
+
+
+
+
 					<!-- Test --> 
+
+<!--
+					<button 
+							type="object" 
+							class="oe_highlight"
+							
+							name="test_clean_services"
+
+							string="Test Clean Servs"
+
+							groups="openhealth.roots"
+						/>
+-->
+
+
+<!--
 					<button 
 							type="object" 
 
@@ -382,12 +395,15 @@
 
 							groups="openhealth.roots"
 						/>
+-->
 
 
 
 
 
 					<!-- Update Type Legacy --> 
+					<!-- Update Type Legacy All --> 
+<!--
 					<button 
 							type="object" 
 							class="oe_highlight"
@@ -400,11 +416,8 @@
 
 							groups="openhealth.roots"
 						/>
-				
 
 
-
-					<!-- Update Type Legacy All --> 
 					<button 
 							type="object" 
 							class="oe_highlight"
@@ -445,6 +458,8 @@
 
 							groups="openhealth.roots"
 						/>
+-->
+
 
 				</xpath>
 

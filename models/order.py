@@ -173,6 +173,7 @@ class sale_order(models.Model):
 
 	# Date 
 	date_order = fields.Datetime(
+
 		states={	
 					'draft': [('readonly', False)], 
 					'sent': [('readonly', False)], 
@@ -219,6 +220,7 @@ class sale_order(models.Model):
 
 
 
+
 	# Type 
 	x_type = fields.Selection(
 			[	('receipt', 			'Boleta'),
@@ -226,10 +228,20 @@ class sale_order(models.Model):
 				('advertisement', 		'Canje Publicidad'),
 				('sale_note', 			'Canje NV'),
 				('ticket_receipt', 		'Ticket Boleta'),
-				('ticket_invoice', 		'Ticket Factura'),	], 
+				('ticket_invoice', 		'Ticket Factura'),	], 			
 			string='Tipo', 
 			required=False,
+
+			states={	
+					'draft': [('readonly', True)], 
+					'sent': [('readonly', True)], 
+					'sale': [('readonly', True)], 
+					'editable': [('readonly', False)], 
+				}, 
 		)
+
+
+
 
 
 	# To update type from batch 
@@ -573,9 +585,15 @@ class sale_order(models.Model):
 			'res.partner',
 			string = "Cliente", 	
 			ondelete='cascade', 			
-
 			#required=True, 
 			required=False, 
+
+			states={	
+					'draft': [('readonly', False)], 
+					'sent': [('readonly', True)], 
+					'sale': [('readonly', True)], 
+					'editable': [('readonly', False)], 
+				}, 
 		)
 
 
@@ -603,6 +621,7 @@ class sale_order(models.Model):
 	# DNI 
 	x_partner_dni = fields.Char(
 			string='DNI', 
+
 			states={
 						'draft': 	[('readonly', False)], 
 						'sent': 	[('readonly', True)], 
@@ -620,6 +639,7 @@ class sale_order(models.Model):
 			'order_id', 
 			string='Order Lines', 
 			readonly=False, 
+
 			states={
 						'cancel': 	[('readonly', True)], 
 						'done': 	[('readonly', True)], 

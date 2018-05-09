@@ -3,30 +3,27 @@
 	<data>
 
 
-		<!-- CONSULTATION -->
 			
 		<!-- Form view -->
 		<record model="ir.ui.view" id="consultation_form_view">
 			<field name="name">consultation.form</field>
 			<field name="model">openhealth.consultation</field>
 			<field name="arch" type="xml">
-				
-				<form string="Evaluation">
+				<form string="Consultation">
+
 
 
 
 					<!-- Header --> 
 					<header>
 
-						<!-- Button - Treatment --> 
+						<!-- Treatment --> 
 						<button 
 								name="open_treatment"
 								type="object" 
 								class="oe_highlight"
-
 								string="Regresar al TRATAMIENTO"
 						/>
-
 
 						<!-- State --> 
 						<field 	name="state" 
@@ -161,15 +158,11 @@
 						<notebook>
 						</notebook>
 
+
 					</sheet>
 				</form>
 			</field>
 		</record>
-
-
-
-
-
 
 
 
@@ -184,50 +177,40 @@
 					
 					<field name="name"/>
 					
-
-
 					<field name="patient_sex"/>
+					
 					<field name="patient_age"/>
+					
 					<field name="patient_city"/>
 
 					<field name="patient"  />
-					
 
 					<field name="doctor"   />					
 					
 					<field name="evaluation_start_date"/>
 
 					<field name="chief_complaint"/>
-					
-<!--
-					<field name="nr_orders"/>
-					<field name="nr_apps"/>
--->				
-					
+										
 					<field name="treatment"/>
 
-
-
 					<!--
+					<field name="nr_orders"/>
+					<field name="nr_apps"/>
 					<field name="owner"/>
-
 					<field name="treatment_id"/>
 					<field name="duration"/>
 					<field name="nr_services"/>
 					<field name="price_total"/>
 					-->
-
-
 				</tree>
 			</field>
 		</record>
 		
-		
-		
 
 
 
-		<!-- Consultation - Form Action --> 
+
+		<!-- Action --> 
 		<record model="ir.actions.act_window" id="consultation_form_action">
 			<field name="name">Consultas</field>
 			<field name="res_model">openhealth.consultation</field>
@@ -249,55 +232,6 @@
 
 
 
-
-
-
-		
-		
-		<!-- Search -->
-		<!--
-		<record model="ir.ui.view" id="consultation_search_view">
-			<field name="name">consultation.search</field>
-			<field name="model">openhealth.consultation</field>
-			<field name="arch" type="xml">
-				<search>
-					<field name="name"/>
-				</search>
-			</field>
-		</record>
-		-->
-
-		
-		
-		
-		<!-- Filter --> 
-        <record id="view_medical_consultation_filter" model="ir.ui.view">
-           <field name="name">Consultation Search</field>
-           <field name="model">openhealth.consultation</field>		   
-           <field name="arch" type="xml">
-               <search string="Consultations">
-                   <field name="treatment" />
-               </search>
-           </field>
-       </record>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		<!-- Window List action -->
 		<!--
 		The following tag is an action definition for a "window action",
@@ -308,46 +242,29 @@
 			<field name="res_model">openhealth.consultation</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
-			
             <field name="domain">[]</field>
             <field name="context">{}</field>
             <field name="view_id" eval="False"/>
-			
 			<field name="help" type="html">
 				<p class="oe_view_nocontent_create">Create the first consultation
 				</p>
-			</field>
-			
+			</field>			
 		</record>
 
 
 
 
-		<!-- Menus --> 
-		<!-- top level menu: no parent -->
-		<!--
-		<menuitem id="main_openextension_menu" name="Open Health"/>
-		-->
 
-		<!-- A first level in the left side menu is needed
-		before using action= attribute -->
-		<!--
-		<menuitem id="openextension_menu" name="Open Health"
-			parent="main_openextension_menu"/>
-		-->
-
-
-		<!-- the following menuitem should appear *after*
-		its parent openextension_menu and *after* its
-		action consultation_list_action -->
-		<!--
-		<menuitem id="consultations_menu" name="Consultas" parent="openextension_menu"
-			action="consultation_list_action"/>
-		--> 
-		<!-- Full id location:
-		action="openextension.consultation_list_action"
-		It is not required when it is the same module -->
-
+		<!-- Filter --> 
+        <record id="view_medical_consultation_filter" model="ir.ui.view">
+           <field name="name">Consultation Search</field>
+           <field name="model">openhealth.consultation</field>		   
+           <field name="arch" type="xml">
+               <search string="Consultations">
+                   <field name="treatment" />
+               </search>
+           </field>
+       </record>
 
 	</data>
 </openerp>

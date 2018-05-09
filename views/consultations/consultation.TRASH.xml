@@ -295,3 +295,45 @@ DEPRECATED
 
 
 
+
+		
+		<!-- Search -->
+		<!--
+		<record model="ir.ui.view" id="consultation_search_view">
+			<field name="name">consultation.search</field>
+			<field name="model">openhealth.consultation</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="name"/>
+				</search>
+			</field>
+		</record>
+		-->
+
+
+		<!-- Menus --> 
+		<!-- top level menu: no parent -->
+		<!--
+		<menuitem id="main_openextension_menu" name="Open Health"/>
+		-->
+
+		<!-- A first level in the left side menu is needed
+		before using action= attribute -->
+		<!--
+		<menuitem id="openextension_menu" name="Open Health"
+			parent="main_openextension_menu"/>
+		-->
+
+
+		<!-- the following menuitem should appear *after*
+		its parent openextension_menu and *after* its
+		action consultation_list_action -->
+		<!--
+		<menuitem id="consultations_menu" name="Consultas" parent="openextension_menu"
+			action="consultation_list_action"/>
+		--> 
+		<!-- Full id location:
+		action="openextension.consultation_list_action"
+		It is not required when it is the same module -->
+
+

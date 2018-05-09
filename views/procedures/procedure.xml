@@ -184,7 +184,7 @@
 
 
 
-								<!-- Nr Controls --> 								
+								<!-- Nr Controls --> 																
 								<button type="action" class="oe_stat_button" 	
 
 									name="%(control_form_action)d"	

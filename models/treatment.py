@@ -40,10 +40,10 @@ class Treatment(models.Model):
 
 		#self.patient_sex = self.patient.sex[0]
 		#self.patient_age =  self.patient.age.split()[0]
-		#self.patient_city = self.patient.city.title()
+		self.patient_city = self.patient.city.title()
 
-		#for consultation in self.consultation_ids: 
-		#	consultation.update_patient()
+		for consultation in self.consultation_ids: 
+			consultation.update_patient()
 
 
 
@@ -88,12 +88,12 @@ class Treatment(models.Model):
 			#compute='_compute_patient_city', 
 		)
 
-	@api.multi
-	def _compute_patient_city(self):
-		for record in self:		
+	#@api.multi
+	#def _compute_patient_city(self):
+	#	for record in self:		
 			#if record.patient.city != False: 
 			#record.patient_city = record.patient.city.title()
-			record.patient_city = record.patient.city
+	#		record.patient_city = record.patient.city
 
 
 

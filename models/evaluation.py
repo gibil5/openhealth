@@ -66,7 +66,7 @@ class Evaluation(models.Model):
 		
 		#self.patient_sex = self.patient.sex[0]
 		#self.patient_age =  self.patient.age.split()[0]
-		#self.patient_city = self.patient.city.title()
+		self.patient_city = self.patient.city.title()
 
 
 
@@ -109,19 +109,16 @@ class Evaluation(models.Model):
 			#compute='_compute_patient_city', 
 		)
 
-	@api.multi
-	def _compute_patient_city(self):
-
-		print 'Compute City'
-
-		for record in self:
-
+	#@api.multi
+	#def _compute_patient_city(self):
+	#	print 'Compute City'
+	#	for record in self:
 			#if record.patient.city != False: 
 			#print record.patient.city
 			#record.patient_city = record.patient.city.title()
 			#record.patient_city = record.patient.city
-			print record.treatment.patient_city
-			record.patient_city = record.treatment.patient_city
+	#		print record.treatment.patient_city
+	#		record.patient_city = record.treatment.patient_city
 
 
 

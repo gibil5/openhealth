@@ -447,7 +447,7 @@
 
 
 		# Controls
-		'views/controls/control.xml',
+		#'views/controls/control.xml',
 
 
 

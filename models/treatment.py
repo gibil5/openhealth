@@ -85,7 +85,7 @@ class Treatment(models.Model):
 
 			selection = pat_vars._city_list, 
 
-			compute='_compute_patient_city', 
+			#compute='_compute_patient_city', 
 		)
 
 	@api.multi

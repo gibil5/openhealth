@@ -255,18 +255,9 @@
 		# Check that data is not updated. All the time. 
 
 
-
 		# Categs
 		'data/base_data_categs_partners.xml',			
 		'data/base_data_categs_prods.xml',			
-
-
-
-
-
-
-
-
 
 
 
@@ -277,10 +268,8 @@
 
 
 
-
 		# Zone
 		'views/zones/zone.xml',
-
 		'data/prods/data_zones_quick.xml',			 
 		'data/prods/data_zones_co2.xml',			 
 		'data/prods/data_zones_excilite.xml',			 
@@ -289,24 +278,15 @@
 
 
 
-
 		# Allergy 
 		'views/allergies/allergy.xml',
 
 
 
-
-
 		# Doctors
 		'data/base_data_physicians.xml',				
-
 		'data/base_data_physicians_inactive.xml',				
-
 		'data/base_data_physicians_new.xml',				
-
-
-
-
 
 
 
@@ -316,21 +296,12 @@
 
 
 
-
-
-
 		# Suppliers 
 		'data/suppliers.xml',							# DEPRECATED - Very 
 
 
 
 
-
-
-
-
-
-		# ----------------------------------------------------------- Users ------------------------------------------------------
 
 		# Users - With pw
 		'data/users/base_data_users_platform.xml',	
@@ -349,6 +320,8 @@
 
 		# Generics 
 		'data/users/base_data_users_generics.xml',	
+
+
 
 
 

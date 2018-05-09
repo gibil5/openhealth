@@ -99,26 +99,20 @@ class Evaluation(models.Model):
 				record.patient_age = record.patient.age.split()[0]
 
 
+
 	# City 
-	#patient_city = fields.Char(
-	patient_city = fields.Selection(
+	patient_city = fields.Char(
 			string="Lugar de procedencia", 
 
-			selection = pat_vars._city_list, 
-
-			#compute='_compute_patient_city', 
+			compute='_compute_patient_city', 
 		)
 
-	#@api.multi
-	#def _compute_patient_city(self):
-	#	print 'Compute City'
-	#	for record in self:
-			#if record.patient.city != False: 
-			#print record.patient.city
-			#record.patient_city = record.patient.city.title()
-			#record.patient_city = record.patient.city
-	#		print record.treatment.patient_city
-	#		record.patient_city = record.treatment.patient_city
+	@api.multi
+	def _compute_patient_city(self):
+		for record in self:
+			if record.patient.city_char != False: 
+				city = record.patient.city_char
+				record.patient_city = city.title()
 
 
 

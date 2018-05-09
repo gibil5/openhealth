@@ -204,6 +204,20 @@ class Partner(models.Model):
 
 
 
+	# For patient short card
+	city_char = fields.Char(
+		
+			compute='_compute_city_char', 
+		)
+	#@api.multi
+	@api.depends('city')
+	def _compute_city_char(self):
+		for record in self:
+			record.city_char = record.city
+
+
+
+
 
 
 

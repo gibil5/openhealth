@@ -38,7 +38,7 @@
 
 
 
-				<xpath expr="//field[@name='consultation']" position="replace"> 
+				<xpath expr="//field[@name='patient']" position="replace"> 
 				</xpath>
 
 

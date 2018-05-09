@@ -107,15 +107,12 @@
                <search string="service.co2">
 
                    <field name="treatment" />
+<!--                   
                    <field name="consultation" />
-               
+-->           
                </search>
            </field>
        </record>
-
-
-
-
 
 
 

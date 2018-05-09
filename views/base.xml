@@ -754,24 +754,6 @@
 
 
 
-		<!-- Consultation - Form Action --> 
-		<record model="ir.actions.act_window" id="consultation_form_action">
-			<field name="name">Consultas</field>
-			<field name="res_model">openhealth.consultation</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-			
-			<!--
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first consultation
-				</p>
-			</field>
-			-->
-		</record>
-
 
 
 
@@ -779,17 +761,22 @@
 		<!-- apppointment - Form Action --> 
 		<record model="ir.actions.act_window" id="appointment_form_action">
 			<field name="name">Citas</field>
-
-
-<!--
-			<field name="res_model">openhealth.appointment</field>
--->
-			<field name="res_model">oeh.medical.appointment</field>
-
-			
+			<field name="res_model">oeh.medical.appointment</field>			
 			<field name="view_type">form</field>
+<!--
 			<field name="view_mode">calendar, tree,form</field>
+-->
+			<field name="view_mode">tree,form,caledar</field>
 			
+
+			<field name="domain">[
+								
+									('treatment', '=', default_treatment),
+																	
+								]
+			</field>
+
+
 			<!--
             <field name="domain">[]</field>
             <field name="context">{}</field>

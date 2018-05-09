@@ -327,6 +327,24 @@ Add Procedures
 
 
 
+
+
+						<!-- Update Patient --> 
+<!--
+							groups="openhealth.archivers,openhealth.managers,openhealth.directors"
+-->
+						<button 
+							type="object" 
+							class="oe_highlight"
+							
+							name="update_patient" 
+
+							string="U" 
+						/>
+
+
+
+
 <!--
 								statusbar_visible="appointment, invoice_consultation, consultation, service, invoice_procedure, procedure, sessions, controls"
 
@@ -369,8 +387,9 @@ Add Procedures
 								<h2>
 									<field name="patient"/>
 								</h2>
-							
 							</div>
+
+
 
 
 
@@ -381,29 +400,30 @@ Add Procedures
 
 
 <!--
-
-									name="347" 
-
 									name="%(appointment_form_action)d"	
+
 									name="%(oeh_medical_appointment_action_tree_confirmed)d"	
 
 												'search_default_patient': patient, 
-jz
+
+												'default_doctor' : physician
+
+												'default_patient': patient, 
+
+												'search_default_doctor': physician, 
 -->
 
 								<!-- Appointments -->
 								<button type="action" class="oe_stat_button" 
 
 
-									name="%(oeh_medical_appointment_action_tree_confirmed)d"	
+									name="%(appointment_form_action)d"	
 
 									
 									context="{
-												'search_default_doctor': physician, 
-
-												'default_patient': patient, 
-												'default_doctor' : physician
+												'default_treatment': active_id, 
 											}" 
+
 
 									icon="fa-calendar"
 
@@ -445,27 +465,46 @@ jz
 
 
 
-								<!-- Invoices - Con -->
 <!--
 										name="%(sale_cons_list_action)d"	
+
 															('nr_invoices_cons','=','0'), 	
 
 												'search_default_treatment': active_id,
 
 												'search_default_x_family': 'consultation', 
--->
-								<button type="action" class="oe_stat_button" icon="fa-list"
+
+													'search_default_partner_id': partner_id, 
+													'default_partner_id': partner_id, 
+
+
+
+													'search_default_patient': patient, 													
+													'search_default_x_doctor': physician, 
+													'search_default_x_family': 'consultation', 
+													'search_default_treatment': active_id,
+													'search_default_treatment': active_id,
+
 
 										name="%(order_form_action)d"	
+										name="%(order_form_tre_action)d"	
+										name="%(sale_cons_list_action)d"	
+-->
+								
+
+								<!-- Invoices - Con -->
+								<button type="action" class="oe_stat_button" icon="fa-list"
+
+
+										name="%(order_form_tre_action)d"	
 
 									
 										context="{									
-													'search_default_partner_id': partner_id, 
-													'search_default_x_doctor': physician, 
+													'search_default_patient': patient, 													
 
-													'search_default_x_family': 'consultation', 
-	
-													'default_partner_id': partner_id, 
+													'default_treatment': active_id,
+
+													'default_x_family': 'consultation', 
 												}" 	
 
 
@@ -477,6 +516,9 @@ jz
 
 									<field string="Venta - Con" name="nr_invoices_cons" widget="statinfo"/>
 								</button>
+
+
+
 
 
 
@@ -533,14 +575,17 @@ jz
 								<!-- Nr of Services - vip --> 
 								<button type="action" class="oe_stat_button" icon="fa-list"
 
+
 									name="%(service_vip_list_action)d"	
+
+									context="{									
+												'search_default_treatment': active_id,
+											}" 											
 
 									attrs="{ 'invisible':[	('nr_services_vip','=',0), ]}"
 
-									context="{									
-											'search_default_treatment': active_id,
-											}" 											
 									>
+
 
 									<field string="Rec. vip" name="nr_services_vip" widget="statinfo"/>
 								</button>
@@ -559,7 +604,7 @@ jz
 									attrs="{ 'invisible':[	('nr_services_quick','=',0), ]}"
 
 									context="{									
-											'search_default_treatment': active_id,
+												'search_default_treatment': active_id,
 											}" 											
 									>
 
@@ -669,17 +714,19 @@ jz
 
 
 
-<!-- Nr Budgets Pro - IMPORTANT -->
-<!--
--->
+								<!-- Nr Budgets Pro - IMPORTANT -->
 								<button type="action" class="oe_stat_button" icon="fa-list"
-										name="%(order_form_action)d"	
+
+										name="%(order_form_tre_action)d"	
+									
 										context="{									
-													'search_default_partner_id': partner_id, 
-													'search_default_x_doctor': physician, 
-													'search_default_x_family': 'procedure', 
-													'default_partner_id': partner_id, 
+													'search_default_patient': patient, 													
+
+													'default_treatment': active_id,
+
+													'default_x_family': 'procedure', 
 												}" 	
+
 										attrs="{ 'invisible':[	('nr_budgets_pro','=',0), ]}">
 
 									<field string="Pres. Creado" name="nr_budgets_pro" widget="statinfo"/>
@@ -689,32 +736,30 @@ jz
 
 
 
+
+
 								<!-- Invoices - Pro -->
-<!--
--->
 								<button type="action" class="oe_stat_button" icon="fa-list"
 
-									name="%(order_form_action)d"	
+										name="%(order_form_tre_action)d"	
 									
+										context="{									
+													'search_default_patient': patient, 													
 
-									attrs="{ 'invisible':[	('nr_invoices_pro','=',0), ]}"
+													'default_treatment': active_id,
 
+													'default_x_family': 'procedure', 
+												}" 	
 
-
-									context="{									
-												'search_default_partner_id': partner_id, 
-												'search_default_x_doctor': physician, 
-
-												'search_default_x_family': 'procedure', 
-
-												'default_partner_id': partner_id, 
-											}" 	
+										attrs="{ 'invisible':[	('nr_invoices_pro','=',0), ]}"
 									>
 
 									
 									<field string="Venta - Pro" name="nr_invoices_pro" widget="statinfo"/>
 
 								</button>
+
+
 
 
 								<!-- Procedures -->
@@ -803,7 +848,19 @@ Fields
 -->
 
 						<!-- Padding --> 
-						<group></group>
+						<group>
+							
+<!--
+								<h2>
+								</h2>
+									<label string="Sexo"/>
+-->								
+									<field name="patient_sex"		/>
+									<field name="patient_age"		/>
+									<field name="patient_city"		/>
+						</group>
+
+
 						<group></group>
 
 
@@ -1027,19 +1084,21 @@ blue:state=='controls'
 
 					<field name="name"/>
 
+					<field name="patient_sex"/>
+					<field name="patient_age"/>
+					<field name="patient_city"/>
 
-					<field name="write_date"/>
+
 
 
 					<field name="start_date"/>
+<!--
+					<field name="write_date"/>
 					<field name="duration"/>
-
-
+-->
 					<field name="patient"/>					
 					<field name="physician"/>
 					<field name="chief_complaint"	string="Motivo"/>
-
-
 
 					<field name="state"/>
 				</tree>
@@ -1086,35 +1145,50 @@ blue:state=='controls'
 
 
 
+
 		<!-- Window Form Action -->
 		<record model="ir.actions.act_window" id="treatment_form_action">
 			<field name="name">Tratamientos 1</field>
 			<field name="res_model">openhealth.treatment</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
+
+<!--
+			<field name="context">{
+										'default_x_target': 'doctor',
+										'default_x_type': 'consultation',
+										'default_appointment_date': time.strftime('%Y-%m-%d 14:00:00'),
+									}
+			</field>
+-->
+
 		</record>
 
 
 
-		<!-- FAVS -->
 
+
+
+
+
+
+
+
+
+
+		<!-- FAVS -->
 		<!-- By Month --> 
 	    <record id="openhealth.filter_tre_order_month" model="ir.filters">
 	        <field name="name">Por Mes</field>
 	        <field name="model_id">openhealth.treatment</field>
 	        <field name="context">{'group_by': ['start_date']}</field>
 	    </record>
-
 		<!-- By Doctor --> 
 	    <record id="openhealth.filter_tre_order_phy" model="ir.filters">
 	        <field name="name">Por Medico</field>
 	        <field name="model_id">openhealth.treatment</field>
 	        <field name="context">{'group_by': ['physician']}</field>
 	    </record>
-
-
-
-
 
 
 

@@ -10,3 +10,81 @@ blue:state=='done'
 
 "
 
+
+
+
+
+
+		
+		
+		<!-- Menus --> 
+		<!-- top level menu: no parent -->
+		<!--
+		<menuitem id="main_openextension_menu" name="Open Health"/>
+		--> 
+
+		<!-- A first level in the left side menu is needed
+		before using action= attribute -->
+		<!--
+		<menuitem id="openextension_menu" name="Open Health"
+			parent="main_openextension_menu"/>
+		--> 
+
+		<!-- the following menuitem should appear *after*
+		its parent openextension_menu and *after* its
+		action control_list_action -->
+		<!--
+		<menuitem id="controls_menu" name="Controles" parent="openextension_menu"
+			action="control_list_action"/>
+		-->
+		
+		<!-- Full id location:
+		action="openextension.control_list_action"
+		It is not required when it is the same module -->
+
+
+
+
+
+
+<!--
+							<page string="Fotos VISIA"  	attrs="{
+																		'invisible':[('evaluation_nr', 'in', [2, 4, 5] ),],
+																}"	
+								>
+-->							
+
+
+<!--
+								<field name="image_ids"		context="{
+																			'default_patient': patient,
+																			'default_doctor': doctor,
+																			'default_control': active_id,
+																			'default_evaluation_type': 'control',
+																		}"
+								>
+							
+									<tree string="">	
+
+										<button 
+											type="object" 
+											class="oe_highlight"	
+											string="Editar"
+											name="open_line_current" 
+										/>
+
+
+										<field name="name"/>
+										<field name="description"/>
+
+										<field name="image"			/>
+
+										<field name="patient"/>
+										<field name="doctor"/>
+										<field name="evaluation_type"/>
+										<field name="control"/>
+										<field name="date"/>
+									</tree>
+								</field>
+-->
+		

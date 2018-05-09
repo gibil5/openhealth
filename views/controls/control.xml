@@ -258,17 +258,35 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 
 
 
-<!--
-							<page string="Fotos VISIA"  	attrs="{
-																		'invisible':[('evaluation_nr', 'in', [2, 4, 5] ),],
-																}"	
-								>
--->							
 
 						<!-- VISIA --> 
 						<notebook>
-							<page string="Fotos VISIA" >
 
+
+							<page  string="Historia">
+								
+								<group>
+								
+									<field name="x_diagnosis"/>
+
+									<field name="x_antecedents"/>
+
+									<field name="x_allergies_medication"/>
+
+									<field name="x_analysis_lab"/>
+
+									<field name="x_observations"/>
+
+									<field name="x_indications"/>
+
+								</group>
+
+							</page>
+
+
+
+
+							<page string="Fotos VISIA" >
 								<field
 									name="image_ids"
 									nolabel="1"
@@ -278,45 +296,10 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 									}"
 									mode="kanban"
 								/>
-
 							</page>
+
+
 						</notebook>
-
-
-<!--
-								<field name="image_ids"		context="{
-																			'default_patient': patient,
-																			'default_doctor': doctor,
-																			'default_control': active_id,
-																			'default_evaluation_type': 'control',
-																		}"
-								>
-							
-									<tree string="">	
-
-										<button 
-											type="object" 
-											class="oe_highlight"	
-											string="Editar"
-											name="open_line_current" 
-										/>
-
-
-										<field name="name"/>
-										<field name="description"/>
-
-										<field name="image"			/>
-
-										<field name="patient"/>
-										<field name="doctor"/>
-										<field name="evaluation_type"/>
-										<field name="control"/>
-										<field name="date"/>
-									</tree>
-								</field>
--->
-
-
 
 
 					</sheet>
@@ -337,21 +320,9 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 			<field name="arch" type="xml">
 				
 
-				<tree string="Control Tree"
+				<tree 	string="Control Tree"
 
-colors="
-
-red:state=='draft';
-
-green:state=='inprogress';
-
-blue:state=='done'
-
-"
-
-
-
->
+						colors="red:state=='draft';green:state=='inprogress';blue:state=='done'">
 					
 
 					<!-- Quick Button -->
@@ -361,7 +332,6 @@ blue:state=='done'
 						string="E"
 						name="open_line_current" 
 					/>
-
 
 
 					<field name="evaluation_nr"/>
@@ -382,14 +352,9 @@ blue:state=='done'
 					
 					<field name="nr_images"/>
 
-
-
 					<field name="state"/>
 
 					<field name="x_done"/>
-
-
-
 				</tree>
 			</field>
 		</record>
@@ -404,6 +369,8 @@ blue:state=='done'
 -->
 		
 		
+
+
 
 
 
@@ -426,46 +393,18 @@ blue:state=='done'
 		</record>		
 		
 
+
 		<!-- Filter --> 
         <record id="view_medical_control_filter" model="ir.ui.view">
            <field name="name">Control Search</field>
            <field name="model">openhealth.control</field>		   
            <field name="arch" type="xml">
                <search string="Controls">
-        
                    <field name="treatment" />
-                   <field name="procedure" />
-        
+                   <field name="procedure" />        
                </search>
            </field>
        </record>
 
-		
-		
-		<!-- Menus --> 
-		<!-- top level menu: no parent -->
-		<!--
-		<menuitem id="main_openextension_menu" name="Open Health"/>
-		--> 
-
-		<!-- A first level in the left side menu is needed
-		before using action= attribute -->
-		<!--
-		<menuitem id="openextension_menu" name="Open Health"
-			parent="main_openextension_menu"/>
-		--> 
-
-		<!-- the following menuitem should appear *after*
-		its parent openextension_menu and *after* its
-		action control_list_action -->
-		<!--
-		<menuitem id="controls_menu" name="Controles" parent="openextension_menu"
-			action="control_list_action"/>
-		-->
-		
-		<!-- Full id location:
-		action="openextension.control_list_action"
-		It is not required when it is the same module -->
-		
 	</data>
 </openerp>

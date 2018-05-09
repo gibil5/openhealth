@@ -1334,59 +1334,63 @@ class Patient(models.Model):
 # ----------------------------------------------------------- Buttons Treatment ------------------------------------------------------
 
 
-	# Button - Treatment 
-	# -------------------
+	# Open Treatment 
 	@api.multi
-	def open_treatment_current(self):  
+	def open_treatment(self):  
 
 
-		treatment_id = self.env['openhealth.treatment'].search([
-																		
-																		('patient','=', self.id),
-																
+		print
+		print 'Open Treatment'
+
+
+		# Init vars 
+		treatment = self.env['openhealth.treatment'].search(	[		
+																	('patient','=', self.id),
 																],
 																#order='start_date desc',
 																order='write_date desc',
-																limit=1,).id
+																limit=1,
+															)
+		treatment_id = treatment.id
 
+
+		patient_id = self.id 
 
 		#print 
 		#print 'Open Treatment'
-		patient_id = self.id 
 		#print patient_id
 
+
+		# Update Patient 
+		#treatment.update_patient()
+
+
 		return {
+					# Mandatory 
+					'type': 'ir.actions.act_window',
+					'name': 'Open Treatment Current',
 
-			# Mandatory 
-			'type': 'ir.actions.act_window',
-			'name': 'Open Treatment Current',
+					# Window action 
+					'res_model': 'openhealth.treatment',
+					'res_id': treatment_id,
 
+					# Views 
+					"views": [[False, "form"]],
+					'view_mode': 'form',
+					'target': 'current',
 
+					'flags': {
+							'form': {'action_buttons': True, }
+							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+					},	
 
-			# Window action 
-			'res_model': 'openhealth.treatment',
-			'res_id': treatment_id,
-
-
-			# Views 
-			"views": [[False, "form"]],
-			'view_mode': 'form',
-			'target': 'current',
-
-			
-
-			'flags': {
-					'form': {'action_buttons': True, }
-					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-			},	
-
-			'context':   {
-				'search_default_patient': patient_id,
-				'default_patient': patient_id,
-			}
+					'context':   {
+						'search_default_patient': patient_id,
+						'default_patient': patient_id,
+					}
 		}
 
-	# open_treatment_current 
+	# open_treatment
 
 
 

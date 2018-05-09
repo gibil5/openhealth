@@ -1044,6 +1044,7 @@ Look for the Minimalist experience !!!
 
 
 
+
 		<!-- Action - All --> 
 		<record model="ir.actions.act_window" id="order_form_action">
 			<field name="name">orders</field>
@@ -1051,7 +1052,7 @@ Look for the Minimalist experience !!!
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 			
-
+<!--
 			<field name="view_mode">form,tree</field>
 			<field name="domain">[]</field>
 			<field name="context">{}</field>
@@ -1060,8 +1061,36 @@ Look for the Minimalist experience !!!
 				<p class="oe_view_nocontent_create">Create the first order
 				</p>
 			</field>
+-->
 		</record>
 		
+
+
+
+		<!-- Action - All --> 
+		<record model="ir.actions.act_window" id="order_form_tre_action">
+			<field name="name">orders</field>
+			<field name="res_model">sale.order</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>	
+
+			<field name="domain">[
+								
+									('treatment', '=', default_treatment),
+									
+									('x_family', '=', default_x_family),
+								
+								]
+			</field>
+
+		</record>
+
+
+
+
+
+
+
 		
 
 	</data>

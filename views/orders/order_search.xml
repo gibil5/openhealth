@@ -128,9 +128,14 @@
 
 
 
-				   <field name="partner_id" />
+				   <field name="patient" />
 
 					<!--
+				   <field name="partner_id" />
+
+
+				   <field name="treatment" />
+
 				   <field name="x_doctor" />               
 				   <field name="x_family" /> 
 					-->

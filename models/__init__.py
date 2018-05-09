@@ -79,10 +79,12 @@ from . import appointment
 from . import consultation
 from . import recommendation
 from . import procedure
-from . import session 
-from . import session_med
 from . import control
 from . import physician 
+
+from . import session 
+from . import session_med
+
 
 
 

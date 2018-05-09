@@ -166,11 +166,11 @@
 								
 								
 								<group>
-									<field name="consultation" readonly="1" invisible="1"/>
-									
-
-
+<!--									
+									<field name="consultation" readonly="1" invisible="0"/>
 									<field name="vspace" />
+-->								
+
 <!--
 -->
 									<field name="patient" 	readonly="0" 	invisible="1"	/>

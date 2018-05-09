@@ -275,13 +275,16 @@
 
 <!-- Caja -->
 
+<!--
+					groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
+-->
+
 		<!-- Main - sales -->
 		<menuitem 	id="main_sales_menu" 
 					sequence="-9"
 
 					name="Caja"
 					
-					groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
 					/>
 
 
@@ -294,6 +297,8 @@
 					parent="main_sales_menu"
 
 					sequence="1"
+
+					groups="openhealth.roots,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
 					/>
 
 
@@ -444,7 +449,7 @@ order_report.xml
 
 					name="Configuración"
 
-					groups="openhealth.roots"
+					groups="openhealth.roots,openhealth.caja"
 					/>
 
 
@@ -458,14 +463,14 @@ order_report.xml
 
 
 
-
+<!--
+					groups="openhealth.roots,openhealth.directors"
+-->
 		<menuitem 	id="all_counters_menu" 
 					name="Contadores Todos" 
 					parent="sales_config_menu"
 					sequence="2"
 					
-					groups="openhealth.roots,openhealth.directors"
-
 					action="counter_list_action"/>
 
 

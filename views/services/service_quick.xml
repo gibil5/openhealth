@@ -90,7 +90,7 @@
 
 
 
-				<xpath expr="//field[@name='consultation']" position="before">
+				<xpath expr="//field[@name='patient']" position="before">
 						<field name="nex_pathology"  	string='Patología'	widget="radio" />
 				</xpath>
 
@@ -193,8 +193,9 @@
                <search string="service.quick">
 
                    <field name="treatment" />
+<!--                   
                    <field name="consultation" />
-               
+-->           
                </search>
            </field>
        </record>

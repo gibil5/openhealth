@@ -21,14 +21,17 @@
 
 
 
-		Last built: 	4 May 2018 
+		Last built: 9 May 2018 
 
 
 		
 		Stability by Design !
-		More Configuration and less programming. Near than zero hacking.  
 
-		La Estabilidad se consigue pour la disminución, no por el aumento. Less but Better. 
+		La Estabilidad se consigue pour la disminución, no por el aumento. 
+		Dieter Rams: Less but Better. 
+
+
+		More Configuration and less programming. Near than zero hacking.  
 
 
 		Clínica Chavarri\n
@@ -583,6 +586,7 @@
 		# Consultation - 2
 		'views/consultations/consultation_med.xml',
 		'views/consultations/consultation_med_first.xml',
+		
 		'views/consultations/consultation_cos.xml',
 		'views/consultations/consultation_cos_first.xml',
 

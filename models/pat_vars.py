@@ -368,6 +368,7 @@ _street2_list_old = [
 
 
 _city_list = [
+
 			('lima','Lima'),
 			('abancay','Abancay'),
 

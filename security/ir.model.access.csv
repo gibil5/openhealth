@@ -4,11 +4,17 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+access_openhealth_counter,openhealth.counter,model_openhealth_counter,,1,1,1,1
+access_openhealth_counter_caja,openhealth.counter.caja,model_openhealth_counter,openhealth.caja,1,1,0,0
+
+
+
+
+
+
+
+
 access_openhealth_item_counter,openhealth.item.counter,model_openhealth_item_counter,,1,1,1,1
-
-
-
-
 
 
 
@@ -16,9 +22,6 @@ access_openhealth_item_counter,openhealth.item.counter,model_openhealth_item_cou
 access_openhealth_order_report_nex,openhealth.order.report.nex,model_openhealth_order_report_nex,,1,1,1,1
 
 access_openhealth_report_order_line,openhealth.report.order_line,model_openhealth_report_order_line,,1,1,1,1
-
-
-
 
 
 
@@ -52,8 +55,6 @@ access_openhealth_process,access_openhealth_process,model_openhealth_process,,1,
 access_openhealth_treatment,openhealth.treatment,model_openhealth_treatment,,1,1,1,0
 access_openhealth_treatment_physicians,openhealth.treatment.physicians,model_openhealth_treatment,openhealth.physicians,1,1,0,0
 
-access_openhealth_counter,openhealth.counter,model_openhealth_counter,,1,1,1,1
-access_openhealth_counter_caja,openhealth.counter.caja,model_openhealth_counter,openhealth.caja,1,1,0,0
 
 
 access_product_selector,product.selector,model_openhealth_product_selector,,1,1,1,1

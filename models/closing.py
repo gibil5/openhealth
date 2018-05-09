@@ -44,12 +44,28 @@ class Closing(models.Model):
 			default = 0, 
 		)
 
+	total_proof_wblack = fields.Float(					# Without sale_notes and advertisements
+			'Total Documentos de pago - NSF',
+			default = 0, 
+		)
+
+
+
+
+
 
 # Total Form 
 	total_form = fields.Float(
 			'Total Formas de pago',
 			default = 0, 
 		)
+
+	total_form_wblack = fields.Float(
+			'Total Formas de pago - NSF',
+			default = 0, 
+		)
+
+
 
 
 # Total Cards 
@@ -276,6 +292,8 @@ class Closing(models.Model):
 
 		# Total Proof 
 		self.total_proof = self.rec_tot + self.inv_tot + self.tkr_tot + self.tki_tot + self.adv_tot + self.san_tot
+		self.total_proof_wblack = self.rec_tot + self.inv_tot + self.tkr_tot + self.tki_tot 	#+ self.adv_tot + self.san_tot
+
 
 
 
@@ -288,6 +306,8 @@ class Closing(models.Model):
 
 
 		cash_tot = 0 
+		#cash_tot_wblack = 0 
+
 		ame_tot = 0 
 		din_tot = 0 
 		mac_tot = 0 
@@ -342,19 +362,26 @@ class Closing(models.Model):
 		self.cash_tot = cash_tot
 		self.ame_tot = ame_tot
 		self.din_tot = din_tot
-
 		self.mac_tot = mac_tot
 		self.mad_tot = mad_tot
-		
 		self.vic_tot = vic_tot
 		self.vid_tot = vid_tot
-
 		#self.cuo_tot = cuo_tot
 
 
 
 
 		self.total_form = self.cash_tot + self.ame_tot + self.din_tot + self.mac_tot + self.mad_tot + self.vic_tot + self.vid_tot 		#+ self.cuo_tot 
+
+		self.total_form_wblack = self.total_proof_wblack
+
+
+		self.cash_tot_wblack = self.cash_tot - (self.total_form - self.total_form_wblack)
+
+
+
+
+
 
 		self.total_cards = self.ame_tot + self.din_tot + self.mac_tot + self.mad_tot + self.vic_tot + self.vid_tot 						#+ self.cuo_tot 
 
@@ -410,6 +437,16 @@ class Closing(models.Model):
 
 			#compute='_compute_method_tot', 
 		)
+
+	cash_tot_wblack = fields.Float(					# Without sale notes and advertisements
+			'Efectivo - NSF',
+			default = 0, 
+
+			#compute='_compute_method_tot', 
+		)
+
+
+
 
 	# ame  
 	ame_tot = fields.Float(

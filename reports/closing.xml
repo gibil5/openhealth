@@ -192,7 +192,10 @@
 
 <tr>
 <th>Total:</th>
+<!--
 <th><t t-esc="doc.total_proof"/></th>
+-->
+<th><t t-esc="doc.total_proof_wblack"/></th>
 </tr>
 
 </table>    
@@ -227,7 +230,10 @@
 
 <tr>
 <th>Efectivo:</th>
+<!--
 <th><t t-esc="doc.cash_tot"/></th>
+-->
+<th><t t-esc="doc.cash_tot_wblack"/></th>
 </tr>
 
 <tr>
@@ -282,7 +288,10 @@
 
 <tr>
 <th>Total:</th>
+<!--
 <th><t t-esc="doc.total_form"/></th>
+-->
+<th><t t-esc="doc.total_form_wblack"/></th>
 </tr>
 
 </table>    

@@ -47,9 +47,9 @@
 
 						<button 
 							type="object" 
-							name="open_treatment_current" 
-
 							class="oe_highlight"
+
+							name="open_treatment" 
 
 							string="Ultimo Tratamiento" 							
 						/>

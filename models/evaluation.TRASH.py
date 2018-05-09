@@ -58,3 +58,23 @@
 
 
 
+
+# 9 May 2018
+
+
+	# Evaluation Nr
+	evaluation_nr = fields.Integer(
+			string="Evaluation #", 
+			default=1, 
+
+			required=True, 
+			#compute='_compute_evaluation_nr', 
+			)
+
+	#@api.multi
+	#@api.depends('state')
+	#def _compute_evaluation_nr(self):
+	#	for record in self:
+	#		nr = 1
+	#		record.evaluation_nr = nr  
+

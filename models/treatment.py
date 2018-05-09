@@ -14,6 +14,9 @@ from . import time_funcs
 
 #from . import treatment_vars
 
+from . import pat_vars
+
+
 
 class Treatment(models.Model):
 
@@ -22,6 +25,75 @@ class Treatment(models.Model):
 	_order = 'write_date desc'
 
 
+
+
+
+
+	# ----------------------------------------------------------- Patient ------------------------------------------------------
+
+	# Update  
+	@api.multi 
+	def update_patient(self):
+
+		print 
+		print 'Update Patient - Treatment'
+
+		#self.patient_sex = self.patient.sex[0]
+		#self.patient_age =  self.patient.age.split()[0]
+		#self.patient_city = self.patient.city.title()
+
+		#for consultation in self.consultation_ids: 
+		#	consultation.update_patient()
+
+
+
+
+	# Sex
+	patient_sex = fields.Char(
+			string="Sexo", 
+
+			compute='_compute_patient_sex', 
+		)
+
+	@api.multi
+	def _compute_patient_sex(self):
+		for record in self:		
+			if record.patient.sex != False: 
+				record.patient_sex = record.patient.sex[0]
+
+
+	# Age
+	patient_age = fields.Char(
+			string="Edad", 
+
+			compute='_compute_patient_age', 
+		)
+
+	@api.multi
+	def _compute_patient_age(self):
+		for record in self:		
+			if record.patient.age != False: 
+				record.patient_age = record.patient.age.split()[0]
+
+
+
+
+	# City 
+	#patient_city = fields.Char(
+	patient_city = fields.Selection(
+			string="Lugar de procedencia", 
+
+			selection = pat_vars._city_list, 
+
+			compute='_compute_patient_city', 
+		)
+
+	@api.multi
+	def _compute_patient_city(self):
+		for record in self:		
+			#if record.patient.city != False: 
+			#record.patient_city = record.patient.city.title()
+			record.patient_city = record.patient.city
 
 
 
@@ -1923,7 +1995,7 @@ class Treatment(models.Model):
 
 		GMT = time_funcs.Zone(0,False,'GMT')
 		appointment_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
-		#appointment_date = '2016-12-23'
+		#appointment_date = '2016-12-23 09:00:00'
 
 
 		return {
@@ -1966,64 +2038,41 @@ class Treatment(models.Model):
 
 	# ----------------------------------------------------- Create Consultation ------------------------------------------------------------
 
-	# Consultation - NEW
-	# --------------------
-
-#jx
+	# Create Consultation 
 	@api.multi
-	#def open_consultation_current(self):  
 	def create_consultation(self):  
 
 
-		print 'jx'
-		print 'Create Consultation'
+		#print 'jx'
+		#print 'Create Consultation'
 
 
+		# Init vars 
 		patient_id = self.patient.id
 		treatment_id = self.id 
 		chief_complaint = self.chief_complaint
 
-
-
-
-
 		# Doctor 
 		doctor_id = treatment_funcs.get_actual_doctor(self)
-
-		print doctor_id
-
 		if doctor_id == False: 
 			doctor_id = self.physician.id
-
-		print doctor_id
-
-
-
 
 
 		# Date 
 		GMT = time_funcs.Zone(0,False,'GMT')
-		#print 'GMT: ', GMT
 		evaluation_start_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
-		#print 'evaluation_start_date: ', evaluation_start_date 
 
 
 
 		# Apointment 
 		appointment = self.env['oeh.medical.appointment'].search([ 	
-
-																	#('patient', 'like', self.patient.name),		
-																	#('doctor', 'like', self.physician.name), 	
-																	#('x_type', 'like', 'consultation'), 
-
 																	('patient', '=', self.patient.name),		
 																	('doctor', '=', self.physician.name),
 																	('x_type', '=', 'consultation'),
-			
 															], 
 															order='appointment_date desc', limit=1)
-		#print 'appointment: ', appointment
 		appointment_id = appointment.id
+
 
 
 
@@ -2036,10 +2085,6 @@ class Treatment(models.Model):
 
 		# Create if it does not exist 
 		if consultation.name == False:
-			#print 'create consultation'
-
-
-
 
 			# Change App state 
 			if appointment.name != False: 
@@ -2048,93 +2093,71 @@ class Treatment(models.Model):
 
 
 
-
 			# Consultation 
-			consultation = self.env['openhealth.consultation'].create(
-													{
-														'patient': patient_id,													
-														'treatment': treatment_id,	
-														'evaluation_start_date': evaluation_start_date,
-														'chief_complaint': chief_complaint,
-
-														'appointment': appointment_id,
-
-
-														'doctor': doctor_id,
-													}
-												)
+			consultation = self.env['openhealth.consultation'].create({
+																		'patient': patient_id,													
+																		'treatment': treatment_id,	
+																		'evaluation_start_date': evaluation_start_date,
+																		'chief_complaint': chief_complaint,
+																		'appointment': appointment_id,
+																		'doctor': doctor_id,
+													})
 			consultation_id = consultation.id 
-			#print 'consultation: ', consultation
-			#print 'consultation_id', consultation_id
 
 
 			# Update
 			rec_set = self.env['oeh.medical.appointment'].browse([
 																	appointment_id																
 																])
-			#print 'rec_set: ', rec_set
-
 			ret = rec_set.write({
 									'consultation': consultation_id,
 								})
 
-			#print ret 
-			#print appointment
-			#print appointment.consultation
-			#print appointment.consultation.id
 
 
 
-		#print 
+
 		consultation_id = consultation.id 
-		
+
+
+		# Update Patient 
+		consultation.update_patient()		
+
+
 		return {
 
 			# Mandatory 
 			'type': 'ir.actions.act_window',
 			'name': 'Open Consultation Current',
 
-
-
 			# Window action 
 			'res_model': 'openhealth.consultation',
 			'res_id': consultation_id,
 
-
-
 			# Views 
 			"views": [[False, "form"]],
-
 			'view_mode': 'form',
-
 			'target': 'current',
 
 			#'view_id': view_id,
 			#'view_id': 'oeh_medical_evaluation_view',
 			#'view_id': 'oehealth.oeh_medical_evaluation_view',
-
 			#"domain": [["patient", "=", self.patient.name]],
 			#'auto_search': False, 
 
-
 			'flags': {
-					'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-					#'form': {'action_buttons': True, }
+						'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						#'form': {'action_buttons': True, }
 					},			
 
-
-
 			'context':   {
-
-				'search_default_treatment': treatment_id,
-
-				'default_patient': patient_id,
-				'default_doctor': doctor_id,
-				'default_treatment': treatment_id,		
-
-				'default_evaluation_start_date': evaluation_start_date,
-				'default_chief_complaint': chief_complaint,
-				'default_appointment': appointment_id,
+							'search_default_treatment': treatment_id,
+							'default_patient': patient_id,
+							'default_doctor': doctor_id,
+							'default_treatment': treatment_id,		
+							'default_evaluation_start_date': evaluation_start_date,
+							'default_chief_complaint': chief_complaint,
+							'default_appointment': appointment_id,
 			}
 		}
 

@@ -193,10 +193,6 @@ DEPRECATED
 
 					
 					<sheet>
-
-
-
-						<!-- Id -->
 						<div>						
 
 							<!-- Persona --> 
@@ -211,181 +207,12 @@ DEPRECATED
 							</div>
 
 
-
-
-
-
 							<!-- Buttons --> 
 							<div class="oe_left" style="width: 300px;" name="buttons">
-							
-
-								<!-- Order -->	
-<!--								
-								<button type="action" class="oe_stat_button" icon="fa-list"  invisible="1"
-									name="%(order_form_action)d"	
-									context="{									
-											'search_default_consultation': active_id,
-											}" 											
-									>
-									<field string="Presupuestos" name="nr_orders" widget="statinfo"/>
-								</button>							
--->
-
-
-								<!-- Nr Services --> 
-								<button type="action" class="oe_stat_button" icon="fa-list" invisible="1"
-
-									name="%(service_list_action)d"	
-
-									context="{									
-											'search_default_consultation': active_id,
-											}" 											
-									>
-
-									<field string="Servicios" name="nr_service" widget="statinfo"/>
-								
-								</button>
-
-
-
-
-
-								<!-- Nr co2--> 
-								<button type="action" class="oe_stat_button" icon="fa-list"
-
-
-									name="%(service_co2_list_action)d"	
-
-
-									attrs="{ 'invisible':[	('nr_service_co2','=',0), ]}"
-
-
-									context="{									
-												'search_default_consultation': active_id,
-											}" 	
-
-									>
-
-
-									<field string="Co2" name="nr_service_co2" widget="statinfo"/>
-								
-								</button>
-
-
-
-								<!-- Nr Excilite--> 
-								<button type="action" class="oe_stat_button" icon="fa-list"
-
-									name="%(service_excilite_list_action)d"	
-									
-									attrs="{ 'invisible':[	('nr_service_excilite','=',0), ]}"
-
-									context="{									
-											'search_default_consultation': active_id,
-											}" 			
-
-
-									>
-
-									<field string="Excilite" name="nr_service_excilite" widget="statinfo"/>
-								
-								</button>
-								
-
-
-								<!-- Nr ipl--> 
-								<button type="action" class="oe_stat_button" icon="fa-list"
-									
-									name="%(service_co2_list_action)d"	
-									
-									attrs="{ 'invisible':[	('nr_service_ipl','=',0), ]}"
-
-									context="{									
-											'search_default_consultation': active_id,
-											}" 		
-
-									>
-
-									<field string="ipl" name="nr_service_ipl" widget="statinfo"/>
-								
-								</button>
-
-
-
-
-								<!-- Nr ndyag--> 
-								<button type="action" class="oe_stat_button" icon="fa-list"
-
-									name="%(service_co2_list_action)d"	
-									
-									attrs="{ 'invisible':[	('nr_service_ndyag','=',0), ]}"
-
-									context="{									
-											'search_default_consultation': active_id,
-											}" 											
-									>
-
-
-									<field string="ndyag" name="nr_service_ndyag" widget="statinfo"/>
-								</button>
-
-
-
-
-								<!-- Nr medical--> 
-								<button type="action" class="oe_stat_button" icon="fa-list"
-
-									name="%(service_medical_list_action)d"	
-									
-									attrs="{ 'invisible':[	('nr_service_medical','=',0), ]}"
-
-									context="{									
-											'search_default_consultation': active_id,
-											}" 											
-									>
-
-
-									<field string="medical" name="nr_service_medical" widget="statinfo"/>
-								</button>
-
-
-
-
-
-
-								
-
-								<!--
-								Procedures
-								<button type="action" class="oe_stat_button" 
-									name="%(procedure_form_action)d"	
-									context="{									
-											'search_default_treatment': active_id,
-											}" 											
-									icon="fa-list">
-									<field string="Procedimientos" name="nr_procedures" widget="statinfo"/>
-								</button>
-								-->
-								
-								<!-- Appointments -->
-								<!--
-								<button type="action" class="oe_stat_button" 
-									name="347" 
-									context="{
-											'search_default_patient': patient, 'default_patient': patient, 'default_doctor' : doctor, 
-											}" 
-									icon="fa-calendar">
-				                	<field string="Citas" name="nr_apps" widget="statinfo"/>
-				            	</button>
-								--> 
 							</div>
 						
 						
-
-
-
-
-							<!-- Number --> 
+							<!-- Treatment --> 
 							<div class="oe_right" >
 								<div class="oe_title" >
 									<label class="oe_edit_only" for="name" string="Tratamiento #"/>
@@ -394,8 +221,7 @@ DEPRECATED
 -->
 									<h1><field name="treatment" class="oe_inline"/></h1>
 
-								</div>
-								
+								</div>							
 							</div>
 						</div>
 						
@@ -404,17 +230,19 @@ DEPRECATED
 
 
 
-						<!-- Autofill --> 
-						<group>
+
 							<group>
-								<!--
-								<field name="id"/>
-								-->
+								<field name="patient_sex"	readonly="1"	/>
+								<field name="patient_age"	readonly="1"	/>
+								<field name="patient_city"	readonly="1"	/>
 							</group>
+
+
+
+						<!-- Autofill --> 
+						<group>							
+							<group></group>
 							<group class="oe_right">	
-<!--
-								<field name="x_autofill"/>
--->
 								<field name="x_autofill" 	groups="openhealth.roots"		/>
 							</group>							
 						</group>						
@@ -493,8 +321,9 @@ DEPRECATED
 
 							<group>								
 <!--
--->
 								<field name="x_target"		invisible="1"/>
+-->
+								
 								<field name="x_profile"/>	
 							</group>							
 							<group>						
@@ -549,11 +378,16 @@ DEPRECATED
 					
 					<field name="name"/>
 					
+
+
+					<field name="patient_sex"/>
+					<field name="patient_age"/>
+					<field name="patient_city"/>
+
 					<field name="patient"  />
 					
 
-					<field name="doctor"   />
-					
+					<field name="doctor"   />					
 					
 					<field name="evaluation_start_date"/>
 
@@ -561,8 +395,8 @@ DEPRECATED
 					
 <!--
 					<field name="nr_orders"/>
--->				
 					<field name="nr_apps"/>
+-->				
 					
 					<field name="treatment"/>
 
@@ -584,6 +418,29 @@ DEPRECATED
 		
 		
 		
+
+
+
+		<!-- Consultation - Form Action --> 
+		<record model="ir.actions.act_window" id="consultation_form_action">
+			<field name="name">Consultas</field>
+			<field name="res_model">openhealth.consultation</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+			<!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first consultation
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
 
 
 

@@ -266,7 +266,7 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 							<page  string="Historia">
 								
 								<group>
-<!--								
+								
 									<field name="x_diagnosis"/>
 
 									<field name="x_antecedents"/>
@@ -278,7 +278,7 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 									<field name="x_observations"/>
 
 									<field name="x_indications"/>
--->
+
 								</group>
 
 							</page>

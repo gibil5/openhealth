@@ -94,8 +94,8 @@
 								<field name="quick_dose_provided"	attrs = "{'required':[('laser','in',('laser_quick'))]}"/>
 								
 								<field name="vspace"/>								
-								<field name="quick_observations"	attrs = "{'required':[('laser','in',('laser_quick'))]}"/>
 -->
+								<field name="quick_observations"	attrs = "{'required':[('laser','in',('laser_quick'))]}"/>
 							</group>
 						</group>
 

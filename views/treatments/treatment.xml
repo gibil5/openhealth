@@ -1080,11 +1080,11 @@ blue:state=='controls'
 >
 
 					<field name="name"/>
-
+<!--
 					<field name="patient_sex"/>
 					<field name="patient_age"/>
 					<field name="patient_city"/>
-
+-->
 
 
 

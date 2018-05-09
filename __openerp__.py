@@ -482,7 +482,7 @@
 
 
 		# Consultation
-		#'views/consultations/consultation.xml',
+		'views/consultations/consultation.xml',
 
 
 		# Recommendation

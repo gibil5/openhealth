@@ -78,9 +78,11 @@
 
 						<!-- Short --> 
 						<group>
+<!--
 							<field name="patient_sex"	readonly="1"	/>
 							<field name="patient_age"	readonly="1"	/>
 							<field name="patient_city"	readonly="1"	/>
+-->
 						</group>
 
 

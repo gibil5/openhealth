@@ -482,7 +482,7 @@
 
 
 		# Consultation
-		'views/consultations/consultation.xml',
+		#'views/consultations/consultation.xml',
 
 
 		# Recommendation
@@ -583,12 +583,14 @@
 
 
 
+
 		# Consultation - 2
-		'views/consultations/consultation_med.xml',
-		'views/consultations/consultation_med_first.xml',
+		#'views/consultations/consultation_med.xml',
+		#'views/consultations/consultation_med_first.xml',
 		
-		'views/consultations/consultation_cos.xml',
-		'views/consultations/consultation_cos_first.xml',
+		#'views/consultations/consultation_cos.xml',
+		#'views/consultations/consultation_cos_first.xml',
+
 
 
 

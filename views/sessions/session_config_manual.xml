@@ -78,24 +78,24 @@
 						<!-- Quick --> 
 						<group string="Quick Laser"   attrs="{'invisible':[('laser', '!=', 'laser_quick')]}">
 							<group>
-								
-								<field name="exc_time"			attrs = "{'required':[('laser','in',('laser_quick'))]}"/>
-								
-								<field name="vspace"/>								
-								
-								<field name="exc_dose"			attrs = "{'required':[('laser','in',('laser_quick'))]}"/>
+<!--
+								<field name="quick_time"			attrs = "{'required':[('laser','in',('laser_quick'))]}"/>
 								
 								<field name="vspace"/>								
 								
-								<field name="exc_dose_selected"	attrs = "{'required':[('laser','in',('laser_quick'))]}"/>
+								<field name="quick_dose"			attrs = "{'required':[('laser','in',('laser_quick'))]}"/>
+								
+								<field name="vspace"/>								
+								
+								<field name="quick_dose_selected"	attrs = "{'required':[('laser','in',('laser_quick'))]}"/>
 								
 								<field name="vspace"/>		
 								
-								<field name="exc_dose_provided"	attrs = "{'required':[('laser','in',('laser_quick'))]}"/>
+								<field name="quick_dose_provided"	attrs = "{'required':[('laser','in',('laser_quick'))]}"/>
 								
 								<field name="vspace"/>								
-								
-								<field name="exc_observations"	attrs = "{'required':[('laser','in',('laser_quick'))]}"/>
+-->
+								<field name="quick_observations"	attrs = "{'required':[('laser','in',('laser_quick'))]}"/>
 							</group>
 						</group>
 

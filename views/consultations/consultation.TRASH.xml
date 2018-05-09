@@ -124,3 +124,174 @@
 				            	</button>
 								--> 
 							</div>
+
+
+
+
+
+
+<!--
+9 May 2018
+-->
+
+<!--
+								attrs="{'invisible':
+														[
+															('treatment', '=', False),
+														]
+										}"
+
+
+								attrs="{'invisible':
+														[
+															('cosmetology', '!=', False),
+														]
+										}"
+-->
+
+
+
+
+
+
+						<!--
+						<button 
+							type="object" 
+							class="oe_highlight"	
+
+							string="Crear Servicio"
+				
+							name="create_service" 	
+						/>
+						-->
+						
+
+
+
+						<!--
+						<div	
+
+								attrs="{'invisible':[('nr_service','>', 0),]}"
+								>
+								
+								string="Crear Servicio - LASER CO2"
+	
+						-->
+
+
+
+
+<!--
+							<button 
+								attrs="{'invisible':[('x_target','!=', 'doctor'),]}"
+
+								type="object" 
+								class="oe_highlight"	
+
+								string="LASER CO2"
+
+								name="create_service_co2" 	
+							/>
+
+							<button 
+								attrs="{'invisible':[('x_target','!=', 'doctor'),]}"
+
+
+								type="object" 
+								class="oe_highlight"	
+
+								string=" EXCILITE"
+				
+								name="create_service_excilite" 	
+							/>
+
+							<button 
+								attrs="{'invisible':[('x_target','!=', 'doctor'),]}"
+
+
+								type="object" 
+								class="oe_highlight"	
+								string=" M22-IPL"
+				
+								name="create_service_ipl" 	
+							/>
+
+							<button 
+								attrs="{'invisible':[('x_target','!=', 'doctor'),]}"
+
+
+								type="object" 
+								class="oe_highlight"	
+								string=" M22-NDYAG"
+				
+								name="create_service_ndyag" 	
+							/>
+
+							<button 
+								attrs="{'invisible':[('x_target','!=', 'doctor'),]}"
+
+
+								type="object" 
+								class="oe_highlight"	
+								string="T. MEDICO"
+				
+								name="create_service_medical" 	
+							/>
+-->
+
+
+
+
+
+<!--
+DEPRECATED
+							<button 
+								type="object" 
+								class="oe_highlight oe_right"
+								string="Presupuesto" 
+								name="create_order_current" 
+							/>
+-->
+
+
+
+
+
+						<!--
+						
+							attrs="{'invisible':[
+													'|',
+													('nr_service', '==', 0),
+													('nr_orders','>', 0) 
+												]}"
+						-->							
+
+
+
+
+
+						<!--
+						<button 
+							type="object" 
+							class="oe_highlight oe_right"
+							string="Cita" 
+
+							name="open_appointment" 
+						/>
+						-->
+
+
+							<!--
+							<field name="treatment"  invisible="1"/>
+							<field string="Physician"  name="doctor" options="{'no_create': True}"/>
+							<field string="Evaluation date"  name="evaluation_start_date"/>
+							<field string="Appointment"  name="appointment" domain="[('patient', '=', patient)]" options="{'no_create': True}"/>
+							<field string="Próxima cita" name="appointment" domain="[('patient', '=', patient)]" options="{'no_create': True}"/>
+							<field name="x_next_evaluation_date" />
+							<field string="Evaluation end date"  name="evaluation_end_date"/>
+							<field name="evaluation_type"  invisible="1"/>									
+							-->
+
+
+
+

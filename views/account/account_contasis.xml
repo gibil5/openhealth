@@ -136,7 +136,8 @@
 
 
 								<field name="account_line">
-									<tree string="Ventas">	
+
+									<tree string="Ventas"	limit="1000"	>	
 
 					                    <field name="serial_nr"/>
 					                    <field name="x_type"/>

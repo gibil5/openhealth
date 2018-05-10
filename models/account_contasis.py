@@ -144,7 +144,7 @@ class AccountContasis(models.Model):
 
 
 			date = order.date_order
-			print date 
+			#print date 
 
 
 			patient = order.patient.id 

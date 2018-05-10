@@ -69,18 +69,15 @@ class Treatment(models.Model):
 	# ----------------------------------------------------------- Patient ------------------------------------------------------
 
 	# Update  
-	@api.multi 
-	def update_patient(self):
-
-		print 
-		print 'Update Patient - Treatment'
-
+	#@api.multi 
+	#def update_patient(self):
+	#	print 
+		#print 'Update Patient - Treatment'
 		#self.patient_sex = self.patient.sex[0]
 		#self.patient_age =  self.patient.age.split()[0]
-		self.patient_city = self.patient.city.title()
-
-		for consultation in self.consultation_ids: 
-			consultation.update_patient()
+		#self.patient_city = self.patient.city.title()
+		#for consultation in self.consultation_ids: 
+		#	consultation.update_patient()
 
 
 

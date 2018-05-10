@@ -64,15 +64,13 @@ class Evaluation(models.Model):
 	# ----------------------------------------------------------- Patient ------------------------------------------------------
 
 	# Update  
-	@api.multi 
-	def update_patient(self):
-		
-		print 
-		print 'Update Patient - Evaluation'
-		
+	#@api.multi 
+	#def update_patient(self):
+	#	print 
+		#print 'Update Patient - Evaluation'
 		#self.patient_sex = self.patient.sex[0]
 		#self.patient_age =  self.patient.age.split()[0]
-		self.patient_city = self.patient.city.title()
+		#self.patient_city = self.patient.city.title()
 
 
 

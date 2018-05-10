@@ -138,7 +138,9 @@ class AccountContasis(models.Model):
 		
 			# Vars Order 
 			serial_nr = order.x_serial_nr
+
 			date = order.date_order
+			
 			patient = order.patient.id 
 			x_type = order.x_type
 
@@ -184,8 +186,13 @@ class AccountContasis(models.Model):
 														'x_type': x_type, 
 														'document': document, 					# Id Doc
 														'document_type': document_type, 		# Id Doc Type 
+														
+
 														'date': date,
 														'date_time': date,
+														'time': date.split()[1],
+														
+
 														'amount': amount,
 														'amount_net': amount_net,
 														'amount_tax': amount_tax,

@@ -140,19 +140,27 @@
 
 					                    <field name="serial_nr"/>
 					                    <field name="x_type"/>
+
 					                    <field name="date_time"/>
+					                    <field name="date"/>
+					                    <field name="time"/>
+					                    
 					                    <field name="patient"/>
 					                    <field name="product"/>
 					                    <field name="product_type"/>
 					                    <field name="state"/>
+
+
+					                    <field name="amount_net"/>
+					                    
+					                    <field name="amount_tax"/>
+
 					                    <field name="amount"/>
 
 <!--
 					                    <field name="date"/>
 					                    <field name="name"/>
 					                    <field name="document"/>
-					                    <field name="amount_net"/>
-					                    <field name="amount_tax"/>
 -->
 
 				                	</tree>

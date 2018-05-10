@@ -394,18 +394,38 @@ class AccountLine(models.Model):
 
 
 		# Actual amount
+
+
 		if self.state == 'cancel': 
-			self.total = 0
-			self.neto = 0 
-			self.igv = 0 
-			self.porigv = 0
+
+			self.amount = 0
+			self.amount_net = 0
+			self.amount_tax = 0
+
+			#self.total = 0
+			#self.neto = 0 
+			#self.igv = 0 
+			#self.porigv = 0
 
 		else: 
-			self.total = self.amount
-			self.neto = self.amount_net 
-			self.igv = self.amount_tax 
-			self.porigv = self.igv
 
+			self.amount_net = self.amount/1.18
+
+			self.amount_tax = self.amount_net * 0.18
+
+			#self.total = self.amount
+			#self.neto = self.amount_net 
+			#self.igv = self.amount_tax 			
+			#self.porigv = self.igv
+
+			#self.neto = str(float(self.amount)/1.18)
+			#self.igv = str(float(self.neto) * 0.18)
+
+
+		self.total = self.amount
+		self.neto = self.amount_net 
+		self.igv = self.amount_tax 			
+		self.porigv = self.igv
 
 
 
@@ -419,14 +439,10 @@ class AccountLine(models.Model):
 		)
 
 
-
-
 	patient = fields.Many2one(
 			'oeh.medical.patient', 
 			string="Nombre", 
 		)
-
-
 
 
 	product = fields.Many2one(
@@ -453,14 +469,6 @@ class AccountLine(models.Model):
 		)
 
 
-
-
-
-
-
-
-
-
 	serial_nr = fields.Char(
 			string="Nr. de serie", 
 		)
@@ -479,11 +487,22 @@ class AccountLine(models.Model):
 			#required=False,
 		)
 
+
+
+
+	# Date 
 	date = fields.Date(
+			string="Fecha", 
 		)
 
+	# Datetime 
 	date_time = fields.Datetime(
 			string="Fecha", 
+		)
+
+	# Time 
+	time = fields.Char(
+			string="Hora", 
 		)
 
 

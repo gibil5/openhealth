@@ -272,9 +272,9 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 								
 
 									<field name="x_antecedents"		string="Antecedentes"/>
-
+<!--
 									<field name="x_examination"/>
-
+-->
 									<field name="x_diagnosis"/>
 
 									<field name="x_indications"		string="Tratamiento e indicaciones"/>

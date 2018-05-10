@@ -32,7 +32,7 @@
 
 
 		Clínica Chavarri\n
-		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant - Testcafe - User Stories - Auto Backup - Unit Testing - Less but Better\n
+		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant - Testcafe - User Stories - Auto Backup - Unit Testing - Less but Better - Fulcrum\n
 
 
 		Created: 	 	11 Sep 2016

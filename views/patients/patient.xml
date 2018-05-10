@@ -480,9 +480,13 @@ Relax !
 
 					<field name="create_date"	string="Fecha de creación"		/>
 
-
+<!--
 					<field name="dob"/>
+-->
 					<field name="sex"/>		
+					<field name="age"/>
+					<field name="city"/>
+					
 					<field name="phone"/>
 					<field name="mobile"/>
 					<field name="email"/>		
@@ -490,13 +494,12 @@ Relax !
 
 
 					<!-- Legacy --> 
+<!--					
 					<field name="x_date_record"		groups='openhealth.roots'	/>
 					<field name="street"			groups='openhealth.roots'	/>
 					<field name="x_district"		groups='openhealth.roots'	/>		
 					<field name="comment"			groups='openhealth.roots'	/>
-
-
-
+-->
 
 				</tree>
 			</field>

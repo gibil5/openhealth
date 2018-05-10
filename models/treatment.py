@@ -29,6 +29,43 @@ class Treatment(models.Model):
 
 
 
+	# ----------------------------------------------------------- Manual Control ------------------------------------------------------
+
+	# Add Procedures 
+	add_procedures = fields.Boolean(
+
+			#string="Agregar Procedimientos", 
+			string="Control Manual", 
+		
+			default=False, 
+		)	
+
+
+
+	# Reset Procedures 
+	@api.multi 
+	def reset_procs(self):
+
+		print 'jx'
+		print 'Reset Procedures'
+
+		self.add_procedures = False 
+
+
+
+	# Toggle Add Procedures 
+	@api.multi 
+	def toggle_add_procedures(self):
+
+		print 'jx'
+		print 'Toggle Add Procedures'
+
+		self.add_procedures = not self.add_procedures 
+
+
+
+
+
 	# ----------------------------------------------------------- Patient ------------------------------------------------------
 
 	# Update  
@@ -130,30 +167,42 @@ class Treatment(models.Model):
 	# State 
 	_state_list = [
 
-				('empty', 			'Inicio'),		# OK
-				('appointment', 	'Cita'),		# OK
-				('budget_consultation', 	'Pres C - Creado'),		# Important	
+				('empty', 					'Inicio'),		# OK
+
+				('appointment', 			'Cita'),		# OK
+
+				#('budget_consultation', 	'Pres C - Creado'),		# Important	
+				('budget_consultation', 	'Presu C'),		# Important	
+
 
 				#('invoice_consultation', 	'Caja - Con'),			# OK 
 				#('invoice_consultation', 	'Facturado'),			# OK 
-				('invoice_consultation', 	'Caja'),			# OK 
+				#('invoice_consultation', 	'Caja'),			# OK 
+				('invoice_consultation', 	'Caja C'),			# OK 
+
 
 				('consultation', 			'Consulta'),			# OK
 				
 				#('service', 				'Recomendación'),		# OK
-				('service', 				'Recom.'),		# OK
+				#('service', 				'Recom.'),		# OK
+				('service', 				'Recom'),		# OK
 				
 				#('budget_procedure', 		'Pres. P - Creado'),	#  Important
-				('budget_procedure', 		'Presu Creado'),		
+				#('budget_procedure', 		'Presu Creado'),		
+				('budget_procedure', 		'Presu P'),		
+
 
 				#('invoice_procedure', 		'Caja - Pro'),				# OK
 				#('invoice_procedure', 		'Facturado'),				# OK
-				('invoice_procedure', 		'Caja'),				# OK
+				#('invoice_procedure', 		'Caja'),					# OK
+				('invoice_procedure', 		'Caja P'),					# OK
+
 
 				#('procedure', 				'Procedimiento'),			# OK
-				('procedure', 				'Proc.'),			# OK
+				('procedure', 				'Proc'),					# OK
 
-				('sessions', 				'Sesiones'),				# OK
+				#('sessions', 				'Sesiones'),				# OK
+				('sessions', 				'Sesion'),				# OK
 				
 				#('controls', 				'Controles'),				# OK
 				('controls', 				'Control'),					
@@ -215,29 +264,6 @@ class Treatment(models.Model):
 
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 
-	# Toggle Add Procedures 
-	@api.multi 
-	def reset_procs(self):
-
-		print 'jx'
-		print 'Reset Procedures'
-
-		#self.add_procedures = not self.add_procedures 
-		self.add_procedures = False 
-
-
-
-
-
-
-	# Toggle Add Procedures 
-	@api.multi 
-	def toggle_add_procedures(self):
-
-		print 'jx'
-		print 'Toggle Add Procedures'
-
-		self.add_procedures = not self.add_procedures 
 
 
 
@@ -282,11 +308,6 @@ class Treatment(models.Model):
 
 
 
-	# Add Procedures 
-	add_procedures = fields.Boolean(
-			string="Agregar Procedimientos", 
-			default=False, 
-		)	
 
 
 
@@ -1008,13 +1029,8 @@ class Treatment(models.Model):
 
 	# State 
 	state = fields.Selection(
-
 			selection = _state_list, 
-			#selection = treatment_vars._state_list, 
-		
-			string='Estado', 			
-
-			#default = False, 
+			string='Estado', 
 			default = 'empty', 
 
 			compute="_compute_state",
@@ -1024,14 +1040,11 @@ class Treatment(models.Model):
 
 	@api.multi
 	#@api.depends('consultation_ids')
-
 	def _compute_state(self):
 		for record in self:
 
-
 			#state = False
 			state = 'empty'
-
 
 
 			if record.nr_appointments > 0:
@@ -1055,10 +1068,8 @@ class Treatment(models.Model):
 				state = 'service'
 
 
-
 			if record.nr_budgets_pro > 0:
 				state = 'budget_procedure'
-
 
 
 			if record.nr_invoices_pro > 0:
@@ -1077,17 +1088,13 @@ class Treatment(models.Model):
 				state = 'controls'
 
 
-
-
 			if record.treatment_closed:
 				state = 'done'
 
 
-
-
 			record.state = state
 
-
+	# _compute_state
 
 
 

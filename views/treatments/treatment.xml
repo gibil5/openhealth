@@ -217,12 +217,13 @@
 
 
 
+<!-- Ex Manual --> 
 
 
 <!--
 Add Procedures 
 -->
-<!--
+						<!--
 							attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
 							attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
 						<button 
@@ -239,28 +240,20 @@ Add Procedures
 
 							groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
 						/>
--->
+						-->
 
 
-
-
-
-
+<!--
 						<button 
 							type="object" 
 							class="oe_highlight"
 							string="RECOM." 
 							name="create_service" 
 
-
-
 							attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
-
-
 
 							groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
 						/>
-
 
 
 						<button 
@@ -269,14 +262,10 @@ Add Procedures
 							class="oe_highlight"
 							string="PRESUPUESTO" 
 
-
 							attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
 
-
-						groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
-					
+							groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
 						/>
-
 
 
 						<button 
@@ -285,13 +274,11 @@ Add Procedures
 							name="create_procedure" 
 							string="PROC." 
 
-
 							attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
-
 
 							groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
 						/>
-
+-->
 
 
 
@@ -848,63 +835,33 @@ Fields
 -->
 
 						<!-- Padding --> 
-						<group>
-							
-<!--
--->								
-									<field name="patient_sex"		/>
-									<field name="patient_age"		/>
-									<field name="patient_city"		/>
+						<group>		
+							<field name="patient_sex"		/>
+							<field name="patient_age"		/>
+							<field name="patient_city"		/>
 						</group>
-
-
 						<group></group>
 
 
 
-							
-						<group>
-
-							<!-- Padding --> 
-							<group>
+						<!-- Padding --> 
 <!--
 								<field name="user_id"/>
 								<field name="vspace" />
 -->
+
+
+							
+<!-- Ex Admin -->
+<!--
+						<group>
+
+							<group>
 								<field name="partner_id"		invisible="1"	/>
 							</group>
 
 
-
-
 							<group>
-
-
-
-								<button 
-										name="reset" 	
-										type="object" 
-										class="oe_highlight"
-
-										string="Reset"
-
-										groups="openhealth.roots"			
-									/>
-
-
-
-								<button 
-										type="object" 
-										class="oe_highlight"
-										name="reset_procs" 	
-
-										string="Reset Procs"
-
-										groups="openhealth.roots"			
-									/>
-
-
-<!--
 								<button 
 										name="reset_half" 	
 										type="object" 
@@ -914,10 +871,6 @@ Fields
 
 										groups="openhealth.roots"			
 									/>
--->
-
-
-<!--
 								<button 
 										name="reset_quick" 	
 										type="object" 
@@ -927,17 +880,135 @@ Fields
 
 										groups="openhealth.roots"			
 									/>
+							</group>
+						
+						</group>
 -->
 
 
 
 
+<!-- Manual --> 
+						<group  col="5"	>
+
+
+
+						<!--
+							<group>
+								<button 
+									type="object" 
+									class="oe_highlight"
+									name="toggle_add_procedures" 
+
+									string="Manual" 
+
+									groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
+								/>
+							</group>
+						-->
+
+
+							<group>
+								<button 
+									type="object" 
+									class="oe_highlight"
+
+									name="create_consultation" 
+
+									string="CONSU" 									
+
+									attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
+
+									groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
+								/>
 							</group>
 
 
 
+							<group>
+								<button 
+									type="object" 
+									class="oe_highlight"
+									name="create_service" 
+
+									string="RECOM" 									
+
+									attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
+
+									groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
+								/>
+							</group>
 
 
+							<group>
+								<button 
+									type="object" 
+									name="create_order_pro" 
+									class="oe_highlight"
+
+									string="PRESU" 
+
+									attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
+
+									groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
+								/>
+							</group>
+
+
+							<group>
+								<button 
+									type="object" 
+									class="oe_highlight"
+									name="create_procedure" 
+
+									string="PROC" 
+
+									attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
+
+									groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
+								/>
+							</group>
+
+
+<!--
+							<group>
+								<button 
+									name="reset" 	
+									type="object" 
+									class="oe_highlight"
+
+									string="Reset"
+
+									groups="openhealth.roots"			
+								/>
+							</group>
+-->
+<!--
+							<group>
+								<button 
+										type="object" 
+										class="oe_highlight"
+										name="reset_procs" 	
+
+										string="Reset Procs"
+
+										groups="openhealth.roots"			
+									/>
+							</group>
+
+
+							<group>
+							</group>
+-->
+
+							<group>
+							</group>
+						</group>
+
+
+
+
+						<group>
 							<group>
 								<field name="physician"			required="1"/>									
 
@@ -952,10 +1023,6 @@ Fields
 								<field name="vspace" />
 
 								<field name="active"/>
-
-<!--
--->
-
 							</group>							
 							<group>
 								<field name="start_date"/>
@@ -966,81 +1033,54 @@ Fields
 
 								<field name="today_date"		invisible="1"		/>
 
-
-
 								<field name="vspace" />
 
 								<field name="treatment_closed"	invisible="0"	/>
 
 								<field name="vspace" />
-
-
-<!--
-								<field name="user_id"			groups="openhealth.roots"		/>
 								<field name="vspace" />
 
--->
-								<field name="add_procedures"	invisible="0"		 />
+
+								<!-- Manual -->
+								<field name="add_procedures"	invisible="1"		 />
+
+								<button 
+									type="object" 
+									class="oe_highlight"
+									name="toggle_add_procedures" 
+									
+									string="Manual" 
+									
+
+									groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
+								/>
 
 
 <!--
-Add Procedures 
--->
-<!--
--->
-									<button 
-										type="object" 
-
-										class="oe_highlight"
-										
-										string="Proc. Adicionales" 
-										
-										name="toggle_add_procedures" 
-
-										states="controls"
-
-
-										groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
-									/>
-
-
-
-
-<!--
+								<field name="user_id"			groups="openhealth.roots"/>
+								<field name="vspace" />
 								<field name="consultation_progress"		/>
 								<field name="price_total"/>
 								<field name="nr_services"/>
 -->
-							</group>
 
-
-<!--
-
-							<group>
 							</group>
-							<group>
-							</group>
-
-							<group>
-							</group>
-							<group>
-							</group>
--->
-
 						</group>
 
-<group>
-	<group>
-	</group>
-	<group>
-	</group>
-</group>
+
+						<!-- Padding -->
+						<group>
+							<group>
+							</group>
+							<group>
+							</group>
+						</group>
 
 
-
-
+						<!-- Notebook --> 
 						<notebook>
 						</notebook>
+
 					</sheet>
 				</form>
 			</field>
@@ -1198,6 +1238,7 @@ blue:state=='controls'
 			   
 			   <search string="Treatments">
 				   
+
 				   <!--
 				   <field name="name" />	
 				   <field name="patient" />
@@ -1213,12 +1254,11 @@ blue:state=='controls'
 
 
 					<group expand="1" string="Group By">
-
-						<filter name="Médico" context="{'group_by':'physician'}"/>
-
 <!--
 						<filter name="Estado" context="{'group_by':'state'}"/>
 -->
+						<filter name="Médico" context="{'group_by':'physician'}"/>
+
 					</group>
 
 				   

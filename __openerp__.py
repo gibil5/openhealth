@@ -20,9 +20,7 @@
 	'description': """
 
 
-
-		Last built: 9 May 2018 
-
+		Last built: 10 May 2018 
 
 		
 		Stability by Design !
@@ -30,13 +28,11 @@
 		La Estabilidad se consigue pour la disminución, no por el aumento. 
 		Dieter Rams: Less but Better. 
 
-
 		More Configuration and less programming. Near than zero hacking.  
 
 
 		Clínica Chavarri\n
 		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant - Testcafe - User Stories - Auto Backup - Unit Testing - Less but Better\n
-
 
 
 		Created: 	 	11 Sep 2016

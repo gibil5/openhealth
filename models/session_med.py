@@ -27,10 +27,67 @@ class SessionMed(models.Model):
 
 	#------------------------------------------------------ Quick ----------------------------------------------------------
 
-	#quick_time  = fields.Char(
-	#		string="Tiempo de permanencia (us)",
-	#		default='', 	
-	#	)
+
+	quick_type=fields.Selection(
+
+			selection = [
+							('zoom','Zoom'),
+							('resolve','Resolve'),
+						],
+
+			default="zoom", 
+			
+			string="Tipo",
+			required=False, 
+		)
+
+
+	quick_manipule_zoom=fields.Selection(
+
+			selection = [
+							('532','532'),
+							('785','785'),
+							('1064','1064'),
+						],
+
+			string="Manipulo",
+			required=False, 
+		)
+
+
+	quick_manipule_resolve=fields.Selection(
+
+			selection = [
+							('532','532'),
+							#('785','785'),
+							('1064','1064'),
+						],
+
+			string="Manipulo",
+			required=False, 
+		)
+
+
+
+
+
+	quick_spot=fields.Char(
+			string="Spot (mm)",
+			required=False, 
+		)
+
+	quick_fluency = fields.Char(
+			string="Fluencia (J/cm2)",	
+			default='', 
+		)
+
+
+	quick_frequency=fields.Char(
+			string="Frecuencia (Hz)",
+			default='', 
+		)
+
+
 
 	quick_observations=fields.Text(
 			string="Observaciones",

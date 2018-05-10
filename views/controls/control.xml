@@ -208,11 +208,10 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 								
 								<field name="evaluation_nr"		invisible="0"	/>
 
-
-
+<!--
 								<field name="vspace"/>
-								
 								<field name="indication"	/>
+-->
 							</group>
 
 
@@ -223,17 +222,21 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 								<field name="procedure"			invisible="0"	/>
 
 								<field name="vspace"/>
+
 								<field name="chief_complaint"/>								
 
 								<field name="vspace"/>
+								
 								<field name="laser"/>
 
 								<field name="vspace"/>
+								
 								<field name="product"/>							
 
-
+<!--
 								<field name="vspace"/>
 								<field name="observation"	/>
+-->
 							</group>
 			
 							
@@ -267,18 +270,22 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 								
 								<group>
 								
+
+									<field name="x_antecedents"		string="Antecedentes"/>
+
+									<field name="x_examination"/>
+
 									<field name="x_diagnosis"/>
 
-									<field name="x_antecedents"/>
-
-									<field name="x_allergies_medication"/>
-
-									<field name="x_analysis_lab"/>
+									<field name="x_indications"		string="Tratamiento e indicaciones"/>
 
 									<field name="x_observations"/>
 
-									<field name="x_indications"/>
+<!--
+									<field name="x_allergies_medication"/>
 
+									<field name="x_analysis_lab"/>
+-->
 								</group>
 
 							</page>

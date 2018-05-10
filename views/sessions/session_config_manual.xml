@@ -77,27 +77,50 @@
 
 						<!-- Quick --> 
 						<group string="Quick Laser"   attrs="{'invisible':[('laser', '!=', 'laser_quick')]}">
-							<group>
 <!--
-								<field name="quick_time"			attrs = "{'required':[('laser','in',('laser_quick'))]}"/>
-								
-								<field name="vspace"/>								
-								
-								<field name="quick_dose"			attrs = "{'required':[('laser','in',('laser_quick'))]}"/>
-								
-								<field name="vspace"/>								
-								
-								<field name="quick_dose_selected"	attrs = "{'required':[('laser','in',('laser_quick'))]}"/>
-								
-								<field name="vspace"/>		
-								
-								<field name="quick_dose_provided"	attrs = "{'required':[('laser','in',('laser_quick'))]}"/>
-								
-								<field name="vspace"/>								
--->
-								<field name="quick_observations"	attrs = "{'required':[('laser','in',('laser_quick'))]}"/>
+-->							<group>
+								<field name="quick_type"	attrs = "{'required':[('laser','in',('laser_quick'))]}"/>
+
+
+
+
+								<field name="quick_manipule_zoom"		nolabel="0"
+
+																		attrs = "{
+																					'required':		[('laser','in',('laser_quick'))], 
+																					'invisible':	[('quick_type','in',('resolve'))], 
+																				}"		 
+																		widget="radio" />
+
+
+								<field name="quick_manipule_resolve"	nolabel="0"
+
+																		attrs = "{	
+																					'required':		[('laser','in',('laser_quick'))], 
+																					'invisible':	[('quick_type','in',('zoom'))], 
+																				}"	 	
+																		widget="radio"	/>
+
+							</group>
+
+							<group>
+								<field name="quick_spot"	attrs = "{'required':[('laser','in',('laser_quick'))]}"/>
+
+								<field name="quick_fluency"	attrs = "{'required':[('laser','in',('laser_quick'))]}"/>
+
+								<field name="quick_frequency"	attrs = "{'required':[('laser','in',('laser_quick'))]}"/>
 							</group>
 						</group>
+
+
+						<group  	attrs="{'invisible':[('laser', '!=', 'laser_quick')]}">
+
+							<group>
+								<field name="quick_observations"	attrs = "{'required':[('laser','in',('laser_quick'))]}"/>
+							</group>
+
+						</group>
+
 
 
 

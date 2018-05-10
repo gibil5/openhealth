@@ -331,8 +331,6 @@ Add Procedures
 
 						<!-- Update Patient --> 
 <!--
-							groups="openhealth.archivers,openhealth.managers,openhealth.directors"
--->
 						<button 
 							type="object" 
 							class="oe_highlight"
@@ -341,6 +339,8 @@ Add Procedures
 
 							string="U" 
 						/>
+-->
+
 
 
 

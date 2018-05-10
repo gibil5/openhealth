@@ -53,6 +53,12 @@ class Evaluation(models.Model):
 
 
 
+	x_examination = fields.Text(
+			string = 'Examen clínico', 
+			required=False, 
+		)
+
+
 
 
 	# ----------------------------------------------------------- Patient ------------------------------------------------------

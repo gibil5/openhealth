@@ -1,0 +1,133 @@
+
+
+
+
+
+		<!-- ACTION -->
+		<record model="ir.actions.act_window" id="account_line_01_list_action">
+			<field name="name">Lines 01</field>
+			<field name="res_model">openhealth.account.line</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+			<field name="domain">[
+									('cuo_mes', '=', '01'),
+								]
+			</field>
+
+			<!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first order
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+
+
+		<!-- ACTION -->
+		<record model="ir.actions.act_window" id="account_line_02_list_action">
+			<field name="name">Lines 02</field>
+			<field name="res_model">openhealth.account.line</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+			<field name="domain">[
+									('cuo_mes', '=', '02'),
+								]
+			</field>
+
+			<!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first order
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+
+		<!-- ACTION -->
+		<record model="ir.actions.act_window" id="account_line_03_list_action">
+			<field name="name">Lines 03</field>
+			<field name="res_model">openhealth.account.line</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+			<field name="domain">[
+									('cuo_mes', '=', '03'),
+								]
+			</field>
+
+			<!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first order
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+		<!-- ACTION -->
+		<record model="ir.actions.act_window" id="account_line_04_list_action">
+			<field name="name">Lines 04</field>
+			<field name="res_model">openhealth.account.line</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			
+			<field name="domain">[
+									('cuo_mes', '=', '04'),
+								]
+			</field>
+
+
+			<!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first order
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+
+<!--
+		<record id="tree_id" model="ir.actions.act_window.view"> 
+			<field eval="3" name="sequence"/> 
+			<field name="view_mode">tree</field> 
+
+			<field name="view_id" ref="tree_view_id"/> 
+			<field name="act_window_id" ref="action_id"/> 
+		</record>
+
+		<record id="tree_id1" model="ir.actions.act_window.view"> 
+			<field eval="3" name="sequence"/> 
+			<field name="view_mode">tree</field> 
+			
+			<field name="view_id" ref="tree_view_id1"/> 
+			<field name="act_window_id" ref="action_id1"/> 
+		</record>
+-->
+
+

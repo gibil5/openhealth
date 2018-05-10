@@ -31,17 +31,14 @@
 
 
 
-<!--
-								name="%(account_line_list_action)d" 
-											'search_default_cuo_mes': '04',	
--->
+
+						<!-- Registro -->
 						<button 
 								class="oe_highlight"
 								type="action" 
+								name="%(account_line_list_action)d" 
 
-								string="Contasis"								
-
-								name="%(account_line_form_action)d"	
+								string="Registro de Ventas"								
 
 								context="{
 											'search_default_account_id': active_id,	
@@ -51,6 +48,27 @@
 
 
 
+<!--
+								name="%(account_line_list_action)d" 
+											'search_default_cuo_mes': '04',	
+-->
+						<!-- Contasis -->
+						<button 
+								class="oe_highlight"
+								type="action" 
+								name="%(account_line_form_action)d"	
+
+								string="Contasis"								
+
+								context="{
+											'search_default_account_id': active_id,	
+										}" 											
+
+						/>
+
+
+
+						<!-- Tarjetas -->
 						<button 
 								class="oe_highlight"
 								type="action" 
@@ -120,40 +138,23 @@
 								<field name="account_line">
 									<tree string="Ventas">	
 
-
-
-
-
 					                    <field name="serial_nr"/>
-
 					                    <field name="x_type"/>
-
-					<!--
-					                    <field name="date"/>
-					-->                
 					                    <field name="date_time"/>
-
 					                    <field name="patient"/>
-
-
-<!--
--->
 					                    <field name="product"/>
 					                    <field name="product_type"/>
 					                    <field name="state"/>
+					                    <field name="amount"/>
 
-
-
-	<!--
+<!--
+					                    <field name="date"/>
 					                    <field name="name"/>
 					                    <field name="document"/>
 					                    <field name="amount_net"/>
 					                    <field name="amount_tax"/>
-	-->
+-->
 
-
-					                    <field name="amount"/>
-				                	
 				                	</tree>
 								</field>
 
@@ -174,6 +175,8 @@
 				</form>
 			</field>
 		</record>
+
+
 
 
 
@@ -220,14 +223,12 @@
 
 
 		<!-- ACTION -->
-		<record model="ir.actions.act_window" id="account_contasis_list_action">
-			
+		<record model="ir.actions.act_window" id="account_contasis_list_action">	
 			<field name="name">Ventas</field>
 
 			<field name="res_model">openhealth.account.contasis</field>
 			
 			<field name="view_type">form</field>
-			
 			<field name="view_mode">tree,form</field>
 			
 			<!--
@@ -242,6 +243,5 @@
 			-->
 		</record>
 		
-
 	</data>
 </openerp>

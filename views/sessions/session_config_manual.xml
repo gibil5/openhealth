@@ -76,9 +76,9 @@
 
 
 						<!-- Quick --> 
-						<group string="Quick Laser"   attrs="{'invisible':[('laser', '!=', 'laser_quick')]}">
 <!--
--->							<group>
+						<group string="Quick Laser"   attrs="{'invisible':[('laser', '!=', 'laser_quick')]}">
+
 								<field name="quick_type"	attrs = "{'required':[('laser','in',('laser_quick'))]}"/>
 
 
@@ -120,7 +120,9 @@
 							</group>
 
 						</group>
-
+													
+					<group>
+-->
 
 
 

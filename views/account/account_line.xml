@@ -77,6 +77,7 @@
                     <field name="date_time"/>
                     <field name="document"/>
                     <field name="patient"/>
+                    
                     <field name="amount_net"/>
                     <field name="amount_tax"/>
                     <field name="amount"/>
@@ -104,6 +105,9 @@
                     <field name="product"/>
                     <field name="product_type"/>
                     <field name="state"/>
+
+                    <field name="amount_net"/>
+                    <field name="amount_tax"/>
                     <field name="amount"/>
 <!--
 -->
@@ -145,6 +149,8 @@
 			</field>
 
 			<field name="view_id" ref="account_line_rv_view_tree"/> 
+
+			<field name="limit">1000</field>
 
 			<!--
             <field name="domain">[]</field>

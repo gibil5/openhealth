@@ -10,6 +10,9 @@ import datetime
 import resap_funcs
 import acc_funcs
 
+#import leg_funcs
+
+
 class AccountContasis(models.Model):
 
 	#_inherit='sale.closing'
@@ -139,8 +142,11 @@ class AccountContasis(models.Model):
 			# Vars Order 
 			serial_nr = order.x_serial_nr
 
+
 			date = order.date_order
-			
+			print date 
+
+
 			patient = order.patient.id 
 			x_type = order.x_type
 
@@ -170,7 +176,9 @@ class AccountContasis(models.Model):
 				amount = line.price_subtotal
 				amount_net, amount_tax = acc_funcs.get_net_tax(self, amount)
 				
+				
 				product = line.product_id.id
+				qty = line.product_uom_qty
 
 
 				acc_line = self.account_line.create({
@@ -179,6 +187,9 @@ class AccountContasis(models.Model):
 
 														
 														'product': product, 
+														'qty': qty, 
+
+
 														'state': state, 
 
 
@@ -188,10 +199,13 @@ class AccountContasis(models.Model):
 														'document_type': document_type, 		# Id Doc Type 
 														
 
+
 														#jx
 														'date': date,
 														'date_time': date,
-														'time': date.split()[1],
+
+														#'date_char': date.split()[0],
+														#'time_char': date.split()[1],
 														
 
 

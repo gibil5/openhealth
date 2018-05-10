@@ -11,9 +11,6 @@ from datetime import datetime,tzinfo,timedelta
 from . import eval_vars
 from . import app_vars
 
-#from . import cosvars
-#from . import jrfuncs
-#from . import time_funcs
 
 class Consultation(models.Model):
 

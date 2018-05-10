@@ -9,7 +9,6 @@
 
 
 from openerp import models, fields, api
-#import time_funcs
 #from datetime import datetime,tzinfo,timedelta
 
 

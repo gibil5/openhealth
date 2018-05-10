@@ -3,13 +3,43 @@
 # 	*** Leg Funcs
 # 
 # Created: 				 26 Feb 2017
-# Last updated: 	 	 id
+# 
 
 from openerp import models, fields, api
-
-#from datetime import timedelta
 import datetime
 from . import leg_vars
+
+
+
+
+
+#------------------------------------------------ Correct Time ---------------------------------------------------
+
+def correct_time(self, date):
+
+	#print
+	#print 'Correct'
+	#print date 
+
+
+	if date != False: 
+
+		#1876-10-10 00:00:00
+		year = int(date.split('-')[0])
+		#print year 
+
+
+		if year >= 1900:
+
+			DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
+
+			date_field1 = datetime.datetime.strptime(date, DATETIME_FORMAT)
+
+			date_corr = date_field1 + datetime.timedelta(hours=+5,minutes=0)
+
+			return date_corr
+
+
 
 
 
@@ -270,38 +300,6 @@ def create_patient(self, 	name, hc_code, doc_code, sex, 		date_record, date_crea
 
 
 
-#------------------------------------------------ Correct Time ---------------------------------------------------
-
-def correct_time(self, date):
-
-	#print 'jx'
-	#print 'Correct'
-	#print date 
-
-
-
-	#if date != False  and  year >= 1900:
-	if date != False: 
-
-
-		#1876-10-10 00:00:00
-		year = int(date.split('-')[0])
-		#print year 
-
-
-		if year >= 1900:
-
-
-			DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
-
-
-			date_field1 = datetime.datetime.strptime(date, DATETIME_FORMAT)
-
-
-			date_corr = date_field1 + datetime.timedelta(hours=+5,minutes=0)
-
-
-			return date_corr
 
 
 

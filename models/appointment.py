@@ -7,17 +7,10 @@
 # Last updated: 	 	01 Dec 2017
 
 from openerp import models, fields, api
-
 import datetime
-
-from . import time_funcs
 from . import app_vars
 from . import eval_vars
-
 import appfuncs
-
-#from . import defaults
-
 
 
 class Appointment(models.Model):

@@ -6,8 +6,10 @@
 #
 
 from openerp import models, fields, api
+
 import datetime
 import acc_funcs
+
 
 class AccountLine(models.Model):
 	
@@ -17,6 +19,43 @@ class AccountLine(models.Model):
 	_order = 'date_time asc'
 	#_order = 'tipodocumento,numerofactura asc'
 
+
+
+
+
+
+
+# ----------------------------------------------------------- Dates ------------------------------------------------------
+
+	# Date 
+	date = fields.Date(
+			#string="Fecha", 
+		)
+
+	# Datetime 
+	date_time = fields.Datetime(
+			string="Fecha y hora", 
+		)
+
+
+
+
+
+	# Corr 
+	date_time_corr = fields.Datetime(
+			#string="Fecha", 
+		)
+
+
+	# Date 
+	date_char = fields.Char(
+			string="Fecha", 
+		)
+
+	# Time 
+	time_char = fields.Char(
+			string="Hora", 
+		)
 
 
 
@@ -318,12 +357,22 @@ class AccountLine(models.Model):
 
 
 
+
+		# Dates 
+		self.date_time_corr, date_time_str = acc_funcs.correct_time(self,self.date_time, -5)
+
+		#self.date_char = self.date_time_corr.split()[0]
+		#self.time_char = self.date_time_corr.split()[1]
+		self.date_char = date_time_str.split()[0]
+		self.time_char = date_time_str.split()[1]
+
+
+
+
+
 		# Product
 		self.product_type = self.product.type 
-
 		self.cuentab = acc_funcs._cuentab[self.product_type]
-
-
 
 
 
@@ -445,6 +494,14 @@ class AccountLine(models.Model):
 		)
 
 
+
+
+	#qty = fields.Float(
+	qty = fields.Integer(
+			string="Cantidad", 
+		)
+
+
 	product = fields.Many2one(
 			'product.product', 
 			string="Producto", 
@@ -458,6 +515,8 @@ class AccountLine(models.Model):
 			string='Tipo Prod', 
 			#required=False,
 		)
+
+
 
 
 	state = fields.Selection(
@@ -490,20 +549,6 @@ class AccountLine(models.Model):
 
 
 
-	# Date 
-	date = fields.Date(
-			string="Fecha", 
-		)
-
-	# Datetime 
-	date_time = fields.Datetime(
-			string="Fecha", 
-		)
-
-	# Time 
-	time = fields.Char(
-			string="Hora", 
-		)
 
 
 

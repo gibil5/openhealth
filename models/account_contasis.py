@@ -108,7 +108,7 @@ class AccountContasis(models.Model):
 	@api.multi
 	def update_totals(self):  
 
-		print 'jx'
+		print
 		print 'Update totals'
 
 
@@ -188,10 +188,12 @@ class AccountContasis(models.Model):
 														'document_type': document_type, 		# Id Doc Type 
 														
 
+														#jx
 														'date': date,
 														'date_time': date,
 														'time': date.split()[1],
 														
+
 
 														'amount': amount,
 														'amount_net': amount_net,

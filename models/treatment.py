@@ -2122,7 +2122,7 @@ class Treatment(models.Model):
 
 
 		# Update Patient 
-		consultation.update_patient()		
+		#consultation.update_patient()		
 
 
 		return {

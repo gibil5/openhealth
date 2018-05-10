@@ -313,7 +313,7 @@ class AccountLine(models.Model):
 	@api.multi
 	def update_fields(self):  
 
-		#print 'jx'
+		#print
 		#print 'Update Contasis'
 
 

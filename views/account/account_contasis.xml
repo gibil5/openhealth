@@ -143,8 +143,9 @@
 
 					                    <field name="date_time"/>
 					                    <field name="date"/>
+<!--					                    
 					                    <field name="time"/>
-					                    
+-->				                    
 					                    <field name="patient"/>
 					                    <field name="product"/>
 					                    <field name="product_type"/>

@@ -102,12 +102,14 @@
 					<field name="x_type"/>
 
 					<field name="date_time"/>
+<!--					
 					<field name="date_char"/>
 					<field name="time_char"/>
-
+-->
 					<field name="patient"/>
-
+<!--
 					<field name="qty"/>
+-->
 					<field name="product"/>
 					<field name="product_type"/>
 					

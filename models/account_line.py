@@ -361,10 +361,12 @@ class AccountLine(models.Model):
 		# Dates 
 		self.date_time_corr, date_time_str = acc_funcs.correct_time(self,self.date_time, -5)
 
-		#self.date_char = self.date_time_corr.split()[0]
-		#self.time_char = self.date_time_corr.split()[1]
 		self.date_char = date_time_str.split()[0]
 		self.time_char = date_time_str.split()[1]
+
+		self.fecha = self.date_char
+		self.fechavencimiento  = self.date_char
+		self.fechavencimiento2 = self.date_char
 
 
 
@@ -417,16 +419,22 @@ class AccountLine(models.Model):
 
 
 
+
+
+
+
+
+		
+
 		# Dates	- Must be converteed to a datetime object, before converting to the proper format. 
-		DATETIME_FORMAT = "%Y-%m-%d"
-		self.fecha  = datetime.datetime.strptime(self.date, DATETIME_FORMAT).strftime('%d/%m/%Y')
-		self.fechavencimiento  = datetime.datetime.strptime(self.date, DATETIME_FORMAT).strftime('%d/%m/%Y')
-		self.fechavencimiento2 = self.fechavencimiento
+		#DATETIME_FORMAT = "%Y-%m-%d"
+		#self.fecha  = datetime.datetime.strptime(self.date, DATETIME_FORMAT).strftime('%d/%m/%Y')
+		#self.fechavencimiento  = datetime.datetime.strptime(self.date, DATETIME_FORMAT).strftime('%d/%m/%Y')
+		#self.fechavencimiento2 = self.fechavencimiento
+
 
 		# Month 
-		self.cuo_mes =  datetime.datetime.strptime(self.date, DATETIME_FORMAT).strftime('%m')
-
-
+		#self.cuo_mes =  datetime.datetime.strptime(self.date, DATETIME_FORMAT).strftime('%m')
 
 
 		# Constants 
@@ -442,9 +450,8 @@ class AccountLine(models.Model):
 
 
 
+
 		# Actual amount
-
-
 		if self.state == 'cancel': 
 
 			self.amount = 0
@@ -458,9 +465,16 @@ class AccountLine(models.Model):
 
 		else: 
 
-			self.amount_net = self.amount/1.18
+			#self.amount_net = self.amount/1.18
+			net = self.amount/1.18
+			self.amount_net = round(net, 2)
+			
 
-			self.amount_tax = self.amount_net * 0.18
+			#self.amount_tax = self.amount_net * 0.18
+			tax = net * 0.18
+			self.amount_tax = round(tax, 2)
+
+
 
 			#self.total = self.amount
 			#self.neto = self.amount_net 
@@ -587,9 +601,9 @@ class AccountLine(models.Model):
 # ----------------------------------------------------------- Deprecated ------------------------------------------------------
 	
 	# Codigo Unico Ope
-	cuo_mes = fields.Char(
-			'MES', 
-		)
+	#cuo_mes = fields.Char(
+	#		'MES', 
+	#	)
 
 
 	#cuo_sd = fields.Char(

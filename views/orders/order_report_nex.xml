@@ -43,11 +43,10 @@ Fields
 							<group>
 
 
+			                    <field name="patient"/>
 
 			                    <field name="create_date"	string="Fecha"	/>
 <!--
-			                    <field name="patient"/>
-
 			                    <field name="partner_id"/>
 
 			                    <field name="name"/>
@@ -59,9 +58,9 @@ Fields
 							<group>
 <!--			                    
 			                    <field name="amount_total_report"/>
+-->
 			                    <field name="amount_total_sale"/>
 			                    <field name="amount_total_budget"/>
--->
 							</group>
 						</group>
 
@@ -69,14 +68,6 @@ Fields
 
 <!--								
 								<field name="order_line_ids"/>
-
-
-											colors="
-											red:state=='draft';
-											green:state=='sent';
-											blue:state=='sale';
-											grey:state in ('cancel')
-											"
 -->						
 
 
@@ -88,6 +79,12 @@ Fields
 									<tree 	string=""		
 											default_order="create_date"	
 
+											colors="
+											red:state=='draft';
+											green:state=='sent';
+											blue:state=='sale';
+											grey:state in ('cancel')
+											"
 									>
 						
 
@@ -101,10 +98,8 @@ Fields
 
 										<field name="x_date_created"	string="Fecha"	/>
 
-<!--
-										<field name="state"/>
--->
 
+										<field name="state"/>
 
 <!--
 										<field name="create_date"	string="Fecha"	/>

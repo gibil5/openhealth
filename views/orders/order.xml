@@ -839,7 +839,13 @@ Look for the Minimalist experience !!!
 
 					<field name="patient"/>
 
+
+
 					<field name="x_doctor" />
+
+					<field name="treatment" />
+
+
 
 					<field name="nr_lines"/>
 

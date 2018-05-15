@@ -43,10 +43,11 @@ Fields
 							<group>
 
 
-			                    <field name="patient"/>
 
 			                    <field name="create_date"	string="Fecha"	/>
 <!--
+			                    <field name="patient"/>
+
 			                    <field name="partner_id"/>
 
 			                    <field name="name"/>

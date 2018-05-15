@@ -43,7 +43,11 @@
 
 
 									<field name="x_doctor_uid"	invisible="1"				/>
+<!--
 									<field name="user_id"		string="Generado por"		readonly="1"/>
+-->								
+									<field name="user_id"		string="Creado por"		readonly="1"/>
+
 									<field name="x_my_company"	/>
 
 									

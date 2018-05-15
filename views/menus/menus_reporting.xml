@@ -155,7 +155,38 @@
 
 
 
+				<menuitem 	id="sales_report_sales_may_menu" 
+							parent="sales_reports_menu"
+							sequence="5"
 
+							name="Mayo" 				
+
+							action="action_order_report_may"
+						/>
+
+
+
+
+<!--
+				<menuitem 	id="sales_report_sales_june_menu" 
+							parent="sales_reports_menu"
+							sequence="6"
+
+							name="Junio" 				
+
+							action="action_order_report_june"
+						/>
+
+
+				<menuitem 	id="sales_report_sales_july_menu" 
+							parent="sales_reports_menu"
+							sequence="7"
+
+							name="Julio" 				
+
+							action="action_order_report_july"
+						/>
+-->
 
 
 

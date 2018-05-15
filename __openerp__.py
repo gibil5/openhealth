@@ -20,7 +20,7 @@
 	'description': """
 
 
-		Last built: 10 May 2018 
+		Last built: 15 May 2018 
 
 		
 		Stability by Design !

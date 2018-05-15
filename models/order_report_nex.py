@@ -53,6 +53,13 @@ class order_report_nex(models.Model):
 		)
 
 
+	# Patient 
+	patient = fields.Many2one(
+			'oeh.medical.patient',
+			string = "Paciente", 	
+			#ondelete='cascade', 			
+			required=False, 
+		)
 
 
 
@@ -60,7 +67,18 @@ class order_report_nex(models.Model):
 
 
 
+	# Total Sale
+	amount_total_sale = fields.Float(
+			'Total Ventas S/.', 
+			default='0', 
+		)
 
+	# Total Budget 
+	amount_total_budget = fields.Float(
+			#'Total Presupuestos S/.', 
+			'Presupuestos S/.', 
+			default='0', 
+		)
 
 
 
@@ -69,19 +87,40 @@ class order_report_nex(models.Model):
 			'Total S/.', 
 			default='0', 
 
-			compute='_compute_amount_total_report', 
+			#compute='_compute_amount_total_report', 
 		)
 
-	@api.multi
-	def _compute_amount_total_report(self):
-		for record in self:		
-			total = 0 
+	#@api.multi
+	#def _compute_amount_total_report(self):
+	#	for record in self:		
+	#		total = 0 
+	#		for line in record.order_line_ids: 
+	#			total = total + line.price_subtotal 
+	#		record.amount_total_report = total
 
-			for line in record.order_line_ids: 
-				total = total + line.price_subtotal 
+
+
+	# Update Totals
+	@api.multi 
+	def update_totals(self):
+
+		total = 0 
+		total_sale = 0 
+		total_budget = 0 
+
+		for line in self.order_line_ids: 
 			
-			record.amount_total_report = total
+			total = total + line.price_subtotal 
 
+			if line.state == 'sale': 
+				total_sale = total_sale + line.price_subtotal 
+			elif line.state == 'draft': 
+				total_budget = total_budget + line.price_subtotal 
+
+
+		self.amount_total_report = total
+		self.amount_total_sale = total_sale
+		self.amount_total_budget = total_budget
 
 
 
@@ -98,18 +137,19 @@ class order_report_nex(models.Model):
 		print 'Update'
 
 
-
 		# Clean 
 		self.order_line_ids.unlink()
 
 
-
 		# Init 
 		partner_id = self.partner_id.name
+		patient_name = self.patient.name
 
 		orders = self.env['sale.order'].search([
-															('partner_id', '=', partner_id),			
-															('state', '=', 'sale'),			
+															#('partner_id', '=', partner_id),
+															('patient', '=', patient_name),
+															
+															#('state', '=', 'sale'),			
 													],
 													#order='start_date desc',
 													#limit=1,
@@ -145,10 +185,14 @@ class order_report_nex(models.Model):
 															
 															'product_uom_qty': line.product_uom_qty, 
 
-															'order_report_nex_id': self.id,
-
-
 															'x_date_created': line.create_date,															
+
+
+															'state': order.state,
+
+
+
+															'order_report_nex_id': self.id,
 													})
 
 				#print ret 
@@ -157,5 +201,10 @@ class order_report_nex(models.Model):
 				#print ret.price_unit				
 				#print ret.product_uom_qty
 				#print 
+
+
+
+		# Update 
+		self.update_totals()
 
 

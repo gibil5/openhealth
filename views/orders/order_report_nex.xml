@@ -42,10 +42,13 @@ Fields
 						<group	string="Estado de Cuenta"	>
 							<group>
 
-			                    <field name="partner_id"/>
+
+			                    <field name="patient"/>
 
 			                    <field name="create_date"	string="Fecha"	/>
 <!--
+			                    <field name="partner_id"/>
+
 			                    <field name="name"/>
 
 			                    <field name="state"/>
@@ -53,7 +56,11 @@ Fields
 							</group>
 
 							<group>
+<!--			                    
 			                    <field name="amount_total_report"/>
+-->
+			                    <field name="amount_total_sale"/>
+			                    <field name="amount_total_budget"/>
 							</group>
 						</group>
 
@@ -66,9 +73,21 @@ Fields
 
 						<notebook>
 							<page>
-								<field name="order_line_ids"		>
-									<tree string=""		default_order="create_date"	>	
+								<field name="order_line_ids">
+
+
+									<tree 	string=""		
+											default_order="create_date"	
+
+											colors="
+											red:state=='draft';
+											green:state=='sent';
+											blue:state=='sale';
+											grey:state in ('cancel')
+											"
+									>
 						
+
 										<field name="product_id"		/>
 
 										<field name="price_unit"		/>
@@ -78,6 +97,9 @@ Fields
 										<field name="price_subtotal"		/>
 
 										<field name="x_date_created"	string="Fecha"	/>
+
+
+										<field name="state"/>
 
 <!--
 										<field name="create_date"	string="Fecha"	/>

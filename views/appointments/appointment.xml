@@ -59,12 +59,17 @@
 
 				<!-- Patient --> 
 <!--				
+																context="{'x_id_code': 'xx'}"
 -->
 				<xpath expr="//field[@name='patient']" position="replace">
 
 
 					<field name="patient"	string="patient_r"  
-																context="{'x_id_code': 'xx'}"
+											attrs="{
+																'required':[('x_type', 'not in', ['event']),],
+
+																'invisible':[('x_type', '=', 'event'),],
+														}"	
 						/>					
 
 				
@@ -83,12 +88,20 @@
 
 							<field name="x_type"/>
 							
-							<field name="x_target"			invisible="0"	/>
 
-							<field name="x_machine"			attrs="{
-																		'invisible':[('x_type', '=', 'consultation'),],
+							<field name="x_target"			invisible="0"	
+															
+															attrs="{
+																		'invisible':[('x_type', '=', 'event'),],
 															}"	
 								/>
+
+
+							<field name="x_machine"			attrs="{
+																		'invisible':[('x_type', 'in', ['consultation','event']),],
+															}"	
+								/>
+
 				</xpath>
 
 
@@ -157,19 +170,43 @@
 
 							<field name="vspace"/>
 
+
+<!--
+							<field name="duration_sel"/>	
+-->
 							<field name="duration"/>	
 
-							<field name="vspace"/>
 
-							<field name="state"/>
 
 							<field name="vspace"/>
 
+							<field name="state"			attrs="{
+																	'invisible':[
+																					('x_type', 'in', ['event']),
+																				],
+														}"
+								/>
+
+
+
+							<field name="vspace"/>
+
+
+<!--
+																					('x_target', '!=', 'doctor'),
+-->
 							<field name="treatment"		
 														attrs="{
-																	'required':[('x_target', '=', 'doctor'),],
-																	'invisible':[('x_target', '!=', 'doctor'),],
-														}"	/>
+																	'required':[
+																					('x_target', '=', 'doctor'),
+																					('x_type', 'not in', ['event']),
+																				],
+
+																	'invisible':[
+																					('x_type', 'in', ['event']),
+																				],
+														}"	
+													/>
 
 
 
@@ -178,7 +215,8 @@
 														attrs="{
 																	'required':[('x_target', '=', 'therapist'),],
 																	'invisible':[('x_target', '!=', 'therapist'),],
-														}"	/>
+														}"	
+													/>
 						</group>
 
 
@@ -263,6 +301,105 @@
 					<field name="x_tree"/>
 					<field name="x_therapist"/>
 					-->
+
+
+
+
+
+
+
+
+		<!-- Action - Appointment Confirmed -->  
+		<record id="oeh_medical_appointment_action_tree_confirmed" model="ir.actions.act_window">
+					
+					<field name="name">Citas confirmadas</field>
+
+					<field name="res_model">oeh.medical.appointment</field>
+					<field name="view_type">form</field>
+					<field name="view_mode">calendar,tree,form</field>  
+					<field name="view_id" eval="False"/>
+
+<!--
+											('state', 'in', ['pre_scheduled','Scheduled', 'completed', 'invoiced']),
+-->
+
+					<field name="domain">[
+											('state', 'in', ['pre_scheduled','Scheduled', 'invoiced', 'event']),
+
+											('x_target', '=', 'doctor'),
+										]
+					</field>
+
+
+					<field name="context">{
+											'default_x_target': 'doctor',
+											'default_x_type': 'consultation',
+										}
+					</field>
+
+<!--
+					<field name="help" type="html">
+					  <p class="oe_view_nocontent_create">
+						Click to add a new appointment.
+					  </p><p>
+						oeHealth appointment screen can easily find all of your appointment details;
+					  </p>
+					</field>
+-->
+		</record>
+
+
+
+
+		<!-- Action - Event -->  
+		<record id="appointment_event_action" model="ir.actions.act_window">
+<!--
+					<field name="name">Crear Evento</field>
+-->
+					<field name="name">Citas confirmadas</field>
+			
+					<field name="res_model">oeh.medical.appointment</field>
+					<field name="view_type">form</field>
+					<field name="view_mode">calendar,tree,form</field>  
+					<field name="view_id" eval="False"/>
+
+<!--
+-->
+					<field name="domain">[
+											('state', 'in', ['pre_scheduled','Scheduled', 'invoiced', 'event']),
+											
+											('x_target', '=', 'doctor'),
+										]
+					</field>
+
+
+					<field name="context">{
+											'default_x_target': 'doctor',
+											'default_x_type': 	'event',
+
+											'default_state': 	'event',
+										}
+					</field>
+
+<!--
+					<field name="help" type="html">
+					  <p class="oe_view_nocontent_create">
+						Click to add a new appointment.
+					  </p><p>
+						oeHealth appointment screen can easily find all of your appointment details;
+					  </p>
+					</field>
+-->
+		</record>
+
+
+
+
+
+
+
+
+
 
 
 

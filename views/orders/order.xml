@@ -850,8 +850,10 @@ Look for the Minimalist experience !!!
 					<field name="amount_untaxed"	sum="Total Untaxed"			widget="monetary"		string="Total"	/>
 
 					<field name="date_order"	string="Fecha"	/>
-
+<!--
 					<field name="user_id"		string="Generado por"	/>
+-->
+					<field name="user_id"		string="Creado por"	/>
 
 					<field name="state"/>
 
@@ -949,16 +951,17 @@ Look for the Minimalist experience !!!
 			<field name="name">Ventas - Confirmadas</field>
 			<field name="res_model">sale.order</field>
 			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
+
+			<field name="view_mode">tree,form,graph,pivot</field>
+
+<!--
+									('date_order','&lt;=',time.strftime('%Y-12-31')),
+									('date_order','&gt;=',time.strftime('%Y-01-01')),
+									('note', 'not in', ['observed']),
+-->
 
 			<field name="domain">[
 									('state', '=', 'sale'),
-
-									('date_order','&lt;=',time.strftime('%Y-12-31')),
-									('date_order','&gt;=',time.strftime('%Y-01-01')),
-
-									('note', 'not in', ['observed']),
-
 								]
 			</field>
 
@@ -972,6 +975,7 @@ Look for the Minimalist experience !!!
 			</field>
 			-->
 		</record>
+
 
 
 
@@ -1074,24 +1078,13 @@ Look for the Minimalist experience !!!
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>	
 
-			<field name="domain">[
-								
-									('treatment', '=', default_treatment),
-									
+			<field name="domain">[								
+									('treatment', '=', default_treatment),	
 									('x_family', '=', default_x_family),
-								
 								]
 			</field>
 
 		</record>
-
-
-
-
-
-
-
-		
 
 	</data>
 </openerp>

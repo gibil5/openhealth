@@ -369,14 +369,15 @@ class Patient(models.Model):
 		order_report_id = self.env['openhealth.order.report.nex'].create(
 																		{
 																			'name': name, 
+
+																			'patient': self.id,	
+
 																			'partner_id': self.partner_id.id,											
 																			
+
 																			#'state':'sale',
-
-
 																			#'subtotal':0,
 																			#'pricelist_id': self.property_product_pricelist.id,	
-																			#'patient': self.id,	
 																			#'x_doctor': self.physician.id,	
 																			#'treatment': self.id,
 																			#'x_family': target, 

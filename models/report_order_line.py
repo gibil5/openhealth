@@ -6,6 +6,8 @@
 from openerp import models, fields, api
 import openerp.addons.decimal_precision as dp
 
+import ord_vars
+
 
 class order_report_nex_line(models.Model):
 
@@ -89,6 +91,17 @@ class order_report_nex_line(models.Model):
 		string='Description', 
 		required=True, 
 		)
+
+
+
+	# State 
+	state = fields.Selection(
+			selection = ord_vars._state_list, 
+			string='Estado',	
+			#readonly=False,
+			#default='draft',
+		)
+
 
 
 

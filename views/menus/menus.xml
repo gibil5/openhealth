@@ -514,29 +514,44 @@ order_report.xml
 
 		<!-- Confirmed --> 
 		<menuitem 
-					action="oeh_medical_appointment_action_tree_confirmed" 
-					
-					parent="oehealth_appointment_menu"  
-
 					id="oeh_medical_appointment_list_1" 
-
+					parent="oehealth_appointment_menu"  
 					sequence="1"
+
+					action="oeh_medical_appointment_action_tree_confirmed" 
+		/>
+
+
+		<!-- Event --> 
+		<menuitem 
+					id="appointment_event_list" 
+					parent="oehealth_appointment_menu"  
+					sequence="2"
+
+					name="Crear un Evento"
+
+					action="appointment_event_action" 
 		/>
 
 
 
+
+
+
+
 		<!-- Auto --> 
+<!--
 		<menuitem 
 					id="oeh_medical_appointment_list_auto" 					
 					parent="oehealth_appointment_menu"  
 					sequence="2"
 
-
 					groups="openhealth.roots,openhealth.reception,openhealth.physicians,openhealth.managers,openhealth.directors"
-
 
 					action="oeh_medical_appointment_action_auto" 
 		/>
+-->
+
 
 
 

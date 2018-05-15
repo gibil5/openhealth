@@ -4,40 +4,53 @@
 		
 
 
+		<!-- Graph --> 
+	    <record id="view_closing_graph" model="ir.ui.view">
+	         <field name="name">closing.graph</field>
+	         <field name="model">openhealth.closing</field>
+	         <field name="arch" type="xml">
+
+	             <graph string="Análisis de Cierres de Caja">
+
+<!--
+					<field name="date" type="row"/>
+					<field name="date" interval="day" type="col"	/>
+	                 <field name="total_cash" type="measure"/>                 
+	                 <field name="total_cards" type="measure"/>
+-->				
+					
+					<!-- Row --> 
+					<field name="date" interval="day" type="row"	/>
+	                
+	                 
+	                 <!-- Measures --> 
+	                 <field name="total" type="measure"/>
+	             </graph>
+	         </field>
+	    </record>
 
 
 
-<!-- FORM view --> 
+
+
+		<!-- FORM view --> 
 		<record model="ir.ui.view" id="closing_form_view">
-
 			<field name="name">closing.form</field>
-			
 			<field name="model">openhealth.closing</field>
-			
 			<field name="arch" type="xml">
-				
 				<form string="Clsing Form">
 					
 
-
-
+					<!-- Header -->
 					<header>
-
-
 						<button 
 								type="object" 
 								class="oe_highlight"
-
-
 								name="update_totals"
 
 								string="Actualizar"
-								
 						/>
-
-
 					</header>
-
 
 
 
@@ -45,114 +58,85 @@
 					<sheet>
 
 
-<!--
-Fields 
--->
-					<group	string="Total"	>
-						<group>
-		                    <field name="name"/>
 
-		                    <field name="date"/>
-						</group>
-						<group>
-		                    <field name="total"/>
-<!--
--->
-		                    <field name="total_cash"		/>
-
-		                    <field name="total_cards"/>
-						</group>
-					</group>
-
-
-
-
-<!-- Form -->
-					<group	string="Formas de pago"	>
-						<group>
-		                    <field name="cash_tot"/>
-		                    <field name="ame_tot"/>
-		                    <field name="din_tot"/>
-		                    <field name="mac_tot"/>
-		                    <field name="mad_tot"/>
-		                    <field name="vic_tot"/>
-		                    <field name="vid_tot"/>
+						<!-- Base -->
+						<group	string="Total">
+							<group>
+			                    <field name="name"/>
+			                    <field name="date"/>
+							</group>
+							<group>
+			                    <field name="total"/>
+			                    <field name="total_cash"/>
+			                    <field name="total_cards"/>
+							</group>
 						</group>
 
-						<group>
-		                    <field name="total_form"/>
-<!--
-		                    <field name="total_cards"/>
--->					
-						</group>
-					</group>
 
 
 
+						<!-- Form -->
+						<group	string="Formas de pago"	>
+							<group>
+			                    <field name="cash_tot"/>
+			                    <field name="ame_tot"/>
+			                    <field name="din_tot"/>
+			                    <field name="mac_tot"/>
+			                    <field name="mad_tot"/>
+			                    <field name="vic_tot"/>
+			                    <field name="vid_tot"/>
+							</group>
 
-<!-- Proof -->
-					<group	string="Documentos de pago"		col="2"			>
-
-						<group>
-
-		                    <field name="tkr_tot"/>
-		                    <field name="serial_nr_first_tkr"		/>
-		                    <field name="serial_nr_last_tkr"		/>
-
-		                    <field name="vspace"/>
-
-
-		                    <field name="tki_tot"/>
-		                    <field name="serial_nr_first_tki"		/>
-		                    <field name="serial_nr_last_tki"		/>
-
-		                    <field name="vspace"/>
-
-
-
-		                    <field name="rec_tot"/>
-		                    <field name="serial_nr_first_rec"		/>
-		                    <field name="serial_nr_last_rec"		/>
-
-
-		                    <field name="vspace"/>
-
-		                    <field name="inv_tot"/>
-		                    <field name="serial_nr_first_inv"		/>
-		                    <field name="serial_nr_last_inv"		/>
-
-
-		                    <field name="vspace"/>
-
-
-
-		                    <field name="adv_tot"/>
-		                    <field name="serial_nr_first_adv"		/>
-		                    <field name="serial_nr_last_adv"		/>
-
-		                    <field name="vspace"/>
-
-		                    <field name="san_tot"/>
-		                    <field name="serial_nr_first_san"		/>
-		                    <field name="serial_nr_last_san"		/>
-
-		                    <field name="vspace"/>
-
+							<group>
+			                    <field name="total_form"/>
+							</group>
 						</group>
 
-						<group>
-		                    <field name="total_proof"/>
+
+
+
+						<!-- Proof -->
+						<group	string="Documentos de pago"		col="2"			>
+
+							<group>
+
+			                    <field name="tkr_tot"/>
+			                    <field name="serial_nr_first_tkr"		/>
+			                    <field name="serial_nr_last_tkr"		/>
+			                    <field name="vspace"/>
+			                    <field name="tki_tot"/>
+			                    <field name="serial_nr_first_tki"		/>
+			                    <field name="serial_nr_last_tki"		/>
+			                    <field name="vspace"/>
+			                    <field name="rec_tot"/>
+			                    <field name="serial_nr_first_rec"		/>
+			                    <field name="serial_nr_last_rec"		/>
+			                    <field name="vspace"/>
+			                    <field name="inv_tot"/>
+			                    <field name="serial_nr_first_inv"		/>
+			                    <field name="serial_nr_last_inv"		/>
+			                    <field name="vspace"/>
+			                    <field name="adv_tot"/>
+			                    <field name="serial_nr_first_adv"		/>
+			                    <field name="serial_nr_last_adv"		/>
+			                    <field name="vspace"/>
+			                    <field name="san_tot"/>
+			                    <field name="serial_nr_first_san"		/>
+			                    <field name="serial_nr_last_san"		/>
+			                    <field name="vspace"/>
+							</group>
+
+							<group>
+			                    <field name="total_proof"/>
+							</group>
 						</group>
-					</group>
 
 
 
-
-
-
-
+						<!-- Notebook -->
 						<notebook>
 						</notebook>
+
 					</sheet>
 				</form>
 			</field>
@@ -163,40 +147,28 @@ Fields
 
 
 		
-<!-- TREE view --> 
-		
+		<!-- TREE view --> 
 		<record model="ir.ui.view" id="closing_view_order_tree">
-
 			<field name="name">openhealth.closing.tree</field>
-			
 			<field name="model">openhealth.closing</field>
-			
 			<field name="arch" type="xml">
-<!--
-				<tree string="Closing Tree">
--->
-				<tree default_order='date desc'>
+
+
+				<tree string="Cierres de caja"  default_order='date desc'>
 					
+                    <field name="name"/>
 
-                    <field name="name"	 				/>
-
-<!--
--->
                     <field name="total_cash"/>
 
                     <field name="total_cards"/>
 
                     <field name="total"/>
 
-
-
 <!--
                     <field name="date"		string="Fecha"	/>
 
-
                     <field name="total_form"/>
                     <field name="total_proof"/>
-
                     <field name="ame_tot"/>
                     <field name="cuo_tot"/>
                     <field name="din_tot"/>
@@ -204,18 +176,13 @@ Fields
                     <field name="mad_tot"/>
                     <field name="vic_tot"/>
                     <field name="vid_tot"/>
-
                     <field name="tkr_tot"/>
                     <field name="tki_tot"/>
                     <field name="rec_tot"/>
                     <field name="inv_tot"/>
                     <field name="adv_tot"/>
                     <field name="san_tot"/>
--->
 
-
-
-<!--
                     <field name="order_ids"/>
 -->
 
@@ -233,7 +200,8 @@ Fields
 			<field name="name">Cierres de Caja</field>
 			<field name="res_model">openhealth.closing</field>
 			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
+
+			<field name="view_mode">tree,form,graph,pivot</field>
 			
 			<!--
             <field name="domain">[]</field>
@@ -247,6 +215,7 @@ Fields
 			-->
 		</record>
 		
+
 
 	</data>
 </openerp>

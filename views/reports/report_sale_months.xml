@@ -17,8 +17,8 @@
 
 			<field name="domain">
 									[
-										('date','&lt;=',time.strftime('%%Y-02-01')),
-										('date','&gt;=',time.strftime('%%Y-01-01')), 
+										('date','&lt;=',time.strftime('%%Y-02-01 05:00:00')),
+										('date','&gt;=',time.strftime('%%Y-01-01 05:00:00')), 
 									]
 			</field>
 
@@ -57,8 +57,8 @@
 
 		   <field name="domain">
 								[
-									('date','&lt;=',time.strftime('%%Y-03-01')), 
-									('date','&gt;=',time.strftime('%%Y-02-01')), 									
+									('date','&lt;=',time.strftime('%%Y-03-01 05:00:00')), 
+									('date','&gt;=',time.strftime('%%Y-02-01 05:00:00')), 									
 								]
 			</field>
 
@@ -79,6 +79,9 @@
 
 
 <!-- March --> 
+<!--
+									'group_by': ['name'],
+-->
 		<record id="action_order_report_march" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Marzo</field>
 			<field name="res_model">sale.report</field>
@@ -90,15 +93,15 @@
 
 		   <field name="domain">
 								[
-									('date','&lt;=',time.strftime('%%Y-04-01')), 
-									('date','&gt;=',time.strftime('%%Y-03-01')), 
+									('date','&lt;=',time.strftime('%%Y-04-01 05:00:00')), 
+									('date','&gt;=',time.strftime('%%Y-03-01 05:00:00')), 
 								]
 			</field>
 
 			<field name="context">{
 									'search_default_Sales':1, 
 									'group_by_no_leaf':1,									
-									'group_by': ['name'],
+									'group_by': ['categ_id']
 								}
 			</field>
 
@@ -112,6 +115,10 @@
 
 
 <!-- April --> 
+<!--
+									('date','&gt;=',time.strftime('%%Y-04-01')), 
+									('date','&lt;=',time.strftime('%%Y-05-01')),
+-->
 		<record id="action_order_report_april" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Abril</field>
 			<field name="res_model">sale.report</field>
@@ -122,8 +129,8 @@
 
 		   <field name="domain">
 								[
-									('date','&gt;=',time.strftime('%%Y-04-01')), 
-									('date','&lt;=',time.strftime('%%Y-05-01')),
+									('date','&gt;=',time.strftime('%%Y-04-01 05:00:00')), 
+									('date','&lt;=',time.strftime('%%Y-05-01 05:00:00')),
 								]
 			</field>
 
@@ -138,7 +145,12 @@
 		</record>
 
 
-		<!-- may --> 
+
+
+<!-- May --> 
+<!--
+									('date','&gt;=',time.strftime('%%Y-05-01')), 
+-->
 		<record id="action_order_report_may" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Mayo</field>
 			<field name="res_model">sale.report</field>
@@ -149,8 +161,8 @@
 
 		   <field name="domain">
 								[
-									('date','&lt;=',time.strftime('%%Y-06-01')),
-									('date','&gt;=',time.strftime('%%Y-05-01')), 
+									('date','&gt;=',time.strftime('%%Y-05-01 05:00:00')), 
+									('date','&lt;=',time.strftime('%%Y-06-01 05:00:00')),
 								]
 			</field>
 
@@ -165,7 +177,9 @@
 		</record>
 
 
-		<!-- june --> 
+
+
+<!-- June --> 
 		<record id="action_order_report_june" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Junio</field>
 			<field name="res_model">sale.report</field>
@@ -176,8 +190,8 @@
 
 		   <field name="domain">
 								[
-									('date','&lt;=',time.strftime('%%Y-07-01')),
-									('date','&gt;=',time.strftime('%%Y-06-01')), 
+									('date','&gt;=',time.strftime('%%Y-06-01 05:00:00')), 
+									('date','&lt;=',time.strftime('%%Y-07-01 05:00:00')),
 								]
 			</field>
 
@@ -198,7 +212,7 @@
 
 
 
-		<!-- july --> 
+<!-- July --> 
 		<record id="action_order_report_july" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Julio</field>
 			<field name="res_model">sale.report</field>
@@ -209,8 +223,8 @@
 
 		   <field name="domain">
 								[
-									('date','&lt;=',time.strftime('%%Y-08-01')),
-									('date','&gt;=',time.strftime('%%Y-07-01'))
+									('date','&lt;=',time.strftime('%%Y-08-01 05:00:00')),
+									('date','&gt;=',time.strftime('%%Y-07-01 05:00:00'))
 								]
 			</field>
 
@@ -226,7 +240,7 @@
 
 
 
-		<!-- august --> 
+<!-- August --> 
 		<record id="action_order_report_august" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Agosto</field>
 			<field name="res_model">sale.report</field>
@@ -254,7 +268,7 @@
 
 
 
-		<!-- september --> 
+<!-- September --> 
 		<record id="action_order_report_september" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Setiembre</field>
 			<field name="res_model">sale.report</field>
@@ -282,7 +296,7 @@
 
 
 
-		<!-- october --> 
+<!-- October --> 
 		<record id="action_order_report_october" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Octubre</field>
 			<field name="res_model">sale.report</field>
@@ -310,7 +324,7 @@
 
 
 
-		<!-- november --> 
+<!-- November --> 
 		<record id="action_order_report_november" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Noviembre</field>
 			<field name="res_model">sale.report</field>
@@ -339,7 +353,7 @@
 
 
 
-		<!-- december --> 
+<!-- December --> 
 		<record id="action_order_report_december" model="ir.actions.act_window">
 			<field name="name">Reporte de Ventas - Diciembre</field>
 			<field name="res_model">sale.report</field>

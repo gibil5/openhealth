@@ -5,22 +5,39 @@
 
 
 
+		<!-- Graph --> 
 <!--
-		<record id="view_medical_order_search" model="ir.ui.view">
+	    <record id="view_sale_order_graph" model="ir.ui.view">
 -->
+	    <record id="sale.view_sale_order_graph" model="ir.ui.view">
+	    	
+	         <field name="name">sale.order.graph</field>
+	         <field name="model">sale.order</field>
+	         <field name="arch" type="xml">
+
+	             <graph string="Análisis de Ventas">
+<!--
+					<field name="date_order" interval="day" type="row"	/>
+	                	                 
+	                <field name="amount_total" type="measure"/>
+-->                
+                    <field name="x_doctor"/>
+
+                    <field name="amount_total" type="measure"/>	             
+	             </graph>
+	         </field>
+	    </record>
 
 
-<!-- FILTER --> 
 
+
+		<!-- FILTER --> 
 		<record id="sale.view_sales_order_filter" model="ir.ui.view">
-
 		   <field name="name">sale.order.search.modified</field>
 		   <field name="model">sale.order</field>		   
 		   <field name="arch" type="xml">
 
-
 			   <search string="orders">
-
 
 <!--
 												('date_order', '&lt;=', datetime.datetime.now().strftime('%Y-%m-%d 23:23:59')), 
@@ -155,7 +172,10 @@
 
 						<filter name="Médico" context="{'group_by':'x_doctor'}"/>
 
-						<filter name="Generado por" context="{'group_by':'user_id'}"/>
+						<filter name="Paciente" context="{'group_by':'patient'}"/>
+<!--
+						<filter name="Creado por" context="{'group_by':'user_id'}"/>
+-->
 					</group>
 
 

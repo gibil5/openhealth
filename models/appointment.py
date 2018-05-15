@@ -176,11 +176,11 @@ class Appointment(models.Model):
 			
 			('error', 					'Error'),
 
-
-
-
 			#('completed', 				'Completo'),
 			('invoiced', 				'Facturado'),
+
+
+			('event', 					'Evento'),
 
 
 
@@ -208,8 +208,11 @@ class Appointment(models.Model):
 	patient = fields.Many2one(
 			'oeh.medical.patient',
 			string = "Paciente", 	
-			ondelete='cascade', 			
+			ondelete='cascade', 
+
 			#required=True, 
+			required=False, 
+			
 			readonly = False, 
 		)
 
@@ -226,21 +229,56 @@ class Appointment(models.Model):
 
 
 
-	# Duration 
-	duration = fields.Float(
-			string="Duración (h)", 			
-			compute='_compute_duration', 
-			readonly=True, 
+
+	_h_duration = {
+					(0.25,0.25):	0.25,
+					(0.5,0.5):		0.5,
+					(0.45,0.45):	0.45,
+					(1,1):			1,
+				}	
+
+	duration_sel = fields.Selection(
+			string="Duración (h)",	
+			selection = [
+							(0.25,0.25), 
+							(0.5,0.5), 
+							(0.45,0.45), 
+							(1,1), 
+						],
+
+			default=0.5, 
 		)
 
+	#@api.onchange('duration_sel')
+	#def _onchange_duration_sel(self):
+	#	if self.duration_sel != False:	
+			#self.duration = self._h_duration[self.duration_sel]
+			#self.duration = self.duration_sel
+
+	
+
+
+	# Duration 
+	duration = fields.Float(
+			string="Duración (h)",
+			#readonly=True, 
+			default=0.5, 
+
+			#compute='_compute_duration', 
+		)
+
+
 	#@api.multi
-	@api.depends('x_type')
-	def _compute_duration(self):
-		for record in self:	
-			if record.x_type == 'consultation'   or   record.x_type == 'procedure'   or   record.x_type == 'session':
-				record.duration = 0.5
-			elif record.x_type == 'control':
-				record.duration = 0.25
+	#@api.depends('x_type')
+	#def _compute_duration(self):	
+	#	for record in self:	
+	#		if record.x_type in ['consultation', 'procedure', 'session']:
+	#			record.duration = 0.5
+	#		elif record.x_type == 'control':
+	#			record.duration = 0.25
+	#		else: 
+	#			record.duration = 0.5
+
 
 
 
@@ -312,13 +350,15 @@ class Appointment(models.Model):
         			('procedure', 'Procedimiento'),
         			('session', 'Sesión'),
         			('control', 'Control'),
-
         			('cosmetology', 'Cosmiatría'),
 
+        			('event', 'Evento'),
         		]
 
 	x_type = fields.Selection(
+
 				selection = _type_list, 
+		
 				string="Tipo",
 				required=True, 
 				)
@@ -426,6 +466,7 @@ class Appointment(models.Model):
 
 	# Display 
 	x_display = fields.Char(
+
 			compute='_compute_x_display', 
 		)
 
@@ -436,18 +477,10 @@ class Appointment(models.Model):
 	def _compute_x_display(self):
 		for record in self:
 
-			#record.x_display = record.x_patient_name_short + ' - '  + record.x_doctor_code + ' - ' + record.x_type_cal 
-
-
-			#record.x_display = record.x_patient_name_short + ' - '  + record.x_doctor_code 
+			# Patient or Event 
 			record.x_display = record.x_patient_name_short + ' - '  + record.x_doctor_code + ' - ' + record.x_type_cal + ' - ' + record.x_state_short
 			
-
-
-
-
-
-			#if record.x_machine != False	or 	record.x_machine_cos != False:
+			# Machine 
 			if record.x_machine != False:
 				record.x_display = record.x_display + ' - ' + record.x_machine_short
 
@@ -464,15 +497,16 @@ class Appointment(models.Model):
 						'pre_scheduled_control':	'3',
 						'error':					'55',
 
-
-						
 						#'completed':				'20',
 						'invoiced':					'10',
+
+						'event':					'11',
 					}
 
 
 
 	x_state_short = fields.Char(
+
 			compute='_compute_x_state_short',
 		)
 
@@ -570,8 +604,9 @@ class Appointment(models.Model):
 
 
 
-
+	# Patient name short 
 	x_patient_name_short = fields.Char(
+
 			compute='_compute_x_patient_name_short', 
 		)
 
@@ -580,11 +615,17 @@ class Appointment(models.Model):
 	@api.depends('patient')
 
 	def _compute_x_patient_name_short(self):
-		for record in self:
-			patient_name = record.patient.name
-			first_half = patient_name.split(' ')[0]
-			record.x_patient_name_short = first_half
 
+		for record in self:
+
+			if record.patient.name != False: 
+				patient_name = record.patient.name
+				first_half = patient_name.split(' ')[0]
+			else:
+				#first_half = 'EV'
+				first_half = 'X'
+
+			record.x_patient_name_short = first_half
 
 
 
@@ -929,30 +970,26 @@ class Appointment(models.Model):
 	_type_cal_dic = {
         			'consultation': 	'C',
         			'procedure': 		'P',
-        			'session': 			'S',
-        			
-        			#'control': 			'X',
-
-
-        			'Consulta': 	'C',
-        			'Procedimiento': 		'P',
-        			'Sesion': 			'S',
-
-
-        			#'X': 			'Ctl',
+        			'session': 			'S',        			
         			'control': 			'Ctl',
+
+        			'Consulta': 		'C',
+        			'Procedimiento': 	'P',
+        			'Sesion': 			'S',
         			'Control': 			'Ctl',
+
+        			'event': 			'EVENTO',
         		}
 
 
 
 	_type_cal_list = [
-        			('C', 'C'),
-        			('P', 'P'),
-        			('S', 'S'),
-
-        			#('X', 'Ctl'),
+        			('C', 	'C'),
+        			('P', 	'P'),
+        			('S', 	'S'),
         			('Ctl', 'Ctl'),
+
+        			('EVENTO', 	'EVENTO'),
 
         			#('consultation', 'C'),
         			#('procedure', 'P'),
@@ -971,6 +1008,7 @@ class Appointment(models.Model):
 	@api.depends('x_type')
 	
 	def _compute_x_type_cal(self):
+
 		for record in self:	
 			record.x_type_cal = self._type_cal_dic[record.x_type]
 

@@ -230,24 +230,22 @@ class Appointment(models.Model):
 
 
 
-	_h_duration = {
-					(0.25,0.25):	0.25,
-					(0.5,0.5):		0.5,
-					(0.45,0.45):	0.45,
-					(1,1):			1,
-				}	
-
-	duration_sel = fields.Selection(
-			string="Duración (h)",	
-			selection = [
-							(0.25,0.25), 
-							(0.5,0.5), 
-							(0.45,0.45), 
-							(1,1), 
-						],
-
-			default=0.5, 
-		)
+	#_h_duration = {
+	#				(0.25,0.25):	0.25,
+	#				(0.5,0.5):		0.5,
+	#				(0.45,0.45):	0.45,
+	#				(1,1):			1,
+	#			}	
+	#duration_sel = fields.Selection(
+	#		string="Duración (h)",	
+	#		selection = [
+	#						(0.25,0.25), 
+	#						(0.5,0.5), 
+	#						(0.45,0.45), 
+	#						(1,1), 
+	#					],
+	#		default=0.5, 
+	#	)
 
 	#@api.onchange('duration_sel')
 	#def _onchange_duration_sel(self):
@@ -258,11 +256,37 @@ class Appointment(models.Model):
 	
 
 
+
+	comments = fields.Text (
+			#'Comments', 
+			'Observaciones', 
+			readonly=False,
+			#readonly=True,
+			#states={'Scheduled': [('readonly', False)]}
+		)
+
+
+
+
+
+	@api.onchange('x_type')
+	def _onchange_x_type(self):
+
+		print
+		print 'On change type'
+
+		self.duration = 0.5
+		if self.x_type == 'event': 
+			print 'Type equal event'
+			self.state = 'event'
+
+
+
 	# Duration 
 	duration = fields.Float(
 			string="Duración (h)",
 			#readonly=True, 
-			default=0.5, 
+			default=0.5,
 
 			#compute='_compute_duration', 
 		)

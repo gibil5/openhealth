@@ -223,7 +223,7 @@ class Partner(models.Model):
 
 
 	street2 = fields.Char(
-			string = "Distrito", 	
+			string = "Distrito 2", 	
 			
 			#required=True, 
 			required=False, 

@@ -140,6 +140,8 @@ _education_level_type = [
 			('masterphd', 'Posgrado'),
 			]
 
+
+
 _FAMILY_RELATION = [
 			
 			('none', 'Ninguno'),
@@ -170,6 +172,7 @@ _first_contact_list = [
 		('none','Ninguno'), 
 		('recommendation','Recomendación'), 
 		('tv','Tv'), 
+		
 		('radio','Radio'), 
 		('internet','Internet'), 
 		('website','Sitio web'), 

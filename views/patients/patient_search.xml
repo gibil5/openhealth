@@ -50,6 +50,65 @@
 
 					<field 	name="name" 				filter_domain="['|',('name','ilike',self),('x_dni','ilike',self)]"/>
 
+
+
+
+
+					<!-- Filters --> 
+					<filter string="Enero" domain="[
+															('x_date_record','&gt;=','2018-01-01 05:00:00'),
+															('x_date_record','&lt;','2018-02-01 05:00:00'),
+											]"/>
+
+					<filter string="Febrero" domain="[
+															('x_date_record','&gt;=','2018-02-01 05:00:00'),
+															('x_date_record','&lt;','2018-03-01 05:00:00'),
+											]"/>
+
+					<filter string="Marzo" domain="[
+															('x_date_record','&gt;=','2018-03-01 05:00:00'),
+															('x_date_record','&lt;','2018-04-01 05:00:00'),
+											]"/>
+
+					<filter string="Abril" domain="[
+															('x_date_record','&gt;=','2018-04-01 05:00:00'),
+															('x_date_record','&lt;','2018-05-01 05:00:00'),
+											]"/>
+
+					<filter string="Mayo" domain="[
+															('x_date_record','&gt;=','2018-05-01 05:00:00'),
+															('x_date_record','&lt;','2018-06-01 05:00:00'),
+											]"/>
+
+
+
+					<filter string="Vip" domain="[
+															('x_vip','!=', False),
+											]"/>
+
+					<filter string="No Vip" domain="[
+															('x_vip','=', False),
+											]"/>
+
+
+
+					<!-- Group By --> 
+					<group expand="1" string="Group By">
+
+						<filter name="Fecha de Creación" context="{'group_by':'create_date'}"/>
+
+						<filter name="Fecha de Registro" context="{'group_by':'x_date_record'}"/>
+
+						<filter name="Vip" context="{'group_by':'x_vip'}"/>
+<!--
+						<filter name="Tipo" context="{'group_by':'x_type'}"/>
+						<filter name="Familia" context="{'group_by':'x_family'}"/>
+						<filter name="Producto" context="{'group_by':'x_product'}"/>
+						<filter name="Médico" context="{'group_by':'x_doctor'}"/>
+						<filter name="Paciente" context="{'group_by':'patient'}"/>
+						<filter name="Creado por" context="{'group_by':'user_id'}"/>
+-->
+					</group>
 			   </search>
 
 		   </field>

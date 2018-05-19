@@ -4,6 +4,38 @@
 
 
 
+		<!-- Graph --> 
+	    <record id="view_oeh_medical_patient_graph" model="ir.ui.view">
+	    	
+	         <field name="name">patient.graph</field>
+
+	         <field name="model">oeh.medical.patient</field>
+
+	         <field name="arch" type="xml">
+
+	             <graph string="Análisis de Pacientes">
+<!--
+					<field name="date_order" interval="day" type="row"	/>
+
+                    <field name="amount_total" type="measure"/>	             
+
+                    <field name="sex"/>
+                    <field name="city"/>
+                    <field name="street2_sel"/>
+                    <field name="street2"/>
+-->                
+                    
+                    <field name="x_first_contact"/>
+
+	             </graph>
+	         </field>
+	    </record>
+
+
+
+
+
+
 		<!-- FORM --> 
 		<record model="ir.ui.view" id="oeh_medical_patient_view">
 			<field name="name">Patient</field>
@@ -357,6 +389,8 @@ Cosmetology
 								<field name="x_date_created"  		readonly="1"	/>
 -->							
 								<field name="create_date"  			readonly="1"	/>
+								<field name="x_date_record"  		readonly="1"	/>
+								<field name="x_date_created"  		readonly="1"	/>
 
 
 
@@ -479,6 +513,8 @@ Relax !
 
 
 					<field name="create_date"	string="Fecha de creación"		/>
+					<field name="x_date_record"		groups='openhealth.roots'	/>
+
 
 <!--
 					<field name="dob"/>
@@ -547,15 +583,39 @@ Relax !
 
 
 
+		<!-- ACTION - All -->
+		<record model="ir.actions.act_window" id="patient_all_list_action">		
+			<field name="name">Pacientes Todos</field>
+			<field name="res_model">oeh.medical.patient</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form,kanban,graph,pivot</field>
+			<field name="context">{}</field>
+			<field name="domain">[]</field>
+
+			<!--
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first treatment
+				</p>
+			</field>
+			-->
+		</record>
 
 
 
-		<!-- ACTION -->
+
+
+		<!-- ACTION - With Id-->
 		<record model="ir.actions.act_window" id="patient_list_action">		
 			<field name="name">Pacientes</field>
 			<field name="res_model">oeh.medical.patient</field>
 			<field name="view_type">form</field>
+<!--
 			<field name="view_mode">tree,form,kanban</field>
+-->		
+			<field name="view_mode">tree,form,kanban,graph,pivot</field>
 			<field name="context">{}</field>
 
 
@@ -577,7 +637,41 @@ Relax !
 
 
 
-		<!-- ACTION -->
+		<!-- ACTION - Without Id -->
+		<record model="ir.actions.act_window" id="patient_no_idcode_list_action">		
+			<field name="name">Pacientes sin Número de Historia</field>
+			<field name="res_model">oeh.medical.patient</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form,kanban,graph,pivot</field>
+			<field name="context">{}</field>
+
+			<field name="domain">[
+
+									('x_id_code', '=', False), 
+				]</field>
+
+			<!--
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first treatment
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+
+
+
+
+
+
+
+
+		<!-- ACTION - Inactive -->
 		<record model="ir.actions.act_window" id="patient_inactive_list_action">		
 			<field name="name">Pacientes Inactivos</field>
 			<field name="res_model">oeh.medical.patient</field>
@@ -589,7 +683,6 @@ Relax !
 									('active', '=', False), 
 				]</field>
 
-
 			<!--
 			<field name="domain">[]</field>
 			<field name="context">{}</field>
@@ -604,51 +697,7 @@ Relax !
 
 
 
-
-
-
-
-
-
-
-
-<!-- ACTION -->
-		<record model="ir.actions.act_window" id="patient_no_idcode_list_action">		
-			<field name="name">Pacientes sin Número de Historia</field>
-			<field name="res_model">oeh.medical.patient</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form,kanban</field>
-
-			<field name="context">{}</field>
-
-
-
-			<field name="domain">[
-
-									('x_id_code', '=', False), 
-				]</field>
-
-
-
-			<!--
-			<field name="domain">[]</field>
-			<field name="context">{}</field>
-			<field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first treatment
-				</p>
-			</field>
-			-->
-		</record>
-
-
-
-
-
-
-
-
-		<!-- ACTION -->
+		<!-- ACTION - Vip -->
 		<record model="ir.actions.act_window" id="patient_vip_list_action">			
 			<field name="name">Pacientes Vip - jx</field>
 			<field name="res_model">oeh.medical.patient</field>
@@ -680,8 +729,8 @@ Relax !
 
 
 		<!-- FAVS -->
-
 		<!-- By Month --> 
+		<!-- By Vip --> 
 <!--		
 		<record id="openhealth.filter_patient_month" model="ir.filters">
 			<field name="name">Por Mes</field>
@@ -691,17 +740,12 @@ Relax !
 									'order':	'x_date_created desc', 
 								}</field>
 		</record>
--->
-		<!-- By Vip --> 
-		<!--		
 		<record id="openhealth.filter_patient_vip" model="ir.filters">
 			<field name="name">Por VIP</field>
 			<field name="model_id">oeh.medical.patient</field>
 			<field name="context">{'group_by': ['x_vip']}</field>
 		</record>
-		-->
-
-
+-->
 
 
 	</data>

@@ -346,9 +346,7 @@ class AccountLine(models.Model):
 
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 
-
-
-	# Update 
+	# Update Fields
 	@api.multi
 	def update_fields(self):  
 

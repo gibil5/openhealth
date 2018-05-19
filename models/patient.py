@@ -19,7 +19,9 @@ class Patient(models.Model):
 	_inherit = 'oeh.medical.patient'
 
 	#_order = 'write_date desc'
-	_order = 'create_date desc'
+	#_order = 'create_date desc'
+	_order = 'x_id_code desc'
+
 
 
 
@@ -248,7 +250,7 @@ class Patient(models.Model):
 		)
 
 	x_district = fields.Char(
-			string='Distrito', 
+			string='Distrito L', 
 		)
 
 	# Correction comment 
@@ -936,7 +938,7 @@ class Patient(models.Model):
 
 	age = fields.Char(
 			string = "Edad", 		
-			)
+		)
 
 	
 	sex = fields.Selection(
@@ -1127,12 +1129,15 @@ class Patient(models.Model):
 			#required=True, 
 			)
 
+
+
 	x_education_level= fields.Selection(
 			selection = pat_vars._education_level_type,
 			string = 'Grado de instrucción',
 			#default = 'university', 
 			#required=True, 
 			)
+
 
 
 

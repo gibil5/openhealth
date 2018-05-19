@@ -6,11 +6,36 @@
 
 
 <!--
-			name="Open Health"
-			groups="openhealth.roots,openhealth.managers"
 -->
 <!-- Open Health -->
 		<menuitem id="main_openhealth_menu_nex" 
+
+			sequence="1"
+
+			name="Marketing"
+			
+			groups="openhealth.roots,openhealth.managers"
+			/>
+
+		<!-- Sales Record -->
+		<menuitem id="oh_account_menu" name="Marketing"
+			parent="main_openhealth_menu_nex"/>
+
+
+		<!-- Account Contasis -->
+		<menuitem id="oh_account_conta_menu" name="Pacientes Nuevos" parent="oh_account_menu"
+			sequence="0"
+			action="account_contasis_patient_list_action"/>
+
+
+
+
+
+
+
+
+<!-- Accounting -->
+		<menuitem id="main_account_menu" 
 			sequence="1"
 
 			name="Contabilidad"
@@ -19,15 +44,13 @@
 			/>
 
 
-		<menuitem id="openhealth_menu" name="Registro de Ventas"
-			parent="main_openhealth_menu_nex"/>
-
-
-
+		<!-- Sales Record -->
+		<menuitem id="account_menu" name="Registro de Ventas"
+			parent="main_account_menu"/>
 
 
 		<!-- Account Contasis -->
-		<menuitem id="account_conta_menu" name="Ventas" parent="openhealth_menu"
+		<menuitem id="account_conta_menu" name="Ventas" parent="account_menu"
 			sequence="0"
 			action="account_contasis_list_action"/>
 

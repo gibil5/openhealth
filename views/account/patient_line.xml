@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		
+
+
+
+
+		<!-- Pivot --> 
+	   <record id="view_patient_line_pivot" model="ir.ui.view">
+
+	         <field name="name">patient.line.pivot</field>
+	    
+			<field name="model">openhealth.patient.line</field>
+	    
+	         <field name="arch" type="xml">
+	    
+
+
+	             <pivot string="Patient Analysis" disable_linking="False"	display_quantity="True"	>
+	    
+	                <field name="date_record" interval="month" type="col"	/>
+	    
+	                <field name="vip" type="measure"	/>
+	                <field name="sex" type="measure"	/>
+	                <field name="education" type="measure"	/>
+	                <field name="first_contact" type="measure"	/>
+	    
+	             </pivot>
+	    
+	         </field>
+
+	    </record>
+
+
+<!--
+	   <record id="sale.view_order_product_pivot" model="ir.ui.view">
+	         <field name="name">sale.report.pivot</field>
+	         <field name="model">sale.report</field>
+	         <field name="arch" type="xml">
+	             <pivot string="Sales Analysis" disable_linking="True"	display_quantity="True"	>
+	                <field name="date" interval="month" type="col"	/>
+	                <field name="price_subtotal" type="measure"	/>
+	             </pivot>
+	         </field>
+
+	    </record>
+-->
+
+	
+
+
+
+
+
+		<!-- Graph --> 
+		<record id="view_patient_line_graph" model="ir.ui.view">
+			
+			<field name="name">patient.line.graph</field>
+
+			<field name="model">openhealth.patient.line</field>
+
+			<field name="type">graph</field>
+
+			<field name="arch" type="xml">
+
+
+				<graph string="Análisis de Pacientes">
+<!--
+					<field name="date_order" interval="day" type="row"	/>
+					<field name="amount_total" type="measure"/>	             
+
+
+					<field name="sex"/>
+					<field name="city"/>
+					<field name="street2_sel"/>
+					<field name="street2"/>
+
+
+					<field name="age_years"/>
+					<field name="sex"/> 
+					<field name="count"	/>
+					<field name="first_contact"  group="True" />
+					<field name="age_years"    type='measure'   />
+
+					<field name="sex"   type='col'   />
+
+					<field name="first_contact"  />
+-->                
+					
+					<field name="education"  />
+
+					<field name="sex"   />
+
+				 </graph>
+			 </field>
+		</record>
+
+
+
+
+		<!-- Window Form Action -->
+		<record model="ir.actions.act_window" id="patient_line_form_action">
+
+			<field name="name">Pacientes</field>
+			
+			<field name="res_model">openhealth.patient.line</field>
+			
+			<field name="view_type">form</field>
+			
+			<field name="view_mode">tree,form,graph,pivot</field>
+			
+
+			<field name="domain">[
+									('account_id', '=', active_id),
+								]
+			</field>
+
+
+			<field name="limit">1000</field>
+		</record>
+
+
+	</data>
+</openerp>

@@ -1,0 +1,24 @@
+
+		<!-- Graph --> 
+		<record id="view_patient_line_graph_2" model="ir.ui.view">
+			
+			<field name="name">patient.line.graph.2</field>
+
+			<field name="model">openhealth.patient.line</field>
+
+			<field name="type">graph</field>
+
+			<field name="arch" type="xml">
+
+
+				<graph string="Análisis de Pacientes - 2">
+
+					<field name="first_contact"  />
+
+					<field name="sex"   />
+
+				 </graph>
+			 </field>
+		</record>
+
+

@@ -20,7 +20,7 @@
 	'description': """
 
 
-		Last built: 15 May 2018 
+		Last built: 18 May 2018 
 
 		
 		Stability by Design !
@@ -158,7 +158,11 @@
 
 		'views/payment_methods/payment_method_line.xml',
 		'views/account/account_line.xml',
+
+		'views/account/patient_line.xml',
+
 		'views/account/account_contasis.xml',
+
 
 		'views/menus/menus_openhealth.xml',
 

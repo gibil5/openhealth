@@ -380,7 +380,15 @@
 
 										<field name="age_years"/>
 
+
+
+										
+										<field name="date_create"/>
+										
 										<field name="date_record"/>
+
+
+
 
 										<field name="first_contact"/>
 

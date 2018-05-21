@@ -37,8 +37,8 @@ class PaitentLine(models.Model):
 
 	# Date Record 
 	date_record = fields.Datetime(
-			#string="Fecha de Registro", 
-			string="Fecha creación", 
+			string="Fecha de Registro", 
+			#string="Fecha creación", 
 		)
 
 

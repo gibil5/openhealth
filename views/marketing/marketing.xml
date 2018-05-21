@@ -22,17 +22,29 @@
 
 
 
+<!--
+								attrs="{'invisible':[	
+														('x_type','not in',['patient']), 
+											]}"
+-->
 						<!-- Update -->
 						<button 
 								type="object" 
 								class="oe_highlight"
-								attrs="{'invisible':[	
-														('x_type','not in',['patient']), 
-											]}"
 								name="update_patients"
 
 								string="Actualizar"								
 						/>
+
+						<!-- Update Legacy -->
+						<button 
+								type="object" 
+								class="oe_highlight"
+								name="update_patients_legacy"
+
+								string="Actualizar - Legacy"								
+						/>
+
 
 
 
@@ -50,18 +62,17 @@
 
 						<!-- Correct -->
 <!--						
+-->
 						<button 
 								type="object" 
 								class="oe_highlight"
-								attrs="{'invisible':[	
-														('x_type','not in',['patient']), 
-											]}"
+
 
 								name="correct_patients"
 
-								string="Correct Patients"								
+								string="Correct Legacy"								
 						/>
--->
+
 
 
 						<!-- Patients -->

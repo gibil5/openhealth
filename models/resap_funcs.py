@@ -34,7 +34,8 @@ def get_per(self, value, total):
 # Provides Patients between begin date and end date. 
 
 @api.multi
-def get_patients_filter(self, date_bx, date_ex):
+#def get_patients_filter(self, date_bx, date_ex):
+def get_patients_filter(self, date_bx, date_ex, mode):
 
 	print
 	print 'Get Patients'
@@ -51,32 +52,65 @@ def get_patients_filter(self, date_bx, date_ex):
 
 
 
+	# Legacy 
+	if mode == 'legacy': 
 
-	# Patients 
-	patients = self.env['oeh.medical.patient'].search([
-														#('create_date', '>=', date_begin),													
-														#('create_date', '<', date_end),
+		# Patients 
+		patients = self.env['oeh.medical.patient'].search([
+															('create_date', '>=', date_begin),													
+															('create_date', '<', date_end),
 
-														('x_date_record', '>=', date_begin),													
-														('x_date_record', '<', date_end),
-											],
-												order='create_date asc',
-												#limit=1,
-												#limit=500,
-											)
+															#('x_date_record', '>=', date_begin),													
+															#('x_date_record', '<', date_end),
+												],
+													order='create_date asc',
+													#limit=1,
+													#limit=500,
+												)
+
+		# Count 
+		count = self.env['oeh.medical.patient'].search_count([													
+															('create_date', '>=', date_begin),
+															('create_date', '<', date_end),
+															
+															#('x_date_record', '>=', date_begin),
+															#('x_date_record', '<', date_end),
+												],
+													#order='x_serial_nr asc',
+													#limit=1,
+												)
 
 
-	# Count 
-	count = self.env['oeh.medical.patient'].search_count([													
-														#('create_date', '>=', date_begin),
-														#('create_date', '<', date_end),
-														
-														('x_date_record', '>=', date_begin),
-														('x_date_record', '<', date_end),
-											],
-												#order='x_serial_nr asc',
-												#limit=1,
-											)
+	# Normal 
+	#elif mode == 'normal': 
+	else:
+		# Patients 
+		patients = self.env['oeh.medical.patient'].search([
+															#('create_date', '>=', date_begin),													
+															#('create_date', '<', date_end),
+
+															('x_date_record', '>=', date_begin),													
+															('x_date_record', '<', date_end),
+												],
+													order='create_date asc',
+													#limit=1,
+													#limit=500,
+												)
+
+		# Count 
+		count = self.env['oeh.medical.patient'].search_count([													
+															#('create_date', '>=', date_begin),
+															#('create_date', '<', date_end),
+															
+															('x_date_record', '>=', date_begin),
+															('x_date_record', '<', date_end),
+												],
+													#order='x_serial_nr asc',
+													#limit=1,
+												)
+
+
+
 	return patients, count
 
 # get_patients_filter

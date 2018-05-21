@@ -45,12 +45,16 @@ class Marketing(models.Model):
 
 		# Loop 
 		for line in self.patient_line: 
+
 			# Filter 1 
 			if line.patient.x_date_record == False: 
+			
 				# Filter 2
 				if line.patient.x_date_record != line.patient.create_date:
+			
 					# This !
 					line.patient.x_date_record = line.patient.create_date
+			
 					print 'Correct !'
 		print 
 
@@ -945,6 +949,67 @@ class Marketing(models.Model):
 
 
 
+# ----------------------------------------------------------- Update Legacy ------------------------------------------------------
+
+	# Update Patients Legacy
+	@api.multi
+	def update_patients_legacy(self):  
+
+		print
+		print 'Update Patients Legacy'
+
+		# Clear 
+		self.patient_line.unlink()
+
+
+
+		# Orders 
+		#patients,count = resap_funcs.get_patients_filter(self, self.date_begin, self.date_end)
+		mode = 'legacy'
+		patients,count = resap_funcs.get_patients_filter(self, self.date_begin, self.date_end, mode)
+
+
+
+		self.total_count = count
+
+		# Loop 
+		for patient in patients: 
+
+			pat_line = self.patient_line.create({
+														'date_create': patient.create_date,
+
+														'date_record': patient.x_date_record,
+
+														
+														'patient': patient.id, 
+														'sex': patient.sex, 
+														'dob': patient.dob, 
+														'age': patient.age, 
+														'first_contact': patient.x_first_contact, 
+														'education': patient.x_education_level, 
+														'vip': patient.x_vip, 
+														'country': patient.country_id.name, 
+														'city': patient.city, 
+														'district': patient.street2, 
+
+														'marketing_id': self.id, 
+					})
+
+
+			ret = pat_line.update_fields()
+
+			if ret == -1:
+				print 'Age undefined !'
+
+
+		# Set Stats 
+		self.set_stats()
+
+	# update_patients_legacy
+
+
+
+
 # ----------------------------------------------------------- Update ------------------------------------------------------
 
 	# Update Patients
@@ -954,80 +1019,55 @@ class Marketing(models.Model):
 		print
 		print 'Update Patients'
 
-
 		# Clear 
 		self.patient_line.unlink()
 
 
-
 		# Orders 
-		patients,count = resap_funcs.get_patients_filter(self, self.date_begin, self.date_end)
+		#patients,count = resap_funcs.get_patients_filter(self, self.date_begin, self.date_end)
+		mode = 'normal'
+		patients,count = resap_funcs.get_patients_filter(self, self.date_begin, self.date_end, mode)
 
 		self.total_count = count
-
-
-		#amount_sum = 0 
-		#count = 0 
 
 
 
 		# Loop 
 		for patient in patients: 
 
-			#count = count + 1
-
-
 			pat_line = self.patient_line.create({
-														'patient': patient.id, 
-														
 														'date_create': patient.create_date,
 
 														'date_record': patient.x_date_record,
 
 
 														
+														'patient': patient.id, 
+
 														'sex': patient.sex, 
-
 														'dob': patient.dob, 
-
 														'age': patient.age, 
 
-
-
 														'first_contact': patient.x_first_contact, 
-
 														'education': patient.x_education_level, 
-
 														'vip': patient.x_vip, 
-
-
-
 														
 														'country': patient.country_id.name, 
-
-														#'city': patient.city.title(), 
 														'city': patient.city, 
-
-														#'district': patient.street2.title(), 
 														'district': patient.street2, 
-
-
 
 
 														'marketing_id': self.id, 
 					})
 
 
-
 			ret = pat_line.update_fields()
-
 
 			if ret == -1:
 				print 'Age undefined !'
 
 
-
-		# Stats 
+		# Set Stats 
 		self.set_stats()
 
 	# update_patients

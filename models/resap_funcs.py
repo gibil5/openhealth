@@ -15,7 +15,12 @@ import datetime
 @api.multi
 def get_per(self, value, total): 
 
-	per = ( float(value) / float(total) ) * 100
+	per = 0 
+
+
+	if total != 0: 
+		per = ( float(value) / float(total) ) * 100
+
 
 	return per 
 

@@ -759,18 +759,21 @@ class Marketing(models.Model):
 		self.sex_undefined = count_u
 
 		# Per
-		self.sex_male_per = ( float(self.sex_male) / float(self.total_count) ) * 100
-		self.sex_female_per = ( float(self.sex_female) / float(self.total_count) ) * 100
-		self.sex_undefined_per = ( float(self.sex_undefined) / float(self.total_count) ) * 100
+		if self.total_count != 0: 
+			self.sex_male_per = ( float(self.sex_male) / float(self.total_count) ) * 100
+			self.sex_female_per = ( float(self.sex_female) / float(self.total_count) ) * 100
+			self.sex_undefined_per = ( float(self.sex_undefined) / float(self.total_count) ) * 100
 
 
 
 		# Ages 
-		self.age_mean = count_a / self.total_count
 		self.age_min = age_min
 		self.age_max = age_max
 		self.age_undefined = count_age_u
-		self.age_undefined_per = ( float(self.age_undefined) / float(self.total_count) ) * 100
+		
+		if self.total_count != 0: 
+			self.age_mean = count_a / self.total_count
+			self.age_undefined_per = ( float(self.age_undefined) / float(self.total_count) ) * 100
 
 
 

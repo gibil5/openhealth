@@ -371,11 +371,17 @@ _street2_list_old = [
 
 
 _city_list = [
+			
+			# Legacy
+			('Lima','Lima'),
+			('Piura','Piura'),
+
+
 
 			('lima','Lima'),
 			('abancay','Abancay'),
 
-			#('huaraz','Huaraz'),
+			('huaraz','Huaraz'),
 			('ancash','Ancash'),
 
 			('arequipa','Arequipa'),

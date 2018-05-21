@@ -1,146 +1,25 @@
-# -*- coding: utf-8 -*-
-#
-# 	Account Contasis
-# 
-# Created: 				18 April 2018
-#
-
-from openerp import models, fields, api
-import datetime
-import resap_funcs
-import acc_funcs
-
-#import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
-
-import collections
-
-
-class AccountContasis(models.Model):
-
-	#_inherit='sale.closing'
-
-	_name = 'openhealth.account.contasis'
-
-	#_order = 'create_date desc'
-	#_order = 'date_begin asc'
-	_order = 'date_begin asc,name asc'
 
 
 
 
 
 
-
-# ----------------------------------------------------------- Relational ------------------------------------------------------
 
 
 	# Account Lines 
-	account_line = fields.One2many(
-			'openhealth.account.line', 
-			'account_id', 
-		)
+	#account_line = fields.One2many(
+	#		'openhealth.account.line', 
+	#		'marketing_id', 
+	#	)
 
 	# Payment Lines 
-	payment_line = fields.One2many(
-			'openhealth.payment_method_line',
-			'account_id', 			
-		)
+	#payment_line = fields.One2many(
+	#		'openhealth.payment_method_line',
+	#		'marketing_id', 			
+	#	)
 
 
 
-
-
-
-# ----------------------------------------------------------- Primitives ------------------------------------------------------
-	
-	# Name 
-	name = fields.Char(
-			string="Nombre", 		
-			required=True, 
-		)
-
-
-	# Type 
-	x_type = fields.Selection(
-
-			selection=[	
-						('order', 		'Ventas'),
-						('patient', 	'Pacientes'),
-			], 
-
-			string="Tipo",
-			
-			#required=True, 
-			required=False, 
-		)
-
-
-
-
-
-
-	# Dates
-	date = fields.Date(
-			string="Fecha", 
-			default = fields.Date.today, 
-			#readonly=True,
-			required=True, 
-		)
-
-
-	date_begin = fields.Date(
-			string="Fecha Inicio", 
-			default = fields.Date.today, 
-			#readonly=True,
-			required=True, 
-		)
-
-
-	date_end = fields.Date(
-			string="Fecha Fin", 
-			default = fields.Date.today, 
-			#readonly=True,
-			required=True, 
-		)
-
-
-
-
-	vspace = fields.Char(
-			' ', 
-			readonly=True
-		)
-
-
-
-
-	# Totals
-	total_amount = fields.Float(
-			#'Total Monto',
-			'Total',
-			readonly=True, 
-		)
-
-
-
-	# Totals Count
-	total_count = fields.Integer(
-			#'Total Ventas',
-			#'Nr',
-			'Nr Pacientes',
-			readonly=True, 
-		)
-
-
-
-
-
-
-
-
-# ----------------------------------------------------------- Actions ------------------------------------------------------
 
 	# Update Orders
 	@api.multi
@@ -247,7 +126,7 @@ class AccountContasis(models.Model):
 														'amount_net': amount_net,
 														'amount_tax': amount_tax,
 
-														'account_id': self.id, 
+														'marketing_id': self.id, 
 					})
 
 				acc_line.update_fields()
@@ -284,7 +163,7 @@ class AccountContasis(models.Model):
 														'subtotal': line.subtotal, 
 														'method': line.method, 
 																												
-														'account_id': self.id, 
+														'marketing_id': self.id, 
 					})
 
 

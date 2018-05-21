@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+<!-- Accounting -->
+		<menuitem id="main_account_menu" 
+			sequence="1"
+
+			name="Contabilidad"
+			
+			groups="openhealth.roots,openhealth.managers,openhealth.directors"
+			/>
+
+
+		<!-- Sales Record -->
+		<menuitem id="account_menu" name="Registro de Ventas"
+			parent="main_account_menu"/>
+
+
+		<!-- Account Contasis -->
+		<menuitem id="account_conta_menu" name="Ventas" parent="account_menu"
+			sequence="0"
+			action="account_contasis_list_action"/>
+
+
+
+	</data>
+</openerp>

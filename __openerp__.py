@@ -20,7 +20,7 @@
 	'description': """
 
 
-		Last built: 18 May 2018 
+		Last built: 21 May 2018 
 
 		
 		Stability by Design !
@@ -155,16 +155,22 @@
 		'views/report_sale/report_sale.xml',
 		'views/report_sale/item_counter.xml',
 
-
 		'views/payment_methods/payment_method_line.xml',
 		'views/account/account_line.xml',
-
-		'views/account/patient_line.xml',
-
 		'views/account/account_contasis.xml',
 
 
-		'views/menus/menus_openhealth.xml',
+
+
+
+		# Recent 
+		#'views/histogram/histogram.xml',
+		#'views/places/place.xml',
+		#'views/account/patient_line.xml',
+		#'views/marketing/marketing.xml',
+		#'views/marketing/marketing_pivot.xml',
+
+		#'views/menus/menus_openhealth.xml',
 
 
 
@@ -618,9 +624,10 @@
 		'views/legacy/legacy_manager_order.xml',
 		'views/legacy/legacy_manager_patient.xml',
 		'views/legacy/legacy_order.xml',
-		
+
 		'views/menus/menus_legacy.xml',
 
+		'views/menus/menus_account.xml',
 
 
 		

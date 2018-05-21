@@ -42,6 +42,8 @@ class PaitentLine(models.Model):
 		)
 
 
+
+
 	# Age 
 	age = fields.Char(
 			string = "Edad", 		
@@ -62,12 +64,28 @@ class PaitentLine(models.Model):
 
 
 
+
 	# Sex 
 	sex = fields.Selection(
 			selection = pat_vars._sex_type_list, 
 			string="Sexo",
 			#required=False, 
 		)
+
+	mea_m = fields.Integer(
+			'M', 
+		)
+
+	mea_f = fields.Integer(
+			'F', 
+		)
+
+	mea_u = fields.Integer(
+			'U', 
+		)
+
+
+
 
 
 	# First Contact 
@@ -77,6 +95,39 @@ class PaitentLine(models.Model):
 		
 			string = 'Primer contacto',
 		)
+	
+	mea_recommendation = fields.Integer(
+			'Pri Recomendación', 
+		)
+
+	mea_tv = fields.Integer(
+			'Pri Tv', 
+		)
+
+	mea_radio = fields.Integer(
+			'Pri Radio', 
+		)
+
+	mea_internet = fields.Integer(
+			'Pri Internet', 
+		)
+
+	mea_website = fields.Integer(
+			'Pri Website', 
+		)
+
+	mea_mail_campaign = fields.Integer(
+			'Pri Mail', 
+		)
+
+	mea_how_none = fields.Integer(
+			'Pri Ninguno', 
+		)
+
+	mea_how_u = fields.Integer(
+			'Pri Ind', 
+		)
+
 
 
 
@@ -86,6 +137,41 @@ class PaitentLine(models.Model):
 			string = 'Grado de instrucción',
 		)
 
+	mea_first = fields.Integer(
+			'Edu Primaria', 
+		)
+
+	mea_second = fields.Integer(
+			'Edu Secundaria', 
+		)
+	
+	mea_technical = fields.Integer(
+			'Edu Instituto', 
+		)
+	
+	mea_university = fields.Integer(
+			'Edu Universidad', 
+		)
+	
+	mea_masterphd = fields.Integer(
+			'Edu Posgrado', 
+		)
+
+	mea_edu_u = fields.Integer(
+			'Edu Ind', 
+		)
+	
+
+#			('first', 'Primaria'),
+#			('second', 'Secundaria'),
+#			('technical', 'Instituto'),
+#			('university', 'Universidad'),
+#			('masterphd', 'Posgrado'),
+
+
+
+
+
 
 
 	# Vip 
@@ -93,25 +179,50 @@ class PaitentLine(models.Model):
 			string = 'Vip',
 		)
 
+	mea_vip = fields.Integer(
+			'Vip', 
+		)
+
+	mea_vip_no = fields.Integer(
+			'No Vip', 
+		)
+
+
 
 
 
 	# Address
 
-	country = fields.Char()
+	country = fields.Char(
+			'Pais', 
+		)
 
-	city = fields.Char()
+	city = fields.Char(
+			'Ciudad', 
+		)
 
-	district = fields.Char()
+	district = fields.Char(
+			'Distrito', 
+		)
+
 
 
 
 
 # ----------------------------------------------------------- Relational ------------------------------------------------------
 
-	account_id = fields.Many2one(
-			'openhealth.account.contasis'
+	marketing_id = fields.Many2one(
+			#'openhealth.account.contasis'
+			'openhealth.marketing'
 		)
+
+
+
+	#account_id = fields.Many2one(
+	#		'openhealth.account.contasis'
+	#	)
+
+
 
 
 # ----------------------------------------------------------- Actions ------------------------------------------------------
@@ -120,20 +231,97 @@ class PaitentLine(models.Model):
 	@api.multi
 	def update_fields(self):  
 
+
 		#print
 		#print 'Update Fields - Patient'
 
 
+		# Age 
 		if self.age.split()[0] != 'No': 
 			self.age_years = self.age.split()[0]
 			ret = 1
-			
 		else:
-			#print self.patient
-			#print self.patient.name 
-			#print self.age 
 			ret = -1
 
 
+
+		# Places
+		if self.city != False: 
+			self.city = self.city.title()
+
+		if self.district != False: 
+			self.district = self.district.title()
+
+
+		
+
+		# Measures
+
+		# Sex 
+		if self.sex == 'Male': 
+			self.mea_m = 1
+		elif self.sex == 'Female':
+			self.mea_f = 1
+		else:
+			self.mea_u = 1
+
+		# Vip 
+		if self.vip: 
+			self.mea_vip = 1
+		else: 
+			self.mea_vip_no	= 1
+
+			
+
+		# Education
+		if self.education == 'first': 
+			self.mea_first = 1
+
+		elif self.education == 'second': 
+			self.mea_second = 1
+
+		elif self.education == 'technical': 
+			self.mea_technical = 1
+
+		elif self.education == 'university': 
+			self.mea_university = 1
+
+		elif self.education == 'masterphd': 
+			self.mea_masterphd = 1 
+
+		else: 
+			self.mea_edu_u = 1			
+
+
+
+
+
+		# First Contact 
+		if self.first_contact == 'recommendation': 
+			self.mea_recommendation = 1
+
+		elif self.first_contact == 'tv': 
+			self.mea_tv = 1
+
+		elif self.first_contact == 'radio': 
+			self.mea_radio = 1
+
+		elif self.first_contact == 'internet': 
+			self.mea_internet = 1
+
+		elif self.first_contact == 'website': 
+			self.mea_website = 1
+
+		elif self.first_contact == 'mail_campaign': 
+			self.mea_mail_campaign = 1
+
+		elif self.first_contact == 'none': 
+			self.mea_how_none = 1
+
+		else: 
+			self.mea_how_u = 1
+
+
+	
 		return ret 
 

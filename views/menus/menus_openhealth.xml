@@ -5,10 +5,40 @@
 
 
 
+
+
 <!--
+		<menuitem 	id="main_openhealth_menu_nex" 
+
 -->
+
 <!-- Open Health -->
-		<menuitem id="main_openhealth_menu_nex" 
+		<menuitem 	id="main_openhealth_menu" 
+					sequence="1"
+					name="Open Health"
+					groups="openhealth.roots,openhealth.managers"
+			/>
+
+
+		<!-- Open Health -->
+		<menuitem 	id="openhealth_menu" 
+					name="Open Health"
+					parent="main_openhealth_menu"/>
+
+
+		<!-- Marketing Patients -->
+		<menuitem 	id="oh_marketing_patient_menu" 
+					name="Pacientes Marketing" 
+					parent="openhealth_menu"
+					sequence="1"
+					action="marketing_patient_list_action"/>
+
+
+
+
+
+<!-- Marketing -->
+		<menuitem id="main_marketing_menu" 
 
 			sequence="1"
 
@@ -17,42 +47,37 @@
 			groups="openhealth.roots,openhealth.managers"
 			/>
 
-		<!-- Sales Record -->
-		<menuitem id="oh_account_menu" name="Marketing"
-			parent="main_openhealth_menu_nex"/>
 
 
-		<!-- Account Contasis -->
-		<menuitem id="oh_account_conta_menu" name="Pacientes Nuevos" parent="oh_account_menu"
-			sequence="0"
+		<!-- Marketing -->
+		<menuitem 	id="marketing_menu" 
+					name="Marketing"
+					parent="main_marketing_menu"/>
+
+
+
+
+		<!-- Marketing Patients -->
+		<menuitem 	id="marketing_patient_menu" 
+					name="Pacientes Marketing" 
+					parent="marketing_menu"
+					sequence="1"
+					action="marketing_patient_list_action"/>
+
+
+
+		<!-- Accounting -->
+<!--
+		<menuitem id="oh_account_conta_menu" name="Pacientes" parent="marketing_menu"
+			sequence="2"
 			action="account_contasis_patient_list_action"/>
+-->
 
 
 
 
 
 
-
-
-<!-- Accounting -->
-		<menuitem id="main_account_menu" 
-			sequence="1"
-
-			name="Contabilidad"
-			
-			groups="openhealth.roots,openhealth.managers,openhealth.directors"
-			/>
-
-
-		<!-- Sales Record -->
-		<menuitem id="account_menu" name="Registro de Ventas"
-			parent="main_account_menu"/>
-
-
-		<!-- Account Contasis -->
-		<menuitem id="account_conta_menu" name="Ventas" parent="account_menu"
-			sequence="0"
-			action="account_contasis_list_action"/>
 
 
 

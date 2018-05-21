@@ -1,0 +1,267 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+
+
+
+
+
+
+		<!-- Pivot - Country --> 
+	   <record id="view_country_line_pivot" model="ir.ui.view">
+			 <field name="name">country.line.pivot</field>
+			<field name="model">openhealth.country.line</field>
+			 <field name="arch" type="xml">
+
+
+				 <pivot string="country Analysis" disable_linking="False"	display_quantity="False"			>
+
+
+					<!-- Y Axis --> 
+					<field name="name"  type="row"	/>	    
+
+					<!-- X Axis --> 
+					<field name="x_count" type="measure"		/>
+
+				 </pivot>
+			 </field>
+		</record>
+
+
+
+		<!-- Pivot - City --> 
+	   <record id="view_city_line_pivot" model="ir.ui.view">
+			<field name="name">city.line.pivot</field>
+			<field name="model">openhealth.city.line</field>
+			<field name="arch" type="xml">
+
+				 <pivot string="city Analysis" disable_linking="False"	display_quantity="False"			>
+
+
+					<!-- Y Axis --> 
+					<field name="name"  type="row"	/>	    
+
+					<!-- X Axis --> 
+					<field name="x_count" type="measure"		/>
+
+				 </pivot>
+			 </field>
+		</record>
+
+
+
+		<!-- Pivot - District --> 
+	   <record id="view_district_line_pivot" model="ir.ui.view">
+			<field name="name">district.line.pivot</field>
+			<field name="model">openhealth.district.line</field>
+			<field name="arch" type="xml">
+
+				 <pivot string="District Analysis" disable_linking="False"	display_quantity="False"			>
+
+
+					<!-- Y Axis --> 
+					<field name="name"  type="row"	/>	    
+
+					<!-- X Axis --> 
+					<field name="x_count" type="measure"		/>
+
+				 </pivot>
+			 </field>
+		</record>
+
+
+
+
+
+
+
+
+
+
+		<!-- Graph --> 
+		<record id="view_district_line_graph" model="ir.ui.view">
+			
+			<field name="name">district.line.graph</field>
+
+			<field name="model">openhealth.district.line</field>
+
+			<field name="type">graph</field>
+
+			<field name="arch" type="xml">
+
+
+				<graph string="Análisis de Distritos">
+
+					<field name="x_count"  />
+
+				</graph>
+			 </field>
+		</record>
+
+
+
+
+
+
+
+
+		<!-- Tree - Place --> 
+		<record model="ir.ui.view" id="place_line_view_order_tree">
+
+			<field name="name">openhealth.place.line.tree</field>
+
+			<field name="model">openhealth.place.line</field>
+			
+			<field name="arch" type="xml">
+
+				<tree string="Place Line Tree">
+					
+					<field name="name"/>
+
+					<field name="x_count"/>
+
+				</tree>
+			</field>
+		</record>
+
+
+
+
+		<!-- Tree - Country --> 
+		<record model="ir.ui.view" id="country_line_view_order_tree">
+
+			<field name="name">openhealth.country.line.tree</field>
+
+			<field name="model">openhealth.country.line</field>
+			
+			<field name="inherit_id" ref="openhealth.place_line_view_order_tree"/>
+			<field name="mode">primary</field>
+
+			<field name="arch" type="xml">
+
+				<xpath expr="//field[@name='name']" position="replace">
+					<field name="name"/>
+				</xpath>
+
+			</field>
+		</record>
+
+
+
+
+		<!-- Tree - City --> 
+		<record model="ir.ui.view" id="city_line_view_order_tree">
+
+			<field name="name">openhealth.city.line.tree</field>
+
+			<field name="model">openhealth.city.line</field>
+			
+			<field name="inherit_id" ref="openhealth.place_line_view_order_tree"/>
+			<field name="mode">primary</field>
+
+			<field name="arch" type="xml">
+
+				<xpath expr="//field[@name='name']" position="replace">
+					<field name="name"/>
+				</xpath>
+
+			</field>
+		</record>
+
+
+
+
+		<!-- Tree - District --> 
+		<record model="ir.ui.view" id="district_line_view_order_tree">
+
+			<field name="name">openhealth.district.line.tree</field>
+
+			<field name="model">openhealth.district.line</field>
+			
+			<field name="inherit_id" ref="openhealth.place_line_view_order_tree"/>
+			<field name="mode">primary</field>
+
+			<field name="arch" type="xml">
+
+				<xpath expr="//field[@name='name']" position="replace">
+					<field name="name"/>
+				</xpath>
+
+			</field>
+		</record>
+
+
+
+
+
+
+
+
+
+
+		<!-- Action - Country -->
+		<record model="ir.actions.act_window" id="country_line_form_action">
+			<field name="name">Pais</field>
+
+			<field name="res_model">openhealth.country.line</field>
+			
+			<field name="view_type">form</field>
+
+			<field name="view_mode">tree,pivot</field>
+
+			<field name="domain">[
+									('marketing_id', '=', active_id),
+								]
+			</field>
+
+			<field name="limit">1000</field>
+		</record>
+
+
+		<!-- Action - City -->
+		<record model="ir.actions.act_window" id="city_line_form_action">
+			<field name="name">Ciudad</field>
+			<field name="res_model">openhealth.city.line</field>
+			<field name="view_type">form</field>
+
+			<field name="view_mode">tree,pivot</field>
+
+			<field name="domain">[
+									('marketing_id', '=', active_id),
+								]
+			</field>
+
+			<field name="limit">1000</field>
+		</record>
+
+
+
+
+		<!-- Action - District -->
+		<record model="ir.actions.act_window" id="district_line_form_action">
+			<field name="name">Distrito</field>
+			<field name="res_model">openhealth.district.line</field>
+			<field name="view_type">form</field>
+<!--
+			<field name="view_mode">pivot,tree,form,graph</field>
+			<field name="view_mode">tree,form,graph,pivot</field>
+-->
+			<field name="view_mode">tree,pivot</field>
+
+			<field name="domain">[
+									('marketing_id', '=', active_id),
+								]
+			</field>
+
+			<field name="context">{}
+			</field>
+
+			<field name="limit">1000</field>
+		</record>
+
+
+	</data>
+</openerp>

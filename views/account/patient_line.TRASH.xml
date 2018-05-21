@@ -22,3 +22,19 @@
 		</record>
 
 
+
+
+
+<!--
+	   <record id="sale.view_order_product_pivot" model="ir.ui.view">
+	         <field name="name">sale.report.pivot</field>
+	         <field name="model">sale.report</field>
+	         <field name="arch" type="xml">
+	             <pivot string="Sales Analysis" disable_linking="True"	display_quantity="True"	>
+	                <field name="date" interval="month" type="col"	/>
+	                <field name="price_subtotal" type="measure"	/>
+	             </pivot>
+	         </field>
+
+	    </record>
+-->

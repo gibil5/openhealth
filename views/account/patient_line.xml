@@ -4,51 +4,75 @@
 		
 
 
-
-
 		<!-- Pivot --> 
 	   <record id="view_patient_line_pivot" model="ir.ui.view">
 
-	         <field name="name">patient.line.pivot</field>
-	    
+			 <field name="name">patient.line.pivot</field>
+		
 			<field name="model">openhealth.patient.line</field>
-	    
-	         <field name="arch" type="xml">
-	    
+		
+			<field name="arch" type="xml">
 
 
-	             <pivot string="Patient Analysis" disable_linking="False"	display_quantity="True"	>
-	    
-	                <field name="date_record" interval="month" type="col"	/>
-	    
-	                <field name="vip" type="measure"	/>
-	                <field name="sex" type="measure"	/>
-	                <field name="education" type="measure"	/>
-	                <field name="first_contact" type="measure"	/>
-	    
-	             </pivot>
-	    
-	         </field>
-
-	    </record>
 
 
-<!--
-	   <record id="sale.view_order_product_pivot" model="ir.ui.view">
-	         <field name="name">sale.report.pivot</field>
-	         <field name="model">sale.report</field>
-	         <field name="arch" type="xml">
-	             <pivot string="Sales Analysis" disable_linking="True"	display_quantity="True"	>
-	                <field name="date" interval="month" type="col"	/>
-	                <field name="price_subtotal" type="measure"	/>
-	             </pivot>
-	         </field>
 
-	    </record>
--->
 
-	
+				 <pivot string="Patient Analysis" disable_linking="True"	display_quantity="True"	>
+		
 
+					<!-- Y Axis --> 
+<!--	    			
+					<field name="date_record" interval="month" type="col"	/>
+
+					<field name="sex" type="measure"	/>
+					<field name="vip" type="measure"	/>	                
+					<field name="education" type="measure"	/>
+					<field name="first_contact" type="measure"	/>
+
+
+					<field name="vip" 	type="measure"	/>	                
+						<separator/>
+-->    
+					<field name="sex"	type="row"	/>
+
+
+
+					<!-- X Axis --> 
+
+					<field name="mea_m" type="measure"	/>
+					<field name="mea_f" type="measure"	/>
+					<field name="mea_u" type="measure"	/>
+
+
+					<field name="mea_vip" type="measure"	/>
+					<field name="mea_vip_no" type="measure"	/>
+
+
+					<field name="mea_first" type="measure"	/>
+					<field name="mea_second" type="measure"	/>
+					<field name="mea_technical" type="measure"	/>
+					<field name="mea_university" type="measure"	/>
+					<field name="mea_masterphd" type="measure"	/>
+					<field name="mea_edu_u" type="measure"	/>
+		
+
+
+					<field name="mea_recommendation" type="measure"	/>
+					<field name="mea_tv" type="measure"	/>
+					<field name="mea_radio" type="measure"	/>
+					<field name="mea_internet" type="measure"	/>
+					<field name="mea_website" type="measure"	/>
+					<field name="mea_mail_campaign" type="measure"	/>
+					<field name="mea_how_none" type="measure"	/>
+					<field name="mea_how_u" type="measure"	/>
+
+
+
+				 </pivot>
+
+			 </field>
+		</record>
 
 
 
@@ -83,39 +107,95 @@
 					<field name="first_contact"  group="True" />
 					<field name="age_years"    type='measure'   />
 
-					<field name="sex"   type='col'   />
 
+
+					<field name="sex"   type='col'   />
 					<field name="first_contact"  />
+					<field name="education"  />
+					<field name="sex"   />
 -->                
 					
-					<field name="education"  />
 
-					<field name="sex"   />
+					<field name="district"  order='count' />
 
-				 </graph>
+				</graph>
+
+
 			 </field>
 		</record>
 
 
 
 
-		<!-- Window Form Action -->
-		<record model="ir.actions.act_window" id="patient_line_form_action">
 
+
+
+		<!-- Tree --> 
+<!--		
+-->
+		<record model="ir.ui.view" id="patient_line_view_order_tree">
+
+			<field name="name">openhealth.patient.line.tree</field>
+
+			<field name="model">openhealth.patient.line</field>
+			
+			<field name="arch" type="xml">
+
+				<tree string="Patient Line Tree">
+					
+
+					<field name="patient"/>
+
+					<field name="sex"/>
+
+					<field name="age_years"/>
+
+					<field name="date_record"/>
+
+					<field name="first_contact"/>
+
+					<field name="education"/>
+
+					<field name="vip"/>
+
+					<field name="country"/>
+
+					<field name="city"/>
+
+					<field name="district"/>
+
+				</tree>
+			</field>
+		</record>
+
+
+
+
+		<!-- Action -->
+		<record model="ir.actions.act_window" id="patient_line_form_action">
 			<field name="name">Pacientes</field>
-			
 			<field name="res_model">openhealth.patient.line</field>
-			
 			<field name="view_type">form</field>
-			
+
+<!--
+			<field name="view_mode">pivot,tree,form,graph</field>
 			<field name="view_mode">tree,form,graph,pivot</field>
-			
+-->
+			<field name="view_mode">tree,graph,pivot</field>
+
 
 			<field name="domain">[
-									('account_id', '=', active_id),
+									('marketing_id', '=', active_id),
 								]
 			</field>
 
+<!--
+									'search_default_Sales':1, 
+									'group_by_no_leaf':1,
+									'group_by': ('sex','education','vip'),
+-->
+			<field name="context">{}
+			</field>
 
 			<field name="limit">1000</field>
 		</record>

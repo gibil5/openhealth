@@ -10,14 +10,70 @@ from openerp import models, fields, api
 
 class PlaceLine(models.Model):
 	
+	#_inherit = 'openhealth.place.line'
+
 	_name = 'openhealth.place.line'
 
+	#_order = 'name asc'
+	#_order = 'count desc'
+	_order = 'x_count desc'
+
+
+
+	# ----------------------------------------------------------- Relational ------------------------------------------------------
+	marketing_id = fields.Many2one(
+			'openhealth.marketing'
+		)
+
+
+	# ----------------------------------------------------------- Primitive ------------------------------------------------------
+	name = fields.Char(
+			'Nombre',
+		)
+
+	#count = fields.Char(
+	x_count = fields.Integer(
+			'Nr',
+		)
+
+
+
+
+
+class CountryLine(models.Model):	
+
+	_inherit = 'openhealth.place.line'
+	
+	_name = 'openhealth.country.line'
+	
 	#_order = 'idx asc'
 
 
 
-# ----------------------------------------------------------- Relational ------------------------------------------------------
+class CityLine(models.Model):	
+	
+	_inherit = 'openhealth.place.line'
+	
+	_name = 'openhealth.city.line'
+	
+	#_order = 'idx asc'
 
-	account_id = fields.Many2one(
-			'openhealth.account.contasis'
-		)
+
+
+class DistrictLine(models.Model):	
+	
+	_inherit = 'openhealth.place.line'
+	
+	_name = 'openhealth.district.line'
+	
+	#_order = 'idx asc'
+
+
+	#city = fields.Char(
+	#		'Ciudad',
+	#	)
+
+
+
+
+

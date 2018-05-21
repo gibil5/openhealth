@@ -1,0 +1,21 @@
+
+
+		<!-- Pivot - Place --> 
+	   <record id="view_place_line_pivot" model="ir.ui.view">
+			<field name="name">place.line.pivot</field>
+			<field name="model">openhealth.place.line</field>
+			<field name="arch" type="xml">
+
+
+				 <pivot string="place Analysis" disable_linking="False"	display_quantity="False"			>
+
+
+					<!-- Y Axis --> 
+					<field name="name"  type="row"	/>	    
+
+					<!-- X Axis --> 
+					<field name="x_count" type="measure"		/>
+
+				 </pivot>
+			 </field>
+		</record>

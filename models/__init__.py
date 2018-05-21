@@ -14,7 +14,6 @@ from . import sale_report_md
 from . import patient_line
 from . import histo_line
 from . import place_line
-
 from . import marketing
 
 

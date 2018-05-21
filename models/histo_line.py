@@ -18,8 +18,10 @@ class HistoLine(models.Model):
 
 # ----------------------------------------------------------- Relational ------------------------------------------------------
 
-	account_id = fields.Many2one(
-			'openhealth.account.contasis'
+	#account_id = fields.Many2one(
+	marketing_id = fields.Many2one(
+
+			'openhealth.marketing'
 		)
 
 
@@ -30,7 +32,8 @@ class HistoLine(models.Model):
 
 	# Bin 
 	x_bin = fields.Char(
-			'Bin', 
+			#'Bin', 
+			'Edades', 
 		)
 
 

@@ -5,96 +5,6 @@
 
 
 
-		<!-- Pivot --> 
-	   <record id="view_marketing_pivot" model="ir.ui.view">
-
-			<field name="name">marketing.pivot</field>
-		
-			<field name="model">openhealth.marketing</field>
-		
-			<field name="arch" type="xml">
-		
-
-
-				<pivot string="Marketing - Pacientes Nuevos" disable_linking="True"	display_quantity="False"	>
-<!--
-					<field name="vip_true_per" type="measure"	/>
-					<field name="vip_false_per" type="measure"	/>
-
-					<field name="date_begin" interval="month" type="row"	/>
--->
-
-
-
-					<!-- Date --> 
-					<field name="date_begin" interval="month" type="row"	/>
-		
-
-
-					<!-- Age --> 
-					<field name="age_mean" type="measure"	/>
-
-					<field name="age_undefined" type="measure"	/>
-
-
-
-					<!-- Vip --> 
-					<field name="vip_true" type="measure"	group="True"	/>
-
-					<field name="vip_false" type="measure"	group="True"	/>
-
-
-
-					<!-- Sex --> 
-					<field name="sex_male" type="measure"	/>
-
-					<field name="sex_female" type="measure"	/>
-
-					<field name="sex_undefined" type="measure"	/>
-
-
-
-					<!-- Education --> 
-					<field name="edu_fir" type="measure"	/>
-
-					<field name="edu_sec" type="measure"	/>
-
-					<field name="edu_tec" type="measure"	/>
-
-					<field name="edu_uni" type="measure"	/>
-
-					<field name="edu_mas" type="measure"	/>
-
-					<field name="edu_u" type="measure"	/>
- 
-
- 
-					
-					<!-- First --> 
-					<field name="how_none" type="measure"	/>
-
-					<field name="how_reco" type="measure"	/>
-
-					<field name="how_tv" type="measure"	/>
-
-					<field name="how_radio" type="measure"	/>
-
-					<field name="how_inter" type="measure"	/>
-					
-					<field name="how_web" type="measure"	/>
-
-					<field name="how_mail" type="measure"	/>
-
-					<field name="how_u" type="measure"	/> 
- 
-				 </pivot>
-			 </field>
-		</record>
-
-
-
-
-
 		<!-- FORM --> 
 		<record model="ir.ui.view" id="marketing_form_view">
 			<field name="name">marketing.form</field>
@@ -111,7 +21,8 @@
 					<header>
 
 
-						<!-- Patients -->
+
+						<!-- Update -->
 						<button 
 								type="object" 
 								class="oe_highlight"
@@ -120,8 +31,9 @@
 											]}"
 								name="update_patients"
 
-								string="Actualizar Pacientes"								
+								string="Actualizar"								
 						/>
+
 
 
 						<!-- Histo -->
@@ -133,7 +45,7 @@
 											]}"
 								name="show_histogram"
 
-								string="Histograma"								
+								string="Actualizar Histo"								
 						/>
 
 						<!-- Correct -->
@@ -152,19 +64,19 @@
 -->
 
 
-						<!-- Registro -->
+						<!-- Patients -->
 						<button 
 								class="oe_highlight"
 								type="action" 
-								
-								name="%(patient_line_form_action)d" 
-
 								attrs="{'invisible':[	
 														('x_type','not in',['patient']), 
 											]}"
+								
+								name="%(patient_line_form_action)d" 
+
 
 								context="{
-											'search_default_account_id': active_id,	
+											'search_default_marketing_id': active_id,	
 										}" 											
 
 								string="Pacientes"	
@@ -174,72 +86,65 @@
 
 
 
-
-
-						<!-- Orders -->
-						<button 
-								type="object" 
-								class="oe_highlight"
-								attrs="{'invisible':[	
-														('x_type','not in',['order']), 
-											]}"
-								name="update_orders"
-
-								string="Actualizar Ventas"								
-						/>
-
-
-
-
-						<!-- Registro -->
+						<!-- Histogram -->
 						<button 
 								class="oe_highlight"
 								type="action" 
-								name="%(account_line_list_action)d" 
-								attrs="{'invisible':[	
-														('x_type','not in',['order']), 
-											]}"
+								
+								name="%(histo_line_form_action)d" 
+
 								context="{
-											'search_default_account_id': active_id,	
+											'search_default_marketing_id': active_id,	
 										}" 											
 
-								string="Registro de Ventas"	
+								string="Edades"	
 						/>
 
 
 
 
-						<!-- Contasis -->
+						<!-- Country -->
 						<button 
 								class="oe_highlight"
 								type="action" 
-								name="%(account_line_form_action)d"	
-								attrs="{'invisible':[	
-														('x_type','not in',['order']), 
-											]}"
+								
+								name="%(country_line_form_action)d" 
+
 								context="{
-											'search_default_account_id': active_id,	
+											'search_default_marketing_id': active_id,	
 										}" 											
 
-								string="Contasis"								
+								string="Paises"	
 						/>
 
-
-
-						<!-- Tarjetas -->
+						<!-- City -->
 						<button 
 								class="oe_highlight"
 								type="action" 
-								attrs="{'invisible':[	
-														('x_type','not in',['order']), 
-											]}"
-								context="{
-											'search_default_account_id': active_id,	
-										}"
-								name="%(payment_line_form_action)d"	
+								
+								name="%(city_line_form_action)d" 
 
-								string="Tarjetas"								
+								context="{
+											'search_default_marketing_id': active_id,	
+										}" 											
+
+								string="Ciudades"	
 						/>
+
+						<!-- District -->
+						<button 
+								class="oe_highlight"
+								type="action" 
+								
+								name="%(district_line_form_action)d" 
+
+								context="{
+											'search_default_marketing_id': active_id,	
+										}" 											
+
+								string="Distritos"	
+						/>
+
 
 					</header>
 
@@ -256,20 +161,18 @@
 						<group	string="Total"	>
 							<group>
 								<field name="name"/>
-<!--
-								<field name="date"/>
--->
+
 								<field name="date_begin"/>
 
 								<field name="date_end"/>
 
+
+								<field name="write_date"	string="Actualizado"/>
 							</group>
 
 							
 							<group>
 								<field name="x_type"/>
-
-								<field name="total_amount"	attrs="{'invisible':[('x_type', '=', 'patient')]}"		/>
 
 								<field name="total_count"/>
 							</group>
@@ -309,9 +212,19 @@
 								<field name="age_min"/>
 								
 								<field name="age_max"/>
+
 							</group>
 
 							<group>								
+<!--
+								<field name="vspace"/>
+
+								<field name="vspace"/>
+
+								<field name="vspace"/>
+
+								<field name="vspace"/>
+-->
 								<field name="age_undefined"/>
 
 								<field name="age_undefined_per"/>
@@ -322,28 +235,26 @@
 
 
 						<!-- First Contact -->
-						<group	string="Como se enteró ?"   attrs="{'invisible':[('x_type', '!=', 'patient')]}"	>
-							<group>
-								<field name="how_u"/>
-								
-								<field name="how_none"/>
+						<group	string="Primer Contacto"   attrs="{'invisible':[('x_type', '!=', 'patient')]}"	>
+							<group>								
+								<field name="how_none"	string="Ninguno"		/>
 
-								<field name="how_reco"/>
+								<field name="how_reco"	string="Recomendación"		/>
 								
-								<field name="how_tv"/>
+								<field name="how_tv"	string="Tv"		/>
 								
-								<field name="how_radio"/>
+								<field name="how_radio"	string="Radio"		/>
 								
-								<field name="how_inter"/>
+								<field name="how_inter"	string="Internet"		/>
 
-								<field name="how_web"/>
+								<field name="how_web"	string="Web"		/>
 
-								<field name="how_mail"/>
+								<field name="how_mail"	string="Mail"		/>
+
+								<field name="how_u"		string="Indefinido"	/>
 							</group>
 
-							<group>								
-								<field name="how_u_per"/>
-								
+							<group>																
 								<field name="how_none_per"/>
 
 								<field name="how_reco_per"/>
@@ -357,6 +268,8 @@
 								<field name="how_web_per"/>
 
 								<field name="how_mail_per"/>
+
+								<field name="how_u_per"/>
 							</group>
 						</group>
 
@@ -368,21 +281,21 @@
 						<!-- Education -->
 						<group	string="Nivel de educación"   attrs="{'invisible':[('x_type', '!=', 'patient')]}"	>
 							<group>
-								<field name="edu_u"/>
 								
-								<field name="edu_fir"/>
+								<field name="edu_fir"	string="Primaria"	/>
 
-								<field name="edu_sec"/>
+								<field name="edu_sec"	string="Secundaria"	/>
 								
-								<field name="edu_tec"/>
+								<field name="edu_tec"	string="Instituto"	/>
 								
-								<field name="edu_uni"/>
+								<field name="edu_uni"	string="Universidad"	/>
 								
-								<field name="edu_mas"/>
+								<field name="edu_mas"	string="Posgrado"	/>
+
+								<field name="edu_u"		string="Indefinido"	/>
 							</group>
 
 							<group>								
-								<field name="edu_u_per"/>
 								
 								<field name="edu_fir_per"/>
 
@@ -393,8 +306,11 @@
 								<field name="edu_uni_per"/>
 								
 								<field name="edu_mas_per"/>
+
+								<field name="edu_u_per"/>
 							</group>
 						</group>
+
 
 
 
@@ -462,16 +378,6 @@
 
 										<field name="sex"/>
 
-
-<!--					                    
-										<field name="dob"/>
-										<field name="age"/>
-										<field name="name"/>
-
-										<field name="date_create"/>
-										<field name="count"/>
--->
-
 										<field name="age_years"/>
 
 										<field name="date_record"/>
@@ -482,8 +388,6 @@
 
 										<field name="vip"/>
 
-
-
 										<field name="country"/>
 
 										<field name="city"/>
@@ -493,6 +397,14 @@
 									</tree>
 								</field>
 							</page>
+<!--					                    
+										<field name="dob"/>
+										<field name="age"/>
+										<field name="name"/>
+
+										<field name="date_create"/>
+										<field name="count"/>
+-->
 
 
 
@@ -508,11 +420,13 @@
 
 										<field name="x_bin"/>
 
-										<field name="percentage"/>
-<!--
 										<field name="count"/>
--->
+
+										<field name="percentage"/>
+
 										<field name="total"/>
+<!--
+-->
 									</tree>
 								</field>
 							</page>
@@ -526,10 +440,15 @@
 								<field name="country_line">
 
 									<tree string="Pais"	limit="1000"	>	
+										
+										<field name="name"/>
 
+										<field name="x_count"/>
 									</tree>
+
 								</field>
 							</page>
+
 
 
 							<!-- Cities --> 
@@ -538,7 +457,10 @@
 								<field name="city_line">
 
 									<tree string="Ciudad"	limit="1000"	>	
+										
+										<field name="name"/>
 
+										<field name="x_count"/>
 									</tree>
 								</field>
 							</page>
@@ -550,7 +472,10 @@
 								<field name="district_line">
 
 									<tree string="Distrito"	limit="1000"	>	
+										
+										<field name="name"/>
 
+										<field name="x_count"/>
 									</tree>
 								</field>
 							</page>
@@ -575,58 +500,6 @@
 
 
 <!--
-							<page	string="Ventas"		>
-								<field name="account_line"/>
--->
-							<page	string="Ventas"		attrs="{'invisible':[('x_type', '!=', 'order')]}"	>
-
-
-								<field name="account_line">
-
-									<tree string="Ventas"	limit="1000"	>	
-
-										<field name="serial_nr"/>
-										<field name="x_type"/>
-
-
-<!--					                    
-										<field name="date"/>
-										<field name="date_time_corr"/>
--->				                    
-										<field name="date_time"/>
-										<field name="date_char"/>
-										<field name="time_char"/>
-
-
-										<field name="patient"/>
-
-
-										<field name="qty"/>
-										<field name="product"/>
-										<field name="product_type"/>
-										
-
-										<field name="state"/>
-
-
-										<field name="amount_net"/>
-										
-										<field name="amount_tax"/>
-
-										<field name="amount"/>
-
-<!--
-										<field name="date"/>
-										<field name="name"/>
-										<field name="document"/>
--->
-
-									</tree>
-								</field>
-							</page>
-						
-
-<!--
 							<page	string="Contasis"		>
 								<field name="account_line_contasis"/>
 							</page>
@@ -648,7 +521,7 @@
 
 		
 		<!-- TREE --> 
-		<record model="ir.ui.view" id="marketing_view_order_tree">
+		<record model="ir.ui.view" id="marketing_view_tree">
 
 			<field name="name">openhealth.marketing.tree</field>
 			
@@ -658,30 +531,26 @@
 <!--
 				<tree string="Account Contasis Tree" default_order='date desc'>
 -->
-				<tree string="Account Contasis Tree">
+				<tree string="Marketing Tree">
 					
 
 <!--
 					<field name="date"			string="Fecha"	/>
+					<field name="total_amount"  attrs="{'invisible':[('x_type', '=', 'patient')]}"	   />
 -->
 					<field name="name"	 				/>
+
+
+					<field name="write_date"	string="Actualizado"	/>
+
 
 					<field name="date_begin"	string="Fecha Inicio"	/>
 
 					<field name="date_end"		string="Fecha Fin"	/>
 
-
-
 					<field name="x_type"/>
 
-
-					<field name="total_amount"  attrs="{'invisible':[('x_type', '=', 'patient')]}"	   />
-
-
-
 					<field name="total_count"/>
-
-
 				</tree>
 			</field>
 		</record>
@@ -745,12 +614,14 @@
 		<!-- ACTION - Patient -->
 		<record model="ir.actions.act_window" id="marketing_patient_list_action">	
 
-			<field name="name">Pacientes Nuevos</field>
+			<field name="name">Pacientes Nuevos Marketing</field>
 			
 			<field name="res_model">openhealth.marketing</field>
 			<field name="view_type">form</field>
-
+<!--
 			<field name="view_mode">tree,form,graph,pivot</field>
+-->
+			<field name="view_mode">tree,form</field>
 
 			<field name="domain">[
 									('x_type', '=', 'patient'),
@@ -773,5 +644,7 @@
 			</field>
 			-->
 		</record>
+
+
 	</data>
 </openerp>

@@ -155,7 +155,9 @@
 			<field name="name">Reporte de Ventas - Mayo</field>
 			<field name="res_model">sale.report</field>
 			<field name="view_type">form</field>
+
 			<field name="view_mode">pivot,graph,tree</field>
+			
 			<field name="view_id"></field> 
 			<field name="search_view_id" ref="sale.view_order_product_search"/>
 

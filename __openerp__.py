@@ -166,13 +166,13 @@
 
 
 		# Recent 
-		#'views/histogram/histogram.xml',
-		#'views/places/place.xml',
-		#'views/account/patient_line.xml',
-		#'views/marketing/marketing.xml',
-		#'views/marketing/marketing_pivot.xml',
+		'views/histogram/histogram.xml',
+		'views/places/place.xml',
+		'views/account/patient_line.xml',
+		'views/marketing/marketing.xml',
+		'views/marketing/marketing_pivot.xml',
 
-		#'views/menus/menus_openhealth.xml',
+		'views/menus/menus_openhealth.xml',
 
 
 

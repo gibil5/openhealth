@@ -36,13 +36,27 @@
 								string="Actualizar"								
 						/>
 
-						<!-- Update Legacy -->
+
+
+
+						<!-- Legacy Update -->
+						<!-- Correct -->
 						<button 
 								type="object" 
 								class="oe_highlight"
 								name="update_patients_legacy"
 
-								string="Actualizar - Legacy"								
+								string="Update - Legacy"								
+						/>
+
+						<button 
+								type="object" 
+								class="oe_highlight"
+
+
+								name="correct_patients"
+
+								string="Correct - Legacy"								
 						/>
 
 
@@ -60,18 +74,7 @@
 								string="Actualizar Histo"								
 						/>
 
-						<!-- Correct -->
-<!--						
--->
-						<button 
-								type="object" 
-								class="oe_highlight"
 
-
-								name="correct_patients"
-
-								string="Correct Legacy"								
-						/>
 
 
 

@@ -155,9 +155,11 @@
 		'views/report_sale/report_sale.xml',
 		'views/report_sale/item_counter.xml',
 
-		'views/payment_methods/payment_method_line.xml',
-		'views/account/account_line.xml',
-		'views/account/account_contasis.xml',
+
+		#'views/payment_methods/payment_method_line.xml',
+		#'views/account/account_line.xml',
+		#'views/account/account_contasis.xml',
+		#'views/menus/menus_account.xml',
 
 
 
@@ -627,7 +629,6 @@
 
 		'views/menus/menus_legacy.xml',
 
-		'views/menus/menus_account.xml',
 
 
 		

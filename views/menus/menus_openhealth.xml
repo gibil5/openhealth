@@ -16,6 +16,7 @@
 		<menuitem 	id="main_openhealth_menu" 
 					sequence="1"
 					name="Open Health"
+					
 					groups="openhealth.roots,openhealth.managers"
 			/>
 

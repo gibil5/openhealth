@@ -42,24 +42,27 @@
 						<!-- Legacy Update -->
 						<!-- Correct -->
 <!--						
+-->
 						<button 
 								type="object" 
 								class="oe_highlight"
 								name="update_patients_legacy"
 
-								string="Update - Legacy"								
+								string="Update - Legacy"	
+															
+								groups="openhealth.roots"
 						/>
 
 						<button 
 								type="object" 
 								class="oe_highlight"
 
-
 								name="correct_patients"
 
-								string="Correct - Legacy"								
+								string="Correct - Legacy"
+
+								groups="openhealth.roots"
 						/>
--->
 
 
 

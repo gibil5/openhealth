@@ -4,6 +4,26 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+access_openhealth_marketing,openhealth.marketing,model_openhealth_marketing,,1,1,1,1
+
+access_openhealth_patient_line,openhealth.patient.line,model_openhealth_patient_line,,1,1,1,1
+
+access_openhealth_country_line,openhealth.country.line,model_openhealth_country_line,,1,1,1,1
+
+access_openhealth_city_line,openhealth.city.line,model_openhealth_city_line,,1,1,1,1
+
+access_openhealth_district_line,openhealth.district.line,model_openhealth_district_line,,1,1,1,1
+
+access_openhealth_histo_line,openhealth.histo.line,model_openhealth_histo_line,,1,1,1,1
+
+
+access_openhealth_marketing_order_line,openhealth.marketing.order.line,model_openhealth_marketing_order_line,,1,1,1,1
+
+
+
+
+
+
 access_openhealth_counter,openhealth.counter,model_openhealth_counter,,1,1,1,1
 access_openhealth_counter_caja,openhealth.counter.caja,model_openhealth_counter,openhealth.caja,1,1,0,0
 

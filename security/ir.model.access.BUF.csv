@@ -4,6 +4,13 @@
 
 
 
+access_openhealth_account_line,openhealth.account.line,model_openhealth_account_line,,1,1,1,1
+
+
+
+
+
+
 access_openhealth_counter_raw,access_openhealth_counter_raw,model_openhealth_counter_raw,,1,1,1,1
 
 access_openhealth_quotation,openhealth.quotation,model_openhealth_quotation,,1,1,1,1

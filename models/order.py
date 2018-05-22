@@ -23,6 +23,21 @@ class sale_order(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Patient Lines ------------------------------------------------------
+
+	# Treatment 
+	#patient_line_id = fields.Many2one(		
+	#		'openhealth.patient.line',
+			#ondelete='cascade', 
+			#string="Tratamiento",
+			#readonly=False, 
+	#	)
+
+
+
+
+
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 
 	# Update Jan 

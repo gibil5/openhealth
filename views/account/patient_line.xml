@@ -6,40 +6,23 @@
 
 		<!-- Pivot --> 
 	   <record id="view_patient_line_pivot" model="ir.ui.view">
-
-			 <field name="name">patient.line.pivot</field>
-		
+			<field name="name">patient.line.pivot</field>
 			<field name="model">openhealth.patient.line</field>
-		
 			<field name="arch" type="xml">
-
-
-
-
 
 
 				 <pivot string="Patient Analysis" disable_linking="True"	display_quantity="True"	>
 		
 
-					<!-- Y Axis --> 
 <!--	    			
-					<field name="date_record" interval="month" type="col"	/>
-
-					<field name="sex" type="measure"	/>
-					<field name="vip" type="measure"	/>	                
-					<field name="education" type="measure"	/>
-					<field name="first_contact" type="measure"	/>
-
-
-					<field name="vip" 	type="measure"	/>	                
-						<separator/>
 -->    
+
+					<!-- Y Axis --> 
 					<field name="sex"	type="row"	/>
 
 
 
 					<!-- X Axis --> 
-
 					<field name="mea_m" type="measure"	/>
 					<field name="mea_f" type="measure"	/>
 					<field name="mea_u" type="measure"	/>
@@ -57,7 +40,6 @@
 					<field name="mea_edu_u" type="measure"	/>
 		
 
-
 					<field name="mea_recommendation" type="measure"	/>
 					<field name="mea_tv" type="measure"	/>
 					<field name="mea_radio" type="measure"	/>
@@ -67,10 +49,7 @@
 					<field name="mea_how_none" type="measure"	/>
 					<field name="mea_how_u" type="measure"	/>
 
-
-
 				 </pivot>
-
 			 </field>
 		</record>
 
@@ -79,13 +58,9 @@
 
 		<!-- Graph --> 
 		<record id="view_patient_line_graph" model="ir.ui.view">
-			
 			<field name="name">patient.line.graph</field>
-
 			<field name="model">openhealth.patient.line</field>
-
 			<field name="type">graph</field>
-
 			<field name="arch" type="xml">
 
 
@@ -129,20 +104,130 @@
 
 
 
+		<!-- FORM --> 
+		<record model="ir.ui.view" id="patient_line_form_view">
+
+			<field name="name">openhealth.patient.line.form</field>
+			
+			<field name="model">openhealth.patient.line</field>
+			
+			<field name="arch" type="xml">
+
+				<form string="Patient Line Form">
+					
+
+
+					<!-- Header -->
+					<header></header>
+
+
+
+					<!-- Sheet -->	
+					<sheet>
+
+						<field name="patient"/>
+
+
+
+						<!-- Notebook --> 
+						<notebook>	
+		
+
+
+<!--
+-->								
+							<page	string="Ventas con Tarjeta Vip"		>
+
+
+								<field name="order_line_vip">
+
+									<tree string="Ventas"	limit="1000"	>	
+									
+										<field name="x_date_created"/>
+
+										<field name="product_id"/>
+
+										<field name="product_uom_qty"/>
+
+										<field name="price_unit"/>
+
+										<field name="price_subtotal"/>
+
+									</tree>
+
+								</field>
+
+							</page>
+
+
+
+
+							<page	string="Ventas"		>
+
+
+								<field name="order_line">
+
+									<tree string="Ventas"	limit="1000"	>	
+									
+										<field name="x_date_created"/>
+
+										<field name="product_id"/>
+
+										<field name="product_uom_qty"/>
+
+										<field name="price_unit"/>
+
+										<field name="price_subtotal"/>
+
+									</tree>
+
+								</field>
+
+							</page>
+
+
+
+
+
+
+
+
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+
+
+
+
+
 
 		<!-- Tree --> 
 <!--		
 -->
 		<record model="ir.ui.view" id="patient_line_view_order_tree">
-
 			<field name="name">openhealth.patient.line.tree</field>
-
 			<field name="model">openhealth.patient.line</field>
-			
 			<field name="arch" type="xml">
+				
 
-				<tree string="Patient Line Tree">
-					
+				<tree string="Patient Line Tree"
+
+						colors="
+						red:nr_lines_vip==0
+						"
+					>
+<!--					
+						green:state=='sent';
+						blue:state=='sale';
+						grey:state in ('cancel')
+
+						default_order='nr_lines_vip'
+-->
 
 					<field name="patient"/>
 
@@ -156,14 +241,30 @@
 
 					<field name="education"/>
 
-					<field name="vip"/>
-
 					<field name="country"/>
 
 					<field name="city"/>
 
 					<field name="district"/>
 
+
+
+					<field name="vip"/>
+
+					<field name="vip_date"/>
+
+
+					<field name="nr_lines_vip"		attrs="{
+																'invisible':[('nr_lines_vip', '=', -1)], 
+															}"
+						/>
+
+
+<!--
+					<field name="order_line"/>
+
+					<field name="order_line_vip"/>
+-->
 				</tree>
 			</field>
 		</record>
@@ -197,6 +298,73 @@
 			<field name="context">{}
 			</field>
 
+			<field name="limit">1000</field>
+		</record>
+
+
+
+
+
+
+		<!-- Action - Vip -->
+		<record model="ir.actions.act_window" id="patient_line_vip_form_action">
+			<field name="name">Pacientes</field>
+			<field name="res_model">openhealth.patient.line</field>
+			<field name="view_type">form</field>
+
+			<field name="view_mode">tree,form,graph,pivot</field>
+
+			<field name="domain">[
+									('vip', '=', True),
+									('marketing_id', '=', active_id),
+								]
+			</field>
+
+			<field name="context">{}</field>
+			<field name="limit">1000</field>
+		</record>
+
+
+
+		<!-- Action - No Vip -->
+		<record model="ir.actions.act_window" id="patient_line_vip_no_form_action">
+			<field name="name">Pacientes</field>
+			<field name="res_model">openhealth.patient.line</field>
+			<field name="view_type">form</field>
+
+			<field name="view_mode">tree,form,graph,pivot</field>
+
+			<field name="domain">[
+									('vip', '=', False),
+									('marketing_id', '=', active_id),
+								]
+			</field>
+
+			<field name="context">{}</field>
+			<field name="limit">1000</field>
+		</record>
+
+
+
+
+		<!-- Action - Vip Not Used -->
+		<record model="ir.actions.act_window" id="patient_line_vip_not_used_form_action">
+			<field name="name">Tarjeta Vip No Utilizada</field>
+			<field name="res_model">openhealth.patient.line</field>
+			<field name="view_type">form</field>
+
+			<field name="view_mode">tree,form,graph,pivot</field>
+
+			<field name="domain">[
+									('vip', '=', True),
+
+									('nr_lines_vip', '=', 0),
+
+									('marketing_id', '=', active_id),
+								]
+			</field>
+
+			<field name="context">{}</field>
 			<field name="limit">1000</field>
 		</record>
 

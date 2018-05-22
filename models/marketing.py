@@ -35,6 +35,155 @@ class Marketing(models.Model):
 
 
 
+# ----------------------------------------------------------- Vip Orders ------------------------------------------------------
+	
+	# Correct
+	@api.multi
+	def vip_orders(self):  
+		print 
+		print 'Vip Orders'
+
+
+		# Patient Lines 
+		for pl in self.patient_line: 
+
+
+			if pl.vip: 
+				
+				#print pl.patient.name
+				#print 
+
+
+
+				# Clean 
+				pl.order_line.unlink()
+				pl.order_line_vip.unlink()
+
+
+
+				
+
+
+
+
+				# Orders 
+				orders = self.env['sale.order'].search([
+															('state', '=', 'sale'),
+
+															('patient', '=', pl.patient.name),
+
+															#('date_order', '>=', date_begin),													
+															#('date_order', '<', date_end),
+															#('categ_id', '=', categ_id),
+													],
+														#order='x_serial_nr asc',
+														order='date_order asc',
+														#limit=1,
+												)
+				#print orders
+
+
+
+
+				# Order Lines - Vip Date 
+				for order in orders: 
+					for ol in order.order_line: 
+
+						if ol.product_id.default_code == '495': 		# Vip Card 
+							
+							#print 'Gotcha !'
+
+							#print ol.product_id.name
+
+							pl.vip_date = order.date_order
+
+
+				# Legacy 
+				if pl.vip_date == False: 
+					
+					# Card 
+					card = self.env['openhealth.card'].search([
+																	('patient_name', '=', pl.patient.name),
+														],
+															#order='x_serial_nr asc',
+															limit=1,
+													)
+					
+					#print card
+					#print card.patient_name
+					#print card.date_created 
+					#print card.create_date   
+					#print 
+
+					pl.vip_date = card.create_date
+
+
+
+
+
+
+
+				# Order Lines - Create Order Line 
+				for order in orders: 
+
+					for ol in order.order_line: 
+					
+						#print ol.product_id.name
+
+
+
+
+						# Create 
+						pl_ol = pl.order_line.create({
+														'name': ol.name, 
+														'product_id': ol.product_id.id, 
+
+														'x_date_created': order.date_order, 
+														
+														'product_uom_qty': ol.product_uom_qty, 
+														'price_unit': ol.price_unit, 
+
+														'patient_line_id': pl.id, 
+							})
+
+						#print pl_ol
+
+
+
+
+
+						# Vip sale 
+						if pl.vip_date != False: 
+
+
+							#if order.date_order >= pl.vip_date: 
+							if order.date_order >= pl.vip_date		and 	ol.product_id.type in ['service']: 
+
+
+								# Create Vip 
+								pl_ol_vip = pl.order_line_vip.create({
+																		'name': ol.name, 
+																		'product_id': ol.product_id.id, 
+																		'x_date_created': order.date_order, 
+																		'product_uom_qty': ol.product_uom_qty, 
+																		'price_unit': ol.price_unit, 
+
+																		'patient_line_id_vip': pl.id, 
+									})
+
+								#print pl_ol
+
+
+
+
+				pl.update_fields_vip()
+				#print 
+
+		print 
+
+
+
+
 # ----------------------------------------------------------- Correct ------------------------------------------------------
 	
 	# Correct
@@ -78,7 +227,8 @@ class Marketing(models.Model):
 		for line in self.patient_line: 
 			if line.age_years not in [0, -1]: 
 				inp_arr.append(line.age_years)
-		print inp_arr
+		
+		#print inp_arr
 
 
 		# Bins
@@ -93,8 +243,8 @@ class Marketing(models.Model):
 		bins = histo[1]
 		counts = histo[0]
 
-		print bins
-		print counts
+		#print bins
+		#print counts
 
 
 
@@ -117,9 +267,9 @@ class Marketing(models.Model):
 
 				x_bin = bins[idx]
 
-				print idx 
-				print x_bin
-				print count 
+				#print idx 
+				#print x_bin
+				#print count 
 
 				line = self.histo_line.create({
 												'count': count, 
@@ -132,7 +282,7 @@ class Marketing(models.Model):
 
 				line.update_fields()
 				idx = idx + 1
-				print
+				#print
 
 	# show_histogram
 
@@ -850,10 +1000,10 @@ class Marketing(models.Model):
 		#print city_arr
 		#print 
 		#print district_arr
-		print 
-		print 
-		print counter_country
-		print 
+		#print 
+		#print 
+		#print counter_country
+		#print 
 
 		#print counter_country['Peru']
 
@@ -865,7 +1015,7 @@ class Marketing(models.Model):
 
 
 		# Country
-		print 'Create Country Line '
+		#print 'Create Country Line '
 		for key in counter_country: 
 
 			count = counter_country[key]
@@ -883,14 +1033,14 @@ class Marketing(models.Model):
 			#print count
 			#print country
 
-		print self.country_line
-		print 
+		#print self.country_line
+		#print 
 
 
 
 		
 		# City 
-		print 'Create City Line '
+		#print 'Create City Line '
 		for key in counter_city: 
 
 			count = counter_city[key]
@@ -907,12 +1057,13 @@ class Marketing(models.Model):
 			#print count
 			#print country
 
-		print self.city_line
-		print 
+		#print self.city_line
+		#print 
 		
 
+
 		# District 
-		print 'Create District Line '
+		#print 'Create District Line '
 		for key in counter_district: 
 
 			count = counter_district[key]
@@ -930,15 +1081,15 @@ class Marketing(models.Model):
 			#print count
 			#print country
 
-		print self.district_line
-		print 
+		#print self.district_line
+		#print 
 
 
 
 		#print counter_city
 		#print 
 		#print counter_district
-		print 
+		#print 
 		print 
 
 
@@ -998,12 +1149,14 @@ class Marketing(models.Model):
 
 			ret = pat_line.update_fields()
 
-			if ret == -1:
-				print 'Age undefined !'
+
+			#if ret == -1:
+			#	print 'Age undefined !'
+
 
 
 		# Set Stats 
-		self.set_stats()
+		#self.set_stats()
 
 	# update_patients_legacy
 
@@ -1063,12 +1216,21 @@ class Marketing(models.Model):
 
 			ret = pat_line.update_fields()
 
-			if ret == -1:
-				print 'Age undefined !'
+
+			#if ret == -1:
+			#	print 'Age undefined !'
+
 
 
 		# Set Stats 
 		self.set_stats()
+
+		# Build Histo
+		self.show_histogram()
+
+		# Build Vip Sales 
+		self.vip_orders()
+
 
 	# update_patients
 

@@ -14,9 +14,81 @@ class PaitentLine(models.Model):
 	
 	_name = 'openhealth.patient.line'
 
-	_order = 'date_create desc'
+	#_order = 'date_create desc'
+	_order = 'date_create asc'
 
 
+
+
+
+
+# ----------------------------------------------------------- Relational ------------------------------------------------------
+
+
+	# All 
+	order_line = fields.One2many(
+			
+			'openhealth.marketing.order.line', 
+
+			'patient_line_id',
+		)
+
+
+	# With Vip 
+	order_line_vip = fields.One2many(
+			
+			'openhealth.marketing.order.line', 
+
+			'patient_line_id_vip',
+		)
+
+
+
+
+	# Nr lines Vip 
+	nr_lines_vip = fields.Integer(
+			'Ventas Usando la tarjeta Vip', 
+			default=-1, 
+		)
+
+
+	# On change 
+	#@api.onchange('order_line_vip')
+	#def _onchange_order_line_vip(self):
+	#@api.onchange('write_date')
+	#def _onchange_write_date(self):
+
+
+
+	# Correct
+	@api.multi
+	def update_fields_vip(self):  
+		
+		#print 
+		#print 'Update fields - Vip'
+		
+		count = self.env['openhealth.marketing.order.line'].search_count([
+																				('patient_line_id_vip','=', self.id),
+																			]) 
+		self.nr_lines_vip = count
+
+
+
+
+
+
+	# Date Vip card 
+	vip_date = fields.Datetime(
+			string="Fecha Vip", 
+		)
+
+	# Marketing Id 
+	marketing_id = fields.Many2one(
+			#'openhealth.account.contasis'
+			'openhealth.marketing', 
+
+			ondelete='cascade', 
+		)
 
 
 
@@ -191,6 +263,8 @@ class PaitentLine(models.Model):
 
 
 
+
+
 	# Address
 
 	country = fields.Char(
@@ -211,10 +285,6 @@ class PaitentLine(models.Model):
 
 # ----------------------------------------------------------- Relational ------------------------------------------------------
 
-	marketing_id = fields.Many2one(
-			#'openhealth.account.contasis'
-			'openhealth.marketing'
-		)
 
 
 

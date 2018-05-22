@@ -41,6 +41,7 @@
 
 						<!-- Legacy Update -->
 						<!-- Correct -->
+<!--						
 						<button 
 								type="object" 
 								class="oe_highlight"
@@ -58,11 +59,12 @@
 
 								string="Correct - Legacy"								
 						/>
-
+-->
 
 
 
 						<!-- Histo -->
+<!--
 						<button 
 								type="object" 
 								class="oe_highlight"
@@ -71,9 +73,9 @@
 											]}"
 								name="show_histogram"
 
-								string="Actualizar Histo"								
+								string="Histograma"								
 						/>
-
+-->
 
 
 
@@ -159,6 +161,66 @@
 								string="Distritos"	
 						/>
 
+
+
+
+
+
+						<!-- Vip Sales -->
+<!--
+						<button 
+								class="oe_highlight"
+								type="object" 
+
+								name="vip_orders" 
+
+
+								string="Vip Ventas"	
+						/>
+-->
+
+						<!-- Vip -->
+						<button 
+								class="oe_highlight"
+								type="action" 
+								
+								name="%(patient_line_vip_form_action)d" 
+
+								context="{											
+											'search_default_marketing_id': active_id,	
+										}" 											
+
+								string="Vip"	
+						/>
+
+						<!-- Vip No -->
+						<button 
+								class="oe_highlight"
+								type="action" 
+								
+								name="%(patient_line_vip_no_form_action)d" 
+
+								context="{											
+											'search_default_marketing_id': active_id,	
+										}" 											
+
+								string="No Vip"	
+						/>
+
+
+						<!-- Vip not used -->
+						<button 
+								class="oe_highlight"
+								type="action" 
+								
+								name="%(patient_line_vip_not_used_form_action)d" 
+
+								context="{											
+											'search_default_marketing_id': active_id,	
+										}" 											
+
+								string="Tarjeta Vip No Utilizada"	
+						/>
 
 					</header>
 
@@ -408,7 +470,6 @@
 
 										<field name="education"/>
 
-										<field name="vip"/>
 
 										<field name="country"/>
 
@@ -416,6 +477,8 @@
 
 										<field name="district"/>
 									
+
+										<field name="vip"/>
 									</tree>
 								</field>
 							</page>

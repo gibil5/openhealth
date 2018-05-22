@@ -7,8 +7,8 @@ from openerp import models, fields, api
 import openerp.addons.decimal_precision as dp
 
 
-
 class sale_order_line(models.Model):
+
 	_inherit='sale.order.line'
 
 	#_name = 'openhealth.order_line'
@@ -20,16 +20,30 @@ class sale_order_line(models.Model):
 
 
 
-# ----------------------------------------------------------- Sale Order Report - Deprecated ------------------------------------------------------
 
-	#order_report_id = fields.Many2one(
+# ----------------------------------------------------------- Patient Lines - Extremely Dangerous !!! ------------------------------------------------------
 
-	#	'openhealth.order.report.nex', 
-		
-	#	string='Order Report Reference', 		
-	#	required=False, 
-	#	ondelete='cascade', index=True, copy=False
-	#)
+	# Patient Line  
+	#patient_line_id = fields.Many2one(
+			
+	#		'openhealth.patient.line',
+			
+	#		ondelete='cascade', 
+			
+			#string="Tratamiento",
+			#readonly=False, 
+	#	)
+
+
+	# Correct
+	#@api.multi
+	#def x_reset(self):  
+	#	print 
+	#	print 'Order Line Reset'
+	#	self.product_uom_qty = 0 
+
+
+
 
 
 

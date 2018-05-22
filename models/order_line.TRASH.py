@@ -317,3 +317,15 @@ class sale_order_line(models.Model):
 
 
 			
+# 22 May 2018
+
+# ----------------------------------------------------------- Sale Order Report - Deprecated ------------------------------------------------------
+
+	#order_report_id = fields.Many2one(
+
+	#	'openhealth.order.report.nex', 
+		
+	#	string='Order Report Reference', 		
+	#	required=False, 
+	#	ondelete='cascade', index=True, copy=False
+	#)

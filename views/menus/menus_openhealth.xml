@@ -10,6 +10,7 @@
 <!--
 		<menuitem 	id="main_openhealth_menu_nex" 
 
+					groups="openhealth.roots,openhealth.managers"
 -->
 
 <!-- Open Health -->
@@ -45,7 +46,7 @@
 
 			name="Marketing"
 			
-			groups="openhealth.roots,openhealth.managers"
+			groups="openhealth.roots,openhealth.managers,openhealth.directors"
 			/>
 
 

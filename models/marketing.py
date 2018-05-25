@@ -130,6 +130,7 @@ class Marketing(models.Model):
 	def patient_recoms(self):  
 		print 
 		print 'Patient Recoms'
+		print 
 
 
 		# Patient Lines 
@@ -145,7 +146,7 @@ class Marketing(models.Model):
 			# Recommendations
 			patient = pat_line.patient
 
-			print patient.name 
+			#print patient.name 
 
 
 
@@ -155,7 +156,7 @@ class Marketing(models.Model):
 				# Co2 
 				for reco in treatment.service_co2_ids: 
 
-					print reco.service.name
+					#print reco.service.name
 
 					# Create 
 					reco_line = pat_line.reco_line.create({
@@ -176,7 +177,8 @@ class Marketing(models.Model):
 
 				# Exc 
 				for reco in treatment.service_excilite_ids: 
-					print reco.service.name
+					
+					#print reco.service.name
 
 					# Create 
 					reco_line = pat_line.reco_line.create({
@@ -196,7 +198,8 @@ class Marketing(models.Model):
 
 				# Ipl 
 				for reco in treatment.service_ipl_ids: 
-					print reco.service.name
+					
+					#print reco.service.name
 
 					# Create 
 					reco_line = pat_line.reco_line.create({
@@ -216,7 +219,8 @@ class Marketing(models.Model):
 
 				# Ndyag 
 				for reco in treatment.service_ndyag_ids: 
-					print reco.service.name
+					
+					#print reco.service.name
 
 					# Create 
 					reco_line = pat_line.reco_line.create({
@@ -237,7 +241,8 @@ class Marketing(models.Model):
 
 				# Medical 
 				for reco in treatment.service_medical_ids: 
-					print reco.service.name
+					
+					#print reco.service.name
 
 					# Create 
 					reco_line = pat_line.reco_line.create({
@@ -257,7 +262,8 @@ class Marketing(models.Model):
 
 				# Quick 
 				for reco in treatment.service_quick_ids: 
-					print reco.service.name
+					
+					#print reco.service.name
 
 					# Create 
 					reco_line = pat_line.reco_line.create({
@@ -277,7 +283,8 @@ class Marketing(models.Model):
 
 				# Vip 
 				for reco in treatment.service_vip_ids: 
-					print reco.service.name
+					
+					#print reco.service.name
 
 					# Create 
 					reco_line = pat_line.reco_line.create({
@@ -295,7 +302,7 @@ class Marketing(models.Model):
 															})
 
 
-				print 
+				#print 
 
 
 			# Update 

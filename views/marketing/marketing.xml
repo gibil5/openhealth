@@ -42,7 +42,6 @@
 						<!-- Legacy Update -->
 						<!-- Correct -->
 <!--						
--->
 						<button 
 								type="object" 
 								class="oe_highlight"
@@ -56,13 +55,14 @@
 						<button 
 								type="object" 
 								class="oe_highlight"
-
 								name="correct_patients"
 
 								string="Correct - Legacy"
 
 								groups="openhealth.roots"
 						/>
+-->
+
 
 
 
@@ -82,21 +82,20 @@
 
 
 
-
+<!--
+								attrs="{'invisible':[	
+														('x_type','not in',['patient']), 
+											]}"
+-->
 						<!-- Patients -->
 						<button 
 								class="oe_highlight"
 								type="action" 
-								attrs="{'invisible':[	
-														('x_type','not in',['patient']), 
-											]}"
-								
-								name="%(patient_line_form_action)d" 
-
-
 								context="{
 											'search_default_marketing_id': active_id,	
 										}" 											
+								
+								name="%(patient_line_form_action)d" 
 
 								string="Pacientes"	
 						/>
@@ -186,12 +185,11 @@
 						<button 
 								class="oe_highlight"
 								type="action" 
-								
-								name="%(patient_line_vip_form_action)d" 
-
 								context="{											
 											'search_default_marketing_id': active_id,	
 										}" 											
+
+								name="%(patient_line_vip_form_action)d" 
 
 								string="Vip"	
 						/>
@@ -225,6 +223,55 @@
 								string="Tarjeta Vip No Utilizada"	
 						/>
 
+
+
+						<!-- Sales -->
+						<button 
+								class="oe_highlight"
+								type="object" 
+
+
+								name="patient_sales"
+
+								string="Ventas"	
+						/>
+
+
+						<!-- Procedures -->
+						<button 
+								class="oe_highlight"
+								type="object" 
+
+
+								name="patient_procedures"
+
+								string="Procedimientos"	
+						/>
+
+
+						<!-- Recoms -->
+						<button 
+								class="oe_highlight"
+								type="object" 
+
+								name="patient_recoms"
+
+								string="Reco"	
+						/>
+
+
+						<!-- Patients -->
+						<button 
+								class="oe_highlight"
+								type="action" 
+								context="{
+											'search_default_marketing_id': active_id,	
+										}" 											
+								
+								name="%(patient_line_proc_form_action)d" 
+
+								string="Pacientes"	
+						/>
 					</header>
 
 
@@ -267,17 +314,18 @@
 								<field name="sex_male"/>
 
 								<field name="sex_female"/>
-
-								<field name="sex_undefined"/>
-
+<!--
+								<field name="sex_undefined"		colors="red:sex_male!=0" />
+-->
+								<field name="sex_undefined"		style="background-color:#FFD2C9" />
 							</group>
 
-							<group>
+							<group     >
 								<field name="sex_male_per"/>
 								
 								<field name="sex_female_per"/>
 
-								<field name="sex_undefined_per"/>
+								<field name="sex_undefined_per"		style="background-color:#FFD2C9"  />
 							</group>
 						</group>
 
@@ -304,9 +352,11 @@
 
 								<field name="vspace"/>
 -->
-								<field name="age_undefined"/>
-
-								<field name="age_undefined_per"/>
+								<field name="age_undefined"     style="background-color:#FFD2C9"   />
+<!--
+								<field name="age_undefined_per"	style="background-color:#E6E6FA"		/>
+-->
+								<field name="age_undefined_per"	style="background-color:#FFD2C9"		/>
 							</group>
 						</group>
 
@@ -330,7 +380,7 @@
 
 								<field name="how_mail"	string="Mail"		/>
 
-								<field name="how_u"		string="Indefinido"	/>
+								<field name="how_u"		string="No Definido"		style="background-color:#FFD2C9"		/>
 							</group>
 
 							<group>																
@@ -348,7 +398,7 @@
 
 								<field name="how_mail_per"/>
 
-								<field name="how_u_per"/>
+								<field name="how_u_per"			style="background-color:#FFD2C9"				/>
 							</group>
 						</group>
 
@@ -371,7 +421,7 @@
 								
 								<field name="edu_mas"	string="Posgrado"	/>
 
-								<field name="edu_u"		string="Indefinido"	/>
+								<field name="edu_u"		string="No Definido"		style="background-color:#FFD2C9"	/>
 							</group>
 
 							<group>								
@@ -386,7 +436,7 @@
 								
 								<field name="edu_mas_per"/>
 
-								<field name="edu_u_per"/>
+								<field name="edu_u_per"		style="background-color:#FFD2C9"		/>
 							</group>
 						</group>
 
@@ -568,6 +618,23 @@
 								</field>
 							</page>
 
+
+
+							<!-- Procedures --> 
+<!--
+							<page	string="Procedimientos"		attrs="{'invisible':[('x_type', '!=', 'patient')]}"	>
+
+								<field name="procedure_line">
+
+									<tree string="Distrito"	limit="1000"	>	
+										
+										<field name="name"/>
+
+										<field name="x_count"/>
+									</tree>
+								</field>
+							</page>
+-->
 
 
 

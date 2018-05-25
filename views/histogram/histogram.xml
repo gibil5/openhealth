@@ -20,6 +20,8 @@
 
 					<field name="x_bin"/>
 
+					<field name="x_bin_name"/>
+
 					<field name="count"/>
 
 					<field name="percentage"/>

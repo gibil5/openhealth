@@ -345,6 +345,7 @@ class Treatment(models.Model):
 		self.service_ipl_ids.unlink()
 		self.service_ndyag_ids.unlink()
 		self.service_medical_ids.unlink()		
+		
 		self.procedure_ids.unlink()
 		self.session_ids.unlink()
 		self.control_ids.unlink()

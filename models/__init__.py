@@ -11,6 +11,8 @@ from . import sale_report_md
 
 
 # Marketing
+from . import marketing_recommendation_line
+
 from . import marketing_order_line
 from . import patient_line
 from . import histo_line

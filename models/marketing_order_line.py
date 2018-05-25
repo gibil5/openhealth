@@ -4,24 +4,57 @@
 # 	Marketing Order Line 
 # 
 
-
 from openerp import models, fields, api
 import openerp.addons.decimal_precision as dp
-
-#import ord_vars
 
 
 class marketing_order_line(models.Model):
 
 	#_inherit='sale.order.line'
 
-
 	_name = 'openhealth.marketing.order.line'
-
 
 	_description = "Openhealth Marketing Order Line"
 
 
+
+
+
+# ----------------------------------------------------------- Inheritable ------------------------------------------------------
+
+	patient = fields.Many2one(
+		'oeh.medical.patient',
+
+		string='Paciente', 
+		#required=True, 		
+		)
+
+
+
+	doctor = fields.Many2one(
+			'oeh.medical.physician',
+			string = "Médico", 	
+		)
+
+
+
+	product_id = fields.Many2one(
+			'product.product', 
+			
+			string='Producto', 
+			domain=[('sale_ok', '=', True)], 
+			change_default=True, 
+			ondelete='restrict', 
+			required=True, 
+		)
+
+
+
+
+	# Date Created 
+	x_date_created = fields.Datetime(
+			string='Fecha', 
+		)
 
 
 
@@ -30,19 +63,33 @@ class marketing_order_line(models.Model):
 # ----------------------------------------------------------- Handles ------------------------------------------------------
 	
 	# Patient Line  
-	patient_line_id = fields.Many2one(
-			
+	patient_line_sale_id = fields.Many2one(			
 			'openhealth.patient.line',
-			
 			ondelete='cascade', 			
 		)
 
 
+
+
+	# Patient Line  Proc
+	patient_line_id_proc = fields.Many2one(
+			'openhealth.patient.line',
+			ondelete='cascade', 			
+		)
+
+
+
+	# Patient Line  
+	patient_line_id = fields.Many2one(			
+			'openhealth.patient.line',
+			ondelete='cascade', 			
+		)
+
+
+
 	# Patient Line Vip 
 	patient_line_id_vip = fields.Many2one(
-			
 			'openhealth.patient.line',
-			
 			ondelete='cascade', 			
 		)
 
@@ -71,46 +118,20 @@ class marketing_order_line(models.Model):
 
 
 
-	# Date Created 
-	x_date_created = fields.Datetime(
-			string='Fecha', 
-		)
 
 
 
 
-	patient = fields.Many2one(
-		'oeh.medical.patient',
-
-		string='Paciente', 
-		#required=True, 		
-		)
 
 
 
 
-	doctor = fields.Many2one(
-
-			'oeh.medical.physician',
-		
-			string = "Médico", 	
-		)
 
 
 
 
 	
 
-	product_id = fields.Many2one(
-		'product.product', 
-		
-		string='Producto', 
-		
-		domain=[('sale_ok', '=', True)], 
-		change_default=True, 
-		ondelete='restrict', 
-		required=True, 
-		)
 	
 
 

@@ -20,10 +20,12 @@
 	'description': """
 
 
-		Last built: 22 May 2018 
+		Last built: 25 May 2018 
 
 		
 		Stability by Design !
+
+		Simple but Abstract. 
 
 		La Estabilidad se consigue pour la disminución, no por el aumento. 
 		Dieter Rams: Less but Better. 
@@ -168,7 +170,10 @@
 		# Recent 
 		'views/histogram/histogram.xml',
 		'views/places/place.xml',
+
 		'views/account/patient_line.xml',
+		'views/account/patient_line_pivot.xml',
+		
 		'views/marketing/marketing.xml',
 		'views/marketing/marketing_pivot.xml',
 

@@ -6,18 +6,16 @@
 #
 
 from openerp import models, fields, api
-
 import datetime
 import resap_funcs
 import acc_funcs
-
-
 #import matplotlib.pyplot as plt
 import numpy as np
 #import pandas as pd
-
-
 import collections
+
+
+import openerp.addons.decimal_precision as dp
 
 
 class Marketing(models.Model):
@@ -31,6 +29,359 @@ class Marketing(models.Model):
 	_order = 'date_begin asc,name asc'
 
 
+
+
+
+# ----------------------------------------------------------- Relational ------------------------------------------------------
+
+	# Patient Lines 
+	patient_line = fields.One2many(
+			'openhealth.patient.line', 
+			'marketing_id', 
+		)
+
+
+	# Country 
+	country_line = fields.One2many(
+			'openhealth.country.line', 
+			'marketing_id', 
+		)
+
+	# City 
+	city_line = fields.One2many(
+			'openhealth.city.line', 
+			'marketing_id', 
+		)
+
+	# District 
+	district_line = fields.One2many(
+			'openhealth.district.line', 
+			'marketing_id', 
+		)
+
+
+	# Histo Lines 
+	histo_line = fields.One2many(
+			'openhealth.histo.line', 
+			'marketing_id', 
+		)
+
+
+
+
+# ----------------------------------------------------------- Sales ------------------------------------------------------
+	
+	# Recommendations
+	@api.multi
+	def patient_sales(self):  
+		print 
+		print 'Patient Sales'
+
+
+		# Patient Lines 
+		for pat_line in self.patient_line: 
+
+
+			# Clean 
+			pat_line.sale_line.unlink()
+
+
+			# Orders 
+			orders = self.env['sale.order'].search([
+															('state', '=', 'sale'),
+															('patient', '=', pat_line.patient.name),
+													],
+														#order='x_serial_nr asc',
+														order='date_order asc',
+														#limit=1,
+												)
+			#print orders
+
+
+			# Order Lines - Create Order Line 
+			for order in orders: 
+
+				for line in order.order_line: 
+					
+
+
+					# Create 
+					pat_ol = pat_line.sale_line.create({
+														'name': line.name, 
+														'product_id': line.product_id.id, 
+
+														'x_date_created': order.date_order, 
+														
+														'product_uom_qty': line.product_uom_qty, 
+														'price_unit': line.price_unit, 
+
+														'patient_line_sale_id': pat_line.id, 
+						})
+
+					#print pl_ol
+
+
+
+
+# ----------------------------------------------------------- Procedures ------------------------------------------------------
+	
+	# Recommendations
+	@api.multi
+	def patient_recoms(self):  
+		print 
+		print 'Patient Recoms'
+
+
+		# Patient Lines 
+		for pat_line in self.patient_line: 
+
+
+
+			# Clean 
+			pat_line.reco_line.unlink()
+
+
+
+			# Recommendations
+			patient = pat_line.patient
+
+			print patient.name 
+
+
+
+			# Loop 
+			for treatment in patient.treatment_ids: 
+
+				# Co2 
+				for reco in treatment.service_co2_ids: 
+
+					print reco.service.name
+
+					# Create 
+					reco_line = pat_line.reco_line.create({
+																'product_id': reco.service.id, 
+																'sub_family': reco.service.x_treatment, 
+																'x_date_created': reco.create_date, 
+																'doctor': reco.physician.id, 
+
+																'price': reco.price, 
+																'price_vip': reco.price_vip, 
+																'price_manual': reco.price_manual, 
+																'price_applied': reco.price_applied, 
+
+																'patient_line_id': pat_line.id, 
+															})
+
+
+
+				# Exc 
+				for reco in treatment.service_excilite_ids: 
+					print reco.service.name
+
+					# Create 
+					reco_line = pat_line.reco_line.create({
+																'product_id': reco.service.id, 
+																'sub_family': reco.service.x_treatment, 
+																'x_date_created': reco.create_date, 
+																'doctor': reco.physician.id, 
+
+																'price': reco.price, 
+																'price_vip': reco.price_vip, 
+																'price_manual': reco.price_manual, 
+																'price_applied': reco.price_applied, 
+
+																'patient_line_id': pat_line.id, 
+															})
+
+
+				# Ipl 
+				for reco in treatment.service_ipl_ids: 
+					print reco.service.name
+
+					# Create 
+					reco_line = pat_line.reco_line.create({
+																'product_id': reco.service.id, 
+																'sub_family': reco.service.x_treatment, 
+																'x_date_created': reco.create_date, 
+																'doctor': reco.physician.id, 
+
+																'price': reco.price, 
+																'price_vip': reco.price_vip, 
+																'price_manual': reco.price_manual, 
+																'price_applied': reco.price_applied, 
+
+																'patient_line_id': pat_line.id, 
+															})
+
+
+				# Ndyag 
+				for reco in treatment.service_ndyag_ids: 
+					print reco.service.name
+
+					# Create 
+					reco_line = pat_line.reco_line.create({
+																'product_id': reco.service.id, 
+																'sub_family': reco.service.x_treatment, 
+																'x_date_created': reco.create_date, 
+																'doctor': reco.physician.id, 
+
+																'price': reco.price, 
+																'price_vip': reco.price_vip, 
+																'price_manual': reco.price_manual, 
+																'price_applied': reco.price_applied, 
+
+																'patient_line_id': pat_line.id, 
+															})
+
+
+
+				# Medical 
+				for reco in treatment.service_medical_ids: 
+					print reco.service.name
+
+					# Create 
+					reco_line = pat_line.reco_line.create({
+																'product_id': reco.service.id, 
+																'sub_family': reco.service.x_treatment, 
+																'x_date_created': reco.create_date, 
+																'doctor': reco.physician.id, 
+
+																'price': reco.price, 
+																'price_vip': reco.price_vip, 
+																'price_manual': reco.price_manual, 
+																'price_applied': reco.price_applied, 
+
+																'patient_line_id': pat_line.id, 
+															})
+
+
+				# Quick 
+				for reco in treatment.service_quick_ids: 
+					print reco.service.name
+
+					# Create 
+					reco_line = pat_line.reco_line.create({
+																'product_id': reco.service.id, 
+																'sub_family': reco.service.x_treatment, 
+																'x_date_created': reco.create_date, 
+																'doctor': reco.physician.id, 
+
+																'price': reco.price, 
+																'price_vip': reco.price_vip, 
+																'price_manual': reco.price_manual, 
+																'price_applied': reco.price_applied, 
+
+																'patient_line_id': pat_line.id, 
+															})
+
+
+				# Vip 
+				for reco in treatment.service_vip_ids: 
+					print reco.service.name
+
+					# Create 
+					reco_line = pat_line.reco_line.create({
+																'product_id': reco.service.id, 
+																'sub_family': reco.service.x_treatment, 
+																'x_date_created': reco.create_date, 
+																'doctor': reco.physician.id, 
+
+																'price': reco.price, 
+																'price_vip': reco.price_vip, 
+																'price_manual': reco.price_manual, 
+																'price_applied': reco.price_applied, 
+
+																'patient_line_id': pat_line.id, 
+															})
+
+
+				print 
+
+
+			# Update 
+			pat_line.update_fields_proc()
+
+	# patient_recoms
+
+
+
+
+
+
+	# Procedures
+	@api.multi
+	def patient_procedures(self):  
+		print 
+		print 'Patient Procedurs'
+
+
+		# Patient Lines 
+		for pat_line in self.patient_line: 
+
+
+
+			# Clean 
+			pat_line.procedure_line.unlink()
+
+
+
+
+			# Orders 
+			orders = self.env['sale.order'].search([
+															('state', '=', 'sale'),
+															('patient', '=', pat_line.patient.name),
+													],
+														#order='x_serial_nr asc',
+														order='date_order asc',
+														#limit=1,
+												)
+			#print orders
+
+
+
+			# Proc Lines - Create Proc Line 
+			for order in orders: 
+
+				for line in order.order_line: 
+
+					prod = line.product_id
+
+
+					#if prod.x_family not in ['consultation']: 
+					#if line.product_id.x_family not in ['consultation']: 
+					if 	prod.type not in ['product']	and		prod.x_family not in ['consultation']: 
+
+
+						#print prod.name
+						#print prod.type
+						#print prod.categ_id.name 
+
+						#print prod.x_family
+						#print prod.x_treatment
+						
+						#print 
+
+
+						# Create 
+						procedure_line = pat_line.procedure_line.create({
+																			'name': line.name, 
+
+																			'product_id': line.product_id.id, 
+
+																			'x_date_created': order.date_order, 
+																			
+																			'product_uom_qty': line.product_uom_qty, 
+
+																			'price_unit': line.price_unit, 
+
+
+																			'patient_line_id_proc': pat_line.id, 
+																		})
+
+			# Update 
+			pat_line.update_fields_proc()
+
+	# patient_procedures
 
 
 
@@ -291,52 +642,6 @@ class Marketing(models.Model):
 
 
 
-# ----------------------------------------------------------- Relational ------------------------------------------------------
-
-	# Patient Lines 
-	patient_line = fields.One2many(
-			'openhealth.patient.line', 
-
-			'marketing_id', 
-		)
-
-
-	# Histo Lines 
-	histo_line = fields.One2many(
-			'openhealth.histo.line', 
-			
-			'marketing_id', 
-		)
-
-
-
-
-
-	# Country 
-	country_line = fields.One2many(
-			#'openhealth.place.line', 
-			'openhealth.country.line', 
-			
-			'marketing_id', 
-		)
-
-	# City 
-	city_line = fields.One2many(
-			#'openhealth.place.line', 
-			'openhealth.city.line', 
-			
-			'marketing_id', 
-		)
-
-	# District 
-	district_line = fields.One2many(
-			#'openhealth.place.line', 
-			'openhealth.district.line', 
-			
-			'marketing_id', 
-		)
-
-
 
 
 
@@ -362,7 +667,7 @@ class Marketing(models.Model):
 
 			selection=[	
 						('order', 		'Ventas'),
-						('patient', 	'Pacientes'),
+						('patient', 	'Pacientes Nuevos'),
 			], 
 
 			string="Tipo",
@@ -437,10 +742,177 @@ class Marketing(models.Model):
 
 # ----------------------------------------------------------- Stats ------------------------------------------------------
 
+
+	# Percentages - Float 
+
+
+	# Age 
+	age_undefined_per = fields.Float(
+			'Error %',
+			readonly=True, 
+
+			digits=(16,1), 
+		)
+
+
+	# Sex 
+	sex_male_per = fields.Float(
+			'M %',
+			#'%',
+			readonly=True, 
+
+			digits=(16,1), 
+		)
+
+	sex_female_per = fields.Float(
+			'F %',
+			#'%',
+			readonly=True, 
+
+			digits=(16,1), 
+		)
+
+	sex_undefined_per = fields.Float(
+			#'%',
+			'Error %',
+			readonly=True, 
+
+			digits=(16,1), 
+		)
+
+
+
+	# First Contact 
+	how_u_per = fields.Float(
+			#'Indefinido %',
+			'No Definido %',
+			readonly=True, 
+
+			#digits=dp.get_precision('Product Price'), 
+			digits=(16,1), 
+		)
+
+	how_none_per = fields.Float(
+			'Ninguno %',
+			readonly=True, 
+
+			digits=(16,1), 
+		)
+
+	how_reco_per = fields.Float(
+			'Recomendación %',
+			readonly=True, 
+
+			digits=(16,1), 
+		)
+
+	how_tv_per = fields.Float(
+			'Tv %',
+			readonly=True, 
+
+			digits=(16,1), 
+		)
+
+	how_radio_per = fields.Float(
+			'Radio %',
+			readonly=True, 
+			digits=(16,1), 
+		)
+
+	how_inter_per = fields.Float(
+			'Internet %',
+			readonly=True, 
+			digits=(16,1), 
+		)
+
+	how_web_per = fields.Float(
+			'Web %',
+			readonly=True, 
+			digits=(16,1), 
+		)
+
+	how_mail_per = fields.Float(
+			'Mail %',
+			readonly=True, 
+			digits=(16,1), 
+		)
+
+
+
+
+
+	# Education Level 
+	edu_u_per = fields.Float(
+			#'Indefinido %',
+			'No Definido %',
+			readonly=True, 
+			digits=(16,1), 
+		)
+
+	edu_fir_per = fields.Float(
+			'Primaria %',
+			readonly=True, 
+			digits=(16,1), 
+		)
+
+	edu_sec_per = fields.Float(
+			'Secundaria %',
+			readonly=True, 
+			digits=(16,1), 
+		)
+	
+	edu_tec_per = fields.Float(
+			'Instituto %',
+			readonly=True, 
+			digits=(16,1), 
+		)
+	
+	edu_uni_per = fields.Float(
+			'Universidad %',
+			readonly=True, 
+			digits=(16,1), 
+		)
+	
+	edu_mas_per = fields.Float(
+			'Posgrado %',
+			readonly=True, 
+			digits=(16,1), 
+		)
+
+
+
+	# Vip 
+	vip_true_per = fields.Float(
+			'Vip Si %',
+			readonly=True, 
+			digits=(16,1), 
+		)
+
+	vip_false_per = fields.Float(
+			'Vip No %',
+			readonly=True, 
+			digits=(16,1), 
+		)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	# Age
 	age_mean = fields.Float(
 			'Edad Promedio',
 			readonly=True, 
+
+			digits=(16,1), 
 		)
 
 	age_max = fields.Integer(
@@ -454,14 +926,11 @@ class Marketing(models.Model):
 		)
 
 	age_undefined = fields.Integer(
-			'Edad Ind',
+			#'Edad Ind',
+			'Edad Error',
 			readonly=True, 
 		)
 
-	age_undefined_per = fields.Float(
-			'I %',
-			readonly=True, 
-		)
 
 
 
@@ -479,30 +948,16 @@ class Marketing(models.Model):
 		)
 
 	sex_undefined = fields.Integer(
-			'Sexo Ind',
+			#'Sexo Ind',
+			'Sexo Error',
 			readonly=True, 
+	
+			#digits=dp.get_precision('Product Price'), 
+			#digits=(16,1), 
 		)
 
 
 	# Per
-	sex_male_per = fields.Float(
-			'M %',
-			#'%',
-			readonly=True, 
-		)
-
-	sex_female_per = fields.Float(
-			'F %',
-			#'%',
-			readonly=True, 
-		)
-
-	sex_undefined_per = fields.Float(
-			#'%',
-			'I %',
-			readonly=True, 
-		)
-
 
 
 
@@ -524,9 +979,11 @@ class Marketing(models.Model):
 
 
 	how_u = fields.Integer(
-			'Pri Indefinido',
+			'No Definido',
 			readonly=True, 
 		)
+
+
 
 	how_none = fields.Integer(
 			'Pri Ninguno',
@@ -567,48 +1024,6 @@ class Marketing(models.Model):
 
 
 
-	# Percentages 
-	how_u_per = fields.Float(
-			'Indefinido %',
-			readonly=True, 
-		)
-
-	how_none_per = fields.Float(
-			'Ninguno %',
-			readonly=True, 
-		)
-
-	how_reco_per = fields.Float(
-			'Recomendación %',
-			readonly=True, 
-		)
-
-	how_tv_per = fields.Float(
-			'Tv %',
-			readonly=True, 
-		)
-
-	how_radio_per = fields.Float(
-			'Radio %',
-			readonly=True, 
-		)
-
-	how_inter_per = fields.Float(
-			'Internet %',
-			readonly=True, 
-		)
-
-	how_web_per = fields.Float(
-			'Web %',
-			readonly=True, 
-		)
-
-	how_mail_per = fields.Float(
-			'Mail %',
-			readonly=True, 
-		)
-
-
 
 
 
@@ -633,7 +1048,8 @@ class Marketing(models.Model):
 
 
 	edu_u = fields.Integer(
-			'Edu Indefinido',
+			#'Edu Indefinido',
+			'No Definido',
 			readonly=True, 
 		)
 
@@ -666,38 +1082,6 @@ class Marketing(models.Model):
 
 
 
-	# Percentage
-	edu_u_per = fields.Float(
-			'Indefinido %',
-			readonly=True, 
-		)
-
-	edu_fir_per = fields.Float(
-			'Primaria %',
-			readonly=True, 
-		)
-
-	edu_sec_per = fields.Float(
-			'Secundaria %',
-			readonly=True, 
-		)
-	
-	edu_tec_per = fields.Float(
-			'Instituto %',
-			readonly=True, 
-		)
-	
-	edu_uni_per = fields.Float(
-			'Universidad %',
-			readonly=True, 
-		)
-	
-	edu_mas_per = fields.Float(
-			'Posgrado %',
-			readonly=True, 
-		)
-
-
 
 
 
@@ -721,17 +1105,6 @@ class Marketing(models.Model):
 		)
 
 
-	vip_true_per = fields.Float(
-			'Vip Si %',
-			readonly=True, 
-		)
-
-	vip_false_per = fields.Float(
-			'Vip No %',
-			readonly=True, 
-		)
-
-
 
 
 	# Address
@@ -750,6 +1123,10 @@ class Marketing(models.Model):
 
 		print 
 		print 'Set Stats'
+
+
+
+		# Init vars 
 
 		# Sex 
 		count_m = 0
@@ -789,11 +1166,11 @@ class Marketing(models.Model):
 		vip_false = 0 
 
 
-
 		# Address
 		country_arr = []
 		city_arr = []
 		district_arr = []
+
 
 
 
@@ -811,7 +1188,6 @@ class Marketing(models.Model):
 				count_u = count_u + 1
 
 
-
 			# Age
 			if line.age_years not in[ -1, 0]: 
 				count_a = count_a + line.age_years 
@@ -821,7 +1197,6 @@ class Marketing(models.Model):
 					age_min = line.age_years
 			else: 
 				count_age_u = count_age_u + 1
-
 
 
 
@@ -849,10 +1224,6 @@ class Marketing(models.Model):
 
 			else: 
 				how_u = how_u + 1
-
-
-
-
 
 
 
@@ -891,20 +1262,23 @@ class Marketing(models.Model):
 
 
 			
-			# Using collections
+			# Using collections - More Abstract !
 
-			# Address
+			# Countries
 			country_arr.append(line.country)
 
+			# Cities 
 			city_arr.append(line.city)
 
-			# Only for Lima 
+			# Districts - Only for Lima 
 			if line.city in ['Lima']: 
 				district_arr.append(line.district)
 
 
 
 
+
+		# Update Object 
 
 		# Sex 
 		# Absolutes 
@@ -1004,10 +1378,11 @@ class Marketing(models.Model):
 		#print 
 		#print counter_country
 		#print 
-
 		#print counter_country['Peru']
 
 
+
+		# Clear 
 		self.country_line.unlink()
 		self.city_line.unlink()
 		self.district_line.unlink()

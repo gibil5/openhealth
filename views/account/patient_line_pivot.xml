@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+		<!-- Pivot --> 
+	   <record id="view_patient_line_pivot" model="ir.ui.view">
+			<field name="name">patient.line.pivot</field>
+			<field name="model">openhealth.patient.line</field>
+			<field name="arch" type="xml">
+
+
+				 <pivot string="Patient Analysis" disable_linking="True"	display_quantity="True"	>
+		
+
+<!--	    			
+-->    
+
+					<!-- Y Axis --> 
+					<field name="sex"	type="row"	/>
+
+
+
+					<!-- X Axis --> 
+					<field name="mea_m" type="measure"	/>
+					<field name="mea_f" type="measure"	/>
+					<field name="mea_u" type="measure"	/>
+
+
+					<field name="mea_vip" type="measure"	/>
+					<field name="mea_vip_no" type="measure"	/>
+
+
+					<field name="mea_first" type="measure"	/>
+					<field name="mea_second" type="measure"	/>
+					<field name="mea_technical" type="measure"	/>
+					<field name="mea_university" type="measure"	/>
+					<field name="mea_masterphd" type="measure"	/>
+					<field name="mea_edu_u" type="measure"	/>
+		
+
+					<field name="mea_recommendation" type="measure"	/>
+					<field name="mea_tv" type="measure"	/>
+					<field name="mea_radio" type="measure"	/>
+					<field name="mea_internet" type="measure"	/>
+					<field name="mea_website" type="measure"	/>
+					<field name="mea_mail_campaign" type="measure"	/>
+					<field name="mea_how_none" type="measure"	/>
+					<field name="mea_how_u" type="measure"	/>
+
+				 </pivot>
+			 </field>
+		</record>
+
+
+
+
+		<!-- Graph --> 
+		<record id="view_patient_line_graph" model="ir.ui.view">
+			<field name="name">patient.line.graph</field>
+			<field name="model">openhealth.patient.line</field>
+			<field name="type">graph</field>
+			<field name="arch" type="xml">
+
+
+				<graph string="Análisis de Pacientes">
+<!--
+					<field name="date_order" interval="day" type="row"	/>
+					<field name="amount_total" type="measure"/>	             
+
+
+					<field name="sex"/>
+					<field name="city"/>
+					<field name="street2_sel"/>
+					<field name="street2"/>
+
+
+					<field name="age_years"/>
+					<field name="sex"/> 
+					<field name="count"	/>
+					<field name="first_contact"  group="True" />
+					<field name="age_years"    type='measure'   />
+
+
+
+					<field name="sex"   type='col'   />
+					<field name="first_contact"  />
+					<field name="education"  />
+					<field name="sex"   />
+-->                
+					
+
+					<field name="district"  order='count' />
+
+				</graph>
+
+
+			 </field>
+		</record>
+
+
+	</data>
+</openerp>

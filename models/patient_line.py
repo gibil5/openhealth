@@ -21,25 +21,92 @@ class PaitentLine(models.Model):
 
 
 
+# ----------------------------------------------------------- Inheritable ------------------------------------------------------
+
+	# Patient 
+	patient = fields.Many2one(
+			'oeh.medical.patient', 
+			string="Paciente", 
+		)
+
+
+
+
 
 # ----------------------------------------------------------- Relational ------------------------------------------------------
 
-
-	# All 
-	order_line = fields.One2many(
-			
+	# Sales
+	sale_line = fields.One2many(
 			'openhealth.marketing.order.line', 
+			'patient_line_sale_id',
+		)
 
+
+
+
+	# Recommendations
+	reco_line = fields.One2many(
+
+			'openhealth.marketing.recom.line', 
+		
+			'patient_line_id',
+		
+			string="Recom.", 
+		)
+
+
+
+
+	# Procedures
+	procedure_line = fields.One2many(
+			'openhealth.marketing.order.line', 
+			'patient_line_id_proc',
+		
+			string="Procedimientos", 
+		)
+
+
+
+
+
+	# Sales
+	order_line = fields.One2many(
+			'openhealth.marketing.order.line', 
 			'patient_line_id',
 		)
 
 
-	# With Vip 
+	# Sales - With Vip Card
 	order_line_vip = fields.One2many(
-			
 			'openhealth.marketing.order.line', 
-
 			'patient_line_id_vip',
+		)
+
+
+
+
+# ----------------------------------------------------------- Dates ------------------------------------------------------
+
+	# Date Created 
+	date_create = fields.Datetime(
+			string="Fecha de Creación", 
+		)
+
+	# Date Record 
+	date_record = fields.Datetime(
+			string="Fecha de Registro", 
+			#string="Fecha creación", 
+		)
+
+
+
+
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
+
+	# Nr lines Proc 
+	nr_lines_proc = fields.Integer(
+			'Nr Proc', 
+			#default=-1, 
 		)
 
 
@@ -47,34 +114,10 @@ class PaitentLine(models.Model):
 
 	# Nr lines Vip 
 	nr_lines_vip = fields.Integer(
-			'Ventas Usando la tarjeta Vip', 
+			#'Ventas Usando la tarjeta Vip', 
+			'Compras Con Tarjeta Vip', 
 			default=-1, 
 		)
-
-
-	# On change 
-	#@api.onchange('order_line_vip')
-	#def _onchange_order_line_vip(self):
-	#@api.onchange('write_date')
-	#def _onchange_write_date(self):
-
-
-
-	# Correct
-	@api.multi
-	def update_fields_vip(self):  
-		
-		#print 
-		#print 'Update fields - Vip'
-		
-		count = self.env['openhealth.marketing.order.line'].search_count([
-																				('patient_line_id_vip','=', self.id),
-																			]) 
-		self.nr_lines_vip = count
-
-
-
-
 
 
 	# Date Vip card 
@@ -90,28 +133,6 @@ class PaitentLine(models.Model):
 			ondelete='cascade', 
 		)
 
-
-
-# ----------------------------------------------------------- Dates ------------------------------------------------------
-
-	# Patient 
-	patient = fields.Many2one(
-			'oeh.medical.patient', 
-			string="Paciente", 
-		)
-
-
-
-	# Date Created 
-	date_create = fields.Datetime(
-			string="Fecha de Creación", 
-		)
-
-	# Date Record 
-	date_record = fields.Datetime(
-			string="Fecha de Registro", 
-			#string="Fecha creación", 
-		)
 
 
 
@@ -134,9 +155,6 @@ class PaitentLine(models.Model):
 
 
 
-
-
-
 	# Sex 
 	sex = fields.Selection(
 			selection = pat_vars._sex_type_list, 
@@ -155,8 +173,6 @@ class PaitentLine(models.Model):
 	mea_u = fields.Integer(
 			'U', 
 		)
-
-
 
 
 
@@ -234,15 +250,6 @@ class PaitentLine(models.Model):
 		)
 	
 
-#			('first', 'Primaria'),
-#			('second', 'Secundaria'),
-#			('technical', 'Instituto'),
-#			('university', 'Universidad'),
-#			('masterphd', 'Posgrado'),
-
-
-
-
 
 
 
@@ -258,8 +265,6 @@ class PaitentLine(models.Model):
 	mea_vip_no = fields.Integer(
 			'No Vip', 
 		)
-
-
 
 
 
@@ -283,15 +288,6 @@ class PaitentLine(models.Model):
 
 
 
-# ----------------------------------------------------------- Relational ------------------------------------------------------
-
-
-
-
-	#account_id = fields.Many2one(
-	#		'openhealth.account.contasis'
-	#	)
-
 
 
 
@@ -300,7 +296,6 @@ class PaitentLine(models.Model):
 	# Update Fields
 	@api.multi
 	def update_fields(self):  
-
 
 		#print
 		#print 'Update Fields - Patient'
@@ -341,7 +336,6 @@ class PaitentLine(models.Model):
 		else: 
 			self.mea_vip_no	= 1
 
-			
 
 		# Education
 		if self.education == 'first': 
@@ -361,9 +355,6 @@ class PaitentLine(models.Model):
 
 		else: 
 			self.mea_edu_u = 1			
-
-
-
 
 
 		# First Contact 
@@ -391,7 +382,48 @@ class PaitentLine(models.Model):
 		else: 
 			self.mea_how_u = 1
 
-
 	
 		return ret 
+
+	# update_fields
+
+
+
+
+	# Update fields Vip
+	@api.multi
+	def update_fields_vip(self):  
+		
+		#print 
+		#print 'Update fields - Vip'
+		
+
+		# Nr Lines Vip 
+		count = self.env['openhealth.marketing.order.line'].search_count([
+																				('patient_line_id_vip','=', self.id),
+																			]) 
+		self.nr_lines_vip = count
+
+	# update_fields_vip
+
+
+
+
+	# Update fields Proc
+	@api.multi
+	def update_fields_proc(self):  
+
+		print 
+		print 'Update fields - Proc'
+
+
+		# Nr Lines proc 
+		count = self.env['openhealth.marketing.order.line'].search_count([
+																				('patient_line_id_proc','=', self.id),
+																			]) 
+		self.nr_lines_proc = count
+
+	# update_fields_proc
+
+
 

@@ -26,12 +26,13 @@ class PlaceLine(models.Model):
 		)
 
 
+
+
 	# ----------------------------------------------------------- Primitive ------------------------------------------------------
 	name = fields.Char(
 			'Nombre',
 		)
 
-	#count = fields.Char(
 	x_count = fields.Integer(
 			'Nr',
 		)
@@ -40,6 +41,8 @@ class PlaceLine(models.Model):
 
 
 
+# ----------------------------------------------------------- Marketing ------------------------------------------------------
+
 class CountryLine(models.Model):	
 
 	_inherit = 'openhealth.place.line'
@@ -47,7 +50,6 @@ class CountryLine(models.Model):
 	_name = 'openhealth.country.line'
 	
 	#_order = 'idx asc'
-
 
 
 class CityLine(models.Model):	
@@ -59,7 +61,6 @@ class CityLine(models.Model):
 	#_order = 'idx asc'
 
 
-
 class DistrictLine(models.Model):	
 	
 	_inherit = 'openhealth.place.line'
@@ -69,9 +70,6 @@ class DistrictLine(models.Model):
 	#_order = 'idx asc'
 
 
-	#city = fields.Char(
-	#		'Ciudad',
-	#	)
 
 
 

@@ -374,6 +374,14 @@ _family_list = [
 
 _treatment_list = [
 
+
+		# 29 May 2018
+		#('infiltration',			'infiltration'), 
+		('infiltration_scar',		'infiltration_scar'), 
+		('infiltration_keloid',		'infiltration_keloid'), 
+
+
+
 		# 28 May 2018
 		('product',		'product'), 
 

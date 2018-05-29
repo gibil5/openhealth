@@ -7,6 +7,8 @@ from openerp import models, fields, api
 # Family, Treatment, Zone, Pathology 
 _hap = {
 
+
+
 			'x': 'x', 
 			'laser_m22': 			'M22', 
 
@@ -23,6 +25,9 @@ _hap = {
 
 
 			# Medical 
+			'infiltration_scar': 	'Infiltración Cicatriz', 
+			'infiltration_keloid': 	'Infiltración Queloide', 
+
 			'criosurgery':         	'Criocirugía', 
 			'plasma':         		'Plasma', 
 			'botulinum_toxin':      'Toxina Botulínica', 
@@ -175,6 +180,11 @@ _hap = {
 
 # Products 
 _hac = {
+
+			'kenacort': 			'Kenacort', 
+
+
+
 
 			'acne_topic_wash': 		'Acnetopic Wash', 
 

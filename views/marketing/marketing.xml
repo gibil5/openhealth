@@ -598,16 +598,12 @@ attrs="{'invisible':[('x_type', '!=', 'patient')]}"
 
 							<!-- Countries --> 
 							<page	string="Países">
-
 								<field name="country_line">
-
 									<tree string="Pais"	limit="1000"	>	
-										
 										<field name="name"/>
 
 										<field name="x_count"/>
 									</tree>
-
 								</field>
 							</page>
 

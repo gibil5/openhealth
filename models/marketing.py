@@ -86,6 +86,15 @@ class Marketing(models.Model):
 		)
 
 
+	# Histo Lines 
+	histo_line = fields.One2many(
+			'openhealth.histo.line', 
+			'marketing_id', 
+		)
+
+
+
+
 	# Country 
 	country_line = fields.One2many(
 			'openhealth.country.line', 
@@ -105,11 +114,6 @@ class Marketing(models.Model):
 		)
 
 
-	# Histo Lines 
-	histo_line = fields.One2many(
-			'openhealth.histo.line', 
-			'marketing_id', 
-		)
 
 
 
@@ -1222,7 +1226,9 @@ class Marketing(models.Model):
 		vip_false = 0 
 
 
-		# Address
+
+
+		# Collections
 		country_arr = []
 		city_arr = []
 		district_arr = []

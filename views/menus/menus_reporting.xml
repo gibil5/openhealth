@@ -166,8 +166,6 @@
 
 
 
-
-<!--
 				<menuitem 	id="sales_report_sales_june_menu" 
 							parent="sales_reports_menu"
 							sequence="6"
@@ -178,6 +176,8 @@
 						/>
 
 
+
+<!--
 				<menuitem 	id="sales_report_sales_july_menu" 
 							parent="sales_reports_menu"
 							sequence="7"
@@ -185,6 +185,61 @@
 							name="Julio" 				
 
 							action="action_order_report_july"
+						/>
+
+
+
+				<menuitem 	id="sales_report_sales_august_menu" 
+							parent="sales_reports_menu"
+							sequence="8"
+
+							name="Agosto" 				
+
+							action="action_order_report_august"
+						/>
+
+
+
+				<menuitem 	id="sales_report_sales_september_menu" 
+							parent="sales_reports_menu"
+							sequence="9"
+
+							name="Setiembre" 				
+
+							action="action_order_report_september"
+						/>
+
+
+
+				<menuitem 	id="sales_report_sales_october_menu" 
+							parent="sales_reports_menu"
+							sequence="10"
+
+							name="Octubre" 				
+
+							action="action_order_report_october"
+						/>
+
+
+
+				<menuitem 	id="sales_report_sales_november_menu" 
+							parent="sales_reports_menu"
+							sequence="11"
+
+							name="Noviembre" 				
+
+							action="action_order_report_november"
+						/>
+
+
+
+				<menuitem 	id="sales_report_sales_december_menu" 
+							parent="sales_reports_menu"
+							sequence="12"
+
+							name="Diciembre" 				
+
+							action="action_order_report_december"
 						/>
 -->
 

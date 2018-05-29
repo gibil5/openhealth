@@ -31,7 +31,7 @@
 						<button 
 								type="object" 
 								class="oe_highlight"
-								name="update_patients"
+								name="update_repo"
 
 								string="Actualizar"								
 						/>
@@ -237,6 +237,19 @@
 						/>
 
 
+
+						<!-- Consultations -->
+						<button 
+								class="oe_highlight"
+								type="object" 
+
+
+								name="patient_consus"
+
+								string="Consultas"	
+						/>
+
+
 						<!-- Procedures -->
 						<button 
 								class="oe_highlight"
@@ -292,24 +305,35 @@
 
 								<field name="date_end"/>
 
-
 								<field name="write_date"	string="Actualizado"/>
 							</group>
 
 							
 							<group>
+<!--								
 								<field name="x_type"/>
-
+-->
 								<field name="total_count"/>
+
+								<field name="patient_sale_count"/>
+
+								<field name="patient_consu_count"/>
+
+								<field name="patient_reco_count"/>
+
+								<field name="patient_proc_count"/>
+
 							</group>
 
 
 						</group>
 
 
-
+<!--
+attrs="{'invisible':[('x_type', '!=', 'patient')]}"	
+-->
 						<!-- Sex -->
-						<group	string="Sexo"   attrs="{'invisible':[('x_type', '!=', 'patient')]}"	>
+						<group	string="Sexo"  >
 							<group>
 								<field name="sex_male"/>
 
@@ -332,7 +356,7 @@
 
 
 						<!-- Age -->
-						<group	string="Edad"   attrs="{'invisible':[('x_type', '!=', 'patient')]}"	>
+						<group	string="Edad"   >
 							<group>
 								<field name="age_mean"/>
 								
@@ -364,7 +388,7 @@
 
 
 						<!-- First Contact -->
-						<group	string="Primer Contacto"   attrs="{'invisible':[('x_type', '!=', 'patient')]}"	>
+						<group	string="Primer Contacto"  	>
 							<group>								
 								<field name="how_none"	string="Ninguno"		/>
 
@@ -408,7 +432,7 @@
 
 
 						<!-- Education -->
-						<group	string="Nivel de educación"   attrs="{'invisible':[('x_type', '!=', 'patient')]}"	>
+						<group	string="Nivel de educación"   	>
 							<group>
 								
 								<field name="edu_fir"	string="Primaria"	/>
@@ -445,7 +469,7 @@
 
 
 						<!-- Vip -->
-						<group	string="Vip"   attrs="{'invisible':[('x_type', '!=', 'patient')]}"	>
+						<group	string="Vip"   >
 							<group>
 								<field name="vip_true"/>
 								
@@ -497,7 +521,7 @@
 
 
 							<!-- Patients --> 
-							<page	string="Pacientes"		attrs="{'invisible':[('x_type', '!=', 'patient')]}"	>
+							<page	string="Pacientes">
 
 								<field name="patient_line">
 
@@ -548,7 +572,7 @@
 
 
 							<!-- Histogram --> 
-							<page	string="Edades"		attrs="{'invisible':[('x_type', '!=', 'patient')]}"	>
+							<page	string="Edades">
 
 								<field name="histo_line">
 
@@ -573,7 +597,7 @@
 
 
 							<!-- Countries --> 
-							<page	string="Países"		attrs="{'invisible':[('x_type', '!=', 'patient')]}"	>
+							<page	string="Países">
 
 								<field name="country_line">
 
@@ -590,7 +614,7 @@
 
 
 							<!-- Cities --> 
-							<page	string="Ciudades"		attrs="{'invisible':[('x_type', '!=', 'patient')]}"	>
+							<page	string="Ciudades">
 
 								<field name="city_line">
 
@@ -605,7 +629,7 @@
 
 
 							<!-- Districts --> 
-							<page	string="Distritos"		attrs="{'invisible':[('x_type', '!=', 'patient')]}"	>
+							<page	string="Distritos">
 
 								<field name="district_line">
 
@@ -662,7 +686,6 @@
 
 
 						</notebook>
-
 					</sheet>
 				</form>
 			</field>
@@ -692,18 +715,15 @@
 <!--
 					<field name="date"			string="Fecha"	/>
 					<field name="total_amount"  attrs="{'invisible':[('x_type', '=', 'patient')]}"	   />
--->
-					<field name="name"	 				/>
-
-
-					<field name="write_date"	string="Actualizado"	/>
-
-
-					<field name="date_begin"	string="Fecha Inicio"	/>
-
-					<field name="date_end"		string="Fecha Fin"	/>
-
 					<field name="x_type"/>
+-->
+					<field name="name"/>
+
+					<field name="write_date"	string="Actualizado"/>
+
+					<field name="date_begin"	string="Fecha Inicio"/>
+
+					<field name="date_end"		string="Fecha Fin"/>
 
 					<field name="total_count"/>
 				</tree>
@@ -778,16 +798,16 @@
 -->
 			<field name="view_mode">tree,form</field>
 
-			<field name="domain">[
-									('x_type', '=', 'patient'),
-								]
-			</field>
-
-
-			<field name="context">{
+<!--
 									'default_x_type': 'patient',
-								}
-			</field>
+-->
+			<field name="domain">[]</field>
+
+
+<!--
+									'default_x_type': 'patient',
+-->
+			<field name="context">{}</field>
 
 			<!--
 			<field name="domain">[]</field>
@@ -799,6 +819,7 @@
 			</field>
 			-->
 		</record>
+
 
 
 	</data>

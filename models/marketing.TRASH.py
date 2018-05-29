@@ -179,3 +179,109 @@
 		self.total_count = count
 
 	# update_orders
+
+
+
+
+
+# 28 May 2018
+
+	# Type 
+	#x_type = fields.Selection(
+	#		selection=[	
+	#					('order', 		'Ventas'),
+	#					('patient', 	'Pacientes Nuevos'),
+	#		], 
+	#		string="Tipo",
+	#		required=True, 
+	#	)
+
+
+	# Dates
+	#date = fields.Date(
+	#		string="Fecha", 
+	#		default = fields.Date.today, 
+			#readonly=True,
+	#		required=True, 
+	#	)
+
+
+	# Totals
+	#total_amount = fields.Float(
+			#'Total Monto',
+	#		'Total',
+	#		readonly=True, 
+	#	)
+
+
+
+
+
+# ----------------------------------------------------------- Update Legacy ------------------------------------------------------
+
+	# Update Patients Legacy
+	@api.multi
+	def update_patients_legacy(self):  
+
+		print
+		print 'Update Patients Legacy'
+
+		# Clear 
+		self.patient_line.unlink()
+
+
+
+		# Orders 
+		mode = 'legacy'
+		patients,count = resap_funcs.get_patients_filter(self, self.date_begin, self.date_end, mode)
+
+
+
+		self.total_count = count
+
+		# Loop 
+		for patient in patients: 
+
+			pat_line = self.patient_line.create({
+														'date_create': patient.create_date,
+
+														'date_record': patient.x_date_record,
+
+														
+														'patient': patient.id, 
+														'sex': patient.sex, 
+														'dob': patient.dob, 
+														'age': patient.age, 
+														'first_contact': patient.x_first_contact, 
+														'education': patient.x_education_level, 
+														'vip': patient.x_vip, 
+														'country': patient.country_id.name, 
+														'city': patient.city, 
+														'district': patient.street2, 
+
+														'marketing_id': self.id, 
+					})
+
+
+			ret = pat_line.update_fields()
+
+
+			#if ret == -1:
+			#	print 'Age undefined !'
+
+
+
+		# Set Stats 
+		#self.set_stats()
+
+	# update_patients_legacy
+
+
+
+
+
+		# Counter({u'Peru': 92, u'United States': 1})
+
+
+
+

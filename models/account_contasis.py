@@ -24,6 +24,7 @@ class AccountContasis(models.Model):
 
 
 
+# ----------------------------------------------------------- Inheritable ------------------------------------------------------
 
 
 
@@ -212,34 +213,24 @@ class AccountContasis(models.Model):
 				acc_line = self.account_line.create({
 														'name': order.name, 
 														'patient': patient, 
-
 														
 														'product': product, 
 														'qty': qty, 
 
-
 														'state': state, 
-
 
 														'serial_nr': serial_nr, 
 														'x_type': x_type, 
 														'document': document, 					# Id Doc
 														'document_type': document_type, 		# Id Doc Type 
 														
-
-
-														#jx
 														'date': date,
 														'date_time': date,
-
-														#'date_char': date.split()[0],
-														#'time_char': date.split()[1],
-														
-
 
 														'amount': amount,
 														'amount_net': amount_net,
 														'amount_tax': amount_tax,
+
 
 														'account_id': self.id, 
 					})

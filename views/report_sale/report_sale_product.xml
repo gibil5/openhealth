@@ -66,8 +66,11 @@
 							<page	string="Cantidades"	>
 
 								<field name="item_counter_ids"		>
-									<tree string=""		default_order="create_date"	>	
-						
+<!--
+									<tree string=""		default_order="x_date_created"	>	
+-->					
+									<tree string=""		>	
+
 										<field name="name"		/>
 
 										<field name="qty"		/>
@@ -99,14 +102,18 @@
 
 							<page	string="Detalle"		>
 							
-								<field name="order_line_ids"		>
-									<tree string=""		default_order="create_date"	>	
+								<field name="order_line_ids"	
+									>
+<!--
+									<tree string=""		default_order="x_date_created"	>	
+-->
+									<tree string="">	
 						
 										<field name="product_id"		/>
 
-
+<!--
 										<field name="patient"		/>
-
+-->
 
 										<field name="price_unit"		/>
 

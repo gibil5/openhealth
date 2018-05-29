@@ -118,8 +118,23 @@ Cosmetology
 							name="generate_order_report" 
 
 							string="EC" 
-
 						/>
+
+
+
+
+						<!-- Update Date Record -->
+						<button 
+							type="object" 
+							class="oe_highlight"
+
+							name="update_date_record" 
+
+							groups="openhealth.roots"
+
+							string="Update Date Rec" 
+						/>
+
 
 
 
@@ -386,15 +401,16 @@ Cosmetology
 <!--
 								<field name="x_datetime_created"  	readonly="0"	required="0"	/>
 								<field name="x_date_created"  		readonly="0"	/>
+
 								<field name="x_date_created"  		readonly="1"	/>
 -->							
 								<field name="create_date"  			readonly="1"	/>
 								<field name="x_date_record"  		readonly="1"	/>
-								<field name="x_date_created"  		readonly="1"	/>
 
 
-
+<!--
 								<field string='Custodia'  name="x_active"   visible="1"/>
+-->
 							</group>
 						</group>
 

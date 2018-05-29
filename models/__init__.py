@@ -9,10 +9,26 @@ from . import sale_report_md
 
 
 
+# Commons  
+from . import medical
+from . import line
+
+
+# Repo
+from . import repo
+
+# Management
+from . import management_order_line
+from . import management 
+
+
+
+
+
 
 # Marketing
-from . import marketing_recommendation_line
 
+from . import marketing_recommendation_line
 from . import marketing_order_line
 from . import patient_line
 from . import histo_line

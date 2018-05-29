@@ -2,6 +2,10 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+access_openhealth_management,openhealth.management,model_openhealth_management,,1,1,1,1
+
+access_openhealth_management_order_line,openhealth.management.order.line,model_openhealth_management_order_line,,1,1,1,1
+
 
 
 access_openhealth_marketing,openhealth.marketing,model_openhealth_marketing,,1,1,1,1

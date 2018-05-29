@@ -39,6 +39,8 @@
 
 
 
+
+
 <!-- Marketing -->
 		<menuitem id="main_marketing_menu" 
 
@@ -74,6 +76,53 @@
 			sequence="2"
 			action="account_contasis_patient_list_action"/>
 -->
+
+
+
+
+
+
+
+
+
+<!-- Management -->
+		<menuitem id="main_management_menu" 
+
+			sequence="1"
+
+			name="Gerencia"
+			
+			groups="openhealth.roots,openhealth.directors"
+			/>
+
+
+
+		<!-- Marketing -->
+		<menuitem 	id="management_menu" 
+
+					name="Ventas"
+			
+					parent="main_management_menu"/>
+
+
+
+
+		<!-- Marketing Patients -->
+		<menuitem 	id="management_sales_menu" 
+
+					name="Ventas" 
+			
+					parent="management_menu"
+			
+					sequence="1"
+			
+					action="management_order_list_action"
+
+					/>
+
+
+
+
 
 
 

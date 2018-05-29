@@ -27,7 +27,19 @@
 					<!-- Sheet -->	
 					<sheet>
 
-						<field name="patient"/>
+						<group>					
+							<group>
+								<field name="patient"/>
+							</group>
+
+							<group>
+								<field name="vip"/>
+
+								<field name="vip_date"/>
+
+								<field name="nr_lines_vip"/>
+							</group>
+						</group>
 
 
 
@@ -40,7 +52,7 @@
 
 <!--
 Procedures
--->								
+-->
 							<page	string="Procedimientos"		>
 								<field name="procedure_line">
 									<tree string="Procedimientos"	limit="1000"	>	
@@ -54,7 +66,6 @@ Procedures
 										<field name="price_unit"/>
 
 										<field name="price_subtotal"/>
-
 									</tree>
 								</field>
 							</page>
@@ -64,7 +75,7 @@ Procedures
 
 <!--
 Recommendations
--->								
+-->		
 							<page	string="Recomendaciones"		>
 								<field name="reco_line">
 									<tree string="Recomendaciones"	limit="1000"	>	
@@ -79,7 +90,6 @@ Recommendations
 										<field name="price_vip"/>
 										<field name="price_manual"/>
 										<field name="price_applied"/>
-
 									</tree>
 								</field>
 							</page>
@@ -89,7 +99,29 @@ Recommendations
 
 
 <!-- 
-Sales
+Consultations
+-->
+							<page	string="Consultas"		>
+								<field name="consu_line">
+									<tree string="Consultas"	limit="1000"	>	
+									
+										<field name="x_date_created"/>
+
+										<field name="product_id"/>
+
+										<field name="product_uom_qty"/>
+
+										<field name="price_unit"/>
+
+										<field name="price_subtotal"/>
+									</tree>
+								</field>
+							</page>
+
+
+
+<!-- 
+All Sales
 -->
 							<page	string="Ventas"		>
 								<field name="sale_line">
@@ -104,7 +136,6 @@ Sales
 										<field name="price_unit"/>
 
 										<field name="price_subtotal"/>
-
 									</tree>
 								</field>
 							</page>
@@ -113,28 +144,10 @@ Sales
 
 
 
-<!-- 
-Sales
--->
-							<page	string="Vip - Ventas"		>
-								<field name="order_line">
-									<tree string="Ventas"	limit="1000"	>	
-									
-										<field name="x_date_created"/>
 
-										<field name="product_id"/>
 
-										<field name="product_uom_qty"/>
-
-										<field name="price_unit"/>
-
-										<field name="price_subtotal"/>
-
-									</tree>
-								</field>
-							</page>
 <!--
-Sales with Vip 
+Sales with Vip Card 
 -->								
 							<page	string="Vip - Con Tarjeta"		>
 								<field name="order_line_vip">
@@ -149,14 +162,41 @@ Sales with Vip
 										<field name="price_unit"/>
 
 										<field name="price_subtotal"/>
-
 									</tree>
 								</field>
 							</page>
+<!--
+-->
 
 
 
 
+
+
+
+
+
+<!-- 
+Sales by patient who have a Vip Card
+-->
+<!--
+							<page	string="Vip - Ventas">
+								<field name="order_line">
+									<tree string="Ventas"	limit="1000"	>	
+
+										<field name="x_date_created"/>
+
+										<field name="product_id"/>
+
+										<field name="product_uom_qty"/>
+
+										<field name="price_unit"/>
+
+										<field name="price_subtotal"/>
+									</tree>
+								</field>
+							</page>
+-->
 
 
 
@@ -218,8 +258,8 @@ Sales with Vip
 
 					<field name="vip"/>
 
-<!--
 					<field name="vip_date"/>
+<!--
 
 -->
 					<field name="nr_lines_vip"		attrs="{
@@ -290,6 +330,9 @@ Sales with Vip
 					<field name="district"/>
 
 
+
+
+					<field name="vip"/>
 
 
 <!--

@@ -555,3 +555,17 @@
 
 
 
+# 28 May 2018
+
+# ----------------------------------------------------------- Deprecated ? ------------------------------------------------------
+
+	#x_state = fields.Selection(		
+	#	pat_vars._state_list, 
+	#	string="Estado", 
+		#default='draft', 
+		#default='done', 
+	#	default='active', 
+	#)
+
+
+

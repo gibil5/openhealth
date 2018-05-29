@@ -9,24 +9,69 @@ from openerp import models, fields, api
 import datetime
 import resap_funcs
 import acc_funcs
+#import openerp.addons.decimal_precision as dp
+
+
 #import matplotlib.pyplot as plt
-import numpy as np
 #import pandas as pd
+import numpy as np
 import collections
 
-
-import openerp.addons.decimal_precision as dp
 
 
 class Marketing(models.Model):
 
-	#_inherit='sale.closing'
+	_inherit='openhealth.repo'
 
 	_name = 'openhealth.marketing'
 
 	#_order = 'create_date desc'
-	#_order = 'date_begin asc'
 	_order = 'date_begin asc,name asc'
+
+
+
+
+
+
+# ----------------------------------------------------------- Inheritable ------------------------------------------------------
+
+	# Name 
+	#name = fields.Char(
+	#		string="Nombre", 		
+	#		required=True, 
+	#	)
+
+
+	# Dates 
+	#date_begin = fields.Date(
+	#		string="Fecha Inicio", 
+	#		default = fields.Date.today, 
+			#readonly=True,
+	#		required=True, 
+	#	)
+
+
+	#date_end = fields.Date(
+	#		string="Fecha Fin", 
+	#		default = fields.Date.today, 
+			#readonly=True,
+	#		required=True, 
+	#	)
+
+
+	# Count
+	#total_count = fields.Integer(
+	#		'Nr',
+	#		readonly=True, 
+	#	)
+
+
+
+	# Spacing
+	#vspace = fields.Char(
+	#		' ', 
+	#		readonly=True
+	#	)
 
 
 
@@ -68,22 +113,57 @@ class Marketing(models.Model):
 
 
 
+# ----------------------------------------------------------- Counts ------------------------------------------------------
 
-# ----------------------------------------------------------- Sales ------------------------------------------------------
+	patient_sale_count = fields.Integer(
+
+			'Nr Ventas', 
+		)
+
+	patient_consu_count = fields.Integer(
+
+			'Nr Consultas', 
+		)
+
+	patient_reco_count = fields.Integer(
+
+			'Nr Recomendaciones', 
+		)
+
+	patient_proc_count = fields.Integer(
+
+			'Nr Procedimientos', 
+		)
+
+
+
+
+
+
+# ----------------------------------------------------------- Consultations ------------------------------------------------------
 	
-	# Recommendations
+	# Consultations 
 	@api.multi
-	def patient_sales(self):  
+	def patient_consus(self):  
 		print 
-		print 'Patient Sales'
+		print 'Patient Consus'
+		print 
+
+
+		# Clean 
+		self.patient_consu_count = 0 
 
 
 		# Patient Lines 
 		for pat_line in self.patient_line: 
 
+			
+			print pat_line.patient.name 
+
+
 
 			# Clean 
-			pat_line.sale_line.unlink()
+			pat_line.consu_line.unlink()
 
 
 			# Orders 
@@ -91,7 +171,6 @@ class Marketing(models.Model):
 															('state', '=', 'sale'),
 															('patient', '=', pat_line.patient.name),
 													],
-														#order='x_serial_nr asc',
 														order='date_order asc',
 														#limit=1,
 												)
@@ -104,21 +183,110 @@ class Marketing(models.Model):
 				for line in order.order_line: 
 					
 
+					prod = line.product_id
+
+					if prod.x_family in ['consultation']: 
+
+
+						# Create 
+						consu_line = pat_line.consu_line.create({
+																	'name': line.name, 
+
+																	'product_id': line.product_id.id, 
+
+																	'x_date_created': order.date_order, 
+																	
+																	'product_uom_qty': line.product_uom_qty, 
+																	
+																	'price_unit': line.price_unit, 
+
+																	'patient_line_consu_id': pat_line.id, 
+																})
+
+					#print pl_ol
+
+
+
+			# Counts 
+			self.patient_consu_count = self.patient_consu_count + len(pat_line.consu_line)
+
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Sales ------------------------------------------------------
+	
+	# Sales
+	@api.multi
+	def patient_sales(self):  
+		print 
+		print 'Patient Sales'
+		print 
+
+
+		# Clean 
+		self.patient_sale_count = 0 
+
+
+		# Patient Lines 
+		for pat_line in self.patient_line: 
+
+			
+			print pat_line.patient.name 
+
+
+
+			# Clean 
+			pat_line.sale_line.unlink()
+
+
+			# Orders 
+			orders = self.env['sale.order'].search([
+															('state', '=', 'sale'),
+															('patient', '=', pat_line.patient.name),
+													],
+														order='date_order asc',
+														#limit=1,
+												)
+			#print orders
+
+
+			# Order Lines - Create Order Line 
+			for order in orders: 
+
+				for line in order.order_line: 
+					
 
 					# Create 
-					pat_ol = pat_line.sale_line.create({
+					sale_line = pat_line.sale_line.create({
 														'name': line.name, 
+
 														'product_id': line.product_id.id, 
 
 														'x_date_created': order.date_order, 
 														
 														'product_uom_qty': line.product_uom_qty, 
+														
 														'price_unit': line.price_unit, 
 
 														'patient_line_sale_id': pat_line.id, 
 						})
 
 					#print pl_ol
+
+
+			#print pat_line.sale_line
+			#print len(pat_line.sale_line)
+			#print 
+
+
+			# Counts 
+			self.patient_sale_count = self.patient_sale_count + len(pat_line.sale_line)
+
 
 
 
@@ -131,6 +299,10 @@ class Marketing(models.Model):
 		print 
 		print 'Patient Recoms'
 		print 
+
+
+		# Clean 
+		self.patient_reco_count = 0 
 
 
 		# Patient Lines 
@@ -308,6 +480,10 @@ class Marketing(models.Model):
 			# Update 
 			pat_line.update_fields_proc()
 
+			# Counts 
+			self.patient_reco_count = self.patient_reco_count + len(pat_line.reco_line)
+
+
 	# patient_recoms
 
 
@@ -320,6 +496,10 @@ class Marketing(models.Model):
 	def patient_procedures(self):  
 		print 
 		print 'Patient Procedurs'
+
+
+		# Clean 
+		self.patient_proc_count = 0 
 
 
 		# Patient Lines 
@@ -387,6 +567,10 @@ class Marketing(models.Model):
 
 			# Update 
 			pat_line.update_fields_proc()
+
+			# Counts 
+			self.patient_proc_count = self.patient_proc_count + len(pat_line.procedure_line)
+
 
 	# patient_procedures
 
@@ -652,97 +836,8 @@ class Marketing(models.Model):
 
 
 
-
-
-
-
-
-
-
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
 	
-	# Name 
-	name = fields.Char(
-			string="Nombre", 		
-			required=True, 
-		)
-
-
-
-	# Type 
-	x_type = fields.Selection(
-
-			selection=[	
-						('order', 		'Ventas'),
-						('patient', 	'Pacientes Nuevos'),
-			], 
-
-			string="Tipo",
-			required=True, 
-		)
-
-
-
-
-
-
-	# Dates
-	#date = fields.Date(
-	#		string="Fecha", 
-	#		default = fields.Date.today, 
-			#readonly=True,
-	#		required=True, 
-	#	)
-
-
-
-	date_begin = fields.Date(
-			string="Fecha Inicio", 
-			default = fields.Date.today, 
-			#readonly=True,
-			required=True, 
-		)
-
-
-	date_end = fields.Date(
-			string="Fecha Fin", 
-			default = fields.Date.today, 
-			#readonly=True,
-			required=True, 
-		)
-
-
-
-
-
-
-
-
-	# Totals
-	#total_amount = fields.Float(
-			#'Total Monto',
-	#		'Total',
-	#		readonly=True, 
-	#	)
-
-
-
-	# Totals Count
-	total_count = fields.Integer(
-			#'Total Ventas',
-			#'Nr Pacientes',
-			'Nr',
-			readonly=True, 
-		)
-
-
-
-	# Spacing
-	vspace = fields.Char(
-			' ', 
-			readonly=True
-		)
-
 
 
 
@@ -906,14 +1001,6 @@ class Marketing(models.Model):
 
 
 
-
-
-
-
-
-
-
-
 	# Age
 	age_mean = fields.Float(
 			'Edad Promedio',
@@ -955,16 +1042,11 @@ class Marketing(models.Model):
 		)
 
 	sex_undefined = fields.Integer(
-			#'Sexo Ind',
 			'Sexo Error',
-			readonly=True, 
-	
-			#digits=dp.get_precision('Product Price'), 
-			#digits=(16,1), 
+			readonly=True, 	
 		)
 
 
-	# Per
 
 
 
@@ -975,22 +1057,10 @@ class Marketing(models.Model):
 
 	# First Contact 
 
-# how_u 
-# how_none 
-# how_reco 
-# how_tv
-# how_radio
-# how_inter
-# how_web
-# how_mail 
-
-
 	how_u = fields.Integer(
 			'No Definido',
 			readonly=True, 
 		)
-
-
 
 	how_none = fields.Integer(
 			'Pri Ninguno',
@@ -1038,22 +1108,6 @@ class Marketing(models.Model):
 
 	# Education
 
-#_education_level_type = [
-#			('first', 'Primaria'),
-#			('second', 'Secundaria'),
-#			('technical', 'Instituto'),
-#			('university', 'Universidad'),
-#			('masterphd', 'Posgrado'),
-#			]
-
-# edu_u 
-# edu_fir 
-# edu_sec
-# edu_tec 
-# edu_uni 
-# edu_mas 
-
-
 	edu_u = fields.Integer(
 			#'Edu Indefinido',
 			'No Definido',
@@ -1096,11 +1150,6 @@ class Marketing(models.Model):
 
 	# Vip 
 
-# vip_true
-# vip_false
-# vip_true_per
-# vip_false_per
-
 	vip_true = fields.Integer(
 			'Vip Si',
 			readonly=True, 
@@ -1114,7 +1163,7 @@ class Marketing(models.Model):
 
 
 
-	# Address
+
 
 
 
@@ -1124,7 +1173,7 @@ class Marketing(models.Model):
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 
 # jx 
-	# Get Stats
+	# Set Stats
 	@api.multi
 	def set_stats(self):  
 
@@ -1474,73 +1523,12 @@ class Marketing(models.Model):
 		#print 
 		print 
 
-
-# Counter({u'Peru': 92, u'United States': 1})
-
+	# set_stats
 
 
 
 
 
-# ----------------------------------------------------------- Update Legacy ------------------------------------------------------
-
-	# Update Patients Legacy
-	@api.multi
-	def update_patients_legacy(self):  
-
-		print
-		print 'Update Patients Legacy'
-
-		# Clear 
-		self.patient_line.unlink()
-
-
-
-		# Orders 
-		#patients,count = resap_funcs.get_patients_filter(self, self.date_begin, self.date_end)
-		mode = 'legacy'
-		patients,count = resap_funcs.get_patients_filter(self, self.date_begin, self.date_end, mode)
-
-
-
-		self.total_count = count
-
-		# Loop 
-		for patient in patients: 
-
-			pat_line = self.patient_line.create({
-														'date_create': patient.create_date,
-
-														'date_record': patient.x_date_record,
-
-														
-														'patient': patient.id, 
-														'sex': patient.sex, 
-														'dob': patient.dob, 
-														'age': patient.age, 
-														'first_contact': patient.x_first_contact, 
-														'education': patient.x_education_level, 
-														'vip': patient.x_vip, 
-														'country': patient.country_id.name, 
-														'city': patient.city, 
-														'district': patient.street2, 
-
-														'marketing_id': self.id, 
-					})
-
-
-			ret = pat_line.update_fields()
-
-
-			#if ret == -1:
-			#	print 'Age undefined !'
-
-
-
-		# Set Stats 
-		#self.set_stats()
-
-	# update_patients_legacy
 
 
 
@@ -1549,7 +1537,8 @@ class Marketing(models.Model):
 
 	# Update Patients
 	@api.multi
-	def update_patients(self):  
+	#def update_patients(self):  
+	def update_repo(self):  
 
 		print
 		print 'Update Patients'

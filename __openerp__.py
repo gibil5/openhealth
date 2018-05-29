@@ -20,7 +20,7 @@
 	'description': """
 
 
-		Last built: 25 May 2018 
+		Last built: 29 May 2018 
 
 		
 		Stability by Design !
@@ -166,14 +166,19 @@
 
 
 
+		# Management 
+		'views/management/management_order_line.xml',
+		'views/management/management.xml',
 
-		# Recent 
+
+		# Marketing 
 		'views/histogram/histogram.xml',
 		'views/places/place.xml',
 		'views/account/patient_line.xml',
 		'views/account/patient_line_pivot.xml',
 		'views/marketing/marketing.xml',
 		'views/marketing/marketing_pivot.xml',
+
 		'views/menus/menus_openhealth.xml',
 
 

@@ -374,10 +374,12 @@ _family_list = [
 
 _treatment_list = [
 
+		# 28 May 2018
+		('product',		'product'), 
+
+
 
 		('vip_card',		'vip_card'), 
-
-
 
 
 		('consultation',		'consultation'), 

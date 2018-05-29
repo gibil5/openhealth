@@ -7,7 +7,6 @@
 
 from openerp import models, fields, api
 
-
 class HistoLine(models.Model):
 	
 	_name = 'openhealth.histo.line'
@@ -16,11 +15,10 @@ class HistoLine(models.Model):
 
 
 
+
 # ----------------------------------------------------------- Relational ------------------------------------------------------
 
-	#account_id = fields.Many2one(
 	marketing_id = fields.Many2one(
-
 			'openhealth.marketing'
 		)
 
@@ -37,11 +35,11 @@ class HistoLine(models.Model):
 		)
 
 
+	# Bin name 
 	x_bin_name = fields.Char(
 			#'Bin', 
 			'Edades', 
 		)
-
 
 
 
@@ -67,7 +65,9 @@ class HistoLine(models.Model):
 	# Percentage 
 	percentage = fields.Float(
 			'Porcentaje', 
+			digits=(16,1), 
 		)
+
 
 
 
@@ -77,22 +77,16 @@ class HistoLine(models.Model):
 	_h_bin_names = {
 						False:		'0-4',
 						'5':		'5-9',
-						
 						'10':		'10-14',
 						'15':		'15-20',
-						
 						'20':		'20-24',
 						'25':		'25-29',
-						
 						'30':		'30-34',
 						'35':		'35-39',
-						
 						'40':		'40-44',
 						'45':		'45-49',
-						
 						'50':		'50-54',
 						'55':		'55-59',
-						
 						'60':		'60-64',
 						'65':		'65 o más',
 					}
@@ -103,17 +97,15 @@ class HistoLine(models.Model):
 	@api.multi
 	def update_fields(self):  
 
-		print
-		print 'Update Fields - Histo'
+		#print
+		#print 'Update Fields - Histo'
 
 		if self.total != 0: 
 			self.percentage = (  float(self.count) / float(self.total)  ) * 100
 
 
 		# Bin Name
-
-		print self.x_bin
-
+		#print self.x_bin
 		if self.x_bin in self._h_bin_names: 
 			self.x_bin_name = self._h_bin_names[self.x_bin]
 

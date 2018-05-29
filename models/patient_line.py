@@ -14,7 +14,6 @@ class PaitentLine(models.Model):
 	
 	_name = 'openhealth.patient.line'
 
-	#_order = 'date_create desc'
 	_order = 'date_create asc'
 
 
@@ -35,6 +34,14 @@ class PaitentLine(models.Model):
 
 # ----------------------------------------------------------- Relational ------------------------------------------------------
 
+	# Consus
+	consu_line = fields.One2many(
+			'openhealth.marketing.order.line', 
+			'patient_line_consu_id',
+		)
+
+
+
 	# Sales
 	sale_line = fields.One2many(
 			'openhealth.marketing.order.line', 
@@ -43,17 +50,12 @@ class PaitentLine(models.Model):
 
 
 
-
 	# Recommendations
 	reco_line = fields.One2many(
-
 			'openhealth.marketing.recom.line', 
-		
 			'patient_line_id',
-		
 			string="Recom.", 
 		)
-
 
 
 
@@ -67,16 +69,14 @@ class PaitentLine(models.Model):
 
 
 
-
-
-	# Sales
+	# Vip Sales
 	order_line = fields.One2many(
 			'openhealth.marketing.order.line', 
 			'patient_line_id',
 		)
 
 
-	# Sales - With Vip Card
+	# Vip Sales - With Vip Card
 	order_line_vip = fields.One2many(
 			'openhealth.marketing.order.line', 
 			'patient_line_id_vip',
@@ -120,10 +120,12 @@ class PaitentLine(models.Model):
 		)
 
 
+
 	# Date Vip card 
 	vip_date = fields.Datetime(
 			string="Fecha Vip", 
 		)
+
 
 	# Marketing Id 
 	marketing_id = fields.Many2one(
@@ -271,7 +273,6 @@ class PaitentLine(models.Model):
 
 
 	# Address
-
 	country = fields.Char(
 			'Pais', 
 		)

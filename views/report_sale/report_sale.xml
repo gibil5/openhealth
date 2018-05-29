@@ -106,9 +106,11 @@
 								<field name="order_line_a_ids"		>
 									<tree string=""		default_order="create_date"	>	
 										<field name="product_id"		/>
-										<field name="patient"		/>
 
+<!--
+										<field name="patient"		/>
 										<field name="doctor"		/>
+-->
 
 										<field name="price_unit"		/>
 										<field name="product_uom_qty"		/>
@@ -123,9 +125,11 @@
 								<field name="order_line_b_ids"		>
 									<tree string=""		default_order="create_date"	>	
 										<field name="product_id"		/>
-										<field name="patient"		/>
 
+<!--
+										<field name="patient"		/>
 										<field name="doctor"		/>
+-->
 
 										<field name="price_unit"		/>
 										<field name="product_uom_qty"		/>

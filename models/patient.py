@@ -6,11 +6,9 @@
 #
 
 from openerp import models, fields, api
-
 from datetime import datetime
 import pat_funcs
 import pat_vars
-
 import count_funcs
 
 
@@ -26,19 +24,26 @@ class Patient(models.Model):
 
 
 
+# ----------------------------------------------------------- Create ------------------------------------------------------
+
+	# Dates 
+	@api.multi 
+	def update_date_record(self):
+
+		print
+		print 'Update - Date Record'
+
+		print self.create_date
+		print self.x_date_record
+
+		if self.x_date_record == False: 
+			self.x_date_record = self.create_date
+			print 'Updated !'
+			print 
 
 
 
 # ----------------------------------------------------------- Deprecated ? ------------------------------------------------------
-
-	#x_state = fields.Selection(		
-	#	pat_vars._state_list, 
-	#	string="Estado", 
-		#default='draft', 
-		#default='done', 
-	#	default='active', 
-	#)
-
 
 
 
@@ -1550,13 +1555,24 @@ class Patient(models.Model):
 															)
 		counter.increase()		# Here !!!
 		print 'Increased'
-
-
-
-
-
+		print 
+		
 		#print self.x_id_code
 
+
+
+		# Date record 
+		print res.create_date
+		print res.write_date 
+		print res.x_date_record 
+
+		if res.x_date_record == False: 
+			res.x_date_record = res.create_date
+
+		print res.create_date
+		print res.write_date 
+		print res.x_date_record 
+		print 
 
 
 		return res
@@ -1597,9 +1613,21 @@ class Patient(models.Model):
 
 
 
+
 		#Write your logic here
 		res = super(Patient, self).write(vals)
 		#Write your logic here
+
+
+
+
+		# Update Date Record 
+		#if self.x_date_record == False: 
+		#	self.x_date_record = self.write_date
+		#print self.write_date
+		#print self.create_date
+		#print self.x_date_record 
+		#print 
 
 
 

@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from openerp import models, fields, api
-
 import datetime
 
 
@@ -10,18 +9,13 @@ import datetime
 
 # ----------------------------------------------------------- Calculate Percentages ------------------------------------------------------
 
-# Provides Patients between begin date and end date. 
+# Provides Percentage
 
 @api.multi
 def get_per(self, value, total): 
-
 	per = 0 
-
-
 	if total != 0: 
 		per = ( float(value) / float(total) ) * 100
-
-
 	return per 
 
 

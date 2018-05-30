@@ -15,6 +15,10 @@
 
 				<tree string="management order line Tree">
 					
+<!--
+					<field name="doctor_id"/>
+					<field name="management_id"/>
+-->
 
 
 					<field name="patient"/>
@@ -41,6 +45,8 @@
 				</tree>
 			</field>
 		</record>
+
+
 
 
 
@@ -89,6 +95,9 @@
 
                     	filter_domain="['|',('patient','ilike',self),('physician','ilike',self)]"/>
 -->
+
+					<field 	name="doctor_id"/>
+
 
 
 					<group expand="1" string="Group By">

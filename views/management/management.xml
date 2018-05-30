@@ -80,29 +80,21 @@
 						<notebook>	
 
 							<!-- Orders --> 
-							<page	string="Ventas">
 <!--
--->
+							<page	string="Ventas">
 								<field name="order_line">
 
 									<tree string="Ventas"	limit="50"	>	
-<!--
-										<field name="name"/>
-										<field name="state"/>
--->
+
 										<field name="patient"/>
 
 										<field name="doctor"/>
 
 										<field name="x_date_created"/>
 
-
-
 										<field name="family"/>
 
 										<field name="sub_family"/>
-
-
 
 										<field name="product_id"/>
 
@@ -113,11 +105,13 @@
 										<field name="price_subtotal"/>
 									</tree>
 								</field>
+							</page>
+-->
 <!--
+										<field name="name"/>
+										<field name="state"/>
 								<field name="order_line"/>
 -->
-							</page>
-
 
 
 
@@ -126,10 +120,27 @@
 
 								<field name="doctor_line">
 								
-									<tree string="Pais"	limit="1000"	>	
+									<tree string="Doctor"	limit="1000"	>	
+										
+
+										<!-- Open Button -->
+										<button 
+											type="object" 
+											class="oe_highlight"	
+
+											name="open_line_current" 
+
+											string="e"
+										/>
+
+
+
 										<field name="name"/>
 
+
 										<field name="x_count"/>
+									
+										<field name="amount"/>
 									</tree>
 								</field>
 							</page>
@@ -141,10 +152,13 @@
 
 								<field name="family_line">
 								
-									<tree string="Pais"	limit="1000"	>	
+									<tree string="Familia"	limit="1000"	>	
 										<field name="name"/>
 
+
 										<field name="x_count"/>
+
+										<field name="amount"/>
 									</tree>
 								</field>
 							</page>
@@ -156,23 +170,20 @@
 
 								<field name="sub_family_line">
 								
-									<tree string="Pais"	limit="1000"	>	
+									<tree string="Subfamilia"	limit="1000"	>	
 										<field name="name"/>
 
+
 										<field name="x_count"/>
+
+										<field name="amount"/>
 									</tree>
 								</field>
 							</page>
 
 
 
-
-
-
-
 						</notebook>
-
-
 					</sheet>
 				</form>
 			</field>

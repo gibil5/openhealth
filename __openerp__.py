@@ -20,7 +20,7 @@
 	'description': """
 
 
-		Last built: 29 May 2018 
+		Last built: 30 May 2018 
 
 		
 		Stability by Design !
@@ -148,7 +148,6 @@
 
 		# ----------------------------------------------------------- Recent ------------------------------------------------------
 
-		'security/ir.model.access.csv',
 		
 
 		'views/product_selectors/product_selector.xml',
@@ -167,8 +166,13 @@
 
 
 		# Management 
-		'views/management/management_order_line.xml',
-		'views/management/management.xml',
+		#'views/management/management_doctor_line.xml',
+		#'views/management/management_order_line.xml',
+		#'views/management/management.xml',
+
+		#'security/ir.model.access.csv',
+
+
 
 
 		# Marketing 

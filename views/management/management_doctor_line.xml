@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+
+		<!-- FORM --> 
+		<record model="ir.ui.view" id="management_doctor_line_form_view">
+
+			<field name="name">openhealth.management.doctor.line.form</field>
+			
+			<field name="model">openhealth.management.doctor.line</field>
+			
+			<field name="arch" type="xml">
+
+				<form string="Management Doctor Line Form">
+					
+
+
+					<!-- Header -->
+					<header>
+						
+						<!-- Orders -->
+						<button 
+								class="oe_highlight"
+								type="action" 
+
+								context="{
+											'search_default_doctor_id': active_id,	
+										}" 											
+								
+								name="%(management_order_line_form_action)d" 
+
+								string="Ventas"	
+						/>
+
+
+						<!-- Stats -->
+						<button 
+								type="object" 
+								class="oe_highlight"
+
+								name="set_stats"
+
+								string="Stats"								
+						/>
+
+					</header>
+
+
+
+					<!-- Sheet -->	
+					<sheet>
+
+						<group>					
+							<group>
+								<field name="name"/>
+							</group>
+
+							<group>
+								<field name="amount"/>
+
+								<field name="x_count"/>
+							</group>
+						</group>
+
+
+
+						<!-- Notebook --> 
+						<notebook>	
+		
+
+<!--
+Sales
+-->
+							<page	string="Ventas"		>
+								<field name="order_line">
+									<tree string="Ventas"	limit="1000"	>	
+									
+
+										<!-- Open Button -->
+<!--
+										<button 
+											name="open_line_current" 
+											type="object" 
+											class="oe_highlight"	
+
+											string="Entrar"
+										/>
+-->
+
+										<field name="patient"/>
+
+										<field name="doctor"/>
+
+										<field name="x_date_created"/>
+
+										<field name="family"/>
+
+										<field name="sub_family"/>
+
+										<field name="product_id"/>
+
+										<field name="product_uom_qty"/>
+
+										<field name="price_unit"/>
+
+										<field name="price_subtotal"/>
+
+									</tree>
+								</field>
+							</page>
+
+
+
+							<!-- Familias --> 
+							<page	string="Familias">
+
+								<field name="family_line">
+								
+									<tree string="Familia"	limit="1000"	>	
+
+										<field name="name"/>
+
+
+										<field name="x_count"/>
+
+										<field name="amount"/>
+									</tree>
+								</field>
+							</page>
+
+
+
+							<!-- Sub Familias --> 
+							<page	string="Sub Familias">
+
+								<field name="sub_family_line">
+								
+									<tree string="Subfamilia"	limit="1000"	>	
+										
+										<field name="name"/>
+
+
+										<field name="x_count"/>
+
+										<field name="amount"/>
+									</tree>
+								</field>
+							</page>
+
+
+
+
+
+
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+
+
+	</data>
+</openerp>

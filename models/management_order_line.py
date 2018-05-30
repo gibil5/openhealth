@@ -54,11 +54,16 @@ class management_order_line(models.Model):
 
 	# Family 
 	family = fields.Selection(
+
 			string = "Familia", 	
+
 			selection = [
 							('product','Producto'), 
+
 							('consultation','Consulta'), 
+							
 							('procedure','Procedimiento'), 
+							
 							('cosmetology','Cosmiatría'), 
 
 							('medical','Tratamiento Médico'), 
@@ -82,8 +87,19 @@ class management_order_line(models.Model):
 
 
 
+
 # ----------------------------------------------------------- Handles ------------------------------------------------------
 	
+	# Doctor 
+	doctor_id = fields.Many2one(			
+
+			'openhealth.management.doctor.line',
+		
+			ondelete='cascade', 			
+		)
+
+
+
 	# Management 
 	management_id = fields.Many2one(			
 			
@@ -95,16 +111,17 @@ class management_order_line(models.Model):
 
 
 
+
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 
 	_h_family = {
-					'laser' : 'procedure', 		
+					'laser': 		'procedure', 		
 
-					'medical' : 'medical', 		
+					'medical': 		'medical', 		
 					
-					'consultation' : 'consultation', 		
+					'consultation': 'consultation', 		
 					
-					'cosmetology' : 'cosmetology', 	
+					'cosmetology': 'cosmetology', 	
 
 					False: False, 	
 	}
@@ -161,21 +178,23 @@ class management_order_line(models.Model):
 		# Service 
 		else: 
 
-			# Fam 
+
+			# Family 
 			self.family = self._h_family[self.product_id.x_family]
 
 
+
+
+			# Sub family 
 
 			# Cosmetology 
 			if self.product_id.x_family == 'cosmetology': 
 				#self.sub_family = 'cosmetology'
 				self.sub_family = self._h_subfamily['cosmetology']
 
-
 			# Medical
 			elif self.product_id.x_family == 'medical': 
 				self.sub_family = self._h_subfamily[self.product_id.x_treatment]
-
 
 			# Laser 
 			else: 

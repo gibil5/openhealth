@@ -7,10 +7,14 @@
 
 from openerp import models, fields, api
 
-import resap_funcs
+#import resap_funcs
+import mgt_funcs
 
 import numpy as np
+
 import collections
+
+import mgt_vars
 
 
 
@@ -47,21 +51,26 @@ class Management(models.Model):
 
 	# doctor 
 	doctor_line = fields.One2many(
-			'openhealth.mgt.doctor.line', 
+			#'openhealth.mgt.doctor.line', 
+			'openhealth.management.doctor.line', 
 			
 			'management_id', 
 		)
 
+
+
 	# family 
 	family_line = fields.One2many(
-			'openhealth.mgt.family.line', 
+			#'openhealth.mgt.family.line', 
+			'openhealth.management.family.line', 
 			
 			'management_id', 
 		)
 
 	# sub_family 
 	sub_family_line = fields.One2many(
-			'openhealth.mgt.sub_family.line', 
+			#'openhealth.mgt.sub_family.line', 
+			'openhealth.management.sub_family.line', 
 			
 			'management_id', 
 		)
@@ -96,11 +105,14 @@ class Management(models.Model):
 		# Loop 
 		for line in self.order_line: 
 
+
 			# Doctor
 			doctor_arr.append(line.doctor)
 
+
 			# Family
 			family_arr.append(line.family)
+
 
 			# Sub family
 			sub_family_arr.append(line.sub_family)
@@ -152,12 +164,14 @@ class Management(models.Model):
 			count = counter_family[key]
 
 			family = self.family_line.create({
-													'name': key, 
+													#'name': key, 
+													'name': mgt_vars._h_family_sp[key], 
 													
 													'x_count': count, 
 													
 													'management_id': self.id, 
 												})
+
 			#print key 
 			#print count
 			#print family
@@ -185,6 +199,8 @@ class Management(models.Model):
 													
 													'management_id': self.id, 
 												})
+
+
 			#print key 
 			#print count
 			#print sub_family
@@ -205,90 +221,135 @@ class Management(models.Model):
 	def update_repo(self):  
 
 		print
-		print 'Update Patients'
+		print 'Update Doctors'
 
 
 
-		# Clear 
-		self.order_line.unlink()
+		# Clean 
+		self.doctor_line.unlink()
+
+		total_amount = 0 
+		total_count = 0 
 
 
 
+		# Create Doctors 
+		doctors = [
+					'Dr. Chavarri', 
+					'Dr. Canales', 
+					'Dr. Gonzales', 
 
-		# Orders 
-		orders,count = resap_funcs.get_orders_filter(self, self.date_begin, self.date_end)
+					'Dr. Monteverde', 
+					'Clinica Chavarri', 
+					'Eulalia', 
 
-		#self.total_count = count
+					'Dr. Abriojo', 
+					'Dr. Castillo', 
+					'Dr. Loaiza', 
 
+					'Dr. Escudero', 
+				]
 
+		for doctor in doctors: 
+			
+			doctor = self.doctor_line.create({
+												'name': doctor, 
+	
+												#'x_count': count, 
 
-		amount = 0 
-		count = 0 
-
-
-
-		# Loop 
-		for order in orders: 
-
-
-			amount = amount + order.amount_total
-
-
-			# Order Lines 
-			for line in order.order_line:
-				
-				count = count + 1
-
-				print 
-
-				order_line = self.order_line.create({
-														'name': order.name, 
-
-
-
-														'product_id': line.product_id.id, 
-
-														'x_date_created': order.date_order, 
-														
-														'product_uom_qty': line.product_uom_qty, 
-														
-														'price_unit': line.price_unit, 
-
-
-
-														'patient': order.patient.id, 
-
-														'doctor': order.x_doctor.id, 
-
-														'state': order.state, 
-
-
-
-														#'family': order.x_family, 
-														
-														#'sub_family': order.sub_family, 
+												'management_id': self.id, 
+										})
 
 
 
 
-														'management_id': self.id, 
-													})
-				ret = order_line.update_fields()
+		# Create Sales - By Doctor 
+		for doctor in self.doctor_line: 
 
+			print doctor.name 
+
+
+			# Clear 
+			#self.order_line.unlink()
+			doctor.order_line.unlink()
+
+
+
+			# Orders 
+			#orders,count = resap_funcs.get_orders_filter(self, self.date_begin, self.date_end)
+			#doctor = 'all'
+			#orders,count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end, doctor)
+			orders,count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end, doctor.name)
+
+
+			#self.total_count = count
+
+
+
+			amount = 0 
+			count = 0 
+
+
+
+			# Loop 
+			for order in orders: 
+
+
+				amount = amount + order.amount_total
+
+
+				# Order Lines 
+				for line in order.order_line:
+					
+					count = count + 1
+
+					#print 
+
+					#order_line = self.order_line.create({
+					order_line = doctor.order_line.create({
+															'name': order.name, 
+
+															'product_id': line.product_id.id, 
+
+															'x_date_created': order.date_order, 
+															
+															'product_uom_qty': line.product_uom_qty, 
+															
+															'price_unit': line.price_unit, 
+
+															'patient': order.patient.id, 
+
+															'doctor': order.x_doctor.id, 
+
+															'state': order.state, 
+
+															#'family': order.x_family, 
+															
+															#'sub_family': order.sub_family, 
+
+
+
+															#'management_id': self.id, 
+															'doctor_id': doctor.id, 
+														})
+					ret = order_line.update_fields()
+
+
+
+			# Stats 
+			doctor.amount = amount
+			doctor.x_count = count
+			doctor.set_stats()
+
+			total_amount = total_amount + amount
+			total_count = total_count + count
 
 
 
 		# Stats 
-		self.total_amount = amount
-
-		self.total_count = count
-
-		self.set_stats()
-
+		self.total_amount = total_amount
+		self.total_count = total_count
+		#self.set_stats()
 
 
 	# update_repo
-
-
-
-

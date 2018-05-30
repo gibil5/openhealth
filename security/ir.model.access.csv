@@ -6,6 +6,14 @@ access_openhealth_management,openhealth.management,model_openhealth_management,,
 
 access_openhealth_management_order_line,openhealth.management.order.line,model_openhealth_management_order_line,,1,1,1,1
 
+access_openhealth_management_doctor_line,openhealth.management.doctor.line,model_openhealth_management_doctor_line,,1,1,1,1
+
+access_openhealth_management_sub_family_line,openhealth.management.sub_family.line,model_openhealth_management_sub_family_line,,1,1,1,1
+
+access_openhealth_management_family_line,openhealth.management.family.line,model_openhealth_management_family_line,,1,1,1,1
+
+
+
 
 
 access_openhealth_marketing,openhealth.marketing,model_openhealth_marketing,,1,1,1,1

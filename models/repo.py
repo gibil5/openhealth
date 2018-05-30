@@ -58,7 +58,8 @@ class Repo(models.Model):
 	# Amount
 	total_amount = fields.Float(
 			#'Total Monto',
-			'Total',
+			#'Total',
+			'Monto Total',
 			readonly=True, 
 		)
 

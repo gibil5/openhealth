@@ -181,9 +181,12 @@
 
 										(4, ref('openhealth.jessenwanger_clinicachavarri')),
 										
-										(4, ref('openhealth.pbalboa_clinicachavarri')),
-
 										(4, ref('openhealth.lloli_clinicachavarri')),
+
+
+										(4, ref('openhealth.pbalboa_clinicachavarri')),
+										(4, ref('openhealth.achaponan_clinicachavarri')),
+										(4, ref('openhealth.fcatpo_clinicachavarri')),
 
 									]"/>
 		</record>

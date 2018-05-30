@@ -120,10 +120,15 @@
 										(4, ref('openhealth.manager_clinicachavarri')),
 										(4, ref('openhealth.vmori_clinicachavarri')),
 										(4, ref('openhealth.jessenwanger_clinicachavarri')),
-										(4, ref('openhealth.pbalboa_clinicachavarri')),
-										(4, ref('openhealth.mpedemonte_clinicachavarri')),
-
 										
+
+										(4, ref('openhealth.pbalboa_clinicachavarri')),
+										(4, ref('openhealth.achaponan_clinicachavarri')),
+										(4, ref('openhealth.fcatpo_clinicachavarri')),
+										
+
+
+										(4, ref('openhealth.mpedemonte_clinicachavarri')),
 
 										(4, ref('openhealth.staff_clinicachavarri')),
 										(4, ref('openhealth.lloli_clinicachavarri')),
@@ -172,7 +177,13 @@
 										(4, ref('openhealth.manager_clinicachavarri')),
 										(4, ref('openhealth.vmori_clinicachavarri')),
 										(4, ref('openhealth.jessenwanger_clinicachavarri')),
+										
+
 										(4, ref('openhealth.pbalboa_clinicachavarri')),
+										(4, ref('openhealth.achaponan_clinicachavarri')),
+										(4, ref('openhealth.fcatpo_clinicachavarri')),
+										
+
 										(4, ref('openhealth.mpedemonte_clinicachavarri')),
 
 

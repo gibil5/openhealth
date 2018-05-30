@@ -166,8 +166,8 @@
 
 
 		# Management 
-		'views/management/management_doctor_line.xml',
 		'views/management/management_order_line.xml',
+		'views/management/management_doctor_line.xml',
 		'views/management/management.xml',
 
 		'security/ir.model.access.csv',

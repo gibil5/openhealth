@@ -55,7 +55,10 @@ class ManagementLine(models.Model):
 	@api.multi
 	def update_fields(self):  
 
-		self.name_sp = mgt_vars._h_name[self.name]
+		if self.name in mgt_vars._h_name: 
+			self.name_sp = mgt_vars._h_name[self.name]
+		else: 
+			self.name_sp = self.name
 
 
 

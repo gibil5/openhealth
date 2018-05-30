@@ -121,6 +121,8 @@ Sales
 								
 									<tree string="Familia"	limit="1000"	>	
 
+										<field name="name_sp"/>
+
 										<field name="name"/>
 
 
@@ -140,6 +142,8 @@ Sales
 								
 									<tree string="Subfamilia"	limit="1000"	>	
 										
+										<field name="name_sp"/>
+
 										<field name="name"/>
 
 
@@ -149,10 +153,6 @@ Sales
 									</tree>
 								</field>
 							</page>
-
-
-
-
 
 
 						</notebook>

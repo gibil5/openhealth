@@ -130,24 +130,23 @@ class management_order_line(models.Model):
 	_h_subfamily = {
 
 					'product' : 		'Producto', 	
-
 					'consultation' : 	'Consulta', 
-
 					'cosmetology' : 	'Cosmeatria', 		
 
-					'criosurgery' : 	'Criocirugía', 		
 
 
 					'laser_co2' : 		'Laser Co2', 		
 					'laser_excilite' : 	'Laser Exc', 		
 					'laser_ipl' : 		'Laser Ipl', 		
 					'laser_ndyag' : 	'Laser Ndyag', 		
-					'laser_quick' : 	'Laser Quick', 		
+					#'laser_quick' : 	'Laser Quick', 		
+					'laser_quick' : 	'Quick Laser', 		
 
-
+					'criosurgery' : 			'Criocirugía', 		
 					'intravenous_vitamin' : 	'Vitamina Intravenosa', 		
 					'botulinum_toxin' : 		'Toxina Botulínica', 		
 					'hyaluronic_acid' : 		'Acido Hialurónico', 		
+
 
 
 
@@ -156,6 +155,8 @@ class management_order_line(models.Model):
 
 					False: False, 	
 	}
+
+
 
 
 
@@ -168,10 +169,13 @@ class management_order_line(models.Model):
 		#if self.product_id.type == 'product': 
 		if self.product_id.type in ['product','consu']: 
 
+
+			# Family 
 			self.family = 'product'
 
-			#self.sub_family = 'product'
-			self.sub_family = self._h_subfamily['product']
+			# Sub family
+			#self.sub_family = self._h_subfamily['product']
+			self.sub_family = 'product'
 
 
 
@@ -189,21 +193,25 @@ class management_order_line(models.Model):
 
 			# Cosmetology 
 			if self.product_id.x_family == 'cosmetology': 
-				#self.sub_family = 'cosmetology'
-				self.sub_family = self._h_subfamily['cosmetology']
+
+				#self.sub_family = self._h_subfamily['cosmetology']
+				self.sub_family = 'cosmetology'
+
 
 			# Medical
-			elif self.product_id.x_family == 'medical': 
-				self.sub_family = self._h_subfamily[self.product_id.x_treatment]
-
-			# Laser 
+			#elif self.product_id.x_family == 'medical': 
 			else: 
 
-				if self.product_id.x_treatment in self._h_subfamily:
-					self.sub_family = self._h_subfamily[self.product_id.x_treatment]
+				#self.sub_family = self._h_subfamily[self.product_id.x_treatment]
+				self.sub_family = self.product_id.x_treatment 
 
-				else: 
-					self.sub_family = self.product_id.x_treatment 
+
+			# Laser 
+			#else: 
+			#	if self.product_id.x_treatment in self._h_subfamily:
+			#		self.sub_family = self._h_subfamily[self.product_id.x_treatment]
+			#	else: 
+			#		self.sub_family = self.product_id.x_treatment 
 
 
 

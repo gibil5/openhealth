@@ -30,6 +30,10 @@ class ManagementLine(models.Model):
 
 	# ----------------------------------------------------------- Primitive ------------------------------------------------------
 	name = fields.Char(
+			'Name',
+		)
+
+	name_sp = fields.Char(
 			'Nombre',
 		)
 
@@ -43,6 +47,17 @@ class ManagementLine(models.Model):
 			'Monto',
 			digits=(16,1), 
 		)
+
+
+	#----------------------------------------------------------- Actions ------------------------------------------------------------
+
+	# Update Fields
+	@api.multi
+	def update_fields(self):  
+
+		self.name_sp = mgt_vars._h_name[self.name]
+
+
 
 
 	#----------------------------------------------------------- Quick Button ------------------------------------------------------------
@@ -164,12 +179,16 @@ class DoctorLine(models.Model):
 
 
 
+		
+		# Count and Create 
+
+		print 'Count and Create'
+		print 
+
 		# Family 
-	
-		# Count
+
 		counter_family = collections.Counter(family_arr)
 
-		# Create 
 		for key in counter_family: 
 
 			count = counter_family[key]
@@ -184,14 +203,14 @@ class DoctorLine(models.Model):
 												'doctor_id': self.id, 
 											})
 
+			family.update_fields()
+
 
 
 		# Subfamily 
-		
-		# Count
+
 		counter_sub_family = collections.Counter(sub_family_arr)
 
-		# Create 
 		for key in counter_sub_family: 
 
 			count = counter_sub_family[key]
@@ -202,6 +221,7 @@ class DoctorLine(models.Model):
 														'doctor_id': self.id, 
 												})
 
+			sub_family.update_fields()
 
 
 
@@ -209,6 +229,10 @@ class DoctorLine(models.Model):
 
 
 		# Amounts 
+
+		print
+		print 'Amounts'
+		print 
 
 		# Family 
 		for family in self.family_line: 
@@ -230,7 +254,8 @@ class DoctorLine(models.Model):
 			family.amount = amount
 
 			print family.name 
-			print orders
+			print amount
+			#print orders
 			print 
 
 
@@ -255,7 +280,8 @@ class DoctorLine(models.Model):
 			sub_family.amount = amount
 
 			print sub_family.name 
-			print orders
+			print amount
+			#print orders
 			print 
 
 

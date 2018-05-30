@@ -23,9 +23,9 @@
 		Last built: 30 May 2018 
 
 		
-		Stability by Design !
+		Stability by Design.
 
-		Simple but Abstract. 
+		Simplicity but Abstraction. 
 
 		La Estabilidad se consigue pour la disminución, no por el aumento. 
 		Dieter Rams: Less but Better. 
@@ -33,8 +33,9 @@
 		More Configuration and less programming. Near than zero hacking.  
 
 
-		Clínica Chavarri\n
+
 		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant - Testcafe - User Stories - Auto Backup - Unit Testing - Less but Better - Fulcrum\n
+
 
 
 		Created: 	 	11 Sep 2016

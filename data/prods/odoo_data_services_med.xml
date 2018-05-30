@@ -42,6 +42,7 @@
 
 
 		<!-- Data - Services - Medical -->
+<!--		
 		<record id='infiltration_scar' model='product.template'>
 
 			<field name='type'>service</field>
@@ -65,7 +66,7 @@
 
 
 
-		<!-- Data - Services - Medical -->
+
 		<record id='infiltration_keloid' model='product.template'>
 
 			<field name='type'>service</field>
@@ -85,7 +86,7 @@
 			<field name="sale_ok" eval="True" />
 			<field name="purchase_ok" eval="False" />
 		</record>
-
+-->
 
 
 

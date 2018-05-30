@@ -25,6 +25,11 @@ _h_name = {
 
 					'mesotherapy_nctf': 		'Mesoterapia NCTF', 
 
+
+					'infiltration_scar': 		'Infiltración Cicatriz', 
+					'infiltration_keloid': 		'Infiltración Queloide', 
+
+
 				#False: False, 	
 }
 

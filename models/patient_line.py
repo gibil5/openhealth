@@ -9,6 +9,8 @@ from openerp import models, fields, api
 
 import pat_vars
 
+import eval_vars
+
 
 class PaitentLine(models.Model):
 	
@@ -30,17 +32,85 @@ class PaitentLine(models.Model):
 
 
 
+	# Treatment 
+	treatment = fields.Many2one(
+			'openhealth.treatment', 
+			string="Tratamiento", 
+		)
+
+
+	# Consultation 
+	consultation = fields.Many2one(
+			'openhealth.consultation', 
+			string="Consulta", 
+		)
+
+
+
+	# Mkt 
+	emr = fields.Char(
+			'HC', 
+		)
+
+
+	phone_1 = fields.Char(
+			'Tel 1', 
+		)
+
+
+	phone_2 = fields.Char(
+			'Tel 2', 
+		)
+
+
+	email = fields.Char(
+			'Email', 
+		)
+
+
+
+	#chief_complaint = fields.Char(
+	#		'Motivo', 
+	#	)
+
+
+
+	chief_complaint = fields.Selection(
+			string = 'Motivo de consulta', 						
+			selection = eval_vars._chief_complaint_list, 
+			#required=False, 
+			#readonly=True, 
+		)
+
+
+
+
+	diagnosis = fields.Char(
+			'Diagnóstico', 
+		)
+
+
+
+	budget_amount = fields.Float(
+			'Pres. Monto', 
+		)
+
+	budget_date = fields.Datetime(
+			'Pres. Fecha', 
+		)
+
+
+
 
 
 # ----------------------------------------------------------- Relational ------------------------------------------------------
 
-	# Recommendations
-	reco_line = fields.One2many(
-			'openhealth.marketing.recom.line', 
-			'patient_line_id',
-			string="Recom.", 
-		)
 
+	# Budgets
+	budget_line = fields.One2many(
+			'openhealth.marketing.order.line', 
+			'patient_line_budget_id',
+		)
 
 
 
@@ -61,16 +131,12 @@ class PaitentLine(models.Model):
 
 
 
-
-
 	# Products
 	product_line = fields.One2many(
 			'openhealth.marketing.order.line', 
 
 			'patient_line_product_id',
 		)
-
-
 
 
 
@@ -87,12 +153,14 @@ class PaitentLine(models.Model):
 
 
 
+
+
+
 	# Vip Sales
 	order_line = fields.One2many(
 			'openhealth.marketing.order.line', 
 			'patient_line_id',
 		)
-
 
 
 	# Vip Sales - With Vip Card
@@ -102,6 +170,15 @@ class PaitentLine(models.Model):
 		)
 
 
+
+
+
+	# Recommendations
+	reco_line = fields.One2many(
+			'openhealth.marketing.recom.line', 
+			'patient_line_id',
+			string="Recom.", 
+		)
 
 
 # ----------------------------------------------------------- Dates ------------------------------------------------------
@@ -347,13 +424,72 @@ class PaitentLine(models.Model):
 
 
 
+# ----------------------------------------------------------- Update Fields ------------------------------------------------------
+
+	# Update Fields
+	@api.multi
+	def update_fields_mkt(self):  
 
 
-# ----------------------------------------------------------- Actions ------------------------------------------------------
+		print
+		print 'Update Fields - Mkt'
+
+
+		self.emr = self.patient.x_id_code
+
+		self.phone_2 = self.patient.phone 
+
+		self.phone_1 = self.patient.mobile
+
+		self.email = self.patient.email
+
+
+
+
+		self.treatment = self.env['openhealth.treatment'].search([
+																	('patient','=', self.patient.name),
+														],
+														#order='create_date desc',
+														order='start_date desc',
+														limit=1,)
+
+
+
+
+
+		self.consultation = self.env['openhealth.consultation'].search([
+																		#('name','=', self.patient.name),
+																		('treatment','=', self.treatment.id),
+														],
+														#order='create_date desc',
+														order='evaluation_start_date desc',
+														limit=1,)
+
+
+
+
+		self.chief_complaint = self.treatment.chief_complaint
+
+		self.diagnosis = self.consultation.x_diagnosis
+
+
+
+		#self.budget_amount = 
+
+		#self.budget_date = 
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Update Fields ------------------------------------------------------
 
 	# Update Fields
 	@api.multi
 	def update_fields(self):  
+
 
 		#print
 		#print 'Update Fields - Patient'
@@ -450,6 +586,8 @@ class PaitentLine(models.Model):
 
 
 
+# ----------------------------------------------------------- Update Fields Vip ------------------------------------------------------
+
 	# Update fields Vip
 	@api.multi
 	def update_fields_vip(self):  
@@ -469,6 +607,9 @@ class PaitentLine(models.Model):
 
 
 
+
+
+# ----------------------------------------------------------- Update Fields Proc ------------------------------------------------------
 
 	# Update fields Proc
 	@api.multi

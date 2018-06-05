@@ -34,7 +34,7 @@
 
 
 
-		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant - Testcafe - User Stories - Auto Backup - Unit Testing - Less but Better - Fulcrum - Statistical\n
+		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant - Testcafe - User Stories - Auto Backup - Unit Testing - Less but Better - Fulcrum - Statistical - Probabilistic\n
 
 
 

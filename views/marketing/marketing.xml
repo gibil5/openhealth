@@ -220,7 +220,7 @@
 											'search_default_marketing_id': active_id,	
 										}" 											
 
-								string="Tarjeta Vip No Utilizada"	
+								string="Vip No Util."	
 						/>
 
 
@@ -270,6 +270,22 @@
 								name="patient_recoms"
 
 								string="Reco"	
+						/>
+
+
+
+
+
+
+						<!-- Update Sales -->
+						<button 
+								class="oe_highlight"
+								type="object" 
+
+
+								name="update_sales"
+
+								string="Act Ventas"	
 						/>
 
 

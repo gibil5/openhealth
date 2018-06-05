@@ -29,7 +29,13 @@
 
 						<group>					
 							<group>
+
 								<field name="patient"/>
+
+								<field name="treatment"/>
+
+								<field name="consultation"/>
+
 							</group>
 
 							<group>
@@ -50,12 +56,12 @@
 
 
 
-<!--
-Procedures
+<!-- 
+All Sales
 -->
-							<page	string="Procedimientos"		>
-								<field name="procedure_line">
-									<tree string="Procedimientos"	limit="1000"	>	
+							<page	string="Ventas"		>
+								<field name="sale_line">
+									<tree string="Ventas"	limit="1000"	>	
 									
 										<field name="x_date_created"/>
 
@@ -70,6 +76,27 @@ Procedures
 								</field>
 							</page>
 
+
+
+<!-- 
+Consultations
+-->
+							<page	string="Consultas"		>
+								<field name="consu_line">
+									<tree string="Consultas"	limit="1000"	>	
+									
+										<field name="x_date_created"/>
+
+										<field name="product_id"/>
+
+										<field name="product_uom_qty"/>
+
+										<field name="price_unit"/>
+
+										<field name="price_subtotal"/>
+									</tree>
+								</field>
+							</page>
 
 
 
@@ -99,11 +126,11 @@ Recommendations
 
 
 <!-- 
-Consultations
+Budgets
 -->
-							<page	string="Consultas"		>
-								<field name="consu_line">
-									<tree string="Consultas"	limit="1000"	>	
+							<page	string="Presupuestos"		>
+								<field name="budget_line">
+									<tree string="Presupuestos"	limit="1000"	>	
 									
 										<field name="x_date_created"/>
 
@@ -120,12 +147,14 @@ Consultations
 
 
 
-<!-- 
-All Sales
+
+
+<!--
+Procedures
 -->
-							<page	string="Ventas"		>
-								<field name="sale_line">
-									<tree string="Ventas"	limit="1000"	>	
+							<page	string="Procedimientos"		>
+								<field name="procedure_line">
+									<tree string="Procedimientos"	limit="1000"	>	
 									
 										<field name="x_date_created"/>
 
@@ -139,6 +168,17 @@ All Sales
 									</tree>
 								</field>
 							</page>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -314,7 +354,45 @@ Sales by patient who have a Vip Card
 						default_order='nr_lines_vip'
 -->
 
+
+					<field name="emr"/>
+
+
+
 					<field name="patient"/>
+
+
+<!--
+-->
+					<field name="treatment"/>
+
+					<field name="consultation"/>
+
+
+
+
+					<field name="phone_1"/>
+
+					<field name="phone_2"/>
+
+					<field name="email"/>
+
+					<field name="chief_complaint"/>
+
+					<field name="diagnosis"/>
+
+
+
+
+					<field name="nr_reco"/>						
+
+					<field name="budget_amount"/>
+
+					<field name="budget_date"/>
+
+
+
+
 
 					<field name="sex"/>
 
@@ -367,11 +445,10 @@ Sales by patient who have a Vip Card
 
 					<field name="nr_products"/>
 
+
+
+
 					<field name="nr_proc"/>						
-
-
-					<field name="nr_reco"/>						
-
 
 <!--
 					<field name="sale_line"/>

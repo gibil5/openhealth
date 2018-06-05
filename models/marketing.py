@@ -146,6 +146,28 @@ class Marketing(models.Model):
 
 
 
+# ----------------------------------------------------------- Update Patients ------------------------------------------------------
+
+	# Update Patients
+	@api.multi
+	def update_sales(self):  
+
+		print
+		print 'Update Sales'
+
+
+		# Patient Lines 
+		for pat_line in self.patient_line: 
+
+			pat_line.update_fields_mkt()
+
+
+
+
+
+
+
+
 # ----------------------------------------------------------- Consultations ------------------------------------------------------
 	
 	# Consultations 
@@ -1523,7 +1545,7 @@ class Marketing(models.Model):
 
 
 
-# ----------------------------------------------------------- Update ------------------------------------------------------
+# ----------------------------------------------------------- Update Patients ------------------------------------------------------
 
 	# Update Patients
 	@api.multi

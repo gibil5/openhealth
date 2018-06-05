@@ -175,11 +175,11 @@
 
 
 		# Management 
-		#'views/management/management_order_line.xml',
-		#'views/management/management_doctor_line.xml',
-		#'views/management/management.xml',
+		'views/management/management_order_line.xml',
+		'views/management/management_doctor_line.xml',
+		'views/management/management.xml',
 
-		#'security/ir.model.access.csv',
+		'security/ir.model.access.csv',
 
 
 
@@ -190,10 +190,10 @@
 		'views/account/patient_line.xml',
 		'views/account/patient_line_pivot.xml',
 
-		#'views/marketing/marketing.xml',
-		#'views/marketing/marketing_pivot.xml',
+		'views/marketing/marketing.xml',
+		'views/marketing/marketing_pivot.xml',
 
-		#'views/menus/menus_openhealth.xml',
+		'views/menus/menus_openhealth.xml',
 
 
 

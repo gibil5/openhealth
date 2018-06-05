@@ -189,10 +189,11 @@
 		'views/places/place.xml',
 		'views/account/patient_line.xml',
 		'views/account/patient_line_pivot.xml',
-		'views/marketing/marketing.xml',
-		'views/marketing/marketing_pivot.xml',
 
-		'views/menus/menus_openhealth.xml',
+		#'views/marketing/marketing.xml',
+		#'views/marketing/marketing_pivot.xml',
+
+		#'views/menus/menus_openhealth.xml',
 
 
 

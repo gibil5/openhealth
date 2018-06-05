@@ -202,13 +202,22 @@ class PaitentLine(models.Model):
 # ----------------------------------------------------------- Reco ------------------------------------------------------
 	# Nr Reco 
 	nr_reco = fields.Integer(
-			'Nr Reco', 
+			'Nr Recomendaciones', 
 			#default=-1, 
 		)
 
 
 
 # ----------------------------------------------------------- Sales ------------------------------------------------------
+
+
+	# Nr Budgets 
+	nr_budget = fields.Integer(
+			'Nr Presupuestos', 
+			#default=-1, 
+		)
+
+
 
 
 	# Nr Sales 
@@ -219,7 +228,7 @@ class PaitentLine(models.Model):
 
 	# Nr Consus 
 	nr_consu = fields.Integer(
-			'Nr Consu', 
+			'Nr Consultas', 
 			#default=-1, 
 		)
 
@@ -235,7 +244,7 @@ class PaitentLine(models.Model):
 
 	# Nr Proc
 	nr_proc = fields.Integer(
-			'Nr Proc', 
+			'Nr Procedimientos', 
 			#default=-1, 
 		)
 
@@ -293,7 +302,9 @@ class PaitentLine(models.Model):
 
 	# Sex 
 	sex = fields.Selection(
+
 			selection = pat_vars._sex_type_list, 
+		
 			string="Sexo",
 			#required=False, 
 		)
@@ -431,8 +442,8 @@ class PaitentLine(models.Model):
 	def update_fields_mkt(self):  
 
 
-		print
-		print 'Update Fields - Mkt'
+		#print
+		#print 'Update Fields - Mkt'
 
 
 		self.emr = self.patient.x_id_code
@@ -613,15 +624,18 @@ class PaitentLine(models.Model):
 
 	# Update fields Proc
 	@api.multi
-	def update_fields_proc(self):  
+	def update_nrs(self):  
 
-		print 
-		print 'Update fields - All'
+		#print 
+		#print 'Update fields - Nrs'
 
 
-			#'patient_line_sale_id',
-			#'patient_line_consu_id',
-			#'patient_line_id_proc',
+
+		# Nr Budgets
+		count = self.env['openhealth.marketing.order.line'].search_count([
+																				('patient_line_budget_id','=', self.id),
+																			]) 
+		self.nr_budget = count
 
 
 
@@ -631,6 +645,7 @@ class PaitentLine(models.Model):
 																				('patient_line_sale_id','=', self.id),
 																			]) 
 		self.nr_sale = count
+
 
 
 
@@ -673,7 +688,7 @@ class PaitentLine(models.Model):
 
 
 
-	# update_fields_proc
+	# update_nrs
 
 
 

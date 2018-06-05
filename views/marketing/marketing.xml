@@ -87,7 +87,11 @@
 														('x_type','not in',['patient']), 
 											]}"
 -->
+
+
+
 						<!-- Patients -->
+<!--
 						<button 
 								class="oe_highlight"
 								type="action" 
@@ -99,7 +103,7 @@
 
 								string="Pacientes"	
 						/>
-
+-->
 
 
 
@@ -225,52 +229,43 @@
 
 
 
+
+
+
+
 						<!-- Sales -->
+						<!-- Consultations -->
+						<!-- Procedures -->
+<!--
 						<button 
 								class="oe_highlight"
 								type="object" 
-
 
 								name="patient_sales"
 
 								string="Ventas"	
 						/>
 
-
-
-						<!-- Consultations -->
 						<button 
 								class="oe_highlight"
 								type="object" 
 
-
-								name="patient_consus"
+								name="patient_consu"
 
 								string="Consultas"	
 						/>
 
-
-						<!-- Procedures -->
 						<button 
 								class="oe_highlight"
 								type="object" 
-
 
 								name="patient_procedures"
 
-								string="Procedimientos"	
+								string="Procs"	
 						/>
+-->
 
 
-						<!-- Recoms -->
-						<button 
-								class="oe_highlight"
-								type="object" 
-
-								name="patient_recoms"
-
-								string="Reco"	
-						/>
 
 
 
@@ -285,9 +280,19 @@
 
 								name="update_sales"
 
-								string="Act Ventas"	
+								string="Actualizar Ventas"	
 						/>
 
+
+						<!-- Recoms -->
+						<button 
+								class="oe_highlight"
+								type="object" 
+
+								name="patient_recoms"
+
+								string="Recomendaciones"	
+						/>
 
 						<!-- Patients -->
 						<button 
@@ -329,13 +334,15 @@
 <!--								
 								<field name="x_type"/>
 -->
-								<field name="total_count"/>
+								<field name="total_count"	string="Nr Pacientes"	/>
 
 								<field name="patient_sale_count"/>
 
 								<field name="patient_consu_count"/>
 
 								<field name="patient_reco_count"/>
+
+								<field name="patient_budget_count"/>
 
 								<field name="patient_proc_count"/>
 

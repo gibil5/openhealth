@@ -285,3 +285,15 @@
 
 
 
+
+# 5 Jun 2018
+
+						#print prod.name
+						#print prod.type
+						#print prod.categ_id.name 
+						#print prod.x_family
+						#print prod.x_treatment						
+						#print 
+
+
+

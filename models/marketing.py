@@ -119,6 +119,12 @@ class Marketing(models.Model):
 
 # ----------------------------------------------------------- Counts ------------------------------------------------------
 
+	patient_budget_count = fields.Integer(
+
+			'Nr Presupuestos', 
+		)
+
+
 	patient_sale_count = fields.Integer(
 
 			'Nr Ventas', 
@@ -146,7 +152,7 @@ class Marketing(models.Model):
 
 
 
-# ----------------------------------------------------------- Update Patients ------------------------------------------------------
+# ----------------------------------------------------------- Update Sales ------------------------------------------------------
 
 	# Update Patients
 	@api.multi
@@ -156,38 +162,62 @@ class Marketing(models.Model):
 		print 'Update Sales'
 
 
+
+		# Clean Macros 
+		self.patient_budget_count = 0 
+		self.patient_sale_count = 0 
+		self.patient_consu_count = 0 
+		self.patient_proc_count = 0 
+
+
+
+
 		# Patient Lines 
 		for pat_line in self.patient_line: 
 
+
+			# Update Mkt 
 			pat_line.update_fields_mkt()
 
 
 
 
-
-
-
-
-# ----------------------------------------------------------- Consultations ------------------------------------------------------
-	
-	# Consultations 
-	@api.multi
-	def patient_consus(self):  
-		print 
-		print 'Patient Consus'
-		print 
-
-		# Clean 
-		self.patient_consu_count = 0 
-
-
-		# Patient Lines 
-		for pat_line in self.patient_line: 
-			
-			#print pat_line.patient.name 
-
+			# Budgets
+			budgets = self.env['sale.order'].search([
+															('state', '=', 'draft'),
+															('patient', '=', pat_line.patient.name),
+													],
+														order='date_order asc',
+														#limit=1,
+												)
 			# Clean 
-			pat_line.consu_line.unlink()
+			pat_line.budget_line.unlink()
+
+			# Create
+			for budget in budgets: 
+
+				for line in budget.order_line: 
+					
+					# Budgets 
+					budget_line = pat_line.budget_line.create({
+																'name': line.name, 
+																'product_id': line.product_id.id, 
+																'x_date_created': budget.date_order, 
+																'product_uom_qty': line.product_uom_qty, 
+																'price_unit': line.price_unit, 
+
+																'patient_line_budget_id': pat_line.id, 
+						})
+
+			# Count
+			self.patient_budget_count = self.patient_budget_count + len(pat_line.budget_line)
+
+			# Update Nrs
+			pat_line.update_nrs()
+
+
+
+
 
 			# Orders 
 			orders = self.env['sale.order'].search([
@@ -200,33 +230,78 @@ class Marketing(models.Model):
 			#print orders
 
 
-			# Order Lines - Create Order Line 
+			# Clean 
+			pat_line.sale_line.unlink()
+			pat_line.consu_line.unlink()
+			pat_line.procedure_line.unlink()
+
+
+			# Create
 			for order in orders: 
 
 				for line in order.order_line: 
-
+					
 					prod = line.product_id
 
+
+					# Sale
+					sale_line = pat_line.sale_line.create({
+															'name': line.name, 
+															'product_id': line.product_id.id, 
+															'x_date_created': order.date_order, 
+															'product_uom_qty': line.product_uom_qty, 
+															'price_unit': line.price_unit, 
+
+															'patient_line_sale_id': pat_line.id, 
+						})
+
+
+
+					# Consu
 					if prod.x_family in ['consultation']: 
 
-						# Create 
 						consu_line = pat_line.consu_line.create({
 																	'name': line.name, 
 																	'product_id': line.product_id.id, 
 																	'x_date_created': order.date_order, 
 																	'product_uom_qty': line.product_uom_qty, 
 																	'price_unit': line.price_unit, 
+
 																	'patient_line_consu_id': pat_line.id, 
 																})
-					#print pl_ol
 
 
-			# Counts 
+
+					# Proc 
+					if 	(prod.type not in ['product'])   and   (prod.x_family not in ['consultation']): 
+
+						procedure_line = pat_line.procedure_line.create({
+																			'name': line.name, 
+																			'product_id': line.product_id.id, 
+																			'x_date_created': order.date_order, 
+																			'product_uom_qty': line.product_uom_qty, 
+																			'price_unit': line.price_unit, 
+
+																			'patient_line_proc_id': pat_line.id, 
+																		})
+
+
+
+
+
+
+			# Count
+			self.patient_sale_count = self.patient_sale_count + len(pat_line.sale_line)
 			self.patient_consu_count = self.patient_consu_count + len(pat_line.consu_line)
+			self.patient_proc_count = self.patient_proc_count + len(pat_line.procedure_line)
 
-	# patient_consus
+
+			# Update Nrs
+			pat_line.update_nrs()
 
 
+
+	# update_sales
 
 
 
@@ -241,18 +316,13 @@ class Marketing(models.Model):
 		print 'Patient Sales'
 		print 
 
-
 		# Clean 
 		self.patient_sale_count = 0 
 
 
+
 		# Patient Lines 
 		for pat_line in self.patient_line: 
-
-			#print pat_line.patient.name 
-
-			# Clean 
-			pat_line.sale_line.unlink()
 
 			# Orders 
 			orders = self.env['sale.order'].search([
@@ -265,34 +335,172 @@ class Marketing(models.Model):
 			#print orders
 
 
-			# Order Lines - Create Order Line 
+
+			# Clean 
+			pat_line.sale_line.unlink()
+
+			# Orders
 			for order in orders: 
 
+				# Lines 
 				for line in order.order_line: 
 					
-					# Create 
+					# Create - Sales 
 					sale_line = pat_line.sale_line.create({
 														'name': line.name, 
 														'product_id': line.product_id.id, 
 														'x_date_created': order.date_order, 
 														'product_uom_qty': line.product_uom_qty, 
 														'price_unit': line.price_unit, 
+
 														'patient_line_sale_id': pat_line.id, 
 						})
 
-					#print pl_ol
-
-			#print pat_line.sale_line
-			#print len(pat_line.sale_line)
-			#print 
-
-			# Counts 
+			# Count
 			self.patient_sale_count = self.patient_sale_count + len(pat_line.sale_line)
 
+
 			# Update Patient Line 
-			pat_line.update_fields_proc()
+			pat_line.update_nrs()
 
 	# patient_sales
+
+
+
+
+
+# ----------------------------------------------------------- Consultations ------------------------------------------------------
+	
+	# Consultations 
+	@api.multi
+	def patient_consu(self):  
+		print 
+		print 'Patient Consu'
+		print 
+
+
+		# Clean 
+		self.patient_consu_count = 0 
+
+
+		# Patient Lines 
+		for pat_line in self.patient_line: 
+			
+			# Orders 
+			orders = self.env['sale.order'].search([
+															('state', '=', 'sale'),
+															('patient', '=', pat_line.patient.name),
+													],
+														order='date_order asc',
+														#limit=1,
+												)
+			#print orders
+
+
+
+			# Clean 
+			pat_line.consu_line.unlink()
+
+			# Orders
+			for order in orders: 
+
+				# Lines
+				for line in order.order_line: 
+
+					prod = line.product_id
+
+
+					# Consu
+					if prod.x_family in ['consultation']: 
+
+						consu_line = pat_line.consu_line.create({
+																	'name': line.name, 
+																	'product_id': line.product_id.id, 
+																	'x_date_created': order.date_order, 
+																	'product_uom_qty': line.product_uom_qty, 
+																	'price_unit': line.price_unit, 
+
+																	'patient_line_consu_id': pat_line.id, 
+																})
+
+			# Count
+			self.patient_consu_count = self.patient_consu_count + len(pat_line.consu_line)
+
+			# Update 
+			pat_line.update_nrs()
+
+	# patient_consus
+
+
+
+
+
+
+# ----------------------------------------------------------- Procedures ------------------------------------------------------
+
+	# Procedures
+	@api.multi
+	def patient_procedures(self):  
+		
+		print 
+		print 'Patient Procedurs'
+
+
+		# Clean 
+		self.patient_proc_count = 0 
+
+
+		# Patient Lines 
+		for pat_line in self.patient_line: 
+
+			# Orders 
+			orders = self.env['sale.order'].search([
+															('state', '=', 'sale'),
+															('patient', '=', pat_line.patient.name),
+													],
+														#order='x_serial_nr asc',
+														order='date_order asc',
+														#limit=1,
+												)
+			#print orders
+
+
+
+			# Clean 
+			pat_line.procedure_line.unlink()
+
+			# Orders
+			for order in orders: 
+
+				# Lines 
+				for line in order.order_line: 
+
+					# Vars 
+					prod = line.product_id
+
+					# Create 
+					if 	prod.type not in ['product']	and		prod.x_family not in ['consultation']: 
+
+						procedure_line = pat_line.procedure_line.create({
+																			'name': line.name, 
+																			'product_id': line.product_id.id, 
+																			'x_date_created': order.date_order, 
+																			'product_uom_qty': line.product_uom_qty, 
+																			'price_unit': line.price_unit, 
+																			'patient_line_proc_id': pat_line.id, 
+																		})
+
+			# Count
+			self.patient_proc_count = self.patient_proc_count + len(pat_line.procedure_line)
+
+			# Update 
+			pat_line.update_nrs()
+
+	# patient_procedures
+
+
+
+
 
 
 
@@ -485,7 +693,7 @@ class Marketing(models.Model):
 
 
 			# Update 
-			pat_line.update_fields_proc()
+			pat_line.update_nrs()
 
 			# Counts 
 			self.patient_reco_count = self.patient_reco_count + len(pat_line.reco_line)
@@ -496,93 +704,6 @@ class Marketing(models.Model):
 
 
 
-
-
-# ----------------------------------------------------------- Procedures ------------------------------------------------------
-
-	# Procedures
-	@api.multi
-	def patient_procedures(self):  
-		print 
-		print 'Patient Procedurs'
-
-
-		# Clean 
-		self.patient_proc_count = 0 
-
-
-		# Patient Lines 
-		for pat_line in self.patient_line: 
-
-
-
-			# Clean 
-			pat_line.procedure_line.unlink()
-
-
-
-
-			# Orders 
-			orders = self.env['sale.order'].search([
-															('state', '=', 'sale'),
-															('patient', '=', pat_line.patient.name),
-													],
-														#order='x_serial_nr asc',
-														order='date_order asc',
-														#limit=1,
-												)
-			#print orders
-
-
-
-			# Proc Lines - Create Proc Line 
-			for order in orders: 
-
-				for line in order.order_line: 
-
-					prod = line.product_id
-
-
-					#if prod.x_family not in ['consultation']: 
-					#if line.product_id.x_family not in ['consultation']: 
-					if 	prod.type not in ['product']	and		prod.x_family not in ['consultation']: 
-
-
-						#print prod.name
-						#print prod.type
-						#print prod.categ_id.name 
-
-						#print prod.x_family
-						#print prod.x_treatment
-						
-						#print 
-
-
-						# Create 
-						procedure_line = pat_line.procedure_line.create({
-																			'name': line.name, 
-
-																			'product_id': line.product_id.id, 
-
-																			'x_date_created': order.date_order, 
-																			
-																			'product_uom_qty': line.product_uom_qty, 
-
-																			'price_unit': line.price_unit, 
-
-
-																			#'patient_line_id_proc': pat_line.id, 
-																			'patient_line_proc_id': pat_line.id, 
-																		})
-
-			# Update 
-			pat_line.update_fields_proc()
-
-			# Counts 
-			self.patient_proc_count = self.patient_proc_count + len(pat_line.procedure_line)
-
-
-	# patient_procedures
 
 
 

@@ -363,10 +363,10 @@ Sales by patient who have a Vip Card
 
 
 <!--
--->
 					<field name="treatment"/>
 
 					<field name="consultation"/>
+-->
 
 
 
@@ -386,10 +386,14 @@ Sales by patient who have a Vip Card
 
 					<field name="nr_reco"/>						
 
+					<field name="nr_budget"/>
+
+
+<!--
 					<field name="budget_amount"/>
 
 					<field name="budget_date"/>
-
+-->
 
 
 
@@ -435,6 +439,7 @@ Sales by patient who have a Vip Card
 					<field name="order_line"/>
 					<field name="order_line_vip"/>
 -->
+
 
 
 

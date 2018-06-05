@@ -33,6 +33,11 @@ class Management(models.Model):
 
 # ----------------------------------------------------------- Inheritable ------------------------------------------------------
 
+	# Count
+	total_tickets = fields.Integer(
+			'Nr Tickets',
+			readonly=True, 
+		)
 
 
 
@@ -84,10 +89,10 @@ class Management(models.Model):
 
 	# Set Stats
 	@api.multi
-	def set_stats(self):  
+	def stats(self):  
 
 		print 
-		print 'Set Stats'
+		print 'Stats - Management'
 		print 
 
 
@@ -105,14 +110,11 @@ class Management(models.Model):
 		# Loop 
 		for line in self.order_line: 
 
-
 			# Doctor
 			doctor_arr.append(line.doctor)
 
-
 			# Family
 			family_arr.append(line.family)
-
 
 			# Sub family
 			sub_family_arr.append(line.sub_family)
@@ -128,7 +130,7 @@ class Management(models.Model):
 		counter_doctor = collections.Counter(doctor_arr)
 
 		# Clear 
-		self.doctor_line.unlink()
+		#self.doctor_line.unlink()
 
 		# Create 
 		for key in counter_doctor: 
@@ -156,7 +158,7 @@ class Management(models.Model):
 		counter_family = collections.Counter(family_arr)
 
 		# Clear 
-		self.family_line.unlink()
+		#self.family_line.unlink()
 
 		# Create 
 		for key in counter_family: 
@@ -185,7 +187,7 @@ class Management(models.Model):
 		counter_sub_family = collections.Counter(sub_family_arr)
 
 		# Clear 
-		self.sub_family_line.unlink()
+		#self.sub_family_line.unlink()
 
 		# Create 
 		for key in counter_sub_family: 
@@ -208,6 +210,11 @@ class Management(models.Model):
 		#print 
 
 
+
+		# Doctors 
+		for doctor in self.doctor_line: 
+
+			doctor.stats()
 
 
 
@@ -339,7 +346,7 @@ class Management(models.Model):
 			# Stats 
 			doctor.amount = amount
 			doctor.x_count = count
-			doctor.set_stats()
+			doctor.stats()
 
 			total_amount = total_amount + amount
 			total_count = total_count + count
@@ -349,7 +356,7 @@ class Management(models.Model):
 		# Stats 
 		self.total_amount = total_amount
 		self.total_count = total_count
-		#self.set_stats()
+		#self.stats()
 
 
 	# update_repo

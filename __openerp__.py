@@ -20,7 +20,7 @@
 	'description': """
 
 
-		Last built: 30 May 2018 
+		Last built: 5 Junio 2018 
 
 		
 		Stability by Design.
@@ -34,7 +34,7 @@
 
 
 
-		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant - Testcafe - User Stories - Auto Backup - Unit Testing - Less but Better - Fulcrum\n
+		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant - Testcafe - User Stories - Auto Backup - Unit Testing - Less but Better - Fulcrum - Statistical\n
 
 
 
@@ -158,12 +158,19 @@
 		'views/report_sale/item_counter.xml',
 
 
+
+		# Accounting 
 		'views/payment_methods/payment_method_line.xml',
 		'views/account/account_line.xml',
 		'views/account/account_contasis.xml',
 		'views/menus/menus_account.xml',
 
 
+
+
+
+		# Exceptions 
+		'views/patients/patient_exceptions.xml',
 
 
 		# Management 
@@ -603,6 +610,10 @@
 		'views/patients/patient_control_docs.xml',
 		'views/patients/patient_appointments.xml',
 		'views/patients/patient_quick.xml',
+
+
+
+
 		
 
 		# Appointments - 2

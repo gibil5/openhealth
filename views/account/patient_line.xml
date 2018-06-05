@@ -297,13 +297,16 @@ Sales by patient who have a Vip Card
 				<tree string="Patient Line Tree"
 
 						colors="
-						red:nr_lines_proc==0
+						red:nr_proc==0
 						"
 
-						default_order='nr_lines_proc,date_record asc'
 
 					>
 <!--					
+						red:nr_lines_proc==0
+
+						default_order='nr_lines_proc,date_record asc'
+
 						green:state=='sent';
 						blue:state=='sale';
 						grey:state in ('cancel')
@@ -319,6 +322,10 @@ Sales by patient who have a Vip Card
 
 					<field name="date_record"/>
 
+
+<!--
+					<field name="vip"/>
+
 					<field name="first_contact"/>
 
 					<field name="education"/>
@@ -328,14 +335,16 @@ Sales by patient who have a Vip Card
 					<field name="city"/>
 
 					<field name="district"/>
+-->
 
 
 
 
-					<field name="vip"/>
 
 
 <!--
+
+
 					<field name="vip"/>
 					<field name="vip_date"/>
 					<field name="nr_lines_vip"		attrs="{
@@ -350,11 +359,30 @@ Sales by patient who have a Vip Card
 -->
 
 
-					<field name="nr_lines_proc"/>						
+
+
+					<field name="nr_sale"/>
+
+					<field name="nr_consu"/>						
+
+					<field name="nr_products"/>
+
+					<field name="nr_proc"/>						
+
+
+					<field name="nr_reco"/>						
+
+
+<!--
+					<field name="sale_line"/>
+
+					<field name="consu_line"/>
 
 					<field name="reco_line"/>
 
 					<field name="procedure_line"/>
+-->
+
 				</tree>
 			</field>
 		</record>

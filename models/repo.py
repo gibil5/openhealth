@@ -64,6 +64,7 @@ class Repo(models.Model):
 		)
 
 
+
 	# Count
 	total_count = fields.Integer(
 			#'Total Ventas',

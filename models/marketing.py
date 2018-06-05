@@ -144,6 +144,8 @@ class Marketing(models.Model):
 
 
 
+
+
 # ----------------------------------------------------------- Consultations ------------------------------------------------------
 	
 	# Consultations 
@@ -153,22 +155,17 @@ class Marketing(models.Model):
 		print 'Patient Consus'
 		print 
 
-
 		# Clean 
 		self.patient_consu_count = 0 
 
 
 		# Patient Lines 
 		for pat_line in self.patient_line: 
-
 			
-			print pat_line.patient.name 
-
-
+			#print pat_line.patient.name 
 
 			# Clean 
 			pat_line.consu_line.unlink()
-
 
 			# Orders 
 			orders = self.env['sale.order'].search([
@@ -185,36 +182,27 @@ class Marketing(models.Model):
 			for order in orders: 
 
 				for line in order.order_line: 
-					
 
 					prod = line.product_id
 
 					if prod.x_family in ['consultation']: 
 
-
 						# Create 
 						consu_line = pat_line.consu_line.create({
 																	'name': line.name, 
-
 																	'product_id': line.product_id.id, 
-
 																	'x_date_created': order.date_order, 
-																	
 																	'product_uom_qty': line.product_uom_qty, 
-																	
 																	'price_unit': line.price_unit, 
-
 																	'patient_line_consu_id': pat_line.id, 
 																})
-
 					#print pl_ol
-
 
 
 			# Counts 
 			self.patient_consu_count = self.patient_consu_count + len(pat_line.consu_line)
 
-
+	# patient_consus
 
 
 
@@ -239,14 +227,10 @@ class Marketing(models.Model):
 		# Patient Lines 
 		for pat_line in self.patient_line: 
 
-			
-			print pat_line.patient.name 
-
-
+			#print pat_line.patient.name 
 
 			# Clean 
 			pat_line.sale_line.unlink()
-
 
 			# Orders 
 			orders = self.env['sale.order'].search([
@@ -264,38 +248,35 @@ class Marketing(models.Model):
 
 				for line in order.order_line: 
 					
-
 					# Create 
 					sale_line = pat_line.sale_line.create({
 														'name': line.name, 
-
 														'product_id': line.product_id.id, 
-
 														'x_date_created': order.date_order, 
-														
 														'product_uom_qty': line.product_uom_qty, 
-														
 														'price_unit': line.price_unit, 
-
 														'patient_line_sale_id': pat_line.id, 
 						})
 
 					#print pl_ol
 
-
 			#print pat_line.sale_line
 			#print len(pat_line.sale_line)
 			#print 
 
-
 			# Counts 
 			self.patient_sale_count = self.patient_sale_count + len(pat_line.sale_line)
 
+			# Update Patient Line 
+			pat_line.update_fields_proc()
+
+	# patient_sales
 
 
 
 
-# ----------------------------------------------------------- Procedures ------------------------------------------------------
+
+# ----------------------------------------------------------- Recommendations ------------------------------------------------------
 	
 	# Recommendations
 	@api.multi
@@ -495,6 +476,8 @@ class Marketing(models.Model):
 
 
 
+# ----------------------------------------------------------- Procedures ------------------------------------------------------
+
 	# Procedures
 	@api.multi
 	def patient_procedures(self):  
@@ -566,7 +549,8 @@ class Marketing(models.Model):
 																			'price_unit': line.price_unit, 
 
 
-																			'patient_line_id_proc': pat_line.id, 
+																			#'patient_line_id_proc': pat_line.id, 
+																			'patient_line_proc_id': pat_line.id, 
 																		})
 
 			# Update 

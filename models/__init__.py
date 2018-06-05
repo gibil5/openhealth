@@ -19,6 +19,7 @@ from . import repo
 
 # Management
 from . import mgt_line
+from . import doctor_line
 from . import management_order_line
 from . import management 
 

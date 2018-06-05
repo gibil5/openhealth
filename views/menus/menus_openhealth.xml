@@ -63,7 +63,9 @@
 
 		<!-- Marketing Patients -->
 		<menuitem 	id="marketing_patient_menu" 
-					name="Pacientes Marketing" 
+					
+					name="Perfil del Paciente" 
+					
 					parent="marketing_menu"
 					sequence="1"
 					action="marketing_patient_list_action"/>
@@ -86,18 +88,21 @@
 
 
 <!-- Management -->
+<!--
+			groups="openhealth.roots,openhealth.directors"
+-->
 		<menuitem id="main_management_menu" 
 
 			sequence="1"
 
 			name="Gerencia"
 			
-			groups="openhealth.roots,openhealth.directors"
+			groups="openhealth.roots,openhealth.managers,openhealth.directors"
 			/>
 
 
 
-		<!-- Marketing -->
+		<!-- Management -->
 		<menuitem 	id="management_menu" 
 
 					name="Ventas"
@@ -107,10 +112,10 @@
 
 
 
-		<!-- Marketing Patients -->
+		<!-- Management Sales -->
 		<menuitem 	id="management_sales_menu" 
 
-					name="Ventas" 
+					name="Análisis de Ventas" 
 			
 					parent="management_menu"
 			

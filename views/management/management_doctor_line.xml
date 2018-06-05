@@ -41,7 +41,7 @@
 								type="object" 
 								class="oe_highlight"
 
-								name="set_stats"
+								name="stats"
 
 								string="Stats"								
 						/>
@@ -67,50 +67,38 @@
 
 
 
+						<!-- Ratios -->
+						<group>					
+							<group>
+								<field name="nr_consultations"/>
+
+								<field name="nr_procedures"/>
+
+								<field name="nr_procedures_co2"/>
+
+								<field name="nr_procedures_quick"/>
+
+
+								<field name="nr_products"/>
+
+								<field name="nr_medicals"/>
+							</group>
+
+							<group>
+								<field name="ratio_pro_con"/>
+
+								<field name="ratio_pro_con_co2"/>
+
+								<field name="ratio_pro_con_quick"/>
+							</group>
+						</group>
+
+
+
+
 						<!-- Notebook --> 
 						<notebook>	
 		
-
-<!--
-Sales
--->
-							<page	string="Ventas"		>
-								<field name="order_line">
-									<tree string="Ventas"	limit="1000"	>	
-									
-
-										<!-- Open Button -->
-<!--
-										<button 
-											name="open_line_current" 
-											type="object" 
-											class="oe_highlight"	
-
-											string="Entrar"
-										/>
--->
-
-										<field name="patient"/>
-
-										<field name="doctor"/>
-
-										<field name="x_date_created"/>
-
-										<field name="family"/>
-
-										<field name="sub_family"/>
-
-										<field name="product_id"/>
-
-										<field name="product_uom_qty"/>
-
-										<field name="price_unit"/>
-
-										<field name="price_subtotal"/>
-
-									</tree>
-								</field>
-							</page>
 
 
 
@@ -155,6 +143,49 @@ Sales
 							</page>
 
 
+<!--
+Sales
+-->
+							<page	string="Ventas"		>
+								<field name="order_line">
+									<tree string="Ventas"	limit="1000"	>	
+									
+
+										<!-- Open Button -->
+<!--
+										<button 
+											name="open_line_current" 
+											type="object" 
+											class="oe_highlight"	
+
+											string="Entrar"
+										/>
+-->
+
+										<field name="patient"/>
+
+										<field name="doctor"/>
+
+										<field name="x_date_created"/>
+
+										<field name="family"/>
+
+										<field name="sub_family"/>
+
+										<field name="product_id"/>
+
+										<field name="product_uom_qty"/>
+
+										<field name="price_unit"/>
+
+										<field name="price_subtotal"/>
+
+									</tree>
+								</field>
+							</page>
+
+
+
 						</notebook>
 					</sheet>
 				</form>
@@ -163,6 +194,141 @@ Sales
 
 
 
+
+		<!-- TREE --> 
+		<record model="ir.ui.view" id="management_doctor_line_view_tree">
+
+			<field name="name">openhealth.management.doctor.line.tree</field>
+			
+			<field name="model">openhealth.management.doctor.line</field>
+			
+			<field name="arch" type="xml">
+
+				<tree string="management doctor line Tree">
+
+					
+					<field name="management_id"/>
+
+
+					<field name="name"/>
+
+
+					<field name="nr_consultations"/>
+
+					<field name="nr_procedures"/>
+
+					<field name="nr_products"/>
+
+					<field name="nr_medicals"/>
+
+
+
+
+					<field name="ratio_pro_con"/>
+
+					<field name="ratio_pro_con_co2"/>
+
+					<field name="ratio_pro_con_quick"/>
+
+
+
+
+
+
+					<field name="x_count"/>
+				
+					<field name="amount"/>
+
+				</tree>
+			</field>
+		</record>
+
+<!--
+					<field name="nr_procedures_co2"/>
+					<field name="nr_procedures_quick"/>
+-->
+
+
+
+
+
+		<!-- ACTION - doctor -->
+		<record model="ir.actions.act_window" id="management_doctor_line_form_action">	
+
+			<field name="name">Doctores</field>
+			
+			<field name="res_model">openhealth.management.doctor.line</field>
+
+			<field name="view_type">form</field>
+			
+			<field name="view_mode">tree,form</field>
+
+			<field name="domain">[]</field>
+
+			<field name="context">{}</field>
+
+			<field name="limit">1000</field>
+
+			<!--
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first order
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+
+
+		<!-- Filter --> 
+		<record id="view_management_doctor_line_filter" model="ir.ui.view">
+			
+			<field name="name">Doctor Search</field>
+
+			<field name="model">openhealth.management.doctor.line</field>
+		   	
+		   	<field name="arch" type="xml">
+			   
+			   <search string="Doctores">
+				   
+<!--
+					<field 	name="patient" 
+
+                    	filter_domain="['|',('patient','ilike',self),('physician','ilike',self)]"/>
+-->
+
+					<field 	name="management_id"/>
+
+
+
+<!--
+					<group expand="1" string="Group By">
+						<filter name="Estado" context="{'group_by':'state'}"/>
+						<filter name="Médico" context="{'group_by':'doctor'}"/>
+
+						<filter name="Paciente" context="{'group_by':'patient'}"/>
+
+						<filter name="Familia" context="{'group_by':'family'}"/>
+
+						<filter name="Subfamilia" context="{'group_by':'sub_family'}"/>
+
+					</group>
+-->
+
+				   
+				   <!--
+				   <newline />
+				   <group expand="0" string="Group By...">
+					   <filter string="Patient" domain="[]" context="{'group_by':'patient'}" />
+				   </group>
+				   -->
+			   </search>
+		   </field>
+	   </record>
 
 
 	</data>

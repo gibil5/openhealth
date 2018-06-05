@@ -122,6 +122,16 @@ class marketing_order_line(models.Model):
 
 # ----------------------------------------------------------- Handles ------------------------------------------------------
 	
+	# Patient Line - Product
+	patient_line_product_id = fields.Many2one(			
+			'openhealth.patient.line',
+			ondelete='cascade', 			
+		)
+
+
+
+
+
 	# Patient Line - Consu 
 	patient_line_consu_id = fields.Many2one(			
 			'openhealth.patient.line',
@@ -141,7 +151,8 @@ class marketing_order_line(models.Model):
 
 
 	# Patient Line - Proc
-	patient_line_id_proc = fields.Many2one(
+	#patient_line_id_proc = fields.Many2one(
+	patient_line_proc_id = fields.Many2one(
 			'openhealth.patient.line',
 			ondelete='cascade', 			
 		)

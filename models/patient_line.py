@@ -34,11 +34,14 @@ class PaitentLine(models.Model):
 
 # ----------------------------------------------------------- Relational ------------------------------------------------------
 
-	# Consus
-	consu_line = fields.One2many(
-			'openhealth.marketing.order.line', 
-			'patient_line_consu_id',
+	# Recommendations
+	reco_line = fields.One2many(
+			'openhealth.marketing.recom.line', 
+			'patient_line_id',
+			string="Recom.", 
 		)
+
+
 
 
 
@@ -50,22 +53,37 @@ class PaitentLine(models.Model):
 
 
 
-	# Recommendations
-	reco_line = fields.One2many(
-			'openhealth.marketing.recom.line', 
-			'patient_line_id',
-			string="Recom.", 
+	# Consus
+	consu_line = fields.One2many(
+			'openhealth.marketing.order.line', 
+			'patient_line_consu_id',
 		)
+
+
+
+
+
+	# Products
+	product_line = fields.One2many(
+			'openhealth.marketing.order.line', 
+
+			'patient_line_product_id',
+		)
+
+
 
 
 
 	# Procedures
 	procedure_line = fields.One2many(
 			'openhealth.marketing.order.line', 
-			'patient_line_id_proc',
+			
+			#'patient_line_id_proc',
+			'patient_line_proc_id',
 		
 			string="Procedimientos", 
 		)
+
 
 
 
@@ -74,6 +92,7 @@ class PaitentLine(models.Model):
 			'openhealth.marketing.order.line', 
 			'patient_line_id',
 		)
+
 
 
 	# Vip Sales - With Vip Card
@@ -101,10 +120,44 @@ class PaitentLine(models.Model):
 
 
 
-# ----------------------------------------------------------- Primitives ------------------------------------------------------
 
-	# Nr lines Proc 
-	nr_lines_proc = fields.Integer(
+
+# ----------------------------------------------------------- Reco ------------------------------------------------------
+	# Nr Reco 
+	nr_reco = fields.Integer(
+			'Nr Reco', 
+			#default=-1, 
+		)
+
+
+
+# ----------------------------------------------------------- Sales ------------------------------------------------------
+
+
+	# Nr Sales 
+	nr_sale = fields.Integer(
+			'Nr Ventas', 
+			#default=-1, 
+		)
+
+	# Nr Consus 
+	nr_consu = fields.Integer(
+			'Nr Consu', 
+			#default=-1, 
+		)
+
+
+
+	# Nr Products 
+	nr_products = fields.Integer(
+			'Nr Productos', 
+			#default=-1, 
+		)
+
+
+
+	# Nr Proc
+	nr_proc = fields.Integer(
 			'Nr Proc', 
 			#default=-1, 
 		)
@@ -120,6 +173,10 @@ class PaitentLine(models.Model):
 		)
 
 
+
+
+
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
 
 	# Date Vip card 
 	vip_date = fields.Datetime(
@@ -391,6 +448,8 @@ class PaitentLine(models.Model):
 
 
 
+
+
 	# Update fields Vip
 	@api.multi
 	def update_fields_vip(self):  
@@ -410,19 +469,68 @@ class PaitentLine(models.Model):
 
 
 
+
 	# Update fields Proc
 	@api.multi
 	def update_fields_proc(self):  
 
 		print 
-		print 'Update fields - Proc'
+		print 'Update fields - All'
 
 
-		# Nr Lines proc 
+			#'patient_line_sale_id',
+			#'patient_line_consu_id',
+			#'patient_line_id_proc',
+
+
+
+
+		# Nr Sale
 		count = self.env['openhealth.marketing.order.line'].search_count([
-																				('patient_line_id_proc','=', self.id),
+																				('patient_line_sale_id','=', self.id),
 																			]) 
-		self.nr_lines_proc = count
+		self.nr_sale = count
+
+
+
+		# Nr Consu 
+		count = self.env['openhealth.marketing.order.line'].search_count([
+																				('patient_line_consu_id','=', self.id),
+																			]) 
+		self.nr_consu = count
+
+
+
+
+		# Nr Product
+		count = self.env['openhealth.marketing.order.line'].search_count([
+																				('patient_line_product_id','=', self.id),
+																			]) 
+		self.nr_products = count
+
+
+
+
+
+		# Nr Proc 
+		count = self.env['openhealth.marketing.order.line'].search_count([
+																				('patient_line_proc_id','=', self.id),
+																			]) 
+		self.nr_proc = count
+
+
+
+
+
+		# Nr Reco 
+		count = self.env['openhealth.marketing.recom.line'].search_count([
+																				('patient_line_id','=', self.id),
+																			]) 
+		self.nr_reco = count
+
+
+
+
 
 	# update_fields_proc
 

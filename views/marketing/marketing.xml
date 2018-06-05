@@ -785,7 +785,7 @@ attrs="{'invisible':[('x_type', '!=', 'patient')]}"
 		<!-- ACTION - Patient -->
 		<record model="ir.actions.act_window" id="marketing_patient_list_action">	
 
-			<field name="name">Pacientes Nuevos Marketing</field>
+			<field name="name">Pacientes Nuevos</field>
 			
 			<field name="res_model">openhealth.marketing</field>
 			<field name="view_type">form</field>

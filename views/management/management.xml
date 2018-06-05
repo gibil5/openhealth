@@ -37,13 +37,42 @@
 								type="action" 
 
 								context="{
-											'search_default_mananagement_id': active_id,	
+											'search_default_management_id': active_id,	
 										}" 											
 								
 								name="%(management_order_line_form_action)d" 
 
 								string="Ventas"	
 						/>
+
+
+
+						<!-- Doctores -->
+						<button 
+								class="oe_highlight"
+								type="action" 
+
+								context="{
+											'search_default_management_id': active_id,	
+										}" 											
+								
+								name="%(management_doctor_line_form_action)d" 
+
+								string="Doctores"	
+						/>
+
+
+
+						<!-- Stats -->
+						<button 
+								type="object" 
+								class="oe_highlight"
+
+								name="stats"
+
+								string="Stats"								
+						/>
+
 					</header>
 
 
@@ -71,7 +100,9 @@
 							<group>
 								<field name="total_amount"/>
 
-								<field name="total_count"/>
+								<field name="total_count"	string="Nr Ventas"	/>
+
+								<field name="total_tickets"/>
 							</group>
 						</group>
 
@@ -138,6 +169,32 @@
 										<field name="name"/>
 
 
+										<field name="nr_consultations"/>
+
+										<field name="nr_procedures"/>
+
+
+
+<!--
+										<field name="nr_procedures_co2"/>
+
+										<field name="nr_procedures_quick"/>
+
+-->
+										<field name="ratio_pro_con"/>
+
+										<field name="ratio_pro_con_co2"/>
+
+										<field name="ratio_pro_con_quick"/>
+
+
+
+										<field name="nr_products"/>
+
+										<field name="nr_medicals"/>
+
+
+
 										<field name="x_count"/>
 									
 										<field name="amount"/>
@@ -193,8 +250,10 @@
 
 
 		<!-- ACTION - Order -->
-		<record model="ir.actions.act_window" id="management_order_list_action">	
-			<field name="name">Ventas</field>
+		<record model="ir.actions.act_window" id="management_order_list_action">
+
+			<field name="name">Análisis de Ventas</field>
+			
 			<field name="res_model">openhealth.management</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>

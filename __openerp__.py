@@ -182,18 +182,19 @@
 
 
 		# Marketing 
-		#'views/media/media_line.xml',
-		#'views/histogram/histogram.xml',
-		#'views/places/place.xml',
-		#'views/account/patient_line.xml',
-		#'views/account/patient_line_pivot.xml',
+		'views/media/media_line.xml',
+		
+		'views/histogram/histogram.xml',
+		'views/places/place.xml',
+		'views/account/patient_line.xml',
+		'views/account/patient_line_pivot.xml',
 
-		#'views/marketing/marketing.xml',
-		#'views/marketing/marketing_pivot.xml',
+		'views/marketing/marketing.xml',
+		'views/marketing/marketing_pivot.xml',
 
-		#'views/menus/menus_openhealth.xml',
+		'views/menus/menus_openhealth.xml',
 
-		#'security/ir.model.access.csv',
+		'security/ir.model.access.csv',
 
 
 

@@ -31,7 +31,8 @@
 						<button 
 								type="object" 
 								class="oe_highlight"
-								name="update_repo"
+								
+								name="update_patients"
 
 								string="Actualizar"								
 						/>
@@ -124,20 +125,39 @@
 
 
 
-
-						<!-- Country -->
+						<!-- Media -->
 						<button 
 								class="oe_highlight"
 								type="action" 
 								
-								name="%(country_line_form_action)d" 
+								name="%(media_line_form_action)d" 
 
 								context="{
 											'search_default_marketing_id': active_id,	
 										}" 											
 
-								string="Paises"	
+								string="Medios"	
 						/>
+
+
+
+
+
+						<!-- District -->
+						<button 
+								class="oe_highlight"
+								type="action" 
+								
+								name="%(district_line_form_action)d" 
+
+								context="{
+											'search_default_marketing_id': active_id,	
+										}" 											
+
+								string="Distritos"	
+						/>
+
+
 
 						<!-- City -->
 						<button 
@@ -153,19 +173,23 @@
 								string="Ciudades"	
 						/>
 
-						<!-- District -->
+
+						<!-- Country -->
+<!--						
 						<button 
 								class="oe_highlight"
 								type="action" 
 								
-								name="%(district_line_form_action)d" 
+								name="%(country_line_form_action)d" 
 
 								context="{
 											'search_default_marketing_id': active_id,	
 										}" 											
 
-								string="Distritos"	
+								string="Paises"	
 						/>
+-->
+
 
 
 
@@ -284,15 +308,17 @@
 						/>
 
 
+
 						<!-- Recoms -->
 						<button 
 								class="oe_highlight"
 								type="object" 
 
-								name="patient_recoms"
+								name="update_recoms"
 
 								string="Recomendaciones"	
 						/>
+
 
 						<!-- Patients -->
 						<button 
@@ -625,7 +651,7 @@ attrs="{'invisible':[('x_type', '!=', 'patient')]}"
 									<tree string="Pais"	limit="1000"	>	
 										<field name="name"/>
 
-										<field name="x_count"/>
+										<field name="count"/>
 									</tree>
 								</field>
 							</page>
@@ -641,7 +667,7 @@ attrs="{'invisible':[('x_type', '!=', 'patient')]}"
 										
 										<field name="name"/>
 
-										<field name="x_count"/>
+										<field name="count"/>
 									</tree>
 								</field>
 							</page>
@@ -656,7 +682,7 @@ attrs="{'invisible':[('x_type', '!=', 'patient')]}"
 										
 										<field name="name"/>
 
-										<field name="x_count"/>
+										<field name="count"/>
 									</tree>
 								</field>
 							</page>

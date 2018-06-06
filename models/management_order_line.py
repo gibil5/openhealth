@@ -116,45 +116,12 @@ class management_order_line(models.Model):
 
 	_h_family = {
 					'laser': 		'procedure', 		
-
 					'medical': 		'medical', 		
-					
 					'consultation': 'consultation', 		
-					
 					'cosmetology': 'cosmetology', 	
-
 					False: False, 	
 	}
 
-
-	_h_subfamily = {
-
-					'product' : 		'Producto', 	
-					'consultation' : 	'Consulta', 
-					'cosmetology' : 	'Cosmeatria', 		
-
-
-
-					'laser_co2' : 		'Laser Co2', 		
-					'laser_excilite' : 	'Laser Exc', 		
-					'laser_ipl' : 		'Laser Ipl', 		
-					'laser_ndyag' : 	'Laser Ndyag', 		
-					#'laser_quick' : 	'Laser Quick', 		
-					'laser_quick' : 	'Quick Laser', 		
-
-					'criosurgery' : 			'Criocirugía', 		
-					'intravenous_vitamin' : 	'Vitamina Intravenosa', 		
-					'botulinum_toxin' : 		'Toxina Botulínica', 		
-					'hyaluronic_acid' : 		'Acido Hialurónico', 		
-
-
-
-
-					#'consultation' : 'consultation', 		
-					#'cosmetology' : 'cosmetology', 	
-
-					False: False, 	
-	}
 
 
 

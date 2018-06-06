@@ -4,6 +4,45 @@
 
 
 
+_h_subfamily = {
+					'product' : 		'Producto', 	
+					'consultation' : 	'Consulta', 
+					'cosmetology' : 	'Cosmeatria', 		
+
+					'laser_co2' : 		'Laser Co2', 		
+					'laser_excilite' : 	'Laser Exc', 		
+					'laser_ipl' : 		'Laser Ipl', 		
+					'laser_ndyag' : 	'Laser Ndyag', 		
+					'laser_quick' : 	'Quick Laser', 		
+
+					#'criosurgery' : 			'Criocirugía', 		
+					'criosurgery' : 			'Criocirugia', 		
+					'intravenous_vitamin' : 	'Vitamina Intravenosa', 		
+					#'botulinum_toxin' : 		'Toxina Botulínica', 		
+					'botulinum_toxin' : 		'Toxina Botulinica', 		
+					#'hyaluronic_acid' : 		'Acido Hialurónico', 		
+					'hyaluronic_acid' : 		'Acido Hialuronico', 		
+
+					'mesotherapy_nctf' :		'Mesoterapia NCTF', 
+
+
+					#'consultation' : 'consultation', 		
+					#'cosmetology' : 'cosmetology', 	
+
+					False: False, 	
+}
+
+
+
+
+
+
+
+
+
+
+
+
 # Zone 
 _level_list = [ 
 		('1',	'1'), 

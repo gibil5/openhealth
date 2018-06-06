@@ -11,6 +11,8 @@ import pat_vars
 
 import eval_vars
 
+import prodvars
+
 
 class PaitentLine(models.Model):
 	
@@ -91,15 +93,20 @@ class PaitentLine(models.Model):
 
 
 
-	budget_amount = fields.Float(
-			'Pres. Monto', 
-		)
-
 	budget_date = fields.Datetime(
 			'Pres. Fecha', 
 		)
 
 
+
+	#budget_amount = fields.Float(
+	budget_amount = fields.Char(
+			'Pres. Monto', 
+		)
+
+	budget_prod = fields.Char(
+			'Pres. Proc.', 
+		)
 
 
 
@@ -202,7 +209,8 @@ class PaitentLine(models.Model):
 # ----------------------------------------------------------- Reco ------------------------------------------------------
 	# Nr Reco 
 	nr_reco = fields.Integer(
-			'Nr Recomendaciones', 
+			#'Nr Recomendaciones', 
+			'Nr Recom', 
 			#default=-1, 
 		)
 
@@ -213,7 +221,8 @@ class PaitentLine(models.Model):
 
 	# Nr Budgets 
 	nr_budget = fields.Integer(
-			'Nr Presupuestos', 
+			#'Nr Presupuestos', 
+			'Nr Presupuestos pendientes', 
 			#default=-1, 
 		)
 
@@ -628,6 +637,33 @@ class PaitentLine(models.Model):
 
 		#print 
 		#print 'Update fields - Nrs'
+		#print 
+
+
+		# Budget Amount 
+		#self.budget_amount = 0 
+		self.budget_amount = ''
+		self.budget_prod = ''
+
+		for line in self.budget_line: 
+		
+			#self.budget_amount = self.budget_amount + line.price_total 
+			self.budget_amount = self.budget_amount + str(line.price_total) + ', '
+
+
+			#print line.product_id.x_treatment
+
+			#self.budget_prod = self.budget_prod + line.x_description + ', '
+			if line.product_id.x_treatment in prodvars._h_subfamily: 
+				self.budget_prod = self.budget_prod + prodvars._h_subfamily[line.product_id.x_treatment] + ', '
+			else: 
+				self.budget_prod = self.budget_prod + line.product_id.x_treatment + ', '
+
+
+
+		self.budget_amount = self.budget_amount[:-2]
+		self.budget_prod = self.budget_prod[:-2]
+
 
 
 

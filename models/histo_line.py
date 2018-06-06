@@ -49,23 +49,61 @@ class HistoLine(models.Model):
 		)
 
 
-	# Count 
+
+
+
+	# Counts
 	count = fields.Integer(
-			#'Nr', 
-			'Cantidad', 
-		)
-
-
-	# Total 
-	total = fields.Integer(
+			#'Cantidad', 
 			'Total', 
 		)
 
+	count_m = fields.Integer(
+			'Hombres', 
+		)
 
-	# Percentage 
+	count_f = fields.Integer(
+			'Mujeres', 
+		)
+
+
+
+
+	# Percentages
 	percentage = fields.Float(
-			'Porcentaje', 
+			#'Porcentaje', 
+			'Pacientes %', 
 			digits=(16,1), 
+		)
+
+	percentage_m = fields.Float(
+			'Hombres %', 
+			digits=(16,1), 
+		)
+
+	percentage_f = fields.Float(
+			'Mujeres %', 
+			digits=(16,1), 
+		)
+
+
+
+
+
+
+
+
+	# Totals
+	total = fields.Integer(
+			'Total Pacientes', 
+		)
+
+	total_m = fields.Integer(
+			'Total Hombres', 
+		)
+
+	total_f = fields.Integer(
+			'Total Mujeres', 
 		)
 
 
@@ -100,8 +138,17 @@ class HistoLine(models.Model):
 		#print
 		#print 'Update Fields - Histo'
 
+
+		# Percentages
 		if self.total != 0: 
 			self.percentage = (  float(self.count) / float(self.total)  ) * 100
+
+		if self.total_m != 0: 
+			self.percentage_m = (  float(self.count_m) / float(self.total_m)  ) * 100
+
+		if self.total_f != 0: 
+			self.percentage_f = (  float(self.count_f) / float(self.total_f)  ) * 100
+
 
 
 		# Bin Name

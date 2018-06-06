@@ -20,7 +20,7 @@
 	'description': """
 
 
-		Last built: 5 Junio 2018 
+		Last built: 6 Junio 2018 
 
 		
 		Stability by Design.
@@ -185,6 +185,9 @@
 
 
 		# Marketing 
+
+		'views/media/media_line.xml',
+		
 		'views/histogram/histogram.xml',
 		'views/places/place.xml',
 		'views/account/patient_line.xml',

@@ -16,16 +16,27 @@
 
 				<tree string="Histo Line Tree">
 					
-					<field name="idx"/>
 <!--
+					<field name="idx"/>
 					<field name="x_bin"/>
 -->
 					<field name="x_bin_name"/>
 
+
+
+
+					<field name="count_f"/>
+					<field name="percentage_f"/>
+					<field name="total_f"/>
+
+
+					<field name="count_m"/>
+					<field name="percentage_m"/>
+					<field name="total_m"/>
+
+
 					<field name="count"/>
-
 					<field name="percentage"/>
-
 					<field name="total"/>
 
 				</tree>

@@ -14,9 +14,9 @@ class PlaceLine(models.Model):
 
 	_name = 'openhealth.place.line'
 
-	#_order = 'name asc'
+	#_order = 'x_count desc'
 	#_order = 'count desc'
-	_order = 'x_count desc'
+	_order = 'name asc'
 
 
 
@@ -33,11 +33,44 @@ class PlaceLine(models.Model):
 			'Nombre',
 		)
 
-	x_count = fields.Integer(
+
+
+	sector = fields.Char(
+			'Sector',
+		)
+
+
+
+
+	#x_count = fields.Integer(
+	count = fields.Integer(
 			'Nr',
 		)
 
 
+	count_c = fields.Char(
+			'Nr c',
+		)
+
+
+
+	code = fields.Integer(
+			'Código',
+		)
+
+
+
+
+	# ----------------------------------------------------------- Actions ------------------------------------------------------
+
+	@api.multi
+	def update_fields(self):  
+
+		#print
+		#print 'Update Fields - Place'
+
+		if self.count != 0:
+			self.count_c = str(self.count)
 
 
 
@@ -52,6 +85,7 @@ class CountryLine(models.Model):
 	#_order = 'idx asc'
 
 
+
 class CityLine(models.Model):	
 	
 	_inherit = 'openhealth.place.line'
@@ -59,6 +93,7 @@ class CityLine(models.Model):
 	_name = 'openhealth.city.line'
 	
 	#_order = 'idx asc'
+
 
 
 class DistrictLine(models.Model):	

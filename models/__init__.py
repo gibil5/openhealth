@@ -30,6 +30,8 @@ from . import management
 
 # Marketing
 
+from . import media_line
+
 from . import marketing_recommendation_line
 from . import marketing_order_line
 from . import patient_line

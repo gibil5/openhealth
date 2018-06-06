@@ -18,6 +18,9 @@ import numpy as np
 import collections
 
 
+import pat_vars
+
+
 
 class Marketing(models.Model):
 
@@ -86,11 +89,21 @@ class Marketing(models.Model):
 		)
 
 
+
 	# Histo Lines 
 	histo_line = fields.One2many(
 			'openhealth.histo.line', 
 			'marketing_id', 
 		)
+
+
+
+	# Media Lines 
+	media_line = fields.One2many(
+			'openhealth.media.line', 
+			'marketing_id', 
+		)
+
 
 
 
@@ -106,6 +119,7 @@ class Marketing(models.Model):
 			'openhealth.city.line', 
 			'marketing_id', 
 		)
+
 
 	# District 
 	district_line = fields.One2many(
@@ -160,7 +174,7 @@ class Marketing(models.Model):
 
 		print
 		print 'Update Sales'
-
+		print 
 
 
 		# Clean Macros 
@@ -198,16 +212,22 @@ class Marketing(models.Model):
 
 				for line in budget.order_line: 
 					
-					# Budgets 
-					budget_line = pat_line.budget_line.create({
-																'name': line.name, 
-																'product_id': line.product_id.id, 
-																'x_date_created': budget.date_order, 
-																'product_uom_qty': line.product_uom_qty, 
-																'price_unit': line.price_unit, 
 
-																'patient_line_budget_id': pat_line.id, 
-						})
+					# Budget is a procedure 
+					if line.price_total >= 1500: 
+
+						# Budgets 
+						budget_line = pat_line.budget_line.create({
+																	'name': line.name, 
+																	'product_id': line.product_id.id, 
+																	'x_date_created': budget.date_order, 
+																	'product_uom_qty': line.product_uom_qty, 
+																	'price_unit': line.price_unit, 
+
+																	'patient_line_budget_id': pat_line.id, 
+							})
+
+
 
 			# Count
 			self.patient_budget_count = self.patient_budget_count + len(pat_line.budget_line)
@@ -271,7 +291,6 @@ class Marketing(models.Model):
 																})
 
 
-
 					# Proc 
 					if 	(prod.type not in ['product'])   and   (prod.x_family not in ['consultation']): 
 
@@ -299,218 +318,22 @@ class Marketing(models.Model):
 			# Update Nrs
 			pat_line.update_nrs()
 
-
-
 	# update_sales
 
 
 
 
 
-# ----------------------------------------------------------- Sales ------------------------------------------------------
-	
-	# Sales
-	@api.multi
-	def patient_sales(self):  
-		print 
-		print 'Patient Sales'
-		print 
 
-		# Clean 
-		self.patient_sale_count = 0 
 
 
 
-		# Patient Lines 
-		for pat_line in self.patient_line: 
-
-			# Orders 
-			orders = self.env['sale.order'].search([
-															('state', '=', 'sale'),
-															('patient', '=', pat_line.patient.name),
-													],
-														order='date_order asc',
-														#limit=1,
-												)
-			#print orders
-
-
-
-			# Clean 
-			pat_line.sale_line.unlink()
-
-			# Orders
-			for order in orders: 
-
-				# Lines 
-				for line in order.order_line: 
-					
-					# Create - Sales 
-					sale_line = pat_line.sale_line.create({
-														'name': line.name, 
-														'product_id': line.product_id.id, 
-														'x_date_created': order.date_order, 
-														'product_uom_qty': line.product_uom_qty, 
-														'price_unit': line.price_unit, 
-
-														'patient_line_sale_id': pat_line.id, 
-						})
-
-			# Count
-			self.patient_sale_count = self.patient_sale_count + len(pat_line.sale_line)
-
-
-			# Update Patient Line 
-			pat_line.update_nrs()
-
-	# patient_sales
-
-
-
-
-
-# ----------------------------------------------------------- Consultations ------------------------------------------------------
-	
-	# Consultations 
-	@api.multi
-	def patient_consu(self):  
-		print 
-		print 'Patient Consu'
-		print 
-
-
-		# Clean 
-		self.patient_consu_count = 0 
-
-
-		# Patient Lines 
-		for pat_line in self.patient_line: 
-			
-			# Orders 
-			orders = self.env['sale.order'].search([
-															('state', '=', 'sale'),
-															('patient', '=', pat_line.patient.name),
-													],
-														order='date_order asc',
-														#limit=1,
-												)
-			#print orders
-
-
-
-			# Clean 
-			pat_line.consu_line.unlink()
-
-			# Orders
-			for order in orders: 
-
-				# Lines
-				for line in order.order_line: 
-
-					prod = line.product_id
-
-
-					# Consu
-					if prod.x_family in ['consultation']: 
-
-						consu_line = pat_line.consu_line.create({
-																	'name': line.name, 
-																	'product_id': line.product_id.id, 
-																	'x_date_created': order.date_order, 
-																	'product_uom_qty': line.product_uom_qty, 
-																	'price_unit': line.price_unit, 
-
-																	'patient_line_consu_id': pat_line.id, 
-																})
-
-			# Count
-			self.patient_consu_count = self.patient_consu_count + len(pat_line.consu_line)
-
-			# Update 
-			pat_line.update_nrs()
-
-	# patient_consus
-
-
-
-
-
-
-# ----------------------------------------------------------- Procedures ------------------------------------------------------
-
-	# Procedures
-	@api.multi
-	def patient_procedures(self):  
-		
-		print 
-		print 'Patient Procedurs'
-
-
-		# Clean 
-		self.patient_proc_count = 0 
-
-
-		# Patient Lines 
-		for pat_line in self.patient_line: 
-
-			# Orders 
-			orders = self.env['sale.order'].search([
-															('state', '=', 'sale'),
-															('patient', '=', pat_line.patient.name),
-													],
-														#order='x_serial_nr asc',
-														order='date_order asc',
-														#limit=1,
-												)
-			#print orders
-
-
-
-			# Clean 
-			pat_line.procedure_line.unlink()
-
-			# Orders
-			for order in orders: 
-
-				# Lines 
-				for line in order.order_line: 
-
-					# Vars 
-					prod = line.product_id
-
-					# Create 
-					if 	prod.type not in ['product']	and		prod.x_family not in ['consultation']: 
-
-						procedure_line = pat_line.procedure_line.create({
-																			'name': line.name, 
-																			'product_id': line.product_id.id, 
-																			'x_date_created': order.date_order, 
-																			'product_uom_qty': line.product_uom_qty, 
-																			'price_unit': line.price_unit, 
-																			'patient_line_proc_id': pat_line.id, 
-																		})
-
-			# Count
-			self.patient_proc_count = self.patient_proc_count + len(pat_line.procedure_line)
-
-			# Update 
-			pat_line.update_nrs()
-
-	# patient_procedures
-
-
-
-
-
-
-
-
-
-# ----------------------------------------------------------- Recommendations ------------------------------------------------------
+# ----------------------------------------------------------- Update Recommendations ------------------------------------------------------
 	
 	# Recommendations
 	@api.multi
-	def patient_recoms(self):  
+	#def patient_recoms(self):  
+	def update_recoms(self):  
 		print 
 		print 'Patient Recoms'
 		print 
@@ -524,34 +347,26 @@ class Marketing(models.Model):
 		for pat_line in self.patient_line: 
 
 
-
 			# Clean 
 			pat_line.reco_line.unlink()
-
 
 
 			# Recommendations
 			patient = pat_line.patient
 
-			#print patient.name 
-
-
 
 			# Loop 
 			for treatment in patient.treatment_ids: 
 
-				# Co2 
+				# Create - Co2 
 				for reco in treatment.service_co2_ids: 
 
-					#print reco.service.name
 
-					# Create 
 					reco_line = pat_line.reco_line.create({
 																'product_id': reco.service.id, 
 																'sub_family': reco.service.x_treatment, 
 																'x_date_created': reco.create_date, 
 																'doctor': reco.physician.id, 
-
 																'price': reco.price, 
 																'price_vip': reco.price_vip, 
 																'price_manual': reco.price_manual, 
@@ -562,18 +377,15 @@ class Marketing(models.Model):
 
 
 
-				# Exc 
+				# Create - Exc 
 				for reco in treatment.service_excilite_ids: 
 					
-					#print reco.service.name
 
-					# Create 
 					reco_line = pat_line.reco_line.create({
 																'product_id': reco.service.id, 
 																'sub_family': reco.service.x_treatment, 
 																'x_date_created': reco.create_date, 
 																'doctor': reco.physician.id, 
-
 																'price': reco.price, 
 																'price_vip': reco.price_vip, 
 																'price_manual': reco.price_manual, 
@@ -583,18 +395,15 @@ class Marketing(models.Model):
 															})
 
 
-				# Ipl 
+				# Create - Ipl 
 				for reco in treatment.service_ipl_ids: 
 					
-					#print reco.service.name
 
-					# Create 
 					reco_line = pat_line.reco_line.create({
 																'product_id': reco.service.id, 
 																'sub_family': reco.service.x_treatment, 
 																'x_date_created': reco.create_date, 
 																'doctor': reco.physician.id, 
-
 																'price': reco.price, 
 																'price_vip': reco.price_vip, 
 																'price_manual': reco.price_manual, 
@@ -604,18 +413,15 @@ class Marketing(models.Model):
 															})
 
 
-				# Ndyag 
+				# Create - Ndyag 
 				for reco in treatment.service_ndyag_ids: 
 					
-					#print reco.service.name
 
-					# Create 
 					reco_line = pat_line.reco_line.create({
 																'product_id': reco.service.id, 
 																'sub_family': reco.service.x_treatment, 
 																'x_date_created': reco.create_date, 
 																'doctor': reco.physician.id, 
-
 																'price': reco.price, 
 																'price_vip': reco.price_vip, 
 																'price_manual': reco.price_manual, 
@@ -626,18 +432,16 @@ class Marketing(models.Model):
 
 
 
-				# Medical 
+				# Create - Medical 
 				for reco in treatment.service_medical_ids: 
 					
-					#print reco.service.name
 
-					# Create 
+
 					reco_line = pat_line.reco_line.create({
 																'product_id': reco.service.id, 
 																'sub_family': reco.service.x_treatment, 
 																'x_date_created': reco.create_date, 
 																'doctor': reco.physician.id, 
-
 																'price': reco.price, 
 																'price_vip': reco.price_vip, 
 																'price_manual': reco.price_manual, 
@@ -647,18 +451,15 @@ class Marketing(models.Model):
 															})
 
 
-				# Quick 
+				# Create - Quick 
 				for reco in treatment.service_quick_ids: 
 					
-					#print reco.service.name
 
-					# Create 
 					reco_line = pat_line.reco_line.create({
 																'product_id': reco.service.id, 
 																'sub_family': reco.service.x_treatment, 
 																'x_date_created': reco.create_date, 
 																'doctor': reco.physician.id, 
-
 																'price': reco.price, 
 																'price_vip': reco.price_vip, 
 																'price_manual': reco.price_manual, 
@@ -668,18 +469,15 @@ class Marketing(models.Model):
 															})
 
 
-				# Vip 
+				# Create - Vip 
 				for reco in treatment.service_vip_ids: 
 					
-					#print reco.service.name
 
-					# Create 
 					reco_line = pat_line.reco_line.create({
 																'product_id': reco.service.id, 
 																'sub_family': reco.service.x_treatment, 
 																'x_date_created': reco.create_date, 
 																'doctor': reco.physician.id, 
-
 																'price': reco.price, 
 																'price_vip': reco.price_vip, 
 																'price_manual': reco.price_manual, 
@@ -687,19 +485,19 @@ class Marketing(models.Model):
 
 																'patient_line_id': pat_line.id, 
 															})
-
-
 				#print 
+
 
 
 			# Update 
 			pat_line.update_nrs()
 
+
 			# Counts 
 			self.patient_reco_count = self.patient_reco_count + len(pat_line.reco_line)
 
 
-	# patient_recoms
+	# update_recoms
 
 
 
@@ -712,10 +510,11 @@ class Marketing(models.Model):
 	
 	# Correct
 	@api.multi
-	def vip_orders(self):  
-		print 
-		print 'Vip Orders'
+	def update_vip_sales(self):  
 
+		print 
+		print 'Vip Sales'
+		print 
 
 		# Patient Lines 
 		for pl in self.patient_line: 
@@ -727,27 +526,16 @@ class Marketing(models.Model):
 				#print 
 
 
-
 				# Clean 
 				pl.order_line.unlink()
 				pl.order_line_vip.unlink()
 
 
 
-				
-
-
-
-
 				# Orders 
 				orders = self.env['sale.order'].search([
 															('state', '=', 'sale'),
-
 															('patient', '=', pl.patient.name),
-
-															#('date_order', '>=', date_begin),													
-															#('date_order', '<', date_end),
-															#('categ_id', '=', categ_id),
 													],
 														#order='x_serial_nr asc',
 														order='date_order asc',
@@ -758,22 +546,16 @@ class Marketing(models.Model):
 
 
 
-				# Order Lines - Vip Date 
+
+				# Find Vip Date - First Method 
 				for order in orders: 
 					for ol in order.order_line: 
-
 						if ol.product_id.default_code == '495': 		# Vip Card 
-							
-							#print 'Gotcha !'
-
-							#print ol.product_id.name
-
 							pl.vip_date = order.date_order
 
 
-				# Legacy 
+				# Find Vip Date - Second Method - Legacy 
 				if pl.vip_date == False: 
-					
 					# Card 
 					card = self.env['openhealth.card'].search([
 																	('patient_name', '=', pl.patient.name),
@@ -781,13 +563,6 @@ class Marketing(models.Model):
 															#order='x_serial_nr asc',
 															limit=1,
 													)
-					
-					#print card
-					#print card.patient_name
-					#print card.date_created 
-					#print card.create_date   
-					#print 
-
 					pl.vip_date = card.create_date
 
 
@@ -799,41 +574,28 @@ class Marketing(models.Model):
 				# Order Lines - Create Order Line 
 				for order in orders: 
 
+					# Create Vip 
 					for ol in order.order_line: 
 					
-						#print ol.product_id.name
-
-
-
-
-						# Create 
 						pl_ol = pl.order_line.create({
 														'name': ol.name, 
 														'product_id': ol.product_id.id, 
-
 														'x_date_created': order.date_order, 
-														
 														'product_uom_qty': ol.product_uom_qty, 
 														'price_unit': ol.price_unit, 
 
 														'patient_line_id': pl.id, 
 							})
-
 						#print pl_ol
 
 
 
-
-
-						# Vip sale 
+						# Create - Vip sale 
 						if pl.vip_date != False: 
 
-
-							#if order.date_order >= pl.vip_date: 
 							if order.date_order >= pl.vip_date		and 	ol.product_id.type in ['service']: 
 
 
-								# Create Vip 
 								pl_ol_vip = pl.order_line_vip.create({
 																		'name': ol.name, 
 																		'product_id': ol.product_id.id, 
@@ -843,16 +605,14 @@ class Marketing(models.Model):
 
 																		'patient_line_id_vip': pl.id, 
 									})
-
 								#print pl_ol
-
-
-
 
 				pl.update_fields_vip()
 				#print 
+		#print 
 
-		print 
+	# update_vip_sales
+
 
 
 
@@ -879,6 +639,179 @@ class Marketing(models.Model):
 			
 					print 'Correct !'
 		print 
+	# correct_patients
+
+
+
+
+
+
+# ----------------------------------------------------------- Media ------------------------------------------------------
+
+	# Histogram
+	@api.multi
+	def build_district(self):  
+
+		print 
+		print 'Build district'
+
+
+
+		# Collection 
+
+		district_arr = []
+
+		for line in self.patient_line: 
+			if line.city in ['Lima']: 
+				district_arr.append(line.district)
+
+		counter_district = collections.Counter(district_arr)
+
+		#for key in counter_district: 
+		#	count = counter_district[key]
+
+
+
+
+
+		# Clear 
+		self.district_line.unlink()
+
+
+		# Build 
+		#district_arr = [
+		#					'none', 
+		#					'recommendation', 
+		#					'tv', 
+		#					'internet', 
+		#					'website', 
+		#					'mail', 
+		#					'undefined', 
+		#			]
+
+
+		zip_arr = np.arange(44)
+
+		idx = 0 
+
+
+		#for district in district_arr: 
+		for code in zip_arr: 
+			
+			if code != 0: 
+
+
+				total = self.total_count
+
+				name = pat_vars.zip_dic_inv[code]
+
+
+
+				# Count 
+				if name in counter_district: 
+					count = counter_district[name]
+				else: 
+					count = 0 
+
+
+
+
+
+				line = self.district_line.create({
+													'code' :		code, 
+
+													'name' : 		name, 
+													
+													'count' :		count, 
+													
+													'idx' : 		idx, 
+													
+													'total' :		total, 
+
+													'marketing_id' :		self.id, 
+											})
+
+				
+				line.update_fields()
+				
+				idx = idx + 1
+
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Media ------------------------------------------------------
+
+	# Histogram
+	@api.multi
+	def build_media(self):  
+
+		print 
+		print 'Build Media'
+
+
+		# Clear 
+		self.media_line.unlink()
+
+
+
+		# Build 
+		media_arr = [
+						'none', 
+						'recommendation', 
+						'tv', 
+						'internet', 
+						'website', 
+						'mail', 
+						'undefined', 
+					]
+
+		idx = 0 
+
+		for media in media_arr: 
+
+			if media == 'none': 
+				count = self.how_none
+			
+			elif media == 'recommendation': 
+				count = self.how_reco
+			
+			elif media == 'tv': 
+				count = self.how_tv
+
+			elif media == 'internet': 
+				count = self.how_inter
+
+			elif media == 'website': 
+				count = self.how_web
+
+			elif media == 'mail': 
+				count = self.how_mail
+
+			elif media == 'undefined': 
+				count = self.how_u  
+
+
+
+			total = self.total_count
+
+
+			line = self.media_line.create({
+											'name' : 	media, 
+											'count' :		count, 
+											'idx' : 		idx, 
+											'total' :		total, 
+
+											'marketing_id' :		self.id, 
+										})
+
+			line.update_fields()
+			idx = idx + 1
+
 
 
 
@@ -887,19 +820,32 @@ class Marketing(models.Model):
 
 	# Histogram
 	@api.multi
-	def show_histogram(self):  
+	def build_histogram(self):  
 
 		print 
-		print 'Show Histogram'
+		print 'Build Histogram'
 
 
+		#input_arr = [15, 25, 26, 30, 44, 70]
 
-		# Input Array
-		#inp_arr = [15, 25, 26, 30, 44, 70]
-		inp_arr = []
+
+		# Build Input Array
+		input_arr = []
+		input_arr_m = []
+		input_arr_f = []
+
 		for line in self.patient_line: 
-			if line.age_years not in [0, -1]: 
-				inp_arr.append(line.age_years)
+			if line.age_years not in [0, -1]: 		# Not an Error 
+
+				input_arr.append(line.age_years)
+
+				if line.sex == 'Male': 
+					input_arr_m.append(line.age_years)
+				elif line.sex == 'Female': 
+					input_arr_f.append(line.age_years)
+
+
+
 		
 		#print inp_arr
 
@@ -911,10 +857,17 @@ class Marketing(models.Model):
 
 		# Histogram 
 		#histo = np.histogram([1, 2, 1], bins=[0, 1, 2, 3])
-		histo = np.histogram(inp_arr, bins=inp_bins)
+		histo = np.histogram(input_arr, bins=inp_bins)
+		histo_m = np.histogram(input_arr_m, bins=inp_bins)
+		histo_f = np.histogram(input_arr_f, bins=inp_bins)
+
 
 		bins = histo[1]
+
 		counts = histo[0]
+		counts_m = histo_m[0]
+		counts_f = histo_f[0]
+
 
 		#print bins
 		#print counts
@@ -922,7 +875,7 @@ class Marketing(models.Model):
 
 
 		# Total 
-		total = len(inp_arr)
+		total = len(input_arr)
 
 
 
@@ -944,11 +897,20 @@ class Marketing(models.Model):
 				#print x_bin
 				#print count 
 
+
 				line = self.histo_line.create({
-												'count': count, 
 												'x_bin': x_bin, 
 												'idx': idx, 
+
 												'total': total, 
+												'total_m': self.sex_male, 
+												'total_f': self.sex_female, 
+
+
+												'count': count, 
+												'count_m': counts_m[idx], 
+												'count_f': counts_f[idx], 
+
 
 												'marketing_id': self.id, 
 						})
@@ -957,7 +919,7 @@ class Marketing(models.Model):
 				idx = idx + 1
 				#print
 
-	# show_histogram
+	# build_histogram
 
 
 
@@ -967,7 +929,6 @@ class Marketing(models.Model):
 
 
 
-# ----------------------------------------------------------- Primitives ------------------------------------------------------
 	
 
 
@@ -1368,6 +1329,7 @@ class Marketing(models.Model):
 		for line in self.patient_line: 
 
 
+
 			# Sex
 			if line.sex == 'Male': 
 				count_m = count_m + 1
@@ -1377,14 +1339,15 @@ class Marketing(models.Model):
 				count_u = count_u + 1
 
 
-			# Age
-			if line.age_years not in[ -1, 0]: 
+
+			# Age Max and Min 
+			if line.age_years not in[ -1, 0]: 			# Not an Error 
 				count_a = count_a + line.age_years 
 				if line.age_years > age_max: 
 					age_max = line.age_years
 				if line.age_years < age_min: 
 					age_min = line.age_years
-			else: 
+			else: 										# Error 
 				count_age_u = count_age_u + 1
 
 
@@ -1416,7 +1379,6 @@ class Marketing(models.Model):
 
 
 
-
 			# Education 
 			if line.education == 'first': 
 				edu_fir = edu_fir + 1
@@ -1438,7 +1400,6 @@ class Marketing(models.Model):
 
 
 
-
 			# Vip 
 			if line.vip: 
 				vip_true = vip_true + 1
@@ -1449,19 +1410,20 @@ class Marketing(models.Model):
 
 
 
+			# Address - Using collections
 
-			
-			# Using collections - More Abstract !
-
-			# Countries
+			# Countries 
 			country_arr.append(line.country)
 
-			# Cities 
+			# Cities
 			city_arr.append(line.city)
 
-			# Districts - Only for Lima 
+			# Districts - Only for Lima
 			if line.city in ['Lima']: 
 				district_arr.append(line.district)
+
+
+
 
 
 
@@ -1587,8 +1549,8 @@ class Marketing(models.Model):
 			country = self.country_line.create({
 													'name': key, 
 
-													#'count': count, 
-													'x_count': count, 
+													'count': count, 
+													#'x_count': count, 
 
 
 													'marketing_id': self.id, 
@@ -1612,8 +1574,8 @@ class Marketing(models.Model):
 			city = self.city_line.create({
 													'name': key, 
 
-													#'count': count, 
-													'x_count': count, 
+													'count': count, 
+													#'x_count': count, 
 
 													'marketing_id': self.id, 
 												})
@@ -1632,14 +1594,15 @@ class Marketing(models.Model):
 
 			count = counter_district[key]
 			
-			district = self.district_line.create({
-													'name': key, 
 
+			#district = self.district_line.create({
+			#										'name': key, 
 													#'count': count, 
-													'x_count': count, 
+			#										'x_count': count, 
+			#										'marketing_id': self.id, 
+			#									})
 
-													'marketing_id': self.id, 
-												})
+
 
 			#print key 
 			#print count
@@ -1670,8 +1633,8 @@ class Marketing(models.Model):
 
 	# Update Patients
 	@api.multi
-	#def update_patients(self):  
-	def update_repo(self):  
+	#def update_repo(self):  
+	def update_patients(self):  
 
 		print
 		print 'Update Patients'
@@ -1726,14 +1689,27 @@ class Marketing(models.Model):
 
 
 
+
 		# Set Stats 
 		self.set_stats()
 
-		# Build Histo
-		self.show_histogram()
-
 		# Build Vip Sales 
-		self.vip_orders()
+		self.update_vip_sales()
+
+
+
+
+		# Build Histo
+		self.build_histogram()
+
+
+		# Build Media
+		self.build_media()
+
+
+		# Build Districts 
+		self.build_district()
+
 
 
 	# update_patients

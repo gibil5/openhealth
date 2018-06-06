@@ -5,11 +5,6 @@
 
 
 
-
-
-
-
-
 		<!-- Pivot - Country --> 
 	   <record id="view_country_line_pivot" model="ir.ui.view">
 			 <field name="name">country.line.pivot</field>
@@ -24,7 +19,7 @@
 					<field name="name"  type="row"	/>	    
 
 					<!-- X Axis --> 
-					<field name="x_count" type="measure"		/>
+					<field name="count" type="measure"		/>
 
 				 </pivot>
 			 </field>
@@ -45,7 +40,7 @@
 					<field name="name"  type="row"	/>	    
 
 					<!-- X Axis --> 
-					<field name="x_count" type="measure"		/>
+					<field name="count" type="measure"		/>
 
 				 </pivot>
 			 </field>
@@ -66,18 +61,11 @@
 					<field name="name"  type="row"	/>	    
 
 					<!-- X Axis --> 
-					<field name="x_count" type="measure"		/>
+					<field name="count" type="measure"		/>
 
 				 </pivot>
 			 </field>
 		</record>
-
-
-
-
-
-
-
 
 
 
@@ -95,7 +83,7 @@
 
 				<graph string="Análisis de Distritos">
 
-					<field name="x_count"  />
+					<field name="count"  />
 
 				</graph>
 			 </field>
@@ -121,7 +109,12 @@
 					
 					<field name="name"/>
 
-					<field name="x_count"/>
+					<field name="count_c"/>
+<!--
+					<field name="count"/>
+-->
+
+					<field name="sector"/>
 
 				</tree>
 			</field>

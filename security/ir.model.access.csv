@@ -29,6 +29,11 @@ access_openhealth_district_line,openhealth.district.line,model_openhealth_distri
 access_openhealth_histo_line,openhealth.histo.line,model_openhealth_histo_line,,1,1,1,1
 
 
+access_openhealth_media_line,openhealth.media.line,model_openhealth_media_line,,1,1,1,1
+
+
+
+
 
 access_openhealth_marketing_order_line,openhealth.marketing.order.line,model_openhealth_marketing_order_line,,1,1,1,1
 

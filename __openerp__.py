@@ -150,7 +150,7 @@
 		# ----------------------------------------------------------- Recent ------------------------------------------------------
 
 		
-
+		# Reports
 		'views/product_selectors/product_selector.xml',
 		'views/orders/order_report_nex.xml',
 		'views/report_sale/report_sale_product.xml',
@@ -167,8 +167,6 @@
 
 
 
-
-
 		# Exceptions 
 		#'views/patients/patient_exceptions.xml',
 
@@ -179,25 +177,23 @@
 		'views/management/management_doctor_line.xml',
 		'views/management/management.xml',
 
-		'security/ir.model.access.csv',
 
 
 
 
 		# Marketing 
+		#'views/media/media_line.xml',
+		#'views/histogram/histogram.xml',
+		#'views/places/place.xml',
+		#'views/account/patient_line.xml',
+		#'views/account/patient_line_pivot.xml',
 
-		'views/media/media_line.xml',
-		
-		'views/histogram/histogram.xml',
-		'views/places/place.xml',
-		'views/account/patient_line.xml',
-		'views/account/patient_line_pivot.xml',
+		#'views/marketing/marketing.xml',
+		#'views/marketing/marketing_pivot.xml',
 
-		'views/marketing/marketing.xml',
-		'views/marketing/marketing_pivot.xml',
+		#'views/menus/menus_openhealth.xml',
 
-		'views/menus/menus_openhealth.xml',
-
+		#'security/ir.model.access.csv',
 
 
 

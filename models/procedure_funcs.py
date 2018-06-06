@@ -297,6 +297,10 @@ def create_controls_go(self):
 		doctor_id = self.doctor.id 
 
 
+	
+	#print doctor_id
+	#print doctor_name
+
 
 
 	# Start date 

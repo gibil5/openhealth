@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-	<data noupdate='1'>
+	<data noupdate='0'>
  
  
 
@@ -73,6 +73,14 @@
 		</record>
 		
 
+		<record id="loa_sun" model="oeh.medical.physician.line">
+			<field name="physician_id" ref="dr_loayza"/>
+			<field name="name">Sunday</field>
+			<field name="end_time">21.0166666667</field>
+			<field name="start_time">8.98333333333</field>
+		</record>
+
+
 
 		<!-- Week --> 
 		<record id="dr_loayza" model="oeh.medical.physician">
@@ -82,6 +90,8 @@
 			<field name="line_id" ref="loa_thu"/>
 			<field name="line_id" ref="loa_fri"/>
 			<field name="line_id" ref="loa_sat"/>
+
+			<field name="line_id" ref="loa_sun"/>
 		</record>
 
 
@@ -155,6 +165,12 @@
 		</record>
 		
 
+		<record id="cas_sun" model="oeh.medical.physician.line">
+			<field name="physician_id" ref="dr_castillo"/>
+			<field name="name">Sunday</field>
+			<field name="end_time">21.0166666667</field>
+			<field name="start_time">8.98333333333</field>
+		</record>
 
 
 
@@ -166,6 +182,8 @@
 			<field name="line_id" ref="cas_thu"/>
 			<field name="line_id" ref="cas_fri"/>
 			<field name="line_id" ref="cas_sat"/>
+
+			<field name="line_id" ref="cas_sun"/>
 		</record>
 
 
@@ -239,6 +257,12 @@
 			<field name="end_time">21.0166666667</field>
 		</record>
 		
+		<record id="abr_sun" model="oeh.medical.physician.line">
+			<field name="physician_id" ref="dr_abriojo"/>
+			<field name="name">Sunday</field>
+			<field name="end_time">21.0166666667</field>
+			<field name="start_time">8.98333333333</field>
+		</record>
 
 
 
@@ -250,6 +274,8 @@
 			<field name="line_id" ref="abr_thu"/>
 			<field name="line_id" ref="abr_fri"/>
 			<field name="line_id" ref="abr_sat"/>
+
+			<field name="line_id" ref="abr_sun"/>
 		</record>
 
 

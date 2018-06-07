@@ -122,3 +122,158 @@
 								</field>
 							</page>
 						
+
+
+
+
+
+
+<!--
+7 Jun 2018 
+--> 
+
+
+
+						<!-- Vip Sales -->
+<!--
+						<button 
+								class="oe_highlight"
+								type="object" 
+
+								name="vip_orders" 
+
+
+								string="Vip Ventas"	
+						/>
+-->
+
+
+
+						<!-- Sales -->
+						<!-- Consultations -->
+						<!-- Procedures -->
+<!--
+						<button 
+								class="oe_highlight"
+								type="object" 
+
+								name="patient_sales"
+
+								string="Ventas"	
+						/>
+
+						<button 
+								class="oe_highlight"
+								type="object" 
+
+								name="patient_consu"
+
+								string="Consultas"	
+						/>
+
+						<button 
+								class="oe_highlight"
+								type="object" 
+
+								name="patient_procedures"
+
+								string="Procs"	
+						/>
+-->
+
+
+
+
+
+
+
+
+						<!-- Histo -->
+<!--
+						<button 
+								type="object" 
+								class="oe_highlight"
+								attrs="{'invisible':[	
+														('x_type','not in',['patient']), 
+											]}"
+								name="show_histogram"
+
+								string="Histograma"								
+						/>
+-->
+
+
+
+<!--
+								attrs="{'invisible':[	
+														('x_type','not in',['patient']), 
+											]}"
+-->
+
+
+
+						<!-- Patients -->
+<!--
+						<button 
+								class="oe_highlight"
+								type="action" 
+								context="{
+											'search_default_marketing_id': active_id,	
+										}" 											
+								
+								name="%(patient_line_form_action)d" 
+
+								string="Pacientes"	
+						/>
+-->
+
+
+
+
+
+
+
+
+
+							<!-- Procedures --> 
+<!--
+							<page	string="Procedimientos"		attrs="{'invisible':[('x_type', '!=', 'patient')]}"	>
+
+								<field name="procedure_line">
+
+									<tree string="Distrito"	limit="1000"	>	
+										
+										<field name="name"/>
+
+										<field name="x_count"/>
+									</tree>
+								</field>
+							</page>
+-->
+
+
+
+							<!-- Undefined --> 
+<!--							
+							<page	string="Indefinidos"		attrs="{'invisible':[('x_type', '!=', 'patient')]}"	>
+
+								<group>
+									<field name="total_count_sex_undefined"/>
+									<field name="total_count_sex_undefined_per"/>
+								</group>
+
+							</page>
+-->
+
+
+
+
+
+<!--
+							<page	string="Contasis"		>
+								<field name="account_line_contasis"/>
+							</page>
+-->
+
+
+

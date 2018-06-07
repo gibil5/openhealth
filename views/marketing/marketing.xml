@@ -4,17 +4,14 @@
 		
 
 
-
 		<!-- FORM --> 
 		<record model="ir.ui.view" id="marketing_form_view">
-			<field name="name">marketing.form</field>
-			
+			<field name="name">marketing.form</field>			
 			<field name="model">openhealth.marketing</field>
-			
 			<field name="arch" type="xml">
-
 				<form string="Marketing Form">
 					
+
 
 
 					<!-- Header -->
@@ -22,19 +19,33 @@
 
 
 
-<!--
-								attrs="{'invisible':[	
-														('x_type','not in',['patient']), 
-											]}"
--->
-						<!-- Update -->
+						<!-- Update Patients -->
 						<button 
 								type="object" 
 								class="oe_highlight"
-								
 								name="update_patients"
 
-								string="Actualizar"								
+								string="Actualizar Pacientes"								
+						/>
+
+
+						<!-- Update Sales -->
+						<button 
+								class="oe_highlight"
+								type="object" 
+								name="update_sales"
+
+								string="Ventas"	
+						/>
+
+
+						<!-- Update Recos -->
+						<button 
+								class="oe_highlight"
+								type="object" 
+								name="update_recos"
+
+								string="Recomendaciones"	
 						/>
 
 
@@ -47,105 +58,97 @@
 								type="object" 
 								class="oe_highlight"
 								name="update_patients_legacy"
+								groups="openhealth.roots"
 
 								string="Update - Legacy"	
-															
-								groups="openhealth.roots"
 						/>
 
 						<button 
 								type="object" 
 								class="oe_highlight"
 								name="correct_patients"
+								groups="openhealth.roots"
 
 								string="Correct - Legacy"
-
-								groups="openhealth.roots"
 						/>
 -->
 
 
 
 
-						<!-- Histo -->
-<!--
+						<!-- Vip not used -->
 						<button 
-								type="object" 
-								class="oe_highlight"
-								attrs="{'invisible':[	
-														('x_type','not in',['patient']), 
-											]}"
-								name="show_histogram"
-
-								string="Histograma"								
-						/>
--->
-
-
-
-<!--
-								attrs="{'invisible':[	
-														('x_type','not in',['patient']), 
-											]}"
--->
-
-
-
-						<!-- Patients -->
-<!--
-						<button 
-								class="oe_highlight"
-								type="action" 
-								context="{
-											'search_default_marketing_id': active_id,	
-										}" 											
-								
-								name="%(patient_line_form_action)d" 
-
-								string="Pacientes"	
-						/>
--->
-
-
-
-
-						<!-- Histogram -->
-						<button 
-								class="oe_highlight"
-								type="action" 
-								
-								name="%(histo_line_form_action)d" 
-
-								context="{
+								class="oe_highlight oe_right"
+								type="action" 								
+								name="%(patient_line_vip_not_used_form_action)d" 
+								context="{											
 											'search_default_marketing_id': active_id,	
 										}" 											
 
-								string="Edades"	
+								string="Vip No Util."	
+						/>
+
+
+						<!-- Vip No -->
+						<button 
+								class="oe_highlight oe_right"
+								type="action" 
+								name="%(patient_line_vip_no_form_action)d" 
+								context="{											
+											'search_default_marketing_id': active_id,	
+										}" 											
+
+								string="No Vip"	
+						/>
+
+
+						<!-- Vip -->
+						<button 
+								class="oe_highlight oe_right"
+								type="action" 
+								context="{											
+											'search_default_marketing_id': active_id,	
+										}" 											
+								name="%(patient_line_vip_form_action)d" 
+
+								string="Vip"	
 						/>
 
 
 
-						<!-- Media -->
+
+						<!-- Country -->
+						<!--						
 						<button 
-								class="oe_highlight"
+								class="oe_highlight  oe_right"
+								type="action" 								
+								name="%(country_line_form_action)d" 
+								context="{
+											'search_default_marketing_id': active_id,	
+										}" 
+								string="Paises"	
+						/>
+						-->
+
+
+						<!-- City -->
+						<button 
+								class="oe_highlight oe_right"
 								type="action" 
 								
-								name="%(media_line_form_action)d" 
+								name="%(city_line_form_action)d" 
 
 								context="{
 											'search_default_marketing_id': active_id,	
 										}" 											
 
-								string="Medios"	
+								string="Ciudades"	
 						/>
-
-
-
 
 
 						<!-- District -->
 						<button 
-								class="oe_highlight"
+								class="oe_highlight oe_right"
 								type="action" 
 								
 								name="%(district_line_form_action)d" 
@@ -159,179 +162,46 @@
 
 
 
-						<!-- City -->
+						<!-- Media -->
 						<button 
-								class="oe_highlight"
-								type="action" 
-								
-								name="%(city_line_form_action)d" 
-
+								class="oe_highlight oe_right"
+								type="action" 								
+								name="%(media_line_form_action)d" 
 								context="{
 											'search_default_marketing_id': active_id,	
 										}" 											
 
-								string="Ciudades"	
+								string="Medios"	
 						/>
 
 
-						<!-- Country -->
-<!--						
-						<button 
-								class="oe_highlight"
-								type="action" 
-								
-								name="%(country_line_form_action)d" 
 
+						<!-- Age Histogram -->
+						<button 
+								class="oe_highlight oe_right"								
+								type="action" 
+								name="%(histo_line_form_action)d" 
 								context="{
 											'search_default_marketing_id': active_id,	
 										}" 											
 
-								string="Paises"	
-						/>
--->
-
-
-
-
-
-
-
-						<!-- Vip Sales -->
-<!--
-						<button 
-								class="oe_highlight"
-								type="object" 
-
-								name="vip_orders" 
-
-
-								string="Vip Ventas"	
-						/>
--->
-
-						<!-- Vip -->
-						<button 
-								class="oe_highlight"
-								type="action" 
-								context="{											
-											'search_default_marketing_id': active_id,	
-										}" 											
-
-								name="%(patient_line_vip_form_action)d" 
-
-								string="Vip"	
+								string="Edades"	
 						/>
 
-						<!-- Vip No -->
-						<button 
-								class="oe_highlight"
-								type="action" 
-								
-								name="%(patient_line_vip_no_form_action)d" 
-
-								context="{											
-											'search_default_marketing_id': active_id,	
-										}" 											
-
-								string="No Vip"	
-						/>
-
-
-						<!-- Vip not used -->
-						<button 
-								class="oe_highlight"
-								type="action" 
-								
-								name="%(patient_line_vip_not_used_form_action)d" 
-
-								context="{											
-											'search_default_marketing_id': active_id,	
-										}" 											
-
-								string="Vip No Util."	
-						/>
-
-
-
-
-
-
-
-						<!-- Sales -->
-						<!-- Consultations -->
-						<!-- Procedures -->
-<!--
-						<button 
-								class="oe_highlight"
-								type="object" 
-
-								name="patient_sales"
-
-								string="Ventas"	
-						/>
-
-						<button 
-								class="oe_highlight"
-								type="object" 
-
-								name="patient_consu"
-
-								string="Consultas"	
-						/>
-
-						<button 
-								class="oe_highlight"
-								type="object" 
-
-								name="patient_procedures"
-
-								string="Procs"	
-						/>
--->
-
-
-
-
-
-
-
-
-						<!-- Update Sales -->
-						<button 
-								class="oe_highlight"
-								type="object" 
-
-
-								name="update_sales"
-
-								string="Actualizar Ventas"	
-						/>
-
-
-
-						<!-- Recoms -->
-						<button 
-								class="oe_highlight"
-								type="object" 
-
-								name="update_recoms"
-
-								string="Recomendaciones"	
-						/>
 
 
 						<!-- Patients -->
 						<button 
-								class="oe_highlight"
+								class="oe_highlight oe_right"
 								type="action" 
 								context="{
 											'search_default_marketing_id': active_id,	
 										}" 											
-								
 								name="%(patient_line_proc_form_action)d" 
 
-								string="Pacientes"	
+								string="Ver Pacientes"	
 						/>
+
 					</header>
 
 
@@ -362,13 +232,15 @@
 -->
 								<field name="total_count"	string="Nr Pacientes"	/>
 
+								<field name="vspace"/>
+
 								<field name="patient_sale_count"/>
 
 								<field name="patient_consu_count"/>
 
 								<field name="patient_reco_count"/>
 
-								<field name="patient_budget_count"/>
+								<field name="patient_budget_count"		string="Nr Presupuestos > 1500 S/."	/>
 
 								<field name="patient_proc_count"/>
 
@@ -581,21 +453,14 @@ attrs="{'invisible':[('x_type', '!=', 'patient')]}"
 										<field name="sex"/>
 
 										<field name="age_years"/>
-
-
-
-										
+<!--
 										<field name="date_create"/>
-										
+-->									
 										<field name="date_record"/>
-
-
-
 
 										<field name="first_contact"/>
 
 										<field name="education"/>
-
 
 										<field name="country"/>
 
@@ -603,7 +468,6 @@ attrs="{'invisible':[('x_type', '!=', 'patient')]}"
 
 										<field name="district"/>
 									
-
 										<field name="vip"/>
 									</tree>
 								</field>
@@ -612,7 +476,6 @@ attrs="{'invisible':[('x_type', '!=', 'patient')]}"
 										<field name="dob"/>
 										<field name="age"/>
 										<field name="name"/>
-
 										<field name="date_create"/>
 										<field name="count"/>
 -->
@@ -620,7 +483,7 @@ attrs="{'invisible':[('x_type', '!=', 'patient')]}"
 
 
 
-							<!-- Histogram --> 
+							<!-- Age Histogram --> 
 							<page	string="Edades">
 
 								<field name="histo_line">
@@ -636,41 +499,12 @@ attrs="{'invisible':[('x_type', '!=', 'patient')]}"
 										<field name="percentage"/>
 
 										<field name="total"/>
-<!--
--->
 									</tree>
 								</field>
 							</page>
 
 
 
-
-							<!-- Countries --> 
-							<page	string="Países">
-								<field name="country_line">
-									<tree string="Pais"	limit="1000"	>	
-										<field name="name"/>
-
-										<field name="count"/>
-									</tree>
-								</field>
-							</page>
-
-
-
-							<!-- Cities --> 
-							<page	string="Ciudades">
-
-								<field name="city_line">
-
-									<tree string="Ciudad"	limit="1000"	>	
-										
-										<field name="name"/>
-
-										<field name="count"/>
-									</tree>
-								</field>
-							</page>
 
 
 							<!-- Districts --> 
@@ -687,50 +521,38 @@ attrs="{'invisible':[('x_type', '!=', 'patient')]}"
 								</field>
 							</page>
 
+							<!-- Cities --> 
+							<page	string="Ciudades">
 
+								<field name="city_line">
 
-							<!-- Procedures --> 
-<!--
-							<page	string="Procedimientos"		attrs="{'invisible':[('x_type', '!=', 'patient')]}"	>
-
-								<field name="procedure_line">
-
-									<tree string="Distrito"	limit="1000"	>	
+									<tree string="Ciudad"	limit="1000"	>	
 										
 										<field name="name"/>
 
-										<field name="x_count"/>
+										<field name="count"/>
 									</tree>
 								</field>
 							</page>
--->
 
+							<!-- Countries --> 
+							<page	string="Países">
+								<field name="country_line">
+									<tree string="Pais"	limit="1000"	>	
+										<field name="name"/>
 
-
-							<!-- Undefined --> 
-<!--							
-							<page	string="Indefinidos"		attrs="{'invisible':[('x_type', '!=', 'patient')]}"	>
-
-								<group>
-									<field name="total_count_sex_undefined"/>
-									<field name="total_count_sex_undefined_per"/>
-								</group>
-
+										<field name="count"/>
+									</tree>
+								</field>
 							</page>
--->
 
-
-
-
-
-<!--
-							<page	string="Contasis"		>
-								<field name="account_line_contasis"/>
-							</page>
--->
 
 
 						</notebook>
+
+
+
+
 					</sheet>
 				</form>
 			</field>
@@ -745,27 +567,20 @@ attrs="{'invisible':[('x_type', '!=', 'patient')]}"
 		
 		<!-- TREE --> 
 		<record model="ir.ui.view" id="marketing_view_tree">
-
 			<field name="name">openhealth.marketing.tree</field>
-			
 			<field name="model">openhealth.marketing</field>
-			
 			<field name="arch" type="xml">
+
 <!--
 				<tree string="Account Contasis Tree" default_order='date desc'>
 -->
 				<tree string="Marketing Tree">
 					
 
-<!--
-					<field name="date"			string="Fecha"	/>
-					<field name="total_amount"  attrs="{'invisible':[('x_type', '=', 'patient')]}"	   />
-					<field name="x_type"/>
--->
 					<field name="name"/>
-
+<!--
 					<field name="write_date"	string="Actualizado"/>
-
+-->
 					<field name="date_begin"	string="Fecha Inicio"/>
 
 					<field name="date_end"		string="Fecha Fin"/>
@@ -800,42 +615,31 @@ attrs="{'invisible':[('x_type', '!=', 'patient')]}"
 
 
 
+
+
 		<!-- ACTION - Order -->
+<!--		
 		<record model="ir.actions.act_window" id="marketing_order_list_action">	
 			<field name="name">Ventas</field>
 			<field name="res_model">openhealth.marketing</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
-
 			<field name="domain">[
 									('x_type', '=', 'order'),
 								]
 			</field>
-
 			<field name="context">{
 									'default_x_type': 'order',
 								}
 			</field>
-
-			<!--
-			<field name="domain">[]</field>
-			<field name="context">{}</field>
-			<field name="view_id" eval="False"/>			
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first order
-				</p>
-			</field>
-			-->
 		</record>
-
+-->
 
 
 
 		<!-- ACTION - Patient -->
 		<record model="ir.actions.act_window" id="marketing_patient_list_action">	
-
 			<field name="name">Pacientes Nuevos</field>
-			
 			<field name="res_model">openhealth.marketing</field>
 			<field name="view_type">form</field>
 <!--
@@ -843,29 +647,10 @@ attrs="{'invisible':[('x_type', '!=', 'patient')]}"
 -->
 			<field name="view_mode">tree,form</field>
 
-<!--
-									'default_x_type': 'patient',
--->
 			<field name="domain">[]</field>
 
-
-<!--
-									'default_x_type': 'patient',
--->
 			<field name="context">{}</field>
-
-			<!--
-			<field name="domain">[]</field>
-			<field name="context">{}</field>
-			<field name="view_id" eval="False"/>			
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first order
-				</p>
-			</field>
-			-->
 		</record>
-
-
 
 	</data>
 </openerp>

@@ -260,8 +260,8 @@
 
 
 
-		<!-- Filter --> 
-		<record id="view_medical_district_line_filter" model="ir.ui.view">
+		<!-- Filter - District --> 
+		<record id="view_district_line_filter" model="ir.ui.view">
 			<field name="name">District Line Search</field>
 			<field name="model">openhealth.district.line</field>
 			<field name="arch" type="xml">
@@ -274,10 +274,32 @@
 
 						<filter name="Nr" context="{'group_by':'count_c'}"/>
 					</group>
-			   
 			   </search>
 		   	</field>
 	   </record>
+
+
+
+
+		<!-- Filter - City --> 
+		<record id="view_city_line_filter" model="ir.ui.view">
+			<field name="name">City Line Search</field>
+			<field name="model">openhealth.city.line</field>
+			<field name="arch" type="xml">
+			   
+				<search string="Cities">
+				   
+					<group expand="1" string="Group By">
+
+						<filter name="Sector" context="{'group_by':'sector'}"/>
+
+						<filter name="Nr" context="{'group_by':'count_c'}"/>
+						
+					</group>
+			   </search>
+		   	</field>
+	   </record>
+
 
 
 	</data>

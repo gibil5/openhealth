@@ -720,11 +720,5 @@ class PaitentLine(models.Model):
 																			]) 
 		self.nr_reco = count
 
-
-
-
-
 	# update_nrs
-
-
 

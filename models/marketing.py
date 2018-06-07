@@ -331,9 +331,8 @@ class Marketing(models.Model):
 # ----------------------------------------------------------- Update Recommendations ------------------------------------------------------
 	
 	# Recommendations
-	@api.multi
-	#def patient_recoms(self):  
-	def update_recoms(self):  
+	@api.multi  
+	def update_recos(self):  
 		print 
 		print 'Patient Recoms'
 		print 
@@ -497,7 +496,7 @@ class Marketing(models.Model):
 			self.patient_reco_count = self.patient_reco_count + len(pat_line.reco_line)
 
 
-	# update_recoms
+	# update_recos
 
 
 
@@ -646,36 +645,177 @@ class Marketing(models.Model):
 
 
 
-# ----------------------------------------------------------- Media ------------------------------------------------------
+# ----------------------------------------------------------- Cities ------------------------------------------------------
 
-	# Histogram
+	# Cities
 	@api.multi
-	def build_district(self):  
+	def build_cities(self):  
 
 		print 
-		print 'Build district'
+		print 'Build Cities'
+		print 
+
+		# Create Collection
+
+		city_arr = []
+
+		for line in self.patient_line: 
+			#if line.city in ['Lima']: 
+			city_arr.append(line.city)
+
+		counter_city = collections.Counter(city_arr)
 
 
 
-		# Collection 
 
+		city_arr = [
+					'Lima',
+
+					'Abancay',
+					'Huaraz', 
+					'Ancash',
+
+					'Arequipa',
+					'Ayacucho',
+					'Cajamarca',
+					'Callao',
+					'Cerro de Pasco', 
+					'Chachapoyas',
+					'Chiclayo',
+					'Cuzco',
+					'Huacho',
+					'Huancavelica',
+					'Huancayo',
+					'Huanuco',
+								
+					'Ica',
+					'Iquitos',
+					'Moquegua',
+					'Moyobamba',
+					'Piura',
+					'Pucallpa',
+					'Puerto Maldonado', 
+					'Puno',
+					'Tacna',
+					'Trujillo',
+					'Tumbes',
+
+					'Otros',
+					]
+
+
+		_h_sector_city =  {
+
+						'Lima':			'Lima',
+						'Callao': 		'Lima',
+						'Huacho': 		'Lima',
+
+
+						'Ancash': 		'Centro',
+						'Huancavelica': 'Centro',
+						'Huancayo': 	'Centro',
+						'Huanuco': 		'Centro',
+						'Huaraz': 		'Centro', 
+						'Pucallpa': 	'Centro',
+						'Cerro de Pasco': 	'Centro', 
+
+
+						'Chiclayo': 	'Costa Norte',
+						'Cajamarca': 	'Costa Norte',
+						'Piura': 		'Costa Norte',
+						'Trujillo': 	'Costa Norte',
+						'Tumbes': 		'Costa Norte',
+
+
+						'Ica': 			'Costa Sur',
+						'Arequipa': 	'Costa Sur',
+						'Tacna': 		'Costa Sur',
+						'Moquegua': 	'Costa Sur',
+
+
+						'Abancay': 		'Sur Este',
+						'Ayacucho': 	'Sur Este',
+						'Cuzco': 		'Sur Este',
+						'Puerto Maldonado': 	'Sur Este', 		# Madre de Dios 
+						'Puno': 		'Sur Este',
+
+
+						'Iquitos': 		'Nor Este',
+						'Chachapoyas': 	'Nor Este',
+						'Moyobamba': 	'Nor Este',						# San Martin
+
+
+						'Otros': 		'Otros',
+					}
+
+
+
+		# Clear 
+		self.city_line.unlink()
+
+
+		# Loop 
+		for city in city_arr: 
+			
+
+			# Init vars 
+			#total = self.total_count
+			#name = city
+			sector = _h_sector_city[city]
+
+
+			# Count - Search in Collections 
+			if city in counter_city: 
+				count = counter_city[city]
+			else: 
+				count = 0 
+
+
+			# Create 
+			line = self.city_line.create({
+												'name' : 		city, 
+												#'code' :		code, 
+												'sector' : 		sector, 
+												'count' :		count,
+
+												'marketing_id' :	self.id, 
+										})
+			
+			# Update 
+			line.update_fields()
+
+	# build_cities
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Districts ------------------------------------------------------
+
+	# Districts
+	@api.multi
+	def build_districts(self):  
+
+		print 
+		print 'Build Districts'
+		print 
+
+
+		# Create Collection
 		district_arr = []
-
 		for line in self.patient_line: 
 			if line.city in ['Lima']: 
 				district_arr.append(line.district)
 
 		counter_district = collections.Counter(district_arr)
 
+
 		#for key in counter_district: 
 		#	count = counter_district[key]
 
 
-
-
-
-		# Clear 
-		self.district_line.unlink()
 
 
 		# Build 
@@ -688,58 +828,51 @@ class Marketing(models.Model):
 		#					'mail', 
 		#					'undefined', 
 		#			]
+		#idx = 0 
 
 
-		zip_arr = np.arange(44)
-
-		idx = 0 
 
 
-		#for district in district_arr: 
-		for code in zip_arr: 
+		# Clear 
+		self.district_line.unlink()
+
+
+		# Build Code Array 
+		code_arr = np.arange(44)
+
+
+		# Loop 
+		for code in code_arr: 
 			
 			if code != 0: 
 
 
-				total = self.total_count
-
-
+				# Init vars 
+				#total = self.total_count
 				name = pat_vars.zip_dic_inv[code]
-
 				sector = pat_vars._h_sector[name]
 
 
-
-				# Count 
+				# Count - Search in Collections 
 				if name in counter_district: 
 					count = counter_district[name]
 				else: 
 					count = 0 
 
 
-
-
-
+				# Create 
 				line = self.district_line.create({
 													'code' :		code, 
-
 													'name' : 		name, 
 													'sector' : 		sector, 
-													
-													'count' :		count, 
-													'idx' : 		idx, 
-													'total' :		total, 
+													'count' :		count,
 
-													'marketing_id' :		self.id, 
+													'marketing_id' :	self.id, 
 											})
-
-				
+				# Update 
 				line.update_fields()
-				
-				idx = idx + 1
 
-
-
+	# build_districts
 
 
 
@@ -754,6 +887,7 @@ class Marketing(models.Model):
 
 		print 
 		print 'Build Media'
+		print 
 
 
 		# Clear 
@@ -826,6 +960,7 @@ class Marketing(models.Model):
 
 		print 
 		print 'Build Histogram'
+		print 
 
 
 		#input_arr = [15, 25, 26, 30, 44, 70]
@@ -1273,6 +1408,7 @@ class Marketing(models.Model):
 
 		print 
 		print 'Set Stats'
+		print
 
 
 
@@ -1320,8 +1456,8 @@ class Marketing(models.Model):
 
 		# Collections
 		country_arr = []
-		city_arr = []
-		district_arr = []
+		#city_arr = []
+		#district_arr = []
 
 
 
@@ -1418,11 +1554,11 @@ class Marketing(models.Model):
 			country_arr.append(line.country)
 
 			# Cities
-			city_arr.append(line.city)
+			#city_arr.append(line.city)
 
 			# Districts - Only for Lima
-			if line.city in ['Lima']: 
-				district_arr.append(line.district)
+			#if line.city in ['Lima']: 
+			#	district_arr.append(line.district)
 
 
 
@@ -1517,9 +1653,10 @@ class Marketing(models.Model):
 		# City 
 		counter_country = collections.Counter(country_arr)
 
-		counter_city = collections.Counter(city_arr)
+		#counter_city = collections.Counter(city_arr)
 		
-		counter_district = collections.Counter(district_arr)
+		#counter_district = collections.Counter(district_arr)
+
 
 
 		#print country_arr
@@ -1550,10 +1687,7 @@ class Marketing(models.Model):
 
 			country = self.country_line.create({
 													'name': key, 
-
 													'count': count, 
-													#'x_count': count, 
-
 
 													'marketing_id': self.id, 
 												})
@@ -1569,18 +1703,13 @@ class Marketing(models.Model):
 		
 		# City 
 		#print 'Create City Line '
-		for key in counter_city: 
-
-			count = counter_city[key]
-			
-			city = self.city_line.create({
-													'name': key, 
-
-													'count': count, 
-													#'x_count': count, 
-
-													'marketing_id': self.id, 
-												})
+		#for key in counter_city: 
+		#	count = counter_city[key]
+		#	city = self.city_line.create({
+		#											'name': key, 
+		#											'count': count, 
+		#											'marketing_id': self.id, 
+		#										})
 			#print key 
 			#print count
 			#print country
@@ -1592,26 +1721,20 @@ class Marketing(models.Model):
 
 		# District 
 		#print 'Create District Line '
-		for key in counter_district: 
-
-			count = counter_district[key]
-			
-
+		#for key in counter_district: 
+		#	count = counter_district[key]
 			#district = self.district_line.create({
 			#										'name': key, 
 													#'count': count, 
-			#										'x_count': count, 
 			#										'marketing_id': self.id, 
 			#									})
-
-
-
 			#print key 
 			#print count
 			#print country
 
 		#print self.district_line
 		#print 
+
 
 
 
@@ -1640,6 +1763,7 @@ class Marketing(models.Model):
 
 		print
 		print 'Update Patients'
+		print
 
 		# Clear 
 		self.patient_line.unlink()
@@ -1709,8 +1833,12 @@ class Marketing(models.Model):
 		self.build_media()
 
 
-		# Build Districts 
-		self.build_district()
+
+		# Build Places  
+		self.build_districts()
+
+		self.build_cities()
+
 
 
 

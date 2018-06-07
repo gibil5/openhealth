@@ -703,7 +703,10 @@ class Marketing(models.Model):
 
 				total = self.total_count
 
+
 				name = pat_vars.zip_dic_inv[code]
+
+				sector = pat_vars._h_sector[name]
 
 
 
@@ -721,11 +724,10 @@ class Marketing(models.Model):
 													'code' :		code, 
 
 													'name' : 		name, 
+													'sector' : 		sector, 
 													
 													'count' :		count, 
-													
 													'idx' : 		idx, 
-													
 													'total' :		total, 
 
 													'marketing_id' :		self.id, 

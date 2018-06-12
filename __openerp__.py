@@ -167,38 +167,39 @@
 
 
 
+
+
 		# Exceptions 
 		#'views/patients/patient_exceptions.xml',
-
-
-
-		# Management 
-		'views/management/management_family_line.xml',
-		'views/management/management_order_line.xml',
-		'views/management/management_doctor_line.xml',
-		'views/management/management.xml',
 
 
 
 
 
 		# Marketing 
-
 		'views/marketing/marketing_order_line.xml',
 		'views/marketing/marketing_reco_line.xml',
-
 		'views/media/media_line.xml',
 		'views/histogram/histogram.xml',
 		'views/places/place.xml',
 		'views/account/patient_line.xml',
 		'views/account/patient_line_pivot.xml',
-
 		'views/marketing/marketing.xml',
 		'views/marketing/marketing_pivot.xml',
 
-		'views/menus/menus_openhealth.xml',
 
-		'security/ir.model.access.csv',
+
+
+		# Management 
+		#'views/management/management_family_line.xml',
+		#'views/management/management_order_line.xml',
+		#'views/management/management_doctor_line.xml',
+		#'views/management/management.xml',
+
+
+		# Commons 
+		#'views/menus/menus_openhealth.xml',
+		#'security/ir.model.access.csv',
 
 
 

@@ -3,11 +3,29 @@
 
 
 _h_name = {
-				'product': 		'Producto', 	
+
+				'product': 		'Producto',
+
+
 				'consultation': 'Consulta', 		
-				'procedure': 	'Procedimiento', 		
+				'consultation_gyn': 'Consulta Ginecológica', 		
+				'consultation_100': 'Consulta 100', 		
+				'consultation_0': 'Consulta Gratuita', 		
+
+
+				#'procedure': 	'Procedimiento', 		
+				'procedure': 	'Procedimiento Laser', 		
+				'laser': 		'Laser', 		
+
 				'medical': 		'Tratamiento Médico', 		
 				'cosmetology': 	'Cosmeatria', 	
+
+
+				'card': 		'Tarjeta Vip', 	
+				'kit': 			'Kits', 	
+				'topical': 		'Cremas', 	
+
+
 
 
 					'laser_co2' : 		'Laser Co2', 		

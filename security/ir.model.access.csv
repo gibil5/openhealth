@@ -2,6 +2,28 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+
+
+access_openhealth_stock_min,access_openhealth_stock_min,model_openhealth_stock_min,,1,1,1,1
+access_openhealth_stock_min_inventory,access_openhealth_stock_min_inventory,model_openhealth_stock_min_inventory,,1,1,1,1
+access_openhealth_stock_min_inventory_line,access_openhealth_stock_min_inventory_line,model_openhealth_stock_min_inventory_line,,1,1,1,1
+access_openhealth_kardex_move,access_openhealth_kardex_move,model_openhealth_kardex_move,,1,1,1,1
+access_openhealth_line,access_openhealth_line,model_openhealth_line,,1,1,1,1
+access_openhealth_place_line,access_openhealth_place_line,model_openhealth_place_line,,1,1,1,1
+
+access_openhealth_management_line,access_openhealth_management_line,model_openhealth_management_line,,1,1,1,1
+access_openhealth_medical,access_openhealth_medical,model_openhealth_medical,,1,1,1,1
+access_openhealth_repo,access_openhealth_repo,model_openhealth_repo,,1,1,1,1
+access_openhealth_report,access_openhealth_report,model_openhealth_report,,1,1,1,1
+access_openhealth_report_sale,access_openhealth_report_sale,model_openhealth_report_sale,,1,1,1,1
+
+
+
+
+
+
+
+
 access_openhealth_management,openhealth.management,model_openhealth_management,,1,1,1,1
 
 access_openhealth_management_order_line,openhealth.management.order.line,model_openhealth_management_order_line,,1,1,1,1

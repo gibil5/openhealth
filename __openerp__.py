@@ -20,7 +20,7 @@
 	'description': """
 
 
-		Last built: 7 Junio 2018 
+		Last built: 12 Junio 2018 
 
 		
 		Stability by Design.
@@ -34,7 +34,7 @@
 
 
 
-		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant - Testcafe - User Stories - Auto Backup - Unit Testing - Less but Better - Fulcrum - Statistical - Probabilistic\n
+		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant - Testcafe - User Stories - Auto Backup - Unit Testing - Less but Better - Fulcrum - Statistical - Machine Learning\n
 
 
 
@@ -173,6 +173,7 @@
 
 
 		# Management 
+		'views/management/management_family_line.xml',
 		'views/management/management_order_line.xml',
 		'views/management/management_doctor_line.xml',
 		'views/management/management.xml',
@@ -182,8 +183,11 @@
 
 
 		# Marketing 
+
+		'views/marketing/marketing_order_line.xml',
+		'views/marketing/marketing_reco_line.xml',
+
 		'views/media/media_line.xml',
-		
 		'views/histogram/histogram.xml',
 		'views/places/place.xml',
 		'views/account/patient_line.xml',

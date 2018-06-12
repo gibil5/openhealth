@@ -5,39 +5,34 @@
 
 
 		<!-- TREE --> 
-		<record model="ir.ui.view" id="management_order_line_view_tree">
+<!--
+-->
+		<record model="ir.ui.view" id="marketing_order_line_view_tree">
 
-			<field name="name">openhealth.management.order.line.tree</field>
+			<field name="name">openhealth.marketing.order.line.tree</field>
 			
-			<field name="model">openhealth.management.order.line</field>
+			<field name="model">openhealth.marketing.order.line</field>
 			
 			<field name="arch" type="xml">
 
-				<tree string="management order line Tree">
-					
-<!--
--->
-					<field name="management_id"/>
-					<field name="doctor_id"/>
-
-
-
-
-					<field name="patient"/>
-
-					<field name="doctor"/>
-
+				<tree string="marketing order line Tree">
 <!--					
-					<field name="name"/>
-					<field name="state"/>
-					<field name="price_unit"/>
--->
-
+					<field name="doctor_id"/>
+					<field name="patient"/>
 					<field name="family"/>
 
 					<field name="sub_family"/>
 
 					<field name="x_date_created"/>
+					<field name="doctor"/>
+-->
+
+
+
+					<field name="marketing_id"/>
+
+					<field name="patient_line_id"/>
+
 
 					<field name="product_id"/>
 
@@ -53,11 +48,10 @@
 
 
 
-
 		<!-- ACTION - Order -->
-		<record model="ir.actions.act_window" id="management_order_line_form_action">	
+		<record model="ir.actions.act_window" id="marketing_order_line_form_action">	
 			<field name="name">Ventas</field>
-			<field name="res_model">openhealth.management.order.line</field>
+			<field name="res_model">openhealth.marketing.order.line</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 
@@ -83,10 +77,10 @@
 
 
 		<!-- Filter --> 
-		<record id="view_management_order_line_filter" model="ir.ui.view">
+		<record id="view_marketing_order_line_filter" model="ir.ui.view">
 			<field name="name">Treatment Search</field>
 
-			<field name="model">openhealth.management.order.line</field>
+			<field name="model">openhealth.marketing.order.line</field>
 		   	
 		   	<field name="arch" type="xml">
 			   
@@ -98,9 +92,9 @@
                     	filter_domain="['|',('patient','ilike',self),('physician','ilike',self)]"/>
 
 					<field 	name="doctor_id"/>
+					<field 	name="marketing_id"/>
 -->
 
-					<field 	name="management_id"/>
 
 
 
@@ -117,7 +111,9 @@
 						<filter name="Subfamilia" context="{'group_by':'sub_family'}"/>
 
 
-						<filter name="Reporte" context="{'group_by':'management_id'}"/>
+						<filter name="Marketing" context="{'group_by':'marketing_id'}"/>
+
+						<filter name="Patient Line" context="{'group_by':'patient_line_id'}"/>
 					</group>
 
 				   

@@ -22,6 +22,24 @@ class marketing_recommendation_line(models.Model):
 
 
 
+# ----------------------------------------------------------- Handles ------------------------------------------------------
+	
+	# Marketing Id
+	marketing_id = fields.Many2one(			
+			'openhealth.marketing',
+			ondelete='cascade', 			
+		)
+
+
+	# Patient Line
+	patient_line_id = fields.Many2one(
+			'openhealth.patient.line',
+			ondelete='cascade', 			
+		)
+
+
+
+
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
 
 	# Prices
@@ -47,12 +65,5 @@ class marketing_recommendation_line(models.Model):
 
 
 
-# ----------------------------------------------------------- Handles ------------------------------------------------------
-	
-	# Patient Line
-	patient_line_id = fields.Many2one(
-			'openhealth.patient.line',
-			ondelete='cascade', 			
-		)
 
 

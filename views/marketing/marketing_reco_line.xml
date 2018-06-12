@@ -5,45 +5,41 @@
 
 
 		<!-- TREE --> 
-		<record model="ir.ui.view" id="management_order_line_view_tree">
+<!--
+-->
+		<record model="ir.ui.view" id="marketing_recom_line_view_tree">
 
-			<field name="name">openhealth.management.order.line.tree</field>
+			<field name="name">openhealth.marketing.recom.line.tree</field>
 			
-			<field name="model">openhealth.management.order.line</field>
+			<field name="model">openhealth.marketing.recom.line</field>
 			
 			<field name="arch" type="xml">
 
-				<tree string="management order line Tree">
-					
-<!--
--->
-					<field name="management_id"/>
-					<field name="doctor_id"/>
-
-
-
-
-					<field name="patient"/>
-
-					<field name="doctor"/>
-
+				<tree string="marketing recom line Tree">
 <!--					
-					<field name="name"/>
-					<field name="state"/>
-					<field name="price_unit"/>
--->
-
+					<field name="doctor_id"/>
+					<field name="patient"/>
 					<field name="family"/>
 
 					<field name="sub_family"/>
 
 					<field name="x_date_created"/>
+					<field name="doctor"/>
+
+					<field name="price_subtotal"/>
+					<field name="product_uom_qty"/>
+-->
+
+
+
+					<field name="marketing_id"/>
+
+					<field name="patient_line_id"/>
+
 
 					<field name="product_id"/>
 
-					<field name="product_uom_qty"/>
 
-					<field name="price_subtotal"/>
 				</tree>
 			</field>
 		</record>
@@ -53,11 +49,10 @@
 
 
 
-
-		<!-- ACTION - Order -->
-		<record model="ir.actions.act_window" id="management_order_line_form_action">	
+		<!-- ACTION - recom -->
+		<record model="ir.actions.act_window" id="marketing_recom_line_form_action">	
 			<field name="name">Ventas</field>
-			<field name="res_model">openhealth.management.order.line</field>
+			<field name="res_model">openhealth.marketing.recom.line</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 
@@ -72,7 +67,7 @@
 			<field name="context">{}</field>
 			<field name="view_id" eval="False"/>			
 			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first order
+				<p class="oe_view_nocontent_create">Create the first recom
 				</p>
 			</field>
 			-->
@@ -83,10 +78,10 @@
 
 
 		<!-- Filter --> 
-		<record id="view_management_order_line_filter" model="ir.ui.view">
+		<record id="view_marketing_recom_line_filter" model="ir.ui.view">
 			<field name="name">Treatment Search</field>
 
-			<field name="model">openhealth.management.order.line</field>
+			<field name="model">openhealth.marketing.recom.line</field>
 		   	
 		   	<field name="arch" type="xml">
 			   
@@ -98,9 +93,9 @@
                     	filter_domain="['|',('patient','ilike',self),('physician','ilike',self)]"/>
 
 					<field 	name="doctor_id"/>
+					<field 	name="marketing_id"/>
 -->
 
-					<field 	name="management_id"/>
 
 
 
@@ -117,7 +112,9 @@
 						<filter name="Subfamilia" context="{'group_by':'sub_family'}"/>
 
 
-						<filter name="Reporte" context="{'group_by':'management_id'}"/>
+						<filter name="Marketing" context="{'group_by':'marketing_id'}"/>
+
+						<filter name="Patient Line" context="{'group_by':'patient_line_id'}"/>
 					</group>
 
 				   

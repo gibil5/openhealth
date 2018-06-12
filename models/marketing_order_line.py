@@ -37,10 +37,12 @@ class marketing_order_line(models.Model):
 		#required=True, 		
 	#	)
 
-	#doctor = fields.Many2one(
-	#		'oeh.medical.physician',
-	#		string = "Médico", 	
-	#	)
+
+	# Doctor 
+	doctor = fields.Many2one(
+			'oeh.medical.physician',
+			string = "Médico", 	
+		)
 
 
 
@@ -122,6 +124,16 @@ class marketing_order_line(models.Model):
 
 # ----------------------------------------------------------- Handles ------------------------------------------------------
 	
+
+	# Marketing Id
+	marketing_id = fields.Many2one(			
+			'openhealth.marketing',
+			ondelete='cascade', 			
+		)
+
+
+
+
 	# Budget 
 	patient_line_budget_id = fields.Many2one(			
 			'openhealth.patient.line',

@@ -390,15 +390,20 @@ _family_list = [
 
 		# Service 
 		('consultation',	'consultation'), 
+		('consultation_gyn',	'consultation_gyn'), 
+
 		('laser',			'laser'),
 		('medical',			'medical'), 
 		('cosmetology',		'cosmetology'),
 
 
 		# Product
-		('topical',			'Tópico'),
-		('kit',				'Kit'),
-		('card',			'Tarjeta'),
+		#('topical',		'Tópico'),
+		#('kit',			'Kit'),
+		#('card',			'Tarjeta'),
+		('topical',			'topical'),
+		('kit',				'kit'),
+		('card',			'card'),
 
 
 		('none',		'none'),

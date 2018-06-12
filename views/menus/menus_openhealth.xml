@@ -72,6 +72,38 @@
 
 
 
+		<!-- Marketing Order Lines -->
+		<menuitem 	id="marketing_order_lines_menu" 
+
+					name="Marketing Order Lines" 
+			
+					parent="marketing_menu"
+			
+					sequence="2"
+			
+					action="marketing_order_line_form_action"
+
+					/>
+
+
+		<!-- Marketing recom Lines -->
+		<menuitem 	id="marketing_recom_lines_menu" 
+
+					name="Marketing Reco Lines" 
+			
+					parent="marketing_menu"
+			
+					sequence="3"
+			
+					action="marketing_recom_line_form_action"
+
+					/>
+
+
+
+
+
+
 		<!-- Accounting -->
 <!--
 		<menuitem id="oh_account_conta_menu" name="Pacientes" parent="marketing_menu"
@@ -121,10 +153,23 @@
 			
 					sequence="1"
 			
-					action="management_order_list_action"
+					action="management_list_action"
 
 					/>
 
+
+		<!-- Management Order Lines -->
+		<menuitem 	id="management_order_lines_menu" 
+
+					name="Management Order Lines" 
+			
+					parent="management_menu"
+			
+					sequence="2"
+			
+					action="management_order_line_form_action"
+
+					/>
 
 
 

@@ -196,7 +196,9 @@ class Marketing(models.Model):
 
 
 
-			# Budgets
+
+
+		# Budgets
 			budgets = self.env['sale.order'].search([
 															('state', '=', 'draft'),
 															('patient', '=', pat_line.patient.name),
@@ -210,6 +212,11 @@ class Marketing(models.Model):
 			# Create
 			for budget in budgets: 
 
+
+				# Doctor 
+				doctor = budget.x_doctor
+
+
 				for line in budget.order_line: 
 					
 
@@ -219,12 +226,17 @@ class Marketing(models.Model):
 						# Budgets 
 						budget_line = pat_line.budget_line.create({
 																	'name': line.name, 
+
+																	'doctor': doctor.id, 
+
+
 																	'product_id': line.product_id.id, 
 																	'x_date_created': budget.date_order, 
 																	'product_uom_qty': line.product_uom_qty, 
 																	'price_unit': line.price_unit, 
 
 																	'patient_line_budget_id': pat_line.id, 
+																	'marketing_id': self.id, 
 							})
 
 
@@ -239,7 +251,7 @@ class Marketing(models.Model):
 
 
 
-			# Orders 
+		# Orders 
 			orders = self.env['sale.order'].search([
 															('state', '=', 'sale'),
 															('patient', '=', pat_line.patient.name),
@@ -273,6 +285,7 @@ class Marketing(models.Model):
 															'price_unit': line.price_unit, 
 
 															'patient_line_sale_id': pat_line.id, 
+															'marketing_id': self.id, 
 						})
 
 
@@ -288,6 +301,7 @@ class Marketing(models.Model):
 																	'price_unit': line.price_unit, 
 
 																	'patient_line_consu_id': pat_line.id, 
+																	'marketing_id': self.id, 
 																})
 
 
@@ -302,6 +316,7 @@ class Marketing(models.Model):
 																			'price_unit': line.price_unit, 
 
 																			'patient_line_proc_id': pat_line.id, 
+																			'marketing_id': self.id, 
 																		})
 
 
@@ -317,6 +332,9 @@ class Marketing(models.Model):
 
 			# Update Nrs
 			pat_line.update_nrs()
+
+
+		print 'Done !'
 
 	# update_sales
 
@@ -334,7 +352,7 @@ class Marketing(models.Model):
 	@api.multi  
 	def update_recos(self):  
 		print 
-		print 'Patient Recoms'
+		print 'Update Recos'
 		print 
 
 
@@ -372,6 +390,7 @@ class Marketing(models.Model):
 																'price_applied': reco.price_applied, 
 
 																'patient_line_id': pat_line.id, 
+																'marketing_id': self.id, 
 															})
 
 
@@ -391,6 +410,7 @@ class Marketing(models.Model):
 																'price_applied': reco.price_applied, 
 
 																'patient_line_id': pat_line.id, 
+																'marketing_id': self.id, 
 															})
 
 
@@ -409,6 +429,7 @@ class Marketing(models.Model):
 																'price_applied': reco.price_applied, 
 
 																'patient_line_id': pat_line.id, 
+																'marketing_id': self.id, 
 															})
 
 
@@ -427,6 +448,7 @@ class Marketing(models.Model):
 																'price_applied': reco.price_applied, 
 
 																'patient_line_id': pat_line.id, 
+																'marketing_id': self.id, 
 															})
 
 
@@ -447,6 +469,7 @@ class Marketing(models.Model):
 																'price_applied': reco.price_applied, 
 
 																'patient_line_id': pat_line.id, 
+																'marketing_id': self.id, 
 															})
 
 
@@ -465,6 +488,7 @@ class Marketing(models.Model):
 																'price_applied': reco.price_applied, 
 
 																'patient_line_id': pat_line.id, 
+																'marketing_id': self.id, 
 															})
 
 
@@ -483,6 +507,7 @@ class Marketing(models.Model):
 																'price_applied': reco.price_applied, 
 
 																'patient_line_id': pat_line.id, 
+																'marketing_id': self.id, 
 															})
 				#print 
 
@@ -496,6 +521,7 @@ class Marketing(models.Model):
 			self.patient_reco_count = self.patient_reco_count + len(pat_line.reco_line)
 
 
+		print 'Done !'
 	# update_recos
 
 
@@ -1742,7 +1768,7 @@ class Marketing(models.Model):
 		#print 
 		#print counter_district
 		#print 
-		print 
+		#print 
 
 	# set_stats
 
@@ -1758,7 +1784,6 @@ class Marketing(models.Model):
 
 	# Update Patients
 	@api.multi
-	#def update_repo(self):  
 	def update_patients(self):  
 
 		print
@@ -1781,14 +1806,15 @@ class Marketing(models.Model):
 		# Loop 
 		for patient in patients: 
 
+
 			pat_line = self.patient_line.create({
-														'date_create': patient.create_date,
-
-														'date_record': patient.x_date_record,
-
-
-														
 														'patient': patient.id, 
+														#'doctor': doctor.id, 
+
+
+
+														'date_create': patient.create_date,
+														'date_record': patient.x_date_record,
 
 														'sex': patient.sex, 
 														'dob': patient.dob, 
@@ -1836,11 +1862,11 @@ class Marketing(models.Model):
 
 		# Build Places  
 		self.build_districts()
-
 		self.build_cities()
 
 
 
+		print 'Done !'
 
 	# update_patients
 

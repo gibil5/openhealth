@@ -33,6 +33,14 @@ class PaitentLine(models.Model):
 		)
 
 
+	# Doctor 
+	doctor = fields.Many2one(
+			'oeh.medical.physician',
+			string = "Médico", 	
+		)
+
+
+
 
 	# Treatment 
 	treatment = fields.Many2one(
@@ -646,14 +654,21 @@ class PaitentLine(models.Model):
 		self.budget_prod = ''
 
 		for line in self.budget_line: 
+
+
+
+			# Doctor 
+			if self.doctor.name == False: 
+				self.doctor = line.doctor.id 
+
+
+
 		
-			#self.budget_amount = self.budget_amount + line.price_total 
+			# Budget Amount 
 			self.budget_amount = self.budget_amount + str(line.price_total) + ', '
 
 
-			#print line.product_id.x_treatment
-
-			#self.budget_prod = self.budget_prod + line.x_description + ', '
+			# Budget Prod
 			if line.product_id.x_treatment in prodvars._h_subfamily: 
 				self.budget_prod = self.budget_prod + prodvars._h_subfamily[line.product_id.x_treatment] + ', '
 			else: 
@@ -661,6 +676,7 @@ class PaitentLine(models.Model):
 
 
 
+		# Amount and Prod 
 		self.budget_amount = self.budget_amount[:-2]
 		self.budget_prod = self.budget_prod[:-2]
 

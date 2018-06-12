@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
-	<data noupdate='1'>
+	<data noupdate='0'>
 
 
 
@@ -49,6 +49,8 @@
 			<field name='standard_price'></field>
 			<field name='x_price_vip'></field>
 			<field name='x_price_vip_return'>4</field>
+
+			<field name='x_family'>topical</field>
 		</record>
 
 

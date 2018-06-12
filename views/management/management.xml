@@ -20,18 +20,49 @@
 					<!-- Header -->
 					<header>
 
-						<!-- Update -->
+						<!-- Update Sales -->
 						<button 
 								type="object" 
 								class="oe_highlight"
-								name="update_repo"
 
-								string="Actualizar"								
+								name="update_sales"
+
+								string="Actualizar Ventas"								
+						/>
+
+
+						<!-- Update Stats -->
+						<button 
+								type="object" 
+								class="oe_highlight"
+
+								name="update_stats"
+
+								string="Stats"								
+						/>
+
+
+						<!-- Update counters -->
+						<button 
+								type="object" 
+								class="oe_highlight"
+
+								name="update_counters"
+
+								string="Counters"								
 						/>
 
 
 
-						<!-- Orders -->
+
+
+
+
+
+
+
+
+						<!-- families -->
 						<button 
 								class="oe_highlight"
 								type="action" 
@@ -40,9 +71,9 @@
 											'search_default_management_id': active_id,	
 										}" 											
 								
-								name="%(management_order_line_form_action)d" 
+								name="%(management_family_line_form_action)d" 
 
-								string="Ventas"	
+								string="Ver Familias"	
 						/>
 
 
@@ -63,15 +94,20 @@
 
 
 
-						<!-- Stats -->
+						<!-- Sales -->
 						<button 
-								type="object" 
 								class="oe_highlight"
+								type="action" 
 
-								name="stats"
+								context="{
+											'search_default_management_id': active_id,	
+										}" 											
+								
+								name="%(management_order_line_form_action)d" 
 
-								string="Stats"								
+								string="Ventas"	
 						/>
+
 
 					</header>
 
@@ -85,15 +121,18 @@
 					<sheet>
 
 
-						<group	string="Total"	>
+						<group	string="Total"	col="3"		>
+
+
 							<group>
 								<field name="name"/>
 
 								<field name="date_begin"/>
 
 								<field name="date_end"/>
-
+<!--
 								<field name="write_date"	string="Actualizado"/>
+-->
 							</group>
 
 							
@@ -104,55 +143,100 @@
 
 								<field name="total_tickets"/>
 							</group>
+
+
+							<group>
+								<field name="nr_consultations"/>
+
+								<field name="nr_products"/>
+
+								<field name="nr_procedures"/>
+
+
+								<field name="ratio_pro_con"/>
+							</group>
+						
 						</group>
+
 
 
 						<!-- Notebook --> 
 						<notebook>	
 
-							<!-- Orders --> 
+
+
+
+
+							<!-- Familias --> 
+							<page	string="Por Familia">
+
+								<field name="family_line">
+								
+									<tree string="Familia"	limit="1000"	>	
+								
+
+										<field name="idx"/>
+
+
+
+										<field name="name_sp"/>
+
+										<field name="name"/>
+
+
+										<field name="meta_sp"/>
+
+
 <!--
-							<page	string="Ventas">
-								<field name="order_line">
 
-									<tree string="Ventas"	limit="50"	>	
+										<field name="meta"/>
+-->
 
-										<field name="patient"/>
 
-										<field name="doctor"/>
+										<field name="amount"/>
 
-										<field name="x_date_created"/>
+										<field name="x_count"/>
 
-										<field name="family"/>
-
-										<field name="sub_family"/>
-
-										<field name="product_id"/>
-
-										<field name="product_uom_qty"/>
-
-										<field name="price_unit"/>
-
-										<field name="price_subtotal"/>
 									</tree>
 								</field>
 							</page>
--->
-<!--
+
+
+
+
+							<!-- Sub Familias --> 
+							<page	string="Por Sub Familia">
+
+								<field name="sub_family_line">
+								
+									<tree string="Subfamilia"	limit="1000"	>	
+								
+
+										<field name="idx"/>
+
 										<field name="name"/>
-										<field name="state"/>
-								<field name="order_line"/>
--->
+
+										<field name="name_sp"/>
+
+										<field name="x_count"/>
+
+										<field name="amount"/>
+									</tree>
+								</field>
+							</page>
+
+
 
 
 
 							<!-- Doctores --> 
-							<page	string="Doctores">
+							<page	string="Por Doctor">
 
 								<field name="doctor_line">
 								
 									<tree string="Doctor"	limit="1000"	>	
 										
+
 
 										<!-- Open Button -->
 										<button 
@@ -203,40 +287,43 @@
 							</page>
 
 
+							<!-- Orders --> 
+<!--
+-->
+							<page	string="Ventas">
+								<field name="order_line">
 
-							<!-- Familias --> 
-							<page	string="Familias">
+									<tree string="Ventas"	limit="50"	>	
 
-								<field name="family_line">
-								
-									<tree string="Familia"	limit="1000"	>	
-										<field name="name"/>
+										<field name="patient"/>
 
+										<field name="doctor"/>
 
-										<field name="x_count"/>
+										<field name="x_date_created"/>
 
-										<field name="amount"/>
+										<field name="family"/>
+
+										<field name="sub_family"/>
+
+										<field name="product_id"/>
+
+										<field name="product_uom_qty"/>
+
+										<field name="price_unit"/>
+
+										<field name="price_subtotal"/>
 									</tree>
 								</field>
 							</page>
 
-
-
-							<!-- Sub Familias --> 
-							<page	string="Sub Familias">
-
-								<field name="sub_family_line">
-								
-									<tree string="Subfamilia"	limit="1000"	>	
+<!--
 										<field name="name"/>
+										<field name="state"/>
+								<field name="order_line"/>
+-->
 
 
-										<field name="x_count"/>
 
-										<field name="amount"/>
-									</tree>
-								</field>
-							</page>
 
 
 
@@ -250,7 +337,7 @@
 
 
 		<!-- ACTION - Order -->
-		<record model="ir.actions.act_window" id="management_order_list_action">
+		<record model="ir.actions.act_window" id="management_list_action">
 
 			<field name="name">Análisis de Ventas</field>
 			

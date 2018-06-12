@@ -358,8 +358,9 @@ Sales by patient who have a Vip Card
 					<field name="emr"/>
 
 
-
 					<field name="patient"/>
+
+					<field name="doctor"/>
 
 
 <!--
@@ -596,6 +597,59 @@ Sales by patient who have a Vip Card
 
 			<field name="limit">1000</field>
 		</record>
+
+
+
+
+
+
+
+		<!-- Filter --> 
+		<record id="view_patient_line_filter" model="ir.ui.view">
+			<field name="name">Patient Line Search</field>
+
+			<field name="model">openhealth.patient.line</field>
+		   	
+		   	<field name="arch" type="xml">
+			   
+			   <search string="Patient Lines">
+				   
+<!--
+					<field 	name="patient" 
+                    	filter_domain="['|',('patient','ilike',self),('physician','ilike',self)]"/>
+					<field 	name="marketing_id"/>
+-->
+
+
+
+
+					<group expand="1" string="Group By">
+<!--
+						<filter name="Estado" context="{'group_by':'state'}"/>
+						<filter name="Paciente" context="{'group_by':'patient'}"/>
+						<filter name="Familia" context="{'group_by':'family'}"/>
+						<filter name="Subfamilia" context="{'group_by':'sub_family'}"/>
+						<filter name="Marketing" context="{'group_by':'marketing_id'}"/>
+						<filter name="Patient Line" context="{'group_by':'patient_line_id'}"/>
+-->
+						<filter name="Médico" context="{'group_by':'doctor'}"/>
+
+						<filter name="Nr Proc" context="{'group_by':'nr_proc'}"/>
+
+						<filter name="Nr Pres" context="{'group_by':'nr_budget'}"/>
+					</group>
+
+				   
+				   <!--
+				   <newline />
+				   <group expand="0" string="Group By...">
+					   <filter string="Patient" domain="[]" context="{'group_by':'patient'}" />
+				   </group>
+				   -->
+			   </search>
+		   </field>
+	   </record>
+
 
 
 

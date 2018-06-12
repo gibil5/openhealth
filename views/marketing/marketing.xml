@@ -594,6 +594,15 @@ attrs="{'invisible':[('x_type', '!=', 'patient')]}"
 					<field name="date_end"		string="Fecha Fin"/>
 
 					<field name="total_count"/>
+
+
+					<field name="patient_sale_count"/>
+
+					<field name="patient_consu_count"/>
+
+					<field name="patient_budget_count"/>
+
+					<field name="patient_proc_count"/>
 				</tree>
 			</field>
 		</record>

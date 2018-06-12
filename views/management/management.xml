@@ -336,6 +336,50 @@
 
 
 
+	
+		<!-- TREE --> 
+		<record model="ir.ui.view" id="management_view_tree">
+			<field name="name">openhealth.management.tree</field>
+			<field name="model">openhealth.management</field>
+			<field name="arch" type="xml">
+
+<!--
+				<tree string="Account Contasis Tree" default_order='date desc'>
+-->
+				<tree string="Management Tree">
+					
+
+					<field name="name"/>
+<!--
+					<field name="write_date"	string="Actualizado"/>
+-->
+					<field name="date_begin"	string="Fecha Inicio"/>
+
+					<field name="date_end"		string="Fecha Fin"/>
+
+					<field name="total_count"/>
+
+					<field name="total_tickets"/>
+
+
+
+					<field name="nr_consultations"/>
+					<field name="nr_procedures"/>
+					<field name="ratio_pro_con"/>
+
+
+
+					<field name="total_amount"/>
+				</tree>
+			</field>
+		</record>
+
+
+
+
+
+
+
 		<!-- ACTION - Order -->
 		<record model="ir.actions.act_window" id="management_list_action">
 

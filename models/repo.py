@@ -69,7 +69,7 @@ class Repo(models.Model):
 	total_count = fields.Integer(
 			#'Total Ventas',
 			#'Nr Pacientes',
-			'Nr',
+			'Nr Ventas',
 			readonly=True, 
 		)
 

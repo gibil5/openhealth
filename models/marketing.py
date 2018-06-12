@@ -79,6 +79,18 @@ class Marketing(models.Model):
 
 
 
+	# Count
+	total_count = fields.Integer(
+			#'Total Ventas',
+			#'Nr Ventas',
+			'Nr Pacientes',
+			readonly=True, 
+		)
+
+
+
+
+
 
 # ----------------------------------------------------------- Relational ------------------------------------------------------
 

@@ -191,15 +191,16 @@
 
 
 		# Management 
-		#'views/management/management_family_line.xml',
-		#'views/management/management_order_line.xml',
-		#'views/management/management_doctor_line.xml',
-		#'views/management/management.xml',
+		'views/management/management_family_line.xml',
+		'views/management/management_order_line.xml',
+		'views/management/management_doctor_line.xml',
+		'views/management/management.xml',
+
 
 
 		# Commons 
-		#'views/menus/menus_openhealth.xml',
-		#'security/ir.model.access.csv',
+		'views/menus/menus_openhealth.xml',
+		'security/ir.model.access.csv',
 
 
 

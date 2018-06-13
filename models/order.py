@@ -677,6 +677,7 @@ class sale_order(models.Model):
 
 
 
+
 	# Partner  
 	@api.onchange('partner_id')	
 	def _onchange_partner_id(self):		
@@ -685,12 +686,15 @@ class sale_order(models.Model):
 
 
 
+
 	# Dni 
 	@api.onchange('x_partner_dni')
 	def _onchange_x_partner_dni(self):		
 
-		if self.x_partner_dni != False: 
-			
+		#if self.x_partner_dni != False: 
+		if self.x_partner_dni != False  	and 	self.partner_id.name == False: 
+
+
 			# Partner 
 			partner_id = self.env['res.partner'].search([
 															('x_dni', '=', self.x_partner_dni),					
@@ -702,7 +706,6 @@ class sale_order(models.Model):
 
 
 
-
 			# Patient 
 			patient = self.env['oeh.medical.patient'].search([
 																('x_dni', '=', self.x_partner_dni),					
@@ -711,6 +714,7 @@ class sale_order(models.Model):
 													limit=1,
 												)
 			self.patient = patient.id
+
 	# _onchange_x_partner_dni
 
 

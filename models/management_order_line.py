@@ -205,17 +205,17 @@ class management_order_line(models.Model):
 			if (self.product_id.x_family  == 'consultation'): 
 
 				if self.price_unit  == 100: 
-					print 'Gotcha 1 !'
-					print self.product_id.name 
-					print self.price_unit
-					print 
+					#print 'Gotcha 1 !'
+					#print self.product_id.name 
+					#print self.price_unit
+					#print 
 					self.family = 'consultation_100'
 			
 				elif self.price_unit  == 0: 
-					print 'Gotcha 2 !'
-					print self.product_id.name 
-					print self.price_unit
-					print 
+					#print 'Gotcha 2 !'
+					#print self.product_id.name 
+					#print self.price_unit
+					#print 
 					self.family = 'consultation_0'
 
 

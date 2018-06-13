@@ -52,11 +52,13 @@ class ManagementLine(models.Model):
 
 
 	meta = fields.Char(
-			'Family',
+			#'Family',
+			'Meta',
 		)
 
 	meta_sp = fields.Char(
-			'Familia',
+			#'Familia',
+			'Meta',
 		)
 
 

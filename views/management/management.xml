@@ -57,12 +57,7 @@
 
 
 
-
-
-
-
-
-						<!-- families -->
+						<!-- Families -->
 						<button 
 								class="oe_highlight"
 								type="action" 
@@ -107,8 +102,6 @@
 
 								string="Ventas"	
 						/>
-
-
 					</header>
 
 
@@ -121,7 +114,7 @@
 					<sheet>
 
 
-						<group	string="Total"	col="3"		>
+						<group	string="Total"	col="2"		>
 
 
 							<group>
@@ -143,19 +136,47 @@
 
 								<field name="total_tickets"/>
 							</group>
+						</group>
 
 
+
+						<group		col="3"	>
 							<group>
 								<field name="nr_consultations"/>
 
 								<field name="nr_products"/>
 
 								<field name="nr_procedures"/>
+							</group>
+						
+							<group>
+								<field name="amo_consultations"/>
+
+								<field name="amo_products"/>
+
+								<field name="amo_procedures"/>
+							</group>
 
 
+							<group>
+								<field name="avg_consultations"/>
+
+								<field name="avg_products"/>
+
+								<field name="avg_procedures"/>
+							</group>
+
+						</group>
+
+
+
+						<group>
+							<group>
 								<field name="ratio_pro_con"/>
 							</group>
 						
+							<group>
+							</group>
 						</group>
 
 

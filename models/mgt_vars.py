@@ -6,12 +6,10 @@ _h_name = {
 
 				'product': 		'Producto',
 
-
 				'consultation': 'Consulta', 		
 				'consultation_gyn': 'Consulta Ginecológica', 		
 				'consultation_100': 'Consulta 100', 		
 				'consultation_0': 'Consulta Gratuita', 		
-
 
 				#'procedure': 	'Procedimiento', 		
 				'procedure': 	'Procedimiento Laser', 		
@@ -19,7 +17,6 @@ _h_name = {
 
 				'medical': 		'Tratamiento Médico', 		
 				'cosmetology': 	'Cosmeatria', 	
-
 
 				'card': 		'Tarjeta Vip', 	
 				'kit': 			'Kits', 	

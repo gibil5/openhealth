@@ -18,12 +18,9 @@
 					
 <!--
 					<field name="doctor_id"/>
--->
 					<field name="management_id"/>
-
-
 					<field name="idx"/>
-
+-->
 
 
 					<field name="name_sp"/>
@@ -98,6 +95,7 @@
 <!--
 						<filter name="Estado" context="{'group_by':'state'}"/>
 -->
+						<filter name="Familia" context="{'group_by':'meta_sp'}"/>
 					</group>
 
 				   

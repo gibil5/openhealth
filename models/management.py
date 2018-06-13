@@ -42,13 +42,12 @@ class Management(models.Model):
 
 
 
+
 	# Nr Consus 
 	nr_consultations = fields.Integer(
 			'Nr Consultas', 
 			#default=-1, 
 		)
-
-
 
 	# Nr Products 
 	nr_products = fields.Integer(
@@ -56,13 +55,64 @@ class Management(models.Model):
 			#default=-1, 
 		)
 
-
-
 	# Nr Proc
 	nr_procedures = fields.Integer(
 			'Nr Procedimientos', 
 			#default=-1, 
 		)
+
+
+
+
+
+
+	# Amo Consus 
+	amo_consultations = fields.Float(
+			'Monto Consultas', 
+			#default=-1, 
+		)
+
+	# Amo Products 
+	amo_products = fields.Float(
+			'Monto Productos', 
+			#default=-1, 
+		)
+
+	# Amo Proc
+	amo_procedures = fields.Float(
+			'Monto Procedimientos', 
+			#default=-1, 
+		)
+
+
+
+
+
+	# avg Consus 
+	avg_consultations = fields.Float(
+			'Prom. Consultas', 
+			#default=-1, 
+			#digits=(16,1), 
+		)
+
+	# avg Products 
+	avg_products = fields.Float(
+			'Prom. Productos', 
+			#default=-1, 
+			#digits=(16,1), 
+		)
+
+	# avg Proc
+	avg_procedures = fields.Float(
+			'Prom. Procedimientos', 
+			#default=-1, 
+			#digits=(16,1), 
+		)
+
+
+
+
+
 
 
 
@@ -140,15 +190,22 @@ class Management(models.Model):
 		self.nr_procedures = 0 
 		self.nr_products = 0 
 
+		self.amo_consultations = 0 
+		self.amo_procedures = 0 
+		self.amo_products = 0 
 
 
+
+		# Loop - Families 
 		for family in self.family_line: 
 
 			#if family.name in ['consultation', 'consultation_gyn', 'consultation_0', 'consultation_100']: 
 			if family.meta == 'consultation': 
 
-				#self.nr_consultations = self.nr_consultations +  1
 				self.nr_consultations = self.nr_consultations +  family.x_count
+
+				self.amo_consultations = self.amo_consultations + family.amount
+
 
 
 			#elif family.name in ['laser', 'medical', 'cosmetology']: 
@@ -156,11 +213,16 @@ class Management(models.Model):
 
 				self.nr_procedures = self.nr_procedures +  family.x_count
 
+				self.amo_procedures = self.amo_procedures + family.amount
+
+
 
 			#elif family.name in ['topical', 'card']: 
 			elif family.meta == 'product': 
 
 				self.nr_products = self.nr_products +  family.x_count
+
+				self.amo_products = self.amo_products + family.amount
 
 
 
@@ -168,10 +230,17 @@ class Management(models.Model):
 		# Ratios 
 		self.ratio_pro_con = (float(self.nr_procedures) / float(self.nr_consultations)) * 100 
 
+		self.avg_consultations = self.amo_consultations / self.nr_consultations
+
+		self.avg_procedures = self.amo_procedures / self.nr_procedures
+
+		self.avg_products = self.amo_products / self.nr_products
+
 
 
 		print 'Done !'
-
+		print 
+		
 	# update_counters
 
 
@@ -207,28 +276,49 @@ class Management(models.Model):
 
 
 
+		_h_amount = {
+
+				'consultation': 	0, 		
+				'consultation_gyn': 0, 		
+				'consultation_100': 0, 		
+				'consultation_0': 	0, 		
+
+				#'procedure': 	0, 		
+				'laser': 		0, 		
+				'medical': 		0, 		
+				'cosmetology': 	0, 	
+
+				'product': 		0,
+				'card': 		0, 	
+				'kit': 			0, 	
+				'topical': 		0, 	
+		}
+
+		
+		print _h_amount
+
 
 	# All 
-		# Loop 
+		# Loop - Doctors 
 		for doctor in self.doctor_line: 
 
-			#for line in self.order_line: 
+			# Loop - Order Lines 
 			for line in doctor.order_line: 
-
 
 				# Doctor
 				#doctor_arr.append(line.doctor)
 
-
 				# Family
 				family_arr.append(line.family)
-
 
 				# Sub family
 				sub_family_arr.append(line.sub_family)
 
 
+				_h_amount[line.family] = _h_amount[line.family] + line.price_total 
 
+
+		print _h_amount
 
 
 		
@@ -272,12 +362,15 @@ class Management(models.Model):
 
 			count = counter_family[key]
 
+			amount = _h_amount[key]
+
 			family = self.family_line.create({
-													#'name': mgt_vars._h_family_sp[key], 
 													'name': key, 
-													
+
 													'x_count': count, 
 													
+													'amount': amount, 
+
 													'management_id': self.id, 
 												})
 
@@ -328,6 +421,7 @@ class Management(models.Model):
 
 
 		print 'Done !'
+		print 
 
 	# update_stats
 
@@ -352,7 +446,6 @@ class Management(models.Model):
 		# Init vars
 		total_amount = 0 
 		total_count = 0 
-		
 		total_tickets = 0 
 
 
@@ -372,15 +465,10 @@ class Management(models.Model):
 					'Dr. Escudero', 
 				]
 
-
-
-
-		# Loop - By Doctor 
+		# Loop
 		for doctor in doctors: 
-			
 			doctor = self.doctor_line.create({
 												'name': doctor, 
-	
 												'management_id': self.id, 
 										})
 
@@ -468,15 +556,14 @@ class Management(models.Model):
 			#doctor.stats()
 
 
+			# Totals 
 			total_amount = total_amount + amount
-
 			total_count = total_count + count
-
 			total_tickets = total_tickets + tickets
 
 
 
-		# Stats 
+		# Totals  
 		self.total_amount = total_amount
 		self.total_count = total_count
 		self.total_tickets = total_tickets
@@ -485,5 +572,6 @@ class Management(models.Model):
 
 
 		print 'Done !'
+		print 
 
 	# update_sales

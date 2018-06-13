@@ -194,7 +194,7 @@
 		'views/management/management_family_line.xml',
 		'views/management/management_order_line.xml',
 		'views/management/management_doctor_line.xml',
-		'views/management/management.xml',
+		#'views/management/management.xml',
 
 
 

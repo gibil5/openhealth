@@ -25,7 +25,8 @@ def get_orders_filter_type(self, date_bx, date_ex, x_type):
 
 	# Orders 
 	orders = self.env['sale.order'].search([
-													('state', '=', 'sale'),
+													#('state', '=', 'sale'),
+													('state', 'in', ['sale','cancel']),
 													
 													('x_type', '=', x_type),
 
@@ -40,7 +41,8 @@ def get_orders_filter_type(self, date_bx, date_ex, x_type):
 
 	# Count 
 	count = self.env['sale.order'].search_count([
-													('state', '=', 'sale'),
+													#('state', '=', 'sale'),
+													('state', 'in', ['sale','cancel']),
 													
 													('x_type', '=', x_type),
 

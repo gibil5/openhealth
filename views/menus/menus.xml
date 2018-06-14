@@ -353,6 +353,18 @@
 
 
 
+			<!-- Delta --> 			
+			<menuitem 	id="sales_all_delta_menu" 
+						name="Delta" 
+						parent="sales_menu"
+						sequence="6"
+
+						action="order_list_delta_action"
+						/>
+
+
+
+
 
 			<!-- Observed -->
 <!--				

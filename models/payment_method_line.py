@@ -4,7 +4,10 @@
 # 
 #
 from openerp import models, fields, api
-from . import ord_vars
+
+#from . import ord_vars
+from . import pm_vars
+
 
 class payment_method_line(models.Model):
 	
@@ -92,7 +95,7 @@ class payment_method_line(models.Model):
 	# Method
 	method = fields.Selection(
 
-			selection = ord_vars._payment_method_list, 			
+			selection = pm_vars._payment_method_list, 			
 
 			string="Forma de Pago", 
 			default="cash", 

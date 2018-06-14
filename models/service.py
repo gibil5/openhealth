@@ -201,20 +201,8 @@ class Service(models.Model):
 
 
 
-	#nr_hands = fields.Many2one(
-	#		'openhealth.counter_raw',
-	#		required=False,
-	#	)
 
-	#nr_body_local = fields.Many2one(
-	#		'openhealth.counter_raw',
-	#		required=False,
-	#	)
 
-	#nr_face_local = fields.Many2one(
-	#		'openhealth.counter_raw',
-	#		required=False,
-	#	)
 
 
 

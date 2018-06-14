@@ -3,7 +3,11 @@
 # 	PaymentMethod 
 #
 from openerp import models, fields, api
-from . import ord_vars
+
+
+#from . import ord_vars
+from . import pm_vars
+
 
 class PaymentMethod(models.Model):
 	
@@ -146,7 +150,13 @@ class PaymentMethod(models.Model):
 	# go_back
 	@api.multi 
 	def go_back(self):
+
 		self.confirmed = True 
+
+
+		# Change Order State to Sent 
+		self.order.state = 'sent'
+		
 		return self.order.open_myself() 
 	# go_back
 
@@ -214,7 +224,8 @@ class PaymentMethod(models.Model):
 	# Saledoc 
 	saledoc = fields.Selection(
 			string="Tipo", 
-			selection=ord_vars._sale_doc_type_list, 
+
+			selection=pm_vars._sale_doc_type_list, 
 			
 			#states=READONLY_STATES, 
 		)
@@ -285,20 +296,8 @@ class PaymentMethod(models.Model):
 		if self.balance == 0.0:
 			self.state = 'paid'
 
+	# _onchange_saledoc
 
-
-		# Generate Name
-		#pre = {
-		#		'receipt':	'BO-1-', 
-		#		'invoice':	'FA-1-', 
-		#		'advertisement':	'CP-1-', 
-		#		'sale_note':		'CN-1-', 
-		#		'ticket_receipt':	'TKB-1-', 
-		#		'ticket_invoice':	'TKF-1-', 
-		#}
-		#counter = self.env['openhealth.counter'].search([('name', '=', self.saledoc)])
-		#name = pre[self.saledoc] + str(counter.value).rjust(4, '0')
-		#self.saledoc_code = name
 
 
 

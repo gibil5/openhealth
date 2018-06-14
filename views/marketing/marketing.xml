@@ -244,8 +244,10 @@
 								<field name="patient_sale_count"/>
 
 								<field name="patient_consu_count"/>
-
+<!--
 								<field name="patient_budget_count"		string="Nr Presupuestos > 1500 S/"	/>
+-->
+								<field name="patient_budget_count"			/>
 
 								<field name="patient_proc_count"/>
 

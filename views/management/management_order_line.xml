@@ -13,12 +13,20 @@
 			
 			<field name="arch" type="xml">
 
-				<tree string="management order line Tree">
+				<tree string="management order line Tree"
+
+
+						default_order='x_date_created desc'	
+
+						colors="
+						red:delta==2
+						"
+					>
 					
 <!--
--->
 					<field name="management_id"/>
 					<field name="doctor_id"/>
+-->
 
 
 
@@ -37,7 +45,17 @@
 
 					<field name="sub_family"/>
 
+
+
+
+					<field name="serial_nr"/>
+
+					<field name="delta"/>
+					
 					<field name="x_date_created"/>
+
+
+
 
 					<field name="product_id"/>
 
@@ -116,8 +134,10 @@
 
 						<filter name="Subfamilia" context="{'group_by':'sub_family'}"/>
 
-
 						<filter name="Reporte" context="{'group_by':'management_id'}"/>
+
+
+						<filter name="Delta" context="{'group_by':'delta'}"/>
 					</group>
 
 				   

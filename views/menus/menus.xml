@@ -354,20 +354,17 @@
 
 
 
-			<!-- Observed --> 			
+			<!-- Observed -->
+<!--				
 			<menuitem 	id="sales_observed_menu" 
-
 						name="Observado" 
-				
 						parent="sales_menu"
 						sequence="6"
-
-
 						groups="openhealth.roots"
 
 						action="observed_list_action"
 						/>
-
+-->
 
 
 

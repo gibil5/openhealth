@@ -180,6 +180,16 @@ class sale_order(models.Model):
 
 # ----------------------------------------------------------- Vars ------------------------------------------------------
 
+
+	# Delta 
+	x_delta = fields.Integer(
+			'Delta',
+		)
+
+
+
+
+
 	# Serial Number 
 	x_serial_nr = fields.Char(
 			'Número de serie',
@@ -207,13 +217,21 @@ class sale_order(models.Model):
 		)
 
 
+
+
 	# For Admin Sale Editing 
 	@api.multi
-	def state_change(self):  
-		if self.state == 'sale': 
+	#def state_change(self):  
+	def state_force(self):  
+
+		#if self.state == 'sale': 
+		if self.state in ['sale', 'cancel']: 
 			self.state = 'editable'
+
 		elif self.state == 'editable': 
 			self.state = 'sale'
+
+
 
 
 	# Pricelist 
@@ -856,7 +874,11 @@ class sale_order(models.Model):
 																	'payment_method': payment_method, 
 										})
 		
-		self.state = 'sent'
+
+
+
+		#self.state = 'sent'		# Now, this is done by payment method. 
+
 
 
 		return {
@@ -1053,10 +1075,12 @@ class sale_order(models.Model):
 
 	# Action confirm 
 	@api.multi 
-	def action_confirm(self):
+	#def action_confirm(self):
+	def action_confirm_nex(self):
 
 		print 
-		print 'Action confirm - Overridden'
+		#print 'Action confirm - Overridden'
+		print 'Action confirm - Nex'
 		 
 		
 
@@ -1065,7 +1089,7 @@ class sale_order(models.Model):
 		# Serial Number and Type
 		if self.x_payment_method.saledoc != False: 
 
-			print 'Serial number'
+			print 'Serial number and Type'
 			
 			self.x_type = self.x_payment_method.saledoc
 	 		counter = self.env['openhealth.counter'].search([
@@ -1084,7 +1108,7 @@ class sale_order(models.Model):
 
 		# Doctor User Name - For Sale Reporting 
 		if self.x_doctor.name != False: 
-			print 'Dr name'
+			#print 'Dr name'
 			uid = self.x_doctor.x_user_name.id
 			self.x_doctor_uid = uid
 

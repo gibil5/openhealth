@@ -112,6 +112,14 @@ class PaitentLine(models.Model):
 			'Pres. Monto', 
 		)
 
+
+
+	budget_flag = fields.Boolean(
+			'Flag', 
+		)
+
+
+
 	budget_prod = fields.Char(
 			'Pres. Proc.', 
 		)
@@ -648,13 +656,21 @@ class PaitentLine(models.Model):
 		#print 
 
 
-		# Budget Amount 
-		#self.budget_amount = 0 
+
+		# Sales 
+		for line in self.sale_line: 
+			# Doctor 
+			if self.doctor.name == False: 
+				self.doctor = line.doctor.id 
+
+
+
+
+
+		# Budgets
 		self.budget_amount = ''
 		self.budget_prod = ''
-
 		for line in self.budget_line: 
-
 
 
 			# Doctor 
@@ -667,12 +683,19 @@ class PaitentLine(models.Model):
 			# Budget Amount 
 			self.budget_amount = self.budget_amount + str(line.price_total) + ', '
 
+			# Budget Flag 
+			if line.price_total >= 1500: 
+				self.budget_flag = True
+
+
 
 			# Budget Prod
-			if line.product_id.x_treatment in prodvars._h_subfamily: 
-				self.budget_prod = self.budget_prod + prodvars._h_subfamily[line.product_id.x_treatment] + ', '
-			else: 
-				self.budget_prod = self.budget_prod + line.product_id.x_treatment + ', '
+			if line.product_id.x_treatment != False: 
+				if line.product_id.x_treatment in prodvars._h_subfamily: 
+					self.budget_prod = self.budget_prod + prodvars._h_subfamily[line.product_id.x_treatment] + ', '
+				else: 
+					self.budget_prod = self.budget_prod + line.product_id.x_treatment + ', '
+
 
 
 

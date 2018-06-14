@@ -20,14 +20,14 @@
 	'description': """
 
 
-		Last built: 12 Junio 2018 
+		Last built: 14 Junio 2018 
 
 		
 		Stability by Design.
 
 		Simplicity but Abstraction. 
 
-		La Estabilidad se consigue pour la disminución, no por el aumento. 
+		La Estabilidad se consigue por la disminución, no por el aumento. 
 		Dieter Rams: Less but Better. 
 
 		More Configuration and less programming. Near than zero hacking.  

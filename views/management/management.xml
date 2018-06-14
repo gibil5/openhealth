@@ -42,6 +42,7 @@
 						/>
 
 
+
 						<!-- Update counters -->
 						<button 
 								type="object" 
@@ -51,6 +52,19 @@
 
 								string="Counters"								
 						/>
+
+
+
+						<!-- Update QC -->
+						<button 
+								type="object" 
+								class="oe_highlight"
+
+								name="update_qc"
+
+								string="Quality Control"								
+						/>
+
 
 
 
@@ -176,6 +190,7 @@
 							</group>
 						
 							<group>
+								<field name="nr_delta"/>
 							</group>
 						</group>
 
@@ -187,9 +202,67 @@
 
 
 
+							<!-- Orders --> 
+							<page	string="Ventas">
+
+								<field name="order_line">
+
+
+									<tree string="Ventas"	limit="500"		default_order='x_date_created desc'	
+
+										colors="
+										red:delta==2
+										"
+										>	
+
+<!--
+										green:state=='sent';
+										blue:state=='sale';
+										grey:state in ('cancel')
+-->
+
+
+										<field name="patient"/>
+
+										<field name="doctor"/>
+
+
+
+										<field name="serial_nr"/>
+
+										<field name="delta"/>
+
+
+
+										<field name="x_date_created"/>
+
+										<field name="family"/>
+
+										<field name="sub_family"/>
+
+										<field name="product_id"/>
+
+										<field name="product_uom_qty"/>
+
+										<field name="price_unit"/>
+
+										<field name="price_subtotal"/>
+
+									</tree>
+								</field>
+							</page>
+
+<!--
+										<field name="name"/>
+										<field name="state"/>
+								<field name="order_line"/>
+-->
+
+
+
 
 							<!-- Familias --> 
-							<page	string="Por Familia">
+							<page	string="Familia">
 
 								<field name="family_line">
 								
@@ -226,7 +299,7 @@
 
 
 							<!-- Sub Familias --> 
-							<page	string="Por Sub Familia">
+							<page	string="Sub Familia">
 
 								<field name="sub_family_line">
 								
@@ -307,41 +380,6 @@
 								</field>
 							</page>
 
-
-							<!-- Orders --> 
-<!--
--->
-							<page	string="Ventas">
-								<field name="order_line">
-
-									<tree string="Ventas"	limit="50"	>	
-
-										<field name="patient"/>
-
-										<field name="doctor"/>
-
-										<field name="x_date_created"/>
-
-										<field name="family"/>
-
-										<field name="sub_family"/>
-
-										<field name="product_id"/>
-
-										<field name="product_uom_qty"/>
-
-										<field name="price_unit"/>
-
-										<field name="price_subtotal"/>
-									</tree>
-								</field>
-							</page>
-
-<!--
-										<field name="name"/>
-										<field name="state"/>
-								<field name="order_line"/>
--->
 
 
 

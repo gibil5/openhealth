@@ -490,3 +490,21 @@
 
 	#		record.pm_total = record.pm_total + pm_total
 
+
+
+
+
+# 14 Jun 2018 
+
+		# Generate Name
+		#pre = {
+		#		'receipt':	'BO-1-', 
+		#		'invoice':	'FA-1-', 
+		#		'advertisement':	'CP-1-', 
+		#		'sale_note':		'CN-1-', 
+		#		'ticket_receipt':	'TKB-1-', 
+		#		'ticket_invoice':	'TKF-1-', 
+		#}
+		#counter = self.env['openhealth.counter'].search([('name', '=', self.saledoc)])
+		#name = pre[self.saledoc] + str(counter.value).rjust(4, '0')
+		#self.saledoc_code = name

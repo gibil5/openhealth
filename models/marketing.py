@@ -142,6 +142,15 @@ class Marketing(models.Model):
 
 
 
+	# Sales
+	#sale_line_tkr = fields.One2many(
+	#		'openhealth.marketing.order.line', 
+	#		'marketing_id',
+	#	)
+
+
+
+
 
 # ----------------------------------------------------------- Counts ------------------------------------------------------
 
@@ -232,8 +241,11 @@ class Marketing(models.Model):
 				for line in budget.order_line: 
 					
 
+
 					# Budget is a procedure 
-					if line.price_total >= 1500: 
+					#if line.price_total >= 1500: 
+					if True: 
+
 
 						# Budgets 
 						budget_line = pat_line.budget_line.create({
@@ -283,6 +295,11 @@ class Marketing(models.Model):
 			# Create
 			for order in orders: 
 
+
+				# Doctor 
+				doctor = order.x_doctor
+
+
 				for line in order.order_line: 
 					
 					prod = line.product_id
@@ -291,6 +308,11 @@ class Marketing(models.Model):
 					# Sale
 					sale_line = pat_line.sale_line.create({
 															'name': line.name, 
+
+															'doctor': doctor.id, 
+
+
+
 															'product_id': line.product_id.id, 
 															'x_date_created': order.date_order, 
 															'product_uom_qty': line.product_uom_qty, 

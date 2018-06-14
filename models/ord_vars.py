@@ -3,28 +3,6 @@
 
 
 
-
-_dic_type_leg = {
-
-						'BOL' : 'receipt', 		
-						'FAC' : 'invoice', 		
-
-						'TKB' : 	'ticket_receipt', 		
-						'TKF' : 	'ticket_invoice', 
-
-						'advertisement' : 	'advertisement', 		
-						'CE' : 		'sale_note', 		
-
-						False: False, 
-			}
-
-
-
-
-
-
-
-
 # State - Current !!
 _state_list = [
 
@@ -42,93 +20,29 @@ _state_list = [
 
 
 
-
 				('draft', 		'Presupuesto'),
-
-				#('sent', 		'Pagado'),
-				('sent', 		'Generado'),
-
-				#('sale', 		'Facturado'),				
+				('sent', 		'Generado'),			
 				('sale', 		'Pagado'),				
-
-
-
-				('printed', 	'Impreso'),
 				('done', 		'Completo'),
 				('cancel', 		'Anulado'),
 
-
+				#('printed', 	'Impreso'),
 				('editable', 	'e'),
 			]
 
 
 
 
+# Legacy 
+_dic_type_leg = {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-_sale_doc_type_list = [
-
-						('ticket_receipt', 		'Ticket Boleta'),
-						('ticket_invoice', 		'Ticket Factura'),
-
-						('receipt', 			'Boleta'),
-						('invoice', 			'Factura'),
-
-						('advertisement', 		'Canje Publicidad'),
-						('sale_note', 			'Canje NV'),
-						
-
-						#('', 			''),
-		]
-
-
-
-
-
-
-
-
-
-_owner_type_list = [
-						('product', 			'Product'),
-						('service', 			'Servicio'),
-		]
-
-
-
-
-
-
-
-
-
-
-_dic_model = {
-
-						'receipt' : 'openhealth.receipt', 		
-						'invoice' : 'openhealth.invoice', 		
-
-						'advertisement' : 	'openhealth.advertisement', 		
-						'sale_note' : 		'openhealth.sale_note', 		
-
-						'ticket_receipt' : 	'openhealth.ticket_receipt', 		
-						'ticket_invoice' : 	'openhealth.ticket_invoice', 		
-
-						False :	False, 
+						'BOL' : 'receipt', 		
+						'FAC' : 'invoice', 		
+						'TKB' : 	'ticket_receipt', 		
+						'TKF' : 	'ticket_invoice', 
+						'advertisement' : 	'advertisement', 		
+						'CE' : 		'sale_note', 		
+						False: False, 
 			}
 
 
@@ -137,8 +51,44 @@ _dic_model = {
 
 
 
-
 # Deprecated ?
+
+#_owner_type_list = [
+#						('product', 			'Product'),
+#						('service', 			'Servicio'),
+#		]
+
+
+
+#_sale_docs_list = [
+		#('none','Ninguno'), 
+#		('receipt','Boleta'), 
+#		('invoice','Factura'), 
+#		('advertisement','Canje publicidad'), 
+#		('sale_note','Canje (nv)'), 
+#		('ticket_receipt','Ticket boleta'), 
+#		('ticket_invoice','Ticket factura'), 
+		#('',''), 
+#	]
+
+
+
+#_dic_model = {
+#
+#						'receipt' : 'openhealth.receipt', 		
+#						'invoice' : 'openhealth.invoice', 		
+#						'advertisement' : 	'openhealth.advertisement', 		
+#						'sale_note' : 		'openhealth.sale_note', 		
+#						'ticket_receipt' : 	'openhealth.ticket_receipt', 		
+#						'ticket_invoice' : 	'openhealth.ticket_invoice', 		
+#						False :	False, 
+#			}
+
+
+
+
+# Deprecated !!!
+
 #_x_state_list = [
 #				('draft', 			'Presupuesto'),
 #				('payment', 		'Pagado'),
@@ -153,53 +103,3 @@ _dic_model = {
 #				('cancel', 			'Cancelado'),
 #]
 
-
-
-
-
-
-
-
-_payment_method_list = [
-
-		('cash',			'Efectivo'), 
-		('american_express','American Express'), 
-		('cuota_perfecta',	'Cuota perfecta'), 
-		
-		('diners',			'Diners'), 
-		('credit_master',	'Master - Crédito'), 
-		('debit_master',	'Master - Débito'), 
-				
-		('credit_visa',		'Visa - Crédito'), 
-		('debit_visa',		'Visa - Débito'), 
-		
-		#('',''), 
-	]
-
-
-
-
-
-
-_sale_docs_list = [
-
-		#('none','Ninguno'), 
-
-		('receipt','Boleta'), 
-
-		('invoice','Factura'), 
-
-		('advertisement','Canje publicidad'), 
-
-
-		#('sale_note','Nota de venta'), 
-		('sale_note','Canje (nv)'), 
-
-
-		('ticket_receipt','Ticket boleta'), 
-
-		('ticket_invoice','Ticket factura'), 
-
-		#('',''), 
-
-	]

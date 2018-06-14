@@ -44,6 +44,15 @@ class Management(models.Model):
 
 
 	# Nr Consus 
+	nr_delta = fields.Integer(
+			'Nr Delta', 
+			#default=-1, 
+		)
+
+
+
+
+	# Nr Consus 
 	nr_consultations = fields.Integer(
 			'Nr Consultas', 
 			#default=-1, 
@@ -130,9 +139,7 @@ class Management(models.Model):
 
 	# Sales
 	order_line = fields.One2many(
-
 			'openhealth.management.order.line', 
-		
 			'management_id',
 		)
 
@@ -170,6 +177,88 @@ class Management(models.Model):
 
 
 
+
+	# Sales
+	sale_line_tkr = fields.One2many(
+			'openhealth.management.order.line', 
+			'management_tkr_id',
+		)
+
+
+
+
+
+# ----------------------------------------------------------- Update Qc ------------------------------------------------------
+
+	# Update Qc
+	@api.multi
+	def update_qc(self):  
+
+		print 
+		print 'Update Qc'
+		print 
+
+
+
+		serial_nr_last = 0 
+		self.nr_delta = 0 
+
+
+
+		x_type = 'ticket_receipt'
+
+		#orders,count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end, doctor.name)
+		orders,count = mgt_funcs.get_orders_filter_type(self, self.date_begin, self.date_end, x_type)
+		print count
+		print orders
+		
+
+		# All 
+		# Loop - Order Lines 
+
+		for order in orders: 
+		
+			#for line in order.order_line: 
+
+			#print line 
+			#print 
+			print order 
+			print order.x_serial_nr
+
+
+			serial_nr = int(order.x_serial_nr.split('-')[1])
+
+			print serial_nr
+
+
+			if serial_nr_last != 0:
+				delta = serial_nr - serial_nr_last
+			else:
+				delta = 0 
+
+
+			if delta == 2: 
+				self.nr_delta = self.nr_delta + 1
+
+
+			order.x_delta = delta
+
+
+			serial_nr_last = serial_nr
+
+
+
+			#print serial_nr
+			#print serial_nr_last
+			print delta 
+			print 
+
+
+
+		print 'Done !'
+		print 
+		
+	# update_qc
 
 
 
@@ -531,6 +620,12 @@ class Management(models.Model):
 															'patient': order.patient.id, 
 															'doctor': order.x_doctor.id, 
 															'state': order.state, 
+
+
+
+															'serial_nr': order.x_serial_nr, 
+
+
 
 															'product_id': line.product_id.id, 															
 															'product_uom_qty': line.product_uom_qty, 

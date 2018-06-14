@@ -42,12 +42,19 @@ class management_order_line(models.Model):
 		)
 
 
-	state = fields.Selection(
-			selection = ord_vars._state_list, 
-			string='Estado',	
-			readonly=False,
-			default='draft',
+
+
+	# Serial Number 
+	serial_nr = fields.Char(
+			'Serial Nr',
 		)
+
+
+	# Delta 
+	delta = fields.Integer(
+			'Delta',
+		)
+
 
 
 
@@ -107,6 +114,17 @@ class management_order_line(models.Model):
 
 
 
+
+	# State 
+	state = fields.Selection(
+			selection = ord_vars._state_list, 
+			string='Estado',	
+			readonly=False,
+			default='draft',
+		)
+
+
+
 # ----------------------------------------------------------- Handles ------------------------------------------------------
 	
 	# Doctor 
@@ -119,6 +137,8 @@ class management_order_line(models.Model):
 
 
 
+
+
 	# Management 
 	management_id = fields.Many2one(			
 			
@@ -128,6 +148,14 @@ class management_order_line(models.Model):
 		)
 
 
+
+	# Sales TKR
+	management_tkr_id = fields.Many2one(			
+			
+			'openhealth.management',
+
+			ondelete='cascade', 			
+		)
 
 
 

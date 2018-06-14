@@ -362,6 +362,8 @@ Sales by patient who have a Vip Card
 
 					<field name="doctor"/>
 
+					<field name="date_record"/>
+
 
 <!--
 					<field name="treatment"/>
@@ -372,27 +374,35 @@ Sales by patient who have a Vip Card
 
 
 
-					<field name="phone_1"/>
-
-					<field name="phone_2"/>
-
-					<field name="email"/>
-
-					<field name="chief_complaint"/>
-
-					<field name="diagnosis"/>
 
 
 
 
 
-					<field name="nr_budget"/>
 
 					<field name="budget_prod"/>
 
 					<field name="budget_amount"/>
 
+					<field name="budget_flag"/>
+
+					<field name="nr_budget"/>
+
+
+
+
 					<field name="nr_reco"/>						
+
+					<field name="nr_sale"/>
+
+					<field name="nr_consu"/>						
+
+					<field name="nr_products"/>
+
+					<field name="nr_proc"/>						
+
+
+
 
 
 <!--
@@ -406,7 +416,17 @@ Sales by patient who have a Vip Card
 
 					<field name="age_years"/>
 
-					<field name="date_record"/>
+					<field name="phone_1"/>
+
+					<field name="phone_2"/>
+
+					<field name="email"/>
+
+					<field name="chief_complaint"/>
+
+					<field name="diagnosis"/>
+
+
 
 
 <!--
@@ -448,16 +468,8 @@ Sales by patient who have a Vip Card
 
 
 
-					<field name="nr_sale"/>
-
-					<field name="nr_consu"/>						
-
-					<field name="nr_products"/>
 
 
-
-
-					<field name="nr_proc"/>						
 
 <!--
 					<field name="sale_line"/>
@@ -478,7 +490,7 @@ Sales by patient who have a Vip Card
 
 
 
-		<!-- Action -->
+		<!-- Action 1 -->
 		<record model="ir.actions.act_window" id="patient_line_form_action">
 			<field name="name">Pacientes</field>
 			<field name="res_model">openhealth.patient.line</field>
@@ -506,6 +518,34 @@ Sales by patient who have a Vip Card
 
 			<field name="limit">1000</field>
 		</record>
+
+
+
+		<!-- Action 2 -->
+		<record model="ir.actions.act_window" id="patient_line_proc_form_action">
+			<field name="name">Pacientes</field>
+			<field name="res_model">openhealth.patient.line</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form,graph,pivot</field>
+
+			<field name="view_id" ref="patient_line_proc_view_tree"/> 
+
+<!--
+									('budget_flag', '=', True),
+-->
+			<field name="domain">[
+									('marketing_id', '=', active_id),
+								]
+			</field>
+
+			<field name="context">{}</field>
+
+			<field name="limit">1000</field>
+		</record>
+
+
+
+
 
 
 
@@ -578,25 +618,6 @@ Sales by patient who have a Vip Card
 
 
 
-
-		<!-- Action -->
-		<record model="ir.actions.act_window" id="patient_line_proc_form_action">
-			<field name="name">Pacientes</field>
-			<field name="res_model">openhealth.patient.line</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form,graph,pivot</field>
-
-			<field name="view_id" ref="patient_line_proc_view_tree"/> 
-
-			<field name="domain">[
-									('marketing_id', '=', active_id),
-								]
-			</field>
-
-			<field name="context">{}</field>
-
-			<field name="limit">1000</field>
-		</record>
 
 
 

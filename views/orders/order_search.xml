@@ -160,6 +160,10 @@
 
 					<!-- Group By --> 
 					<group expand="1" string="Group By">
+<!--
+						<filter name="Creado por" context="{'group_by':'user_id'}"/>
+-->
+
 						<filter name="Tipo" context="{'group_by':'x_type'}"/>
 
 						<separator/>
@@ -171,9 +175,8 @@
 						<filter name="Médico" context="{'group_by':'x_doctor'}"/>
 
 						<filter name="Paciente" context="{'group_by':'patient'}"/>
-<!--
-						<filter name="Creado por" context="{'group_by':'user_id'}"/>
--->
+
+						<filter name="Delta" context="{'group_by':'x_delta'}"/>
 					</group>
 
 

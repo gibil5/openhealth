@@ -758,7 +758,11 @@ Look for the Minimalist experience !!!
 			<field name="view_id" ref="view_order_delta_tree"/> 
 
 
-			<field name="domain">[]</field>
+			<field name="domain">[
+									('x_type', '=', 'ticket_receipt'),
+								]
+			</field>
+			
 			<field name="context">{}</field>
 		</record>
 

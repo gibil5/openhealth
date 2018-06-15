@@ -29,7 +29,6 @@ _h_name = {
 					'laser_excilite' : 	'Laser Exc', 		
 					'laser_ipl' : 		'Laser Ipl', 		
 					'laser_ndyag' : 	'Laser Ndyag', 		
-					#'laser_quick' : 	'Laser Quick', 		
 					'laser_quick' : 	'Quick Laser', 		
 
 
@@ -39,8 +38,6 @@ _h_name = {
 					'hyaluronic_acid' : 		'Acido Hialurónico', 		
 
 					'mesotherapy_nctf': 		'Mesoterapia NCTF', 
-
-
 					'infiltration_scar': 		'Infiltración Cicatriz', 
 					'infiltration_keloid': 		'Infiltración Queloide', 
 

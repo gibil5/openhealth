@@ -633,7 +633,16 @@ Look for the Minimalist experience !!!
 
 					<field name="amount_untaxed"	sum="Total Untaxed"			widget="monetary"		string="Total"	/>
 
+
+
+
+					<field name="create_date"/>
+
 					<field name="date_order"	string="Fecha"	/>
+
+
+
+
 
 					<field name="user_id"		string="Creado por"	/>
 
@@ -673,21 +682,25 @@ Look for the Minimalist experience !!!
 
 						colors="
 						red:x_delta==2;
-						blue:x_delta==0
+						blue:state=='sale';
+						grey:state in ('cancel')
 						"
 					>
 
 
 					<field name="name"	 		string="Referencia"		/>
 
+					<field name="x_type" />
+
+					<field name="state"/>
+
 
 
 
 					<field name="x_serial_nr" />
 
-					<field name="x_type" />
-
 					<field name="x_delta" />
+
 
 
 
@@ -711,7 +724,6 @@ Look for the Minimalist experience !!!
 
 					<field name="user_id"		string="Creado por"	/>
 
-					<field name="state"/>
 
 
 <!--
@@ -744,6 +756,7 @@ Look for the Minimalist experience !!!
 			<field name="domain">[]</field>
 			<field name="context">{}</field>
 		</record>
+
 
 
 

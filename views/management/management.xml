@@ -262,7 +262,7 @@
 
 
 							<!-- Familias --> 
-							<page	string="Familia">
+							<page	string="Familias">
 
 								<field name="family_line">
 								
@@ -275,13 +275,9 @@
 
 										<field name="name_sp"/>
 
-										<field name="name"/>
-
-
 										<field name="meta_sp"/>
-
-
 <!--
+										<field name="name"/>
 
 										<field name="meta"/>
 -->
@@ -299,7 +295,7 @@
 
 
 							<!-- Sub Familias --> 
-							<page	string="Sub Familia">
+							<page	string="Sub Familias">
 
 								<field name="sub_family_line">
 								
@@ -308,9 +304,12 @@
 
 										<field name="idx"/>
 
-										<field name="name"/>
 
 										<field name="name_sp"/>
+
+<!--
+-->
+										<field name="name"/>
 
 										<field name="x_count"/>
 

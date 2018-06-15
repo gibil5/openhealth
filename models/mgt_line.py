@@ -154,17 +154,16 @@ class FamilyLine(models.Model):
 		#print 
 
 
+
+		# Idx 
 		_h_idx = {
 
 					False: 0, 		
-
 
 					'consultation': 	10, 		
 					'consultation_gyn': 11, 		
 					'consultation_0': 	12,
 					'consultation_100': 13,
-
-
 
 
 					#'product': 		3, 	
@@ -179,6 +178,8 @@ class FamilyLine(models.Model):
 					'cosmetology': 		32,
 		}
 
+		self.idx = _h_idx[self.name]
+
 
 
 		# Name sp 
@@ -188,11 +189,6 @@ class FamilyLine(models.Model):
 			self.name_sp = self.name
 
 
-		# Idx 
-		self.idx = _h_idx[self.name]
-
-
-
 
 		# Meta 
 		if self.name in ['consultation', 'consultation_gyn', 'consultation_0', 'consultation_100']: 
@@ -200,12 +196,10 @@ class FamilyLine(models.Model):
 			self.meta = 'consultation'
 			self.meta_sp = 'Consulta'
 
-
 		elif self.name in ['laser', 'medical', 'cosmetology']: 
 
 			self.meta = 'procedure'
 			self.meta_sp = 'Procedimiento'
-
 
 		elif self.name in ['topical', 'card']: 
 
@@ -232,6 +226,58 @@ class SubFamilyLine(models.Model):
 	#doctor_id = fields.Many2one(
 	#		'openhealth.management.doctor.line'
 	#	)
+
+
+
+
+
+	# Update Fields
+	@api.multi
+	def update_fields(self):  
+
+		#print 
+		#print 'Update fields - Mgt Line - Family'
+		#print 
+
+
+		# Name Sp 
+		if self.name in mgt_vars._h_name: 
+			self.name_sp = mgt_vars._h_name[self.name]
+		else: 
+			self.name_sp = self.name
+
+
+
+		# Idx 
+		_h_idx = {
+
+					False: 0, 		
+
+					'laser_co2': 			10,
+					'laser_excilite': 		11,
+					'laser_ipl': 			12,
+					'laser_ndyag': 			13,
+					'laser_quick': 			14,
+
+
+
+					'criosurgery' : 	31, 		
+					'botulinum_toxin' : 32, 		
+					'hyaluronic_acid' : 33, 		
+
+
+
+					'cosmetology': 		70,
+					'product': 			80, 	
+					'consultation': 	90, 		
+		}
+
+
+
+		if self.name in _h_idx: 
+			self.idx = _h_idx[self.name]
+		else: 
+			self.idx = 100
 
 
 

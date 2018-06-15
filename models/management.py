@@ -26,6 +26,7 @@ class Management(models.Model):
 
 	#_order = 'create_date desc'
 	#_order = 'date_begin asc,name asc'
+	_order = 'date_begin asc'
 
 
 
@@ -41,14 +42,11 @@ class Management(models.Model):
 
 
 
-
-
-	# Nr Consus 
+	# Nr Deltas 
 	nr_delta = fields.Integer(
-			'Nr Delta', 
+			'Nr Deltas', 
 			#default=-1, 
 		)
-
 
 
 
@@ -99,21 +97,21 @@ class Management(models.Model):
 
 	# avg Consus 
 	avg_consultations = fields.Float(
-			'Prom. Consultas', 
+			'Precio Consultas', 
 			#default=-1, 
 			#digits=(16,1), 
 		)
 
 	# avg Products 
 	avg_products = fields.Float(
-			'Prom. Productos', 
+			'Precio Productos', 
 			#default=-1, 
 			#digits=(16,1), 
 		)
 
 	# avg Proc
 	avg_procedures = fields.Float(
-			'Prom. Procedimientos', 
+			'Precio Procedimientos', 
 			#default=-1, 
 			#digits=(16,1), 
 		)
@@ -199,36 +197,22 @@ class Management(models.Model):
 		print 
 
 
-
+		# Init 
 		serial_nr_last = 0 
 		self.nr_delta = 0 
 
 
-
+		# Orders 
 		x_type = 'ticket_receipt'
-
-		#orders,count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end, doctor.name)
 		orders,count = mgt_funcs.get_orders_filter_type(self, self.date_begin, self.date_end, x_type)
-		print count
-		print orders
+		#print count
+		#print orders
 		
 
 		# All 
-		# Loop - Order Lines 
-
 		for order in orders: 
 		
-			#for line in order.order_line: 
-
-			#print line 
-			#print 
-			print order 
-			print order.x_serial_nr
-
-
 			serial_nr = int(order.x_serial_nr.split('-')[1])
-
-			print serial_nr
 
 
 			if serial_nr_last != 0:
@@ -243,17 +227,14 @@ class Management(models.Model):
 
 			order.x_delta = delta
 
-
 			serial_nr_last = serial_nr
 
-
-
+			#print order 
+			#print order.x_serial_nr
 			#print serial_nr
-			#print serial_nr_last
-			print delta 
-			print 
-
-
+			#print serial_nr_last			
+			#print delta 
+			#print 
 
 		print 'Done !'
 		print 
@@ -350,12 +331,8 @@ class Management(models.Model):
 
 
 		# Clean 
-		#self.doctor_line.unlink()
-		#self.family_line.unlink()
-		#self.sub_family_line.unlink()
 		self.family_line.unlink()
 		self.sub_family_line.unlink()
-
 
 
 		# Init
@@ -363,28 +340,10 @@ class Management(models.Model):
 		family_arr = []
 		sub_family_arr = []
 
+		_h_amount = {}
+		_h_sub = {}
 
 
-		_h_amount = {
-
-				'consultation': 	0, 		
-				'consultation_gyn': 0, 		
-				'consultation_100': 0, 		
-				'consultation_0': 	0, 		
-
-				#'procedure': 	0, 		
-				'laser': 		0, 		
-				'medical': 		0, 		
-				'cosmetology': 	0, 	
-
-				'product': 		0,
-				'card': 		0, 	
-				'kit': 			0, 	
-				'topical': 		0, 	
-		}
-
-		
-		print _h_amount
 
 
 	# All 
@@ -394,9 +353,6 @@ class Management(models.Model):
 			# Loop - Order Lines 
 			for line in doctor.order_line: 
 
-				# Doctor
-				#doctor_arr.append(line.doctor)
-
 				# Family
 				family_arr.append(line.family)
 
@@ -404,38 +360,30 @@ class Management(models.Model):
 				sub_family_arr.append(line.sub_family)
 
 
-				_h_amount[line.family] = _h_amount[line.family] + line.price_total 
+
+				# Amount - Family 
+				if line.family in _h_amount: 
+					_h_amount[line.family] = _h_amount[line.family] + line.price_total 
+
+				else: 
+					_h_amount[line.family] = line.price_total 
 
 
-		print _h_amount
+
+				# Amount - Sub Family 
+				if line.sub_family in _h_sub: 
+					_h_sub[line.sub_family] = _h_sub[line.sub_family] + line.price_total 
+
+				else: 
+					_h_sub[line.sub_family] = line.price_total 
 
 
-		
 
-	# Doctor 
+			# Doctor Stats 
+			doctor.stats()
 
-		# Count
-		#counter_doctor = collections.Counter(doctor_arr)
-
-
-		# Create 
-		#for key in counter_doctor: 
-
-		#	count = counter_doctor[key]
-
-		#	doctor = self.doctor_line.create({
-		#											'name': key.name, 
-
-		#											'x_count': count, 
-
-		#											'management_id': self.id, 
-		#										})
-			#print key 
-			#print count
-			#print doctor
-		#print self.doctor_line
-		#print 
-
+		#print _h_amount
+		#print _h_sub
 
 
 
@@ -455,9 +403,7 @@ class Management(models.Model):
 
 			family = self.family_line.create({
 													'name': key, 
-
 													'x_count': count, 
-													
 													'amount': amount, 
 
 													'management_id': self.id, 
@@ -474,9 +420,13 @@ class Management(models.Model):
 
 
 
+
 	# Subfamily 
+
 		# Count
 		counter_sub_family = collections.Counter(sub_family_arr)
+
+
 
 
 		# Create 
@@ -484,11 +434,13 @@ class Management(models.Model):
 
 			count = counter_sub_family[key]
 
+			amount = _h_sub[key]
+
 			sub_family = self.sub_family_line.create({
 														'name': key, 
-
 														'x_count': count, 
-														
+														'amount': amount, 
+
 														'management_id': self.id, 
 												})
 
@@ -502,13 +454,7 @@ class Management(models.Model):
 		#print 
 
 
-
-
-	# Doctors 
-		#for doctor in self.doctor_line: 
-		#	doctor.stats()
-
-
+		print 
 		print 'Done !'
 		print 
 
@@ -517,9 +463,10 @@ class Management(models.Model):
 
 
 
-# ----------------------------------------------------------- Update ------------------------------------------------------
 
-	# Update Orders 
+# ----------------------------------------------------------- Update Sales ------------------------------------------------------
+
+	# Update Sales 
 	@api.multi
 	def update_sales(self):  
 

@@ -119,7 +119,7 @@ class DoctorLine(models.Model):
 
 		print 
 		print 'Set Stats'
-		print 
+
 
 
 		# Using collections - More Abstract !
@@ -130,8 +130,8 @@ class DoctorLine(models.Model):
 		self.family_line.unlink()
 
 
-		print 
-		print 
+		#print 
+		#print 
 
 
 		# Init
@@ -156,9 +156,7 @@ class DoctorLine(models.Model):
 		for line in self.order_line: 
 
 			# Family
-			#family_arr.append( (line.family, line.price_total)  )
 			family_arr.append(line.family)
-
 
 			# Sub family
 			sub_family_arr.append(line.sub_family)
@@ -170,19 +168,19 @@ class DoctorLine(models.Model):
 		# Count and Create 
 
 		print 'Count and Create'
-		print 
+
+
 
 		# Family 
 
 		counter_family = collections.Counter(family_arr)
-
-
+		
 		for key in counter_family: 
 
 			count = counter_family[key]
 
-			print key 
-			print count
+			#print key 
+			#print count
 
 			family = self.family_line.create({
 												#'name': mgt_vars._h_family_sp[key], 
@@ -240,9 +238,7 @@ class DoctorLine(models.Model):
 
 		# Amounts 
 
-		print
 		print 'Amounts'
-		print 
 
 		# Family 
 		for family in self.family_line: 
@@ -263,10 +259,9 @@ class DoctorLine(models.Model):
 
 			family.amount = amount
 
-			print family.name 
-			print amount
-			#print orders
-			print 
+			#print family.name 
+			#print amount
+			#print 
 
 
 
@@ -289,10 +284,9 @@ class DoctorLine(models.Model):
 
 			sub_family.amount = amount
 
-			print sub_family.name 
-			print amount
-			#print orders
-			print 
+			#print sub_family.name 
+			#print amount
+			#print 
 
 
 
@@ -309,8 +303,8 @@ class DoctorLine(models.Model):
 	@api.multi
 	def update_fields(self):  
 
-		print 
-		print 'Update Fields'
+		#print 
+		#print 'Update Fields'
 
 
 		# Names 
@@ -320,10 +314,9 @@ class DoctorLine(models.Model):
 			self.name_sp = self.name
 
 
-
 		# Ratios
-
 		if self.nr_consultations != 0: 
+
 			self.ratio_pro_con = (float(self.nr_procedures) / float(self.nr_consultations)) * 100 
 
 			self.ratio_pro_con_co2 = (float(self.nr_procedures_co2) / float(self.nr_consultations)) * 100 

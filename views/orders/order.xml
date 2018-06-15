@@ -224,6 +224,9 @@
 
 
 					<!-- Add Prod -->
+<!--
+							groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors,openhealth.physicians"
+--> 
 					<button 
 							type="object" 
 							class="oe_highlight"
@@ -233,12 +236,15 @@
 
 							string="Agregar PRODUCTO"
 
-							groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors,openhealth.physicians"
+							groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors,openhealth.physicians,openhealth.managers"
 						/>
 
 
 
 					<!-- Add Serv -->
+<!--
+							groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors,openhealth.physicians"
+--> 
 					<button 
 							type="object" 
 							class="oe_highlight"
@@ -248,7 +254,7 @@
 
 							string="Agregar SERVICIO"
 
-							groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors,openhealth.physicians"
+							groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors,openhealth.physicians,openhealth.managers"
 						/>
 
 

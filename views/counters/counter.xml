@@ -14,9 +14,22 @@
 				<form string="counter - Form">
 
 
+
 					<!-- Header --> 
 					<header>
+
+
+						<!-- Increase --> 
+						<button 
+								name="increase_static"
+								type="object" 
+								class="oe_highlight"
+
+								string="Increase Static"
+						/>						
+
 					</header>
+
 
 
 
@@ -31,15 +44,28 @@
 						<group>
 							<group>
 								<field name="name"   	readonly="0"		/>		
+
 								<field name="vspace" />
+								
 								<field name="value"   />													
+								
 								<field name="vspace" />
+
 <!--
 								<field name="total"   />													
 -->						
+
+
 							</group>
 							<group>								
 								<field name="x_type"   	/>		
+
+								<field name="vspace" />
+<!--
+								<field name="counter.i"   	/>
+-->
+								<field name="value_static"   />
+
 							</group>
 						</group>
 

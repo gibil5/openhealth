@@ -11,6 +11,15 @@ import datetime
 @api.multi
 def get_name(self, prefix, separator, padding, value):
 
+	print 
+	print 'Get Name'
+	print
+
+	
+	print prefix, padding, value 
+
+
+
 	if separator != False: 
 		name = prefix  +  separator  +  str(value).zfill(padding)
 

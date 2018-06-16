@@ -5,10 +5,10 @@
 
 
 _counter_type_list = [
-
 						('medical', 			'Médico'),
-
 						('sale', 				'Ventas'),
+
+						('test', 				'Test'),
 		]
 
 
@@ -16,9 +16,7 @@ _counter_type_list = [
 
 #_counter_type_list = [
 _counter_name_list = [
-
 						('emr', 				'Historias'),
-
 
 						('receipt', 			'Boleta'),
 						('invoice', 			'Factura'),
@@ -29,6 +27,9 @@ _counter_name_list = [
 
 						('vip', 				'Tarjeta VIP'),
 
+
+
+						('test', 			'Test'),
 						#('', 			''),
 		]
 

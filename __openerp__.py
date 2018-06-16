@@ -20,29 +20,28 @@
 	'description': """
 
 
-		Last built: 15 Junio 2018 
+		16 June 2018 
 
+		Full Fulcrum version 
 		
-		Stability by Design.
-
-		Simplicity but Abstraction. 
+		Stability by Design. Simplicity but Abstraction. 
 
 		La Estabilidad se consigue por la disminución, no por el aumento. 
 		Dieter Rams: Less but Better. 
 
 		More Configuration and less programming. Near than zero hacking.  
 
-
-
-		Laser - EMR - Min - Ama - Docean - Ooor - Github - Travis - Coverage - Proliant - Testcafe - User Stories - Auto Backup - Unit Testing - Less but Better - Fulcrum - Statistical - Machine Learning\n
-
-
-
-		Created: 	 	11 Sep 2016
-		
-		Active for: 	17 months !!!		(Lu Feb 2018)
-
 		Good Order is the Beginning of All Good Things. 
+
+
+
+		EMR - Min - Docean - Ooor - Github - Travis - Coverage - Hp Proliant - Testcafe - User Stories - Auto Backup - Unit Testing - Less but Better - Statistical - Machine Learning - Object Oriented - Full Fulcrum\n
+
+
+
+		Created: 	 	11 Sep 2016. Active for: 	17 months !!!		(Lu Feb 2018)
+
+
 		---
 
 

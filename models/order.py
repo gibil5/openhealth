@@ -5,6 +5,8 @@
 # 
 # Created: 				26 Aug 2016
 #
+# Last mod: 			16 Jun 2018
+# 
 
 from openerp import models, fields, api
 
@@ -24,15 +26,14 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Patient Lines ------------------------------------------------------
+# ----------------------------------------------------------- Counters ------------------------------------------------------
 
-	# Treatment 
-	#patient_line_id = fields.Many2one(		
-	#		'openhealth.patient.line',
-			#ondelete='cascade', 
-			#string="Tratamiento",
-			#readonly=False, 
-	#	)
+	counter_tkr = fields.Many2one(
+
+			'openhealth.counter', 
+
+		)
+
 
 
 
@@ -1092,16 +1093,36 @@ class sale_order(models.Model):
 			print 'Serial number and Type'
 			
 			self.x_type = self.x_payment_method.saledoc
+
+
+
+
+	 		# Counter 
 	 		counter = self.env['openhealth.counter'].search([
 																	('name', '=', self.x_type), 
 																],
 																	#order='write_date desc',
 																	limit=1,
 																)
-			name = count_funcs.get_name(self, counter.prefix, counter.separator, counter.padding, counter.value)
-			self.x_serial_nr = name
+
+
+			#name = count_funcs.get_name(self, counter.prefix, counter.separator, counter.padding, counter.value)
+			#name = prefix + str(value).zfill(padding)			
+			#self.x_serial_nr = name
+
+			prefix = counter.prefix
+			value = counter.value
+			padding = counter.padding
+			separator = '-'
 
 			counter.increase()				# Here !
+
+			
+			#self.x_serial_nr = prefix + str(value).zfill(padding)
+			self.x_serial_nr = prefix + separator + str(value).zfill(padding)
+
+
+
 
 
 
@@ -1166,11 +1187,14 @@ class sale_order(models.Model):
 
 
 
+
+
 	# ----------------------------------------------------------- Reset ------------------------------------------------------
 	@api.multi 
 	def x_reset(self):
 		self.x_payment_method.unlink()
 		self.state = 'draft'			# This works. 
+
 
 
 

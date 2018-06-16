@@ -5,26 +5,59 @@
 from openerp import models, fields, api
 
 import count_vars
-import count_funcs
+#import count_funcs
 
 
-class counter(models.Model):
+class Counter(models.Model):
 	
 	_name = 'openhealth.counter'
 
 
 
+# ----------------------------------------------------------- Static ------------------------------------------------------
+
+	i = 0 
 
 
-# ----------------------------------------------------------- Computes - Solved ------------------------------------------------------
+	# Increase Static
+	@api.multi 
+	def increase_static(self):
+		
+		print 
+		print 'Increase Static'
+		print 
 
-	# Total 
-	total = fields.Char(
-			string="Total", 		
+		Counter.i = Counter.i + 1
+
+
+		self.value_static = Counter.i 
+
+
+		print Counter.i
+
+		print 
+
+		#self.value = self.value + 1
+		#self.date_modified = fields.datetime.now()
+
+
+
+
+# ----------------------------------------------------------- Pre ------------------------------------------------------
+
+	# Value 
+	value_static = fields.Integer(
+			string="Valor Estático", 
+			default=1, 
 		)
 
 
+	#@api.onchange('Counter.i')
+	#def _onchange_Counter_i(self):
 
+	#	print 
+	#	print 'jx'
+	#	print 
 
 
 
@@ -36,26 +69,21 @@ class counter(models.Model):
 			default=1, 
 		)
 
-	@api.onchange('value')
-	def _onchange_value(self):
 
-		# Date 
-		self.date_modified = fields.datetime.now()
 
-		# Total 
-		name = count_funcs.get_name(self, self.prefix, self.separator, self.padding, self.value)
-		self.total = name
 
 
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
-	
+
+
 	# Type
 	x_type = fields.Selection(
 			selection=count_vars._counter_type_list, 			
 			string="Tipo", 
 			#default='receipt', 
 		)
+
 
 
 	# Name
@@ -65,16 +93,20 @@ class counter(models.Model):
 		)
 
 
+
 	# Separator 
 	separator = fields.Char(
 			string="Separador",
 		)
 
 
+
 	# Prefix 
 	prefix = fields.Char(
 			string="Prefijo", 
+			default=".", 
 		)
+
 
 
 	# Padding
@@ -87,49 +119,6 @@ class counter(models.Model):
 
 
 
-
-
-
-
-
-
-
-
-
-# ----------------------------------------------------------- Actions ------------------------------------------------------
-
-	# Increase
-	@api.multi 
-	def increase(self):
-		self.value = self.value + 1
-		self.date_modified = fields.datetime.now()
-
-	# Decrease
-	@api.multi 
-	def decrease(self):
-		self.value = self.value - 1
-		self.date_modified = fields.datetime.now()
-
-
-	# Reset
-	@api.multi 
-	def reset(self):
-		self.value = 1
-		self.date_modified = fields.datetime.now()
-
-
-
-
-
-
-
-# ----------------------------------------------------------- Primitives ------------------------------------------------------
-
-	# Vspace 
-	vspace = fields.Char(
-			' ', 
-			readonly=True
-		)
 
 
 	# Date created 
@@ -148,5 +137,28 @@ class counter(models.Model):
 			#readonly=True,
 			required=True, 
 			)
+
+
+	# Vspace 
+	vspace = fields.Char(
+			' ', 
+			readonly=True
+		)
+
+
+
+
+
+# ----------------------------------------------------------- Actions ------------------------------------------------------
+
+	# Increase
+	@api.multi 
+	def increase(self):
+
+		self.value = self.value + 1
+		
+		self.date_modified = fields.datetime.now()
+
+	# increase
 
 

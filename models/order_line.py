@@ -6,6 +6,9 @@
 from openerp import models, fields, api
 import openerp.addons.decimal_precision as dp
 
+import def_funcs
+
+
 
 class sale_order_line(models.Model):
 
@@ -21,31 +24,23 @@ class sale_order_line(models.Model):
 
 
 
-# ----------------------------------------------------------- Patient Lines - Extremely Dangerous !!! ------------------------------------------------------
 
-	# Patient Line  
-	#patient_line_id = fields.Many2one(
+
+# ----------------------------------------------------------- Blocked ------------------------------------------------------
+
+	# Product 
+	product_id = fields.Many2one(
+			'product.product', 
+			string='Product', 
+			domain=[('sale_ok', '=', True)], 
+			change_default=True, 
 			
-	#		'openhealth.patient.line',
-			
-	#		ondelete='cascade', 
-			
-			#string="Tratamiento",
-			#readonly=False, 
-	#	)
+			#default=lambda self: self._get_default_id('product'),
+			default=lambda self: def_funcs._get_default_id(self, 'product'),
 
-
-	# Correct
-	#@api.multi
-	#def x_reset(self):  
-	#	print 
-	#	print 'Order Line Reset'
-	#	self.product_uom_qty = 0 
-
-
-
-
-
+			ondelete='restrict', 
+			required=True
+		)
 
 
 

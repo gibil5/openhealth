@@ -14,22 +14,31 @@
 
 					<header>
 
+<!--
+								states="paid"
+-->
 						<!-- Generate --> 
 						<button 
 								type="object" 
 								class="oe_highlight"
-								states="paid"
+								
+								states="sale"
+								
 								name="go_back"
 
 								string="Regresar"
 						/>
 
-
+<!--
+								statusbar_visible="draft, paid, done"
+-->
 						<!-- State --> 
 						<field 	name="state" 
 								widget="statusbar" 
 								invisible="0"
-								statusbar_visible="draft, paid, done"
+
+								statusbar_visible="draft, sale, done"
+						
 						/>
 					</header>
 

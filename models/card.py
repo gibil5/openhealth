@@ -4,7 +4,8 @@
 # 		*** OPEN HEALTH - Card 
 # 
 # Created: 				25 Aug 2017
-# Last updated: 	 	25 Aug 2017
+# Last mod: 			16 Jun 2018
+#
 
 
 from openerp import models, fields, api
@@ -44,7 +45,6 @@ class Card(models.Model):
 	@api.model
 	def _get_default_name(self):
 
-
 		name_ctr = 'vip'
  		counter = self.env['openhealth.counter'].search([
 																('name', '=', name_ctr), 
@@ -53,19 +53,10 @@ class Card(models.Model):
 																limit=1,
 															)
 
-		#default_name = '13'
-
-
 		name = count_funcs.get_name(self, counter.prefix, counter.separator, counter.padding, counter.value)
 
 		counter.increase()
 
-
-		#if counter.total != False: 
-		#default_name = counter.total
-		
-		
-		#return default_name
 		return name
 
 

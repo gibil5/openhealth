@@ -20,7 +20,7 @@
 	'description': """
 
 
-		16 June 2018 
+		18 June 2018 
 
 		Full Fulcrum version 
 		

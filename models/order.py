@@ -5,7 +5,7 @@
 # 
 # Created: 				26 Aug 2016
 #
-# Last mod: 			16 Jun 2018
+# Last mod: 			18 Jun 2018
 # 
 
 from openerp import models, fields, api
@@ -17,21 +17,186 @@ import math
 from openerp import tools
 import count_funcs
 
+import def_funcs
+
 
 class sale_order(models.Model):
 	
 	_inherit='sale.order'
+	#_inherits={'sale.order','openhealth.ticket'}
+
 	
+
+
+
+
+# ----------------------------------------------------------- Locked ------------------------------------------------------
+
+	# States 
+	READONLY_STATES = {
+		'draft': 		[('readonly', False)], 
+		'sent': 		[('readonly', False)], 
+		'sale': 		[('readonly', True)], 
+		'cancel': 		[('readonly', True)], 
+		'editable': 	[('readonly', False)], 	
+	}
+
+
+
+	# Patient 
+	patient = fields.Many2one(
+			'oeh.medical.patient',
+			string='Paciente', 
+			#required=False, 
+
+			default=lambda self: def_funcs._get_default_id(self, 'patient'),
+
+			states=READONLY_STATES, 
+		)
+
+
+
+	# Doctor 
+	x_doctor = fields.Many2one(
+			'oeh.medical.physician',
+			string = "Médico",
+
+			default=lambda self: def_funcs._get_default_id(self, 'doctor'),
+
+			states=READONLY_STATES, 
+		)
+
+
+	# Treatment 
+	treatment = fields.Many2one(
+			'openhealth.treatment',
+			ondelete='cascade', 
+			string="Tratamiento",
+			#readonly=False, 
+			
+			states=READONLY_STATES, 
+		)
+
+
+
+	# Family 
+	x_family = fields.Selection(
+			string = "Familia", 	
+			selection = [
+							('product','Producto'), 
+							('consultation','Consulta'), 
+							('procedure','Procedimiento'), 
+							('cosmetology','Cosmiatría'), 
+			], 
+			required=False, 
+
+			states=READONLY_STATES, 
+		)
+
+
+
+	# Product
+	x_product = fields.Char(		
+			string="Producto",	
+			required=False, 			
+
+			states=READONLY_STATES, 
+		)
+
+
+
+
+	# Type 
+	x_type = fields.Selection(
+			[	('receipt', 			'Boleta'),
+				('invoice', 			'Factura'),
+				('advertisement', 		'Canje Publicidad'),
+				('sale_note', 			'Canje NV'),
+				('ticket_receipt', 		'Ticket Boleta'),
+				('ticket_invoice', 		'Ticket Factura'),	], 			
+			string='Tipo', 
+			required=False,
+
+			states={	
+					'draft': [('readonly', True)], 
+					'sent': [('readonly', True)], 
+					'sale': [('readonly', True)], 
+					'editable': [('readonly', False)], 
+				}, 
+		)
+
+
+
+
+	# Serial Number 
+	x_serial_nr = fields.Char(
+			'Número de serie',
+
+			states=READONLY_STATES, 
+		)
+
+
+
+	# Order Line 
+	order_line = fields.One2many(
+			'sale.order.line', 
+			'order_id', 
+			string='Order Lines', 
+			#readonly=False, 
+
+			states=READONLY_STATES, 
+		)
 
 
 
 
 # ----------------------------------------------------------- Counters ------------------------------------------------------
 
+	# Ticket Receipt 
 	counter_tkr = fields.Many2one(
-
 			'openhealth.counter', 
 
+			default=lambda self: self._get_default_counter('tkr'),
+		)
+
+
+	# Ticket Invoice 
+	counter_tki = fields.Many2one(
+			'openhealth.counter', 
+
+			default=lambda self: self._get_default_counter('tki'),
+		)
+
+
+	# Receipt 
+	counter_rec = fields.Many2one(
+			'openhealth.counter', 
+
+			default=lambda self: self._get_default_counter('rec'),
+		)
+
+
+	# Invoice 
+	counter_inv = fields.Many2one(
+			'openhealth.counter', 
+
+			default=lambda self: self._get_default_counter('inv'),
+		)
+
+
+	# Sale Note 
+	counter_san = fields.Many2one(
+			'openhealth.counter', 
+
+			default=lambda self: self._get_default_counter('san'),
+		)
+
+
+	# Advertisement  
+	counter_adv = fields.Many2one(
+			'openhealth.counter', 
+
+			default=lambda self: self._get_default_counter('adv'),
 		)
 
 
@@ -39,141 +204,170 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Actions ------------------------------------------------------
-
-	# Update Jan 
-	@api.multi
-	def update_type_legacy_jan(self):
-
-		print 
-		print 'Update Type Legacy Jan'
 
 
-		# Legacy
- 		models = self.env['sale.order'].search([
-																('date_order', '>=', '2018-01-01'), 
-																('date_order', '<', '2018-02-01'), 
-																#('date_order', '>=', '2018-02-01'), 
-																#('date_order', '<', '2018-03-01'), 
-																#('date_order', '>=', '2018-03-01'), 
-																#('date_order', '<', '2018-04-01'), 
+# ----------------------------------------------------------- Action Confirm ------------------------------------------------------
 
-													],
-																order='date_order asc',
-																#limit=1000,
-												)
- 		print models
-
- 		for model in models: 
- 			#print model.date_order
- 			if model.x_type == False: 
- 				model.update_type_legacy()
- 		#print 
-
-
-
-
-
-	# Update Feb
-	@api.multi
-	def update_type_legacy_feb(self):
+	# Action confirm 
+	@api.multi 
+	def action_confirm_nex(self):
 
 		print 
-		print 'Update Type Legacy Feb'
-
-
-		# Legacy
- 		models = self.env['sale.order'].search([
-																#('date_order', '>=', '2018-01-01'), 
-																#('date_order', '<', '2018-02-01'), 
-																('date_order', '>=', '2018-02-01'), 
-																('date_order', '<', '2018-03-01'), 
-																#('date_order', '>=', '2018-03-01'), 
-																#('date_order', '<', '2018-04-01'), 
-
-													],
-																order='date_order asc',
-																#limit=1000,
-												)
- 		print models
-
- 		for model in models: 
- 			#print model.date_order
- 			if model.x_type == False: 
- 				model.update_type_legacy()
- 		#print 
-
-
-
-
-
-
-	# Update Mar
-	@api.multi
-	def update_type_legacy_mar(self):
-
+		print 'Action confirm - Nex'
 		print 
-		print 'Update Type Legacy Mar'
+		
+
+		_h_counter = {
+						'ticket_receipt':  self.counter_tkr, 
+						'ticket_invoice':  self.counter_tki, 
+						'receipt':  self.counter_rec, 
+						'invoice':  self.counter_inv, 
+						'sale_note':  self.counter_san, 
+						'advertisement':  self.counter_adv, 
+		}
 
 
-		# Legacy
- 		models = self.env['sale.order'].search([
-																#('date_order', '>=', '2018-01-01'), 
-																#('date_order', '<', '2018-02-01'), 
-																#('date_order', '>=', '2018-02-01'), 
-																#('date_order', '<', '2018-03-01'), 
-																('date_order', '>=', '2018-03-01'), 
-																('date_order', '<', '2018-04-01'), 
 
-													],
-																order='date_order asc',
-																#limit=1000,
-												)
- 		print models
+#Write your logic here - Begin
 
- 		for model in models: 
- 			#print model.date_order
- 			if model.x_type == False: 
- 				model.update_type_legacy()
- 		#print 
+		# Serial Number and Type
+		if self.x_payment_method.saledoc != False: 
 
+			print 'Serial number and Type'
+			
+			self.x_type = self.x_payment_method.saledoc
 
 
 
 
+			# Counter 
+			counter = _h_counter[self.x_type]
+
+			prefix = counter.prefix
+			value = counter.value
+			padding = counter.padding
+			separator = '-'
+
+			counter.increase()				# Here !!!
+
+			self.x_serial_nr = prefix + separator + str(value).zfill(padding)
 
 
 
 
 
- 	# Update Type Legacy 
-	@api.multi
-	def update_type_legacy(self):
-
-		print 
-		print 'Update Type Legacy'
+		# Doctor User Name - For Sale Reporting 
+		if self.x_doctor.name != False: 
+			uid = self.x_doctor.x_user_name.id
+			self.x_doctor_uid = uid
 
 
+#Write your logic here - End 
 
-		# Legacy
- 		model = self.env['openhealth.legacy.order'].search([
-																#('name', '=', name), 
-																#('NombreCompleto', '!=', 'AAA'), 
 
-																('serial_nr', '=', self.x_serial_nr), 
-													
-													],
-																#order='FechaFactura_d desc',
-																limit=1,
-												)
- 		print model.serial_nr
- 		print model.tipodocumento
- 		print 
 
- 		if self.x_type == False: 
+		# The actual procedure 
+		res = super(sale_order, self).action_confirm()
 
- 			#if model.tipodocumento in ord_vars._dic_type_leg: 
- 			self.x_type = ord_vars._dic_type_leg[model.tipodocumento]
+
+
+#Write your logic here - Begin 
+		
+		# Date must be that of the Sale, not the budget. 
+		self.date_order = datetime.datetime.now()
+
+
+		# Update Descriptors (family and product) 
+		self.update_descriptors()
+
+
+		# Change Appointment State - To Invoiced 
+		self.update_appointment()
+
+
+		# Vip Card - Detect and Create 
+		self.detect_create_card()
+
+
+
+
+
+		# In progress !
+
+		# Create Proc 
+		#self.treatment.create_procedure()
+
+
+
+
+		# Deprecated !
+
+		# Reserve Machine 			
+		#if self.x_family == 'procedure': 
+		#	self.reserve_machine()
+
+		# Stock Picking - Validate 		
+		#print 'Picking'
+		#self.validate_stock_picking()
+		#self.do_transfer()
+		
+
+	# action_confirm_nex
+
+
+
+
+
+# ----------------------------------------------------------- Create Card ------------------------------------------------------
+
+	# Create Card Vip 
+	@api.multi 
+	def detect_create_card(self):
+
+
+		# Detect if Card in Sale 
+		sale_card = False 
+
+		for line in self.order_line:
+			if line.product_id.x_name_short == 'vip_card':
+				sale_card = True
+
+
+
+
+		# If Card in Sale  
+		if sale_card:
+
+
+			# Search Card in the Db
+			card = self.env['openhealth.card'].search([ ('patient_name', '=', self.partner_id.name), ], order='date_created desc', limit=1)
+			
+
+
+			# If it does not exist - Create 
+			if card.name == False: 
+				card = self.env['openhealth.card'].create({
+																'patient_name': self.partner_id.name,
+															})
+
+
+
+
+			# Update Partner - Vip Price List 
+			pl = self.env['product.pricelist'].search([
+																('name','=', 'VIP'),
+															],
+															#order='appointment_date desc',
+															limit=1,)
+			self.partner_id.property_product_pricelist = pl
+
+
+
+	# detect_create_card
+
+
+
+
 
 
 
@@ -187,14 +381,6 @@ class sale_order(models.Model):
 			'Delta',
 		)
 
-
-
-
-
-	# Serial Number 
-	x_serial_nr = fields.Char(
-			'Número de serie',
-		)
 
 
 	# Date 
@@ -246,33 +432,23 @@ class sale_order(models.Model):
 		)
 
 
+	
 	# Payment Method 
 	x_payment_method = fields.Many2one(
 			'openhealth.payment_method',
 			string="Pago", 
-		)
-
-
-
-
-	# Type 
-	x_type = fields.Selection(
-			[	('receipt', 			'Boleta'),
-				('invoice', 			'Factura'),
-				('advertisement', 		'Canje Publicidad'),
-				('sale_note', 			'Canje NV'),
-				('ticket_receipt', 		'Ticket Boleta'),
-				('ticket_invoice', 		'Ticket Factura'),	], 			
-			string='Tipo', 
-			required=False,
 
 			states={	
-					'draft': [('readonly', True)], 
-					'sent': [('readonly', True)], 
+					'draft': [('readonly', False)], 
+					'sent': [('readonly', False)], 
 					'sale': [('readonly', True)], 
 					'editable': [('readonly', False)], 
 				}, 
 		)
+
+
+
+
 
 
 
@@ -291,11 +467,6 @@ class sale_order(models.Model):
 
 
 
-	# Doctor 
-	x_doctor = fields.Many2one(
-			'oeh.medical.physician',
-			string = "Médico",
-		)
 
 	x_doctor_uid = fields.Many2one(
 			'res.users',
@@ -305,25 +476,9 @@ class sale_order(models.Model):
 
 
 
-	# Family 
-	x_family = fields.Selection(
-			string = "Familia", 	
-			selection = [
-							('product','Producto'), 
-							('consultation','Consulta'), 
-							('procedure','Procedimiento'), 
-							('cosmetology','Cosmiatría'), 
-			], 
-			required=False, 
-		)
 
 
 
-	# Product
-	x_product = fields.Char(		
-			string="Producto",	
-			required=False, 			
-		)
 
 
 
@@ -371,13 +526,6 @@ class sale_order(models.Model):
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
 
-	# Treatment 
-	treatment = fields.Many2one(
-			'openhealth.treatment',
-			ondelete='cascade', 
-			string="Tratamiento",
-			readonly=False, 
-		)
 
 
 	@api.onchange('x_doctor')
@@ -413,7 +561,6 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Relationals ------------------------------------------------------
 
 
 # ----------------------------------------------------- Create Order Line ------------------------------------------------------------
@@ -633,22 +780,6 @@ class sale_order(models.Model):
 
 
 
-	# Patient 
-	patient = fields.Many2one(
-			'oeh.medical.patient',
-			string='Paciente', 
-			#compute='_compute_patient', 
-			
-			#required=True, 
-			required=False, 
-
-			#states={
-			#			'cancel': 	[('readonly', True)], 
-			#			'done': 	[('readonly', True)], 
-			#			'sent': 	[('readonly', True)], 
-			#			'sale': 	[('readonly', True)], 
-			#		}, 
-		)
 
 
 
@@ -667,20 +798,6 @@ class sale_order(models.Model):
 
 
 
-	# Order Line 
-	order_line = fields.One2many(
-			'sale.order.line', 
-			'order_id', 
-			string='Order Lines', 
-			readonly=False, 
-
-			states={
-						'cancel': 	[('readonly', True)], 
-						'done': 	[('readonly', True)], 
-						'sent': 	[('readonly', True)], 
-						'sale': 	[('readonly', True)], 
-					}, 
-		)
 
 
 
@@ -1027,161 +1144,7 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Create Card ------------------------------------------------------
 
-	# Create Vip Card 
-	@api.multi 
-	def create_card(self):
-
-		# Detect 
-		card_sale = False 
-		order_line = self.order_line
-		for line in order_line:
-			if line.product_id.x_name_short == 'vip_card':
-				card_sale = True
-
-
-		# If Detected 
-		if card_sale:
-
-			
-			# Search 
-			card = self.env['openhealth.card'].search([ ('patient_name', '=', self.partner_id.name), ], order='date_created desc', limit=1)
-			
-
-			# Create
-			if card.name == False: 
-				card = self.env['openhealth.card'].create({
-																	'patient_name': self.partner_id.name,
-															})
-
-
-
-			# Serarch Pricelist 
-			pl = self.env['product.pricelist'].search([
-																('name','=', 'VIP'),
-															],
-															#order='appointment_date desc',
-															limit=1,)
-
-			# Update Partner 
-			self.partner_id.property_product_pricelist = pl
-
-
-
-
-
-
-# ----------------------------------------------------------- Action Confirm ------------------------------------------------------
-
-	# Action confirm 
-	@api.multi 
-	#def action_confirm(self):
-	def action_confirm_nex(self):
-
-		print 
-		#print 'Action confirm - Overridden'
-		print 'Action confirm - Nex'
-		 
-		
-
-#Write your logic here - Begin
-
-		# Serial Number and Type
-		if self.x_payment_method.saledoc != False: 
-
-			print 'Serial number and Type'
-			
-			self.x_type = self.x_payment_method.saledoc
-
-
-
-
-	 		# Counter 
-	 		counter = self.env['openhealth.counter'].search([
-																	('name', '=', self.x_type), 
-																],
-																	#order='write_date desc',
-																	limit=1,
-																)
-
-
-			#name = count_funcs.get_name(self, counter.prefix, counter.separator, counter.padding, counter.value)
-			#name = prefix + str(value).zfill(padding)			
-			#self.x_serial_nr = name
-
-			prefix = counter.prefix
-			value = counter.value
-			padding = counter.padding
-			separator = '-'
-
-			counter.increase()				# Here !
-
-			
-			#self.x_serial_nr = prefix + str(value).zfill(padding)
-			self.x_serial_nr = prefix + separator + str(value).zfill(padding)
-
-
-
-
-
-
-
-		# Doctor User Name - For Sale Reporting 
-		if self.x_doctor.name != False: 
-			#print 'Dr name'
-			uid = self.x_doctor.x_user_name.id
-			self.x_doctor_uid = uid
-
-#Write your logic here - End 
-
-
-
-		# The actual procedure 
-		res = super(sale_order, self).action_confirm()
-		#Write your logic here
-		
-
-		
-		# Date must be that of the Sale, not the budget. 
-		self.date_order = datetime.datetime.now()
-
-
-
-		# Update Descriptors (family and product) 
-		self.update_descriptors()
-
-
-
-		# Change Appointment State - To Invoiced 
-		self.update_appointment()
-
-
-
-		# Create Proc 
-		#self.treatment.create_procedure()
-
-
-
-		# Vip Card 
-		self.create_card()
-
-
-
-
-		# Reserve Machine if Procedure 					# Deprecated !
-		#if self.x_family == 'procedure': 
-		#	self.reserve_machine()
-
-
-
-		# Stock Picking - Validate 						# Deprecated !
-		#print 'Picking'
-		#self.validate_stock_picking()
-		#self.do_transfer()
-		
-
-	# action_confirm	
 
 
 

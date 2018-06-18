@@ -1516,3 +1516,101 @@
 
 
 
+
+
+
+# 16 Jun 2018 
+
+			# Deprecated 
+			#
+		 	#	counter = self.env['openhealth.counter'].search([
+			#															('name', '=', self.x_type), 
+			#														],
+			#															#order='write_date desc',
+			#															limit=1,
+			#														)
+
+
+
+
+
+# 18 Jun 2018 
+
+
+# ----------------------------------------------------------- Defaults ------------------------------------------------------
+
+	#def _get_default_id(self, x_type):
+
+	#	print 
+	#	print 'Get Default Id'
+	#	print x_type
+
+	#	_h_vars = {
+	#				'patient' : 	('oeh.medical.patient','REVILLA RONDON JOSE JAVIER'), 
+	#				'doctor' : 		('oeh.medical.physician','Dr. Chavarri'), 
+	#	}
+		
+	#	model = _h_vars[x_type][0]
+	#	name = _h_vars[x_type][1]
+		
+	#	print model
+	#	print name 
+
+ 	#	obj = self.env[model].search([
+	#									('name', '=', name), 
+	#								],
+									#order='write_date desc',
+	#								limit=1,
+	#							)
+	#	print obj
+	#	return obj.id
+	# _get_default_id
+
+
+
+
+
+	# Get Defaults
+	#@api.model
+	#def _get_default_counter_tkr(self):
+	#	print 
+	#	print 'Get Default'
+	#	print 
+	#	name = 'ticket_receipt'
+ 	#	counter = self.env['openhealth.counter'].search([
+	#															('name', '=', name), 
+	#													],
+															#order='write_date desc',
+	#														limit=1,
+	#													)
+	#	return counter
+	# _get_default_counter_tkr
+
+
+
+	def _get_default_counter(self, x_type):
+		print 
+		print 'Get Default Counter'
+		print x_type
+		_h_name = {
+					'tkr' : 	'ticket_receipt', 
+					'tki' : 	'ticket_invoice', 
+					'rec' : 	'receipt', 
+					'inv' : 	'invoice', 
+					'san' : 	'sale_note', 
+					'adv' : 	'advertisement', 
+		}
+		name = _h_name[x_type]
+ 		counter = self.env['openhealth.counter'].search([
+																('name', '=', name), 
+														],
+															#order='write_date desc',
+															limit=1,
+														)
+		print counter
+		print 
+		return counter
+	# _get_default_counter
+
+
+

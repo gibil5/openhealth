@@ -329,3 +329,34 @@ class sale_order_line(models.Model):
 	#	required=False, 
 	#	ondelete='cascade', index=True, copy=False
 	#)
+
+
+
+
+
+
+# 17 Jun 2018 
+# ----------------------------------------------------------- Patient Lines - Extremely Dangerous !!! ------------------------------------------------------
+
+	# Patient Line  
+	#patient_line_id = fields.Many2one(
+			
+	#		'openhealth.patient.line',
+			
+	#		ondelete='cascade', 
+			
+			#string="Tratamiento",
+			#readonly=False, 
+	#	)
+
+
+	# Correct
+	#@api.multi
+	#def x_reset(self):  
+	#	print 
+	#	print 'Order Line Reset'
+	#	self.product_uom_qty = 0 
+
+
+
+

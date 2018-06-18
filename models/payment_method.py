@@ -18,8 +18,18 @@ class PaymentMethod(models.Model):
 
 
 
+# ----------------------------------------------------------- Locked ------------------------------------------------------
 
-# ----------------------------------------------------------- Relational ------------------------------------------------------
+	# States 
+	READONLY_STATES = {
+		'draft': 		[('readonly', False)], 
+		#'payment': 	[('readonly', True)], 
+		#'generated': 	[('readonly', True)], 
+		'sale': 		[('readonly', False)], 
+		'done': 		[('readonly', True)], 	
+	}
+
+
 
 	# Lines 
 	pm_line_ids = fields.One2many(
@@ -27,9 +37,61 @@ class PaymentMethod(models.Model):
 			'payment_method',
 			string="Pago #", 
 			
-			#states=READONLY_STATES, 
+			states=READONLY_STATES, 
 		)
 
+
+	# Total 
+	total = fields.Float(
+			string = 'Total a pagar', 
+			required=True, 
+
+			states=READONLY_STATES, 
+			
+			#states={	
+			#		'draft': [('readonly', False)], 
+			#		'sale': [('readonly', False)], 
+			#		'done': [('readonly', True)], 
+			#	}, 
+		)
+
+
+	# Saledoc 
+	saledoc = fields.Selection(
+			string="Tipo", 
+
+			selection=pm_vars._sale_doc_type_list, 
+			
+			states=READONLY_STATES, 
+
+			#states={	
+			#		'draft': [('readonly', False)], 
+			#		'sale': [('readonly', False)], 
+			#		'done': [('readonly', True)], 
+			#	}, 
+		)
+
+
+
+	# DNI 
+	dni = fields.Char(
+			'DNI', 
+			states=READONLY_STATES, 
+		)
+
+
+	# Firm 
+	firm = fields.Char(
+			'Razón social',
+			states=READONLY_STATES, 
+		)
+
+
+	# Ruc
+	ruc = fields.Char(
+			'Ruc', 
+			states=READONLY_STATES, 
+		)
 
 
 
@@ -52,16 +114,24 @@ class PaymentMethod(models.Model):
 
 	# state 
 	state = fields.Selection(
+
 			selection = [
 							('draft', 'Inicio'),
-							('paid', 'Pagado'),
-							('done', 'Confirmado'),
+
+							#('paid', 'Pagado'),
+							('sale', 'Pagado'),
+							
+							#('done', 'Confirmado'),
+							('done', 'Completo'),
+
 						], 
+		
 			string='Estado',	
 			default='draft',
 
 			compute="_compute_state",
 		)
+
 
 
 	@api.multi
@@ -71,7 +141,8 @@ class PaymentMethod(models.Model):
 		for record in self:
 			record.state = 'draft'
 			if record.balance == 0.0		and		record.saledoc != False:
-				record.state = 'paid'
+				#record.state = 'paid'
+				record.state = 'sale'
 			if record.confirmed:
 				record.state = 'done'
 
@@ -167,14 +238,6 @@ class PaymentMethod(models.Model):
 
 
 
-# ----------------------------------------------------------- Constants ------------------------------------------------------
-	# States 
-	READONLY_STATES = {
-		'draft': 		[('readonly', False)], 
-		'payment': 		[('readonly', True)], 
-		#'generated': 	[('readonly', True)], 
-		'done': 		[('readonly', True)], 	
-	}
 
 
 
@@ -201,13 +264,6 @@ class PaymentMethod(models.Model):
 
 
 
-	# Total 
-	total = fields.Float(
-			string = 'Total a pagar', 
-			required=True, 
-
-			#states=READONLY_STATES, 
-		)
 
 
 
@@ -221,14 +277,7 @@ class PaymentMethod(models.Model):
 
 
 
-	# Saledoc 
-	saledoc = fields.Selection(
-			string="Tipo", 
 
-			selection=pm_vars._sale_doc_type_list, 
-			
-			#states=READONLY_STATES, 
-		)
 
 
 
@@ -258,15 +307,6 @@ class PaymentMethod(models.Model):
 			required=True, 
 			readonly=True, 
 		)
-	dni = fields.Char(
-			'DNI', 
-		)
-	firm = fields.Char(
-			'Razón social',
-		)
-	ruc = fields.Char(
-			'Ruc', 
-		)
 
 
 
@@ -294,7 +334,8 @@ class PaymentMethod(models.Model):
 
 		# State 
 		if self.balance == 0.0:
-			self.state = 'paid'
+			#self.state = 'paid'
+			self.state = 'sale'
 
 	# _onchange_saledoc
 
@@ -367,12 +408,10 @@ class PaymentMethod(models.Model):
 	@api.multi
 	def write(self,vals):
 
-		print 'jx'
-		print 'Payment Method  - Write'
-		#print 
-		print vals
+		#print 'jx'
+		#print 'Payment Method  - Write'
+		#print vals
 		#print self.partner.name
-
 
 
 		# Update Partner 
@@ -395,6 +434,7 @@ class PaymentMethod(models.Model):
 		#Write your logic here
 
 		return res
+	# write 
 
 
 
@@ -410,4 +450,5 @@ class PaymentMethod(models.Model):
 		#Write your logic here
 
 		return res
+	# create 
 

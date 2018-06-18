@@ -184,51 +184,45 @@ class sale_order(models.Model):
 
 
 	# Ticket Receipt 
-	counter_tkr = fields.Many2one(
-			'openhealth.counter', 
-
-			default=lambda self: self._get_default_counter('tkr'),
-		)
+	#counter_tkr = fields.Many2one(
+	#		'openhealth.counter', 
+	#		default=lambda self: self._get_default_counter('tkr'),
+	#	)
 
 
 	# Ticket Invoice 
-	counter_tki = fields.Many2one(
-			'openhealth.counter', 
-
-			default=lambda self: self._get_default_counter('tki'),
-		)
+	#counter_tki = fields.Many2one(
+	#		'openhealth.counter', 
+	#		default=lambda self: self._get_default_counter('tki'),
+	#	)
 
 
 	# Receipt 
-	counter_rec = fields.Many2one(
-			'openhealth.counter', 
-
-			default=lambda self: self._get_default_counter('rec'),
-		)
+	#counter_rec = fields.Many2one(
+	#		'openhealth.counter', 
+	#		default=lambda self: self._get_default_counter('rec'),
+	#	)
 
 
 	# Invoice 
-	counter_inv = fields.Many2one(
-			'openhealth.counter', 
-
-			default=lambda self: self._get_default_counter('inv'),
-		)
+	#counter_inv = fields.Many2one(
+	#		'openhealth.counter', 
+	#		default=lambda self: self._get_default_counter('inv'),
+	#	)
 
 
 	# Sale Note 
-	counter_san = fields.Many2one(
-			'openhealth.counter', 
-
-			default=lambda self: self._get_default_counter('san'),
-		)
+	#counter_san = fields.Many2one(
+	#		'openhealth.counter', 
+	#		default=lambda self: self._get_default_counter('san'),
+	#	)
 
 
 	# Advertisement  
-	counter_adv = fields.Many2one(
-			'openhealth.counter', 
-
-			default=lambda self: self._get_default_counter('adv'),
-		)
+	#counter_adv = fields.Many2one(
+	#		'openhealth.counter', 
+	#		default=lambda self: self._get_default_counter('adv'),
+	#	)
 
 
 
@@ -248,14 +242,14 @@ class sale_order(models.Model):
 		print 
 		
 
-		_h_counter = {
-						'ticket_receipt':  self.counter_tkr, 
-						'ticket_invoice':  self.counter_tki, 
-						'receipt':  self.counter_rec, 
-						'invoice':  self.counter_inv, 
-						'sale_note':  self.counter_san, 
-						'advertisement':  self.counter_adv, 
-		}
+		#_h_counter = {
+		#				'ticket_receipt':  self.counter_tkr, 
+		#				'ticket_invoice':  self.counter_tki, 
+		#				'receipt':  self.counter_rec, 
+		#				'invoice':  self.counter_inv, 
+		#				'sale_note':  self.counter_san, 
+		#				'advertisement':  self.counter_adv, 
+		#}
 
 
 
@@ -272,7 +266,14 @@ class sale_order(models.Model):
 
 
 			# Counter 
-			counter = _h_counter[self.x_type]
+			#counter = _h_counter[self.x_type]
+
+		 	counter = self.env['openhealth.counter'].search([
+																		('name', '=', self.x_type), 
+																	],
+																		#order='write_date desc',
+			#															limit=1,
+																	)
 
 			prefix = counter.prefix
 			value = counter.value

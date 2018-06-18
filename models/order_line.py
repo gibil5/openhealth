@@ -35,8 +35,7 @@ class sale_order_line(models.Model):
 			domain=[('sale_ok', '=', True)], 
 			change_default=True, 
 			
-			#default=lambda self: self._get_default_id('product'),
-			default=lambda self: def_funcs._get_default_id(self, 'product'),
+			#default=lambda self: def_funcs._get_default_id(self, 'product'),
 
 			ondelete='restrict', 
 			required=True

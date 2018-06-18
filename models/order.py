@@ -49,7 +49,7 @@ class sale_order(models.Model):
 			string='Paciente', 
 			#required=False, 
 
-			default=lambda self: def_funcs._get_default_id(self, 'patient'),
+			#default=lambda self: def_funcs._get_default_id(self, 'patient'),
 
 			states=READONLY_STATES, 
 		)
@@ -61,7 +61,7 @@ class sale_order(models.Model):
 			'oeh.medical.physician',
 			string = "Médico",
 
-			default=lambda self: def_funcs._get_default_id(self, 'doctor'),
+			#default=lambda self: def_funcs._get_default_id(self, 'doctor'),
 
 			states=READONLY_STATES, 
 		)
@@ -189,13 +189,11 @@ class sale_order(models.Model):
 	#		default=lambda self: self._get_default_counter('tkr'),
 	#	)
 
-
 	# Ticket Invoice 
 	#counter_tki = fields.Many2one(
 	#		'openhealth.counter', 
 	#		default=lambda self: self._get_default_counter('tki'),
 	#	)
-
 
 	# Receipt 
 	#counter_rec = fields.Many2one(
@@ -203,20 +201,17 @@ class sale_order(models.Model):
 	#		default=lambda self: self._get_default_counter('rec'),
 	#	)
 
-
 	# Invoice 
 	#counter_inv = fields.Many2one(
 	#		'openhealth.counter', 
 	#		default=lambda self: self._get_default_counter('inv'),
 	#	)
 
-
 	# Sale Note 
 	#counter_san = fields.Many2one(
 	#		'openhealth.counter', 
 	#		default=lambda self: self._get_default_counter('san'),
 	#	)
-
 
 	# Advertisement  
 	#counter_adv = fields.Many2one(
@@ -275,13 +270,16 @@ class sale_order(models.Model):
 			#															limit=1,
 																	)
 
+		 	# Init 
 			prefix = counter.prefix
 			value = counter.value
 			padding = counter.padding
 			separator = '-'
 
+			# Increase 
 			counter.increase()				# Here !!!
 
+			# Calc Name 
 			self.x_serial_nr = prefix + separator + str(value).zfill(padding)
 
 

@@ -1588,29 +1588,5 @@
 
 
 
-	def _get_default_counter(self, x_type):
-		print 
-		print 'Get Default Counter'
-		print x_type
-		_h_name = {
-					'tkr' : 	'ticket_receipt', 
-					'tki' : 	'ticket_invoice', 
-					'rec' : 	'receipt', 
-					'inv' : 	'invoice', 
-					'san' : 	'sale_note', 
-					'adv' : 	'advertisement', 
-		}
-		name = _h_name[x_type]
- 		counter = self.env['openhealth.counter'].search([
-																('name', '=', name), 
-														],
-															#order='write_date desc',
-															limit=1,
-														)
-		print counter
-		print 
-		return counter
-	# _get_default_counter
-
 
 

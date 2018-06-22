@@ -252,41 +252,36 @@
 							</group>
 							
 							
-
-
 							<group>
 								<field name="doctor" options="{'no_create': True}"	/>
-							</group>
-							<group>
-								<field name="chief_complaint"/>								
-							</group>
-							
-
-
-							
-							<group>
 								<field name="evaluation_start_date"/>
-							</group>
-							<group>							
-								<field name="number_sessions"/>								
-							</group>
-
-
-							<group>
 								<field name="appointment"  	required="0"/>	
-								<field name="vspace"/>
 								<field name="machine"/>
 							</group>
 							<group>
-								<!--
-								<field name="laser"/>
-								-->
+								<field name="chief_complaint"/>								
+								<field name="number_sessions"/>								
 								<field name="number_controls"/>								
-								<field name="vspace"/>
 								<field name="product"/>
 							</group>
+							
+<!--
+							<group>
+							</group>
+							<group>							
+							</group>
+
+							<group>
+							</group>
+							<group>
+							</group>
+-->
 						</group>
 							
+								<!--
+								<field name="vspace"/>
+								<field name="laser"/>
+								-->
 
 
 						<!-- Notebook --> 

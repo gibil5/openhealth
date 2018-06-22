@@ -260,7 +260,6 @@
 										(4, ref('openhealth.asistente_clinicachavarri')),
 
 										(4, ref('openhealth.yochante_clinicachavarri')),
-										(4, ref('openhealth.rgarcia_clinicachavarri')),
 										(4, ref('openhealth.nmendoza_clinicachavarri')),
 										(4, ref('openhealth.mtirado_clinicachavarri')),
 										(4, ref('openhealth.eruiz_clinicachavarri')),
@@ -287,20 +286,21 @@
 
 
 			<field name="users" eval="[ 
-
 										(4, ref('openhealth.plataforma_clinicachavarri')),
 										
 
-										(4, ref('openhealth.ctorrealba_clinicachavarri')),
+
+										(4, ref('openhealth.rgarcia_clinicachavarri')),
+
 
 
 										(4, ref('openhealth.imichelot_clinicachavarri')),
 										(4, ref('openhealth.gnunhez_clinicachavarri')),
 										(4, ref('openhealth.mgrieve_clinicachavarri')),
 										(4, ref('openhealth.ktejada_clinicachavarri')),
-
 										(4, ref('openhealth.cramirez_clinicachavarri')),
 										(4, ref('openhealth.pramirez_clinicachavarri')),
+										(4, ref('openhealth.ctorrealba_clinicachavarri')),
 
 									]"/>
 		</record>

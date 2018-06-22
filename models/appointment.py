@@ -179,7 +179,9 @@ class Appointment(models.Model):
 			
 			('pre_scheduled',	 		'No confirmado'),
 			('Scheduled', 				'Confirmado'),
-			('pre_scheduled_control', 	'Pre-cita'),
+			#('pre_scheduled_control', 	'Pre-cita'),
+			('pre_scheduled_control', 	'Sin Hora (Control)'),
+
 
 			#('event', 					'Evento'),
 			#('invoiced', 				'Facturado'),
@@ -288,23 +290,23 @@ class Appointment(models.Model):
 	# Duration 
 	duration = fields.Float(
 			string="Duración (h)",
-			#readonly=True, 
 			default=0.5,
 
-			#compute='_compute_duration', 
+			#readonly=True, 
+
+			compute='_compute_duration', 				# Very important. So, that the duration will not be changed manually. 
 		)
 
-
-	#@api.multi
-	#@api.depends('x_type')
-	#def _compute_duration(self):	
-	#	for record in self:	
-	#		if record.x_type in ['consultation', 'procedure', 'session']:
-	#			record.duration = 0.5
-	#		elif record.x_type == 'control':
-	#			record.duration = 0.25
-	#		else: 
-	#			record.duration = 0.5
+	@api.multi
+	@api.depends('x_type')
+	def _compute_duration(self):	
+		for record in self:	
+			if record.x_type in ['consultation', 'procedure', 'session']:
+				record.duration = 0.5
+			elif record.x_type == 'control':
+				record.duration = 0.25
+			else: 
+				record.duration = 0.5
 
 
 
@@ -433,13 +435,7 @@ class Appointment(models.Model):
 
 
 
-
-
-
-
-
-
-
+# ----------------------------------------------------------- Error Correction  ------------------------------------------------------
 
 	# Number of clones  
 	nr_clones = fields.Integer(
@@ -454,10 +450,8 @@ class Appointment(models.Model):
 																						('doctor','=', record.doctor.name),
 																					]) 
 			if record.nr_clones > 1:
-				record.state = 'error'
-
-
-
+				#record.state = 'error'
+				print 'Error'
 
 
 
@@ -469,19 +463,14 @@ class Appointment(models.Model):
 	@api.multi
 	def _compute_nr_mac_clones(self):
 		for record in self:
-
 			if record.x_machine != False: 
-
 				record.nr_mac_clones =	self.env['oeh.medical.appointment'].search_count([
-
-																						('appointment_date','=', record.appointment_date),
-
-																						('x_machine','=', record.x_machine),
-					
+																							('appointment_date','=', record.appointment_date),
+																							('x_machine','=', record.x_machine),
 																					]) 
 				if record.nr_mac_clones > 1:
-					record.state = 'error'
-
+					#record.state = 'error'
+					print 'Error'
 			else:
 				record.nr_mac_clones = 1 
 
@@ -491,6 +480,8 @@ class Appointment(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Vars   ------------------------------------------------------
 
 	# Type Calendar 
 	_type_cal_dic = {

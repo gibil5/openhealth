@@ -349,9 +349,16 @@ def create_controls_go(self):
 
 
 # Loop 
-	# Date dictionary - Number of days for controls 
+	# Date dictionary - Interals - Number of days for controls 
 	k_dic = {
-				0 :	7,
+				#0 :	7,
+				#1 :	15,
+				#2 :	30,
+				#3 :	60,
+				#4 :	120,
+				#5 :	180,
+
+				0 :	0,
 				1 :	15,
 				2 :	30,
 				3 :	60,

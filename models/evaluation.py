@@ -307,7 +307,7 @@ class Evaluation(models.Model):
 			'oeh.medical.physician',
 			string = "Médico", 				
 			required=True, 
-			readonly=True, 
+			#readonly=True, 
 		)
 
 

@@ -38,6 +38,18 @@
 						/>
 
 
+						<!-- Clean -->
+						<button 
+							type="object" 
+							class="oe_highlight"
+							
+							name="clear_appointments" 
+
+							string="Limpiar Citas" 
+
+							groups="openhealth.roots"
+						/>
+
 
 						<!-- Update Date Record -->
 <!--

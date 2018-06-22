@@ -24,6 +24,18 @@ class Control(models.Model):
 
 
 
+# ----------------------------------------------------------- Re Definition ------------------------------------------------------
+	# Appointment 
+	appointment = fields.Many2one(
+			'oeh.medical.appointment',			
+			string='Cita #', 
+			required=False, 
+			
+			#ondelete='cascade', 
+		)
+
+
+
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
 
 	# state 

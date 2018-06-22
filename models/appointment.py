@@ -404,7 +404,7 @@ class Appointment(models.Model):
 
 
 
-# ----------------------------------------------------------- Relational  ------------------------------------------------------
+# ----------------------------------------------------------- Handles ------------------------------------------------------
 
 	consultation = fields.Many2one('openhealth.consultation',
 			string="Consulta",
@@ -421,14 +421,21 @@ class Appointment(models.Model):
 			#ondelete='cascade', 
 		)
 
+
+
+
+
+	# Appointment is Deleted if Session/Control is Deleted ***
 	session = fields.Many2one('openhealth.session',
 			string="Sesión",
-			#ondelete='cascade', 
+
+			ondelete='cascade', 
 		)
 
 	control = fields.Many2one('openhealth.control',
 			string="Control",		
-			#ondelete='cascade', 
+
+			ondelete='cascade', 
 		)
 
 
@@ -592,19 +599,27 @@ class Appointment(models.Model):
 		for record in self:
 
 			#separator = ' - '
-			#separator = '-'
 			separator = ' '
 
-			# Patient or Event 
-			#record.x_display = record.x_patient_name_short + ' - '  + record.x_doctor_code + ' - ' + record.x_type_cal + ' - ' + record.x_state_short
-			#record.x_display = record.x_patient_name_short + ' - '  + record.x_doctor_code + ' - ' + record.x_type_cal 		# + ' - ' + record.x_state_short
-			#record.x_display = record.x_patient_name_short + ' - '  + record.x_doctor_code + ' - ' + record.x_state_short
-			record.x_display = record.x_patient_name_short + separator  + record.x_doctor_code + separator + record.x_type_cal + separator + record.x_state_short
+
+			if record.x_type == 'control': 
+
+				record.x_display = record.name + separator  + record.x_doctor_code + separator + record.x_type_cal + separator + record.x_state_short
+
+
+			else: 
+				# Patient or Event 
+				#record.x_display = record.x_patient_name_short + ' - '  + record.x_doctor_code + ' - ' + record.x_type_cal + ' - ' + record.x_state_short
+				#record.x_display = record.x_patient_name_short + ' - '  + record.x_doctor_code + ' - ' + record.x_type_cal 		# + ' - ' + record.x_state_short
+				#record.x_display = record.x_patient_name_short + ' - '  + record.x_doctor_code + ' - ' + record.x_state_short
+				record.x_display = record.x_patient_name_short + separator  + record.x_doctor_code + separator + record.x_type_cal + separator + record.x_state_short
 
 			
+
+
 			# Machine 
-			if record.x_machine != False:
-				record.x_display = record.x_display + ' - ' + record.x_machine_short
+			#if record.x_machine != False:
+			#	record.x_display = record.x_display + ' - ' + record.x_machine_short
 
 
 

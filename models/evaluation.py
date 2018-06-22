@@ -134,7 +134,9 @@ class Evaluation(models.Model):
 			string = "Fecha y hora", 	
 			#default = fields.Date.today, 
 			required=True, 
-			readonly=True, 
+			
+			#readonly=True, 
+			readonly=False, 
 		)
 
 
@@ -318,6 +320,7 @@ class Evaluation(models.Model):
 			'oeh.medical.appointment',			
 			string='Cita #', 
 			required=False, 
+			
 			#ondelete='cascade', 
 		)
 

@@ -28,6 +28,21 @@ class Patient(models.Model):
 
 
 
+# ----------------------------------------------------------- Clear Apps ------------------------------------------------------
+
+	# Dates 
+	@api.multi 
+	def clear_appointments(self):
+		
+		print
+		print 'Clear Appointments'
+
+		print self.appointment_ids
+		self.appointment_ids.unlink()
+
+
+
+
 
 # ----------------------------------------------------------- Update Date Record  ------------------------------------------------------
 

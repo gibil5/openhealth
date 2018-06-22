@@ -267,7 +267,7 @@ class sale_order(models.Model):
 																		('name', '=', self.x_type), 
 																	],
 																		#order='write_date desc',
-			#															limit=1,
+																		limit=1,
 																	)
 
 		 	# Init 
@@ -1164,12 +1164,14 @@ class sale_order(models.Model):
 		if self.x_family == 'consultation': 
 			for app in self.treatment.appointment_ids: 
 				if app.x_type == 'consultation': 
-					app.state = 'invoiced'
+					#app.state = 'invoiced'
+					app.state = 'Scheduled'
 
 		if self.x_family == 'procedure': 
 			for app in self.treatment.appointment_ids: 
 				if app.x_type == 'procedure': 
-					app.state = 'invoiced'
+					#app.state = 'invoiced'
+					app.state = 'Scheduled'
 
 
 

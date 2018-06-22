@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 #
-# 	*** Appointment
+# 		*** Appointment
 #
-
+#
 # Created: 				14 Nov 2016
-# Last updated: 	 	01 Dec 2017
+# Last updated: 	 	21 Jun 2018
 
 from openerp import models, fields, api
+
 import datetime
 from . import app_vars
 from . import eval_vars
@@ -14,8 +15,14 @@ import appfuncs
 
 
 class Appointment(models.Model):
+
 	_inherit = 'oeh.medical.appointment'
 
+
+
+
+
+	# ----------------------------------------------------------- Canonical ------------------------------------------------------
 
 	name = fields.Char(
 			string="Cita #", 
@@ -57,8 +64,6 @@ class Appointment(models.Model):
 
 
 
-
-
 	# X Date 
 	x_date = fields.Date(
 			string="Fecha", 
@@ -94,6 +99,9 @@ class Appointment(models.Model):
 
 			#required=True, 
 			required=False, 
+			
+			#readonly=True, 
+			readonly=False, 
 		)
 
 
@@ -165,32 +173,28 @@ class Appointment(models.Model):
 
 
 
+
 	# State 
 	APPOINTMENT_STATUS = [			
 			
-			('Scheduled', 				'Confirmado'),
-			
 			('pre_scheduled',	 		'No confirmado'),
-			
+			('Scheduled', 				'Confirmado'),
 			('pre_scheduled_control', 	'Pre-cita'),
-			
-			('error', 					'Error'),
+
+			#('event', 					'Evento'),
+			#('invoiced', 				'Facturado'),
+			#('error', 					'Error'),
+
+
 
 			#('completed', 				'Completo'),
-			('invoiced', 				'Facturado'),
-
-
-			('event', 					'Evento'),
-
-
-
 
 			# Oe Health 
 			#('Scheduled', 'Scheduled'),
 			#('Completed', 'Completed'),
 			#('Invoiced', 'Invoiced'),
-
 		]
+
 
 	state = fields.Selection(
 			selection = APPOINTMENT_STATUS, 
@@ -269,16 +273,15 @@ class Appointment(models.Model):
 
 
 
-	@api.onchange('x_type')
-	def _onchange_x_type(self):
+	#@api.onchange('x_type')
+	#def _onchange_x_type(self):
+	#	print
+	#	print 'On change type'
+	#	self.duration = 0.5
+		#if self.x_type == 'event': 
+		#	print 'Type equal event'
+		#	self.state = 'event'
 
-		print
-		print 'On change type'
-
-		self.duration = 0.5
-		if self.x_type == 'event': 
-			print 'Type equal event'
-			self.state = 'event'
 
 
 
@@ -359,9 +362,13 @@ class Appointment(models.Model):
 
 
 	# Create procedure 
-	x_create_procedure_automatic = fields.Boolean(			
-			string="¿ Crear Cita para el Procedimiento ?",
-			default=True, 
+	x_create_procedure_automatic = fields.Boolean(
+
+			#string="¿ Crear Cita para el Procedimiento ?",
+			string="¿ Cita para Procedimiento ?",
+			
+			#default=True, 
+			default=False, 
 		)
 
 
@@ -371,12 +378,13 @@ class Appointment(models.Model):
 	# Type 
 	_type_list = [
         			('consultation', 'Consulta'),
-        			('procedure', 'Procedimiento'),
-        			('session', 'Sesión'),
-        			('control', 'Control'),
+        			('procedure', 	'Procedimiento'),
+        			('event', 		'Evento'),
+        			
         			('cosmetology', 'Cosmiatría'),
 
-        			('event', 'Evento'),
+        			('session', 	'Sesión'),
+        			('control', 	'Control'),
         		]
 
 	x_type = fields.Selection(
@@ -484,6 +492,97 @@ class Appointment(models.Model):
 
 
 
+	# Type Calendar 
+	_type_cal_dic = {
+        			#'consultation': 	'C',
+        			#'procedure': 		'P',
+        			#'session': 			'S',        			
+        			#'control': 			'Ctl',
+
+        			'consultation': 	'Con',
+        			'procedure': 		'Pro',
+        			#'event': 			'EVENTO',
+        			'event': 			'Eve',
+        			'control': 			'Ctl',
+        			#'session': 		'S',        			
+
+
+        			#'Consulta': 		'C',
+        			#'Procedimiento': 	'P',
+        			#'Sesion': 			'S',
+        			#'Control': 			'Ctl',
+        		}
+
+	_type_cal_list = [
+        			#('S', 	'S'),
+
+        			#('C', 	'C'),
+        			#('P', 	'P'),
+        			#('Ctl', 'Ctl'),
+
+        			
+        			('Con', 	'Con'),
+        			('Pro', 	'Pro'),
+        			('Ctl', 	'Ctl'),
+
+        			#('EVENTO', 'EVENTO'),
+        			('Eve', 	'Eve'),
+
+
+        			#('consultation', 'C'),
+        			#('procedure', 'P'),
+        			#('session', 'S'),
+        			#('control', 'X'),
+        		]
+
+	x_type_cal = fields.Selection(
+				selection = _type_cal_list, 
+				compute='_compute_x_type_cal', 
+		)
+
+	#@api.multi
+	@api.depends('x_type')
+	def _compute_x_type_cal(self):
+		for record in self:	
+			record.x_type_cal = self._type_cal_dic[record.x_type]
+
+
+
+
+
+
+
+	# State short 
+	_hash_state = {
+						#'Scheduled':				'1',
+						#'pre_scheduled':			'2',
+						#'pre_scheduled_control':	'3',
+						#'event':					'11',
+
+						'Scheduled':				'Conf',
+						'pre_scheduled':			'NConf',
+						'pre_scheduled_control':	'3',
+						'event':					'11',
+
+						
+						#'error':					'55',
+						#'invoiced':					'10',
+						#False:				'', 
+						#'completed':				'20',
+
+					}
+
+	x_state_short = fields.Char(
+			compute='_compute_x_state_short',
+		)
+
+	#@api.multi
+	@api.depends('state')
+	def _compute_x_state_short(self):
+		for record in self:
+			if record.state != False:
+				record.x_state_short = self._hash_state[record.state]
+
 
 
 
@@ -501,8 +600,16 @@ class Appointment(models.Model):
 	def _compute_x_display(self):
 		for record in self:
 
+			#separator = ' - '
+			#separator = '-'
+			separator = ' '
+
 			# Patient or Event 
-			record.x_display = record.x_patient_name_short + ' - '  + record.x_doctor_code + ' - ' + record.x_type_cal + ' - ' + record.x_state_short
+			#record.x_display = record.x_patient_name_short + ' - '  + record.x_doctor_code + ' - ' + record.x_type_cal + ' - ' + record.x_state_short
+			#record.x_display = record.x_patient_name_short + ' - '  + record.x_doctor_code + ' - ' + record.x_type_cal 		# + ' - ' + record.x_state_short
+			#record.x_display = record.x_patient_name_short + ' - '  + record.x_doctor_code + ' - ' + record.x_state_short
+			record.x_display = record.x_patient_name_short + separator  + record.x_doctor_code + separator + record.x_type_cal + separator + record.x_state_short
+
 			
 			# Machine 
 			if record.x_machine != False:
@@ -513,34 +620,6 @@ class Appointment(models.Model):
 
 
 
-	# State short 
-	_hash_state = {
-						#False:				'', 
-						'Scheduled':				'1',
-						'pre_scheduled':			'2',
-						'pre_scheduled_control':	'3',
-						'error':					'55',
-
-						#'completed':				'20',
-						'invoiced':					'10',
-
-						'event':					'11',
-					}
-
-
-
-	x_state_short = fields.Char(
-
-			compute='_compute_x_state_short',
-		)
-
-	#@api.multi
-	@api.depends('state')
-	def _compute_x_state_short(self):
-		for record in self:
-
-			if record.state != False:
-				record.x_state_short = self._hash_state[record.state]
 
 
 
@@ -991,53 +1070,6 @@ class Appointment(models.Model):
 
 
 
-	_type_cal_dic = {
-        			'consultation': 	'C',
-        			'procedure': 		'P',
-        			'session': 			'S',        			
-        			'control': 			'Ctl',
-
-        			'Consulta': 		'C',
-        			'Procedimiento': 	'P',
-        			'Sesion': 			'S',
-        			'Control': 			'Ctl',
-
-        			'event': 			'EVENTO',
-        		}
-
-
-
-	_type_cal_list = [
-        			('C', 	'C'),
-        			('P', 	'P'),
-        			('S', 	'S'),
-        			('Ctl', 'Ctl'),
-
-        			('EVENTO', 	'EVENTO'),
-
-        			#('consultation', 'C'),
-        			#('procedure', 'P'),
-        			#('session', 'S'),
-        			#('control', 'X'),
-        		]
-
-
-	x_type_cal = fields.Selection(
-				selection = _type_cal_list, 
-
-				compute='_compute_x_type_cal', 
-		)
-
-	#@api.multi
-	@api.depends('x_type')
-	
-	def _compute_x_type_cal(self):
-
-		for record in self:	
-			record.x_type_cal = self._type_cal_dic[record.x_type]
-
-
-
 
 
 
@@ -1242,32 +1274,51 @@ class Appointment(models.Model):
 		#print 
 	
 
+		# Return 
+		res = super(Appointment, self).create(vals)
+
+
+
+
+		# Init - Deprecated 
+		#appointment_date = vals['appointment_date']
+		#x_type = vals['x_type']
+		#if 'doctor' in vals:
+		#	doctor = vals['doctor']		
+		#if 'patient' in vals:
+		#	patient = vals['patient']
+		#x_create_procedure_automatic = vals['x_create_procedure_automatic']
+		#if 'treatment' in vals:
+		#	treatment = vals['treatment']
+		#if 'cosmetology' in vals:					# Deprecated !
+		#	cosmetology = vals['cosmetology']
+		
+
+
+		# Init 
+		appointment_date = res.appointment_date
+		x_type = res.x_type
+		x_create_procedure_automatic = res.x_create_procedure_automatic
+		doctor_id = res.doctor.id
+		patient_id = res.patient.id
+		treatment_id = res.treatment.id
+		
+
 		# Create Procedure 
-
-		appointment_date = vals['appointment_date']
-		x_type = vals['x_type']
-		if 'doctor' in vals:
-			doctor = vals['doctor']		
-		if 'patient' in vals:
-			patient = vals['patient']
-		if 'treatment' in vals:
-			treatment = vals['treatment']
-		if 'cosmetology' in vals:
-			cosmetology = vals['cosmetology']
-		x_create_procedure_automatic = vals['x_create_procedure_automatic']
-
 		if x_type == 'consultation'  and  x_create_procedure_automatic:
+		
 			date_format = "%Y-%m-%d %H:%M:%S"
 			adate_con = datetime.datetime.strptime(appointment_date, date_format)
 			delta_fix = datetime.timedelta(hours=1.5)
 			adate_base = adate_con + delta_fix
-			app = appfuncs.create_appointment_procedure(self, adate_base, doctor, patient, treatment, cosmetology, x_create_procedure_automatic)
+
+			#app = appfuncs.create_appointment_procedure(self, adate_base, doctor, patient, treatment, cosmetology, x_create_procedure_automatic)
+			#app = appfuncs.create_appointment_procedure(self, adate_base, doctor, patient, treatment, x_create_procedure_automatic)
+			app = appfuncs.create_appointment_procedure(self, adate_base, doctor_id, patient_id, treatment_id, x_create_procedure_automatic)
 
 
 
 
-		# Return 
-		res = super(Appointment, self).create(vals)
 
 		return res
 	# create - CRUD

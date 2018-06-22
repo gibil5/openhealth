@@ -3,22 +3,22 @@
 	<data>
 
 
+
 		<!-- Form view -->
 		<record model="ir.ui.view" id="view_appointment">
 			<field name="name">oeh.medical.appointment.form</field>
 			<field name="model">oeh.medical.appointment</field>
-
 			<field name="inherit_id" ref="oehealth.oeh_medical_appointment_view"/>			
-			
 			<field name="mode">primary</field>
 			<field name="priority" eval="1"/>
-
-
 			<field name="arch" type="xml">
 
 
 
 				<!-- Remove --> 
+<!--
+								groups="openhealth.roots,openhealth.reception"
+-->
 				<xpath expr="//field[@name='state']" position="before">
 					<div class="oe_left">							
 							<button 
@@ -28,7 +28,7 @@
 					
 								string="Eliminar" 
 
-								groups="openhealth.roots,openhealth.reception"
+								groups="openhealth.roots"
 							/>
 					</div>
 				</xpath>
@@ -94,18 +94,22 @@
 							<field name="x_type"/>
 							
 
-							<field name="x_target"			invisible="0"	
-															
-															attrs="{
-																		'invisible':[('x_type', '=', 'event'),],
-															}"	
+<!--
+														invisible="0"																
+-->
+							<field name="x_target"			
+														invisible="1"
+														attrs="{
+																	'invisible':[('x_type', '=', 'event'),],
+														}"	
 								/>
 
-
-							<field name="x_machine"			attrs="{
-																		'invisible':[('x_type', 'in', ['consultation','event']),],
-															}"	
+<!--
+							<field name="x_machine"		attrs="{
+																	'invisible':[('x_type', 'in', ['consultation','event']),],
+														}"	
 								/>
+-->
 
 				</xpath>
 
@@ -171,19 +175,23 @@
 
 							<field name="appointment_date"/>
 
-							<field name="x_date"			groups="openhealth.roots"	/>
+							<field name="vspace"/>
+
+							<field name="state"/>
 
 							<field name="vspace"/>
 
 
 <!--
-							<field name="duration_sel"/>	
--->
-							<field name="duration"/>	
-
-
+							<field name="duration"	readonly="1"		/>	
 
 							<field name="vspace"/>
+
+
+							<field name="x_date"			groups="openhealth.roots"	/>
+							<field name="duration_sel"/>	
+							<field name="vspace"/>
+-->
 
 <!--
 attrs="{
@@ -193,15 +201,11 @@ attrs="{
 														}"
 -->
 
-							<field name="state"/>
-
-
-
-							<field name="vspace"/>
 
 
 <!--
 																					('x_target', '!=', 'doctor'),
+
 -->
 							<field name="treatment"		
 														attrs="{
@@ -218,6 +222,8 @@ attrs="{
 
 
 
+<!--
+DEPRECATED !
 
 							<field name="cosmetology"			
 														attrs="{
@@ -225,11 +231,7 @@ attrs="{
 																	'invisible':[('x_target', '!=', 'therapist'),],
 														}"	
 													/>
-
-
-
-							<field name="vspace"/>
-							<field name="comments"/>
+-->
 
 						</group>
 
@@ -239,8 +241,11 @@ attrs="{
 
 						<group>
 							<field name="x_create_procedure_automatic"	attrs="{'invisible':[('x_type', '!=', 'consultation')]}"  />
+<!--
 							<field name="vspace"/>							
 							<field name="vspace"/>
+							<field name="comments"/>
+-->
 						</group>
 					</group>
 
@@ -325,8 +330,10 @@ attrs="{
 
 		<!-- Action - Appointment Confirmed -->  
 		<record id="oeh_medical_appointment_action_tree_confirmed" model="ir.actions.act_window">
-					
+<!--					
 					<field name="name">Citas confirmadas</field>
+-->
+					<field name="name">Citas</field>
 
 					<field name="res_model">oeh.medical.appointment</field>
 					<field name="view_type">form</field>
@@ -335,10 +342,11 @@ attrs="{
 
 <!--
 											('state', 'in', ['pre_scheduled','Scheduled', 'completed', 'invoiced']),
+											('state', 'in', ['pre_scheduled','Scheduled', 'invoiced', 'event']),
 -->
 
 					<field name="domain">[
-											('state', 'in', ['pre_scheduled','Scheduled', 'invoiced', 'event']),
+											('state', 'in', ['pre_scheduled','Scheduled']),
 											('x_target', '=', 'doctor'),
 										]
 					</field>
@@ -363,50 +371,84 @@ attrs="{
 
 
 
+		<!-- Appointment Controls -->
+		<record id="oeh_medical_appointment_action_tree_controls" model="ir.actions.act_window">
+<!--
+					<field name="name">Controles - Sin hora</field>
+-->
+					<field name="name">Controles</field>
+
+					<field name="res_model">oeh.medical.appointment</field>
+					<field name="view_type">form</field>
+					<field name="view_mode">calendar,tree,form</field>
+					<field name="domain">[
+											('state', '=', 'pre_scheduled_control'),
+										]
+					</field>
+
+					<field name="context">{
+											'default_x_target': 'doctor',
+											'default_x_type': 'control',
+
+											'default_state': 'pre_scheduled_control',
+										}
+					</field>
+
+					<field name="view_id" eval="False"/>
+		</record>
+
+
+
+
+
+
+
 
 		<!-- Action - Event -->  
+<!--		
 		<record id="appointment_event_action" model="ir.actions.act_window">
-<!--
-					<field name="name">Crear Evento</field>
--->
 					<field name="name">Citas confirmadas</field>
-			
+					<field name="res_model">oeh.medical.appointment</field>
+					<field name="view_type">form</field>
+					<field name="view_mode">calendar,tree,form</field>  
+					<field name="view_id" eval="False"/>
+
+					<field name="domain">[
+											('state', 'in', ['pre_scheduled','Scheduled']),
+											('x_target', '=', 'doctor'),
+										]
+					</field>
+
+					<field name="context">{
+											'default_x_target': 'doctor',
+											'default_x_type': 	'event',
+										}
+					</field>
+		</record>
+-->
+
+
+
+
+
+
+		<!-- Appointment All -->  
+		<record id="oeh_medical_appointment_action_tree_all" model="ir.actions.act_window">
+					<field name="name">Citas confirmadas</field>
 					<field name="res_model">oeh.medical.appointment</field>
 					<field name="view_type">form</field>
 					<field name="view_mode">calendar,tree,form</field>  
 					<field name="view_id" eval="False"/>
 
 <!--
--->
-					<field name="domain">[
-											('state', 'in', ['pre_scheduled','Scheduled', 'invoiced', 'event']),
-											
+											('state', 'in', ['pre_scheduled','Scheduled', 'Completed', 'Invoiced']),
 											('x_target', '=', 'doctor'),
-										]
-					</field>
-
-<!--
-											'default_duration': 	'0.5',
 -->
-					<field name="context">{
-											'default_x_target': 'doctor',
 
-											'default_x_type': 	'event',
-
-											'default_state': 	'event',
-										}
-					</field>
-
-<!--
-					<field name="help" type="html">
-					  <p class="oe_view_nocontent_create">
-						Click to add a new appointment.
-					  </p><p>
-						oeHealth appointment screen can easily find all of your appointment details;
-					  </p>
-					</field>
--->
+					<field name="domain">[]</field>
+		            <field name="context">{}</field>
 		</record>
+
 
 
 

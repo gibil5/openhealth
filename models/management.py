@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 #
-# 	Report Management
+# 	Management Report
 # 
-# Created: 				28 Mayo 2018
+# Created: 				28 May 2018
+# Last updated: 		19 June 2018
 #
 
 from openerp import models, fields, api
@@ -97,7 +98,7 @@ class Management(models.Model):
 
 	# avg Consus 
 	avg_consultations = fields.Float(
-			'Precio Consultas', 
+			'Precio Promedio Consultas', 
 			#default=-1, 
 			#digits=(16,1), 
 		)
@@ -125,7 +126,7 @@ class Management(models.Model):
 
 	# Ratios 
 	ratio_pro_con = fields.Float(
-			'Ratio (proc/con) %', 
+			'Ratio Total (proc/con) %', 
 		)
 
 
@@ -218,8 +219,8 @@ class Management(models.Model):
 			if serial_nr_last != 0:
 				delta = serial_nr - serial_nr_last
 			else:
-				delta = 0 
-
+				delta = 1
+				
 
 			if delta == 2: 
 				self.nr_delta = self.nr_delta + 1
@@ -493,12 +494,13 @@ class Management(models.Model):
 					'Dr. Canales', 
 					'Dr. Gonzales', 
 					'Dr. Monteverde', 
-					'Clinica Chavarri', 
 					'Eulalia', 
 					'Dr. Abriojo', 
 					'Dr. Castillo', 
 					'Dr. Loaiza', 
 					'Dr. Escudero', 
+
+					#'Clinica Chavarri', 
 				]
 
 		# Loop

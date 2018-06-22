@@ -20,7 +20,8 @@ cabriojo@clinicachavarri.com
 
 
 
-<!-- Rodrigo Loayza -->
+<!-- Rodrigo Loayza - Deprecated -->
+<!-- Rodrigo Loaiza -->
 		<record id="rloayza" model="res.partner">
 			<field name="name">Rodrigo Loaiza</field>
 			<field name="email">rloaiza@clinicachavarri.com</field>

@@ -74,16 +74,24 @@
 
 								<field name="nr_procedures"/>
 
+								<field name="nr_products"/>
+							</group>
+
+
+							<group>
 								<field name="nr_procedures_co2"/>
 
 								<field name="nr_procedures_quick"/>
 
-
-								<field name="nr_products"/>
-
 								<field name="nr_medicals"/>
-							</group>
 
+								<field name="nr_cosmetologies"/>
+							</group>
+						</group>
+
+
+
+						<group>					
 							<group>
 								<field name="ratio_pro_con"/>
 
@@ -91,8 +99,10 @@
 
 								<field name="ratio_pro_con_quick"/>
 							</group>
-						</group>
 
+							<group>
+							</group>
+						</group>
 
 
 

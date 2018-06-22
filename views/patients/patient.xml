@@ -4,47 +4,18 @@
 
 
 
-
 		<!-- FORM --> 
 		<record model="ir.ui.view" id="oeh_medical_patient_view">
 			<field name="name">Patient</field>
 			<field name="model">oeh.medical.patient</field>			
 			<field name="type">form</field>
 			<field name="priority" eval="1"/>
-
 			<field name="arch" type="xml">
 				<form string="Patient">
-
-					<!--
-					<field name="name" />						
-					-->
 
 
 					<!-- Header --> 
 					<header>
-						
-						<!--
-						<button name="print_patient_label" string="Historia Clínica" type="object" class="oe_highlight"/>
-						-->
-
-
-
-						<!-- Update --> 
-<!--
-						<button 
-							type="object" 
-							class="oe_highlight"
-							name="x_update" 
-
-							string="Update" 
-						/>
-
-
-							string="Tratamiento" 
-
-
--->
-							
 
 						<button 
 							type="object" 
@@ -56,34 +27,11 @@
 						/>
 
 
-
-
-
-<!--
-Cosmetology 
-						<button 
-							type="object" 
-							class="oe_highlight"
-							name="open_cosmetology_current" 
-
-							string="Ultima Cosmiatría" 							
-						/>
--->
-
-
-
-
-
-
-<!--
-							string="Estado de Cuenta" 
-							groups="openhealth.roots"
--->
-
 						<!-- EC -->
 						<button 
 							type="object" 
 							class="oe_highlight"
+							
 							name="generate_order_report" 
 
 							string="EC" 
@@ -91,22 +39,21 @@ Cosmetology
 
 
 
-
 						<!-- Update Date Record -->
+<!--
 						<button 
 							type="object" 
 							class="oe_highlight"
-
 							name="update_date_record" 
-
 							groups="openhealth.roots"
-
 							string="Update Date Rec" 
 						/>
+-->
 
 
 
 
+						<!-- Right Buttons --> 
 
 						<!-- Deactivate --> 
 						<button 
@@ -117,7 +64,6 @@ Cosmetology
 
 							string="Desactivar" 
 						/>
-
 
 						<!-- Activate --> 
 						<button 
@@ -133,9 +79,16 @@ Cosmetology
 
 
 
-
-
+						<!-- Update --> 
 <!--
+						<button 
+							type="object" 
+							class="oe_highlight"
+							name="x_update" 
+
+							string="Update" 
+						/>
+
 						<button 
 							type="object" 
 							class="oe_highlight"
@@ -144,12 +97,7 @@ Cosmetology
 
 							string="Correct comment" 
 						/>
--->
 
-
-
-
-<!--
 						<button 
 							type="object" 
 							class="oe_highlight"							
@@ -174,15 +122,9 @@ Cosmetology
 
 							string="Eliminar" 							
 						/>
--->
 
-
-
-<!--
 						<field 	name="x_state" 
-
 								widget="statusbar" 
-								
 								statusbar_visible="active, cancel"
 						/>
 -->
@@ -195,42 +137,11 @@ Cosmetology
 					<!-- Sheet -->	
 					<sheet>
 
-
-						<!-- Buttons -->
-						<!--						
-						<div class="oe_right oe_button_box" style="width: 500px;" name="buttons">
-							<button type="action" class="oe_stat_button" name="347" context="{'search_default_patient': active_id,'default_patient': active_id}" icon="fa-calendar">
-								<field string="Citas" name="app_count" widget="statinfo"/>
-							</button>
-
-							<button type="action" class="oe_stat_button" name="348" context="{'search_default_patient': active_id,'default_patient': active_id}" icon="fa-list">
-								<field string="Prescripciones" name="prescription_count" widget="statinfo"/>
-							</button>
-
-							<button type="action" class="oe_stat_button" name="207" context="{'search_default_patient': active_id,'default_patient': active_id}" icon="fa-pencil-square-o">
-								<field string="Facturas" name="invoice_count" widget="statinfo"/>
-							</button>
-
-							<button type="action" class="oe_stat_button" name="349" context="{'search_default_patient': active_id,'default_patient': active_id}" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager" icon="fa-list">
-								<field string="Vaccines" name="vaccine_count" widget="statinfo"/>
-							</button>
-														
-							<button type="action" class="oe_stat_button" name="345" context="{'search_default_patient': active_id,'default_patient': active_id}" icon="fa-building-o">
-								<field string="Admissions" name="admission_count" widget="statinfo"/>
-							</button>
-						</div>
-						-->
-
-						
-
-
 						<!-- Persona --> 
 						<div class="oe_left" style="width: 500px;">
 							<field name="image" widget="image" class="oe_left oe_avatar" options="{&quot;preview_image&quot;: &quot;image_medium&quot;, &quot;size&quot;: [90, 90]}"/>
 							<div class="oe_title">
-
 								<label string="Apellidos" class="oe_edit_only"/>
-								
 								<h1>
 									<field name="name"  class="oe_read_only" />
 								</h1>
@@ -240,9 +151,8 @@ Cosmetology
 
 
 
-						<!-- Button -->
+						<!-- Active Buttons -->
 						<div class="oe_left" style="width: 100px;">
-
 
 
 							<!-- Treatments --> 
@@ -253,40 +163,7 @@ Cosmetology
 										}" 											
 								icon="fa-list">
 								<field string="Tratamientos" name="x_treatment_count" widget="statinfo"/>
-							</button>
-
-
-
-
-							<!-- Cosmetologies --> 
-<!--
--->
-							<button type="action" class="oe_stat_button" 
-
-								name="%(cosmetology_form_action)d"	
-								
-								context="{
-											'search_default_patient': active_id,	
-										}" 	
-
-								icon="fa-list">
-
-								<field string="Cosmiatrías" name="x_nr_cosmetologies" widget="statinfo"/>
-							</button>
-
-
-
-							<!-- Appointments -->
-							<!-- Temp Comment
-							<button type="action" class="oe_stat_button" 
-
-								name="347" 
-								
-								context="{'search_default_patient': active_id,'default_patient': active_id}" 
-								icon="fa-calendar">
-								<field string="Citas" name="app_count" widget="statinfo"/>
-							</button>
-							--> 
+							</button>						
 						</div>
 
 
@@ -295,11 +172,8 @@ Cosmetology
 						<!-- Number Medical history -->
 						<div class="oe_right" >
 							<h1>
-<!--
--->
 								<field string="Número HC:"  name="x_id_code"/>
 								<field string="Número:"  	invisible="1"	name="identification_code"/>
-
 							</h1>
 						</div>
 
@@ -497,11 +371,11 @@ Relax !
 					<field name="x_dni"/>		
 
 
-					<field name="create_date"	string="Fecha de creación"		/>
 					<field name="x_date_record"		groups='openhealth.roots'	/>
 
 
 <!--
+					<field name="create_date"	string="Fecha de creación"		/>
 					<field name="dob"/>
 -->
 					<field name="sex"/>		
@@ -561,6 +435,8 @@ Relax !
 					<field name="x_datetime_created"/>
 					<field name="x_date_created"/>
 -->
+
+
 
 
 
@@ -649,13 +525,6 @@ Relax !
 
 
 
-
-
-
-
-
-
-
 		<!-- ACTION - Inactive -->
 		<record model="ir.actions.act_window" id="patient_inactive_list_action">		
 			<field name="name">Pacientes Inactivos</field>
@@ -703,34 +572,6 @@ Relax !
 				</p>
 			</field>
 		</record>
-
-
-
-
-
-
-
-
-
-
-		<!-- FAVS -->
-		<!-- By Month --> 
-		<!-- By Vip --> 
-<!--		
-		<record id="openhealth.filter_patient_month" model="ir.filters">
-			<field name="name">Por Mes</field>
-			<field name="model_id">oeh.medical.patient</field>
-			<field name="context">{
-									'group_by': ['x_date_created'], 
-									'order':	'x_date_created desc', 
-								}</field>
-		</record>
-		<record id="openhealth.filter_patient_vip" model="ir.filters">
-			<field name="name">Por VIP</field>
-			<field name="model_id">oeh.medical.patient</field>
-			<field name="context">{'group_by': ['x_vip']}</field>
-		</record>
--->
 
 
 	</data>

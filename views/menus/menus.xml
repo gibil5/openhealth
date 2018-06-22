@@ -532,16 +532,15 @@ order_report.xml
 
 
 		<!-- Event --> 
+<!--
 		<menuitem 
 					id="appointment_event_list" 
 					parent="oehealth_appointment_menu"  
 					sequence="2"
-
 					name="Crear un Evento"
-
 					action="appointment_event_action" 
 		/>
-
+-->
 
 
 
@@ -577,18 +576,17 @@ order_report.xml
 
 
 		<!-- All --> 
+<!--
 		<menuitem 
-					action="oeh_medical_appointment_action_tree_all" 
-					
-					parent="oehealth_appointment_menu"  
-
 					id="oeh_medical_appointment_list_all" 
-
+					parent="oehealth_appointment_menu"  
 					sequence="4"
+
+					action="oeh_medical_appointment_action_tree_all" 
 
 					name="Todas"
 		/>
-
+-->
 
 
 
@@ -598,6 +596,7 @@ order_report.xml
 
 
 		<!-- Machines --> 
+<!--
 		<menuitem 
 					action="oeh_medical_appointment_action_tree_machines" 
 					parent="oehealth_appointment_menu"  
@@ -605,7 +604,7 @@ order_report.xml
 
 					sequence="5"
 		/>
-
+-->
 
 
 
@@ -616,6 +615,8 @@ order_report.xml
 
 <!-- Cosmetology --> 
 		<!-- Confirmed - Cos --> 
+		<!-- Machines --> 
+<!--
 		<menuitem 
 					action="oeh_medical_appointment_action_tree_confirmed_cos" 
 					parent="oehealth_appointment_menu_cos"  
@@ -624,7 +625,6 @@ order_report.xml
 					sequence="1"
 		/>
 
-		<!-- Machines --> 
 		<menuitem 
 					action="oeh_medical_appointment_action_tree_machines_cos" 
 					parent="oehealth_appointment_menu_cos"  
@@ -632,7 +632,7 @@ order_report.xml
 
 					sequence="2"
 		/>
-
+-->
 
 
 

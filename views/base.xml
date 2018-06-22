@@ -171,27 +171,6 @@
 
 
 
-		<!-- Appointment Controls -->
-		<record id="oeh_medical_appointment_action_tree_controls" model="ir.actions.act_window">
-					<field name="name">Controles - Sin hora</field>
-					<field name="res_model">oeh.medical.appointment</field>
-					<field name="view_type">form</field>
-					<field name="view_mode">calendar,tree,form</field>
-					<field name="domain">[
-											('state', '=', 'pre_scheduled_control'),
-										]
-					</field>
-
-					<field name="context">{
-											'default_x_target': 'doctor',
-											'default_x_type': 'control',
-
-											'default_state': 'pre_scheduled_control',
-										}
-					</field>
-					<field name="view_id" eval="False"/>
-		</record>
-
 
 
 
@@ -301,62 +280,6 @@
 
 
 
-
-
-
-		<!-- Appointment All -->  
-		<record id="oeh_medical_appointment_action_tree_all" model="ir.actions.act_window">
-
-					<field name="name">Citas confirmadas</field>
-			
-					<field name="res_model">oeh.medical.appointment</field>
-					<field name="view_type">form</field>
-					<field name="view_mode">calendar,tree,form</field>  
-					<field name="view_id" eval="False"/>
-
-
-<!--
-											('state', 'in', ['pre_scheduled','Scheduled', 'Completed', 'Invoiced']),
--->
-					<field name="domain">[
-
-											('x_target', '=', 'doctor'),
-										]
-					</field>
-
-
-
-		            <field name="context">{}</field>
-
-<!--
-					<field name="domain">[
-
-											('state', 'in', ['pre_scheduled','Scheduled', 'Completed', 'Invoiced']),
-
-											('x_target', '=', 'doctor'),
-
-										]
-					</field>
-
-
-					<field name="context">{
-											'default_x_target': 'doctor',
-											'default_x_type': 'consultation',
-										}
-					</field>
--->
-
-
-<!--
-					<field name="help" type="html">
-					  <p class="oe_view_nocontent_create">
-						Click to add a new appointment.
-					  </p><p>
-						oeHealth appointment screen can easily find all of your appointment details;
-					  </p>
-					</field>
--->
-		</record>
 
 
 

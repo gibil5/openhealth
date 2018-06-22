@@ -96,3 +96,110 @@
 
 
 
+<!--
+18 Jun 2018 
+--> 
+		<!-- FAVS -->
+		<!-- By Month --> 
+		<!-- By Vip --> 
+<!--		
+		<record id="openhealth.filter_patient_month" model="ir.filters">
+			<field name="name">Por Mes</field>
+			<field name="model_id">oeh.medical.patient</field>
+			<field name="context">{
+									'group_by': ['x_date_created'], 
+									'order':	'x_date_created desc', 
+								}</field>
+		</record>
+		<record id="openhealth.filter_patient_vip" model="ir.filters">
+			<field name="name">Por VIP</field>
+			<field name="model_id">oeh.medical.patient</field>
+			<field name="context">{'group_by': ['x_vip']}</field>
+		</record>
+-->
+
+
+
+
+
+
+
+						<!--
+						<button name="print_patient_label" string="Historia Clínica" type="object" class="oe_highlight"/>
+						-->							
+
+
+
+
+<!--
+22 Jun 2018 
+--> 
+
+<!--
+Cosmetology 
+						<button 
+							type="object" 
+							class="oe_highlight"
+							name="open_cosmetology_current" 
+
+							string="Ultima Cosmiatría" 							
+						/>
+-->
+
+
+
+
+<!-- Cosmetologies --> 
+							<!--
+							<button type="action" class="oe_stat_button" 
+								name="%(cosmetology_form_action)d"	
+								context="{
+											'search_default_patient': active_id,	
+										}" 	
+								icon="fa-list">
+								<field string="Cosmiatrías" name="x_nr_cosmetologies" widget="statinfo"/>
+							</button>
+							-->
+
+
+
+<!-- Appointments -->
+							<!-- Temp Comment
+							<button type="action" class="oe_stat_button" 
+
+								name="347" 
+								
+								context="{'search_default_patient': active_id,'default_patient': active_id}" 
+								icon="fa-calendar">
+								<field string="Citas" name="app_count" widget="statinfo"/>
+							</button>
+							--> 
+
+
+
+<!-- Buttons -->
+						<!--						
+						<div class="oe_right oe_button_box" style="width: 500px;" name="buttons">
+							<button type="action" class="oe_stat_button" name="347" context="{'search_default_patient': active_id,'default_patient': active_id}" icon="fa-calendar">
+								<field string="Citas" name="app_count" widget="statinfo"/>
+							</button>
+
+							<button type="action" class="oe_stat_button" name="348" context="{'search_default_patient': active_id,'default_patient': active_id}" icon="fa-list">
+								<field string="Prescripciones" name="prescription_count" widget="statinfo"/>
+							</button>
+
+							<button type="action" class="oe_stat_button" name="207" context="{'search_default_patient': active_id,'default_patient': active_id}" icon="fa-pencil-square-o">
+								<field string="Facturas" name="invoice_count" widget="statinfo"/>
+							</button>
+
+							<button type="action" class="oe_stat_button" name="349" context="{'search_default_patient': active_id,'default_patient': active_id}" groups="oehealth.group_oeh_medical_physician,oehealth.group_oeh_medical_manager" icon="fa-list">
+								<field string="Vaccines" name="vaccine_count" widget="statinfo"/>
+							</button>
+														
+							<button type="action" class="oe_stat_button" name="345" context="{'search_default_patient': active_id,'default_patient': active_id}" icon="fa-building-o">
+								<field string="Admissions" name="admission_count" widget="statinfo"/>
+							</button>
+						</div>
+						-->
+
+

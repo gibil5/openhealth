@@ -147,7 +147,8 @@ def check_for_collisions(self, appointment_date, doctor_name, duration, x_machin
 
 @api.multi
 
-def create_appointment_procedure(self, adate_base, doctor_id, patient_id, treatment_id, cosmetology_id, x_create_procedure_automatic):
+#def create_appointment_procedure(self, adate_base, doctor_id, patient_id, treatment_id, cosmetology_id, x_create_procedure_automatic):
+def create_appointment_procedure(self, adate_base, doctor_id, patient_id, treatment_id, x_create_procedure_automatic):
 
 		#print 
 		#print 'Create App Procedure'
@@ -199,7 +200,6 @@ def create_appointment_procedure(self, adate_base, doctor_id, patient_id, treatm
 
 
 			# Check for collisions 
-			#ret, doctor_name, start, end = check_for_collisions(self, adate_pro_str, doctor_name, duration, False, 'doctor')
 			ret, doctor_name, start, end = check_for_collisions(self, adate_pro_str, doctor_name, duration, False, 'doctor', 'procedure')
 
 
@@ -217,21 +217,17 @@ def create_appointment_procedure(self, adate_base, doctor_id, patient_id, treatm
 				app = self.env['oeh.medical.appointment'].create(
 																	{
 																		'appointment_date': adate_pro_str,
-
 																		'doctor': 		doctor_id,
 																		'patient': 		patient_id,	
 																		'duration': 	duration,
 																		'x_type':		'procedure',
 																		'x_create_procedure_automatic': x_create_procedure_automatic,
 																		'state':		'pre_scheduled',
+							                    						'x_target': 	x_target,
 																		#'x_chief_complaint': x_chief_complaint, 
 
-
-							                    						'x_target': 	x_target,
-
+																		#'cosmetology': 	cosmetology_id, 
 																		'treatment': 	treatment_id, 
-																		'cosmetology': 	cosmetology_id, 
-
 															}
 													)
 

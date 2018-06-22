@@ -12,17 +12,15 @@
 	'name': "Open Health - MIN",
 
 	'summary': """
-		Extension for Odoo-oeHealth. 
-		Treatments. 
+		Fulcrum 
 	""",
 
 
 	'description': """
 
+		21 June 2018 
 
-		18 June 2018 
-
-		Full Fulcrum version 
+		Fulcrum 
 		
 		Stability by Design. Simplicity but Abstraction. 
 
@@ -71,8 +69,9 @@
 	# Categories can be used to filter modules in modules listing
 	# Check https://github.com/odoo/odoo/blob/master/openerp/addons/base/module/module_data.xml
 	# for the full list
-	'category': 'Health',
-	'version': '1.0',
+	#'category': 'Health',
+	'category': 'Data Mining',
+	'version': '2.0',
 
 
 

@@ -1,6 +1,4 @@
 
-Fulcrum Version 
-
-June 2018 !
-
-18
+Fulcrum
+June 2018
+22

@@ -77,10 +77,15 @@ class management_order_line(models.Model):
 
 							('product','Producto'), 
 
-							('consultation','Consulta'), 
-							('consultation_gyn','Consulta Ginecológica'), 
-							('consultation_100','Consulta 100'), 
-							('consultation_0','Consulta Gratuita'), 
+
+							#('consultation','Consulta'), 
+							#('consultation_gyn','Consulta Ginecológica'), 
+							#('consultation_100','Consulta 100'), 
+							#('consultation_0','Consulta Gratuita'), 
+							('consultation','consultation'), 
+							('consultation_gyn','consultation_gyn'), 
+							('consultation_100','consultation_100'), 
+							('consultation_0','consultation_0'), 
 
 							
 

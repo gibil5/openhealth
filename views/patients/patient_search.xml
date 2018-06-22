@@ -114,6 +114,14 @@
 											]"/>
 
 
+					<filter string="Junio" domain="[
+															('x_date_record','&gt;=','2018-06-01 05:00:00'),
+															('x_date_record','&lt;','2018-07-01 05:00:00'),
+											]"/>
+
+
+
+
 
 					<filter string="Vip" domain="[
 															('x_vip','!=', False),

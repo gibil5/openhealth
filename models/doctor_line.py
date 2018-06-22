@@ -3,15 +3,12 @@
 # 	Doctor Line 
 # 
 # Created: 				18 May 2018
+# Last updated: 		19 June 2018
 #
 
 from openerp import models, fields, api
-
 import collections
-
 import mgt_vars
-
-
 
 class DoctorLine(models.Model):	
 
@@ -57,38 +54,48 @@ class DoctorLine(models.Model):
 
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
-	# Nr
+
+	# Nr Families 
 	nr_consultations = fields.Integer(
 			'Nr Consultas', 
 			default=0, 
 		)
-
-	nr_procedures = fields.Integer(
-			'Nr Proc', 
-			default=0, 
-		)
-
-	nr_procedures_co2 = fields.Integer(
-			'Nr Proc Co2', 
-			default=0, 
-		)
-
-	nr_procedures_quick = fields.Integer(
-			'Nr Proc Quick', 
-			default=0, 
-		)
-
-
 
 	nr_products = fields.Integer(
 			'Nr Productos', 
 			default=0, 
 		)
 
-	nr_medicals = fields.Integer(
-			'Nr T Médicos', 
+	nr_procedures = fields.Integer(
+			'Nr Procedimientos', 
 			default=0, 
 		)
+
+
+
+
+	# Nr Sub Families 
+	nr_procedures_co2 = fields.Integer(
+			'Nr Co2', 
+			default=0, 
+		)
+
+	nr_procedures_quick = fields.Integer(
+			'Nr Quick', 
+			default=0, 
+		)
+
+	nr_medicals = fields.Integer(
+			'Nr Tratamientos Médicos', 
+			default=0, 
+		)
+
+
+	nr_cosmetologies = fields.Integer(
+			'Nr Cosmeatrias', 
+			default=0, 
+		)
+
 
 
 
@@ -96,7 +103,7 @@ class DoctorLine(models.Model):
 
 	# Ratios 
 	ratio_pro_con = fields.Float(
-			'Ratio %', 
+			'Ratio Total %', 
 		)
 
 	ratio_pro_con_co2 = fields.Float(
@@ -118,7 +125,7 @@ class DoctorLine(models.Model):
 	def stats(self):  
 
 		print 
-		print 'Set Stats'
+		print 'Stats - Doctor'
 
 
 
@@ -137,6 +144,7 @@ class DoctorLine(models.Model):
 		# Init
 		family_arr = []
 		sub_family_arr = []
+
 		self.nr_consultations = 0
 		self.nr_procedures = 0
 		self.nr_procedures_co2 = 0
@@ -167,7 +175,7 @@ class DoctorLine(models.Model):
 		
 		# Count and Create 
 
-		print 'Count and Create'
+		print 'Count'
 
 
 
@@ -192,18 +200,34 @@ class DoctorLine(models.Model):
 			family.update_fields()
 
 
-			# Ratios 
-			if key == 'consultation': 
-				self.nr_consultations = count
+
+
+			# Counters 
+			print key
+
+
+			# Families 
+			#if key in ['consultation', 'consultation_gyn']: 
+			if key in ['consultation', 'consultation_gyn', 'consultation_0', 'consultation_100']: 
+				self.nr_consultations = self.nr_consultations + count
 			
-			elif key == 'procedure': 			
-				self.nr_procedures = count
+			elif key in ['laser', 'medical', 'cosmetology']: 
+				self.nr_procedures = self.nr_procedures + count
 
-			elif key == 'product': 
-				self.nr_products = count
+			elif key in ['topical', 'card']: 
+				self.nr_products = self.nr_products + count
 
-			elif key == 'medical': 
-				self.nr_medicals = count
+
+
+			# Subfamilies 
+			if key == 'medical': 
+				self.nr_medicals = self.nr_medicals + count
+
+
+			if key == 'cosmetology': 
+				self.nr_cosmetologies = self.nr_cosmetologies + count
+
+
 
 
 
@@ -225,9 +249,13 @@ class DoctorLine(models.Model):
 			sub_family.update_fields()
 
 
-			# Ratios 
+
+			# Counters 
+			print key
+
 			if key == 'laser_co2': 
 				self.nr_procedures_co2 = count
+
 			elif key == 'laser_quick': 			
 				self.nr_procedures_quick = count
 
@@ -238,7 +266,7 @@ class DoctorLine(models.Model):
 
 		# Amounts 
 
-		print 'Amounts'
+		#print 'Amounts'
 
 		# Family 
 		for family in self.family_line: 
@@ -307,6 +335,7 @@ class DoctorLine(models.Model):
 		#print 'Update Fields'
 
 
+
 		# Names 
 		if self.name in mgt_vars._h_name: 
 			self.name_sp = mgt_vars._h_name[self.name]
@@ -314,7 +343,9 @@ class DoctorLine(models.Model):
 			self.name_sp = self.name
 
 
+
 		# Ratios
+		#if 	(self.nr_consultations != 0)	and 	(self.nr_consultations > self.nr_procedures): 
 		if self.nr_consultations != 0: 
 
 			self.ratio_pro_con = (float(self.nr_procedures) / float(self.nr_consultations)) * 100 

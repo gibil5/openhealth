@@ -154,11 +154,18 @@ class Counter(models.Model):
 	# Increase
 	@api.multi 
 	def increase(self):
-
 		self.value = self.value + 1
-		
 		self.date_modified = fields.datetime.now()
-
 	# increase
+
+
+
+	# Decrease
+	@api.multi 
+	def decrease(self):
+		self.value = self.value - 1
+		self.date_modified = fields.datetime.now()
+	# decrease
+
 
 

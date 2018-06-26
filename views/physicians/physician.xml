@@ -172,21 +172,16 @@
 		<record model="ir.ui.view" id="oehealth.oeh_medical_physician_tree">
 			<field name="name">physician.tree</field>
 			<field name="model">oeh.medical.physician</field>
-
 			<!--	
 			<field name="priority" eval="1"/>
 			-->
-
 			<field name="arch" type="xml">
+				
 				<tree string="Physician Tree">
-
 
 					<field name="name"/>
 
 					<field name="idx"/>
-
-
-
 
 					<field name="x_user_name"/>
 
@@ -203,6 +198,7 @@
 				</tree>
 			</field>
 		</record>
+
 
 	</data>
 </openerp>

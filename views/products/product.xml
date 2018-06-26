@@ -172,13 +172,16 @@
 
 					<field name="name"/>
 
-
-
 					<field name="default_code"/>
+
+
+
+					<field name="x_sessions"/>	
 
 					<field name="x_family"/>
 
 					<field name="categ_id"/>
+
 
 
 

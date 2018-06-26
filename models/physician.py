@@ -9,20 +9,53 @@ from openerp import models, fields, api
 
 
 
+# ----------------------------------------------------------- Physician ------------------------------------------------------
+
 class Physician(models.Model):
+
 	_inherit = 'oeh.medical.physician'	
+	
+	#_order = 'name'
+	_order = 'idx asc'
+
 	#_name = 'openhealth.physician'
 	
 
-	vspace = fields.Char(
-			' ', 
-			readonly=True
+
+
+	#x_type = fields.Selection(
+	#		[
+	#			('therapist','therapist'), 
+	#			('doctor','doctor'), 
+	#		], 
+	#		string='Tipo', 
+	#	)
+
+
+
+	#idx = fields.Integer(
+	idx = fields.Char(
+			#default=-1, 
 		)
+
+
+	x_therapist = fields.Boolean(
+			string='Terapeuta', 
+			default=False,
+		)	
 	
 	x_user_name = fields.Many2one(		
 			'res.users',
 			string = "Nombre de usuario", 	
 		)
+
+	vspace = fields.Char(
+			' ', 
+			readonly=True
+		)
+
+
+
 
 	consultancy_type = fields.Selection(			
 			string='Tipo', 
@@ -80,24 +113,13 @@ class Physician(models.Model):
 			string='Especialidad', 
 		)
 
-	x_therapist = fields.Boolean(
-			string='Terapeuta', 
-			default=False,
-		)	
-
-	x_type = fields.Selection(
-			[
-				('therapist','therapist'), 
-				('doctor','doctor'), 
-			], 
-			string='Tipo', 
-		)
 
 
 
-#
-# 		*** Physician Line
-#
+
+
+# ----------------------------------------------------------- Physician Line ------------------------------------------------------
+
 class PhysicianLine(models.Model):
 	_inherit = 'oeh.medical.physician.line'  
 

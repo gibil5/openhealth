@@ -73,9 +73,6 @@
 
 
 
-
-
-
 			# Update - Deprecated - For Cos 
 			#ret = jrfuncs.update_appointment_go(self, appointment_id, session_id, 'session')
 
@@ -85,6 +82,61 @@
 			#print 
 			#print 
 			#print 
+
+
+
+
+# 22 Jun 2018 
+
+
+# Create Controls 
+@api.multi
+def create_controls_go(self):
+
+	...
+
+
+	# Clean Appointments 
+	#print 
+	#print 'Clean Appointments'
+
+	#rec_set = self.env['oeh.medical.appointment'].search([
+																#('procedure', '=', self.id), 	
+																#('procedure_cos', '=', self.id), 
+	#														(self.key, '=', self.id), 
+	#													])
+	#ret = rec_set.unlink()
+	#print "ret: ", ret
+
+
+
+
+
+#------------------------------------------------ Create Appointment  ---------------------------------------------------
+
+#@api.multi
+#def create_appointment_control(self, appointment_date, duration, x_type, state, chief_complaint, patient_id, doctor_id, treatment_id):
+#	x_create_procedure_automatic = False 
+#	appointment = self.env['oeh.medical.appointment'].create({
+#																'appointment_date': appointment_date,
+#																'patient': patient_id,	
+#																'doctor': doctor_id,
+#																'duration': duration,
+#																'state': state,
+#																'x_type': x_type,
+#																'x_chief_complaint': chief_complaint, 
+#																'x_create_procedure_automatic': x_create_procedure_automatic,
+#																'x_target': 'doctor',
+#																'treatment': treatment_id, 
+#															})
+#	return appointment
+
+
+
+
+
+
+
 
 
 

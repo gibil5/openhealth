@@ -106,28 +106,26 @@ def create_order_lines(self, laser, order_id):
 @api.multi
 def get_actual_doctor(self):
 
+	#print 'jx'
+	#print 'Get Actual Doctor'
 
-	print 'jx'
-	print 'Get Actual Doctor'
-
-	
-	#user_id = self.env.user.id 
-	user_name =  self.env.user.name 
-	
-	#print user_name
-
+	user_name =  self.env.user.name 	
 	doctor = self.env['oeh.medical.physician'].search([ 	
 																('x_user_name', '=', user_name),		
 															], 
 															#order='appointment_date desc', 
 															limit=1
 															)
+	doctor_id = doctor.id 
 
+	#print user_name
 	#print doctor.id 
 	#print doctor.name 
-	
-	doctor_id = doctor.id 
-	
+
+	#if self.doctor.id != False: 
+	#	if doctor_id == False: 
+	#		doctor_id = self.doctor.id 
+
 	return doctor_id
 
 

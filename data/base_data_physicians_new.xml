@@ -24,6 +24,8 @@
 			<field name="x_user_name">Rodrigo Loaiza</field>
 			Incorrect syntax. Is an integer. 
 -->
+
+			<field name="idx">4</field>
 		</record>
 
 
@@ -115,6 +117,8 @@
 <!--
 			<field name="x_user_name">Luis Castillo</field>
 -->
+
+			<field name="idx">5</field>
 		</record>
 
 
@@ -209,6 +213,8 @@
 <!--
 			<field name="x_user_name">Carlos Abriojo</field>
 -->
+
+			<field name="idx">6</field>
 		</record>
 
 
@@ -265,7 +271,6 @@
 		</record>
 
 
-
 		<!-- Week --> 
 		<record id="dr_abriojo" model="oeh.medical.physician">
 			<field name="line_id" ref="abr_mon"/>
@@ -277,7 +282,6 @@
 
 			<field name="line_id" ref="abr_sun"/>
 		</record>
-
 
 	</data>
 </openerp>

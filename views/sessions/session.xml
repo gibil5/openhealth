@@ -389,11 +389,11 @@ blue:state=='done'
 
 <!--
 					<field name="evaluation_nr"/>
-					<field name="appointment"/>
+					<field name="name"/>
 -->
 
-					<field name="name"/>
 					
+					<field name="appointment"/>
 
 					<field name="patient"  string="Paciente"/>
 					

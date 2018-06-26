@@ -2,6 +2,16 @@
 
 
 
+# Targets
+#_target_list = [
+#		('doctor','Doctor'), 
+#		('therapist','Cosmeatra'), 
+		#('machine','Machine'), 
+#]
+
+
+
+
 # Hash 
 _hash_doctor_code = {
 							#'Dra. Acosta':		'Dra. A',
@@ -134,10 +144,4 @@ _machines_list = [
 
 
 
-# Targets
-_target_list = [
-		('doctor','Doctor'), 
-		('therapist','Cosmeatra'), 
-		#('machine','Machine'), 
-]
 

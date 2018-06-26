@@ -179,18 +179,21 @@
 			<field name="arch" type="xml">
 				<tree string="Physician Tree">
 
+
 					<field name="name"/>
+
+					<field name="idx"/>
+
+
+
 
 					<field name="x_user_name"/>
 
-
 					<field name="available_lines"/>
-
 
 					<field name="speciality"/>
 
 					<field name="active"/>
-
 
 <!--
 					<field name="code"/>

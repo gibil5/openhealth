@@ -43,11 +43,11 @@ class ConsultationCos(models.Model):
 
 
 
-	x_target = fields.Selection(
-			string="Target", 
-			selection = app_vars._target_list, 
-			default="therapist", 
-		)
+	#x_target = fields.Selection(
+	#		string="Target", 
+	#		selection = app_vars._target_list, 
+	#		default="therapist", 
+	#	)
 
 
 	doctor = fields.Many2one(

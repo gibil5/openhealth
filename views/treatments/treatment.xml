@@ -1129,8 +1129,9 @@ blue:state=='controls'
 
 
 					<field name="start_date"/>
+					<field name="write_date"	string="Fecha actualizacion"	/>
+
 <!--
-					<field name="write_date"/>
 					<field name="duration"/>
 -->
 					<field name="patient"/>					

@@ -3,125 +3,63 @@
 	<data>
 
 
-		<!-- Procedure -->
-			
+
 		<!-- Form view -->
 		<record model="ir.ui.view" id="procedure_form_view">
 			<field name="name">procedure.form</field>
 			<field name="model">openhealth.procedure</field>
 			<field name="arch" type="xml">
-				
-				
 				<form string="Evaluation">
+
 
 					<!-- Header --> 
 					<header>
 
 
-
-
-
-
-						<!--
+						<!-- Controls -->
 						<button 
 							type="object" 
 							class="oe_highlight"
-							string="Crear Sesiones"
-							name="create_sessions" 	
-						/>
-						-->
-
-
-
-						<button 
 							groups="openhealth.roots,openhealth.archivers,openhealth.managers,openhealth.physicians"
-
-
-							type="object" 
-
-							class="oe_highlight"
-
-							string="Crear Sesiones"
-
-							name="create_sessions" 	
-						/>
-
-
-<!--
-						<button 
-							type="object" 
-							class="oe_highlight"
-
-							string="Sesión"
-
-							name="create_session_one" 	
-						/>
--->
-
-
-
-
-						<!--
-							name="open_control" 
-
-							attrs="{'invisible':[(	'cosmetology', '!=', False 	)]}"
-							attrs="{'invisible':[(	'target', '!=', 'doctor' 	)]}"
-						-->
-
-						<button 
-							name="create_controls" 
-							type="object" 
-							class="oe_highlight"
-
-							string="Crear Controles"
-
-
 							attrs="{'invisible':[
 													('laser', '!=', 'laser_quick'), 
 													('laser', '!=', 'laser_co2'), 
 												]}"
 
-
-							groups="openhealth.roots,openhealth.archivers,openhealth.managers,openhealth.physicians"
+							string="Crear Controles"
+							
+							name="create_controls" 
 						/>
 
 
 
-						<!-- Treatment --> 
-						<button 
-								name="open_treatment"
-
-								type="object" 
-								
-								class="oe_highlight oe_right"
-
-								string="Regresar al TRATAMIENTO"
-						/>
-
-
-<!--
+						<!-- Sessions -->
 						<button 
 							type="object" 
 							class="oe_highlight"
-							string="Control"
-							name="open_control" 	
+							groups="openhealth.roots,openhealth.archivers,openhealth.managers,openhealth.physicians"
 
-							attrs="{'invisible':[('laser', '!=', 'laser_co2')]}"
+							name="create_sessions" 	
+
+							string="Crear Sesiones"
 						/>
 
+
+
+						<!-- Right - Treatment --> 
 						<button 
-							type="object" 
-							class="oe_highlight oe_right"
-							string="Cita" 
-
-							name="open_appointment" 
+								type="object" 		
+								class="oe_highlight oe_right"
+								name="open_treatment"
+								string="Regresar al TRATAMIENTO"
 						/>
--->
-
 					</header>
 					
 
-							
+						
+
+
+					<!-- Sheet --> 
 					<sheet>
 
 						<!-- Id -->
@@ -129,98 +67,64 @@
 
 							<!-- Persona --> 
 							<div class="oe_left"  style="width: 300px;">
-
-
 								<div class="oe_title" >
 									<h1 class="jx_title">Procedimiento</h1>									
 								</div>								
-
-
 								<group></group>
 								<h2>
 									<field name="patient"/>
 								</h2>
-								
 								<group></group>
-
 								<h2>
 									<field name="laser"/>
 								</h2>
-
-
 							</div>
+
 
 
 
 							<!-- Buttons --> 
 							<div class="oe_left" style="width: 300px;" name="buttons">
 
-								<!--
-								Consultations - Buttons
-								-->
-								
-
-								<!--
-								Procedures - Button
-								-->
-							
-
-
 
 								<!-- Nr Sessions --> 
 								<button type="action" class="oe_stat_button" icon="fa-list"
 									name="%(session_med_form_action)d"	
-
 									attrs="{ 'invisible':[	('nr_sessions','=',0), ]}"
-
 									context="{									
-											'search_default_procedure': active_id,
+												'search_default_procedure': active_id,
 											}" 											
 									>
 									<field string="Sesiones" name="nr_sessions" widget="statinfo"/>
 								</button>	
 
 
-
-
-
 								<!-- Nr Controls --> 																
 								<button type="action" class="oe_stat_button" 	
-
 									name="%(control_form_action)d"	
-
 									context="{									
-											'search_default_procedure': active_id,
-											}" 											
-
-
+												'search_default_procedure': active_id,
+											}" 	
 									attrs="{'invisible':[
 																('laser', '!=', 'laser_quick'), 
 																('laser', '!=', 'laser_co2'), 
 														]}"
-
-
 									icon="fa-list">
-									
 									<field string="Controles" name="nr_controls" widget="statinfo"/>
 								</button>	
 							</div>
 						
-						
-						
-							<!-- Number --> 
+
+							<!-- Id Number --> 
 							<div class="oe_right" >
 								<div class="oe_title" >
-
 									<label class="oe_edit_only" for="name" string="Procedimiento #"/>
-
-<!--
-									<h1><field name="name" class="oe_inline"/></h1>
--->							
 									<h1><field name="treatment" class="oe_inline"/></h1>
 								</div>
 							</div>
 						</div>
+
+
 
 
 
@@ -230,11 +134,10 @@
 						<group></group>
 						<group></group>
 						<group></group>
--->
-						<!--
+
 						<div class="oe_left" style="height: 55px;">
 						</div>
-						-->
+-->
 
 
 
@@ -244,13 +147,14 @@
 							<field string="Próxima cita" name="appointment" domain="[('patient', '=', patient)]" options="{'no_create': True}"/>
 							-->
 							
-
+<!--
 							<group>	
 							</group>
 							<group>
-								<field name="evaluation_type"	invisible="1"/>
+								<field name="evaluation_type"	invisible="0"/>
 							</group>
-							
+-->
+
 							
 							<group>
 								<field name="doctor" options="{'no_create': True}"	/>
@@ -271,30 +175,20 @@
 							<group>							
 							</group>
 
-							<group>
-							</group>
-							<group>
-							</group>
--->
-						</group>
-							
-								<!--
 								<field name="vspace"/>
 								<field name="laser"/>
-								-->
+-->
+						</group>
+
 
 
 						<!-- Notebook --> 
 						<notebook>
 						</notebook>
-
-
 					</sheet>
 				</form>
 			</field>
 		</record>
-
-
 
 
 
@@ -305,32 +199,22 @@
 			<field name="name">procedure.tree</field>
 			<field name="model">openhealth.procedure</field>
 			<field name="arch" type="xml">
-				
-				<tree string="Consultation Tree">
-					
+				<tree string="Procedure Tree">
 					<field name="name"/>
-					
 					<field name="patient"/>
-					
 					<field name="doctor"/>
-					
 					<field name="evaluation_start_date"/>
-
-					<!--
-					<field name="product"/>
-					-->
-					
 					<field name="chief_complaint"/>
 					<field name="laser"/>
-
-
 					<field name="nr_sessions"/>
 					<field name="nr_controls"/>
-					
 					<field name="treatment"/>
 				</tree>
 			</field>
 		</record>
+<!--
+					<field name="product"/>
+-->
 		
 		
 		
@@ -349,18 +233,7 @@
 
 
 
-       
-	   
-		
-		
 
-
-
-
-
-		
-		
-		
 		<!-- Menus --> 
 		<!-- top level menu: no parent -->
 		<!--

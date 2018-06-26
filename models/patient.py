@@ -958,16 +958,18 @@ class Patient(models.Model):
 		#print 'Open Treatment'
 
 		# Init  
-		patient_id = self.id 
+		#patient_id = self.id 
 
+
+		# Search 
 		treatment = self.env['openhealth.treatment'].search(	[		
-																	#('patient','=', self.id),
-																	('patient','=', patient_id),
+																	('patient','=', self.id),
+																	#('patient','=', patient_id),
 																],
 																order='write_date desc',
 																limit=1,
 															)
-		treatment_id = treatment.id
+		#treatment_id = treatment.id
 
 
 		return {
@@ -976,7 +978,10 @@ class Patient(models.Model):
 					'name': 'Open Treatment Current',
 					# Window action 
 					'res_model': 'openhealth.treatment',
-					'res_id': treatment_id,
+
+					#'res_id': treatment_id,
+					'res_id': treatment.id,
+					
 					# Views 
 					"views": [[False, "form"]],
 					'view_mode': 'form',
@@ -986,11 +991,14 @@ class Patient(models.Model):
 							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 					},	
 					'context':   {
-						'search_default_patient': patient_id,
-						'default_patient': patient_id,
+									#'search_default_patient': patient_id,
+									#'default_patient': patient_id,
+									'search_default_patient': self.id,
+									'default_patient': self.id,
 					}
 			}
 	# open_treatment
+
 
 
 

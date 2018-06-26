@@ -96,13 +96,15 @@
 
 <!--
 														invisible="0"																
--->
 							<field name="x_target"			
 														invisible="1"
 														attrs="{
 																	'invisible':[('x_type', '=', 'event'),],
 														}"	
 								/>
+-->
+
+
 
 <!--
 							<field name="x_machine"		attrs="{
@@ -120,9 +122,10 @@
 
 				<!-- Doctor --> 
 				<xpath expr="//field[@name='doctor']" position="replace">					
-
-					<field name="doctor"	
+<!--
 												domain="[('x_type', '=', x_target )]"	
+-->
+					<field name="doctor"	
 												options="{		'no_create': True, 
 															}"	
 						/>
@@ -206,11 +209,11 @@ attrs="{
 <!--
 																					('x_target', '!=', 'doctor'),
 
+																					('x_target', '=', 'doctor'),
 -->
 							<field name="treatment"		
 														attrs="{
 																	'required':[
-																					('x_target', '=', 'doctor'),
 																					('x_type', 'not in', ['event']),
 																				],
 
@@ -295,7 +298,9 @@ DEPRECATED !
 					<field name="doctor"/>
 					<field name="x_type"/>
 					<field name="x_machine"		/>
+<!--
 					<field name="x_target"/>
+-->				
 					<field name="cosmetology"/>
 					<field name="treatment"/>
 					<field name="consultation"/>
@@ -343,17 +348,19 @@ DEPRECATED !
 <!--
 											('state', 'in', ['pre_scheduled','Scheduled', 'completed', 'invoiced']),
 											('state', 'in', ['pre_scheduled','Scheduled', 'invoiced', 'event']),
+
+											('x_target', '=', 'doctor'),
 -->
 
 					<field name="domain">[
 											('state', 'in', ['pre_scheduled','Scheduled']),
-											('x_target', '=', 'doctor'),
 										]
 					</field>
 
-
-					<field name="context">{
+<!--
 											'default_x_target': 'doctor',
+-->
+					<field name="context">{
 											'default_x_type': 'consultation',
 										}
 					</field>
@@ -385,11 +392,11 @@ DEPRECATED !
 											('state', '=', 'pre_scheduled_control'),
 										]
 					</field>
-
-					<field name="context">{
+<!--
 											'default_x_target': 'doctor',
+-->
+					<field name="context">{
 											'default_x_type': 'control',
-
 											'default_state': 'pre_scheduled_control',
 										}
 					</field>

@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-	<data noupdate='1'>
- 
+	<data noupdate='0'>
+
  
 
 
 
 <!-- Data - Physicians -->
-
-
- 
-
-
 
 
 		<!-- Chavarri -->
@@ -20,9 +15,9 @@
 			<field name="x_type">doctor</field>
 			<field name="consultancy_type">Residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
+
+			<field name="idx">0</field>
 		</record>
-
-
 
 
 		<!-- Days -->
@@ -99,8 +94,9 @@
 			<field name="x_type">doctor</field>
 			<field name="consultancy_type">Residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
-		</record>
 
+			<field name="idx">1</field>
+		</record>
 
 
 	   <record id="ava_can_mon" model="oeh.medical.physician.line">
@@ -175,8 +171,9 @@
 			<field name="x_type">doctor</field>
 			<field name="consultancy_type">Residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
-		</record>
 
+			<field name="idx">8</field>
+		</record>
 
 
 
@@ -255,6 +252,8 @@
 			<field name="x_type">doctor</field>
 			<field name="consultancy_type">Residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
+
+			<field name="idx">2</field>
 		</record>
 
 
@@ -333,6 +332,8 @@
 			<field name="x_type">doctor</field>
 			<field name="consultancy_type">Residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
+
+			<field name="idx">3</field>
 		</record>
 
 
@@ -412,6 +413,8 @@
 			<field name="consultancy_type">Residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
 			<field name="x_therapist">True</field>
+
+			<field name="idx">9</field>
 		</record>
 
 		<record id="ava_eul_mon" model="oeh.medical.physician.line">
@@ -475,9 +478,6 @@
 			<field name="line_id" ref="ava_eul_sat"/>
 			<field name="line_id" ref="ava_eul_sun"/>
 		</record>
-
-
-
 
 	</data>
 </openerp>

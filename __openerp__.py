@@ -18,30 +18,29 @@
 
 	'description': """
 
-		22 June 2018 
+		26 June 2018 
 
 		Fulcrum 
 		
 		Stability by Design. Simplicity but Abstraction. 
 
-		La Estabilidad se consigue por la disminución, no por el aumento. 
-		Dieter Rams: Less but Better. 
+		La Estabilidad se consigue por la disminución no por el aumento. 
+		Dieter Rams is Less but Better. 
 
-		More Configuration and less programming. Near than zero hacking.  
+		More configuration and less programming, near than zero hacking.  
 
-		Good Order is the Beginning of All Good Things. 
-
-
-
-		EMR - Min - Docean - Ooor - Github - Travis - Coverage - Hp Proliant - Testcafe - User Stories - Auto Backup - Unit Testing - Less but Better - Statistical - Machine Learning - Object Oriented - Full Fulcrum\n
+		Good order is the beginning of all good things. 
 
 
 
-		Created: 	 	11 Sep 2016. Active for: 	17 months !!!		(Lu Feb 2018)
+		EMR - Min - Docean - Github - Travis - Coverage - Proliant - User Stories - Cron Pg Dump - Unit Testing - Less but Better - Statistical - Machine Learning - Object Oriented - Fulcrum\n
 
+		Deprecated: Ooor - Testcafe - Auto Backup
+
+		Created: 	 	11 Sep 2016
+		Last up: 		25 Jun 2018 
 
 		---
-
 
 
 		Additional modules:

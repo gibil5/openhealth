@@ -21,6 +21,27 @@ class Appointment(models.Model):
 
 
 
+	# ----------------------------------------------------------- Deprecated ------------------------------------------------------
+	
+	# Target 
+	#x_target = fields.Selection(
+	#		string="Target", 
+
+			#selection = app_vars._target_list, 
+			
+	#		index=True,
+	#		required=True, 
+	#	)
+
+	x_target = fields.Char()
+
+
+
+
+
+
+
+
 
 	# ----------------------------------------------------------- Canonical ------------------------------------------------------
 
@@ -33,10 +54,6 @@ class Appointment(models.Model):
 			' ', 
 			readonly=True
 		)
-
-
-
-
 
 
 
@@ -224,13 +241,6 @@ class Appointment(models.Model):
 
 
 
-	# Target 
-	x_target = fields.Selection(
-			string="Target", 
-			selection = app_vars._target_list, 
-			index=True,
-			required=True, 
-		)
 
 
 
@@ -502,7 +512,7 @@ class Appointment(models.Model):
         			#'event': 			'EVENTO',
         			'event': 			'Eve',
         			'control': 			'Ctl',
-        			#'session': 		'S',        			
+        			'session': 			'S',        			
 
 
         			#'Consulta': 		'C',
@@ -512,7 +522,7 @@ class Appointment(models.Model):
         		}
 
 	_type_cal_list = [
-        			#('S', 	'S'),
+        			('S', 	'S'),
 
         			#('C', 	'C'),
         			#('P', 	'P'),

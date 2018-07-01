@@ -325,8 +325,11 @@ class sale_order(models.Model):
 		# In progress !
 
 		# Create Proc 
-		#self.treatment.create_procedure()
+		self.treatment.create_procedure()
 
+		#for proc in self.treatment.procedure_ids: 
+		#	proc.create_controls()
+		#	proc.create_sessions()
 
 
 

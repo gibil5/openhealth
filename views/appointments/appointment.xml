@@ -15,22 +15,38 @@
 
 
 
-				<!-- Remove --> 
+				<xpath expr="//field[@name='state']" position="before">
+
+
+
 <!--
 								groups="openhealth.roots,openhealth.reception"
 -->
-				<xpath expr="//field[@name='state']" position="before">
-					<div class="oe_left">							
-							<button 
-								type="object" 
-								class="oe_highlight"
-								name="remove_appointment" 
-					
-								string="Eliminar" 
+					<!-- Remove --> 							
+					<button 
+						type="object" 
+						
+						class="oe_highlight"
+						
+						name="remove_myself" 
+			
+						string="Eliminar" 
 
-								groups="openhealth.roots"
-							/>
-					</div>
+						groups="openhealth.roots"
+					/>
+
+
+					<!-- Confirm --> 
+					<button 
+						type="object" 
+
+						class="oe_highlight"
+						
+						name="confirm" 
+			
+						string="Confirmar" 
+					/>
+
 				</xpath>
 
 
@@ -288,28 +304,32 @@ DEPRECATED !
 				<tree string="Appointment Tree"  	default_order='x_time'>
 				<tree string="Appointment Tree"  	default_order='x_date, x_time'>
 				<tree string="Appointment Tree"  	default_order='appointment_date'>
-				-->
+
 				<tree string="Appointment Tree"  	default_order='appointment_date'	colors="red:nr_clones!=1;"  >
+				-->
+				<tree string="Appointment Tree"  	default_order='appointment_date'  >
+
 					<field name="name"/>
 					<field name="id"/>
-					<field name="nr_clones"		invisible="1"	/>
-					<field name="nr_mac_clones"	invisible="1"	/>
 					<field name="patient"/>
 					<field name="doctor"/>
 					<field name="x_type"/>
-					<field name="x_machine"		/>
 <!--
+					<field name="nr_clones"		invisible="1"	/>
+					<field name="nr_mac_clones"	invisible="1"	/>
+
+					<field name="x_machine"		/>
 					<field name="x_target"/>
--->				
+					<field name="x_date"/>
+					<field name="x_time"/>
 					<field name="cosmetology"/>
+-->				
 					<field name="treatment"/>
 					<field name="consultation"/>
 					<field name="procedure"/>
 					<field name="session"/>
 					<field name="control"/>										
 					<field name="state"/>
-					<field name="x_date"/>
-					<field name="x_time"/>
 				</tree>
 			</field>
 		</record>

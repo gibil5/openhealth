@@ -45,6 +45,18 @@
 						/>
 
 
+						<!-- App -->
+						<button 
+							type="object" 
+							class="oe_highlight"
+
+							name="update_appointment" 	
+
+							string="Update App"
+						/>
+
+
+
 
 						<!-- Right - Treatment --> 
 						<button 

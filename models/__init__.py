@@ -139,6 +139,8 @@ from . import service_medical
 from . import service_quick
 from . import service_vip
 
+from . import service_cosmetology
+
 
 
 
@@ -157,6 +159,5 @@ from . import card
 
 
 # Cosmetology 
-from . import cosmetology				
-from . import cos_classes
-
+#from . import cosmetology				
+#from . import cos_classes

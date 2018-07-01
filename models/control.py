@@ -23,17 +23,131 @@ class Control(models.Model):
 
 
 
+# ----------------------------------------------------------- Deprecated ------------------------------------------------------
+	
+	# Appointments 
+	#appointment_ids = fields.One2many(
+	#		'oeh.medical.appointment', 
+	#		'control', 
+	#		string = "Citas", 
+	#	)
 
-# ----------------------------------------------------------- Re Definition ------------------------------------------------------
+
+
+
+# ----------------------------------------------------------- Redef ------------------------------------------------------
+	# Patient 
+	patient = fields.Many2one(
+			'oeh.medical.patient',
+			string = "Paciente", 	
+			ondelete='cascade', 
+
+			#readonly=True, 
+			readonly=False, 
+
+			required=True, 
+			#required=False, 
+		)
+
+	# Treatment 
+	treatment = fields.Many2one(
+			'openhealth.treatment',
+			ondelete='cascade', 
+
+			readonly=False, 
+
+			required=True, 
+			#required=False, 
+		)
+
+
+
+	# Control date 
+	control_date = fields.Datetime(
+			string = "Fecha Real", 	
+
+			#required=True, 
+		
+			#compute='_compute_control_date', 
+		)
+
+	@api.multi
+	#@api.depends('state')
+	def _compute_control_date(self):
+		for record in self:
+			record.control_date = record.appointment.appointment_date
+
+
+
+
 	# Appointment 
 	appointment = fields.Many2one(
 			'oeh.medical.appointment',			
 			string='Cita #', 
-			required=False, 
+			
+			#required=False, 
+			required=True, 
 			
 			#ondelete='cascade', 
 		)
 
+
+	# Appointemnt
+	@api.onchange('appointment')
+	def _onchange_appointment(self):
+
+		print 
+		print 'On Change - Appointment'
+
+		self.control_date = self.appointment.appointment_date
+
+
+
+
+# ----------------------------------------------------------- Dates ------------------------------------------------------
+
+
+	# Default - First Date 
+	#@api.model
+	#def _get_first_date(self):
+		#first_date = self.control_date
+	#	first_date = self.appointment.appointment_date	
+	#	return first_date
+
+
+
+	# Control date 
+	#first_date = fields.Datetime(
+	first_date = fields.Date(
+		
+			string = "Fecha Inicial", 	
+		
+			#default=_get_first_date, 
+			#compute='_compute_first_date', 
+		)
+
+	#@api.multi
+	#@api.depends('state')
+	#def _compute_first_date(self):
+	#	for record in self:
+	#		if record.first_date == False: 		
+	#			record.first_date = record.control_date
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Re Definition ------------------------------------------------------
 
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
@@ -76,24 +190,6 @@ class Control(models.Model):
 
 
 
-	# Control date 
-	control_date = fields.Datetime(
-	
-			string = "Fecha", 	
-	
-			#required=True, 
-		
-			compute='_compute_control_date', 
-		)
-
-	@api.multi
-	#@api.depends('state')
-
-	def _compute_control_date(self):
-		for record in self:
-
-			#record.control_date = record.appointment.x_date
-			record.control_date = record.appointment.appointment_date
 
 
 
@@ -195,13 +291,6 @@ class Control(models.Model):
 
 
 
-	# Treatment 
-	treatment = fields.Many2one(
-			'openhealth.treatment',
-			ondelete='cascade', 
-
-			required=True, 
-			)
 
 
 	# Product
@@ -230,12 +319,6 @@ class Control(models.Model):
 
 
 
-	# Appointments 
-	appointment_ids = fields.One2many(
-			'oeh.medical.appointment', 
-			'control', 
-			string = "Citas", 
-		)
 
 
 
@@ -386,15 +469,11 @@ class Control(models.Model):
 
 	@api.multi
 	def unlink(self):
-
 		#print 
 		#print 'Unlink - Override'
-
 		#print self.appointment
 		#self.appointment.unlink() 
-
 		#print 
-
 		return models.Model.unlink(self)
 
 

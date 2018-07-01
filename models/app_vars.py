@@ -12,6 +12,143 @@
 
 
 
+
+
+_state_list = [
+				('pre_scheduled',	 		'No confirmado'),
+				('Scheduled', 				'Confirmado'),
+				#('pre_scheduled_control', 	'Pre-cita'),
+				('pre_scheduled_control', 	'Sin Hora (Control)'),
+
+
+				#('event', 					'Evento'),
+				#('invoiced', 				'Facturado'),
+				#('error', 					'Error'),
+				#('completed', 				'Completo'),
+
+				# Oe Health 
+				#('Scheduled', 'Scheduled'),
+				#('Completed', 'Completed'),
+				#('Invoiced', 'Invoiced'),
+
+]
+
+
+_type_list = [
+        			('consultation', 'Consulta'),
+        			('procedure', 	'Procedimiento'),
+        			('event', 		'Evento'),
+        			('session', 	'Sesión'),
+        			('control', 	'Control'),
+        			
+        			#('cosmetology', 'Cosmiatría'),
+]
+
+
+
+_type_cal_dic = {
+        			#'consultation': 	'C',
+        			#'procedure': 		'P',
+        			#'session': 			'S',        			
+        			#'control': 			'Ctl',
+
+        			'consultation': 	'Con',
+        			'procedure': 		'Pro',
+        			#'event': 			'EVENTO',
+        			'event': 			'Eve',
+        			'control': 			'Ctl',
+        			'session': 			'Ses',        			
+
+
+        			#'Consulta': 		'C',
+        			#'Procedimiento': 	'P',
+        			#'Sesion': 			'S',
+        			#'Control': 			'Ctl',
+}
+
+
+_type_cal_list = [
+        			#('S', 	'S'),
+        			('Ses', 	'Ses'),
+
+        			#('C', 	'C'),
+        			#('P', 	'P'),
+        			#('Ctl', 'Ctl'),
+
+        			
+        			('Con', 	'Con'),
+        			('Pro', 	'Pro'),
+        			('Ctl', 	'Ctl'),
+
+        			#('EVENTO', 'EVENTO'),
+        			('Eve', 	'Eve'),
+
+
+        			#('consultation', 'C'),
+        			#('procedure', 'P'),
+        			#('session', 'S'),
+        			#('control', 'X'),
+]
+
+
+
+_hash_state = {
+						#'Scheduled':				'1',
+						#'pre_scheduled':			'2',
+						#'pre_scheduled_control':	'3',
+						#'event':					'11',
+
+						'Scheduled':				'Conf',
+						'pre_scheduled':			'NConf',
+						'pre_scheduled_control':	'3',
+						'event':					'11',
+
+						
+						#'error':					'55',
+						#'invoiced':					'10',
+						#False:				'', 
+						#'completed':				'20',
+
+}
+
+
+
+
+
+_hash_colors_x_type = {
+
+			'Procedimiento': 1,
+			'procedure': 1,
+			'Consulta': 2,
+			'consultation': 2,
+			'procedure_pre_scheduled': 3,
+			'Sesion': 4,
+			'session': 4,
+			'Control': 5,
+			'control': 5,
+			
+}
+
+
+_duration_list = [
+        			('0.25', 	'15 min'),
+        			('0.5', 	'30 min'),
+
+					#('0.75', 	'45 min'),
+        			#('1.0', 	'60 min'),
+        			#('2.0', 	'120 min'),
+]
+
+
+
+
+
+
+
+
+
+
+
 # Hash 
 _hash_doctor_code = {
 							#'Dra. Acosta':		'Dra. A',

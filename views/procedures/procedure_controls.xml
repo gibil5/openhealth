@@ -29,6 +29,7 @@
 <!--
 -->						
 						<field name="control_ids"		context="{
+																		
 																		'default_patient': patient,
 
 																		'default_chief_complaint': chief_complaint,
@@ -46,6 +47,7 @@
 																		'default_control_date': evaluation_start_date,
 
 																		'default_appointment': appointment,
+																
 																}"
 							/>
 

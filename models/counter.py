@@ -54,7 +54,6 @@ class Counter(models.Model):
 
 	#@api.onchange('Counter.i')
 	#def _onchange_Counter_i(self):
-
 	#	print 
 	#	print 'jx'
 	#	print 

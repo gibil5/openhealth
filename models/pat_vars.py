@@ -169,14 +169,25 @@ _FAMILY_RELATION = [
 
 
 _first_contact_list = [
-		('none','Ninguno'), 
+		
+		#('none','Ninguno'), 
 		('recommendation','Recomendación'), 
 		('tv','Tv'), 
-		
 		('radio','Radio'), 
-		('internet','Internet'), 
-		('website','Sitio web'), 
-		('mail_campaign','Campaña de mail'), 
+		#('internet','Internet'), 
+		
+
+		#('website','Sitio web'), 
+		('website','Web'), 
+		('facebook','Facebook'), 
+		('instagram','Instagram'), 
+		
+
+		#('mail_campaign','Campaña de mail'), 
+		('mail_campaign','Mailing'), 
+		('callcenter','Call Center'), 
+		('old_patient','Paciente Antiguo'), 
+		
 		]
 
 

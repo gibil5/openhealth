@@ -18,7 +18,7 @@
 
 	'description': """
 
-		26 June 2018 
+		1 July 2018 
 
 		Fulcrum 
 		
@@ -500,7 +500,7 @@
 
 
 		# Cosmetologies
-		'views/cosmetologies/cosmetology.xml',
+		#'views/cosmetologies/cosmetology.xml',
 
 
 
@@ -552,7 +552,7 @@
 		# Sessions
 		'views/sessions/session.xml',
 		'views/sessions/session_config_manual.xml',
-		'views/sessions/session_cos.xml',
+		#'views/sessions/session_cos.xml',
 
 
 		# Evaluations - 2
@@ -583,8 +583,8 @@
 		# Procedures - 2  
 		'views/procedures/procedure_controls.xml',
 		'views/procedures/procedure_sessions.xml',		
-		'views/procedures/procedure_cos.xml',
-		'views/procedures/procedure_cos_sessions.xml',		
+		#'views/procedures/procedure_cos.xml',
+		#'views/procedures/procedure_cos_sessions.xml',		
 
 
 
@@ -593,8 +593,8 @@
 		'views/consultations/consultation_med.xml',
 		'views/consultations/consultation_med_first.xml',
 		
-		'views/consultations/consultation_cos.xml',
-		'views/consultations/consultation_cos_first.xml',
+		#'views/consultations/consultation_cos.xml',
+		#'views/consultations/consultation_cos_first.xml',
 
 
 
@@ -623,7 +623,7 @@
 
 		# Appointments - 2
 		'views/appointments/calendar.xml',
-		'views/appointments/appointment_cos.xml',
+		#'views/appointments/appointment_cos.xml',
 
 
 		# Closing 

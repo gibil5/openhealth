@@ -248,6 +248,254 @@
 
 
 
+# 27 June 2018 
+
+
+	# Machine 
+	#x_machine = fields.Selection(
+	#		string="Sala", 
+	#		selection = app_vars._machines_list, 
+			#required=True, 
+	#	)
+
+
+	# On change - Machine
+	#@api.onchange('x_machine')
+	#def _onchange_x_machine(self):
+	#	if self.x_machine != False:	
+	#		self.x_error = 0
+
+			# Check for collisions 
+	#		ret, doctor_name, start, end = appfuncs.check_for_collisions(self, self.appointment_date, self.doctor.name, self.duration, self.x_machine, 'machine', self.x_type)
+
+	#		if ret != 0:	# Error 
+	#			self.x_error = 1
+	#			self.x_machine = False
+	#			return {
+	#						'warning': {	'title': "Error: Colisión !",
+	#										'message': 'La sala ya está reservada: ' + start + ' - ' + end + '.',
+	#					}}
+	#		else: 			# Success 				
+				# Treatment 
+	#			self.treatment = self.env['openhealth.treatment'].search([
+	#																		('patient', 'like', self.patient.name),
+	#																		('physician', 'like', self.doctor.name),
+	#																		],
+	#																		order='start_date desc',
+	#																		limit=1,
+	#													)
+				#print self.treatment 
+		#print
+
+
+
+	# X Time 
+	#x_time = fields.Char(
+	#		string="Hora", 
+
+	#		compute="_compute_x_time",
+	#	)
+
+	#@api.multi
+	#@api.depends('appointment_date')
+	#def _compute_x_time(self):
+	#	date_format = "%Y-%m-%d %H:%M:%S"
+	#	for record in self:
+	#		dt = datetime.datetime.strptime(record.appointment_date, date_format)
+	#		delta = datetime.timedelta(hours=5)
+	#		dt = dt - delta
+	#		record.x_time = dt.strftime("%H:%M:%S")
+	#		if record.state == 'pre_scheduled_control':
+	#			record.x_time = ''
+
+
+	# Duration
+	#_hash_duration = {
+	#				'0.25' 	: 0.25, 
+    #				'0.5' 	: 0.5, 
+     				#'0.75' 	: 0.75, 
+     				#'1.0' 	: 1.0, 
+     				#'2.0' 	: 2.0, 
+	#			}
+
+
+     # Duration min 
+	#x_duration_min = fields.Selection(
+
+	#		selection = app.vars._duration_list, 
+
+	#		string="Duración (min)", 
+		
+			#default = '0.5',
+			#default = '0.25',
+			#readonly=True,
+	#	)
+
+
+	# Colors 
+	#color_patient_id = fields.Integer(
+	#		default=2,
+	#	)
+
+
+	# Color Doctor id 
+	#_hash_colors_doctor = {
+	#		'Dra. Acosta': 1,
+	#		'Dr. Canales': 2,
+	#		'Dr. Chavarri': 3,
+	#		'Dr. Escudero': 4,
+	#		'Dr. Gonzales': 5,
+	#		'Dr. Vasquez': 6,
+	#	}
+
+
+	#color_doctor_id = fields.Integer(
+	#		default=1,
+
+	#		compute='_compute_color_doctor_id', 
+	#	)
+
+	#@api.multi
+	#@api.depends('doctor')
+	#def _compute_color_doctor_id(self):
+	#	for record in self:	
+	#		record.color_doctor_id = self._hash_colors_doctor[record.doctor.name]
+
+
+
+	# Color x_type id 
+	#color_x_type_id = fields.Integer(
+	#		default=1,
+
+	#		compute='_compute_color_x_type_id', 
+	#	)
+
+	#@api.multi
+	#@api.depends('x_type')
+	#def _compute_color_x_type_id(self):
+	#	for record in self:	
+	#		if record.x_type == 'procedure'   and   record.state == 'Pre-scheduled':
+				#print 'Gotcha !!!'
+	#			record.color_x_type_id = app_vars._hash_colors_x_type['procedure_pre_scheduled']
+	#		else:
+	#			record.color_x_type_id = app_vars._hash_colors_x_type[record.x_type]
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	# Target 
+	#x_target = fields.Selection(
+	#		string="Target", 
+
+			#selection = app_vars._target_list, 
+			
+	#		index=True,
+	#		required=True, 
+	#	)
+
+
+	#@api.onchange('x_target')
+	#def _onchange_x_target(self):
+	#	if self.x_target == 'therapist':	
+			#self.x_machine = [
+			#					('laser_triactive','Triactivo'), 
+			#					('chamber_reduction','Cámara de reducción'), 
+			#					('carboxy_diamond','Carboxiterapia - Punta de Diamante'), 								
+			#				]
+			#return {
+			#			'domain': 	{	'x_machine': [
+			#											#('x_pathology', '=', self.pathology)
+			#											('x_zone', '=', self.zone),
+			#										]
+			#						},
+			#}
+
+
+
+
+
+	# X Date 
+	#x_date = fields.Date(
+	#		string="Fecha", 
+
+	#		compute="_compute_x_date",
+	#	)
+
+	#@api.multi
+	#@api.depends('appointment_date')
+	#def _compute_x_date(self):
+	#	date_format = "%Y-%m-%d %H:%M:%S"
+	#	for record in self:
+	#		dt = datetime.datetime.strptime(record.appointment_date, date_format)
+	#		record.x_date = dt.strftime("%Y-%m-%d")
+
+
+
+	#_h_duration = {
+	#				(0.25,0.25):	0.25,
+	#				(0.5,0.5):		0.5,
+	#				(0.45,0.45):	0.45,
+	#				(1,1):			1,
+	#			}	
+	#duration_sel = fields.Selection(
+	#		string="Duración (h)",	
+	#		selection = [
+	#						(0.25,0.25), 
+	#						(0.5,0.5), 
+	#						(0.45,0.45), 
+	#						(1,1), 
+	#					],
+	#		default=0.5, 
+	#	)
+
+	#@api.onchange('duration_sel')
+	#def _onchange_duration_sel(self):
+	#	if self.duration_sel != False:	
+			#self.duration = self._h_duration[self.duration_sel]
+			#self.duration = self.duration_sel
+
+	
+
+		# State 
+	#APPOINTMENT_STATUS = [			
+	#		('pre_scheduled',	 		'No confirmado'),
+	#		('Scheduled', 				'Confirmado'),
+			#('pre_scheduled_control', 	'Pre-cita'),
+	#		('pre_scheduled_control', 	'Sin Hora (Control)'),
+
+
+			#('event', 					'Evento'),
+			#('invoiced', 				'Facturado'),
+			#('error', 					'Error'),
+			#('completed', 				'Completo'),
+
+			# Oe Health 
+			#('Scheduled', 'Scheduled'),
+			#('Completed', 'Completed'),
+			#('Invoiced', 'Invoiced'),
+	#	]
+
+
+
+	#@api.onchange('x_type')
+	#def _onchange_x_type(self):
+	#	print
+	#	print 'On change type'
+	#	self.duration = 0.5
+		#if self.x_type == 'event': 
+		#	print 'Type equal event'
+		#	self.state = 'event'
+
 
 
 

@@ -458,6 +458,12 @@ class PaitentLine(models.Model):
 
 
 
+	# Function
+	function = fields.Char(
+			'Ocupación', 
+		)
+
+
 
 
 # ----------------------------------------------------------- Update Fields ------------------------------------------------------

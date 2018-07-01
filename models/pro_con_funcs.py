@@ -88,12 +88,17 @@ def create_controls(self):
 
 		# Create Appointment
 		duration = 0.25
-		x_type = 'control'
 		state = 'pre_scheduled_control'
-		
+		x_type = 'control'
+
+		#state = 'pre_scheduled_control'
+		states = ['pre_scheduled_control']
+
 
 		#appointment_date_str = check_and_push(self, appointment_date_str, duration, x_type, doctor_name)
-		appointment_date_str = procedure_funcs.check_and_push(self, control_date_str, duration, x_type, doctor_name)
+		#appointment_date_str = procedure_funcs.check_and_push(self, control_date_str, duration, x_type, doctor_name)
+		#appointment_date_str = procedure_funcs.check_and_push(self, control_date_str, duration, x_type, doctor_name, state)
+		appointment_date_str = procedure_funcs.check_and_push(self, control_date_str, duration, x_type, doctor_name, states)
 
 		#appointment_date_str = control_date_str
 
@@ -121,6 +126,9 @@ def create_controls(self):
 		# Create Control 
 		control = self.control_ids.create({
 											'evaluation_start_date':control_date,
+											'first_date':control_date,
+											'control_date':control_date,
+
 											'patient':patient_id,
 											'doctor':doctor_id,
 											'product':product_id,
@@ -132,6 +140,12 @@ def create_controls(self):
 											'evaluation_nr': k+1, 
 									})
 		control_id = control.id
+
+
+		# Here 
+		#if control.first_date == False: 
+		#control.first_date = control.control_date
+
 
 
 

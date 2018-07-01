@@ -428,6 +428,11 @@ Sales by patient who have a Vip Card
 
 
 
+					<field name="education"/>
+
+					<field name="function"/>
+
+
 					<field name="city"/>
 
 					<field name="district"/>
@@ -439,7 +444,6 @@ Sales by patient who have a Vip Card
 
 					<field name="first_contact"/>
 
-					<field name="education"/>
 
 					<field name="country"/>
 

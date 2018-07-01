@@ -26,6 +26,87 @@ class Procedure(models.Model):
 
 
 
+# ----------------------------------------------------------- Deprecated ------------------------------------------------------
+	
+	#appointment_ids = fields.One2many(
+	#		'oeh.medical.appointment', 
+	#		'procedure', 
+	#		string = "Citas", 
+	#		)
+
+
+
+
+
+# ----------------------------------------------------------- Redefinition ------------------------------------------------------
+
+	#def _get_default_appointment(self):
+		
+	#	print 
+	#	print 'Get Default App'
+		#print x_type
+		
+	#	print self.patient
+	#	print self.doctor
+
+	#	patient = self.patient
+	#	doctor = self.doctor
+
+ 	#	app = self.env['oeh.medical.appointment'].search([
+	#															('patient', '=', patient), 
+	#															('doctor', '=', doctor), 
+	#													],
+															#order='write_date desc',
+	#														limit=1,
+	#													)
+ 	#	print app
+	#	return app
+	# _get_default_appointment
+
+
+
+
+
+	# Appointment 
+	appointment = fields.Many2one(
+			'oeh.medical.appointment',			
+			string='Cita #', 
+			required=False, 			
+			#ondelete='cascade', 
+
+			#default=lambda self: self._get_default_appointment(),
+		)
+
+
+
+	# Update App  
+	@api.multi	
+	def update_appointment(self):
+
+		print 
+		print 'Update Appointment'
+
+		patient = self.patient
+		doctor = self.doctor
+		x_type = 'procedure'
+
+ 		app = self.env['oeh.medical.appointment'].search([
+																('patient', '=', patient.name), 
+																('doctor', '=', doctor.name), 
+																('x_type', '=', x_type), 
+														],
+															#order='write_date desc',
+															order='appointment_date desc',
+															limit=1,
+														)
+ 		print app 
+
+ 		self.appointment = app
+
+
+
+
+
 
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 
@@ -201,11 +282,6 @@ class Procedure(models.Model):
 			)
 
 
-	appointment_ids = fields.One2many(
-			'oeh.medical.appointment', 
-			'procedure', 
-			string = "Citas", 
-			)
 
 
 	control_ids = fields.One2many(

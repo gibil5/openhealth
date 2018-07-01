@@ -16,18 +16,50 @@
 
 					<header>
 
+<!--
+							class="oe_highlight oe_right"
+-->
+						<!-- Clear --> 
+						<!-- Test --> 
+
+<!--
+						<button 
+							type="object" 
+
+							class="oe_highlight"
+							
+							name="clear" 
+							
+							string="Clear" 
+							
+							groups="openhealth.roots"
+						/>
+
+
+						<button 
+							type="object" 
+
+							class="oe_highlight"
+							
+							name="test" 
+							
+							string="Test" 
+							
+							groups="openhealth.roots"
+						/>
+-->
+
 
 
 						<!-- Create Appointment --> 
+<!--
+											'search_default_doctor': physician,
+-->
 						<button 
 							name="%(oeh_medical_appointment_action_tree_confirmed)d"	
 							type="action" 
 							class="oe_highlight"
-
-							states="empty"
-							
 							context="{									
-											'search_default_doctor': physician,
 											'default_patient': patient, 
 											'default_doctor' : physician, 
 											'default_appointment_date': start_date, 
@@ -35,13 +67,11 @@
 											'default_x_target' : 'doctor', 
 											'default_x_type': 'consultation', 
 									}" 											
-
-
-
-							string="Crear CITA"
-
-
 							groups="openhealth.roots,openhealth.reception,openhealth.managers,openhealth.directors"
+
+							states="empty"
+							
+							string="Crear CITA"
 						/>
 
 
@@ -840,7 +870,9 @@ Fields
 							<field name="patient_age"		/>
 							<field name="patient_city"		/>
 						</group>
-						<group></group>
+						<group>
+								<field name="partner_id"		invisible="0"	/>							
+						</group>
 
 
 
@@ -908,18 +940,25 @@ Fields
 						-->
 
 
+<!--
+									name="create_consultation" 
+									name="create_service" 
+									name="create_order_pro" 
+									name="create_procedure" 
+
+-->
+							
+
 							<group>
 								<button 
 									type="object" 
 									class="oe_highlight"
+									attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
+									groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
 
 									name="create_consultation" 
 
-									string="CONSU" 									
-
-									attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
-
-									groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
+									string="CONSU"
 								/>
 							</group>
 
@@ -929,13 +968,12 @@ Fields
 								<button 
 									type="object" 
 									class="oe_highlight"
+									attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
+									groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
+
 									name="create_service" 
 
-									string="RECOM" 									
-
-									attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
-
-									groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
+									string="RECOM"
 								/>
 							</group>
 
@@ -943,14 +981,13 @@ Fields
 							<group>
 								<button 
 									type="object" 
-									name="create_order_pro" 
 									class="oe_highlight"
+									attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
+									groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
+
+									name="create_order_pro" 
 
 									string="PRESU" 
-
-									attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
-
-									groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
 								/>
 							</group>
 
@@ -959,13 +996,12 @@ Fields
 								<button 
 									type="object" 
 									class="oe_highlight"
+									attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
+									groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
+
 									name="create_procedure" 
 
 									string="PROC" 
-
-									attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
-
-									groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
 								/>
 							</group>
 
@@ -1026,15 +1062,13 @@ Fields
 							</group>							
 							<group>
 								<field name="start_date"/>
-
+<!--
 								<field name="duration"			invisible="1" />
-
 								<field name="end_date"			invisible="1"	/>
-
 								<field name="today_date"		invisible="1"		/>
+-->
 
 								<field name="vspace" />
-
 								<field name="treatment_closed"	invisible="0"	/>
 
 								<field name="vspace" />

@@ -55,10 +55,11 @@ def create_sessions(self):
 
 	# Appointment 
 	duration = 0.5
-	x_type = 'session'
-	state = 'pre_scheduled'
 	#x_create_procedure_automatic = False 
 	machine = self.machine
+	#x_type = 'session'
+	x_type = 'procedure'
+
 
 
 	doctor_name = self.doctor.name 
@@ -141,13 +142,18 @@ def create_sessions(self):
 			appointment_date_str = session_date_str + ' 15:0:0'
 
 
+			states = False
+
 			# Check and push 
 			#appointment_date_str = procedure_funcs_cos.check_and_push(self, appointment_date_str, duration, x_type, doctor_name, machine)
-			appointment_date_str = procedure_funcs.check_and_push(self, appointment_date_str, duration, x_type, doctor_name)
+			#appointment_date_str = procedure_funcs.check_and_push(self, appointment_date_str, duration, x_type, doctor_name)
+			#appointment_date_str = procedure_funcs.check_and_push(self, appointment_date_str, duration, x_type, doctor_name, state)
+			appointment_date_str = procedure_funcs.check_and_push(self, appointment_date_str, duration, x_type, doctor_name, states)
 
 
 
 			# Create Appointment 
+			state = 'pre_scheduled'
 			appointment = self.env['oeh.medical.appointment'].create({
 																		'appointment_date': appointment_date_str,
 																		'patient': patient_id,	

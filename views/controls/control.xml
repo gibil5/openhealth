@@ -121,11 +121,14 @@
 							<!-- Number --> 
 							<div class="oe_right" >
 								<div class="oe_title" >
-									<label class="oe_edit_only" for="name" string="Control #"/>
+
 <!--
+									<label class="oe_edit_only" for="name" string="Control #"/>
+									<label  for="name" string="Control #"/>
 									<h1><field name="name" class="oe_inline"/></h1>
--->
 									<h1><field name="treatment" class="oe_inline"/></h1>
+-->
+									<h1><field name="treatment"/></h1>
 								</div>
 							</div>
 						</div>
@@ -167,6 +170,8 @@
 <group
 groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.physicians,openhealth.staffs,openhealth.reception,openhealth.archivers"
 >
+
+
 								<field name="doctor" options="{'no_create': True}"/>
 
 								<field name="vspace"/>
@@ -183,6 +188,7 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 
 
 								<field name="control_date"/>
+								<field name="first_date"/>
 
 
 
@@ -348,15 +354,26 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 -->				
 					<field name="appointment"/>
 
-					<field name="patient"  string="Paciente"/>
+
+
+					<field name="patient" />
 					
-					<field name="doctor"   string="Médico"/>
+					<field name="doctor"  />
+
+					<field name="treatment"/>
+
+
 
 					<field name="chief_complaint"/>
 					
 					<field name="laser"/>
 
+					
+
+					<field name="first_date"/>
 					<field name="control_date"/>
+					
+
 					
 					<field name="nr_images"/>
 

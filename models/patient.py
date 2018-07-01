@@ -565,11 +565,45 @@ class Patient(models.Model):
 			required=True,  
 		)
 
+#Positivo
+#Normal
+#Inseguro
+#Preguntón
+#Regateador 
+#Agresivo
+#Psiquiátrico
+#Abogado 
+
 
 	# First Impression 
-	x_first_impression = fields.Char(
+	#x_first_impression = fields.Char(
+	x_first_impression = fields.Selection(
+
+			[	
+				('positive', 		'Positivo'),
+
+				('normal', 			'Normal'),
+
+				('insecure', 		'Inseguro'),
+
+				('asking', 			'Preguntón'),
+
+
+				('barterint', 		'Regateador'),
+
+				('agressive', 		'Agresivo'),
+
+				('psychiatric', 	'Psiquiátrico'),
+
+				('lawyer', 			'Abogado'),
+
+				#('other', 			'Otro'),
+			], 
+
 			string="Primera impresión", 
-			required=False, 
+			
+			#required=False, 
+			required=True, 
 		)
 
 
@@ -658,6 +692,10 @@ class Patient(models.Model):
 			# Address 
 			self.street2_sel = 41
 			self.street = 'Av. San Borja Norte 610'			
+
+
+			self.function = 'Ingeniero'
+			self.x_education_level = 'university'
 
 			#self.x_last_name = 'Revilla Rondon'
 			#self.x_first_name = 'Toby'
@@ -783,8 +821,11 @@ class Patient(models.Model):
 			)
 
 	x_first_contact = fields.Selection(
+
 			selection = pat_vars._first_contact_list, 
+		
 			string = '¿ Cómo se enteró ?',
+			required=True, 
 		)
 
 	x_country_residence= fields.Many2one(

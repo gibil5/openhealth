@@ -1863,6 +1863,9 @@ class Marketing(models.Model):
 														'district': patient.street2, 
 
 
+														'function': patient.function, 
+
+
 														'marketing_id': self.id, 
 					})
 

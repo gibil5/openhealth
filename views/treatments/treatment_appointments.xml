@@ -57,11 +57,11 @@
 								<field name="procedure"/>
 								<field name="session"/>
 								<field name="control"/>					
+								<field name="x_date"/>
+								<field name="x_time"/>
 -->
 					
 								<field name="state"/>
-								<field name="x_date"/>
-								<field name="x_time"/>
 
 								<field name="x_machine"/>								
 							</tree>

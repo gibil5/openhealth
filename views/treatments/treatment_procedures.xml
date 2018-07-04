@@ -3,9 +3,8 @@
 	<data>
 
 
-		<!--
-		procedures
-		-->
+
+		<!-- Procedure -->
 		<record model="ir.ui.view" id="treatment_procedure_form_view">
 			<field name="name">treatment.procedure.form</field>
 			<field name="model">openhealth.treatment</field>
@@ -15,68 +14,41 @@
 			<field name="inherit_id" ref="treatment_form_view"/>
 			<field name="arch" type="xml">
 				<notebook position="inside">
-					
-					
-
-					<!--
-						Procedures 
-					<page string="Procedimientos realizados">
-					-->
-
-
 					<page string="Procedimientos">
+						
 
-						<!--
-						<field name="procedure_ids" context="{'patient': 'Javier Revilla'}"/>
-						<field name="procedure_ids" domain="[('evaluation_type', '=', 'Ambulatory')]" />
-						--> 
+						<field name="procedure_ids"/>
+
+<!--
 						<field name="procedure_ids">
 							<tree string="Procedimientos"		create="false" >
-
-								<!-- Button -->
 								<button 
 									type="object" 
 									class="oe_highlight"	
-									string="Entrar"
-									
+									string="Entrar"	
 									name="open_line_current" 
 								/>
-
-
 								<field name="product"/>
-
 								<field string="Médico" name="doctor"/>
-
 								<field name="zone"/>
-
 								<field name="pathology"/>
-
 								<field name="level"/>
-
 								<field name="evaluation_start_date"/>
-
-
-								<!--
-								<field name="chief_complaint"/>
-
-								<field name="name"/>
-								<field name="appointment"/>
-								<field string="Paciente" name="patient"/>
-
-								<field string='Tipo' name="evaluation_type"/>
-								<field name="treatment"/>
-								-->
-								
-
-								
 							</tree>
 						</field>
+-->
 					</page>
-
-
-
 				</notebook>
 			</field>
 		</record>
+								<!--
+								<field name="chief_complaint"/>
+								<field name="name"/>
+								<field name="appointment"/>
+								<field string="Paciente" name="patient"/>
+								<field string='Tipo' name="evaluation_type"/>
+								<field name="treatment"/>
+								-->
+
 	</data>
 </openerp>

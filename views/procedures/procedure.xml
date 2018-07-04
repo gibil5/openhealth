@@ -212,20 +212,38 @@
 			<field name="model">openhealth.procedure</field>
 			<field name="arch" type="xml">
 				<tree string="Procedure Tree">
-					<field name="name"/>
+
+					<!-- Quick Button -->
+					<button 
+						type="object" 
+						class="oe_highlight"	
+						string="E"
+						name="open_line_current" 
+					/>
+
+					<field name="appointment"/>
+
 					<field name="patient"/>
+
 					<field name="doctor"/>
-					<field name="evaluation_start_date"/>
+
 					<field name="chief_complaint"/>
+
 					<field name="laser"/>
+
+
+					<field name="evaluation_start_date"/>
+
 					<field name="nr_sessions"/>
+
 					<field name="nr_controls"/>
-					<field name="treatment"/>
 				</tree>
 			</field>
 		</record>
 <!--
 					<field name="product"/>
+					<field name="name"/>
+					<field name="treatment"/>
 -->
 		
 		

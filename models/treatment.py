@@ -67,20 +67,71 @@ class Treatment(models.Model):
 		print 
 		print 'Create Recommendation'
 		#self.create_service()
-		print 'Co2'
-		service = self.env['product.template'].search([
-															('x_name_short', '=', 'co2_nec_rn1_one'),
-											],
-												#order='date_order desc',
-												limit=1,
-											)
-		service_id = service.id
-		print service
-		self.service_co2_ids.create({
 
-										'service': 		service_id, 
-										'treatment': 	self.id, 
-			})
+		create_co2 = True
+
+		#create_exc = True
+		create_exc = False
+
+		#create_crio = True
+		create_crio = False
+
+
+		# Co2 
+		if create_co2: 
+			print 'Co2'
+			service = self.env['product.template'].search([
+																('x_name_short', '=', 'co2_nec_rn1_one'),
+												],
+													#order='date_order desc',
+													limit=1,
+												)
+			service_id = service.id
+			print service
+			self.service_co2_ids.create({
+												'service': 		service_id, 
+												'treatment': 	self.id, 
+				})
+
+
+
+		# Excilite 
+		if create_exc: 
+			print 'Exc'
+			service = self.env['product.template'].search([
+																('x_name_short', '=', 'exc_bel_alo_15m_one'),
+												],
+													#order='date_order desc',
+													limit=1,
+												)
+			service_id = service.id
+			print service
+			self.service_excilite_ids.create({
+												'service': 		service_id, 
+												'treatment': 	self.id, 
+				})
+
+
+
+		# Crio 
+		if create_crio: 
+			print 'Medical - Crio'
+			service = self.env['product.template'].search([
+																('x_name_short', '=', 'cri_faa_acn_ten'),
+												],
+													#order='date_order desc',
+													limit=1,
+												)
+			service_id = service.id
+			print service
+			self.service_medical_ids.create({
+												'service': 		service_id, 
+												'treatment': 	self.id, 
+				})
+
+
+
+
 
 
 
@@ -362,7 +413,7 @@ class Treatment(models.Model):
 			'treatment', 
 			string = "Reserva de sala", 
 			domain = [
-						('x_machine', '!=', 'false'),	
+						#('x_machine', '!=', 'false'),	
 					],
 			)
 

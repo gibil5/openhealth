@@ -29,14 +29,35 @@ class Appointment(models.Model):
 
 	# ----------------------------------------------------------- Deprecated ------------------------------------------------------
 
-	x_machine = fields.Char()
+	#x_target = fields.Char()
 
-	x_target = fields.Char()
-
+	#x_machine = fields.Char()
 
 
 
 	# ----------------------------------------------------------- Canonical ------------------------------------------------------
+
+	# Type 
+	x_type = fields.Selection(
+
+			selection = app_vars._type_list, 
+		
+			string="Tipo",
+			required=True, 
+		)
+
+	# Sub type 
+	x_subtype = fields.Selection(
+
+			selection = app_vars._subtype_list, 
+		
+			string="Sub-tipo",
+			#required=True, 
+		)
+
+
+
+
 
 	# Name 
 	name = fields.Char(
@@ -148,12 +169,6 @@ class Appointment(models.Model):
 		)
 
 
-	# Type 
-	x_type = fields.Selection(
-			selection = app_vars._type_list, 
-			string="Tipo",
-			required=True, 
-		)
 
 
 

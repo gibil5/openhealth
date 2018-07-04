@@ -29,19 +29,15 @@
 						<!--
 						<field name="appointment_ids"/>
 						<tree string=""		default_order='appointment_date, x_machine'>
-
-
 						<field name="appointment_ids">
 						<field name="appointment_ids"	context="{'patient': 'patient', 'doctor': 'Dr. Alarcon' }"  >
 						-->
 
 
-
-						<field name="appointment_ids"		>
-
-
+						<field name="appointment_ids"/>
+<!--
+						<field name="appointment_ids">
 							<tree string=""		default_order="appointment_date"	create="false" >	
-
 								
 								<field name="name"	invisible="0"/>
 
@@ -52,6 +48,12 @@
 								<field name="x_type"/>
 
 								<field name="treatment"/>
+					
+								<field name="state"/>
+							</tree>
+						</field>				
+-->
+					</page>
 <!--								
 								<field name="consultation"/>
 								<field name="procedure"/>
@@ -59,16 +61,8 @@
 								<field name="control"/>					
 								<field name="x_date"/>
 								<field name="x_time"/>
-
 								<field name="x_machine"/>								
 -->
-					
-								<field name="state"/>
-
-							</tree>
-						</field>				
-
-					</page>
 
 					
 				</notebook>

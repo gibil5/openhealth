@@ -20,7 +20,6 @@
 							class="oe_highlight oe_right"
 -->
 						<!-- Clear --> 
-						<!-- Test --> 
 
 <!--
 						<button 
@@ -1003,6 +1002,8 @@ Fields
 <!--
 -->
 							<group>
+
+								<!-- Reset --> 
 								<button 
 									type="object" 
 									class="oe_highlight"
@@ -1016,6 +1017,7 @@ Fields
 
 
 
+								<!-- Test --> 
 								<button 
 									type="object" 
 									class="oe_highlight"

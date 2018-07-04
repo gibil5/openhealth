@@ -180,6 +180,10 @@
 
 					<field name="x_family"/>
 
+					<field name="x_treatment"/>				
+
+
+
 					<field name="categ_id"/>
 
 

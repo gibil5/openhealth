@@ -174,25 +174,43 @@
 			<field name="model">openhealth.consultation</field>
 			<field name="arch" type="xml">
 				<tree string="Consultation Tree">
-					
+<!--					
 					<field name="name"/>
+					<field name="treatment"/>
+-->				
+
+
+					<!-- Quick Button -->
+					<button 
+						type="object" 
+						class="oe_highlight"	
+						string="E"
+						name="open_line_current" 
+					/>
+
+
+					<field name="appointment"/>
+
+					<field name="patient"/>
+
+					<field name="doctor"/>					
 					
-					<field name="patient_sex"/>
+					<field name="chief_complaint"/>
+
+					<field name="laser"/>					
+
+					<field name="evaluation_start_date"/>
+
 					
 					<field name="patient_age"/>
 					
+					<field name="patient_sex"/>
+
 					<field name="patient_city"/>
 
-					<field name="patient"  />
-
-					<field name="doctor"   />					
-					
-					<field name="evaluation_start_date"/>
-
-					<field name="chief_complaint"/>
-										
-					<field name="treatment"/>
-
+				</tree>
+			</field>
+		</record>
 					<!--
 					<field name="nr_orders"/>
 					<field name="nr_apps"/>
@@ -202,9 +220,6 @@
 					<field name="nr_services"/>
 					<field name="price_total"/>
 					-->
-				</tree>
-			</field>
-		</record>
 		
 
 

@@ -888,6 +888,9 @@ class sale_order(models.Model):
 	
 	# Proc Created - For Doctor budget creation 
 	x_procedure_created = fields.Boolean(
+
+			'Procedimiento Creado', 
+
 			default=False, 
 		)
 

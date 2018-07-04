@@ -256,7 +256,10 @@ class Procedure(models.Model):
 	# Machine 
 	machine = fields.Selection(
 			string="Sala", 
-			selection = app_vars._machines_list, 
+
+			#selection = app_vars._machines_list, 
+			selection = app_vars._subtype_list, 
+			
 			#required=True, 
 
 			compute="_compute_machine",

@@ -23,12 +23,13 @@
 					<page string="Controles">
 
 
+						<field name="control_ids"/>
+<!--
 						<field name="control_ids">
 
 							<tree string="Controles"	create="false" >
 
 
-								<!-- Button -->
 								<button 
 									type="object" 
 									class="oe_highlight"	
@@ -37,47 +38,32 @@
 									name="open_line_current" 
 								/>
 
-
-
-
 								<field name="name"/>
 
 								<field name="appointment"/>
-
 
 								<field string="Paciente" name="patient"/>
 
 								<field string="Médico" name="doctor"/>
 
-
-								<!--
-								<field string='Tipo' name="evaluation_type"/>
-								--> 
-
 								<field name="chief_complaint"/>
 
 								<field name="product"/>
 
-
 								<field name="evaluation_start_date"/>
-
-
-
-								<!--
-								<field name="treatment"/>
-								-->
-								
 								
 							</tree>
 						</field>
+-->						
 					</page>
-
-
-
 				</notebook>
 			</field>
 		</record>
 	</data>
 </openerp>
+<!--
+								<field name="treatment"/>
+								<field string='Tipo' name="evaluation_type"/>
+-->
 
 

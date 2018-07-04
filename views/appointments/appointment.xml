@@ -307,8 +307,6 @@ DEPRECATED !
 
 
 
-
-
 		<!-- TREE -->
 		<record model="ir.ui.view" id="oehealth.oeh_medical_appointment_tree">
 			<field name="name">oeh.medical.appointment.tree</field>			
@@ -317,7 +315,6 @@ DEPRECATED !
 			<field name="priority" eval="1"/>
 			<field name="arch" type="xml">
 				
-
 				<!--
 				<tree string="Appointment Tree">
 				<tree string="Appointment Tree"  	default_order='x_time'>
@@ -329,11 +326,19 @@ DEPRECATED !
 				<tree string="Appointment Tree"  	default_order='appointment_date'  >
 
 					<field name="name"/>
-					<field name="id"/>
+
+					<field name="x_type"/>
+
+					<field name="x_subtype"/>
+					
+					<field name="state"/>
+
+
+<!--
+					<field name="treatment"/>
 					<field name="patient"/>
 					<field name="doctor"/>
-					<field name="x_type"/>
-<!--
+					<field name="id"/>
 					<field name="nr_clones"		invisible="1"	/>
 					<field name="nr_mac_clones"	invisible="1"	/>
 
@@ -342,13 +347,11 @@ DEPRECATED !
 					<field name="x_date"/>
 					<field name="x_time"/>
 					<field name="cosmetology"/>
--->				
-					<field name="treatment"/>
 					<field name="consultation"/>
 					<field name="procedure"/>
 					<field name="session"/>
 					<field name="control"/>										
-					<field name="state"/>
+-->				
 				</tree>
 			</field>
 		</record>

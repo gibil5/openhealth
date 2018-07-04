@@ -351,6 +351,7 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 					<field name="evaluation_nr"/>
 <!--
 					<field name="name"/>
+					<field name="treatment"/>
 -->				
 					<field name="appointment"/>
 
@@ -360,7 +361,6 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 					
 					<field name="doctor"  />
 
-					<field name="treatment"/>
 
 
 

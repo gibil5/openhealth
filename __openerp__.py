@@ -198,7 +198,7 @@
 
 
 		# Commons 
-		#'views/menus/menus_openhealth.xml',
+		'views/menus/menus_openhealth.xml',
 		'security/ir.model.access.csv',
 
 
@@ -618,7 +618,6 @@
 		'views/patients/patient_personal.xml',
 		'views/patients/patient_control_docs.xml',
 		'views/patients/patient_appointments.xml',
-
 
 		#'views/patients/patient_quick.xml',			# Deprecated ? 
 

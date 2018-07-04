@@ -382,7 +382,9 @@ DEPRECATED !
 					<field name="res_model">oeh.medical.appointment</field>
 					<field name="view_type">form</field>
 					<field name="view_mode">calendar,tree,form</field>  
+
 					<field name="view_id" eval="False"/>
+
 
 <!--
 											('state', 'in', ['pre_scheduled','Scheduled', 'completed', 'invoiced']),
@@ -417,6 +419,8 @@ DEPRECATED !
 
 
 
+
+
 		<!-- Appointment Controls -->
 		<record id="oeh_medical_appointment_action_tree_controls" model="ir.actions.act_window">
 <!--
@@ -427,6 +431,7 @@ DEPRECATED !
 					<field name="res_model">oeh.medical.appointment</field>
 					<field name="view_type">form</field>
 					<field name="view_mode">calendar,tree,form</field>
+					
 					<field name="domain">[
 											('state', '=', 'pre_scheduled_control'),
 										]

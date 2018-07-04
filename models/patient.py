@@ -422,6 +422,8 @@ class Patient(models.Model):
 
 			string="Primera impresión", 
 			
+			default='normal', 
+			
 			#required=False, 
 			required=True, 
 		)

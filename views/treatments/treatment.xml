@@ -34,31 +34,18 @@
 							
 							groups="openhealth.roots"
 						/>
-
-
-						<button 
-							type="object" 
-
-							class="oe_highlight"
-							
-							name="test" 
-							
-							string="Test" 
-							
-							groups="openhealth.roots"
-						/>
 -->
+
+
 
 
 
 						<!-- Create Appointment --> 
 <!--
 											'search_default_doctor': physician,
--->
-						<button 
-							name="%(oeh_medical_appointment_action_tree_confirmed)d"	
+
 							type="action" 
-							class="oe_highlight"
+							name="%(oeh_medical_appointment_action_tree_confirmed)d"	
 							context="{									
 											'default_patient': patient, 
 											'default_doctor' : physician, 
@@ -67,6 +54,13 @@
 											'default_x_target' : 'doctor', 
 											'default_x_type': 'consultation', 
 									}" 											
+-->
+						<button 
+							class="oe_highlight"
+							type="object" 
+
+							name="create_appointment_nex" 
+
 							groups="openhealth.roots,openhealth.reception,openhealth.managers,openhealth.directors"
 
 							states="empty"
@@ -958,7 +952,7 @@ Fields
 
 									name="create_consultation" 
 
-									string="CONSU"
+									string="CONSULTA"
 								/>
 							</group>
 
@@ -973,7 +967,7 @@ Fields
 
 									name="create_service" 
 
-									string="RECOM"
+									string="RECOMENDACION"
 								/>
 							</group>
 
@@ -987,7 +981,7 @@ Fields
 
 									name="create_order_pro" 
 
-									string="PRESU" 
+									string="PRESUPUESTO" 
 								/>
 							</group>
 
@@ -1001,24 +995,41 @@ Fields
 
 									name="create_procedure" 
 
-									string="PROC" 
+									string="PROCEDIMIENTO" 
 								/>
 							</group>
 
 
 <!--
+-->
 							<group>
 								<button 
-									name="reset" 	
 									type="object" 
 									class="oe_highlight"
+
+									name="reset" 	
 
 									string="Reset"
 
 									groups="openhealth.roots"			
 								/>
+
+
+
+								<button 
+									type="object" 
+									class="oe_highlight"
+									
+									name="test_integration" 
+									
+									string="Test" 
+									
+									groups="openhealth.roots"
+								/>
 							</group>
--->
+
+
+
 <!--
 							<group>
 								<button 

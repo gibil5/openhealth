@@ -1,0 +1,153 @@
+
+
+<!--
+3 Jul 2018 
+-->
+
+
+<!--
+								<field name="service_vip_ids">	
+									<tree string="Services"		create="false" >	
+										<button 
+											type="object" 
+											class="oe_highlight"	
+											string="Entrar"
+											name="open_line_current" 
+										/>
+										<field name="service"/>	
+									</tree>
+								</field>
+-->
+
+
+
+<!--
+								<field name="service_co2_ids">	
+									<tree string="Services"		create="false" >	
+										<button 
+											type="object" 
+											class="oe_highlight"	
+											string="Entrar"
+											name="open_line_current" 
+										/>
+										<field name="name"/>
+										<field name="laser"/>				
+										<field name="treatment"/>
+										<field name="service"/>
+										<field name="zone"/>														
+										<field name="physician"/>
+										<field name="state"/>
+									</tree>
+								</field>
+-->
+
+
+
+
+
+<!--							
+							<page string="Histórico"   	groups="openhealth.roots,openhealth.directors"	  
+														attrs="{'invisible':[('nr_services_quick', '=', 0)]}"
+								>
+							<page string="Histórico"   	groups="openhealth.roots"	  >
+							</page>
+-->
+
+
+
+
+
+
+<!--
+								<field name="service_excilite_ids">	
+									<tree string="Services">	
+										<button 
+											type="object" 
+											class="oe_highlight"	
+											string="Entrar"
+											name="open_line_current" 
+										/>
+										<field name="name"/>
+										<field name="laser"/>				
+										<field name="treatment"/>
+										<field name="service"/>
+										<field name="consultation"/>
+										<field name="state"/>
+									</tree>
+								</field>
+-->
+
+
+
+
+
+<!--
+								<field name="service_ipl_ids">									
+									<tree string="Services">	
+										<button 
+											type="object" 
+											class="oe_highlight"	
+											string="Entrar"
+											name="open_line_current" 
+										/>
+										<field name="name"/>
+										<field name="laser"/>				
+										<field name="treatment"/>
+										<field name="service"/>
+										<field name="consultation"/>
+										<field name="state"/>
+									</tree>
+								</field>
+-->
+
+
+
+
+
+
+<!--
+								<field name="service_ndyag_ids">									
+									<tree string="Services">	
+										<button 
+											type="object" 
+											class="oe_highlight"	
+											string="Entrar"
+											name="open_line_current" 
+										/>
+										<field name="name"/>
+										<field name="laser"/>				
+										<field name="treatment"/>
+										<field name="service"/>
+										<field name="consultation"/>
+										<field name="state"/>
+									</tree>
+								</field>
+-->
+
+
+
+
+<!--
+								<field name="service_medical_ids">									
+									<tree string="Services">	
+										<button 
+											type="object" 
+											class="oe_highlight"	
+											string="Entrar"
+											name="open_line_current" 
+										/>
+
+										<field name="name"/>
+										<field name="laser"/>				
+										<field name="treatment"/>
+										<field name="service"/>
+										<field name="consultation"/>
+
+
+										<field name="state"/>
+									</tree>
+								</field>
+-->
+
+
+

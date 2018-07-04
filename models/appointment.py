@@ -20,6 +20,10 @@ class Appointment(models.Model):
 
 	_inherit = 'oeh.medical.appointment'
 
+	#_order = 'x_type asc'
+	#_order = 'state desc'
+	#_order = 'state desc,write_date desc'
+	_order = 'name desc'
 
 
 
@@ -54,7 +58,7 @@ class Appointment(models.Model):
 			readonly=False,
 			#states={'Scheduled': [('readonly', False)]}), 
 		
-			default = fields.Date.today, 
+			#default = fields.Date.today, 
 		)
 
 
@@ -91,8 +95,12 @@ class Appointment(models.Model):
 			#selection = APPOINTMENT_STATUS, 
 			selection = app_vars._state_list, 
 			string="Estado",
+			
 			default='pre_scheduled',
-			readonly=False, 
+			
+			#readonly=False, 
+			readonly=True, 
+
 			required=True, 
 		)
 
@@ -131,7 +139,9 @@ class Appointment(models.Model):
 
 
 
-	# Create procedure 
+# ----------------------------------------------------------- Extensions ------------------------------------------------------
+
+	# Create procedure Flag 
 	x_create_procedure_automatic = fields.Boolean(
 			string="¿ Cita para Procedimiento ?",
 			default=False, 
@@ -144,6 +154,28 @@ class Appointment(models.Model):
 			string="Tipo",
 			required=True, 
 		)
+
+
+
+	# Date 
+	x_date = fields.Date(
+			string="Fecha", 
+		)
+
+	@api.onchange('appointment_date')
+	def _onchange_x_date(self):
+		#print 
+		#print 'On Change - App Date'
+
+		if self.appointment_date != False: 
+			#print 'Gotcha !'
+			date_format = "%Y-%m-%d %H:%M:%S"
+			#dt = datetime.datetime.strptime(self.appointment_date, date_format)
+			dt = datetime.datetime.strptime(self.appointment_date, date_format) + datetime.timedelta(hours=-5,minutes=0)		# Correct for UTC Delta 
+			self.x_date = dt.strftime("%Y-%m-%d")
+
+
+
 
 
 
@@ -222,14 +254,16 @@ class Appointment(models.Model):
 			#ondelete='cascade', 			# Very important. 
 		)
 
+
+
+
+	# Appointment IS Deleted if Evaluation is Deleted	***
 	procedure = fields.Many2one('openhealth.procedure',
 			string="Procedimiento",
-			#ondelete='cascade', 
+			
+			ondelete='cascade', 
 		)
 
-
-
-	# Appointment IS Deleted if Session/Control is Deleted ***
 	session = fields.Many2one('openhealth.session',
 			string="Sesión",
 
@@ -365,24 +399,52 @@ class Appointment(models.Model):
 		print 'Confirm'
 
 
-		appointment_date = self.appointment_date
-		duration = self.duration
-		x_type = self.x_type
-		doctor_name = self.doctor.name
 
-		#state = 'pre_scheduled'
-		states = ['pre_scheduled','Scheduled']
+		# Only for Controls
+		if self.x_type == 'control': 
 
-
-		appointment_date_str = procedure_funcs.check_and_push(self, appointment_date, duration, x_type, doctor_name, states)
+			# Get Next Slot - Real Time version 
+			appointment_date = appfuncs.get_next_slot(self)						# Next Slot
 
 
-		#self.state = 'pre_scheduled'
+
+			# Init 
+			#appointment_date = self.appointment_date
+			#state = 'pre_scheduled'
+			duration = self.duration
+			x_type = self.x_type
+			doctor_name = self.doctor.name
+			states = ['pre_scheduled','Scheduled']
+
+
+
+			# Check and Push
+			appointment_date_str = procedure_funcs.check_and_push(self, appointment_date, duration, x_type, doctor_name, states)
+
+			self.appointment_date = appointment_date_str
+			#print appointment_date_str
+			#print
+
+
+
+		# All 
 		self.state = 'Scheduled'
-		self.appointment_date = appointment_date_str
 
-		print appointment_date_str
+	# confirm 
+
+
+
+	# Unconfirm
+	@api.multi
+	def un_confirm(self):  
+
 		print
+		print 'Un Confirm'
+
+		self.state = 'pre_scheduled'
+
+
+
 
 
 # ----------------------------------------------------------- On Change ------------------------------------------------------
@@ -392,6 +454,10 @@ class Appointment(models.Model):
 
 		print
 		print 'On change - State'
+
+		if 	(self.state in ['Scheduled','pre_scheduled'])		and 	(self.x_type == 'control'): 
+
+			self.confirm()
 
 
 

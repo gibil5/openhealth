@@ -18,11 +18,13 @@
 
 	'description': """
 
-		1 July 2018 
+		4 July 2018 
 
 		Fulcrum 
 		
-		Stability by Design. Simplicity but Abstraction. 
+		Code without tests is broken by design.
+
+		Stability by Design. Simplicity by Abstraction. 
 
 		La Estabilidad se consigue por la disminución no por el aumento. 
 		Dieter Rams is Less but Better. 
@@ -196,7 +198,7 @@
 
 
 		# Commons 
-		'views/menus/menus_openhealth.xml',
+		#'views/menus/menus_openhealth.xml',
 		'security/ir.model.access.csv',
 
 
@@ -540,7 +542,7 @@
 
 
 		# Style 
-		'views/openhealth.xml',		
+		#'views/openhealth.xml',		
 
 
 
@@ -600,21 +602,25 @@
 
 
 		# Treatments - 2 
-		'views/treatments/treatment_consultations.xml',
-		'views/treatments/treatment_orders.xml',
-		'views/treatments/treatment_procedures.xml',
 		'views/treatments/treatment_appointments.xml',
-		'views/treatments/treatment_reservations.xml',
+		'views/treatments/treatment_orders.xml',
+		'views/treatments/treatment_consultations.xml',
+		'views/treatments/treatment_services.xml',
+		'views/treatments/treatment_procedures.xml',
 		'views/treatments/treatment_sessions.xml',
 		'views/treatments/treatment_controls.xml',
-		'views/treatments/treatment_services.xml',
+		#'views/treatments/treatment_reservations.xml',
+
+
 
 
 		# Patients - 2 
 		'views/patients/patient_personal.xml',
 		'views/patients/patient_control_docs.xml',
 		'views/patients/patient_appointments.xml',
-		'views/patients/patient_quick.xml',
+
+
+		#'views/patients/patient_quick.xml',			# Deprecated ? 
 
 
 

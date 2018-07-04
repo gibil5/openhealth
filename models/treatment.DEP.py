@@ -3,6 +3,159 @@
 #from datetime import tzinfo
 
 
+
+
+
+# ----------------------------------------------------------- Quick Nr Ofs ------------------------------------------------------
+
+	# Quick Hands
+	nr_quick_hands = fields.Integer(
+			string='Manos', 
+			default=11, 
+
+			compute='_compute_nr_quick_hands', 
+		)
+
+	@api.multi
+	#@api.depends('start_date')
+	def _compute_nr_quick_hands(self):
+		for record in self:
+			record.nr_quick_hands = record.patient.x_nr_quick_hands
+
+
+
+	# Quick Body Local
+	nr_quick_body_local = fields.Integer(
+			string='Localizado Cuerpo', 
+			default=11, 
+
+			compute='_compute_nr_quick_body_local', 
+		)
+
+	@api.multi
+	#@api.depends('start_date')
+	def _compute_nr_quick_body_local(self):
+		for record in self:
+			record.nr_quick_body_local = record.patient.x_nr_quick_body_local
+
+
+	# Quick Face Local
+	nr_quick_face_local = fields.Integer(
+			string='Localizado Rostro', 
+			default=11, 
+
+			compute='_compute_nr_quick_face_local', 
+		)
+
+	@api.multi
+	#@api.depends('start_date')
+	def _compute_nr_quick_face_local(self):
+		for record in self:
+			record.nr_quick_face_local = record.patient.x_nr_quick_face_local
+
+
+
+	# Quick cheekbones
+	nr_quick_cheekbones = fields.Integer(
+			string='Pómulos', 
+			default=11, 
+
+			compute='_compute_nr_quick_cheekbones', 
+		)
+
+	@api.multi
+	#@api.depends('start_date')
+	def _compute_nr_quick_cheekbones(self):
+		for record in self:
+			record.nr_quick_cheekbones = record.patient.x_nr_quick_cheekbones
+
+
+	# Quick face_all
+	nr_quick_face_all = fields.Integer(
+			string='Todo Rostro', 
+			default=11, 
+
+			compute='_compute_nr_quick_face_all', 
+		)
+
+	@api.multi
+	#@api.depends('start_date')
+	def _compute_nr_quick_face_all(self):
+		for record in self:
+			record.nr_quick_face_all = record.patient.x_nr_quick_face_all
+
+
+
+	# Quick face_all_hands
+	nr_quick_face_all_hands = fields.Integer(
+			string='Todo Rostro Manos', 
+			default=11, 
+
+			compute='_compute_nr_quick_face_all_hands', 
+		)
+
+	@api.multi
+	#@api.depends('start_date')
+	def _compute_nr_quick_face_all_hands(self):
+		for record in self:
+			record.nr_quick_face_all_hands = record.patient.x_nr_quick_face_all_hands
+
+
+
+	# Quick face_all_neck
+	nr_quick_face_all_neck = fields.Integer(
+			string='Todo Rostro Cuello', 
+			default=11, 
+
+			compute='_compute_nr_quick_face_all_neck', 
+		)
+
+	#@api.multi
+	@api.depends('patient')
+	def _compute_nr_quick_face_all_neck(self):
+		for record in self:
+			record.nr_quick_face_all_neck = record.patient.x_nr_quick_face_all_neck
+
+
+
+	# Quick neck
+	nr_quick_neck = fields.Integer(
+			string='Cuello', 
+			default=11, 
+
+			compute='_compute_nr_quick_neck', 
+		)
+
+	#@api.multi
+	@api.depends('patient')
+	def _compute_nr_quick_neck(self):
+		for record in self:
+			record.nr_quick_neck = record.patient.x_nr_quick_neck
+
+
+
+	# Quick neck_hands
+	nr_quick_neck_hands = fields.Integer(
+			string='Cuello Manos', 
+			default=11, 
+
+			compute='_compute_nr_quick_neck_hands', 
+		)
+
+	#@api.multi
+	@api.depends('patient')
+	def _compute_nr_quick_neck_hands(self):
+		for record in self:
+			record.nr_quick_neck_hands = record.patient.x_nr_quick_neck_hands
+
+
+
+
+
+	
+
+
+
 # ----------------------------------------------------------- Constants ------------------------------------------------------
 
 	# States 

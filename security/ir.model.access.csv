@@ -252,7 +252,7 @@ access_product_template_readers,product.template.readers,model_product_template,
 
 
 access_oeh_medical_appointment,oeh.medical.appointment,oehealth.model_oeh_medical_appointment,oehealth.group_oeh_medical_physician,1,1,1,1
-access_oeh_medical_appointment_caja,oeh.medical.appointment caja,oehealth.model_oeh_medical_appointment,openhealth.caja,1,1,0,0
+access_oeh_medical_appointment_caja,oeh.medical.appointment caja,oehealth.model_oeh_medical_appointment,openhealth.caja,1,1,1,0
 access_oeh_medical_appointment_reception,oeh.medical.appointment reception,oehealth.model_oeh_medical_appointment,openhealth.reception,1,1,1,1
 
 
@@ -275,6 +275,10 @@ access_openhealth_procedure_managers,openhealth.procedure.managers,model_openhea
 access_openhealth_procedure_readers,openhealth.procedure.readers,model_openhealth_procedure,openhealth.hc_readers,1,0,0,0
 access_openhealth_procedure_cos_managers,openhealth.procedure.cos.managers,model_openhealth_procedure_cos,openhealth.hc_managers,1,1,1,1
 access_openhealth_procedure_cos_readers,openhealth.procedure.cos.readers,model_openhealth_procedure_cos,openhealth.hc_readers,1,0,0,0
+
+access_openhealth_procedure_caja,openhealth.procedure.caja,model_openhealth_procedure,openhealth.caja,1,1,1,0
+
+
 
 
 

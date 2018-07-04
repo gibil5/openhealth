@@ -215,3 +215,90 @@
 
 
 
+
+# 4 Jul 2018 
+
+# ----------------------------------------------------------- Testing ------------------------------------------------------
+
+	# Test  
+	@api.multi 
+	def test(self):
+
+		print 
+		print 'Testing'
+		# Date 
+		GMT = time_funcs.Zone(0,False,'GMT')
+		#self.start_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
+		self.start_date = datetime.now(GMT).strftime("%Y-%m-%d")
+
+		
+		# Init 
+		patient_id = self.patient.id
+		doctor_id = self.physician.id
+		duration = 0.5
+		state = 'pre_scheduled'
+		x_type = 'consultation'
+
+		#x_create_procedure_automatic = True
+		x_create_procedure_automatic = False
+		
+		treatment_id = self.id 
+
+		#appointment_date = self.start_date
+		appointment_date = self.start_date + ' 14:00:00'			# 09:00:00
+
+
+		# Appointment 
+		#appointment = self.create_appointment(appointment_date, patient_id, doctor_id, duration, state, x_type, x_create_procedure_automatic, treatment_id)
+
+
+		# Create
+		#appointment = self.env['oeh.medical.appointment'].create({
+		#appointment = self.appointment_ids.create({
+		#															'appointment_date': appointment_date,
+		#															'patient': patient_id,	
+		#															'doctor': doctor_id,
+		#															'duration': duration,
+		#															'state': state,
+		#															'x_create_procedure_automatic': x_create_procedure_automatic,
+		#															'x_type': x_type,
+																	#'x_chief_complaint': chief_complaint, 
+																	#'x_target': 'doctor',
+
+		#															'treatment': treatment_id, 
+		#														})
+		#print appointment
+		#print self.appointment_ids
+
+
+
+
+	@api.multi 
+	def create_appointment(self, appointment_date, patient_id, doctor_id, duration, state, x_type, x_create_procedure_automatic, treatment_id):
+
+		print 
+		print 'Create Appointment'
+
+		# Create
+		#appointment = self.appointment_ids.create({
+		appointment = self.env['oeh.medical.appointment'].create({
+																	'appointment_date': appointment_date,
+
+																	'patient': patient_id,	
+																	'doctor': doctor_id,
+																	'duration': duration,
+																	'state': state,
+
+																	'x_create_procedure_automatic': x_create_procedure_automatic,
+																	'x_type': x_type,
+
+																	#'x_chief_complaint': chief_complaint, 
+																	#'x_target': 'doctor',
+
+																	'treatment': treatment_id, 
+																})
+		#appointment_id = appointment.id
+
+		return appointment 
+	# create_appointment
+

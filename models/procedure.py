@@ -27,7 +27,6 @@ class Procedure(models.Model):
 
 
 # ----------------------------------------------------------- Deprecated ------------------------------------------------------
-	
 	#appointment_ids = fields.One2many(
 	#		'oeh.medical.appointment', 
 	#		'procedure', 
@@ -40,27 +39,57 @@ class Procedure(models.Model):
 
 # ----------------------------------------------------------- Redefinition ------------------------------------------------------
 
-	#def _get_default_appointment(self):
+	# Default - HC Number 
+	@api.model
+	def _get_default_id_code(self):
+
+		print 
+		print 'Get Default App - 2'
+
+		#patient = self.patient
+		patient = self.treatment.patient
+
+		doctor = self.treatment.physician
+
+		print patient
+		print doctor
+
+ 		app = self.env['oeh.medical.appointment'].search([
+																('patient', '=', patient), 
+																('doctor', '=', doctor), 
+														],
+															#order='write_date desc',
+															limit=1,
+														)
+ 		print app
+
+		return app
+
+
+
+
+	def _get_default_appointment(self):
 		
-	#	print 
-	#	print 'Get Default App'
+		print 
+		print 'Get Default App'
 		#print x_type
 		
-	#	print self.patient
-	#	print self.doctor
+		print self.patient
+		print self.doctor
 
-	#	patient = self.patient
-	#	doctor = self.doctor
+		patient = self.patient
+		doctor = self.doctor
 
- 	#	app = self.env['oeh.medical.appointment'].search([
-	#															('patient', '=', patient), 
-	#															('doctor', '=', doctor), 
-	#													],
+ 		app = self.env['oeh.medical.appointment'].search([
+																('patient', '=', patient), 
+																('doctor', '=', doctor), 
+														],
 															#order='write_date desc',
-	#														limit=1,
-	#													)
- 	#	print app
-	#	return app
+															limit=1,
+														)
+ 		print app
+
+		return app
 	# _get_default_appointment
 
 
@@ -75,6 +104,7 @@ class Procedure(models.Model):
 			#ondelete='cascade', 
 
 			#default=lambda self: self._get_default_appointment(),
+			#default=_get_default_id_code, 
 		)
 
 

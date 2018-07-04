@@ -16,8 +16,11 @@ from num2words import num2words
 import math 
 from openerp import tools
 import count_funcs
-
 import def_funcs
+
+import procedure_funcs
+
+import appfuncs
 
 
 class sale_order(models.Model):
@@ -28,6 +31,94 @@ class sale_order(models.Model):
 	
 
 
+
+# ----------------------------------------------------------- Pay ------------------------------------------------------
+	# Test  
+	@api.multi 
+	def pay_myself(self):
+
+		#print 
+		#print 'Pay myself'
+
+		if self.state == 'draft': 
+			self.create_payment_method()
+			self.x_payment_method.saledoc = 'ticket_receipt'
+			self.x_payment_method.state = 'done'
+			self.state = 'sent'
+			self.action_confirm_nex()
+
+
+
+
+# ----------------------------------------------------------- Test ------------------------------------------------------
+	# Test  
+	@api.multi 
+	def test(self):
+
+		print 
+		print 'Test and Clean'
+
+
+		self.treatment.procedure_ids.unlink()
+
+
+		appointment_date = appfuncs.get_next_slot(self)						# Next Slot
+
+		print appointment_date
+
+		print 
+
+
+
+
+
+# ----------------------------------------------------------- Procedure ------------------------------------------------------
+	# Create Procedure With Appoointment   
+	@api.multi 
+	def create_procedure_wapp(self):
+
+		#print 
+		#print 'Create Proc W App'
+
+
+		# Init 
+		duration = 0.5
+		x_type = 'procedure'
+		doctor_name = self.x_doctor.name
+		states = False
+
+
+		# Date 
+		date_format = "%Y-%m-%d %H:%M:%S"
+		#dt = datetime.datetime.strptime(self.appointment_date, date_format)
+		dt = datetime.datetime.strptime(self.date_order, date_format) + datetime.timedelta(hours=-5,minutes=0)		# Correct for UTC Delta 
+
+
+		# Get Next Slot - Real Time version 
+		#appointment_date = dt.strftime("%Y-%m-%d") + " 14:00:00"			# Early strategy
+		appointment_date = appfuncs.get_next_slot(self)						# Next Slot
+
+
+
+		#print self.date_order
+		#print date_early
+		#print 
+
+
+		# Check and Push if not Free !
+		#appointment_date_str = procedure_funcs.check_and_push(self, self.date_order, duration, x_type, doctor_name, states)
+		appointment_date_str = procedure_funcs.check_and_push(self, appointment_date, duration, x_type, doctor_name, states)
+
+		
+		#print appointment_date_str
+
+
+		# Create Procedure 
+		self.treatment.create_procedure(appointment_date_str)
+
+
+		print
+	# test
 
 
 # ----------------------------------------------------------- Locked ------------------------------------------------------
@@ -154,9 +245,10 @@ class sale_order(models.Model):
 
 
 	def _get_default_counter(self, x_type):
-		print 
-		print 'Get Default Counter'
-		print x_type
+		#print 
+		#print 'Get Default Counter'
+		#print x_type
+		
 		_h_name = {
 					'tkr' : 	'ticket_receipt', 
 					'tki' : 	'ticket_invoice', 
@@ -172,8 +264,10 @@ class sale_order(models.Model):
 															#order='write_date desc',
 															limit=1,
 														)
-		print counter
-		print 
+		
+		#print counter
+		#print 
+		
 		return counter
 	# _get_default_counter
 
@@ -232,11 +326,10 @@ class sale_order(models.Model):
 	@api.multi 
 	def action_confirm_nex(self):
 
-		print 
-		print 'Action confirm - Nex'
-		print 
+		#print 
+		#print 'Action confirm - Nex'
+		#print 
 		
-
 		#_h_counter = {
 		#				'ticket_receipt':  self.counter_tkr, 
 		#				'ticket_invoice':  self.counter_tki, 
@@ -253,11 +346,9 @@ class sale_order(models.Model):
 		# Serial Number and Type
 		if self.x_payment_method.saledoc != False: 
 
-			print 'Serial number and Type'
-			
+			#print 'Serial number and Type'
+
 			self.x_type = self.x_payment_method.saledoc
-
-
 
 
 			# Counter 
@@ -325,7 +416,15 @@ class sale_order(models.Model):
 		# In progress !
 
 		# Create Proc 
-		self.treatment.create_procedure()
+		#self.treatment.create_procedure()
+		#self.treatment.create_procedure(self.date_order)
+
+		for line in self.order_line: 
+			if line.product_id.x_family in ['laser', 'medical', 'cosmetology']:
+				self.create_procedure_wapp()
+
+
+		
 
 		#for proc in self.treatment.procedure_ids: 
 		#	proc.create_controls()
@@ -1285,13 +1384,13 @@ class sale_order(models.Model):
 	@api.multi 
 	def x_create_order_lines_target(self, target, price_manual, price_applied):		
 		
-		print 
-		print 'Create Order Lines with Target'
-		print target
+		#print 
+		#print 'Create Order Lines with Target'
+		#print target
 
 
+		# Init 
 		order_id = self.id
-
 		product = self.env['product.product'].search([
 														('x_name_short','=', target),
 														('x_origin','=', False),
@@ -1302,7 +1401,8 @@ class sale_order(models.Model):
 
 
 
-# Order line creation  - With the correct price 
+
+		# Order line creation  - With the correct price 
 
 		# Manual Price  
 		if price_manual != 0: 

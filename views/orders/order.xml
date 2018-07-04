@@ -88,6 +88,33 @@
 							
 							states="sent"						
 					/>
+
+
+
+					<button 
+							type="object" 
+							class="oe_highlight"
+
+							name="create_procedure_wapp"
+
+							string="Create Proc"		
+
+							groups="openhealth.roots"
+					/>
+
+
+					<button 
+							type="object" 
+							class="oe_highlight"
+
+							name="test"
+
+							string="Test"		
+
+							groups="openhealth.roots"
+					/>
+
+
 				</xpath>
 
 

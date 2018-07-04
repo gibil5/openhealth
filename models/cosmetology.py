@@ -1,31 +1,118 @@
 # -*- coding: utf-8 -*-
 #
-#
 # 		*** OPEN HEALTH - Cosmetology
 # 
 # Created: 				18 Feb 2017
 # Last updated: 	 	Id.
+#
 
 from openerp import models, fields, api
 from datetime import datetime
-
 from . import cosvars
 from . import time_funcs
 
-
 #from . import jxvars
-
 
 
 class Cosmetology(models.Model):
 	
 	_inherit = 'openhealth.process'	
+
 	_name = 'openhealth.cosmetology'
 	
 
 
-# ----------------------------------------------------------- Canonicals ------------------------------------------------------
 
+# ----------------------------------------------------------- Relational ------------------------------------------------------
+
+	# Reservations 
+	#reservation_ids = fields.One2many(
+	#		'oeh.medical.appointment', 
+	#		'cosmetology', 
+	#		string = "Reserva de sala", 
+	#		domain = [						
+	#					('x_machine', '!=', 'false'),
+	#				],
+	#		)
+
+	#consultation_ids = fields.One2many(
+	#		'openhealth.consultation.cos', 
+	#		'cosmetology', 
+	#		string = "Consultas", 
+	#		)
+
+
+	#service_ids = fields.One2many(
+	#		'openhealth.service.cosmetology', 	
+	#		'cosmetology', 
+	#		string="Servicios"
+	#	)
+
+
+	#procedure_ids = fields.One2many(
+	#		'openhealth.procedure.cos', 
+	#		'cosmetology', 
+	#		string = "Procedimientos", 
+	#		)
+
+
+	#session_ids = fields.One2many(
+	#		'openhealth.session.cos', 
+	#		'cosmetology', 
+	#		string = "Sesiones", 
+	#		)
+
+
+	#order_ids = fields.One2many(
+	#		'sale.order',	
+	#		'cosmetology', 		
+	#		string="Presupuestos",
+	#		)
+
+	#appointment_ids = fields.One2many(
+	#		'oeh.medical.appointment', 
+	#		'cosmetology', 
+	#		string = "Citas", 
+	#		domain = [
+	#					('x_target', '=', 'therapist'),
+	#				],		
+	#		)
+
+
+
+
+
+# ----------------------------------------------------------- Deprecated ------------------------------------------------------
+
+	#sale_ids = fields.One2many(
+	#		'sale.order',			 
+	#		'cosmetology', 
+	#		string="Ventas",
+	#		domain = [
+						#('state', '=', 'sale'),
+	#					('state', 'in', ['sale', 'done'])
+	#				],
+	#		)
+
+	#quotation_ids = fields.One2many(
+	#		'sale.order',	
+	#		'cosmetology', 		
+	#		string="Presupuestos",
+	#		domain = [
+						#('state', '=', 'pre-draft'),
+						#('state', 'in', ['draft', 'sent', 'sale', 'done'])
+						#('x_family', '=', 'private'),
+	#				],
+	#		)
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Canonicals ------------------------------------------------------
 	name = fields.Char(
 			string="Cosmiatría #", 
 			compute='_compute_name', 
@@ -119,55 +206,14 @@ class Cosmetology(models.Model):
 
 
 
-	# Reservations 
-	reservation_ids = fields.One2many(
-
-			'oeh.medical.appointment', 
-
-			'cosmetology', 
-
-			string = "Reserva de sala", 
-
-			domain = [						
-						#('x_target', '!=', 'doctor'),
-						#('x_target', 'in', 'doctor'),
-						#('treatment', 'like', 'TR000073'),
-						('x_machine', '!=', 'false'),
-					],
-			)
-
-
-
-
-
-
-	consultation_ids = fields.One2many(
-			#'openhealth.consultation', 
-			'openhealth.consultation.cos', 
-			'cosmetology', 
-			string = "Consultas", 
-			)
-
-
-
-
-
-
-
 	#therapist = fields.Many2one(
 	physician = fields.Many2one(
 			#'openhealth.therapist',
 			'oeh.medical.physician',
-
-
 			string = "Cosmeatra", 	
-
-
 			domain = [						
 						('x_therapist', '=', True),
 					],
-
-
 			#required=True, 
 			)
 
@@ -426,94 +472,7 @@ class Cosmetology(models.Model):
 
 
 
-	service_ids = fields.One2many(
-			'openhealth.service.cosmetology', 	
 
-			'cosmetology', 
-			string="Servicios"
-		)
-
-
-
-
-
-	procedure_ids = fields.One2many(
-			#'openhealth.procedure', 
-			'openhealth.procedure.cos', 
-
-			'cosmetology', 
-			string = "Procedimientos", 
-			)
-
-
-
-
-
-	session_ids = fields.One2many(
-		
-			#'openhealth.session', 
-			'openhealth.session.cos', 
-
-			'cosmetology', 
-
-			string = "Sesiones", 
-			)
-
-
-
-
-	#quotation_ids = fields.One2many(
-	#		'sale.order',	
-	#		'cosmetology', 		
-	#		string="Presupuestos",
-	#		domain = [
-						#('state', '=', 'pre-draft'),
-						#('state', 'in', ['draft', 'sent', 'sale', 'done'])
-						#('x_family', '=', 'private'),
-	#				],
-	#		)
-
-	#sale_ids = fields.One2many(
-	#		'sale.order',			 
-	#		'cosmetology', 
-	#		string="Ventas",
-	#		domain = [
-						#('state', '=', 'sale'),
-	#					('state', 'in', ['sale', 'done'])
-	#				],
-	#		)
-
-
-
-
-
-	order_ids = fields.One2many(
-			'sale.order',	
-			'cosmetology', 		
-			string="Presupuestos",
-			)
-
-
-
-
-
-
-
-	appointment_ids = fields.One2many(
-
-
-			'oeh.medical.appointment', 
-			#'openhealth.appointment.cos', 
-			
-
-			'cosmetology', 
-			string = "Citas", 
-
-			domain = [
-						('x_target', '=', 'therapist'),
-					],
-			
-			)
 
 
 

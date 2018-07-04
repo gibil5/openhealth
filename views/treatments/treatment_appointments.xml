@@ -43,7 +43,7 @@
 							<tree string=""		default_order="appointment_date"	create="false" >	
 
 								
-								<field name="name"	invisible="1"/>
+								<field name="name"	invisible="0"/>
 
 								<field name="patient"	invisible="1"/>
 								
@@ -59,11 +59,12 @@
 								<field name="control"/>					
 								<field name="x_date"/>
 								<field name="x_time"/>
+
+								<field name="x_machine"/>								
 -->
 					
 								<field name="state"/>
 
-								<field name="x_machine"/>								
 							</tree>
 						</field>				
 

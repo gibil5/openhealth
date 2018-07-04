@@ -1,132 +1,91 @@
 # -*- coding: utf-8 -*-
 #
-# 	*** Jr Funcs
+# 		*** Jr Funcs
 # 
-
 # Created: 				 1 Nov 2016
-# Last updated: 	 	 7 Dec 2016 
-
-
+# Last updated: 	 	 3 Jul 2018 
+#
 
 from openerp import models, fields, api
-#from datetime import datetime,tzinfo,timedelta
-
-
-
-
-
-#------------------------------------------------ Unidecode ---------------------------------------------------
-
-#import unicodedata
-#def strip_accents(s):
-#   return ''.join(c for c in unicodedata.normalize('NFD', s)
-#                  if unicodedata.category(c) != 'Mn')
-
-
 
 
 
 #------------------------------------------------ Appointment ---------------------------------------------------
 
+# Update Apps 
 @api.multi
-
 def update_appointment_go(self, appointment_id, owner_id, x_type):
 
 
-		rec_set = self.env['oeh.medical.appointment'].browse([
-																appointment_id																
-															])
-		#print rec_set
+	# Get all Apps 	
+	rec_set = self.env['oeh.medical.appointment'].browse([
+															appointment_id
+														])
+	#print rec_set
+
+
+	# By type 
+	if x_type == 'consultation':
+		ret = rec_set.write({
+								'consultation': owner_id,
+							})
+
+	elif x_type == 'procedure':
+		ret = rec_set.write({
+								'procedure': owner_id,
+								#'state': 'Scheduled',
+							})
+
+	elif x_type == 'session':
+		ret = rec_set.write({
+								'session': owner_id,
+							})
+
+	elif x_type == 'control':
+		ret = rec_set.write({
+								'control': owner_id,
+							})
+	#else:
+	#	tra = 1
+		#print 
+		#print 'This should not happen !!!'
+		#print 
+
+
+	#print ret 
+	return ret
+
+# update_appointment_go
 
 
 
 
-		if x_type == 'consultation':
-			ret = rec_set.write({
-									'consultation': owner_id,
-								})
-			#print appointment.consultation
-			#print appointment.consultation.id
+#------------------------------------------------ Tests ---------------------------------------------------
 
-
-
-
-		elif x_type == 'procedure':
-			ret = rec_set.write({
-									'procedure': owner_id,
-									'state': 'Scheduled',
-
-								})
-			#print appointment.procedure
-			#print appointment.procedure.id
-
-
-
-
-		elif x_type == 'session':
-			ret = rec_set.write({
-									'session': owner_id,
-								})
-			#print appointment.session
-			#print appointment.session.id
-
-
-
-		elif x_type == 'control':
-			ret = rec_set.write({
-									'control': owner_id,
-								})
-			#print appointment.control
-			#print appointment.control.id
-
-
-		else:
-			tra = 1
-			#print 
-			#print 'This should not happen !!!'
-			#print 
-
-
-
-		#print ret 
-
-
-
-		return ret
-
-
-
-
-
-#------------------------------------------------ Test ---------------------------------------------------
-
-
+# Must have double sur name
 def test_name(self, token):
 		
 	#print 
-	#print 'on change name'
+	#print 'Test name'
 	#print 
 
-
 	if token != False:
-
 		nr_words = len(token.split())
-
-
 		if nr_words == 1:
 			return {
 					'warning': {
 						'title': "Error: Apellido incompleto: ",
 						'message': token,
 					}}
+# test_name
 
 
 
-
+# For Digits 
 def test_for_digits(self, token):
 		
 	#print 
-	#print 'test for digits'
+	#print Test for digits'
 	#print 
 
 	if token and (not token.isdigit()):
@@ -137,15 +96,16 @@ def test_for_digits(self, token):
 				}}
 	else:
 		return 0
+# test_for_digits
 
 
 
+# For Length 
 def test_for_length(self, token, length):
 		
 	#print 
 	#print 'test for length'
 	#print 
-
 
 	#if token and (not token.isdigit()):
 	#	return {
@@ -162,4 +122,5 @@ def test_for_length(self, token, length):
 				}}
 	else:
 		return 0
+# test_for_length
 

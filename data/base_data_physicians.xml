@@ -12,7 +12,9 @@
 		<!-- Chavarri -->
 		<record id="dr_chavarri" model="oeh.medical.physician">
 			<field name="name">Dr. Chavarri</field>
+<!--
 			<field name="x_type">doctor</field>
+-->		
 			<field name="consultancy_type">Residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
 
@@ -72,17 +74,6 @@
 
 
 
-		<!-- Week --> 
-		<record id="dr_chavarri" model="oeh.medical.physician">
-			<field name="line_id" ref="ava_cha_mon"/>
-			<field name="line_id" ref="ava_cha_tue"/>
-			<field name="line_id" ref="ava_cha_wed"/>
-			<field name="line_id" ref="ava_cha_thu"/>
-			<field name="line_id" ref="ava_cha_fri"/>
-			<field name="line_id" ref="ava_cha_sat"/>
-			<field name="line_id" ref="ava_cha_sun"/>
-		</record>
-
 
 
 
@@ -91,7 +82,6 @@
 <!-- Canales -->
 		<record id="dr_canales" model="oeh.medical.physician">
 			<field name="name">Dr. Canales</field>
-			<field name="x_type">doctor</field>
 			<field name="consultancy_type">Residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
 
@@ -150,16 +140,6 @@
 
 
 
-		<record id="dr_canales" model="oeh.medical.physician">
-			<field name="line_id" ref="ava_can_mon"/>
-			<field name="line_id" ref="ava_can_tue"/>
-			<field name="line_id" ref="ava_can_wed"/>
-			<field name="line_id" ref="ava_can_thu"/>
-			<field name="line_id" ref="ava_can_fri"/>
-			<field name="line_id" ref="ava_can_sat"/>
-			<field name="line_id" ref="ava_can_sun"/>
-		</record>
-
 
 
 
@@ -168,7 +148,6 @@
 <!-- Escudero -->
 		<record id="dr_escudero" model="oeh.medical.physician">
 			<field name="name">Dr. Escudero</field>
-			<field name="x_type">doctor</field>
 			<field name="consultancy_type">Residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
 
@@ -230,15 +209,6 @@
 
 
 
-		<record id="dr_escudero" model="oeh.medical.physician">
-			<field name="line_id" ref="ava_esc_mon"/>
-			<field name="line_id" ref="ava_esc_tue"/>
-			<field name="line_id" ref="ava_esc_wed"/>
-			<field name="line_id" ref="ava_esc_thu"/>
-			<field name="line_id" ref="ava_esc_fri"/>
-			<field name="line_id" ref="ava_esc_sat"/>
-			<field name="line_id" ref="ava_esc_sun"/>
-		</record>
 
 
 
@@ -249,7 +219,6 @@
 <!-- Gonzales -->
 		<record id="dr_gonzales" model="oeh.medical.physician">
 			<field name="name">Dr. Gonzales</field>
-			<field name="x_type">doctor</field>
 			<field name="consultancy_type">Residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
 
@@ -309,16 +278,6 @@
 
 
 
-		<record id="dr_gonzales" model="oeh.medical.physician">
-			<field name="line_id" ref="ava_gon_mon"/>
-			<field name="line_id" ref="ava_gon_tue"/>
-			<field name="line_id" ref="ava_gon_wed"/>
-			<field name="line_id" ref="ava_gon_thu"/>
-			<field name="line_id" ref="ava_gon_fri"/>
-			<field name="line_id" ref="ava_gon_sat"/>
-			<field name="line_id" ref="ava_gon_sun"/>
-		</record>
-
 
 
 
@@ -329,7 +288,6 @@
 <!-- Monteverde -->
 		<record id="dr_monteverde" model="oeh.medical.physician">
 			<field name="name">Dr. Monteverde</field>
-			<field name="x_type">doctor</field>
 			<field name="consultancy_type">Residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
 
@@ -390,16 +348,6 @@
 
 
 
-		<record id="dr_monteverde" model="oeh.medical.physician">
-			<field name="line_id" ref="ava_mon_mon"/>
-			<field name="line_id" ref="ava_mon_tue"/>
-			<field name="line_id" ref="ava_mon_wed"/>
-			<field name="line_id" ref="ava_mon_thu"/>
-			<field name="line_id" ref="ava_mon_fri"/>
-			<field name="line_id" ref="ava_mon_sat"/>
-			<field name="line_id" ref="ava_mon_sun"/>
-		</record>
-
 
 
 
@@ -409,7 +357,6 @@
 <!-- Eulalia -->
 		<record id="eulalia" model="oeh.medical.physician">
 			<field name="name">Eulalia</field>
-			<field name="x_type">therapist</field>
 			<field name="consultancy_type">Residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
 			<field name="x_therapist">True</field>
@@ -469,15 +416,6 @@
 
 
 
-		<record id="eulalia" model="oeh.medical.physician">
-			<field name="line_id" ref="ava_eul_mon"/>
-			<field name="line_id" ref="ava_eul_tue"/>
-			<field name="line_id" ref="ava_eul_wed"/>
-			<field name="line_id" ref="ava_eul_thu"/>
-			<field name="line_id" ref="ava_eul_fri"/>
-			<field name="line_id" ref="ava_eul_sat"/>
-			<field name="line_id" ref="ava_eul_sun"/>
-		</record>
 
 	</data>
 </openerp>

@@ -103,6 +103,8 @@ class Service(models.Model):
 			ondelete='cascade', 			
 			string="Tratamiento", 
 			readonly=True, 
+			
+			required = True, 
 		)
 
 

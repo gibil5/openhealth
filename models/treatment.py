@@ -3,15 +3,18 @@
 # 		*** Treatment
 # 
 # Created: 			26 Aug 2016
-# Last up: 	 		28 Jun 2018
+# Last up: 	 		 4 Jul 2018
 #
 
 from openerp import models, fields, api
 
 from datetime import datetime
-from . import treatment_funcs
-from . import time_funcs
-from . import treatment_vars
+import treatment_funcs
+import time_funcs
+import treatment_vars
+import appfuncs
+import procedure_funcs
+
 
 class Treatment(models.Model):
 
@@ -24,7 +27,83 @@ class Treatment(models.Model):
 
 
 
+
 # ----------------------------------------------------------- Testing ------------------------------------------------------
+
+	# Test  
+	@api.multi 
+	def test_integration(self):
+
+		print 
+		print 'Test Integration'
+
+
+		print 
+		print 'Create Appointment'
+		self.create_appointment_nex()
+
+
+		print 
+		print 'Create Order Consultation'
+		self.create_order_con()
+
+		for order in self.order_ids: 
+			order.pay_myself()
+			
+			#order.create_payment_method()
+			#order.x_payment_method.saledoc = 'ticket_receipt'
+			#order.x_payment_method.state = 'done'
+			#order.state = 'sent'
+			#order.action_confirm_nex()
+
+
+		print 
+		print 'Create Consultation'
+		self.create_consultation()
+		for consultation in self.consultation_ids: 
+			consultation.autofill()
+
+
+		print 
+		print 'Create Recommendation'
+		#self.create_service()
+		print 'Co2'
+		service = self.env['product.template'].search([
+															('x_name_short', '=', 'co2_nec_rn1_one'),
+											],
+												#order='date_order desc',
+												limit=1,
+											)
+		service_id = service.id
+		print service
+		self.service_co2_ids.create({
+
+										'service': 		service_id, 
+										'treatment': 	self.id, 
+			})
+
+
+
+		print 
+		print 'Create Order Procedure'
+		self.create_order_pro()
+		for order in self.order_ids: 
+			order.pay_myself()
+
+
+
+		print 
+		print 'Create Controls and Sessions'
+		for procedure in self.procedure_ids: 
+			procedure.create_controls()
+			procedure.create_sessions()
+
+
+		print 
+	# testing
+
+
+
 
 	# Clear  
 	@api.multi 
@@ -42,102 +121,31 @@ class Treatment(models.Model):
 
 
 
-	# Test  
-	@api.multi 
-	def test(self):
 
-		print 
-		print 'Testing'
 
-		# Date 
-		GMT = time_funcs.Zone(0,False,'GMT')
-		#self.start_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
-		self.start_date = datetime.now(GMT).strftime("%Y-%m-%d")
 
+
+
+
+# ----------------------------------------------------------- Create Procedures  ------------------------------------------------------
+	@api.multi
+	#def create_procedure(self):
+	def create_procedure(self, date_app):
 		
-		# Init 
-		patient_id = self.patient.id
-		doctor_id = self.physician.id
-		duration = 0.5
-		state = 'pre_scheduled'
-		x_type = 'consultation'
-
-		#x_create_procedure_automatic = True
-		x_create_procedure_automatic = False
-		
-		treatment_id = self.id 
-
-		#appointment_date = self.start_date
-		appointment_date = self.start_date + ' 14:00:00'			# 09:00:00
-
-
-		# Appointment 
-		#appointment = self.create_appointment(appointment_date, patient_id, doctor_id, duration, state, x_type, x_create_procedure_automatic, treatment_id)
-
-
-		# Create
-		#appointment = self.env['oeh.medical.appointment'].create({
-		#appointment = self.appointment_ids.create({
-		#															'appointment_date': appointment_date,
-		#															'patient': patient_id,	
-		#															'doctor': doctor_id,
-		#															'duration': duration,
-		#															'state': state,
-		#															'x_create_procedure_automatic': x_create_procedure_automatic,
-		#															'x_type': x_type,
-																	#'x_chief_complaint': chief_complaint, 
-																	#'x_target': 'doctor',
-
-		#															'treatment': treatment_id, 
-		#														})
-		#print appointment
-		#print self.appointment_ids
-
-
-
-
-
-
-		self.create_order_con()
-
-
-
 
 		print 
-	# testing
+		print 'Create Procedure'
+		print date_app  
 
 
+		#if self.nr_invoices_pro > 0:
+		if True:
 
+			#ret = treatment_funcs.create_procedure_go(self)
+			#ret = treatment_funcs.create_procedure_go(self, date_app, self.id, self.patient.id, self.chief_complaint)
+			ret = treatment_funcs.create_procedure_go(self, date_app)
 
-	@api.multi 
-	def create_appointment(self, appointment_date, patient_id, doctor_id, duration, state, x_type, x_create_procedure_automatic, treatment_id):
-
-		print 
-		print 'Create Appointment'
-
-		# Create
-		#appointment = self.appointment_ids.create({
-		appointment = self.env['oeh.medical.appointment'].create({
-																	'appointment_date': appointment_date,
-
-																	'patient': patient_id,	
-																	'doctor': doctor_id,
-																	'duration': duration,
-																	'state': state,
-
-																	'x_create_procedure_automatic': x_create_procedure_automatic,
-																	'x_type': x_type,
-
-																	#'x_chief_complaint': chief_complaint, 
-																	#'x_target': 'doctor',
-
-																	'treatment': treatment_id, 
-																})
-		#appointment_id = appointment.id
-
-		return appointment 
-	# create_appointment
-
+	# create_procedure 
 
 
 
@@ -269,153 +277,7 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Quick Nr Ofs ------------------------------------------------------
 
-	# Quick Hands
-	nr_quick_hands = fields.Integer(
-			string='Manos', 
-			default=11, 
-
-			compute='_compute_nr_quick_hands', 
-		)
-
-	@api.multi
-	#@api.depends('start_date')
-	def _compute_nr_quick_hands(self):
-		for record in self:
-			record.nr_quick_hands = record.patient.x_nr_quick_hands
-
-
-
-	# Quick Body Local
-	nr_quick_body_local = fields.Integer(
-			string='Localizado Cuerpo', 
-			default=11, 
-
-			compute='_compute_nr_quick_body_local', 
-		)
-
-	@api.multi
-	#@api.depends('start_date')
-	def _compute_nr_quick_body_local(self):
-		for record in self:
-			record.nr_quick_body_local = record.patient.x_nr_quick_body_local
-
-
-	# Quick Face Local
-	nr_quick_face_local = fields.Integer(
-			string='Localizado Rostro', 
-			default=11, 
-
-			compute='_compute_nr_quick_face_local', 
-		)
-
-	@api.multi
-	#@api.depends('start_date')
-	def _compute_nr_quick_face_local(self):
-		for record in self:
-			record.nr_quick_face_local = record.patient.x_nr_quick_face_local
-
-
-
-	# Quick cheekbones
-	nr_quick_cheekbones = fields.Integer(
-			string='Pómulos', 
-			default=11, 
-
-			compute='_compute_nr_quick_cheekbones', 
-		)
-
-	@api.multi
-	#@api.depends('start_date')
-	def _compute_nr_quick_cheekbones(self):
-		for record in self:
-			record.nr_quick_cheekbones = record.patient.x_nr_quick_cheekbones
-
-
-	# Quick face_all
-	nr_quick_face_all = fields.Integer(
-			string='Todo Rostro', 
-			default=11, 
-
-			compute='_compute_nr_quick_face_all', 
-		)
-
-	@api.multi
-	#@api.depends('start_date')
-	def _compute_nr_quick_face_all(self):
-		for record in self:
-			record.nr_quick_face_all = record.patient.x_nr_quick_face_all
-
-
-
-	# Quick face_all_hands
-	nr_quick_face_all_hands = fields.Integer(
-			string='Todo Rostro Manos', 
-			default=11, 
-
-			compute='_compute_nr_quick_face_all_hands', 
-		)
-
-	@api.multi
-	#@api.depends('start_date')
-	def _compute_nr_quick_face_all_hands(self):
-		for record in self:
-			record.nr_quick_face_all_hands = record.patient.x_nr_quick_face_all_hands
-
-
-
-	# Quick face_all_neck
-	nr_quick_face_all_neck = fields.Integer(
-			string='Todo Rostro Cuello', 
-			default=11, 
-
-			compute='_compute_nr_quick_face_all_neck', 
-		)
-
-	#@api.multi
-	@api.depends('patient')
-	def _compute_nr_quick_face_all_neck(self):
-		for record in self:
-			record.nr_quick_face_all_neck = record.patient.x_nr_quick_face_all_neck
-
-
-
-	# Quick neck
-	nr_quick_neck = fields.Integer(
-			string='Cuello', 
-			default=11, 
-
-			compute='_compute_nr_quick_neck', 
-		)
-
-	#@api.multi
-	@api.depends('patient')
-	def _compute_nr_quick_neck(self):
-		for record in self:
-			record.nr_quick_neck = record.patient.x_nr_quick_neck
-
-
-
-	# Quick neck_hands
-	nr_quick_neck_hands = fields.Integer(
-			string='Cuello Manos', 
-			default=11, 
-
-			compute='_compute_nr_quick_neck_hands', 
-		)
-
-	#@api.multi
-	@api.depends('patient')
-	def _compute_nr_quick_neck_hands(self):
-		for record in self:
-			record.nr_quick_neck_hands = record.patient.x_nr_quick_neck_hands
-
-
-
-
-
-	
 
 # ----------------------------------------------------------- Relational ------------------------------------------------------
 
@@ -448,6 +310,8 @@ class Treatment(models.Model):
 			'treatment', 
 			string = "Controles", 
 		)
+
+
 
 	# Service 
 	service_ids = fields.One2many(
@@ -502,15 +366,17 @@ class Treatment(models.Model):
 					],
 			)
 
+
 	# Appointments 
 	appointment_ids = fields.One2many(
 			'oeh.medical.appointment',  
 			'treatment', 
 			string = "Citas", 
-			domain = [
-						('x_target', '=', 'doctor'),
-					],
-			)
+			#domain = [
+			#			('x_target', '=', 'doctor'),
+			#		],
+		)
+
 
 	# Orders 
 	order_ids = fields.One2many(
@@ -944,7 +810,108 @@ class Treatment(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Reset ------------------------------------------------------
+
+	# Reset 
+	@api.multi 
+	def reset(self):
+
+		print 
+		print 'Reset'
+
+
+		# Unlinks
+
+		self.service_co2_ids.unlink()
+		self.service_excilite_ids.unlink()
+		self.service_ipl_ids.unlink()
+		self.service_ndyag_ids.unlink()
+		self.service_medical_ids.unlink()
+		self.service_quick_ids.unlink()
+		self.service_vip_ids.unlink()
+		
+		self.consultation_ids.unlink()
+		self.procedure_ids.unlink()
+		self.session_ids.unlink()
+		self.control_ids.unlink()
+		self.appointment_ids.unlink()
+
+		# Numbers 
+		#self.nr_invoices_cons = 0 
+		#self.nr_invoices_pro = 0 
+
+		# Orders 
+		for order in self.order_ids:
+			order.remove_myself()
+		#self.order_ids.unlink()
+
+
+		# Alta 
+		self.treatment_closed = False
+
+
+		# Important
+		#self.patient.x_nothing = 'Nothing'
+
+
+		# Add Procs 
+		#self.add_procedures = False 
+	
+	# reset
+
+
+
+
+
 # ----------------------------------------------------------- Creates - Manual, Process and Testing ------------------------------------------------------
+
+
+
+# ----------------------------------------------------------- Create Appointment  ------------------------------------------------------
+
+	# Appointment 
+	@api.multi 
+	def create_appointment_nex(self):
+
+		print 
+		print 'Create Appointment'
+
+
+		# Get Next Slot - Real Time version 
+		appointment_date = appfuncs.get_next_slot(self)						# Next Slot
+
+
+		# Init 
+		duration = 0.5
+		x_type = 'consultation'
+		doctor_name = self.physician.name
+		states = False
+
+		# Check and Push 
+		appointment_date_str = procedure_funcs.check_and_push(self, appointment_date, duration, x_type, doctor_name, states)
+		#print appointment_date_str
+
+
+
+		# Create 
+		#print 'Create'
+		#appointment = self.env['oeh.medical.appointment'].create({
+		appointment = self.appointment_ids.create({
+
+																	'appointment_date': appointment_date_str, 
+																	
+																	'patient':			self.patient.id,
+																	'doctor':			self.physician.id,
+																	'x_type': 			'consultation', 
+																	'state': 			'pre_scheduled', 
+
+																	'treatment':	self.id, 
+															})
+		#print appointment
+
+
+
 
 
 
@@ -971,6 +938,7 @@ class Treatment(models.Model):
 
 			record.partner_id = partner 
 	# _compute_partner_id
+
 
 
 
@@ -1096,12 +1064,6 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Create Procedures  ------------------------------------------------------
-	@api.multi
-	def create_procedure(self):
-		if self.nr_invoices_pro > 0:
-			ret = treatment_funcs.create_procedure_go(self)
-	# create_procedure 
 
 
 

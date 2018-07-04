@@ -15,18 +15,17 @@ import datetime
 #------------------------------------------------ Check and Push ---------------------------------------------------
 @api.multi
 #def check_and_push(self, appointment_date, duration, x_type, doctor_name):
-#def check_and_push(self, appointment_date, duration, x_type, doctor_name, state):
 def check_and_push(self, appointment_date, duration, x_type, doctor_name, states):
 
 	#import datetime
 
-	print 
-	print 'Chech and push'
-	print appointment_date
-	print duration
-	print x_type
-	print doctor_name
-	print states
+	#print 
+	#print 'Chech and push'
+	#print appointment_date
+	#print duration
+	#print x_type
+	#print doctor_name
+	#print states
 	#print 
 
 
@@ -49,18 +48,18 @@ def check_and_push(self, appointment_date, duration, x_type, doctor_name, states
 		appointment_end = appointment_date_dt +  (k + 1) * delta_var 
 		appointment_end_str = appointment_end.strftime("%Y-%m-%d %H:%M:%S")
 
+		#print appointment_date_str
+		#print appointment_end_str
 
-		print appointment_date_str
-		print appointment_end_str
 
 
 		# Search
-		#if state == False: 
 		if states == False: 
 
 			appointment = self.env['oeh.medical.appointment'].search([ 	
 																		('appointment_date', '=', appointment_date_str),	
-																		('doctor', '=', self.doctor.name), 																				
+																		#('doctor', '=', self.doctor.name), 																				
+																		('doctor', '=', doctor_name), 
 																		#('x_type', '=', x_type), 
 																		#('state', 'in', '['pre_scheduled_control']'), 
 																	], 
@@ -70,7 +69,8 @@ def check_and_push(self, appointment_date, duration, x_type, doctor_name, states
 
 			appointment_bis = self.env['oeh.medical.appointment'].search([ 	
 																			('appointment_end', '=', appointment_end_str),	
-																			('doctor', '=', self.doctor.name), 
+																			#('doctor', '=', self.doctor.name), 
+																			('doctor', '=', doctor_name), 
 																		], 
 																		#order='appointment_date desc', 
 																		limit=1
@@ -103,16 +103,18 @@ def check_and_push(self, appointment_date, duration, x_type, doctor_name, states
 																		#order='appointment_date desc', 
 																		limit=1
 																	)
-		print appointment
-		print appointment_bis
-		print 
+		#print appointment
+		#print appointment_bis
+		#print 
 
 
 		# Check 
 		#if appointment.name == False: 	# Success
 		if (appointment.name == False)		and 	(appointment_bis.name == False)	: 	# Success
+			#print 'Success'
 			ret = 0 
 		else: 
+			#print 'Error. Repeat.'
 			k = k + 1					# Error. Repeat. 
 
 	return appointment_date_str

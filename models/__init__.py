@@ -159,5 +159,7 @@ from . import card
 
 
 # Cosmetology 
-#from . import cosmetology				
+from . import cosmetology				
 #from . import cos_classes
+
+

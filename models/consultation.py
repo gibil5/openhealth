@@ -268,14 +268,30 @@ class Consultation(models.Model):
 	@api.onchange('x_autofill')
 	def _onchange_x_autofill(self):
 		if self.x_autofill == True:
-			self.x_fitzpatrick = 'two'	
-			self.x_photo_aging = 'three'
-			self.x_diagnosis = '1. Acné activo. 2. Secuelas de acné.'
-			self.x_antecedents = 'Demostración con Punta de Diamante. Niega enfermedades y cirugías.'
-			self.x_allergies_medication = 'Niega AMs.'
-			self.x_observations = 'Cicatriz plana hiperpigmentada en pómulo derecho. Pápulas en pómulos.'
-			self.x_indications = 'Láser Co2 Fraccional.'
+			#self.x_fitzpatrick = 'two'	
+			#self.x_photo_aging = 'three'
+			#self.x_diagnosis = '1. Acné activo. 2. Secuelas de acné.'
+			#self.x_antecedents = 'Demostración con Punta de Diamante. Niega enfermedades y cirugías.'
+			#self.x_allergies_medication = 'Niega AMs.'
+			#self.x_observations = 'Cicatriz plana hiperpigmentada en pómulo derecho. Pápulas en pómulos.'
+			#self.x_indications = 'Láser Co2 Fraccional.'
+			
+			self.autofill()
+
 	# _onchange_x_autofill
+
+
+
+	# Autofill 
+	@api.multi
+	def autofill(self):  
+		self.x_fitzpatrick = 'two'	
+		self.x_photo_aging = 'three'
+		self.x_diagnosis = '1. Acné activo. 2. Secuelas de acné.'
+		self.x_antecedents = 'Demostración con Punta de Diamante. Niega enfermedades y cirugías.'
+		self.x_allergies_medication = 'Niega AMs.'
+		self.x_observations = 'Cicatriz plana hiperpigmentada en pómulo derecho. Pápulas en pómulos.'
+		self.x_indications = 'Láser Co2 Fraccional.'
 
 
 

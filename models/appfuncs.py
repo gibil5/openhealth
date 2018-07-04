@@ -1,14 +1,142 @@
 # -*- coding: utf-8 -*-
 
 from openerp import models, fields, api
-import datetime
 
+import datetime
+#import pytz
+
+
+
+
+
+# ----------------------------------------------------------- Next Slot--------------------------------------------
+
+# Delta
+@api.multi
+def get_next_slot(self): 
+
+	#print 
+	#print 'Get Next Slot'
+
+
+	# Init 
+	date_format = "%Y-%m-%d %H:%M:%S"
+	date_2_format = "%Y-%m-%d"
+
+	#now = datetime.datetime.now(pytz.utc)
+	#now = datetime.datetime.now()
+	now = datetime.datetime.now() + datetime.timedelta(hours=-5,minutes=0)	
+	now_date_str = now.strftime(date_2_format)
+
+	#print now 
+	#print now_date_str
+	#print 
+
+	slots = [
+				'09:00:00', 
+				'09:30:00', 
+
+				'10:00:00', 
+				'10:30:00', 
+
+				'11:00:00', 
+				'11:30:00', 
+
+				'12:00:00', 
+				'12:30:00', 
+
+				'13:00:00', 
+				'13:30:00', 
+
+				'14:00:00', 
+				'14:30:00', 
+
+				'15:00:00', 
+				'15:30:00', 
+
+				'16:00:00', 
+				'16:30:00', 
+
+				'17:00:00', 
+				'17:30:00', 
+
+				'18:00:00', 
+				'18:30:00', 
+
+				'19:00:00', 
+				'19:30:00', 
+
+				'20:00:00', 
+				'20:30:00', 
+			]
+
+
+
+	#print now 
+	#print 
+
+	for slot in slots: 
+
+		#slot_x = '2018-07-02 ' + slot
+		slot_x = now_date_str + ' ' + slot
+
+		#slot_dt = datetime.datetime.strptime(slot_x, date_format).replace(tzinfo=None)
+		slot_dt = datetime.datetime.strptime(slot_x, date_format)
+	
+		delta = slot_dt - now 
+	
+		delta_sec = delta.total_seconds()
+
+
+		#print slot_x
+		#print slot_dt
+		#print delta 
+		#print delta_sec
+
+
+		if delta_sec > 0: 
+			#print 'Gotcha !'
+			#print 
+			#return slot_dt.strftime(date_format)
+			return (slot_dt + datetime.timedelta(hours=5,minutes=0)).strftime(date_format)
+
+		#print 
+
+
+
+
+# ----------------------------------------------------------- Delta from Now ------------------------------------------------------
+
+# Delta
+@api.multi
+def get_delta_now(self, date_1): 
+
+	#date_format = "%Y-%m-%d"
+	date_format = "%Y-%m-%d %H:%M:%S"
+
+	#date_1 = '2018-07-02 09:00:00'
+	#date_2 = '2018-07-02 12:00:00'
+
+	now = datetime.datetime.now()
+
+	#dt_2 = datetime.datetime.strptime(date_2, date_format)
+	dt_1 = datetime.datetime.strptime(date_1, date_format)
+
+
+	#delta = dt_2 - dt_1
+	#delta = dt_2 - dt_1
+	delta = dt_1 - now 
+
+	delta_sec = delta.total_seconds()
+
+	#return delta
+	return delta, delta_sec
 
 
 # ----------------------------------------------------------- Collisions  ------------------------------------------------------
 
+# Check for Collisions
 @api.multi
-
 def check_for_collisions(self, appointment_date, doctor_name, duration, x_machine, target, x_type):
 
 

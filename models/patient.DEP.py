@@ -4,6 +4,198 @@
 
 
 
+# ----------------------------------------------------------- Quick Laser - Relational ------------------------------------------------------
+
+	# Quick Services 
+	x_service_quick_ids = fields.One2many(
+			'openhealth.service.quick', 
+			'patient', 
+
+			compute='_compute_service_quick_ids', 
+		)
+
+	@api.multi
+	def _compute_service_quick_ids(self):		
+		for record in self:		
+			services = self.env['openhealth.service.quick'].search([
+																		('patient', '=', record.name),			
+																	],
+																	order='create_date asc',
+																	#limit=1,
+																)
+			record.x_service_quick_ids = services
+	# _compute_service_quick_ids
+
+
+
+
+
+# ----------------------------------------------------------- Quick Laser - Nr ofs ------------------------------------------------------
+
+	# Hands 
+	x_nr_quick_hands = fields.Integer(
+			string='Manos', 
+			default=0, 
+
+			compute='_compute_nr_quick_hands', 
+		)
+
+	@api.multi
+	def _compute_nr_quick_hands(self):
+		zone = 'hands', 
+		for record in self:		
+			record.x_nr_quick_hands =	self.env['openhealth.service.quick'].search_count([																							
+																								('patient', '=', record.name),			
+																								('zone', '=', zone),			
+																					]) 
+	# Body Local 
+	x_nr_quick_body_local = fields.Integer(
+			string='Localizado Cuerpo', 
+			default=0, 
+
+			compute='_compute_nr_quick_body_local', 
+		)
+
+	@api.multi
+	def _compute_nr_quick_body_local(self):
+		zone = 'body_local', 
+		for record in self:		
+			record.x_nr_quick_body_local =	self.env['openhealth.service.quick'].search_count([																							
+																								('patient', '=', record.name),			
+																								('zone', '=', zone),			
+																					]) 
+	# Face Local 
+	x_nr_quick_face_local = fields.Integer(
+			string='Localizado Rostro', 
+			default=0, 
+
+			compute='_compute_nr_quick_face_local', 
+		)
+
+	@api.multi
+	def _compute_nr_quick_face_local(self):
+		zone = 'face_local', 
+		for record in self:		
+			record.x_nr_quick_face_local =	self.env['openhealth.service.quick'].search_count([																							
+																								('patient', '=', record.name),			
+																								('zone', '=', zone),			
+																					]) 
+
+	# Cheekbones 
+	x_nr_quick_cheekbones = fields.Integer(
+			string='Pómulos', 
+			default=0, 
+
+			compute='_compute_nr_quick_cheekbones', 
+		)
+
+	@api.multi
+	def _compute_nr_quick_cheekbones(self):
+		zone = 'cheekbones', 
+		for record in self:		
+			record.x_nr_quick_cheekbones =	self.env['openhealth.service.quick'].search_count([																							
+																								('patient', '=', record.name),			
+																								('zone', '=', zone),			
+																					]) 
+
+	# Face All 
+	x_nr_quick_face_all = fields.Integer(
+			string='Todo Rostro', 
+			default=0, 
+
+			compute='_compute_nr_quick_face_all', 
+		)
+
+	@api.multi
+	def _compute_nr_quick_face_all(self):
+		zone = 'face_all', 
+		for record in self:		
+			record.x_nr_quick_face_all =	self.env['openhealth.service.quick'].search_count([																							
+																								('patient', '=', record.name),			
+																								('zone', '=', zone),			
+																					]) 
+
+	# Face All Hands
+	x_nr_quick_face_all_hands = fields.Integer(
+			string='Todo Rostro Manos', 
+			default=0, 
+
+			compute='_compute_nr_quick_face_all_hands', 
+		)
+
+	@api.multi
+	def _compute_nr_quick_face_all_hands(self):
+		zone = 'face_all_hands', 
+		for record in self:		
+			record.x_nr_quick_face_all_hands =	self.env['openhealth.service.quick'].search_count([																							
+																								('patient', '=', record.name),			
+																								('zone', '=', zone),			
+																					]) 
+
+	# Face All Neck
+	x_nr_quick_face_all_neck = fields.Integer(
+			string='Todo Rostro Cuello', 
+			default=0, 
+
+			compute='_compute_nr_quick_face_all_neck', 
+		)
+
+	@api.multi
+	def _compute_nr_quick_face_all_neck(self):
+		zone = 'face_all_neck', 
+		for record in self:		
+			record.x_nr_quick_face_all_neck =	self.env['openhealth.service.quick'].search_count([																							
+																								('patient', '=', record.name),			
+																								('zone', '=', zone),			
+																					]) 
+
+	# Neck
+	x_nr_quick_neck = fields.Integer(
+			string='Cuello', 
+			default=0, 
+
+			compute='_compute_nr_quick_neck', 
+		)
+
+	@api.multi
+	def _compute_nr_quick_neck(self):
+		zone = 'neck', 
+		for record in self:		
+			record.x_nr_quick_neck =	self.env['openhealth.service.quick'].search_count([																							
+																								('patient', '=', record.name),			
+																								('zone', '=', zone),			
+																					]) 
+
+	# Neck Hands
+	x_nr_quick_neck_hands = fields.Integer(
+			string='Cuello y Manos', 
+			default=0, 
+
+			compute='_compute_nr_quick_neck_hands', 
+		)
+
+	@api.multi
+	def _compute_nr_quick_neck_hands(self):
+		zone = 'neck_hands', 
+		for record in self:		
+			record.x_nr_quick_neck_hands =	self.env['openhealth.service.quick'].search_count([																							
+																								('patient', '=', record.name),			
+																								('zone', '=', zone),			
+																					]) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # ----------------------------------------------------------- Quality control ------------------------------------------------------
 
 	# QC - Number of clones  

@@ -36,16 +36,32 @@
 					/>
 
 
+
 					<!-- Confirm --> 
 					<button 
 						type="object" 
-
 						class="oe_highlight"
 						
 						name="confirm" 
 			
 						string="Confirmar" 
+
+						states="pre_scheduled,pre_scheduled_control"
 					/>
+
+
+					<!-- Un Confirm --> 
+					<button 
+						type="object" 
+						class="oe_highlight"
+						
+						name="un_confirm" 
+			
+						string="Des Confirmar" 
+
+						states="Scheduled"
+					/>
+
 
 				</xpath>
 
@@ -194,7 +210,11 @@
 
 							<field name="appointment_date"/>
 
+							<field name="x_date"			groups="openhealth.roots"	/>
+
 							<field name="vspace"/>
+
+
 
 							<field name="state"/>
 
@@ -207,7 +227,6 @@
 							<field name="vspace"/>
 
 
-							<field name="x_date"			groups="openhealth.roots"	/>
 							<field name="duration_sel"/>	
 							<field name="vspace"/>
 -->

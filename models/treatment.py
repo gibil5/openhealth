@@ -30,6 +30,50 @@ class Treatment(models.Model):
 
 # ----------------------------------------------------------- Testing ------------------------------------------------------
 
+	# Create Flags
+
+	# Laser 
+	co2_create = fields.Boolean(
+			string="Co2", 
+			default=False, 
+		)	
+
+	exc_create = fields.Boolean(
+			string="Exc", 
+			default=False, 
+		)	
+
+	ipl_create = fields.Boolean(
+			string="Ipl", 
+			default=False, 
+		)	
+
+	ndy_create = fields.Boolean(
+			string="Ndyag", 
+			default=False, 
+		)	
+
+	qui_create = fields.Boolean(
+			string="Quick", 
+			default=False, 
+		)	
+
+
+	# Medical
+	med_create = fields.Boolean(
+			string="Med", 
+			default=False, 
+		)	
+
+	# Cosmeto
+	cos_create = fields.Boolean(
+			string="Cos", 
+			default=False, 
+		)	
+
+
+
+
 	# Test  
 	@api.multi 
 	def test_integration(self):
@@ -68,17 +112,42 @@ class Treatment(models.Model):
 		print 'Create Recommendation'
 		#self.create_service()
 
-		create_co2 = True
+		#co2_create = True
 
-		#create_exc = True
-		create_exc = False
+		#exc_create = True
+		#exc_create = False
 
-		#create_crio = True
-		create_crio = False
+		#med_create = True
+		#med_create = False
+
+
+
+		# Quick 
+		if self.qui_create: 
+			print 'Quick'
+			service = self.env['product.template'].search([
+																('x_name_short', '=', 'quick_neck_hands_rejuvenation_1'),
+												],
+													#order='date_order desc',
+													limit=1,
+												)
+			service_id = service.id
+			print service
+			self.service_quick_ids.create({
+												'service': 		service_id, 
+
+												'patient': 		self.patient.id, 
+
+												'physician': 	self.physician.id, 
+
+												'treatment': 	self.id, 
+				})
+
+
 
 
 		# Co2 
-		if create_co2: 
+		if self.co2_create: 
 			print 'Co2'
 			service = self.env['product.template'].search([
 																('x_name_short', '=', 'co2_nec_rn1_one'),
@@ -96,7 +165,7 @@ class Treatment(models.Model):
 
 
 		# Excilite 
-		if create_exc: 
+		if self.exc_create: 
 			print 'Exc'
 			service = self.env['product.template'].search([
 																('x_name_short', '=', 'exc_bel_alo_15m_one'),
@@ -112,24 +181,115 @@ class Treatment(models.Model):
 				})
 
 
-
-		# Crio 
-		if create_crio: 
-			print 'Medical - Crio'
+		# Ipl 
+		if self.ipl_create: 
+			print 'Ipl'
 			service = self.env['product.template'].search([
-																('x_name_short', '=', 'cri_faa_acn_ten'),
+																('x_name_short', '=', 'ipl_bel_dep_15m_six'),
 												],
 													#order='date_order desc',
 													limit=1,
 												)
 			service_id = service.id
 			print service
-			self.service_medical_ids.create({
+			self.service_ipl_ids.create({
 												'service': 		service_id, 
 												'treatment': 	self.id, 
 				})
 
 
+
+
+		# Ndyag
+		if self.ndy_create: 
+			print 'Ndyag'
+			service = self.env['product.template'].search([
+																('x_name_short', '=', 'ndy_bol_ema_15m_six'),
+												],
+													#order='date_order desc',
+													limit=1,
+												)
+			service_id = service.id
+			print service
+			self.service_ndyag_ids.create({
+												'service': 		service_id, 
+												'treatment': 	self.id, 
+				})
+
+
+
+
+
+
+
+
+		# Medical 
+		if self.med_create: 
+
+			
+			med_short_names = [
+									'bot_1zo_rfa_one', 		# Bot
+									'cri_faa_acn_ten', 		# Crio
+									'hac_1hy_rfa_one', 		# Hial
+									
+									'infiltration_scar', 	# Infil
+									'infiltration_keloid', 	# Infil
+
+									'ivc_na_na_one', 		# Intra
+									'lep_faa_acn_one', 		# Lep
+									
+									'pla_faa_rfa', 			# Pla
+									'men_faa_rfa', 			# Meso
+									'scl_leg_var_one', 		# Escl
+			]
+
+
+			print 'Medical'
+			for short_name in med_short_names: 
+
+				service = self.env['product.template'].search([
+																	#('x_name_short', '=', 'cri_faa_acn_ten'),
+																	('x_name_short', '=', short_name),
+													],
+														#order='date_order desc',
+														limit=1,
+													)
+				service_id = service.id
+				print service
+				self.service_medical_ids.create({
+													'service': 		service_id, 
+													'treatment': 	self.id, 
+					})
+
+
+
+
+		# Cosmeto
+		if self.cos_create: 
+
+			cos_short_names = [
+									'car_bod_rfa_30m_six', 		# Carboxi
+									'dit_fac_dfc_30m_one', 		# Diamond tip 
+									'tca_fdn_rfa_30m_six', 		# Triactive Carbo
+									'tcr_boa_rwm_one', 			# Tri Carbo Redu
+			]
+
+
+			print 'Cosmeto'
+			for short_name in cos_short_names: 
+				
+				service = self.env['product.template'].search([
+																	('x_name_short', '=', short_name),
+													],
+														#order='date_order desc',
+														limit=1,
+													)
+				service_id = service.id
+				print service
+				self.service_cosmetology_ids.create({
+													'service': 		service_id, 
+													'treatment': 	self.id, 
+					})
 
 
 
@@ -181,12 +341,13 @@ class Treatment(models.Model):
 # ----------------------------------------------------------- Create Procedures  ------------------------------------------------------
 	@api.multi
 	#def create_procedure(self):
-	def create_procedure(self, date_app):
+	#def create_procedure(self, date_app):
+	def create_procedure(self, date_app, subtype):
 		
-
 		print 
 		print 'Create Procedure'
 		print date_app  
+		print subtype
 
 
 		#if self.nr_invoices_pro > 0:
@@ -194,7 +355,8 @@ class Treatment(models.Model):
 
 			#ret = treatment_funcs.create_procedure_go(self)
 			#ret = treatment_funcs.create_procedure_go(self, date_app, self.id, self.patient.id, self.chief_complaint)
-			ret = treatment_funcs.create_procedure_go(self, date_app)
+			#ret = treatment_funcs.create_procedure_go(self, date_app)
+			ret = treatment_funcs.create_procedure_go(self, date_app, subtype)
 
 	# create_procedure 
 
@@ -364,6 +526,8 @@ class Treatment(models.Model):
 
 
 
+
+
 	# Service 
 	service_ids = fields.One2many(
 			'openhealth.service', 	
@@ -400,12 +564,26 @@ class Treatment(models.Model):
 			string="Servicios ndyag"
 			)
 
+
+
 	# Medical
 	service_medical_ids = fields.One2many(
 			'openhealth.service.medical', 
 			'treatment', 
 			string="Servicios medical"
 			)
+
+
+	# Cosmetology
+	service_cosmetology_ids = fields.One2many(
+			'openhealth.service.cosmetology', 
+			'treatment', 
+			string="Servicios cosmeatria"
+		)
+
+
+
+
 
 	# Reservations 
 	reservation_ids = fields.One2many(
@@ -436,15 +614,18 @@ class Treatment(models.Model):
 			string="Presupuestos",
 		)
 
+
 	# Orders Procedures
 	order_pro_ids = fields.One2many(
 			'sale.order',			 
 			'treatment', 
 			string="Presupuestos",
 			domain = [
-						('x_family', '=', 'procedure'),
+						#('x_family', '=', 'procedure'),
+						('x_family', 'in', ['procedure','cosmetology']),
 					],
 		)
+
 
 	# Vip
 	service_vip_ids = fields.One2many(
@@ -811,6 +992,7 @@ class Treatment(models.Model):
 			record.nr_services_ndyag = services 
 
 
+
 	# medical
 	nr_services_medical = fields.Integer(
 			string="Servicios",
@@ -823,6 +1005,21 @@ class Treatment(models.Model):
 			services = 		self.env['openhealth.service.medical'].search_count([('treatment','=', record.id),]) 
 			record.nr_services_medical = services 
 
+
+
+
+
+	# Cosmetology
+	nr_services_cosmetology = fields.Integer(
+			string="Servicios",
+			
+			compute="_compute_nr_services_cosmetology",
+	)
+	@api.multi
+	def _compute_nr_services_cosmetology(self):
+		for record in self:
+			services = 		self.env['openhealth.service.cosmetology'].search_count([('treatment','=', record.id),]) 
+			record.nr_services_cosmetology = services 
 
 
 
@@ -874,13 +1071,16 @@ class Treatment(models.Model):
 
 		# Unlinks
 
+		self.service_vip_ids.unlink()
+		self.service_quick_ids.unlink()
+
 		self.service_co2_ids.unlink()
 		self.service_excilite_ids.unlink()
 		self.service_ipl_ids.unlink()
 		self.service_ndyag_ids.unlink()
 		self.service_medical_ids.unlink()
-		self.service_quick_ids.unlink()
-		self.service_vip_ids.unlink()
+		self.service_cosmetology_ids.unlink()
+
 		
 		self.consultation_ids.unlink()
 		self.procedure_ids.unlink()
@@ -949,13 +1149,14 @@ class Treatment(models.Model):
 		#print 'Create'
 		#appointment = self.env['oeh.medical.appointment'].create({
 		appointment = self.appointment_ids.create({
-
 																	'appointment_date': appointment_date_str, 
 																	
 																	'patient':			self.patient.id,
 																	'doctor':			self.physician.id,
-																	'x_type': 			'consultation', 
 																	'state': 			'pre_scheduled', 
+
+																	'x_type': 			'consultation', 
+																	'x_subtype': 		'consultation', 
 
 																	'treatment':	self.id, 
 															})

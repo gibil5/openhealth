@@ -23,19 +23,18 @@
 
 
 <!--
--->
-						<!-- Treatment --> 
-						<button 
-								name="open_treatment"
-								type="object" 
-								class="oe_highlight"
-
-
 								attrs="{'invisible':
 														[
 															('family', '=', 'cosmetology'),
 														]
 										}"
+-->
+						<!-- Treatment --> 
+						<button 
+								type="object" 
+								class="oe_highlight"
+
+								name="open_treatment"
 
 								string="Regresar al TRATAMIENTO"
 						/>
@@ -45,22 +44,19 @@
 
 						<!-- Cosmetology --> 
 <!--
--->
 						<button 
 								name="open_cosmetology"
 								type="object" 
 								class="oe_highlight"
-
-
 								attrs="{'invisible':
 														[
 															('family', '!=', 'cosmetology'),
 														]
 										}"
 
-
 								string="Regresar a la COSMIATRIA"
 						/>
+-->
 
 
 
@@ -317,6 +313,8 @@ blue:state=='budget'
 					<field name="zone"/>
 
 					<field name="pathology"/>
+
+					<field name="patient"/>
 
 					<field name="physician"/>
 

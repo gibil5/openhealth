@@ -360,7 +360,9 @@ class Evaluation(models.Model):
 
 	# Laser 
 	laser = fields.Selection(
+
 			selection = prodvars._laser_type_list, 
+		
 			string="Láser",
 
 			compute='_compute_laser', 			

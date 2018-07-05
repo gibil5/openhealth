@@ -45,6 +45,9 @@ def create_controls(self):
 	procedure_id = self.id
 	treatment_id = self.treatment.id
 
+	subtype = self.product.x_treatment 
+
+
 	# Start date 
 	evaluation_start_date = self.evaluation_start_date
 
@@ -111,10 +114,12 @@ def create_controls(self):
 																	'duration': duration,
 																	'state': state,
 
-																	'x_type': x_type,
 																	'x_chief_complaint': chief_complaint, 
 																	'x_create_procedure_automatic': False,
 																	'x_target': 'doctor',
+
+																	'x_type': x_type,
+																	'x_subtype': subtype,
 
 																	'treatment': treatment_id, 
 																})

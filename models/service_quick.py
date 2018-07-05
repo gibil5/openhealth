@@ -127,8 +127,7 @@ class ServiceQuick(models.Model):
 	# Patient 
 	patient = fields.Many2one(
 			'oeh.medical.patient', 
-			string="", 
-
+			string="Paciente", 
 			required=True, 
 		)
 
@@ -138,7 +137,6 @@ class ServiceQuick(models.Model):
 			'oeh.medical.physician',
 			string="Médico",
 			index=True, 
-
 			required=True, 
 		)
 	

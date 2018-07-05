@@ -52,7 +52,8 @@ class Appointment(models.Model):
 			selection = app_vars._subtype_list, 
 		
 			string="Sub-tipo",
-			#required=True, 
+			
+			required=True, 
 		)
 
 
@@ -378,14 +379,23 @@ class Appointment(models.Model):
 	#@api.depends('x_appointment')
 
 	def _compute_x_display(self):
+
+		print 
+		print 'Compute Display'
+
 		for record in self:
 
 			#separator = ' - '
-			separator = ' '
+			sep = ' '
+
+
+			print record.x_subtype
 
 			# Patient or Event 
 			#record.x_display = record.x_patient_name_short + ' - '  + record.x_doctor_code + ' - ' + record.x_type_cal + ' - ' + record.x_state_short
-			record.x_display = record.x_patient_name_short + separator  + record.x_doctor_code + separator + record.x_type_cal + separator + record.x_state_short
+			#record.x_display = record.x_patient_name_short + sep  + record.x_doctor_code + sep + record.x_type_cal + sep + record.x_state_short
+			record.x_display = record.x_patient_name_short + sep  + record.x_doctor_code + sep + record.x_type_cal + sep + record.x_state_short + sep + app_vars._h_subtype[record.x_subtype]
+
 
 
 			# Control 

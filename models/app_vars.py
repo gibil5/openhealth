@@ -15,20 +15,69 @@ _type_list = [
 ]
 
 
+
+_h_subtype = {
+					'consultation':		'',
+
+					'laser_quick':		'Qui', 
+					'laser_co2':		'Co2 ', 
+					'laser_excilite':	'Exc', 
+					'laser_m22':		'M22', 
+
+					'laser_ipl':		'Ipl', 
+					'laser_ndyag':		'Ndy', 
+
+
+					# Medical 
+					'criosurgery': 			'Cri', 					
+					'botulinum_toxin': 		'Bot', 
+					'hyaluronic_acid': 			'Hia', 
+					'hyaluronic_acid_repair': 	'Hiar', 
+					'intravenous_vitamin': 	'Vit', 
+					'lepismatic': 			'Lep', 
+					'mesotherapy_nctf': 	'Mes', 
+					'plasma': 				'Pla', 
+					'sclerotherapy': 		'Esc', 
+
+					'infiltration_keloid': 	'Infq', 
+					'infiltration_scar': 	'Infc', 
+
+
+					# Cosmetology
+					#'laser_triactive':		'Tri', 
+					#'chamber_reduction':	'Cam',
+					#'carboxy_diamond':		'Car',
+					'carboxytherapy':		'Carbo', 
+					'diamond_tip':				'Punta', 
+					'triactive_carboxytherapy':				'Trca', 
+					'triactive_carboxytherapy_reductionchamber':	'Trcare', 
+
+
+					#'medical': 			'TM', 					
+					False: 				'x', 					
+}
+
+
 # Subtype
 #_machines_list = [
 _subtype_list = [
 					# Consultation 
-					('consultation','consultation'), 
+					#('consultation','consultation'), 
+					('consultation','Consulta'), 
 
 
 					# Laser 
-					('laser_quick','Quick'), 
-					('laser_co2_1','Co2 1'), 
-					('laser_co2_2','Co2 2'), 
-					('laser_co2_3','Co2 3'), 
-					('laser_excilite','Excilite'), 
-					('laser_m22','M22'), 
+					#('laser_co2_1',	'Co2 1'), 
+					#('laser_co2_2',	'Co2 2'), 
+					#('laser_co2_3',	'Co2 3'), 
+					('laser_quick',		'Quick'), 
+					('laser_co2',		'Co2 '), 
+					('laser_excilite',	'Excilite'), 
+					('laser_m22',		'M22'), 
+
+					('laser_ipl',		'Ipl'), 
+					('laser_ndyag',		'Ndyag'), 
+
 
 
 					# Medical 
@@ -42,13 +91,28 @@ _subtype_list = [
 					('plasma', 					'Plasma'), 
 					('sclerotherapy', 			'Escleroterapia'), 
 
+					('infiltration_keloid', 	'Infiltracion Queloide'), 
+					('infiltration_scar', 		'Infiltracion Cicatriz'), 
+
+
 
 					# Cosmetology
-					('laser_triactive','Triactivo'), 
-					('chamber_reduction','Cámara de reducción'), 
-					('carboxy_diamond','Carboxiterapia - Punta de Diamante'), 
+					#('laser_triactive',			'Triactivo'), 
+					#('chamber_reduction',		'Cámara de reducción'), 
+					#('carboxy_diamond',			'Carboxiterapia - Punta de Diamante'), 
+					('carboxytherapy',			'Carboxiterapia'), 
+					('diamond_tip',				'Punta de Diamante'), 
+					('triactive_carboxytherapy',					'Triactivo Carboxiterapia'), 
+					('triactive_carboxytherapy_reductionchamber',	'Triactivo Carboxiterapia Camara Reduccion'), 
+
+
+
 
 					#('none','Ninguna'), 		
+					#('medical',					'Tratamiento Medico'), 		
+					('other',					'Otro'), 		
+
+
 ]
 
 
@@ -136,8 +200,10 @@ _hash_state = {
 						#'pre_scheduled_control':	'3',
 						#'event':					'11',
 
-						'Scheduled':				'Conf',
-						'pre_scheduled':			'NConf',
+						#'Scheduled':				'Conf',
+						'Scheduled':				'C',
+						#'pre_scheduled':			'NConf',
+						'pre_scheduled':			'N',
 						'pre_scheduled_control':	'3',
 						'event':					'11',
 

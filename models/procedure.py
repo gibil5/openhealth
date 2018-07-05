@@ -256,24 +256,20 @@ class Procedure(models.Model):
 	# Machine 
 	machine = fields.Selection(
 			string="Sala", 
-
 			#selection = app_vars._machines_list, 
 			selection = app_vars._subtype_list, 
-			
 			#required=True, 
 
-			compute="_compute_machine",
+			#compute="_compute_machine",
 		)
 
 	#@api.multi
-	@api.depends('product')
-	def _compute_machine(self):
-		for record in self:
-			tre = record.product.x_treatment
-
-			mac = cosvars._hash_tre_mac[tre]
-			
-			record.machine = mac
+	#@api.depends('product')
+	#def _compute_machine(self):
+	#	for record in self:
+	#		tre = record.product.x_treatment
+	#		mac = cosvars._hash_tre_mac[tre]
+	#		record.machine = mac
 
 
 

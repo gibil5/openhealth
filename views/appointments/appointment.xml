@@ -125,6 +125,8 @@
 
 							<field name="x_type"/>
 							
+							<field name="x_subtype"/>
+
 
 <!--
 														invisible="0"																

@@ -21,12 +21,9 @@ from . import procedure_funcs_cos
 @api.multi
 def create_sessions(self):
 
-	#from datetime import datetime
-
-	#print 'jx'
+	#print
 	#print 'Create Sessions - Go'
 	#print 
-
 
 
 	# Clean 
@@ -37,7 +34,7 @@ def create_sessions(self):
 
 
 
-	# Initial conditions 
+	# Init
 	procedure_id = self.id 
 	patient_id = self.patient.id		
 	chief_complaint = self.chief_complaint
@@ -47,19 +44,18 @@ def create_sessions(self):
 	cosmetology_id = self.cosmetology.id
 	laser = self.laser
 	
-
 	# Actual Doctor 
-	#doctor_id = treatment_funcs.get_actual_doctor(self)
 	doctor_id = procedure_funcs.get_actual_doctor(self)
-
 
 	# Appointment 
 	duration = 0.5
-	#x_create_procedure_automatic = False 
 	machine = self.machine
 	#x_type = 'session'
 	x_type = 'procedure'
 
+
+	# Subtype
+	subtype = self.product.x_treatment 
 
 
 	doctor_name = self.doctor.name 
@@ -126,10 +122,16 @@ def create_sessions(self):
 
 			# Search Appointment 
 			appointment = self.env['oeh.medical.appointment'].search([ 	
-																		('appointment_date', 'like', app_date),	
-																		('patient', 'like', self.patient.name),	
-																		('x_type', 'like', 'procedure'), 
-																		('doctor', 'like', self.doctor.name), 																				
+																		#('appointment_date', 'like', app_date),	
+																		#('patient', 'like', self.patient.name),	
+																		#('doctor', 'like', self.doctor.name), 																				
+																		('appointment_date', '=', app_date),	
+																		('patient', '=', self.patient.name),	
+																		('doctor', '=', self.doctor.name), 																				
+
+																		('x_type', '=', 'procedure'), 
+																		('x_subtype', '=', subtype), 
+
 																	], 
 																		order='appointment_date desc', limit=1)
 			#print appointment
@@ -156,20 +158,21 @@ def create_sessions(self):
 			state = 'pre_scheduled'
 			appointment = self.env['oeh.medical.appointment'].create({
 																		'appointment_date': appointment_date_str,
+
 																		'patient': patient_id,	
 																		'doctor': doctor_id,
-
 																		'duration': duration,
-																		'x_type': x_type,
 																		'state': state,
-																		#'x_create_procedure_automatic': x_create_procedure_automatic,
 																		'x_create_procedure_automatic': False,
-																		'x_machine': machine,
 																		
+																		'x_type': x_type,
+																		'x_subtype': subtype,
+
 																		'procedure': self.id,
 																		'treatment': treatment_id, 
 
 																		#'x_target': 'doctor',
+																		#'x_machine': machine,
 																		#'cosmetology': cosmetology_id,																			
 																})
 			#print appointment 
@@ -181,19 +184,18 @@ def create_sessions(self):
 		session = self.env['openhealth.session.med'].create(
 											{
 												'evaluation_start_date':session_date,
-												'patient': patient_id,
-
-												'doctor': doctor_id,													
 												
+												'patient': patient_id,
+												'doctor': doctor_id,													
 												'evaluation_type':evaluation_type,
 												'product': product_id,
 												'laser': laser,
-												'appointment': appointment_id,
-												'treatment': treatment_id,	
-												'cosmetology': cosmetology_id,				
 												'chief_complaint': chief_complaint,
 
+												#'cosmetology': cosmetology_id,				
+												'appointment': appointment_id,
 												'procedure': procedure_id,				
+												'treatment': treatment_id,	
 											}
 										)
 		session_id = session.id 

@@ -81,6 +81,7 @@ class Service(models.Model):
 	# Patient 
 	patient = fields.Many2one(
 			'oeh.medical.patient', 
+			'Paciente', 
 		)
 
 

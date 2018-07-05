@@ -56,9 +56,10 @@
 
 							<page string="QUICK"			attrs="{'invisible':[('nr_services_quick', '=', 0)]}"			>
 								
-								<field 
-										name="service_quick_ids"
-									>	
+								<field name="service_quick_ids"/>	
+
+<!--
+								<field name="service_quick_ids">	
 
 									<tree 	string="Services"		
 											create="true" 
@@ -86,6 +87,8 @@
 										<field name="state"/>
 									</tree>
 								</field>
+-->
+
 <!--
 										<field name="name"/>
 										<field name="treatment"/>
@@ -147,6 +150,15 @@
 							<page string="Tratamientos Médicos"   		attrs="{'invisible':[('nr_services_medical', '=', 0)]}"  >
 								<field name="service_medical_ids"/>						
 							</page>
+
+
+
+							<!-- Cosmetology --> 
+							<page string="Cosmiatria"   		attrs="{'invisible':[('nr_services_cosmetology', '=', 0)]}"  >
+								<field name="service_cosmetology_ids"/>						
+							</page>
+
+
 						</notebook>
 					</page>
 				</notebook>

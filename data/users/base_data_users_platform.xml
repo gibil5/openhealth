@@ -1,7 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-	<data noupdate='1'>
+	<data noupdate='0'>
 
+
+
+
+
+<!-- Johanna Lopez -->
+		<record id="jlopez" model="res.partner">
+			<field name="name">Johanna Lopez</field>
+			<field name="email">jlopez@clinicachavarri.com</field>
+			<field name="function">reception</field>
+	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
+		</record>
+
+		<record id="jlopez_clinicachavarri" model="res.users">
+			<field name="name">Johanna Lopez</field>
+			<field name="login">jlopez@clinicachavarri.com</field>
+
+			<field name="password">4trBYrvB</field>
+
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+			<field name="active">True</field>
+			<field name="tz">America/Lima</field>
+			<field name="lang">es_ES</field>
+
+			<field name="partner_id" ref="jlopez"/>
+		</record>
 
 
 
@@ -23,13 +48,11 @@
 
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
 			<field name="active">True</field>
-			<field name="tz">America/Lima</field>
+			<field name="tz">America/Lima</field>			
+			<field name="lang">es_ES</field>
 
 			<field name="partner_id" ref="pramirez"/>
-			
-			<field name="lang">es_ES</field>
 		</record>
-
 
 
 
@@ -51,12 +74,10 @@
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
 			<field name="active">True</field>
 			<field name="tz">America/Lima</field>
-			<field name="partner_id" ref="cramirez"/>
 			<field name="lang">es_ES</field>
+
+			<field name="partner_id" ref="cramirez"/>
 		</record>
-
-
-
 
 
 
@@ -77,15 +98,13 @@
 -->
 			<field name="password">DnXZh7FW</field>
 
-			
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
 			<field name="active">True</field>
 			<field name="tz">America/Lima</field>
-			<field name="partner_id" ref="nescobar"/>
 			<field name="lang">es_ES</field>
+
+			<field name="partner_id" ref="nescobar"/>
 		</record>
-
-
 
 
 
@@ -110,14 +129,10 @@
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
 			<field name="active">True</field>
 			<field name="tz">America/Lima</field>
-			<field name="partner_id" ref="imichelot"/>
 			<field name="lang">es_ES</field>
+
+			<field name="partner_id" ref="imichelot"/>
 		</record>
-
-
-
-
-
 
 
 
@@ -132,23 +147,18 @@
 		<record id="gnunhez_clinicachavarri" model="res.users">
 			<field name="name">Gilda Nuñez</field>
 			<field name="login">gnunhez@clinicachavarri.com</field>
-
 <!--
 			<field name="password">gnunhez</field>
 -->
 			<field name="password">RSZ8wxaj</field>
-
 			
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
 			<field name="active">True</field>
 			<field name="lang">es_ES</field>
 			<field name="tz">America/Lima</field>
+
 			<field name="partner_id" ref="gnunhez_partner"/>
 		</record>
-
-
-
-
 
 
 
@@ -169,16 +179,13 @@
 -->
 			<field name="password">UjQmL4rp</field>
 
-			
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
 			<field name="active">True</field>
 			<field name="tz">America/Lima</field>
+			<field name="lang">es_ES</field>
 
 			<field name="partner_id" ref="mgrieve"/>
-			<field name="lang">es_ES</field>
 		</record>
-
-
 
 
 
@@ -193,23 +200,18 @@
 		<record id="ktejada_clinicachavarri" model="res.users">
 			<field name="name">Karla Tejeda</field>
 			<field name="login">ktejeda@clinicachavarri.com</field>
-
 <!--
 			<field name="password">ktejada</field>
 -->			
 			<field name="password">kE3LQPzA</field>
 
-
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
 			<field name="active">True</field>
 			<field name="tz">America/Lima</field>
-			<field name="partner_id" ref="ktejada"/>
 			<field name="lang">es_ES</field>
+
+			<field name="partner_id" ref="ktejada"/>
 		</record>
-
-
-
-
 
 
 
@@ -234,30 +236,10 @@
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
 			<field name="active">True</field>
 			<field name="tz">America/Lima</field>
-			<field name="partner_id" ref="ctorrealba"/>
 			<field name="lang">es_ES</field>
+
+			<field name="partner_id" ref="ctorrealba"/>
 		</record>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	</data>
 </openerp> 

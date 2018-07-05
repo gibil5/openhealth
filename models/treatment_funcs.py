@@ -15,11 +15,13 @@ import appfuncs
 @api.multi
 #def create_procedure_go(self):
 #def create_procedure_go(self, app_date, treatment_id, patient_id, chief_complaint):
-def create_procedure_go(self, app_date):
+#def create_procedure_go(self, app_date):
+def create_procedure_go(self, app_date, subtype):
 
-	#print
-	#print 'Create Procedure Go'
-	#print app_date 
+	print
+	print 'Create Procedure Go'
+	print app_date 
+	print subtype
 
 
 	# Init 
@@ -53,12 +55,15 @@ def create_procedure_go(self, app_date):
 	# Search
 	#print 'Search App'
 	appointment = self.env['oeh.medical.appointment'].search([ 	
-																('patient', '=', self.patient.name),		
-																('doctor', '=', self.physician.name), 	
-																('x_type', '=', 'procedure'), 
+																('patient', '=', 	self.patient.name),		
+																('doctor', '=', 	self.physician.name), 
+
+																('x_type', '=', 	'procedure'), 
+																('x_subtype', '=', 	subtype), 
 														], 
 															order='appointment_date desc', limit=1)
 	#print appointment
+
 
 
 	# Check if existing App is in the Future 
@@ -92,9 +97,10 @@ def create_procedure_go(self, app_date):
 																	'appointment_date': app_date_str, 
 																	'patient':			self.patient.id,
 																	'doctor':			self.physician.id,
-																	'x_type': 			'procedure', 
-
 																	'state': 			'pre_scheduled', 
+
+																	'x_type': 			'procedure', 
+																	'x_subtype': 		subtype, 
 
 																	'treatment':	self.id, 
 															})

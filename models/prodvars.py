@@ -492,11 +492,8 @@ _laser_type_list = [
 		('consultation',			'consultation'), 
 
 
-
 		# Laser 
 		('laser_quick','QuickLaser'), 
-
-
 		('laser_co2','Laser Co2'), 
 		('laser_excilite','Laser Excilite'), 
 		('laser_ipl','Laser Ipl'), 
@@ -517,6 +514,9 @@ _laser_type_list = [
 		('mesotherapy_nctf', 		'Mesoterapia NCTF'), 
 		('plasma', 					'Plasma'), 
 		('sclerotherapy', 			'Escleroterapia'), 
+
+		('infiltration_keloid', 	'Infiltracion Queloide'), 
+		('infiltration_scar', 		'Infiltracion Cicatriz'), 
 
 
 

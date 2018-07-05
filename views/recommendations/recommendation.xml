@@ -115,6 +115,17 @@
 								string="T. MEDICO"
 							/>
 
+
+
+							<!-- Cosmeto -->
+							<button 
+								type="object" 
+								class="oe_highlight"	
+
+								name="create_service_cosmetology" 	
+
+								string="Cosmiatria"
+							/>
 					</header>
 					
 					

@@ -382,3 +382,48 @@ class recommendation(models.Model):
 	# create_service_medical
 
 
+
+
+
+
+
+
+# ---------------------------------------------- Create Service - Cosmetology --------------------------------------------------------
+
+	@api.multi
+	def create_service_cosmetology(self):  
+
+		consultation_id = self.id 
+
+		treatment_id = self.treatment.id 		
+		
+		family = 'cosmetology'
+		
+		laser = 'cosmetology'
+		
+		zone = ''	
+		
+		pathology = ''
+
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' New Service Current - Cosmetology', 
+				'view_type': 'form',
+				'view_mode': 'form',			
+				'target': 'current',
+				
+				'res_model': 'openhealth.service.cosmetology',				
+				
+				'flags': 	{
+							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+							'form': {'action_buttons': True, }
+							},
+
+				'context': {
+							'default_treatment': treatment_id,
+							'default_family': family,
+							'default_laser': laser,
+							}
+				}
+					
+	# create_service_medical

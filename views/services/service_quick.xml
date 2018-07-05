@@ -112,6 +112,7 @@
 
 
 
+
 		<!-- TREE -->
 <!--		
 -->
@@ -180,11 +181,6 @@
 
 
 
-
-
-
-
-
 		<!-- Filter --> 
         <record id="view_service_quick_filter" model="ir.ui.view">
            <field name="name">Service Quick Search</field>
@@ -199,9 +195,6 @@
                </search>
            </field>
        </record>
-
-
-
 
 	</data>
 </openerp>

@@ -717,6 +717,22 @@ Add Procedures
 
 
 
+								<!-- Nr of Services - Cosmeto --> 
+								<button type="action" class="oe_stat_button" icon="fa-list"
+
+									name="%(service_cosmetology_list_action)d"	
+
+									attrs="{ 'invisible':[	('nr_services_cosmetology','=',0), ]}"
+
+									context="{									
+											'search_default_treatment': active_id,
+											}" 											
+									>
+									<field string="Recomendacion" name="nr_services_cosmetology" widget="statinfo"/>
+								</button>
+
+
+
 
 
 
@@ -914,7 +930,7 @@ Fields
 
 
 <!-- Manual --> 
-						<group  col="5"	>
+						<group  col="6"	>
 
 
 
@@ -966,7 +982,7 @@ Fields
 
 									name="create_service" 
 
-									string="RECOMENDACION"
+									string="RECOM"
 								/>
 							</group>
 
@@ -980,7 +996,7 @@ Fields
 
 									name="create_order_pro" 
 
-									string="PRESUPUESTO" 
+									string="PRESU" 
 								/>
 							</group>
 
@@ -994,14 +1010,38 @@ Fields
 
 									name="create_procedure" 
 
-									string="PROCEDIMIENTO" 
+									string="PROC" 
 								/>
 							</group>
 
 
-<!--
--->
 							<group>
+								<!-- Create Flags --> 
+								<field name="qui_create"/>
+								<field name="co2_create"/>
+								<field name="exc_create"/>
+								<field name="ipl_create"/>
+								<field name="ndy_create"/>
+
+								<field name="med_create"/>
+								<field name="cos_create"/>
+							</group>
+
+
+							<group>
+								<!-- Test --> 
+								<button 
+									type="object" 
+									class="oe_highlight"
+									
+									name="test_integration" 
+									
+									string="TEST" 
+									
+									groups="openhealth.roots"
+								/>
+
+
 
 								<!-- Reset --> 
 								<button 
@@ -1013,20 +1053,6 @@ Fields
 									string="Reset"
 
 									groups="openhealth.roots"			
-								/>
-
-
-
-								<!-- Test --> 
-								<button 
-									type="object" 
-									class="oe_highlight"
-									
-									name="test_integration" 
-									
-									string="Test" 
-									
-									groups="openhealth.roots"
 								/>
 							</group>
 

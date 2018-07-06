@@ -516,8 +516,8 @@
 		
 
 		# Patients 
-		'views/patients/patient.xml',
-		'views/patients/patient_search.xml',
+		#'views/patients/patient.xml',
+		#'views/patients/patient_search.xml',
 
 
 
@@ -714,8 +714,8 @@
 
 
 		# ----------------------------------------------------------- Menus ------------------------------------------------------
-		'views/menus/menus.xml',
-		'views/menus/menus_reporting.xml',
+		#'views/menus/menus.xml',
+		#'views/menus/menus_reporting.xml',
 
 	],
 

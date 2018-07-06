@@ -59,17 +59,14 @@
 					
 					<field name="name"/>
 
-					<field name="cosmetology"/>
-
-
-<!--					
-					<field name="id"/>
--->				
-
 					<field name="laser"/>				
 					
 					<field name="service"/>
+
+					<field name="treatment"/>
 <!--					
+					<field name="id"/>
+					<field name="cosmetology"/>
 					<field name="consultation"/>
 -->
 				</tree>

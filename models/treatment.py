@@ -28,6 +28,29 @@ class Treatment(models.Model):
 
 
 
+# ----------------------------------------------------------- Create Procedures  ------------------------------------------------------
+	@api.multi
+	def update_appointments(self):
+		
+		print 
+		print 'Update Appointments'
+
+
+		# Consultations 
+		for consultation in self.consultation_ids: 
+
+			consultation.evaluation_start_date = consultation.appointment.appointment_date
+
+
+		# Sessions 
+		for session in self.session_ids: 
+
+			session.evaluation_start_date = session.appointment.appointment_date
+
+
+
+
+
 # ----------------------------------------------------------- Testing ------------------------------------------------------
 
 	# Create Flags
@@ -71,6 +94,12 @@ class Treatment(models.Model):
 			default=False, 
 		)	
 
+
+	# Vip
+	vip_create = fields.Boolean(
+			string="Vip", 
+			default=False, 
+		)	
 
 
 
@@ -149,6 +178,9 @@ class Treatment(models.Model):
 		# Co2 
 		if self.co2_create: 
 			print 'Co2'
+
+			zone = 'neck'
+
 			service = self.env['product.template'].search([
 																('x_name_short', '=', 'co2_nec_rn1_one'),
 												],
@@ -159,6 +191,7 @@ class Treatment(models.Model):
 			print service
 			self.service_co2_ids.create({
 												'service': 		service_id, 
+												'zone': 		zone, 
 												'treatment': 	self.id, 
 				})
 
@@ -167,6 +200,9 @@ class Treatment(models.Model):
 		# Excilite 
 		if self.exc_create: 
 			print 'Exc'
+
+			zone = 'belly'
+
 			service = self.env['product.template'].search([
 																('x_name_short', '=', 'exc_bel_alo_15m_one'),
 												],
@@ -177,6 +213,7 @@ class Treatment(models.Model):
 			print service
 			self.service_excilite_ids.create({
 												'service': 		service_id, 
+												'zone': 		zone, 
 												'treatment': 	self.id, 
 				})
 
@@ -184,6 +221,9 @@ class Treatment(models.Model):
 		# Ipl 
 		if self.ipl_create: 
 			print 'Ipl'
+
+			zone = 'belly'
+
 			service = self.env['product.template'].search([
 																('x_name_short', '=', 'ipl_bel_dep_15m_six'),
 												],
@@ -194,6 +234,7 @@ class Treatment(models.Model):
 			print service
 			self.service_ipl_ids.create({
 												'service': 		service_id, 
+												'zone': 		zone, 
 												'treatment': 	self.id, 
 				})
 
@@ -203,6 +244,9 @@ class Treatment(models.Model):
 		# Ndyag
 		if self.ndy_create: 
 			print 'Ndyag'
+
+			zone = 'body_local'
+
 			service = self.env['product.template'].search([
 																('x_name_short', '=', 'ndy_bol_ema_15m_six'),
 												],
@@ -213,6 +257,7 @@ class Treatment(models.Model):
 			print service
 			self.service_ndyag_ids.create({
 												'service': 		service_id, 
+												'zone': 		zone, 
 												'treatment': 	self.id, 
 				})
 
@@ -225,7 +270,6 @@ class Treatment(models.Model):
 
 		# Medical 
 		if self.med_create: 
-
 			
 			med_short_names = [
 									'bot_1zo_rfa_one', 		# Bot
@@ -295,6 +339,26 @@ class Treatment(models.Model):
 
 
 
+		# Vip
+		if self.vip_create: 
+			print 'Vip'
+			service = self.env['product.template'].search([
+																('x_name_short', '=', 'vip_card'),
+												],
+													#order='date_order desc',
+													limit=1,
+												)
+			service_id = service.id
+			print service
+			self.service_vip_ids.create({
+												'service': 		service_id, 
+												'treatment': 	self.id, 
+				})
+
+
+
+
+
 		print 
 		print 'Create Order Procedure'
 		self.create_order_pro()
@@ -342,7 +406,8 @@ class Treatment(models.Model):
 	@api.multi
 	#def create_procedure(self):
 	#def create_procedure(self, date_app):
-	def create_procedure(self, date_app, subtype):
+	#def create_procedure(self, date_app, subtype):
+	def create_procedure(self, date_app, subtype, product_id):
 		
 		print 
 		print 'Create Procedure'
@@ -356,7 +421,8 @@ class Treatment(models.Model):
 			#ret = treatment_funcs.create_procedure_go(self)
 			#ret = treatment_funcs.create_procedure_go(self, date_app, self.id, self.patient.id, self.chief_complaint)
 			#ret = treatment_funcs.create_procedure_go(self, date_app)
-			ret = treatment_funcs.create_procedure_go(self, date_app, subtype)
+			#ret = treatment_funcs.create_procedure_go(self, date_app, subtype)
+			ret = treatment_funcs.create_procedure_go(self, date_app, subtype, product_id)
 
 	# create_procedure 
 

@@ -230,7 +230,10 @@
 
 
 							<!-- Notebook --> 					
+<!--
+-->
 							<field name="notebook_over"  invisible="0" />													
+
 					
 							<!--
 							<notebook>
@@ -280,23 +283,26 @@
 			<field name="model">openhealth.service</field>
 			<field name="arch" type="xml">
 
+				<tree 	string="Service Tree"
+						colors="
+						red:state=='draft';
+						blue:state=='budget'
+						"
+						>
 
-				<tree string="Service Tree"
 
-colors="
-
-red:state=='draft';
-
-blue:state=='budget'
-
-"
-
-					>
+					<!-- Quick Button -->
+					<button 
+						type="object" 
+						class="oe_highlight"	
+						string="E"
+						name="open_line_current" 
+					/>
 
 
 <!--
 					<field name="name"/>
-					
+
 					<field name="id"/>
 					
 					<field name="laser"/>				
@@ -310,16 +316,22 @@ blue:state=='budget'
 
 					<field name="service"/>
 
-					<field name="zone"/>
 
+					<field name="zone"/>
 					<field name="pathology"/>
 
-					<field name="patient"/>
 
+					<field name="patient"/>
 					<field name="physician"/>
 
-					<field name="state"/>
-					
+
+					<field name="price"/>
+					<field name="price_vip"/>
+					<field name="price_manual"/>
+					<field name="price_applied"/>
+
+
+					<field name="state"/>					
 				</tree>
 			</field>
 		</record>

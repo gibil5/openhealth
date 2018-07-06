@@ -6,10 +6,10 @@
 		<!-- Services -->
 		<record model="ir.ui.view" id="treatment_service_co2_form_view">
 			<field name="name">treatment.service_co2.form</field>
-
 			<field name="model">openhealth.treatment</field>
 			
-			<field name="priority" eval="4"/>
+			<field name="priority" eval="10"/>
+
 			<field name="inherit_id" ref="treatment_form_view"/>
 			<field name="arch" type="xml">
 

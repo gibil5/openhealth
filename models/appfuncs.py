@@ -13,6 +13,55 @@ import datetime
 
 # Delta
 @api.multi
+def doctor_available(self, app_date_str): 
+
+	print 
+	print 'Doctor Available'
+
+
+
+	#app_date_str = app_date_str.split()[1]
+
+	#app_limit_str = '21:00:00'
+	#app_limit_str = '2018-07-06 21:00:00'
+	app_limit_str = '2018-07-06 20:00:00'
+
+	date_format = "%Y-%m-%d %H:%M:%S"
+	#date_format = "%H:%M:%S"
+	
+	app_date_dt = datetime.datetime.strptime(app_date_str, date_format) + datetime.timedelta(hours=-5,minutes=0)	
+
+	app_limit_dt = datetime.datetime.strptime(app_limit_str, date_format)
+
+	
+	delta = app_limit_dt - app_date_dt
+	delta_sec = delta.total_seconds()
+
+
+	print app_date_str
+	print app_date_dt
+	print 
+	print app_limit_str
+	print app_limit_dt
+	print
+	print delta 
+	print delta_sec
+	print 
+
+
+	if delta_sec < 0: 
+		flag = False
+	else:
+		flag = True
+
+	return flag 
+
+
+
+# ----------------------------------------------------------- Next Slot--------------------------------------------
+
+# Delta
+@api.multi
 def get_next_slot(self): 
 
 	#print 
@@ -66,8 +115,8 @@ def get_next_slot(self):
 				'19:00:00', 
 				'19:30:00', 
 
-				'20:00:00', 
-				'20:30:00', 
+				#'20:00:00', 
+				#'20:30:00', 
 			]
 
 

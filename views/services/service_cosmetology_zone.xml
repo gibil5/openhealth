@@ -26,9 +26,10 @@
 
 						<group>
 							<!--
-							<field name="treatment"  invisible="0" />							
+							<field name="treatment"  invisible="0"/>
+							<field name="cosmetology"/>							
 							-->
-							<field name="cosmetology"   />							
+							<field name="treatment"/>							
 						</group>
 						
 					</group>

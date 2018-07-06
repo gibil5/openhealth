@@ -13,15 +13,14 @@ import appfuncs
 
 # Create procedure 
 @api.multi
-#def create_procedure_go(self):
-#def create_procedure_go(self, app_date, treatment_id, patient_id, chief_complaint):
-#def create_procedure_go(self, app_date):
-def create_procedure_go(self, app_date, subtype):
+#def create_procedure_go(self, app_date, subtype):
+def create_procedure_go(self, app_date, subtype, product_id):
 
 	print
 	print 'Create Procedure Go'
 	print app_date 
 	print subtype
+	print product_id
 
 
 	# Init 
@@ -92,18 +91,29 @@ def create_procedure_go(self, app_date, subtype):
 		app_date_str = app_date		
 		#print app_date_str
 
-		#print 'Create App'
-		appointment = self.env['oeh.medical.appointment'].create({
-																	'appointment_date': app_date_str, 
-																	'patient':			self.patient.id,
-																	'doctor':			self.physician.id,
-																	'state': 			'pre_scheduled', 
+		print 'Create App'
+		print app_date_str
 
-																	'x_type': 			'procedure', 
-																	'x_subtype': 		subtype, 
 
-																	'treatment':	self.id, 
-															})
+		doctor_available = appfuncs.doctor_available(self, app_date_str)
+		print doctor_available
+
+
+		if doctor_available: 
+
+			appointment = self.env['oeh.medical.appointment'].create({
+																		'appointment_date': app_date_str, 
+
+																		'patient':			self.patient.id,
+																		'doctor':			self.physician.id,
+																		'state': 			'pre_scheduled', 
+
+																		'x_type': 			'procedure', 
+																		'x_subtype': 		subtype, 
+
+																		'treatment':	self.id, 
+																})
+
 	appointment_id = appointment.id
 	#print appointment
 
@@ -111,51 +121,69 @@ def create_procedure_go(self, app_date, subtype):
 
 
 
-
-
 	# Loop - Create Procedures 
-	ret = 0
-	for order in self.order_pro_ids:
-
-
-		#if order.state == 'sale': 
-		if order.state == 'sale' 	and 	not order.x_procedure_created: 
-
-
+	#ret = 0
+	#for order in self.order_pro_ids:
+		#if order.state == 'sale' 	and 	not order.x_procedure_created: 
 			# Update 
-			order.x_procedure_created = True
-
+			#order.x_procedure_created = True
 			# Loop
-			for line in order.order_line:
-
-				# Init 
-				product_product = line.product_id
-
-				# Search 
-				product_template = self.env['product.template'].search([
-																			('x_name_short','=', product_product.x_name_short),
-																			('x_origin','=', False),
-											])
-				
-				# Create - If Service 
-				if line.product_id.type == 'service':
-		
-					#print 'Create Proc'
-					procedure = self.procedure_ids.create({
-															'patient':patient,
-															'doctor':doctor,														
-															'product':product_template.id,																
-															'evaluation_start_date':evaluation_start_date,
-															'chief_complaint':chief_complaint,
-															'appointment': appointment_id,
-
-															'treatment':treatment,	
-														})
-					procedure_id = procedure.id
+			#for line in order.order_line:
+	# Init 
+	#product_product = line.product_id
+	#product_product = product_id
 
 
-					# Update Appointment 
-					ret = jrfuncs.update_appointment_go(self, appointment_id, procedure_id, 'procedure')
+
+
+
+	# Search 
+	product_product = self.env['product.product'].search([
+																('id','=', product_id),
+																#('x_name_short','=', product_product.x_name_short),
+																#('x_origin','=', False),
+								])
+
+
+	# Search 
+	product_template = self.env['product.template'].search([
+																('x_name_short','=', product_product.x_name_short),
+																('x_origin','=', False),
+								])
+	
+	
+
+	# Create - If Service 
+	#if line.product_id.type == 'service':
+
+
+
+	print 'Create Proc'
+
+	doctor_available = appfuncs.doctor_available(self, app_date_str)
+
+	if doctor_available: 
+
+		procedure = self.procedure_ids.create({
+												#'evaluation_start_date':evaluation_start_date,
+												'evaluation_start_date':app_date_str,
+
+												'patient':patient,
+												'doctor':doctor,														
+												'product':product_template.id,																
+												'chief_complaint':chief_complaint,
+												'appointment': appointment_id,
+
+												'treatment':treatment,	
+											})
+		procedure_id = procedure.id
+
+
+
+
+	# Update Appointment 
+	ret = jrfuncs.update_appointment_go(self, appointment_id, procedure_id, 'procedure')
+
 
 
 	return ret	

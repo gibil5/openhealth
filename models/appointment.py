@@ -23,7 +23,8 @@ class Appointment(models.Model):
 	#_order = 'x_type asc'
 	#_order = 'state desc'
 	#_order = 'state desc,write_date desc'
-	_order = 'name desc'
+	#_order = 'name desc'
+	_order = 'name asc'
 
 
 

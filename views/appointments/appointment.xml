@@ -324,10 +324,13 @@ DEPRECATED !
 				<tree string="Appointment Tree"  	default_order='appointment_date'>
 
 				<tree string="Appointment Tree"  	default_order='appointment_date'	colors="red:nr_clones!=1;"  >
-				-->
 				<tree string="Appointment Tree"  	default_order='appointment_date'  >
+				-->
+				<tree string="Appointment Tree">
 
 					<field name="name"/>
+
+					<field name="appointment_date"/>
 
 					<field name="x_type"/>
 

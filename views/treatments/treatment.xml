@@ -930,7 +930,7 @@ Fields
 
 
 <!-- Manual --> 
-						<group  col="6"	>
+						<group  col="7"	>
 
 
 
@@ -1015,17 +1015,22 @@ Fields
 							</group>
 
 
-							<group>
-								<!-- Create Flags --> 
-								<field name="qui_create"/>
-								<field name="co2_create"/>
-								<field name="exc_create"/>
-								<field name="ipl_create"/>
-								<field name="ndy_create"/>
-
+							<!-- Create Flags --> 
+							<group 		groups="openhealth.roots"	>
+								<field name="vip_create"/>
 								<field name="med_create"/>
 								<field name="cos_create"/>
+								<field name="ndy_create"/>
 							</group>
+
+							<group 		groups="openhealth.roots"	>
+								<field name="co2_create"/>
+								<field name="qui_create"/>
+								<field name="exc_create"/>
+								<field name="ipl_create"/>
+							</group>
+
+
 
 
 							<group>

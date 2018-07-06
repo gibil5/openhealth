@@ -76,7 +76,8 @@ class sale_order(models.Model):
 	# Create Procedure With Appoointment   
 	@api.multi 
 	#def create_procedure_wapp(self):
-	def create_procedure_wapp(self, subtype):
+	#def create_procedure_wapp(self, subtype):
+	def create_procedure_wapp(self, subtype, product_id):
 
 		print 
 		print 'Create Proc W App'
@@ -118,7 +119,8 @@ class sale_order(models.Model):
 
 		# Create Procedure 
 		#self.treatment.create_procedure(appointment_date_str)
-		self.treatment.create_procedure(appointment_date_str, subtype)
+		#self.treatment.create_procedure(appointment_date_str, subtype)
+		self.treatment.create_procedure(appointment_date_str, subtype, product_id)
 
 		print
 	# test
@@ -424,10 +426,15 @@ class sale_order(models.Model):
 
 		for line in self.order_line: 
 			if line.product_id.x_family in ['laser', 'medical', 'cosmetology']:
-				#self.create_procedure_wapp()
-				self.create_procedure_wapp(line.product_id.x_treatment)
+				#self.create_procedure_wapp()				
+				#self.create_procedure_wapp(line.product_id.x_treatment)
+				self.create_procedure_wapp(line.product_id.x_treatment, line.product_id.id)
 
+		# Update 
+		self.x_procedure_created = True
 
+		self.treatment.update_appointments()
+		
 		
 
 		#for proc in self.treatment.procedure_ids: 

@@ -30,9 +30,9 @@ class Appointment(models.Model):
 
 	# ----------------------------------------------------------- Deprecated ------------------------------------------------------
 
-	#x_target = fields.Char()
+	x_target = fields.Char()
 
-	#x_machine = fields.Char()
+	x_machine = fields.Char()
 
 
 

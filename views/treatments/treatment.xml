@@ -718,6 +718,8 @@ Add Procedures
 
 
 								<!-- Nr of Services - Cosmeto --> 
+
+<!--								
 								<button type="action" class="oe_stat_button" icon="fa-list"
 
 									name="%(service_cosmetology_list_action)d"	
@@ -730,7 +732,7 @@ Add Procedures
 									>
 									<field string="Recomendacion" name="nr_services_cosmetology" widget="statinfo"/>
 								</button>
-
+-->
 
 
 

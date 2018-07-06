@@ -605,10 +605,10 @@
 		'views/treatments/treatment_appointments.xml',
 		'views/treatments/treatment_orders.xml',
 		'views/treatments/treatment_consultations.xml',
-		'views/treatments/treatment_services.xml',
-		'views/treatments/treatment_procedures.xml',
-		'views/treatments/treatment_sessions.xml',
-		'views/treatments/treatment_controls.xml',
+		#'views/treatments/treatment_services.xml',
+		#'views/treatments/treatment_procedures.xml',
+		#'views/treatments/treatment_sessions.xml',
+		#'views/treatments/treatment_controls.xml',
 		#'views/treatments/treatment_reservations.xml',
 
 

@@ -562,24 +562,24 @@
 
 
 		# Services - 2  
-		'views/services/service_co2.xml',
-		'views/services/service_co2_zone.xml',
-		'views/services/service_excilite.xml',
-		'views/services/service_excilite_zone.xml',
-		'views/services/service_ipl.xml',
-		'views/services/service_ipl_zone.xml',
-		'views/services/service_ndyag.xml',
-		'views/services/service_ndyag_zone.xml',
-		'views/services/service_medical.xml',
-		'views/services/service_medical_zone.xml',
-		'views/services/service_quick.xml',
-		'views/services/service_vip.xml',
-
-
+		#'views/services/service_co2.xml',
+		#'views/services/service_co2_zone.xml',
+		#'views/services/service_excilite.xml',
+		#'views/services/service_excilite_zone.xml',
+		#'views/services/service_ipl.xml',
+		#'views/services/service_ipl_zone.xml',
+		#'views/services/service_ndyag.xml',
+		#'views/services/service_ndyag_zone.xml',
+		#'views/services/service_medical.xml',
+		#'views/services/service_medical_zone.xml',
+		#'views/services/service_quick.xml',
+		#'views/services/service_vip.xml',
 
 		# Cosmetology
-		'views/services/service_cosmetology.xml',
-		'views/services/service_cosmetology_zone.xml',
+		#'views/services/service_cosmetology.xml',
+		#'views/services/service_cosmetology_zone.xml',
+
+
 
 
 		# Procedures - 2  

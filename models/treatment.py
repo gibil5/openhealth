@@ -28,6 +28,49 @@ class Treatment(models.Model):
 
 
 
+# ----------------------------------------------------------- Dep  ------------------------------------------------------
+
+	nr_quick_hands = fields.Char()
+
+	# Quick Body Local
+	nr_quick_body_local = fields.Char()
+
+	# Quick Face Local
+	nr_quick_face_local = fields.Char()
+
+
+
+	# Quick cheekbones
+	nr_quick_cheekbones = fields.Char()
+
+	# Quick face_all
+	nr_quick_face_all = fields.Char()
+
+
+	# Quick face_all_hands
+	nr_quick_face_all_hands = fields.Char()
+
+
+
+	# Quick face_all_neck
+	nr_quick_face_all_neck = fields.Char()
+
+
+
+
+	# Quick neck
+	nr_quick_neck = fields.Char()
+
+
+
+
+	# Quick neck_hands
+	nr_quick_neck_hands = fields.Char()
+
+
+
+
+
 # ----------------------------------------------------------- Create Procedures  ------------------------------------------------------
 	@api.multi
 	def update_appointments(self):

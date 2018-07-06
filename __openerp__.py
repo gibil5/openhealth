@@ -497,7 +497,7 @@
 
 
 		# Treatments 
-		#'views/treatments/treatment.xml',
+		'views/treatments/treatment.xml',
 
 
 
@@ -516,8 +516,8 @@
 		
 
 		# Patients 
-		#'views/patients/patient.xml',
-		#'views/patients/patient_search.xml',
+		'views/patients/patient.xml',
+		'views/patients/patient_search.xml',
 
 
 
@@ -562,22 +562,22 @@
 
 
 		# Services - 2  
-		#'views/services/service_co2.xml',
-		#'views/services/service_co2_zone.xml',
-		#'views/services/service_excilite.xml',
-		#'views/services/service_excilite_zone.xml',
-		#'views/services/service_ipl.xml',
-		#'views/services/service_ipl_zone.xml',
-		#'views/services/service_ndyag.xml',
-		#'views/services/service_ndyag_zone.xml',
-		#'views/services/service_medical.xml',
-		#'views/services/service_medical_zone.xml',
-		#'views/services/service_quick.xml',
-		#'views/services/service_vip.xml',
+		'views/services/service_co2.xml',
+		'views/services/service_co2_zone.xml',
+		'views/services/service_excilite.xml',
+		'views/services/service_excilite_zone.xml',
+		'views/services/service_ipl.xml',
+		'views/services/service_ipl_zone.xml',
+		'views/services/service_ndyag.xml',
+		'views/services/service_ndyag_zone.xml',
+		'views/services/service_medical.xml',
+		'views/services/service_medical_zone.xml',
+		'views/services/service_quick.xml',
+		'views/services/service_vip.xml',
 
 		# Cosmetology
-		#'views/services/service_cosmetology.xml',
-		#'views/services/service_cosmetology_zone.xml',
+		'views/services/service_cosmetology.xml',
+		'views/services/service_cosmetology_zone.xml',
 
 
 
@@ -602,22 +602,22 @@
 
 
 		# Treatments - 2 
-		#'views/treatments/treatment_appointments.xml',
-		#'views/treatments/treatment_orders.xml',
-		#'views/treatments/treatment_consultations.xml',
-		#'views/treatments/treatment_services.xml',
-		#'views/treatments/treatment_procedures.xml',
-		#'views/treatments/treatment_sessions.xml',
-		#'views/treatments/treatment_controls.xml',
-		#'views/treatments/treatment_reservations.xml',
+		'views/treatments/treatment_appointments.xml',
+		'views/treatments/treatment_orders.xml',
+		'views/treatments/treatment_consultations.xml',
+		'views/treatments/treatment_services.xml',
+		'views/treatments/treatment_procedures.xml',
+		'views/treatments/treatment_sessions.xml',
+		'views/treatments/treatment_controls.xml',
+		'views/treatments/treatment_reservations.xml',
 
 
 
 
 		# Patients - 2 
-		#'views/patients/patient_personal.xml',
-		#'views/patients/patient_control_docs.xml',
-		#'views/patients/patient_appointments.xml',
+		'views/patients/patient_personal.xml',
+		'views/patients/patient_control_docs.xml',
+		'views/patients/patient_appointments.xml',
 
 
 		#'views/patients/patient_quick.xml',			# Deprecated ? 

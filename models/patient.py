@@ -47,6 +47,15 @@ class Patient(models.Model):
 	x_nr_quick_neck_hands = fields.Integer()
 
 
+	# Quick Services 
+	x_service_quick_ids = fields.One2many(
+			'openhealth.service.quick', 
+			'patient', 
+			#compute='_compute_service_quick_ids', 
+		)
+
+
+
 
 # ----------------------------------------------------------- Clear Apps ------------------------------------------------------
 

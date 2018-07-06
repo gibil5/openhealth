@@ -30,12 +30,16 @@ class Patient(models.Model):
 	
 	x_nr_quick_face_local = fields.Integer()
 
+
+
 	x_nr_quick_cheekbones = fields.Integer()
 	
 	x_nr_quick_face_all = fields.Integer()
 	
 	x_nr_quick_face_all_hands = fields.Integer()
 	
+
+
 	x_nr_quick_face_all_neck = fields.Integer()
 	
 	x_nr_quick_neck = fields.Integer()

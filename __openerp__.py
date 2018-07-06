@@ -497,7 +497,7 @@
 
 
 		# Treatments 
-		'views/treatments/treatment.xml',
+		#'views/treatments/treatment.xml',
 
 
 

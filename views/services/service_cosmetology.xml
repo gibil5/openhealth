@@ -97,19 +97,6 @@
 		</record>
 
 
-		<!-- Service Cosmetology - Action -->
-		<record model="ir.actions.act_window" id="service_cosmetology_list_action">
-			<field name="name">Servicios cosmetology - 2</field>
-			<field name="res_model">openhealth.service.cosmetology</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-
-			<field name="context">{
-									'default_family': 'cosmetology',
-                    			}
-			</field>
-		</record>
-
 
 
 

@@ -1009,7 +1009,9 @@ Fields
 								/>
 							</group>
 
-
+<!--
+									name="create_procedure" 
+-->
 							<group>
 								<button 
 									type="object" 
@@ -1017,7 +1019,7 @@ Fields
 									attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
 									groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
 
-									name="create_procedure" 
+									name="create_procedure_man" 
 
 									string="PROC" 
 								/>

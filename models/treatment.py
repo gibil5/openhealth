@@ -28,43 +28,24 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Dep  ------------------------------------------------------
+# ----------------------------------------------------------- Tmp  ------------------------------------------------------
 
 	nr_quick_hands = fields.Char()
 
-	# Quick Body Local
 	nr_quick_body_local = fields.Char()
 
-	# Quick Face Local
 	nr_quick_face_local = fields.Char()
 
-
-
-	# Quick cheekbones
 	nr_quick_cheekbones = fields.Char()
 
-	# Quick face_all
 	nr_quick_face_all = fields.Char()
 
-
-	# Quick face_all_hands
 	nr_quick_face_all_hands = fields.Char()
 
-
-
-	# Quick face_all_neck
 	nr_quick_face_all_neck = fields.Char()
 
-
-
-
-	# Quick neck
 	nr_quick_neck = fields.Char()
 
-
-
-
-	# Quick neck_hands
 	nr_quick_neck_hands = fields.Char()
 
 
@@ -81,14 +62,17 @@ class Treatment(models.Model):
 
 		# Consultations 
 		for consultation in self.consultation_ids: 
+			if consultation.appointment.appointment_date != False: 
+			
+				consultation.evaluation_start_date = consultation.appointment.appointment_date
 
-			consultation.evaluation_start_date = consultation.appointment.appointment_date
 
 
 		# Sessions 
 		for session in self.session_ids: 
+			if session.appointment.appointment_date != False: 
 
-			session.evaluation_start_date = session.appointment.appointment_date
+				session.evaluation_start_date = session.appointment.appointment_date
 
 
 
@@ -439,6 +423,54 @@ class Treatment(models.Model):
 
 
 
+
+
+
+
+# ----------------------------------------------------------- Create Procedure Manual  ------------------------------------------------------
+	@api.multi
+	def create_procedure_man(self):
+		
+		print 
+		print 'Create Procedure - Manual'
+
+
+		# Loop - Create Procedures 
+		ret = 0
+		for order in self.order_pro_ids:
+
+			#if order.state == 'sale' 	and 	not order.x_procedure_created: 
+			if order.state == 'sale': 
+
+				# Update 
+				order.x_procedure_created = True
+
+				# Loop
+				for line in order.order_line:
+					
+
+					# Init 
+					#product_product = line.product_id
+					#product_product = product_id
+
+					date_app = order.date_order
+
+					product_id = line.product_id
+
+
+					# Search 
+					product_template = self.env['product.template'].search([
+																				('x_name_short','=', product_id.x_name_short),
+																				#('x_origin','=', False),
+												])
+
+					#subtype = product_id.x_subtype
+
+					subtype = product_template.x_treatment
+					#subtype = product_template.x_treatment
+
+
+					ret = treatment_funcs.create_procedure_go(self, date_app, subtype, product_id.id)
 
 
 

@@ -187,8 +187,8 @@ _first_contact_list = [
 
 
 		# Deprecated
-		('none','Ninguno'), 
 		('internet','Internet'), 
+		('none','Ninguno'), 
 ]
 
 

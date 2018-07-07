@@ -126,10 +126,9 @@
 		#'data/base_data_physicians_lines.xml',			
 
 
-		# ----------------------------------------------------------- Deprecated ??? ------------------------------------------------------
-
 		#'views/product_managers/product_manager.xml',
 		#'views/menus/menus_kardex.xml',
+
 
 
 		# ----------------------------------------------------------- Stock Moves - Deprecated ??? ------------------------------------------------------
@@ -148,7 +147,6 @@
 
 		# ----------------------------------------------------------- Recent ------------------------------------------------------
 
-		
 		# Reports
 		'views/product_selectors/product_selector.xml',
 		'views/orders/order_report_nex.xml',
@@ -157,22 +155,11 @@
 		'views/report_sale/item_counter.xml',
 
 
-
 		# Accounting 
 		'views/payment_methods/payment_method_line.xml',
 		'views/account/account_line.xml',
 		'views/account/account_contasis.xml',
 		'views/menus/menus_account.xml',
-
-
-
-
-
-		# Exceptions 
-		#'views/patients/patient_exceptions.xml',
-
-
-
 
 
 		# Marketing 
@@ -187,8 +174,6 @@
 		'views/marketing/marketing_pivot.xml',
 
 
-
-
 		# Management 
 		'views/management/management_family_line.xml',
 		'views/management/management_order_line.xml',
@@ -196,12 +181,13 @@
 		'views/management/management.xml',
 
 
-
 		# Commons 
 		'views/menus/menus_openhealth.xml',
 		'security/ir.model.access.csv',
 
 
+		# Exceptions 
+		#'views/patients/patient_exceptions.xml',
 
 
 
@@ -219,11 +205,7 @@
 
 
 
-
-
-
 		# ----------------------------------------------------------- Reports ------------------------------------------------------
-
 
 		# Patient
 		'reports/patient.xml',
@@ -232,16 +214,8 @@
 		'reports/patient_controls.xml',
 
 
-
-
-
-
-
-
-
 		# Formats
 		'reports/paper_format.xml',
-
 
 
 		# Ticket 
@@ -249,32 +223,13 @@
 		'reports/report_ticket_receipt.xml',
 		
 
-
 		# New Tickets 
 		'reports/report_ticket_receipt_nex.xml',
 		'reports/report_ticket_invoice_nex.xml',
 
 
-
-
-
-
 		# Purchases
 		'reports/report_purchasequotation.xml',
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -294,12 +249,10 @@
 		'data/base_data_categs_prods.xml',			
 
 
-
 		# Important 
 		'views/pathologies/pathology.xml',
 		'data/prods/data_pathologies.xml',			
 		'data/prods/data_nexzones.xml',	
-
 
 
 		# Zone
@@ -311,10 +264,8 @@
 		'data/prods/data_zones_ndyag.xml',			 
 
 
-
 		# Allergy 
 		'views/allergies/allergy.xml',
-
 
 
 		# Doctors
@@ -323,17 +274,13 @@
 		'data/base_data_physicians_new.xml',				
 
 
-
 		# Pricelists 
 		'data/pricelists.xml',							
 		'data/pricelist_quick.xml',						
 
 
-
 		# Suppliers 
 		'data/suppliers.xml',							# DEPRECATED - Very 
-
-
 
 
 
@@ -345,10 +292,7 @@
 		'data/users/base_data_users_staff.xml',		
 		'data/users/base_data_users_almacen.xml',		
 		'data/users/base_data_users_managers.xml',	
-
-
 		'data/users/base_data_users_doctors_new.xml',		
-
 
 
 
@@ -374,18 +318,7 @@
 
 		
 
-
-
-
-
-
-
-
-
-
-
 		# ----------------------------------------------------------- Views ------------------------------------------------------
-
 
 		# Purchases 
 		'views/purchase/purchase.xml',
@@ -408,18 +341,12 @@
 
 		# ----------------------------------------------------------- Views - First Level ------------------------------------------------------
 
-
 		# Users
 		'views/users/user.xml',
 
+
 		# Groups 
 		'views/groups/groups.xml',
-
-
-
-
-
-
 
 
 		# Orders
@@ -428,9 +355,9 @@
 		'views/orders/order_admin.xml',
 		'views/orders/order_search.xml',
 
+
 		# Payment methods 
 		'views/payment_methods/payment_methods.xml',
-		
 
 
 		# Counters 
@@ -441,47 +368,20 @@
 		'views/companies/company.xml',
 
 
-
-
-		
-
-
-
-
-
-
-
-
-
 		# Controls
 		'views/controls/control.xml',
-
-
 
 
 		# Images 
 		'views/images/image_view.xml',
 
 
-
-
 		# Evaluations
 		'views/evaluations/evaluation.xml',
 
 
-
-
 		# Services
 		'views/services/service.xml',
-
-
-
-
-
-
-
-
-
 
 
 		# Procedures
@@ -500,32 +400,17 @@
 		'views/treatments/treatment.xml',
 
 
-
-		# Cosmetologies
-		#'views/cosmetologies/cosmetology.xml',
-
-
-
-
-
-
 		# Physicians 
 		'views/physicians/physician.xml',
 
-
-		
 
 		# Patients 
 		'views/patients/patient.xml',
 		'views/patients/patient_search.xml',
 
 
-
-
 		# Partners
 		'views/partners/partner.xml',
-
-
 
 
 		# Appointments
@@ -541,9 +426,23 @@
 
 
 
+
 		# Style 
 		#'views/openhealth.xml',		
 
+
+
+
+		# ----------------------------------------------------------- Cosmeto ------------------------------------------------------
+
+		# Cosmetologies
+		#'views/cosmetologies/cosmetology.xml',
+		#'views/sessions/session_cos.xml',
+		#'views/procedures/procedure_cos.xml',
+		#'views/procedures/procedure_cos_sessions.xml',		
+		#'views/consultations/consultation_cos.xml',
+		#'views/consultations/consultation_cos_first.xml',
+		#'views/appointments/appointment_cos.xml',
 
 
 
@@ -554,7 +453,6 @@
 		# Sessions
 		'views/sessions/session.xml',
 		'views/sessions/session_config_manual.xml',
-		#'views/sessions/session_cos.xml',
 
 
 		# Evaluations - 2
@@ -575,31 +473,21 @@
 		'views/services/service_quick.xml',
 		'views/services/service_vip.xml',
 
+
 		# Cosmetology
 		'views/services/service_cosmetology.xml',
 		'views/services/service_cosmetology_zone.xml',
 
 
-
-
 		# Procedures - 2  
 		'views/procedures/procedure_controls.xml',
 		'views/procedures/procedure_sessions.xml',		
-		#'views/procedures/procedure_cos.xml',
-		#'views/procedures/procedure_cos_sessions.xml',		
-
-
 
 
 		# Consultation - 2
 		'views/consultations/consultation_med.xml',
 		'views/consultations/consultation_med_first.xml',
 		
-		#'views/consultations/consultation_cos.xml',
-		#'views/consultations/consultation_cos_first.xml',
-
-
-
 
 		# Treatments - 2 
 		'views/treatments/treatment_appointments.xml',
@@ -612,24 +500,14 @@
 		'views/treatments/treatment_reservations.xml',
 
 
-
-
 		# Patients - 2 
 		'views/patients/patient_personal.xml',
 		'views/patients/patient_control_docs.xml',
 		'views/patients/patient_appointments.xml',
 
 
-		#'views/patients/patient_quick.xml',			# Deprecated ? 
-
-
-
-
-		
-
 		# Appointments - 2
 		'views/appointments/calendar.xml',
-		#'views/appointments/appointment_cos.xml',
 
 
 		# Closing 
@@ -639,13 +517,17 @@
 
 
 
+		#'views/patients/patient_quick.xml',			# Deprecated ? 
+
+
 
 
 
 
 		# ----------------------------------------------------------- Purchase ------------------------------------------------------
-		'views/purchase/purchase_report.xml',			# Deprecated
-		'views/purchase/purchase_report_view.xml',		# Deprecated 
+		'views/purchase/purchase_report.xml',			# Deprecated ? 
+		'views/purchase/purchase_report_view.xml',		# Deprecated ?
+
 
 
 
@@ -660,17 +542,11 @@
 		'views/legacy/legacy_manager_order.xml',
 		'views/legacy/legacy_manager_patient.xml',
 		'views/legacy/legacy_order.xml',
-
 		'views/menus/menus_legacy.xml',
 
 
 
-		
-
-
-
-
-
+		# ----------------------------------------------------------- Closings ------------------------------------------------------
 
 		# closings 
 		'views/closings/closings.xml',

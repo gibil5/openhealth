@@ -226,13 +226,15 @@
 
 
 <!--
+							name="create_procedure" 
 -->
 
 						<!-- Create Procedure --> 
 						<button 
 							type="object" 
 							class="oe_highlight"
-							name="create_procedure" 
+
+							name="create_procedure_man" 
 							
 							string="Crear PROCEDIMIENTO" 
 

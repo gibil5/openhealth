@@ -243,10 +243,14 @@
 							groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
 						/>
 
+<!--
+							name="create_procedure" 
+-->	
 						<button 
 							type="object" 
 							class="oe_highlight"
-							name="create_procedure" 
+
+							name="create_procedure_man" 
 							
 							string="PRO" 
 

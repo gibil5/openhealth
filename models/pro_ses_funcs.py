@@ -8,22 +8,23 @@
 #
 
 from openerp import models, fields, api
-from . import treatment_funcs
-from . import time_funcs
+
 from datetime import datetime
 
-from . import procedure_funcs
-from . import procedure_funcs_cos
+import treatment_funcs
+import procedure_funcs
+#import procedure_funcs_cos
+import time_funcs
 
 
-#------------------------------------------------ Create - Sessions ---------------------------------------------------
+#------------------------------------------------ Create Sessions ---------------------------------------------------
 
 @api.multi
 def create_sessions(self):
 
-	#print
-	#print 'Create Sessions - Go'
-	#print 
+	print
+	print 'Create Sessions - Go'
+
 
 
 	# Clean 
@@ -205,3 +206,4 @@ def create_sessions(self):
 	return ret	
 
 # create_sessions_go
+

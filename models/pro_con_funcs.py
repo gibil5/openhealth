@@ -8,25 +8,25 @@
 #
 
 from openerp import models, fields, api
+
+import datetime
+
 from . import treatment_funcs
 from . import appfuncs
 from . import procedure_funcs
 
-import datetime
 
 
 
-#------------------------------------------------ Create - Controls ---------------------------------------------------
+#------------------------------------------------ Create Controls ---------------------------------------------------
 
 # Create Controls 
 @api.multi
 def create_controls(self):
 
-	#from datetime import datetime
+	print 
+	print 'Create control Go'
 
-	#print 
-	#print 'Create control Go'
-	#print 
 
 
 	# Clean 

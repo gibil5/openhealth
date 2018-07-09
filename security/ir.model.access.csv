@@ -4,6 +4,99 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+access_openhealth_session_managers,openhealth.session.managers,model_openhealth_session,openhealth.hc_managers,1,1,1,1
+access_openhealth_session_readers,openhealth.session.readers,model_openhealth_session,openhealth.hc_readers,1,0,0,0
+
+access_openhealth_session_med_managers,openhealth.session_med.managers,model_openhealth_session_med,openhealth.hc_managers,1,1,1,1
+access_openhealth_session_med_readers,openhealth.session_med.readers,model_openhealth_session_med,openhealth.hc_readers,1,0,0,0
+access_openhealth_session_med_assistants,openhealth.session_med.assistants,model_openhealth_session_med,openhealth.assistants,1,1,0,0
+
+access_openhealth_session_med_caja,openhealth.session_med.caja,model_openhealth_session_med,openhealth.caja,1,1,1,0
+
+
+
+
+
+
+access_openhealth_control_managers,openhealth.control.managers,model_openhealth_control,openhealth.hc_managers,1,1,1,1
+access_openhealth_control_readers,openhealth.control.readers,model_openhealth_control,openhealth.hc_readers,1,0,0,0
+access_openhealth_control_assistants,openhealth.control.assistants,model_openhealth_control,openhealth.assistants,1,1,0,0
+
+access_openhealth_control_caja,openhealth.control.caja,model_openhealth_control,openhealth.caja,1,1,1,0
+
+
+
+
+
+access_openhealth_consultation_managers,openhealth.consultation.managers,model_openhealth_consultation,openhealth.hc_managers,1,1,1,1
+access_openhealth_consultation_readers,openhealth.consultation.readers,model_openhealth_consultation,openhealth.hc_readers,1,0,0,0
+access_openhealth_consultation_cos,openhealth.consultation.cos,model_openhealth_consultation_cos,,1,1,1,1
+
+access_openhealth_consultation_caja,openhealth.consultation.caja,model_openhealth_consultation,openhealth.caja,1,1,1,0
+
+
+
+
+
+access_openhealth_service_vip_managers,openhealth.service_vip.managers,model_openhealth_service_vip,openhealth.hc_managers,1,1,1,1
+access_openhealth_service_vip_readers,openhealth.service_vip.readers,model_openhealth_service_vip,openhealth.hc_readers,1,0,0,0
+
+access_openhealth_service_vip_caja,openhealth.service_vip.caja,model_openhealth_service_vip,openhealth.caja,1,1,1,0
+
+
+
+access_openhealth_service_quick_managers,openhealth.service_quick.managers,model_openhealth_service_quick,openhealth.hc_managers,1,1,1,1
+access_openhealth_service_quick_readers,openhealth.service_quick.readers,model_openhealth_service_quick,openhealth.hc_readers,1,0,0,0
+
+access_openhealth_service_quick_caja,openhealth.service_quick.caja,model_openhealth_service_quick,openhealth.caja,1,1,1,0
+
+
+
+access_openhealth_service_co2_managers,openhealth.service_co2.managers,model_openhealth_service_co2,openhealth.hc_managers,1,1,1,1
+access_openhealth_service_co2_readers,openhealth.service_co2.readers,model_openhealth_service_co2,openhealth.hc_readers,1,0,0,0
+
+access_openhealth_service_co2_caja,openhealth.service_co2.caja,model_openhealth_service_co2,openhealth.caja,1,1,1,0
+
+
+access_openhealth_service_excilite_managers,openhealth.service_excilite.managers,model_openhealth_service_excilite,openhealth.hc_managers,1,1,1,1
+access_openhealth_service_excilite_readers,openhealth.service_excilite.readers,model_openhealth_service_excilite,openhealth.hc_readers,1,0,0,0
+
+access_openhealth_service_excilite_caja,openhealth.service_excilite.caja,model_openhealth_service_excilite,openhealth.caja,1,1,1,0
+
+
+
+access_openhealth_service_ipl_managers,openhealth.service_ipl.managers,model_openhealth_service_ipl,openhealth.hc_managers,1,1,1,1
+access_openhealth_service_ipl_readers,openhealth.service_ipl.readers,model_openhealth_service_ipl,openhealth.hc_readers,1,0,0,0
+
+access_openhealth_service_ipl_caja,openhealth.service_ipl.caja,model_openhealth_service_ipl,openhealth.caja,1,1,1,0
+
+
+
+access_openhealth_service_ndyag_managers,openhealth.service_ndyag.managers,model_openhealth_service_ndyag,openhealth.hc_managers,1,1,1,1
+access_openhealth_service_ndyag_readers,openhealth.service_ndyag.readers,model_openhealth_service_ndyag,openhealth.hc_readers,1,0,0,0
+
+access_openhealth_service_ndyag_caja,openhealth.service_ndyag.caja,model_openhealth_service_ndyag,openhealth.caja,1,1,1,0
+
+
+
+
+ccess_openhealth_service_medical_managers,openhealth.service_medical.managers,model_openhealth_service_medical,openhealth.hc_managers,1,1,1,1
+access_openhealth_service_medical_readers,openhealth.service_medical.readers,model_openhealth_service_medical,openhealth.hc_readers,1,0,0,0
+
+access_openhealth_service_medical_caja,openhealth.service_medical.caja,model_openhealth_service_medical,openhealth.caja,1,1,1,0
+
+
+
+
+access_openhealth_service_cosmetology,openhealth.service.cosmetology,model_openhealth_service_cosmetology,,1,1,1,1
+
+
+
+
+
+
+
+
 access_openhealth_stock_min,access_openhealth_stock_min,model_openhealth_stock_min,,1,1,1,1
 access_openhealth_stock_min_inventory,access_openhealth_stock_min_inventory,model_openhealth_stock_min_inventory,,1,1,1,1
 access_openhealth_stock_min_inventory_line,access_openhealth_stock_min_inventory_line,model_openhealth_stock_min_inventory_line,,1,1,1,1
@@ -132,7 +225,6 @@ access_event,openhealth.event,model_openhealth_event,,1,1,1,1
 
 access_openhealth_cosmetology,openhealth.cosmetology,model_openhealth_cosmetology,,1,1,1,1
 
-access_openhealth_service_cosmetology,openhealth.service.cosmetology,model_openhealth_service_cosmetology,,1,1,1,1
 
 access_payment_method,openhealth.payment_method,model_openhealth_payment_method,,1,1,1,1
 
@@ -286,15 +378,6 @@ access_openhealth_procedure_caja,openhealth.procedure.caja,model_openhealth_proc
 
 
 
-access_openhealth_session_managers,openhealth.session.managers,model_openhealth_session,openhealth.hc_managers,1,1,1,1
-access_openhealth_session_readers,openhealth.session.readers,model_openhealth_session,openhealth.hc_readers,1,0,0,0
-access_openhealth_session_med_managers,openhealth.session_med.managers,model_openhealth_session_med,openhealth.hc_managers,1,1,1,1
-access_openhealth_session_med_readers,openhealth.session_med.readers,model_openhealth_session_med,openhealth.hc_readers,1,0,0,0
-access_openhealth_session_med_assistants,openhealth.session_med.assistants,model_openhealth_session_med,openhealth.assistants,1,1,0,0
-access_openhealth_session_cos_managers,openhealth.session_cos.managers,model_openhealth_session_cos,openhealth.hc_managers,1,1,1,1
-access_openhealth_session_cos_readers,openhealth.session_cos.readers,model_openhealth_session_cos,openhealth.hc_readers,1,0,0,0
-access_openhealth_session_cos_assistants,openhealth.session_cos.assistants,model_openhealth_session_cos,openhealth.assistants,1,1,0,0
-
 
 
 
@@ -348,9 +431,6 @@ access_product_template_stock_user,product.template stock user,product.model_pro
 
 
 
-access_openhealth_consultation_managers,openhealth.consultation.managers,model_openhealth_consultation,openhealth.hc_managers,1,1,1,1
-access_openhealth_consultation_readers,openhealth.consultation.readers,model_openhealth_consultation,openhealth.hc_readers,1,0,0,0
-access_openhealth_consultation_cos,openhealth.consultation.cos,model_openhealth_consultation_cos,,1,1,1,1
 
 
 
@@ -376,34 +456,12 @@ access_openhealth_zone_readers,openhealth.zone.readers,model_openhealth_zone,ope
 
 
 
+access_openhealth_session_cos_managers,openhealth.session_cos.managers,model_openhealth_session_cos,openhealth.hc_managers,1,1,1,1
+access_openhealth_session_cos_readers,openhealth.session_cos.readers,model_openhealth_session_cos,openhealth.hc_readers,1,0,0,0
+access_openhealth_session_cos_assistants,openhealth.session_cos.assistants,model_openhealth_session_cos,openhealth.assistants,1,1,0,0
 
 
 
-access_openhealth_service_quick_managers,openhealth.service_quick.managers,model_openhealth_service_quick,openhealth.hc_managers,1,1,1,1
-access_openhealth_service_quick_readers,openhealth.service_quick.readers,model_openhealth_service_quick,openhealth.hc_readers,1,0,0,0
 
-
-access_openhealth_service_vip_managers,openhealth.service_vip.managers,model_openhealth_service_vip,openhealth.hc_managers,1,1,1,1
-access_openhealth_service_vip_readers,openhealth.service_vip.readers,model_openhealth_service_vip,openhealth.hc_readers,1,0,0,0
-
-
-
-access_openhealth_service_co2_managers,openhealth.service_co2.managers,model_openhealth_service_co2,openhealth.hc_managers,1,1,1,1
-access_openhealth_service_co2_readers,openhealth.service_co2.readers,model_openhealth_service_co2,openhealth.hc_readers,1,0,0,0
-
-access_openhealth_service_excilite_managers,openhealth.service_excilite.managers,model_openhealth_service_excilite,openhealth.hc_managers,1,1,1,1
-access_openhealth_service_excilite_readers,openhealth.service_excilite.readers,model_openhealth_service_excilite,openhealth.hc_readers,1,0,0,0
-
-access_openhealth_service_ipl_managers,openhealth.service_ipl.managers,model_openhealth_service_ipl,openhealth.hc_managers,1,1,1,1
-access_openhealth_service_ipl_readers,openhealth.service_ipl.readers,model_openhealth_service_ipl,openhealth.hc_readers,1,0,0,0
-
-ccess_openhealth_service_medical_managers,openhealth.service_medical.managers,model_openhealth_service_medical,openhealth.hc_managers,1,1,1,1
-access_openhealth_service_medical_readers,openhealth.service_medical.readers,model_openhealth_service_medical,openhealth.hc_readers,1,0,0,0
-access_openhealth_service_ndyag_managers,openhealth.service_ndyag.managers,model_openhealth_service_ndyag,openhealth.hc_managers,1,1,1,1
-access_openhealth_service_ndyag_readers,openhealth.service_ndyag.readers,model_openhealth_service_ndyag,openhealth.hc_readers,1,0,0,0
-
-access_openhealth_control_managers,openhealth.control.managers,model_openhealth_control,openhealth.hc_managers,1,1,1,1
-access_openhealth_control_readers,openhealth.control.readers,model_openhealth_control,openhealth.hc_readers,1,0,0,0
-access_openhealth_control_assistants,openhealth.control.assistants,model_openhealth_control,openhealth.assistants,1,1,0,0
 
 

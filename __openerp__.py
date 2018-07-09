@@ -18,7 +18,7 @@
 
 	'description': """
 
-		6 July 2018 
+		9 July 2018 
 
 		Fulcrum 
 		
@@ -497,7 +497,9 @@
 		'views/treatments/treatment_procedures.xml',
 		'views/treatments/treatment_sessions.xml',
 		'views/treatments/treatment_controls.xml',
-		'views/treatments/treatment_reservations.xml',
+		
+		#'views/treatments/treatment_reservations.xml',			# Deprecated 
+
 
 
 		# Patients - 2 

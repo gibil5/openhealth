@@ -30,23 +30,15 @@ class Treatment(models.Model):
 
 # ----------------------------------------------------------- Tmp  ------------------------------------------------------
 
-	nr_quick_hands = fields.Char()
-
-	nr_quick_body_local = fields.Char()
-
-	nr_quick_face_local = fields.Char()
-
-	nr_quick_cheekbones = fields.Char()
-
-	nr_quick_face_all = fields.Char()
-
-	nr_quick_face_all_hands = fields.Char()
-
-	nr_quick_face_all_neck = fields.Char()
-
-	nr_quick_neck = fields.Char()
-
-	nr_quick_neck_hands = fields.Char()
+	#nr_quick_hands = fields.Char()
+	#nr_quick_body_local = fields.Char()
+	#nr_quick_face_local = fields.Char()
+	#nr_quick_cheekbones = fields.Char()
+	#nr_quick_face_all = fields.Char()
+	#nr_quick_face_all_hands = fields.Char()
+	#nr_quick_face_all_neck = fields.Char()
+	#nr_quick_neck = fields.Char()
+	#nr_quick_neck_hands = fields.Char()
 
 
 
@@ -78,56 +70,45 @@ class Treatment(models.Model):
 
 
 
+
 # ----------------------------------------------------------- Testing ------------------------------------------------------
 
-	# Create Flags
+	# Clear  
+	@api.multi 
+	def clear(self):
 
-	# Laser 
-	co2_create = fields.Boolean(
-			string="Co2", 
-			default=False, 
-		)	
+		print 
+		print 'Clear'
 
-	exc_create = fields.Boolean(
-			string="Exc", 
-			default=False, 
-		)	
+		# Clean
+		self.co2_create = False
+		self.exc_create = False
+		self.ipl_create = False
+		self.ndy_create = False
+		self.qui_create = False		
+		self.med_create = False
+		self.cos_create = False
 
-	ipl_create = fields.Boolean(
-			string="Ipl", 
-			default=False, 
-		)	
-
-	ndy_create = fields.Boolean(
-			string="Ndyag", 
-			default=False, 
-		)	
-
-	qui_create = fields.Boolean(
-			string="Quick", 
-			default=False, 
-		)	
+		self.vip_create = False
 
 
-	# Medical
-	med_create = fields.Boolean(
-			string="Med", 
-			default=False, 
-		)	
+	# All  
+	@api.multi 
+	def all(self):
 
-	# Cosmeto
-	cos_create = fields.Boolean(
-			string="Cos", 
-			default=False, 
-		)	
+		print 
+		print 'All'
 
+		# Clean
+		self.co2_create = True
+		self.exc_create = True
+		self.ipl_create = True
+		self.ndy_create = True
+		self.qui_create = True		
+		self.med_create = True
+		self.cos_create = True
 
-	# Vip
-	vip_create = fields.Boolean(
-			string="Vip", 
-			default=False, 
-		)	
-
+		self.vip_create = True
 
 
 	# Test  
@@ -407,18 +388,59 @@ class Treatment(models.Model):
 
 
 
-	# Clear  
-	@api.multi 
-	def clear(self):
 
-		print 
-		print 'Clear'
 
-		# Clean
-		#for app in self.appointment_ids: 
-		#	app.remove_myself()
-		self.appointment_ids.unlink()
 
+
+# ----------------------------------------------------------- Testing ------------------------------------------------------
+
+	# Create Flags
+
+	# Laser 
+	co2_create = fields.Boolean(
+			string="Co2", 
+			default=False, 
+		)	
+
+	exc_create = fields.Boolean(
+			string="Exc", 
+			default=False, 
+		)	
+
+	ipl_create = fields.Boolean(
+			string="Ipl", 
+			default=False, 
+		)	
+
+	ndy_create = fields.Boolean(
+			string="Ndyag", 
+			default=False, 
+		)	
+
+	qui_create = fields.Boolean(
+			string="Quick", 
+			default=False, 
+		)	
+
+
+	# Medical
+	med_create = fields.Boolean(
+			string="Med", 
+			default=False, 
+		)	
+
+	# Cosmeto
+	cos_create = fields.Boolean(
+			string="Cos", 
+			default=False, 
+		)	
+
+
+	# Vip
+	vip_create = fields.Boolean(
+			string="Vip", 
+			default=False, 
+		)	
 
 
 

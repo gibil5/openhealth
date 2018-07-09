@@ -1,4 +1,11 @@
 # -*- coding: utf-8 -*-
+#
+# 		*** Treatment Funcs
+# 
+# Created: 			26 Aug 2016
+# Last up: 	 		 7 Jul 2018
+#
+
 
 from openerp import models, fields, api
 from datetime import datetime,tzinfo,timedelta
@@ -13,14 +20,13 @@ import appfuncs
 
 # Create procedure 
 @api.multi
-#def create_procedure_go(self, app_date, subtype):
-def create_procedure_go(self, app_date, subtype, product_id):
+def create_procedure_go(self, app_date_str, subtype, product_id):
 
 	print
 	print 'Create Procedure Go'
-	print app_date 
+	print app_date_str 
 	print subtype
-	print product_id
+	#print product_id
 
 
 	# Init 
@@ -52,7 +58,7 @@ def create_procedure_go(self, app_date, subtype, product_id):
 
 
 	# Search
-	#print 'Search App'
+	print 'Search App'
 	appointment = self.env['oeh.medical.appointment'].search([ 	
 																('patient', '=', 	self.patient.name),		
 																('doctor', '=', 	self.physician.name), 
@@ -61,7 +67,7 @@ def create_procedure_go(self, app_date, subtype, product_id):
 																('x_subtype', '=', 	subtype), 
 														], 
 															order='appointment_date desc', limit=1)
-	#print appointment
+	print appointment
 
 
 
@@ -84,16 +90,7 @@ def create_procedure_go(self, app_date, subtype, product_id):
 	#if appointment.name == False: 
 	if appointment.name == False    or   delta_sec < 0: 		# If no appointment or appointment in the past 
 
-		#app_date_str = app_date.strftime("%Y-%m-%d")
-		#app_date_str = app_date.split()[0]
-		#app_date_str = app_date_str + ' 14:00:00'			# 09:00:00
-		
-		app_date_str = app_date		
-		#print app_date_str
-
 		print 'Create App'
-		print app_date_str
-
 
 		doctor_available = appfuncs.doctor_available(self, app_date_str)
 		print doctor_available
@@ -160,12 +157,15 @@ def create_procedure_go(self, app_date, subtype, product_id):
 
 	print 'Create Proc'
 
+	procedure_id = False
+	ret = 0 
+
+
 	doctor_available = appfuncs.doctor_available(self, app_date_str)
 
 	if doctor_available: 
 
 		procedure = self.procedure_ids.create({
-												#'evaluation_start_date':evaluation_start_date,
 												'evaluation_start_date':app_date_str,
 
 												'patient':patient,
@@ -182,7 +182,8 @@ def create_procedure_go(self, app_date, subtype, product_id):
 
 
 	# Update Appointment 
-	ret = jrfuncs.update_appointment_go(self, appointment_id, procedure_id, 'procedure')
+	if procedure_id != False: 
+		ret = jrfuncs.update_appointment_go(self, appointment_id, procedure_id, 'procedure')
 
 
 
@@ -199,7 +200,7 @@ def create_procedure_go(self, app_date, subtype, product_id):
 @api.multi
 def create_order_lines(self, laser, order_id):
 
-	#print 'jx'
+	#print 
 	#print 'Create Order Lines'
 
 	order = self.env['sale.order'].search([(
@@ -208,9 +209,6 @@ def create_order_lines(self, laser, order_id):
 												#order='appointment_date desc',
 												#limit=1,						
 											)		
-	#print laser
-	#print order
-
 	_model = {
 				'quick':		'openhealth.service.quick',
 				'vip':			'openhealth.service.vip',
@@ -220,9 +218,6 @@ def create_order_lines(self, laser, order_id):
 				'ndyag':		'openhealth.service.ndyag',
 				'medical':		'openhealth.service.medical',
 	}
-
-	#print _model[laser]
-	#print 
 
 	# Services 
 	rec_set = self.env[_model[laser]].search([
@@ -235,9 +230,7 @@ def create_order_lines(self, laser, order_id):
 											)		
 
 	if rec_set != False: 
-
 		for service in rec_set: 
-
 			target_line = service.service.x_name_short
 			price_manual = service.price_manual
 			price_applied = service.price_applied
@@ -246,10 +239,7 @@ def create_order_lines(self, laser, order_id):
 
 			# Update state 
 			service.state = 'budget'
-
-			#print ret 
 	return 0
-
 
 # create_order_lines
 

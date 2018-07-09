@@ -1,7 +1,13 @@
 # -*- coding: utf-8 -*-
+#
+# 		*** App Funcs
+# 
+# Created: 			26 Aug 2016
+# Last up: 	 		 7 Jul 2018
+#
+
 
 from openerp import models, fields, api
-
 import datetime
 #import pytz
 
@@ -9,9 +15,9 @@ import datetime
 
 
 
-# ----------------------------------------------------------- Next Slot--------------------------------------------
+# ----------------------------------------------------------- Doctor Available--------------------------------------------
 
-# Delta
+# Doctor Available 
 @api.multi
 def doctor_available(self, app_date_str): 
 
@@ -19,12 +25,20 @@ def doctor_available(self, app_date_str):
 	print 'Doctor Available'
 
 
+	date_2_format = "%Y-%m-%d"
+	now = datetime.datetime.now() + datetime.timedelta(hours=-5,minutes=0)	
+	now_date_str = now.strftime(date_2_format)
+
+
 
 	#app_date_str = app_date_str.split()[1]
 
 	#app_limit_str = '21:00:00'
 	#app_limit_str = '2018-07-06 21:00:00'
-	app_limit_str = '2018-07-06 20:00:00'
+	#app_limit_str = '2018-07-06 20:00:00'
+	app_limit_str = now_date_str + ' 21:00:00'
+
+
 
 	date_format = "%Y-%m-%d %H:%M:%S"
 	#date_format = "%H:%M:%S"
@@ -38,21 +52,32 @@ def doctor_available(self, app_date_str):
 	delta_sec = delta.total_seconds()
 
 
-	print app_date_str
-	print app_date_dt
-	print 
-	print app_limit_str
-	print app_limit_dt
-	print
-	print delta 
-	print delta_sec
-	print 
 
 
 	if delta_sec < 0: 
 		flag = False
 	else:
 		flag = True
+
+
+
+	# Debug 
+	#debug = True
+	debug = False
+	if debug: 
+		print now
+		print now_date_str
+		print app_date_str
+		print app_date_dt
+		#print 
+		print app_limit_str
+		print app_limit_dt
+		#print
+		print delta 
+		print delta_sec
+		#print 
+		print flag
+		print 
 
 	return flag 
 
@@ -415,8 +440,6 @@ def create_appointment_procedure(self, adate_base, doctor_id, patient_id, treatm
 				k = k + 1
 
 
-
-
 		#print 
 		#print 'k'
 		#print k
@@ -425,5 +448,3 @@ def create_appointment_procedure(self, adate_base, doctor_id, patient_id, treatm
 		return app 
 
 # create_app_procedure
-
-

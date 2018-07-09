@@ -445,6 +445,74 @@ class Treatment(models.Model):
 
 
 
+# ----------------------------------------------------------- Reset ------------------------------------------------------
+
+	# Reset 
+	@api.multi 
+	def reset(self):
+
+		print 
+		print 'Reset'
+
+
+		# Unlinks
+		self.service_vip_ids.unlink()
+		self.service_quick_ids.unlink()
+		self.service_co2_ids.unlink()
+		self.service_excilite_ids.unlink()
+		self.service_ipl_ids.unlink()
+		self.service_ndyag_ids.unlink()
+		self.service_medical_ids.unlink()
+		self.service_cosmetology_ids.unlink()
+		self.consultation_ids.unlink()
+		self.procedure_ids.unlink()
+		self.session_ids.unlink()
+		self.control_ids.unlink()
+		self.appointment_ids.unlink()
+
+
+		# Orders 
+		for order in self.order_ids:
+			order.remove_myself()
+		#self.order_ids.unlink()
+
+
+		# Alta 
+		self.treatment_closed = False
+
+
+
+
+		# Conter Decrease 
+		name_ctr = 'advertisement'
+ 		
+ 		counter = self.env['openhealth.counter'].search([
+																('name', '=', name_ctr), 
+														],
+															#order='write_date desc',
+															limit=1,
+														)
+ 		counter.decrease()
+ 		counter.decrease()
+
+
+
+
+
+		# Important
+		#self.patient.x_nothing = 'Nothing'
+
+		# Numbers 
+		#self.nr_invoices_cons = 0 
+		#self.nr_invoices_pro = 0 
+
+		# Add Procs 
+		#self.add_procedures = False 
+	
+	# reset
+
+
+
 
 
 
@@ -1220,59 +1288,6 @@ class Treatment(models.Model):
 
 
 
-
-
-# ----------------------------------------------------------- Reset ------------------------------------------------------
-
-	# Reset 
-	@api.multi 
-	def reset(self):
-
-		print 
-		print 'Reset'
-
-
-		# Unlinks
-
-		self.service_vip_ids.unlink()
-		self.service_quick_ids.unlink()
-
-		self.service_co2_ids.unlink()
-		self.service_excilite_ids.unlink()
-		self.service_ipl_ids.unlink()
-		self.service_ndyag_ids.unlink()
-		self.service_medical_ids.unlink()
-		self.service_cosmetology_ids.unlink()
-
-		
-		self.consultation_ids.unlink()
-		self.procedure_ids.unlink()
-		self.session_ids.unlink()
-		self.control_ids.unlink()
-		self.appointment_ids.unlink()
-
-		# Numbers 
-		#self.nr_invoices_cons = 0 
-		#self.nr_invoices_pro = 0 
-
-		# Orders 
-		for order in self.order_ids:
-			order.remove_myself()
-		#self.order_ids.unlink()
-
-
-		# Alta 
-		self.treatment_closed = False
-
-
-		# Important
-		#self.patient.x_nothing = 'Nothing'
-
-
-		# Add Procs 
-		#self.add_procedures = False 
-	
-	# reset
 
 
 

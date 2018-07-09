@@ -42,7 +42,10 @@ class sale_order(models.Model):
 
 		if self.state == 'draft': 
 			self.create_payment_method()
-			self.x_payment_method.saledoc = 'ticket_receipt'
+
+			#self.x_payment_method.saledoc = 'ticket_receipt'
+			self.x_payment_method.saledoc = 'advertisement'
+			
 			self.x_payment_method.state = 'done'
 			self.state = 'sent'
 			self.action_confirm_nex()

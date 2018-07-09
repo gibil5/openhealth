@@ -96,21 +96,18 @@ class recommendation(models.Model):
 		physician_id = self.treatment.physician.id
 
 
+		# Quick 
+		#nr_hands = self.treatment.nr_quick_hands
+		#nr_body_local = self.treatment.nr_quick_body_local
+		#nr_face_local = self.treatment.nr_quick_face_local
 
-		nr_hands = self.treatment.nr_quick_hands
-		nr_body_local = self.treatment.nr_quick_body_local
-		nr_face_local = self.treatment.nr_quick_face_local
+		#nr_cheekbones = self.treatment.nr_quick_cheekbones
+		#nr_face_all = self.treatment.nr_quick_face_all
+		#nr_face_all_hands = self.treatment.nr_quick_face_all_hands
 
-
-		nr_cheekbones = self.treatment.nr_quick_cheekbones
-		nr_face_all = self.treatment.nr_quick_face_all
-		nr_face_all_hands = self.treatment.nr_quick_face_all_hands
-
-
-		nr_face_all_neck = self.treatment.nr_quick_face_all_neck
-		nr_neck = self.treatment.nr_quick_neck
-		nr_neck_hands = self.treatment.nr_quick_neck_hands
-
+		#nr_face_all_neck = self.treatment.nr_quick_face_all_neck
+		#nr_neck = self.treatment.nr_quick_neck
+		#nr_neck_hands = self.treatment.nr_quick_neck_hands
 
 
 
@@ -144,34 +141,29 @@ class recommendation(models.Model):
 							},
 
 
-				'context': {							
+				'context': {
+								# Quick 
+								#'default_nr_hands_i': nr_hands, 
+								#'default_nr_body_local_i': nr_body_local, 
+								#'default_nr_face_local_i': nr_face_local, 
+
+								#'default_nr_cheekbones': nr_cheekbones, 
+								#'default_nr_face_all': nr_face_all, 
+								#'default_nr_face_all_hands': nr_face_all_hands, 
+
+								#'default_nr_face_all_neck': nr_face_all_neck, 
+								#'default_nr_neck': nr_neck, 
+								#'default_nr_neck_hands': nr_neck_hands, 
+
 
 								'default_patient': patient_id,
 								'default_physician': physician_id,
-
-
-								'default_nr_hands_i': nr_hands, 
-								'default_nr_body_local_i': nr_body_local, 
-								'default_nr_face_local_i': nr_face_local, 
-
-								'default_nr_cheekbones': nr_cheekbones, 
-								'default_nr_face_all': nr_face_all, 
-								'default_nr_face_all_hands': nr_face_all_hands, 
-
-								'default_nr_face_all_neck': nr_face_all_neck, 
-								'default_nr_neck': nr_neck, 
-								'default_nr_neck_hands': nr_neck_hands, 
-
-
-
-
-
-								'default_treatment': treatment_id,
-
 								'default_laser': laser,							
 								'default_zone': zone,
 								'default_pathology': pathology,
 								'default_x_treatment': x_treatment,
+
+								'default_treatment': treatment_id,
 							}
 				}
 	# create_service_quick

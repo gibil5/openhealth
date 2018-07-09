@@ -181,10 +181,6 @@
 		'views/management/management.xml',
 
 
-		# Commons 
-		'views/menus/menus_openhealth.xml',
-		'security/ir.model.access.csv',
-
 
 		# Exceptions 
 		#'views/patients/patient_exceptions.xml',
@@ -591,9 +587,18 @@
 
 
 
+
 		# ----------------------------------------------------------- Menus ------------------------------------------------------
 		'views/menus/menus.xml',
 		'views/menus/menus_reporting.xml',
+		'views/menus/menus_openhealth.xml',
+
+
+
+		# ----------------------------------------------------------- Security ------------------------------------------------------
+		'security/ir.model.access.csv',
+
+
 
 	],
 

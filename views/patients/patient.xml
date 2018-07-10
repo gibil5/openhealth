@@ -264,6 +264,9 @@
 
 								<field name="partner_id"  string="Contacto"  readonly="1"  required="0"/>
 
+
+								<field name="x_test" 	groups="openhealth.roots"	/>
+
 <!--
 								<field name="treatment_active" 	/>
 -->

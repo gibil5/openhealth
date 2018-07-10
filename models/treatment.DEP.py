@@ -1,8 +1,20 @@
-#from . import pat_vars
-#from . import treatment_vars
-#from datetime import tzinfo
 
 
+
+
+
+
+# ----------------------------------------------------------- Tmp  ------------------------------------------------------
+
+	#nr_quick_hands = fields.Char()
+	#nr_quick_body_local = fields.Char()
+	#nr_quick_face_local = fields.Char()
+	#nr_quick_cheekbones = fields.Char()
+	#nr_quick_face_all = fields.Char()
+	#nr_quick_face_all_hands = fields.Char()
+	#nr_quick_face_all_neck = fields.Char()
+	#nr_quick_neck = fields.Char()
+	#nr_quick_neck_hands = fields.Char()
 
 
 
@@ -801,3 +813,9 @@
 		return res
 	# CRUD 
 
+
+
+
+#from . import pat_vars
+#from . import treatment_vars
+#from datetime import tzinfo

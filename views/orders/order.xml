@@ -4,7 +4,7 @@
 		
 
 
-		<!-- FORM -->
+<!-- FORM -->
 		<record model="ir.ui.view" id="view_order_form">
 			<field name="name">sale.order.form</field>
 			<field name="model">sale.order</field>			
@@ -646,8 +646,9 @@ Look for the Minimalist experience !!!
 
 					<field name="x_type" />
 
+<!--
 					<field name="x_delta" />
-
+-->
 
 
 					<field name="patient"/>
@@ -669,7 +670,6 @@ Look for the Minimalist experience !!!
 
 
 
-					<field name="create_date"/>
 
 					<field name="date_order"	string="Fecha"	/>
 
@@ -683,6 +683,9 @@ Look for the Minimalist experience !!!
 
 
 <!--
+					<field name="create_date"/>
+
+
 					<field name="user_id"		string="Generado por"	/>
 
 					<field name="comment"/>

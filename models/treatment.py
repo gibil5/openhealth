@@ -28,17 +28,7 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Tmp  ------------------------------------------------------
-
-	#nr_quick_hands = fields.Char()
-	#nr_quick_body_local = fields.Char()
-	#nr_quick_face_local = fields.Char()
-	#nr_quick_cheekbones = fields.Char()
-	#nr_quick_face_all = fields.Char()
-	#nr_quick_face_all_hands = fields.Char()
-	#nr_quick_face_all_neck = fields.Char()
-	#nr_quick_neck = fields.Char()
-	#nr_quick_neck_hands = fields.Char()
+# ----------------------------------------------------------- Test  ------------------------------------------------------
 
 
 
@@ -80,16 +70,17 @@ class Treatment(models.Model):
 		print 
 		print 'Clear'
 
-		# Clean
-		self.co2_create = False
-		self.exc_create = False
-		self.ipl_create = False
-		self.ndy_create = False
-		self.qui_create = False		
-		self.med_create = False
-		self.cos_create = False
+		if self.patient.x_test: 
+			# Clean
+			self.co2_create = False
+			self.exc_create = False
+			self.ipl_create = False
+			self.ndy_create = False
+			self.qui_create = False		
+			self.med_create = False
+			self.cos_create = False
 
-		self.vip_create = False
+			self.vip_create = False
 
 
 	# All  
@@ -99,19 +90,52 @@ class Treatment(models.Model):
 		print 
 		print 'All'
 
-		# Clean
-		self.co2_create = True
-		self.exc_create = True
-		self.ipl_create = True
-		self.ndy_create = True
-		self.qui_create = True		
-		self.med_create = True
-		self.cos_create = True
+		if self.patient.x_test: 
+			# All
+			self.co2_create = True
+			self.exc_create = True
+			self.ipl_create = True
+			self.ndy_create = True
+			self.qui_create = True		
+			self.med_create = True
+			self.cos_create = True
 
-		self.vip_create = True
+			self.vip_create = True
 
 
-	# Test  
+
+
+	# Test - Case Reset 
+	@api.multi 
+	def test_case_reset(self):
+
+		print 
+		print 'Test Case Reset'
+
+		if self.patient.x_test: 
+
+			self.reset()
+
+
+
+
+
+	# Test - Case One 
+	@api.multi 
+	def test_case_one(self):
+
+		print 
+		print 'Test Case One'
+
+		if self.patient.x_test: 
+
+			self.test_integration()
+
+
+
+
+
+	# Test - Integration 
 	@api.multi 
 	def test_integration(self):
 

@@ -4,6 +4,40 @@
 
 
 
+# ----------------------------------------------------------- Tmp ------------------------------------------------------
+
+	x_nr_quick_hands = fields.Integer()
+	
+	x_nr_quick_body_local = fields.Integer()
+	
+	x_nr_quick_face_local = fields.Integer()
+
+	x_nr_quick_cheekbones = fields.Integer()
+	
+	x_nr_quick_face_all = fields.Integer()
+	
+	x_nr_quick_face_all_hands = fields.Integer()
+	
+	x_nr_quick_face_all_neck = fields.Integer()
+	
+	x_nr_quick_neck = fields.Integer()
+	
+	x_nr_quick_neck_hands = fields.Integer()
+
+	x_service_quick_ids = fields.One2many(
+			'openhealth.service.quick', 
+			'patient', 
+		)
+
+
+
+
+
+
+
+
+
+
 # ----------------------------------------------------------- Quick Laser - Relational ------------------------------------------------------
 
 	# Quick Services 

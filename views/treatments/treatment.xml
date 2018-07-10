@@ -1047,6 +1047,7 @@ Fields
 							<group>
 <!--
 									groups="openhealth.roots"
+									name="test_integration" 
 -->
 
 								<!-- Test --> 
@@ -1054,7 +1055,7 @@ Fields
 									type="object" 
 									class="oe_highlight"
 									
-									name="test_integration" 
+									name="test_case_one" 
 									
 									string="TEST" 
 
@@ -1064,6 +1065,7 @@ Fields
 
 <!--
 									groups="openhealth.roots"			
+									name="reset" 	
 -->
 
 								<!-- Reset --> 
@@ -1071,9 +1073,9 @@ Fields
 									type="object" 
 									class="oe_highlight"
 
-									name="reset" 	
+									name="test_case_reset" 	
 
-									string="Re"
+									string="Reset"
 
 									groups="openhealth.roots"
 								/>

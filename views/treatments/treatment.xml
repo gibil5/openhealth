@@ -6,7 +6,7 @@
 
 
 
-		<!-- FORM --> 
+<!-- FORM --> 
 		<record model="ir.ui.view" id="treatment_form_view">
 			<field name="name">treatment.form</field>
 			<field name="model">openhealth.treatment</field>
@@ -1057,8 +1057,10 @@ Fields
 									name="test_integration" 
 									
 									string="TEST" 
-									
+
+									groups="openhealth.roots"									
 								/>
+
 
 <!--
 									groups="openhealth.roots"			
@@ -1210,7 +1212,7 @@ Fields
 
 
 
-		<!-- TREE --> 
+<!-- TREE --> 
 		<record model="ir.ui.view" id="treatment_tree_view">
 			<field name="name">treatment.tree</field>
 			<field name="model">openhealth.treatment</field>
@@ -1282,45 +1284,6 @@ blue:state=='controls'
 
 
 
-		<!-- Search -->
-		<!--
-		<record model="ir.ui.view" id="treatment_search_view">
-			<field name="name">treatment.search</field>
-			<field name="model">openhealth.treatment</field>
-			<field name="arch" type="xml">
-				<search>
-					<field name="name"/>
-				</search>
-			</field>
-		</record>
-		-->
-
-
-
-
-
-
-
-		<!-- Window Form Action -->
-		<record model="ir.actions.act_window" id="treatment_form_action">
-			<field name="name">Tratamientos 1</field>
-			<field name="res_model">openhealth.treatment</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-
-<!--
-			<field name="context">{
-										'default_x_target': 'doctor',
-										'default_x_type': 'consultation',
-										'default_appointment_date': time.strftime('%Y-%m-%d 14:00:00'),
-									}
-			</field>
--->
-
-		</record>
-
-
-
 
 
 
@@ -1348,7 +1311,23 @@ blue:state=='controls'
 
 
 
-		<!-- Filter --> 
+
+
+		<!-- Search -->
+		<!--
+		<record model="ir.ui.view" id="treatment_search_view">
+			<field name="name">treatment.search</field>
+			<field name="model">openhealth.treatment</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="name"/>
+				</search>
+			</field>
+		</record>
+		-->
+
+
+		<!-- Search -->
 		<record id="view_medical_treatment_filter" model="ir.ui.view">
 		   <field name="name">Treatment Search</field>
 		   <field name="model">openhealth.treatment</field>

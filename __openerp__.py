@@ -381,15 +381,21 @@
 
 		# Treatments 
 		'views/treatments/treatment.xml',
+		'views/treatments/treatment_actions.xml',
 
 
 		# Physicians 
 		'views/physicians/physician.xml',
 
 
+
 		# Patients 
 		'views/patients/patient.xml',
+
+		'views/patients/patient_actions.xml',
+
 		'views/patients/patient_search.xml',
+
 
 
 		# Partners

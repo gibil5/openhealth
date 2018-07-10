@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+
+
+<!-- ACTIONS -->
+
+
+
+		<!-- All -->
+		<record model="ir.actions.act_window" id="patient_all_list_action">		
+			<field name="name">Pacientes Todos</field>
+			<field name="res_model">oeh.medical.patient</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form,kanban,graph,pivot</field>
+			<field name="context">{}</field>
+			<field name="domain">[]</field>
+
+			<!--
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first treatment
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+
+
+		<!-- With Id-->
+		<record model="ir.actions.act_window" id="patient_list_action">		
+			<field name="name">Pacientes</field>
+			<field name="res_model">oeh.medical.patient</field>
+			<field name="view_type">form</field>
+<!--
+			<field name="view_mode">tree,form,kanban</field>
+-->		
+			<field name="view_mode">tree,form,kanban,graph,pivot</field>
+			<field name="context">{}</field>
+
+
+			<field name="domain">[
+									('x_id_code', '!=', False), 
+				]</field>
+
+
+			<!--
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first treatment
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+		<!-- Without Id -->
+		<record model="ir.actions.act_window" id="patient_no_idcode_list_action">		
+			<field name="name">Pacientes sin Número de Historia</field>
+			<field name="res_model">oeh.medical.patient</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form,kanban,graph,pivot</field>
+			<field name="context">{}</field>
+
+			<field name="domain">[
+
+									('x_id_code', '=', False), 
+				]</field>
+
+			<!--
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first treatment
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+
+		<!-- Inactive -->
+		<record model="ir.actions.act_window" id="patient_inactive_list_action">		
+			<field name="name">Pacientes Inactivos</field>
+			<field name="res_model">oeh.medical.patient</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form,kanban</field>
+			<field name="context">{}</field>
+
+			<field name="domain">[
+									('active', '=', False), 
+				]</field>
+
+			<!--
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first treatment
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+
+		<!-- Vip -->
+		<record model="ir.actions.act_window" id="patient_vip_list_action">			
+			<field name="name">Pacientes Vip - jx</field>
+			<field name="res_model">oeh.medical.patient</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form,kanban</field>
+			<field name="context">{'order': 'name'}</field>
+			
+			<field name="domain">[
+									('x_vip', '!=', False),
+				
+				]</field>
+
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first treatment
+				</p>
+			</field>
+		</record>
+
+
+
+
+	</data>
+</openerp>

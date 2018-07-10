@@ -174,6 +174,8 @@ class sale_order(models.Model):
 			#readonly=False, 
 			
 			states=READONLY_STATES, 
+
+			#required=True, 
 		)
 
 

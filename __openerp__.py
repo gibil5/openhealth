@@ -1,12 +1,8 @@
 # -*- coding: utf-8 -*-
 #
 # 	*** OPEN HEALTH - MIN
-# 
 #
 ###############################
-
-
-
 
 {
 	'name': "Open Health - MIN",
@@ -18,7 +14,7 @@
 
 	'description': """
 
-		9 July 2018 
+		10 July 2018 
 
 		Fulcrum 
 		
@@ -58,23 +54,20 @@
 		Python:
 			- Unidecode. 
 			- pysftp.
-
-
-			
-			
 	""",
 
 	'author': "DataMetrics",
+	
 	'website': "http://jrevilla.com/",
 
 	# Categories can be used to filter modules in modules listing
 	# Check https://github.com/odoo/odoo/blob/master/openerp/addons/base/module/module_data.xml
 	# for the full list
 	#'category': 'Health',
+	
 	'category': 'Data Mining',
+	
 	'version': '2.0',
-
-
 
 
 	# Dependencies - Very important !
@@ -83,13 +76,8 @@
 
 
 
-
-
-
-
 	# always loaded
 	'data': [
-
 
 
 		# ----------------------------------------------------------- Deprecated ------------------------------------------------------
@@ -139,6 +127,37 @@
 
 
 
+		# ----------------------------------------------------------- Cosmetology - Deprecated ! ------------------------------------------------------
+
+		# Cosmetologies
+		#'views/cosmetologies/cosmetology.xml',
+		#'views/sessions/session_cos.xml',
+		#'views/procedures/procedure_cos.xml',
+		#'views/procedures/procedure_cos_sessions.xml',		
+		#'views/consultations/consultation_cos.xml',
+		#'views/consultations/consultation_cos_first.xml',
+		#'views/appointments/appointment_cos.xml',
+
+
+
+
+		# ----------------------------------------------------------- Quick ------------------------------------------------------
+		
+		#'views/patients/patient_quick.xml',			# Deprecated ? 
+
+
+
+
+		# ----------------------------------------------------------- Style ------------------------------------------------------
+
+		#'views/openhealth.xml',		
+
+
+		
+		# ----------------------------------------------------------- Reservations ------------------------------------------------------
+		
+		#'views/treatments/treatment_reservations.xml',			# Deprecated 
+
 
 
 
@@ -181,10 +200,8 @@
 		'views/management/management.xml',
 
 
-
 		# Exceptions 
 		#'views/patients/patient_exceptions.xml',
-
 
 
 
@@ -209,25 +226,19 @@
 		'reports/patient_sessions.xml',
 		'reports/patient_controls.xml',
 
-
 		# Formats
 		'reports/paper_format.xml',
-
 
 		# Ticket 
 		'reports/report_ticket_invoice.xml',
 		'reports/report_ticket_receipt.xml',
 		
-
 		# New Tickets 
 		'reports/report_ticket_receipt_nex.xml',
 		'reports/report_ticket_invoice_nex.xml',
 
-
 		# Purchases
 		'reports/report_purchasequotation.xml',
-
-
 
 
 
@@ -239,17 +250,14 @@
 
 		# Check that data is not updated. All the time. 
 
-
 		# Categs
 		'data/base_data_categs_partners.xml',			
 		'data/base_data_categs_prods.xml',			
-
 
 		# Important 
 		'views/pathologies/pathology.xml',
 		'data/prods/data_pathologies.xml',			
 		'data/prods/data_nexzones.xml',	
-
 
 		# Zone
 		'views/zones/zone.xml',
@@ -259,25 +267,23 @@
 		'data/prods/data_zones_ipl.xml',			 
 		'data/prods/data_zones_ndyag.xml',			 
 
-
 		# Allergy 
 		'views/allergies/allergy.xml',
-
 
 		# Doctors
 		'data/base_data_physicians.xml',				
 		'data/base_data_physicians_inactive.xml',				
 		'data/base_data_physicians_new.xml',				
 
-
 		# Pricelists 
 		'data/pricelists.xml',							
 		'data/pricelist_quick.xml',						
 
-
 		# Suppliers 
 		'data/suppliers.xml',							# DEPRECATED - Very 
 
+		# Generics 
+		'data/users/base_data_users_generics.xml',	
 
 
 		# Users - With pw
@@ -292,45 +298,26 @@
 
 
 
-		# Generics 
-		'data/users/base_data_users_generics.xml',	
 
+		# ----------------------------------------------------------- Data - Products ------------------------------------------------------
 
-
-
-
-		# ----------------------------------------------------------- Security Rules ------------------------------------------------------
-		'security/openhealth_security.xml',
-		'security/openhealth_security_readers.xml',
-		'security/ir.rule.xml',
-
-
-
+		'data/prods/odoo_data_products.xml',	
+		'data/prods/odoo_data_products_new.xml',	
+		'data/prods/odoo_data_services_co2.xml',		
+		'data/prods/odoo_data_services_exc.xml',		
+		'data/prods/odoo_data_services_m22.xml',		
+		'data/prods/odoo_data_services_med.xml',		
+		'data/prods/odoo_data_services_consult.xml',	
+		'data/prods/odoo_data_services_cos.xml',		
 
 
 
 
 
 
-		
+
 
 		# ----------------------------------------------------------- Views ------------------------------------------------------
-
-		# Purchases 
-		'views/purchase/purchase.xml',
-
-
-		# Stock 
-		'views/stock/stock.xml',
-		'views/stock/stock_inventory.xml',
-
-
-		# Kardex
-		'views/kardex/kardex.xml',
-
-
-
-
 
 
 
@@ -421,24 +408,22 @@
 		'views/cards/card.xml',
 
 
+		# Purchases 
+		'views/purchase/purchase.xml',
 
 
-		# Style 
-		#'views/openhealth.xml',		
+		# Stock 
+		'views/stock/stock.xml',
+		'views/stock/stock_inventory.xml',
+
+
+		# Kardex
+		'views/kardex/kardex.xml',
 
 
 
 
-		# ----------------------------------------------------------- Cosmeto ------------------------------------------------------
 
-		# Cosmetologies
-		#'views/cosmetologies/cosmetology.xml',
-		#'views/sessions/session_cos.xml',
-		#'views/procedures/procedure_cos.xml',
-		#'views/procedures/procedure_cos_sessions.xml',		
-		#'views/consultations/consultation_cos.xml',
-		#'views/consultations/consultation_cos_first.xml',
-		#'views/appointments/appointment_cos.xml',
 
 
 
@@ -494,7 +479,6 @@
 		'views/treatments/treatment_sessions.xml',
 		'views/treatments/treatment_controls.xml',
 		
-		#'views/treatments/treatment_reservations.xml',			# Deprecated 
 
 
 
@@ -514,8 +498,6 @@
 
 
 
-
-		#'views/patients/patient_quick.xml',			# Deprecated ? 
 
 
 
@@ -551,25 +533,11 @@
 
 
 
-
 		# ----------------------------------------------------------- Stock Min ------------------------------------------------------
 		'views/stock_min/stock_min_inventory.xml',
 		'views/stock_min/stock_min_inventory_line.xml',
 
 
-
-
-
-		# ----------------------------------------------------------- Products ------------------------------------------------------
-
-		'data/prods/odoo_data_products.xml',	
-		'data/prods/odoo_data_products_new.xml',	
-		'data/prods/odoo_data_services_co2.xml',		
-		'data/prods/odoo_data_services_exc.xml',		
-		'data/prods/odoo_data_services_m22.xml',		
-		'data/prods/odoo_data_services_med.xml',		
-		'data/prods/odoo_data_services_consult.xml',	
-		'data/prods/odoo_data_services_cos.xml',		
 
 
 
@@ -587,7 +555,6 @@
 
 
 
-
 		# ----------------------------------------------------------- Menus ------------------------------------------------------
 		'views/menus/menus.xml',
 		'views/menus/menus_reporting.xml',
@@ -595,11 +562,13 @@
 
 
 
+
 		# ----------------------------------------------------------- Security ------------------------------------------------------
+		'security/openhealth_security.xml',
+		'security/openhealth_security_readers.xml',
+		'security/ir.rule.xml',
+
 		'security/ir.model.access.csv',
-
-
-
 	],
 
 

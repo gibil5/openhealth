@@ -17,28 +17,54 @@
 					<!-- Header --> 
 					<header>
 
+
+<!--
+							string="CREAR PRIMER TRATAMIENTO" 							
+-->
+						<!-- First Treatment -->
 						<button 
 							type="object" 
 							class="oe_highlight"
+
+							attrs="{ 'invisible':[	('x_treatment_count','!=',0), 	]}"
+
+							name="open_treatment" 
+
+							string="Crear Primer TRATAMIENTO" 							
+						/>
+
+
+
+						<!-- Last Treatment -->
+						<button 
+							type="object" 
+							class="oe_highlight"
+
+							attrs="{ 'invisible':[	('x_treatment_count','=',0), 	]}"
 
 							name="open_treatment" 
 
 							string="Ultimo Tratamiento" 							
 						/>
 
-
 						<!-- EC -->
 						<button 
 							type="object" 
 							class="oe_highlight"
 							
+							attrs="{ 'invisible':[	('x_treatment_count','=',0), 	]}"
+
 							name="generate_order_report" 
 
 							string="EC" 
 						/>
 
 
+
+
+
 						<!-- Clean -->
+<!--
 						<button 
 							type="object" 
 							class="oe_highlight"
@@ -49,6 +75,24 @@
 
 							groups="openhealth.roots"
 						/>
+-->
+
+
+						<!-- Update Active Treatment -->
+<!--
+						<button 
+							type="object" 
+							class="oe_highlight"
+							
+							name="update_treatment_active" 
+
+							string="Sincronizar" 
+
+							groups="openhealth.roots"
+						/>
+-->
+
+
 
 
 						<!-- Update Date Record -->
@@ -194,6 +238,7 @@
 
 						<!-- Fields -->
 						<group>
+							<!-- First --> 
 							<group>		
 
 								<!--	
@@ -217,10 +262,17 @@
 
 
 
-								<field name="partner_id" 	string="Contacto"		readonly="1"	required="0"		/>
+								<field name="partner_id"  string="Contacto"  readonly="1"  required="0"/>
+
+<!--
+								<field name="treatment_active" 	/>
+-->
 							</group>
 
 
+
+
+							<!-- Second --> 
 							<group>
 <!--
 								<field name="active" 	/>
@@ -244,13 +296,19 @@
 						
 						
 						
+
+
 						<group>
+							<!-- First --> 
 							<group>
 
 								<field string='Fecha de nacimiento'  name="dob" 	required="1" />
 							
 								<field name="x_nationality" 	/>
 							</group>
+
+
+							<!-- Second --> 
 							<group>
 								
 <!--

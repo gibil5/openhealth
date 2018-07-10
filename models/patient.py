@@ -2,7 +2,9 @@
 #
 #		Patient 
 # 
-# Created: 				26 Aug 2016
+# Created: 			26 Aug 2016
+#
+# Last up: 			 9 Jul 2018
 #
 
 from openerp import models, fields, api
@@ -50,9 +52,41 @@ class Patient(models.Model):
 
 
 
+# ----------------------------------------------------------- Active Treatment ------------------------------------------------------
+
+	# Active Treatment 
+	treatment_active = fields.Many2one(
+			'openhealth.treatment', 
+			'Tratamiento Activo', 
+
+
+			#domain = [
+			#			('patient', '=', name),	
+			#		],
+		)
+
+
+
+	# Clear App
+	@api.multi 
+	def update_treatment_active(self):
+		
+		print
+		print 'Sincronizar'
+
+
+		return {
+				'domain': {'treatment_active': [
+													('patient', '=', self.name),
+							]},
+			}
+
+
+
+
 # ----------------------------------------------------------- Clear Apps ------------------------------------------------------
 
-	# Dates 
+	# Clear App
 	@api.multi 
 	def clear_appointments(self):
 		

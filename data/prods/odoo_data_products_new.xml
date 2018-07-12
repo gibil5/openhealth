@@ -6,6 +6,7 @@
 
 		<!-- OTHER -->
 <!--		
+-->
 		<record id='other' model='product.template'>
 
 			<field name='type'>service</field>
@@ -19,7 +20,6 @@
 			<field name='x_treatment'>other</field>
 
 		</record>
--->
 
 <!--
 			<field name='categ_id' ref="topical"/>

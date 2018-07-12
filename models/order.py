@@ -47,29 +47,46 @@ class sale_order(models.Model):
 			self.x_payment_method.saledoc = 'advertisement'
 			
 			self.x_payment_method.state = 'done'
+
 			self.state = 'sent'
+			
 			self.action_confirm_nex()
 
 
 
 
+
 # ----------------------------------------------------------- Test ------------------------------------------------------
+
 	# Test  
 	@api.multi 
 	def test(self):
 
 		print 
-		print 'Test and Clean'
+		print 'Test'
+
+		if self.patient.x_test: 
+			self.pay_myself()
 
 
-		self.treatment.procedure_ids.unlink()
 
 
-		appointment_date = appfuncs.get_next_slot(self)						# Next Slot
 
-		print appointment_date
+	# Clean  
+	@api.multi 
+	def clean(self):
 
 		print 
+		print 'Clean'
+
+		#self.treatment.procedure_ids.unlink()
+		#appointment_date = appfuncs.get_next_slot(self)						# Next Slot
+		#print appointment_date
+		#print 
+
+		self.state == 'draft'
+		
+		#self.pay_myself()
 
 
 
@@ -78,12 +95,11 @@ class sale_order(models.Model):
 # ----------------------------------------------------------- Procedure ------------------------------------------------------
 	# Create Procedure With Appoointment   
 	@api.multi 
-	#def create_procedure_wapp(self):
-	#def create_procedure_wapp(self, subtype):
 	def create_procedure_wapp(self, subtype, product_id):
 
 		print 
-		print 'Create Proc W App'
+		print 
+		print 'Create Proc - With App'
 		print subtype
 
 
@@ -101,9 +117,11 @@ class sale_order(models.Model):
 		dt = datetime.datetime.strptime(self.date_order, date_format) + datetime.timedelta(hours=-5,minutes=0)		# Correct for UTC Delta 
 
 
+		
 		# Get Next Slot - Real Time version 
 		#appointment_date = dt.strftime("%Y-%m-%d") + " 14:00:00"			# Early strategy
-		appointment_date = appfuncs.get_next_slot(self)						# Next Slot
+		appointment_date_str = appfuncs.get_next_slot(self)						# Next Slot
+		#print appointment_date_str
 
 
 
@@ -112,21 +130,24 @@ class sale_order(models.Model):
 		#print 
 
 
-		# Check and Push if not Free !
-		#appointment_date_str = procedure_funcs.check_and_push(self, self.date_order, duration, x_type, doctor_name, states)
-		appointment_date_str = procedure_funcs.check_and_push(self, appointment_date, duration, x_type, doctor_name, states)
 
-		
-		#print appointment_date_str
+		if appointment_date_str != False: 
+			
+			# Check and Push if not Free !
+			#appointment_date_str = procedure_funcs.check_and_push(self, self.date_order, duration, x_type, doctor_name, states)
+			appointment_date_str = procedure_funcs.check_and_push(self, appointment_date_str, duration, x_type, doctor_name, states)
+			#print appointment_date_str
 
 
-		# Create Procedure 
-		#self.treatment.create_procedure(appointment_date_str)
-		#self.treatment.create_procedure(appointment_date_str, subtype)
-		self.treatment.create_procedure(appointment_date_str, subtype, product_id)
+			# Create Procedure 
+			#self.treatment.create_procedure(appointment_date_str)
+			#self.treatment.create_procedure(appointment_date_str, subtype)
+			self.treatment.create_procedure(appointment_date_str, subtype, product_id)
 
 		print
+		print
 	# test
+
 
 
 # ----------------------------------------------------------- Locked ------------------------------------------------------
@@ -423,23 +444,39 @@ class sale_order(models.Model):
 
 
 
-		# In progress !
+
+
 
 		# Create Proc 
+		# In progress !
+
 		#self.treatment.create_procedure()
 		#self.treatment.create_procedure(self.date_order)
 
-		for line in self.order_line: 
-			if line.product_id.x_family in ['laser', 'medical', 'cosmetology']:
-				#self.create_procedure_wapp()				
-				#self.create_procedure_wapp(line.product_id.x_treatment)
-				self.create_procedure_wapp(line.product_id.x_treatment, line.product_id.id)
+		#print 'jx'
+		#print self.treatment
+		#print self.treatment.name
 
-		# Update 
-		self.x_procedure_created = True
+		if self.treatment.name != False: 
 
-		self.treatment.update_appointments()
+			print
+			print 'Create Procedure'
+
+			for line in self.order_line: 
+				if line.product_id.x_family in ['laser', 'medical', 'cosmetology']:
+					#self.create_procedure_wapp()				
+					#self.create_procedure_wapp(line.product_id.x_treatment)
+					self.create_procedure_wapp(line.product_id.x_treatment, line.product_id.id)
+
+			# Update 
+			self.x_procedure_created = True
+
+			self.treatment.update_appointments()
 		
+
+
+
+
 		
 
 		#for proc in self.treatment.procedure_ids: 

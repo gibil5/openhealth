@@ -3,7 +3,8 @@
 # 	Account Contasis
 # 
 # Created: 				18 April 2018
-#
+# Last mod: 			11 Jul 2018
+# 
 
 from openerp import models, fields, api
 import datetime
@@ -59,18 +60,30 @@ class AccountContasis(models.Model):
 
 	# Type 
 	x_type = fields.Selection(
-
 			selection=[	
 						('order', 		'Ventas'),
 						('patient', 	'Pacientes'),
 			], 
-
 			string="Tipo",
-			
 			#required=True, 
 			required=False, 
 		)
 
+
+
+	# Owner 
+	owner = fields.Selection(
+
+			selection=[	
+						('accounting', 	'Contabilidad'),
+						('cash', 		'Caja'),
+			], 
+		
+			string="Hecho por",
+
+			#required=True, 
+			required=False, 
+		)
 
 
 
@@ -124,7 +137,8 @@ class AccountContasis(models.Model):
 	total_count = fields.Integer(
 			#'Total Ventas',
 			#'Nr',
-			'Nr Pacientes',
+			#'Nr Pacientes',
+			'Nr Ventas',
 			readonly=True, 
 		)
 

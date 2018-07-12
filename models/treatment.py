@@ -8,12 +8,14 @@
 
 from openerp import models, fields, api
 
-from datetime import datetime
 import treatment_funcs
 import time_funcs
 import treatment_vars
 import appfuncs
 import procedure_funcs
+
+#from datetime import datetime
+import datetime
 
 
 class Treatment(models.Model):
@@ -34,26 +36,21 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Create Procedures  ------------------------------------------------------
+# ----------------------------------------------------------- Update Apps  ------------------------------------------------------
 	@api.multi
 	def update_appointments(self):
 		
 		print 
 		print 'Update Appointments'
 
-
 		# Consultations 
 		for consultation in self.consultation_ids: 
-			if consultation.appointment.appointment_date != False: 
-			
+			if consultation.appointment.appointment_date != False: 			
 				consultation.evaluation_start_date = consultation.appointment.appointment_date
-
-
 
 		# Sessions 
 		for session in self.session_ids: 
 			if session.appointment.appointment_date != False: 
-
 				session.evaluation_start_date = session.appointment.appointment_date
 
 
@@ -61,71 +58,15 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Testing ------------------------------------------------------
-
-	# Clear  
-	@api.multi 
-	def clear(self):
-
-		print 
-		print 'Clear'
-
-		if self.patient.x_test: 
-			# Clean
-			self.co2_create = False
-			self.exc_create = False
-			self.ipl_create = False
-			self.ndy_create = False
-			self.qui_create = False		
-			self.med_create = False
-			self.cos_create = False
-
-			self.vip_create = False
+# ----------------------------------------------------------- Test Cases ------------------------------------------------------
 
 
-	# All  
-	@api.multi 
-	def all(self):
-
-		print 
-		print 'All'
-
-		if self.patient.x_test: 
-			# All
-			self.co2_create = True
-			self.exc_create = True
-			self.ipl_create = True
-			self.ndy_create = True
-			self.qui_create = True		
-			self.med_create = True
-			self.cos_create = True
-
-			self.vip_create = True
-
-
-
-
-	# Test - Case Reset 
-	@api.multi 
-	def test_case_reset(self):
-
-		print 
-		print 'Test Case Reset'
-
-		if self.patient.x_test: 
-
-			self.reset()
-
-
-
-
-
-	# Test - Case One 
+	# Test - Case One - Integration - Treatment
 	@api.multi 
 	def test_case_one(self):
 
 		print 
-		print 'Test Case One'
+		print 'Test Case - One'
 
 		if self.patient.x_test: 
 
@@ -133,7 +74,213 @@ class Treatment(models.Model):
 
 
 
+	# Test - Case Two - Unit - Appointment
+	@api.multi 
+	def test_case_two(self):
 
+		print 
+		print 'Test Case - Two'
+
+		if self.patient.x_test: 
+
+			self.test_appointment()
+
+
+
+
+	# Test - Appointment 
+	@api.multi 
+	def test_appointment(self):
+
+		print 
+		print 'Test Appointment'
+
+
+		
+		# Case 1 - Consultation
+		print 'Consultation'
+		x_type = 'consultation'
+		subtype = 'consultation'
+		state = 'pre_scheduled'
+		self.create_appointment_nex(x_type, subtype, state)
+
+
+
+		# Case 2 - Procedure
+		print 
+		print 'Procedure'
+		x_type = 'procedure'
+		subtype = 'laser_co2'
+		state = 'Scheduled'	
+		self.create_appointment_nex(x_type, subtype, state)
+
+
+
+		# Case 3 - Control
+		print 
+		print 'Control'
+		x_type = 'control'
+		subtype = 'laser_co2'
+		state = 'pre_scheduled_control'	
+		self.create_appointment_nex(x_type, subtype, state)
+
+
+
+		# Case 4 - Session
+		print 
+		print 'Session'
+		x_type = 'session'
+		subtype = 'laser_co2'
+		
+		#state = 'pre_scheduled_control'	
+		state = 'pre_scheduled'	
+		
+		self.create_appointment_nex(x_type, subtype, state)
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Create Appointment  ------------------------------------------------------
+
+	# Appointment 
+	@api.multi 
+	#def create_appointment_nex(self):
+	def create_appointment_nex(self, x_type, subtype, state):
+
+		#print 
+		print 'Create Appointment'
+
+
+		# Init 
+		doctor_name = self.physician.name
+
+
+
+		# Consultation, Procedure 
+		if x_type in ['consultation', 'procedure']: 	# Appointment is Today. With time. So check for availability. 
+		
+
+			# Get Next Slot - Real Time version 
+			appointment_date = appfuncs.get_next_slot(self)						# Get Next Slot
+			#print appointment_date
+
+
+			if appointment_date != False: 
+
+
+				# Init 
+				states = False
+				duration = 0.5
+
+
+				
+				# Check and Push 
+				appointment_date_str = procedure_funcs.check_and_push(self, appointment_date, duration, x_type, doctor_name, states)
+				#print appointment_date_str
+
+
+
+				# Create 
+				#print 'Create'
+				#appointment = self.env['oeh.medical.appointment'].create({
+				appointment = self.appointment_ids.create({
+																			'appointment_date': appointment_date_str, 
+																			'patient':			self.patient.id,
+																			'doctor':			self.physician.id,
+
+																			#'state': 			'pre_scheduled', 
+																			#'x_type': 			'consultation', 
+																			#'x_subtype': 		'consultation', 
+
+																			'state': 			state, 
+																			'x_type': 			x_type, 
+																			'x_subtype': 		subtype, 
+
+																			'treatment':	self.id, 
+																	})
+				#print appointment
+
+
+
+		# Session, Control 
+		else: 	# Appointment is not Today. Without time. 
+
+			print 'Appointment not Today'
+
+
+			# Init
+			if x_type == 'control': 
+				duration = 0.25
+				state = 'pre_scheduled_control'
+				states = ['pre_scheduled_control']
+			else: 
+				duration = 0.5
+				state = 'pre_scheduled_session'
+				states = ['pre_scheduled_session']
+				#state = 'pre_scheduled_control'
+				#states = ['pre_scheduled_control']
+
+
+
+
+			# Control 
+			nr_days = 0
+			#nr_days = 1
+
+
+			#start_date = self.start_date
+			start_date = datetime.datetime.now() + datetime.timedelta(hours=-5,minutes=0)	
+			#date_2_format = "%Y-%m-%d"
+			date_format = "%Y-%m-%d %H:%M:%S"
+			start_date_str = start_date.strftime(date_format)
+
+
+
+
+			# Control date 
+			appointment_date = procedure_funcs.get_next_date(self, start_date_str, nr_days)
+			print appointment_date
+
+
+			# Cut Time out 
+			appointment_date_str = appointment_date.strftime("%Y-%m-%d")		
+			appointment_date_str = appointment_date_str + ' 14:00:00'			# 09:00:00
+			print appointment_date_str
+
+
+
+			# Check and Push 
+			appointment_date_str = procedure_funcs.check_and_push(self, appointment_date_str, duration, x_type, doctor_name, states)
+
+
+
+			# Create 
+			appointment = self.env['oeh.medical.appointment'].create({
+																			'appointment_date': appointment_date_str,
+																			'patient':			self.patient.id,
+																			'doctor':			self.physician.id,
+																			'duration': duration,
+																			
+																			#'x_create_procedure_automatic': False,
+																			#'x_chief_complaint': chief_complaint, 
+																			#'x_target': 'doctor',
+
+																			'state': state,
+																			'x_type': x_type,
+																			'x_subtype': subtype,
+
+																			'treatment':	self.id, 
+																	})
+
+
+
+
+
+# ----------------------------------------------------------- Test - Integration  ------------------------------------------------------
 
 	# Test - Integration 
 	@api.multi 
@@ -144,12 +291,17 @@ class Treatment(models.Model):
 
 
 		print 
-		print 'Create Appointment'
-		self.create_appointment_nex()
+		print 'Create Appointment - Consultation'
+		#self.create_appointment_nex()
+		x_type = 'consultation'
+		subtype = 'consultation'
+		state = 'pre_scheduled'
+		self.create_appointment_nex(x_type, subtype, state)
+
 
 
 		print 
-		print 'Create Order Consultation'
+		print 'Create Order - Consultation'
 		self.create_order_con()
 
 		for order in self.order_ids: 
@@ -170,18 +322,8 @@ class Treatment(models.Model):
 
 
 		print 
-		print 'Create Recommendation'
-		#self.create_service()
-
-		#co2_create = True
-
-		#exc_create = True
-		#exc_create = False
-
-		#med_create = True
-		#med_create = False
-
-
+		print 'Create Recommendations'
+		
 
 		# Quick 
 		if self.qui_create: 
@@ -193,7 +335,7 @@ class Treatment(models.Model):
 													limit=1,
 												)
 			service_id = service.id
-			print service
+			#print service
 			self.service_quick_ids.create({
 												'service': 		service_id, 
 
@@ -220,7 +362,7 @@ class Treatment(models.Model):
 													limit=1,
 												)
 			service_id = service.id
-			print service
+			#print service
 			self.service_co2_ids.create({
 												'service': 		service_id, 
 												'zone': 		zone, 
@@ -242,7 +384,7 @@ class Treatment(models.Model):
 													limit=1,
 												)
 			service_id = service.id
-			print service
+			#print service
 			self.service_excilite_ids.create({
 												'service': 		service_id, 
 												'zone': 		zone, 
@@ -263,7 +405,7 @@ class Treatment(models.Model):
 													limit=1,
 												)
 			service_id = service.id
-			print service
+			#print service
 			self.service_ipl_ids.create({
 												'service': 		service_id, 
 												'zone': 		zone, 
@@ -286,7 +428,7 @@ class Treatment(models.Model):
 													limit=1,
 												)
 			service_id = service.id
-			print service
+			#print service
 			self.service_ndyag_ids.create({
 												'service': 		service_id, 
 												'zone': 		zone, 
@@ -321,6 +463,7 @@ class Treatment(models.Model):
 
 
 			print 'Medical'
+			
 			for short_name in med_short_names: 
 
 				service = self.env['product.template'].search([
@@ -331,7 +474,9 @@ class Treatment(models.Model):
 														limit=1,
 													)
 				service_id = service.id
-				print service
+
+				#print service
+
 				self.service_medical_ids.create({
 													'service': 		service_id, 
 													'treatment': 	self.id, 
@@ -352,6 +497,7 @@ class Treatment(models.Model):
 
 
 			print 'Cosmeto'
+			
 			for short_name in cos_short_names: 
 				
 				service = self.env['product.template'].search([
@@ -361,7 +507,9 @@ class Treatment(models.Model):
 														limit=1,
 													)
 				service_id = service.id
-				print service
+
+				#print service
+
 				self.service_cosmetology_ids.create({
 													'service': 		service_id, 
 													'treatment': 	self.id, 
@@ -381,7 +529,7 @@ class Treatment(models.Model):
 													limit=1,
 												)
 			service_id = service.id
-			print service
+			#print service
 			self.service_vip_ids.create({
 												'service': 		service_id, 
 												'treatment': 	self.id, 
@@ -392,24 +540,80 @@ class Treatment(models.Model):
 
 
 		print 
-		print 'Create Order Procedure'
+		print 'Create Order - Procedure'
 		self.create_order_pro()
 		for order in self.order_ids: 
 			order.pay_myself()
 
 
 
-		print 
-		print 'Create Controls and Sessions'
-		for procedure in self.procedure_ids: 
-			procedure.create_controls()
-			procedure.create_sessions()
+		if True: 
+		#if False:	
+			print 
+			print 'Create Sessions'
+			for procedure in self.procedure_ids: 
+				#procedure.create_controls()
+				procedure.create_sessions()
 
+
+
+		if True: 
+		#if False:	
+			print 
+			print 'Create Controls'
+			for procedure in self.procedure_ids: 
+				procedure.create_controls()
+				#procedure.create_sessions()
 
 		print 
 	# testing
 
 
+
+
+
+# ----------------------------------------------------------- Test - Reset ------------------------------------------------------
+	
+	# Test - Case Reset 
+	@api.multi 
+	def test_case_reset(self):
+		#print 
+		#print 'Test Case - Reset'
+		if self.patient.x_test: 
+			self.reset()
+
+
+	# Clear  
+	@api.multi 
+	def clear(self):
+		#print 
+		#print 'Clear'
+		if self.patient.x_test: 
+			# Clean
+			self.co2_create = False
+			self.exc_create = False
+			self.ipl_create = False
+			self.ndy_create = False
+			self.qui_create = False		
+			self.med_create = False
+			self.cos_create = False
+			self.vip_create = False
+
+	# All  
+	@api.multi 
+	def all(self):
+		#print 
+		#print 'All'
+		if self.patient.x_test: 
+			# All
+			self.co2_create = True
+			self.exc_create = True
+			self.ipl_create = True
+			self.ndy_create = True
+			self.qui_create = True		
+			self.med_create = True
+			self.cos_create = True
+			self.vip_create = True
 
 
 
@@ -1321,50 +1525,6 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Create Appointment  ------------------------------------------------------
-
-	# Appointment 
-	@api.multi 
-	def create_appointment_nex(self):
-
-		print 
-		print 'Create Appointment'
-
-
-		# Get Next Slot - Real Time version 
-		appointment_date = appfuncs.get_next_slot(self)						# Next Slot
-
-
-		# Init 
-		duration = 0.5
-		x_type = 'consultation'
-		doctor_name = self.physician.name
-		states = False
-
-		# Check and Push 
-		appointment_date_str = procedure_funcs.check_and_push(self, appointment_date, duration, x_type, doctor_name, states)
-		#print appointment_date_str
-
-
-
-		# Create 
-		#print 'Create'
-		#appointment = self.env['oeh.medical.appointment'].create({
-		appointment = self.appointment_ids.create({
-																	'appointment_date': appointment_date_str, 
-																	
-																	'patient':			self.patient.id,
-																	'doctor':			self.physician.id,
-																	'state': 			'pre_scheduled', 
-
-																	'x_type': 			'consultation', 
-																	'x_subtype': 		'consultation', 
-
-																	'treatment':	self.id, 
-															})
-		#print appointment
-
-
 
 
 
@@ -1544,7 +1704,8 @@ class Treatment(models.Model):
 
 		# Date 
 		GMT = time_funcs.Zone(0,False,'GMT')
-		evaluation_start_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
+		#evaluation_start_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
+		evaluation_start_date = datetime.datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
 
 		# Apointment 
 		appointment = self.env['oeh.medical.appointment'].search([ 	

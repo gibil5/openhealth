@@ -106,13 +106,13 @@
 
 
 
-
-<!--
 					<filter string="Julio" domain="[
 															('date_order','&gt;=','2018-07-01 05:00:00'),
 															('date_order','&lt;=','2018-08-01 05:00:00'),
 											]"/>
 
+
+<!--
 					<filter string="Agosto" domain="[
 															('date_order','&gt;=','2018-08-01 05:00:00'),
 															('date_order','&lt;=','2018-09-01 05:00:00'),

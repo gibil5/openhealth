@@ -51,8 +51,9 @@ def create_sessions(self):
 	# Appointment 
 	duration = 0.5
 	machine = self.machine
-	#x_type = 'session'
-	x_type = 'procedure'
+	
+	x_type = 'session'
+	#x_type = 'procedure'
 
 
 	# Subtype
@@ -123,14 +124,12 @@ def create_sessions(self):
 
 			# Search Appointment 
 			appointment = self.env['oeh.medical.appointment'].search([ 	
-																		#('appointment_date', 'like', app_date),	
-																		#('patient', 'like', self.patient.name),	
-																		#('doctor', 'like', self.doctor.name), 																				
 																		('appointment_date', '=', app_date),	
 																		('patient', '=', self.patient.name),	
 																		('doctor', '=', self.doctor.name), 																				
 
-																		('x_type', '=', 'procedure'), 
+																		#('x_type', '=', 'procedure'), 
+																		('x_type', '=', 'session'), 
 																		('x_subtype', '=', subtype), 
 
 																	], 
@@ -156,22 +155,25 @@ def create_sessions(self):
 
 
 			# Create Appointment 
-			state = 'pre_scheduled'
+
+			#state = 'pre_scheduled'
+			#state = 'pre_scheduled_control'
+			state = 'pre_scheduled_session'
+
 			appointment = self.env['oeh.medical.appointment'].create({
 																		'appointment_date': appointment_date_str,
-
 																		'patient': patient_id,	
 																		'doctor': doctor_id,
-																		'duration': duration,
+																		'duration': duration,																		
+
 																		'state': state,
-																		'x_create_procedure_automatic': False,
-																		
 																		'x_type': x_type,
 																		'x_subtype': subtype,
 
 																		'procedure': self.id,
 																		'treatment': treatment_id, 
 
+																		#'x_create_procedure_automatic': False,
 																		#'x_target': 'doctor',
 																		#'x_machine': machine,
 																		#'cosmetology': cosmetology_id,																			

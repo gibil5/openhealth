@@ -144,6 +144,10 @@
 
 						<filter name="Sexo" context="{'group_by':'sex'}"/>
 
+
+						<filter name="Nr TRATAMIENTOS" context="{'group_by':'x_treatment_count'}"/>
+
+						
 <!--
 						<filter name="Tipo" context="{'group_by':'x_type'}"/>
 						<filter name="Familia" context="{'group_by':'x_family'}"/>
@@ -157,8 +161,6 @@
 
 		   </field>
 	   </record>
-
-
 
 
 

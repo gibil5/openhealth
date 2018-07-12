@@ -23,7 +23,7 @@ import appfuncs
 def create_procedure_go(self, app_date_str, subtype, product_id):
 
 	print
-	print 'Create Procedure Go'
+	print 'Create Procedure - Go'
 	print app_date_str 
 	print subtype
 	#print product_id

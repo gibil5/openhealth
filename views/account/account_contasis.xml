@@ -112,7 +112,10 @@
 
 							
 							<group>
+<!--								
 								<field name="x_type"/>
+-->
+								<field name="owner"/>
 
 								<field name="total_amount"			/>
 
@@ -247,15 +250,15 @@
 
 
 
-					<field name="x_type"/>
+					<field name="owner"/>
 
+
+
+					<field name="x_type"/>
 
 					<field name="total_amount"     />
 
-
-
 					<field name="total_count"/>
-
 
 				</tree>
 			</field>
@@ -283,6 +286,42 @@
 			</field>
 			-->
 		</record>
+
+
+		<!-- ACTION - Caja -->
+		<record model="ir.actions.act_window" id="account_contasis_cash_list_action">	
+			<field name="name">Todo</field>
+			<field name="res_model">openhealth.account.contasis</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+
+
+			<field name="domain">[
+									('owner', '=', 'cash'),
+								]
+			</field>
+
+			<field name="context">{
+									'default_owner': 'cash',
+								}
+			</field>
+
+
+			<!--
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first order
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+
+
 
 
 

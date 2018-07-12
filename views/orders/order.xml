@@ -90,7 +90,7 @@
 					/>
 
 
-
+<!--
 					<button 
 							type="object" 
 							class="oe_highlight"
@@ -101,7 +101,7 @@
 
 							groups="openhealth.roots"
 					/>
-
+-->
 
 					<button 
 							type="object" 
@@ -114,6 +114,16 @@
 							groups="openhealth.roots"
 					/>
 
+					<!-- Reset --> 
+						<button 
+								type="object" 
+								class="oe_highlight"
+								name="x_reset" 	
+
+								string="Reset"
+
+								groups="openhealth.roots"
+						/>
 
 				</xpath>
 
@@ -241,7 +251,7 @@
 
 							states="sale,editable,cancel"
 
-							string="STATE FORCE"
+							string="STATE"
 
 							groups="openhealth.roots"
 						/>
@@ -455,16 +465,6 @@
 								</group>
 
 
-								<!-- Reset --> 
-								<group>
-									<button 
-											name="x_reset" 	
-											type="object" 
-											class="oe_highlight"
-											string="RESET"
-											groups="openhealth.roots"
-									/>
-								</group>
 
 
 								<!-- Remove --> 

@@ -86,7 +86,8 @@ def check_and_push(self, appointment_date, duration, x_type, doctor_name, states
 																		('state', 'in', states), 
 
 																		('appointment_date', '=', appointment_date_str),	
-																		('doctor', '=', self.doctor.name), 
+																		#('doctor', '=', self.doctor.name), 
+																		('doctor', '=', doctor_name), 
 																	], 
 																	#order='appointment_date desc', 
 																	limit=1
@@ -98,7 +99,8 @@ def check_and_push(self, appointment_date, duration, x_type, doctor_name, states
 																			('state', 'in', states), 
 
 																			('appointment_end', '=', appointment_end_str),	
-																			('doctor', '=', self.doctor.name), 
+																			#('doctor', '=', self.doctor.name), 
+																			('doctor', '=', doctor_name), 
 																		], 
 																		#order='appointment_date desc', 
 																		limit=1

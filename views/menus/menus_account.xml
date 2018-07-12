@@ -4,14 +4,19 @@
 
 
 
+<!--
+			groups="openhealth.roots,openhealth.managers,openhealth.directors"
+-->
+
 <!-- Accounting -->
 		<menuitem id="main_account_menu" 
 			sequence="1"
 
 			name="Contabilidad"
 			
-			groups="openhealth.roots,openhealth.managers,openhealth.directors"
+			groups="openhealth.roots,openhealth.managers,openhealth.directors,openhealth.caja"
 			/>
+
 
 
 		<!-- Sales Record -->
@@ -19,10 +24,30 @@
 			parent="main_account_menu"/>
 
 
+
 		<!-- Account Contasis -->
 		<menuitem id="account_conta_menu" name="Ventas" parent="account_menu"
 			sequence="0"
-			action="account_contasis_list_action"/>
+
+			action="account_contasis_list_action"
+
+			groups="openhealth.roots,openhealth.managers,openhealth.directors"
+			/>
+
+
+		<!-- Account Contasis - Caja -->
+		<menuitem id="account_conta_cash_menu" 
+			
+			name="Ventas - Caja" 
+			
+			parent="account_menu"
+			
+			sequence="1"
+			
+			action="account_contasis_cash_list_action"
+
+			groups="openhealth.roots,openhealth.caja"
+			/>
 
 
 

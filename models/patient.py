@@ -834,7 +834,7 @@ class Patient(models.Model):
 
 	# Treatment count  
 	x_treatment_count = fields.Integer(
-			string = "Número de tratammientos",
+			string = "Nr TRATAMIENTOS",
 			default = 0, 
 
 			compute='_compute_x_treatment_count',

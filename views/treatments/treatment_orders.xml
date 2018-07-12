@@ -5,7 +5,7 @@
 			<field name="name">treatment.quotation.form</field>
 			<field name="model">openhealth.treatment</field>
 
-			<field name="priority" eval="0"/>
+			<field name="priority" eval="1"/>
 			
 			<field name="inherit_id" ref="treatment_form_view"/>
 			<field name="arch" type="xml">

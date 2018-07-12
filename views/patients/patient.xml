@@ -265,8 +265,8 @@
 								<field name="partner_id"  string="Contacto"  readonly="1"  required="0"/>
 
 
-<!--
 								<field name="x_test" 	groups="openhealth.roots"	/>
+<!--
 
 								<field name="treatment_active" 	/>
 -->
@@ -440,6 +440,9 @@ Relax !
 
 
 					<field name="name"/>
+
+					<field name="x_test"		groups='openhealth.roots'	/>		
+
 					<field name="x_id_code"/>		
 					<field name="x_dni"/>		
 
@@ -459,6 +462,9 @@ Relax !
 					<field name="mobile"/>
 					<field name="email"/>		
 
+
+
+					<field name="x_treatment_count"/>		
 
 
 					<!-- Legacy --> 

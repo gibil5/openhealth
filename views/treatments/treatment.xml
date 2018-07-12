@@ -1050,6 +1050,7 @@ Fields
 									name="test_integration" 
 -->
 
+
 								<!-- Test --> 
 								<button 
 									type="object" 
@@ -1057,10 +1058,25 @@ Fields
 									
 									name="test_case_one" 
 									
-									string="TEST" 
+									string="Test" 
 
 									groups="openhealth.roots"									
 								/>
+
+
+
+								<!-- Test --> 
+								<button 
+									type="object" 
+									class="oe_highlight"
+									
+									name="test_case_two" 
+									
+									string="Test Apps" 
+
+									groups="openhealth.roots"									
+								/>
+
 
 
 <!--
@@ -1068,17 +1084,6 @@ Fields
 									name="reset" 	
 -->
 
-								<!-- Reset --> 
-								<button 
-									type="object" 
-									class="oe_highlight"
-
-									name="test_case_reset" 	
-
-									string="Reset"
-
-									groups="openhealth.roots"
-								/>
 
 
 								<button 
@@ -1102,6 +1107,21 @@ Fields
 									
 									groups="openhealth.roots"
 								/>
+
+
+
+								<!-- Reset --> 
+								<button 
+									type="object" 
+									class="oe_highlight"
+
+									name="test_case_reset" 	
+
+									string="Reset"
+
+									groups="openhealth.roots"
+								/>
+
 							</group>
 
 

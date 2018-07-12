@@ -2,6 +2,32 @@
 
 
 
+# State 
+_state_list = [
+				('pre_scheduled',	 		'No confirmado'),
+				('Scheduled', 				'Confirmado'),
+				#('pre_scheduled_control', 	'Pre-cita'),
+				('pre_scheduled_control', 	'Sin Hora (Control)'),
+
+				('pre_scheduled_session', 	'Sin Hora (Sesion)'),
+
+
+
+				#('event', 					'Evento'),
+				#('invoiced', 				'Facturado'),
+				#('error', 					'Error'),
+				#('completed', 				'Completo'),
+
+				# Oe Health 
+				#('Scheduled', 'Scheduled'),
+				#('Completed', 'Completed'),
+				#('Invoiced', 'Invoiced'),
+]
+
+
+
+
+
 
 # Type 
 _type_list = [
@@ -16,6 +42,7 @@ _type_list = [
 
 
 
+# SubType 
 _h_subtype = {
 					'consultation':		'',
 
@@ -125,25 +152,6 @@ _subtype_list = [
 
 
 
-_state_list = [
-				('pre_scheduled',	 		'No confirmado'),
-				('Scheduled', 				'Confirmado'),
-				#('pre_scheduled_control', 	'Pre-cita'),
-				('pre_scheduled_control', 	'Sin Hora (Control)'),
-
-
-				#('event', 					'Evento'),
-				#('invoiced', 				'Facturado'),
-				#('error', 					'Error'),
-				#('completed', 				'Completo'),
-
-				# Oe Health 
-				#('Scheduled', 'Scheduled'),
-				#('Completed', 'Completed'),
-				#('Invoiced', 'Invoiced'),
-
-]
-
 
 
 
@@ -204,15 +212,17 @@ _hash_state = {
 						'Scheduled':				'C',
 						#'pre_scheduled':			'NConf',
 						'pre_scheduled':			'N',
-						'pre_scheduled_control':	'3',
 						'event':					'11',
-
 						
+						'pre_scheduled_control':	'3',
+						#'pre_scheduled_session':	'4',
+						'pre_scheduled_session':	'3',
+						
+
 						#'error':					'55',
-						#'invoiced':					'10',
+						#'invoiced':				'10',
 						#False:				'', 
 						#'completed':				'20',
-
 }
 
 

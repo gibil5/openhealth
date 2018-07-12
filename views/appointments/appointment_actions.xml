@@ -1,0 +1,184 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+<!-- ACTIONS --> 
+
+
+		<!--  Confirmed -->  
+		<record id="oeh_medical_appointment_action_tree_confirmed" model="ir.actions.act_window">
+
+					<field name="name">Citas</field>
+
+					<field name="res_model">oeh.medical.appointment</field>
+					<field name="view_type">form</field>
+					<field name="view_mode">calendar,tree,form</field>  
+					<field name="view_id" eval="False"/>
+
+<!--
+											('state', 'in', ['pre_scheduled','Scheduled', 'completed', 'invoiced']),
+											('state', 'in', ['pre_scheduled','Scheduled', 'invoiced', 'event']),
+											('x_target', '=', 'doctor'),
+-->
+
+
+					<field name="domain">[
+											('state', 'in', ['pre_scheduled','Scheduled']),
+										]
+					</field>
+
+
+					<field name="context">{
+											'default_x_type': 'consultation',
+										}
+					</field>
+
+<!--
+-->
+					<field name="help" type="html">
+					  <p class="oe_view_nocontent_create">
+						Click to add a new appointment.
+					  </p><p>
+						oeHealth appointment screen can easily find all of your appointment details;
+					  </p>
+					</field>
+		</record>
+
+
+
+
+
+
+
+
+		<!-- Controls -->
+		<record id="oeh_medical_appointment_action_tree_controls" model="ir.actions.act_window">
+<!--
+					<field name="name">Controles - Sin hora</field>
+-->
+					<field name="name">Controles</field>
+
+					<field name="res_model">oeh.medical.appointment</field>
+					<field name="view_type">form</field>
+					<field name="view_mode">calendar,tree,form</field>
+					<field name="view_id" eval="False"/>
+
+					
+					<field name="domain">[
+											('state', '=', 'pre_scheduled_control'),
+										]
+					</field>
+
+
+					<field name="context">{
+											'default_x_type': 'control',
+											'default_state': 'pre_scheduled_control',
+										}
+					</field>
+		</record>
+
+
+
+		<!-- Sessions -->
+		<record id="oeh_medical_appointment_action_tree_sessions" model="ir.actions.act_window">
+
+					<field name="name">Sesiones</field>
+
+					<field name="res_model">oeh.medical.appointment</field>
+					<field name="view_type">form</field>
+					<field name="view_mode">calendar,tree,form</field>
+					<field name="view_id" eval="False"/>
+
+					
+					<field name="domain">[
+											('state', '=', 'pre_scheduled_session'),
+										]
+					</field>
+
+
+					<field name="context">{
+											'default_x_type': 'session',
+											'default_state': 'pre_scheduled_session',
+										}
+					</field>
+		</record>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- All -->  
+		<record id="oeh_medical_appointment_action_tree_all" model="ir.actions.act_window">
+					<field name="name">Citas confirmadas</field>
+					<field name="res_model">oeh.medical.appointment</field>
+					<field name="view_type">form</field>
+					<field name="view_mode">calendar,tree,form</field>  
+					<field name="view_id" eval="False"/>
+
+<!--
+											('state', 'in', ['pre_scheduled','Scheduled', 'Completed', 'Invoiced']),
+											('x_target', '=', 'doctor'),
+-->
+
+					<field name="domain">[]</field>
+		            <field name="context">{}</field>
+		</record>
+
+
+
+
+
+
+
+		<!-- Event -->  
+<!--		
+		<record id="appointment_event_action" model="ir.actions.act_window">
+					<field name="name">Citas confirmadas</field>
+					<field name="res_model">oeh.medical.appointment</field>
+					<field name="view_type">form</field>
+					<field name="view_mode">calendar,tree,form</field>  
+					<field name="view_id" eval="False"/>
+
+					<field name="domain">[
+											('state', 'in', ['pre_scheduled','Scheduled']),
+											('x_target', '=', 'doctor'),
+										]
+					</field>
+
+					<field name="context">{
+											'default_x_target': 'doctor',
+											'default_x_type': 	'event',
+										}
+					</field>
+		</record>
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</data>
+</openerp>

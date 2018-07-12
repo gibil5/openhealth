@@ -15,14 +15,16 @@ import datetime
 
 
 
+
+
 # ----------------------------------------------------------- Doctor Available--------------------------------------------
 
 # Doctor Available 
 @api.multi
 def doctor_available(self, app_date_str): 
 
-	print 
-	print 'Doctor Available'
+	#print 
+	#print 'Doctor Available'
 
 
 	date_2_format = "%Y-%m-%d"
@@ -140,8 +142,10 @@ def get_next_slot(self):
 				'19:00:00', 
 				'19:30:00', 
 
-				#'20:00:00', 
-				#'20:30:00', 
+				'20:00:00', 
+				'20:30:00', 
+
+				'21:00:00', 
 			]
 
 
@@ -177,6 +181,11 @@ def get_next_slot(self):
 		#print 
 
 
+	return False		# If no slot
+
+
+
+
 
 
 # ----------------------------------------------------------- Delta from Now ------------------------------------------------------
@@ -205,6 +214,7 @@ def get_delta_now(self, date_1):
 
 	#return delta
 	return delta, delta_sec
+
 
 
 # ----------------------------------------------------------- Collisions  ------------------------------------------------------

@@ -382,8 +382,8 @@ class Appointment(models.Model):
 
 	def _compute_x_display(self):
 
-		print 
-		print 'Compute Display'
+		#print 
+		#print 'Compute Display'
 
 		for record in self:
 
@@ -391,7 +391,7 @@ class Appointment(models.Model):
 			sep = ' '
 
 
-			print record.x_subtype
+			#print record.x_subtype
 
 			# Patient or Event 
 			#record.x_display = record.x_patient_name_short + ' - '  + record.x_doctor_code + ' - ' + record.x_type_cal + ' - ' + record.x_state_short
@@ -428,7 +428,8 @@ class Appointment(models.Model):
 
 
 		# Only for Controls
-		if self.x_type == 'control': 
+		#if self.x_type == 'control': 
+		if self.x_type in ['control','session']: 
 
 			# Get Next Slot - Real Time version 
 			appointment_date = appfuncs.get_next_slot(self)						# Next Slot
@@ -453,11 +454,12 @@ class Appointment(models.Model):
 			#print
 
 
-
 		# All 
 		self.state = 'Scheduled'
 
 	# confirm 
+
+
 
 
 
@@ -482,7 +484,8 @@ class Appointment(models.Model):
 		print
 		print 'On change - State'
 
-		if 	(self.state in ['Scheduled','pre_scheduled'])		and 	(self.x_type == 'control'): 
+		# Confirm if Control or Session 
+		if 	(self.state in ['Scheduled','pre_scheduled'])		and 	(self.x_type in ['control','session']): 
 
 			self.confirm()
 

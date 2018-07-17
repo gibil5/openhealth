@@ -721,12 +721,10 @@ order_report.xml
 
 <!-- Services -->
 		<menuitem 	id="services_menu" 
+					parent="main_products_menu"
+					sequence="4"
 
 					name="Servicios"
-			
-					parent="main_products_menu"
-
-					sequence="4"
 					/>
 
 
@@ -802,6 +800,17 @@ order_report.xml
 						sequence="7"
 
 						action="product_template_service_cosmetology_list_action"/>
+
+
+<!-- Other -->
+			<menuitem 	id="prods_services_other_menu" 
+						parent="services_menu"
+						sequence="8"
+
+						name="Otros"
+
+						action="product_template_service_other_list_action"/>
+
 
 
 

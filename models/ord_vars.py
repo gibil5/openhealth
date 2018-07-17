@@ -22,6 +22,9 @@ _state_list = [
 
 				('draft', 		'Presupuesto'),
 				('sent', 		'Generado'),			
+
+				('validated', 	'Validado'),			
+
 				('sale', 		'Pagado'),				
 				('done', 		'Completo'),
 				('cancel', 		'Anulado'),

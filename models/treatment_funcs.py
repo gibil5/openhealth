@@ -22,10 +22,10 @@ import appfuncs
 @api.multi
 def create_procedure_go(self, app_date_str, subtype, product_id):
 
-	print
-	print 'Create Procedure - Go'
-	print app_date_str 
-	print subtype
+	#print
+	#print 'Create Procedure - Go'
+	#print app_date_str 
+	#print subtype
 	#print product_id
 
 
@@ -58,7 +58,7 @@ def create_procedure_go(self, app_date_str, subtype, product_id):
 
 
 	# Search
-	print 'Search App'
+	#print 'Search App'
 	appointment = self.env['oeh.medical.appointment'].search([ 	
 																('patient', '=', 	self.patient.name),		
 																('doctor', '=', 	self.physician.name), 
@@ -67,7 +67,7 @@ def create_procedure_go(self, app_date_str, subtype, product_id):
 																('x_subtype', '=', 	subtype), 
 														], 
 															order='appointment_date desc', limit=1)
-	print appointment
+	#print appointment
 
 
 
@@ -90,10 +90,11 @@ def create_procedure_go(self, app_date_str, subtype, product_id):
 	#if appointment.name == False: 
 	if appointment.name == False    or   delta_sec < 0: 		# If no appointment or appointment in the past 
 
-		print 'Create App'
+		#print 'Create App'
 
 		doctor_available = appfuncs.doctor_available(self, app_date_str)
-		print doctor_available
+		
+		#print doctor_available
 
 
 		if doctor_available: 
@@ -155,7 +156,7 @@ def create_procedure_go(self, app_date_str, subtype, product_id):
 
 
 
-	print 'Create Proc'
+	#print 'Create Proc'
 
 	procedure_id = False
 	ret = 0 

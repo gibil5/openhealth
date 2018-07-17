@@ -1,28 +1,18 @@
+							
+							
+							'bot_1zo_rfa_one', 		# Bot
+							'cri_faa_acn_ten', 		# Crio
+							'hac_1hy_rfa_one', 		# Hial
+							
+							'infiltration_scar', 	# Infil
+							'infiltration_keloid', 	# Infil
+
+							'ivc_na_na_one', 		# Intra
+							'lep_faa_acn_one', 		# Lep
+							
+							'pla_faa_rfa', 			# Pla
+							'men_faa_rfa', 			# Meso
+							'scl_leg_var_one', 		# Escl
+							
 
 
-
-
-
-
-
-			# Check and Push 
-			appointment_date_str = procedure_funcs.check_and_push(self, appointment_date, duration, x_type, doctor_name, states)
-
-
-			appointment = self.env['oeh.medical.appointment'].create({
-																			'appointment_date': appointment_date_str,
-																			'patient':			self.patient.id,
-																			'doctor':			self.physician.id,
-																			'duration': duration,
-																			
-																			'x_create_procedure_automatic': False,
-																			
-																			#'x_chief_complaint': chief_complaint, 
-																			#'x_target': 'doctor',
-
-																			'state': state,
-																			'x_type': x_type,
-																			'x_subtype': subtype,
-
-																			'treatment':	self.id, 
-																	})

@@ -14,7 +14,7 @@
 
 	'description': """
 
-		12 July 2018 
+		17 July 2018 
 
 		Fulcrum 
 		
@@ -31,7 +31,7 @@
 
 
 
-		EMR - Min - Docean - Github - Travis - Coverage - Proliant - User Stories - Cron Pg Dump - Unit Testing - Less but Better - Statistical - Machine Learning - Object Oriented - Fulcrum\n
+		EMR - Min - Docean - Github - Travis - Coverage - Proliant - User Stories - Cron Pg Dump - Unit Testing - Less but Better - Statistical - Machine Learning - Object Oriented - Criteria Based Testing - Fulcrum\n
 
 		Deprecated: Ooor - Testcafe - Auto Backup
 
@@ -318,8 +318,7 @@
 
 
 
-		# ----------------------------------------------------------- Views ------------------------------------------------------
-
+# ----------------------------------------------------------- Views ------------------------------------------------------
 
 
 
@@ -410,6 +409,7 @@
 
 		# Products
 		'views/products/product.xml',		
+		'views/products/product_actions.xml',		
 
 
 		# Cards 
@@ -427,10 +427,6 @@
 
 		# Kardex
 		'views/kardex/kardex.xml',
-
-
-
-
 
 
 
@@ -488,23 +484,13 @@
 		'views/treatments/treatment_controls.xml',
 		
 
-
-
 		# Patients - 2 
 		'views/patients/patient_personal.xml',
 		'views/patients/patient_control_docs.xml',
 		'views/patients/patient_appointments.xml',
 
-
 		# Appointments - 2
 		'views/appointments/calendar.xml',
-
-
-		# Closing 
-		'reports/closing.xml',
-
-
-
 
 
 
@@ -515,10 +501,6 @@
 		# ----------------------------------------------------------- Purchase ------------------------------------------------------
 		'views/purchase/purchase_report.xml',			# Deprecated ? 
 		'views/purchase/purchase_report_view.xml',		# Deprecated ?
-
-
-
-
 
 
 
@@ -535,9 +517,10 @@
 
 
 		# ----------------------------------------------------------- Closings ------------------------------------------------------
-
-		# closings 
+		# Closing 
 		'views/closings/closings.xml',
+		'reports/closing.xml',
+
 
 
 
@@ -547,12 +530,7 @@
 
 
 
-
-
-
-
-		# ----------------------------------------------------------- Reports ------------------------------------------------------
-		# Sales 
+		# ----------------------------------------------------------- Sale Reports ------------------------------------------------------
 		'views/reports/report_sale_pivots.xml',
 		'views/reports/report_sale_graphs.xml',
 		'views/reports/report_sale_favorites.xml',
@@ -562,12 +540,10 @@
 
 
 
-
 		# ----------------------------------------------------------- Menus ------------------------------------------------------
 		'views/menus/menus.xml',
 		'views/menus/menus_reporting.xml',
 		'views/menus/menus_openhealth.xml',
-
 
 
 

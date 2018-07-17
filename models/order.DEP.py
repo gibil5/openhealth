@@ -2,6 +2,48 @@
 
 
 
+# ----------------------------------------------------------- action confirm ------------------------------------------------------
+
+		#_h_counter = {
+		#				'ticket_receipt':  self.counter_tkr, 
+		#				'ticket_invoice':  self.counter_tki, 
+		#				'receipt':  self.counter_rec, 
+		#				'invoice':  self.counter_inv, 
+		#				'sale_note':  self.counter_san, 
+		#				'advertisement':  self.counter_adv, 
+		#}
+
+			#counter = _h_counter[self.x_type]
+
+
+
+
+
+		#for proc in self.treatment.procedure_ids: 
+		#	proc.create_controls()
+		#	proc.create_sessions()
+
+
+		# Deprecated !
+
+		# Reserve Machine 			
+		#if self.x_family == 'procedure': 
+		#	self.reserve_machine()
+
+		# Stock Picking - Validate 		
+		#print 'Picking'
+		#self.validate_stock_picking()
+		#self.do_transfer()
+		
+
+	# action_confirm_nex
+
+
+
+
+
+
+
 # ----------------------------------------------------------- Test and Hunt ------------------------------------------------------
 	# Test Bug 
 	#@api.multi 

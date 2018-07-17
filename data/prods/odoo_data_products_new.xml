@@ -19,6 +19,8 @@
 
 			<field name='x_treatment'>other</field>
 
+			<field name='x_family'>other</field>
+
 		</record>
 
 <!--

@@ -388,6 +388,10 @@ _sessions_list = [
 
 _family_list = [
 
+		# 12 Jul 2018
+		('other',		'other'), 
+
+
 		# Service 
 		('consultation',	'consultation'), 
 		('consultation_gyn',	'consultation_gyn'), 

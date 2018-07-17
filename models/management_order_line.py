@@ -66,36 +66,32 @@ class management_order_line(models.Model):
 			string = "Familia", 	
 
 			selection = [
-							('topical','Cremas'), 
-
-							('card','Tarjeta'), 
-
-							('kit','Kit'), 
+							# 13 Jul 2018 
+							('other',	'Otros'), 
 
 
+							('topical',	'Cremas'), 
+							('card',	'Tarjeta'), 
+							('kit',		'Kit'), 
+							('product',	'Producto'), 
 
 
-							('product','Producto'), 
+							('consultation',		'Consulta'), 
+							('consultation_gyn',	'Consulta Ginecológica'), 
+							('consultation_100',	'Consulta 100'), 
+							('consultation_0',		'Consulta Gratuita'), 
+							#('consultation',		'consultation'), 
+							#('consultation_gyn',	'consultation_gyn'), 
+							#('consultation_100',	'consultation_100'), 
+							#('consultation_0',		'consultation_0'), 
 
 
-							#('consultation','Consulta'), 
-							#('consultation_gyn','Consulta Ginecológica'), 
-							#('consultation_100','Consulta 100'), 
-							#('consultation_0','Consulta Gratuita'), 
-							('consultation','consultation'), 
-							('consultation_gyn','consultation_gyn'), 
-							('consultation_100','consultation_100'), 
-							('consultation_0','consultation_0'), 
-
+							('procedure',	'Procedimiento'), 
+							('laser',		'Laser'), 
 							
+							('cosmetology',	'Cosmiatría'), 
 
-							('procedure','Procedimiento'), 
-							('laser','Laser'), 
-
-							
-							('cosmetology','Cosmiatría'), 
-
-							('medical','Tratamiento Médico'), 
+							('medical',		'Tratamiento Médico'), 
 			], 
 
 			required=False, 
@@ -164,23 +160,16 @@ class management_order_line(models.Model):
 
 
 
+
 # ----------------------------------------------------------- Actions ------------------------------------------------------
-
-
-
-
-
-
 
 	# Update Fields
 	@api.multi
 	def update_fields(self):  
 
-
 		#print 
 		#print 'Update Fields - Order'
 		#print 
-
 
 
 		# Set Family and Sub Family 
@@ -199,12 +188,9 @@ class management_order_line(models.Model):
 
 
 		# If Product 
-		#if self.product_id.type == 'product': 
 		if self.product_id.type in ['product','consu']: 	# Products and Consumables 
 
-
 			# Family 
-			#self.family = 'product'
 			if self.product_id.x_family in ['kit']: 	# Kits 
 				self.family = 'topical'
 			else: 										# Vip and Topical 
@@ -224,14 +210,13 @@ class management_order_line(models.Model):
 
 
 
+
 		# If Service 
 		else: 
 
-
 			# Family 
-			#self.family = self._h_family[self.product_id.x_family]
-			#self.family = _h_family[self.product_id.x_family]
 			self.family = self.product_id.x_family
+
 
 
 			# Correct 
@@ -259,16 +244,16 @@ class management_order_line(models.Model):
 			# Cosmetology 
 			if self.product_id.x_family == 'cosmetology': 
 
-				#self.sub_family = self._h_subfamily['cosmetology']
 				self.sub_family = 'cosmetology'
 
 
-			# Medical
-			#elif self.product_id.x_family == 'medical': 
-			else: 
 
-				#self.sub_family = self._h_subfamily[self.product_id.x_treatment]
+
+			# Medical, Other 
+			else: 
 				self.sub_family = self.product_id.x_treatment 
+
+
 
 
 			# Laser 

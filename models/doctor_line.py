@@ -124,8 +124,8 @@ class DoctorLine(models.Model):
 	@api.multi
 	def stats(self):  
 
-		print 
-		print 'Stats - Doctor'
+		#print 
+		#print 'Stats - Doctor'
 
 
 
@@ -175,7 +175,7 @@ class DoctorLine(models.Model):
 		
 		# Count and Create 
 
-		print 'Count'
+		#print 'Count'
 
 
 
@@ -203,7 +203,7 @@ class DoctorLine(models.Model):
 
 
 			# Counters 
-			print key
+			#print key
 
 
 			# Families 
@@ -251,7 +251,7 @@ class DoctorLine(models.Model):
 
 
 			# Counters 
-			print key
+			#print key
 
 			if key == 'laser_co2': 
 				self.nr_procedures_co2 = count

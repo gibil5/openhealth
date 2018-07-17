@@ -15,13 +15,15 @@
 			<field name="arch" type="xml">
 
 
-
+<!--
+							statusbar_visible="draft, sent, sale, editable"
+-->
 				<!-- Status Bar --> 
 				<xpath expr="//field[@name='state']" position="replace">
 					<field 	name="state" 
 							widget="statusbar" 
 							
-							statusbar_visible="draft, sent, sale, editable"
+							statusbar_visible="draft, verified, sent, sale, editable"
 					/>
 				</xpath>
 
@@ -78,6 +80,20 @@
 -->
 				<!-- Confirm -->
 				<xpath expr="//button[@name='action_confirm']" position="replace">
+
+
+					<button 
+							type="object" 
+							class="oe_highlight"
+
+							name="validate"
+
+							string="Validar"
+							
+							states="sent"						
+					/>
+
+
 					<button 
 							type="object" 
 							class="oe_highlight"
@@ -86,7 +102,7 @@
 
 							string="CONFIRMAR"
 							
-							states="sent"						
+							states="validated"						
 					/>
 
 

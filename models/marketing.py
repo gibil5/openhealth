@@ -910,7 +910,9 @@ class Marketing(models.Model):
 				# Init vars 
 				#total = self.total_count
 				name = pat_vars.zip_dic_inv[code]
+
 				sector = pat_vars._h_sector[name]
+
 
 
 				# Count - Search in Collections 

@@ -268,6 +268,7 @@ _street2_list = [
 
 _h_sector =  {
 
+		# Tradicional
 		'Lima':			'Lima Tradicional',
 		'Barranco':		'Lima Tradicional',
 		'Breña':		'Lima Tradicional',
@@ -288,7 +289,7 @@ _h_sector =  {
 
 
 
-
+		# Norte 
 		'Ancón':			'Lima Norte',
 		'Carabayllo':		'Lima Norte',
 		'Comas':			'Lima Norte',
@@ -300,7 +301,8 @@ _h_sector =  {
 
 
 
-
+		# Sur 
+		'Chorrillos':				'Lima Sur',
 		'Lurín':					'Lima Sur',
 		'Pachacamac':				'Lima Sur',
 		'Pucusana':					'Lima Sur',
@@ -314,10 +316,9 @@ _h_sector =  {
 
 
 
-
+		# Este 
 		'Ate':			'Lima Este',
 		'Chaclacayo':	'Lima Este',
-		'Chorrillos':	'Lima Este',
 		'Cieneguilla':	'Lima Este',
 		'El Agustino':	'Lima Este',
 		'Lurigancho':	'Lima Este',
@@ -326,6 +327,7 @@ _h_sector =  {
 		
 
 
+		# Oeste 
 		'Callao':		'Lima Oeste',
 }
 

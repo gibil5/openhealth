@@ -1590,3 +1590,23 @@
 
 
 
+# 13 Jul 2018 
+
+		#for proc in self.treatment.procedure_ids: 
+		#	proc.create_controls()
+		#	proc.create_sessions()
+
+
+		# Deprecated !
+
+		# Reserve Machine 			
+		#if self.x_family == 'procedure': 
+		#	self.reserve_machine()
+
+		# Stock Picking - Validate 		
+		#print 'Picking'
+		#self.validate_stock_picking()
+		#self.do_transfer()
+		
+
+	# action_confirm_nex

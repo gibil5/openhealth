@@ -5,7 +5,7 @@
 # 
 # Created: 				26 Aug 2016
 #
-# Last mod: 			18 Jun 2018
+# Last mod: 			13 Jul 2018
 # 
 
 from openerp import models, fields, api
@@ -41,15 +41,17 @@ class sale_order(models.Model):
 		#print 'Pay myself'
 
 		if self.state == 'draft': 
+
 			self.create_payment_method()
 
-			#self.x_payment_method.saledoc = 'ticket_receipt'
 			self.x_payment_method.saledoc = 'advertisement'
 			
 			self.x_payment_method.state = 'done'
 
 			self.state = 'sent'
 			
+			self.validate()
+
 			self.action_confirm_nex()
 
 
@@ -66,6 +68,7 @@ class sale_order(models.Model):
 		print 'Test'
 
 		if self.patient.x_test: 
+
 			self.pay_myself()
 
 
@@ -97,11 +100,10 @@ class sale_order(models.Model):
 	@api.multi 
 	def create_procedure_wapp(self, subtype, product_id):
 
-		print 
-		print 
-		print 'Create Proc - With App'
-		print subtype
-
+		#print 
+		#print 
+		#print 'Create Proc - With App'
+		#print subtype
 
 
 		# Init 
@@ -348,83 +350,23 @@ class sale_order(models.Model):
 
 
 
-
-
-
-# ----------------------------------------------------------- Action Confirm ------------------------------------------------------
+# ----------------------------------------------------------- Validate ------------------------------------------------------
 
 	# Action confirm 
 	@api.multi 
-	def action_confirm_nex(self):
+	def validate(self):
 
+		print 
+		print 'Validate'
 		#print 
-		#print 'Action confirm - Nex'
-		#print 
-		
-		#_h_counter = {
-		#				'ticket_receipt':  self.counter_tkr, 
-		#				'ticket_invoice':  self.counter_tki, 
-		#				'receipt':  self.counter_rec, 
-		#				'invoice':  self.counter_inv, 
-		#				'sale_note':  self.counter_san, 
-		#				'advertisement':  self.counter_adv, 
-		#}
 
 
-
-#Write your logic here - Begin
-
-		# Serial Number and Type
-		if self.x_payment_method.saledoc != False: 
-
-			#print 'Serial number and Type'
-
-			self.x_type = self.x_payment_method.saledoc
-
-
-			# Counter 
-			#counter = _h_counter[self.x_type]
-
-		 	counter = self.env['openhealth.counter'].search([
-																		('name', '=', self.x_type), 
-																	],
-																		#order='write_date desc',
-																		limit=1,
-																	)
-
-		 	# Init 
-			prefix = counter.prefix
-			value = counter.value
-			padding = counter.padding
-			separator = '-'
-
-			# Increase 
-			counter.increase()				# Here !!!
-
-			# Calc Name 
-			self.x_serial_nr = prefix + separator + str(value).zfill(padding)
-
-
-
-
-
-		# Doctor User Name - For Sale Reporting 
+		# Doctor User Name
 		if self.x_doctor.name != False: 
 			uid = self.x_doctor.x_user_name.id
 			self.x_doctor_uid = uid
 
 
-#Write your logic here - End 
-
-
-
-		# The actual procedure 
-		res = super(sale_order, self).action_confirm()
-
-
-
-#Write your logic here - Begin 
-		
 		# Date must be that of the Sale, not the budget. 
 		self.date_order = datetime.datetime.now()
 
@@ -441,60 +383,119 @@ class sale_order(models.Model):
 		self.detect_create_card()
 
 
+		# Type 
+		print 'Type'
+		if self.x_payment_method.saledoc != False: 
+			self.x_type = self.x_payment_method.saledoc
+		print self.x_type
 
 
-
-
-
-
-		# Create Proc 
-		# In progress !
-
-		#self.treatment.create_procedure()
-		#self.treatment.create_procedure(self.date_order)
-
-		#print 'jx'
-		#print self.treatment
-		#print self.treatment.name
-
+		# Create Procedure with Appointment 
+		#if True: 
 		if self.treatment.name != False: 
-
 			print
 			print 'Create Procedure'
-
 			for line in self.order_line: 
 				if line.product_id.x_family in ['laser', 'medical', 'cosmetology']:
-					#self.create_procedure_wapp()				
-					#self.create_procedure_wapp(line.product_id.x_treatment)
 					self.create_procedure_wapp(line.product_id.x_treatment, line.product_id.id)
-
 			# Update 
 			self.x_procedure_created = True
-
 			self.treatment.update_appointments()
+
+
+
+
+		# Change State 
+		self.state = 'validated'
+
+
+
+# ----------------------------------------------------------- Action Confirm ------------------------------------------------------
+
+	# Action confirm 
+	@api.multi 
+	def action_confirm_nex(self):
+
+		print 
+		print 'Action confirm - Nex'
+		#print 
 		
 
+#Write your logic here - Begin
+
+		# Generate Serial Number
+		
+		#print 'Serial number and Type'
+
+		print self.x_serial_nr
+
+		#if self.x_payment_method.saledoc != False: 
+		#if self.x_serial_nr != False: 
+		if self.x_serial_nr != '': 
+
+
+			# Type 
+			#self.x_type = self.x_payment_method.saledoc
+
+			# Serial Number
+		 	counter = self.env['openhealth.counter'].search([
+																		('name', '=', self.x_type), 
+																	],
+																		#order='write_date desc',
+																		limit=1,
+																	)
+		 	# Init 
+			prefix = counter.prefix
+			value = counter.value
+			padding = counter.padding
+			separator = '-'
+
+			# Increase 
+			counter.increase()				# Here !!!
+
+			# Calculate 
+			self.x_serial_nr = prefix + separator + str(value).zfill(padding)
 
 
 
+
+
+		# Doctor User Name
+		#if self.x_doctor.name != False: 
+		#	uid = self.x_doctor.x_user_name.id
+		#	self.x_doctor_uid = uid
+
+
+#Write your logic here - End 
+
+		# The actual procedure 
+		res = super(sale_order, self).action_confirm()
+
+#Write your logic here - Begin 
 		
 
-		#for proc in self.treatment.procedure_ids: 
-		#	proc.create_controls()
-		#	proc.create_sessions()
+		# Date must be that of the Sale, not the budget. 
+		#self.date_order = datetime.datetime.now()
 
+		# Update Descriptors (family and product) 
+		#self.update_descriptors()
 
+		# Change Appointment State - To Invoiced 
+		#self.update_appointment()
 
-		# Deprecated !
+		# Vip Card - Detect and Create 
+		#self.detect_create_card()
 
-		# Reserve Machine 			
-		#if self.x_family == 'procedure': 
-		#	self.reserve_machine()
-
-		# Stock Picking - Validate 		
-		#print 'Picking'
-		#self.validate_stock_picking()
-		#self.do_transfer()
+		# Create Procedure with Appointment 
+		#if self.treatment.name != False: 
+		#	print
+		#	print 'Create Procedure'
+		#	for line in self.order_line: 
+		#		if line.product_id.x_family in ['laser', 'medical', 'cosmetology']:
+		#			self.create_procedure_wapp(line.product_id.x_treatment, line.product_id.id)
+			# Update 
+		#	self.x_procedure_created = True
+		#	self.treatment.update_appointments()
 		
 
 	# action_confirm_nex
@@ -610,10 +611,11 @@ class sale_order(models.Model):
 	pricelist_id = fields.Many2one(
 			'product.pricelist', 
 			string='Pricelist', 
-			required=True, 
 			readonly=True, 
 			states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}, 
 			help="Pricelist for current sales order.", 
+
+			required=True, 
 		)
 
 

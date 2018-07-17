@@ -3,6 +3,10 @@
 
 
 _h_name = {
+				# 13 Jul 2018 
+				'other': 		'Otro',
+
+
 
 				'product': 		'Producto',
 

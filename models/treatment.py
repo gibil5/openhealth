@@ -797,15 +797,12 @@ class Treatment(models.Model):
 
 # ----------------------------------------------------------- Create Procedures  ------------------------------------------------------
 	@api.multi
-	#def create_procedure(self):
-	#def create_procedure(self, date_app):
-	#def create_procedure(self, date_app, subtype):
 	def create_procedure(self, date_app, subtype, product_id):
 		
-		print 
-		print 'Create Procedure'
-		print date_app  
-		print subtype
+		#print 
+		#print 'Create Procedure'
+		#print date_app  
+		#print subtype
 
 
 		#if self.nr_invoices_pro > 0:
@@ -1626,7 +1623,6 @@ class Treatment(models.Model):
 			price_applied = 0
 			ret = order.x_create_order_lines_target(target_line, price_manual, price_applied)
 			
-
 		else:  		# Procedures 
 			order_id = order.id
 			ret = treatment_funcs.create_order_lines(self, 'vip', order_id)

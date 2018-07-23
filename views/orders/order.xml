@@ -77,7 +77,6 @@
 <!-- REDEFINE -->
 <!--
 							name="action_confirm"
-							states="sent"						
 -->
 				<!-- Confirm -->
 				<xpath expr="//button[@name='action_confirm']" position="replace">
@@ -90,6 +89,8 @@
 							name="validate"
 
 							string="Validar"							
+
+							states="sent"						
 					/>
 
 
@@ -950,7 +951,7 @@ Look for the Minimalist experience !!!
 			<field name="view_id" ref="view_order_checksum_tree"/> 
 
 			<field name="domain">[
-									('x_type', '=', 'ticket_receipt'),
+									('x_type', 'in', ['ticket_receipt','receipt']),
 								]
 			</field>
 

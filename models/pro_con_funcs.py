@@ -48,18 +48,27 @@ def create_controls(self):
 	subtype = self.product.x_treatment 
 
 
+
 	# Start date 
-	evaluation_start_date = self.evaluation_start_date
+	if self.session_date != False: 
+		evaluation_start_date = self.session_date
+
+	else: 
+		evaluation_start_date = self.evaluation_start_date
+
+
+
 
 	# Doctor 
 	doctor_id = procedure_funcs.get_actual_doctor(self)
 
 	# Date dictionary - Days between controls 
 	k_dic = {
-				0 :		0,
-				1 :		1,
-				#0 :	7,
-				#1 :	15,
+				#0 :		0,
+				#1 :		1,
+				
+				0 :	7,
+				1 :	15,
 				2 :	30,
 				3 :	60,
 				4 :	120,
@@ -82,6 +91,9 @@ def create_controls(self):
 		# Control date 
 		control_date = procedure_funcs.get_next_date(self, evaluation_start_date, nr_days)
 
+
+		#date_format = "%Y-%m-%d %H:%M:%S"
+		#control_date_str = control_date.strftime(date_format)		
 		control_date_str = control_date.strftime("%Y-%m-%d")		
 		control_date_str = control_date_str + ' 14:00:00'			# 09:00:00
 
@@ -131,8 +143,10 @@ def create_controls(self):
 		# Create Control 
 		control = self.control_ids.create({
 											'evaluation_start_date':control_date,
+											
 											'first_date':control_date,
-											'control_date':control_date,
+											#'control_date':control_date,
+
 
 											'patient':patient_id,
 											'doctor':doctor_id,

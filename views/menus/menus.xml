@@ -364,6 +364,17 @@
 
 
 
+			<!-- Checksum --> 			
+			<menuitem 	id="sales_all_checksum_menu" 
+						name="Checksum" 
+						parent="sales_menu"
+						sequence="7"
+
+						action="order_list_checksum_action"
+						/>
+
+
+
 
 
 			<!-- Observed -->

@@ -3,25 +3,16 @@
 	<data>
 
 
-		<!--
-		Treatmentt - Appointments
-		-->
+
+		<!-- Appointments-->
 		<record model="ir.ui.view" id="treatment_appointment_form_view">
 			<field name="name">treatment.appointment.form</field>
 			<field name="model">openhealth.treatment</field>
 
-			
-			<!--
-			<field name="priority" eval="8"/>
-			-->
 			<field name="priority" eval="0"/>
 			
-
-
 			<field name="inherit_id" ref="treatment_form_view"/>
-			<field name="arch" type="xml">
-
-				
+			<field name="arch" type="xml">	
 				<notebook position="inside">
 					
 					<page string="Citas">

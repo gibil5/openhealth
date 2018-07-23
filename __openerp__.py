@@ -14,11 +14,11 @@
 
 	'description': """
 
-		17 July 2018 
+		23 July 2018 
 
 		Fulcrum 
 		
-		Code without tests is broken by design.
+		Code without Tests is broken by design.
 
 		Stability by Design. Simplicity by Abstraction. 
 
@@ -31,7 +31,8 @@
 
 
 
-		EMR - Min - Docean - Github - Travis - Coverage - Proliant - User Stories - Cron Pg Dump - Unit Testing - Less but Better - Statistical - Machine Learning - Object Oriented - Criteria Based Testing - Fulcrum\n
+		EMR - Min - Docean - Github - Travis - Coverage - Proliant - User Stories - Cron Pg Dump - Unit Testing - Less but Better - Statistical - Machine Learning - 
+		Object Oriented - Fulcrum - Criteria Based Testing \n
 
 		Deprecated: Ooor - Testcafe - Auto Backup
 
@@ -437,7 +438,11 @@
 
 		# Sessions
 		'views/sessions/session.xml',
+		
+		'views/sessions/session_config_simple.xml',
+		
 		'views/sessions/session_config_manual.xml',
+
 
 
 		# Evaluations - 2

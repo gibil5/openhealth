@@ -71,7 +71,7 @@ class Session(models.Model):
 			
 			required=True, 
 
-			readonly=True, 
+			#readonly=True, 
 		)
 
 

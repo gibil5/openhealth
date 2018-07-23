@@ -20,7 +20,9 @@
 						<button 
 							type="object" 
 							class="oe_highlight"
-							groups="openhealth.roots,openhealth.archivers,openhealth.managers,openhealth.physicians"
+
+							groups="openhealth.roots,openhealth.archivers,openhealth.managers,openhealth.physicians,openhealth.directors"
+							
 							attrs="{'invisible':[
 													('laser', '!=', 'laser_quick'), 
 													('laser', '!=', 'laser_co2'), 
@@ -33,19 +35,9 @@
 
 
 
-						<!-- Sessions -->
-						<button 
-							type="object" 
-							class="oe_highlight"
-							groups="openhealth.roots,openhealth.archivers,openhealth.managers,openhealth.physicians"
-
-							name="create_sessions" 	
-
-							string="Crear Sesiones"
-						/>
-
 
 						<!-- App -->
+						<!--
 						<button 
 							type="object" 
 							class="oe_highlight"
@@ -54,6 +46,26 @@
 
 							string="Update App"
 						/>
+						-->
+
+
+
+						<!-- Sessions -->
+						<!--
+						--> 
+						<button 
+							type="object" 
+							class="oe_highlight"
+
+							attrs="{ 'invisible':[	('number_sessions','==',1), 	]}"
+
+							groups="openhealth.roots,openhealth.archivers,openhealth.managers,openhealth.physicians,openhealth.directors"
+
+							name="create_sessions" 	
+
+							string="Crear Sesiones"
+						/>
+						
 
 
 
@@ -170,7 +182,10 @@
 							
 							<group>
 								<field name="doctor" options="{'no_create': True}"	/>
+								
 								<field name="evaluation_start_date"/>
+								<field name="session_date"/>
+								
 								<field name="appointment"  	required="0"/>	
 								<field name="machine"/>
 							</group>

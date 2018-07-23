@@ -2,6 +2,15 @@
 
 #from . import models
 
+
+
+# Test
+from . import test
+
+
+
+
+
 # Highly Deprecated !
 from . import sale_report
 from . import sale_report_md

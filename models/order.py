@@ -10,6 +10,10 @@
 
 from openerp import models, fields, api
 
+from openerp import _
+from openerp.exceptions import Warning
+
+
 import datetime
 import ord_vars
 from num2words import num2words
@@ -142,9 +146,12 @@ class sale_order(models.Model):
 
 
 			# Create Procedure 
-			#self.treatment.create_procedure(appointment_date_str)
-			#self.treatment.create_procedure(appointment_date_str, subtype)
 			self.treatment.create_procedure(appointment_date_str, subtype, product_id)
+
+
+			# Create Sessions - New !
+			#self.treatment.create_sessions()
+
 
 		print
 		print
@@ -350,6 +357,59 @@ class sale_order(models.Model):
 
 
 
+# ----------------------------------------------------------- Check - Pm Total ------------------------------------------------------
+
+	# Pm Total 
+	x_pm_total = fields.Float(
+			'Total MP', 
+			readonly=True, 
+		)
+
+
+	# Checksum 
+	x_checksum = fields.Float(
+			'Checksum', 
+			readonly=True, 
+			default = -1, 
+		)
+
+
+
+
+
+	# Check payment method 
+	@api.multi 
+	def check_payment_method(self):
+
+		print 
+		print 'Check Payment Method'
+
+		pm_total = 0 
+		for pm in self.x_payment_method.pm_line_ids: 
+			pm_total = pm_total + pm.subtotal
+		self.x_pm_total = pm_total
+
+		#if self.x_pm_total != self.amount_total:
+		#	msg = 'Error: Verificar la Forma de Pago.'
+		#	raise Warning(_(msg))
+
+
+
+
+	# Check Sum 
+	@api.multi 
+	def check_sum(self):
+
+		print 
+		print 'Check Sum'
+
+		self.x_checksum = self.amount_total - self.x_pm_total 
+
+
+
+
+
+
 # ----------------------------------------------------------- Validate ------------------------------------------------------
 
 	# Action confirm 
@@ -358,7 +418,13 @@ class sale_order(models.Model):
 
 		print 
 		print 'Validate'
-		#print 
+
+
+
+		# Payment method validation
+		self.check_payment_method()
+
+
 
 
 		# Doctor User Name
@@ -397,7 +463,9 @@ class sale_order(models.Model):
 			print 'Create Procedure'
 			for line in self.order_line: 
 				if line.product_id.x_family in ['laser', 'medical', 'cosmetology']:
+
 					self.create_procedure_wapp(line.product_id.x_treatment, line.product_id.id)
+			
 			# Update 
 			self.x_procedure_created = True
 			self.treatment.update_appointments()

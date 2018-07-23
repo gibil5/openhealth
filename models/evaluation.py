@@ -19,7 +19,63 @@ class Evaluation(models.Model):
 
 
 
-	# --------------------------------------------------------- Consultation First ------------------------------------------------------
+
+# ----------------------------------------------------------- Appointment ------------------------------------------------------
+
+	# Update App  
+	@api.multi	
+	def update_dates(self):
+
+		print 
+		print 'Update Dates'
+
+		self.evaluation_start_date = self.appointment.appointment_date
+
+
+
+
+
+	# Update App  
+	@api.multi	
+	def update_appointment(self):
+
+		print 
+		print 'Update Appointment'
+
+		res_id = self.appointment.id  
+
+		return {
+			
+			# Mandatory 
+			'type': 'ir.actions.act_window',
+			'name': 'Open Appointment',
+			
+			# Window action 
+			'res_model': 'oeh.medical.appointment',
+			'res_id': res_id,
+			
+			# Views 
+			"views": [[False, "form"]],
+			'view_mode': 'form',
+			'target': 'current',
+			#'view_id': view_id,
+
+			#"domain": [["patient", "=", self.patient.name]],
+			#'auto_search': False, 			
+			'flags': {
+					'form': {'action_buttons': True, }
+					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+			},			
+			'context':   {}
+		}
+	# update_appointment
+
+
+
+
+
+
+# --------------------------------------------------------- Consultation First ------------------------------------------------------
 
 	x_diagnosis = fields.Text(
 			string = 'Diagnóstico', 
@@ -135,8 +191,8 @@ class Evaluation(models.Model):
 			#default = fields.Date.today, 
 			required=True, 
 			
-			#readonly=True, 
-			readonly=False, 
+			readonly=True, 
+			#readonly=False, 
 		)
 
 
@@ -319,7 +375,10 @@ class Evaluation(models.Model):
 	appointment = fields.Many2one(
 			'oeh.medical.appointment',			
 			string='Cita #', 
+
 			required=False, 
+			
+			readonly=True, 
 			
 			#ondelete='cascade', 
 		)

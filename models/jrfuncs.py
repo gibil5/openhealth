@@ -2,60 +2,11 @@
 #
 # 		*** Jr Funcs
 # 
-# Created: 				 1 Nov 2016
-# Last updated: 	 	 3 Jul 2018 
+# Created: 				  1 Nov 2016
+# Last updated: 	 	 20 Jul 2018 
 #
 
 from openerp import models, fields, api
-
-
-
-#------------------------------------------------ Appointment ---------------------------------------------------
-
-# Update Apps 
-@api.multi
-def update_appointment_go(self, appointment_id, owner_id, x_type):
-
-
-	# Get all Apps 	
-	rec_set = self.env['oeh.medical.appointment'].browse([
-															appointment_id
-														])
-	#print rec_set
-
-
-	# By type 
-	if x_type == 'consultation':
-		ret = rec_set.write({
-								'consultation': owner_id,
-							})
-
-	elif x_type == 'procedure':
-		ret = rec_set.write({
-								'procedure': owner_id,
-								#'state': 'Scheduled',
-							})
-
-	elif x_type == 'session':
-		ret = rec_set.write({
-								'session': owner_id,
-							})
-
-	elif x_type == 'control':
-		ret = rec_set.write({
-								'control': owner_id,
-							})
-	#else:
-	#	tra = 1
-		#print 
-		#print 'This should not happen !!!'
-		#print 
-
-
-	#print ret 
-	return ret
-
-# update_appointment_go
 
 
 

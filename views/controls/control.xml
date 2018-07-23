@@ -3,11 +3,8 @@
 	<data>
 
 
-		<!--
-		Control 
-		-->
 			
-		<!-- Form view -->
+<!-- FORM -->
 		<record model="ir.ui.view" id="control_form_view">
 			<field name="name">control.form</field>
 
@@ -78,6 +75,28 @@
 						/>
 -->
 
+						<!-- App -->
+						<button 
+							type="object" 
+							class="oe_highlight"
+
+							name="update_appointment" 	
+
+							string="Cambiar Cita"
+						/>
+
+
+						<!-- Dates -->
+						<button 
+							type="object" 
+							class="oe_highlight"
+
+							name="update_dates" 	
+
+							string="Actualizar Fechas"
+						/>
+
+
 
 
 						<!-- State --> 
@@ -127,8 +146,10 @@
 									<label  for="name" string="Control #"/>
 									<h1><field name="name" class="oe_inline"/></h1>
 									<h1><field name="treatment" class="oe_inline"/></h1>
+									<h2><field name="name"/></h2>
 -->
 									<h1><field name="treatment"/></h1>
+									<h2><field name="procedure" 	readonly="1"	/></h2>
 								</div>
 							</div>
 						</div>
@@ -182,14 +203,23 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 
 
 <!--								
-								<field name="evaluation_start_date"/>
 -->
 
 
 
+								<field name="evaluation_start_date"/>
+
+								<field name="vspace"/>
+
 								<field name="control_date"/>
+
+								<field name="vspace"/>
+
 								<field name="first_date"/>
 
+								<field name="vspace"/>
+
+								<field name="x_done"	string="Realizado"	/>
 
 
 
@@ -200,19 +230,6 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 								<field name="id"/>
 -->
 
-								<field name="vspace"/>
-
-								<field name="x_done"/>
-
-
-
-								<field name="vspace"/>
-								
-								<field name="nr_images"			invisible="0"	/>
-
-								<field name="vspace"/>
-								
-								<field name="evaluation_nr"		invisible="0"	/>
 
 <!--
 								<field name="vspace"/>
@@ -225,9 +242,10 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 <group
 groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.physicians,openhealth.staffs,openhealth.reception,openhealth.archivers"
 >
+<!--
 								<field name="procedure"			invisible="0"	/>
-
 								<field name="vspace"/>
+-->
 
 								<field name="chief_complaint"/>								
 
@@ -238,6 +256,19 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 								<field name="vspace"/>
 								
 								<field name="product"/>							
+
+
+
+								<field name="nr_days"/>
+
+								<field name="vspace"/>
+								
+								<field name="nr_images"			invisible="0"	/>
+
+								<field name="vspace"/>
+								
+								<field name="evaluation_nr"		invisible="0"	/>
+
 
 <!--
 								<field name="vspace"/>
@@ -327,7 +358,7 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 
 		
 		
-		<!-- TREE --> 
+<!-- TREE --> 
 		<record model="ir.ui.view" id="control_tree_view">
 			<field name="name">control.tree</field>
 			<field name="model">openhealth.control</field>
@@ -347,13 +378,23 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 						name="open_line_current" 
 					/>
 
-
 					<field name="evaluation_nr"/>
+
 <!--
-					<field name="name"/>
-					<field name="treatment"/>
 -->				
+					<field name="name"/>
+
+					
 					<field name="appointment"/>
+
+					<field name="state_app"/>
+
+					<field name="first_date"/>
+
+					<field name="control_date"/>
+
+					<field name="nr_days"/>
+
 
 
 
@@ -361,19 +402,9 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 					
 					<field name="doctor"  />
 
-
-
-
 					<field name="chief_complaint"/>
 					
 					<field name="laser"/>
-
-					
-
-					<field name="first_date"/>
-					<field name="control_date"/>
-					
-
 					
 					<field name="nr_images"/>
 
@@ -385,6 +416,9 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 		</record>
 		
 <!--
+					<field name="name"/>
+					<field name="treatment"/>
+
 					<field name="procedure"/>
 					<field name="product"/>
 					<field name="appointment"	string="Cita #"/>

@@ -4,12 +4,12 @@
 
 
 
-		<!-- Treatment - Consultations -->
+		<!-- Consultations -->
 		<record model="ir.ui.view" id="treatment_consultation_form_view">
 			<field name="name">treatment.consultation.form</field>
 			<field name="model">openhealth.treatment</field>
 
-			<field name="priority" eval="1"/>
+			<field name="priority" eval="3"/>
 
 			<field name="inherit_id" ref="treatment_form_view"/>
 			<field name="arch" type="xml">

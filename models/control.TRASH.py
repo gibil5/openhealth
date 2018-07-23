@@ -2,8 +2,6 @@
 
 # 20 Dec 2017
 
-
-
 	#@api.onchange('appointment')
 	#def _onchange_appointment(self):
 	#	self.evaluation_start_date = self.appointment.x_date
@@ -108,6 +106,60 @@
 
 
 
+# 19 Jul 2018
+
+	# Appointments 
+	#appointment_ids = fields.One2many(
+	#		'oeh.medical.appointment', 
+	#		'control', 
+	#		string = "Citas", 
+	#	)
+
+
+
+
+
+	# First Date 
+	#@api.model
+	#def _get_first_date(self):
+		#first_date = self.control_date
+	#	first_date = self.appointment.appointment_date	
+	#	return first_date
+
+
+
+	# Control date 
+	#first_date = fields.Datetime(
+	first_date = fields.Date(
+			string = "Fecha Inicial", 	
+			#default=_get_first_date, 
+			#compute='_compute_first_date', 
+		)
+
+	#@api.multi
+	#@api.depends('state')
+	#def _compute_first_date(self):
+	#	for record in self:
+	#		if record.first_date == False: 		
+	#			record.first_date = record.control_date
+
+
+
+
+	# Control date 
+	control_date = fields.Datetime(
+			string = "Fecha Real", 	
+
+			#required=True, 
+		
+			#compute='_compute_control_date', 
+		)
+
+	@api.multi
+	#@api.depends('state')
+	def _compute_control_date(self):
+		for record in self:
+			record.control_date = record.appointment.appointment_date
 
 
 

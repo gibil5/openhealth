@@ -4,7 +4,7 @@
 
 
 
-		<!-- Session -->
+		<!-- Sessions -->
 		<record model="ir.ui.view" id="treatment_session_form_view">
 			<field name="name">treatment.session.form</field>
 			<field name="model">openhealth.treatment</field>

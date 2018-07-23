@@ -9,9 +9,9 @@
 
 from openerp import models, fields, api
 from datetime import datetime,tzinfo,timedelta
-from . import time_funcs
-from . import jrfuncs
+import time_funcs
 
+#from . import jrfuncs
 import appfuncs
 
 
@@ -30,7 +30,9 @@ def create_procedure_go(self, app_date_str, subtype, product_id):
 
 
 	# Init 
-	treatment = self.id
+	
+	treatment_id = self.id
+	
 	patient = self.patient.id
 	chief_complaint = self.chief_complaint
 	#treatment = treatment_id
@@ -109,7 +111,7 @@ def create_procedure_go(self, app_date_str, subtype, product_id):
 																		'x_type': 			'procedure', 
 																		'x_subtype': 		subtype, 
 
-																		'treatment':	self.id, 
+																		'treatment':		self.id, 
 																})
 
 	appointment_id = appointment.id
@@ -156,36 +158,67 @@ def create_procedure_go(self, app_date_str, subtype, product_id):
 
 
 
-	#print 'Create Proc'
+	# Create Proc
 
+	# Init 
+	consultation_id = False
 	procedure_id = False
+	session_id = False
+	control_id = False
+	
 	ret = 0 
 
 
 	doctor_available = appfuncs.doctor_available(self, app_date_str)
 
+
 	if doctor_available: 
 
+		# Create Procedure 
 		procedure = self.procedure_ids.create({
 												'evaluation_start_date':app_date_str,
+												'appointment': appointment_id,
 
 												'patient':patient,
 												'doctor':doctor,														
 												'product':product_template.id,																
 												'chief_complaint':chief_complaint,
-												'appointment': appointment_id,
 
-												'treatment':treatment,	
+												'treatment':treatment_id,	
 											})
 		procedure_id = procedure.id
+
+
+
+		# Create Session - New 
+		session = self.env['openhealth.session.med'].create(
+											{
+												'evaluation_start_date':app_date_str,
+												'appointment': appointment_id,
+												
+												'patient': patient,
+												'doctor': doctor,													
+												'product': product_template.id,
+												#'laser': laser,
+												'chief_complaint': chief_complaint,
+												
+												#'evaluation_type':evaluation_type,
+
+												'procedure': procedure_id,				
+												'treatment': treatment_id,	
+											}
+										)
+		session_id = session.id 
 
 
 
 
 	# Update Appointment 
 	if procedure_id != False: 
-		ret = jrfuncs.update_appointment_go(self, appointment_id, procedure_id, 'procedure')
 
+		#ret = jrfuncs.update_appointment_go(self, appointment_id, procedure_id, 'procedure')
+
+		ret = appfuncs.update_appointment_handlers(self, appointment_id, consultation_id, procedure_id, session_id, control_id)
 
 
 	return ret	
@@ -218,6 +251,8 @@ def create_order_lines(self, laser, order_id):
 				'ipl':			'openhealth.service.ipl',
 				'ndyag':		'openhealth.service.ndyag',
 				'medical':		'openhealth.service.medical',
+
+				'cosmetology':		'openhealth.service.cosmetology',
 	}
 
 	# Services 

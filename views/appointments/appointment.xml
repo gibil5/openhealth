@@ -22,10 +22,10 @@
 <!--
 								groups="openhealth.roots,openhealth.reception"
 -->
-					<!-- Remove --> 							
+					<!-- Remove --> 	
+<!--											
 					<button 
-						type="object" 
-						
+						type="object" 					
 						class="oe_highlight"
 						
 						name="remove_myself" 
@@ -34,7 +34,7 @@
 
 						groups="openhealth.roots"
 					/>
-
+-->
 
 
 					<!-- Confirm --> 
@@ -61,7 +61,6 @@
 
 						states="Scheduled"
 					/>
-
 
 				</xpath>
 
@@ -104,13 +103,13 @@
 					<field name="patient"	string="patient_r"  
 											attrs="{
 																'required':[('x_type', 'not in', ['event']),],
-
 																'invisible':[('x_type', '=', 'event'),],
 														}"	
 						/>					
 
 				
 					<field name="vspace"/>
+
 
 				</xpath>
 <!--
@@ -123,14 +122,34 @@
 				<!-- Institution --> 
 				<xpath expr="//field[@name='institution']" position="replace">
 
-							<field name="x_type"/>
+					<field name="x_type"/>
 							
-							<field name="x_subtype"/>
+					<field name="x_subtype"/>
+
+					<field name="vspace"/>
+
+<!--
+					<h1><field name="session" 	/></h1>
+					<label class="" for="procedure" string="Procedimiento"	readonly="1"	/>
+					<label class="" for="session" string="Sesion"	readonly="1"	/>
+					<label class="" for="control" string="Control"	readonly="1"	/>
+
+														attrs="{
+																	'invisible':[('x_type', 'in', ['procedure']),],
+														}"	
+-->						
+					<field name="consultation"	/>							
+
+					<field name="procedure"	/>							
+					
+					<field name="session" 	/>							
+					
+					<field name="control"	/>
 
 
 <!--
 														invisible="0"																
-							<field name="x_target"			
+					<field name="x_target"			
 														invisible="1"
 														attrs="{
 																	'invisible':[('x_type', '=', 'event'),],
@@ -141,7 +160,7 @@
 
 
 <!--
-							<field name="x_machine"		attrs="{
+					<field name="x_machine"		attrs="{
 																	'invisible':[('x_type', 'in', ['consultation','event']),],
 														}"	
 								/>
@@ -209,14 +228,9 @@
 
 						<group >
 
-
 							<field name="appointment_date"/>
 
-							<field name="x_date"			groups="openhealth.roots"	/>
-
 							<field name="vspace"/>
-
-
 
 							<field name="state"/>
 
@@ -224,6 +238,8 @@
 
 
 <!--
+							<field name="x_date"			groups="openhealth.roots"	/>
+
 							<field name="duration"	readonly="1"		/>	
 
 							<field name="vspace"/>
@@ -328,6 +344,17 @@ DEPRECATED !
 				<tree string="Appointment Tree"  	default_order='appointment_date'  >
 				-->
 				<tree string="Appointment Tree">
+
+
+					<!-- Hot Button -->
+					<button 
+						name="open_line_current" 
+						type="object" 
+						class="oe_highlight"	
+
+						string="Entrar"
+					/>
+
 
 					<field name="name"/>
 

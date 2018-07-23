@@ -3,23 +3,19 @@
 	<data>
 
 
-		<!--
-		controls
-		-->
+
+		<!-- Controls -->
 		<record model="ir.ui.view" id="treatment_control_form_view">
 			<field name="name">treatment.control.form</field>
 			<field name="model">openhealth.treatment</field>
 
-
 			<field name="priority" eval="7"/>
-
 			
 			<field name="inherit_id" ref="treatment_form_view"/>
 			<field name="arch" type="xml">
 				<notebook position="inside">
 					
 					
-
 					<page string="Controles">
 
 

@@ -301,6 +301,26 @@ _hash_x_machine = {
 
 
 
+# ----------------------------------------------------------- X Date  ------------------------------------------------------
+	# Date 
+	x_date = fields.Date(
+			string="Fecha", 
+		)
+
+	@api.onchange('appointment_date')
+	def _onchange_x_date(self):
+		#print 
+		#print 'On Change - App Date'
+
+		if self.appointment_date != False: 
+			#print 'Gotcha !'
+			date_format = "%Y-%m-%d %H:%M:%S"
+			#dt = datetime.datetime.strptime(self.appointment_date, date_format)
+			dt = datetime.datetime.strptime(self.appointment_date, date_format) + datetime.timedelta(hours=-5,minutes=0)		# Correct for UTC Delta 
+			self.x_date = dt.strftime("%Y-%m-%d")
+
+
+
 
 
 

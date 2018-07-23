@@ -2,14 +2,18 @@
 #
 # 	*** Control 	
 # 
-# Created: 				 1 Nov 2016
-# Last updated: 	 	 20 Jun 2017
+# Created: 				  1 Nov 2016
+# Last updated: 	 	 19 Jul 2018
+#
 
 from openerp import models, fields, api
 
 import datetime
-from . import eval_vars
-from . import time_funcs
+import eval_vars
+import time_funcs
+
+import app_vars
+import appfuncs
 
 
 
@@ -25,17 +29,99 @@ class Control(models.Model):
 
 # ----------------------------------------------------------- Deprecated ------------------------------------------------------
 	
-	# Appointments 
-	#appointment_ids = fields.One2many(
-	#		'oeh.medical.appointment', 
-	#		'control', 
-	#		string = "Citas", 
-	#	)
 
 
 
 
-# ----------------------------------------------------------- Redef ------------------------------------------------------
+# ----------------------------------------------------------- Actions ------------------------------------------------------
+
+	# Update App  
+	@api.multi	
+	def update_dates(self):
+
+		print 
+		print 'Update Dates'
+
+		self.evaluation_start_date = self.appointment.appointment_date
+
+		self.control_date = self.appointment.appointment_date
+
+
+
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Dates ------------------------------------------------------
+
+	# First date 
+	#first_date = fields.Date(
+	first_date = fields.Datetime(
+			string = "Fecha Inicial", 		
+			readonly=True, 	
+		)
+
+
+
+
+	# Real date 
+	control_date = fields.Datetime(
+			string = "Fecha Real",
+			readonly=True, 	
+
+			#compute='_compute_control_date', 
+		)
+
+	@api.multi
+	#@api.depends('state')
+	def _compute_control_date(self):
+		print 
+		print 'Compute - Control Date'
+		for record in self:
+			print record.appointment.appointment_date
+			record.control_date = record.appointment.appointment_date
+
+
+
+
+	# Dates 
+	evaluation_start_date = fields.Datetime(
+	
+			string = "Fecha", 	
+	
+			#required=True, 
+			required=False, 
+			readonly=True, 	
+		
+			#compute='_compute_evaluation_start_date', 
+			#compute='_compute_evaluation_start_date_nex', 
+		)
+
+	@api.multi
+	#@api.depends('state')
+	#def _compute_evaluation_start_date(self):
+	def _compute_evaluation_start_date_nex(self):
+		print 
+		print 'Compute - Eval Start Date'
+		for record in self:
+			print record.appointment.appointment_date
+			record.evaluation_start_date = record.appointment.appointment_date
+
+
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Re Definitions ------------------------------------------------------
+
 	# Patient 
 	patient = fields.Many2one(
 			'oeh.medical.patient',
@@ -62,28 +148,12 @@ class Control(models.Model):
 
 
 
-	# Control date 
-	control_date = fields.Datetime(
-			string = "Fecha Real", 	
-
-			#required=True, 
-		
-			#compute='_compute_control_date', 
-		)
-
-	@api.multi
-	#@api.depends('state')
-	def _compute_control_date(self):
-		for record in self:
-			record.control_date = record.appointment.appointment_date
-
-
-
-
 	# Appointment 
 	appointment = fields.Many2one(
 			'oeh.medical.appointment',			
-			string='Cita #', 
+			
+			#'Cita #', 
+			'Cita', 
 			
 			#required=False, 
 			required=True, 
@@ -91,8 +161,6 @@ class Control(models.Model):
 			#ondelete='cascade', 
 		)
 
-
-	# Appointemnt
 	@api.onchange('appointment')
 	def _onchange_appointment(self):
 
@@ -103,51 +171,49 @@ class Control(models.Model):
 
 
 
+	# State Appointment 
+	state_app = fields.Selection(
+			selection = app_vars._state_list, 
 
-# ----------------------------------------------------------- Dates ------------------------------------------------------
+			string = 'Estado Cita', 
+
+			compute='_compute_state_app', 
+		)
+	
+	@api.multi
+	#@api.depends('state')
+	def _compute_state_app(self):
+		for record in self:
+			
+			record.state_app = record.appointment.state
 
 
-	# Default - First Date 
-	#@api.model
-	#def _get_first_date(self):
-		#first_date = self.control_date
-	#	first_date = self.appointment.appointment_date	
-	#	return first_date
 
+	# Nr Days after Session
+	nr_days = fields.Integer(
+			'Nr Dias', 
 
-
-	# Control date 
-	#first_date = fields.Datetime(
-	first_date = fields.Date(
-		
-			string = "Fecha Inicial", 	
-		
-			#default=_get_first_date, 
-			#compute='_compute_first_date', 
+			compute='_compute_nr_days', 
 		)
 
-	#@api.multi
+	@api.multi
 	#@api.depends('state')
-	#def _compute_first_date(self):
-	#	for record in self:
-	#		if record.first_date == False: 		
-	#			record.first_date = record.control_date
+	def _compute_nr_days(self):
+		for record in self:
+			
+			if record.control_date == False: 
+				#if record.procedure.session_date != False and record.first_date != False: 
+				#record.nr_days = appfuncs.get_nr_days(self, record.procedure.evaluation_start_date, record.first_date)
+				record.nr_days = appfuncs.get_nr_days(self, record.procedure.session_date, record.first_date)
+
+			else:
+				#if record.procedure.session_date != False and record.control_date != False: 
+				record.nr_days = appfuncs.get_nr_days(self, record.procedure.session_date, record.control_date)
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-# ----------------------------------------------------------- Re Definition ------------------------------------------------------
 
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
@@ -203,26 +269,6 @@ class Control(models.Model):
 
 
 
-	# Dates 
-	#evaluation_start_date = fields.Date(	
-	evaluation_start_date = fields.Datetime(
-	
-			string = "Fecha - jx", 	
-	
-			#required=True, 
-			required=False, 
-		
-			compute='_compute_evaluation_start_date', 
-		)
-
-	@api.multi
-	#@api.depends('state')
-
-	def _compute_evaluation_start_date(self):
-		for record in self:
-
-			#record.evaluation_start_date = record.appointment.x_date
-			record.evaluation_start_date = record.appointment.appointment_date
 
 
 
@@ -237,7 +283,10 @@ class Control(models.Model):
 
 	# Done
 	x_done = fields.Boolean(
-			string="Realizado", 			
+			
+			#string="Realizado", 			
+			string="R", 			
+			
 			default=False,
 
 			#compute='_compute_x_done', 
@@ -259,7 +308,10 @@ class Control(models.Model):
 	# Evaluation Nr
 	#control_nr = fields.Integer(
 	evaluation_nr = fields.Integer(
-			string="Control #", 
+
+			#string="Control #", 
+			string="#", 
+		
 			default=1, 
 
 			#compute='_compute_control_nr', 

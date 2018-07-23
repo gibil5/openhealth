@@ -17,6 +17,7 @@ import procedure_funcs
 import time_funcs
 
 
+
 #------------------------------------------------ Create Sessions ---------------------------------------------------
 
 @api.multi
@@ -28,10 +29,10 @@ def create_sessions(self):
 
 
 	# Clean 
-	rec_set = self.env['openhealth.session.med'].search([
-															('procedure', '=', self.id), 
-													])
-	ret = rec_set.unlink()
+	#rec_set = self.env['openhealth.session.med'].search([
+	#														('procedure', '=', self.id), 
+	#												])
+	#ret = rec_set.unlink()
 
 
 
@@ -82,7 +83,7 @@ def create_sessions(self):
 				#4 :	60,
 				#5 :	120,
 
-				0 :	0,
+				#0 :	0,
 				1 :	1,
 				2 :	2,
 				3 :	3,
@@ -105,7 +106,8 @@ def create_sessions(self):
 
 
 	#for k in range(0,1): 						# Testing 
-	for k in range(0,self.number_sessions): 
+	#for k in range(0,self.number_sessions): 
+	for k in range(1,self.number_sessions): 
 
 		# Init 
 		delta = 0 
@@ -124,14 +126,15 @@ def create_sessions(self):
 
 			# Search Appointment 
 			appointment = self.env['oeh.medical.appointment'].search([ 	
-																		('appointment_date', '=', app_date),	
+																		('appointment_date', '=', app_date),
+
 																		('patient', '=', self.patient.name),	
 																		('doctor', '=', self.doctor.name), 																				
 
-																		#('x_type', '=', 'procedure'), 
-																		('x_type', '=', 'session'), 
+																		#('x_type', '=', 'session'), 
+																		('x_type', '=', 'procedure'), 
+																		
 																		('x_subtype', '=', subtype), 
-
 																	], 
 																		order='appointment_date desc', limit=1)
 			#print appointment

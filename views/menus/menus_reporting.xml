@@ -177,7 +177,6 @@
 
 
 
-<!--
 				<menuitem 	id="sales_report_sales_july_menu" 
 							parent="sales_reports_menu"
 							sequence="7"
@@ -189,6 +188,7 @@
 
 
 
+<!--
 				<menuitem 	id="sales_report_sales_august_menu" 
 							parent="sales_reports_menu"
 							sequence="8"

@@ -639,10 +639,24 @@ class Management(models.Model):
 		print 
 
 
+		# Checksum 
+
+		# Orders 
+		orders,count = mgt_funcs.get_orders_filter_all(self, self.date_begin, self.date_end)
+
+		# All 
+		for order in orders: 
+			order.check_payment_method()
+			order.check_sum()
+
+
+
+
+		# Serial Number 
+
 		# Init 
 		serial_nr_last = 0 
 		self.nr_delta = 0 
-
 
 		# Orders 
 		x_type = 'ticket_receipt'
@@ -650,26 +664,20 @@ class Management(models.Model):
 		#print count
 		#print orders
 		
-
 		# All 
 		for order in orders: 
 		
+			# Serial Nr
 			serial_nr = int(order.x_serial_nr.split('-')[1])
-
-
 			if serial_nr_last != 0:
 				delta = serial_nr - serial_nr_last
 			else:
 				delta = 1
-				
-
 			if delta == 2: 
 				self.nr_delta = self.nr_delta + 1
-
-
 			order.x_delta = delta
-
 			serial_nr_last = serial_nr
+
 
 			#print order 
 			#print order.x_serial_nr

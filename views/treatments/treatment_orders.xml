@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 <openerp>
 	<data>
+
+
+
+		<!-- Orders-->
 		<record model="ir.ui.view" id="treatment_quotation_form_view">
 			<field name="name">treatment.quotation.form</field>
 			<field name="model">openhealth.treatment</field>

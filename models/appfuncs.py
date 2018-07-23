@@ -3,9 +3,8 @@
 # 		*** App Funcs
 # 
 # Created: 			26 Aug 2016
-# Last up: 	 		 7 Jul 2018
+# Last up: 	 		20 Jul 2018 
 #
-
 
 from openerp import models, fields, api
 import datetime
@@ -14,6 +13,80 @@ import datetime
 
 
 
+
+#------------------------------------------------ Appointment Handlers ---------------------------------------------------
+
+# Update App Handlers 
+@api.multi
+def update_appointment_handlers(self, appointment_id, consultation_id, procedure_id, session_id, control_id):
+
+	print 
+	print 'Update Appointment Handlers'
+
+	# Get all Apps 	
+	rec_set = self.env['oeh.medical.appointment'].browse([
+															appointment_id
+														])
+
+	ret = rec_set.write({
+							'consultation': consultation_id,
+							'procedure': 	procedure_id,
+							'session': 		session_id,
+							'control': 		control_id,
+						})
+
+
+
+
+
+
+# ----------------------------------------------------------- Get Nr Days--------------------------------------------
+
+# Nr Days 
+@api.multi
+def get_nr_days(self, date_ref_str, date_str): 
+
+	print 
+	print 'Get Nr Days'
+	print date_ref_str
+	print date_str
+
+	delta_days = 0 
+	
+
+	if date_ref_str != False and date_str != False: 
+
+		date_ref_str = date_ref_str.split()[0]
+		date_str = date_str.split()[0]
+
+
+		print date_ref_str
+		print date_str
+
+		
+		#date_format = "%Y-%m-%d %H:%M:%S"
+		date_format = "%Y-%m-%d"
+
+
+		date_ref_dt = datetime.datetime.strptime(date_ref_str, date_format)
+		date_dt = datetime.datetime.strptime(date_str, date_format)
+
+
+		print date_ref_dt
+		print date_dt
+
+
+
+		delta = date_dt - date_ref_dt
+	
+		#delta_sec = delta.total_seconds()
+
+		#delta_days = delta.total_days()
+		delta_days = delta.days
+
+
+	#return 1
+	return delta_days
 
 
 

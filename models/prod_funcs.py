@@ -9,6 +9,12 @@ _hap = {
 			'other':         	'Otros', 
 
 
+			'infiltration': 		'Infiltración', 
+			
+			'infiltration_scar': 	'Infiltración Cicatriz', 
+			'infiltration_keloid': 	'Infiltración Queloide', 
+
+
 
 			'x': 'x', 
 			'laser_m22': 			'M22', 
@@ -26,8 +32,6 @@ _hap = {
 
 
 			# Medical 
-			'infiltration_scar': 	'Infiltración Cicatriz', 
-			'infiltration_keloid': 	'Infiltración Queloide', 
 
 			'criosurgery':         	'Criocirugía', 
 			'plasma':         		'Plasma', 

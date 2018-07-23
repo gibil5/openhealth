@@ -36,6 +36,53 @@ class Procedure(models.Model):
 
 
 
+# ----------------------------------------------------------- Dates ------------------------------------------------------
+
+	# Date 
+	evaluation_start_date = fields.Datetime(
+			string = "Fecha y hora", 	
+			#default = fields.Date.today, 
+			required=True, 
+			
+			#readonly=True, 
+			readonly=False, 
+		)
+
+
+	# Session Date 
+	session_date = fields.Datetime(
+			
+			string = "Fecha Sesion", 	
+			
+			#default = fields.Date.today, 
+			#required=True, 
+			
+			readonly=True, 
+			#readonly=False, 
+
+			compute='_compute_session_date', 
+		)
+
+
+	@api.multi
+	#@api.depends('state')
+	def _compute_session_date(self):
+		for record in self:
+			
+			first = True 
+
+			for session in record.session_ids: 
+			
+				if first: 
+
+					record.session_date = session.evaluation_start_date
+
+					first = False
+
+
+
+
+
 
 # ----------------------------------------------------------- Redefinition ------------------------------------------------------
 
@@ -108,7 +155,6 @@ class Procedure(models.Model):
 		)
 
 
-
 	# Update App  
 	@api.multi	
 	def update_appointment(self):
@@ -138,7 +184,7 @@ class Procedure(models.Model):
 
 
 
-# ----------------------------------------------------------- Actions ------------------------------------------------------
+# ----------------------------------------------------------- Creates ------------------------------------------------------
 
 	# Create Controls 
 	@api.multi	
@@ -148,10 +194,13 @@ class Procedure(models.Model):
 
 
 
+
 	# Create Sessions 
 	@api.multi	
 	def create_sessions(self): 
+		
 		ret = pro_ses_funcs.create_sessions(self)
+	
 	# create_sessions
 
 

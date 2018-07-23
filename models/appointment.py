@@ -28,11 +28,76 @@ class Appointment(models.Model):
 
 
 
-	# ----------------------------------------------------------- Tmp ------------------------------------------------------
+	# ----------------------------------------------------------- Deprecated ------------------------------------------------------
 
-	x_target = fields.Char()
+	#x_target = fields.Char()
 
-	x_machine = fields.Char()
+	#x_machine = fields.Char()
+
+
+
+
+
+	#----------------------------------------------------------- Hot Button - For Treatment ------------------------------------------------------------
+
+	# For Treatments Quick access
+	@api.multi
+	def open_line_current(self):  
+
+		res_id = self.id 
+
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' Edit Order Current', 
+				'view_type': 'form',
+				'view_mode': 'form',
+				'res_model': self._name,
+
+				'res_id': res_id,
+				
+				'target': 'current',
+				'flags': {
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						'form': {'action_buttons': True, }
+						},
+				'context': {}
+		}
+
+
+
+
+
+	# ----------------------------------------------------------- Dates ------------------------------------------------------
+
+	# Date Start 
+	appointment_date = fields.Datetime(
+			string="Fecha", 
+			readonly=False,
+			#states={'Scheduled': [('readonly', False)]}), 
+		
+			#default = fields.Date.today, 
+		)
+
+	@api.onchange('appointment_date')
+	def _onchange_appointment_date(self):
+		print
+		print 'Change Date'
+		#print self.x_type
+		
+		if self.x_type == 'control': 
+			
+			print 'Gotcha !'
+			
+			#print self.control.control_date
+			#print self.control.evaluation_start_date
+			
+			#self.control.control_date = self.appointment_date
+			#self.control.evaluation_start_date = self.appointment_date
+
+			#print self.control.control_date
+			#print self.control.evaluation_start_date
+
+			#self.control.update_dates(self.appointment_date)
 
 
 
@@ -76,14 +141,6 @@ class Appointment(models.Model):
 		)
 
 	
-	# Date Start 
-	appointment_date = fields.Datetime(
-			string="Fecha", 
-			readonly=False,
-			#states={'Scheduled': [('readonly', False)]}), 
-		
-			#default = fields.Date.today, 
-		)
 
 
 	# Date End 
@@ -175,23 +232,6 @@ class Appointment(models.Model):
 
 
 
-	# Date 
-	x_date = fields.Date(
-			string="Fecha", 
-		)
-
-	@api.onchange('appointment_date')
-	def _onchange_x_date(self):
-		#print 
-		#print 'On Change - App Date'
-
-		if self.appointment_date != False: 
-			#print 'Gotcha !'
-			date_format = "%Y-%m-%d %H:%M:%S"
-			#dt = datetime.datetime.strptime(self.appointment_date, date_format)
-			dt = datetime.datetime.strptime(self.appointment_date, date_format) + datetime.timedelta(hours=-5,minutes=0)		# Correct for UTC Delta 
-			self.x_date = dt.strftime("%Y-%m-%d")
-
 
 
 
@@ -282,7 +322,8 @@ class Appointment(models.Model):
 			ondelete='cascade', 
 		)
 
-	session = fields.Many2one('openhealth.session',
+	#session = fields.Many2one('openhealth.session',
+	session = fields.Many2one('openhealth.session.med',
 			string="Sesión",
 
 			ondelete='cascade', 
@@ -506,6 +547,27 @@ class Appointment(models.Model):
 
 
 # ----------------------------------------------------------- CRUD ------------------------------------------------------
+
+	# Write 
+	#@api.model
+	#def write(self,vals):
+
+	#	print 
+	#	print 'Appointment - Write'
+
+
+		#Write your logic here
+	#	res = super(Appointment, self).write(vals)
+		#Write your logic here
+
+		#print res.control
+		#print res.appointment_date
+		#res.control.update_dates(res.appointment_date)
+
+	#	return res
+	# CRUD - Write 
+
+
 
 	# Create 
 	@api.model

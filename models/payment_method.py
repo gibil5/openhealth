@@ -26,7 +26,9 @@ class PaymentMethod(models.Model):
 		#'payment': 	[('readonly', True)], 
 		#'generated': 	[('readonly', True)], 
 		'sale': 		[('readonly', False)], 
-		'done': 		[('readonly', True)], 	
+
+		#'done': 		[('readonly', True)], 	
+		'done': 		[('readonly', False)], 	
 	}
 
 

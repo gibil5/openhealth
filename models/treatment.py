@@ -3,7 +3,7 @@
 # 		*** Treatment
 # 
 # Created: 			26 Aug 2016
-# Last up: 	 		 4 Jul 2018
+# Last up: 	 		19 Jul 2018
 #
 
 from openerp import models, fields, api
@@ -30,38 +30,9 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Test  ------------------------------------------------------
+# ----------------------------------------------------------- Test  Cases ------------------------------------------------------
 
-
-
-
-
-# ----------------------------------------------------------- Update Apps  ------------------------------------------------------
-	@api.multi
-	def update_appointments(self):
-		
-		print 
-		print 'Update Appointments'
-
-		# Consultations 
-		for consultation in self.consultation_ids: 
-			if consultation.appointment.appointment_date != False: 			
-				consultation.evaluation_start_date = consultation.appointment.appointment_date
-
-		# Sessions 
-		for session in self.session_ids: 
-			if session.appointment.appointment_date != False: 
-				session.evaluation_start_date = session.appointment.appointment_date
-
-
-
-
-
-
-# ----------------------------------------------------------- Test Cases ------------------------------------------------------
-
-
-	# Test - Case One - Integration - Treatment
+	# One - Integration - Treatment
 	@api.multi 
 	def test_case_one(self):
 
@@ -70,11 +41,13 @@ class Treatment(models.Model):
 
 		if self.patient.x_test: 
 
+			self.reset()
+
 			self.test_integration()
 
 
 
-	# Test - Case Two - Unit - Appointment
+	# Two - Unit - Appointment
 	@api.multi 
 	def test_case_two(self):
 
@@ -86,7 +59,21 @@ class Treatment(models.Model):
 			self.test_appointment()
 
 
+	# Three - Reset 
+	@api.multi 
+	def test_case_reset(self):
+		print 
+		print 'Test Case - Reset'
 
+		if self.patient.x_test: 
+			print 'Is a Tester'
+			self.reset()
+		else: 
+			print 'Not a Tester'
+
+
+
+# ----------------------------------------------------------- Test Appointment  ------------------------------------------------------
 
 	# Test - Appointment 
 	@api.multi 
@@ -145,6 +132,22 @@ class Treatment(models.Model):
 
 
 # ----------------------------------------------------------- Create Appointment  ------------------------------------------------------
+
+	# Appointment 
+	@api.multi 
+	def create_appointment_consultation(self):
+
+		# Consultation
+		x_type = 'consultation'
+		subtype = 'consultation'
+		state = 'pre_scheduled'
+		
+		self.create_appointment_nex(x_type, subtype, state)
+
+
+
+
+
 
 	# Appointment 
 	@api.multi 
@@ -279,6 +282,27 @@ class Treatment(models.Model):
 
 
 
+# ----------------------------------------------------------- Update Apps  ------------------------------------------------------
+	@api.multi
+	def update_appointments(self):
+		
+		print 
+		print 'Update Appointments'
+
+		# Consultations 
+		for consultation in self.consultation_ids: 
+			if consultation.appointment.appointment_date != False: 			
+				consultation.evaluation_start_date = consultation.appointment.appointment_date
+
+		# Sessions 
+		for session in self.session_ids: 
+			if session.appointment.appointment_date != False: 
+				session.evaluation_start_date = session.appointment.appointment_date
+
+
+
+
+
 
 # ----------------------------------------------------------- Test - Integration  ------------------------------------------------------
 
@@ -338,11 +362,8 @@ class Treatment(models.Model):
 			#print service
 			self.service_quick_ids.create({
 												'service': 		service_id, 
-
 												'patient': 		self.patient.id, 
-
 												'physician': 	self.physician.id, 
-
 												'treatment': 	self.id, 
 				})
 
@@ -490,9 +511,9 @@ class Treatment(models.Model):
 
 			cos_short_names = [
 									'car_bod_rfa_30m_six', 		# Carboxi
-									'dit_fac_dfc_30m_one', 		# Diamond tip 
-									'tca_fdn_rfa_30m_six', 		# Triactive Carbo
-									'tcr_boa_rwm_one', 			# Tri Carbo Redu
+									#'dit_fac_dfc_30m_one', 		# Diamond tip 
+									#'tca_fdn_rfa_30m_six', 		# Triactive Carbo
+									#'tcr_boa_rwm_one', 			# Tri Carbo Redu
 			]
 
 
@@ -547,13 +568,15 @@ class Treatment(models.Model):
 
 
 
-		if True: 
-		#if False:	
-			print 
-			print 'Create Sessions'
-			for procedure in self.procedure_ids: 
+		#if True: 
+		if False:	
+			#print 
+			#print 'Create Sessions'
+			#for procedure in self.procedure_ids: 
 				#procedure.create_controls()
-				procedure.create_sessions()
+			#	procedure.create_sessions()
+			self.create_sessions()
+
 
 
 
@@ -572,17 +595,36 @@ class Treatment(models.Model):
 
 
 
+# ----------------------------------------------------------- Creates  ------------------------------------------------------
+	
+	# Create Procedure 
+	@api.multi
+	def create_procedure(self, date_app, subtype, product_id):
+		
+		#print 
+		#print 'Create Procedure'
+
+		ret = treatment_funcs.create_procedure_go(self, date_app, subtype, product_id)
+
+	# create_procedure 
+
+
+
+	# Create Sessions  
+	@api.multi 
+	def create_sessions(self):
+
+		print 
+		print 'Create Sessions'
+		
+		for procedure in self.procedure_ids: 
+			procedure.create_sessions()
+
+
+
+
 # ----------------------------------------------------------- Test - Reset ------------------------------------------------------
 	
-	# Test - Case Reset 
-	@api.multi 
-	def test_case_reset(self):
-		#print 
-		#print 'Test Case - Reset'
-		if self.patient.x_test: 
-			self.reset()
-
-
 	# Clear  
 	@api.multi 
 	def clear(self):
@@ -794,27 +836,6 @@ class Treatment(models.Model):
 
 
 
-
-# ----------------------------------------------------------- Create Procedures  ------------------------------------------------------
-	@api.multi
-	def create_procedure(self, date_app, subtype, product_id):
-		
-		#print 
-		#print 'Create Procedure'
-		#print date_app  
-		#print subtype
-
-
-		#if self.nr_invoices_pro > 0:
-		if True:
-
-			#ret = treatment_funcs.create_procedure_go(self)
-			#ret = treatment_funcs.create_procedure_go(self, date_app, self.id, self.patient.id, self.chief_complaint)
-			#ret = treatment_funcs.create_procedure_go(self, date_app)
-			#ret = treatment_funcs.create_procedure_go(self, date_app, subtype)
-			ret = treatment_funcs.create_procedure_go(self, date_app, subtype, product_id)
-
-	# create_procedure 
 
 
 
@@ -1623,8 +1644,10 @@ class Treatment(models.Model):
 			price_applied = 0
 			ret = order.x_create_order_lines_target(target_line, price_manual, price_applied)
 			
+
 		else:  		# Procedures 
 			order_id = order.id
+
 			ret = treatment_funcs.create_order_lines(self, 'vip', order_id)
 			ret = treatment_funcs.create_order_lines(self, 'quick', order_id)
 			ret = treatment_funcs.create_order_lines(self, 'co2', order_id)
@@ -1632,6 +1655,9 @@ class Treatment(models.Model):
 			ret = treatment_funcs.create_order_lines(self, 'ipl', order_id)
 			ret = treatment_funcs.create_order_lines(self, 'ndyag', order_id)
 			ret = treatment_funcs.create_order_lines(self, 'medical', order_id)
+
+			ret = treatment_funcs.create_order_lines(self, 'cosmetology', order_id)
+
 
 		return order
 	# create_order

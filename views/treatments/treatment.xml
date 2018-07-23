@@ -55,12 +55,13 @@
 											'default_x_target' : 'doctor', 
 											'default_x_type': 'consultation', 
 									}" 											
+							name="create_appointment_nex" 
 -->
 						<button 
 							class="oe_highlight"
 							type="object" 
 
-							name="create_appointment_nex" 
+							name="create_appointment_consultation" 
 
 							groups="openhealth.roots,openhealth.reception,openhealth.managers,openhealth.directors"
 
@@ -1065,7 +1066,8 @@ Fields
 
 
 
-								<!-- Test --> 
+								<!-- Test Apps --> 
+<!--
 								<button 
 									type="object" 
 									class="oe_highlight"
@@ -1076,6 +1078,7 @@ Fields
 
 									groups="openhealth.roots"									
 								/>
+-->
 
 
 

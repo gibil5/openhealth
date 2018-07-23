@@ -35,6 +35,16 @@ class sale_order(models.Model):
 	
 
 
+# ----------------------------------------------------------- User ------------------------------------------------------
+	#user_id = fields.Many2one(
+	#		'res.users', 
+	#		string='Salesperson', 
+	#		index=True, 
+	#		track_visibility='onchange', 
+	#		default=lambda self: self.env.user
+	#	)
+
+
 
 # ----------------------------------------------------------- Pay ------------------------------------------------------
 	# Test  

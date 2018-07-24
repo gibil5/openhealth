@@ -14,11 +14,13 @@
 
 	'description': """
 
-		23 July 2018 
+		24 July 2018 
 
 		Fulcrum 
 		
 		Code without Tests is broken by design.
+
+		Criteria Based Testing (or bust). 
 
 		Stability by Design. Simplicity by Abstraction. 
 
@@ -517,7 +519,11 @@
 		'views/legacy/legacy_manager_order.xml',
 		'views/legacy/legacy_manager_patient.xml',
 		'views/legacy/legacy_order.xml',
-		'views/menus/menus_legacy.xml',
+
+		#'views/menus/menus_legacy.xml',
+
+		'views/menus/menus_qc.xml',
+
 
 
 

@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+
+
+<!-- Quality Control --> 
+<menuitem 	id="main_qc_menu" 
+
+			sequence="-11"
+
+			name="QC"
+
+			groups="openhealth.roots,openhealth.directors"
+		/>
+
+
+
+
+<!-- Sales --> 
+		<menuitem 	id="qc_sales_menu" 
+
+					parent="main_qc_menu"
+			
+					sequence="1"
+
+					name="Ventas"			
+				/>
+
+
+			<!-- Delta --> 			
+			<menuitem 	id="qc_sales_all_delta_menu" 
+
+						parent="qc_sales_menu"
+				
+						sequence="6"
+
+						name="Delta" 
+
+						action="order_list_delta_action"
+					/>
+
+
+
+			<!-- Checksum --> 			
+			<menuitem 	id="qc_sales_all_checksum_menu" 
+				
+						parent="qc_sales_menu"
+				
+						sequence="7"
+
+						name="Checksum" 
+
+						action="order_list_checksum_action"
+					/>
+
+
+
+
+
+
+	</data>
+</openerp>

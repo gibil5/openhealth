@@ -7,7 +7,7 @@
 
 
 <!-- Legacy --> 
-<menuitem 	id="main_qc_menu" 
+<menuitem 	id="main_legacy_menu" 
 
 			sequence="-7"
 
@@ -20,13 +20,10 @@
 
 
 
-
-
-
 <!-- Managers --> 
 		<menuitem 	id="qc_legacy_manager_menu" 
 
-					parent="main_qc_menu"
+					parent="main_legacy_menu"
 			
 					sequence="1"
 
@@ -87,7 +84,7 @@
 <!-- Patients --> 
 		<menuitem 	id="patient_legacy_menu" 
 
-					parent="main_qc_menu"
+					parent="main_legacy_menu"
 			
 					sequence="2"
 
@@ -178,11 +175,14 @@
 
 
 <!-- Qc Prod --> 
+<!--
+			name="QC Prod"
+--> 
 <menuitem 	id="main_qc_prod_menu" 
 
 			sequence="-7"
 
-			name="QC Prod"
+			name="Legacy Prod"
 
 			
 			groups="openhealth.roots,openhealth.directors"
@@ -236,7 +236,7 @@
 <!-- Orders --> 
 		<menuitem 	id="order_legacy_menu" 
 
-					parent="main_qc_menu"
+					parent="main_legacy_menu"
 			
 					sequence="3"
 

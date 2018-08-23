@@ -135,10 +135,8 @@ class sale_order(models.Model):
 			'sale.order.line', 
 			'order_id', 
 			string='Order Lines', 
-
 			#states=READONLY_STATES, 			# By XML 
 		)
-
 
 
 
@@ -319,10 +317,8 @@ class sale_order(models.Model):
 		print 'Validate'
 
 
-
 		# Payment method validation
 		self.check_payment_method()
-
 
 
 		# Doctor User Name
@@ -331,25 +327,20 @@ class sale_order(models.Model):
 			self.x_doctor_uid = uid
 
 
-
 		# Date - Must be that of the Sale, not the Budget. 
 		self.date_order = datetime.datetime.now()
-
 
 
 		# Update Descriptors (family and product) 
 		self.update_descriptors()
 
 
-
 		# Change Appointment State - To Invoiced 
 		self.update_appointment()
 
 
-
 		# Vip Card - Detect and Create 
 		self.detect_create_card()
-
 
 
 		# Type 

@@ -167,6 +167,15 @@
 
 
 
+
+		# ----------------------------------------------------------- Actions ------------------------------------------------------
+		'reports/patient.xml',
+		'views/patients/patient_actions.xml',
+		'views/menus/menus_account.xml',
+
+
+
+
 		# ----------------------------------------------------------- Recent ------------------------------------------------------
 
 		# Reports
@@ -182,7 +191,6 @@
 		'views/payment_methods/payment_method_line.xml',
 		'views/account/account_line.xml',
 		'views/account/account_contasis.xml',
-		'views/menus/menus_account.xml',
 
 
 		# Marketing 
@@ -225,7 +233,6 @@
 		# ----------------------------------------------------------- Reports ------------------------------------------------------
 
 		# Patient
-		'reports/patient.xml',
 		'reports/patient_consultation.xml',
 		'reports/patient_sessions.xml',
 		'reports/patient_controls.xml',
@@ -405,7 +412,6 @@
 		# Patients 
 		'views/patients/patient.xml',
 
-		'views/patients/patient_actions.xml',
 
 		'views/patients/patient_search.xml',
 

@@ -526,5 +526,36 @@ Relax !
 
 
 
+<!-- TREE 2 -->
+		<record model="ir.ui.view" id="openhealth.oeh_medical_patient_tree_2">
+			<field name="name">patient.tree</field>
+			<field name="model">oeh.medical.patient</field>
+			<field name="arch" type="xml">	
+
+				<tree string="Patient Tree" >
+
+					<field name="name"/>
+					<field name="x_id_code"/>		
+
+
+					<field name="x_dni"/>
+					<field name="x_firm"/>
+					<field name="x_ruc"/>
+					<field name="x_id_doc"		string="Otro"/>
+					<field name="x_id_doc_type"	string="Tipo"/>
+
+					<field name="city"			string="Depto"/>					
+					<field name="street2_sel"/>
+					<field name="zip"/>					
+					<field name="street"/>
+
+					<field name="phone"/>
+					<field name="mobile"/>
+					<field name="email"			string="Email"	/>		
+
+				</tree>
+			</field>
+		</record>
+
 	</data>
 </openerp>

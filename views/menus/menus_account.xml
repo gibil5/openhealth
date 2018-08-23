@@ -37,17 +37,26 @@
 
 		<!-- Account Contasis - Caja -->
 		<menuitem id="account_conta_cash_menu" 
-			
 			name="Ventas - Caja" 
-			
 			parent="account_menu"
-			
 			sequence="1"
 			
 			action="account_contasis_cash_list_action"
 
 			groups="openhealth.roots,openhealth.caja"
 			/>
+
+
+
+
+		<!-- Patients --> 
+		<menuitem 	id="account_emr_patients_menu" 
+					name="Pacientes Con Nr H" 
+					parent="account_menu"
+					sequence="2"
+
+					action="account_patient_list_action"
+				/>
 
 
 

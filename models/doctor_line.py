@@ -170,7 +170,8 @@ class DoctorLine(models.Model):
 												'doctor_id': self.id, 
 											})
 
-			family.update_fields()
+			#family.update_fields()
+			family.update()
 
 
 
@@ -219,7 +220,8 @@ class DoctorLine(models.Model):
 														'doctor_id': self.id, 
 												})
 
-			sub_family.update_fields()
+			#sub_family.update_fields()
+			sub_family.update()
 
 
 

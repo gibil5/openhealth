@@ -963,7 +963,8 @@ class Management(models.Model):
 													'management_id': self.id, 
 												})
 
-			family.update_fields()
+			#family.update_fields()
+			family.update()
 
 			#print key 
 			#print count
@@ -999,7 +1000,8 @@ class Management(models.Model):
 												})
 
 
-			sub_family.update_fields()
+			#sub_family.update_fields()
+			sub_family.update()
 
 			#print key 
 			#print count

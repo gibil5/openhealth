@@ -15,6 +15,20 @@
 				<xpath expr="//h1" position="replace">
 					<h1>Láser M22-NDYAG</h1>					
         		</xpath>
+
+<!--
+				<xpath expr="//field[@name='laser']" position="after">
+
+					<field name="vspace" />
+
+					<field name="zone" 			invisible="0"						/>
+
+					<field name="vspace" />
+
+					<field name="pathology" 	readonly="0"  	invisible="0"		/>									
+        		</xpath>				
+-->
+
 			</field>
 
 		</record>		
@@ -64,12 +78,6 @@
 			</field>
 		</record>
 -->
-
-
-
-
-
-
 
 
 	</data>

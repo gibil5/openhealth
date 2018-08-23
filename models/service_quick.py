@@ -197,13 +197,9 @@ class ServiceQuick(models.Model):
 			nr = self.nr_neck_hands
 
 
-
-
 		else:
-			print 'Error: This should not happen !'
+			#print 'Error: This should not happen !'
 			nr = -1
-
-
 
 		return nr 
 

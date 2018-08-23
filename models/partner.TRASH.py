@@ -306,3 +306,13 @@
 
 
 
+
+# 17 Aug 2018 
+
+	#x_quotation_ids = fields.One2many(
+	#		'openhealth.quotation', 		
+	#		'partner_id', 
+	#		string="Cotizacion"
+	#	)
+
+

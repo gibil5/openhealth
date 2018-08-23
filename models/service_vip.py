@@ -5,14 +5,6 @@
 
 from openerp import models, fields, api
 
-#from datetime import datetime
-#from . import service_vip_vars
-#from . import serv_funcs
-#from . import prodvars
-
-
-
-
 class Servicevip(models.Model):
 
 	_inherit = 'openhealth.service'
@@ -29,9 +21,10 @@ class Servicevip(models.Model):
 			domain = [
 						#('type', '=', 'service'),
 						#('type', '=', 'product'),
-						
 						#('default_code', '=', '57'),
-						('default_code', '=', '495'),
+
+						#('default_code', '=', '495'),
+						('type', '=', 'product'),
 					],
 
 

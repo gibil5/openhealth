@@ -56,14 +56,14 @@
 											'default_x_type': 'consultation', 
 									}" 											
 							name="create_appointment_nex" 
+
+							groups="openhealth.roots,openhealth.reception,openhealth.managers,openhealth.directors"
 -->
 						<button 
 							class="oe_highlight"
 							type="object" 
 
 							name="create_appointment_consultation" 
-
-							groups="openhealth.roots,openhealth.reception,openhealth.managers,openhealth.directors"
 
 							states="empty"
 							
@@ -175,6 +175,7 @@
 <!--
 							string="PRESUPUESTO" 
 							states="service"
+							string="Crear PRESUPUESTO - Procedimiento" 
 -->
 
 						<!-- Create Order --> 
@@ -183,7 +184,7 @@
 							class="oe_highlight"
 							name="create_order_pro" 
 
-							string="Crear PRESUPUESTO - Procedimiento" 
+							string="Crear PRESUPUESTO - Pro" 
 
 							states="service"
 
@@ -388,24 +389,15 @@ Add Procedures
 
 					<!-- Sheet -->	
 					<sheet>
-
-
 						<div>						
-
-
-
 
 							<!-- Persona --> 
 							<div class="oe_left"  style="width: 250px;">
 								<div class="oe_title" >
 									<h1 class="jx_title">Tratamiento</h1>	
 								</div>		
-
 								<group></group>
-
-								<h2>
-									<field name="patient"/>
-								</h2>
+									<h2><field name="patient"/></h2>
 							</div>
 
 
@@ -591,6 +583,28 @@ Add Procedures
 
 
 
+								<!-- Nr of Services - product --> 
+								<button type="action" class="oe_stat_button" icon="fa-list"
+
+
+									name="%(service_product_list_action)d"	
+
+									context="{									
+												'search_default_treatment': active_id,
+											}" 											
+
+									attrs="{ 'invisible':[	('nr_services_product','=',0), ]}"
+
+									>
+
+
+									<field string="Reco Prod" name="nr_services_product" widget="statinfo"/>
+								</button>
+
+
+
+
+
 								<!-- Nr of Services - vip --> 
 								<button type="action" class="oe_stat_button" icon="fa-list"
 
@@ -606,7 +620,7 @@ Add Procedures
 									>
 
 
-									<field string="Rec. vip" name="nr_services_vip" widget="statinfo"/>
+									<field string="Reco vip" name="nr_services_vip" widget="statinfo"/>
 								</button>
 
 
@@ -615,7 +629,7 @@ Add Procedures
 
 
 
-								<!-- Nr of Services - quick --> 
+								<!-- Nr of Services - Quick --> 
 								<button type="action" class="oe_stat_button" icon="fa-list"
 
 									name="%(service_quick_list_action)d"	
@@ -627,7 +641,7 @@ Add Procedures
 											}" 											
 									>
 
-									<field string="Rec. Quick" name="nr_services_quick" widget="statinfo"/>
+									<field string="Reco Quick" name="nr_services_quick" widget="statinfo"/>
 								</button>
 
 
@@ -649,11 +663,11 @@ Add Procedures
 									attrs="{ 'invisible':[	('nr_services_co2','=',0), ]}"
 
 									context="{									
-											'search_default_treatment': active_id,
+												'search_default_treatment': active_id,
 											}" 											
 									>
 
-									<field string="Rec. Co2" name="nr_services_co2" widget="statinfo"/>
+									<field string="Reco Co2" name="nr_services_co2" widget="statinfo"/>
 								</button>
 
 
@@ -663,16 +677,18 @@ Add Procedures
 
 								<!-- Nr of Services - Exc --> 
 								<button type="action" class="oe_stat_button"  icon="fa-list"
+
 									name="%(service_excilite_list_action)d"	
 
 									attrs="{ 'invisible':[	('nr_services_excilite','=',0), ]}"
 
 									context="{									
-											'search_default_treatment': active_id,
+												'search_default_treatment': active_id,
 											}" 											
 									>
-									<field string="Recomendacion" name="nr_services_excilite" widget="statinfo"/>
+									<field string="Reco Exc" name="nr_services_excilite" widget="statinfo"/>
 								</button>
+
 
 
 
@@ -684,11 +700,12 @@ Add Procedures
 									attrs="{ 'invisible':[	('nr_services_ipl','=',0), ]}"
 
 									context="{									
-											'search_default_treatment': active_id,
+												'search_default_treatment': active_id,
 											}" 											
 									>
-									<field string="Recomendacion" name="nr_services_ipl" widget="statinfo"/>
+									<field string="Reco Ipl" name="nr_services_ipl" widget="statinfo"/>
 								</button>
+
 
 
 
@@ -700,11 +717,12 @@ Add Procedures
 									attrs="{ 'invisible':[	('nr_services_ndyag','=',0), ]}"
 
 									context="{									
-											'search_default_treatment': active_id,
+												'search_default_treatment': active_id,
 											}" 											
 									>
-									<field string="Recomendacion" name="nr_services_ndyag" widget="statinfo"/>
+									<field string="Reco Ndyag" name="nr_services_ndyag" widget="statinfo"/>
 								</button>
+
 
 
 
@@ -716,10 +734,10 @@ Add Procedures
 									attrs="{ 'invisible':[	('nr_services_medical','=',0), ]}"
 
 									context="{									
-											'search_default_treatment': active_id,
+												'search_default_treatment': active_id,
 											}" 											
 									>
-									<field string="Recomendacion" name="nr_services_medical" widget="statinfo"/>
+									<field string="Reco TM" name="nr_services_medical" widget="statinfo"/>
 								</button>
 
 
@@ -735,10 +753,10 @@ Add Procedures
 									attrs="{ 'invisible':[	('nr_services_cosmetology','=',0), ]}"
 
 									context="{									
-											'search_default_treatment': active_id,
+												'search_default_treatment': active_id,
 											}" 											
 									>
-									<field string="Recomendacion" name="nr_services_cosmetology" widget="statinfo"/>
+									<field string="Reco Cosmia" name="nr_services_cosmetology" widget="statinfo"/>
 								</button>
 
 
@@ -813,7 +831,7 @@ Add Procedures
 									attrs="{ 'invisible':[	('nr_procedures','=',0), ]}"
 
 									>
-									<field string="Procedimiento" name="nr_procedures" widget="statinfo"/>
+									<field string="Proc" name="nr_procedures" widget="statinfo"/>
 								</button>
 						
 
@@ -867,10 +885,21 @@ Add Procedures
 							<div class="oe_right" >
 								<div class="oe_title" >
 									<label class="oe_edit_only" for="name" string="Tratamiento #"/>
+									
 									<h1><field name="name" class="oe_inline"/></h1>
-								</div>
-							</div>
 
+								</div>
+
+								<!-- Reload --> 
+								<button 
+									type="object" 
+									class="oe_highlight"
+									name="test_case_reload" 	
+
+									string="Cargar"
+								/>
+
+							</div>
 						</div>
 						
 
@@ -965,6 +994,7 @@ Fields
 									name="create_order_pro" 
 									name="create_procedure" 
 
+									string="CONSULTA"
 -->
 							
 
@@ -977,13 +1007,16 @@ Fields
 
 									name="create_consultation" 
 
-									string="CONSULTA"
+									string="CONS"
 								/>
 							</group>
 
 
 
 							<group>
+<!--
+									string="RECOM"
+-->								
 								<button 
 									type="object" 
 									class="oe_highlight"
@@ -992,7 +1025,7 @@ Fields
 
 									name="create_service" 
 
-									string="RECOM"
+									string="RECO"
 								/>
 							</group>
 
@@ -1024,15 +1057,34 @@ Fields
 
 									string="PROC" 
 								/>
+
+
+
+								<button 
+									type="object" 
+									class="oe_highlight"
+									
+									attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
+									
+									groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
+
+									name="create_controls" 
+
+									string="CTRL" 
+								/>
+
+
 							</group>
 
 
 							<!-- Create Flags --> 
 							<group 		groups="openhealth.roots"	>
+
+								<field name="product_create"/>
+
 								<field name="vip_create"/>
 								<field name="med_create"/>
 								<field name="cos_create"/>
-								<field name="ndy_create"/>
 							</group>
 
 							<group 		groups="openhealth.roots"	>
@@ -1040,6 +1092,7 @@ Fields
 								<field name="qui_create"/>
 								<field name="exc_create"/>
 								<field name="ipl_create"/>
+								<field name="ndy_create"/>
 							</group>
 
 
@@ -1052,33 +1105,66 @@ Fields
 -->
 
 
-								<!-- Test --> 
+								<!-- Test - Treatment --> 
 								<button 
 									type="object" 
 									class="oe_highlight"
 									
-									name="test_case_one" 
+									name="test_case_treatment" 
 									
-									string="Test" 
+									string="Treat" 
 
 									groups="openhealth.roots"									
 								/>
 
 
-
-								<!-- Test Apps --> 
+								<!-- Test - Apps --> 
 <!--
+-->
 								<button 
 									type="object" 
 									class="oe_highlight"
 									
 									name="test_case_two" 
 									
-									string="Test Apps" 
+									string="App" 
 
 									groups="openhealth.roots"									
 								/>
--->
+
+
+
+								<!-- Test - Repos --> 
+								<button 
+									type="object" 
+									class="oe_highlight"
+									
+									name="test_case_reports" 
+									
+									string="Repos" 
+
+									groups="openhealth.roots"									
+								/>
+
+
+
+								<!-- Test - Objs --> 
+								<button 
+									type="object" 
+									class="oe_highlight"
+									
+									name="test_case_objs" 
+									
+									string="Objs" 
+
+									groups="openhealth.roots"									
+								/>
+
+
+
+
+
+
 
 
 
@@ -1093,7 +1179,7 @@ Fields
 									type="object" 
 									class="oe_highlight"
 									
-									name="clear" 
+									name="clear_all" 
 									
 									string="Clear" 
 									
@@ -1104,7 +1190,7 @@ Fields
 									type="object" 
 									class="oe_highlight"
 									
-									name="all" 
+									name="set_all" 
 									
 									string="All" 
 									
@@ -1125,6 +1211,21 @@ Fields
 									groups="openhealth.roots"
 								/>
 
+
+
+								<!-- Reload --> 
+<!--
+								<button 
+									type="object" 
+									class="oe_highlight"
+
+									name="test_case_reload" 	
+
+									string="Reload"
+
+									groups="openhealth.roots"
+								/>
+-->								
 							</group>
 
 
@@ -1185,6 +1286,7 @@ Fields
 								<field name="vspace" />
 
 
+
 								<!-- Manual -->
 								<field name="add_procedures"	invisible="1"		 />
 
@@ -1195,9 +1297,20 @@ Fields
 									
 									string="Manual" 
 									
-
 									groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
 								/>
+
+
+								<!-- Reload --> 
+<!--								
+								<button 
+									type="object" 
+									class="oe_highlight"
+									name="test_case_reload" 	
+
+									string="Reload"
+								/>
+-->
 
 
 <!--
@@ -1251,38 +1364,40 @@ grey:state=='done';
 				<tree string="Treatment Tree"
 
 colors="
-
 red:state=='empty';
-
 green:state in ('appointment', 'invoice_consultation', 'consultation', 'service', 'invoice_procedure', 'procedure', 'sessions');
-
 grey:state=='done';
-
 blue:state=='controls'
-
-"
->
+">
 
 					<field name="name"/>
 
 					<field name="patient_sex"/>
+
 					<field name="patient_age"/>
+					
 					<field name="patient_city"/>
 
-
-
-
 					<field name="start_date"/>
-					<field name="write_date"	string="Fecha actualizacion"	/>
+					
+					<field name="write_date"	string="Fecha actualizacion"/>
 
 <!--
 					<field name="duration"/>
 -->
-					<field name="patient"/>					
+					<field name="patient"/>
+					
 					<field name="physician"/>
+					
 					<field name="chief_complaint"	string="Motivo"/>
-
+					
+					<field name="flag"/>
+					
 					<field name="state"/>
+
+
+
+					<field name="procedure_ids"		groups="openhealth.roots"/>
 				</tree>
 			</field>
 		</record>

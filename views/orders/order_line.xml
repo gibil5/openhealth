@@ -4,77 +4,87 @@
 		
 
 
-
-<!--							
-							context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 
-							'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}"
-							options="{'no_create': True}"
--->
-
-
-
-
-		<!-- FORM -->
+<!-- FORM -->
 		<record model="ir.ui.view" id="sale.view_order_line_form">
 			<field name="name">sale.order.line.form</field>
-			<field name="model">sale.order.line</field>
+			<field name="model">sale.order.line</field>						
+			<field name="arch" type="xml">
 
-<!--			
-			<field name="inherit_id" ref="sale.view_order_line_form"/>	
-			<field name="mode">primary</field>
-			<field name="priority" eval="1"/>
-			<field name="arch" type="xml">
--->		
-			
-			
-			<field name="arch" type="xml">
 
 				<form string="Service - Form">
 
+
 					<header>
-
 <!--
-								states="draft"						
-								groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors"
--->
 						<button 
-								name="create_myself"
-
 								type="object" 
-								
 								class="oe_highlight"
-								
+
+								name="create_myself"								
 
 								string="Agregar"
 							/>
-
-
+-->				
 					</header>
 					
 
 					<sheet>
 						<group>
-
-
 							<group>
 								<field name="product_id" />
-							
+<!--
 								<field name="name" />
-
+								
 								<field name="product_uom_qty" />
-
+								
 								<field name="price_unit" />
-
+								
 								<field name="price_subtotal" />
-
+-->
 							</group>
 
+							<group>
+								<field name="order_id" />							
+							</group>
+						</group>
 
+
+						<group>
+							<group>
+<!--
+								<field name="name" />
+-->
+							</group>
 
 							<group>
+								<field name="service_product_id" />
+								<field name="service_vip_id" />
 
-								<field name="order_id" />
-							
+
+								<field name="service_consultation_id" />
+
+								<field name="service_co2_id" />
+								<field name="service_quick_id" />
+								<field name="service_excilite_id" />
+								<field name="service_ipl_id" />
+								<field name="service_ndyag_id" />
+
+								<field name="service_medical_id" />
+								<field name="service_cosmetology_id" />
+							</group>
+						</group>
+
+
+						<group>
+							<group>								
+								<field name="product_uom_qty" />
+								
+								<field name="price_unit" />
+								
+								<field name="price_subtotal" />
+							</group>
+
+							<group>
 							</group>
 						</group>
 
@@ -82,108 +92,11 @@
 					</sheet>
 				
 
+
 					<notebook>
 					</notebook>				
-				
 				</form>
 			</field>
 		</record>
-
-
-
-
-
-		<!-- TREE -->
-		<record model="ir.ui.view" id="sale.view_order_line_tree">
-			<field name="name">sale.order.line.tree</field>
-			<field name="model">sale.order.line</field>
-			<field name="arch" type="xml">
-				<tree string="Sales Order Lines">
-
-
-<!--
-										attrs="{'readonly': ['|', ('qty_invoiced', '&gt;', 0), ('procurement_ids', '!=', [])]}"
-					<field name="product_id"
-										context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}"
-									   />
--->
-
-
-
-
-					<field name="product_id" />
-
-					<field name="product_uom_qty"			/>
-
-					<field name="price_subtotal" />
-
-					<field name="price_total" />
-
-
-
-<!--
-					<field name="x_date_created" />
-
-
-					<field name="product_uom"			/>
-
-					<field name="create_date" />
-					<field name="order_id"/>
-					<field name="order_report_id"/>
-					<field name="name"/>
-					<field name="price_unit"			/>
-					<field name="x_price_vip"			/>
-					<field name="x_price_vip_return"			/>
-					<field name="tax_id"			/>
-					<field name="x_test" />
-					<field name="x_comeback" />
--->
-
-
-				</tree>
-			</field>
-		</record>
-
-
-
-
-
-<!--
-		<record id="sale.view_order_line_tree" model="ir.ui.view">
-			<field name="name">sale.order.line.tree</field>
-			<field name="model">sale.order.line</field>
-			<field name="arch" type="xml">
-				<tree string="Sales Order Lines" create="false">
-					<field name="product_id" invisible="1"/>
-					<field name="order_id"/>
-					<field name="order_partner_id"/>
-					<field name="name"/>
-					<field name="salesman_id"/>
-					<field name="product_uom_qty" string="Qty"/>
-					<field name="qty_delivered"/>
-					<field name="qty_invoiced"/>
-					<field name="qty_to_invoice"/>
-					<field name="product_uom" string="Unit of Measure" groups="product.group_uom"/>
-					<field name="price_subtotal" sum="Total" widget="monetary"/>
-				</tree>
-			</field>
-		</record>
--->
-
-<!--
-					<field name="id"/>
-					<field name="price_total"/>
-					<field name="product_id"/>
-					<field name="purchase_price"/>
-					<field name="price_tax"/>
-					<field name="margin"/>
-					<field name="description"/>
-					<field name="x_price_vip" />
-					<field name="consultation"/>
-					<field name="order_id"/>
-					<field name="state"/>
--->
-
-
 	</data>
 </openerp>

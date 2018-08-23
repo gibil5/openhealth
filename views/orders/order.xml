@@ -130,11 +130,12 @@
 							groups="openhealth.roots"
 					/>
 
+
 					<!-- Reset --> 
 						<button 
 								type="object" 
 								class="oe_highlight"
-								name="x_reset" 	
+								name="test_reset" 	
 
 								string="Reset"
 
@@ -285,17 +286,19 @@
 					<!-- Add Prod -->
 <!--
 							groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors,openhealth.physicians"
+							context="{'x_type': 'product'}"
 --> 
 					<button 
 							type="object" 
 							class="oe_highlight"
-							name="open_product_selector"
-							context="{'x_type': 'product'}"
+
+							name="open_product_selector_product"							
+							
 							states="draft"						
 
 							string="Agregar PRODUCTO"
 
-							groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors,openhealth.physicians,openhealth.managers"
+					groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors,openhealth.physicians,openhealth.managers"
 						/>
 
 
@@ -303,17 +306,19 @@
 					<!-- Add Serv -->
 <!--
 							groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors,openhealth.physicians"
+							context="{'x_type': 'service'}"
 --> 
 					<button 
 							type="object" 
 							class="oe_highlight"
-							name="open_product_selector"
-							context="{'x_type': 'service'}"
+
+							name="open_product_selector_service"
+
 							states="draft"						
 
 							string="Agregar SERVICIO"
 
-							groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors,openhealth.physicians,openhealth.managers"
+					groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors,openhealth.physicians,openhealth.managers"
 						/>
 
 
@@ -404,6 +409,8 @@
 					<field name="patient" 					options="{'no_create': True, 'no_create_edit':True}"		/>
 -->
 					<field name="patient" 		required="1"			options="{'no_create': False, 'no_create_edit':True}"		/>
+<!--
+-->
 				</field>
 
 
@@ -416,13 +423,22 @@
 																}"
 						/>
 					<field name="vspace"/>
+
+
+				</field>
+
+				<field name="patient" position="after"	>
+					<field name="x_dni"		groups="openhealth.roots"				/>
+					<field name="x_ruc"		groups="openhealth.roots"	/>
 				</field>
 
 
 
 				<!-- New Natives --> 
+<!--
 				<field name="patient" position="after">
-					
+-->				
+				<field name="x_ruc" position="after">
 					<field name="vspace"/>
 
 					<field name="x_doctor"		required="1"		options="{'no_create': True, 'no_create_edit':True}"			/>
@@ -515,8 +531,11 @@
 </xpath>
 
 
+
 <!-- Order Lines  -->
+<!-- Must be ReadOnly for: Sale and Cancel -->
 <xpath expr="//field[@name='order_line']" position="attributes">
+
 <!--
 <attribute name='readonly'>1</attribute> 
 attrs="{'readonly': [('state', 'in', ('done','cancel'))]}">
@@ -528,7 +547,10 @@ attrs="{'readonly': [('state', 'in', ('done','cancel'))]}">
 
 <!--
 	<attribute name='attrs'>{'readonly': [('state', 'in', ('sent','sale','done','cancel'))]}</attribute> 
+	<attribute name='attrs'>{'readonly': [('state', 'in', ('sale','cancel'))]}</attribute>
 -->
+
+	<attribute name='attrs'>{'readonly': [('state', 'in', ('sale','cancel','sent','validated'))]}</attribute>
 </xpath>
 
 
@@ -574,9 +596,25 @@ attrs="{'readonly': [('state', 'in', ('done','cancel'))]}">
 
 <!--
 	<field name="product_id"		options="{'no_create':False, 'no_create_edit':True}"	/>
--->
-	<field name="product_id"		options="{'no_create': True, 'no_create_edit':True}"	/>
 
+	<field name="product_id"		options="{'no_create': True, 'no_create_edit':True}"	/>
+-->
+
+
+	<!-- Quick Button -->
+<!--
+		groups="openhealth.roots"
+	<button 
+		type="object" 
+		class="oe_highlight"	
+		string="E"
+		
+		name="open_line_current" 
+	/>
+-->
+
+
+	<field name="product_id"	options="{'no_create': True, 'no_create_edit':True}"/>
 </xpath>
 
 
@@ -598,9 +636,12 @@ attrs="{'readonly': [('state', 'in', ('done','cancel'))]}">
 -->
 
 
+
+<!-- Short name --> 
 <xpath expr="//tree/field[@name='name']" position="after">
 	<field name="x_description"/>
 </xpath>
+
 
 
 
@@ -622,11 +663,6 @@ Look for the Minimalist experience !!!
 
 				<field name="message_ids" position="replace">
 				</field>
-
-
-
-
-
 
 			</field>
 		</record>

@@ -2,27 +2,24 @@
 #
 # 	Account Line
 # 
-# Created: 				18 April 2018
+# 	Created: 				18 April 2018
+# 	Last mod: 				21 Aug 2018
 #
-
+# 	Be sure to include one patient with: passporte, cancelled sale. For complete coverage. 
+#
 from openerp import models, fields, api
 
 import datetime
-import acc_funcs
 
+import account_funcs as acc_funcs
 
 class AccountLine(models.Model):
 	
 	#_inherit='sale.closing'
+
 	_name = 'openhealth.account.line'
 
 	_order = 'date_time asc'
-	#_order = 'tipodocumento,numerofactura asc'
-
-
-
-
-
 
 
 # ----------------------------------------------------------- Dates ------------------------------------------------------
@@ -37,15 +34,10 @@ class AccountLine(models.Model):
 			string="Fecha y hora", 
 		)
 
-
-
-
-
 	# Corr 
 	date_time_corr = fields.Datetime(
 			#string="Fecha", 
 		)
-
 
 	# Date 
 	date_char = fields.Char(
@@ -59,20 +51,21 @@ class AccountLine(models.Model):
 
 
 
-
-
-
 # ----------------------------------------------------------- Relational ------------------------------------------------------
 
+	# Account 
 	account_id = fields.Many2one(
 			'openhealth.account.contasis'
 		)
 
 
 
+# ----------------------------------------------------------- Contasis - 1 ------------------------------------------------------
 
-
-# ----------------------------------------------------------- Contasis ------------------------------------------------------
+	# Name 
+	nombre = fields.Char(
+			'nombre', 
+		)
 
 
 	# Fechas 
@@ -83,9 +76,6 @@ class AccountLine(models.Model):
 	fechavencimiento = fields.Char(
 			'fechavencimiento', 
 		)
-
-
-
 
 
 	# Comprobante de pago 
@@ -102,14 +92,6 @@ class AccountLine(models.Model):
 		)
 
 
-
-
-
-
-
-
-
-
 	# Documento de identidad
 	tipodoc = fields.Char(
 			'tipodoc', 
@@ -121,17 +103,7 @@ class AccountLine(models.Model):
 
 
 
-
-	# Name 
-	nombre = fields.Char(
-			'nombre', 
-		)
-
-
-
-
-
-
+# ----------------------------------------------------------- Contasis - 2 ------------------------------------------------------
 
 	# Exportacion
 	EXPortacion = fields.Char(
@@ -140,13 +112,10 @@ class AccountLine(models.Model):
 		)
 
 
-
-
 	# Importe
 	neto = fields.Char(
 			'neto', 
 		)
-
 
 	exonerado = fields.Char(
 			'exonerado', 
@@ -157,10 +126,6 @@ class AccountLine(models.Model):
 			'inafecto', 
 			default='0', 
 		)
-
-
-
-
 
 	isc = fields.Char(
 			'isc', 
@@ -177,8 +142,7 @@ class AccountLine(models.Model):
 		)
 
 
-
-
+	# Total 
 	total = fields.Char(
 			'total', 
 		)
@@ -189,10 +153,7 @@ class AccountLine(models.Model):
 		)
 
 
-
-
-
-
+# ----------------------------------------------------------- Contasis - 3 ------------------------------------------------------
 
 	# Referencia modificada
 	fechar = fields.Char(
@@ -210,8 +171,6 @@ class AccountLine(models.Model):
 	numr = fields.Char(
 			'numr', 
 		)
-
-
 
 
 	moneda = fields.Char(
@@ -242,10 +201,7 @@ class AccountLine(models.Model):
 		)
 
 
-
-
-
-
+# ----------------------------------------------------------- Contasis - 4 ------------------------------------------------------
 	cuentab = fields.Char(
 			'cuentab', 
 			#default='701101001', 
@@ -260,10 +216,6 @@ class AccountLine(models.Model):
 			'cuentacontable', 
 			default='121210001', 
 		)
-
-
-
-
 
 
 	regimen = fields.Char(
@@ -282,8 +234,7 @@ class AccountLine(models.Model):
 		)
 
 
-
-
+# ----------------------------------------------------------- Contasis - 5 ------------------------------------------------------
 
 	seried = fields.Char(
 			'seried', 
@@ -305,10 +256,6 @@ class AccountLine(models.Model):
 			#default='CON', 
 		)
 
-
-
-
-
 	porigv = fields.Char(
 			'porigv', 
 			#default='CON', 
@@ -318,10 +265,6 @@ class AccountLine(models.Model):
 			'glosa', 
 			default='POR VENTA DE 01-', 
 		)
-
-
-
-
 
 	mediop = fields.Char(
 			'mediop', 
@@ -340,10 +283,6 @@ class AccountLine(models.Model):
 
 
 
-
-
-
-
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 
 	# Update Fields
@@ -352,8 +291,6 @@ class AccountLine(models.Model):
 
 		#print
 		#print 'Update Contasis'
-
-
 
 
 		# Dates 
@@ -367,31 +304,16 @@ class AccountLine(models.Model):
 		self.fechavencimiento2 = self.date_char
 
 
-
-
-
 		# Product
 		self.product_type = self.product.type 
 		self.cuentab = acc_funcs._cuentab[self.product_type]
 
 
-
 		# Name 
 		if self.x_type in ['invoice', 'ticket_invoice']:			# Ruc
 			self.nombre = self.patient.x_firm 
-
-			#doc_type = '6'
-
-		else: 														
+		else: 														# Other 						
 			self.nombre = self.patient.name 
-
-			#if self.patient.x_dni != False: 		# Dni 
-			#	doc_type = '1'
-			#else: 
-			#	doc_type = acc_funcs._doc_type[self.patient.x_id_doc_type]
-
-
-
 
 
 		# Id Doc 
@@ -399,120 +321,70 @@ class AccountLine(models.Model):
 		self.numdoc = self.document
 
 
-
-
-
 		# Serial number 
 		if self.serial_nr != False: 
 			self.numeroserie = self.serial_nr.split('-')[0]
 			self.numerofactura = self.serial_nr.split('-')[1]
-
 			self.glosa = self.glosa + self.serial_nr
 
 
 
-
+		# Type Doc 
 		self.tipodocumento = acc_funcs._h_type[self.x_type]
-
-
-
-
-
-
-
-
-
-		
-
-		# Dates	- Must be converteed to a datetime object, before converting to the proper format. 
-		#DATETIME_FORMAT = "%Y-%m-%d"
-		#self.fecha  = datetime.datetime.strptime(self.date, DATETIME_FORMAT).strftime('%d/%m/%Y')
-		#self.fechavencimiento  = datetime.datetime.strptime(self.date, DATETIME_FORMAT).strftime('%d/%m/%Y')
-		#self.fechavencimiento2 = self.fechavencimiento
-
-
-		# Month 
-		#self.cuo_mes =  datetime.datetime.strptime(self.date, DATETIME_FORMAT).strftime('%m')
-
-
-		# Constants 
-		#self.EXPortacion = '0.00'
-		#self.exonerad = '0.00'
-		#self.inafecto = '0.00'
-		#self.isc = '0.00'
-		#self.otros = '0.00'
-		#self.tipor = '00'
-		#self.tipocambio = '3.2100'
-
-
-
 
 
 
 		# Actual amount
 		if self.state == 'cancel': 
-
 			self.amount = 0
 			self.amount_net = 0
 			self.amount_tax = 0
 
-			#self.total = 0
-			#self.neto = 0 
-			#self.igv = 0 
-			#self.porigv = 0
-
 		else: 
-
-			#self.amount_net = self.amount/1.18
+			# Net 
 			net = self.amount/1.18
 			self.amount_net = round(net, 2)
 			
-
-			#self.amount_tax = self.amount_net * 0.18
+			# Tax 
 			tax = net * 0.18
 			self.amount_tax = round(tax, 2)
 
 
-
-			#self.total = self.amount
-			#self.neto = self.amount_net 
-			#self.igv = self.amount_tax 			
-			#self.porigv = self.igv
-
-			#self.neto = str(float(self.amount)/1.18)
-			#self.igv = str(float(self.neto) * 0.18)
-
-
+		# Other 
 		self.total = self.amount
 		self.neto = self.amount_net 
 		self.igv = self.amount_tax 			
 		self.porigv = self.igv
 
-
+	# update_fields
 
 
 
 # ----------------------------------------------------------- Meta ------------------------------------------------------
+
+	# Id Document 
+	document = fields.Char(
+			string="Documento", 
+		)
+
+	document_type = fields.Char(
+			#string="Tipo Documento", 
+			string="Tipo Doc", 
+		)
 
 
 	name = fields.Char(
 			'Nr', 
 		)
 
-
 	patient = fields.Many2one(
 			'oeh.medical.patient', 
 			string="Nombre", 
 		)
 
-
-
-
-	#qty = fields.Float(
 	qty = fields.Integer(
 			string="Cantidad", 
 		)
-
 
 	product = fields.Many2one(
 			'product.product', 
@@ -528,9 +400,6 @@ class AccountLine(models.Model):
 			#required=False,
 		)
 
-
-
-
 	state = fields.Selection(
 			[	('sale', 			'Venta'),
 				('cancel', 			'Anulado'),
@@ -539,11 +408,9 @@ class AccountLine(models.Model):
 			#required=False,
 		)
 
-
 	serial_nr = fields.Char(
 			string="Nr. de serie", 
 		)
-
 
 	x_type = fields.Selection(
 			[	('receipt', 			'Boleta'),
@@ -552,30 +419,9 @@ class AccountLine(models.Model):
 				('sale_note', 			'Canje NV'),
 				('ticket_receipt', 		'Ticket Boleta'),
 				('ticket_invoice', 		'Ticket Factura'),	], 
-
 			string='Tipo', 
-			
 			#required=False,
 		)
-
-
-
-
-
-
-
-
-
-	# Id Document 
-	document = fields.Char(
-			string="Documento", 
-		)
-
-	document_type = fields.Char(
-			string="Tipo Documento", 
-		)
-
-
 
 	# Amount 
 	amount = fields.Float(
@@ -589,31 +435,3 @@ class AccountLine(models.Model):
 	amount_tax = fields.Float(
 			string="Impuesto", 
 		)
-
-
-
-
-
-
-
-# ----------------------------------------------------------- Deprecated ------------------------------------------------------
-	
-	# Codigo Unico Ope
-	#cuo_mes = fields.Char(
-	#		'MES', 
-	#	)
-
-
-	#cuo_sd = fields.Char(
-	#		'SD', 
-	#	)
-
-	#cuo_asi = fields.Char(
-	#		'ASI', 
-	#	)
-
-
-		#self.cuo_asi = 
-		#self.cuo_sd = '02'
-
-

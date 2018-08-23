@@ -1,6 +1,14 @@
 # -*- coding: utf-8 -*-
+#
+# 		Session Vars 
+# 
+# Created: 			2016
+# Last up: 	 		20 Aug 2018
+#
 
 
+
+# ----------------------------------------------------------- Co2 ------------------------------------------------------
 
 _co2_mode_emission_list = [
 
@@ -11,40 +19,102 @@ _co2_mode_emission_list = [
 ]
 
 
-
 _co2_mode_exposure_list = [
-
 		#('one','uno'), 
 		#('two','dos'), 
 		
 		('continuous',	'Continuo'), 
 		('repete',		'Repetir'), 
 
+		('hp',			'Hp'), 
+		('smat',		'Smart'), 
+		('pulse',		'Pulse'), 
 		#('',''), 
 ]
 
 
 
+# ----------------------------------------------------------- Ipl ------------------------------------------------------
+
+_ipl_pulse_type = [
+		('one','Unico'), 
+		('two','Doble'), 
+		('three','Triple'), 
+		]
+
+_ndyag_pulse_type = [
+		('one','Unico'), 
+		('two','Doble'), 
+		#('three','Triple'), 
+		]
+		
+_ndyag_pulse_spot = [
+		('one','6mm'), 
+		('two','2 x 6mm'), 
+		#('three','Triple'), 
+
+		]
 
 
+# Zone
+_zone_list = [
+			('areola','Areola'), 
+			('armpits','Axilas'), 
+			('beard','Barba'), 
+			('belly','Abdomen'), 
+			('bikini','Bikini'), 
 
-def test_for_zero(self, token):
-	#print 'test_for_zero'
-	#print token 
+			('down_lip','Bozo/Bigote'), 
+			('arm','Brazo'), 
+			('head','Cabeza'), 
+			('neck','Cuello'), 
+			('back','Espalda'), 
 
-	#if token and (not token.isdigit()):
-	#if token and token == 0.0:
-	if token == 0.0:
-		#print 'Error'
-		#return {
-		#		'warning': {
-		#			'title': 	"Error: Valor Nulo.",
-		#			'message': 	token,
-		#		}}
-		return {'value':{},'warning':{'title':'warning','message':'Valor nulo'}}
+			('front','Frente'), 
+			('gluteus','Glúteo'), 
+			('shoulders','Hombros'), 
+			('linea_alba','Linea Alba'), 
+			
+			#('body_localized','Localizado cuerpo'), 
+			#('face_localized','Localizado rostro'), 
+			
+			('hands','Manos'), 
+			('chin','Mentón'), 
+			('nape','Nuca'), 
+			('sideburns','Patillas'), 
 
-	else:
-		return 0
-# test_for_digits
+			('breast','Pecho'), 
+			('feet','Pierna'), 
+			('leg','Pierna'), 
+			('cheekbones','Pómulos'), 
+			('face_all','Todo rostro'), 
 
+			('nail','Uña'), 
+			('vagina','Vagina'), 
+			
+			
+			('face','Rostro'), 
+			('face_local','Localizado rostro'), 
+			('body_local','Localizado cuerpo'), 
+			#('ariola','Areola'), 
+			('areolas','Areola'), 
+			('arms','Brazos'), 
+			('legs','Piernas'), 
+
+			('package','Paquete'), 
+			
+			
+			
+			# Medical 
+			('x','x'), 
+			('1_hypodermic','1_hypodermic'), 
+			('1_hypodermic_repair','1_hypodermic_repair'), 
+
+			('1_zone','1_zone'), 
+
+			#('na','na'), 
+
+
+			('none',''), 
+			]
 

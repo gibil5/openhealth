@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-	<data noupdate='1'>
+	<data noupdate='0'>
 
 
 
@@ -8,20 +8,29 @@
 <!-- Elias Ochante -->
 		<record id="yochante_partner" model="res.partner">
 			<field name="name">Elias Ochante</field>
+
+			<field name="email">eochante@clinicachavarri.com</field>
+<!--
 			<field name="email">yochante@clinicachavarri.com</field>
+-->
 			<field name="function">assistant</field>
 	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
 		</record>
 
 		<record id="yochante_clinicachavarri" model="res.users">
 			<field name="name">Elias Ochante</field>
-			<field name="login">yochante@clinicachavarri.com</field>
+
+			<field name="login">eochante@clinicachavarri.com</field>
 			
 <!--
+			<field name="login">yochante@clinicachavarri.com</field>
+			<field name="login">eochante@clinicachavarri.com</field>
 			<field name="password">yochante</field>
 			<field name="password">s7VEutKW</field>
--->		
 			<field name="password">s7veutkw</field>
+			<field name="password">eochante</field>
+-->		
+			<field name="password">eochante</field>
 
 
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
@@ -49,8 +58,9 @@
 <!--
 			<field name="password">rgarcia</field>
 			<field name="password">2ppGAB4Y</field>
--->		
 			<field name="password">2ppgab4y</field>
+-->		
+			<field name="password">rgarcia</field>
 
 
 			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>

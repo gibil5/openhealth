@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 #
-# 		Report
+# 		Report - Deprecated 
 # 
 #
 
@@ -11,7 +11,7 @@ from openerp import models, fields, api
 
 class Report(models.Model):
 	
-	#_inherit = 'sale.report'
+	#_inherit = 'sale.report'			# Deprecated 
 
 	_name = 'openhealth.report'
 
@@ -51,9 +51,16 @@ class Report(models.Model):
 
 
 
+	vspace = fields.Char(
+			' ', 
+			readonly=True
+		)
+
+
 	total_qty = fields.Integer(
 			string="Cantidad", 
 		)
+
 
 	total = fields.Float(
 			string="Total", 
@@ -71,7 +78,6 @@ class Report(models.Model):
 
 
 
-	#date_begin = fields.Datetime(
 	date_begin = fields.Date(
 			string="Fecha Inicio", 
 			default = fields.Date.today, 
@@ -80,7 +86,6 @@ class Report(models.Model):
 		)
 
 
-	#date_end = fields.Datetime(
 	date_end = fields.Date(
 			string="Fecha Fin", 
 			default = fields.Date.today, 
@@ -93,7 +98,3 @@ class Report(models.Model):
 
 
 
-	vspace = fields.Char(
-			' ', 
-			readonly=True
-		)

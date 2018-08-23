@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 #
-# 	Doctor Line 
+# 		Doctor Line 
 # 
-# Created: 				18 May 2018
-# Last updated: 		19 June 2018
+# Created: 			18 May 2018
+# Last up: 			20 Aug 2018
 #
-
 from openerp import models, fields, api
 import collections
+
 import mgt_vars
 
 class DoctorLine(models.Model):	
@@ -25,32 +25,21 @@ class DoctorLine(models.Model):
 
 	# Sales
 	order_line = fields.One2many(
-
 			'openhealth.management.order.line', 
-		
 			'doctor_id',
 		)
-
 
 	# Family 
 	family_line = fields.One2many(
-
 			'openhealth.management.family.line', 
-			
 			'doctor_id',
 		)
-
 
 	# Sub family 
 	sub_family_line = fields.One2many(
-
 			'openhealth.management.sub_family.line', 
-			
 			'doctor_id',
 		)
-
-
-
 
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
@@ -72,8 +61,6 @@ class DoctorLine(models.Model):
 		)
 
 
-
-
 	# Nr Sub Families 
 	nr_procedures_co2 = fields.Integer(
 			'Nr Co2', 
@@ -90,14 +77,10 @@ class DoctorLine(models.Model):
 			default=0, 
 		)
 
-
 	nr_cosmetologies = fields.Integer(
 			'Nr Cosmeatrias', 
 			default=0, 
 		)
-
-
-
 
 
 
@@ -116,8 +99,6 @@ class DoctorLine(models.Model):
 
 
 
-
-
 # ----------------------------------------------------------- Stats ------------------------------------------------------
 
 	# Set Stats
@@ -127,18 +108,12 @@ class DoctorLine(models.Model):
 		#print 
 		#print 'Stats - Doctor'
 
-
-
 		# Using collections - More Abstract !
 
 
 		# Clear 
 		self.sub_family_line.unlink()
 		self.family_line.unlink()
-
-
-		#print 
-		#print 
 
 
 		# Init
@@ -155,8 +130,6 @@ class DoctorLine(models.Model):
 		self.ratio_pro_con = 0
 		self.ratio_pro_con_co2 = 0
 		self.ratio_pro_con_quick = 0
-
-
 
 
 
@@ -316,9 +289,8 @@ class DoctorLine(models.Model):
 			#print amount
 			#print 
 
-
-
-		self.update_fields()
+		#self.update_fields()
+		self.update()
 
 	# set_stats
 
@@ -329,12 +301,11 @@ class DoctorLine(models.Model):
 
 	# Update Fields
 	@api.multi
-	def update_fields(self):  
+	#def update_fields(self):  
+	def update(self):  
 
 		#print 
 		#print 'Update Fields'
-
-
 
 		# Names 
 		if self.name in mgt_vars._h_name: 
@@ -342,18 +313,11 @@ class DoctorLine(models.Model):
 		else: 
 			self.name_sp = self.name
 
-
-
 		# Ratios
-		#if 	(self.nr_consultations != 0)	and 	(self.nr_consultations > self.nr_procedures): 
 		if self.nr_consultations != 0: 
-
 			self.ratio_pro_con = (float(self.nr_procedures) / float(self.nr_consultations)) * 100 
-
 			self.ratio_pro_con_co2 = (float(self.nr_procedures_co2) / float(self.nr_consultations)) * 100 
-
 			self.ratio_pro_con_quick = (float(self.nr_procedures_quick) / float(self.nr_consultations)) * 100 
-
 
 	# update_fields
 

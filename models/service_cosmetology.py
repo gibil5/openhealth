@@ -4,18 +4,13 @@
 # 
 # Created: 				 1 Nov 2016
 # 
-
 from openerp import models, fields, api
 
 from datetime import datetime,tzinfo,timedelta
 
-from . import cosvars
-from . import prodvars
+import cosvars
+import prodvars
 
-#from . import jrfuncs
-#from . import eval_vars
-#from . import time_funcs
-#from . import app_vars
 
 
 

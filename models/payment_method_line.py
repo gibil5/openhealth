@@ -2,12 +2,12 @@
 #
 # 	payment method line
 # 
+# 	Created: 				2016
+# 	Last mod: 				21 Aug 2018
 #
 from openerp import models, fields, api
 
-#from . import ord_vars
 from . import pm_vars
-
 
 class payment_method_line(models.Model):
 	
@@ -17,25 +17,19 @@ class payment_method_line(models.Model):
 
 
 
-
-
 # ----------------------------------------------------------- Relational ------------------------------------------------------
 
+	# Payment Method
 	payment_method = fields.Many2one(
-
 			'openhealth.payment_method',
-
 			ondelete='cascade', 
-
 			required=False, 			
 		)
 
 
-
+	# Account - Contabilidad  
 	account_id = fields.Many2one(
-
 			'openhealth.account.contasis',
-
 			ondelete='cascade', 
 		)
 
@@ -44,16 +38,25 @@ class payment_method_line(models.Model):
 
 # ----------------------------------------------------------- Meta ------------------------------------------------------
 
+	# Document 
+	document = fields.Char(
+			string="Documento", 
+		)
+
+	document_type = fields.Char(
+			string="Tipo Doc", 
+		)
+
+
+	# Other 
 	patient = fields.Many2one(
 			'oeh.medical.patient', 
 			string="Nombre", 
 		)
 
-
 	serial_nr = fields.Char(
 			string="Nr. de serie", 
 		)
-
 
 	x_type = fields.Selection(
 			[	('receipt', 			'Boleta'),
@@ -62,47 +65,29 @@ class payment_method_line(models.Model):
 				('sale_note', 			'Canje NV'),
 				('ticket_receipt', 		'Ticket Boleta'),
 				('ticket_invoice', 		'Ticket Factura'),	], 
-
 			string='Tipo', 
-			
-			#required=False,
 		)
-
 
 	date_time = fields.Datetime(
 			string="Fecha", 
 		)
 
 
-
-
-
-
-
-
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
+
 	# Name 
-	name = fields.Char(
-			#string="Pago", 
+	name = fields.Char( 
 			string="#", 
 			required=True, 
-
-			#compute="_compute_name",
 		)
-
-
 
 	# Method
 	method = fields.Selection(
-
-			selection = pm_vars._payment_method_list, 			
-
+			selection = pm_vars._payment_method_list,
 			string="Forma de Pago", 
 			default="cash", 
 			required=True, 
 		)
-
-
 
 	# Subtotal 
 	subtotal = fields.Float(
@@ -111,19 +96,14 @@ class payment_method_line(models.Model):
 			required=True, 
 		)
 
-
-
-
 	# Currency 
 	currency = fields.Char(
 			string="Moneda", 
 			default="S/.", 
 		)
 
-
-
+	# Vspace 
 	vspace = fields.Char(
 			' ', 
 			readonly=True
 			)
-

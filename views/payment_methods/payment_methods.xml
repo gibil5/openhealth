@@ -29,15 +29,32 @@
 								string="Regresar"
 						/>
 
+
+					<button 
+							type="object" 
+							class="oe_highlight"
+
+							name="state_force"
+
+							states="done,editable"
+
+							string="STATE"
+
+							groups="openhealth.roots"
+						/>
+
+
+
 <!--
 								statusbar_visible="draft, paid, done"
+								statusbar_visible="draft, sale, done"
 -->
 						<!-- State --> 
 						<field 	name="state" 
 								widget="statusbar" 
 								invisible="0"
 
-								statusbar_visible="draft, sale, done"
+								statusbar_visible="draft, sale, done, editable"
 						
 						/>
 					</header>
@@ -156,9 +173,9 @@
 				<tree string="payment_method Tree">
 					<field name="create_date"/>
 					<field name="write_date"/>
-					<field name="name"/>
 					<field name="order"  />
 <!--
+					<field name="name"/>
 					<field name="subtotal"   />
 					<field name="method"  />
 -->				

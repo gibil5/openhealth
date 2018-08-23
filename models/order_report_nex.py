@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 #
-# 	Order Report Nex
+# 	Order Report Nex - Estado de Cuenta 
 # 
 # Created: 				14 Nov 2017
-# Last updated: 	 	22 Jun 2018
+# Last updated: 	 	20 Aug 2018
 #
 
 from openerp import models, fields, api
+
 import ord_vars
 
 class order_report_nex(models.Model):
@@ -14,7 +15,6 @@ class order_report_nex(models.Model):
 	_name = 'openhealth.order.report.nex'
 
 	_description = "Openhealth Order Report Nex"
-
 
 
 
@@ -26,7 +26,6 @@ class order_report_nex(models.Model):
 			'order_report_nex_id', 
 			string="Estado de cuenta",
 		)
-
 
 
 # ----------------------------------------------------------- Canonical ------------------------------------------------------
@@ -79,15 +78,16 @@ class order_report_nex(models.Model):
 
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 
-	# Update Totals
+	# Update Macro 
 	@api.multi 
-	def update_totals(self):
+	def update_macro(self):
 
 		# Init 
 		total = 0 
 		total_sale = 0 
 		total_budget = 0 
 
+		# Loop 
 		for line in self.order_line_ids: 			
 			total = total + line.price_subtotal 
 			if line.state == 'sale': 
@@ -95,11 +95,10 @@ class order_report_nex(models.Model):
 			elif line.state == 'draft': 
 				total_budget = total_budget + line.price_subtotal 
 
+		# Update 
 		self.amount_total_report = total
 		self.amount_total_sale = total_sale
 		self.amount_total_budget = total_budget
-
-
 
 
 
@@ -107,7 +106,11 @@ class order_report_nex(models.Model):
 
 	# Update 
 	@api.multi 
-	def update_order_report(self):
+	#def update_order_report(self):
+	def update(self):
+
+		print 
+		print 'EC - Update'
 
 		# Clean 
 		self.order_line_ids.unlink()
@@ -116,18 +119,16 @@ class order_report_nex(models.Model):
 		partner_id = self.partner_id.name
 		patient_name = self.patient.name
 		orders = self.env['sale.order'].search([
-															#('state', '=', 'sale'),			
-															#('partner_id', '=', partner_id),
-															('patient', '=', patient_name),
-													],
-													#order='start_date desc',
-													#limit=1,
-												)
+													('patient', '=', patient_name),
+												],
+												#order='start_date desc',
+												#limit=1,
+											)
 		# Loop - Create Lines 
 		for order in orders: 
-
 			for line in order.order_line: 
 				
+				# Create 
 				ret = self.order_line_ids.create({
 															'name': line.name,
 															'product_id': line.product_id.id,
@@ -138,11 +139,10 @@ class order_report_nex(models.Model):
 
 															'order_report_nex_id': self.id,
 													})
-
 				#print ret 
 
 		# Update 
-		self.update_totals()
+		self.update_macro()
 
-	# update_order_report
+	# update
 

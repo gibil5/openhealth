@@ -253,8 +253,8 @@
 
 		   <field name="domain">
 								[
-									('date','&lt;=',time.strftime('%%Y-09-01')),
-									('date','&gt;=',time.strftime('%%Y-08-01'))
+									('date','&lt;=',time.strftime('%%Y-09-01 05:00:00')),
+									('date','&gt;=',time.strftime('%%Y-08-01 05:00:00'))
 								]
 			</field>
 
@@ -281,8 +281,8 @@
 
 		   <field name="domain">
 								[
-									('date','&lt;=',time.strftime('%%Y-10-01')),
-									('date','&gt;=',time.strftime('%%Y-09-01'))
+									('date','&lt;=',time.strftime('%%Y-10-01 05:00:00')),
+									('date','&gt;=',time.strftime('%%Y-09-01 05:00:00'))
 								]
 			</field>
 
@@ -309,8 +309,8 @@
 
 		   <field name="domain">
 								[
-									('date','&lt;=',time.strftime('%%Y-11-01')),
-									('date','&gt;=',time.strftime('%%Y-10-01'))
+									('date','&lt;=',time.strftime('%%Y-11-01 05:00:00')),
+									('date','&gt;=',time.strftime('%%Y-10-01 05:00:00'))
 								]
 			</field>
 
@@ -337,8 +337,8 @@
 
 		   <field name="domain">
 								[
-									('date','&lt;=',time.strftime('%%Y-12-01')),
-									('date','&gt;=',time.strftime('%%Y-11-01'))
+									('date','&lt;=',time.strftime('%%Y-12-01 05:00:00')),
+									('date','&gt;=',time.strftime('%%Y-11-01 05:00:00'))
 								]
 			</field>
 
@@ -366,8 +366,8 @@
 
 		   <field name="domain">
 								[
-									('date','&lt;=',time.strftime('2018-01-01')),
-									('date','&gt;=',time.strftime('%%Y-12-01'))
+									('date','&lt;=',time.strftime('2019-01-01 05:00:00')),
+									('date','&gt;=',time.strftime('%%Y-12-01 05:00:00'))
 								]
 			</field>
 
@@ -383,185 +383,6 @@
 		</record>
 
 
-
-
-
-
-
-
-
-
-
-
-
-<!-- Daily --> 
-
-		<!-- Day - All -->
-		<record id="action_order_report_day_all" model="ir.actions.act_window">
-			<field name="name">Reporte de Ventas - Diario</field>
-			<field name="res_model">sale.report.day</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">pivot,graph,tree</field>
-			
-
-			<field name="search_view_id" ref="sale.view_order_all_search"/>
-
-
-<!--
-										('note', 'not in', ['observed']),
-
-										('date','&lt;=',time.strftime('%%Y-03-01')),
-										('date','&gt;=',time.strftime('%%Y-02-01')), 
-
-										('date','&lt;=',time.strftime('%%Y-04-01')),
-										('date','&gt;=',time.strftime('%%Y-03-01')), 
-
-										('date','&lt;=',time.strftime('%%Y-03-29')),
-										('date','&gt;=',time.strftime('%%Y-03-28')), 
-
-
-										('date','>',time.strftime('%%Y-03-28 05:00:00')), 
--->
-		   
-		   <field name="domain">
-									[
-										('date','>',time.strftime('%%Y-%m-%d 05:00:00')), 
-									]
-			</field>
-
-
-
-			<field name="context">{
-									'search_default_Sales':1, 
-									'group_by_no_leaf':1,
-									'group_by': ['product_id','partner_id'],
-								}
-			</field>
-
-		</record>
-
-
-
-
-
-
-
-
-
-
-
-
-
-		<!-- Day - Servs -->
-		<record id="action_order_report_day_servs" model="ir.actions.act_window">
-			<field name="name">Reporte de Ventas - Diario</field>
-			<field name="res_model">sale.report.day</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">pivot,graph,tree</field>
-			
-			
-			<field name="search_view_id" ref="sale.view_order_servs_search"/>
-
-
-		   <field name="domain">
-									[
-										('date','>',time.strftime('%%Y-%m-%d 05:00:00')), 
-									]
-			</field>
-
-
-			<field name="context">{
-									'search_default_Sales':1, 
-									'group_by_no_leaf':1,
-									'group_by': ['product_id'],
-								}
-			</field>
-		</record>
-
-
-
-
-
-
-
-		<!-- Day - All -->
-		<record id="action_order_report_daily" model="ir.actions.act_window">
-			<field name="name">Reporte de Ventas - Diario</field>
-			<field name="res_model">sale.report.day</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">pivot,graph,tree</field>
-			
-
-			<field name="search_view_id" ref="sale.view_order_all_search"/>
-
-
-<!--
-										('note', 'not in', ['observed']),
-
-										('date','&lt;=',time.strftime('%%Y-03-01')),
-										('date','&gt;=',time.strftime('%%Y-02-01')), 
-
-										('date','&lt;=',time.strftime('%%Y-04-01')),
-										('date','&gt;=',time.strftime('%%Y-03-01')), 
-
-										('date','&lt;=',time.strftime('%%Y-03-29')),
-										('date','&gt;=',time.strftime('%%Y-03-28')), 
-
-
-										('date','>',time.strftime('%%Y-03-28 05:00:00')), 
--->
-		   
-		   <field name="domain">
-									[
-										('date','>',time.strftime('%%Y-%m-%d 05:00:00')), 
-									]
-			</field>
-
-
-
-			<field name="context">{
-									'search_default_Sales':1, 
-									'group_by_no_leaf':1,
-									'group_by': ['product_id'],
-								}
-			</field>
-
-		</record>
-
-
-
-
-
-
-
-
-		<!-- Day - Prods -->
-		<record id="action_order_report_day_prods" model="ir.actions.act_window">
-			<field name="name">Reporte de Ventas - Diario</field>
-			<field name="res_model">sale.report.day</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">pivot,graph,tree</field>
-			
-			
-			<field name="search_view_id" ref="sale.view_order_prods_search"/>
-
-<!--
-										('date','>',time.strftime('%%Y-%m-%d 05:00:00')), 
--->
-		   <field name="domain">
-									[
-										('date','>',time.strftime('%%Y-%m-%d 05:00:00')), 
-									]
-			</field>
-
-
-			<field name="context">{
-									'search_default_Sales':1, 
-									'group_by_no_leaf':1,
-									'group_by': ['product_id'],
-								}
-			</field>
-		</record>
 
 
 

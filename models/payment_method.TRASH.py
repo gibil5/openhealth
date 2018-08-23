@@ -508,3 +508,93 @@
 		#counter = self.env['openhealth.counter'].search([('name', '=', self.saledoc)])
 		#name = pre[self.saledoc] + str(counter.value).rjust(4, '0')
 		#self.saledoc_code = name
+
+
+
+
+# 21 Aug
+
+	#@api.multi
+	#def _compute_balance(self):		
+	#	for record in self:
+	#		record.balance = record.total - record.pm_total 
+
+
+	#@api.multi
+	#@api.depends('date_order')
+	#def _compute_nr_pm(self):
+	#	for record in self:
+	#		nr = record.env['openhealth.payment_method_line'].search_count([('payment_method','=', record.id),]) 
+	#		record.nr_pm = str(nr + 1)
+
+
+	# Comment 
+	#comment = fields.Text()
+
+
+
+
+# ----------------------------------------------------------- Creates ------------------------------------------------------
+	
+	# Create Pm
+	@api.multi 
+	def create_pm_line(self):
+
+		print 
+		print 'Payment Method - Create Pm Line'
+
+		# Init 
+		name = self.nr_pm
+		method = 'cash'
+		balance = self.balance
+		payment_method_id = self.id
+
+
+		return {
+				'name': ' New PM Line Current', 
+
+				'type': 'ir.actions.act_window',
+				'view_type': 'form',
+				'view_mode': 'form',	
+				#'target': 'current',
+				'target': 'new',
+				#'target': 'inline',
+
+				'res_model': 'openhealth.payment_method_line',				
+				
+				#'res_id': payment_method_id,
+				'flags': 	{
+							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+							'form': {'action_buttons': True, }
+							},
+				'context': {
+							'default_payment_method': payment_method_id,
+							'default_name': name,
+							'default_method': method,
+							'default_subtotal': balance,
+							#'default_payment_method_id', payment_method_id,
+							#'default_order': self.id,
+							#'default_total': self.x_amount_total,
+							#'default_pm_total': self.pm_total,
+						}
+				}
+	# create_pm_line
+
+
+
+
+# ----------------------------------------------------------- CRUD ------------------------------------------------------
+	# Create 
+	@api.model
+	def create(self,vals):
+		#print 'Payment Method - Create Override'
+		#print vals
+		
+		#Write your logic here
+		res = super(PaymentMethod, self).create(vals)
+		#Write your logic here
+
+		return res
+	 create 
+
+

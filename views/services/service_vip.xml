@@ -4,23 +4,25 @@
 
 
 
-		<!-- FORM --> 
+<!-- FORM --> 
 		<record model="ir.ui.view" id="service_vip_form_view">
-
 			<field name="name">service.vip.form</field>
-			
 			<field name="model">openhealth.service.vip</field>
-
 			<field name="inherit_id" ref="service_form_view"/>
-
 	        <field name="mode">primary</field>
-			
 			<field name="arch" type="xml">		
 
+
 			
+				<!-- Xpaths --> 
 				<xpath expr="//h1" position="replace">
 
-					<h1>Tarjeta Vip</h1>					
+					<h1>
+<!--						
+						Tarjeta Vip
+-->
+						Productos
+					</h1>					
         		
         		</xpath>
 
@@ -29,8 +31,7 @@
 						<field name="service" 			/>
 				</xpath>
 
-<!--
--->
+
 				<xpath expr="//field[@name='laser']" position="replace">
 				</xpath>
 
@@ -43,9 +44,6 @@
 				<xpath expr="//field[@name='pathology']" position="replace">
 						<field name="pathology" 	invisible="1"			/>
 				</xpath>
-
-
-
 			</field>						
 		</record>		
 
@@ -60,18 +58,16 @@
 
 
 		<!-- TREE -->
-<!--
--->
 		<record model="ir.ui.view" id="service_vip_tree_view">
 			<field name="name">service.vip.tree</field>
 			
 			<field name="model">openhealth.service.vip</field>
 
 			<field name="inherit_id" ref="service_tree_view"/>
-			<field name="mode">primary</field>
-			
-			<field name="arch" type="xml">
+			<field name="mode">primary</field>			
 
+
+			<field name="arch" type="xml">
 
 				<xpath expr="//field[@name='zone']" position="replace">
 				</xpath>
@@ -79,9 +75,7 @@
 				<xpath expr="//field[@name='pathology']" position="replace">
 				</xpath>
 
-
         	</field>
-
 		</record>
 
 

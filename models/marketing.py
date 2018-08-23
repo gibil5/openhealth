@@ -4,22 +4,20 @@
 # 
 # Created: 				19 Mayo 2018
 #
-
 from openerp import models, fields, api
+
 import datetime
-import resap_funcs
-import acc_funcs
-#import openerp.addons.decimal_precision as dp
-
-
-#import matplotlib.pyplot as plt
-#import pandas as pd
 import numpy as np
 import collections
 
-
 import pat_vars
 
+import mkt_funcs
+
+#import acc_funcs
+#import openerp.addons.decimal_precision as dp
+#import matplotlib.pyplot as plt
+#import pandas as pd
 
 
 class Marketing(models.Model):
@@ -1458,12 +1456,8 @@ class Marketing(models.Model):
 
 
 
-
-
-
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 
-# jx 
 	# Set Stats
 	@api.multi
 	def set_stats(self):  
@@ -1667,14 +1661,14 @@ class Marketing(models.Model):
 		self.how_u = how_u
 
 		# Per
-		self.how_none_per = resap_funcs.get_per(self, how_none, self.total_count)
-		self.how_reco_per = resap_funcs.get_per(self, how_reco, self.total_count)
-		self.how_tv_per = resap_funcs.get_per(self, how_tv, self.total_count)
-		self.how_radio_per = resap_funcs.get_per(self, how_radio, self.total_count)
-		self.how_inter_per = resap_funcs.get_per(self, how_inter, self.total_count)
-		self.how_web_per = resap_funcs.get_per(self, how_web, self.total_count)
-		self.how_mail_per = resap_funcs.get_per(self, how_mail, self.total_count)
-		self.how_u_per = resap_funcs.get_per(self, how_u, self.total_count)
+		self.how_none_per = mkt_funcs.get_per(self, how_none, self.total_count)
+		self.how_reco_per = mkt_funcs.get_per(self, how_reco, self.total_count)
+		self.how_tv_per = mkt_funcs.get_per(self, how_tv, self.total_count)
+		self.how_radio_per = mkt_funcs.get_per(self, how_radio, self.total_count)
+		self.how_inter_per = mkt_funcs.get_per(self, how_inter, self.total_count)
+		self.how_web_per = mkt_funcs.get_per(self, how_web, self.total_count)
+		self.how_mail_per = mkt_funcs.get_per(self, how_mail, self.total_count)
+		self.how_u_per = mkt_funcs.get_per(self, how_u, self.total_count)
 
 
 
@@ -1687,12 +1681,12 @@ class Marketing(models.Model):
 		self.edu_u = edu_u
 
 		# Per 
-		self.edu_fir_per = resap_funcs.get_per(self, edu_fir, self.total_count)
-		self.edu_sec_per = resap_funcs.get_per(self, edu_sec, self.total_count)
-		self.edu_tec_per = resap_funcs.get_per(self, edu_tec, self.total_count)
-		self.edu_uni_per = resap_funcs.get_per(self, edu_uni, self.total_count)
-		self.edu_mas_per = resap_funcs.get_per(self, edu_mas, self.total_count)
-		self.edu_u_per = resap_funcs.get_per(self, edu_u, self.total_count)
+		self.edu_fir_per = mkt_funcs.get_per(self, edu_fir, self.total_count)
+		self.edu_sec_per = mkt_funcs.get_per(self, edu_sec, self.total_count)
+		self.edu_tec_per = mkt_funcs.get_per(self, edu_tec, self.total_count)
+		self.edu_uni_per = mkt_funcs.get_per(self, edu_uni, self.total_count)
+		self.edu_mas_per = mkt_funcs.get_per(self, edu_mas, self.total_count)
+		self.edu_u_per = mkt_funcs.get_per(self, edu_u, self.total_count)
 
 
 
@@ -1702,8 +1696,8 @@ class Marketing(models.Model):
 		self.vip_false = vip_false
 
 		 # Per 
-		self.vip_true_per = resap_funcs.get_per(self, vip_true, self.total_count)
-		self.vip_false_per = resap_funcs.get_per(self, vip_false, self.total_count)
+		self.vip_true_per = mkt_funcs.get_per(self, vip_true, self.total_count)
+		self.vip_false_per = mkt_funcs.get_per(self, vip_false, self.total_count)
 
 
 
@@ -1831,9 +1825,9 @@ class Marketing(models.Model):
 
 
 		# Orders 
-		#patients,count = resap_funcs.get_patients_filter(self, self.date_begin, self.date_end)
+		#patients,count = mkt_funcs.get_patients_filter(self, self.date_begin, self.date_end)
 		mode = 'normal'
-		patients,count = resap_funcs.get_patients_filter(self, self.date_begin, self.date_end, mode)
+		patients,count = mkt_funcs.get_patients_filter(self, self.date_begin, self.date_end, mode)
 
 		self.total_count = count
 
@@ -1909,4 +1903,23 @@ class Marketing(models.Model):
 
 	# update_patients
 
+
+
+
+
+
+# ----------------------------------------------------------- Update Patients ------------------------------------------------------
+
+	# Update
+	@api.multi
+	def update(self):  
+
+		print
+		print 'Update'
+
+		self.update_patients()
+		self.update_sales()
+		self.update_recos()
+
+	# update 
 

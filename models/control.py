@@ -3,19 +3,18 @@
 # 	*** Control 	
 # 
 # Created: 				  1 Nov 2016
-# Last updated: 	 	 19 Jul 2018
+# Last updated: 	 	 13 Aug 2018
 #
 
 from openerp import models, fields, api
-
 import datetime
+
 import eval_vars
+import app_vars
 import time_funcs
 
-import app_vars
-import appfuncs
-
-
+import lib
+import user
 
 class Control(models.Model):
 	
@@ -27,31 +26,103 @@ class Control(models.Model):
 
 
 
-# ----------------------------------------------------------- Deprecated ------------------------------------------------------
+# ----------------------------------------------------------- State ------------------------------------------------------
 	
+	# State 
+	state = fields.Selection(
+			selection = eval_vars._state_list, 
+			
+			compute='_compute_state', 
+		)
+
+
+	@api.multi
+	#@api.depends('state')
+	def _compute_state(self):
+		for record in self:
+
+			state = 'draft'
+
+			if record.x_done: 
+				state = 'done'
+
+			#elif record.state == 'draft' and record.maturity > 90: 
+			elif record.maturity > 90: 
+				state = 'cancel'
 
 
 
-
-# ----------------------------------------------------------- Actions ------------------------------------------------------
-
-	# Update App  
-	@api.multi	
-	def update_dates(self):
-
-		print 
-		print 'Update Dates'
-
-		self.evaluation_start_date = self.appointment.appointment_date
-
-		self.control_date = self.appointment.appointment_date
+			record.state = state
 
 
 
+	# Done
+	x_done = fields.Boolean(
+			#string="Realizado", 			
+			string="R", 			
+			default=False,
+			readonly=True, 
+		)
 
 
 
+	# Maturity
+	maturity = fields.Integer(
+			#string="Maturity", 
+			string="Madurez", 
 
+			compute='_compute_maturity', 
+		)
+
+	@api.multi
+	#@api.depends('state')
+	def _compute_maturity(self):
+		
+		#print 
+		#print 'Compute Maturity'
+		
+		for record in self:
+
+			#today = datetime.datetime.now
+			#date_format = "%Y-%m-%d"
+			#date_format = "%Y-%m-%d "
+
+			date_format = "%Y-%m-%d %H:%M:%S"
+			now = datetime.datetime.now() + datetime.timedelta(hours=-5,minutes=0)	
+			now_date_str = now.strftime(date_format)
+
+			first_date_str = record.first_date
+
+
+			nr = lib.get_nr_days(self, first_date_str, now_date_str)
+
+			record.maturity = nr 
+
+			#print now_date_str
+			#print first_date_str
+			#print nr
+
+
+
+# ----------------------------------------------------------- Nr Days ------------------------------------------------------
+
+	# Nr Days after Session
+	nr_days = fields.Integer(
+			'Nr Dias', 
+
+			compute='_compute_nr_days', 
+		)
+
+	@api.multi
+	#@api.depends('state')
+	def _compute_nr_days(self):
+		for record in self:
+			
+			if record.control_date == False: 
+				record.nr_days = lib.get_nr_days(self, record.procedure.session_date, record.first_date)
+
+			else:
+				record.nr_days = lib.get_nr_days(self, record.procedure.session_date, record.control_date)
 
 
 
@@ -59,7 +130,6 @@ class Control(models.Model):
 # ----------------------------------------------------------- Dates ------------------------------------------------------
 
 	# First date 
-	#first_date = fields.Date(
 	first_date = fields.Datetime(
 			string = "Fecha Inicial", 		
 			readonly=True, 	
@@ -71,19 +141,20 @@ class Control(models.Model):
 	# Real date 
 	control_date = fields.Datetime(
 			string = "Fecha Real",
+			
 			readonly=True, 	
 
 			#compute='_compute_control_date', 
 		)
 
-	@api.multi
+	#@api.multi
 	#@api.depends('state')
-	def _compute_control_date(self):
-		print 
-		print 'Compute - Control Date'
-		for record in self:
-			print record.appointment.appointment_date
-			record.control_date = record.appointment.appointment_date
+	#def _compute_control_date(self):
+	#	print 
+	#	print 'Compute - Control Date'
+	#	for record in self:
+	#		print record.appointment.appointment_date
+	#		record.control_date = record.appointment.appointment_date
 
 
 
@@ -155,19 +226,18 @@ class Control(models.Model):
 			#'Cita #', 
 			'Cita', 
 			
-			#required=False, 
-			required=True, 
+			required=False, 
+			#required=True, 
 			
 			#ondelete='cascade', 
 		)
 
 	@api.onchange('appointment')
 	def _onchange_appointment(self):
-
 		print 
 		print 'On Change - Appointment'
+		#self.control_date = self.appointment.appointment_date
 
-		self.control_date = self.appointment.appointment_date
 
 
 
@@ -189,26 +259,6 @@ class Control(models.Model):
 
 
 
-	# Nr Days after Session
-	nr_days = fields.Integer(
-			'Nr Dias', 
-
-			compute='_compute_nr_days', 
-		)
-
-	@api.multi
-	#@api.depends('state')
-	def _compute_nr_days(self):
-		for record in self:
-			
-			if record.control_date == False: 
-				#if record.procedure.session_date != False and record.first_date != False: 
-				#record.nr_days = appfuncs.get_nr_days(self, record.procedure.evaluation_start_date, record.first_date)
-				record.nr_days = appfuncs.get_nr_days(self, record.procedure.session_date, record.first_date)
-
-			else:
-				#if record.procedure.session_date != False and record.control_date != False: 
-				record.nr_days = appfuncs.get_nr_days(self, record.procedure.session_date, record.control_date)
 
 
 
@@ -218,35 +268,6 @@ class Control(models.Model):
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
 
-	# state 
-	state = fields.Selection(
-
-			selection = eval_vars._state_list, 
-			
-			compute='_compute_state', 
-		)
-
-
-	@api.multi
-	#@api.depends('state')
-
-	def _compute_state(self):
-		for record in self:
-
-			state = 'draft'
-
-			if record.x_done: 
-				state = 'done'
-
-			record.state = state
-
-
-
-
-
-
-
-
 	# Name 
 	name = fields.Char(
 			#string = 'Control #',
@@ -254,79 +275,13 @@ class Control(models.Model):
 		)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	# Done
-	x_done = fields.Boolean(
-			
-			#string="Realizado", 			
-			string="R", 			
-			
-			default=False,
-
-			#compute='_compute_x_done', 
-		)
-
-
-	#@api.multi
-	#@api.depends('state')
-	#def _compute_x_done(self):
-	#	for record in self:
-	#		if record.state == 'done':
-	#			record.x_done = True 
-
-
-
-
-
-
 	# Evaluation Nr
-	#control_nr = fields.Integer(
 	evaluation_nr = fields.Integer(
-
-			#string="Control #", 
 			string="#", 
-		
 			default=1, 
 
 			#compute='_compute_control_nr', 
 		)
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -338,7 +293,7 @@ class Control(models.Model):
 			default='control', 
 			
 			#required=True, 
-			)
+		)
 
 
 
@@ -349,17 +304,11 @@ class Control(models.Model):
 	product = fields.Many2one(
 			'product.template',
 			string="Producto",
-			required=True, 
-			)
+
+			#required=True, 
+			required=False, 			
+		)
 	
-
-
-
-
-
-
-
-
 
 
 	# Owner 
@@ -370,13 +319,7 @@ class Control(models.Model):
 
 
 
-
-
-
-
-
-
-
+	# Indications
 	indication = fields.Text(
 			string="Indicaciones",			
 			size=200,
@@ -387,7 +330,7 @@ class Control(models.Model):
 
 
 
-	#observation = fields.Char(
+	# Observation
 	observation = fields.Text(
 			string="Observación",
 			size=200,
@@ -395,6 +338,7 @@ class Control(models.Model):
 			#required=True,
 			required=False,
 			)
+
 
 
 	evaluation_next_date = fields.Date(
@@ -515,6 +459,57 @@ class Control(models.Model):
 
 
 
+# ----------------------------------------------------------- Update ------------------------------------------------------
+
+	# Update Done  
+	@api.multi	
+	def update_done(self):
+
+		print 
+		print 'Update Done'
+
+		# Done 
+		if self.x_done == False: 
+			self.x_done = True
+			self.control_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+		else:
+			self.x_done = False
+
+		# Treatment Flag 
+		self.treatment.update()
+
+
+		# Actual Doctor 
+
+		#doctor_id = treatment_funcs.get_actual_doctor(self)
+		#doctor = lib.get_actual_doctor(self)
+		doctor = user.get_actual_doctor(self)
+
+		print doctor
+		self.doctor = doctor
+
+
+
+
+	# Update App  
+	@api.multi	
+	def update_dates(self):
+
+		print 
+		print 'Update Dates'
+
+		self.evaluation_start_date = self.appointment.appointment_date
+
+		# Real 
+		#self.control_date = self.appointment.appointment_date
+
+		# First
+		self.first_date = self.appointment.appointment_date
+
+
+		# Treatment Flag 
+		self.treatment.update()
+
 
 
 # ----------------------------------------------------------- CRUD ------------------------------------------------------
@@ -527,6 +522,5 @@ class Control(models.Model):
 		#self.appointment.unlink() 
 		#print 
 		return models.Model.unlink(self)
-
 
 

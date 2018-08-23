@@ -6,18 +6,36 @@
 		<record model="ir.ui.view" id="service_excilite_form_view">
 			<field name="name">service.excilite.form</field>
 			<field name="model">openhealth.service.excilite</field>
-
+<!--
+			<field name="inherit_id" ref="service_co2_form_view"/>
 			<field name="inherit_id" ref="service_form_view"/>
+-->
+			<field name="inherit_id" ref="service_form_view"/>
+
 	        <field name="mode">primary</field>
 			
 
 			<field name="arch" type="xml">
+
 				<xpath expr="//h1" position="replace">
 					<h1>Láser Excilite</h1>					
         		</xpath>				
-			</field>
+
+<!--
+				<xpath expr="//field[@name='laser']" position="after">
+
+					<field name="vspace" />
+
+					<field name="zone" 			invisible="0"						/>
+
+					<field name="vspace" />
+
+					<field name="pathology" 	readonly="0"  	invisible="0"		/>									
+        		</xpath>				
+-->
 
 			
+			</field>
 		</record>		
 
 

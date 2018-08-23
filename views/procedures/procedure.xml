@@ -52,20 +52,57 @@
 
 						<!-- Sessions -->
 						<!--
+							attrs="{ 'invisible':[	('number_sessions','==',1), 	]}"
 						--> 
 						<button 
 							type="object" 
 							class="oe_highlight"
-
-							attrs="{ 'invisible':[	('number_sessions','==',1), 	]}"
+							name="create_sessions" 	
 
 							groups="openhealth.roots,openhealth.archivers,openhealth.managers,openhealth.physicians,openhealth.directors"
-
-							name="create_sessions" 	
 
 							string="Crear Sesiones"
 						/>
 						
+
+
+
+
+
+
+						<!-- Clear Sessions -->
+						<button 
+							type="object" 
+							class="oe_highlight"
+
+							name="clear_sessions" 	
+
+							groups="openhealth.roots"
+
+							string="Clear Sessions"
+						/>
+
+
+<!--
+													('laser', '!=', 'laser_quick'), 
+													('laser', '!=', 'laser_co2'), 
+-->
+
+						<!-- Clear Controls -->
+						<button 
+							type="object" 
+							class="oe_highlight"
+
+							attrs="{'invisible':[
+													('laser', 'not in', ['laser_quick', 'laser_co2']), 
+												]}"
+
+							name="clear_controls" 	
+
+							groups="openhealth.roots"
+
+							string="Clear Controls"
+						/>
 
 
 
@@ -76,7 +113,7 @@
 								class="oe_highlight oe_right"
 								name="open_treatment"
 								string="Regresar al TRATAMIENTO"
-						/>
+							/>
 					</header>
 					
 

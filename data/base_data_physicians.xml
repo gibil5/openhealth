@@ -4,10 +4,7 @@
 
  
 
-
-
 <!-- Data - Physicians -->
-
 
 		<!-- Chavarri -->
 		<record id="dr_chavarri" model="oeh.medical.physician">
@@ -17,8 +14,10 @@
 -->		
 			<field name="consultancy_type">Residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
-
 			<field name="idx">0</field>
+
+
+			<field name="x_user_name" search="[('name','=','Fernando Chavarri')]"/>
 		</record>
 
 
@@ -84,8 +83,9 @@
 			<field name="name">Dr. Canales</field>
 			<field name="consultancy_type">Residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
-
 			<field name="idx">1</field>
+
+			<field name="x_user_name" search="[('name','=','Paul Canales')]"/>
 		</record>
 
 
@@ -150,8 +150,9 @@
 			<field name="name">Dr. Escudero</field>
 			<field name="consultancy_type">Residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
-
 			<field name="idx">8</field>
+
+			<field name="x_user_name" search="[('name','=','Carlos Escudero')]"/>
 		</record>
 
 
@@ -221,8 +222,9 @@
 			<field name="name">Dr. Gonzales</field>
 			<field name="consultancy_type">Residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
-
 			<field name="idx">2</field>
+
+			<field name="x_user_name" search="[('name','=','Leo Gonzales')]"/>
 		</record>
 
 
@@ -290,8 +292,9 @@
 			<field name="name">Dr. Monteverde</field>
 			<field name="consultancy_type">Residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
-
 			<field name="idx">3</field>
+
+			<field name="x_user_name" search="[('name','=','Piero Monteverde')]"/>
 		</record>
 
 
@@ -360,8 +363,9 @@
 			<field name="consultancy_type">Residential</field>
 			<field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
 			<field name="x_therapist">True</field>
-
 			<field name="idx">9</field>
+
+			<field name="x_user_name" search="[('name','=','Eulalia Ruiz')]"/>
 		</record>
 
 		<record id="ava_eul_mon" model="oeh.medical.physician.line">
@@ -412,9 +416,6 @@
 			<field name="end_time">20.0166666667</field>
 			<field name="start_time">9.98333333333</field>
 		</record>
-
-
-
 
 
 	</data>

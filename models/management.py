@@ -7,15 +7,11 @@
 #
 
 from openerp import models, fields, api
-
-#import resap_funcs
-import mgt_funcs
-
 import numpy as np
-
 import collections
 
 import mgt_vars
+import mgt_funcs
 
 
 
@@ -636,7 +632,6 @@ class Management(models.Model):
 
 		print 
 		print 'Update Qc'
-		print 
 
 
 		# Checksum 
@@ -687,7 +682,6 @@ class Management(models.Model):
 			#print 
 
 		print 'Done !'
-		print 
 		
 	# update_qc
 
@@ -703,7 +697,6 @@ class Management(models.Model):
 
 		print 
 		print 'Update counters'
-		print 
 
 
 		self.nr_consultations = 0 
@@ -872,7 +865,7 @@ class Management(models.Model):
 
 
 		print 'Done !'
-		print 		
+
 	# update_counters
 
 
@@ -886,7 +879,6 @@ class Management(models.Model):
 
 		print 
 		print 'Update Stats'
-		print 
 
 
 		# Using collections - More Abstract !
@@ -1018,7 +1010,6 @@ class Management(models.Model):
 
 
 		print 'Done !'
-		print 
 
 	# update_stats
 
@@ -1034,7 +1025,6 @@ class Management(models.Model):
 
 		print
 		print 'Update Sales'
-		print 
 
 
 		# Clean 
@@ -1087,7 +1077,6 @@ class Management(models.Model):
 
 
 			# Orders 
-			#orders,count = resap_funcs.get_orders_filter(self, self.date_begin, self.date_end)
 			#doctor = 'all'
 			orders,count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end, doctor.name)
 
@@ -1177,6 +1166,27 @@ class Management(models.Model):
 
 
 		print 'Done !'
-		print 
 
 	# update_sales
+
+
+
+
+
+# ----------------------------------------------------------- Update ------------------------------------------------------
+
+	# Update
+	@api.multi
+	def update(self):  
+
+		print
+		print 'Update'
+		print 
+
+		self.update_sales()
+		self.update_stats()
+		self.update_counters()
+		self.update_qc()
+
+	# update 
+

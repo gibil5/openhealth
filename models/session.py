@@ -10,22 +10,25 @@ from datetime import datetime
 from . import time_funcs
 from . import eval_vars
 
-
 class Session(models.Model):
 
 	_name = 'openhealth.session'
-
 	_inherit = ['oeh.medical.evaluation', 'base_multi_image.owner']
 
 
 
 
+# ----------------------------------------------------------- Deprecated ------------------------------------------------------
+
+	#co2_observations=fields.Text(
+	#		string="Observaciones",
+			#default="x",
+	#		)
+
 
 
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
-
-
 	# Evaluation Number 
 	evaluation_nr = fields.Integer(
 		
@@ -110,10 +113,6 @@ class Session(models.Model):
 
 
 
-	co2_observations=fields.Text(
-			string="Observaciones",
-			#default="x",
-			)
 
 
 

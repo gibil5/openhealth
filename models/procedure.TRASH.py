@@ -101,4 +101,10 @@
 
 
 
+# 15 Aug 2018 
+	#appointment_ids = fields.One2many(
+	#		'oeh.medical.appointment', 
+	#		'procedure', 
+	#		string = "Citas", 
+	#		)
 

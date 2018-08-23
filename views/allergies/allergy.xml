@@ -4,8 +4,7 @@
 
 
 
-
-		<!-- ACTION --> 
+<!-- ACTION --> 
 		<record model="ir.actions.act_window" id="allergy_list_action">
 			<field name="name">Alergias</field>
 			<field name="res_model">openhealth.allergy</field>
@@ -27,11 +26,7 @@
 
 
 
-
-
-
-
-		<!-- TREE -->	
+<!-- TREE -->	
 		<record model="ir.ui.view" id="allergy_tree_view">
 			<field name="name">openhealth allergy</field>
 			<field name="model">openhealth.allergy</field>
@@ -41,14 +36,9 @@
 			<field name="arch" type="xml">	
 
 				<tree string="Openhealth allergy Tree"   >
-
 					<field name="name"/>
 
 					<field name="name_short"	groups="openhealth.roots"			/>
-
-
-<!--
--->
 				</tree>
 			</field>
 		</record>

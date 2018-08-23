@@ -4,7 +4,7 @@
 		
 
 
-		<!-- Tree --> 
+<!-- Tree --> 
 		<record model="ir.ui.view" id="account_line_view_order_tree">
 			<field name="name">openhealth.account.line.tree</field>
 			<field name="model">openhealth.account.line</field>
@@ -31,6 +31,13 @@
 					<field name="igv"/>
 					<field name="otros"/>
 					<field name="total"/>
+
+
+					
+					<field name="product"/>
+					<field name="product_type"/>
+
+
 
 					<field name="tipocambio"/>
 
@@ -91,7 +98,7 @@
 
 
 
-		<!-- Tree 2 --> 
+<!-- Tree 2 --> 
 		<record model="ir.ui.view" id="account_line_rv_view_tree">
 			<field name="name">openhealth.account.line.tree</field>
 			<field name="model">openhealth.account.line</field>
@@ -105,7 +112,13 @@
 					<field name="date_char"/>
 					<field name="time_char"/>
 
+
+
 					<field name="patient"/>
+					<field name="document"/>
+					<field name="document_type"/>
+
+
 
 					<field name="qty"/>
 					<field name="product"/>
@@ -116,11 +129,11 @@
 					<field name="amount_net"/>
 					<field name="amount_tax"/>
 					<field name="amount"/>
-<!--
--->
 				</tree>
 			</field>
 		</record>
+<!--
+-->
 
 
 
@@ -187,13 +200,20 @@
 					<field 	name="numerofactura"	/>
 					
 					<group expand="1" string="Group By">
+
 						<filter name="tipodoc" context="{'group_by':'tipodoc'}"/>
 						<separator/>						
 						<filter name="tipodocumento" context="{'group_by':'tipodocumento'}"/>
+
+						<filter name="Producto" context="{'group_by':'product'}"/>
+						<filter name="Tipo de producto" context="{'group_by':'product_type'}"/>
+
 					</group>
 			   </search>
 		   </field>
 	   </record>
+
+
 
 	</data>
 </openerp>

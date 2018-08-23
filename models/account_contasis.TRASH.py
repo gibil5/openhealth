@@ -807,3 +807,41 @@
 	# update_patients
 
 
+
+# 20 Aug 2018 
+
+			# Payment Lines 
+			for line in order.x_payment_method.pm_line_ids:
+
+				#amount = line.price_subtotal
+				#amount_net, amount_tax = acc_funcs.get_net_tax(self, amount)
+
+
+
+# 21 Aug 2018 
+				# Create 
+				pay_line = self.payment_line.create({
+														#'patient': patient, 
+														#'serial_nr': serial_nr, 
+														#'x_type': x_type, 
+														#'document': document, 					# Id Doc
+														#'document_type': document_type, 		# Id Doc Type 
+														#'date': date,
+														#'date_time': date,
+														#'amount': amount,
+														#'amount_net': amount_net,
+														#'amount_tax': amount_tax,
+
+														'patient': patient, 
+														'serial_nr': serial_nr, 
+														'x_type': x_type, 
+														'date_time': date,
+														'name': line.name, 
+														'subtotal': line.subtotal, 
+														'method': line.method, 
+																												
+														'account_id': self.id, 
+					})
+
+
+

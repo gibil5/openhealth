@@ -4,7 +4,7 @@
 
 
 
-
+<!-- EC --> 
 <!-- FORM view --> 
 		<record model="ir.ui.view" id="order_report_nex_form_view">
 
@@ -19,11 +19,15 @@
 
 
 					<header>
+
+<!--
+								name="update_order_report"
+--> 
 						<button 
 								type="object" 
 								class="oe_highlight"
 
-								name="update_order_report"
+								name="update"
 
 								string="Actualizar"								
 						/>

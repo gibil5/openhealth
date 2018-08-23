@@ -302,3 +302,23 @@
 		return appointment 
 	# create_appointment
 
+
+
+
+# 20 Aug 2018 
+
+			# Function oriented 
+			#tst.test_integration_report(self, 'openhealth.closing', 'date')	
+			#tst.test_integration_report(self, 'openhealth.report.sale.product', 'name')	
+			#tst.test_integration_report(self, 'openhealth.management', 'date_begin')	
+			#tst.test_integration_report(self, 'openhealth.marketing', 'date_begin')	
+			#tst.test_integration_report(self, 'openhealth.account.contasis', 'date_begin')	
+			#print 
+			#print
+
+
+
+
+
+
+

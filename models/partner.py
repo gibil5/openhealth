@@ -4,28 +4,21 @@
 # 		*** RES PARTNER 
 # 
 # Created: 				26 Aug 2016
-# Last updated: 	 	25 Aug 2017
+# Last updated: 	 	21 Aug 2018 
 #
+
 from openerp import models, fields, api
-from . import pat_vars
-from . import pat_funcs
+
+import pat_vars
+
+import lib
 
 class Partner(models.Model):
-	
 	_inherit = 'res.partner'
-
 	_order = 'write_date desc'
 
 
-
-
-
 # ----------------------------------------------------------- Deprecated ------------------------------------------------------
-	#x_quotation_ids = fields.One2many(
-	#		'openhealth.quotation', 		
-	#		'partner_id', 
-	#		string="Cotizacion"
-	#	)
 
 
 
@@ -133,29 +126,12 @@ class Partner(models.Model):
 
 
 
-# ----------------------------------------------------------- Hard wired ------------------------------------------------------
+# ----------------------------------------------------------- Hard wired - With Patient ------------------------------------------------------
 
-
-	# READY 
-	phone = fields.Char(
-			#'Teléfono 1', 
-			'Fijo', 
-			#required=True, 
-			required=False, 
-		)
-	
-	mobile = fields.Char(
-			'Celular', 
-		)
-
-
-
-
-
+	# Company 
 	x_firm = fields.Char(
 			"Razón social", 	
 		)
-
 
 	x_ruc = fields.Char(
 			"RUC", 	
@@ -163,22 +139,24 @@ class Partner(models.Model):
 
 
 
-	email = fields.Char(
+	# phones 
+	phone = fields.Char(
+			'Fijo', 
+			required=False, 
+		)
+	
+	mobile = fields.Char(
+			'Celular', 
+		)
 
+	email = fields.Char(
 			string = 'Email',  
 			placeholder = '',
-			
-			#required=True, 
 			required=False, 
 		)
 
 
-
-
-
-
-	# Address
-	
+	# Address	
 	country_id = fields.Many2one(
 			'res.country', 
 			string = 'País', 
@@ -190,8 +168,6 @@ class Partner(models.Model):
 			required=True, 
 		)
 
-
-
 	city = fields.Selection(
 			selection = pat_vars._city_list, 
 			string = 'Departamento',  
@@ -201,8 +177,6 @@ class Partner(models.Model):
 			#required=True, 
 			required=False, 
 		)
-
-
 
 	# For patient short card
 	city_char = fields.Char(
@@ -215,21 +189,12 @@ class Partner(models.Model):
 		for record in self:
 			record.city_char = record.city
 
-
-
-
-
-
-
-
 	street2 = fields.Char(
 			string = "Distrito 2", 	
 			
 			#required=True, 
 			required=False, 
 		)
-
-
 
 	street2_sel = fields.Selection(
 			selection = pat_vars._street2_list, 
@@ -240,18 +205,11 @@ class Partner(models.Model):
 		)
 
 
-
-
-
-
 	street = fields.Char(
 			string = "Dirección", 	
 
 			required=False, 
 		)
-
-
-
 
 	zip = fields.Char(
 			#'Zip', 
@@ -268,22 +226,16 @@ class Partner(models.Model):
 
 
 	# Only for foreign addresses
-
 	x_foreign = fields.Boolean(
 			string="Dirección en el extranjero", 
 		)
 
 	@api.onchange('x_foreign')
 	def _onchange_x_foreign(self):
-
-		print 'jx'
-		print 'On change foreign'
-		
+		#print 'jx'
+		#print 'On change foreign'
 		if self.x_foreign:
-			#self.city = False
 			self.city = ""
-
-
 
 	x_address_foreign = fields.Text(
 			string=".", 
@@ -291,23 +243,21 @@ class Partner(models.Model):
 
 
 
-
-
-
-
-
-
-# ----------------------------------------------------------- DNI RUC ------------------------------------------------------
-
-
+# ----------------------------------------------------------- Validate - DNI RUC ------------------------------------------------------
 
 	# Test and validate
 	@api.onchange('x_dni')
 	def _onchange_x_dni(self):
-		ret = pat_funcs.test_for_digits(self, self.x_dni)
+
+		print 'Gotcha !'
+
+		ret = lib.test_for_digits(self, self.x_dni)
+		
 		if ret != 0: 
 			return ret
-		ret = pat_funcs.test_for_length(self, self.x_dni, 8)
+		
+		ret = lib.test_for_length(self, self.x_dni, 8)
+		
 		if ret != 0: 
 			return ret
 
@@ -319,11 +269,17 @@ class Partner(models.Model):
 	# Test and validate
 	@api.onchange('x_ruc')
 	def _onchange_x_ruc(self):
-		ret = pat_funcs.test_for_digits(self, self.x_ruc)
+
+		print 'Gotcha !'
+		
+		ret = lib.test_for_digits(self, self.x_ruc)
+		
 		if ret != 0: 
 			return ret
 		
-		ret = pat_funcs.test_for_length(self, self.x_ruc, 11)
+		
+		ret = lib.test_for_length(self, self.x_ruc, 11)
+		
 		if ret != 0: 
 			return ret
 

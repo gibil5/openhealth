@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# 	***  Cos Classes
+# 	***  Cos Classes - Deprecated
 # 
 # Created: 				 1 Nov 2016
 # 
@@ -9,15 +9,13 @@ from openerp import models, fields, api
 from datetime import datetime,tzinfo,timedelta
 
 from . import cosvars
-from . import jrfuncs
 from . import eval_vars
 from . import time_funcs
 from . import app_vars
 
 from . import prodvars
 
-
-#from . import jxvars
+from . import jrfuncs
 
 
 # ----------------------------------------------------------- ConsultationCos ------------------------------------------------------

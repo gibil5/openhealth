@@ -13,7 +13,7 @@
 			<field name="arch" type="xml">
 
 				<notebook position="inside">										
-					<page string="Valores empleados" >
+					<page string="Valores empleados - 1" >
 
 
 
@@ -68,10 +68,11 @@
 
 
 
-						<!-- Quick --> 
+
+
+<!-- Quick --> 
 						<group string="Quick Laser"   attrs="{'invisible':[('laser', '!=', 'laser_quick')]}">
-<!--
--->							<group>
+							<group>
 								<field name="quick_type"	attrs = "{'required':[('laser','in',('laser_quick'))]}"/>
 
 
@@ -111,7 +112,9 @@
 
 
 
-						<!-- Excilite --> 
+
+
+<!-- Excilite --> 
 						<group string="Láser Eximer 308 nm"   attrs="{'invisible':[('laser', '!=', 'laser_excilite')]}">
 							<group>
 								<field name="exc_time"			attrs = "{'required':[('laser','in',('laser_excilite'))]}"/>

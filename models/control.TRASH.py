@@ -163,3 +163,41 @@
 
 
 
+
+
+# 31 Jul 2018 
+
+	# Done
+	x_done = fields.Boolean(
+			#string="Realizado", 			
+			string="R", 			
+			default=False,
+
+			#compute='_compute_x_done', 
+		)
+
+
+	#@api.multi
+	#@api.depends('state')
+	#def _compute_x_done(self):
+	#	for record in self:
+	#		if record.state == 'done':
+	#			record.x_done = True 
+
+
+
+
+# 7 Aug 2018 
+
+	#@api.onchange('x_done')
+	#def _onchange_x_done(self):
+	#	print 
+	#	print 'On Change - Done'
+		#self.control_date = Datetime.now()
+		#self.control_date = datetime.datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
+	#	self.control_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+
+
+
+	

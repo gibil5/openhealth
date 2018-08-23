@@ -6,22 +6,209 @@
 from openerp import models, fields, api
 import openerp.addons.decimal_precision as dp
 
-import def_funcs
-
-
+import lib
+import user
 
 class sale_order_line(models.Model):
 
 	_inherit='sale.order.line'
-
 	#_name = 'openhealth.order_line'
-
 	#_order = 'x_date_created asc'
 
 
 
 
+# ----------------------------------------------------------- Update ------------------------------------------------------
 
+	# Update Recommendations 
+	@api.multi
+	def update_recos(self):  
+
+		#print 
+		#print 'Update - Recommendations'
+
+
+		# Init 
+		family = self.product_id.x_family
+		treatment = self.product_id.x_treatment
+		if family in ['laser', 'consultation', 'consultation_gyn']: 
+			categ = treatment
+		else: 
+			categ = family
+
+
+		# Print 
+		#print family
+		#print treatment
+		#print categ
+		#print self.service_co2_id 
+		#print self.service_co2_id.state 
+		#print hasattr(self.service_co2_id, 'state')
+		#print self.service_co2_id is None
+
+
+
+		#if categ == 'laser_co2'		and 	self.service_co2_id.state != False: 								
+		#if categ == 'laser_co2'		and 	self.service_co2_id != False: 								
+			#self.service_co2_id.state = 'sale'
+		#elif categ == 'laser_excilite'		and 	self.service_excilite_id.state != False: 
+			#self.service_excilite_id.state = 'sale'
+		#elif categ == 'laser_ipl'		and 	self.service_ipl_id.state != False: 
+			#self.service_ipl_id.state = 'sale'
+		#elif categ == 'laser_ndyag'		and 	self.service_ndyag_id.state != False: 
+			#self.service_ndyag_id.state = 'sale'
+		#elif categ == 'laser_quick'		and 	self.service_quick_id.state != False: 
+			#self.service_quick_id.state = 'sale'
+		#elif categ == 'medical'			and 	self.service_medical_id.state != False: 
+			#self.service_medical_id.state = 'sale'
+		#elif categ == 'cosmetology'		and 	self.service_cosmetology_id.state != False: 
+			#self.service_cosmetology_id.state = 'sale'
+			#if self.service_product_id.state != False: 
+			#	self.service_product_id.state = 'sale'
+
+
+
+		# Co2
+		if categ == 'laser_co2': 									
+			lib.change_state(self.service_co2_id, 'sale')
+
+
+		# Exc
+		elif categ == 'laser_excilite': 
+			lib.change_state(self.service_excilite_id, 'sale')
+
+
+		# Ipl
+		elif categ == 'laser_ipl': 
+			lib.change_state(self.service_ipl_id, 'sale')
+
+
+		# Ndyag
+		elif categ == 'laser_ndyag': 
+			lib.change_state(self.service_ndyag_id, 'sale')
+
+
+		# Quick
+		elif categ == 'laser_quick': 
+			lib.change_state(self.service_quick_id, 'sale')
+
+
+		# Medical
+		elif categ == 'medical': 
+			lib.change_state(self.service_medical_id, 'sale')
+
+
+		# Cosmetology
+		elif categ == 'cosmetology': 
+			lib.change_state(self.service_cosmetology_id, 'sale')
+
+
+
+		# Consultation
+		elif categ == 'consultation': 
+			#self.service_consultation_id.state = 'sale'
+			print 
+
+
+		# Products 
+		else:
+			lib.change_state(self.service_product_id, 'sale')
+
+
+
+
+# ---------------------------------------------- Open Line Current --------------------------------------------------------
+
+	# Open Line 
+	@api.multi
+	def open_line_current(self): 
+
+		res_id = self.id 
+		
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' Edit Service Current', 
+				'view_type': 'form',
+				'view_mode': 'form',
+				'res_model': self._name,
+
+				'res_id': res_id,
+				
+				'target': 'current',
+				'flags': {
+						'form': {'action_buttons': True, }
+						},
+
+				'context': {
+				}
+		}
+	# open_line_current 
+
+
+
+
+# ----------------------------------------------------------- Recommendations ------------------------------------------------------
+
+	# Recommendation 
+
+	# Product 
+	service_product_id = fields.Many2one(
+			'openhealth.service.product', 
+			string='Product', 
+		)
+
+
+	# Consultation
+	service_consultation_id = fields.Many2one(
+			'openhealth.service.consultation', 
+			string='Consultation', 
+		)
+
+
+	# Laser 
+	service_co2_id = fields.Many2one(
+			'openhealth.service.co2', 
+			string='Co2', 
+		)
+
+	service_quick_id = fields.Many2one(
+			'openhealth.service.quick', 
+			string='Quick', 
+		)
+
+	service_vip_id = fields.Many2one(
+			'openhealth.service.vip', 
+			string='Vip', 
+		)
+
+	service_excilite_id = fields.Many2one(
+			'openhealth.service.excilite', 
+			string='Excilite', 
+		)
+
+	service_ipl_id = fields.Many2one(
+			'openhealth.service.ipl', 
+			string='Ipl', 
+		)
+
+	service_ndyag_id = fields.Many2one(
+			'openhealth.service.ndyag', 
+			string='Ndyag', 
+		)
+
+
+	# Medical 
+	service_medical_id = fields.Many2one(
+			'openhealth.service.medical', 
+			string='Medical', 
+		)
+
+
+	# Cosmetology 
+	service_cosmetology_id = fields.Many2one(
+			'openhealth.service.cosmetology', 
+			string='Cosmetology', 
+		)
 
 
 
@@ -35,7 +222,7 @@ class sale_order_line(models.Model):
 			domain=[('sale_ok', '=', True)], 
 			change_default=True, 
 			
-			#default=lambda self: def_funcs._get_default_id(self, 'product'),
+			#default=lambda self: user._get_default_id(self, 'product'),
 
 			ondelete='restrict', 
 			required=True
@@ -388,11 +575,14 @@ class sale_order_line(models.Model):
 
 	@api.multi
 	def create_myself(self):  
-
 		print 
 		print 'jx'
 		print 'Create Myself'
 		print 
+
+
+
+
 
 
 

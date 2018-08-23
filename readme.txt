@@ -1,4 +1,5 @@
 
 Fulcrum
-July 2018
-24
+
+Aug 2018
+23

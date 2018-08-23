@@ -1,0 +1,79 @@
+
+
+<!--
+2 Aug 2018 
+-->
+
+
+<!--
+								attrs="{'invisible':
+														[
+															('family', '=', 'cosmetology'),
+														]
+										}"
+-->
+
+
+						<!-- Cosmetology --> 
+<!--
+						<button 
+								name="open_cosmetology"
+								type="object" 
+								class="oe_highlight"
+								attrs="{'invisible':
+														[
+															('family', '!=', 'cosmetology'),
+														]
+										}"
+
+								string="Regresar a la COSMIATRIA"
+						/>
+-->
+
+
+
+
+						<!--
+						<h1>Láser</h1>
+						-->
+
+
+
+							<!--
+							<button 
+								type="object" 
+								class="oe_highlight oe_right"
+								string="Clear" 
+
+								name="clear_local" 
+							/>
+							-->
+
+
+
+<!--
+							<group>
+								<group>
+									<field name="state" />
+								</group>
+								<group>									
+								</group>
+							</group>
+-->
+
+
+
+
+<!--
+								<group>
+									<field name="time_1" readonly="1"  invisible="0" />
+								</group>
+								
+								<group>
+									<field name="nr_sessions" readonly="1"  invisible="0" />
+								</group>
+-->
+
+
+
+

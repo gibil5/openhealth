@@ -1,5 +1,261 @@
 
 
+# ----------------------------------------------------------- Product Selector ------------------------------------------------------
+
+		#x_type = context['x_type']
+
+
+
+
+		#print 'Open Product Selector'
+		#print context
+		#print context['params']
+		#print order_id
+		#print res.id
+		
+
+
+
+
+
+		#if res.id != False: 			# Dep !
+			
+		#	res_id = res.id 
+
+			# Reset 
+		#	res.reset()
+
+			# Initialize 
+		#	res.order_id = order_id
+		#	res.product_uom_qty = 1 
+		#	res.x_type = x_type
+
+
+
+# ----------------------------------------------------------- Events ------------------------------------------------------
+
+	# Event 
+	#event_ids = fields.One2many(
+	#		'openhealth.event',
+	#		'order',		
+	#		string="Eventos", 
+	#	)
+
+
+	@api.multi 
+	def cancel_order(self):
+		self.x_cancel = True
+		self.state = 'cancel'
+		#ret = self.create_event()
+		return(ret)
+
+
+	@api.multi 
+	def create_event(self):
+		nr_pm = self.env['openhealth.event'].search_count([('order','=', self.id),]) 
+		name = 'Evento ' + str(nr_pm + 1)
+		x_type = 'cancel'
+
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' New PM Current', 
+				'view_type': 'form',
+				'view_mode': 'form',	
+				'target': 'current',
+				'res_model': 'openhealth.event',				
+				#'res_id': receipt_id,
+				'flags': 	{
+								#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+								'form': {'action_buttons': True, }
+							},
+				'context': {
+								'default_order': self.id,
+								'default_name': name,
+								'default_x_type': x_type,
+							}
+				}
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Testing Units ------------------------------------------------------
+
+	# Unit Testing 
+	@api.multi
+	def test_units(self):  
+
+		print 
+		print 'Unit Testing Begin'
+
+		self.treatment.create_order('consultation')
+
+		self.test_clean_services()
+		self.treatment.create_order('procedure')
+
+		self.update_descriptors_all()
+
+		self.update_type()
+
+		self.state_change()
+		self.state_change()
+
+		self.x_type = 'ticket_receipt'
+		self.print_ticket()
+		self.x_type = 'ticket_invoice'
+		self.print_ticket()
+
+
+		self.cancel_order()
+		self.activate_order()
+		self.state = 'sale'
+
+		print 
+		print 'Unit Testing End'
+		print 
+
+
+
+	# Clean Services 
+	@api.multi
+	def test_clean_services(self):  
+		for service in self.treatment.service_vip_ids:
+			service.state = 'draft'
+		for service in self.treatment.service_co2_ids:
+			service.state = 'draft'
+		for service in self.treatment.service_quick_ids:
+			service.state = 'draft'
+		for service in self.treatment.service_excilite_ids:
+			service.state = 'draft'
+		for service in self.treatment.service_ipl_ids:
+			service.state = 'draft'
+		for service in self.treatment.service_ndyag_ids:
+			service.state = 'draft'
+		for service in self.treatment.service_medical_ids:
+			service.state = 'draft'
+
+
+
+
+
+# ----------------------------------------------------------- Test ------------------------------------------------------
+
+	# To update type from batch 
+	@api.multi
+	def update_type(self):
+		print 
+		print 'update type'
+		if self.x_payment_method != False: 
+			print 'Gotcha'
+			self.x_type = self.x_payment_method.saledoc
+			print self.x_type
+
+
+
+
+
+
+# ----------------------------------------------------------- Counters ------------------------------------------------------
+
+	def _get_default_counter(self, x_type):
+		#print 
+		#print 'Get Default Counter'
+		#print x_type
+		
+		_h_name = {
+					'tkr' : 	'ticket_receipt', 
+					'tki' : 	'ticket_invoice', 
+					'rec' : 	'receipt', 
+					'inv' : 	'invoice', 
+					'san' : 	'sale_note', 
+					'adv' : 	'advertisement', 
+		}
+		name = _h_name[x_type]
+ 		counter = self.env['openhealth.counter'].search([
+																('name', '=', name), 
+														],
+															#order='write_date desc',
+															limit=1,
+														)
+		
+		#print counter
+		#print 
+		return counter
+	# _get_default_counter
+
+
+
+	# Ticket Receipt 
+	counter_tkr = fields.Many2one(
+			'openhealth.counter', 
+			default=lambda self: self._get_default_counter('tkr'),
+		)
+
+	# Ticket Invoice 
+	counter_tki = fields.Many2one(
+			'openhealth.counter', 
+			default=lambda self: self._get_default_counter('tki'),
+		)
+
+	# Receipt 
+	counter_rec = fields.Many2one(
+			'openhealth.counter', 
+			default=lambda self: self._get_default_counter('rec'),
+		)
+
+	# Invoice 
+	counter_inv = fields.Many2one(
+			'openhealth.counter', 
+			default=lambda self: self._get_default_counter('inv'),
+		)
+
+	# Sale Note 
+	counter_san = fields.Many2one(
+			'openhealth.counter', 
+			default=lambda self: self._get_default_counter('san'),
+		)
+
+	# Advertisement  
+	counter_adv = fields.Many2one(
+			'openhealth.counter', 
+			default=lambda self: self._get_default_counter('adv'),
+		)
+
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Create order lines - Deprecated ------------------------------------------------------
+	
+	# From Treatment 
+	#@api.multi 	
+	#def x_create_order_lines_target(self, name_short, price_manual, price_applied, reco_id):		
+
+	#	print 
+	#	print 'Order - Create Order Lines'
+
+		#ret = ord_funcs.create_order_lines(self, name_short, price_manual, price_applied, reco_id)
+	#	ret = ord_funcs.create_order_lines_reco(self, name_short, price_manual, price_applied, reco_id)
+
+
+
+
+# ----------------------------------------------------------- Clean ------------------------------------------------------
+	# Clean  
+	@api.multi 
+	def clean(self):
+		print 
+		print 'Clean'
+		self.state == 'draft'
+
+
+
 
 
 # ----------------------------------------------------------- action confirm ------------------------------------------------------
@@ -330,6 +586,16 @@
  	# update_type_legacy
 
 
+
+
+# ----------------------------------------------------------- User ------------------------------------------------------
+	#user_id = fields.Many2one(
+	#		'res.users', 
+	#		string='Salesperson', 
+	#		index=True, 
+	#		track_visibility='onchange', 
+	#		default=lambda self: self.env.user
+	#	)
 
 
 

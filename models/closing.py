@@ -2,29 +2,21 @@
 #
 # 	Closing 
 # 
-# Created: 				18 Oct 2017
-# Last updated: 	 	18 Oct 2017
+# Created: 			18 Oct 2017
+# Last up: 	 		18 Aug 2018
 #
-
 from openerp import models, fields, api
 
 import datetime
-
 import clos_funcs
 
-
-
-class Closing(models.Model):
-	
+class Closing(models.Model):	
 	#_inherit='sale.closing'
-
 	_name = 'openhealth.closing'
 	
 
 
-
-
-# ----------------------------------------------------------- Primitives ------------------------------------------------------
+# ----------------------------------------------------------- Dates ------------------------------------------------------
 	
 	# Dates
 	date = fields.Date(
@@ -36,7 +28,17 @@ class Closing(models.Model):
 
 
 
+# ----------------------------------------------------------- Totals - Absolute ------------------------------------------------------
 
+	# Total
+	total = fields.Float(
+			'Total',
+			default = 0, 
+		)
+
+
+
+# ----------------------------------------------------------- Totals - Partials ------------------------------------------------------
 
 # Total Proof 
 	total_proof = fields.Float(
@@ -49,11 +51,6 @@ class Closing(models.Model):
 			default = 0, 
 		)
 
-
-
-
-
-
 # Total Form 
 	total_form = fields.Float(
 			'Total Formas de pago',
@@ -64,9 +61,6 @@ class Closing(models.Model):
 			'Total Formas de pago - NSF',
 			default = 0, 
 		)
-
-
-
 
 # Total Cards 
 	total_cards = fields.Float(
@@ -81,33 +75,29 @@ class Closing(models.Model):
 		)
 
 
-
-
-
-
+# ----------------------------------------------------------- Serial numbers ------------------------------------------------------
 
 # Serial numbers 
 	serial_nr_first_tkr = fields.Char(
 			string="De:", 
 		)	
+	
 	serial_nr_last_tkr = fields.Char(
 			string="A:", 
 		)
 
-
 	serial_nr_first_tki = fields.Char(
 			string="De:", 
 		)
+	
 	serial_nr_last_tki = fields.Char(
 			string="A:", 
 		)
 
-
-
-
 	serial_nr_first_rec = fields.Char(
 			string="De:", 
 		)	
+
 	serial_nr_last_rec = fields.Char(
 			string="A:", 
 		)
@@ -115,20 +105,18 @@ class Closing(models.Model):
 	serial_nr_first_inv = fields.Char(
 			string="De:", 
 		)	
+
 	serial_nr_last_inv = fields.Char(
 			string="A:", 
 		)
 
-
-
-
 	serial_nr_first_adv = fields.Char(
 			string="De:", 
 		)	
+
 	serial_nr_last_adv = fields.Char(
 			string="A:", 
 		)
-
 
 	serial_nr_first_san = fields.Char(
 			string="De:", 
@@ -139,23 +127,14 @@ class Closing(models.Model):
 
 
 
-
-
-
-
-
-
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 
 	# Update 
 	@api.multi
 	def update_totals(self):  
 
-		print 'jx'
-		print 'Update totals'
-
-
-
+		#print
+		#print 'Update Totals'
 
 
 
@@ -169,12 +148,6 @@ class Closing(models.Model):
 			amount_untaxed = amount_untaxed + order.amount_untaxed 
 			count = count + 1
 		self.total = amount_untaxed
-
-
-
-
-
-		
 
 
 
@@ -195,7 +168,6 @@ class Closing(models.Model):
 
 
 
-
 		# Invoices
 		x_type = 'invoice'
 		
@@ -209,8 +181,6 @@ class Closing(models.Model):
 		if count != 0: 
 			self.serial_nr_first_inv = orders[0].x_serial_nr
 			self.serial_nr_last_inv = orders[-1].x_serial_nr
-
-
 
 
 
@@ -252,9 +222,6 @@ class Closing(models.Model):
 
 
 
-
-
-
 		# Advertisement
 		x_type = 'advertisement'
 		
@@ -271,8 +238,6 @@ class Closing(models.Model):
 
 
 
-
-
 		# Sale notes 
 		x_type = 'sale_note'
 		
@@ -286,7 +251,6 @@ class Closing(models.Model):
 		if count != 0: 
 			self.serial_nr_first_san = orders[0].x_serial_nr
 			self.serial_nr_last_san = orders[-1].x_serial_nr
-
 
 
 
@@ -392,18 +356,14 @@ class Closing(models.Model):
 
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
-	# Other 
-	vspace = fields.Char(
-			' ', 
-			readonly=True
-		)
-
-
+	
 	# Name 
 	name = fields.Char(
 			string="Cierre de Caja #", 
+
 			compute='_compute_name', 
 		)
+
 	@api.multi
 	#@api.depends('x_appointment')
 	def _compute_name(self):
@@ -411,162 +371,126 @@ class Closing(models.Model):
 			record.name = record.date 
 
 
-
-
-
-
-
-
-# Total absolute
-	total = fields.Float(
-			'Total',
-			default = 0, 
-
-			#compute='_compute_total', 
+	# Other 
+	vspace = fields.Char(
+			' ', 
+			readonly=True
 		)
 
 
 
 
-# Total partials - Form of payment 
+
+
+# ----------------------------------------------------------- Totals - Partials ------------------------------------------------------
+
+# Form of payment 
 
 	# Cash  
 	cash_tot = fields.Float(
 			'Efectivo',
 			default = 0, 
-
-			#compute='_compute_method_tot', 
 		)
 
 	cash_tot_wblack = fields.Float(					# Without sale notes and advertisements
 			'Efectivo - NSF',
 			default = 0, 
-
-			#compute='_compute_method_tot', 
 		)
 
 
-
-
-	# ame  
+	# American Express 
 	ame_tot = fields.Float(
 			'American Express',
 			default = 0, 
-
-			#compute='_compute_method_tot', 
 		)
 
 
-
-	# cuo  
-	#cuo_tot = fields.Float(
-	#		'Cuota Perfecta',
-	#		default = 0, 
-	#	)
-
-
-
-
-	# din  
+	# Diners 
 	din_tot = fields.Float(
 			'Diners',
 			default = 0, 
-
-			#compute='_compute_method_tot', 
 		)
 
-	# mac  
+
+	# Master - Credito
 	mac_tot = fields.Float(
 			'Mastercard - Crédito',
 			default = 0, 
-
-			#compute='_compute_method_tot', 
 		)
 
-	# mad  
+
+	# Master - Depbito 
 	mad_tot = fields.Float(
 			'Mastercard - Débito',
 			default = 0, 
-
-			#compute='_compute_method_tot', 
 		)
 
 
-	# vic  
+	# Visa - Credito 
 	vic_tot = fields.Float(
 			'Visa - Crédito',
 			default = 0, 
-
-			#compute='_compute_method_tot', 
 		)
 
 
-	# vid  
+	# Visa - Debito 
 	vid_tot = fields.Float(
 			'Visa - Débito',
 			default = 0, 
-
-			#compute='_compute_method_tot', 
 		)
 
 
 
-
-
-
-# Total partials - Proof of payment 
+# Proof of payment 
 	
 	# Receipts  
 	rec_tot = fields.Float(
 			'Boletas',
 			default = 0, 
-
-			#compute='_compute_rec_tot', 
 		)
 
 	# Invoices  
 	inv_tot = fields.Float(
 			'Facturas',
 			default = 0, 
-
-			#compute='_compute_inv_tot', 
 		)
-
 
 	# Ticket Invoices  
 	tki_tot = fields.Float(
 			'Tickets Factura',
 			default = 0, 
-
-			#compute='_compute_tki_tot', 
 		)
-
-
 
 	# Ticket Receipts 
 	tkr_tot = fields.Float(
 			'Tickets Boleta',
 			default = 0, 
-
-			#compute='_compute_tkr_tot', 
 		)
-
 
 	# Advetisements 
 	adv_tot = fields.Float(
 			'Canjes Publicidad',
 			default = 0, 
-			
-			#compute='_compute_adv_tot', 
 		)
 
 	# Sale Notes 
 	san_tot = fields.Float(
 			'Canjes NV',
-			default = 0, 
-			
-			#compute='_compute_san_tot', 
+			default = 0, 	
 		)
+
+
+
+
+# ----------------------------------------------------------- Update ------------------------------------------------------
+	# Update 
+	@api.multi
+	def update(self):  
+
+		print
+		print 'Closing - Update'
+
+		self.update_totals()
 
 
 

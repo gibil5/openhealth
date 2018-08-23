@@ -3,11 +3,10 @@
 # 	Nexzone 
 # 
 # Created: 				01 Feb 2018
-# Last updated: 	 	id.
+# Last updated: 	 	01 Aug 2018
+#
 
 from openerp import models, fields, api
-
-
 
 class Nexzone(models.Model):
 
@@ -16,18 +15,7 @@ class Nexzone(models.Model):
 	#_order = 'name_short asc'
 
 
-
-
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
-
-	pathology = fields.Many2one(
-			'openhealth.pathology', 
-		)
-
-
-
-
-
 
 	name = fields.Char(
 		)
@@ -37,12 +25,14 @@ class Nexzone(models.Model):
 		)
 
 
+	pathology = fields.Many2one(
+			'openhealth.pathology', 
+		)
 
 
 	treatment = fields.Selection(
 			[
 				('laser_quick','Quick Laser'), 
-
 				('laser_co2','Laser Co2'), 
 				('laser_excilite','Laser Excilite'), 
 				('laser_ipl','Laser Ipl'), 
@@ -51,39 +41,23 @@ class Nexzone(models.Model):
 		)
 
 
-
-
-
-
-
-
-
-
-
 	laser_quick = fields.Boolean(
 		)
+
 
 	laser_co2 = fields.Boolean(
 		)
 
+
 	laser_excilite = fields.Boolean(
 		)
 
+
 	laser_ipl = fields.Boolean(
 		)
+
 
 	laser_ndyag = fields.Boolean(
 		)
 
 
-
-
-
-
-
-
-
-	# Service 
-	#service = fields.Many2one(			
-	#		'openhealth.service',
-	#	)

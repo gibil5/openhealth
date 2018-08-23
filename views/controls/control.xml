@@ -98,11 +98,28 @@
 
 
 
+						<!-- Dates -->
+						<button 
+							type="object" 
+							class="oe_highlight"
 
+							groups="openhealth.roots,openhealth.directors,openhealth.physicians"
+
+							name="update_done" 	
+
+							string="Completo"
+						/>
+
+
+
+
+<!--
+							statusbar_visible="draft, inprogress, done"
+-->
 						<!-- State --> 
 						<field 	name="state" 
 							widget="statusbar" 
-							statusbar_visible="draft, inprogress, done"
+							statusbar_visible="draft, inprogress, done, cancel"
 						/>
 					</header>
 					
@@ -211,11 +228,19 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 
 								<field name="vspace"/>
 
-								<field name="control_date"/>
+								<field name="control_date"		readonly="1"		/>
 
 								<field name="vspace"/>
 
 								<field name="first_date"/>
+
+								<field name="vspace"/>
+
+
+
+								<field name="maturity"/>
+
+
 
 								<field name="vspace"/>
 
@@ -299,38 +324,11 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 
 
 
-						<!-- VISIA --> 
+						<!-- Notebook --> 
 						<notebook>
 
 
-							<page  string="Historia">
-								
-								<group>
-								
-
-									<field name="x_antecedents"		string="Antecedentes"/>
-<!--
--->
-									<field name="x_examination"/>
-
-									<field name="x_diagnosis"/>
-
-									<field name="x_indications"		string="Tratamiento e indicaciones"/>
-
-									<field name="x_observations"/>
-
-<!--
-									<field name="x_allergies_medication"/>
-
-									<field name="x_analysis_lab"/>
--->
-								</group>
-
-							</page>
-
-
-
-
+							<!-- Visia --> 
 							<page string="Fotos VISIA" >
 								<field
 									name="image_ids"
@@ -339,14 +337,26 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 												'default_owner_model': 'openhealth.control',
 												'default_owner_id': id,
 									}"
-									mode="kanban"
-								/>
+									mode="kanban"/>
 							</page>
 
 
+
+							<!-- Historias --> 
+							<page  string="Historia">
+								<group>
+									<field name="x_antecedents"		string="Antecedentes"/>
+									<field name="x_examination"/>
+									<field name="x_diagnosis"/>
+									<field name="x_indications"		string="Tratamiento e indicaciones"/>
+									<field name="x_observations"/>
+<!--
+									<field name="x_allergies_medication"/>
+									<field name="x_analysis_lab"/>
+-->
+								</group>
+							</page>
 						</notebook>
-
-
 					</sheet>
 				</form>
 			</field>
@@ -367,7 +377,12 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 
 				<tree 	string="Control Tree"
 
-						colors="red:state=='draft';green:state=='inprogress';blue:state=='done'">
+						colors="
+								red:state=='draft';
+								green:state=='inprogress';
+								gray:state=='cancel';
+								blue:state=='done'
+							">
 					
 
 					<!-- Quick Button -->
@@ -378,12 +393,10 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 						name="open_line_current" 
 					/>
 
-					<field name="evaluation_nr"/>
-
 <!--
--->				
+					<field name="evaluation_nr"/>
 					<field name="name"/>
-
+-->				
 					
 					<field name="appointment"/>
 
@@ -395,8 +408,7 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 
 					<field name="nr_days"/>
 
-
-
+					<field name="maturity"/>
 
 					<field name="patient" />
 					
@@ -413,8 +425,7 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 					<field name="x_done"/>
 				</tree>
 			</field>
-		</record>
-		
+		</record>	
 <!--
 					<field name="name"/>
 					<field name="treatment"/>

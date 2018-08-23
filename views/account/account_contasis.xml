@@ -4,12 +4,7 @@
 		
 
 
-
-
-
-
-
-		<!-- FORM --> 
+<!-- FORM --> 
 		<record model="ir.ui.view" id="account_contasis_form_view">
 			<field name="name">account.contasis.form</field>
 			
@@ -34,7 +29,7 @@
 								type="object" 
 								class="oe_highlight"
 
-								name="update_orders"
+								name="update"
 
 								string="Actualizar Ventas"								
 						/>
@@ -77,6 +72,7 @@
 						<button 
 								class="oe_highlight"
 								type="action" 
+								
 								name="%(payment_line_form_action)d"	
 								
 								context="{
@@ -148,16 +144,11 @@
 						<!-- Notebook --> 
 						<notebook>	
 
-
-
-
-
 <!--
 							<page	string="Ventas"		attrs="{'invisible':[('x_type', '!=', 'order')]}"	>
 								<field name="account_line"/>
 -->
 							<page	string="Ventas"		>
-
 
 								<field name="account_line">
 
@@ -176,27 +167,28 @@
 										<field name="time_char"/>
 
 
+
 										<field name="patient"/>
+										<field name="document"/>
+										<field name="document_type"/>
+
 
 
 										<field name="qty"/>
 										<field name="product"/>
 										<field name="product_type"/>
 										
-
 										<field name="state"/>
 
-
-										<field name="amount_net"/>
-										
+										<field name="amount_net"/>										
 										<field name="amount_tax"/>
-
 										<field name="amount"/>
 
 <!--
 										<field name="date"/>
 										<field name="name"/>
 										<field name="document"/>
+										<field name="numdoc"/>
 -->
 
 									</tree>
@@ -225,7 +217,7 @@
 
 
 		
-		<!-- TREE --> 
+<!-- TREE --> 
 		<record model="ir.ui.view" id="account_contasis_view_order_tree">
 
 			<field name="name">openhealth.account.contasis.tree</field>

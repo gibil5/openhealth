@@ -25,9 +25,36 @@
         		</xpath>
 
 
-
+<!--
 				<xpath expr="//field[@name='laser']" position="replace">
 				</xpath>
+
+					<field name="price_vip" />
+-->
+
+<!--
+				<xpath expr="//field[@name='laser']" position="after">
+
+					<field name="vspace" />
+
+					<field name="x_treatment" 	readonly="0"   		invisible="0"/>
+
+					<field name="vspace" />
+
+					<field name="zone" 			invisible="0"						/>
+
+					<field name="vspace" />
+
+					<field name="pathology" 	readonly="0"  	invisible="0"		/>									
+
+        		</xpath>				
+-->
+
+<!--
+					<field name="vspace" />
+
+					<field name="patient" 	readonly="0" 	invisible="0"	/>
+-->
 
 
 
@@ -37,13 +64,14 @@
 -->
 						<field name="service" widget="radio"	attrs="{ 'invisible':[
 																										('zone', '=', False ),
+
 																										('x_treatment', '=', False ),
 
 																								],}"/>
 				</xpath>
 
 
-
+<!--
 
 				<xpath expr="//field[@name='zone']" position="replace">
 						<field name="zone" 			groups="openhealth.roots"/>
@@ -52,11 +80,13 @@
 				<xpath expr="//field[@name='pathology']" position="replace">
 						<field name="pathology" 			groups="openhealth.roots"/>
 				</xpath>
+-->
 
 
 
+				<xpath expr="//field[@name='pathology']" position="after">
 
-				<xpath expr="//field[@name='x_treatment']" position="before">
+						<field name="vspace" />
 
 						<field name="nex_zone"  		string='Zona'		widget="radio" />
 
@@ -90,7 +120,7 @@
 
 
 
-				<xpath expr="//field[@name='patient']" position="before">
+				<xpath expr="//field[@name='nex_zone']" position="after">
 						<field name="nex_pathology"  	string='Patología'	widget="radio" />
 				</xpath>
 
@@ -180,21 +210,6 @@
 
 
 
-
-		<!-- Filter --> 
-        <record id="view_service_quick_filter" model="ir.ui.view">
-           <field name="name">Service Quick Search</field>
-           <field name="model">openhealth.service.quick</field>		   
-		   <field name="arch" type="xml">
-               <search string="service.quick">
-
-                   <field name="treatment" />
-<!--                   
-                   <field name="consultation" />
--->           
-               </search>
-           </field>
-       </record>
 
 	</data>
 </openerp>

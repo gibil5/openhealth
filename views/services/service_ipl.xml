@@ -3,31 +3,52 @@
 	<data>
 
 
-		<!-- Form --> 
+
+<!-- Form --> 
 		<record model="ir.ui.view" id="service_ipl_form_view">
+
 			<field name="name">service.ipl.form</field>
+			
 			<field name="model">openhealth.service.ipl</field>
+
 			<field name="inherit_id" ref="service_form_view"/>
+	        
 	        <field name="mode">primary</field>
 			
 
 			<field name="arch" type="xml">
+			
 				<xpath expr="//h1" position="replace">
 					<h1>Láser M22-IPL</h1>					
-        		</xpath>
-			</field>
+				</xpath>
 
+<!--
+				<xpath expr="//field[@name='laser']" position="after">
+
+					<field name="vspace" />
+
+					<field name="zone" 			invisible="0"						/>
+
+					<field name="vspace" />
+
+					<field name="pathology" 	readonly="0"  	invisible="0"		/>									
+        		</xpath>				
+-->
+
+			</field>
 		</record>		
 
 
 
 
-		<!-- Tree -->
+
+<!-- Tree -->
 		<record model="ir.ui.view" id="service_ipl_tree_view">
 			<field name="name">service.ipl.tree</field>
 			<field name="model">openhealth.service.ipl</field>
 
 			<field name="inherit_id" ref="service_tree_view"/>
+
 			<field name="mode">primary</field>
 			
 			<field name="arch" type="xml">
@@ -35,7 +56,6 @@
 					<field name="service" />
 				</xpath>
         	</field>
-
 		</record>
 
 

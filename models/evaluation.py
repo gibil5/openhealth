@@ -44,6 +44,9 @@ class Evaluation(models.Model):
 
 		res_id = self.appointment.id  
 
+		# Treatment Flag 
+		self.treatment.update()
+
 		return {
 			
 			# Mandatory 

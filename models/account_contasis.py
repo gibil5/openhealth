@@ -2,15 +2,13 @@
 #
 # 	Account Contasis
 # 
-# Created: 				18 April 2018
-# Last mod: 			11 Jul 2018
+# 	Created: 				18 Apr 2018
+# 	Last mod: 				21 Aug 2018
 # 
-
 from openerp import models, fields, api
 import datetime
-import resap_funcs
-import acc_funcs
 
+import account_funcs as acc_funcs
 
 class AccountContasis(models.Model):
 
@@ -18,19 +16,11 @@ class AccountContasis(models.Model):
 
 	_name = 'openhealth.account.contasis'
 
-	#_order = 'create_date desc'
-	#_order = 'date_begin asc'
 	_order = 'date_begin asc,name asc'
 
 
 
-
-# ----------------------------------------------------------- Inheritable ------------------------------------------------------
-
-
-
 # ----------------------------------------------------------- Relational ------------------------------------------------------
-
 
 	# Account Lines 
 	account_line = fields.One2many(
@@ -46,9 +36,6 @@ class AccountContasis(models.Model):
 
 
 
-
-
-
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
 	
 	# Name 
@@ -57,7 +44,6 @@ class AccountContasis(models.Model):
 			required=True, 
 		)
 
-
 	# Type 
 	x_type = fields.Selection(
 			selection=[	
@@ -65,29 +51,18 @@ class AccountContasis(models.Model):
 						('patient', 	'Pacientes'),
 			], 
 			string="Tipo",
-			#required=True, 
 			required=False, 
 		)
 
-
-
 	# Owner 
 	owner = fields.Selection(
-
 			selection=[	
 						('accounting', 	'Contabilidad'),
 						('cash', 		'Caja'),
 			], 
-		
 			string="Hecho por",
-
-			#required=True, 
 			required=False, 
 		)
-
-
-
-
 
 	# Dates
 	date = fields.Date(
@@ -97,14 +72,12 @@ class AccountContasis(models.Model):
 			required=True, 
 		)
 
-
 	date_begin = fields.Date(
 			string="Fecha Inicio", 
 			default = fields.Date.today, 
 			#readonly=True,
 			required=True, 
 		)
-
 
 	date_end = fields.Date(
 			string="Fecha Fin", 
@@ -113,51 +86,34 @@ class AccountContasis(models.Model):
 			required=True, 
 		)
 
-
-
-
+	# Vspace
 	vspace = fields.Char(
 			' ', 
 			readonly=True
 		)
 
-
-
-
 	# Totals
 	total_amount = fields.Float(
-			#'Total Monto',
 			'Total',
 			readonly=True, 
 		)
 
-
-
 	# Totals Count
 	total_count = fields.Integer(
-			#'Total Ventas',
-			#'Nr',
-			#'Nr Pacientes',
 			'Nr Ventas',
 			readonly=True, 
 		)
 
 
 
+# ----------------------------------------------------------- Update ------------------------------------------------------
 
-
-
-
-
-# ----------------------------------------------------------- Actions ------------------------------------------------------
-
-	# Update Orders
+	# Update
 	@api.multi
-	def update_orders(self):  
+	def update(self):  
 
 		print
-		print 'Update Orders'
-
+		print 'Update'
 
 
 		# Clear 
@@ -165,13 +121,10 @@ class AccountContasis(models.Model):
 		self.payment_line.unlink()
 
 
-
-		# Orders 
-		orders,count = resap_funcs.get_orders_filter(self, self.date_begin, self.date_end)
-
-		amount_sum = 0 
+		# Init 
+		orders,count = acc_funcs.get_orders_filter(self, self.date_begin, self.date_end)
 		count = 0 
-
+		amount_sum = 0 
 
 
 		# Loop 
@@ -181,21 +134,13 @@ class AccountContasis(models.Model):
 			amount_sum = amount_sum + order.amount_untaxed 
 			count = count + 1
 		
-		
-			# Vars Order 
+
+			# Init from Order 
 			serial_nr = order.x_serial_nr
-
-
 			date = order.date_order
-			#print date 
-
-
 			patient = order.patient.id 
 			x_type = order.x_type
-
-
 			state = order.state
-
 
 
 			# Document and Document type 
@@ -206,45 +151,42 @@ class AccountContasis(models.Model):
 				if order.patient.x_dni != False: 			# Dni
 					document = order.patient.x_dni
 					document_type = '1'
-				else: 
+				else: 										# Other 
 					document = order.patient.x_id_doc
 					document_type = acc_funcs._doc_type[order.patient.x_id_doc_type]
 
 
-
-
-			# Account Lines 
+			# Account Lines - Registro de Ventas and Contasis 
 			for line in order.order_line:
 
+				# Init from Line  				
 				amount = line.price_subtotal
-				amount_net, amount_tax = acc_funcs.get_net_tax(self, amount)
-				
-				
 				product = line.product_id.id
 				qty = line.product_uom_qty
 
+				# Net and Taxes 
+				amount_net, amount_tax = acc_funcs.get_net_tax(self, amount)
 
+
+				# Create 
 				acc_line = self.account_line.create({
 														'name': order.name, 
 														'patient': patient, 
-														
 														'product': product, 
 														'qty': qty, 
-
 														'state': state, 
-
 														'serial_nr': serial_nr, 
 														'x_type': x_type, 
-														'document': document, 					# Id Doc
-														'document_type': document_type, 		# Id Doc Type 
-														
 														'date': date,
 														'date_time': date,
-
 														'amount': amount,
 														'amount_net': amount_net,
 														'amount_tax': amount_tax,
+														
 
+														'document': document, 					# Id Doc  		-> Here !
+														'document_type': document_type, 		# Id Doc Type 
+														
 
 														'account_id': self.id, 
 					})
@@ -253,49 +195,30 @@ class AccountContasis(models.Model):
 
 
 
-
-
-			# Payment Lines 
+			# Payment Method Lines - Tarjetas 
 			for line in order.x_payment_method.pm_line_ids:
 
-				#amount = line.price_subtotal
-				#amount_net, amount_tax = acc_funcs.get_net_tax(self, amount)
-
-
+				# Create 
 				pay_line = self.payment_line.create({
-														#'patient': patient, 
-														#'serial_nr': serial_nr, 
-														#'x_type': x_type, 
-														#'document': document, 					# Id Doc
-														#'document_type': document_type, 		# Id Doc Type 
-														#'date': date,
-														#'date_time': date,
-														#'amount': amount,
-														#'amount_net': amount_net,
-														#'amount_tax': amount_tax,
-
 														'patient': patient, 
 														'serial_nr': serial_nr, 
 														'x_type': x_type, 
 														'date_time': date,
-
 														'name': line.name, 
 														'subtotal': line.subtotal, 
 														'method': line.method, 
-																												
+
+									
+														'document': document, 					# Id Doc  		-> Here !
+														'document_type': document_type,
+
+
 														'account_id': self.id, 
 					})
-
-
-
-
-
-
-
 
 
 		# Stats 
 		self.total_amount = amount_sum
 		self.total_count = count
 
-	# update_orders
+	# update

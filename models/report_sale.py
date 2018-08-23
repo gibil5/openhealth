@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 #
-# 	Report Sale
+# 	Report Sale - Deprecated
 # 
 
 from openerp import models, fields, api
 
-import resap_funcs
+#import resap_funcs
 
 
 
@@ -136,14 +136,9 @@ class ReportSale(models.Model):
 
 	# Item Counter 
 	@api.multi
-	#def count_items(self):  
-	#def count_items(self, order_line_ids, item_counter_ids):  
 	def count_items(self, order_line_ids, item_counter_ids, report_sale_id, categ):  
 
-
-		#for order_line in self.order_line_ids: 
 		for order_line in order_line_ids: 
-
 
 			name = order_line.patient.name
 			qty = 1 

@@ -20,7 +20,24 @@
 					<!-- Header -->
 					<header>
 
+
+						<!-- Update -->
+						<button 
+								type="object" 
+								class="oe_highlight"
+
+								name="update"
+
+								string="Actualizar"								
+						/>
+
+
+
 						<!-- Update Sales -->
+						<!-- Update Stats -->
+						<!-- Update counters -->
+						<!-- Update QC -->
+<!--						
 						<button 
 								type="object" 
 								class="oe_highlight"
@@ -30,8 +47,6 @@
 								string="Actualizar Ventas"								
 						/>
 
-
-						<!-- Update Stats -->
 						<button 
 								type="object" 
 								class="oe_highlight"
@@ -41,9 +56,6 @@
 								string="Stats"								
 						/>
 
-
-
-						<!-- Update counters -->
 						<button 
 								type="object" 
 								class="oe_highlight"
@@ -53,9 +65,6 @@
 								string="Counters"								
 						/>
 
-
-
-						<!-- Update QC -->
 						<button 
 								type="object" 
 								class="oe_highlight"
@@ -64,7 +73,7 @@
 
 								string="Quality Control"								
 						/>
-
+-->
 
 
 
@@ -119,13 +128,11 @@
 
 
 
-
-
-
 						<!-- Test -->
+						<!-- Clear -->
+<!--
 						<button 
 								type="object" 
-								
 								class="oe_highlight oe_right"
 
 								name="test_integration"
@@ -135,7 +142,6 @@
 								groups="openhealth.roots"
 						/>
 
-						<!-- Clear -->
 						<button 
 								type="object" 
 								class="oe_highlight oe_right"
@@ -146,12 +152,9 @@
 
 								groups="openhealth.roots"
 						/>
+-->
+
 					</header>
-
-
-
-
-
 
 
 					<!-- Sheet -->	
@@ -194,6 +197,7 @@
 <!--
 								<field name="write_date"	string="Actualizado"/>
 -->
+								<field name="write_date"	string="Actualizado"/>
 							</group>
 
 							

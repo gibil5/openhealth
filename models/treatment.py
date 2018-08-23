@@ -3,60 +3,172 @@
 # 		*** Treatment
 # 
 # Created: 			26 Aug 2016
-# Last up: 	 		19 Jul 2018
+# Last up: 	 		05 Aug 2018
 #
-
 from openerp import models, fields, api
-
-import treatment_funcs
+import datetime
 import time_funcs
 import treatment_vars
-import appfuncs
-import procedure_funcs
 
-#from datetime import datetime
-import datetime
+import lib
+import user 
+import tst
+import creates as cre
+
+import lib_obj
 
 
 class Treatment(models.Model):
-
-	_inherit = 'openhealth.process'	
-
-	_name = 'openhealth.treatment'
 	
+	_inherit = 'openhealth.process'	
+	_name = 'openhealth.treatment'
 	_order = 'write_date desc'
 
 
 
+# ----------------------------------------------------------- Test Cases ------------------------------------------------------
+
+	# Integration - Objects 
+	@api.multi 
+	def test_case_objs(self):
+		
+		print 
+		print 'Test Case - Objs'
+		
+		if self.patient.x_test: 
+
+			# Init 
+			patient_id = self.patient.id
+			doctor_id = self.physician.id
+			treatment_id = self.id 
+			partner_id = self.partner_id.id
+
+			
+			# Objects 
+			#order = 	lib_obj.Object('order', 	'sale.order', 		'date_order', 		self)
+			order = 	lib_obj.Object('order', 	'sale.order', 		patient_id, partner_id, doctor_id, treatment_id, 	self)
 
 
-# ----------------------------------------------------------- Test  Cases ------------------------------------------------------
+			# All  
+			objs = [
+
+						order, 
+				]
+
+
+			# Update 
+			for obj in objs: 
+				obj.test()
+			print 
+
+			# Print 
+			for obj in objs: 
+				print obj
+
+
+
+
+
+	# Integration - Report Sale Product 
+	@api.multi 
+	def test_case_reports(self):
+		
+		print 
+		print 'Test Case - Reports'
+		
+		if self.patient.x_test: 
+			
+
+			# Object Oriented 
+			
+
+			# Reports 
+			closing = 		lib_obj.Report('closing', 			'openhealth.closing', 				'date', 		self)
+			resap = 		lib_obj.Report('resap',	 			'openhealth.report.sale.product', 	'name', 		self)
+			management = 	lib_obj.Report('management', 		'openhealth.management', 			'date_begin', 	self)
+			marketing = 	lib_obj.Report('marketing', 		'openhealth.marketing', 			'date_begin', 	self)
+			account = 		lib_obj.Report('account.contasis', 	'openhealth.account.contasis', 		'date_begin', 	self)
+			state_of_acc = 	lib_obj.Report('state_of_acc', 		'openhealth.order.report.nex', 		'create_date', 	self)
+
+
+			#doctor_line = 		lib_obj.Report('doctor_line', 		'openhealth.management.doctor.line', 				'write_date', 		self)
+			family_line = 		lib_obj.Report('family_line', 		'openhealth.management.family.line', 				'write_date', 		self)
+			sub_family_line = 	lib_obj.Report('sub_family_line', 	'openhealth.management.sub_family.line', 			'write_date', 		self)
+
+
+
+
+
+			# All  
+			objs = [
+						closing, 
+						resap, 
+						management, 
+						marketing, 
+						account, 
+
+						state_of_acc, 
+
+						#doctor_line, 
+						family_line, 
+						sub_family_line, 
+				]
+
+
+			# Update 
+			for obj in objs: 
+				obj.update()
+			print 
+
+			# Print 
+			for obj in objs: 
+				print obj
+
+
+
+
+
+
 
 	# One - Integration - Treatment
 	@api.multi 
-	def test_case_one(self):
-
+	def test_case_treatment(self):
 		print 
 		print 'Test Case - One'
-
 		if self.patient.x_test: 
+			tst.reset_treatment(self)
 
-			self.reset()
+			#tst.test_integration_treatment(self)
 
-			self.test_integration()
+
+			date_order_begin = 	False
+			date_order_end = 	False
+
+			#date_order_begin = 	'2018-09-01 14:00:00'
+			#date_order_end = 	'2018-10-01 02:00:00'			
+			#date_order_begin = 	'2018-10-01 14:00:00'
+			#date_order_end = 	'2018-11-01 02:00:00'
+			#date_order_begin = 	'2018-11-01 14:00:00'
+			#date_order_end = 	'2018-12-01 02:00:00'
+			#date_order_begin = 	'2018-12-01 14:00:00'
+			#date_order_end = 	'2019-01-01 02:00:00'
+
+
+			tst.test_integration_treatment(self, date_order_begin, date_order_end)
+
+
+
 
 
 
 	# Two - Unit - Appointment
 	@api.multi 
 	def test_case_two(self):
-
 		print 
 		print 'Test Case - Two'
-
 		if self.patient.x_test: 
+			tst.test_appointment(self)
 
-			self.test_appointment()
 
 
 	# Three - Reset 
@@ -64,76 +176,43 @@ class Treatment(models.Model):
 	def test_case_reset(self):
 		print 
 		print 'Test Case - Reset'
-
 		if self.patient.x_test: 
 			print 'Is a Tester'
-			self.reset()
+			tst.reset_treatment(self)
 		else: 
 			print 'Not a Tester'
 
 
 
-# ----------------------------------------------------------- Test Appointment  ------------------------------------------------------
-
-	# Test - Appointment 
+	# Four - Reload 
 	@api.multi 
-	def test_appointment(self):
-
-		print 
-		print 'Test Appointment'
-
-
-		
-		# Case 1 - Consultation
-		print 'Consultation'
-		x_type = 'consultation'
-		subtype = 'consultation'
-		state = 'pre_scheduled'
-		self.create_appointment_nex(x_type, subtype, state)
-
-
-
-		# Case 2 - Procedure
-		print 
-		print 'Procedure'
-		x_type = 'procedure'
-		subtype = 'laser_co2'
-		state = 'Scheduled'	
-		self.create_appointment_nex(x_type, subtype, state)
-
-
-
-		# Case 3 - Control
-		print 
-		print 'Control'
-		x_type = 'control'
-		subtype = 'laser_co2'
-		state = 'pre_scheduled_control'	
-		self.create_appointment_nex(x_type, subtype, state)
-
-
-
-		# Case 4 - Session
-		print 
-		print 'Session'
-		x_type = 'session'
-		subtype = 'laser_co2'
-		
-		#state = 'pre_scheduled_control'	
-		state = 'pre_scheduled'	
-		
-		self.create_appointment_nex(x_type, subtype, state)
+	def test_case_reload(self):
+		#print 
+		#print 'Test Case - Reload'
+		self.reload()
 
 
 
 
+# ----------------------------------------------------------- Test - Booleans ------------------------------------------------------
+
+	# Clear All
+	@api.multi 
+	def clear_all(self):
+		tst.clear_all(self)
+
+
+	# Set All
+	@api.multi 
+	def set_all(self):
+		tst.set_all(self)
 
 
 
 
 # ----------------------------------------------------------- Create Appointment  ------------------------------------------------------
 
-	# Appointment 
+	# Create Appointment Consultation
 	@api.multi 
 	def create_appointment_consultation(self):
 
@@ -146,10 +225,7 @@ class Treatment(models.Model):
 
 
 
-
-
-
-	# Appointment 
+	# Create Appointment Nex 
 	@api.multi 
 	#def create_appointment_nex(self):
 	def create_appointment_nex(self, x_type, subtype, state):
@@ -168,7 +244,7 @@ class Treatment(models.Model):
 		
 
 			# Get Next Slot - Real Time version 
-			appointment_date = appfuncs.get_next_slot(self)						# Get Next Slot
+			appointment_date = lib.get_next_slot(self)						# Get Next Slot
 			#print appointment_date
 
 
@@ -182,7 +258,8 @@ class Treatment(models.Model):
 
 				
 				# Check and Push 
-				appointment_date_str = procedure_funcs.check_and_push(self, appointment_date, duration, x_type, doctor_name, states)
+				#appointment_date_str = procedure_funcs.check_and_push(self, appointment_date, duration, x_type, doctor_name, states)
+				appointment_date_str = user.check_and_push(self, appointment_date, duration, x_type, doctor_name, states)
 				#print appointment_date_str
 
 
@@ -245,7 +322,9 @@ class Treatment(models.Model):
 
 
 			# Control date 
-			appointment_date = procedure_funcs.get_next_date(self, start_date_str, nr_days)
+			#appointment_date = procedure_funcs.get_next_date(self, start_date_str, nr_days)
+			appointment_date = lib.get_next_date(self, start_date_str, nr_days)
+
 			print appointment_date
 
 
@@ -257,7 +336,8 @@ class Treatment(models.Model):
 
 
 			# Check and Push 
-			appointment_date_str = procedure_funcs.check_and_push(self, appointment_date_str, duration, x_type, doctor_name, states)
+			#appointment_date_str = procedure_funcs.check_and_push(self, appointment_date_str, duration, x_type, doctor_name, states)
+			appointment_date_str = user.check_and_push(self, appointment_date_str, duration, x_type, doctor_name, states)
 
 
 
@@ -283,11 +363,13 @@ class Treatment(models.Model):
 
 
 # ----------------------------------------------------------- Update Apps  ------------------------------------------------------
+	
+	# Update Appointments 
 	@api.multi
 	def update_appointments(self):
 		
-		print 
-		print 'Update Appointments'
+		#print 
+		#print 'Update Appointments'
 
 		# Consultations 
 		for consultation in self.consultation_ids: 
@@ -299,370 +381,67 @@ class Treatment(models.Model):
 			if session.appointment.appointment_date != False: 
 				session.evaluation_start_date = session.appointment.appointment_date
 
-
-
-
-
-
-# ----------------------------------------------------------- Test - Integration  ------------------------------------------------------
-
-	# Test - Integration 
-	@api.multi 
-	def test_integration(self):
-
-		print 
-		print 'Test Integration'
-
-
-		print 
-		print 'Create Appointment - Consultation'
-		#self.create_appointment_nex()
-		x_type = 'consultation'
-		subtype = 'consultation'
-		state = 'pre_scheduled'
-		self.create_appointment_nex(x_type, subtype, state)
-
-
-
-		print 
-		print 'Create Order - Consultation'
-		self.create_order_con()
-
-		for order in self.order_ids: 
-			order.pay_myself()
-			
-			#order.create_payment_method()
-			#order.x_payment_method.saledoc = 'ticket_receipt'
-			#order.x_payment_method.state = 'done'
-			#order.state = 'sent'
-			#order.action_confirm_nex()
-
-
-		print 
-		print 'Create Consultation'
-		self.create_consultation()
-		for consultation in self.consultation_ids: 
-			consultation.autofill()
-
-
-		print 
-		print 'Create Recommendations'
-		
-
-		# Quick 
-		if self.qui_create: 
-			print 'Quick'
-			service = self.env['product.template'].search([
-																('x_name_short', '=', 'quick_neck_hands_rejuvenation_1'),
-												],
-													#order='date_order desc',
-													limit=1,
-												)
-			service_id = service.id
-			#print service
-			self.service_quick_ids.create({
-												'service': 		service_id, 
-												'patient': 		self.patient.id, 
-												'physician': 	self.physician.id, 
-												'treatment': 	self.id, 
-				})
-
-
-
-
-		# Co2 
-		if self.co2_create: 
-			print 'Co2'
-
-			zone = 'neck'
-
-			service = self.env['product.template'].search([
-																('x_name_short', '=', 'co2_nec_rn1_one'),
-												],
-													#order='date_order desc',
-													limit=1,
-												)
-			service_id = service.id
-			#print service
-			self.service_co2_ids.create({
-												'service': 		service_id, 
-												'zone': 		zone, 
-												'treatment': 	self.id, 
-				})
-
-
-
-		# Excilite 
-		if self.exc_create: 
-			print 'Exc'
-
-			zone = 'belly'
-
-			service = self.env['product.template'].search([
-																('x_name_short', '=', 'exc_bel_alo_15m_one'),
-												],
-													#order='date_order desc',
-													limit=1,
-												)
-			service_id = service.id
-			#print service
-			self.service_excilite_ids.create({
-												'service': 		service_id, 
-												'zone': 		zone, 
-												'treatment': 	self.id, 
-				})
-
-
-		# Ipl 
-		if self.ipl_create: 
-			print 'Ipl'
-
-			zone = 'belly'
-
-			service = self.env['product.template'].search([
-																('x_name_short', '=', 'ipl_bel_dep_15m_six'),
-												],
-													#order='date_order desc',
-													limit=1,
-												)
-			service_id = service.id
-			#print service
-			self.service_ipl_ids.create({
-												'service': 		service_id, 
-												'zone': 		zone, 
-												'treatment': 	self.id, 
-				})
-
-
-
-
-		# Ndyag
-		if self.ndy_create: 
-			print 'Ndyag'
-
-			zone = 'body_local'
-
-			service = self.env['product.template'].search([
-																('x_name_short', '=', 'ndy_bol_ema_15m_six'),
-												],
-													#order='date_order desc',
-													limit=1,
-												)
-			service_id = service.id
-			#print service
-			self.service_ndyag_ids.create({
-												'service': 		service_id, 
-												'zone': 		zone, 
-												'treatment': 	self.id, 
-				})
-
-
-
-
-
-
-
-
-		# Medical 
-		if self.med_create: 
-			
-			med_short_names = [
-									'bot_1zo_rfa_one', 		# Bot
-									'cri_faa_acn_ten', 		# Crio
-									'hac_1hy_rfa_one', 		# Hial
-									
-									'infiltration_scar', 	# Infil
-									'infiltration_keloid', 	# Infil
-
-									'ivc_na_na_one', 		# Intra
-									'lep_faa_acn_one', 		# Lep
-									
-									'pla_faa_rfa', 			# Pla
-									'men_faa_rfa', 			# Meso
-									'scl_leg_var_one', 		# Escl
-			]
-
-
-			print 'Medical'
-			
-			for short_name in med_short_names: 
-
-				service = self.env['product.template'].search([
-																	#('x_name_short', '=', 'cri_faa_acn_ten'),
-																	('x_name_short', '=', short_name),
-													],
-														#order='date_order desc',
-														limit=1,
-													)
-				service_id = service.id
-
-				#print service
-
-				self.service_medical_ids.create({
-													'service': 		service_id, 
-													'treatment': 	self.id, 
-					})
-
-
-
-
-		# Cosmeto
-		if self.cos_create: 
-
-			cos_short_names = [
-									'car_bod_rfa_30m_six', 		# Carboxi
-									#'dit_fac_dfc_30m_one', 		# Diamond tip 
-									#'tca_fdn_rfa_30m_six', 		# Triactive Carbo
-									#'tcr_boa_rwm_one', 			# Tri Carbo Redu
-			]
-
-
-			print 'Cosmeto'
-			
-			for short_name in cos_short_names: 
-				
-				service = self.env['product.template'].search([
-																	('x_name_short', '=', short_name),
-													],
-														#order='date_order desc',
-														limit=1,
-													)
-				service_id = service.id
-
-				#print service
-
-				self.service_cosmetology_ids.create({
-													'service': 		service_id, 
-													'treatment': 	self.id, 
-					})
-
-
-
-
-
-		# Vip
-		if self.vip_create: 
-			print 'Vip'
-			service = self.env['product.template'].search([
-																('x_name_short', '=', 'vip_card'),
-												],
-													#order='date_order desc',
-													limit=1,
-												)
-			service_id = service.id
-			#print service
-			self.service_vip_ids.create({
-												'service': 		service_id, 
-												'treatment': 	self.id, 
-				})
-
-
-
-
-
-		print 
-		print 'Create Order - Procedure'
-		self.create_order_pro()
-		for order in self.order_ids: 
-			order.pay_myself()
-
-
-
-		#if True: 
-		if False:	
-			#print 
-			#print 'Create Sessions'
-			#for procedure in self.procedure_ids: 
-				#procedure.create_controls()
-			#	procedure.create_sessions()
-			self.create_sessions()
-
-
-
-
-		if True: 
-		#if False:	
-			print 
-			print 'Create Controls'
-			for procedure in self.procedure_ids: 
-				procedure.create_controls()
-				#procedure.create_sessions()
-
-		print 
-	# testing
-
-
+	# update_appointments
 
 
 
 # ----------------------------------------------------------- Creates  ------------------------------------------------------
 	
+	# Create Sessions  
+	#@api.multi 
+	#def create_sessions(self):
+	#	print 
+	#	print 'Create Sessions'
+	#	for procedure in self.procedure_ids: 
+	#		procedure.create_sessions()
+
+
+
+
 	# Create Procedure 
 	@api.multi
-	def create_procedure(self, date_app, subtype, product_id):
-		
+	def create_procedure(self, date_app, subtype, product_id):		
 		#print 
 		#print 'Create Procedure'
-
-		ret = treatment_funcs.create_procedure_go(self, date_app, subtype, product_id)
-
+		ret = cre.create_procedure_go(self, date_app, subtype, product_id)
 	# create_procedure 
 
 
 
-	# Create Sessions  
+	# Create Controls  
 	@api.multi 
-	def create_sessions(self):
-
+	def create_controls(self):
 		print 
-		print 'Create Sessions'
-		
-		for procedure in self.procedure_ids: 
-			procedure.create_sessions()
+		print 'Create Controls'
+		control_date = self.start_date
+		patient_id = self.patient.id
+		doctor_id = self.physician.id
+		treatment_id = self.id
+		chief_complaint = self.chief_complaint
 
+		# Create Control 
+		control = self.control_ids.create({
+											'evaluation_start_date':control_date,
+											'first_date':control_date,
+											'patient':patient_id,
+											'doctor':doctor_id,
+											'chief_complaint':chief_complaint,
+											'treatment': treatment_id,
 
-
-
-# ----------------------------------------------------------- Test - Reset ------------------------------------------------------
-	
-	# Clear  
-	@api.multi 
-	def clear(self):
-		#print 
-		#print 'Clear'
-		if self.patient.x_test: 
-			# Clean
-			self.co2_create = False
-			self.exc_create = False
-			self.ipl_create = False
-			self.ndy_create = False
-			self.qui_create = False		
-			self.med_create = False
-			self.cos_create = False
-			self.vip_create = False
-
-	# All  
-	@api.multi 
-	def all(self):
-		#print 
-		#print 'All'
-		if self.patient.x_test: 
-			# All
-			self.co2_create = True
-			self.exc_create = True
-			self.ipl_create = True
-			self.ndy_create = True
-			self.qui_create = True		
-			self.med_create = True
-			self.cos_create = True
-			self.vip_create = True
+											#'appointment': appointment_id,
+											#'product':product_id,
+											#'procedure':procedure_id,										
+									})
+	# create_controls
 
 
 
 
 
 
-# ----------------------------------------------------------- Testing ------------------------------------------------------
+
+
+# ----------------------------------------------------------- Testing Booleans ------------------------------------------------------
 
 	# Create Flags
 
@@ -692,7 +471,6 @@ class Treatment(models.Model):
 			default=False, 
 		)	
 
-
 	# Medical
 	med_create = fields.Boolean(
 			string="Med", 
@@ -705,81 +483,35 @@ class Treatment(models.Model):
 			default=False, 
 		)	
 
-
 	# Vip
 	vip_create = fields.Boolean(
 			string="Vip", 
 			default=False, 
 		)	
 
+	# Product
+	product_create = fields.Boolean(
+			string="Product", 
+			default=False, 
+		)	
 
 
 
-# ----------------------------------------------------------- Reset ------------------------------------------------------
 
-	# Reset 
+# ----------------------------------------------------------- Reload ------------------------------------------------------
+
+	# Reload 
 	@api.multi 
-	def reset(self):
+	def reload(self):
 
-		print 
-		print 'Reset'
+		#print 
+		#print 'Reload'
 
+		return {
+				'type': 'ir.actions.client',
+				'tag': 'reload',
+		}
 
-		# Unlinks
-		self.service_vip_ids.unlink()
-		self.service_quick_ids.unlink()
-		self.service_co2_ids.unlink()
-		self.service_excilite_ids.unlink()
-		self.service_ipl_ids.unlink()
-		self.service_ndyag_ids.unlink()
-		self.service_medical_ids.unlink()
-		self.service_cosmetology_ids.unlink()
-		self.consultation_ids.unlink()
-		self.procedure_ids.unlink()
-		self.session_ids.unlink()
-		self.control_ids.unlink()
-		self.appointment_ids.unlink()
-
-
-		# Orders 
-		for order in self.order_ids:
-			order.remove_myself()
-		#self.order_ids.unlink()
-
-
-		# Alta 
-		self.treatment_closed = False
-
-
-
-
-		# Conter Decrease 
-		name_ctr = 'advertisement'
- 		
- 		counter = self.env['openhealth.counter'].search([
-																('name', '=', name_ctr), 
-														],
-															#order='write_date desc',
-															limit=1,
-														)
- 		counter.decrease()
- 		counter.decrease()
-
-
-
-
-
-		# Important
-		#self.patient.x_nothing = 'Nothing'
-
-		# Numbers 
-		#self.nr_invoices_cons = 0 
-		#self.nr_invoices_pro = 0 
-
-		# Add Procs 
-		#self.add_procedures = False 
-	
-	# reset
 
 
 
@@ -830,7 +562,7 @@ class Treatment(models.Model):
 					#subtype = product_template.x_treatment
 
 
-					ret = treatment_funcs.create_procedure_go(self, date_app, subtype, product_id.id)
+					ret = cre.create_procedure_go(self, date_app, subtype, product_id.id)
 
 
 
@@ -1001,6 +733,67 @@ class Treatment(models.Model):
 			string = "Controles", 
 		)
 
+	# Reservations 
+	reservation_ids = fields.One2many(
+			'oeh.medical.appointment', 
+			'treatment', 
+			string = "Reserva de sala", 
+			domain = [
+						#('x_machine', '!=', 'false'),	
+					],
+			)
+
+	# Appointments 
+	appointment_ids = fields.One2many(
+			'oeh.medical.appointment',  
+			'treatment', 
+			string = "Citas", 
+			#domain = [
+			#			('x_target', '=', 'doctor'),
+			#		],
+		)
+
+	# Orders 
+	order_ids = fields.One2many(
+			'sale.order',			 
+			'treatment', 
+			string="Presupuestos",
+		)
+
+	# Orders Procedures
+	order_pro_ids = fields.One2many(
+			'sale.order',			 
+			'treatment', 
+			string="Presupuestos",
+			domain = [
+						#('x_family', '=', 'procedure'),
+						('x_family', 'in', ['procedure','cosmetology']),
+					],
+		)
+
+
+
+
+
+# ----------------------------------------------------------- Services ------------------------------------------------------
+	
+	# Product
+	service_product_ids = fields.One2many(
+
+			'openhealth.service.product', 
+		
+			'treatment', 
+			string="Servicios Producto"
+		)
+
+
+	# Vip
+	service_vip_ids = fields.One2many(
+			'openhealth.service.vip', 
+			'treatment', 
+			string="Servicios vip"
+		)
+
 
 
 
@@ -1011,6 +804,13 @@ class Treatment(models.Model):
 			'treatment', 
 			string="Servicios"
 		)
+
+	# Quick
+	service_quick_ids = fields.One2many(
+			'openhealth.service.quick', 
+			'treatment', 
+			string="Servicios quick"
+			)
 
 	# Co2
 	service_co2_ids = fields.One2many(
@@ -1033,7 +833,6 @@ class Treatment(models.Model):
 			string="Servicios ipl"
 			)
 
-
 	# Ndyag
 	service_ndyag_ids = fields.One2many(
 			'openhealth.service.ndyag', 
@@ -1041,15 +840,12 @@ class Treatment(models.Model):
 			string="Servicios ndyag"
 			)
 
-
-
 	# Medical
 	service_medical_ids = fields.One2many(
 			'openhealth.service.medical', 
 			'treatment', 
 			string="Servicios medical"
 			)
-
 
 	# Cosmetology
 	service_cosmetology_ids = fields.One2many(
@@ -1062,61 +858,8 @@ class Treatment(models.Model):
 
 
 
-	# Reservations 
-	reservation_ids = fields.One2many(
-			'oeh.medical.appointment', 
-			'treatment', 
-			string = "Reserva de sala", 
-			domain = [
-						#('x_machine', '!=', 'false'),	
-					],
-			)
 
 
-	# Appointments 
-	appointment_ids = fields.One2many(
-			'oeh.medical.appointment',  
-			'treatment', 
-			string = "Citas", 
-			#domain = [
-			#			('x_target', '=', 'doctor'),
-			#		],
-		)
-
-
-	# Orders 
-	order_ids = fields.One2many(
-			'sale.order',			 
-			'treatment', 
-			string="Presupuestos",
-		)
-
-
-	# Orders Procedures
-	order_pro_ids = fields.One2many(
-			'sale.order',			 
-			'treatment', 
-			string="Presupuestos",
-			domain = [
-						#('x_family', '=', 'procedure'),
-						('x_family', 'in', ['procedure','cosmetology']),
-					],
-		)
-
-
-	# Vip
-	service_vip_ids = fields.One2many(
-			'openhealth.service.vip', 
-			'treatment', 
-			string="Servicios vip"
-			)
-
-	# Quick
-	service_quick_ids = fields.One2many(
-			'openhealth.service.quick', 
-			'treatment', 
-			string="Servicios quick"
-			)
 
 
 
@@ -1172,11 +915,13 @@ class Treatment(models.Model):
 			if record.consultation_progress == 100:
 				state = 'consultation'
 
+
 			if record.nr_services > 0:
 				state = 'service'
 
 			if record.nr_budgets_pro > 0:
 				state = 'budget_procedure'
+
 
 			if record.nr_invoices_pro > 0:
 				state = 'invoice_procedure'
@@ -1376,14 +1121,31 @@ class Treatment(models.Model):
 		for record in self:
 
 			quick =		self.env['openhealth.service.quick'].search_count([('treatment','=', record.id),]) 
-			vip =		self.env['openhealth.service.vip'].search_count([('treatment','=', record.id),]) 
 			co2 =		self.env['openhealth.service.co2'].search_count([('treatment','=', record.id),]) 
 			exc = 		self.env['openhealth.service.excilite'].search_count([('treatment','=', record.id),]) 
 			ipl = 		self.env['openhealth.service.ipl'].search_count([('treatment','=', record.id),]) 
 			ndyag = 	self.env['openhealth.service.ndyag'].search_count([('treatment','=', record.id),]) 
 			medical =	self.env['openhealth.service.medical'].search_count([('treatment','=', record.id),]) 
 
-			record.nr_services = vip + quick + co2 + exc + ipl + ndyag + medical
+			vip =		self.env['openhealth.service.vip'].search_count([('treatment','=', record.id),]) 
+			product =	self.env['openhealth.service.product'].search_count([('treatment','=', record.id),]) 
+
+			#record.nr_services = vip + quick + co2 + exc + ipl + ndyag + medical
+			record.nr_services =  quick + co2 + exc + ipl + ndyag + medical + vip + product
+
+
+
+	# product
+	nr_services_product = fields.Integer(
+			string="Servicios Producto",
+
+			compute="_compute_nr_services_product",
+	)
+	@api.multi
+	def _compute_nr_services_product(self):
+		for record in self:
+			services =		self.env['openhealth.service.product'].search_count([('treatment','=', record.id),]) 
+			record.nr_services_product = services 
 
 
 
@@ -1398,6 +1160,7 @@ class Treatment(models.Model):
 		for record in self:
 			services =		self.env['openhealth.service.vip'].search_count([('treatment','=', record.id),]) 
 			record.nr_services_vip = services 
+
 
 
 
@@ -1537,17 +1300,10 @@ class Treatment(models.Model):
 
 
 
-
-
 # ----------------------------------------------------------- Creates - Manual, Process and Testing ------------------------------------------------------
 
 
-
-
-
-
-
-# ----------------------------------------------------------- Create Order  ------------------------------------------------------
+# ----------------------------------------------------------- Create Order - Fields ------------------------------------------------------
 
 	# Partner 
 	partner_id = fields.Many2one(
@@ -1574,94 +1330,6 @@ class Treatment(models.Model):
 
 
 
-	# Create Order - By Doctor 
-	@api.multi 
-	def create_order(self, target):
-
-		#print
-		#print 'Create Order'
-		#print target
-
-
-		# Init
-		#note = self.partner_id.comment
-
-		# Doctor 
-		doctor_id = treatment_funcs.get_actual_doctor(self)
-		if doctor_id == False: 
-			doctor_id = self.physician.id 
-
-		# Pricelist 
-		if self.x_vip_inprog: 
-	 		pl = self.env['product.pricelist'].search([
-																('name', 'like', 'VIP'), 
-														],
-															#order='write_date desc',
-															limit=1,
-														)
-		 	pl_id = pl.id 
-	 	else: 
-	 		pl = self.env['product.pricelist'].search([
-																('name', 'like', 'Public Pricelist'), 
-																#('name', '=', 'Public Pricelist'), 
-														],
-															#order='write_date desc',
-															limit=1,
-														)
-	 		# jx - Hack !
-		 	#pl_id = pl.id 
-		 	pl_id = 1
-
-	 	#print self.x_vip_inprog
-	 	#print pl
-	 	#print pl.name
-	 	#print pl.id
-	 	#pl_id = pl.id 
-
-
-		# Create Order 
-		order = self.env['sale.order'].create({
-														'x_doctor': doctor_id,	
-														'partner_id': self.partner_id.id,
-														'patient': self.patient.id,	
-														'state':'draft',
-														'pricelist_id': pl_id, 
-														'x_family': target, 
-
-														'treatment': self.id,
-													}
-												)
-
-
-		# Create order lines 
-		if target == 'consultation':
-			if self.chief_complaint in ['monalisa_touch']:
-				target_line = 'con_gyn'
-			else:
-				target_line = 'con_med'
-
-			price_manual = 0
-			price_applied = 0
-			ret = order.x_create_order_lines_target(target_line, price_manual, price_applied)
-			
-
-		else:  		# Procedures 
-			order_id = order.id
-
-			ret = treatment_funcs.create_order_lines(self, 'vip', order_id)
-			ret = treatment_funcs.create_order_lines(self, 'quick', order_id)
-			ret = treatment_funcs.create_order_lines(self, 'co2', order_id)
-			ret = treatment_funcs.create_order_lines(self, 'excilite', order_id)
-			ret = treatment_funcs.create_order_lines(self, 'ipl', order_id)
-			ret = treatment_funcs.create_order_lines(self, 'ndyag', order_id)
-			ret = treatment_funcs.create_order_lines(self, 'medical', order_id)
-
-			ret = treatment_funcs.create_order_lines(self, 'cosmetology', order_id)
-
-
-		return order
-	# create_order
-
 
 
 
@@ -1671,7 +1339,10 @@ class Treatment(models.Model):
 
 		# Init 
 		target = 'consultation'
-		order = self.create_order(target)		
+
+		#order = self.create_order(target)		
+		order = cre.create_order(self, target)		
+		
 		return {
 				# Created 
 				'res_id': order.id,
@@ -1684,26 +1355,51 @@ class Treatment(models.Model):
 				"views": [[False, "form"]],
 				'view_mode': 'form',
 				'target': 'current',
-
 				#'view_id': view_id,
 				#"domain": [["patient", "=", self.patient.name]],
 				#'auto_search': False, 
-				
 				'flags': {
 						'form': {'action_buttons': True, }
 						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 						},			
 				'context': {}
-		}
-
+			}
 	# create_order_con
 
 
 
 
 
+# -----------------------------------------------------------  Create Order Pro  ------------------------------------------------------
+	@api.multi 
+	def create_order_pro(self):
+		target = 'procedure'
 
+		#order = self.create_order(target)		
+		order = cre.create_order(self, target)		
 
+		return {
+				# Created 
+				'res_id': order.id,
+				# Mandatory 
+				'type': 'ir.actions.act_window',
+				'name': 'Open Order Current',
+				# Window action 
+				'res_model': 'sale.order',
+				# Views 
+				"views": [[False, "form"]],
+				'view_mode': 'form',
+				'target': 'current',
+				#'view_id': view_id,
+				#"domain": [["patient", "=", self.patient.name]],
+				#'auto_search': False, 
+				'flags': {
+						'form': {'action_buttons': True, }
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						},			
+				'context': {}
+			}
+	# create_order_pro
 
 
 
@@ -1719,10 +1415,14 @@ class Treatment(models.Model):
 		treatment_id = self.id 
 		chief_complaint = self.chief_complaint
 
+
 		# Doctor 
-		doctor_id = treatment_funcs.get_actual_doctor(self)
+		doctor = user.get_actual_doctor(self)
+		doctor_id = doctor.id 
+
 		if doctor_id == False: 
 			doctor_id = self.physician.id
+
 
 		# Date 
 		GMT = time_funcs.Zone(0,False,'GMT')
@@ -1811,44 +1511,9 @@ class Treatment(models.Model):
 
 
 
+# ----------------------------------------------------------- Create Service  ------------------------------------------------------
 
-
-
-
-# -----------------------------------------------------------  Create Order Pro  ------------------------------------------------------
-	@api.multi 
-	def create_order_pro(self):
-
-		target = 'procedure'
-		order = self.create_order(target)		
-
-		return {
-				# Created 
-				'res_id': order.id,
-				# Mandatory 
-				'type': 'ir.actions.act_window',
-				'name': 'Open Order Current',
-				# Window action 
-				'res_model': 'sale.order',
-				# Views 
-				"views": [[False, "form"]],
-				'view_mode': 'form',
-				'target': 'current',
-				#'view_id': view_id,
-				#"domain": [["patient", "=", self.patient.name]],
-				#'auto_search': False, 
-				'flags': {
-						'form': {'action_buttons': True, }
-						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-						},			
-				'context': {}
-		}
-	# create_order_pro
-
-
-
-# ----------------------------------------------------------- Create Recommendation  ------------------------------------------------------
-
+	# Create Service 
 	@api.multi
 	def create_service(self):
 
@@ -1881,3 +1546,23 @@ class Treatment(models.Model):
 					}
 		}
 	# create_service
+
+
+
+# ----------------------------------------------------------- Update ------------------------------------------------------
+
+	# Update
+	@api.multi 
+	def update(self):
+		#print 
+		#print 'Update'
+		self.flag = not self.flag
+
+
+	# Flag 
+	flag = fields.Boolean(
+			'Flag', 
+		)
+
+	# update 
+

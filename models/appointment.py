@@ -2,18 +2,18 @@
 #
 # 		***	 Appointment
 #
-#
 # Created: 				14 Nov 2016
 # Last updated: 	 	28 Jun 2018
 #
 
 from openerp import models, fields, api
-
 import datetime
+
 import app_vars
 import eval_vars
-import appfuncs
-import procedure_funcs
+
+import lib
+import user
 
 
 class Appointment(models.Model):
@@ -28,12 +28,18 @@ class Appointment(models.Model):
 
 
 
+
 	# ----------------------------------------------------------- Deprecated ------------------------------------------------------
 
 	#x_target = fields.Char()
 
 	#x_machine = fields.Char()
 
+	# Create procedure Flag 
+	#x_create_procedure_automatic = fields.Boolean(
+	#		string="¿ Cita para Procedimiento ?",
+	#		default=False, 
+	#	)
 
 
 
@@ -179,8 +185,8 @@ class Appointment(models.Model):
 			
 			default='pre_scheduled',
 			
-			#readonly=False, 
-			readonly=True, 
+			readonly=False, 
+			#readonly=True, 
 
 			required=True, 
 		)
@@ -220,13 +226,6 @@ class Appointment(models.Model):
 
 
 
-# ----------------------------------------------------------- Extensions ------------------------------------------------------
-
-	# Create procedure Flag 
-	x_create_procedure_automatic = fields.Boolean(
-			string="¿ Cita para Procedimiento ?",
-			default=False, 
-		)
 
 
 
@@ -467,14 +466,11 @@ class Appointment(models.Model):
 		print 'Confirm'
 
 
-
 		# Only for Controls
-		#if self.x_type == 'control': 
 		if self.x_type in ['control','session']: 
 
 			# Get Next Slot - Real Time version 
-			appointment_date = appfuncs.get_next_slot(self)						# Next Slot
-
+			appointment_date = lib.get_next_slot(self)						# Next Slot
 
 
 			# Init 
@@ -486,17 +482,20 @@ class Appointment(models.Model):
 			states = ['pre_scheduled','Scheduled']
 
 
-
 			# Check and Push
-			appointment_date_str = procedure_funcs.check_and_push(self, appointment_date, duration, x_type, doctor_name, states)
+			appointment_date_str = user.check_and_push(self, appointment_date, duration, x_type, doctor_name, states)
 
 			self.appointment_date = appointment_date_str
+			
 			#print appointment_date_str
 			#print
 
 
 		# All 
 		self.state = 'Scheduled'
+
+		# Treatment Flag 
+		self.treatment.update()
 
 	# confirm 
 
@@ -512,6 +511,9 @@ class Appointment(models.Model):
 		print 'Un Confirm'
 
 		self.state = 'pre_scheduled'
+
+		# Treatment Flag 
+		self.treatment.update()
 
 
 
@@ -573,32 +575,35 @@ class Appointment(models.Model):
 	@api.model
 	def create(self,vals):
 
-		#print 
+		#print
 		#print 'Appointment - Create'
 
 		# Super 
+		#print 'mark'
 		res = super(Appointment, self).create(vals)
+		#print 'mark'
 
 		# Init 
 		appointment_date = res.appointment_date
 		x_type = res.x_type
-		x_create_procedure_automatic = res.x_create_procedure_automatic
 		doctor_id = res.doctor.id
 		patient_id = res.patient.id
 		treatment_id = res.treatment.id
 		
-		# Create Procedure Flag
-		if x_type == 'consultation'  and  x_create_procedure_automatic:
-			date_format = "%Y-%m-%d %H:%M:%S"
-			adate_con = datetime.datetime.strptime(appointment_date, date_format)
-			delta_fix = datetime.timedelta(hours=1.5)
-			adate_base = adate_con + delta_fix
+		#x_create_procedure_automatic = res.x_create_procedure_automatic
 
-			app = appfuncs.create_appointment_procedure(self, adate_base, doctor_id, patient_id, treatment_id, x_create_procedure_automatic)
+
+		# Create Procedure Flag - Deprecated
+		#if x_type == 'consultation'  and  x_create_procedure_automatic:
+		#	date_format = "%Y-%m-%d %H:%M:%S"
+		#	adate_con = datetime.datetime.strptime(appointment_date, date_format)
+		#	delta_fix = datetime.timedelta(hours=1.5)
+		#	adate_base = adate_con + delta_fix
+		#	app = appfuncs.create_appointment_procedure(self, adate_base, doctor_id, patient_id, treatment_id, x_create_procedure_automatic)
+
+
 
 		return res
-
 	# create
-
 # CRUD
 

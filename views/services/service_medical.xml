@@ -3,7 +3,8 @@
 	<data>
 
 
-		<!-- Form --> 
+
+<!-- FORM --> 
 		<record model="ir.ui.view" id="service_medical_form_view">
 			<field name="name">service.medical.form</field>
 			<field name="model">openhealth.service.medical</field>
@@ -20,8 +21,20 @@
         		
         		</xpath>
 
-			</field>
-						
+<!--
+				<xpath expr="//field[@name='laser']" position="after">
+
+					<field name="vspace" />
+
+					<field name="zone" 			invisible="0"						/>
+
+					<field name="vspace" />
+
+					<field name="pathology" 	readonly="0"  	invisible="0"		/>									
+        		</xpath>				
+-->
+
+			</field>						
 		</record>
 
 		
@@ -29,7 +42,7 @@
 
 
 
-		<!-- service tree/list view -->
+<!-- TREE -->
 		<record model="ir.ui.view" id="service_medical_tree_view">
 			<field name="name">service.tree</field>
 			<field name="model">openhealth.service.medical</field>

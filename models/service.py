@@ -117,8 +117,12 @@ class Service(models.Model):
 	# State 
 	state = fields.Selection(
 			[
-				('draft', 		'Inicio'),			
-				('budget', 		'Presupuestado'),	
+				('draft', 		'Inicio'),
+
+				('budget', 	'Presupuestado'),	
+				#('budget', 		'Presupuesto'),	
+
+				('sale', 		'Pagado'),				
 			], 
 			#selection = serv_vars._state_list, 
 			string='Estado', 			
@@ -344,7 +348,9 @@ class Service(models.Model):
 			domain = [
 						('type', '=', 'service'),
 					],
-			string="Servicio",
+			
+			#string="Servicio",
+			string="Producto",
 
 			required=True, 
 		)

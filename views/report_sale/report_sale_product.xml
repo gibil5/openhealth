@@ -24,7 +24,7 @@
 								type="object" 
 								class="oe_highlight"
 
-								name="update_report"
+								name="update"
 
 								string="Actualizar"
 						/>
@@ -39,24 +39,18 @@
 
 					<group	string="Venta de Productos"	>
 						<group>
-
-
 		                    <field name="name"/>
 
-<!--
-		                    <field name="date"/>
--->
-
-
+		                    <field name="write_date"/>
 						</group>
 						<group>
-<!--							
--->
 		                    <field name="total_qty"/>
 		                    <field name="total"/>
-
 						</group>
 					</group>
+<!--							
+		                    <field name="date"/>
+-->
 
 
 

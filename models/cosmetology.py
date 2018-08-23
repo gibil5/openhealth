@@ -11,7 +11,6 @@ from datetime import datetime
 from . import cosvars
 from . import time_funcs
 
-#from . import jxvars
 
 
 class Cosmetology(models.Model):
@@ -127,7 +126,6 @@ class Cosmetology(models.Model):
 
 		#self.state = False
 		self.state = 'empty'
-
 
 		self.service_ids.unlink()
 

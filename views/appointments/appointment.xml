@@ -6,7 +6,9 @@
 
 <!-- FORM -->
 		<record model="ir.ui.view" id="view_appointment">
+
 			<field name="name">oeh.medical.appointment.form</field>
+			
 			<field name="model">oeh.medical.appointment</field>
 			<field name="inherit_id" ref="oehealth.oeh_medical_appointment_view"/>			
 			<field name="mode">primary</field>
@@ -296,8 +298,9 @@ DEPRECATED !
 
 
 						<group>
-							<field name="x_create_procedure_automatic"	attrs="{'invisible':[('x_type', '!=', 'consultation')]}"  />
 <!--
+							<field name="x_create_procedure_automatic"	attrs="{'invisible':[('x_type', '!=', 'consultation')]}"  />
+
 							<field name="vspace"/>							
 							<field name="vspace"/>
 							<field name="comments"/>

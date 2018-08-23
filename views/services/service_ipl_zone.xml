@@ -14,13 +14,13 @@
 
 
 				<!-- Time --> 
-				<xpath expr="//field[@name='zone']" position="after">
+				<xpath expr="//field[@name='pathology']" position="after">
 					<field name="vspace"/>
 					<field name="time" readonly="1"  invisible="0" />
         		</xpath>
 
 				<!-- Nr sessions -->
-				<xpath expr="//field[@name='pathology']" position="after">
+				<xpath expr="//field[@name='time']" position="after">
 					<field name="vspace"/>
 					<field name="nr_sessions" readonly="1"  invisible="0" />
         		</xpath>

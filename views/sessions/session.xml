@@ -3,6 +3,7 @@
 	<data>
 
 
+
 		<!-- Session -->
 		<record model="ir.ui.view" id="session_form_view">
 			<field name="name">session.form</field>
@@ -15,13 +16,10 @@
 
 
 
-
-
 		<!-- Session MED -->
 		<record model="ir.ui.view" id="session_med_form_view">
 			<field name="name">session.med.form</field>
 			<field name="model">openhealth.session.med</field>
-
 
 			<field name="arch" type="xml">
 				<form string="Evaluation">
@@ -388,20 +386,13 @@
 
 
 
-				<tree string="Session Med Tree"
+				<tree 	string="Session Med Tree"
 
-
-colors="
-
-red:state=='draft';
-
-green:state=='inprogress';
-
-blue:state=='done'
-
-"
-
->
+						colors="
+						red:state=='draft';
+						green:state=='inprogress';
+						blue:state=='done'
+						">
 
 
 					
@@ -415,9 +406,9 @@ blue:state=='done'
 
 <!--
 					<field name="evaluation_nr"/>
-					<field name="name"/>
 -->
 
+					<field name="name"/>
 					
 					<field name="appointment"/>
 
@@ -429,12 +420,17 @@ blue:state=='done'
 
 					<field name="laser"/>
 
+
+
+
 					<field name="evaluation_start_date"/>
+
+					<field name="nr_days"/>
+
+
+
 					
 					<field name="nr_images"/>
-
-
-
 
 					<field name="state"/>
 

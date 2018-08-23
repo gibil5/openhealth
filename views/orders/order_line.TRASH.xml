@@ -124,9 +124,95 @@
 
 
 
+
 <!--
-31 Jan 2018
+3 Aug 2018
 -->
+
+
+<!-- TREE - Deprecated -->
+<!--
+		<record model="ir.ui.view" id="sale.view_order_line_tree">
+			<field name="name">sale.order.line.tree</field>
+			<field name="model">sale.order.line</field>
+			<field name="arch" type="xml">
+				<tree string="Sales Order Lines">
+
+					<field name="product_id" 	string="jx"		/>
+
+					<field name="product_uom_qty"			/>
+
+					<field name="price_subtotal" />
+
+					<field name="price_total" />
+				</tree>
+			</field>
+		</record>
+-->
+
+<!--
+										attrs="{'readonly': ['|', ('qty_invoiced', '&gt;', 0), ('procurement_ids', '!=', [])]}"
+					<field name="product_id"
+										context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}"
+									   />
+-->
+<!--
+					<field name="x_date_created" />
+					<field name="product_uom"			/>
+					<field name="create_date" />
+					<field name="order_id"/>
+					<field name="order_report_id"/>
+					<field name="name"/>
+					<field name="price_unit"			/>
+					<field name="x_price_vip"			/>
+					<field name="x_price_vip_return"			/>
+					<field name="tax_id"			/>
+					<field name="x_test" />
+					<field name="x_comeback" />
+-->
+
+
+
+
+
+
+
+<!--
+		<record id="sale.view_order_line_tree" model="ir.ui.view">
+			<field name="name">sale.order.line.tree</field>
+			<field name="model">sale.order.line</field>
+			<field name="arch" type="xml">
+				<tree string="Sales Order Lines" create="false">
+					<field name="product_id" invisible="1"/>
+					<field name="order_id"/>
+					<field name="order_partner_id"/>
+					<field name="name"/>
+					<field name="salesman_id"/>
+					<field name="product_uom_qty" string="Qty"/>
+					<field name="qty_delivered"/>
+					<field name="qty_invoiced"/>
+					<field name="qty_to_invoice"/>
+					<field name="product_uom" string="Unit of Measure" groups="product.group_uom"/>
+					<field name="price_subtotal" sum="Total" widget="monetary"/>
+				</tree>
+			</field>
+		</record>
+-->
+
+<!--
+					<field name="id"/>
+					<field name="price_total"/>
+					<field name="product_id"/>
+					<field name="purchase_price"/>
+					<field name="price_tax"/>
+					<field name="margin"/>
+					<field name="description"/>
+					<field name="x_price_vip" />
+					<field name="consultation"/>
+					<field name="order_id"/>
+					<field name="state"/>
+-->
+
 
 
 

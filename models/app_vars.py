@@ -44,13 +44,18 @@ _type_list = [
 
 # SubType 
 _h_subtype = {
+					# Other 
+					'other':		'Otr',
+
+
+					# Consultation 
 					'consultation':		'',
 
+					# Laser 
 					'laser_quick':		'Qui', 
 					'laser_co2':		'Co2 ', 
 					'laser_excilite':	'Exc', 
 					'laser_m22':		'M22', 
-
 					'laser_ipl':		'Ipl', 
 					'laser_ndyag':		'Ndy', 
 

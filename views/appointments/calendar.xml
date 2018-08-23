@@ -4,6 +4,7 @@
 
 
 
+		<!-- Calendar -->
 		<record model="ir.ui.view" id="oehealth.view_oeh_medical_event_calendar">
 			<field name="name">appointment.calendar</field>
 			<field name="model">oeh.medical.appointment</field>
@@ -13,7 +14,6 @@
 	        <field name="mode">primary</field>
 	        <field name="priority" eval="1"/>
 			-->
-
 
 			<field name="arch" type="xml">
 				<!--
@@ -29,9 +29,7 @@
 							
 							color="state" 
 							quick_add="False" 
-							mode="day"
-				>
-                
+							mode="day">
                 
                         <!--<field name="user_id"/>-->
                         <field name="doctor"/>
@@ -41,8 +39,6 @@
                         <field name="x_doctor_code"/>
                         <field name="x_display"/>
 				</calendar>
-			
-
 			</field>
 		</record>
 	</data>

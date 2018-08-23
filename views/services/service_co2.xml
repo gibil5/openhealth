@@ -4,8 +4,9 @@
 
 
 
-		<!-- Form --> 
+<!-- FORM --> 
 		<record model="ir.ui.view" id="service_co2_form_view">
+			
 			<field name="name">service.co2.form</field>
 			<field name="model">openhealth.service.co2</field>
 
@@ -16,15 +17,36 @@
 
 				<!-- <xpath expr="//field[@name='title']" position="before"> -->
 			
-				<xpath expr="//h1" position="replace">
 
+
+				<xpath expr="//h1" position="replace">
 					<h1>Láser Co2</h1>					
-        		
         		</xpath>
 
 
 
+<!--
+				<xpath expr="//field[@name='laser']" position="after">
 
+					<field name="vspace" />
+
+					<field name="zone" 			readonly="1" 	invisible="0"/>
+
+					<field name="vspace" />
+
+					<field name="pathology" 	readonly="1"  	invisible="0"/>
+				</xpath>
+-->
+
+<!--
+					<field name="x_treatment" 	readonly="1"   	invisible="1"/>
+					<field name="sessions" 		readonly="1"  	invisible="1"/>
+					<field name="time" 			readonly="1"  	invisible="1"/>
+					<field name="family" 		readonly="1"   	invisible="1"/>
+-->
+
+
+<!--
 				<xpath expr="//field[@name='zone']" position="replace">
 						<field name="zone" 			groups="openhealth.roots"/>
 				</xpath>
@@ -32,20 +54,15 @@
 				<xpath expr="//field[@name='pathology']" position="replace">
 						<field name="pathology" 			groups="openhealth.roots"/>
 				</xpath>
+-->
 
-
-
-
-			</field>
-						
+			</field>	
 		</record>		
 
 
 
 
-		<!-- Tree -->
-<!--
--->
+<!-- TREE -->
 		<record model="ir.ui.view" id="service_co2_tree_view">
 			<field name="name">service.co2.tree</field>
 			<field name="model">openhealth.service.co2</field>
@@ -65,17 +82,11 @@
 <!--
 
 				<tree string="Service Tree">
-
 					<field name="service"/>
-
 					<field name="zone"/>
-
 					<field name="pathology"/>
-
 					<field name="physician"/>
-
 					<field name="state"/>
-
 				</tree>
 
 -->
@@ -98,21 +109,6 @@
 
 
 
-
-		<!-- Filter --> 
-        <record id="view_service_co2_filter" model="ir.ui.view">
-           <field name="name">Service Co2 Search</field>
-           <field name="model">openhealth.service.co2</field>		   
-		   <field name="arch" type="xml">
-               <search string="service.co2">
-
-                   <field name="treatment" />
-<!--                   
-                   <field name="consultation" />
--->           
-               </search>
-           </field>
-       </record>
 
 
 

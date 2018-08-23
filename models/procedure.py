@@ -8,30 +8,76 @@
 
 from openerp import models, fields, api
 from datetime import datetime
-from . import time_funcs
-from . import cosvars
-from . import app_vars
-from . import pro_con_funcs
-from . import pro_ses_funcs
-
-
+import time_funcs
+import app_vars
+import pro_con_funcs
+import pro_ses_funcs
 
 class Procedure(models.Model):
 
 	_name = 'openhealth.procedure'
-
 	#_inherit = ['oeh.medical.evaluation', 'openhealth.base']
 	_inherit = 'oeh.medical.evaluation'
 
 
 
 
-# ----------------------------------------------------------- Deprecated ------------------------------------------------------
-	#appointment_ids = fields.One2many(
-	#		'oeh.medical.appointment', 
-	#		'procedure', 
-	#		string = "Citas", 
-	#		)
+
+# ----------------------------------------------------------- Clears ------------------------------------------------------
+
+	# Clear Sessions 
+	@api.multi	
+	def clear_sessions(self):
+
+		self.session_ids.unlink()
+
+
+
+	# Clear Controls 
+	@api.multi	
+	def clear_controls(self):
+
+		self.control_ids.unlink()
+
+
+
+# ----------------------------------------------------------- Creates ------------------------------------------------------
+
+	# Create Controls 
+	@api.multi	
+	def create_controls(self):
+
+		nr_controls = 1 
+
+		nr_ctl_created = self.env['openhealth.control'].search_count([
+																		('procedure','=', self.id), 
+																	]) 
+
+		ret = pro_con_funcs.create_controls(self, nr_controls, nr_ctl_created)
+
+	# create_controls
+
+
+
+
+	# Create Sessions 
+	@api.multi	
+	def create_sessions(self): 
+		
+		#nr_sessions = self.number_sessions
+		nr_sessions = 1
+
+		nr_ses_created = self.env['openhealth.session.med'].search_count([
+																			('procedure','=', self.id), 
+																	]) 
+
+
+		#ret = pro_ses_funcs.create_sessions(self, nr_sessions)
+		ret = pro_ses_funcs.create_sessions(self, nr_sessions, nr_ses_created)
+
+	
+	# create_sessions
+
 
 
 
@@ -183,25 +229,6 @@ class Procedure(models.Model):
 
 
 
-
-# ----------------------------------------------------------- Creates ------------------------------------------------------
-
-	# Create Controls 
-	@api.multi	
-	def create_controls(self):
-		ret = pro_con_funcs.create_controls(self)
-	# create_controls
-
-
-
-
-	# Create Sessions 
-	@api.multi	
-	def create_sessions(self): 
-		
-		ret = pro_ses_funcs.create_sessions(self)
-	
-	# create_sessions
 
 
 

@@ -3,10 +3,8 @@
 	<data>
 
 
-		<!-- RECOMMENDATION -->
-			
 
-		<!-- Form view -->
+<!-- Form view -->
 		<record model="ir.ui.view" id="recommendation_form_view">
 			<field name="name">recommendation.form</field>
 			<field name="model">openhealth.recommendation</field>			
@@ -16,17 +14,12 @@
 			<field name="arch" type="xml">
 				<form string="Evaluation">
 
-
-
-
-
 					<!-- Header --> 
 					<header>
 
 
-
-
 							<!-- Vip --> 
+<!--
 							<button 
 								type="object" 
 								class="oe_highlight"	
@@ -35,21 +28,22 @@
 
 								string="VIP"
 							/>
+-->
 
 
 
-
-
-
-							<!-- Quick --> 
+							<!-- Product --> 
 							<button 
 								type="object" 
 								class="oe_highlight"	
 
-								name="create_service_quick" 	
+								name="create_service_product" 	
 
-								string="QUICK LASER"
+								string="PRODUCTOS"
 							/>
+
+
+
 
 
 
@@ -69,6 +63,18 @@
 
 
 
+
+							<!-- Quick --> 
+							<button 
+								type="object" 
+								class="oe_highlight"	
+
+								name="create_service_quick" 	
+
+								string="QUICK LASER"
+							/>
+
+
 							<!-- Excilite -->
 							<button 
 								type="object" 
@@ -78,7 +84,6 @@
 
 								string=" EXCILITE"
 							/>
-
 
 
 							<!-- M22-IPL --> 

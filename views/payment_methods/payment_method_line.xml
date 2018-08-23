@@ -153,17 +153,22 @@ attrs="{'invisible':[
 					<field name="date_time"/>
 					<field name="x_type"/>
 					<field name="serial_nr"/>
-					<field name="patient"   />													
 
-					<field name="method"  />				
-					<field name="subtotal"   />
 
+
+					<field name="patient"/>													
+					<field name="document"/>				
+					<field name="document_type"/>
+
+
+
+					<field name="method"/>
+					<field name="subtotal"/>
 
 
 <!--
 					<field name="account_id"   />
-					<field name="currency"  />				
-
+					<field name="currency"  />
 					<field name="create_date"/>
 					<field name="write_date"/>
 					<field name="name"/>

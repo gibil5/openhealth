@@ -2,16 +2,18 @@
 #
 #		Patient 
 # 
-# Created: 			26 Aug 2016
+# 		Created: 		26 Aug 2016
 #
-# Last up: 			 9 Jul 2018
+# 		Last up: 		21 Aug 2018
 #
 
 from openerp import models, fields, api
 from datetime import datetime
-import pat_funcs
 import pat_vars
 import count_funcs
+
+import lib
+
 
 class Patient(models.Model):
 
@@ -330,8 +332,11 @@ class Patient(models.Model):
 		self.order_report_nex = self.create_order_report()
 		res_id = self.order_report_nex.id
 
+
 		# Update 
-		self.order_report_nex.update_order_report()
+		#self.order_report_nex.update_order_report()
+		self.order_report_nex.update()
+
 
 		return {
 				'type': 'ir.actions.act_window',
@@ -364,11 +369,11 @@ class Patient(models.Model):
 	@api.onchange('x_dni')
 	def _onchange_x_dni(self):
 		# For Digits 
-		ret = pat_funcs.test_for_digits(self, self.x_dni)
+		ret = lib.test_for_digits(self, self.x_dni)
 		if ret != 0: 
 			return ret
 		# For Length 
-		ret = pat_funcs.test_for_length(self, self.x_dni, 8)
+		ret = lib.test_for_length(self, self.x_dni, 8)
 		if ret != 0: 
 			return ret
 
@@ -377,11 +382,11 @@ class Patient(models.Model):
 	@api.onchange('x_ruc')	
 	def _onchange_x_ruc(self):
 		# For Digits 
-		ret = pat_funcs.test_for_digits(self, self.x_ruc)
+		ret = lib.test_for_digits(self, self.x_ruc)
 		if ret != 0: 
 			return ret
 		# For Length 
-		ret = pat_funcs.test_for_length(self, self.x_ruc, 11)
+		ret = lib.test_for_length(self, self.x_ruc, 11)
 		if ret != 0: 
 			return ret
 
@@ -670,7 +675,7 @@ class Patient(models.Model):
 			if record.x_first_name and record.x_last_name:				
 				full = record.x_last_name.lower() + '_' + record.x_first_name.lower()
 				full = full.replace (" ", "_")
-				full = pat_funcs.strip_accents(full)
+				full = lib.strip_accents(full)
 				record.x_full_name = full
 
 
@@ -733,7 +738,7 @@ class Patient(models.Model):
 	
 	@api.onchange('phone_3')
 	def _onchange_phone_3(self):
-		ret = pat_funcs.test_for_digits(self, self.phone_3)
+		ret = lib.test_for_digits(self, self.phone_3)
 		if ret != 0: 
 			return ret
 
@@ -817,12 +822,12 @@ class Patient(models.Model):
 	@api.onchange('x_last_name', 'x_first_name')
 	def _onchange_x_last_name(self):
 		if self.x_last_name and self.x_first_name:
-			self.name = pat_funcs.strip_accents(self.x_last_name.upper() + ' ' + self.x_first_name)
+			self.name = lib.strip_accents(self.x_last_name.upper() + ' ' + self.x_first_name)
 
 	@api.onchange('x_last_name')
 	def _onchange_x_last_name_test(self):
 		if self.x_last_name:
-			ret = pat_funcs.test_name(self, self.x_last_name)			
+			ret = lib.test_name(self, self.x_last_name)			
 			return ret
 
 

@@ -13,13 +13,25 @@
 					
 
 
-
 					<!-- Header -->
 					<header>
 
 
+						<!-- Update -->
+						<button 
+								type="object" 
+								class="oe_highlight"
+								name="update"
+
+								string="Actualizar"								
+						/>
+
+
 
 						<!-- Update Patients -->
+						<!-- Update Sales -->
+						<!-- Update Recos -->
+<!--
 						<button 
 								type="object" 
 								class="oe_highlight"
@@ -28,8 +40,6 @@
 								string="Actualizar Pacientes"								
 						/>
 
-
-						<!-- Update Sales -->
 						<button 
 								class="oe_highlight"
 								type="object" 
@@ -38,8 +48,6 @@
 								string="Ventas"	
 						/>
 
-
-						<!-- Update Recos -->
 						<button 
 								class="oe_highlight"
 								type="object" 
@@ -47,6 +55,8 @@
 
 								string="Recomendaciones"	
 						/>
+-->
+
 
 
 

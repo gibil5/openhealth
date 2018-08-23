@@ -14,13 +14,12 @@
 
 	'description': """
 
-		24 July 2018 
+		23 Aug 2018
 
 		Fulcrum 
 		
 		Code without Tests is broken by design.
-
-		Criteria Based Testing (or bust). 
+		My Goal is to achieve Complete Coverage. 
 
 		Stability by Design. Simplicity by Abstraction. 
 
@@ -34,7 +33,7 @@
 
 
 		EMR - Min - Docean - Github - Travis - Coverage - Proliant - User Stories - Cron Pg Dump - Unit Testing - Less but Better - Statistical - Machine Learning - 
-		Object Oriented - Fulcrum - Criteria Based Testing \n
+		Object Oriented - Fulcrum - Coverage Testing \n
 
 		Deprecated: Ooor - Testcafe - Auto Backup
 
@@ -68,7 +67,7 @@
 	# for the full list
 	#'category': 'Health',
 	
-	'category': 'Data Mining',
+	'category': 'Object Oriented',
 	
 	'version': '2.0',
 
@@ -162,7 +161,8 @@
 		#'views/treatments/treatment_reservations.xml',			# Deprecated 
 
 
-
+		# ----------------------------------------------------------- Deprecated ------------------------------------------------------
+		#'views/report_sale/report_sale.xml',
 
 
 
@@ -171,9 +171,10 @@
 
 		# Reports
 		'views/product_selectors/product_selector.xml',
-		'views/orders/order_report_nex.xml',
+		'views/orders/order_report_nex.xml',				# Estado de Cuenta
+		
 		'views/report_sale/report_sale_product.xml',
-		'views/report_sale/report_sale.xml',
+		
 		'views/report_sale/item_counter.xml',
 
 
@@ -240,8 +241,6 @@
 		'reports/report_ticket_receipt_nex.xml',
 		'reports/report_ticket_invoice_nex.xml',
 
-		# Purchases
-		'reports/report_purchasequotation.xml',
 
 
 
@@ -270,8 +269,10 @@
 		'data/prods/data_zones_ipl.xml',			 
 		'data/prods/data_zones_ndyag.xml',			 
 
+
 		# Allergy 
 		'views/allergies/allergy.xml',
+
 
 		# Doctors
 		'data/base_data_physicians.xml',				
@@ -292,8 +293,10 @@
 		# Users - With pw
 		'data/users/base_data_users_platform.xml',	
 		'data/users/base_data_users_cash.xml',		
-		'data/users/base_data_users_doctors.xml',		
+		'data/users/base_data_users_doctors.xml',
+
 		'data/users/base_data_users_assistants.xml',	
+		
 		'data/users/base_data_users_staff.xml',		
 		'data/users/base_data_users_almacen.xml',		
 		'data/users/base_data_users_managers.xml',	
@@ -322,6 +325,13 @@
 
 
 # ----------------------------------------------------------- Views ------------------------------------------------------
+
+
+		# ----------------------------------------------------------- Views - Actions ------------------------------------------------------
+		'views/services/service_actions.xml',
+		
+		'views/services/service_search.xml',
+
 
 
 
@@ -419,8 +429,7 @@
 		'views/cards/card.xml',
 
 
-		# Purchases 
-		'views/purchase/purchase.xml',
+
 
 
 		# Stock 
@@ -428,8 +437,6 @@
 		'views/stock/stock_inventory.xml',
 
 
-		# Kardex
-		'views/kardex/kardex.xml',
 
 
 
@@ -442,8 +449,9 @@
 		'views/sessions/session.xml',
 		
 		'views/sessions/session_config_simple.xml',
+		'views/sessions/session_config_simple_2.xml',
 		
-		'views/sessions/session_config_manual.xml',
+		#'views/sessions/session_config_manual.xml',
 
 
 
@@ -451,24 +459,38 @@
 		'views/evaluations/evaluation_oeh.xml',
 
 
+
 		# Services - 2  
+		'views/services/service_product.xml',
+
 		'views/services/service_co2.xml',
 		'views/services/service_co2_zone.xml',
+		
 		'views/services/service_excilite.xml',
 		'views/services/service_excilite_zone.xml',
+
 		'views/services/service_ipl.xml',
 		'views/services/service_ipl_zone.xml',
+
 		'views/services/service_ndyag.xml',
 		'views/services/service_ndyag_zone.xml',
+
 		'views/services/service_medical.xml',
 		'views/services/service_medical_zone.xml',
+		
 		'views/services/service_quick.xml',
-		'views/services/service_vip.xml',
 
-
-		# Cosmetology
 		'views/services/service_cosmetology.xml',
 		'views/services/service_cosmetology_zone.xml',
+
+
+		#'views/services/service_vip.xml',
+
+
+
+
+
+
 
 
 		# Procedures - 2  
@@ -505,23 +527,43 @@
 
 
 
-		# ----------------------------------------------------------- Purchase ------------------------------------------------------
-		'views/purchase/purchase_report.xml',			# Deprecated ? 
-		'views/purchase/purchase_report_view.xml',		# Deprecated ?
+
+		# ----------------------------------------------------------- Purchase - Deprecated ------------------------------------------------------
+
+		# Purchases 
+		#'views/purchase/purchase.xml',
+		#'reports/report_purchasequotation.xml',
+		#'views/purchase/purchase_report.xml',			# Deprecated ? 
+		#'views/purchase/purchase_report_view.xml',		# Deprecated ?
 
 
 
-		# ----------------------------------------------------------- Legacy ------------------------------------------------------
-		'views/legacy/legacy.xml',
-		'views/legacy/legacy_patient.xml',
-		'views/legacy/legacy_manager.xml',
-		'views/data/data_analyzer.xml',
-		'views/legacy/legacy_manager_order.xml',
-		'views/legacy/legacy_manager_patient.xml',
-		'views/legacy/legacy_order.xml',
-
+		# ----------------------------------------------------------- Legacy - Deprecated ------------------------------------------------------
+		#'views/legacy/legacy.xml',
+		#'views/legacy/legacy_patient.xml',
+		#'views/legacy/legacy_manager.xml',
+		#'views/data/data_analyzer.xml',
+		#'views/legacy/legacy_manager_order.xml',
+		#'views/legacy/legacy_manager_patient.xml',
+		#'views/legacy/legacy_order.xml',
 		#'views/menus/menus_legacy.xml',
 
+
+
+		# ----------------------------------------------------------- Stock Min - Deprecated ------------------------------------------------------
+		#'views/stock_min/stock_min_inventory.xml',
+		#'views/stock_min/stock_min_inventory_line.xml',
+
+		# Kardex
+		#'views/kardex/kardex.xml',
+
+
+
+
+
+
+
+		# ----------------------------------------------------------- Quality Control ------------------------------------------------------
 		'views/menus/menus_qc.xml',
 
 
@@ -534,20 +576,16 @@
 
 
 
-
-		# ----------------------------------------------------------- Stock Min ------------------------------------------------------
-		'views/stock_min/stock_min_inventory.xml',
-		'views/stock_min/stock_min_inventory_line.xml',
-
-
-
 		# ----------------------------------------------------------- Sale Reports ------------------------------------------------------
 		'views/reports/report_sale_pivots.xml',
 		'views/reports/report_sale_graphs.xml',
 		'views/reports/report_sale_favorites.xml',
 		'views/reports/report_sale_search.xml',
 		'views/reports/report_sale.xml',
+
 		'views/reports/report_sale_months.xml',
+		#'views/reports/report_sale_days.xml',
+
 
 
 
@@ -573,7 +611,9 @@
 	'demo': [
 		#'demo/demo.xml',
 	],
+
 	# Static - Style Css 
 	'css': ['static/src/css/jx.css'],
+	
 	'js': [''],
 }

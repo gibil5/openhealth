@@ -4,6 +4,20 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+access_openhealth_service_product_managers,openhealth.service_product.managers,model_openhealth_service_product,openhealth.hc_managers,1,1,1,1
+access_openhealth_service_product_readers,openhealth.service_product.readers,model_openhealth_service_product,openhealth.hc_readers,1,0,0,0
+
+access_openhealth_service_product_caja,openhealth.service_product.caja,model_openhealth_service_product,openhealth.caja,1,1,1,0
+
+
+
+
+
+
+
+
+
+
 access_openhealth_session_managers,openhealth.session.managers,model_openhealth_session,openhealth.hc_managers,1,1,1,1
 access_openhealth_session_readers,openhealth.session.readers,model_openhealth_session,openhealth.hc_readers,1,0,0,0
 
@@ -38,10 +52,13 @@ access_openhealth_consultation_caja,openhealth.consultation.caja,model_openhealt
 
 
 
+
 access_openhealth_service_vip_managers,openhealth.service_vip.managers,model_openhealth_service_vip,openhealth.hc_managers,1,1,1,1
 access_openhealth_service_vip_readers,openhealth.service_vip.readers,model_openhealth_service_vip,openhealth.hc_readers,1,0,0,0
 
 access_openhealth_service_vip_caja,openhealth.service_vip.caja,model_openhealth_service_vip,openhealth.caja,1,1,1,0
+
+
 
 
 

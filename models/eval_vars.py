@@ -8,9 +8,11 @@
 
 # Consultation
 _state_list = [
+					('cancel', 		'Anulado'),
+
 					('draft', 		'Inicio'),
 					('inprogress', 	'En progreso'),
-					('done', 		'Completo'),
+					('done', 		'Completo'),	
 				]
 
 

@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		
+
+
+
+<!--							
+							context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 
+							'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}"
+							options="{'no_create': True}"
+-->
+
+
+<!-- FORM -->
+		<record model="ir.ui.view" id="sale.view_order_line_form">
+			<field name="name">sale.order.line.form</field>
+			<field name="model">sale.order.line</field>
+<!--			
+			<field name="inherit_id" ref="sale.view_order_line_form"/>	
+			<field name="mode">primary</field>
+			<field name="priority" eval="1"/>
+			<field name="arch" type="xml">
+-->		
+						
+			<field name="arch" type="xml">
+
+				<form string="Service - Form">
+
+					<header>
+
+<!--
+								states="draft"						
+								groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors"
+-->
+						<button 
+								type="object" 
+								class="oe_highlight"
+
+								name="create_myself"								
+
+								string="Agregar"
+							/>
+
+
+					</header>
+					
+
+					<sheet>
+						<group>
+
+
+							<group>
+								<field name="product_id" />
+							
+								<field name="name" />
+
+								<field name="product_uom_qty" />
+
+								<field name="price_unit" />
+
+								<field name="price_subtotal" />
+
+							</group>
+
+
+
+							<group>
+
+								<field name="order_id" />
+							
+							</group>
+						</group>
+
+
+					</sheet>
+				
+
+					<notebook>
+					</notebook>				
+				
+				</form>
+			</field>
+		</record>
+
+
+	</data>
+</openerp>

@@ -137,8 +137,10 @@
 									('x_id_code', '!=', False), 
 				]</field>
 
-
+<!--
+-->
 			<field name="view_id" ref="oehealth.oeh_medical_patient_tree"/> 
+
 
 			<!--
 			<field name="domain">[]</field>
@@ -170,9 +172,9 @@
 				]</field>
 
 
-
+<!--
 			<field name="view_id" ref="openhealth.oeh_medical_patient_tree_2"/> 
-
+-->
 
 			<field name="limit">1000</field>
 

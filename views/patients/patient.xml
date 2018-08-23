@@ -463,15 +463,14 @@ Relax !
 
 
 					<field name="x_date_record"		groups='openhealth.roots'	string="Fecha de creación"	/>
-
-
 					<field name="age"/>
 					<field name="sex"/>		
-					<field name="x_treatment_count"/>		
 				</tree>
 			</field>
 		</record>
 <!--
+					<field name="x_treatment_count"/>		
+
 					<field name="create_date"	string="Fecha de creación"		/>
 					<field name="dob"/>
 -->

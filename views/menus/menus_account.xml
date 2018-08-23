@@ -58,6 +58,16 @@
 					action="account_patient_list_action"
 				/>
 
+		<!-- Patients no id code --> 
+		<menuitem 	id="account_emr_patients_no_idcode_menu" 
+					name="Pacientes Sin Nr H" 
+					parent="account_menu"
+					sequence="3"
+
+					action="account_patient_no_idcode_list_action"
+					/>
+
+
 
 
 	</data>

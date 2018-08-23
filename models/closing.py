@@ -144,7 +144,9 @@ class Closing(models.Model):
 		amount_untaxed = 0 
 		count = 0 
 		for order in orders: 
-			order.update_type()
+			
+			#order.update_type()				# Deprecated 
+			
 			amount_untaxed = amount_untaxed + order.amount_untaxed 
 			count = count + 1
 		self.total = amount_untaxed

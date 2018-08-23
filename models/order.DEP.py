@@ -140,17 +140,18 @@
 
 
 
-# ----------------------------------------------------------- Test ------------------------------------------------------
+# ----------------------------------------------------------- Batch - Update Type ------------------------------------------------------
 
-	# To update type from batch 
+	# Used by Closing
+	# Update type from batch 
 	@api.multi
 	def update_type(self):
-		print 
-		print 'update type'
+		#print 
+		#print 'update type'
 		if self.x_payment_method != False: 
-			print 'Gotcha'
+			#print 'Gotcha'
 			self.x_type = self.x_payment_method.saledoc
-			print self.x_type
+			#print self.x_type
 
 
 

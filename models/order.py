@@ -1185,9 +1185,7 @@ class sale_order(models.Model):
 	# For Treatments Quick access
 	@api.multi
 	def open_line_current(self):  
-
 		consultation_id = self.id 
-
 		return {
 				'type': 'ir.actions.act_window',
 				'name': ' Edit Order Current', 
@@ -1202,6 +1200,8 @@ class sale_order(models.Model):
 						},
 				'context': {}
 		}
+
+
 
 
 
@@ -1249,7 +1249,6 @@ class sale_order(models.Model):
 		#print 
 		#print 'Update Order Nex'
 		#print 
-
 
 
 
@@ -1416,6 +1415,8 @@ class sale_order(models.Model):
 
 		self.cancel_order()
 		self.activate_order()
+		self.open_line_current()
+
 
 
 # ----------------------------------------------------------- Test ------------------------------------------------------

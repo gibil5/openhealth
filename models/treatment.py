@@ -90,18 +90,16 @@ class Treatment(models.Model):
 			account = 		lib_obj.Report('account.contasis', 	'openhealth.account.contasis', 		'date_begin', 	self)
 			state_of_acc = 	lib_obj.Report('state_of_acc', 		'openhealth.order.report.nex', 		'create_date', 	self)
 
-
 			#doctor_line = 		lib_obj.Report('doctor_line', 		'openhealth.management.doctor.line', 				'write_date', 		self)
 			family_line = 		lib_obj.Report('family_line', 		'openhealth.management.family.line', 				'write_date', 		self)
 			sub_family_line = 	lib_obj.Report('sub_family_line', 	'openhealth.management.sub_family.line', 			'write_date', 		self)
 
 
 
-
-
 			# All  
 			objs = [
 						closing, 
+
 						resap, 
 						management, 
 						marketing, 

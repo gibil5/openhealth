@@ -25,11 +25,11 @@ class Patient(models.Model):
 
 # ----------------------------------------------------------- Deprecated ------------------------------------------------------
 	# Appointments 
-	#appointment_ids = fields.One2many(
-	#		'oeh.medical.appointment', 
-	#		'patient', 			
-	#		string = "Citas", 
-	#	)
+	appointment_ids = fields.One2many(
+			'oeh.medical.appointment', 
+			'patient', 			
+			string = "Citas", 
+		)
 
 
 

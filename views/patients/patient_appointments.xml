@@ -24,9 +24,9 @@
 					
 					<page string="Citas">
 
-						
+<!--						
 						<field name="appointment_ids"/>
-						
+-->					
 
 					</page>
 				</notebook>

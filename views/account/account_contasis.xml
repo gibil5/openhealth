@@ -104,6 +104,7 @@
 
 								<field name="date_end"/>
 
+								<field name="test_target"/>
 							</group>
 
 							
@@ -235,6 +236,8 @@
 					<field name="date"			string="Fecha"	/>
 -->
 					<field name="name"	 				/>
+
+					<field name="test_target"/>
 
 					<field name="date_begin"	string="Fecha Inicio"	/>
 

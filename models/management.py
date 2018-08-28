@@ -9,11 +9,8 @@
 from openerp import models, fields, api
 import numpy as np
 import collections
-
 import mgt_vars
 import mgt_funcs
-
-
 
 class Management(models.Model):
 
@@ -21,10 +18,15 @@ class Management(models.Model):
 
 	_name = 'openhealth.management'
 
-	#_order = 'create_date desc'
-	#_order = 'date_begin asc,name asc'
 	_order = 'date_begin asc'
 
+
+
+# ----------------------------------------------------------- Test ------------------------------------------------------
+
+	test_target = fields.Boolean(
+			string="Test Target", 
+		)
 
 
 
@@ -630,8 +632,8 @@ class Management(models.Model):
 	@api.multi
 	def update_qc(self):  
 
-		print 
-		print 'Update Qc'
+		#print 
+		#print 'Update Qc'
 
 
 		# Checksum 
@@ -681,7 +683,7 @@ class Management(models.Model):
 			#print delta 
 			#print 
 
-		print 'Done !'
+		#print 'Done !'
 		
 	# update_qc
 
@@ -695,8 +697,8 @@ class Management(models.Model):
 	@api.multi
 	def update_counters(self):  
 
-		print 
-		print 'Update counters'
+		#print 
+		#print 'Update counters'
 
 
 		self.nr_consultations = 0 
@@ -864,7 +866,7 @@ class Management(models.Model):
 
 
 
-		print 'Done !'
+		#print 'Done !'
 
 	# update_counters
 
@@ -877,8 +879,8 @@ class Management(models.Model):
 	@api.multi
 	def update_stats(self):  
 
-		print 
-		print 'Update Stats'
+		#print 
+		#print 'Update Stats'
 
 
 		# Using collections - More Abstract !
@@ -1011,7 +1013,7 @@ class Management(models.Model):
 
 
 
-		print 'Done !'
+		#print 'Done !'
 
 	# update_stats
 
@@ -1025,8 +1027,8 @@ class Management(models.Model):
 	@api.multi
 	def update_sales(self):  
 
-		print
-		print 'Update Sales'
+		#print
+		#print 'Update Sales'
 
 
 		# Clean 
@@ -1167,7 +1169,7 @@ class Management(models.Model):
 		#self.stats()
 
 
-		print 'Done !'
+		#print 'Done !'
 
 	# update_sales
 
@@ -1180,10 +1182,7 @@ class Management(models.Model):
 	# Update
 	@api.multi
 	def update(self):  
-
-		print
-		print 'Update'
-		print 
+		print 'Management - Update'
 
 		self.update_sales()
 		self.update_stats()

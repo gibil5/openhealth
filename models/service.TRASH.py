@@ -44,7 +44,22 @@
 
 
 
-# 14 Jun 2018 
+# 27 Aug 2018 
 
+# ----------------------------------------------------------- Deprecated ------------------------------------------------------
+
+	# Cosmetology 
+	#cosmetology = fields.Many2one('openhealth.cosmetology',
+	#		ondelete='cascade', 			
+	#		string="Cosmiatría", 
+	#	)
+
+
+	# Consultation 
+	#consultation = fields.Many2one('openhealth.consultation',
+	#		ondelete='cascade', 		
+	#		string="Consulta", 		
+	#		required=False, 
+	#	)
 
 

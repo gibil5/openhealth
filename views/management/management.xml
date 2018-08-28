@@ -163,7 +163,11 @@
 						<group 	col="4"	groups='openhealth.roots'  >
 
 							<group>
+<!--								
 								<field name="test"/>
+-->
+			                    <field name="test_target"/>
+
 								<field name="nr_delta"/>
 							</group>
 								
@@ -515,6 +519,10 @@
 					
 
 					<field name="name"/>
+
+					<field name="test_target"/>
+
+
 <!--
 					<field name="write_date"	string="Actualizado"/>
 -->

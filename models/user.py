@@ -14,6 +14,25 @@ import creates as cre
 
 
 
+# ----------------------------------------------------------- Get Product ------------------------------------------------------
+
+# Returns the Product Id 
+def get_product(self, shortname):
+
+	#print 
+	#print 'Get Default Id'
+
+	product_id = self.env['product.template'].search([
+														('x_name_short', '=', shortname),
+													],
+													#order='date_order desc',
+													limit=1,
+												).id
+	
+	return product_id
+
+
+
 #------------------------------------------------ Check and Push ---------------------------------------------------
 #@api.multi
 def check_and_push(self, appointment_date, duration, x_type, doctor_name, states):

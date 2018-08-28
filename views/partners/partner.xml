@@ -4,80 +4,20 @@
 
 
 
-
-
-		<!-- FORM -->
+<!-- FORM -->
 		<record model="ir.ui.view" 	id="view_partner_form_jxyz">
 			<field name="name">res.partner.form - jxyz</field>
 			<field name="model">res.partner</field>
-
 			<field name="inherit_id" ref="base.view_partner_form"/>			
 	        <field name="mode">extension</field>
-
 	        <field name="priority" eval="1"/>
+
+
 			<field name="arch" type="xml">
 
 
 
-
-
-<!-- Buttons -->
-				<xpath expr="//field[@name='name']" position="after">
-
-					<field name="vspace"/>
-
-					<button 
-							name="remove_myself"
-							type="object" 
-							class="oe_highlight"
-							string="REMOVEM"
-
-							groups="openhealth.roots"
-					/>
-					<field name="x_autofill"/>
-
-
-
-
-
-<!--
-					<button 
-							name="action_ppl_public"
-							type="object" 
-							class="oe_highlight"
-							
-							string="PPL Public"
-
-							groups="openhealth.roots"
-					/>
-
-					<button 
-							name="action_ppl_vip"
-							type="object" 
-							class="oe_highlight"
-							
-							string="PPL Vip"
-
-							groups="openhealth.roots"
-					/>
-					
-
-					<button 
-							name="autofill"
-							type="object" 
-							class="oe_highlight"
-							string="Auto"
-
-							groups="openhealth.roots"
-					/>
--->
-
-
-				</xpath>
-
-
-
-<!-- Goners -->
+				<!-- Goners -->
 				<xpath expr="//field[@name='fax']" position="replace">
 				</xpath>
 
@@ -94,9 +34,7 @@
 
 
 
-
-<!-- Modified --> 
-
+				<!-- Modify --> 
 				<xpath expr="//field[@name='city']" position="replace">
 					<field  name="city"		required="0"	/>
 				</xpath>
@@ -105,28 +43,15 @@
 					<field  name="country_id"		required="0"	/>
 				</xpath>
 
-
 				<xpath expr="//field[@name='street']" position="replace">
 					<field name="street" placeholder="Calle..." class="o_address_street"
 						attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
 				</xpath>
 
-
 				<xpath expr="//field[@name='street2']" position="replace">
 					<field name="street2" placeholder="Distrito..." class="o_address_street"
 						attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
 				</xpath>
-
-
-
-
-<!--
-				<xpath expr="//field[@name='street']" position="after">
-					<field  name="street2_sel"	/>
-				</xpath>
--->
-
-
 
 				<xpath expr="//field[@name='website']" position="replace">
 					<field  name="website"	attrs = "{'invisible':[('company_type','in',('person'))]}"	/>
@@ -136,94 +61,64 @@
 
 
 
+				<!-- Company --> 
 				<xpath expr="//field[@name='website']" position="after">
 
+					<field name="vspace"/>
+
+					<field name="x_my_company" 			groups="openhealth.roots"	
+														attrs = "{'invisible':[('company_type','in',('person'))]}"	
+												/>
 
 
-					<field name="vspace"		/>
+					<field name="vspace"/>
+
+					<field name="x_series"				attrs = "{'invisible':[('x_my_company','in',(False))]}"		/>
 
 
+					<field name="vspace"/>
 
-					<field name="x_my_company" groups="openhealth.roots"	
-							attrs = "{'invisible':[('company_type','in',('person'))]}"	/>
-
-
-
-
-
-					<field name="vspace"		/>
-
-					<field name="x_series"			attrs = "{'invisible':[('x_my_company','in',(False))]}"		/>
-
-
-					<field name="vspace"		/>
-
-					<field name="x_authorization"			attrs = "{'invisible':[('x_my_company','in',(False))]}"		/>
+					<field name="x_authorization"		attrs = "{'invisible':[('x_my_company','in',(False))]}"		/>
 
 
 
 
-					<field name="vspace"		/>
+					<field name="vspace"/>
 
-					<field name="x_warning"			attrs = "{'invisible':[('x_my_company','in',(False))]}"		/>
-
-
+					<field name="x_warning"				attrs = "{'invisible':[('x_my_company','in',(False))]}"		/>
 
 
 
 
+					<field name="vspace"/>
+
+					<field  name="x_dni"/>
 
 
-<!--
-					<field  name="x_dni"	attrs = "{
-														'required':[('company_type','in',('person'))], 
-														'invisible':[('company_type','in',('company'))]
-													}"	/>
-					<field name="x_firm"	attrs = "{'required':[('company_type','in',('company'))]}"	/>					
+
+					<field name="vspace"/>
+
+					<field name="x_firm"/>
 					
-					<field name="x_ruc"		attrs = "{'required':[('company_type','in',('company'))]}"	/>
--->
-
-					<field name="vspace"		/>
-
-					<field  name="x_dni"		/>
-
-
-
-					<field name="vspace"		/>
-
-					<field name="x_firm"		/>					
-					
-					<field name="x_ruc"			/>
-				
+					<field name="x_ruc"/>				
 				</xpath>
 
 
-<!--
-					<field name="email"		attrs = "{'required':[('company_type','in',('company'))]}"		/>
--->
+
+				<!-- Email --> 
 				<xpath expr="//field[@name='email']" position="replace">
 
-					<field name="vspace"		/>
+					<field name="vspace"/>
 
-					<field name="email"		required="0"	/>
+					<field name="email"		required="0"/>
 
-					<field name="vspace"		/>
+					<field name="vspace"/>
+
 				</xpath>
 
 
 
-
-<!--
-				<xpath expr="//field[@name='mobile']" position="replace">
-					<field name="mobile"	string="Teléfono 2"		/>
-				</xpath>
--->
-
-
-
-
-
+				<!-- Phone --> 
 				<xpath expr="//field[@name='phone']" position="replace">
 					<field name="phone"		required="0"		/>
 				</xpath>
@@ -231,91 +126,31 @@
 
 
 
+				<!-- Warning -->
+				<xpath expr="//field[@name='category_id']" 	position="replace">
 
+					<field name="date"/>
 
-<!-- Roots -->
-				<xpath expr="//field[@name='lang']" position="replace">
-					<field name="lang"	string="Idioma"  default="es_ES"	groups="openhealth.roots"		/>
-				</xpath>
+					<field name="vspace"/>
 
-
-				<xpath expr="//field[@name='category_id']" position="replace">
-<!--					
-					<field name="category_id" widget="many2many_tags" placeholder="Tags..."	groups="openhealth.roots"		/>
-					<field name="vspace"		/>
--->
-
-
-					<field name="date"		/>					
-
-					<field name="vspace"		/>
-
-					<field name="x_warning_purchase"			attrs = "{'invisible':[('x_my_company','in',(False))]}"		/>
+					<field name="x_warning_purchase"		attrs = "{'invisible':[('x_my_company','in',(False))]}"/>
 
 				</xpath>
 
 
 
 
-
-
+				<!-- Vip -->
 				<xpath expr="//field[@name='function']" position="replace">
-<!--
--->
-					<field name="x_id_code"		string="Nr Id"	/>
-
 
 					<field name="x_vip"		/>
 
-					<field name="vspace"		/>
-
-<!--
-					<field name="function"									groups="openhealth.roots"		/>
--->
-					<field name="function"						invisible="1"		/>
 				</xpath>
-
-
-
-<!--
-				<xpath expr="//field[@name='function']" position="before">
-				</xpath>
-
--->
-
-
-
-<!-- Quotation - Deprecated ! -->
-<!--
-				<notebook position="inside">
-					<page string="Cotizaciones">
-						<field name="x_quotation_ids">
-							<tree string="Quotations">										
-								<field  name="name"	/>
-								<field  name="date"	/>
-								<field name="image_ids"		string="Scans"	/> 
-							</tree>
-						</field>
-					</page>
-				</notebook>
--->
-
-
 
 
 
 			</field>
 		</record>
-
-<!--
--->
-
-
-
-
-
-
-
 
 
 
@@ -323,39 +158,22 @@
 
 <!-- TREE -->
 		<record model="ir.ui.view" id="base.view_partner_tree">
-
 			<field name="name">res.partner.tree</field>
 			<field name="model">res.partner</field>
 			<field name="arch" type="xml">
-			<!--	
-			<field name="priority" eval="1"/>
 
-				<tree default_order='create_date desc'>
-			-->
 
 				<tree string="Partner Tree">					
 			
-
 					<field name="name"/>
 
 					<field name="x_dni"/>
 
 					<field name="write_date"/>
 
-
-
-<!--
-					<field name="date"/>
-					<field name="id"/>
--->
-
 					<field name="lang"/>
 
 					<field name="property_supplier_payment_term_id"/>
-
-
-
-
 
 					<field name="property_product_pricelist"/>
 
@@ -367,10 +185,15 @@
 
 					<field name="create_date"/>
 
-
-
 					<field name="date"/>
+
+				</tree>
+			</field>
+		</record>
 <!--
+					<field name="date"/>
+					<field name="id"/>
+
 					<field name="x_vip"/>				
 					<field name="x_owner"/>				
 					<field name="x_sex"/>				
@@ -383,169 +206,6 @@
 					<field name="dob"/>
 					<field name="age"/>
 -->
-				</tree>
-			</field>
-		</record>
-
-
-
-
-
-
-<!-- ACTION -->
-		<record model="ir.actions.act_window" id="mail.action_contacts">
-
-			<field name="name">Contacts</field>
-
-			<field name="res_model">res.partner</field>
-			
-			<field name="view_type">form</field>
-			
-			<field name="view_mode">tree,form</field>
-			
-            <field name="domain">[]</field>
-
-            <field name="context">{}</field>
-
-
-            <field name="view_id" ref="base.view_partner_tree"/>
-
-
-			<field name="view_ids" eval="[			(5, 0, 0),
-												    (0, 0, {'view_mode': 'tree', 'view_id': ref('base.view_partner_tree')}),
-												    (0, 0, {'view_mode': 'form', 'view_id': ref('base.view_partner_form')}),
-											]
-										"/>
-
-
-			<!--
-												    (0, 0, {'view_mode': 'kanban', 'view_id': ref('base.view_partner_kanban')}),
-
-
-            <field name="domain">
-            	[
-					('category_id','=','staff'), 
-            	]
-            </field>
-
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="view_id" eval="False"/>			
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first partner
-				</p>
-			</field>
-			-->
-		</record>
-
-
-
-
-
-
-
-
-
-
-
-
-		<!-- Window List action -->
-		<record model="ir.actions.act_window" id="partner_list_action">
-			<field name="name">partners</field>
-			<field name="res_model">res.partner</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-			<!--
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="view_id" eval="False"/>			
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first partner
-				</p>
-			</field>
-			-->
-		</record>
-
-
-		<!-- Window List action -->
-		<record model="ir.actions.act_window" id="partner_inactive_list_action">
-			<field name="name">Partners Inactivos</field>
-			<field name="res_model">res.partner</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-
-			<field name="domain">[
-									('active', '=', False), 
-				]</field>
-
-			<!--
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="view_id" eval="False"/>			
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first partner
-				</p>
-			</field>
-			-->
-		</record>
-
-
-
-
-
-
-		<!-- Window List action -->
-<!--
-									('property_product_pricelist', '=', 'VIP'),
-									('property_product_pricelist', '=', '23'),
--->
-		<record model="ir.actions.act_window" id="partner_vip_list_action">
-			<field name="name">Pacientes Vip</field>
-			<field name="res_model">res.partner</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-
-
-        	<field name="domain" eval="[	('property_product_pricelist', '=', ref('pricelist_vip'))	]"/>														
-
-			<!--
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="view_id" eval="False"/>			
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first partner
-				</p>
-			</field>
-			-->
-		</record>
-
-
-
-
-
-
-
-
-
-		<!-- Window List action -->
-		<record model="ir.actions.act_window" id="partner_categories_list_action">
-			<field name="name">partners categories</field>
-			<field name="res_model">res.partner.category</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-			<!--
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="view_id" eval="False"/>			
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first partner
-				</p>
-			</field>
-			-->
-		</record>
-
-
-
 
 
 	</data>

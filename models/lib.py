@@ -1,27 +1,33 @@
 # -*- coding: utf-8 -*-
-
+#
 # 	lib.py
 #
 # 	Abstract, general purpose. 
 #	Can be Unit-tested. Is completely standard. 
-#
-# Gives service to all Users
+#	Gives service to all Users
 # 
-# Created: 			13 Aug 2018
-# Last up: 	 		17 Aug 2018
+# 	Created: 			13 Aug 2018
+# 	Last up: 	 		25 Aug 2018
 #
-
 import datetime
 import unicodedata
 
 
 
-
 #------------------------------------------------ Patient - Unidecode ---------------------------------------------------
+
+# Strip all accents - But keep Ñ
 def strip_accents(s):
-   return ''.join(c for c in unicodedata.normalize('NFD', s)
-                  if unicodedata.category(c) != 'Mn')
+	good_accents = {
+				    u'\N{COMBINING TILDE}',
+				    #u'\N{COMBINING CEDILLA}'
+	}
+	#return s 
+	return ''.join(c for c in unicodedata.normalize('NFD', s)
+	              if unicodedata.category(c) != 'Mn'	or 	c in good_accents)
 # strip_accents
+
+
 
 
 
@@ -56,18 +62,19 @@ def test_for_digits(self, token):
 
 
 # Name 
-def test_name(self, token):
-	if token != False:
-		nr_words = len(token.split())
+#def test_name(self, token):
+def test_for_one_last_name(self, last_name):
+	if last_name != False:
+		nr_words = len(last_name.split())
 		if nr_words == 1:
 			return {
 					'warning': {
 						'title': "Error: Introduzca los dos Apellidos.",
-						'message': token,
+						'message': last_name,
 					}}
 		else:
 			return 0
-# test_name
+# test_for_one_name
 
 
 

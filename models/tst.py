@@ -416,8 +416,8 @@ def create_order_pro_lines(self):
 # Reset 
 def reset_treatment(self):
 
-	print 
-	print 'Reset'
+	#print 
+	#print 'Reset'
 
 	# Consultation 
 	self.consultation_ids.unlink()

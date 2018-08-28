@@ -1,16 +1,12 @@
 # -*- coding: utf-8 -*-
 #
-#
 # 		*** RES PARTNER 
 # 
-# Created: 				26 Aug 2016
-# Last updated: 	 	21 Aug 2018 
+# 		Created: 			26 Aug 2016
+# 		Last updated: 	 	23 Aug 2018 
 #
-
 from openerp import models, fields, api
-
 import pat_vars
-
 import lib
 
 class Partner(models.Model):
@@ -18,66 +14,32 @@ class Partner(models.Model):
 	_order = 'write_date desc'
 
 
-# ----------------------------------------------------------- Deprecated ------------------------------------------------------
-
-
-
 
 
 # ----------------------------------------------------------- Indexed ------------------------------------------------------
-	x_dni = fields.Char(
-			"DNI", 	
-			index=True, 
-			required=False, 
-		)
-	
+	# Name 
 	name = fields.Char(
 			'Name', 
 			select=True,
 			index=True, 
 		)
 
-
-
-
-
-
-
-# ----------------------------------------------------------- QC ------------------------------------------------------
-
-	x_completeness = fields.Integer(
-			string="Completeness", 
+	# Dni 
+	x_dni = fields.Char(
+			"DNI", 	
+			index=True, 
+			required=False, 
 		)
-
-
-
-
-
-# ----------------------------------------------------------- Code ------------------------------------------------------
 	
-	x_id_code = fields.Char(
-			
-			#'Patient ID',
-			'Nr Historia Médica',
-			size=256, 
-
-
-			#default='55', 
-			#default=_get_default_team
-			#default=_get_default_id_code, 
-
-
-			#help='Patient Identifier provided by the Health Center',
-
-			#readonly=True, 
-			readonly=False, 
-		)
-
-
 
 
 
 # ----------------------------------------------------------- My Company ------------------------------------------------------
+
+	# My company 
+	x_my_company = fields.Boolean(
+			'Mi compañía ?', 
+		)
 
 
 	# Series 
@@ -85,43 +47,19 @@ class Partner(models.Model):
 			string='Serie', 
 		)
 
-
-
 	# Autorization 
 	x_authorization = fields.Char(
 			string='Autorización', 
 		)
-
-
-
 
 	# Warning Sales
 	x_warning = fields.Text(
 			'Condiciones de Venta', 
 		)
 
-
-
 	# Warning Purchase 
 	x_warning_purchase = fields.Text(
 			'Condiciones de Compra', 
-		)
-
-
-
-
-
-# ----------------------------------------------------------- Lang ------------------------------------------------------
-	@api.model
-	def _lang_get(self):
-		languages = self.env['res.lang'].search([])
-		return [(language.code, language.name) for language in languages]
-
-
-	lang = fields.Selection(
-			_lang_get, 
-			'Language',
-			help="", 
 		)
 
 
@@ -222,120 +160,30 @@ class Partner(models.Model):
 
 
 
-
-
-
 	# Only for foreign addresses
 	x_foreign = fields.Boolean(
 			string="Dirección en el extranjero", 
 		)
 
-	@api.onchange('x_foreign')
-	def _onchange_x_foreign(self):
-		#print 'jx'
-		#print 'On change foreign'
-		if self.x_foreign:
-			self.city = ""
 
 	x_address_foreign = fields.Text(
 			string=".", 
 		)
 
 
-
-# ----------------------------------------------------------- Validate - DNI RUC ------------------------------------------------------
-
-	# Test and validate
-	@api.onchange('x_dni')
-	def _onchange_x_dni(self):
-
-		print 'Gotcha !'
-
-		ret = lib.test_for_digits(self, self.x_dni)
-		
-		if ret != 0: 
-			return ret
-		
-		ret = lib.test_for_length(self, self.x_dni, 8)
-		
-		if ret != 0: 
-			return ret
+	# Vspace
+	vspace = fields.Char(
+			' ', 
+			readonly=True
+			)
 
 
-
-
-
-
-	# Test and validate
-	@api.onchange('x_ruc')
-	def _onchange_x_ruc(self):
-
-		print 'Gotcha !'
-		
-		ret = lib.test_for_digits(self, self.x_ruc)
-		
-		if ret != 0: 
-			return ret
-		
-		
-		ret = lib.test_for_length(self, self.x_ruc, 11)
-		
-		if ret != 0: 
-			return ret
-
-
-
-
-
-
-
-
-
-# ----------------------------------------------------------- On Changes ------------------------------------------------------
-	# Name 
-	@api.onchange('name')
-	def _onchange_name(self):
-		print 'jx'
-		print 'Change name'
-		
-		if self.name != False: 
-			print self.name
-			
-			#self.name = self.name.strip().upper()
-			name = self.name
-			name = name.strip().upper()
-			name = " ".join(name.split())			
-			self.name = name 
-
-			print self.name
-			print 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# ----------------------------------------------------------- Address ------------------------------------------------------
+	
 	# Address
 	x_address = fields.Char(
-
 			"Dirección",
+
 			compute='_compute_x_address', 
 		)
 
@@ -343,158 +191,14 @@ class Partner(models.Model):
 	#@api.depends('')
 	def _compute_x_address(self):
 		for record in self:
-
-			#com = record.order.x_my_company
 			if record.street != False and record.street2 != False and record.city != False:
-
-
-				#record.x_address = record.street + ' - ' + record.street2 + ' - ' + record.city
-				#record.x_address = record.street.title() + ' - ' + record.street2.title() + ' - ' + record.city.title()
 				record.x_address = record.street.title() + ' ' + record.street2.title() + ' - ' + record.city.title()
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	# Commons 
-	vspace = fields.Char(
-			' ', 
-			readonly=True
-			)
-
-
-
-	x_my_company = fields.Boolean(
-			'Mi compañía ?', 
-		)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	#'state_id': fields.many2one("res.country.state", 'State', ondelete='restrict'),
-	#'zip': fields.char('Zip', size=24, change_default=True),
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	#lang = fields.Selection(
-	#	_lang_get, 
-	#	'Language',
-	#	default='es_ES', 
-	#	help="If the selected language is loaded in the system, all documents related to this contact will be printed in this language. If not, it will be English."
-	#)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	# Function 
-	function = fields.Selection(
-
-			[	
-				('reception', 	'Plataforma'),
-				('cash', 		'Caja'),
-				('assistant', 	'Asistente Medico'),
-				('physician', 	'Medico'),
-				('inventory', 	'Almacen'),
-				('hc', 			'Personal'),
-				('marketing', 	'Marketing'),
-				('accounting', 	'Contabilidad'),
-				('manager', 	'Gerente'),
-				('lawyer', 		'Abogado'),
-			], 
-		)
-
-
-
-
-
-	# Pricelist 
-	#property_product_pricelist = fields.Many2one(
-	#		'product.pricelist',
-	#		'Sale Pricelist - jx',
-	#		#compute='_compute_ppl', 
-	#	)
-
-	#@api.multi
-	#@api.depends('x_card')
-	#def _compute_ppl(self):
-	#	print 'jx'
-	#	print 'Compute PPL'
-	#	for record in self:
-	#		record.property_product_pricelist = False
-
-
-
-
-
-
-
+# ----------------------------------------------------------- Vip ------------------------------------------------------
 	# Vip 
 	x_vip = fields.Boolean(
 		string="VIP",
@@ -503,64 +207,40 @@ class Partner(models.Model):
 		compute='_compute_x_vip', 
 	)
 
-
 	@api.multi
 	#@api.depends('x_card')
 	def _compute_x_vip(self):
 
-		#print 'jx'
-		#print 'Compute Partner x Vip'
+		print
+		print 'Compute  - Partner - Vip'
 
+		# Does he have a Vip card ?
 		for record in self:
-
 			x_card = record.env['openhealth.card'].search([
 															('patient_name','=', record.name),
 														],
 														#order='appointment_date desc',
 														limit=1,)
-			
 			if x_card.name != False:
 				record.x_vip = True 
 				#pricelist_name = 'VIP'
-
 				record.action_ppl_vip()
-
 			else:
 				record.x_vip = False 
 				#pricelist_name = 'Public Pricelist'
-				
 				record.action_ppl_public()
 
 
 
-			# Pricelist 
-			#pricelist = self.env['product.pricelist'].search([
-			#															('name','=', pricelist_name),
-			#													],
-															#order='appointment_date desc',
-			#												limit=1,)
-			#print pricelist
-			#print record.property_product_pricelist
-			#record.property_product_pricelist = pricelist
-			#print record.property_product_pricelist
 
+# ----------------------------------------------------------- Pricelist ------------------------------------------------------
 
-
-
-
-
-
-
-# ----------------------------------------------------------- Actions ------------------------------------------------------
-
-
-	# PPL 
+	# PPL - Public 
 	@api.multi
 	def action_ppl_public(self):  
 
-		print 'jx'
-		print 'PPL Public'
-
+		#print 'jx'
+		#print 'PPL Public'
 
 		pricelist_name = 'Public Pricelist'
 
@@ -571,19 +251,18 @@ class Partner(models.Model):
 															],
 														#order='appointment_date desc',
 														limit=1,)
-
-
 		self.property_product_pricelist = pricelist
+	# action_ppl_public
 
 
-
-
-	# PPL 
+	# PPL - Vip 
 	@api.multi
 	def action_ppl_vip(self):  
 
-		pricelist_name = 'VIP'
+		#print 'jx'
+		#print 'PPL Vip'
 
+		pricelist_name = 'VIP'
 
 		# Pricelist 
 		pricelist = self.env['product.pricelist'].search([
@@ -591,8 +270,8 @@ class Partner(models.Model):
 															],
 														#order='appointment_date desc',
 														limit=1,)
-
 		self.property_product_pricelist = pricelist
+	# action_ppl_vip
 
 
 
@@ -600,57 +279,46 @@ class Partner(models.Model):
 
 
 
+# ----------------------------------------------------------- On Changes ------------------------------------------------------
+# ----------------------------------------------------------- Validate - DNI RUC ------------------------------------------------------
+
+	# Ternary If 
+	#isApple = True if fruit == 'Apple' else False
+
+	# Name 
+	@api.onchange('name')
+	def _onchange_name(self):
+		if self.name != False: 
+			name = self.name.strip().upper()
+			self.name = " ".join(name.split())			
 
 
-	# Removem
-	@api.multi
-	def remove_myself(self):  
+	# Foreign 
+	@api.onchange('x_foreign')
+	def _onchange_x_foreign(self):
+		self.city = "" if self.x_foreign == True else 'don'
+
+
+	# Dni - Test - For Digits and Length
+	@api.onchange('x_dni')
+	def _onchange_x_dni(self):
+
+		ret = lib.test_for_digits(self, self.x_dni)		
+		return ret if ret != 0 else 'don'
+
+		ret = lib.test_for_length(self, self.x_dni, 8)
+		return ret if ret != 0 else 'don'
+
+
+	# Ruc - Test - For Digits 
+	@api.onchange('x_ruc')
+	def _onchange_x_ruc(self):
 		
-		#self.street = 'a'
-		#self.x_dni = 'a'
-		#self.email = 'a'
-		#self.phone = 'a'
+		ret = lib.test_for_digits(self, self.x_ruc)		
+		return ret if ret != 0 else 'don'
 
-
-		self.sale_order_ids.unlink()
-
-		self.invoice_ids.unlink()
-
-
-
-		#self.purchase_order_count = 0 
-
-		
-		self.unlink()
-
-
-
-
-
-
-	x_autofill = fields.Boolean(
-		string="Autofill",
-		default=False, 
-	)
-
-	@api.onchange('x_autofill')
-	
-	def _onchange_x_autofill(self):
-
-		if self.x_autofill == True:
-
-			self.street = 'x'
-			self.street2 = 'x'
-			self.city = 'x'
-			self.country_id = 175
-			self.x_dni = 'x'
-			self.email = 'x'
-			self.phone = 'x'
-
-
-			for invoice in self.invoice_ids:
-				invoice.state = 'draft'
-
+		ret = lib.test_for_length(self, self.x_ruc, 11)		
+		return ret if ret != 0 else 'don'
 
 
 
@@ -665,90 +333,19 @@ class Partner(models.Model):
 		#print vals
 		#print 
 	
+		# Compact and Uppercase Name
+		if 'name' in vals:
 
-
-		# Here 
-		key = 'name'
-		if key in vals:
-
-			# Compact Name
-			#print vals[key]
-			name = vals[key]
-			name = name.strip().upper()
-			name = " ".join(name.split())			
-			vals[key] = name 
-			#print vals[key]
-
-
+			#  Name to upper. And strips beg and end spaces. 
+			print 'Compact'
+			name = vals['name']
+			name = name.strip().upper()			# Uppercase 
+			name = " ".join(name.split())		# Compact - Strip beginning, inside and ending extra spaces
+			vals['name'] = name 
 
 
 		# Put your logic here 
 		res = super(Partner, self).create(vals)
 		# Put your logic here 
-
-
-
-
-		# Create Patient
-		#print 'Create Patient'
-		#print name  
-		#print res 
-		#name = res.name 
-		#print name  
-		#patient = self.env['oeh.medical.patient'].create({
-		#													'name': name, 
-		#	})
-		#print patient
-		#print patient.name 
-
-
-
-
 		return res
-
 	# CRUD - Create 
-
-
-
-
-
-
-# Write 
-	@api.multi
-	def write(self,vals):
-
-		#print 
-		#print 'CRUD - Partner - Write'
-		#print 
-		#print vals
-		#print 
-		#print 
-
-
-
-		#if vals['name'] != False: 
-		#	vals['name'] = vals['name'].strip().upper()
-		#	print vals['name']
-
-
-
-		#Write your logic here
-		res = super(Partner, self).write(vals)
-		#Write your logic here
-
-
-		#print self.name 
-		#name = self.name
-		#self.name = self.name.upper()
-		#self.name = name.upper()
-
-
-
-		#print self.name 
-		#print 
-
-
-
-		return res
-	# CRUD - Write 
-

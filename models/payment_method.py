@@ -2,20 +2,18 @@
 #
 # 	PaymentMethod 
 #
+# 	Created: 			26 Aug 2016
+# 	Last up: 	 		26 Aug 2018
+#
 from openerp import models, fields, api
 
-
-#from . import ord_vars
 from . import pm_vars
-
 
 class PaymentMethod(models.Model):
 	
 	#_inherit='openhealth.sale_document'
+
 	_name = 'openhealth.payment_method'
-
-
-
 
 
 # ----------------------------------------------------------- Admin - Editable ------------------------------------------------------
@@ -38,23 +36,12 @@ class PaymentMethod(models.Model):
 	# For Admin Editing 
 	@api.multi
 	def state_force(self):  
-
-		#print 
-		#print 'PM - State Force'
-		#print self.state
-
 		if self.state == 'done': 
-			#print 'Gotcha !'
 			self.editable = True
 			self.confirmed = False
-
 		elif self.state == 'editable': 
 			self.editable = False
 			self.confirmed = True
-
-		
-
-
 
 
 # ----------------------------------------------------------- Locked ------------------------------------------------------
@@ -62,14 +49,10 @@ class PaymentMethod(models.Model):
 	# States 
 	READONLY_STATES = {
 		'draft': 		[('readonly', False)], 
-
 		'sale': 		[('readonly', False)], 
-
 		'done': 		[('readonly', True)], 	
-
 		'editable': 	[('readonly', False)], 	
 	}
-
 
 
 	# Lines 
@@ -87,29 +70,16 @@ class PaymentMethod(models.Model):
 			string = 'Total a pagar', 
 			required=True, 
 
-			states=READONLY_STATES, 
-			
-			#states={	
-			#		'draft': [('readonly', False)], 
-			#		'sale': [('readonly', False)], 
-			#		'done': [('readonly', True)], 
-			#	}, 
+			states=READONLY_STATES, 			
 		)
 
 
 	# Saledoc 
 	saledoc = fields.Selection(
 			string="Tipo", 
-
 			selection=pm_vars._sale_doc_type_list, 
-			
-			states=READONLY_STATES, 
 
-			#states={	
-			#		'draft': [('readonly', False)], 
-			#		'sale': [('readonly', False)], 
-			#		'done': [('readonly', True)], 
-			#	}, 
+			states=READONLY_STATES, 
 		)
 
 
@@ -117,6 +87,7 @@ class PaymentMethod(models.Model):
 	# DNI 
 	dni = fields.Char(
 			'DNI', 
+
 			states=READONLY_STATES, 
 		)
 
@@ -124,6 +95,7 @@ class PaymentMethod(models.Model):
 	# Firm 
 	firm = fields.Char(
 			'Razón social',
+
 			states=READONLY_STATES, 
 		)
 
@@ -131,9 +103,9 @@ class PaymentMethod(models.Model):
 	# Ruc
 	ruc = fields.Char(
 			'Ruc', 
+
 			states=READONLY_STATES, 
 		)
-
 
 
 
@@ -153,8 +125,6 @@ class PaymentMethod(models.Model):
 			record.name = 'PA-' + str(record.id).zfill(6)
 
 
-
-
 	# state 
 	state = fields.Selection(
 			selection = [
@@ -172,20 +142,14 @@ class PaymentMethod(models.Model):
 	@api.multi
 	#@api.depends('state')
 	def _compute_state(self):
-
-		print 
-		print 'Compute State'
-
+		#print 
+		#print 'Compute State'
 		for record in self:
-
 			record.state = 'draft'
-
 			if record.balance == 0.0		and		record.saledoc != False:
 				record.state = 'sale'
-
 			if record.confirmed:
 				record.state = 'done'
-
 			if record.editable:
 				record.state = 'editable'
 
@@ -198,35 +162,27 @@ class PaymentMethod(models.Model):
 		)
 
 
-
 	# Nr Payments
 	nr_pm = fields.Char(
 			default=2, 
 		)
 
 
-
-
-
-
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 	# go_back
 	@api.multi 
 	def go_back(self):
-
-		print 
-		print 'PM - Go Back'
+		#print
+		#print 'PM - Go Back'
 
 		self.confirmed = True 
-
-		# Change Order
+		# Order
 		self.order.state = 'sent'
 		self.order.x_dni = self.dni
 		self.order.x_ruc = self.ruc
 
 		return self.order.open_myself() 
 	# go_back
-
 
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
@@ -240,14 +196,12 @@ class PaymentMethod(models.Model):
 			readonly=True, 
 		)
 
-
 	# Date created 
 	date_created = fields.Datetime(
 			string="Fecha", 
 			required=True, 
 			#states=READONLY_STATES, 
 		)
-
 
 	# Partner 
 	partner = fields.Many2one(
@@ -257,14 +211,11 @@ class PaymentMethod(models.Model):
 			readonly=True, 
 		)
 
-
 	# Vspace 
 	vspace = fields.Char(
 			' ', 
 			readonly=True
 		)
-
-
 
 
 # ----------------------------------------------------------- Onchanges ------------------------------------------------------
@@ -296,9 +247,6 @@ class PaymentMethod(models.Model):
 
 
 # ----------------------------------------------------------- CRUD ------------------------------------------------------
-
-	# Updates Partner 
-
 	# Write 
 	@api.multi
 	def write(self,vals):
@@ -306,7 +254,6 @@ class PaymentMethod(models.Model):
 		print
 		print 'Payment Method  - Write'
 		#print vals
-
 
 		# Update Partner - Dni, Ruc, Firm 
 		if 'dni' in vals: 
@@ -320,7 +267,6 @@ class PaymentMethod(models.Model):
 		if 'firm' in vals: 
 			firm = vals['firm']
 			self.partner.x_firm = firm 
-
 
 		#Write your logic here
 		res = super(PaymentMethod, self).write(vals)

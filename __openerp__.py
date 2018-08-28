@@ -14,7 +14,7 @@
 
 	'description': """
 
-		23 Aug 2018
+		27 Aug 2018
 
 		Fulcrum 
 		
@@ -32,13 +32,13 @@
 
 
 
-		EMR - Min - Docean - Github - Travis - Coverage - Proliant - User Stories - Cron Pg Dump - Unit Testing - Less but Better - Statistical - Machine Learning - 
-		Object Oriented - Fulcrum - Coverage Testing \n
+		EMR - Min - Docean - Github - Travis - Coverage - Proliant - User Stories - Cron Pg Dump - Unit Testing - Less but Better 
+		- Statistical - Machine Learning - Object Oriented - Fulcrum - Coverage Testing \n
 
-		Deprecated: Ooor - Testcafe - Auto Backup
+		Deprecated: Ooor, Testcafe, Auto Backup. 
 
 		Created: 	 	11 Sep 2016
-		Last up: 		25 Jun 2018 
+		Last up: 		24 Aug 2018 
 
 		---
 
@@ -419,6 +419,7 @@
 
 		# Partners
 		'views/partners/partner.xml',
+		'views/partners/partner_actions.xml',
 
 
 		# Appointments
@@ -522,7 +523,7 @@
 		# Patients - 2 
 		'views/patients/patient_personal.xml',
 		'views/patients/patient_control_docs.xml',
-		'views/patients/patient_appointments.xml',
+		#'views/patients/patient_appointments.xml',
 
 		# Appointments - 2
 		'views/appointments/calendar.xml',

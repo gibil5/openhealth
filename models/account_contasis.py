@@ -20,6 +20,14 @@ class AccountContasis(models.Model):
 
 
 
+# ----------------------------------------------------------- Test ------------------------------------------------------
+
+	test_target = fields.Boolean(
+			string="Test Target", 
+		)
+
+
+
 # ----------------------------------------------------------- Relational ------------------------------------------------------
 
 	# Account Lines 
@@ -111,9 +119,7 @@ class AccountContasis(models.Model):
 	# Update
 	@api.multi
 	def update(self):  
-
-		print
-		print 'Update'
+		print 'Account - Update'
 
 
 		# Clear 

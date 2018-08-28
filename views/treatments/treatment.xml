@@ -1097,11 +1097,15 @@ Fields
 
 
 
-
-							<group>
+<!--
+							<group  groups="openhealth.roots"	>
+-->
+							<group 	>
 <!--
 									groups="openhealth.roots"
 									name="test_integration" 
+
+									groups="openhealth.roots"									
 -->
 
 
@@ -1114,23 +1118,19 @@ Fields
 									
 									string="Treat" 
 
-									groups="openhealth.roots"									
 								/>
 
 
 								<!-- Test - Apps --> 
 <!--
--->
 								<button 
 									type="object" 
 									class="oe_highlight"
-									
 									name="test_case_two" 
-									
 									string="App" 
-
 									groups="openhealth.roots"									
 								/>
+-->
 
 
 
@@ -1142,8 +1142,6 @@ Fields
 									name="test_case_reports" 
 									
 									string="Repos" 
-
-									groups="openhealth.roots"									
 								/>
 
 
@@ -1155,16 +1153,8 @@ Fields
 									
 									name="test_case_objs" 
 									
-									string="Objs" 
-
-									groups="openhealth.roots"									
+									string="Objs" 								
 								/>
-
-
-
-
-
-
 
 
 

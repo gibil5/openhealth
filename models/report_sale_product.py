@@ -9,12 +9,16 @@ import account_funcs as acc_funcs
 #import resap_funcs
 
 class ReportSaleProduct(models.Model):
-	#_inherit = 'openhealth.report'
-	
-	#_inherit = 'openhealth.report.sale'
 	
 	_name = 'openhealth.report.sale.product'
 	
+
+
+# ----------------------------------------------------------- Test ------------------------------------------------------
+
+	test_target = fields.Boolean(
+			string="Test Target", 
+		)
 
 
 
@@ -88,8 +92,8 @@ class ReportSaleProduct(models.Model):
 	#def update_report(self):  
 	def update(self):  
 
-		print
-		print 'Update report'
+		print 'Report Sale Product - Update'
+
 
 		# Clean 
 		self.order_line_ids.unlink()

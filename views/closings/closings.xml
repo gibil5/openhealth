@@ -65,6 +65,8 @@
 							<group>
 			                    <field name="name"/>
 			                    <field name="date"/>
+			
+			                    <field name="test_target"/>
 							</group>
 							<group>
 			                    <field name="total"/>
@@ -158,6 +160,8 @@
 				<tree string="Cierres de caja"  default_order='date desc'>
 					
                     <field name="name"/>
+
+                    <field name="test_target"/>
 
                     <field name="total_cash"/>
 

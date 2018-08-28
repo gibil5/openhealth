@@ -98,21 +98,16 @@ class MediaLine(models.Model):
 	# Update Fields
 	@api.multi
 	def update_fields(self):  
-
 		#print
 		#print 'Update Fields - Histo'
 
-
 		# Percentages
 		if self.total != 0: 
-
 			self.percentage = (  float(self.count) / float(self.total)  ) * 100
-
 
 
 		# Name
 		if self.name in self._h_name: 
-
 			self.name_sp = self._h_name[self.name]
 
 

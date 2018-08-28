@@ -16,6 +16,14 @@ class Closing(models.Model):
 	
 
 
+# ----------------------------------------------------------- Test ------------------------------------------------------
+
+	test_target = fields.Boolean(
+			string="Test Target", 
+		)
+
+
+
 # ----------------------------------------------------------- Dates ------------------------------------------------------
 	
 	# Dates
@@ -489,7 +497,6 @@ class Closing(models.Model):
 	@api.multi
 	def update(self):  
 
-		print
 		print 'Closing - Update'
 
 		self.update_totals()

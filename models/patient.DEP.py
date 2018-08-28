@@ -4,32 +4,211 @@
 
 
 
-# ----------------------------------------------------------- Tmp ------------------------------------------------------
+# ----------------------------------------------------------- On Changes ------------------------------------------------------
 
-	x_nr_quick_hands = fields.Integer()
-	
-	x_nr_quick_body_local = fields.Integer()
-	
-	x_nr_quick_face_local = fields.Integer()
+	# Ternary If 
+	#isApple = True if fruit == 'Apple' else False
 
-	x_nr_quick_cheekbones = fields.Integer()
-	
-	x_nr_quick_face_all = fields.Integer()
-	
-	x_nr_quick_face_all_hands = fields.Integer()
-	
-	x_nr_quick_face_all_neck = fields.Integer()
-	
-	x_nr_quick_neck = fields.Integer()
-	
-	x_nr_quick_neck_hands = fields.Integer()
 
-	x_service_quick_ids = fields.One2many(
-			'openhealth.service.quick', 
-			'patient', 
+	# Last and First Names
+	
+	# Assign - Name 
+	@api.onchange('x_last_name', 'x_first_name')
+	def _onchange_x_last_name(self):
+		self.name = lib.strip_accents(self.x_last_name.upper() + ' ' + self.x_first_name) if self.x_last_name and self.x_first_name else 'don'
+		#if self.x_last_name and self.x_first_name:
+		#	self.name = lib.strip_accents(self.x_last_name.upper() + ' ' + self.x_first_name)
+
+
+	# Test - Must have two or more last names 
+	@api.onchange('x_last_name')
+	def _onchange_x_last_name_test(self):
+		return lib.test_for_one_last_name(self, self.x_last_name) if self.x_last_name else 'don'
+		#if self.x_last_name:	
+		#	ret = lib.test_for_one_last_name(self, self.x_last_name)			
+		#	return ret
+
+
+	# Street2 ?
+	@api.onchange('street2_char')
+	def _onchange_street2_char(self):
+		self.street2 = self.street2_char
+
+
+
+	# Zip  Street2
+	@api.onchange('street2_sel')
+	def _onchange_street2_sel(self):
+		self.street2 = pat_vars.zip_dic_inv[self.street2_sel]
+		self.zip = self.street2_sel
+
+	# Street 
+	@api.onchange('street')
+	def _onchange_street(self):
+		self.street = self.street.strip().title() if self.street != False else 'don'
+		#if self.street != False: 
+		#	self.street = self.street.strip().title()
+
+	# Email 
+	@api.onchange('email')
+	def _onchange_email(self):
+		self.email = self.email.strip().lower() if self.email != False else 'don'
+		#if self.email != False: 
+		#	self.email = self.email.strip().lower()
+
+
+	# Phone 
+	@api.onchange('phone_3')
+	def _onchange_phone_3(self):
+		return lib.test_for_digits(self, self.phone_3) if ret != 0 else 'don'
+		#ret = lib.test_for_digits(self, self.phone_3)
+		#if ret != 0: 
+		#	return ret
+
+
+# -----------------------------------------------------------  DNI and RUC ------------------------------------------------------
+
+	# Test DNI 
+	@api.onchange('x_dni')
+	def _onchange_x_dni(self):
+		# For Digits 
+		ret = lib.test_for_digits(self, self.x_dni)
+		if ret != 0: 
+			return ret
+		# For Length 
+		ret = lib.test_for_length(self, self.x_dni, 8)
+		if ret != 0: 
+			return ret
+
+
+	# Test RUC
+	@api.onchange('x_ruc')	
+	def _onchange_x_ruc(self):
+		# For Digits 
+		ret = lib.test_for_digits(self, self.x_ruc)
+		if ret != 0: 
+			return ret
+		# For Length 
+		ret = lib.test_for_length(self, self.x_ruc, 11)
+		if ret != 0: 
+			return ret
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Legacy ------------------------------------------------------
+
+	# Correction comment 
+	#@api.multi 
+	#def correct_comment(self):
+	#	print 'jx'
+	#	print 'Correct Comment'
+	 #	comment = 'legacy, corr hd'
+	#	self.comment = comment
+	
+
+
+
+# ----------------------------------------------------------- Deprecated ------------------------------------------------------
+
+	# Dictionary - For Reports 
+	#_dic = {
+	#			'Male':		'Masculino', 
+	#			'Female':	'Femenino', 
+	#			'none':		'Ninguno', 
+	#			'':			'', 
+	#		}
+
+
+# ----------------------------------------------------------- Activate ------------------------------------------------------
+	# Activate Patient 
+	@api.multi 
+	def activate_patient(self):
+
+		# Init 
+		self.active = True
+		self.partner_id.active = True
+
+		# Treatments
+ 		#treatments = self.env['openhealth.treatment'].search([
+		#														('patient', '=', self.name), 
+		#												],
+															#order='write_date desc',
+															#limit=1,
+		#												)
+ 		#for treatment in treatments: 
+ 		#	treatment.active = True
+
+		# Conter Increase 
+		name_ctr = 'emr'
+ 		counter = self.env['openhealth.counter'].search([
+																('name', '=', name_ctr), 
+														],
+															#order='write_date desc',
+															limit=1,
+														)
+ 		counter.increase()
+ 	# activate_patient
+
+
+# ----------------------------------------------------------- Update Date Record  ------------------------------------------------------
+
+	# Dates 
+	@api.multi 
+	def update_date_record(self):
+		print
+		print 'Update - Date Record'
+		print self.create_date
+		print self.x_date_record
+		if self.x_date_record == False: 
+			self.x_date_record = self.create_date
+			print 'Updated !'
+			print 
+	# update_date_record
+
+
+
+
+# ----------------------------------------------------------- Clear Apps ------------------------------------------------------
+
+	# Clear App
+	@api.multi 
+	def clear_appointments(self):
+		
+		print
+		print 'Clear Appointments'
+
+		print self.appointment_ids
+		self.appointment_ids.unlink()
+
+
+
+
+
+# ----------------------------------------------------------- Active Treatment ------------------------------------------------------
+
+	# Active Treatment 
+	treatment_active = fields.Many2one(
+			'openhealth.treatment', 
+			'Tratamiento Activo', 
+			#domain = [
+			#			('patient', '=', name),	
+			#		],
 		)
 
-
+	# Clear App
+	@api.multi 
+	def update_treatment_active(self):
+		print
+		print 'Sincronizar'
+		return {
+				'domain': {'treatment_active': [
+													('patient', '=', self.name),
+							]},
+			}
 
 
 
@@ -528,5 +707,23 @@
 		return res
 
 	# CRUD - Write 
+
+
+
+
+	# Write - Last 
+	@api.multi
+	def write(self,vals):
+
+		#Write your logic here
+		res = super(Patient, self).write(vals)
+		#Write your logic here
+
+		return res
+
+	# CRUD - Write 
+
+
+
 
 

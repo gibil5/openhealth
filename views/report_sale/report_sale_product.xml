@@ -40,8 +40,9 @@
 					<group	string="Venta de Productos"	>
 						<group>
 		                    <field name="name"/>
-
 		                    <field name="write_date"/>
+
+							<field name="test_target"/>
 						</group>
 						<group>
 		                    <field name="total_qty"/>
@@ -158,6 +159,8 @@
 
 
                     <field name="name"	 				/>
+
+                    <field name="test_target"/>
 <!--
                     <field name="date"/>
 -->

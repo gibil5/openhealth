@@ -2,6 +2,8 @@
 #
 # 	Recommendation 
 # 
+# 	Created: 			       2016
+# 	Last up: 	 		27 Aug 2018
 #
 from openerp import models, fields, api
 
@@ -10,63 +12,73 @@ class recommendation(models.Model):
 	_name = 'openhealth.recommendation'
 	
 
+
+
+# ---------------------------------------------- Fields --------------------------------------------------------
+
 	name = fields.Char(
-			string="Recomendacion #"
+			#string="Recomendacion #", 
+			string="Recomendacion", 
+
+			compute='_compute_name', 
 		)
+
+	@api.multi
+	def _compute_name(self):
+		for record in self:
+			record.name = 'RE-' + str(record.id).zfill(6)
+
+
 
 	treatment = fields.Many2one(
 			'openhealth.treatment',		
 			readonly=True, 				
 			ondelete='cascade', 
-			)
+		)
 
 
 
 
-# ---------------------------------------------- Create Service - product --------------------------------------------------------
+# ---------------------------------------------- Create Service - Product --------------------------------------------------------
 
+	# Product 
 	@api.multi
 	def create_service_product(self):  
 
+		print 
+		print 'Create Service Product'
+
+		# Init 
 		patient_id = self.treatment.patient.id
 		physician_id = self.treatment.physician.id
 		treatment_id = self.treatment.id 
-		
-		
-		laser = 'laser_vip'
+		#laser = 'laser_vip'
 		x_treatment = False		
 		zone = False			
 		pathology = ''
 		
-
 		return {
 				'type': 'ir.actions.act_window',
 				'name': ' New Service Current - product', 
-
 				'res_model': 'openhealth.service.product',		
-
 				#'res_id': consultation_id,
 				"views": [[False, "form"]],
 				#'view_type': 'form',
 				'view_mode': 'form',	
 				'target': 'current',
-
 				'flags': 	{
 								'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 								#'form': {'action_buttons': False, }
 							},
-
 				'context': {							
-
 								'default_patient': patient_id,
 								'default_physician': physician_id,
-								'default_treatment': treatment_id,
-								
 								'default_zone': zone,
 								'default_pathology': pathology,
 								'default_x_treatment': x_treatment,
-
 								#'default_laser': laser,							
+
+								'default_treatment': treatment_id,
 							}
 				}
 	# create_service_product
@@ -74,58 +86,42 @@ class recommendation(models.Model):
 
 
 
+# ---------------------------------------------- Create Service - Vip --------------------------------------------------------
 
+	# Vip 
+	#@api.multi
+	#def create_service_vip(self):  
 
-
-
-
-# ---------------------------------------------- Create Service - vip --------------------------------------------------------
-
-	@api.multi
-	def create_service_vip(self):  
-
-
-		patient_id = self.treatment.patient.id
-		physician_id = self.treatment.physician.id
-		treatment_id = self.treatment.id 
+		# Init 
+	#	patient_id = self.treatment.patient.id
+	#	physician_id = self.treatment.physician.id
+	#	treatment_id = self.treatment.id 
+	#	x_treatment = False		
+	#	zone = False			
+	#	pathology = ''
 		
-		
-		#laser = 'laser_vip'
-		x_treatment = False		
-		zone = False			
-		pathology = ''
-		
-
-		return {
-				'type': 'ir.actions.act_window',
-				'name': ' New Service Current - Vip', 
-
-				'res_model': 'openhealth.service.vip',		
-
+	#	return {
+	#			'type': 'ir.actions.act_window',
+	#			'name': ' New Service Current - Vip', 
+	#			'res_model': 'openhealth.service.vip',		
 				#'res_id': consultation_id,
-				"views": [[False, "form"]],
+	#			"views": [[False, "form"]],
 				#'view_type': 'form',
-				'view_mode': 'form',	
-				'target': 'current',
-
-				'flags': 	{
-								'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+	#			'view_mode': 'form',	
+	#			'target': 'current',
+	#			'flags': 	{
+	#							'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 								#'form': {'action_buttons': False, }
-							},
-
-				'context': {							
-
-								'default_patient': patient_id,
-								'default_physician': physician_id,
-								'default_treatment': treatment_id,
-								
-								'default_zone': zone,
-								'default_pathology': pathology,
-								'default_x_treatment': x_treatment,
-
-								#'default_laser': laser,							
-							}
-				}
+	#						},
+	#			'context': {							
+	#							'default_patient': patient_id,
+	#							'default_physician': physician_id,
+	#							'default_treatment': treatment_id,
+	#							'default_zone': zone,
+	#							'default_pathology': pathology,
+	#							'default_x_treatment': x_treatment,					
+	#						}
+	#			}
 	# create_service_vip
 
 
@@ -133,88 +129,41 @@ class recommendation(models.Model):
 
 
 
-# ---------------------------------------------- Create Service - quick --------------------------------------------------------
+# ---------------------------------------------- Create Service - Quick --------------------------------------------------------
 
+	# Quick 
 	@api.multi
 	def create_service_quick(self):  
 
-
+		# Init 
 		patient_id = self.treatment.patient.id
 		physician_id = self.treatment.physician.id
-
-
-		# Quick 
-		#nr_hands = self.treatment.nr_quick_hands
-		#nr_body_local = self.treatment.nr_quick_body_local
-		#nr_face_local = self.treatment.nr_quick_face_local
-
-		#nr_cheekbones = self.treatment.nr_quick_cheekbones
-		#nr_face_all = self.treatment.nr_quick_face_all
-		#nr_face_all_hands = self.treatment.nr_quick_face_all_hands
-
-		#nr_face_all_neck = self.treatment.nr_quick_face_all_neck
-		#nr_neck = self.treatment.nr_quick_neck
-		#nr_neck_hands = self.treatment.nr_quick_neck_hands
-
-
-
-
 		treatment_id = self.treatment.id 
-
 		laser = 'laser_quick'
-
-		#x_treatment = False	
 		x_treatment = 'laser_quick'	
-
 		zone = False	
-				
 		pathology = ''
 		
 		return {
 				'type': 'ir.actions.act_window',
 				'name': ' New Service Current - Laser quick', 
-
 				'res_model': 'openhealth.service.quick',				
 				#'res_id': consultation_id,
-
 				"views": [[False, "form"]],
-
 				#'view_type': 'form',
-				
 				'view_mode': 'form',	
-				
 				'target': 'current',
-
-
 				'flags': 	{
 								'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 								#'form': {'action_buttons': False, }
 							},
-
-
 				'context': {
-								# Quick 
-								#'default_nr_hands_i': nr_hands, 
-								#'default_nr_body_local_i': nr_body_local, 
-								#'default_nr_face_local_i': nr_face_local, 
-
-								#'default_nr_cheekbones': nr_cheekbones, 
-								#'default_nr_face_all': nr_face_all, 
-								#'default_nr_face_all_hands': nr_face_all_hands, 
-
-								#'default_nr_face_all_neck': nr_face_all_neck, 
-								#'default_nr_neck': nr_neck, 
-								#'default_nr_neck_hands': nr_neck_hands, 
-
-
 								'default_patient': patient_id,
 								'default_physician': physician_id,
 								'default_laser': laser,							
 								'default_zone': zone,
 								'default_pathology': pathology,
-
 								'default_x_treatment': x_treatment,
-
 								'default_treatment': treatment_id,
 							}
 				}
@@ -224,20 +173,9 @@ class recommendation(models.Model):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 # ---------------------------------------------- Create Service - Co2 --------------------------------------------------------
 
+	# Co2 
 	@api.multi
 	def create_service_co2(self):  
 		treatment_id = self.treatment.id 
@@ -249,31 +187,31 @@ class recommendation(models.Model):
 		return {
 				'type': 'ir.actions.act_window',
 				'name': ' New Service Current - Laser Co2', 
-
 				'res_model': 'openhealth.service.co2',				
 				#'res_id': consultation_id,
-
 				"views": [[False, "form"]],
 				#'view_type': 'form',
 				'view_mode': 'form',	
 				'target': 'current',
-
 				'flags': 	{
 							'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 							#'form': {'action_buttons': False, }
 							},
-
 				'context': {							
 							'default_treatment': treatment_id,
-
 							'default_laser': laser,
 							'default_zone': zone,
 							'default_pathology': pathology,
-
 							'default_x_treatment': x_treatment,
 							}
 				}
 	# create_service_co2
+
+
+
+
+
+
 
 
 

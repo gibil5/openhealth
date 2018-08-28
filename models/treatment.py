@@ -16,6 +16,7 @@ import tst
 import creates as cre
 
 import lib_obj
+import lib_rep
 
 
 class Treatment(models.Model):
@@ -23,6 +24,71 @@ class Treatment(models.Model):
 	_inherit = 'openhealth.process'	
 	_name = 'openhealth.treatment'
 	_order = 'write_date desc'
+
+
+
+
+# ----------------------------------------------------------- Recommendation ------------------------------------------------------
+
+	#recommendation_ids = fields.One2many(
+	#		'openhealth.recommendation', 
+	#		'treatment', 
+	#		string = "Recomendaciones", 
+	#	)
+
+	recommendation = fields.Many2one(
+			'openhealth.recommendation', 
+			string = "Recomendacion", 
+		)
+
+
+# ----------------------------------------------------------- Create Service  ------------------------------------------------------
+
+	# Create Service 
+	@api.multi
+	def create_service(self):
+
+		#print 
+		#print 'Open Service Selector'
+
+		treatment_id = self.id
+
+
+ 		if self.recommendation.name == False: 
+ 			#print 'Create'
+			self.recommendation = self.env['openhealth.recommendation'].create({
+																					'treatment': 	self.id, 	
+				})
+		
+		res_id = self.recommendation.id 
+
+		return {
+			# Mandatory 
+			'type': 'ir.actions.act_window',
+			'name': 'Open Consultation Current',
+			# Window action 
+
+			'res_id': res_id,
+
+			'res_model': 'openhealth.recommendation',
+			# Views 
+			"views": [[False, "form"]],
+			'view_mode': 'form',
+			'target': 'current',
+			#'view_id': view_id,
+			#"domain": [["patient", "=", self.patient.name]],
+			#'auto_search': False, 
+			'flags': {
+					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+					#'form': {'action_buttons': True, }
+					'form': {'action_buttons': False, }
+					},			
+			'context': {
+							'default_treatment': treatment_id,					
+					}
+		}
+	# create_service
+
 
 
 
@@ -43,16 +109,23 @@ class Treatment(models.Model):
 			treatment_id = self.id 
 			partner_id = self.partner_id.id
 
-			
+
+			caller = self 
+
+
 			# Objects 
-			#order = 	lib_obj.Object('order', 	'sale.order', 		'date_order', 		self)
-			order = 	lib_obj.Object('order', 	'sale.order', 		patient_id, partner_id, doctor_id, treatment_id, 	self)
+			#order = 	lib_obj.Object(	caller, 	'order', 	'sale.order', 		patient_id, 	partner_id, 	doctor_id, 	treatment_id)
+
+			#patient = 	lib_obj.Object(	caller, 	'patient', 	'oeh.medical.patient')
+			patient = 	lib_obj.Object(	caller, 	'patient', 	'oeh.medical.patient', 		False, False, doctor_id, False)
+
+
 
 
 			# All  
 			objs = [
-
-						order, 
+						#order, 
+						patient, 
 				]
 
 
@@ -75,6 +148,7 @@ class Treatment(models.Model):
 		
 		print 
 		print 'Test Case - Reports'
+		print 
 		
 		if self.patient.x_test: 
 			
@@ -83,16 +157,16 @@ class Treatment(models.Model):
 			
 
 			# Reports 
-			closing = 		lib_obj.Report('closing', 			'openhealth.closing', 				'date', 		self)
-			resap = 		lib_obj.Report('resap',	 			'openhealth.report.sale.product', 	'name', 		self)
-			management = 	lib_obj.Report('management', 		'openhealth.management', 			'date_begin', 	self)
-			marketing = 	lib_obj.Report('marketing', 		'openhealth.marketing', 			'date_begin', 	self)
-			account = 		lib_obj.Report('account.contasis', 	'openhealth.account.contasis', 		'date_begin', 	self)
-			state_of_acc = 	lib_obj.Report('state_of_acc', 		'openhealth.order.report.nex', 		'create_date', 	self)
+			closing = 			lib_rep.Report('closing', 			'openhealth.closing', 				'date', 		self)
+			resap = 			lib_rep.Report('resap',	 			'openhealth.report.sale.product', 	'name', 		self)
+			management = 		lib_rep.Report('management', 		'openhealth.management', 			'date_begin', 	self)
+			marketing = 		lib_rep.Report('marketing', 		'openhealth.marketing', 			'date_begin', 	self)
+			account = 			lib_rep.Report('account.contasis', 	'openhealth.account.contasis', 		'date_begin', 	self)
+			#state_of_acc = 		lib_rep.Report('state_of_acc', 		'openhealth.order.report.nex', 		'create_date', 	self)
 
-			#doctor_line = 		lib_obj.Report('doctor_line', 		'openhealth.management.doctor.line', 				'write_date', 		self)
-			family_line = 		lib_obj.Report('family_line', 		'openhealth.management.family.line', 				'write_date', 		self)
-			sub_family_line = 	lib_obj.Report('sub_family_line', 	'openhealth.management.sub_family.line', 			'write_date', 		self)
+			#doctor_line = 		lib_rep.Report('doctor_line', 		'openhealth.management.doctor.line', 				'write_date', 		self)
+			#family_line = 		lib_rep.Report('family_line', 		'openhealth.management.family.line', 				'write_date', 		self)
+			#sub_family_line = 	lib_rep.Report('sub_family_line', 	'openhealth.management.sub_family.line', 			'write_date', 		self)
 
 
 
@@ -105,11 +179,11 @@ class Treatment(models.Model):
 						marketing, 
 						account, 
 
-						state_of_acc, 
+						#state_of_acc, 
 
 						#doctor_line, 
-						family_line, 
-						sub_family_line, 
+						#family_line, 
+						#sub_family_line, 
 				]
 
 
@@ -172,10 +246,10 @@ class Treatment(models.Model):
 	# Three - Reset 
 	@api.multi 
 	def test_case_reset(self):
-		print 
-		print 'Test Case - Reset'
+		#print 
+		#print 'Test Case - Reset'
 		if self.patient.x_test: 
-			print 'Is a Tester'
+			#print 'Is a Tester'
 			tst.reset_treatment(self)
 		else: 
 			print 'Not a Tester'
@@ -707,11 +781,6 @@ class Treatment(models.Model):
 			string = "Consultas", 
 		)
 
-	recommendation_ids = fields.One2many(
-			'openhealth.recommendation', 
-			'treatment', 
-			string = "Recomendaciones", 
-		)
 
 	procedure_ids = fields.One2many(
 			'openhealth.procedure', 
@@ -1509,41 +1578,6 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Create Service  ------------------------------------------------------
-
-	# Create Service 
-	@api.multi
-	def create_service(self):
-
-		treatment_id = self.id
-
-		return {
-			# Mandatory 
-			'type': 'ir.actions.act_window',
-			'name': 'Open Consultation Current',
-			# Window action 
-			#'res_model': 'openhealth.consultation',
-			#'res_id': consultation_id,
-			#'res_model': 'openhealth.service',
-			'res_model': 'openhealth.recommendation',
-			# Views 
-			"views": [[False, "form"]],
-			'view_mode': 'form',
-			'target': 'current',
-			#'view_id': view_id,
-			#"domain": [["patient", "=", self.patient.name]],
-			#'auto_search': False, 
-			'flags': {
-					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-					#'form': {'action_buttons': True, }
-					'form': {'action_buttons': False, }
-					},			
-			'context':   {
-							#'default_consultation': consultation_id,
-							'default_treatment': treatment_id,					
-					}
-		}
-	# create_service
 
 
 

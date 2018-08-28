@@ -26,9 +26,15 @@ class Marketing(models.Model):
 
 	_name = 'openhealth.marketing'
 
-	#_order = 'create_date desc'
 	_order = 'date_begin asc,name asc'
 
+
+
+# ----------------------------------------------------------- Test ------------------------------------------------------
+
+	test_target = fields.Boolean(
+			string="Test Target", 
+		)
 
 
 
@@ -191,9 +197,9 @@ class Marketing(models.Model):
 	@api.multi
 	def update_sales(self):  
 
-		print
-		print 'Update Sales'
-		print 
+		#print
+		#print 'Update Sales'
+		#print 
 
 
 		# Clean Macros 
@@ -366,7 +372,7 @@ class Marketing(models.Model):
 			pat_line.update_nrs()
 
 
-		print 'Done !'
+		#print 'Done !'
 
 	# update_sales
 
@@ -383,9 +389,9 @@ class Marketing(models.Model):
 	# Recommendations
 	@api.multi  
 	def update_recos(self):  
-		print 
-		print 'Update Recos'
-		print 
+		#print 
+		#print 'Update Recos'
+		#print 
 
 
 		# Clean 
@@ -553,7 +559,7 @@ class Marketing(models.Model):
 			self.patient_reco_count = self.patient_reco_count + len(pat_line.reco_line)
 
 
-		print 'Done !'
+		#print 'Done !'
 	# update_recos
 
 
@@ -569,9 +575,9 @@ class Marketing(models.Model):
 	@api.multi
 	def update_vip_sales(self):  
 
-		print 
-		print 'Vip Sales'
-		print 
+		#print 
+		#print 'Vip Sales'
+		#print 
 
 		# Patient Lines 
 		for pl in self.patient_line: 
@@ -709,9 +715,9 @@ class Marketing(models.Model):
 	@api.multi
 	def build_cities(self):  
 
-		print 
-		print 'Build Cities'
-		print 
+		#print 
+		#print 'Build Cities'
+		#print 
 
 		# Create Collection
 
@@ -856,9 +862,9 @@ class Marketing(models.Model):
 	@api.multi
 	def build_districts(self):  
 
-		print 
-		print 'Build Districts'
-		print 
+		#print 
+		#print 'Build Districts'
+		#print 
 
 
 		# Create Collection
@@ -945,9 +951,9 @@ class Marketing(models.Model):
 	@api.multi
 	def build_media(self):  
 
-		print 
-		print 'Build Media'
-		print 
+		#print 
+		#print 'Build Media'
+		#print 
 
 
 		# Clear 
@@ -1018,9 +1024,9 @@ class Marketing(models.Model):
 	@api.multi
 	def build_histogram(self):  
 
-		print 
-		print 'Build Histogram'
-		print 
+		#print 
+		#print 'Build Histogram'
+		#print 
 
 
 		#input_arr = [15, 25, 26, 30, 44, 70]
@@ -1098,16 +1104,12 @@ class Marketing(models.Model):
 				line = self.histo_line.create({
 												'x_bin': x_bin, 
 												'idx': idx, 
-
 												'total': total, 
 												'total_m': self.sex_male, 
 												'total_f': self.sex_female, 
-
-
 												'count': count, 
 												'count_m': counts_m[idx], 
 												'count_f': counts_f[idx], 
-
 
 												'marketing_id': self.id, 
 						})
@@ -1462,9 +1464,9 @@ class Marketing(models.Model):
 	@api.multi
 	def set_stats(self):  
 
-		print 
-		print 'Set Stats'
-		print
+		#print 
+		#print 'Set Stats'
+		#print
 
 
 
@@ -1816,9 +1818,9 @@ class Marketing(models.Model):
 	@api.multi
 	def update_patients(self):  
 
-		print
-		print 'Update Patients'
-		print
+		#print
+		#print 'Update Patients'
+		#print
 
 		# Clear 
 		self.patient_line.unlink()
@@ -1836,42 +1838,26 @@ class Marketing(models.Model):
 		# Loop 
 		for patient in patients: 
 
-
+			# Create 
 			pat_line = self.patient_line.create({
 														'patient': patient.id, 
-														#'doctor': doctor.id, 
-
-
 
 														'date_create': patient.create_date,
 														'date_record': patient.x_date_record,
-
 														'sex': patient.sex, 
 														'dob': patient.dob, 
 														'age': patient.age, 
-
 														'first_contact': patient.x_first_contact, 
 														'education': patient.x_education_level, 
 														'vip': patient.x_vip, 
-														
 														'country': patient.country_id.name, 
 														'city': patient.city, 
 														'district': patient.street2, 
-
-
 														'function': patient.function, 
 
-
 														'marketing_id': self.id, 
-					})
-
-
+													})
 			ret = pat_line.update_fields()
-
-
-			#if ret == -1:
-			#	print 'Age undefined !'
-
 
 
 
@@ -1879,6 +1865,7 @@ class Marketing(models.Model):
 		self.set_stats()
 
 		# Build Vip Sales 
+
 		self.update_vip_sales()
 
 
@@ -1895,12 +1882,11 @@ class Marketing(models.Model):
 
 		# Build Places  
 		self.build_districts()
+
 		self.build_cities()
 
 
-
-		print 'Done !'
-
+		#print 'Done !'
 	# update_patients
 
 
@@ -1913,12 +1899,12 @@ class Marketing(models.Model):
 	# Update
 	@api.multi
 	def update(self):  
-
-		print
-		print 'Update'
+		print 'Marketing - Update'
 
 		self.update_patients()
+
 		self.update_sales()
+
 		self.update_recos()
 
 	# update 

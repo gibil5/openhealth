@@ -4,27 +4,32 @@
 # 
 # 		Created: 		26 Aug 2016
 #
-# 		Last up: 		21 Aug 2018
+# 		Last up: 		25 Aug 2018
 #
-
 from openerp import models, fields, api
 from datetime import datetime
 import pat_vars
 import count_funcs
-
 import lib
 
+import user
 
 class Patient(models.Model):
 
 	_inherit = 'oeh.medical.patient'
 
-	#_order = 'write_date desc'
-	#_order = 'create_date desc'
 	_order = 'x_id_code desc'
 
 
 
+
+# ----------------------------------------------------------- Deprecated ------------------------------------------------------
+	# Appointments 
+	#appointment_ids = fields.One2many(
+	#		'oeh.medical.appointment', 
+	#		'patient', 			
+	#		string = "Citas", 
+	#	)
 
 
 
@@ -33,150 +38,6 @@ class Patient(models.Model):
 	x_test = fields.Boolean(
 			'Tester', 
 		)
-
-
-
-
-# ----------------------------------------------------------- Active Treatment ------------------------------------------------------
-
-	# Active Treatment 
-	treatment_active = fields.Many2one(
-			'openhealth.treatment', 
-			'Tratamiento Activo', 
-
-
-			#domain = [
-			#			('patient', '=', name),	
-			#		],
-		)
-
-
-
-	# Clear App
-	@api.multi 
-	def update_treatment_active(self):
-		
-		print
-		print 'Sincronizar'
-
-
-		return {
-				'domain': {'treatment_active': [
-													('patient', '=', self.name),
-							]},
-			}
-
-
-
-
-# ----------------------------------------------------------- Clear Apps ------------------------------------------------------
-
-	# Clear App
-	@api.multi 
-	def clear_appointments(self):
-		
-		print
-		print 'Clear Appointments'
-
-		print self.appointment_ids
-		self.appointment_ids.unlink()
-
-
-
-
-
-# ----------------------------------------------------------- Update Date Record  ------------------------------------------------------
-
-	# Dates 
-	@api.multi 
-	def update_date_record(self):
-		print
-		print 'Update - Date Record'
-		print self.create_date
-		print self.x_date_record
-		if self.x_date_record == False: 
-			self.x_date_record = self.create_date
-			print 'Updated !'
-			print 
-
-	# update_date_record
-
-
-# ----------------------------------------------------------- Activate and Deactivate ------------------------------------------------------
-
-	# Cancel
-	@api.multi 
-	def deactivate_patient(self):
-
-		print
-		print 'Cancel Patient'
-
-		# Init 
-		self.active = False
-		self.partner_id.active = False
-
-		# Treatments 		
- 		treatments = self.env['openhealth.treatment'].search([
-																('patient', '=', self.name), 
-														],
-															#order='write_date desc',
-															#limit=1,
-														)
- 		for treatment in treatments: 
- 			treatment.active = False
-
-
-
-		# Conter Decrease 
-		name_ctr = 'emr'
- 		counter = self.env['openhealth.counter'].search([
-																('name', '=', name_ctr), 
-														],
-															#order='write_date desc',
-															limit=1,
-														)
- 		counter.decrease()
-
- 	# deactivate_patient
-
-
-
-
-	# Activate Patient 
-	@api.multi 
-	def activate_patient(self):
-
-		print
-		print 'Activate Patient'
-
-		# Init 
-		self.active = True
-		self.partner_id.active = True
-
-
-		# Treatments
- 		#treatments = self.env['openhealth.treatment'].search([
-		#														('patient', '=', self.name), 
-		#												],
-															#order='write_date desc',
-															#limit=1,
-		#												)
- 		#for treatment in treatments: 
- 		#	treatment.active = True
-
-
-		# Conter Increase 
-		name_ctr = 'emr'
- 		counter = self.env['openhealth.counter'].search([
-																('name', '=', name_ctr), 
-														],
-															#order='write_date desc',
-															limit=1,
-														)
- 		counter.increase()
-
- 	# activate_patient
-
 
 
 
@@ -199,12 +60,8 @@ class Patient(models.Model):
 	# NC Number 
 	x_id_code = fields.Char(
 			'Nr Historia Médica',
-
 			default=_get_default_id_code, 
 		)
-
-
-
 
 
 
@@ -222,36 +79,6 @@ class Patient(models.Model):
 			string = "Distrito Prov.", 	
 			required=False, 
 		)
-
-	# Street2 ?
-	@api.onchange('street2_char')
-	def _onchange_street2_char(self):
-		self.street2 = self.street2_char
-
-
-
-
-# ----------------------------------------------------------- On changes ------------------------------------------------------
-
-	# Zip  Street2
-	@api.onchange('street2_sel')
-	def _onchange_street2_sel(self):
-		self.street2 = pat_vars.zip_dic_inv[self.street2_sel]
-		self.zip = self.street2_sel
-
-	# Street 
-	@api.onchange('street')
-	def _onchange_street(self):
-		if self.street != False: 
-			self.street = self.street.strip().title()
-
-	# Email 
-	@api.onchange('email')
-	def _onchange_email(self):
-		if self.email != False: 
-			self.email = self.email.strip().lower()
-
-
 
 
 
@@ -273,16 +100,6 @@ class Patient(models.Model):
 			string='Distrito L', 
 		)
 
-	# Correction comment 
-	@api.multi 
-	def correct_comment(self):
-		print 'jx'
-		print 'Correct Comment'
-	 	comment = 'legacy, corr hd'
-		self.comment = comment
-	
-
-
 
 
 # ----------------------------------------------------------- Estado de Cuenta ------------------------------------------------------
@@ -294,13 +111,11 @@ class Patient(models.Model):
 		)
 
 
-
 	# Remove 
 	@api.multi 
 	def remove_order_report(self):
 		self.order_report_nex = False
 	# remove_order_report
-
 
 
 	# Create 
@@ -317,7 +132,6 @@ class Patient(models.Model):
 	# create_order_report
 
 
-
 	# Generate 
 	@api.multi 
 	def generate_order_report(self):
@@ -332,11 +146,9 @@ class Patient(models.Model):
 		self.order_report_nex = self.create_order_report()
 		res_id = self.order_report_nex.id
 
-
 		# Update 
 		#self.order_report_nex.update_order_report()
 		self.order_report_nex.update()
-
 
 		return {
 				'type': 'ir.actions.act_window',
@@ -350,11 +162,7 @@ class Patient(models.Model):
 								#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 								'form': {'action_buttons': True, }
 							},
-				'context': {
-								#'default_order': self.id,
-								#'default_name': name,
-								#'default_x_type': x_type,
-							}
+				'context': {}
 				}
 	# generate_order_report
 
@@ -362,40 +170,7 @@ class Patient(models.Model):
 
 
 
-
-# ----------------------------------------------------------- Verify - DNI and RUC ------------------------------------------------------
-
-	# Test DNI 
-	@api.onchange('x_dni')
-	def _onchange_x_dni(self):
-		# For Digits 
-		ret = lib.test_for_digits(self, self.x_dni)
-		if ret != 0: 
-			return ret
-		# For Length 
-		ret = lib.test_for_length(self, self.x_dni, 8)
-		if ret != 0: 
-			return ret
-
-
-	# Test RUC
-	@api.onchange('x_ruc')	
-	def _onchange_x_ruc(self):
-		# For Digits 
-		ret = lib.test_for_digits(self, self.x_ruc)
-		if ret != 0: 
-			return ret
-		# For Length 
-		ret = lib.test_for_length(self, self.x_ruc, 11)
-		if ret != 0: 
-			return ret
-
-
-
-
-
 # ----------------------------------------------------------- Personal - Now Hard wired to Partner ------------------------------------------------------
-
 
 # ----------------------------------------------------------- New Personal ------------------------------------------------------
 
@@ -429,46 +204,22 @@ class Patient(models.Model):
 			required=True,  
 		)
 
-#Positivo
-#Normal
-#Inseguro
-#Preguntón
-#Regateador 
-#Agresivo
-#Psiquiátrico
-#Abogado 
-
 
 	# First Impression 
-	#x_first_impression = fields.Char(
 	x_first_impression = fields.Selection(
-
 			[	
 				('positive', 		'Positivo'),
-
 				('normal', 			'Normal'),
-
 				('insecure', 		'Inseguro'),
-
 				('asking', 			'Preguntón'),
-
-
 				('barterint', 		'Regateador'),
-
 				('agressive', 		'Agresivo'),
-
 				('psychiatric', 	'Psiquiátrico'),
-
 				('lawyer', 			'Abogado'),
-
 				#('other', 			'Otro'),
 			], 
-
 			string="Primera impresión", 
-			
 			default='normal', 
-			
-			#required=False, 
 			required=True, 
 		)
 
@@ -519,64 +270,52 @@ class Patient(models.Model):
 
 
 
+
+
+
+# ----------------------------------------------------------- Autofill ------------------------------------------------------
+
+	# Open Treatment 
+	@api.multi
+	def autofill(self):  
+
+		# Personal 
+		self.sex = 'Male'
+		self.dob = '1965-05-26'
+		self.x_dni = '09817195'
+		self.email = 'jrevilla55@gmail.com'
+		self.phone = '4760118'
+		self.x_first_contact = 'recommendation'
+		self.comment = 'test'
+		self.x_ruc = '09817194123'
+		self.x_firm = 'Revilla y Asociados'
+		self.mobile = '991960734'
+		self.street2_sel = 41
+		self.street = 'Av. San Borja Norte 610'			
+		self.function = 'Ingeniero'
+		self.x_education_level = 'university'
+		self.x_first_impression = 'normal'
+
+ 		allergy_id = self.env['openhealth.allergy'].search([
+															('name', '=', 'Ninguna'), 
+														],
+															#order='write_date desc',
+															limit=1,
+													).id	
+		#allergy_id = allergy.id
+ 		if allergy_id != False: 
+			self.x_allergies = allergy_id 
+
+
+
 # ----------------------------------------------------------- Autofill ------------------------------------------------------
 	
 	# Autofill
 	x_autofill = fields.Boolean(
-		string="Autofill",
-		default=False, 
-	)
+			string="Autofill",
+			default=False, 
+		)
 
-	@api.onchange('x_autofill')
-	def _onchange_x_autofill(self):
-		if self.x_autofill == True:
-
-			# Personal 
-			self.sex = 'Male'
-			self.dob = '1965-05-26'
-			self.x_dni = '09817195'
-			self.email = 'jrevilla55@gmail.com'
-			self.phone = '4760118'
-
-			name = 'Ninguna'
-	 		allergy = self.env['openhealth.allergy'].search([
-																('name', '=', name), 
-															],
-																#order='write_date desc',
-																limit=1,
-														) 		
-			allergy_id = allergy.id
-	 		if allergy_id != False: 
-				self.x_allergies = allergy_id 
-
-			self.x_first_contact = 'recommendation'
-			self.comment = 'test'
-			self.x_ruc = '09817194123'
-			self.x_firm = 'Revilla y Asociados'
-			self.mobile = '991960734'
-
-			# Address 
-			self.street2_sel = 41
-			self.street = 'Av. San Borja Norte 610'			
-
-
-			self.function = 'Ingeniero'
-			self.x_education_level = 'university'
-
-			self.x_first_impression = 'normal'
-
-
-			#self.x_last_name = 'Revilla Rondon'
-			#self.x_first_name = 'Toby'
-			#self.x_last_name = 'Fuchs Vibors'
-			#self.x_first_name = 'Hans'
-			#self.name = self.x_last_name + ' ' + self.x_first_name
-			#self.street2 = 'San Borja'
-			#self.zip = 41
-			#self.city = 'Lima'
-			#self.country_id = 175
-
-	# _onchange_x_autofill
 
 
 # ----------------------------------------------------------- Relational ------------------------------------------------------
@@ -587,16 +326,6 @@ class Patient(models.Model):
 			'patient', 
 			string="Tratamientos"
 		)
-
-
-	# Appointments 
-	appointment_ids = fields.One2many(
-			'oeh.medical.appointment', 
-			'patient', 			
-			string = "Citas", 
-		)
-
-
 
 
 # ----------------------------------------------------------- Re-definitions ------------------------------------------------------
@@ -613,7 +342,6 @@ class Patient(models.Model):
 			required=False, 
 		)
 
-
 	# Date of Birth  
 	dob = fields.Date(
 			string="Fecha nacimiento",
@@ -629,21 +357,7 @@ class Patient(models.Model):
 		)
 
 
-
-
-	# ----------------------------------------------------------- Deprecated ------------------------------------------------------
-
-	# Dictionary - For Reports 
-	#_dic = {
-	#			'Male':		'Masculino', 
-	#			'Female':	'Femenino', 
-	#			'none':		'Ninguno', 
-	#			'':			'', 
-	#		}
-
-
-
-	# ----------------------------------------------------------- New fields ------------------------------------------------------
+# ----------------------------------------------------------- New fields ------------------------------------------------------
 
 	# First 
 	x_first_name = fields.Char(
@@ -679,9 +393,7 @@ class Patient(models.Model):
 				record.x_full_name = full
 
 
-
-
-
+	# Active 
 	x_active = fields.Boolean(
 			string = "Activa", 	
 			default = True, 
@@ -690,11 +402,10 @@ class Patient(models.Model):
 			)
 
 	x_first_contact = fields.Selection(
-
 			selection = pat_vars._first_contact_list, 
 		
 			string = '¿ Cómo se enteró ?',
-			required=True, 
+			#required=True, 
 		)
 
 	x_country_residence= fields.Many2one(
@@ -729,21 +440,11 @@ class Patient(models.Model):
 			default = 'none', 
 		)
 
-
-	# Phone 3 - Caregiver 
 	phone_3 = fields.Char(
 		string="Teléfono",
 		required=False, 
 		)
 	
-	@api.onchange('phone_3')
-	def _onchange_phone_3(self):
-		ret = lib.test_for_digits(self, self.phone_3)
-		if ret != 0: 
-			return ret
-
-
-
 
 
 	# Control docs 
@@ -800,42 +501,15 @@ class Patient(models.Model):
 	x_control_physician = fields.Many2one(
 			'oeh.medical.physician',
 			string="Médico responsable del control", 
-			#required=True, 
-			#index=True
 			)
 
 	x_date_consent = fields.Date(
 			string = "Fecha de consentimiento informado", 	
 			default = fields.Date.today, 
-			#readonly = True, 
-			#required=True, 
 		)
 
 
-
-
-
-
-	# ----------------------------------------------------------- On Changes ------------------------------------------------------
-
-	# Last Name 
-	@api.onchange('x_last_name', 'x_first_name')
-	def _onchange_x_last_name(self):
-		if self.x_last_name and self.x_first_name:
-			self.name = lib.strip_accents(self.x_last_name.upper() + ' ' + self.x_first_name)
-
-	@api.onchange('x_last_name')
-	def _onchange_x_last_name_test(self):
-		if self.x_last_name:
-			ret = lib.test_name(self, self.x_last_name)			
-			return ret
-
-
-
-
-
-
-	# ----------------------------------------------------------- Treatment Count ------------------------------------------------------
+# ----------------------------------------------------------- Treatment Count ------------------------------------------------------
 
 	# Treatment count  
 	x_treatment_count = fields.Integer(
@@ -855,10 +529,71 @@ class Patient(models.Model):
 			record.x_treatment_count = count  
 
 
+# ----------------------------------------------------------- Deactivate ------------------------------------------------------
+	# Deactivate
+	@api.multi 
+	def deactivate_patient(self):
+
+		# Init 
+		self.active = False
+		self.partner_id.active = False
+
+		# Treatments 		
+ 		#treatments = self.env['openhealth.treatment'].search([
+		#														('patient', '=', self.name), 
+		#												],
+															#order='write_date desc',
+															#limit=1,
+		#												)
+ 		#for treatment in treatments: 
+ 		#	treatment.active = False
+
+		# Conter Decrease 
+ 		counter = self.env['openhealth.counter'].search([
+																('name', '=', 'emr'), 
+														],
+															#order='write_date desc',
+															limit=1,
+														)
+ 		counter.decrease()
+ 	# deactivate_patient
 
 
 
-	# ----------------------------------------------------------- Open Treatment ------------------------------------------------------
+# ----------------------------------------------------------- Activate ------------------------------------------------------
+	# Activate Patient 
+	@api.multi 
+	def activate_patient(self):
+
+		# Init 
+		self.active = True
+		self.partner_id.active = True
+
+		# Treatments
+ 		#treatments = self.env['openhealth.treatment'].search([
+		#														('patient', '=', self.name), 
+		#												],
+															#order='write_date desc',
+															#limit=1,
+		#												)
+ 		#for treatment in treatments: 
+ 		#	treatment.active = True
+
+
+		# Conter Increase 
+ 		counter = self.env['openhealth.counter'].search([
+																('name', '=', 'emr'), 
+														],
+															#order='write_date desc',
+															limit=1,
+														)
+ 		counter.increase()
+ 	# activate_patient
+
+
+
+
+# ----------------------------------------------------------- Open Treatment ------------------------------------------------------
 
 	# Open Treatment 
 	@api.multi
@@ -867,31 +602,22 @@ class Patient(models.Model):
 		#print
 		#print 'Open Treatment'
 
-		# Init  
-		#patient_id = self.id 
-
 
 		# Search 
-		treatment = self.env['openhealth.treatment'].search(	[		
-																	('patient','=', self.id),
-																	#('patient','=', patient_id),
-																],
-																order='write_date desc',
-																limit=1,
-															)
-		#treatment_id = treatment.id
-
-
+		treatment = self.env['openhealth.treatment'].search([		
+																('patient','=', self.id),
+															],
+															order='write_date desc',
+															limit=1,
+														)
 		return {
 					# Mandatory 
 					'type': 'ir.actions.act_window',
 					'name': 'Open Treatment Current',
 					# Window action 
 					'res_model': 'openhealth.treatment',
-
 					#'res_id': treatment_id,
 					'res_id': treatment.id,
-					
 					# Views 
 					"views": [[False, "form"]],
 					'view_mode': 'form',
@@ -901,8 +627,6 @@ class Patient(models.Model):
 							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 					},	
 					'context':   {
-									#'search_default_patient': patient_id,
-									#'default_patient': patient_id,
 									'search_default_patient': self.id,
 									'default_patient': self.id,
 					}
@@ -911,8 +635,7 @@ class Patient(models.Model):
 
 
 
-
-	# ----------------------------------------------------------- CRUD ------------------------------------------------------
+# ----------------------------------------------------------- CRUD ------------------------------------------------------
 
 	# Create 
 	@api.model
@@ -948,15 +671,359 @@ class Patient(models.Model):
 
 
 
-	# Write 
-	@api.multi
-	def write(self,vals):
+# ----------------------------------------------------------- On Changes ------------------------------------------------------
 
-		#Write your logic here
-		res = super(Patient, self).write(vals)
-		#Write your logic here
+	# Ternary If 
+	#isApple = True if fruit == 'Apple' else False
 
-		return res
+	# Autofill 
+	@api.onchange('x_autofill')
+	def _onchange_x_autofill(self):
+		self.autofill() if self.x_autofill == True else 'don'
 
-	# CRUD - Write 
 
+	# Last and First Names
+	# Assign - Name 
+	@api.onchange('x_last_name', 'x_first_name')
+	def _onchange_x_last_name(self):
+		self.name = lib.strip_accents(self.x_last_name.upper() + ' ' + self.x_first_name) if self.x_last_name and self.x_first_name else 'don'
+
+	# Test - Must have two or more last names 
+	@api.onchange('x_last_name')
+	def _onchange_x_last_name_test(self):
+		return lib.test_for_one_last_name(self, self.x_last_name) if self.x_last_name else 'don'
+
+
+	# Street2 ?
+	@api.onchange('street2_char')
+	def _onchange_street2_char(self):
+		self.street2 = self.street2_char
+
+	# Zip  Street2
+	@api.onchange('street2_sel')
+	def _onchange_street2_sel(self):
+		self.street2 = pat_vars.zip_dic_inv[self.street2_sel]
+		self.zip = self.street2_sel
+
+	# Street 
+	@api.onchange('street')
+	def _onchange_street(self):
+		self.street = self.street.strip().title() if self.street != False else 'don'
+
+	# Email 
+	@api.onchange('email')
+	def _onchange_email(self):
+		self.email = self.email.strip().lower() if self.email != False else 'don'
+
+	# Phone 
+	@api.onchange('phone_3')
+	def _onchange_phone_3(self):
+		return lib.test_for_digits(self, self.phone_3)
+
+
+# -----------------------------------------------------------  DNI and RUC ------------------------------------------------------
+
+	# Test DNI - For Digits and for Length
+	@api.onchange('x_dni')
+	def _onchange_x_dni(self):
+		ret = lib.test_for_digits(self, self.x_dni)
+		if ret != 0: 
+			return ret
+		ret = lib.test_for_length(self, self.x_dni, 8)
+		if ret != 0: 
+			return ret
+
+	# Test RUC - For Digits and for Length
+	@api.onchange('x_ruc')	
+	def _onchange_x_ruc(self):
+		ret = lib.test_for_digits(self, self.x_ruc)
+		if ret != 0: 
+			return ret
+		ret = lib.test_for_length(self, self.x_ruc, 11)
+		if ret != 0: 
+			return ret
+
+
+
+
+
+# ----------------------------------------------------------- Test - Init ------------------------------------------------------
+	
+	# Test - Init  
+	@api.multi 
+	def test_init(self, patient_id=False, partner_id=False, doctor_id=False, treatment_id=False):
+
+		print 
+		print 'Patient - Test Init'
+
+
+		# Patient 1
+		# Init
+		#name = 'NUÑEZ NUÑEZ FATIMA'
+		#street = 'Av. San Borja Norte 610'
+		#street2 = 'San Borja'
+		#city = 'Lima'
+		# Clear 
+ 		#patients = self.env['oeh.medical.patient'].search([
+		#														('name', '=', name), 
+		#												],).unlink()
+		# Create Patient 
+		#patient_1 = self.env['oeh.medical.patient'].create({
+		#													'name': 	name,
+		#													'street': 	street, 
+		#													'street2': 	street2, 
+		#													'city': 	city, 
+		#													'x_test': 	True, 
+		#										})
+		#print patient_1.name
+
+
+
+
+
+		# Patient 2 - Vip 
+		
+		# Init
+		name = 'REVILLA REVILLA JOSEX'
+		street = 'Av. San Borja Norte 610'
+		street2 = 'San Borja'
+		city = 'Lima'
+
+		x_first_name = 'Josex' 
+		x_last_name = 'Revilla Revilla'
+		x_dni = '09817190'
+		sex = 'Male'
+
+		x_first_contact = 'none'
+		street2_char = 'Lima'
+
+
+
+		# Clear - Patient 
+ 		patients = self.env['oeh.medical.patient'].search([
+																('name', '=', name), 
+														],).unlink()
+
+		# Clear - Card 
+ 		cards = self.env['openhealth.card'].search([
+																('patient_name', '=', name), 
+		
+														],)
+ 		for card in cards: 
+ 			card.unlink()
+
+
+
+		# Create Patient 
+		patient_2 = self.env['oeh.medical.patient'].create({
+															'name': 	name,
+															'street': 	street, 
+															'street2': 	street2, 
+															'city': 	city, 
+
+															'x_first_name': x_first_name, 
+															'x_last_name': 	x_last_name, 
+															'x_dni':	x_dni, 
+															'sex': 		sex, 
+
+															'street2_char': 	street2_char, 
+															'x_first_contact': 	x_first_contact, 
+												})
+		print patient_2.name
+
+
+		# Create Card 
+		card = self.env['openhealth.card'].create({
+															'patient_name': 	name,
+												})
+
+
+		# Create Treatment 
+		chief_complaint = 'acne_active'
+
+		treatment = patient_2.treatment_ids.create({
+															'physician': 		doctor_id, 
+															'chief_complaint': 	chief_complaint,
+															'patient': 			patient_2.id, 	
+			})
+		print treatment 
+
+
+
+
+		# Create Recommendation 		
+		#recommendation = treatment.recommendation = self.env['openhealth.recommendation'].create({
+		#																			'treatment': 	treatment.id, 	
+		#		})
+		#print recommendation 		
+		#recommendation.create_service_product()
+		#print 
+
+
+
+		# Product
+		service_id = user.get_product(self, 'acneclean')
+
+		service_product = treatment.service_product_ids.create({
+															'service': 		service_id, 
+															'treatment': 	treatment.id, 
+				})
+		
+		print service_product
+
+
+		# Co2
+		service_id = user.get_product(self, 'co2_nec_rn1_one')
+
+		service_co2 = treatment.service_co2_ids.create({
+															'service': 		service_id, 
+															'treatment': 	treatment.id, 
+				})
+
+		print service_co2
+
+
+
+
+		# Exc 
+		service_id = user.get_product(self, 'exc_bel_alo_15m_one')
+
+		service_exc = treatment.service_excilite_ids.create({
+																'service': 		service_id, 
+																'treatment': 	treatment.id, 
+			})
+
+		print service_exc
+
+
+
+
+		# Ipl 
+		service_id = user.get_product(self, 'ipl_bel_dep_15m_six')
+
+		service_ipl = treatment.service_ipl_ids.create({
+											'service': 		service_id, 
+											'treatment': 	treatment.id, 
+			})
+
+		print service_ipl
+
+
+
+
+		# Ndyag 
+		service_id = user.get_product(self, 'ndy_bol_ema_15m_six')
+
+		service_ndyag = treatment.service_ndyag_ids.create({
+											'service': 		service_id, 
+											'treatment': 	treatment.id, 
+			})
+		print service_ndyag
+
+
+
+		# Quick
+		service_id = user.get_product(self, 'quick_neck_hands_rejuvenation_1')
+
+		service_quick = treatment.service_quick_ids.create({
+															'service': 		service_id, 
+															#'patient': 		patient_2.id, 
+															#'physician': 	treatment.physician.id, 
+															'treatment': 	treatment.id, 
+				})
+
+		print service_quick
+
+
+
+		#return patient 
+		#return [patient_1, patient_2]
+		return [patient_2]
+
+
+
+
+# ----------------------------------------------------------- Test - Cycle ------------------------------------------------------
+	
+	# Test - Cycle 
+	# Test the whole Patient Cycle. 
+
+	@api.multi 
+	def test_cycle(self):
+
+		#print 
+		#print 'Patient - Test Cycle'
+
+		print 
+		print self.name 
+
+
+		# Partner 
+		# Computes 
+		print 
+		print 'Computes - Partner'
+		print self.partner_id.city_char
+		print self.partner_id.x_address
+		print self.partner_id.x_vip
+
+
+		# Patient 
+		print 
+		print 'Computes'
+		print self.x_vip
+		print self.x_card
+		print self.x_full_name
+		print self.x_treatment_count
+		print self.x_full_name
+		
+		print 
+		print 'Methods'
+		self.deactivate_patient()
+		self.activate_patient()
+		self.open_treatment()
+		self.generate_order_report()
+		if self.x_test: 
+			self.autofill()
+
+
+
+		print 
+		print 'Treatments'
+		for treatment in self.treatment_ids: 
+
+			print 'Services'
+
+			for service in treatment.service_co2_ids: 
+				service.test()
+
+			for service in treatment.service_excilite_ids: 
+				service.test()
+
+			for service in treatment.service_ipl_ids: 
+				service.test()
+
+			for service in treatment.service_ndyag_ids: 
+				service.test()
+
+			for service in treatment.service_product_ids: 
+				service.test()
+
+			for service in treatment.service_quick_ids: 
+				service.test()
+
+
+# ----------------------------------------------------------- Test ------------------------------------------------------
+
+	# Test - Integration 
+	@api.multi 
+	def test(self):
+
+		print 
+		print 
+		print 
+		print 'Patient - Test'
+
+		# Test Cycle
+		self.test_cycle()
+
+	# test 

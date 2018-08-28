@@ -107,7 +107,3 @@ class DistrictLine(models.Model):
 
 
 
-
-
-
-

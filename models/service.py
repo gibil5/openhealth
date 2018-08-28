@@ -1,20 +1,15 @@
 # -*- coding: utf-8 -*-
 #
-# 	Service 
+# 		Service 
 # 
-# Created: 				20 Sep 2016
-# Last updated: 	 	 5 Jul 2018
+# 		Created: 				20 Sep 2016
+# 		Last updated: 	 	27 Aug 2018
 #
-
 from openerp import models, fields, api
 from datetime import datetime
 from . import prodvars
 from . import serv_funcs
 from . import ipl
-
-#from . import serv_vars
-#from . import exc
-
 
 class Service(models.Model):
 
@@ -23,14 +18,11 @@ class Service(models.Model):
 	#_inherit = 'openhealth.base', 
 
 
+# ----------------------------------------------------------- Dep ? - Tmp ? ------------------------------------------------------
 
-# ----------------------------------------------------------- Tmp ------------------------------------------------------
-
-	x_time = fields.Char()
+	#x_time = fields.Char()
 
 	
-
-
 # ----------------------------------------------------------- Prices ------------------------------------------------------
 
 	# Price 
@@ -40,13 +32,11 @@ class Service(models.Model):
 
 			compute='_compute_price', 
 		) 
-
 	#@api.multi
 	@api.depends('service')
 	def _compute_price(self):
 		for record in self:
 			record.price= (record.service.list_price)
-
 
 
 	# Price VIP
@@ -55,7 +45,6 @@ class Service(models.Model):
 			
 			string='Precio VIP', 
 		) 
-
 	#@api.multi
 	@api.depends('service')
 	def _compute_price_vip(self):
@@ -63,22 +52,16 @@ class Service(models.Model):
 			record.price_vip= (record.service.x_price_vip)
 
 
-
 	# Price Manual 
 	price_manual = fields.Float(
-
 			string="Precio Manual",
 		)
-
 
 
 	# Price Applied
 	price_applied = fields.Float(
 			#string='Precio Aplicado', 
-			#compute='_compute_price_applied', 
 		) 
-
-
 
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
@@ -90,7 +73,6 @@ class Service(models.Model):
 			compute='_compute_name', 
 			#required=True, 
 		)
-
 	@api.multi
 	def _compute_name(self):
 		for record in self:
@@ -102,9 +84,7 @@ class Service(models.Model):
 	name_short = fields.Char(
 			compute='_compute_name_short', 
 			#string='Short name'
-			#string='Código'
-			#string='Código interno'
-			)
+		)
 
 	@api.depends('service')
 	def _compute_name_short(self):
@@ -112,24 +92,17 @@ class Service(models.Model):
 			record.name_short = record.service.x_name_short 
 
 
-
-
 	# State 
 	state = fields.Selection(
 			[
 				('draft', 		'Inicio'),
-
-				('budget', 	'Presupuestado'),	
-				#('budget', 		'Presupuesto'),	
-
+				('budget', 		'Presupuestado'),	
 				('sale', 		'Pagado'),				
 			], 
 			#selection = serv_vars._state_list, 
 			string='Estado', 			
 			default = 'draft', 
 		)
-
-
 
 
 	# Family 
@@ -156,14 +129,10 @@ class Service(models.Model):
 			string="Sesiones", 
 		)
 
-
-
-
 	# Comeback 
 	comeback = fields.Boolean(
 			string='Regreso', 			
 		)
-
 
 	# Treatment (for Product)
 	x_treatment = fields.Selection(
@@ -171,14 +140,11 @@ class Service(models.Model):
 			string="Tratamiento", 			
 		)	
 
-
 	# Zone 
 	zone = fields.Selection(
 			selection = prodvars._zone_list, 
 			string="Zona", 
 		)
-
-
 
 	# Pathology
 	pathology = fields.Selection(
@@ -186,22 +152,18 @@ class Service(models.Model):
 			string="Patología", 
 		)
 
-
 	# Vertical space 
 	vspace = fields.Char(
 			' ', 
 			readonly=True
 		)
 
-
-	
 	# Time 
 	time = fields.Char(
 			default='',
 			string="Tiempo", 
 		)
 	
-
 
 	_time_list = [
 					('15 min','15 min'),	
@@ -210,31 +172,13 @@ class Service(models.Model):
 		]
 
 	time_1 = fields.Selection(
-
 			#selection = exc._time_list, 
 			selection = _time_list, 
-
 			string="Tiempo", 
 			default='none',	
 			)
 
 
-
-	@api.onchange('time_1')
-	def _onchange_time_1(self):
-		if self.time_1 != 'none':				
-			self.time_1 = self.clear_times(self.time_1)
-			self.time = self.time_1
-			#serv_funcs.product(self)
-			return {
-				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time)]},				
-			}
-
-
-
-
-
-	
 	# Nr sessions
 	nr_sessions = fields.Char(
 			default='',	
@@ -247,46 +191,17 @@ class Service(models.Model):
 			default='none',	
 	)
 
-	@api.onchange('nr_sessions_1')
-	def _onchange_nr_sessions_1(self):
-	
-		if self.nr_sessions_1 != 'none':	
-			self.nr_sessions = self.nr_sessions_1
-			
-			return {
-				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time),('x_sessions', '=', self.nr_sessions) ]},
-			}
-			
-
-
-
-		
-
-	# Service
-	@api.onchange('service')
-	def _onchange_service(self):
-	
-		if self.service != 'none':
-			self.time_1 = self.service.x_time
-		
-			
-
-
 
 	# Code 
 	code = fields.Char(
-			compute='_compute_code', 
-			string='Code'
-			)
+			string='Code', 
 
+			compute='_compute_code', 
+			)
 	@api.depends('service')
 	def _compute_code(self):
 		for record in self:
 			record.code= record.service.name 
-
-
-
-
 
 
 	# Title 
@@ -306,33 +221,13 @@ class Service(models.Model):
 
 
 
-# ----------------------------------------------------------- Deprecated ------------------------------------------------------
-
-	# Cosmetology 
-	#cosmetology = fields.Many2one('openhealth.cosmetology',
-	#		ondelete='cascade', 			
-	#		string="Cosmiatría", 
-	#	)
-
-
-	# Consultation 
-	#consultation = fields.Many2one('openhealth.consultation',
-	#		ondelete='cascade', 		
-	#		string="Consulta", 		
-	#		required=False, 
-	#	)
-
-
-
 
 # ----------------------------------------------------------- Relationals ------------------------------------------------------
-
 	# Patient 
 	patient = fields.Many2one(
 			'oeh.medical.patient', 
 			'Paciente', 
 		)
-
 
 	# Physician
 	physician = fields.Many2one(
@@ -341,38 +236,29 @@ class Service(models.Model):
 			index=True
 		)
 	
-
 	# Service 
 	service = fields.Many2one(
 			'product.template',
 			domain = [
 						('type', '=', 'service'),
 					],
-			
-			#string="Servicio",
 			string="Producto",
-
 			required=True, 
 		)
-
-
 
 	# Treatement 
 	treatment = fields.Many2one('openhealth.treatment',
 			ondelete='cascade', 			
 			string="Tratamiento", 
-			readonly=True, 
-			
+			readonly=True, 			
 			required = True, 
 		)
-
 
 	 # Nex zone
 	nex_zone = fields.Many2one(
 			'openhealth.zone',
 			string="Nex Zone", 
 		)
-
 
 	# Nex Pathology 
 	nex_pathology = fields.Many2one(
@@ -381,92 +267,53 @@ class Service(models.Model):
 		)
 
 
-
-
 # ----------------------------------------------------------- Nr ofs ------------------------------------------------------
 
-	#nr_hands = fields.Integer(
 	nr_hands_i = fields.Integer(
 			'hands', 
 			#default=0, 
-
-			#required=True,
 			required=False,
 		)
 
-	#nr_body_local = fields.Integer(
 	nr_body_local_i = fields.Integer(
 			'body local', 
-			#default = 0, 
-			
-			#required=True,
 			required=False,
 		)
 
-
-	#nr_face_local = fields.Integer(
 	nr_face_local_i = fields.Integer(
 			'face local', 
-			#default = 0, 
-			
-			#required=True,
 			required=False,
 		)
-
 
 	nr_cheekbones = fields.Integer(
 			'cheek', 
-			#default=0, 
-			
-			#required=True,
 			required=False,
 		)
-
 
 	nr_face_all = fields.Integer(
 			'face all', 
-			#default=0, 
-			
-			#required=True,
 			required=False,
 		)
-
 
 	nr_face_all_hands = fields.Integer(
 			'face all hands', 
-			#default=0, 
-			
-			#required=True,
 			required=False,
 		)
-
 
 	nr_face_all_neck = fields.Integer(
 			'face all neck', 
-			#default=0, 
-			
-			#required=True,
 			required=False,
 		)
-
 
 	nr_neck = fields.Integer(
 			'neck', 
-			#default=0, 
-			
-			#required=True,
 			required=False,
 		)
-
 
 	nr_neck_hands = fields.Integer(
 			'neck hands', 
-			#default=0, 
-			
-			#required=True,
 			required=False,
 		)
-
 
 
 
@@ -476,13 +323,9 @@ class Service(models.Model):
 	# Open Treatment
 	@api.multi 
 	def open_treatment(self):
-		
-		#print 
-		#print 'Open Treatment'
 		ret = self.treatment.open_myself()
 		return ret 
 	# open_treatment
-
 
 
 	# Clear all
@@ -491,10 +334,12 @@ class Service(models.Model):
 		self.clear_local() 
 		return token
 
+
 	# Clear commons
 	def clear_commons(self):	
 		#self.zone = 'none'
 		self.pathology = 'none'
+
 
 	# Clear times
 	def clear_times(self,token):
@@ -503,9 +348,12 @@ class Service(models.Model):
 		return token
 		
 
-	
+	# Clear Local 	
+	def clear_local(self):
+		pass 
 
-# ---------------------------------------------- Open Line --------------------------------------------------------
+
+# ---------------------------------------------- Open Line Current --------------------------------------------------------
 
 	# Open Line 
 	@api.multi
@@ -529,3 +377,72 @@ class Service(models.Model):
 	# open_line_current 
 
 
+
+# ----------------------------------------------------------- On changes ------------------------------------------------------
+	
+	# Service
+	@api.onchange('service')
+	def _onchange_service(self):
+		if self.service != 'none':
+			self.time_1 = self.service.x_time
+		
+	@api.onchange('nr_sessions_1')
+	def _onchange_nr_sessions_1(self):
+		if self.nr_sessions_1 != 'none':	
+			self.nr_sessions = self.nr_sessions_1
+			return {
+				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time),('x_sessions', '=', self.nr_sessions) ]},
+			}
+
+	@api.onchange('time_1')
+	def _onchange_time_1(self):
+		if self.time_1 != 'none':				
+			self.time_1 = self.clear_times(self.time_1)
+			self.time = self.time_1
+			return {
+				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time)]},				
+			}
+
+
+
+
+# ----------------------------------------------------------- Test ------------------------------------------------------
+
+	# Computes
+	def test_computes(self):
+		print 
+		print 'Service - Computes'
+
+		print 'name: ', self.name  
+		print 'name_short: ', self.name_short
+		print 'code: ', self.code 
+		print 'price: ', self.price
+		print 'price_vip: ', self.price_vip
+
+
+	# Actions
+	def test_actions(self):
+		print 
+		print 'Service - Actions'
+
+		self.open_line_current()
+		self.open_treatment()
+		self.clear_all('token')
+		self.clear_times('token')
+		self.clear_commons()
+
+
+	# Test  
+	def test(self):
+		print 
+		print 'Service - Test'
+
+		print self 
+
+		# Computes
+		self.test_computes()
+
+		# Actions 
+		self.test_actions()
+
+	# test 

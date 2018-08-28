@@ -247,17 +247,24 @@
 
 
 
+<!--
+															attrs="{	
+																			'invisible':	[('partner_id', '!=', False)], 
+																			'required':		[('partner_id', '=', False)], 
+																}"	
+-->
+								<field name="x_last_name" 	class="oe_edit_only"	
+										
+										/>
 
-<field name="x_last_name" class="oe_edit_only"	attrs="{	
-															'invisible':	[('partner_id', '!=', False)], 
-															'required':		[('partner_id', '=', False)], 
-												}"	/>
-
-
-<field name="x_first_name" class="oe_edit_only"	attrs="{	
-															'invisible':	[('partner_id', '!=', False)], 
-															'required':		[('partner_id', '=', False)], 
-												}"	/>
+<!--
+															attrs="{	
+																		'invisible':	[('partner_id', '!=', False)], 
+																		'required':		[('partner_id', '=', False)], 
+															}"	
+--> 
+								<field name="x_first_name" 	class="oe_edit_only"	
+										/>
 
 
 

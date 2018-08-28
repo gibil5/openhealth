@@ -17,6 +17,13 @@
 						<notebook>
 
 
+							<!-- Recom --> 							
+							<page string="RECOM">
+								<field name="recommendation"/>	
+							</page>
+
+
+
 
 							<!-- Products --> 
 							<page string="PRODUCTOS"		attrs="{'invisible':[('nr_services_product', '=', 0)]}"		>

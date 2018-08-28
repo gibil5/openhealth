@@ -261,9 +261,9 @@ class sale_order(models.Model):
 		#self.x_dni = self.partner_id.x_dni
 		#self.x_ruc = self.partner_id.x_ruc
 
-		print self.patient.name 
-		print 'Dni: ', self.x_dni
-		print 'Ruc: ', self.x_ruc 
+		#print self.patient.name 				# Generates an Error ! With Ñ
+		#print 'Dni: ', self.x_dni
+		#print 'Ruc: ', self.x_ruc 
 
 
 		# Dni 
@@ -1256,8 +1256,8 @@ class sale_order(models.Model):
 	# Test - Reset 
 	@api.multi 
 	def test_reset(self):
-		print 
-		print 'Order - Reset'
+		#print 
+		#print 'Order - Reset'
 		self.x_payment_method.unlink()
 		self.x_dni = ''
 		self.x_ruc = ''
@@ -1304,6 +1304,7 @@ class sale_order(models.Model):
 
 		#self.test_reset()
 
+
 		# Create Order 
 		order = self.env['sale.order'].create({
 													'partner_id': 	partner_id,
@@ -1318,8 +1319,7 @@ class sale_order(models.Model):
 													#'x_ruc': self.partner_id.x_ruc,	
 
 													'treatment': treatment_id,
-												}
-											)
+												})
 
 		# Create Order Lines 
 		name_shorts = [	
@@ -1343,7 +1343,8 @@ class sale_order(models.Model):
 		for name_short in name_shorts: 			
 			ret = creates.create_order_lines_micro(order, name_short, price_manual, price_applied, reco_id)
 
-		return order 
+		#return order 
+		return [order]
 
 
 
@@ -1374,11 +1375,8 @@ class sale_order(models.Model):
 		# Payment Method 
 		#self.x_payment_method.saledoc = 'advertisement'
 		self.x_payment_method.saledoc = 'ticket_receipt'
-
 		print self.x_payment_method.name
-
 		self.x_payment_method.go_back()
-
 		print self.x_payment_method.state
 
 

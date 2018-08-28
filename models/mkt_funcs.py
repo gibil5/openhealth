@@ -25,8 +25,8 @@ def get_per(self, value, total):
 @api.multi
 def get_patients_filter(self, date_bx, date_ex, mode):
 
-	print
-	print 'Get Patients'
+	#print
+	#print 'Get Patients'
 
 
 	# Dates	

@@ -4,13 +4,6 @@
 
 
 
-
-
-
-
-
-
-
 <!-- Leo Gonzales -->
 		<record id="lgonzales" model="res.partner">
 			<field name="name">Leo Gonzales</field>

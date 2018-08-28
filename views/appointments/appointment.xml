@@ -26,17 +26,18 @@
 -->
 					<!-- Remove --> 	
 <!--											
+						states="pre_scheduled,pre_scheduled_control,pre_scheduled_session"
+-->
 					<button 
 						type="object" 					
 						class="oe_highlight"
-						
 						name="remove_myself" 
 			
 						string="Eliminar" 
 
 						groups="openhealth.roots"
 					/>
--->
+
 
 
 					<!-- Confirm --> 
@@ -46,10 +47,14 @@
 						
 						name="confirm" 
 			
+						attrs="{ 'invisible':[	
+												('x_confirmable','==',False), 	
+											]}"
+
 						string="Confirmar" 
 
-						states="pre_scheduled,pre_scheduled_control,pre_scheduled_session"
 					/>
+
 
 
 					<!-- Un Confirm --> 
@@ -186,6 +191,9 @@
 						/>
 
 					<field name="vspace"/>
+
+
+					<field name="x_confirmable"/>
 				</xpath>
 
 

@@ -119,8 +119,8 @@ class PaymentMethod(models.Model):
 		)
 	@api.multi
 	def _compute_name(self):
-		print 
-		print 'Compute Name'
+		#print 
+		#print 'Compute Name'
 		for record in self:
 			record.name = 'PA-' + str(record.id).zfill(6)
 
@@ -223,8 +223,8 @@ class PaymentMethod(models.Model):
 	# Onchange Pm Line Ids 
 	@api.onchange('pm_line_ids')
 	def _onchange_pm_line_ids(self):
-		print 
-		print 'On change - Line'
+		#print 
+		#print 'On change - Line'
 		pm_total = 0
 		ctr = 1
 		for line in self.pm_line_ids:
@@ -238,8 +238,8 @@ class PaymentMethod(models.Model):
 	# On change Sale Doc 
 	@api.onchange('saledoc')
 	def _onchange_saledoc(self):
-		print 
-		print 'On change - Saledoc'
+		#print 
+		#print 'On change - Saledoc'
 		if self.balance == 0.0:
 			self.state = 'sale'
 	# _onchange_saledoc
@@ -250,10 +250,10 @@ class PaymentMethod(models.Model):
 	# Write 
 	@api.multi
 	def write(self,vals):
-
-		print
-		print 'Payment Method  - Write'
+		#print
+		#print 'Payment Method  - Write'
 		#print vals
+
 
 		# Update Partner - Dni, Ruc, Firm 
 		if 'dni' in vals: 
@@ -267,6 +267,7 @@ class PaymentMethod(models.Model):
 		if 'firm' in vals: 
 			firm = vals['firm']
 			self.partner.x_firm = firm 
+
 
 		#Write your logic here
 		res = super(PaymentMethod, self).write(vals)

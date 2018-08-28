@@ -58,11 +58,9 @@
 								class="oe_highlight"
 								type="action" 
 								name="%(account_line_form_action)d"	
-								
 								context="{
 											'search_default_account_id': active_id,	
 										}" 											
-
 								string="Contasis"								
 						/>
 
@@ -72,16 +70,14 @@
 						<button 
 								class="oe_highlight"
 								type="action" 
-								
-								name="%(payment_line_form_action)d"	
-								
 								context="{
 											'search_default_account_id': active_id,	
 										}"
-
+								
+								name="%(payment_line_form_action)d"	
+								
 								string="Tarjetas"								
 						/>
-
 					</header>
 
 

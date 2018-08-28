@@ -500,4 +500,77 @@
 
 
 
+# 28 Aug 
+
+# ----------------------------------------------------------- Deprecated ------------------------------------------------------
+
+	#x_target = fields.Char()
+
+	#x_machine = fields.Char()
+
+	# Create procedure Flag 
+	#x_create_procedure_automatic = fields.Boolean(
+	#		string="¿ Cita para Procedimiento ?",
+	#		default=False, 
+	#	)
+
+
+# ----------------------------------------------------------- CRUD ------------------------------------------------------
+
+	# Write 
+	#@api.model
+	#def write(self,vals):
+
+	#	print 
+	#	print 'Appointment - Write'
+
+
+		#Write your logic here
+	#	res = super(Appointment, self).write(vals)
+		#Write your logic here
+
+		#print res.control
+		#print res.appointment_date
+		#res.control.update_dates(res.appointment_date)
+
+	#	return res
+	# CRUD - Write 
+
+
+
+# ----------------------------------------------------------- CRUD ------------------------------------------------------
+	# Create 
+	@api.model
+	def create(self,vals):
+
+		#print
+		#print 'Appointment - Create'
+
+		# Super 
+		#print 'mark'
+		res = super(Appointment, self).create(vals)
+		#print 'mark'
+
+		# Init 
+		appointment_date = res.appointment_date
+		x_type = res.x_type
+		doctor_id = res.doctor.id
+		patient_id = res.patient.id
+		treatment_id = res.treatment.id
+		
+		#x_create_procedure_automatic = res.x_create_procedure_automatic
+
+
+		# Create Procedure Flag - Deprecated
+		#if x_type == 'consultation'  and  x_create_procedure_automatic:
+		#	date_format = "%Y-%m-%d %H:%M:%S"
+		#	adate_con = datetime.datetime.strptime(appointment_date, date_format)
+		#	delta_fix = datetime.timedelta(hours=1.5)
+		#	adate_base = adate_con + delta_fix
+		#	app = appfuncs.create_appointment_procedure(self, adate_base, doctor_id, patient_id, treatment_id, x_create_procedure_automatic)
+
+		return res
+	# create
+# CRUD
+
 

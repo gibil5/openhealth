@@ -103,18 +103,21 @@ class Treatment(models.Model):
 		
 		if self.patient.x_test: 
 
+			# Reset
+			#tst.reset_treatment(self)
+
+
 			# Init 
 			patient_id = self.patient.id
 			doctor_id = self.physician.id
 			treatment_id = self.id 
 			partner_id = self.partner_id.id
-
-
 			caller = self 
 
 
+
 			# Objects 
-			#order = 	lib_obj.Object(	caller, 	'order', 	'sale.order', 		patient_id, 	partner_id, 	doctor_id, 	treatment_id)
+			order = 	lib_obj.Object(	caller, 	'order', 	'sale.order', 		patient_id, 	partner_id, 	doctor_id, 	treatment_id)
 
 			#patient = 	lib_obj.Object(	caller, 	'patient', 	'oeh.medical.patient')
 			patient = 	lib_obj.Object(	caller, 	'patient', 	'oeh.medical.patient', 		False, False, doctor_id, False)
@@ -124,7 +127,7 @@ class Treatment(models.Model):
 
 			# All  
 			objs = [
-						#order, 
+						order, 
 						patient, 
 				]
 

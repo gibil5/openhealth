@@ -16,6 +16,22 @@
 					<header>
 
 
+						<!-- Sessions -->
+						<!--
+							attrs="{ 'invisible':[	('number_sessions','==',1), 	]}"
+						--> 
+						<button 
+							type="object" 
+							class="oe_highlight"
+							name="create_sessions" 	
+
+							groups="openhealth.roots,openhealth.archivers,openhealth.managers,openhealth.physicians,openhealth.directors"
+
+							string="Crear Sesiones"
+						/>
+
+
+
 						<!-- Controls -->
 						<button 
 							type="object" 
@@ -50,19 +66,6 @@
 
 
 
-						<!-- Sessions -->
-						<!--
-							attrs="{ 'invisible':[	('number_sessions','==',1), 	]}"
-						--> 
-						<button 
-							type="object" 
-							class="oe_highlight"
-							name="create_sessions" 	
-
-							groups="openhealth.roots,openhealth.archivers,openhealth.managers,openhealth.physicians,openhealth.directors"
-
-							string="Crear Sesiones"
-						/>
 						
 
 

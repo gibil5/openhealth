@@ -255,8 +255,8 @@ class sale_order(models.Model):
 	@api.multi 
 	def check_content(self):
 
-		print 
-		print 'Check Content'
+		#print 
+		#print 'Check Content'
 
 		#self.x_dni = self.partner_id.x_dni
 		#self.x_ruc = self.partner_id.x_ruc
@@ -313,8 +313,8 @@ class sale_order(models.Model):
 	@api.multi 
 	def validate(self):
 
-		print 
-		print 'Validate'
+		#print 
+		#print 'Validate'
 
 
 		# Payment method validation
@@ -696,7 +696,7 @@ class sale_order(models.Model):
 	def open_product_selector(self, x_type):  
 
 		# Init Vars 
-		context = self._context.copy()		
+		#context = self._context.copy()		
 		order_id = self.id
 		res_id = False
 
@@ -1122,9 +1122,8 @@ class sale_order(models.Model):
 	# Print Ticket
 	@api.multi
 	def print_ticket(self):
-
-		print 
-		print 'Print Ticket'
+		#print 
+		#print 'Print Ticket'
 		
 		if self.x_type == 'ticket_receipt': 
 			name = 'openhealth.report_ticket_receipt_nex_view'
@@ -1310,7 +1309,6 @@ class sale_order(models.Model):
 													'partner_id': 	partner_id,
 													'patient': 		patient_id,	
 													'state':		'draft',
-
 													'x_doctor': 	doctor_id,	
 													
 													#'pricelist_id': pl_id, 
@@ -1348,6 +1346,37 @@ class sale_order(models.Model):
 
 
 
+# ----------------------------------------------------------- Test ------------------------------------------------------
+
+	# Computes
+	def test_computes(self):
+		print 
+		print 'Order - Computes'
+
+		print 'x_partner_vip\t', 		self.x_partner_vip
+		print 'x_total_in_words\t', 	self.x_total_in_words
+		print 'x_total_cents\t', 		self.x_total_cents
+		print 'x_total_net\t', 		self.x_total_net
+		print 'x_total_tax\t', 		self.x_total_tax		
+		print 'x_my_company\t', 	 	self.x_my_company
+		print 'x_date_order_corr\t', 	self.x_date_order_corr
+
+
+
+	# Actions
+	def test_actions(self):
+		print 
+		print 'Order - Actions'
+		self.state_force()
+		self.state_force()
+		self.open_product_selector_product()
+		self.open_product_selector_service()
+		self.cancel_order()
+		self.activate_order()
+		self.open_line_current()
+
+
+
 # ----------------------------------------------------------- Test - Cycle ------------------------------------------------------
 	
 	# Test - Cycle 
@@ -1358,53 +1387,39 @@ class sale_order(models.Model):
 	@api.multi 
 	def test_cycle(self):
 
-		print 
-		print 
-		print 
-		print 'Order - Test Cycle'
+		#print 
+		#print 'Order - Test Cycle'
 
 		# Pay 
 		#date_order = False	
 		#self.pay_myself(date_order)
 
 
+		# Cycle - Begin
+
 		# Create and Init - PM 
 		self.create_payment_method()
 
-
 		# Payment Method 
-		#self.x_payment_method.saledoc = 'advertisement'
 		self.x_payment_method.saledoc = 'ticket_receipt'
 		print self.x_payment_method.name
 		self.x_payment_method.go_back()
 		print self.x_payment_method.state
-
 
 		# Order
 		self.validate()
 		self.action_confirm_nex()
 		self.print_ticket()
 
-		self.state_force()
-		self.state_force()
-
-		print self.x_partner_vip
-		print self.x_total_in_words
-		print self.x_total_cents
-		print self.x_total_net
-		print self.x_total_tax
-		
-		print self.x_my_company
-		print self.x_date_order_corr
+		# Cycle - End
 
 
-		#self.open_product_selector()
-		self.open_product_selector_product()
-		self.open_product_selector_service()
 
-		self.cancel_order()
-		self.activate_order()
-		self.open_line_current()
+		# Computes 
+		self.test_computes()
+
+		# Actions - Remaining 
+		self.test_actions()
 
 
 
@@ -1415,9 +1430,12 @@ class sale_order(models.Model):
 	def test(self):
 
 		print 
+		print 
+		print 
 		print 'Order - Test'
 
 		if self.patient.x_test: 
+
 			# Test Cycle
 			self.test_cycle()
 

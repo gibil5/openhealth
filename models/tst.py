@@ -74,16 +74,16 @@ def test_integration_treatment(self, date_order_begin, date_order_end):
 		print 
 		print 'Create Order - Procedure'
 		for order in self.order_ids: 
-	
 			#order.pay_myself()
 			#date_order = '2018-10-01 02:00:00'
 			order.pay_myself(date_order_end)
 
 
 
+
 	# Sessions 
-	if True: 
-	#if False:	
+	#if True: 
+	if False:	
 		print 
 		print 'Create Sessions'
 		#self.create_sessions()
@@ -93,8 +93,8 @@ def test_integration_treatment(self, date_order_begin, date_order_end):
 
 
 	# Controls 
-	if True: 
-	#if False:	
+	#if True: 
+	if False:	
 		print 
 		print 'Create Controls'
 		for procedure in self.procedure_ids: 
@@ -105,7 +105,7 @@ def test_integration_treatment(self, date_order_begin, date_order_end):
 
 
 
-	print 
+	#print 
 # test_integration_treatment
 
 

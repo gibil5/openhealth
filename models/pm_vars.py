@@ -2,6 +2,14 @@
 
 
 
+_state_list = [
+				('draft', 		'Presupuesto'),		
+				('sale', 		'Pagado'),				
+				('cancel', 		'Anulado'),
+]
+
+
+
 
 _payment_method_list = [
 		('cash',			'Efectivo'), 

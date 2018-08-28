@@ -6,13 +6,8 @@
 #	Created: 			14 Aug 2018
 # 	Last up: 	 		17 Aug 2018
 #
-#from openerp import models, fields, api
-#from datetime import datetime,tzinfo,timedelta
-
 import datetime
-
 import time_funcs
-
 import lib
 import user 
 
@@ -21,7 +16,6 @@ import user
 
 # ----------------------------------------------------------- Procedure ------------------------------------------------------
 # Create Procedure With Appoointment   
-#@api.multi
 def create_procedure_wapp(self, subtype, product_id):
 
 	#print 
@@ -62,23 +56,18 @@ def create_procedure_wapp(self, subtype, product_id):
 		# Create Sessions - Dep !
 		#self.treatment.create_sessions()
 
-	print
-	print
+
 # create_procedure_wapp
-
-
-
 
 
 
 # ----------------------------------------------------------- Create Order  ------------------------------------------------------
 # Create Order - By Line
-#@api.multi 
 def create_order(self, target):
 
-	print
-	print 'Create Order'
-	print target
+	#print
+	#print 'Create Order'
+	#print target
 
 
 	# Init
@@ -177,17 +166,14 @@ def create_order(self, target):
 
 
 
-
-
-
 #------------------------------------------------ Create Order Lines ---------------------------------------------------
 
 # Create Order Lines 
 def create_order_lines(self, laser, order_id):
 
-	print 
-	print 'User - Create Order Lines'
-	print laser 
+	#print 
+	#print 'User - Create Order Lines'
+	#print laser 
 
 	order = self.env['sale.order'].search([(
 												'id','=', order_id),
@@ -220,7 +206,7 @@ def create_order_lines(self, laser, order_id):
 	# Recommendations
 	for reco in rec_set: 
 
-		print 'Gotcha !'
+		#print 'Gotcha !'
 
 		# Init 
 		reco_id = reco.id
@@ -229,13 +215,8 @@ def create_order_lines(self, laser, order_id):
 		price_applied = reco.price_applied
 
 
-
 		# Create the Order Line 
-		#ret = order.x_create_order_lines_target(name_short, price_manual, price_applied, reco_id)
-		#ret = ord_funcs.create_order_lines_reco(order, name_short, price_manual, price_applied, reco_id)
-		#ret = create_order_lines_reco(order, name_short, price_manual, price_applied, reco_id)
 		ret = create_order_lines_micro(order, name_short, price_manual, price_applied, reco_id)
-
 
 
 		# Update Recommendation State 
@@ -252,19 +233,16 @@ def create_order_lines(self, laser, order_id):
 
 
 # ----------------------------------------------------------- Create order lines ------------------------------------------------------
-	
 # Create Order Lines 
-#def create_order_lines(self, name_short, price_manual, price_applied, reco_id):		
-#def create_order_lines_reco(self, name_short, price_manual, price_applied, reco_id):		
 def create_order_lines_micro(self, name_short, price_manual, price_applied, reco_id):		
 
-	print 
-	print 'Create Order Lines - Micro'
-	print name_short
-	print price_manual
-	print price_applied
-	print reco_id
-	print 
+	#print 
+	#print 'Create Order Lines - Micro'
+	#print name_short
+	#print price_manual
+	#print price_applied
+	#print reco_id
+	#print 
 
 
 	# Init
@@ -317,11 +295,10 @@ def create_order_lines_micro(self, name_short, price_manual, price_applied, reco
 	# Manual Price  
 	if price_manual != 0: 
 
-		print 'Manual Price'
+		#print 'Manual Price'
 
 		ol = self.order_line.create({
 										'name': 		product.name, 
-
 										'product_id': 	product.id,
 										'order_id': 	order_id,										
 										'price_unit': 	price_manual,
@@ -333,13 +310,12 @@ def create_order_lines_micro(self, name_short, price_manual, price_applied, reco
 	# Quick Laser 
 	elif product.x_treatment == 'laser_quick': 	
 		
-		print 'Quick Laser Price'
+		#print 'Quick Laser Price'
 		
 		price_quick = price_applied
 
 		ol = self.order_line.create({
 										'name': 		product.name, 
-
 										'product_id': product.id,
 										'order_id': order_id,
 										'price_unit': price_quick,
@@ -349,11 +325,10 @@ def create_order_lines_micro(self, name_short, price_manual, price_applied, reco
 	# Normal case
 	else: 
 		
-		print 'Normal Price'
+		#print 'Normal Price'
 
 		ol = self.order_line.create({
 										'name': 		product.name, 
-
 										'product_id': product.id,
 										'order_id': order_id,
 										reco_field: reco_id, 
@@ -523,7 +498,3 @@ def create_procedure_go(self, app_date_str, subtype, product_id):
 
 	return ret	
 # create_procedure_go
-
-
-
-

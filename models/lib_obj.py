@@ -11,11 +11,11 @@
 class Object():
 
 
-	#def __init__(self, name, model, patient_id, partner_id, doctor_id, treatment_id, caller):
+
 	def __init__(self, caller, name, model, 	patient_id=False, partner_id=False, doctor_id=False, treatment_id=False):
 		
 		print 'Object - Init'
-		print caller
+		#print caller
 		
 		self.env = caller.env 
 		self.name = name
@@ -27,7 +27,6 @@ class Object():
 		self.treatment_id = treatment_id
 
 		# Obj
-		#self.db_obj = self.env[self.model].test_init(patient_id, partner_id, doctor_id, treatment_id)
 		self.db_objs = self.env[self.model].test_init(patient_id, partner_id, doctor_id, treatment_id)
 
 

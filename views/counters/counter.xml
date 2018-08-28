@@ -18,8 +18,8 @@
 					<!-- Header --> 
 					<header>
 
-
 						<!-- Increase --> 
+<!--
 						<button 
 								name="increase_static"
 								type="object" 
@@ -27,7 +27,7 @@
 
 								string="Increase Static"
 						/>						
-
+--> 
 					</header>
 
 

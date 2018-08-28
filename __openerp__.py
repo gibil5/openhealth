@@ -14,7 +14,7 @@
 
 	'description': """
 
-		27 Aug 2018
+		28 Aug 2018
 
 		Fulcrum 
 		
@@ -523,7 +523,7 @@
 		# Patients - 2 
 		'views/patients/patient_personal.xml',
 		'views/patients/patient_control_docs.xml',
-		'views/patients/patient_appointments.xml',
+		#'views/patients/patient_appointments.xml',
 
 		# Appointments - 2
 		'views/appointments/calendar.xml',

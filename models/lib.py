@@ -14,6 +14,32 @@ import unicodedata
 
 
 
+
+#------------------------------------------------ Date - If Today ---------------------------------------------------
+# Adds Nr to start date 
+def today(self, date):
+	print 
+	print 'Today'
+
+	date_format = "%Y-%m-%d %H:%M:%S"
+	#date_format = "%Y-%m-%d"
+	date_dt = datetime.datetime.strptime(date, date_format) + datetime.timedelta(hours=-5,minutes=0)	
+
+
+	if date_dt.date() == datetime.datetime.today().date(): 
+		is_today = True 
+	else: 
+		is_today = False
+
+	# Prints
+	print date
+	print date_dt
+	print is_today 
+
+	return is_today 
+
+
+
 #------------------------------------------------ Patient - Unidecode ---------------------------------------------------
 
 # Strip all accents - But keep Ñ
@@ -81,9 +107,7 @@ def test_for_one_last_name(self, last_name):
 
 
 #------------------------------------------------ Get Next Date ---------------------------------------------------
-
 # Adds Nr to start date 
-
 def get_next_date(self, evaluation_start_date, nr_days):
 
 	#print 

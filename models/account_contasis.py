@@ -141,7 +141,7 @@ class AccountContasis(models.Model):
 			count = count + 1
 		
 
-			# Init from Order 
+			# Init - From Order 
 			serial_nr = order.x_serial_nr
 			date = order.date_order
 			patient = order.patient.id 
@@ -162,6 +162,7 @@ class AccountContasis(models.Model):
 					document_type = acc_funcs._doc_type[order.patient.x_id_doc_type]
 
 
+
 			# Account Lines - Registro de Ventas and Contasis 
 			for line in order.order_line:
 
@@ -172,7 +173,6 @@ class AccountContasis(models.Model):
 
 				# Net and Taxes 
 				amount_net, amount_tax = acc_funcs.get_net_tax(self, amount)
-
 
 				# Create 
 				acc_line = self.account_line.create({
@@ -189,15 +189,14 @@ class AccountContasis(models.Model):
 														'amount_net': amount_net,
 														'amount_tax': amount_tax,
 														
-
 														'document': document, 					# Id Doc  		-> Here !
 														'document_type': document_type, 		# Id Doc Type 
-														
 
 														'account_id': self.id, 
 					})
 
 				acc_line.update_fields()
+
 
 
 
@@ -212,11 +211,12 @@ class AccountContasis(models.Model):
 														'date_time': date,
 														'name': line.name, 
 														'subtotal': line.subtotal, 
-														'method': line.method, 
-
-									
+														'method': line.method, 									
 														'document': document, 					# Id Doc  		-> Here !
 														'document_type': document_type,
+
+
+														'state': state, 
 
 
 														'account_id': self.id, 

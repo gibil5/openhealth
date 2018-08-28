@@ -1098,9 +1098,9 @@ Fields
 
 
 <!--
-							<group  groups="openhealth.roots"	>
--->
 							<group 	>
+-->
+							<group  groups="openhealth.roots"	>
 <!--
 									groups="openhealth.roots"
 									name="test_integration" 

@@ -2,78 +2,44 @@
 #
 # 		***	 Appointment
 #
-# Created: 				14 Nov 2016
-# Last updated: 	 	28 Jun 2018
+# 		Created: 			14 Nov 2016
+# 		Last updated: 	 	28 Aug 2018
 #
-
 from openerp import models, fields, api
 import datetime
-
 import app_vars
 import eval_vars
-
 import lib
 import user
-
 
 class Appointment(models.Model):
 
 	_inherit = 'oeh.medical.appointment'
 
-	#_order = 'x_type asc'
-	#_order = 'state desc'
-	#_order = 'state desc,write_date desc'
-	#_order = 'name desc'
 	_order = 'name asc'
 
 
 
+# ----------------------------------------------------------- Confirmation ------------------------------------------------------
 
-	# ----------------------------------------------------------- Deprecated ------------------------------------------------------
+	x_confirmable = fields.Boolean(
+			'Confirmable', 
 
-	#x_target = fields.Char()
+			compute='_compute_x_confirmable', 
+		)
 
-	#x_machine = fields.Char()
-
-	# Create procedure Flag 
-	#x_create_procedure_automatic = fields.Boolean(
-	#		string="¿ Cita para Procedimiento ?",
-	#		default=False, 
-	#	)
-
-
-
-
-	#----------------------------------------------------------- Hot Button - For Treatment ------------------------------------------------------------
-
-	# For Treatments Quick access
 	@api.multi
-	def open_line_current(self):  
+	#@api.depends('patient')
+	def _compute_x_confirmable(self):
+		for record in self:
 
-		res_id = self.id 
-
-		return {
-				'type': 'ir.actions.act_window',
-				'name': ' Edit Order Current', 
-				'view_type': 'form',
-				'view_mode': 'form',
-				'res_model': self._name,
-
-				'res_id': res_id,
-				
-				'target': 'current',
-				'flags': {
-						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-						'form': {'action_buttons': True, }
-						},
-				'context': {}
-		}
+			if lib.today(self, self.appointment_date): 
+				record.x_confirmable = True 
+			else: 
+				record.x_confirmable = False 
 
 
-
-
-
-	# ----------------------------------------------------------- Dates ------------------------------------------------------
+# ----------------------------------------------------------- Dates ------------------------------------------------------
 
 	# Date Start 
 	appointment_date = fields.Datetime(
@@ -495,7 +461,8 @@ class Appointment(models.Model):
 		self.state = 'Scheduled'
 
 		# Treatment Flag 
-		self.treatment.update()
+		if self.treatment.name != False: 
+			self.treatment.update()
 
 	# confirm 
 
@@ -547,41 +514,42 @@ class Appointment(models.Model):
 
 
 
+#----------------------------------------------------------- Hot Button - For Treatment ------------------------------------------------------------
+
+	# For Treatments Quick access
+	@api.multi
+	def open_line_current(self):  
+		res_id = self.id 
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' Edit Order Current', 
+				'view_type': 'form',
+				'view_mode': 'form',
+				'res_model': self._name,
+				'res_id': res_id,
+				'target': 'current',
+				'flags': {
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						'form': {'action_buttons': True, }
+						},
+				'context': {}
+		}
+
+
 
 # ----------------------------------------------------------- CRUD ------------------------------------------------------
-
-	# Write 
-	#@api.model
-	#def write(self,vals):
-
-	#	print 
-	#	print 'Appointment - Write'
-
-
-		#Write your logic here
-	#	res = super(Appointment, self).write(vals)
-		#Write your logic here
-
-		#print res.control
-		#print res.appointment_date
-		#res.control.update_dates(res.appointment_date)
-
-	#	return res
-	# CRUD - Write 
-
-
-
 	# Create 
 	@api.model
 	def create(self,vals):
-
 		#print
 		#print 'Appointment - Create'
+
 
 		# Super 
 		#print 'mark'
 		res = super(Appointment, self).create(vals)
 		#print 'mark'
+
 
 		# Init 
 		appointment_date = res.appointment_date
@@ -589,21 +557,8 @@ class Appointment(models.Model):
 		doctor_id = res.doctor.id
 		patient_id = res.patient.id
 		treatment_id = res.treatment.id
-		
-		#x_create_procedure_automatic = res.x_create_procedure_automatic
-
-
-		# Create Procedure Flag - Deprecated
-		#if x_type == 'consultation'  and  x_create_procedure_automatic:
-		#	date_format = "%Y-%m-%d %H:%M:%S"
-		#	adate_con = datetime.datetime.strptime(appointment_date, date_format)
-		#	delta_fix = datetime.timedelta(hours=1.5)
-		#	adate_base = adate_con + delta_fix
-		#	app = appfuncs.create_appointment_procedure(self, adate_base, doctor_id, patient_id, treatment_id, x_create_procedure_automatic)
-
-
 
 		return res
 	# create
-# CRUD
 
+# CRUD

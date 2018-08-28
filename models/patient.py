@@ -9,10 +9,10 @@
 from openerp import models, fields, api
 from datetime import datetime
 import pat_vars
-import count_funcs
-import lib
 
+import lib
 import user
+import count_funcs
 
 class Patient(models.Model):
 
@@ -25,11 +25,11 @@ class Patient(models.Model):
 
 # ----------------------------------------------------------- Deprecated ------------------------------------------------------
 	# Appointments 
-	appointment_ids = fields.One2many(
-			'oeh.medical.appointment', 
-			'patient', 			
-			string = "Citas", 
-		)
+	#appointment_ids = fields.One2many(
+	#		'oeh.medical.appointment', 
+	#		'patient', 			
+	#		string = "Citas", 
+	#	)
 
 
 
@@ -53,7 +53,9 @@ class Patient(models.Model):
 															#order='write_date desc',
 															limit=1,
 														)
+		
 		name = count_funcs.get_name(self, counter.prefix, counter.separator, counter.padding, counter.value)
+		
 		return name
 
 
@@ -708,12 +710,14 @@ class Patient(models.Model):
 	# Street 
 	@api.onchange('street')
 	def _onchange_street(self):
-		self.street = self.street.strip().title() if self.street != False else 'don'
+		#self.street = self.street.strip().title() if self.street != False else 'don'
+		self.street = self.street.strip().title() if self.street != False else ''
 
 	# Email 
 	@api.onchange('email')
 	def _onchange_email(self):
-		self.email = self.email.strip().lower() if self.email != False else 'don'
+		#self.email = self.email.strip().lower() if self.email != False else 'don'
+		self.email = self.email.strip().lower() if self.email != False else ''
 
 	# Phone 
 	@api.onchange('phone_3')

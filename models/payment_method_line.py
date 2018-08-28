@@ -3,22 +3,19 @@
 # 	payment method line
 # 
 # 	Created: 				2016
-# 	Last mod: 				21 Aug 2018
+# 	Last mod: 				28 Aug 2018
 #
 from openerp import models, fields, api
 
-from . import pm_vars
+import pm_vars
 
-class payment_method_line(models.Model):
-	
+class payment_method_line(models.Model):	
 	_name = 'openhealth.payment_method_line'
-
 	_order = 'date_time asc'
 
 
 
 # ----------------------------------------------------------- Relational ------------------------------------------------------
-
 	# Payment Method
 	payment_method = fields.Many2one(
 			'openhealth.payment_method',
@@ -38,6 +35,17 @@ class payment_method_line(models.Model):
 
 # ----------------------------------------------------------- Meta ------------------------------------------------------
 
+	# State 
+	#state = fields.Char(
+	state = fields.Selection(
+
+			selection = pm_vars._state_list, 
+
+			string="Estado", 
+		)
+
+
+
 	# Document 
 	document = fields.Char(
 			string="Documento", 
@@ -46,6 +54,7 @@ class payment_method_line(models.Model):
 	document_type = fields.Char(
 			string="Tipo Doc", 
 		)
+
 
 
 	# Other 

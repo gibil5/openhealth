@@ -426,10 +426,13 @@
 
 
 				</field>
-
-				<field name="patient" position="after"	>
+<!--
 					<field name="x_dni"		groups="openhealth.roots"				/>
 					<field name="x_ruc"		groups="openhealth.roots"	/>
+-->
+				<field name="patient" position="after"	>
+					<field name="x_dni"/>
+					<field name="x_ruc"/>
 				</field>
 
 

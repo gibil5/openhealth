@@ -149,22 +149,24 @@ attrs="{'invisible':[
 			<field name="arch" type="xml">
 				<tree string="payment_method_line Tree">
 					
-
 					<field name="date_time"/>
+
 					<field name="x_type"/>
+
 					<field name="serial_nr"/>
 
-
-
 					<field name="patient"/>													
+
 					<field name="document"/>				
+
 					<field name="document_type"/>
 
-
-
 					<field name="method"/>
+
 					<field name="subtotal"/>
 
+
+					<field name="state"/>
 
 <!--
 					<field name="account_id"   />
@@ -185,7 +187,7 @@ attrs="{'invisible':[
 
 
 
-		<!-- Window Form Action -->
+		<!-- Action -->
 		<record model="ir.actions.act_window" id="payment_line_form_action">
 
 			<field name="name">Reconciliación de Tarjetas</field>
@@ -196,6 +198,7 @@ attrs="{'invisible':[
 
 			<field name="domain">[
 									('account_id', '=', active_id),
+									('state', '=', 'sale'),
 								]
 			</field>
 
@@ -204,10 +207,7 @@ attrs="{'invisible':[
 
 
 
-
-
-
-		<!-- Window Form Action --> 
+		<!-- Action --> 
 		<record model="ir.actions.act_window" id="openhealth_payment_method_line_form_action">
 			<field name="name">Payment method line</field>
 			<field name="res_model">openhealth.payment_method_line</field>
@@ -222,10 +222,7 @@ attrs="{'invisible':[
 
 
 
-
-
-
-		<!-- FILTER --> 
+<!-- FILTER --> 
 		<record id="payment_line_filter" model="ir.ui.view">
 			<field name="name">payment Line Search</field>
 			<field name="model">openhealth.payment_method_line</field>
@@ -236,9 +233,7 @@ attrs="{'invisible':[
 						<separator/>
 						<filter name="tipodocumento" context="{'group_by':'tipodocumento'}"/>
 -->
-					
 					<field 	name="patient"	/>
-
 					<group expand="1" string="Group By">
 						<filter name="Tipo" context="{'group_by':'method'}"/>
 						<filter name="Paciente" context="{'group_by':'patient'}"/>

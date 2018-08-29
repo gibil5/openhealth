@@ -149,7 +149,14 @@ attrs="{'invisible':[
 			<field name="arch" type="xml">
 				<tree string="payment_method_line Tree">
 					
+
 					<field name="date_time"/>
+
+					<field name="date_char"/>
+
+					<field name="time_char"/>
+
+
 
 					<field name="x_type"/>
 

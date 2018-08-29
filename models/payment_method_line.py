@@ -9,6 +9,8 @@ from openerp import models, fields, api
 
 import pm_vars
 
+import account_funcs as acc_funcs
+
 class payment_method_line(models.Model):	
 	_name = 'openhealth.payment_method_line'
 	_order = 'date_time asc'
@@ -23,7 +25,6 @@ class payment_method_line(models.Model):
 			required=False, 			
 		)
 
-
 	# Account - Contabilidad  
 	account_id = fields.Many2one(
 			'openhealth.account.contasis',
@@ -31,16 +32,23 @@ class payment_method_line(models.Model):
 		)
 
 
-
-
 # ----------------------------------------------------------- Meta ------------------------------------------------------
 
+	# Date 
+	date_char = fields.Char(
+			string="Fecha", 
+		)
+
+	# Time 
+	time_char = fields.Char(
+			string="Hora", 
+		)
+
+
+
 	# State 
-	#state = fields.Char(
 	state = fields.Selection(
-
 			selection = pm_vars._state_list, 
-
 			string="Estado", 
 		)
 
@@ -78,7 +86,8 @@ class payment_method_line(models.Model):
 		)
 
 	date_time = fields.Datetime(
-			string="Fecha", 
+			#string="Fecha", 
+			string="Fecha y Hora", 
 		)
 
 
@@ -116,3 +125,22 @@ class payment_method_line(models.Model):
 			' ', 
 			readonly=True
 			)
+
+
+
+# ----------------------------------------------------------- Actions ------------------------------------------------------
+
+	# Update Fields
+	@api.multi
+	def update_fields(self):  
+		print
+		print 'PM Line - Update'
+
+		# Dates 
+		date_time_corr, date_time_str = acc_funcs.correct_time(self,self.date_time, -5)
+
+		self.date_char = date_time_str.split()[0]
+		self.time_char = date_time_str.split()[1]
+
+	# update_fields
+

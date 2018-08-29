@@ -221,6 +221,9 @@ class AccountContasis(models.Model):
 
 														'account_id': self.id, 
 					})
+				
+				pay_line.update_fields()
+
 
 
 		# Stats 

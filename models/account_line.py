@@ -283,6 +283,85 @@ class AccountLine(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Meta ------------------------------------------------------
+
+	# Id Document 
+	document = fields.Char(
+			string="Documento", 
+		)
+
+	document_type = fields.Char(
+			#string="Tipo Documento", 
+			string="Tipo Doc", 
+		)
+
+	name = fields.Char(
+			'Nr', 
+		)
+
+	patient = fields.Many2one(
+			'oeh.medical.patient', 
+			string="Nombre", 
+		)
+
+	qty = fields.Integer(
+			string="Cantidad", 
+		)
+
+	product = fields.Many2one(
+			'product.product', 
+			string="Producto", 
+		)
+
+	product_type = fields.Selection(
+			[	('service', 			'Servicio'),
+				('product', 			'Producto'),
+				('consu', 				'Consumible'),
+			], 
+			string='Tipo Prod', 
+			#required=False,
+		)
+
+	state = fields.Selection(
+			[	('sale', 			'Venta'),
+				('cancel', 			'Anulado'),
+			], 
+			string='Estado', 
+			#required=False,
+		)
+
+	serial_nr = fields.Char(
+			string="Nr. de serie", 
+		)
+
+	x_type = fields.Selection(
+			[	('receipt', 			'Boleta'),
+				('invoice', 			'Factura'),
+				('advertisement', 		'Canje Publicidad'),
+				('sale_note', 			'Canje NV'),
+				('ticket_receipt', 		'Ticket Boleta'),
+				('ticket_invoice', 		'Ticket Factura'),	], 
+			string='Tipo', 
+			#required=False,
+		)
+
+
+	# Amount 
+	amount = fields.Float(
+			string="Total", 
+		)
+
+	amount_net = fields.Float(
+			string="Neto", 
+		)
+
+	amount_tax = fields.Float(
+			string="Impuesto", 
+		)
+
+
+
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 
 	# Update Fields
@@ -295,7 +374,6 @@ class AccountLine(models.Model):
 
 		# Dates 
 		self.date_time_corr, date_time_str = acc_funcs.correct_time(self,self.date_time, -5)
-
 		self.date_char = date_time_str.split()[0]
 		self.time_char = date_time_str.split()[1]
 
@@ -357,81 +435,3 @@ class AccountLine(models.Model):
 		self.porigv = self.igv
 
 	# update_fields
-
-
-
-# ----------------------------------------------------------- Meta ------------------------------------------------------
-
-	# Id Document 
-	document = fields.Char(
-			string="Documento", 
-		)
-
-	document_type = fields.Char(
-			#string="Tipo Documento", 
-			string="Tipo Doc", 
-		)
-
-
-	name = fields.Char(
-			'Nr', 
-		)
-
-	patient = fields.Many2one(
-			'oeh.medical.patient', 
-			string="Nombre", 
-		)
-
-	qty = fields.Integer(
-			string="Cantidad", 
-		)
-
-	product = fields.Many2one(
-			'product.product', 
-			string="Producto", 
-		)
-
-	product_type = fields.Selection(
-			[	('service', 			'Servicio'),
-				('product', 			'Producto'),
-				('consu', 				'Consumible'),
-			], 
-			string='Tipo Prod', 
-			#required=False,
-		)
-
-	state = fields.Selection(
-			[	('sale', 			'Venta'),
-				('cancel', 			'Anulado'),
-			], 
-			string='Estado', 
-			#required=False,
-		)
-
-	serial_nr = fields.Char(
-			string="Nr. de serie", 
-		)
-
-	x_type = fields.Selection(
-			[	('receipt', 			'Boleta'),
-				('invoice', 			'Factura'),
-				('advertisement', 		'Canje Publicidad'),
-				('sale_note', 			'Canje NV'),
-				('ticket_receipt', 		'Ticket Boleta'),
-				('ticket_invoice', 		'Ticket Factura'),	], 
-			string='Tipo', 
-			#required=False,
-		)
-
-	# Amount 
-	amount = fields.Float(
-			string="Total", 
-		)
-
-	amount_net = fields.Float(
-			string="Neto", 
-		)
-
-	amount_tax = fields.Float(
-			string="Impuesto", 
-		)

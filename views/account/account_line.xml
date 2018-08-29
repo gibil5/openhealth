@@ -7,7 +7,9 @@
 <!-- Tree --> 
 		<record model="ir.ui.view" id="account_line_view_order_tree">
 			<field name="name">openhealth.account.line.tree</field>
+
 			<field name="model">openhealth.account.line</field>
+			
 			<field name="arch" type="xml">
 				<tree string="Account Line Tree">
 					

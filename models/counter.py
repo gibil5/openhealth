@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
 #
-# 	counter
+# 		Counter
+#
+# 		Created: 			26 Aug 2016
+# 		Last up: 	 		 3 Sep 2018
 # 
 from openerp import models, fields, api
 import count_vars
-#import count_funcs
+
+import user 
 
 class Counter(models.Model):
 	
@@ -12,71 +16,27 @@ class Counter(models.Model):
 
 
 
-# ----------------------------------------------------------- Static ------------------------------------------------------
+# ----------------------------------------------------------- QC ------------------------------------------------------
 
-	i = 0 
-
-	# Increase Static
-	@api.multi 
-	def increase_static(self):
-		
-		print 
-		print 'Increase Static'
-
-		Counter.i = Counter.i + 1
-
-		self.value_static = Counter.i 
-
-		print Counter.i
-		print 
-
-		#self.value = self.value + 1
-		#self.date_modified = fields.datetime.now()
-
-
-
-
-# ----------------------------------------------------------- Pre ------------------------------------------------------
-
-	# Value 
-	value_static = fields.Integer(
-			string="Valor Estático", 
-			default=1, 
+	delta = fields.Integer(
+			string="Delta", 
+			compute="_compute_delta",
 		)
 
+	@api.multi
+	#@api.depends('total')
+	def _compute_delta(self):
+		print 
+		print 'Counter - Compute Delta'
 
-	#@api.onchange('Counter.i')
-	#def _onchange_Counter_i(self):
-	#	print 
-	#	print 'jx'
-	#	print 
-
-
-
-# ----------------------------------------------------------- Onchanges ------------------------------------------------------
-
-	# Value 
-	value = fields.Integer(
-			string="Valor", 
-			default=1, 
-		)
-
-
-
-
+		for record in self:
+			if record.x_type in ['sale']: 
+				record.delta = user.get_delta(record)
+			else:
+				record.delta = -55
 
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
-
-
-	# Type
-	x_type = fields.Selection(
-			selection=count_vars._counter_type_list, 			
-			string="Tipo", 
-			#default='receipt', 
-		)
-
-
 
 	# Name
 	name = fields.Selection(
@@ -85,12 +45,24 @@ class Counter(models.Model):
 		)
 
 
+	# Value 
+	value = fields.Integer(
+			string="Valor", 
+			default=1, 
+		)
+
+
+	# Type
+	x_type = fields.Selection(
+			selection=count_vars._counter_type_list, 			
+			string="Tipo", 
+		)
+
 
 	# Separator 
 	separator = fields.Char(
 			string="Separador",
 		)
-
 
 
 	# Prefix 
@@ -100,17 +72,11 @@ class Counter(models.Model):
 		)
 
 
-
 	# Padding
 	padding = fields.Integer(
 			string="Padding",
 			default=0,  
 		)
-
-
-
-
-
 
 
 	# Date created 
@@ -139,8 +105,6 @@ class Counter(models.Model):
 
 
 
-
-
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 
 	# Increase
@@ -151,13 +115,10 @@ class Counter(models.Model):
 	# increase
 
 
-
 	# Decrease
 	@api.multi 
 	def decrease(self):
 		self.value = self.value - 1
 		self.date_modified = fields.datetime.now()
 	# decrease
-
-
 

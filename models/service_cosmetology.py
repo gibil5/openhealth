@@ -5,24 +5,33 @@
 # Created: 				 1 Nov 2016
 # 
 from openerp import models, fields, api
-
 from datetime import datetime,tzinfo,timedelta
-
 import cosvars
 import prodvars
 
-
-
-
-
-
-# ----------------------------------------------------------- ServiceCosmetology ------------------------------------------------------
-
 class ServiceCosmetology(models.Model):
+
 	_name = 'openhealth.service.cosmetology'
+
 	_inherit = 'openhealth.service'
 	
 
+
+# ---------------------------------------------- Default --------------------------------------------------------
+	# Laser 
+	laser = fields.Selection(
+			selection = prodvars._laser_type_list, 
+			string="Láser", 			
+	
+			default='cosmetology',			
+
+			index=True,
+		)
+
+
+
+# ----------------------------------------------------------- Action ------------------------------------------------------
+	# Open Cosmetology
 	@api.multi 
 	def open_cosmetology(self):
 		ret = self.cosmetology.open_myself()
@@ -31,8 +40,7 @@ class ServiceCosmetology(models.Model):
 
 
 
-	# ----------------------------------------------------------- Canonicals ------------------------------------------------------
-
+# ----------------------------------------------------------- Canonicals ------------------------------------------------------
 	# Service 
 	service = fields.Many2one(
 			'product.template',

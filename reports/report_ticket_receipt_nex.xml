@@ -8,7 +8,9 @@
 <report
 	id="report_ticket_receipt_nexx"
 	model="sale.order"
+
 	string="Ticket Boleta Nex"
+	
 	report_type="qweb-pdf"
 	name="openhealth.report_ticket_receipt_nex_view"
 	file="openhealth.report_ticket_receipt_file_nex"

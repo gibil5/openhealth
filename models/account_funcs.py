@@ -32,6 +32,7 @@ _h_type = {
 # ----------------------------------------------------------- Get Orders Filter ------------------------------------------------------
 
 # Provides sales between begin date and end date. 
+# Sales and Cancelled also. 
 @api.multi
 def get_orders_filter(self, date_bx, date_ex):
 

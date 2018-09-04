@@ -4,58 +4,24 @@
 
 
 
-		<!-- TREE --> 
+<!-- TREE --> 
 		<record model="ir.ui.view" id="management_order_line_view_tree">
-
 			<field name="name">openhealth.management.order.line.tree</field>
-			
 			<field name="model">openhealth.management.order.line</field>
-			
 			<field name="arch" type="xml">
-
-				<tree string="management order line Tree"
-
-
-						default_order='x_date_created desc'	
-
-						colors="
-						red:delta==2
-						"
-					>
-					
-<!--
-					<field name="management_id"/>
-					<field name="doctor_id"/>
--->
-
-
-
+				<tree string="management order line Tree">
 
 					<field name="patient"/>
+					
+					<field name="x_date_created"/>
+
+					<field name="serial_nr"/>
 
 					<field name="doctor"/>
-
-<!--					
-					<field name="name"/>
-					<field name="state"/>
-					<field name="price_unit"/>
--->
 
 					<field name="family"/>
 
 					<field name="sub_family"/>
-
-
-
-
-					<field name="serial_nr"/>
-
-					<field name="delta"/>
-					
-					<field name="x_date_created"/>
-
-
-
 
 					<field name="product_id"/>
 
@@ -65,6 +31,21 @@
 				</tree>
 			</field>
 		</record>
+<!--
+					<field name="management_id"/>
+					<field name="doctor_id"/>
+
+					<field name="delta"/>
+					<field name="name"/>
+					<field name="state"/>
+					<field name="price_unit"/>
+-->
+<!--
+						default_order='x_date_created desc'	
+						colors="
+						red:delta==2
+						"
+-->
 
 
 
@@ -100,60 +81,30 @@
 
 
 
-		<!-- Filter --> 
+<!-- FILTER --> 
 		<record id="view_management_order_line_filter" model="ir.ui.view">
 			<field name="name">Treatment Search</field>
-
 			<field name="model">openhealth.management.order.line</field>
-		   	
 		   	<field name="arch" type="xml">
-			   
 			   <search string="Ventas">
-				   
-<!--
-					<field 	name="patient" 
-
-                    	filter_domain="['|',('patient','ilike',self),('physician','ilike',self)]"/>
-
-					<field 	name="doctor_id"/>
--->
-
 					<field 	name="management_id"/>
-
-
-
 					<group expand="1" string="Group By">
 <!--
 						<filter name="Estado" context="{'group_by':'state'}"/>
+						<filter name="Delta" context="{'group_by':'delta'}"/>
 -->
 						<filter name="Médico" context="{'group_by':'doctor'}"/>
-
 						<filter name="Paciente" context="{'group_by':'patient'}"/>
-
 						<filter name="Familia" context="{'group_by':'family'}"/>
-
 						<filter name="Subfamilia" context="{'group_by':'sub_family'}"/>
-
 						<filter name="Reporte" context="{'group_by':'management_id'}"/>
-
-
-						<filter name="Delta" context="{'group_by':'delta'}"/>
 					</group>
 
 				   
-				   <!--
-				   <newline />
-				   <group expand="0" string="Group By...">
-					   <filter string="Patient" domain="[]" context="{'group_by':'patient'}" />
-				   </group>
-				   -->
 			   </search>
 		   </field>
 	   </record>
 
-
-
-		
 
 	</data>
 </openerp>

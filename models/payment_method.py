@@ -1,67 +1,110 @@
 # -*- coding: utf-8 -*-
 #
-# 	PaymentMethod 
+# 		PaymentMethod 
 #
-# 	Created: 			26 Aug 2016
-# 	Last up: 	 		26 Aug 2018
+# 		Created: 			26 Aug 2016
+# 		Last up: 	 		31 Aug 2018
 #
 from openerp import models, fields, api
+import pm_vars
 
-from . import pm_vars
+from openerp import _
+from openerp.exceptions import Warning
 
 class PaymentMethod(models.Model):
-	
-	#_inherit='openhealth.sale_document'
 
 	_name = 'openhealth.payment_method'
 
 
-# ----------------------------------------------------------- Admin - Editable ------------------------------------------------------
+# ----------------------------------------------------------- On Change ------------------------------------------------------
+	
+	# Onchange Pm Line Ids 
+	@api.onchange('pm_line_ids')
+	def _onchange_pm_line_ids(self):
+		print 
+		print 'On change - Line'
 
-	# Confirmed
-	confirmed = fields.Boolean(
-			default=False, 
-			readonly=True, 
-			string="Confirmado", 
+		pm_total = 0
+		ctr = 1
+		for line in self.pm_line_ids:
+			pm_total = pm_total + line.subtotal
+			ctr = ctr + 1 
+		
+		#self.balance = self.total - pm_total 
+		
+		self.balance = self.total - pm_total 
+		self.pm_total = pm_total
+		self.nr_pm = ctr
+	
+		if self.balance < 0: 
+			
+			# Raise Error 
+			msg = "Error: Subtotal incorrecto !"
+			raise Warning(_(msg))
+	
+	# _onchange_pm_line_ids
+
+
+
+# ----------------------------------------------------------- Paid ------------------------------------------------------
+
+	# Total Paid
+	pm_total = fields.Float(
+			string = 'Total pagado', 
+			#required=True, 
+			default=0, 
+
+			compute="_compute_pm_total",
 		)
 
-	# Editable
-	editable = fields.Boolean(
-			default=False, 
-			readonly=True, 
-			string="Editable", 
-		)
-
-
-	# For Admin Editing 
 	@api.multi
-	def state_force(self):  
-		if self.state == 'done': 
-			self.editable = True
-			self.confirmed = False
-		elif self.state == 'editable': 
-			self.editable = False
-			self.confirmed = True
+	#@api.depends('total', 'pm_total')
+	def _compute_pm_total(self):
+		print 
+		print 'Compute Pm Total'
+
+		for record in self:
+
+			pm_total = 0
+
+			for line in record.pm_line_ids:
+
+				pm_total = pm_total + line.subtotal
+
+			record.pm_total = pm_total
+			
+
+
+
+	# Balance 
+	balance = fields.Float(
+			string = 'Saldo',  
+			readonly=True, 
+			default=0, 
+
+			compute="_compute_balance",
+		)
+
+	@api.multi
+	#@api.depends('total', 'pm_total')
+	def _compute_balance(self):		
+		print 
+		print 'Compute Balance'
+
+		for record in self:
+			record.balance = record.total - record.pm_total
+
+
 
 
 # ----------------------------------------------------------- Locked ------------------------------------------------------
-
-	# States 
-	READONLY_STATES = {
-		'draft': 		[('readonly', False)], 
-		'sale': 		[('readonly', False)], 
-		'done': 		[('readonly', True)], 	
-		'editable': 	[('readonly', False)], 	
-	}
-
-
 	# Lines 
 	pm_line_ids = fields.One2many(
 			'openhealth.payment_method_line',
 			'payment_method',
 			string="Pago #", 
 			
-			states=READONLY_STATES, 
+			#states=READONLY_STATES, 
 		)
 
 
@@ -70,8 +113,10 @@ class PaymentMethod(models.Model):
 			string = 'Total a pagar', 
 			required=True, 
 
-			states=READONLY_STATES, 			
+			states=pm_vars.READONLY_STATES, 			
 		)
+
+
 
 
 	# Saledoc 
@@ -79,7 +124,7 @@ class PaymentMethod(models.Model):
 			string="Tipo", 
 			selection=pm_vars._sale_doc_type_list, 
 
-			states=READONLY_STATES, 
+			states=pm_vars.READONLY_STATES, 
 		)
 
 
@@ -88,7 +133,7 @@ class PaymentMethod(models.Model):
 	dni = fields.Char(
 			'DNI', 
 
-			states=READONLY_STATES, 
+			states=pm_vars.READONLY_STATES, 
 		)
 
 
@@ -96,7 +141,7 @@ class PaymentMethod(models.Model):
 	firm = fields.Char(
 			'Razón social',
 
-			states=READONLY_STATES, 
+			states=pm_vars.READONLY_STATES, 
 		)
 
 
@@ -104,7 +149,7 @@ class PaymentMethod(models.Model):
 	ruc = fields.Char(
 			'Ruc', 
 
-			states=READONLY_STATES, 
+			states=pm_vars.READONLY_STATES, 
 		)
 
 
@@ -144,22 +189,23 @@ class PaymentMethod(models.Model):
 	def _compute_state(self):
 		#print 
 		#print 'Compute State'
+		
 		for record in self:
+		
 			record.state = 'draft'
+		
 			if record.balance == 0.0		and		record.saledoc != False:
 				record.state = 'sale'
+		
 			if record.confirmed:
 				record.state = 'done'
+		
 			if record.editable:
 				record.state = 'editable'
 
 
-	# Balance 
-	balance = fields.Float(
-			string = 'Saldo',  
-			readonly=True, 
-			default=0, 
-		)
+
+
 
 
 	# Nr Payments
@@ -220,20 +266,6 @@ class PaymentMethod(models.Model):
 
 # ----------------------------------------------------------- Onchanges ------------------------------------------------------
 
-	# Onchange Pm Line Ids 
-	@api.onchange('pm_line_ids')
-	def _onchange_pm_line_ids(self):
-		#print 
-		#print 'On change - Line'
-		pm_total = 0
-		ctr = 1
-		for line in self.pm_line_ids:
-				pm_total = pm_total + line.subtotal
-				ctr = ctr + 1 
-		self.balance = self.total - pm_total 
-		self.nr_pm = ctr
-	# _onchange_pm_line_ids
-
 
 	# On change Sale Doc 
 	@api.onchange('saledoc')
@@ -244,6 +276,34 @@ class PaymentMethod(models.Model):
 			self.state = 'sale'
 	# _onchange_saledoc
 
+
+
+# ----------------------------------------------------------- Admin - Editable ------------------------------------------------------
+
+	# Confirmed
+	confirmed = fields.Boolean(
+			default=False, 
+			readonly=True, 
+			string="Confirmado", 
+		)
+
+	# Editable
+	editable = fields.Boolean(
+			default=False, 
+			readonly=True, 
+			string="Editable", 
+		)
+
+
+	# For Admin Editing 
+	@api.multi
+	def state_force(self):  
+		if self.state == 'done': 
+			self.editable = True
+			self.confirmed = False
+		elif self.state == 'editable': 
+			self.editable = False
+			self.confirmed = True
 
 
 # ----------------------------------------------------------- CRUD ------------------------------------------------------

@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
+#
+# 		clos_funcs.py
+# 
+# 		Created: 			       2016
+# 		Last up: 	 		 4 Sep 2018
 
 from openerp import models, fields, api
 import datetime
-
-
-
-
 
 
 
@@ -13,9 +14,7 @@ import datetime
 
 @api.multi
 def get_orders(self, date, x_type):
-
-
-	#print 'jx'
+	#print
 	#print 'Get Orders'
 	#print date 
 

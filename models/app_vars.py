@@ -5,13 +5,16 @@
 # State 
 _state_list = [
 				('pre_scheduled',	 		'No confirmado'),
-				('Scheduled', 				'Confirmado'),
-				#('pre_scheduled_control', 	'Pre-cita'),
-				('pre_scheduled_control', 	'Sin Hora (Control)'),
+				#('Scheduled', 				'Confirmado'),
+				('Scheduled', 				'Cita Confirmada'),
+				
+				#('pre_scheduled_control', 	'Sin Hora (Control)'),
+				#('pre_scheduled_session', 	'Sin Hora (Sesion)'),
+				('pre_scheduled_control', 	'Pre-cita'),
+				('pre_scheduled_session', 	'Pre-cita Sesion'),
 
-				('pre_scheduled_session', 	'Sin Hora (Sesion)'),
 
-
+				#('confirmable', 				'Confirmable'),
 
 				#('event', 					'Evento'),
 				#('invoiced', 				'Facturado'),

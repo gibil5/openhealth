@@ -60,3 +60,46 @@
 				}
 	# create_service_quick
 
+
+
+
+# ---------------------------------------------- Create Service - Vip --------------------------------------------------------
+
+	# Vip 
+	#@api.multi
+	#def create_service_vip(self):  
+
+		# Init 
+	#	patient_id = self.treatment.patient.id
+	#	physician_id = self.treatment.physician.id
+	#	treatment_id = self.treatment.id 
+	#	x_treatment = False		
+	#	zone = False			
+	#	pathology = ''
+		
+	#	return {
+	#			'type': 'ir.actions.act_window',
+	#			'name': ' New Service Current - Vip', 
+	#			'res_model': 'openhealth.service.vip',		
+				#'res_id': consultation_id,
+	#			"views": [[False, "form"]],
+				#'view_type': 'form',
+	#			'view_mode': 'form',	
+	#			'target': 'current',
+	#			'flags': 	{
+	#							'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+								#'form': {'action_buttons': False, }
+	#						},
+	#			'context': {							
+	#							'default_patient': patient_id,
+	#							'default_physician': physician_id,
+	#							'default_treatment': treatment_id,
+	#							'default_zone': zone,
+	#							'default_pathology': pathology,
+	#							'default_x_treatment': x_treatment,					
+	#						}
+	#			}
+	# create_service_vip
+
+
+

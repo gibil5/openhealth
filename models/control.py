@@ -2,35 +2,84 @@
 #
 # 	*** Control 	
 # 
-# Created: 				  1 Nov 2016
-# Last updated: 	 	 13 Aug 2018
+# 	Created: 			 1 Nov 2016
+# 	Last updated: 	 	 2 Sep 2018
 #
-
 from openerp import models, fields, api
 import datetime
-
-import eval_vars
 import app_vars
 import time_funcs
-
 import lib
 import user
+
+import eval_vars
+import control_vars
 
 class Control(models.Model):
 	
 	_name = 'openhealth.control'
 
-	#_inherit = 'oeh.medical.evaluation'
 	_inherit = ['oeh.medical.evaluation', 'base_multi_image.owner']
 
 
+# ----------------------------------------------------------- Dates ------------------------------------------------------
+
+	# Date
+	evaluation_start_date = fields.Datetime(
+			string = "Fecha", 	
+			required=False, 
+		
+			#compute='_compute_evaluation_start_date', 
+			#compute='_compute_evaluation_start_date_nex', 
+		)
+
+	@api.multi
+	#@api.depends('state')
+	#def _compute_evaluation_start_date(self):
+	def _compute_evaluation_start_date_nex(self):
+		print 
+		print 'Compute - Eval Start Date'
+		for record in self:
+			print record.appointment.appointment_date
+			record.evaluation_start_date = record.appointment.appointment_date
+
+
+
+
+
+
+	# Real date 
+	control_date = fields.Datetime(
+			string = "Fecha Real",
+			readonly=True, 	
+
+			compute='_compute_control_date', 
+		)
+	@api.multi
+	#@api.depends('state')
+	def _compute_control_date(self):
+		print 
+		print 'Compute - Control Date'
+		for record in self:
+			print record.appointment.appointment_date
+			record.control_date = record.appointment.appointment_date
+
+
+
+
+	# First date 
+	first_date = fields.Datetime(
+			string = "Fecha Inicial", 		
+			readonly=True, 	
+		)
 
 
 # ----------------------------------------------------------- State ------------------------------------------------------
 	
 	# State 
 	state = fields.Selection(
-			selection = eval_vars._state_list, 
+
+			selection = control_vars._state_list, 
 			
 			compute='_compute_state', 
 		)
@@ -43,10 +92,12 @@ class Control(models.Model):
 
 			state = 'draft'
 
+			if record.appointment.state in ['Scheduled']: 
+				state = 'app_confirmed'
+
 			if record.x_done: 
 				state = 'done'
 
-			#elif record.state == 'draft' and record.maturity > 90: 
 			elif record.maturity > 90: 
 				state = 'cancel'
 
@@ -68,7 +119,6 @@ class Control(models.Model):
 
 	# Maturity
 	maturity = fields.Integer(
-			#string="Maturity", 
 			string="Madurez", 
 
 			compute='_compute_maturity', 
@@ -126,61 +176,6 @@ class Control(models.Model):
 
 
 
-
-# ----------------------------------------------------------- Dates ------------------------------------------------------
-
-	# First date 
-	first_date = fields.Datetime(
-			string = "Fecha Inicial", 		
-			readonly=True, 	
-		)
-
-
-
-
-	# Real date 
-	control_date = fields.Datetime(
-			string = "Fecha Real",
-			
-			readonly=True, 	
-
-			#compute='_compute_control_date', 
-		)
-
-	#@api.multi
-	#@api.depends('state')
-	#def _compute_control_date(self):
-	#	print 
-	#	print 'Compute - Control Date'
-	#	for record in self:
-	#		print record.appointment.appointment_date
-	#		record.control_date = record.appointment.appointment_date
-
-
-
-
-	# Dates 
-	evaluation_start_date = fields.Datetime(
-	
-			string = "Fecha", 	
-	
-			#required=True, 
-			required=False, 
-			readonly=True, 	
-		
-			#compute='_compute_evaluation_start_date', 
-			#compute='_compute_evaluation_start_date_nex', 
-		)
-
-	@api.multi
-	#@api.depends('state')
-	#def _compute_evaluation_start_date(self):
-	def _compute_evaluation_start_date_nex(self):
-		print 
-		print 'Compute - Eval Start Date'
-		for record in self:
-			print record.appointment.appointment_date
-			record.evaluation_start_date = record.appointment.appointment_date
 
 
 
@@ -471,7 +466,7 @@ class Control(models.Model):
 		# Done 
 		if self.x_done == False: 
 			self.x_done = True
-			self.control_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+			#self.control_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 		else:
 			self.x_done = False
 
@@ -480,13 +475,9 @@ class Control(models.Model):
 
 
 		# Actual Doctor 
-
-		#doctor_id = treatment_funcs.get_actual_doctor(self)
-		#doctor = lib.get_actual_doctor(self)
-		doctor = user.get_actual_doctor(self)
-
-		print doctor
-		self.doctor = doctor
+		#doctor = user.get_actual_doctor(self)
+		#print doctor
+		#self.doctor = doctor
 
 
 

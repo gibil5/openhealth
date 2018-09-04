@@ -90,7 +90,8 @@ class Product(models.Model):
 			'product.category',
 			'Internal Category', 
 
-			required=True, 
+			#required=True, 
+			required=False, 
 			
 			change_default=True, 
 			domain="[('type','=','normal')]" ,

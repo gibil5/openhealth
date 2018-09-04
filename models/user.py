@@ -1,16 +1,55 @@
 # -*- coding: utf-8 -*-
 #
-# 	user.py
+# 		user.py
 # 
-# 	Bussiness oriented. 
-# 	Can not be Unit-tested (depends on a third-party library: Odoo). 
+# 		Bussiness oriented. 
+# 		Can not be Unit-tested (depends on a third-party library: Odoo). 
 # 
-# Created: 			13 Aug 2018
-# Last up: 	 		14 Aug 2018
+# 		Created: 			13 Aug 2018
+# 		Last up: 	 		14 Aug 2018
 #
 import datetime
 import creates as cre
 
+
+
+
+#------------------------------------------------ Get Delta ---------------------------------------------------
+
+# Get the Counter QC Delta 
+def get_delta(self):
+	#print 
+	#print 'User - Get Delta'
+
+	#print self
+	#print self.name 
+	#print self.x_type
+	#print self.value
+
+	# Order 
+	order = self.env['sale.order'].search([
+												('x_type', '=', self.name),
+												('state', '=', 'sale'),
+											],
+											order='date_order desc',
+											limit=1,
+										)
+	#print order
+	#print order.date_order
+	#print order.x_type
+	#print order.x_serial_nr
+	#print order.x_counter_value 
+
+
+	#if order.x_counter_value != False: 
+	#if order.x_counter_value != 55: 
+	#	delta = self.value - order.x_counter_value
+	#else:
+	#	delta = 55
+
+	delta = self.value - order.x_counter_value
+
+	return delta
 
 
 

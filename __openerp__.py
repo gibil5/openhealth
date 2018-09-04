@@ -14,7 +14,7 @@
 
 	'description': """
 
-		28 Aug 2018
+		4 Sep 2018
 
 		Fulcrum 
 		
@@ -396,7 +396,7 @@
 
 
 		# Recommendation
-		'views/recommendations/recommendation.xml',
+		#'views/recommendations/recommendation.xml',
 
 
 		# Treatments 

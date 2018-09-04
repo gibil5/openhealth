@@ -7,15 +7,51 @@
 #
 from openerp import models, fields, api
 from datetime import datetime
-import serv_funcs
 import service_co2_vars
+import prodvars
+
+#import serv_funcs
 
 class ServiceCo2(models.Model):
 	_name = 'openhealth.service.co2'
 	_inherit = 'openhealth.service'
 	
 
-# ---------------------------------------------- Fields --------------------------------------------------------
+
+# ---------------------------------------------- Default --------------------------------------------------------
+	# Laser 
+	laser = fields.Selection(
+			selection = prodvars._laser_type_list, 
+			string="Láser", 			
+			
+			#default='none',			
+			default='laser_co2',			
+			
+			#required=True, 
+			index=True,
+		)
+
+
+	# Pathology
+	pathology = fields.Selection(
+			selection = prodvars._pathology_list, 
+
+			#default='acne_sequels_1',
+
+			string="Patología", 
+		)
+
+
+	# Zone 
+	zone = fields.Selection(
+			selection = prodvars._zone_list, 
+
+			#default='body_local',			
+
+			string="Zona", 
+		)
+
+
 	# Service 
 	service = fields.Many2one(
 			'product.template',
@@ -215,7 +251,7 @@ class ServiceCo2(models.Model):
 			self.co2_hands = self.clear_all(self.co2_hands)
 			self.zone = 'hands'
 			self.pathology = self.co2_hands
-			serv_funcs.product(self)
+			self.get_product()
 			return {
 					'domain': {'service': [
 											('x_treatment', '=', self.laser),
@@ -231,7 +267,7 @@ class ServiceCo2(models.Model):
 			self.co2_neck = self.clear_all(self.co2_neck)
 			self.zone = 'neck'
 			self.pathology = self.co2_neck
-			serv_funcs.product(self)
+			self.get_product()
 			return {
 					'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 					}
@@ -243,7 +279,7 @@ class ServiceCo2(models.Model):
 			self.co2_cheekbone = self.clear_all(self.co2_cheekbone)
 			self.zone = 'cheekbones'
 			self.pathology = self.co2_cheekbone
-			serv_funcs.product(self)
+			self.get_product()
 			return {
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 			}
@@ -255,7 +291,7 @@ class ServiceCo2(models.Model):
 			self.co2_cheekbone_stains = self.clear_all(self.co2_cheekbone_stains)
 			self.zone = 'cheekbones'
 			self.pathology = self.co2_cheekbone_stains
-			serv_funcs.product(self)
+			self.get_product()
 			return {
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 			}
@@ -267,7 +303,7 @@ class ServiceCo2(models.Model):
 			self.co2_vagina = self.clear_all(self.co2_vagina)
 			self.zone = 'vagina'
 			self.pathology = self.co2_vagina
-			serv_funcs.product(self)
+			self.get_product()
 			return {
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 			}
@@ -282,7 +318,7 @@ class ServiceCo2(models.Model):
 			self.co2_allface_rejuvenation = self.clear_all(self.co2_allface_rejuvenation)
 			self.zone = 'face_all'
 			self.pathology = self.co2_allface_rejuvenation
-			serv_funcs.product(self)
+			self.get_product()
 			return {
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 			}	
@@ -294,7 +330,7 @@ class ServiceCo2(models.Model):
 			self.co2_allface_acnesequels = self.clear_all(self.co2_allface_acnesequels)
 			self.zone = 'face_all'
 			self.pathology = self.co2_allface_acnesequels
-			serv_funcs.product(self)
+			self.get_product()
 			return {
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 			}	
@@ -306,7 +342,7 @@ class ServiceCo2(models.Model):
 			self.co2_allface_stains = self.clear_all(self.co2_allface_stains)
 			self.zone = 'face_all'
 			self.pathology = self.co2_allface_stains
-			serv_funcs.product(self)
+			self.get_product()
 			return {
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 			}	
@@ -320,7 +356,7 @@ class ServiceCo2(models.Model):
 			self.co2_lf_scar = self.clear_all(self.co2_lf_scar)			
 			self.zone = 'face_local'
 			self.pathology = self.co2_lf_scar
-			serv_funcs.product(self)
+			self.get_product()
 			return {
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 			}	
@@ -331,7 +367,7 @@ class ServiceCo2(models.Model):
 			self.co2_lf_mole = self.clear_all(self.co2_lf_mole)
 			self.zone = 'face_local'
 			self.pathology = self.co2_lf_mole
-			serv_funcs.product(self)
+			self.get_product()
 			return {
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 			}
@@ -342,7 +378,7 @@ class ServiceCo2(models.Model):
 			self.co2_lf_stains = self.clear_all(self.co2_lf_stains)			
 			self.zone = 'face_local'
 			self.pathology = self.co2_lf_stains
-			serv_funcs.product(self)
+			self.get_product()
 			return {
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 			}
@@ -353,7 +389,7 @@ class ServiceCo2(models.Model):
 			self.co2_lf_keratosis = self.clear_all(self.co2_lf_keratosis)			
 			self.zone = 'face_local'
 			self.pathology = self.co2_lf_keratosis
-			serv_funcs.product(self)
+			self.get_product()
 			return {
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 			}
@@ -364,7 +400,7 @@ class ServiceCo2(models.Model):
 			self.co2_lf_cyst = self.clear_all(self.co2_lf_cyst)
 			self.zone = 'face_local'
 			self.pathology = self.co2_lf_cyst
-			serv_funcs.product(self)
+			self.get_product()
 			return {
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 			}
@@ -375,7 +411,7 @@ class ServiceCo2(models.Model):
 			self.co2_lf_wart = self.clear_all(self.co2_lf_wart)
 			self.zone = 'face_local'
 			self.pathology = self.co2_lf_wart
-			serv_funcs.product(self)
+			self.get_product()
 			return {
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 			}
@@ -389,7 +425,7 @@ class ServiceCo2(models.Model):
 			self.co2_lb_acneseq = self.clear_all(self.co2_lb_acneseq)
 			self.zone = 'body_local'
 			self.pathology = self.co2_lb_acneseq			
-			serv_funcs.product(self)
+			self.get_product()
 			return {
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 			}	
@@ -400,7 +436,7 @@ class ServiceCo2(models.Model):
 			self.co2_lb_scar = self.clear_all(self.co2_lb_scar)
 			self.zone = 'body_local'
 			self.pathology = self.co2_lb_scar
-			serv_funcs.product(self)
+			self.get_product()
 			return {
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 			}	
@@ -411,7 +447,7 @@ class ServiceCo2(models.Model):
 			self.co2_lb_mole = self.clear_all(self.co2_lb_mole)
 			self.zone = 'body_local'
 			self.pathology = self.co2_lb_mole
-			serv_funcs.product(self)
+			self.get_product()
 			return {
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 			}	
@@ -422,7 +458,7 @@ class ServiceCo2(models.Model):
 			self.co2_lb_stains = self.clear_all(self.co2_lb_stains)
 			self.zone = 'body_local'
 			self.pathology = self.co2_lb_stains
-			serv_funcs.product(self)
+			self.get_product()
 			return {
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 			}
@@ -433,7 +469,7 @@ class ServiceCo2(models.Model):
 			self.co2_lb_keratosis = self.clear_all(self.co2_lb_keratosis)
 			self.zone = 'body_local'
 			self.pathology = self.co2_lb_keratosis
-			serv_funcs.product(self)
+			self.get_product()
 			return {
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 			}
@@ -444,7 +480,7 @@ class ServiceCo2(models.Model):
 			self.co2_lb_cyst = self.clear_all(self.co2_lb_cyst)
 			self.zone = 'body_local'
 			self.pathology = self.co2_lb_cyst
-			serv_funcs.product(self)
+			self.get_product()
 			return {
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 			}
@@ -455,7 +491,7 @@ class ServiceCo2(models.Model):
 			self.co2_lb_wart = self.clear_all(self.co2_lb_wart)
 			self.zone = 'body_local'
 			self.pathology = self.co2_lb_wart
-			serv_funcs.product(self)
+			self.get_product()
 			return {
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology)]},
 			}

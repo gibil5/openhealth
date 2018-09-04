@@ -1,5 +1,49 @@
 
 
+# ----------------------------------------------------------- Create Service - Dep ------------------------------------------------------
+	# Create Service 
+	@api.multi
+	def create_service_dep(self):
+
+		#print 
+		#print 'Open Service Selector'
+
+		treatment_id = self.id
+
+ 		if self.recommendation.name == False: 
+ 			#print 'Create'
+			self.recommendation = self.env['openhealth.recommendation'].create({
+																					'treatment': 	self.id, 	
+				})
+		
+		res_id = self.recommendation.id 
+
+		return {
+			# Mandatory 
+			'type': 'ir.actions.act_window',
+			'name': 'Open Consultation Current',
+			# Window action 
+
+			'res_id': res_id,
+			'res_model': 'openhealth.recommendation',
+			
+			# Views 
+			"views": [[False, "form"]],
+			'view_mode': 'form',
+			'target': 'current',
+			#'view_id': view_id,
+			#"domain": [["patient", "=", self.patient.name]],
+			#'auto_search': False, 
+			'flags': {
+					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+					#'form': {'action_buttons': True, }
+					'form': {'action_buttons': False, }
+					},			
+			'context': {
+							'default_treatment': treatment_id,					
+					}
+		}
+	# create_service
 
 
 
@@ -819,3 +863,7 @@
 #from . import pat_vars
 #from . import treatment_vars
 #from datetime import tzinfo
+
+
+
+

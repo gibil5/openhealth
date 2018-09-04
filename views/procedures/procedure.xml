@@ -16,39 +16,39 @@
 					<header>
 
 
+
+
+
+						<!-- Controls -->
+<!--
+							groups="openhealth.roots,openhealth.archivers,openhealth.managers,openhealth.physicians,openhealth.directors"
+-->
+						<button 
+							type="object" 
+							class="oe_highlight"
+							attrs="{'invisible':[
+													('laser', '!=', 'laser_quick'), 
+													('laser', '!=', 'laser_co2'), 
+												]}"
+							name="create_controls" 
+
+							string="Crear Controles"							
+						/>
+
+
+
 						<!-- Sessions -->
 						<!--
 							attrs="{ 'invisible':[	('number_sessions','==',1), 	]}"
+							groups="openhealth.roots,openhealth.archivers,openhealth.managers,openhealth.physicians,openhealth.directors"
 						--> 
 						<button 
 							type="object" 
 							class="oe_highlight"
 							name="create_sessions" 	
 
-							groups="openhealth.roots,openhealth.archivers,openhealth.managers,openhealth.physicians,openhealth.directors"
-
 							string="Crear Sesiones"
 						/>
-
-
-
-						<!-- Controls -->
-						<button 
-							type="object" 
-							class="oe_highlight"
-
-							groups="openhealth.roots,openhealth.archivers,openhealth.managers,openhealth.physicians,openhealth.directors"
-							
-							attrs="{'invisible':[
-													('laser', '!=', 'laser_quick'), 
-													('laser', '!=', 'laser_co2'), 
-												]}"
-
-							string="Crear Controles"
-							
-							name="create_controls" 
-						/>
-
 
 
 
@@ -77,10 +77,8 @@
 						<button 
 							type="object" 
 							class="oe_highlight"
-
-							name="clear_sessions" 	
-
 							groups="openhealth.roots"
+							name="clear_sessions" 	
 
 							string="Clear Sessions"
 						/>
@@ -95,14 +93,11 @@
 						<button 
 							type="object" 
 							class="oe_highlight"
-
 							attrs="{'invisible':[
 													('laser', 'not in', ['laser_quick', 'laser_co2']), 
 												]}"
-
-							name="clear_controls" 	
-
 							groups="openhealth.roots"
+							name="clear_controls" 	
 
 							string="Clear Controls"
 						/>
@@ -115,6 +110,7 @@
 								type="object" 		
 								class="oe_highlight oe_right"
 								name="open_treatment"
+								
 								string="Regresar al TRATAMIENTO"
 							/>
 					</header>

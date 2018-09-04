@@ -4,79 +4,35 @@
 		
 
 
-
-		<!-- FORM --> 
+<!-- FORM --> 
 		<record model="ir.ui.view" id="management_form_view">
-			<field name="name">management.form</field>
-			
+			<field name="name">management.form</field>			
 			<field name="model">openhealth.management</field>
-			
 			<field name="arch" type="xml">
-
 				<form string="Management Form">
-					
-
 
 					<!-- Header -->
 					<header>
-
 
 						<!-- Update -->
 						<button 
 								type="object" 
 								class="oe_highlight"
-
-								name="update"
+								
+								name="update_fast"
 
 								string="Actualizar"								
 						/>
 
-
-
-						<!-- Update Sales -->
-						<!-- Update Stats -->
-						<!-- Update counters -->
-						<!-- Update QC -->
-<!--						
+						<!-- Update Doctors -->
 						<button 
 								type="object" 
 								class="oe_highlight"
+								
+								name="update_doctors"
 
-								name="update_sales"
-
-								string="Actualizar Ventas"								
+								string="Analisis por Doctor"								
 						/>
-
-						<button 
-								type="object" 
-								class="oe_highlight"
-
-								name="update_stats"
-
-								string="Stats"								
-						/>
-
-						<button 
-								type="object" 
-								class="oe_highlight"
-
-								name="update_counters"
-
-								string="Counters"								
-						/>
-
-						<button 
-								type="object" 
-								class="oe_highlight"
-
-								name="update_qc"
-
-								string="Quality Control"								
-						/>
--->
-
-
-
 
 
 
@@ -84,132 +40,111 @@
 						<button 
 								class="oe_highlight"
 								type="action" 
-
 								context="{
 											'search_default_management_id': active_id,	
-										}" 											
-								
+										}" 																			
 								name="%(management_family_line_form_action)d" 
 
 								string="Ver Familias"	
 						/>
 
-
-
 						<!-- Doctores -->
 						<button 
 								class="oe_highlight"
 								type="action" 
-
 								context="{
 											'search_default_management_id': active_id,	
 										}" 											
-								
 								name="%(management_doctor_line_form_action)d" 
 
-								string="Doctores"	
+								string="Ver Doctores"	
 						/>
-
-
 
 						<!-- Sales -->
 						<button 
 								class="oe_highlight"
 								type="action" 
-
 								context="{
 											'search_default_management_id': active_id,	
 										}" 											
-								
 								name="%(management_order_line_form_action)d" 
 
-								string="Ventas"	
+								string="Ver Ventas"	
 						/>
 
 
 
-						<!-- Test -->
-						<!-- Clear -->
-<!--
+						<!-- Reset -->
 						<button 
 								type="object" 
 								class="oe_highlight oe_right"
+								name="reset"
 
-								name="test_integration"
-
-								string="TEST INTEGRATION"								
+								string="Clean"								
 
 								groups="openhealth.roots"
 						/>
 
+
+
+						<!-- Legacy -->
+<!--						
 						<button 
 								type="object" 
 								class="oe_highlight oe_right"
+								name="sales_legacy"
 
-								name="test_clear"
-
-								string="Clear"								
+								string="Legacy"								
 
 								groups="openhealth.roots"
 						/>
--->
+-->						
 
+						<!-- Reset -->
+						<button 
+								type="object" 
+								class="oe_highlight oe_right"
+								
+								name="export_txt"
+
+								string="Export"								
+
+								groups="openhealth.roots"
+						/>
+						
 					</header>
 
 
 					<!-- Sheet -->	
 					<sheet>
 
-						<group 	col="4"	groups='openhealth.roots'  >
-
+						<group 		col="2"		groups='openhealth.roots'  >
 							<group>
-<!--								
-								<field name="test"/>
--->
 			                    <field name="test_target"/>
-
-								<field name="nr_delta"/>
+			                    <field name="legacy"/>
 							</group>
-								
 							<group>
-								<field name="prod_test"/>
-								<field name="consu_test"/>
-							</group>
-						
-							<group>
-								<field name="laser_test"/>
-								<field name="medi_test"/>
-							</group>
-
-							<group>
-								<field name="cosme_test"/>
-								<field name="other_test"/>
-							</group>
+								<field name="delta_1"/>
+								<field name="delta_2"/>
+							</group>						
 						</group>
 
 
 
-
-						<group	string="Totales"	col="2"		>
+						<!-- Totals --> 
+						<group	string="Totales"	col="2">
 
 							<group>
 								<field name="name"/>
-
 								<field name="date_begin"/>
-
 								<field name="date_end"/>
 <!--
 								<field name="write_date"	string="Actualizado"/>
 -->
-								<field name="write_date"	string="Actualizado"/>
 							</group>
-
-							
 							<group>
 								<field name="total_amount"/>
-
 								<field name="total_count"	string="Nr Ventas"	/>
-
 								<field name="total_tickets"/>
 							</group>
 <!--
@@ -222,169 +157,93 @@
 
 
 
+						<!-- Type --> 
+						<group	string="Tipo"	col="3">
+							<group>
+								<field name="nr_products"	string="Productos Nr"	/>
+								<field name="nr_services"	string="Servicios Nr"/>
+							</group>						
+							<group>
+								<field name="amo_products"	string="Monto"	/>
+								<field name="amo_services"	string="Monto"	/>
+							</group>
+							<group>
+								<field name="avg_products"	string="Precio Prom."	/>
+								<field name="avg_services"	string="Precio Prom."	/>
+							</group>
+						</group>
+
+
+
+						<!-- Families --> 
+						<group	string="Familias"	col="3"	>
+							<group>
+								<field name="nr_consultations"	string="Consultas Nr"/>
+								<field name="nr_procedures"		string="Procedimientos Nr"/>
+							</group>
+							<group>
+								<field name="amo_consultations"	string="Monto"	/>
+								<field name="amo_procedures"	string="Monto"	/>
+							</group>
+							<group>
+								<field name="avg_consultations"	string="Precio Prom."	/>
+								<field name="avg_procedures"	string="Precio Prom."	/>
+							</group>
+						</group>
+
+
+
 						<!-- Ratios --> 
 						<group	string="Ratios"	col="3"	>
 							<group>
 								<field name="ratio_pro_con"/>
 							</group>
-						
-							<group>
-							</group>
-
-							<group>
-							</group>
+							<group></group>
+							<group></group>
 						</group>
-
-
-
-
-
-<!--
-								<field name="nr_products"	string="Productos"	/>
-								<field name="nr_procedures"	string="Procedimientos"	/>
-								<field name="amo_products"		string="Productos"	/>
-								<field name="amo_procedures"	string="Procedimientos"	/>
-								<field name="avg_products"		string="Productos"	/>
-								<field name="avg_procedures"	string="Procedimientos"	/>
--->
-
-						<!-- Families --> 
-						<group	string="Familias"	col="3"	>
-							<group>
-								<field name="nr_consultations"/>
-								<field name="nr_products"/>
-								<field name="nr_procedures"/>
-							</group>
-						
-							<group>
-								<field name="amo_consultations"		/>
-								<field name="amo_products"/>
-								<field name="amo_procedures"/>
-							</group>
-
-							<group>
-								<field name="avg_consultations"			/>
-								<field name="avg_products"/>
-								<field name="avg_procedures"/>
-							</group>
-						</group>
-
 
 
 
 						<!-- Sub-Families --> 
 						<group	string="Sub Familias"	col="3"	>
 							<group>
-								<field name="nr_co2"/>
-								<field name="nr_exc"/>
-								<field name="nr_ipl"/>
-								<field name="nr_ndyag"/>
-								<field name="nr_quick"/>
-
-								<field name="nr_medical"/>
-								<field name="nr_cosmetology"/>
+								<field name="nr_co2"	string="Co2 Nr"	/>
+								<field name="nr_exc"	string="Exc Nr"	/>
+								<field name="nr_ipl"	string="Ipl Nr"	/>
+								<field name="nr_ndyag"	string="Ndyag Nr"	/>
+								<field name="nr_quick"	string="Quick Nr"	/>
+								<field name="nr_medical"		string="TM Nr"	/>
+								<field name="nr_cosmetology"	string="Cosmeatria Nr"	/>
 							</group>
-						
 							<group>
-								<field name="amo_co2"/>
-								<field name="amo_exc"/>
-								<field name="amo_ipl"/>
-								<field name="amo_ndyag"/>
-								<field name="amo_quick"/>
-								
-								<field name="amo_medical"/>
-								<field name="amo_cosmetology"/>
+								<field name="amo_co2"	string="Monto"/>
+								<field name="amo_exc"	string="Monto"/>
+								<field name="amo_ipl"	string="Monto"/>
+								<field name="amo_ndyag"	string="Monto"/>
+								<field name="amo_quick"	string="Monto"/>
+								<field name="amo_medical"		string="Monto"/>
+								<field name="amo_cosmetology"	string="Monto"/>
 							</group>
-
 							<group>
-								<field name="avg_co2"/>
-								<field name="avg_exc"/>
-								<field name="avg_ipl"/>
-								<field name="avg_ndyag"/>
-								<field name="avg_quick"/>
-
-								<field name="avg_medical"/>
-								<field name="avg_cosmetology"/>
+								<field name="avg_co2"	string="Precio Prom."	/>
+								<field name="avg_exc"	string="Precio Prom."	/>
+								<field name="avg_ipl"	string="Precio Prom."	/>
+								<field name="avg_ndyag"	string="Precio Prom."	/>
+								<field name="avg_quick"		string="Precio Prom."	/>
+								<field name="avg_medical"		string="Precio Prom."	/>
+								<field name="avg_cosmetology"	string="Precio Prom."	/>
 							</group>
 						</group>
 
-
-
-
-<!--
-						<group>
-							<group>
-							</group>
-						
-							<group>
-							</group>
-						</group>
--->
 
 
 						<!-- Notebook --> 
 						<notebook>	
 
-
-
-
-							<!-- Orders --> 
-							<page	string="Ventas">
-
-								<field name="order_line">
-
-
-									<tree string="Ventas"	limit="500"		default_order='x_date_created desc'	
-
-										colors="
-										red:delta==2
-										"
-										>	
-<!--
-										green:state=='sent';
-										blue:state=='sale';
-										grey:state in ('cancel')
--->
-
-										<field name="patient"/>
-
-										<field name="doctor"/>
-
-										<field name="serial_nr"/>
-
-										<field name="delta"/>
-
-										<field name="x_date_created"/>
-
-										<field name="family"/>
-
-										<field name="sub_family"/>
-
-										<field name="product_id"/>
-
-										<field name="product_uom_qty"/>
-
-										<field name="price_unit"/>
-
-										<field name="price_subtotal"/>
-
-									</tree>
-								</field>
-							</page>
-
-<!--
-										<field name="name"/>
-										<field name="state"/>
-								<field name="order_line"/>
--->
-
-
-
 							<!-- Doctores --> 
 							<page	string="Por Doctor">
 								<field name="doctor_line">
-									<tree string="Doctor"	limit="1000"	>	
-										
+									<tree string="Doctor">											
 										<!-- Open Button -->
 										<button 
 											type="object" 
@@ -392,102 +251,52 @@
 											name="open_line_current" 
 											string="e"
 										/>
-
-
-
 										<field name="name"/>
-
 										<field name="nr_consultations"/>
-
 										<field name="nr_procedures"/>
-
 										<field name="nr_products"/>
-
-
-
-<!--
-										<field name="nr_procedures_co2"/>
-
-										<field name="nr_procedures_quick"/>
-
-										<field name="nr_medicals"/>
--->
-
-
 										<field name="ratio_pro_con"/>
-
 										<field name="ratio_pro_con_co2"/>
-
 										<field name="ratio_pro_con_quick"/>
-
-
-
-
 										<field name="x_count"/>
-									
 										<field name="amount"/>
 									</tree>
 								</field>
 							</page>
-
-
-
-
+<!--
+										<field name="nr_procedures_co2"/>
+										<field name="nr_procedures_quick"/>
+										<field name="nr_medicals"/>
+-->
 
 
 
 							<!-- Familias --> 
 							<page	string="Familias">
-
-								<field name="family_line">
-								
-									<tree string="Familia"	limit="1000"	>	
-								
-
+								<field name="family_line">								
+									<tree string="Familia">	
 										<field name="idx"/>
-
-
-
 										<field name="name_sp"/>
-
 										<field name="meta_sp"/>
-<!--
-										<field name="name"/>
-
-										<field name="meta"/>
--->
-
-
 										<field name="amount"/>
-
 										<field name="x_count"/>
-
 									</tree>
 								</field>
 							</page>
-
+<!--
+										<field name="name"/>
+										<field name="meta"/>
+-->
 
 
 
 							<!-- Sub Familias --> 
 							<page	string="Sub Familias">
-
 								<field name="sub_family_line">
-								
-									<tree string="Subfamilia"	limit="1000"	>	
-								
-
+									<tree string="Subfamilia">	
 										<field name="idx"/>
-
-
 										<field name="name_sp"/>
 										<field name="meta_sp"/>
-
-<!--
-										<field name="name"/>
-										<field name="meta"/>
--->
-
 										<field name="x_count"/>
 										<field name="amount"/>
 									</tree>
@@ -495,6 +304,44 @@
 							</page>
 
 
+
+
+							<!-- Orders --> 
+<!--							
+							<page	string="Ventas">
+								<field name="order_line">
+									<tree string="Ventas"	default_order='x_date_created desc'>	
+										<field name="patient"/>
+										<field name="doctor"/>
+										<field name="serial_nr"/>
+										<field name="delta"/>
+										<field name="x_date_created"/>
+										<field name="family"/>
+										<field name="sub_family"/>
+										<field name="product_id"/>
+										<field name="product_uom_qty"/>
+										<field name="price_unit"/>
+										<field name="price_subtotal"/>
+									</tree>
+								</field>
+							</page>
+-->
+
+<!--
+										<field name="name"/>
+										<field name="state"/>
+-->
+<!--
+									<tree string="Ventas"	limit="500"		default_order='x_date_created desc'	
+
+										colors="
+										red:delta==2
+										"
+
+										green:state=='sent';
+										blue:state=='sale';
+										grey:state in ('cancel')
+-->
 
 						</notebook>
 					</sheet>
@@ -505,80 +352,58 @@
 
 
 
-	
-		<!-- TREE --> 
+
+<!-- TREE --> 
 		<record model="ir.ui.view" id="management_view_tree">
 			<field name="name">openhealth.management.tree</field>
 			<field name="model">openhealth.management</field>
 			<field name="arch" type="xml">
-
-<!--
-				<tree string="Account Contasis Tree" default_order='date desc'>
--->
 				<tree string="Management Tree">
-					
-
 					<field name="name"/>
 
-					<field name="test_target"/>
-
-
-<!--
-					<field name="write_date"	string="Actualizado"/>
--->
-					<field name="date_begin"	string="Fecha Inicio"/>
-
-					<field name="date_end"		string="Fecha Fin"/>
+					<field name="test_target"	groups="openhealth.roots"/>
+					<field name="delta_1"		string="D 1"	groups="openhealth.roots"/>
+					<field name="delta_2"		string="D 2"	groups="openhealth.roots"/>
 
 					<field name="total_count"/>
-
-					<field name="total_tickets"/>
-
-
-
 					<field name="nr_consultations"/>
 					<field name="nr_procedures"/>
 					<field name="ratio_pro_con"/>
-
-
-
+					<field name="total_tickets"/>
 					<field name="total_amount"/>
 				</tree>
 			</field>
 		</record>
+<!--
+					<field name="date_begin"	string="Fecha Inicio"/>
+					<field name="date_end"		string="Fecha Fin"/>
+					<field name="write_date"	string="Actualizado"/>
+-->
 
 
 
 
-
-
-
-		<!-- ACTION - Order -->
+<!-- ACTION - Order -->
 		<record model="ir.actions.act_window" id="management_list_action">
-
 			<field name="name">Análisis de Ventas</field>
-			
 			<field name="res_model">openhealth.management</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
-
 			<field name="domain">[]</field>
-
 			<field name="context">{}</field>
+
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					This is my first Help !
+				</p>
+			</field>
 
 			<!--
 			<field name="domain">[]</field>
 			<field name="context">{}</field>
 			<field name="view_id" eval="False"/>			
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first order
-				</p>
-			</field>
 			-->
 		</record>
-
-
-
 
 	</data>
 </openerp>

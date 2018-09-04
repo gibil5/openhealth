@@ -8,9 +8,6 @@
 		<record model="ir.ui.view" id="recommendation_form_view">
 			<field name="name">recommendation.form</field>
 			<field name="model">openhealth.recommendation</field>			
-			<!--
-			<field name="priority" eval="1"/>
-			-->
 			<field name="arch" type="xml">
 				<form string="Evaluation">
 
@@ -18,57 +15,30 @@
 					<header>
 
 
-							<!-- Vip --> 
-<!--
-							<button 
-								type="object" 
-								class="oe_highlight"	
-
-								name="create_service_vip" 	
-
-								string="VIP"
-							/>
--->
-
-
-
 							<!-- Product --> 
 							<button 
 								type="object" 
 								class="oe_highlight"	
-
 								name="create_service_product" 	
 
 								string="PRODUCTOS"
 							/>
 
 
-
-
-
-
-
-<!--
-								string="CO2"
--->
 							<!-- CO2 --> 
 							<button 
 								type="object" 
 								class="oe_highlight"	
-
 								name="create_service_co2" 	
 
 								string="LASER CO2"
 							/>
 
 
-
-
 							<!-- Quick --> 
 							<button 
 								type="object" 
 								class="oe_highlight"	
-
 								name="create_service_quick" 	
 
 								string="QUICK LASER"
@@ -79,7 +49,6 @@
 							<button 
 								type="object" 
 								class="oe_highlight"	
-				
 								name="create_service_excilite" 	
 
 								string=" EXCILITE"
@@ -90,19 +59,16 @@
 							<button 
 								type="object" 
 								class="oe_highlight"	
-
 								name="create_service_ipl" 	
 
 								string=" M22-IPL"
 							/>
 
 
-
 							<!-- M22-NDYAG --> 
 							<button 
 								type="object" 
 								class="oe_highlight"	
-				
 								name="create_service_ndyag" 	
 
 								string=" M22-NDYAG"
@@ -114,19 +80,16 @@
 							<button 
 								type="object" 
 								class="oe_highlight"	
-
 								name="create_service_medical" 	
 
 								string="T. MEDICO"
 							/>
 
 
-
 							<!-- Cosmeto -->
 							<button 
 								type="object" 
 								class="oe_highlight"	
-
 								name="create_service_cosmetology" 	
 
 								string="Cosmiatria"

@@ -7,7 +7,7 @@
 			<field name="name">procedure.sessions.form</field>
 			<field name="model">openhealth.procedure</field>
 
-			<field name="priority" eval="0"/>
+			<field name="priority" eval="2"/>
 			
 			<field name="inherit_id" ref="procedure_form_view"/>
 			<field name="arch" type="xml">

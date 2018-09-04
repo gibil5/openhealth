@@ -4,7 +4,6 @@
 # 
 from openerp import models, fields, api
 from datetime import datetime
-import serv_funcs
 import prodvars
 import quick
 
@@ -14,6 +13,19 @@ class ServiceQuick(models.Model):
 
 	_name = 'openhealth.service.quick'
 
+
+# ---------------------------------------------- Default --------------------------------------------------------
+	# Laser 
+	laser = fields.Selection(
+			selection = prodvars._laser_type_list, 
+			string="Láser", 			
+			
+			#default='none',			
+			default='laser_quick',			
+			
+			#required=True, 
+			index=True,
+		)
 
 
 # ----------------------------------------------------------- Fields ------------------------------------------------------

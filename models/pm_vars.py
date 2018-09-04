@@ -2,6 +2,16 @@
 
 
 
+# States 
+READONLY_STATES = {
+		'draft': 		[('readonly', False)], 
+		'sale': 		[('readonly', False)], 
+		'done': 		[('readonly', True)], 	
+		'editable': 	[('readonly', False)], 	
+}
+
+
+
 _state_list = [
 				('draft', 		'Presupuesto'),		
 				('sale', 		'Pagado'),				

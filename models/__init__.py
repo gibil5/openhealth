@@ -85,7 +85,7 @@ from . import treatment
 from . import evaluation  
 from . import appointment 
 from . import consultation
-from . import recommendation
+#from . import recommendation    	# Deprecated 
 from . import procedure
 from . import control
 from . import physician 

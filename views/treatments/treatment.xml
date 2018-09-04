@@ -6,16 +6,119 @@
 
 
 
+<!-- FORM 2 --> 
+		<record model="ir.ui.view" id="treatment_2_form_view">
+			<field name="name">treatment.form</field>
+			<field name="model">openhealth.treatment</field>
+
+			<field name="priority" eval="5"/>
+
+			<field name="arch" type="xml">
+				<form string="Treatment 2 Form">
+					<header>
+
+							<!-- Product --> 
+							<button 
+								type="object" 
+								class="oe_highlight"	
+								name="create_service_product" 	
+
+								string="PRODUCTOS"
+							/>
+
+
+							<!-- CO2 --> 
+							<button 
+								type="object" 
+								class="oe_highlight"	
+								name="create_service_co2" 	
+
+								string="LASER CO2"
+							/>
+
+
+							<!-- Quick --> 
+							<button 
+								type="object" 
+								class="oe_highlight"	
+								name="create_service_quick" 	
+
+								string="QUICK LASER"
+							/>
+
+
+							<!-- Excilite -->
+							<button 
+								type="object" 
+								class="oe_highlight"	
+								name="create_service_excilite" 	
+
+								string=" EXCILITE"
+							/>
+
+
+							<!-- M22-IPL --> 
+							<button 
+								type="object" 
+								class="oe_highlight"	
+								name="create_service_ipl" 	
+
+								string=" M22-IPL"
+							/>
+
+
+							<!-- M22-NDYAG --> 
+							<button 
+								type="object" 
+								class="oe_highlight"	
+								name="create_service_ndyag" 	
+
+								string=" M22-NDYAG"
+							/>
+
+
+
+							<!-- T. MEDICO -->
+							<button 
+								type="object" 
+								class="oe_highlight"	
+								name="create_service_medical" 	
+
+								string="T. MEDICO"
+							/>
+
+
+							<!-- Cosmeto -->
+							<button 
+								type="object" 
+								class="oe_highlight"	
+								name="create_service_cosmetology" 	
+
+								string="Cosmiatria"
+							/>
+
+					</header>
+
+					<sheet>
+						<notebook>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+
 <!-- FORM --> 
 		<record model="ir.ui.view" id="treatment_form_view">
 			<field name="name">treatment.form</field>
 			<field name="model">openhealth.treatment</field>
+
+			<field name="priority" eval="1"/>
+
 			<field name="arch" type="xml">
 				<form string="Treatment Form">
-					
-
-
-
 					<header>
 
 <!--
@@ -76,6 +179,7 @@
 
 
 <!--
+							states="empty,appointment"
 -->
 						<!-- Create Budget Consultation --> 
 						<button 
@@ -84,7 +188,7 @@
 							class="oe_highlight"
 
 
-							states="empty,appointment"
+							states="appointment"
 
   
 							string="Crear PRESUPUESTO - Consulta" 
@@ -379,11 +483,6 @@ Add Procedures
 						/>
 
 					</header>
-
-
-
-
-
 
 
 
@@ -896,7 +995,7 @@ Add Procedures
 									class="oe_highlight"
 									name="test_case_reload" 	
 
-									string="Cargar"
+									string="Refrescar"
 								/>
 
 							</div>
@@ -971,39 +1070,19 @@ Fields
 <!-- Manual --> 
 						<group  col="7"	>
 
-
-
-						<!--
-							<group>
-								<button 
-									type="object" 
-									class="oe_highlight"
-									name="toggle_add_procedures" 
-
-									string="Manual" 
-
-									groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
-								/>
-							</group>
-						-->
-
-
 <!--
-									name="create_consultation" 
-									name="create_service" 
-									name="create_order_pro" 
-									name="create_procedure" 
-
-									string="CONSULTA"
+									groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
+									groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
+									groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
+									groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
+									groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
 -->
-							
-
+							<!-- CONS --> 
 							<group>
 								<button 
 									type="object" 
 									class="oe_highlight"
 									attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
-									groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
 
 									name="create_consultation" 
 
@@ -1013,15 +1092,12 @@ Fields
 
 
 
+							<!-- RECO --> 
 							<group>
-<!--
-									string="RECOM"
--->								
 								<button 
 									type="object" 
 									class="oe_highlight"
 									attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
-									groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
 
 									name="create_service" 
 
@@ -1030,12 +1106,13 @@ Fields
 							</group>
 
 
+
+							<!-- PRESU --> 
 							<group>
 								<button 
 									type="object" 
 									class="oe_highlight"
 									attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
-									groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
 
 									name="create_order_pro" 
 
@@ -1043,15 +1120,14 @@ Fields
 								/>
 							</group>
 
-<!--
-									name="create_procedure" 
--->
+
+
 							<group>
+								<!-- PROC --> 
 								<button 
 									type="object" 
 									class="oe_highlight"
 									attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
-									groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
 
 									name="create_procedure_man" 
 
@@ -1059,32 +1135,32 @@ Fields
 								/>
 
 
-
+								<!-- CTRL --> 
+<!--								
 								<button 
 									type="object" 
 									class="oe_highlight"
-									
 									attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
-									
-									groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
 
 									name="create_controls" 
 
 									string="CTRL" 
 								/>
-
-
+-->								
 							</group>
 
 
+<!--
+								<field name="vip_create"/>
+-->
 							<!-- Create Flags --> 
 							<group 		groups="openhealth.roots"	>
-
 								<field name="product_create"/>
-
-								<field name="vip_create"/>
 								<field name="med_create"/>
 								<field name="cos_create"/>
+
+								<field name="ses_create"/>
+								<field name="con_create"/>
 							</group>
 
 							<group 		groups="openhealth.roots"	>
@@ -1097,17 +1173,8 @@ Fields
 
 
 
-<!--
-							<group 	>
--->
+<!-- Test --> 
 							<group  groups="openhealth.roots"	>
-<!--
-									groups="openhealth.roots"
-									name="test_integration" 
-
-									groups="openhealth.roots"									
--->
-
 
 								<!-- Test - Treatment --> 
 								<button 
@@ -1120,20 +1187,6 @@ Fields
 
 								/>
 
-
-								<!-- Test - Apps --> 
-<!--
-								<button 
-									type="object" 
-									class="oe_highlight"
-									name="test_case_two" 
-									string="App" 
-									groups="openhealth.roots"									
-								/>
--->
-
-
-
 								<!-- Test - Repos --> 
 								<button 
 									type="object" 
@@ -1143,7 +1196,6 @@ Fields
 									
 									string="Repos" 
 								/>
-
 
 
 								<!-- Test - Objs --> 
@@ -1157,89 +1209,44 @@ Fields
 								/>
 
 
-
-<!--
-									groups="openhealth.roots"			
-									name="reset" 	
--->
-
-
-
+								<!-- Test - Clear All --> 
 								<button 
 									type="object" 
 									class="oe_highlight"
+									groups="openhealth.roots"
 									
 									name="clear_all" 
 									
 									string="Clear" 
 									
-									groups="openhealth.roots"
 								/>
 
+
+								<!-- Test - All --> 
 								<button 
 									type="object" 
 									class="oe_highlight"
+									groups="openhealth.roots"
 									
 									name="set_all" 
 									
-									string="All" 
-									
-									groups="openhealth.roots"
+									string="All" 									
 								/>
 
 
 
-								<!-- Reset --> 
+								<!-- Test - Reset --> 
 								<button 
 									type="object" 
 									class="oe_highlight"
+									groups="openhealth.roots"
 
 									name="test_case_reset" 	
 
 									string="Reset"
-
-									groups="openhealth.roots"
 								/>
-
-
-
-								<!-- Reload --> 
-<!--
-								<button 
-									type="object" 
-									class="oe_highlight"
-
-									name="test_case_reload" 	
-
-									string="Reload"
-
-									groups="openhealth.roots"
-								/>
--->								
 							</group>
-
-
-
-<!--
-							<group>
-								<button 
-										type="object" 
-										class="oe_highlight"
-										name="reset_procs" 	
-
-										string="Reset Procs"
-
-										groups="openhealth.roots"			
-									/>
-							</group>
-
-
-							<group>
-							</group>
--->
-
-							<group>
-							</group>
+							<group></group>
 						</group>
 
 
@@ -1247,87 +1254,47 @@ Fields
 
 						<group>
 							<group>
-								<field name="physician"			required="1"/>									
-
+								<field name="physician"			required="1"/>
 								<field name="vspace" />
-
-								<field name="chief_complaint"	required="1"	/>
-
+								<field name="chief_complaint"	required="1"/>
 								<field name="vspace" />
-
 								<field name="x_vip_inprog"/>
-
 								<field name="vspace" />
-
 								<field name="active"/>
 							</group>							
 							<group>
 								<field name="start_date"/>
-<!--
-								<field name="duration"			invisible="1" />
-								<field name="end_date"			invisible="1"	/>
-								<field name="today_date"		invisible="1"		/>
--->
-
 								<field name="vspace" />
-								<field name="treatment_closed"	invisible="0"	/>
-
+								<field name="treatment_closed"	invisible="0"/>
 								<field name="vspace" />
 								<field name="vspace" />
 
 
 
 								<!-- Manual -->
-								<field name="add_procedures"	invisible="1"		 />
+								<field name="add_procedures"	invisible="1"/>
 
+<!--
+									groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
+-->
 								<button 
 									type="object" 
 									class="oe_highlight"
 									name="toggle_add_procedures" 
 									
-									string="Manual" 
-									
-									groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
+									string="Manual" 									
 								/>
-
-
-								<!-- Reload --> 
-<!--								
-								<button 
-									type="object" 
-									class="oe_highlight"
-									name="test_case_reload" 	
-
-									string="Reload"
-								/>
--->
-
-
-<!--
-								<field name="user_id"			groups="openhealth.roots"/>
-								<field name="vspace" />
-								<field name="consultation_progress"		/>
-								<field name="price_total"/>
-								<field name="nr_services"/>
--->
-
 							</group>
 						</group>
-
 
 						<!-- Padding -->
 						<group>
-							<group>
-							</group>
-							<group>
-							</group>
+							<group></group>
+							<group></group>
 						</group>
 
-
 						<!-- Notebook --> 
-						<notebook>
-						</notebook>
-
+						<notebook></notebook>
 					</sheet>
 				</form>
 			</field>

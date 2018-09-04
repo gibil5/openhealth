@@ -4,56 +4,31 @@
 
 
 
-
-		<!-- Graph --> 
-<!--
-	    <record id="view_sale_order_graph" model="ir.ui.view">
--->
-	    <record id="sale.view_sale_order_graph" model="ir.ui.view">
-	    	
-	         <field name="name">sale.order.graph</field>
-	         <field name="model">sale.order</field>
-	         <field name="arch" type="xml">
-
-	             <graph string="Análisis de Ventas">
-<!--
-					<field name="date_order" interval="day" type="row"	/>
-	                	                 
-	                <field name="amount_total" type="measure"/>
--->                
-                    <field name="x_doctor"/>
-
-                    <field name="amount_total" type="measure"/>	             
-	             </graph>
-	         </field>
-	    </record>
-
-
-
-
-		<!-- FILTER --> 
+<!-- FILTER --> 
+<!-- Correct for Local Time (+ 05:00) --> 
 		<record id="sale.view_sales_order_filter" model="ir.ui.view">
 		   <field name="name">sale.order.search.modified</field>
 		   <field name="model">sale.order</field>		   
 		   <field name="arch" type="xml">
 
+
 			   <search string="orders">
 
-<!--
-												('date_order', '&lt;=', datetime.datetime.now().strftime('%Y-%m-%d 23:23:59')), 
--->
+
+<!-- Active --> 
+
 					<filter string="Hoy" domain="[											
 															('date_order', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 05:00:00')),
 											]"/>
 
 
 					<filter string="Este Mes" domain="[
-															('date_order','&gt;=',time.strftime('%Y-%m-01')),
+															('date_order','&gt;=',time.strftime('%Y-%m-01 05:00:00')),
 											]"/>
 
 
 					<filter string="Este Año" domain="[
-															('date_order','&gt;=',time.strftime('%%Y-01-01')), 
+															('date_order','&gt;=',time.strftime('%%Y-01-01 05:00:00')), 
 											]"/>
 
 
@@ -62,22 +37,29 @@
 
 
 <!--
-															('date_order','&lt;=','2018-02-01'),
+															('x_legacy','=',True),
 -->
+					<!-- Jan --> 
 					<filter string="Enero" domain="[
 															('date_order','&gt;=','2018-01-01 05:00:00'),
 															('date_order','&lt;','2018-02-01 05:00:00'),
 											]"/>
 
 
-<!--
-															('date_order','&lt;=','2018-03-01'),
--->
+
+
+					<!-- Feb --> 
 					<filter string="Febrero" domain="[
 															('date_order','&gt;=','2018-02-01 05:00:00'),
 															('date_order','&lt;','2018-03-01 05:00:00'),
 											]"/>
 
+
+
+
+
+
+					<!-- Mar --> 
 					<filter string="Marzo" domain="[
 															('date_order','&gt;=','2018-03-01 05:00:00'),
 															('date_order','&lt;','2018-04-01 05:00:00'),
@@ -106,30 +88,28 @@
 
 
 
-					<filter string="Julio" domain="[
-															('date_order','&gt;=','2018-07-01 05:00:00'),
-															('date_order','&lt;=','2018-08-01 05:00:00'),
-											]"/>
+					<filter string="Julio" 			domain="[
+																('date_order','&gt;=','2018-07-01 05:00:00'),
+																('date_order','&lt;=','2018-08-01 05:00:00'),
+													]"/>
 
 
-					<filter string="Agosto" domain="[
-															('date_order','&gt;=','2018-08-01 05:00:00'),
-															('date_order','&lt;=','2018-09-01 05:00:00'),
-											]"/>
-
-
+					<filter string="Agosto" 		domain="[
+																('date_order','&gt;=','2018-08-01 05:00:00'),
+																('date_order','&lt;=','2018-09-01 05:00:00'),
+													]"/>
 
 
 
-					<filter string="Setiembre" 		groups="openhealth.roots"
-
-													domain="[
+					<filter string="Setiembre" 		domain="[
 																('date_order','&gt;=','2018-09-01 05:00:00'),
 																('date_order','&lt;=','2018-10-01 05:00:00'),
 															]"
-											/>
+													/>
 
 
+
+<!-- Inactive --> 
 					<filter string="Octubre" 		groups="openhealth.roots"
 
 													domain="[
@@ -159,18 +139,15 @@
 
 
 
-				   <field name="patient" />
 
 					<!--
-				   <field name="partner_id" />
-
-
-				   <field name="treatment" />
-
-				   <field name="x_doctor" />               
-				   <field name="x_family" /> 
+					<field name="partner_id" />
+					<field name="treatment" />
+					<field name="x_doctor" />               
+					<field name="x_family" /> 
 					-->
 
+				   	<field name="patient" />
 
 
 
@@ -179,19 +156,12 @@
 <!--
 						<filter name="Creado por" context="{'group_by':'user_id'}"/>
 -->
-
 						<filter name="Tipo" context="{'group_by':'x_type'}"/>
-
 						<separator/>
-
 						<filter name="Familia" context="{'group_by':'x_family'}"/>
-
 						<filter name="Producto" context="{'group_by':'x_product'}"/>
-
 						<filter name="Médico" context="{'group_by':'x_doctor'}"/>
-
 						<filter name="Paciente" context="{'group_by':'patient'}"/>
-
 						<filter name="Delta" context="{'group_by':'x_delta'}"/>
 					</group>
 
@@ -201,6 +171,23 @@
 	   </record>
 
 
+
+
+		<!-- Graph --> 
+		<record id="sale.view_sale_order_graph" model="ir.ui.view">	
+			 <field name="name">sale.order.graph</field>
+			 <field name="model">sale.order</field>
+			 <field name="arch" type="xml">
+				 <graph string="Análisis de Ventas">
+					<field name="x_doctor"/>
+					<field name="amount_total" type="measure"/>	             
+				 </graph>
+			 </field>
+		</record>
+<!--
+					<field name="date_order" interval="day" type="row"	/>
+					<field name="amount_total" type="measure"/>
+-->                
 
 	</data>
 </openerp>

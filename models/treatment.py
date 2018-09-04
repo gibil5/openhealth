@@ -18,6 +18,8 @@ import creates as cre
 import lib_obj
 import lib_rep
 
+import reco_funcs
+
 
 class Treatment(models.Model):
 	
@@ -28,7 +30,7 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Recommendation ------------------------------------------------------
+# ----------------------------------------------------------- Recommendation - Deprecated ------------------------------------------------------
 
 	#recommendation_ids = fields.One2many(
 	#		'openhealth.recommendation', 
@@ -36,10 +38,11 @@ class Treatment(models.Model):
 	#		string = "Recomendaciones", 
 	#	)
 
-	recommendation = fields.Many2one(
-			'openhealth.recommendation', 
-			string = "Recomendacion", 
-		)
+	#recommendation = fields.Many2one(
+	#		'openhealth.recommendation', 
+	#		string = "Recomendacion", 
+	#	)
+
 
 
 # ----------------------------------------------------------- Create Service  ------------------------------------------------------
@@ -47,35 +50,35 @@ class Treatment(models.Model):
 	# Create Service 
 	@api.multi
 	def create_service(self):
-
 		#print 
-		#print 'Open Service Selector'
+		#print 'Create Service'
 
-		treatment_id = self.id
+		# Init 
+		res_id = self.id 
+		res_model = 'openhealth.treatment'		
+		view_id = self.env.ref('openhealth.treatment_2_form_view').id
+		print view_id
 
-
- 		if self.recommendation.name == False: 
- 			#print 'Create'
-			self.recommendation = self.env['openhealth.recommendation'].create({
-																					'treatment': 	self.id, 	
-				})
-		
-		res_id = self.recommendation.id 
-
+		# Open 
 		return {
 			# Mandatory 
 			'type': 'ir.actions.act_window',
-			'name': 'Open Consultation Current',
+
+			'name': 'Open Treatment Current',
 			# Window action 
 
-			'res_id': res_id,
+			'priority': 1,
 
-			'res_model': 'openhealth.recommendation',
+			'res_id': res_id,
+			'res_model': res_model,
+			#'view_id': view_id,
+			
 			# Views 
-			"views": [[False, "form"]],
+			#"views": [[False, "form"]],
+			"views": [[view_id, "form"]],
+
 			'view_mode': 'form',
 			'target': 'current',
-			#'view_id': view_id,
 			#"domain": [["patient", "=", self.patient.name]],
 			#'auto_search': False, 
 			'flags': {
@@ -84,11 +87,10 @@ class Treatment(models.Model):
 					'form': {'action_buttons': False, }
 					},			
 			'context': {
-							'default_treatment': treatment_id,					
+						#'default_treatment': treatment_id,					
 					}
 		}
 	# create_service
-
 
 
 
@@ -97,30 +99,25 @@ class Treatment(models.Model):
 	# Integration - Objects 
 	@api.multi 
 	def test_case_objs(self):
-		
-		print 
+		print
 		print 'Test Case - Objs'
 		
 		if self.patient.x_test: 
-
-			# Reset
-			#tst.reset_treatment(self)
-
 
 			# Init 
 			patient_id = self.patient.id
 			doctor_id = self.physician.id
 			treatment_id = self.id 
-			partner_id = self.partner_id.id
-			caller = self 
+			partner_id = self.partner_id.id			
+			pl_id = self.patient.property_product_pricelist.id   	# Pricelist 
+			caller = self 											# Caller 
 
 
 
 			# Objects 
-			order = 	lib_obj.Object(	caller, 	'order', 	'sale.order', 		patient_id, 	partner_id, 	doctor_id, 	treatment_id)
+			order = 	lib_obj.Object(	caller, 'order', 	'sale.order', 			patient_id, partner_id, doctor_id, 	treatment_id, 	pl_id)
 
-			#patient = 	lib_obj.Object(	caller, 	'patient', 	'oeh.medical.patient')
-			patient = 	lib_obj.Object(	caller, 	'patient', 	'oeh.medical.patient', 		False, False, doctor_id, False)
+			patient = 	lib_obj.Object(	caller, 'patient', 	'oeh.medical.patient', 	False, 		False, 		doctor_id, 	False, 			False)
 
 
 
@@ -131,8 +128,7 @@ class Treatment(models.Model):
 						patient, 
 				]
 
-
-			# Update 
+			# Test  
 			for obj in objs: 
 				obj.test()
 			print 
@@ -141,15 +137,14 @@ class Treatment(models.Model):
 			for obj in objs: 
 				print obj
 
+	# test_case_objs
 
 
 
 
-	# Integration - Report Sale Product 
+	# Integration - Reports
 	@api.multi 
 	def test_case_reports(self):
-		
-		print 
 		print 'Test Case - Reports'
 		print 
 		
@@ -165,7 +160,7 @@ class Treatment(models.Model):
 			management = 		lib_rep.Report('management', 		'openhealth.management', 			'date_begin', 	self)
 			marketing = 		lib_rep.Report('marketing', 		'openhealth.marketing', 			'date_begin', 	self)
 			account = 			lib_rep.Report('account.contasis', 	'openhealth.account.contasis', 		'date_begin', 	self)
-			#state_of_acc = 		lib_rep.Report('state_of_acc', 		'openhealth.order.report.nex', 		'create_date', 	self)
+			#state_of_acc = 	lib_rep.Report('state_of_acc', 		'openhealth.order.report.nex', 		'create_date', 	self)
 
 			#doctor_line = 		lib_rep.Report('doctor_line', 		'openhealth.management.doctor.line', 				'write_date', 		self)
 			#family_line = 		lib_rep.Report('family_line', 		'openhealth.management.family.line', 				'write_date', 		self)
@@ -211,27 +206,20 @@ class Treatment(models.Model):
 		print 
 		print 'Test Case - One'
 		if self.patient.x_test: 
+			
+			# Reset
 			tst.reset_treatment(self)
 
-			#tst.test_integration_treatment(self)
-
-
+			# Init 
 			date_order_begin = 	False
 			date_order_end = 	False
 
 			#date_order_begin = 	'2018-09-01 14:00:00'
 			#date_order_end = 	'2018-10-01 02:00:00'			
-			#date_order_begin = 	'2018-10-01 14:00:00'
-			#date_order_end = 	'2018-11-01 02:00:00'
-			#date_order_begin = 	'2018-11-01 14:00:00'
-			#date_order_end = 	'2018-12-01 02:00:00'
-			#date_order_begin = 	'2018-12-01 14:00:00'
-			#date_order_end = 	'2019-01-01 02:00:00'
-
 
 			tst.test_integration_treatment(self, date_order_begin, date_order_end)
 
-
+			self.test()
 
 
 
@@ -520,6 +508,20 @@ class Treatment(models.Model):
 
 	# Create Flags
 
+	# Sessions
+	ses_create = fields.Boolean(
+			string="Ses", 
+			default=False, 
+		)	
+
+	# Controls
+	con_create = fields.Boolean(
+			string="Con", 
+			default=False, 
+		)	
+
+
+
 	# Laser 
 	co2_create = fields.Boolean(
 			string="Co2", 
@@ -559,10 +561,10 @@ class Treatment(models.Model):
 		)	
 
 	# Vip
-	vip_create = fields.Boolean(
-			string="Vip", 
-			default=False, 
-		)	
+	#vip_create = fields.Boolean(
+	#		string="Vip", 
+	#		default=False, 
+	#	)	
 
 	# Product
 	product_create = fields.Boolean(
@@ -1475,7 +1477,6 @@ class Treatment(models.Model):
 
 
 # ----------------------------------------------------- Create Consultation ------------------------------------------------------------
-
 	# Create Consultation 
 	@api.multi
 	def create_consultation(self):  
@@ -1575,16 +1576,65 @@ class Treatment(models.Model):
 							'default_appointment': appointment_id,
 			}
 		}
-
-
 	# create_consultation_man
 
 
 
+# ----------------------------------------------------------- Services ------------------------------------------------------
+	# Product
+	@api.multi
+	def create_service_product(self):  
+		ret = reco_funcs.create_service_product(self)
+		return ret 
 
+	# Co2 
+	@api.multi
+	def create_service_co2(self):  
+		ret = reco_funcs.create_service_co2(self)
+		return ret 
+
+	# Quick 
+	@api.multi
+	def create_service_quick(self):  
+		ret = reco_funcs.create_service_quick(self)
+		return ret 
+
+	# Excilite 
+	@api.multi
+	def create_service_excilite(self):  
+		ret = reco_funcs.create_service_excilite(self)
+		return ret 
+
+	# Ipl
+	@api.multi
+	def create_service_ipl(self):  
+		ret = reco_funcs.create_service_ipl(self)
+		return ret 
+
+	# Ndyag 
+	@api.multi
+	def create_service_ndyag(self):  
+		ret = reco_funcs.create_service_ndyag(self)
+		return ret 
+
+	# Medical
+	@api.multi
+	def create_service_medical(self):  
+		ret = reco_funcs.create_service_medical(self)
+		return ret 
+
+	# Cosmetology
+	@api.multi
+	def create_service_cosmetology(self):  
+		ret = reco_funcs.create_service_cosmetology(self)
+		return ret 
 
 
 # ----------------------------------------------------------- Update ------------------------------------------------------
+	# Flag 
+	flag = fields.Boolean(
+			'Flag', 
+		)
 
 	# Update
 	@api.multi 
@@ -1592,12 +1642,47 @@ class Treatment(models.Model):
 		#print 
 		#print 'Update'
 		self.flag = not self.flag
-
-
-	# Flag 
-	flag = fields.Boolean(
-			'Flag', 
-		)
-
 	# update 
+
+
+
+# ----------------------------------------------------------- Test ------------------------------------------------------
+	# Test
+	def test(self):
+		print 
+		print 'Treatment - Test'
+
+		ret = self.create_service_product()
+		#print ret
+		#print 
+
+		ret = self.create_service_co2()
+		#print ret
+		#print 
+
+		ret = self.create_service_excilite()
+		#print ret
+		#print 
+
+		ret = self.create_service_ipl()
+		#print ret
+		#print 
+
+		ret = self.create_service_ndyag()
+		#print ret
+		#print 
+
+		ret = self.create_service_quick()
+		#print ret
+		#print 
+
+		ret = self.create_service_medical()
+		#print ret
+		#print 
+
+		ret = self.create_service_cosmetology()
+		#print ret
+		#print 
+
+	# test 
 

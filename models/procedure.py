@@ -42,17 +42,16 @@ class Procedure(models.Model):
 
 
 # ----------------------------------------------------------- Creates ------------------------------------------------------
-
 	# Create Controls 
 	@api.multi	
 	def create_controls(self):
-
+		# Init 
 		nr_controls = 1 
-
 		nr_ctl_created = self.env['openhealth.control'].search_count([
 																		('procedure','=', self.id), 
 																	]) 
 
+		# Create 
 		ret = pro_con_funcs.create_controls(self, nr_controls, nr_ctl_created)
 
 	# create_controls

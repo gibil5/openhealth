@@ -11,7 +11,6 @@ import app_vars
 import eval_vars
 import lib
 import user
-
 class Appointment(models.Model):
 
 	_inherit = 'oeh.medical.appointment'
@@ -19,24 +18,6 @@ class Appointment(models.Model):
 	_order = 'name asc'
 
 
-
-# ----------------------------------------------------------- Confirmation ------------------------------------------------------
-
-	x_confirmable = fields.Boolean(
-			'Confirmable', 
-
-			compute='_compute_x_confirmable', 
-		)
-
-	@api.multi
-	#@api.depends('patient')
-	def _compute_x_confirmable(self):
-		for record in self:
-
-			if lib.today(self, self.appointment_date): 
-				record.x_confirmable = True 
-			else: 
-				record.x_confirmable = False 
 
 
 # ----------------------------------------------------------- Dates ------------------------------------------------------
@@ -57,24 +38,40 @@ class Appointment(models.Model):
 		#print self.x_type
 		
 		if self.x_type == 'control': 
-			
-			print 'Gotcha !'
-			
+			pass 
+			#print 'Gotcha !'
 			#print self.control.control_date
 			#print self.control.evaluation_start_date
-			
 			#self.control.control_date = self.appointment_date
 			#self.control.evaluation_start_date = self.appointment_date
-
 			#print self.control.control_date
 			#print self.control.evaluation_start_date
-
 			#self.control.update_dates(self.appointment_date)
 
 
 
 
-	# ----------------------------------------------------------- Canonical ------------------------------------------------------
+# ----------------------------------------------------------- Confirmation ------------------------------------------------------
+	# Confirmable 
+	x_confirmable = fields.Boolean(
+			'Confirmable', 
+
+			compute='_compute_x_confirmable', 
+		)
+
+	@api.multi
+	#@api.depends('patient')
+	def _compute_x_confirmable(self):
+		#print 
+		#print 'Compute Confirmable'
+		for record in self:
+			if lib.is_today(record.appointment_date, record.state): 
+				record.x_confirmable = True 				
+			else: 
+				record.x_confirmable = False 
+
+
+# ----------------------------------------------------------- Canonical ------------------------------------------------------
 
 	# Type 
 	x_type = fields.Selection(

@@ -3,10 +3,9 @@
 # 	ReportSaleProduct 
 # 
 from openerp import models, fields, api
-
-import account_funcs as acc_funcs
-
 #import resap_funcs
+#import account_funcs as acc_funcs
+import mgt_funcs
 
 class ReportSaleProduct(models.Model):
 	
@@ -91,7 +90,7 @@ class ReportSaleProduct(models.Model):
 	@api.multi
 	#def update_report(self):  
 	def update(self):  
-
+		print 
 		print 'Report Sale Product - Update'
 
 
@@ -102,19 +101,13 @@ class ReportSaleProduct(models.Model):
 
 
 		# Orders 
-		#orders,count = resap_funcs.get_orders(self, self.name)			# Deprecated 
-		date_begin = self.name
-		date_end = self.name
-		orders,count = acc_funcs.get_orders_filter(self, date_begin, date_end)
-
-		#print orders, count
-		#print 
+		#orders,count = acc_funcs.get_orders_filter(self, self.name, self.name)			# Sales and Cancelled 
+		orders,count = mgt_funcs.get_orders_filter(self, self.name, self.name)			# Only Sales 
 
 
 
 		# Order lines
 		self.create_lines(orders)
-
 
 
 

@@ -2,8 +2,7 @@
 #
 # 	lib.py
 #
-# 	Abstract, general purpose. 
-#	Can be Unit-tested. Is completely standard. 
+# 	Abstract, general purpose. Can be Unit-tested. Is completely standard. 
 #	Gives service to all Users
 # 
 # 	Created: 			13 Aug 2018
@@ -15,14 +14,50 @@ import unicodedata
 
 
 
-#------------------------------------------------ Date - If Today ---------------------------------------------------
-# Adds Nr to start date 
-def today(self, date):
+#------------------------------------------------ Date - Correct for Utc ---------------------------------------------------
+# Correct Date 
+def correct_date(date):
 	print 
-	print 'Today'
+	print 'Correct Date'
 
 	date_format = "%Y-%m-%d %H:%M:%S"
+	
+	date_dt = datetime.datetime.strptime(date, date_format) + datetime.timedelta(hours=-5,minutes=0)	
+
+	date_s = date_dt.strftime(date_format)
+
+	return date_s
+
+
+
+
+#------------------------------------------------ Date - Todays Name ---------------------------------------------------
+# Get Todays Name
+def get_todays_name():
+	print 
+	print 'Get Todays Name'
+
+	date_format = "%Y_%m_%d-%H_%M_%S"
+	today = datetime.datetime.today() + datetime.timedelta(hours=-5,minutes=0)	
+	name = today.strftime(date_format)
+
+	print today
+	print name
+	print 
+
+	#name = '2018_09_04-11_28_00'
+	return name 
+
+
+
+#------------------------------------------------ Date - If Today ---------------------------------------------------
+# Adds Nr to start date 
+def is_today(date, state):
+	#print 
+	#print 'Is Today'
+
 	#date_format = "%Y-%m-%d"
+	date_format = "%Y-%m-%d %H:%M:%S"
 	date_dt = datetime.datetime.strptime(date, date_format) + datetime.timedelta(hours=-5,minutes=0)	
 
 
@@ -31,12 +66,14 @@ def today(self, date):
 	else: 
 		is_today = False
 
-	# Prints
-	print date
-	print date_dt
-	print is_today 
 
-	return is_today 
+	# Prints
+	#print date
+	#print date_dt
+	#print is_today 
+
+	#return is_today 
+	return is_today and state != 'Scheduled'
 
 
 

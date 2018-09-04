@@ -326,6 +326,18 @@
 						/>
 
 
+			<!-- Legacy --> 			
+			<menuitem 	id="sales_invoice_legacy_menu" 
+						name="Legacy" 
+						parent="sales_menu"
+						sequence="3"
+						
+						action="sale_legacy_list_action"
+
+						groups="openhealth.roots"
+					/>
+
+
 
 
 

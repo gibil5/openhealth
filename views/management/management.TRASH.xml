@@ -1,0 +1,111 @@
+<!--
+						<group>
+							<group>
+							</group>
+						
+							<group>
+							</group>
+						</group>
+-->
+
+
+						<!-- Update Sales -->
+						<!-- Update Stats -->
+						<!-- Update counters -->
+						<!-- Update QC -->
+<!--						
+						<button 
+								type="object" 
+								class="oe_highlight"
+
+								name="update_sales"
+
+								string="Actualizar Ventas"								
+						/>
+
+						<button 
+								type="object" 
+								class="oe_highlight"
+
+								name="update_stats"
+
+								string="Stats"								
+						/>
+
+						<button 
+								type="object" 
+								class="oe_highlight"
+
+								name="update_counters"
+
+								string="Counters"								
+						/>
+
+						<button 
+								type="object" 
+								class="oe_highlight"
+
+								name="update_qc"
+
+								string="Quality Control"								
+						/>
+-->
+
+
+
+
+						<!-- Test -->
+						<!-- Clear -->
+<!--
+						<button 
+								type="object" 
+								class="oe_highlight oe_right"
+
+								name="test_integration"
+
+								string="TEST INTEGRATION"								
+
+								groups="openhealth.roots"
+						/>
+
+						<button 
+								type="object" 
+								class="oe_highlight oe_right"
+
+								name="test_clear"
+
+								string="Clear"								
+
+								groups="openhealth.roots"
+						/>
+-->
+
+
+
+
+<!--								
+								<field name="test"/>
+-->
+<!--
+							<group>
+								<field name="nr_delta"/>
+								<field name="prod_test"/>
+								<field name="consu_test"/>
+							</group>						
+							<group>
+								<field name="laser_test"/>
+								<field name="medi_test"/>
+							</group>
+							<group>
+								<field name="cosme_test"/>
+								<field name="other_test"/>
+							</group>
+-->
+<!--
+								<field name="nr_products"	string="Productos"	/>
+								<field name="nr_procedures"	string="Procedimientos"	/>
+								<field name="amo_products"		string="Productos"	/>
+								<field name="amo_procedures"	string="Procedimientos"	/>
+								<field name="avg_products"		string="Productos"	/>
+								<field name="avg_procedures"	string="Procedimientos"	/>
+-->

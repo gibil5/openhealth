@@ -4,19 +4,28 @@
 # 
 from openerp import models, fields, api
 from datetime import datetime
-
-import serv_funcs
-
+import prodvars
 import service_medical_vars
-
-
-
+#import serv_funcs
 
 class ServiceMedical(models.Model):
+
 	_name = 'openhealth.service.medical'
 	_inherit = 'openhealth.service'
 	
 	
+# ---------------------------------------------- Default --------------------------------------------------------
+	# Laser 
+	laser = fields.Selection(
+			selection = prodvars._laser_type_list, 
+			string="Láser", 			
+	
+			default='medical',			
+
+			index=True,
+		)
+
+# ---------------------------------------------- Relational --------------------------------------------------------
 	# Service 
 	service = fields.Many2one(
 			'product.template',
@@ -119,7 +128,7 @@ class ServiceMedical(models.Model):
 			self.zone = 'face_all'
 			self.pathology = 'acne' 
 
-			serv_funcs.product_medical(self)
+			self.get_product_medical()
 
 			return {
 				'domain': {'service': [
@@ -148,7 +157,7 @@ class ServiceMedical(models.Model):
 			#self.sessions = '1'
 
 			
-			#serv_funcs.product_medical(self)
+			#self.get_product_medical()
 
 
 			return {
@@ -171,7 +180,7 @@ class ServiceMedical(models.Model):
 			self.med_scle = self.clear_all_med(self.med_scle)
 			self.x_treatment = 'sclerotherapy'
 
-			serv_funcs.product_medical(self)
+			self.get_product_medical()
 			return {'domain': {'service': [('x_treatment', '=', self.x_treatment),]},}
 
 	# Botulinum Toxyn 
@@ -182,7 +191,7 @@ class ServiceMedical(models.Model):
 			self.med_bot = self.clear_all_med(self.med_bot)
 			self.x_treatment = 'botulinum_toxin'
 
-			serv_funcs.product_medical(self)
+			self.get_product_medical()
 			return {
 				'domain': {'service': [
 										('x_treatment', '=', self.x_treatment),
@@ -196,7 +205,7 @@ class ServiceMedical(models.Model):
 			self.med_int = self.clear_all_med(self.med_int)
 			self.x_treatment = 'intravenous_vitamin'
 
-			serv_funcs.product_medical(self)
+			self.get_product_medical()
 			return {
 				'domain': {'service': [
 										('x_treatment', '=', self.x_treatment),
@@ -220,7 +229,7 @@ class ServiceMedical(models.Model):
 			self.med_lep = self.clear_all_med(self.med_lep)
 
 
-			serv_funcs.product_medical(self)
+			self.get_product_medical()
 			return {'domain': {'service': [
 											('x_treatment', '=', self.x_treatment),
 											('x_zone', '=', self.zone),
@@ -240,7 +249,7 @@ class ServiceMedical(models.Model):
 			self.sessions = 		pla_dic['sessions']
 
 
-			#serv_funcs.product_medical(self)
+			#self.get_product_medical()
 
 			return {
 				'domain': {'service': [

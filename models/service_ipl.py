@@ -4,13 +4,27 @@
 # 
 from openerp import models, fields, api
 from datetime import datetime
-import serv_funcs
 import ipl
+import prodvars
+
+#import serv_funcs
 
 class ServiceIpl(models.Model):
 	_name = 'openhealth.service.ipl'
 	_inherit = 'openhealth.service'
 	
+
+
+# ---------------------------------------------- Default --------------------------------------------------------
+	# Laser 
+	laser = fields.Selection(
+			selection = prodvars._laser_type_list, 
+			string="Láser", 			
+	
+			default='laser_ipl',			
+
+			index=True,
+		)
 
 
 
@@ -73,7 +87,7 @@ class ServiceIpl(models.Model):
 	def _onchange_nr_sessions_1(self):
 		if self.nr_sessions_1 != 'none':	
 			self.nr_sessions = self.nr_sessions_1
-			serv_funcs.product_m22(self)
+			self.get_product_m22()
 			return {
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time),('x_sessions', '=', self.nr_sessions) ]},
 			}

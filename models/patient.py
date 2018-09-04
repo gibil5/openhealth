@@ -25,11 +25,11 @@ class Patient(models.Model):
 
 # ----------------------------------------------------------- Deprecated ------------------------------------------------------
 	# Appointments 
-	#appointment_ids = fields.One2many(
-	#		'oeh.medical.appointment', 
-	#		'patient', 			
-	#		string = "Citas", 
-	#	)
+	appointment_ids = fields.One2many(
+			'oeh.medical.appointment', 
+			'patient', 			
+			string = "Citas", 
+		)
 
 
 
@@ -755,7 +755,8 @@ class Patient(models.Model):
 	
 	# Test - Init  
 	@api.multi 
-	def test_init(self, patient_id=False, partner_id=False, doctor_id=False, treatment_id=False):
+	#def test_init(self, patient_id=False, partner_id=False, doctor_id=False, treatment_id=False):
+	def test_init(self, patient_id=False, partner_id=False, doctor_id=False, treatment_id=False, pl_id=False):
 
 		print 
 		print 'Patient - Test Init'
@@ -850,7 +851,7 @@ class Patient(models.Model):
 															'chief_complaint': 	chief_complaint,
 															'patient': 			patient_2.id, 	
 			})
-		print treatment 
+		#print treatment 
 
 
 
@@ -867,24 +868,28 @@ class Patient(models.Model):
 
 		# Product
 		service_id = user.get_product(self, 'acneclean')
-
 		service_product = treatment.service_product_ids.create({
 															'service': 		service_id, 
 															'treatment': 	treatment.id, 
 				})
 		
-		print service_product
+		#print service_product
 
 
 		# Co2
 		service_id = user.get_product(self, 'co2_nec_rn1_one')
 
+		#zone = 'neck'
+		#pathology = 'rejuvenation_neck_1'
+
 		service_co2 = treatment.service_co2_ids.create({
 															'service': 		service_id, 
+															#'zone': 		zone, 
+															#'pathology': 	pathology, 
 															'treatment': 	treatment.id, 
 				})
 
-		print service_co2
+		#print service_co2
 
 
 
@@ -897,7 +902,7 @@ class Patient(models.Model):
 																'treatment': 	treatment.id, 
 			})
 
-		print service_exc
+		#print service_exc
 
 
 
@@ -910,7 +915,7 @@ class Patient(models.Model):
 											'treatment': 	treatment.id, 
 			})
 
-		print service_ipl
+		#print service_ipl
 
 
 
@@ -922,7 +927,7 @@ class Patient(models.Model):
 											'service': 		service_id, 
 											'treatment': 	treatment.id, 
 			})
-		print service_ndyag
+		#print service_ndyag
 
 
 
@@ -936,11 +941,10 @@ class Patient(models.Model):
 															'treatment': 	treatment.id, 
 				})
 
-		print service_quick
+		#print service_quick
 
 
 
-		#return patient 
 		#return [patient_1, patient_2]
 		return [patient_2]
 

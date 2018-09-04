@@ -56,7 +56,9 @@
 
 									<field name="x_my_company"	/>
 
+									<field name="vspace" />
 									
+									<field name="x_legacy" />
 
 
 <!--

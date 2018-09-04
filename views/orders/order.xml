@@ -118,30 +118,29 @@
 							groups="openhealth.roots"
 					/>
 -->
-
+<!--
 					<button 
 							type="object" 
 							class="oe_highlight"
-
 							name="test"
 
 							string="Test"		
 
 							groups="openhealth.roots"
 					/>
+-->
 
 
-					<!-- Reset --> 
-						<button 
-								type="object" 
-								class="oe_highlight"
-								name="test_reset" 	
+					<button 
+							type="object" 
+							class="oe_highlight"
 
-								string="Reset"
+							name="correct_pm"
 
-								groups="openhealth.roots"
-						/>
-
+							string="Corregir"
+							
+							states="sale"						
+					/>
 				</xpath>
 
 
@@ -184,6 +183,9 @@
 					<field name="vspace"/>
 					
 					<field name="x_serial_nr"/>
+
+					<field name="x_counter_value"		groups="openhealth.roots"	/>
+
 
 <!--
 					<field name="x_sale_document_type"	invisible="1"	readonly="1"	/>
@@ -238,6 +240,7 @@
 <!-- NEW BUTTONS --> 
 <!--
 				<xpath expr="//button[@name='action_confirm']" position="before">
+							string="IMPRIMIR"
 -->
 				<xpath expr="//button[@name='action_confirm_nex']" position="before">
 				
@@ -251,7 +254,7 @@
 													('state','not in',['sale']), 
 											]}"
 
-							string="IMPRIMIR"
+							string="Imprimir"
 
 							groups="openhealth.roots,openhealth.caja"
 						/>
@@ -507,6 +510,17 @@
 
 
 
+								<!-- Reset --> 
+								<button 
+										type="object" 
+										class="oe_highlight"
+										name="test_reset" 	
+
+										string="Reset"
+
+										groups="openhealth.roots"
+								/>
+
 
 								<!-- Remove --> 
 								<group>
@@ -698,7 +712,9 @@ Look for the Minimalist experience !!!
 					>
 
 
-					<field name="name"	 		string="Referencia"		/>
+					<field name="name"	 		string="Referencia"/>
+
+					<field name="x_legacy" 		groups="openhealth.roots"/>
 
 
 
@@ -860,8 +876,6 @@ Look for the Minimalist experience !!!
 			<field name="name">sale.order.tree</field>
 			<field name="model">sale.order</field>
 			<field name="arch" type="xml">
-
-
 
 				<tree string="Order Tree"
 
@@ -1025,6 +1039,9 @@ Look for the Minimalist experience !!!
 		</record>
 
 
+
+
+
 		<!-- Action - Ventas -->
 		<record model="ir.actions.act_window" id="sale_list_action">
 			<field name="name">Ventas - Confirmadas</field>
@@ -1034,11 +1051,32 @@ Look for the Minimalist experience !!!
 
 			<field name="domain">[
 									('state', '=', 'sale'),
+									('x_legacy', '=', False),
 								]
 			</field>
 
 			<field name="context">{}</field>
 		</record>
+
+
+		<!-- Action - Legacy -->
+		<record model="ir.actions.act_window" id="sale_legacy_list_action">
+			<field name="name">Ventas - Confirmadas - Legacy</field>
+			<field name="res_model">sale.order</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form,graph,pivot</field>
+
+			<field name="domain">[
+									('state', '=', 'sale'),
+									('x_legacy', '=', True),
+								]
+			</field>
+
+			<field name="context">{}</field>
+		</record>
+
+
+
 
 
 		<!-- Action - Cancel -->

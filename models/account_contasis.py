@@ -7,8 +7,9 @@
 # 
 from openerp import models, fields, api
 import datetime
-
 import account_funcs as acc_funcs
+
+
 
 class AccountContasis(models.Model):
 
@@ -29,7 +30,6 @@ class AccountContasis(models.Model):
 
 
 # ----------------------------------------------------------- Relational ------------------------------------------------------
-
 	# Account Lines 
 	account_line = fields.One2many(
 			'openhealth.account.line', 
@@ -45,7 +45,6 @@ class AccountContasis(models.Model):
 
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
-	
 	# Name 
 	name = fields.Char(
 			string="Nombre", 		
@@ -119,6 +118,7 @@ class AccountContasis(models.Model):
 	# Update
 	@api.multi
 	def update(self):  
+		print 
 		print 'Account - Update'
 
 
@@ -128,7 +128,9 @@ class AccountContasis(models.Model):
 
 
 		# Init 
-		orders,count = acc_funcs.get_orders_filter(self, self.date_begin, self.date_end)
+		orders,count = acc_funcs.get_orders_filter(self, self.date_begin, self.date_end)		# Sales and Cancelled 
+
+
 		count = 0 
 		amount_sum = 0 
 
@@ -216,7 +218,7 @@ class AccountContasis(models.Model):
 														'document_type': document_type,
 
 
-														'state': state, 
+														'state': state, 						# Very important !
 
 
 														'account_id': self.id, 

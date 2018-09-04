@@ -16,6 +16,11 @@
 			<field name="arch" type="xml">
 
 
+				<!-- Set To C --> 
+				<xpath expr="//button[@name='set_to_completed']" position="replace">
+				</xpath>
+
+
 
 				<xpath expr="//field[@name='state']" position="before">
 
@@ -30,7 +35,9 @@
 -->
 					<button 
 						type="object" 					
-						class="oe_highlight"
+
+						class="oe_highlight oe_right"
+						
 						name="remove_myself" 
 			
 						string="Eliminar" 
@@ -39,7 +46,13 @@
 					/>
 
 
-
+<!--
+						attrs="{ 'invisible':[	
+												('x_confirmable','==',False), 	
+												('state','==','Scheduled'), 	
+											]}"
+						states="confirmable,pre_scheduled"
+-->
 					<!-- Confirm --> 
 					<button 
 						type="object" 
@@ -47,11 +60,11 @@
 						
 						name="confirm" 
 			
+						string="Confirmar" 
+
 						attrs="{ 'invisible':[	
 												('x_confirmable','==',False), 	
 											]}"
-
-						string="Confirmar" 
 
 					/>
 
@@ -64,7 +77,8 @@
 						
 						name="un_confirm" 
 			
-						string="Des Confirmar" 
+						string="DES - Confirmar" 
+
 
 						states="Scheduled"
 					/>
@@ -227,34 +241,22 @@
 
 
 
-
-
-
-				<!-- Notebook --> 
+				<!-- Before Notebook --> 
 				<xpath expr="//notebook" position="before">
-
 					<group col="2">
-
-
 						<group >
 
 							<field name="appointment_date"/>
 
 							<field name="vspace"/>
-
 							<field name="state"/>
-
 							<field name="vspace"/>
 
 
 <!--
 							<field name="x_date"			groups="openhealth.roots"	/>
-
 							<field name="duration"	readonly="1"		/>	
-
 							<field name="vspace"/>
-
-
 							<field name="duration_sel"/>	
 							<field name="vspace"/>
 -->

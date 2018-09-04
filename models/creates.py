@@ -259,11 +259,16 @@ def create_order_lines_micro(self, name_short, price_manual, price_applied, reco
 					'product' : 		'service_product_id',
 			}
 
-
+	# Product 
 	product = self.env['product.product'].search([
 													('x_name_short','=', name_short),
 													('x_origin','=', False),
 											])
+	#print product.name 
+	#print product.type
+	#print product.x_family
+	#print product.x_treatment
+
 
 	# Reco field 
 	if product.type == 'service': 
@@ -293,7 +298,9 @@ def create_order_lines_micro(self, name_short, price_manual, price_applied, reco
 
 
 	# Manual Price  
-	if price_manual != 0: 
+	#if price_manual != 0: 
+	if price_manual != -1: 
+
 
 		#print 'Manual Price'
 
@@ -329,9 +336,9 @@ def create_order_lines_micro(self, name_short, price_manual, price_applied, reco
 
 		ol = self.order_line.create({
 										'name': 		product.name, 
-										'product_id': product.id,
-										'order_id': order_id,
-										reco_field: reco_id, 
+										'product_id': 	product.id,
+										'order_id': 	order_id,
+										reco_field: 	reco_id, 
 								})
 
 	# Update Order line

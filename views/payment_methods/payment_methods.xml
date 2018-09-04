@@ -112,10 +112,25 @@
 
 
 							<group>
-								<field name="order"   />																				
-								<field name="total"   	invisible="0"	/>													
-								<field name="balance"   />	
+								<field name="order"/>																				
+
+								<field name="total"/>
+
+								<field name="pm_total"/>
+
+<!--
+								<field name="balance"	style="color:Red"	attrs="{'invisible':[	
+																									('balance', '&gt;=', 0),
+																								],}"
+									/>
+								<field name="balance"	style="color:Blue"	attrs="{'invisible':[	
+																									('balance', '&lt;', 0),
+																								],}"
+									/>
+-->
+								<field name="balance"/>
 							</group>
+							
 						</group>
 
 

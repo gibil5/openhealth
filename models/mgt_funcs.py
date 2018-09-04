@@ -1,227 +1,170 @@
 # -*- coding: utf-8 -*-
-
 from openerp import models, fields, api
 import datetime
 
 
 
-# ----------------------------------------------------------- Get orders - All ------------------------------------------------------
+# ----------------------------------------------------------- Line Analysis ------------------------------------------------------
+def line_analysis(self, line, verbosity):
+	#print
+	#print 'Line Analysis'
 
-def get_orders_filter_all(self, date_bx, date_ex):
+	#if verbosity: 
+	#	print
+	#	print 'Line Analysis'
+	#	print line 
+	#	print 
 
-	# Dates	
+	# Init 
+	prod = line.product_id 
+
+
+	# Services 
+	if prod.type in ['service']: 
+		self.nr_services = self.nr_services + line.product_uom_qty 
+		self.amo_services = self.amo_services + line.price_subtotal
+
+		# Consultations 
+		if prod.x_treatment in ['consultation']: 
+			self.nr_consultations = self.nr_consultations + line.product_uom_qty 
+			self.amo_consultations = self.amo_consultations + line.price_subtotal
+		
+		# Procedures 
+		else: 
+			self.nr_procedures = self.nr_procedures + line.product_uom_qty 
+			self.amo_procedures = self.amo_procedures + line.price_subtotal
+
+			# Co2
+			if prod.x_treatment in ['laser_co2']: 
+				self.nr_co2 = self.nr_co2 + line.product_uom_qty 
+				self.amo_co2 = self.amo_co2 + line.price_subtotal
+
+			# Exc
+			elif prod.x_treatment in ['laser_excilite']: 
+				self.nr_exc = self.nr_exc + line.product_uom_qty 
+				self.amo_exc = self.amo_exc + line.price_subtotal
+
+			# Ipl
+			elif prod.x_treatment in ['laser_ipl']: 
+				self.nr_ipl = self.nr_ipl + line.product_uom_qty 
+				self.amo_ipl = self.amo_ipl + line.price_subtotal
+
+			# Ndyag
+			elif prod.x_treatment in ['laser_ndyag']: 
+				self.nr_ndyag = self.nr_ndyag + line.product_uom_qty 
+				self.amo_ndyag = self.amo_ndyag + line.price_subtotal
+
+			# Quick
+			elif prod.x_treatment in ['laser_quick']: 
+				self.nr_quick = self.nr_quick + line.product_uom_qty 
+				self.amo_quick = self.amo_quick + line.price_subtotal
+
+			else: 
+				# Medical
+				if prod.x_family in ['medical']: 
+					self.nr_medical = self.nr_medical + line.product_uom_qty 
+					self.amo_medical = self.amo_medical + line.price_subtotal
+
+				# Cosmeto
+				elif prod.x_family in ['cosmetology']: 
+					self.nr_cosmetology = self.nr_cosmetology + line.product_uom_qty 
+					self.amo_cosmetology = self.amo_cosmetology + line.price_subtotal
+
+
+
+	# Products
+	else:
+		self.nr_products = self.nr_products + line.product_uom_qty 
+		self.amo_products = self.amo_products + line.price_subtotal
+
+
+	return False
+
+
+
+# ----------------------------------------------------------- Get orders - Simple ------------------------------------------------------
+# Only Sales 
+def get_orders_filter(self, date_bx, date_ex):
+	#print
+	#print 'Get Orders - Simple'
+	
+
 	DATETIME_FORMAT = "%Y-%m-%d"
-	date_begin = date_bx + ' 05:00:00'
 	date_end_dt  = datetime.datetime.strptime(date_ex, DATETIME_FORMAT) + datetime.timedelta(hours=24) + datetime.timedelta(hours=5,minutes=0)
+
+	date_begin = date_bx + ' 05:00:00'
 	date_end = date_end_dt.strftime('%Y-%m-%d %H:%M')
 
 
 	# Orders 
 	orders = self.env['sale.order'].search([
-													#('state', '=', 'sale'),
-													#('state', 'in', ['sale','cancel']),
-													('state', 'in', ['sale','cancel','validated']),
-													
+													('state', '=', 'sale'),
 													('date_order', '>=', date_begin),													
 													('date_order', '<', date_end),
-													
-													#('x_type', '=', x_type),
-													#('x_doctor', '=', doctor),
-											],
-												order='x_serial_nr asc',
-												#limit=1,
-											)
 
-	# Count 
-	count = self.env['sale.order'].search_count([
-													#('state', '=', 'sale'),
-													#('state', 'in', ['sale','cancel']),
-													('state', 'in', ['sale','cancel','validated']),
-													
-													('date_order', '>=', date_begin),
-													('date_order', '<', date_end),
-													
-													#('x_type', '=', x_type),
-													#('x_doctor', '=', doctor),
+													('x_legacy', '=', False),
 											],
 												#order='x_serial_nr asc',
 												#limit=1,
 											)
-
-	return orders, count
-
-# get_orders_filter_all
-
-
-
-
-
-
-# ----------------------------------------------------------- Get orders - By Type ------------------------------------------------------
-
-def get_orders_filter_type(self, date_bx, date_ex, x_type):
-
-
-	# Dates	
-	DATETIME_FORMAT = "%Y-%m-%d"
-	date_begin = date_bx + ' 05:00:00'
-	date_end_dt  = datetime.datetime.strptime(date_ex, DATETIME_FORMAT) + datetime.timedelta(hours=24) + datetime.timedelta(hours=5,minutes=0)
-	date_end = date_end_dt.strftime('%Y-%m-%d %H:%M')
-
-
-
-
-
-
-	# Orders 
-	orders = self.env['sale.order'].search([
-													#('state', '=', 'sale'),
-													('state', 'in', ['sale','cancel']),
-													
-													('x_type', '=', x_type),
-
-													('date_order', '>=', date_begin),													
-													('date_order', '<', date_end),
-													#('x_doctor', '=', doctor),
-											],
-												order='x_serial_nr asc',
-												#limit=1,
-											)
-
 	# Count 
 	count = self.env['sale.order'].search_count([
-													#('state', '=', 'sale'),
-													('state', 'in', ['sale','cancel']),
-													
-													('x_type', '=', x_type),
-
+													('state', '=', 'sale'),
 													('date_order', '>=', date_begin),
 													('date_order', '<', date_end),
-													#('x_doctor', '=', doctor),
+
+													('x_legacy', '=', False),
 											],
 												#order='x_serial_nr asc',
 												#limit=1,
 											)
-
-
-
-
-
-	#count = 0 
-
 	return orders, count
-
-# get_orders_filter_type
-
-
-
+# get_orders_filter
 
 
 
 # ----------------------------------------------------------- Get orders - By Doctor ------------------------------------------------------
-
-
 # Provides sales between begin date and end date. Filters: by Doctor. 
-@api.multi
-#def get_orders_filter(self, date_bx, date_ex):
-def get_orders_filter(self, date_bx, date_ex, doctor):
-
-
+def get_orders_filter_by_doctor(self, date_bx, date_ex, doctor):
 	#print
-	#print 'Get Orders Two'
+	#print 'Get Orders - By Doctor'
 
-
-
+	# Init 
 	# Dates	
 	#DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
 	DATETIME_FORMAT = "%Y-%m-%d"
-
-	#date_begin = date + ' 05:00:00'
 	date_begin = date_bx + ' 05:00:00'
-
-	#date_end_dt  = datetime.datetime.strptime(date, DATETIME_FORMAT) + datetime.timedelta(hours=24) + datetime.timedelta(hours=5,minutes=0)
 	date_end_dt  = datetime.datetime.strptime(date_ex, DATETIME_FORMAT) + datetime.timedelta(hours=24) + datetime.timedelta(hours=5,minutes=0)
 	date_end = date_end_dt.strftime('%Y-%m-%d %H:%M')
+
+	# Prints 
 	#print date_end_dt
 
 
-
-
-
+	# Search 
 
 	# Orders 
-	if doctor == 'all': 
-	
-
-		# Orders 
-		orders = self.env['sale.order'].search([
-														('state', '=', 'sale'),
-
-														('date_order', '>=', date_begin),													
-														('date_order', '<', date_end),
-
-														#('categ_id', '=', categ_id),
-												],
-													order='x_serial_nr asc',
-													#limit=1,
-												)
-
-		# Count 
-		count = self.env['sale.order'].search_count([
-														('state', '=', 'sale'),
-
-														('date_order', '>=', date_begin),
-														('date_order', '<', date_end),
-
-														#('categ_id', '=', categ_id),
-												],
-													#order='x_serial_nr asc',
-													#limit=1,
-												)
-
-
-
-	else:		# By Doctor 
-
-
-		# Orders 
-		orders = self.env['sale.order'].search([
-														('state', '=', 'sale'),
-														
-														#('x_type', '=', 'ticket_receipt'),
-
-
-														('date_order', '>=', date_begin),													
-														('date_order', '<', date_end),
-														('x_doctor', '=', doctor),
-												],
-													order='x_serial_nr asc',
-													#limit=1,
-												)
-
-		# Count 
-		count = self.env['sale.order'].search_count([
-														('state', '=', 'sale'),
-														
-														#('x_type', '=', 'ticket_receipt'),
-
-
-														('date_order', '>=', date_begin),
-														('date_order', '<', date_end),
-														('x_doctor', '=', doctor),
-												],
-													#order='x_serial_nr asc',
-													#limit=1,
-												)
-
-
-
-
-
-	#count = 0 
-
+	orders = self.env['sale.order'].search([
+													('state', '=', 'sale'),
+													('date_order', '>=', date_begin),													
+													('date_order', '<', date_end),
+													('x_doctor', '=', doctor),
+													('x_legacy', '=', False),
+											],
+												order='x_serial_nr asc',
+												#limit=1,
+											)
+	# Count 
+	count = self.env['sale.order'].search_count([
+													('state', '=', 'sale'),
+													('date_order', '>=', date_begin),
+													('date_order', '<', date_end),
+													('x_doctor', '=', doctor),
+													('x_legacy', '=', False),
+											],
+												#order='x_serial_nr asc',
+												#limit=1,
+											)
 	return orders, count
-
-
-# get_orders_filter
+# get_orders_filter_by_doctor
 

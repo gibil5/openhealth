@@ -4,13 +4,27 @@
 # 
 from openerp import models, fields, api
 from datetime import datetime
-import serv_funcs
 import exc
+import prodvars
+
+#import serv_funcs
 
 class ServiceExcilite(models.Model):
 	_name = 'openhealth.service.excilite'
 	_inherit = 'openhealth.service'
 
+
+
+# ---------------------------------------------- Default --------------------------------------------------------
+	# Laser 
+	laser = fields.Selection(
+			selection = prodvars._laser_type_list, 
+			string="Láser", 			
+	
+			default='laser_excilite',			
+
+			index=True,
+		)
 
 
 # ----------------------------------------------------------- Fields ------------------------------------------------------
@@ -77,7 +91,7 @@ class ServiceExcilite(models.Model):
 		if self.time_1 != 'none':				
 			self.time_1 = self.clear_times(self.time_1)
 			self.time = self.time_1
-			serv_funcs.product(self)
+			self.get_product()
 			return {
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time)]},				
 			}	

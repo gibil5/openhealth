@@ -2,24 +2,22 @@
 #
 # 	*** Procedure Control Funcs 
 #
-# Created: 				  1 Nov 2016
-# Last updated: 	 	 15 Aug 2018
+# 	Created: 				  1 Nov 2016
+# 	Last updated: 	 	 	  3 Sep 2018
 #
 from openerp import models, fields, api
-
 import user
 import lib
 
 
 
+
 #------------------------------------------------ Create Controls ---------------------------------------------------
-
 # Create Controls 
-@api.multi
 def create_controls(self, nr_controls, nr_ctl_created):
-
 	print 
 	print 'Create Controls'
+
 
 	# Clean - Deprecated 
 	#rec_set = self.env['openhealth.control'].search([
@@ -37,18 +35,14 @@ def create_controls(self, nr_controls, nr_ctl_created):
 	treatment_id = self.treatment.id
 	subtype = self.product.x_treatment 
 
-
 	# Start date 
 	if self.session_date != False: 
 		evaluation_start_date = self.session_date
 	else: 
 		evaluation_start_date = self.evaluation_start_date
 
-
 	# Doctor 
-	#doctor_id = procedure_funcs.get_actual_doctor(self)
 	doctor_id = user.get_actual_doctor_pro(self)
-
 
 	# Date dictionary - Days between controls 
 	k_dic = {
@@ -64,10 +58,8 @@ def create_controls(self, nr_controls, nr_ctl_created):
 
 
 	# Loop 
-	#for k in range(0,self.number_controls): 
-	#for k in range(0,len(k_dic)): 
-	#for k in range(0,1): 
-	for k in range(0, nr_controls): 
+	#for k in range(0, nr_controls): 
+	for k in range(nr_controls): 
 
 
 		# Init 					
@@ -80,7 +72,6 @@ def create_controls(self, nr_controls, nr_ctl_created):
 
 
 		# Control date 
-		#control_date = procedure_funcs.get_next_date(self, evaluation_start_date, nr_days)
 		control_date = lib.get_next_date(self, evaluation_start_date, nr_days)
 
 		control_date_str = control_date.strftime("%Y-%m-%d")		
@@ -95,14 +86,13 @@ def create_controls(self, nr_controls, nr_ctl_created):
 
 
 		# Check and Push 
-		#appointment_date_str = procedure_funcs.check_and_push(self, control_date_str, duration, x_type, doctor_name, states)
 		appointment_date_str = user.check_and_push(self, control_date_str, duration, x_type, doctor_name, states)
-
 
 
 		# Create Appointment 
 		appointment = self.env['oeh.medical.appointment'].create({
 																	'appointment_date': appointment_date_str,
+
 																	'patient': patient_id,	
 																	'doctor': doctor_id,
 																	'duration': duration,
@@ -122,8 +112,9 @@ def create_controls(self, nr_controls, nr_ctl_created):
 
 		# Create Control 
 		control = self.control_ids.create({
-											'evaluation_start_date':control_date,
+											#'evaluation_start_date':control_date,
 											'first_date':control_date,
+
 											'patient':patient_id,
 											'doctor':doctor_id,
 											'product':product_id,

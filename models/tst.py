@@ -4,18 +4,15 @@
 #  	
 # 	Integration Tests for the Treatment Class
 #
-# Created: 			14 Aug 2018
-# Last up: 	 		14 Aug 2018
+#	Created: 			14 Aug 2018
+#	Last up: 	 		14 Aug 2018
 # 
 
 
 
 # ----------------------------------------------------------- Test Integration - Treatment ------------------------------------------------------
-
-# Test - Integration 
-
+# Test - Integration - Treatment 
 def test_integration_treatment(self, date_order_begin, date_order_end):
-
 	print 
 	print 'Test Integration'
 
@@ -34,14 +31,8 @@ def test_integration_treatment(self, date_order_begin, date_order_end):
 	print 'Create Order - Consultation'
 	self.create_order_con()
 	for order in self.order_ids: 
-		
-		#order.pay_myself()
-
-		#date_order = '2018-09-01 14:00:00'
-
 		order.pay_myself(date_order_begin)
 		
-
 
 	# Consultation 
 	print 
@@ -51,21 +42,14 @@ def test_integration_treatment(self, date_order_begin, date_order_end):
 		consultation.autofill()
 
 
-
 	# Recommendations - Order Procedure 
-	print 
-	print 'Create Recommendations'
-	
 	if True:
-	#if False:
-		#self.create_recommendations()
+		print 
+		print 'Create Recommendations'
 		create_recommendations(self)
-		
 		self.create_order_pro()
 	else: 
-		#self.create_order_pro_lines()
 		create_order_pro_lines(self)
-
 
 
 	# Pay Order Procedure 
@@ -79,33 +63,23 @@ def test_integration_treatment(self, date_order_begin, date_order_end):
 			order.pay_myself(date_order_end)
 
 
-
-
 	# Sessions 
-	#if True: 
-	if False:	
+	if self.ses_create:
 		print 
 		print 'Create Sessions'
-		#self.create_sessions()
 		for procedure in self.procedure_ids: 
-			procedure.create_sessions()
-
+			for _ in range(2): 
+				procedure.create_sessions()
 
 
 	# Controls 
-	#if True: 
-	if False:	
+	if self.con_create:
 		print 
 		print 'Create Controls'
 		for procedure in self.procedure_ids: 
-			procedure.create_controls()
-			#procedure.create_sessions()
+			for _ in range(6): 
+				procedure.create_controls()
 
-
-
-
-
-	#print 
 # test_integration_treatment
 
 
@@ -114,30 +88,9 @@ def test_integration_treatment(self, date_order_begin, date_order_end):
 # ----------------------------------------------------------- Create Recommendations  ------------------------------------------------------
 
 # Create Recommendations 
-#@api.multi 
 def create_recommendations(self):
-
 	print 
 	print 'Create Recommendations'
-
-
-	# Quick 
-	if self.qui_create: 
-		print 'Quick'
-		service = self.env['product.template'].search([
-															('x_name_short', '=', 'quick_neck_hands_rejuvenation_1'),
-											],
-												#order='date_order desc',
-												limit=1,
-											)
-		service_id = service.id
-		#print service
-		self.service_quick_ids.create({
-											'service': 		service_id, 
-											'patient': 		self.patient.id, 
-											'physician': 	self.physician.id, 
-											'treatment': 	self.id, 
-			})
 
 
 	# Co2 
@@ -145,20 +98,21 @@ def create_recommendations(self):
 		print 'Co2'
 
 		zone = 'neck'
-
-		service = self.env['product.template'].search([
+		product_id = self.env['product.template'].search([
 															('x_name_short', '=', 'co2_nec_rn1_one'),
 											],
 												#order='date_order desc',
 												limit=1,
-											)
-		service_id = service.id
+											).id
+		#service_id = service.id
 		#print service
-		self.service_co2_ids.create({
-											'service': 		service_id, 
+		service = self.service_co2_ids.create({
+											'service': 		product_id, 
 											'zone': 		zone, 
 											'treatment': 	self.id, 
 			})
+		#service.test()
+
 
 
 
@@ -168,19 +122,21 @@ def create_recommendations(self):
 
 		zone = 'belly'
 
-		service = self.env['product.template'].search([
+		product_id = self.env['product.template'].search([
 															('x_name_short', '=', 'exc_bel_alo_15m_one'),
 											],
 												#order='date_order desc',
 												limit=1,
-											)
-		service_id = service.id
+											).id
+		#service_id = service.id
 		#print service
-		self.service_excilite_ids.create({
-											'service': 		service_id, 
+		service = self.service_excilite_ids.create({
+											'service': 		product_id, 
 											'zone': 		zone, 
 											'treatment': 	self.id, 
 			})
+		#service.test()
+
 
 
 	# Ipl 
@@ -189,16 +145,16 @@ def create_recommendations(self):
 
 		zone = 'belly'
 
-		service = self.env['product.template'].search([
+		product_id = self.env['product.template'].search([
 															('x_name_short', '=', 'ipl_bel_dep_15m_six'),
 											],
 												#order='date_order desc',
 												limit=1,
-											)
-		service_id = service.id
+											).id
+		#service_id = service.id
 		#print service
 		self.service_ipl_ids.create({
-											'service': 		service_id, 
+											'service': 		product_id, 
 											'zone': 		zone, 
 											'treatment': 	self.id, 
 			})
@@ -212,20 +168,38 @@ def create_recommendations(self):
 
 		zone = 'body_local'
 
-		service = self.env['product.template'].search([
+		product_id = self.env['product.template'].search([
 															('x_name_short', '=', 'ndy_bol_ema_15m_six'),
 											],
 												#order='date_order desc',
 												limit=1,
-											)
-		service_id = service.id
+											).id
+		#service_id = service.id
 		#print service
 		self.service_ndyag_ids.create({
-											'service': 		service_id, 
+											'service': 		product_id, 
 											'zone': 		zone, 
 											'treatment': 	self.id, 
 			})
 
+
+	# Quick 
+	if self.qui_create: 
+		print 'Quick'
+		product_id = self.env['product.template'].search([
+															('x_name_short', '=', 'quick_neck_hands_rejuvenation_1'),
+											],
+												#order='date_order desc',
+												limit=1,
+											).id
+		#service_id = service.id
+		#print service
+		self.service_quick_ids.create({
+											'service': 		product_id, 
+											'patient': 		self.patient.id, 
+											'physician': 	self.physician.id, 
+											'treatment': 	self.id, 
+			})
 
 
 
@@ -256,19 +230,18 @@ def create_recommendations(self):
 		
 		for short_name in med_short_names: 
 
-			service = self.env['product.template'].search([
+			product_id = self.env['product.template'].search([
 																#('x_name_short', '=', 'cri_faa_acn_ten'),
 																('x_name_short', '=', short_name),
 												],
 													#order='date_order desc',
 													limit=1,
-												)
-			service_id = service.id
-
+												).id
+			#service_id = service.id
 			#print service
 
 			self.service_medical_ids.create({
-												'service': 		service_id, 
+												'service': 		product_id, 
 												'treatment': 	self.id, 
 				})
 
@@ -291,18 +264,18 @@ def create_recommendations(self):
 		
 		for short_name in cos_short_names: 
 			
-			service = self.env['product.template'].search([
+			product_id = self.env['product.template'].search([
 																('x_name_short', '=', short_name),
 												],
 													#order='date_order desc',
 													limit=1,
-												)
-			service_id = service.id
+												).id
+			#service_id = service.id
 
 			#print service
 
 			self.service_cosmetology_ids.create({
-												'service': 		service_id, 
+												'service': 		product_id, 
 												'treatment': 	self.id, 
 				})
 
@@ -311,20 +284,20 @@ def create_recommendations(self):
 
 
 	# Vip
-	if self.vip_create: 
-		print 'Vip'
-		service = self.env['product.template'].search([
-															('x_name_short', '=', 'vip_card'),
-											],
+	#if self.vip_create: 
+	#	print 'Vip'
+	#	service = self.env['product.template'].search([
+	#														('x_name_short', '=', 'vip_card'),
+	#										],
 												#order='date_order desc',
-												limit=1,
-											)
-		service_id = service.id
+	#											limit=1,
+	#										)
+	#	service_id = service.id
 		#print service
-		self.service_vip_ids.create({
-											'service': 		service_id, 
-											'treatment': 	self.id, 
-			})
+	#	self.service_vip_ids.create({
+	#										'service': 		service_id, 
+	#										'treatment': 	self.id, 
+	#		})
 
 
 
@@ -344,16 +317,16 @@ def create_recommendations(self):
 		
 		for short_name in prod_short_names: 
 
-			service = self.env['product.template'].search([
+			product_id = self.env['product.template'].search([
 																('x_name_short', '=', short_name),
 												],
 													#order='date_order desc',
 													limit=1,
-												)
-			service_id = service.id
+												).id
+			#service_id = service.id
 			#print service
 			self.service_product_ids.create({
-												'service': 		service_id, 
+												'service': 		product_id, 
 												'treatment': 	self.id, 
 				})
 
@@ -365,7 +338,6 @@ def create_recommendations(self):
 # ----------------------------------------------------------- Create Order With Lines ------------------------------------------------------
 	
 # Create Order Procedure With Lines 
-#@api.multi
 def create_order_pro_lines(self):
 
 	print 
@@ -424,8 +396,7 @@ def reset_treatment(self):
 
 	# Recos
 	self.service_product_ids.unlink()
-
-	self.service_vip_ids.unlink()
+	#self.service_vip_ids.unlink()
 	self.service_quick_ids.unlink()
 	self.service_co2_ids.unlink()
 	self.service_excilite_ids.unlink()
@@ -440,25 +411,25 @@ def reset_treatment(self):
 
 	self.appointment_ids.unlink()
 
-	# Orders 
-	for order in self.order_ids:
-		order.remove_myself()
-
 	# Alta 
 	self.treatment_closed = False
 
 
-	# Conter Decrease 
-	name_ctr = 'advertisement'
-	
-	counter = self.env['openhealth.counter'].search([
-															('name', '=', name_ctr), 
-													],
+	# Orders 
+	for order in self.order_ids:
+		order.remove_myself()
+
+
+	# Conter Decrease - Deprecated !!!
+	#name_ctr = 'advertisement'
+	#counter = self.env['openhealth.counter'].search([
+	#														('name', '=', name_ctr), 
+	#												],
 														#order='write_date desc',
-														limit=1,
-													)
-	counter.decrease()
-	counter.decrease()
+	#													limit=1,
+	#												)
+	#counter.decrease()
+	#counter.decrease()
 
 # reset
 
@@ -524,7 +495,6 @@ def test_appointment(self):
 # ----------------------------------------------------------- Create Booleans ------------------------------------------------------
 	
 # Clear  
-#@api.multi 
 def clear_all(self):
 	#print 
 	#print 'Clear'
@@ -536,14 +506,17 @@ def clear_all(self):
 		self.ndy_create = False
 		self.qui_create = False		
 		self.med_create = False
-		self.cos_create = False
-		self.vip_create = False
+		self.cos_create = False		
 		self.product_create = False
+		#self.vip_create = False
+
+		self.ses_create = False
+		self.con_create = False
+
 # clear 
 
 
 # All  
-#@api.multi 
 def set_all(self):
 	#print 
 	#print 'All'
@@ -556,8 +529,11 @@ def set_all(self):
 		self.qui_create = True		
 		self.med_create = True
 		self.cos_create = True
-		self.vip_create = True
 		self.product_create = True
+		#self.vip_create = True
+
+		self.ses_create = True
+		self.con_create = True
 # all 
 
 

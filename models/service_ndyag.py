@@ -4,9 +4,11 @@
 # 
 from openerp import models, fields, api
 from datetime import datetime
-import serv_funcs
-
 import ndyag
+import prodvars
+
+#import serv_funcs
+
 
 class ServiceNdyag(models.Model):
 	_name = 'openhealth.service.ndyag'
@@ -14,6 +16,18 @@ class ServiceNdyag(models.Model):
 	
 	
 	
+# ---------------------------------------------- Default --------------------------------------------------------
+	# Laser 
+	laser = fields.Selection(
+			selection = prodvars._laser_type_list, 
+			string="Láser", 			
+	
+			default='laser_ndyag',			
+
+			index=True,
+		)
+
+
 # ----------------------------------------------------------- Fields ------------------------------------------------------
 	# Service 
 	service = fields.Many2one(
@@ -74,7 +88,9 @@ class ServiceNdyag(models.Model):
 	def _onchange_nr_sessions_1(self):
 		if self.nr_sessions_1 != 'none':	
 			self.nr_sessions = self.nr_sessions_1
-			serv_funcs.product_m22(self)
+
+			self.get_product_m22()
+			
 			return {
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time),('x_sessions', '=', self.nr_sessions) ]},
 			}

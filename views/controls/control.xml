@@ -79,35 +79,37 @@
 						<button 
 							type="object" 
 							class="oe_highlight"
-
 							name="update_appointment" 	
 
 							string="Cambiar Cita"
+
+							states="draft,inprogress"
 						/>
 
 
 						<!-- Dates -->
+<!--						
 						<button 
 							type="object" 
 							class="oe_highlight"
-
 							name="update_dates" 	
 
 							string="Actualizar Fechas"
 						/>
-
+							states="cancel,draft,inprogress"
+-->
 
 
 						<!-- Dates -->
 						<button 
 							type="object" 
 							class="oe_highlight"
-
 							groups="openhealth.roots,openhealth.directors,openhealth.physicians"
-
 							name="update_done" 	
 
 							string="Completo"
+
+							states="app_confirmed"
 						/>
 
 
@@ -115,11 +117,13 @@
 
 <!--
 							statusbar_visible="draft, inprogress, done"
+							statusbar_visible="draft, inprogress, done, cancel"
+							statusbar_visible="draft,done,cancel"
 -->
 						<!-- State --> 
 						<field 	name="state" 
 							widget="statusbar" 
-							statusbar_visible="draft, inprogress, done, cancel"
+							statusbar_visible="draft,app_confirmed,done,cancel"
 						/>
 					</header>
 					
@@ -374,12 +378,13 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 			<field name="model">openhealth.control</field>
 			<field name="arch" type="xml">
 				
-
+<!--
+-->
 				<tree 	string="Control Tree"
 
 						colors="
 								red:state=='draft';
-								green:state=='inprogress';
+								green:state=='app_confirmed';
 								gray:state=='cancel';
 								blue:state=='done'
 							">
@@ -402,9 +407,13 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 
 					<field name="state_app"/>
 
+
+
 					<field name="first_date"/>
 
 					<field name="control_date"/>
+
+
 
 					<field name="nr_days"/>
 

@@ -3,20 +3,16 @@
 # 	Order 
 # 
 # Created: 				26 Aug 2016
-# Last mod: 			23 Aug 2018
+# Last mod: 			31 Aug 2018
 # 
-
 from openerp import models, fields, api
 import datetime
 from num2words import num2words
 import math 
-
 from openerp import tools
 from openerp import _
 from openerp.exceptions import Warning
-
 import ord_vars
-
 import lib
 import user
 import creates
@@ -26,6 +22,77 @@ class sale_order(models.Model):
 	_inherit='sale.order'
 
 	
+
+
+# ----------------------------------------------------------- Qc ------------------------------------------------------
+
+	# Counter Value 
+	x_counter_value = fields.Integer(
+			string="Contador", 
+			#default=55, 
+		)
+
+
+
+
+
+# ----------------------------------------------------------- Correct ------------------------------------------------------
+	# Correct payment method 
+	@api.multi 
+	def correct_pm(self):
+		print 
+		print 'Correct Payment Method'
+
+		#order_id = self.id
+
+ 		if self.x_payment_method.name == False: 
+ 			
+ 			#print 'Create'
+			self.x_payment_method = self.env['openhealth.payment_method'].create({
+																					'order': 	self.id, 	
+				})
+		
+		res_id = self.x_payment_method.id 
+
+		return {
+			# Mandatory 
+			'type': 'ir.actions.act_window',
+			'name': 'Open Payment Method Current',
+			# Window action 
+
+			'res_id': res_id,
+
+			'res_model': 'openhealth.payment_method',
+			# Views 
+			"views": [[False, "form"]],
+			'view_mode': 'form',
+			'target': 'current',
+			#'view_id': view_id,
+			#"domain": [["patient", "=", self.patient.name]],
+			#'auto_search': False, 
+			'flags': {
+						'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						#'form': {'action_buttons': True, }
+						#'form': {'action_buttons': False, }
+					},			
+			'context': {
+						#'default_order': order_id,					
+					}
+		}
+	# correct_pm
+
+
+
+
+
+
+# ----------------------------------------------------------- Legacy ------------------------------------------------------
+
+	x_legacy = fields.Boolean(
+			'Legacy', 
+		)
+
+
 
 # ----------------------------------------------------------- Pay ------------------------------------------------------
 
@@ -427,7 +494,7 @@ class sale_order(models.Model):
 
 			# Calculate 
 			self.x_serial_nr = prefix + separator + str(value).zfill(padding)
-
+			self.x_counter_value = value
 
 
 
@@ -542,23 +609,34 @@ class sale_order(models.Model):
 
 
 	# Date 
+	#date_order = fields.Datetime(string='Order Date', required=True, readonly=True, index=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}, copy=False, default=fields.Datetime.now)
 	date_order = fields.Datetime(
-
 		states={	
 					'draft': [('readonly', False)], 
 					'sent': [('readonly', False)], 
 					'sale': [('readonly', True)], 
 					'editable': [('readonly', False)], 
 				}, 
+		
+		index=True, 
 	)
 
 
 	# State 
+	#state = fields.Selection([
+	#	('draft', 'Quotation'),
+	#	('sent', 'Quotation Sent'),
+	#	('sale', 'Sale Order'),
+	#	('done', 'Done'),
+	#	('cancel', 'Cancelled'),
+	#	], string='Status', readonly=True, copy=False, index=True, track_visibility='onchange', default='draft')
 	state = fields.Selection(
 			selection = ord_vars._state_list, 
 			string='Estado',	
 			readonly=False,
 			default='draft',
+
+			index=True,
 		)
 
 	# For Admin
@@ -1273,21 +1351,21 @@ class sale_order(models.Model):
 		#print 'Pay myself'
 
 		if self.state == 'draft': 
-
 			self.create_payment_method()
-			self.x_payment_method.saledoc = 'advertisement'
-			self.x_payment_method.state = 'done'
+			
+			#self.x_payment_method.saledoc = 'advertisement'
+			self.x_payment_method.saledoc = 'ticket_receipt'
 
+			self.x_payment_method.state = 'done'
 			self.state = 'sent'
 			self.validate()
 			self.action_confirm_nex()
 
 			# Update  
 			if date_order != False: 
-
 				ret = self.write({
-										'date_order': date_order,
-									})
+									'date_order': date_order,
+								})
 
 
 
@@ -1296,7 +1374,7 @@ class sale_order(models.Model):
 	
 	# Test - Init  
 	@api.multi 
-	def test_init(self, patient_id, partner_id, doctor_id, treatment_id):
+	def test_init(self, patient_id, partner_id, doctor_id, treatment_id, pl_id):
 
 		print 
 		print 'Order - Test Init'
@@ -1309,37 +1387,65 @@ class sale_order(models.Model):
 													'partner_id': 	partner_id,
 													'patient': 		patient_id,	
 													'state':		'draft',
-													'x_doctor': 	doctor_id,	
-													
-													#'pricelist_id': pl_id, 
-													#'x_family': target, 
-													#'x_dni': self.partner_id.x_dni,	
-													#'x_ruc': self.partner_id.x_ruc,	
-
-													'treatment': treatment_id,
+													'x_doctor': 	doctor_id,
+													'pricelist_id': pl_id, 
+													'treatment': 	treatment_id,
 												})
 
 		# Create Order Lines 
-		name_shorts = [	
-							'co2_nec_rn1_one',					# Cos 
-							'exc_bel_alo_15m_one',				# Exc
-							'ipl_bel_dep_15m_six',				# Ipl
-							'ndy_bol_ema_15m_six',				# Ndyag 
-							'quick_neck_hands_rejuvenation_1',	# Quick
-							'bot_1zo_rfa_one', 			# Medical
-							'car_bod_rfa_30m_six', 		# Cosmeto
-							'acneclean', 				# Product
-							'vip_card', 				# Product 
+		#name_shorts = [	
+		#					'acneclean', 				# Product
+		#					'vip_card', 				# Product 
+		#					'quick_neck_hands_rejuvenation_1',	# Quick
+		#					'co2_nec_rn1_one',					# Co2
+		#					'exc_bel_alo_15m_one',				# Exc
+		#					'ipl_bel_dep_15m_six',				# Ipl
+		#					'ndy_bol_ema_15m_six',				# Ndyag 
+		#					'bot_1zo_rfa_one', 			# Medical
+		#					'car_bod_rfa_30m_six', 		# Cosmeto
+		#			]
+
+		tup_arr = [	
+							('con_med',	0),  					# Consultation
+							('con_med',	100),  					# Consultation
+							('con_med',	200),  					# Consultation
+							('con_gyn', 200),  					# Consultation
+
+							('acneclean',	-1),  						# Product
+							('vip_card',	-1),  						# Product 
+
+							('quick_neck_hands_rejuvenation_1',	-1), 	# Quick
+							('co2_nec_rn1_one',		-1), 				# Co2
+							('exc_bel_alo_15m_one',	-1),				# Exc
+							('ipl_bel_dep_15m_six',	-1), 			# Ipl
+							('ndy_bol_ema_15m_six',	-1),				# Ndyag 
+
+							('bot_1zo_rfa_one',		-1), 			# Medical
+							('car_bod_rfa_30m_six',	-1), 			# Cosmeto
 					]
 
+
+
 		# Init 
-		price_manual = 0
+		#price_manual = 0
 		price_applied = 0 
 		reco_id= False
 
+
 		# Create 
-		for name_short in name_shorts: 			
+		#for name_short in name_shorts: 			
+		for tup in tup_arr: 	
+			
+			name_short = 	tup[0]
+			price_manual = 	tup[1]
+			
+			# Prints 
+			#print tup 
+			#print name_short
+			#print price_manual
+
 			ret = creates.create_order_lines_micro(order, name_short, price_manual, price_applied, reco_id)
+
 
 		#return order 
 		return [order]

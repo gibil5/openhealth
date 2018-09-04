@@ -59,13 +59,9 @@
 							</group>
 							<group>								
 								<field name="x_type"   	/>		
-
 								<field name="vspace" />
-<!--
-								<field name="counter.i"   	/>
--->
-								<field name="value_static"   />
 
+								<field name="delta"   	/>		
 							</group>
 						</group>
 
@@ -105,17 +101,23 @@
 			<field name="model">openhealth.counter</field>
 			<field name="arch" type="xml">
 				<tree string="counter Tree">					
+
 					<field name="name"/>
-					<field name="x_type"/>
+
 					<field name="value"/>
-<!--
-					<field name="total"/>
--->				
-					<field name="padding"		groups="openhealth.roots"	/>
-					<field name="prefix"		groups="openhealth.roots"	/>
+
+					<field name="delta"   	/>		
+
 				</tree>
 			</field>
 		</record>
+<!--
+					<field name="x_type"/>
+					<field name="padding"		groups="openhealth.roots"	/>
+					<field name="prefix"		groups="openhealth.roots"	/>
+
+					<field name="total"/>
+-->				
 
 
 

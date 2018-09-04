@@ -1,0 +1,104 @@
+<!-- 
+4 Sep 2018
+-->
+
+						<!--
+							<group>
+								<button 
+									type="object" 
+									class="oe_highlight"
+									name="toggle_add_procedures" 
+
+									string="Manual" 
+
+									groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
+								/>
+							</group>
+						-->
+
+
+<!--
+									name="create_consultation" 
+									name="create_service" 
+									name="create_order_pro" 
+									name="create_procedure" 
+
+									string="CONSULTA"
+-->
+
+
+
+								<!-- Test - Apps --> 
+<!--
+								<button 
+									type="object" 
+									class="oe_highlight"
+									name="test_case_two" 
+									string="App" 
+									groups="openhealth.roots"									
+								/>
+-->
+
+
+								<!-- Reload --> 
+<!--
+								<button 
+									type="object" 
+									class="oe_highlight"
+
+									name="test_case_reload" 	
+
+									string="Reload"
+
+									groups="openhealth.roots"
+								/>
+-->								
+
+
+<!--
+							<group>
+								<button 
+										type="object" 
+										class="oe_highlight"
+										name="reset_procs" 	
+
+										string="Reset Procs"
+
+										groups="openhealth.roots"			
+									/>
+							</group>
+
+
+							<group>
+							</group>
+-->
+
+
+<!--
+								<field name="duration"			invisible="1" />
+								<field name="end_date"			invisible="1"	/>
+								<field name="today_date"		invisible="1"		/>
+-->
+
+
+
+
+								<!-- Reload --> 
+<!--								
+								<button 
+									type="object" 
+									class="oe_highlight"
+									name="test_case_reload" 	
+
+									string="Reload"
+								/>
+-->
+
+
+<!--
+								<field name="user_id"			groups="openhealth.roots"/>
+								<field name="vspace" />
+								<field name="consultation_progress"		/>
+								<field name="price_total"/>
+								<field name="nr_services"/>
+-->

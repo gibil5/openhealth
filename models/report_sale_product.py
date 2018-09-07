@@ -66,11 +66,12 @@ class ReportSaleProduct(models.Model):
 # ----------------------------------------------------------- Create Lines ------------------------------------------------------
 
 	# Create Lines 
-	@api.multi
 	def create_lines(self, orders):  
 		for order in orders: 
 			for line in order.order_line: 
 				if line.product_id.categ_id.name == 'Cremas': 
+					
+					# Create Order Line 
 					ret = self.order_line_ids.create({
 															'name': line.name,
 															'product_id': line.product_id.id,
@@ -78,6 +79,8 @@ class ReportSaleProduct(models.Model):
 															'price_unit': line.price_unit,
 															'product_uom_qty': line.product_uom_qty, 
 															'x_date_created': line.create_date,															
+
+															'state': order.state,
 
 															'report_sale_product_id': self.id,
 													})
@@ -88,7 +91,6 @@ class ReportSaleProduct(models.Model):
 
 	# Update 
 	@api.multi
-	#def update_report(self):  
 	def update(self):  
 		print 
 		print 'Report Sale Product - Update'

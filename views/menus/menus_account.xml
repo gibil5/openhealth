@@ -4,14 +4,9 @@
 
 
 
-<!--
-			groups="openhealth.roots,openhealth.managers,openhealth.directors"
--->
-
 <!-- Accounting -->
 		<menuitem id="main_account_menu" 
 			sequence="1"
-
 			name="Contabilidad"
 			
 			groups="openhealth.roots,openhealth.managers,openhealth.directors,openhealth.caja"
@@ -66,8 +61,6 @@
 
 					action="account_patient_no_idcode_list_action"
 					/>
-
-
 
 
 	</data>

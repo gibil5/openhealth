@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+
+<!-- Management -->
+		<menuitem id="main_management_menu" 
+			sequence="1"
+			name="Gerencia"
+			
+			groups="openhealth.roots,openhealth.managers,openhealth.directors"
+			/>
+
+
+
+		<!-- Management -->
+		<menuitem 	id="management_menu" 
+
+					name="Ventas"
+			
+					parent="main_management_menu"/>
+
+
+
+
+		<!-- Management Sales -->
+		<menuitem 	id="management_sales_menu" 
+
+					name="Análisis de Ventas" 
+			
+					parent="management_menu"
+			
+					sequence="1"
+			
+					action="management_list_action"
+
+					/>
+
+
+		<!-- Management Order Lines -->
+		<menuitem 	id="management_order_lines_menu" 
+
+					name="Management Order Lines" 
+			
+					parent="management_menu"
+			
+					sequence="2"
+			
+					action="management_order_line_form_action"
+
+					/>
+
+
+	</data>
+</openerp>

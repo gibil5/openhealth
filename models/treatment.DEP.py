@@ -1,5 +1,19 @@
 
 
+# ----------------------------------------------------------- Recommendation - Deprecated ------------------------------------------------------
+
+	#recommendation_ids = fields.One2many(
+	#		'openhealth.recommendation', 
+	#		'treatment', 
+	#		string = "Recomendaciones", 
+	#	)
+
+	#recommendation = fields.Many2one(
+	#		'openhealth.recommendation', 
+	#		string = "Recomendacion", 
+	#	)
+
+
 # ----------------------------------------------------------- Create Service - Dep ------------------------------------------------------
 	# Create Service 
 	@api.multi

@@ -12,29 +12,43 @@
 
 # ----------------------------------------------------------- Test Integration - Treatment ------------------------------------------------------
 # Test - Integration - Treatment 
-def test_integration_treatment(self, date_order_begin, date_order_end):
+def test_integration_treatment(self, date_order_begin=False, date_order_end=False):
 	print 
-	print 'Test Integration'
+	print 'Treatment - Test Integration'
 
 
 	# Appointment - Consultation 
 	print 
-	print 'Create Appointment - Consultation'
+	print 'Create App - Consultation'
 	x_type = 'consultation'
 	subtype = 'consultation'
 	state = 'pre_scheduled'
 	self.create_appointment_nex(x_type, subtype, state)
 
 
-	# Order - Consultation 
+
+	# Sale - Consultation 
+	print 
 	print 
 	print 'Create Order - Consultation'
-	self.create_order_con()
+	
+	self.create_order_con()			# Actual Button 
+
 	for order in self.order_ids: 
-		order.pay_myself(date_order_begin)
-		
+		if order.state in ['draft']: 
+			#order.pay_myself(date_order_begin)
+			order.pay_myself()
+
+			print 'Pay'
+			print 'Pricelist: ', 			order.pricelist_id.name		# Verify 
+			print 'order.amount_total: ', 	order.amount_total		# Verify 
+			print 'Assert'
+			order.test()
+			
+
 
 	# Consultation 
+	print 
 	print 
 	print 'Create Consultation'
 	self.create_consultation()
@@ -42,29 +56,45 @@ def test_integration_treatment(self, date_order_begin, date_order_end):
 		consultation.autofill()
 
 
-	# Recommendations - Order Procedure 
+	# Recommendations 
+	# Sale Procedure 
 	if True:
 		print 
+		print 
 		print 'Create Recommendations'
+
 		create_recommendations(self)
-		self.create_order_pro()
+
+		self.create_order_pro()			# Actual Button 
+	
+
 	else: 
 		create_order_pro_lines(self)
 
 
+
 	# Pay Order Procedure 
-	if True: 
+	#if True: 
 	#if False:
-		print 
-		print 'Create Order - Procedure'
-		for order in self.order_ids: 
-			#order.pay_myself()
-			#date_order = '2018-10-01 02:00:00'
-			order.pay_myself(date_order_end)
+	print 
+	print 
+	print 'Create Order - Procedure'
+	for order in self.order_ids: 
+		if order.state in ['draft']: 
+			order.pay_myself()
+			print 'Pay'
+			print 'Pricelist: ', 	order.pricelist_id.name		# Verify 
+			print 'amount_total: ', order.amount_total			# Verify 
+			print 'Assert'
+			order.test()
+
+
 
 
 	# Sessions 
-	if self.ses_create:
+	if False:
+	#if self.ses_create:
+		print 
 		print 
 		print 'Create Sessions'
 		for procedure in self.procedure_ids: 
@@ -73,7 +103,8 @@ def test_integration_treatment(self, date_order_begin, date_order_end):
 
 
 	# Controls 
-	if self.con_create:
+	if False:
+	#if self.con_create:
 		print 
 		print 'Create Controls'
 		for procedure in self.procedure_ids: 
@@ -89,12 +120,71 @@ def test_integration_treatment(self, date_order_begin, date_order_end):
 
 # Create Recommendations 
 def create_recommendations(self):
-	print 
-	print 'Create Recommendations'
+	#print 
+	#print 'Create Recommendations'
+
+
+
+	# Vip
+	if self.vip_create: 
+		print 
+		print 'Vip'
+
+		product_id = self.env['product.template'].search([
+															('x_name_short', '=', 'vip_card'),
+											],
+												#order='date_order desc',
+												limit=1,
+											).id
+		#service_id = service.id
+		#print service
+		#self.service_vip_ids.create({
+		service = self.service_product_ids.create({
+													'service': 		product_id, 
+													'treatment': 	self.id, 
+			})
+		print service.service.name 
+		print service.service.list_price
+
+
+
+
+	# Product
+	if self.product_create: 
+		print 
+		print 'Product'
+
+		prod_short_names = [
+								'acneclean', 		# Acneclean
+								#'vip_card', 		# Vip 
+		]
+
+
+		#print 'product'
+		
+		for short_name in prod_short_names: 
+
+			product_id = self.env['product.template'].search([
+																('x_name_short', '=', short_name),
+												],
+													#order='date_order desc',
+													limit=1,
+												).id
+			#service_id = service.id
+			#print service
+			service = self.service_product_ids.create({
+														'service': 		product_id, 
+														'treatment': 	self.id, 
+				})
+			print service.service.name 
+			print service.service.list_price
+
+
 
 
 	# Co2 
 	if self.co2_create: 
+		print 
 		print 'Co2'
 
 		zone = 'neck'
@@ -112,7 +202,9 @@ def create_recommendations(self):
 											'treatment': 	self.id, 
 			})
 		#service.test()
-
+		print service.service.name 
+		print service.service.list_price
+		print service.service.x_price_vip
 
 
 
@@ -186,19 +278,25 @@ def create_recommendations(self):
 	# Quick 
 	if self.qui_create: 
 		print 'Quick'
-		product_id = self.env['product.template'].search([
+		product = self.env['product.template'].search([
 															('x_name_short', '=', 'quick_neck_hands_rejuvenation_1'),
 											],
 												#order='date_order desc',
 												limit=1,
-											).id
+											)
+		
 		#service_id = service.id
+		
+		product_id = product.id
+
 		#print service
 		self.service_quick_ids.create({
 											'service': 		product_id, 
 											'patient': 		self.patient.id, 
 											'physician': 	self.physician.id, 
 											'treatment': 	self.id, 
+
+											#'price_applied': 	product.x_price_vip
 			})
 
 
@@ -283,52 +381,11 @@ def create_recommendations(self):
 
 
 
-	# Vip
-	#if self.vip_create: 
-	#	print 'Vip'
-	#	service = self.env['product.template'].search([
-	#														('x_name_short', '=', 'vip_card'),
-	#										],
-												#order='date_order desc',
-	#											limit=1,
-	#										)
-	#	service_id = service.id
-		#print service
-	#	self.service_vip_ids.create({
-	#										'service': 		service_id, 
-	#										'treatment': 	self.id, 
-	#		})
 
 
 
 
 
-	# Product
-	if self.product_create: 
-		print 'Product'
-
-		prod_short_names = [
-								'acneclean', 		# Acneclean
-								'vip_card', 		# Vip 
-		]
-
-
-		#print 'product'
-		
-		for short_name in prod_short_names: 
-
-			product_id = self.env['product.template'].search([
-																('x_name_short', '=', short_name),
-												],
-													#order='date_order desc',
-													limit=1,
-												).id
-			#service_id = service.id
-			#print service
-			self.service_product_ids.create({
-												'service': 		product_id, 
-												'treatment': 	self.id, 
-				})
 
 # create_recommendations
 
@@ -382,56 +439,6 @@ def create_order_pro_lines(self):
 # create_order_pro_lines
 
 
-
-# ----------------------------------------------------------- Reset Treatment ------------------------------------------------------
-
-# Reset 
-def reset_treatment(self):
-
-	#print 
-	#print 'Reset'
-
-	# Consultation 
-	self.consultation_ids.unlink()
-
-	# Recos
-	self.service_product_ids.unlink()
-	#self.service_vip_ids.unlink()
-	self.service_quick_ids.unlink()
-	self.service_co2_ids.unlink()
-	self.service_excilite_ids.unlink()
-	self.service_ipl_ids.unlink()
-	self.service_ndyag_ids.unlink()
-	self.service_medical_ids.unlink()
-	self.service_cosmetology_ids.unlink()
-
-	self.procedure_ids.unlink()
-	self.session_ids.unlink()
-	self.control_ids.unlink()
-
-	self.appointment_ids.unlink()
-
-	# Alta 
-	self.treatment_closed = False
-
-
-	# Orders 
-	for order in self.order_ids:
-		order.remove_myself()
-
-
-	# Conter Decrease - Deprecated !!!
-	#name_ctr = 'advertisement'
-	#counter = self.env['openhealth.counter'].search([
-	#														('name', '=', name_ctr), 
-	#												],
-														#order='write_date desc',
-	#													limit=1,
-	#												)
-	#counter.decrease()
-	#counter.decrease()
-
-# reset
 
 
 
@@ -507,11 +514,12 @@ def clear_all(self):
 		self.qui_create = False		
 		self.med_create = False
 		self.cos_create = False		
+		
 		self.product_create = False
-		#self.vip_create = False
+		self.vip_create = False
 
-		self.ses_create = False
-		self.con_create = False
+		#self.ses_create = False
+		#self.con_create = False
 
 # clear 
 
@@ -529,11 +537,78 @@ def set_all(self):
 		self.qui_create = True		
 		self.med_create = True
 		self.cos_create = True
+		
 		self.product_create = True
-		#self.vip_create = True
+		self.vip_create = True
 
-		self.ses_create = True
-		self.con_create = True
+		#self.ses_create = True
+		#self.con_create = True
 # all 
 
 
+
+
+
+# ----------------------------------------------------------- Reset Treatment ------------------------------------------------------
+
+# Reset 
+def reset_treatment(self):
+	print 
+	print 'Reset'
+
+
+	# Card 
+	card = self.env['openhealth.card'].search([
+													('patient_name', '=', self.patient.name), 
+												],
+													#order='write_date desc',
+													limit=1,
+											)
+	print card
+	print card.patient_name
+	#if card.name != False: 
+		#card.unlink()
+
+
+
+	# Consultation 
+	self.consultation_ids.unlink()
+
+	# Recos
+	self.service_product_ids.unlink()
+	#self.service_vip_ids.unlink()
+	self.service_quick_ids.unlink()
+	self.service_co2_ids.unlink()
+	self.service_excilite_ids.unlink()
+	self.service_ipl_ids.unlink()
+	self.service_ndyag_ids.unlink()
+	self.service_medical_ids.unlink()
+	self.service_cosmetology_ids.unlink()
+
+	self.procedure_ids.unlink()
+	self.session_ids.unlink()
+	self.control_ids.unlink()
+
+	self.appointment_ids.unlink()
+
+	# Alta 
+	self.treatment_closed = False
+
+
+	# Orders 
+	for order in self.order_ids:
+		order.remove_myself()
+
+
+	# Conter Decrease - Deprecated !!!
+	#name_ctr = 'advertisement'
+	#counter = self.env['openhealth.counter'].search([
+	#														('name', '=', name_ctr), 
+	#												],
+														#order='write_date desc',
+	#													limit=1,
+	#												)
+	#counter.decrease()
+	#counter.decrease()
+
+# reset

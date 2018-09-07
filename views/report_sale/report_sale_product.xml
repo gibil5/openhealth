@@ -97,18 +97,10 @@
 
 							<page	string="Detalle"		>
 							
-								<field name="order_line_ids"	
-									>
-<!--
-									<tree string=""		default_order="x_date_created"	>	
--->
+								<field name="order_line_ids">
 									<tree string="">	
 						
 										<field name="product_id"		/>
-
-<!--
-										<field name="patient"		/>
--->
 
 										<field name="price_unit"		/>
 
@@ -118,13 +110,16 @@
 
 										<field name="x_date_created"	string="Fecha"	/>
 
-<!--
-										<field name="name"		/>
--->
+										<field name="state"		/>
 									</tree>
 								</field>
 							</page>
 						</notebook>
+<!--
+									<tree string=""		default_order="x_date_created"	>	
+										<field name="patient"		/>
+										<field name="name"		/>
+-->
 
 
 

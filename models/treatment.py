@@ -3,7 +3,7 @@
 # 		*** Treatment
 # 
 # Created: 			26 Aug 2016
-# Last up: 	 		05 Aug 2018
+# Last up: 	 		06 Sep 2018
 #
 from openerp import models, fields, api
 import datetime
@@ -14,12 +14,9 @@ import lib
 import user 
 import tst
 import creates as cre
-
 import lib_obj
 import lib_rep
-
 import reco_funcs
-
 
 class Treatment(models.Model):
 	
@@ -29,74 +26,39 @@ class Treatment(models.Model):
 
 
 
+# ----------------------------------------------------------- Testing - Treatment Integration ------------------------------------------------------
 
-# ----------------------------------------------------------- Recommendation - Deprecated ------------------------------------------------------
+	# Treatment - Integration 
+	@api.multi 
+	#def test_case_treatment(self):
+	def test_integration(self):
 
-	#recommendation_ids = fields.One2many(
-	#		'openhealth.recommendation', 
-	#		'treatment', 
-	#		string = "Recomendaciones", 
-	#	)
-
-	#recommendation = fields.Many2one(
-	#		'openhealth.recommendation', 
-	#		string = "Recomendacion", 
-	#	)
-
-
-
-# ----------------------------------------------------------- Create Service  ------------------------------------------------------
-
-	# Create Service 
-	@api.multi
-	def create_service(self):
-		#print 
-		#print 'Create Service'
-
-		# Init 
-		res_id = self.id 
-		res_model = 'openhealth.treatment'		
-		view_id = self.env.ref('openhealth.treatment_2_form_view').id
-		print view_id
-
-		# Open 
-		return {
-			# Mandatory 
-			'type': 'ir.actions.act_window',
-
-			'name': 'Open Treatment Current',
-			# Window action 
-
-			'priority': 1,
-
-			'res_id': res_id,
-			'res_model': res_model,
-			#'view_id': view_id,
+		if self.patient.x_test: 
 			
-			# Views 
-			#"views": [[False, "form"]],
-			"views": [[view_id, "form"]],
+			# Reset
+			tst.reset_treatment(self)
 
-			'view_mode': 'form',
-			'target': 'current',
-			#"domain": [["patient", "=", self.patient.name]],
-			#'auto_search': False, 
-			'flags': {
-					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-					#'form': {'action_buttons': True, }
-					'form': {'action_buttons': False, }
-					},			
-			'context': {
-						#'default_treatment': treatment_id,					
-					}
-		}
-	# create_service
+			# Init 
+			#date_order_begin = 	'2018-09-01 14:00:00'
+			#date_order_end = 	'2018-10-01 02:00:00'			
+
+			# Go 
+			tst.test_integration_treatment(self)
 
 
 
-# ----------------------------------------------------------- Test Cases ------------------------------------------------------
+# ----------------------------------------------------------- Testing - Treatment Unit ------------------------------------------------------
 
-	# Integration - Objects 
+	# Treatment - Unit  
+	@api.multi 
+	def test_unit(self):
+		if self.patient.x_test: 
+			self.test()
+
+
+
+# ----------------------------------------------------------- Testing - Objects ------------------------------------------------------
+	#  Objects - Integration
 	@api.multi 
 	def test_case_objs(self):
 		print
@@ -121,7 +83,6 @@ class Treatment(models.Model):
 
 
 
-
 			# All  
 			objs = [
 						order, 
@@ -142,7 +103,8 @@ class Treatment(models.Model):
 
 
 
-	# Integration - Reports
+# ----------------------------------------------------------- Testing - Reports ------------------------------------------------------
+	# Reports - Integration
 	@api.multi 
 	def test_case_reports(self):
 		print 'Test Case - Reports'
@@ -150,10 +112,8 @@ class Treatment(models.Model):
 		
 		if self.patient.x_test: 
 			
-
 			# Object Oriented 
 			
-
 			# Reports 
 			closing = 			lib_rep.Report('closing', 			'openhealth.closing', 				'date', 		self)
 			resap = 			lib_rep.Report('resap',	 			'openhealth.report.sale.product', 	'name', 		self)
@@ -171,14 +131,12 @@ class Treatment(models.Model):
 			# All  
 			objs = [
 						closing, 
-
 						resap, 
 						management, 
 						marketing, 
 						account, 
 
 						#state_of_acc, 
-
 						#doctor_line, 
 						#family_line, 
 						#sub_family_line, 
@@ -198,28 +156,6 @@ class Treatment(models.Model):
 
 
 
-
-
-	# One - Integration - Treatment
-	@api.multi 
-	def test_case_treatment(self):
-		print 
-		print 'Test Case - One'
-		if self.patient.x_test: 
-			
-			# Reset
-			tst.reset_treatment(self)
-
-			# Init 
-			date_order_begin = 	False
-			date_order_end = 	False
-
-			#date_order_begin = 	'2018-09-01 14:00:00'
-			#date_order_end = 	'2018-10-01 02:00:00'			
-
-			tst.test_integration_treatment(self, date_order_begin, date_order_end)
-
-			self.test()
 
 
 
@@ -272,6 +208,49 @@ class Treatment(models.Model):
 
 
 
+# ----------------------------------------------------------- Vip  ------------------------------------------------------
+
+	# Vip 
+	vip = fields.Boolean(
+		string="VIP",
+		#default=False, 
+
+		compute='_compute_vip', 
+	)
+	@api.multi
+	def _compute_vip(self):
+		for record in self:
+			card = record.env['openhealth.card'].search([
+															('patient_name','=', record.patient.name),
+														],
+														#order='appointment_date desc',
+														limit=1,)
+			if card.name != False:
+				record.vip = True 
+
+
+
+
+	# Pricelist 
+	pricelist_id = fields.Many2one(
+			'product.pricelist', 
+			string='Pricelist', 
+			readonly=True, 
+			#states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}, 
+			#help="Pricelist for current sales order.", 
+			
+			compute='_compute_pricelist_id', 
+	)
+	@api.multi
+	def _compute_pricelist_id(self):
+		for record in self:
+			
+			record.pricelist_id = record.patient.property_product_pricelist
+
+
+
+
+
 
 # ----------------------------------------------------------- Create Appointment  ------------------------------------------------------
 
@@ -292,9 +271,8 @@ class Treatment(models.Model):
 	@api.multi 
 	#def create_appointment_nex(self):
 	def create_appointment_nex(self, x_type, subtype, state):
-
 		#print 
-		print 'Create Appointment'
+		#print 'Create Appointment'
 
 
 		# Init 
@@ -461,6 +439,13 @@ class Treatment(models.Model):
 
 
 
+
+
+
+
+
+
+# ----------------------------------------------------------- Create Procedure  ------------------------------------------------------
 	# Create Procedure 
 	@api.multi
 	def create_procedure(self, date_app, subtype, product_id):		
@@ -471,6 +456,7 @@ class Treatment(models.Model):
 
 
 
+# ----------------------------------------------------------- Create Controls  ------------------------------------------------------
 	# Create Controls  
 	@api.multi 
 	def create_controls(self):
@@ -561,10 +547,10 @@ class Treatment(models.Model):
 		)	
 
 	# Vip
-	#vip_create = fields.Boolean(
-	#		string="Vip", 
-	#		default=False, 
-	#	)	
+	vip_create = fields.Boolean(
+			string="Vip", 
+			default=False, 
+		)	
 
 	# Product
 	product_create = fields.Boolean(
@@ -765,9 +751,11 @@ class Treatment(models.Model):
 	@api.multi
 	def _compute_vip_inprog(self):
 		for record in self:
-			nr_vip = self.env['openhealth.service.vip'].search_count([		
-																		('treatment','=', record.id),
-																		#('state','=', 'draft'),
+			#nr_vip = self.env['openhealth.service.vip'].search_count([		
+			nr_vip = self.env['openhealth.service.product'].search_count([		
+																			('treatment','=', record.id),
+																			('service','in', ['tarjeta vip','Tarjeta Vip','Tarjeta VIP','TARJETA VIP']),
+																			#('state','=', 'draft'),
 				]) 
 			if nr_vip > 0: 
 				record.x_vip_inprog = True 
@@ -1372,7 +1360,10 @@ class Treatment(models.Model):
 
 
 
+
 # ----------------------------------------------------------- Creates - Manual, Process and Testing ------------------------------------------------------
+#jx
+
 
 
 # ----------------------------------------------------------- Create Order - Fields ------------------------------------------------------
@@ -1412,9 +1403,10 @@ class Treatment(models.Model):
 		# Init 
 		target = 'consultation'
 
-		#order = self.create_order(target)		
+		# Create 
 		order = cre.create_order(self, target)		
 		
+		# Open 
 		return {
 				# Created 
 				'res_id': order.id,
@@ -1437,6 +1429,8 @@ class Treatment(models.Model):
 				'context': {}
 			}
 	# create_order_con
+
+
 
 
 
@@ -1580,7 +1574,58 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Services ------------------------------------------------------
+
+
+# ----------------------------------------------------------- Create Service (Recommendation) ------------------------------------------------------
+
+	# Create Service 
+	@api.multi
+	def create_service(self):
+		#print 
+		#print 'Create Service'
+
+		# Init 
+		res_id = self.id 
+		res_model = 'openhealth.treatment'		
+		view_id = self.env.ref('openhealth.treatment_2_form_view').id
+		print view_id
+
+		# Open 
+		return {
+			# Mandatory 
+			'type': 'ir.actions.act_window',
+			'name': 'Open Treatment Current',
+			# Window action 
+			'priority': 1,
+			'res_id': res_id,
+			'res_model': res_model,
+			#'view_id': view_id,
+			# Views 
+			#"views": [[False, "form"]],
+			
+
+			"views": [[view_id, "form"]],
+
+
+			'view_mode': 'form',
+			'target': 'current',
+			#"domain": [["patient", "=", self.patient.name]],
+			#'auto_search': False, 
+			'flags': {
+					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+					#'form': {'action_buttons': True, }
+					'form': {'action_buttons': False, }
+					},			
+			'context': {
+						#'default_treatment': treatment_id,					
+					}
+		}
+	# create_service
+
+
+
+
+# ----------------------------------------------------------- All Services ------------------------------------------------------
 	# Product
 	@api.multi
 	def create_service_product(self):  
@@ -1628,6 +1673,7 @@ class Treatment(models.Model):
 	def create_service_cosmetology(self):  
 		ret = reco_funcs.create_service_cosmetology(self)
 		return ret 
+
 
 
 # ----------------------------------------------------------- Update ------------------------------------------------------

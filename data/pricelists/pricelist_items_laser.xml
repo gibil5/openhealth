@@ -1,99 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
-<!--
-	<data noupdate='1'>
-	<data>
--->
 	<data noupdate='0'>
 
-		<!-- 2017-08-31 -->
-		<!-- Data - Products -->
-
-
-
-<record id='pricelist_vip' model='product.pricelist'>
-	<field name='name'>VIP</field>
-</record>
-
-
-
-
-<!-- ACIDO HIALURONICO - 1 Jeringa - Rejuvenecimiento Facial - 1 -->
-<record id='vip_hac_1hy_rfa_one' model='product.pricelist.item'>
-	<field name='pricelist_id' 	ref='pricelist_vip'/>
-	<field name='product_tmpl_id' 	ref='hac_1hy_rfa_one'/>
-	<field name='fixed_price'>1200.0</field>
-	<field name='min_quantity'>1</field>
-	<field name='applied_on'>1_product</field>
-<!--
-	<field name='base'>standard_price</field>
-	<field name='base'>list_price</field>
--->
-	<field name='base'>pricelist</field>
-</record>
-
-
-
-<!--
-<record id='hac_1hy_rfa_one' model='product.template'>
-	<field name='item_id'	ref='vip_hac_1hy_rfa_one' />
-	<field name='item_ids'>
-		<field name='item_id'	ref='vip_hac_1hy_rfa_one' />
-	</field>
-</record>
--->
-
-
-
-<!-- ACIDO HIALURONICO - 1 Jeringa - Rejuvenecimiento Facial - REPAIR - 1 -->
-<record id='vip_hac_1hy_rfr_one' model='product.pricelist.item'>
-	<field name='pricelist_id' 	ref='pricelist_vip'/>
-	<field name='product_tmpl_id' 	ref='hac_1hy_rfr_one'/>
-	<field name='fixed_price'>1000.0</field>
-	<field name='min_quantity'>1</field>
-	<field name='applied_on'>1_product</field>
-</record>
-
-<!--
-<record id='hac_1hy_rfr_one' model='product.template'>
-	<field name='item_id'	ref='vip_hac_1hy_rfr_one' />
-</record>
--->
-
-
-<!-- CRIOCIRUGIA - Todo Rostro - Acne - 10 - jx -->
-<record id='vip_cri_faa_acn_ten' model='product.pricelist.item'>
-	<field name='pricelist_id' 	ref='pricelist_vip'/>
-	<field name='product_tmpl_id' 	ref='cri_faa_acn_ten'/>
-	<field name='fixed_price'>2700.0</field>
-	<field name='min_quantity'>1</field>
-	<field name='applied_on'>1_product</field>
-</record>
-
-<!--
-<record id='cri_faa_acn_ten' model='product.template'>
-	<field name='item_id'	ref='vip_cri_faa_acn_ten' />
-</record>
--->
-
-
-
-<!-- ESCLEROTERAPIA - Piernas - Varices - 1 -->
-<record id='vip_scl_leg_var_one' model='product.pricelist.item'>
-	<field name='pricelist_id' 	ref='pricelist_vip'/>
-	<field name='product_tmpl_id' 	ref='scl_leg_var_one'/>
-	<field name='fixed_price'>1000.0</field>
-	<field name='min_quantity'>1</field>
-	<field name='applied_on'>1_product</field>
-</record>
-
-<record id='scl_leg_var_one' model='product.template'>
-	<field name='item_id'	ref='vip_scl_leg_var_one' />
-</record>
-
-
-
-
+<!-- 2017-08-31 -->
+<!-- 2018-09-06 -->
+<!-- Data - Products -->
 
 
 
@@ -105,11 +16,11 @@
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 </record>
-
+<!--
 <record id='co2_nec_rn1_one' model='product.template'>
 	<field name='item_id'	ref='vip_co2_nec_rn1_one' />
 </record>
-
+-->
 
 
 <!-- LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento Cuello Grado 2 - 1 -->
@@ -120,11 +31,11 @@
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 </record>
-
+<!--
 <record id='co2_nec_rn2_one' model='product.template'>
 	<field name='item_id'	ref='vip_co2_nec_rn2_one' />
 </record>
-
+-->
 
 
 <!-- LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento Cuello Grado 3 - 1 -->
@@ -135,11 +46,11 @@
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 </record>
-
+<!--
 <record id='co2_nec_rn3_one' model='product.template'>
 	<field name='item_id'	ref='vip_co2_nec_rn3_one' />
 </record>
-
+-->
 
 
 <!-- LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento Cuello Grado 4 - 1 -->
@@ -2270,156 +2181,6 @@
 
 <record id='ndy_fal_tel_15m_six' model='product.template'>
 	<field name='item_id'	ref='vip_ndy_fal_tel_15m_six' />
-</record>
-
-
-
-<!-- LEPISMATICO (resorcina) - Espalda - Acne - 1 -->
-<record id='vip_lep_bac_acn_one' model='product.pricelist.item'>
-	<field name='pricelist_id' 	ref='pricelist_vip'/>
-	<field name='product_tmpl_id' 	ref='lep_bac_acn_one'/>
-	<field name='fixed_price'>1500.0</field>
-	<field name='min_quantity'>1</field>
-	<field name='applied_on'>1_product</field>
-</record>
-
-<record id='lep_bac_acn_one' model='product.template'>
-	<field name='item_id'	ref='vip_lep_bac_acn_one' />
-</record>
-
-
-
-<!-- LEPISMATICO (resorcina) - Espalda - Manchas - 1 -->
-<record id='vip_lep_bac_sta_one' model='product.pricelist.item'>
-	<field name='pricelist_id' 	ref='pricelist_vip'/>
-	<field name='product_tmpl_id' 	ref='lep_bac_sta_one'/>
-	<field name='fixed_price'>1500.0</field>
-	<field name='min_quantity'>1</field>
-	<field name='applied_on'>1_product</field>
-</record>
-
-<record id='lep_bac_sta_one' model='product.template'>
-	<field name='item_id'	ref='vip_lep_bac_sta_one' />
-</record>
-
-
-
-<!-- LEPISMATICO (resorcina) - Todo Rostro - Acne - 1 -->
-<record id='vip_lep_faa_acn_one' model='product.pricelist.item'>
-	<field name='pricelist_id' 	ref='pricelist_vip'/>
-	<field name='product_tmpl_id' 	ref='lep_faa_acn_one'/>
-	<field name='fixed_price'>1500.0</field>
-	<field name='min_quantity'>1</field>
-	<field name='applied_on'>1_product</field>
-</record>
-
-<record id='lep_faa_acn_one' model='product.template'>
-	<field name='item_id'	ref='vip_lep_faa_acn_one' />
-</record>
-
-
-
-<!-- LEPISMATICO (resorcina) - Todo Rostro - Manchas - 1 -->
-<record id='vip_lep_faa_sta_one' model='product.pricelist.item'>
-	<field name='pricelist_id' 	ref='pricelist_vip'/>
-	<field name='product_tmpl_id' 	ref='lep_faa_sta_one'/>
-	<field name='fixed_price'>1500.0</field>
-	<field name='min_quantity'>1</field>
-	<field name='applied_on'>1_product</field>
-</record>
-
-<record id='lep_faa_sta_one' model='product.template'>
-	<field name='item_id'	ref='vip_lep_faa_sta_one' />
-</record>
-
-
-
-<!-- MESOTERAPIA NCTF - Todo Rostro - Rejuvenecimiento Facial - 3 -->
-<record id='vip_men_faa_rfa' model='product.pricelist.item'>
-	<field name='pricelist_id' 	ref='pricelist_vip'/>
-	<field name='product_tmpl_id' 	ref='men_faa_rfa'/>
-	<field name='fixed_price'>2500.0</field>
-	<field name='min_quantity'>1</field>
-	<field name='applied_on'>1_product</field>
-</record>
-
-<record id='men_faa_rfa' model='product.template'>
-	<field name='item_id'	ref='vip_men_faa_rfa' />
-</record>
-
-
-
-<!-- PLASMA - Cabeza - Rejuvenecimiento Capilar - 1 -->
-<record id='vip_pla_hea_rec_one' model='product.pricelist.item'>
-	<field name='pricelist_id' 	ref='pricelist_vip'/>
-	<field name='product_tmpl_id' 	ref='pla_hea_rec_one'/>
-	<field name='fixed_price'>800.0</field>
-	<field name='min_quantity'>1</field>
-	<field name='applied_on'>1_product</field>
-</record>
-
-<record id='pla_hea_rec_one' model='product.template'>
-	<field name='item_id'	ref='vip_pla_hea_rec_one' />
-</record>
-
-
-
-<!-- PLASMA - Cabeza - Rejuvenecimiento Capilar - 3 -->
-<record id='vip_pla_hea_rec' model='product.pricelist.item'>
-	<field name='pricelist_id' 	ref='pricelist_vip'/>
-	<field name='product_tmpl_id' 	ref='pla_hea_rec'/>
-	<field name='fixed_price'>1600.0</field>
-	<field name='min_quantity'>1</field>
-	<field name='applied_on'>1_product</field>
-</record>
-
-<record id='pla_hea_rec' model='product.template'>
-	<field name='item_id'	ref='vip_pla_hea_rec' />
-</record>
-
-
-
-<!-- PLASMA - Todo Rostro - Rejuvenecimiento Facial - 1 -->
-<record id='vip_pla_faa_rfa_one' model='product.pricelist.item'>
-	<field name='pricelist_id' 	ref='pricelist_vip'/>
-	<field name='product_tmpl_id' 	ref='pla_faa_rfa_one'/>
-	<field name='fixed_price'>800.0</field>
-	<field name='min_quantity'>1</field>
-	<field name='applied_on'>1_product</field>
-</record>
-
-<record id='pla_faa_rfa_one' model='product.template'>
-	<field name='item_id'	ref='vip_pla_faa_rfa_one' />
-</record>
-
-
-
-<!-- PLASMA - Todo Rostro - Rejuvenecimiento Facial - 3 -->
-<record id='vip_pla_faa_rfa' model='product.pricelist.item'>
-	<field name='pricelist_id' 	ref='pricelist_vip'/>
-	<field name='product_tmpl_id' 	ref='pla_faa_rfa'/>
-	<field name='fixed_price'>1600.0</field>
-	<field name='min_quantity'>1</field>
-	<field name='applied_on'>1_product</field>
-</record>
-
-<record id='pla_faa_rfa' model='product.template'>
-	<field name='item_id'	ref='vip_pla_faa_rfa' />
-</record>
-
-
-
-<!-- TOXINA BOTULINICA - 1 Zona - Rejuvenecimiento Facial - 1 -->
-<record id='vip_bot_1zo_rfa_one' model='product.pricelist.item'>
-	<field name='pricelist_id' 	ref='pricelist_vip'/>
-	<field name='product_tmpl_id' 	ref='bot_1zo_rfa_one'/>
-	<field name='fixed_price'>700.0</field>
-	<field name='min_quantity'>1</field>
-	<field name='applied_on'>1_product</field>
-</record>
-
-<record id='bot_1zo_rfa_one' model='product.template'>
-	<field name='item_id'	ref='vip_bot_1zo_rfa_one' />
 </record>
 
 

@@ -4,12 +4,9 @@
 
 
 
-
-
 <!-- Quality Control --> 
 <menuitem 	id="main_qc_menu" 
-
-			sequence="-11"
+			sequence="0"
 
 			name="QC"
 
@@ -21,9 +18,7 @@
 
 <!-- Sales --> 
 		<menuitem 	id="qc_sales_menu" 
-
 					parent="main_qc_menu"
-			
 					sequence="1"
 
 					name="Ventas"			
@@ -32,9 +27,7 @@
 
 			<!-- Delta --> 			
 			<menuitem 	id="qc_sales_all_delta_menu" 
-
 						parent="qc_sales_menu"
-				
 						sequence="6"
 
 						name="Delta" 
@@ -43,22 +36,15 @@
 					/>
 
 
-
 			<!-- Checksum --> 			
 			<menuitem 	id="qc_sales_all_checksum_menu" 
-				
 						parent="qc_sales_menu"
-				
 						sequence="7"
 
 						name="Checksum" 
 
 						action="order_list_checksum_action"
 					/>
-
-
-
-
 
 
 	</data>

@@ -104,11 +104,15 @@ grey:state in ('cancel')
 									string="Entrar"
 								/>
 
-
-
+<!--
 								<field  name="name"	string="Presupuesto #"/>
+-->
+
+								<field  name="pricelist_id"/>
 
 								<field  name="partner_id"/>
+
+
 								
 								<field  name="x_doctor"/>
 

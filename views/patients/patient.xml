@@ -252,25 +252,46 @@
 																			'invisible':	[('partner_id', '!=', False)], 
 																			'required':		[('partner_id', '=', False)], 
 																}"	
+
+								<field name="x_last_name" 	class="oe_edit_only"/>
 -->
-								<field name="x_last_name" 	class="oe_edit_only"	
-										
-										/>
+
+								<field name="x_last_name" 	class="oe_edit_only"
+
+															attrs="{	 
+																		'invisible':	[('x_legacy', '!=', False)], 
+																		'required':		[('x_legacy', '!=', True)], 
+																}"	
+
+									/>
+
+
+
 
 <!--
 															attrs="{	
 																		'invisible':	[('partner_id', '!=', False)], 
 																		'required':		[('partner_id', '=', False)], 
 															}"	
+
+								<field name="x_first_name" 	class="oe_edit_only"/>
 --> 
-								<field name="x_first_name" 	class="oe_edit_only"	
-										/>
+
+								<field name="x_first_name" 	class="oe_edit_only"
+
+															attrs="{	 
+																		'invisible':	[('x_legacy', '!=', False)], 
+																		'required':		[('x_legacy', '!=', True)], 
+																}"	
+									/>
+
+
+
 
 
 
 
 								<field name="partner_id"  string="Contacto"  readonly="1"  required="0"/>
-
 
 								<field name="x_test" 	groups="openhealth.roots"	/>
 <!--
@@ -288,8 +309,11 @@
 								<field name="active" 	/>
 
 								<field name="x_autofill" 		/>
--->							
 								<field name="x_autofill" 	groups="openhealth.roots,openhealth.reception"		/>
+-->							
+								<field name="x_autofill" 	groups="openhealth.roots"/>
+								
+								<field name="x_legacy" 		groups="openhealth.roots"/>
 
 
 
@@ -382,7 +406,20 @@
 Relax !
 -->
 								<field name="x_allergies"		required="0"/>								
+
+
+
+<!--
 								<field name="x_first_contact"	required="1"/>
+-->
+								<field name="x_first_contact"	
+																attrs="{	 
+																			'required':		[
+																								('x_legacy', '!=', True)
+																							], 
+																	}"	
+									/>
+
 
 
 
@@ -426,32 +463,31 @@ Relax !
 			<field name="name">patient.tree</field>
 			<field name="model">oeh.medical.patient</field>
 			<field name="arch" type="xml">			
-
-<!--
-				<tree string="Patient Tree"  	colors="red:x_nr_clones!=1;"  >
-				<tree string="Patient Tree"  	colors="red:x_flag=='error';"  >
-
-
-				<tree string="Patient Tree">
-				<tree create="false" edit="false" >
-				<tree create="false" edit="true" >
-				<tree string="Patient Tree">
-					
-				<tree string="Patient Tree"  default_order='x_id_code desc'>
-				<tree string="Patient Tree">
--->
-
 				<tree string="Patient Tree"  default_order='x_id_code desc'>
 				
 
-
-
 					<field name="name"/>
+
+					<field name="x_legacy"/>
+
+					<field name="x_counter"/>
+
 					<field name="x_id_code"/>		
 
+
+
 <!--
-					<field name="x_test"			groups='openhealth.roots'	/>		
+
+					<field name="x_card"/>
+					<field name="property_product_pricelist"/>
 -->
+
+					<field name="create_date"	string="Fecha de creación"		/>
+					<field name="x_date_record"		/>
+
+
+
+
 
 					<field name="x_dni"/>
 					<field name="x_firm"/>
@@ -475,6 +511,13 @@ Relax !
 				</tree>
 			</field>
 		</record>
+
+<!--
+				<tree string="Patient Tree"  	colors="red:x_nr_clones!=1;"  >
+-->
+<!--
+					<field name="x_test"			groups='openhealth.roots'	/>		
+-->
 <!--
 					<field name="x_treatment_count"/>		
 

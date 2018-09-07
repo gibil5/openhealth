@@ -102,3 +102,38 @@
 								<field name="price_total"/>
 								<field name="nr_services"/>
 -->
+
+
+
+
+
+<!-- 
+5 Sep 2018 
+-->
+
+
+<!--
+										name="%(sale_cons_list_action)d"	
+
+															('nr_invoices_cons','=','0'), 	
+
+												'search_default_treatment': active_id,
+
+												'search_default_x_family': 'consultation', 
+
+													'search_default_partner_id': partner_id, 
+													'default_partner_id': partner_id, 
+
+
+
+													'search_default_patient': patient, 													
+													'search_default_x_doctor': physician, 
+													'search_default_x_family': 'consultation', 
+													'search_default_treatment': active_id,
+													'search_default_treatment': active_id,
+
+
+										name="%(order_form_action)d"	
+										name="%(order_form_tre_action)d"	
+										name="%(sale_cons_list_action)d"	
+-->

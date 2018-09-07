@@ -63,6 +63,7 @@ class Service(models.Model):
 	# Price Applied
 	price_applied = fields.Float(
 			#string='Precio Aplicado', 
+			default=-1, 
 		) 
 
 

@@ -14,9 +14,11 @@
 
 	'description': """
 
-		4 Sep 2018
 
-		Fulcrum 
+		7 Sep 2018
+
+
+		Fulcrum (17 Mar 2018 - 13 963)
 		
 		Code without Tests is broken by design.
 		My Goal is to achieve Complete Coverage. 
@@ -171,7 +173,6 @@
 		# ----------------------------------------------------------- Actions ------------------------------------------------------
 		'reports/patient.xml',
 		'views/patients/patient_actions.xml',
-		'views/menus/menus_account.xml',
 
 
 
@@ -286,9 +287,15 @@
 		'data/base_data_physicians_inactive.xml',				
 		'data/base_data_physicians_new.xml',				
 
+
 		# Pricelists 
-		'data/pricelists.xml',							
-		'data/pricelist_quick.xml',						
+		#'data/pricelist_quick.xml',						
+		'data/pricelists.xml',
+		'data/pricelist_items_laser.xml',
+		'data/pricelist_items_med_cos.xml',
+
+		'data/pricelist_items_quick.xml',
+
 
 		# Suppliers 
 		'data/suppliers.xml',							# DEPRECATED - Very 
@@ -598,8 +605,16 @@
 
 		# ----------------------------------------------------------- Menus ------------------------------------------------------
 		'views/menus/menus.xml',
+
+		'views/menus/menus_caja.xml',
+
 		'views/menus/menus_reporting.xml',
-		'views/menus/menus_openhealth.xml',
+		'views/menus/menus_openhealth.xml',		# Dev
+
+		'views/menus/menus_account.xml',		# Contabilidad 
+		'views/menus/menus_marketing.xml',		# Marketing 
+		'views/menus/menus_management.xml',		# Gerencia 
+
 
 
 

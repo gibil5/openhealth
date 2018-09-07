@@ -1345,7 +1345,7 @@ class sale_order(models.Model):
 # ----------------------------------------------------------- Pay ------------------------------------------------------
 	# Test  
 	@api.multi 
-	def pay_myself(self, date_order):
+	def pay_myself(self, date_order=False):
 
 		#print 
 		#print 'Pay myself'
@@ -1483,19 +1483,13 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Test - Cycle ------------------------------------------------------
-	
-	# Test - Cycle 
+# ----------------------------------------------------------- Test Integration ------------------------------------------------------
+	# Test - Integration 
 	# Test the whole Sale Cycle. 
-	# With UI buttons included. 
-	# Activate the different creation and write procedures. 
-
-	@api.multi 
-	def test_cycle(self):
-
+	# With UI buttons included. Activate the different creation and write procedures. 
+	def test_integration(self):
 		#print 
-		#print 'Order - Test Cycle'
-
+		#print 'Order - Test Integration'
 		# Pay 
 		#date_order = False	
 		#self.pay_myself(date_order)
@@ -1516,33 +1510,86 @@ class sale_order(models.Model):
 		self.validate()
 		self.action_confirm_nex()
 		self.print_ticket()
-
 		# Cycle - End
 
 
 
-		# Computes 
-		self.test_computes()
 
-		# Actions - Remaining 
-		self.test_actions()
+# ----------------------------------------------------------- Test Unit ------------------------------------------------------
+	# Test Unit 
+	def test_unit(self):
+		print 
+		print 'Order - Test Unit'
+
+		# Init 
+		total = 0 
+		total_vip = 0 
+
+		for line in self.order_line: 
+
+			# Standard 
+			total = 	line.product_id.list_price * line.product_uom_qty 		+ total
+			
+			price = line.product_id.list_price
+			price_vip = line.product_id.x_price_vip
+			qty = line.product_uom_qty 
+
+
+			# Vip  
+			#if line.product_id.type in ['service']: 
+			if line.product_id.type in ['service'] and price_vip != 0: 
+				#total_vip = line.product_id.x_price_vip * line.product_uom_qty 		+ total_vip	
+				total_vip = price_vip * qty 		+ total_vip
+			else: 
+				#total_vip = line.product_id.list_price * line.product_uom_qty 		+ total_vip	
+				total_vip = price * qty 			+ total_vip
+
+
+
+		# Prints 
+		print 'total: ', total
+		print 'total_vip: ', total_vip
+		print 'self.amount_total: ', self.amount_total
+
+
+		# Asserts 
+		print 'Asserts'
+		print self.pricelist_id.name 
+
+		if self.pricelist_id.name in ['VIP']: 
+			print 'Assert: self.amount_total == total_vip'
+			assert self.amount_total == total_vip
+			
+		if self.pricelist_id.name in ['Public Pricelist']: 
+			print 'Assert: self.amount_total == total'
+			assert self.amount_total == total
+
 
 
 
 # ----------------------------------------------------------- Test ------------------------------------------------------
 
 	# Test - Integration 
-	@api.multi 
 	def test(self):
-
-		print 
-		print 
-		print 
-		print 'Order - Test'
+		#print 
+		#print 
+		#print 
+		#print 'Order - Test'
 
 		if self.patient.x_test: 
 
 			# Test Cycle
-			self.test_cycle()
+			#self.test_integration()
+
+			# Computes 
+			#self.test_computes()
+
+			# Actions - Remaining 
+			#self.test_actions()
+
+
+			# Test Unit 
+			self.test_unit()
 
 	# test 
+

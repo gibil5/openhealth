@@ -7,12 +7,12 @@
 # 
 from openerp import models, fields, api
 import count_vars
-
 import user 
 
 class Counter(models.Model):
 	
 	_name = 'openhealth.counter'
+
 
 
 

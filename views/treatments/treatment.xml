@@ -184,9 +184,9 @@
 						<!-- Create Budget Consultation --> 
 						<button 
 							type="object" 
-							name="create_order_con" 							
 							class="oe_highlight"
 
+							name="create_order_con" 							
 
 							states="appointment"
 
@@ -557,15 +557,18 @@ Add Procedures
 <!--
 -->								
 								<button type="action" class="oe_stat_button" icon="fa-list"
-										name="%(order_form_action)d"	
-										context="{									
-													'search_default_partner_id': partner_id, 
-													'search_default_x_doctor': physician, 
-													'search_default_x_family': 'consultation', 
-													'default_partner_id': partner_id, 
-												}" 	
+										attrs="{ 'invisible':[	('nr_budgets_cons','=',0), 	]}"
 
-										attrs="{ 'invisible':[	('nr_budgets_cons','=',0), 	]}">
+										name="%(order_form_tre_action)d"	
+										
+										context="{
+													'search_default_patient': patient, 													
+
+													'default_treatment': active_id,
+
+													'default_x_family': 'consultation', 
+												}" 	
+										>
 									
 									<field string="Presu - Con" name="nr_budgets_cons" widget="statinfo"/>
 								</button>
@@ -574,40 +577,11 @@ Add Procedures
 
 
 
-
-<!--
-										name="%(sale_cons_list_action)d"	
-
-															('nr_invoices_cons','=','0'), 	
-
-												'search_default_treatment': active_id,
-
-												'search_default_x_family': 'consultation', 
-
-													'search_default_partner_id': partner_id, 
-													'default_partner_id': partner_id, 
-
-
-
-													'search_default_patient': patient, 													
-													'search_default_x_doctor': physician, 
-													'search_default_x_family': 'consultation', 
-													'search_default_treatment': active_id,
-													'search_default_treatment': active_id,
-
-
-										name="%(order_form_action)d"	
-										name="%(order_form_tre_action)d"	
-										name="%(sale_cons_list_action)d"	
--->
-								
-
 								<!-- Invoices - Con -->
 								<button type="action" class="oe_stat_button" icon="fa-list"
-
+										attrs="{ 'invisible':[	('nr_invoices_cons','in',[ False, 0, ]), ]}"
 
 										name="%(order_form_tre_action)d"	
-
 									
 										context="{									
 													'search_default_patient': patient, 													
@@ -616,13 +590,7 @@ Add Procedures
 
 													'default_x_family': 'consultation', 
 												}" 	
-
-
-										attrs="{ 'invisible':[	
-																('nr_invoices_cons','in',[ False, 0, ]), 
-															]}"
-								>
-
+										>
 
 									<field string="Venta - Con" name="nr_invoices_cons" widget="statinfo"/>
 								</button>
@@ -1018,7 +986,13 @@ Fields
 							<field name="patient_city"		/>
 						</group>
 						<group>
-								<field name="partner_id"		invisible="0"	/>							
+							<field name="partner_id"		invisible="0"	/>							
+							<field name="vspace" />
+
+							<field name="vip" />
+							<field name="pricelist_id" />
+
+							<field name="x_vip_inprog"/>
 						</group>
 
 
@@ -1151,15 +1125,16 @@ Fields
 
 
 <!--
-								<field name="vip_create"/>
+								<field name="ses_create"/>
 -->
 							<!-- Create Flags --> 
 							<group 		groups="openhealth.roots"	>
+								
+								<field name="vip_create"/>
+								
 								<field name="product_create"/>
 								<field name="med_create"/>
 								<field name="cos_create"/>
-
-								<field name="ses_create"/>
 								<field name="con_create"/>
 							</group>
 
@@ -1174,6 +1149,9 @@ Fields
 
 
 <!-- Test --> 
+<!--
+									name="test_case_treatment" 
+-->
 							<group  groups="openhealth.roots"	>
 
 								<!-- Test - Treatment --> 
@@ -1181,7 +1159,7 @@ Fields
 									type="object" 
 									class="oe_highlight"
 									
-									name="test_case_treatment" 
+									name="test_integration" 
 									
 									string="Treat" 
 
@@ -1257,8 +1235,6 @@ Fields
 								<field name="physician"			required="1"/>
 								<field name="vspace" />
 								<field name="chief_complaint"	required="1"/>
-								<field name="vspace" />
-								<field name="x_vip_inprog"/>
 								<field name="vspace" />
 								<field name="active"/>
 							</group>							

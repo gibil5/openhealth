@@ -6,12 +6,38 @@ from openerp import models, fields, api
 from datetime import datetime
 import prodvars
 import quick
-
 class ServiceQuick(models.Model):
-
 	_inherit = 'openhealth.service'
-
 	_name = 'openhealth.service.quick'
+
+
+# ---------------------------------------------- Prices --------------------------------------------------------
+	
+	# Price Applied
+	price_applied = fields.Float(
+			string='Precio Aplicado', 
+
+			compute='_compute_price_applied', 
+		) 
+
+	#@api.multi
+	@api.depends('service')
+	def _compute_price_applied(self):
+		for record in self:
+			
+			if record.patient.x_vip: 
+
+				if record.comeback 		and 	record.service.x_price_vip_return != 0: 	# Return 
+					record.price_applied = record.service.x_price_vip_return
+				else:
+					#record.price_applied = record.service.x_price_vip
+					record.price_applied = -1 								# Std and Vip 
+			
+			else:
+				#record.price_applied = record.service.list_price		# Std 
+				record.price_applied = -1 								# Std and Vip 
+
+
 
 
 # ---------------------------------------------- Default --------------------------------------------------------
@@ -177,23 +203,6 @@ class ServiceQuick(models.Model):
 
 
 
-	# Price Applied
-	price_applied = fields.Float(
-			string='Precio Aplicado', 
-
-			compute='_compute_price_applied', 
-		) 
-	#@api.multi
-	@api.depends('service')
-	def _compute_price_applied(self):
-		for record in self:
-			if record.patient.x_vip: 
-				if record.comeback 		and 	record.service.x_price_vip_return != 0: 
-					record.price_applied = record.service.x_price_vip_return
-				else:
-					record.price_applied = record.service.x_price_vip
-			else:
-				record.price_applied = record.service.list_price
 
 
 

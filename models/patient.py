@@ -3,46 +3,62 @@
 #		Patient 
 # 
 # 		Created: 		26 Aug 2016
-#
-# 		Last up: 		25 Aug 2018
+# 		Last up: 		 7 Sep 2018
 #
 from openerp import models, fields, api
 from datetime import datetime
 import pat_vars
-
 import lib
 import user
 import count_funcs
 
 class Patient(models.Model):
-
 	_inherit = 'oeh.medical.patient'
-
 	_order = 'x_id_code desc'
 
 
 
 
-# ----------------------------------------------------------- Deprecated ------------------------------------------------------
-	# Appointments 
-	appointment_ids = fields.One2many(
-			'oeh.medical.appointment', 
-			'patient', 			
-			string = "Citas", 
-		)
+
+# ----------------------------------------------------------- QC ------------------------------------------------------
+
+	x_legacy = fields.Boolean(
+			string="Legacy", 
+
+			compute='_compute_x_legacy', 
+	)
+
+	@api.multi
+	#@api.depends('x_card')
+	def _compute_x_legacy(self):
+		for record in self:
+			#pass 
+			if record.x_counter < 13963: 
+				record.x_legacy = True
 
 
 
-# ----------------------------------------------------------- Test ------------------------------------------------------
 
-	x_test = fields.Boolean(
-			'Tester', 
-		)
+	# Counter 
+	x_counter = fields.Integer(
+			string="Counter", 
+			#default=55, 
+
+			compute='_compute_x_counter', 
+	)
+
+	@api.multi
+	#@api.depends('x_card')
+	def _compute_x_counter(self):
+		for record in self:
+			#pass 
+			if record.x_id_code != False: 
+				record.x_counter = str(record.x_id_code)
+
 
 
 
 # ----------------------------------------------------------- HC Number ------------------------------------------------------
-
 	# Default - HC Number 
 	@api.model
 	def _get_default_id_code(self):
@@ -62,6 +78,7 @@ class Patient(models.Model):
 	# NC Number 
 	x_id_code = fields.Char(
 			'Nr Historia Médica',
+
 			default=_get_default_id_code, 
 		)
 
@@ -1019,6 +1036,12 @@ class Patient(models.Model):
 			for service in treatment.service_quick_ids: 
 				service.test()
 
+
+# ----------------------------------------------------------- Test - Fields ------------------------------------------------------
+
+	x_test = fields.Boolean(
+			'Tester', 
+		)
 
 # ----------------------------------------------------------- Test ------------------------------------------------------
 

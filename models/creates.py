@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-
+#
 #	Encapsulates actual Creation on Database. 
 # 	Can not be Unit-tested (depends on a third-party library: Odoo). 
 # 
 #	Created: 			14 Aug 2018
-# 	Last up: 	 		17 Aug 2018
+# 	Last up: 	 		 5 Sep 2018
 #
 import datetime
 import time_funcs
@@ -13,61 +13,13 @@ import user
 
 
 
-
-# ----------------------------------------------------------- Procedure ------------------------------------------------------
-# Create Procedure With Appoointment   
-def create_procedure_wapp(self, subtype, product_id):
-
-	#print 
-	#print 'Create Proc - With App'
-
-
-	# Init 
-	duration = 0.5
-	x_type = 'procedure'
-	doctor_name = self.x_doctor.name
-	states = False
-
-	# Date 
-	date_format = "%Y-%m-%d %H:%M:%S"
-	dt = datetime.datetime.strptime(self.date_order, date_format) + datetime.timedelta(hours=-5,minutes=0)		# Correct for UTC Delta 
-
-	# Get Next Slot - Real Time version 
-	#appointment_date = dt.strftime("%Y-%m-%d") + " 14:00:00"			# Early strategy
-	appointment_date_str = lib.get_next_slot(self)						# Next Slot
-
-	# Prints 
-	#print product_id
-	#print subtype
-	#print appointment_date_str
-	#print self.date_order
-	#print date_early
-	#print 
-
-	# If slot available 
-	if appointment_date_str != False: 
-		
-		# Check and Push if not Free !
-		appointment_date_str = user.check_and_push(self, appointment_date_str, duration, x_type, doctor_name, states)
-
-		# Create Procedure 
-		self.treatment.create_procedure(appointment_date_str, subtype, product_id)
-		
-		# Create Sessions - Dep !
-		#self.treatment.create_sessions()
-
-
-# create_procedure_wapp
-
-
-
-# ----------------------------------------------------------- Create Order  ------------------------------------------------------
+# ----------------------------------------------------------- Create Order - Target  ------------------------------------------------------
 # Create Order - By Line
 def create_order(self, target):
-
 	#print
 	#print 'Create Order'
 	#print target
+	#print 'x_vip_inprog: ', self.x_vip_inprog
 
 
 	# Init
@@ -75,37 +27,35 @@ def create_order(self, target):
 	# Doctor 
 	doctor = user.get_actual_doctor(self)
 	doctor_id = doctor.id 
-
 	if doctor_id == False: 
 		doctor_id = self.physician.id 
 
 
-	# Pricelist 
-	if self.x_vip_inprog: 
-		pl = self.env['product.pricelist'].search([
-															('name', 'like', 'VIP'), 
-													],
-														#order='write_date desc',
-														limit=1,
-													)
-		pl_id = pl.id 
-	else: 
-		pl = self.env['product.pricelist'].search([
-															('name', 'like', 'Public Pricelist'), 
-															#('name', '=', 'Public Pricelist'), 
-													],
-														#order='write_date desc',
-														limit=1,
-													)
-		# jx - Hack !
-		#pl_id = pl.id 
-		pl_id = 1
 
-	#print self.x_vip_inprog
+
+	# Pricelist 
+	
+	# Vip in Prog 
+	if self.x_vip_inprog: 
+		print 'Vip in prog'
+		
+		pl = self.env['product.pricelist'].search([
+															('name', '=', 'VIP'), 
+													],
+														#order='write_date desc',
+														limit=1,
+													)
+
+	else: 
+		pl = self.pricelist_id
+
+
 	#print pl
-	#print pl.name
+	#print 'pricelist: ', pl.name
 	#print pl.id
-	#pl_id = pl.id 
+	
+
+
 
 
 
@@ -113,14 +63,14 @@ def create_order(self, target):
 	order = self.env['sale.order'].create({
 													'partner_id': self.partner_id.id,
 													'patient': self.patient.id,	
-													'pricelist_id': pl_id, 
 													'state':'draft',
-
 													'x_doctor': doctor_id,	
 													'x_family': target, 
-
 													'x_dni': self.partner_id.x_dni,	
-													'x_ruc': self.partner_id.x_ruc,	
+													'x_ruc': self.partner_id.x_ruc,
+
+													#'pricelist_id': pl_id, 
+													'pricelist_id': pl.id, 
 
 													'treatment': self.id,
 												}
@@ -135,14 +85,12 @@ def create_order(self, target):
 			target_line = 'con_med'
 
 		# Init 
-		price_manual = 0
+		#price_manual = 0
+		price_manual = -1
 		price_applied = 0
 		reco_id = False
 
-		#ret = order.x_create_order_lines_target(target_line, price_manual, price_applied, reco_id)
-		#ret = ord_funcs.create_order_lines_reco(order, target_line, price_manual, price_applied, reco_id)
-		#ret = cre.create_order_lines_reco(order, target_line, price_manual, price_applied, reco_id)
-		#ret = cre.create_order_lines_micro(order, target_line, price_manual, price_applied, reco_id)
+		# Create 
 		ret = create_order_lines_micro(order, target_line, price_manual, price_applied, reco_id)
 		
 
@@ -235,14 +183,13 @@ def create_order_lines(self, laser, order_id):
 # ----------------------------------------------------------- Create order lines ------------------------------------------------------
 # Create Order Lines 
 def create_order_lines_micro(self, name_short, price_manual, price_applied, reco_id):		
-
-	#print 
-	#print 'Create Order Lines - Micro'
-	#print name_short
-	#print price_manual
-	#print price_applied
-	#print reco_id
-	#print 
+	print 
+	print 'Create Order Lines - Micro'
+	print 'name_short: ', name_short
+	print 'price_manual: ', price_manual
+	print 'price_applied:', price_applied
+	print 'reco_id: ', reco_id
+	print 
 
 
 	# Init
@@ -301,43 +248,52 @@ def create_order_lines_micro(self, name_short, price_manual, price_applied, reco
 	#if price_manual != 0: 
 	if price_manual != -1: 
 
-
-		#print 'Manual Price'
+		print 'Manual Price'
 
 		ol = self.order_line.create({
 										'name': 		product.name, 
 										'product_id': 	product.id,
 										'order_id': 	order_id,										
-										'price_unit': 	price_manual,
 										'x_price_manual': price_manual, 
 										
+										'price_unit': 	price_manual,
+
 										reco_field: reco_id, 
 									})
 
-	# Quick Laser 
-	elif product.x_treatment == 'laser_quick': 	
-		
-		#print 'Quick Laser Price'
+
+
+	# Quick Laser - With Price Applied 
+	#elif product.x_treatment == 'laser_quick': 	
+	elif product.x_treatment == 'laser_quick' 		and 	price_applied != -1: 
+
+		print 'Quick Laser Price - W Price Applied'
 		
 		price_quick = price_applied
 
 		ol = self.order_line.create({
 										'name': 		product.name, 
-										'product_id': product.id,
-										'order_id': order_id,
-										'price_unit': price_quick,
-										reco_field: reco_id, 
+										'product_id': 	product.id,
+										'order_id': 	order_id,
+
+										'price_unit': 	price_quick,
+										
+										reco_field: 	reco_id, 
 									})
+
+
+
 
 	# Normal case
 	else: 
 		
-		#print 'Normal Price'
+		print 'Normal Price'
 
 		ol = self.order_line.create({
 										'name': 		product.name, 
 										'product_id': 	product.id,
 										'order_id': 	order_id,
+
 										reco_field: 	reco_id, 
 								})
 
@@ -505,3 +461,44 @@ def create_procedure_go(self, app_date_str, subtype, product_id):
 
 	return ret	
 # create_procedure_go
+
+
+
+# ----------------------------------------------------------- Create Procedure ------------------------------------------------------
+# Create Procedure With Appoointment   
+def create_procedure_wapp(self, subtype, product_id):
+	#print 
+	#print 'Create Proc - With App'
+
+	# Init 
+	duration = 0.5
+	x_type = 'procedure'
+	doctor_name = self.x_doctor.name
+	states = False
+
+	# Date 
+	date_format = "%Y-%m-%d %H:%M:%S"
+	dt = datetime.datetime.strptime(self.date_order, date_format) + datetime.timedelta(hours=-5,minutes=0)		# Correct for UTC Delta 
+
+	# Get Next Slot - Real Time version 
+	#appointment_date = dt.strftime("%Y-%m-%d") + " 14:00:00"			# Early strategy: 09:00 am
+	appointment_date_str = lib.get_next_slot(self)						# Next Slot
+
+	# Prints 
+	#print product_id
+	#print subtype
+	#print appointment_date_str
+	#print self.date_order
+	#print date_early
+	#print 
+
+	# If slot available 
+	if appointment_date_str != False: 
+		
+		# Check and Push if not Free !
+		appointment_date_str = user.check_and_push(self, appointment_date_str, duration, x_type, doctor_name, states)
+
+		# Create Procedure 
+		self.treatment.create_procedure(appointment_date_str, subtype, product_id)
+
+# create_procedure_wapp

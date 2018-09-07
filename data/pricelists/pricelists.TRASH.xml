@@ -1,16 +1,3 @@
-<?xml version='1.0' encoding='utf-8'?>
-<openerp>
-	<data noupdate='1'>
-
-
-
-		<!-- VIP -->
-		<record id='pricelist_vip' model='product.pricelist'>
-			<field name='name'>VIP</field>
-		</record>
-
-
-
 		<!-- VIP Return -->
 <!--		
 		<record id='pricelist_vip_return' model='product.pricelist'>
@@ -31,8 +18,3 @@
 	<field name='fixed_price'>4601</field>	
 </record>
 -->
-
-
-
-	</data>
-</openerp>

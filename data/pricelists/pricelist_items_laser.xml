@@ -12,15 +12,18 @@
 <record id='vip_co2_nec_rn1_one' model='product.pricelist.item'>
 	<field name='pricelist_id' 	ref='pricelist_vip'/>
 	<field name='product_tmpl_id' 	ref='co2_nec_rn1_one'/>
+	
 	<field name='fixed_price'>2500.0</field>
+
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 </record>
 <!--
 <record id='co2_nec_rn1_one' model='product.template'>
-	<field name='item_id'	ref='vip_co2_nec_rn1_one' />
+	<field name='item_ids'	ref='vip_co2_nec_rn1_one' />
 </record>
 -->
+
 
 
 <!-- LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento Cuello Grado 2 - 1 -->
@@ -61,11 +64,11 @@
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 </record>
-
+<!--
 <record id='co2_nec_rn4_one' model='product.template'>
 	<field name='item_id'	ref='vip_co2_nec_rn4_one' />
 </record>
-
+-->
 
 
 <!-- LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento Cuello Grado 5 - 1 -->
@@ -76,11 +79,11 @@
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 </record>
-
+<!--
 <record id='co2_nec_rn5_one' model='product.template'>
 	<field name='item_id'	ref='vip_co2_nec_rn5_one' />
 </record>
-
+-->
 
 
 <!-- LASER CO2 FRACCIONAL - Localizado Cuerpo - Acne y Secuelas Grado 1 - 1 -->
@@ -93,11 +96,11 @@
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 </record>
-
+<!--
 <record id='co2_bol_as1_one' model='product.template'>
 	<field name='item_id'	ref='vip_co2_bol_as1_one' />
 </record>
-
+-->
 
 
 <!-- LASER CO2 FRACCIONAL - Localizado Cuerpo - Acne y Secuelas Grado 2 - 1 -->
@@ -108,11 +111,11 @@
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 </record>
-
+<!--
 <record id='co2_bol_as2_one' model='product.template'>
 	<field name='item_id'	ref='vip_co2_bol_as2_one' />
 </record>
-
+-->
 
 
 <!-- LASER CO2 FRACCIONAL - Localizado Cuerpo - Acne y Secuelas Grado 3 - 1 -->
@@ -123,11 +126,11 @@
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 </record>
-
+<!--
 <record id='co2_bol_as3_one' model='product.template'>
 	<field name='item_id'	ref='vip_co2_bol_as3_one' />
 </record>
-
+-->
 
 
 <!-- LASER CO2 FRACCIONAL - Localizado Cuerpo - Acne y Secuelas Grado 4 - 1 -->
@@ -138,11 +141,11 @@
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 </record>
-
+<!--
 <record id='co2_bol_as4_one' model='product.template'>
 	<field name='item_id'	ref='vip_co2_bol_as4_one' />
 </record>
-
+-->
 
 
 <!-- LASER CO2 FRACCIONAL - Localizado Cuerpo - Acne y Secuelas Grado 5 - 1 -->
@@ -153,11 +156,11 @@
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 </record>
-
+<!--
 <record id='co2_bol_as5_one' model='product.template'>
 	<field name='item_id'	ref='vip_co2_bol_as5_one' />
 </record>
-
+-->
 
 
 <!-- LASER CO2 FRACCIONAL - Localizado Cuerpo - Cicatriz Grado 1 - 1 -->
@@ -168,11 +171,11 @@
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 </record>
-
+<!--
 <record id='co2_bol_sc1_one' model='product.template'>
 	<field name='item_id'	ref='vip_co2_bol_sc1_one' />
 </record>
-
+-->
 
 
 <!-- LASER CO2 FRACCIONAL - Localizado Cuerpo - Cicatriz Grado 2 - 1 -->
@@ -183,11 +186,11 @@
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 </record>
-
+<!--
 <record id='co2_bol_sc2_one' model='product.template'>
 	<field name='item_id'	ref='vip_co2_bol_sc2_one' />
 </record>
-
+-->
 
 
 <!-- LASER CO2 FRACCIONAL - Localizado Cuerpo - Cicatriz Grado 3 - 1 -->
@@ -199,9 +202,11 @@
 	<field name='applied_on'>1_product</field>
 </record>
 
+<!--
 <record id='co2_bol_sc3_one' model='product.template'>
 	<field name='item_id'	ref='vip_co2_bol_sc3_one' />
 </record>
+-->
 
 
 
@@ -214,9 +219,11 @@
 	<field name='applied_on'>1_product</field>
 </record>
 
+<!--
 <record id='co2_bol_sc4_one' model='product.template'>
 	<field name='item_id'	ref='vip_co2_bol_sc4_one' />
 </record>
+-->
 
 
 
@@ -229,9 +236,11 @@
 	<field name='applied_on'>1_product</field>
 </record>
 
+<!--
 <record id='co2_bol_sc5_one' model='product.template'>
 	<field name='item_id'	ref='vip_co2_bol_sc5_one' />
 </record>
+-->
 
 
 
@@ -244,9 +253,11 @@
 	<field name='applied_on'>1_product</field>
 </record>
 
+<!--
 <record id='co2_bol_mo1_one' model='product.template'>
 	<field name='item_id'	ref='vip_co2_bol_mo1_one' />
 </record>
+-->
 
 
 
@@ -259,9 +270,11 @@
 	<field name='applied_on'>1_product</field>
 </record>
 
+<!--
 <record id='co2_bol_mo2_one' model='product.template'>
 	<field name='item_id'	ref='vip_co2_bol_mo2_one' />
 </record>
+-->
 
 
 
@@ -274,9 +287,11 @@
 	<field name='applied_on'>1_product</field>
 </record>
 
+<!--
 <record id='co2_bol_mo3_one' model='product.template'>
 	<field name='item_id'	ref='vip_co2_bol_mo3_one' />
 </record>
+-->
 
 
 
@@ -289,9 +304,11 @@
 	<field name='applied_on'>1_product</field>
 </record>
 
+<!--
 <record id='co2_bol_mo4_one' model='product.template'>
 	<field name='item_id'	ref='vip_co2_bol_mo4_one' />
 </record>
+-->
 
 
 

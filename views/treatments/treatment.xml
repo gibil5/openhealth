@@ -121,47 +121,9 @@
 				<form string="Treatment Form">
 					<header>
 
-<!--
-							class="oe_highlight oe_right"
--->
-						<!-- Clear --> 
-
-<!--
-						<button 
-							type="object" 
-
-							class="oe_highlight"
-							
-							name="clear" 
-							
-							string="Clear" 
-							
-							groups="openhealth.roots"
-						/>
--->
-
-
-
 
 
 						<!-- Create Appointment --> 
-<!--
-											'search_default_doctor': physician,
-
-							type="action" 
-							name="%(oeh_medical_appointment_action_tree_confirmed)d"	
-							context="{									
-											'default_patient': patient, 
-											'default_doctor' : physician, 
-											'default_appointment_date': start_date, 
-											'default_treatment': active_id, 
-											'default_x_target' : 'doctor', 
-											'default_x_type': 'consultation', 
-									}" 											
-							name="create_appointment_nex" 
-
-							groups="openhealth.roots,openhealth.reception,openhealth.managers,openhealth.directors"
--->
 						<button 
 							class="oe_highlight"
 							type="object" 
@@ -176,11 +138,6 @@
 
 
 
-
-
-<!--
-							states="empty,appointment"
--->
 						<!-- Create Budget Consultation --> 
 						<button 
 							type="object" 
@@ -194,11 +151,7 @@
 							string="Crear PRESUPUESTO - Consulta" 
 
 							groups="openhealth.roots,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
-
 						/>
-
-
-
 
 
 
@@ -217,7 +170,6 @@
 							groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
 						/>
 
-
 						<!-- Create Consultation --> 
 						<button 
 							type="object" 
@@ -235,15 +187,6 @@
 
 
 
-
-
-
-
-
-
-
-<!--
--->
 						<!-- Create Service --> 
 						<button 
 							type="object" 
@@ -317,9 +260,6 @@
 
 
 
-<!--
-							name="create_procedure" 
--->
 
 						<!-- Create Procedure --> 
 						<button 
@@ -351,71 +291,6 @@
 
 
 
-
-
-
-<!-- Ex Manual --> 
-
-
-<!--
-Add Procedures 
--->
-						<!--
-							attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
-							attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
-						<button 
-							type="object" 
-
-							class="oe_highlight"
-							
-							string="Proc. Adicionales" 
-							
-							name="toggle_add_procedures" 
-
-							states="controls"
-
-
-							groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
-						/>
-						-->
-
-
-<!--
-						<button 
-							type="object" 
-							class="oe_highlight"
-							string="RECOM." 
-							name="create_service" 
-
-							attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
-
-							groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
-						/>
-
-
-						<button 
-							type="object" 
-							name="create_order_pro" 
-							class="oe_highlight"
-							string="PRESUPUESTO" 
-
-							attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
-
-							groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
-						/>
-
-
-						<button 
-							type="object" 
-							class="oe_highlight"
-							name="create_procedure" 
-							string="PROC." 
-
-							attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
-
-							groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
-						/>
--->
 
 
 
@@ -453,27 +328,28 @@ Add Procedures
 
 
 
-						<!-- Update Patient --> 
-<!--
+
+
+
+
+
+
+
+
+
+
+						<!-- Test --> 
 						<button 
 							type="object" 
 							class="oe_highlight"
-							
-							name="update_patient" 
+							name="test" 
 
-							string="U" 
+							string="Test" 
+
+							groups="openhealth.roots"
 						/>
--->
 
 
-
-
-
-<!--
-								statusbar_visible="appointment, invoice_consultation, consultation, service, invoice_procedure, procedure, sessions, controls"
-
-								statusbar_visible="appointment, invoice_consultation, consultation, service, invoice_procedure, procedure, sessions, controls, done"
--->
 						<!-- State --> 
 						<field 	name="state" 
 								widget="statusbar" 
@@ -956,15 +832,107 @@ Add Procedures
 									<h1><field name="name" class="oe_inline"/></h1>
 
 								</div>
+<!--
+								<div class="oe_title" >
+								</div>
+								<div class="oe_title" >
+								</div>
+-->
+								
+								<group>
 
-								<!-- Reload --> 
-								<button 
-									type="object" 
-									class="oe_highlight"
-									name="test_case_reload" 	
+									<!-- Reload --> 
+<!--
+									<group>
+										<button 
+											type="object" 
+											class="oe_highlight"
+											name="test_case_reload" 	
 
-									string="Refrescar"
-								/>
+											string="Refrescar"
+										/>
+									</group>
+-->
+
+
+									<group>
+										<!-- Test - Patient --> 
+										<button 
+											type="object" 
+											class="oe_highlight"
+											
+											name="test_case_patients" 
+											
+											string="Pat" 								
+										/>
+									</group>
+
+									<group>
+										<!-- Test - Container --> 
+										<button 
+											type="object" 
+											class="oe_highlight"
+											
+											name="test_case_container" 
+											
+											string="Container" 								
+										/>
+									</group>
+
+
+
+
+									<group>
+
+										<!-- Test - Export --> 
+										<button 
+											type="object" 
+											class="oe_highlight"
+											
+											name="test_case_export" 
+											
+											string="Export" 								
+										/>
+
+
+										<!-- Test - Coder --> 
+										<button 
+											type="object" 
+											class="oe_highlight"
+											
+											name="test_case_coder" 
+											
+											string="Coder" 								
+										/>
+
+
+
+										<!-- Test - Prods --> 
+										<button 
+											type="object" 
+											class="oe_highlight"
+											
+											name="test_case_products" 
+											
+											string="Prods" 								
+										/>
+
+
+										<!-- Test - Consu --> 
+										<button 
+											type="object" 
+											class="oe_highlight"
+											
+											name="test_case_consu" 
+											
+											string="Consu" 								
+										/>
+
+									</group>
+
+								</group>
+
+
 
 							</div>
 						</div>
@@ -1176,7 +1144,9 @@ Fields
 								/>
 
 
+
 								<!-- Test - Objs --> 
+<!--								
 								<button 
 									type="object" 
 									class="oe_highlight"
@@ -1185,6 +1155,31 @@ Fields
 									
 									string="Objs" 								
 								/>
+-->
+
+								<!-- Test - Order --> 
+								<button 
+									type="object" 
+									class="oe_highlight"
+									
+									name="test_case_order" 
+									
+									string="Order" 								
+								/>
+
+								<!-- Test - Patient --> 
+<!--
+								<button 
+									type="object" 
+									class="oe_highlight"
+									
+									name="test_case_patient" 
+									
+									string="Patient" 								
+								/>
+-->
+
+
 
 
 								<!-- Test - Clear All --> 
@@ -1303,6 +1298,7 @@ grey:state=='done';
 blue:state=='controls'
 ">
 
+<!--
 					<field name="name"/>
 
 					<field name="patient_sex"/>
@@ -1310,31 +1306,38 @@ blue:state=='controls'
 					<field name="patient_age"/>
 					
 					<field name="patient_city"/>
-
-					<field name="start_date"/>
-					
-					<field name="write_date"	string="Fecha actualizacion"/>
-
-<!--
-					<field name="duration"/>
 -->
+
 					<field name="patient"/>
 					
 					<field name="physician"/>
 					
 					<field name="chief_complaint"	string="Motivo"/>
+
+
+
+
+					<field name="start_date"/>
 					
-					<field name="flag"/>
-					
+					<field name="write_date"	string="Fecha actualizacion"/>
+
+
+
 					<field name="state"/>
 
-
-
-					<field name="procedure_ids"		groups="openhealth.roots"/>
 				</tree>
 			</field>
 		</record>
 <!--
+limit = 40
+					<field name="flag"/>
+					<field name="procedure_ids"		groups="openhealth.roots"/>
+-->
+
+
+
+<!--
+					<field name="duration"/>
 					<field name="end_date"/>
 					<field name="treatment_open"/>
 					<field name="id"/>

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
-	<data noupdate='0'>
+	<data>
 
 
 
@@ -21,6 +21,7 @@
 			<field name='x_zone'></field>
 			<field name='x_pathology'></field>
 			<field name='x_time'></field>
+
 			<field name='x_family'>consultation</field>
 
 			<field name='categ_id' ref="consultation_categ"/>
@@ -46,7 +47,8 @@
 			<field name='x_zone'></field>
 			<field name='x_pathology'></field>
 			<field name='x_time'></field>
-			<field name='x_family'>consultation_gyn</field>
+			
+			<field name='x_family'>consultation</field>
 
 			<field name='categ_id' ref="consultation_categ"/>
 		</record>

@@ -1,100 +1,64 @@
 <?xml version="1.0"?>
-<!--
-	*** OPEN HEALTH
-
-	Created: 			26 Aug 2016
-	Last updated: 	 	21 Jan 2016
--->
-
 <openerp>
 	<data>
 
 
-		<!--
-		Personal 
-		-->
+
+
+<!-- FORM -->
+
+		<!-- Personal -->
 		<record model="ir.ui.view" id="patient_personal_form_view">
 			<field name="name">Patient personal</field>
 			<field name="model">oeh.medical.patient</field>
-
-
 			<field name="priority" eval="1"/>
-
-
     		<field name="inherit_id" ref="oeh_medical_patient_view"/>
 			<field name="arch" type="xml">
-
 				<notebook position="inside">
+					
+
 					<page string="Personal">
 
-<!--
-						<group>
-							<group>  
-							</group>
-
-							<group>
-							</group>
-						</group>
--->
 
 						<group>
 
 
-<!--
-																								'invisible':[('x_foreign', '!=', False)],
--->
 							<!-- First Group - Address Peru --> 
-							<group  
-																					attrs="{
-																								'required':[('x_foreign', '=', False)],
-																							}"
+							<group  attrs="{
+												'required':	[	
+																('x_foreign', '=', False), 
+															],
+											}"
 								>
 								
-							
-								<!--
-								<label for="street" string="Dirección"/>
-								
-								<div>
-									<field name="street"  required="1"/> 
-									
-									<field name="street2" required="1"/>
-
-
-									<div class="address_format">
-
-										<field string="Departamento" name="city" style="width: 40%"/>
-										
-										<field name="zip" class="oe_no_button" style="width: 37%" options="{&quot;no_open&quot;: True}" on_change="onchange_state(state_id)"/>
-
-									</div>
-									
-									<field name="country_id" class="oe_no_button" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
-								</div>
-								-->
 								
 								
-								
-								<!--
-								Address 
-								-->
+<!-- Address -->
 
 
-<!-- Country --> 
-								<field name="country_id" class="oe_no_button" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"
-																readonly="0"
+								<!-- Country --> 
+								<field name="country_id" 	class="oe_no_button" 
+															options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"
+															readonly="0"								
+															
+															attrs="{
+																		'required':[
+																						('x_legacy', '!=', True), 
+																					],
+																	}"
 								/>
 								
 
 
 
-<!-- Only Peru --> 
-<!--
-																								'invisible':[('x_foreign', '!=', False)],
--->
+								<!-- Only Peru --> 
 								<field name="city" style="width: 40%"				string="Departamento"
 									
 																					attrs="{
-																								'required':[('x_foreign', '=', False)],
+																								'required':[
+																											('x_foreign', '=', False), 
+																											('x_legacy', '!=', True), 
+																											],
 																							}"
 
 									/>
@@ -104,19 +68,13 @@
 
 
 <!-- Only Lima --> 
-<!--
-																								'invisible':[('x_foreign', '!=', False)],
-
-
-
-Relax ! 																								
--->
 								<field name="street2_sel"    	required="0"		attrs="{
 																								'invisible':[('city', '!=', 'lima')],
 
 																								'required':[
 																												('city', '=', 'lima'), 
 																												('x_foreign', '=', False), 
+																												('x_legacy', '!=', True), 
 																											],
 																							}"
 																						/>
@@ -158,7 +116,8 @@ Relax !
 																								
 																								'required':[
 																												('city', '=', 'lima'), 
-																												('x_foreign', '=', False), 
+																												('x_foreign', '=', False),
+																												('x_legacy', '!=', True), 
 																											],
 																							}" 
 
@@ -172,7 +131,10 @@ Relax !
 -->
 								<field name="street"  	required="0"
 																					attrs="{
-																								'required':[('x_foreign', '=', False)],
+																								'required':[
+																											('x_foreign', '=', False), 
+																											('x_legacy', '!=', True), 
+																											],
 																							}" 
 
 									/> 

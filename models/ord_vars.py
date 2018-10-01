@@ -2,6 +2,43 @@
 
 
 
+_dic_prefix = {
+					'ticket_receipt': 	'B01', 
+					'ticket_invoice': 	'F01', 
+
+					'receipt': 			'BB1', 
+					'invoice': 			'FF1', 
+
+					'sale_note': 		'S01', 
+					'advertisement': 	'A01', 
+}
+
+
+
+
+_dic_tc_type = {
+					'ticket_invoice': 	'ticket_invoice',	
+					'ticket_receipt': 	'ticket_receipt',
+}
+
+
+
+
+
+
+_dic_type_code = {
+					'ticket_invoice': 	'01',	
+					'ticket_receipt': 	'03',
+
+					'invoice': 			'01',
+					'receipt': 			'03',
+
+					'advertisement': 	'14',
+					'sale_note': 		'15',
+}
+
+
+
 
 # State - Current !!
 _state_list = [
@@ -22,15 +59,13 @@ _state_list = [
 
 				('draft', 		'Presupuesto'),
 				('sent', 		'Generado'),			
-
 				('validated', 	'Validado'),			
-
 				('sale', 		'Pagado'),				
 				('done', 		'Completo'),
 				('cancel', 		'Anulado'),
 
 				#('printed', 	'Impreso'),
-				('editable', 	'e'),
+				#('editable', 	'e'),
 			]
 
 
@@ -75,7 +110,6 @@ _dic_type_leg = {
 #	]
 
 
-
 #_dic_model = {
 #
 #						'receipt' : 'openhealth.receipt', 		
@@ -86,8 +120,6 @@ _dic_type_leg = {
 #						'ticket_invoice' : 	'openhealth.ticket_invoice', 		
 #						False :	False, 
 #			}
-
-
 
 
 # Deprecated !!!

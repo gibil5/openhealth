@@ -33,6 +33,14 @@ from . import management
 
 
 
+# Electronic
+from . import electronic_order
+from . import electronic_line
+from . import coder 
+
+
+
+
 
 # Marketing
 from . import media_line
@@ -73,6 +81,10 @@ from . import counter
 
 
 
+# Testing 
+from . import container
+
+
 
 # EMR
 from . import partner
@@ -91,6 +103,9 @@ from . import control
 from . import physician 
 from . import session 
 from . import session_med
+
+
+
 
 
 

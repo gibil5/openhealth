@@ -25,6 +25,8 @@
 						/>
 
 						<!-- Update Doctors -->
+						<!-- Sales -->
+<!--
 						<button 
 								type="object" 
 								class="oe_highlight"
@@ -35,32 +37,6 @@
 						/>
 
 
-
-						<!-- Families -->
-						<button 
-								class="oe_highlight"
-								type="action" 
-								context="{
-											'search_default_management_id': active_id,	
-										}" 																			
-								name="%(management_family_line_form_action)d" 
-
-								string="Ver Familias"	
-						/>
-
-						<!-- Doctores -->
-						<button 
-								class="oe_highlight"
-								type="action" 
-								context="{
-											'search_default_management_id': active_id,	
-										}" 											
-								name="%(management_doctor_line_form_action)d" 
-
-								string="Ver Doctores"	
-						/>
-
-						<!-- Sales -->
 						<button 
 								class="oe_highlight"
 								type="action" 
@@ -71,7 +47,74 @@
 
 								string="Ver Ventas"	
 						/>
+-->
 
+
+
+
+						<!-- Electronic - Clear -->
+						<button 
+								type="object" 
+								class="oe_highlight"
+								
+								name="clear_electronic"
+
+								string="Clear"								
+						/>
+
+
+						<!-- Update Electronic -->
+						<button 
+								type="object" 
+								class="oe_highlight"
+								
+								name="update_electronic"
+
+								string="Electronic"								
+						/>
+
+						<!-- Electronic -->
+						<button 
+								class="oe_highlight"
+								type="action" 
+								context="{
+											'search_default_management_id': active_id,	
+										}" 											
+								name="%(electronic_order_form_action)d" 
+
+								string="Electronic Sales"	
+						/>
+
+
+
+
+
+						<!-- Families -->
+<!--
+						<button 
+								class="oe_highlight"
+								type="action" 
+								context="{
+											'search_default_management_id': active_id,	
+										}" 																			
+								name="%(management_family_line_form_action)d" 
+
+								string="Ver Familias"	
+						/>
+-->
+						<!-- Doctores -->
+<!--
+						<button 
+								class="oe_highlight"
+								type="action" 
+								context="{
+											'search_default_management_id': active_id,	
+										}" 											
+								name="%(management_doctor_line_form_action)d" 
+
+								string="Ver Doctores"	
+						/>
+-->
 
 
 						<!-- Reset -->
@@ -361,10 +404,15 @@
 				<tree string="Management Tree">
 					<field name="name"/>
 
+					<field name="date_begin"	string="Fecha Inicio"/>
+					<field name="date_end"		string="Fecha Fin"/>
+					<field name="write_date"	string="Actualizado"/>
+
+<!--
 					<field name="test_target"	groups="openhealth.roots"/>
 					<field name="delta_1"		string="D 1"	groups="openhealth.roots"/>
 					<field name="delta_2"		string="D 2"	groups="openhealth.roots"/>
-
+-->
 					<field name="total_count"/>
 					<field name="nr_consultations"/>
 					<field name="nr_procedures"/>
@@ -383,27 +431,6 @@
 
 
 
-<!-- ACTION - Order -->
-		<record model="ir.actions.act_window" id="management_list_action">
-			<field name="name">Análisis de Ventas</field>
-			<field name="res_model">openhealth.management</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-			<field name="domain">[]</field>
-			<field name="context">{}</field>
-
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">
-					This is my first Help !
-				</p>
-			</field>
-
-			<!--
-			<field name="domain">[]</field>
-			<field name="context">{}</field>
-			<field name="view_id" eval="False"/>			
-			-->
-		</record>
 
 	</data>
 </openerp>

@@ -184,15 +184,18 @@ class AccountContasis(models.Model):
 														'qty': qty, 
 														'state': state, 
 														'serial_nr': serial_nr, 
-														'x_type': x_type, 
 														'date': date,
 														'date_time': date,
 														'amount': amount,
 														'amount_net': amount_net,
 														'amount_tax': amount_tax,
 														
+
+														'x_type': x_type, 
+
 														'document': document, 					# Id Doc  		-> Here !
 														'document_type': document_type, 		# Id Doc Type 
+
 
 														'account_id': self.id, 
 					})

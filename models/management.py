@@ -9,10 +9,11 @@ from openerp import models, fields, api
 import collections
 import mgt_funcs
 from timeit import default_timer as timer
-
 import lib 
 import os
 import shutil
+
+import export 
 
 class Management(models.Model):
 	_inherit='openhealth.repo'
@@ -29,76 +30,22 @@ class Management(models.Model):
 		print 
 		print 'Export Text'
 
-		# Clean 
-		base_dir = '/Users/gibil/Virtualenvs/Odoo9-min/odoo'
-		#path = base_dir + "/mssoft/*.txt"
-		path = base_dir + "/mssoft/ventas"
-
-
-		# Remove 
-		if os.path.isdir(path) and not os.path.islink(path):
-			shutil.rmtree(path)		# If dir 
-		elif os.path.exists(path):
-			os.remove(path)			# If file 
-
-
-		# Init 
-		os.mkdir(path)  
-		#fname = "mssoft/ventas.txt"
-		dname = "mssoft/ventas"
-		rname = lib.get_todays_name()
-		fname = dname + '/' + rname + '.txt'
-		#print fname
-		se = ","
-		lr = "\n"
-
-		header = "date, serial_nr, patient, dni, firm, ruc, email, product\n"
-
-
-		file = open(fname, "w")
-
-		#file.write("date, patient, serial_nr, product\n")
-		file.write(header)
-		
-
-		for line in self.order_line: 
-			#print line 
-			#print line.x_date_created
-			#print line.patient
-			#print line.serial_nr
-			#print line.product_id.name
-			#print 
-			#file.write(line.x_date_created + se + line.patient.name + se + line.serial_nr + se + line.product_id.name + lr)
-			file.write(
-						#line.x_date_created + se + 
-						lib.correct_date(line.x_date_created) + se + 
-
-						line.serial_nr + se + 
-
-
-						line.patient.name + se + 
-						line.patient.x_dni + se + 
-						line.patient.x_firm + se + 
-						line.patient.x_ruc + se + 
-						line.patient.email + se + 
-						
-						
-						line.product_id.name + 
-
-						lr)
-
-		file.close()
+		export.export_txt(self.order_line)
 
 
 
 
-# ----------------------------------------------------------- Legacy ------------------------------------------------------
-	legacy = fields.Boolean(
-			'Legacy', 
-		)
 
 
 # ----------------------------------------------------------- Relational ------------------------------------------------------
+	# Electronic  
+	electronic_order = fields.One2many(
+			'openhealth.electronic.order', 
+			'management_id',
+		)
+
+
+
 	# Sales
 	order_line = fields.One2many(
 			'openhealth.management.order.line', 
@@ -127,6 +74,12 @@ class Management(models.Model):
 	sale_line_tkr = fields.One2many(
 			'openhealth.management.order.line', 
 			'management_tkr_id',
+		)
+
+
+# ----------------------------------------------------------- Legacy ------------------------------------------------------
+	legacy = fields.Boolean(
+			'Legacy', 
 		)
 
 
@@ -498,9 +451,25 @@ class Management(models.Model):
 			# Loop 
 			for order in orders: 
 
+				# Tickets 
+				tickets = tickets + 1
+
+				# Amount
 				amount = amount + order.amount_total
 
-				tickets = tickets + 1
+				# Id Doc 
+				if order.x_type in ['ticket_invoice','invoice']: 
+					receptor = 			order.patient.x_firm.upper()
+					id_doc = 			order.patient.x_ruc
+					id_doc_type = 		'ruc'
+					id_doc_type_code = 	'6'
+
+				else: 
+					receptor = 			order.patient.name 
+					id_doc = 			order.patient.x_id_doc
+					id_doc_type = 		order.patient.x_id_doc_type
+					id_doc_type_code = 	order.patient.x_id_doc_type_code
+
 
 
 				# Order Lines 
@@ -509,17 +478,34 @@ class Management(models.Model):
 					count = count + 1
 
 
-					# CREATE !!!
+					# Here !!!
 					order_line = doctor.order_line.create({
+															'receptor': 	receptor, 
+															'patient': 		order.patient.id, 
+
 															'name': order.name, 
 															'x_date_created': order.date_order, 
-															'patient': order.patient.id, 
 															'doctor': order.x_doctor.id, 
 															'state': order.state, 
 															'serial_nr': order.x_serial_nr, 
-															'product_id': line.product_id.id, 															
-															'product_uom_qty': line.product_uom_qty, 
-															'price_unit': line.price_unit, 
+
+
+															# Type of Sale 
+															'type_code': 	order.x_type_code, 
+															'x_type': 		order.x_type, 
+
+
+															# Id Doc  
+															'id_doc': 				id_doc, 
+															'id_doc_type': 			id_doc_type, 
+															'id_doc_type_code': 	id_doc_type_code, 
+
+
+															# Line 
+															'product_id': 			line.product_id.id, 															
+															'product_uom_qty': 		line.product_uom_qty, 
+															'price_unit': 			line.price_unit, 
+
 
 															'doctor_id': doctor.id, 
 															'management_id': self.id, 
@@ -553,6 +539,10 @@ class Management(models.Model):
 
 		#print 'Done !'
 	# update_sales
+
+
+
+
 
 
 
@@ -799,4 +789,124 @@ class Management(models.Model):
 		self.update_fast()
 		self.update_doctors()
 	# update 
+
+
+
+
+# ----------------------------------------------------------- Electronic - Clear ------------------------------------------------------
+	# Clear  
+	@api.multi
+	def clear_electronic(self):  
+		print
+		print 'Electronic - Clear'
+		# Clean 
+		self.electronic_order.unlink()
+
+
+
+# ----------------------------------------------------------- Update Sales - Electronic ------------------------------------------------------
+
+	# Update Electronic  
+	@api.multi
+	def update_electronic(self):  
+		print
+		print 'Update Sales - Electronic'
+
+
+		# Clean 
+		self.electronic_order.unlink()
+
+
+		# Orders 
+		orders,count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end)
+
+
+
+		# Loop 
+		for order in orders: 
+			
+			print order 
+
+
+			# Id Doc 
+			if order.x_type in ['ticket_invoice','invoice']: 
+				receptor = 			order.patient.x_firm.upper()
+				id_doc = 			order.patient.x_ruc
+				id_doc_type = 		'ruc'
+				id_doc_type_code = 	'6'
+
+			else: 
+				receptor = 			order.patient.name 
+				id_doc = 			order.patient.x_id_doc
+				id_doc_type = 		order.patient.x_id_doc_type
+				id_doc_type_code = 	order.patient.x_id_doc_type_code
+
+
+
+					
+			# Here !!!
+			electronic_order = self.electronic_order.create({
+																'receptor': 	receptor, 
+																'patient': 		order.patient.id, 
+
+																'name': 			order.name, 
+																'x_date_created': 	order.date_order, 
+																'doctor': 			order.x_doctor.id, 
+																'state': 			order.state, 
+																'serial_nr': 		order.x_serial_nr, 
+
+																# Type of Sale 
+																'type_code': 		order.x_type_code, 
+																'x_type': 			order.x_type, 
+
+																# Id Doc  
+																'id_doc': 				id_doc, 
+																'id_doc_type': 			id_doc_type, 
+																'id_doc_type_code': 	id_doc_type_code, 
+
+																# Line 
+																#'product_id': 			line.product_id.id, 															
+																#'product_uom_qty': 		line.product_uom_qty, 
+																#'price_unit': 			line.price_unit, 
+
+
+
+																# Totals
+																'amount_total': 		order.amount_total, 
+																'amount_total_net': 	order.x_total_net, 
+																'amount_total_tax': 	order.x_total_tax, 
+
+																'counter_value': 		order.x_counter_value, 
+
+
+																# Rel 
+																'management_id': self.id, 
+												})
+			
+
+			# Order Lines 
+			for line in order.order_line:
+				
+				print line 
+				print line.product_id.name
+				print line.product_uom_qty
+				print line.price_unit
+				print electronic_order
+				print 
+
+				# Here !!!
+				electronic_line = electronic_order.electronic_line_ids.create({
+																				# Line 
+																				'product_id': 			line.product_id.id, 															
+																				'product_uom_qty': 		line.product_uom_qty, 
+																				'price_unit': 			line.price_unit, 
+
+
+																				# Rel 
+																				'electronic_order_id': electronic_order.id, 
+																			})
+
+	# update_electronic
+
+
 

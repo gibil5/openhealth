@@ -1,36 +1,46 @@
 # -*- coding: utf-8 -*-
-
+#
 # 	lib_obj.py
 # 	Integration Tests for the Treatment Class
 #
 # 	Created: 			14 Aug 2018
-# 	Last up: 	 		14 Aug 2018
+# 	Last up: 	 		30 Sep 2018
+
+
+# ----------------------------------------------------------- Simple ------------------------------------------------------
+class Simple():
+
+	def __init__(self, name):		
+		print 'Simple - Init'
+		#print self 
+		#print name 
+		self.name = name
+		#print self.name 
+
+
+	def whoami(self): 		
+		print 'Simple - Who am I'
+		#print self 
+		print self.name 
 
 
 
+# ----------------------------------------------------------- Object ------------------------------------------------------
 class Object():
 
-
-
-	#def __init__(self, caller, name, model, 	patient_id=False, partner_id=False, doctor_id=False, treatment_id=False):
-	def __init__(self, caller, name, model, 	patient_id=False, partner_id=False, doctor_id=False, treatment_id=False, pl_id=False):
-		
+	def __init__(self, caller, name, model, 	patient_id=False, partner_id=False, doctor_id=False, treatment_id=False, pl_id=False):		
 		print 'Object - Init'
-		#print caller
 		
 		self.env = caller.env 
 		self.name = name
-		self.model = model
-		
+		self.model = model		
 		self.patient_id = patient_id
 		self.partner_id = partner_id
 		self.doctor_id = doctor_id
 		self.treatment_id = treatment_id
 
 		# Obj
-		#self.db_objs = self.env[self.model].test_init(patient_id, partner_id, doctor_id, treatment_id)
 		self.db_objs = self.env[self.model].test_init(patient_id, partner_id, doctor_id, treatment_id, pl_id)
-
 
 
 	def __repr__(self): 
@@ -38,13 +48,16 @@ class Object():
 
 
 
-	def test(self): 
-		
+	def whoami(self): 		
+		print 'Object - Who am I'
+
+
+
+	def test(self): 		
 		print 'Object - Test'
-		
-		#self.db_obj.test()
 		for db_obj in self.db_objs: 
-			db_obj.test()
+			if db_obj != False: 
+				db_obj.test()
 
 
 

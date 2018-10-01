@@ -2,20 +2,15 @@
 #
 # 	Order Line Report
 # 
-
+# 	Created: 			28 May 2018
+# 	Last updated: 		30 Aug 2018
+#
 from openerp import models, fields, api
-
-#import openerp.addons.decimal_precision as dp
-
 import ord_vars
-
 
 class order_report_nex_line(models.Model):
 
-
-	#_inherit='sale.order.line'
 	_inherit='openhealth.line'
-
 
 	_name = 'openhealth.report.order_line'
 

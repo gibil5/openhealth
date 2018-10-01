@@ -4,14 +4,24 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+access_res_partner_directors,res.partner.directors,model_res_partner,openhealth.directors,1,1,1,1
+access_res_partner_reception,res.partner.reception,model_res_partner,openhealth.reception,1,1,1,0
+access_res_partner_caja,res.partner.caja,model_res_partner,openhealth.caja,1,1,1,0
+access_res_partner_almacen,res.partner.almacen,model_res_partner,openhealth.almacens,1,1,1,0
+
+
+
+
+
+
+
+
+
+
 access_openhealth_service_product_managers,openhealth.service_product.managers,model_openhealth_service_product,openhealth.hc_managers,1,1,1,1
 access_openhealth_service_product_readers,openhealth.service_product.readers,model_openhealth_service_product,openhealth.hc_readers,1,0,0,0
 
 access_openhealth_service_product_caja,openhealth.service_product.caja,model_openhealth_service_product,openhealth.caja,1,1,1,0
-
-
-
-
 
 
 
@@ -404,10 +414,6 @@ access_openhealth_procedure_caja,openhealth.procedure.caja,model_openhealth_proc
 
 
 
-access_res_partner_directors,res.partner.directors,model_res_partner,openhealth.directors,1,1,1,1
-access_res_partner_reception,res.partner.reception,model_res_partner,openhealth.reception,1,1,1,0
-access_res_partner_caja,res.partner.caja,model_res_partner,openhealth.caja,1,1,1,0
-access_res_partner_almacen,res.partner.almacen,model_res_partner,openhealth.almacens,1,1,1,0
 
 
 

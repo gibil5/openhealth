@@ -203,8 +203,6 @@
 
 # 7 April 2018
 
-
-
 	#x_country_name = fields.Char(
 	#		readonly=False, 	
 			#compute='_compute_x_country_name', 

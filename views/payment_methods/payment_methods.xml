@@ -29,7 +29,7 @@
 								string="Regresar"
 						/>
 
-
+<!--
 					<button 
 							type="object" 
 							class="oe_highlight"
@@ -42,19 +42,21 @@
 
 							groups="openhealth.roots"
 						/>
-
+-->
 
 
 <!--
 								statusbar_visible="draft, paid, done"
 								statusbar_visible="draft, sale, done"
+
+								statusbar_visible="draft, sale, done, editable"
 -->
 						<!-- State --> 
 						<field 	name="state" 
 								widget="statusbar" 
 								invisible="0"
 
-								statusbar_visible="draft, sale, done, editable"
+								statusbar_visible="draft, sale, done"
 						
 						/>
 					</header>
@@ -85,20 +87,33 @@
 
 
 
-
+								<!-- DNI -->
+<!--								
 								<field name="dni"   		attrs="{
 																		'required':[	('saledoc', 'in', ['receipt','ticket_receipt']),], 
 																}"
 									/>				
+-->
+
+								<!-- Id Doc Type -->
+								<!-- Id Doc -->
+<!--
+								<field name="id_doc_type"/>
+
+								<field name="id_doc"/>
+-->
 
 
 
+
+								<!-- Firm -->
 								<field name="firm"   		attrs="{
 																		'required':[	('saledoc', 'in', ['invoice','ticket_invoice']),], 
 																}"
 									/>				
 
 
+								<!-- RUC -->
 								<field name="ruc"   		attrs="{
 																		'required':[	('saledoc', 'in', ['invoice','ticket_invoice']),], 
 																}"

@@ -7,13 +7,55 @@
 #
 from openerp import models, fields, api
 import pm_vars
-
 from openerp import _
 from openerp.exceptions import Warning
+import pat_vars
 
 class PaymentMethod(models.Model):
 
 	_name = 'openhealth.payment_method'
+
+
+# ----------------------------------------------------------- Id Doc - Deperecated ! ------------------------------------------------------
+
+	# Id Doc 
+	#id_doc = fields.Char(
+	#		'Nr. Doc.', 
+	#		required=True, 
+	#		readonly=True, 
+	#	)
+
+	# Id Document Type 
+	#id_doc_type = fields.Selection(
+	#		selection = pat_vars._id_doc_type_list, 
+	#		string='Tipo de documento', 
+	#		required=True, 
+	#		readonly=True, 
+	#	)
+
+
+	# DNI 
+	#dni = fields.Char(
+	#		'DNI', 
+	#		states=pm_vars.READONLY_STATES, 
+	#	)
+
+
+	# Firm 
+	firm = fields.Char(
+			'Razón social',
+			#states=pm_vars.READONLY_STATES, 
+			readonly=True, 
+		)
+
+
+	# Ruc
+	ruc = fields.Char(
+			'Ruc', 
+			#states=pm_vars.READONLY_STATES, 
+			readonly=True, 
+		)
+
 
 
 # ----------------------------------------------------------- On Change ------------------------------------------------------
@@ -129,28 +171,6 @@ class PaymentMethod(models.Model):
 
 
 
-	# DNI 
-	dni = fields.Char(
-			'DNI', 
-
-			states=pm_vars.READONLY_STATES, 
-		)
-
-
-	# Firm 
-	firm = fields.Char(
-			'Razón social',
-
-			states=pm_vars.READONLY_STATES, 
-		)
-
-
-	# Ruc
-	ruc = fields.Char(
-			'Ruc', 
-
-			states=pm_vars.READONLY_STATES, 
-		)
 
 
 
@@ -224,8 +244,8 @@ class PaymentMethod(models.Model):
 		self.confirmed = True 
 		# Order
 		self.order.state = 'sent'
-		self.order.x_dni = self.dni
-		self.order.x_ruc = self.ruc
+		#self.order.x_dni = self.dni
+		#self.order.x_ruc = self.ruc
 
 		return self.order.open_myself() 
 	# go_back
@@ -316,17 +336,17 @@ class PaymentMethod(models.Model):
 
 
 		# Update Partner - Dni, Ruc, Firm 
-		if 'dni' in vals: 
-			dni = vals['dni']
-			self.partner.x_dni = dni 
+		#if 'dni' in vals: 
+		#	dni = vals['dni']
+		#	self.partner.x_dni = dni 
 
-		if 'ruc' in vals: 
-			ruc = vals['ruc']
-			self.partner.x_ruc = ruc 
+		#if 'ruc' in vals: 
+		#	ruc = vals['ruc']
+		#	self.partner.x_ruc = ruc 
 
-		if 'firm' in vals: 
-			firm = vals['firm']
-			self.partner.x_firm = firm 
+		#if 'firm' in vals: 
+		#	firm = vals['firm']
+		#	self.partner.x_firm = firm 
 
 
 		#Write your logic here

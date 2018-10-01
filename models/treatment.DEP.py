@@ -1,5 +1,78 @@
 
 
+# ----------------------------------------------------------- State ------------------------------------------------------
+	@api.multi
+	#@api.depends('consultation_ids')
+	def _compute_state(self):
+		for record in self:
+
+			# Init 
+			state = 'empty'
+
+
+			if record.nr_appointments > 0:
+				state = 'appointment'
+
+			if record.nr_budgets_cons > 0:
+				state = 'budget_consultation'
+
+			if record.nr_invoices_cons > 0:
+				state = 'invoice_consultation'
+
+			if record.consultation_progress == 100:
+				state = 'consultation'
+
+			if record.nr_services > 0:
+				state = 'service'
+
+			if record.nr_budgets_pro > 0:
+				state = 'budget_procedure'
+
+			if record.nr_invoices_pro > 0:
+				state = 'invoice_procedure'
+
+			if record.nr_procedures > 0:
+				state = 'procedure'
+
+			if record.nr_sessions > 0:
+				state = 'sessions'
+
+			if record.nr_controls > 0:
+				state = 'controls'
+
+			if record.treatment_closed:
+				state = 'done'
+
+
+			record.state = state
+	# _compute_state
+
+
+
+
+
+
+# ----------------------------------------------------------- Deprecated ------------------------------------------------------
+	
+	# Orders 
+	#nr_orders = fields.Integer(
+	#		string="Presupuestos",
+
+	#		compute="_compute_nr_orders",
+	#)
+	#@api.multi
+	#def _compute_nr_orders(self):
+	#	for record in self:
+	#		ctr = 0 			
+	#		for c in record.consultation_ids:
+	#			for o in c.order:
+	#				ctr = ctr + 1
+	#		record.nr_orders = ctr
+
+
+
+
+
 # ----------------------------------------------------------- Recommendation - Deprecated ------------------------------------------------------
 
 	#recommendation_ids = fields.One2many(

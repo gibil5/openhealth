@@ -4,12 +4,32 @@ from openerp import models, fields, api
 import datetime
 
 # account_contasis
+
+_h_type = {
+				'invoice':			'01', 
+				'receipt': 			'03', 
+				'ticket_receipt': 	'12', 
+				'ticket_invoice': 	'12', 
+
+				'advertisement': 	'14', 
+				'sale_note': 		'15', 
+				
+				False: 			False, 
+	}
+
+
+
 _doc_type = {
 				'other':			'0', 
-				'foreigner_card':	'4', 
+				'foreign_card':		'4', 
 				'passport':			'7', 
+
+				'ptp':				'1', 		# Verify 
+				'dni':				'2', 		# Verify 
+
 				False: 			False, 
 }
+
 
 
 # account_line 
@@ -18,15 +38,6 @@ _cuentab = {
 				'product': 			'701101001', 
 				'consu': 			'701101001', 
 		}
-_h_type = {
-				'invoice':			'01', 
-				'receipt': 			'03', 
-				'ticket_receipt': 	'12', 
-				'ticket_invoice': 	'12', 
-				'advertisement': 	'14', 
-				'sale_note': 		'15', 
-				False: 			False, 
-	}
 
 
 # ----------------------------------------------------------- Get Orders Filter ------------------------------------------------------

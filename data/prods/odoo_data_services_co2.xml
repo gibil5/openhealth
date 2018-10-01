@@ -4,7 +4,110 @@
 
 
 
-		<!-- Data - Services -->
+<!-- Data - Services -->
+
+
+
+<!-- Co2 Neck Rej -->
+
+<!--
+			<field name='name'>LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento Cuello Grado 1 - 1</field>
+-->
+<!--
+-->
+		<record id='co2_nec_rn1_one' model='product.template'>
+			<field name='type'>service</field>
+			<field name='x_name_short'>co2_nec_rn1_one</field>
+			<field name='name'>LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento Cuello Grado 1</field>
+			<field name='description_sale'>LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento Cuello Grado 1</field>
+
+			<field name='description'>Co2 Cuello Rejuv 1</field>
+			<field name='default_code'>101</field>
+			<field name='price'>5000</field>
+			<field name='x_price_vip'>2500</field>
+
+			<field name='x_treatment'>laser_co2</field>
+			<field name='x_zone'>neck</field>
+			<field name='x_pathology'>rejuvenation_neck_1</field>
+			<field name='x_time'></field>
+			<field name='x_sessions'>1</field>
+			<field name='x_family'>laser</field>
+
+			<field name="active" eval="False" />
+		</record>
+<!--
+			<field name='categ_id' ref="laser_co2"/>
+-->
+
+
+
+		<record id='co2_nec_rn2_one' model='product.template'>
+
+			<field name='name'>LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento Cuello Grado 2</field>
+
+			<field name='type'>service</field>
+			<field name='x_name_short'>co2_nec_rn2_one</field>
+			<field name='x_treatment'>laser_co2</field>
+			<field name='x_zone'>neck</field>
+			<field name='x_pathology'>rejuvenation_neck_2</field>
+			<field name='price'>6000</field>
+
+			<field name='x_time'></field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>3000</field>
+			<field name='x_family'>laser</field>
+
+			<field name='categ_id' ref="laser_co2"/>
+		</record>
+
+
+		<record id='co2_nec_rn3_one' model='product.template'>
+
+			<field name='name'>LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento Cuello Grado 3</field>
+
+			<field name='type'>service</field>
+			<field name='x_name_short'>co2_nec_rn3_one</field>
+			<field name='x_treatment'>laser_co2</field>
+			<field name='x_zone'>neck</field>
+			<field name='x_pathology'>rejuvenation_neck_3</field>
+			<field name='price'>7000</field>
+
+			<field name='x_time'></field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>3500</field>
+			<field name='x_family'>laser</field>
+
+			<field name='categ_id' ref="laser_co2"/>
+		</record>
+
+
+		<record id='co2_nec_rn4_one' model='product.template'>
+
+			<field name='name'>LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento Cuello Grado 4</field>
+
+			<field name='type'>service</field>
+			<field name='x_name_short'>co2_nec_rn4_one</field>
+			<field name='x_treatment'>laser_co2</field>
+			<field name='x_zone'>neck</field>
+			<field name='x_pathology'>rejuvenation_neck_4</field>
+			<field name='price'>8000</field>
+
+			<field name='x_time'></field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'>4000</field>
+			<field name='x_family'>laser</field>
+
+			<field name='categ_id' ref="laser_co2"/>
+		</record>
+
+
+
+
+
+
+
+
+
 		<record id='co2_faa_rf3_one' model='product.template'>
 
 			<field name='name'>LASER CO2 FRACCIONAL - Todo Rostro - Rejuvenecimiento Facial Grado 3 - 1</field>
@@ -34,36 +137,15 @@
 
 
 
-		<record id='co2_nec_rn1_one' model='product.template'>
-
-			<field name='name'>LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento Cuello Grado 1 - 1</field>
-			<field name='x_name_short'>co2_nec_rn1_one</field>
-
-			<field name='description'>Co2 Cuello Rejuv 1</field>
 
 
-
-			<field name='default_code'>101</field>
-			<field name='price'>5000</field>
-			<field name='x_price_vip'>2500</field>
-
-
-			<field name='type'>service</field>
-			<field name='x_treatment'>laser_co2</field>
-			<field name='x_zone'>neck</field>
-			<field name='x_pathology'>rejuvenation_neck_1</field>
-
-			<field name='x_time'></field>
-			<field name='x_sessions'>1</field>
-			<field name='x_family'>laser</field>
-			<field name='categ_id' ref="laser_co2"/>
-		</record>
 
 
 
 		<record id='co2_faa_st3_one' model='product.template'>
 
 			<field name='name'>LASER CO2 FRACCIONAL - Todo Rostro - Manchas Grado 3 - 1</field>
+
 			<field name='x_name_short'>co2_faa_st3_one</field>
 
 
@@ -307,6 +389,7 @@
 			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
+
 		<record id='co2_che_as4_one' model='product.template'>
 			<field name='type'>service</field>
 			<field name='x_name_short'>co2_che_as4_one</field>
@@ -323,6 +406,7 @@
 
 			<field name='categ_id' ref="laser_co2"/>
 		</record>
+
 
 		<record id='co2_faa_rf5_one' model='product.template'>
 			<field name='type'>service</field>
@@ -511,23 +595,6 @@
 			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
-		<record id='co2_nec_rn3_one' model='product.template'>
-			<field name='type'>service</field>
-			<field name='x_name_short'>co2_nec_rn3_one</field>
-			<field name='name'>LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento Cuello Grado 3 - 1</field>
-			<field name='x_treatment'>laser_co2</field>
-			<field name='x_zone'>neck</field>
-			<field name='x_pathology'>rejuvenation_neck_3</field>
-			<field name='price'>7000</field>
-
-			<field name='x_time'></field>
-			<field name='x_sessions'>1</field>
-			<field name='x_price_vip'>3500</field>
-			<field name='x_family'>laser</field>
-
-			<field name='categ_id' ref="laser_co2"/>
-		</record>
-
 		<record id='co2_fal_ke5_one' model='product.template'>
 			<field name='type'>service</field>
 			<field name='x_name_short'>co2_fal_ke5_one</field>
@@ -632,23 +699,6 @@
 			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
-		<record id='co2_nec_rn4_one' model='product.template'>
-			<field name='type'>service</field>
-			<field name='x_name_short'>co2_nec_rn4_one</field>
-			<field name='name'>LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento Cuello Grado 4 - 1</field>
-			<field name='x_treatment'>laser_co2</field>
-			<field name='x_zone'>neck</field>
-			<field name='x_pathology'>rejuvenation_neck_4</field>
-			<field name='price'>8000</field>
-
-			<field name='x_time'></field>
-			<field name='x_sessions'>1</field>
-			<field name='x_price_vip'>4000</field>
-			<field name='x_family'>laser</field>
-
-			<field name='categ_id' ref="laser_co2"/>
-		</record>
-
 		<record id='co2_fal_st2_one' model='product.template'>
 			<field name='type'>service</field>
 			<field name='x_name_short'>co2_fal_st2_one</field>
@@ -683,22 +733,6 @@
 			<field name='categ_id' ref="laser_co2"/>
 		</record>
 
-		<record id='co2_nec_rn2_one' model='product.template'>
-			<field name='type'>service</field>
-			<field name='x_name_short'>co2_nec_rn2_one</field>
-			<field name='name'>LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento Cuello Grado 2 - 1</field>
-			<field name='x_treatment'>laser_co2</field>
-			<field name='x_zone'>neck</field>
-			<field name='x_pathology'>rejuvenation_neck_2</field>
-			<field name='price'>6000</field>
-
-			<field name='x_time'></field>
-			<field name='x_sessions'>1</field>
-			<field name='x_price_vip'>3000</field>
-			<field name='x_family'>laser</field>
-
-			<field name='categ_id' ref="laser_co2"/>
-		</record>
 
 		<record id='co2_fal_ke1_one' model='product.template'>
 			<field name='type'>service</field>

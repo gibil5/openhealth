@@ -1,5 +1,19 @@
 
 
+
+
+# ----------------------------------------------------------- Deprecated ------------------------------------------------------
+	# For Admin
+	#@api.multi
+	#def state_force(self):  
+	#	if self.state in ['sale', 'cancel']: 
+	#		self.state = 'editable'
+	#	elif self.state == 'editable': 
+	#		self.state = 'sale'
+
+
+
+
 # ----------------------------------------------------------- Product Selector ------------------------------------------------------
 
 		#x_type = context['x_type']

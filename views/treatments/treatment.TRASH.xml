@@ -137,3 +137,149 @@
 										name="%(order_form_tre_action)d"	
 										name="%(sale_cons_list_action)d"	
 -->
+
+
+
+
+<!--
+10 Sep 2018 
+-->
+
+
+<!--
+							class="oe_highlight oe_right"
+-->
+						<!-- Clear --> 
+
+<!--
+						<button 
+							type="object" 
+							class="oe_highlight"
+							
+							name="clear" 
+							
+							string="Clear" 
+							
+							groups="openhealth.roots"
+						/>
+-->
+
+
+
+
+						<!-- Create Appointment --> 
+<!--
+											'search_default_doctor': physician,
+
+							type="action" 
+							name="%(oeh_medical_appointment_action_tree_confirmed)d"	
+							context="{									
+											'default_patient': patient, 
+											'default_doctor' : physician, 
+											'default_appointment_date': start_date, 
+											'default_treatment': active_id, 
+											'default_x_target' : 'doctor', 
+											'default_x_type': 'consultation', 
+									}" 											
+							name="create_appointment_nex" 
+
+							groups="openhealth.roots,openhealth.reception,openhealth.managers,openhealth.directors"
+-->
+
+
+
+
+
+
+
+<!-- Ex Manual --> 
+
+
+<!--
+Add Procedures 
+-->
+						<!--
+							attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
+							attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
+						<button 
+							type="object" 
+
+							class="oe_highlight"
+							
+							string="Proc. Adicionales" 
+							
+							name="toggle_add_procedures" 
+
+							states="controls"
+
+
+							groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
+						/>
+						-->
+
+
+<!--
+						<button 
+							type="object" 
+							class="oe_highlight"
+							string="RECOM." 
+							name="create_service" 
+
+							attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
+
+							groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
+						/>
+
+
+						<button 
+							type="object" 
+							name="create_order_pro" 
+							class="oe_highlight"
+							string="PRESUPUESTO" 
+
+							attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
+
+							groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
+						/>
+
+
+						<button 
+							type="object" 
+							class="oe_highlight"
+							name="create_procedure" 
+							string="PROC." 
+
+							attrs="{ 'invisible':[	('add_procedures','==',False), 	]}"
+
+							groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
+						/>
+-->
+
+
+
+
+
+
+						<!-- Update Patient --> 
+<!--
+						<button 
+							type="object" 
+							class="oe_highlight"
+							
+							name="update_patient" 
+
+							string="U" 
+						/>
+-->
+
+
+
+<!--
+								statusbar_visible="appointment, invoice_consultation, consultation, service, invoice_procedure, procedure, sessions, controls"
+
+								statusbar_visible="appointment, invoice_consultation, consultation, service, invoice_procedure, procedure, sessions, controls, done"
+-->
+
+
+
+

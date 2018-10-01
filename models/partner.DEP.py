@@ -1,8 +1,31 @@
 
 
+# 11 Sep 2018 
+
+# ----------------------------------------------------------- Print - Deprecated ------------------------------------------------------
+
+	#x_country_name = fields.Char(
+	#		readonly=False, 	
+
+			#compute='_compute_x_country_name', 
+	#	)
+	
+	#@api.multi
+	#@api.depends('country_id')
+	#def _compute_x_country_name(self):
+	#	print 'jx'
+	#	print 'Compute Country Name'
+	#	for record in self:
+	#		record.x_country_name = record.country_id.name 
+	#		print record.x_country_name
+
+
+
+
+
+
+
 # 23 Aug 2018 
-
-
 
 # ----------------------------------------------------------- Function ------------------------------------------------------
 	# Function 

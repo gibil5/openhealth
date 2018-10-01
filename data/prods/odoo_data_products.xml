@@ -1,25 +1,29 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
-	<data noupdate='1'>
+	<data>
+
+
+
+<!-- Data - Products -->
 
 
 
 
 		<!-- ACNECLEAN -->
 		<record id='acneclean' model='product.template'>
-			<field name='type'>product</field>
-			<field name='x_name_short'>acneclean</field>
 
 			<field name='name'>ACNECLEAN 50 GR</field>
+<!--
+			<field name='x_name_short'>pro_acneclean</field>
+-->
+			<field name='x_name_short'>acneclean</field>
 
+			<field name='type'>product</field>
 			<field name='default_code'>788</field>
-
 			<field name='price'>200.0</field>
-
 			<field name='standard_price'>200.0</field>
 			<field name='x_family'>topical</field>
 			<field name='x_price_vip'></field>
-
 			<field name='categ_id' ref="topical"/>
 		</record>
 
@@ -27,19 +31,42 @@
 
 		<!-- ACNETOPIC 200 ML -->
 		<record id='acnetopic_200ml' model='product.template'>
-			<field name='type'>product</field>
-			<field name='x_name_short'>acnetopic_200ml</field>
 
 			<field name='name'>ACNETOPIC 200 ML</field>
+<!--
+			<field name='x_name_short'>pro_acnetopic_200ml</field>
+-->
+			<field name='x_name_short'>acnetopic_200ml</field>
 
-			<field name='default_code'></field>
+			<field name='type'>product</field>
 
+			<field name='default_code'>694</field>
 			
-			<field name='x_family'>topical</field>
 			<field name='price'>120.0</field>
 			<field name='standard_price'>120.0</field>			
+			<field name='x_family'>topical</field>
 			<field name='x_price_vip'></field>
+			<field name='categ_id' ref="topical"/>
+		</record>
 
+
+		<!-- ACNETOPIC WASH -->
+		<record id='acne_topic_wash' model='product.template'>
+
+			<field name='name'>ACNETOPIC WASH</field>
+<!--
+			<field name='x_name_short'>pro_acnetopic_wash</field>
+-->
+			<field name='x_name_short'>acnetopic_wash</field>
+
+			<field name='type'>product</field>
+
+			<field name='default_code'>693</field>
+			
+			<field name='price'>200.0</field>
+			<field name='standard_price'></field>
+			<field name='x_family'>topical</field>
+			<field name='x_price_vip'></field>
 			<field name='categ_id' ref="topical"/>
 		</record>
 
@@ -48,44 +75,54 @@
 
 		<!-- ALOE VITAL -->
 		<record id='aloe_vital' model='product.template'>
-			<field name='type'>product</field>
-			<field name='x_name_short'>aloe_vital</field>
 
 			<field name='name'>ALOE VITAL</field>
+			<field name='x_name_short'>aloe_vital</field>
 
+			<field name='type'>product</field>
 			<field name='default_code'></field>
-
-
 			<field name='x_family'>topical</field>
 			<field name='price'>200.0</field>
 			<field name='standard_price'>200.0</field>
 			<field name='x_price_vip'></field>
-			
 			<field name='categ_id' ref="topical"/>
 		</record>
 
 
 		<!-- ANTIRROJECES -->
 		<record id='anti_red' model='product.template'>
-			<field name='type'>product</field>
-			<field name='x_name_short'>anti_red</field>
 
 			<field name='name'>ANTIRROJECES</field>
+			<field name='x_name_short'>anti_red</field>
 
+			<field name='type'>product</field>
 			<field name='default_code'>658</field>
-
-			
 			<field name='x_family'>topical</field>
 			<field name='price'>150.0</field>
 			<field name='standard_price'>150.0</field>
 			<field name='x_price_vip'></field>
-
 			<field name='categ_id' ref="topical"/>
 		</record>
 
 
 
 
+		<!-- Bepanthen -->
+		<record id='bepanthen' model='product.template'>
+
+			<field name='name'>BEPANTHEN</field>
+			<field name='x_name_short'>bepanthen</field>
+			
+			<field name='default_code'>395</field>
+			<field name='type'>product</field>
+			<field name='description'></field>
+			<field name='price'></field>
+			<field name='standard_price'></field>
+			<field name='x_price_vip'></field>
+			<field name='x_price_vip_return'>4</field>
+			<field name='x_family'>topical</field>
+			<field name='categ_id' ref="topical"/>
+		</record>
 
 
 
@@ -94,38 +131,28 @@
 
 		<!-- CREMA CON VITAMINAS -->
 		<record id='cream_vitamins' model='product.template'>
-			<field name='type'>product</field>
-			<field name='x_name_short'>cream_vitamins</field>
-
 
 			<field name='name'>CREMA CON VITAMINAS</field>
+			<field name='x_name_short'>cream_vitamins</field>
 
+			<field name='type'>product</field>
 			<field name='default_code'>786</field>
-
-
 			<field name='x_family'>topical</field>
 			<field name='price'>200.0</field>
 			<field name='standard_price'>200.0</field>
 			<field name='x_price_vip'></field>
-			
 			<field name='categ_id' ref="topical"/>
 		</record>
-
 
 
 		<!-- CREMA CON VITAMINAS A, E, C -->
 		<record id='cream_vitamins_aec' model='product.template'>
 
-			<field name='type'>product</field>
-			
-			<field name='x_name_short'>cream_vitamins_aec</field>
-			
-
 			<field name='name'>CREMA CON VITAMINAS A, E, C</field>
+			<field name='x_name_short'>cream_vitamins_aec</field>
 
+			<field name='type'>product</field>
 			<field name='default_code'>655</field>
-
-
 			<field name='x_family'>topical</field>			
 			<field name='price'>200.0</field>
 			<field name='standard_price'>200.0</field>
@@ -135,23 +162,18 @@
 		</record>
 
 
-
-
-
 		<!-- DERMATOPIC LOCION 120 ML -->
 		<record id='dermatopic_lotion_120ml' model='product.template'>
-			<field name='type'>product</field>
-			<field name='x_name_short'>dermatopic_lotion_120ml</field>
 
 			<field name='name'>DERMATOPIC LOCION 120 ML</field>
-			
-			<field name='default_code'>628</field>
+			<field name='x_name_short'>dermatopic_lotion_120ml</field>
 
+			<field name='type'>product</field>			
+			<field name='default_code'>628</field>
 			<field name='x_family'>topical</field>			
 			<field name='price'>80.0</field>
 			<field name='standard_price'>80.0</field>
 			<field name='x_price_vip'></field>
-
 
 			<field name='categ_id' ref="topical"/>
 		</record>
@@ -160,13 +182,12 @@
 
 		<!-- DERMATOPIC SULFUR 90 GR -->
 		<record id='dermatopic_sulfur_90gr' model='product.template'>
-			<field name='type'>product</field>
-			<field name='x_name_short'>dermatopic_sulfur_90gr</field>
 
 			<field name='name'>DERMATOPIC SULFUR 90 GR</field>
-			
-			<field name='default_code'>629</field>
+			<field name='x_name_short'>dermatopic_sulfur_90gr</field>
 
+			<field name='type'>product</field>			
+			<field name='default_code'>629</field>
 			<field name='x_family'>topical</field>			
 			<field name='price'>80.0</field>
 			<field name='standard_price'>80.0</field>
@@ -183,13 +204,12 @@
 
 		<!-- DESPIGMENTANTE AHA -->
 		<record id='depigmentation_aha' model='product.template'>
-			<field name='type'>product</field>
-			<field name='x_name_short'>depigmentation_aha</field>
 
 			<field name='name'>DESPIGMENTANTE AHA</field>
-			
-			<field name='default_code'>668</field>
+			<field name='x_name_short'>depigmentation_aha</field>
 
+			<field name='type'>product</field>			
+			<field name='default_code'>668</field>
 			<field name='x_family'>topical</field>
 			<field name='x_price_vip'></field>			
 			<field name='price'>200.0</field>
@@ -199,17 +219,14 @@
 		</record>
 
 
-
-
 		<!-- DESPIGMENTANTE BF-D8 -->
 		<record id='depigmentation_bfd8' model='product.template'>
-			<field name='type'>product</field>
-			<field name='x_name_short'>depigmentation_bfd8</field>
 
 			<field name='name'>DESPIGMENTANTE BF-D8</field>
-			
-			<field name='default_code'></field>
+			<field name='x_name_short'>depigmentation_bfd8</field>
 
+			<field name='type'>product</field>			
+			<field name='default_code'></field>
 			<field name='x_family'>topical</field>
 			<field name='x_price_vip'></field>
 			<field name='price'>200.0</field>
@@ -219,21 +236,30 @@
 		</record>
 
 
+		<!-- DESPIGMENTANTE GLI-KO -->
+		<record id='depigmentation_gliko' model='product.template'>
 
+			<field name='name'>DESPIGMENTANTE GLI-KO</field>
+			<field name='x_name_short'>depigmentation_gliko</field>
 
-
-
+			<field name='type'>product</field>			
+			<field name='default_code'>393</field>
+			<field name='x_family'>topical</field>
+			<field name='x_price_vip'></field>
+			<field name='price'>300.0</field>
+			<field name='standard_price'>300.0</field>
+			<field name='categ_id' ref="topical"/>
+		</record>
 
 
 		<!-- DESPIGMENTANTE HQ -->
 		<record id='depigmentation_hq' model='product.template'>
-			<field name='type'>product</field>
-			<field name='x_name_short'>depigmentation_hq</field>
 
 			<field name='name'>DESPIGMENTANTE HQ</field>
-			
-			<field name='default_code'></field>
+			<field name='x_name_short'>depigmentation_hq</field>
 
+			<field name='type'>product</field>			
+			<field name='default_code'></field>
 			<field name='x_family'>topical</field>		
 			<field name='x_price_vip'></field>
 			<field name='price'>200.0</field>
@@ -243,18 +269,14 @@
 		</record>
 
 
-
-
-
 		<!-- DESPIGMENTANTE SANTA TERESA -->
 		<record id='depigmentation_santa_teresa' model='product.template'>
-			<field name='type'>product</field>
-			<field name='x_name_short'>depigmentation_santa_teresa</field>
 
 			<field name='name'>DESPIGMENTANTE SANTA TERESA</field>
-			
-			<field name='default_code'></field>
+			<field name='x_name_short'>depigmentation_santa_teresa</field>
 
+			<field name='type'>product</field>			
+			<field name='default_code'></field>
 			<field name='x_family'>topical</field>
 			<field name='x_price_vip'></field>
 			<field name='price'>300.0</field>
@@ -264,17 +286,14 @@
 		</record>
 
 
-
-
 		<!-- DESPIGMENTANTE SIN HIDROQUINONA -->
 		<record id='depigmentation_no_hidroquinone' model='product.template'>
-			<field name='type'>product</field>
-			<field name='x_name_short'>depigmentation_no_hidroquinone</field>
 
 			<field name='name'>DESPIGMENTANTE SIN HIDROQUINONA</field>
-			
-			<field name='default_code'></field>
+			<field name='x_name_short'>depigmentation_no_hidroquinone</field>
 
+			<field name='type'>product</field>			
+			<field name='default_code'></field>
 			<field name='x_family'>topical</field>		
 			<field name='x_price_vip'></field>
 			<field name='price'>200.0</field>
@@ -288,16 +307,31 @@
 
 
 
+		<!-- Gasa de kit -->
+		<record id='gause' model='product.template'>
+
+			<field name='name'>GASA DE KIT</field>
+			<field name='x_name_short'>gause</field>
+
+			<field name='default_code'>419</field>
+			<field name='type'>product</field>
+			<field name='description'></field>
+			<field name='price'></field>
+			<field name='standard_price'></field>
+			<field name='x_price_vip'></field>
+			<field name='x_price_vip_return'>4</field>
+			<field name='categ_id' ref="topical"/>
+		</record>
+
 
 		<!-- HIDRATOPIC LOCION 120 ML -->
 		<record id='hidratopic_lotion_120ml' model='product.template'>
-			<field name='type'>product</field>
-			<field name='x_name_short'>hidratopic_lotion_120ml</field>
 
 			<field name='name'>HIDRATOPIC LOCION 120 ML</field>
-			
-			<field name='default_code'></field>
+			<field name='x_name_short'>hidratopic_lotion_120ml</field>
 
+			<field name='type'>product</field>			
+			<field name='default_code'></field>
 			<field name='x_family'>topical</field>
 			<field name='x_price_vip'></field>
 			<field name='price'>80.0</field>
@@ -307,18 +341,14 @@
 		</record>
 
 
-
-
 		<!-- KIT POST LASER -->
 		<record id='kit_post_laser' model='product.template'>
-			<field name='type'>product</field>
-			<field name='x_name_short'>kit_post_laser</field>
-			
+
 			<field name='name'>KIT POST LASER</field>
-			
+			<field name='x_name_short'>kit_post_laser</field>
+
+			<field name='type'>product</field>			
 			<field name='default_code'></field>
-
-
 			<field name='x_family'>kit</field>
 			<field name='x_price_vip'></field>
 			<field name='price'>150.0</field>
@@ -336,13 +366,12 @@
 
 		<!-- MASCARA ASTRINGENTE (LIQUIDO + POLVO) -->
 		<record id='mask_astringent_liquid_powder' model='product.template'>
-			<field name='type'>product</field>
-			<field name='x_name_short'>mask_astringent_liquid_powder</field>
 
 			<field name='name'>MASCARA ASTRINGENTE (LIQUIDO + POLVO)</field>
-			
-			<field name='default_code'></field>
+			<field name='x_name_short'>mask_astringent_liquid_powder</field>
 
+			<field name='type'>product</field>			
+			<field name='default_code'></field>
 			<field name='x_family'>topical</field>		
 			<field name='x_price_vip'></field>
 			<field name='price'>200.0</field>
@@ -353,16 +382,14 @@
 
 
 
-
 		<!-- >MASCARA ASTRINGENTE LIQUIDO -->
 		<record id='mask_astringent_liquid' model='product.template'>
-			<field name='type'>product</field>
-			<field name='x_name_short'>mask_astringent_liquid</field>
 
 			<field name='name'>MASCARA ASTRINGENTE LIQUIDO</field>
-			
-			<field name='default_code'></field>
+			<field name='x_name_short'>mask_astringent_liquid</field>
 
+			<field name='type'>product</field>
+			<field name='default_code'></field>
 			<field name='x_family'>topical</field>		
 			<field name='x_price_vip'></field>
 			<field name='price'>100.0</field>
@@ -373,16 +400,14 @@
 
 
 
-
 		<!-- MASCARA ASTRINGENTE POLVO -->
 		<record id='mask_astringent_powder' model='product.template'>
-			<field name='type'>product</field>
-			<field name='x_name_short'>mask_astringent_powder</field>
 
 			<field name='name'>MASCARA ASTRINGENTE POLVO</field>
-			
-			<field name='default_code'></field>
+			<field name='x_name_short'>mask_astringent_powder</field>
 
+			<field name='type'>product</field>			
+			<field name='default_code'></field>
 			<field name='x_family'>topical</field>	
 			<field name='x_price_vip'></field>
 			<field name='price'>100.0</field>
@@ -401,13 +426,12 @@
 
 		<!-- NCTF -->
 		<record id='nctf' model='product.template'>
-			<field name='type'>product</field>
-			<field name='x_name_short'>nctf</field>
 
 			<field name='name'>NCTF</field>
-			
-			<field name='default_code'>692</field>
+			<field name='x_name_short'>nctf</field>
 
+			<field name='type'>product</field>			
+			<field name='default_code'>692</field>
 			<field name='x_family'>topical</field>
 			<field name='x_price_vip'></field>
 			<field name='price'>800.0</field>
@@ -418,7 +442,36 @@
 
 
 
+		<!-- Notil -->
+		<record id='notil' model='product.template'>
 
+			<field name='name'>NOTIL</field>
+			<field name='x_name_short'>notil</field>
+
+			<field name='default_code'>469</field>
+			<field name='type'>product</field>
+			<field name='description'></field>
+			<field name='price'></field>
+			<field name='standard_price'></field>
+			<field name='x_price_vip'></field>
+			<field name='x_price_vip_return'>4</field>
+			<field name='categ_id' ref="topical"/>
+		</record>
+
+
+		<!-- OTHER -->
+		<record id='other' model='product.template'>
+
+			<field name='name'>OTROS</field>
+			<field name='x_name_short'>other</field>
+
+			<field name='type'>product</field>
+			<field name='default_code'></field>
+			<field name='x_treatment'>other</field>
+			<field name='x_family'>other</field>
+
+			<field name='categ_id' ref="topical"/>
+		</record>
 
 
 
@@ -428,13 +481,12 @@
 
 		<!-- PROTECTOR SOLAR< -->
 		<record id='solar_protector' model='product.template'>
-			<field name='type'>product</field>
-			<field name='x_name_short'>solar_protector</field>
 
 			<field name='name'>PROTECTOR SOLAR</field>
-			
-			<field name='default_code'>1</field>
+			<field name='x_name_short'>solar_protector</field>
 
+			<field name='type'>product</field>			
+			<field name='default_code'>1</field>
 			<field name='x_family'>topical</field>
 			<field name='x_price_vip'></field>
 			<field name='price'>200.0</field>
@@ -444,16 +496,14 @@
 		</record>
 
 
-
 		<!-- Q54 -->
 		<record id='q54' model='product.template'>
-			<field name='type'>product</field>
-			<field name='x_name_short'>q54</field>
 
 			<field name='name'>Q54</field>
-			
-			<field name='default_code'>533</field>
+			<field name='x_name_short'>q54</field>
 
+			<field name='type'>product</field>			
+			<field name='default_code'>533</field>
 			<field name='x_family'>topical</field>
 			<field name='x_price_vip'></field>
 			<field name='price'>350.0</field>
@@ -463,22 +513,54 @@
 		</record>
 
 
+		<!-- Redoxon -->	
+		<record id='redoxon' model='product.template'>
+
+			<field name='name'>REDOXON</field>
+			<field name='x_name_short'>redoxon</field>
+
+			<field name='default_code'>417</field>
+			<field name='type'>product</field>
+			<field name='description'></field>
+			<field name='price'></field>
+			<field name='standard_price'></field>
+			<field name='x_price_vip'></field>
+			<field name='x_price_vip_return'>4</field>
+			<field name='categ_id' ref="topical"/>
+		</record>
+
+
+		<!-- Suero Fisiológico -->	
+		<record id='serum' model='product.template'>
+
+			<field name='name'>SUERO FISIOLOGICO</field>
+			<field name='x_name_short'>serum</field>
+
+			<field name='default_code'>154</field>
+			<field name='type'>product</field>
+			<field name='description'></field>
+			<field name='price'></field>
+			<field name='standard_price'></field>
+			<field name='x_price_vip'></field>
+			<field name='x_price_vip_return'>4</field>
+			<field name='categ_id' ref="topical"/>
+		</record>
 
 
 
 
-		<!-- VIP CARD -->
-<!--
-			<field name='categ_id' ref="card"/>
--->
+
+
+
+
+
+		<!-- TARJETA VIP -->
 		<record id='vip_card' model='product.template'>
-			<field name='x_name_short'>vip_card</field>
 
 			<field name='name'>TARJETA VIP</field>
-			
+			<field name='x_name_short'>vip_card</field>
+
 			<field name='default_code'>495</field>
-
-
 			<field name='type'>product</field>
 			<field name='price'>300.0</field>			
 			<field name='standard_price'>0.0</field>
@@ -490,19 +572,14 @@
 
 
 
-
-
-
 		<!-- TRETINOINA -->
 		<record id='tretinoina' model='product.template'>
-			<field name='type'>product</field>
-			<field name='x_name_short'>tretinoina</field>
 
 			<field name='name'>TRETINOINA</field>
-			
+			<field name='x_name_short'>tretinoina</field>
+
+			<field name='type'>product</field>			
 			<field name='default_code'>413</field>
-
-
 			<field name='x_family'>topical</field>
 			<field name='x_price_vip'></field>
 			<field name='price'>200.0</field>
@@ -511,76 +588,6 @@
 			<field name='categ_id' ref="topical"/>
 		</record>
 
-
-
-
-
-		<!-- Token -->
-<!--
--->			
-		<record id='token_bis' model='product.template'>
-			<field name='type'>product</field>
-			<field name='name'>TOKEN</field>
-			<field name='description'></field>
-			<field name='x_name_short'>token_bis</field>
-			
-			<field name='default_code'>56</field>
-
-
-
-			<field name='price'>118</field>
-			<field name='standard_price'></field>
-			<field name='x_price_vip'>3</field>
-			<field name='x_price_vip_return'>4</field>
-			<field name='x_family'>topical</field>
-
-			<field name='categ_id' ref="topical"/>
-		</record>
-
-
-
-
-		<!-- Generic Product -->
-<!--		
--->
-		<record id='product_generic' model='product.template'>
-
-			<field name='type'>product</field>
-			
-			<field name='name'>Producto Genérico</field>
-			<field name='description'></field>
-			<field name='x_name_short'>generic_product</field>
-			<field name='default_code'>501</field>
-
-
-			<field name='price'>0.0</field>
-			<field name='standard_price'>0.0</field>
-			<field name='x_price_vip'></field>
-
-
-			<field name='categ_id' ref="legacy"/>
-		</record>
-
-
-		<!-- Generic Service -->
-<!--		
--->
-		<record id='service_generic' model='product.template'>
-			
-			<field name='type'>service</field>
-
-			<field name='name'>Servicio Genérico</field>
-			<field name='description'></field>
-			<field name='x_name_short'>generic_service</field>
-			<field name='default_code'>502</field>
-
-
-			<field name='price'>0.0</field>
-			<field name='standard_price'>0.0</field>
-			<field name='x_price_vip'></field>
-
-			<field name='categ_id' ref="legacy"/>
-		</record>
 
 
 	</data>

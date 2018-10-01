@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='utf-8'?>
+<openerp>
+	<data noupdate='0'>
+
+
+
+<!-- Data - Services - Cosmeto - DEP -->
+
+
+
+		<record id='tcr_boa_rwm' model='product.template'>
+
+			<field name='name'>DEP - LASER TRIACTIVE</field>
+			
+			<field name="sale_ok" eval="False" />
+			<field name="active" eval="False" />
+		</record>
+
+
+		<record id='tcr_boa_rwm_one' model='product.template'>
+
+			<field name='name'>DEP - LASER TRIACTIVE</field>
+			
+			<field name="sale_ok" eval="False" />
+			<field name="active" eval="False" />
+		</record>
+
+
+		<record id='tcr_boa_rwm_six' model='product.template'>
+			<field name='name'>DEP - LASER TRIACTIVE</field>
+			<field name="sale_ok" eval="False" />
+			<field name="active" eval="False" />
+		</record>
+
+
+
+
+
+
+
+		<record id='tca_fdn_rfa_30m_one' model='product.template'>
+			<field name='name'>DEP - LASER TRIACTIVE</field>
+			<field name="sale_ok" eval="False" />
+			<field name="active" eval="False" />
+		</record>
+
+
+		<record id='tca_fdn_rfa_30m_six' model='product.template'>
+			<field name='name'>DEP - LASER TRIACTIVE</field>
+			<field name="sale_ok" eval="False" />
+			<field name="active" eval="False" />
+		</record>
+
+
+		<record id='tca_fdn_rfa_30m' model='product.template'>
+			<field name='name'>DEP - LASER TRIACTIVE</field>
+			<field name="sale_ok" eval="False" />
+			<field name="active" eval="False" />
+		</record>
+
+
+
+
+	</data>
+</openerp>

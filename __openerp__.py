@@ -15,18 +15,19 @@
 	'description': """
 
 
-		7 Sep 2018
+		1 Oct 2018
 
 
 		Fulcrum (17 Mar 2018 - 13 963)
 		
-		Code without Tests is broken by design.
+		Code without Tests is broken by design. Jacob Kaplan-Moss
+		
 		My Goal is to achieve Complete Coverage. 
 
 		Stability by Design. Simplicity by Abstraction. 
 
 		La Estabilidad se consigue por la disminución no por el aumento. 
-		Dieter Rams is Less but Better. 
+		Dieter Rams: Less but Better. 
 
 		More configuration and less programming, near than zero hacking.  
 
@@ -34,13 +35,13 @@
 
 
 
-		EMR - Min - Docean - Github - Travis - Coverage - Proliant - User Stories - Cron Pg Dump - Unit Testing - Less but Better 
-		- Statistical - Machine Learning - Object Oriented - Fulcrum - Coverage Testing \n
+		EMR - Min - Docean - Github - Travis - Coverage - Proliant - User Stories - Cron Pg Dump  - 
+		Statistical - Machine Learning - Object Oriented - Fulcrum - Coverage Testing - Unit Testing - Electronic Billing - Name Constraints\n
 
-		Deprecated: Ooor, Testcafe, Auto Backup. 
+		Deprecated: Ooor, Testcafe, Auto-backup, Inventory. 
 
 		Created: 	 	11 Sep 2016
-		Last up: 		24 Aug 2018 
+		Last up: 		10 Sep 2018 
 
 		---
 
@@ -48,16 +49,18 @@
 		Additional modules:
 			- MRP (Manufacturing Ressource Planning). 
 			- Purchase. 
+			- Multi prices. 
 
 
 		External:
-			- Oehealth. 
-			- Base multi image. 
-			- Auto backup. 
+			- Oehealth 
+			- Base multi image
+			- Auto backup
 
 		Python:
-			- Unidecode. 
-			- pysftp.
+			- Unidecode
+			- pysftp
+
 	""",
 
 	'author': "DataMetrics",
@@ -171,7 +174,6 @@
 
 
 		# ----------------------------------------------------------- Actions ------------------------------------------------------
-		'reports/patient.xml',
 		'views/patients/patient_actions.xml',
 
 
@@ -210,7 +212,16 @@
 		'views/management/management_family_line.xml',
 		'views/management/management_order_line.xml',
 		'views/management/management_doctor_line.xml',
+
+
+		'views/management/electronic_order.xml',
+		'views/management/electronic_line.xml',
+		
+		'views/coders/coder.xml',
+
+		
 		'views/management/management.xml',
+		'views/management/management_actions.xml',
 
 
 		# Exceptions 
@@ -234,16 +245,23 @@
 		# ----------------------------------------------------------- Reports ------------------------------------------------------
 
 		# Patient
-		'reports/patient_consultation.xml',
-		'reports/patient_sessions.xml',
-		'reports/patient_controls.xml',
+		#'reports/patient.xml',
+		'reports/report_patient.xml',
+
+		#'reports/patient_consultation.xml',
+		#'reports/patient_sessions.xml',
+		#'reports/patient_controls.xml',
+
+
 
 		# Formats
 		'reports/paper_format.xml',
 
+
 		# Ticket 
 		'reports/report_ticket_invoice.xml',
 		'reports/report_ticket_receipt.xml',
+
 		
 		# New Tickets 
 		'reports/report_ticket_receipt_nex.xml',
@@ -288,13 +306,7 @@
 		'data/base_data_physicians_new.xml',				
 
 
-		# Pricelists 
-		#'data/pricelist_quick.xml',						
-		'data/pricelists.xml',
-		'data/pricelist_items_laser.xml',
-		'data/pricelist_items_med_cos.xml',
 
-		'data/pricelist_items_quick.xml',
 
 
 		# Suppliers 
@@ -323,15 +335,33 @@
 
 		'data/prods/odoo_data_products.xml',
 		'data/prods/odoo_data_products_new.xml',
+		'data/prods/odoo_data_products_dep.xml',
+
+
 
 		'data/prods/odoo_data_services_co2.xml',
+		
 		'data/prods/odoo_data_services_exc.xml',
 		'data/prods/odoo_data_services_m22.xml',
+
 		'data/prods/odoo_data_services_med.xml',
+		'data/prods/odoo_data_services_med_dep.xml',
+
 		'data/prods/odoo_data_services_consult.xml',
+
+
 		'data/prods/odoo_data_services_cos.xml',
+		'data/prods/odoo_data_services_cos_dep.xml',
 
 
+
+		# Pricelists 
+		#'data/pricelist_quick.xml',						
+		'data/pricelists/pricelists.xml',
+
+		'data/pricelists/pricelist_items_laser.xml',
+		'data/pricelists/pricelist_items_med_cos.xml',
+		'data/pricelists/pricelist_items_quick.xml',
 
 
 
@@ -361,7 +391,12 @@
 
 		# Orders
 		'views/orders/order_line.xml',
+
+
 		'views/orders/order.xml',
+		'views/orders/order_actions.xml',
+
+		
 		'views/orders/order_admin.xml',
 		'views/orders/order_search.xml',
 
@@ -418,9 +453,12 @@
 
 		# Patients 
 		'views/patients/patient.xml',
-
-
 		'views/patients/patient_search.xml',
+
+
+
+		# Containers 
+		'views/containers/container.xml',
 
 
 
@@ -436,7 +474,13 @@
 
 		# Products
 		'views/products/product.xml',		
-		'views/products/product_actions.xml',		
+		'views/products/product_actions.xml',				
+
+		'views/products/product_product.xml',		
+		#'views/products/product_category.xml',		
+		#'views/products/product_pricelist.xml',		
+		#'views/products/purchase_order.xml',		
+
 
 
 		# Cards 

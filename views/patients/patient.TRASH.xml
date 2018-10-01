@@ -203,3 +203,48 @@ Cosmetology
 						-->
 
 
+
+
+<!--
+10 Sep 2018 
+-->
+
+								<!--
+								<field name="x_sex_name" 	/>
+								<field string='Estado civil'  name="marital_status" required="1"/>									
+
+								<group  	colors="red:x_state!='incomplete';green:x_state!='active';"  >
+								</group>
+								<field name="vspace"    />
+								<field name="comment"    />
+								-->
+
+
+
+<!--
+								<field name="x_state"    colors="red" 	groups="openhealth.roots"	/>
+-->
+
+
+
+<!--
+								<field name="x_allergies"		required="0"/>								
+								<field name="x_first_contact"	required="0"/>
+
+Relax !
+-->
+
+<!--
+								<field name="x_first_contact"	required="1"/>
+-->
+
+
+<!--
+							<group>
+								<field name="category_id"    	 widget="many2many_tags" />
+								<field string='Blood Type' name="blood_type"/>
+								<field string='Rh'  name="rh"/>
+								<field string='Family Physician'  name="doctor" options="{'no_create': True}"/>
+								<field string='Responsible' name="oeh_patient_user_id" options="{'no_create': True}"/>
+							</group>
+-->

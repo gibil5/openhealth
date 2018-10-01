@@ -263,3 +263,61 @@
 					/>
 -->
 
+
+
+
+
+
+
+
+<!--
+7 Sep 2018
+-->
+
+
+<!-- Daily --> 
+<!--
+		<menuitem 	id="sales_reporting_daily_menu" 
+					parent="main_reporting_sales_menu"
+					sequence="1"
+					
+					name="Ventas del Día"			
+
+					groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.managers,openhealth.directors"
+				/>
+
+
+
+
+				<menuitem 	id="sales_reporting_sales_daily_prods" 
+							parent="sales_reporting_daily_menu"
+							sequence="1"
+
+							name="Productos" 
+					
+							action="action_order_report_day_prods"
+						/>
+
+
+
+				<menuitem 	id="sales_reporting_sales_daily_servs" 
+							parent="sales_reporting_daily_menu"
+							sequence="2"
+
+							name="Servicios" 
+					
+							action="action_order_report_day_servs"
+						/>
+
+
+
+				<menuitem 	id="sales_reporting_sales_daily_all" 
+							parent="sales_reporting_daily_menu"
+							sequence="3"
+
+							name="Todo" 
+
+							action="action_order_report_day_all"
+						/>
+-->
+

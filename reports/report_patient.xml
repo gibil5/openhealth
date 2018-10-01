@@ -2,14 +2,17 @@
 	<data>
 
 
+
+
+<!-- Report - HC --> 
 <report
 	string="HC - Hoja de Filiacion"
-
 	id="report_patient"
-
 	model="oeh.medical.patient"
 	report_type="qweb-pdf"
+	
 	name="openhealth.report_patient_view"            
+	
 	file="oeh_medical_patient.report_patient"
 	/>
 
@@ -90,7 +93,10 @@
 
 <tr>
 <th>País de Residencia:</th>
+<!--
 <th><t t-esc="doc.x_country_name"/></th>
+-->
+<th><t t-esc="doc.country_id.name"/></th>
 </tr>
 
 <tr>
@@ -121,7 +127,7 @@
 
 <tr>
 <th>Grado de Instrucción:</th>
-<th><t t-esc="doc.x_education_level"/></th>
+<th><t t-esc="doc._dic[doc.x_education_level]"/></th>
 </tr>
 
 <tr>
@@ -141,12 +147,12 @@
 
 <tr>
 <th>Teléfono Celular:</th>
-<th><t t-esc="doc.phone_1"/></th>
+<th><t t-esc="doc.mobile"/></th>
 </tr>
 
 <tr>
 <th>Teléfono Fijo:</th>
-<th><t t-esc="doc.phone_2"/></th>
+<th><t t-esc="doc.phone"/></th>
 </tr>
 
 <tr>

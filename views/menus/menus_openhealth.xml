@@ -7,38 +7,87 @@
 <!-- Open Health -->
 		<menuitem 	id="main_openhealth_menu" 
 					sequence="1"
+
 					name="Open Health"
 					
 					groups="openhealth.roots"
 			/>
 
-		<!-- Open Health -->
+
+
+
+<!-- Content -->
+		<menuitem 	id="openhealth_container_menu" 
+					parent="main_openhealth_menu"
+
+					sequence="0"
+
+					name="Container"
+				/>
+
+		<!-- Container --> 
+		<menuitem id="content_menu" name="Container" parent="openhealth_container_menu"
+
+				action="container_list_action"
+			/>
+
+
+
+
+
+
+
+<!-- Coder -->
 		<menuitem 	id="openhealth_menu" 
-					name="Open Health"
-					parent="main_openhealth_menu"/>
+					parent="main_openhealth_menu"
+
+					sequence="1"
+
+					name="Coder"
+				/>
 
 
 
 
 <!-- Dev -->
 
+		<!-- Coder - Product --> 
+		<menuitem id="coder_product_menu" name="Product" parent="openhealth_menu"
+
+				action="coder_product_list_action"
+			/>
+
+
+		<!-- Coder - Service --> 
+		<menuitem id="coder_service_menu" name="Service" parent="openhealth_menu"
+
+				action="coder_service_list_action"
+
+			/>
+
+
+		<!-- Coder - All --> 
+		<menuitem id="coder_all_menu" name="All" parent="openhealth_menu"
+
+				action="coder_list_action"
+
+			/>
+
+
+
+
+
 		<!-- Pricelist --> 
-		<menuitem id="pricelist_menu" name="Pricelist" parent="openhealth_menu"
-
-				action="pricelist_list_action"
-
-			/>
-
-
-
 		<!-- Pricelist Item --> 
-		<menuitem id="pricelist_item_menu" name="Pricelist Item" parent="openhealth_menu"
-
-				action="pricelist_item_list_action"
-			
+		<!--
+		<menuitem id="pricelist_menu" name="Pricelist" parent="openhealth_menu"
+				action="pricelist_list_action"
 			/>
 
-
+		<menuitem id="pricelist_item_menu" name="Pricelist Item" parent="openhealth_menu"
+				action="pricelist_item_list_action"
+			/>
+		-->
 
 
 	</data>

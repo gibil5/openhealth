@@ -167,6 +167,11 @@
 			
 					<field name="name"/>
 
+<!--
+					<field name="patient_id"/>
+					<field name="x_test"/>
+-->
+
 					<field name="x_dni"/>
 
 					<field name="write_date"/>

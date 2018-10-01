@@ -74,16 +74,6 @@ groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.c
 					/>
 
 
-			<!-- Legacy --> 			
-			<menuitem 	id="sales_invoice_legacy_menu" 
-						name="Legacy" 
-						parent="sales_menu"
-						sequence="3"
-						
-						action="sale_legacy_list_action"
-
-						groups="openhealth.roots"
-					/>
 
 
 			<!-- Anulados --> 			
@@ -107,8 +97,23 @@ groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.c
 
 
 
+			<!-- Legacy --> 			
+<!--
+			<menuitem 	id="sales_invoice_legacy_menu" 
+						name="Legacy" 
+						parent="sales_menu"
+						sequence="3"
+						
+						action="sale_legacy_list_action"
+
+						groups="openhealth.roots"
+					/>
+-->
+
 
 			<!-- Delta --> 			
+			<!-- Checksum --> 			
+<!--
 			<menuitem 	id="sales_all_delta_menu" 
 						name="Delta" 
 						parent="sales_menu"
@@ -118,7 +123,6 @@ groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.c
 						/>
 
 
-			<!-- Checksum --> 			
 			<menuitem 	id="sales_all_checksum_menu" 
 						name="Checksum" 
 						parent="sales_menu"
@@ -126,7 +130,7 @@ groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.c
 
 						action="order_list_checksum_action"
 						/>
-
+-->
 
 
 

@@ -8,12 +8,71 @@
 
 
 
-		<!-- Form Action -->
-		<record model="ir.actions.act_window" id="treatment_form_action">
-			<field name="name">Tratamientos 1</field>
+		<!-- Treatment List -->
+		<record model="ir.actions.act_window" id="treatment_list_action">
+			<field name="name">Tratamientos</field>
 			<field name="res_model">openhealth.treatment</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
+            <field name="context">{}</field>            
+
+			<field name="domain">[
+										('physician', '!=', False),
+								]
+			</field>
+
+			<field name="limit">20</field>
+
+            <field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first treatment
+				</p>
+			</field>
+		</record>
+
+
+
+		<!-- Treatment - Inactive -->
+			<record model="ir.actions.act_window" id="treatment_inactive_list_action">
+			<field name="name">Tratamientos Inactivos</field>
+			<field name="res_model">openhealth.treatment</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+            <field name="context">{}</field>            
+
+			<field name="domain">[
+										('active', '=', False),
+								]
+			</field>
+
+			<field name="limit">40</field>
+
+            <field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first treatment
+				</p>
+			</field>
+		</record>
+
+
+
+
+
+
+
+
+
+
+
+		<!-- Form Action - By Patient -->
+<!--
+-->		
+		<record model="ir.actions.act_window" id="treatment_form_action">
+			<field name="name">Tratamientos</field>
+			<field name="res_model">openhealth.treatment</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
 <!--
 			<field name="context">{
 										'default_x_target': 'doctor',
@@ -22,7 +81,31 @@
 									}
 			</field>
 -->
+
+
+
+
+		<!-- Treatment - Legacy -->
+<!--
+			<record model="ir.actions.act_window" id="treatment_legacy_list_action">
+			<field name="name">Tratamientos Legacy</field>
+			<field name="res_model">openhealth.treatment</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+            <field name="context">{}</field>            
+
+			<field name="domain">[
+										('physician', '=', False),
+								]
+			</field>
+
+            <field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first treatment
+				</p>
+			</field>
 		</record>
+-->
 
 
 	</data>

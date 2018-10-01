@@ -4,12 +4,230 @@
 # 	Can not be Unit-tested (depends on a third-party library: Odoo). 
 # 
 #	Created: 			14 Aug 2018
-# 	Last up: 	 		 5 Sep 2018
+# 	Last up: 	 		22 Sep 2018
 #
 import datetime
 import time_funcs
 import lib
 import user 
+
+
+# ----------------------------------------------------------- Remove Patient  ------------------------------------------------------
+def remove_patient(self, name):
+	print 
+	print 'Remove Patient'
+	print name 
+
+
+	# Unlink Patient
+	patients = self.env['oeh.medical.patient'].search([
+															('name', '=', name), 
+														],).unlink()
+
+
+	# Unlink Partner 
+	partners = self.env['res.partner'].search([
+														('name', '=', name), 
+													],).unlink()
+
+
+	# Unlink - Card
+ 	cards = self.env['openhealth.card'].search([
+														('patient_name', '=', name), 	
+													],)
+
+ 	for card in cards: 
+ 		card.unlink()
+
+
+
+
+
+# ----------------------------------------------------------- Create Patient  ------------------------------------------------------
+# Create Services - For Treatment
+def create_patient(self, container_id, test_case, name, sex, address, id_doc_type, id_doc, ruc=False, firm=False, doctor_id=False, name_last='', name_first='', id_code=False, dni=False):
+	print
+	print 'Create Patient'
+	print self 
+	print name 
+
+
+ 	# Clear 
+ 	remove_patient(self, name)
+
+
+	# Init
+	street = 	address.split(',')[0]
+	street2_char = address.split(',')[1]
+	city = 		address.split(',')[2]
+
+
+
+	# Create Patient 
+	if id_code != False: 	# With Id Code - Nr Historia
+
+		#patient = self.env['oeh.medical.patient'].create({
+		patient = self.patient_ids.create({
+															'name': 	name,
+
+															'x_last_name': name_last, 
+															'x_first_name': name_first, 
+															
+															'sex': 		sex, 
+															'street': 	street, 
+															'street2_char': 	street2_char, 
+															'city': 	city, 
+															'x_ruc': 	ruc, 
+															'x_firm': 	firm, 
+															'x_first_contact': 'none', 
+															'x_id_doc_type':	id_doc_type,
+															'x_id_doc':			id_doc,  
+
+															'x_test': 	True, 
+															'x_test_case': 	test_case, 
+
+															'x_id_code':		id_code,  
+															'x_dni':		dni,  
+
+															'container_id': 	container_id, 
+												})
+
+	else: 
+
+		#patient = self.env['oeh.medical.patient'].create({
+		patient = self.patient_ids.create({
+															'name': 	name,
+
+															'x_last_name': name_last, 
+															'x_first_name': name_first, 
+															
+															'sex': 		sex, 
+															'street': 	street, 
+															'street2_char': 	street2_char, 
+															'city': 	city, 
+															'x_ruc': 	ruc, 
+															'x_firm': 	firm, 
+															'x_first_contact': 'none', 
+															'x_id_doc_type':	id_doc_type,
+															'x_id_doc':			id_doc,  
+
+															'x_test': 	True, 
+															'x_test_case': 	test_case, 
+
+															'x_dni':		dni,  
+
+															'container_id': 	container_id, 
+												})
+
+
+	print patient
+
+
+
+
+
+	# Treatment - Create  
+	if doctor_id != False: 
+		chief_complaint = 'acne_active'
+		treatment = patient.treatment_ids.create({
+													'patient': 			patient.id, 	
+													'physician': 		doctor_id, 
+													'chief_complaint': 	chief_complaint,
+			})
+
+	# Services - Create  
+	#ret = cre.create_services(self, treatment)
+
+	return patient
+
+
+
+
+
+
+# ----------------------------------------------------------- Create Services  ------------------------------------------------------
+# Create Services - For Treatment
+def create_services(self, treatment):
+	print
+	print 'Create Services'
+
+	# Create Services (Recoms)
+
+
+	# Product
+	service_id = user.get_product(self, 'acneclean')
+	service_product = treatment.service_product_ids.create({
+														'service': 		service_id, 
+														'treatment': 	treatment.id, 
+			})		
+	#print service_product
+
+
+	# Co2
+	service_id = user.get_product(self, 'co2_nec_rn1_one')
+
+	#zone = 'neck'
+	#pathology = 'rejuvenation_neck_1'
+
+	service_co2 = treatment.service_co2_ids.create({
+														'service': 		service_id, 
+														#'zone': 		zone, 
+														#'pathology': 	pathology, 
+														'treatment': 	treatment.id, 
+			})
+	#print service_co2
+
+
+
+
+	# Exc 
+	service_id = user.get_product(self, 'exc_bel_alo_15m_one')
+
+	service_exc = treatment.service_excilite_ids.create({
+															'service': 		service_id, 
+															'treatment': 	treatment.id, 
+		})
+	#print service_exc
+
+
+
+
+	# Ipl 
+	service_id = user.get_product(self, 'ipl_bel_dep_15m_six')
+
+	service_ipl = treatment.service_ipl_ids.create({
+										'service': 		service_id, 
+										'treatment': 	treatment.id, 
+		})
+	#print service_ipl
+
+
+
+
+	# Ndyag 
+	service_id = user.get_product(self, 'ndy_bol_ema_15m_six')
+
+	service_ndyag = treatment.service_ndyag_ids.create({
+										'service': 		service_id, 
+										'treatment': 	treatment.id, 
+		})
+	#print service_ndyag
+
+
+
+	# Quick
+	service_id = user.get_product(self, 'quick_neck_hands_rejuvenation_1')
+
+	service_quick = treatment.service_quick_ids.create({
+														'service': 		service_id, 
+														#'patient': 		patient_2.id, 
+														#'physician': 	treatment.physician.id, 
+														'treatment': 	treatment.id, 
+			})
+	#print service_quick
+
+
+	return 0 
 
 
 
@@ -56,6 +274,13 @@ def create_order(self, target):
 	
 
 
+# Update Patient 
+		if self.patient.x_id_doc in [False, '']: 
+			if self.patient.x_dni not in [False, '']: 
+		
+				self.patient.x_id_doc_type = 'dni'
+
+				self.patient.x_id_doc = self.patient.x_dni 
 
 
 
@@ -66,15 +291,18 @@ def create_order(self, target):
 													'state':'draft',
 													'x_doctor': doctor_id,	
 													'x_family': target, 
-													'x_dni': self.partner_id.x_dni,	
 													'x_ruc': self.partner_id.x_ruc,
-
-													#'pricelist_id': pl_id, 
 													'pricelist_id': pl.id, 
 
+													'x_dni': self.partner_id.x_dni,	
+
+
+													'x_id_doc': self.patient.x_id_doc,	
+													'x_id_doc_type': self.patient.x_id_doc_type,	
+
+
 													'treatment': self.id,
-												}
-											)
+												})
 
 
 # Create order lines 

@@ -355,3 +355,21 @@
 
 
 
+# 8 Sep 2018 
+
+		#name_shorts = [	
+		#					'acneclean', 				# Product
+		#					'vip_card', 				# Product 
+		#					'quick_neck_hands_rejuvenation_1',	# Quick
+		#					'co2_nec_rn1_one',					# Co2
+		#					'exc_bel_alo_15m_one',				# Exc
+		#					'ipl_bel_dep_15m_six',				# Ipl
+		#					'ndy_bol_ema_15m_six',				# Ndyag 
+		#					'bot_1zo_rfa_one', 			# Medical
+		#					'car_bod_rfa_30m_six', 		# Cosmeto
+		#			]
+
+
+
+
+		

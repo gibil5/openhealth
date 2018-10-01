@@ -1610,3 +1610,26 @@
 		
 
 	# action_confirm_nex
+
+
+
+
+
+# 8 Sep 2018 
+
+# Assert 
+
+		#print 'total_vip: ', total_vip
+			#elif line.product_id.type in ['service'] and price_vip != 0: 
+				#total_vip = price_vip * qty 		+ total_vip
+			#	total = price_vip * qty 		+ total
+			#else: 
+				#total_vip = price * qty 			+ total_vip
+			#	total = price * qty 			+ total
+
+		#if self.pricelist_id.name in ['VIP']: 
+		#	print 'Assert: self.amount_total == total_vip'
+		#	assert self.amount_total == total_vip
+		#if self.pricelist_id.name in ['Public Pricelist']: 
+		#	print 'Assert: self.amount_total == total'
+		#	assert self.amount_total == total

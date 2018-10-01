@@ -15,7 +15,31 @@ import creates as cre
 
 
 #------------------------------------------------ Get Delta ---------------------------------------------------
+# Get the Counter QC Delta 
+def get_counter_value(self):
+	print 
+	print 'User - Get Counter value'
 
+	# Order 
+	order = self.env['sale.order'].search([
+												('state', '=', 'sale'),
+												('x_type', '=', self.x_type),
+											],
+										#order='date_order desc',
+										#order='create_date desc',
+										order='x_counter_value desc',
+										limit=1,
+									)
+	print order 
+	print order.name
+	print order.x_counter_value
+
+	return order.x_counter_value + 1
+
+
+
+
+#------------------------------------------------ Get Delta ---------------------------------------------------
 # Get the Counter QC Delta 
 def get_delta(self):
 	#print 
@@ -34,6 +58,9 @@ def get_delta(self):
 											order='date_order desc',
 											limit=1,
 										)
+	order.x_counter_value
+
+
 	#print order
 	#print order.date_order
 	#print order.x_type

@@ -4,7 +4,221 @@
 
 
 
-<!-- ACTIONS -->
+<!-- ACTIONS 1 -->
+
+
+		<!-- Products --> 
+		<record model="ir.actions.act_window" id="product_template_product_list_action">
+			<field name="name">Productos</field>
+			<field name="res_model">product.template</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,kanban,form</field>
+            <field name="context">{}</field>
+
+            <field name="domain">[            	
+									('type', '=', 'product'),	
+
+									('sale_ok', '=', True),
+            					]</field>
+
+            <!--
+									('categ_id', '=', 'Cremas'),
+									('x_origin', '=', False),
+			-->
+		</record>
+
+
+
+		<!-- Products Inactive --> 
+		<record model="ir.actions.act_window" id="product_template_product_inactive_list_action">
+			<field name="name">Productos Inactivos</field>
+			<field name="res_model">product.template</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,kanban,form</field>
+            <field name="context">{}</field>
+
+            <field name="domain">[            	
+									('type', '=', 'product'),	
+									('active', '=', False),
+            					]</field>
+<!--
+									('categ_id', '=', 'Cremas'),
+									('x_origin', '=', False),
+-->
+		</record>
+
+
+
+
+
+
+		<!-- Services --> 
+		<record model="ir.actions.act_window" id="product_template_service_list_action">
+			<field name="name">Servicios</field>
+			<field name="res_model">product.template</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+
+            <field name="domain">[            	
+									('type', '=', 'service'),
+            					]</field>
+
+			<field name="limit">500</field>
+		</record>
+
+
+
+		<!-- Services Inactive --> 
+		<record model="ir.actions.act_window" id="product_template_service_inactive_list_action">
+			<field name="name">Servicios Inactivo</field>
+			<field name="res_model">product.template</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+
+            <field name="domain">[            	
+									('type', '=', 'service'),
+									('active', '=', False),
+            					]</field>
+<!--
+									('x_origin', '=', False),
+-->
+		</record>
+
+
+
+
+
+
+		<!-- All --> 
+		<record model="ir.actions.act_window" id="product_template_list_action">
+			<field name="name">Todos</field>
+			<field name="res_model">product.template</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+
+            <field name="domain">[]</field>
+
+<!--
+            <field name="domain">[            	
+									('type', 'in', ['service','product']),
+            					]</field>
+            <field name="view_id" eval="False"/>			
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first receipt
+				</p>
+			</field>
+-->
+			<field name="limit">500</field>
+		</record>
+
+
+
+
+
+		<!-- All - Sale Ok --> 
+		<record model="ir.actions.act_window" id="product_template_saleok_list_action">
+			<field name="name">Todos</field>
+			<field name="res_model">product.template</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+
+            <field name="domain">[            	
+									('type', 'in', ['service','product']),
+									('sale_ok', 'in', [True]),
+            					]</field>
+
+			<field name="limit">500</field>
+		</record>
+
+
+
+
+
+		<!-- All - Not Sale Ok --> 
+		<record model="ir.actions.act_window" id="product_template_notsaleok_list_action">
+			<field name="name">Todos Not Sale Ok</field>
+			<field name="res_model">product.template</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+
+            <field name="domain">[            	
+									('sale_ok', 'not in', [True]),
+            					]</field>
+
+			<field name="limit">500</field>
+		</record>
+
+
+
+
+
+		<!-- All - Consu --> 
+		<record model="ir.actions.act_window" id="product_template_consu_list_action">
+			<field name="name">Todos Consu</field>
+			<field name="res_model">product.template</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+
+            <field name="domain">[            	
+									('type', 'in', ['consu']),
+            					]</field>
+
+			<field name="limit">500</field>
+		</record>
+
+
+
+
+		<!-- All - Inac --> 
+		<record model="ir.actions.act_window" id="product_template_inac_list_action">
+			<field name="name">Todos Inac</field>
+			<field name="res_model">product.template</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+
+            <field name="domain">[            	
+									('active', '=', False),
+            					]</field>
+
+			<field name="limit">500</field>
+		</record>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ACTIONS 2 -->
+
+
+		<!-- Services Vip --> 
+		<record model="ir.actions.act_window" id="product_template_service_vip_list_action">
+			<field name="name">Servicios Vip</field>
+			<field name="res_model">product.template</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+
+			<field name="context">{'order': 'name'}</field>
+
+            <field name="domain">[            	
+									('type', '=', 'service'),
+									('x_origin', '=', False),
+									('x_price_vip', '!=', 0.0), 
+            					]</field>
+		</record>
+
 
 
 		<!-- Quick -->
@@ -124,10 +338,32 @@
 									('type', '=', 'service'),
 									('x_origin', '=', False),
 									('x_family', '=', 'medical'),
+
+									('active', '=', True),
             					]</field>
 
 			<field name="context">{}</field>
 		</record>
+
+		<!-- Medical - Inactive -->
+		<record model="ir.actions.act_window" id="product_template_service_medical_inactive_list_action">
+			<field name="name">Tratamientos Médicos</field>
+			<field name="res_model">product.template</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+
+            <field name="domain">[            	
+									('type', '=', 'service'),
+									('x_origin', '=', False),
+									('x_family', '=', 'medical'),
+
+									('active', '=', False),
+            					]</field>
+
+			<field name="context">{}</field>
+		</record>
+
+
 
 
 
@@ -195,6 +431,43 @@
 		</record>
 
 
+
+
+		<!-- With Legacy --> 
+		<record model="ir.actions.act_window" id="product_template_stockable_wleg_list_action">
+			<field name="name">Productos - wleg</field>
+			<field name="res_model">product.template</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+
+            <field name="domain">[  
+
+									('type', '=', 'product'),
+            
+            					]</field>
+
+            <!--
+			<field name="context">{'order': 'x_name_short'}</field>
+            <field name="domain">[
+									('type', '=', 'service'),
+									('x_treatment', '=', 'laser_co2'),
+            					]</field>
+			-->
+		</record>
+
+
+		<!-- Inventory --> 
+		<record model="ir.actions.act_window" id="product.product_template_action_product">
+			<field name="name">Productos - Inventario</field>
+			<field name="res_model">product.template</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,kanban,form</field>
+
+            <field name="domain">[
+										('x_origin', '=', False),
+										('type', '=', 'product'),        	
+            					]</field>
+		</record>
 
 
 	</data>

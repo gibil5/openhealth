@@ -2,15 +2,45 @@
 
 
 
+# Id Doc Type
+_id_doc_type_list = [
+
+					('dni', 			'DNI'),
+					('passport', 		'Pasaporte'),
+					('foreign_card', 	'CE'),
+					('ptp', 			'PTP'),
+					('other', 			'Otro'),
+					
+					# Dep 					
+					('foreigner_card', 	'CE'),
+]
+
+# Id Doc Code 
+_dic_id_doc_code = {
+					'other': 		'0',
+					'dni': 			'1',	
+					'foreign_card': '4',
+					'ruc': 			'6',
+					'passport': 	'7',
+					'ptp': 			'8',	# Verify 
+
+					#'sale_note': 		'15',
+
+					False: 		'x',
+}
 
 
+
+
+
+
+# State 
 _state_list = [
 					#('incomplete', 	'FICHA INCOMPLETA'),
-
-       				('active', 	'Activo'),
-
        				#('draft', 	'Inicio'),
        				#('done', 	'Completo'),
+
+       				('active', 	'Activo'),
        				('cancel', 	'Anulado'),
         		]
 

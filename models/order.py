@@ -2,8 +2,8 @@
 #
 # 	Order 
 # 
-# Created: 				26 Aug 2016
-# Last mod: 			31 Aug 2018
+# 	Created: 			26 Aug 2016
+# 	Last mod: 			25 Sep 2018
 # 
 from openerp import models, fields, api
 import datetime
@@ -14,25 +14,271 @@ from openerp import _
 from openerp.exceptions import Warning
 import ord_vars
 import lib
-import user
 import creates
+import pat_vars
+import user
+
+import chk_patient
+import chk_order
+
 
 class sale_order(models.Model):
-	
 	_inherit='sale.order'
 
 	
 
+# ----------------------------------------------------------- Search - DNI ------------------------------------------------------
+	
+	# Dni 
+	@api.onchange('x_partner_dni')
+	def _onchange_x_partner_dni(self):		
+		print 
+		print 'On Change - DNI'
 
-# ----------------------------------------------------------- Qc ------------------------------------------------------
+
+		#if self.x_partner_dni != False  	and 	self.partner_id.name == False: 
+		if self.x_partner_dni != False: 
+
+			print 'By Id Doc'
+
+			# Search by ID IDOC 
+			
+			# Patient 
+			patient = self.env['oeh.medical.patient'].search([
+																('x_id_doc', '=', self.x_partner_dni),					
+												],
+													order='write_date desc',
+													limit=1,
+												)
+			print patient.name 
+
+
+			# Partner - Dep 
+			#partner_id = self.env['res.partner'].search([
+			#												('x_id_doc', '=', self.x_id_doc),					
+			#									],
+			#										order='write_date desc',
+			#										limit=1,
+			#
+			#									)
+
+
+
+			if patient.name == False: 
+
+				print 'By Dni'
+
+				# Search by DNI 
+				
+				# Patient 
+				patient = self.env['oeh.medical.patient'].search([
+																	('x_dni', '=', self.x_partner_dni),					
+													],
+														order='write_date desc',
+														limit=1,
+													)
+				print patient.name 
+
+
+				# Partner - Dep 
+				#partner_id = self.env['res.partner'].search([
+				#												('x_dni', '=', self.x_partner_dni),					
+				#									],
+				#										order='write_date desc',
+				#										limit=1,
+				#									)
+
+
+			#self.partner_id = partner_id.id 	# Dep 
+			self.patient = patient.id
+
+
+
+# ----------------------------------------------------------- Proxy - Deprecated ------------------------------------------------------
+
+	#x_msg = fields.Char(
+	#		'Msg', 
+	#		default='0', 
+	#	)
+
+	#x_proxy = fields.Char(
+	#		'Proxy', 
+
+	#		compute='_compute_x_proxy', 
+	#	)
+
+	#@api.multi
+	#@api.depends('x_msg')
+	#def _compute_x_proxy(self):
+	#	print 
+	#	print 'Compute Proxy'
+
+	#	for record in self:			
+
+	#		record.x_proxy = record.x_msg
+			
+	#		print record.x_msg
+	#		print record.x_proxy
+	#		print record.patient.name 
+	#		print record.patient.x_id_doc_type
+	#		print record.patient.x_id_doc
+
+
+
+
+
+# ----------------------------------------------------------- Constraints - Sql ------------------------------------------------------
+	# Uniqueness constraints for: 
+
+	# 	Serial Number 	
+	_sql_constraints = [
+							#('x_serial_nr','unique(x_serial_nr)', 'SQL Warning: x_serial_nr must be unique !'),
+						]     
+
+
+
+
+# ----------------------------------------------------------- Constraints - Python ------------------------------------------------------
+
+	# Check Serial Number 
+	@api.constrains('x_serial_nr')
+	def _check_x_serial_nr(self):
+		print
+		print 'Check Serial Nr'
+
+		chk_order._check_x_serial_nr(self)
+
+
+
+	# Check Id doc - Documento Identidad 
+	@api.constrains('x_id_doc')
+	def _check_x_id_doc(self):
+		print
+		print 'Check Id Doc'
+
+		#chk_patient.check_x_id_doc(self)
+
+
+
+	# Check Ruc
+	@api.constrains('x_ruc')
+	def _check_x_ruc(self):
+		print
+		print 'Check Ruc'
+
+		chk_order.check_x_ruc(self)
+
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Counter ------------------------------------------------------
 
 	# Counter Value 
 	x_counter_value = fields.Integer(
 			string="Contador", 
-			#default=55, 
+		)
+
+	# Prefix 
+	x_prefix = fields.Char(
+			'Prefix', 
+			default='001', 
+		)
+
+	# Separator 
+	x_separator = fields.Char(
+			'Separator', 
+			default='-', 
+		)
+
+	# Padding 
+	x_padding = fields.Integer(
+			'Padding', 
+			default=10, 
 		)
 
 
+
+# ----------------------------------------------------------- Id Doc ------------------------------------------------------
+
+	# Id Document 
+	x_id_doc = fields.Char(
+			'Nr. Doc.', 
+
+			#required=True,  
+			required=False,  
+			#readonly=True, 
+		)
+
+
+
+	# Id Document Type 
+	x_id_doc_type = fields.Selection(
+			selection = pat_vars._id_doc_type_list, 
+			string='Tipo de documento', 
+
+			#required=True,  
+			required=False,  
+			#readonly=True, 
+		)
+
+
+
+
+	# Type Code 
+	x_type_code = fields.Char(
+			string='Tipo Codigo', 
+
+			compute='_compute_x_type_code', 
+		)
+
+	@api.multi
+	def _compute_x_type_code(self):
+		for record in self:			
+
+			if record.x_type in ['ticket_receipt', 'ticket_invoice', 'receipt', 'invoice', 'advertisement', 'sale_note']: 
+				
+				record.x_type_code = ord_vars._dic_type_code[record.x_type]
+
+
+
+	# Type 
+	x_type = fields.Selection(
+			[	
+				('receipt', 			'Boleta'),
+				('invoice', 			'Factura'),
+				('advertisement', 		'Canje Publicidad'),
+				('sale_note', 			'Canje NV'),
+				('ticket_receipt', 		'Ticket Boleta'),
+				('ticket_invoice', 		'Ticket Factura'),	
+			], 			
+			string='Tipo', 
+			required=False,
+			states={	
+					'draft': [('readonly', True)], 
+					'sent': [('readonly', True)], 
+					'sale': [('readonly', True)], 
+
+					#'editable': [('readonly', False)], 
+				}, 
+		)
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Mode Admin ------------------------------------------------------
+	# Mode Admin
+	x_admin_mode = fields.Boolean(
+			'Modo Admin', 
+		)
 
 
 
@@ -84,10 +330,8 @@ class sale_order(models.Model):
 
 
 
-
-
 # ----------------------------------------------------------- Legacy ------------------------------------------------------
-
+	# Legacy 
 	x_legacy = fields.Boolean(
 			'Legacy', 
 		)
@@ -95,17 +339,16 @@ class sale_order(models.Model):
 
 
 # ----------------------------------------------------------- Pay ------------------------------------------------------
-
 	# DNI 
 	x_dni = fields.Char(
-			
 			string='DNI', 
+			readonly=True, 
 		)
 
 	# RUC
 	x_ruc = fields.Char(
-			
 			string='RUC', 
+			readonly=True, 
 		)
 
 
@@ -118,7 +361,8 @@ class sale_order(models.Model):
 		'sent': 		[('readonly', False)], 
 		'sale': 		[('readonly', True)], 
 		'cancel': 		[('readonly', True)], 
-		'editable': 	[('readonly', False)], 	
+
+		#'editable': 	[('readonly', False)], 	
 	}
 
 
@@ -127,7 +371,8 @@ class sale_order(models.Model):
 			'oeh.medical.patient',
 			string='Paciente', 
 			#default=lambda self: user._get_default_id(self, 'patient'),
-			states=READONLY_STATES, 
+			
+			#states=READONLY_STATES, 
 		)
 
 
@@ -158,42 +403,30 @@ class sale_order(models.Model):
 							('procedure','Procedimiento'), 
 							('cosmetology','Cosmiatría'), 
 			], 
-			required=False, 
-			states=READONLY_STATES, 
+
+			#required=False, 
+			#states=READONLY_STATES, 
+			#readonly=True, 
 		)
 
 
 	# Product
 	x_product = fields.Char(		
 			string="Producto",	
-			required=False, 			
-			states=READONLY_STATES, 
+
+			#required=False, 			
+			#states=READONLY_STATES, 
+			#readonly=True, 
 		)
 
 
-	# Type 
-	x_type = fields.Selection(
-			[	('receipt', 			'Boleta'),
-				('invoice', 			'Factura'),
-				('advertisement', 		'Canje Publicidad'),
-				('sale_note', 			'Canje NV'),
-				('ticket_receipt', 		'Ticket Boleta'),
-				('ticket_invoice', 		'Ticket Factura'),	], 			
-			string='Tipo', 
-			required=False,
-			states={	
-					'draft': [('readonly', True)], 
-					'sent': [('readonly', True)], 
-					'sale': [('readonly', True)], 
-					'editable': [('readonly', False)], 
-				}, 
-		)
 
 
 	# Serial Number 
 	x_serial_nr = fields.Char(
 			'Número de serie',
-			states=READONLY_STATES, 
+
+			#states=READONLY_STATES, 
 		)
 
 
@@ -209,6 +442,59 @@ class sale_order(models.Model):
 
 # ----------------------------------------------------------- On Changes ------------------------------------------------------
 
+
+	# Patient  
+	@api.onchange('patient')
+	def _onchange_patient(self):	
+		print 
+		print 'On Change Patient'
+
+		if self.patient.name != False: 
+
+			# Init 
+			self.x_ruc = False
+			self.partner_id = self.patient.partner_id.id 
+
+
+			print self.patient.x_id_doc
+			print self.patient.x_id_doc_type
+			#print self.patient.x_dni + '.'
+
+
+			# Id Doc 
+			if self.patient.x_id_doc != False: 
+				
+				print 'Mark 1'
+				
+				self.x_id_doc = self.patient.x_id_doc
+				self.x_id_doc_type = self.patient.x_id_doc_type
+
+			# Get x Dni 
+			#elif self.patient.x_dni != '': 
+			elif self.patient.x_dni not in [False, '']: 
+				
+				print 'Mark 2'
+				
+				self.x_id_doc = self.patient.x_dni
+				self.x_id_doc_type = 'dni'
+				self.x_dni = self.patient.x_dni
+
+
+				# Update Patient - Dep 
+				#self.x_msg = '1'
+				#self.patient.x_id_doc = self.patient.x_dni
+				#self.patient.x_id_doc_type = 'dni'
+
+
+			# Ruc 				
+			if self.patient.x_ruc != False: 
+				print 'Mark 3'
+				self.x_ruc = self.patient.x_ruc
+
+
+
+
+
 	# Doctor 
 	@api.onchange('x_doctor')
 	def _onchange_x_doctor(self):
@@ -223,11 +509,6 @@ class sale_order(models.Model):
 			self.treatment = treatment
 
 
-	# Patient  
-	@api.onchange('patient')
-	def _onchange_patient(self):	
-		if self.patient.name != False: 
-			self.partner_id = self.patient.partner_id.id 
 
 
 	# Partner  
@@ -237,29 +518,7 @@ class sale_order(models.Model):
 			self.x_partner_dni = self.partner_id.x_dni
 
 
-	# Dni 
-	@api.onchange('x_partner_dni')
-	def _onchange_x_partner_dni(self):		
-		#if self.x_partner_dni != False: 
-		if self.x_partner_dni != False  	and 	self.partner_id.name == False: 
 
-			# Partner 
-			partner_id = self.env['res.partner'].search([
-															('x_dni', '=', self.x_partner_dni),					
-												],
-													order='write_date desc',
-													limit=1,
-												)
-			self.partner_id = partner_id.id
-
-			# Patient 
-			patient = self.env['oeh.medical.patient'].search([
-																('x_dni', '=', self.x_partner_dni),					
-												],
-													order='write_date desc',
-													limit=1,
-												)
-			self.patient = patient.id
 
 
 
@@ -321,9 +580,8 @@ class sale_order(models.Model):
 	# Check Content 
 	@api.multi 
 	def check_content(self):
-
-		#print 
-		#print 'Check Content'
+		print 
+		print 'Check Content'
 
 		#self.x_dni = self.partner_id.x_dni
 		#self.x_ruc = self.partner_id.x_ruc
@@ -333,28 +591,53 @@ class sale_order(models.Model):
 		#print 'Ruc: ', self.x_ruc 
 
 
-		# Dni 
+		_length = {
+					'dni': 8,
+					'passport': 12,
+					'foreign_card': 12,
+					'ptp': 12,					# Verify !
+		}
+
+
+		# Dni - Generalize, to accept other docs (passport, foreign card, ptp)
 		if self.x_type in ['ticket_receipt', 'receipt']: 
 
-			# Test 
-			length = 8 
-			ret = lib.test_for_length(self, self.x_dni, length)
-			if ret != 0:
-				msg = "Error: DNI debe tener " + str(length) + " caracteres."
-				raise Warning(_(msg))
+			print 'Receipt'
 
-			ret = lib.test_for_digits(self, self.x_dni)
-			if ret != 0:
-				msg = "Error: DNI debe ser un Número."
-				raise Warning(_(msg))
+			# Test 
+
+
+			# Nr of characters
+			if self.x_id_doc_type not in ['other']: 
+				length = _length[self.x_id_doc_type]
+				ret = lib.test_for_length(self, self.x_id_doc, length)
+				if ret != 0:
+					msg = "Error: Documento debe tener " + str(length) + " caracteres."
+					raise Warning(_(msg))
+
+
+
+			# Must be Number - Only for DNIs 
+			if self.x_id_doc_type in ['dni']: 
+				ret = lib.test_for_digits(self, self.x_id_doc)
+				if ret != 0:
+					#msg = "Error: DNI debe ser un Número."
+					msg = "Error: Documento debe ser un Número."
+					raise Warning(_(msg))
 	
+
+
 			# Update 
 			self.partner_id.x_dni = self.x_dni
 
 
 
 		# Ruc
-		if self.x_type in ['ticket_invoice', 'invoice']: 
+		elif self.x_type in ['ticket_invoice', 'invoice']: 
+
+			print 'Invoice'
+			print self.x_ruc
+			
 
 			# Test 
 			length = 11
@@ -423,7 +706,7 @@ class sale_order(models.Model):
 			for line in self.order_line: 
 				if line.product_id.x_family in ['laser', 'medical', 'cosmetology']:
 
-					#self.create_procedure_wapp(line.product_id.x_treatment, line.product_id.id)
+					# Create 
 					creates.create_procedure_wapp(self, line.product_id.x_treatment, line.product_id.id)
 				
 				line.update_recos()
@@ -434,10 +717,19 @@ class sale_order(models.Model):
 
 
 
-		# Check Content 
-		#self.x_dni = self.partner_id.x_dni
-		#self.x_ruc = self.partner_id.x_ruc
-		self.check_content()
+		# Check Content - DEP 
+		#self.check_content()
+
+
+
+
+		# Update Patient 
+		if self.patient.x_id_doc in [False, '']: 
+
+			self.patient.x_id_doc_type = self.x_id_doc_type
+
+			self.patient.x_id_doc = self.x_id_doc
+
 
 
 
@@ -452,49 +744,79 @@ class sale_order(models.Model):
 	# Action confirm 
 	@api.multi 
 	def action_confirm_nex(self):
-
-		#print 
-		#print 'Action confirm - Nex'
+		print 
+		print 'Action confirm - Nex'
 		#print 
 		
+
+
 
 #Write your logic here - Begin
 
-		# Generate Serial Number
-		
+		# Generate Serial Number		
 		#print 'Serial number and Type'
-
-
 		#print self.x_serial_nr
 
 
-		#if self.x_payment_method.saledoc != False: 
-		#if self.x_serial_nr != False: 
-		if self.x_serial_nr != '': 
+		#if self.x_serial_nr != '': 
+		if self.x_serial_nr != '' and self.x_admin_mode == False: 
 
 
-			# Type 
-			#self.x_type = self.x_payment_method.saledoc
 
 			# Serial Number
-		 	counter = self.env['openhealth.counter'].search([
-																		('name', '=', self.x_type), 
-																	],
-																		#order='write_date desc',
-																		limit=1,
-																	)
+		 	#counter = self.env['openhealth.counter'].search([
+			#															('name', '=', self.x_type), 
+			#														],
+			#															#order='write_date desc',
+			#															limit=1,
+			#														)
+		 	
 		 	# Init 
-			prefix = counter.prefix
-			value = counter.value
-			padding = counter.padding
-			separator = '-'
+			#separator = '-'
+			#prefix = counter.prefix
+			#padding = counter.padding
+
+			# Value 
+			#value = counter.value
 
 			# Increase 
-			counter.increase()				# Here !!!
+			#counter.increase()				# Here !!!
 
 			# Calculate 
-			self.x_serial_nr = prefix + separator + str(value).zfill(padding)
-			self.x_counter_value = value
+			#self.x_serial_nr = prefix + separator + str(value).zfill(padding)
+			#self.x_counter_value = value
+
+
+
+
+
+		 	# Init 
+			#separator = self.x_separator
+			#prefix = self.x_prefix 
+			#padding = self.x_padding
+			prefix = ord_vars._dic_prefix[self.x_type]
+
+
+			# Value 
+			self.x_counter_value = user.get_counter_value(self)
+			
+
+			print self.x_counter_value
+			#print self.x_prefix
+			print prefix
+			print self.x_separator
+			print self.x_padding
+
+
+
+			#self.x_serial_nr = self.x_prefix + self.x_separator + str(self.x_counter_value).zfill(self.x_padding)
+			self.x_serial_nr = prefix + self.x_separator + str(self.x_counter_value).zfill(self.x_padding)
+
+
+
+
+
+
 
 
 
@@ -615,7 +937,8 @@ class sale_order(models.Model):
 					'draft': [('readonly', False)], 
 					'sent': [('readonly', False)], 
 					'sale': [('readonly', True)], 
-					'editable': [('readonly', False)], 
+
+					#'editable': [('readonly', False)], 
 				}, 
 		
 		index=True, 
@@ -639,13 +962,7 @@ class sale_order(models.Model):
 			index=True,
 		)
 
-	# For Admin
-	@api.multi
-	def state_force(self):  
-		if self.state in ['sale', 'cancel']: 
-			self.state = 'editable'
-		elif self.state == 'editable': 
-			self.state = 'sale'
+
 
 
 
@@ -672,7 +989,8 @@ class sale_order(models.Model):
 					'draft': [('readonly', False)], 
 					'sent': [('readonly', False)], 
 					'sale': [('readonly', True)], 
-					'editable': [('readonly', False)], 
+					
+					#'editable': [('readonly', False)], 
 				}, 
 		)
 
@@ -954,7 +1272,8 @@ class sale_order(models.Model):
 					'draft': [('readonly', False)], 
 					'sent': [('readonly', True)], 
 					'sale': [('readonly', True)], 
-					'editable': [('readonly', False)], 
+					
+					#'editable': [('readonly', False)], 
 				}, 
 		)
 
@@ -1010,7 +1329,7 @@ class sale_order(models.Model):
 
 
 
-# ---------------------------------------------- Create Payment Method --------------------------------------------------------
+# ---------------------------------------------- Create Payment Method - Amount Total --------------------------------------------------------
 
 	# Amount total 
 	x_amount_total = fields.Float(
@@ -1031,6 +1350,7 @@ class sale_order(models.Model):
 
 
 
+# ---------------------------------------------- Create Payment Method --------------------------------------------------------
 	@api.multi 
 	def create_payment_method(self):
 
@@ -1049,24 +1369,33 @@ class sale_order(models.Model):
 		ruc = self.partner_id.x_ruc
 
 
+
+		# Id Doc - Dep 
+		#if self.patient.x_id_doc not in [False, '']: 
+		#	id_doc = self.patient.x_id_doc
+		#	id_doc_type = self.patient.x_id_doc_type
+		#else: 
+		#	id_doc = self.x_id_doc
+		#	id_doc_type = self.x_id_doc_type
+
+
+
 		# Create 
 		self.x_payment_method = self.env['openhealth.payment_method'].create({
-																				#'name': name,																			
-
+																				#'name': name,
 																				'order': self.id,
 																				'method': method,
 																				'subtotal': balance,
 																				'total': self.x_amount_total,
 																				'partner': self.partner_id.id, 
 																				'date_created': self.date_order,
-																				'dni': dni,
 																				'firm': firm,
 																				'ruc': ruc,
 
-																				#'saledoc': 'receipt', 
-																				#'pm_total': self.pm_total,
-																				#'balance': balance, 
-																				#'balance': 0, 
+																				# Deprecated 
+																				#'dni': dni,
+																				#'id_doc_type': 	id_doc_type,
+																				#'id_doc': 			id_doc,
 																			})
 		payment_method_id = self.x_payment_method.id 
 
@@ -1369,9 +1698,42 @@ class sale_order(models.Model):
 
 
 
+# ----------------------------------------------------------- Test ------------------------------------------------------
+
+	# Computes
+	def test_computes(self):
+		print 
+		print 'Order - Computes'
+
+		print 'x_partner_vip\t', 		self.x_partner_vip
+		print 'nr_lines\t', 				self.nr_lines
+		print 'x_amount_total\t', 		self.x_amount_total
+		
+		print 'x_total_in_words\t', 	self.x_total_in_words
+		print 'x_total_cents\t', 		self.x_total_cents
+		print 'x_total_net\t', 			self.x_total_net
+		print 'x_total_tax\t', 			self.x_total_tax		
+		print 'x_my_company\t', 	 	self.x_my_company
+		print 'x_date_order_corr\t', 	self.x_date_order_corr
+
+
+
+
+	# Actions
+	def test_actions(self):
+		print 
+		print 'Order - Actions'
+		self.state_force()
+		self.state_force()
+		self.open_product_selector_product()
+		self.open_product_selector_service()
+		self.cancel_order()
+		self.activate_order()
+		self.open_line_current()
+
+
 
 # ----------------------------------------------------------- Test - Init ------------------------------------------------------
-	
 	# Test - Init  
 	@api.multi 
 	def test_init(self, patient_id, partner_id, doctor_id, treatment_id, pl_id):
@@ -1393,18 +1755,9 @@ class sale_order(models.Model):
 												})
 
 		# Create Order Lines 
-		#name_shorts = [	
-		#					'acneclean', 				# Product
-		#					'vip_card', 				# Product 
-		#					'quick_neck_hands_rejuvenation_1',	# Quick
-		#					'co2_nec_rn1_one',					# Co2
-		#					'exc_bel_alo_15m_one',				# Exc
-		#					'ipl_bel_dep_15m_six',				# Ipl
-		#					'ndy_bol_ema_15m_six',				# Ndyag 
-		#					'bot_1zo_rfa_one', 			# Medical
-		#					'car_bod_rfa_30m_six', 		# Cosmeto
-		#			]
 
+
+		# Tuples - Short Name + Manual price 
 		tup_arr = [	
 							('con_med',	0),  					# Consultation
 							('con_med',	100),  					# Consultation
@@ -1413,13 +1766,13 @@ class sale_order(models.Model):
 
 							('acneclean',	-1),  						# Product
 							('vip_card',	-1),  						# Product 
-
+							
 							('quick_neck_hands_rejuvenation_1',	-1), 	# Quick
 							('co2_nec_rn1_one',		-1), 				# Co2
 							('exc_bel_alo_15m_one',	-1),				# Exc
 							('ipl_bel_dep_15m_six',	-1), 			# Ipl
 							('ndy_bol_ema_15m_six',	-1),				# Ndyag 
-
+							
 							('bot_1zo_rfa_one',		-1), 			# Medical
 							('car_bod_rfa_30m_six',	-1), 			# Cosmeto
 					]
@@ -1428,7 +1781,8 @@ class sale_order(models.Model):
 
 		# Init 
 		#price_manual = 0
-		price_applied = 0 
+		#price_applied = 0 
+		price_applied = -1
 		reco_id= False
 
 
@@ -1444,6 +1798,7 @@ class sale_order(models.Model):
 			#print name_short
 			#print price_manual
 
+			# Create 
 			ret = creates.create_order_lines_micro(order, name_short, price_manual, price_applied, reco_id)
 
 
@@ -1452,34 +1807,93 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Test ------------------------------------------------------
 
-	# Computes
-	def test_computes(self):
+
+
+# ----------------------------------------------------------- Test Unit ------------------------------------------------------
+	# Test - Unit 
+	def test_unit(self):
 		print 
-		print 'Order - Computes'
+		print 'Order - Test Unit'
 
-		print 'x_partner_vip\t', 		self.x_partner_vip
-		print 'x_total_in_words\t', 	self.x_total_in_words
-		print 'x_total_cents\t', 		self.x_total_cents
-		print 'x_total_net\t', 		self.x_total_net
-		print 'x_total_tax\t', 		self.x_total_tax		
-		print 'x_my_company\t', 	 	self.x_my_company
-		print 'x_date_order_corr\t', 	self.x_date_order_corr
+		# Computes 
+		#self.test_computes()
+
+		# Actions - Remaining 
+		#self.test_actions()
 
 
+		# Init 
+		total = 0 
+		#total_vip = 0 
 
-	# Actions
-	def test_actions(self):
+
+		for line in self.order_line: 
+
+			# Standard 
+			#total = 	line.product_id.list_price * line.product_uom_qty 		+ total
+			
+			price_std = line.product_id.list_price
+			price_vip = line.product_id.x_price_vip
+			price_manual = line.x_price_manual
+			
+			qty = line.product_uom_qty 
+
+			compact = line.x_description 
+
+
+
+
+			# Prints 
+			print 'product_id: ', line.product_id.name 
+			print 'price_std: ', price_std 
+			print 'price_vip: ',  price_vip 
+			print 'price_manual: ', price_manual
+			#print price_applied
+			print 'qty: ', qty 
+			print 'compact: ', compact
+
+			# Assert 
+			#assert compact != 'x'  					# Assert 
+
+
+			# Price 
+
+			# Manual 
+			if price_manual != -1: 
+				price = price_manual
+			
+			# Public 
+			elif self.pricelist_id.name in ['Public Pricelist']: 
+				price = price_std
+
+			# Vip  
+			else: 
+				if line.product_id.type in ['service'] and price_vip != 0: 		# Is a service and has a Vip price 
+					price = price_vip
+				else: 
+					price = price_std											# Is a service and does not have a Vip price
+
+
+			# Total 
+			total = price * qty 	+ 	total
+			print 'price: ', price
+			print 'total: ', total
+
+
+
+		# Asserts 
 		print 
-		print 'Order - Actions'
-		self.state_force()
-		self.state_force()
-		self.open_product_selector_product()
-		self.open_product_selector_service()
-		self.cancel_order()
-		self.activate_order()
-		self.open_line_current()
+		print 'Asserts'
+		print self.pricelist_id.name 
+		print 'total: ', total
+		print 'self.amount_total: ', self.amount_total
+
+		assert self.amount_total == total    				# Assert 
+
+
+	# test_unit
+
 
 
 
@@ -1487,109 +1901,71 @@ class sale_order(models.Model):
 	# Test - Integration 
 	# Test the whole Sale Cycle. 
 	# With UI buttons included. Activate the different creation and write procedures. 
-	def test_integration(self):
-		#print 
-		#print 'Order - Test Integration'
-		# Pay 
-		#date_order = False	
-		#self.pay_myself(date_order)
+	#def test_integration(self):
+	def test_integration(self, test_case=False):
+		print 
+		print 'Order - Test Integration'
+		print test_case
 
 
-		# Cycle - Begin
 
+# Cycle - Begin
 		# Create and Init - PM 
 		self.create_payment_method()
 
+
 		# Payment Method 
-		self.x_payment_method.saledoc = 'ticket_receipt'
+		#self.x_payment_method.saledoc = 'ticket_receipt'
+
+		self.x_payment_method.saledoc = ord_vars._dic_tc_type[test_case]
+
+
+
 		print self.x_payment_method.name
 		self.x_payment_method.go_back()
 		print self.x_payment_method.state
 
+		
 		# Order
-		self.validate()
+		self.validate()					# This ! 
+		
 		self.action_confirm_nex()
 		self.print_ticket()
-		# Cycle - End
+# Cycle - End
 
 
-
-
-# ----------------------------------------------------------- Test Unit ------------------------------------------------------
-	# Test Unit 
-	def test_unit(self):
-		print 
-		print 'Order - Test Unit'
-
-		# Init 
-		total = 0 
-		total_vip = 0 
-
-		for line in self.order_line: 
-
-			# Standard 
-			total = 	line.product_id.list_price * line.product_uom_qty 		+ total
-			
-			price = line.product_id.list_price
-			price_vip = line.product_id.x_price_vip
-			qty = line.product_uom_qty 
-
-
-			# Vip  
-			#if line.product_id.type in ['service']: 
-			if line.product_id.type in ['service'] and price_vip != 0: 
-				#total_vip = line.product_id.x_price_vip * line.product_uom_qty 		+ total_vip	
-				total_vip = price_vip * qty 		+ total_vip
-			else: 
-				#total_vip = line.product_id.list_price * line.product_uom_qty 		+ total_vip	
-				total_vip = price * qty 			+ total_vip
-
-
-
-		# Prints 
-		print 'total: ', total
-		print 'total_vip: ', total_vip
-		print 'self.amount_total: ', self.amount_total
-
-
-		# Asserts 
-		print 'Asserts'
-		print self.pricelist_id.name 
-
-		if self.pricelist_id.name in ['VIP']: 
-			print 'Assert: self.amount_total == total_vip'
-			assert self.amount_total == total_vip
-			
-		if self.pricelist_id.name in ['Public Pricelist']: 
-			print 'Assert: self.amount_total == total'
-			assert self.amount_total == total
-
+	# test_integration
 
 
 
 # ----------------------------------------------------------- Test ------------------------------------------------------
+	# Test
+	#def test(self):
+	def test(self, test_case=False):
+		print 
+		print 'Order - Test'
 
-	# Test - Integration 
-	def test(self):
-		#print 
-		#print 
-		#print 
-		#print 'Order - Test'
+		print test_case
+
 
 		if self.patient.x_test: 
 
-			# Test Cycle
-			#self.test_integration()
 
-			# Computes 
-			#self.test_computes()
+			if test_case != False: 
+				x_type = test_case.split(',')[1].strip()
+			
+			else: 
+				x_type = 'ticket_receipt'
 
-			# Actions - Remaining 
-			#self.test_actions()
 
+			print test_case
+			print x_type  
+
+
+			# Test Integration 
+			#self.test_integration(test_case)
+			self.test_integration(x_type)
 
 			# Test Unit 
-			self.test_unit()
-
+			#self.test_unit()
 	# test 
-

@@ -83,6 +83,8 @@
 
 
 
+
+
 <!-- PLASMA - Cabeza - Rejuvenecimiento Capilar - 1 -->
 <record id='vip_pla_hea_rec_one' model='product.pricelist.item'>
 	<field name='pricelist_id' 	ref='pricelist_vip'/>
@@ -99,17 +101,21 @@
 
 
 <!-- PLASMA - Cabeza - Rejuvenecimiento Capilar - 3 -->
-<record id='vip_pla_hea_rec' model='product.pricelist.item'>
+<record id='vip_pla_hea_rec_three' model='product.pricelist.item'>
 	<field name='pricelist_id' 	ref='pricelist_vip'/>
-	<field name='product_tmpl_id' 	ref='pla_hea_rec'/>
+	<field name='product_tmpl_id' 	ref='pla_hea_rec_three'/>
 	<field name='fixed_price'>1600.0</field>
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 </record>
 
-<record id='pla_hea_rec' model='product.template'>
-	<field name='item_id'	ref='vip_pla_hea_rec' />
+<record id='pla_hea_rec_three' model='product.template'>
+	<field name='item_id'	ref='pla_hea_rec_three' />
 </record>
+
+
+
+
 
 
 
@@ -127,19 +133,20 @@
 </record>
 
 
-
 <!-- PLASMA - Todo Rostro - Rejuvenecimiento Facial - 3 -->
-<record id='vip_pla_faa_rfa' model='product.pricelist.item'>
+<record id='vip_pla_faa_rfa_three' model='product.pricelist.item'>
 	<field name='pricelist_id' 	ref='pricelist_vip'/>
-	<field name='product_tmpl_id' 	ref='pla_faa_rfa'/>
+	<field name='product_tmpl_id' 	ref='pla_faa_rfa_three'/>
 	<field name='fixed_price'>1600.0</field>
 	<field name='min_quantity'>1</field>
 	<field name='applied_on'>1_product</field>
 </record>
 
-<record id='pla_faa_rfa' model='product.template'>
-	<field name='item_id'	ref='vip_pla_faa_rfa' />
+<record id='pla_faa_rfa_three' model='product.template'>
+	<field name='item_id'	ref='vip_pla_faa_rfa_three' />
 </record>
+
+
 
 
 

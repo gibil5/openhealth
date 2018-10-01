@@ -113,6 +113,10 @@ _level_list = [
 # Zone 
 _zone_list = [ 
 
+		# Infiltrations
+		('any',		'any'), 
+
+
 
 		# Quick 
 		('face_all_neck',	'Todo Rostro Cuello'), 
@@ -140,19 +144,20 @@ _zone_list = [
 
 		('face',		'face'),
 		
-		#('face_all',	'face_all'), 
-		('face_all',	'Todo Rostro'), 
+		#('face_all',	'Todo Rostro'), 
+		('face_all',	'face_all'), 
 		
 
-		#('face_hands',	'face_hands'), 
-		('face_hands',	'Rostro Manos'), 
+		#('face_hands',	'Rostro Manos'), 
+		('face_hands',	'face_hands'), 
 
 
-		('face_local',	'Localizado Rostro'), 
+		#('face_local',	'Localizado Rostro'), 
+		('face_local',	'face_local'), 
 
 
-		#('face_neck',	'face_neck'), 
-		('face_neck',	'Rostro Cuello'), 
+		#('face_neck',	'Rostro Cuello'), 
+		('face_neck',	'face_neck'), 
 
 
 		('face_neck_hands',	'face_neck_hands'),   
@@ -199,18 +204,22 @@ _zone_list = [
 
 _pathology_list = [ 
 
+		# Med 
+		('keloid',		'keloid'),
+
+
 
 		# Quick 
-		#('tatoo',			'tatoo'), 
-		('tatoo',			'Tatuaje'), 
+		#('tatoo',			'Tatuaje'), 
+		('tatoo',			'tatoo'), 
 		#('tatoo_1',		'tatoo_1'), 
 		#('tatoo_2',		'tatoo_2'), 
 		#('tatoo_3',		'tatoo_3'), 
 		#('tatoo_4',		'tatoo_4'), 
 
 
-		#('rejuvenation',	'rejuvenation'),
-		('rejuvenation',	'Rejuvenecimiento'),
+		#('rejuvenation',	'Rejuvenecimiento'),
+		('rejuvenation',	'rejuvenation'),
 		#('rejuvenation_1',	'rejuvenation_1'),
 		#('rejuvenation_2',	'rejuvenation_2'),
 		#('rejuvenation_3',	'rejuvenation_3'),
@@ -221,8 +230,8 @@ _pathology_list = [
 
 
 		# Other 
-		#('wart',		'wart'), 
-		('wart',		'Verruga'), 
+		#('wart',		'Verruga'), 
+		('wart',		'wart'), 
 		('wart_1',		'wart_1'), 
 		('wart_2',		'wart_2'), 
 		('wart_3',		'wart_3'), 
@@ -230,8 +239,8 @@ _pathology_list = [
 		('wart_5',		'wart_5'), 
 
 
-		#('keratosis',	'keratosis'),
-		('keratosis',	'Queratosis'),
+		#('keratosis',	'Queratosis'),
+		('keratosis',	'keratosis'),
 		('keratosis_1',	'keratosis_1'),
 		('keratosis_2',	'keratosis_2'),
 		('keratosis_3',	'keratosis_3'),
@@ -240,8 +249,8 @@ _pathology_list = [
 
 
 
-		#('stains',		'stains'),
-		('stains',		'Manchas'),
+		#('stains',		'Manchas'),
+		('stains',		'stains'),
 		('stains_1',	'stains_1'),
 		('stains_2',	'stains_2'),
 		('stains_3',	'stains_3'),
@@ -250,8 +259,8 @@ _pathology_list = [
 
 
 
-		#('cyst',		'cyst'),
-		('cyst',		'Quiste'),
+		#('cyst',		'Quiste'),
+		('cyst',		'cyst'),
 		('cyst_1',		'cyst_1'),
 		('cyst_2',		'cyst_2'),
 		('cyst_3',		'cyst_3'),
@@ -260,8 +269,8 @@ _pathology_list = [
 
 
 
-		#('acne_sequels',	'acne_sequels'),
-		('acne_sequels',	'Acné y secuelas'),
+		#('acne_sequels',	'Acné y secuelas'),
+		('acne_sequels',	'acne_sequels'),
 		('acne_sequels_1',	'acne_sequels_1'),
 		('acne_sequels_2',	'acne_sequels_2'),
 		('acne_sequels_3',	'acne_sequels_3'),
@@ -269,8 +278,8 @@ _pathology_list = [
 		('acne_sequels_5',	'acne_sequels_5'),
 
 
-		#('mole',		'mole'),
-		('mole',		'Lunar'),
+		#('mole',		'Lunar'),
+		('mole',		'mole'),
 		('mole_1',		'mole_1'),
 		('mole_2',		'mole_2'),
 		('mole_3',		'mole_3'),
@@ -279,8 +288,8 @@ _pathology_list = [
 
 
 
-		#('scar',		'scar'),
-		('scar',		'Cicatriz'),
+		#('scar',		'Cicatriz'),
+		('scar',		'scar'),
 		('scar_1',		'scar_1'),
 		('scar_2',		'scar_2'),
 		('scar_3',		'scar_3'),
@@ -357,7 +366,12 @@ _pathology_list = [
 
 		('telangiectasia',	'telangiectasia'),
 		
-		('varices',			'varices'),
+
+
+		#('varices',			'varices'),
+		('varicose',			'varicose'),
+
+		
 		('vitiligo',			'vitiligo'),
 
 

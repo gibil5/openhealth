@@ -5,39 +5,6 @@
 
 
 
-		<!-- Graph --> 
-	    <record id="view_oeh_medical_patient_graph" model="ir.ui.view">
-	    	
-	         <field name="name">patient.graph</field>
-
-	         <field name="model">oeh.medical.patient</field>
-
-	         <field name="arch" type="xml">
-
-	             <graph string="Análisis de Pacientes">
-<!--
-					<field name="date_order" interval="day" type="row"	/>
-
-                    <field name="amount_total" type="measure"/>	             
-
-                    <field name="sex"/>
-                    <field name="city"/>
-                    <field name="street2_sel"/>
-                    <field name="street2"/>
--->                
-                    
-                    <field name="x_first_contact"/>
-
-	             </graph>
-	         </field>
-	    </record>
-
-
-
-
-
-
-
 		<!-- FILTER --> 
 <!--		
 		<record id="patient_view_template_filter" model="ir.ui.view">
@@ -136,6 +103,10 @@
 					<!-- Group By --> 
 					<group expand="1" string="Group By">
 
+						<filter name="Test" context="{'group_by':'x_test'}"/>
+
+
+
 						<filter name="Fecha de Creación" context="{'group_by':'create_date'}"/>
 
 						<filter name="Fecha de Registro" context="{'group_by':'x_date_record'}"/>
@@ -144,11 +115,12 @@
 
 						<filter name="Sexo" context="{'group_by':'sex'}"/>
 
-
 						<filter name="Nr TRATAMIENTOS" context="{'group_by':'x_treatment_count'}"/>
 
-						
+						<filter name="Tipo de Documento" context="{'group_by':'x_id_doc_type'}"/>
+
 <!--
+						<filter name="Legacy" context="{'group_by':'x_legacy'}"/>
 						<filter name="Tipo" context="{'group_by':'x_type'}"/>
 						<filter name="Familia" context="{'group_by':'x_family'}"/>
 						<filter name="Producto" context="{'group_by':'x_product'}"/>
@@ -162,6 +134,34 @@
 		   </field>
 	   </record>
 
+
+
+
+
+
+		<!-- Graph --> 
+<!--		
+	    <record id="view_oeh_medical_patient_graph" model="ir.ui.view">	    	
+	         <field name="name">patient.graph</field>
+	         <field name="model">oeh.medical.patient</field>
+	         <field name="arch" type="xml">
+
+	             <graph string="Análisis de Pacientes">
+                    
+                    <field name="x_first_contact"/>
+
+	             </graph>
+	         </field>
+	    </record>
+-->
+<!--
+					<field name="date_order" interval="day" type="row"	/>
+                    <field name="amount_total" type="measure"/>	             
+                    <field name="sex"/>
+                    <field name="city"/>
+                    <field name="street2_sel"/>
+                    <field name="street2"/>
+-->                
 
 
 

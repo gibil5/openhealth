@@ -482,10 +482,10 @@ class sale_order_line(models.Model):
 
 	# Price manual
 	x_price_manual = fields.Float(
-			
 			string="Precio manual",
-			
 			required=False, 
+
+			default=-1, 
 
 			#compute='_compute_price_manual', 
 		)

@@ -14,6 +14,17 @@ class Partner(models.Model):
 	_order = 'write_date desc'
 
 
+# ----------------------------------------------------------- Test - Fields ------------------------------------------------------
+
+	#x_test = fields.Boolean(
+	#		'Test', 
+	#	)
+
+	#x_test_case = fields.Char(
+	#		'Test Case', 
+	#	)
+
+
 
 
 # ----------------------------------------------------------- Indexed ------------------------------------------------------
@@ -327,9 +338,8 @@ class Partner(models.Model):
 	# Create 
 	@api.model
 	def create(self,vals):
-
-		print 
-		print 'CRUD - Partner - Create'
+		#print 
+		#print 'CRUD - Partner - Create'
 		#print vals
 		#print 
 	
@@ -337,15 +347,30 @@ class Partner(models.Model):
 		if 'name' in vals:
 
 			#  Name to upper. And strips beg and end spaces. 
-			print 'Compact'
+			#print 'Compact'
 			name = vals['name']
 			name = name.strip().upper()			# Uppercase 
 			name = " ".join(name.split())		# Compact - Strip beginning, inside and ending extra spaces
 			vals['name'] = name 
 
 
+
+
 		# Put your logic here 
 		res = super(Partner, self).create(vals)
 		# Put your logic here 
+
+
+		# Search 
+ 		#patient = self.env['oeh.medical.patient'].search([
+		#														('name', '=', res.name), 
+		#												],
+		#													#order='write_date desc',
+		#													limit=1,
+		#												)
+ 		#if patient.x_test != False: 
+		#	res.x_test = patient.x_test
+
+
 		return res
 	# CRUD - Create 

@@ -1,38 +1,98 @@
 # -*- coding: utf-8 -*-
 
-from openerp import models, fields, api
+
+
+# Consultations
+_dic_con = {
+				'con_med': 				'Consulta Médica', 
+				'con_gyn': 				'Consulta Ginecológica', 
+				'con_med_zero': 		'Consulta Médica - Costo Zero', 
+}
 
 
 
-# Family, Treatment, Zone, Pathology 
-_hap = {
-			'other':         	'Otros', 
+# Products 
+_dic_prod = {
+			# Dep 
+			#'token': 					'Token', 
 
 
-			'infiltration': 		'Infiltración', 
+			# Proliant - New 
+			'other': 				'Otros', 
+			'formula_1':				'Fórmula 1', 
+			'kenacort': 			'Kenacort', 			
+			'generic_product': 		'Producto genérico', 
+			'generic_service': 		'Servicio genérico', 
+
+
+			#'acne_topic_wash': 		'Acnetopic Wash', 
+			'acnetopic_wash': 			'Acnetopic Wash', 
+			'dermobalance_180gr': 		'Dermobalance 180 gr', 
+			#'dexpantenol_5ml':			'Dexpantenol 5ml', 
+			'dexpanthenol_5ml': 		'Dexpantenol 5 ml', 
+			#'fillderma_ultra': 			'Fillderma ultra', 
+			'fillderma_ultra_1ml': 			'Fillderma ultra 1 ml', 
+
+
+
+
+
+
+			'acnetopic_200ml': 				'Acnetopic', 
+			'anti_red': 					'Antirojeces', 
+			'aloe_vital': 					'Aloé vital', 
+			'cream_vitamins': 				'Crema vitaminas', 
+			'cream_vitamins_aec': 			'Crema vitaminas AEC', 
+			'dermatopic_lotion_120ml': 		'Dermatopic loción', 
+			'dermatopic_sulfur_90gr': 		'Dermatopic sulfur', 
+			'depigmentation_aha': 			'Despigmentante Aha', 
+			'depigmentation_bfd8': 			'Despigmentante Bfd8', 
+			'depigmentation_gliko': 		'Despigmentante Glico', 
+			'depigmentation_hq': 			'Despigmentante Hq', 
+			'depigmentation_santa_teresa': 		'Despigmentante Sta Teresa', 
+			'depigmentation_no_hidroquinone': 	'Despigmentante sin Hidroquinona', 
 			
-			'infiltration_scar': 	'Infiltración Cicatriz', 
-			'infiltration_keloid': 	'Infiltración Queloide', 
+
+			'hidratopic_lotion_120ml': 			'Hidratopic', 
+			'kit_post_laser': 					'Kit post láser', 
+			'mask_astringent_liquid_powder': 	'Máscara astringente liq+polvo', 
+			'mask_astringent_liquid': 			'Máscara astringente liq', 
+			'mask_astringent_powder': 			'Máscara astringente polvo', 
+			'nctf': 							'Nctf', 
+			'solar_protector': 					'Protector solar', 
+			'q54': 								'Q54', 
+			'tretinoina': 						'Tretinoina', 
+			'acneclean': 						'Acnéclean', 
+			'vip_card': 						'Tarjeta Vip', 
+
+
+			'notil': 					'Notil', 
+			'bepanthen': 				'Bepanthen', 
+			'serum': 					'Suero fisiológico', 
+			'gause': 					'Gasa de kit', 
+			'redoxon': 					'Redoxon', 
+}
 
 
 
-			'x': 'x', 
-			'laser_m22': 			'M22', 
+_dic_tre = {
 
-			
 			# Treatment 
-			#'consultation':          'Consulta', 
 
+			# Dep 
+			#'other':         	'Otros', 
+			#'x': 'x', 
+			#'laser_m22': 			'M22', 
+
+			
+			#'consultation':          'Consulta', 
 			'laser_quick':         	'Quick', 
 			'laser_co2':          	'Co2', 
 			'laser_excilite':       'Exc', 
 			'laser_ipl':         	'Ipl', 
 			'laser_ndyag':        	'Ndy', 
 
-
-
 			# Medical 
-
 			'criosurgery':         	'Criocirugía', 
 			'plasma':         		'Plasma', 
 			'botulinum_toxin':      'Toxina Botulínica', 
@@ -42,7 +102,9 @@ _hap = {
 			'mesotherapy_nctf':     'Mesoterapia nctf', 
 			'intravenous_vitamin':  'Vit C Endovenosa', 
 
-
+			'infiltration': 		'Infiltración', 			
+			#'infiltration_scar': 	'Infiltración Cicatriz', 
+			#'infiltration_keloid': 	'Infiltración Queloide', 
 
 
 			# Cosmetology 
@@ -50,22 +112,24 @@ _hap = {
 			'diamond_tip':			'Punta Diamante', 
 			'triactive_carboxytherapy': 					'Triac + Carbo', 
 			'triactive_carboxytherapy_reductionchamber': 	'Triac + Carbo + CR', 
+}
 
 
 
+
+# Zone 
+_dic_zon = {
 
 			# Zona 
 			'areolas': 				'Ariolas', 
 			'arms': 				'Brazos', 
 			'armpits': 				'Axilas', 
-
 			'back': 				'Espalda', 
 			'belly': 				'Vientre', 
 			'body_local': 			'Cuerpo', 
 			'breast': 				'Pecho', 
 
 			'cheekbones': 			'Pómulos', 
-
 			'face': 				'Rostro', 
 			'face_all': 			'Todo Rostro', 
 			'face_all_hands': 		'Rostro Man', 
@@ -74,21 +138,19 @@ _hap = {
 			'feet': 				'Pies', 
 
 			'gluteus': 				'Glúteos', 
-
 			'hands': 				'Manos', 
-
 			'legs': 				'Piernas', 
-
 			'neck': 				'Cuello', 
 			'neck_hands': 			'Cuello Man', 
-
 			'shoulders': 			'Hombros', 
-
 			'vagina': 				'Vag', 
+}
 
 
 
 
+# Pathology 
+_dic_pat = {
 			# Patho
 			'acne_sequels': 		'Acnsec', 
 			'cyst': 				'Quis', 
@@ -109,8 +171,6 @@ _hap = {
 			'ruby_points': 			'P Rubi', 
 			'telangiectasia': 		'Tela', 
 			'varices': 				'Var', 
-
-
 
 			'acne_sequels_1': 		'Acnsec', 
 			'acne_sequels_2': 		'Acnsec', 
@@ -136,13 +196,11 @@ _hap = {
 			'mole_4': 				'Lun', 
 			'mole_5': 				'Lun', 
 
-			
 			'scar_1': 				'Cic', 
 			'scar_2': 				'Cic', 
 			'scar_3': 				'Cic', 
 			'scar_4': 				'Cic', 
 			'scar_5': 				'Cic', 
-
 
 			'stains_1': 				'Manchas', 
 			'stains_2': 				'Manchas', 
@@ -162,13 +220,11 @@ _hap = {
 			'rejuvenation_hands_4': 		'Rejuv', 
 			'rejuvenation_hands_5': 		'Rejuv', 
 
-
 			'rejuvenation_face_1': 		'Rejuv', 
 			'rejuvenation_face_2': 		'Rejuv', 
 			'rejuvenation_face_3': 		'Rejuv', 
 			'rejuvenation_face_4': 		'Rejuv', 
 			'rejuvenation_face_5': 		'Rejuv', 
-
 
 			'wart_1': 				'Verr', 
 			'wart_2': 				'Verr', 
@@ -176,115 +232,21 @@ _hap = {
 			'wart_4': 				'Verr', 
 			'wart_5': 				'Verr', 
 
-
 			'monalisa_touch': 		'Monalisa', 
-
 }
-
-
-
-# Products 
-_hac = {
-			'other': 				'Otros', 
-
-
-			'kenacort': 			'Kenacort', 
-			'acne_topic_wash': 		'Acnetopic Wash', 
-			'generic_product': 		'Producto genérico', 
-			'generic_service': 		'Servicio genérico', 
-			'con_med': 				'Consulta Médica', 
-			'con_gyn': 				'Consulta Ginecológica', 
-			'con_med_zero': 		'Consulta Médica - Costo Zero', 
-
-
-
-			'acnetopic_200ml': 				'Acnetopic', 
-
-			'anti_red': 					'Antirojeces', 
-			
-			'aloe_vital': 					'Aloé vital', 
-			
-			'cream_vitamins': 				'Crema vitaminas', 
-			
-			'cream_vitamins_aec': 			'Crema vitaminas AEC', 
-			
-			'dermatopic_lotion_120ml': 		'Dermatopic loción', 
-			
-			'dermatopic_sulfur_90gr': 		'Dermatopic sulfur', 
-			
-			'depigmentation_aha': 			'Despigmentante Aha', 
-			
-			'depigmentation_bfd8': 			'Despigmentante Bfd8', 
-			
-			'depigmentation_gliko': 		'Despigmentante Glico', 
-			
-			'depigmentation_hq': 			'Despigmentante Hq', 
-
-			'depigmentation_santa_teresa': 		'Despigmentante Sta Teresa', 
-			
-			'depigmentation_no_hidroquinone': 	'Despigmentante sin Hidroquinona', 
-			
-
-
-			'hidratopic_lotion_120ml': 			'Hidratopic', 
-			
-			'kit_post_laser': 					'Kit post láser', 
-			
-			'mask_astringent_liquid_powder': 	'Máscara astringente liq+polvo', 
-			
-			'mask_astringent_liquid': 			'Máscara astringente liq', 
-			
-			'mask_astringent_powder': 			'Máscara astringente polvo', 
-			
-			'nctf': 							'Nctf', 
-			
-			'solar_protector': 					'Protector solar', 
-			
-			'q54': 								'Q54', 
-			
-			'tretinoina': 						'Tretinoina', 
-
-
-			'acneclean': 						'Acnéclean', 
-
-			'vip_card': 						'Tarjeta Vip', 
-
-
-
-			'notil': 					'Notil', 
-			'bepanthen': 				'Bepanthen', 
-			'serum': 					'Suero fisiológico', 
-			'gause': 					'Gasa de kit', 
-			'redoxon': 					'Redoxon', 
-
-			'token': 					'Token', 
-
-
-			# Proliant 
-			'dexpantenol_5ml':			'Dexpantenol 5ml', 
-			'fillderma_ultra': 			'Fillderma ultra', 
-			'formula_1':				'Fórmula 1', 
-
-}
-
-
-
-
-
 
 
 
 
 # Get Ticket Name 
-@api.multi
-def get_ticket_name(self, treatment, zone, pathology, family, x_type, name_short):
-
+def gen_ticket_name(self, treatment, zone, pathology, family, x_type, name_short):
 	#print
-	#print 'Get Ticket Name'
+	#print 'Gen Ticket Name'
 	#print x_type, name_short, family, treatment, zone, pathology
-	#print 
 
 
+	# Init 
+	name_ticket = 'x'
 
 	if family == False: 
 		family = 'x'
@@ -300,47 +262,49 @@ def get_ticket_name(self, treatment, zone, pathology, family, x_type, name_short
 
 
 
-	name_ticket = 'x'
 
-
-	# Service 
-	if x_type == 'service': 
-
-		if family == 'laser': 
-			#name_ticket = _hap[treatment] + ' ' + zone + ' ' + pathology 
-
-			if pathology in _hap: 
-				name_ticket = _hap[treatment] + ' ' + _hap[zone] + ' ' + _hap[pathology]
-			else: 
-				name_ticket = _hap[treatment] + ' ' + _hap[zone] + ' ' + pathology 
-
-
-		elif family == 'consultation': 
-			if name_short in _hac: 
-				name_ticket = _hac[name_short] 
-
-		else: 
-			if treatment in _hap: 
-				name_ticket = _hap[treatment] 
+# Product 
+	if x_type == 'product': 
+		if name_short in _dic_prod: 
+			name_ticket = _dic_prod[name_short] 
 
 
 
-
-
-
-	# Product 
+# Service 
+	#if x_type == 'service': 
 	else: 
-		if name_short in _hac: 
-			name_ticket = _hac[name_short] 
+
+		# Consultation
+		if family == 'consultation': 
+
+			if name_short in _dic_con: 
+				name_ticket = _dic_con[name_short] 
 
 
+		# Laser 
+		elif family == 'laser': 
+
+			#if pathology in _hap: 
+			if pathology in _dic_pat: 
+				#name_ticket = _hap[treatment] + ' ' + _hap[zone] + ' ' + _hap[pathology]
+				name_ticket = _dic_tre[treatment] + ' ' + _dic_zon[zone] + ' ' + _dic_pat[pathology]
+
+
+			else: 
+				#name_ticket = _hap[treatment] + ' ' + _hap[zone] + ' ' + pathology 
+				name_ticket = _dic_tre[treatment] + ' ' + _dic_zon[zone] + ' ' + pathology 
+
+
+
+		# Other 
+		else: 
+			#if treatment in _hap: 
+			if treatment in _dic_tre: 
+				#name_ticket = _hap[treatment] 
+				name_ticket = _dic_tre[treatment] 
 
 
 
 	#print name_ticket
 	#print 
-
 	return name_ticket
-
-
-

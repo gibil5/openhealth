@@ -2,6 +2,119 @@
 
 
 
+# -----------------------------------------------------------  Email and Phone ------------------------------------------------------
+	# Email 
+	@api.onchange('email')
+	def _onchange_email(self):
+		#self.email = self.email.strip().lower() if self.email != False else 'don'
+		self.email = self.email.strip().lower() if self.email != False else ''
+
+	# Phone 
+	@api.onchange('phone_3')
+	def _onchange_phone_3(self):
+		return lib.test_for_digits(self, self.phone_3)
+
+
+
+# -----------------------------------------------------------  DNI and RUC ------------------------------------------------------
+
+	# Test DNI - For Digits and for Length
+	@api.onchange('x_dni')
+	def _onchange_x_dni(self):
+		ret = lib.test_for_digits(self, self.x_dni)
+		if ret != 0: 
+			return ret
+		ret = lib.test_for_length(self, self.x_dni, 8)
+		if ret != 0: 
+			return ret
+
+	# Test RUC - For Digits and for Length
+	@api.onchange('x_ruc')	
+	def _onchange_x_ruc(self):
+		ret = lib.test_for_digits(self, self.x_ruc)
+		if ret != 0: 
+			return ret
+		ret = lib.test_for_length(self, self.x_ruc, 11)
+		if ret != 0: 
+			return ret
+
+
+
+
+# ----------------------------------------------------------- Patient 4 - Vip ------------------------------------------------------
+
+# Patient 4 - Vip 
+		
+		# Init
+		name = 'REVILLA REVILLA JOSEX'
+		sex = 'Male'
+		street = 'Av. San Borja Norte 610'
+		street2 = 'San Borja'
+		street2_char = 'Lima'
+		city = 'Lima'
+
+		x_first_name = 'Josex' 
+		x_last_name = 'Revilla Revilla'
+		x_first_contact = 'none'
+
+		#x_dni = '09817190'
+		x_id_doc_type = 'dni'
+		x_id_doc = '12345678'
+
+		# Clear - Patient 
+ 		patients = self.env['oeh.medical.patient'].search([
+																('name', '=', name), 
+														],).unlink()
+
+		# Clear - Card 
+ 		cards = self.env['openhealth.card'].search([
+																('patient_name', '=', name), 
+		
+														],)
+ 		for card in cards: 
+ 			card.unlink()
+
+
+
+		# Create Patient 
+		patient = self.env['oeh.medical.patient'].create({
+															'name': 	name,
+															'street': 	street, 
+															'street2': 	street2, 
+															'city': 	city, 
+															'sex': 		sex, 
+															'street2_char': 	street2_char, 
+															'x_first_name': x_first_name, 
+															'x_last_name': 	x_last_name, 
+															'x_first_contact': 	x_first_contact, 
+
+															'x_id_doc_type':	x_id_doc_type,
+															'x_id_doc':			x_id_doc,  
+												})
+		#print patient_2.name
+
+		# Create Card 
+		#card = self.env['openhealth.card'].create({
+		#													'patient_name': 	name,
+		#										})
+
+		# Create Treatment 
+		chief_complaint = 'acne_active'
+		treatment = patient.treatment_ids.create({
+															'physician': 		doctor_id, 
+															'chief_complaint': 	chief_complaint,
+															'patient': 			patient_2.id, 	
+			})
+		#print treatment 
+
+		# Create Services 
+		ret = cre.create_services(self, treatment)
+
+		patient_4 = patient
+
+
+
+
 
 # ----------------------------------------------------------- Appointments ------------------------------------------------------
 	# Appointments 

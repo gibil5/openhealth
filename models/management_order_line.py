@@ -3,9 +3,8 @@
 # 	Management Order Line 
 # 
 # 	Created: 			28 May 2018
-# 	Last updated: 		30 Aug 2018
+# 	Last updated: 		12 Sep 2018
 #
-
 from openerp import models, fields, api
 import ord_vars
 import prodvars
@@ -17,6 +16,65 @@ class management_order_line(models.Model):
 	_name = 'openhealth.management.order.line'
 
 	_description = "Openhealth Management Order Line"
+
+
+
+# ----------------------------------------------------------- Electronic ------------------------------------------------------
+
+	# Receptor 
+	receptor = fields.Char(
+			string='Receptor', 
+		)
+
+	id_doc_type = fields.Char(
+			string='Doc Id Tipo', 
+			default=".", 
+		)
+
+	id_doc_type_code = fields.Char(
+			string='Codigo', 
+			default=".", 
+		)
+
+	id_doc = fields.Char(
+			'Doc Id', 
+			default=".", 
+		)
+
+
+
+
+	# Order 
+	x_type = fields.Char(
+			'Tipo', 
+		)
+
+	type_code = fields.Char(
+			'Codigo', 
+		)
+
+	currency_code = fields.Char(
+			'Moneda', 
+			default="PEN", 
+		)
+
+
+
+
+
+	# Firm 
+	firm = fields.Char(
+			'Firm', 
+			default='SERVICIOS MÉDICOS ESTÉTICOS S.A.C', 
+		)
+
+	ruc = fields.Char(
+			'Ruc', 
+			default='20523424221', 
+		)
+
+
+
 
 
 

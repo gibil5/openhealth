@@ -1,90 +1,28 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
-	<data noupdate='1'>
+	<data noupdate='0'>
 
 
 
-		<!-- Product Category --> 
+<!-- Product Category --> 
 		<record id='cosmetology' model='product.category'>
 			<field name='name'>Cosmeatria</field>
 		</record>
 
 
 
-		<!-- Data - Services -->
 
-		<record id='dit_fac_dfc_30m_one' model='product.template'>
+<!-- Data - Services - Cosmeto -->
+
+
+
+		<!-- LASER TRIACTIVE + CARBOXITERAPIA + CAMARA DE REDUCCION - Todo Cuerpo - Reduccion de peso y medidas - 1 - 60 min -->
+		<record id='tcr_boa_rwm_60m_one' model='product.template'>
+
+			<field name='name'>LASER TRIACTIVE + CARBOXITERAPIA + CAMARA DE REDUCCION - Todo Cuerpo - Reduccion de peso y medidas - 60 min - 1</field>
+			<field name='x_name_short'>tcr_boa_rwm_60m_one</field>
+
 			<field name='type'>service</field>
-			<field name='x_name_short'>dit_fac_dfc_30m_one</field>
-			<field name='name'>PUNTA DE DIAMANTES - Rostro - Limpieza facial profunda - 1 - 30 min</field>
-			<field name='x_treatment'>diamond_tip</field>
-			<field name='x_zone'>face</field>
-			<field name='x_pathology'>deep_face_cleansing</field>
-			<field name='price'>200</field>
-			<field name='x_date_created'>2017-03-29 15:32:51 UTC</field>
-			<field name='x_time'>30 min</field>
-			<field name='x_sessions'>1</field>
-			<field name='x_price_vip'></field>
-			<field name='x_family'>cosmetology</field>
-
-			<field name='categ_id' ref="cosmetology"/>
-		</record>
-
-		<record id='tcr_boa_rwm_six' model='product.template'>
-			<field name='type'>service</field>
-			<field name='x_name_short'>tcr_boa_rwm_six</field>
-			<field name='name'>LASER TRIACTIVE + CARBOXITERAPIA + CAMARA DE REDUCCION - Todo Cuerpo - Reduccion de peso y medidas - 6 - 60 min</field>
-			<field name='x_treatment'>triactive_carboxytherapy_reductionchamber</field>
-			<field name='x_zone'>body_all</field>
-			<field name='x_pathology'>reduction_weight_measures</field>
-			<field name='price'>1800</field>
-			<field name='x_date_created'>2017-03-29 15:32:51 UTC</field>
-			<field name='x_time'>60 min</field>
-			<field name='x_sessions'>6</field>
-			<field name='x_price_vip'></field>
-			<field name='x_family'>cosmetology</field>
-
-			<field name='categ_id' ref="cosmetology"/>
-		</record>
-
-		<record id='car_bod_rfa_30m_one' model='product.template'>
-			<field name='type'>service</field>
-			<field name='x_name_short'>car_bod_rfa_30m_one</field>
-			<field name='name'>CARBOXITERAPIA - Cuerpo - Rejuvenecimiento Facial - 1 - 30 min</field>
-			<field name='x_treatment'>carboxytherapy</field>
-			<field name='x_zone'>body</field>
-			<field name='x_pathology'>rejuvenation_face</field>
-			<field name='price'>200</field>
-			<field name='x_date_created'>2017-03-29 15:32:51 UTC</field>
-			<field name='x_time'>30 min</field>
-			<field name='x_sessions'>1</field>
-			<field name='x_price_vip'></field>
-			<field name='x_family'>cosmetology</field>
-
-			<field name='categ_id' ref="cosmetology"/>
-		</record>
-
-		<record id='dit_fac_dfc_30m_six' model='product.template'>
-			<field name='type'>service</field>
-			<field name='x_name_short'>dit_fac_dfc_30m_six</field>
-			<field name='name'>PUNTA DE DIAMANTES - Rostro - Limpieza facial profunda - 6 - 30 min</field>
-			<field name='x_treatment'>diamond_tip</field>
-			<field name='x_zone'>face</field>
-			<field name='x_pathology'>deep_face_cleansing</field>
-			<field name='price'>900</field>
-			<field name='x_date_created'>2017-03-29 15:32:51 UTC</field>
-			<field name='x_time'>30 min</field>
-			<field name='x_sessions'>6</field>
-			<field name='x_price_vip'></field>
-			<field name='x_family'>cosmetology</field>
-
-			<field name='categ_id' ref="cosmetology"/>
-		</record>
-
-		<record id='tcr_boa_rwm_one' model='product.template'>
-			<field name='type'>service</field>
-			<field name='x_name_short'>tcr_boa_rwm_one</field>
-			<field name='name'>LASER TRIACTIVE + CARBOXITERAPIA + CAMARA DE REDUCCION - Todo Cuerpo - Reduccion de peso y medidas - 1 - 60 min</field>
 			<field name='x_treatment'>triactive_carboxytherapy_reductionchamber</field>
 			<field name='x_zone'>body_all</field>
 			<field name='x_pathology'>reduction_weight_measures</field>
@@ -98,16 +36,20 @@
 			<field name='categ_id' ref="cosmetology"/>
 		</record>
 
-		<record id='tca_fdn_rfa_30m_six' model='product.template'>
+
+		<!-- LASER TRIACTIVE + CARBOXITERAPIA + CAMARA DE REDUCCION - Todo Cuerpo - Reduccion de peso y medidas - 6 - 60 min -->
+		<record id='tcr_boa_rwm_60m_six' model='product.template'>
+
+			<field name='name'>LASER TRIACTIVE + CARBOXITERAPIA + CAMARA DE REDUCCION - Todo Cuerpo - Reduccion de peso y medidas - 60 min - 6</field>
+			<field name='x_name_short'>tcr_boa_rwm_60m_six</field>
+
 			<field name='type'>service</field>
-			<field name='x_name_short'>tca_fdn_rfa_30m_six</field>
-			<field name='name'>LASER TRIACTIVE + CARBOXITERAPIA - Rostro, Papada y Cuello - Reafirmacion - 6 - 30 min</field>
-			<field name='x_treatment'>triactive_carboxytherapy</field>
-			<field name='x_zone'>face_doublechin_neck</field>
-			<field name='x_pathology'>reaffirmation</field>
-			<field name='price'>1500</field>
+			<field name='x_treatment'>triactive_carboxytherapy_reductionchamber</field>
+			<field name='x_zone'>body_all</field>
+			<field name='x_pathology'>reduction_weight_measures</field>
+			<field name='price'>1800</field>
 			<field name='x_date_created'>2017-03-29 15:32:51 UTC</field>
-			<field name='x_time'>30 min</field>
+			<field name='x_time'>60 min</field>
 			<field name='x_sessions'>6</field>
 			<field name='x_price_vip'></field>
 			<field name='x_family'>cosmetology</field>
@@ -115,44 +57,14 @@
 			<field name='categ_id' ref="cosmetology"/>
 		</record>
 
-		<record id='car_bod_rfa_30m_six' model='product.template'>
+
+		<!-- Data -->
+		<record id='tcr_boa_rwm_60m_twelve' model='product.template'>
+
+			<field name='name'>LASER TRIACTIVE + CARBOXITERAPIA + CAMARA DE REDUCCION - Todo Cuerpo - Reduccion de peso y medidas - 60 min - 12</field>
+			<field name='x_name_short'>tcr_boa_rwm_60m_twelve</field>
+
 			<field name='type'>service</field>
-			<field name='x_name_short'>car_bod_rfa_30m_six</field>
-			<field name='name'>CARBOXITERAPIA - Cuerpo - Rejuvenecimiento Facial - 6 - 30 min</field>
-			<field name='x_treatment'>carboxytherapy</field>
-			<field name='x_zone'>body</field>
-			<field name='x_pathology'>rejuvenation_face</field>
-			<field name='price'>900</field>
-			<field name='x_date_created'>2017-03-29 15:32:51 UTC</field>
-			<field name='x_time'>30 min</field>
-			<field name='x_sessions'>6</field>
-			<field name='x_price_vip'></field>
-			<field name='x_family'>cosmetology</field>
-
-			<field name='categ_id' ref="cosmetology"/>
-		</record>
-
-		<record id='car_fac_rfa_30m_one' model='product.template'>
-			<field name='type'>service</field>
-			<field name='x_name_short'>car_fac_rfa_30m_one</field>
-			<field name='name'>CARBOXITERAPIA - Rostro - Rejuvenecimiento Facial - 1 - 30 min</field>
-			<field name='x_treatment'>carboxytherapy</field>
-			<field name='x_zone'>face</field>
-			<field name='x_pathology'>rejuvenation_face</field>
-			<field name='price'>200</field>
-			<field name='x_date_created'>2017-03-29 15:32:51 UTC</field>
-			<field name='x_time'>30 min</field>
-			<field name='x_sessions'>1</field>
-			<field name='x_price_vip'></field>
-			<field name='x_family'>cosmetology</field>
-
-			<field name='categ_id' ref="cosmetology"/>
-		</record>
-
-		<record id='tcr_boa_rwm' model='product.template'>
-			<field name='type'>service</field>
-			<field name='x_name_short'>tcr_boa_rwm</field>
-			<field name='name'>LASER TRIACTIVE + CARBOXITERAPIA + CAMARA DE REDUCCION - Todo Cuerpo - Reduccion de peso y medidas - 12 - 60 min</field>
 			<field name='x_treatment'>triactive_carboxytherapy_reductionchamber</field>
 			<field name='x_zone'>body_all</field>
 			<field name='x_pathology'>reduction_weight_measures</field>
@@ -166,27 +78,132 @@
 			<field name='categ_id' ref="cosmetology"/>
 		</record>
 
-		<record id='tca_fdn_rfa_30m' model='product.template'>
+
+
+
+
+
+
+
+		<!-- Data -->
+		<record id='dit_fac_dfc_30m_one' model='product.template'>
+
+			<field name='name'>PUNTA DE DIAMANTES - Rostro - Limpieza facial profunda - 30 min - 1</field>
+			<field name='x_name_short'>dit_fac_dfc_30m_one</field>
+
 			<field name='type'>service</field>
-			<field name='x_name_short'>tca_fdn_rfa_30m</field>
-			<field name='name'>LASER TRIACTIVE + CARBOXITERAPIA - Rostro, Papada y Cuello - Reafirmacion - 12 - 30 min</field>
-			<field name='x_treatment'>triactive_carboxytherapy</field>
-			<field name='x_zone'>face_doublechin_neck</field>
-			<field name='x_pathology'>reaffirmation</field>
-			<field name='price'>2400</field>
+			<field name='x_treatment'>diamond_tip</field>
+			<field name='x_zone'>face</field>
+			<field name='x_pathology'>deep_face_cleansing</field>
+			<field name='price'>200</field>
 			<field name='x_date_created'>2017-03-29 15:32:51 UTC</field>
 			<field name='x_time'>30 min</field>
-			<field name='x_sessions'>12</field>
+			<field name='x_sessions'>1</field>
 			<field name='x_price_vip'></field>
 			<field name='x_family'>cosmetology</field>
 
 			<field name='categ_id' ref="cosmetology"/>
 		</record>
 
-		<record id='car_fac_rfa_30m_six' model='product.template'>
+
+
+
+
+
+		<!-- Data -->
+		<record id='car_bod_rfa_30m_one' model='product.template'>
+
+			<field name='name'>CARBOXITERAPIA - Cuerpo - Rejuvenecimiento Facial - 30 min - 1</field>
+			<field name='x_name_short'>car_bod_rfa_30m_one</field>
+
 			<field name='type'>service</field>
+			<field name='x_treatment'>carboxytherapy</field>
+			<field name='x_zone'>body</field>
+			<field name='x_pathology'>rejuvenation_face</field>
+			<field name='price'>200</field>
+			<field name='x_date_created'>2017-03-29 15:32:51 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'></field>
+			<field name='x_family'>cosmetology</field>
+
+			<field name='categ_id' ref="cosmetology"/>
+		</record>
+
+
+		<!-- Data -->
+		<record id='dit_fac_dfc_30m_six' model='product.template'>
+
+			<field name='name'>PUNTA DE DIAMANTES - Rostro - Limpieza facial profunda - 30 min - 6</field>
+			<field name='x_name_short'>dit_fac_dfc_30m_six</field>
+
+			<field name='type'>service</field>
+			<field name='x_treatment'>diamond_tip</field>
+			<field name='x_zone'>face</field>
+			<field name='x_pathology'>deep_face_cleansing</field>
+			<field name='price'>900</field>
+			<field name='x_date_created'>2017-03-29 15:32:51 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'></field>
+			<field name='x_family'>cosmetology</field>
+
+			<field name='categ_id' ref="cosmetology"/>
+		</record>
+
+
+
+
+		<!-- Data -->
+		<record id='car_bod_rfa_30m_six' model='product.template'>
+
+			<field name='name'>CARBOXITERAPIA - Cuerpo - Rejuvenecimiento Facial - 30 min - 6</field>
+			<field name='x_name_short'>car_bod_rfa_30m_six</field>
+
+			<field name='type'>service</field>
+			<field name='x_treatment'>carboxytherapy</field>
+			<field name='x_zone'>body</field>
+			<field name='x_pathology'>rejuvenation_face</field>
+			<field name='price'>900</field>
+			<field name='x_date_created'>2017-03-29 15:32:51 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'></field>
+			<field name='x_family'>cosmetology</field>
+
+			<field name='categ_id' ref="cosmetology"/>
+		</record>
+
+
+		<!-- Data -->
+		<record id='car_fac_rfa_30m_one' model='product.template'>
+
+			<field name='name'>CARBOXITERAPIA - Rostro - Rejuvenecimiento Facial - 1 - 30 min</field>
+			<field name='x_name_short'>car_fac_rfa_30m_one</field>
+
+			<field name='type'>service</field>
+			<field name='x_treatment'>carboxytherapy</field>
+			<field name='x_zone'>face</field>
+			<field name='x_pathology'>rejuvenation_face</field>
+			<field name='price'>200</field>
+			<field name='x_date_created'>2017-03-29 15:32:51 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>1</field>
+			<field name='x_price_vip'></field>
+			<field name='x_family'>cosmetology</field>
+
+			<field name='categ_id' ref="cosmetology"/>
+		</record>
+
+
+
+		<!-- Data -->
+		<record id='car_fac_rfa_30m_six' model='product.template'>
+
+			<field name='name'>CARBOXITERAPIA - Rostro - Rejuvenecimiento Facial - 30 min - 6</field>
 			<field name='x_name_short'>car_fac_rfa_30m_six</field>
-			<field name='name'>CARBOXITERAPIA - Rostro - Rejuvenecimiento Facial - 6 - 30 min</field>
+
+			<field name='type'>service</field>
 			<field name='x_treatment'>carboxytherapy</field>
 			<field name='x_zone'>face</field>
 			<field name='x_pathology'>rejuvenation_face</field>
@@ -200,10 +217,25 @@
 			<field name='categ_id' ref="cosmetology"/>
 		</record>
 
-		<record id='tca_fdn_rfa_30m_one' model='product.template'>
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- Data -->
+		<record id='tca_fdn_rea_30m_one' model='product.template'>
+
+			<field name='name'>LASER TRIACTIVE + CARBOXITERAPIA - Rostro, Papada y Cuello - Reafirmacion - 30 min - 1</field>
+			<field name='x_name_short'>tca_fdn_rea_30m_one</field>
+
 			<field name='type'>service</field>
-			<field name='x_name_short'>tca_fdn_rfa_30m_one</field>
-			<field name='name'>LASER TRIACTIVE + CARBOXITERAPIA - Rostro, Papada y Cuello - Reafirmacion - 1 - 30 min</field>
 			<field name='x_treatment'>triactive_carboxytherapy</field>
 			<field name='x_zone'>face_doublechin_neck</field>
 			<field name='x_pathology'>reaffirmation</field>
@@ -216,6 +248,51 @@
 
 			<field name='categ_id' ref="cosmetology"/>
 		</record>
+
+		<!-- Data -->
+		<record id='tca_fdn_rea_30m_six' model='product.template'>
+
+			<field name='name'>LASER TRIACTIVE + CARBOXITERAPIA - Rostro, Papada y Cuello - Reafirmacion - 30 min - 6</field>
+			<field name='x_name_short'>tca_fdn_rea_30m_six</field>
+
+			<field name='type'>service</field>
+			<field name='x_treatment'>triactive_carboxytherapy</field>
+			<field name='x_zone'>face_doublechin_neck</field>
+			<field name='x_pathology'>reaffirmation</field>
+			<field name='price'>1500</field>
+			<field name='x_date_created'>2017-03-29 15:32:51 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>6</field>
+			<field name='x_price_vip'></field>
+			<field name='x_family'>cosmetology</field>
+
+			<field name='categ_id' ref="cosmetology"/>
+		</record>
+
+
+		<!-- Data -->
+		<record id='tca_fdn_rea_30m_twelve' model='product.template'>
+
+			<field name='name'>LASER TRIACTIVE + CARBOXITERAPIA - Rostro, Papada y Cuello - Reafirmacion - 30 min - 12</field>
+			<field name='x_name_short'>tca_fdn_rea_30m_twelve</field>
+
+			<field name='type'>service</field>
+			<field name='x_treatment'>triactive_carboxytherapy</field>
+			<field name='x_zone'>face_doublechin_neck</field>
+			<field name='x_pathology'>reaffirmation</field>
+			<field name='price'>2400</field>
+			<field name='x_date_created'>2017-03-29 15:32:51 UTC</field>
+			<field name='x_time'>30 min</field>
+			<field name='x_sessions'>12</field>
+			<field name='x_price_vip'></field>
+			<field name='x_family'>cosmetology</field>
+
+			<field name='categ_id' ref="cosmetology"/>
+		</record>
+
+
+
+
 
 	</data>
 </openerp>

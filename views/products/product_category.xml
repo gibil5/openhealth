@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+		<!-- TREE -->
+		<record model="ir.ui.view" id="product.product_category_list_view">
+			<field name="name">product.category.tree</field>
+			<field name="model">product.category</field>
+			<field name="type">tree</field>
+			<field name="priority" eval="1"/>
+			<field name="arch" type="xml">
+
+				<tree string="Product Category Tree"    default_order="name" >
+
+					<field name="name"/>
+
+					<field name="id"/>
+
+					<field name="parent_id"/>
+				</tree>
+			</field>
+		</record>
+
+
+		<!-- Window action -->
+		<record model="ir.actions.act_window" id="product_category_list_action">
+			<field name="name">Product Categories</field>
+			<field name="res_model">product.category</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+
+
+	</data>
+</openerp>

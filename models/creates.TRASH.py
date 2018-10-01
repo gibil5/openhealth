@@ -34,3 +34,29 @@ def create_order(self, target):
 		pl_id = 1
 
 	#pl_id = pl.id 
+
+
+
+# 1 Oct 2018
+
+	# Unlink Patient
+	#patients = self.env['oeh.medical.patient'].search([
+	#														('name', '=', name), 
+	#												],).unlink()
+
+	# Unlink Partner 
+	#partners = self.env['res.partner'].search([
+	#														('name', '=', name), 
+	#												],).unlink()
+	
+
+	# Unlink - Card
+ 	#cards = self.env['openhealth.card'].search([
+	#														('patient_name', '=', name), 	
+	#													],)
+ 	#for card in cards: 
+ 	#	card.unlink()
+
+
+
+ 	

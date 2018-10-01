@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <openerp>
-	<data noupdate='1'>
+	<data noupdate='0'>
 
 
 
@@ -70,7 +70,8 @@
 
 
 
-		<!-- Patients no id code --> 
+		<!-- Patients All --> 
+<!--		
 		<menuitem 	id="emr_patients_all_menu" 
 					name="Pacientes Todos" 
 					parent="emr_menu"
@@ -78,7 +79,7 @@
 
 					action="patient_all_list_action"
 					/>
-
+-->
 
 
 
@@ -470,7 +471,6 @@
 			parent="main_products_menu"
 			/>
 
-
 		<menuitem id="product_menu" 
 			name="Productos"
 			parent="products_menu"
@@ -483,24 +483,97 @@
 
 
 
-<!-- Productos --> 			
-		<menuitem 	id="prods_menu" 
 
-					name="Productos"
-			
+
+<!-- Productos y Servicios --> 			
+		<menuitem 	id="prod_ser_menu" 
 					parent="main_products_menu"
+					sequence="3"
 
-					sequence="4"
+					name="Todo"
+				/>
+
+			<!-- All -->
+			<menuitem 	id="prod_ser_all_menu" 	
+						parent="prod_ser_menu"
+						sequence="1"
+
+						name="Todo"
+
+						action="product_template_list_action"
 					/>
 
 
-			<menuitem 	id="prods_product_menu" 
-						name="Productos"
+			<!-- All -->
+			<menuitem 	id="prod_ser_all_saleok_menu" 	
+						parent="prod_ser_menu"
+						sequence="2"
+
+						name="Todo - Venta"
+
+						action="product_template_saleok_list_action"
+					/>
+
+
+
+			<!-- All -->
+			<menuitem 	id="prod_ser_all_notsaleok_menu" 	
+						parent="prod_ser_menu"
+						sequence="3"
+
+						name="Todo - Not Sale Ok"
+
+						action="product_template_notsaleok_list_action"
+					/>
+
+
+
+
+
+			<!-- All -->
+			<menuitem 	id="prod_ser_all_consu_menu" 	
+						parent="prod_ser_menu"
+						sequence="4"
+
+						name="Todo - Consu"
+
+						action="product_template_consu_list_action"
+					/>
+
+
+
+
+			<!-- All -->
+			<menuitem 	id="prod_ser_all_inac_menu" 	
+						parent="prod_ser_menu"
+						sequence="5"
+
+						name="Todo - Inactvo"
+
+						action="product_template_inac_list_action"
+					/>
+
+
+
+
+<!-- Productos --> 			
+		<menuitem 	id="prods_menu" 
+					parent="main_products_menu"
+					sequence="4"
+
+					name="Productos"
+				/>
+
+			
+			<!-- Products -->
+			<menuitem 	id="prods_product_menu" 	
 						parent="prods_menu"
 						sequence="1"
 
-						action="product_template_stockable_list_action"/>
+						name="Productos"
 
+						action="product_template_product_list_action"
+					/>
 
 
 
@@ -517,22 +590,34 @@
 
 
 
+<!-- All -->
+			<menuitem 	id="prods_services_menu" 
+						parent="services_menu"
+						sequence="-2"
+
+						name="Servicios"
+
+						action="product_template_service_list_action"
+					/>
+
+
+
+
 
 <!-- Laser -->
-			<menuitem 	id="prods_services_quick_menu" 
-						name="QUICK LASER"
-						parent="services_menu"
-						sequence="0"
-						action="product_template_service_quick_list_action"/>
-
-
-
 			<menuitem 	id="prods_services_co2_menu" 
 						name="Laser Co2"
 						parent="services_menu"
-						sequence="1"
+						sequence="0"
 						action="product_template_service_co2_list_action"/>
 
+
+
+			<menuitem 	id="prods_services_quick_menu" 
+						name="QUICK LASER"
+						parent="services_menu"
+						sequence="1"
+						action="product_template_service_quick_list_action"/>
 
 
 			<menuitem 	id="prods_services_excilite_menu" 
@@ -560,13 +645,25 @@
 
 
 
+<!-- Cosmetology -->
+			<menuitem 	id="prods_services_cosetology_menu" 
+						name="Cosmeatria"
+						parent="services_menu"
+						sequence="5"
+
+						action="product_template_service_cosmetology_list_action"/>
+
+
 
 <!-- Medical -->
 			<menuitem 	id="prods_services_medical_menu" 
 						name="T. Médico"
 						parent="services_menu"
-						sequence="5"
+						sequence="6"
 						action="product_template_service_medical_list_action"/>
+
+
+
 
 
 
@@ -575,21 +672,15 @@
 			<menuitem 	id="prods_services_consultation_menu" 
 						name="Consultas"
 						parent="services_menu"
-						sequence="6"
+						sequence="7"
 						action="product_template_service_consultation_list_action"/>
 
 
 
-<!-- Cosmetology -->
-			<menuitem 	id="prods_services_cosetology_menu" 
-						name="Cosmeatria"
-						parent="services_menu"
-						sequence="7"
-
-						action="product_template_service_cosmetology_list_action"/>
 
 
 <!-- Other -->
+<!--
 			<menuitem 	id="prods_services_other_menu" 
 						parent="services_menu"
 						sequence="8"
@@ -597,21 +688,61 @@
 						name="Otros"
 
 						action="product_template_service_other_list_action"/>
-
-
-
-
-
-
-
-
-<!--
-			<menuitem 	id="prods_services_menu" 
-						name="Todos"
-						parent="services_menu"
-						sequence="10"
-						action="product_template_service_list_action"/>
 -->
+
+
+
+
+
+<!-- Inactive -->
+		<menuitem 	id="services_inactive_menu" 
+
+					parent="main_products_menu"
+			
+					sequence="5"
+
+					name="Inactivos"
+					/>
+
+
+			<!-- Productos -->
+			<menuitem 	id="prods_product_inactive_menu" 
+
+						parent="services_inactive_menu"
+				
+						sequence="1"
+
+						name="Productos"
+
+						action="product_template_product_inactive_list_action"
+					/>
+
+
+
+			<!-- Servicios -->
+			<menuitem 	id="prods_services_inactive_menu" 
+
+						parent="services_inactive_menu"
+				
+						sequence="2"
+
+						name="Servicios"
+
+						action="product_template_service_inactive_list_action"
+					/>
+
+
+			<!-- Medical -->
+			<menuitem 	id="prods_services_medical_inactive_menu" 
+
+						parent="services_inactive_menu"
+				
+						sequence="6"
+
+						name="T. Médico"
+
+						action="product_template_service_medical_inactive_list_action"/>
+
 
 
 
@@ -624,7 +755,7 @@
 
 					parent="main_products_menu"
 					
-					sequence="5"
+					sequence="6"
 
 					groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors"
 					/>

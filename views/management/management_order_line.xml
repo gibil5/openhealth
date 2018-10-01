@@ -11,9 +11,26 @@
 			<field name="arch" type="xml">
 				<tree string="management order line Tree">
 
+					<field name="ruc"/>
+
+
+					<field name="receptor"/>
 					<field name="patient"/>
+
+
+					<field name="id_doc_type"/>
+					<field name="id_doc_type_code"/>
+					<field name="id_doc"/>
+
 					
+
 					<field name="x_date_created"/>
+
+<!--
+-->
+					<field name="x_type"/>
+					<field name="type_code"/>
+
 
 					<field name="serial_nr"/>
 
@@ -27,7 +44,13 @@
 
 					<field name="product_uom_qty"/>
 
+
+<!--
 					<field name="price_subtotal"/>
+-->
+					<field name="price_net"/>
+					<field name="price_tax"/>
+					<field name="price_total"/>
 				</tree>
 			</field>
 		</record>

@@ -1,20 +1,15 @@
 # -*- coding: utf-8 -*-
 #
-#
 # 	Marketing Order Line 
+#
+# 	Created: 			28 May 2018
+# 	Last updated: 		30 Aug 2018
 # 
-
 from openerp import models, fields, api
-
-#import openerp.addons.decimal_precision as dp
-
 
 class marketing_order_line(models.Model):
 
-
-
 	_inherit='openhealth.line'
-
 
 	_name = 'openhealth.marketing.order.line'
 

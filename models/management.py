@@ -835,7 +835,6 @@ class Management(models.Model):
 
 
 		# Orders 
-		#orders,count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end)
 		orders,count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end, self.state_arr)
 
 

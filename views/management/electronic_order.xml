@@ -38,16 +38,25 @@
 					
 
 
-					<field name="price_net"/>
 
-					<field name="price_tax"/>
 
-					<field name="price_total"/>
+					<field name="amount_total_net"/>
+
+					<field name="amount_total_tax"/>
+
+					<field name="amount_total"/>
+
 
 
 
 					<field name="electronic_line_ids"/>
+
 <!--
+					<field name="price_net"/>
+					<field name="price_tax"/>
+					<field name="price_total"/>
+
+
 					<field name="patient"/>
 					<field name="ruc"/>
 

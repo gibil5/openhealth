@@ -72,6 +72,7 @@
 
 		<!-- Patients All --> 
 <!--		
+-->
 		<menuitem 	id="emr_patients_all_menu" 
 					name="Pacientes Todos" 
 					parent="emr_menu"
@@ -79,7 +80,6 @@
 
 					action="patient_all_list_action"
 					/>
--->
 
 
 
@@ -95,8 +95,6 @@
 					parent="emr_menu"
 					sequence="5"
 					action="treatment_list_action"
-
-				
 					/>
 
 
@@ -117,6 +115,32 @@
 				
 					/>
 -->
+
+
+
+		<!-- Patients Test --> 
+		<menuitem 	id="emr_patients_test_menu" 
+
+					name="Pacientes Test" 
+			
+					parent="emr_menu"
+			
+					sequence="6"
+
+					action="patient_test_list_action"
+					/>
+
+		<!-- Treatments Test -->
+		<menuitem 	id="emr_treatments_test_menu" 
+					name="Tratamientos Test" 
+					parent="emr_menu"
+					sequence="7"
+					action="treatment_test_list_action"
+					/>
+
+
+
+
 
 
 

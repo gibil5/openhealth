@@ -1910,27 +1910,28 @@ class sale_order(models.Model):
 
 
 # Cycle - Begin
+		
 		# Create and Init - PM 
 		self.create_payment_method()
-
-
-		# Payment Method 
-		#self.x_payment_method.saledoc = 'ticket_receipt'
-
+		# Type 
 		self.x_payment_method.saledoc = ord_vars._dic_tc_type[test_case]
-
 
 
 		print self.x_payment_method.name
 		self.x_payment_method.go_back()
 		print self.x_payment_method.state
-
 		
 		# Order
-		self.validate()					# This ! 
-		
+		self.validate()					
 		self.action_confirm_nex()
 		self.print_ticket()
+
+
+		# Cancel 
+		if test_case in ['ticket_invoice_cancel', 'ticket_receipt_cancel']: 
+			self.cancel_order()
+
+
 # Cycle - End
 
 

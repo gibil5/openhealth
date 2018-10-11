@@ -163,8 +163,14 @@
 
 						<group 		col="2"		groups='openhealth.roots'  >
 							<group>
+
+			                    <field name="container"/>
+			                    <field name="state_arr"/>
+
+<!--
 			                    <field name="test_target"/>
 			                    <field name="legacy"/>
+-->
 							</group>
 							<group>
 								<field name="delta_1"/>

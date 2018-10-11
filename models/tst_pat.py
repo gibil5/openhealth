@@ -2,7 +2,7 @@
 #
 # 	tst_pat.py
 #  	
-# 	Integration Tests for the Patient Class
+# 	Test Case for - Patients
 #
 #	Created: 			28 Sep 2018
 #	Last up: 	 		28 Sep 2018
@@ -10,250 +10,279 @@
 import creates as cre
 
 
-# ----------------------------------------------------------- Test Integration - Treatment ------------------------------------------------------
-# Test Init - Patient  
-def test_init(self, container_id, patient_id=False, partner_id=False, doctor_id=False, treatment_id=False, pl_id=False):
+# ----------------------------------------------------------- Test Cases - Treatment ------------------------------------------------------
+# Test Cases - Patients
+def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id=False, treatment_id=False, pl_id=False):
 	print 
 	print 'Tst - Patient - Test Init'
 	print self 
 
 
-	# Init
-	patient_1 = False
-	patient_2 = False
-	patient_3 = False
-	patient_4 = False
-	patient_5 = False
-	patient_6 = False
-	patient_7 = False
+	_pars = [
+				# Patient 1 - Passport
+				{
+						'test_case': 	'passport, ticket_receipt', 
+
+						'name': 		'NUÑEZ NUÑEZ FATIMA', 
+						'name_last': 	'nuñez nuñez', 
+						'name_first':  	'fatima', 
+						'ruc': 			False, 
+						'firm': 		False, 
+
+						'id_doc_type': 	'passport', 
+						'id_doc':  		'PA-123456789', 
+						'dni':			False, 
+
+						'sex': 			'Female', 
+						'address': 		'Av. San Borja Norte 610,San Borja,Lima',						
+
+						'id_code':  	False,
+				}, 
+
+
+				# Patient 2 - CE
+				{
+						'test_case': 	'foreign_card, ticket_receipt', 
+
+						'name': 		'RABELAIS RABELAIS FRANCOIS', 
+						'name_last': 	'rabelais rabelais', 
+						'name_first':  	'francois', 
+						'ruc': 			False, 
+						'firm': 		False, 
+
+						'id_doc_type': 	'foreign_card', 
+						'id_doc':  		'CE-123456789', 
+						'dni':			False, 
+
+						'sex': 			'Male', 
+						'address': 		'Av. San Borja Norte 610,San Borja,Lima',						
+
+						'id_code':  	False,
+				}, 
 
 
 
-# Patient 1 - Passport
+				# Patient 3 - PTP
+				{
+						'test_case': 	'ptp, ticket_receipt', 
 
-	# Init
-	test_case = 'passport, ticket_receipt'
+						'name': 		'TOTTI TOTTI FRANCESCO', 
+						'name_last': 	'totti totti', 
+						'name_first':  	'francesco', 
+						'ruc': 			False, 
+						'firm': 		False, 
 
-	id_doc_type = 'passport'
-	id_doc = 'PA-123456789'
+						'id_doc_type': 	'ptp', 
+						'id_doc':  		'PTP-12345678', 
+						'dni':			False, 
+
+						'sex': 			'Male', 
+						'address': 		'Av. San Borja Norte 610,San Borja,Lima',						
+
+						'id_code':  	False,
+				}, 
 
 
 
-	name = 'NUÑEZ NUÑEZ FATIMA'
-	name_last = 'nuñez nuñez'
-	name_first = 'fatima'
+				# Patient 4 - OTHER
+				{
+						'test_case': 	'other, ticket_receipt', 
 
-	sex = 'Female'
-	address = 'Av. San Borja Norte 610,San Borja,Lima'
+						'name': 		'MICHELOT MICHELOT IVANNA', 
+						'name_last': 	'michelot michelot', 
+						'name_first':  	'ivanna', 
+						'ruc': 			False, 
+						'firm': 		False, 
+
+						'id_doc_type': 	'other', 
+						'id_doc':  		'1234567', 
+						'dni':			False, 
+
+						'sex': 			'Female', 
+						'address': 		'Av. San Borja Norte 610,San Borja,Lima',						
+
+						'id_code':  	False,
+				}, 
+
+
+
+
+
+				# Patient 5 - DNI
+				{
+						'test_case': 	'dni, ticket_receipt', 
+
+						'name': 		'REVILLA REVILLA JOSEX', 
+						'name_last': 	'revilla revilla', 
+						'name_first':  	'josex', 
+						'ruc': 			False, 
+						'firm': 		False, 
+
+						'id_doc_type': 	'dni', 
+						'id_doc':  		'12345678', 
+						'dni':			False, 
+
+						'sex': 			'Male', 
+						'address': 		'Av. San Borja Norte 610,San Borja,Lima',						
+
+						'id_code':  	False,
+				}, 
+
+
+
+				# Patient 6 - RUC
+				{
+						'test_case': 	'other, ticket_invoice', 
+
+						'name': 		'RONDON RONDON SEBASTIAN', 
+						'name_last': 	'rondon rondon', 
+						'name_first':  	'sebastian', 
+						'ruc': 			'12345678902', 
+						'firm': 		'Rondon y Asociados', 
+
+						'id_doc_type': 	'other', 
+						'id_doc':  		'12345', 
+						'dni':			False, 
+
+						'sex': 			'Male', 
+						'address': 		'Av. San Borja Norte 610,San Borja,Lima',						
+
+						'id_code':  	False,
+				}, 
+
+
+
+				#  Patient 7 - DNI, Legacy 
+				{
+						'test_case': 	'dni, ticket_receipt, legacy', 
+
+						'name': 		'NEO NEO NEODIUMX', 
+						'name_last': 	'neo neo', 
+						'name_first':  	'neodiumx', 
+						'ruc': 			False, 
+						'firm': 		False, 
+
+						'id_doc_type': 	False, 
+						'id_doc':  		False, 
+						'dni':			'49171890', 
+
+						'sex': 			'Male', 
+						'address': 		'Av. San Borja Norte 610,San Borja,Lima',						
+
+						'id_code':  	'000003',
+				}, 
+
+
+
+				# Patient 8 - Ticket Receipt Canceled 
+				{
+						'test_case': 	'dni, ticket_receipt_cancel', 
+
+						'name': 		'DIBALA DIBALA PAOLO', 
+						'name_last': 	'dibala dibala', 
+						'name_first':  	'paolo', 
+						'ruc': 			False, 
+						'firm': 		False, 
+
+						'id_doc_type': 	'dni', 
+						'id_doc':  		'49171891', 
+						'dni':			False, 
+
+						'sex': 			'Male', 
+						'address': 		'Av. San Borja Norte 610,San Borja,Lima',						
+
+						'id_code':  	False,
+				}, 
+
+
+				# Patient 9 - Ticket Invoice Canceled
+				{
+						'test_case': 	'dni, ticket_invoice_cancel', 
+
+						'name': 		'COMANECI COMANECI NADIA', 
+						'name_last': 	'comaneci comaneci', 
+						'name_first':  	'nadia', 
+						'ruc': 			'12345678903', 
+						'firm': 		'Comaneci y Asociados', 
+
+						'id_doc_type': 	'dni', 
+						'id_doc':  		'12345679', 
+						'dni':			False, 
+
+						'sex': 			'Female', 
+						'address': 		'Av. San Borja Norte 610,San Borja,Lima',						
+
+						'id_code':  	False,
+				}, 
+
+
+
+
+
+				# x
+				#{
+				#		'test_case': 	'', 
+
+				#		'name': 		'', 
+				#		'name_last': 	'', 
+				#		'name_first':  	'', 
+				#		'ruc': 			False, 
+				#		'firm': 		False, 
+
+				#		'id_doc_type': 	'', 
+				#		'id_doc':  		'', 
+				#		'dni':			False, 
+
+				#		'sex': 			'Female', 
+				#		'address': 		'Av. San Borja Norte 610,San Borja,Lima',						
+
+				#		'id_code':  	False,
+				#}, 
+		]
+
+
 	
+	pat_array = []
 
+	for par in _pars: 
+		print par 
+		print par['test_case']
+		print par['name']
+		print 
 
-	# Nils 
-	name_last = ''
-	name_first = ''
-	#doctor_id = False
-	ruc = False
-	firm = False
 
+		# Init
+		test_case = 	par['test_case']
 
-	# Create 
-	patient = cre.create_patient(self, container_id, test_case, name, sex, address, id_doc_type, id_doc, ruc, firm, doctor_id, name_last, name_first)
+		id_doc_type = 	par['id_doc_type']
+		id_doc = 		par['id_doc']
+		dni = 			par['dni']
 
-	patient_1 = patient
+		name = 			par['name']
+		name_last =		par['name_last']
+		name_first = 	par['name_first']
 
+		sex = 			par['sex']
+		address = 		par['address']
+		
+		# Nils 
+		name_last = 	par['name_last']
+		name_first = 	par['name_first']
+		ruc = 			par['ruc']
+		firm = 			par['firm']
 
+		id_code = 		par['id_code']
 
 
-# Patient 2 - CE
+		# Create 
+		#patient = cre.create_patient(self, container_id, test_case, name, sex, address, id_doc_type, id_doc, ruc, firm, doctor_id, name_last, name_first)
+		patient = cre.create_patient(self, container_id, test_case, name, sex, address, id_doc_type, id_doc, ruc, firm, doctor_id, name_last, name_first, id_code, dni)
 
-	# Init
-	test_case = 'foreign_card, ticket_receipt'
 
-	id_doc_type = 'foreign_card'
-	id_doc = 'CE-123456789'
-
-
-	name = 'RABELAIS RABELAIS FRANCOIS'
-
-	sex = 'Male'
-	address = 'Av. San Borja Norte 610,San Borja,Lima'
-	
-
-
-
-	# Nils 
-	name_last = 'rabelais rabelais'
-	name_first = 'francois'
-	#doctor_id = False
-	ruc = False
-	firm = False
-
-
-	# Create 
-	patient = cre.create_patient(self, container_id, test_case, name, sex, address, id_doc_type, id_doc, ruc, firm, doctor_id, name_last, name_first)
-	patient_2 = patient
-
-
-
-# Patient 3 - PTP
-
-	# Init
-	test_case = 'ptp, ticket_receipt'
-
-	id_doc_type = 'ptp'
-	id_doc = 'PTP-12345678'
-
-
-	name = 'TOTTI TOTTI FRANCESCO'
-
-	sex = 'Male'
-	address = 'Av. San Borja Norte 610,San Borja,Lima'
-	
-
-
-
-	# Nils 
-	name_last = 'totti totti'
-	name_first = 'francesco'
-	#doctor_id = False
-	ruc = False
-	firm = False
-
-
-	# Create 
-	patient = cre.create_patient(self, container_id, test_case, name, sex, address, id_doc_type, id_doc, ruc, firm, doctor_id, name_last, name_first)
-	patient_3 = patient
-
-
-
-# Patient 4 - OTHER
-
-	# Init
-	test_case = 'other, ticket_receipt'
-
-	id_doc_type = 'other'
-	id_doc = '1234567'
-
-
-	name = 'MICHELOT MICHELOT IVANNA'
-
-	sex = 'Female'
-	address = 'Av. San Borja Norte 610,San Borja,Lima'
-
-
-
-	# Nils 
-	name_last = 'michelot michelot'
-	name_first = 'ivanna'
-	#doctor_id = False
-	ruc = False
-	firm = False
-
-
-	# Create 
-	patient = cre.create_patient(self, container_id, test_case, name, sex, address, id_doc_type, id_doc, ruc, firm, doctor_id, name_last, name_first)
-	patient_4 = patient
-
-
-
-
-# Patient 5 - DNI
-
-	# Init
-	test_case = 'dni, ticket_receipt'
-
-	id_doc_type = 'dni'
-	#id_doc = 'x2345678'
-	id_doc = '12345678'
-
-
-	name = 'REVILLA REVILLA JOSEX'
-
-
-	sex = 'Male'
-	address = 'Av. San Borja Norte 610,San Borja,Lima'
-
-
-
-	# Nils 
-	name_last = 'revilla revilla'
-	name_first = 'josex'
-	#doctor_id = False
-	ruc = False
-	firm = False
-
-
-	# Create 
-	patient = cre.create_patient(self, container_id, test_case, name, sex, address, id_doc_type, id_doc, ruc, firm, doctor_id, name_last, name_first)
-	patient_5 = patient
-
-
-
-
-
-# Patient 6 - RUC
-
-	# Init
-	test_case = 'other, ticket_invoice'
-
-	id_doc_type = 'other'
-	id_doc = '12345'
-
-
-	name = 'RONDON RONDON SEBASTIAN'
-	sex = 'Male'
-	address = 'Av. San Borja Norte 610,San Borja,Lima'
-
-	name_last = 'rondon rondon'
-	name_first = 'sebastian'
-	ruc = '12345678902'
-	firm = 'Rondon y Asociados'
-
-
-
-	# Create 
-	patient = cre.create_patient(self, container_id, test_case, name, sex, address, id_doc_type, id_doc, ruc, firm, doctor_id, name_last, name_first)
-	patient_6 = patient
-
-
-
-
-
-# Patient 7 - DNI, Legacy 
-
-	# Init
-	test_case = 'dni, ticket_receipt, legacy'
-
-	id_doc_type = False
-	id_doc = False
-	dni = '49171890'
-
-
-	name = 'NEO NEO NEODIUMX'
-	sex = 'Male'
-	address = 'Av. San Borja Norte 610,San Borja,Lima'
-
-	name_last = 'neo neo'
-	name_first = 'neodiumx'
-
-	ruc = False
-	firm = False
-
-
-	# Extras 
-	id_code = '000003'
-
-
-	# Create 
-	patient = cre.create_patient(self, container_id, test_case, name, sex, address, id_doc_type, id_doc, ruc, firm, doctor_id, name_last, name_first, id_code, dni)
-	patient_7 = patient
-
-
-
-	# Rets 
-	pat_array = [patient_1, patient_2, patient_3, patient_4, patient_5, patient_6, patient_7]
+		pat_array.append(patient)
 
 	return pat_array
 
-# test_init
+	# test_cases
+
 

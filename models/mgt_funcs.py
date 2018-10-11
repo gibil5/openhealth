@@ -4,6 +4,48 @@ import datetime
 
 
 
+# ----------------------------------------------------------- Get orders - By Type ------------------------------------------------------
+
+def get_orders_filter_type(self, date_bx, date_ex, x_type):
+
+	# Dates	
+	DATETIME_FORMAT = "%Y-%m-%d"
+	date_begin = date_bx + ' 05:00:00'
+	date_end_dt  = datetime.datetime.strptime(date_ex, DATETIME_FORMAT) + datetime.timedelta(hours=24) + datetime.timedelta(hours=5,minutes=0)
+	date_end = date_end_dt.strftime('%Y-%m-%d %H:%M')
+
+
+	# Orders 
+	orders = self.env['sale.order'].search([
+													('state', 'in', ['sale','cancel']),
+													('date_order', '>=', date_begin),													
+													('date_order', '<', date_end),
+
+													('x_type', '=', x_type),
+											],
+												#order='x_serial_nr asc',
+												order='x_counter_value asc',
+												#limit=1,
+											)
+
+	# Count 
+	count = self.env['sale.order'].search_count([
+													('state', 'in', ['sale','cancel']),	
+													('date_order', '>=', date_begin),
+													('date_order', '<', date_end),
+
+													('x_type', '=', x_type),
+											],
+												#order='x_serial_nr asc',
+												#limit=1,
+											)
+
+	return orders, count
+
+# get_orders_filter_type
+
+
+
 # ----------------------------------------------------------- Line Analysis ------------------------------------------------------
 def line_analysis(self, line, verbosity):
 	#print
@@ -84,21 +126,30 @@ def line_analysis(self, line, verbosity):
 
 # ----------------------------------------------------------- Get orders - Simple ------------------------------------------------------
 # Only Sales 
-def get_orders_filter(self, date_bx, date_ex):
+#def get_orders_filter(self, date_bx, date_ex):
+def get_orders_filter(self, date_bx, date_ex, state_arr):
 	#print
 	#print 'Get Orders - Simple'
 	
-
+	# Init 
 	DATETIME_FORMAT = "%Y-%m-%d"
 	date_end_dt  = datetime.datetime.strptime(date_ex, DATETIME_FORMAT) + datetime.timedelta(hours=24) + datetime.timedelta(hours=5,minutes=0)
 
 	date_begin = date_bx + ' 05:00:00'
 	date_end = date_end_dt.strftime('%Y-%m-%d %H:%M')
 
+	_dic = {
+				'sale': 		['sale'], 
+				'sale,cancel': 	['sale','cancel'], 
+				'cancel': 		['cancel'], 
+	}
 
 	# Orders 
 	orders = self.env['sale.order'].search([
-													('state', '=', 'sale'),
+													#('state', '=', 'sale'),
+													#('state', 'in', ['sale']),
+													('state', 'in', _dic[state_arr]),
+
 													('date_order', '>=', date_begin),													
 													('date_order', '<', date_end),
 
@@ -109,7 +160,10 @@ def get_orders_filter(self, date_bx, date_ex):
 											)
 	# Count 
 	count = self.env['sale.order'].search_count([
-													('state', '=', 'sale'),
+													#('state', '=', 'sale'),
+													#('state', 'in', ['sale']),
+													('state', 'in', _dic[state_arr]),
+
 													('date_order', '>=', date_begin),
 													('date_order', '<', date_end),
 

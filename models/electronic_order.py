@@ -13,7 +13,10 @@ class electronic_order(models.Model):
 
 	_inherit='openhealth.management.order.line'
 
-	_description = "Openhealth Electronic Order Line"
+	_description = "Openhealth Electronic Order"
+
+	_order = 'serial_nr asc'
+
 
 
 # ----------------------------------------------------------- Relational ------------------------------------------------------

@@ -40,20 +40,22 @@ def _check_x_serial_nr(self):
 
 	 		order = self.env['sale.order'].search([
 														('x_type', 'in', [x_type]), 
-														('state', 'in', ['sale']), 
+														#('state', 'in', ['sale']), 
+														('state', 'in', ['sale', 'cancel']), 
 													],
 														order='x_counter_value desc',
 														limit=1,
 													)
 	 		last_serial_nr = order.x_serial_nr	
+
 			serial_nr = record.x_serial_nr
 	 		
 			if last_serial_nr != False: 
 		 		sn_1 = int(serial_nr.split('-')[1])
 		 		sn_0 = int(last_serial_nr.split('-')[1])
 		 		delta = sn_1 - sn_0
-		 	#else:  
-		 	#	delta = -1 
+		 	else:  
+		 		delta = -55
 
 
 		 	# Prints 

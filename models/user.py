@@ -22,7 +22,8 @@ def get_counter_value(self):
 
 	# Order 
 	order = self.env['sale.order'].search([
-												('state', '=', 'sale'),
+												#('state', '=', 'sale'),
+												('state', 'in', ['sale','cancel']),
 												('x_type', '=', self.x_type),
 											],
 										#order='date_order desc',

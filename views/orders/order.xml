@@ -817,6 +817,7 @@ Look for the Minimalist experience !!!
 
 					<field name="x_serial_nr" />
 					<field name="x_counter_value" />
+					<field name="x_delta"/>
 
 
 

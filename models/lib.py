@@ -62,10 +62,21 @@ def format_txt(order):
 
 	date_format = "%Y-%m-%d"
 
-	type_prefix = _dic[order.type_code]
-
-
 	additional_account_id = "6"
+
+
+
+	#type_prefix = _dic[order.type_code]
+	
+	# Prefix 
+	if order.state in ['sale']: 
+		type_prefix = _dic_prefix[order.type_code]
+
+	elif order.state in ['cancel']: 
+		type_prefix = _dic_prefix_cancel[order.type_code]
+
+
+
 
 
 
@@ -391,15 +402,22 @@ def print_line(order):
 
 
 #------------------------------------------------ Const ---------------------------------------------------
-_dic = {
-				#'01': 'F', 	# Invoice 
-				#'03': 'B', 	# Receipt 
+_dic_prefix = {
 				'01': 'F001', 	# Invoice 
 				'03': 'B001', 	# Receipt 
 
 				#'14': 'P', 	# Advertisement 
 				#'15': 'N', 	# Sale Note 
 }
+
+_dic_prefix_cancel = {
+				'01': 'FC01', 	# Invoice 
+				'03': 'BC01', 	# Receipt 
+
+				#'14': 'P', 	# Advertisement 
+				#'15': 'N', 	# Sale Note 
+}
+
 
 #------------------------------------------------ File Name ---------------------------------------------------
 # Get File Name 
@@ -412,17 +430,23 @@ def get_file_name(order):
 # Serial
 #0000000575
 
+
+	# Init 
 	#date_format = "%Y_%m_%d-%H_%M_%S"
 	date_format = "%Y%m%d"
 
-
-
-
-	# Init 
 	ruc = 'RUC' + order.ruc 
 	type_code = order.type_code
-	type_prefix = _dic[type_code]
-	
+
+	# Prefix 
+	if order.state in ['sale']: 
+		type_prefix = _dic_prefix[type_code]
+
+	elif order.state in ['cancel']: 
+		type_prefix = _dic_prefix_cancel[type_code]
+
+
+
 	today_name = get_todays_name(date_format)
 
 	
@@ -433,7 +457,10 @@ def get_file_name(order):
 
 	# Id Serial Nr
 	nr_zeros = 8 
+
 	order.id_serial_nr = type_prefix + '-' + str(order.counter_value).zfill(nr_zeros)
+
+
 
 
 	# Prints 

@@ -133,6 +133,8 @@ def create_patient(self, container_id, test_case, name, sex, address, id_doc_typ
 													'patient': 			patient.id, 	
 													'physician': 		doctor_id, 
 													'chief_complaint': 	chief_complaint,
+													
+													'x_test': 	True, 
 			})
 
 	# Services - Create  

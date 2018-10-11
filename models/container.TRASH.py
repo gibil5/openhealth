@@ -64,3 +64,33 @@ class Object():
 
 		return pat_array
 
+
+
+
+
+# 8 Oct 2018 
+
+
+
+	# Export 
+	@api.multi 
+	def test_export(self):
+		print
+		print 'Test - Export'
+
+
+
+		# Search and Clear 
+		#mgt = self.env['openhealth.management'].search([
+															#('name','=', 'Hoy'),
+		#													('name','=', 'Export'),
+		#											],
+													#order='appointment_date desc',
+		#											limit=1,)
+		#mgt.unlink()
+
+
+		# Clear 
+		#self.mgt.unlink()
+
+

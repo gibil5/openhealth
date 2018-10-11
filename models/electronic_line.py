@@ -20,7 +20,6 @@ class electronic_line(models.Model):
 
 	# Electronic  
 	electronic_order_id = fields.Many2one(
-			#'openhealth.electronic.order.line',
 			'openhealth.electronic.order',
 			ondelete='cascade',
 		)

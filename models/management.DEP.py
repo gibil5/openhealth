@@ -406,15 +406,16 @@
 		#print 
 		#print 'Update Qc'
 
+
 		# Checksum 
-
-		# Orders 
 		orders,count = mgt_funcs.get_orders_filter_all(self, self.date_begin, self.date_end)
-
-		# All 
 		for order in orders: 
 			order.check_payment_method()
 			order.check_sum()
+
+
+
+
 
 
 		# Serial Number 

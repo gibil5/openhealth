@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function  # Only needed for Python 2
 #
-#	Export. 
+#	Export
 # 
 #	Created: 			11 Sep 2018
 # 	Last up: 	 		12 Sep 2018
@@ -14,25 +14,12 @@ import io
 
 
 # ----------------------------------------------------------- Create Services  ------------------------------------------------------
-def sync(electronic_order):
-	print 
-	print 'Sync'
-
-
-
-
-
-# ----------------------------------------------------------- Create Services  ------------------------------------------------------
-#def export_txt(electronic_order):
 def export_txt(electronic_order, export_date):
 	#print 
 	#print 'Export Text'
 
-
 	# Init 
 	base_dir = '/Users/gibil/Virtualenvs/Odoo9-min/odoo'
-	#path = base_dir + "/mssoft/ventas"
-	#path = base_dir + "/mssoft/ventas/2018_09_25"
 	path = base_dir + "/mssoft/ventas/" + export_date
 
 
@@ -47,38 +34,55 @@ def export_txt(electronic_order, export_date):
 	os.mkdir(path)  
 
 
-
-	# Init 
-	#dname = "mssoft/ventas"
-	#dname = "mssoft/ventas/2018_09_25"
+	# Dir Name 
 	dname = "mssoft/ventas/" + export_date
 	
 	
+	# Loop 
 	for order in electronic_order: 
-
 
 		# Prints 
 		lib.print_line(order)
 
-
 		# Init 
-		rname = lib.get_file_name(order)
-		
+		rname = lib.get_file_name(order)		
 		fname = dname + '/' + rname + '.txt'
-
 
 		# Open file 
 		f = io.open(fname, mode="w", encoding="utf-8")
-		
+
 
 
 		# Create Content 
 		content = 	lib.get_file_content(order)
 
 
-		
+
+		# Write 		
 		print(content, file=f)
+
+		# Close 		
 		f.close()
+
+
+	# Compress 
+	source = 	dname
+	tarred = 	dname + '.tar'
+	ziped = 	dname + '.tar.gz'
+	
+	#source = 	'./' + export_date
+	#tarred = 	export_date + '.tar'
+	#ziped = 	export_date + '.tar.gz'
+
+
+
+	os.system("rm -rf " + tarred + " " + ziped)
+
+	os.system("tar cvf " + tarred + " " + source)
+
+	os.system("gzip " + tarred)
+
+
 
 # export_txt
 

@@ -11,12 +11,37 @@ import creates
 import export 
 import datetime
 
+import rsync
+
+
 # ----------------------------------------------------------- Container ------------------------------------------------------
 class Container(models.Model):
 
 	_name = 'openhealth.container'
 
 
+
+# ----------------------------------------------------------- Relational ------------------------------------------------------
+
+	# Patients 
+	patient_ids = fields.One2many(
+			'oeh.medical.patient',
+
+			'container_id', 
+		)
+
+
+	# Electronic Order 
+	electronic_order_ids = fields.One2many(
+			'openhealth.electronic.order', 
+
+			'container_id', 
+		)
+
+
+
+
+# ----------------------------------------------------------- Fields ------------------------------------------------------
 	def my_init(self, patient, partner, doctor, treatment):
 		print 
 		print 'My Init'
@@ -28,106 +53,157 @@ class Container(models.Model):
 
 
 
+
 	@api.multi 
-	def init_patients(self): 
+	def create_patients(self): 
 		print 
 		print 'Init Patients'
 
-
+		# Init 
 		pl_id = self.patient.property_product_pricelist.id
 
-		pat_array = tst_pat.test_init(self, self.id, self.patient.id, self.partner.id, self.doctor.id, self.treatment.id, pl_id)
-
+		# Create Patients 
+		pat_array = tst_pat.test_cases(self, self.id, self.patient.id, self.partner.id, self.doctor.id, self.treatment.id, pl_id)
 		print pat_array
-
-
-
-	@api.multi 
-	def test_patients(self): 
-		print 
-		print 'Test Patients'
-
-		for patient in self.patient_ids: 
-
-			print patient
-			patient.test()
-			print 
-
-
-
-	@api.multi 
-	def remove_patients(self): 
-		print 
-		print 'Remove Patients'
-
-		for patient in self.patient_ids: 
-
-			creates.remove_patient(self, patient.name)
-
-
-
-	# Export 
-	@api.multi 
-	def test_export(self):
-		print
-		print 'Test - Export'
-		
-		
-		# Search and Clear 
-		mgt = self.env['openhealth.management'].search([
-															#('name','=', 'Hoy'),
-															('name','=', 'Export'),
-													],
-													#order='appointment_date desc',
-													limit=1,)
-		mgt.unlink()
 
 
 
 		# Init 
 		name = 'Export'
 
-		#date_format = "%Y-%m-%d %H:%M:%S"
-		date_format = "%Y-%m-%d"
-		#date_dt = datetime.datetime.strptime(self.export_date_begin, date_format)
-		date_dt = datetime.datetime.strptime(self.export_date_begin, date_format) + datetime.timedelta(hours=+5,minutes=0)
 
+
+		# Search Mgt
+		self.mgt = self.env['openhealth.management'].search([
+																('name', '=', name), 
+													],
+														#order='write_date desc',
+														limit=1,
+													)
+		# Update 
+		if self.mgt.name != False: 
+			self.mgt.date_begin = self.export_date_begin
+			self.mgt.date_end = self.export_date_end
+
+		# Create Mgt 
+		else:
+			self.mgt = self.env['openhealth.management'].create({
+																'name': 		name,
+																'date_begin': 	self.export_date_begin,
+																'date_end': 	self.export_date_end,
+													})
+
+		print self.mgt
+
+
+
+
+
+	@api.multi 
+	def create_sales(self): 
+		print 
+		print 'Test Patients'
+
+		for patient in self.patient_ids: 
+			print patient
+			patient.test()
+			print 
+
+
+
+
+
+
+
+	# Create Electronic 
+	@api.multi 
+	def create_electronic(self):
+		print
+		print 'Create - Electronic'
+		
+		# Init Dates 
+		date_format = "%Y-%m-%d"
+		date_dt = datetime.datetime.strptime(self.export_date_begin, date_format) + datetime.timedelta(hours=+5,minutes=0)
 		self.export_date = date_dt.strftime(date_format).replace('-', '_')
 
 
+		# Init Mgt 
+		self.mgt.date_begin = self.export_date_begin
+		self.mgt.date_end = self.export_date_end
+		self.mgt.state_arr = 'sale,cancel'
+		self.mgt.container = self.id
 
-
-		# Create 
-		mgt = self.env['openhealth.management'].create({
-															'name': 		name,
-															'date_begin': 	self.export_date_begin,
-															'date_end': 	self.export_date_end,
-												})
-		print mgt
-
-
-		# Update
-		mgt.update_fast()
-		mgt.update_electronic()
+		# Update Mgt 
+		self.mgt.update_fast()
+		self.mgt.update_electronic()
 
 
 
+
+	# Export 
+	@api.multi 
+	def export_txt(self):
+		print
+		print 'Export - Txt'
+		
 		# Export
-		export.export_txt(mgt.electronic_order, self.export_date)
+		export.export_txt(self.mgt.electronic_order, self.export_date)
+
+
+
+
+
+	# Sync Txt
+	@api.multi 
+	def sync_txt(self):
+		print
+		print 'Sync - Txt'
 
 		# Sync 
+		rsync.synchronize()
+
+
+
+
+
+	# QC 
+	@api.multi 
+	def test_qc(self):
+		print
+		print 'Test - Qc'
+
+		# Gap Analysis 
+		self.mgt.update_qc('ticket_invoice')
+		self.mgt.update_qc('ticket_receipt')
+
+
+	# Correct 
+	@api.multi 
+	def test_correct(self):
+		print
+		print 'Test - Correct'
+
+
+
+
+	# Clear 
+	@api.multi 
+	def clear(self): 
+		print 
+		print 'Clear'
+
+		# Patients 
+		for patient in self.patient_ids: 
+			creates.remove_patient(self, patient.name)
+
+		# Electronic 
+		self.mgt.electronic_order.unlink()
 
 
 
 
 # ----------------------------------------------------------- Fields ------------------------------------------------------
 	name = fields.Char()
-
-
-	patient_ids = fields.One2many(
-			'oeh.medical.patient', 
-			'container_id', 
-		)
 
 
 	patient = fields.Many2one(
@@ -165,5 +241,11 @@ class Container(models.Model):
 
 	export_date = fields.Char(
 			'Export Date', 
+		)
+
+
+	# Management 
+	mgt = fields.Many2one(
+			'openhealth.management', 
 		)
 

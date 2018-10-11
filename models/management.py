@@ -14,6 +14,7 @@ import os
 import shutil
 
 import export 
+import mgt_vars
 
 class Management(models.Model):
 	_inherit='openhealth.repo'
@@ -25,6 +26,7 @@ class Management(models.Model):
 
 
 # ----------------------------------------------------------- Export to Text ------------------------------------------------------
+	# Export TXT
 	@api.multi
 	def export_txt(self):
 		print 
@@ -33,14 +35,31 @@ class Management(models.Model):
 		export.export_txt(self.order_line)
 
 
+	# State Array 
+	state_arr = fields.Selection(
 
+			selection = mgt_vars._state_arr_list, 
+
+			string='State Array', 
+
+			default = 'sale', 
+		)
 
 
 
 # ----------------------------------------------------------- Relational ------------------------------------------------------
+
+	# Container 
+	container = fields.Many2one(
+			'openhealth.container', 
+		)
+
+
+
 	# Electronic  
 	electronic_order = fields.One2many(
 			'openhealth.electronic.order', 
+
 			'management_id',
 		)
 
@@ -626,7 +645,8 @@ class Management(models.Model):
 
 
 		# Orders 
-		orders,count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end)
+		#orders,count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end)
+		orders,count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end, self.state_arr)
 		#print orders
 		#print count 
 
@@ -711,7 +731,8 @@ class Management(models.Model):
 
 
 		# Orders 
-		orders,count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end)
+		#orders,count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end)
+		orders,count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end, self.state_arr)
 		#print orders
 		#print count 
 
@@ -738,20 +759,15 @@ class Management(models.Model):
 		self.reset_micro()
 	# reset
 
-# ----------------------------------------------------------- Update - Fast ------------------------------------------------------
-	# Update
-	@api.multi
-	def update_fast(self):  
-		print 
-		print 'Management - Update Fast'
-		
-		t0 = timer()
-		self.update_sales_fast()
-		t1 = timer()
-		self.delta_1 = t1 - t0
-		#print self.delta_1
-		#print 
-	# update
+
+
+
+
+
+
+
+
+
 
 # ----------------------------------------------------------- Update Doctors ------------------------------------------------------
 	# Update
@@ -777,8 +793,20 @@ class Management(models.Model):
 	# update_doctors 
 
 
+# ----------------------------------------------------------- Electronic - Clear ------------------------------------------------------
+	# Clear  
+	@api.multi
+	def clear_electronic(self):  
+		print
+		print 'Electronic - Clear'
+		# Clean 
+		self.electronic_order.unlink()
 
-# ----------------------------------------------------------- Update ------------------------------------------------------
+
+
+
+
+# ----------------------------------------------------------- Update All ------------------------------------------------------
 	# Update
 	@api.multi
 	def update(self):  
@@ -790,17 +818,6 @@ class Management(models.Model):
 		self.update_doctors()
 	# update 
 
-
-
-
-# ----------------------------------------------------------- Electronic - Clear ------------------------------------------------------
-	# Clear  
-	@api.multi
-	def clear_electronic(self):  
-		print
-		print 'Electronic - Clear'
-		# Clean 
-		self.electronic_order.unlink()
 
 
 
@@ -818,7 +835,8 @@ class Management(models.Model):
 
 
 		# Orders 
-		orders,count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end)
+		#orders,count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end)
+		orders,count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end, self.state_arr)
 
 
 
@@ -870,17 +888,17 @@ class Management(models.Model):
 																#'price_unit': 			line.price_unit, 
 
 
-
 																# Totals
 																'amount_total': 		order.amount_total, 
 																'amount_total_net': 	order.x_total_net, 
 																'amount_total_tax': 	order.x_total_tax, 
-
 																'counter_value': 		order.x_counter_value, 
+
 
 
 																# Rel 
 																'management_id': self.id, 
+																'container_id': self.container.id, 
 												})
 			
 
@@ -907,6 +925,72 @@ class Management(models.Model):
 																			})
 
 	# update_electronic
+
+
+
+
+# ----------------------------------------------------------- Update - Fast ------------------------------------------------------
+	# Update
+	@api.multi
+	def update_fast(self):  
+		print 
+		print 'Management - Update Fast'
+		
+		t0 = timer()
+		self.update_sales_fast()
+		t1 = timer()
+		self.delta_1 = t1 - t0
+		#print self.delta_1
+		#print 
+	# update
+
+
+
+
+# ----------------------------------------------------------- Update - QC ------------------------------------------------------
+	# Update QC
+	@api.multi
+	#def update_qc(self):  
+	def update_qc(self, x_type):  
+		print 
+		print 'Management - Update QC'
+		print x_type
+
+
+		# Serial Number 
+
+		# Init 
+		serial_nr_last = 0 
+
+
+
+		# Orders
+		orders,count = mgt_funcs.get_orders_filter_type(self, self.date_begin, self.date_end, x_type)
+
+
+		# Loop
+		for order in orders: 
+			
+			# Serial Nr
+			serial_nr = int(order.x_serial_nr.split('-')[1])
+
+			if serial_nr_last != 0:
+				delta = serial_nr - serial_nr_last
+			else:									# First one 
+				delta = 1
+			
+			serial_nr_last = serial_nr
+
+
+			# Prints
+			print order.x_serial_nr
+			print delta 
+
+
+			# Update 			
+			order.x_delta = delta
+			
+	# update_qc
 
 
 

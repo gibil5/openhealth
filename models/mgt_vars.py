@@ -2,6 +2,15 @@
 
 
 
+# State - Current !!
+_state_arr_list = [
+					('sale', 		'sale'),
+					('sale,cancel', 'sale,cancel'),
+					('cancel', 		'cancel'),
+]
+
+
+
 _h_name = {
 				# 13 Jul 2018 
 				'other': 		'Otro',

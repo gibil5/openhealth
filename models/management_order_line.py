@@ -10,12 +10,45 @@ import ord_vars
 import prodvars
 
 class management_order_line(models.Model):
-
+	
 	_inherit='openhealth.line'
 
 	_name = 'openhealth.management.order.line'
-
+	
 	_description = "Openhealth Management Order Line"
+
+
+
+# ----------------------------------------------------------- Handles - Relational ------------------------------------------------------
+
+	# Container  
+	container_id = fields.Many2one(
+			'openhealth.container', 
+			ondelete='cascade',
+		)
+
+
+	# Management 
+	management_id = fields.Many2one(
+			'openhealth.management',
+			ondelete='cascade',
+		)
+
+
+
+
+	# Doctor 
+	doctor_id = fields.Many2one(			
+			'openhealth.management.doctor.line',
+			ondelete='cascade', 			
+		)
+
+	# Sales TKR
+	management_tkr_id = fields.Many2one(			
+			'openhealth.management',
+			ondelete='cascade',		
+		)
+
 
 
 
@@ -78,25 +111,6 @@ class management_order_line(models.Model):
 
 
 
-# ----------------------------------------------------------- Handles - Relational ------------------------------------------------------
-
-	# Doctor 
-	doctor_id = fields.Many2one(			
-			'openhealth.management.doctor.line',
-			ondelete='cascade', 			
-		)
-
-	# Management 
-	management_id = fields.Many2one(
-			'openhealth.management',
-			ondelete='cascade',
-		)
-
-	# Sales TKR
-	management_tkr_id = fields.Many2one(			
-			'openhealth.management',
-			ondelete='cascade',		
-		)
 
 
 # ----------------------------------------------------------- Fields ------------------------------------------------------

@@ -23,6 +23,7 @@
 
 			<field name="domain">[
 									('x_id_code', '!=', False), 
+									('x_test', '!=', True), 									
 				]</field>
 
 
@@ -53,8 +54,8 @@
 			<field name="view_mode">tree,form,kanban</field>
 
 			<field name="domain">[
-
 									('x_id_code', '=', False), 
+									('x_test', '!=', True), 									
 				]</field>
 
 
@@ -73,14 +74,6 @@
 
 
 
-
-
-
-
-
-
-
-
 		<!-- All -->
 		<record model="ir.actions.act_window" id="patient_all_list_action">		
 			<field name="name">Pacientes Todos</field>
@@ -88,6 +81,7 @@
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form,kanban,graph,pivot</field>
 			<field name="context">{}</field>
+			
 			<field name="domain">[]</field>
 
 			<field name="limit">40</field>
@@ -102,6 +96,38 @@
 			</field>
 			-->
 		</record>
+
+
+
+		<!-- Test -->
+		<record model="ir.actions.act_window" id="patient_test_list_action">		
+			<field name="name">Pacientes Test</field>
+			<field name="res_model">oeh.medical.patient</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form,kanban,graph,pivot</field>
+			<field name="context">{}</field>
+			
+			<field name="domain">[
+
+									('x_test', '=', True), 
+				]</field>
+
+			<field name="limit">40</field>
+
+			<!--
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first treatment
+				</p>
+			</field>
+			-->
+		</record>
+
+
+
+
 
 
 

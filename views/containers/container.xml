@@ -16,39 +16,86 @@
 					<header>
 
 
-								<!-- Test - Init --> 
+								<!-- Create Patients --> 
 								<button 
 									type="object" 
 									class="oe_highlight"
 									
-									name="init_patients" 
+									name="create_patients" 
 									
-									string="Init Pat" 								
+									string="Create Patients" 								
 								/>
 							
-
-								<!-- Test - Pat --> 
+								<!-- Create Sales --> 
 								<button 
 									type="object" 
 									class="oe_highlight"
 									
-									name="test_patients" 
+									name="create_sales" 
 									
-									string="Test Pat" 								
+									string="Create Sales" 								
 								/>
 
 
 
 
-								<!-- Test - Export --> 
+								<!-- QC --> 
 								<button 
 									type="object" 
 									class="oe_highlight"
 									
-									name="test_export" 
+									name="test_qc" 
 									
-									string="Export" 								
+									string="QC" 								
 								/>
+								
+								<!-- Correct --> 
+								<button 
+									type="object" 
+									class="oe_highlight"
+									
+									name="test_correct" 
+									
+									string="Correct" 								
+								/>
+
+
+
+
+								<!-- Create Electronic --> 
+								<button 
+									type="object" 
+									class="oe_highlight"
+									
+									name="create_electronic" 
+									
+									string="Create Electronic" 								
+								/>
+
+								<!-- Export Txt--> 
+								<button 
+									type="object" 
+									class="oe_highlight"
+									
+									name="export_txt" 
+									
+									string="Export Txt" 								
+								/>
+
+								<!-- Sync Txt --> 
+								<button 
+									type="object" 
+									class="oe_highlight"
+									
+									name="sync_txt" 
+									
+									string="Sync Txt" 								
+								/>
+
+
+
+
+
 
 
 
@@ -58,7 +105,7 @@
 									type="object" 
 									class="oe_highlight oe_right"
 									
-									name="remove_patients" 
+									name="clear" 
 									
 									string="Clear" 								
 								/>
@@ -92,7 +139,10 @@
 
 								<field name="export_date" />
 							</group>
-							<group></group>
+							<group>
+
+								<field name="mgt" />
+							</group>
 						</group>
 
 
@@ -108,11 +158,20 @@
 						<!-- Notebook --> 
 						<notebook>
 							
-							<page string="Patients">
+							<page string="Pacientes">
 
 								<field name="patient_ids" />
 
 							</page>
+
+
+							<page string="Electronic Billing">
+
+								<field name="electronic_order_ids" />
+
+							</page>
+
+
 
 						</notebook>
 					</sheet>

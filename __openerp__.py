@@ -15,7 +15,7 @@
 	'description': """
 
 
-		1 Oct 2018
+		11 Oct 2018
 
 
 		Fulcrum (17 Mar 2018 - 13 963)

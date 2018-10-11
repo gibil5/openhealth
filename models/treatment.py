@@ -26,6 +26,15 @@ class Treatment(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Testing - Fields ------------------------------------------------------
+	x_test = fields.Boolean(
+			'Test', 
+		)
+
+
+
+
 # ----------------------------------------------------------- Testing - Treatment Integration ------------------------------------------------------
 	# Treatment - Integration 
 	@api.multi 
@@ -378,7 +387,24 @@ class Treatment(models.Model):
 	def test_case_container(self):
 		print
 		print 'Test - Container'
-		print self 
+		#print self 
+
+		# Create 
+		self.container = self.env['openhealth.container'].create({
+																	'name': 'Tester',
+												})
+
+		# Init 
+		patient_id = self.patient.id
+		doctor_id = self.physician.id
+		treatment_id = self.id 
+		partner_id = self.partner_id.id			
+		#pl_id = self.patient.property_product_pricelist.id   	# Pricelist 
+
+		# Init Container
+		#pat_array = self.container.my_init(self.patient, self.partner_id, self.physician, self.id)
+		self.container.my_init(self.patient, self.partner_id, self.physician, self.id)
+
 
 		#simple = lib_obj.Simple('My Name')
 		#print simple
@@ -386,37 +412,27 @@ class Treatment(models.Model):
 		#print 'mark 1'
 		#print 
 
-		# Create 
-		self.container = self.env['openhealth.container'].create({
-																	'name': 'My Name',
-												})
-		print 'mark 2'
 
-		print self.container
+		#print 'mark 2'
+		#print self.container
 
 
 
 		# Init 
-		patient_id = self.patient.id
-		doctor_id = self.physician.id
-		treatment_id = self.id 
-		partner_id = self.partner_id.id			
-		pl_id = self.patient.property_product_pricelist.id   	# Pricelist 
-
+		#patient_id = self.patient.id
+		#doctor_id = self.physician.id
+		#treatment_id = self.id 
+		#partner_id = self.partner_id.id			
+		#pl_id = self.patient.property_product_pricelist.id   	# Pricelist 
 
 		# Init Container
-		#pat_array = self.container.my_init(patient_id, partner_id, doctor_id, treatment_id, pl_id)
-		
-		pat_array = self.container.my_init(self.patient, self.partner_id, self.physician, self.id)
+		#pat_array = self.container.my_init(self.patient, self.partner_id, self.physician, self.id)
 
 
-		print pat_array
-
-		print self.container.patient_ids
-
-
-		print 'mark 3'
-		print 
+		#print pat_array
+		#print self.container.patient_ids
+		#print 'mark 3'
+		#print 
 
 	# test_case_patients_order
 

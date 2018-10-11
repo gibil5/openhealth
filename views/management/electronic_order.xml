@@ -8,39 +8,50 @@
 <!-- TREE --> 
 		<record model="ir.ui.view" id="electronic_order_view_tree">
 			<field name="name">openhealth.electronic.order.tree</field>
-
 			<field name="model">openhealth.electronic.order</field>
-			
 			<field name="arch" type="xml">
 				<tree string="electronic order Tree">
 
 
-					<field name="ruc"/>
+					<field name="serial_nr"/>
 
 					<field name="x_date_created"/>
 
 
 
+					<field name="x_type"/>
+					
+					<field name="type_code"/>
+
+
+
 					<field name="receptor"/>
-					<field name="patient"/>
+
 
 
 					<field name="id_doc_type"/>
+
 					<field name="id_doc_type_code"/>
+
 					<field name="id_doc"/>
 
 					
 
 
+					<field name="price_net"/>
 
-					<field name="x_type"/>
-					<field name="type_code"/>
+					<field name="price_tax"/>
+
+					<field name="price_total"/>
 
 
-					<field name="serial_nr"/>
 
-
+					<field name="electronic_line_ids"/>
 <!--
+					<field name="patient"/>
+					<field name="ruc"/>
+
+
 					<field name="doctor"/>
 
 					<field name="family"/>
@@ -56,12 +67,6 @@
 <!--
 					<field name="price_subtotal"/>
 -->
-					<field name="price_net"/>
-					<field name="price_tax"/>
-					<field name="price_total"/>
-
-
-					<field name="electronic_line_ids"/>
 				</tree>
 			</field>
 		</record>

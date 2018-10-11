@@ -2,13 +2,15 @@
 <openerp>
 	<data>
 
-
+<!--
+					name="Open Health"
+-->
 
 <!-- Open Health -->
 		<menuitem 	id="main_openhealth_menu" 
 					sequence="1"
 
-					name="Open Health"
+					name="Testing"
 					
 					groups="openhealth.roots"
 			/>

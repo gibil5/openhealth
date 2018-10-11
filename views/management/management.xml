@@ -165,7 +165,10 @@
 							<group>
 
 			                    <field name="container"/>
+			                    
 			                    <field name="state_arr"/>
+
+			                    <field name="type_arr"/>
 
 <!--
 			                    <field name="test_target"/>

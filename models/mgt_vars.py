@@ -2,12 +2,22 @@
 
 
 
-# State - Current !!
+# States
 _state_arr_list = [
 					('sale', 		'sale'),
 					('sale,cancel', 'sale,cancel'),
 					('cancel', 		'cancel'),
 ]
+
+# types
+_type_arr_list = [
+					('ticket_receipt,ticket_invoice,receipt,invoice', 	'ticket_receipt,ticket_invoice,receipt,invoice'),
+
+					('ticket_receipt,ticket_invoice', 	'ticket_receipt,ticket_invoice'),
+					('ticket_receipt', 					'ticket_receipt'),
+					('ticket_invoice', 					'ticket_invoice'),
+]
+
 
 
 

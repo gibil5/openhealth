@@ -57,21 +57,26 @@ class management_order_line(models.Model):
 	# Receptor 
 	receptor = fields.Char(
 			string='Receptor', 
+			required=True, 
 		)
 
 	id_doc_type = fields.Char(
 			string='Doc Id Tipo', 
 			default=".", 
+			required=True, 
 		)
 
 	id_doc_type_code = fields.Char(
 			string='Codigo', 
 			default=".", 
+			required=True, 
 		)
 
 	id_doc = fields.Char(
 			'Doc Id', 
 			default=".", 
+
+			#required=True, 
 		)
 
 

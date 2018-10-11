@@ -130,8 +130,10 @@ class Container(models.Model):
 		# Init Mgt 
 		self.mgt.date_begin = self.export_date_begin
 		self.mgt.date_end = self.export_date_end
-		self.mgt.state_arr = 'sale,cancel'
 		self.mgt.container = self.id
+
+		self.mgt.state_arr = 'sale,cancel'
+
 
 		# Update Mgt 
 		self.mgt.update_fast()
@@ -177,11 +179,24 @@ class Container(models.Model):
 		self.mgt.update_qc('ticket_receipt')
 
 
+
+
 	# Correct 
 	@api.multi 
 	def test_correct(self):
 		print
-		print 'Test - Correct'
+		print 'Correct'
+
+
+		# Correct DNIs
+		for order in self.electronic_order_ids: 
+
+			if order.id_doc in [False]: 
+				
+				if order.id_doc_type in ['dni']: 
+
+					order.id_doc = order.patient.x_dni
+
 
 
 

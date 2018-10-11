@@ -35,15 +35,24 @@ class Management(models.Model):
 		export.export_txt(self.order_line)
 
 
+
 	# State Array 
 	state_arr = fields.Selection(
-
 			selection = mgt_vars._state_arr_list, 
-
-			string='State Array', 
+			string='States', 
 
 			default = 'sale', 
 		)
+
+
+	# Type Array 
+	type_arr = fields.Selection(
+			selection = mgt_vars._type_arr_list, 
+			string='Types', 
+
+			default = 'ticket_receipt,ticket_invoice', 
+		)
+
 
 
 
@@ -646,7 +655,8 @@ class Management(models.Model):
 
 		# Orders 
 		#orders,count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end)
-		orders,count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end, self.state_arr)
+		#orders,count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end, self.state_arr)
+		orders,count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end, self.state_arr, self.type_arr)
 		#print orders
 		#print count 
 
@@ -732,7 +742,8 @@ class Management(models.Model):
 
 		# Orders 
 		#orders,count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end)
-		orders,count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end, self.state_arr)
+		#orders,count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end, self.state_arr)
+		orders,count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end, self.state_arr, self.type_arr)
 		#print orders
 		#print count 
 
@@ -835,7 +846,8 @@ class Management(models.Model):
 
 
 		# Orders 
-		orders,count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end, self.state_arr)
+		#orders,count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end, self.state_arr)
+		orders,count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end, self.state_arr, self.type_arr)
 
 
 

@@ -36,11 +36,19 @@ class electronic_order(models.Model):
 		)
 
 
+
 	# Counter Value 
 	counter_value = fields.Integer(
 			string="Contador", 
 			#default=55, 
 		)
+
+	# Delta 
+	delta = fields.Integer(
+			'Delta',
+		)
+
+
 
 
 	# Amount total 

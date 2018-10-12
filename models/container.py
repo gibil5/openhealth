@@ -181,6 +181,8 @@ class Container(models.Model):
 
 
 
+
+
 	# Correct 
 	@api.multi 
 	def test_correct(self):
@@ -192,10 +194,11 @@ class Container(models.Model):
 		for order in self.electronic_order_ids: 
 
 			if order.id_doc in [False]: 
-				
+
 				if order.id_doc_type in ['dni']: 
 
-					order.id_doc = order.patient.x_dni
+					#order.id_doc = order.patient.x_dni
+					order.patient.x_id_doc = order.patient.x_dni
 
 
 

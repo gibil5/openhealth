@@ -903,7 +903,11 @@ class Management(models.Model):
 																'amount_total': 		order.amount_total, 
 																'amount_total_net': 	order.x_total_net, 
 																'amount_total_tax': 	order.x_total_tax, 
+
+
+																# QC 
 																'counter_value': 		order.x_counter_value, 
+																'delta': 				order.x_delta, 
 
 
 
@@ -961,7 +965,6 @@ class Management(models.Model):
 # ----------------------------------------------------------- Update - QC ------------------------------------------------------
 	# Update QC
 	@api.multi
-	#def update_qc(self):  
 	def update_qc(self, x_type):  
 		print 
 		print 'Management - Update QC'
@@ -998,8 +1001,11 @@ class Management(models.Model):
 			print delta 
 
 
-			# Update 			
+			# Update Delta
 			order.x_delta = delta
+
+			# Update Counter Value 
+			order.x_counter_value = int(order.x_serial_nr.split('-')[1])
 			
 	# update_qc
 

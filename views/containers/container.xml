@@ -82,7 +82,10 @@
 									string="Export Txt" 								
 								/>
 
+
+
 								<!-- Sync Txt --> 
+<!--
 								<button 
 									type="object" 
 									class="oe_highlight"
@@ -91,7 +94,7 @@
 									
 									string="Sync Txt" 								
 								/>
-
+-->
 
 
 

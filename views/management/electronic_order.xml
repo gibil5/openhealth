@@ -15,6 +15,11 @@
 
 					<field name="serial_nr"/>
 
+					<field name="counter_value"/>
+
+					<field name="delta"/>
+
+
 					<field name="x_date_created"/>
 
 

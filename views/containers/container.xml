@@ -16,27 +16,15 @@
 					<header>
 
 
-								<!-- Create Patients --> 
+								<!-- Create Electronic --> 
 								<button 
 									type="object" 
 									class="oe_highlight"
 									
-									name="create_patients" 
+									name="create_electronic" 
 									
-									string="Create Patients" 								
+									string="Create Electronic" 								
 								/>
-							
-								<!-- Create Sales --> 
-								<button 
-									type="object" 
-									class="oe_highlight"
-									
-									name="create_sales" 
-									
-									string="Create Sales" 								
-								/>
-
-
 
 
 								<!-- QC --> 
@@ -62,16 +50,6 @@
 
 
 
-								<!-- Create Electronic --> 
-								<button 
-									type="object" 
-									class="oe_highlight"
-									
-									name="create_electronic" 
-									
-									string="Create Electronic" 								
-								/>
-
 								<!-- Export Txt--> 
 								<button 
 									type="object" 
@@ -86,6 +64,7 @@
 
 								<!-- Sync Txt --> 
 <!--
+-->
 								<button 
 									type="object" 
 									class="oe_highlight"
@@ -94,7 +73,6 @@
 									
 									string="Sync Txt" 								
 								/>
--->
 
 
 
@@ -112,6 +90,28 @@
 									
 									string="Clear" 								
 								/>
+
+								<!-- Create Sales --> 
+								<button 
+									type="object" 
+									class="oe_highlight oe_right"
+									
+									name="create_sales" 
+									
+									string="Create Sales" 								
+								/>
+
+
+								<!-- Create Patients --> 
+								<button 
+									type="object" 
+									class="oe_highlight oe_right"
+									
+									name="create_patients" 
+									
+									string="Create Patients" 								
+								/>
+							
 					</header>
 
 
@@ -161,20 +161,14 @@
 						<!-- Notebook --> 
 						<notebook>
 							
-							<page string="Pacientes">
-
-								<field name="patient_ids" />
-
-							</page>
-
-
 							<page string="Electronic Billing">
-
 								<field name="electronic_order_ids" />
-
 							</page>
 
 
+							<page string="Pacientes">
+								<field name="patient_ids" />
+							</page>
 
 						</notebook>
 					</sheet>
@@ -182,6 +176,8 @@
 			</field>
 		</record>
 		<!-- FORM --> 
+
+
 
 
 

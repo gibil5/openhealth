@@ -152,6 +152,9 @@
 									<tree string="Ventas"	limit="1000"	>	
 
 										<field name="serial_nr"/>
+
+										<field name="state"/>
+
 										<field name="x_type"/>
 
 
@@ -175,7 +178,6 @@
 										<field name="product"/>
 										<field name="product_type"/>
 										
-										<field name="state"/>
 
 										<field name="amount_net"/>										
 										<field name="amount_tax"/>

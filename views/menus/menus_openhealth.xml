@@ -4,13 +4,14 @@
 
 <!--
 					name="Open Health"
+					name="Testing"
 -->
 
 <!-- Open Health -->
 		<menuitem 	id="main_openhealth_menu" 
 					sequence="1"
 
-					name="Testing"
+					name="Electronic Billing"
 					
 					groups="openhealth.roots"
 			/>

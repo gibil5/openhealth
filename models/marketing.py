@@ -7,8 +7,6 @@
 from openerp import models, fields, api
 
 import datetime
-import numpy as np
-import collections
 
 import pat_vars
 
@@ -18,6 +16,10 @@ import mkt_funcs
 #import openerp.addons.decimal_precision as dp
 #import matplotlib.pyplot as plt
 #import pandas as pd
+
+#import numpy as np
+import collections
+
 
 
 class Marketing(models.Model):

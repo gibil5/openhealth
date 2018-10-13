@@ -54,8 +54,8 @@ class Product(models.Model):
 	@api.constrains('name')
 	def _check_name(self):
 
-		#if False: 
-		if True: 
+		if False: 
+		#if True: 
 			for record in self:
 		
 				#if record.name == '0':
@@ -77,8 +77,8 @@ class Product(models.Model):
 	@api.constrains('default_code')
 	def _check_default_code(self):
 
-		#if False: 
-		if True: 
+		if False: 
+		#if True: 
 			for record in self:
 		
 				if record.default_code == '0':
@@ -101,8 +101,8 @@ class Product(models.Model):
 	@api.constrains('type')
 	def _check_type(self):
 
-		#if True: 
 		if False: 
+		#if True: 
 			for record in self:
 				if record.type == 'consu':
 					raise ValidationError("Rec Warning: TYPE not valid: %s" % record.type)
@@ -125,8 +125,8 @@ class Product(models.Model):
 	@api.constrains('x_code')
 	def _check_x_code(self):
 
-		#if False: 
-		if True: 
+		if False: 
+		#if True: 
 			for record in self:
 		
 				#if record.name == '0':
@@ -141,6 +141,7 @@ class Product(models.Model):
 						raise ValidationError("Rec Warning: CODE already exists: %s" % record.x_code)
 
 			# all records passed the test, don't return anything
+
 
 
 

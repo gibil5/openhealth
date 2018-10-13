@@ -490,9 +490,9 @@
 
 
 
-		# Stock 
-		'views/stock/stock.xml',
-		'views/stock/stock_inventory.xml',
+		# Stock - Dep 
+		#'views/stock/stock.xml',
+		#'views/stock/stock_inventory.xml',
 
 
 

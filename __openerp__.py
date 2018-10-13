@@ -635,15 +635,12 @@
 
 
 		# ----------------------------------------------------------- Sale Reports ------------------------------------------------------
-		'views/reports/report_sale_pivots.xml',
-		'views/reports/report_sale_graphs.xml',
-		'views/reports/report_sale_favorites.xml',
-		'views/reports/report_sale_search.xml',
-		'views/reports/report_sale.xml',
-
-		'views/reports/report_sale_months.xml',
-		#'views/reports/report_sale_days.xml',
-
+		#'views/reports/report_sale_pivots.xml',
+		#'views/reports/report_sale_graphs.xml',
+		#'views/reports/report_sale_favorites.xml',
+		#'views/reports/report_sale_search.xml',
+		#'views/reports/report_sale.xml',
+		#'views/reports/report_sale_months.xml',
 
 
 
@@ -658,11 +655,9 @@
 
 
 
-
 		# ----------------------------------------------------------- Security ------------------------------------------------------
 		#'security/openhealth_security.xml',
-		#'security/openhealth_security_readers.xml',
-		
+		#'security/openhealth_security_readers.xml',		
 		#'security/ir.rule.xml',
 		#'security/ir.model.access.csv',
 	],

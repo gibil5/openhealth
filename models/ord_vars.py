@@ -19,9 +19,13 @@ _dic_prefix = {
 _dic_tc_type = {
 					'ticket_invoice': 	'ticket_invoice',	
 					'ticket_receipt': 	'ticket_receipt',
+					'invoice': 			'invoice',	
+					'receipt': 			'receipt',
 
 					'ticket_invoice_cancel': 	'ticket_invoice',	
 					'ticket_receipt_cancel': 	'ticket_receipt',
+					'invoice_cancel': 			'invoice_cancel',	
+					'receipt_cancel': 			'receipt_cancel',
 }
 
 

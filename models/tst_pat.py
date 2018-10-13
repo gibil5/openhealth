@@ -21,7 +21,8 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 	_pars = [
 				# Patient 1 - Passport
 				{
-						'test_case': 	'passport, ticket_receipt', 
+						#'test_case': 	'passport, ticket_receipt', 
+						'test_case': 	'passport, receipt', 
 
 						'name': 		'NUÑEZ NUÑEZ FATIMA', 
 						'name_last': 	'nuñez nuñez', 
@@ -42,7 +43,8 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 
 				# Patient 2 - CE
 				{
-						'test_case': 	'foreign_card, ticket_receipt', 
+						#'test_case': 	'foreign_card, ticket_receipt', 
+						'test_case': 	'foreign_card, invoice', 
 
 						'name': 		'RABELAIS RABELAIS FRANCOIS', 
 						'name_last': 	'rabelais rabelais', 

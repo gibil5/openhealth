@@ -17,6 +17,7 @@ import export
 import mgt_vars
 
 class Management(models.Model):
+	
 	_inherit='openhealth.repo'
 
 	_name = 'openhealth.management'

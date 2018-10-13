@@ -19,7 +19,8 @@ def export_txt(electronic_order, export_date):
 	#print 'Export Text'
 
 	# Init 
-	base_dir = '/Users/gibil/Virtualenvs/Odoo9-min/odoo'
+	#base_dir = '/Users/gibil/Virtualenvs/Odoo9-min/odoo'
+	base_dir = './'
 	path = base_dir + "/mssoft/ventas/" + export_date
 
 

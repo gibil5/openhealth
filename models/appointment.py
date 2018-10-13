@@ -26,6 +26,7 @@ class Appointment(models.Model):
 	x_target = fields.Char()
 	x_machine = fields.Char()
 	x_time = fields.Char()
+	x_date = fields.Char()
 
 
 

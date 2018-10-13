@@ -648,16 +648,13 @@
 
 
 		# ----------------------------------------------------------- Menus ------------------------------------------------------
-		'views/menus/menus.xml',
-
-		'views/menus/menus_caja.xml',
-
-		'views/menus/menus_reporting.xml',
-		'views/menus/menus_openhealth.xml',		# Dev
-
-		'views/menus/menus_account.xml',		# Contabilidad 
-		'views/menus/menus_marketing.xml',		# Marketing 
-		'views/menus/menus_management.xml',		# Gerencia 
+		#'views/menus/menus.xml',
+		#'views/menus/menus_caja.xml',
+		#'views/menus/menus_reporting.xml',
+		#'views/menus/menus_openhealth.xml',		# Dev
+		#'views/menus/menus_account.xml',		# Contabilidad 
+		#'views/menus/menus_marketing.xml',		# Marketing 
+		#'views/menus/menus_management.xml',		# Gerencia 
 
 
 

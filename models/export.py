@@ -18,10 +18,29 @@ def export_txt(electronic_order, export_date):
 	#print 
 	#print 'Export Text'
 
+	#print(os.environ['HOME'])
+
+
+
+
 	# Init 
 	#base_dir = '/Users/gibil/Virtualenvs/Odoo9-min/odoo'
-	base_dir = '.'
+	#base_dir = '.'
+	base_dir = os.environ['HOME']
 	path = base_dir + "/mssoft/ventas/" + export_date
+
+
+
+	# Make  
+	target = base_dir + "/mssoft/"
+	if not os.path.isdir(target):
+		os.mkdir(target)  
+		
+	target = base_dir + "/mssoft/ventas/"
+	if not os.path.isdir(target):
+		os.mkdir(target)  
+
+
 
 
 	# Remove 
@@ -36,7 +55,8 @@ def export_txt(electronic_order, export_date):
 
 
 	# Dir Name 
-	dname = "mssoft/ventas/" + export_date
+	#dname = "mssoft/ventas/" + export_date
+	dname = path
 	
 	
 	# Loop 

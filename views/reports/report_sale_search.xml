@@ -56,12 +56,8 @@
 																]"/>
 
 
-
-
 					<separator/>
 					
-
-
 					<field name="partner_id"/>
 					<field name="product_id"/>
 					<field name="user_id"/>

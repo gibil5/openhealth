@@ -27,6 +27,7 @@
 						<!-- Update Doctors -->
 						<!-- Sales -->
 <!--
+-->
 						<button 
 								type="object" 
 								class="oe_highlight"
@@ -47,7 +48,6 @@
 
 								string="Ver Ventas"	
 						/>
--->
 
 
 

@@ -305,12 +305,13 @@
 			<field name="view_type">form</field>
 			<field name="view_mode">pivot,graph,tree</field>
 			<field name="view_id"></field> 
+<!--			
 			<field name="search_view_id" ref="sale.view_order_product_search"/>
-
+-->
 		   <field name="domain">
 								[
+									('date','&gt;=',time.strftime('%%Y-10-01 05:00:00')),
 									('date','&lt;=',time.strftime('%%Y-11-01 05:00:00')),
-									('date','&gt;=',time.strftime('%%Y-10-01 05:00:00'))
 								]
 			</field>
 

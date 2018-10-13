@@ -27,8 +27,9 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 						'name': 		'NUÑEZ NUÑEZ FATIMA', 
 						'name_last': 	'nuñez nuñez', 
 						'name_first':  	'fatima', 
-						'ruc': 			False, 
-						'firm': 		False, 
+						
+						'ruc': 			'12345678904', 
+						'firm': 		'Nuñez y Asociados', 
 
 						'id_doc_type': 	'passport', 
 						'id_doc':  		'PA-123456789', 
@@ -49,8 +50,9 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 						'name': 		'RABELAIS RABELAIS FRANCOIS', 
 						'name_last': 	'rabelais rabelais', 
 						'name_first':  	'francois', 
-						'ruc': 			False, 
-						'firm': 		False, 
+
+						'ruc': 			'12345678903', 
+						'firm': 		'Rabelais y Asociados', 
 
 						'id_doc_type': 	'foreign_card', 
 						'id_doc':  		'CE-123456789', 
@@ -139,6 +141,7 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 						'name': 		'RONDON RONDON SEBASTIAN', 
 						'name_last': 	'rondon rondon', 
 						'name_first':  	'sebastian', 
+
 						'ruc': 			'12345678902', 
 						'firm': 		'Rondon y Asociados', 
 

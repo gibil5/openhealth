@@ -635,31 +635,31 @@
 
 
 		# ----------------------------------------------------------- Sale Reports ------------------------------------------------------
-		#'views/reports/report_sale_pivots.xml',
-		#'views/reports/report_sale_graphs.xml',
-		#'views/reports/report_sale_favorites.xml',
-		#'views/reports/report_sale_search.xml',
-		#'views/reports/report_sale.xml',
-		#'views/reports/report_sale_months.xml',
+		'views/reports/report_sale_pivots.xml',
+		'views/reports/report_sale_graphs.xml',
+		'views/reports/report_sale_favorites.xml',
+		'views/reports/report_sale_search.xml',
+		'views/reports/report_sale.xml',
+		'views/reports/report_sale_months.xml',
 
 
 
 		# ----------------------------------------------------------- Menus ------------------------------------------------------
-		#'views/menus/menus.xml',
-		#'views/menus/menus_caja.xml',
-		#'views/menus/menus_reporting.xml',
-		#'views/menus/menus_openhealth.xml',		# Dev
-		#'views/menus/menus_account.xml',		# Contabilidad 
-		#'views/menus/menus_marketing.xml',		# Marketing 
-		#'views/menus/menus_management.xml',		# Gerencia 
+		'views/menus/menus.xml',
+		'views/menus/menus_caja.xml',
+		'views/menus/menus_reporting.xml',
+		'views/menus/menus_openhealth.xml',		 
+		'views/menus/menus_account.xml',		 
+		'views/menus/menus_marketing.xml',		 
+		'views/menus/menus_management.xml',		  
 
 
 
 		# ----------------------------------------------------------- Security ------------------------------------------------------
-		#'security/openhealth_security.xml',
-		#'security/openhealth_security_readers.xml',		
-		#'security/ir.rule.xml',
-		#'security/ir.model.access.csv',
+		'security/openhealth_security.xml',
+		'security/openhealth_security_readers.xml',		
+		'security/ir.rule.xml',
+		'security/ir.model.access.csv',
 	],
 
 

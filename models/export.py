@@ -20,7 +20,7 @@ def export_txt(electronic_order, export_date):
 
 	# Init 
 	#base_dir = '/Users/gibil/Virtualenvs/Odoo9-min/odoo'
-	base_dir = './'
+	base_dir = '.'
 	path = base_dir + "/mssoft/ventas/" + export_date
 
 

@@ -26,6 +26,8 @@ class Patient(models.Model):
 
 # ----------------------------------------------------------- Dep ------------------------------------------------------
 	
+	x_service_quick_ids = fields.Char()
+
 	x_nr_quick_hands = fields.Integer()
 	x_nr_quick_body_local = fields.Integer()
 	x_nr_quick_face_local = fields.Integer()

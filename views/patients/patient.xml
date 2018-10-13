@@ -282,15 +282,14 @@
 
 																							('x_legacy', '!=', False), 
 																							('x_treatment_count', '>', '0'), 
+
+
+																		'invisible':	[('x_data_complete', '=', True),], 
 -->
 
 								<field name="x_last_name" 	class="oe_edit_only"
 
 															attrs="{	 
-																		'invisible':	[
-																							('x_data_complete', '=', True), 
-																						], 
-
 																		'required':		[('x_legacy', '!=', True)], 
 																}"	
 
@@ -307,12 +306,14 @@
 
 								<field name="x_first_name" 	class="oe_edit_only"/>
 																		'invisible':	[('x_legacy', '!=', False)], 
+
+
+																		'invisible':	[('x_data_complete', '=', True)], 
 --> 
 
 								<field name="x_first_name" 	class="oe_edit_only"
 
 															attrs="{	 
-																		'invisible':	[('x_data_complete', '=', True)], 
 																		'required':		[('x_legacy', '!=', True)], 
 																}"	
 									/>

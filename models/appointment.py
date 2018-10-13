@@ -11,6 +11,7 @@ import app_vars
 import eval_vars
 import lib
 import user
+
 class Appointment(models.Model):
 
 	_inherit = 'oeh.medical.appointment'
@@ -20,13 +21,11 @@ class Appointment(models.Model):
 
 
 
-
 # ----------------------------------------------------------- Deprecated ------------------------------------------------------
-
-	x_target = fields.Char()
-	x_machine = fields.Char()
-	x_time = fields.Char()
-	x_date = fields.Char()
+	#x_target = fields.Char()
+	#x_machine = fields.Char()
+	#x_time = fields.Char()
+	#x_date = fields.Char()
 
 
 

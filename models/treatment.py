@@ -28,7 +28,7 @@ class Treatment(models.Model):
 
 # ----------------------------------------------------------- Dep ------------------------------------------------------
 	
-	x_machine = fields.Char()
+	#x_machine = fields.Char()
 
 
 

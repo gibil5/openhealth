@@ -4,15 +4,11 @@
 # 
 # Created: 				28 Mayo 2018
 #
-
 from openerp import models, fields, api
-
 #import matplotlib.pyplot as plt
 #import pandas as pd
 #import numpy as np
 #import collections
-
-
 
 
 class Repo(models.Model):

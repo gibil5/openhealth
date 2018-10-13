@@ -88,7 +88,6 @@
 
 
 		# ----------------------------------------------------------- Deprecated ------------------------------------------------------
-
 		#'views/reports/report_sale_months_platform.xml',
 		#'views/reports/report_sale_months_physician.xml',
 		#'views/reports/report_sale_doctors.xml',
@@ -133,9 +132,7 @@
 		#'views/stock/stock_move_all.xml',
 
 
-
 		# ----------------------------------------------------------- Cosmetology - Deprecated ! ------------------------------------------------------
-
 		# Cosmetologies
 		#'views/cosmetologies/cosmetology.xml',
 		#'views/sessions/session_cos.xml',
@@ -147,27 +144,33 @@
 
 
 
-
 		# ----------------------------------------------------------- Quick ------------------------------------------------------
-		
 		#'views/patients/patient_quick.xml',			# Deprecated ? 
 
 
 
-
 		# ----------------------------------------------------------- Style ------------------------------------------------------
-
 		#'views/openhealth.xml',		
 
 
 		
 		# ----------------------------------------------------------- Reservations ------------------------------------------------------
-		
 		#'views/treatments/treatment_reservations.xml',			# Deprecated 
+
 
 
 		# ----------------------------------------------------------- Deprecated ------------------------------------------------------
 		#'views/report_sale/report_sale.xml',
+
+
+
+		# ----------------------------------------------------------- Deprecated ------------------------------------------------------
+		# Stock - Dep 
+		#'views/stock/stock.xml',
+		#'views/stock/stock_inventory.xml',
+
+
+
 
 
 
@@ -490,9 +493,6 @@
 
 
 
-		# Stock - Dep 
-		#'views/stock/stock.xml',
-		#'views/stock/stock_inventory.xml',
 
 
 
@@ -611,17 +611,9 @@
 		# ----------------------------------------------------------- Stock Min - Deprecated ------------------------------------------------------
 		#'views/stock_min/stock_min_inventory.xml',
 		#'views/stock_min/stock_min_inventory_line.xml',
-
 		# Kardex
 		#'views/kardex/kardex.xml',
 
-
-
-
-
-
-
-		# ----------------------------------------------------------- Quality Control ------------------------------------------------------
 
 
 

@@ -12,18 +12,31 @@ import user
 import count_funcs
 import pat_vars
 import creates as cre
-
 import chk_patient as chk
-#import chk
-
 import tst_pat
 
 
-
-
 class Patient(models.Model):
+	
 	_inherit = 'oeh.medical.patient'
+	
 	_order = 'x_id_code desc'
+
+
+
+# ----------------------------------------------------------- Dep ------------------------------------------------------
+	
+	x_nr_quick_hands = fields.Integer()
+	x_nr_quick_body_local = fields.Integer()
+	x_nr_quick_face_local = fields.Integer()
+	x_nr_quick_cheekbones = fields.Integer()
+	x_nr_quick_face_all = fields.Integer()
+	x_nr_quick_face_all_hands = fields.Integer()
+	x_nr_quick_face_all_neck = fields.Integer()
+	x_nr_quick_neck_hands = fields.Integer()
+	x_nr_quick_neck = fields.Integer()
+
+
 
 
 

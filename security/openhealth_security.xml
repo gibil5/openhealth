@@ -4,8 +4,6 @@
 
 
 
-
-
 <!-- Categories --> 
 	   <record model="ir.module.category" id="module_openhealth_category">
 				<field name="name">Open Health</field>
@@ -23,11 +21,10 @@
 
 				<field name="users" eval="[ 
 														(4, ref('base.user_root')), 
-														
+
 														(4, ref('openhealth.rzevallos')), 
 									]"/>
 		</record>
-
 
 
 
@@ -47,13 +44,11 @@
 			<field name="implied_ids" eval="[(4, ref('oehealth.group_oeh_medical_manager'))]"/>
 
 			<field name="users" eval="[ 
+													(4, ref('openhealth.rzevallos')), 
 
-										(4, ref('openhealth.director_clinicachavarri')),
-
-										(4, ref('openhealth.rchavarri_clinicachavarri')),
-
-										(4, ref('openhealth.fchavarri_clinicachavarri')),
-
+													(4, ref('openhealth.director_clinicachavarri')),
+													(4, ref('openhealth.rchavarri_clinicachavarri')),
+													(4, ref('openhealth.fchavarri_clinicachavarri')),
 									]"/>
 		</record>
 

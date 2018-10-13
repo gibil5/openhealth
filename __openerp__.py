@@ -643,6 +643,14 @@
 
 
 
+		# ----------------------------------------------------------- Security ------------------------------------------------------
+		'security/openhealth_security.xml',
+		'security/openhealth_security_readers.xml',		
+		'security/ir.rule.xml',
+		'security/ir.model.access.csv',
+
+
+
 		# ----------------------------------------------------------- Menus ------------------------------------------------------
 		'views/menus/menus.xml',
 		'views/menus/menus_caja.xml',
@@ -653,13 +661,6 @@
 		'views/menus/menus_management.xml',		  
 		'views/menus/menus_qc.xml',
 
-
-
-		# ----------------------------------------------------------- Security ------------------------------------------------------
-		'security/openhealth_security.xml',
-		'security/openhealth_security_readers.xml',		
-		'security/ir.rule.xml',
-		'security/ir.model.access.csv',
 	],
 
 

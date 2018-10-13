@@ -96,14 +96,14 @@ class Product(models.Model):
 
 
 
+
 	# Check Type  
 	@api.constrains('type')
 	def _check_type(self):
 
-		#if False: 
-		if True: 
+		#if True: 
+		if False: 
 			for record in self:
-		
 				if record.type == 'consu':
 					raise ValidationError("Rec Warning: TYPE not valid: %s" % record.type)
 

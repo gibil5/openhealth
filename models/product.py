@@ -37,14 +37,18 @@ class Product(models.Model):
 		)
 
 
+
+
+# ----------------------------------------------------------- Relaxed ! - For Prod ------------------------------------------------------
+
+
 # ----------------------------------------------------------- Constraints - Sql ------------------------------------------------------
 
-	_sql_constraints = [
-							('name_unique','unique(name)', 'SQL Warning: name must be unique !'),
-							('x_name_short_unique','unique(x_name_short)', 'SQL Warning: x_name_short must be unique !'),
-							('x_code_unique','unique(x_code)', 'SQL Warning: x_code must be unique !'),
-							#('x_name_ticket_unique','unique(x_name_ticket)', 'SQL Warning: x_name_ticket must be unique !'),
-						]     
+	#_sql_constraints = [
+	#						('name_unique','unique(name)', 'SQL Warning: name must be unique !'),
+	#						('x_name_short_unique','unique(x_name_short)', 'SQL Warning: x_name_short must be unique !'),
+	#						('x_code_unique','unique(x_code)', 'SQL Warning: x_code must be unique !'),
+	#					]     
 
 
 

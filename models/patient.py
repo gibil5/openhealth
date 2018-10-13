@@ -42,11 +42,11 @@ class Patient(models.Model):
 	# 	Id Code - Nr de Historia
 	# 	Id Doc - Documento de Identidad 
 	
-	_sql_constraints = [
-							('name_unique','unique(name)', 'SQL Warning: name must be unique !'),
-							('x_id_code_unique','unique(x_id_code)', 'SQL Warning: x_id_code must be unique !'),
-							('x_id_doc_unique','unique(x_id_doc)', 'SQL Warning: x_id_doc must be unique !'),
-						]     
+	#_sql_constraints = [
+	#						('name_unique','unique(name)', 'SQL Warning: name must be unique !'),
+	#						('x_id_code_unique','unique(x_id_code)', 'SQL Warning: x_id_code must be unique !'),
+	#						('x_id_doc_unique','unique(x_id_doc)', 'SQL Warning: x_id_doc must be unique !'),
+	#					]     
 
 
 

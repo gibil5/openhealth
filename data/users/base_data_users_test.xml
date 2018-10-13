@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+
+<!-- Ricardo Zevallos -->
+		<record id="rzevallos" model="res.partner">
+			<field name="name">Ricardo Zevallos</field>
+			<field name="email">r.zevallos@free.fr</field>
+			<field name="function">admin</field>
+		</record>
+
+
+		<record id="rzevallos" model="res.users">
+
+			<field name="name">Ricardo Zevallos</field>
+
+			<field name="login">r.zevallos@free.fr</field>
+
+			<field name="password">test</field>
+
+			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+
+			<field name="tz">America/Lima</field>
+
+			<field name="partner_id" ref="rzevallos"/>
+
+		</record>
+
+	</data>
+</openerp> 

@@ -20,16 +20,12 @@ from timeit import default_timer as timer
 import export 
 
 class Treatment(models.Model):	
+
 	_inherit = 'openhealth.process'	
+
 	_name = 'openhealth.treatment'
+
 	_order = 'write_date desc'
-
-
-
-# ----------------------------------------------------------- Dep ------------------------------------------------------
-	
-	#x_machine = fields.Char()
-
 
 
 

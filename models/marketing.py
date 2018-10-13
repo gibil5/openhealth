@@ -10,14 +10,10 @@ import pat_vars
 import mkt_funcs
 import numpy as np
 import collections
-
 #import acc_funcs
 #import openerp.addons.decimal_precision as dp
 #import matplotlib.pyplot as plt
 #import pandas as pd
-
-
-
 
 class Marketing(models.Model):
 

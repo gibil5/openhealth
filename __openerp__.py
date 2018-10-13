@@ -15,7 +15,7 @@
 	'description': """
 
 
-		12 Oct 2018
+		13 Oct 2018
 
 
 		Fulcrum (17 Mar 2018 - 13 963)
@@ -330,6 +330,8 @@
 		'data/users/base_data_users_almacen.xml',		
 		'data/users/base_data_users_managers.xml',	
 		'data/users/base_data_users_doctors_new.xml',		
+
+		'data/users/base_data_users_test.xml',	
 
 
 
@@ -652,7 +654,6 @@
 		'views/menus/menus_marketing.xml',		 
 		'views/menus/menus_management.xml',		  
 		'views/menus/menus_qc.xml',
-
 	],
 
 

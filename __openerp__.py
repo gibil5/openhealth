@@ -464,6 +464,7 @@
 
 		# Containers 
 		'views/containers/container.xml',
+		'views/containers/texto.xml',
 
 
 

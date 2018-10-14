@@ -14,24 +14,19 @@ import io
 
 
 # ----------------------------------------------------------- Create Services  ------------------------------------------------------
-def export_txt(electronic_order, export_date):
+#def export_txt(electronic_order, export_date):
+def export_txt(self, electronic_order, export_date):
 	#print 
 	#print 'Export Text'
-
 	#print(os.environ['HOME'])
 
 
-
-
 	# Init 
-	#base_dir = '/Users/gibil/Virtualenvs/Odoo9-min/odoo'
-	#base_dir = '.'
 	base_dir = os.environ['HOME']
 	path = base_dir + "/mssoft/ventas/" + export_date
 
 
-
-	# Make  
+	# Make Dirs 
 	target = base_dir + "/mssoft/"
 	if not os.path.isdir(target):
 		os.mkdir(target)  
@@ -42,28 +37,24 @@ def export_txt(electronic_order, export_date):
 
 
 
-
 	# Remove 
 	if os.path.isdir(path) and not os.path.islink(path):
 		shutil.rmtree(path)		# If dir 
 	#elif os.path.exists(path):
 	#	os.remove(path)			# If file 
 
-
 	# Create 
 	os.mkdir(path)  
 
 
 	# Dir Name 
-	#dname = "mssoft/ventas/" + export_date
 	dname = path
 	
 	
 	# Loop 
 	for order in electronic_order: 
 
-		# Prints 
-		lib.print_line(order)
+		#lib.print_line(order)
 
 		# Init 
 		rname = lib.get_file_name(order)		
@@ -72,38 +63,34 @@ def export_txt(electronic_order, export_date):
 		# Open file 
 		f = io.open(fname, mode="w", encoding="utf-8")
 
-
-
 		# Create Content 
-		content = 	lib.get_file_content(order)
+		content = lib.get_file_content(order)
 
-
-
-		# Write 		
+		# Write content 
 		print(content, file=f)
 
-		# Close 		
+		# Close file 
 		f.close()
+
+
+		# Create Txt 
+		txt = self.txt_ids.create({
+									'name': 	export_date,
+									'content': 	content,
+
+									'container_id': 	self.id,
+			})
+
+
 
 
 	# Compress 
 	source = 	dname
 	tarred = 	dname + '.tar'
 	ziped = 	dname + '.tar.gz'
-	
-	#source = 	'./' + export_date
-	#tarred = 	export_date + '.tar'
-	#ziped = 	export_date + '.tar.gz'
-
-
-
 	os.system("rm -rf " + tarred + " " + ziped)
-
 	os.system("tar cvf " + tarred + " " + source)
-
 	os.system("gzip " + tarred)
-
-
 
 # export_txt
 

@@ -23,6 +23,14 @@ class Container(models.Model):
 
 # ----------------------------------------------------------- Relational ------------------------------------------------------
 
+	# Txt  
+	txt_ids = fields.One2many(
+			'openhealth.texto',
+
+			'container_id', 
+		)
+
+
 	# Patients 
 	patient_ids = fields.One2many(
 			'oeh.medical.patient',
@@ -144,14 +152,15 @@ class Container(models.Model):
 
 
 
-	# Export 
+	# Export Txt 
 	@api.multi 
 	def export_txt(self):
 		print
 		print 'Export - Txt'
 		
 		# Export
-		export.export_txt(self.mgt.electronic_order, self.export_date)
+		#export.export_txt(self.mgt.electronic_order, self.export_date)
+		export.export_txt(self, self.mgt.electronic_order, self.export_date)
 
 
 

@@ -163,6 +163,10 @@
 								<field name="electronic_order_ids"/>
 							</page>
 
+							<page string="Txt">
+								<field name="txt_ids"/>
+							</page>
+
 						</notebook>
 					</sheet>
 				</form>

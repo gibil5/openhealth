@@ -640,8 +640,8 @@
 		# ----------------------------------------------------------- Security ------------------------------------------------------
 		'security/openhealth_security.xml',
 		'security/openhealth_security_readers.xml',		
-		'security/ir.rule.xml',
 		'security/ir.model.access.csv',
+		#'security/ir.rule.xml', 	# Dep 
 
 
 

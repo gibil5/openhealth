@@ -14,9 +14,9 @@ import user
 
 # ----------------------------------------------------------- Remove Patient  ------------------------------------------------------
 def remove_patient(self, name):
-	print 
-	print 'Remove Patient'
-	print name 
+	#print 
+	#print 'Remove Patient'
+	#print name 
 
 
 	# Unlink Patient
@@ -46,10 +46,10 @@ def remove_patient(self, name):
 # ----------------------------------------------------------- Create Patient  ------------------------------------------------------
 # Create Services - For Treatment
 def create_patient(self, container_id, test_case, name, sex, address, id_doc_type, id_doc, ruc=False, firm=False, doctor_id=False, name_last='', name_first='', id_code=False, dni=False):
-	print
-	print 'Create Patient'
-	print self 
-	print name 
+	#print
+	#print 'Create Patient'
+	#print self 
+	#print name 
 
 
  	# Clear 
@@ -120,7 +120,7 @@ def create_patient(self, container_id, test_case, name, sex, address, id_doc_typ
 												})
 
 
-	print patient
+	#print patient
 
 
 
@@ -150,8 +150,8 @@ def create_patient(self, container_id, test_case, name, sex, address, id_doc_typ
 # ----------------------------------------------------------- Create Services  ------------------------------------------------------
 # Create Services - For Treatment
 def create_services(self, treatment):
-	print
-	print 'Create Services'
+	#print
+	#print 'Create Services'
 
 	# Create Services (Recoms)
 
@@ -257,7 +257,7 @@ def create_order(self, target):
 	
 	# Vip in Prog 
 	if self.x_vip_inprog: 
-		print 'Vip in prog'
+		#print 'Vip in prog'
 		
 		pl = self.env['product.pricelist'].search([
 															('name', '=', 'VIP'), 
@@ -413,13 +413,13 @@ def create_order_lines(self, laser, order_id):
 # ----------------------------------------------------------- Create order lines ------------------------------------------------------
 # Create Order Lines 
 def create_order_lines_micro(self, name_short, price_manual, price_applied, reco_id):		
-	print 
-	print 'Create Order Lines - Micro'
-	print 'name_short: ', name_short
-	print 'price_manual: ', price_manual
-	print 'price_applied:', price_applied
-	print 'reco_id: ', reco_id
-	print 
+	#print 
+	#print 'Create Order Lines - Micro'
+	#print 'name_short: ', name_short
+	#print 'price_manual: ', price_manual
+	#print 'price_applied:', price_applied
+	#print 'reco_id: ', reco_id
+	#print 
 
 
 	# Init
@@ -478,7 +478,7 @@ def create_order_lines_micro(self, name_short, price_manual, price_applied, reco
 	#if price_manual != 0: 
 	if price_manual != -1: 
 
-		print 'Manual Price'
+		#print 'Manual Price'
 
 		ol = self.order_line.create({
 										'name': 		product.name, 
@@ -497,7 +497,7 @@ def create_order_lines_micro(self, name_short, price_manual, price_applied, reco
 	#elif product.x_treatment == 'laser_quick': 	
 	elif product.x_treatment == 'laser_quick' 		and 	price_applied != -1: 
 
-		print 'Quick Laser Price - W Price Applied'
+		#print 'Quick Laser Price - W Price Applied'
 		
 		price_quick = price_applied
 
@@ -517,7 +517,7 @@ def create_order_lines_micro(self, name_short, price_manual, price_applied, reco
 	# Normal case
 	else: 
 		
-		print 'Normal Price'
+		#print 'Normal Price'
 
 		ol = self.order_line.create({
 										'name': 		product.name, 

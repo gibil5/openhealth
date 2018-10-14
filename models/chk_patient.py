@@ -172,7 +172,7 @@ def check_var_patient(self, _model, _name, _length, _bad, uniqueness, format_num
 		# Value 
 		_value = _dic_reco[_name]
 
-		print _value
+		#print _value
 
 		if _value != False: 
 
@@ -250,8 +250,8 @@ def check_x_id_doc(self):
 # -----------------------------------------------------------  Id Code ------------------------------------------------------
 # Check Id Code  - Nr Historia - Uniqueness, Content, Format 
 def check_x_id_code(self):
-	print 
-	print 'Check - Id Code'
+	#print 
+	#print 'Check - Id Code'
 
 	# Init 	
 	_name = 'x_id_code'
@@ -299,8 +299,8 @@ def check_x_id_code(self):
 #------------------------------------------------ Name ---------------------------------------------------
 # Check Name - Uniqueness
 def check_name(self):
-	print 
-	print 'Check - Name'
+	#print 
+	#print 'Check - Name'
 
 	# Init 	
 	var_name = 'name'

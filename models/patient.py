@@ -993,25 +993,20 @@ class Patient(models.Model):
 
 	@api.multi 
 	def test_cycle(self):
-		print 
-		print 'Patient - Test Cycle'
+		#print 
+		#print 'Patient - Test Cycle'
+		#print self.name 
+		#print 
+
 
 		# Unit Testing 
 		#self.test_computes()
 		#self.test_actions()
 		#self.test_services()
 
-
-		print self.name 
-
-		print 
-		print 'Treatments'
+		# Loop 
 		for treatment in self.treatment_ids: 
-
-			print treatment 
-			
 			order = treatment.create_order_con_tst()
-			
 			order.test(self.x_test_case)
 
 

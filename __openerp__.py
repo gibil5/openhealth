@@ -14,14 +14,14 @@
 
 	'description': """
 
-
 		13 Oct 2018
 
-
-		Fulcrum (17 Mar 2018 - 13 963)
+		Fulcrum 
 		
 		Code without Tests is broken by design. Jacob Kaplan-Moss
 		
+		Zero Maintenance is Perfection. 
+
 		My Goal is to achieve Complete Coverage. 
 
 		Stability by Design. Simplicity by Abstraction. 
@@ -33,7 +33,7 @@
 
 		Good order is the beginning of all good things. 
 
-
+		(From 17 Mar 2018 - 13 963)
 
 		EMR - Min - Docean - Github - Travis - Coverage - Proliant - User Stories - Cron Pg Dump  - 
 		Statistical - Machine Learning - Object Oriented - Fulcrum - Coverage Testing - Unit Testing - Electronic Billing - Name Constraints\n

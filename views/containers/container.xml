@@ -8,111 +8,107 @@
 		<record model="ir.ui.view" id="container_form_view">
 			<field name="name">container.form</field>
 			<field name="model">openhealth.container</field>
-
 			<field name="priority" eval="1"/>
-
 			<field name="arch" type="xml">
 				<form string="container Form">
 					<header>
 
 
-								<!-- Create Electronic --> 
-								<button 
-									type="object" 
-									class="oe_highlight"
-									
-									name="create_electronic" 
-									
-									string="Create Electronic" 								
-								/>
-
-
-								<!-- QC --> 
-								<button 
-									type="object" 
-									class="oe_highlight"
-									
-									name="test_qc" 
-									
-									string="QC" 								
-								/>
-								
-								<!-- Correct --> 
-								<button 
-									type="object" 
-									class="oe_highlight"
-									
-									name="test_correct" 
-									
-									string="Correct" 								
-								/>
-
-
-
-
-								<!-- Export Txt--> 
-								<button 
-									type="object" 
-									class="oe_highlight"
-									
-									name="export_txt" 
-									
-									string="Export Txt" 								
-								/>
-
-
-
-								<!-- Sync Txt --> 
-<!--
--->
-								<button 
-									type="object" 
-									class="oe_highlight"
-									
-									name="sync_txt" 
-									
-									string="Sync Txt" 								
-								/>
-
-
-
-
-
-
-
-
-								<!-- Clear --> 
-								<button 
-									type="object" 
-									class="oe_highlight oe_right"
-									
-									name="clear" 
-									
-									string="Clear" 								
-								/>
-
-								<!-- Create Sales --> 
-								<button 
-									type="object" 
-									class="oe_highlight oe_right"
-									
-									name="create_sales" 
-									
-									string="Create Sales" 								
-								/>
-
-
-								<!-- Create Patients --> 
-								<button 
-									type="object" 
-									class="oe_highlight oe_right"
-									
-									name="create_patients" 
-									
-									string="Create Patients" 								
-								/>
+						<!-- Create Electronic --> 
+						<button 
+							type="object" 
+							class="oe_highlight"
 							
+							name="create_electronic" 
+							
+							string="Create Electronic" 								
+						/>
+
+
+						<!-- QC --> 
+						<button 
+							type="object" 
+							class="oe_highlight"
+							
+							name="test_qc" 
+							
+							string="QC" 								
+						/>
+						
+						<!-- Correct --> 
+						<button 
+							type="object" 
+							class="oe_highlight"
+							
+							name="test_correct" 
+							
+							string="Correct" 								
+						/>
+
+
+
+
+						<!-- Export Txt--> 
+						<button 
+							type="object" 
+							class="oe_highlight"
+							
+							name="export_txt" 
+							
+							string="Export Txt" 								
+						/>
+
+
+						<!-- Sync Txt --> 
+						<button 
+							type="object" 
+							class="oe_highlight"
+							
+							name="sync_txt" 
+							
+							string="Sync Txt" 								
+						/>
+
+
+
+
+
+
+
+
+						<!-- Clear --> 
+						<button 
+							type="object" 
+							class="oe_highlight oe_right"
+							
+							name="clear" 
+							
+							string="Clear" 								
+						/>
+
+
+						<!-- Create Sales --> 
+						<button 
+							type="object" 
+							class="oe_highlight oe_right"
+							
+							name="create_sales" 
+							
+							string="Create Sales" 								
+						/>
+
+
+						<!-- Create Patients --> 
+						<button 
+							type="object" 
+							class="oe_highlight oe_right"
+							
+							name="create_patients" 
+							
+							string="Create Patients" 								
+						/>
 					</header>
+
 
 
 
@@ -121,30 +117,28 @@
 
 						<group>
 							<group>								
-								<field name="name" />
+								<field name="name"/>
 							</group>
 							<group>								
+								<field name="mgt"/>
 <!--
 								<field name="patient" />
 								<field name="partner" />
 								<field name="treatment" />
--->
+
 								<field name="doctor" />
+-->
 
 							</group>
 						</group>
 
 						<group>
-							<group>
-								
-								<field name="export_date_begin" />
-								<field name="export_date_end" />
-
-								<field name="export_date" />
+							<group>								
+								<field name="export_date_begin"/>
+								<field name="export_date_end"/>
 							</group>
 							<group>
-
-								<field name="mgt" />
+								<field name="export_date"/>
 							</group>
 						</group>
 
@@ -161,13 +155,12 @@
 						<!-- Notebook --> 
 						<notebook>
 							
-							<page string="Electronic Billing">
-								<field name="electronic_order_ids" />
+							<page string="Pacientes">
+								<field name="patient_ids"/>
 							</page>
 
-
-							<page string="Pacientes">
-								<field name="patient_ids" />
+							<page string="Electronic Billing">
+								<field name="electronic_order_ids"/>
 							</page>
 
 						</notebook>

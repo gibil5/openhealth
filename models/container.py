@@ -80,10 +80,12 @@ class Container(models.Model):
 														#order='write_date desc',
 														limit=1,
 													)
+		
 		# Update 
 		if self.mgt.name != False: 
 			self.mgt.date_begin = self.export_date_begin
 			self.mgt.date_end = self.export_date_end
+
 
 		# Create Mgt 
 		else:
@@ -259,7 +261,9 @@ class Container(models.Model):
 
 	export_date = fields.Char(
 			'Export Date', 
+			readonly=True,
 		)
+
 
 
 	# Management 

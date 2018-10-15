@@ -37,8 +37,10 @@ _dic_type_code = {
 					'ticket_invoice': 	'01',	
 					'ticket_receipt': 	'03',
 
-					'invoice': 			'01',
-					'receipt': 			'03',
+					#'invoice': 		'01',
+					#'receipt': 		'03',
+					'invoice': 			'11',		# Not Sunat Compliant !
+					'receipt': 			'13',		# Not Sunat Compliant !
 
 					'advertisement': 	'14',
 					'sale_note': 		'15',

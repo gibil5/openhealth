@@ -45,7 +45,8 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 				# Patient 2 - CE
 				{
 						#'test_case': 	'foreign_card, ticket_receipt', 
-						'test_case': 	'foreign_card, invoice', 
+						#'test_case': 	'foreign_card, invoice', 
+						'test_case': 	'foreign_card, receipt', 
 
 						'name': 		'RABELAIS RABELAIS FRANCOIS', 
 						'name_last': 	'rabelais rabelais', 
@@ -68,7 +69,8 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 
 				# Patient 3 - PTP
 				{
-						'test_case': 	'ptp, ticket_receipt', 
+						#'test_case': 	'ptp, ticket_receipt', 
+						'test_case': 	'ptp, receipt', 
 
 						'name': 		'TOTTI TOTTI FRANCESCO', 
 						'name_last': 	'totti totti', 
@@ -85,6 +87,8 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 
 						'id_code':  	False,
 				}, 
+
+
 
 
 
@@ -136,7 +140,8 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 
 				# Patient 6 - RUC
 				{
-						'test_case': 	'other, ticket_invoice', 
+						#'test_case': 	'other, ticket_invoice', 
+						'test_case': 	'other, invoice', 
 
 						'name': 		'RONDON RONDON SEBASTIAN', 
 						'name_last': 	'rondon rondon', 
@@ -202,7 +207,8 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 
 				# Patient 9 - Ticket Invoice Canceled
 				{
-						'test_case': 	'dni, ticket_invoice_cancel', 
+						#'test_case': 	'dni, ticket_invoice_cancel', 
+						'test_case': 	'dni, ticket_invoice', 
 
 						'name': 		'COMANECI COMANECI NADIA', 
 						'name_last': 	'comaneci comaneci', 

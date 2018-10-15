@@ -19,6 +19,7 @@ class electronic_order(models.Model):
 
 
 
+
 # ----------------------------------------------------------- Relational ------------------------------------------------------
 	# Lines 
 	electronic_line_ids = fields.One2many(

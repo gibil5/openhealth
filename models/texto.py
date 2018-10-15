@@ -8,6 +8,8 @@
 from openerp import models, fields, api
 
 from openerp.exceptions import ValidationError
+from openerp.exceptions import Warning
+
 
 
 class Texto(models.Model):
@@ -20,7 +22,7 @@ class Texto(models.Model):
 
 	_sql_constraints = [
 							('name_unique',		'unique(name)', 	'SQL Warning: NAME must be unique !'),
-							('content_unique',	'unique(content)', 	'SQL Warning: CONTENT must be unique !'),
+							#('content_unique',	'unique(content)', 	'SQL Warning: CONTENT must be unique !'),
 						]     
 
 
@@ -44,7 +46,9 @@ class Texto(models.Model):
 																		('name', '=', record.name),
 												])
 					if count > 1: 
-						raise ValidationError("Rec Warning: NAME already exists: %s" % record.name)
+						raise ValidationError("Rec Error: NAME already exists: %s" % record.name)
+						#raise Warning("Rec Error: NAME already exists: %s" % record.name)
+
 
 		
 			# all records passed the test, don't return anything

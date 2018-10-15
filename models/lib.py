@@ -13,33 +13,41 @@ import account
 
 
 
-#------------------------------------------------ Checksum ---------------------------------------------------
-# Get Checksum Generated
-def get_checksum_tic(generated):
-	#print 
-	#print 'Get Checksum'
 
-	if generated == 'x': 
-		checksum = '0'
-	else: 
-		checksum = '1'
+#------------------------------------------------ File Content ---------------------------------------------------
+# Get File Content  
+def get_file_content(order):
+	print 
+	print 'Get File Content'
 
-	return checksum
+	content = format_txt(order)
+
+	return content
 
 
 
+#------------------------------------------------ Constants ---------------------------------------------------
+_dic_prefix = {
+				'01': 'F001', 	# Ticket Invoice 
+				'03': 'B001', 	# Ticket Receipt 
+				'11': 'FF01', 	# Invoice 				# Not Sunat Compliant !
+				'13': 'BB01', 	# Receipt 				# Not Sunat Compliant !
 
-#------------------------------------------------ Checksum ---------------------------------------------------
-# Get Checksum Generated
-def get_checksum_gen(generated, name):
-	#print 
-	#print 'Get Checksum'
+				#'14': 'P', 	# Advertisement 
+				#'15': 'N', 	# Sale Note 
+}
 
-	if generated == name: 
-		checksum = '1'
-	else: 
-		checksum = '0'
-	return checksum
+_dic_prefix_cancel = {
+				'01': 'FC01', 	# Invoice 
+				'03': 'BC01', 	# Receipt 
+				'11': 'FFC1', 	# Invoice 				# Not Sunat Compliant !
+				'13': 'BBC1', 	# Receipt 				# Not Sunat Compliant !
+
+				#'14': 'P', 	# Advertisement 
+				#'15': 'N', 	# Sale Note 
+}
+
+
 
 
 
@@ -316,15 +324,6 @@ def format_txt(order):
 
 
 
-#------------------------------------------------ File Content ---------------------------------------------------
-# Get File Content  
-def get_file_content(order):
-	print 
-	print 'Get File Content'
-
-	content = format_txt(order)
-
-	return content
 
 
 
@@ -401,22 +400,6 @@ def print_line(order):
 
 
 
-#------------------------------------------------ Const ---------------------------------------------------
-_dic_prefix = {
-				'01': 'F001', 	# Invoice 
-				'03': 'B001', 	# Receipt 
-
-				#'14': 'P', 	# Advertisement 
-				#'15': 'N', 	# Sale Note 
-}
-
-_dic_prefix_cancel = {
-				'01': 'FC01', 	# Invoice 
-				'03': 'BC01', 	# Receipt 
-
-				#'14': 'P', 	# Advertisement 
-				#'15': 'N', 	# Sale Note 
-}
 
 
 #------------------------------------------------ File Name ---------------------------------------------------
@@ -820,3 +803,27 @@ def change_state(obj, state):
 
 # change_state
 
+
+
+
+#------------------------------------------------ Checksum ---------------------------------------------------
+# Get Checksum Generated
+def get_checksum_tic(generated):
+	#print 
+	#print 'Get Checksum'
+	if generated == 'x': 
+		checksum = '0'
+	else: 
+		checksum = '1'
+	return checksum
+
+#------------------------------------------------ Checksum ---------------------------------------------------
+# Get Checksum Generated
+def get_checksum_gen(generated, name):
+	#print 
+	#print 'Get Checksum'
+	if generated == name: 
+		checksum = '1'
+	else: 
+		checksum = '0'
+	return checksum

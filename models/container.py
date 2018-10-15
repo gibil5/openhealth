@@ -205,16 +205,16 @@ class Container(models.Model):
 		print 'Correct'
 
 
-		# Correct DNIs
+		# Loop
 		for order in self.electronic_order_ids: 
 
+			# Correct DNI
 			if order.id_doc in [False]: 
-
 				if order.id_doc_type in ['dni']: 
-
-					#order.id_doc = order.patient.x_dni
 					order.patient.x_id_doc = order.patient.x_dni
 
+			# Correct Counter
+			order.counter_value = int(order.serial_nr.split('-')[1])
 
 
 

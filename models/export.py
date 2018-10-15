@@ -56,25 +56,32 @@ def export_txt(self, electronic_order, export_date):
 		#lib.print_line(order)
 
 
-		# Init 
+# Init 		
+		# File name 
 		file_name = lib.get_file_name(order)
-		fname = dname + '/' + file_name + '.txt'
 
-
-		# Open file 
-		f = io.open(fname, mode="w", encoding="utf-8")
-
-		# Create Content 
+		# Content 
 		content = lib.get_file_content(order)
 
-		# Write content 
+
+
+# File 
+		# Init 
+		fname = dname + '/' + file_name + '.txt'
+
+		# Open
+		f = io.open(fname, mode="w", encoding="utf-8")
+		
+		# Write  
 		print(content, file=f)
 
-		# Close file 
+		# Close
 		f.close()
 
 
-		# Create Txt 
+# Txt 
+
+		# Create 
 		txt = self.txt_ids.create({
 									'name': 			file_name,
 									'content': 			content,
@@ -85,13 +92,14 @@ def export_txt(self, electronic_order, export_date):
 
 
 
-	# Compress 
+# Compress 
 	source = 	dname
 	tarred = 	dname + '.tar'
 	ziped = 	dname + '.tar.gz'
 	os.system("rm -rf " + tarred + " " + ziped)
 	os.system("tar cvf " + tarred + " " + source)
 	os.system("gzip " + tarred)
+
 
 # export_txt
 

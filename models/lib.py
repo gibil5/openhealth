@@ -5,11 +5,35 @@
 # 		Abstract, general purpose. Can be Unit-tested. Is completely standard. Gives service to all Users
 # 
 # 		Created: 			13 Aug 2018
-# 		Last up: 	 		20 Sep 2018
+# 		Last up: 	 		14 Oct 2018
 #
 import datetime
 import unicodedata
 import account
+import lib_vars as lvars
+
+
+
+#------------------------------------------------ File Name ---------------------------------------------------
+def get_file_name(order):
+	print 
+	print 'Get File Name'
+
+	# Prefix 
+	if order.state in ['sale']: 
+		type_prefix = lvars._dic_prefix[order.type_code]
+	elif order.state in ['cancel']: 
+		type_prefix = lvars._dic_prefix_cancel[order.type_code]
+
+	# Id Serial Nr
+	nr_zeros = 8 
+	order.id_serial_nr = type_prefix + '-' + str(order.counter_value).zfill(nr_zeros)
+
+
+
+	name = 'RUC' + order.ruc + '-' + order.type_code  + '-' + order.export_date.replace("-", "") + '-' + order.id_serial_nr
+
+	return name 
 
 
 
@@ -26,31 +50,6 @@ def get_file_content(order):
 
 
 
-#------------------------------------------------ Constants ---------------------------------------------------
-_dic_prefix = {
-				'01': 'F001', 	# Ticket Invoice 
-				'03': 'B001', 	# Ticket Receipt 
-				'11': 'FF01', 	# Invoice 				# Not Sunat Compliant !
-				'13': 'BB01', 	# Receipt 				# Not Sunat Compliant !
-
-				#'14': 'P', 	# Advertisement 
-				#'15': 'N', 	# Sale Note 
-}
-
-_dic_prefix_cancel = {
-				'01': 'FC01', 	# Invoice 
-				'03': 'BC01', 	# Receipt 
-				'11': 'FFC1', 	# Invoice 				# Not Sunat Compliant !
-				'13': 'BBC1', 	# Receipt 				# Not Sunat Compliant !
-
-				#'14': 'P', 	# Advertisement 
-				#'15': 'N', 	# Sale Note 
-}
-
-
-
-
-
 
 #------------------------------------------------ Format Txt ---------------------------------------------------
 # Format Txt  
@@ -63,28 +62,18 @@ def format_txt(order):
 	eol = "]"			# order 
 	eot = "!"			# Table 
 	lr = "\n"
-
 	empty_field = "|"		
-
 	blank = ""		
-
-	date_format = "%Y-%m-%d"
-
 	additional_account_id = "6"
+	#date_format = "%Y-%m-%d"
 
 
-
-	#type_prefix = _dic[order.type_code]
-	
 	# Prefix 
 	if order.state in ['sale']: 
-		type_prefix = _dic_prefix[order.type_code]
+		type_prefix = lvars._dic_prefix[order.type_code]
 
 	elif order.state in ['cancel']: 
-		type_prefix = _dic_prefix_cancel[order.type_code]
-
-
-
+		type_prefix = lvars._dic_prefix_cancel[order.type_code]
 
 
 
@@ -101,7 +90,7 @@ def format_txt(order):
 	# Data General 
 	general = 	order.type_code + se + \
 				order.id_serial_nr + se + \
-				get_todays_name(date_format) + se + \
+				order.export_date + se + \
 				order.currency_code + \
 				se + \
 				se + \
@@ -316,146 +305,10 @@ def format_txt(order):
 
 	return content
 
+# format_txt
 
 
 
-
-
-
-
-
-
-
-
-
-#------------------------------------------------ Get Tax ---------------------------------------------------
-# Get Tax 
-def get_net_tax(amount):
-	#print 
-	#print 'Get Tax'
-
-	# Net 
-	net = amount/1.18
-	net = round(net, 2)
-	
-	# Tax 
-	tax = net * 0.18
-	tax = round(tax, 2)
-
-	return net, tax 
-
-
-
-
-
-#------------------------------------------------ Format Standard ---------------------------------------------------
-# Format Standard  
-def format_std(line):
-	print 
-	print 'Format Standard'
-
-	se = ","
-
-	content = 	correct_date(line.x_date_created) + se + \
-				line.serial_nr + se + \
-				line.patient.name + se + \
-				line.patient.x_id_doc_type + se + \
-				line.patient.x_id_doc + se + \
-				line.product_id.name  
-
-				#line.patient.x_firm + se + \
-				#line.patient.x_ruc + se + \
-				#line.patient.email + se + \
-				
-				#line.patient.name.encode('utf-8') 
-				#line.patient.name + se + 
-				#line.patient.x_dni + se + 
-				#lr.encode('utf-8') 
-
-	return content
-
-
-
-#------------------------------------------------ Print ---------------------------------------------------
-# Print  
-#def print_line(line):
-def print_line(order):
-	print 
-	print 'Print'
-
-	print (order)
-	print (order.x_date_created)
-	print (order.patient.name)
-	print (order.patient.x_id_doc)
-	print (order.patient.x_id_doc_type)
-	print (order.patient.x_firm)
-	print (order.patient.x_ruc)
-	print (order.patient.email)
-	print ()
-	print (order.serial_nr)
-	print (order.product_id.name)
-	print ()
-
-
-
-
-
-
-
-#------------------------------------------------ File Name ---------------------------------------------------
-# Get File Name 
-def get_file_name(order):
-	print 
-	print 'Get File Name'
-
-# Ref 
-#00009999
-# Serial
-#0000000575
-
-
-	# Init 
-	#date_format = "%Y_%m_%d-%H_%M_%S"
-	date_format = "%Y%m%d"
-
-	ruc = 'RUC' + order.ruc 
-	type_code = order.type_code
-
-	# Prefix 
-	if order.state in ['sale']: 
-		type_prefix = _dic_prefix[type_code]
-
-	elif order.state in ['cancel']: 
-		type_prefix = _dic_prefix_cancel[type_code]
-
-
-
-	today_name = get_todays_name(date_format)
-
-	
-	#serial_nr = order.serial_nr
-	#str(value).zfill(padding)
-	#serial_nr = str(order.counter_value).zfill(nr_zeros)
-
-
-	# Id Serial Nr
-	nr_zeros = 8 
-
-	order.id_serial_nr = type_prefix + '-' + str(order.counter_value).zfill(nr_zeros)
-
-
-
-
-	# Prints 
-	print ruc 
-	print type_code
-	print today_name
-	print order.id_serial_nr
-
-	#name = ruc + '-' + type_code  + '-' + today_name + '-' + type_prefix + '-' + serial_nr
-	name = ruc + '-' + type_code  + '-' + today_name + '-' + order.id_serial_nr
-
-	return name 
 
 
 
@@ -786,10 +639,9 @@ def get_slot(idx):
 	return slot
 
 
+
 #------------------------------------------------ Change State ---------------------------------------------------
-
 # Change the state of the Object 
-
 def change_state(obj, state):
 	#print 
 	#print 'Change State'
@@ -802,6 +654,7 @@ def change_state(obj, state):
 		obj.state = state
 
 # change_state
+
 
 
 
@@ -827,3 +680,64 @@ def get_checksum_gen(generated, name):
 	else: 
 		checksum = '0'
 	return checksum
+
+
+
+
+
+
+
+#------------------------------------------------ Get Tax ---------------------------------------------------
+# Get Tax 
+def get_net_tax(amount):
+	#print 
+	#print 'Get Tax'
+	# Net 
+	net = amount/1.18
+	net = round(net, 2)
+	# Tax 
+	tax = net * 0.18
+	tax = round(tax, 2)
+	return net, tax 
+
+#------------------------------------------------ Format Standard ---------------------------------------------------
+# Format Standard  
+def format_std(line):
+	#print 
+	#print 'Format Standard'
+	se = ","
+	content = 	correct_date(line.x_date_created) + se + \
+				line.serial_nr + se + \
+				line.patient.name + se + \
+				line.patient.x_id_doc_type + se + \
+				line.patient.x_id_doc + se + \
+				line.product_id.name  
+				#line.patient.x_firm + se + \
+				#line.patient.x_ruc + se + \
+				#line.patient.email + se + \
+				#line.patient.name.encode('utf-8') 
+				#line.patient.name + se + 
+				#line.patient.x_dni + se + 
+				#lr.encode('utf-8') 
+	return content
+
+
+
+#------------------------------------------------ Print ---------------------------------------------------
+# Print  
+def print_line(order):
+	print 
+	print 'Print'
+	print (order)
+	print (order.x_date_created)
+	print (order.patient.name)
+	print (order.patient.x_id_doc)
+	print (order.patient.x_id_doc_type)
+	print (order.patient.x_firm)
+	print (order.patient.x_ruc)
+	print (order.patient.email)
+	print ()
+	print (order.serial_nr)
+	print (order.product_id.name)
+	print ()
+

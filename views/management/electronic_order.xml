@@ -18,12 +18,16 @@
 					<field name="state"/>
 
 
+
 					<field name="counter_value"/>
 
 					<field name="delta"/>
 
 
+
 					<field name="x_date_created"/>
+
+					<field name="export_date"/>
 
 
 

@@ -232,6 +232,8 @@ class Container(models.Model):
 		# Electronic 
 		self.mgt.electronic_order.unlink()
 
+		# Txts 
+		self.txt_ids.unlink()
 
 
 

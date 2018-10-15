@@ -6,6 +6,7 @@
 # 	Last updated: 		13 Sep 2018
 #
 from openerp import models, fields, api
+import lib 
 
 class electronic_order(models.Model):
 
@@ -30,6 +31,29 @@ class electronic_order(models.Model):
 
 
 # ----------------------------------------------------------- Fields ------------------------------------------------------
+
+	# Export Date 
+	export_date = fields.Char(
+			'Export Date',
+			#default="2018_10_14", 
+
+			compute='_compute_export_date', 
+		)
+
+	@api.multi
+	#@api.depends('x_msg')
+	def _compute_export_date(self):
+		print 
+		print 'Compute Export Date'
+
+		for record in self:			
+
+			#record.export_date = record.x_date_created 
+			record.export_date = lib.correct_date(record.x_date_created).split()[0]
+
+
+
+
 
 	# Id 
 	id_serial_nr = fields.Char(

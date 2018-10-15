@@ -18,8 +18,11 @@ _id_doc_type_list = [
 # Id Doc Code 
 _dic_id_doc_code = {
 					'other': 		'0',
-					'dni': 			'1',	
+					'dni': 			'1',
+
 					'foreign_card': '4',
+					'foreigner_card': '4',			# Dep 
+					
 					'ruc': 			'6',
 					'passport': 	'7',
 					'ptp': 			'8',	# Verify 

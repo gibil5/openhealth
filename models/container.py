@@ -158,8 +158,12 @@ class Container(models.Model):
 		print
 		print 'Export - Txt'
 		
+		
+		# Clear
+		self.txt_ids.unlink()
+
+
 		# Export
-		#export.export_txt(self.mgt.electronic_order, self.export_date)
 		export.export_txt(self, self.mgt.electronic_order, self.export_date)
 
 

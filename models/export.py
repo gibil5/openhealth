@@ -14,7 +14,6 @@ import io
 
 
 # ----------------------------------------------------------- Create Services  ------------------------------------------------------
-#def export_txt(electronic_order, export_date):
 def export_txt(self, electronic_order, export_date):
 	#print 
 	#print 'Export Text'
@@ -56,9 +55,11 @@ def export_txt(self, electronic_order, export_date):
 
 		#lib.print_line(order)
 
+
 		# Init 
-		rname = lib.get_file_name(order)		
-		fname = dname + '/' + rname + '.txt'
+		file_name = lib.get_file_name(order)
+		fname = dname + '/' + file_name + '.txt'
+
 
 		# Open file 
 		f = io.open(fname, mode="w", encoding="utf-8")
@@ -75,8 +76,8 @@ def export_txt(self, electronic_order, export_date):
 
 		# Create Txt 
 		txt = self.txt_ids.create({
-									'name': 	export_date,
-									'content': 	content,
+									'name': 			file_name,
+									'content': 			content,
 
 									'container_id': 	self.id,
 			})

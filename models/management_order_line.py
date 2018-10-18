@@ -19,6 +19,39 @@ class management_order_line(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Company ------------------------------------------------------
+
+	# Firm 
+	firm = fields.Char(
+			'Firm', 
+			#default='SERVICIOS MÉDICOS ESTÉTICOS S.A.C', 
+			default='MS SOFT SAC', 
+		)
+
+	# Ruc 
+	ruc = fields.Char(
+			'Ruc', 
+			#default='20523424221', 
+			default='20547678894', 
+		)
+
+
+	# Ubigeo
+	ubigeo = fields.Char(
+			'Ruc', 
+			#default='', 
+			default='150101', 
+		)
+
+	# Address
+	address = fields.Char(
+			'Ruc', 
+			#default='Av. La Merced 161', 
+			default='Jr. Lima 150', 
+		)
+
+
 # ----------------------------------------------------------- Handles - Relational ------------------------------------------------------
 
 	# Container  
@@ -100,16 +133,6 @@ class management_order_line(models.Model):
 
 
 
-	# Firm 
-	firm = fields.Char(
-			'Firm', 
-			default='SERVICIOS MÉDICOS ESTÉTICOS S.A.C', 
-		)
-
-	ruc = fields.Char(
-			'Ruc', 
-			default='20523424221', 
-		)
 
 
 

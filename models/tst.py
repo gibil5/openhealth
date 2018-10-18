@@ -36,7 +36,9 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 
 	for order in self.order_ids: 
 		if order.state in ['draft']: 
+
 			#order.pay_myself(date_order_begin)
+			
 			order.pay_myself()
 
 			print 'Pay'

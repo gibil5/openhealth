@@ -102,18 +102,20 @@ def format_txt(order):
 				se + eol 
 
 
+
 	# Data Emitter
 	emitter = 	order.ruc 				+ se + \
 				additional_account_id 	+ se + \
 				order.firm 				+ se + \
 				blank 					+ se + \
-				blank 					+ se + \
-				blank 					+ se + \
+				order.ubigeo 			+ se + \
+				order.address 			+ se + \
 				blank 					+ se + \
 				blank 					+ se + \
 				blank 					+ se + \
 				blank 					+ se + \
 				blank 					+ eol 
+
 
 
 
@@ -123,10 +125,10 @@ def format_txt(order):
 	#print order.id_doc_type_code
 	#print order.patient.name
 
-	receptor = 	order.id_doc 			+ se + \
-				order.id_doc_type_code 	+ se + \
-				order.receptor 			+ se + \
-				blank 					+ eol 
+	receptor = 	order.id_doc 				+ se + \
+				order.id_doc_type_code 		+ se + \
+				order.receptor 				+ se + \
+				order.patient.street 	+ eol 
 
 
 

@@ -16,6 +16,11 @@
 
 					<field name="name"/>
 
+					<field name="x_name_short"/>
+
+					<field name="x_origin"/>
+
+
 					<field name="description"/>
 
 					<field name="default_code"/>
@@ -41,7 +46,6 @@
 					<field name="x_zone"/>				
 					<field name="x_pathology"/>				
 					<field name="x_level"/>				
-					<field name="x_name_short"/>
 
 -->
 
@@ -80,9 +84,6 @@
 
             <field name="domain">[]</field>
 		</record>
-
-
-
 
 
 	</data>

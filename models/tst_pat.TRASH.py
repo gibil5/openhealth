@@ -241,3 +241,29 @@ def test_init(self, container_id, patient_id=False, partner_id=False, doctor_id=
 	return pat_array
 
 # test_init
+
+
+
+
+
+# 17 Oct 2018 
+
+				# x
+				#{
+				#		'test_case': 	'', 
+
+				#		'name': 		'', 
+				#		'name_last': 	'', 
+				#		'name_first':  	'', 
+				#		'ruc': 			False, 
+				#		'firm': 		False, 
+
+				#		'id_doc_type': 	'', 
+				#		'id_doc':  		'', 
+				#		'dni':			False, 
+
+				#		'sex': 			'Female', 
+				#		'address': 		'Av. San Borja Norte 610,San Borja,Lima',						
+
+				#		'id_code':  	False,
+				#}, 

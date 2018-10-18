@@ -3,18 +3,17 @@
 # 	Container
 # 
 # 	Created: 				30 Sep 2018
-# 	Last mod: 				 1 Oct 2018
+# 	Last mod: 				16 Oct 2018
 # 
 from openerp import models, fields, api
 import tst_pat
 import creates 
-import export 
 import datetime
 import rsync
 
+import export 
+import importx
 
-
-# ----------------------------------------------------------- Container ------------------------------------------------------
 class Container(models.Model):
 
 	_name = 'openhealth.container'
@@ -30,6 +29,14 @@ class Container(models.Model):
 			'container_id', 
 		)
 
+	# Txt - Ref 
+	txt_ref_ids = fields.One2many(
+			'openhealth.texto',
+
+			'container_ref_id', 
+		)
+
+
 
 	# Patients 
 	patient_ids = fields.One2many(
@@ -37,7 +44,6 @@ class Container(models.Model):
 
 			'container_id', 
 		)
-
 
 	# Electronic Order 
 	electronic_order_ids = fields.One2many(
@@ -70,15 +76,14 @@ class Container(models.Model):
 		# Init 
 		pl_id = self.patient.property_product_pricelist.id
 
+
 		# Create Patients 
 		pat_array = tst_pat.test_cases(self, self.id, self.patient.id, self.partner.id, self.doctor.id, self.treatment.id, pl_id)
 		print pat_array
 
 
-
 		# Init 
 		name = 'Export'
-
 
 
 		# Search Mgt
@@ -152,19 +157,6 @@ class Container(models.Model):
 
 
 
-	# Export Txt 
-	@api.multi 
-	def export_txt(self):
-		print
-		print 'Export - Txt'
-		
-		
-		# Clear
-		self.txt_ids.unlink()
-
-
-		# Export
-		export.export_txt(self, self.mgt.electronic_order, self.export_date)
 
 
 
@@ -204,7 +196,6 @@ class Container(models.Model):
 		print
 		print 'Correct'
 
-
 		# Loop
 		for order in self.electronic_order_ids: 
 
@@ -219,21 +210,39 @@ class Container(models.Model):
 
 
 
-	# Clear 
+
+# ----------------------------------------------------------- Export Import ------------------------------------------------------
+	
+	# Export Txt 
 	@api.multi 
-	def clear(self): 
-		print 
-		print 'Clear'
-
-		# Patients 
-		for patient in self.patient_ids: 
-			creates.remove_patient(self, patient.name)
-
-		# Electronic 
-		self.mgt.electronic_order.unlink()
-
-		# Txts 
+	def export_txt(self):
+		print
+		print 'Export - Txt'
+		
+		# Clear
 		self.txt_ids.unlink()
+
+		# Export
+		export.export_txt(self, self.mgt.electronic_order, self.export_date)
+
+
+
+
+	# Import Txt
+	@api.multi 
+	def import_txt(self):
+		print
+		print 'Import TXT'
+
+		self.txt_ref_ids.unlink()
+
+
+		# Import
+		importx.import_txt(self)
+
+
+
+
 
 
 
@@ -286,3 +295,21 @@ class Container(models.Model):
 			'openhealth.management', 
 		)
 
+
+
+# ----------------------------------------------------------- Fields ------------------------------------------------------
+	# Clear 
+	@api.multi 
+	def clear(self): 
+		print 
+		print 'Clear'
+
+		# Patients 
+		for patient in self.patient_ids: 
+			creates.remove_patient(self, patient.name)
+
+		# Electronic 
+		self.mgt.electronic_order.unlink()
+
+		# Txts 
+		self.txt_ids.unlink()

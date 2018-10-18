@@ -1901,7 +1901,6 @@ class sale_order(models.Model):
 	# Test - Integration 
 	# Test the whole Sale Cycle. 
 	# With UI buttons included. Activate the different creation and write procedures. 
-	#def test_integration(self):
 	def test_integration(self, test_case=False):
 		print 
 		print 'Order - Test Integration'
@@ -1941,7 +1940,6 @@ class sale_order(models.Model):
 
 # ----------------------------------------------------------- Test ------------------------------------------------------
 	# Test
-	#def test(self):
 	def test(self, test_case=False):
 		print 
 		print 'Order - Test'
@@ -1964,8 +1962,8 @@ class sale_order(models.Model):
 
 
 			# Test Integration 
-			#self.test_integration(test_case)
 			self.test_integration(x_type)
+
 
 			# Test Unit 
 			#self.test_unit()

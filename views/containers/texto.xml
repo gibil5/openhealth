@@ -12,9 +12,10 @@
 
 				<tree string="Texto Tree">
 					
+					<field name="content"/>
+
 					<field name="name"/>
 
-					<field name="content"/>
 				</tree>
 
 			</field>

@@ -1,10 +1,41 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
-	<data>
+	<data noupdate='0'>
 
 
 
 <!-- Data - Products -->
+
+		<!-- Producto 1 -->
+		<record id='product_1' model='product.template'>
+
+			<field name='name'>Producto 1</field>
+
+			<field name='x_name_short'>product_1</field>
+
+			<field name='type'>product</field>
+
+			<field name='price'>33.04</field>
+
+			<field name='standard_price'>33.04</field>
+		</record>
+
+		<!-- Producto 1 -->
+<!--		
+		<record id='product_1_pro' model='product.product'>
+
+			<field name='name'>Producto 1</field>
+
+			<field name='x_name_short'>product_1</field>
+
+			<field name='type'>product</field>
+
+			<field name='price'>33.04</field>
+
+			<field name='standard_price'>33.04</field>
+		</record>
+-->
+
 
 
 

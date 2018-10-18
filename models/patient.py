@@ -11,7 +11,10 @@ import lib
 import user
 import count_funcs
 import pat_vars
-import creates as cre
+
+#import creates as cre
+import creates
+
 import chk_patient as chk
 import tst_pat
 
@@ -74,14 +77,12 @@ class Patient(models.Model):
 		chk._check_name(self)
 
 
-
 	# Check Id Code - Hr Historia  
 	@api.constrains('x_id_code')
 	def _check_x_id_code(self):
 		#print
 		#print 'Check Id Code'
 		chk._check_x_id_code(self)
-
 
 
 	# Check Ruc
@@ -92,8 +93,6 @@ class Patient(models.Model):
 		chk._check_x_ruc(self)
 
 
-
-
 	# Check Phone 3
 	@api.constrains('phone_3')
 	def _check_phone_3(self):
@@ -102,15 +101,12 @@ class Patient(models.Model):
 		chk._check_phone_3(self)
 
 
-
 	# Check Phone
 	@api.constrains('phone')
 	def _check_phone(self):
 		#print
 		#print 'Check Phone'
 		chk._check_phone(self)
-
-
 
 
 	# Check Mobile
@@ -128,8 +124,9 @@ class Patient(models.Model):
 	# Check Id doc - Documento Identidad 
 	@api.constrains('x_id_doc')
 	def _check_x_id_doc(self):
+		print 
 
-		chk.check_x_id_doc(self)
+		#chk.check_x_id_doc(self)
 
 
 
@@ -993,9 +990,8 @@ class Patient(models.Model):
 
 	@api.multi 
 	def test_cycle(self):
-		#print 
-		#print 'Patient - Test Cycle'
-		#print self.name 
+		print self.name 
+		print self.x_test_case
 		#print 
 
 
@@ -1004,10 +1000,54 @@ class Patient(models.Model):
 		#self.test_actions()
 		#self.test_services()
 
+
 		# Loop 
 		for treatment in self.treatment_ids: 
-			order = treatment.create_order_con_tst()
+
+			#order = treatment.create_order_con_tst()
+			
+
+			# Create Order 
+			order = self.env['sale.order'].create({
+													'patient': self.id,	
+													'partner_id': self.partner_id.id,
+													'state':'draft',
+													'x_id_doc': self.x_id_doc,														
+													'x_id_doc_type': self.x_id_doc_type,														
+													#'x_doctor': doctor_id,	
+
+													'treatment': treatment.id,
+												})
+
+			# Init 
+			#target_line = 'con_med'
+			#target_line = 'product_1'
+			target_line = self.x_test_case.split(',')[2]
+
+			#qty = 5 
+			qty = int(self.x_test_case.split(',')[3])
+			
+
+			price_manual = -1
+			price_applied = 0
+			reco_id = False
+
+
+			ret = creates.create_order_lines_micro(order, target_line, price_manual, price_applied, reco_id, qty)
+
+			
+
+			# Pay 
 			order.test(self.x_test_case)
+
+
+
+			# Update  
+			date_order = '2017-07-25 09:00:00'
+			if date_order != False: 
+				ret = order.write({
+									'date_order': date_order,
+								})
 
 
 

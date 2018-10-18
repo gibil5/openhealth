@@ -286,7 +286,7 @@ def create_order(self, target):
 
 
 
-# Create Order 
+	# Create Order 
 	order = self.env['sale.order'].create({
 													'partner_id': self.partner_id.id,
 													'patient': self.patient.id,	
@@ -315,7 +315,6 @@ def create_order(self, target):
 			target_line = 'con_med'
 
 		# Init 
-		#price_manual = 0
 		price_manual = -1
 		price_applied = 0
 		reco_id = False
@@ -412,10 +411,11 @@ def create_order_lines(self, laser, order_id):
 
 # ----------------------------------------------------------- Create order lines ------------------------------------------------------
 # Create Order Lines 
-def create_order_lines_micro(self, name_short, price_manual, price_applied, reco_id):		
-	#print 
-	#print 'Create Order Lines - Micro'
-	#print 'name_short: ', name_short
+#def create_order_lines_micro(self, name_short, price_manual, price_applied, reco_id):		
+def create_order_lines_micro(self, name_short, price_manual, price_applied, reco_id, qty=1):		
+	print 
+	print 'Create Order Lines - Micro'
+	print 'name_short: ', name_short
 	#print 'price_manual: ', price_manual
 	#print 'price_applied:', price_applied
 	#print 'reco_id: ', reco_id
@@ -441,10 +441,11 @@ def create_order_lines_micro(self, name_short, price_manual, price_applied, reco
 													('x_name_short','=', name_short),
 													('x_origin','=', False),
 											])
-	#print product.name 
-	#print product.type
-	#print product.x_family
-	#print product.x_treatment
+	print product 
+	print product.name 
+	print product.type
+	print product.x_family
+	print product.x_treatment
 
 
 	# Reco field 
@@ -485,10 +486,10 @@ def create_order_lines_micro(self, name_short, price_manual, price_applied, reco
 										'product_id': 	product.id,
 										'order_id': 	order_id,										
 										'x_price_manual': price_manual, 
-										
 										'price_unit': 	price_manual,
-
 										reco_field: reco_id, 
+
+										'product_uom_qty': qty, 
 									})
 
 
@@ -505,10 +506,10 @@ def create_order_lines_micro(self, name_short, price_manual, price_applied, reco
 										'name': 		product.name, 
 										'product_id': 	product.id,
 										'order_id': 	order_id,
-
 										'price_unit': 	price_quick,
-										
 										reco_field: 	reco_id, 
+
+										'product_uom_qty': qty, 
 									})
 
 
@@ -523,8 +524,9 @@ def create_order_lines_micro(self, name_short, price_manual, price_applied, reco
 										'name': 		product.name, 
 										'product_id': 	product.id,
 										'order_id': 	order_id,
-
 										reco_field: 	reco_id, 
+
+										'product_uom_qty': qty, 
 								})
 
 	# Update Order line

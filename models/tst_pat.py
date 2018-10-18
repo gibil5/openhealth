@@ -21,6 +21,7 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 	_pars = [
 				# Patient 1 - Passport
 				{
+						'active': 		False, 
 						#'test_case': 	'passport, ticket_receipt', 
 						'test_case': 	'passport, receipt', 
 
@@ -44,6 +45,7 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 
 				# Patient 2 - CE
 				{
+						'active': 		False, 
 						#'test_case': 	'foreign_card, ticket_receipt', 
 						#'test_case': 	'foreign_card, invoice', 
 						'test_case': 	'foreign_card, receipt', 
@@ -69,6 +71,7 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 
 				# Patient 3 - PTP
 				{
+						'active': 		False, 
 						#'test_case': 	'ptp, ticket_receipt', 
 						'test_case': 	'ptp, receipt', 
 
@@ -94,6 +97,7 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 
 				# Patient 4 - OTHER
 				{
+						'active': 		False, 
 						'test_case': 	'other, ticket_receipt', 
 
 						'name': 		'MICHELOT MICHELOT IVANNA', 
@@ -118,6 +122,7 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 
 				# Patient 5 - DNI
 				{
+						'active': 		False, 
 						'test_case': 	'dni, ticket_receipt', 
 
 						'name': 		'REVILLA REVILLA JOSEX', 
@@ -140,6 +145,7 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 
 				# Patient 6 - RUC
 				{
+						'active': 		False, 
 						#'test_case': 	'other, ticket_invoice', 
 						'test_case': 	'other, invoice', 
 
@@ -164,6 +170,7 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 
 				#  Patient 7 - DNI, Legacy 
 				{
+						'active': 		False, 
 						'test_case': 	'dni, ticket_receipt, legacy', 
 
 						'name': 		'NEO NEO NEODIUMX', 
@@ -186,6 +193,7 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 
 				# Patient 8 - Ticket Receipt Canceled 
 				{
+						'active': 		False, 
 						'test_case': 	'dni, ticket_receipt_cancel', 
 
 						'name': 		'DIBALA DIBALA PAOLO', 
@@ -205,50 +213,53 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 				}, 
 
 
-				# Patient 9 - Ticket Invoice Canceled
+
+
+				# Patient 9 - COMANECI COMANECI NADIA
 				{
-						#'test_case': 	'dni, ticket_invoice_cancel', 
-						'test_case': 	'dni, ticket_invoice', 
+						'active': 		False, 
+						#'test_case': 	'dni, ticket_receipt', 
+						'test_case': 	'dni,ticket_receipt,con_med,1', 
 
 						'name': 		'COMANECI COMANECI NADIA', 
 						'name_last': 	'comaneci comaneci', 
 						'name_first':  	'nadia', 
-						'ruc': 			'12345678903', 
-						'firm': 		'Comaneci y Asociados', 
 
 						'id_doc_type': 	'dni', 
 						'id_doc':  		'12345679', 
-						'dni':			False, 
 
 						'sex': 			'Female', 
 						'address': 		'Av. San Borja Norte 610,San Borja,Lima',						
 
+						'ruc': 			'12345678903', 
+						'firm': 		'Comaneci y Asociados', 
+						'dni':			False, 
 						'id_code':  	False,
 				}, 
 
 
 
+				# Patient 10 - MsSoft
+				{
+						'active': 		True, 
+						'test_case': 	'dni,ticket_receipt,product_1,40', 
 
+						'name': 		'usuarioprueba', 
+						'name_last': 	'usuarioprueba', 
+						'name_first':  	'', 
 
-				# x
-				#{
-				#		'test_case': 	'', 
+						'id_doc_type': 	'dni', 
+						'id_doc':  		'1241547', 
 
-				#		'name': 		'', 
-				#		'name_last': 	'', 
-				#		'name_first':  	'', 
-				#		'ruc': 			False, 
-				#		'firm': 		False, 
+						'sex': 			'Male', 
+						'address': 		'Jr. pichis Nro. 106,,',					
 
-				#		'id_doc_type': 	'', 
-				#		'id_doc':  		'', 
-				#		'dni':			False, 
+						'ruc': 			False, 
+						'firm': 		False, 
+						'id_code':  	False,
+						'dni':			False, 
+				}, 
 
-				#		'sex': 			'Female', 
-				#		'address': 		'Av. San Borja Norte 610,San Borja,Lima',						
-
-				#		'id_code':  	False,
-				#}, 
 		]
 
 
@@ -263,6 +274,9 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 
 
 		# Init
+		active = 		par['active']
+
+
 		test_case = 	par['test_case']
 
 		id_doc_type = 	par['id_doc_type']
@@ -285,12 +299,13 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 		id_code = 		par['id_code']
 
 
+
 		# Create 
-		#patient = cre.create_patient(self, container_id, test_case, name, sex, address, id_doc_type, id_doc, ruc, firm, doctor_id, name_last, name_first)
-		patient = cre.create_patient(self, container_id, test_case, name, sex, address, id_doc_type, id_doc, ruc, firm, doctor_id, name_last, name_first, id_code, dni)
+		if active: 
+			patient = cre.create_patient(self, container_id, test_case, name, sex, address, id_doc_type, id_doc, ruc, firm, doctor_id, name_last, name_first, id_code, dni)
 
+			pat_array.append(patient)
 
-		pat_array.append(patient)
 
 	return pat_array
 

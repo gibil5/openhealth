@@ -46,8 +46,6 @@
 						/>
 
 
-
-
 						<!-- Export Txt--> 
 						<button 
 							type="object" 
@@ -60,6 +58,7 @@
 
 
 						<!-- Sync Txt --> 
+<!--
 						<button 
 							type="object" 
 							class="oe_highlight"
@@ -68,7 +67,17 @@
 							
 							string="Sync Txt" 								
 						/>
+-->
 
+						<!-- Import TXT --> 
+						<button 
+							type="object" 
+							class="oe_highlight"
+							
+							name="import_txt" 
+							
+							string="Import Txt" 								
+						/>
 
 
 
@@ -107,6 +116,8 @@
 							
 							string="Create Patients" 								
 						/>
+
+
 					</header>
 
 
@@ -155,16 +166,23 @@
 						<!-- Notebook --> 
 						<notebook>
 							
-							<page string="Pacientes">
+
+							<page string="Patients">
 								<field name="patient_ids"/>
 							</page>
 
-							<page string="Electronic Billing">
+
+							<page string="Electronic">
 								<field name="electronic_order_ids"/>
 							</page>
 
-							<page string="Txt">
+
+							<page string="TXT">
 								<field name="txt_ids"/>
+							</page>
+						
+							<page string="TXT - Ref">
+								<field name="txt_ref_ids"/>
 							</page>
 
 						</notebook>

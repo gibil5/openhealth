@@ -17,7 +17,6 @@ class Texto(models.Model):
 	_name = 'openhealth.texto'
 
 
-
 # ----------------------------------------------------------- Constraints - Sql ------------------------------------------------------
 
 	_sql_constraints = [
@@ -56,6 +55,22 @@ class Texto(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Handles ------------------------------------------------------
+
+	container_id = fields.Many2one(
+			'openhealth.container', 		
+			ondelete='cascade', 
+		)
+
+	container_ref_id = fields.Many2one(
+			'openhealth.container', 		
+			ondelete='cascade', 
+		)
+
+
+
+
 # ----------------------------------------------------------- Fields ------------------------------------------------------
 	
 	name = fields.Char()
@@ -64,7 +79,3 @@ class Texto(models.Model):
 	content = fields.Char()
 
 
-	container_id = fields.Many2one(
-			'openhealth.container', 		
-			ondelete='cascade', 
-		)

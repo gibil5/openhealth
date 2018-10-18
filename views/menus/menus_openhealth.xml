@@ -11,7 +11,7 @@
 		<menuitem 	id="main_openhealth_menu" 
 					sequence="1"
 
-					name="Electronic Billing"
+					name="Electronic"
 					
 					groups="openhealth.roots"
 			/>
@@ -91,6 +91,17 @@
 				action="pricelist_item_list_action"
 			/>
 		-->
+
+<!--
+-->
+		<menuitem id="product_product_menu" name="Products Product"
+			parent="openhealth_menu"
+			sequence="3"
+			action="product_product_list_action"
+			/>
+
+
+
 
 
 	</data>

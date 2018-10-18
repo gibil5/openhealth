@@ -12,6 +12,8 @@ _dic = {
 				'CONSULTA MEDICA': 														'2041100011', 
 				'PROTECTOR SOLAR': 														'101111007', 
 				'LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento Cuello Grado 1 - 1': 	'2041100151', 
+
+				'Producto 1': 															'40010007', 	
 }
 
 

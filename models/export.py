@@ -59,6 +59,8 @@ def export_txt(self, electronic_order, export_date):
 # Init 		
 		# File name 
 		file_name = lib.get_file_name(order)
+		file_name = 'CC_' + file_name
+
 
 		# Content 
 		content = lib.get_file_content(order)
@@ -68,6 +70,7 @@ def export_txt(self, electronic_order, export_date):
 # File 
 		# Init 
 		fname = dname + '/' + file_name + '.txt'
+
 
 		# Open
 		f = io.open(fname, mode="w", encoding="utf-8")
@@ -84,8 +87,9 @@ def export_txt(self, electronic_order, export_date):
 		# Create 
 		txt = self.txt_ids.create({
 									'name': 			file_name,
+									
 									'content': 			content,
-
+									
 									'container_id': 	self.id,
 			})
 

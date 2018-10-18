@@ -1947,9 +1947,9 @@ class Treatment(models.Model):
 # -----------------------------------------------------------  Create Order Pro  ------------------------------------------------------
 	@api.multi 
 	def create_order_pro(self):
+
 		target = 'procedure'
 
-		#order = self.create_order(target)		
 		order = cre.create_order(self, target)		
 
 		return {

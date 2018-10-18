@@ -14,11 +14,37 @@ import creates as cre
 # Test Cases - Patients
 def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id=False, treatment_id=False, pl_id=False):
 	print 
-	print 'Tst - Patient - Test Init'
+	print 'Test Cases - Patients'
 	print self 
 
 
 	_pars = [
+
+				# Patient 0 - REVILLA RONDON JOSE JAVIER
+				{
+						'active': 		True, 
+						'test_case': 	'dni,ticket_receipt,product_1,40', 
+
+						'name': 		'REVILLA RONDON JOSE JAVIER', 
+						'name_last': 	'revilla rondon', 
+						'name_first':  	'jose javier', 
+
+						'id_doc_type': 	'dni', 
+						'id_doc':  		'09817194', 
+
+						'ruc': 			'10098171946', 
+						'firm': 		'Revilla y Asociados', 
+
+						'sex': 			'Male', 
+						'address': 		'Av. San Borja Norte 610,San Borja,Lima',						
+
+						'dni':			False, 
+						'id_code':  	False,
+				}, 
+
+
+
+
 				# Patient 1 - Passport
 				{
 						'active': 		False, 
@@ -143,28 +169,9 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 
 
 
-				# Patient 6 - RUC
-				{
-						'active': 		False, 
-						#'test_case': 	'other, ticket_invoice', 
-						'test_case': 	'other, invoice', 
 
-						'name': 		'RONDON RONDON SEBASTIAN', 
-						'name_last': 	'rondon rondon', 
-						'name_first':  	'sebastian', 
+				#  Patient 6 - Other 
 
-						'ruc': 			'12345678902', 
-						'firm': 		'Rondon y Asociados', 
-
-						'id_doc_type': 	'other', 
-						'id_doc':  		'12345', 
-						'dni':			False, 
-
-						'sex': 			'Male', 
-						'address': 		'Av. San Borja Norte 610,San Borja,Lima',						
-
-						'id_code':  	False,
-				}, 
 
 
 
@@ -241,7 +248,7 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 
 				# Patient 10 - MsSoft
 				{
-						'active': 		True, 
+						'active': 		False, 
 						'test_case': 	'dni,ticket_receipt,product_1,40', 
 
 						'name': 		'usuarioprueba', 
@@ -259,11 +266,11 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 						'id_code':  	False,
 						'dni':			False, 
 				}, 
-
 		]
 
 
 	
+
 	pat_array = []
 
 	for par in _pars: 

@@ -6,6 +6,7 @@
 # 	Last updated: 		13 Sep 2018
 #
 from openerp import models, fields, api
+#import openerp.addons.decimal_precision as dp
 import lib 
 
 class electronic_order(models.Model):
@@ -79,16 +80,21 @@ class electronic_order(models.Model):
 	# Amount total 
 	amount_total = fields.Float(
 			string = "Total",
+			digits=(16,2), 
 		)
 
 
 	# Amount total - Net 
 	amount_total_net = fields.Float(
 			string = "Net",
+			digits=(16,2), 
 		)
 
 	# Amount total - Tax 
 	amount_total_tax = fields.Float(
 			string = "Tax",
+			digits=(16,2), 
 		)
+
+
 

@@ -73,6 +73,7 @@ class Container(models.Model):
 		print 
 		print 'Init Patients'
 
+
 		# Init 
 		pl_id = self.patient.property_product_pricelist.id
 

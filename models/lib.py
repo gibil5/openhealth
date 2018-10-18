@@ -9,9 +9,9 @@
 #
 import datetime
 import unicodedata
-import account
 import lib_vars as lvars
 
+import account as acc
 
 
 #------------------------------------------------ File Name ---------------------------------------------------
@@ -114,7 +114,7 @@ def format_txt(order):
 				blank 					+ se + \
 				blank 					+ se + \
 				blank 					+ se + \
-				blank 					+ eol 
+				order.country 			+ eol 
 
 
 
@@ -154,7 +154,9 @@ def format_txt(order):
 
 
 
-	table_2 = 	str(order.amount_total_tax) 	+ se + \
+	#table_2 = 	str(order.amount_total_tax) 	+ se + \
+	#table_2 = 	"%.2f"%order.amount_total_tax 	+ se + \
+	table_2 = 	acc.fmt(order.amount_total_tax) 	+ se + \
 				tax_id 							+ se + \
 				tax_name 						+ se + \
 				tax_type_code 					+ eol + lr + \
@@ -169,9 +171,10 @@ def format_txt(order):
 # Table 3 - Total  
 # |1498.60|10.00]
 # !
+#				str(order.amount_total) 	+ se + \
 
 	table_3 = 	blank 						+ se + \
-				str(order.amount_total) 	+ se + \
+				acc.fmt(order.amount_total) 	+ se + \
 				blank 						+ eol + lr + \
 				eot + lr
 
@@ -193,14 +196,16 @@ def format_txt(order):
 
 	empty_1 = "|]" + lr 
 	empty_2 = "|||||]" + lr 
-	empty_3 = "||]" + lr 
+	#empty_3 = "||]" + lr 
+	empty_3 = "|||]" + lr 
 
 	code_gravada = '1001'
 
+#				str(order.amount_total_net) + eol + lr + \
 
 
 	table_4 = 	code_gravada 		+ se + \
-				str(order.amount_total_net) + eol + lr + \
+				acc.fmt(order.amount_total_net) + eol + lr + \
 				empty_1 	+ \
 				empty_1 	+ \
 				empty_1 	+ \
@@ -227,6 +232,8 @@ def format_txt(order):
 
 
 
+
+
 # Table 6 - Invoiceorder 
 
 # Producto 1|NIU|40.00|1120.00|
@@ -247,15 +254,17 @@ def format_txt(order):
 	blank = ""		
 	unit_code = "NIU"
 	tax_exemption_reason_code = "10"		# ver
-
 	table_6 = ""
 
+	price_type_code = "01"
 
 
+	# Loop 
 	for line in order.electronic_line_ids: 
 
 
-		account_code = account.get_account_code(line.product_id)
+		#account_code = account.get_account_code(line.product_id)
+		account_code = acc.get_account_code(line.product_id)
 
 
 		print line 
@@ -268,16 +277,22 @@ def format_txt(order):
 		print account_code
 
 
+#					str(line.product_uom_qty)  		+ se + \
+#					str(line.price_net)				+ se + \
+#					str(line.price_unit)			+ se + \
+#					str(line.price_tax)				+ se + \
+#					str(line.price_unit_net)		+ se + \
+
 
 		in_line = 	line.product_id.name 			+ se + \
 					unit_code 						+ se + \
-					str(line.product_uom_qty)  		+ se + \
-					str(line.price_net)				+ se + \
-					blank							+ se + \
+					acc.fmt(line.product_uom_qty)  		+ se + \
+					acc.fmt(line.price_net)				+ se + \
+					acc.fmt(line.price_unit)			+ se + \
+					price_type_code 				+ se + \
 					blank 							+ se + \
 					blank 							+ se + \
-					blank 							+ se + \
-					str(line.price_tax)				+ se + \
+					acc.fmt(line.price_tax)				+ se + \
 					tax_exemption_reason_code 		+ se + \
 					tax_id  						+ se + \
 					tax_name   						+ se + \
@@ -288,7 +303,7 @@ def format_txt(order):
 					blank 							+ se + \
 					blank 							+ se + \
 					account_code 					+ se + \
-					str(line.price_unit_net)		+ se + \
+					acc.fmt(line.price_unit_net)		+ se + \
 					blank							+ se + \
 					blank 							+ eol + lr 
 

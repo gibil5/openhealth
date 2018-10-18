@@ -267,3 +267,15 @@ def test_init(self, container_id, patient_id=False, partner_id=False, doctor_id=
 
 				#		'id_code':  	False,
 				#}, 
+
+
+
+
+# 18 Oct 2018 
+
+						#'test_case': 	'other, ticket_invoice', 
+						#'test_case': 	'other, invoice', 
+						#'name': 		'RONDON RONDON SEBASTIAN', 
+						#'id_doc_type': 	'other', 
+						#'id_doc':  		'12345', 
+

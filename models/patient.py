@@ -1033,21 +1033,20 @@ class Patient(models.Model):
 			reco_id = False
 
 
+			# Create Order 
 			ret = creates.create_order_lines_micro(order, target_line, price_manual, price_applied, reco_id, qty)
 
 			
-
 			# Pay 
 			order.test(self.x_test_case)
 
 
-
 			# Update  
-			date_order = '2017-07-25 09:00:00'
-			if date_order != False: 
-				ret = order.write({
-									'date_order': date_order,
-								})
+			#date_order = '2017-07-25 09:00:00'
+			#if date_order != False: 
+			#	ret = order.write({
+			#						'date_order': date_order,
+			#					})
 
 
 

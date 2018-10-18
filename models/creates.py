@@ -32,12 +32,13 @@ def remove_patient(self, name):
 
 
 	# Unlink - Card
- 	cards = self.env['openhealth.card'].search([
-														('patient_name', '=', name), 	
-													],)
+ 	#cards = self.env['openhealth.card'].search([
+	#													('patient_name', '=', name), 	
+	#												],)
 
- 	for card in cards: 
- 		card.unlink()
+ 	#for card in cards: 
+ 	#	if card.name != False: 
+ 	#		card.unlink()
 
 
 
@@ -53,7 +54,8 @@ def create_patient(self, container_id, test_case, name, sex, address, id_doc_typ
 
 
  	# Clear 
- 	remove_patient(self, name)
+ 	#remove_patient(self, name)
+
 
 
 	# Init

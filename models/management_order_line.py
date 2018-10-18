@@ -25,31 +25,39 @@ class management_order_line(models.Model):
 	# Firm 
 	firm = fields.Char(
 			'Firm', 
-			#default='SERVICIOS MÉDICOS ESTÉTICOS S.A.C', 
-			default='MS SOFT SAC', 
+			#default='MS SOFT SAC', 
+			default='SERVICIOS MÉDICOS ESTÉTICOS S.A.C', 
 		)
 
 	# Ruc 
 	ruc = fields.Char(
 			'Ruc', 
-			#default='20523424221', 
-			default='20547678894', 
+			#default='20547678894', 
+			default='20523424221', 
 		)
 
 
 	# Ubigeo
 	ubigeo = fields.Char(
-			'Ruc', 
+			'Ubigeo', 
 			#default='', 
 			default='150101', 
 		)
 
 	# Address
 	address = fields.Char(
-			'Ruc', 
-			#default='Av. La Merced 161', 
-			default='Jr. Lima 150', 
+			'Address', 
+			#default='Jr. Lima 150', 
+			default='Av. La Merced 161', 
 		)
+
+
+	# Country
+	country = fields.Char(
+			'Country', 
+			default='PE', 
+		)
+
 
 
 # ----------------------------------------------------------- Handles - Relational ------------------------------------------------------

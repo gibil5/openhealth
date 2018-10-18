@@ -13,9 +13,9 @@
 				<tree string="Texto Tree">
 					
 					<field name="content"/>
-
+<!--
 					<field name="name"/>
-
+-->
 				</tree>
 
 			</field>

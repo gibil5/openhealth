@@ -25,6 +25,7 @@ def export_txt(self, electronic_order, export_date):
 	path = base_dir + "/mssoft/ventas/" + export_date
 
 
+
 	# Make Dirs 
 	target = base_dir + "/mssoft/"
 	if not os.path.isdir(target):
@@ -59,7 +60,7 @@ def export_txt(self, electronic_order, export_date):
 # Init 		
 		# File name 
 		file_name = lib.get_file_name(order)
-		file_name = 'CC_' + file_name
+		#file_name = 'CC_' + file_name
 
 
 		# Content 
@@ -83,27 +84,23 @@ def export_txt(self, electronic_order, export_date):
 
 
 # Txt 
-
 		# Create 
 		txt = self.txt_ids.create({
 									'name': 			file_name,
-									
 									'content': 			content,
-									
 									'container_id': 	self.id,
 			})
-
-
 
 
 # Compress 
 	source = 	dname
 	tarred = 	dname + '.tar'
 	ziped = 	dname + '.tar.gz'
-	os.system("rm -rf " + tarred + " " + ziped)
-	os.system("tar cvf " + tarred + " " + source)
-	os.system("gzip " + tarred)
 
+	os.system("rm -rf " + tarred + " " + ziped)
+	#os.system("tar cvf " + tarred + " " + source)
+	os.system("tar cf " + tarred + " " + source)
+	os.system("gzip " + tarred)
 
 # export_txt
 

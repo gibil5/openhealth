@@ -16,6 +16,22 @@ class Line(models.Model):
 
 
 
+# ----------------------------------------------------------- Fields ------------------------------------------------------
+
+	# Date Created 
+	x_date_created = fields.Datetime(
+			string='Fecha', 
+		)
+
+
+	# Name 
+	name = fields.Char(
+			string="Nombre", 		
+			#required=True, 
+		)
+
+
+
 # ----------------------------------------------------------- Core ------------------------------------------------------
 
 	# Product Product 
@@ -141,16 +157,4 @@ class Line(models.Model):
 
 
 
-# ----------------------------------------------------------- Fields ------------------------------------------------------
-
-	# Name 
-	name = fields.Char(
-			string="Nombre", 		
-			#required=True, 
-		)
-
-	# Date Created 
-	x_date_created = fields.Datetime(
-			string='Fecha', 
-		)
 

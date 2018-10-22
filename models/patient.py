@@ -11,10 +11,7 @@ import lib
 import user
 import count_funcs
 import pat_vars
-
-#import creates as cre
 import creates
-
 import chk_patient as chk
 import tst_pat
 
@@ -26,25 +23,9 @@ class Patient(models.Model):
 
 
 
-# ----------------------------------------------------------- Dep ------------------------------------------------------	
-	#appointment_ids = fields.Char()
-	#x_service_quick_ids = fields.Char()
-	#x_nr_quick_hands = fields.Integer()
-	#x_nr_quick_body_local = fields.Integer()
-	#x_nr_quick_face_local = fields.Integer()
-	#x_nr_quick_cheekbones = fields.Integer()
-	#x_nr_quick_face_all = fields.Integer()
-	#x_nr_quick_face_all_hands = fields.Integer()
-	#x_nr_quick_face_all_neck = fields.Integer()
-	#x_nr_quick_neck_hands = fields.Integer()
-	#x_nr_quick_neck = fields.Integer()
 
-
-
-
-
-# ----------------------------------------------------------- Test ------------------------------------------------------
-
+# ----------------------------------------------------------- Handle ------------------------------------------------------
+	# Container 
 	container_id = fields.Many2one(
 		'openhealth.container', 		
 		ondelete='cascade', 
@@ -990,63 +971,42 @@ class Patient(models.Model):
 
 	@api.multi 
 	def test_cycle(self):
-		print self.name 
-		print self.x_test_case
 		#print 
+		#print 'Test Cycle'
+		#print self.name 
+		#print self.x_test_case
 
 
-		# Unit Testing 
-		#self.test_computes()
-		#self.test_actions()
-		#self.test_services()
+		# Init 
+		patient_id = self.id
+		partner_id = self.partner_id.id
+		id_doc = self.x_id_doc
+		id_doc_type = self.x_id_doc_type
+		short_name = self.x_test_case.split(',')[2]
+		qty = int(self.x_test_case.split(',')[3])
+
+
+		#date_order = '2017-10-18 09:00:00'
 
 
 		# Loop 
 		for treatment in self.treatment_ids: 
 
-			#order = treatment.create_order_con_tst()
-			
-
-			# Create Order 
-			order = self.env['sale.order'].create({
-													'patient': self.id,	
-													'partner_id': self.partner_id.id,
-													'state':'draft',
-													'x_id_doc': self.x_id_doc,														
-													'x_id_doc_type': self.x_id_doc_type,														
-													#'x_doctor': doctor_id,	
-
-													'treatment': treatment.id,
-												})
-
 			# Init 
-			#target_line = 'con_med'
-			#target_line = 'product_1'
-			target_line = self.x_test_case.split(',')[2]
-
-			#qty = 5 
-			qty = int(self.x_test_case.split(',')[3])
-			
-
-			price_manual = -1
-			price_applied = 0
-			reco_id = False
+			treatment_id = treatment.id 
 
 
-			# Create Order 
-			ret = creates.create_order_lines_micro(order, target_line, price_manual, price_applied, reco_id, qty)
+			# Create 
+			order = creates.create_order_fast(self, patient_id, partner_id, treatment_id, id_doc, id_doc_type, short_name, qty)
 
-			
+
 			# Pay 
 			order.test(self.x_test_case)
 
 
-			# Update  
-			#date_order = '2017-07-25 09:00:00'
-			#if date_order != False: 
-			#	ret = order.write({
-			#						'date_order': date_order,
-			#					})
+			# Update 
+			#creates.update_order(date_order)
+
 
 
 
@@ -1071,10 +1031,14 @@ class Patient(models.Model):
 		print 'jx'
 		print 'Patient - Test'
 
+		# Unit Testing 
+		#self.test_computes()
+		#self.test_actions()
+		#self.test_services()
+
+
 		# Test Cycle
 		self.test_cycle()
-
-
 	# test 
 
 

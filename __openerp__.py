@@ -14,7 +14,7 @@
 
 	'description': """
 
-		18 Oct 2018
+		22 Oct 2018
 
 		Fulcrum - DEV - DOCEAN
 		
@@ -642,8 +642,7 @@
 		'security/openhealth_security.xml',
 		'security/openhealth_security_readers.xml',		
 		'security/ir.model.access.csv',
-		#'security/ir.rule.xml', 	# Dep 
-
+		'security/ir.rule.xml', 	# Dep 
 
 
 		# ----------------------------------------------------------- Menus ------------------------------------------------------

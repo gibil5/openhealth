@@ -12,8 +12,9 @@
 		</record>
 
 
-
-
+<!--
+														(4, ref('openhealth.rzevallos')), 
+-->
 <!-- Roots --> 
 		<record id="openhealth.roots" model="res.groups">
 			<field name="name">roots</field>
@@ -22,13 +23,14 @@
 				<field name="users" eval="[ 
 														(4, ref('base.user_root')), 
 
-														(4, ref('openhealth.rzevallos')), 
 									]"/>
 		</record>
 
 
 
-
+<!--
+													(4, ref('openhealth.rzevallos')), 
+-->
 <!-- Directors --> 
 		<record id="openhealth.directors" model="res.groups">
 			<field name="name">Directores</field>
@@ -44,7 +46,6 @@
 			<field name="implied_ids" eval="[(4, ref('oehealth.group_oeh_medical_manager'))]"/>
 
 			<field name="users" eval="[ 
-													(4, ref('openhealth.rzevallos')), 
 
 													(4, ref('openhealth.director_clinicachavarri')),
 													(4, ref('openhealth.rchavarri_clinicachavarri')),

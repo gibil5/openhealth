@@ -5,13 +5,46 @@
 # 		Abstract, general purpose. Can be Unit-tested. Is completely standard. Gives service to all Users
 # 
 # 		Created: 			13 Aug 2018
-# 		Last up: 	 		14 Oct 2018
+# 		Last up: 	 		19 Oct 2018
 #
 import datetime
 import unicodedata
 import lib_vars as lvars
-
 import account as acc
+
+
+
+#------------------------------------------------ Date - Correct for Utc - With Delta---------------------------------------------------
+# Correct Date Delta
+def correct_date_delta(date, delta_hou=0, delta_min=0, delta_sec=0):
+
+	#print 
+	#print 'Correct Date'
+	date_format = "%Y-%m-%d %H:%M:%S"
+
+	#date_dt = datetime.datetime.strptime(date, date_format) + datetime.timedelta(hours=-5,minutes=0)	
+	date_dt = datetime.datetime.strptime(date, date_format) + datetime.timedelta(hours=delta_hou,minutes=delta_min,seconds=delta_sec)	
+
+	date_s = date_dt.strftime(date_format)
+
+	return date_s
+
+
+
+
+#------------------------------------------------ Date - Correct for Utc ---------------------------------------------------
+# Correct Date 
+def correct_date(date):
+	#print 
+	#print 'Correct Date'
+	date_format = "%Y-%m-%d %H:%M:%S"
+
+	date_dt = datetime.datetime.strptime(date, date_format) + datetime.timedelta(hours=-5,minutes=0)	
+
+	date_s = date_dt.strftime(date_format)
+	return date_s
+
+
 
 
 #------------------------------------------------ File Name ---------------------------------------------------
@@ -262,19 +295,15 @@ def format_txt(order):
 	# Loop 
 	for line in order.electronic_line_ids: 
 
-
-		#account_code = account.get_account_code(line.product_id)
 		account_code = acc.get_account_code(line.product_id)
 
-
-		print line 
-		print line.product_id.name
-		print line.product_uom_qty
-		print line.price_unit
-		print line.price_tax
-		print line.price_unit_net 
-		#print line.product_id.default_code
-		print account_code
+		#print line 
+		#print line.product_id.name
+		#print line.product_uom_qty
+		#print line.price_unit
+		#print line.price_tax
+		#print line.price_unit_net 
+		#print account_code
 
 
 #					str(line.product_uom_qty)  		+ se + \
@@ -282,7 +311,6 @@ def format_txt(order):
 #					str(line.price_unit)			+ se + \
 #					str(line.price_tax)				+ se + \
 #					str(line.price_unit_net)		+ se + \
-
 
 		in_line = 	line.product_id.name 			+ se + \
 					unit_code 						+ se + \
@@ -308,9 +336,7 @@ def format_txt(order):
 					blank 							+ eol + lr 
 
 
-
 		table_6 = table_6 + in_line
-
 
 	# End of table 
 	table_6 = table_6 + eot
@@ -321,7 +347,6 @@ def format_txt(order):
 	content = table_1 + table_2 + table_3 + table_4 + table_5 + table_6
 
 	return content
-
 # format_txt
 
 
@@ -335,37 +360,12 @@ def format_txt(order):
 def get_todays_name(date_format):
 	#print 
 	#print 'Get Todays Name'
-
-
 	today = datetime.datetime.today() + datetime.timedelta(hours=-5,minutes=0)	
-
 	name = today.strftime(date_format)
-
 	#print today
 	#print name
 	#print 
-
-	#name = '2018_09_04-11_28_00'
 	return name 
-
-
-
-
-#------------------------------------------------ Date - Correct for Utc ---------------------------------------------------
-# Correct Date 
-def correct_date(date):
-	print 
-	print 'Correct Date'
-
-	date_format = "%Y-%m-%d %H:%M:%S"
-	
-	date_dt = datetime.datetime.strptime(date, date_format) + datetime.timedelta(hours=-5,minutes=0)	
-
-	date_s = date_dt.strftime(date_format)
-
-	return date_s
-
-
 
 
 
@@ -375,47 +375,34 @@ def correct_date(date):
 def is_today(date, state):
 	#print 
 	#print 'Is Today'
-
-	#date_format = "%Y-%m-%d"
 	date_format = "%Y-%m-%d %H:%M:%S"
 	date_dt = datetime.datetime.strptime(date, date_format) + datetime.timedelta(hours=-5,minutes=0)	
-
-
 	if date_dt.date() == datetime.datetime.today().date(): 
 		is_today = True 
 	else: 
 		is_today = False
-
-
 	# Prints
 	#print date
 	#print date_dt
 	#print is_today 
-
-	#return is_today 
 	return is_today and state != 'Scheduled'
 
 
-
 #------------------------------------------------ Patient - Unidecode ---------------------------------------------------
-
 # Strip all accents - But keep Ñ
 def strip_accents(s):
+	#print 
+	#print 'Strip accents'
 	good_accents = {
 				    u'\N{COMBINING TILDE}',
 				    #u'\N{COMBINING CEDILLA}'
 	}
-	#return s 
 	return ''.join(c for c in unicodedata.normalize('NFD', s)
 	              if unicodedata.category(c) != 'Mn'	or 	c in good_accents)
 # strip_accents
 
 
-
-
-
 #------------------------------------------------ Patient - Test content ---------------------------------------------------
-
 # Length 
 def test_for_length(self, token, length):
 	print 

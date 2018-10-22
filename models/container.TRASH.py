@@ -94,3 +94,53 @@ class Object():
 		#self.mgt.unlink()
 
 
+
+# 20 oct 2018 
+				# Patch 
+				patient = self.owner
+				receptor = patient.name 
+				serial_nr = lib_con.get_serial_nr(order.serial_nr, -1)
+				id_doc = '09817194'
+				id_doc_type = 'dni'
+				id_doc_type_code = 1
+				counter_value = order.counter_value - 1
+
+				# Create 
+				electronic = self.electronic_order_ids.create({
+
+																'receptor': 	receptor, 
+																'patient': 		patient.id, 
+
+																#'name': 			order.name, 
+																'x_date_created': 	order.x_date_created, 
+																#'doctor': 			order.x_doctor.id, 
+																'state': 			'cancel', 
+																'serial_nr': 		serial_nr, 
+
+																# Type of Sale 
+																'type_code': 		order.type_code, 
+																'x_type': 			order.x_type, 
+
+																# Id Doc  
+																'id_doc': 				id_doc, 
+																'id_doc_type': 			id_doc_type, 
+																'id_doc_type_code': 	id_doc_type_code, 
+
+
+																# Totals
+																'amount_total': 		0, 
+																'amount_total_net': 	0, 
+																'amount_total_tax': 	0, 
+
+																# QC 
+																'counter_value': 		counter_value, 
+																#'delta': 				order.x_delta, 
+
+
+																# Rel 
+																'management_id': self.mgt.id, 
+																'container_id': self.id, 
+
+					})
+
+

@@ -10,14 +10,19 @@
 			<field name="name">openhealth.electronic.order.tree</field>
 			<field name="model">openhealth.electronic.order</field>
 			<field name="arch" type="xml">
-				<tree string="electronic order Tree">
+
+
+				<tree string="electronic order Tree"
+
+						colors="
+						red:delta not in ('1')
+						"
+					>
 
 
 					<field name="serial_nr"/>
 
 					<field name="state"/>
-
-
 
 					<field name="counter_value"/>
 

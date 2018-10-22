@@ -17,6 +17,18 @@
 
 <!-- Active --> 
 
+					<!-- 18 Oct --> 
+					<filter string="18 Oct" domain="[
+															('date_order','&lt;', '2018-10-19 05:00:00'),
+															('date_order','&gt;=','2018-10-18 05:00:00'),
+											]"/>
+
+
+
+
+					<separator/>
+
+
 					<filter string="Hoy" domain="[											
 															('date_order', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 05:00:00')),
 											]"/>

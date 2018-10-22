@@ -10,9 +10,10 @@ import tst_pat
 import creates 
 import datetime
 import rsync
-
 import export 
 import importx
+
+import lib_con
 
 class Container(models.Model):
 
@@ -21,6 +22,28 @@ class Container(models.Model):
 
 
 # ----------------------------------------------------------- Relational ------------------------------------------------------
+
+	# Patient 
+	patient = fields.Many2one(
+			'oeh.medical.patient', 
+			string="patient", 
+			domain = [
+						('x_test', '=', 'True'),
+					],
+		)
+
+	# Doctor 
+	doctor = fields.Many2one(
+			'oeh.medical.physician', 
+			string="Doctor", 
+			#domain = [
+			#			('x_test', '=', 'True'),
+			#		],
+		)
+
+
+
+
 
 	# Txt  
 	txt_ids = fields.One2many(
@@ -51,6 +74,8 @@ class Container(models.Model):
 
 			'container_id', 
 		)
+
+
 
 
 
@@ -183,8 +208,9 @@ class Container(models.Model):
 		print 'Test - Qc'
 
 		# Gap Analysis 
-		self.mgt.update_qc('ticket_invoice')
 		self.mgt.update_qc('ticket_receipt')
+		self.mgt.update_qc('receipt')
+		self.mgt.update_qc('ticket_invoice')
 
 
 
@@ -198,17 +224,91 @@ class Container(models.Model):
 		print 'Correct'
 
 		# Loop
-		for order in self.electronic_order_ids: 
+		for electronic in self.electronic_order_ids: 
 
 			# Correct DNI
-			if order.id_doc in [False]: 
-				if order.id_doc_type in ['dni']: 
-					order.patient.x_id_doc = order.patient.x_dni
+			#if order.id_doc in [False]: 
+			#	if order.id_doc_type in ['dni']: 
+			#		order.patient.x_id_doc = order.patient.x_dni
 
 			# Correct Counter
-			order.counter_value = int(order.serial_nr.split('-')[1])
+			#order.counter_value = int(order.serial_nr.split('-')[1])
 
 
+			# Correct Gap 
+			if electronic.delta != 1: 
+
+				#print 'Patch the Gap !'
+				#print electronic.receptor 
+				#print electronic.serial_nr
+				#print electronic.counter_value
+
+
+				# Init 
+				patient_id = 	self.patient.id
+				partner_id = 	self.patient.partner_id.id
+				id_doc = 		self.patient.x_id_doc
+				id_doc_type = 	self.patient.x_id_doc_type
+				doctor_id = 	self.doctor.id
+				short_name = 	'product_1'
+				qty = 			1
+
+				treatment_id = False
+
+
+
+				# Create 
+				#order = creates.create_order_fast(self, patient_id, partner_id, treatment_id, id_doc, id_doc_type, short_name, qty)
+				order = creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id, id_doc, id_doc_type, short_name, qty)
+
+
+				# Pay 
+				#test_case = 'dni,ticket_receipt,product_1,1'
+				test_case = 'dni,receipt,product_1,1'
+				order.test(test_case)
+
+
+				# Update 
+				#date_order = '2018-10-18 09:00:00'
+				#date_order = electronic.date_order
+				#date_order = electronic.x_date_created
+				#date_order = False
+
+				#serial_nr = order.x_serial_nr.replace("B","0")
+
+				#delta = -1 
+				#pad = 6 
+				#serial_nr = lib_con.get_serial_nr(electronic.serial_nr, delta, pad)
+				#serial_nr = False
+
+				#creates.update_order(order, date_order, serial_nr)
+				#creates.update_order(order, date_order, serial_nr, x_counter_value)
+
+
+
+
+				# Update 
+				counter = electronic.counter_value - 1 
+				ret = order.write({
+							'x_counter_value': counter,
+						})
+
+
+
+				# Generate 
+				order.generate_serial_nr()
+				
+				delta_hou = 0 
+				delta_min = 0
+				delta_sec = -30 
+				order.generate_date_order(electronic.x_date_created, delta_hou, delta_min, delta_sec)
+
+
+				# Update 
+				state = 'cancel'
+				ret = order.write({
+							'state': state,
+						})
 
 
 
@@ -294,6 +394,7 @@ class Container(models.Model):
 	# Management 
 	mgt = fields.Many2one(
 			'openhealth.management', 
+			required=True, 
 		)
 
 
@@ -302,8 +403,8 @@ class Container(models.Model):
 	# Clear 
 	@api.multi 
 	def clear(self): 
-		print 
-		print 'Clear'
+		#print 
+		#print 'Clear'
 
 		# Patients 
 		for patient in self.patient_ids: 

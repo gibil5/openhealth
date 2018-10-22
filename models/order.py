@@ -13,7 +13,6 @@ from openerp import tools
 from openerp import _
 from openerp.exceptions import Warning
 import ord_vars
-import lib
 import creates
 import pat_vars
 import user
@@ -21,11 +20,54 @@ import user
 import chk_patient
 import chk_order
 
+import lib
+import lib_con
 
 class sale_order(models.Model):
 	_inherit='sale.order'
 
 	
+
+# ----------------------------------------------------------- Generates ------------------------------------------------------
+	# Generate Date Order
+	@api.multi 
+	def generate_date_order(self, date_order, delta_hou=0, delta_min=0, delta_sec=0):
+		print 
+		print 'Generate Date Order'
+
+		#delta_min = 1
+		#delta_hou = 0 
+		#delta_sec = 0 
+		
+		date_order = lib.correct_date_delta(date_order, delta_hou, delta_min, delta_sec)
+
+		self.date_order = date_order
+
+
+
+
+	# Generate Serial Nr
+	@api.multi 
+	def generate_serial_nr(self):
+		print 
+		print 'Generate Serial Nr'
+
+		delta = 0 
+
+		_dic_pad = {
+						'ticket_receipt': 10, 
+						'ticket_invoice': 10, 
+						'receipt': 			6,
+						'invoice':			6, 
+		}
+
+		pad = _dic_pad[self.x_type]
+
+		self.x_serial_nr = lib_con.generate_serial_nr(self.x_counter_value, delta, pad)
+
+
+
+
 
 # ----------------------------------------------------------- Search - DNI ------------------------------------------------------
 	
@@ -144,9 +186,8 @@ class sale_order(models.Model):
 	@api.constrains('x_serial_nr')
 	def _check_x_serial_nr(self):
 		print
-		print 'Check Serial Nr'
-
-		chk_order._check_x_serial_nr(self)
+		#print 'Check Serial Nr'
+		#chk_order._check_x_serial_nr(self)
 
 
 

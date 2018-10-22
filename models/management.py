@@ -30,9 +30,8 @@ class Management(models.Model):
 	# Export TXT
 	@api.multi
 	def export_txt(self):
-		print 
-		print 'Export Text'
-
+		#print 
+		#print 'Export Text'
 		export.export_txt(self.order_line)
 
 
@@ -785,8 +784,8 @@ class Management(models.Model):
 	# Update
 	@api.multi
 	def update_doctors(self):  
-		print 
-		print 'Management - Update Doctors'
+		#print 
+		#print 'Management - Update Doctors'
 		
 		t0 = timer()
 		
@@ -809,8 +808,8 @@ class Management(models.Model):
 	# Clear  
 	@api.multi
 	def clear_electronic(self):  
-		print
-		print 'Electronic - Clear'
+		#print
+		#print 'Electronic - Clear'
 		# Clean 
 		self.electronic_order.unlink()
 
@@ -822,9 +821,8 @@ class Management(models.Model):
 	# Update
 	@api.multi
 	def update(self):  
-		print 
-		print 'Management - Update'
-
+		#print 
+		#print 'Management - Update'
 		self.reset()
 		self.update_fast()
 		self.update_doctors()
@@ -839,23 +837,22 @@ class Management(models.Model):
 	@api.multi
 	def update_electronic(self):  
 		print
-		print 'Update Sales - Electronic'
-
+		print 'Update - Electronic'
 
 		# Clean 
 		self.electronic_order.unlink()
 
-
 		# Orders 
 		orders,count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end, self.state_arr, self.type_arr)
-
+		print orders
+		print count 
 
 
 		# Loop 
 		for order in orders: 
 			
-			#print order 
-
+			print order 
+			print order.x_type
 
 			# Id Doc 
 			if order.x_type in ['ticket_invoice','invoice']: 
@@ -863,16 +860,26 @@ class Management(models.Model):
 				id_doc = 			order.patient.x_ruc
 				id_doc_type = 		'ruc'
 				id_doc_type_code = 	'6'
-
 			else: 
 				receptor = 			order.patient.name 
 				id_doc = 			order.patient.x_id_doc
 				id_doc_type = 		order.patient.x_id_doc_type
 				id_doc_type_code = 	order.patient.x_id_doc_type_code
 
+			# Patch 
+			if order.patient.x_id_doc == False and order.patient.x_id_doc_type == False: 
+				if order.patient.x_dni != False: 
+					id_doc = order.patient.x_dni 
+					id_doc_type = 'dni'
+					id_doc_type_code = 1
+
+			print receptor
+			print id_doc
+			print id_doc_type
+			print id_doc_type_code
 
 
-					
+		
 			# Here !!!
 			electronic_order = self.electronic_order.create({
 																'receptor': 	receptor, 
@@ -920,12 +927,12 @@ class Management(models.Model):
 			# Order Lines 
 			for line in order.order_line:
 				
-				print line 
-				print line.product_id.name
-				print line.product_uom_qty
-				print line.price_unit
-				print electronic_order
-				print 
+				#print line 
+				#print line.product_id.name
+				#print line.product_uom_qty
+				#print line.price_unit
+				#print electronic_order
+				#print 
 
 				# Here !!!
 				electronic_line = electronic_order.electronic_line_ids.create({
@@ -933,7 +940,6 @@ class Management(models.Model):
 																				'product_id': 			line.product_id.id, 															
 																				'product_uom_qty': 		line.product_uom_qty, 
 																				'price_unit': 			line.price_unit, 
-
 
 																				# Rel 
 																				'electronic_order_id': electronic_order.id, 
@@ -948,8 +954,8 @@ class Management(models.Model):
 	# Update
 	@api.multi
 	def update_fast(self):  
-		print 
-		print 'Management - Update Fast'
+		#print 
+		#print 'Management - Update Fast'
 		
 		t0 = timer()
 		self.update_sales_fast()
@@ -966,9 +972,9 @@ class Management(models.Model):
 	# Update QC
 	@api.multi
 	def update_qc(self, x_type):  
-		print 
-		print 'Management - Update QC'
-		print x_type
+		#print 
+		#print 'Management - Update QC'
+		#print x_type
 
 
 		# Serial Number 
@@ -997,16 +1003,18 @@ class Management(models.Model):
 
 
 			# Prints
-			print order.x_serial_nr
-			print delta 
+			#print order.x_serial_nr
+			#print delta 
+
 
 
 			# Update Delta
 			order.x_delta = delta
 
+
 			# Update Counter Value 
-			order.x_counter_value = int(order.x_serial_nr.split('-')[1])
-			
+			#order.x_counter_value = int(order.x_serial_nr.split('-')[1])
+
 	# update_qc
 
 

@@ -44,12 +44,9 @@ class electronic_order(models.Model):
 	@api.multi
 	#@api.depends('x_msg')
 	def _compute_export_date(self):
-		print 
-		print 'Compute Export Date'
-
+		#print 
+		#print 'Compute Export Date'
 		for record in self:			
-
-			#record.export_date = record.x_date_created 
 			record.export_date = lib.correct_date(record.x_date_created).split()[0]
 
 

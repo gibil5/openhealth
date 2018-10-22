@@ -12,34 +12,72 @@ import lib
 import user 
 
 
-# ----------------------------------------------------------- Remove Patient  ------------------------------------------------------
-def remove_patient(self, name):
-	#print 
-	#print 'Remove Patient'
-	#print name 
 
 
-	# Unlink Patient
-	patients = self.env['oeh.medical.patient'].search([
-															('name', '=', name), 
-														],).unlink()
+# ----------------------------------------------------------- Update Order  ------------------------------------------------------
+# Create Order
+#def update_order(order, date_order=False):
+#def update_order(order, date_order=False, serial_nr=False):
+def update_order(order, date_order=False, serial_nr=False, counter=False):
+	print
+	print 'Update Order'
 
 
-	# Unlink Partner 
-	partners = self.env['res.partner'].search([
-														('name', '=', name), 
-													],).unlink()
+	# Update  
+	if date_order != False: 
+		ret = order.write({
+							'date_order': date_order,
+						})
+
+	if serial_nr != False: 
+		ret = order.write({
+							'x_serial_nr': serial_nr,
+						})
 
 
-	# Unlink - Card
- 	#cards = self.env['openhealth.card'].search([
-	#													('patient_name', '=', name), 	
-	#												],)
+	if counter != False: 
+		ret = order.write({
+							'x_counter_value': counter,
+						})
 
- 	#for card in cards: 
- 	#	if card.name != False: 
- 	#		card.unlink()
 
+
+
+
+# ----------------------------------------------------------- Create Order Fast  ------------------------------------------------------
+# Create Order
+#def create_order_fast(self, patient_id, partner_id, treatment_id, id_doc, id_doc_type, short_name, qty):
+def create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id, id_doc, id_doc_type, short_name, qty):
+	print
+	print 'Create Order Fast'
+
+	# Create Order 
+	order = self.env['sale.order'].create({
+											'patient': 		patient_id,	
+											'partner_id': 	partner_id,
+											'treatment': 	treatment_id,
+											'x_id_doc': 	id_doc,														
+											'x_id_doc_type': id_doc_type,														
+											'x_doctor': 	doctor_id,	
+											#'state':		'draft',
+										})
+
+	# Init 
+	price_manual = -1
+	price_applied = 0
+	reco_id = False
+
+
+	# Create Order Lines 
+	#ret = creates.create_order_lines_micro(order, target_line, price_manual, price_applied, reco_id, qty)
+	ret = create_order_lines_micro(order, short_name, price_manual, price_applied, reco_id, qty)
+
+
+
+
+	return order 
+
+# create_order_fast 
 
 
 
@@ -49,14 +87,10 @@ def remove_patient(self, name):
 def create_patient(self, container_id, test_case, name, sex, address, id_doc_type, id_doc, ruc=False, firm=False, doctor_id=False, name_last='', name_first='', id_code=False, dni=False):
 	#print
 	#print 'Create Patient'
-	#print self 
 	#print name 
-
 
  	# Clear 
  	#remove_patient(self, name)
-
-
 
 	# Init
 	street = 	address.split(',')[0]
@@ -736,3 +770,30 @@ def create_procedure_wapp(self, subtype, product_id):
 		self.treatment.create_procedure(appointment_date_str, subtype, product_id)
 
 # create_procedure_wapp
+
+
+# ----------------------------------------------------------- Remove Patient  ------------------------------------------------------
+def remove_patient(self, name):
+	#print 
+	#print 'Remove Patient'
+	#print name 
+
+	# Unlink Patient
+	patients = self.env['oeh.medical.patient'].search([
+															('name', '=', name), 
+														],).unlink()
+
+	# Unlink Partner 
+	partners = self.env['res.partner'].search([
+														('name', '=', name), 
+													],).unlink()
+
+
+	# Unlink - Card
+ 	#cards = self.env['openhealth.card'].search([
+	#													('patient_name', '=', name), 	
+	#												],)
+ 	#for card in cards: 
+ 	#	if card.name != False: 
+ 	#		card.unlink()
+

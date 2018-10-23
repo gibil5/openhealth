@@ -1987,9 +1987,7 @@ class sale_order(models.Model):
 
 		print test_case
 
-
 		if self.patient.x_test: 
-
 
 			if test_case != False: 
 				x_type = test_case.split(',')[1].strip()

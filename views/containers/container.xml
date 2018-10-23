@@ -48,17 +48,6 @@
 							string="Correct" 								
 						/>
 
-<!--						
-						<button 
-							type="object" 
-							class="oe_highlight"
-							
-							name="sync_txt" 
-							
-							string="Sync Txt" 								
-						/>
--->
-
 
 
 						<!-- Export Txt--> 
@@ -70,6 +59,20 @@
 							
 							string="Export Txt" 								
 						/>
+
+<!--						
+-->
+						<button 
+							type="object" 
+							class="oe_highlight"
+							
+							name="sync_txt" 
+							
+							string="Sync Txt" 								
+						/>
+
+
+
 
 
 
@@ -133,7 +136,6 @@
 								<field name="patient" />
 								<field name="partner" />
 								<field name="treatment" />
-
 								<field name="doctor" />
 -->
 
@@ -146,7 +148,17 @@
 								<field name="export_date_end"/>
 							</group>
 							<group>
+<!--
 								<field name="export_date"/>
+-->						
+								<field name="ticket_receipt_create"/>
+								<field name="ticket_invoice_create"/>
+								<field name="cn_invoice_create"/>
+<!--
+								<field name="cn_receipt_create"/>
+								<field name="receipt_create"/>
+								<field name="invoice_create"/>
+-->
 							</group>
 						</group>
 
@@ -163,6 +175,9 @@
 						<!-- Notebook --> 
 						<notebook>
 							
+							<page string="Patients">
+								<field name="patient_ids"/>
+							</page>
 
 
 							<page string="Electronic">
@@ -179,9 +194,6 @@
 							</page>
 
 
-							<page string="Patients">
-								<field name="patient_ids"/>
-							</page>
 
 						</notebook>
 					</sheet>

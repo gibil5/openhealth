@@ -13,11 +13,38 @@ import rsync
 import export 
 import importx
 
-import lib_con
+#import lib_con
 
 class Container(models.Model):
 
 	_name = 'openhealth.container'
+
+
+
+# ----------------------------------------------------------- Test Cases - Creates ------------------------------------------------------
+
+	ticket_invoice_create = fields.Boolean(
+			'Ticket Invoice', 
+		)
+
+
+	ticket_receipt_create = fields.Boolean(
+			'Ticket Receipt', 
+		)
+
+	cn_invoice_create = fields.Boolean(
+			'Credit Note Invoice', 
+		)
+
+
+	#receipt_create = fields.Boolean(
+	#	)
+	#invoice_create = fields.Boolean(
+	#	)
+	#cn_receipt_create = fields.Boolean(
+	#	)
+
+
 
 
 
@@ -27,6 +54,7 @@ class Container(models.Model):
 	patient = fields.Many2one(
 			'oeh.medical.patient', 
 			string="patient", 
+			required=True, 
 			domain = [
 						('x_test', '=', 'True'),
 					],
@@ -140,15 +168,6 @@ class Container(models.Model):
 
 
 
-	@api.multi 
-	def create_sales(self): 
-		print 
-		print 'Test Patients'
-
-		for patient in self.patient_ids: 
-			print patient
-			patient.test()
-			print 
 
 
 
@@ -215,6 +234,71 @@ class Container(models.Model):
 
 
 
+#jx 
+	# Create Sales 
+	@api.multi 
+	def create_sales(self): 
+		print 
+		print 'Create Sales'
+
+		# Loop 
+		for patient in self.patient_ids: 
+			print patient
+
+			# Init 
+			patient_id = patient.id
+			doctor_id = self.doctor.id 
+			treatment_id = False
+			short_name = 	'product_1'
+			qty = 			40
+
+
+			# Clean 
+			creates.remove_orders(self, patient_id)
+
+
+			# Invoice 
+			if self.ticket_invoice_create:
+				print 'Create Ticket Invoice'
+				
+				x_type = 'ticket_invoice'
+
+				# Create 
+				order = creates.create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type)
+				print order 
+
+
+
+			# Receipt
+			if self.ticket_receipt_create:	
+				print 'Create Ticket receipt'
+
+				x_type = 'ticket_receipt'
+
+				# Create 
+				order = creates.create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type)
+				print order 
+
+
+
+			# Credit Note Invoice 
+			if self.cn_invoice_create:
+				print 'Create Credit Note - Ticket Invoice'
+				
+				x_type = 'ticket_invoice'
+
+				# Create 
+				order = creates.create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type)
+				print order 
+
+				ret = order.write({
+									'state': 'cancel',
+								})
+				
+			print 
+
+
+
 
 
 	# Correct 
@@ -245,64 +329,35 @@ class Container(models.Model):
 
 
 				# Init 
-				patient_id = 	self.patient.id
-				partner_id = 	self.patient.partner_id.id
-				id_doc = 		self.patient.x_id_doc
-				id_doc_type = 	self.patient.x_id_doc_type
+				patient_id = 	self.patient.id				
 				doctor_id = 	self.doctor.id
 				short_name = 	'product_1'
 				qty = 			1
-
 				treatment_id = False
-
+				x_type = 'receipt'
 
 
 				# Create 
-				#order = creates.create_order_fast(self, patient_id, partner_id, treatment_id, id_doc, id_doc_type, short_name, qty)
-				order = creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id, id_doc, id_doc_type, short_name, qty)
+				order = creates.create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type)
 
 
 				# Pay 
-				#test_case = 'dni,ticket_receipt,product_1,1'
 				test_case = 'dni,receipt,product_1,1'
 				order.test(test_case)
-
-
-				# Update 
-				#date_order = '2018-10-18 09:00:00'
-				#date_order = electronic.date_order
-				#date_order = electronic.x_date_created
-				#date_order = False
-
-				#serial_nr = order.x_serial_nr.replace("B","0")
-
-				#delta = -1 
-				#pad = 6 
-				#serial_nr = lib_con.get_serial_nr(electronic.serial_nr, delta, pad)
-				#serial_nr = False
-
-				#creates.update_order(order, date_order, serial_nr)
-				#creates.update_order(order, date_order, serial_nr, x_counter_value)
-
-
-
 
 				# Update 
 				counter = electronic.counter_value - 1 
 				ret = order.write({
 							'x_counter_value': counter,
 						})
-
-
+				#print ret 
 
 				# Generate 
 				order.generate_serial_nr()
-				
 				delta_hou = 0 
 				delta_min = 0
 				delta_sec = -30 
 				order.generate_date_order(electronic.x_date_created, delta_hou, delta_min, delta_sec)
-
 
 				# Update 
 				state = 'cancel'
@@ -408,10 +463,19 @@ class Container(models.Model):
 
 		# Patients 
 		for patient in self.patient_ids: 
-			creates.remove_patient(self, patient.name)
+
+			patient_id = patient.id 
+
+			# Clean 
+			creates.remove_orders(self, patient_id)
+
+			#creates.remove_patient(self, patient.name)
+
 
 		# Electronic 
 		self.mgt.electronic_order.unlink()
 
 		# Txts 
 		self.txt_ids.unlink()
+
+

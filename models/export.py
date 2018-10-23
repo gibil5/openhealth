@@ -9,8 +9,10 @@ from __future__ import print_function  # Only needed for Python 2
 from openerp import models, fields, api
 import os
 import shutil
-import lib 
 import io
+
+import lib_exp 
+
 
 
 # ----------------------------------------------------------- Create Services  ------------------------------------------------------
@@ -59,12 +61,10 @@ def export_txt(self, electronic_order, export_date):
 
 # Init 		
 		# File name 
-		file_name = lib.get_file_name(order)
-		#file_name = 'CC_' + file_name
-
+		file_name = lib_exp.get_file_name(order)
 
 		# Content 
-		content = lib.get_file_content(order)
+		content = lib_exp.get_file_content(order)
 
 
 
@@ -73,8 +73,11 @@ def export_txt(self, electronic_order, export_date):
 		fname = dname + '/' + file_name + '.txt'
 
 
+
 		# Open
 		f = io.open(fname, mode="w", encoding="utf-8")
+
+
 		
 		# Write  
 		print(content, file=f)

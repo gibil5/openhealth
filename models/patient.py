@@ -24,6 +24,18 @@ class Patient(models.Model):
 
 
 
+# ----------------------------------------------------------- Test - Fields ------------------------------------------------------
+	x_test_case = fields.Char(
+			'Test Case', 
+		)
+
+	x_test = fields.Boolean(
+			'Test', 
+		)
+
+
+
+
 # ----------------------------------------------------------- Handle ------------------------------------------------------
 	# Container 
 	container_id = fields.Many2one(
@@ -994,10 +1006,11 @@ class Patient(models.Model):
 
 			# Init 
 			treatment_id = treatment.id 
-
+			doctor_id = False 
 
 			# Create 
-			order = creates.create_order_fast(self, patient_id, partner_id, treatment_id, id_doc, id_doc_type, short_name, qty)
+			#order = creates.create_order_fast(self, patient_id, partner_id, treatment_id, id_doc, id_doc_type, short_name, qty)
+			order = creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id, id_doc, id_doc_type, short_name, qty)
 
 
 			# Pay 
@@ -1012,15 +1025,6 @@ class Patient(models.Model):
 
 
 
-# ----------------------------------------------------------- Test - Fields ------------------------------------------------------
-
-	x_test = fields.Boolean(
-			'Test', 
-		)
-
-	x_test_case = fields.Char(
-			'Test Case', 
-		)
 
 # ----------------------------------------------------------- Test ------------------------------------------------------
 

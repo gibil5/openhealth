@@ -10,46 +10,45 @@ import datetime
 import time_funcs
 import lib
 import user 
+import ord_vars 
 
 
 
+# ----------------------------------------------------------- Remove Patient  ------------------------------------------------------
+def remove_orders(self, patient_id):
+	#print 
+	#print 'Remove Orders'
 
-# ----------------------------------------------------------- Update Order  ------------------------------------------------------
-# Create Order
-#def update_order(order, date_order=False):
-#def update_order(order, date_order=False, serial_nr=False):
-def update_order(order, date_order=False, serial_nr=False, counter=False):
-	print
-	print 'Update Order'
-
-
-	# Update  
-	if date_order != False: 
+	# Search 
+	orders = self.env['sale.order'].search([
+												('patient', '=', patient_id), 
+											],)
+	for order in orders: 
 		ret = order.write({
-							'date_order': date_order,
+							'state': 'draft',
 						})
-
-	if serial_nr != False: 
-		ret = order.write({
-							'x_serial_nr': serial_nr,
-						})
-
-
-	if counter != False: 
-		ret = order.write({
-							'x_counter_value': counter,
-						})
-
-
+		order.unlink()
 
 
 
 # ----------------------------------------------------------- Create Order Fast  ------------------------------------------------------
 # Create Order
-#def create_order_fast(self, patient_id, partner_id, treatment_id, id_doc, id_doc_type, short_name, qty):
-def create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id, id_doc, id_doc_type, short_name, qty):
+#def create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id, id_doc, id_doc_type, short_name, qty):
+def create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type):
 	print
 	print 'Create Order Fast'
+
+
+	# Init 
+	partner_id = 	self.patient.partner_id.id
+	id_doc = 		self.patient.x_id_doc
+	id_doc_type = 	self.patient.x_id_doc_type
+
+
+	#pricelist_id = self.patient.property_product_pricelist.id 
+	#print self.patient.property_product_pricelist
+	#print pricelist_id
+
 
 	# Create Order 
 	order = self.env['sale.order'].create({
@@ -60,6 +59,8 @@ def create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id, id_
 											'x_id_doc_type': id_doc_type,														
 											'x_doctor': 	doctor_id,	
 											#'state':		'draft',
+										
+											#'pricelist_id': pricelist_id, 
 										})
 
 	# Init 
@@ -73,6 +74,12 @@ def create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id, id_
 	ret = create_order_lines_micro(order, short_name, price_manual, price_applied, reco_id, qty)
 
 
+
+	# Pay 
+	order.create_payment_method()
+	order.x_payment_method.saledoc = ord_vars._dic_tc_type[x_type]
+	order.validate()					
+	order.action_confirm_nex()
 
 
 	return order 
@@ -98,64 +105,58 @@ def create_patient(self, container_id, test_case, name, sex, address, id_doc_typ
 	city = 		address.split(',')[2]
 
 
+	# Search 
+	patient = self.env['oeh.medical.patient'].search([
+														('name', '=', name), 
+											],)
 
-	# Create Patient 
-	if id_code != False: 	# With Id Code - Nr Historia
+	if patient.name == False: 
 
-		#patient = self.env['oeh.medical.patient'].create({
-		patient = self.patient_ids.create({
-															'name': 	name,
+		# Create Patient 
+		if id_code != False: 	# With Id Code - Nr Historia
 
-															'x_last_name': name_last, 
-															'x_first_name': name_first, 
-															
-															'sex': 		sex, 
-															'street': 	street, 
-															'street2_char': 	street2_char, 
-															'city': 	city, 
-															'x_ruc': 	ruc, 
-															'x_firm': 	firm, 
-															'x_first_contact': 'none', 
-															'x_id_doc_type':	id_doc_type,
-															'x_id_doc':			id_doc,  
+			#patient = self.env['oeh.medical.patient'].create({
+			patient = self.patient_ids.create({
+																'name': 	name,
+																'x_last_name': name_last, 
+																'x_first_name': name_first, 
+																'sex': 		sex, 
+																'street': 	street, 
+																'street2_char': 	street2_char, 
+																'city': 	city, 
+																'x_ruc': 	ruc, 
+																'x_firm': 	firm, 
+																'x_first_contact': 'none', 
+																'x_id_doc_type':	id_doc_type,
+																'x_id_doc':			id_doc,  
+																'x_test': 	True, 
+																'x_test_case': 	test_case, 
+																'x_id_code':		id_code,  
+																'x_dni':		dni,  
+																'container_id': 	container_id, 
+													})
 
-															'x_test': 	True, 
-															'x_test_case': 	test_case, 
+		else: 
 
-															'x_id_code':		id_code,  
-															'x_dni':		dni,  
-
-															'container_id': 	container_id, 
-												})
-
-	else: 
-
-		#patient = self.env['oeh.medical.patient'].create({
-		patient = self.patient_ids.create({
-															'name': 	name,
-
-															'x_last_name': name_last, 
-															'x_first_name': name_first, 
-															
-															'sex': 		sex, 
-															'street': 	street, 
-															'street2_char': 	street2_char, 
-															'city': 	city, 
-															'x_ruc': 	ruc, 
-															'x_firm': 	firm, 
-															'x_first_contact': 'none', 
-															'x_id_doc_type':	id_doc_type,
-															'x_id_doc':			id_doc,  
-
-															'x_test': 	True, 
-															'x_test_case': 	test_case, 
-
-															'x_dni':		dni,  
-
-															'container_id': 	container_id, 
-												})
-
-
+			#patient = self.env['oeh.medical.patient'].create({
+			patient = self.patient_ids.create({
+																'name': 	name,
+																'x_last_name': name_last, 
+																'x_first_name': name_first, 
+																'sex': 		sex, 
+																'street': 	street, 
+																'street2_char': 	street2_char, 
+																'city': 	city, 
+																'x_ruc': 	ruc, 
+																'x_firm': 	firm, 
+																'x_first_contact': 'none', 
+																'x_id_doc_type':	id_doc_type,
+																'x_id_doc':			id_doc,  
+																'x_test': 	True, 
+																'x_test_case': 	test_case, 
+																'x_dni':		dni,  
+																'container_id': 	container_id, 
+													})
 	#print patient
 
 
@@ -797,3 +798,30 @@ def remove_patient(self, name):
  	#	if card.name != False: 
  	#		card.unlink()
 
+
+
+# ----------------------------------------------------------- Update Order  ------------------------------------------------------
+# Create Order
+#def update_order(order, date_order=False):
+#def update_order(order, date_order=False, serial_nr=False):
+def update_order(order, date_order=False, serial_nr=False, counter=False):
+	print
+	print 'Update Order'
+
+
+	# Update  
+	if date_order != False: 
+		ret = order.write({
+							'date_order': date_order,
+						})
+
+	if serial_nr != False: 
+		ret = order.write({
+							'x_serial_nr': serial_nr,
+						})
+
+
+	if counter != False: 
+		ret = order.write({
+							'x_counter_value': counter,
+						})

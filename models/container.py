@@ -257,6 +257,20 @@ class Container(models.Model):
 			creates.remove_orders(self, patient_id)
 
 
+
+			# Credit Note Invoice 
+			if self.cn_invoice_create:
+				print 'Create Credit Note - Ticket Invoice'				
+				x_type = 'ticket_invoice'
+
+				# Create 
+				order = creates.create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type)
+				
+				ret = order.write({
+									'state': 'cancel',
+								})
+
+
 			# Invoice 
 			if self.ticket_invoice_create:
 				print 'Create Ticket Invoice'
@@ -281,19 +295,6 @@ class Container(models.Model):
 
 
 
-			# Credit Note Invoice 
-			if self.cn_invoice_create:
-				print 'Create Credit Note - Ticket Invoice'
-				
-				x_type = 'ticket_invoice'
-
-				# Create 
-				order = creates.create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type)
-				print order 
-
-				ret = order.write({
-									'state': 'cancel',
-								})
 				
 			print 
 

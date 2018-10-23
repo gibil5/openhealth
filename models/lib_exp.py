@@ -56,10 +56,11 @@ def format_txt(order):
 	additional_account_id = "6"
 
 	# Prefix 
-	if order.state in ['sale']: 
-		type_prefix = lvars._dic_prefix[order.type_code]
-	elif order.state in ['cancel']: 
-		type_prefix = lvars._dic_prefix_cancel[order.type_code]
+	#if order.state in ['sale']: 
+	#	type_prefix = lvars._dic_prefix[order.type_code]
+	#elif order.state in ['cancel']: 
+	#	type_prefix = lvars._dic_prefix_cancel[order.type_code]
+	type_prefix = lvars._dic_prefix[order.type_code]
 
 
 
@@ -72,19 +73,33 @@ def format_txt(order):
 # 20345079491|6|contacom  SAC|Jr. pichis Nro. 106]
 # !
 
-	# Data General 
-	general = 	order.type_code + se + \
-				order.id_serial_nr + se + \
-				order.export_date + se + \
-				order.currency_code + \
-				se + \
-				se + \
-				se + \
-				se + \
-				se + \
-				se + \
-				se + \
-				se + eol 
+	if order.state != 'cancel': 
+		# Data General 
+		general = 	order.type_code + se + \
+					order.id_serial_nr + se + \
+					order.export_date + se + \
+					order.currency_code + \
+					se + \
+					se + \
+					se + \
+					se + \
+					se + \
+					se + \
+					se + \
+					se + eol 
+
+
+
+# FC02-00009990|2017-11-09|07|PEN|||||F001-00000001|01|ERROR EN DATOS|F001-00000001|01||||]
+	else: 
+		# Data General 
+		
+		_general = "FC02-00009990|2017-11-09|07|PEN|||||F001-00000001|01|ERROR EN DATOS|F001-00000001|01||||]"
+		
+		general = 	_general 
+
+
+
 
 
 

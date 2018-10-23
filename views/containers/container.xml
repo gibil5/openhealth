@@ -13,27 +13,34 @@
 				<form string="container Form">
 					<header>
 
-
 						<!-- Create Electronic --> 
 						<button 
 							type="object" 
 							class="oe_highlight"
-							
 							name="create_electronic" 
 							
 							string="Create Electronic" 								
 						/>
 
+						<!-- Export Txt --> 
+						<button 
+							type="object" 
+							class="oe_highlight"
+							name="export_txt" 
+							
+							string="Export Txt" 								
+						/>
 
 
 
 						<!-- QC --> 
 						<!-- Correct --> 
 						<!-- Sync Txt --> 
+
+<!--
 						<button 
 							type="object" 
 							class="oe_highlight"
-							
 							name="test_qc" 
 							
 							string="QC" 								
@@ -42,35 +49,19 @@
 						<button 
 							type="object" 
 							class="oe_highlight"
-							
 							name="test_correct" 
 							
 							string="Correct" 								
 						/>
 
-
-
-						<!-- Export Txt--> 
 						<button 
 							type="object" 
 							class="oe_highlight"
-							
-							name="export_txt" 
-							
-							string="Export Txt" 								
-						/>
-
-<!--						
--->
-						<button 
-							type="object" 
-							class="oe_highlight"
-							
 							name="sync_txt" 
 							
 							string="Sync Txt" 								
 						/>
-
+-->
 
 
 
@@ -81,7 +72,6 @@
 						<button 
 							type="object" 
 							class="oe_highlight"
-							
 							name="import_txt" 
 							
 							string="Import Txt" 								

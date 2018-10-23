@@ -2,80 +2,59 @@
 #
 # 		lib_exp.py
 #
-# 		Created: 			13 Aug 2018
-# 		Last up: 	 		19 Oct 2018
+# 		Created: 			23 Oct 2018
+# 		Last up: 	 		23 Oct 2018
+#		Checked with: 		PyFlakes
 #
 import lib_vars as lvars
 import account as acc
 
 
-
-#------------------------------------------------ File Name ---------------------------------------------------
-def get_file_name(order):
-	#print 
-	#print 'Get File Name'
-	
-	# Prefix 
-	if order.state in ['sale']: 
-		type_prefix = lvars._dic_prefix[order.type_code]
-	elif order.state in ['cancel']: 
-		type_prefix = lvars._dic_prefix_cancel[order.type_code]
-	
-	# Id Serial Nr
-	nr_zeros = 8 
-	order.id_serial_nr = type_prefix + '-' + str(order.counter_value).zfill(nr_zeros)
-	
-	name = 'RUC' + order.ruc + '-' + order.type_code  + '-' + order.export_date.replace("-", "") + '-' + order.id_serial_nr
-	return name 
-
-
-#------------------------------------------------ File Content ---------------------------------------------------
-# Get File Content  
-def get_file_content(order):
-	#print 
-	#print 'Get File Content'
-	return format_txt(order)
-
-
-
-
-#------------------------------------------------ Format Txt ---------------------------------------------------
-# Format Txt  
+#------------------------------------------------ Format Txt --------------------------------------
+# Format Txt
 def format_txt(order):
-	print 
+	print
 	print 'Format Txt'
 
-	# Init 
+	# Init
 	#lr = "\n"
 	lr = "\r\n"
-	se = "|"			# Data 	
-	eol = "]"			# order 
-	eot = "!"			# Table 
-	empty_field = "|"		
-	blank = ""		
+	eol = "]"			# order
+
+	se = "|"			# Data
+	eot = "!"			# Table
+	blank = ""
 	additional_account_id = "6"
 
-	# Prefix 
-	#if order.state in ['sale']: 
+	#empty_field = "|"
+
+
+	# Prefix
+	#if order.state in ['sale']:
 	#	type_prefix = lvars._dic_prefix[order.type_code]
-	#elif order.state in ['cancel']: 
+	#elif order.state in ['cancel']:
 	#	type_prefix = lvars._dic_prefix_cancel[order.type_code]
-	type_prefix = lvars._dic_prefix[order.type_code]
+	#type_prefix = lvars._dic_prefix[order.type_code]
 
 
 
 
 
-# Table 1 - General, Emitter and Receptor 
+# Table 1 - General, Emitter and Receptor
+	general_1 = ""
+	general_2 = ""
+
 
 # 01|F001-00007777|2018-07-12|PEN||||||||correo@gmail.com]
 # 20478087820|6|CONTASIS SAC||150101|Jr. Lima 150|||||PE]
 # 20345079491|6|contacom  SAC|Jr. pichis Nro. 106]
 # !
 
-	if order.state != 'cancel': 
-		# Data General 
-		general = 	order.type_code + se + \
+	# Sale
+	#if order.state in ['sale']:
+	if True:
+		# Data General
+		general_1 = order.type_code + se + \
 					order.id_serial_nr + se + \
 					order.export_date + se + \
 					order.currency_code + \
@@ -86,24 +65,61 @@ def format_txt(order):
 					se + \
 					se + \
 					se + \
-					se + eol 
+					se + eol
 
 
 
+# Credit Note - Cancel
 # FC02-00009990|2017-11-09|07|PEN|||||F001-00000001|01|ERROR EN DATOS|F001-00000001|01||||]
-	else: 
-		# Data General 
-		
-		_general = "FC02-00009990|2017-11-09|07|PEN|||||F001-00000001|01|ERROR EN DATOS|F001-00000001|01||||]"
-		
-		general = 	_general 
+#_general = "FC02-00009990|2017-11-09|07|PEN|||||F001-00000001|01|ERROR EN DATOS|F001-00000001|01||||]"
+#_general = "||||F001-00000001|01|ERROR EN DATOS|F001-00000001|01||||]"
+
+	#else:
+	if True:
+		# Data General
+
+		_empty_1 = "|||"
+		_empty_2 = "|||]"
+
+
+		# This one
+		serial_nr_cn = "FC02-00009990"
+		date_cn = "2017-11-09"
+		_cn = "07"
+		currency_code_cn = "PEN"
+
+
+		# Modified
+		serial_nr_mod = order.id_serial_nr
+		type_code_cn = order.type_code
+		reason = "ERROR EN DATOS"
+
+		serial_nr = order.id_serial_nr
+		type_code = order.type_code
+
+
+
+
+		general_2 = serial_nr_cn + se + \
+					date_cn + se + \
+					_cn + se + \
+					currency_code_cn + se + \
+					_empty_1 + \
+					serial_nr_mod + se + \
+					type_code_cn + se + \
+					reason + se + \
+					serial_nr + se + \
+					type_code + se + \
+					_empty_2
+
+	# General
+	general = general_2 + lr + general_1
 
 
 
 
 
-
-	# Data Emitter
+	# Emitter
 	emitter = 	order.ruc 				+ se + \
 				additional_account_id 	+ se + \
 				order.firm 				+ se + \
@@ -114,21 +130,16 @@ def format_txt(order):
 				blank 					+ se + \
 				blank 					+ se + \
 				blank 					+ se + \
-				order.country 			+ eol 
+				order.country 			+ eol
 
 
 
 
-	# Data Receptor 
-	#print 'Receptor'
-	#print order.id_doc
-	#print order.id_doc_type_code
-	#print order.patient.name
-
+	# Receptor
 	receptor = 	order.id_doc 				+ se + \
 				order.id_doc_type_code 		+ se + \
 				order.receptor 				+ se + \
-				order.patient.street 	+ eol 
+				order.patient.street 	+ eol
 
 
 
@@ -141,12 +152,12 @@ def format_txt(order):
 
 
 
-# Table 2 - Optional 
-# 228.60|1000|IGV|VAT]		# opt 
+# Table 2 - Optional
+# 228.60|1000|IGV|VAT]		# opt
 # |||]
 # |||]
 # !
-	empty_line = "|||]" + lr 
+	empty_line = "|||]" + lr
 
 	tax_id = "1000"							# ver
 	tax_name = "IGV"
@@ -168,7 +179,7 @@ def format_txt(order):
 
 
 
-# Table 3 - Total  
+# Table 3 - Total
 # |1498.60|10.00]
 # !
 #				str(order.amount_total) 	+ se + \
@@ -194,11 +205,10 @@ def format_txt(order):
 # !
 
 
-	empty_1 = "|]" + lr 
-	empty_2 = "|||||]" + lr 
-	#empty_3 = "||]" + lr 
-	empty_3 = "|||]" + lr 
-
+	empty_1 = "|]" + lr
+	empty_2 = "|||||]" + lr
+	#empty_3 = "||]" + lr
+	empty_3 = "|||]" + lr
 	code_gravada = '1001'
 
 #				str(order.amount_total_net) + eol + lr + \
@@ -217,12 +227,12 @@ def format_txt(order):
 
 
 
-# Table 5 - Addtional Property - Optional 
+# Table 5 - Addtional Property - Optional
 # |]
 # |]
 # |]
 # !
-	empty_1 = "|]" + lr 
+	empty_1 = "|]" + lr
 
 	table_5 = 	empty_1 	+ \
 				empty_1 	+ \
@@ -234,15 +244,13 @@ def format_txt(order):
 
 
 
-# Table 6 - Invoiceorder 
+# Table 6 - Invoiceorder
 
 # Producto 1|NIU|40.00|1120.00|
 # 33.04|01|||
 # 201.60|10|1000|IGV|VAT|
 # |||||
-
 # 040010007|28.00|
-
 # |]
 
 
@@ -250,8 +258,8 @@ def format_txt(order):
 # Producto 2|NIU|10.00|150.00|17.7|01|||27|10|1000|IGV|VAT||||||040010008|15.00||]
 # !
 
-	# Init 	
-	blank = ""		
+	# Init
+	blank = ""
 	unit_code = "NIU"
 	tax_exemption_reason_code = "10"		# ver
 	table_6 = ""
@@ -260,16 +268,16 @@ def format_txt(order):
 
 
 	# Loop 
-	for line in order.electronic_line_ids: 
+	for line in order.electronic_line_ids:
 
 		account_code = acc.get_account_code(line.product_id)
 
-		#print line 
+		#print line
 		#print line.product_id.name
 		#print line.product_uom_qty
 		#print line.price_unit
 		#print line.price_tax
-		#print line.price_unit_net 
+		#print line.price_unit_net
 		#print account_code
 
 
@@ -305,8 +313,9 @@ def format_txt(order):
 
 		table_6 = table_6 + in_line
 
-	# End of table 
+	# End of table
 	table_6 = table_6 + eot
+
 
 
 
@@ -318,3 +327,28 @@ def format_txt(order):
 # format_txt
 
 
+#------------------------------------------------ Get File Name ---------------------------------------------------
+def get_file_name(order):
+	#print 
+	#print 'Get File Name'
+	
+	# Prefix 
+	if order.state in ['sale']: 
+		type_prefix = lvars._dic_prefix[order.type_code]
+	elif order.state in ['cancel']: 
+		type_prefix = lvars._dic_prefix_cancel[order.type_code]
+	
+	# Id Serial Nr
+	nr_zeros = 8 
+	order.id_serial_nr = type_prefix + '-' + str(order.counter_value).zfill(nr_zeros)
+	
+	name = 'RUC' + order.ruc + '-' + order.type_code  + '-' + order.export_date.replace("-", "") + '-' + order.id_serial_nr
+	return name 
+# get_file_name
+
+
+#------------------------------------------------ Get File Content ---------------------------------------------------
+# Get File Content  
+def get_file_content(order):
+	return format_txt(order)
+# get_file_content

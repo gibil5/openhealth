@@ -33,18 +33,10 @@
 
 
 
-						<!-- QC --> 
 						<!-- Correct --> 
 						<!-- Sync Txt --> 
 
 <!--
-						<button 
-							type="object" 
-							class="oe_highlight"
-							name="test_qc" 
-							
-							string="QC" 								
-						/>
 
 						<button 
 							type="object" 
@@ -105,6 +97,17 @@
 							
 							string="Import Txt" 								
 						/>
+
+
+						<!-- QC --> 
+						<button 
+							type="object" 
+							class="oe_highlight"
+							name="test_qc" 
+							
+							string="QC" 								
+						/>
+
 					</header>
 
 

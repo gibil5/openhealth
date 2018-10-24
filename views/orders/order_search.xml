@@ -18,11 +18,12 @@
 <!-- Active --> 
 
 					<!-- 18 Oct --> 
-					<filter string="18 Oct" domain="[
-															('date_order','&lt;', '2018-10-19 05:00:00'),
-															('date_order','&gt;=','2018-10-18 05:00:00'),
+<!--					
+					<filter string="24 Oct" domain="[
+															('date_order','&lt;', '2018-10-25 05:00:00'),
+															('date_order','&gt;=','2018-10-24 05:00:00'),
 											]"/>
-
+-->
 
 
 

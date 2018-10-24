@@ -805,19 +805,16 @@ Look for the Minimalist experience !!!
 
 
 					<field name="name"	 		string="Referencia"/>
-<!--
-					<field name="x_legacy" 		groups="openhealth.roots"/>
--->
 
 					<field name="date_order"	string="Fecha"	/>
-<!--
-					<field name="create_date" />
-					<field name="write_date" />
--->
 
 					<field name="x_serial_nr" />
-					<field name="x_counter_value" />
-					<field name="x_delta"/>
+
+					
+
+					<field name="x_counter_value" 	groups="openhealth.roots"/>
+					
+					<field name="x_delta"			groups="openhealth.roots"/>
 
 
 
@@ -825,7 +822,7 @@ Look for the Minimalist experience !!!
 
 					<field name="x_type" />
 
-					<field name="x_type_code" />
+					<field name="x_type_code" 	groups="openhealth.roots"/>
 
 
 
@@ -834,14 +831,10 @@ Look for the Minimalist experience !!!
 
 
 					<field name="patient"/>
+
 					<field name="x_id_doc_type"/>
+
 					<field name="x_id_doc"/>
-
-<!--
-					<field name="x_msg"/>
-					<field name="x_proxy"/>
--->
-
 
 					<field name="x_doctor" />
 
@@ -872,6 +865,15 @@ Look for the Minimalist experience !!!
 					<field name="user_id"		string="Creado por"	/>
 
 					<field name="state"/>
+
+
+
+
+<!--
+					<field name="x_legacy" 		groups="openhealth.roots"/>
+					<field name="create_date" />
+					<field name="write_date" />
+-->
 
 
 <!--

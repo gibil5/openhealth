@@ -787,118 +787,38 @@ class sale_order(models.Model):
 	def action_confirm_nex(self):
 		print 
 		print 'Action confirm - Nex'
-		#print 
+
 		
-
-
-
-#Write your logic here - Begin
+		#Write your logic here - Begin
 
 		# Generate Serial Number		
-		#print 'Serial number and Type'
-		#print self.x_serial_nr
-
-
-		#if self.x_serial_nr != '': 
 		if self.x_serial_nr != '' and self.x_admin_mode == False: 
 
-
-
-			# Serial Number
-		 	#counter = self.env['openhealth.counter'].search([
-			#															('name', '=', self.x_type), 
-			#														],
-			#															#order='write_date desc',
-			#															limit=1,
-			#														)
-		 	
-		 	# Init 
-			#separator = '-'
-			#prefix = counter.prefix
-			#padding = counter.padding
-
-			# Value 
-			#value = counter.value
-
-			# Increase 
-			#counter.increase()				# Here !!!
-
-			# Calculate 
-			#self.x_serial_nr = prefix + separator + str(value).zfill(padding)
-			#self.x_counter_value = value
-
-
-
-
-
-		 	# Init 
-			#separator = self.x_separator
-			#prefix = self.x_prefix 
-			#padding = self.x_padding
+		 	# Prefix 
 			prefix = ord_vars._dic_prefix[self.x_type]
 
-
-			# Value 
+			# Counter 
 			self.x_counter_value = user.get_counter_value(self)
 			
 
-			print self.x_counter_value
-			#print self.x_prefix
-			print prefix
-			print self.x_separator
-			print self.x_padding
+
+			# Padding 
+			padding = ord_vars._dic_padding[self.x_type]
 
 
-
-			#self.x_serial_nr = self.x_prefix + self.x_separator + str(self.x_counter_value).zfill(self.x_padding)
-			self.x_serial_nr = prefix + self.x_separator + str(self.x_counter_value).zfill(self.x_padding)
-
-
+			# Serial Nr 
+			#self.x_serial_nr = prefix + self.x_separator + str(self.x_counter_value).zfill(self.x_padding)
+			self.x_serial_nr = prefix + self.x_separator + str(self.x_counter_value).zfill(padding)
 
 
+		#Write your logic here - End 
 
-
-
-
-
-
-		# Doctor User Name
-		#if self.x_doctor.name != False: 
-		#	uid = self.x_doctor.x_user_name.id
-		#	self.x_doctor_uid = uid
-
-
-#Write your logic here - End 
 
 		# The actual procedure 
 		res = super(sale_order, self).action_confirm()
 
-#Write your logic here - Begin 
-		
 
-		# Date must be that of the Sale, not the budget. 
-		#self.date_order = datetime.datetime.now()
-
-		# Update Descriptors (family and product) 
-		#self.update_descriptors()
-
-		# Change Appointment State - To Invoiced 
-		#self.update_appointment()
-
-		# Vip Card - Detect and Create 
-		#self.detect_create_card()
-
-		# Create Procedure with Appointment 
-		#if self.treatment.name != False: 
-		#	print
-		#	print 'Create Procedure'
-		#	for line in self.order_line: 
-		#		if line.product_id.x_family in ['laser', 'medical', 'cosmetology']:
-		#			self.create_procedure_wapp(line.product_id.x_treatment, line.product_id.id)
-			# Update 
-		#	self.x_procedure_created = True
-		#	self.treatment.update_appointments()
-		
+		#Write your logic here
 
 	# action_confirm_nex
 

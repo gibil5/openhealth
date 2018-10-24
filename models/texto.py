@@ -6,15 +6,16 @@
 # 		Last up: 		14 Oct 2018
 #
 from openerp import models, fields, api
-
 from openerp.exceptions import ValidationError
 from openerp.exceptions import Warning
-
-
 
 class Texto(models.Model):
 	
 	_name = 'openhealth.texto'
+
+	#_order = 'content asc'
+	_order = 'name asc'
+
 
 
 # ----------------------------------------------------------- Constraints - Sql ------------------------------------------------------

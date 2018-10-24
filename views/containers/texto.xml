@@ -9,19 +9,20 @@
 			<field name="name">texto.tree</field>
 			<field name="model">openhealth.texto</field>
 			<field name="arch" type="xml">
-
+<!--
 				<tree string="Texto Tree">
+				<tree string="Texto Tree"  default_order='content asc'>
+-->
+				<tree string="Texto Tree"  default_order='name asc'>
 					
 					<field name="content"/>
 <!--
-					<field name="name"/>
 -->
+					<field name="name"/>
 				</tree>
 
 			</field>
 		</record>
-
-
 
 	</data>
 </openerp>

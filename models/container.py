@@ -40,12 +40,12 @@ class Container(models.Model):
 # ----------------------------------------------------------- Test Cases - Creates ----------------
 
 	ticket_invoice_create = fields.Boolean(
-			'Ticket Invoice', 
+			'Invoice', 
 		)
 
 
 	ticket_receipt_create = fields.Boolean(
-			'Ticket Receipt', 
+			'Receipt', 
 		)
 
 	cn_invoice_create = fields.Boolean(

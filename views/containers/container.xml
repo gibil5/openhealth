@@ -175,11 +175,16 @@
 
 
 							<page string="TXT">
+
 								<field name="txt_ids"/>
+							
 							</page>
 						
-							<page string="TXT - Ref">
+
+							<page string="MSSOFT">
+							
 								<field name="txt_ref_ids"/>
+							
 							</page>
 
 

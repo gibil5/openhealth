@@ -103,8 +103,8 @@ class ReportSaleProduct(models.Model):
 
 
 		# Orders 
-		#orders,count = acc_funcs.get_orders_filter(self, self.name, self.name)			# Sales and Cancelled 
-		orders,count = mgt_funcs.get_orders_filter(self, self.name, self.name)			# Only Sales 
+		#orders,count = acc_funcs.get_orders_filter(self, self.name, self.name)				# Sales and Cancelled
+		orders,count = mgt_funcs.get_orders_filter_fast(self, self.name, self.name)			# Only Sales
 
 
 

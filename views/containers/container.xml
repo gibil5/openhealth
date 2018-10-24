@@ -34,7 +34,6 @@
 
 
 						<!-- Correct --> 
-						<!-- Sync Txt --> 
 
 <!--
 
@@ -46,13 +45,6 @@
 							string="Correct" 								
 						/>
 
-						<button 
-							type="object" 
-							class="oe_highlight"
-							name="sync_txt" 
-							
-							string="Sync Txt" 								
-						/>
 -->
 
 
@@ -108,6 +100,15 @@
 							string="QC" 								
 						/>
 
+
+						<!-- Sync Txt --> 
+						<button 
+							type="object" 
+							class="oe_highlight"
+							name="sync_txt" 
+							
+							string="Sync Txt" 								
+						/>
 					</header>
 
 

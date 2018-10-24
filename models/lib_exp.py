@@ -400,7 +400,17 @@ def get_file_name(order):
     order.id_serial_nr = type_prefix + '-' + str(order.counter_value).zfill(nr_zeros)
 
     date_export = order.export_date.replace("-", "")
-    name = 'RUC' + order.ruc + '-' + order.type_code + '-' + date_export + '-' + order.id_serial_nr
+
+
+    if order.state in ['sale']: 
+        type_code = order.type_code
+    else:   
+        type_code = '07'
+
+
+    #name = 'RUC' + order.ruc + '-' + order.type_code + '-' + date_export + '-' + order.id_serial_nr
+    name = 'RUC' + order.ruc + '-' + type_code + '-' + date_export + '-' + order.id_serial_nr
+
     return name
 # get_file_name
 

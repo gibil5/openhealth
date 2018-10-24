@@ -13,15 +13,31 @@ import rsync
 import export 
 import importx
 
-#import lib_con
-
 class Container(models.Model):
 
 	_name = 'openhealth.container'
 
 
 
-# ----------------------------------------------------------- Test Cases - Creates ------------------------------------------------------
+
+# ----------------------------------------------------------- Dev ---------------------------------
+	# Import Txt
+	@api.multi 
+	def import_txt(self):
+		print
+		print 'Import TXT'
+
+		# Clean 
+		self.txt_ref_ids.unlink()
+
+		# Import
+		importx.import_txt(self)
+
+
+
+
+
+# ----------------------------------------------------------- Test Cases - Creates ----------------
 
 	ticket_invoice_create = fields.Boolean(
 			'Ticket Invoice', 
@@ -243,7 +259,7 @@ class Container(models.Model):
 
 		# Loop 
 		for patient in self.patient_ids: 
-			print patient
+			#print patient
 
 			# Init 
 			patient_id = patient.id
@@ -252,15 +268,13 @@ class Container(models.Model):
 			short_name = 	'product_1'
 			qty = 			40
 
-
 			# Clean 
 			creates.remove_orders(self, patient_id)
 
 
-
 			# Credit Note Invoice 
 			if self.cn_invoice_create:
-				print 'Create Credit Note - Ticket Invoice'				
+				#print 'Create Credit Note - Ticket Invoice'				
 				x_type = 'ticket_invoice'
 
 				# Create 
@@ -270,17 +284,15 @@ class Container(models.Model):
 									'state': 'cancel',
 								})
 
-
 			# Invoice 
 			if self.ticket_invoice_create:
-				print 'Create Ticket Invoice'
+				#print 'Create Ticket Invoice'
 				
 				x_type = 'ticket_invoice'
 
 				# Create 
 				order = creates.create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type)
-				print order 
-
+				#print order 
 
 
 			# Receipt
@@ -291,12 +303,9 @@ class Container(models.Model):
 
 				# Create 
 				order = creates.create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type)
-				print order 
+				#print order 
 
-
-
-				
-			print 
+	# create_sales
 
 
 
@@ -385,17 +394,6 @@ class Container(models.Model):
 
 
 
-	# Import Txt
-	@api.multi 
-	def import_txt(self):
-		print
-		print 'Import TXT'
-
-		self.txt_ref_ids.unlink()
-
-
-		# Import
-		importx.import_txt(self)
 
 
 

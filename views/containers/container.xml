@@ -67,16 +67,6 @@
 
 
 
-						<!-- Import TXT --> 
-<!--
-						<button 
-							type="object" 
-							class="oe_highlight"
-							name="import_txt" 
-							
-							string="Import Txt" 								
-						/>
--->
 
 
 
@@ -105,6 +95,15 @@
 							class="oe_highlight oe_right"	
 							name="create_patients" 
 							string="Create Patients" 								
+						/>
+
+						<!-- Import TXT --> 
+						<button 
+							type="object" 
+							class="oe_highlight oe_right"
+							name="import_txt" 
+							
+							string="Import Txt" 								
 						/>
 					</header>
 

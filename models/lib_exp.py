@@ -64,8 +64,8 @@ def format_txt(order):
 
 
 # Table 1 - General, Emitter and Receptor
-    general_1 = ""
-    general_2 = ""
+    #general_1 = ""
+    #general_2 = ""
 
 
 # 01|F001-00007777|2018-07-12|PEN||||||||correo@gmail.com]
@@ -74,10 +74,10 @@ def format_txt(order):
 # !
 
     # Sale
-    #if order.state in ['sale']:
-    if True:
+    #if True:
+    if order.state in ['sale']:
         # Data General
-        general_1 = order.type_code + sep + \
+        general = order.type_code + sep + \
                     order.id_serial_nr + sep + \
                     order.export_date + sep + \
                     order.currency_code + \
@@ -97,17 +97,21 @@ def format_txt(order):
 #_gen = "FC02-00009990|2017-11-09|07|PEN|||||F001-00000001|01|ERROR EN DATOS|F001-00000001|01||||]"
 #_general = "||||F001-00000001|01|ERROR EN DATOS|F001-00000001|01||||]"
 
-    #else:
-    if True:
+    #if True:
+    else:
         # Data General
 
-        _empty_1 = "|||"
+        _empty_1 = "||||"
         _empty_2 = "|||]"
 
 
         # This one
-        serial_nr_cn = "FC02-00009990"
-        date_cn = "2017-11-09"
+        #serial_nr_cn = "FC02-00009990"
+        serial_nr_cn = order.id_serial_nr.replace("F001","FC02")
+        
+        #date_cn = "2017-11-09"
+        date_cn = order.export_date
+        
         _cn = "07"
         currency_code_cn = "PEN"
 
@@ -123,7 +127,7 @@ def format_txt(order):
 
 
 
-        general_2 = serial_nr_cn + sep + \
+        general = serial_nr_cn + sep + \
                     date_cn + sep + \
                     _cn + sep + \
                     currency_code_cn + sep + \
@@ -135,8 +139,10 @@ def format_txt(order):
                     type_code + sep + \
                     _empty_2
 
+
+
     # General
-    general = general_2 + ret + general_1
+    #general = general_2 + ret + general_1
 
 
 
@@ -227,25 +233,39 @@ def format_txt(order):
 # |||]
 # !
 
-
     empty_1 = "|]" + ret
     empty_2 = "|||||]" + ret
-    #empty_3 = "||]" + ret
     empty_3 = "|||]" + ret
     code_gravada = '1001'
 
 #               str(order.amount_total_net) + eol + ret + \
 
 
-    table_4 = code_gravada        + sep + \
-                acc.fmt(order.amount_total_net) + eol + ret + \
-                empty_1     + \
-                empty_1     + \
-                empty_1     + \
-                empty_1     + \
-                empty_2     + \
-                empty_3     + \
-                eot + ret
+    # Sale 
+    if order.state in ['sale']:
+
+        table_4 = code_gravada        + sep + \
+                    acc.fmt(order.amount_total_net) + eol + ret + \
+                    empty_1     + \
+                    empty_1     + \
+                    empty_1     + \
+                    empty_1     + \
+                    empty_2     + \
+                    empty_3     + \
+                    eot + ret
+
+    # Cancel 
+    else: 
+
+        table_4 = code_gravada        + sep + \
+                    acc.fmt(order.amount_total_net) + eol + ret + \
+                    empty_1     + \
+                    empty_1     + \
+                    empty_1     + \
+                    empty_1     + \
+                    empty_2     + \
+                    eot + ret
+
 
 
 
@@ -257,17 +277,25 @@ def format_txt(order):
 # !
     empty_1 = "|]" + ret
 
-    table_5 = empty_1     + \
-                empty_1     + \
-                empty_1     + \
-                eot + ret
+    # Sale 
+    if order.state in ['sale']:
+        
+        table_5 = empty_1     + \
+                    empty_1     + \
+                    empty_1     + \
+                    eot + ret
+    
+    # Cancel 
+    else: 
+        
+        table_5 = empty_1     + \
+                    eot + ret
 
 
 
 
 
-
-# Table 6 - Invoiceorder
+# Table 6 - Invoice order
 
 # Producto 1|NIU|40.00|1120.00|
 # 33.04|01|||
@@ -358,11 +386,14 @@ def get_file_name(order):
     #print
     #print 'Get File Name'
 
+
     # Prefix
-    if order.state in ['sale']:
-        type_prefix = _DIC_PREFIX[order.type_code]
-    elif order.state in ['cancel']:
-        type_prefix = _DIC_PREFIX_CANCEL[order.type_code]
+    #if order.state in ['sale']:
+    #    type_prefix = _DIC_PREFIX[order.type_code]
+    #elif order.state in ['cancel']:
+    #    type_prefix = _DIC_PREFIX_CANCEL[order.type_code]
+    type_prefix = _DIC_PREFIX[order.type_code]
+
 
     # Id Serial Nr
     nr_zeros = 8
@@ -372,6 +403,7 @@ def get_file_name(order):
     name = 'RUC' + order.ruc + '-' + order.type_code + '-' + date_export + '-' + order.id_serial_nr
     return name
 # get_file_name
+
 
 
 #------------------------------------------------ Get File Content --------------------------------

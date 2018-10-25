@@ -17,8 +17,8 @@
 					
 					<field name="content"/>
 <!--
--->
 					<field name="name"/>
+-->
 				</tree>
 
 			</field>

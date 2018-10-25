@@ -22,6 +22,10 @@
 
 					<field name="serial_nr"/>
 
+					<field name="id_serial_nr"/>
+
+
+
 					<field name="state"/>
 
 					<field name="counter_value"/>

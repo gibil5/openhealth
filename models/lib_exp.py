@@ -23,7 +23,9 @@ _DIC_PREFIX = {
 }
 
 _DIC_PREFIX_CANCEL = {
-    '01': 'FC01',   # Invoice
+    #'01': 'FC01',   # Invoice
+    '01': 'FC02',   # Invoice
+
     '03': 'BC01',   # Receipt
     '11': 'FFC1',   # Invoice               # Not Sunat Compliant !
     '13': 'BBC1',   # Receipt               # Not Sunat Compliant !
@@ -107,7 +109,8 @@ def format_txt(order):
 
         # This one
         #serial_nr_cn = "FC02-00009990"
-        serial_nr_cn = order.id_serial_nr.replace("F001","FC02")
+        #serial_nr_cn = order.id_serial_nr.replace("F001","FC02")
+        serial_nr_cn = order.serial_nr.replace("F01-00","FC02-")
         
         #date_cn = "2017-11-09"
         date_cn = order.export_date
@@ -117,11 +120,15 @@ def format_txt(order):
 
 
         # Modified
-        serial_nr_mod = order.id_serial_nr
+        #serial_nr_mod = order.serial_nr
+        serial_nr_mod = order.serial_nr.replace("F01-00","F001-")
+
         type_code_cn = order.type_code
         reason = "ERROR EN DATOS"
 
-        serial_nr = order.id_serial_nr
+        #serial_nr = order.id_serial_nr
+        serial_nr = serial_nr_mod
+        
         type_code = order.type_code
 
 
@@ -388,11 +395,11 @@ def get_file_name(order):
 
 
     # Prefix
-    #if order.state in ['sale']:
-    #    type_prefix = _DIC_PREFIX[order.type_code]
-    #elif order.state in ['cancel']:
-    #    type_prefix = _DIC_PREFIX_CANCEL[order.type_code]
-    type_prefix = _DIC_PREFIX[order.type_code]
+    if order.state in ['sale']:
+        type_prefix = _DIC_PREFIX[order.type_code]
+    elif order.state in ['cancel']:
+        type_prefix = _DIC_PREFIX_CANCEL[order.type_code]
+    #type_prefix = _DIC_PREFIX[order.type_code]
 
 
     # Id Serial Nr

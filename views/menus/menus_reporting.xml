@@ -142,9 +142,6 @@
 
 
 
-
-
-<!-- Inactive --> 
 				<menuitem 	id="sales_report_sales_october_menu" 
 							parent="sales_reports_menu"
 							sequence="10"
@@ -152,9 +149,8 @@
 							name="Octubre" 				
 
 							action="action_order_report_october"
-
-							groups="openhealth.roots"
 						/>
+
 
 
 				<menuitem 	id="sales_report_sales_november_menu" 
@@ -165,8 +161,12 @@
 
 							action="action_order_report_november"
 
-							groups="openhealth.roots"
 						/>
+
+
+<!-- Inactive --> 
+
+
 
 
 				<menuitem 	id="sales_report_sales_december_menu" 

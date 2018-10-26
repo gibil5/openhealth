@@ -48,7 +48,7 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 
 				# Patient 1 - Passport
 				{
-						'active': 		False, 
+						'active': 		True, 
 						#'test_case': 	'passport, ticket_receipt', 
 						'test_case': 	'passport, receipt', 
 

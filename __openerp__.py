@@ -14,7 +14,7 @@
 
 	'description': """
 
-		25 Oct 2018
+		26 Oct 2018
 
 		Fulcrum - DEV - DOCEAN - PROLIANT
 		
@@ -261,15 +261,21 @@
 		'reports/paper_format.xml',
 
 
-		# Ticket 
-		'reports/report_ticket_invoice.xml',
-		'reports/report_ticket_receipt.xml',
+
+		# Ticket - Dep !
+		#'reports/report_ticket_receipt.xml',
+		#'reports/report_ticket_invoice.xml',
 
 		
-		# New Tickets 
-		'reports/report_ticket_receipt_nex.xml',
+		# Ticket
 		'reports/report_ticket_invoice_nex.xml',
+		'reports/report_ticket_receipt_nex.xml',
 
+
+		# Ticket - Electronic 
+		'reports/report_layouts.xml',
+		'reports/print_ticket_receipt_electronic.xml',
+		#'reports/print_ticket_invoice_electronic.xml',
 
 
 

@@ -217,14 +217,20 @@
 
 					<!-- Sheet -->	
 					<sheet>
-
+<!--
+jx
+-->
 						<!-- Persona --> 
 						<div class="oe_left" style="width: 500px;">
 							<field name="image" widget="image" class="oe_left oe_avatar" options="{&quot;preview_image&quot;: &quot;image_medium&quot;, &quot;size&quot;: [90, 90]}"/>
 							<div class="oe_title">
 								<label string="Apellidos" class="oe_edit_only"/>
 								<h1>
+<!--
 									<field name="name"  class="oe_read_only" />
+-->							
+									<field name="name"/>
+
 								</h1>
 								<field name="age"/>
 							</div>
@@ -267,6 +273,7 @@
 							<group>		
 
 								<!--	
+								Dep !
 								<field name="x_full_name"  string="x_full_name"/>
 								-->
 
@@ -606,7 +613,7 @@
 					<field name="x_spaced"/>
 					<field name="x_last_name"  />
 					<field name="x_first_name"  />
-					<field name="x_full_name"  />
+
 					<field name="x_status"/>		
 					<field name="x_owner"/>		
 					<field name="x_sex"/>		

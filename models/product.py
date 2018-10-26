@@ -6,27 +6,42 @@
 # 		Last up: 	 		17 Sep 2018
 #
 from openerp import models, fields, api
+from openerp.exceptions import ValidationError
 from datetime import datetime
 import prodvars
 import lib
+import chk_product as chk
 import gen
 import gen_tic
-from openerp.exceptions import ValidationError
-import chk_product as chk
 
 class Product(models.Model):
 
 	_inherit = 'product.template'
-
-	#_order = 'x_name_short'
 
 	_order = 'name'
 
 
 
 
+# ----------------------------------------------------------- Name Ticket -------------------------
+	# For Tickets 
+	x_name_ticket = fields.Char(		
+			default="x", 
 
-# ----------------------------------------------------------- Keys ------------------------------------------------------
+			compute='_compute_x_name_ticket', 
+		)
+	@api.multi
+	#@api.depends('state')
+	def _compute_x_name_ticket(self):
+		for record in self:
+			record.x_name_ticket = gen_tic.gen_ticket_name(self, record.x_treatment, record.x_zone, record.x_pathology, record.x_family, record.type, record.x_name_short)
+
+
+
+
+
+
+# ----------------------------------------------------------- Keys --------------------------------
 	# Name Short 	
 	x_name_short = fields.Char(
 		)
@@ -345,21 +360,6 @@ class Product(models.Model):
 
 
 
-# ----------------------------------------------------------- Computes ------------------------------------------------------
-	# For Tickets 
-	x_name_ticket = fields.Char(		
-			default="x", 
-
-			compute='_compute_x_name_ticket', 
-		)
-	@api.multi
-	#@api.depends('state')
-	def _compute_x_name_ticket(self):
-		#print 'jx'
-		#print 'compute x_name_ticket'
-		for record in self:
-			record.x_name_ticket = gen_tic.gen_ticket_name(self, record.x_treatment, record.x_zone, record.x_pathology, record.x_family, record.type, record.x_name_short)
-			#print record.x_name_ticket
 
 
 

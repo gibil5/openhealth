@@ -88,6 +88,8 @@ from . import counter
 
 
 # EMR
+from . import company
+
 from . import partner
 from . import patient  
 from . import product

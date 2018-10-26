@@ -1487,11 +1487,20 @@ class sale_order(models.Model):
 
 # ----------------------------------------------------------- Print ------------------------------------------------------
 
+	# Print Ticket - Electronic 
+	@api.multi
+	def print_ticket_electronic(self):
+		
+		if self.x_type == 'ticket_receipt': 
+			name = 'openhealth.report_ticket_receipt_electronic'
+			return self.env['report'].get_action(self, name)
+		
+
+
+
 	# Print Ticket
 	@api.multi
 	def print_ticket(self):
-		#print 
-		#print 'Print Ticket'
 		
 		if self.x_type == 'ticket_receipt': 
 			name = 'openhealth.report_ticket_receipt_nex_view'

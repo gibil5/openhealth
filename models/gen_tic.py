@@ -17,6 +17,10 @@ _dic_prod = {
 			#'token': 					'Token', 
 
 
+			# MsSoft 
+			'product_1': 				'Producto 1', 
+
+
 			# Proliant - New 
 			'other': 				'Otros', 
 			'formula_1':				'Fórmula 1', 

@@ -11,6 +11,44 @@
 		<menuitem 	id="main_openhealth_menu" 
 					sequence="1"
 
+					name="Open Health"
+					
+					groups="openhealth.roots"
+			/>
+
+
+<!-- Open Health -->
+		<menuitem 	id="openhealth_openhealth_menu" 
+					
+					parent="main_openhealth_menu"
+
+					sequence="1"
+
+					name="Open Health"
+				/>
+
+
+		<!-- Companies --> 
+<!--		
+				action="base.company_normal_action_tree"
+				action="company_normal_action_tree"
+-->
+		<menuitem id="oh_content_menu" 
+					name="Companies" 
+					parent="openhealth_openhealth_menu"
+
+					action="company_list_action"
+			/>
+
+
+
+
+
+
+<!-- Electronic -->
+		<menuitem 	id="main_electronic_menu" 
+					sequence="1"
+
 					name="Electronic"
 					
 					groups="openhealth.roots"
@@ -21,7 +59,7 @@
 
 <!-- Content -->
 		<menuitem 	id="openhealth_container_menu" 
-					parent="main_openhealth_menu"
+					parent="main_electronic_menu"
 
 					sequence="0"
 
@@ -42,7 +80,7 @@
 
 <!-- Coder -->
 		<menuitem 	id="openhealth_menu" 
-					parent="main_openhealth_menu"
+					parent="main_electronic_menu"
 
 					sequence="1"
 

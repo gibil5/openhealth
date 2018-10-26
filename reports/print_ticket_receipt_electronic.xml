@@ -1,0 +1,96 @@
+<openerp>
+	<data>
+
+
+
+
+<!-- Report --> 
+<report
+	id="print_ticket_receipt_electronic"
+	model="sale.order"
+    string="Ticket Boleta - Electronico"
+	report_type="qweb-pdf"
+	name="openhealth.report_ticket_receipt_electronic"
+    paperformat="appointment_receipt_electronic"
+/>
+<!--
+    attachment_use="True"
+    attachment="(object.state in ('open','paid')) and
+        ('INV'+(object.number or '').replace('/','')+'.pdf')"
+    paperformat="appointment_receipt"
+-->
+
+
+
+
+<!-- Template --> 
+<template id="report_ticket_receipt_electronic">
+    
+    <t t-call="report.html_container">
+<!--
+        <t t-foreach="docs" t-as="o">
+-->
+        <t t-foreach="docs" t-as="doc"> 
+
+            <t t-call="openhealth.external_layout">
+
+                <div class="page" style="margin-top:100px;font-size: small;">
+<!--
+                    <h2>BOLETA DE VENTA</h2>
+                    <p>This object's name is <span t-field="o.name"/></p>
+-->
+
+
+
+<!-- Date -->
+<div class="row"    style="margin-top:10px;margin-bottom:10px;width:100%;font-size: x-small;">
+
+    <div class="col-xs-6 text-left" style="margin-top:10px;" t-field="doc.x_date_order_corr"/>
+
+    <div class="col-xs-6 text-right" style="margin-top:10px;" t-field="doc.x_serial_nr"/>
+
+</div>
+
+
+
+<!-- Patient -->
+<div class="text-left" style="margin-top:10px;font-size: x-small;">
+    <table style="width:100%">
+        <tr>
+            <td><b>Cliente:</b></td>
+            <td><t t-esc="doc.partner_id.name"/></td> 
+        </tr>
+
+        <tr>
+            <td><b>DNI:</b></td>
+            <td><t t-esc="doc.x_id_doc"/></td> 
+        </tr>
+
+        <tr>
+            <td><b>Dirección:</b></td>
+            <td><t t-esc="doc.partner_id.x_address"/></td> 
+        </tr>
+    </table>
+    <br/>
+</div>
+
+
+
+
+<!-- Items --> 
+
+<!-- Total --> 
+
+<!-- Total Words --> 
+
+
+
+
+                </div>
+            </t>
+        </t>
+    </t>
+</template>
+
+	</data>
+</openerp>

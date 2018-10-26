@@ -2,6 +2,34 @@
 
 
 <!--
+25 Oct 2018 
+-->
+
+<!--
+				<xpath expr="//button[@name='action_confirm']" position="before">
+							string="IMPRIMIR"
+-->
+
+
+
+
+					<!-- State - Deprecated !!! --> 
+<!--
+					<button 
+							type="object" 
+							class="oe_highlight"
+							name="state_force"
+							states="sale,editable,cancel"
+							string="STATE"
+							groups="openhealth.roots"
+						/>
+-->
+
+
+
+
+
+<!--
 13 Jun 2018
 -->
 

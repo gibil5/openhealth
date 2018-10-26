@@ -299,42 +299,45 @@
 
 
 <!-- NEW BUTTONS --> 
-<!--
-				<xpath expr="//button[@name='action_confirm']" position="before">
-							string="IMPRIMIR"
--->
 				<xpath expr="//button[@name='action_confirm_nex']" position="before">
 				
+
 					<!-- Print --> 
 					<button 
 							type="object" 
 							class="oe_highlight"
-							name="print_ticket"
 							attrs="{'invisible':[	'|',
 													('x_type','not in',['ticket_invoice','ticket_receipt']), 
 													('state','not in',['sale']), 
 											]}"
-
-							string="Imprimir"
-
 							groups="openhealth.roots,openhealth.caja"
+							
+							name="print_ticket"
+							
+							string="Imprimir"
 						/>
 
 
-
-
-
-					<!-- State - Deprecated !!! --> 
-<!--
+					<!-- Print Electronic --> 
 					<button 
 							type="object" 
-							class="oe_highlight"
-							name="state_force"
-							states="sale,editable,cancel"
-							string="STATE"
-							groups="openhealth.roots"
+							class="oe_highlight"							
+							attrs="{'invisible':[	'|',
+													('x_type','not in',['ticket_invoice','ticket_receipt']), 
+													('state','not in',['sale']), 
+											]}"
+							groups="openhealth.roots,openhealth.caja"
+
+							name="print_ticket_electronic"
+
+							string="Imprimir - Electrónico"
+
 						/>
--->
+
+
+
+
+
 
 
 

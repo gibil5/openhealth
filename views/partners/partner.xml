@@ -16,7 +16,6 @@
 			<field name="arch" type="xml">
 
 
-
 				<!-- Goners -->
 				<xpath expr="//field[@name='fax']" position="replace">
 				</xpath>
@@ -58,6 +57,15 @@
 				</xpath>
 
 
+
+
+				<!-- Address --> 
+				<xpath expr="//field[@name='website']" position="before">
+
+					<field name="x_address"/>
+
+					<field name="company_id"/>
+				</xpath>
 
 
 

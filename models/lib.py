@@ -1,72 +1,79 @@
 # -*- coding: utf-8 -*-
-#
-# 		lib.py
-#
-# 		Abstract, general purpose. Can be Unit-tested. Is completely standard. Gives service to all Users
-# 
-# 		Created: 			13 Aug 2018
-# 		Last up: 	 		19 Oct 2018
-#
+
+"""
+ 		lib.py
+
+ 		Abstract, general purpose. Can be Unit-tested.
+ 		Is completely standard. Gives service to all Users.
+
+ 		Created: 			13 Aug 2018
+ 		Last up: 	 		25 Oct 2018
+"""
 import datetime
-import unicodedata
 
 
-#------------------------------------------------ Date - Todays Name ---------------------------------------------------
-# Get Todays Name
+
+
+#------------------------------------------------ Patient - Unidecode -----------------------------
+def remove_whitespaces(foox):
+	"""
+	Remove extra white spaces
+	"""
+	#print
+	#print 'Remove Whitespaces'
+	return " ".join(foox.split())
+
+
+#------------------------------------------------ Date - Todays Name ------------------------------
 def get_todays_name(date_format):
-	#print 
+	"""
+	Get Todays Name
+	"""
+	#print
 	#print 'Get Todays Name'
-	today = datetime.datetime.today() + datetime.timedelta(hours=-5,minutes=0)	
+	today = datetime.datetime.today() + datetime.timedelta(hours=-5, minutes=0)
 	name = today.strftime(date_format)
 	#print today
 	#print name
-	#print 
-	return name 
+	#print
+	return name
 
 
 
-
-#------------------------------------------------ Date - If Today ---------------------------------------------------
-# Adds Nr to start date 
+#------------------------------------------------ Date - If Today ---------------------------------
 def is_today(date, state):
-	#print 
+	"""
+	Is Today with State
+	"""
+	#print
 	#print 'Is Today'
 	date_format = "%Y-%m-%d %H:%M:%S"
-	date_dt = datetime.datetime.strptime(date, date_format) + datetime.timedelta(hours=-5,minutes=0)	
-	if date_dt.date() == datetime.datetime.today().date(): 
-		is_today = True 
-	else: 
+	date_dt = datetime.datetime.strptime(date, date_format) + datetime.timedelta(hours=-5, minutes=0)
+	if date_dt.date() == datetime.datetime.today().date():
+		is_today = True
+	else:
 		is_today = False
 	# Prints
 	#print date
 	#print date_dt
-	#print is_today 
+	#print is_today
 	return is_today and state != 'Scheduled'
 
 
-#------------------------------------------------ Patient - Unidecode ---------------------------------------------------
-# Strip all accents - But keep Ñ
-def strip_accents(s):
-	#print 
-	#print 'Strip accents'
-	good_accents = {
-				    u'\N{COMBINING TILDE}',
-				    #u'\N{COMBINING CEDILLA}'
-	}
-	return ''.join(c for c in unicodedata.normalize('NFD', s)
-	              if unicodedata.category(c) != 'Mn'	or 	c in good_accents)
-# strip_accents
 
 
-#------------------------------------------------ Patient - Test content ---------------------------------------------------
-# Length 
+#------------------------------------------------ Patient - Test content --------------------------
+# Length
 def test_for_length(self, token, length):
-	print 
+	"""
+	Test for Length
+	"""
+	print
 	print 'Lib - Test for Length'
 	print token
 	print length
 
-	if token and (len(str(token))!= length):
+	if token and (len(str(token)) != length):
 		return {
 				'warning': {
 					'title': "Error: Debe tener " + str(length) + " caracteres.",
@@ -78,8 +85,12 @@ def test_for_length(self, token, length):
 
 
 
-# Digits 
+# Digits
 def test_for_digits(self, token):
+	"""
+	Test for Digits
+	"""
+
 	if token and (not token.isdigit()):
 		return {
 				'warning': {
@@ -92,9 +103,12 @@ def test_for_digits(self, token):
 
 
 
-# Name 
-#def test_name(self, token):
+# Name
 def test_for_one_last_name(self, last_name):
+	"""
+	Test for one last name
+	"""
+
 	if last_name != False:
 		nr_words = len(last_name.split())
 		if nr_words == 1:
@@ -111,34 +125,29 @@ def test_for_one_last_name(self, last_name):
 
 
 
-#------------------------------------------------ Get Next Date ---------------------------------------------------
-# Adds Nr to start date 
+#------------------------------------------------ Get Next Date -----------------------------------
 def get_next_date(self, evaluation_start_date, nr_days):
+	"""
+	Get Next Date
+	"""
 
-	#print 
+	#print
 	#print 'Get Next Date'
-
-	import datetime
-
+	#import datetime
 	date_format = "%Y-%m-%d %H:%M:%S"
-
 	delta = datetime.timedelta(days=nr_days)
-
 	start = datetime.datetime.strptime(evaluation_start_date, date_format)
-	
 	next_date = delta + start
-
 	return next_date
-
 # get_next_date
 
 
 
-# ----------------------------------------------------------- Delta from Now ------------------------------------------------------
-
-# Delta
-
-def get_delta_now(self, date_1): 
+# ----------------------------------------------------------- Delta from Now ----------------------
+def get_delta_now(self, date_1):
+	"""
+	Get Delta Now
+	"""
 
 	#date_format = "%Y-%m-%d"
 	date_format = "%Y-%m-%d %H:%M:%S"
@@ -150,7 +159,7 @@ def get_delta_now(self, date_1):
 	dt_1 = datetime.datetime.strptime(date_1, date_format)
 	#dt_2 = datetime.datetime.strptime(date_2, date_format)
 
-	delta = dt_1 - now 
+	delta = dt_1 - now
 	#delta = dt_2 - dt_1
 	delta_sec = delta.total_seconds()
 
@@ -161,83 +170,84 @@ def get_delta_now(self, date_1):
 
 
 
-# ----------------------------------------------------------- Get Next Slot--------------------------------------------
-
-# Get Next Slot
-
-def get_next_slot(self): 
-
-	#print 
+# ----------------------------------------------------------- Get Next Slot------------------------
+def get_next_slot(self):
+	"""
+	Get Next Slot
+	"""
+	#print
 	#print 'Get Next Slot'
 
-	# Init 
+	# Init
 	date_format = "%Y-%m-%d %H:%M:%S"
 	date_2_format = "%Y-%m-%d"
-	now = datetime.datetime.now() + datetime.timedelta(hours=-5,minutes=0)	
+	now = datetime.datetime.now() + datetime.timedelta(hours=-5, minutes=0)
 	now_date_str = now.strftime(date_2_format)
 
-	# Loop 
-	for idx in range(0, 48): 
+	# Loop
+	for idx in range(0, 48):
 
 		#slot = lib.get_slot(idx)
 		slot = get_slot(idx)
 
 		slot_x = now_date_str + ' ' + slot
 		slot_dt = datetime.datetime.strptime(slot_x, date_format)
-		delta = slot_dt - now 
+		delta = slot_dt - now
 		delta_sec = delta.total_seconds()
 
-		# Prints 
+		# Prints
 		#print slot
 		#print slot_x
 		#print slot_dt
-		#print delta 
+		#print delta
 		#print delta_sec
-		#print 
+		#print
 
-		if delta_sec > 0: 
+		if delta_sec > 0:
 			#print 'Gotcha !'
-			return (slot_dt + datetime.timedelta(hours=5,minutes=0)).strftime(date_format)
+			return (slot_dt + datetime.timedelta(hours=5, minutes=0)).strftime(date_format)
 
-	#return False							# If no slot available 
-	return now_date_str + ' 14:00:00'		# If no slot available 
+
+	return now_date_str + ' 14:00:00'		# If no slot available
 
 # get_next_slot
 
 
 
 
-# ----------------------------------------------------------- Doctor Available--------------------------------------------
+# ----------------------------------------------------------- Doctor Available---------------------
+def doctor_available(self, app_date_str):
+	"""
+	Doctor Available
+	Check if not too late (before 21:00)
+	"""
 
-# Doctor Available 
-# Check if not too late (before 21:00)
-
-def doctor_available(self, app_date_str): 
-
-	#print 
+	#print
 	#print 'Doctor Available'
 
-	# Init 
+	# Init
 	date_2_format = "%Y-%m-%d"
-	now = datetime.datetime.now() + datetime.timedelta(hours=-5,minutes=0)	
+	now = datetime.datetime.now() + datetime.timedelta(hours=-5, minutes=0)
 	now_date_str = now.strftime(date_2_format)
 	app_limit_str = now_date_str + ' 21:00:00'
 
 	#date_format = "%H:%M:%S"
 	date_format = "%Y-%m-%d %H:%M:%S"
-	
-	# Delta 
-	app_date_dt = datetime.datetime.strptime(app_date_str, date_format) + datetime.timedelta(hours=-5,minutes=0)	
+
+	# Delta
+
+	app_date_dt = datetime.datetime.strptime(app_date_str, date_format) + datetime.timedelta(hours=-5, minutes=0)
+
 	app_limit_dt = datetime.datetime.strptime(app_limit_str, date_format)
 	delta = app_limit_dt - app_date_dt
 	delta_sec = delta.total_seconds()
 
-	if delta_sec < 0: 
+	if delta_sec < 0:
 		available = False
 	else:
 		available = True
 
-	return available 
+	return available
 
 # doctor_available
 
@@ -245,23 +255,21 @@ def doctor_available(self, app_date_str):
 
 
 
-# ----------------------------------------------------------- Get Nr Days--------------------------------------------
-
-# Get Nr Days 
-
-def get_nr_days(self, date_ref_str, date_str): 
-
-	#print 
+# ----------------------------------------------------------- Get Nr Days--------------------------
+def get_nr_days(self, date_ref_str, date_str):
+	"""
+	Get Nr Days
+	"""
+	#print
 	#print 'Get Nr Days'
 	#print date_ref_str
 	#print date_str
 
 	# Init
-	delta_days = 0 
-	
-	if date_ref_str != False and date_str != False: 
+	delta_days = 0
 
-		#date_format_2 = "%Y-%m-%d %H:%M:%S"
+	if date_ref_str != False and date_str != False:
+
 		date_format = "%Y-%m-%d"
 
 		date_ref_str = date_ref_str.split()[0]
@@ -271,7 +279,7 @@ def get_nr_days(self, date_ref_str, date_str):
 		date_dt = datetime.datetime.strptime(date_str, date_format)
 
 		delta = date_dt - date_ref_dt
-	
+
 		#delta_sec = delta.total_seconds()
 		delta_days = delta.days
 
@@ -279,20 +287,19 @@ def get_nr_days(self, date_ref_str, date_str):
 
 
 
-#------------------------------------------------ Get Slot ---------------------------------------------------
-
-# Change the state of the Object 
-
+#------------------------------------------------ Get Slot ----------------------------------------
 def get_slot(idx):
-	
-	#print 
+	"""
+	Get empty slot
+	"""
+	#print
 	#print 'Get Slot'
 
 	date_format = "%H:%M:%S"
 
 	date_str = "09:00:00"
 
-	date_dt = datetime.datetime.strptime(date_str, date_format) + datetime.timedelta(minutes=idx*15)	
+	date_dt = datetime.datetime.strptime(date_str, date_format) + datetime.timedelta(minutes=idx*15)
 
 	slot = date_dt.strftime(date_format)
 
@@ -300,127 +307,138 @@ def get_slot(idx):
 
 
 
-#------------------------------------------------ Change State ---------------------------------------------------
-# Change the state of the Object 
+#------------------------------------------------ Change State ------------------------------------
 def change_state(obj, state):
-	#print 
+	"""
+	Change the state of the Object
+	"""
+	#print
 	#print 'Change State'
-
 	#print obj
-	#print obj.state 
+	#print obj.state
 	#print state
-
-	if obj.state != False: 
+	if obj.state != False:
 		obj.state = state
-
 # change_state
 
 
 
-
-
-#------------------------------------------------ Checksum ---------------------------------------------------
-# Get Checksum Generated
+#------------------------------------------------ Checksum ----------------------------------------
 def get_checksum_tic(generated):
-	#print 
+	"""
+	Get Checksum Ticket
+	"""
+	#print
 	#print 'Get Checksum'
-	if generated == 'x': 
+	if generated == 'x':
 		checksum = '0'
-	else: 
+	else:
 		checksum = '1'
 	return checksum
 
-#------------------------------------------------ Checksum ---------------------------------------------------
+
+
+#------------------------------------------------ Checksum ----------------------------------------
 # Get Checksum Generated
 def get_checksum_gen(generated, name):
-	#print 
+	"""
+	Get Checksum Generated
+	"""
+	#print
 	#print 'Get Checksum'
-	if generated == name: 
+	if generated == name:
 		checksum = '1'
-	else: 
+	else:
 		checksum = '0'
 	return checksum
 
 
 
-
-
-
-
-#------------------------------------------------ Get Tax ---------------------------------------------------
-# Get Tax 
+#------------------------------------------------ Get Tax -----------------------------------------
 def get_net_tax(amount):
-	#print 
+	"""
+	Get Tax
+	"""
+	#print
 	#print 'Get Tax'
-	# Net 
+	# Net
 	net = amount/1.18
 	net = round(net, 2)
-	# Tax 
+	# Tax
 	tax = net * 0.18
 	tax = round(tax, 2)
-	return net, tax 
+	return net, tax
 
-#------------------------------------------------ Format Standard ---------------------------------------------------
-# Format Standard  
+
+
+#------------------------------------------------ Format Standard ---------------------------------
 def format_std(line):
-	#print 
+	"""
+	Format Standard
+	"""
+	#print
 	#print 'Format Standard'
-	se = ","
-	content = 	correct_date(line.x_date_created) + se + \
-				line.serial_nr + se + \
-				line.patient.name + se + \
-				line.patient.x_id_doc_type + se + \
-				line.patient.x_id_doc + se + \
-				line.product_id.name  
-				#line.patient.x_firm + se + \
-				#line.patient.x_ruc + se + \
-				#line.patient.email + se + \
-				#line.patient.name.encode('utf-8') 
-				#line.patient.name + se + 
-				#line.patient.x_dni + se + 
-				#lr.encode('utf-8') 
+	_se = ","
+	content = correct_date(line.x_date_created) + _se + \
+				line.serial_nr + _se + \
+				line.patient.name + _se + \
+				line.patient.x_id_doc_type + _se + \
+				line.patient.x_id_doc + _se + \
+				line.product_id.name
+				#line.patient.x_firm + _se + \
+				#line.patient.x_ruc + _se + \
+				#line.patient.email + _se + \
+				#line.patient.name.encode('utf-8')
+				#line.patient.name + _se +
+				#line.patient.x_dni + _se +
+				#lr.encode('utf-8')
 	return content
 
 
 
-#------------------------------------------------ Print ---------------------------------------------------
-# Print  
+#------------------------------------------------ Print -------------------------------------------
 def print_line(order):
-	print 
+	"""
+	Print a line
+	"""
+	print
 	print 'Print'
-	print (order)
-	print (order.x_date_created)
-	print (order.patient.name)
-	print (order.patient.x_id_doc)
-	print (order.patient.x_id_doc_type)
-	print (order.patient.x_firm)
-	print (order.patient.x_ruc)
-	print (order.patient.email)
-	print ()
-	print (order.serial_nr)
-	print (order.product_id.name)
-	print ()
+	print order
+	print order.x_date_created
+	print order.patient.name
+	print order.patient.x_id_doc
+	print order.patient.x_id_doc_type
+	print order.patient.x_firm
+	print order.patient.x_ruc
+	print order.patient.email
+	print
+	print order.serial_nr
+	print order.product_id.name
+	print
 
 
 
-#------------------------------------------------ Date - Correct for Utc - With Delta---------------------------------------------------
-# Correct Date Delta
+#------------------------------------------------ Date - Correct for Utc - With Delta--------------
 def correct_date_delta(date, delta_hou=0, delta_min=0, delta_sec=0):
-	#print 
+	"""
+	Correct Date Delta
+	"""
+	#print
 	#print 'Correct Date'
 	date_format = "%Y-%m-%d %H:%M:%S"
-	date_dt = datetime.datetime.strptime(date, date_format) + datetime.timedelta(hours=delta_hou,minutes=delta_min,seconds=delta_sec)	
+	date_dt = datetime.datetime.strptime(date, date_format) + datetime.timedelta(hours=delta_hou, minutes=delta_min, seconds=delta_sec)
 	date_s = date_dt.strftime(date_format)
 	return date_s
 
 
-#------------------------------------------------ Date - Correct for Utc ---------------------------------------------------
-# Correct Date 
+#------------------------------------------------ Date - Correct for Utc --------------------------
 def correct_date(date):
-	#print 
+	"""
+	Correct Date
+	"""
+	#print
 	#print 'Correct Date'
 	date_format = "%Y-%m-%d %H:%M:%S"
-	date_dt = datetime.datetime.strptime(date, date_format) + datetime.timedelta(hours=-5,minutes=0)	
+	date_dt = datetime.datetime.strptime(date, date_format) + datetime.timedelta(hours=-5, minutes=0)
 	date_s = date_dt.strftime(date_format)
 	return date_s
-

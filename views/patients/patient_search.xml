@@ -21,6 +21,8 @@
 			   </search>
 		   </field>
 	   </record>
+
+07877110
 -->
 
 
@@ -33,10 +35,11 @@
 
 				<search string="patients">
 
-
 					<!--
 					<separator orientation="vertical"/>
+
 					<field name="name" select="1"/>
+
 					<field name="ssn" string="SSN" select="1"/>
 					<field name="identification_code" string="SSN" select="1"/>
 					<field name="oeh_patient_user_id"/>
@@ -48,8 +51,10 @@
 					-->
 
 
+<!--
 					<field 	name="name" 				filter_domain="['|',('name','ilike',self),('x_dni','ilike',self)]"/>
-
+-->
+					<field 	name="name"	select="1"/>
 
 
 
@@ -87,9 +92,6 @@
 											]"/>
 
 
-
-
-
 					<filter string="Vip" domain="[
 															('x_vip','!=', False),
 											]"/>
@@ -104,8 +106,6 @@
 					<group expand="1" string="Group By">
 
 						<filter name="Test" context="{'group_by':'x_test'}"/>
-
-
 
 						<filter name="Fecha de Creación" context="{'group_by':'create_date'}"/>
 

@@ -8,7 +8,6 @@
 <report
 	name="openhealth.report_ticket_receipt_nex_view"
 
-
 	id="report_ticket_receipt_nexx"
 	
 	model="sale.order"
@@ -16,6 +15,7 @@
 	string="Ticket Boleta Nex"
 	
 	report_type="qweb-pdf"
+	
 	file="openhealth.report_ticket_receipt_file_nex"
 
 
@@ -265,8 +265,9 @@
 <td>
 <!--
 <t t-esc="line.product_uom_qty"/>
--->
 <t t-esc="line.x_qty_int"/>
+-->
+<t t-esc="line.x_qty"/>
 </td>
 
 <td>

@@ -178,7 +178,7 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 
 				#  Patient 7 - DNI, Legacy 
 				{
-						'active': 		False, 
+						'active': 		True, 
 						'test_case': 	'dni, ticket_receipt, legacy', 
 
 						'name': 		'NEO NEO NEODIUMX', 
@@ -189,7 +189,8 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 
 						'id_doc_type': 	False, 
 						'id_doc':  		False, 
-						'dni':			'49171890', 
+						
+						'dni':			'09817193', 
 
 						'sex': 			'Male', 
 						'address': 		'Av. San Borja Norte 610,San Borja,Lima',						

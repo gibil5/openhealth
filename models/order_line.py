@@ -112,14 +112,15 @@ class SaleOrderLine(models.Model):
 		)
 
 
-	x_qty_int = fields.Integer(
-			compute='_compute_x_qty_int',
+	#x_qty_int = fields.Integer(
+	x_qty = fields.Integer(
+			compute='_compute_x_qty',
 		)
 
 	@api.multi
-	def _compute_x_qty_int(self):
+	def _compute_x_qty(self):
 		for record in self:
-			record.x_qty_int = record.product_uom_qty
+			record.x_qty = record.product_uom_qty
 
 
 

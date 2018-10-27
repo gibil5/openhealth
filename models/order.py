@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 #
-# 	Order 
-# 
+# 	Order
+#
 # 	Created: 			26 Aug 2016
 # 	Last mod: 			25 Sep 2018
-# 
+#
 from openerp import models, fields, api
 import datetime
 from num2words import num2words
-import math 
+import math
 from openerp import tools
 from openerp import _
 from openerp.exceptions import Warning
@@ -16,173 +16,76 @@ import ord_vars
 import creates
 import pat_vars
 import user
-
 import chk_patient
 import chk_order
-
 import lib
 import lib_con
 
 class sale_order(models.Model):
-	_inherit='sale.order'
 
-	
-
-# ----------------------------------------------------------- Generates ------------------------------------------------------
-	# Generate Date Order
-	@api.multi 
-	def generate_date_order(self, date_order, delta_hou=0, delta_min=0, delta_sec=0):
-		print 
-		print 'Generate Date Order'
-
-		#delta_min = 1
-		#delta_hou = 0 
-		#delta_sec = 0 
-		
-		date_order = lib.correct_date_delta(date_order, delta_hou, delta_min, delta_sec)
-
-		self.date_order = date_order
+	_inherit = 'sale.order'
 
 
-
-
-	# Generate Serial Nr
-	@api.multi 
-	def generate_serial_nr(self):
-		print 
-		print 'Generate Serial Nr'
-
-		delta = 0 
-
-		_dic_pad = {
-						'ticket_receipt': 10, 
-						'ticket_invoice': 10, 
-						'receipt': 			6,
-						'invoice':			6, 
-		}
-
-		pad = _dic_pad[self.x_type]
-
-		self.x_serial_nr = lib_con.generate_serial_nr(self.x_counter_value, delta, pad)
-
-
-
-
-
-# ----------------------------------------------------------- Search - DNI ------------------------------------------------------
-	
-	# Dni 
+# ----------------------------------------------------------- Onchange - DNI ----------------------
+	# Dni
 	@api.onchange('x_partner_dni')
-	def _onchange_x_partner_dni(self):		
-		print 
-		print 'On Change - DNI'
+	def _onchange_x_partner_dni(self):
+		#print
+		#print 'On Change - DNI'
 
+		if self.x_partner_dni != False:
 
-		#if self.x_partner_dni != False  	and 	self.partner_id.name == False: 
-		if self.x_partner_dni != False: 
+			#print 'By Id Doc'
 
-			print 'By Id Doc'
-
-			# Search by ID IDOC 
-			
-			# Patient 
+			# Search Patient - by ID IDOC
 			patient = self.env['oeh.medical.patient'].search([
-																('x_id_doc', '=', self.x_partner_dni),					
+																('x_id_doc', '=', self.x_partner_dni),
 												],
 													order='write_date desc',
 													limit=1,
 												)
-			print patient.name 
-
-
-			# Partner - Dep 
-			#partner_id = self.env['res.partner'].search([
-			#												('x_id_doc', '=', self.x_id_doc),					
-			#									],
-			#										order='write_date desc',
-			#										limit=1,
-			#
-			#									)
+			#print patient.name
 
 
 
-			if patient.name == False: 
+			if patient.name == False:
 
-				print 'By Dni'
+				#print 'By Dni'
 
-				# Search by DNI 
-				
-				# Patient 
+				# Search Patient - by DNI
 				patient = self.env['oeh.medical.patient'].search([
-																	('x_dni', '=', self.x_partner_dni),					
+																	('x_dni', '=', self.x_partner_dni),
 													],
 														order='write_date desc',
 														limit=1,
 													)
-				print patient.name 
+				#print patient.name
 
 
-				# Partner - Dep 
-				#partner_id = self.env['res.partner'].search([
-				#												('x_dni', '=', self.x_partner_dni),					
-				#									],
-				#										order='write_date desc',
-				#										limit=1,
-				#									)
-
-
-			#self.partner_id = partner_id.id 	# Dep 
+			# Update
 			self.patient = patient.id
 
-
-
-# ----------------------------------------------------------- Proxy - Deprecated ------------------------------------------------------
-
-	#x_msg = fields.Char(
-	#		'Msg', 
-	#		default='0', 
-	#	)
-
-	#x_proxy = fields.Char(
-	#		'Proxy', 
-
-	#		compute='_compute_x_proxy', 
-	#	)
-
-	#@api.multi
-	#@api.depends('x_msg')
-	#def _compute_x_proxy(self):
-	#	print 
-	#	print 'Compute Proxy'
-
-	#	for record in self:			
-
-	#		record.x_proxy = record.x_msg
-			
-	#		print record.x_msg
-	#		print record.x_proxy
-	#		print record.patient.name 
-	#		print record.patient.x_id_doc_type
-	#		print record.patient.x_id_doc
+	# _onchange_x_partner_dni
 
 
 
 
 
-# ----------------------------------------------------------- Constraints - Sql ------------------------------------------------------
-	# Uniqueness constraints for: 
 
-	# 	Serial Number 	
-	_sql_constraints = [
+# ----------------------------------------------------------- Constraints - Sql -------------------
+	# Uniqueness constraints for:
+
+	# 	Serial Number
+	#_sql_constraints = [
 							#('x_serial_nr','unique(x_serial_nr)', 'SQL Warning: x_serial_nr must be unique !'),
-						]     
+	#					]
 
 
 
 
-# ----------------------------------------------------------- Constraints - Python ------------------------------------------------------
+# ----------------------------------------------------------- Constraints - Python ----------------
 
-	# Check Serial Number 
+	# Check Serial Number
 	@api.constrains('x_serial_nr')
 	def _check_x_serial_nr(self):
 		print
@@ -195,8 +98,7 @@ class sale_order(models.Model):
 	@api.constrains('x_id_doc')
 	def _check_x_id_doc(self):
 		print
-		print 'Check Id Doc'
-
+		#print 'Check Id Doc'
 		#chk_patient.check_x_id_doc(self)
 
 
@@ -204,107 +106,89 @@ class sale_order(models.Model):
 	# Check Ruc
 	@api.constrains('x_ruc')
 	def _check_x_ruc(self):
-		print
-		print 'Check Ruc'
-
+		#print
+		#print 'Check Ruc'
 		chk_order.check_x_ruc(self)
 
 
 
 
 
+# ----------------------------------------------------------- Counter -----------------------------
 
-
-
-
-# ----------------------------------------------------------- Counter ------------------------------------------------------
-
-	# Counter Value 
+	# Counter Value
 	x_counter_value = fields.Integer(
-			string="Contador", 
+			string="Contador",
 		)
 
-	# Prefix 
+	# Prefix
 	x_prefix = fields.Char(
-			'Prefix', 
-			default='001', 
+			'Prefix',
+			default='001',
 		)
 
-	# Separator 
+	# Separator
 	x_separator = fields.Char(
-			'Separator', 
-			default='-', 
+			'Separator',
+			default='-',
 		)
 
-	# Padding 
+	# Padding
 	x_padding = fields.Integer(
-			'Padding', 
-			default=10, 
+			'Padding',
+			default=10,
 		)
 
 
 
-# ----------------------------------------------------------- Id Doc ------------------------------------------------------
+# ----------------------------------------------------------- Id Doc ------------------------------
 
-	# Id Document 
+	# Id Document
 	x_id_doc = fields.Char(
-			'Nr. Doc.', 
-
-			#required=True,  
-			required=False,  
-			#readonly=True, 
+			'Nr. Doc.',
+			required=False,
 		)
-
 
 
 	# Id Document Type 
 	x_id_doc_type = fields.Selection(
-			selection = pat_vars._id_doc_type_list, 
-			string='Tipo de documento', 
-
-			#required=True,  
-			required=False,  
-			#readonly=True, 
+			selection = pat_vars._id_doc_type_list,
+			string='Tipo de documento',
+			required=False,
 		)
-
-
 
 
 	# Type Code 
 	x_type_code = fields.Char(
-			string='Tipo Codigo', 
+			string='Tipo Codigo',
 
-			compute='_compute_x_type_code', 
+			compute='_compute_x_type_code',
 		)
 
 	@api.multi
 	def _compute_x_type_code(self):
-		for record in self:			
-
-			if record.x_type in ['ticket_receipt', 'ticket_invoice', 'receipt', 'invoice', 'advertisement', 'sale_note']: 
-				
+		for record in self:
+			if record.x_type in ['ticket_receipt', 'ticket_invoice', 'receipt', 'invoice', 'advertisement', 'sale_note']:
 				record.x_type_code = ord_vars._dic_type_code[record.x_type]
 
 
 
-	# Type 
+	# Type
 	x_type = fields.Selection(
-			[	
+			[
 				('receipt', 			'Boleta'),
 				('invoice', 			'Factura'),
 				('advertisement', 		'Canje Publicidad'),
 				('sale_note', 			'Canje NV'),
 				('ticket_receipt', 		'Ticket Boleta'),
-				('ticket_invoice', 		'Ticket Factura'),	
-			], 			
-			string='Tipo', 
+				('ticket_invoice', 		'Ticket Factura'),
+			],
+			string='Tipo',
 			required=False,
-			states={	
-					'draft': [('readonly', True)], 
-					'sent': [('readonly', True)], 
-					'sale': [('readonly', True)], 
-
-					#'editable': [('readonly', False)], 
+			states={
+					'draft': [('readonly', True)],
+					'sent': [('readonly', True)],
+					'sale': [('readonly', True)],
 				}, 
 		)
 
@@ -315,42 +199,42 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Mode Admin ------------------------------------------------------
+# ----------------------------------------------------------- Mode Admin --------------------------
 	# Mode Admin
 	x_admin_mode = fields.Boolean(
-			'Modo Admin', 
+			'Modo Admin',
 		)
 
 
 
-# ----------------------------------------------------------- Correct ------------------------------------------------------
-	# Correct payment method 
-	@api.multi 
+# ----------------------------------------------------------- Correct -----------------------------
+	# Correct payment method
+	@api.multi
 	def correct_pm(self):
-		print 
+		print
 		print 'Correct Payment Method'
 
 		#order_id = self.id
 
- 		if self.x_payment_method.name == False: 
+ 		if self.x_payment_method.name == False:
  			
  			#print 'Create'
 			self.x_payment_method = self.env['openhealth.payment_method'].create({
-																					'order': 	self.id, 	
+																					'order': 	self.id,
 				})
 		
-		res_id = self.x_payment_method.id 
+		res_id = self.x_payment_method.id
 
 		return {
-			# Mandatory 
+			# Mandatory
 			'type': 'ir.actions.act_window',
 			'name': 'Open Payment Method Current',
-			# Window action 
+			# Window action
 
 			'res_id': res_id,
 
 			'res_model': 'openhealth.payment_method',
-			# Views 
+			# Views
 			"views": [[False, "form"]],
 			'view_mode': 'form',
 			'target': 'current',
@@ -361,9 +245,9 @@ class sale_order(models.Model):
 						'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 						#'form': {'action_buttons': True, }
 						#'form': {'action_buttons': False, }
-					},			
+					},
 			'context': {
-						#'default_order': order_id,					
+						#'default_order': order_id,
 					}
 		}
 	# correct_pm
@@ -371,39 +255,37 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Legacy ------------------------------------------------------
-	# Legacy 
+# ----------------------------------------------------------- Legacy ------------------------------
+	# Legacy
 	x_legacy = fields.Boolean(
-			'Legacy', 
+			'Legacy',
 		)
 
 
 
-# ----------------------------------------------------------- Pay ------------------------------------------------------
-	# DNI 
+# ----------------------------------------------------------- Pay ---------------------------------
+	# DNI
 	x_dni = fields.Char(
-			string='DNI', 
-			readonly=True, 
+			string='DNI',
+			readonly=True,
 		)
 
 	# RUC
 	x_ruc = fields.Char(
-			string='RUC', 
-			readonly=True, 
+			string='RUC',
+			readonly=True,
 		)
 
 
 
-# ----------------------------------------------------------- Locked - By State ------------------------------------------------------
-
-	# States 
+# ----------------------------------------------------------- Locked - By State -------------------
+	
+	# States
 	READONLY_STATES = {
-		'draft': 		[('readonly', False)], 
-		'sent': 		[('readonly', False)], 
-		'sale': 		[('readonly', True)], 
-		'cancel': 		[('readonly', True)], 
-
-		#'editable': 	[('readonly', False)], 	
+		'draft': 		[('readonly', False)],
+		'sent': 		[('readonly', False)],
+		'sale': 		[('readonly', True)],
+		'cancel': 		[('readonly', True)],
 	}
 
 
@@ -481,7 +363,7 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- On Changes ------------------------------------------------------
+# ----------------------------------------------------------- On Changes --------------------------
 
 
 	# Patient  
@@ -565,7 +447,7 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Check - Pm Total ------------------------------------------------------
+# ----------------------------------------------------------- Check - Pm Total --------------------
 
 	# Pm Total 
 	x_pm_total = fields.Float(
@@ -613,7 +495,7 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Check - Content ------------------------------------------------------
+# ----------------------------------------------------------- Check - Content ---------------------
 
 	# Personal identifiers: Dni, Ruc 
 	# Check for length and digits 
@@ -698,7 +580,7 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Validate ------------------------------------------------------
+# ----------------------------------------------------------- Validate ----------------------------
 
 	# Action confirm 
 	@api.multi 
@@ -780,7 +662,7 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Action Confirm ------------------------------------------------------
+# ----------------------------------------------------------- Action Confirm ----------------------
 
 	# Action confirm 
 	@api.multi 
@@ -826,7 +708,7 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Create Card ------------------------------------------------------
+# ----------------------------------------------------------- Create Card -------------------------
 
 	# Create Card Vip 
 	@api.multi 
@@ -881,7 +763,7 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Vars ------------------------------------------------------
+# ----------------------------------------------------------- Vars --------------------------------
 
 
 	# Delta 
@@ -1010,7 +892,7 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Primitives ------------------------------------------------------
+# ----------------------------------------------------------- Primitives --------------------------
 
 
 
@@ -1036,7 +918,7 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------- Product Selector ------------------------------------------------------------
+# ----------------------------------------------------- Product Selector --------------------------
 
 	@api.multi
 	def open_product_selector_product(self):  
@@ -1088,7 +970,7 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Print Tickets ------------------------------------------------------
+# ----------------------------------------------------------- Print Tickets -----------------------
 
 	# Total in Words
 	x_total_in_words = fields.Char(
@@ -1209,7 +1091,7 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Primitives ------------------------------------------------------
+# ----------------------------------------------------------- Primitives --------------------------
 	
 	# Proc Created - For Doctor budget creation 
 	x_procedure_created = fields.Boolean(
@@ -1267,7 +1149,7 @@ class sale_order(models.Model):
 
 
 
-# ---------------------------------------------- Cancel - Event creation --------------------------------------------------------
+# ---------------------------------------------- Cancel - Event creation --------------------------
 	
 	# Cancel 
 	x_cancel = fields.Boolean(
@@ -1290,7 +1172,7 @@ class sale_order(models.Model):
 
 
 
-# ---------------------------------------------- Create Payment Method - Amount Total --------------------------------------------------------
+# ---------------------------------------------- Create Payment Method - Amount Total -------------
 
 	# Amount total 
 	x_amount_total = fields.Float(
@@ -1668,6 +1550,41 @@ class sale_order(models.Model):
 
 
 
+# ----------------------------------------------------------- Generates ---------------------------
+	# Generate Date Order
+	def generate_date_order(self, date_order, delta_hou=0, delta_min=0, delta_sec=0):
+		#print
+		#print 'Generate Date Order'		
+		date_order = lib.correct_date_delta(date_order, delta_hou, delta_min, delta_sec)
+		self.date_order = date_order
+
+	# generate_date_order
+
+
+	# Generate Serial Nr
+	def generate_serial_nr(self):
+		#print 
+		#print 'Generate Serial Nr'
+
+		# Init 
+		delta = 0 
+		_dic_pad = {
+						'ticket_receipt': 10,
+						'ticket_invoice': 10,
+						'receipt': 			6,
+						'invoice':			6,
+		}
+		pad = _dic_pad[self.x_type]
+
+		# Generate
+		self.x_serial_nr = lib_con.generate_serial_nr(self.x_counter_value, delta, pad)
+
+	# generate_date_order
+
+
+
+
+
 # ----------------------------------------------------------- Test ------------------------------------------------------
 
 	# Computes
@@ -1691,7 +1608,7 @@ class sale_order(models.Model):
 
 	# Actions
 	def test_actions(self):
-		print 
+		print
 		print 'Order - Actions'
 		self.state_force()
 		self.state_force()
@@ -1703,32 +1620,32 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Test - Init ------------------------------------------------------
-	# Test - Init  
-	@api.multi 
+# ----------------------------------------------------------- Test - Init -------------------------
+	# Test - Init
+	@api.multi
 	def test_init(self, patient_id, partner_id, doctor_id, treatment_id, pl_id):
 
-		print 
+		print
 		print 'Order - Test Init'
 
 		#self.test_reset()
 
 
-		# Create Order 
+		# Create Order
 		order = self.env['sale.order'].create({
 													'partner_id': 	partner_id,
-													'patient': 		patient_id,	
+													'patient': 		patient_id,
 													'state':		'draft',
 													'x_doctor': 	doctor_id,
-													'pricelist_id': pl_id, 
+													'pricelist_id': pl_id,
 													'treatment': 	treatment_id,
 												})
 
-		# Create Order Lines 
+		# Create Order Lines
 
 
-		# Tuples - Short Name + Manual price 
-		tup_arr = [	
+		# Tuples - Short Name + Manual price
+		tup_arr = [
 							('con_med',	0),  					# Consultation
 							('con_med',	100),  					# Consultation
 							('con_med',	200),  					# Consultation
@@ -1736,12 +1653,12 @@ class sale_order(models.Model):
 
 							('acneclean',	-1),  						# Product
 							('vip_card',	-1),  						# Product 
-							
+
 							('quick_neck_hands_rejuvenation_1',	-1), 	# Quick
 							('co2_nec_rn1_one',		-1), 				# Co2
 							('exc_bel_alo_15m_one',	-1),				# Exc
 							('ipl_bel_dep_15m_six',	-1), 			# Ipl
-							('ndy_bol_ema_15m_six',	-1),				# Ndyag 
+							('ndy_bol_ema_15m_six',	-1),				# Ndyag
 							
 							('bot_1zo_rfa_one',		-1), 			# Medical
 							('car_bod_rfa_30m_six',	-1), 			# Cosmeto
@@ -1749,117 +1666,115 @@ class sale_order(models.Model):
 
 
 
-		# Init 
+		# Init
 		#price_manual = 0
-		#price_applied = 0 
+		#price_applied = 0
 		price_applied = -1
 		reco_id= False
 
 
-		# Create 
-		#for name_short in name_shorts: 			
-		for tup in tup_arr: 	
-			
+		# Create
+		for tup in tup_arr:
+
 			name_short = 	tup[0]
 			price_manual = 	tup[1]
-			
-			# Prints 
-			#print tup 
+
+			# Prints
+			#print tup
 			#print name_short
 			#print price_manual
 
-			# Create 
+			# Create
 			ret = creates.create_order_lines_micro(order, name_short, price_manual, price_applied, reco_id)
 
-
-		#return order 
 		return [order]
 
-
+	# test_init
 
 
 
 
 # ----------------------------------------------------------- Test Unit ------------------------------------------------------
-	# Test - Unit 
+	# Test - Unit
 	def test_unit(self):
-		print 
+		print
 		print 'Order - Test Unit'
 
-		# Computes 
+		# Computes
 		#self.test_computes()
 
-		# Actions - Remaining 
+		# Actions - Remaining
 		#self.test_actions()
 
 
-		# Init 
-		total = 0 
-		#total_vip = 0 
+		# Init
+		total = 0
+		#total_vip = 0
 
 
-		for line in self.order_line: 
+		for line in self.order_line:
 
-			# Standard 
+			# Standard
 			#total = 	line.product_id.list_price * line.product_uom_qty 		+ total
 			
 			price_std = line.product_id.list_price
 			price_vip = line.product_id.x_price_vip
 			price_manual = line.x_price_manual
 			
-			qty = line.product_uom_qty 
+			qty = line.product_uom_qty
 
-			compact = line.x_description 
-
-
+			compact = line.x_description
 
 
-			# Prints 
-			print 'product_id: ', line.product_id.name 
-			print 'price_std: ', price_std 
-			print 'price_vip: ',  price_vip 
+
+
+			# Prints
+			print 'product_id: ', line.product_id.name
+			print 'price_std: ', price_std
+			print 'price_vip: ',  price_vip
 			print 'price_manual: ', price_manual
 			#print price_applied
-			print 'qty: ', qty 
+			print 'qty: ', qty
 			print 'compact: ', compact
 
-			# Assert 
+
+			# Assert
 			#assert compact != 'x'  					# Assert 
 
 
-			# Price 
+			# Price
 
-			# Manual 
+			# Manual
 			if price_manual != -1: 
 				price = price_manual
 			
-			# Public 
-			elif self.pricelist_id.name in ['Public Pricelist']: 
+			# Public
+			elif self.pricelist_id.name in ['Public Pricelist']:
 				price = price_std
 
-			# Vip  
+			# Vip
 			else: 
-				if line.product_id.type in ['service'] and price_vip != 0: 		# Is a service and has a Vip price 
+				if line.product_id.type in ['service'] and price_vip != 0: 		# Is a service and has a Vip price
 					price = price_vip
-				else: 
+				else:
 					price = price_std											# Is a service and does not have a Vip price
 
 
-			# Total 
-			total = price * qty 	+ 	total
+			# Total
+			total = price * qty + total
 			print 'price: ', price
 			print 'total: ', total
 
 
 
-		# Asserts 
-		print 
+		# Asserts
+		print
 		print 'Asserts'
-		print self.pricelist_id.name 
+		print self.pricelist_id.name
 		print 'total: ', total
 		print 'self.amount_total: ', self.amount_total
 
-		assert self.amount_total == total    				# Assert 
+		assert self.amount_total == total    				# Assert
 
 
 	# test_unit

@@ -1,5 +1,110 @@
 
 
+
+
+
+# ----------------------------------------------------------- Search - DNI ------------------------
+	# Dni 
+	@api.onchange('x_partner_dni')
+	def _onchange_x_partner_dni(self):		
+		print 
+		print 'On Change - DNI'
+
+
+		#if self.x_partner_dni != False  	and 	self.partner_id.name == False: 
+		if self.x_partner_dni != False: 
+
+			print 'By Id Doc'
+
+			# Search by ID IDOC 
+			
+			# Patient 
+			patient = self.env['oeh.medical.patient'].search([
+																('x_id_doc', '=', self.x_partner_dni),					
+												],
+													order='write_date desc',
+													limit=1,
+												)
+			print patient.name 
+
+
+			# Partner - Dep 
+			#partner_id = self.env['res.partner'].search([
+			#												('x_id_doc', '=', self.x_id_doc),					
+			#									],
+			#										order='write_date desc',
+			#										limit=1,
+			#
+			#									)
+
+
+
+			if patient.name == False: 
+
+				print 'By Dni'
+
+				# Search by DNI 
+				
+				# Patient 
+				patient = self.env['oeh.medical.patient'].search([
+																	('x_dni', '=', self.x_partner_dni),					
+													],
+														order='write_date desc',
+														limit=1,
+													)
+				print patient.name 
+
+
+				# Partner - Dep 
+				#partner_id = self.env['res.partner'].search([
+				#												('x_dni', '=', self.x_partner_dni),					
+				#									],
+				#										order='write_date desc',
+				#										limit=1,
+				#									)
+
+
+			#self.partner_id = partner_id.id 	# Dep 
+			self.patient = patient.id
+
+
+
+
+
+# ----------------------------------------------------------- Proxy - Deprecated ------------------------------------------------------
+
+	#x_msg = fields.Char(
+	#		'Msg', 
+	#		default='0', 
+	#	)
+
+	#x_proxy = fields.Char(
+	#		'Proxy', 
+
+	#		compute='_compute_x_proxy', 
+	#	)
+
+	#@api.multi
+	#@api.depends('x_msg')
+	#def _compute_x_proxy(self):
+	#	print 
+	#	print 'Compute Proxy'
+
+	#	for record in self:			
+
+	#		record.x_proxy = record.x_msg
+			
+	#		print record.x_msg
+	#		print record.x_proxy
+	#		print record.patient.name 
+	#		print record.patient.x_id_doc_type
+	#		print record.patient.x_id_doc
+
+
+
+
+
+
 # ----------------------------------------------------------- Action Confirm ------------------------------------------------------
 
 	# Action confirm 

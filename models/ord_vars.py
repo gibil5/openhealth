@@ -2,6 +2,29 @@
 
 
 
+
+
+_dic_prefix = {
+					#'ticket_receipt': 	'B01', 
+					#'ticket_invoice': 	'F01', 
+					'ticket_receipt': 	'001',
+					'ticket_invoice': 	'001', 
+
+					#'receipt': 			'BB1', 
+					#'invoice': 			'FF1', 
+					'receipt': 			'001', 
+					'invoice': 			'001', 
+
+
+					#'sale_note': 		'S01', 
+					#'advertisement': 	'A01', 
+					'sale_note': 		'001', 
+					'advertisement': 	'001', 
+}
+
+
+
+
 _dic_padding = {
 					'receipt': 			6,
 					'invoice': 			6,
@@ -15,16 +38,6 @@ _dic_padding = {
 
 
 
-_dic_prefix = {
-					'ticket_receipt': 	'B01', 
-					'ticket_invoice': 	'F01', 
-
-					'receipt': 			'BB1', 
-					'invoice': 			'FF1', 
-
-					'sale_note': 		'S01', 
-					'advertisement': 	'A01', 
-}
 
 
 

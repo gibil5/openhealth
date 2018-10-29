@@ -48,7 +48,7 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 
 				# Patient 1 - Passport
 				{
-						'active': 		True, 
+						'active': 		False, 
 						#'test_case': 	'passport, ticket_receipt', 
 						'test_case': 	'passport, receipt', 
 
@@ -178,7 +178,7 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 
 				#  Patient 7 - DNI, Legacy 
 				{
-						'active': 		True, 
+						'active': 		False, 
 						'test_case': 	'dni, ticket_receipt, legacy', 
 
 						'name': 		'NEO NEO NEODIUMX', 

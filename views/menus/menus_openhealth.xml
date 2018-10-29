@@ -33,12 +33,16 @@
 				action="base.company_normal_action_tree"
 				action="company_normal_action_tree"
 -->
+<!--
 		<menuitem id="oh_content_menu" 
 					name="Companies" 
 					parent="openhealth_openhealth_menu"
 
 					action="company_list_action"
 			/>
+-->
+
+
 
 
 

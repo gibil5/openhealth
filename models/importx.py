@@ -55,22 +55,23 @@ def import_txt(self):
     # Loop
     for fname in fnames:
 
-        fname_inp = path + fname + '.txt'
+        fname = path + fname + '.txt'
 
         #print fname_inp
         #print
 
         # Open
-        f_inp = io.open(fname_inp, mode="r", encoding="utf-8")
+        f = io.open(fname, mode="r", encoding="utf-8")
 
 
         # Read
-        #content = f_inp.readlines()
+        #content = f.readlines()
+
 
         content = ''
 
         # Read
-        for line in f_inp:
+        for line in f:
             # line = line.rstrip().replace('|', ',')
             # f_out.write(line + '\n')
             #content = content +  line + '\n'

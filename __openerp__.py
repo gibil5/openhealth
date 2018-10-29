@@ -14,7 +14,7 @@
 
 	'description': """
 
-		26 Oct 2018
+		29 Oct 2018
 
 		Fulcrum - DEV - DOCEAN - PROLIANT
 		
@@ -421,7 +421,7 @@
 
 
 		# Companies 
-		'views/companies/company.xml',
+		#'views/companies/company.xml',
 
 
 		# Controls

@@ -4,6 +4,7 @@
 
 
 <!-- FORM -->
+<!--
 		<record model="ir.ui.view" 	id="view_company_form">
 			<field name="name">res.company.form</field>
 			<field name="model">res.company</field>
@@ -17,7 +18,6 @@
 			<field name="arch" type="xml">
 
 
-				<!-- Warning --> 
 				<xpath expr="//field[@name='website']" position="after">
 
 					<field name="x_warning"/>
@@ -27,7 +27,7 @@
 
 			</field>
 		</record>
-
+-->
 
 
 
@@ -48,9 +48,9 @@
 					<field name="partner_id"/>
 
 					<field name="rml_header1"/>
-
+<!--
 					<field name="x_address"/>
-
+-->
 				</tree>
 			</field>
 		</record>

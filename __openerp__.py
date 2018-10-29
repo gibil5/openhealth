@@ -421,7 +421,7 @@
 
 
 		# Companies 
-		#'views/companies/company.xml',
+		'views/companies/company.xml',
 
 
 		# Controls

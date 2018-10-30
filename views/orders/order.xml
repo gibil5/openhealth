@@ -130,7 +130,9 @@
 							groups="openhealth.roots"
 					/>
 -->
-
+<!--
+jx
+-->
 
 					<button 
 							type="object" 
@@ -142,6 +144,22 @@
 							
 							states="sale"						
 					/>
+
+
+
+					<!-- Cancel --> 
+
+						<button 
+								name="cancel_order" 	
+								type="object" 
+								class="oe_highlight"	
+
+								string="Anular"
+
+								groups="openhealth.roots,openhealth.caja,openhealth.managers,openhealth.directors"
+						/>
+
+
 				</xpath>
 
 
@@ -238,6 +256,10 @@
 																}"	
 						/>
 
+
+					<field name="vspace"/>
+					<field name="x_credit_note"/>
+					<field name="x_credit_note_owner"/>
 
 
 
@@ -565,18 +587,6 @@
 							<group col='5'		groups="openhealth.roots,openhealth.caja,openhealth.directors">
 
 
-								<!-- Cancel --> 
-								<group>
-									<button 
-											name="cancel_order" 	
-											type="object" 
-											class="oe_highlight oe_right "	
-
-											string="Anular"
-
-											groups="openhealth.roots,openhealth.caja,openhealth.managers,openhealth.directors"
-									/>
-								</group>
 
 
 								<!-- Activate --> 

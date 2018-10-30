@@ -40,3 +40,16 @@
 	#for line in self.order_line: 
 
 	#f.close()
+
+
+
+
+
+# 30 Oct 2018 
+
+	# Loop 
+	for order in electronic_order: 
+		#lib.print_line(order)
+
+
+		

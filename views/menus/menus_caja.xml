@@ -40,6 +40,7 @@ groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.c
 
 
 			<!-- Ventas --> 			
+<!--
 			<menuitem 	id="sales_invoice_root_menu" 
 						name="Ventas" 
 						parent="sales_menu"
@@ -49,7 +50,7 @@ groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.c
 						
 						action="sale_list_action"
 					/>
-
+-->
 
 
 
@@ -86,14 +87,27 @@ groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.c
 						/>
 
 
+
+			<!-- Notas de Venta --> 			
+			<menuitem 	id="sales_credit_note_menu"  
+						name="Notas de Venta" 
+						parent="sales_menu"
+						sequence="5"
+						
+						action="credit_note_list_action"
+						/>
+
+
+
 			<!-- Todo --> 			
 			<menuitem 	id="sales_all_menu" 
 						name="Todo" 
 						parent="sales_menu"
-						sequence="5"
+						sequence="6"
 
 						action="order_list_action"
 						/>
+
 
 
 

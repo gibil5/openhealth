@@ -26,6 +26,37 @@ class sale_order(models.Model):
 	_inherit = 'sale.order'
 
 
+# ----------------------------------------------------------- Constraints - Sql -------------------
+	# Uniqueness constraints for:
+
+	# 	Serial Number
+	_sql_constraints = [
+							#('x_serial_nr','unique(x_serial_nr)', 'SQL Warning: x_serial_nr must be unique !'),
+						]
+
+
+
+	# Serial Number 
+	x_serial_nr = fields.Char(
+			'Número de serie',
+		)
+
+
+
+# ----------------------------------------------------------- Credit Note -------------------------
+
+	x_credit_note_owner = fields.Many2one(
+			'sale.order',
+			'Propietario NC',
+		)
+
+	x_credit_note = fields.Many2one(
+			'sale.order',
+			'Nota de Crédito',
+		)
+
+
+
 # ----------------------------------------------------------- Onchange - DNI ----------------------
 	# Dni
 	@api.onchange('x_partner_dni')
@@ -72,32 +103,24 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Constraints - Sql -------------------
-	# Uniqueness constraints for:
-
-	# 	Serial Number
-	#_sql_constraints = [
-							#('x_serial_nr','unique(x_serial_nr)', 'SQL Warning: x_serial_nr must be unique !'),
-	#					]
-
 
 
 
 # ----------------------------------------------------------- Constraints - Python ----------------
 
 	# Check Serial Number
-	@api.constrains('x_serial_nr')
-	def _check_x_serial_nr(self):
-		print
+	#@api.constrains('x_serial_nr')
+	#def _check_x_serial_nr(self):
+	#	print
 		#print 'Check Serial Nr'
 		#chk_order._check_x_serial_nr(self)
 
 
 
 	# Check Id doc - Documento Identidad 
-	@api.constrains('x_id_doc')
-	def _check_x_id_doc(self):
-		print
+	#@api.constrains('x_id_doc')
+	#def _check_x_id_doc(self):
+	#	print
 		#print 'Check Id Doc'
 		#chk_patient.check_x_id_doc(self)
 
@@ -345,12 +368,6 @@ class sale_order(models.Model):
 
 
 
-	# Serial Number 
-	x_serial_nr = fields.Char(
-			'Número de serie',
-
-			#states=READONLY_STATES, 
-		)
 
 
 	# Order Line 
@@ -585,8 +602,7 @@ class sale_order(models.Model):
 	# Action confirm 
 	@api.multi 
 	def validate(self):
-
-		#print 
+		#print
 		#print 'Validate'
 
 
@@ -648,9 +664,7 @@ class sale_order(models.Model):
 
 		# Update Patient 
 		if self.patient.x_id_doc in [False, '']: 
-
 			self.patient.x_id_doc_type = self.x_id_doc_type
-
 			self.patient.x_id_doc = self.x_id_doc
 
 
@@ -676,20 +690,23 @@ class sale_order(models.Model):
 		# Generate Serial Number		
 		if self.x_serial_nr != '' and self.x_admin_mode == False: 
 
+
+
 		 	# Prefix 
 			prefix = ord_vars._dic_prefix[self.x_type]
+
 
 			# Counter 
 			self.x_counter_value = user.get_counter_value(self)
 			
 
-
 			# Padding 
 			padding = ord_vars._dic_padding[self.x_type]
 
 
+
+
 			# Serial Nr 
-			#self.x_serial_nr = prefix + self.x_separator + str(self.x_counter_value).zfill(self.x_padding)
 			self.x_serial_nr = prefix + self.x_separator + str(self.x_counter_value).zfill(padding)
 
 
@@ -1149,25 +1166,64 @@ class sale_order(models.Model):
 
 
 
-# ---------------------------------------------- Cancel - Event creation --------------------------
-	
-	# Cancel 
-	x_cancel = fields.Boolean(
-			string='', 
-			default = False
-		)
+# ---------------------------------------------- Cancel -------------------------------------------
 
-	@api.multi 
+	# Cancel Order
+	@api.multi
 	def cancel_order(self):
-		self.x_cancel = True
-		self.state = 'cancel'
+		print
+		print 'Cancel Order'
 
-	@api.multi 
+		#self.x_cancel = True
+		#self.state = 'cancel'
+
+		patient_id = self.patient.id
+		doctor_id = self.x_doctor.id
+		treatment_id = self.treatment.id
+		x_type = self.x_type
+		
+		short_name = 'other'
+		qty = 1
+
+		order = creates.create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type)
+		print order
+
+
+		# Update
+
+		serial_nr = 'FC1-000001'
+
+		ret = order.write({
+							'amount_total': self.amount_total,
+							'amount_untaxed': self.amount_untaxed,
+							'state': 'credit_note',
+							'x_credit_note_owner': self.id,
+						
+							'x_serial_nr': serial_nr,
+ 						})
+
+
+		ret = self.write({
+							'x_credit_note': order.id,
+						})
+
+
+
+
+
+
+	# Activate
+	@api.multi
 	def activate_order(self):
 		self.x_cancel = False
 		self.state = 'sale'
 
 
+	# Cancel 
+	x_cancel = fields.Boolean(
+			string='',
+			default = False
+		)
 
 
 
@@ -1547,6 +1603,7 @@ class sale_order(models.Model):
 				ret = self.write({
 									'date_order': date_order,
 								})
+
 
 
 

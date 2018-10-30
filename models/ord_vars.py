@@ -24,12 +24,13 @@ _dic_prefix = {
 
 
 
-
 _dic_padding = {
+					'ticket_receipt': 	10,
+					#'ticket_invoice': 	10,
+					'ticket_invoice': 	6,
+
 					'receipt': 			6,
 					'invoice': 			6,
-					'ticket_receipt': 	10,
-					'ticket_invoice': 	10,
 					'sale_note': 		10, 
 					'advertisement': 	10, 
 }
@@ -98,6 +99,9 @@ _state_list = [
 				('sale', 		'Pagado'),				
 				('done', 		'Completo'),
 				('cancel', 		'Anulado'),
+
+				('credit_note', 'Nota de Credito'),
+
 
 				#('printed', 	'Impreso'),
 				#('editable', 	'e'),

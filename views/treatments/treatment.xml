@@ -839,7 +839,12 @@
 								</div>
 -->
 								
-								<group>
+
+
+
+								<!-- Test Cases --> 
+								<group  groups="openhealth.roots">
+
 
 									<!-- Reload --> 
 <!--
@@ -853,7 +858,6 @@
 										/>
 									</group>
 -->
-
 
 									<group>
 										<!-- Test - Patient --> 
@@ -880,10 +884,7 @@
 									</group>
 
 
-
-
 									<group>
-
 										<!-- Test - Export --> 
 										<button 
 											type="object" 

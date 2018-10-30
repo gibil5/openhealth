@@ -92,6 +92,8 @@
 
 
 						<!-- QC --> 
+						<!-- Sync Txt --> 
+<!--						
 						<button 
 							type="object" 
 							class="oe_highlight"
@@ -99,9 +101,6 @@
 							
 							string="QC" 								
 						/>
-
-
-						<!-- Sync Txt --> 
 						<button 
 							type="object" 
 							class="oe_highlight"
@@ -109,6 +108,8 @@
 							
 							string="Sync Txt" 								
 						/>
+-->
+
 					</header>
 
 
@@ -146,9 +147,9 @@
 -->						
 								<field name="ticket_receipt_create"/>
 								<field name="ticket_invoice_create"/>
+								<field name="cn_receipt_create"/>
 								<field name="cn_invoice_create"/>
 <!--
-								<field name="cn_receipt_create"/>
 								<field name="receipt_create"/>
 								<field name="invoice_create"/>
 -->

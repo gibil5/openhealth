@@ -52,12 +52,14 @@ class Container(models.Model):
 			'Credit Note Invoice', 
 		)
 
+	cn_receipt_create = fields.Boolean(
+			'Credit Note Receipt', 
+		)
+
 
 	#receipt_create = fields.Boolean(
 	#	)
 	#invoice_create = fields.Boolean(
-	#	)
-	#cn_receipt_create = fields.Boolean(
 	#	)
 
 
@@ -272,17 +274,18 @@ class Container(models.Model):
 			creates.remove_orders(self, patient_id)
 
 
-			# Credit Note Invoice 
-			if self.cn_invoice_create:
+			# Credit Note Invoice 			
+			#if self.cn_invoice_create:
 				#print 'Create Credit Note - Ticket Invoice'				
-				x_type = 'ticket_invoice'
+			#	x_type = 'ticket_invoice'
 
 				# Create 
-				order = creates.create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type)
+			#	order = creates.create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type)
 				
-				ret = order.write({
-									'state': 'cancel',
-								})
+			#	ret = order.write({
+			#						'state': 'cancel',
+			#					})
+
 
 			# Invoice 
 			if self.ticket_invoice_create:
@@ -294,6 +297,13 @@ class Container(models.Model):
 				order = creates.create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type)
 				#print order 
 
+				if self.cn_invoice_create:
+					ret = order.write({
+										'state': 'cancel',
+									})
+
+
+
 
 			# Receipt
 			if self.ticket_receipt_create:	
@@ -304,6 +314,14 @@ class Container(models.Model):
 				# Create 
 				order = creates.create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type)
 				#print order 
+
+
+				if self.cn_receipt_create:
+					ret = order.write({
+										'state': 'cancel',
+									})
+
+
 
 	# create_sales
 

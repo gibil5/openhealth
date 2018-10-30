@@ -14,26 +14,8 @@ import ord_vars
 
 
 
-# ----------------------------------------------------------- Remove Patient  ------------------------------------------------------
-def remove_orders(self, patient_id):
-	#print 
-	#print 'Remove Orders'
-
-	# Search 
-	orders = self.env['sale.order'].search([
-												('patient', '=', patient_id), 
-											],)
-	for order in orders: 
-		ret = order.write({
-							'state': 'draft',
-						})
-		order.unlink()
-
-
-
-# ----------------------------------------------------------- Create Order Fast  ------------------------------------------------------
+# -------------------------------------------------------------------------------------------------
 # Create Order
-#def create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id, id_doc, id_doc_type, short_name, qty):
 def create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type):
 	print
 	print 'Create Order Fast'
@@ -800,14 +782,11 @@ def remove_patient(self, name):
 
 
 
-# ----------------------------------------------------------- Update Order  ------------------------------------------------------
+# -------------------------------------------------------------------------------------------------
 # Create Order
-#def update_order(order, date_order=False):
-#def update_order(order, date_order=False, serial_nr=False):
 def update_order(order, date_order=False, serial_nr=False, counter=False):
-	print
-	print 'Update Order'
-
+	#print
+	#print 'Update Order'
 
 	# Update  
 	if date_order != False: 
@@ -820,8 +799,27 @@ def update_order(order, date_order=False, serial_nr=False, counter=False):
 							'x_serial_nr': serial_nr,
 						})
 
-
 	if counter != False: 
 		ret = order.write({
 							'x_counter_value': counter,
 						})
+# update_order
+
+
+
+# -------------------------------------------------------------------------------------------------
+def remove_orders(self, patient_id):
+	#print 
+	#print 'Remove Orders'
+
+	# Search 
+	orders = self.env['sale.order'].search([
+												('patient', '=', patient_id), 
+											],)
+	for order in orders: 
+		ret = order.write({
+							'state': 'draft',
+						})
+		order.unlink()
+# remove_orders
+

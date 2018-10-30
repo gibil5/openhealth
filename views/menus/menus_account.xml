@@ -14,7 +14,8 @@
 
 
 
-		<!-- Sales Record -->
+
+<!-- Sales Record -->
 		<menuitem id="account_menu" name="Registro de Ventas"
 			parent="main_account_menu"/>
 
@@ -42,25 +43,38 @@
 			/>
 
 
-
-
 		<!-- Patients --> 
+		<!-- Patients no id code --> 
+<!--
 		<menuitem 	id="account_emr_patients_menu" 
 					name="Pacientes Con Nr H" 
-					parent="account_menu"
+					parent="txt_files_menu"
 					sequence="2"
 
 					action="account_patient_list_action"
 				/>
 
-		<!-- Patients no id code --> 
 		<menuitem 	id="account_emr_patients_no_idcode_menu" 
 					name="Pacientes Sin Nr H" 
-					parent="account_menu"
+					parent="txt_files_menu"
 					sequence="3"
 
 					action="account_patient_no_idcode_list_action"
 					/>
+-->
+
+
+
+
+
+<!-- Archivos TXT -->
+		<menuitem id="electronic_menu" name="Facturacion Electronica"
+
+			parent="main_account_menu"/>
+
+
+
+
 
 
 	</data>

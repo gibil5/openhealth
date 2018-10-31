@@ -55,7 +55,10 @@
 
 
 <!-- Patient -->
+<!--
 <div class="text-left" style="margin-top:10px;font-size: x-small;">
+-->
+<div class="text-left" style="margin-top:10px;">
     <table style="width:100%">
         <tr>
             <td><b>Cliente:</b></td>

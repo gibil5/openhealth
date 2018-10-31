@@ -46,12 +46,11 @@ def get_orders_filter_fast(self, date_bx, date_ex):
 
 
 
-# ----------------------------------------------------------- Get orders - Simple ------------------------------------------------------
+# ---------------------------------------------- Get orders - Filter ------------------------------
 # States: In State Array 
-#def get_orders_filter(self, date_bx, date_ex, state_arr):
 def get_orders_filter(self, date_bx, date_ex, state_arr, type_arr):
 	#print
-	#print 'Get Orders - Simple'
+	#print 'Get Orders - Filter'
 	
 	# Init 
 	DATETIME_FORMAT = "%Y-%m-%d"
@@ -62,29 +61,29 @@ def get_orders_filter(self, date_bx, date_ex, state_arr, type_arr):
 
 
 	_dic_states = {
-					'sale': 		['sale'], 
-					'sale,cancel': 	['sale','cancel'], 
-					'cancel': 		['cancel'], 
+					'sale,cancel,credit_note': 	['sale', 'cancel', 'credit_note'],
+					'sale,cancel': 	['sale', 'cancel'],
+					'sale': 		['sale'],
+					'cancel': 		['cancel'],
 	}
 
 
-	_dic_types = {
-					'ticket_receipt,ticket_invoice,receipt,invoice': 	['ticket_receipt','ticket_invoice','receipt','invoice'], 
-					
+	_dic_types = {					
 					'ticket_receipt,ticket_invoice': 	['ticket_receipt','ticket_invoice'], 
 					'ticket_receipt': 					['ticket_receipt'], 
 					'ticket_invoice': 					['ticket_invoice'], 
+					'ticket_receipt,ticket_invoice,receipt,invoice': 	['ticket_receipt','ticket_invoice','receipt','invoice'], 
 	}
 
 
 	# Orders 
 	orders = self.env['sale.order'].search([
-													('state', 'in', _dic_states[state_arr]),
-													('x_type', 'in', _dic_types[type_arr]),
+												('state', 'in', _dic_states[state_arr]),
+												('x_type', 'in', _dic_types[type_arr]),
 
-													('date_order', '>=', date_begin),													
-													('date_order', '<', date_end),
-													('x_legacy', '=', False),
+												('date_order', '>=', date_begin),													
+												('date_order', '<', date_end),
+												('x_legacy', '=', False),
 											],
 												#order='x_serial_nr asc',
 												#limit=1,

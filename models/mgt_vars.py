@@ -4,10 +4,13 @@
 
 # States
 _state_arr_list = [
-					('sale', 		'sale'),
+					('sale,cancel,credit_note', 'sale,cancel,credit_note'),
 					('sale,cancel', 'sale,cancel'),
+					('sale', 		'sale'),
 					('cancel', 		'cancel'),
 ]
+
+
 
 # types
 _type_arr_list = [

@@ -76,7 +76,6 @@ def format_txt(order):
 # !
 
 	# Sale
-	#if True:
 	#if order.state in ['sale']:
 	if order.state in ['sale', 'cancel']:
 		# Data General
@@ -100,42 +99,35 @@ def format_txt(order):
 #_gen = "FC02-00009990|2017-11-09|07|PEN|||||F001-00000001|01|ERROR EN DATOS|F001-00000001|01||||]"
 #_general = "||||F001-00000001|01|ERROR EN DATOS|F001-00000001|01||||]"
 
-	#if True:
+
 	#else:
 	elif order.state in ['credit_note']:
+		
 		# Data General
 
 		_empty_1 = "||||"
 		_empty_2 = "|||]"
 
-
-		# This one
-		#serial_nr_cn = "FC02-00009990"
-		#serial_nr_cn = order.id_serial_nr.replace("F001","FC02")
-		serial_nr_cn = order.serial_nr.replace("F01-00","FC02-")
-		
-		#date_cn = "2017-11-09"
 		date_cn = order.export_date
-		
 		_cn = "07"
 		currency_code_cn = "PEN"
 
-
-		# Modified
-		#serial_nr_mod = order.serial_nr
-		serial_nr_mod = order.serial_nr.replace("F01-00","F001-")
-
 		type_code_cn = order.type_code
-		reason = "ERROR EN DATOS"
-
-		#serial_nr = order.id_serial_nr
-		serial_nr = serial_nr_mod
-		
+		reason = "ERROR EN DATOS"		
 		type_code = order.type_code
 
 
 
+		# This one
+		serial_nr_cn = order.serial_nr
 
+
+		# Modified
+		serial_nr_mod = order.credit_note_owner.x_serial_nr
+
+
+
+		# General
 		general = serial_nr_cn + sep + \
 					date_cn + sep + \
 					_cn + sep + \
@@ -144,7 +136,7 @@ def format_txt(order):
 					serial_nr_mod + sep + \
 					type_code_cn + sep + \
 					reason + sep + \
-					serial_nr + sep + \
+					serial_nr_mod + sep + \
 					type_code + sep + \
 					_empty_2
 
@@ -409,17 +401,19 @@ def get_file_name(order):
 	nr_zeros = 8
 	order.id_serial_nr = type_prefix + '-' + str(order.counter_value).zfill(nr_zeros)
 
+
 	date_export = order.export_date.replace("-", "")
 
 
-	if order.state in ['sale']: 
+	if order.state in ['sale', 'cancel']: 
 		type_code = order.type_code
 	else:   
 		type_code = '07'
 
 
 	#name = 'RUC' + order.ruc + '-' + order.type_code + '-' + date_export + '-' + order.id_serial_nr
-	name = 'RUC' + order.ruc + '-' + type_code + '-' + date_export + '-' + order.id_serial_nr
+	#name = 'RUC' + order.ruc + '-' + type_code + '-' + date_export + '-' + order.id_serial_nr
+	name = 'RUC' + order.ruc + '-' + type_code + '-' + date_export + '-' + order.serial_nr
 
 	return name
 # get_file_name

@@ -210,7 +210,9 @@ class Container(models.Model):
 		self.mgt.date_end = self.export_date_end
 		self.mgt.container = self.id
 
-		self.mgt.state_arr = 'sale,cancel'
+
+		#self.mgt.state_arr = 'sale,cancel'
+		self.mgt.state_arr = 'sale,cancel,credit_note'
 
 
 		# Update Mgt 

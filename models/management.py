@@ -917,10 +917,13 @@ class Management(models.Model):
 																'delta': 				order.x_delta, 
 
 
-
 																# Rel 
 																'management_id': self.id, 
 																'container_id': self.container.id, 
+
+
+																# Credit Note
+																'credit_note_owner': 	order.x_credit_note_owner.id,
 												})
 			
 

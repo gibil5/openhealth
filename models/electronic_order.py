@@ -23,6 +23,13 @@ class electronic_order(models.Model):
 
 
 # ----------------------------------------------------------- Relational ------------------------------------------------------
+
+	# CN Owner
+	credit_note_owner = fields.Many2one(
+			'sale.order',
+		)
+
+
 	# Lines 
 	electronic_line_ids = fields.One2many(
 			'openhealth.electronic.line', 

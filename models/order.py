@@ -26,13 +26,15 @@ class sale_order(models.Model):
 	_inherit = 'sale.order'
 
 
+
+
 # ----------------------------------------------------------- Constraints - Sql -------------------
 	# Uniqueness constraints for:
 
 	# 	Serial Number
 	_sql_constraints = [
-							#('x_serial_nr','unique(x_serial_nr)', 'SQL Warning: x_serial_nr must be unique !'),
-						]
+				#('x_serial_nr','unique(x_serial_nr)', 'SQL Warning: x_serial_nr must be unique !'),
+				]
 
 
 
@@ -40,6 +42,81 @@ class sale_order(models.Model):
 	x_serial_nr = fields.Char(
 			'Número de serie',
 		)
+
+
+
+# ---------------------------------------------- Duplicate -------------------------------------------
+
+	# Duplicate
+	@api.multi
+	def create_credit_note(self):
+		print
+		print 'Create CN'
+
+		serial_nr = 'FC1-000001'
+		state = 'credit_note'
+
+		# Dup
+		#order = self.copy()
+		order = self.copy(default={
+									#'order_id':self.order_id.id,
+									'x_serial_nr':	serial_nr,
+									'x_credit_note_owner': self.id,
+
+									'amount_total': self.amount_total,
+									'amount_untaxed': self.amount_untaxed,
+									'state': state,
+								})
+		print order
+
+
+		# Update
+		ret = self.write({
+							'x_credit_note': order.id,
+						})
+
+
+
+
+# ---------------------------------------------- Cancel -------------------------------------------
+
+	# Cancel Order
+	@api.multi
+	def cancel_order(self):
+		print
+		print 'Cancel Order'
+
+		self.x_cancel = True
+		self.state = 'cancel'
+
+		#patient_id = self.patient.id
+		#doctor_id = self.x_doctor.id
+		#treatment_id = self.treatment.id
+		#x_type = self.x_type
+		#short_name = 'other'
+		#qty = 1
+		#order = creates.create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type)
+		#print order
+
+
+		# Update
+		#serial_nr = 'FC1-000001'
+
+		#ret = order.write({
+		#					'amount_total': self.amount_total,
+		#					'amount_untaxed': self.amount_untaxed,
+		#					'state': 'credit_note',
+		#					'x_credit_note_owner': self.id,		
+		#					'x_serial_nr': serial_nr,
+ 		#				})
+
+ 		# Create CN
+ 		self.create_credit_note()
+
+
+
+
+
 
 
 
@@ -1162,50 +1239,6 @@ class sale_order(models.Model):
 
 
 
-
-
-
-
-# ---------------------------------------------- Cancel -------------------------------------------
-
-	# Cancel Order
-	@api.multi
-	def cancel_order(self):
-		print
-		print 'Cancel Order'
-
-		#self.x_cancel = True
-		#self.state = 'cancel'
-
-		patient_id = self.patient.id
-		doctor_id = self.x_doctor.id
-		treatment_id = self.treatment.id
-		x_type = self.x_type
-		
-		short_name = 'other'
-		qty = 1
-
-		order = creates.create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type)
-		print order
-
-
-		# Update
-
-		serial_nr = 'FC1-000001'
-
-		ret = order.write({
-							'amount_total': self.amount_total,
-							'amount_untaxed': self.amount_untaxed,
-							'state': 'credit_note',
-							'x_credit_note_owner': self.id,
-						
-							'x_serial_nr': serial_nr,
- 						})
-
-
-		ret = self.write({
-							'x_credit_note': order.id,
-						})
 
 
 

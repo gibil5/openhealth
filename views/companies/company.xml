@@ -5,6 +5,7 @@
 
 <!-- FORM -->
 <!--
+-->
 		<record model="ir.ui.view" 	id="view_company_form">
 			<field name="name">res.company.form</field>
 			<field name="model">res.company</field>
@@ -27,7 +28,6 @@
 
 			</field>
 		</record>
--->
 
 
 
@@ -49,8 +49,8 @@
 
 					<field name="rml_header1"/>
 <!--
-					<field name="x_address"/>
 -->
+					<field name="x_address"/>
 				</tree>
 			</field>
 		</record>

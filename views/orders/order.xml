@@ -148,18 +148,48 @@ jx
 
 
 					<!-- Cancel --> 
+					<button 
+							name="cancel_order" 	
+							type="object" 
+							class="oe_highlight"	
 
-						<button 
-								name="cancel_order" 	
-								type="object" 
-								class="oe_highlight"	
+							string="Anular"
 
-								string="Anular"
+							groups="openhealth.roots,openhealth.caja,openhealth.managers,openhealth.directors"
 
-								groups="openhealth.roots,openhealth.caja,openhealth.managers,openhealth.directors"
-						/>
+							states="sale"						
+					/>
 
 
+
+					<!-- Activate --> 
+					<button 
+							type="object" 
+							class="oe_highlight"	
+
+							name="activate_order" 	
+
+							string="Activar"
+
+							groups="openhealth.roots"
+
+							states="cancel"						
+					/>
+
+
+					<!-- Create CN -->
+					<!--
+					<button 
+							type="object" 
+							class="oe_highlight"	
+
+							string="Crear NC" 	
+
+							name="create_credit_note"
+
+							groups="openhealth.roots"
+					/>
+					-->
 				</xpath>
 
 
@@ -438,6 +468,9 @@ jx
 				<xpath expr="//button[@name='action_cancel']" position="replace">
 				</xpath>
 
+				<!-- Buttons --> 
+				<xpath expr="//button[@name='action_draft']" position="replace">
+				</xpath>
 
 
 
@@ -589,18 +622,6 @@ jx
 
 
 
-								<!-- Activate --> 
-								<group>
-									<button 
-											name="activate_order" 	
-											type="object" 
-											class="oe_highlight oe_right "	
-
-											string="Activar"
-
-											groups="openhealth.roots,openhealth.directors"
-									/>
-								</group>
 
 
 								<!-- Cancelled -->

@@ -14,7 +14,7 @@
 
 	'description': """
 
-		29 Oct 2018
+		31 Oct 2018
 
 		Fulcrum - DEV - DOCEAN - PROLIANT
 		

@@ -140,12 +140,8 @@
 
 
 
+
 <!-- Customer --> 
-<!-- DNI --> 
-<!-- Address --> 
-<!--
-<table style="width:80%">
--->
 <table style="width:100%">
 	<tr>
 		<td><b>Cliente:</b></td>
@@ -191,9 +187,6 @@
 
 
 <!-- Line --> 
-<!--
-<table style="width:80%">
--->
 <table style="width:100%">
 	<tr>
 		<td  align="justify"  >
@@ -218,9 +211,7 @@
 
 
 
-<!--
-<table style="width:80%">
--->
+<!-- Sale --> 
 <table style="width:100%">
 
 <!--

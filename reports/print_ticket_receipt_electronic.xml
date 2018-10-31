@@ -45,13 +45,12 @@
 
 
 <!-- Date -->
+<!--
 <div class="row"    style="margin-top:10px;margin-bottom:10px;width:100%;font-size: x-small;">
-
     <div class="col-xs-6 text-left" style="margin-top:10px;" t-field="doc.x_date_order_corr"/>
-
     <div class="col-xs-6 text-right" style="margin-top:10px;" t-field="doc.x_serial_nr"/>
-
 </div>
+-->
 
 
 
@@ -79,11 +78,109 @@
 
 
 
+<!-- Date --> 
+<!-- Serial Number --> 
+<table style="width:100%">
+    <tr>
+        <td><b>Fecha:</b></td>
+        <td><t t-esc="doc.x_date_order_corr"/></td> 
+    </tr>
+    <tr>
+        <td><b>Ticket:</b></td>
+        <td><t t-esc="doc.x_serial_nr"/></td> 
+    </tr>
+</table>
+<br/>
+
+
+
+<!-- Line --> 
+<div class="col-xs-12" style="border-top: 1px solid black;"/>
+
+
+<!-- Sale --> 
+<table style="width:100%">
+    <tr>
+        <td><b>Desc</b></td>
+        <td><b>Cnt</b></td>
+        <td><b>PUnit</b></td>
+        <td><b>Total</b></td>
+    </tr>
+
+
 <!-- Items --> 
+<t t-foreach="doc.order_line" t-as="line">
+<tr>
+
+<td>
+<t t-esc="line.product_id.x_name_ticket"/>
+</td>
+
+<td>
+<t t-esc="line.x_qty"/>
+</td>
+
+<td>
+<t t-esc="line.price_unit"/>
+</td>
+
+<td>
+<t t-esc="line.price_subtotal"/>
+</td>
+
+</tr>
+</t>
+</table>
+
+
+
+<!-- Line --> 
+<div class="col-xs-12" style="border-top: 1px solid black;"/>
+
+
+
+
+
 
 <!-- Total --> 
+<table style="width:100%">
+    <tr>
+        <td><b>Neto S/.</b></td>
+        <td align="right" ><t t-esc="doc.x_total_net"/></td> 
+    </tr>
 
-<!-- Total Words --> 
+    <tr>
+        <td><b>I.G.V. 18% S/.</b></td>
+        <td align="right" ><t t-esc="doc.x_total_tax"/></td> 
+    </tr>
+
+    <tr>
+        <td><b>Total S/.</b></td>
+        <td align="right" ><t t-esc="doc.amount_total"/></td> 
+    </tr>
+</table>
+
+
+<!-- Total In Words --> 
+<table style="width:100%">
+    <tr>
+        <td><b>Son:</b></td>
+    </tr>
+    <tr>
+        <td align="right" ><t t-esc="doc.x_total_in_words"/></td> 
+    </tr>
+
+    <tr>
+        <td align="right" >Y <t t-esc="doc.x_total_cents"/>/100</td> 
+    </tr>
+
+    <tr>
+        <td align="right" >Soles</td> 
+    </tr>
+</table>
+<br/>
+
+
 
 
 

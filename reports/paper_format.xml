@@ -35,8 +35,10 @@
 
 
 			<field name="margin_bottom">80</field>			
-
+<!--
 			<field name="page_height">270</field>
+-->
+			<field name="page_height">215</field>
 		</record>
 
 

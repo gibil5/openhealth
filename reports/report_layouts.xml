@@ -62,10 +62,11 @@
 		<div class="text-center" style="border-top: 1px solid black;">
 
 			<!-- Logo --> 
+<!--			
 			<div class="col-xs-12">
 				<img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 70px;"/>
 			</div>
-
+-->
 		</div>
 
 

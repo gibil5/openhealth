@@ -22,8 +22,7 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 
 				# Patient 0 - REVILLA RONDON JOSE JAVIER
 				{
-						'active': 		True, 
-						#'test_case': 	'dni,ticket_receipt,product_1,40', 
+						'active': 		True,
 						'test_case': 	'dni,ticket_invoice,product_1,40', 
 
 						'name': 		'REVILLA RONDON JOSE JAVIER', 

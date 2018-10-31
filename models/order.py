@@ -45,8 +45,28 @@ class sale_order(models.Model):
 
 
 
-# ---------------------------------------------- Duplicate -------------------------------------------
+# ---------------------------------------------- Fix -------------------------------------------
+	# Fix
+	@api.multi
+	def fix_serial_nr(self):
+		print
+		print 'Fix - Serial Nr'
 
+		print self.x_serial_nr
+
+		x_serial_nr = self.x_serial_nr.replace("B", "0")
+
+
+		# Update
+		ret = self.write({
+							'x_serial_nr': x_serial_nr,
+						})
+
+
+		print self.x_serial_nr
+
+
+# ---------------------------------------------- Duplicate -------------------------------------------
 	# Duplicate
 	@api.multi
 	def create_credit_note(self):

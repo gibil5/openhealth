@@ -289,6 +289,7 @@ class Container(models.Model):
 			#					})
 
 
+
 			# Invoice 
 			if self.ticket_invoice_create:
 				#print 'Create Ticket Invoice'
@@ -323,6 +324,10 @@ class Container(models.Model):
 										'state': 'cancel',
 									})
 
+				# Test
+				ret = order.write({
+									'x_serial_nr': 'B01-0000000001',
+								})
 
 
 	# create_sales

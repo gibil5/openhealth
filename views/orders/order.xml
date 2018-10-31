@@ -190,6 +190,22 @@ jx
 							groups="openhealth.roots"
 					/>
 					-->
+
+
+
+
+					<!-- Serial Nr -->
+					<button 
+							type="object" 
+							class="oe_highlight"	
+
+							string="Fix Serial Nr" 	
+
+							name="fix_serial_nr"
+
+							groups="openhealth.roots"
+					/>
+					
 				</xpath>
 
 

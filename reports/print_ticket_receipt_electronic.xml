@@ -184,15 +184,26 @@
 <br/>
 
 
-
-
-
-
                 </div>
             </t>
         </t>
     </t>
+
+
+<!-- Company -->
+<t t-set="company" t-value="res_company"></t>
+    
+<!-- Footer --> 
+<t t-call="openhealth.external_layout_footer" />
+
+
 </template>
+
+
+
+
+
+
 
 	</data>
 </openerp>

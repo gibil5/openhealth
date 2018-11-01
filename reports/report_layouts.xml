@@ -106,9 +106,10 @@
 	<t t-raw="0" />
 
 	
-	<!-- Footer --> 
+	<!-- Footer -->
+<!--	 
 	<t t-call="openhealth.external_layout_footer" />
-
+-->
 </template>
 
 

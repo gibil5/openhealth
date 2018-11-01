@@ -165,11 +165,18 @@ def format_txt(order):
 
 
 
+
 	# Receptor
+
+	if order.patient.street != False:
+		street = order.patient.street
+	else:
+		street = ''
+
 	receptor = order.id_doc                + sep + \
 				order.id_doc_type_code      + sep + \
 				order.receptor              + sep + \
-				order.patient.street    + eol
+				street    + eol
 
 
 

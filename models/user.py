@@ -21,12 +21,12 @@ def get_counter_value(self):
 	#print 'User - Get Counter value'
 
 
-	if self.x_type in ['ticket_receipt']:
-		prefix = 'B01'
-	elif self.x_type in ['ticket_invoice']:
-		prefix = 'F01'
-	else:
-		prefix = '001'
+	#if self.x_type in ['ticket_receipt']:
+	#	prefix = 'B01'
+	#elif self.x_type in ['ticket_invoice']:
+	#	prefix = 'F01'
+	#else:
+	#	prefix = '001'
 
 
 	# Order 
@@ -34,7 +34,10 @@ def get_counter_value(self):
 												('state', 'in', ['sale','cancel']),
 												('x_type', '=', self.x_type),
 
-												('x_serial_nr', 'like', prefix),
+												#('x_serial_nr', 'like', prefix),
+												#('date_order', '>', '2018-11-01 00:00:00'),
+											
+												('x_electronic', '=', True),
 											],
 										#order='date_order desc',
 										#order='create_date desc',

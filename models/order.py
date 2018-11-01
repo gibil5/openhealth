@@ -45,6 +45,19 @@ class sale_order(models.Model):
 
 
 
+
+
+# ---------------------------------------------- Electronic ------------------------------------
+	x_electronic = fields.Boolean(
+			'Electronic', 
+			default=False,
+		)
+
+
+
+
+
+
 # ---------------------------------------------- Fix -------------------------------------------
 	# Fix
 	@api.multi
@@ -769,6 +782,12 @@ class sale_order(models.Model):
 
 		# Change State 
 		self.state = 'validated'
+
+
+
+		# Change Electronic 
+		self.x_electronic = True
+
 
 
 

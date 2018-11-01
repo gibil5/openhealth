@@ -308,6 +308,9 @@ jx
 					<field name="x_credit_note_owner"/>
 
 
+					<field name="x_electronic"/>
+
+
 
 <!--
 					<field name="x_sale_document_type"	invisible="1"	readonly="1"	/>
@@ -859,6 +862,12 @@ Look for the Minimalist experience !!!
 					<field name="date_order"	string="Fecha"	/>
 
 					<field name="x_serial_nr" />
+
+
+
+
+					<field name="x_electronic" 	groups="openhealth.roots"/>
+
 
 					
 

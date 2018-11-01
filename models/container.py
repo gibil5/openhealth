@@ -272,8 +272,12 @@ class Container(models.Model):
 			short_name = 	'product_1'
 			qty = 			40
 
+
+			pricelist_id = patient.property_product_pricelist.id
+
+
 			# Clean 
-			creates.remove_orders(self, patient_id)
+			#creates.remove_orders(self, patient_id)
 
 
 			# Credit Note Invoice 			
@@ -297,7 +301,8 @@ class Container(models.Model):
 				x_type = 'ticket_invoice'
 
 				# Create 
-				order = creates.create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type)
+				#order = creates.create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type)
+				order = creates.create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type, pricelist_id)
 				#print order 
 
 				if self.cn_invoice_create:
@@ -315,7 +320,8 @@ class Container(models.Model):
 				x_type = 'ticket_receipt'
 
 				# Create 
-				order = creates.create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type)
+				#order = creates.create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type)
+				order = creates.create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type, pricelist_id)
 				#print order 
 
 
@@ -325,10 +331,9 @@ class Container(models.Model):
 									})
 
 				# Test
-				ret = order.write({
-									'x_serial_nr': 'B01-0000000001',
-								})
-
+				#ret = order.write({
+				#					'x_serial_nr': 'B01-0000000001',
+				#				})
 
 	# create_sales
 

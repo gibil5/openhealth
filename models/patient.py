@@ -151,11 +151,28 @@ class Patient(models.Model):
 
 	# Id Document 
 	x_id_doc = fields.Char(
-			#'Doc. identidad', 
 			'Nr. Doc.', 
 
-			#required=True,  
+			required=True,  
 		)
+
+
+	# Id Document Type 
+	x_id_doc_type = fields.Selection(
+			#[	
+			#	('dni', 			'DNI'),
+			#	('passport', 		'Pasaporte'),
+			#	('foreigner_card', 	'Carnet de Extranjería'),
+			#	('ptp', 			'PTP'),	
+			#	('other', 			'Otro'),
+			#], 
+			selection = pat_vars._id_doc_type_list, 
+			string='Tipo de documento', 
+			#default="dni",
+
+			required=True,
+		)
+
 
 
 
@@ -174,21 +191,6 @@ class Patient(models.Model):
 
 
 
-	# Id Document Type 
-	x_id_doc_type = fields.Selection(
-			#[	
-			#	('dni', 			'DNI'),
-			#	('passport', 		'Pasaporte'),
-			#	('foreigner_card', 	'Carnet de Extranjería'),
-			#	('ptp', 			'PTP'),	
-			#	('other', 			'Otro'),
-			#], 
-			selection = pat_vars._id_doc_type_list, 
-			string='Tipo de documento', 
-			#default="dni",
-
-			#required=True,  
-		)
 
 
 	# Id Doc  

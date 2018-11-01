@@ -74,8 +74,10 @@ _h_subtype = {
 					'plasma': 				'Pla', 
 					'sclerotherapy': 		'Esc', 
 
+
 					'infiltration_keloid': 	'Infq', 
 					'infiltration_scar': 	'Infc', 
+					'infiltration': 		'Inf', 
 
 
 					# Cosmetology

@@ -71,7 +71,7 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 
 				# Patient 2 - CE
 				{
-						'active': 		False, 
+						'active': 		True, 
 						#'test_case': 	'foreign_card, ticket_receipt', 
 						#'test_case': 	'foreign_card, invoice', 
 						'test_case': 	'foreign_card, receipt', 
@@ -97,7 +97,7 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 
 				# Patient 3 - PTP
 				{
-						'active': 		False, 
+						'active': 		True, 
 						#'test_case': 	'ptp, ticket_receipt', 
 						'test_case': 	'ptp, receipt', 
 
@@ -123,7 +123,7 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 
 				# Patient 4 - OTHER
 				{
-						'active': 		False, 
+						'active': 		True, 
 						'test_case': 	'other, ticket_receipt', 
 
 						'name': 		'MICHELOT MICHELOT IVANNA', 
@@ -148,24 +148,25 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 
 				# Patient 5 - DNI
 				{
-						'active': 		False, 
-						'test_case': 	'dni, ticket_receipt', 
+						'active': 		True,
+						'test_case': 	'dni, ticket_receipt',
 
-						'name': 		'REVILLA REVILLA JOSEX', 
-						'name_last': 	'revilla revilla', 
-						'name_first':  	'josex', 
-						'ruc': 			False, 
-						'firm': 		False, 
+						'name': 		'REVILLA REVILLA JOSEX',
+						'name_last': 	'revilla revilla',
+						'name_first':  	'josex',
+						'ruc': 			False,
+						'firm': 		False,
 
-						'id_doc_type': 	'dni', 
-						'id_doc':  		'12345678', 
-						'dni':			False, 
+						'id_doc_type': 	'passport',
+						'id_doc':  		'PA-123456789',
+						
+						'dni':			False,
 
-						'sex': 			'Male', 
-						'address': 		'Av. San Borja Norte 610,San Borja,Lima',						
+						'sex': 			'Male',
+						'address': 		'Av. San Borja Norte 610,San Borja,Lima',
 
 						'id_code':  	False,
-				}, 
+				},
 
 
 

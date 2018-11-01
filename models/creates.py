@@ -16,33 +16,36 @@ import ord_vars
 
 # -------------------------------------------------------------------------------------------------
 # Create Order
-def create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type):
+#def create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type):
+def create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type, pricelist_id):
 	print
 	print 'Create Order Fast'
 
 
-	# Init 
+	# Init
 	partner_id = 	self.patient.partner_id.id
 	id_doc = 		self.patient.x_id_doc
 	id_doc_type = 	self.patient.x_id_doc_type
 
 
-	#pricelist_id = self.patient.property_product_pricelist.id 
+	# Pricelist
+	#pricelist_id = self.patient.property_product_pricelist.id
 	#print self.patient.property_product_pricelist
-	#print pricelist_id
+	print pricelist_id
 
 
-	# Create Order 
+	# Create Order
 	order = self.env['sale.order'].create({
-											'patient': 		patient_id,	
+											'patient': 		patient_id,
 											'partner_id': 	partner_id,
 											'treatment': 	treatment_id,
-											'x_id_doc': 	id_doc,														
-											'x_id_doc_type': id_doc_type,														
-											'x_doctor': 	doctor_id,	
+											'x_id_doc': 	id_doc,												
+											'x_id_doc_type': id_doc_type,
+											'x_doctor': 	doctor_id,
 											#'state':		'draft',
-										
-											#'pricelist_id': pricelist_id, 
+
+
+											'pricelist_id': pricelist_id,
 										})
 
 	# Init 
@@ -78,8 +81,10 @@ def create_patient(self, container_id, test_case, name, sex, address, id_doc_typ
 	#print 'Create Patient'
 	#print name 
 
+
  	# Clear 
- 	#remove_patient(self, name)
+ 	remove_patient(self, name)
+
 
 	# Init
 	street = 	address.split(',')[0]

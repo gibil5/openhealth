@@ -836,23 +836,22 @@ class Management(models.Model):
 	# Update Electronic  
 	@api.multi
 	def update_electronic(self):  
-		print
-		print 'Update - Electronic'
+		#print
+		#print 'Update - Electronic'
 
 		# Clean 
 		self.electronic_order.unlink()
 
 		# Orders 
 		orders,count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end, self.state_arr, self.type_arr)
-		print orders
-		print count 
+		#print orders
+		#print count 
 
 
 		# Loop 
 		for order in orders: 
-			
-			print order 
-			print order.x_type
+			#print order 
+			#print order.x_type
 
 			# Id Doc 
 			if order.x_type in ['ticket_invoice','invoice']: 
@@ -873,10 +872,10 @@ class Management(models.Model):
 					id_doc_type = 'dni'
 					id_doc_type_code = 1
 
-			print receptor
-			print id_doc
-			print id_doc_type
-			print id_doc_type_code
+			#print receptor
+			#print id_doc
+			#print id_doc_type
+			#print id_doc_type_code
 
 
 		

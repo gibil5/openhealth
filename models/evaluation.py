@@ -4,7 +4,6 @@
 # 
 # Created: 				26 Aug 2016
 #
-
 from openerp import models, fields, api
 from datetime import datetime
 from . import eval_vars
@@ -14,9 +13,6 @@ from . import pat_vars
 class Evaluation(models.Model):
 
 	_inherit = 'oeh.medical.evaluation'
-
-
-
 
 
 
@@ -438,8 +434,7 @@ class Evaluation(models.Model):
 
 
 
-
-	# ----------------------------------------------------------- Actions ------------------------------------------------------
+# ----------------------------------------------------------- Actions ------------------------------------------------------
 
 	# Open Treatment
 	@api.multi 
@@ -451,10 +446,4 @@ class Evaluation(models.Model):
 		ret = treatment.open_myself()
 		return ret 
 	# open_treatment
-
-
-
-
-
-
 

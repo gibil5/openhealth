@@ -2,15 +2,19 @@
 	<data>
 
 
-
-
 <!-- Report --> 
 <report
+
 	id="print_ticket_receipt_electronic"
-	model="sale.order"
-    string="Ticket Boleta - Electronico"
-	report_type="qweb-pdf"
-	name="openhealth.report_ticket_receipt_electronic"
+	
+    model="sale.order"
+
+    string="Ticket de Venta Electrónico"
+	
+    report_type="qweb-pdf"
+	
+    name="openhealth.report_ticket_receipt_electronic"
+    
     paperformat="appointment_receipt_electronic"
 
     file="openhealth.report_ticket_receipt_electronic"
@@ -27,20 +31,28 @@
 
 <!-- Template --> 
 <template id="report_ticket_receipt_electronic">
-    
     <t t-call="report.html_container">
-<!--
-        <t t-foreach="docs" t-as="o">
--->
         <t t-foreach="docs" t-as="doc"> 
-
             <t t-call="openhealth.external_layout">
-
                 <div class="page" style="margin-top:100px;font-size: small;">
 <!--
                     <h2>BOLETA DE VENTA</h2>
                     <p>This object's name is <span t-field="o.name"/></p>
 -->
+
+
+
+<!-- Title -->
+<div class="row">
+
+    <div class="col-xs-12" style="border-top: 1px solid black;"/>
+
+    <div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-field="doc.x_title"/>
+
+    <div class="col-xs-12" style="border-top: 1px solid black;"/>
+
+</div>
+
 
 
 
@@ -53,31 +65,64 @@
 -->
 
 
-
-<!-- Patient -->
-<!--
-<div class="text-left" style="margin-top:10px;font-size: x-small;">
--->
+<!-- Receptor -->
 <div class="text-left" style="margin-top:10px;">
     <table style="width:100%">
+
+
+
+<t t-if="doc.x_type == 'ticket_receipt'">
         <tr>
             <td><b>Cliente:</b></td>
-            <td><t t-esc="doc.partner_id.name"/></td> 
+            <td>
+                <t t-esc="doc.patient.name"/>            
+            </td> 
         </tr>
 
         <tr>
             <td><b>DNI:</b></td>
-            <td><t t-esc="doc.x_id_doc"/></td> 
+            <td>
+                <t t-esc="doc.x_id_doc"/>
+            </td> 
         </tr>
+</t>
+
+
+<t t-if="doc.x_type == 'ticket_invoice'">
+        <tr>
+            <td><b>Razón social:</b></td>
+            <td>
+                <t t-esc="doc.patient.x_firm"/>            
+            </td> 
+        </tr>
+
+        <tr>
+            <td><b>RUC:</b></td>
+            <td>
+                <t t-esc="doc.x_ruc"/>
+            </td> 
+        </tr>
+</t>
+
 
         <tr>
             <td><b>Dirección:</b></td>
             <td><t t-esc="doc.partner_id.x_address"/></td> 
         </tr>
+
     </table>
     <br/>
 </div>
 
+
+
+<!--
+<div class="text-left" style="margin-top:10px;">
+    <table style="width:100%">
+    </table>
+    <br/>
+</div>
+-->
 
 
 
@@ -184,23 +229,37 @@
 <br/>
 
 
+<!-- QR --> 
+<!--
+<div class="col-xs-12">
+-->
+<div class="text-center col-xs-12" style="border-top: 1px solid black; margin-top: 5px;">
+<!--
+    <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 45px;"/>
+
+    <img t-if="doc.x_qr_img" t-att-src="'data:image/png;base64,%s' % sale.qr" style="max-height: 45px;"/>
+    <img t-if="doc.x_qr_img"  style="max-height: 45px;"/>
+
+
+    <span t-field="o.product_id.image_medium" t-field-options="{'widget': 'image'}"/>
+    <span t-field="doc.x_qr_img" t-field-options="{'widget': 'image'}"/>
+
+    <img t-att-src="'data:image/png;base64,%s' % to_text(product_id.image_medium)"/>
+    <img t-att-src="'data:image/png;base64,%s' % to_text(doc.x_qr_img)"/>
+-->
+
+    <img t-att-src="'data:image/png;base64,%s' % doc.x_qr_img"  style="max-height: 100px;"/>
+
+</div>
+
+
+
+
                 </div>
             </t>
         </t>
     </t>
-
-
-<!-- Company -->
-<t t-set="company" t-value="res_company"></t>
-    
-<!-- Footer --> 
-<t t-call="openhealth.external_layout_footer" />
-
-
 </template>
-
-
-
 
 
 

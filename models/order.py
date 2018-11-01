@@ -21,6 +21,10 @@ import chk_order
 import lib
 import lib_con
 
+import qrcode
+import base64
+import cStringIO
+
 class sale_order(models.Model):
 
 	_inherit = 'sale.order'
@@ -30,12 +34,10 @@ class sale_order(models.Model):
 
 # ----------------------------------------------------------- Constraints - Sql -------------------
 	# Uniqueness constraints for:
-
-	# 	Serial Number
+	# Serial Number
 	_sql_constraints = [
 				#('x_serial_nr','unique(x_serial_nr)', 'SQL Warning: x_serial_nr must be unique !'),
 				]
-
 
 
 	# Serial Number 
@@ -45,14 +47,93 @@ class sale_order(models.Model):
 
 
 
-
-
 # ---------------------------------------------- Electronic ------------------------------------
+
+	x_title = fields.Char(
+			'Titulo',
+			default='Venta Electrónica',
+		)
+
+
 	x_electronic = fields.Boolean(
 			'Electronic', 
 			default=False,
 		)
 
+	x_qr_img = fields.Binary(
+			'QR',
+		)
+
+	x_qr_data = fields.Char()
+
+
+
+	# Make QR
+	@api.multi
+	def make_qr(self):
+		print
+		print 'Make QR'
+
+		#self.x_image = qrcode.make('Some data here')
+
+
+		# Init 
+
+		se = '|'
+
+
+		if self.x_id_doc_type != False: 
+			id_doc_type = self.x_id_doc_type
+		else: 
+			id_doc_type = ''
+
+
+		self.x_qr_data = self.x_my_company.name + se + self.x_my_company.x_ruc + \
+				se + \
+				self.date_order + \
+				se + \
+				self.x_serial_nr + \
+				se + \
+				self.x_type_code + \
+				se + \
+				self.patient.name + \
+				se + \
+				id_doc_type + \
+				se + \
+				self.x_id_doc + \
+				se + \
+				"ruc" + se + self.x_ruc + \
+				se + \
+				str(self.amount_total)
+
+
+
+
+		qr = qrcode.QRCode(version=1,error_correction=qrcode.constants.ERROR_CORRECT_L,box_size=20,border=4,)
+
+		#name = self.default_code+'_Product.png'
+		#name = self.x_serial_nr + '_Product.png'
+		name = self.x_qr_data + '.png'
+
+
+		#qr.add_data(self.default_code) #you can put here any attribute SKU in my case
+		#qr.add_data(self.x_serial_nr) #you can put here any attribute SKU in my case
+		qr.add_data(self.x_qr_data) #you can put here any attribute SKU in my case
+
+
+		qr.make(fit=True)
+
+		img = qr.make_image()
+
+		buffer = cStringIO.StringIO()
+
+		img.save(buffer, format="PNG")
+
+		img_str = base64.b64encode(buffer.getvalue())
+
+
+		#self.write({'qr_product': img_str,'qr_product_name':name})
+		self.write({'x_qr_img': img_str,'qr_product_name':name})
 
 
 
@@ -141,10 +222,10 @@ class sale_order(models.Model):
 		#					'state': 'credit_note',
 		#					'x_credit_note_owner': self.id,		
 		#					'x_serial_nr': serial_nr,
- 		#				})
+		#				})
 
- 		# Create CN
- 		self.create_credit_note()
+		# Create CN
+		self.create_credit_note()
 
 
 
@@ -349,9 +430,9 @@ class sale_order(models.Model):
 
 		#order_id = self.id
 
- 		if self.x_payment_method.name == False:
- 			
- 			#print 'Create'
+		if self.x_payment_method.name == False:
+			
+			#print 'Create'
 			self.x_payment_method = self.env['openhealth.payment_method'].create({
 																					'order': 	self.id,
 				})
@@ -406,7 +487,7 @@ class sale_order(models.Model):
 	# RUC
 	x_ruc = fields.Char(
 			string='RUC',
-			readonly=True,
+			#readonly=True,
 		)
 
 
@@ -788,7 +869,16 @@ class sale_order(models.Model):
 		# Change Electronic 
 		self.x_electronic = True
 
+		# Title
+		if self.x_type in ['ticket_receipt', 'receipt']:
+			self.x_title = 'Boleta de Venta Electrónica'
+		elif self.x_type in ['ticket_invoice', 'invoice']:
+			self.x_title = 'Factura de Venta Electrónica'
+		else:
+			self.x_title = 'Venta Electrónica'
 
+
+	# validate
 
 
 
@@ -808,7 +898,7 @@ class sale_order(models.Model):
 
 
 
-		 	# Prefix 
+			# Prefix 
 			prefix = ord_vars._dic_prefix[self.x_type]
 
 
@@ -834,6 +924,10 @@ class sale_order(models.Model):
 
 
 		#Write your logic here
+
+
+		# QR
+		self.make_qr()
 
 	# action_confirm_nex
 
@@ -1495,27 +1589,23 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Print ------------------------------------------------------
-
+# ----------------------------------------------------------- Print -------------------------------
 	# Print Ticket - Electronic 
 	@api.multi
 	def print_ticket_electronic(self):
+
+		name = 'openhealth.report_ticket_receipt_electronic'
 		
-		if self.x_type == 'ticket_receipt': 
-			name = 'openhealth.report_ticket_receipt_electronic'
-			return self.env['report'].get_action(self, name)
-		
+		return self.env['report'].get_action(self, name)
 
 
 
-	# Print Ticket
+	# Print Ticket - Deprecated !
 	@api.multi
 	def print_ticket(self):
-		
 		if self.x_type == 'ticket_receipt': 
 			name = 'openhealth.report_ticket_receipt_nex_view'
 			return self.env['report'].get_action(self, name)
-		
 		elif self.x_type == 'ticket_invoice': 
 			name = 'openhealth.report_ticket_invoice_nex_view'
 			return self.env['report'].get_action(self, name)
@@ -1524,7 +1614,8 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Update Appointments ------------------------------------------------------
+
+# ----------------------------------------------------------- Update Appointments -----------------
 
 	# Update Appointment in Treatment 
 	@api.multi 
@@ -1544,20 +1635,7 @@ class sale_order(models.Model):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-	#----------------------------------------------------------- Quick Button - For Treatment ------------------------------------------------------------
+#----------------------------------------------------------- Quick Button - For Treatment ---------
 
 	# For Treatments Quick access
 	@api.multi

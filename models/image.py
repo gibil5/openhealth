@@ -4,10 +4,7 @@
 # 
 # Created: 				 21 Jun 2017
 # Last updated: 	 	 21 Jun 2017
-
 from openerp import models, fields, api
-
-
 
 class Image(models.Model):
 	
@@ -17,11 +14,7 @@ class Image(models.Model):
 
 
 
-
-
-
 # ----------------------------------------------------------- Fields ------------------------------------------------------
-
 
 	# Type
 	xtype = fields.Selection(
@@ -132,10 +125,6 @@ class Image(models.Model):
 		translate=True)
 
 
-
-
-
-
 	# Storage 
 	storage = fields.Selection(
 		[
@@ -156,7 +145,3 @@ class Image(models.Model):
 		#'File extension',
 		'Extension',
 		readonly=True)
-
-
-
-

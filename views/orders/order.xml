@@ -195,6 +195,7 @@ jx
 
 
 					<!-- Serial Nr -->
+					<!--
 					<button 
 							type="object" 
 							class="oe_highlight"	
@@ -205,7 +206,23 @@ jx
 
 							groups="openhealth.roots"
 					/>
-					
+					-->
+
+
+
+					<!-- Make QR -->
+					<button 
+							type="object" 
+							class="oe_highlight"	
+
+							string="Make QR" 	
+
+							name="make_qr"
+
+							groups="openhealth.roots"
+					/>
+
+
 				</xpath>
 
 
@@ -374,6 +391,7 @@ jx
 				
 
 					<!-- Print --> 
+<!--					
 					<button 
 							type="object" 
 							class="oe_highlight"
@@ -387,7 +405,7 @@ jx
 							
 							string="Imprimir"
 						/>
-
+-->
 
 					<!-- Print Electronic --> 
 					<button 
@@ -402,7 +420,6 @@ jx
 							name="print_ticket_electronic"
 
 							string="Imprimir - Electrónico"
-
 						/>
 
 
@@ -501,7 +518,10 @@ jx
 
 					<group>
 						<h3>
-							<field name="name" 		readonly="1"	/>								
+<!--							
+							<field name="name" 		readonly="1"/>
+-->
+							<field name="x_title" 		readonly="0"/>
 						</h3>
 					</group>
 
@@ -823,8 +843,31 @@ Look for the Minimalist experience !!!
 				<field name="message_follower_ids" position="replace">
 				</field>
 
+
+				
 				<field name="message_ids" position="replace">
+					<group col="2">
+						
+
+						<group>
+							<field name="x_qr_img" widget="image"/>
+						</group>
+
+						<group>
+						</group>
+<!--
+						<group>
+						</group>
+-->				
+					</group>
 				</field>
+
+
+
+				<!-- Image -->
+				<!--
+				<field name="x_image" widget="image"/>
+				-->
 
 			</field>
 		</record>
@@ -835,9 +878,6 @@ Look for the Minimalist experience !!!
 
 
 
-
-
-		
 <!-- TREE --> 
 		<record model="ir.ui.view" id="sale.view_order_tree">
 			<field name="name">sale.order.tree</field>

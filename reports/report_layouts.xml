@@ -35,15 +35,13 @@
 
 
 		<!-- Title -->
+<!--		
 		<div class="row">
-
 			<div class="col-xs-12" style="border-top: 1px solid black;"/>
-
 			<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-field="company.rml_header1"/>
-
 			<div class="col-xs-12" style="border-top: 1px solid black;"/>
-
 		</div>
+-->
 
 	</div>
 </template>
@@ -57,17 +55,21 @@
 
 <!-- Footer --> 
 <template id="external_layout_footer">
-	<div class="footer">
 
-		<div class="text-center" style="border-top: 1px solid black;">
+	<div class="footer">
 
 			<!-- Logo --> 
 <!--			
-			<div class="col-xs-12">
+		<div class="text-center" style="border-top: 1px solid black;">
+
 				<img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 70px;"/>
+
+			<div class="col-xs-12">
+				<img t-if="doc.x_qr_img" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 70px;"/>
 			</div>
--->
+
 		</div>
+-->
 
 
 		<div class="text-center" style="margin-top:1px;margin-bottom:1px;width:100%;font-size: xx-small;">
@@ -107,9 +109,7 @@
 
 	
 	<!-- Footer -->
-<!--	 
 	<t t-call="openhealth.external_layout_footer" />
--->
 </template>
 
 

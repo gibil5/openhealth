@@ -1,5 +1,5 @@
 This !
 Fulcrumyy
 
-Oct 2018
-31
+Nov 2018
+1

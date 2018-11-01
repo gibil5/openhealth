@@ -10,37 +10,36 @@
 import creates as cre
 
 
-# ----------------------------------------------------------- Test Cases - Treatment ------------------------------------------------------
+# ---------------------------------------------------- Test Cases ---------------------------------
 # Test Cases - Patients
 def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id=False, treatment_id=False, pl_id=False):
-	print 
+	print
 	print 'Test Cases - Patients'
-	print self 
+	print self
 
 
 	_pars = [
-
 				# Patient 0 - REVILLA RONDON JOSE JAVIER
 				{
 						'active': 		True,
-						'test_case': 	'dni,ticket_invoice,product_1,40', 
+						'test_case': 	'dni,ticket_invoice,product_1,40',
 
-						'name': 		'REVILLA RONDON JOSE JAVIER', 
-						'name_last': 	'revilla rondon', 
-						'name_first':  	'jose javier', 
+						'name': 		'REVILLA RONDON JOSE JAVIER',
+						'name_last': 	'revilla rondon',
+						'name_first':  	'jose javier',
 
-						'id_doc_type': 	'dni', 
-						'id_doc':  		'09817194', 
+						'id_doc_type': 	'dni',
+						'id_doc':  		'09817194',
 
-						'ruc': 			'10098171946', 
-						'firm': 		'Revilla y Asociados', 
+						'ruc': 			'10098171946',
+						'firm': 		'Revilla y Asociados',
 
-						'sex': 			'Male', 
-						'address': 		'Av. San Borja Norte 610,San Borja,Lima',						
+						'sex': 			'Male',
+						'address': 		'Av. San Borja Norte 610,San Borja,Lima',
 
-						'dni':			False, 
+						'dni':			False,
 						'id_code':  	False,
-				}, 
+				},
 
 
 
@@ -71,7 +70,7 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 
 				# Patient 2 - CE
 				{
-						'active': 		True, 
+						'active': 		False, 
 						#'test_case': 	'foreign_card, ticket_receipt', 
 						#'test_case': 	'foreign_card, invoice', 
 						'test_case': 	'foreign_card, receipt', 
@@ -97,7 +96,7 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 
 				# Patient 3 - PTP
 				{
-						'active': 		True, 
+						'active': 		False, 
 						#'test_case': 	'ptp, ticket_receipt', 
 						'test_case': 	'ptp, receipt', 
 
@@ -123,7 +122,7 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 
 				# Patient 4 - OTHER
 				{
-						'active': 		True, 
+						'active': 		False, 
 						'test_case': 	'other, ticket_receipt', 
 
 						'name': 		'MICHELOT MICHELOT IVANNA', 
@@ -148,7 +147,7 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 
 				# Patient 5 - DNI
 				{
-						'active': 		True,
+						'active': 		False,
 						'test_case': 	'dni, ticket_receipt',
 
 						'name': 		'REVILLA REVILLA JOSEX',

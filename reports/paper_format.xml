@@ -29,16 +29,22 @@
 
 
 
-			<field name="margin_top">55</field>
+			<field name="margin_top">35</field>
 			
-			<field name="header_spacing">50</field>
+			<field name="header_spacing">35</field>
 
 
+<!--
 			<field name="margin_bottom">80</field>			
+-->
+			<field name="margin_bottom">70</field>			
+
+
 <!--
 			<field name="page_height">270</field>
--->
 			<field name="page_height">220</field>
+-->
+			<field name="page_height">240</field>
 		</record>
 
 

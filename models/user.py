@@ -20,10 +20,21 @@ def get_counter_value(self):
 	#print 
 	#print 'User - Get Counter value'
 
+
+	if self.x_type in ['ticket_receipt']:
+		prefix = 'B01'
+	elif self.x_type in ['ticket_invoice']:
+		prefix = 'F01'
+	else:
+		prefix = '001'
+
+
 	# Order 
 	order = self.env['sale.order'].search([
 												('state', 'in', ['sale','cancel']),
 												('x_type', '=', self.x_type),
+
+												('x_serial_nr', 'like', prefix),
 											],
 										#order='date_order desc',
 										#order='create_date desc',

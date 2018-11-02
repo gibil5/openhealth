@@ -21,9 +21,9 @@ import chk_order
 import lib
 import lib_con
 
-import qrcode
-import base64
-import cStringIO
+#import qrcode
+#import base64
+#import cStringIO
 
 class sale_order(models.Model):
 

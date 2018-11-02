@@ -7,8 +7,10 @@
 _dic_prefix = {
 					#'ticket_receipt': 	'001',
 					#'ticket_invoice': 	'001',
-					'ticket_receipt': 	'B01', 
-					'ticket_invoice': 	'F01', 
+					#'ticket_receipt': 	'B01', 
+					#'ticket_invoice': 	'F01', 
+					'ticket_receipt': 	'B001',
+					'ticket_invoice': 	'F001',
 
 
 					#'receipt': 			'BB1', 

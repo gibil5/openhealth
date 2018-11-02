@@ -192,21 +192,44 @@
 
 <!-- Total --> 
 <table style="width:100%">
+    
     <tr>
-        <td><b>Neto S/.</b></td>
+        <td>OP. GRAVADAS S/.</td>
         <td align="right" ><t t-esc="doc.x_total_net"/></td> 
     </tr>
 
     <tr>
-        <td><b>I.G.V. 18% S/.</b></td>
+        <td>OP. GRATUITAS S/.</td>
+        <td align="right" >0.00</td> 
+    </tr>
+
+    <tr>
+        <td>OP. EXONERADAS S/.</td>
+        <td align="right" >0.00</td> 
+    </tr>
+
+    <tr>
+        <td>OP. INAFECTAS S/.</td>
+        <td align="right" >0.00</td> 
+    </tr>
+
+
+
+
+    <tr>
+        <td>I.G.V. 18% S/.</td>
         <td align="right" ><t t-esc="doc.x_total_tax"/></td> 
     </tr>
 
     <tr>
-        <td><b>Total S/.</b></td>
+        <td>TOTAL S/.</td>
         <td align="right" ><t t-esc="doc.amount_total"/></td> 
     </tr>
 </table>
+<br/>
+
+
+
 
 
 <!-- Total In Words --> 
@@ -251,6 +274,27 @@
     <img t-att-src="'data:image/png;base64,%s' % doc.x_qr_img"  style="max-height: 100px;"/>
 
 </div>
+
+
+
+
+<!-- Footer --> 
+<div class="footer_">
+
+    <div class="text-center" style="margin-top:1px;margin-bottom:1px;width:100%;font-size: xx-small;">
+<!--
+        <div class="col-xs-12 text-center" style="margin-top:7px;" t-field="doc.x_my_company.sale_note"/>
+-->
+
+        <div class="col-xs-12 text-center" style="margin-top:7px;" t-field="doc.x_my_company.x_warning"/>
+
+        <div class="col-xs-12 text-center" style="margin-top:7px;" t-field="doc.x_my_company.website"/>
+
+        <div class="col-xs-12 text-center" style="margin-top:7px;" t-field="doc.x_my_company.email"/>
+
+    </div>
+
+</div>      
 
 
 

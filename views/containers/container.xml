@@ -31,6 +31,16 @@
 							string="Export Txt" 								
 						/>
 
+						<!-- QC --> 
+						<button 
+							type="object" 
+							class="oe_highlight"
+							name="test_qc" 
+							
+							string="QC" 								
+						/>
+
+
 
 
 						<!-- Correct --> 
@@ -58,6 +68,10 @@
 
 
 						<!-- Clear --> 
+						<!-- Create Sales --> 
+						<!-- Create Patients --> 
+						<!-- Import TXT --> 
+<!--
 						<button 
 							type="object" 
 							class="oe_highlight oe_right"
@@ -65,7 +79,6 @@
 							string="Clear" 								
 						/>
 
-						<!-- Create Sales --> 
 						<button 
 							type="object" 
 							class="oe_highlight oe_right"
@@ -73,7 +86,6 @@
 							string="Create Sales" 								
 						/>
 
-						<!-- Create Patients --> 
 						<button 
 							type="object" 
 							class="oe_highlight oe_right"	
@@ -81,7 +93,7 @@
 							string="Create Patients" 								
 						/>
 
-						<!-- Import TXT --> 
+
 						<button 
 							type="object" 
 							class="oe_highlight oe_right"
@@ -89,18 +101,11 @@
 							
 							string="Import Txt" 								
 						/>
+-->
 
 
-						<!-- QC --> 
-						<!-- Sync Txt --> 
-						<button 
-							type="object" 
-							class="oe_highlight"
-							name="test_qc" 
-							
-							string="QC" 								
-						/>
 						
+						<!-- Sync Txt --> 
 <!--						
 						<button 
 							type="object" 

@@ -88,6 +88,13 @@ class sale_order(models.Model):
 			id_doc_type = ''
 
 
+		if self.x_ruc in ['', False]:
+			ruc = ''
+		else:
+			ruc = self.x_ruc
+
+
+
 		self.x_qr_data = self.x_my_company.name + se + self.x_my_company.x_ruc + \
 				se + \
 				self.date_order + \
@@ -102,7 +109,7 @@ class sale_order(models.Model):
 				se + \
 				self.x_id_doc + \
 				se + \
-				"ruc" + se + self.x_ruc + \
+				"ruc" + se + ruc + \
 				se + \
 				str(self.amount_total)
 

@@ -21,9 +21,9 @@
 
 		<!-- Company -->
 		<div class="row"	style="margin-top:10px;margin-bottom:10px;width:100%;font-size: x-small;">
-
+<b>
 			<div class="col-xs-12 text-center" style="margin-top:10px;" t-field="company.name"/>
-
+</b>
 			<div class="col-xs-12 text-center" style="margin-top:10px;" t-field="company.vat"/>
 
 			<div class="col-xs-12 text-center" style="margin-top:10px;" t-field="company.x_address"/>

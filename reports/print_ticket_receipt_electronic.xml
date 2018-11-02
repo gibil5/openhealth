@@ -46,9 +46,9 @@
 <div class="row">
 
     <div class="col-xs-12" style="border-top: 1px solid black;"/>
-
+<b>
     <div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-field="doc.x_title"/>
-
+</b>
     <div class="col-xs-12" style="border-top: 1px solid black;"/>
 
 </div>

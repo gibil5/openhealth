@@ -392,6 +392,7 @@ jx
 
 					<!-- Print --> 
 <!--					
+-->
 					<button 
 							type="object" 
 							class="oe_highlight"
@@ -399,13 +400,15 @@ jx
 													('x_type','not in',['ticket_invoice','ticket_receipt']), 
 													('state','not in',['sale']), 
 											]}"
-							groups="openhealth.roots,openhealth.caja"
+
+							groups="openhealth.roots"
 							
 							name="print_ticket"
 							
 							string="Imprimir"
 						/>
--->
+
+
 
 					<!-- Print Electronic --> 
 					<button 
@@ -846,20 +849,23 @@ Look for the Minimalist experience !!!
 
 				
 				<field name="message_ids" position="replace">
-					<group col="2">
-						
+
+					<group col="1">
+
+						<group>
+							<field name="x_qr_data"/>
+						</group>
+
+					</group>
+
+					<group col="1">
 
 						<group>
 							<field name="x_qr_img" widget="image"/>
 						</group>
 
-						<group>
-						</group>
-<!--
-						<group>
-						</group>
--->				
 					</group>
+
 				</field>
 
 

@@ -61,10 +61,12 @@ class sale_order(models.Model):
 		)
 
 	x_qr_img = fields.Binary(
-			'QR',
+			'Código QR',
 		)
 
-	x_qr_data = fields.Char()
+	x_qr_data = fields.Char(
+			'Data QR'
+		)
 
 
 
@@ -74,44 +76,94 @@ class sale_order(models.Model):
 		print
 		print 'Make QR'
 
-		#self.x_image = qrcode.make('Some data here')
+		#if self.x_id_doc_type != False: 
+		#	id_doc_type = self.x_id_doc_type
+		#else: 
+		#	id_doc_type = ''
+
+
+		#if self.x_ruc in ['', False]:
+		#	ruc = ''
+		#else:
+		#	ruc = self.x_ruc
+
+		#self.x_qr_data = self.x_my_company.name + se + self.x_my_company.x_ruc + \
+		#		se + \
+		#		self.date_order + \
+		#		se + \
+		#		self.x_serial_nr + \
+		#		se + \
+		#		self.x_type_code + \
+		#		se + \
+		#		self.patient.name + \
+		#		se + \
+		#		id_doc_type + \
+		#		se + \
+		#		self.x_id_doc + \
+		#		se + \
+		#		"ruc" + se + ruc + \
+		#		se + \
+		#		str(self.amount_total)
+
 
 
 		# Init 
 
+		_dic_type_code = {
+							'ticket_receipt': '03',
+							'ticket_invoice': '01',
+							'credit_note': '07',
+							#'debit_note': '08',
+		}
+
+		_dic_type_doc = {
+							'dni': 		'1',
+							'ruc': 		'6',
+							'other': 	'0',
+							'ptp': 		'0',
+							'foreign_card': '4',
+							'passport': 	'7',
+		}
+
+
+		ruc_company = self.x_my_company.x_ruc
+		
+		type_code = _dic_type_code[self.x_type]
+
+		series = self.x_serial_nr.split('-')[0]
+
+		number = self.x_serial_nr.split('-')[1]
+
+		igv = str(self.x_total_tax)
+
+		total = str(self.amount_total)
+
+
+		#date_format = "%Y/%m/%d"
+		date_format = "%Y-%m-%d %H:%M:%S"
+
+		#date = self.date_order.strftime("%Y-%m-%d %H:%M:%S")
+		#date = self.date_order.strftime("%Y/%m/%d")
+
+		#date = datetime.datetime.strptime(self.date_order, date_format).strftime("%Y-%m-%d %H:%M:%S")
+		#date = datetime.datetime.strptime(self.date_order, date_format).strftime("%Y-%m-%d")
+		#date = datetime.datetime.strptime(self.date_order, date_format).strftime("%d/%m/%Y")
+		date = (datetime.datetime.strptime(self.date_order, date_format) - datetime.timedelta(hours=5)).strftime("%d/%m/%Y")
+
+
+		if self.x_type in ['ticket_receipt', 'credit_note']:
+			type_doc = _dic_type_doc[self.x_id_doc_type]
+			doc = self.x_id_doc 
+		elif self.x_type in ['ticket_invoice']:
+			type_doc = '6'
+			doc = self.x_ruc
+
+
+
+
+		# Create
 		se = '|'
-
-
-		if self.x_id_doc_type != False: 
-			id_doc_type = self.x_id_doc_type
-		else: 
-			id_doc_type = ''
-
-
-		if self.x_ruc in ['', False]:
-			ruc = ''
-		else:
-			ruc = self.x_ruc
-
-
-
-		self.x_qr_data = self.x_my_company.name + se + self.x_my_company.x_ruc + \
-				se + \
-				self.date_order + \
-				se + \
-				self.x_serial_nr + \
-				se + \
-				self.x_type_code + \
-				se + \
-				self.patient.name + \
-				se + \
-				id_doc_type + \
-				se + \
-				self.x_id_doc + \
-				se + \
-				"ruc" + se + ruc + \
-				se + \
-				str(self.amount_total)
+		self.x_qr_data = ruc_company + se + type_code + se + series + se + number + se + igv + se + total + se + date + se + type_doc + se + doc 
 
 
 

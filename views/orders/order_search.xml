@@ -17,13 +17,63 @@
 
 <!-- Active --> 
 
-					<!-- 18 Oct --> 
 <!--					
 					<filter string="24 Oct" domain="[
 															('date_order','&lt;', '2018-10-25 05:00:00'),
 															('date_order','&gt;=','2018-10-24 05:00:00'),
 											]"/>
 -->
+
+					<!-- Custo --> 
+
+					<filter string="24 Oct" domain="[
+															('date_order','&lt;', '2018-10-25 05:00:00'),
+															('date_order','&gt;=','2018-10-24 05:00:00'),
+											]"/>
+
+					<filter string="25 Oct" domain="[
+															('date_order','&lt;', '2018-10-26 05:00:00'),
+															('date_order','&gt;=','2018-10-25 05:00:00'),
+											]"/>
+
+
+					<filter string="26 Oct" domain="[
+															('date_order','&lt;', '2018-10-27 05:00:00'),
+															('date_order','&gt;=','2018-10-26 05:00:00'),
+											]"/>
+
+
+					<filter string="27 Oct" domain="[
+															('date_order','&lt;', '2018-10-28 05:00:00'),
+															('date_order','&gt;=','2018-10-27 05:00:00'),
+											]"/>
+
+
+					<filter string="28 Oct" domain="[
+															('date_order','&lt;', '2018-10-29 05:00:00'),
+															('date_order','&gt;=','2018-10-28 05:00:00'),
+											]"/>
+
+					<filter string="29 Oct" domain="[
+															('date_order','&lt;', '2018-10-30 05:00:00'),
+															('date_order','&gt;=','2018-10-29 05:00:00'),
+											]"/>
+
+					<filter string="30 Oct" domain="[
+															('date_order','&lt;', '2018-10-31 05:00:00'),
+															('date_order','&gt;=','2018-10-30 05:00:00'),
+											]"/>
+
+					<filter string="31 Oct" domain="[
+															('date_order','&lt;', '2018-11-01 05:00:00'),
+															('date_order','&gt;=','2018-10-31 05:00:00'),
+											]"/>
+
+
+
+
+
+
 
 
 

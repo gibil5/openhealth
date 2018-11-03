@@ -68,9 +68,49 @@
 
 
 <!-- Archivos TXT -->
+<!--
 		<menuitem id="electronic_menu" name="Facturacion Electronica"
-
 			parent="main_account_menu"/>
+-->
+
+
+
+
+
+<!-- Electronic -->
+<!--
+		<menuitem 	id="main_electronic_menu"
+
+					sequence="1"
+
+					name="Electronic"
+
+					groups="openhealth.roots"
+			/>
+-->
+
+
+
+		<!-- Container -->
+		<menuitem 	id="account_container_menu"
+
+					parent="account_menu"
+
+					sequence="3"
+
+					name="Electrónico"
+				/>
+
+
+		<!-- Container --> 
+		<menuitem 	id="account_content_menu" 
+					
+					name="Generar TXT" 
+					
+					parent="account_container_menu"
+
+					action="container_list_action"
+			/>
 
 
 

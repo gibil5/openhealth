@@ -986,7 +986,7 @@ class sale_order(models.Model):
 
 
 		# QR
-		self.make_qr()
+		#self.make_qr()
 
 	# action_confirm_nex
 

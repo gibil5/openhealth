@@ -49,26 +49,34 @@
 
 
 
+
+<!--					
+					groups="openhealth.roots,openhealth.managers"
+-->
+
 <!-- Electronic -->
-		<menuitem 	id="main_electronic_menu" 
+		<menuitem 	id="main_electronic_menu"
+
 					sequence="1"
 
 					name="Electronic"
-					
+
 					groups="openhealth.roots"
 			/>
 
 
 
 
-<!-- Content -->
-		<menuitem 	id="openhealth_container_menu" 
+<!-- Container -->
+		<menuitem 	id="openhealth_container_menu"
+
 					parent="main_electronic_menu"
 
 					sequence="0"
 
 					name="Container"
 				/>
+
 
 		<!-- Container --> 
 		<menuitem id="content_menu" name="Container" parent="openhealth_container_menu"

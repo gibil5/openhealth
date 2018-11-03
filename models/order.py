@@ -986,7 +986,10 @@ class sale_order(models.Model):
 
 
 		# QR
-		#self.make_qr()
+		if self.x_type in ['ticket_receipt']:
+			self.make_qr()
+
+
 
 	# action_confirm_nex
 

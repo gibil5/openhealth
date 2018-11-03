@@ -261,6 +261,9 @@ class Container(models.Model):
 		print 
 		print 'Create Sales'
 
+
+
+
 		# Loop 
 		for patient in self.patient_ids: 
 			#print patient
@@ -272,13 +275,11 @@ class Container(models.Model):
 			short_name = 	'product_1'
 			qty = 			40
 
-
 			pricelist_id = patient.property_product_pricelist.id
 
 
 			# Clean 
 			#creates.remove_orders(self, patient_id)
-
 
 			# Credit Note Invoice 			
 			#if self.cn_invoice_create:
@@ -301,7 +302,6 @@ class Container(models.Model):
 				x_type = 'ticket_invoice'
 
 				# Create 
-				#order = creates.create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type)
 				order = creates.create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type, pricelist_id)
 				#print order 
 
@@ -309,7 +309,6 @@ class Container(models.Model):
 					ret = order.write({
 										'state': 'cancel',
 									})
-
 
 
 
@@ -334,6 +333,11 @@ class Container(models.Model):
 				#ret = order.write({
 				#					'x_serial_nr': 'B01-0000000001',
 				#				})
+
+
+
+		# QC
+		self.test_qc()
 
 	# create_sales
 

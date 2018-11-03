@@ -16,7 +16,6 @@ import ord_vars
 
 # -------------------------------------------------------------------------------------------------
 # Create Order
-#def create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type):
 def create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type, pricelist_id):
 	print
 	print 'Create Order Fast'
@@ -29,9 +28,7 @@ def create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty
 
 
 	# Pricelist
-	#pricelist_id = self.patient.property_product_pricelist.id
-	#print self.patient.property_product_pricelist
-	print pricelist_id
+	#print pricelist_id
 
 
 	# Create Order
@@ -44,7 +41,6 @@ def create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty
 											'x_doctor': 	doctor_id,
 											#'state':		'draft',
 
-
 											'pricelist_id': pricelist_id,
 										})
 
@@ -55,15 +51,16 @@ def create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty
 
 
 	# Create Order Lines 
-	#ret = creates.create_order_lines_micro(order, target_line, price_manual, price_applied, reco_id, qty)
 	ret = create_order_lines_micro(order, short_name, price_manual, price_applied, reco_id, qty)
-
 
 
 	# Pay 
 	order.create_payment_method()
+
 	order.x_payment_method.saledoc = ord_vars._dic_tc_type[x_type]
+	
 	order.validate()					
+	
 	order.action_confirm_nex()
 
 

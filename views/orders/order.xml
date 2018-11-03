@@ -910,10 +910,23 @@ Look for the Minimalist experience !!!
 
 					<field name="x_serial_nr" />
 
-
-
-
 					<field name="x_electronic" 	groups="openhealth.roots"/>
+
+					<field name="x_type" />
+
+					<field name="x_type_code" 	groups="openhealth.roots"/>
+
+
+
+					<field name="x_id_doc_type"/>
+
+					<field name="x_id_doc"/>
+
+					<field name="x_ruc"/>
+
+
+
+
 
 					<field name="x_qr_data" 	groups="openhealth.roots"/>
 
@@ -928,9 +941,6 @@ Look for the Minimalist experience !!!
 
 
 
-					<field name="x_type" />
-
-					<field name="x_type_code" 	groups="openhealth.roots"/>
 
 
 
@@ -940,9 +950,6 @@ Look for the Minimalist experience !!!
 
 					<field name="patient"/>
 
-					<field name="x_id_doc_type"/>
-
-					<field name="x_id_doc"/>
 
 					<field name="x_doctor" />
 

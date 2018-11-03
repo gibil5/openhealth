@@ -21,9 +21,8 @@ import chk_order
 import lib
 import lib_con
 
-import qrcode
-import base64
-import cStringIO
+
+import lib_qr
 
 class sale_order(models.Model):
 
@@ -44,6 +43,43 @@ class sale_order(models.Model):
 	x_serial_nr = fields.Char(
 			'Número de serie',
 		)
+
+
+
+
+# ----------------------------------------------------------- Constraints - Python ----------------
+
+	# Check Ruc
+	@api.constrains('x_ruc')
+	def _check_x_ruc(self):
+		print
+		print 'Check Ruc'
+		#if self.x_type in ['ticket_invoice', 'invoice']:
+		chk_order.check_ruc(self)
+
+
+
+
+	# Check Serial Number
+	#@api.constrains('x_serial_nr')
+	#def _check_x_serial_nr(self):
+	#	print
+		#print 'Check Serial Nr'
+		#chk_order._check_x_serial_nr(self)
+
+
+
+	# Check Id doc - Documento Identidad 
+	#@api.constrains('x_id_doc')
+	#def _check_x_id_doc(self):
+	#	print
+		#print 'Check Id Doc'
+		#chk_patient.check_x_id_doc(self)
+
+
+
+
+
 
 
 
@@ -76,125 +112,17 @@ class sale_order(models.Model):
 		print
 		print 'Make QR'
 
-		#if self.x_id_doc_type != False: 
-		#	id_doc_type = self.x_id_doc_type
-		#else: 
-		#	id_doc_type = ''
 
+		# Create Data
+		self.x_qr_data = lib_qr.get_qr_data(self)
 
-		#if self.x_ruc in ['', False]:
-		#	ruc = ''
-		#else:
-		#	ruc = self.x_ruc
+		# Create Img
+		img_str, name = lib_qr.get_qr_img(self.x_qr_data)
 
-		#self.x_qr_data = self.x_my_company.name + se + self.x_my_company.x_ruc + \
-		#		se + \
-		#		self.date_order + \
-		#		se + \
-		#		self.x_serial_nr + \
-		#		se + \
-		#		self.x_type_code + \
-		#		se + \
-		#		self.patient.name + \
-		#		se + \
-		#		id_doc_type + \
-		#		se + \
-		#		self.x_id_doc + \
-		#		se + \
-		#		"ruc" + se + ruc + \
-		#		se + \
-		#		str(self.amount_total)
-
-
-
-		# Init 
-
-		_dic_type_code = {
-							'ticket_receipt': '03',
-							'ticket_invoice': '01',
-							'credit_note': '07',
-							#'debit_note': '08',
-		}
-
-		_dic_type_doc = {
-							'dni': 		'1',
-							'ruc': 		'6',
-							'other': 	'0',
-							'ptp': 		'0',
-							'foreign_card': '4',
-							'passport': 	'7',
-		}
-
-
-		ruc_company = self.x_my_company.x_ruc
-		
-		type_code = _dic_type_code[self.x_type]
-
-		series = self.x_serial_nr.split('-')[0]
-
-		number = self.x_serial_nr.split('-')[1]
-
-		igv = str(self.x_total_tax)
-
-		total = str(self.amount_total)
-
-
-		#date_format = "%Y/%m/%d"
-		date_format = "%Y-%m-%d %H:%M:%S"
-
-		#date = self.date_order.strftime("%Y-%m-%d %H:%M:%S")
-		#date = self.date_order.strftime("%Y/%m/%d")
-
-		#date = datetime.datetime.strptime(self.date_order, date_format).strftime("%Y-%m-%d %H:%M:%S")
-		#date = datetime.datetime.strptime(self.date_order, date_format).strftime("%Y-%m-%d")
-		#date = datetime.datetime.strptime(self.date_order, date_format).strftime("%d/%m/%Y")
-		date = (datetime.datetime.strptime(self.date_order, date_format) - datetime.timedelta(hours=5)).strftime("%d/%m/%Y")
-
-
-		if self.x_type in ['ticket_receipt', 'credit_note']:
-			type_doc = _dic_type_doc[self.x_id_doc_type]
-			doc = self.x_id_doc 
-		elif self.x_type in ['ticket_invoice']:
-			type_doc = '6'
-			doc = self.x_ruc
-
-
-
-
-		# Create
-		se = '|'
-		self.x_qr_data = ruc_company + se + type_code + se + series + se + number + se + igv + se + total + se + date + se + type_doc + se + doc 
-
-
-
-
-		qr = qrcode.QRCode(version=1,error_correction=qrcode.constants.ERROR_CORRECT_L,box_size=20,border=4,)
-
-		#name = self.default_code+'_Product.png'
-		#name = self.x_serial_nr + '_Product.png'
-		name = self.x_qr_data + '.png'
-
-
-		#qr.add_data(self.default_code) #you can put here any attribute SKU in my case
-		#qr.add_data(self.x_serial_nr) #you can put here any attribute SKU in my case
-		qr.add_data(self.x_qr_data) #you can put here any attribute SKU in my case
-
-
-		qr.make(fit=True)
-
-		img = qr.make_image()
-
-		buffer = cStringIO.StringIO()
-
-		img.save(buffer, format="PNG")
-
-		img_str = base64.b64encode(buffer.getvalue())
-
-
-		#self.write({'qr_product': img_str,'qr_product_name':name})
+		# Update
 		self.write({'x_qr_img': img_str,'qr_product_name':name})
 
-
+	# make_qr
 
 
 
@@ -355,33 +283,6 @@ class sale_order(models.Model):
 
 
 
-
-# ----------------------------------------------------------- Constraints - Python ----------------
-
-	# Check Serial Number
-	#@api.constrains('x_serial_nr')
-	#def _check_x_serial_nr(self):
-	#	print
-		#print 'Check Serial Nr'
-		#chk_order._check_x_serial_nr(self)
-
-
-
-	# Check Id doc - Documento Identidad 
-	#@api.constrains('x_id_doc')
-	#def _check_x_id_doc(self):
-	#	print
-		#print 'Check Id Doc'
-		#chk_patient.check_x_id_doc(self)
-
-
-
-	# Check Ruc
-	@api.constrains('x_ruc')
-	def _check_x_ruc(self):
-		#print
-		#print 'Check Ruc'
-		chk_order.check_x_ruc(self)
 
 
 
@@ -852,8 +753,8 @@ class sale_order(models.Model):
 	# Action confirm 
 	@api.multi 
 	def validate(self):
-		#print
-		#print 'Validate'
+		print
+		print 'Validate'
 
 
 		# Payment method validation
@@ -894,20 +795,35 @@ class sale_order(models.Model):
 		if self.treatment.name != False: 
 			for line in self.order_line: 
 				if line.product_id.x_family in ['laser', 'medical', 'cosmetology']:
-
 					# Create 
 					creates.create_procedure_wapp(self, line.product_id.x_treatment, line.product_id.id)
-				
 				line.update_recos()
-
 			# Update 
 			self.x_procedure_created = True
 			self.treatment.update_appointments()
 
 
 
+
+
 		# Check Content - DEP 
 		#self.check_content()
+
+		# Ruc
+		print self.x_type
+		print self.x_ruc
+
+		if self.x_type in ['ticket_invoice', 'invoice']:
+			if self.x_ruc in [False, '']:
+				msg = "Error: RUC Ausente."
+				raise Warning(_(msg))
+
+		elif self.x_type in ['ticket_receipt', 'receipt']:
+			if self.x_id_doc_type in [False, '']  or self.x_id_doc in [False, '']:
+				msg = "Error: Doc Ausente."
+				raise Warning(_(msg))
+
+
 
 
 
@@ -916,12 +832,6 @@ class sale_order(models.Model):
 		if self.patient.x_id_doc in [False, '']: 
 			self.patient.x_id_doc_type = self.x_id_doc_type
 			self.patient.x_id_doc = self.x_id_doc
-
-
-
-
-		# Change State 
-		self.state = 'validated'
 
 
 
@@ -937,6 +847,9 @@ class sale_order(models.Model):
 			self.x_title = 'Venta Electrónica'
 
 
+
+		# Change State 
+		self.state = 'validated'
 	# validate
 
 
@@ -986,8 +899,8 @@ class sale_order(models.Model):
 
 
 		# QR
-		if self.x_type in ['ticket_receipt']:
-			self.make_qr()
+		#if self.x_type in ['ticket_receipt']:
+		self.make_qr()
 
 
 

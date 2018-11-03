@@ -70,8 +70,8 @@
 						<!-- Clear --> 
 						<!-- Create Sales --> 
 						<!-- Create Patients --> 
-						<!-- Import TXT --> 
 <!--
+-->
 						<button 
 							type="object" 
 							class="oe_highlight oe_right"
@@ -94,6 +94,8 @@
 						/>
 
 
+						<!-- Import TXT --> 
+<!--
 						<button 
 							type="object" 
 							class="oe_highlight oe_right"
@@ -102,7 +104,6 @@
 							string="Import Txt" 								
 						/>
 -->
-
 
 						
 						<!-- Sync Txt --> 

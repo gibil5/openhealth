@@ -401,11 +401,11 @@ jx
 													('state','not in',['sale']), 
 											]}"
 
-							groups="openhealth.roots"
+							groups="openhealth.roots,openhealth.caja"
 							
 							name="print_ticket"
 							
-							string="Imprimir"
+							string="Imprimir - ANT"
 						/>
 
 
@@ -418,6 +418,7 @@ jx
 													('x_type','not in',['ticket_invoice','ticket_receipt']), 
 													('state','not in',['sale']), 
 											]}"
+
 							groups="openhealth.roots,openhealth.caja"
 
 							name="print_ticket_electronic"

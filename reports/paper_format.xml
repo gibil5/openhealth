@@ -43,9 +43,9 @@
 
 <!--
 			<field name="page_height">270</field>
-			<field name="page_height">220</field>
--->
 			<field name="page_height">240</field>
+-->
+			<field name="page_height">260</field>
 		</record>
 
 

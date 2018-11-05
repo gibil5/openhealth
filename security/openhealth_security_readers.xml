@@ -14,12 +14,12 @@
 
 		<!-- Product Managers --> 
 		<record id="openhealth.product_managers" model="res.groups">
+
 			<field name="name">Product Managers</field>
 			
 			<field name="category_id" ref="module_openhealth_category"/>
 
 			<field name="users" eval="[ 
-
 											(4, ref('openhealth.archivo_clinicachavarri')),
 											(4, ref('openhealth.nescobar_clinicachavarri')),
 											(4, ref('openhealth.director_clinicachavarri')),
@@ -46,11 +46,14 @@
 											(4, ref('openhealth.rzevallos')), 
 -->
 		<record id="openhealth.hc_managers" model="res.groups">
+
 			<field name="name">HC Managers</field>
 
 			<field name="category_id" ref="module_openhealth_category"/>
 
 			<field name="users" eval="[ 
+
+											(4, ref('openhealth.ctorrealba_clinicachavarri')),
 
 
 											(4, ref('openhealth.medico_clinicachavarri')),

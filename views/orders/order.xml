@@ -659,7 +659,16 @@ jx
 
 					<field name="vspace"/>
 
-					<field name="treatment" 		/>
+
+					<field name="treatment" 		
+																	attrs="{	 
+																				'readonly':	[
+																								('x_admin_mode', '!=', True),
+																							], 
+																		}"	
+
+						/>
+
 
 					<field name="vspace"/>
 

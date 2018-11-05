@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-#
-# 		*** Product Template
-# 
-# 		Created: 			   Nov 2016
-# 		Last up: 	 		17 Sep 2018
-#
+"""
+ 		*** Product Template
+ 
+ 		Created: 			   Nov 2016
+		Last up: 	 		 5 Nov 2018
+"""
 from openerp import models, fields, api
 from openerp.exceptions import ValidationError
 from datetime import datetime
@@ -15,14 +15,15 @@ import gen
 import gen_tic
 
 class Product(models.Model):
-
+	"""
+	"""
 	_inherit = 'product.template'
 
 	_order = 'name'
 
 
-# ----------------------------------------------------------- Codes ----------------------------
 
+# ----------------------------------------------------------- Codes ----------------------------
 	# Counter
 	x_counter = fields.Integer(
 			'Counter',
@@ -189,7 +190,9 @@ class Product(models.Model):
 	@api.multi
 	def _compute_checksum_1(self):
 		for record in self:
+
 			record.x_checksum_1 = lib.get_checksum_gen(record.x_generated, record.name)
+
 
 
 

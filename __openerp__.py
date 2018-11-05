@@ -653,6 +653,9 @@
 
 		# ----------------------------------------------------------- Menus ------------------------------------------------------
 		'views/menus/menus.xml',
+
+		'views/menus/menus_products.xml',
+
 		'views/menus/menus_caja.xml',
 		'views/menus/menus_reporting.xml',
 		'views/menus/menus_openhealth.xml',		 

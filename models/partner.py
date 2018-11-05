@@ -1,90 +1,36 @@
 # -*- coding: utf-8 -*-
-#
-# 		*** RES PARTNER 
-# 
-# 		Created: 			26 Aug 2016
-# 		Last updated: 	 	23 Aug 2018 
-#
+"""
+ 		*** RES PARTNER
+ 
+ 		Created: 			26 Aug 2016
+		Last updated: 	 	 5 Nov 2018
+"""
 from openerp import models, fields, api
 import pat_vars
 import lib
 
 class Partner(models.Model):
+	"""
+	"""
 	_inherit = 'res.partner'
+
 	_order = 'write_date desc'
-
-
-# ----------------------------------------------------------- Test - Fields ------------------------------------------------------
-
-	#x_test = fields.Boolean(
-	#		'Test', 
-	#	)
-
-	#x_test_case = fields.Char(
-	#		'Test Case', 
-	#	)
-
-
-
-
-# ----------------------------------------------------------- Indexed ------------------------------------------------------
-	# Name 
-	name = fields.Char(
-			'Name', 
-			select=True,
-			index=True, 
-		)
-
-	# Dni 
-	x_dni = fields.Char(
-			"DNI", 	
-			index=True, 
-			required=False, 
-		)
-	
-
-
-
-# ----------------------------------------------------------- My Company ------------------------------------------------------
-
-	# My company 
-	x_my_company = fields.Boolean(
-			'Mi compañía ?', 
-		)
-
-
-	# Series 
-	x_series = fields.Char(
-			string='Serie', 
-		)
-
-	# Autorization 
-	x_authorization = fields.Char(
-			string='Autorización', 
-		)
-
-	# Warning Sales
-	x_warning = fields.Text(
-			'Condiciones de Venta', 
-		)
-
-	# Warning Purchase 
-	x_warning_purchase = fields.Text(
-			'Condiciones de Compra', 
-		)
 
 
 
 # ----------------------------------------------------------- Hard wired - With Patient -----------
 
 	# Company
-	x_firm = fields.Char(
-			"Razón social",
-		)
 
 	#x_firm_address = fields.Char(
 	#		"Dirección (Razón social)",
 	#	)
+
+
+	x_firm = fields.Char(
+			"Razón social",
+		)
+
 
 	x_ruc = fields.Char(
 			"RUC",
@@ -92,7 +38,7 @@ class Partner(models.Model):
 
 
 
-	# phones
+	# Phones
 	phone = fields.Char(
 			'Fijo',
 			required=False,
@@ -150,40 +96,86 @@ class Partner(models.Model):
 			required=False, 
 		)
 
-
 	street = fields.Char(
-			string = "Dirección", 	
-
-			required=False, 
+			string = "Dirección",
+			required=False,
 		)
 
 	zip = fields.Char(
-			#'Zip', 
-			string = 'Código',  
-			size=24, 
-			#change_default=True, 
-			required=False, 
+			#'Zip',
+			string = 'Código',
+			size=24,
+			#change_default=True,
+			required=False,
 		)
-
-
 
 
 	# Only for foreign addresses
 	x_foreign = fields.Boolean(
-			string="Dirección en el extranjero", 
+			string="Dirección en el extranjero",
 		)
 
 
 	x_address_foreign = fields.Text(
-			string=".", 
+			string=".",
 		)
 
 
 	# Vspace
 	vspace = fields.Char(
-			' ', 
+			' ',
 			readonly=True
-			)
+		)
+
+
+
+
+# ----------------------------------------------------------- Indexed ------------------------------------------------------
+	# Name 
+	name = fields.Char(
+			'Name', 
+			select=True,
+			index=True, 
+		)
+
+	# Dni 
+	x_dni = fields.Char(
+			"DNI", 	
+			index=True, 
+			required=False, 
+		)
+
+# ----------------------------------------------------------- My Company ------------------------------------------------------
+
+	# My company 
+	x_my_company = fields.Boolean(
+			'Mi compañía ?', 
+		)
+
+
+	# Series 
+	x_series = fields.Char(
+			string='Serie', 
+		)
+
+	# Autorization 
+	x_authorization = fields.Char(
+			string='Autorización', 
+		)
+
+	# Warning Sales
+	x_warning = fields.Text(
+			'Condiciones de Venta', 
+		)
+
+	# Warning Purchase 
+	x_warning_purchase = fields.Text(
+			'Condiciones de Compra', 
+		)
+
+
+
+
 
 
 # ----------------------------------------------------------- Address ------------------------------------------------------

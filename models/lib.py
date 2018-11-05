@@ -6,9 +6,26 @@
  		Is completely standard. Gives service to all Users.
 
  		Created: 			13 Aug 2018
- 		Last up: 	 		25 Oct 2018
+ 		Last up: 	 		 5 Nov 2018
 """
 import datetime
+
+
+
+#------------------------------------------------ Checksum ----------------------------------------
+# Get Checksum Generated
+def get_checksum_gen(generated, name):
+	"""
+	Get Checksum Generated
+	"""
+
+	if generated == name:
+		checksum = '1'
+	else:
+		checksum = '0'
+	return checksum
+
+
 
 
 
@@ -335,21 +352,6 @@ def get_checksum_tic(generated):
 		checksum = '1'
 	return checksum
 
-
-
-#------------------------------------------------ Checksum ----------------------------------------
-# Get Checksum Generated
-def get_checksum_gen(generated, name):
-	"""
-	Get Checksum Generated
-	"""
-	#print
-	#print 'Get Checksum'
-	if generated == name:
-		checksum = '1'
-	else:
-		checksum = '0'
-	return checksum
 
 
 

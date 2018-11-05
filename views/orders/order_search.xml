@@ -26,43 +26,44 @@
 
 					<!-- Custo --> 
 
-					<filter string="24 Oct" domain="[
-															('date_order','&lt;', '2018-10-25 05:00:00'),
-															('date_order','&gt;=','2018-10-24 05:00:00'),
-											]"/>
-
-					<filter string="25 Oct" domain="[
-															('date_order','&lt;', '2018-10-26 05:00:00'),
-															('date_order','&gt;=','2018-10-25 05:00:00'),
+					<filter string="7 Nov" domain="[
+															('date_order','&lt;', '2018-11-08 05:00:00'),
+															('date_order','&gt;=','2018-11-07 05:00:00'),
 											]"/>
 
 
-					<filter string="26 Oct" domain="[
-															('date_order','&lt;', '2018-10-27 05:00:00'),
-															('date_order','&gt;=','2018-10-26 05:00:00'),
+					<filter string="6 Nov" domain="[
+															('date_order','&lt;', '2018-11-07 05:00:00'),
+															('date_order','&gt;=','2018-11-06 05:00:00'),
+											]"/>
+
+					<filter string="5 Nov" domain="[
+															('date_order','&lt;', '2018-11-06 05:00:00'),
+															('date_order','&gt;=','2018-11-05 05:00:00'),
 											]"/>
 
 
-					<filter string="27 Oct" domain="[
-															('date_order','&lt;', '2018-10-28 05:00:00'),
-															('date_order','&gt;=','2018-10-27 05:00:00'),
+					<filter string="3 Nov" domain="[
+															('date_order','&lt;', '2018-11-04 05:00:00'),
+															('date_order','&gt;=','2018-11-03 05:00:00'),
+											]"/>
+
+					<filter string="2 Nov" domain="[
+															('date_order','&lt;', '2018-11-03 05:00:00'),
+															('date_order','&gt;=','2018-11-02 05:00:00'),
+											]"/>
+
+					<filter string="1 Nov" domain="[
+															('date_order','&lt;', '2018-11-02 05:00:00'),
+															('date_order','&gt;=','2018-11-01 05:00:00'),
 											]"/>
 
 
-					<filter string="28 Oct" domain="[
-															('date_order','&lt;', '2018-10-29 05:00:00'),
-															('date_order','&gt;=','2018-10-28 05:00:00'),
-											]"/>
 
-					<filter string="29 Oct" domain="[
-															('date_order','&lt;', '2018-10-30 05:00:00'),
-															('date_order','&gt;=','2018-10-29 05:00:00'),
-											]"/>
 
-					<filter string="30 Oct" domain="[
-															('date_order','&lt;', '2018-10-31 05:00:00'),
-															('date_order','&gt;=','2018-10-30 05:00:00'),
-											]"/>
+					<separator/>
+
+
 
 					<filter string="31 Oct" domain="[
 															('date_order','&lt;', '2018-11-01 05:00:00'),
@@ -70,14 +71,45 @@
 											]"/>
 
 
+					<filter string="30 Oct" domain="[
+															('date_order','&lt;', '2018-10-31 05:00:00'),
+															('date_order','&gt;=','2018-10-30 05:00:00'),
+											]"/>
 
 
+					<filter string="29 Oct" domain="[
+															('date_order','&lt;', '2018-10-30 05:00:00'),
+															('date_order','&gt;=','2018-10-29 05:00:00'),
+											]"/>
 
+					<filter string="28 Oct" domain="[
+															('date_order','&lt;', '2018-10-29 05:00:00'),
+															('date_order','&gt;=','2018-10-28 05:00:00'),
+											]"/>
 
+					<filter string="27 Oct" domain="[
+															('date_order','&lt;', '2018-10-28 05:00:00'),
+															('date_order','&gt;=','2018-10-27 05:00:00'),
+											]"/>
 
+					<filter string="26 Oct" domain="[
+															('date_order','&lt;', '2018-10-27 05:00:00'),
+															('date_order','&gt;=','2018-10-26 05:00:00'),
+											]"/>
 
+					<filter string="25 Oct" domain="[
+															('date_order','&lt;', '2018-10-26 05:00:00'),
+															('date_order','&gt;=','2018-10-25 05:00:00'),
+											]"/>
+
+					<filter string="24 Oct" domain="[
+															('date_order','&lt;', '2018-10-25 05:00:00'),
+															('date_order','&gt;=','2018-10-24 05:00:00'),
+											]"/>
 
 					<separator/>
+
+
 
 
 					<filter string="Hoy" domain="[											

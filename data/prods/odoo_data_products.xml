@@ -108,6 +108,7 @@
 		<record id='aloe_vital' model='product.template'>
 
 			<field name='name'>ALOE VITAL</field>
+
 			<field name='x_name_short'>aloe_vital</field>
 
 			<field name='type'>product</field>
@@ -142,6 +143,7 @@
 		<record id='bepanthen' model='product.template'>
 
 			<field name='name'>BEPANTHEN</field>
+
 			<field name='x_name_short'>bepanthen</field>
 			
 			<field name='default_code'>395</field>
@@ -164,6 +166,7 @@
 		<record id='cream_vitamins' model='product.template'>
 
 			<field name='name'>CREMA CON VITAMINAS</field>
+
 			<field name='x_name_short'>cream_vitamins</field>
 
 			<field name='type'>product</field>
@@ -174,6 +177,7 @@
 			<field name='x_price_vip'></field>
 			<field name='categ_id' ref="topical"/>
 		</record>
+
 
 
 		<!-- CREMA CON VITAMINAS A, E, C -->
@@ -191,6 +195,7 @@
 
 			<field name='categ_id' ref="topical"/>
 		</record>
+
 
 
 		<!-- DERMATOPIC LOCION 120 ML -->
@@ -237,6 +242,7 @@
 		<record id='depigmentation_aha' model='product.template'>
 
 			<field name='name'>DESPIGMENTANTE AHA</field>
+
 			<field name='x_name_short'>depigmentation_aha</field>
 
 			<field name='type'>product</field>			
@@ -254,6 +260,7 @@
 		<record id='depigmentation_bfd8' model='product.template'>
 
 			<field name='name'>DESPIGMENTANTE BF-D8</field>
+
 			<field name='x_name_short'>depigmentation_bfd8</field>
 
 			<field name='type'>product</field>			
@@ -271,6 +278,7 @@
 		<record id='depigmentation_gliko' model='product.template'>
 
 			<field name='name'>DESPIGMENTANTE GLI-KO</field>
+
 			<field name='x_name_short'>depigmentation_gliko</field>
 
 			<field name='type'>product</field>			
@@ -287,6 +295,7 @@
 		<record id='depigmentation_hq' model='product.template'>
 
 			<field name='name'>DESPIGMENTANTE HQ</field>
+
 			<field name='x_name_short'>depigmentation_hq</field>
 
 			<field name='type'>product</field>			
@@ -304,6 +313,7 @@
 		<record id='depigmentation_santa_teresa' model='product.template'>
 
 			<field name='name'>DESPIGMENTANTE SANTA TERESA</field>
+
 			<field name='x_name_short'>depigmentation_santa_teresa</field>
 
 			<field name='type'>product</field>			
@@ -321,6 +331,7 @@
 		<record id='depigmentation_no_hidroquinone' model='product.template'>
 
 			<field name='name'>DESPIGMENTANTE SIN HIDROQUINONA</field>
+			
 			<field name='x_name_short'>depigmentation_no_hidroquinone</field>
 
 			<field name='type'>product</field>			
@@ -589,6 +600,7 @@
 		<record id='vip_card' model='product.template'>
 
 			<field name='name'>TARJETA VIP</field>
+			
 			<field name='x_name_short'>vip_card</field>
 
 			<field name='default_code'>495</field>

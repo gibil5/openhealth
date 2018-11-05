@@ -1,0 +1,35 @@
+
+
+
+
+		<!-- Productos -->
+<!--		
+		<menuitem id="products_menu" 
+			name="Productos"
+			parent="main_products_menu"
+			/>
+
+		<menuitem id="product_menu" 
+			name="Productos"
+			parent="products_menu"
+			sequence="1"
+
+			action="product_template_stockable_list_action"
+			/>
+-->
+
+
+
+<!-- Other -->
+<!--
+			<menuitem 	id="prods_services_other_menu" 
+						parent="services_menu"
+						sequence="8"
+
+						name="Otros"
+
+						action="product_template_service_other_list_action"/>
+-->
+
+
+

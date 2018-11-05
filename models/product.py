@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# 		*** Product Template 
+# 		*** Product Template
 # 
 # 		Created: 			   Nov 2016
 # 		Last up: 	 		17 Sep 2018
@@ -19,6 +19,21 @@ class Product(models.Model):
 	_inherit = 'product.template'
 
 	_order = 'name'
+
+
+# ----------------------------------------------------------- Codes ----------------------------
+
+	# Counter
+	x_counter = fields.Integer(
+			'Counter',
+		)
+
+
+
+	# Code 
+	x_code = fields.Char(
+			'Code', 
+		)
 
 
 
@@ -47,10 +62,6 @@ class Product(models.Model):
 		)
 
 
-	# Code 
-	x_code = fields.Char(
-			'Code', 
-		)
 
 
 

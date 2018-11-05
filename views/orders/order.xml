@@ -597,9 +597,18 @@ jx
 
 					<field name="x_id_doc"			readonly="1"/>
 -->
-					<field name="x_id_doc_type"		/>
+					<field name="x_id_doc_type"		
+														attrs="{
+																		'required':[('x_type', 'not in', ['ticket_invoice', 'invoice'])], 
+																}"
+						/>
 
-					<field name="x_id_doc"			/>
+					<field name="x_id_doc"			
+														attrs="{
+																		'required':[('x_type', 'not in', ['ticket_invoice', 'invoice'])], 
+																}"
+
+						/>
 
 
 
@@ -610,7 +619,13 @@ jx
 
 					<field name="vspace"/>
 					
-					<field name="x_ruc"/>
+
+					<field name="x_ruc"
+														attrs="{
+																		'required':[('x_type', 'in', ['ticket_invoice', 'invoice'])], 
+																}"
+						/>
+
 				</field>
 
 
@@ -912,16 +927,17 @@ Look for the Minimalist experience !!!
 
 					<field name="x_electronic" 	groups="openhealth.roots"/>
 
-					<field name="x_type" />
 
+
+					<field name="x_type" />
 					<field name="x_type_code" 	groups="openhealth.roots"/>
+					<field name="state"/>
+
 
 
 
 					<field name="x_id_doc_type"/>
-
 					<field name="x_id_doc"/>
-
 					<field name="x_ruc"/>
 
 
@@ -979,7 +995,6 @@ Look for the Minimalist experience !!!
 
 					<field name="user_id"		string="Creado por"	/>
 
-					<field name="state"/>
 
 
 

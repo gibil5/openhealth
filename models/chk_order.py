@@ -20,7 +20,6 @@ def check_ruc(self):
 	print
 	print 'Chk - Check Ruc'
 
-
 	var_name = 'Ruc'
 	_name = 'x_ruc'
 	_length = 11
@@ -50,12 +49,12 @@ def check_ruc(self):
 
 
 		# Uniqueness 
-		count = self.env['sale.order'].search_count([
-														('x_ruc', '=', record.x_ruc),
-										])
-		if count > 1: 
+		#count = self.env['sale.order'].search_count([
+		#												('x_ruc', '=', record.x_ruc),
+		#								])
+		#if count > 1: 
 			#raise ValidationError("Warning: NAME already exists: %s" % record.name)
-			raise ValidationError("Warning: %s already exists: %s" % (var_name, record.x_ruc)) 
+		#	raise ValidationError("Warning: %s already exists: %s" % (var_name, record.x_ruc)) 
 
 
 	# all records passed the test, don't return anything

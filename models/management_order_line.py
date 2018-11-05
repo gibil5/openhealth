@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 #
-# 	Management Order Line 
+# 	Management Order Line - Clean This !
 # 
 # 	Created: 			28 May 2018
-# 	Last updated: 		12 Sep 2018
+# 	Last updated: 		 4 Nov 2018
 #
 from openerp import models, fields, api
 import ord_vars
@@ -19,28 +19,33 @@ class management_order_line(models.Model):
 
 
 
+# ----------------------------------------------------------- Dep ? -----------------------------
 
-# ----------------------------------------------------------- Company ------------------------------------------------------
+	# Container  
+	container_id = fields.Many2one(
+			'openhealth.container', 
+			ondelete='cascade',
+		)
+
+
+# ----------------------------------------------------------- Emitter - Dep ? ---------------------
 
 	# Firm 
 	firm = fields.Char(
-			'Firm', 
-			#default='MS SOFT SAC', 
-			default='SERVICIOS MÉDICOS ESTÉTICOS S.A.C', 
+			'Firm',
+			default='SERVICIOS MÉDICOS ESTÉTICOS S.A.C',
 		)
 
 	# Ruc 
 	ruc = fields.Char(
 			'Ruc', 
-			#default='20547678894', 
 			default='20523424221', 
 		)
 
 
 	# Ubigeo
 	ubigeo = fields.Char(
-			'Ubigeo', 
-			#default='', 
+			'Ubigeo',
 			default='150101', 
 		)
 
@@ -59,41 +64,7 @@ class management_order_line(models.Model):
 		)
 
 
-
-# ----------------------------------------------------------- Handles - Relational ------------------------------------------------------
-
-	# Container  
-	container_id = fields.Many2one(
-			'openhealth.container', 
-			ondelete='cascade',
-		)
-
-
-	# Management 
-	management_id = fields.Many2one(
-			'openhealth.management',
-			ondelete='cascade',
-		)
-
-
-
-
-	# Doctor 
-	doctor_id = fields.Many2one(			
-			'openhealth.management.doctor.line',
-			ondelete='cascade', 			
-		)
-
-	# Sales TKR
-	management_tkr_id = fields.Many2one(			
-			'openhealth.management',
-			ondelete='cascade',		
-		)
-
-
-
-
-# ----------------------------------------------------------- Electronic ------------------------------------------------------
+# ----------------------------------------------------------- Electronic - Dep ? ------------------------------------------------------
 
 	# Receptor 
 	receptor = fields.Char(
@@ -120,9 +91,6 @@ class management_order_line(models.Model):
 			#required=True, 
 		)
 
-
-
-
 	# Order 
 	x_type = fields.Char(
 			'Tipo', 
@@ -136,14 +104,6 @@ class management_order_line(models.Model):
 			'Moneda', 
 			default="PEN", 
 		)
-
-
-
-
-
-
-
-
 
 
 
@@ -197,7 +157,6 @@ class management_order_line(models.Model):
 
 
 	# Sub Family
-	#sub_family = fields.Selection(
 	sub_family = fields.Char(
 			string = "Sub-familia",
 			selection=prodvars._treatment_list,
@@ -212,6 +171,28 @@ class management_order_line(models.Model):
 			default='draft',
 		)
 
+
+
+
+# ----------------------------------------------------------- Handles -----------------------------
+
+	# Management 
+	management_id = fields.Many2one(
+			'openhealth.management',
+			ondelete='cascade',
+		)
+
+	# Doctor 
+	doctor_id = fields.Many2one(			
+			'openhealth.management.doctor.line',
+			ondelete='cascade', 			
+		)
+
+	# Sales TKR
+	management_tkr_id = fields.Many2one(			
+			'openhealth.management',
+			ondelete='cascade',		
+		)
 
 
 

@@ -2,10 +2,7 @@
 <openerp>
 	<data>
 
-<!--
-					name="Open Health"
-					name="Testing"
--->
+
 
 <!-- Open Health -->
 		<menuitem 	id="main_openhealth_menu" 
@@ -17,7 +14,7 @@
 			/>
 
 
-<!-- Open Health -->
+		<!-- Open Health -->
 		<menuitem 	id="openhealth_openhealth_menu" 
 					
 					parent="main_openhealth_menu"
@@ -28,13 +25,9 @@
 				/>
 
 
+
+
 		<!-- Companies --> 
-<!--		
-				action="base.company_normal_action_tree"
-				action="company_normal_action_tree"
--->
-<!--
--->
 		<menuitem id="oh_content_menu" 
 					name="Companies" 
 					parent="openhealth_openhealth_menu"
@@ -42,6 +35,16 @@
 					action="company_list_action"
 			/>
 
+
+		<!-- Electronic --> 
+		<menuitem id="oh_electronic_menu" 
+
+					name="Electronic Orders" 
+			
+					parent="openhealth_openhealth_menu"
+
+					action="electronic_order_form_action"
+			/>
 
 
 

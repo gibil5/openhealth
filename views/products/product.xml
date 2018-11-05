@@ -27,8 +27,11 @@
 					<page string="Clínica Chavarri">
 
 						<group>
+
 							<field name="active"/>
+
 							<field name="x_code"/>
+
 
 							<field name="description"/>
 							<field name="x_name_short"/>							
@@ -97,9 +100,13 @@ black:x_checksum_1=='1'
 
 					<field name="name"/>
 
+					<field name="x_counter"/>
 					<field name="x_code"/>
 					<field name="default_code"/>
+					
+
 					<field name="type"/>
+
 
 
 					<field name="active"/>

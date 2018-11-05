@@ -4,6 +4,14 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+access_openhealth_container,openhealth.container,model_openhealth_container,,1,1,1,1
+access_openhealth_texto,openhealth.texto,model_openhealth_texto,,1,1,1,1
+access_openhealth_electronic_order,openhealth.electronic_order,model_openhealth_electronic_order,,1,1,1,1
+access_openhealth_electronic_line,openhealth.electronic_line,model_openhealth_electronic_line,,1,1,1,1
+
+
+
+
 access_res_partner_directors,res.partner.directors,model_res_partner,openhealth.directors,1,1,1,1
 access_res_partner_reception,res.partner.reception,model_res_partner,openhealth.reception,1,1,1,0
 access_res_partner_caja,res.partner.caja,model_res_partner,openhealth.caja,1,1,1,0

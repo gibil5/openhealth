@@ -144,3 +144,27 @@ class Object():
 					})
 
 
+
+
+
+
+
+# 4 Nov 2018
+
+
+			# Credit Note Invoice
+			#if self.cn_invoice_create:
+				#print 'Create Credit Note - Ticket Invoice'				
+			#	x_type = 'ticket_invoice'
+
+				# Create 
+			#	order = creates.create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type)
+				
+			#	ret = order.write({
+			#						'state': 'cancel',
+			#					})
+
+
+
+
+			

@@ -151,24 +151,34 @@ class sale_order(models.Model):
 	# Duplicate
 	@api.multi
 	def create_credit_note(self):
-		print
-		print 'Create CN'
+		#print
+		#print 'Create CN'
 
-		serial_nr = 'FC1-000001'
+		#serial_nr = 'FC1-000001'
+
+
+		# Serial Nr
+		if self.x_type in ['ticket_invoice', 'invoice']:
+			serial_nr = self.x_serial_nr.replace("F001", "FC01")
+		elif self.x_type in ['ticket_receipt', 'receipt']:
+			serial_nr = self.x_serial_nr.replace("B001", "BC01")
+		else:
+			serial_nr = self.x_serial_nr.replace("001", "C01")
+
+
+
 		state = 'credit_note'
 
+
 		# Dup
-		#order = self.copy()
 		order = self.copy(default={
-									#'order_id':self.order_id.id,
 									'x_serial_nr':	serial_nr,
 									'x_credit_note_owner': self.id,
-
 									'amount_total': self.amount_total,
 									'amount_untaxed': self.amount_untaxed,
 									'state': state,
 								})
-		print order
+		#print order
 
 
 		# Update
@@ -1568,10 +1578,17 @@ class sale_order(models.Model):
 	# Print Ticket - Electronic 
 	@api.multi
 	def print_ticket_electronic(self):
+		print 
+		print 'Print Electronic'
 
 		name = 'openhealth.report_ticket_receipt_electronic'
 		
-		return self.env['report'].get_action(self, name)
+		action = self.env['report'].get_action(self, name)
+
+		#print action
+
+		#return self.env['report'].get_action(self, name)
+		return action
 
 
 

@@ -1,28 +1,150 @@
 # -*- coding: utf-8 -*-
-#
-# 	Electronic Order 
-# 
-# 	Created: 			13 Sep 2018
-# 	Last updated: 		13 Sep 2018
-#
+"""
+
+ 	Electronic Order - Sunat compatible
+
+ 	Created: 			13 Sep 2018
+ 	Last updated: 		 4 Nov 2018
+
+"""
 from openerp import models, fields, api
-#import openerp.addons.decimal_precision as dp
-import lib 
+import ord_vars
+import lib
+import chk_electronic
 
 class electronic_order(models.Model):
+	"""
+	high level support for doing this and that.
+	"""
+
+	#_inherit = 'openhealth.management.order.line'
+	_inherit = 'openhealth.line'
 
 	_name = 'openhealth.electronic.order'
 
-	_inherit='openhealth.management.order.line'
-
-	_description = "Openhealth Electronic Order"
+	_description = "Sunat Electronic Order"
 
 	_order = 'serial_nr asc'
 
 
 
+# ----------------------------------------------------------- Dep ---------------------------------
+	# Id
+	#id_serial_nr = fields.Char(
+	#		'Id Serial Nr',
+	#	)
 
-# ----------------------------------------------------------- Relational ------------------------------------------------------
+
+
+# ----------------------------------------------------------- Keys --------------------------------
+	# Serial Number
+	serial_nr = fields.Char(
+			'Serial Nr',
+			required=True,
+		)
+
+
+
+# ----------------------------------------------------------- Constraints - Python ----------------
+
+	# Check
+	@api.constrains('serial_nr')
+	def check_serial_nr(self):
+		"""
+		high level support for doing this and that.
+		"""
+		chk_electronic.check_serial_nr(self)
+
+
+
+
+
+# ----------------------------------------------------------- Receptor ----------------------------
+
+	# Receptor
+	receptor = fields.Char(
+			string='Receptor',
+			required=True,
+		)
+
+	id_doc_type = fields.Char(
+			string='Doc Id Tipo',
+			default=".",
+			required=True,
+		)
+
+	id_doc_type_code = fields.Char(
+			string='Codigo',
+			default=".",
+			required=True,
+		)
+
+	id_doc = fields.Char(
+			'Doc Id',
+			default=".",
+			#required=True,
+		)
+
+	patient = fields.Many2one(
+			'oeh.medical.patient',
+			string="Paciente",
+		)
+
+
+
+# ----------------------------------------------------------- Emitter -----------------------------
+
+	# Firm
+	firm = fields.Char(
+			'Firm',
+			default='SERVICIOS MÉDICOS ESTÉTICOS S.A.C',
+		)
+
+	# Ruc
+	ruc = fields.Char(
+			'Ruc',
+			default='20523424221',
+		)
+
+
+	# Ubigeo
+	ubigeo = fields.Char(
+			'Ubigeo',
+			default='150101',	# Verify
+		)
+
+	# Address
+	address = fields.Char(
+			'Address',
+			default='Av. La Merced 161',
+		)
+
+
+	# Country
+	country = fields.Char(
+			'Country',
+			default='PE',
+		)
+
+
+
+# ----------------------------------------------------------- Handles -----------------------------
+
+	# Container
+	container_id = fields.Many2one(
+			'openhealth.container',
+			ondelete='cascade',
+		)
+
+	# Management
+	management_id = fields.Many2one(
+			'openhealth.management',
+			ondelete='cascade',
+		)
+
+
+
+# ----------------------------------------------------------- Relational --------------------------
 
 	# CN Owner
 	credit_note_owner = fields.Many2one(
@@ -30,75 +152,83 @@ class electronic_order(models.Model):
 		)
 
 
-	# Lines 
+	# Lines
 	electronic_line_ids = fields.One2many(
-			'openhealth.electronic.line', 
+			'openhealth.electronic.line',
 			'electronic_order_id',
 		)
 
 
 
-# ----------------------------------------------------------- Fields ------------------------------------------------------
 
-	# Export Date 
+
+# ----------------------------------------------------------- Sale --------------------------------
+
+	x_type = fields.Char(
+			'Tipo',
+			required=True,
+		)
+
+	type_code = fields.Char(
+			'Codigo',
+			required=True,
+		)
+
+	currency_code = fields.Char(
+			'Moneda',
+			default="PEN",
+		)
+
+
+	state = fields.Selection(
+			selection=ord_vars._state_list,
+			string='Estado',
+			readonly=False,
+			default='draft',
+		)
+
+
 	export_date = fields.Char(
 			'Export Date',
-			#default="2018_10_14", 
 
-			compute='_compute_export_date', 
+			compute='_compute_export_date',
 		)
 
 	@api.multi
 	#@api.depends('x_msg')
 	def _compute_export_date(self):
-		#print 
-		#print 'Compute Export Date'
-		for record in self:			
+		for record in self:
 			record.export_date = lib.correct_date(record.x_date_created).split()[0]
 
 
 
-
-
-	# Id 
-	id_serial_nr = fields.Char(
-			'Id Serial Nr', 
-		)
-
-
-
-	# Counter Value 
+	# Counter Value
 	counter_value = fields.Integer(
-			string="Contador", 
-			#default=55, 
+			string="Contador",
 		)
 
-	# Delta 
+
+	# Delta
 	delta = fields.Integer(
 			'Delta',
 		)
 
 
-
-
-	# Amount total 
+	# Amount total
 	amount_total = fields.Float(
-			string = "Total",
-			digits=(16,2), 
+			string="Total",
+			digits=(16, 2),
 		)
 
 
-	# Amount total - Net 
+	# Amount total - Net
 	amount_total_net = fields.Float(
-			string = "Net",
-			digits=(16,2), 
+			string="Net",
+			digits=(16, 2),
 		)
 
-	# Amount total - Tax 
+	# Amount total - Tax
 	amount_total_tax = fields.Float(
-			string = "Tax",
-			digits=(16,2), 
+			string="Tax",
+			digits=(16, 2),
 		)
-
-
-

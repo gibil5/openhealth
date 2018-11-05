@@ -2,6 +2,25 @@
 
 
 
+# State - Current !!
+_state_list = [
+
+				#('draft', 		'Quotation'),
+				#('sent', 		'Quotation Sent'),
+				#('sale', 		'Sale Order'),
+				#('done', 		'Done'),
+				#('cancel', 	'Cancelled'),
+
+				('draft', 		'Presupuesto'),
+				('sent', 		'Generado'),			
+				('validated', 	'Validado'),			
+				('sale', 		'Pagado'),				
+				('done', 		'Completo'),
+				('cancel', 		'Anulado'),
+				('credit_note', 'Nota de Credito'),
+			]
+
+
 
 
 _dic_prefix = {
@@ -80,37 +99,6 @@ _dic_type_code = {
 
 
 
-
-# State - Current !!
-_state_list = [
-
-				#('draft', 		'Quotation'),
-				#('sent', 		'Quotation Sent'),
-				#('sale', 		'Sale Order'),
-				#('done', 		'Done'),
-				#('cancel', 	'Cancelled'),
-
-				#('draft', 		'Presupuesto'),
-				#('sent', 		'Pagado'),
-				#('sale', 		'Facturado'),				
-				#('done', 		'Completo'),
-				#('cancel', 		'Anulado'),
-
-
-
-				('draft', 		'Presupuesto'),
-				('sent', 		'Generado'),			
-				('validated', 	'Validado'),			
-				('sale', 		'Pagado'),				
-				('done', 		'Completo'),
-				('cancel', 		'Anulado'),
-
-				('credit_note', 'Nota de Credito'),
-
-
-				#('printed', 	'Impreso'),
-				#('editable', 	'e'),
-			]
 
 
 

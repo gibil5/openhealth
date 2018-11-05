@@ -93,8 +93,11 @@ from . import counter
 # EMR
 from . import partner
 from . import patient  
+
 from . import product
-from . import image  			
+from . import product_product
+
+from . import image		
 from . import allergy  
 from . import process 
 from . import treatment 

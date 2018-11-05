@@ -329,7 +329,10 @@ def format_txt(order):
 	# Loop
 	for line in order.electronic_line_ids:
 
-		account_code = acc.get_account_code(line.product_id)
+
+		#account_code = acc.get_account_code(line.product_id)
+		account_code = line.product_id.get_code()
+
 
 		#print line
 		#print line.product_id.name

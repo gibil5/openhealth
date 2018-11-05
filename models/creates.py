@@ -22,13 +22,14 @@ def create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty
 
 
 	# Init
-	partner_id = 	self.patient.partner_id.id
-	id_doc = 		self.patient.x_id_doc
-	id_doc_type = 	self.patient.x_id_doc_type
+	partner_id = self.patient.partner_id.id
+
+	id_doc = self.patient.x_id_doc
+	id_doc_type = self.patient.x_id_doc_type
+
+	ruc = self.patient.x_ruc
 
 
-	# Pricelist
-	#print pricelist_id
 
 
 	# Create Order
@@ -36,15 +37,17 @@ def create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty
 											'patient': 		patient_id,
 											'partner_id': 	partner_id,
 											'treatment': 	treatment_id,
-											'x_id_doc': 	id_doc,												
-											'x_id_doc_type': id_doc_type,
 											'x_doctor': 	doctor_id,
 											#'state':		'draft',
-
 											'pricelist_id': pricelist_id,
+
+											'x_id_doc': 	id_doc,
+											'x_id_doc_type': id_doc_type,
+
+											'x_ruc':		ruc,
 										})
 
-	# Init 
+	# Init
 	price_manual = -1
 	price_applied = 0
 	reco_id = False

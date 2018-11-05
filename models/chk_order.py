@@ -15,6 +15,24 @@ _MODEL = 'sale.order'
 
 
 # -----------------------------------------------------------  Ruc --------------------------------------
+# Check Id Doc
+def check_id_doc(self):
+	print
+	print 'Chk - Check Id Doc'
+
+	# Loop 
+	for record in self:
+
+		# Content
+		if record.x_id_doc in ['', False]:
+
+			raise ValidationError("Check: Id Doc not valid: %s" % record.x_id_doc)
+
+
+
+
+
+# -----------------------------------------------------------  Ruc --------------------------------------
 # Check Ruc
 def check_ruc(self):
 	print
@@ -29,21 +47,20 @@ def check_ruc(self):
 	for record in self:
 
 
-		# Content 
+		# Content
 		if record.x_ruc in ['12345678901', False]:
-			raise ValidationError("Warning: Ruc not valid: %s" % record.x_ruc)
+			raise ValidationError("Check: Ruc not valid: %s" % record.x_ruc)
 
 
 
-		# Format
 
-		# Is Digit 
-		if not record.x_ruc.isdigit(): 
-			raise ValidationError("Warning: %s must be a Digit: %s" % (_name, record.x_ruc))
+		# Format - Is Digit
+		if not record.x_ruc.isdigit():
+			raise ValidationError("Check: %s must be a Digit: %s" % (_name, record.x_ruc))
 		
-		# Has Length 
+		# Format - Has Length
 		if len(record.x_ruc) != _length: 
-			raise ValidationError("Warning: %s must have %s numbers: %s" % (_name, str(_length), record.x_ruc))
+			raise ValidationError("Check: %s must have %s numbers: %s" % (_name, str(_length), record.x_ruc))
 
 
 

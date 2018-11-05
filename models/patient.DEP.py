@@ -2,6 +2,27 @@
 
 
 
+# ----------------------------------------------------------- Dep ! -------------------------------
+	# Full name
+	#x_full_name = fields.Char(
+	#	string = "Nombre completo",
+
+	#	compute='_compute_full_name',
+	#)
+	
+	#@api.depends('x_first_name', 'x_last_name')
+	#@api.multi
+	#def _compute_full_name(self):
+	#	for record in self:
+	#		if record.x_first_name and record.x_last_name:				
+	#			full = record.x_last_name.lower() + '_' + record.x_first_name.lower()
+	#			full = full.replace (" ", "_")
+	#			full = lib.strip_accents(full)
+	#			record.x_full_name = full
+
+
+
+
 # -----------------------------------------------------------  Quick ------------------------------------------------------
 	#appointment_ids = fields.Char()
 	#x_service_quick_ids = fields.Char()

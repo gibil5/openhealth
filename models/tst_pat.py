@@ -12,7 +12,8 @@ import creates as cre
 
 # ---------------------------------------------------- Test Cases ---------------------------------
 # Test Cases - Patients
-def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id=False, treatment_id=False, pl_id=False):
+#def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id=False, treatment_id=False, pl_id=False):
+def test_cases(self, container_id, doctor_id):
 	print
 	print 'Test Cases - Patients'
 	print self
@@ -28,8 +29,10 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 						'name_last': 	'revilla rondon',
 						'name_first':  	'jose javier',
 
-						'id_doc_type': 	'dni',
-						'id_doc':  		'09817194',
+						#'id_doc_type': 	'dni',
+						#'id_doc':  		'09817194',
+						'id_doc_type': 	False,
+						'id_doc':  		False,
 
 						'ruc': 			'10098171946',
 						'firm': 		'Revilla y Asociados',
@@ -310,6 +313,7 @@ def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id
 
 		# Create 
 		if active: 
+
 			patient = cre.create_patient(self, container_id, test_case, name, sex, address, id_doc_type, id_doc, ruc, firm, doctor_id, name_last, name_first, id_code, dni)
 
 			pat_array.append(patient)

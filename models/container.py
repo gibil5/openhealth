@@ -82,12 +82,18 @@ class Container(models.Model):
 
 
 		# Init
-		pl_id = self.patient.property_product_pricelist.id
+		#pl_id = self.patient.property_product_pricelist.id
+		#pl_id = False
+		container_id = self.id
+		doctor_id = self.doctor.id
 
 
 		# Create Patients
-		pat_array = tst_pat.test_cases(self, self.id, self.patient.id, self.partner.id, self.doctor.id, self.treatment.id, pl_id)
+		#pat_array = tst_pat.test_cases(self, self.id, self.patient.id, self.partner.id, self.doctor.id, self.treatment.id, pl_id)
+		pat_array = tst_pat.test_cases(self, container_id, doctor_id)
+		
 		print pat_array
+
 
 
 		# Init
@@ -177,13 +183,17 @@ class Container(models.Model):
 			pricelist_id = patient.property_product_pricelist.id
 
 
+			partner_id = patient.partner_id.id
+
+
 			# Invoice
 			if self.ticket_invoice_create:
 
 				x_type = 'ticket_invoice'
 
 				# Create
-				creates.create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type, pricelist_id)
+				#creates.create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type, pricelist_id)
+				creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id, short_name, qty, x_type, pricelist_id)
 
 				#if self.cn_invoice_create:
 				#	ret = order.write({
@@ -197,7 +207,8 @@ class Container(models.Model):
 				x_type = 'ticket_receipt'
 
 				# Create
-				creates.create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type, pricelist_id)
+				#creates.create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type, pricelist_id)
+				creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id, short_name, qty, x_type, pricelist_id)
 
 
 				#if self.cn_receipt_create:
@@ -237,14 +248,18 @@ class Container(models.Model):
 
 # ----------------------------------------------------------- Relational --------------------------
 	# Patient
-	patient = fields.Many2one(
-			'oeh.medical.patient',
-			string="patient",
-			required=True,
-			domain=[
-						('x_test', '=', 'True'),
-					],
-		)
+	#patient = fields.Many2one(
+	#		'oeh.medical.patient',
+	#		string="patient",
+	#		required=True,
+	#		domain=[
+	#					('x_test', '=', 'True'),
+	#				],
+	#	)
+
+	#patient = fields.Many2one(
+	#		'oeh.medical.patient',
+	#	)
 
 	# Doctor
 	doctor = fields.Many2one(
@@ -282,9 +297,6 @@ class Container(models.Model):
 # ----------------------------------------------------------- Fields ------------------------------
 	name = fields.Char()
 
-	patient = fields.Many2one(
-			'oeh.medical.patient',
-		)
 
 	partner = fields.Many2one(
 			'res.partner',

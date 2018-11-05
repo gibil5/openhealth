@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-#
-# 	Order
-#
-# 	Created: 			26 Aug 2016
-# 	Last mod: 			25 Sep 2018
-#
+"""
+ 	Order
+
+ 	Created: 			26 Aug 2016
+	Last mod: 			 5 Nov 2018
+"""
 from openerp import models, fields, api
 import datetime
 from num2words import num2words
@@ -20,13 +20,22 @@ import chk_patient
 import chk_order
 import lib
 import lib_con
-
-
 import lib_qr
 
 class sale_order(models.Model):
+	"""
+	high level support for doing this and that.
+	"""
 
 	_inherit = 'sale.order'
+
+
+
+# ----------------------------------------------------------- Mode Admin --------------------------
+	# Mode Admin
+	x_admin_mode = fields.Boolean(
+			'Modo Admin',
+		)
 
 
 
@@ -52,10 +61,21 @@ class sale_order(models.Model):
 	# Check Ruc
 	@api.constrains('x_ruc')
 	def _check_x_ruc(self):
-		print
-		print 'Check Ruc'
-		#if self.x_type in ['ticket_invoice', 'invoice']:
-		chk_order.check_ruc(self)
+		#print
+		#print 'Check Ruc'
+
+		if self.x_type in ['ticket_invoice', 'invoice']:
+			chk_order.check_ruc(self)
+
+
+	# Check Id doc - Documento Identidad 
+	@api.constrains('x_id_doc')
+	def _check_x_id_doc(self):
+		#print
+		#print 'Check Id Doc'
+		#chk_patient.check_x_id_doc(self)
+		if self.x_type in ['ticket_receipt', 'receipt']:
+			chk_order.check_id_doc(self)
 
 
 
@@ -69,12 +89,6 @@ class sale_order(models.Model):
 
 
 
-	# Check Id doc - Documento Identidad 
-	#@api.constrains('x_id_doc')
-	#def _check_x_id_doc(self):
-	#	print
-		#print 'Check Id Doc'
-		#chk_patient.check_x_id_doc(self)
 
 
 
@@ -382,12 +396,6 @@ class sale_order(models.Model):
 
 
 
-
-# ----------------------------------------------------------- Mode Admin --------------------------
-	# Mode Admin
-	x_admin_mode = fields.Boolean(
-			'Modo Admin',
-		)
 
 
 
@@ -819,18 +827,21 @@ class sale_order(models.Model):
 		# Check Content - DEP 
 		#self.check_content()
 
-		# Ruc
+		# Id Doc and Ruc
 		print self.x_type
+		print self.x_id_doc
 		print self.x_ruc
 
+		# Invoice
 		if self.x_type in ['ticket_invoice', 'invoice']:
 			if self.x_ruc in [False, '']:
 				msg = "Error: RUC Ausente."
 				raise Warning(_(msg))
 
+		# Receipt
 		elif self.x_type in ['ticket_receipt', 'receipt']:
 			if self.x_id_doc_type in [False, '']  or self.x_id_doc in [False, '']:
-				msg = "Error: Doc Ausente."
+				msg = "Error: Documento de Identidad Ausente."
 				raise Warning(_(msg))
 
 
@@ -1414,35 +1425,30 @@ class sale_order(models.Model):
 		balance = self.x_amount_total
 
 		# For Receipts and Invoices  
-		firm = self.partner_id.x_firm
-		dni = self.partner_id.x_dni
-		ruc = self.partner_id.x_ruc
+		#firm = self.partner_id.x_firm
+		#dni = self.partner_id.x_dni
+		#ruc = self.partner_id.x_ruc
 
-
-
-		# Id Doc - Dep 
-		#if self.patient.x_id_doc not in [False, '']: 
-		#	id_doc = self.patient.x_id_doc
-		#	id_doc_type = self.patient.x_id_doc_type
-		#else: 
-		#	id_doc = self.x_id_doc
-		#	id_doc_type = self.x_id_doc_type
+		firm = self.patient.x_firm
+		#dni = self.patient.x_dni
+		ruc = self.patient.x_ruc
 
 
 
 		# Create 
 		self.x_payment_method = self.env['openhealth.payment_method'].create({
-																				#'name': name,
 																				'order': self.id,
 																				'method': method,
 																				'subtotal': balance,
 																				'total': self.x_amount_total,
 																				'partner': self.partner_id.id, 
 																				'date_created': self.date_order,
+
 																				'firm': firm,
 																				'ruc': ruc,
 
 																				# Deprecated 
+																				#'name': name,
 																				#'dni': dni,
 																				#'id_doc_type': 	id_doc_type,
 																				#'id_doc': 			id_doc,
@@ -1462,12 +1468,6 @@ class sale_order(models.Model):
 																	'subtotal': subtotal,
 																	'payment_method': payment_method, 
 										})
-		
-
-
-
-		#self.state = 'sent'		# Now, this is done by payment method. 
-
 
 
 		return {
@@ -1492,10 +1492,10 @@ class sale_order(models.Model):
 							'default_total': self.x_amount_total,
 							'default_partner': self.partner_id.id,
 							'default_date_created': self.date_order,
-							'default_dni': dni,
 							'default_firm': firm,
 							'default_ruc': ruc,
 
+							#'default_dni': dni,
 							#'default_saledoc': 'receipt', 
 							#'default_pm_total': self.pm_total,
 							}
@@ -1715,8 +1715,8 @@ class sale_order(models.Model):
 		#print 
 		#print 'Order - Reset'
 		self.x_payment_method.unlink()
-		self.x_dni = ''
-		self.x_ruc = ''
+		#self.x_dni = ''
+		#self.x_ruc = ''
 		self.state = 'draft'			# This works. 
 
 

@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-#
-#		Patient 
-# 
-# 		Created: 		26 Aug 2016
-# 		Last up: 		26 Sep 2018
-#
+"""
+		Patient 
+ 
+ 		Created: 		26 Aug 2016
+		Last up: 		 5 Nov 2018
+"""
 from openerp import models, fields, api
 from datetime import datetime
 import lib
@@ -16,36 +16,25 @@ import chk_patient as chk
 import tst_pat
 
 class Patient(models.Model):
-	
+	"""
+	high level support for doing this and that.
+	"""
 	_inherit = 'oeh.medical.patient'
-	
+
 	_order = 'x_id_code desc'
 
 
 
-# ----------------------------------------------------------- Dep ! ------------------------------------------------------
-	# Full name
-	#x_full_name = fields.Char(
-	#	string = "Nombre completo",
-
-	#	compute='_compute_full_name',
-	#)
-	
-	#@api.depends('x_first_name', 'x_last_name')
-	#@api.multi
-	#def _compute_full_name(self):
-	#	for record in self:
-	#		if record.x_first_name and record.x_last_name:				
-	#			full = record.x_last_name.lower() + '_' + record.x_first_name.lower()
-	#			full = full.replace (" ", "_")
-	#			full = lib.strip_accents(full)
-	#			record.x_full_name = full
+# ----------------------------------------------------------- Mode Admin --------------------------
+	# Mode Admin
+	x_admin_mode = fields.Boolean(
+			'Modo Admin',
+		)
 
 
 
 
-
-# ----------------------------------------------------------- Test - Fields ------------------------------------------------------
+# ----------------------------------------------------------- Test - Fields -----------------------
 	x_test_case = fields.Char(
 			'Test Case', 
 		)
@@ -54,10 +43,7 @@ class Patient(models.Model):
 			'Test', 
 		)
 
-
-
-
-# ----------------------------------------------------------- Handle ------------------------------------------------------
+# ----------------------------------------------------------- Handle ------------------------------
 	# Container 
 	container_id = fields.Many2one(
 		'openhealth.container', 		
@@ -151,9 +137,8 @@ class Patient(models.Model):
 
 	# Id Document 
 	x_id_doc = fields.Char(
-			'Nr. Doc.', 
-
-			required=True,  
+			'Nr. Doc.',
+			#required=True,
 		)
 
 
@@ -169,8 +154,7 @@ class Patient(models.Model):
 			selection = pat_vars._id_doc_type_list, 
 			string='Tipo de documento', 
 			#default="dni",
-
-			required=True,
+			#required=True,
 		)
 
 

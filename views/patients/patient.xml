@@ -217,9 +217,7 @@
 
 					<!-- Sheet -->	
 					<sheet>
-<!--
-jx
--->
+
 						<!-- Persona --> 
 						<div class="oe_left" style="width: 500px;">
 							<field name="image" widget="image" class="oe_left oe_avatar" options="{&quot;preview_image&quot;: &quot;image_medium&quot;, &quot;size&quot;: [90, 90]}"/>
@@ -345,26 +343,20 @@ jx
 
 							<!-- Second --> 
 							<group>
-<!--
-								<field name="active" 	/>
 
-								<field name="x_autofill" 		/>
-								<field name="x_autofill" 	groups="openhealth.roots,openhealth.reception"		/>
--->							
+								<field name="x_admin_mode" 	groups="openhealth.roots"/>
+
 								<field name="x_autofill" 	groups="openhealth.roots"/>
+
+
 								
 								<field name="x_legacy" 					groups="openhealth.roots"/>
-
 <!--
 								<field name="x_treatment_count" 		groups="openhealth.roots"/>
 -->
 								<field name="x_data_complete" 		groups="openhealth.roots"/>
-
-
 								<field name="property_product_pricelist" 	/>
-
 								<field name="x_vip" 	invisible="1"		/>
-								
 								<field name="x_card" 	/>
 							</group>
 						</group>
@@ -405,21 +397,28 @@ jx
 
 						<group>
 							<group>
+
+
 <!--								
-								<field name="x_id_doc_type"  required="0"		attrs="{'invisible':[	('x_nationality', '=', 'peruvian'), ]}"
-								/>
-								<field name="x_id_doc"  	required="0"		attrs="{'invisible':[	('x_nationality', '=', 'peruvian'), ]}"
-								/>
-								<field name="x_id_doc"  	attrs="{'invisible':[	('x_id_doc_type', 'in', ['dni']), ]}"		/>
+								<field name="x_id_doc_type"  />
+								<field name="x_dni"/>
 -->
 
 
 								<!-- Type -->
-								<field name="x_id_doc_type"  />
+								<field name="x_id_doc_type"  		attrs="{
+																				'required':[('x_admin_mode', '!=', True), ],
+																			}"
+									/>
 
 
-								<!-- Nr Other -->
-								<field name="x_id_doc"  	/>
+								<!-- Nr -->
+								<field name="x_id_doc"  	attrs="{
+																				'required':[('x_admin_mode', '!=', True), ],
+																			}"
+									/>
+
+
 
 
 								<!-- Nr DNI -->
@@ -519,6 +518,7 @@ jx
 
 
 					<field name="x_ruc"/>
+					
 					<field name="x_firm"/>
 
 

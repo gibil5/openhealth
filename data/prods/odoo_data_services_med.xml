@@ -164,7 +164,8 @@
 			<field name='x_family'>medical</field>
 			<field name='price'>200</field>
 			<field name='categ_id' ref="medical"/>
-			<field name="sale_ok" eval="True" />
+
+			<field name="sale_ok" eval="False" />
 			<field name="purchase_ok" eval="False" />
 		</record>
 
@@ -189,7 +190,8 @@
 			<field name='x_family'>medical</field>
 			<field name='price'>200</field>
 			<field name='categ_id' ref="medical"/>
-			<field name="sale_ok" eval="True" />
+
+			<field name="sale_ok" eval="False" />
 			<field name="purchase_ok" eval="False" />
 		</record>
 

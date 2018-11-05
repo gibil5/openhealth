@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-#
-#	Encapsulates actual Creation on Database. 
-# 	Can not be Unit-tested (depends on a third-party library: Odoo). 
-# 
-#	Created: 			14 Aug 2018
-# 	Last up: 	 		22 Sep 2018
-#
+"""
+	Encapsulates actual Creation on Database. 
+ 	Can not be Unit-tested (depends on a third-party library: Odoo). 
+ 
+	Created: 			14 Aug 2018
+ 	Last up: 	 		 5 Nov 2018
+"""
 import datetime
 import time_funcs
 import lib
@@ -16,36 +16,52 @@ import ord_vars
 
 # -------------------------------------------------------------------------------------------------
 # Create Order
-def create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type, pricelist_id):
+#def create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type, pricelist_id):
+def create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id, short_name, qty, x_type, pricelist_id):
+	"""
+	high level support for doing this and that.
+	"""
 	print
 	print 'Create Order Fast'
 
 
 	# Init
-	partner_id = self.patient.partner_id.id
+	
+	patient = self.env['oeh.medical.patient'].search([
+														('id','=', patient_id),
+													],
+													#order='appointment_date desc',
+													limit=1,
+													)
 
-	id_doc = self.patient.x_id_doc
-	id_doc_type = self.patient.x_id_doc_type
 
-	ruc = self.patient.x_ruc
+	id_doc = patient.x_id_doc
+	id_doc_type = patient.x_id_doc_type
+	ruc = patient.x_ruc
 
-
+	#print id_doc_type
+	#print id_doc 
+	#print ruc
 
 
 	# Create Order
 	order = self.env['sale.order'].create({
 											'patient': 		patient_id,
 											'partner_id': 	partner_id,
+
 											'treatment': 	treatment_id,
 											'x_doctor': 	doctor_id,
-											#'state':		'draft',
 											'pricelist_id': pricelist_id,
 
 											'x_id_doc': 	id_doc,
 											'x_id_doc_type': id_doc_type,
-
 											'x_ruc':		ruc,
 										})
+
+	#print order
+	#print order.x_id_doc_type
+	#print order.x_id_doc
+
 
 	# Init
 	price_manual = -1
@@ -59,7 +75,7 @@ def create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty
 
 	# Pay 
 	order.create_payment_method()
-
+	
 	order.x_payment_method.saledoc = ord_vars._dic_tc_type[x_type]
 	
 	order.validate()					
@@ -439,7 +455,7 @@ def create_order_lines(self, laser, order_id):
 def create_order_lines_micro(self, name_short, price_manual, price_applied, reco_id, qty=1):		
 	print 
 	print 'Create Order Lines - Micro'
-	print 'name_short: ', name_short
+	#print 'name_short: ', name_short
 	#print 'price_manual: ', price_manual
 	#print 'price_applied:', price_applied
 	#print 'reco_id: ', reco_id
@@ -465,11 +481,12 @@ def create_order_lines_micro(self, name_short, price_manual, price_applied, reco
 													('x_name_short','=', name_short),
 													('x_origin','=', False),
 											])
-	print product 
-	print product.name 
-	print product.type
-	print product.x_family
-	print product.x_treatment
+	
+	#print product
+	#print product.name 
+	#print product.type
+	#print product.x_family
+	#print product.x_treatment
 
 
 	# Reco field 

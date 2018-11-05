@@ -150,17 +150,11 @@ Relax !
 																										'invisible':[('x_foreign', '=', False)],
 -->
 							<group>
-
 								<field  name="x_foreign" />
-
-
-								<field name="x_address_foreign"  	
-
-																							attrs="{
-																										'required':[('x_foreign', '!=', False)],
-																									}" 
-
-										/> 
+								<field name="x_address_foreign"  		attrs="{
+																					'required':[('x_foreign', '!=', False)],
+																				}" 
+								/> 
 							</group>
 						</group>
 
@@ -182,15 +176,11 @@ Relax !
 
 <!-- Fourth Group --> 
 							<group>
-								<field  name="x_firm" 	required="0"	/>
-								<field  name="x_ruc" 	required="0"	/>
+								<field  name="x_firm"/>
+								<field  name="x_firm_address"/>
+								<field  name="x_ruc"/>
 							</group>
-
-
 						</group>
-
-
-
 
 
 		<hr></hr>

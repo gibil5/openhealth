@@ -75,62 +75,59 @@ class Partner(models.Model):
 
 
 
-# ----------------------------------------------------------- Hard wired - With Patient ------------------------------------------------------
+# ----------------------------------------------------------- Hard wired - With Patient -----------
 
-	# Company 
+	# Company
 	x_firm = fields.Char(
-			"Razón social", 	
+			"Razón social",
+		)
+
+	x_firm_address = fields.Char(
+			"Dirección (Razón social)",
 		)
 
 	x_ruc = fields.Char(
-			"RUC", 	
+			"RUC",
 		)
 
 
 
-	# phones 
+	# phones
 	phone = fields.Char(
-			'Fijo', 
-			required=False, 
+			'Fijo',
+			required=False,
 		)
 	
 	mobile = fields.Char(
-			'Celular', 
+			'Celular',
 		)
 
 	email = fields.Char(
-			string = 'Email',  
+			string = 'Email',
 			placeholder = '',
-			required=False, 
+			required=False,
 		)
 
 
-	# Address	
+	# Address
 	country_id = fields.Many2one(
-			'res.country', 
-			string = 'País', 
-			
+			'res.country',
+			string = 'País',
 			default = 175,	# Peru
-
-			#ondelete='restrict', 			
-
+			#ondelete='restrict',
 			required=True, 
 		)
 
 	city = fields.Selection(
-			selection = pat_vars._city_list, 
-			string = 'Departamento',  
-			
-			default = 'lima', 
-
-			#required=True, 
-			required=False, 
+			selection = pat_vars._city_list,
+			string = 'Departamento',
+			default = 'lima',
+			required=False,
 		)
 
 	# For patient short card
 	city_char = fields.Char(
-		
-			compute='_compute_city_char', 
+			compute='_compute_city_char',
 		)
 	#@api.multi
 	@api.depends('city')

@@ -248,3 +248,26 @@ Relax !
 								<field string='Responsible' name="oeh_patient_user_id" options="{'no_create': True}"/>
 							</group>
 -->
+
+
+
+
+
+
+
+<!--
+5 Nov 2018
+-->
+
+<!--
+								<field name="active" 	/>
+								<field name="x_autofill" 		/>
+								<field name="x_autofill" 	groups="openhealth.roots,openhealth.reception"		/>
+-->							
+
+
+								<field name="x_id_doc_type"  required="0"		attrs="{'invisible':[	('x_nationality', '=', 'peruvian'), ]}"
+								/>
+								<field name="x_id_doc"  	required="0"		attrs="{'invisible':[	('x_nationality', '=', 'peruvian'), ]}"
+								/>
+								<field name="x_id_doc"  	attrs="{'invisible':[	('x_id_doc_type', 'in', ['dni']), ]}"		/>

@@ -1,5 +1,15 @@
+	def create_payment_method(self):
+
+		# Id Doc - Dep 
+		#if self.patient.x_id_doc not in [False, '']: 
+		#	id_doc = self.patient.x_id_doc
+		#	id_doc_type = self.patient.x_id_doc_type
+		#else: 
+		#	id_doc = self.x_id_doc
+		#	id_doc_type = self.x_id_doc_type
 
 
+		#self.state = 'sent'		# Now, this is done by payment method. 
 
 
 

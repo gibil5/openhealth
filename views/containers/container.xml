@@ -152,7 +152,7 @@
 							</group>
 							<group>								
 								<field name="mgt"/>
-								<field name="doctor"/>
+								<field name="doctor"	groups="openhealth.roots"/>
 <!--
 								<field name="patient" />
 								<field name="partner" />
@@ -196,14 +196,14 @@
 						<!-- Notebook --> 
 						<notebook>
 							
-							<page string="Electronic">
+							<page string="Electronico">
 								<field name="electronic_order_ids"/>
 							</page>
 
 							<page string="TXT">
 								<field name="txt_ids"/>	
 							</page>
-						
+<!--
 							<page string="MSSOFT">
 								<field name="txt_ref_ids"/>
 							</page>
@@ -211,7 +211,7 @@
 							<page string="Patients">
 								<field name="patient_ids"/>
 							</page>
-
+-->
 						</notebook>
 					</sheet>
 				</form>

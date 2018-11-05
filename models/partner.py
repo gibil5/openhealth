@@ -82,9 +82,9 @@ class Partner(models.Model):
 			"Razón social",
 		)
 
-	x_firm_address = fields.Char(
-			"Dirección (Razón social)",
-		)
+	#x_firm_address = fields.Char(
+	#		"Dirección (Razón social)",
+	#	)
 
 	x_ruc = fields.Char(
 			"RUC",

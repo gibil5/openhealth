@@ -489,7 +489,8 @@
 
 
 		# Products
-		'views/products/product.xml',		
+		#'views/products/product.xml',
+		'views/products/product_template.xml',
 		'views/products/product_actions.xml',				
 
 		'views/products/product_product.xml',		

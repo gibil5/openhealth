@@ -14,7 +14,7 @@
 
 	'description': """
 
-		5 Nov 2018
+		7 Nov 2018
 
 		Fulcrum - DEV - DOCEAN - PROLIANT
 		
@@ -471,6 +471,10 @@
 		# Containers 
 		'views/containers/container.xml',
 		'views/containers/texto.xml',
+
+
+		'views/containers/corrector.xml',
+
 
 
 

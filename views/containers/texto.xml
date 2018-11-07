@@ -16,8 +16,8 @@
 				<tree string="Texto Tree"  default_order='name asc'>
 					
 					<field name="content"/>
-<!--
 					<field name="name"/>
+<!--
 -->
 				</tree>
 

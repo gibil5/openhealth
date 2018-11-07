@@ -102,88 +102,61 @@ black:x_checksum_1=='1'
 
 					<field name="x_counter"/>
 					<field name="x_code"/>
-					<field name="default_code"/>
 					
-
 					<field name="type"/>
-
-
-
 					<field name="active"/>
 					<field name="sale_ok"/>
-					<field name="x_origin"/>
 
 
 
 					<field name="x_name_short"/>
-
 					<field name="x_generated"/>
-
 					<field name="x_name_ticket"/>
-<!--
--->
+
+
 					<field name="x_checksum_1"/>
 					<field name="x_checksum_2"/>
 
 
 
-
+<!--
 					<field name="x_coder"/>
-
-
+					<field name="default_code"/>
+					<field name="x_origin"/>
+-->
 
 
 
 
 
 					<field name="x_family"/>
-
-					<field name="x_treatment"/>				
-
+					<field name="x_treatment"/>
 					<field name="x_zone"/>
-
 					<field name="x_pathology"/>
-
-					<field name="x_time"/>	
-
-					<field name="x_sessions"/>	
-
-
-
+					<field name="x_time"/>
+					<field name="x_sessions"/>
 
 
 					<field name="list_price"/>
 
 
+					<field name="uom_id"	invisible="1"/>
+					<field name="state"		invisible="1"/>
+
 <!--
 					<field name="categ_id"/>
 					<field name="item_ids"/>
 					<field name="type"/>
-
-
 					<field name="x_sessions"/>	
-
 					<field name="default_code"/>
-
 					<field name="purchase_ok"/>
-
 					<field name="pricelist_id"/>
-
 					<field name="standard_price"/>
-
 					<field name="price"/>
-
 					<field name="seller_ids"/>
-
-
-
-
 					<field name="qty_available"	invisible="1"/>
 -->
 
-					<field name="uom_id"	invisible="1"/>
-
-					<field name="state"		invisible="1"/>
 				</tree>
 			</field>
 		</record>

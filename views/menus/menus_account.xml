@@ -22,7 +22,7 @@
 
 
 		<!-- Account Contasis -->
-		<menuitem id="account_conta_menu" name="Ventas" parent="account_menu"
+		<menuitem id="account_conta_menu" name="Líneas de Venta" parent="account_menu"
 			
 			sequence="0"
 
@@ -34,9 +34,10 @@
 
 		<!-- Account Contasis - Caja -->
 		<menuitem id="account_conta_cash_menu" 
-			name="Ventas - Caja" 
 			parent="account_menu"
 			sequence="1"
+
+			name="Ventas - Caja" 
 			
 			action="account_contasis_cash_list_action"
 
@@ -51,12 +52,24 @@
 
 		<!-- Electronic -->
 		<menuitem 	id="account_electronic_menu"
-
 					parent="main_account_menu"
-
 					sequence="3"
 
 					name="Facturación Electrónica"
+				/>
+
+
+
+		<!-- Delta -->
+		<menuitem 	id="account_all_sales_menu" 
+						
+					name="Ventas" 
+
+					parent="account_electronic_menu"
+						
+					sequence="1"
+
+					action="order_list_delta_action"
 				/>
 
 
@@ -66,6 +79,8 @@
 					name="Generar TXT" 
 					
 					parent="account_electronic_menu"
+
+					sequence="2"
 
 					action="container_list_action"
 			/>
@@ -77,6 +92,9 @@
 					name="Archivos TXT" 
 					
 					parent="account_electronic_menu"
+
+
+					sequence="3"
 
 					action="base_directory_files_download.ir_filesystem_directory_action"
 			/>

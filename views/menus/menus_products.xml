@@ -149,7 +149,8 @@
 						name="Laser Co2"
 						parent="services_menu"
 						sequence="0"
-						action="product_template_service_co2_list_action"/>
+						action="product_template_service_co2_list_action"
+					/>
 
 
 

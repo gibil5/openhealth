@@ -44,6 +44,7 @@ from . import coder
 from . import texto
 from . import container
 
+from . import corrector
 
 
 

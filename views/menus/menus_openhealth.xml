@@ -47,6 +47,20 @@
 			/>
 
 
+		<!-- Corrector --> 
+		<menuitem id="oh_corrector_menu" 
+
+					name="Correctors" 
+			
+					parent="openhealth_openhealth_menu"
+
+					action="corrector_list_action"
+			/>
+
+
+
+
+
 
 
 

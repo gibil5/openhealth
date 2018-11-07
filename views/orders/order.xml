@@ -921,7 +921,7 @@ Look for the Minimalist experience !!!
 
 						colors="
 						red:state=='draft';
-						green:state=='sent';
+						green:state=='credit_note';
 						blue:state=='sale';
 						grey:state in ('cancel')
 						"
@@ -1055,6 +1055,7 @@ Look for the Minimalist experience !!!
 						colors="
 						red:x_delta==2;
 						blue:state=='sale';
+						green:state=='credit_note';
 						grey:state in ('cancel')
 						"
 					>

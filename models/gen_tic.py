@@ -2,19 +2,13 @@
 
 
 
-# Consultations
-_dic_con = {
-				'con_med': 				'Consulta Médica', 
-				'con_gyn': 				'Consulta Ginecológica', 
-				'con_med_zero': 		'Consulta Médica - Costo Zero', 
-}
-
-
-
-# Products 
+# PRODUCTS
+#--------------------------------------------------------------------------------------------------
 _dic_prod = {
 			# Dep 
 			#'token': 					'Token', 
+
+			'dexpantenol_5ml': 				'AMP. DEXPANTENOL 5 ML', 
 
 
 			# MsSoft 
@@ -79,6 +73,18 @@ _dic_prod = {
 
 
 
+# CONSULTATIONS
+#--------------------------------------------------------------------------------------------------
+_dic_con = {
+				'con_med': 				'Consulta Médica', 
+				'con_gyn': 				'Consulta Ginecológica', 
+				'con_med_zero': 		'Consulta Médica - Costo Zero', 
+}
+
+
+
+# TREATMENTS
+#--------------------------------------------------------------------------------------------------
 _dic_tre = {
 
 			# Treatment 
@@ -121,7 +127,8 @@ _dic_tre = {
 
 
 
-# Zone 
+# ZONES
+#--------------------------------------------------------------------------------------------------
 _dic_zon = {
 
 			# Zona 
@@ -153,7 +160,8 @@ _dic_zon = {
 
 
 
-# Pathology 
+# PATHOLOGIES
+#--------------------------------------------------------------------------------------------------
 _dic_pat = {
 			# Patho
 			'acne_sequels': 		'Acnsec', 
@@ -242,28 +250,24 @@ _dic_pat = {
 
 
 
+#--------------------------------------------------------------------------------------------------
+
 # Get Ticket Name 
 def gen_ticket_name(self, treatment, zone, pathology, family, x_type, name_short):
 	#print
 	#print 'Gen Ticket Name'
 	#print x_type, name_short, family, treatment, zone, pathology
 
-
 	# Init 
 	name_ticket = 'x'
-
 	if family == False: 
 		family = 'x'
-
 	if treatment == False: 
 		treatment = 'x'
-
 	if zone == False: 
 		zone = 'x'
-
 	if pathology == False: 
 		pathology = 'x'
-
 
 
 
@@ -288,23 +292,16 @@ def gen_ticket_name(self, treatment, zone, pathology, family, x_type, name_short
 		# Laser 
 		elif family == 'laser': 
 
-			#if pathology in _hap: 
 			if pathology in _dic_pat: 
-				#name_ticket = _hap[treatment] + ' ' + _hap[zone] + ' ' + _hap[pathology]
 				name_ticket = _dic_tre[treatment] + ' ' + _dic_zon[zone] + ' ' + _dic_pat[pathology]
 
-
 			else: 
-				#name_ticket = _hap[treatment] + ' ' + _hap[zone] + ' ' + pathology 
 				name_ticket = _dic_tre[treatment] + ' ' + _dic_zon[zone] + ' ' + pathology 
-
 
 
 		# Other 
 		else: 
-			#if treatment in _hap: 
 			if treatment in _dic_tre: 
-				#name_ticket = _hap[treatment] 
 				name_ticket = _dic_tre[treatment] 
 
 

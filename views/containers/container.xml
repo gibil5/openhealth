@@ -153,6 +153,8 @@
 							<group>								
 								<field name="mgt"/>
 								<field name="doctor"	groups="openhealth.roots"/>
+								<field name="ticket_receipt_create"		groups="openhealth.roots"/>
+								<field name="ticket_invoice_create"		groups="openhealth.roots"/>
 <!--
 								<field name="patient" />
 								<field name="partner" />
@@ -169,12 +171,13 @@
 								<field name="export_date_end"/>
 							</group>
 							<group>
+								<field name="amount_total"/>
+								<field name="receipt_count"/>
+								<field name="invoice_count"/>
+
+
 <!--
 								<field name="export_date"/>
--->						
-								<field name="ticket_receipt_create"/>
-								<field name="ticket_invoice_create"/>
-<!--
 								<field name="cn_receipt_create"/>
 								<field name="cn_invoice_create"/>
 								<field name="receipt_create"/>

@@ -1,5 +1,33 @@
 
 
+
+
+
+# ----------------------------------------------------------- Legacy ------------------------------
+	# Legacy
+	@api.multi
+	def sales_legacy(self):
+		#print
+		#print 'Legacy'
+		# Orders
+		orders,count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end, self.state_arr, self.type_arr)
+		#print orders
+		#print count
+		# Loop
+		for order in orders:
+			if self.legacy:
+				order.x_legacy = True
+			else:
+				order.x_legacy = False
+	# sales_legacy
+
+
+
+
+
+
+
+
 # 30 Aug 2018 
 
 

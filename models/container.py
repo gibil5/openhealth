@@ -91,7 +91,7 @@ class Container(models.Model):
 		# Create Patients
 		#pat_array = tst_pat.test_cases(self, self.id, self.patient.id, self.partner.id, self.doctor.id, self.treatment.id, pl_id)
 		pat_array = tst_pat.test_cases(self, container_id, doctor_id)
-		
+
 		print pat_array
 
 
@@ -143,15 +143,21 @@ class Container(models.Model):
 		date_dt = datetime.datetime.strptime(self.export_date_begin, date_format) + datetime.timedelta(hours=+5, minutes=0)
 		self.export_date = date_dt.strftime(date_format).replace('-', '_')
 
+
 		# Init Mgt
 		self.mgt.date_begin = self.export_date_begin
 		self.mgt.date_end = self.export_date_end
 		self.mgt.container = self.id
 		self.mgt.state_arr = 'sale,cancel,credit_note'
 
+
 		# Update Mgt
 		self.mgt.update_fast()
-		self.mgt.update_electronic()
+
+
+		#self.amount_total = self.mgt.update_electronic()
+		self.amount_total, self.receipt_count, self.invoice_count = self.mgt.update_electronic()
+
 
 	# create_electronic
 
@@ -295,7 +301,43 @@ class Container(models.Model):
 
 
 # ----------------------------------------------------------- Fields ------------------------------
-	name = fields.Char()
+
+	# Total
+	amount_total = fields.Float(
+			'Total',
+			digits=(16, 2),
+		)
+
+
+	# Receipt count
+	receipt_count = fields.Integer(
+			'Recibos Nr',
+		)
+
+	# Invoice count
+	invoice_count = fields.Integer(
+			'Facturas Nr',
+		)
+
+
+
+
+
+	# Flags
+	ticket_invoice_create = fields.Boolean(
+			'Factura',
+		)
+
+	ticket_receipt_create = fields.Boolean(
+			'Boleta',
+		)
+
+
+
+
+	name = fields.Char(
+			'Nombre',
+		)
 
 
 	partner = fields.Many2one(
@@ -334,13 +376,6 @@ class Container(models.Model):
 			readonly=True,
 		)
 
-	ticket_invoice_create = fields.Boolean(
-			'Invoice',
-		)
-
-	ticket_receipt_create = fields.Boolean(
-			'Receipt',
-		)
 
 
 # ----------------------------------------------------------- Actions -----------------------------

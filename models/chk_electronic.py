@@ -12,12 +12,13 @@ from openerp.exceptions import ValidationError
 
 # -----------------------------------------------------------  Serial Nr --------------------------
 # Check Serial Nr
-def check_serial_nr(self):
+#def check_serial_nr(self):
+def check_serial_nr(self, container_id):
 	"""
 	high level support for doing this and that.
 	"""
-	print
-	print 'Check Serial Nr'
+	#print
+	#print 'Check Serial Nr'
 
 	var_name = 'Serial Nr'
 	name = 'serial_nr'
@@ -69,7 +70,9 @@ def check_serial_nr(self):
 		# Uniqueness
 		count = self.env['openhealth.electronic.order'].search_count([
 																		('serial_nr', '=', record.serial_nr),
+																		('container_id', '=', container_id),
 										])
+
 		if count > 1:
 			#raise ValidationError("Warning: NAME already exists: %s" % record.name)
 			raise ValidationError("Warning: %s already exists: %s" % (var_name, record.serial_nr))

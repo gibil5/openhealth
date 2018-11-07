@@ -53,7 +53,8 @@ class electronic_order(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		chk_electronic.check_serial_nr(self)
+		#chk_electronic.check_serial_nr(self)
+		chk_electronic.check_serial_nr(self, self.container_id.id)
 
 
 

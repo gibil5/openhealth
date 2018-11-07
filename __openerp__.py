@@ -663,7 +663,7 @@
 		'views/menus/menus_caja.xml',
 		'views/menus/menus_reporting.xml',
 		'views/menus/menus_openhealth.xml',		 
-		'views/menus/menus_account.xml',		 
+		#'views/menus/menus_account.xml',		 
 		'views/menus/menus_marketing.xml',		 
 		'views/menus/menus_management.xml',		  
 		'views/menus/menus_qc.xml',

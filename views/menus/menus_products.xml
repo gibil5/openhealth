@@ -110,7 +110,7 @@
 						parent="prods_menu"
 						sequence="1"
 
-						name="Productos"
+						name="Prods"
 
 						action="product_template_product_list_action"
 					/>

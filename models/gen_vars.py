@@ -6,8 +6,11 @@
 #--------------------------------------------------------------------------------------------------
 
 _dic_prod = {
-				'dexpantenol_5ml': 		'AMP. DEXPANTENOL 5 ML',
+				#'dexpantenol_5ml': 		'AMP. DEXPANTENOL 5 ML',
+				'dexpantenol_5ml': 		'DEXPANTENOL 5 ML',
+				
 				'product_1': 			'Producto 1',
+
 
 				'acneclean': 			'ACNECLEAN 50 GR',
 				'acnetopic_200ml': 		'ACNETOPIC 200 ML',
@@ -100,6 +103,11 @@ _dic_tre_med = {
 #--------------------------------------------------------------------------------------------------
 
 _dic_zo = {
+				# Con
+				'med': 	'MEDICA', 
+				'gyn': 	'GINECOLOGICA', 
+
+
 				# Exc
 				'nec': 	'Cuello', 
 				'bol': 	'Localizado Cuerpo', 
@@ -124,9 +132,6 @@ _dic_zo = {
 				'fac': 	'Rostro', 
 
 
-				# Con
-				'med': 	'MEDICA', 
-				'gyn': 	'GINECOLOGICA', 
 
 
 				# Med

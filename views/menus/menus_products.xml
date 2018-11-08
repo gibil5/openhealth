@@ -130,37 +130,28 @@
 
 
 
-			<!-- All Services -->
-			<menuitem 	id="prods_services_menu" 
+
+
+			<!-- Consultation -->
+			<menuitem 	id="prods_services_consultation_menu" 
+						name="Consultas"
 						parent="services_menu"
-						sequence="-2"
-
-						name="Servicios"
-
-						action="product_template_service_list_action"
-					/>
+						sequence="0"
+						action="product_template_service_consultation_list_action"/>
 
 
 
 
-
-			<!-- Laser -->
+			<!-- CO2 -->
 			<menuitem 	id="prods_services_co2_menu" 
 						name="Laser Co2"
 						parent="services_menu"
-						sequence="0"
+						sequence="1"
 						action="product_template_service_co2_list_action"
 					/>
 
 
-
-			<menuitem 	id="prods_services_quick_menu" 
-						name="QUICK LASER"
-						parent="services_menu"
-						sequence="1"
-						action="product_template_service_quick_list_action"/>
-
-
+			<!-- Exc -->
 			<menuitem 	id="prods_services_excilite_menu" 
 						name="Laser Excilite"
 						parent="services_menu"
@@ -168,7 +159,7 @@
 						action="product_template_service_excilite_list_action"/>
 
 
-
+			<!-- Ipl -->
 			<menuitem 	id="prods_services_ipl_menu" 
 						name="Laser IPL"
 						parent="services_menu"
@@ -178,11 +169,20 @@
 
 
 
+			<!-- Ndyag -->
 			<menuitem 	id="prods_services_ndyag_menu" 
 						name="Laser Ndyag"
 						parent="services_menu"
 						sequence="4"
 						action="product_template_service_ndyag_list_action"/>
+
+
+			<!-- Quick -->
+			<menuitem 	id="prods_services_quick_menu" 
+						name="QUICK LASER"
+						parent="services_menu"
+						sequence="5"
+						action="product_template_service_quick_list_action"/>
 
 
 
@@ -191,7 +191,7 @@
 			<menuitem 	id="prods_services_cosetology_menu" 
 						name="Cosmeatria"
 						parent="services_menu"
-						sequence="5"
+						sequence="6"
 
 						action="product_template_service_cosmetology_list_action"/>
 
@@ -202,21 +202,26 @@
 			<menuitem 	id="prods_services_medical_menu" 
 						name="T. Médico"
 						parent="services_menu"
-						sequence="6"
+						sequence="7"
 						action="product_template_service_medical_list_action"/>
 
 
 
-
-
-
-
-			<!-- Consultation -->
-			<menuitem 	id="prods_services_consultation_menu" 
-						name="Consultas"
+			<!-- All Services -->
+			<menuitem 	id="prods_services_menu" 
 						parent="services_menu"
-						sequence="7"
-						action="product_template_service_consultation_list_action"/>
+						sequence="10"
+
+						name="Servicios"
+
+						action="product_template_service_list_action"
+					/>
+
+
+
+
+
+
 
 
 

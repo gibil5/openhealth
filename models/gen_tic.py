@@ -8,25 +8,26 @@ _dic_prod = {
 			# Dep 
 			#'token': 					'Token', 
 
-			'dexpantenol_5ml': 				'AMP. DEXPANTENOL 5 ML', 
+			#'dexpantenol_5ml': 		'AMP. DEXPANTENOL 5 ML',
+			'dexpantenol_5ml': 			'DEXPANTENOL 5 ML',
 
 
-			# MsSoft 
-			'product_1': 				'Producto 1', 
+			# MsSoft
+			'product_1': 				'Producto 1',
 
 
-			# Proliant - New 
-			'other': 				'Otros', 
-			'formula_1':				'Fórmula 1', 
-			'kenacort': 			'Kenacort', 			
-			'generic_product': 		'Producto genérico', 
-			'generic_service': 		'Servicio genérico', 
+			# Proliant - New
+			'other': 				'Otros',
+			'formula_1':				'Fórmula 1',
+			'kenacort': 			'Kenacort',		
+			'generic_product': 		'Producto genérico',
+			'generic_service': 		'Servicio genérico',
 
 
-			#'acne_topic_wash': 		'Acnetopic Wash', 
-			'acnetopic_wash': 			'Acnetopic Wash', 
-			'dermobalance_180gr': 		'Dermobalance 180 gr', 
-			#'dexpantenol_5ml':			'Dexpantenol 5ml', 
+			#'acne_topic_wash': 		'Acnetopic Wash',
+			'acnetopic_wash': 			'Acnetopic Wash',
+			'dermobalance_180gr': 		'Dermobalance 180 gr',
+			#'dexpantenol_5ml':			'Dexpantenol 5ml',
 			'dexpanthenol_5ml': 		'Dexpantenol 5 ml', 
 			#'fillderma_ultra': 			'Fillderma ultra', 
 			'fillderma_ultra_1ml': 			'Fillderma ultra 1 ml', 
@@ -73,13 +74,16 @@ _dic_prod = {
 
 
 
+
 # CONSULTATIONS
 #--------------------------------------------------------------------------------------------------
 _dic_con = {
-				'con_med': 				'Consulta Médica', 
-				'con_gyn': 				'Consulta Ginecológica', 
-				'con_med_zero': 		'Consulta Médica - Costo Zero', 
+				#'con_med_zero': 		'CONSULTA Médica - Costo Zero', 	# Dep
+				'con_med': 				'CONSULTA MEDICA',
+				'con_gyn': 				'CONSULTA GINECOLOGICA',
 }
+
+
 
 
 

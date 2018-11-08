@@ -30,8 +30,9 @@
 
 							<field name="active"/>
 
-							<field name="x_code"/>
+							<field name="x_generated"/>
 
+							<field name="x_code"/>
 
 							<field name="description"/>
 							<field name="x_name_short"/>							
@@ -51,8 +52,10 @@
 							<field name="x_date_updated"/>
 -->						
 
-						<group>
-							<button 
+						<!-- Update Level -->
+						<!--
+						<group>							
+							<button
 								type="object" 
 								class="oe_highlight"
 									
@@ -61,6 +64,20 @@
 								string="Update"
 							/>
 						</group>
+						-->
+
+						<!-- Update Level -->
+						<group>							
+							<button
+								type="object" 
+								class="oe_highlight"
+									
+								name="fix_name"
+
+								string="Fix Name"
+							/>
+						</group>
+
 
 					</page>
 				</xpath>
@@ -99,6 +116,7 @@ black:x_checksum_1=='1'
 
 
 					<field name="name"/>
+					<field name="x_name_unfixed"/>
 
 					<field name="x_counter"/>
 					<field name="x_code"/>
@@ -108,14 +126,8 @@ black:x_checksum_1=='1'
 					<field name="sale_ok"/>
 
 
-
 					<field name="x_name_short"/>
 					<field name="x_generated"/>
-					<field name="x_name_ticket"/>
-
-
-					<field name="x_checksum_1"/>
-					<field name="x_checksum_2"/>
 
 
 
@@ -124,9 +136,6 @@ black:x_checksum_1=='1'
 					<field name="default_code"/>
 					<field name="x_origin"/>
 -->
-
-
-
 
 
 					<field name="x_family"/>
@@ -139,10 +148,12 @@ black:x_checksum_1=='1'
 
 					<field name="list_price"/>
 
+					<field name="x_name_ticket"/>
+					<field name="x_checksum_1"/>
+					<field name="x_checksum_2"/>
 
 					<field name="uom_id"	invisible="1"/>
 					<field name="state"		invisible="1"/>
-
 <!--
 					<field name="categ_id"/>
 					<field name="item_ids"/>
@@ -184,13 +195,13 @@ black:x_checksum_1=='1'
 					<group expand="1" string="Group By">
 
 						<filter name="Tipo" context="{'group_by':'type'}"/>
-
+<!--
 						<filter name="Code" context="{'group_by':'x_code'}"/>
 
 						<filter name="Origen" context="{'group_by':'x_origin'}"/>
 
 						<filter name="Categ" context="{'group_by':'categ_id'}"/>
-
+-->
 						<filter name="Treatment" context="{'group_by':'x_treatment'}"/>
 
 						<filter name="Zone" context="{'group_by':'x_zone'}"/>
@@ -201,20 +212,17 @@ black:x_checksum_1=='1'
 
 						<filter name="Sessions" context="{'group_by':'x_sessions'}"/>
 
-
-						<filter name="Checksum" context="{'group_by':'x_checksum'}"/>
-
 					</group>
                </search>
            </field>
        </record>
+
 <!--
--->
-<!--
+						<filter name="Checksum 1" context="{'group_by':'x_checksum_1'}"/>
+						<filter name="Checksum 2" context="{'group_by':'x_checksum_2'}"/>
                    <field name="x_origin" />               
                    <field name="default_code" />
 -->
-
 
 
 	</data>

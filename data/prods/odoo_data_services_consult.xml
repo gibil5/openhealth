@@ -10,7 +10,9 @@
 		<!-- Medical -->
 		<record id='con_med' model='product.template'>
 			<field name='type'>service</field>
+
 			<field name='x_name_short'>con_med</field>
+			
 			<field name='name'>CONSULTA MEDICA</field>
 			
 			<field name='price'>200</field>
@@ -36,7 +38,9 @@
 		<!-- Gyneco -->
 		<record id='con_gyn' model='product.template'>
 			<field name='type'>service</field>
+
 			<field name='x_name_short'>con_gyn</field>
+			
 			<field name='name'>CONSULTA GINECOLOGICA</field>
 			
 			<field name='price'>200</field>

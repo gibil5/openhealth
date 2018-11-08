@@ -19,13 +19,38 @@
 						<button 
 							type="object" 
 							class="oe_highlight"
+
 							name="create_codes"
+							
 							string="Correct Codes"
 
 							groups="openhealth.roots"
 						/>
 
 
+
+						<button 
+							type="object" 
+							class="oe_highlight"
+							
+							name="fix_names"
+							
+							string="Fix Names"
+
+							groups="openhealth.roots"
+						/>
+
+
+						<button 
+							type="object" 
+							class="oe_highlight"
+							
+							name="unfix_names"
+							
+							string="Unfix"
+
+							groups="openhealth.roots"
+						/>
 					</header>
 
 

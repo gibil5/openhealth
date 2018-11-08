@@ -3,7 +3,7 @@
  	Corrector
 
  	Created: 				 6 Nov 2018
- 	Last mod: 				 6 Nov 2018
+ 	Last mod: 				 8 Nov 2018
 """
 from openerp import models, fields, api
 
@@ -12,7 +12,7 @@ class Corrector(models.Model):
 	high level support for doing this and that.
 	"""
 	_name = 'openhealth.corrector'
-	
+
 	_description = 'Corrector'
 
 	#_inherit = 'openhealth.container'
@@ -45,6 +45,122 @@ class Corrector(models.Model):
 	med_flag = fields.Boolean()
 
 	con_flag = fields.Boolean()
+
+
+
+
+# ----------------------------------------------------------- Unfix ------------------------------
+
+	# Fix Names
+	@api.multi
+	def unfix_names(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print
+		print 'Unfix Names'
+
+
+		if self.co2_flag:
+
+			products = self.env['product.template'].search([
+																('type', 'in', ['service']),
+																('x_treatment', 'in', ['laser_co2']),
+																('sale_ok', 'in', [True]),
+												],
+													order='x_name_short asc',
+													#limit=1,
+												)
+			# Loop
+			for product in products:
+				print product.name
+				if self.go_flag:
+					print
+
+					product.unfix_name()
+
+
+
+
+# ----------------------------------------------------------- Fix ------------------------------
+
+	# Fix Names
+	@api.multi
+	def fix_names(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print
+		print 'Fix Names'
+
+
+		# Init
+		treatments = False
+		families = False
+
+
+		# Conditional
+		if self.co2_flag:
+			treatments = 'laser_co2'
+		
+		elif self.exc_flag:
+			treatments = 'laser_excilite'
+
+		elif self.ipl_flag:
+			treatments = 'laser_ipl'
+
+		elif self.ndy_flag:
+			treatments = 'laser_ndyag'
+
+		elif self.cos_flag:
+			families = 'cosmetology'
+
+		else:
+			treatments = False
+			families = False
+
+
+
+		# Search
+		if treatments != False:
+
+			# Search by Treatment
+			products = self.env['product.template'].search([
+																('type', 'in', ['service']),
+																('sale_ok', 'in', [True]),
+
+																('x_treatment', 'in', [treatments]),
+													],
+														order='x_name_short asc',
+														#limit=1,
+													)
+		if families != False:
+
+			# Search by Family
+			products = self.env['product.template'].search([
+																('type', 'in', ['service']),
+																('sale_ok', 'in', [True]),
+
+																('x_family', 'in', [families]),
+													],
+														order='x_name_short asc',
+														#limit=1,
+													)
+
+
+
+
+
+		# Loop
+		for product in products:
+
+			print product.name
+			
+			if self.go_flag:
+			
+				print
+			
+				product.fix_name()
 
 
 
@@ -84,19 +200,19 @@ class Corrector(models.Model):
 
 		if self.co2_flag:
 			treatment = 'laser_co2'
-		
+
 		if self.exc_flag:
 			treatment = 'laser_excilite'
-		
+
 		if self.ipl_flag:
 			treatment = 'laser_ipl'
-		
+
 		if self.ndy_flag:
 			treatment = 'laser_ndyag'
-		
+
 		if self.qui_flag:
 			treatment = 'laser_quick'
-		
+
 
 
 		#if self.co2_flag:
@@ -134,7 +250,7 @@ class Corrector(models.Model):
 
 			if self.go_flag:
 				product.x_counter = idx
-			
+
 			idx = idx + 1
 
 
@@ -143,4 +259,3 @@ class Corrector(models.Model):
 		print
 
 	# create_codes
-

@@ -143,6 +143,7 @@ class Partner(models.Model):
 			"DNI", 	
 			index=True, 
 			required=False, 
+			readonly=True
 		)
 
 # ----------------------------------------------------------- My Company ------------------------------------------------------

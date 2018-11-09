@@ -100,29 +100,71 @@ class Product(models.Model):
 				self.x_name_unfixed = self.name
 
 
-			# Fix
+			# Fix Name
+			# To avoid repetition
+			#if len(name_arr) == 4:
 
+			#	for tup in [
+			#					('1', '5 min - 1'),
+			#					('2', '15 min - 1'),
+			#					('3', '30 min - 1'),
+			#					('4', '45 min - 1'),
+			#				]:
+
+			#		name = self.name.replace(tup[0], tup[1])
+
+				# Fix
+			#	self.name = name
+
+
+
+			# Init
 			short_arr = self.x_name_short.split('_')
 
 
-			# To avoid repetition
-			if len(name_arr) == 4:
+			# Correct the Short Name 
+			#if len(short_arr) == 4: 			# To avoid repetition
+			if short_arr[0] in ['quick']:
 
 
-				for tup in [
-								('1', '5 min - 1'),
-								('2', '15 min - 1'),
-								('3', '30 min - 1'),
-								('4', '45 min - 1'),
-							]:
+				# Unfixed
+				if self.x_short_unfixed in [False, '']:
+					self.x_short_unfixed = self.x_name_short
 
-					name = self.name.replace(tup[0], tup[1])
+
+				short = self.x_name_short
+
+				short_old = short 
+
+				#print short
+
+				for tup in [ 
+								('quick', 'qui'),
+								('face_all_hands', 'faa-han'), ('face_all_neck', 'faa-nec'), ('neck_hands', 'nec-han'),
+								('body_local', 'bol'), ('face_local', 'fal'), ('face_all', 'faa'),
+								('hands', 'han'), ('neck', 'nec'), ('cheekbones', 'che'),
+								('rejuvenation', 'rej'), ('acne_sequels', 'acs'), ('scar', 'sca'),
+								('mole', 'mol'), ('stains', 'sta'), ('keratosis', 'ker'), ('cyst', 'cys'),
+								('tatoo', 'tat'), ('wart', 'war'), 
+
+								('1', '5m_one'), 
+								('2', '15m_one'), 
+								('3', '30m_one'), 
+								('4', '45m_one'), 
+							]: 
+					
+					old = tup[0]
+					new = tup[1]
+
+					short = short.replace(old, new)
+
+				#print short_old
+				#print short
+				#print 
 
 
 				# Fix
-				self.name = name
-
-
+				#self.x_name_short = short
 
 
 
@@ -130,6 +172,9 @@ class Product(models.Model):
 # ----------------------------------------------------------- Codes -------------------------------
 
 	x_name_unfixed = fields.Char()
+
+	x_short_unfixed = fields.Char()
+
 
 
 	# Name Short

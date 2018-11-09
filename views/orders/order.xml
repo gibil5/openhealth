@@ -325,7 +325,7 @@ jx
 					<field name="x_credit_note_owner"/>
 
 
-					<field name="x_electronic"/>
+					<field name="x_electronic"			groups="openhealth.roots"/>
 
 
 
@@ -349,13 +349,15 @@ jx
 				<!-- Price list --> 
 				<xpath expr="//field[@name='pricelist_id']" position="replace">
 
-					<field name="x_admin_mode"/>
+
+					<field name="x_admin_mode"				groups="openhealth.roots, openhealth.managers, openhealth.caja"/>
+
 <!--
 					<field name="x_prefix"/>
 					<field name="x_separator"/>
 					<field name="x_padding"/>
 -->
-					<field name="pricelist_id" 					readonly="1"	/>
+					<field name="pricelist_id" 				readonly="1"	/>
 				</xpath>
 
 
@@ -401,7 +403,7 @@ jx
 													('state','not in',['sale']), 
 											]}"
 
-							groups="openhealth.roots,openhealth.caja"
+							groups="openhealth.roots, openhealth.caja, openhealth.managers"
 							
 							name="print_ticket"
 							
@@ -419,7 +421,7 @@ jx
 													('state','not in',['sale']), 
 											]}"
 
-							groups="openhealth.roots,openhealth.caja"
+							groups="openhealth.roots, openhealth.caja, openhealth.managers"
 
 							name="print_ticket_electronic"
 

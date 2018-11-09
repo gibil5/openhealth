@@ -127,6 +127,10 @@ black:x_checksum_1=='1'
 
 
 					<field name="x_name_short"/>
+
+					<field name="x_short_unfixed"/>
+
+
 					<field name="x_generated"/>
 
 

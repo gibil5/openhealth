@@ -112,6 +112,13 @@ class Corrector(models.Model):
 		elif self.ndy_flag:
 			treatments = 'laser_ndyag'
 
+
+
+		elif self.qui_flag:
+			treatments = 'laser_quick'
+
+
+
 		elif self.cos_flag:
 			families = 'cosmetology'
 
@@ -134,6 +141,7 @@ class Corrector(models.Model):
 														order='x_name_short asc',
 														#limit=1,
 													)
+
 		if families != False:
 
 			# Search by Family

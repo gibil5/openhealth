@@ -34,7 +34,8 @@ class Product(models.Model):
 
 		self.name = self.x_name_unfixed
 
-		self.x_name_short = self.x_short_unfixed
+		if self.x_treatment in ['laser_quick']:
+			self.x_name_short = self.x_short_unfixed
 
 
 
@@ -384,33 +385,35 @@ class Product(models.Model):
 
 		for record in self:
 
-			# Co2
-			if record.x_treatment in ['laser_co2']:
-				record.x_generated = gen.get_generated_co2(record.x_name_short)
+			if record.x_name_short not in [False, '']:
 
-			# Exc, Ipl Ndyag
-			elif record.x_treatment in treatments:
-				record.x_generated = gen.get_generated_exc(record.x_name_short)
+				# Co2
+				if record.x_treatment in ['laser_co2']:
+					record.x_generated = gen.get_generated_co2(record.x_name_short)
 
-			# Consultation
-			elif record.x_treatment in ['consultation']:
-				record.x_generated = gen.get_generated_con(record.x_name_short)
+				# Exc, Ipl Ndyag
+				elif record.x_treatment in treatments:
+					record.x_generated = gen.get_generated_exc(record.x_name_short)
 
-			# Medical
-			elif record.x_family in ['medical']:
-				record.x_generated = gen.get_generated_med(record.x_name_short)
+				# Consultation
+				elif record.x_treatment in ['consultation']:
+					record.x_generated = gen.get_generated_con(record.x_name_short)
 
-			# Cosmeto
-			elif record.x_family in ['cosmetology']:
-				record.x_generated = gen.get_generated_exc(record.x_name_short)
+				# Medical
+				elif record.x_family in ['medical']:
+					record.x_generated = gen.get_generated_med(record.x_name_short)
 
-			# Products
-			elif record.type in ['product']:
-				record.x_generated = gen.get_generated_prod(record.x_name_short)
+				# Cosmeto
+				elif record.x_family in ['cosmetology']:
+					record.x_generated = gen.get_generated_exc(record.x_name_short)
 
-			# Quick
-			elif record.x_treatment in ['laser_quick']:
-				record.x_generated = gen.get_generated_quick(record.x_name_short)
+				# Products
+				elif record.type in ['product']:
+					record.x_generated = gen.get_generated_prod(record.x_name_short)
+
+				# Quick
+				elif record.x_treatment in ['laser_quick']:
+					record.x_generated = gen.get_generated_quick(record.x_name_short)
 
 
 

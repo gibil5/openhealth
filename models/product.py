@@ -22,7 +22,7 @@ class Product(models.Model):
 
 
 
-# ----------------------------------------------------------- Unfix  --------------------------------
+# ----------------------------------------------------------- Unfix  ------------------------------
 	# Fix Name
 	@api.multi
 	def unfix_name(self):
@@ -48,8 +48,10 @@ class Product(models.Model):
 		print 'Fix Name'
 
 
+
 		# Array Name
 		name_arr = self.name.split('-')
+
 
 
 		# Co2
@@ -78,7 +80,6 @@ class Product(models.Model):
 
 
 
-
 		# Cosmetolgy
 		if self.x_family in ['cosmetology']:
 
@@ -88,6 +89,38 @@ class Product(models.Model):
 
 			# Fix
 			self.name = self.x_generated
+
+
+
+		# Quick
+		if self.x_treatment in ['laser_quick']:
+
+			# Unfixed
+			if self.x_name_unfixed in [False, '']:
+				self.x_name_unfixed = self.name
+
+
+			# Fix
+
+			short_arr = self.x_name_short.split('_')
+
+
+			# To avoid repetition
+			if len(name_arr) == 4:
+
+
+				for tup in [
+								('1', '5 min - 1'),
+								('2', '15 min - 1'),
+								('3', '30 min - 1'),
+								('4', '45 min - 1'),
+							]:
+
+					name = self.name.replace(tup[0], tup[1])
+
+
+				# Fix
+				self.name = name
 
 
 

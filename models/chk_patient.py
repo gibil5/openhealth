@@ -1,15 +1,14 @@
 # -*- coding: utf-8 -*-
-#
-# 		chk_patient.py
-#
-# 		Python Constraints - Patient 
-#		Contains All Specifications 
-# 
-# 		Created: 			26 Aug 2018
-# 		Last up: 	 		27 Sep 2018
-#
-from openerp.exceptions import ValidationError
+"""
+ 		chk_patient.py
 
+ 		Python Constraints - Patient 
+		Contains All Specifications 
+ 
+ 		Created: 			26 Aug 2018
+		Last up: 	 		27 Sep 2018
+"""
+from openerp.exceptions import ValidationError
 import chk
 
 # ----------------------------------------------------------- Constants ------------------------------------------------------
@@ -189,8 +188,10 @@ def check_x_id_doc(self):
 	#print 
 	#print 'Check - Id Doc'
 
+
 	# Init 	
-	_name = 'x_id_doc'
+	#_name = 'x_id_doc'
+	_name = 'Documento de Identidad'
 
 
 	# Loop 
@@ -198,13 +199,14 @@ def check_x_id_doc(self):
 
 		# Init 	
 		_value = record.x_id_doc
-		
+
 		_type = record.x_id_doc_type
 
 		# Init 					
 		if _type in ['dni']: 
 			length = 8
-		elif _type in ['passport', 'ptp', 'foreign_card']: 
+		#elif _type in ['passport', 'ptp', 'foreign_card']: 
+		elif _type in ['passport', 'ptp', 'foreign_card', 'foreigner_card']: 
 			length = 12
 		elif _type in ['other']: 
 			length = 20
@@ -212,8 +214,24 @@ def check_x_id_doc(self):
 
 
 		# Content 
-		#if _value == '0000000':
-		#	raise ValidationError("C Warning: x_id_doc not valid: %s" % _value)
+		if  _type in ['dni']: 
+			if _value in [
+							'00000000',
+							'11111111',
+							'22222222',
+							'33333333',
+							'44444444',
+							'55555555',
+							'66666666',
+							'77777777',
+							'88888888',
+							'99999999',
+							'12345678',
+						]:
+
+				#raise ValidationError("C Warning: x_id_doc not valid: %s" % _value)
+				raise ValidationError("Check Paciente: %s no es valido: %s" % (_name, _value))
+
 
 
 		# Format
@@ -223,15 +241,18 @@ def check_x_id_doc(self):
 			if  _type in ['dni']: 
 				if not _value.isdigit():
 					#raise ValidationError("Rec Warning: x_id_doc must be a Digit: %s" % _value)
-					raise ValidationError("Rec Warning: %s must be a Digit: %s" % (_name, _value))
+					#raise ValidationError("Check Paciente: %s must be a Digit: %s" % (_name, _value))
+					raise ValidationError("Check Paciente: %s debe ser un numero: %s" % (_name, _value))
 						
 
 			# All but Other - Has a fixed length
 			if _type not in ['other']:
 				if len(str(_value))!= length: 
 					#raise ValidationError("Rec Warning: x_id_doc must have " + str(length) + " numbers: %s" % _value)
-					raise ValidationError("Rec Warning: %s must have %s numbers: %s" % (_name, str(length), _value))
-			
+					#raise ValidationError("Check Paciente: %s must have %s numbers: %s" % (_name, str(length), _value))
+					raise ValidationError("Check Paciente: %s debe tener %s digitos: %s" % (_name, str(length), _value))
+
+
 
 		# Uniqueness 
 		if _value != False: 
@@ -240,7 +261,9 @@ def check_x_id_doc(self):
 										])
 			if count > 1: 
 				#raise ValidationError("Rec Warning: x_id_doc already exists: %s" % _value)
-				raise ValidationError("Rec Warning: %s already exists: %s" % (_name, _value)) 
+				#raise ValidationError("Check Paciente: %s already exists: %s" % (_name, _value)) 
+				raise ValidationError("Check Paciente: %s ya existe en la BDD: %s" % (_name, _value)) 
+
 
 	# all records passed the test, don't return anything
 

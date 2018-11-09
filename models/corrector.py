@@ -102,7 +102,7 @@ class Corrector(models.Model):
 		# Conditional
 		if self.co2_flag:
 			treatments = 'laser_co2'
-		
+
 		elif self.exc_flag:
 			treatments = 'laser_excilite'
 
@@ -153,13 +153,8 @@ class Corrector(models.Model):
 
 		# Loop
 		for product in products:
-
 			print product.name
-			
 			if self.go_flag:
-			
-				print
-			
 				product.fix_name()
 
 

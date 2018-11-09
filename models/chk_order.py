@@ -29,6 +29,15 @@ def check_id_doc(self):
 			raise ValidationError("Check: Id Doc not valid: %s" % record.x_id_doc)
 
 
+		# Format - Is Digit
+		if not record.x_id_doc.isdigit():
+			raise ValidationError("Check: %s must be a Digit: %s" % (_name, record.x_id_doc))
+		
+		# Format - Has Length
+		if len(record.x_id_doc) != _length: 
+			raise ValidationError("Check: %s must have %s numbers: %s" % (_name, str(_length), record.x_id_doc))
+
+
 
 
 

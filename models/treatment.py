@@ -100,14 +100,11 @@ class Treatment(models.Model):
 			print product.name 
 			print product.sale_ok
 
-
 			if product.sale_ok == False: 
 				product.type = 'consu'
 
-
 			if product.type == 'consu': 
 				product.active = False
-
 
 			print product.type 
 			print product.active 
@@ -166,14 +163,11 @@ class Treatment(models.Model):
 			if product.x_treatment in ['laser_quick']: 			# Standardize Shortname
 				#print 'Quick'
 
-
 				# Array Short Name
 				arr_sho = product.x_name_short.split('_')
 
 				# Array Name
 				arr_nam = product.name.split('-')
-
-
 
 
 				# Correct the Name 

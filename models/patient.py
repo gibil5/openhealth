@@ -20,39 +20,13 @@ class Patient(models.Model):
 	high level support for doing this and that.
 	"""
 	_inherit = 'oeh.medical.patient'
-
 	_order = 'x_id_code desc'
 
 
 
-# ----------------------------------------------------------- Mode Admin --------------------------
-	# Mode Admin
-	x_admin_mode = fields.Boolean(
-			'Modo Admin',
-		)
 
 
-
-
-# ----------------------------------------------------------- Test - Fields -----------------------
-	x_test_case = fields.Char(
-			'Test Case', 
-		)
-
-	x_test = fields.Boolean(
-			'Test', 
-		)
-
-# ----------------------------------------------------------- Handle ------------------------------
-	# Container 
-	container_id = fields.Many2one(
-		'openhealth.container', 		
-		ondelete='cascade', 
-	)
-
-
-
-# ----------------------------------------------------------- Constraints - Sql ------------------------------------------------------
+# ----------------------------------------------------------- Constraints - Sql -------------------
 	# Uniqueness constraints for: 
 	# 	Name
 	# 	Id Code - Nr de Historia
@@ -66,8 +40,16 @@ class Patient(models.Model):
 
 
 
+# ----------------------------------------------------------- Constraints Python - Important ------
 
-# ----------------------------------------------------------- Constraints - Python - Abstract ------------------------------------------------------
+	# Check Id doc - Documento Identidad 
+	@api.constrains('x_id_doc')
+	def _check_x_id_doc(self):
+		chk.check_x_id_doc(self)
+
+
+
+# ----------------------------------------------------------- Constraints Python ------------------
 
 	# Check Name  
 	@api.constrains('name')
@@ -118,15 +100,6 @@ class Patient(models.Model):
 
 
 
-
-# ----------------------------------------------------------- Constraints - Python - Custom ------------------------------------------------------
-
-	# Check Id doc - Documento Identidad 
-	@api.constrains('x_id_doc')
-	def _check_x_id_doc(self):
-		print 
-
-		#chk.check_x_id_doc(self)
 
 
 
@@ -185,6 +158,31 @@ class Patient(models.Model):
 		#if self.x_id_doc_type in ['dni']: 
 		#	self.x_dni = self.x_id_doc
 
+
+
+
+
+# ----------------------------------------------------------- Mode Admin --------------------------
+	# Mode Admin
+	x_admin_mode = fields.Boolean(
+			'Modo Admin',
+		)
+
+# ----------------------------------------------------------- Test - Fields -----------------------
+	x_test_case = fields.Char(
+			'Test Case', 
+		)
+
+	x_test = fields.Boolean(
+			'Test', 
+		)
+
+# ----------------------------------------------------------- Handle ------------------------------
+	# Container 
+	container_id = fields.Many2one(
+		'openhealth.container', 		
+		ondelete='cascade', 
+	)
 
 
 

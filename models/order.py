@@ -16,11 +16,13 @@ import ord_vars
 import creates
 import pat_vars
 import user
-import chk_patient
-import chk_order
 import lib
 import lib_con
 import lib_qr
+
+import chk_patient
+import chk_order
+
 
 class sale_order(models.Model):
 	"""
@@ -63,9 +65,9 @@ class sale_order(models.Model):
 	def _check_x_ruc(self):
 		#print
 		#print 'Check Ruc'
-
 		if self.x_type in ['ticket_invoice', 'invoice']:
 			chk_order.check_ruc(self)
+
 
 
 	# Check Id doc - Documento Identidad 
@@ -75,7 +77,8 @@ class sale_order(models.Model):
 		#print 'Check Id Doc'
 		#chk_patient.check_x_id_doc(self)
 		if self.x_type in ['ticket_receipt', 'receipt']:
-			chk_order.check_id_doc(self)
+			#chk_order.check_id_doc(self)
+			chk_patient.check_x_id_doc(self)
 
 
 

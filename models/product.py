@@ -32,10 +32,13 @@ class Product(models.Model):
 		print
 		print 'Unfix Name'
 
-		self.name = self.x_name_unfixed
+
+		if self.x_name_unfixed not in [False, '']:
+			self.name = self.x_name_unfixed
 
 		if self.x_treatment in ['laser_quick']:
-			self.x_name_short = self.x_short_unfixed
+			if self.x_short_unfixed not in [False, '']:
+				self.x_name_short = self.x_short_unfixed
 
 
 
@@ -181,10 +184,13 @@ class Product(models.Model):
 	x_go_flag = fields.Boolean()
 
 
-
 	x_name_unfixed = fields.Char()
 
+
 	x_short_unfixed = fields.Char()
+
+
+
 
 
 

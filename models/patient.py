@@ -12,8 +12,11 @@ import user
 import count_funcs
 import pat_vars
 import creates
-import chk_patient as chk
 import tst_pat
+
+#import chk_patient as chk
+import chk_patient
+
 
 class Patient(models.Model):
 	"""
@@ -42,10 +45,20 @@ class Patient(models.Model):
 
 # ----------------------------------------------------------- Constraints Python - Important ------
 
-	# Check Id doc - Documento Identidad 
+	# Id doc - Documento Identidad 
 	@api.constrains('x_id_doc')
 	def _check_x_id_doc(self):
-		chk.check_x_id_doc(self)
+		chk_patient.check_x_id_doc(self)
+
+
+	# Ruc
+	@api.constrains('x_ruc')
+	def _check_x_ruc(self):
+		#print
+		#print 'Check Ruc'
+		#chk._check_x_ruc(self)
+		chk_patient.check_x_ruc(self)
+
 
 
 
@@ -56,7 +69,7 @@ class Patient(models.Model):
 	def _check_name(self):
 		#print
 		#print 'Check Name'
-		chk._check_name(self)
+		chk_patient._check_name(self)
 
 
 	# Check Id Code - Hr Historia  
@@ -64,15 +77,8 @@ class Patient(models.Model):
 	def _check_x_id_code(self):
 		#print
 		#print 'Check Id Code'
-		chk._check_x_id_code(self)
+		chk_patient._check_x_id_code(self)
 
-
-	# Check Ruc
-	@api.constrains('x_ruc')
-	def _check_x_ruc(self):
-		#print
-		#print 'Check Ruc'
-		chk._check_x_ruc(self)
 
 
 	# Check Phone 3
@@ -80,7 +86,7 @@ class Patient(models.Model):
 	def _check_phone_3(self):
 		#print
 		#print 'Check Phone 3'
-		chk._check_phone_3(self)
+		chk_patient._check_phone_3(self)
 
 
 	# Check Phone
@@ -88,7 +94,7 @@ class Patient(models.Model):
 	def _check_phone(self):
 		#print
 		#print 'Check Phone'
-		chk._check_phone(self)
+		chk_patient._check_phone(self)
 
 
 	# Check Mobile
@@ -96,7 +102,7 @@ class Patient(models.Model):
 	def _check_mobile(self):
 		#print
 		#print 'Check Mobile'
-		chk._check_mobile(self)
+		chk_patient._check_mobile(self)
 
 
 

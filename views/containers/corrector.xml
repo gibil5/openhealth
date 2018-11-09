@@ -16,18 +16,6 @@
 					<header>
 
 	
-						<button 
-							type="object" 
-							class="oe_highlight"
-
-							name="create_codes"
-							
-							string="Correct Codes"
-
-							groups="openhealth.roots"
-						/>
-
-
 
 						<button 
 							type="object" 
@@ -51,6 +39,21 @@
 
 							groups="openhealth.roots"
 						/>
+
+
+
+
+						<button 
+							type="object" 
+							class="oe_highlight oe_right"
+
+							name="create_codes"
+							
+							string="Correct Codes"
+
+							groups="openhealth.roots"
+						/>
+
 					</header>
 
 
@@ -62,7 +65,10 @@
 						<group>
 							<group>								
 								<field name="name"/>
+<!--
 								<field name="delta"/>
+-->							
+								<field name="fix_count"/>
 							</group>
 							<group>								
 								<field name="go_flag"/>

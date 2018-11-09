@@ -47,6 +47,9 @@ class Corrector(models.Model):
 	con_flag = fields.Boolean()
 
 
+	fix_count = fields.Integer()
+
+
 
 
 # ----------------------------------------------------------- Unfix ------------------------------
@@ -104,6 +107,7 @@ class Corrector(models.Model):
 													],
 														order='x_name_short asc',
 														#limit=1,
+														limit=self.fix_count,
 													)
 
 		if families != False:
@@ -117,6 +121,7 @@ class Corrector(models.Model):
 													],
 														order='x_name_short asc',
 														#limit=1,
+														limit=self.fix_count,
 													)
 
 
@@ -190,6 +195,7 @@ class Corrector(models.Model):
 													],
 														order='x_name_short asc',
 														#limit=1,
+														limit=self.fix_count,
 													)
 
 		if families != False:
@@ -203,6 +209,7 @@ class Corrector(models.Model):
 													],
 														order='x_name_short asc',
 														#limit=1,
+														limit=self.fix_count,
 													)
 
 

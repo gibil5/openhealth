@@ -45,7 +45,16 @@
 							<field name="x_pathology"/>				
 							<field name="x_level"/>				
 							<field name="x_sessions"/>	
-							<field name="x_time"/>				
+							<field name="x_time"/>		
+
+
+							<field name="x_go_flag"/>		
+							<field name="x_name_unfixed"/>
+
+<!--
+							<field name="x_short_unfixed"/>
+-->
+
 						</group>
 <!--
 							<field name="x_date_created"/>
@@ -75,6 +84,18 @@
 								name="fix_name"
 
 								string="Fix Name"
+							/>
+						</group>
+
+
+						<group>							
+							<button
+								type="object" 
+								class="oe_highlight"
+									
+								name="unfix_name"
+
+								string="Un Fix"
 							/>
 						</group>
 

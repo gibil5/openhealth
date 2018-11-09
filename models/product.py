@@ -34,6 +34,8 @@ class Product(models.Model):
 
 		self.name = self.x_name_unfixed
 
+		self.x_name_short = self.x_short_unfixed
+
 
 
 
@@ -65,7 +67,8 @@ class Product(models.Model):
 					self.x_name_unfixed = self.name
 
 				# Fix
-				self.name = self.name.replace(" - 1", "")
+				if self.x_go_flag:
+					self.name = self.name.replace(" - 1", "")
 
 
 		# Exc
@@ -76,7 +79,8 @@ class Product(models.Model):
 				self.x_name_unfixed = self.name
 
 			# Fix
-			self.name = self.x_generated
+			if self.x_go_flag:
+				self.name = self.x_generated
 
 
 
@@ -88,7 +92,8 @@ class Product(models.Model):
 				self.x_name_unfixed = self.name
 
 			# Fix
-			self.name = self.x_generated
+			if self.x_go_flag:
+				self.name = self.x_generated
 
 
 
@@ -164,12 +169,17 @@ class Product(models.Model):
 
 
 				# Fix
-				#self.x_name_short = short
+				if self.x_go_flag:
+					self.x_name_short = short
 
 
 
 
 # ----------------------------------------------------------- Codes -------------------------------
+
+	x_go_flag = fields.Boolean()
+
+
 
 	x_name_unfixed = fields.Char()
 

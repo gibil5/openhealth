@@ -61,23 +61,73 @@ class Corrector(models.Model):
 		print 'Unfix Names'
 
 
-		if self.co2_flag:
+		# Init
+		treatments = False
+		families = False
 
+
+		# Conditional
+		if self.co2_flag:
+			treatments = 'laser_co2'
+
+		elif self.exc_flag:
+			treatments = 'laser_excilite'
+
+		elif self.ipl_flag:
+			treatments = 'laser_ipl'
+
+		elif self.ndy_flag:
+			treatments = 'laser_ndyag'
+
+		elif self.qui_flag:
+			treatments = 'laser_quick'
+
+		elif self.cos_flag:
+			families = 'cosmetology'
+
+		else:
+			treatments = False
+			families = False
+
+
+
+
+		# Search
+		if treatments != False:
+
+			# Search by Treatment
 			products = self.env['product.template'].search([
 																('type', 'in', ['service']),
-																('x_treatment', 'in', ['laser_co2']),
 																('sale_ok', 'in', [True]),
-												],
-													order='x_name_short asc',
-													#limit=1,
-												)
-			# Loop
-			for product in products:
-				print product.name
-				if self.go_flag:
-					print
 
-					product.unfix_name()
+																('x_treatment', 'in', [treatments]),
+													],
+														order='x_name_short asc',
+														#limit=1,
+													)
+
+		if families != False:
+
+			# Search by Family
+			products = self.env['product.template'].search([
+																('type', 'in', ['service']),
+																('sale_ok', 'in', [True]),
+
+																('x_family', 'in', [families]),
+													],
+														order='x_name_short asc',
+														#limit=1,
+													)
+
+
+
+
+		# Loop
+		for product in products:
+			print product.name
+			if self.go_flag:
+				print
+				product.unfix_name()
 
 
 
@@ -162,8 +212,10 @@ class Corrector(models.Model):
 		# Loop
 		for product in products:
 			print product.name
-			if self.go_flag:
-				product.fix_name()
+			
+			product.x_go_flag = self.go_flag
+
+			product.fix_name()
 
 
 

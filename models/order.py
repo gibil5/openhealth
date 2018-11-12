@@ -922,9 +922,11 @@ class sale_order(models.Model):
 		#Write your logic here
 
 
+
 		# QR
 		#if self.x_type in ['ticket_receipt']:
-		self.make_qr()
+		if self.x_type in ['ticket_receipt', 'ticket_invoice']:
+			self.make_qr()
 
 
 

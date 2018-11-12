@@ -101,8 +101,67 @@ class Product(models.Model):
 
 
 
+
 		# Quick
 		if self.x_treatment in ['laser_quick']:
+
+			# Unfixed
+			if self.x_name_unfixed in [False, '']:
+				self.x_name_unfixed = self.name
+
+
+
+			# Init
+			short_arr = self.x_name_short.split('_')
+
+			# Correct the Short Name
+			if short_arr[0] in ['quick']:	# To avoid repetition
+
+				# Unfixed
+				if self.x_short_unfixed in [False, '']:
+					self.x_short_unfixed = self.x_name_short
+
+				short = self.x_name_short
+				short_old = short
+
+				for tup in [
+								('quick', 'qui'),
+								('face_all_hands', 'faa-han'), ('face_all_neck', 'faa-nec'), ('neck_hands', 'nec-han'),
+								('body_local', 'bol'), ('face_local', 'fal'), ('face_all', 'faa'),
+								('hands', 'han'), ('neck', 'nec'), ('cheekbones', 'che'),
+								('rejuvenation', 'rej'), ('acne_sequels', 'acs'), ('scar', 'sca'),
+								('mole', 'mol'), ('stains', 'sta'), ('keratosis', 'ker'), ('cyst', 'cys'),
+								('tatoo', 'tat'), ('wart', 'war'),
+								('1', '5m_one'),
+								('2', '15m_one'),
+								('3', '30m_one'),
+								('4', '45m_one'),
+							]:
+					
+					old = tup[0]
+					new = tup[1]
+					short = short.replace(old, new)
+
+				# Fix Short
+				if self.x_go_flag:
+					self.x_name_short = short
+
+
+
+			# Fix
+			if self.x_go_flag:
+				self.name = self.x_generated
+
+
+
+
+
+
+
+
+
+		# Closed
+		if False:
 
 			# Unfixed
 			if self.x_name_unfixed in [False, '']:
@@ -127,66 +186,19 @@ class Product(models.Model):
 
 
 
-			# Init
-			short_arr = self.x_name_short.split('_')
-
-
-			# Correct the Short Name 
-			#if len(short_arr) == 4: 			# To avoid repetition
-			if short_arr[0] in ['quick']:
-
-
-				# Unfixed
-				if self.x_short_unfixed in [False, '']:
-					self.x_short_unfixed = self.x_name_short
-
-
-				short = self.x_name_short
-
-				short_old = short 
-
-				#print short
-
-				for tup in [ 
-								('quick', 'qui'),
-								('face_all_hands', 'faa-han'), ('face_all_neck', 'faa-nec'), ('neck_hands', 'nec-han'),
-								('body_local', 'bol'), ('face_local', 'fal'), ('face_all', 'faa'),
-								('hands', 'han'), ('neck', 'nec'), ('cheekbones', 'che'),
-								('rejuvenation', 'rej'), ('acne_sequels', 'acs'), ('scar', 'sca'),
-								('mole', 'mol'), ('stains', 'sta'), ('keratosis', 'ker'), ('cyst', 'cys'),
-								('tatoo', 'tat'), ('wart', 'war'), 
-
-								('1', '5m_one'), 
-								('2', '15m_one'), 
-								('3', '30m_one'), 
-								('4', '45m_one'), 
-							]: 
-					
-					old = tup[0]
-					new = tup[1]
-
-					short = short.replace(old, new)
-
-				#print short_old
-				#print short
-				#print 
-
-
-				# Fix
-				if self.x_go_flag:
-					self.x_name_short = short
-
-
 
 
 # ----------------------------------------------------------- Codes -------------------------------
 
+	# Go Flag
 	x_go_flag = fields.Boolean()
 
 
+	# Name Unfixed
 	x_name_unfixed = fields.Char()
 
 
+	# Short Name Unfixed
 	x_short_unfixed = fields.Char()
 
 

@@ -955,7 +955,6 @@ Look for the Minimalist experience !!!
 
 
 
-					<field name="x_qr_data" 	groups="openhealth.roots"/>
 
 
 					
@@ -997,6 +996,8 @@ Look for the Minimalist experience !!!
 					<field name="amount_untaxed"	sum="Total Untaxed"			widget="monetary"		string="Total"	/>
 
 <!--
+					<field name="x_qr_data" 	groups="openhealth.roots"/>
+
 					<field name="x_pm_total"	groups="openhealth.roots"	/>
 					<field name="x_checksum"	groups="openhealth.roots"	/>
 -->

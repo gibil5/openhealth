@@ -961,3 +961,4 @@ class Management(models.Model):
 		#print 'Electronic - Clear'
 		# Clean
 		self.electronic_order.unlink()
+

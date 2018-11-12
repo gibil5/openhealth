@@ -40,13 +40,11 @@ class Corrector(models.Model):
 	ipl_flag = fields.Boolean()
 	ndy_flag = fields.Boolean()
 	qui_flag = fields.Boolean()
-
 	cos_flag = fields.Boolean()
 	med_flag = fields.Boolean()
-
 	con_flag = fields.Boolean()
 
-
+	# Count
 	fix_count = fields.Integer()
 
 
@@ -167,12 +165,8 @@ class Corrector(models.Model):
 		elif self.ndy_flag:
 			treatments = 'laser_ndyag'
 
-
-
 		elif self.qui_flag:
 			treatments = 'laser_quick'
-
-
 
 		elif self.cos_flag:
 			families = 'cosmetology'

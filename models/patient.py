@@ -35,11 +35,16 @@ class Patient(models.Model):
 	# 	Id Code - Nr de Historia
 	# 	Id Doc - Documento de Identidad 
 	
-	#_sql_constraints = [
+	_sql_constraints = [
 	#						('name_unique','unique(name)', 'SQL Warning: name must be unique !'),
+							('name_unique','Check(1=1)', 'SQL Warning: name must be unique !'),
+	
 	#						('x_id_code_unique','unique(x_id_code)', 'SQL Warning: x_id_code must be unique !'),
+							('x_id_code_unique','Check(1=1)', 'SQL Warning: x_id_code must be unique !'),
+	
 	#						('x_id_doc_unique','unique(x_id_doc)', 'SQL Warning: x_id_doc must be unique !'),
-	#					]     
+							('x_id_doc_unique','Check(1=1)', 'SQL Warning: x_id_doc must be unique !'),
+						]     
 
 
 
@@ -47,29 +52,26 @@ class Patient(models.Model):
 
 	# Id doc - Documento Identidad 
 	@api.constrains('x_id_doc')
-	def _check_x_id_doc(self):
+	def check_x_id_doc(self):
 		chk_patient.check_x_id_doc(self)
 
 
 	# Ruc
 	@api.constrains('x_ruc')
-	def _check_x_ruc(self):
+	def check_x_ruc(self):
 		#print
 		#print 'Check Ruc'
 		#chk._check_x_ruc(self)
 		chk_patient.check_x_ruc(self)
 
 
-
-
-# ----------------------------------------------------------- Constraints Python ------------------
-
 	# Check Name  
 	@api.constrains('name')
-	def _check_name(self):
+	def check_name(self):
 		#print
 		#print 'Check Name'
-		chk_patient._check_name(self)
+		#chk_patient._check_name(self)
+		chk_patient.check_name(self)
 
 
 	# Check Id Code - Hr Historia  
@@ -77,36 +79,36 @@ class Patient(models.Model):
 	def _check_x_id_code(self):
 		#print
 		#print 'Check Id Code'
-		chk_patient._check_x_id_code(self)
+		#chk_patient._check_x_id_code(self)
+		chk_patient.check_x_id_code(self)
 
 
+
+
+# ----------------------------------------------------------- Constraints Python - Dep ------------------
 
 	# Check Phone 3
-	@api.constrains('phone_3')
-	def _check_phone_3(self):
+	#@api.constrains('phone_3')
+	#def _check_phone_3(self):
 		#print
 		#print 'Check Phone 3'
-		chk_patient._check_phone_3(self)
+		#chk_patient._check_phone_3(self)
 
 
 	# Check Phone
-	@api.constrains('phone')
-	def _check_phone(self):
+	#@api.constrains('phone')
+	#def _check_phone(self):
 		#print
 		#print 'Check Phone'
-		chk_patient._check_phone(self)
+		#chk_patient._check_phone(self)
 
 
 	# Check Mobile
-	@api.constrains('mobile')
-	def _check_mobile(self):
+	#@api.constrains('mobile')
+	#def _check_mobile(self):
 		#print
 		#print 'Check Mobile'
-		chk_patient._check_mobile(self)
-
-
-
-
+		#chk_patient._check_mobile(self)
 
 
 
@@ -1179,7 +1181,8 @@ class Patient(models.Model):
 
 
 		# Check 
-		chk._check_name(res)
+		#chk._check_name(res)
+		#chk_patient.check_name(res)
 		
 
 		return res

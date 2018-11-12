@@ -129,39 +129,6 @@ class Container(models.Model):
 
 
 
-	# Create Electronic
-	@api.multi
-	def create_electronic(self):
-		"""
-		high level support for doing this and that.
-		"""
-		print
-		print 'Create - Electronic'
-
-		# Init Dates
-		date_format = "%Y-%m-%d"
-		date_dt = datetime.datetime.strptime(self.export_date_begin, date_format) + datetime.timedelta(hours=+5, minutes=0)
-		self.export_date = date_dt.strftime(date_format).replace('-', '_')
-
-
-		# Init Mgt
-		self.mgt.date_begin = self.export_date_begin
-		self.mgt.date_end = self.export_date_end
-		self.mgt.container = self.id
-		self.mgt.state_arr = 'sale,cancel,credit_note'
-
-
-		# Update Mgt
-		self.mgt.update_fast()
-
-
-		#self.amount_total = self.mgt.update_electronic()
-		self.amount_total, self.receipt_count, self.invoice_count = self.mgt.update_electronic()
-
-
-	# create_electronic
-
-
 
 
 	# Create Sales
@@ -230,6 +197,47 @@ class Container(models.Model):
 
 
 
+# ----------------------------------------------------------- Electronic --------------------------
+	# Create Electronic
+	@api.multi
+	def create_electronic(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print
+		print 'Create - Electronic'
+
+
+		# Clean 
+		self.electronic_order_ids.unlink()
+
+
+		# Init Dates
+		date_format = "%Y-%m-%d"
+		date_dt = datetime.datetime.strptime(self.export_date_begin, date_format) + datetime.timedelta(hours=+5, minutes=0)
+		self.export_date = date_dt.strftime(date_format).replace('-', '_')
+
+
+		# Init Mgt
+		self.mgt.date_begin = self.export_date_begin
+		self.mgt.date_end = self.export_date_end
+		self.mgt.container = self.id
+		self.mgt.state_arr = 'sale,cancel,credit_note'
+
+
+		# Update Mgt
+		self.mgt.update_fast()
+
+
+		#self.amount_total = self.mgt.update_electronic()
+		self.amount_total, self.receipt_count, self.invoice_count = self.mgt.update_electronic()
+
+
+	# create_electronic
+
+
+
+
 # ----------------------------------------------------------- Export ------------------------------
 
 	# Export Txt
@@ -241,8 +249,10 @@ class Container(models.Model):
 		print
 		print 'Export - Txt'
 
-		# Clear
+
+		# Clean 
 		self.txt_ids.unlink()
+
 
 		# Export
 		export.export_txt(self, self.mgt.electronic_order, self.export_date)

@@ -29,10 +29,10 @@ def test_cases(self, container_id, doctor_id):
 						'name_last': 	'revilla rondon',
 						'name_first':  	'jose javier',
 
-						#'id_doc_type': 	'dni',
-						#'id_doc':  		'09817194',
-						'id_doc_type': 	False,
-						'id_doc':  		False,
+						'id_doc_type': 	'dni',
+						'id_doc':  		'09817194',
+						#'id_doc_type': 	False,
+						#'id_doc':  		False,
 
 						'ruc': 			'10098171946',
 						'firm': 		'Revilla y Asociados',

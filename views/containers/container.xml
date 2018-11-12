@@ -206,14 +206,16 @@
 							<page string="TXT">
 								<field name="txt_ids"/>	
 							</page>
+
+							<page string="Patients">
+								<field name="patient_ids"/>
+							</page>
+
 <!--
 							<page string="MSSOFT">
 								<field name="txt_ref_ids"/>
 							</page>
 
-							<page string="Patients">
-								<field name="patient_ids"/>
-							</page>
 -->
 						</notebook>
 					</sheet>

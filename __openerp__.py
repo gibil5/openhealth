@@ -200,6 +200,10 @@
 
 
 
+		# ----------------------------------------------------------- Recommendation - Deprecated ------------------------------------------------------
+		# Recommendation
+		#'views/recommendations/recommendation.xml',
+
 
 
 
@@ -495,8 +499,6 @@
 		'views/consultations/consultation.xml',
 
 
-		# Recommendation
-		#'views/recommendations/recommendation.xml',
 
 
 		# Treatments 

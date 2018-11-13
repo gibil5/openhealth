@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
-
 """
 	Sale Order Line
 """
-
 from openerp import models, fields, api
 import openerp.addons.decimal_precision as dp
 import lib
@@ -16,22 +14,17 @@ class SaleOrderLine(models.Model):
 
 
 
-# ----------------------------------------------------------- Compact Name ------------------------
-	# Description
-	x_description = fields.Text(
-		string='Nombre compacto',
-
-		compute='_compute_x_description',
-	)
-
-	@api.multi
-	def _compute_x_description(self):
-		for record in self:
-			if record.product_id.x_name_short in ['generic_product', 'generic_service']:
-				record.x_description = record.name
-			else:
-				record.x_description = record.product_id.x_name_ticket
-
+# ----------------------------------------------------------- Onchanges ---------------------------
+	
+	# Price Unit
+	#@api.onchange('price_unit')
+	#def _onchange_price_unit(self):
+	#	print
+	#	print 'On change - Price Unit'
+	#	if self.price_unit in [4600.00]:
+	#		print 'Gotcha !'
+			#self.price_unit = self.x_price_vip
+	#		self.price_unit = self.product_id.x_price_vip
 
 
 
@@ -45,6 +38,8 @@ class SaleOrderLine(models.Model):
 		digits=dp.get_precision('Product Price'),
 		default=0.0,
 	)
+
+
 
 
 	# Price manual
@@ -139,6 +134,26 @@ class SaleOrderLine(models.Model):
 			for line in record.order_id.order_line:
 				if line.product_id.default_code == '495':
 					record.x_vip_inprog = True
+
+
+
+
+
+# ----------------------------------------------------------- Compact -----------------------------
+	# Description
+	x_description = fields.Text(
+		string='Nombre compacto',
+
+		compute='_compute_x_description',
+	)
+
+	@api.multi
+	def _compute_x_description(self):
+		for record in self:
+			if record.product_id.x_name_short in ['generic_product', 'generic_service']:
+				record.x_description = record.name
+			else:
+				record.x_description = record.product_id.x_name_ticket
 
 
 

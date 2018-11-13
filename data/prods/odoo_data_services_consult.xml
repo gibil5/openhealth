@@ -7,7 +7,7 @@
 <!-- Data - Services - Consultations -->
 
 
-		<!-- Medical -->
+		<!-- CONSULTA MEDICA -->
 		<record id='con_med' model='product.template'>
 			<field name='type'>service</field>
 
@@ -35,7 +35,7 @@
 
 
 
-		<!-- Gyneco -->
+		<!-- CONSULTA GINECOLOGICA -->
 		<record id='con_gyn' model='product.template'>
 			<field name='type'>service</field>
 

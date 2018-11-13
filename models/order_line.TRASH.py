@@ -249,7 +249,6 @@ class sale_order_line(models.Model):
 		"""
 		for line in self:
 			
-
 			if line.x_comeback == True: 
 				
 				#price = line.price_unit * (1 - (line.discount or 0.0) / 100.0)

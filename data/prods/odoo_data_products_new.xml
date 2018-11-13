@@ -7,6 +7,22 @@
 <!-- Data - Products - New -->
 
 
+		<!-- Producto 1 -->
+		<record id='product_1' model='product.template'>
+
+			<field name='name'>Producto 1</field>
+
+			<field name='x_name_short'>product_1</field>
+
+			<field name='type'>product</field>
+
+			<field name='price'>33.04</field>
+
+			<field name='standard_price'>33.04</field>
+		</record>
+
+
+
 		<!-- Formula 1 -->
 		<record id='formula_1' model='product.template'>
 
@@ -40,7 +56,7 @@
 
 			<field name='default_code'>537</field>
 			
-			<field name='price'></field>
+			<field name='price'>55</field>
 									
 			<field name='x_family'>topical</field>
 			
@@ -62,7 +78,7 @@
 
 			<field name='default_code'>619</field>
 			
-			<field name='price'></field>
+			<field name='price'>55</field>
 									
 			<field name='x_family'>topical</field>
 			
@@ -70,6 +86,7 @@
 
 			<field name='categ_id' ref="topical"/>
 		</record>
+
 
 
 
@@ -84,7 +101,7 @@
 
 			<field name='default_code'>433</field>
 			
-			<field name='price'></field>
+			<field name='price'>55</field>
 									
 			<field name='x_family'>topical</field>
 			

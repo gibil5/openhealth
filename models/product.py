@@ -22,6 +22,33 @@ class Product(models.Model):
 
 
 
+# ----------------------------------------------------------- Codes -------------------------------
+
+	# Code
+	x_code_acc = fields.Char(
+			'Code Acc',
+		)
+
+	# Get Code
+	@api.multi
+	def get_code(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print
+		print 'Get Code'
+
+		coder = self.env['openhealth.coder'].search([
+															('type', 'in', ['product']),
+															('sale_ok', 'in', [True]),
+												],
+													order='name asc',
+													#limit=1,
+												)
+
+
+
+
 # ----------------------------------------------------------- Unfix  ------------------------------
 	# Fix Name
 	@api.multi

@@ -14,7 +14,7 @@
 
 	'description': """
 
-		12 Nov 2018
+		13 Nov 2018
 
 		Fulcrum - DEV - DOCEAN - PROLIANT
 		
@@ -170,6 +170,36 @@
 		#'views/stock/stock_inventory.xml',
 
 
+		# ----------------------------------------------------------- Purchase - Deprecated ------------------------------------------------------
+
+		# Purchases 
+		#'views/purchase/purchase.xml',
+		#'reports/report_purchasequotation.xml',
+		#'views/purchase/purchase_report.xml',			# Deprecated ? 
+		#'views/purchase/purchase_report_view.xml',		# Deprecated ?
+
+
+
+		# ----------------------------------------------------------- Legacy - Deprecated ------------------------------------------------------
+		#'views/legacy/legacy.xml',
+		#'views/legacy/legacy_patient.xml',
+		#'views/legacy/legacy_manager.xml',
+		#'views/data/data_analyzer.xml',
+		#'views/legacy/legacy_manager_order.xml',
+		#'views/legacy/legacy_manager_patient.xml',
+		#'views/legacy/legacy_order.xml',
+		#'views/menus/menus_legacy.xml',
+
+
+
+		# ----------------------------------------------------------- Stock Min - Deprecated ------------------------------------------------------
+		#'views/stock_min/stock_min_inventory.xml',
+		#'views/stock_min/stock_min_inventory_line.xml',
+		# Kardex
+		#'views/kardex/kardex.xml',
+
+
+
 
 
 
@@ -187,44 +217,52 @@
 		# Reports
 		'views/product_selectors/product_selector.xml',
 		'views/orders/order_report_nex.xml',				# Estado de Cuenta
-		
 		'views/report_sale/report_sale_product.xml',
-		
 		'views/report_sale/item_counter.xml',
 
 
+
 		# Accounting 
-		'views/payment_methods/payment_method_line.xml',
+		#'views/payment_methods/payment_method_line.xml',
+		'views/orders/payment_method_line.xml',
 		'views/account/account_line.xml',
 		'views/account/account_contasis.xml',
+
 
 
 		# Marketing 
 		'views/marketing/marketing_order_line.xml',
 		'views/marketing/marketing_reco_line.xml',
-		'views/media/media_line.xml',
+
+		#'views/media/media_line.xml',
+		'views/marketing/media_line.xml',
+		
 		'views/histogram/histogram.xml',
-		'views/places/place.xml',
+		
+		#'views/places/place.xml',
+		'views/marketing/place.xml',
+		
 		'views/account/patient_line.xml',
 		'views/account/patient_line_pivot.xml',
 		'views/marketing/marketing.xml',
 		'views/marketing/marketing_pivot.xml',
 
 
+
 		# Management 
 		'views/management/management_family_line.xml',
 		'views/management/management_order_line.xml',
 		'views/management/management_doctor_line.xml',
-
-
 		'views/management/electronic_order.xml',
 		'views/management/electronic_line.xml',
+		'views/management/management.xml',
+		'views/management/management_actions.xml',
 		
+
+		# Coder 
 		'views/coders/coder.xml',
 
 		
-		'views/management/management.xml',
-		'views/management/management_actions.xml',
 
 
 		# Exceptions 
@@ -351,16 +389,11 @@
 
 
 		'data/prods/odoo_data_services_co2.xml',
-		
 		'data/prods/odoo_data_services_exc.xml',
 		'data/prods/odoo_data_services_m22.xml',
-
 		'data/prods/odoo_data_services_med.xml',
 		'data/prods/odoo_data_services_med_dep.xml',
-
 		'data/prods/odoo_data_services_consult.xml',
-
-
 		'data/prods/odoo_data_services_cos.xml',
 		'data/prods/odoo_data_services_cos_dep.xml',
 
@@ -375,6 +408,10 @@
 		'data/pricelists/pricelist_items_quick.xml',
 
 
+		# New Pricelists
+		'data/pricelists/pricelist_consultation.xml',
+		'data/pricelists/pricelist_products.xml',
+
 
 
 
@@ -382,9 +419,9 @@
 # ----------------------------------------------------------- Views ------------------------------------------------------
 
 
+
 		# ----------------------------------------------------------- Views - Actions ------------------------------------------------------
 		'views/services/service_actions.xml',
-		
 		'views/services/service_search.xml',
 
 
@@ -413,7 +450,8 @@
 
 
 		# Payment methods 
-		'views/payment_methods/payment_methods.xml',
+		#'views/payment_methods/payment_methods.xml',
+		'views/orders/payment_methods.xml',
 
 
 		# Counters 
@@ -488,15 +526,15 @@
 		'views/appointments/appointment_actions.xml',
 
 
-		# Products
-		#'views/products/product.xml',
-		'views/products/product_template.xml',
-		'views/products/product_actions.xml',				
 
-		'views/products/product_product.xml',		
-		#'views/products/product_category.xml',		
-		#'views/products/product_pricelist.xml',		
-		#'views/products/purchase_order.xml',		
+		# Products
+		'views/products/product_template.xml',
+		'views/products/product_actions.xml',
+		'views/products/product_product.xml',
+		
+		#'views/products/product_category.xml',
+		#'views/products/product_pricelist.xml',
+		#'views/products/purchase_order.xml',	
 
 
 
@@ -519,7 +557,6 @@
 
 		# Sessions
 		'views/sessions/session.xml',
-		
 		'views/sessions/session_config_simple.xml',
 		'views/sessions/session_config_simple_2.xml',
 		
@@ -534,27 +571,19 @@
 
 		# Services - 2  
 		'views/services/service_product.xml',
-
 		'views/services/service_co2.xml',
 		'views/services/service_co2_zone.xml',
-		
 		'views/services/service_excilite.xml',
 		'views/services/service_excilite_zone.xml',
-
 		'views/services/service_ipl.xml',
 		'views/services/service_ipl_zone.xml',
-
 		'views/services/service_ndyag.xml',
 		'views/services/service_ndyag_zone.xml',
-
 		'views/services/service_medical.xml',
 		'views/services/service_medical_zone.xml',
-		
 		'views/services/service_quick.xml',
-
 		'views/services/service_cosmetology.xml',
 		'views/services/service_cosmetology_zone.xml',
-
 
 		#'views/services/service_vip.xml',
 
@@ -600,34 +629,6 @@
 
 
 
-		# ----------------------------------------------------------- Purchase - Deprecated ------------------------------------------------------
-
-		# Purchases 
-		#'views/purchase/purchase.xml',
-		#'reports/report_purchasequotation.xml',
-		#'views/purchase/purchase_report.xml',			# Deprecated ? 
-		#'views/purchase/purchase_report_view.xml',		# Deprecated ?
-
-
-
-		# ----------------------------------------------------------- Legacy - Deprecated ------------------------------------------------------
-		#'views/legacy/legacy.xml',
-		#'views/legacy/legacy_patient.xml',
-		#'views/legacy/legacy_manager.xml',
-		#'views/data/data_analyzer.xml',
-		#'views/legacy/legacy_manager_order.xml',
-		#'views/legacy/legacy_manager_patient.xml',
-		#'views/legacy/legacy_order.xml',
-		#'views/menus/menus_legacy.xml',
-
-
-
-		# ----------------------------------------------------------- Stock Min - Deprecated ------------------------------------------------------
-		#'views/stock_min/stock_min_inventory.xml',
-		#'views/stock_min/stock_min_inventory_line.xml',
-		# Kardex
-		#'views/kardex/kardex.xml',
-
 
 
 
@@ -665,7 +666,7 @@
 		'views/menus/menus_reporting.xml',
 		'views/menus/menus_openhealth.xml',		 
 		
-		#'views/menus/menus_account.xml',	 
+		'views/menus/menus_account.xml',
 		
 		'views/menus/menus_marketing.xml',		 
 		'views/menus/menus_management.xml',		  

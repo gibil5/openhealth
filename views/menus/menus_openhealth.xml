@@ -14,7 +14,8 @@
 			/>
 
 
-		<!-- Open Health -->
+
+<!-- Open Health -->
 		<menuitem 	id="openhealth_openhealth_menu" 
 					
 					parent="main_openhealth_menu"
@@ -56,6 +57,65 @@
 
 					action="corrector_list_action"
 			/>
+
+
+
+<!--
+-->
+		<menuitem 	id="oh_product_product_menu" 
+					name="Products Product"
+					parent="openhealth_openhealth_menu"
+					sequence="3"
+					action="product_product_list_action"
+			/>
+
+
+
+
+
+
+
+
+<!-- Coder -->
+		<menuitem 	id="oh_coder_menu"
+			
+					parent="main_openhealth_menu"
+
+					sequence="1"
+
+					name="Coder"
+				/>
+
+
+
+
+		<!-- Coder - All --> 
+		<menuitem 	id="oh_coder_all_menu" 
+
+					name="All" 
+
+					parent="oh_coder_menu"
+
+					action="coder_list_action"
+			/>
+
+
+
+		<!-- Coder - Product --> 
+		<!-- Coder - Service --> 
+<!--
+		<menuitem id="coder_product_menu" name="Product" parent="openhealth_menu"
+				action="coder_product_list_action"
+			/>
+
+
+		<menuitem id="coder_service_menu" name="Service" parent="openhealth_menu"
+				action="coder_service_list_action"
+			/>
+-->
+
+
+
 
 
 
@@ -108,7 +168,8 @@
 
 
 <!-- Coder -->
-		<menuitem 	id="openhealth_menu" 
+		<menuitem 	id="openhealth_menu"
+
 					parent="main_electronic_menu"
 
 					sequence="1"
@@ -159,13 +220,6 @@
 			/>
 		-->
 
-<!--
--->
-		<menuitem id="product_product_menu" name="Products Product"
-			parent="openhealth_menu"
-			sequence="3"
-			action="product_product_list_action"
-			/>
 
 
 

@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
+"""
+# 	Coder
 #
-# 	Coder 
-# 
 # 	Created: 			16 Sep 2018
-# 	Last updated: 		16 Sep 2018
-#
+# 	Last updated: 		12 Nov 2018
+"""
 from openerp import models, fields, api
 
 class coder(models.Model):
@@ -18,7 +18,7 @@ class coder(models.Model):
 	_description = "Openhealth Coder"
 
 
-# ----------------------------------------------------------- Fields ------------------------------------------------------
+# ----------------------------------------------------------- Fields ------------------------------
 
 	name = fields.Char()
 

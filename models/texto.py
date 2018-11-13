@@ -21,7 +21,9 @@ class Texto(models.Model):
 # ----------------------------------------------------------- Constraints - Sql ------------------------------------------------------
 
 	_sql_constraints = [
-							('name_unique',		'unique(name)', 	'SQL Warning: NAME must be unique !'),
+							#('name_unique',		'unique(name)', 	'SQL Warning: NAME must be unique !'),
+							('name_unique',			'Check(1=1)', 		'SQL Warning: NAME must be unique !'),
+							
 							#('content_unique',	'unique(content)', 	'SQL Warning: CONTENT must be unique !'),
 						]     
 

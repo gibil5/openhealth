@@ -4,49 +4,11 @@
 
 
 
-<!-- Data - Products -->
-
-		<!-- Producto 1 -->
-		<record id='product_1' model='product.template'>
-
-			<field name='name'>Producto 1</field>
-
-			<field name='x_name_short'>product_1</field>
-
-			<field name='type'>product</field>
-
-			<field name='price'>33.04</field>
-
-			<field name='standard_price'>33.04</field>
-		</record>
-
-		<!-- Producto 1 -->
-<!--		
-		<record id='product_1_pro' model='product.product'>
-
-			<field name='name'>Producto 1</field>
-
-			<field name='x_name_short'>product_1</field>
-
-			<field name='type'>product</field>
-
-			<field name='price'>33.04</field>
-
-			<field name='standard_price'>33.04</field>
-		</record>
--->
-
-
-
-
-
 		<!-- ACNECLEAN -->
 		<record id='acneclean' model='product.template'>
 
 			<field name='name'>ACNECLEAN 50 GR</field>
-<!--
-			<field name='x_name_short'>pro_acneclean</field>
--->
+
 			<field name='x_name_short'>acneclean</field>
 
 			<field name='type'>product</field>
@@ -64,9 +26,7 @@
 		<record id='acnetopic_200ml' model='product.template'>
 
 			<field name='name'>ACNETOPIC 200 ML</field>
-<!--
-			<field name='x_name_short'>pro_acnetopic_200ml</field>
--->
+
 			<field name='x_name_short'>acnetopic_200ml</field>
 
 			<field name='type'>product</field>
@@ -85,9 +45,7 @@
 		<record id='acne_topic_wash' model='product.template'>
 
 			<field name='name'>ACNETOPIC WASH</field>
-<!--
-			<field name='x_name_short'>pro_acnetopic_wash</field>
--->
+
 			<field name='x_name_short'>acnetopic_wash</field>
 
 			<field name='type'>product</field>
@@ -125,6 +83,7 @@
 		<record id='anti_red' model='product.template'>
 
 			<field name='name'>ANTIRROJECES</field>
+
 			<field name='x_name_short'>anti_red</field>
 
 			<field name='type'>product</field>
@@ -149,7 +108,9 @@
 			<field name='default_code'>395</field>
 			<field name='type'>product</field>
 			<field name='description'></field>
-			<field name='price'></field>
+
+			<field name='price'>55</field>
+
 			<field name='standard_price'></field>
 			<field name='x_price_vip'></field>
 			<field name='x_price_vip_return'>4</field>
@@ -184,6 +145,7 @@
 		<record id='cream_vitamins_aec' model='product.template'>
 
 			<field name='name'>CREMA CON VITAMINAS A, E, C</field>
+
 			<field name='x_name_short'>cream_vitamins_aec</field>
 
 			<field name='type'>product</field>
@@ -202,6 +164,7 @@
 		<record id='dermatopic_lotion_120ml' model='product.template'>
 
 			<field name='name'>DERMATOPIC LOCION 120 ML</field>
+
 			<field name='x_name_short'>dermatopic_lotion_120ml</field>
 
 			<field name='type'>product</field>			
@@ -220,6 +183,7 @@
 		<record id='dermatopic_sulfur_90gr' model='product.template'>
 
 			<field name='name'>DERMATOPIC SULFUR 90 GR</field>
+
 			<field name='x_name_short'>dermatopic_sulfur_90gr</field>
 
 			<field name='type'>product</field>			
@@ -353,12 +317,15 @@
 		<record id='gause' model='product.template'>
 
 			<field name='name'>GASA DE KIT</field>
+
 			<field name='x_name_short'>gause</field>
 
 			<field name='default_code'>419</field>
 			<field name='type'>product</field>
 			<field name='description'></field>
-			<field name='price'></field>
+
+			<field name='price'>55</field>
+
 			<field name='standard_price'></field>
 			<field name='x_price_vip'></field>
 			<field name='x_price_vip_return'>4</field>
@@ -370,6 +337,7 @@
 		<record id='hidratopic_lotion_120ml' model='product.template'>
 
 			<field name='name'>HIDRATOPIC LOCION 120 ML</field>
+
 			<field name='x_name_short'>hidratopic_lotion_120ml</field>
 
 			<field name='type'>product</field>			
@@ -387,6 +355,7 @@
 		<record id='kit_post_laser' model='product.template'>
 
 			<field name='name'>KIT POST LASER</field>
+
 			<field name='x_name_short'>kit_post_laser</field>
 
 			<field name='type'>product</field>			
@@ -410,6 +379,7 @@
 		<record id='mask_astringent_liquid_powder' model='product.template'>
 
 			<field name='name'>MASCARA ASTRINGENTE (LIQUIDO + POLVO)</field>
+
 			<field name='x_name_short'>mask_astringent_liquid_powder</field>
 
 			<field name='type'>product</field>			
@@ -428,6 +398,7 @@
 		<record id='mask_astringent_liquid' model='product.template'>
 
 			<field name='name'>MASCARA ASTRINGENTE LIQUIDO</field>
+
 			<field name='x_name_short'>mask_astringent_liquid</field>
 
 			<field name='type'>product</field>
@@ -446,6 +417,7 @@
 		<record id='mask_astringent_powder' model='product.template'>
 
 			<field name='name'>MASCARA ASTRINGENTE POLVO</field>
+
 			<field name='x_name_short'>mask_astringent_powder</field>
 
 			<field name='type'>product</field>			
@@ -470,6 +442,7 @@
 		<record id='nctf' model='product.template'>
 
 			<field name='name'>NCTF</field>
+
 			<field name='x_name_short'>nctf</field>
 
 			<field name='type'>product</field>			
@@ -488,12 +461,15 @@
 		<record id='notil' model='product.template'>
 
 			<field name='name'>NOTIL</field>
+
 			<field name='x_name_short'>notil</field>
 
 			<field name='default_code'>469</field>
 			<field name='type'>product</field>
 			<field name='description'></field>
-			<field name='price'></field>
+
+			<field name='price'>55</field>
+
 			<field name='standard_price'></field>
 			<field name='x_price_vip'></field>
 			<field name='x_price_vip_return'>4</field>
@@ -505,6 +481,7 @@
 		<record id='other' model='product.template'>
 
 			<field name='name'>OTROS</field>
+
 			<field name='x_name_short'>other</field>
 
 			<field name='type'>product</field>
@@ -525,6 +502,7 @@
 		<record id='solar_protector' model='product.template'>
 
 			<field name='name'>PROTECTOR SOLAR</field>
+
 			<field name='x_name_short'>solar_protector</field>
 
 			<field name='type'>product</field>			
@@ -542,6 +520,7 @@
 		<record id='q54' model='product.template'>
 
 			<field name='name'>Q54</field>
+
 			<field name='x_name_short'>q54</field>
 
 			<field name='type'>product</field>			
@@ -559,12 +538,15 @@
 		<record id='redoxon' model='product.template'>
 
 			<field name='name'>REDOXON</field>
+
 			<field name='x_name_short'>redoxon</field>
 
 			<field name='default_code'>417</field>
 			<field name='type'>product</field>
 			<field name='description'></field>
-			<field name='price'></field>
+
+			<field name='price'>55</field>
+			
 			<field name='standard_price'></field>
 			<field name='x_price_vip'></field>
 			<field name='x_price_vip_return'>4</field>
@@ -576,12 +558,15 @@
 		<record id='serum' model='product.template'>
 
 			<field name='name'>SUERO FISIOLOGICO</field>
+
 			<field name='x_name_short'>serum</field>
 
 			<field name='default_code'>154</field>
 			<field name='type'>product</field>
 			<field name='description'></field>
-			<field name='price'></field>
+
+			<field name='price'>55</field>
+
 			<field name='standard_price'></field>
 			<field name='x_price_vip'></field>
 			<field name='x_price_vip_return'>4</field>
@@ -619,6 +604,7 @@
 		<record id='tretinoina' model='product.template'>
 
 			<field name='name'>TRETINOINA</field>
+			
 			<field name='x_name_short'>tretinoina</field>
 
 			<field name='type'>product</field>			

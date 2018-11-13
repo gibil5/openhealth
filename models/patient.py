@@ -86,7 +86,6 @@ class Patient(models.Model):
 
 
 # ----------------------------------------------------------- Constraints Python - Dep ------------------
-
 	# Check Phone 3
 	#@api.constrains('phone_3')
 	#def _check_phone_3(self):
@@ -94,14 +93,12 @@ class Patient(models.Model):
 		#print 'Check Phone 3'
 		#chk_patient._check_phone_3(self)
 
-
 	# Check Phone
 	#@api.constrains('phone')
 	#def _check_phone(self):
 		#print
 		#print 'Check Phone'
 		#chk_patient._check_phone(self)
-
 
 	# Check Mobile
 	#@api.constrains('mobile')

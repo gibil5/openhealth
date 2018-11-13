@@ -1,70 +1,234 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <openerp>
 	<data>
 
 
-		<!--
-		order - payment_methods
-		-->
-		<record model="ir.ui.view" id="order_payment_method_form_view">
-			<field name="name">order.payment_method.form</field>
-			<field name="model">sale.order</field>
-			
-			<field name="priority" eval="-10"/>
-			
-			<field name="inherit_id" ref="sale.view_order_form"/>
+
+		<!-- FORM -->
+		<record model="ir.ui.view" id="payment_method_form_view">
+			<field name="name">payment.method.form</field>
+			<field name="model">openhealth.payment_method</field>
 			<field name="arch" type="xml">
 
+				<form string="Payment Method - Form">
 
+					<header>
 
+<!--
+								states="paid"
+-->
+						<!-- Generate --> 
+						<button 
+								type="object" 
+								class="oe_highlight"
+								
+								states="sale"
+								
+								name="go_back"
 
+								string="Regresar"
+						/>
 
-				<notebook position="inside">					
-							<page string="Pagos">
+<!--
+					<button 
+							type="object" 
+							class="oe_highlight"
+
+							name="state_force"
+
+							states="done,editable"
+
+							string="STATE"
+
+							groups="openhealth.roots"
+						/>
+-->
 
 
 <!--
--->
-								<field name="x_payment_method">
-									<tree string="Métodos de Pago">										
-										<field  name="name"/>
-										<field  name="method"/>
-										<field  name="subtotal"/>
-									</tree>
-								</field>
+								statusbar_visible="draft, paid, done"
+								statusbar_visible="draft, sale, done"
 
-							
-							<group col="4">
-								<group>
-									<!--
-									<button 
-										type="object" 
-										class="oe_highlight"	
-										string="Pagar"						
-										name="create_payment_method"/>
-									-->
-								</group>
-								<group></group>
-								<group></group>
-								<group>
-<!--									
-									<field  name="pm_total"/>
+								statusbar_visible="draft, sale, done, editable"
 -->
-									<field  name="nr_saledocs"		invisible="1"	/>
+						<!-- State --> 
+						<field 	name="state" 
+								widget="statusbar" 
+								invisible="0"
 
-									<field  name="x_payment_complete"		invisible="0"	/>
-								</group>
+								statusbar_visible="draft, sale, done"
+						
+						/>
+					</header>
+
+
+
+
+
+
+
+					<!-- Sheet --> 
+					<sheet>
+						
+
+						<h1>Módulo de Pago</h1>
+
+
+						<group>
+							<group>
+							</group>
+						</group>
+						
+
+						<group>
+							<group>
+
+								<field name="partner"   readonly="1"	/>		
+
+
+
+								<!-- DNI -->
+<!--								
+								<field name="dni"   		attrs="{
+																		'required':[	('saledoc', 'in', ['receipt','ticket_receipt']),], 
+																}"
+									/>				
+-->
+
+								<!-- Id Doc Type -->
+								<!-- Id Doc -->
+<!--
+								<field name="id_doc_type"/>
+
+								<field name="id_doc"/>
+-->
+
+
+
+
+								<!-- Firm -->
+								<field name="firm"   		attrs="{
+																		'required':[	('saledoc', 'in', ['invoice','ticket_invoice']),], 
+																}"
+									/>				
+
+
+								<!-- RUC -->
+								<field name="ruc"   		attrs="{
+																		'required':[	('saledoc', 'in', ['invoice','ticket_invoice']),], 
+																}"
+
+
+									/>		
+
+
+								<field name="nr_pm"   invisible="1"	/>													
 							</group>
 
 
+							<group>
+								<field name="order"/>																				
+
+								<field name="total"/>
+
+								<field name="pm_total"/>
+
+<!--
+								<field name="balance"	style="color:Red"	attrs="{'invisible':[	
+																									('balance', '&gt;=', 0),
+																								],}"
+									/>
+								<field name="balance"	style="color:Blue"	attrs="{'invisible':[	
+																									('balance', '&lt;', 0),
+																								],}"
+									/>
+-->
+								<field name="balance"/>
+							</group>
+							
+						</group>
 
 
+
+						<group>
+							<group>
+								<field name="saledoc"	widget="radio"	/>
+							</group>
+							<group></group>
+						</group>
+
+
+
+
+
+<!-- Notebook --> 
+
+						<!-- Payments --> 
+						<notebook position="inside">
+							<page string="Formas">
+								<field name="pm_line_ids"	context="{
+																			'default_name': nr_pm,
+																			'default_subtotal': balance,
+																			'default_payment_method': active_id,
+																		}"  class="rallign"	>
+									<tree			editable="bottom">	
+										<field name="name"	/>
+										<field name="method"	/>
+										<field name="subtotal"	class="rallign"	/>
+										<!--
+										<field name="currency"	/>
+										-->									
+									</tree>
+								</field>
 							</page>
-
-
-
-				</notebook>
+						</notebook>
+					</sheet>
+				</form>
 			</field>
 		</record>
+
+
+
+
+
+
+
+
+
+		<!-- TREE --> 
+		<record model="ir.ui.view" id="payment_method_tree_view">
+			<field name="name">payment_method.tree</field>
+			<field name="model">openhealth.payment_method</field>
+			<field name="arch" type="xml">
+				<tree string="payment_method Tree">
+					<field name="create_date"/>
+					<field name="write_date"/>
+					<field name="order"  />
+<!--
+					<field name="name"/>
+					<field name="subtotal"   />
+					<field name="method"  />
+-->				
+				</tree>
+			</field>
+		</record>
+
+
+
+		<!-- ACTION -->
+		<record model="ir.actions.act_window" id="payment_method_list_action">
+			<field name="name">Boletas</field>
+			<field name="res_model">openhealth.payment_method</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>	
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first payment_method
+				</p>
+			</field>
+		</record>
+
 	</data>
 </openerp>

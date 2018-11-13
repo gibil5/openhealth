@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<openerp>
+	<data noupdate='0'>
+
+
+
+<!-- CONSULTA MEDICA -->
+<record id='vip_con_med' model='product.pricelist.item'>
+
+	<field name='pricelist_id' 	ref='pricelist_vip'/>
+
+	<field name='product_tmpl_id' 	ref='con_med'/>
+
+	<field name='fixed_price'>200</field>
+
+	<field name='min_quantity'>1</field>
+
+	<field name='applied_on'>1_product</field>
+</record>
+
+
+
+<!-- CONSULTA GINECOLOGICA -->
+<record id='vip_con_gyn' model='product.pricelist.item'>
+
+	<field name='pricelist_id' 	ref='pricelist_vip'/>
+
+	<field name='product_tmpl_id' 	ref='con_gyn'/>
+
+	<field name='fixed_price'>200</field>
+
+	<field name='min_quantity'>1</field>
+
+	<field name='applied_on'>1_product</field>
+</record>
+
+
+	</data>
+</openerp>

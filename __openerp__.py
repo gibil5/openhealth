@@ -219,8 +219,12 @@
 		'views/products/product_selector.xml',
 
 		'views/orders/order_report_nex.xml',				# Estado de Cuenta
-		'views/report_sale/report_sale_product.xml',
-		'views/report_sale/item_counter.xml',
+		
+		#'views/report_sale/report_sale_product.xml',
+		#'views/report_sale/item_counter.xml',
+		'views/reports/report_sale/report_sale_product.xml',
+		'views/reports/report_sale/item_counter.xml',
+
 
 
 
@@ -239,7 +243,8 @@
 		#'views/media/media_line.xml',
 		'views/marketing/media_line.xml',
 		
-		'views/histogram/histogram.xml',
+		#'views/histogram/histogram.xml',
+		'views/marketing/histogram.xml',
 		
 		#'views/places/place.xml',
 		'views/marketing/place.xml',
@@ -541,7 +546,8 @@
 
 
 		# Cards 
-		'views/cards/card.xml',
+		#'views/cards/card.xml',
+		'views/products/cards/card.xml',
 
 
 

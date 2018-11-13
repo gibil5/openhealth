@@ -215,7 +215,9 @@
 		# ----------------------------------------------------------- Recent ------------------------------------------------------
 
 		# Reports
-		'views/product_selectors/product_selector.xml',
+		#'views/product_selectors/product_selector.xml',
+		'views/products/product_selector.xml',
+
 		'views/orders/order_report_nex.xml',				# Estado de Cuenta
 		'views/report_sale/report_sale_product.xml',
 		'views/report_sale/item_counter.xml',
@@ -329,8 +331,11 @@
 		'data/base_data_categs_partners.xml',			
 		'data/base_data_categs_prods.xml',			
 
+
 		# Important 
-		'views/pathologies/pathology.xml',
+		#'views/pathologies/pathology.xml',
+		'data/pathologies/pathology.xml',
+
 		'data/prods/data_pathologies.xml',			
 		'data/prods/data_nexzones.xml',	
 
@@ -344,7 +349,8 @@
 
 
 		# Allergy 
-		'views/allergies/allergy.xml',
+		#'views/allergies/allergy.xml',
+		'data/allergies/allergy.xml',
 
 
 		# Doctors
@@ -385,8 +391,6 @@
 		'data/prods/odoo_data_products.xml',
 		'data/prods/odoo_data_products_new.xml',
 		'data/prods/odoo_data_products_dep.xml',
-
-
 
 		'data/prods/odoo_data_services_co2.xml',
 		'data/prods/odoo_data_services_exc.xml',
@@ -509,8 +513,6 @@
 		# Containers 
 		'views/containers/container.xml',
 		'views/containers/texto.xml',
-
-
 		'views/containers/corrector.xml',
 
 
@@ -659,18 +661,15 @@
 
 		# ----------------------------------------------------------- Menus ------------------------------------------------------
 		'views/menus/menus.xml',
-
 		'views/menus/menus_products.xml',
-
 		'views/menus/menus_caja.xml',
 		'views/menus/menus_reporting.xml',
-		'views/menus/menus_openhealth.xml',		 
-		
-		'views/menus/menus_account.xml',
-		
+		'views/menus/menus_openhealth.xml',		
 		'views/menus/menus_marketing.xml',		 
 		'views/menus/menus_management.xml',		  
 		'views/menus/menus_qc.xml',
+
+		'views/menus/menus_account.xml',
 	],
 
 

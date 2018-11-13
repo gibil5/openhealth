@@ -286,7 +286,8 @@
 		# ----------------------------------------------------------- Views - Base Actions ------------------------------------------------------
 
 		# Base - Form and List Actions - Must be the first 
-		'views/base.xml',										# Very important - All Actions should go here - Dependencies
+		#'views/base.xml',										# Very important - All Actions should go here - Dependencies
+		'views/base_actions.xml',										# Very important - All Actions should go here - Dependencies
 		
 
 

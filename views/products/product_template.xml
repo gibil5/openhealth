@@ -207,6 +207,9 @@ black:x_checksum_1=='1'
 					<field name="x_checksum_1"/>
 					<field name="x_checksum_2"/>
 
+					<field name="item_ids"/>
+
+
 					<field name="uom_id"	invisible="1"/>
 					<field name="state"		invisible="1"/>
 <!--

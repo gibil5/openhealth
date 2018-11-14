@@ -25,7 +25,13 @@ class ProductPricelistItem(models.Model):
 			[
 				('product', 'product'),
 				('consultation', 'consultation'),
-				('laser_co2', 'laser_co2'),
+				
+                ('laser_co2', 'laser_co2'),
+                ('laser_excilite', 'laser_excilite'),
+                ('laser_ipl', 'laser_ipl'),
+                ('laser_ndyag', 'laser_ndyag'),
+                
+                ('laser_quick', 'laser_quick'),
 			],
     	)
 

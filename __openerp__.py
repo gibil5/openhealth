@@ -416,7 +416,7 @@
 
 		# Pricelists - Deprecated ?
 		'data/pricelists/pricelists.xml',
-		'data/pricelists/pricelist_items_co2.xml',
+		#'data/pricelists/pricelist_items_co2.xml',
 		'data/pricelists/pricelist_items_ipl.xml',
 		'data/pricelists/pricelist_items_ndyag.xml',
 		'data/pricelists/pricelist_items_med_cos.xml',

@@ -28,7 +28,8 @@ class Corrector(models.Model):
 		)
 
 	vspace = fields.Char(
-			'',
+			' ', 
+			readonly=True,
 		)
 
 
@@ -61,6 +62,7 @@ class Corrector(models.Model):
 		)
 
 
+
 # ----------------------------------------------------------- Pricelist ---------------------------
 
 	# Clear Pl Items
@@ -79,6 +81,8 @@ class Corrector(models.Model):
 
 
 
+
+
 # ----------------------------------------------------------- Pricelist ---------------------------
 	# Create Pl Items
 	@api.multi
@@ -91,7 +95,7 @@ class Corrector(models.Model):
 
 
 		# Clear
-		self.pl_item_ids.unlink()
+		#self.pl_item_ids.unlink()
 
 
 
@@ -99,6 +103,9 @@ class Corrector(models.Model):
 
 		# Product
 		if self.product_flag:
+
+			x_type = 'product'
+
 			products = self.env['product.template'].search([
 																('type', 'in', ['product']),
 														],
@@ -108,6 +115,9 @@ class Corrector(models.Model):
 		
 		# Consultation
 		elif self.con_flag:
+
+			x_type = 'consultation'
+			
 			products = self.env['product.template'].search([
 																('type', 'in', ['service']),
 																('x_treatment', 'in', ['consultation']),
@@ -118,6 +128,9 @@ class Corrector(models.Model):
 
 		# Co2
 		elif self.co2_flag:
+			
+			x_type = 'laser_co2'
+			
 			products = self.env['product.template'].search([
 																('type', 'in', ['service']),
 																('x_treatment', 'in', ['laser_co2']),
@@ -127,6 +140,9 @@ class Corrector(models.Model):
 													)
 		# Excilite
 		elif self.exc_flag:
+
+			x_type = 'laser_excilite'
+
 			products = self.env['product.template'].search([
 																('type', 'in', ['service']),
 																('x_treatment', 'in', ['laser_excilite']),
@@ -137,6 +153,9 @@ class Corrector(models.Model):
 
 		# Ipl
 		elif self.ipl_flag:
+
+			x_type = 'laser_ipl'
+
 			products = self.env['product.template'].search([
 																('type', 'in', ['service']),
 																('x_treatment', 'in', ['laser_ipl']),
@@ -147,6 +166,9 @@ class Corrector(models.Model):
 
 		# Ndyag
 		elif self.ndy_flag:
+
+			x_type = 'laser_ndyag'
+
 			products = self.env['product.template'].search([
 																('type', 'in', ['service']),
 																('x_treatment', 'in', ['laser_ndyag']),
@@ -157,6 +179,9 @@ class Corrector(models.Model):
 
 		# Quick
 		elif self.qui_flag:
+
+			x_type = 'laser_quick'
+
 			products = self.env['product.template'].search([
 																('type', 'in', ['service']),
 																('x_treatment', 'in', ['laser_quick']),
@@ -180,7 +205,6 @@ class Corrector(models.Model):
 												).id
 		min_quantity = 1
 		applied_on = '1_product'
-		x_type = 'product'
 
 
 
@@ -189,23 +213,18 @@ class Corrector(models.Model):
 
 			print product
 
-			#name = row['Name']
-			#fixed_price = row['Sale Price']
-			#x_type = row['Type']
-			#name_short = row['Name Short']
-			#product_tmpl_id = self.env['product.template'].search([
-			#														('x_name_short', '=', name_short),
-			#									],
-												#order='appointment_date desc',
-			#									limit=1,
-			#								).id
 			
 			# Init
 			name = product.name
-			fixed_price = product.list_price
-			x_type = product.type
 			name_short = product.x_name_short
 			product_tmpl_id = product.id
+
+			# Price Vip
+			if product.x_price_vip in [False, 0]:
+				fixed_price = product.list_price
+
+			else:
+				fixed_price = product.x_price_vip
 
 
 			# Create
@@ -279,7 +298,7 @@ class Corrector(models.Model):
 			# Init
 			name = row['Name']
 			fixed_price = row['Sale Price']
-			x_type = row['Type']
+			#x_type = row['Type']
 			name_short = row['Name Short']
 			product_tmpl_id = self.env['product.template'].search([
 																	('x_name_short', '=', name_short),

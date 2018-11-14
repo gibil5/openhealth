@@ -116,6 +116,10 @@ from . import session_med
 
 
 
+from . import product_pricelist_item
+
+
+
 
 
 

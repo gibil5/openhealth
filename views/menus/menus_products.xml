@@ -120,10 +120,22 @@
 						parent="prods_menu"
 						sequence="2"
 
-						name="Prods Pricelist"
+						name="Pricelist Exp"
 
 						action="product_template_pl_list_action"
 					/>
+
+
+
+			<!-- Product Pricelist Item Products -->
+			<menuitem 	id="prods_pl_item_prods_menu"
+						parent="prods_menu"
+						sequence="3"
+
+						name="Pricelist Prods"
+
+						action="product_pricelist_item_product_action"
+				/>
 
 
 

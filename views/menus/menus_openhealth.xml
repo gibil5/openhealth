@@ -60,8 +60,8 @@
 
 
 
-<!--
--->
+
+		<!-- Product Product --> 
 		<menuitem 	id="oh_product_product_menu" 
 					name="Products Product"
 					parent="openhealth_openhealth_menu"
@@ -70,6 +70,38 @@
 			/>
 
 
+
+		<!-- Product Pricelist Item --> 
+		<menuitem id="oh_pl_item_menu" 
+
+					name="Pricelist Items" 
+			
+					parent="openhealth_openhealth_menu"
+
+					action="product_pricelist_item_action"
+			/>
+
+
+		<!-- Product Pricelist Item Products --> 
+		<menuitem id="oh_pl_item_prods_menu" 
+
+					name="Pricelist Items Products" 
+			
+					parent="openhealth_openhealth_menu"
+
+					action="product_pricelist_item_product_action"
+			/>
+
+
+		<!-- Product Pricelist Item Cons --> 
+		<menuitem id="oh_pl_item_cons_menu" 
+
+					name="Pricelist Items Consultations" 
+			
+					parent="openhealth_openhealth_menu"
+
+					action="product_pricelist_item_consultation_action"
+			/>
 
 
 

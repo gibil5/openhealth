@@ -15,29 +15,38 @@
 
 					<header>
 
-	
+
 
 						<button 
 							type="object" 
 							class="oe_highlight"
 							
-							name="fix_names"
+							name="import_pl_items"
 							
-							string="Fix Names"
-
-							groups="openhealth.roots"
+							string="Import Pricelist"
 						/>
 
 
+
 						<button 
 							type="object" 
 							class="oe_highlight"
 							
-							name="unfix_names"
+							name="create_pl_items"
 							
-							string="Unfix"
+							string="Create Pricelist"
+						/>
 
-							groups="openhealth.roots"
+
+
+
+						<button 
+							type="object" 
+							class="oe_highlight"
+							
+							name="clear_pl_items"
+							
+							string="Clear"
 						/>
 
 
@@ -54,6 +63,28 @@
 							groups="openhealth.roots"
 						/>
 
+
+
+						<button 
+							type="object" 
+							class="oe_highlight oe_right"
+							name="unfix_names"
+							
+							string="Unfix"
+
+							groups="openhealth.roots"
+						/>
+
+
+						<button 
+							type="object" 
+							class="oe_highlight oe_right"
+							name="fix_names"
+							
+							string="Fix Names"
+
+							groups="openhealth.roots"
+						/>
 					</header>
 
 
@@ -69,11 +100,15 @@
 								<field name="delta"/>
 -->							
 								<field name="fix_count"/>
+
+								<field name="go_flag"/>
 							</group>
 							<group>								
-								<field name="go_flag"/>
 
 								<field name="product_flag"/>
+								<field name="con_flag"/>
+
+								<field name="vspace"/>
 
 								<field name="co2_flag"/>
 								<field name="exc_flag"/>
@@ -81,10 +116,11 @@
 								<field name="ndy_flag"/>
 								<field name="qui_flag"/>
 
+								<field name="vspace"/>
+
 								<field name="cos_flag"/>
 								<field name="med_flag"/>
 								
-								<field name="con_flag"/>
 							</group>
 						</group>
 
@@ -99,11 +135,11 @@
 						<!-- Notebook --> 
 						<notebook>
 							
-							<page string="Products">
-<!--
-								<field name="electronic_order_ids"/>
--->
+
+							<page string="Pricelist">
+								<field name="pl_item_ids"/>
 							</page>
+
 
 						</notebook>
 					</sheet>

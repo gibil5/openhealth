@@ -14,7 +14,7 @@
 
 	'description': """
 
-		13 Nov 2018
+		14 Nov 2018
 
 		Fulcrum - DEV - DOCEAN - PROLIANT
 		
@@ -413,18 +413,21 @@
 
 
 
-		# Pricelists 
-		#'data/pricelist_quick.xml',						
-		'data/pricelists/pricelists.xml',
 
-		'data/pricelists/pricelist_items_laser.xml',
+		# Pricelists - Deprecated ?
+		'data/pricelists/pricelists.xml',
+		'data/pricelists/pricelist_items_co2.xml',
+		'data/pricelists/pricelist_items_ipl.xml',
+		'data/pricelists/pricelist_items_ndyag.xml',
 		'data/pricelists/pricelist_items_med_cos.xml',
 		'data/pricelists/pricelist_items_quick.xml',
 
 
+
+
 		# New Pricelists
-		'data/pricelists/pricelist_consultation.xml',
-		'data/pricelists/pricelist_products.xml',
+		#'data/pricelists/pricelist_consultation.xml',
+		#'data/pricelists/pricelist_products.xml',
 
 
 
@@ -545,6 +548,12 @@
 		#'views/products/product_category.xml',
 		#'views/products/product_pricelist.xml',
 		#'views/products/purchase_order.xml',	
+
+
+
+		# Pricelist Items
+		'views/products/pricelist_item_actions.xml',
+
 
 
 

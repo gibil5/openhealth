@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 """
- 	Corrector
+	Corrector
 
- 	Created: 				 6 Nov 2018
- 	Last mod: 				 8 Nov 2018
+	Created: 				 6 Nov 2018
+	Last mod: 				 8 Nov 2018
 """
+import os
+import csv
 from openerp import models, fields, api
 
 class Corrector(models.Model):
@@ -25,6 +27,11 @@ class Corrector(models.Model):
 			required=True,
 		)
 
+	vspace = fields.Char(
+			'',
+		)
+
+
 	delta = fields.Integer(
 			default=1,
 		)
@@ -32,9 +39,7 @@ class Corrector(models.Model):
 
 	# Flags
 	go_flag = fields.Boolean()
-
 	product_flag = fields.Boolean()
-
 	co2_flag = fields.Boolean()
 	exc_flag = fields.Boolean()
 	ipl_flag = fields.Boolean()
@@ -46,6 +51,261 @@ class Corrector(models.Model):
 
 	# Count
 	fix_count = fields.Integer()
+
+
+
+# ----------------------------------------------------------- Relational --------------------------
+	pl_item_ids = fields.One2many(
+			'product.pricelist.item',
+			'corrector_id',
+		)
+
+
+# ----------------------------------------------------------- Pricelist ---------------------------
+
+	# Clear Pl Items
+	@api.multi
+	def clear_pl_items(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print
+		print 'Clear Pl Items'
+
+		# Clear
+		self.pl_item_ids.unlink()
+
+
+
+
+
+# ----------------------------------------------------------- Pricelist ---------------------------
+	# Create Pl Items
+	@api.multi
+	def create_pl_items(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print
+		print 'Create Pl Items'
+
+
+		# Clear
+		self.pl_item_ids.unlink()
+
+
+
+		# Search
+
+		# Product
+		if self.product_flag:
+			products = self.env['product.template'].search([
+																('type', 'in', ['product']),
+														],
+														#order='appointment_date desc',
+														#limit=1,
+													)
+		
+		# Consultation
+		elif self.con_flag:
+			products = self.env['product.template'].search([
+																('type', 'in', ['service']),
+																('x_treatment', 'in', ['consultation']),
+														],
+														#order='appointment_date desc',
+														#limit=1,
+													)
+
+		# Co2
+		elif self.co2_flag:
+			products = self.env['product.template'].search([
+																('type', 'in', ['service']),
+																('x_treatment', 'in', ['laser_co2']),
+														],
+														#order='appointment_date desc',
+														#limit=1,
+													)
+		# Excilite
+		elif self.exc_flag:
+			products = self.env['product.template'].search([
+																('type', 'in', ['service']),
+																('x_treatment', 'in', ['laser_excilite']),
+														],
+														#order='appointment_date desc',
+														#limit=1,
+													)
+
+		# Ipl
+		elif self.ipl_flag:
+			products = self.env['product.template'].search([
+																('type', 'in', ['service']),
+																('x_treatment', 'in', ['laser_ipl']),
+														],
+														#order='appointment_date desc',
+														#limit=1,
+													)
+
+		# Ndyag
+		elif self.ndy_flag:
+			products = self.env['product.template'].search([
+																('type', 'in', ['service']),
+																('x_treatment', 'in', ['laser_ndyag']),
+														],
+														#order='appointment_date desc',
+														#limit=1,
+													)
+
+		# Quick
+		elif self.qui_flag:
+			products = self.env['product.template'].search([
+																('type', 'in', ['service']),
+																('x_treatment', 'in', ['laser_quick']),
+														],
+														#order='appointment_date desc',
+														#limit=1,
+													)
+
+
+
+
+
+
+		# Init
+		name_pl = 'VIP'
+		pricelist_id = self.env['product.pricelist'].search([
+																('name', '=', name_pl),
+													],
+													#order='appointment_date desc',
+													limit=1,
+												).id
+		min_quantity = 1
+		applied_on = '1_product'
+		x_type = 'product'
+
+
+
+		# Create
+		for product in products:
+
+			print product
+
+			#name = row['Name']
+			#fixed_price = row['Sale Price']
+			#x_type = row['Type']
+			#name_short = row['Name Short']
+			#product_tmpl_id = self.env['product.template'].search([
+			#														('x_name_short', '=', name_short),
+			#									],
+												#order='appointment_date desc',
+			#									limit=1,
+			#								).id
+			
+			# Init
+			name = product.name
+			fixed_price = product.list_price
+			x_type = product.type
+			name_short = product.x_name_short
+			product_tmpl_id = product.id
+
+
+			# Create
+			pl_item = self.pl_item_ids.create({
+												'name': name,
+												'product_tmpl_id': product_tmpl_id,
+												'fixed_price': fixed_price,
+												'x_type': x_type,
+												'min_quantity': min_quantity,
+												'applied_on': applied_on,
+
+												'pricelist_id': pricelist_id,
+												'corrector_id': self.id,
+				})
+
+			print pl_item
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Pricelist ---------------------------
+	# Import Pl Items
+	@api.multi
+	def import_pl_items(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print
+		print 'Create Pl Items'
+
+
+		# Clear
+		self.pl_item_ids.unlink()
+
+
+
+		# Read from file
+		file_name = 'product_pl_import.csv'
+		base_dir = os.environ['HOME']
+		fname = base_dir + "/import/" + file_name
+		with open(fname, mode='r') as csv_file:
+			csv_reader = csv.DictReader(csv_file, delimiter=',')
+			data = []
+			for row in csv_reader:
+				#print row
+				data.append(row)
+
+
+
+		# Init
+		name_pl = 'VIP'
+		pricelist_id = self.env['product.pricelist'].search([
+																('name', '=', name_pl),
+													],
+													#order='appointment_date desc',
+													limit=1,
+												).id
+		min_quantity = 1
+		applied_on = '1_product'
+		x_type = 'product'
+
+
+
+		# Create
+		for row in data:
+			print row
+
+			# Init
+			name = row['Name']
+			fixed_price = row['Sale Price']
+			x_type = row['Type']
+			name_short = row['Name Short']
+			product_tmpl_id = self.env['product.template'].search([
+																	('x_name_short', '=', name_short),
+												],
+												#order='appointment_date desc',
+												limit=1,
+											).id
+
+
+			# Create
+			pl_item = self.pl_item_ids.create({
+												'name': name,
+												'product_tmpl_id': product_tmpl_id,
+												'fixed_price': fixed_price,
+												'x_type': x_type,
+												'min_quantity': min_quantity,
+												'applied_on': applied_on,
+
+												'pricelist_id': pricelist_id,
+												'corrector_id': self.id,
+				})
+
+			print pl_item
+
+		# Print
+		#print data
 
 
 
@@ -213,7 +473,7 @@ class Corrector(models.Model):
 		# Loop
 		for product in products:
 			print product.name
-			
+
 			product.x_go_flag = self.go_flag
 
 			product.fix_name()

@@ -16,7 +16,7 @@ class electronic_line(models.Model):
 	_description = "Openhealth Electronic Line"
 
 
-# ----------------------------------------------------------- Relational ------------------------------------------------------
+# ----------------------------------------------------------- Handle ------------------------------
 
 	# Electronic  
 	electronic_order_id = fields.Many2one(

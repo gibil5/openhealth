@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <openerp>
-	<data noupdate='1'>
+	<data noupdate='0'>
 
 
 
@@ -56,21 +56,23 @@ groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.c
 
 
 			<!-- Presupuestos --> 			
-			<menuitem 	id="sales_budget_menu" 
-						name="Presupuestos" 
+			<menuitem 	id="sales_budget_menu"
 						parent="sales_menu"
 						sequence="1"
 
+						name="Presupuestos"
+				
 						action="budget_list_action"
 					/>
 
 
 			<!-- Ventas --> 			
 			<menuitem 	id="sales_invoice_menu" 
-						name="Ventas" 
 						parent="sales_menu"
 						sequence="2"
 						
+						name="Ventas" 
+
 						action="sale_list_action"
 					/>
 
@@ -79,21 +81,23 @@ groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.c
 
 			<!-- Anulados --> 			
 			<menuitem 	id="sales_cancelled_menu"  
-						name="Anulados" 
 						parent="sales_menu"
 						sequence="4"
 						
+						name="Anulados" 
+
 						action="cancelled_list_action"
 						/>
 
 
 
-			<!-- Notas de Venta --> 			
-			<menuitem 	id="sales_credit_note_menu"  
-						name="Notas de Venta" 
+			<!-- Notas de Crédito --> 			
+			<menuitem 	id="sales_credit_note_menu"  						
 						parent="sales_menu"
 						sequence="5"
 						
+						name="Notas de Crédito" 
+
 						action="credit_note_list_action"
 						/>
 

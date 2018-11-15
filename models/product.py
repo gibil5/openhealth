@@ -22,6 +22,25 @@ class Product(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Account -----------------------------
+
+	x_name_account = fields.Char(
+			'Name Account',
+		)
+
+	x_code_account = fields.Char(
+			'Code Account',
+		)
+
+
+
+	vspace = fields.Char(
+			' ', 
+			readonly=True
+		)
+
+
 # ----------------------------------------------------------- Codes -------------------------------
 
 	# Code

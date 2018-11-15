@@ -96,7 +96,7 @@
 
 					parent="main_products_menu"
 			
-					sequence="2"
+					sequence="12"
 
 					name="Pricelist"
 				/>
@@ -220,21 +220,21 @@
 						parent="prods_menu"
 						sequence="1"
 
-						name="Prods"
+						name="Productos"
 
 						action="product_template_product_list_action"
 					/>
 
-			<!-- Products -->
+
+			<!-- Pricelist Export -->
+<!--
 			<menuitem 	id="prods_pl_product_menu" 	
 						parent="prods_menu"
 						sequence="2"
-
 						name="Pricelist Exp"
-
 						action="product_template_pl_list_action"
 					/>
-
+-->
 
 
 

@@ -88,6 +88,7 @@
 
 		<!-- Txt --> 
 <!--
+-->
 		<menuitem 	id="account_texto_menu" 
 					
 					name="Archivos TXT" 
@@ -98,7 +99,6 @@
 
 					action="base_directory_files_download.ir_filesystem_directory_action"
 			/>
--->
 
 
 

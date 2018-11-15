@@ -179,14 +179,11 @@ jx
 
 					<!-- Create CN -->
 					<!--
-					<button 
-							type="object" 
-							class="oe_highlight"	
-
-							string="Crear NC" 	
-
+					<button
+							type="object"
+							class="oe_highlight"
+							string="Crear NC"
 							name="create_credit_note"
-
 							groups="openhealth.roots"
 					/>
 					-->
@@ -197,13 +194,10 @@ jx
 					<!-- Serial Nr -->
 					<!--
 					<button 
-							type="object" 
-							class="oe_highlight"	
-
-							string="Fix Serial Nr" 	
-
+							type="object"
+							class="oe_highlight"
+							string="Fix Serial Nr"
 							name="fix_serial_nr"
-
 							groups="openhealth.roots"
 					/>
 					-->
@@ -211,17 +205,15 @@ jx
 
 
 					<!-- Make QR -->
-					<button 
-							type="object" 
-							class="oe_highlight"	
-
-							string="Make QR" 	
-
+<!--
+					<button
+							type="object"
+							class="oe_highlight"
+							string="Make QR"
 							name="make_qr"
-
 							groups="openhealth.roots"
 					/>
-
+-->
 
 				</xpath>
 

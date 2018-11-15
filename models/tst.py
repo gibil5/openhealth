@@ -282,7 +282,7 @@ def create_recommendations(self):
 		print 'Quick'
 		product = self.env['product.template'].search([
 															#('x_name_short', '=', 'quick_neck_hands_rejuvenation_1'),
-															('x_name_short', '=', 'qui_nec-han_rej_30m_one'),
+															('x_name_short', '=', 'qui_nec-han_rej_5m_one'),
 											],
 												#order='date_order desc',
 												limit=1,

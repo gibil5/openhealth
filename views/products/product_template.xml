@@ -30,10 +30,14 @@
 
 							<field name="active"/>
 
+
+							<field name="x_name_account"/>
+							<field name="x_code_account"/>
+
+							<field name="vspace"/>
+
 							<field name="x_generated"/>
-
 							<field name="x_code"/>
-
 							<field name="description"/>
 							<field name="x_name_short"/>							
 							<field name="x_price_vip"/>
@@ -167,7 +171,16 @@ black:x_checksum_1=='1'
 
 
 					<field name="name"/>
-					<field name="x_name_unfixed"/>
+					<field name="x_name_account"/>
+					<field name="x_code_account"/>
+
+
+					<field name="list_price"/>
+					<field name="x_price_vip"/>
+
+
+
+
 
 					<field name="x_counter"/>
 					<field name="x_code"/>
@@ -178,15 +191,14 @@ black:x_checksum_1=='1'
 
 
 					<field name="x_name_short"/>
-
-					<field name="x_short_unfixed"/>
-
-
 					<field name="x_generated"/>
 
 
 
 <!--
+					<field name="x_short_unfixed"/>
+					<field name="x_name_unfixed"/>
+
 					<field name="x_coder"/>
 					<field name="default_code"/>
 					<field name="x_origin"/>
@@ -201,7 +213,6 @@ black:x_checksum_1=='1'
 					<field name="x_sessions"/>
 
 
-					<field name="list_price"/>
 
 					<field name="x_name_ticket"/>
 					<field name="x_checksum_1"/>

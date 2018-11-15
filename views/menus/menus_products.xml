@@ -102,6 +102,17 @@
 				/>
 
 
+			<!-- All -->
+			<menuitem 	id="prods_pl_item_all_menu"
+						parent="pricelists_menu"
+						sequence="0"
+
+						name="All"
+
+						action="product_pricelist_item_action"
+				/>
+
+
 			<!-- Product -->
 			<menuitem 	id="prods_pl_item_prods_menu"
 						parent="pricelists_menu"

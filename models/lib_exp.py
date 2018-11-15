@@ -216,15 +216,19 @@ def format_txt(order):
 
 
 
+
+
 # Table 3 - Total
-# |1498.60|10.00]
+# |200.00||]
 # !
 #               str(order.amount_total)     + sep + \
 
-	table_3 = blank                       + sep + \
+	table_3 = 	blank                       	+ sep + \
 				acc.fmt(order.amount_total)     + sep + \
-				blank                       + eol + ret + \
-				eot + ret
+				blank                       	+ sep + eol + ret + \
+												  eot + ret
+
+
 
 
 
@@ -314,7 +318,8 @@ def format_txt(order):
 
 
 
-# Producto 2|NIU|10.00|150.00|17.7|01|||27|10|1000|IGV|VAT||||||040010008|15.00||]
+# Producto 2|NIU|10.00|150.00|17.7|01|||27|10|1000|IGV|VAT||||||040010008|15.00||]		# Dep
+# Producto 2|NIU|10.00|150.00|17.7|01|||27|10|1000|IGV|VAT||||||040010008|15.00||||]
 # !
 
 	# Init
@@ -368,7 +373,9 @@ def format_txt(order):
 					blank                           + sep + \
 					blank                           + sep + \
 					account_code                    + sep + \
-					acc.fmt(line.price_unit_net)        + sep + \
+					acc.fmt(line.price_unit_net)    + sep + \
+					blank                           + sep + \
+					blank                           + sep + \
 					blank                           + sep + \
 					blank                           + eol + ret
 

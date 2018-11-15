@@ -16,7 +16,7 @@
 					<header>
 
 
-
+<!--
 						<button 
 							type="object" 
 							class="oe_highlight"
@@ -25,7 +25,7 @@
 							
 							string="Import Pricelist"
 						/>
-
+-->
 
 
 						<button 

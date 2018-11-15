@@ -19,8 +19,8 @@ def get_qr_data(self):
 	"""
 	high level support for doing this and that.
 	"""
-	print
-	print 'Get QR Data'
+	#print
+	#print 'Get QR Data'
 
 	# Init
 	_dic_type_code = {
@@ -88,8 +88,8 @@ def get_qr_img(qr_data):
 	"""
 	high level support for doing this and that.
 	"""
-	print
-	print 'Get QR Img'
+	#print
+	#print 'Get QR Img'
 
 
 	qr = qrcode.QRCode(version=1,error_correction=qrcode.constants.ERROR_CORRECT_L,box_size=20,border=4,)

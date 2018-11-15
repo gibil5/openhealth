@@ -10,19 +10,19 @@
 import gen_vars as gv
 
 
-
 #------------------------------------------------  Products - 1 Param -----------------------------
 # Get Generated - 1 Param
 def get_generated_prod(short_name):
-	print
-	print 'Get Generated Prod'
+	#print
+	#print 'Get Generated Prod'
+
 	generated = ''
 	
 	if 	short_name in gv._dic_prod: 
 
 			generated = gv._dic_prod[short_name]
 
-	print generated
+	#print generated
 
 	return generated
 
@@ -33,6 +33,7 @@ def get_generated_prod(short_name):
 def get_generated_con(short_name):
 	#print 
 	#print 'Get Generated Con'
+
 	generated = ''
 	tre = short_name.split('_')[0]
 	zone = short_name.split('_')[1]
@@ -51,6 +52,7 @@ def get_generated_con(short_name):
 def get_generated_co2(short_name):
 	#print 
 	#print 'Get Generated Co2'
+
 	generated = ''
 	tre = 		short_name.split('_')[0]
 	zone = 		short_name.split('_')[1]
@@ -79,6 +81,7 @@ def get_generated_co2(short_name):
 def get_generated_med(short_name):
 	#print 
 	#print 'Get Generated Med'
+
 	generated = ''
 	arr = short_name.split('_')
 	# Generate 
@@ -164,6 +167,7 @@ def get_generated_exc(short_name):
 def get_generated_quick(short_name):
 	#print 
 	#print 'Get Generated Quick'
+
 	# Init 
 	generated = ''
 	arr = short_name.split('_')

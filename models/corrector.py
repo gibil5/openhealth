@@ -28,7 +28,7 @@ class Corrector(models.Model):
 		)
 
 	vspace = fields.Char(
-			' ', 
+			' ',
 			readonly=True,
 		)
 
@@ -108,16 +108,17 @@ class Corrector(models.Model):
 
 			products = self.env['product.template'].search([
 																('type', 'in', ['product']),
+																('sale_ok', '=', True),
 														],
 														#order='appointment_date desc',
 														#limit=1,
 													)
-		
+
 		# Consultation
 		elif self.con_flag:
 
 			x_type = 'consultation'
-			
+
 			products = self.env['product.template'].search([
 																('type', 'in', ['service']),
 																('x_treatment', 'in', ['consultation']),
@@ -128,9 +129,9 @@ class Corrector(models.Model):
 
 		# Co2
 		elif self.co2_flag:
-			
+
 			x_type = 'laser_co2'
-			
+
 			products = self.env['product.template'].search([
 																('type', 'in', ['service']),
 																('x_treatment', 'in', ['laser_co2']),
@@ -193,6 +194,35 @@ class Corrector(models.Model):
 
 
 
+		# Cosmetology
+		elif self.cos_flag:
+
+			x_type = 'cosmetology'
+
+			products = self.env['product.template'].search([
+																('type', 'in', ['service']),
+																('x_family', 'in', ['cosmetology']),
+														],
+														#order='appointment_date desc',
+														#limit=1,
+													)
+		# Medical
+		elif self.med_flag:
+
+			x_type = 'medical'
+
+			products = self.env['product.template'].search([
+																('type', 'in', ['service']),
+																('x_family', 'in', ['medical']),
+														],
+														#order='appointment_date desc',
+														#limit=1,
+													)
+
+
+
+
+
 
 
 		# Init
@@ -213,10 +243,10 @@ class Corrector(models.Model):
 
 			print product
 
-			
+
 			# Init
 			name = product.name
-			name_short = product.x_name_short
+			#name_short = product.x_name_short
 			product_tmpl_id = product.id
 
 			# Price Vip

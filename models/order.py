@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 """
- 	Order
+	Order
 
- 	Created: 			26 Aug 2016
+	Created: 			26 Aug 2016
 	Last mod: 			 5 Nov 2018
 """
-from openerp import models, fields, api
+import math
 import datetime
 from num2words import num2words
-import math
-from openerp import tools
+from openerp import models, fields, api
+#from openerp import tools
 from openerp import _
 from openerp.exceptions import Warning
 import ord_vars
@@ -19,17 +19,25 @@ import user
 import lib
 import lib_con
 import lib_qr
-
 import chk_patient
 import chk_order
-
 
 class sale_order(models.Model):
 	"""
 	high level support for doing this and that.
 	"""
-
 	_inherit = 'sale.order'
+
+
+
+# ----------------------------------------------------------- Update Order - Dep ------------------
+	# Update colors (state)
+	#@api.multi 
+	#def update_order_nex(self):
+		#print 
+		#print 'Update Order Nex'
+		#print 
+
 
 
 
@@ -59,7 +67,6 @@ class sale_order(models.Model):
 
 
 # ----------------------------------------------------------- Constraints - Python ----------------
-
 	# Check Ruc
 	@api.constrains('x_ruc')
 	def _check_x_ruc(self):
@@ -67,7 +74,6 @@ class sale_order(models.Model):
 		#print 'Check Ruc'
 		if self.x_type in ['ticket_invoice', 'invoice']:
 			chk_order.check_ruc(self)
-
 
 
 	# Check Id doc - Documento Identidad 
@@ -81,8 +87,6 @@ class sale_order(models.Model):
 			chk_patient.check_x_id_doc(self)
 
 
-
-
 	# Check Serial Number
 	#@api.constrains('x_serial_nr')
 	#def _check_x_serial_nr(self):
@@ -92,21 +96,12 @@ class sale_order(models.Model):
 
 
 
-
-
-
-
-
-
-
-
 # ---------------------------------------------- Electronic ------------------------------------
 
 	x_title = fields.Char(
 			'Titulo',
 			default='Venta Electrónica',
 		)
-
 
 	x_electronic = fields.Boolean(
 			'Electronic', 
@@ -122,13 +117,11 @@ class sale_order(models.Model):
 		)
 
 
-
 	# Make QR
 	@api.multi
 	def make_qr(self):
-		print
-		print 'Make QR'
-
+		#print
+		#print 'Make QR'
 
 		# Create Data
 		self.x_qr_data = lib_qr.get_qr_data(self)
@@ -1419,23 +1412,18 @@ class sale_order(models.Model):
 # ---------------------------------------------- Create Payment Method --------------------------------------------------------
 	@api.multi 
 	def create_payment_method(self):
+		"""
+		high level support for doing this and that.
+		"""
 
 		# Update Descriptors
 		self.update_descriptors()
 
-		# Init vars 
+		# Init vars
 		name = 'Pago'
 		method = 'cash'
-		#balance = self.x_amount_total - self.pm_total
 		balance = self.x_amount_total
-
-		# For Receipts and Invoices  
-		#firm = self.partner_id.x_firm
-		#dni = self.partner_id.x_dni
-		#ruc = self.partner_id.x_ruc
-
 		firm = self.patient.x_firm
-		#dni = self.patient.x_dni
 		ruc = self.patient.x_ruc
 
 
@@ -1469,7 +1457,7 @@ class sale_order(models.Model):
 
 		ret = self.x_payment_method.pm_line_ids.create({
 																	'name': name,
-																	'method': method ,
+																	'method': method,
 																	'subtotal': subtotal,
 																	'payment_method': payment_method, 
 										})
@@ -1517,6 +1505,9 @@ class sale_order(models.Model):
 	# For batch 
 	@api.multi 
 	def update_descriptors_all(self):
+		"""
+		high level support for doing this and that.
+		"""
 
 		orders = self.env['sale.order'].search([
 													('state', '=', 'sale'),
@@ -1535,6 +1526,9 @@ class sale_order(models.Model):
 	# Update Family and Product 
 	@api.multi 
 	def update_descriptors(self):
+		"""
+		high level support for doing this and that.
+		"""
 
 		out = False
 
@@ -1549,26 +1543,26 @@ class sale_order(models.Model):
 					out = True
 
 				# Procedures
-				elif line.product_id.categ_id.name in ['Procedimiento', 'Quick Laser', 'Laser Co2', 'Laser Excilite', 'Laser M22', 'Medical']: 
+				elif line.product_id.categ_id.name in ['Procedimiento', 'Quick Laser', 'Laser Co2', 'Laser Excilite', 'Laser M22', 'Medical']:
 					self.x_family = 'procedure'
 					self.x_product = line.product_id.x_name_ticket
 					out = True
 
-				# Cosmetology 
+				# Cosmetology
 				elif line.product_id.categ_id.name == 'Cosmeatria':
 					self.x_family = 'cosmetology'
 					self.x_product = line.product_id.x_name_ticket
 					out = True
 
 
-				# Products 
-				else: 
+				# Products
+				else:
 					self.x_product = line.product_id.x_name_ticket
-					if self.x_family != 'procedure': 
+					if self.x_family != 'procedure':
 						self.x_family = 'product'
 
 
-		#print 
+		#print
 		#print 'Update descriptors'
 		#print self.x_family
 		#print self.x_product
@@ -1580,19 +1574,16 @@ class sale_order(models.Model):
 
 
 # ----------------------------------------------------------- Print -------------------------------
-	# Print Ticket - Electronic 
+	# Print Ticket - Electronic
 	@api.multi
 	def print_ticket_electronic(self):
-		print 
-		print 'Print Electronic'
-
+		"""
+		high level support for doing this and that.
+		"""
+		#print
+		#print 'Print Electronic'
 		name = 'openhealth.report_ticket_receipt_electronic'
-		
 		action = self.env['report'].get_action(self, name)
-
-		#print action
-
-		#return self.env['report'].get_action(self, name)
 		return action
 
 
@@ -1600,6 +1591,9 @@ class sale_order(models.Model):
 	# Print Ticket - Deprecated !
 	@api.multi
 	def print_ticket(self):
+		"""
+		high level support for doing this and that.
+		"""
 		if self.x_type == 'ticket_receipt': 
 			name = 'openhealth.report_ticket_receipt_nex_view'
 			return self.env['report'].get_action(self, name)
@@ -1617,17 +1611,16 @@ class sale_order(models.Model):
 	# Update Appointment in Treatment 
 	@api.multi 
 	def update_appointment(self):
-
-		if self.x_family == 'consultation': 
-			for app in self.treatment.appointment_ids: 
-				if app.x_type == 'consultation': 
-					#app.state = 'invoiced'
+		"""
+		high level support for doing this and that.
+		"""
+		if self.x_family == 'consultation':
+			for app in self.treatment.appointment_ids:
+				if app.x_type == 'consultation':
 					app.state = 'Scheduled'
-
-		if self.x_family == 'procedure': 
-			for app in self.treatment.appointment_ids: 
-				if app.x_type == 'procedure': 
-					#app.state = 'invoiced'
+		if self.x_family == 'procedure':
+			for app in self.treatment.appointment_ids:
+				if app.x_type == 'procedure':
 					app.state = 'Scheduled'
 
 
@@ -1637,7 +1630,10 @@ class sale_order(models.Model):
 	# For Treatments Quick access
 	@api.multi
 	def open_line_current(self):  
-		consultation_id = self.id 
+		"""
+		high level support for doing this and that.
+		"""
+		consultation_id = self.id
 		return {
 				'type': 'ir.actions.act_window',
 				'name': ' Edit Order Current', 
@@ -1663,9 +1659,10 @@ class sale_order(models.Model):
 	# For Payment Method comeback 
 	@api.multi 
 	def open_myself(self):
-
-		order_id = self.id  
-
+		"""
+		high level support for doing this and that.
+		"""
+		order_id = self.id
 		return {
 			# Mandatory 
 			'type': 'ir.actions.act_window',
@@ -1693,30 +1690,27 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Update Order ------------------------------------------------------
-
-	# Update colors (state)
-	#@api.multi 
-	#def update_order_nex(self):
-		#print 
-		#print 'Update Order Nex'
-		#print 
 
 
 
-# ----------------------------------------------------------- Remove - For Treatment   ------------------------------------------------------
+# ----------------------------------------------------------- Remove - For Treatment   ------------
 	@api.multi
 	def remove_myself(self):  
+		"""
+		high level support for doing this and that.
+		"""
 		self.test_reset()
 		self.unlink()
 
 
 
-# ----------------------------------------------------------- Reset ------------------------------------------------------
-	
+# ----------------------------------------------------------- Reset -------------------------------
 	# Test - Reset 
 	@api.multi 
 	def test_reset(self):
+		"""
+		high level support for doing this and that.
+		"""
 		#print 
 		#print 'Order - Reset'
 		self.x_payment_method.unlink()
@@ -1726,37 +1720,38 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Pay ------------------------------------------------------
+# ----------------------------------------------------------- Pay ---------------------------------
 	# Test  
 	@api.multi 
 	def pay_myself(self, date_order=False):
-
-		#print 
+		"""
+		high level support for doing this and that.
+		"""
+		#print
 		#print 'Pay myself'
 
-		if self.state == 'draft': 
+		if self.state == 'draft':
 			self.create_payment_method()
-			
-			#self.x_payment_method.saledoc = 'advertisement'
 			self.x_payment_method.saledoc = 'ticket_receipt'
-
 			self.x_payment_method.state = 'done'
 			self.state = 'sent'
 			self.validate()
 			self.action_confirm_nex()
 
-			# Update  
-			if date_order != False: 
+			# Update
+			if date_order != False:
 				ret = self.write({
 									'date_order': date_order,
 								})
 
 
 
-
 # ----------------------------------------------------------- Generates ---------------------------
 	# Generate Date Order
 	def generate_date_order(self, date_order, delta_hou=0, delta_min=0, delta_sec=0):
+		"""
+		high level support for doing this and that.
+		"""
 		#print
 		#print 'Generate Date Order'		
 		date_order = lib.correct_date_delta(date_order, delta_hou, delta_min, delta_sec)
@@ -1767,6 +1762,9 @@ class sale_order(models.Model):
 
 	# Generate Serial Nr
 	def generate_serial_nr(self):
+		"""
+		high level support for doing this and that.
+		"""
 		#print 
 		#print 'Generate Serial Nr'
 
@@ -1789,31 +1787,36 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Test ------------------------------------------------------
+# ----------------------------------------------------------- Test --------------------------------
 
 	# Computes
 	def test_computes(self):
-		print 
-		print 'Order - Computes'
+		"""
+		high level support for doing this and that.
+		"""
+		#print 
+		#print 'Order - Computes'
 
-		print 'x_partner_vip\t', 		self.x_partner_vip
-		print 'nr_lines\t', 				self.nr_lines
-		print 'x_amount_total\t', 		self.x_amount_total
-		
-		print 'x_total_in_words\t', 	self.x_total_in_words
-		print 'x_total_cents\t', 		self.x_total_cents
-		print 'x_total_net\t', 			self.x_total_net
-		print 'x_total_tax\t', 			self.x_total_tax		
-		print 'x_my_company\t', 	 	self.x_my_company
-		print 'x_date_order_corr\t', 	self.x_date_order_corr
+		print 'x_partner_vip\t', self.x_partner_vip
+		print 'nr_lines\t', self.nr_lines
+		print 'x_amount_total\t', self.x_amount_total
+		print 'x_total_in_words\t', self.x_total_in_words
+		print 'x_total_cents\t', self.x_total_cents
+		print 'x_total_net\t', self.x_total_net
+		print 'x_total_tax\t', self.x_total_tax		
+		print 'x_my_company\t', self.x_my_company
+		print 'x_date_order_corr\t', self.x_date_order_corr
 
 
 
 
 	# Actions
 	def test_actions(self):
-		print
-		print 'Order - Actions'
+		"""
+		high level support for doing this and that.
+		"""
+		#print
+		#print 'Order - Actions'
 		self.state_force()
 		self.state_force()
 		self.open_product_selector_product()
@@ -1828,9 +1831,11 @@ class sale_order(models.Model):
 	# Test - Init
 	@api.multi
 	def test_init(self, patient_id, partner_id, doctor_id, treatment_id, pl_id):
-
-		print
-		print 'Order - Test Init'
+		"""
+		high level support for doing this and that.
+		"""
+		#print
+		#print 'Order - Test Init'
 
 		#self.test_reset()
 
@@ -1880,8 +1885,8 @@ class sale_order(models.Model):
 		# Create
 		for tup in tup_arr:
 
-			name_short = 	tup[0]
-			price_manual = 	tup[1]
+			name_short = tup[0]
+			price_manual = tup[1]
 
 			# Prints
 			#print tup
@@ -1898,11 +1903,14 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Test Unit ------------------------------------------------------
+# ----------------------------------------------------------- Test Unit ---------------------------
 	# Test - Unit
 	def test_unit(self):
-		print
-		print 'Order - Test Unit'
+		"""
+		high level support for doing this and that.
+		"""
+		#print
+		#print 'Order - Test Unit'
 
 		# Computes
 		#self.test_computes()
@@ -1910,58 +1918,48 @@ class sale_order(models.Model):
 		# Actions - Remaining
 		#self.test_actions()
 
-
 		# Init
 		total = 0
-		#total_vip = 0
-
 
 		for line in self.order_line:
-
 			# Standard
 			#total = 	line.product_id.list_price * line.product_uom_qty 		+ total
-			
 			price_std = line.product_id.list_price
 			price_vip = line.product_id.x_price_vip
 			price_manual = line.x_price_manual
-			
 			qty = line.product_uom_qty
-
 			compact = line.x_description
-
-
 
 
 			# Prints
 			print 'product_id: ', line.product_id.name
 			print 'price_std: ', price_std
-			print 'price_vip: ',  price_vip
+			print 'price_vip: ', price_vip
 			print 'price_manual: ', price_manual
-			#print price_applied
 			print 'qty: ', qty
 			print 'compact: ', compact
 
-
 			# Assert
-			#assert compact != 'x'  					# Assert 
-
+			#assert compact != 'x'  					# Assert
 
 			# Price
 
 			# Manual
-			if price_manual != -1: 
+			if price_manual != -1:
 				price = price_manual
-			
+
 			# Public
 			elif self.pricelist_id.name in ['Public Pricelist']:
 				price = price_std
 
 			# Vip
-			else: 
-				if line.product_id.type in ['service'] and price_vip != 0: 		# Is a service and has a Vip price
+			else:
+				# Is a service and has a Vip price
+				if line.product_id.type in ['service'] and price_vip != 0:
 					price = price_vip
+				# Is a service and does not have a Vip price
 				else:
-					price = price_std											# Is a service and does not have a Vip price
+					price = price_std
 
 
 			# Total
@@ -1970,88 +1968,73 @@ class sale_order(models.Model):
 			print 'total: ', total
 
 
-
 		# Asserts
 		print
 		print 'Asserts'
 		print self.pricelist_id.name
 		print 'total: ', total
 		print 'self.amount_total: ', self.amount_total
-
 		assert self.amount_total == total    				# Assert
-
 
 	# test_unit
 
 
 
 
-# ----------------------------------------------------------- Test Integration ------------------------------------------------------
-	# Test - Integration 
-	# Test the whole Sale Cycle. 
-	# With UI buttons included. Activate the different creation and write procedures. 
+# ----------------------------------------------------------- Test Integration --------------------
+	# Test - Integration
+	# Test the whole Sale Cycle.
+	# With UI buttons included. Activate the different creation and write procedures.
 	def test_integration(self, test_case=False):
-		print 
-		print 'Order - Test Integration'
-		print test_case
-
-
+		"""
+		high level support for doing this and that.
+		"""
+		#print
+		#print 'Order - Test Integration'
+		#print test_case
 
 # Cycle - Begin
-		
+
 		# Create and Init - PM 
 		self.create_payment_method()
-		# Type 
+		# Type
 		self.x_payment_method.saledoc = ord_vars._dic_tc_type[test_case]
-
 
 		print self.x_payment_method.name
 		self.x_payment_method.go_back()
 		print self.x_payment_method.state
 		
 		# Order
-		self.validate()					
+		self.validate()
 		self.action_confirm_nex()
 		self.print_ticket()
 
-
-		# Cancel 
-		if test_case in ['ticket_invoice_cancel', 'ticket_receipt_cancel']: 
+		# Cancel
+		if test_case in ['ticket_invoice_cancel', 'ticket_receipt_cancel']:
 			self.cancel_order()
 
-
 # Cycle - End
-
-
 	# test_integration
 
 
 
-# ----------------------------------------------------------- Test ------------------------------------------------------
+# ----------------------------------------------------------- Test --------------------------------
 	# Test
 	def test(self, test_case=False):
-		print 
-		print 'Order - Test'
+		"""
+		high level support for doing this and that.
+		"""
+		#print 
+		#print 'Order - Test'
+		#print test_case
 
-		print test_case
-
-		if self.patient.x_test: 
-
-			if test_case != False: 
+		if self.patient.x_test:
+			if test_case != False:
 				x_type = test_case.split(',')[1].strip()
-			
 			else: 
 				x_type = 'ticket_receipt'
 
-
-			print test_case
-			print x_type  
-
-
-			# Test Integration 
 			self.test_integration(x_type)
 
-
-			# Test Unit 
 			#self.test_unit()
 	# test 

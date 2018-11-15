@@ -19,58 +19,8 @@ class Container(models.Model):
 
 
 
-# ----------------------------------------------------------- Creates ------------------------------
 
-	# Create Codes
-	@api.multi
-	def create_codes(self):
-		"""
-		high level support for doing this and that.
-		"""
-		print
-		print 'Create - Codes'
-
-
-		# Product
-		x_type = 'product'
-		if x_type in ['product']:
-
-			#prefix = '1000000'
-
-			count = self.env['product.product'].search_count([
-																('type', 'in', ['product']),
-																('sale_ok', 'in', [True]),
-												],
-													#order='name asc',
-													#limit=1,
-												)
-
-			products = self.env['product.product'].search([
-																('type', 'in', ['product']),
-																('sale_ok', 'in', [True]),
-												],
-													order='name asc',
-													#limit=1,
-												)
-
-			idx = 1
-
-			#for product in products.sorted(key=lambda l: l.type in ['product']):
-			for product in products:
-				print product.name
-				product.x_counter = idx
-				idx = idx + 1
-
-			print
-			print count
-			print
-
-	# create_codes
-
-
-
-
-
+# ----------------------------------------------------------- Patients ----------------------------
 	# Create Patients
 	@api.multi
 	def create_patients(self):
@@ -89,7 +39,6 @@ class Container(models.Model):
 
 
 		# Create Patients
-		#pat_array = tst_pat.test_cases(self, self.id, self.patient.id, self.partner.id, self.doctor.id, self.treatment.id, pl_id)
 		pat_array = tst_pat.test_cases(self, container_id, doctor_id)
 
 		print pat_array
@@ -97,16 +46,17 @@ class Container(models.Model):
 
 
 		# Init
-		name = 'Export'
-
+		#name = 'Export'
 
 		# Search Mgt
-		self.mgt = self.env['openhealth.management'].search([
-																('name', '=', name),
-													],
+		#self.mgt = self.env['openhealth.management'].search([
+		#														('name', '=', name),
+		#											],
 														#order='write_date desc',
-														limit=1,
-													)
+		#												limit=1,
+		#											)
+
+
 
 		# Update
 		if self.mgt.name != False:
@@ -131,6 +81,8 @@ class Container(models.Model):
 
 
 
+# ----------------------------------------------------------- Sales -------------------------------
+
 	# Create Sales
 	@api.multi
 	def create_sales(self):
@@ -141,22 +93,34 @@ class Container(models.Model):
 		print 'Create Sales'
 
 
+		# Search
+		patients = self.env['oeh.medical.patient'].search([
+																('x_test','=', True),
+															],
+															#order='appointment_date desc',
+															#limit=1,
+														)
+
+
+
 		# Loop
-		for patient in self.patient_ids:
+		#for patient in self.patient_ids:
+		for patient in patients:
 
 			# Clean
 			#creates.remove_orders(self, patient_id)
 
+
 			# Init
 			patient_id = patient.id
+			partner_id = patient.partner_id.id
+
 			doctor_id = self.doctor.id
 			treatment_id = False
 			short_name = 'product_1'
 			qty = 40
 			pricelist_id = patient.property_product_pricelist.id
 
-
-			partner_id = patient.partner_id.id
 
 
 			# Invoice
@@ -165,9 +129,9 @@ class Container(models.Model):
 				x_type = 'ticket_invoice'
 
 				# Create
-				#creates.create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type, pricelist_id)
 				creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id, short_name, qty, x_type, pricelist_id)
 
+				# Update
 				#if self.cn_invoice_create:
 				#	ret = order.write({
 				#						'state': 'cancel',
@@ -180,10 +144,10 @@ class Container(models.Model):
 				x_type = 'ticket_receipt'
 
 				# Create
-				#creates.create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type, pricelist_id)
 				creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id, short_name, qty, x_type, pricelist_id)
 
 
+				# Update
 				#if self.cn_receipt_create:
 				#	ret = order.write({
 				#						'state': 'cancel',

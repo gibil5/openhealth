@@ -16,7 +16,6 @@ import ord_vars
 
 # -------------------------------------------------------------------------------------------------
 # Create Order
-#def create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type, pricelist_id):
 def create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id, short_name, qty, x_type, pricelist_id):
 	"""
 	high level support for doing this and that.
@@ -98,8 +97,10 @@ def create_patient(self, container_id, test_case, name, sex, address, id_doc_typ
 	#print name 
 
 
+ 	
  	# Clear 
- 	remove_patient(self, name)
+ 	#remove_patient(self, name)
+
 
 
 	# Init
@@ -108,12 +109,14 @@ def create_patient(self, container_id, test_case, name, sex, address, id_doc_typ
 	city = 		address.split(',')[2]
 
 
-	# Search 
+
+	# Search
 	patient = self.env['oeh.medical.patient'].search([
 														('name', '=', name), 
 											],)
 
-	if patient.name == False: 
+
+	if patient.name == False:
 
 		# Create Patient 
 		if id_code != False: 	# With Id Code - Nr Historia
@@ -134,8 +137,10 @@ def create_patient(self, container_id, test_case, name, sex, address, id_doc_typ
 																'x_id_doc':			id_doc,  
 																'x_test': 	True, 
 																'x_test_case': 	test_case, 
+																'x_dni':		dni,
+
 																'x_id_code':		id_code,  
-																'x_dni':		dni,  
+
 																'container_id': 	container_id, 
 													})
 
@@ -157,7 +162,8 @@ def create_patient(self, container_id, test_case, name, sex, address, id_doc_typ
 																'x_id_doc':			id_doc,  
 																'x_test': 	True, 
 																'x_test_case': 	test_case, 
-																'x_dni':		dni,  
+																'x_dni':		dni,
+
 																'container_id': 	container_id, 
 													})
 	#print patient

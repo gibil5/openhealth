@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+
+<!-- TREE -->
+		<record model="ir.ui.view" id="product_pricelist_item_tree_view">
+
+			<field name="name">product.pricelist.item.tree</field>
+			
+			<field name="model">product.pricelist.item</field>
+			
+			<field name="type">tree</field>
+			
+			<field name="priority" eval="1"/>
+			
+			<field name="arch" type="xml">
+			
+				<tree string="Product Pricelist Item">
+
+					<field name="name"/>
+
+					<field name="product_tmpl_id"/>
+
+					<field name="fixed_price"/>
+
+					<field name="min_quantity"/>
+					
+					<field name="applied_on"/>
+
+				</tree>
+			</field>
+		</record>
+
+
+
+
+
+	</data>
+</openerp>

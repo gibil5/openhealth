@@ -13,14 +13,30 @@
 				<form string="container Form">
 					<header>
 
+<!--
+							string="Crear Electrónico" 								
+-->
 						<!-- Create Electronic --> 
 						<button 
 							type="object" 
 							class="oe_highlight"
 							name="create_electronic" 
 							
-							string="Crear Electrónico" 								
+							string="Facturación" 								
 						/>
+
+<!--
+							string="Export TXT" 								
+-->
+						<!-- Export Txt --> 
+						<button 
+							type="object" 
+							class="oe_highlight"
+							name="export_txt" 
+							
+							string="Crear TXT" 								
+						/>
+
 
 
 						<!-- QC --> 
@@ -33,17 +49,6 @@
 
 							groups="openhealth.roots"
 						/>
-
-
-						<!-- Export Txt --> 
-						<button 
-							type="object" 
-							class="oe_highlight"
-							name="export_txt" 
-							
-							string="Export TXT" 								
-						/>
-
 
 
 

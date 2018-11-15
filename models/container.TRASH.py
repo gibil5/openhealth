@@ -168,3 +168,53 @@ class Object():
 
 
 			
+
+# 15 Nov 2018
+
+
+# ----------------------------------------------------------- Codes ------------------------------
+	# Create Codes
+	@api.multi
+	def create_codes(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print
+		print 'Create - Codes'
+
+
+		# Product
+		x_type = 'product'
+		if x_type in ['product']:
+
+			#prefix = '1000000'
+
+			count = self.env['product.product'].search_count([
+																('type', 'in', ['product']),
+																('sale_ok', 'in', [True]),
+												],
+													#order='name asc',
+													#limit=1,
+												)
+
+			products = self.env['product.product'].search([
+																('type', 'in', ['product']),
+																('sale_ok', 'in', [True]),
+												],
+													order='name asc',
+													#limit=1,
+												)
+
+			idx = 1
+
+			#for product in products.sorted(key=lambda l: l.type in ['product']):
+			for product in products:
+				print product.name
+				product.x_counter = idx
+				idx = idx + 1
+
+			print
+			print count
+			print
+
+	# create_codes

@@ -12,7 +12,6 @@ import creates as cre
 
 # ---------------------------------------------------- Test Cases ---------------------------------
 # Test Cases - Patients
-#def test_cases(self, container_id, patient_id=False, partner_id=False, doctor_id=False, treatment_id=False, pl_id=False):
 def test_cases(self, container_id, doctor_id):
 	print
 	print 'Test Cases - Patients'
@@ -278,45 +277,43 @@ def test_cases(self, container_id, doctor_id):
 	pat_array = []
 
 	for par in _pars: 
-		print par 
-		print par['test_case']
-		print par['name']
-		print 
-
 
 		# Init
 		active = 		par['active']
 
 
-		test_case = 	par['test_case']
+		if active:
+			
+			print par
+			print par['test_case']
+			print par['name']
+			print 
 
-		id_doc_type = 	par['id_doc_type']
-		id_doc = 		par['id_doc']
-		dni = 			par['dni']
+			test_case = 	par['test_case']
+			id_doc_type = 	par['id_doc_type']
+			id_doc = 		par['id_doc']
+			dni = 			par['dni']
+			name = 			par['name']
+			name_last =		par['name_last']
+			name_first = 	par['name_first']
+			sex = 			par['sex']
+			address = 		par['address']
+			id_code = 		par['id_code']
 
-		name = 			par['name']
-		name_last =		par['name_last']
-		name_first = 	par['name_first']
-
-		sex = 			par['sex']
-		address = 		par['address']
-		
-		# Nils 
-		name_last = 	par['name_last']
-		name_first = 	par['name_first']
-		ruc = 			par['ruc']
-		firm = 			par['firm']
-
-		id_code = 		par['id_code']
+			# Nils 
+			name_last = 	par['name_last']
+			name_first = 	par['name_first']
+			ruc = 			par['ruc']
+			firm = 			par['firm']
 
 
 
-		# Create 
-		if active: 
+			# Create 
 
 			patient = cre.create_patient(self, container_id, test_case, name, sex, address, id_doc_type, id_doc, ruc, firm, doctor_id, name_last, name_first, id_code, dni)
 
 			pat_array.append(patient)
+
 
 
 	return pat_array

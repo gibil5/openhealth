@@ -164,7 +164,7 @@ class Product(models.Model):
 								('3', '30m_one'),
 								('4', '45m_one'),
 							]:
-					
+
 					old = tup[0]
 					new = tup[1]
 					short = short.replace(old, new)

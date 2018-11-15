@@ -167,6 +167,31 @@
 
 
 
+			<!-- cosmetology -->
+			<menuitem 	id="prods_pl_item_cosmetology_menu"
+						parent="pricelists_menu"
+						sequence="4"
+
+						name="Cosmetology"
+
+						action="product_pricelist_item_cosmetology_action"
+				/>
+
+
+			<!-- medical -->
+			<menuitem 	id="prods_pl_item_medical_menu"
+						parent="pricelists_menu"
+						sequence="5"
+
+						name="Medical"
+
+						action="product_pricelist_item_medical_action"
+				/>
+
+
+
+
+
 
 <!-- Products --> 			
 		<menuitem 	id="prods_menu" 

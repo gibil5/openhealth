@@ -26,6 +26,60 @@
 
 					<!-- Custo --> 
 
+					<filter string="17 Nov" domain="[
+															('date_order','&lt;', '2018-11-18 05:00:00'),
+															('date_order','&gt;=','2018-11-17 05:00:00'),
+											]"/>
+
+					<filter string="16 Nov" domain="[
+															('date_order','&lt;', '2018-11-17 05:00:00'),
+															('date_order','&gt;=','2018-11-16 05:00:00'),
+											]"/>
+
+					<filter string="15 Nov" domain="[
+															('date_order','&lt;', '2018-11-16 05:00:00'),
+															('date_order','&gt;=','2018-11-15 05:00:00'),
+											]"/>
+
+
+
+					<filter string="14 Nov" domain="[
+															('date_order','&lt;', '2018-11-15 05:00:00'),
+															('date_order','&gt;=','2018-11-14 05:00:00'),
+											]"/>
+
+					<filter string="13 Nov" domain="[
+															('date_order','&lt;', '2018-11-14 05:00:00'),
+															('date_order','&gt;=','2018-11-13 05:00:00'),
+											]"/>
+
+					<filter string="12 Nov" domain="[
+															('date_order','&lt;', '2018-11-13 05:00:00'),
+															('date_order','&gt;=','2018-11-12 05:00:00'),
+											]"/>
+
+
+					<filter string="10 Nov" domain="[
+															('date_order','&lt;', '2018-11-11 05:00:00'),
+															('date_order','&gt;=','2018-11-10 05:00:00'),
+											]"/>
+
+					<filter string="9 Nov" domain="[
+															('date_order','&lt;', '2018-11-10 05:00:00'),
+															('date_order','&gt;=','2018-11-09 05:00:00'),
+											]"/>
+
+					<filter string="8 Nov" domain="[
+															('date_order','&lt;', '2018-11-09 05:00:00'),
+															('date_order','&gt;=','2018-11-08 05:00:00'),
+											]"/>
+
+
+
+
+
+
+
 					<filter string="7 Nov" domain="[
 															('date_order','&lt;', '2018-11-08 05:00:00'),
 															('date_order','&gt;=','2018-11-07 05:00:00'),
@@ -64,7 +118,7 @@
 					<separator/>
 
 
-
+<!--
 					<filter string="31 Oct" domain="[
 															('date_order','&lt;', '2018-11-01 05:00:00'),
 															('date_order','&gt;=','2018-10-31 05:00:00'),
@@ -108,6 +162,7 @@
 											]"/>
 
 					<separator/>
+-->
 
 
 

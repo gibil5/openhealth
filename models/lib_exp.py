@@ -38,8 +38,8 @@ def format_txt(order):
 	"""
 	high level support for doing this and that.
 	"""
-	print
-	print 'Format Txt'
+	#print
+	#print 'Format Txt'
 
 	# Init
 	#ret = "\n"

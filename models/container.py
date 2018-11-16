@@ -47,15 +47,15 @@ class Container(models.Model):
 		print 'Export - Txt'
 
 
-		# Clean 
+		# Clean
 		self.txt_ids.unlink()
 
 
 
 		# Export
 		fname = export.export_txt(self, self.mgt.electronic_order, self.export_date)
-		
-		
+
+
 		fname_txt = fname.split('/')[-1]
 		print fname_txt
 
@@ -76,8 +76,8 @@ class Container(models.Model):
 
 
 
-		self.write({	
-					'txt_pack': base64.b64encode(out), 
+		self.write({
+					'txt_pack': base64.b64encode(out),
 					'txt_pack_name': fname_txt,
 				})
 
@@ -113,7 +113,7 @@ class Container(models.Model):
 
 
 		# Init
-		#name = 'Export'
+		name = 'Export'
 
 		# Search Mgt
 		#self.mgt = self.env['openhealth.management'].search([
@@ -166,7 +166,7 @@ class Container(models.Model):
 
 		# Search
 		patients = self.env['oeh.medical.patient'].search([
-																('x_test','=', True),
+																('x_test', '=', True),
 															],
 															#order='appointment_date desc',
 															#limit=1,
@@ -200,7 +200,8 @@ class Container(models.Model):
 				x_type = 'ticket_invoice'
 
 				# Create
-				creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id, short_name, qty, x_type, pricelist_id)
+				creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id,\
+																							 short_name, qty, x_type, pricelist_id)
 
 				# Update
 				#if self.cn_invoice_create:
@@ -215,7 +216,8 @@ class Container(models.Model):
 				x_type = 'ticket_receipt'
 
 				# Create
-				creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id, short_name, qty, x_type, pricelist_id)
+				creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id,\
+																							 short_name, qty, x_type, pricelist_id)
 
 
 				# Update
@@ -243,20 +245,22 @@ class Container(models.Model):
 		print 'Create - Electronic'
 
 
-		# Clean 
+		# Clean
 		self.electronic_order_ids.unlink()
 
 
 		# Init Dates
 		date_format = "%Y-%m-%d"
-		date_dt = datetime.datetime.strptime(self.export_date_begin, date_format) + datetime.timedelta(hours=+5, minutes=0)
+
+		date_dt = datetime.datetime.strptime(self.export_date_begin, date_format) + \
+																					datetime.timedelta(hours=+5, minutes=0)
+
 		self.export_date = date_dt.strftime(date_format).replace('-', '_')
 
 
 
 		# Init Mgt
 		self.mgt.date_begin = self.export_date_begin
-		
 		#self.mgt.date_end = self.export_date_end
 		self.mgt.date_end = self.export_date_begin
 
@@ -442,11 +446,9 @@ class Container(models.Model):
 		"""
 		for patient in self.patient_ids:
 			patient_id = patient.id
-
 			if patient.x_test:
 				creates.remove_orders(self, patient_id)
-			
-			#creates.remove_patient(self, patient.name)
+
 
 		# Electronic
 		self.mgt.electronic_order.unlink()

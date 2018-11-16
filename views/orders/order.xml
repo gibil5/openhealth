@@ -929,6 +929,10 @@ Look for the Minimalist experience !!!
 					<field name="x_serial_nr" />
 
 					<field name="x_electronic" 	groups="openhealth.roots"/>
+					
+					<field name="x_qr_img" 	groups="openhealth.roots"/>
+
+
 
 
 

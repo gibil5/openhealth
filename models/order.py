@@ -129,8 +129,13 @@ class sale_order(models.Model):
 		# Create Img
 		img_str, name = lib_qr.get_qr_img(self.x_qr_data)
 
+
 		# Update
-		self.write({'x_qr_img': img_str,'qr_product_name':name})
+		self.write({
+						'x_qr_img': img_str,
+						'qr_product_name':name,
+				})
+
 
 	# make_qr
 
@@ -180,15 +185,18 @@ class sale_order(models.Model):
 		state = 'credit_note'
 
 
-		# Dup
+
+		# Duplicate with different fields
 		order = self.copy(default={
-									'x_serial_nr':	serial_nr,
+									'x_serial_nr': serial_nr,
 									'x_credit_note_owner': self.id,
 									'amount_total': self.amount_total,
 									'amount_untaxed': self.amount_untaxed,
 									'state': state,
+									'x_title': 'Nota de Crédito',
 								})
 		#print order
+
 
 
 		# Update

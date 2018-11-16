@@ -1,21 +1,88 @@
 # -*- coding: utf-8 -*-
 """
- 	Container
+	Container
 
- 	Created: 				30 Sep 2018
- 	Last mod: 				 4 Nov 2018
+	Created: 				30 Sep 2018
+	Last mod: 				 4 Nov 2018
 """
+import base64
+import io
 import datetime
 from openerp import models, fields, api
 import tst_pat
 import creates
 import export
 
+
 class Container(models.Model):
 	"""
 	high level support for doing this and that.
 	"""
 	_name = 'openhealth.container'
+
+
+
+
+# ----------------------------------------------------------- TXT ----------------------------
+
+	txt_pack = fields.Binary(
+			'Paquete TXT',
+		)
+
+	txt_pack_name = fields.Char(
+			'Paquete TXT - Name',
+		)
+
+
+
+# ----------------------------------------------------------- Export ------------------------------
+
+	# Export Txt
+	@api.multi
+	def export_txt(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print
+		print 'Export - Txt'
+
+
+		# Clean 
+		self.txt_ids.unlink()
+
+
+
+		# Export
+		fname = export.export_txt(self, self.mgt.electronic_order, self.export_date)
+		
+		
+		fname_txt = fname.split('/')[-1]
+		print fname_txt
+
+
+		#self.txt_pack_name = fname
+
+
+		# Read Binary
+		#f = io.open(fname, mode="rb", encoding="utf-8")
+		f = io.open(fname, mode="rb")
+		out = f.read()
+		f.close()
+
+
+		#print out
+		print fname
+		print fname_txt
+
+
+
+		self.write({	
+					'txt_pack': base64.b64encode(out), 
+					'txt_pack_name': fname_txt,
+				})
+
+	# export_txt
+
 
 
 
@@ -61,7 +128,9 @@ class Container(models.Model):
 		# Update
 		if self.mgt.name != False:
 			self.mgt.date_begin = self.export_date_begin
-			self.mgt.date_end = self.export_date_end
+
+			#self.mgt.date_end = self.export_date_end
+			self.mgt.date_end = self.export_date_begin
 
 
 		# Create Mgt
@@ -69,7 +138,9 @@ class Container(models.Model):
 			self.mgt = self.env['openhealth.management'].create({
 																'name': 		name,
 																'date_begin': 	self.export_date_begin,
-																'date_end': 	self.export_date_end,
+
+																#'date_end': 	self.export_date_end,
+																'date_end': 	self.export_date_begin,
 													})
 
 		print self.mgt
@@ -182,9 +253,16 @@ class Container(models.Model):
 		self.export_date = date_dt.strftime(date_format).replace('-', '_')
 
 
+
 		# Init Mgt
 		self.mgt.date_begin = self.export_date_begin
-		self.mgt.date_end = self.export_date_end
+		
+		#self.mgt.date_end = self.export_date_end
+		self.mgt.date_end = self.export_date_begin
+
+
+
+
 		self.mgt.container = self.id
 		self.mgt.state_arr = 'sale,cancel,credit_note'
 
@@ -200,28 +278,6 @@ class Container(models.Model):
 	# create_electronic
 
 
-
-
-# ----------------------------------------------------------- Export ------------------------------
-
-	# Export Txt
-	@api.multi
-	def export_txt(self):
-		"""
-		high level support for doing this and that.
-		"""
-		print
-		print 'Export - Txt'
-
-
-		# Clean 
-		self.txt_ids.unlink()
-
-
-		# Export
-		export.export_txt(self, self.mgt.electronic_order, self.export_date)
-
-	# export_txt
 
 
 
@@ -332,6 +388,8 @@ class Container(models.Model):
 			required=True,
 		)
 
+
+
 	# Dates
 	export_date_begin = fields.Date(
 			string="Fecha Inicio",
@@ -339,16 +397,20 @@ class Container(models.Model):
 			required=True,
 		)
 
-	export_date_end = fields.Date(
-			string="Fecha Fin",
-			default=fields.Date.today,
-			required=True,
-		)
+
+	#export_date_end = fields.Date(
+	#		string="Fecha Fin",
+	#		default=fields.Date.today,
+	#		required=True,
+	#	)
+
 
 	export_date = fields.Char(
 			'Export Date',
 			readonly=True,
 		)
+
+
 
 
 
@@ -380,7 +442,10 @@ class Container(models.Model):
 		"""
 		for patient in self.patient_ids:
 			patient_id = patient.id
-			creates.remove_orders(self, patient_id)
+
+			if patient.x_test:
+				creates.remove_orders(self, patient_id)
+			
 			#creates.remove_patient(self, patient.name)
 
 		# Electronic

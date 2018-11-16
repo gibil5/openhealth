@@ -14,7 +14,7 @@
 
 	'description': """
 
-		15 Nov 2018
+		16 Nov 2018
 
 		Fulcrum - DEV - DOCEAN - PROLIANT
 		
@@ -648,6 +648,11 @@
 
 
 
+
+		# ----------------------------------------------------------- FileSystem Directory ------------------------------------------------------
+
+		#'views/containers/filesystem_directory.xml',
+		'views/containers/filesystem_file.xml',
 
 
 

@@ -66,12 +66,12 @@ def export_txt(self, electronic_order, export_date):
 	tarred = path + '.tar'
 	ziped = path + '.tar.gz'
 	os.system("rm -rf " + tarred + " " + ziped)
-	#os.system("tar cvf " + tarred + " " + source)
 	os.system("tar cf " + tarred + " " + source)
 	os.system("gzip " + tarred)
 
-
+	return ziped
 # export_txt
+
 
 
 

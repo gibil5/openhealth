@@ -15,94 +15,90 @@
 
 
 
+
+
 <!-- Open Health -->
-		<menuitem 	id="openhealth_openhealth_menu" 
-					
+		<menuitem 	id="openhealth_openhealth_menu"
 					parent="main_openhealth_menu"
-
 					sequence="1"
-
 					name="Open Health"
 				/>
 
 
 
 
+		<!-- Files --> 
+		<menuitem 	id="oh_file_menu" 
+					name="Files" 
+					parent="openhealth_openhealth_menu"
+					sequence="0"
+
+					action="filesystem_file_list_action"
+			/>
+
+
+
+
 		<!-- Companies --> 
-		<menuitem id="oh_content_menu" 
+		<menuitem 	id="oh_content_menu" 
 					name="Companies" 
 					parent="openhealth_openhealth_menu"
-
+					sequence="1"
 					action="company_list_action"
 			/>
 
 
 		<!-- Electronic --> 
-		<menuitem id="oh_electronic_menu" 
-
-					name="Electronic Orders" 
-			
+		<menuitem id="oh_electronic_menu"
+					name="Electronic Orders"
 					parent="openhealth_openhealth_menu"
-
+					sequence="2"
 					action="electronic_order_form_action"
 			/>
 
 
 		<!-- Corrector --> 
-		<menuitem id="oh_corrector_menu" 
-
-					name="Correctors" 
-			
+		<menuitem id="oh_corrector_menu"
+					name="Correctors"
 					parent="openhealth_openhealth_menu"
-
+					sequence="3"
 					action="corrector_list_action"
 			/>
-
-
 
 
 		<!-- Product Product --> 
 		<menuitem 	id="oh_product_product_menu" 
 					name="Products Product"
 					parent="openhealth_openhealth_menu"
-					sequence="3"
+					sequence="4"
 					action="product_product_list_action"
 			/>
 
 
 
+
+
 		<!-- Product Pricelist Item --> 
+		<!-- Product Pricelist Item Products --> 
+		<!-- Product Pricelist Item Cons --> 
+<!--
 		<menuitem id="oh_pl_item_menu" 
-
 					name="Pricelist Items" 
-			
 					parent="openhealth_openhealth_menu"
-
 					action="product_pricelist_item_action"
 			/>
-
-
-		<!-- Product Pricelist Item Products --> 
 		<menuitem id="oh_pl_item_prods_menu" 
-
 					name="Pricelist Items Products" 
-			
 					parent="openhealth_openhealth_menu"
-
 					action="product_pricelist_item_product_action"
 			/>
 
-
-		<!-- Product Pricelist Item Cons --> 
-		<menuitem id="oh_pl_item_cons_menu" 
-
+		<menuitem id="oh_pl_item_cons_menu"
 					name="Pricelist Items Consultations" 
-			
 					parent="openhealth_openhealth_menu"
-
 					action="product_pricelist_item_consultation_action"
 			/>
-
+-->
 
 
 

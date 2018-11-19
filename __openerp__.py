@@ -303,7 +303,9 @@
 
 		# Patient
 		#'reports/patient.xml',
-		'reports/report_patient.xml',
+		#'reports/report_patient.xml',
+		'reports/patient/report_patient.xml',
+
 
 		#'reports/patient_consultation.xml',
 		#'reports/patient_sessions.xml',

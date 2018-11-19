@@ -665,7 +665,10 @@
 		# ----------------------------------------------------------- Closings ------------------------------------------------------
 		# Closing 
 		'views/closings/closings.xml',
-		'reports/closing.xml',
+
+		#'reports/closing.xml',
+		'reports/closing/closing.xml',
+
 
 
 

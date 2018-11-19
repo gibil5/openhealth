@@ -9,7 +9,6 @@ import math
 import datetime
 from num2words import num2words
 from openerp import models, fields, api
-#from openerp import tools
 from openerp import _
 from openerp.exceptions import Warning
 import ord_vars
@@ -30,22 +29,21 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Update Order - Dep ------------------
-	# Update colors (state)
-	#@api.multi 
-	#def update_order_nex(self):
-		#print 
-		#print 'Update Order Nex'
-		#print 
 
+# ----------------------------------------------------------- Serial Nr ---------------------------
 
-
-
-# ----------------------------------------------------------- Mode Admin --------------------------
-	# Mode Admin
-	x_admin_mode = fields.Boolean(
-			'Modo Admin',
+	# Serial Number 
+	x_serial_nr = fields.Char(
+			'Número de serie',
 		)
+
+	# Counter Value
+	x_counter_value = fields.Integer(
+			string="Contador",
+		)
+
+
+
 
 
 
@@ -54,14 +52,9 @@ class sale_order(models.Model):
 	# Uniqueness constraints for:
 	# Serial Number
 	_sql_constraints = [
-				#('x_serial_nr','unique(x_serial_nr)', 'SQL Warning: x_serial_nr must be unique !'),
+							('x_serial_nr','unique(x_serial_nr)', 'SQL Warning: x_serial_nr must be unique !'),
 				]
 
-
-	# Serial Number 
-	x_serial_nr = fields.Char(
-			'Número de serie',
-		)
 
 
 
@@ -96,6 +89,7 @@ class sale_order(models.Model):
 
 
 
+
 # ---------------------------------------------- Electronic ------------------------------------
 
 	x_title = fields.Char(
@@ -120,8 +114,6 @@ class sale_order(models.Model):
 	# Make QR
 	@api.multi
 	def make_qr(self):
-		#print
-		#print 'Make QR'
 
 		# Create Data
 		self.x_qr_data = lib_qr.get_qr_data(self)
@@ -129,120 +121,21 @@ class sale_order(models.Model):
 		# Create Img
 		img_str, name = lib_qr.get_qr_img(self.x_qr_data)
 
-
 		# Update
 		self.write({
 						'x_qr_img': img_str,
 						'qr_product_name':name,
 				})
 
-
 	# make_qr
 
 
 
-# ---------------------------------------------- Fix -------------------------------------------
-	# Fix
-	@api.multi
-	def fix_serial_nr(self):
-		print
-		print 'Fix - Serial Nr'
 
-		print self.x_serial_nr
-
-		x_serial_nr = self.x_serial_nr.replace("B", "0")
-
-
-		# Update
-		ret = self.write({
-							'x_serial_nr': x_serial_nr,
-						})
-
-
-		print self.x_serial_nr
-
-
-# ---------------------------------------------- Duplicate -------------------------------------------
-	# Duplicate
-	@api.multi
-	def create_credit_note(self):
-		#print
-		#print 'Create CN'
-
-		#serial_nr = 'FC1-000001'
-
-
-		# Serial Nr
-		if self.x_type in ['ticket_invoice', 'invoice']:
-			serial_nr = self.x_serial_nr.replace("F001", "FC01")
-		elif self.x_type in ['ticket_receipt', 'receipt']:
-			serial_nr = self.x_serial_nr.replace("B001", "BC01")
-		else:
-			serial_nr = self.x_serial_nr.replace("001", "C01")
-
-
-
-		state = 'credit_note'
-
-
-
-		# Duplicate with different fields
-		order = self.copy(default={
-									'x_serial_nr': serial_nr,
-									'x_credit_note_owner': self.id,
-									'amount_total': self.amount_total,
-									'amount_untaxed': self.amount_untaxed,
-									'state': state,
-									'x_title': 'Nota de Crédito',
-								})
-		#print order
-
-
-
-		# Update
-		ret = self.write({
-							'x_credit_note': order.id,
-						})
-
-
-
-
-# ---------------------------------------------- Cancel -------------------------------------------
-
-	# Cancel Order
-	@api.multi
-	def cancel_order(self):
-		print
-		print 'Cancel Order'
-
-		self.x_cancel = True
-		self.state = 'cancel'
-
-		#patient_id = self.patient.id
-		#doctor_id = self.x_doctor.id
-		#treatment_id = self.treatment.id
-		#x_type = self.x_type
-		#short_name = 'other'
-		#qty = 1
-		#order = creates.create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type)
-		#print order
-
-
-		# Update
-		#serial_nr = 'FC1-000001'
-
-		#ret = order.write({
-		#					'amount_total': self.amount_total,
-		#					'amount_untaxed': self.amount_untaxed,
-		#					'state': 'credit_note',
-		#					'x_credit_note_owner': self.id,		
-		#					'x_serial_nr': serial_nr,
-		#				})
-
-		# Create CN
-		self.create_credit_note()
-
-
+# ----------------------------------------------------------- Mode Admin --------------------------
+	x_admin_mode = fields.Boolean(
+			'Modo Admin',
+		)
 
 
 
@@ -250,7 +143,6 @@ class sale_order(models.Model):
 
 
 # ----------------------------------------------------------- Credit Note -------------------------
-
 	x_credit_note_owner = fields.Many2one(
 			'sale.order',
 			'Propietario NC',
@@ -307,42 +199,6 @@ class sale_order(models.Model):
 
 
 
-
-
-
-
-
-
-
-
-
-# ----------------------------------------------------------- Counter -----------------------------
-
-	# Counter Value
-	x_counter_value = fields.Integer(
-			string="Contador",
-		)
-
-	# Prefix
-	x_prefix = fields.Char(
-			'Prefix',
-			default='001',
-		)
-
-	# Separator
-	x_separator = fields.Char(
-			'Separator',
-			default='-',
-		)
-
-	# Padding
-	x_padding = fields.Integer(
-			'Padding',
-			default=10,
-		)
-
-
-
 # ----------------------------------------------------------- Id Doc ------------------------------
 
 	# Id Document
@@ -393,11 +249,6 @@ class sale_order(models.Model):
 					'sale': [('readonly', True)],
 				}, 
 		)
-
-
-
-
-
 
 
 
@@ -894,23 +745,26 @@ class sale_order(models.Model):
 		if self.x_serial_nr != '' and self.x_admin_mode == False: 
 
 
-
 			# Prefix 
-			prefix = ord_vars._dic_prefix[self.x_type]
+			#prefix = ord_vars._dic_prefix[self.x_type]
+
+			# Padding 
+			#padding = ord_vars._dic_padding[self.x_type]
+
+			# Serial Nr
+			#self.x_serial_nr = prefix + self.x_separator + str(self.x_counter_value).zfill(padding)
+
 
 
 			# Counter 
-			self.x_counter_value = user.get_counter_value(self)
-			
+			#self.x_counter_value = user.get_counter_value(self)
+			self.x_counter_value = user.get_counter_value(self, self.x_type, self.state)
 
-			# Padding 
-			padding = ord_vars._dic_padding[self.x_type]
+			# Serial Nr
+			#self.x_serial_nr = user.get_serial_nr(self.x_type, self.x_counter_value)
+			self.x_serial_nr = user.get_serial_nr(self.x_type, self.x_counter_value, self.state)
 
 
-
-
-			# Serial Nr 
-			self.x_serial_nr = prefix + self.x_separator + str(self.x_counter_value).zfill(padding)
 
 
 		#Write your logic here - End 
@@ -933,6 +787,82 @@ class sale_order(models.Model):
 
 	# action_confirm_nex
 
+
+
+
+# ---------------------------------------------- Credit Note --------------------------------------
+	# Duplicate
+	@api.multi
+	def create_credit_note(self):
+		print
+		print 'Create CN'
+
+		# Serial Nr
+		#if self.x_type in ['ticket_invoice', 'invoice']:
+		#	serial_nr = self.x_serial_nr.replace("F001", "FC01")
+		
+		#elif self.x_type in ['ticket_receipt', 'receipt']:
+		#	serial_nr = self.x_serial_nr.replace("B001", "BC01")
+		
+		#else:
+		#	serial_nr = self.x_serial_nr.replace("001", "C01")
+
+
+		# State
+		state = 'credit_note'
+
+		# Counter 
+		counter_value = user.get_counter_value(self, self.x_type, state)
+
+		# Serial Nr
+		#serial_nr = user.get_serial_nr(self.x_type, counter_value)
+		serial_nr = user.get_serial_nr(self.x_type, counter_value, state)
+
+
+
+
+		# Duplicate with different fields
+		credit_note = self.copy(default={
+											'x_serial_nr': serial_nr,
+											'x_counter_value': counter_value,
+
+											'x_credit_note_owner': self.id,
+											'amount_total': self.amount_total,
+											'amount_untaxed': self.amount_untaxed,
+											'x_title': 'Nota de Crédito Electrónica',
+
+											'state': state,
+								})
+		#print credit_note
+
+
+		# Counter
+		#credit_note.x_counter_value = user.get_counter_value(credit_note)
+		#x_counter_value = user.get_counter_value(credit_note)
+		#print x_counter_value
+
+
+		# Update Self
+		ret = self.write({
+							'x_credit_note': credit_note.id,
+						})
+
+
+
+
+# ---------------------------------------------- Cancel -------------------------------------------
+	# Cancel Order
+	@api.multi
+	def cancel_order(self):
+		print
+		print 'Cancel Order'
+
+		self.x_cancel = True
+
+		self.state = 'cancel'
+
+		# Create CN
+		self.create_credit_note()
 
 
 

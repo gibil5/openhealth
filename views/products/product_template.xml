@@ -136,14 +136,12 @@
 
 					<field name="x_name_short"/>
 
-
 					<field name="item_ids"/>
 
 					<field name="list_price"/>
 <!--
 					<field name="pricelist_id"/>
 -->
-
 				</tree>
 			</field>
 		</record>
@@ -170,9 +168,9 @@ black:x_checksum_1=='1'
 >
 
 
-					<field name="name"/>
-					<field name="x_name_account"/>
-					<field name="x_code_account"/>
+					<field name="name"				string="Nombre actual"/>
+					<field name="x_name_account"	string="Nombre antiguo"/>
+					<field name="x_code_account"	string="Cuenta"/>
 
 
 					<field name="list_price"/>
@@ -181,10 +179,10 @@ black:x_checksum_1=='1'
 
 
 
-
+<!--
 					<field name="x_counter"/>
 					<field name="x_code"/>
-					
+-->				
 					<field name="type"/>
 					<field name="active"/>
 					<field name="sale_ok"/>
@@ -192,6 +190,7 @@ black:x_checksum_1=='1'
 
 					<field name="x_name_short"/>
 					<field name="x_generated"/>
+					<field name="x_name_ticket"/>
 
 
 
@@ -214,12 +213,11 @@ black:x_checksum_1=='1'
 
 
 
-					<field name="x_name_ticket"/>
 					<field name="x_checksum_1"/>
 					<field name="x_checksum_2"/>
-
+<!--
 					<field name="item_ids"/>
-
+-->
 
 					<field name="uom_id"	invisible="1"/>
 					<field name="state"		invisible="1"/>

@@ -859,8 +859,15 @@
 									</group>
 -->
 
-									<group>
+
 										<!-- Test - Patient --> 
+										<!-- Test - Container --> 
+										<!-- Test - Export --> 
+										<!-- Test - Coder --> 
+										<!-- Test - Prods --> 
+										<!-- Test - Consu --> 
+<!--
+									<group>
 										<button 
 											type="object" 
 											class="oe_highlight"
@@ -871,8 +878,8 @@
 										/>
 									</group>
 
+
 									<group>
-										<!-- Test - Container --> 
 										<button 
 											type="object" 
 											class="oe_highlight"
@@ -885,7 +892,6 @@
 
 
 									<group>
-										<!-- Test - Export --> 
 										<button 
 											type="object" 
 											class="oe_highlight"
@@ -895,8 +901,6 @@
 											string="Export" 								
 										/>
 
-
-										<!-- Test - Coder --> 
 										<button 
 											type="object" 
 											class="oe_highlight"
@@ -906,9 +910,6 @@
 											string="Coder" 								
 										/>
 
-
-
-										<!-- Test - Prods --> 
 										<button 
 											type="object" 
 											class="oe_highlight"
@@ -918,8 +919,6 @@
 											string="Prods" 								
 										/>
 
-
-										<!-- Test - Consu --> 
 										<button 
 											type="object" 
 											class="oe_highlight"
@@ -928,13 +927,11 @@
 											
 											string="Consu" 								
 										/>
-
 									</group>
+-->
+
 
 								</group>
-
-
-
 							</div>
 						</div>
 						
@@ -1158,7 +1155,9 @@ Fields
 								/>
 -->
 
+
 								<!-- Test - Order --> 
+<!--
 								<button 
 									type="object" 
 									class="oe_highlight"
@@ -1167,6 +1166,8 @@ Fields
 									
 									string="Order" 								
 								/>
+-->
+
 
 								<!-- Test - Patient --> 
 <!--

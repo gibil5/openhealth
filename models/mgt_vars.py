@@ -81,17 +81,10 @@ _h_name = {
 
 
 _h_family_sp = {
-
-				'product': 		'Producto', 	
-
-				'consultation': 'Consulta', 		
-
-				'procedure': 	'Procedimiento', 		
-
-				'medical': 		'Tratamiento Médico', 		
-										
-				'cosmetology': 'Cosmeatria', 	
-
-
+				'product': 		'Producto',
+				'consultation': 'Consulta',
+				'procedure': 	'Procedimiento',
+				'medical': 		'Tratamiento Médico',
+				'cosmetology': 'Cosmeatria',
 				#False: False, 	
 }

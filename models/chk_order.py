@@ -44,8 +44,8 @@ def check_id_doc(self):
 # -----------------------------------------------------------  Ruc --------------------------------------
 # Check Ruc
 def check_ruc(self):
-	print
-	print 'Chk - Check Ruc'
+	#print
+	#print 'Chk - Check Ruc'
 
 	var_name = 'Ruc'
 	_name = 'x_ruc'

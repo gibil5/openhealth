@@ -775,7 +775,8 @@ def create_procedure_wapp(self, subtype, product_id):
 	if appointment_date_str != False: 
 		
 		# Check and Push if not Free !
-		appointment_date_str = user.check_and_push(self, appointment_date_str, duration, x_type, doctor_name, states)
+		#appointment_date_str = user.check_and_push(self, appointment_date_str, duration, x_type, doctor_name, states)
+		appointment_date_str = user.check_and_push(self, appointment_date_str, duration, doctor_name, states)
 
 		# Create Procedure 
 		self.treatment.create_procedure(appointment_date_str, subtype, product_id)

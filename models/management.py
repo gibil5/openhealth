@@ -35,8 +35,11 @@ class Management(models.Model):
 
 	# State Array
 	state_arr = fields.Selection(
+
 			selection=mgt_vars._state_arr_list,
+		
 			string='States',
+
 			default='sale',
 		)
 
@@ -547,97 +550,6 @@ class Management(models.Model):
 
 
 
-# ----------------------------------------------------------- Update Sales - Fast -----------------
-	# Update Sales - Fast
-	def update_sales_fast(self):
-		"""
-		"""
-		#print
-		#print 'Update Sales'
-
-
-		# Clean
-		self.reset_macro()
-
-
-		# Orders
-		orders, count = mgt_funcs.get_orders_filter\
-											(self, self.date_begin, self.date_end, self.state_arr, self.type_arr)
-		#print orders
-		#print count
-
-
-		# Init Loop
-		tickets = 0
-		first = True
-
-		# Loop
-		for order in orders:
-			tickets = tickets + 1
-
-			# Order Lines
-			for line in order.order_line:
-				if first:
-					verbosity = True
-					first = False
-				else:
-					verbosity = False
-
-				# Line Analysis
-				stats = mgt_funcs.line_analysis(self, line, verbosity)
-
-
-
-
-		# Ratios
-		if self.nr_consultations != 0:
-			self.ratio_pro_con = (float(self.nr_procedures) / float(self.nr_consultations)) * 100
-
-		# Families
-		if self.nr_products != 0:
-			self.avg_products = self.amo_products / self.nr_products
-
-		if self.nr_services != 0:
-			self.avg_services = self.amo_services / self.nr_services
-
-		if self.nr_consultations != 0:
-			self.avg_consultations = self.amo_consultations / self.nr_consultations
-
-		if self.nr_procedures != 0:
-			self.avg_procedures = self.amo_procedures / self.nr_procedures
-
-		# Subfamilies
-		if self.nr_co2 != 0:
-			self.avg_co2 = self.amo_co2 / self.nr_co2
-
-		if self.nr_exc != 0:
-			self.avg_exc = self.amo_exc / self.nr_exc
-
-		if self.nr_ipl != 0:
-			self.avg_ipl = self.amo_ipl / self.nr_ipl
-
-		if self.nr_ndyag != 0:
-			self.avg_ndyag = self.amo_ndyag / self.nr_ndyag
-
-		if self.nr_quick != 0:
-			self.avg_quick = self.amo_quick / self.nr_quick
-
-		if self.nr_medical != 0:
-			self.avg_medical = self.amo_medical / self.nr_medical
-
-		if self.nr_cosmetology != 0:
-			self.avg_cosmetology = self.amo_cosmetology / self.nr_cosmetology
-
-
-		# Totals
-		self.total_amount = self.amo_products + self.amo_services
-		self.total_count = self.nr_products + self.nr_services
-		self.total_tickets = tickets
-
-	# update_sales_fast
-
-
-
 
 
 # ----------------------------------------------------------- Update Doctors ----------------------
@@ -662,18 +574,56 @@ class Management(models.Model):
 
 
 
-# ----------------------------------------------------------- Update All --------------------------
-	# Update
+
+
+
+
+
+
+# ----------------------------------------------------------- Update - QC -------------------------
+	# Update QC
 	@api.multi
-	def update(self):
+	def update_qc(self, x_type):
 		"""
 		"""
 		#print
-		#print 'Management - Update'
-		self.reset()
-		self.update_fast()
-		self.update_doctors()
-	# update
+		#print 'Management - Update QC'
+
+		# Init
+		serial_nr_last = 0
+
+		# Orders
+		orders, count = mgt_funcs.get_orders_filter_type(self, self.date_begin, self.date_end, x_type)
+
+		# Loop
+		for order in orders:
+			# Serial Nr
+			serial_nr = int(order.x_serial_nr.split('-')[1])
+			if serial_nr_last != 0:
+				delta = serial_nr - serial_nr_last
+			else:									# First one
+				delta = 1
+			serial_nr_last = serial_nr
+			# Update Delta
+			order.x_delta = delta
+			# Update Counter Value
+			#order.x_counter_value = int(order.x_serial_nr.split('-')[1])
+	# update_qc
+
+
+# ----------------------------------------------------------- Electronic - Clear ------------------
+	# Clear
+	@api.multi
+	def clear_electronic(self):
+		"""
+		"""
+		#print
+		#print 'Electronic - Clear'
+		# Clean
+		self.electronic_order.unlink()
+
+
+
 
 
 
@@ -817,6 +767,101 @@ class Management(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Update Sales - Fast -----------------
+	# Update Sales - Fast
+	def update_sales_fast(self):
+		"""
+		"""
+		#print
+		#print 'Update Sales'
+
+
+		# Clean
+		self.reset_macro()
+
+
+		# Orders
+		orders, count = mgt_funcs.get_orders_filter\
+											(self, self.date_begin, self.date_end, self.state_arr, self.type_arr)
+		#print orders
+		#print count
+
+
+		# Init Loop
+		tickets = 0
+		first = True
+
+		# Loop
+		for order in orders:
+			tickets = tickets + 1
+
+			# Order Lines
+			for line in order.order_line:
+				if first:
+					verbosity = True
+					first = False
+				else:
+					verbosity = False
+
+				# Line Analysis
+				stats = mgt_funcs.line_analysis(self, line, verbosity)
+
+
+
+
+		# Ratios
+		if self.nr_consultations != 0:
+			self.ratio_pro_con = (float(self.nr_procedures) / float(self.nr_consultations)) * 100
+
+		# Families
+		if self.nr_products != 0:
+			self.avg_products = self.amo_products / self.nr_products
+
+		if self.nr_services != 0:
+			self.avg_services = self.amo_services / self.nr_services
+
+		if self.nr_consultations != 0:
+			self.avg_consultations = self.amo_consultations / self.nr_consultations
+
+		if self.nr_procedures != 0:
+			self.avg_procedures = self.amo_procedures / self.nr_procedures
+
+		# Subfamilies
+		if self.nr_co2 != 0:
+			self.avg_co2 = self.amo_co2 / self.nr_co2
+
+		if self.nr_exc != 0:
+			self.avg_exc = self.amo_exc / self.nr_exc
+
+		if self.nr_ipl != 0:
+			self.avg_ipl = self.amo_ipl / self.nr_ipl
+
+		if self.nr_ndyag != 0:
+			self.avg_ndyag = self.amo_ndyag / self.nr_ndyag
+
+		if self.nr_quick != 0:
+			self.avg_quick = self.amo_quick / self.nr_quick
+
+		if self.nr_medical != 0:
+			self.avg_medical = self.amo_medical / self.nr_medical
+
+		if self.nr_cosmetology != 0:
+			self.avg_cosmetology = self.amo_cosmetology / self.nr_cosmetology
+
+
+		# Totals
+		self.total_amount = self.amo_products + self.amo_services
+		self.total_count = self.nr_products + self.nr_services
+		self.total_tickets = tickets
+
+	# update_sales_fast
+
+
+
+
+
+
 # ----------------------------------------------------------- Update - Fast -----------------------
 	# Update
 	@api.multi
@@ -832,39 +877,6 @@ class Management(models.Model):
 		#print self.delta_1
 		#print
 	# update
-
-
-
-
-# ----------------------------------------------------------- Update - QC -------------------------
-	# Update QC
-	@api.multi
-	def update_qc(self, x_type):
-		"""
-		"""
-		#print
-		#print 'Management - Update QC'
-
-		# Init
-		serial_nr_last = 0
-
-		# Orders
-		orders, count = mgt_funcs.get_orders_filter_type(self, self.date_begin, self.date_end, x_type)
-
-		# Loop
-		for order in orders:
-			# Serial Nr
-			serial_nr = int(order.x_serial_nr.split('-')[1])
-			if serial_nr_last != 0:
-				delta = serial_nr - serial_nr_last
-			else:									# First one
-				delta = 1
-			serial_nr_last = serial_nr
-			# Update Delta
-			order.x_delta = delta
-			# Update Counter Value
-			#order.x_counter_value = int(order.x_serial_nr.split('-')[1])
-	# update_qc
 
 
 
@@ -935,7 +947,6 @@ class Management(models.Model):
 	# reset_macro
 
 
-
 	# Reset Micro (Doctors, Families, Sub-families)
 	def reset_micro(self):
 		"""
@@ -950,15 +961,15 @@ class Management(models.Model):
 
 
 
-
-# ----------------------------------------------------------- Electronic - Clear ------------------
-	# Clear
+# ----------------------------------------------------------- Update All --------------------------
+	# Update
 	@api.multi
-	def clear_electronic(self):
+	def update(self):
 		"""
 		"""
 		#print
-		#print 'Electronic - Clear'
-		# Clean
-		self.electronic_order.unlink()
-
+		#print 'Management - Update'
+		self.reset()
+		self.update_fast()
+		self.update_doctors()
+	# update

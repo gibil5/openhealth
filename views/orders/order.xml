@@ -926,7 +926,10 @@ Look for the Minimalist experience !!!
 
 					<field name="date_order"	string="Fecha"	/>
 
+
 					<field name="x_serial_nr" />
+					<field name="x_counter_value" 	groups="openhealth.roots"/>
+
 
 					<field name="x_electronic" 	groups="openhealth.roots"/>
 					
@@ -955,7 +958,6 @@ Look for the Minimalist experience !!!
 
 					
 
-					<field name="x_counter_value" 	groups="openhealth.roots"/>
 					
 					<field name="x_delta"			groups="openhealth.roots"/>
 

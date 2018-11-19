@@ -76,31 +76,49 @@ def get_orders_filter(self, date_bx, date_ex, state_arr, type_arr):
 	}
 
 
-	# Orders 
-	orders = self.env['sale.order'].search([
-												('state', 'in', _dic_states[state_arr]),
-												('x_type', 'in', _dic_types[type_arr]),
 
-												('date_order', '>=', date_begin),													
-												('date_order', '<', date_end),
-												('x_legacy', '=', False),
-											],
-												#order='x_serial_nr asc',
-												#limit=1,
-											)
-	# Count 
-	count = self.env['sale.order'].search_count([
+	if state_arr in _dic_states and type_arr in _dic_types:
+
+		# Orders
+		orders = self.env['sale.order'].search([
 													('state', 'in', _dic_states[state_arr]),
 													('x_type', 'in', _dic_types[type_arr]),
 
-													('date_order', '>=', date_begin),
+													('date_order', '>=', date_begin),													
 													('date_order', '<', date_end),
 													('x_legacy', '=', False),
-											],
-												#order='x_serial_nr asc',
-												#limit=1,
-											)
+												],
+													#order='x_serial_nr asc',
+													#limit=1,
+												)
+		# Count 
+		count = self.env['sale.order'].search_count([
+														('state', 'in', _dic_states[state_arr]),
+														('x_type', 'in', _dic_types[type_arr]),
+
+														('date_order', '>=', date_begin),
+														('date_order', '<', date_end),
+														('x_legacy', '=', False),
+												],
+													#order='x_serial_nr asc',
+													#limit=1,
+												)
+	else:
+
+		# Orders
+		orders = self.env['sale.order'].search([
+													('name', '=', 'This does note exist !'),
+												],
+													#order='x_serial_nr asc',
+													#limit=1,
+												)
+		# Count 
+		count = 0
+
+
+
 	return orders, count
+
 # get_orders_filter
 
 

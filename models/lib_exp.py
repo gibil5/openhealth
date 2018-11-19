@@ -223,10 +223,17 @@ def format_txt(order):
 # !
 #               str(order.amount_total)     + sep + \
 
-	table_3 = 	blank                       	+ sep + \
-				acc.fmt(order.amount_total)     + sep + \
-				blank                       	+ sep + eol + ret + \
-												  eot + ret
+	if order.state in ['sale', 'cancel']:
+		frac_1 = sep + blank + sep
+
+	elif order.state in ['credit_note']:
+		frac_1 = sep + blank
+
+
+
+	table_3 = 	blank + sep + acc.fmt(order.amount_total) + \
+				frac_1 + \
+				eol + ret + eot + ret
 
 
 
@@ -322,6 +329,16 @@ def format_txt(order):
 # Producto 2|NIU|10.00|150.00|17.7|01|||27|10|1000|IGV|VAT||||||040010008|15.00||||]
 # !
 
+# sep + blank + sep + blank + sep + blank + sep + \
+
+	if order.state in ['sale', 'cancel']:
+		frac_2 = sep + blank + sep + blank + sep + blank + sep
+
+	elif order.state in ['credit_note']:
+		frac_2 = sep + blank + sep
+
+
+
 	# Init
 	blank = ""
 	unit_code = "NIU"
@@ -373,11 +390,9 @@ def format_txt(order):
 					blank                           + sep + \
 					blank                           + sep + \
 					account_code                    + sep + \
-					acc.fmt(line.price_unit_net)    + sep + \
-					blank                           + sep + \
-					blank                           + sep + \
-					blank                           + sep + \
-					blank                           + eol + ret
+					acc.fmt(line.price_unit_net)    + \
+					frac_2 + \
+					blank + eol + ret
 
 
 		table_6 = table_6 + in_line

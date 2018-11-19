@@ -171,26 +171,24 @@
 -->
 
 							</group>
-							<group>
+							<group groups="openhealth.roots">
+<!--
 								<field name="mgt"	groups="openhealth.roots"/>
 								<field name="doctor"	groups="openhealth.roots"/>
-								<field name="ticket_receipt_create"		groups="openhealth.roots"/>
-								<field name="ticket_invoice_create"		groups="openhealth.roots"/>
+-->							
+								<field name="ticket_receipt_create"/>
+								<field name="ticket_invoice_create"/>
+								<field name="ticket_receipt_cancel"/>
+								<field name="ticket_invoice_cancel"/>
+
+
 <!--
 								<field name="patient" />
 								<field name="partner" />
 								<field name="treatment" />
 								<field name="doctor" />
--->
-
-<!--
 								<field name="export_date_end"/>
-
 								<field name="export_date"/>
-								<field name="cn_receipt_create"/>
-								<field name="cn_invoice_create"/>
-								<field name="receipt_create"/>
-								<field name="invoice_create"/>
 -->
 							</group>
 						</group>
@@ -208,7 +206,7 @@
 						<!-- Notebook --> 
 						<notebook>
 							
-							<page string="Facturacion Electronica">
+							<page string="Facturacion">
 								<field name="electronic_order_ids"/>
 							</page>
 

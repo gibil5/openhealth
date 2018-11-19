@@ -1,5 +1,31 @@
 
 
+
+
+# ----------------------------------------------------------- Create Sales -------------------------------
+
+		#for patient in self.patient_ids:
+
+			# Clean
+			#creates.remove_orders(self, patient_id)
+
+
+				# Update
+				#if self.cn_invoice_create:
+				#	ret = order.write({
+				#						'state': 'cancel',
+				#					})
+
+
+				# Update
+				#if self.cn_receipt_create:
+				#	ret = order.write({
+				#						'state': 'cancel',
+				#					})
+
+
+
+
 # ----------------------------------------------------------- Import ---------------------------------
 #import importx
 

@@ -122,6 +122,8 @@
 -->
 
 
+
+
 						<!-- Reset -->
 						<button 
 								type="object" 
@@ -133,6 +135,17 @@
 
 						/>
 
+						<!-- Update -->
+						<button 
+								type="object" 
+								class="oe_highlight oe_right"
+								
+								name="update"
+
+								string="Update"								
+
+								groups="openhealth.roots"
+						/>
 
 
 						<!-- Legacy -->

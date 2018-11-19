@@ -605,7 +605,9 @@ class Treatment(models.Model):
 			# Reports 
 			closing = 			lib_rep.Report('closing', 			'openhealth.closing', 				'date', 		self)
 			resap = 			lib_rep.Report('resap',	 			'openhealth.report.sale.product', 	'name', 		self)
+			
 			management = 		lib_rep.Report('management', 		'openhealth.management', 			'date_begin', 	self)
+			
 			marketing = 		lib_rep.Report('marketing', 		'openhealth.marketing', 			'date_begin', 	self)
 			account = 			lib_rep.Report('account.contasis', 	'openhealth.account.contasis', 		'date_begin', 	self)
 			#state_of_acc = 	lib_rep.Report('state_of_acc', 		'openhealth.order.report.nex', 		'create_date', 	self)
@@ -788,7 +790,8 @@ class Treatment(models.Model):
 				
 				# Check and Push 
 				#appointment_date_str = procedure_funcs.check_and_push(self, appointment_date, duration, x_type, doctor_name, states)
-				appointment_date_str = user.check_and_push(self, appointment_date, duration, x_type, doctor_name, states)
+				#appointment_date_str = user.check_and_push(self, appointment_date, duration, x_type, doctor_name, states)
+				appointment_date_str = user.check_and_push(self, appointment_date, duration, doctor_name, states)
 				#print appointment_date_str
 
 
@@ -866,7 +869,8 @@ class Treatment(models.Model):
 
 			# Check and Push 
 			#appointment_date_str = procedure_funcs.check_and_push(self, appointment_date_str, duration, x_type, doctor_name, states)
-			appointment_date_str = user.check_and_push(self, appointment_date_str, duration, x_type, doctor_name, states)
+			#appointment_date_str = user.check_and_push(self, appointment_date_str, duration, x_type, doctor_name, states)
+			appointment_date_str = user.check_and_push(self, appointment_date_str, duration, doctor_name, states)
 
 
 

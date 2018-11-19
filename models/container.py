@@ -152,7 +152,7 @@ class Container(models.Model):
 
 
 
-# ----------------------------------------------------------- Sales -------------------------------
+# ----------------------------------------------------------- Create Sales -------------------------------
 
 	# Create Sales
 	@api.multi
@@ -173,19 +173,12 @@ class Container(models.Model):
 														)
 
 
-
 		# Loop
-		#for patient in self.patient_ids:
 		for patient in patients:
-
-			# Clean
-			#creates.remove_orders(self, patient_id)
-
 
 			# Init
 			patient_id = patient.id
 			partner_id = patient.partner_id.id
-
 			doctor_id = self.doctor.id
 			treatment_id = False
 			short_name = 'product_1'
@@ -200,14 +193,8 @@ class Container(models.Model):
 				x_type = 'ticket_invoice'
 
 				# Create
-				creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id,\
+				invoice = creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id,\
 																							 short_name, qty, x_type, pricelist_id)
-
-				# Update
-				#if self.cn_invoice_create:
-				#	ret = order.write({
-				#						'state': 'cancel',
-				#					})
 
 
 			# Receipt
@@ -216,18 +203,29 @@ class Container(models.Model):
 				x_type = 'ticket_receipt'
 
 				# Create
-				creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id,\
+				receipt = creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id,\
 																							 short_name, qty, x_type, pricelist_id)
 
 
-				# Update
-				#if self.cn_receipt_create:
-				#	ret = order.write({
-				#						'state': 'cancel',
-				#					})
+
+
+			# Invoice Cancel
+			if self.ticket_invoice_cancel:
+				#print
+				invoice.cancel_order()
+
+
+
+			# Receipt Cancel
+			if self.ticket_receipt_cancel:
+				#print
+				receipt.cancel_order()
+
+
+
 
 		# QC
-		self.test_qc()
+		#self.test_qc()
 
 	# create_sales
 
@@ -336,12 +334,32 @@ class Container(models.Model):
 
 # ----------------------------------------------------------- Fields ------------------------------
 
+	# Flags
+	ticket_invoice_create = fields.Boolean(
+			'Invoice',
+		)
+
+	ticket_receipt_create = fields.Boolean(
+			'Receipt',
+		)
+
+	ticket_invoice_cancel = fields.Boolean(
+			'Invoice Cancel',
+		)
+
+	ticket_receipt_cancel = fields.Boolean(
+			'Receipt Cancel',
+		)
+
+
+
+
+
 	# Total
 	amount_total = fields.Float(
 			'Total',
 			digits=(16, 2),
 		)
-
 
 	# Receipt count
 	receipt_count = fields.Integer(
@@ -357,18 +375,8 @@ class Container(models.Model):
 
 
 
-	# Flags
-	ticket_invoice_create = fields.Boolean(
-			'Factura',
-		)
 
-	ticket_receipt_create = fields.Boolean(
-			'Boleta',
-		)
-
-
-
-
+	# Name
 	name = fields.Char(
 			'Nombre',
 		)
@@ -444,16 +452,25 @@ class Container(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
+
+		# Loop
 		for patient in self.patient_ids:
 			patient_id = patient.id
 			if patient.x_test:
 				creates.remove_orders(self, patient_id)
 
-
 		# Electronic
 		self.mgt.electronic_order.unlink()
 
-		# Txts
+		# Txt
 		self.txt_ids.unlink()
 
+		# Stats
+		self.amount_total = 0
+		self.invoice_count = 0
+		self.receipt_count = 0
+
 	# clear
+
+
+

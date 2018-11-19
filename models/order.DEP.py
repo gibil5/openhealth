@@ -1,3 +1,96 @@
+
+
+
+
+
+# ---------------------------------------------- Fix -------------------------------------------
+	# Fix
+	@api.multi
+	def fix_serial_nr(self):
+		print
+		print 'Fix - Serial Nr'
+
+		print self.x_serial_nr
+
+		x_serial_nr = self.x_serial_nr.replace("B", "0")
+
+
+		# Update
+		ret = self.write({
+							'x_serial_nr': x_serial_nr,
+						})
+
+
+		print self.x_serial_nr
+
+
+
+# ----------------------------------------------------------- Counter -----------------------------
+
+	# Prefix
+	#x_prefix = fields.Char(
+	#		'Prefix',
+	#		default='001',
+	#	)
+
+	# Separator
+	#x_separator = fields.Char(
+	#		'Separator',
+	#		default='-',
+	#	)
+
+	# Padding
+	#x_padding = fields.Integer(
+	#		'Padding',
+	#		default=10,
+	#	)
+
+
+
+
+
+
+# ----------------------------------------------------------- Update Order - Dep ------------------
+	# Update colors (state)
+	#@api.multi 
+	#def update_order_nex(self):
+		#print 
+		#print 'Update Order Nex'
+		#print 
+
+
+
+
+# ---------------------------------------------- Cancel -------------------------------------------
+
+
+		#patient_id = self.patient.id
+		#doctor_id = self.x_doctor.id
+		#treatment_id = self.treatment.id
+		#x_type = self.x_type
+		#short_name = 'other'
+		#qty = 1
+		#order = creates.create_order_fast(self, patient_id, doctor_id, treatment_id, short_name, qty, x_type)
+		#print order
+
+
+		# Update
+		#serial_nr = 'FC1-000001'
+
+		#ret = order.write({
+		#					'amount_total': self.amount_total,
+		#					'amount_untaxed': self.amount_untaxed,
+		#					'state': 'credit_note',
+		#					'x_credit_note_owner': self.id,		
+		#					'x_serial_nr': serial_nr,
+		#				})
+
+
+
+
+
+
+# ---------------------------------------------- Pm -------------------------------------------
 	def create_payment_method(self):
 
 		# Id Doc - Dep 

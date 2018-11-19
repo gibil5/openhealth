@@ -316,22 +316,23 @@
 		# Formats
 		'reports/paper_format.xml',
 
+		# Ticket - Electronic 
+		'reports/report_layouts.xml',
+		'reports/print_ticket_receipt_electronic.xml',
+
 
 
 		# Ticket - Dep !
 		#'reports/report_ticket_receipt.xml',
 		#'reports/report_ticket_invoice.xml',
 
-		
 		# Ticket
-		'reports/report_ticket_invoice_nex.xml',
-		'reports/report_ticket_receipt_nex.xml',
+		#'reports/report_ticket_invoice_nex.xml',
+		#'reports/report_ticket_receipt_nex.xml',
+		'reports/phys/report_ticket_invoice_nex.xml',
+		'reports/phys/report_ticket_receipt_nex.xml',
 
 
-		# Ticket - Electronic 
-		'reports/report_layouts.xml',
-		'reports/print_ticket_receipt_electronic.xml',
-		#'reports/print_ticket_invoice_electronic.xml',
 
 
 

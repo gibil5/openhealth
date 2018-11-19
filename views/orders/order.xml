@@ -384,9 +384,9 @@ jx
 				<xpath expr="//button[@name='action_confirm_nex']" position="before">
 				
 
+
 					<!-- Print --> 
 <!--					
--->
 					<button 
 							type="object" 
 							class="oe_highlight"
@@ -401,16 +401,18 @@ jx
 							
 							string="Imprimir - ANT"
 						/>
+-->
 
 
 
 					<!-- Print Electronic --> 
 					<button 
-							type="object" 
-							class="oe_highlight"							
+							type="object"
+							class="oe_highlight"
+
 							attrs="{'invisible':[	'|',
-													('x_type','not in',['ticket_invoice','ticket_receipt']), 
-													('state','not in',['sale']), 
+													('x_type','not in',['ticket_invoice','ticket_receipt']),
+													('state','not in',['sale', 'credit_note']), 
 											]}"
 
 							groups="openhealth.roots, openhealth.caja, openhealth.managers"

@@ -143,15 +143,46 @@ class sale_order(models.Model):
 
 
 # ----------------------------------------------------------- Credit Note -------------------------
+
+	x_credit_note_type = fields.Selection(
+			[
+				('cancel', 		'Anulación'),
+				('discount', 	'Descuento'),
+				('bonus', 		'Bonificación'),
+				('return', 		'Devolución'),
+				('other', 		'Otros'),
+			],
+			string='Motivo',
+			default='cancel',
+		)
+
+
 	x_credit_note_owner = fields.Many2one(
 			'sale.order',
-			'Propietario NC',
+			#'Propietario NC',
+			'Documento que modifica',
 		)
 
 	x_credit_note = fields.Many2one(
 			'sale.order',
 			'Nota de Crédito',
 		)
+
+
+	def get_credit_note_type(self):
+		print
+		print 'Get Credit Note Type'
+
+		_dic_cn = {
+					'cancel':	'Anulación',
+					'discount':	'Descuento',
+					'bonus':	'Bonificación', 
+					'return': 	'Devolución', 
+					'other': 	'Otros',
+		
+		}
+
+		return _dic_cn[self.x_credit_note_type]
 
 
 

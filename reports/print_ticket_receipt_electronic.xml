@@ -46,9 +46,18 @@
 <div class="row">
 
     <div class="col-xs-12" style="border-top: 1px solid black;"/>
+
 <b>
+
     <div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-field="doc.x_title"/>
+
+<t t-if="doc.state == 'credit_note'">
+    <div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-field="doc.x_serial_nr"/>
+</t>
+
 </b>
+
+
     <div class="col-xs-12" style="border-top: 1px solid black;"/>
 
 </div>
@@ -126,9 +135,61 @@
 
 
 
+<!-- Date and Serial Nr -->
+<t t-if="doc.state == 'credit_note'">
+
+<div class="row">
+    <div class="col-xs-12" style="border-top: 1px solid black;"/>
+
+<b>
+    <div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;">
+        Documento que Modifica
+    </div>
+</b>
+
+<table style="width:100%">
+
+    <tr>
+        <td><b>Denominación:</b></td>
+        <td><t t-esc="doc.x_credit_note_owner.x_serial_nr"/></td> 
+    </tr>
+
+    <tr>
+        <td><b>Fecha de emisión:</b></td>
+        <td><t t-esc="doc.x_credit_note_owner.x_date_order_corr"/></td> 
+    </tr>
+
+    <tr>
+        <td><b>Motivo:</b></td>
+<!--
+        <td><t t-esc="doc.x_credit_note_type"/></td> 
+-->
+        <td><t t-esc="doc.get_credit_note_type()"/></td> 
+    </tr>
+
+</table>
+
+    <div class="col-xs-12" style="border-top: 1px solid black;"/>
+
+</div>
+
+</t>
+
+
+
+
+
 <!-- Date --> 
 <!-- Serial Number --> 
 <table style="width:100%">
+
+<!--
+<t t-if="doc.state == 'credit_note'">
+</t>
+-->
+
+
+<t t-if="doc.state in ['sale', 'cancel']">
     <tr>
         <td><b>Fecha:</b></td>
         <td><t t-esc="doc.x_date_order_corr"/></td> 
@@ -137,6 +198,9 @@
         <td><b>Ticket:</b></td>
         <td><t t-esc="doc.x_serial_nr"/></td> 
     </tr>
+</t>
+
+
 </table>
 <br/>
 

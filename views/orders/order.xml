@@ -313,8 +313,7 @@ jx
 
 
 					<field name="vspace"/>
-					<field name="x_credit_note"/>
-					<field name="x_credit_note_owner"/>
+
 
 
 					<field name="x_electronic"			groups="openhealth.roots"/>
@@ -571,15 +570,22 @@ jx
 
 				<!-- Dni --> 
 				<field name="patient" position="before">
+
+
+					<field name="x_credit_note"			attrs="{'invisible':[('state', 'not in', ['cancel'])]}"/>
+					<field name="x_credit_note_type"	attrs="{'invisible':[('state', 'not in', ['credit_note'])]}"	/>
+					<field name="x_credit_note_owner"	attrs="{'invisible':[('state', 'not in', ['credit_note'])]}"	/>
+
+
+					<field name="vspace"/>
 					<field name="x_partner_dni"
 															attrs="{
 																		'readonly':[('patient', '!=', False)], 
 																}"
 						/>
 					<field name="vspace"/>
-
-
 				</field>
+
 <!--
 					<field name="x_dni"		groups="openhealth.roots"				/>
 					<field name="x_ruc"		groups="openhealth.roots"	/>

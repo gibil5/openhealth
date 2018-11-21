@@ -407,7 +407,7 @@
 
 		'data/prods/odoo_data_products.xml',
 		'data/prods/odoo_data_products_new.xml',
-		#'data/prods/odoo_data_products_dep.xml',
+		'data/prods/odoo_data_products_dep.xml',			# Important
 
 		'data/prods/odoo_data_services_co2.xml',
 		'data/prods/odoo_data_services_exc.xml',
@@ -492,7 +492,7 @@
 
 
 		# Evaluations
-		'views/evaluations/evaluation.xml',
+		#'views/evaluations/evaluation.xml',
 
 
 		# Services
@@ -590,7 +590,7 @@
 
 
 		# Evaluations - 2
-		'views/evaluations/evaluation_oeh.xml',
+		#'views/evaluations/evaluation_oeh.xml',
 
 
 

@@ -1,4 +1,0 @@
-access_openhealth_openhealth,openhealth.openhealth,model_openhealth_openhealth,,0,1,1,1
-access_openhealth_order,access_openhealth_order,model_openhealth_order,,1,1,1,1
-access_openhealth_treatment,access_openhealth_treatment,model_openhealth_treatment,,1,0,0,0
-access_openhealth_service,access_openhealth_service,model_openhealth_service,,1,0,0,0

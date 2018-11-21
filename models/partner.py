@@ -13,8 +13,25 @@ class Partner(models.Model):
 	"""
 	"""
 	_inherit = 'res.partner'
-
 	_order = 'write_date desc'
+
+
+
+
+# ----------------------------------------------------------- Address -----------------------------	
+	# Address
+	x_address = fields.Char(
+			"Dirección",
+
+			compute='_compute_x_address', 
+		)
+
+	@api.multi
+	#@api.depends('')
+	def _compute_x_address(self):
+		for record in self:
+			if record.street != False and record.street2 != False and record.city != False:
+				record.x_address = record.street.title() + ' ' + record.street2.title() + ' - ' + record.city.title()
 
 
 
@@ -22,9 +39,9 @@ class Partner(models.Model):
 
 	# Company
 
-	#x_firm_address = fields.Char(
-	#		"Dirección (Razón social)",
-	#	)
+	x_firm_address = fields.Char(
+			"Dirección (Razón social)",
+		)
 
 
 	x_firm = fields.Char(
@@ -178,22 +195,6 @@ class Partner(models.Model):
 
 
 
-
-# ----------------------------------------------------------- Address ------------------------------------------------------
-	
-	# Address
-	x_address = fields.Char(
-			"Dirección",
-
-			compute='_compute_x_address', 
-		)
-
-	@api.multi
-	#@api.depends('')
-	def _compute_x_address(self):
-		for record in self:
-			if record.street != False and record.street2 != False and record.city != False:
-				record.x_address = record.street.title() + ' ' + record.street2.title() + ' - ' + record.city.title()
 
 
 

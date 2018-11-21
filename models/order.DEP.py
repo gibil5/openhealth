@@ -3,6 +3,45 @@
 
 
 
+# ----------------------------------------------------------- Generates ---------------------------
+	# Generate Date Order
+	def generate_date_order(self, date_order, delta_hou=0, delta_min=0, delta_sec=0):
+		"""
+		high level support for doing this and that.
+		"""
+		#print
+		#print 'Generate Date Order'		
+		date_order = lib.correct_date_delta(date_order, delta_hou, delta_min, delta_sec)
+		self.date_order = date_order
+
+	# generate_date_order
+
+
+	# Generate Serial Nr
+	def generate_serial_nr(self):
+		"""
+		high level support for doing this and that.
+		"""
+		#print 
+		#print 'Generate Serial Nr'
+
+		# Init 
+		delta = 0 
+		_dic_pad = {
+						'ticket_receipt': 10,
+						'ticket_invoice': 10,
+						'receipt': 			6,
+						'invoice':			6,
+		}
+		pad = _dic_pad[self.x_type]
+
+		# Generate
+		self.x_serial_nr = lib_con.generate_serial_nr(self.x_counter_value, delta, pad)
+
+	# generate_serial_nr
+
+
+
 # ---------------------------------------------- Fix -------------------------------------------
 	# Fix
 	@api.multi

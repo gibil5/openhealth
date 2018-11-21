@@ -1,36 +1,33 @@
 # -*- coding: utf-8 -*-
-#
-# 		*** Treatment
-# 
-# 		Created: 			26 Aug 2016
-# 		Last up: 	 		17 Sep 2018
-#
-from openerp import models, fields, api
+"""
+ 		*** Treatment
+
+ 		Created: 			26 Aug 2016
+ 		Last up: 	 		21 Nov 2018
+"""
+from timeit import default_timer as timer
 import datetime
+from openerp import models, fields, api
 import time_funcs
 import treatment_vars
 import lib
-import user 
-import tst
+import user
 import creates as cre
-import lib_obj
 import lib_rep
 import reco_funcs
-from timeit import default_timer as timer
-import export 
+import test_treatment as tst
+#import lib_obj
+#import export
 
-class Treatment(models.Model):	
-
-	_inherit = 'openhealth.process'	
-
+class Treatment(models.Model):
+	_inherit = 'openhealth.process'
 	_name = 'openhealth.treatment'
-
 	_order = 'write_date desc'
 
 
 
 
-# ----------------------------------------------------------- Testing - Fields ------------------------------------------------------
+# ----------------------------------------------------------- Test --------------------------------
 	x_test = fields.Boolean(
 			'Test', 
 		)
@@ -38,580 +35,50 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Testing - Treatment Integration ------------------------------------------------------
-	# Treatment - Integration 
-	@api.multi 
+# ----------------------------------------------------------- Test Integration --------------------
+	@api.multi
 	def test_integration(self):
-		if self.patient.x_test: 
+		"""
+		Integration Test of the Treatment Class.
+		"""
+		if self.patient.x_test:
 			
 			# Reset
 			tst.reset_treatment(self)
 
-			# Init 
-			#date_order_begin = 	'2018-09-01 14:00:00'
-			#date_order_end = 	'2018-10-01 02:00:00'			
-
-			# Go 
+			# Test Integration
 			tst.test_integration_treatment(self)
 
 
 
 
 
-
-
-# ----------------------------------------------------------- Testing - Consu ------------------------------------------------------
-	# Consu
-	@api.multi 
-	def test_case_consu(self):
-		print
-		print 'Test Case - Consu'
-
-		# Init 
-
-
-		# Search 
-		products = self.env['product.template'].search([
-															#('type','in', ['consu']),
-															('sale_ok','not in', ['True']),
-														],
-													#order='name asc',
-													#limit=1,
-													#limit=10,
-													#limit=100,
-													#limit=120,
-												)
-
-		count = self.env['product.template'].search_count([
-															#('type','in', ['consu']),
-															('sale_ok','not in', ['True']),
-													])
-
-
-		print 'Products: \t', products
-		print 
-		print 'Count: \t', count 
-		print 
-
-
-		# Not Sale Ok Must be Consu !
-		# Consu Must be Inactive !
-		for product in products: 
-			print product.name 
-			print product.sale_ok
-
-			if product.sale_ok == False: 
-				product.type = 'consu'
-
-			if product.type == 'consu': 
-				product.active = False
-
-			print product.type 
-			print product.active 
-
-
-			print 
-
-
-
-
-
-
-# ----------------------------------------------------------- Testing - Products ------------------------------------------------------
-	# Prods
-	@api.multi 
-	def test_case_products(self):
-		print
-		print 'Test Case - Products'
-
-		# Init 
-		se = ' - '
-		eol = 'x'
-
-		#families = ['cosmetology']
-		#treatments = ['laser_excilite', 'laser_ipl']
-		#treatments = ['laser_excilite']
-		#treatments = ['laser_ipl']
-		#treatments = ['laser_ndyag']
-
-
-		treatments = ['laser_quick']
-
-
-		# Search 
-		products = self.env['product.template'].search([
-															('type','in', ['service']),
-
-															('x_treatment','in', treatments),
-
-															#('x_family','in', families),
-														],
-													#order='name asc',
-													#limit=1,
-													#limit=10,
-													limit=100,
-													#limit=120,
-												)
-		print products
-		print 
-
-		# Products 
-		for product in products: 
-
-
-			# Quick 
-			if product.x_treatment in ['laser_quick']: 			# Standardize Shortname
-				#print 'Quick'
-
-				# Array Short Name
-				arr_sho = product.x_name_short.split('_')
-
-				# Array Name
-				arr_nam = product.name.split('-')
-
-
-				# Correct the Name 
-				if len(arr_nam) == 4: 			# To avoid repetition 
-
-					name = product.name
-					name_old = name 
-
-					for tup in [ 
-									('1', '5 min - 1'), 
-									('2', '15 min - 1'), 
-									('3', '30 min - 1'), 
-									('4', '45 min - 1'), 
-								]: 
-
-						old = tup[0]
-						new = tup[1]
-						#print old 
-						#print new 
-
-						name = name.replace(old, new)
-
-					print name_old
-					print name
-					print 
-
-
-					# Change 
-					product.name = name
-
-
-
-
-
-				# Correct the Short Name 
-				if len(arr_sho) == 4: 			# To avoid repetition 
-
-					short = product.x_name_short
-					short_old = short 
-
-					#print short
-
-					for tup in [ 
-									#('quick', 'qui'), 
-									#('face_all_hands', 'faa-han'), ('face_all_neck', 'faa-nec'), ('neck_hands', 'nec-han'), 
-									#('body_local', 'bol'), ('face_local', 'fal'), ('face_all', 'faa'), 
-									#('hands', 'han'), ('neck', 'nec'), ('cheekbones', 'che'), 
-									#('rejuvenation', 'rej'), ('acne_sequels', 'acs'), ('scar', 'sca'), 
-									#('mole', 'mol'), ('stains', 'sta'), ('keratosis', 'ker'), ('cyst', 'cys'),
-									#('tatoo', 'tat'), ('wart', 'war'), 
-
-									('1', '5m_one'), 
-									('2', '15m_one'), 
-									('3', '30m_one'), 
-									('4', '45m_one'), 
-								]: 
-						
-						old = tup[0]
-						new = tup[1]
-						#print old 
-						#print new 
-
-						short = short.replace(old, new)
-
-					
-					print short_old
-					print short
-					print 
-
-					# Change  
-					product.x_name_short = short 
-
-
-
-
-			# Exc, Ipl, Ndyag 
-			elif product.x_treatment in ['laser_excilite', 'laser_ipl', 'laser_ndyag']: 		# Swap Sessions and Time 
-				print 'Exc, Ipl or Ndy'
-				name = product.name 
-				arr = name.split(' - ')
-				tre = arr[0]
-				zone = arr[1]
-				patho = arr[2]
-				sess = arr[3]
-				time = arr[4]
-
-				print tre 
-				print zone 
-				print patho 
-				print sess
-				print time 
-
-				if sess in ['1', '6', '12']: 
-					print 'Gotcha'
-					print product 
-					print product.name + eol
-					name = tre + se + zone + se + patho + se + time + se + sess  
-					product.name = name 
-					print product.name + eol
-				print 
-
-
-
-# ----------------------------------------------------------- Testing - Coder ------------------------------------------------------
-	# Coder
-	@api.multi 
-	def test_case_coder(self):
-		print
-		print 'Test Case - Coder'
-
-
-		# Search 
-		products = self.env['product.template'].search([
-															#('type','in', ['product']),
-															('type','in', ['service']),
-															('x_treatment','in', ['laser_co2']),
-														],
-													#order='appointment_date desc',
-													#limit=1,
-													limit=101,
-													)
-		print products
-		print 
-
-
-		# Products 
-		for product in products: 
-		
-			if product.x_coder.name == False: 			# Does not have a Coder 
-
-				#name = product.name 
-				name = product.name[:-4]
-
-				print product 
-				print product.name
-				print name + '_eol'
-				
-
-				# Search 
-				coder = self.env['openhealth.coder'].search([
-																('name','in', [name]),
-															],
-														#order='appointment_date desc',
-														limit=1,
-														)
-
-
-				
-				if coder.name != False: 			# There is a Coder with this Name 
-					
-					print 'Gotcha !'
-					print coder 			
-
-					product.name = name 
-
-					product.x_coder = coder 
-					product.x_code = coder.code
-					coder.product = product 
-
-
-				else:
-					product.x_coder = False
-
-
-				print 
-
-
-
-
-# ----------------------------------------------------------- Testing - Export ------------------------------------------------------
-	# Export 
-	@api.multi 
-	def test_case_export(self):
-		print
-		print 'Test Case - Export'
-		
-		if self.patient.x_test: 
-
-
-			# Search 
-			mgt = self.env['openhealth.management'].search([
-																('name','=', 'Hoy'),
-														],
-														#order='appointment_date desc',
-														limit=1,)
-
-			# Update
-			mgt.update_electronic()
-
-
-			# Export
-			export.export_txt(mgt.electronic_order)
-
-
-
-
-# ----------------------------------------------------------- Testing - Containers ------------------------------------------------------
-
-	container = fields.Many2one(
-			'openhealth.container', 
-		)
-
-
-	x_object = fields.Many2one(
-			lib_obj.Object, 
-		)
-
-
-
-
-# ----------------------------------------------------------- Testing - Patient - Test ------------------------------------------------------
-	#  Objects - Integration
-	@api.multi 
-	def test_case_container(self):
-		print
-		print 'Test - Container'
-		#print self 
-
-		# Create 
-		self.container = self.env['openhealth.container'].create({
-																	'name': 'Tester',
-												})
-
-		# Init 
-		patient_id = self.patient.id
-		doctor_id = self.physician.id
-		treatment_id = self.id 
-		partner_id = self.partner_id.id			
-		#pl_id = self.patient.property_product_pricelist.id   	# Pricelist 
-
-		# Init Container
-		#pat_array = self.container.my_init(self.patient, self.partner_id, self.physician, self.id)
-		self.container.my_init(self.patient, self.partner_id, self.physician, self.id)
-
-
-		#simple = lib_obj.Simple('My Name')
-		#print simple
-		#print simple.whoami()
-		#print 'mark 1'
-		#print 
-
-
-		#print 'mark 2'
-		#print self.container
-
-
-
-		# Init 
-		#patient_id = self.patient.id
-		#doctor_id = self.physician.id
-		#treatment_id = self.id 
-		#partner_id = self.partner_id.id			
-		#pl_id = self.patient.property_product_pricelist.id   	# Pricelist 
-
-		# Init Container
-		#pat_array = self.container.my_init(self.patient, self.partner_id, self.physician, self.id)
-
-
-		#print pat_array
-		#print self.container.patient_ids
-		#print 'mark 3'
-		#print 
-
-	# test_case_patients_order
-
-
-
-# ----------------------------------------------------------- Testing - Patient - Create ------------------------------------------------------
-	#  Objects - Integration
-	@api.multi 
-	def test_case_patients(self):
-		print
-		print 'Test Case - Patient'
-		
-		if self.patient.x_test: 
-
-			# Init 
-			patient_id = self.patient.id
-			doctor_id = self.physician.id
-			treatment_id = self.id 
-			partner_id = self.partner_id.id			
-			pl_id = self.patient.property_product_pricelist.id   	# Pricelist 
-			caller = self 											# Caller 
-
-
-
-			# Init 
-			patient = lib_obj.Object(	caller, 'patient', 	'oeh.medical.patient', 	False, 		False, 		doctor_id, 	False, 			False)
-			
-			#self.x_object = lib_obj.Object(	caller, 'patient', 	'oeh.medical.patient', 	False, 		False, 		doctor_id, 	False, 			False)
-			#self.container.obj = lib_obj.Object(	caller, 'patient', 	'oeh.medical.patient', 	False, 		False, 		doctor_id, 	False, 			False)
-
-
-
-
-			# Print 
-			print 
-			print 'Print'
-			print patient 
-			#print self.x_object
-
-			print 
-			print 'Who'
-			print patient.whoami()
-			#print self.x_object.whoami()
-
-
-
-			# All  
-			#obj_arr = [
-						#patient, 
-						#self.x_object, 
-			#		]
-
-			# Test  
-			#for obj in obj_arr: 
-			#	print 
-				#obj.test()
-			#print 
-
-			#print 
-			#print 'Print'
-			#for obj in obj_arr: 
-			#	print obj
-
-
-
-	# test_case_patient
-
-
-
-
-# ----------------------------------------------------------- Testing - Order ------------------------------------------------------
-	#  Objects - Integration
-	@api.multi 
-	def test_case_order(self):
-		print
-		print 'Test Case - Order'
-		
-		if self.patient.x_test: 
-
-
-			# Init 
-			patient_id = self.patient.id
-			doctor_id = self.physician.id
-			treatment_id = self.id 
-			partner_id = self.partner_id.id			
-			pl_id = self.patient.property_product_pricelist.id   	# Pricelist 
-			caller = self 											# Caller 
-
-
-			# Objects 
-			order = 	lib_obj.Object(	caller, 'order', 	'sale.order', 			patient_id, partner_id, doctor_id, 	treatment_id, 	pl_id)
-
-
-
-			# All  
-			objs = [
-						order, 
-				]
-
-			# Test  
-			for obj in objs: 
-				obj.test()
-			print 
-
-			# Print 
-			for obj in objs: 
-				print obj
-
-	# test_case_order
-
-
-
-
-
-
-# ----------------------------------------------------------- Testing - Objects ------------------------------------------------------
-	#  Objects - Integration
-	@api.multi 
-	def test_case_objs(self):
-		print
-		print 'Test Case - Objs'
-		
-		if self.patient.x_test: 
-
-			# Init 
-			patient_id = self.patient.id
-			doctor_id = self.physician.id
-			treatment_id = self.id 
-			partner_id = self.partner_id.id			
-			pl_id = self.patient.property_product_pricelist.id   	# Pricelist 
-			caller = self 											# Caller 
-
-
-
-			# Objects 
-			order = 	lib_obj.Object(	caller, 'order', 	'sale.order', 			patient_id, partner_id, doctor_id, 	treatment_id, 	pl_id)
-
-			patient = 	lib_obj.Object(	caller, 'patient', 	'oeh.medical.patient', 	False, 		False, 		doctor_id, 	False, 			False)
-
-
-
-			# All  
-			objs = [
-						order, 
-						patient, 
-				]
-
-			# Test  
-			for obj in objs: 
-				obj.test()
-			print 
-
-			# Print 
-			for obj in objs: 
-				print obj
-
-	# test_case_objs
-
-
-
-
-# ----------------------------------------------------------- Testing - Reports ------------------------------------------------------
+# ----------------------------------------------------------- Test Integration Reports ------------
 	# Reports - Integration
 	@api.multi 
 	def test_case_reports(self):
-		print 'Test Case - Reports'
-		print 
+		"""
+		Integration Test for Class Reporting capabilites (Update method).
+		"""
+		#print 'Test - Report'
+		#print 
 		
 		if self.patient.x_test: 
 			
 			# Object Oriented 
 			
 			# Reports 
-			closing = 			lib_rep.Report('closing', 			'openhealth.closing', 				'date', 		self)
-			resap = 			lib_rep.Report('resap',	 			'openhealth.report.sale.product', 	'name', 		self)
+			closing = 		lib_rep.Report('closing', 		'openhealth.closing', 				'date', 		self)
 			
-			management = 		lib_rep.Report('management', 		'openhealth.management', 			'date_begin', 	self)
+			resap = 		lib_rep.Report('resap',	 		'openhealth.report.sale.product', 	'name', 		self)
 			
-			marketing = 		lib_rep.Report('marketing', 		'openhealth.marketing', 			'date_begin', 	self)
-			account = 			lib_rep.Report('account.contasis', 	'openhealth.account.contasis', 		'date_begin', 	self)
+			management = 	lib_rep.Report('management', 	'openhealth.management', 			'date_begin', 	self)
+			
+			marketing = 	lib_rep.Report('marketing', 	'openhealth.marketing', 			'date_begin', 	self)
+			
+			account = 	lib_rep.Report('account.contasis', 	'openhealth.account.contasis', 		'date_begin', 	self)
+			
 			#state_of_acc = 	lib_rep.Report('state_of_acc', 		'openhealth.order.report.nex', 		'create_date', 	self)
-
 			#doctor_line = 		lib_rep.Report('doctor_line', 		'openhealth.management.doctor.line', 				'write_date', 		self)
 			#family_line = 		lib_rep.Report('family_line', 		'openhealth.management.family.line', 				'write_date', 		self)
 			#sub_family_line = 	lib_rep.Report('sub_family_line', 	'openhealth.management.sub_family.line', 			'write_date', 		self)
@@ -620,23 +87,17 @@ class Treatment(models.Model):
 
 			# All  
 			objs = [
-						closing, 
-						resap, 
-						management, 
-						marketing, 
-						account, 
-
-						#state_of_acc, 
-						#doctor_line, 
-						#family_line, 
-						#sub_family_line, 
+						closing,
+						resap,
+						management,
+						marketing,
+						account,
 				]
 
 
 			# Update 
 			for obj in objs: 
 				obj.update()
-			print 
 
 			# Print 
 			for obj in objs: 
@@ -644,52 +105,24 @@ class Treatment(models.Model):
 
 
 
-
-
-
-
-
-
-	# Two - Unit - Appointment
+# ----------------------------------------------------------- Test Reset --------------------------
 	@api.multi 
-	def test_case_two(self):
-		print 
-		print 'Test Case - Two'
-		if self.patient.x_test: 
-			tst.test_appointment(self)
-
-
-
-	# Three - Reset 
-	@api.multi 
-	def test_case_reset(self):
+	def test_reset(self):
 		#print 
 		#print 'Test Case - Reset'
 		if self.patient.x_test: 
-			#print 'Is a Tester'
 			tst.reset_treatment(self)
 		else: 
 			print 'Not a Tester'
 
 
 
-	# Four - Reload 
-	@api.multi 
-	def test_case_reload(self):
-		#print 
-		#print 'Test Case - Reload'
-		self.reload()
-
-
-
-
-# ----------------------------------------------------------- Test - Booleans ------------------------------------------------------
+# ----------------------------------------------------------- Test Flags --------------------------
 
 	# Clear All
 	@api.multi 
 	def clear_all(self):
 		tst.clear_all(self)
-
 
 	# Set All
 	@api.multi 
@@ -698,7 +131,8 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Vip  ------------------------------------------------------
+
+# ----------------------------------------------------------- Vip  --------------------------------
 
 	# Vip 
 	vip = fields.Boolean(

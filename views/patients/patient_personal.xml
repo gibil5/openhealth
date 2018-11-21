@@ -178,8 +178,8 @@ Relax !
 							<group>
 								<field  name="x_firm"/>
 <!--
-								<field  name="x_firm_address"/>
 -->							
+								<field  name="x_firm_address"/>
 								<field  name="x_ruc"/>
 							</group>
 						</group>

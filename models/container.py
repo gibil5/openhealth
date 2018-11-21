@@ -13,7 +13,6 @@ import tst_pat
 import creates
 import export
 
-
 class Container(models.Model):
 	"""
 	high level support for doing this and that.
@@ -152,7 +151,7 @@ class Container(models.Model):
 
 
 
-# ----------------------------------------------------------- Create Sales -------------------------------
+# ----------------------------------------------------------- Create Sales ------------------------
 
 	# Create Sales
 	@api.multi
@@ -471,6 +470,3 @@ class Container(models.Model):
 		self.receipt_count = 0
 
 	# clear
-
-
-

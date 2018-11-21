@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
-#
-# 	tst_pat.py
-#  	
-# 	Test Case for - Patients
-#
-#	Created: 			28 Sep 2018
-#	Last up: 	 		28 Sep 2018
-# 
+"""
+ 	tst_pat.py
+  	
+ 	Test - Patients
+
+	Created: 			28 Sep 2018
+	Last up: 	 		28 Sep 2018
+"""
 import creates as cre
 
 
@@ -314,10 +314,5 @@ def test_cases(self, container_id, doctor_id):
 
 			pat_array.append(patient)
 
-
-
 	return pat_array
-
 	# test_cases
-
-

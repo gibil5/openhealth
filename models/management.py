@@ -14,6 +14,7 @@ import mgt_vars
 
 class Management(models.Model):
 	"""
+	high level support for doing this and that.
 	"""
 	_inherit = 'openhealth.repo'
 
@@ -28,6 +29,7 @@ class Management(models.Model):
 	@api.multi
 	def export_txt(self):
 		"""
+		high level support for doing this and that.
 		"""
 		#print
 		#print 'Export Text'
@@ -35,11 +37,8 @@ class Management(models.Model):
 
 	# State Array
 	state_arr = fields.Selection(
-
 			selection=mgt_vars._state_arr_list,
-		
 			string='States',
-
 			default='sale',
 		)
 
@@ -295,6 +294,7 @@ class Management(models.Model):
 	# Update Stats - Doctors, Families, Sub-families
 	def update_stats(self):
 		"""
+		high level support for doing this and that.
 		"""
 		#print
 		#print 'Update Stats'
@@ -392,6 +392,7 @@ class Management(models.Model):
 	# Update Sales
 	def update_sales_by_doctor(self):
 		"""
+		high level support for doing this and that.
 		"""
 		#print
 		#print 'Update Sales - By Doctor'
@@ -557,6 +558,7 @@ class Management(models.Model):
 	@api.multi
 	def update_doctors(self):
 		"""
+		high level support for doing this and that.
 		"""
 		#print
 		#print 'Management - Update Doctors'
@@ -585,6 +587,7 @@ class Management(models.Model):
 	@api.multi
 	def update_qc(self, x_type):
 		"""
+		high level support for doing this and that.
 		"""
 		#print
 		#print 'Management - Update QC'
@@ -616,6 +619,7 @@ class Management(models.Model):
 	@api.multi
 	def clear_electronic(self):
 		"""
+		high level support for doing this and that.
 		"""
 		#print
 		#print 'Electronic - Clear'
@@ -633,6 +637,7 @@ class Management(models.Model):
 	@api.multi
 	def update_electronic(self):
 		"""
+		high level support for doing this and that.
 		"""
 		#print
 		#print 'Update - Electronic'
@@ -772,6 +777,7 @@ class Management(models.Model):
 	# Update Sales - Fast
 	def update_sales_fast(self):
 		"""
+		high level support for doing this and that.
 		"""
 		#print
 		#print 'Update Sales'
@@ -805,7 +811,8 @@ class Management(models.Model):
 					verbosity = False
 
 				# Line Analysis
-				stats = mgt_funcs.line_analysis(self, line, verbosity)
+				#stats = mgt_funcs.line_analysis(self, line, verbosity)
+				stats = mgt_funcs.line_analysis(self, line)
 
 
 
@@ -867,6 +874,7 @@ class Management(models.Model):
 	@api.multi
 	def update_fast(self):
 		"""
+		high level support for doing this and that.
 		"""
 		#print
 		#print 'Management - Update Fast'
@@ -886,6 +894,7 @@ class Management(models.Model):
 	@api.multi
 	def reset(self):
 		"""
+		high level support for doing this and that.
 		"""
 		#print
 		#print 'Reset'
@@ -897,6 +906,7 @@ class Management(models.Model):
 	# Reset Macros
 	def reset_macro(self):
 		"""
+		high level support for doing this and that.
 		"""
 		#print
 		#print 'Reset Macros'
@@ -950,6 +960,7 @@ class Management(models.Model):
 	# Reset Micro (Doctors, Families, Sub-families)
 	def reset_micro(self):
 		"""
+		high level support for doing this and that.
 		"""
 		#print
 		#print 'Reset Doctors'
@@ -966,6 +977,7 @@ class Management(models.Model):
 	@api.multi
 	def update(self):
 		"""
+		high level support for doing this and that.
 		"""
 		#print
 		#print 'Management - Update'

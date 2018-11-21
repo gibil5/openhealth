@@ -8,13 +8,13 @@
 	'name': "Open Health - MIN",
 
 	'summary': """
-		Fulcrum 
+		Fulcrum
 	""",
 
 
 	'description': """
 
-		19 Nov 2018
+		21 Nov 2018
 
 		Fulcrum - DEV - DOCEAN - PROLIANT
 		

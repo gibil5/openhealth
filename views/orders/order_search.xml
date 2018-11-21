@@ -17,6 +17,32 @@
 
 <!-- Active --> 
 
+
+
+
+					<!-- This -->
+					<filter string="Hoy" domain="[
+														('date_order', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 05:00:00')),
+											]"/>
+
+
+					<filter string="Este Mes" domain="[
+														('date_order','&gt;=',time.strftime('%Y-%m-01 05:00:00')),
+											]"/>
+
+
+					<filter string="Este Año" domain="[
+														('date_order','&gt;=',time.strftime('%%Y-01-01 05:00:00')), 
+											]"/>
+					<separator/>
+
+
+
+
+
+
+
+
 <!--					
 					<filter string="24 Oct" domain="[
 															('date_order','&lt;', '2018-10-25 05:00:00'),
@@ -25,6 +51,37 @@
 -->
 
 					<!-- Custo --> 
+
+					<filter string="23 Nov" domain="[
+															('date_order','&lt;', '2018-11-24 05:00:00'),
+															('date_order','&gt;=','2018-11-23 05:00:00'),
+											]"/>
+
+					<filter string="22 Nov" domain="[
+															('date_order','&lt;', '2018-11-23 05:00:00'),
+															('date_order','&gt;=','2018-11-22 05:00:00'),
+											]"/>
+
+					<filter string="21 Nov" domain="[
+															('date_order','&lt;', '2018-11-22 05:00:00'),
+															('date_order','&gt;=','2018-11-21 05:00:00'),
+											]"/>
+
+					<filter string="20 Nov" domain="[
+															('date_order','&lt;', '2018-11-21 05:00:00'),
+															('date_order','&gt;=','2018-11-20 05:00:00'),
+											]"/>
+
+					<filter string="19 Nov" domain="[
+															('date_order','&lt;', '2018-11-20 05:00:00'),
+															('date_order','&gt;=','2018-11-19 05:00:00'),
+											]"/>
+
+
+
+
+
+
 
 					<filter string="17 Nov" domain="[
 															('date_order','&lt;', '2018-11-18 05:00:00'),
@@ -167,22 +224,6 @@
 
 
 
-					<filter string="Hoy" domain="[											
-															('date_order', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 05:00:00')),
-											]"/>
-
-
-					<filter string="Este Mes" domain="[
-															('date_order','&gt;=',time.strftime('%Y-%m-01 05:00:00')),
-											]"/>
-
-
-					<filter string="Este Año" domain="[
-															('date_order','&gt;=',time.strftime('%%Y-01-01 05:00:00')), 
-											]"/>
-
-
-					<separator/>
 
 
 

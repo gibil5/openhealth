@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
-#
-# 	tst.py
-#  	
-# 	Integration Tests for the Treatment Class
-#
-#	Created: 			14 Aug 2018
-#	Last up: 	 		14 Aug 2018
-# 
+"""
+ 	tst.py
+  	
+ 	Test - Treatment
+ 	Integration Tests for the Treatment Class
+
+	Created: 			14 Aug 2018
+	Last up: 	 		20 Nov 2018
+"""
 
 
-
-# ----------------------------------------------------------- Test Integration - Treatment ------------------------------------------------------
+# ----------------------------------------------------------- Integration -------------------------
 # Test - Integration - Treatment 
 def test_integration_treatment(self, date_order_begin=False, date_order_end=False):
 	print 
@@ -36,8 +36,6 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 
 	for order in self.order_ids: 
 		if order.state in ['draft']: 
-
-			#order.pay_myself(date_order_begin)
 			
 			order.pay_myself()
 
@@ -75,27 +73,27 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 
 
 
-	# Pay Order Procedure 
-	#if True: 
-	#if False:
-	print 
-	print 
+	# Pay Order Procedure
+	print
+	print
 	print 'Create Order - Procedure'
-	for order in self.order_ids: 
-		if order.state in ['draft']: 
+	for order in self.order_ids:
+		if order.state in ['draft']:
+
 			order.pay_myself()
+
 			print 'Pay'
-			print 'Pricelist: ', 	order.pricelist_id.name		# Verify 
-			print 'amount_total: ', order.amount_total			# Verify 
+			print 'Pricelist: ', 	order.pricelist_id.name		# Verify
+			print 'amount_total: ', order.amount_total			# Verify
 			print 'Assert'
 			order.test()
 
 
 
 
-	# Sessions 
-	if False:
-	#if self.ses_create:
+	# Sessions
+	if self.ses_create:
+	#if False:
 		print 
 		print 
 		print 'Create Sessions'
@@ -105,8 +103,8 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 
 
 	# Controls 
-	if False:
-	#if self.con_create:
+	if self.con_create:
+	#if False:
 		print 
 		print 'Create Controls'
 		for procedure in self.procedure_ids: 

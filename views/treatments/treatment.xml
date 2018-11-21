@@ -1216,7 +1216,7 @@ Fields
 									class="oe_highlight"
 									groups="openhealth.roots"
 
-									name="test_case_reset" 	
+									name="test_reset" 	
 
 									string="Reset"
 								/>

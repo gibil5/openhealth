@@ -709,7 +709,8 @@ jx
 								<button 
 										type="object" 
 										class="oe_highlight"
-										name="test_reset" 	
+										
+										name="reset"
 
 										string="Reset"
 

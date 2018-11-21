@@ -21,6 +21,8 @@ import lib_qr
 import chk_patient
 import chk_order
 
+import test_order
+
 class sale_order(models.Model):
 	"""
 	high level support for doing this and that.
@@ -183,6 +185,22 @@ class sale_order(models.Model):
 		}
 
 		return _dic_cn[self.x_credit_note_type]
+
+
+# ----------------------------------------------------------- Electronic - Getters ----------------
+
+	def get_patient_address(self):
+		print
+		print 'Get Patient Address'
+		return self.partner_id.x_address
+
+
+
+	def get_firm_address(self):
+		print
+		print 'Get Firm Address'
+		return self.partner_id.x_firm_address
+
 
 
 
@@ -881,20 +899,6 @@ class sale_order(models.Model):
 
 
 
-# ---------------------------------------------- Cancel -------------------------------------------
-	# Cancel Order
-	@api.multi
-	def cancel_order(self):
-		print
-		print 'Cancel Order'
-
-		self.x_cancel = True
-
-		self.state = 'cancel'
-
-		# Create CN
-		self.create_credit_note()
-
 
 
 
@@ -954,7 +958,6 @@ class sale_order(models.Model):
 
 
 # ----------------------------------------------------------- Vars --------------------------------
-
 
 	# Delta 
 	x_delta = fields.Integer(
@@ -1083,12 +1086,6 @@ class sale_order(models.Model):
 
 
 # ----------------------------------------------------------- Primitives --------------------------
-
-
-
-
-
-
 	# Cosmetology 
 	cosmetology = fields.Many2one(
 			'openhealth.cosmetology',
@@ -1096,16 +1093,11 @@ class sale_order(models.Model):
 			string="Cosmiatría", 
 		)
 
-
-
-	# For User Interface 
+	# Blank line
 	vspace = fields.Char(
 			' ', 
 			readonly=True
 		)
-
-
-
 
 
 # ----------------------------------------------------- Product Selector --------------------------
@@ -1312,10 +1304,6 @@ class sale_order(models.Model):
 
 
 
-
-
-
-
 	# DNI 
 	x_partner_dni = fields.Char(
 			string='DNI', 
@@ -1334,25 +1322,6 @@ class sale_order(models.Model):
 
 
 
-
-
-
-
-
-
-
-	# Activate
-	@api.multi
-	def activate_order(self):
-		self.x_cancel = False
-		self.state = 'sale'
-
-
-	# Cancel 
-	x_cancel = fields.Boolean(
-			string='',
-			default = False
-		)
 
 
 
@@ -1658,352 +1627,86 @@ class sale_order(models.Model):
 
 
 
-
-
-
-
-# ----------------------------------------------------------- Remove - For Treatment   ------------
-	@api.multi
-	def remove_myself(self):  
-		"""
-		high level support for doing this and that.
-		"""
-		self.test_reset()
-		self.unlink()
-
-
-
-# ----------------------------------------------------------- Reset -------------------------------
-	# Test - Reset 
+# ----------------------------------------------------------- Remove and Reset ------------
+	# Reset 
 	@api.multi 
-	def test_reset(self):
+	def reset(self):
 		"""
 		high level support for doing this and that.
 		"""
 		#print 
 		#print 'Order - Reset'
 		self.x_payment_method.unlink()
-		#self.x_dni = ''
-		#self.x_ruc = ''
-		self.state = 'draft'			# This works. 
+		self.state = 'draft'
 
 
-
-# ----------------------------------------------------------- Pay ---------------------------------
-	# Test  
-	@api.multi 
-	def pay_myself(self, date_order=False):
-		"""
-		high level support for doing this and that.
-		"""
-		#print
-		#print 'Pay myself'
-
-		if self.state == 'draft':
-			self.create_payment_method()
-			self.x_payment_method.saledoc = 'ticket_receipt'
-			self.x_payment_method.state = 'done'
-			self.state = 'sent'
-			self.validate()
-			self.action_confirm_nex()
-
-			# Update
-			if date_order != False:
-				ret = self.write({
-									'date_order': date_order,
-								})
-
-
-
-# ----------------------------------------------------------- Generates ---------------------------
-	# Generate Date Order
-	def generate_date_order(self, date_order, delta_hou=0, delta_min=0, delta_sec=0):
-		"""
-		high level support for doing this and that.
-		"""
-		#print
-		#print 'Generate Date Order'		
-		date_order = lib.correct_date_delta(date_order, delta_hou, delta_min, delta_sec)
-		self.date_order = date_order
-
-	# generate_date_order
-
-
-	# Generate Serial Nr
-	def generate_serial_nr(self):
-		"""
-		high level support for doing this and that.
-		"""
-		#print 
-		#print 'Generate Serial Nr'
-
-		# Init 
-		delta = 0 
-		_dic_pad = {
-						'ticket_receipt': 10,
-						'ticket_invoice': 10,
-						'receipt': 			6,
-						'invoice':			6,
-		}
-		pad = _dic_pad[self.x_type]
-
-		# Generate
-		self.x_serial_nr = lib_con.generate_serial_nr(self.x_counter_value, delta, pad)
-
-	# generate_date_order
-
-
-
-
-
-# ----------------------------------------------------------- Test --------------------------------
-
-	# Computes
-	def test_computes(self):
-		"""
-		high level support for doing this and that.
-		"""
-		#print 
-		#print 'Order - Computes'
-
-		print 'x_partner_vip\t', self.x_partner_vip
-		print 'nr_lines\t', self.nr_lines
-		print 'x_amount_total\t', self.x_amount_total
-		print 'x_total_in_words\t', self.x_total_in_words
-		print 'x_total_cents\t', self.x_total_cents
-		print 'x_total_net\t', self.x_total_net
-		print 'x_total_tax\t', self.x_total_tax		
-		print 'x_my_company\t', self.x_my_company
-		print 'x_date_order_corr\t', self.x_date_order_corr
-
-
-
-
-	# Actions
-	def test_actions(self):
-		"""
-		high level support for doing this and that.
-		"""
-		#print
-		#print 'Order - Actions'
-		self.state_force()
-		self.state_force()
-		self.open_product_selector_product()
-		self.open_product_selector_service()
-		self.cancel_order()
-		self.activate_order()
-		self.open_line_current()
-
-
-
-# ----------------------------------------------------------- Test - Init -------------------------
-	# Test - Init
 	@api.multi
-	def test_init(self, patient_id, partner_id, doctor_id, treatment_id, pl_id):
+	def remove_myself(self):  
 		"""
 		high level support for doing this and that.
 		"""
-		#print
-		#print 'Order - Test Init'
-
 		#self.test_reset()
-
-
-		# Create Order
-		order = self.env['sale.order'].create({
-													'partner_id': 	partner_id,
-													'patient': 		patient_id,
-													'state':		'draft',
-													'x_doctor': 	doctor_id,
-													'pricelist_id': pl_id,
-													'treatment': 	treatment_id,
-												})
-
-		# Create Order Lines
-
-
-		# Tuples - Short Name + Manual price
-		tup_arr = [
-							('con_med',	0),  					# Consultation
-							('con_med',	100),  					# Consultation
-							('con_med',	200),  					# Consultation
-							('con_gyn', 200),  					# Consultation
-
-							('acneclean',	-1),  						# Product
-							('vip_card',	-1),  						# Product 
-
-							('quick_neck_hands_rejuvenation_1',	-1), 	# Quick
-							('co2_nec_rn1_one',		-1), 				# Co2
-							('exc_bel_alo_15m_one',	-1),				# Exc
-							('ipl_bel_dep_15m_six',	-1), 			# Ipl
-							('ndy_bol_ema_15m_six',	-1),				# Ndyag
-							
-							('bot_1zo_rfa_one',		-1), 			# Medical
-							('car_bod_rfa_30m_six',	-1), 			# Cosmeto
-					]
-
-
-
-		# Init
-		#price_manual = 0
-		#price_applied = 0
-		price_applied = -1
-		reco_id= False
-
-
-		# Create
-		for tup in tup_arr:
-
-			name_short = tup[0]
-			price_manual = tup[1]
-
-			# Prints
-			#print tup
-			#print name_short
-			#print price_manual
-
-			# Create
-			ret = creates.create_order_lines_micro(order, name_short, price_manual, price_applied, reco_id)
-
-		return [order]
-
-	# test_init
+		self.reset()
+		self.unlink()
 
 
 
 
-# ----------------------------------------------------------- Test Unit ---------------------------
-	# Test - Unit
-	def test_unit(self):
-		"""
-		high level support for doing this and that.
-		"""
+
+# ---------------------------------------------- Cancel -------------------------------------------
+
+	# Cancel 
+	x_cancel = fields.Boolean(
+			string='',
+			default = False
+		)
+
+
+	# Cancel Order
+	@api.multi
+	def cancel_order(self):
 		#print
-		#print 'Order - Test Unit'
-
-		# Computes
-		#self.test_computes()
-
-		# Actions - Remaining
-		#self.test_actions()
-
-		# Init
-		total = 0
-
-		for line in self.order_line:
-			# Standard
-			#total = 	line.product_id.list_price * line.product_uom_qty 		+ total
-			price_std = line.product_id.list_price
-			price_vip = line.product_id.x_price_vip
-			price_manual = line.x_price_manual
-			qty = line.product_uom_qty
-			compact = line.x_description
+		#print 'Cancel Order'
+		self.x_cancel = True
+		self.state = 'cancel'
+		# Create CN
+		self.create_credit_note()
 
 
-			# Prints
-			print 'product_id: ', line.product_id.name
-			print 'price_std: ', price_std
-			print 'price_vip: ', price_vip
-			print 'price_manual: ', price_manual
-			print 'qty: ', qty
-			print 'compact: ', compact
+	# Activate
+	@api.multi
+	def activate_order(self):
+		self.x_cancel = False
+		self.state = 'sale'
 
-			# Assert
-			#assert compact != 'x'  					# Assert
-
-			# Price
-
-			# Manual
-			if price_manual != -1:
-				price = price_manual
-
-			# Public
-			elif self.pricelist_id.name in ['Public Pricelist']:
-				price = price_std
-
-			# Vip
-			else:
-				# Is a service and has a Vip price
-				if line.product_id.type in ['service'] and price_vip != 0:
-					price = price_vip
-				# Is a service and does not have a Vip price
-				else:
-					price = price_std
-
-
-			# Total
-			total = price * qty + total
-			print 'price: ', price
-			print 'total: ', total
-
-
-		# Asserts
-		print
-		print 'Asserts'
-		print self.pricelist_id.name
-		print 'total: ', total
-		print 'self.amount_total: ', self.amount_total
-		assert self.amount_total == total    				# Assert
-
-	# test_unit
-
-
-
-
-# ----------------------------------------------------------- Test Integration --------------------
-	# Test - Integration
-	# Test the whole Sale Cycle.
-	# With UI buttons included. Activate the different creation and write procedures.
-	def test_integration(self, test_case=False):
-		"""
-		high level support for doing this and that.
-		"""
-		#print
-		#print 'Order - Test Integration'
-		#print test_case
-
-# Cycle - Begin
-
-		# Create and Init - PM 
-		self.create_payment_method()
-		# Type
-		self.x_payment_method.saledoc = ord_vars._dic_tc_type[test_case]
-
-		print self.x_payment_method.name
-		self.x_payment_method.go_back()
-		print self.x_payment_method.state
-		
-		# Order
-		self.validate()
-		self.action_confirm_nex()
-		self.print_ticket()
-
-		# Cancel
-		if test_case in ['ticket_invoice_cancel', 'ticket_receipt_cancel']:
-			self.cancel_order()
-
-# Cycle - End
-	# test_integration
 
 
 
 # ----------------------------------------------------------- Test --------------------------------
+	
+	# Test Case	
+	x_test_case = fields.Char()
+
+
 	# Test
-	def test(self, test_case=False):
+	def test(self):
 		"""
 		high level support for doing this and that.
 		"""
-		#print 
-		#print 'Order - Test'
-		#print test_case
+		print 
+		print 'Order - Test - Interface'
+		test_order.test(self)
 
-		if self.patient.x_test:
-			if test_case != False:
-				x_type = test_case.split(',')[1].strip()
-			else: 
-				x_type = 'ticket_receipt'
 
-			self.test_integration(x_type)
 
-			#self.test_unit()
-	# test 
+	# Pay myself
+	def pay_myself(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print 
+		print 'Order - Pay myself - Interface'
+		test_order.pay_myself(self)
+
+
+

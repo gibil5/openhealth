@@ -32,8 +32,8 @@ def main(test_list):
             except Exception as e:
                 print(e)
                 res = 1
-        else:
-            res = subprocess.call(test_w_args)
+        #jx else:
+        #jx     res = subprocess.call(test_w_args)
         results.append(res)
 
     print()

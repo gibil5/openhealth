@@ -1,24 +1,24 @@
 <openerp>
-	<data>
+    <data>
 
-		<report
-			string="Cierre de Caja"
-			id="report_closing"
-			model="openhealth.closing"
-			report_type="qweb-pdf"
-			name="openhealth.report_closing_view"            
-			file="openhealth_closing.report_patient"
-
-
-			paperformat="appointment_receipt"
-		/>
+        <report
+            string="Cierre de Caja"
+            id="report_closing"
+            model="openhealth.closing"
+            report_type="qweb-pdf"
+            name="openhealth.report_closing_view"            
+            file="openhealth_closing.report_patient"
 
 
+            paperformat="appointment_receipt"
+        />
 
-		<template id="openhealth.report_closing_view">
-			<t t-call="report.html_container">                 
-			<t t-foreach="docs" t-as="doc">
-			<t>          
+
+
+        <template id="openhealth.report_closing_view">
+            <t t-call="report.html_container">                 
+            <t t-foreach="docs" t-as="doc">
+            <t>          
 
 
 
@@ -26,14 +26,14 @@
 
 <!-- Header --> 
 <div class="header">    
-	<img src='/openhealth/static/src/img/logo_chavarri.png' style="max-height: 100px;"/>
+    <img src='/openhealth/static/src/img/logo_chavarri.png' style="max-height: 100px;"/>
 </div>
 
 
 
 
 
-<!-- 								Page 1 - Begin	 										-->
+<!--                                Page 1 - Begin                                          -->
 <div class="page">  
 
 
@@ -49,7 +49,7 @@
 
 <center>
 <h4>
-	Cierre de Caja
+    Cierre de Caja
 </h4>
 </center>
 <!--
@@ -62,14 +62,14 @@
 
 <!-- Total --> 
 <h5>                            
-		<b>Total:</b>
-		<t t-esc="doc.total"/>
+        <b>Total:</b>
+        <t t-esc="doc.total"/>
 </h5>                            
 
 <!-- Date --> 
 <h5>                            
-		<b>Fecha:</b>
-		<t t-esc="doc.date"/>	
+        <b>Fecha:</b>
+        <t t-esc="doc.date"/>   
 </h5>
 <!--                            
 <br/>
@@ -77,7 +77,7 @@
 -->
 <!-- Title --> 
 <h4>                            
-	Documentos de Pago
+    Documentos de Pago
 </h4>
 <!--
 <br/>
@@ -211,7 +211,7 @@
 -->
 <!-- Title --> 
 <h4>                            
-	Formas de Pago
+    Formas de Pago
 </h4>
 <!--
 <br/>
@@ -314,36 +314,36 @@
 <!-- Footer --> 
 <!--
 <div class="footer">    
-	<div class='row'>
+    <div class='row'>
 
-		<div class='col-xs-4'>
-			<b>
-			Fecha:
-			</b>
-			<t t-esc="doc.name"/>
-		</div>
-
-
-		<div class='col-xs-3'>
-		</div>
+        <div class='col-xs-4'>
+            <b>
+            Fecha:
+            </b>
+            <t t-esc="doc.name"/>
+        </div>
 
 
-		<div class='col-xs-5'>
-			<b>
-			Cierre de Caja #:
-			</b>
-			<t t-esc="doc.date_time"/>
-		</div>
-	
-	</div>
+        <div class='col-xs-3'>
+        </div>
+
+
+        <div class='col-xs-5'>
+            <b>
+            Cierre de Caja #:
+            </b>
+            <t t-esc="doc.date_time"/>
+        </div>
+    
+    </div>
 </div>
 -->
 <!-- Footer --> 
 
 
-			</t>
-			</t>
-			</t>
-		</template>
-	</data>
+            </t>
+            </t>
+            </t>
+        </template>
+    </data>
 </openerp>

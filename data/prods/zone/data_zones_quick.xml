@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
-	<data noupdate='1'>
+    <data noupdate='1'>
 
 
 
@@ -8,91 +8,91 @@
 
 
 
-		<!-- Body local -->
-		<record id='quick_body_local' model='openhealth.zone'>
+        <!-- Body local -->
+        <record id='quick_body_local' model='openhealth.zone'>
 
-			<field name='name'>Localizado Cuerpo</field>
+            <field name='name'>Localizado Cuerpo</field>
 
-			<field name='name_short'>body_local</field>
+            <field name='name_short'>body_local</field>
 
-			<field name='treatment'>laser_quick</field>
-			
-		</record>
-
-
-
-		<!-- Face local -->
-		<record id='quick_face_local' model='openhealth.zone'>
-			<field name='name'>Localizado Rostro</field>			
-			<field name='name_short'>face_local</field>
-			<field name='treatment'>laser_quick</field>
-		</record>
+            <field name='treatment'>laser_quick</field>
+            
+        </record>
 
 
 
-		<!-- Face all -->
-		<record id='quick_face_all' model='openhealth.zone'>
-			<field name='name'>Todo Rostro</field>
-			<field name='name_short'>face_all</field>
-			<field name='treatment'>laser_quick</field>
-		</record>
+        <!-- Face local -->
+        <record id='quick_face_local' model='openhealth.zone'>
+            <field name='name'>Localizado Rostro</field>            
+            <field name='name_short'>face_local</field>
+            <field name='treatment'>laser_quick</field>
+        </record>
 
 
+
+        <!-- Face all -->
+        <record id='quick_face_all' model='openhealth.zone'>
+            <field name='name'>Todo Rostro</field>
+            <field name='name_short'>face_all</field>
+            <field name='treatment'>laser_quick</field>
+        </record>
 
 
 
 
 
-		<!-- Cheekbones -->
-		<record id='quick_cheekbones' model='openhealth.zone'>
-			<field name='name'>Pómulos</field>
-			<field name='name_short'>cheekbones</field>
-			<field name='treatment'>laser_quick</field>
-		</record>
 
 
-		<!-- Face all Hands -->
-		<record id='quick_face_all_hands' model='openhealth.zone'>
-			<field name='name'>Todo Rostro Manos</field>
-			<field name='name_short'>face_all_hands</field>
-			<field name='treatment'>laser_quick</field>
-		</record>
+        <!-- Cheekbones -->
+        <record id='quick_cheekbones' model='openhealth.zone'>
+            <field name='name'>Pómulos</field>
+            <field name='name_short'>cheekbones</field>
+            <field name='treatment'>laser_quick</field>
+        </record>
 
 
-
-		<!-- Hands -->
-		<record id='quick_hands' model='openhealth.zone'>
-			<field name='name'>Manos</field>
-			<field name='name_short'>hands</field>
-			<field name='treatment'>laser_quick</field>
-		</record>
-
-
-		<!-- Face all Neck -->
-		<record id='quick_face_all_neck' model='openhealth.zone'>
-			<field name='name'>Todo Rostro Cuello</field>
-			<field name='name_short'>face_all_neck</field>
-			<field name='treatment'>laser_quick</field>
-		</record>
-
-
-		<!-- Neck -->
-		<record id='quick_neck' model='openhealth.zone'>
-			<field name='name'>Cuello</field>
-			<field name='name_short'>neck</field>
-			<field name='treatment'>laser_quick</field>
-		</record>
+        <!-- Face all Hands -->
+        <record id='quick_face_all_hands' model='openhealth.zone'>
+            <field name='name'>Todo Rostro Manos</field>
+            <field name='name_short'>face_all_hands</field>
+            <field name='treatment'>laser_quick</field>
+        </record>
 
 
 
+        <!-- Hands -->
+        <record id='quick_hands' model='openhealth.zone'>
+            <field name='name'>Manos</field>
+            <field name='name_short'>hands</field>
+            <field name='treatment'>laser_quick</field>
+        </record>
 
-		<!-- Neck Hands -->
-		<record id='quick_neck_hands' model='openhealth.zone'>
-			<field name='name'>Cuello Manos</field>
-			<field name='name_short'>neck_hands</field>
-			<field name='treatment'>laser_quick</field>
-		</record>
+
+        <!-- Face all Neck -->
+        <record id='quick_face_all_neck' model='openhealth.zone'>
+            <field name='name'>Todo Rostro Cuello</field>
+            <field name='name_short'>face_all_neck</field>
+            <field name='treatment'>laser_quick</field>
+        </record>
 
 
-	</data>
+        <!-- Neck -->
+        <record id='quick_neck' model='openhealth.zone'>
+            <field name='name'>Cuello</field>
+            <field name='name_short'>neck</field>
+            <field name='treatment'>laser_quick</field>
+        </record>
+
+
+
+
+        <!-- Neck Hands -->
+        <record id='quick_neck_hands' model='openhealth.zone'>
+            <field name='name'>Cuello Manos</field>
+            <field name='name_short'>neck_hands</field>
+            <field name='treatment'>laser_quick</field>
+        </record>
+
+
+    </data>
 </openerp>

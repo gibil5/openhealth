@@ -1,110 +1,71 @@
 <?xml version="1.0"?>
 <openerp>
-	<data>
+    <data>
 
 
 
+        <!-- TREE --> 
+        <record model="ir.ui.view" id="management_family_line_view_tree">
+            <field name="name">openhealth.management.family.line.tree</field>            
+            <field name="model">openhealth.management.family.line</field>
+            <field name="arch" type="xml">
+                <tree string="management family line Tree">
 
-
-		<!-- TREE --> 
-		<record model="ir.ui.view" id="management_family_line_view_tree">
-			<field name="name">openhealth.management.family.line.tree</field>
-			
-			<field name="model">openhealth.management.family.line</field>
-			
-			<field name="arch" type="xml">
-				<tree string="management family line Tree">
-
-					
+                    <field name="name_sp"/>
+                    <field name="meta_sp"/>
+                    <field name="amount"/>
+                    <field name="x_count"/>
+                </tree>
+            </field>
+        </record>
 <!--
-					<field name="doctor_id"/>
-					<field name="management_id"/>
-					<field name="idx"/>
+                    <field name="name"/>
+                    <field name="meta"/>
+                    <field name="doctor_id"/>
+                    <field name="management_id"/>
+                    <field name="idx"/>
 -->
 
 
-					<field name="name_sp"/>
-
-					<field name="meta_sp"/>
-
-
-<!--
-					<field name="name"/>
-					<field name="meta"/>
--->
-
-
-					<field name="amount"/>
-
-					<field name="x_count"/>
-
-				</tree>
-			</field>
-		</record>
 
 
 
-
-
-		<!-- ACTION - Family -->
-		<record model="ir.actions.act_window" id="management_family_line_form_action">	
-			<field name="name">Familias</field>
-
-			<field name="res_model">openhealth.management.family.line</field>
-			
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-			<field name="domain">[]</field>
-			<field name="context">{}</field>
-			<field name="limit">1000</field>
-
-			<!--
-			<field name="domain">[]</field>
-			<field name="context">{}</field>
-			<field name="view_id" eval="False"/>			
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first family
-				</p>
-			</field>
-			-->
-		</record>
+        <!-- ACTION - Family -->
+        <record model="ir.actions.act_window" id="management_family_line_form_action">  
+            <field name="name">Familias</field>
+            <field name="res_model">openhealth.management.family.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="limit">1000</field>
+            <!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>            
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first family
+                </p>
+            </field>
+            -->
+        </record>
 
 
 
-		<!-- Filter --> 
-		<record id="view_management_family_line_filter" model="ir.ui.view">
-			<field name="name">Treatment Search</field>
-
-			<field name="model">openhealth.management.family.line</field>
-		   	
-		   	<field name="arch" type="xml">
-			   
-			   <search string="Ventas">
-				   
-<!--
-					<field 	name="patient" 
-                    	filter_domain="['|',('patient','ilike',self),('physician','ilike',self)]"/>
-					<field 	name="doctor_id"/>
--->
-
-					<field 	name="management_id"/>
+        <!-- Filter --> 
+        <record id="view_management_family_line_filter" model="ir.ui.view">
+            <field name="name">Treatment Search</field>
+            <field name="model">openhealth.management.family.line</field>
+            <field name="arch" type="xml">
+               <search string="Ventas">
+                    <field  name="management_id"/>
+                    <group expand="1" string="Group By">
+                        <filter name="Familia" context="{'group_by':'meta_sp'}"/>
+                    </group>
+               </search>
+           </field>
+       </record>
 
 
-
-					<group expand="1" string="Group By">
-<!--
-						<filter name="Estado" context="{'group_by':'state'}"/>
--->
-						<filter name="Familia" context="{'group_by':'meta_sp'}"/>
-					</group>
-
-				   
-			   </search>
-		   </field>
-	   </record>
-
-
-
-
-	</data>
+    </data>
 </openerp>

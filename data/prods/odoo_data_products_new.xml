@@ -1,116 +1,116 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
-	<data noupdate='0'>
+    <data noupdate='0'>
 
 
 
 <!-- Data - Products - New -->
 
 
-		<!-- Producto 1 -->
-		<record id='product_1' model='product.template'>
+        <!-- Producto 1 -->
+        <record id='product_1' model='product.template'>
 
-			<field name='name'>Producto 1</field>
+            <field name='name'>Producto 1</field>
 
-			<field name='x_name_short'>product_1</field>
+            <field name='x_name_short'>product_1</field>
 
-			<field name='type'>product</field>
+            <field name='type'>product</field>
 
-			<field name='price'>33.04</field>
+            <field name='price'>33.04</field>
 
-			<field name='standard_price'>33.04</field>
-		</record>
-
-
-
-		<!-- Formula 1 -->
-		<record id='formula_1' model='product.template'>
-
-			<field name='name'>FORMULA 1</field>
-
-			<field name='x_name_short'>formula_1</field>
-			
-			<field name='type'>product</field>
-
-			<field name='default_code'>778</field>
-			
-			<field name='price'>200.00</field>
-									
-			<field name='x_family'>topical</field>
-			
-			<field name="sale_ok" eval="True" />
-
-			<field name='categ_id' ref="topical"/>
-		</record>
+            <field name='standard_price'>33.04</field>
+        </record>
 
 
 
-		<!-- FILLDERMA ULTRA 1 ML -->
-		<record id='fillderma_ultra_1ml' model='product.template'>
+        <!-- Formula 1 -->
+        <record id='formula_1' model='product.template'>
 
-			<field name='name'>FILLDERMA ULTRA 1 ML</field>
+            <field name='name'>FORMULA 1</field>
 
-			<field name='x_name_short'>fillderma_ultra_1ml</field>
-			
-			<field name='type'>product</field>
+            <field name='x_name_short'>formula_1</field>
+            
+            <field name='type'>product</field>
 
-			<field name='default_code'>537</field>
-			
-			<field name='price'>55</field>
-									
-			<field name='x_family'>topical</field>
-			
-			<field name="sale_ok" eval="True" />
+            <field name='default_code'>778</field>
+            
+            <field name='price'>200.00</field>
+                                    
+            <field name='x_family'>topical</field>
+            
+            <field name="sale_ok" eval="True" />
 
-			<field name='categ_id' ref="topical"/>
-		</record>
-
-
-
-		<!-- Dermobalance x 180 -->
-		<record id='dermobalance_180gr' model='product.template'>
-
-			<field name='name'>DERMOBALANCE 180 GR</field>
-
-			<field name='x_name_short'>dermobalance_180gr</field>
-			
-			<field name='type'>product</field>
-
-			<field name='default_code'>619</field>
-			
-			<field name='price'>55</field>
-									
-			<field name='x_family'>topical</field>
-			
-			<field name="sale_ok" eval="True" />
-
-			<field name='categ_id' ref="topical"/>
-		</record>
+            <field name='categ_id' ref="topical"/>
+        </record>
 
 
 
+        <!-- FILLDERMA ULTRA 1 ML -->
+        <record id='fillderma_ultra_1ml' model='product.template'>
 
-		<!-- DEXPANTENOL 5 ML -->
-		<record id='dexpanthenol_5ml' model='product.template'>
+            <field name='name'>FILLDERMA ULTRA 1 ML</field>
 
-			<field name='name'>DEXPANTENOL 5 ML</field>
+            <field name='x_name_short'>fillderma_ultra_1ml</field>
+            
+            <field name='type'>product</field>
 
-			<field name='x_name_short'>dexpanthenol_5ml</field>
-			
-			<field name='type'>product</field>
+            <field name='default_code'>537</field>
+            
+            <field name='price'>55</field>
+                                    
+            <field name='x_family'>topical</field>
+            
+            <field name="sale_ok" eval="True" />
 
-			<field name='default_code'>433</field>
-			
-			<field name='price'>55</field>
-									
-			<field name='x_family'>topical</field>
-			
-			<field name="sale_ok" eval="True" />
-
-			<field name='categ_id' ref="topical"/>
-		</record>
-
+            <field name='categ_id' ref="topical"/>
+        </record>
 
 
-	</data>
+
+        <!-- Dermobalance x 180 -->
+        <record id='dermobalance_180gr' model='product.template'>
+
+            <field name='name'>DERMOBALANCE 180 GR</field>
+
+            <field name='x_name_short'>dermobalance_180gr</field>
+            
+            <field name='type'>product</field>
+
+            <field name='default_code'>619</field>
+            
+            <field name='price'>55</field>
+                                    
+            <field name='x_family'>topical</field>
+            
+            <field name="sale_ok" eval="True" />
+
+            <field name='categ_id' ref="topical"/>
+        </record>
+
+
+
+
+        <!-- DEXPANTENOL 5 ML -->
+        <record id='dexpanthenol_5ml' model='product.template'>
+
+            <field name='name'>DEXPANTENOL 5 ML</field>
+
+            <field name='x_name_short'>dexpanthenol_5ml</field>
+            
+            <field name='type'>product</field>
+
+            <field name='default_code'>433</field>
+            
+            <field name='price'>55</field>
+                                    
+            <field name='x_family'>topical</field>
+            
+            <field name="sale_ok" eval="True" />
+
+            <field name='categ_id' ref="topical"/>
+        </record>
+
+
+
+    </data>
 </openerp>

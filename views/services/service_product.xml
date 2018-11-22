@@ -11,12 +11,11 @@
             <field name="inherit_id" ref="service_form_view"/>
             <field name="mode">primary</field>
 
-            <field name="priority" eval="1"/>
+            <field name="priority" eval="100"/>
 
             <field name="arch" type="xml">      
 
 
-            
                 <!-- Xpaths --> 
                 <xpath expr="//h1" position="replace">
 
@@ -26,19 +25,6 @@
                 
                 </xpath>
 
-<!--
-                <xpath expr="//field[@name='service']" position="replace">
-                        <field name="service"   invisible="0"       />
-                </xpath>
-
-                <xpath expr="//field[@name='x_treatment']" position="replace">
-                        <field name="x_treatment"   invisible="0"           />
-                </xpath>
-
-                <xpath expr="//field[@name='zone']" position="replace">
-                        <field name="zone"      invisible="0"   readonly="1"    />
-                </xpath>
---> 
                 <xpath expr="//field[@name='laser']" position="replace">
                 </xpath>
 
@@ -50,45 +36,16 @@
 
                 <xpath expr="//field[@name='pathology']" position="replace">
                 </xpath>
-
-
-
 
                 <xpath expr="//field[@name='service']" position="replace">
                         <field name="service"   string="Producto"   />
                 </xpath>
 
-
-
-
-<!--
-
-                <xpath expr="//field[@name='laser']" position="replace">
-                </xpath>
-
-                <xpath expr="//field[@name='zone']" position="replace">
-                        <field name="zone"      invisible="1"   />
-                </xpath>
-
-                <xpath expr="//field[@name='pathology']" position="replace">
-                        <field name="pathology"     invisible="1"           />
-                </xpath>
--->
                 <xpath expr="//field[@name='price_vip']" position="replace">
                 </xpath>
 
-
-
             </field>                        
         </record>       
-
-
-
-
-
-
-
-
 
 
 
@@ -99,7 +56,7 @@
             <field name="inherit_id" ref="service_tree_view"/>
             <field name="mode">primary</field>          
             
-            <field name="priority" eval="1"/>
+            <field name="priority" eval="100"/>
 
 
             <field name="arch" type="xml">

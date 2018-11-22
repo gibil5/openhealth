@@ -8,32 +8,18 @@
         <record model="ir.ui.view" id="service_medical_form_view">
             <field name="name">service.medical.form</field>
             <field name="model">openhealth.service.medical</field>
-
             <field name="inherit_id" ref="service_form_view"/>
             <field name="mode">primary</field>
             
-            
-            <field name="arch" type="xml">              
+            <field name="priority" eval="100"/>
+
+            <field name="arch" type="xml">
+
                 <!-- <xpath expr="//field[@name='title']" position="before"> -->
-                <xpath expr="//h1" position="replace">
-
-                    <h1>Tratamiento Médico</h1>                 
                 
+                <xpath expr="//h1" position="replace">
+                    <h1>Tratamiento Médico</h1>
                 </xpath>
-
-<!--
-                <xpath expr="//field[@name='laser']" position="after">
-
-                    <field name="vspace" />
-
-                    <field name="zone"          invisible="0"                       />
-
-                    <field name="vspace" />
-
-                    <field name="pathology"     readonly="0"    invisible="0"       />                                  
-                </xpath>                
--->
-
             </field>                        
         </record>
 
@@ -46,53 +32,16 @@
         <record model="ir.ui.view" id="service_medical_tree_view">
             <field name="name">service.tree</field>
             <field name="model">openhealth.service.medical</field>
-
             <field name="inherit_id" ref="service_tree_view"/>
             <field name="mode">primary</field>
-            
+
+            <field name="priority" eval="100"/>
+
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='service']" position="replace">
                     <field name="service" />
                 </xpath>
             </field>
-
         </record>
-
-
-
-<!--
-            <field name="arch" type="xml">
-                <tree string="Service Tree">
-                    <field name="name"/>
-                    <field name="id"/>
-                    <field name="laser"/>               
-                    <field name="treatment"/>
-                    <field name="service"/>
-                    <field name="consultation"/>
-                    <field name="service"/>
-
-                    <field name="zone"/>
-
-                    <field name="pathology"/>
-
-                    <field name="physician"/>
-
-                    <field name="state"/>
-
-                </tree>
-            </field>
-        </record>
--->
-
-
-
-
-
-        <!-- Menu -->
-        <!--
-        <menuitem id="service_medical_menu" name="Servicios Medical"
-            parent="openhealth_menu"
-            action="service_medical_list_action"/>
-        -->
     </data>
 </openerp>

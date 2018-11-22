@@ -11,7 +11,7 @@
             <field name="inherit_id" ref="service_form_view"/>
             <field name="mode">primary</field>
 
-            <field name="priority" eval="1"/>
+            <field name="priority" eval="100"/>
 
             <field name="arch" type="xml">      
 
@@ -72,7 +72,7 @@
             <field name="inherit_id" ref="service_tree_view"/>
             <field name="mode">primary</field>
 
-            <field name="priority" eval="1"/>
+            <field name="priority" eval="100"/>
             
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='service']" position="replace">

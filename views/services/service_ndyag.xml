@@ -10,30 +10,14 @@
             <field name="inherit_id" ref="service_form_view"/>
             <field name="mode">primary</field>
             
+            <field name="priority" eval="100"/>
 
             <field name="arch" type="xml">
                 <xpath expr="//h1" position="replace">
                     <h1>Láser M22-NDYAG</h1>                    
                 </xpath>
-
-<!--
-                <xpath expr="//field[@name='laser']" position="after">
-
-                    <field name="vspace" />
-
-                    <field name="zone"          invisible="0"                       />
-
-                    <field name="vspace" />
-
-                    <field name="pathology"     readonly="0"    invisible="0"       />                                  
-                </xpath>                
--->
-
             </field>
-
         </record>       
-
-
 
 
 
@@ -41,44 +25,16 @@
         <record model="ir.ui.view" id="service_ndyag_tree_view">
             <field name="name">service.ndyag.tree</field>
             <field name="model">openhealth.service.ndyag</field>
-
             <field name="inherit_id" ref="service_tree_view"/>
             <field name="mode">primary</field>
-            
+
+            <field name="priority" eval="100"/>
+
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='service']" position="replace">
                     <field name="service" />
                 </xpath>
             </field>
-
         </record>
-
-
-<!--
-            <field name="arch" type="xml">
-                <tree string="Service Tree">
-                    <field name="name"/>
-                    <field name="id"/>
-                    <field name="laser"/>               
-                    <field name="treatment"/>
-                    <field name="service"/>
-                    <field name="consultation"/>
-                    <field name="service"/>
-
-                    <field name="zone"/>
-
-                    <field name="pathology"/>
-
-                    <field name="physician"/>
-
-                    <field name="state"/>
-                
-
-                </tree>
-            </field>
-        </record>
--->
-
-
     </data>
 </openerp>

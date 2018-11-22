@@ -182,14 +182,17 @@ jx
 
                     <!-- Create CN -->
                     <!--
+                    -->
                     <button
                             type="object"
                             class="oe_highlight"
-                            string="Crear NC"
                             name="create_credit_note"
                             groups="openhealth.roots"
+
+                            states="sale,cancel"                     
+
+                            string="Crear NC"
                     />
-                    -->
 
 
 

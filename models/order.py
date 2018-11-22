@@ -1663,6 +1663,7 @@ class sale_order(models.Model):
 		)
 
 
+
 	# Cancel Order
 	@api.multi
 	def cancel_order(self):
@@ -1670,8 +1671,10 @@ class sale_order(models.Model):
 		#print 'Cancel Order'
 		self.x_cancel = True
 		self.state = 'cancel'
+
 		# Create CN
-		self.create_credit_note()
+		#self.create_credit_note()
+
 
 
 	# Activate

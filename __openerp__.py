@@ -511,7 +511,7 @@
 
 		# Consultation - 2
 		#'views/consultations/consultation_med.xml',	# Dep ?
-		#'views/consultations/consultation_diagnosis.xml',
+		'views/consultations/consultation_diagnosis.xml',
 		
 
 		# Treatments - 2 

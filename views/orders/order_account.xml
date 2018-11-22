@@ -1,157 +1,156 @@
 <?xml version="1.0"?>
 <openerp>
-	<data>
+    <data>
 
 
 
-<!-- EC --> 
 <!-- FORM view --> 
-		<record model="ir.ui.view" id="order_report_nex_form_view">
+        <record model="ir.ui.view" id="order_report_nex_form_view">
 
-			<field name="name">openhealth.order.report.nex.form</field>
-			
-			<field name="model">openhealth.order.report.nex</field>
-			
-			<field name="arch" type="xml">
-				
-				<form string="OR Form">
-					
+            <field name="name">openhealth.order.report.nex.form</field>
+            
+            <field name="model">openhealth.order.report.nex</field>
+            
+            <field name="arch" type="xml">
+                
+                <form string="OR Form">
+                    
 
 
-					<header>
+                    <header>
 
 <!--
-								name="update_order_report"
+                                name="update_order_report"
 --> 
-						<button 
-								type="object" 
-								class="oe_highlight"
+                        <button 
+                                type="object" 
+                                class="oe_highlight"
 
-								name="update"
+                                name="update"
 
-								string="Actualizar"								
-						/>
-					</header>
-
-
+                                string="Actualizar"                             
+                        />
+                    </header>
 
 
-					<!-- Sheet -->	
-					<sheet>
+
+
+                    <!-- Sheet -->  
+                    <sheet>
 
 
 <!--
 Fields 
 -->
-						<group	string="Estado de Cuenta"	>
-							<group>
+                        <group  string="Estado de Cuenta"   >
+                            <group>
 
 
-			                    <field name="patient"/>
+                                <field name="patient"/>
 
-			                    <field name="create_date"	string="Fecha"	/>
+                                <field name="create_date"   string="Fecha"  />
 <!--
-			                    <field name="partner_id"/>
+                                <field name="partner_id"/>
 
-			                    <field name="name"/>
+                                <field name="name"/>
 
-			                    <field name="state"/>
+                                <field name="state"/>
 -->
-							</group>
+                            </group>
 
-							<group>
-<!--			                    
-			                    <field name="amount_total_report"/>
+                            <group>
+<!--                                
+                                <field name="amount_total_report"/>
 -->
-			                    <field name="amount_total_sale"/>
-			                    <field name="amount_total_budget"/>
-							</group>
-						</group>
+                                <field name="amount_total_sale"/>
+                                <field name="amount_total_budget"/>
+                            </group>
+                        </group>
 
 
 
-<!--								
-								<field name="order_line_ids"/>
--->						
+<!--                                
+                                <field name="order_line_ids"/>
+-->                     
 
 
-						<notebook>
-							<page>
-								<field name="order_line_ids">
+                        <notebook>
+                            <page>
+                                <field name="order_line_ids">
 
 
-									<tree 	string=""		
-											default_order="create_date"	
+                                    <tree   string=""       
+                                            default_order="create_date" 
 
-											colors="
-											red:state=='draft';
-											green:state=='sent';
-											blue:state=='sale';
-											grey:state in ('cancel')
-											"
-									>
-						
+                                            colors="
+                                            red:state=='draft';
+                                            green:state=='sent';
+                                            blue:state=='sale';
+                                            grey:state in ('cancel')
+                                            "
+                                    >
+                        
 
-										<field name="product_id"		/>
+                                        <field name="product_id"        />
 
-										<field name="price_unit"		/>
+                                        <field name="price_unit"        />
 
-										<field name="product_uom_qty"		/>
+                                        <field name="product_uom_qty"       />
 
-										<field name="price_subtotal"		/>
+                                        <field name="price_subtotal"        />
 
-										<field name="x_date_created"	string="Fecha"	/>
+                                        <field name="x_date_created"    string="Fecha"  />
 
 
-										<field name="state"/>
+                                        <field name="state"/>
 
 <!--
-										<field name="create_date"	string="Fecha"	/>
-										<field name="price_total"		/>
-										<field name="name"		/>
+                                        <field name="create_date"   string="Fecha"  />
+                                        <field name="price_total"       />
+                                        <field name="name"      />
 -->
-									</tree>
-								</field>
-							</page>
-						</notebook>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
 
-						
+                        
 
-					</sheet>
-				</form>
-			</field>
-		</record>
-
-
+                    </sheet>
+                </form>
+            </field>
+        </record>
 
 
 
-		
+
+
+        
 <!-- TREE view --> 
-		
-		<record model="ir.ui.view" id="order_report_nex_tree">
+        
+        <record model="ir.ui.view" id="order_report_nex_tree">
 
-			<field name="name">openhealth.order.report.nex.tree</field>
-			
-			<field name="model">openhealth.order.report.nex</field>
-			
-			<field name="arch" type="xml">
+            <field name="name">openhealth.order.report.nex.tree</field>
+            
+            <field name="model">openhealth.order.report.nex</field>
+            
+            <field name="arch" type="xml">
 
-				<tree default_order='create_date desc'>
-					
+                <tree default_order='create_date desc'>
+                    
 
-                    <field name="name"	 				/>
+                    <field name="name"                  />
 
 
 
 <!--
-                    <field name="date"		string="Fecha"	/>
+                    <field name="date"      string="Fecha"  />
 
 -->
 
-				</tree>
-			</field>
-		</record>
+                </tree>
+            </field>
+        </record>
 
 
 
@@ -159,26 +158,26 @@ Fields
 
 
 <!-- ACTION -->
-		<record model="ir.actions.act_window" id="order_report_nex_list_action">
-			<field name="name">Cierres de Caja</field>
-			<field name="res_model">openhealth.order.report.nex</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-			
-			<!--
+        <record model="ir.actions.act_window" id="order_report_nex_list_action">
+            <field name="name">Cierres de Caja</field>
+            <field name="res_model">openhealth.order.report.nex</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            
+            <!--
             <field name="domain">[]</field>
             <field name="context">{}</field>
             <field name="view_id" eval="False"/>
-			
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first order
-				</p>
-			</field>
-			-->
-		</record>
-		
+            
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first order
+                </p>
+            </field>
+            -->
+        </record>
+        
 
 
 
-	</data>
+    </data>
 </openerp>

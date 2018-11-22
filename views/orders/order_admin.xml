@@ -1,80 +1,80 @@
 <?xml version="1.0"?>
 <openerp>
-	<data>
+    <data>
 
 
 
-		<!-- Order - Admin -->
-		<record model="ir.ui.view" id="order_admin_form_view">
-			<field name="name">order.admin.form</field>
-			<field name="model">sale.order</field>
-			
-			<field name="priority" eval="2"/>
-			
-			<field name="inherit_id" ref="sale.view_order_form"/>
-			<field name="arch" type="xml">
+        <!-- FORM -->
+        <record model="ir.ui.view" id="order_admin_form_view">
+            <field name="name">order.admin.form</field>
+            <field name="model">sale.order</field>
+            
+            <field name="priority" eval="2"/>
+            
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
 
 
-				<notebook position="inside">
-					
+                <notebook position="inside">
+                    
 
 
 <!--
-							<page string="Admin"		groups='openhealth.roots'	>
-							<page string="Admin"	groups='openhealth.roots'	 >
+                            <page string="Admin"        groups='openhealth.roots'   >
+                            <page string="Admin"    groups='openhealth.roots'    >
 -->
 
-							<page string="Admin">
+                            <page string="Admin">
 
 
-								<group>
-	
+                                <group>
+    
 
-									<!-- Only for Roots --> 
-
-
-									<field name="partner_id"				/>
+                                    <!-- Only for Roots --> 
 
 
-									<field name="vspace" />
+                                    <field name="partner_id"                />
 
 
-									<field name="x_procedure_created" />
-
-									<field name="vspace" />
-
-									<field name="x_doctor_uid"	invisible="1"				/>
-
-<!--
-									<field name="user_id"		string="Generado por"		readonly="1"/>
-									<field name="user_id"		string="Creado por"		readonly="1"/>
--->								
-									<field name="user_id"		string="Creado por"		groups='openhealth.roots'	/>
+                                    <field name="vspace" />
 
 
-									<field name="vspace" />
+                                    <field name="x_procedure_created" />
 
-									<field name="x_my_company"	/>
+                                    <field name="vspace" />
 
-									<field name="vspace" />
-									
-									<field name="x_legacy" />
-
+                                    <field name="x_doctor_uid"  invisible="1"               />
 
 <!--
-									<field name="x_machine"		/>
-									<field name="x_machine_req"					/>
--->	
-								
-								</group>
+                                    <field name="user_id"       string="Generado por"       readonly="1"/>
+                                    <field name="user_id"       string="Creado por"     readonly="1"/>
+-->                             
+                                    <field name="user_id"       string="Creado por"     groups='openhealth.roots'   />
 
 
-							</page>
+                                    <field name="vspace" />
 
-				</notebook>
+                                    <field name="x_my_company"  />
+
+                                    <field name="vspace" />
+                                    
+                                    <field name="x_legacy" />
 
 
-			</field>
-		</record>
-	</data>
+<!--
+                                    <field name="x_machine"     />
+                                    <field name="x_machine_req"                 />
+--> 
+                                
+                                </group>
+
+
+                            </page>
+
+                </notebook>
+
+
+            </field>
+        </record>
+    </data>
 </openerp>

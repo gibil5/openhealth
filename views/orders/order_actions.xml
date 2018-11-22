@@ -1,226 +1,226 @@
 <?xml version="1.0"?>
 <openerp>
-	<data>
-		
+    <data>
+        
 
 
 <!-- ACTIONS -->
 
 
 
-		<!-- Budgets -->
-		<record model="ir.actions.act_window" id="budget_list_action">
-			<field name="name">Presupuestos</field>
-			<field name="res_model">sale.order</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
+        <!-- Budgets -->
+        <record model="ir.actions.act_window" id="budget_list_action">
+            <field name="name">Presupuestos</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
 
-			<field name="domain">[
-									('state', '=', 'draft'),
-								]
-			</field>
+            <field name="domain">[
+                                    ('state', '=', 'draft'),
+                                ]
+            </field>
 
-			<field name="context">{}</field>
-			
-			<field name="limit">40</field>
-		</record>
-
-
-
-		<!-- Ventas -->
-		<record model="ir.actions.act_window" id="sale_list_action">
-			<field name="name">Ventas - Confirmadas</field>
-			<field name="res_model">sale.order</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form,graph,pivot</field>
-			<field name="context">{}</field>
-
-			<field name="domain">[
-									('state', '=', 'sale'),
-									('x_legacy', '=', False),
-								]
-			</field>
-
-			<field name="limit">40</field>
-		</record>
+            <field name="context">{}</field>
+            
+            <field name="limit">40</field>
+        </record>
 
 
 
-		<!-- Cancel -->
-		<record model="ir.actions.act_window" id="cancelled_list_action">
-			<field name="name">Anulados</field>
-			<field name="res_model">sale.order</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-			<field name="context">{}</field>
+        <!-- Ventas -->
+        <record model="ir.actions.act_window" id="sale_list_action">
+            <field name="name">Ventas - Confirmadas</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph,pivot</field>
+            <field name="context">{}</field>
 
-			<field name="domain">[
-									('state', '=', 'cancel'),
-								]
-			</field>
+            <field name="domain">[
+                                    ('state', '=', 'sale'),
+                                    ('x_legacy', '=', False),
+                                ]
+            </field>
 
-			<field name="limit">40</field>
-		</record>
-
-
-		<!-- All -->
-		<record model="ir.actions.act_window" id="order_list_action">
-			<field name="name">Todo</field>
-			<field name="res_model">sale.order</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-			<field name="context">{}</field>
-
-			<field name="domain">[]</field>
-
-			<field name="limit">40</field>
-		</record>
+            <field name="limit">40</field>
+        </record>
 
 
 
-		<!-- Credit Notes -->
-		<record model="ir.actions.act_window" id="credit_note_list_action">
-			<field name="name">Notas de Crédito</field>
-			<field name="res_model">sale.order</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form,graph,pivot</field>
-			<field name="context">{}</field>
+        <!-- Cancel -->
+        <record model="ir.actions.act_window" id="cancelled_list_action">
+            <field name="name">Anulados</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
 
-			<field name="domain">[
-									('state', '=', 'credit_note'),
-								]
-			</field>
+            <field name="domain">[
+                                    ('state', '=', 'cancel'),
+                                ]
+            </field>
 
-			<field name="limit">40</field>
-		</record>
-
-
+            <field name="limit">40</field>
+        </record>
 
 
+        <!-- All -->
+        <record model="ir.actions.act_window" id="order_list_action">
+            <field name="name">Todo</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
 
-		<!-- ACTION - All - Delta -->
-		<record model="ir.actions.act_window" id="order_list_delta_action">
-			<field name="name">Ventas, Anulados y Notas de crédito</field>
-			<field name="res_model">sale.order</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
 
-			<field name="view_id" ref="view_order_delta_tree"/> 
+            <field name="limit">40</field>
+        </record>
 
-			<field name="domain">[
-									('x_type', 'in', ['ticket_receipt', 'ticket_invoice']),
-								]
-			</field>
 
-			<field name="context">{}</field>
-			<field name="limit">500</field>
-		</record>
+
+        <!-- Credit Notes -->
+        <record model="ir.actions.act_window" id="credit_note_list_action">
+            <field name="name">Notas de Crédito</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph,pivot</field>
+            <field name="context">{}</field>
+
+            <field name="domain">[
+                                    ('state', '=', 'credit_note'),
+                                ]
+            </field>
+
+            <field name="limit">40</field>
+        </record>
 
 
 
 
 
-		<!-- ACTION - All - Checksum -->
-		<record model="ir.actions.act_window" id="order_list_checksum_action">
-			<field name="name">Todo - Checksum</field>			
-			<field name="res_model">sale.order</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
+        <!-- ACTION - All - Delta -->
+        <record model="ir.actions.act_window" id="order_list_delta_action">
+            <field name="name">Ventas, Anulados y Notas de crédito</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
 
-			<field name="view_id" ref="view_order_checksum_tree"/> 
+            <field name="view_id" ref="view_order_delta_tree"/> 
 
-			<field name="domain">[
-									('x_type', 'in', ['ticket_receipt','receipt']),
-								]
-			</field>
+            <field name="domain">[
+                                    ('x_type', 'in', ['ticket_receipt', 'ticket_invoice']),
+                                ]
+            </field>
 
-			<field name="context">{}</field>
-			<field name="limit">500</field>
-		</record>
-
-
+            <field name="context">{}</field>
+            <field name="limit">500</field>
+        </record>
 
 
-		<!-- Action - Legacy -->
-		<record model="ir.actions.act_window" id="sale_legacy_list_action">
-			<field name="name">Ventas - Confirmadas - Legacy</field>
-			<field name="res_model">sale.order</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form,graph,pivot</field>
 
-			<field name="domain">[
-									('state', '=', 'sale'),
-									('x_legacy', '=', True),
-								]
-			</field>
 
-			<field name="context">{}</field>
-		</record>
+
+        <!-- ACTION - All - Checksum -->
+        <record model="ir.actions.act_window" id="order_list_checksum_action">
+            <field name="name">Todo - Checksum</field>          
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+
+            <field name="view_id" ref="view_order_checksum_tree"/> 
+
+            <field name="domain">[
+                                    ('x_type', 'in', ['ticket_receipt','receipt']),
+                                ]
+            </field>
+
+            <field name="context">{}</field>
+            <field name="limit">500</field>
+        </record>
+
+
+
+
+        <!-- Action - Legacy -->
+        <record model="ir.actions.act_window" id="sale_legacy_list_action">
+            <field name="name">Ventas - Confirmadas - Legacy</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph,pivot</field>
+
+            <field name="domain">[
+                                    ('state', '=', 'sale'),
+                                    ('x_legacy', '=', True),
+                                ]
+            </field>
+
+            <field name="context">{}</field>
+        </record>
 
 
 
 
 <!-- From Treatment --> 
 
-		<!-- Action - All - From Treatment --> 
-		<record model="ir.actions.act_window" id="order_form_action">
-			<field name="name">orders</field>
-			<field name="res_model">sale.order</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-			
-			<field name="domain">[]</field>
-			<field name="context">{}</field>
+        <!-- Action - All - From Treatment --> 
+        <record model="ir.actions.act_window" id="order_form_action">
+            <field name="name">orders</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
 
 <!--
-			<field name="view_mode">form,tree</field>
-			<field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first order
-				</p>
-			</field>
+            <field name="view_mode">form,tree</field>
+            <field name="view_id" eval="False"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first order
+                </p>
+            </field>
 -->
-		</record>
-		
+        </record>
+        
 
 
-		<!-- Action - Consultations - From Treatment --> 
-		<record model="ir.actions.act_window" id="sale_cons_list_action">
-			<field name="name">Ventas</field>
-			<field name="res_model">sale.order</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
+        <!-- Action - Consultations - From Treatment --> 
+        <record model="ir.actions.act_window" id="sale_cons_list_action">
+            <field name="name">Ventas</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
 
-			<field name="domain">[
-									('state', '=', 'sale'),
-									('x_family', '=', 'consultation'),
-								]
-			</field>
+            <field name="domain">[
+                                    ('state', '=', 'sale'),
+                                    ('x_family', '=', 'consultation'),
+                                ]
+            </field>
 
-			<field name="context">{}</field>
-		</record>
-
-
-
-		<!-- Action - All - From Treatment --> 
-		<record model="ir.actions.act_window" id="order_form_tre_action">
-			<field name="name">orders</field>
-			<field name="res_model">sale.order</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>	
-
-			<field name="domain">[								
-									('treatment', '=', default_treatment),	
-									('x_family', '=', default_x_family),
-								]
-			</field>
-
-			<field name="context">{}</field>
-		</record>
+            <field name="context">{}</field>
+        </record>
 
 
 
+        <!-- Action - All - From Treatment --> 
+        <record model="ir.actions.act_window" id="order_form_tre_action">
+            <field name="name">orders</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>   
+
+            <field name="domain">[                              
+                                    ('treatment', '=', default_treatment),  
+                                    ('x_family', '=', default_x_family),
+                                ]
+            </field>
+
+            <field name="context">{}</field>
+        </record>
 
 
-	</data>
+
+
+
+    </data>
 </openerp>

@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <openerp>
-	<data>
+    <data>
 
 
 
 <!-- FILTER --> 
 <!-- Correct for Local Time (+ 05:00) --> 
-		<record id="sale.view_sales_order_filter" model="ir.ui.view">
-		   <field name="name">sale.order.search.modified</field>
-		   <field name="model">sale.order</field>		   
-		   <field name="arch" type="xml">
+        <record id="sale.view_sales_order_filter" model="ir.ui.view">
+           <field name="name">sale.order.search.modified</field>
+           <field name="model">sale.order</field>          
+           <field name="arch" type="xml">
 
 
-			   <search string="orders">
+               <search string="orders">
 
 
 <!-- Active --> 
@@ -20,116 +20,62 @@
 
 
 
-					<!-- This -->
-					<filter string="Hoy" domain="[
-														('date_order', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 05:00:00')),
-											]"/>
+                    <!-- This -->
+                    <filter string="Hoy" domain="[
+                                                        ('date_order', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 05:00:00')),
+                                            ]"/>
 
 
-					<filter string="Este Mes" domain="[
-														('date_order','&gt;=',time.strftime('%Y-%m-01 05:00:00')),
-											]"/>
+                    <filter string="Este Mes" domain="[
+                                                        ('date_order','&gt;=',time.strftime('%Y-%m-01 05:00:00')),
+                                            ]"/>
 
 
-					<filter string="Este Año" domain="[
-														('date_order','&gt;=',time.strftime('%%Y-01-01 05:00:00')), 
-											]"/>
-					<separator/>
-
-
-
+                    <filter string="Este Año" domain="[
+                                                        ('date_order','&gt;=',time.strftime('%%Y-01-01 05:00:00')), 
+                                            ]"/>
+                    <separator/>
 
 
 
 
 
-<!--					
-					<filter string="24 Oct" domain="[
-															('date_order','&lt;', '2018-10-25 05:00:00'),
-															('date_order','&gt;=','2018-10-24 05:00:00'),
-											]"/>
+
+
+
+<!--                    
+                    <filter string="24 Oct" domain="[
+                                                            ('date_order','&lt;', '2018-10-25 05:00:00'),
+                                                            ('date_order','&gt;=','2018-10-24 05:00:00'),
+                                            ]"/>
 -->
 
-					<!-- Custo --> 
+                    <!-- Custo --> 
 
-					<filter string="23 Nov" domain="[
-															('date_order','&lt;', '2018-11-24 05:00:00'),
-															('date_order','&gt;=','2018-11-23 05:00:00'),
-											]"/>
+                    <filter string="23 Nov" domain="[
+                                                            ('date_order','&lt;', '2018-11-24 05:00:00'),
+                                                            ('date_order','&gt;=','2018-11-23 05:00:00'),
+                                            ]"/>
 
-					<filter string="22 Nov" domain="[
-															('date_order','&lt;', '2018-11-23 05:00:00'),
-															('date_order','&gt;=','2018-11-22 05:00:00'),
-											]"/>
+                    <filter string="22 Nov" domain="[
+                                                            ('date_order','&lt;', '2018-11-23 05:00:00'),
+                                                            ('date_order','&gt;=','2018-11-22 05:00:00'),
+                                            ]"/>
 
-					<filter string="21 Nov" domain="[
-															('date_order','&lt;', '2018-11-22 05:00:00'),
-															('date_order','&gt;=','2018-11-21 05:00:00'),
-											]"/>
+                    <filter string="21 Nov" domain="[
+                                                            ('date_order','&lt;', '2018-11-22 05:00:00'),
+                                                            ('date_order','&gt;=','2018-11-21 05:00:00'),
+                                            ]"/>
 
-					<filter string="20 Nov" domain="[
-															('date_order','&lt;', '2018-11-21 05:00:00'),
-															('date_order','&gt;=','2018-11-20 05:00:00'),
-											]"/>
+                    <filter string="20 Nov" domain="[
+                                                            ('date_order','&lt;', '2018-11-21 05:00:00'),
+                                                            ('date_order','&gt;=','2018-11-20 05:00:00'),
+                                            ]"/>
 
-					<filter string="19 Nov" domain="[
-															('date_order','&lt;', '2018-11-20 05:00:00'),
-															('date_order','&gt;=','2018-11-19 05:00:00'),
-											]"/>
-
-
-
-
-
-
-
-					<filter string="17 Nov" domain="[
-															('date_order','&lt;', '2018-11-18 05:00:00'),
-															('date_order','&gt;=','2018-11-17 05:00:00'),
-											]"/>
-
-					<filter string="16 Nov" domain="[
-															('date_order','&lt;', '2018-11-17 05:00:00'),
-															('date_order','&gt;=','2018-11-16 05:00:00'),
-											]"/>
-
-					<filter string="15 Nov" domain="[
-															('date_order','&lt;', '2018-11-16 05:00:00'),
-															('date_order','&gt;=','2018-11-15 05:00:00'),
-											]"/>
-
-
-
-					<filter string="14 Nov" domain="[
-															('date_order','&lt;', '2018-11-15 05:00:00'),
-															('date_order','&gt;=','2018-11-14 05:00:00'),
-											]"/>
-
-					<filter string="13 Nov" domain="[
-															('date_order','&lt;', '2018-11-14 05:00:00'),
-															('date_order','&gt;=','2018-11-13 05:00:00'),
-											]"/>
-
-					<filter string="12 Nov" domain="[
-															('date_order','&lt;', '2018-11-13 05:00:00'),
-															('date_order','&gt;=','2018-11-12 05:00:00'),
-											]"/>
-
-
-					<filter string="10 Nov" domain="[
-															('date_order','&lt;', '2018-11-11 05:00:00'),
-															('date_order','&gt;=','2018-11-10 05:00:00'),
-											]"/>
-
-					<filter string="9 Nov" domain="[
-															('date_order','&lt;', '2018-11-10 05:00:00'),
-															('date_order','&gt;=','2018-11-09 05:00:00'),
-											]"/>
-
-					<filter string="8 Nov" domain="[
-															('date_order','&lt;', '2018-11-09 05:00:00'),
-															('date_order','&gt;=','2018-11-08 05:00:00'),
-											]"/>
+                    <filter string="19 Nov" domain="[
+                                                            ('date_order','&lt;', '2018-11-20 05:00:00'),
+                                                            ('date_order','&gt;=','2018-11-19 05:00:00'),
+                                            ]"/>
 
 
 
@@ -137,88 +83,142 @@
 
 
 
-					<filter string="7 Nov" domain="[
-															('date_order','&lt;', '2018-11-08 05:00:00'),
-															('date_order','&gt;=','2018-11-07 05:00:00'),
-											]"/>
+                    <filter string="17 Nov" domain="[
+                                                            ('date_order','&lt;', '2018-11-18 05:00:00'),
+                                                            ('date_order','&gt;=','2018-11-17 05:00:00'),
+                                            ]"/>
 
+                    <filter string="16 Nov" domain="[
+                                                            ('date_order','&lt;', '2018-11-17 05:00:00'),
+                                                            ('date_order','&gt;=','2018-11-16 05:00:00'),
+                                            ]"/>
 
-					<filter string="6 Nov" domain="[
-															('date_order','&lt;', '2018-11-07 05:00:00'),
-															('date_order','&gt;=','2018-11-06 05:00:00'),
-											]"/>
-
-					<filter string="5 Nov" domain="[
-															('date_order','&lt;', '2018-11-06 05:00:00'),
-															('date_order','&gt;=','2018-11-05 05:00:00'),
-											]"/>
-
-
-					<filter string="3 Nov" domain="[
-															('date_order','&lt;', '2018-11-04 05:00:00'),
-															('date_order','&gt;=','2018-11-03 05:00:00'),
-											]"/>
-
-					<filter string="2 Nov" domain="[
-															('date_order','&lt;', '2018-11-03 05:00:00'),
-															('date_order','&gt;=','2018-11-02 05:00:00'),
-											]"/>
-
-					<filter string="1 Nov" domain="[
-															('date_order','&lt;', '2018-11-02 05:00:00'),
-															('date_order','&gt;=','2018-11-01 05:00:00'),
-											]"/>
+                    <filter string="15 Nov" domain="[
+                                                            ('date_order','&lt;', '2018-11-16 05:00:00'),
+                                                            ('date_order','&gt;=','2018-11-15 05:00:00'),
+                                            ]"/>
 
 
 
+                    <filter string="14 Nov" domain="[
+                                                            ('date_order','&lt;', '2018-11-15 05:00:00'),
+                                                            ('date_order','&gt;=','2018-11-14 05:00:00'),
+                                            ]"/>
 
-					<separator/>
+                    <filter string="13 Nov" domain="[
+                                                            ('date_order','&lt;', '2018-11-14 05:00:00'),
+                                                            ('date_order','&gt;=','2018-11-13 05:00:00'),
+                                            ]"/>
+
+                    <filter string="12 Nov" domain="[
+                                                            ('date_order','&lt;', '2018-11-13 05:00:00'),
+                                                            ('date_order','&gt;=','2018-11-12 05:00:00'),
+                                            ]"/>
+
+
+                    <filter string="10 Nov" domain="[
+                                                            ('date_order','&lt;', '2018-11-11 05:00:00'),
+                                                            ('date_order','&gt;=','2018-11-10 05:00:00'),
+                                            ]"/>
+
+                    <filter string="9 Nov" domain="[
+                                                            ('date_order','&lt;', '2018-11-10 05:00:00'),
+                                                            ('date_order','&gt;=','2018-11-09 05:00:00'),
+                                            ]"/>
+
+                    <filter string="8 Nov" domain="[
+                                                            ('date_order','&lt;', '2018-11-09 05:00:00'),
+                                                            ('date_order','&gt;=','2018-11-08 05:00:00'),
+                                            ]"/>
+
+
+
+
+
+
+
+                    <filter string="7 Nov" domain="[
+                                                            ('date_order','&lt;', '2018-11-08 05:00:00'),
+                                                            ('date_order','&gt;=','2018-11-07 05:00:00'),
+                                            ]"/>
+
+
+                    <filter string="6 Nov" domain="[
+                                                            ('date_order','&lt;', '2018-11-07 05:00:00'),
+                                                            ('date_order','&gt;=','2018-11-06 05:00:00'),
+                                            ]"/>
+
+                    <filter string="5 Nov" domain="[
+                                                            ('date_order','&lt;', '2018-11-06 05:00:00'),
+                                                            ('date_order','&gt;=','2018-11-05 05:00:00'),
+                                            ]"/>
+
+
+                    <filter string="3 Nov" domain="[
+                                                            ('date_order','&lt;', '2018-11-04 05:00:00'),
+                                                            ('date_order','&gt;=','2018-11-03 05:00:00'),
+                                            ]"/>
+
+                    <filter string="2 Nov" domain="[
+                                                            ('date_order','&lt;', '2018-11-03 05:00:00'),
+                                                            ('date_order','&gt;=','2018-11-02 05:00:00'),
+                                            ]"/>
+
+                    <filter string="1 Nov" domain="[
+                                                            ('date_order','&lt;', '2018-11-02 05:00:00'),
+                                                            ('date_order','&gt;=','2018-11-01 05:00:00'),
+                                            ]"/>
+
+
+
+
+                    <separator/>
 
 
 <!--
-					<filter string="31 Oct" domain="[
-															('date_order','&lt;', '2018-11-01 05:00:00'),
-															('date_order','&gt;=','2018-10-31 05:00:00'),
-											]"/>
+                    <filter string="31 Oct" domain="[
+                                                            ('date_order','&lt;', '2018-11-01 05:00:00'),
+                                                            ('date_order','&gt;=','2018-10-31 05:00:00'),
+                                            ]"/>
 
 
-					<filter string="30 Oct" domain="[
-															('date_order','&lt;', '2018-10-31 05:00:00'),
-															('date_order','&gt;=','2018-10-30 05:00:00'),
-											]"/>
+                    <filter string="30 Oct" domain="[
+                                                            ('date_order','&lt;', '2018-10-31 05:00:00'),
+                                                            ('date_order','&gt;=','2018-10-30 05:00:00'),
+                                            ]"/>
 
 
-					<filter string="29 Oct" domain="[
-															('date_order','&lt;', '2018-10-30 05:00:00'),
-															('date_order','&gt;=','2018-10-29 05:00:00'),
-											]"/>
+                    <filter string="29 Oct" domain="[
+                                                            ('date_order','&lt;', '2018-10-30 05:00:00'),
+                                                            ('date_order','&gt;=','2018-10-29 05:00:00'),
+                                            ]"/>
 
-					<filter string="28 Oct" domain="[
-															('date_order','&lt;', '2018-10-29 05:00:00'),
-															('date_order','&gt;=','2018-10-28 05:00:00'),
-											]"/>
+                    <filter string="28 Oct" domain="[
+                                                            ('date_order','&lt;', '2018-10-29 05:00:00'),
+                                                            ('date_order','&gt;=','2018-10-28 05:00:00'),
+                                            ]"/>
 
-					<filter string="27 Oct" domain="[
-															('date_order','&lt;', '2018-10-28 05:00:00'),
-															('date_order','&gt;=','2018-10-27 05:00:00'),
-											]"/>
+                    <filter string="27 Oct" domain="[
+                                                            ('date_order','&lt;', '2018-10-28 05:00:00'),
+                                                            ('date_order','&gt;=','2018-10-27 05:00:00'),
+                                            ]"/>
 
-					<filter string="26 Oct" domain="[
-															('date_order','&lt;', '2018-10-27 05:00:00'),
-															('date_order','&gt;=','2018-10-26 05:00:00'),
-											]"/>
+                    <filter string="26 Oct" domain="[
+                                                            ('date_order','&lt;', '2018-10-27 05:00:00'),
+                                                            ('date_order','&gt;=','2018-10-26 05:00:00'),
+                                            ]"/>
 
-					<filter string="25 Oct" domain="[
-															('date_order','&lt;', '2018-10-26 05:00:00'),
-															('date_order','&gt;=','2018-10-25 05:00:00'),
-											]"/>
+                    <filter string="25 Oct" domain="[
+                                                            ('date_order','&lt;', '2018-10-26 05:00:00'),
+                                                            ('date_order','&gt;=','2018-10-25 05:00:00'),
+                                            ]"/>
 
-					<filter string="24 Oct" domain="[
-															('date_order','&lt;', '2018-10-25 05:00:00'),
-															('date_order','&gt;=','2018-10-24 05:00:00'),
-											]"/>
+                    <filter string="24 Oct" domain="[
+                                                            ('date_order','&lt;', '2018-10-25 05:00:00'),
+                                                            ('date_order','&gt;=','2018-10-24 05:00:00'),
+                                            ]"/>
 
-					<separator/>
+                    <separator/>
 -->
 
 
@@ -228,157 +228,157 @@
 
 
 <!--
-															('x_legacy','=',True),
+                                                            ('x_legacy','=',True),
 -->
-					<!-- Jan --> 
-					<filter string="Enero" domain="[
-															('date_order','&gt;=','2018-01-01 05:00:00'),
-															('date_order','&lt;','2018-02-01 05:00:00'),
-											]"/>
+                    <!-- Jan --> 
+                    <filter string="Enero" domain="[
+                                                            ('date_order','&gt;=','2018-01-01 05:00:00'),
+                                                            ('date_order','&lt;','2018-02-01 05:00:00'),
+                                            ]"/>
 
 
 
 
-					<!-- Feb --> 
-					<filter string="Febrero" domain="[
-															('date_order','&gt;=','2018-02-01 05:00:00'),
-															('date_order','&lt;','2018-03-01 05:00:00'),
-											]"/>
+                    <!-- Feb --> 
+                    <filter string="Febrero" domain="[
+                                                            ('date_order','&gt;=','2018-02-01 05:00:00'),
+                                                            ('date_order','&lt;','2018-03-01 05:00:00'),
+                                            ]"/>
 
 
 
 
 
 
-					<!-- Mar --> 
-					<filter string="Marzo" domain="[
-															('date_order','&gt;=','2018-03-01 05:00:00'),
-															('date_order','&lt;','2018-04-01 05:00:00'),
-											]"/>
+                    <!-- Mar --> 
+                    <filter string="Marzo" domain="[
+                                                            ('date_order','&gt;=','2018-03-01 05:00:00'),
+                                                            ('date_order','&lt;','2018-04-01 05:00:00'),
+                                            ]"/>
 
 
 
-					<filter string="Abril" domain="[
-															('date_order','&gt;=','2018-04-01 05:00:00'),
-															('date_order','&lt;','2018-05-01 05:00:00'),
-											]"/>
+                    <filter string="Abril" domain="[
+                                                            ('date_order','&gt;=','2018-04-01 05:00:00'),
+                                                            ('date_order','&lt;','2018-05-01 05:00:00'),
+                                            ]"/>
 
 
 
-					<filter string="Mayo" domain="[
-															('date_order','&gt;=','2018-05-01 05:00:00'),
-															('date_order','&lt;','2018-06-01 05:00:00'),
-											]"/>
+                    <filter string="Mayo" domain="[
+                                                            ('date_order','&gt;=','2018-05-01 05:00:00'),
+                                                            ('date_order','&lt;','2018-06-01 05:00:00'),
+                                            ]"/>
 
 
 
-					<filter string="Junio" domain="[
-															('date_order','&gt;=','2018-06-01 05:00:00'),
-															('date_order','&lt;=','2018-07-01 05:00:00'),
-											]"/>
+                    <filter string="Junio" domain="[
+                                                            ('date_order','&gt;=','2018-06-01 05:00:00'),
+                                                            ('date_order','&lt;=','2018-07-01 05:00:00'),
+                                            ]"/>
 
 
 
-					<filter string="Julio" 			domain="[
-																('date_order','&gt;=','2018-07-01 05:00:00'),
-																('date_order','&lt;=','2018-08-01 05:00:00'),
-													]"/>
+                    <filter string="Julio"          domain="[
+                                                                ('date_order','&gt;=','2018-07-01 05:00:00'),
+                                                                ('date_order','&lt;=','2018-08-01 05:00:00'),
+                                                    ]"/>
 
 
-					<filter string="Agosto" 		domain="[
-																('date_order','&gt;=','2018-08-01 05:00:00'),
-																('date_order','&lt;=','2018-09-01 05:00:00'),
-													]"/>
+                    <filter string="Agosto"         domain="[
+                                                                ('date_order','&gt;=','2018-08-01 05:00:00'),
+                                                                ('date_order','&lt;=','2018-09-01 05:00:00'),
+                                                    ]"/>
 
 
 
-					<filter string="Setiembre" 		domain="[
-																('date_order','&gt;=','2018-09-01 05:00:00'),
-																('date_order','&lt;=','2018-10-01 05:00:00'),
-															]"
-													/>
+                    <filter string="Setiembre"      domain="[
+                                                                ('date_order','&gt;=','2018-09-01 05:00:00'),
+                                                                ('date_order','&lt;=','2018-10-01 05:00:00'),
+                                                            ]"
+                                                    />
 
 
 
 <!-- Inactive --> 
-					<filter string="Octubre" 		groups="openhealth.roots"
+                    <filter string="Octubre"        groups="openhealth.roots"
 
-													domain="[
-																('date_order','&gt;=','2018-10-01 05:00:00'),
-																('date_order','&lt;=','2018-11-01 05:00:00'),
-															]"
-											/>
-
-
-					<filter string="Noviembre" 		groups="openhealth.roots"
-
-													domain="[
-																('date_order','&gt;=','2018-11-01 05:00:00'),
-																('date_order','&lt;=','2018-12-01 05:00:00'),
-															]"
-											/>
+                                                    domain="[
+                                                                ('date_order','&gt;=','2018-10-01 05:00:00'),
+                                                                ('date_order','&lt;=','2018-11-01 05:00:00'),
+                                                            ]"
+                                            />
 
 
-					<filter string="Diciembre" 		groups="openhealth.roots"
+                    <filter string="Noviembre"      groups="openhealth.roots"
 
-													domain="[
-																('date_order','&gt;=','2018-12-01 05:00:00'),
-																('date_order','&lt;=','2019-01-01 05:00:00'),
-															]"
-											/>
+                                                    domain="[
+                                                                ('date_order','&gt;=','2018-11-01 05:00:00'),
+                                                                ('date_order','&lt;=','2018-12-01 05:00:00'),
+                                                            ]"
+                                            />
 
 
+                    <filter string="Diciembre"      groups="openhealth.roots"
+
+                                                    domain="[
+                                                                ('date_order','&gt;=','2018-12-01 05:00:00'),
+                                                                ('date_order','&lt;=','2019-01-01 05:00:00'),
+                                                            ]"
+                                            />
 
 
 
-					<!--
-					<field name="partner_id" />
-					<field name="treatment" />
-					<field name="x_doctor" />               
-					<field name="x_family" /> 
-					-->
-
-				   	<field name="patient" />
 
 
+                    <!--
+                    <field name="partner_id" />
+                    <field name="treatment" />
+                    <field name="x_doctor" />               
+                    <field name="x_family" /> 
+                    -->
 
-					<!-- Group By --> 
-					<group expand="1" string="Group By">
+                    <field name="patient" />
+
+
+
+                    <!-- Group By --> 
+                    <group expand="1" string="Group By">
 <!--
-						<filter name="Creado por" context="{'group_by':'user_id'}"/>
+                        <filter name="Creado por" context="{'group_by':'user_id'}"/>
 -->
-						<filter name="Tipo" context="{'group_by':'x_type'}"/>
-						<separator/>
-						<filter name="Familia" context="{'group_by':'x_family'}"/>
-						<filter name="Producto" context="{'group_by':'x_product'}"/>
-						<filter name="Médico" context="{'group_by':'x_doctor'}"/>
-						<filter name="Paciente" context="{'group_by':'patient'}"/>
-						<filter name="Delta" context="{'group_by':'x_delta'}"/>
-					</group>
+                        <filter name="Tipo" context="{'group_by':'x_type'}"/>
+                        <separator/>
+                        <filter name="Familia" context="{'group_by':'x_family'}"/>
+                        <filter name="Producto" context="{'group_by':'x_product'}"/>
+                        <filter name="Médico" context="{'group_by':'x_doctor'}"/>
+                        <filter name="Paciente" context="{'group_by':'patient'}"/>
+                        <filter name="Delta" context="{'group_by':'x_delta'}"/>
+                    </group>
 
 
-			   </search>		   
-		   </field>
-	   </record>
+               </search>           
+           </field>
+       </record>
 
 
 
 
-		<!-- Graph --> 
-		<record id="sale.view_sale_order_graph" model="ir.ui.view">	
-			 <field name="name">sale.order.graph</field>
-			 <field name="model">sale.order</field>
-			 <field name="arch" type="xml">
-				 <graph string="Análisis de Ventas">
-					<field name="x_doctor"/>
-					<field name="amount_total" type="measure"/>	             
-				 </graph>
-			 </field>
-		</record>
+        <!-- Graph --> 
+        <record id="sale.view_sale_order_graph" model="ir.ui.view"> 
+             <field name="name">sale.order.graph</field>
+             <field name="model">sale.order</field>
+             <field name="arch" type="xml">
+                 <graph string="Análisis de Ventas">
+                    <field name="x_doctor"/>
+                    <field name="amount_total" type="measure"/>              
+                 </graph>
+             </field>
+        </record>
 <!--
-					<field name="date_order" interval="day" type="row"	/>
-					<field name="amount_total" type="measure"/>
+                    <field name="date_order" interval="day" type="row"  />
+                    <field name="amount_total" type="measure"/>
 -->                
 
-	</data>
+    </data>
 </openerp>

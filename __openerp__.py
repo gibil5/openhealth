@@ -467,8 +467,7 @@
 		'views/sessions/session.xml',
 		'views/sessions/session_config_simple.xml',
 		'views/sessions/session_config_simple_2.xml',
-		
-		#'views/sessions/session_config_manual.xml',
+		#'views/sessions/session_config_manual.xml',	# Dep
 
 
 

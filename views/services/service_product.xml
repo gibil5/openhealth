@@ -7,11 +7,12 @@
 <!-- FORM --> 
         <record model="ir.ui.view" id="service_product_form_view">
             <field name="name">service.product.form</field>
-
-            <field name="model">openhealth.service.product</field>
-            
+            <field name="model">openhealth.service.product</field>            
             <field name="inherit_id" ref="service_form_view"/>
             <field name="mode">primary</field>
+
+            <field name="priority" eval="1"/>
+
             <field name="arch" type="xml">      
 
 
@@ -93,12 +94,12 @@
 
         <!-- TREE -->
         <record model="ir.ui.view" id="service_product_tree_view">
-            <field name="name">service.product.tree</field>
-            
+            <field name="name">service.product.tree</field>            
             <field name="model">openhealth.service.product</field>
-
             <field name="inherit_id" ref="service_tree_view"/>
             <field name="mode">primary</field>          
+            
+            <field name="priority" eval="1"/>
 
 
             <field name="arch" type="xml">
@@ -121,9 +122,7 @@
            <field name="model">openhealth.service.product</field>          
            <field name="arch" type="xml">
                <search string="service.product">
-
                    <field name="treatment" />
-               
                </search>
            </field>
        </record>

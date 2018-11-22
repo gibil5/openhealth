@@ -490,12 +490,12 @@
 		#'views/services/service_vip.xml',			# Dep
 
 
-		'views/services/service_co2_zone.xml',
-		'views/services/service_excilite_zone.xml',
-		'views/services/service_ipl_zone.xml',
-		'views/services/service_ndyag_zone.xml',
-		'views/services/service_medical_zone.xml',
-		'views/services/service_cosmetology_zone.xml',
+		'views/services/zones/service_co2_zone.xml',
+		'views/services/zones/service_excilite_zone.xml',
+		'views/services/zones/service_ipl_zone.xml',
+		'views/services/zones/service_ndyag_zone.xml',
+		'views/services/zones/service_medical_zone.xml',
+		'views/services/zones/service_cosmetology_zone.xml',
 
 
 

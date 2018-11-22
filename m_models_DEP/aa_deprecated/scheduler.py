@@ -28,8 +28,8 @@ class scheduler(models.Model):
 		#self.create_closing()
 		
 
-		print 'jx'
-		print 'Create closing'
+		#print 'jx'
+		#print 'Create closing'
 
 		today = '2018-03-21'
 
@@ -38,8 +38,8 @@ class scheduler(models.Model):
 		#													('date', '=', today),
 
 		#									])
-		print closings
+		#print closings
 
 
-		print 'out'
+		#print 'out'
 

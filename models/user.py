@@ -10,7 +10,6 @@
 """
 import datetime
 import ord_vars
-#import creates as cre
 
 
 #------------------------------------------------ Get Serial Nr -----------------------------------
@@ -19,8 +18,8 @@ def get_serial_nr(x_type, counter_value, state):
 	"""
 	high level support for doing this and that.
 	"""
-	print
-	print 'Get Serial Nr'
+	#print
+	#print 'Get Serial Nr'
 
 	# Init
 	separator = '-'
@@ -55,8 +54,8 @@ def get_counter_value(self, x_type, state):
 	"""
 	high level support for doing this and that.
 	"""
-	print 'Get Counter value'
-	print state
+	#print 'Get Counter value'
+	#print state
 
 
 	# Search

@@ -13,13 +13,13 @@
 # ----------------------------------------------------------- Integration -------------------------
 # Test - Integration - Treatment 
 def test_integration_treatment(self, date_order_begin=False, date_order_end=False):
-	print 
-	print 'Treatment - Test Integration'
+	#print 
+	#print 'Treatment - Test Integration'
 
 
 	# Appointment - Consultation 
-	print 
-	print 'Create App - Consultation'
+	#print 
+	#print 'Create App - Consultation'
 	x_type = 'consultation'
 	subtype = 'consultation'
 	state = 'pre_scheduled'
@@ -28,9 +28,9 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 
 
 	# Sale - Consultation 
-	print 
-	print 
-	print 'Create Order - Consultation'
+	#print 
+	#print 
+	#print 'Create Order - Consultation'
 	
 	self.create_order_con()			# Actual Button 
 
@@ -39,18 +39,18 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 			
 			order.pay_myself()
 
-			print 'Pay'
-			print 'Pricelist: ', 			order.pricelist_id.name		# Verify 
-			print 'order.amount_total: ', 	order.amount_total		# Verify 
-			print 'Assert'
+			#print 'Pay'
+			#print 'Pricelist: ', 			order.pricelist_id.name		# Verify 
+			#print 'order.amount_total: ', 	order.amount_total		# Verify 
+			#print 'Assert'
 			order.test()
 			
 
 
 	# Consultation 
-	print 
-	print 
-	print 'Create Consultation'
+	#print 
+	#print 
+	#print 'Create Consultation'
 	self.create_consultation()
 	for consultation in self.consultation_ids: 
 		consultation.autofill()
@@ -59,9 +59,9 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 	# Recommendations 
 	# Sale Procedure 
 	if True:
-		print 
-		print 
-		print 'Create Recommendations'
+		#print 
+		#print 
+		#print 'Create Recommendations'
 
 		create_recommendations(self)
 
@@ -74,18 +74,18 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 
 
 	# Pay Order Procedure
-	print
-	print
-	print 'Create Order - Procedure'
+	#print
+	#print
+	#print 'Create Order - Procedure'
 	for order in self.order_ids:
 		if order.state in ['draft']:
 
 			order.pay_myself()
 
-			print 'Pay'
-			print 'Pricelist: ', 	order.pricelist_id.name		# Verify
-			print 'amount_total: ', order.amount_total			# Verify
-			print 'Assert'
+			#print 'Pay'
+			#print 'Pricelist: ', 	order.pricelist_id.name		# Verify
+			#print 'amount_total: ', order.amount_total			# Verify
+			#print 'Assert'
 			order.test()
 
 
@@ -94,9 +94,9 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 	# Sessions
 	if self.ses_create:
 	#if False:
-		print 
-		print 
-		print 'Create Sessions'
+		#print 
+		#print 
+		#print 'Create Sessions'
 		for procedure in self.procedure_ids: 
 			for _ in range(2): 
 				procedure.create_sessions()
@@ -105,8 +105,8 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 	# Controls 
 	if self.con_create:
 	#if False:
-		print 
-		print 'Create Controls'
+		#print 
+		#print 'Create Controls'
 		for procedure in self.procedure_ids: 
 			for _ in range(6): 
 				procedure.create_controls()
@@ -127,8 +127,8 @@ def create_recommendations(self):
 
 	# Vip
 	if self.vip_create: 
-		print 
-		print 'Vip'
+		#print 
+		#print 'Vip'
 
 		product_id = self.env['product.template'].search([
 															('x_name_short', '=', 'vip_card'),
@@ -143,16 +143,16 @@ def create_recommendations(self):
 													'service': 		product_id, 
 													'treatment': 	self.id, 
 			})
-		print service.service.name 
-		print service.service.list_price
+		#print service.service.name 
+		#print service.service.list_price
 
 
 
 
 	# Product
 	if self.product_create: 
-		print 
-		print 'Product'
+		#print 
+		#print 'Product'
 
 		prod_short_names = [
 								'acneclean', 		# Acneclean
@@ -176,16 +176,16 @@ def create_recommendations(self):
 														'service': 		product_id, 
 														'treatment': 	self.id, 
 				})
-			print service.service.name 
-			print service.service.list_price
+			#print service.service.name 
+			#print service.service.list_price
 
 
 
 
 	# Co2 
 	if self.co2_create: 
-		print 
-		print 'Co2'
+		#print 
+		#print 'Co2'
 
 		zone = 'neck'
 		product_id = self.env['product.template'].search([
@@ -202,15 +202,15 @@ def create_recommendations(self):
 											'treatment': 	self.id, 
 			})
 		#service.test()
-		print service.service.name 
-		print service.service.list_price
-		print service.service.x_price_vip
+		#print service.service.name 
+		#print service.service.list_price
+		#print service.service.x_price_vip
 
 
 
 	# Excilite 
 	if self.exc_create: 
-		print 'Exc'
+		#print 'Exc'
 
 		zone = 'belly'
 
@@ -233,7 +233,7 @@ def create_recommendations(self):
 
 	# Ipl 
 	if self.ipl_create: 
-		print 'Ipl'
+		#print 'Ipl'
 
 		zone = 'belly'
 
@@ -256,7 +256,7 @@ def create_recommendations(self):
 
 	# Ndyag
 	if self.ndy_create: 
-		print 'Ndyag'
+		#print 'Ndyag'
 
 		zone = 'body_local'
 
@@ -277,7 +277,7 @@ def create_recommendations(self):
 
 	# Quick 
 	if self.qui_create: 
-		print 'Quick'
+		#print 'Quick'
 		product = self.env['product.template'].search([
 															#('x_name_short', '=', 'quick_neck_hands_rejuvenation_1'),
 															('x_name_short', '=', 'qui_nec-han_rej_5m_one'),
@@ -325,7 +325,7 @@ def create_recommendations(self):
 		]
 
 
-		print 'Medical'
+		#print 'Medical'
 		
 		for short_name in med_short_names: 
 
@@ -359,7 +359,7 @@ def create_recommendations(self):
 		]
 
 
-		print 'Cosmeto'
+		#print 'Cosmeto'
 		
 		for short_name in cos_short_names: 
 			
@@ -397,9 +397,8 @@ def create_recommendations(self):
 	
 # Create Order Procedure With Lines 
 def create_order_pro_lines(self):
-
-	print 
-	print 'Create Order Procedure With Lines'
+	#print
+	#print 'Create Order Procedure With Lines'
 	
 
 
@@ -449,14 +448,13 @@ def create_order_pro_lines(self):
 
 # Test - Appointment 
 def test_appointment(self):
-
-	print 
-	print 'Test Appointment'
+	#print
+	#print 'Test Appointment'
 
 
 	
 	# Case 1 - Consultation
-	print 'Consultation'
+	#print 'Consultation'
 	x_type = 'consultation'
 	subtype = 'consultation'
 	state = 'pre_scheduled'
@@ -465,8 +463,8 @@ def test_appointment(self):
 
 
 	# Case 2 - Procedure
-	print 
-	print 'Procedure'
+	#print 
+	#print 'Procedure'
 	x_type = 'procedure'
 	subtype = 'laser_co2'
 	state = 'Scheduled'	
@@ -475,8 +473,8 @@ def test_appointment(self):
 
 
 	# Case 3 - Control
-	print 
-	print 'Control'
+	#print 
+	#print 'Control'
 	x_type = 'control'
 	subtype = 'laser_co2'
 	state = 'pre_scheduled_control'	
@@ -485,8 +483,8 @@ def test_appointment(self):
 
 
 	# Case 4 - Session
-	print 
-	print 'Session'
+	#print 
+	#print 'Session'
 	x_type = 'session'
 	subtype = 'laser_co2'
 	
@@ -554,8 +552,8 @@ def set_all(self):
 
 # Reset 
 def reset_treatment(self):
-	print 
-	print 'Reset'
+	#print 
+	#print 'Reset'
 
 
 	# Card 
@@ -565,8 +563,8 @@ def reset_treatment(self):
 													#order='write_date desc',
 													limit=1,
 											)
-	print card
-	print card.patient_name
+	#print card
+	#print card.patient_name
 	#if card.name != False: 
 		#card.unlink()
 

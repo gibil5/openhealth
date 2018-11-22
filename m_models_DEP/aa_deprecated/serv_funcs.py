@@ -12,8 +12,8 @@ from openerp import models, fields, api
 # Product 
 @api.multi
 def product(self):
-	print 
-	print 'Serv Funcs - Product'
+	#print 
+	#print 'Serv Funcs - Product'
 	self.service = self.env['product.template'].search([	
 														('x_treatment', '=', 	self.laser),	
 														('x_zone', '=', 		self.zone),	
@@ -24,8 +24,8 @@ def product(self):
 # Product M22
 @api.multi
 def product_m22(self):
-	print 
-	print 'Serv Funcs - Product M22'
+	#print 
+	#print 'Serv Funcs - Product M22'
 	self.service = self.env['product.template'].search([	
 														('x_treatment', '=', 	self.laser),	
 														('x_zone', '=', 		self.zone),	
@@ -37,8 +37,8 @@ def product_m22(self):
 # Medical 
 @api.multi
 def product_medical(self):
-	print 
-	print 'Serv Funcs - Product Medical'
+	#print 
+	#print 'Serv Funcs - Product Medical'
 	self.service = self.env['product.template'].search([	
 															('x_treatment', '=', 	self.x_treatment),
 															('x_sessions', '=', 	self.sessions)

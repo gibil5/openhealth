@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-
 from openerp import models, fields, api
-#import datetime
+
 
 
 
@@ -91,11 +90,11 @@ def get_product_id(self, code, name, categ):
 
 
 
-	print 
-	print 'get product id'
-	print code 
-	print name 
-	print categ 
+	#print 
+	#print 'get product id'
+	#print code 
+	#print name 
+	#print categ 
 
 
 	product_id = False 
@@ -115,18 +114,20 @@ def get_product_id(self, code, name, categ):
 	# Create 
 	#if product.id == False: 
 	if product.name != False: 
-		print 'Prod exists'
-		print 'Found'
+		pass
+		#print 'Prod exists'
+		#print 'Found'
 
 
 	else:
-		print 'Prod does not exist'
+		#print 'Prod does not exist'
 
 
 
 		#if name not in _hac:			
 		if False: 
-			print 'not in hac'
+			#print 'not in hac'
+			pass
 
 
 		else: 
@@ -134,7 +135,7 @@ def get_product_id(self, code, name, categ):
 			#print 'in hac'
 			#name_short = _hac[name]
 			
-			print name_short
+			#print name_short
 
 
 
@@ -176,10 +177,10 @@ def get_product_id(self, code, name, categ):
 											})
 
 
-			print 'Created'
+			#print 'Created'
 
-	print product
-	print product.id
+	#print product
+	#print product.id
 
 
 	

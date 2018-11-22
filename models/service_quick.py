@@ -248,25 +248,25 @@ class ServiceQuick(models.Model):
 
 	# Computes
 	def test_computes(self):
-		print 
-		print 'Service Quick - Computes'
+		#print 
+		#print 'Service Quick - Computes'
 
 		super(ServiceQuick, self).test_computes()
 
-		print 
-		print 'comeback: ', self.comeback
-		print 'price_vip_return: ', self.price_vip_return
-		print 'price_applied: ', self.price_applied
+		#print 
+		#print 'comeback: ', self.comeback
+		#print 'price_vip_return: ', self.price_vip_return
+		#print 'price_applied: ', self.price_applied
 
 
 	def test_actions(self):
-		print 
-		print 'Service Quick - Actions'
+		#print 
+		#print 'Service Quick - Actions'
 
 		super(ServiceQuick, self).test_actions()
 
-		print 
-		print 'nr_zones: ', self.get_nr_zones('token')
+		#print 
+		#print 'nr_zones: ', self.get_nr_zones('token')
 
 
 

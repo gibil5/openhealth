@@ -13,9 +13,9 @@ import creates as cre
 # ---------------------------------------------------- Test Cases ---------------------------------
 # Test Cases - Patients
 def test_cases(self, container_id, doctor_id):
-	print
-	print 'Test Cases - Patients'
-	print self
+	#print
+	#print 'Test Cases - Patients'
+
 
 
 	_pars = [
@@ -284,10 +284,10 @@ def test_cases(self, container_id, doctor_id):
 
 		if active:
 			
-			print par
-			print par['test_case']
-			print par['name']
-			print 
+			#print par
+			#print par['test_case']
+			#print par['name']
+			#print 
 
 			test_case = 	par['test_case']
 			id_doc_type = 	par['id_doc_type']

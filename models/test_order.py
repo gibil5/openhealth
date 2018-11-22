@@ -18,14 +18,9 @@ def test(self):
 	"""
 	#print
 	#print 'Order - Test'
-
 	if self.patient.x_test:
-
 		self.x_test_case = 'ticket_receipt'
-
 		test_integration(self)
-
-		#self.test_unit()
 # test
 
 
@@ -52,9 +47,9 @@ def test_integration(self):
 	self.x_payment_method.saledoc = self.x_test_case
 
 
-	print self.x_payment_method.name
+	#print self.x_payment_method.name
 	self.x_payment_method.go_back()
-	print self.x_payment_method.state
+	#print self.x_payment_method.state
 
 	# Order
 	self.validate()
@@ -76,23 +71,23 @@ def test_integration(self):
 
 
 # ----------------------------------------------------------- Computes ----------------------------
-# Computes
-def test_computes(self):
+# Computes - Deprecated ?
+#def test_computes(self):
 	"""
 	high level support for doing this and that.
 	"""
 	#print
 	#print 'Order - Computes'
 
-	print 'x_partner_vip\t', self.x_partner_vip
-	print 'nr_lines\t', self.nr_lines
-	print 'x_amount_total\t', self.x_amount_total
-	print 'x_total_in_words\t', self.x_total_in_words
-	print 'x_total_cents\t', self.x_total_cents
-	print 'x_total_net\t', self.x_total_net
-	print 'x_total_tax\t', self.x_total_tax
-	print 'x_my_company\t', self.x_my_company
-	print 'x_date_order_corr\t', self.x_date_order_corr
+	#print 'x_partner_vip\t', self.x_partner_vip
+	#print 'nr_lines\t', self.nr_lines
+	#print 'x_amount_total\t', self.x_amount_total
+	#print 'x_total_in_words\t', self.x_total_in_words
+	#print 'x_total_cents\t', self.x_total_cents
+	#print 'x_total_net\t', self.x_total_net
+	#print 'x_total_tax\t', self.x_total_tax
+	#print 'x_my_company\t', self.x_my_company
+	#print 'x_date_order_corr\t', self.x_date_order_corr
 
 
 
@@ -146,12 +141,12 @@ def test_unit(self):
 
 
 		# Prints
-		print 'product_id: ', line.product_id.name
-		print 'price_std: ', price_std
-		print 'price_vip: ', price_vip
-		print 'price_manual: ', price_manual
-		print 'qty: ', qty
-		print 'compact: ', compact
+		#print 'product_id: ', line.product_id.name
+		#print 'price_std: ', price_std
+		#print 'price_vip: ', price_vip
+		#print 'price_manual: ', price_manual
+		#print 'qty: ', qty
+		#print 'compact: ', compact
 
 		# Assert
 		#assert compact != 'x'  					# Assert
@@ -178,17 +173,17 @@ def test_unit(self):
 
 		# Total
 		total = price * qty + total
-		print 'price: ', price
-		print 'total: ', total
+		#print 'price: ', price
+		#print 'total: ', total
 
 
 	# Asserts
-	print
-	print 'Asserts'
-	print self.pricelist_id.name
-	print 'total: ', total
-	print 'self.amount_total: ', self.amount_total
-	assert self.amount_total == total    				# Assert
+	#print
+	#print 'Asserts'
+	#print self.pricelist_id.name
+	#print 'total: ', total
+	#print 'self.amount_total: ', self.amount_total
+	#assert self.amount_total == total    				# Assert
 
 # test_unit
 

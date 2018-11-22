@@ -446,8 +446,8 @@
 
 
 		# Cards 
-		#'views/cards/card.xml',
-		'views/products/cards/card.xml',
+		'views/cards/card.xml',
+
 
 
 

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
-	<data noupdate='0'>
+    <data noupdate='0'>
 
 
 
@@ -9,97 +9,50 @@
 
 
 
-		<!-- ACIDO HIALURONICO - 1 Jeringa - Rejuvenecimiento Facial - 1 -->
-		<record id='hac_1hy_rfa_one' model='product.template'>
+        <!-- ACIDO HIALURONICO - 1 Jeringa - Rejuvenecimiento Facial - 1 -->
+        <record id='hac_1hy_rfa_one' model='product.template'>
 
-			<field name='name'>ACIDO HIALURONICO - 1 Jeringa - Rejuvenecimiento Facial - 1</field>
+            <field name='name'>ACIDO HIALURONICO - 1 Jeringa - Rejuvenecimiento Facial - 1</field>
 
-			<field name='x_name_short'>hac_1hy_rfa_one</field>
+            <field name='x_name_short'>hac_1hy_rfa_one</field>
 
-			<field name='type'>service</field>
-			<field name='x_treatment'>hyaluronic_acid</field>
-			<field name='x_zone'>1_hypodermic</field>
-			<field name='x_pathology'>rejuvenation_face</field>
-			<field name='price'>2400</field>
-			<field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
-			<field name='x_time'></field>
-			<field name='x_sessions'>1</field>
-			<field name='x_price_vip'>1200</field>
-			<field name='x_family'>medical</field>
-			<field name="sale_ok" eval="True" />
-			<field name="purchase_ok" eval="False" />
+            <field name='type'>service</field>
+            <field name='x_treatment'>hyaluronic_acid</field>
+            <field name='x_zone'>1_hypodermic</field>
+            <field name='x_pathology'>rejuvenation_face</field>
+            <field name='price'>2400</field>
+            <field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
+            <field name='x_time'></field>
+            <field name='x_sessions'>1</field>
+            <field name='x_price_vip'>1200</field>
+            <field name='x_family'>medical</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
 
-			<field name='categ_id' ref="medical"/>
-		</record>
-
-
-		<!-- ACIDO HIALURONICO - 1 Jeringa - Rejuvenecimiento Facial - REPAIR - 1 -->
-		<record id='hac_1hy_rfr_one' model='product.template'>
-
-			<field name='name'>ACIDO HIALURONICO - 1 Jeringa - Rejuvenecimiento Facial REPAIR - 1</field>
-
-			<field name='x_name_short'>hac_1hy_rfr_one</field>
-
-			<field name='type'>service</field>
-			<field name='x_treatment'>hyaluronic_acid</field>
-			<field name='x_zone'>1_hypodermic</field>
-			<field name='x_pathology'>rejuvenation_face_repair</field>
-			<field name='price'>2000</field>
-			<field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
-			<field name='x_time'></field>
-			<field name='x_sessions'>1</field>
-			<field name='x_price_vip'>1000</field>
-			<field name='x_family'>medical</field>
-
-			<field name='categ_id' ref="medical"/>
-		</record>
+            <field name='categ_id' ref="medical"/>
+        </record>
 
 
+        <!-- ACIDO HIALURONICO - 1 Jeringa - Rejuvenecimiento Facial - REPAIR - 1 -->
+        <record id='hac_1hy_rfr_one' model='product.template'>
 
+            <field name='name'>ACIDO HIALURONICO - 1 Jeringa - Rejuvenecimiento Facial REPAIR - 1</field>
 
+            <field name='x_name_short'>hac_1hy_rfr_one</field>
 
+            <field name='type'>service</field>
+            <field name='x_treatment'>hyaluronic_acid</field>
+            <field name='x_zone'>1_hypodermic</field>
+            <field name='x_pathology'>rejuvenation_face_repair</field>
+            <field name='price'>2000</field>
+            <field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
+            <field name='x_time'></field>
+            <field name='x_sessions'>1</field>
+            <field name='x_price_vip'>1000</field>
+            <field name='x_family'>medical</field>
 
-
-		<!-- CRIOCIRUGIA - Todo Rostro - Acne - 1 -->
-		<record id='cri_faa_acn_one' model='product.template'>
-
-			<field name='name'>CRIOCIRUGIA - Todo Rostro - Acne - 1</field>
-
-			<field name='x_name_short'>cri_faa_acn_one</field>
-
-			<field name='type'>service</field>
-			<field name='x_treatment'>criosurgery</field>
-			<field name='x_zone'>face_all</field>
-			<field name='x_pathology'>acne</field>
-			<field name='price'>300</field>
-			<field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
-			<field name='x_time'></field>
-			<field name='x_sessions'>1</field>
-			<field name='x_price_vip'>0</field>
-			<field name='x_family'>medical</field>
-			<field name='categ_id' ref="medical"/>
-		</record>
-
-
-		<!-- CRIOCIRUGIA - Todo Rostro - Acne - 10 -->
-		<record id='cri_faa_acn_ten' model='product.template'>
-
-			<field name='name'>CRIOCIRUGIA - Todo Rostro - Acne - 10</field>
-			
-			<field name='x_name_short'>cri_faa_acn_ten</field>
-
-			<field name='type'>service</field>
-			<field name='x_treatment'>criosurgery</field>
-			<field name='x_zone'>face_all</field>
-			<field name='x_pathology'>acne</field>
-			<field name='price'>3000</field>
-			<field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
-			<field name='x_time'></field>
-			<field name='x_sessions'>10</field>
-			<field name='x_price_vip'>2700</field>
-			<field name='x_family'>medical</field>
-			<field name='categ_id' ref="medical"/>
-		</record>
+            <field name='categ_id' ref="medical"/>
+        </record>
 
 
 
@@ -107,30 +60,75 @@
 
 
 
+        <!-- CRIOCIRUGIA - Todo Rostro - Acne - 1 -->
+        <record id='cri_faa_acn_one' model='product.template'>
 
-		<!-- ESCLEROTERAPIA - Piernas - Varices - 1 -->
-		<record id='scl_leg_var_one' model='product.template'>
+            <field name='name'>CRIOCIRUGIA - Todo Rostro - Acne - 1</field>
 
-			<field name='name'>ESCLEROTERAPIA - Piernas - Varices - 1</field>
+            <field name='x_name_short'>cri_faa_acn_one</field>
 
-			<field name='x_name_short'>scl_leg_var_one</field>
-
-			<field name='type'>service</field>
-			<field name='x_treatment'>sclerotherapy</field>
-			<field name='x_zone'>legs</field>
-			<field name='x_pathology'>varicose</field>
-			<field name='price'>2000</field>
-			<field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
-			<field name='x_time'></field>
-			<field name='x_sessions'>1</field>
-
-			<field name='x_price_vip'>1000</field>
-			
-			<field name='x_family'>medical</field>
-			<field name='categ_id' ref="medical"/>
-		</record>
+            <field name='type'>service</field>
+            <field name='x_treatment'>criosurgery</field>
+            <field name='x_zone'>face_all</field>
+            <field name='x_pathology'>acne</field>
+            <field name='price'>300</field>
+            <field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
+            <field name='x_time'></field>
+            <field name='x_sessions'>1</field>
+            <field name='x_price_vip'>0</field>
+            <field name='x_family'>medical</field>
+            <field name='categ_id' ref="medical"/>
+        </record>
 
 
+        <!-- CRIOCIRUGIA - Todo Rostro - Acne - 10 -->
+        <record id='cri_faa_acn_ten' model='product.template'>
+
+            <field name='name'>CRIOCIRUGIA - Todo Rostro - Acne - 10</field>
+            
+            <field name='x_name_short'>cri_faa_acn_ten</field>
+
+            <field name='type'>service</field>
+            <field name='x_treatment'>criosurgery</field>
+            <field name='x_zone'>face_all</field>
+            <field name='x_pathology'>acne</field>
+            <field name='price'>3000</field>
+            <field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
+            <field name='x_time'></field>
+            <field name='x_sessions'>10</field>
+            <field name='x_price_vip'>2700</field>
+            <field name='x_family'>medical</field>
+            <field name='categ_id' ref="medical"/>
+        </record>
+
+
+
+
+
+
+
+
+        <!-- ESCLEROTERAPIA - Piernas - Varices - 1 -->
+        <record id='scl_leg_var_one' model='product.template'>
+
+            <field name='name'>ESCLEROTERAPIA - Piernas - Varices - 1</field>
+
+            <field name='x_name_short'>scl_leg_var_one</field>
+
+            <field name='type'>service</field>
+            <field name='x_treatment'>sclerotherapy</field>
+            <field name='x_zone'>legs</field>
+            <field name='x_pathology'>varicose</field>
+            <field name='price'>2000</field>
+            <field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
+            <field name='x_time'></field>
+            <field name='x_sessions'>1</field>
+
+            <field name='x_price_vip'>1000</field>
+            
+            <field name='x_family'>medical</field>
+            <field name='categ_id' ref="medical"/>
+        </record>
 
 
 
@@ -144,56 +142,58 @@
 
 
 
-		<!-- INFILTRACIONES - Cicatriz -->
-		<record id='inf_any_sca' model='product.template'>
 
-			<field name='name'>INFILTRACIONES - Cicatriz</field>
 
-			<field name='x_name_short'>inf_any_sca</field>
+        <!-- INFILTRACIONES - Cicatriz -->
+        <record id='inf_any_sca' model='product.template'>
 
-			<field name='type'>service</field>	
+            <field name='name'>INFILTRACIONES - Cicatriz</field>
+
+            <field name='x_name_short'>inf_any_sca</field>
+
+            <field name='type'>service</field>  
 <!--
-			<field name='x_treatment'>infiltration_scar</field>
--->		
+            <field name='x_treatment'>infiltration_scar</field>
+-->     
 
-			<field name='x_treatment'>infiltration</field>
-			<field name='x_zone'>any</field>
-			<field name='x_pathology'>scar</field>
-
-
-			<field name='x_family'>medical</field>
-			<field name='price'>200</field>
-			<field name='categ_id' ref="medical"/>
-
-			<field name="sale_ok" eval="False" />
-			<field name="purchase_ok" eval="False" />
-		</record>
+            <field name='x_treatment'>infiltration</field>
+            <field name='x_zone'>any</field>
+            <field name='x_pathology'>scar</field>
 
 
-		<!-- INFILTRACIONES - Queloide -->
-		<record id='inf_any_kel' model='product.template'>
+            <field name='x_family'>medical</field>
+            <field name='price'>200</field>
+            <field name='categ_id' ref="medical"/>
 
-			<field name='name'>INFILTRACIONES - Queloide</field>
+            <field name="sale_ok" eval="False" />
+            <field name="purchase_ok" eval="False" />
+        </record>
 
-			<field name='x_name_short'>inf_any_kel</field>
 
-			<field name='type'>service</field>
+        <!-- INFILTRACIONES - Queloide -->
+        <record id='inf_any_kel' model='product.template'>
+
+            <field name='name'>INFILTRACIONES - Queloide</field>
+
+            <field name='x_name_short'>inf_any_kel</field>
+
+            <field name='type'>service</field>
 <!--
-			<field name='x_treatment'>infiltration_keloid</field>
--->		
+            <field name='x_treatment'>infiltration_keloid</field>
+-->     
 
-			<field name='x_treatment'>infiltration</field>
-			<field name='x_zone'>any</field>
-			<field name='x_pathology'>keloid</field>
+            <field name='x_treatment'>infiltration</field>
+            <field name='x_zone'>any</field>
+            <field name='x_pathology'>keloid</field>
 
 
-			<field name='x_family'>medical</field>
-			<field name='price'>200</field>
-			<field name='categ_id' ref="medical"/>
+            <field name='x_family'>medical</field>
+            <field name='price'>200</field>
+            <field name='categ_id' ref="medical"/>
 
-			<field name="sale_ok" eval="False" />
-			<field name="purchase_ok" eval="False" />
-		</record>
+            <field name="sale_ok" eval="False" />
+            <field name="purchase_ok" eval="False" />
+        </record>
 
 
 
@@ -204,92 +204,92 @@
 
 
 
-		<!-- LEPISMATICO (resorcina) - Espalda - Acne - 1 -->
-		<record id='lep_bac_acn_one' model='product.template'>
+        <!-- LEPISMATICO (resorcina) - Espalda - Acne - 1 -->
+        <record id='lep_bac_acn_one' model='product.template'>
 
-			<field name='name'>LEPISMATICO (resorcina) - Espalda - Acne - 1</field>
+            <field name='name'>LEPISMATICO (resorcina) - Espalda - Acne - 1</field>
 
-			<field name='x_name_short'>lep_bac_acn_one</field>
+            <field name='x_name_short'>lep_bac_acn_one</field>
 
-			<field name='type'>service</field>
-			<field name='x_treatment'>lepismatic</field>
-			<field name='x_zone'>back</field>
-			<field name='x_pathology'>acne</field>
-			<field name='price'>3000</field>
-			<field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
-			<field name='x_time'></field>
-			<field name='x_sessions'>1</field>
-			<field name='x_price_vip'>1500</field>
-			<field name='x_family'>medical</field>
+            <field name='type'>service</field>
+            <field name='x_treatment'>lepismatic</field>
+            <field name='x_zone'>back</field>
+            <field name='x_pathology'>acne</field>
+            <field name='price'>3000</field>
+            <field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
+            <field name='x_time'></field>
+            <field name='x_sessions'>1</field>
+            <field name='x_price_vip'>1500</field>
+            <field name='x_family'>medical</field>
 
-			<field name='categ_id' ref="medical"/>
-		</record>
+            <field name='categ_id' ref="medical"/>
+        </record>
 
 
-		<!-- LEPISMATICO (resorcina) - Espalda - Manchas - 1 -->
-		<record id='lep_bac_sta_one' model='product.template'>
+        <!-- LEPISMATICO (resorcina) - Espalda - Manchas - 1 -->
+        <record id='lep_bac_sta_one' model='product.template'>
 
-			<field name='name'>LEPISMATICO (resorcina) - Espalda - Manchas - 1</field>
+            <field name='name'>LEPISMATICO (resorcina) - Espalda - Manchas - 1</field>
 
-			<field name='x_name_short'>lep_bac_sta_one</field>
+            <field name='x_name_short'>lep_bac_sta_one</field>
 
-			<field name='type'>service</field>
-			<field name='x_treatment'>lepismatic</field>
-			<field name='x_zone'>back</field>
-			<field name='x_pathology'>stains</field>
-			<field name='price'>3000</field>
-			<field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
-			<field name='x_time'></field>
-			<field name='x_sessions'>1</field>
-			<field name='x_price_vip'>1500</field>
-			<field name='x_family'>medical</field>
+            <field name='type'>service</field>
+            <field name='x_treatment'>lepismatic</field>
+            <field name='x_zone'>back</field>
+            <field name='x_pathology'>stains</field>
+            <field name='price'>3000</field>
+            <field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
+            <field name='x_time'></field>
+            <field name='x_sessions'>1</field>
+            <field name='x_price_vip'>1500</field>
+            <field name='x_family'>medical</field>
 
-			<field name='categ_id' ref="medical"/>
-		</record>
+            <field name='categ_id' ref="medical"/>
+        </record>
 
 
-		<!-- LEPISMATICO (resorcina) - Todo Rostro - Acne - 1 -->
-		<record id='lep_faa_acn_one' model='product.template'>
+        <!-- LEPISMATICO (resorcina) - Todo Rostro - Acne - 1 -->
+        <record id='lep_faa_acn_one' model='product.template'>
 
-			<field name='name'>LEPISMATICO (resorcina) - Todo Rostro - Acne - 1</field>
+            <field name='name'>LEPISMATICO (resorcina) - Todo Rostro - Acne - 1</field>
 
-			<field name='x_name_short'>lep_faa_acn_one</field>
+            <field name='x_name_short'>lep_faa_acn_one</field>
 
-			<field name='type'>service</field>
-			<field name='x_treatment'>lepismatic</field>
-			<field name='x_zone'>face_all</field>
-			<field name='x_pathology'>acne</field>
-			<field name='price'>3000</field>
-			<field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
-			<field name='x_time'></field>
-			<field name='x_sessions'>1</field>
-			<field name='x_price_vip'>1500</field>
-			<field name='x_family'>medical</field>
+            <field name='type'>service</field>
+            <field name='x_treatment'>lepismatic</field>
+            <field name='x_zone'>face_all</field>
+            <field name='x_pathology'>acne</field>
+            <field name='price'>3000</field>
+            <field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
+            <field name='x_time'></field>
+            <field name='x_sessions'>1</field>
+            <field name='x_price_vip'>1500</field>
+            <field name='x_family'>medical</field>
 
-			<field name='categ_id' ref="medical"/>
-		</record>
+            <field name='categ_id' ref="medical"/>
+        </record>
 
 
-		<!-- LEPISMATICO (resorcina) - Todo Rostro - Manchas - 1 -->
-		<record id='lep_faa_sta_one' model='product.template'>
+        <!-- LEPISMATICO (resorcina) - Todo Rostro - Manchas - 1 -->
+        <record id='lep_faa_sta_one' model='product.template'>
 
-			<field name='name'>LEPISMATICO (resorcina) - Todo Rostro - Manchas - 1</field>
+            <field name='name'>LEPISMATICO (resorcina) - Todo Rostro - Manchas - 1</field>
 
-			<field name='x_name_short'>lep_faa_sta_one</field>
+            <field name='x_name_short'>lep_faa_sta_one</field>
 
-			<field name='type'>service</field>
-			<field name='x_treatment'>lepismatic</field>
-			<field name='x_zone'>face_all</field>
-			<field name='x_pathology'>stains</field>
-			<field name='price'>3000</field>
-			<field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
-			<field name='x_time'></field>
-			<field name='x_sessions'>1</field>
-			<field name='x_price_vip'>1500</field>
-			<field name='x_family'>medical</field>
+            <field name='type'>service</field>
+            <field name='x_treatment'>lepismatic</field>
+            <field name='x_zone'>face_all</field>
+            <field name='x_pathology'>stains</field>
+            <field name='price'>3000</field>
+            <field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
+            <field name='x_time'></field>
+            <field name='x_sessions'>1</field>
+            <field name='x_price_vip'>1500</field>
+            <field name='x_family'>medical</field>
 
-			<field name='categ_id' ref="medical"/>
-		</record>
+            <field name='categ_id' ref="medical"/>
+        </record>
 
 
 
@@ -297,48 +297,48 @@
 
 
 
-		<!-- MESOTERAPIA NCTF - Todo Rostro - Rejuvenecimiento Facial - 3 -->
-		<record id='men_faa_rfa' model='product.template'>
+        <!-- MESOTERAPIA NCTF - Todo Rostro - Rejuvenecimiento Facial - 3 -->
+        <record id='men_faa_rfa' model='product.template'>
 
-			<field name='name'>MESOTERAPIA NCTF - Todo Rostro - Rejuvenecimiento Facial - 3</field>
+            <field name='name'>MESOTERAPIA NCTF - Todo Rostro - Rejuvenecimiento Facial - 3</field>
 
-			<field name='x_name_short'>men_faa_rfa_three</field>
+            <field name='x_name_short'>men_faa_rfa_three</field>
 
-			<field name='type'>service</field>
-			<field name='x_treatment'>mesotherapy_nctf</field>
-			<field name='x_zone'>face_all</field>
-			<field name='x_pathology'>rejuvenation_face</field>
-			<field name='price'>5000</field>
-			<field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
-			<field name='x_time'></field>
-			<field name='x_sessions'>3</field>
-			<field name='x_price_vip'>2500</field>
-			<field name='x_family'>medical</field>
+            <field name='type'>service</field>
+            <field name='x_treatment'>mesotherapy_nctf</field>
+            <field name='x_zone'>face_all</field>
+            <field name='x_pathology'>rejuvenation_face</field>
+            <field name='price'>5000</field>
+            <field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
+            <field name='x_time'></field>
+            <field name='x_sessions'>3</field>
+            <field name='x_price_vip'>2500</field>
+            <field name='x_family'>medical</field>
 
-			<field name='categ_id' ref="medical"/>
-		</record>
+            <field name='categ_id' ref="medical"/>
+        </record>
 
 
-		<!-- MESOTERAPIA NCTF - Todo Rostro - Rejuvenecimiento Facial - 5 -->
-		<record id='men_faa_rfa_five' model='product.template'>
+        <!-- MESOTERAPIA NCTF - Todo Rostro - Rejuvenecimiento Facial - 5 -->
+        <record id='men_faa_rfa_five' model='product.template'>
 
-			<field name='name'>MESOTERAPIA NCTF - Todo Rostro - Rejuvenecimiento Facial - 5</field>
+            <field name='name'>MESOTERAPIA NCTF - Todo Rostro - Rejuvenecimiento Facial - 5</field>
 
-			<field name='x_name_short'>men_faa_rfa_five</field>
+            <field name='x_name_short'>men_faa_rfa_five</field>
 
-			<field name='type'>service</field>
-			<field name='x_treatment'>mesotherapy_nctf</field>
-			<field name='x_zone'>face_all</field>
-			<field name='x_pathology'>rejuvenation_face</field>
-			<field name='price'>8000</field>
-			<field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
-			<field name='x_time'></field>
-			<field name='x_sessions'>5</field>
-			<field name='x_price_vip'>4000</field>
-			<field name='x_family'>medical</field>
+            <field name='type'>service</field>
+            <field name='x_treatment'>mesotherapy_nctf</field>
+            <field name='x_zone'>face_all</field>
+            <field name='x_pathology'>rejuvenation_face</field>
+            <field name='price'>8000</field>
+            <field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
+            <field name='x_time'></field>
+            <field name='x_sessions'>5</field>
+            <field name='x_price_vip'>4000</field>
+            <field name='x_family'>medical</field>
 
-			<field name='categ_id' ref="medical"/>
-		</record>
+            <field name='categ_id' ref="medical"/>
+        </record>
 
 
 
@@ -347,171 +347,143 @@
 
 
 
-		<!-- PLASMA - Cabeza - Rejuvenecimiento Capilar - 1 -->
-		<record id='pla_hea_rec_one' model='product.template'>
+        <!-- PLASMA - Cabeza - Rejuvenecimiento Capilar - 1 -->
+        <record id='pla_hea_rec_one' model='product.template'>
 
-			<field name='name'>PLASMA - Cabeza - Rejuvenecimiento Capilar - 1</field>
+            <field name='name'>PLASMA - Cabeza - Rejuvenecimiento Capilar - 1</field>
 
-			<field name='x_name_short'>pla_hea_rec_one</field>
+            <field name='x_name_short'>pla_hea_rec_one</field>
 
-			<field name='type'>service</field>
-			<field name='x_treatment'>plasma</field>
-			<field name='x_zone'>head</field>
-			<field name='x_pathology'>rejuvenation_capilar</field>
-			<field name='price'>1600</field>
-			<field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
-			<field name='x_time'></field>
-			<field name='x_sessions'>1</field>
-			<field name='x_price_vip'>800</field>
-			<field name='x_family'>medical</field>
+            <field name='type'>service</field>
+            <field name='x_treatment'>plasma</field>
+            <field name='x_zone'>head</field>
+            <field name='x_pathology'>rejuvenation_capilar</field>
+            <field name='price'>1600</field>
+            <field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
+            <field name='x_time'></field>
+            <field name='x_sessions'>1</field>
+            <field name='x_price_vip'>800</field>
+            <field name='x_family'>medical</field>
 
-			<field name='categ_id' ref="medical"/>
-		</record>
+            <field name='categ_id' ref="medical"/>
+        </record>
 
 
-		<!-- PLASMA - Cabeza - Rejuvenecimiento Capilar - 2 -->
-		<record id='pla_hea_rec_two' model='product.template'>
+        <!-- PLASMA - Cabeza - Rejuvenecimiento Capilar - 2 -->
+        <record id='pla_hea_rec_two' model='product.template'>
 
-			<field name='name'>PLASMA - Cabeza - Rejuvenecimiento Capilar - 2</field>
+            <field name='name'>PLASMA - Cabeza - Rejuvenecimiento Capilar - 2</field>
 
-			<field name='x_name_short'>pla_hea_rec_two</field>
+            <field name='x_name_short'>pla_hea_rec_two</field>
 
-			<field name='type'>service</field>
-			<field name='x_treatment'>plasma</field>
-			<field name='x_zone'>head</field>
-			<field name='x_pathology'>rejuvenation_capilar</field>
-			<field name='price'>1800</field>
-			<field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
-			<field name='x_time'></field>
-			<field name='x_sessions'>2</field>
+            <field name='type'>service</field>
+            <field name='x_treatment'>plasma</field>
+            <field name='x_zone'>head</field>
+            <field name='x_pathology'>rejuvenation_capilar</field>
+            <field name='price'>1800</field>
+            <field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
+            <field name='x_time'></field>
+            <field name='x_sessions'>2</field>
 
-			<field name='x_price_vip'>1200</field>
-			
-			<field name='x_family'>medical</field>
-			<field name='categ_id' ref="medical"/>
-		</record>
+            <field name='x_price_vip'>1200</field>
+            
+            <field name='x_family'>medical</field>
+            <field name='categ_id' ref="medical"/>
+        </record>
 
 
-		<!-- PLASMA - Cabeza - Rejuvenecimiento Capilar - 3 -->
-<!--		
+        <!-- PLASMA - Cabeza - Rejuvenecimiento Capilar - 3 -->
+<!--        
 -->
-		<record id='pla_hea_rec_three' model='product.template'>
+        <record id='pla_hea_rec_three' model='product.template'>
 
-			<field name='name'>PLASMA - Cabeza - Rejuvenecimiento Capilar - 3</field>
+            <field name='name'>PLASMA - Cabeza - Rejuvenecimiento Capilar - 3</field>
 
-			<field name='x_name_short'>pla_hea_rec_three</field>
+            <field name='x_name_short'>pla_hea_rec_three</field>
 
-			<field name='type'>service</field>
-			<field name='x_treatment'>plasma</field>
-			<field name='x_zone'>head</field>
-			<field name='x_pathology'>rejuvenation_capilar</field>
-			<field name='price'>2200</field>
-			<field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
-			<field name='x_time'></field>
-			<field name='x_sessions'>3</field>
-			<field name='x_price_vip'>1600</field>
-			<field name='x_family'>medical</field>
+            <field name='type'>service</field>
+            <field name='x_treatment'>plasma</field>
+            <field name='x_zone'>head</field>
+            <field name='x_pathology'>rejuvenation_capilar</field>
+            <field name='price'>2200</field>
+            <field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
+            <field name='x_time'></field>
+            <field name='x_sessions'>3</field>
+            <field name='x_price_vip'>1600</field>
+            <field name='x_family'>medical</field>
 
-			<field name='categ_id' ref="medical"/>
-		</record>
-
-
-
-		<!-- PLASMA - Todo Rostro - Rejuvenecimiento Facial - 1 -->
-		<record id='pla_faa_rfa_one' model='product.template'>
-
-			<field name='name'>PLASMA - Todo Rostro - Rejuvenecimiento Facial - 1</field>
-
-			<field name='x_name_short'>pla_faa_rfa_one</field>
-
-			<field name='type'>service</field>
-			<field name='x_treatment'>plasma</field>
-			<field name='x_zone'>face_all</field>
-			<field name='x_pathology'>rejuvenation_face</field>
-			<field name='price'>1600</field>
-			<field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
-			<field name='x_time'></field>
-			<field name='x_sessions'>1</field>
-			<field name='x_price_vip'>800</field>
-			<field name='x_family'>medical</field>
-
-			<field name='categ_id' ref="medical"/>
-		</record>
+            <field name='categ_id' ref="medical"/>
+        </record>
 
 
 
-		<!-- PLASMA - Todo Rostro - Rejuvenecimiento Facial - 2 -->
-		<record id='pla_faa_rfa_two' model='product.template'>
+        <!-- PLASMA - Todo Rostro - Rejuvenecimiento Facial - 1 -->
+        <record id='pla_faa_rfa_one' model='product.template'>
 
-			<field name='name'>PLASMA - Todo Rostro - Rejuvenecimiento Facial - 2</field>
+            <field name='name'>PLASMA - Todo Rostro - Rejuvenecimiento Facial - 1</field>
 
-			<field name='x_name_short'>pla_faa_rfa_two</field>
+            <field name='x_name_short'>pla_faa_rfa_one</field>
 
-			<field name='type'>service</field>
-			<field name='x_treatment'>plasma</field>
-			<field name='x_zone'>face_all</field>
-			<field name='x_pathology'>rejuvenation_face</field>
-			<field name='price'>1800</field>
-			<field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
-			<field name='x_time'></field>
-			<field name='x_sessions'>2</field>
-			<field name='x_price_vip'>1200</field>
-			<field name='x_family'>medical</field>
+            <field name='type'>service</field>
+            <field name='x_treatment'>plasma</field>
+            <field name='x_zone'>face_all</field>
+            <field name='x_pathology'>rejuvenation_face</field>
+            <field name='price'>1600</field>
+            <field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
+            <field name='x_time'></field>
+            <field name='x_sessions'>1</field>
+            <field name='x_price_vip'>800</field>
+            <field name='x_family'>medical</field>
 
-			<field name='categ_id' ref="medical"/>
-		</record>
+            <field name='categ_id' ref="medical"/>
+        </record>
 
 
-		<!-- PLASMA - Todo Rostro - Rejuvenecimiento Facial - 3 -->
-<!--		
+
+        <!-- PLASMA - Todo Rostro - Rejuvenecimiento Facial - 2 -->
+        <record id='pla_faa_rfa_two' model='product.template'>
+
+            <field name='name'>PLASMA - Todo Rostro - Rejuvenecimiento Facial - 2</field>
+
+            <field name='x_name_short'>pla_faa_rfa_two</field>
+
+            <field name='type'>service</field>
+            <field name='x_treatment'>plasma</field>
+            <field name='x_zone'>face_all</field>
+            <field name='x_pathology'>rejuvenation_face</field>
+            <field name='price'>1800</field>
+            <field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
+            <field name='x_time'></field>
+            <field name='x_sessions'>2</field>
+            <field name='x_price_vip'>1200</field>
+            <field name='x_family'>medical</field>
+
+            <field name='categ_id' ref="medical"/>
+        </record>
+
+
+        <!-- PLASMA - Todo Rostro - Rejuvenecimiento Facial - 3 -->
+<!--        
 -->
-		<record id='pla_faa_rfa_three' model='product.template'>
+        <record id='pla_faa_rfa_three' model='product.template'>
 
-			<field name='name'>PLASMA - Todo Rostro - Rejuvenecimiento Facial - 3</field>
+            <field name='name'>PLASMA - Todo Rostro - Rejuvenecimiento Facial - 3</field>
 
-			<field name='x_name_short'>pla_faa_rfa_three</field>
+            <field name='x_name_short'>pla_faa_rfa_three</field>
 
-			<field name='type'>service</field>
-			<field name='x_treatment'>plasma</field>
-			<field name='x_zone'>face_all</field>
-			<field name='x_pathology'>rejuvenation_face</field>
-			<field name='price'>2200</field>
-			<field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
-			<field name='x_time'></field>
-			<field name='x_sessions'>3</field>
-			<field name='x_price_vip'>1600</field>
-			<field name='x_family'>medical</field>
+            <field name='type'>service</field>
+            <field name='x_treatment'>plasma</field>
+            <field name='x_zone'>face_all</field>
+            <field name='x_pathology'>rejuvenation_face</field>
+            <field name='price'>2200</field>
+            <field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
+            <field name='x_time'></field>
+            <field name='x_sessions'>3</field>
+            <field name='x_price_vip'>1600</field>
+            <field name='x_family'>medical</field>
 
-			<field name='categ_id' ref="medical"/>
-		</record>
-
-
-
-
-
-
-
-
-		<!-- TOXINA BOTULINICA - 1 Zona - Rejuvenecimiento Facial - 1 -->
-		<record id='bot_1zo_rfa_one' model='product.template'>
-
-			<field name='name'>TOXINA BOTULINICA - 1 Zona - Rejuvenecimiento Facial - 1</field>
-
-			<field name='x_name_short'>bot_1zo_rfa_one</field>
-
-			<field name='type'>service</field>
-			<field name='x_treatment'>botulinum_toxin</field>
-			<field name='x_zone'>1_zone</field>
-			<field name='x_pathology'>rejuvenation_face</field>
-			<field name='price'>1400</field>
-			<field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
-			<field name='x_time'></field>
-			<field name='x_sessions'>1</field>
-			<field name='x_price_vip'>700</field>
-			<field name='x_family'>medical</field>
-
-			<field name='categ_id' ref="medical"/>
-		</record>
+            <field name='categ_id' ref="medical"/>
+        </record>
 
 
 
@@ -519,32 +491,60 @@
 
 
 
-		<!-- VITAMINA C ENDOVENOSA - na - na - 1 -->
-		<record id='ivc_na_na_one' model='product.template'>
+
+        <!-- TOXINA BOTULINICA - 1 Zona - Rejuvenecimiento Facial - 1 -->
+        <record id='bot_1zo_rfa_one' model='product.template'>
+
+            <field name='name'>TOXINA BOTULINICA - 1 Zona - Rejuvenecimiento Facial - 1</field>
+
+            <field name='x_name_short'>bot_1zo_rfa_one</field>
+
+            <field name='type'>service</field>
+            <field name='x_treatment'>botulinum_toxin</field>
+            <field name='x_zone'>1_zone</field>
+            <field name='x_pathology'>rejuvenation_face</field>
+            <field name='price'>1400</field>
+            <field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
+            <field name='x_time'></field>
+            <field name='x_sessions'>1</field>
+            <field name='x_price_vip'>700</field>
+            <field name='x_family'>medical</field>
+
+            <field name='categ_id' ref="medical"/>
+        </record>
+
+
+
+
+
+
+
+        <!-- VITAMINA C ENDOVENOSA - na - na - 1 -->
+        <record id='ivc_na_na_one' model='product.template'>
 <!--
-			<field name='name'>VITAMINA C ENDOVENOSA - na - na - 1</field>
+            <field name='name'>VITAMINA C ENDOVENOSA - na - na - 1</field>
 -->
-			<field name='name'>VITAMINA C ENDOVENOSA</field>
+            <field name='name'>VITAMINA C ENDOVENOSA</field>
 
-			<field name='x_name_short'>ivc_na_na_one</field>
+            <field name='x_name_short'>ivc_na_na_one</field>
 
-			<field name='type'>service</field>
-			<field name='x_treatment'>intravenous_vitamin</field>
-			<field name='x_zone'>na</field>
-			<field name='x_pathology'>na</field>
-			<field name='price'>500</field>
-			<field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
-			<field name='x_time'></field>
-			<field name='x_sessions'>1</field>
+            <field name='type'>service</field>
+            <field name='x_treatment'>intravenous_vitamin</field>
+            <field name='x_zone'>na</field>
+            <field name='x_pathology'>na</field>
+            <field name='price'>500</field>
+            <field name='x_date_created'>2017-03-29 15:32:43 UTC</field>
+            <field name='x_time'></field>
+            <field name='x_sessions'>1</field>
 
-			<field name='x_price_vip'>0</field>
-			
-			<field name='x_family'>medical</field>
-			<field name='categ_id' ref="medical"/>
-		</record>
-
-
+            <field name='x_price_vip'>0</field>
+            
+            <field name='x_family'>medical</field>
+            <field name='categ_id' ref="medical"/>
+        </record>
 
 
-	</data>
+
+
+    </data>
 </openerp>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-	<data noupdate='1'>
+    <data noupdate='1'>
 
 
 
@@ -11,31 +11,31 @@
 
 <!-- Parents --> 
 
-		<!-- Laser --> 
-		<record id='laser_service_categ' model='product.category'>
-			<field name='name'>Laser</field>
-		</record>
+        <!-- Laser --> 
+        <record id='laser_service_categ' model='product.category'>
+            <field name='name'>Laser</field>
+        </record>
 
 
 
-		<!-- Procedure --> 
-		<record id='procedure_categ' model='product.category'>
-			<field name='name'>Procedimiento</field>
-		</record>
+        <!-- Procedure --> 
+        <record id='procedure_categ' model='product.category'>
+            <field name='name'>Procedimiento</field>
+        </record>
 
 
 
-		<!-- Consultation --> 
-		<record id='consultation_categ' model='product.category'>
-			<field name='name'>Consulta</field>
-		</record>
+        <!-- Consultation --> 
+        <record id='consultation_categ' model='product.category'>
+            <field name='name'>Consulta</field>
+        </record>
 
 
 
-		<!-- Consultation --> 
-		<record id='consultation_service_categ' model='product.category'>
-			<field name='name'>Consulta Legacy</field>
-		</record>
+        <!-- Consultation --> 
+        <record id='consultation_service_categ' model='product.category'>
+            <field name='name'>Consulta Legacy</field>
+        </record>
 
 
 
@@ -47,69 +47,69 @@
 
 
 
-		<!-- Quick --> 
-		<record id='laser_quick' model='product.category'>
-			<field name='name'>Quick Laser</field>
+        <!-- Quick --> 
+        <record id='laser_quick' model='product.category'>
+            <field name='name'>Quick Laser</field>
 <!--
-			<field name='parent_id' 	ref='laser_service_categ'/>
--->	
-		</record>
+            <field name='parent_id'     ref='laser_service_categ'/>
+--> 
+        </record>
 
 
 
 
-		<!-- Co2 --> 
-		<record id='laser_co2' model='product.category'>
-			<field name='name'>Laser Co2</field>
+        <!-- Co2 --> 
+        <record id='laser_co2' model='product.category'>
+            <field name='name'>Laser Co2</field>
 <!--
-			<field name='parent_id' 	ref='laser_service_categ'/>
+            <field name='parent_id'     ref='laser_service_categ'/>
 -->
-		</record>
+        </record>
 
 
 
 
-		<!-- Excilite --> 
-		<record id='laser_excilite' model='product.category'>
-			<field name='name'>Laser Excilite</field>
-<!--			
-			<field name='parent_id' 	ref='laser_service_categ'/>
+        <!-- Excilite --> 
+        <record id='laser_excilite' model='product.category'>
+            <field name='name'>Laser Excilite</field>
+<!--            
+            <field name='parent_id'     ref='laser_service_categ'/>
 -->
-		</record>
+        </record>
 
 
 
-		<!-- M22 --> 
-		<record id='laser_m22' model='product.category'>
-			<field name='name'>Laser M22</field>
+        <!-- M22 --> 
+        <record id='laser_m22' model='product.category'>
+            <field name='name'>Laser M22</field>
 <!--
-			<field name='parent_id' 	ref='laser_service_categ'/>
+            <field name='parent_id'     ref='laser_service_categ'/>
 -->
-		</record>
+        </record>
 
 
 
 
 
 
-		<!-- Medical --> 
-		<record id='medical' model='product.category'>
-			<field name='name'>Medical</field>
+        <!-- Medical --> 
+        <record id='medical' model='product.category'>
+            <field name='name'>Medical</field>
 <!--
-			<field name='parent_id' 	ref='procedure_service_categ'/>
+            <field name='parent_id'     ref='procedure_service_categ'/>
 -->
-		</record>
+        </record>
 
 
 
 
-		<!-- Consultation --> 
-		<record id='consultation' model='product.category'>
-			<field name='name'>Consultas</field>
+        <!-- Consultation --> 
+        <record id='consultation' model='product.category'>
+            <field name='name'>Consultas</field>
 <!--
-			<field name='parent_id' 	ref='consultation_service_categ'/>
+            <field name='parent_id'     ref='consultation_service_categ'/>
 -->
-		</record>
+        </record>
 
 
 
@@ -128,38 +128,38 @@
 
 
 
-		<!-- Consumibles --> 
-		<record id='consumable' model='product.category'>
-			<field name='name'>Consumibles</field>
-		</record>
+        <!-- Consumibles --> 
+        <record id='consumable' model='product.category'>
+            <field name='name'>Consumibles</field>
+        </record>
 
 
-		<!-- Cremas --> 
-		<record id='topical' model='product.category'>
-			<field name='name'>Cremas</field>
-		</record>
+        <!-- Cremas --> 
+        <record id='topical' model='product.category'>
+            <field name='name'>Cremas</field>
+        </record>
 
 
 
 
-		<!-- Test --> 
+        <!-- Test --> 
 <!--
-		<record id='testing' model='product.category'>
-			<field name='name'>Testing</field>
-		</record>
+        <record id='testing' model='product.category'>
+            <field name='name'>Testing</field>
+        </record>
 
-		<record id='test' model='product.category'>
-			<field name='name'>Test</field>
-		</record>
+        <record id='test' model='product.category'>
+            <field name='name'>Test</field>
+        </record>
 -->
 
 
-		<record id='testing' model='product.category'>
-			<field name='name'>Testing Pla</field>
+        <record id='testing' model='product.category'>
+            <field name='name'>Testing Pla</field>
 <!--
-			<field name='parent_id' 	ref='platform_product_categ'/>
+            <field name='parent_id'     ref='platform_product_categ'/>
 -->
-		</record>
+        </record>
 
 
 
@@ -167,10 +167,10 @@
 
 
 
-		<!-- Legacy --> 
-		<record id='legacy' model='product.category'>
-			<field name='name'>legacy</field>
-		</record>
+        <!-- Legacy --> 
+        <record id='legacy' model='product.category'>
+            <field name='name'>legacy</field>
+        </record>
 
 
 
@@ -194,43 +194,43 @@
 
 <!-- Products --> 
 
-		<!-- Product Categories - Parent --> 
-		<record id='platform_product_categ' model='product.category'>
-			<field name='name'>Plataforma</field>
-		</record>
+        <!-- Product Categories - Parent --> 
+        <record id='platform_product_categ' model='product.category'>
+            <field name='name'>Plataforma</field>
+        </record>
 
 
 
-		<!-- Product Categories - Children --> 
-		<record id='topical' model='product.category'>
-			<field name='name'>Cremas</field>
+        <!-- Product Categories - Children --> 
+        <record id='topical' model='product.category'>
+            <field name='name'>Cremas</field>
 <!--
-			<field name='parent_id' 	ref='platform_product_categ'/>
+            <field name='parent_id'     ref='platform_product_categ'/>
 -->
-		</record>
+        </record>
 
 
 
 
 
 
-		<record id='card' model='product.category'>
-			<field name='name'>Tarjetas</field>
-<!--			
+        <record id='card' model='product.category'>
+            <field name='name'>Tarjetas</field>
+<!--            
 
-			<field name='parent_id' 	ref='platform_product_categ'/>
+            <field name='parent_id'     ref='platform_product_categ'/>
 -->
-		</record>
+        </record>
 
 
 
 
-		<record id='kits' model='product.category'>
-			<field name='name'>Kits</field>
+        <record id='kits' model='product.category'>
+            <field name='name'>Kits</field>
 <!--
-			<field name='parent_id' 	ref='platform_product_categ'/>
+            <field name='parent_id'     ref='platform_product_categ'/>
 -->
-		</record>
+        </record>
 
 
 
@@ -238,5 +238,5 @@
 
 
 
-	</data>
+    </data>
 </openerp> 

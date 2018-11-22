@@ -1,0 +1,1 @@
+access_product_selector,product.selector,model_openhealth_product_selector,,1,1,1,1

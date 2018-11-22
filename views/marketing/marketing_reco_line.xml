@@ -1,136 +1,79 @@
 <?xml version="1.0"?>
 <openerp>
-	<data>
+    <data>
 
 
 
-		<!-- TREE --> 
-<!--
--->
-		<record model="ir.ui.view" id="marketing_recom_line_view_tree">
-
-			<field name="name">openhealth.marketing.recom.line.tree</field>
-			
-			<field name="model">openhealth.marketing.recom.line</field>
-			
-			<field name="arch" type="xml">
-
-				<tree string="marketing recom line Tree">
-<!--					
-					<field name="doctor_id"/>
-					<field name="patient"/>
-					<field name="family"/>
-
-					<field name="sub_family"/>
-
-					<field name="x_date_created"/>
-					<field name="doctor"/>
-
-					<field name="price_subtotal"/>
-					<field name="product_uom_qty"/>
--->
-
-
-
-					<field name="marketing_id"/>
-
-					<field name="patient_line_id"/>
-
-
-					<field name="product_id"/>
-
-
-				</tree>
-			</field>
-		</record>
-
-
-
-
-
-
-		<!-- ACTION - recom -->
-		<record model="ir.actions.act_window" id="marketing_recom_line_form_action">	
-			<field name="name">Ventas</field>
-			<field name="res_model">openhealth.marketing.recom.line</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-
-			<field name="domain">[]</field>
-
-			<field name="context">{}</field>
-
-			<field name="limit">1000</field>
-
-			<!--
-			<field name="domain">[]</field>
-			<field name="context">{}</field>
-			<field name="view_id" eval="False"/>			
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first recom
-				</p>
-			</field>
-			-->
-		</record>
-
-
-
-
-
-		<!-- Filter --> 
-		<record id="view_marketing_recom_line_filter" model="ir.ui.view">
-			<field name="name">Treatment Search</field>
-
-			<field name="model">openhealth.marketing.recom.line</field>
-		   	
-		   	<field name="arch" type="xml">
-			   
-			   <search string="Ventas">
-				   
-<!--
-					<field 	name="patient" 
-
-                    	filter_domain="['|',('patient','ilike',self),('physician','ilike',self)]"/>
-
-					<field 	name="doctor_id"/>
-					<field 	name="marketing_id"/>
+        <!-- TREE --> 
+        <record model="ir.ui.view" id="marketing_recom_line_view_tree">
+            <field name="name">openhealth.marketing.recom.line.tree</field>
+            <field name="model">openhealth.marketing.recom.line</field>
+            <field name="arch" type="xml">
+                <tree string="marketing recom line Tree">
+                    <field name="marketing_id"/>
+                    <field name="patient_line_id"/>
+                    <field name="product_id"/>
+                </tree>
+            </field>
+        </record>
+<!--                    
+                    <field name="doctor_id"/>
+                    <field name="patient"/>
+                    <field name="family"/>
+                    <field name="sub_family"/>
+                    <field name="x_date_created"/>
+                    <field name="doctor"/>
+                    <field name="price_subtotal"/>
+                    <field name="product_uom_qty"/>
 -->
 
 
 
 
-					<group expand="1" string="Group By">
-<!--
-						<filter name="Estado" context="{'group_by':'state'}"/>
--->
-						<filter name="Médico" context="{'group_by':'doctor'}"/>
-
-						<filter name="Paciente" context="{'group_by':'patient'}"/>
-
-						<filter name="Familia" context="{'group_by':'family'}"/>
-
-						<filter name="Subfamilia" context="{'group_by':'sub_family'}"/>
 
 
-						<filter name="Marketing" context="{'group_by':'marketing_id'}"/>
-
-						<filter name="Patient Line" context="{'group_by':'patient_line_id'}"/>
-					</group>
-
-				   
-				   <!--
-				   <newline />
-				   <group expand="0" string="Group By...">
-					   <filter string="Patient" domain="[]" context="{'group_by':'patient'}" />
-				   </group>
-				   -->
-			   </search>
-		   </field>
-	   </record>
+        <!-- ACTION - recom -->
+        <record model="ir.actions.act_window" id="marketing_recom_line_form_action">    
+            <field name="name">Ventas</field>
+            <field name="res_model">openhealth.marketing.recom.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="limit">1000</field>
+            <!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>            
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first recom
+                </p>
+            </field>
+            -->
+        </record>
 
 
 
-		
 
-	</data>
+
+        <!-- Filter --> 
+        <record id="view_marketing_recom_line_filter" model="ir.ui.view">
+            <field name="name">Treatment Search</field>
+            <field name="model">openhealth.marketing.recom.line</field>
+            <field name="arch" type="xml">
+               <search string="Ventas">
+                    <group expand="1" string="Group By">
+                        <filter name="Médico" context="{'group_by':'doctor'}"/>
+                        <filter name="Paciente" context="{'group_by':'patient'}"/>
+                        <filter name="Familia" context="{'group_by':'family'}"/>
+                        <filter name="Subfamilia" context="{'group_by':'sub_family'}"/>
+                        <filter name="Marketing" context="{'group_by':'marketing_id'}"/>
+                        <filter name="Patient Line" context="{'group_by':'patient_line_id'}"/>
+                    </group>
+               </search>
+           </field>
+       </record>
+
+
+    </data>
 </openerp>

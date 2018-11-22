@@ -236,7 +236,8 @@
 		'data/prods/zone/data_nexzones.xml',	
 
 		# Zone
-		'views/zones/zone.xml',
+		#'views/zones/zone.xml',
+		'views/zones/zone_actions.xml',
 
 		'data/prods/zone/data_zones_quick.xml',			 
 		'data/prods/zone/data_zones_co2.xml',			 

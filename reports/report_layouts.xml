@@ -1,46 +1,46 @@
 <openerp>
-	<data>
+    <data>
 
 
 
 
 <!-- Header --> 
 <template id="external_layout_header">
-	<div class="header" style="width:100%">
+    <div class="header" style="width:100%">
 
 
-		<!-- Logo --> 
+        <!-- Logo --> 
 <!--        
-			<div class="col-xs-3">
-				<img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 45px;"/>
-			</div>
-			<div class="col-xs-9 text-right" style="margin-top:20px;" t-field="company.rml_header1"/>
+            <div class="col-xs-3">
+                <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 45px;"/>
+            </div>
+            <div class="col-xs-9 text-right" style="margin-top:20px;" t-field="company.rml_header1"/>
 -->    
 
 
 
-		<!-- Company -->
-		<div class="row"	style="margin-top:10px;margin-bottom:10px;width:100%;font-size: x-small;">
+        <!-- Company -->
+        <div class="row"    style="margin-top:10px;margin-bottom:10px;width:100%;font-size: x-small;">
 
-			<b><div class="col-xs-12 text-center" style="margin-top:10px;" t-field="company.name"/></b>
-			
-			<div class="col-xs-12 text-center" style="margin-top:10px;" t-field="company.vat"/>
+            <b><div class="col-xs-12 text-center" style="margin-top:10px;" t-field="company.name"/></b>
+            
+            <div class="col-xs-12 text-center" style="margin-top:10px;" t-field="company.vat"/>
 
-			<div class="col-xs-12 text-center" style="margin-top:10px;" t-field="company.x_address"/>
+            <div class="col-xs-12 text-center" style="margin-top:10px;" t-field="company.x_address"/>
 
-			<div class="col-xs-12 text-center" style="margin-top:10px;" t-field="company.phone"/>
-		</div>
+            <div class="col-xs-12 text-center" style="margin-top:10px;" t-field="company.phone"/>
+        </div>
 
 
-		<!-- Title -->
-<!--		
-		<div class="row">
-			<div class="col-xs-12" style="border-top: 1px solid black;"/>
-			<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-field="company.rml_header1"/>
-			<div class="col-xs-12" style="border-top: 1px solid black;"/>
-		</div>
+        <!-- Title -->
+<!--        
+        <div class="row">
+            <div class="col-xs-12" style="border-top: 1px solid black;"/>
+            <div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-field="company.rml_header1"/>
+            <div class="col-xs-12" style="border-top: 1px solid black;"/>
+        </div>
 -->
-	</div>
+    </div>
 </template>
 
 
@@ -53,35 +53,35 @@
 <!-- Footer --> 
 <template id="external_layout_footer">
 
-	<div class="footer">
+    <div class="footer">
 
-			<!-- Logo --> 
-<!--			
-		<div class="text-center" style="border-top: 1px solid black;">
+            <!-- Logo --> 
+<!--            
+        <div class="text-center" style="border-top: 1px solid black;">
 
-				<img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 70px;"/>
+                <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 70px;"/>
 
-			<div class="col-xs-12">
-				<img t-if="doc.x_qr_img" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 70px;"/>
-			</div>
+            <div class="col-xs-12">
+                <img t-if="doc.x_qr_img" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 70px;"/>
+            </div>
 
-		</div>
+        </div>
 -->
 
 
-		<div class="text-center" style="margin-top:1px;margin-bottom:1px;width:100%;font-size: xx-small;">
+        <div class="text-center" style="margin-top:1px;margin-bottom:1px;width:100%;font-size: xx-small;">
 
-			<div class="col-xs-12 text-center" style="margin-top:7px;" t-field="company.sale_note"/>
+            <div class="col-xs-12 text-center" style="margin-top:7px;" t-field="company.sale_note"/>
 
-			<div class="col-xs-12 text-center" style="margin-top:7px;" t-field="company.website"/>
+            <div class="col-xs-12 text-center" style="margin-top:7px;" t-field="company.website"/>
 
-			<div class="col-xs-12 text-center" style="margin-top:7px;" t-field="company.email"/>
+            <div class="col-xs-12 text-center" style="margin-top:7px;" t-field="company.email"/>
 
-			<div class="col-xs-12 text-center" style="margin-top:7px;" t-field="company.x_warning"/>
+            <div class="col-xs-12 text-center" style="margin-top:7px;" t-field="company.x_warning"/>
 
-		</div>
+        </div>
 
-	</div>      
+    </div>      
 </template>
 
 
@@ -94,24 +94,24 @@
 <!-- Layout --> 
 <template id="external_layout">
 
-	<!-- Company -->
-	<t t-set="company" t-value="res_company"></t>
+    <!-- Company -->
+    <t t-set="company" t-value="res_company"></t>
 
 
-	<!-- Header --> 
-	<t t-call="openhealth.external_layout_header" />
+    <!-- Header --> 
+    <t t-call="openhealth.external_layout_header" />
 
 
-	<t t-raw="0" />
+    <t t-raw="0" />
 
-	
-	<!-- Footer -->
+    
+    <!-- Footer -->
 <!--
-	<t t-call="openhealth.external_layout_footer" />
+    <t t-call="openhealth.external_layout_footer" />
 -->
 </template>
 
 
 
-	</data>
+    </data>
 </openerp>

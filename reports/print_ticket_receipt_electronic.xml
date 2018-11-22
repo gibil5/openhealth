@@ -1,12 +1,14 @@
 <openerp>
-	<data>
+    <data>
+
+
 
 
 <!-- Electronic --> 
 <report
     string="Ticket de Venta Electrónico"
 
-	id="print_ticket_receipt_electronic"
+    id="print_ticket_receipt_electronic"
     model="sale.order"
     report_type="qweb-pdf"
     name="openhealth.report_ticket_receipt_electronic"
@@ -297,5 +299,5 @@
     </t>
 </template>
 
-	</data>
+    </data>
 </openerp>

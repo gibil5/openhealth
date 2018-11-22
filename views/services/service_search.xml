@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <openerp>
-	<data>
+    <data>
 
 
 
 
-		<!-- Quick --> 
+        <!-- Quick --> 
         <record id="view_service_quick_filter" model="ir.ui.view">
            <field name="name">Service Quick Search</field>
-           <field name="model">openhealth.service.quick</field>		   
-		   <field name="arch" type="xml">
+           <field name="model">openhealth.service.quick</field>        
+           <field name="arch" type="xml">
                <search string="service.quick">
 
                    <field name="treatment" />
@@ -22,13 +22,13 @@
 
 
 
-		<!-- Co2 --> 
+        <!-- Co2 --> 
         <record id="view_service_co2_filter" model="ir.ui.view">
            <field name="name">Service Co2 Search</field>
 
-           <field name="model">openhealth.service.co2</field>		   
-		   
-		   <field name="arch" type="xml">
+           <field name="model">openhealth.service.co2</field>          
+           
+           <field name="arch" type="xml">
                <search string="service.co2">
 
                    <field name="treatment" />
@@ -40,13 +40,13 @@
 
 
 
-		<!-- Excilite --> 
+        <!-- Excilite --> 
         <record id="view_service_exc_filter" model="ir.ui.view">
            <field name="name">Service Exc Search</field>
 
-           <field name="model">openhealth.service.excilite</field>		   
-		   
-		   <field name="arch" type="xml">    
+           <field name="model">openhealth.service.excilite</field>         
+           
+           <field name="arch" type="xml">    
                <search string="service.excilite">
 
                    <field name="treatment" />
@@ -58,13 +58,13 @@
 
 
 
-		<!-- Ipl --> 
+        <!-- Ipl --> 
         <record id="view_service_ipl_filter" model="ir.ui.view">
            <field name="name">Service Ipl Search</field>
 
-           <field name="model">openhealth.service.ipl</field>		   
-		   
-		   <field name="arch" type="xml">    
+           <field name="model">openhealth.service.ipl</field>          
+           
+           <field name="arch" type="xml">    
                <search string="service.ipl">
 
                    <field name="treatment" />
@@ -76,13 +76,13 @@
 
 
 
-		<!-- Ndyag --> 
+        <!-- Ndyag --> 
         <record id="view_service_ndyag_filter" model="ir.ui.view">
            <field name="name">Service Ndyag Search</field>
 
-           <field name="model">openhealth.service.ndyag</field>		   
-		   
-		   <field name="arch" type="xml">    
+           <field name="model">openhealth.service.ndyag</field>        
+           
+           <field name="arch" type="xml">    
                <search string="service.ndyag">
 
                    <field name="treatment" />
@@ -95,13 +95,13 @@
 
 
 
-		<!-- Medical --> 
+        <!-- Medical --> 
         <record id="view_service_medical_filter" model="ir.ui.view">
            <field name="name">Service medical Search</field>
 
-           <field name="model">openhealth.service.medical</field>		   
-		   
-		   <field name="arch" type="xml">    
+           <field name="model">openhealth.service.medical</field>          
+           
+           <field name="arch" type="xml">    
                <search string="service.medical">
 
                    <field name="treatment" />
@@ -114,13 +114,13 @@
 
 
 
-		<!-- Cosmetology --> 
+        <!-- Cosmetology --> 
         <record id="view_service_cosmetology_filter" model="ir.ui.view">
            <field name="name">Service cosmetology Search</field>
 
-           <field name="model">openhealth.service.cosmetology</field>		   
-		   
-		   <field name="arch" type="xml">    
+           <field name="model">openhealth.service.cosmetology</field>          
+           
+           <field name="arch" type="xml">    
                <search string="service.cosmetology">
 
                    <field name="treatment" />
@@ -131,5 +131,5 @@
 
 
 
-	</data>
+    </data>
 </openerp>

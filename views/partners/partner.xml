@@ -1,225 +1,225 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
-	<data>
+    <data>
 
 
 
 <!-- FORM -->
-		<record model="ir.ui.view" 	id="view_partner_form_jxyz">
-			<field name="name">res.partner.form - jxyz</field>
-			<field name="model">res.partner</field>
-			<field name="inherit_id" ref="base.view_partner_form"/>			
-	        <field name="mode">extension</field>
-	        <field name="priority" eval="1"/>
+        <record model="ir.ui.view"  id="view_partner_form_jxyz">
+            <field name="name">res.partner.form - jxyz</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>         
+            <field name="mode">extension</field>
+            <field name="priority" eval="1"/>
 
 
-			<field name="arch" type="xml">
+            <field name="arch" type="xml">
 
 
-				<!-- Goners -->
-				<xpath expr="//field[@name='fax']" position="replace">
-				</xpath>
+                <!-- Goners -->
+                <xpath expr="//field[@name='fax']" position="replace">
+                </xpath>
 
-				<xpath expr="//field[@name='title']" position="replace">
-				</xpath>
+                <xpath expr="//field[@name='title']" position="replace">
+                </xpath>
 
-				<xpath expr="//field[@name='zip']" position="replace">
-				</xpath>
+                <xpath expr="//field[@name='zip']" position="replace">
+                </xpath>
 
-				<xpath expr="//field[@name='state_id']" position="replace">
-				</xpath>
+                <xpath expr="//field[@name='state_id']" position="replace">
+                </xpath>
 
 
 
 
 
-				<!-- Modify --> 
-				<xpath expr="//field[@name='city']" position="replace">
-					<field  name="city"		required="0"	/>
-				</xpath>
+                <!-- Modify --> 
+                <xpath expr="//field[@name='city']" position="replace">
+                    <field  name="city"     required="0"    />
+                </xpath>
 
-				<xpath expr="//field[@name='country_id']" position="replace">
-					<field  name="country_id"		required="0"	/>
-				</xpath>
+                <xpath expr="//field[@name='country_id']" position="replace">
+                    <field  name="country_id"       required="0"    />
+                </xpath>
 
-				<xpath expr="//field[@name='street']" position="replace">
-					<field name="street" placeholder="Calle..." class="o_address_street"
-						attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
-				</xpath>
+                <xpath expr="//field[@name='street']" position="replace">
+                    <field name="street" placeholder="Calle..." class="o_address_street"
+                        attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                </xpath>
 
-				<xpath expr="//field[@name='street2']" position="replace">
-					<field name="street2" placeholder="Distrito..." class="o_address_street"
-						attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
-				</xpath>
+                <xpath expr="//field[@name='street2']" position="replace">
+                    <field name="street2" placeholder="Distrito..." class="o_address_street"
+                        attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                </xpath>
 
-				<xpath expr="//field[@name='website']" position="replace">
-					<field  name="website"	attrs = "{'invisible':[('company_type','in',('person'))]}"	/>
-				</xpath>
+                <xpath expr="//field[@name='website']" position="replace">
+                    <field  name="website"  attrs = "{'invisible':[('company_type','in',('person'))]}"  />
+                </xpath>
 
 
 
 
-				<!-- Address --> 
-				<xpath expr="//field[@name='website']" position="before">
+                <!-- Address --> 
+                <xpath expr="//field[@name='website']" position="before">
 
-					<field name="x_address"/>
+                    <field name="x_address"/>
 
-					<field name="company_id"/>
-				</xpath>
+                    <field name="company_id"/>
+                </xpath>
 
 
 
-				<!-- Company --> 
-				<xpath expr="//field[@name='website']" position="after">
+                <!-- Company --> 
+                <xpath expr="//field[@name='website']" position="after">
 
-					<field name="vspace"/>
+                    <field name="vspace"/>
 
-					<field name="x_my_company" 			groups="openhealth.roots"	
-														attrs = "{'invisible':[('company_type','in',('person'))]}"	
-												/>
+                    <field name="x_my_company"          groups="openhealth.roots"   
+                                                        attrs = "{'invisible':[('company_type','in',('person'))]}"  
+                                                />
 
 
-					<field name="vspace"/>
+                    <field name="vspace"/>
 
-					<field name="x_series"				attrs = "{'invisible':[('x_my_company','in',(False))]}"		/>
+                    <field name="x_series"              attrs = "{'invisible':[('x_my_company','in',(False))]}"     />
 
 
-					<field name="vspace"/>
+                    <field name="vspace"/>
 
-					<field name="x_authorization"		attrs = "{'invisible':[('x_my_company','in',(False))]}"		/>
+                    <field name="x_authorization"       attrs = "{'invisible':[('x_my_company','in',(False))]}"     />
 
 
 
 
-					<field name="vspace"/>
+                    <field name="vspace"/>
 
-					<field name="x_warning"				attrs = "{'invisible':[('x_my_company','in',(False))]}"		/>
+                    <field name="x_warning"             attrs = "{'invisible':[('x_my_company','in',(False))]}"     />
 
 
 
 
-					<field name="vspace"/>
+                    <field name="vspace"/>
 
-					<field  name="x_dni"/>
+                    <field  name="x_dni"/>
 
 
 
-					<field name="vspace"/>
+                    <field name="vspace"/>
 
-					<field name="x_firm"/>
-					
-					<field name="x_ruc"/>				
-				</xpath>
+                    <field name="x_firm"/>
+                    
+                    <field name="x_ruc"/>               
+                </xpath>
 
 
 
-				<!-- Email --> 
-				<xpath expr="//field[@name='email']" position="replace">
+                <!-- Email --> 
+                <xpath expr="//field[@name='email']" position="replace">
 
-					<field name="vspace"/>
+                    <field name="vspace"/>
 
-					<field name="email"		required="0"/>
+                    <field name="email"     required="0"/>
 
-					<field name="vspace"/>
+                    <field name="vspace"/>
 
-				</xpath>
+                </xpath>
 
 
 
-				<!-- Phone --> 
-				<xpath expr="//field[@name='phone']" position="replace">
-					<field name="phone"		required="0"		/>
-				</xpath>
+                <!-- Phone --> 
+                <xpath expr="//field[@name='phone']" position="replace">
+                    <field name="phone"     required="0"        />
+                </xpath>
 
 
 
 
-				<!-- Warning -->
-				<xpath expr="//field[@name='category_id']" 	position="replace">
+                <!-- Warning -->
+                <xpath expr="//field[@name='category_id']"  position="replace">
 
-					<field name="date"/>
+                    <field name="date"/>
 
-					<field name="vspace"/>
+                    <field name="vspace"/>
 
-					<field name="x_warning_purchase"		attrs = "{'invisible':[('x_my_company','in',(False))]}"/>
+                    <field name="x_warning_purchase"        attrs = "{'invisible':[('x_my_company','in',(False))]}"/>
 
-				</xpath>
+                </xpath>
 
 
 
 
-				<!-- Vip -->
-				<xpath expr="//field[@name='function']" position="replace">
+                <!-- Vip -->
+                <xpath expr="//field[@name='function']" position="replace">
 
-					<field name="x_vip"		/>
+                    <field name="x_vip"     />
 
-				</xpath>
+                </xpath>
 
 
 
-			</field>
-		</record>
+            </field>
+        </record>
 
 
 
 
 
 <!-- TREE -->
-		<record model="ir.ui.view" id="base.view_partner_tree">
-			<field name="name">res.partner.tree</field>
-			<field name="model">res.partner</field>
-			<field name="arch" type="xml">
+        <record model="ir.ui.view" id="base.view_partner_tree">
+            <field name="name">res.partner.tree</field>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
 
 
-				<tree string="Partner Tree">					
-			
-					<field name="name"/>
+                <tree string="Partner Tree">                    
+            
+                    <field name="name"/>
 
 <!--
-					<field name="patient_id"/>
-					<field name="x_test"/>
+                    <field name="patient_id"/>
+                    <field name="x_test"/>
 -->
 
-					<field name="x_dni"/>
+                    <field name="x_dni"/>
 
-					<field name="write_date"/>
+                    <field name="write_date"/>
 
-					<field name="lang"/>
+                    <field name="lang"/>
 
-					<field name="property_supplier_payment_term_id"/>
+                    <field name="property_supplier_payment_term_id"/>
 
-					<field name="property_product_pricelist"/>
+                    <field name="property_product_pricelist"/>
 
-					<field name="function"/>
-					
-					<field name="email"/>
+                    <field name="function"/>
+                    
+                    <field name="email"/>
 
-					<field name="comment"/>				
+                    <field name="comment"/>             
 
-					<field name="create_date"/>
+                    <field name="create_date"/>
 
-					<field name="date"/>
+                    <field name="date"/>
 
-				</tree>
-			</field>
-		</record>
+                </tree>
+            </field>
+        </record>
 <!--
-					<field name="date"/>
-					<field name="id"/>
+                    <field name="date"/>
+                    <field name="id"/>
 
-					<field name="x_vip"/>				
-					<field name="x_owner"/>				
-					<field name="x_sex"/>				
+                    <field name="x_vip"/>               
+                    <field name="x_owner"/>             
+                    <field name="x_sex"/>               
 
-					<field name="x_last_name"  />
-					<field name="x_first_name"  />
-					<field name="x_full_name"  />
-					<field string="Historia Médica"  name="identification_code"/>
-					<field name="sex"/>				
-					<field name="dob"/>
-					<field name="age"/>
+                    <field name="x_last_name"  />
+                    <field name="x_first_name"  />
+                    <field name="x_full_name"  />
+                    <field string="Historia Médica"  name="identification_code"/>
+                    <field name="sex"/>             
+                    <field name="dob"/>
+                    <field name="age"/>
 -->
 
 
-	</data>
+    </data>
 </openerp>

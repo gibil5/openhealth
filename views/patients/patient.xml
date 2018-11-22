@@ -1,472 +1,472 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
-	<data>
+    <data>
 
 
 
 <!-- FORM --> 
-		<record model="ir.ui.view" id="oeh_medical_patient_view">
-			<field name="name">Patient</field>
-			<field name="model">oeh.medical.patient</field>			
-			<field name="type">form</field>
-			<field name="priority" eval="1"/>
-			<field name="arch" type="xml">
-				<form string="Patient">
+        <record model="ir.ui.view" id="oeh_medical_patient_view">
+            <field name="name">Patient</field>
+            <field name="model">oeh.medical.patient</field>         
+            <field name="type">form</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <form string="Patient">
 
 
-					<!-- Header --> 
-					<header>
+                    <!-- Header --> 
+                    <header>
 
 
 <!--
-							string="CREAR PRIMER TRATAMIENTO" 							
+                            string="CREAR PRIMER TRATAMIENTO"                           
 -->
-						<!-- First Treatment -->
-						<button 
-							type="object" 
-							class="oe_highlight"
+                        <!-- First Treatment -->
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
 
-							attrs="{ 'invisible':[	('x_treatment_count','!=',0), 	]}"
+                            attrs="{ 'invisible':[  ('x_treatment_count','!=',0),   ]}"
 
-							name="open_treatment" 
+                            name="open_treatment" 
 
-							string="Crear Primer TRATAMIENTO" 							
-						/>
-
-
-
-						<!-- Last Treatment -->
-						<button 
-							type="object" 
-							class="oe_highlight"
-
-							attrs="{ 'invisible':[	('x_treatment_count','=',0), 	]}"
-
-							name="open_treatment" 
-
-							string="Ultimo Tratamiento" 							
-						/>
-
-						<!-- EC -->
-						<button 
-							type="object" 
-							class="oe_highlight"
-							
-							attrs="{ 'invisible':[	('x_treatment_count','=',0), 	]}"
-
-							name="generate_order_report" 
-
-							string="EC" 
-						/>
+                            string="Crear Primer TRATAMIENTO"                           
+                        />
 
 
 
+                        <!-- Last Treatment -->
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+
+                            attrs="{ 'invisible':[  ('x_treatment_count','=',0),    ]}"
+
+                            name="open_treatment" 
+
+                            string="Ultimo Tratamiento"                             
+                        />
+
+                        <!-- EC -->
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+                            
+                            attrs="{ 'invisible':[  ('x_treatment_count','=',0),    ]}"
+
+                            name="generate_order_report" 
+
+                            string="EC" 
+                        />
 
 
-						<!-- Clean -->
+
+
+
+                        <!-- Clean -->
 <!--
-						<button 
-							type="object" 
-							class="oe_highlight"
-							
-							name="clear_appointments" 
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+                            
+                            name="clear_appointments" 
 
-							string="Limpiar Citas" 
+                            string="Limpiar Citas" 
 
-							groups="openhealth.roots"
-						/>
--->
-
-
-						<!-- Update Active Treatment -->
-<!--
-						<button 
-							type="object" 
-							class="oe_highlight"
-							
-							name="update_treatment_active" 
-
-							string="Sincronizar" 
-
-							groups="openhealth.roots"
-						/>
+                            groups="openhealth.roots"
+                        />
 -->
 
 
-
-
-						<!-- Update Date Record -->
+                        <!-- Update Active Treatment -->
 <!--
-						<button 
-							type="object" 
-							class="oe_highlight"
-							name="update_date_record" 
-							groups="openhealth.roots"
-							string="Update Date Rec" 
-						/>
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+                            
+                            name="update_treatment_active" 
+
+                            string="Sincronizar" 
+
+                            groups="openhealth.roots"
+                        />
 -->
 
 
 
 
-						<!-- Right Buttons --> 
-
-						<!-- Deactivate --> 
-						<button 
-							type="object" 
-							class="oe_highlight oe_right"
-
-							name="deactivate_patient" 
-
-							string="Desactivar" 
-						/>
-
-						<!-- Activate --> 
-						<button 
-							type="object" 
-							class="oe_highlight oe_right"
-
-							name="activate_patient" 
-
-							string="Activar" 
-
-							groups="openhealth.roots"
-						/>
-
-
-						<!-- Print --> 
-						<button 
-							type="object" 
-							class="oe_highlight oe_right"
-
-							name="print_patient_hc" 
-
-							string="Imprimir" 
-						/>
-
-
-
-						<!-- Update --> 
+                        <!-- Update Date Record -->
 <!--
-						<button 
-							type="object" 
-							class="oe_highlight oe_right"
-
-							name="update_id_docs" 
-
-							string="Update Id Docs" 
-						/>
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+                            name="update_date_record" 
+                            groups="openhealth.roots"
+                            string="Update Date Rec" 
+                        />
 -->
 
 
 
-						<!-- Update --> 
+
+                        <!-- Right Buttons --> 
+
+                        <!-- Deactivate --> 
+                        <button 
+                            type="object" 
+                            class="oe_highlight oe_right"
+
+                            name="deactivate_patient" 
+
+                            string="Desactivar" 
+                        />
+
+                        <!-- Activate --> 
+                        <button 
+                            type="object" 
+                            class="oe_highlight oe_right"
+
+                            name="activate_patient" 
+
+                            string="Activar" 
+
+                            groups="openhealth.roots"
+                        />
+
+
+                        <!-- Print --> 
+                        <button 
+                            type="object" 
+                            class="oe_highlight oe_right"
+
+                            name="print_patient_hc" 
+
+                            string="Imprimir" 
+                        />
+
+
+
+                        <!-- Update --> 
 <!--
-						<button 
-							type="object" 
-							class="oe_highlight"
-							name="x_update" 
+                        <button 
+                            type="object" 
+                            class="oe_highlight oe_right"
 
-							string="Update" 
-						/>
+                            name="update_id_docs" 
 
-						<button 
-							type="object" 
-							class="oe_highlight"
-
-							name="correct_comment" 
-
-							string="Correct comment" 
-						/>
-
-						<button 
-							type="object" 
-							class="oe_highlight"							
-							name="update_order_report" 
-
-							string="Actualizar" 
-						/>
-
-						<button 
-							type="object" 
-							class="oe_highlight"
-							name="create_order_report" 
-
-							string="Crear" 
-							
-						/>
-
-						<button 
-							type="object" 
-							class="oe_highlight"
-							name="remove_order_report" 
-
-							string="Eliminar" 							
-						/>
-
-						<field 	name="x_state" 
-								widget="statusbar" 
-								statusbar_visible="active, cancel"
-						/>
+                            string="Update Id Docs" 
+                        />
 -->
 
-					</header>
 
 
-
-
-					<!-- Sheet -->	
-					<sheet>
-
-						<!-- Persona --> 
-						<div class="oe_left" style="width: 500px;">
-							<field name="image" widget="image" class="oe_left oe_avatar" options="{&quot;preview_image&quot;: &quot;image_medium&quot;, &quot;size&quot;: [90, 90]}"/>
-							<div class="oe_title">
-								<label string="Apellidos" class="oe_edit_only"/>
-								<h1>
+                        <!-- Update --> 
 <!--
-									<field name="name"  class="oe_read_only" />
--->							
-									<field name="name"/>
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+                            name="x_update" 
 
-								</h1>
-								<field name="age"/>
-							</div>
-						</div>
+                            string="Update" 
+                        />
 
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
 
+                            name="correct_comment" 
 
-						<!-- Active Buttons -->
-						<div class="oe_left" style="width: 100px;">
+                            string="Correct comment" 
+                        />
 
+                        <button 
+                            type="object" 
+                            class="oe_highlight"                            
+                            name="update_order_report" 
 
-							<!-- Treatments --> 
-							<button type="action" class="oe_stat_button" 
-								name="%(treatment_form_action)d"	
-								context="{
-											'search_default_patient': active_id,	
-										}" 											
-								icon="fa-list">
-								<field string="Tratamientos" name="x_treatment_count" widget="statinfo"/>
-							</button>						
-						</div>
+                            string="Actualizar" 
+                        />
 
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+                            name="create_order_report" 
 
+                            string="Crear" 
+                            
+                        />
 
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+                            name="remove_order_report" 
 
-						<!-- Number Medical history -->
-						<div class="oe_right" >
-							<h1>
-								<field string="Número HC:"  name="x_id_code"/>
-								<field string="Número:"  	invisible="1"	name="identification_code"/>
-							</h1>
-						</div>
+                            string="Eliminar"                           
+                        />
 
-
-
-
-						<!-- Fields -->
-						<group>
-							<!-- First --> 
-							<group>		
-
-								<!--	
-								Dep !
-								<field name="x_full_name"  string="x_full_name"/>
-								-->
-
-
-
-<!--
-															attrs="{	
-																			'invisible':	[('partner_id', '!=', False)], 
-																			'required':		[('partner_id', '=', False)], 
-																}"	
-
-								<field name="x_last_name" 	class="oe_edit_only"/>
-
-																							('x_legacy', '!=', False), 
-																							('x_treatment_count', '>', '0'), 
-
-
-																		'invisible':	[('x_data_complete', '=', True),], 
+                        <field  name="x_state" 
+                                widget="statusbar" 
+                                statusbar_visible="active, cancel"
+                        />
 -->
 
-								<field name="x_last_name" 	class="oe_edit_only"
+                    </header>
 
-															attrs="{	 
-																		'required':		[('x_legacy', '!=', True)], 
-																}"	
 
-									/>
+
+
+                    <!-- Sheet -->  
+                    <sheet>
+
+                        <!-- Persona --> 
+                        <div class="oe_left" style="width: 500px;">
+                            <field name="image" widget="image" class="oe_left oe_avatar" options="{&quot;preview_image&quot;: &quot;image_medium&quot;, &quot;size&quot;: [90, 90]}"/>
+                            <div class="oe_title">
+                                <label string="Apellidos" class="oe_edit_only"/>
+                                <h1>
+<!--
+                                    <field name="name"  class="oe_read_only" />
+-->                         
+                                    <field name="name"/>
+
+                                </h1>
+                                <field name="age"/>
+                            </div>
+                        </div>
+
+
+
+                        <!-- Active Buttons -->
+                        <div class="oe_left" style="width: 100px;">
+
+
+                            <!-- Treatments --> 
+                            <button type="action" class="oe_stat_button" 
+                                name="%(treatment_form_action)d"    
+                                context="{
+                                            'search_default_patient': active_id,    
+                                        }"                                          
+                                icon="fa-list">
+                                <field string="Tratamientos" name="x_treatment_count" widget="statinfo"/>
+                            </button>                       
+                        </div>
+
+
+
+
+                        <!-- Number Medical history -->
+                        <div class="oe_right" >
+                            <h1>
+                                <field string="Número HC:"  name="x_id_code"/>
+                                <field string="Número:"     invisible="1"   name="identification_code"/>
+                            </h1>
+                        </div>
+
+
+
+
+                        <!-- Fields -->
+                        <group>
+                            <!-- First --> 
+                            <group>     
+
+                                <!--    
+                                Dep !
+                                <field name="x_full_name"  string="x_full_name"/>
+                                -->
+
+
+
+<!--
+                                                            attrs="{    
+                                                                            'invisible':    [('partner_id', '!=', False)], 
+                                                                            'required':     [('partner_id', '=', False)], 
+                                                                }"  
+
+                                <field name="x_last_name"   class="oe_edit_only"/>
+
+                                                                                            ('x_legacy', '!=', False), 
+                                                                                            ('x_treatment_count', '>', '0'), 
+
+
+                                                                        'invisible':    [('x_data_complete', '=', True),], 
+-->
+
+                                <field name="x_last_name"   class="oe_edit_only"
+
+                                                            attrs="{     
+                                                                        'required':     [('x_legacy', '!=', True)], 
+                                                                }"  
+
+                                    />
 
 
 
 
 <!--
-															attrs="{	
-																		'invisible':	[('partner_id', '!=', False)], 
-																		'required':		[('partner_id', '=', False)], 
-															}"	
+                                                            attrs="{    
+                                                                        'invisible':    [('partner_id', '!=', False)], 
+                                                                        'required':     [('partner_id', '=', False)], 
+                                                            }"  
 
-								<field name="x_first_name" 	class="oe_edit_only"/>
-																		'invisible':	[('x_legacy', '!=', False)], 
+                                <field name="x_first_name"  class="oe_edit_only"/>
+                                                                        'invisible':    [('x_legacy', '!=', False)], 
 
 
-																		'invisible':	[('x_data_complete', '=', True)], 
+                                                                        'invisible':    [('x_data_complete', '=', True)], 
 --> 
 
-								<field name="x_first_name" 	class="oe_edit_only"
+                                <field name="x_first_name"  class="oe_edit_only"
 
-															attrs="{	 
-																		'required':		[('x_legacy', '!=', True)], 
-																}"	
-									/>
-
-
+                                                            attrs="{     
+                                                                        'required':     [('x_legacy', '!=', True)], 
+                                                                }"  
+                                    />
 
 
 
 
 
-								<field name="partner_id"  string="Contacto"  readonly="1"  required="0"/>
 
-								<field name="x_test" 	groups="openhealth.roots"	/>
+
+                                <field name="partner_id"  string="Contacto"  readonly="1"  required="0"/>
+
+                                <field name="x_test"    groups="openhealth.roots"   />
 <!--
 
-								<field name="treatment_active" 	/>
+                                <field name="treatment_active"  />
 -->
-							</group>
+                            </group>
 
 
 
 
-							<!-- Second --> 
-							<group>
+                            <!-- Second --> 
+                            <group>
 
-								<field name="x_admin_mode" 	groups="openhealth.roots"/>
+                                <field name="x_admin_mode"  groups="openhealth.roots"/>
 
-								<field name="x_autofill" 	groups="openhealth.roots"/>
+                                <field name="x_autofill"    groups="openhealth.roots"/>
 
 
-								
-								<field name="x_legacy" 					groups="openhealth.roots"/>
+                                
+                                <field name="x_legacy"                  groups="openhealth.roots"/>
 <!--
-								<field name="x_treatment_count" 		groups="openhealth.roots"/>
+                                <field name="x_treatment_count"         groups="openhealth.roots"/>
 -->
-								<field name="x_data_complete" 		groups="openhealth.roots"/>
-								<field name="property_product_pricelist" 	/>
-								<field name="x_vip" 	invisible="1"		/>
-								<field name="x_card" 	/>
-							</group>
-						</group>
-						
-						
-						
+                                <field name="x_data_complete"       groups="openhealth.roots"/>
+                                <field name="property_product_pricelist"    />
+                                <field name="x_vip"     invisible="1"       />
+                                <field name="x_card"    />
+                            </group>
+                        </group>
+                        
+                        
+                        
 
 
-						<group>
-							<!-- First --> 
-							<group>
+                        <group>
+                            <!-- First --> 
+                            <group>
 
-								<field string='Fecha de nacimiento'  name="dob" 	required="1" />
-							
-								<field name="x_nationality" 	/>
-							</group>
+                                <field string='Fecha de nacimiento'  name="dob"     required="1" />
+                            
+                                <field name="x_nationality"     />
+                            </group>
 
 
-							<!-- Second --> 
-							<group>
-								
+                            <!-- Second --> 
+                            <group>
+                                
 <!--
-								<field name="x_datetime_created"  	readonly="0"	required="0"	/>
-								<field name="x_date_created"  		readonly="0"	/>
+                                <field name="x_datetime_created"    readonly="0"    required="0"    />
+                                <field name="x_date_created"        readonly="0"    />
 
-								<field name="x_date_created"  		readonly="1"	/>
--->							
-								<field name="create_date"  			readonly="1"	/>
-								<field name="x_date_record"  		readonly="1"	/>
-
-
-<!--
-								<field string='Custodia'  name="x_active"   visible="1"/>
--->
-							</group>
-						</group>
-
-
-						<group>
-							<group>
-
-
-<!--								
-								<field name="x_id_doc_type"  />
-								<field name="x_dni"/>
--->
-
-
-								<!-- Type -->
-								<field name="x_id_doc_type"  		attrs="{
-																				'required':[('x_admin_mode', '!=', True), ],
-																			}"
-									/>
-
-
-								<!-- Nr -->
-								<field name="x_id_doc"  	attrs="{
-																				'required':[('x_admin_mode', '!=', True), ],
-																			}"
-									/>
-
-
-
-
-								<!-- Nr DNI -->
-								<field name="x_dni"/>
-
+                                <field name="x_date_created"        readonly="1"    />
+-->                         
+                                <field name="create_date"           readonly="1"    />
+                                <field name="x_date_record"         readonly="1"    />
 
 
 <!--
-								<field name="x_dni"  							attrs="{
-																							'required':[	('x_nationality', '=', 'peruvian'), ]
-																						}"
-								/>
-								<field name="x_dni"			attrs="{'invisible':[	('x_id_doc_type', 'not in', ['dni']), ]}"				/>
+                                <field string='Custodia'  name="x_active"   visible="1"/>
+-->
+                            </group>
+                        </group>
+
+
+                        <group>
+                            <group>
+
+
+<!--                                
+                                <field name="x_id_doc_type"  />
+                                <field name="x_dni"/>
+-->
+
+
+                                <!-- Type -->
+                                <field name="x_id_doc_type"         attrs="{
+                                                                                'required':[('x_admin_mode', '!=', True), ],
+                                                                            }"
+                                    />
+
+
+                                <!-- Nr -->
+                                <field name="x_id_doc"      attrs="{
+                                                                                'required':[('x_admin_mode', '!=', True), ],
+                                                                            }"
+                                    />
+
+
+
+
+                                <!-- Nr DNI -->
+                                <field name="x_dni"/>
+
+
+
+<!--
+                                <field name="x_dni"                             attrs="{
+                                                                                            'required':[    ('x_nationality', '=', 'peruvian'), ]
+                                                                                        }"
+                                />
+                                <field name="x_dni"         attrs="{'invisible':[   ('x_id_doc_type', 'not in', ['dni']), ]}"               />
 -->
 
 
 
 
 
-								<field string='Sexo' name="sex" 	required="1" />
-							</group>
+                                <field string='Sexo' name="sex"     required="1" />
+                            </group>
 
 
 
 
-							<group>
-								<field name="x_allergies"		required="0"/>								
+                            <group>
+                                <field name="x_allergies"       required="0"/>                              
 
-								<field name="x_first_contact"	attrs="{ 	'required':		[
-																								('x_legacy', '!=', True)
-																							], 
-																	}"	
-									/>
-
-
-								<field name="x_first_impression"	/>
-							</group>
-
-						</group>
+                                <field name="x_first_contact"   attrs="{    'required':     [
+                                                                                                ('x_legacy', '!=', True)
+                                                                                            ], 
+                                                                    }"  
+                                    />
 
 
-						<notebook>
-						</notebook>
-					</sheet>
-				</form>
-			</field>
-		</record>
-		<!-- FORM --> 
+                                <field name="x_first_impression"    />
+                            </group>
+
+                        </group>
+
+
+                        <notebook>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- FORM --> 
 
 
 
@@ -477,190 +477,190 @@
 
 
 <!-- TREE -->
-		<record model="ir.ui.view" id="oehealth.oeh_medical_patient_tree">
-			<field name="name">patient.tree</field>
-			<field name="model">oeh.medical.patient</field>
-			<field name="arch" type="xml">			
-				<tree string="Patient Tree"  default_order='x_id_code desc'>
-				
+        <record model="ir.ui.view" id="oehealth.oeh_medical_patient_tree">
+            <field name="name">patient.tree</field>
+            <field name="model">oeh.medical.patient</field>
+            <field name="arch" type="xml">          
+                <tree string="Patient Tree"  default_order='x_id_code desc'>
+                
 
-					<field name="name"/>
+                    <field name="name"/>
 
-					<field name="x_test"			groups='openhealth.roots'	/>		
-					<field name="x_test_case"		groups='openhealth.roots'	/>		
-
-
-
-					<field name="x_id_code"/>		
-
-					<field name="x_date_record"		groups='openhealth.roots'	string="Fecha de creación"	/>
+                    <field name="x_test"            groups='openhealth.roots'   />      
+                    <field name="x_test_case"       groups='openhealth.roots'   />      
 
 
 
-					<field name="x_legacy"/>
+                    <field name="x_id_code"/>       
 
-					<field name="x_data_complete"/>
+                    <field name="x_date_record"     groups='openhealth.roots'   string="Fecha de creación"  />
+
+
+
+                    <field name="x_legacy"/>
+
+                    <field name="x_data_complete"/>
 
 <!--
-					<field name="x_counter"/>
+                    <field name="x_counter"/>
 -->
 
 
 
-					<field name="x_id_doc_type"	string="Tipo Doc"/>
-					<field name="x_id_doc_type_code"	string="Cod"/>
-					<field name="x_id_doc"		string="Nr Doc"/>
+                    <field name="x_id_doc_type" string="Tipo Doc"/>
+                    <field name="x_id_doc_type_code"    string="Cod"/>
+                    <field name="x_id_doc"      string="Nr Doc"/>
 
 
 
 
-					<field name="x_dni"/>
+                    <field name="x_dni"/>
 
 
-					<field name="x_ruc"/>
-					
-					<field name="x_firm"/>
-
-
-
-					<field name="treatment_ids"/>
-
-<!--
-					<field name="city"			string="Depto"/>					
-					<field name="age"/>
-					<field name="sex"/>		
+                    <field name="x_ruc"/>
+                    
+                    <field name="x_firm"/>
 
 
 
-					<field name="x_treatment_count"/>
-					<field name="x_firm"/>
-					<field name="x_id_doc"		string="Otro"/>
-					<field name="x_id_doc_type"	string="Tipo"/>
-
-					<field name="street2_sel"/>
-					<field name="zip"/>					
-					<field name="street"/>
-
-					<field name="phone"/>
-					<field name="mobile"/>
-					<field name="email"			string="Email"	/>		
--->
-
-				</tree>
-			</field>
-		</record>
-
-
+                    <field name="treatment_ids"/>
 
 <!--
-					<field name="create_date"	string="Fecha de creación"		/>
-					<field name="x_date_record"		/>
+                    <field name="city"          string="Depto"/>                    
+                    <field name="age"/>
+                    <field name="sex"/>     
 
+
+
+                    <field name="x_treatment_count"/>
+                    <field name="x_firm"/>
+                    <field name="x_id_doc"      string="Otro"/>
+                    <field name="x_id_doc_type" string="Tipo"/>
+
+                    <field name="street2_sel"/>
+                    <field name="zip"/>                 
+                    <field name="street"/>
+
+                    <field name="phone"/>
+                    <field name="mobile"/>
+                    <field name="email"         string="Email"  />      
 -->
 
-
-<!--
-
-					<field name="x_card"/>
-					<field name="property_product_pricelist"/>
--->
-
-<!--
-				<tree string="Patient Tree"  	colors="red:x_nr_clones!=1;"  >
--->
-<!--
-					<field name="x_test"			groups='openhealth.roots'	/>		
--->
-<!--
-					<field name="x_treatment_count"/>		
-
-					<field name="create_date"	string="Fecha de creación"		/>
-					<field name="dob"/>
--->
-
-
-					<!-- Legacy --> 
-<!--					
-					<field name="x_date_record"		groups='openhealth.roots'	/>
-					<field name="street"			groups='openhealth.roots'	/>
-					<field name="x_district"		groups='openhealth.roots'	/>		
-					<field name="comment"			groups='openhealth.roots'	/>
--->
+                </tree>
+            </field>
+        </record>
 
 
 
 <!--
-					<field name="phone_1"/>
-					<field name="phone_2"/>
-					<field name="street_2"/>		
-					<field name="x_flag"	invisible="1"/>
-					<field name="write_date"	string="Última modificación"	/>
-					<field name="age"/>
-					<field name="x_vip"/>
-					<field name="x_card"/>
+                    <field name="create_date"   string="Fecha de creación"      />
+                    <field name="x_date_record"     />
+
+-->
 
 
-					<field name="x_first_contact"/>
-					<field name="x_datetime_created"/>
-					<field name="date"/>
-					<field string="Historia Médica"  name="identification_code"/>
+<!--
+
+                    <field name="x_card"/>
+                    <field name="property_product_pricelist"/>
+-->
+
+<!--
+                <tree string="Patient Tree"     colors="red:x_nr_clones!=1;"  >
+-->
+<!--
+                    <field name="x_test"            groups='openhealth.roots'   />      
+-->
+<!--
+                    <field name="x_treatment_count"/>       
+
+                    <field name="create_date"   string="Fecha de creación"      />
+                    <field name="dob"/>
+-->
 
 
-					<field name="x_nr_clones"/>
-					<field name="x_lowcase"/>
-					<field name="id"/>
-					<field name="x_datetime_created"/>
-					<field name="x_spaced"/>
-					<field name="x_last_name"  />
-					<field name="x_first_name"  />
+                    <!-- Legacy --> 
+<!--                    
+                    <field name="x_date_record"     groups='openhealth.roots'   />
+                    <field name="street"            groups='openhealth.roots'   />
+                    <field name="x_district"        groups='openhealth.roots'   />      
+                    <field name="comment"           groups='openhealth.roots'   />
+-->
 
-					<field name="x_status"/>		
-					<field name="x_owner"/>		
-					<field name="x_sex"/>		
-					<field name="x_year_created"/>
-					<field name="x_month_created"/>
 
-					<field name="x_completeness"/>	
-					<field name="x_mark"/>		
-					<field name="x_datetime_created"/>
-					<field name="x_date_created"/>
+
+<!--
+                    <field name="phone_1"/>
+                    <field name="phone_2"/>
+                    <field name="street_2"/>        
+                    <field name="x_flag"    invisible="1"/>
+                    <field name="write_date"    string="Última modificación"    />
+                    <field name="age"/>
+                    <field name="x_vip"/>
+                    <field name="x_card"/>
+
+
+                    <field name="x_first_contact"/>
+                    <field name="x_datetime_created"/>
+                    <field name="date"/>
+                    <field string="Historia Médica"  name="identification_code"/>
+
+
+                    <field name="x_nr_clones"/>
+                    <field name="x_lowcase"/>
+                    <field name="id"/>
+                    <field name="x_datetime_created"/>
+                    <field name="x_spaced"/>
+                    <field name="x_last_name"  />
+                    <field name="x_first_name"  />
+
+                    <field name="x_status"/>        
+                    <field name="x_owner"/>     
+                    <field name="x_sex"/>       
+                    <field name="x_year_created"/>
+                    <field name="x_month_created"/>
+
+                    <field name="x_completeness"/>  
+                    <field name="x_mark"/>      
+                    <field name="x_datetime_created"/>
+                    <field name="x_date_created"/>
 -->
 
 
 
 <!-- TREE 2 -->
-		<record model="ir.ui.view" id="openhealth.oeh_medical_patient_tree_2">
-			<field name="name">patient.tree</field>
-			<field name="model">oeh.medical.patient</field>
-			<field name="arch" type="xml">	
+        <record model="ir.ui.view" id="openhealth.oeh_medical_patient_tree_2">
+            <field name="name">patient.tree</field>
+            <field name="model">oeh.medical.patient</field>
+            <field name="arch" type="xml">  
 
-				<tree string="Patient Tree" >
+                <tree string="Patient Tree" >
 
-					<field name="name"/>
-					<field name="x_id_code"/>		
+                    <field name="name"/>
+                    <field name="x_id_code"/>       
 
-					<field name="x_dni"/>
-					<field name="x_ruc"/>
+                    <field name="x_dni"/>
+                    <field name="x_ruc"/>
 
-					<field name="city"			string="Depto"/>					
+                    <field name="city"          string="Depto"/>                    
 
 <!--
-					<field name="x_firm"/>
-					<field name="x_id_doc"		string="Otro"/>
-					<field name="x_id_doc_type"	string="Tipo"/>
+                    <field name="x_firm"/>
+                    <field name="x_id_doc"      string="Otro"/>
+                    <field name="x_id_doc_type" string="Tipo"/>
 
-					<field name="street2_sel"/>
-					<field name="zip"/>					
-					<field name="street"/>
+                    <field name="street2_sel"/>
+                    <field name="zip"/>                 
+                    <field name="street"/>
 
-					<field name="phone"/>
-					<field name="mobile"/>
-					<field name="email"			string="Email"	/>		
+                    <field name="phone"/>
+                    <field name="mobile"/>
+                    <field name="email"         string="Email"  />      
 -->
 
-				</tree>
-			</field>
-		</record>
+                </tree>
+            </field>
+        </record>
 
-	</data>
+    </data>
 </openerp>

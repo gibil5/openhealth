@@ -1,61 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
-	<data>
+    <data>
 
 
 
 
-		<!-- FILTER --> 
-<!--		
-		<record id="patient_view_template_filter" model="ir.ui.view">
-			<field name="name">Patient Search</field>
-			<field name="model">oeh.medical.patient</field>
-			<field name="arch" type="xml">
+        <!-- FILTER --> 
+<!--        
+        <record id="patient_view_template_filter" model="ir.ui.view">
+            <field name="name">Patient Search</field>
+            <field name="model">oeh.medical.patient</field>
+            <field name="arch" type="xml">
 
-				<search string="patients">
+                <search string="patients">
 
-				<field 	name="name" 
+                <field  name="name" 
 
-						filter_domain="['|',('name','ilike',self),('x_dni','ilike',self)]"/>
+                        filter_domain="['|',('name','ilike',self),('x_dni','ilike',self)]"/>
 
-			   </search>
-		   </field>
-	   </record>
+               </search>
+           </field>
+       </record>
 
 07877110
 -->
 
 
 
-		<!-- FILTER --> 
-		<record id="oehealth.view_oeh_medical_patient_filter" model="ir.ui.view">
-			<field name="name">Patient Search Modified</field>
-			<field name="model">oeh.medical.patient</field>
-			<field name="arch" type="xml">
+        <!-- FILTER --> 
+        <record id="oehealth.view_oeh_medical_patient_filter" model="ir.ui.view">
+            <field name="name">Patient Search Modified</field>
+            <field name="model">oeh.medical.patient</field>
+            <field name="arch" type="xml">
 
-				<search string="patients">
+                <search string="patients">
 
-					<!--
-					<separator orientation="vertical"/>
+                    <!--
+                    <separator orientation="vertical"/>
 
-					<field name="name" select="1"/>
+                    <field name="name" select="1"/>
 
-					<field name="ssn" string="SSN" select="1"/>
-					<field name="identification_code" string="SSN" select="1"/>
-					<field name="oeh_patient_user_id"/>
-					<newline/>
-					<group expand="0" string="Group By..." colspan="11" col="11">
-						<filter string="Sex" icon="terp-personal" domain="[]" context="{'group_by':'sex'}"/>
-						<filter string="Doctor" icon="terp-personal" domain="[]" context="{'group_by':'doctor'}"/>
-					</group>
-					-->
+                    <field name="ssn" string="SSN" select="1"/>
+                    <field name="identification_code" string="SSN" select="1"/>
+                    <field name="oeh_patient_user_id"/>
+                    <newline/>
+                    <group expand="0" string="Group By..." colspan="11" col="11">
+                        <filter string="Sex" icon="terp-personal" domain="[]" context="{'group_by':'sex'}"/>
+                        <filter string="Doctor" icon="terp-personal" domain="[]" context="{'group_by':'doctor'}"/>
+                    </group>
+                    -->
 
 
 <!--
-					<field 	name="name" 				filter_domain="['|',('name','ilike',self),('x_dni','ilike',self)]"/>
-					<field 	name="name"	select="1"/>
+                    <field  name="name"                 filter_domain="['|',('name','ilike',self),('x_dni','ilike',self)]"/>
+                    <field  name="name" select="1"/>
 
-					<field 	name="name" 	filter_domain="['|','|',('name','ilike',self),('x_dni','ilike',self),('x_id_doc','ilike',self)]"/>
+                    <field  name="name"     filter_domain="['|','|',('name','ilike',self),('x_dni','ilike',self),('x_id_doc','ilike',self)]"/>
 -->
 
 <field name="name" filter_domain="['|','|','|',('name','ilike',self),('x_dni','ilike',self),('x_id_doc','ilike',self),('x_id_code','ilike',self)]"/>
@@ -63,104 +63,104 @@
 
 
 
-					<!-- Filters --> 
-					<filter string="Enero" domain="[
-															('x_date_record','&gt;=','2018-01-01 05:00:00'),
-															('x_date_record','&lt;','2018-02-01 05:00:00'),
-											]"/>
+                    <!-- Filters --> 
+                    <filter string="Enero" domain="[
+                                                            ('x_date_record','&gt;=','2018-01-01 05:00:00'),
+                                                            ('x_date_record','&lt;','2018-02-01 05:00:00'),
+                                            ]"/>
 
-					<filter string="Febrero" domain="[
-															('x_date_record','&gt;=','2018-02-01 05:00:00'),
-															('x_date_record','&lt;','2018-03-01 05:00:00'),
-											]"/>
+                    <filter string="Febrero" domain="[
+                                                            ('x_date_record','&gt;=','2018-02-01 05:00:00'),
+                                                            ('x_date_record','&lt;','2018-03-01 05:00:00'),
+                                            ]"/>
 
-					<filter string="Marzo" domain="[
-															('x_date_record','&gt;=','2018-03-01 05:00:00'),
-															('x_date_record','&lt;','2018-04-01 05:00:00'),
-											]"/>
+                    <filter string="Marzo" domain="[
+                                                            ('x_date_record','&gt;=','2018-03-01 05:00:00'),
+                                                            ('x_date_record','&lt;','2018-04-01 05:00:00'),
+                                            ]"/>
 
-					<filter string="Abril" domain="[
-															('x_date_record','&gt;=','2018-04-01 05:00:00'),
-															('x_date_record','&lt;','2018-05-01 05:00:00'),
-											]"/>
+                    <filter string="Abril" domain="[
+                                                            ('x_date_record','&gt;=','2018-04-01 05:00:00'),
+                                                            ('x_date_record','&lt;','2018-05-01 05:00:00'),
+                                            ]"/>
 
-					<filter string="Mayo" domain="[
-															('x_date_record','&gt;=','2018-05-01 05:00:00'),
-															('x_date_record','&lt;','2018-06-01 05:00:00'),
-											]"/>
-
-
-					<filter string="Junio" domain="[
-															('x_date_record','&gt;=','2018-06-01 05:00:00'),
-															('x_date_record','&lt;','2018-07-01 05:00:00'),
-											]"/>
+                    <filter string="Mayo" domain="[
+                                                            ('x_date_record','&gt;=','2018-05-01 05:00:00'),
+                                                            ('x_date_record','&lt;','2018-06-01 05:00:00'),
+                                            ]"/>
 
 
-					<filter string="Vip" domain="[
-															('x_vip','!=', False),
-											]"/>
-
-					<filter string="No Vip" domain="[
-															('x_vip','=', False),
-											]"/>
+                    <filter string="Junio" domain="[
+                                                            ('x_date_record','&gt;=','2018-06-01 05:00:00'),
+                                                            ('x_date_record','&lt;','2018-07-01 05:00:00'),
+                                            ]"/>
 
 
+                    <filter string="Vip" domain="[
+                                                            ('x_vip','!=', False),
+                                            ]"/>
 
-					<!-- Group By --> 
-					<group expand="1" string="Group By">
+                    <filter string="No Vip" domain="[
+                                                            ('x_vip','=', False),
+                                            ]"/>
 
-						<filter name="Test" context="{'group_by':'x_test'}"/>
 
-						<filter name="Fecha de Creación" context="{'group_by':'create_date'}"/>
 
-						<filter name="Fecha de Registro" context="{'group_by':'x_date_record'}"/>
+                    <!-- Group By --> 
+                    <group expand="1" string="Group By">
 
-						<filter name="Vip" context="{'group_by':'x_vip'}"/>
+                        <filter name="Test" context="{'group_by':'x_test'}"/>
 
-						<filter name="Sexo" context="{'group_by':'sex'}"/>
+                        <filter name="Fecha de Creación" context="{'group_by':'create_date'}"/>
 
-						<filter name="Nr TRATAMIENTOS" context="{'group_by':'x_treatment_count'}"/>
+                        <filter name="Fecha de Registro" context="{'group_by':'x_date_record'}"/>
 
-						<filter name="Tipo de Documento" context="{'group_by':'x_id_doc_type'}"/>
+                        <filter name="Vip" context="{'group_by':'x_vip'}"/>
+
+                        <filter name="Sexo" context="{'group_by':'sex'}"/>
+
+                        <filter name="Nr TRATAMIENTOS" context="{'group_by':'x_treatment_count'}"/>
+
+                        <filter name="Tipo de Documento" context="{'group_by':'x_id_doc_type'}"/>
 
 <!--
-						<filter name="Legacy" context="{'group_by':'x_legacy'}"/>
-						<filter name="Tipo" context="{'group_by':'x_type'}"/>
-						<filter name="Familia" context="{'group_by':'x_family'}"/>
-						<filter name="Producto" context="{'group_by':'x_product'}"/>
-						<filter name="Médico" context="{'group_by':'x_doctor'}"/>
-						<filter name="Paciente" context="{'group_by':'patient'}"/>
-						<filter name="Creado por" context="{'group_by':'user_id'}"/>
+                        <filter name="Legacy" context="{'group_by':'x_legacy'}"/>
+                        <filter name="Tipo" context="{'group_by':'x_type'}"/>
+                        <filter name="Familia" context="{'group_by':'x_family'}"/>
+                        <filter name="Producto" context="{'group_by':'x_product'}"/>
+                        <filter name="Médico" context="{'group_by':'x_doctor'}"/>
+                        <filter name="Paciente" context="{'group_by':'patient'}"/>
+                        <filter name="Creado por" context="{'group_by':'user_id'}"/>
 -->
-					</group>
-			   </search>
+                    </group>
+               </search>
 
-		   </field>
-	   </record>
-
-
+           </field>
+       </record>
 
 
 
 
-		<!-- Graph --> 
-<!--		
-	    <record id="view_oeh_medical_patient_graph" model="ir.ui.view">	    	
-	         <field name="name">patient.graph</field>
-	         <field name="model">oeh.medical.patient</field>
-	         <field name="arch" type="xml">
 
-	             <graph string="Análisis de Pacientes">
+
+        <!-- Graph --> 
+<!--        
+        <record id="view_oeh_medical_patient_graph" model="ir.ui.view">         
+             <field name="name">patient.graph</field>
+             <field name="model">oeh.medical.patient</field>
+             <field name="arch" type="xml">
+
+                 <graph string="Análisis de Pacientes">
                     
                     <field name="x_first_contact"/>
 
-	             </graph>
-	         </field>
-	    </record>
+                 </graph>
+             </field>
+        </record>
 -->
 <!--
-					<field name="date_order" interval="day" type="row"	/>
-                    <field name="amount_total" type="measure"/>	             
+                    <field name="date_order" interval="day" type="row"  />
+                    <field name="amount_total" type="measure"/>              
                     <field name="sex"/>
                     <field name="city"/>
                     <field name="street2_sel"/>
@@ -169,5 +169,5 @@
 
 
 
-	</data>
+    </data>
 </openerp>

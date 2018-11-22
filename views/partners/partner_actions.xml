@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
-	<data>
+    <data>
 
 
 
@@ -8,17 +8,17 @@
 <!-- ACTIONS -->
 
 
-		<!-- ACTION -->
-		<record model="ir.actions.act_window" id="mail.action_contacts">
+        <!-- ACTION -->
+        <record model="ir.actions.act_window" id="mail.action_contacts">
 
-			<field name="name">Contacts</field>
+            <field name="name">Contacts</field>
 
-			<field name="res_model">res.partner</field>
-			
-			<field name="view_type">form</field>
-			
-			<field name="view_mode">tree,form</field>
-			
+            <field name="res_model">res.partner</field>
+            
+            <field name="view_type">form</field>
+            
+            <field name="view_mode">tree,form</field>
+            
             <field name="domain">[]</field>
 
             <field name="context">{}</field>
@@ -27,98 +27,98 @@
             <field name="view_id" ref="base.view_partner_tree"/>
 
 
-			<field name="view_ids" eval="[			(5, 0, 0),
-												    (0, 0, {'view_mode': 'tree', 'view_id': ref('base.view_partner_tree')}),
-												    (0, 0, {'view_mode': 'form', 'view_id': ref('base.view_partner_form')}),
-											]
-										"/>
+            <field name="view_ids" eval="[          (5, 0, 0),
+                                                    (0, 0, {'view_mode': 'tree', 'view_id': ref('base.view_partner_tree')}),
+                                                    (0, 0, {'view_mode': 'form', 'view_id': ref('base.view_partner_form')}),
+                                            ]
+                                        "/>
 
 
-			<!--
-												    (0, 0, {'view_mode': 'kanban', 'view_id': ref('base.view_partner_kanban')}),
+            <!--
+                                                    (0, 0, {'view_mode': 'kanban', 'view_id': ref('base.view_partner_kanban')}),
 
 
             <field name="domain">
-            	[
-					('category_id','=','staff'), 
-            	]
+                [
+                    ('category_id','=','staff'), 
+                ]
             </field>
 
             <field name="domain">[]</field>
             <field name="context">{}</field>
-            <field name="view_id" eval="False"/>			
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first partner
-				</p>
-			</field>
-			-->
-		</record>
+            <field name="view_id" eval="False"/>            
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first partner
+                </p>
+            </field>
+            -->
+        </record>
 
 
 
-		<!-- Window List action -->
-		<record model="ir.actions.act_window" id="partner_list_action">
-			<field name="name">partners</field>
-			<field name="res_model">res.partner</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-			<!--
+        <!-- Window List action -->
+        <record model="ir.actions.act_window" id="partner_list_action">
+            <field name="name">partners</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!--
             <field name="domain">[]</field>
             <field name="context">{}</field>
-            <field name="view_id" eval="False"/>			
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first partner
-				</p>
-			</field>
-			-->
-		</record>
+            <field name="view_id" eval="False"/>            
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first partner
+                </p>
+            </field>
+            -->
+        </record>
 
 
 
-		<!-- Window List action -->
-		<record model="ir.actions.act_window" id="partner_inactive_list_action">
-			<field name="name">Partners Inactivos</field>
-			<field name="res_model">res.partner</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
+        <!-- Window List action -->
+        <record model="ir.actions.act_window" id="partner_inactive_list_action">
+            <field name="name">Partners Inactivos</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
 
-			<field name="domain">[
-									('active', '=', False), 
-				]</field>
+            <field name="domain">[
+                                    ('active', '=', False), 
+                ]</field>
 
-			<!--
+            <!--
             <field name="domain">[]</field>
             <field name="context">{}</field>
-            <field name="view_id" eval="False"/>			
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first partner
-				</p>
-			</field>
-			-->
-		</record>
+            <field name="view_id" eval="False"/>            
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first partner
+                </p>
+            </field>
+            -->
+        </record>
 
 
 
 
-		<!-- ACTION -->
-		<record model="ir.actions.act_window" id="partner_vip_list_action">
-			<field name="name">Pacientes Vip</field>
-			<field name="res_model">res.partner</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
+        <!-- ACTION -->
+        <record model="ir.actions.act_window" id="partner_vip_list_action">
+            <field name="name">Pacientes Vip</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
 
-        	<field name="domain" eval="[	('property_product_pricelist', '=', ref('pricelist_vip'))	]"/>														
+            <field name="domain" eval="[    ('property_product_pricelist', '=', ref('pricelist_vip'))   ]"/>                                                        
 
-			<!--
+            <!--
             <field name="domain">[]</field>
             <field name="context">{}</field>
-            <field name="view_id" eval="False"/>			
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first partner
-				</p>
-			</field>
-			-->
-		</record>
+            <field name="view_id" eval="False"/>            
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first partner
+                </p>
+            </field>
+            -->
+        </record>
 
 
 
@@ -126,22 +126,22 @@
 
 
 
-		<!-- ACTION -->
-		<record model="ir.actions.act_window" id="partner_categories_list_action">
-			<field name="name">partners categories</field>
-			<field name="res_model">res.partner.category</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-			<!--
+        <!-- ACTION -->
+        <record model="ir.actions.act_window" id="partner_categories_list_action">
+            <field name="name">partners categories</field>
+            <field name="res_model">res.partner.category</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!--
             <field name="domain">[]</field>
             <field name="context">{}</field>
-            <field name="view_id" eval="False"/>			
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first partner
-				</p>
-			</field>
-			-->
-		</record>
+            <field name="view_id" eval="False"/>            
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first partner
+                </p>
+            </field>
+            -->
+        </record>
 
-	</data>
+    </data>
 </openerp>

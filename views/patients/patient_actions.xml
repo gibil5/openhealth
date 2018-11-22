@@ -1,256 +1,256 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
-	<data>
+    <data>
 
 
 
 <!-- ACTIONS -->
 
 
-		<!-- Pacientes Con Nr de His -->
-		<record model="ir.actions.act_window" id="patient_list_action">		
-			<field name="name">Pacientes</field>
-			<field name="res_model">oeh.medical.patient</field>
-			<field name="view_type">form</field>
-			<field name="view_id" ref="oehealth.oeh_medical_patient_tree"/> 
-			<field name="context">{}</field>
+        <!-- Pacientes Con Nr de His -->
+        <record model="ir.actions.act_window" id="patient_list_action">     
+            <field name="name">Pacientes</field>
+            <field name="res_model">oeh.medical.patient</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="oehealth.oeh_medical_patient_tree"/> 
+            <field name="context">{}</field>
 
 <!--
-			<field name="view_mode">tree,form,kanban,graph,pivot</field>
--->		
-			<field name="view_mode">tree,form,kanban</field>
+            <field name="view_mode">tree,form,kanban,graph,pivot</field>
+-->     
+            <field name="view_mode">tree,form,kanban</field>
 
 
-			<field name="domain">[
-									('x_id_code', '!=', False), 
-									('x_test', '!=', True), 									
-				]</field>
+            <field name="domain">[
+                                    ('x_id_code', '!=', False), 
+                                    ('x_test', '!=', True),                                     
+                ]</field>
 
 
-			<field name="limit">40</field>
-			<!--
-			<field name="domain">[]</field>
-			<field name="context">{}</field>
-			<field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first treatment
-				</p>
-			</field>
-			-->
-		</record>
-
-
-
-		<!-- Pacientes Sin Nr de His -->
-		<record model="ir.actions.act_window" id="patient_no_idcode_list_action">		
-			<field name="name">Pacientes sin Número de Historia</field>
-			<field name="res_model">oeh.medical.patient</field>
-			<field name="view_type">form</field>
-			<field name="context">{}</field>
-
-<!--
-			<field name="view_mode">tree,form,kanban,graph,pivot</field>
--->		
-			<field name="view_mode">tree,form,kanban</field>
-
-			<field name="domain">[
-									('x_id_code', '=', False), 
-									('x_test', '!=', True), 									
-				]</field>
-
-
-			<field name="limit">40</field>
-			<!--
-			<field name="domain">[]</field>
-			<field name="context">{}</field>
-			<field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first treatment
-				</p>
-			</field>
-			-->
-		</record>
+            <field name="limit">40</field>
+            <!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first treatment
+                </p>
+            </field>
+            -->
+        </record>
 
 
 
-
-		<!-- All -->
-		<record model="ir.actions.act_window" id="patient_all_list_action">		
-			<field name="name">Pacientes Todos</field>
-			<field name="res_model">oeh.medical.patient</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form,kanban,graph,pivot</field>
-			<field name="context">{}</field>
-			
-			<field name="domain">[]</field>
-
-			<field name="limit">40</field>
-
-			<!--
-			<field name="domain">[]</field>
-			<field name="context">{}</field>
-			<field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first treatment
-				</p>
-			</field>
-			-->
-		</record>
-
-
-
-		<!-- Test -->
-		<record model="ir.actions.act_window" id="patient_test_list_action">		
-			<field name="name">Pacientes Test</field>
-			<field name="res_model">oeh.medical.patient</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form,kanban,graph,pivot</field>
-			<field name="context">{}</field>
-			
-			<field name="domain">[
-
-									('x_test', '=', True), 
-				]</field>
-
-			<field name="limit">40</field>
-
-			<!--
-			<field name="domain">[]</field>
-			<field name="context">{}</field>
-			<field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first treatment
-				</p>
-			</field>
-			-->
-		</record>
-
-
-
-
-
-
-
-
-		<!-- Inactive -->
-		<record model="ir.actions.act_window" id="patient_inactive_list_action">		
-			<field name="name">Pacientes Inactivos</field>
-			<field name="res_model">oeh.medical.patient</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form,kanban</field>
-			<field name="context">{}</field>
-
-			<field name="domain">[
-									('active', '=', False), 
-				]</field>
-
-			<!--
-			<field name="domain">[]</field>
-			<field name="context">{}</field>
-			<field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first treatment
-				</p>
-			</field>
-			-->
-		</record>
-
-
-
-
-		<!-- Vip -->
-		<record model="ir.actions.act_window" id="patient_vip_list_action">			
-			<field name="name">Pacientes Vip - jx</field>
-			<field name="res_model">oeh.medical.patient</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form,kanban</field>
-			<field name="context">{'order': 'name'}</field>
-			
-			<field name="domain">[
-									('x_vip', '!=', False),
-				
-				]</field>
-
-			<field name="domain">[]</field>
-			<field name="context">{}</field>
-			<field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first treatment
-				</p>
-			</field>
-		</record>
-
-
-
-
-
-
-		<!-- Account - With Id -->
-		<record model="ir.actions.act_window" id="account_patient_list_action">		
-
-			<field name="name">Pacientes - Conta</field>
-			
-			<field name="res_model">oeh.medical.patient</field>
-			
-			<field name="view_type">form</field>
-
-			<field name="view_mode">tree,form,kanban,graph,pivot</field>
-
-			<field name="context">{}</field>
-
-			<field name="domain">[
-									('x_id_code', '!=', False), 
-				]</field>
+        <!-- Pacientes Sin Nr de His -->
+        <record model="ir.actions.act_window" id="patient_no_idcode_list_action">       
+            <field name="name">Pacientes sin Número de Historia</field>
+            <field name="res_model">oeh.medical.patient</field>
+            <field name="view_type">form</field>
+            <field name="context">{}</field>
 
 <!--
-			<field name="view_id" ref="openhealth.oeh_medical_patient_tree_2"/> 
+            <field name="view_mode">tree,form,kanban,graph,pivot</field>
+-->     
+            <field name="view_mode">tree,form,kanban</field>
+
+            <field name="domain">[
+                                    ('x_id_code', '=', False), 
+                                    ('x_test', '!=', True),                                     
+                ]</field>
+
+
+            <field name="limit">40</field>
+            <!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first treatment
+                </p>
+            </field>
+            -->
+        </record>
+
+
+
+
+        <!-- All -->
+        <record model="ir.actions.act_window" id="patient_all_list_action">     
+            <field name="name">Pacientes Todos</field>
+            <field name="res_model">oeh.medical.patient</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,kanban,graph,pivot</field>
+            <field name="context">{}</field>
+            
+            <field name="domain">[]</field>
+
+            <field name="limit">40</field>
+
+            <!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first treatment
+                </p>
+            </field>
+            -->
+        </record>
+
+
+
+        <!-- Test -->
+        <record model="ir.actions.act_window" id="patient_test_list_action">        
+            <field name="name">Pacientes Test</field>
+            <field name="res_model">oeh.medical.patient</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,kanban,graph,pivot</field>
+            <field name="context">{}</field>
+            
+            <field name="domain">[
+
+                                    ('x_test', '=', True), 
+                ]</field>
+
+            <field name="limit">40</field>
+
+            <!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first treatment
+                </p>
+            </field>
+            -->
+        </record>
+
+
+
+
+
+
+
+
+        <!-- Inactive -->
+        <record model="ir.actions.act_window" id="patient_inactive_list_action">        
+            <field name="name">Pacientes Inactivos</field>
+            <field name="res_model">oeh.medical.patient</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="context">{}</field>
+
+            <field name="domain">[
+                                    ('active', '=', False), 
+                ]</field>
+
+            <!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first treatment
+                </p>
+            </field>
+            -->
+        </record>
+
+
+
+
+        <!-- Vip -->
+        <record model="ir.actions.act_window" id="patient_vip_list_action">         
+            <field name="name">Pacientes Vip - jx</field>
+            <field name="res_model">oeh.medical.patient</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="context">{'order': 'name'}</field>
+            
+            <field name="domain">[
+                                    ('x_vip', '!=', False),
+                
+                ]</field>
+
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first treatment
+                </p>
+            </field>
+        </record>
+
+
+
+
+
+
+        <!-- Account - With Id -->
+        <record model="ir.actions.act_window" id="account_patient_list_action">     
+
+            <field name="name">Pacientes - Conta</field>
+            
+            <field name="res_model">oeh.medical.patient</field>
+            
+            <field name="view_type">form</field>
+
+            <field name="view_mode">tree,form,kanban,graph,pivot</field>
+
+            <field name="context">{}</field>
+
+            <field name="domain">[
+                                    ('x_id_code', '!=', False), 
+                ]</field>
+
+<!--
+            <field name="view_id" ref="openhealth.oeh_medical_patient_tree_2"/> 
 -->
-			<field name="limit">1000</field>
+            <field name="limit">1000</field>
 
-			<!--
-			<field name="domain">[]</field>
-			<field name="context">{}</field>
-			<field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first treatment
-				</p>
-			</field>
-			-->
-		</record>
-
-
-
-
-		<!-- Account - Without Id -->
-		<record model="ir.actions.act_window" id="account_patient_no_idcode_list_action">		
-			<field name="name">Pacientes sin Número de Historia</field>
-			<field name="res_model">oeh.medical.patient</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form,kanban,graph,pivot</field>
-			<field name="context">{}</field>
-
-			<field name="domain">[
-									('x_id_code', '=', False), 
-				]</field>
-
-			<field name="limit">1000</field>
-
-
-			<!--
-			<field name="domain">[]</field>
-			<field name="context">{}</field>
-			<field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first treatment
-				</p>
-			</field>
-			-->
-		</record>
+            <!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first treatment
+                </p>
+            </field>
+            -->
+        </record>
 
 
 
 
+        <!-- Account - Without Id -->
+        <record model="ir.actions.act_window" id="account_patient_no_idcode_list_action">       
+            <field name="name">Pacientes sin Número de Historia</field>
+            <field name="res_model">oeh.medical.patient</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,kanban,graph,pivot</field>
+            <field name="context">{}</field>
+
+            <field name="domain">[
+                                    ('x_id_code', '=', False), 
+                ]</field>
+
+            <field name="limit">1000</field>
 
 
-	</data>
+            <!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first treatment
+                </p>
+            </field>
+            -->
+        </record>
+
+
+
+
+
+
+    </data>
 </openerp>

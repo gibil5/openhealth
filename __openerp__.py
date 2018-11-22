@@ -461,7 +461,7 @@
 
 
 		# Groups 
-		'views/groups/groups.xml',
+		#'views/groups/groups.xml',
 
 
 		# Orders
@@ -631,8 +631,8 @@
 
 
 		# Consultation - 2
-		#'views/consultations/consultation_med.xml',	# Dep
-		'views/consultations/consultation_diagnosis.xml',
+		#'views/consultations/consultation_med.xml',	# Dep ?
+		#'views/consultations/consultation_diagnosis.xml',
 		
 
 		# Treatments - 2 
@@ -661,7 +661,7 @@
 		# ----------------------------------------------------------- FileSystem Directory ------------------------------------------------------
 
 		#'views/containers/filesystem_directory.xml',
-		'views/containers/filesystem_file.xml',
+		#'views/containers/filesystem_file.xml',
 
 
 

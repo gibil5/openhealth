@@ -27,7 +27,8 @@
 
 
 
-		<!-- Files --> 
+		<!-- Files -->
+<!--		
 		<menuitem 	id="oh_file_menu" 
 					name="Files" 
 					parent="openhealth_openhealth_menu"
@@ -35,7 +36,7 @@
 
 					action="filesystem_file_list_action"
 			/>
-
+-->
 
 
 

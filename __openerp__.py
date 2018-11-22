@@ -379,8 +379,7 @@
 
 
 
-		# Suppliers 
-		'data/suppliers.xml',							# DEPRECATED - Very 
+
 
 		# Generics 
 		'data/users/base_data_users_generics.xml',	
@@ -433,6 +432,9 @@
 		#'data/pricelists/pricelist_consultation.xml',
 		#'data/pricelists/pricelist_products.xml',
 
+
+		# Suppliers 
+		#'data/suppliers.xml',							# DEPRECATED - Very 
 
 
 

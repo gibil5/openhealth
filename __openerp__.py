@@ -102,8 +102,8 @@
 		
 		#'views/report_sale/report_sale_product.xml',
 		#'views/report_sale/item_counter.xml',
-		'views/reports/report_sale/report_sale_product.xml',
-		'views/reports/report_sale/item_counter.xml',
+		'views/report_sale/report_sale_product.xml',
+		'views/report_sale/item_counter.xml',
 
 
 

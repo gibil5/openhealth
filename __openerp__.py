@@ -224,8 +224,8 @@
 		# Check that data is not updated. All the time. 
 
 		# Categs
-		'data/base_data_categs_partners.xml',			
-		'data/base_data_categs_prods.xml',			
+		'data/categs/base_data_categs_partners.xml',			
+		'data/categs/base_data_categs_prods.xml',			
 
 
 		# Important 
@@ -252,9 +252,9 @@
 
 
 		# Doctors
-		'data/base_data_physicians.xml',				
-		'data/base_data_physicians_inactive.xml',				
-		'data/base_data_physicians_new.xml',				
+		'data/physicians/base_data_physicians.xml',				
+		'data/physicians/base_data_physicians_inactive.xml',				
+		'data/physicians/base_data_physicians_new.xml',				
 
 
 

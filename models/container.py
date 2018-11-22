@@ -42,8 +42,8 @@ class Container(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		print
-		print 'Export - Txt'
+		#print
+		#print 'Export - Txt'
 
 
 		# Clean
@@ -56,7 +56,7 @@ class Container(models.Model):
 
 
 		fname_txt = fname.split('/')[-1]
-		print fname_txt
+		#print fname_txt
 
 
 		#self.txt_pack_name = fname
@@ -70,8 +70,8 @@ class Container(models.Model):
 
 
 		#print out
-		print fname
-		print fname_txt
+		#print fname
+		#print fname_txt
 
 
 
@@ -93,8 +93,8 @@ class Container(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		print
-		print 'Init Patients'
+		#print
+		#print 'Init Patients'
 
 
 		# Init
@@ -107,7 +107,7 @@ class Container(models.Model):
 		# Create Patients
 		pat_array = tst_pat.test_cases(self, container_id, doctor_id)
 
-		print pat_array
+		#print pat_array
 
 
 
@@ -142,7 +142,7 @@ class Container(models.Model):
 																'date_end': 	self.export_date_begin,
 													})
 
-		print self.mgt
+		#print self.mgt
 
 	# create_patients
 
@@ -159,8 +159,8 @@ class Container(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		print
-		print 'Create Sales'
+		#print
+		#print 'Create Sales'
 
 
 		# Search
@@ -238,8 +238,8 @@ class Container(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		print
-		print 'Create - Electronic'
+		#print
+		#print 'Create - Electronic'
 
 
 		# Clean
@@ -433,8 +433,8 @@ class Container(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		print
-		print 'Test - Qc'
+		#print
+		#print 'Test - Qc'
 
 		# Gap Analysis
 		self.mgt.update_qc('ticket_receipt')

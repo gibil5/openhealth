@@ -16,8 +16,8 @@ def create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id, sho
 	"""
 	high level support for doing this and that.
 	"""
-	print
-	print 'Create Order Fast'
+	#print
+	#print 'Create Order Fast'
 
 
 	# Init
@@ -444,8 +444,8 @@ def create_order_lines_micro(self, name_short, price_manual, price_applied, reco
 	"""
 	high level support for doing this and that.
 	"""
-	print
-	print 'Create Order Lines - Micro'
+	#print
+	#print 'Create Order Lines - Micro'
 	#print 'name_short: ', name_short
 	#print 'price_manual: ', price_manual
 	#print 'price_applied:', price_applied

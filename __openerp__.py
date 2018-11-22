@@ -269,15 +269,21 @@
 
 
 
+
+		# Electronic
+		'views/electronic/electronic_order.xml',
+		'views/electronic/electronic_line.xml',
+
+
+
 		# Management 
 		'views/management/management_family_line.xml',
 		'views/management/management_order_line.xml',
 		'views/management/management_doctor_line.xml',
-		'views/management/electronic_order.xml',
-		'views/management/electronic_line.xml',
 		'views/management/management.xml',
 		'views/management/management_actions.xml',
 		
+
 
 		# Coder 
 		'views/coders/coder.xml',

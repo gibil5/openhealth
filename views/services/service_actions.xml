@@ -1,169 +1,169 @@
 <?xml version="1.0"?>
 <openerp>
-	<data>
+    <data>
 
 
 
-		<!-- Quick -->
-		<record model="ir.actions.act_window" id="service_quick_list_action">
-			<field name="name">Servicios quick</field>
-			<field name="res_model">openhealth.service.quick</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-			
-			<field name="context">{
-									'default_laser': 'laser_quick',
-                    			}
-			</field>
-		</record>
+        <!-- Quick -->
+        <record model="ir.actions.act_window" id="service_quick_list_action">
+            <field name="name">Servicios quick</field>
+            <field name="res_model">openhealth.service.quick</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            
+            <field name="context">{
+                                    'default_laser': 'laser_quick',
+                                }
+            </field>
+        </record>
 
 
 
-		<!-- Co2 -->
-		<record model="ir.actions.act_window" id="service_co2_list_action">
-			<field name="name">Servicios Co2 - 2</field>
+        <!-- Co2 -->
+        <record model="ir.actions.act_window" id="service_co2_list_action">
+            <field name="name">Servicios Co2 - 2</field>
 
-			<field name="res_model">openhealth.service.co2</field>
-			
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-			
-			<field name="context">{
-									'default_laser': 'laser_co2',
-                    			}
-			</field>
-		</record>
-
-
-
-		<!-- Excilite -->
-		<record model="ir.actions.act_window" id="service_excilite_list_action">
-			<field name="name">Servicios Excilite</field>
-
-			<field name="res_model">openhealth.service.excilite</field>
-			
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-			
-			<field name="context">{
-									'default_laser': 'laser_excilite',
-                    			}
-			</field>
-		</record>
+            <field name="res_model">openhealth.service.co2</field>
+            
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            
+            <field name="context">{
+                                    'default_laser': 'laser_co2',
+                                }
+            </field>
+        </record>
 
 
 
-		<!-- Service Ipl -->
-		<record model="ir.actions.act_window" id="service_ipl_list_action">
-			<field name="name">Servicios ipl</field>
-			<field name="res_model">openhealth.service.ipl</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-			<field name="context">{
-									'default_laser': 'laser_ipl',
-                    			}
-			</field>
-		</record>
+        <!-- Excilite -->
+        <record model="ir.actions.act_window" id="service_excilite_list_action">
+            <field name="name">Servicios Excilite</field>
+
+            <field name="res_model">openhealth.service.excilite</field>
+            
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            
+            <field name="context">{
+                                    'default_laser': 'laser_excilite',
+                                }
+            </field>
+        </record>
 
 
 
-		<!-- Service Ndyag -->
-		<record model="ir.actions.act_window" id="service_ndyag_list_action">
-			<field name="name">Servicios ndyag</field>
-			<field name="res_model">openhealth.service.ndyag</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-			<field name="context">{
-									'default_laser': 'laser_ndyag',
-                    			}
-			</field>
-		</record>
+        <!-- Service Ipl -->
+        <record model="ir.actions.act_window" id="service_ipl_list_action">
+            <field name="name">Servicios ipl</field>
+            <field name="res_model">openhealth.service.ipl</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{
+                                    'default_laser': 'laser_ipl',
+                                }
+            </field>
+        </record>
 
 
 
-
-
-
-		<!-- Service Medical -->
-		<record model="ir.actions.act_window" id="service_medical_list_action">
-			<field name="name">Servicios medical</field>
-			<field name="res_model">openhealth.service.medical</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-			<field name="context">{
-									'default_laser': 'medical',
-                    			}
-			</field>
-		</record>
+        <!-- Service Ndyag -->
+        <record model="ir.actions.act_window" id="service_ndyag_list_action">
+            <field name="name">Servicios ndyag</field>
+            <field name="res_model">openhealth.service.ndyag</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{
+                                    'default_laser': 'laser_ndyag',
+                                }
+            </field>
+        </record>
 
 
 
 
 
 
+        <!-- Service Medical -->
+        <record model="ir.actions.act_window" id="service_medical_list_action">
+            <field name="name">Servicios medical</field>
+            <field name="res_model">openhealth.service.medical</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{
+                                    'default_laser': 'medical',
+                                }
+            </field>
+        </record>
 
-		<!-- Service Cosmetology - Form Action --> 
-		<record model="ir.actions.act_window" id="service_cosmetology_form_action">
-			<field name="name">Servicios Cosmiatría</field>
-			<field name="res_model">openhealth.service.cosmetology</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-			
-			<!--
+
+
+
+
+
+
+        <!-- Service Cosmetology - Form Action --> 
+        <record model="ir.actions.act_window" id="service_cosmetology_form_action">
+            <field name="name">Servicios Cosmiatría</field>
+            <field name="res_model">openhealth.service.cosmetology</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            
+            <!--
             <field name="domain">[]</field>
             <field name="context">{}</field>
             <field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first consultation
-				</p>
-			</field>
-			-->
-		</record>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first consultation
+                </p>
+            </field>
+            -->
+        </record>
 
 
-		<!-- Service Cosmetology - Action -->
-		<record model="ir.actions.act_window" id="service_cosmetology_list_action">
-			<field name="name">Servicios cosmetology - 2</field>
-			<field name="res_model">openhealth.service.cosmetology</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
+        <!-- Service Cosmetology - Action -->
+        <record model="ir.actions.act_window" id="service_cosmetology_list_action">
+            <field name="name">Servicios cosmetology - 2</field>
+            <field name="res_model">openhealth.service.cosmetology</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
 
-			<field name="context">{
-									'default_family': 'cosmetology',
-                    			}
-			</field>
-		</record>
-
-
-
-		<!-- Service product -->
-		<record model="ir.actions.act_window" id="service_product_list_action">
-			<field name="name">Servicios product</field>
-
-			<field name="res_model">openhealth.service.product</field>
-
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-			
-			<field name="context">{}
-			</field>
-		</record>
+            <field name="context">{
+                                    'default_family': 'cosmetology',
+                                }
+            </field>
+        </record>
 
 
 
-		<!-- Service vip -->
-		<record model="ir.actions.act_window" id="service_vip_list_action">
-			<field name="name">Servicios vip</field>
+        <!-- Service product -->
+        <record model="ir.actions.act_window" id="service_product_list_action">
+            <field name="name">Servicios product</field>
 
-			<field name="res_model">openhealth.service.vip</field>
+            <field name="res_model">openhealth.service.product</field>
 
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-			
-			<field name="context">{}
-			</field>
-		</record>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            
+            <field name="context">{}
+            </field>
+        </record>
 
 
-	</data>
+
+        <!-- Service vip -->
+        <record model="ir.actions.act_window" id="service_vip_list_action">
+            <field name="name">Servicios vip</field>
+
+            <field name="res_model">openhealth.service.vip</field>
+
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            
+            <field name="context">{}
+            </field>
+        </record>
+
+
+    </data>
 </openerp>

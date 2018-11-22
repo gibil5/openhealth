@@ -1,221 +1,221 @@
 <?xml version="1.0"?>
 <openerp>
-	<data>
-		
+    <data>
+        
 
 
 
 
 
 
-		<!-- FORM -->
-		<record model="ir.ui.view" id="view_product_selector_form">
+        <!-- FORM -->
+        <record model="ir.ui.view" id="view_product_selector_form">
 
-			<field name="name">openhealth.product.selector.form</field>
-			
-			<field name="model">openhealth.product.selector</field>
+            <field name="name">openhealth.product.selector.form</field>
+            
+            <field name="model">openhealth.product.selector</field>
 
-<!--			
-			<field name="inherit_id" ref="sale.view_order_line_form"/>	
-			<field name="mode">primary</field>
-			<field name="priority" eval="1"/>
-			<field name="arch" type="xml">
--->		
-			
-			
-			<field name="arch" type="xml">
+<!--            
+            <field name="inherit_id" ref="sale.view_order_line_form"/>  
+            <field name="mode">primary</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+-->     
+            
+            
+            <field name="arch" type="xml">
 
-				<form string="Product Selector - Form">
+                <form string="Product Selector - Form">
 
-					<header>
-
-<!--
-								states="draft"						
-								groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors"
--->
-						<button 
-								name="create_orderline"
-
-								type="object" 
-								
-								class="oe_highlight"
-								
-
-								string="Agregar"
-							/>
-
-
-					</header>
-					
-
-					<sheet>
-						<group>
-
-
-							<group>
-<!--								
--->
-								<field name="default_code" />
-
+                    <header>
 
 <!--
-
-																		'required':[('city', '!=', 'lima')],
+                                states="draft"                      
+                                groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors"
 -->
-								<field name="family"
-															attrs="{
-																		'invisible':[('x_type', '==', 'product')], 
-																}"
-								 />
+                        <button 
+                                name="create_orderline"
+
+                                type="object" 
+                                
+                                class="oe_highlight"
+                                
+
+                                string="Agregar"
+                            />
 
 
+                    </header>
+                    
 
-								<field name="treatment"		string="Procedimiento"
+                    <sheet>
+                        <group>
 
-															attrs="{
-																		'invisible':[('x_type', '==', 'product')], 
-																		'invisible':[('family', '!=', 'laser')], 
-																}"
-								 />
 
+                            <group>
+<!--                                
+-->
+                                <field name="default_code" />
 
 
 <!--
-															create_edit="0"
-									create_edit="0"	
-																		'no_create_edit':True, 
+
+                                                                        'required':[('city', '!=', 'lima')],
 -->
-								<field name="zone"			
-
-															attrs="{
-
-																		'invisible':[('x_type', '==', 'product')], 
-																		'invisible':[('family', '!=', 'laser')], 
-																}"
-
-															options="{'no_create': True, 'no_create_edit':True}"
-
-								 />
+                                <field name="family"
+                                                            attrs="{
+                                                                        'invisible':[('x_type', '==', 'product')], 
+                                                                }"
+                                 />
 
 
 
+                                <field name="treatment"     string="Procedimiento"
 
-								<field name="product_id" 	string="Producto"
-
-															required="1"		
-
-															options="{'no_create': True, 'no_create_edit':True}"
-
-									/>
-
-
-
-<!--							
-								<field name="name" />
-								<field name="price_unit" />
-								<field name="price_subtotal" />
--->
-							</group>
-
-
-
-							<group>
-								<field name="product_uom_qty" />
-								<field name="x_type" 	readonly="1"	/>
+                                                            attrs="{
+                                                                        'invisible':[('x_type', '==', 'product')], 
+                                                                        'invisible':[('family', '!=', 'laser')], 
+                                                                }"
+                                 />
 
 
 
 <!--
-								<field name="price_manual_flag" />
+                                                            create_edit="0"
+                                    create_edit="0" 
+                                                                        'no_create_edit':True, 
+-->
+                                <field name="zone"          
 
-								<field name="price_manual" 
-																attrs="{																	
-																		'invisible':[('price_manual_flag', '==', False)], 
-																		'required':[('price_manual_flag', '!=', False)], 
-																	}"
-									/>
+                                                            attrs="{
 
-								<field name="order_id" 		/>
--->						
-							</group>
-						</group>
+                                                                        'invisible':[('x_type', '==', 'product')], 
+                                                                        'invisible':[('family', '!=', 'laser')], 
+                                                                }"
 
+                                                            options="{'no_create': True, 'no_create_edit':True}"
 
-					</sheet>
-				
-
-					<notebook>
-					</notebook>				
-				
-				</form>
-			</field>
-		</record>
+                                 />
 
 
 
 
+                                <field name="product_id"    string="Producto"
 
-		<!-- ACTION --> 	
-		<record id="product_selector_list_action" model="ir.actions.act_window">
+                                                            required="1"        
 
-			<field name="name">product Selector - Tree</field>
-			
-			<field name="res_model">openhealth.product.selector</field>
-			
-			<field name="type">ir.actions.act_window</field>
-			
-			<field name="view_type">form</field>
+                                                            options="{'no_create': True, 'no_create_edit':True}"
 
-			<field name="view_mode">tree,form,kanban</field>
-
-			<field name="context">{}</field>
-			
-			<field name="domain">[]
-			
-			</field>
-		</record>
+                                    />
 
 
 
-
-
-		<!-- TREE -->
-		<record model="ir.ui.view" id="product_selector_tree">
-
-			<field name="name">openhealth.product.selector.tree</field>
-			
-			<field name="model">openhealth.product.selector</field>
-			
-			<field name="arch" type="xml">
-
-			<!--	
-			<field name="priority" eval="1"/>
-			-->
-
-				<tree string="Product Selector Tree">
-
-
-					<field name="name"/>
-					<field name="id"/>
-
-
-					<field name="product_id"/>
-					<field name="product_uom_qty"/>
-					<field name="order_id"/>
+<!--                            
+                                <field name="name" />
+                                <field name="price_unit" />
+                                <field name="price_subtotal" />
+-->
+                            </group>
 
 
 
-				</tree>
-			</field>
-		</record>
+                            <group>
+                                <field name="product_uom_qty" />
+                                <field name="x_type"    readonly="1"    />
+
+
+
+<!--
+                                <field name="price_manual_flag" />
+
+                                <field name="price_manual" 
+                                                                attrs="{                                                                    
+                                                                        'invisible':[('price_manual_flag', '==', False)], 
+                                                                        'required':[('price_manual_flag', '!=', False)], 
+                                                                    }"
+                                    />
+
+                                <field name="order_id"      />
+-->                     
+                            </group>
+                        </group>
+
+
+                    </sheet>
+                
+
+                    <notebook>
+                    </notebook>             
+                
+                </form>
+            </field>
+        </record>
 
 
 
 
 
+        <!-- ACTION -->     
+        <record id="product_selector_list_action" model="ir.actions.act_window">
+
+            <field name="name">product Selector - Tree</field>
+            
+            <field name="res_model">openhealth.product.selector</field>
+            
+            <field name="type">ir.actions.act_window</field>
+            
+            <field name="view_type">form</field>
+
+            <field name="view_mode">tree,form,kanban</field>
+
+            <field name="context">{}</field>
+            
+            <field name="domain">[]
+            
+            </field>
+        </record>
 
 
-	</data>
+
+
+
+        <!-- TREE -->
+        <record model="ir.ui.view" id="product_selector_tree">
+
+            <field name="name">openhealth.product.selector.tree</field>
+            
+            <field name="model">openhealth.product.selector</field>
+            
+            <field name="arch" type="xml">
+
+            <!--    
+            <field name="priority" eval="1"/>
+            -->
+
+                <tree string="Product Selector Tree">
+
+
+                    <field name="name"/>
+                    <field name="id"/>
+
+
+                    <field name="product_id"/>
+                    <field name="product_uom_qty"/>
+                    <field name="order_id"/>
+
+
+
+                </tree>
+            </field>
+        </record>
+
+
+
+
+
+
+
+    </data>
 </openerp>
 
 

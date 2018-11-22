@@ -1,89 +1,85 @@
 <?xml version="1.0"?>
 <openerp>
-	<data>
+    <data>
 
 
 
 <!-- FORM --> 
-		<record model="ir.ui.view" id="service_product_form_view">
-			<field name="name">service.product.form</field>
+        <record model="ir.ui.view" id="service_product_form_view">
+            <field name="name">service.product.form</field>
 
-			<field name="model">openhealth.service.product</field>
-			
-			<field name="inherit_id" ref="service_form_view"/>
-	        <field name="mode">primary</field>
-			<field name="arch" type="xml">		
+            <field name="model">openhealth.service.product</field>
+            
+            <field name="inherit_id" ref="service_form_view"/>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">      
 
 
-			
-				<!-- Xpaths --> 
-				<xpath expr="//h1" position="replace">
+            
+                <!-- Xpaths --> 
+                <xpath expr="//h1" position="replace">
 
-					<h1>
-						Productos
-					</h1>					
-        		
-        		</xpath>
+                    <h1>
+                        Productos
+                    </h1>                   
+                
+                </xpath>
 
 <!--
-				<xpath expr="//field[@name='service']" position="replace">
-						<field name="service" 	invisible="0"		/>
-				</xpath>
+                <xpath expr="//field[@name='service']" position="replace">
+                        <field name="service"   invisible="0"       />
+                </xpath>
 
-				<xpath expr="//field[@name='x_treatment']" position="replace">
-						<field name="x_treatment"	invisible="0" 			/>
-				</xpath>
+                <xpath expr="//field[@name='x_treatment']" position="replace">
+                        <field name="x_treatment"   invisible="0"           />
+                </xpath>
 
-				<xpath expr="//field[@name='zone']" position="replace">
-						<field name="zone" 		invisible="0"	readonly="1"	/>
-				</xpath>
+                <xpath expr="//field[@name='zone']" position="replace">
+                        <field name="zone"      invisible="0"   readonly="1"    />
+                </xpath>
 --> 
-				<xpath expr="//field[@name='laser']" position="replace">
-				</xpath>
+                <xpath expr="//field[@name='laser']" position="replace">
+                </xpath>
 
-				<xpath expr="//field[@name='x_treatment']" position="replace">
-				</xpath>
+                <xpath expr="//field[@name='x_treatment']" position="replace">
+                </xpath>
 
-				<xpath expr="//field[@name='zone']" position="replace">
-				</xpath>
+                <xpath expr="//field[@name='zone']" position="replace">
+                </xpath>
 
-				<xpath expr="//field[@name='pathology']" position="replace">
-				</xpath>
-
-
+                <xpath expr="//field[@name='pathology']" position="replace">
+                </xpath>
 
 
-				<xpath expr="//field[@name='service']" position="replace">
-						<field name="service" 	string="Producto"	/>
-				</xpath>
+
+
+                <xpath expr="//field[@name='service']" position="replace">
+                        <field name="service"   string="Producto"   />
+                </xpath>
 
 
 
 
 <!--
 
-				<xpath expr="//field[@name='laser']" position="replace">
-				</xpath>
+                <xpath expr="//field[@name='laser']" position="replace">
+                </xpath>
 
-				<xpath expr="//field[@name='zone']" position="replace">
-						<field name="zone" 		invisible="1"	/>
-				</xpath>
+                <xpath expr="//field[@name='zone']" position="replace">
+                        <field name="zone"      invisible="1"   />
+                </xpath>
 
-				<xpath expr="//field[@name='pathology']" position="replace">
-						<field name="pathology" 	invisible="1"			/>
-				</xpath>
+                <xpath expr="//field[@name='pathology']" position="replace">
+                        <field name="pathology"     invisible="1"           />
+                </xpath>
 -->
-				<xpath expr="//field[@name='price_vip']" position="replace">
-				</xpath>
+                <xpath expr="//field[@name='price_vip']" position="replace">
+                </xpath>
 
 
 
-			</field>						
-		</record>		
-
-
-
-
+            </field>                        
+        </record>       
 
 
 
@@ -91,35 +87,39 @@
 
 
 
-		<!-- TREE -->
-		<record model="ir.ui.view" id="service_product_tree_view">
-			<field name="name">service.product.tree</field>
-			
-			<field name="model">openhealth.service.product</field>
-
-			<field name="inherit_id" ref="service_tree_view"/>
-			<field name="mode">primary</field>			
-
-
-			<field name="arch" type="xml">
-
-				<xpath expr="//field[@name='zone']" position="replace">
-				</xpath>
-
-				<xpath expr="//field[@name='pathology']" position="replace">
-				</xpath>
-
-        	</field>
-		</record>
 
 
 
 
-		<!-- Filter --> 
+        <!-- TREE -->
+        <record model="ir.ui.view" id="service_product_tree_view">
+            <field name="name">service.product.tree</field>
+            
+            <field name="model">openhealth.service.product</field>
+
+            <field name="inherit_id" ref="service_tree_view"/>
+            <field name="mode">primary</field>          
+
+
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='zone']" position="replace">
+                </xpath>
+
+                <xpath expr="//field[@name='pathology']" position="replace">
+                </xpath>
+
+            </field>
+        </record>
+
+
+
+
+        <!-- Filter --> 
         <record id="view_service_product_filter" model="ir.ui.view">
            <field name="name">Service product Search</field>
-           <field name="model">openhealth.service.product</field>		   
-		   <field name="arch" type="xml">
+           <field name="model">openhealth.service.product</field>          
+           <field name="arch" type="xml">
                <search string="service.product">
 
                    <field name="treatment" />
@@ -128,5 +128,5 @@
            </field>
        </record>
 
-	</data>
+    </data>
 </openerp>

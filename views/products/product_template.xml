@@ -1,119 +1,119 @@
 <?xml version="1.0"?>
 <openerp>
-	<data>
+    <data>
 
 
 
 <!-- FORM -->
-		<record model="ir.ui.view" id="product_form">
-			<field name="name">product.template.product.form</field>
-			<field name="model">product.template</field>
-			<field name="inherit_id" ref="product.product_template_form_view"/>
-	        <field name="mode">primary</field>
-	        <field name="priority" eval="1"/>
-			<field name="arch" type="xml">
+        <record model="ir.ui.view" id="product_form">
+            <field name="name">product.template.product.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="mode">primary</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
 
 
 
-				<!-- Xpaths --> 
-				<xpath expr="//field[@name='invoice_policy']" position="after">
-						<field name="default_code"/>
-				</xpath>
+                <!-- Xpaths --> 
+                <xpath expr="//field[@name='invoice_policy']" position="after">
+                        <field name="default_code"/>
+                </xpath>
 
 
 
-				<!-- Notebook --> 
-				<xpath expr="//notebook" position="inside">
-					<page string="Clínica Chavarri">
+                <!-- Notebook --> 
+                <xpath expr="//notebook" position="inside">
+                    <page string="Clínica Chavarri">
 
-						<group>
+                        <group>
 
-							<field name="active"/>
-
-
-							<field name="x_name_account"/>
-							<field name="x_code_account"/>
-
-							<field name="vspace"/>
-
-							<field name="x_generated"/>
-							<field name="x_code"/>
-							<field name="description"/>
-							<field name="x_name_short"/>							
-							<field name="x_price_vip"/>
-							<field name="x_price_vip_return"/>
-							<field name="x_origin"/>							
-							<field name="x_family"/>
-							<field name="x_treatment"/>				
-							<field name="x_zone"/>				
-							<field name="x_pathology"/>				
-							<field name="x_level"/>				
-							<field name="x_sessions"/>	
-							<field name="x_time"/>		
+                            <field name="active"/>
 
 
-							<field name="x_go_flag"/>		
-							<field name="x_name_unfixed"/>
+                            <field name="x_name_account"/>
+                            <field name="x_code_account"/>
+
+                            <field name="vspace"/>
+
+                            <field name="x_generated"/>
+                            <field name="x_code"/>
+                            <field name="description"/>
+                            <field name="x_name_short"/>                            
+                            <field name="x_price_vip"/>
+                            <field name="x_price_vip_return"/>
+                            <field name="x_origin"/>                            
+                            <field name="x_family"/>
+                            <field name="x_treatment"/>             
+                            <field name="x_zone"/>              
+                            <field name="x_pathology"/>             
+                            <field name="x_level"/>             
+                            <field name="x_sessions"/>  
+                            <field name="x_time"/>      
+
+
+                            <field name="x_go_flag"/>       
+                            <field name="x_name_unfixed"/>
 
 <!--
-							<field name="x_short_unfixed"/>
+                            <field name="x_short_unfixed"/>
 -->
 
-						</group>
+                        </group>
 <!--
-							<field name="x_date_created"/>
-							<field name="x_date_updated"/>
--->						
+                            <field name="x_date_created"/>
+                            <field name="x_date_updated"/>
+-->                     
 
-						<!-- Update Level -->
-						<!--
-						<group>							
-							<button
-								type="object" 
-								class="oe_highlight"
-									
-								name="update_level"
+                        <!-- Update Level -->
+                        <!--
+                        <group>                         
+                            <button
+                                type="object" 
+                                class="oe_highlight"
+                                    
+                                name="update_level"
 
-								string="Update"
-							/>
-						</group>
-						-->
+                                string="Update"
+                            />
+                        </group>
+                        -->
 
-						<!-- Update Level -->
-						<group>							
-							<button
-								type="object" 
-								class="oe_highlight"
-									
-								name="fix_name"
+                        <!-- Update Level -->
+                        <group>                         
+                            <button
+                                type="object" 
+                                class="oe_highlight"
+                                    
+                                name="fix_name"
 
-								string="Fix Name"
-							/>
-						</group>
-
-
-						<group>							
-							<button
-								type="object" 
-								class="oe_highlight"
-									
-								name="unfix_name"
-
-								string="Un Fix"
-							/>
-						</group>
+                                string="Fix Name"
+                            />
+                        </group>
 
 
-					</page>
-				</xpath>
-			</field>
-		</record>
+                        <group>                         
+                            <button
+                                type="object" 
+                                class="oe_highlight"
+                                    
+                                name="unfix_name"
+
+                                string="Un Fix"
+                            />
+                        </group>
+
+
+                    </page>
+                </xpath>
+            </field>
+        </record>
 
 <!--
-							<field name="x_client_type"/>				
-							<field name="type"/>
-							<field name="tax"/>
-							<field name="list_price"/>
+                            <field name="x_client_type"/>               
+                            <field name="type"/>
+                            <field name="tax"/>
+                            <field name="list_price"/>
 -->
 
 
@@ -124,27 +124,27 @@
 
 
 <!-- TREE 2 -->
-		<record model="ir.ui.view" id="product_template_pl_tree_view">
-			<field name="name">product.template.pl.tree</field>
-			<field name="model">product.template</field>
-			<field name="type">tree</field>
-			<field name="priority" eval="2"/>
-			<field name="arch" type="xml">
-				<tree string="Product Tree - Pricelist">
+        <record model="ir.ui.view" id="product_template_pl_tree_view">
+            <field name="name">product.template.pl.tree</field>
+            <field name="model">product.template</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="2"/>
+            <field name="arch" type="xml">
+                <tree string="Product Tree - Pricelist">
 
-					<field name="name"/>
+                    <field name="name"/>
 
-					<field name="x_name_short"/>
+                    <field name="x_name_short"/>
 
-					<field name="item_ids"/>
+                    <field name="item_ids"/>
 
-					<field name="list_price"/>
+                    <field name="list_price"/>
 <!--
-					<field name="pricelist_id"/>
+                    <field name="pricelist_id"/>
 -->
-				</tree>
-			</field>
-		</record>
+                </tree>
+            </field>
+        </record>
 
 
 
@@ -153,13 +153,13 @@
 
 
 <!-- TREE -->
-		<record model="ir.ui.view" id="product.product_template_tree_view">
-			<field name="name">product.template.product.tree</field>
-			<field name="model">product.template</field>
-			<field name="type">tree</field>
-			<field name="priority" eval="1"/>
-			<field name="arch" type="xml">
-				<tree string="Product Tree - Mod"   
+        <record model="ir.ui.view" id="product.product_template_tree_view">
+            <field name="name">product.template.product.tree</field>
+            <field name="model">product.template</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <tree string="Product Tree - Mod"   
 colors="
 red:x_checksum_1=='0';
 blue:x_checksum_2=='0';
@@ -168,76 +168,76 @@ black:x_checksum_1=='1'
 >
 
 
-					<field name="name"				string="Nombre actual"/>
-					<field name="x_name_account"	string="Nombre antiguo"/>
-					<field name="x_code_account"	string="Cuenta"/>
+                    <field name="name"              string="Nombre actual"/>
+                    <field name="x_name_account"    string="Nombre antiguo"/>
+                    <field name="x_code_account"    string="Cuenta"/>
 
 
-					<field name="list_price"/>
-					<field name="x_price_vip"/>
+                    <field name="list_price"/>
+                    <field name="x_price_vip"/>
 
-
-
-
-<!--
-					<field name="x_counter"/>
-					<field name="x_code"/>
--->				
-					<field name="type"/>
-					<field name="active"/>
-					<field name="sale_ok"/>
-
-
-					<field name="x_name_short"/>
-					<field name="x_generated"/>
-					<field name="x_name_ticket"/>
 
 
 
 <!--
-					<field name="x_short_unfixed"/>
-					<field name="x_name_unfixed"/>
+                    <field name="x_counter"/>
+                    <field name="x_code"/>
+-->             
+                    <field name="type"/>
+                    <field name="active"/>
+                    <field name="sale_ok"/>
 
-					<field name="x_coder"/>
-					<field name="default_code"/>
-					<field name="x_origin"/>
+
+                    <field name="x_name_short"/>
+                    <field name="x_generated"/>
+                    <field name="x_name_ticket"/>
+
+
+
+<!--
+                    <field name="x_short_unfixed"/>
+                    <field name="x_name_unfixed"/>
+
+                    <field name="x_coder"/>
+                    <field name="default_code"/>
+                    <field name="x_origin"/>
 -->
 
 
-					<field name="x_family"/>
-					<field name="x_treatment"/>
-					<field name="x_zone"/>
-					<field name="x_pathology"/>
-					<field name="x_time"/>
-					<field name="x_sessions"/>
+                    <field name="x_family"/>
+                    <field name="x_treatment"/>
+                    <field name="x_zone"/>
+                    <field name="x_pathology"/>
+                    <field name="x_time"/>
+                    <field name="x_sessions"/>
 
 
 
-					<field name="x_checksum_1"/>
-					<field name="x_checksum_2"/>
+                    <field name="x_checksum_1"/>
+                    <field name="x_checksum_2"/>
 <!--
-					<field name="item_ids"/>
+                    <field name="item_ids"/>
 -->
 
-					<field name="uom_id"	invisible="1"/>
-					<field name="state"		invisible="1"/>
+                    <field name="uom_id"    invisible="1"/>
+                    <field name="state"     invisible="1"/>
 <!--
-					<field name="categ_id"/>
-					<field name="item_ids"/>
-					<field name="type"/>
-					<field name="x_sessions"/>	
-					<field name="default_code"/>
-					<field name="purchase_ok"/>
-					<field name="pricelist_id"/>
-					<field name="standard_price"/>
-					<field name="price"/>
-					<field name="seller_ids"/>
-					<field name="qty_available"	invisible="1"/>
+                    <field name="categ_id"/>
+                    <field name="item_ids"/>
+                    <field name="type"/>
+                    <field name="x_sessions"/>  
+                    <field name="default_code"/>
+                    <field name="purchase_ok"/>
+                    <field name="pricelist_id"/>
+                    <field name="standard_price"/>
+                    <field name="price"/>
+                    <field name="seller_ids"/>
+                    <field name="qty_available" invisible="1"/>
 -->
 
-				</tree>
-			</field>
-		</record>
+                </tree>
+            </field>
+        </record>
 
 
 
@@ -259,48 +259,48 @@ black:x_checksum_1=='1'
 <!-- FILTER --> 
         <record id="product.view_product_template_filter" model="ir.ui.view">
            <field name="name">Product Search</field>
-           <field name="model">product.template</field>	
-		   <field name="arch" type="xml">
+           <field name="model">product.template</field> 
+           <field name="arch" type="xml">
                <search string="products">
 
-				<field 	name="name" 
+                <field  name="name" 
                 
-                    	filter_domain="['|',('name','ilike',self),('default_code','ilike',self)]"/>               
+                        filter_domain="['|',('name','ilike',self),('default_code','ilike',self)]"/>               
 
 
-					<!-- Group By --> 
-					<group expand="1" string="Group By">
+                    <!-- Group By --> 
+                    <group expand="1" string="Group By">
 
-						<filter name="Tipo" context="{'group_by':'type'}"/>
+                        <filter name="Tipo" context="{'group_by':'type'}"/>
 <!--
-						<filter name="Code" context="{'group_by':'x_code'}"/>
+                        <filter name="Code" context="{'group_by':'x_code'}"/>
 
-						<filter name="Origen" context="{'group_by':'x_origin'}"/>
+                        <filter name="Origen" context="{'group_by':'x_origin'}"/>
 
-						<filter name="Categ" context="{'group_by':'categ_id'}"/>
+                        <filter name="Categ" context="{'group_by':'categ_id'}"/>
 -->
-						<filter name="Treatment" context="{'group_by':'x_treatment'}"/>
+                        <filter name="Treatment" context="{'group_by':'x_treatment'}"/>
 
-						<filter name="Zone" context="{'group_by':'x_zone'}"/>
+                        <filter name="Zone" context="{'group_by':'x_zone'}"/>
 
-						<filter name="Pathology" context="{'group_by':'x_pathology'}"/>
+                        <filter name="Pathology" context="{'group_by':'x_pathology'}"/>
 
-						<filter name="Time" context="{'group_by':'x_time'}"/>
+                        <filter name="Time" context="{'group_by':'x_time'}"/>
 
-						<filter name="Sessions" context="{'group_by':'x_sessions'}"/>
+                        <filter name="Sessions" context="{'group_by':'x_sessions'}"/>
 
-					</group>
+                    </group>
                </search>
            </field>
        </record>
 
 <!--
-						<filter name="Checksum 1" context="{'group_by':'x_checksum_1'}"/>
-						<filter name="Checksum 2" context="{'group_by':'x_checksum_2'}"/>
+                        <filter name="Checksum 1" context="{'group_by':'x_checksum_1'}"/>
+                        <filter name="Checksum 2" context="{'group_by':'x_checksum_2'}"/>
                    <field name="x_origin" />               
                    <field name="default_code" />
 -->
 
 
-	</data>
+    </data>
 </openerp>

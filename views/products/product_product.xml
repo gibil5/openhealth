@@ -1,90 +1,90 @@
 <?xml version="1.0"?>
 <openerp>
-	<data>
+    <data>
 
 
 
-		<!-- TREE - Product Product -->
-		<record model="ir.ui.view" id="product.product_product_tree_view">
-			<field name="name">product.product.product.tree</field>
-			<field name="model">product.product</field>
-			<field name="type">tree</field>
-			<field name="priority" eval="1"/>
-			<field name="arch" type="xml">
+        <!-- TREE - Product Product -->
+        <record model="ir.ui.view" id="product.product_product_tree_view">
+            <field name="name">product.product.product.tree</field>
+            <field name="model">product.product</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
 
-				<tree string="Product Tree - Mod"    default_order="name" >
+                <tree string="Product Tree - Mod"    default_order="name" >
 
-					<field name="name"/>
+                    <field name="name"/>
 
-					<field name="x_name_short"/>
+                    <field name="x_name_short"/>
 
-					<field name="x_origin"/>
+                    <field name="x_origin"/>
 
 
-					<field name="description"/>
+                    <field name="description"/>
 
-					<field name="default_code"/>
-					
-					<field name="id"/>
+                    <field name="default_code"/>
+                    
+                    <field name="id"/>
 
-					<field name="uom_id"	invisible="0"/>
+                    <field name="uom_id"    invisible="0"/>
 
-					<field name="price"/>
+                    <field name="price"/>
 
-					<field name="list_price"/>
+                    <field name="list_price"/>
 
-					<field name="categ_id"/>
+                    <field name="categ_id"/>
 
-					<field name="type"/>
+                    <field name="type"/>
 
-					<field name="state"	invisible="1"	/>				
-				</tree>
-			</field>
-		</record>
+                    <field name="state" invisible="1"   />              
+                </tree>
+            </field>
+        </record>
 
 <!--
-					<field name="x_zone"/>				
-					<field name="x_pathology"/>				
-					<field name="x_level"/>				
+                    <field name="x_zone"/>              
+                    <field name="x_pathology"/>             
+                    <field name="x_level"/>             
 
 -->
 
 
 
-		<!-- TREE /list view -->
-		<!-- Window action -->
+        <!-- TREE /list view -->
+        <!-- Window action -->
 <!--
-		<record model="ir.ui.view" id="product.product_product_tree_view">
-			<field name="name">product.product.product.tree</field>
-			<field name="model">product.product</field>
-			<field name="type">tree</field>
-			<field name="priority" eval="1"/>
-			<field name="arch" type="xml">
-				<tree string="Product Tree"    default_order="name" >
-					<field name="code"/>
-					<field name="name"/>
-					<field name="list_price"/>
-					<field name="price"		invisible="1" />
-					<field name="uom_id"/>
-					<field name="barcode"/>
-					<field name="state"	invisible="1"/>
-				</tree>
-			</field>
-		</record>
+        <record model="ir.ui.view" id="product.product_product_tree_view">
+            <field name="name">product.product.product.tree</field>
+            <field name="model">product.product</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <tree string="Product Tree"    default_order="name" >
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="list_price"/>
+                    <field name="price"     invisible="1" />
+                    <field name="uom_id"/>
+                    <field name="barcode"/>
+                    <field name="state" invisible="1"/>
+                </tree>
+            </field>
+        </record>
 
 -->
 
 
-		<!-- Product Product --> 
-		<record model="ir.actions.act_window" id="product_product_list_action">
-			<field name="name">Productos Productos</field>
-			<field name="res_model">product.product</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
+        <!-- Product Product --> 
+        <record model="ir.actions.act_window" id="product_product_list_action">
+            <field name="name">Productos Productos</field>
+            <field name="res_model">product.product</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
 
             <field name="domain">[]</field>
-		</record>
+        </record>
 
 
-	</data>
+    </data>
 </openerp>

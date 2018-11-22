@@ -1,35 +1,35 @@
 <?xml version="1.0"?>
 <openerp>
-	<data>
+    <data>
 
 
 
-		<!-- Graph --> 
-	    <record id="sale.view_order_product_graph" model="ir.ui.view">
-	         <field name="name">sale.report.graph</field>
-	         <field name="model">sale.report</field>
-	         <field name="arch" type="xml">
-	             <graph string="Sales Analysis">
-	                 <field name="date" type="row"/>
-	                 <field name="price_subtotal" type="measure"/>
-	             </graph>
-	         </field>
-	    </record>
+        <!-- Graph --> 
+        <record id="sale.view_order_product_graph" model="ir.ui.view">
+             <field name="name">sale.report.graph</field>
+             <field name="model">sale.report</field>
+             <field name="arch" type="xml">
+                 <graph string="Sales Analysis">
+                     <field name="date" type="row"/>
+                     <field name="price_subtotal" type="measure"/>
+                 </graph>
+             </field>
+        </record>
 
 
 <!-- Graph --> 
 <!--
-	    <record id="sale.view_order_product_graph" model="ir.ui.view">
-	         <field name="name">sale.report.graph</field>
-	         <field name="model">sale.report</field>
-	         <field name="arch" type="xml">
-	             <graph string="Sales Analysis">
-	                 <field name="date" type="row"/>
-	                 <field name="price_subtotal" type="measure"/>
-	             </graph>
-	         </field>
-	    </record>
+        <record id="sale.view_order_product_graph" model="ir.ui.view">
+             <field name="name">sale.report.graph</field>
+             <field name="model">sale.report</field>
+             <field name="arch" type="xml">
+                 <graph string="Sales Analysis">
+                     <field name="date" type="row"/>
+                     <field name="price_subtotal" type="measure"/>
+                 </graph>
+             </field>
+        </record>
 -->
 
-	</data>
+    </data>
 </openerp>

@@ -1,78 +1,78 @@
 <?xml version="1.0"?>
 <openerp>
-	<data>
+    <data>
 
 
-		<!-- Form view -->
-		<record model="ir.ui.view" id="service_ipl_zone_form_view">
-			<field name="name">service.ipl.zone.form</field>
-			<field name="model">openhealth.service.ipl</field>
-			<field name="inherit_id" ref="service_ipl_form_view"/>
-			
-			<field name="arch" type="xml">
-				
+        <!-- Form view -->
+        <record model="ir.ui.view" id="service_ipl_zone_form_view">
+            <field name="name">service.ipl.zone.form</field>
+            <field name="model">openhealth.service.ipl</field>
+            <field name="inherit_id" ref="service_ipl_form_view"/>
+            
+            <field name="arch" type="xml">
+                
 
 
-				<!-- Time --> 
-				<xpath expr="//field[@name='pathology']" position="after">
-					<field name="vspace"/>
-					<field name="time" readonly="1"  invisible="0" />
-        		</xpath>
+                <!-- Time --> 
+                <xpath expr="//field[@name='pathology']" position="after">
+                    <field name="vspace"/>
+                    <field name="time" readonly="1"  invisible="0" />
+                </xpath>
 
-				<!-- Nr sessions -->
-				<xpath expr="//field[@name='time']" position="after">
-					<field name="vspace"/>
-					<field name="nr_sessions" readonly="1"  invisible="0" />
-        		</xpath>
-
-
-
-				<!-- Notebook --> 
-				<xpath expr="//field[@name='notebook_over']" position="after">	
-				<group>
-				<group>						
-				<notebook>
-					<page string="Depilacion">
-						<group>	
-							<group>
-								<field name="depilation"  widget="radio" />
-							</group>																									
-							<group>
-							</group>
-						</group>
-					</page>
-										
-					<page string="Todo Rostro">
-						<group>	
-							<group>
-								<field name="face"  widget="radio" />							
-							</group>
-							<group>
-							</group>
-						</group>
-					</page>
-						
-				</notebook>
-				</group>
-
-
-				<group col="1">
-					<group></group><group></group><group></group>
-				
-					<group>
-						<field name="time_1" widget="radio"/>
-						<field name="nr_sessions_1" widget="radio"/>
-					</group>
-				</group>
-
-			
-				</group>
-				</xpath>
+                <!-- Nr sessions -->
+                <xpath expr="//field[@name='time']" position="after">
+                    <field name="vspace"/>
+                    <field name="nr_sessions" readonly="1"  invisible="0" />
+                </xpath>
 
 
 
+                <!-- Notebook --> 
+                <xpath expr="//field[@name='notebook_over']" position="after">  
+                <group>
+                <group>                     
+                <notebook>
+                    <page string="Depilacion">
+                        <group> 
+                            <group>
+                                <field name="depilation"  widget="radio" />
+                            </group>                                                                                                    
+                            <group>
+                            </group>
+                        </group>
+                    </page>
+                                        
+                    <page string="Todo Rostro">
+                        <group> 
+                            <group>
+                                <field name="face"  widget="radio" />                           
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                    </page>
+                        
+                </notebook>
+                </group>
 
-			</field>
-		</record>
-	</data>
+
+                <group col="1">
+                    <group></group><group></group><group></group>
+                
+                    <group>
+                        <field name="time_1" widget="radio"/>
+                        <field name="nr_sessions_1" widget="radio"/>
+                    </group>
+                </group>
+
+            
+                </group>
+                </xpath>
+
+
+
+
+            </field>
+        </record>
+    </data>
 </openerp>

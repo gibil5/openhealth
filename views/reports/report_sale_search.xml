@@ -1,29 +1,29 @@
 <?xml version="1.0"?>
 <openerp>
-	<data>
+    <data>
 
 
 
-		<!-- Search  -->
-	   <record id="sale.view_order_all_search" model="ir.ui.view">
-			<field name="name">sale.report.search</field>
-			<field name="model">sale.report</field>
-			<field name="arch" type="xml">
-				<search string="Sales Analysis">
-					<field name="date"/>
+        <!-- Search  -->
+       <record id="sale.view_order_all_search" model="ir.ui.view">
+            <field name="name">sale.report.search</field>
+            <field name="model">sale.report</field>
+            <field name="arch" type="xml">
+                <search string="Sales Analysis">
+                    <field name="date"/>
 
 
 
 
-<!--					
-					<filter name="March" 	string="Marzo"  invisible="1" domain="[
-																					('date','&lt;=',time.strftime('%%Y-03-31')),
-																					('date','&gt;=',time.strftime('%%Y-03-01'))
-																			]"/>
+<!--                    
+                    <filter name="March"    string="Marzo"  invisible="1" domain="[
+                                                                                    ('date','&lt;=',time.strftime('%%Y-03-31')),
+                                                                                    ('date','&gt;=',time.strftime('%%Y-03-01'))
+                                                                            ]"/>
 
-					<filter string="This Year" name="year" invisible="1" domain="[('date','&lt;=', time.strftime('2016-12-31')),('date','&gt;=',time.strftime('2016-01-01'))]"/>	
+                    <filter string="This Year" name="year" invisible="1" domain="[('date','&lt;=', time.strftime('2016-12-31')),('date','&gt;=',time.strftime('2016-01-01'))]"/>    
 
-					<filter name="Quotations" string="Quotations" domain="[('state','in', ('draft', 'sent'))]"/>
+                    <filter name="Quotations" string="Quotations" domain="[('state','in', ('draft', 'sent'))]"/>
 -->
 
 
@@ -33,70 +33,70 @@
 
 
 <!--
-																	('categ_id','not in',('Consultas')), 
+                                                                    ('categ_id','not in',('Consultas')), 
 
-																	('state','not in',('draft', 'cancel', 'sent')), 
+                                                                    ('state','not in',('draft', 'cancel', 'sent')), 
 
-																	('categ_id','in',('Cremas','Kits','Tarjetas')), 
-																	('categ_id','not in',('Quick','Co2','Consultas')), 
-																	('categ_id','not in',('Consultas', 'Quick')),
+                                                                    ('categ_id','in',('Cremas','Kits','Tarjetas')), 
+                                                                    ('categ_id','not in',('Quick','Co2','Consultas')), 
+                                                                    ('categ_id','not in',('Consultas', 'Quick')),
 
 
 
-																	('categ_id','not in',('Consultas')), 
-																	('categ_id','not in',('Quick Laser')), 
-																	('categ_id','not in',('Laser Co2')), 
-																	('categ_id','not in',('Laser Excilite')), 
-																	('categ_id','not in',('Laser M22')), 
+                                                                    ('categ_id','not in',('Consultas')), 
+                                                                    ('categ_id','not in',('Quick Laser')), 
+                                                                    ('categ_id','not in',('Laser Co2')), 
+                                                                    ('categ_id','not in',('Laser Excilite')), 
+                                                                    ('categ_id','not in',('Laser M22')), 
 -->
 
 
-					<filter name="Sales" string="Sales" domain="[
-																			('state','=','sale'),
-																]"/>
+                    <filter name="Sales" string="Sales" domain="[
+                                                                            ('state','=','sale'),
+                                                                ]"/>
 
 
-					<separator/>
-					
-					<field name="partner_id"/>
-					<field name="product_id"/>
-					<field name="user_id"/>
+                    <separator/>
+                    
+                    <field name="partner_id"/>
+                    <field name="product_id"/>
+                    <field name="user_id"/>
 
 <!--
-					<field name="x_family"/>
-					<field name="x_cancel_reason"/>
-					<field name="note"/>
+                    <field name="x_family"/>
+                    <field name="x_cancel_reason"/>
+                    <field name="note"/>
 -->
 
-					<group expand="0" string="Extended Filters">
-						<field name="categ_id" filter_domain="[('categ_id', 'child_of', self)]"/>
-						<field name="company_id" groups="base.group_multi_company"/>
-					</group>
+                    <group expand="0" string="Extended Filters">
+                        <field name="categ_id" filter_domain="[('categ_id', 'child_of', self)]"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                    </group>
 
 
-					<group expand="1" string="Group By">
-						<filter string="Salesperson" name="User" context="{'group_by':'user_id'}"/>
-						<filter string="Sales Team" context="{'group_by':'team_id'}"/>
-						<filter string="Partner's Country" name="country_id" context="{'group_by':'country_id'}"/>
-						<filter string="Customer" name="Customer" context="{'group_by':'partner_id'}"/>
+                    <group expand="1" string="Group By">
+                        <filter string="Salesperson" name="User" context="{'group_by':'user_id'}"/>
+                        <filter string="Sales Team" context="{'group_by':'team_id'}"/>
+                        <filter string="Partner's Country" name="country_id" context="{'group_by':'country_id'}"/>
+                        <filter string="Customer" name="Customer" context="{'group_by':'partner_id'}"/>
 
-						<filter string="Product Category" name="Category" context="{'group_by':'categ_id'}" 	/>
-						
-						<filter name="status" string="Status" context="{'group_by':'state'}"/>
-						<filter string="Company" groups="base.group_multi_company" context="{'group_by':'company_id'}"/>
+                        <filter string="Product Category" name="Category" context="{'group_by':'categ_id'}"     />
+                        
+                        <filter name="status" string="Status" context="{'group_by':'state'}"/>
+                        <filter string="Company" groups="base.group_multi_company" context="{'group_by':'company_id'}"/>
 
 <!--
-						<filter name="x_cancel_reason" string="Tipo" context="{'group_by':'x_cancel_reason	'}"/>
-						<filter name="note" string="Note" context="{'group_by':'note	'}"/>
-						<filter name="x_cancel_reason" />
+                        <filter name="x_cancel_reason" string="Tipo" context="{'group_by':'x_cancel_reason  '}"/>
+                        <filter name="note" string="Note" context="{'group_by':'note    '}"/>
+                        <filter name="x_cancel_reason" />
 -->
 
-						<separator/>
-						<filter string="Order Month" context="{'group_by':'date:month'}" help="Ordered date of the sales order"/>
-					</group>
-				</search>
-			</field>
-		</record>
+                        <separator/>
+                        <filter string="Order Month" context="{'group_by':'date:month'}" help="Ordered date of the sales order"/>
+                    </group>
+                </search>
+            </field>
+        </record>
 
 
 
@@ -105,97 +105,97 @@
 
 
 
-		<!-- Search  -->
-	   <record id="sale.view_order_prods_search" model="ir.ui.view">
-			<field name="name">sale.report.search</field>
-			<field name="model">sale.report</field>
-			<field name="arch" type="xml">
-				<search string="Sales Analysis">
-					<field name="date"/>
+        <!-- Search  -->
+       <record id="sale.view_order_prods_search" model="ir.ui.view">
+            <field name="name">sale.report.search</field>
+            <field name="model">sale.report</field>
+            <field name="arch" type="xml">
+                <search string="Sales Analysis">
+                    <field name="date"/>
 
 
-					<filter name="Sales" string="Sales" domain="[
+                    <filter name="Sales" string="Sales" domain="[
 
-																			('state','=','sale'),
-						
-																			('categ_id','=','Cremas'), 
+                                                                            ('state','=','sale'),
+                        
+                                                                            ('categ_id','=','Cremas'), 
 
-																]"/>
-
-
-
-<!--
-					<separator/>
-					<field name="partner_id"/>
-					<field name="product_id"/>
-					<field name="user_id"/>
-					<group expand="0" string="Extended Filters">
-						<field name="categ_id" filter_domain="[('categ_id', 'child_of', self)]"/>
-						<field name="company_id" groups="base.group_multi_company"/>
-					</group>
-					<group expand="1" string="Group By">
-						<filter string="Salesperson" name="User" context="{'group_by':'user_id'}"/>
-						<filter string="Sales Team" context="{'group_by':'team_id'}"/>
-						<filter string="Partner's Country" name="country_id" context="{'group_by':'country_id'}"/>
-						<filter string="Customer" name="Customer" context="{'group_by':'partner_id'}"/>
-						<filter string="Product Category" name="Category" context="{'group_by':'categ_id'}" 	/>
-						<filter name="status" string="Status" context="{'group_by':'state'}"/>
-						<filter string="Company" groups="base.group_multi_company" context="{'group_by':'company_id'}"/>
-						<separator/>
-						<filter string="Order Month" context="{'group_by':'date:month'}" help="Ordered date of the sales order"/>
-					</group>
--->
-				</search>
-			</field>
-		</record>
-
-
-
-
-
-		<!-- Search  -->
-	   <record id="sale.view_order_servs_search" model="ir.ui.view">
-			<field name="name">sale.report.search</field>
-			<field name="model">sale.report</field>
-			<field name="arch" type="xml">
-				<search string="Sales Analysis">
-					<field name="date"/>
-
-
-					<filter name="Sales" string="Sales" domain="[
-
-																			('state','=','sale'),
-						
-																			('categ_id','!=','Cremas'), 
-
-																]"/>
+                                                                ]"/>
 
 
 
 <!--
-					<separator/>
-					<field name="partner_id"/>
-					<field name="product_id"/>
-					<field name="user_id"/>
-					<group expand="0" string="Extended Filters">
-						<field name="categ_id" filter_domain="[('categ_id', 'child_of', self)]"/>
-						<field name="company_id" groups="base.group_multi_company"/>
-					</group>
-					<group expand="1" string="Group By">
-						<filter string="Salesperson" name="User" context="{'group_by':'user_id'}"/>
-						<filter string="Sales Team" context="{'group_by':'team_id'}"/>
-						<filter string="Partner's Country" name="country_id" context="{'group_by':'country_id'}"/>
-						<filter string="Customer" name="Customer" context="{'group_by':'partner_id'}"/>
-						<filter string="Product Category" name="Category" context="{'group_by':'categ_id'}" 	/>
-						<filter name="status" string="Status" context="{'group_by':'state'}"/>
-						<filter string="Company" groups="base.group_multi_company" context="{'group_by':'company_id'}"/>
-						<separator/>
-						<filter string="Order Month" context="{'group_by':'date:month'}" help="Ordered date of the sales order"/>
-					</group>
+                    <separator/>
+                    <field name="partner_id"/>
+                    <field name="product_id"/>
+                    <field name="user_id"/>
+                    <group expand="0" string="Extended Filters">
+                        <field name="categ_id" filter_domain="[('categ_id', 'child_of', self)]"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                    </group>
+                    <group expand="1" string="Group By">
+                        <filter string="Salesperson" name="User" context="{'group_by':'user_id'}"/>
+                        <filter string="Sales Team" context="{'group_by':'team_id'}"/>
+                        <filter string="Partner's Country" name="country_id" context="{'group_by':'country_id'}"/>
+                        <filter string="Customer" name="Customer" context="{'group_by':'partner_id'}"/>
+                        <filter string="Product Category" name="Category" context="{'group_by':'categ_id'}"     />
+                        <filter name="status" string="Status" context="{'group_by':'state'}"/>
+                        <filter string="Company" groups="base.group_multi_company" context="{'group_by':'company_id'}"/>
+                        <separator/>
+                        <filter string="Order Month" context="{'group_by':'date:month'}" help="Ordered date of the sales order"/>
+                    </group>
 -->
-				</search>
-			</field>
-		</record>
+                </search>
+            </field>
+        </record>
+
+
+
+
+
+        <!-- Search  -->
+       <record id="sale.view_order_servs_search" model="ir.ui.view">
+            <field name="name">sale.report.search</field>
+            <field name="model">sale.report</field>
+            <field name="arch" type="xml">
+                <search string="Sales Analysis">
+                    <field name="date"/>
+
+
+                    <filter name="Sales" string="Sales" domain="[
+
+                                                                            ('state','=','sale'),
+                        
+                                                                            ('categ_id','!=','Cremas'), 
+
+                                                                ]"/>
+
+
+
+<!--
+                    <separator/>
+                    <field name="partner_id"/>
+                    <field name="product_id"/>
+                    <field name="user_id"/>
+                    <group expand="0" string="Extended Filters">
+                        <field name="categ_id" filter_domain="[('categ_id', 'child_of', self)]"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                    </group>
+                    <group expand="1" string="Group By">
+                        <filter string="Salesperson" name="User" context="{'group_by':'user_id'}"/>
+                        <filter string="Sales Team" context="{'group_by':'team_id'}"/>
+                        <filter string="Partner's Country" name="country_id" context="{'group_by':'country_id'}"/>
+                        <filter string="Customer" name="Customer" context="{'group_by':'partner_id'}"/>
+                        <filter string="Product Category" name="Category" context="{'group_by':'categ_id'}"     />
+                        <filter name="status" string="Status" context="{'group_by':'state'}"/>
+                        <filter string="Company" groups="base.group_multi_company" context="{'group_by':'company_id'}"/>
+                        <separator/>
+                        <filter string="Order Month" context="{'group_by':'date:month'}" help="Ordered date of the sales order"/>
+                    </group>
+-->
+                </search>
+            </field>
+        </record>
 
 
 
@@ -209,5 +209,5 @@
 
 
 
-	</data>
+    </data>
 </openerp>

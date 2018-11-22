@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-	<data noupdate='1'>
+    <data noupdate='1'>
 
 
 
@@ -9,31 +9,31 @@
 
 
 <!-- Yober Ramirez -->
-		<record id="yramirez_partner" model="res.partner">
-			<field name="name">Yober Ramirez</field>
-			<field name="email">yramirez@clinicachavarri.com</field>
-			<field name="function">inventory</field>
-	        <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
-		</record>
+        <record id="yramirez_partner" model="res.partner">
+            <field name="name">Yober Ramirez</field>
+            <field name="email">yramirez@clinicachavarri.com</field>
+            <field name="function">inventory</field>
+            <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
+        </record>
 
-		<record id="yramirez_clinicachavarri" model="res.users">
-			<field name="name">Yober Ramirez</field>
-			<field name="login">yramirez@clinicachavarri.com</field>
-			
+        <record id="yramirez_clinicachavarri" model="res.users">
+            <field name="name">Yober Ramirez</field>
+            <field name="login">yramirez@clinicachavarri.com</field>
+            
 <!--
-			<field name="password">yramirez</field>
--->		
-			<field name="password">YHtk47UL</field>
+            <field name="password">yramirez</field>
+-->     
+            <field name="password">YHtk47UL</field>
 
 
-			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-			<field name="lang">es_ES</field>
-			<field name="tz">America/Lima</field>
-			<field name="partner_id" ref="yramirez_partner"/>
-			<field name="active">True</field>
-		</record>
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="lang">es_ES</field>
+            <field name="tz">America/Lima</field>
+            <field name="partner_id" ref="yramirez_partner"/>
+            <field name="active">True</field>
+        </record>
 
 
 
-	</data>
+    </data>
 </openerp> 

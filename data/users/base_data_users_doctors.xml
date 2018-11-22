@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-	<data noupdate='1'>
+    <data noupdate='1'>
 
 
 
 <!-- Leo Gonzales -->
-		<record id="lgonzales" model="res.partner">
-			<field name="name">Leo Gonzales</field>
-			<field name="email">lgonzales@clinicachavarri.com</field>
-	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
-		</record>
+        <record id="lgonzales" model="res.partner">
+            <field name="name">Leo Gonzales</field>
+            <field name="email">lgonzales@clinicachavarri.com</field>
+            <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+        </record>
 
-		<record id="lgonzales_clinicachavarri" model="res.users">
-			<field name="name">Leo Gonzales</field>
-			<field name="login">lgonzales@clinicachavarri.com</field>
-			
+        <record id="lgonzales_clinicachavarri" model="res.users">
+            <field name="name">Leo Gonzales</field>
+            <field name="login">lgonzales@clinicachavarri.com</field>
+            
 <!--
-			<field name="password">lgonzales</field>
--->		
-			<field name="password">T2asF4Dp</field>
+            <field name="password">lgonzales</field>
+-->     
+            <field name="password">T2asF4Dp</field>
 
 
-			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-			<field name="tz">America/Lima</field>
-			<field name="partner_id" ref="lgonzales"/>
-			<field name="lang">es_ES</field>
-			<field name="active">True</field>
-		</record>
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="tz">America/Lima</field>
+            <field name="partner_id" ref="lgonzales"/>
+            <field name="lang">es_ES</field>
+            <field name="active">True</field>
+        </record>
 
 
 
@@ -34,28 +34,28 @@
 
 
 <!-- Piero Monteverde -->
-		<record id="pmonteverde" model="res.partner">
-			<field name="name">Piero Monteverde</field>
-			<field name="email">pmonteverde@clinicachavarri.com</field>
-	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
-		</record>
+        <record id="pmonteverde" model="res.partner">
+            <field name="name">Piero Monteverde</field>
+            <field name="email">pmonteverde@clinicachavarri.com</field>
+            <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+        </record>
 
-		<record id="pmonteverde_clinicachavarri" model="res.users">
-			<field name="name">Piero Monteverde</field>
-			<field name="login">pmonteverde@clinicachavarri.com</field>
-			
+        <record id="pmonteverde_clinicachavarri" model="res.users">
+            <field name="name">Piero Monteverde</field>
+            <field name="login">pmonteverde@clinicachavarri.com</field>
+            
 <!--
-			<field name="password">pmonteverde</field>
--->		
-			<field name="password">czPS79x8</field>
+            <field name="password">pmonteverde</field>
+-->     
+            <field name="password">czPS79x8</field>
 
 
-			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-			<field name="tz">America/Lima</field>
-			<field name="partner_id" ref="pmonteverde"/>
-			<field name="lang">es_ES</field>
-			<field name="active">True</field>
-		</record>
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="tz">America/Lima</field>
+            <field name="partner_id" ref="pmonteverde"/>
+            <field name="lang">es_ES</field>
+            <field name="active">True</field>
+        </record>
 
 
 
@@ -65,55 +65,55 @@
 
 
 <!-- Paul Canales --> 
-		<record id="pcanales" model="res.partner">
-			<field name="name">Paul Canales</field>
-			<field name="email">pcanales@clinicachavarri.com</field>
-	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
-		</record>
+        <record id="pcanales" model="res.partner">
+            <field name="name">Paul Canales</field>
+            <field name="email">pcanales@clinicachavarri.com</field>
+            <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+        </record>
 
-		<record id="pcanales_clinicachavarri" model="res.users">
-			<field name="name">Paul Canales</field>
-			<field name="login">pcanales@clinicachavarri.com</field>
-			
+        <record id="pcanales_clinicachavarri" model="res.users">
+            <field name="name">Paul Canales</field>
+            <field name="login">pcanales@clinicachavarri.com</field>
+            
 <!--
-			<field name="password">pcanales</field>
--->		
-			<field name="password">CX5Xf6nJ</field>
+            <field name="password">pcanales</field>
+-->     
+            <field name="password">CX5Xf6nJ</field>
 
-			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-			<field name="tz">America/Lima</field>
-			<field name="partner_id" ref="pcanales"/>
-			<field name="lang">es_ES</field>
-			<field name="active">True</field>
-		</record>
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="tz">America/Lima</field>
+            <field name="partner_id" ref="pcanales"/>
+            <field name="lang">es_ES</field>
+            <field name="active">True</field>
+        </record>
 
 
 
 
 
 <!-- Carlos Escudero -->
-		<record id="cescudero" model="res.partner">
-			<field name="name">Carlos Escudero</field>
-			<field name="email">cescudero@clinicachavarri.com</field>
-	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
-		</record>
+        <record id="cescudero" model="res.partner">
+            <field name="name">Carlos Escudero</field>
+            <field name="email">cescudero@clinicachavarri.com</field>
+            <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+        </record>
 
-		<record id="cescudero_clinicachavarri" model="res.users">
-			<field name="name">Carlos Escudero</field>
-			<field name="login">cescudero@clinicachavarri.com</field>
-			
+        <record id="cescudero_clinicachavarri" model="res.users">
+            <field name="name">Carlos Escudero</field>
+            <field name="login">cescudero@clinicachavarri.com</field>
+            
 <!--
-			<field name="password">cescudero</field>
--->		
-			<field name="password">eDL2MZUd</field>
+            <field name="password">cescudero</field>
+-->     
+            <field name="password">eDL2MZUd</field>
 
 
-			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-			<field name="tz">America/Lima</field>
-			<field name="partner_id" ref="cescudero"/>
-			<field name="lang">es_ES</field>
-			<field name="active">True</field>
-		</record>
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="tz">America/Lima</field>
+            <field name="partner_id" ref="cescudero"/>
+            <field name="lang">es_ES</field>
+            <field name="active">True</field>
+        </record>
 
 
 
@@ -123,26 +123,26 @@
 
 
 <!-- Lisette Ache -->
-		<record id="lache" model="res.partner">
-			<field name="name">Lisette Ache</field>
-			<field name="email">lache@clinicachavarri.com</field>
-	        <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
-		</record>
+        <record id="lache" model="res.partner">
+            <field name="name">Lisette Ache</field>
+            <field name="email">lache@clinicachavarri.com</field>
+            <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+        </record>
 
-		<record id="lache_clinicachavarri" model="res.users">
-			<field name="name">Lisette Ache</field>
-			<field name="login">lache@clinicachavarri.com</field>
-			
-			<field name="password">mHmCa6SW</field>
+        <record id="lache_clinicachavarri" model="res.users">
+            <field name="name">Lisette Ache</field>
+            <field name="login">lache@clinicachavarri.com</field>
+            
+            <field name="password">mHmCa6SW</field>
 
-			<field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-			<field name="tz">America/Lima</field>
-			<field name="partner_id" ref="lache"/>
-			<field name="lang">es_ES</field>
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="tz">America/Lima</field>
+            <field name="partner_id" ref="lache"/>
+            <field name="lang">es_ES</field>
 
-			<field name="active">True</field>
-		</record>
+            <field name="active">True</field>
+        </record>
 
 
-	</data>
+    </data>
 </openerp> 

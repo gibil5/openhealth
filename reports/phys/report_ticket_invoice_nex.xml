@@ -1,35 +1,35 @@
 <openerp>
-	<data>
+    <data>
 
 
 
 
 <!-- Ticket Factura Nex -->
-		<report			
-			id="report_ticket_invoice_nex"
-			model="sale.order"
-			string="Ticket Factura Nex"
-			report_type="qweb-pdf"
-			name="openhealth.report_ticket_invoice_nex_view"
-			file="openhealth.report_ticket_invoice_file_nex"
-			paperformat="appointment_receipt"
-		/>
+        <report         
+            id="report_ticket_invoice_nex"
+            model="sale.order"
+            string="Ticket Factura Nex"
+            report_type="qweb-pdf"
+            name="openhealth.report_ticket_invoice_nex_view"
+            file="openhealth.report_ticket_invoice_file_nex"
+            paperformat="appointment_receipt"
+        />
 
 
 <!-- Template --> 
 <template id="report_ticket_invoice_nex_view">
 
-	<t t-call="report.html_container">
-		<t t-foreach="docs" t-as="doc">	
-			<!-- 31 Aug 2018 -->		
-			<t>
-				<div class="page">
-	
+    <t t-call="report.html_container">
+        <t t-foreach="docs" t-as="doc"> 
+            <!-- 31 Aug 2018 -->        
+            <t>
+                <div class="page">
+    
 <!-- Title --> 
 <br/>
 <center>
 <h2>
-	Ticket Factura
+    Ticket Factura
 </h2>
 </center>
 <br/>
@@ -39,10 +39,10 @@
 <!-- My Firm --> 
 <br/>
 <div class='row'>
-<b>	
-	<div class='col-xs-12'>		
-		<t t-esc="doc.x_my_company.name"/>
-	</div>
+<b> 
+    <div class='col-xs-12'>     
+        <t t-esc="doc.x_my_company.name"/>
+    </div>
 </b>
 </div>
 
@@ -50,10 +50,10 @@
 
 <!-- My Address --> 
 <div class='row'>
-<b>	
-	<div class='col-xs-12'>		
-		<t t-esc="doc.x_my_company.x_address"/>
-	</div>
+<b> 
+    <div class='col-xs-12'>     
+        <t t-esc="doc.x_my_company.x_address"/>
+    </div>
 </b>
 </div>
 <br/>
@@ -65,32 +65,32 @@
 <table style="width:100%">
 
 <!-- My Phone --> 
-	<tr>
-		<td><b>Telf:</b></td>
-		<td><t t-esc="doc.x_my_company.phone"/></td> 
-		<td></td>
-	</tr>
+    <tr>
+        <td><b>Telf:</b></td>
+        <td><t t-esc="doc.x_my_company.phone"/></td> 
+        <td></td>
+    </tr>
 
 <!-- My Ruc --> 
-	<tr>
-		<td><b>Ruc:</b></td>
-		<td><t t-esc="doc.x_my_company.x_ruc"/></td> 
-		<td></td>
-	</tr>
+    <tr>
+        <td><b>Ruc:</b></td>
+        <td><t t-esc="doc.x_my_company.x_ruc"/></td> 
+        <td></td>
+    </tr>
 
 <!-- My Serial Nr --> 
-	<tr>
-		<td><b>Serie:</b></td>
-		<td><t t-esc="doc.x_my_company.x_series"/></td> 
-		<td></td>
-	</tr>
+    <tr>
+        <td><b>Serie:</b></td>
+        <td><t t-esc="doc.x_my_company.x_series"/></td> 
+        <td></td>
+    </tr>
 
 <!-- My Authorization --> 
-	<tr>
-		<td><b>Autorización:</b></td>
-		<td><t t-esc="doc.x_my_company.x_authorization"/></td> 
-		<td></td>
-	</tr>
+    <tr>
+        <td><b>Autorización:</b></td>
+        <td><t t-esc="doc.x_my_company.x_authorization"/></td> 
+        <td></td>
+    </tr>
 
 </table>
 <br/>
@@ -102,16 +102,16 @@
 <table style="width:100%">
 
 <!-- Firm --> 
-	<tr>
-		<td><b>Razón Social:</b></td>
-		<td><t t-esc="doc.partner_id.x_firm"/></td> 
-	</tr>
+    <tr>
+        <td><b>Razón Social:</b></td>
+        <td><t t-esc="doc.partner_id.x_firm"/></td> 
+    </tr>
 
 <!-- Ruc --> 
-	<tr>
-		<td><b>Ruc:</b></td>
-		<td><t t-esc="doc.partner_id.x_ruc"/></td> 
-	</tr>
+    <tr>
+        <td><b>Ruc:</b></td>
+        <td><t t-esc="doc.partner_id.x_ruc"/></td> 
+    </tr>
 
 </table>
 <br/>
@@ -123,16 +123,16 @@
 <table style="width:100%">
 
 <!-- Date --> 
-	<tr>
-		<td><b>Fecha:</b></td>
-		<td><t t-esc="doc.x_date_order_corr"/></td> 
-	</tr>
+    <tr>
+        <td><b>Fecha:</b></td>
+        <td><t t-esc="doc.x_date_order_corr"/></td> 
+    </tr>
 
 <!-- Serial Number --> 
-	<tr>
-		<td><b>Ticket:</b></td>
-		<td><t t-esc="doc.x_serial_nr"/></td> 
-	</tr>
+    <tr>
+        <td><b>Ticket:</b></td>
+        <td><t t-esc="doc.x_serial_nr"/></td> 
+    </tr>
 
 </table>
 <br/>
@@ -143,11 +143,11 @@
 
 <!-- Top Line --> 
 <table style="width:100%">
-	<tr>
-		<td  align="justify"  >
+    <tr>
+        <td  align="justify"  >
 ----------------------------------------------------------------
-		</td>
-	</tr>
+        </td>
+    </tr>
 </table>
 
 
@@ -156,12 +156,12 @@
 <table style="width:100%">
 
 <!-- Title --> 
-	<tr>
-		<td><b>Desc</b></td>
-		<td><b>Cnt</b></td>
-		<td><b>PUnit</b></td>
-		<td><b>Total</b></td>
-	</tr>
+    <tr>
+        <td><b>Desc</b></td>
+        <td><b>Cnt</b></td>
+        <td><b>PUnit</b></td>
+        <td><b>Total</b></td>
+    </tr>
 
 
 
@@ -171,22 +171,22 @@
 
 <!-- Name --> 
 <td>
-	<t t-esc="line.product_id.x_name_ticket"/>
+    <t t-esc="line.product_id.x_name_ticket"/>
 </td>
 
 <!-- Qty --> 
 <td>
-	<t t-esc="line.x_qty"/>
+    <t t-esc="line.x_qty"/>
 </td>
 
 <!-- Price Unit --> 
 <td>
-	<t t-esc="line.price_unit"/>
+    <t t-esc="line.price_unit"/>
 </td>
 
 <!-- Subtotal --> 
 <td>
-	<t t-esc="line.price_subtotal"/>
+    <t t-esc="line.price_subtotal"/>
 </td>
 
 </tr>
@@ -195,52 +195,52 @@
 
 <!-- Bottom Line --> 
 <table style="width:100%">
-	<tr>
-		<td  align="justify"  >
+    <tr>
+        <td  align="justify"  >
 ----------------------------------------------------------------
-		</td>
-	</tr>
+        </td>
+    </tr>
 </table>
 
 
 
 <!-- Total --> 
 <table style="width:100%">
-	<tr>
-		<td><b>Neto S/.</b></td>
-		<td align="right" ><t t-esc="doc.x_total_net"/></td> 
-	</tr>
-	<tr>
-		<td><b>I.G.V. 18% S/.</b></td>
-		<td align="right" ><t t-esc="doc.x_total_tax"/></td> 
-	</tr>
-	<tr>
-		<td><b>Total S/.</b></td>
-		<td align="right" ><t t-esc="doc.amount_total"/></td> 
-	</tr>
+    <tr>
+        <td><b>Neto S/.</b></td>
+        <td align="right" ><t t-esc="doc.x_total_net"/></td> 
+    </tr>
+    <tr>
+        <td><b>I.G.V. 18% S/.</b></td>
+        <td align="right" ><t t-esc="doc.x_total_tax"/></td> 
+    </tr>
+    <tr>
+        <td><b>Total S/.</b></td>
+        <td align="right" ><t t-esc="doc.amount_total"/></td> 
+    </tr>
 </table>
 
 
 
 <!-- Total Words --> 
 <table style="width:100%">
-	<tr>
-		<td><b>Son:</b></td>
-	</tr>
-	<tr>
-		<td align="right" ><t t-esc="doc.x_total_in_words"/></td> 
-	</tr>
+    <tr>
+        <td><b>Son:</b></td>
+    </tr>
+    <tr>
+        <td align="right" ><t t-esc="doc.x_total_in_words"/></td> 
+    </tr>
 <!--
-	<tr>
-		<td>Y</td>
-	</tr>
+    <tr>
+        <td>Y</td>
+    </tr>
 -->
-	<tr>
-		<td align="right" >Y <t t-esc="doc.x_total_cents"/>/100</td> 
-	</tr>
-	<tr>
-		<td align="right" >Soles</td> 
-	</tr>
+    <tr>
+        <td align="right" >Y <t t-esc="doc.x_total_cents"/>/100</td> 
+    </tr>
+    <tr>
+        <td align="right" >Soles</td> 
+    </tr>
 </table>
 <br/>
 
@@ -249,42 +249,42 @@
 
 <!-- Web --> 
 <table style="width:100%">
-	<tr>
-		<td align="center" >
-			<t t-esc="doc.x_my_company.website"/>
-		</td>
-	</tr>
+    <tr>
+        <td align="center" >
+            <t t-esc="doc.x_my_company.website"/>
+        </td>
+    </tr>
 </table>
 <br/>
 
 
 <!-- Email --> 
 <table style="width:100%">
-	<tr>
-		<td align="center" >
-			<t t-esc="doc.x_my_company.email"/>
-		</td>
-	</tr>
+    <tr>
+        <td align="center" >
+            <t t-esc="doc.x_my_company.email"/>
+        </td>
+    </tr>
 </table>
 <br/>
 
 
 <!-- Disclaimer --> 
 <table style="width:100%">
-	<tr>
-		<td>
-			<t t-esc="doc.x_my_company.x_warning"/>
-		</td>
-	</tr>
+    <tr>
+        <td>
+            <t t-esc="doc.x_my_company.x_warning"/>
+        </td>
+    </tr>
 </table>
 <br/>
 
-				</div>
-			</t>
-		</t>
-	</t>
+                </div>
+            </t>
+        </t>
+    </t>
 </template>
 
 
-	</data>
+    </data>
 </openerp>

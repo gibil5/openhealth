@@ -1,41 +1,41 @@
 <openerp>
-	<data>
+    <data>
 
 
 
 
 <!-- Report - HC --> 
 <report
-	string="HC - Hoja de Filiacion"
-	id="report_patient"
-	model="oeh.medical.patient"
-	report_type="qweb-pdf"
-	
-	name="openhealth.report_patient_view"            
-	
-	file="oeh_medical_patient.report_patient"
-	/>
+    string="HC - Hoja de Filiacion"
+    id="report_patient"
+    model="oeh.medical.patient"
+    report_type="qweb-pdf"
+    
+    name="openhealth.report_patient_view"            
+    
+    file="oeh_medical_patient.report_patient"
+    />
 
 <template id="openhealth.report_patient_view">
-	<t t-call="report.html_container">                 
-	<t t-foreach="docs" t-as="doc">
-	<t>          
+    <t t-call="report.html_container">                 
+    <t t-foreach="docs" t-as="doc">
+    <t>          
 
 
 
 <!-- Header --> 
 <div class="header">    
-	<img src='/openhealth/static/src/img/logo_chavarri.png' style="max-height: 100px;"/>
+    <img src='/openhealth/static/src/img/logo_chavarri.png' style="max-height: 100px;"/>
 </div>
 
 
 
-<!-- 								Page 1 - Begin	 										-->
+<!--                                Page 1 - Begin                                          -->
 <div class="page">    
 
 <center>
 <h1>
-	Hoja de Filiación
+    Hoja de Filiación
 </h1>
 </center>
 <br/>
@@ -60,13 +60,13 @@
 
 
 <h2>                            
-	Datos Generales
+    Datos Generales
 </h2>
 <br/>
 
 
 <table style="line-height: 300%;">
-						 
+                         
 <!--
 <tr>
 <th>Estado Civil:</th>
@@ -180,7 +180,7 @@
 <th><t t-esc="doc."/></th>
 </tr>
 -->
-	</table>    
+    </table>    
 </div> <!-- page --> 
 
 
@@ -215,9 +215,9 @@ Historia #:
 
 
 
-	</t>
-	</t>
-	</t>
+    </t>
+    </t>
+    </t>
 </template>
-	</data>
+    </data>
 </openerp>

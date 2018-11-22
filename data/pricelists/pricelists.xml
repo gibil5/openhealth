@@ -1,25 +1,25 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
-	<data noupdate='0'>
+    <data noupdate='0'>
 
 
 
-		<!-- VIP -->
-		<record id='pricelist_vip' model='product.pricelist'>
-			<field name='name'>VIP</field>
-		</record>
+        <!-- VIP -->
+        <record id='pricelist_vip' model='product.pricelist'>
+            <field name='name'>VIP</field>
+        </record>
 
 
 <!--
 <record id='pricelist_vip' model='product.pricelist'>
-	<field name='item_ids'	ref='vip_co2_nec_rn1_one' />
+    <field name='item_ids'  ref='vip_co2_nec_rn1_one' />
 </record>
 -->
 
 <!--
 <record id='pricelist_vip_item_0' model='product.pricelist'>
-	<field name='name'>LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento Cuello Grado 1 - 1</field>
-	<field name='item_ids'	ref='vip_co2_nec_rn1_one' />
+    <field name='name'>LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento Cuello Grado 1 - 1</field>
+    <field name='item_ids'  ref='vip_co2_nec_rn1_one' />
 </record>
 -->
 
@@ -30,23 +30,23 @@
 <!--
 <record id='vip_co2_nec_rn1_one' model='product.pricelist.item'>
 
-	<field name='name'>LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento Cuello Grado 1 - 1</field>
+    <field name='name'>LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento Cuello Grado 1 - 1</field>
 
-	<field name='product_tmpl_id' 	ref='co2_nec_rn1_one'/>
+    <field name='product_tmpl_id'   ref='co2_nec_rn1_one'/>
 
-	<field name='fixed_price'>2500.0</field>
-	<field name='min_quantity'>1</field>
-	<field name='applied_on'>1_product</field>
+    <field name='fixed_price'>2500.0</field>
+    <field name='min_quantity'>1</field>
+    <field name='applied_on'>1_product</field>
 
-	<field name='pricelist_id' 	ref='pricelist_vip'/>
+    <field name='pricelist_id'  ref='pricelist_vip'/>
 </record>
 
 <record id='co2_nec_rn1_one' model='product.template'>
-	<field name='item_id'	ref='vip_co2_nec_rn1_one' />
+    <field name='item_id'   ref='vip_co2_nec_rn1_one' />
 </record>
 -->
 
 
-	</data>
+    </data>
 </openerp>
 

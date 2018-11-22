@@ -1,315 +1,261 @@
 <?xml version="1.0"?>
 <openerp>
-	<data>
-		
+    <data>
+        
 
 
 <!-- FORM --> 
-		<record model="ir.ui.view" id="account_contasis_form_view">
-			<field name="name">account.contasis.form</field>
-			
-			<field name="model">openhealth.account.contasis</field>
-			
-			<field name="arch" type="xml">
-				<form string="Account Contasis Form">
-					
+        <record model="ir.ui.view" id="account_contasis_form_view">
+            <field name="name">account.contasis.form</field>
+            
+            <field name="model">openhealth.account.contasis</field>
+            
+            <field name="arch" type="xml">
+                <form string="Account Contasis Form">
+                    
 
 
-					<!-- Header -->
-					<header>
+                    <!-- Header -->
+                    <header>
 
 
 <!--
-								attrs="{'invisible':[	
-														('x_type','not in',['order']), 
-											]}"
+                                attrs="{'invisible':[   
+                                                        ('x_type','not in',['order']), 
+                                            ]}"
 -->
-						<!-- Orders -->
-						<button 
-								type="object" 
-								class="oe_highlight"
+                        <!-- Orders -->
+                        <button 
+                                type="object" 
+                                class="oe_highlight"
 
-								name="update"
+                                name="update"
 
-								string="Actualizar Ventas"								
-						/>
-
-
-
-
-						<!-- Registro -->
-						<button 
-								class="oe_highlight"
-								type="action" 
-								name="%(account_line_list_action)d" 
-
-								context="{
-											'search_default_account_id': active_id,	
-										}" 											
-
-								string="Registro de Ventas"	
-						/>
+                                string="Actualizar Ventas"                              
+                        />
 
 
 
 
-						<!-- Contasis -->
-						<button 
-								class="oe_highlight"
-								type="action" 
-								name="%(account_line_form_action)d"	
-								context="{
-											'search_default_account_id': active_id,	
-										}" 											
-								string="Contasis"								
-						/>
+                        <!-- Registro -->
+                        <button 
+                                class="oe_highlight"
+                                type="action" 
+                                name="%(account_line_list_action)d" 
+
+                                context="{
+                                            'search_default_account_id': active_id, 
+                                        }"                                          
+
+                                string="Registro de Ventas" 
+                        />
 
 
 
-						<!-- Tarjetas -->
-						<button 
-								class="oe_highlight"
-								type="action" 
-								context="{
-											'search_default_account_id': active_id,	
-										}"
-								
-								name="%(payment_line_form_action)d"	
-								
-								string="Tarjetas"								
-						/>
-					</header>
+
+                        <!-- Contasis -->
+                        <button 
+                                class="oe_highlight"
+                                type="action" 
+                                name="%(account_line_form_action)d" 
+                                context="{
+                                            'search_default_account_id': active_id, 
+                                        }"                                          
+                                string="Contasis"                               
+                        />
 
 
+
+                        <!-- Tarjetas -->
+                        <button 
+                                class="oe_highlight"
+                                type="action" 
+                                context="{
+                                            'search_default_account_id': active_id, 
+                                        }"
+                                
+                                name="%(payment_line_form_action)d" 
+                                
+                                string="Tarjetas"                               
+                        />
+                    </header>
 
 
 
 
 
-					<!-- Sheet -->	
-					<sheet>
 
 
-						<group	string="Total"	>
-							<group>
-								<field name="name"/>
+                    <!-- Sheet -->  
+                    <sheet>
+
+
+                        <group  string="Total"  >
+                            <group>
+                                <field name="name"/>
 <!--
-								<field name="date"/>
+                                <field name="date"/>
 -->
-								<field name="date_begin"/>
+                                <field name="date_begin"/>
 
-								<field name="date_end"/>
+                                <field name="date_end"/>
 
-								<field name="test_target"/>
-							</group>
+                                <field name="test_target"/>
+                            </group>
 
-							
-							<group>
-<!--								
-								<field name="x_type"/>
+                            
+                            <group>
+<!--                                
+                                <field name="x_type"/>
 -->
-								<field name="owner"/>
+                                <field name="owner"/>
 
-								<field name="total_amount"			/>
+                                <field name="total_amount"          />
 
-								<field name="total_count"/>
-							</group>
-
-
-						</group>
+                                <field name="total_count"/>
+                            </group>
 
 
+                        </group>
 
 
 
 
-						<!-- Form -->
+
+
+                        <!-- Form -->
 <!--
-						<group	string=""	>
-							<group>
-							</group>
+                        <group  string=""   >
+                            <group>
+                            </group>
 
-							<group>
-							</group>
-						</group>
+                            <group>
+                            </group>
+                        </group>
 -->
 
 
 
 
 
-						<!-- Notebook --> 
-						<notebook>	
-
-<!--
-							<page	string="Ventas"		attrs="{'invisible':[('x_type', '!=', 'order')]}"	>
-								<field name="account_line"/>
--->
-							<page	string="Ventas"		>
-
-								<field name="account_line">
-
-									<tree string="Ventas"	limit="1000"	>	
-
-										<field name="serial_nr"/>
-
-										<field name="state"/>
-
-										<field name="x_type"/>
-
-
-<!--					                    
-										<field name="date"/>
-										<field name="date_time_corr"/>
--->				                    
-										<field name="date_time"/>
-										<field name="date_char"/>
-										<field name="time_char"/>
-
-
-
-										<field name="patient"/>
-										<field name="document"/>
-										<field name="document_type"/>
-
-
-
-										<field name="qty"/>
-										<field name="product"/>
-										<field name="product_type"/>
-										
-
-										<field name="amount_net"/>										
-										<field name="amount_tax"/>
-										<field name="amount"/>
+                        <!-- Notebook --> 
+                        <notebook>  
 
 <!--
-										<field name="date"/>
-										<field name="name"/>
-										<field name="document"/>
-										<field name="numdoc"/>
+                            <page   string="Ventas"     attrs="{'invisible':[('x_type', '!=', 'order')]}"   >
+                                <field name="account_line"/>
 -->
+                            <page   string="Ventas"     >
 
-									</tree>
-								</field>
-							</page>
-						
+                                <field name="account_line">
+
+                                    <tree string="Ventas"   limit="1000"    >   
+
+                                        <field name="serial_nr"/>
+
+                                        <field name="state"/>
+
+                                        <field name="x_type"/>
+
+
+<!--                                        
+                                        <field name="date"/>
+                                        <field name="date_time_corr"/>
+-->                                 
+                                        <field name="date_time"/>
+                                        <field name="date_char"/>
+                                        <field name="time_char"/>
+
+
+
+                                        <field name="patient"/>
+                                        <field name="document"/>
+                                        <field name="document_type"/>
+
+
+
+                                        <field name="qty"/>
+                                        <field name="product"/>
+                                        <field name="product_type"/>
+                                        
+
+                                        <field name="amount_net"/>                                      
+                                        <field name="amount_tax"/>
+                                        <field name="amount"/>
 
 <!--
-							<page	string="Contasis"		>
-								<field name="account_line_contasis"/>
-							</page>
+                                        <field name="date"/>
+                                        <field name="name"/>
+                                        <field name="document"/>
+                                        <field name="numdoc"/>
+-->
+
+                                    </tree>
+                                </field>
+                            </page>
+                        
+
+<!--
+                            <page   string="Contasis"       >
+                                <field name="account_line_contasis"/>
+                            </page>
 -->
 
 
-						</notebook>
+                        </notebook>
 
-					</sheet>
-				</form>
-			</field>
-		</record>
-
-
+                    </sheet>
+                </form>
+            </field>
+        </record>
 
 
 
 
 
-		
+
+
+        
 <!-- TREE --> 
-		<record model="ir.ui.view" id="account_contasis_view_order_tree">
+        <record model="ir.ui.view" id="account_contasis_view_order_tree">
 
-			<field name="name">openhealth.account.contasis.tree</field>
-			
-			<field name="model">openhealth.account.contasis</field>
-			
-			<field name="arch" type="xml">
+            <field name="name">openhealth.account.contasis.tree</field>
+            
+            <field name="model">openhealth.account.contasis</field>
+            
+            <field name="arch" type="xml">
 <!--
-				<tree string="Account Contasis Tree" default_order='date desc'>
+                <tree string="Account Contasis Tree" default_order='date desc'>
 -->
-				<tree string="Account Contasis Tree">
-					
+                <tree string="Account Contasis Tree">
+                    
 
 <!--
-					<field name="date"			string="Fecha"	/>
+                    <field name="date"          string="Fecha"  />
 -->
-					<field name="name"	 				/>
+                    <field name="name"                  />
 
-					<field name="test_target"/>
+                    <field name="test_target"/>
 
-					<field name="date_begin"	string="Fecha Inicio"	/>
+                    <field name="date_begin"    string="Fecha Inicio"   />
 
-					<field name="date_end"		string="Fecha Fin"	/>
-
-
-
-					<field name="owner"/>
+                    <field name="date_end"      string="Fecha Fin"  />
 
 
 
-					<field name="x_type"/>
-
-					<field name="total_amount"     />
-
-					<field name="total_count"/>
-
-				</tree>
-			</field>
-		</record>
+                    <field name="owner"/>
 
 
 
+                    <field name="x_type"/>
 
+                    <field name="total_amount"     />
 
+                    <field name="total_count"/>
 
-
-		<!-- ACTION - All -->
-		<record model="ir.actions.act_window" id="account_contasis_list_action">	
-			<field name="name">Todo</field>
-			<field name="res_model">openhealth.account.contasis</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-			<!--
-			<field name="domain">[]</field>
-			<field name="context">{}</field>
-			<field name="view_id" eval="False"/>			
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first order
-				</p>
-			</field>
-			-->
-		</record>
-
-
-		<!-- ACTION - Caja -->
-		<record model="ir.actions.act_window" id="account_contasis_cash_list_action">	
-			<field name="name">Todo</field>
-			<field name="res_model">openhealth.account.contasis</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-
-
-			<field name="domain">[
-									('owner', '=', 'cash'),
-								]
-			</field>
-
-			<field name="context">{
-									'default_owner': 'cash',
-								}
-			</field>
-
-
-			<!--
-			<field name="domain">[]</field>
-			<field name="context">{}</field>
-			<field name="view_id" eval="False"/>			
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first order
-				</p>
-			</field>
-			-->
-		</record>
+                </tree>
+            </field>
+        </record>
 
 
 
@@ -317,73 +263,127 @@
 
 
 
-
-		<!-- ACTION - Order -->
-		<record model="ir.actions.act_window" id="account_contasis_order_list_action">	
-			<field name="name">Ventas</field>
-			<field name="res_model">openhealth.account.contasis</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-
-			<field name="domain">[
-									('x_type', '=', 'order'),
-								]
-			</field>
-
-			<field name="context">{
-									'default_x_type': 'order',
-								}
-			</field>
-
-			<!--
-			<field name="domain">[]</field>
-			<field name="context">{}</field>
-			<field name="view_id" eval="False"/>			
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first order
-				</p>
-			</field>
-			-->
-		</record>
+        <!-- ACTION - All -->
+        <record model="ir.actions.act_window" id="account_contasis_list_action">    
+            <field name="name">Todo</field>
+            <field name="res_model">openhealth.account.contasis</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>            
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first order
+                </p>
+            </field>
+            -->
+        </record>
 
 
+        <!-- ACTION - Caja -->
+        <record model="ir.actions.act_window" id="account_contasis_cash_list_action">   
+            <field name="name">Todo</field>
+            <field name="res_model">openhealth.account.contasis</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
 
 
-		<!-- ACTION - Patient -->
-		<record model="ir.actions.act_window" id="account_contasis_patient_list_action">	
+            <field name="domain">[
+                                    ('owner', '=', 'cash'),
+                                ]
+            </field>
 
-			<field name="name">Pacientes Nuevos</field>
-			
-			<field name="res_model">openhealth.account.contasis</field>
-			<field name="view_type">form</field>
-
-			<field name="view_mode">tree,form,graph,pivot</field>
-
-			<field name="domain">[
-									('x_type', '=', 'patient'),
-								]
-			</field>
+            <field name="context">{
+                                    'default_owner': 'cash',
+                                }
+            </field>
 
 
-			<field name="context">{
-									'default_x_type': 'patient',
-								}
-			</field>
-
-
-			<!--
-			<field name="domain">[]</field>
-			<field name="context">{}</field>
-			<field name="view_id" eval="False"/>			
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first order
-				</p>
-			</field>
-			-->
-		</record>
+            <!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>            
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first order
+                </p>
+            </field>
+            -->
+        </record>
 
 
 
 
-	</data>
+
+
+
+
+        <!-- ACTION - Order -->
+        <record model="ir.actions.act_window" id="account_contasis_order_list_action">  
+            <field name="name">Ventas</field>
+            <field name="res_model">openhealth.account.contasis</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+
+            <field name="domain">[
+                                    ('x_type', '=', 'order'),
+                                ]
+            </field>
+
+            <field name="context">{
+                                    'default_x_type': 'order',
+                                }
+            </field>
+
+            <!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>            
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first order
+                </p>
+            </field>
+            -->
+        </record>
+
+
+
+
+        <!-- ACTION - Patient -->
+        <record model="ir.actions.act_window" id="account_contasis_patient_list_action">    
+
+            <field name="name">Pacientes Nuevos</field>
+            
+            <field name="res_model">openhealth.account.contasis</field>
+            <field name="view_type">form</field>
+
+            <field name="view_mode">tree,form,graph,pivot</field>
+
+            <field name="domain">[
+                                    ('x_type', '=', 'patient'),
+                                ]
+            </field>
+
+
+            <field name="context">{
+                                    'default_x_type': 'patient',
+                                }
+            </field>
+
+
+            <!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>            
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first order
+                </p>
+            </field>
+            -->
+        </record>
+
+
+
+
+    </data>
 </openerp>

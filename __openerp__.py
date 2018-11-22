@@ -241,8 +241,13 @@
 		# Accounting 
 		#'views/payment_methods/payment_method_line.xml',
 		'views/orders/payment_method_line.xml',
+
+
+
 		'views/account/account_line.xml',
 		'views/account/account_contasis.xml',
+		'views/account/patient_line.xml',
+		'views/account/patient_line_pivot.xml',
 
 
 
@@ -259,8 +264,6 @@
 		#'views/places/place.xml',
 		'views/marketing/place.xml',
 		
-		'views/account/patient_line.xml',
-		'views/account/patient_line_pivot.xml',
 		'views/marketing/marketing.xml',
 		'views/marketing/marketing_pivot.xml',
 
@@ -628,8 +631,8 @@
 
 
 		# Consultation - 2
-		'views/consultations/consultation_med.xml',
-		'views/consultations/consultation_med_first.xml',
+		#'views/consultations/consultation_med.xml',	# Dep
+		'views/consultations/consultation_diagnosis.xml',
 		
 
 		# Treatments - 2 

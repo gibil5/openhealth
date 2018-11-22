@@ -1,57 +1,55 @@
 <?xml version="1.0"?>
 <openerp>
-	<data>
-		
+    <data>
+        
+
+
+        <!-- FORM --> 
+        <record model="ir.ui.view" id="patient_line_form_view">
+
+            <field name="name">openhealth.patient.line.form</field>
+            
+            <field name="model">openhealth.patient.line</field>
+            
+            <field name="arch" type="xml">
+
+                <form string="Patient Line Form">
+                    
+
+
+                    <!-- Header -->
+                    <header></header>
 
 
 
+                    <!-- Sheet -->  
+                    <sheet>
 
-		<!-- FORM --> 
-		<record model="ir.ui.view" id="patient_line_form_view">
+                        <group>                 
+                            <group>
 
-			<field name="name">openhealth.patient.line.form</field>
-			
-			<field name="model">openhealth.patient.line</field>
-			
-			<field name="arch" type="xml">
+                                <field name="patient"/>
 
-				<form string="Patient Line Form">
-					
+                                <field name="treatment"/>
 
+                                <field name="consultation"/>
 
-					<!-- Header -->
-					<header></header>
+                            </group>
 
+                            <group>
+                                <field name="vip"/>
 
+                                <field name="vip_date"/>
 
-					<!-- Sheet -->	
-					<sheet>
-
-						<group>					
-							<group>
-
-								<field name="patient"/>
-
-								<field name="treatment"/>
-
-								<field name="consultation"/>
-
-							</group>
-
-							<group>
-								<field name="vip"/>
-
-								<field name="vip_date"/>
-
-								<field name="nr_lines_vip"/>
-							</group>
-						</group>
+                                <field name="nr_lines_vip"/>
+                            </group>
+                        </group>
 
 
 
-						<!-- Notebook --> 
-						<notebook>	
-		
+                        <!-- Notebook --> 
+                        <notebook>  
+        
 
 
 
@@ -59,67 +57,67 @@
 <!-- 
 All Sales
 -->
-							<page	string="Ventas"		>
-								<field name="sale_line">
-									<tree string="Ventas"	limit="1000"	>	
-									
-										<field name="x_date_created"/>
+                            <page   string="Ventas"     >
+                                <field name="sale_line">
+                                    <tree string="Ventas"   limit="1000"    >   
+                                    
+                                        <field name="x_date_created"/>
 
-										<field name="product_id"/>
+                                        <field name="product_id"/>
 
-										<field name="product_uom_qty"/>
+                                        <field name="product_uom_qty"/>
 
-										<field name="price_unit"/>
+                                        <field name="price_unit"/>
 
-										<field name="price_subtotal"/>
-									</tree>
-								</field>
-							</page>
+                                        <field name="price_subtotal"/>
+                                    </tree>
+                                </field>
+                            </page>
 
 
 
 <!-- 
 Consultations
 -->
-							<page	string="Consultas"		>
-								<field name="consu_line">
-									<tree string="Consultas"	limit="1000"	>	
-									
-										<field name="x_date_created"/>
+                            <page   string="Consultas"      >
+                                <field name="consu_line">
+                                    <tree string="Consultas"    limit="1000"    >   
+                                    
+                                        <field name="x_date_created"/>
 
-										<field name="product_id"/>
+                                        <field name="product_id"/>
 
-										<field name="product_uom_qty"/>
+                                        <field name="product_uom_qty"/>
 
-										<field name="price_unit"/>
+                                        <field name="price_unit"/>
 
-										<field name="price_subtotal"/>
-									</tree>
-								</field>
-							</page>
+                                        <field name="price_subtotal"/>
+                                    </tree>
+                                </field>
+                            </page>
 
 
 
 <!--
 Recommendations
--->		
-							<page	string="Recomendaciones"		>
-								<field name="reco_line">
-									<tree string="Recomendaciones"	limit="1000"	>	
-									
-										<field name="x_date_created"/>
+-->     
+                            <page   string="Recomendaciones"        >
+                                <field name="reco_line">
+                                    <tree string="Recomendaciones"  limit="1000"    >   
+                                    
+                                        <field name="x_date_created"/>
 
-										<field name="product_id"/>
+                                        <field name="product_id"/>
 
-										<field name="doctor"/>
+                                        <field name="doctor"/>
 
-										<field name="price"/>
-										<field name="price_vip"/>
-										<field name="price_manual"/>
-										<field name="price_applied"/>
-									</tree>
-								</field>
-							</page>
+                                        <field name="price"/>
+                                        <field name="price_vip"/>
+                                        <field name="price_manual"/>
+                                        <field name="price_applied"/>
+                                    </tree>
+                                </field>
+                            </page>
 
 
 
@@ -128,22 +126,22 @@ Recommendations
 <!-- 
 Budgets
 -->
-							<page	string="Presupuestos"		>
-								<field name="budget_line">
-									<tree string="Presupuestos"	limit="1000"	>	
-									
-										<field name="x_date_created"/>
+                            <page   string="Presupuestos"       >
+                                <field name="budget_line">
+                                    <tree string="Presupuestos" limit="1000"    >   
+                                    
+                                        <field name="x_date_created"/>
 
-										<field name="product_id"/>
+                                        <field name="product_id"/>
 
-										<field name="product_uom_qty"/>
+                                        <field name="product_uom_qty"/>
 
-										<field name="price_unit"/>
+                                        <field name="price_unit"/>
 
-										<field name="price_subtotal"/>
-									</tree>
-								</field>
-							</page>
+                                        <field name="price_subtotal"/>
+                                    </tree>
+                                </field>
+                            </page>
 
 
 
@@ -152,22 +150,22 @@ Budgets
 <!--
 Procedures
 -->
-							<page	string="Procedimientos"		>
-								<field name="procedure_line">
-									<tree string="Procedimientos"	limit="1000"	>	
-									
-										<field name="x_date_created"/>
+                            <page   string="Procedimientos"     >
+                                <field name="procedure_line">
+                                    <tree string="Procedimientos"   limit="1000"    >   
+                                    
+                                        <field name="x_date_created"/>
 
-										<field name="product_id"/>
+                                        <field name="product_id"/>
 
-										<field name="product_uom_qty"/>
+                                        <field name="product_uom_qty"/>
 
-										<field name="price_unit"/>
+                                        <field name="price_unit"/>
 
-										<field name="price_subtotal"/>
-									</tree>
-								</field>
-							</page>
+                                        <field name="price_subtotal"/>
+                                    </tree>
+                                </field>
+                            </page>
 
 
 
@@ -188,23 +186,23 @@ Procedures
 
 <!--
 Sales with Vip Card 
--->								
-							<page	string="Vip - Con Tarjeta"		>
-								<field name="order_line_vip">
-									<tree string="Ventas"	limit="1000"	>	
-									
-										<field name="x_date_created"/>
+-->                             
+                            <page   string="Vip - Con Tarjeta"      >
+                                <field name="order_line_vip">
+                                    <tree string="Ventas"   limit="1000"    >   
+                                    
+                                        <field name="x_date_created"/>
 
-										<field name="product_id"/>
+                                        <field name="product_id"/>
 
-										<field name="product_uom_qty"/>
+                                        <field name="product_uom_qty"/>
 
-										<field name="price_unit"/>
+                                        <field name="price_unit"/>
 
-										<field name="price_subtotal"/>
-									</tree>
-								</field>
-							</page>
+                                        <field name="price_subtotal"/>
+                                    </tree>
+                                </field>
+                            </page>
 <!--
 -->
 
@@ -220,32 +218,32 @@ Sales with Vip Card
 Sales by patient who have a Vip Card
 -->
 <!--
-							<page	string="Vip - Ventas">
-								<field name="order_line">
-									<tree string="Ventas"	limit="1000"	>	
+                            <page   string="Vip - Ventas">
+                                <field name="order_line">
+                                    <tree string="Ventas"   limit="1000"    >   
 
-										<field name="x_date_created"/>
+                                        <field name="x_date_created"/>
 
-										<field name="product_id"/>
+                                        <field name="product_id"/>
 
-										<field name="product_uom_qty"/>
+                                        <field name="product_uom_qty"/>
 
-										<field name="price_unit"/>
+                                        <field name="price_unit"/>
 
-										<field name="price_subtotal"/>
-									</tree>
-								</field>
-							</page>
+                                        <field name="price_subtotal"/>
+                                    </tree>
+                                </field>
+                            </page>
 -->
 
 
 
 
-						</notebook>
-					</sheet>
-				</form>
-			</field>
-		</record>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
 
 
 
@@ -255,225 +253,202 @@ Sales by patient who have a Vip Card
 
 
 
-		<!-- Tree --> 
-		<record model="ir.ui.view" id="patient_line_view_order_tree">
-			<field name="name">openhealth.patient.line.tree</field>
-			<field name="model">openhealth.patient.line</field>
-			<field name="arch" type="xml">
-				
+        <!-- Tree --> 
+        <record model="ir.ui.view" id="patient_line_view_order_tree">
+            <field name="name">openhealth.patient.line.tree</field>
+            <field name="model">openhealth.patient.line</field>
+            <field name="arch" type="xml">
+                
 
-				<tree string="Patient Line Tree"
+                <tree string="Patient Line Tree"
 
-						colors="
-						red:nr_lines_vip==0
-						"
-					>
-<!--					
-						green:state=='sent';
-						blue:state=='sale';
-						grey:state in ('cancel')
+                        colors="
+                        red:nr_lines_vip==0
+                        "
+                    >
+<!--                    
+                        green:state=='sent';
+                        blue:state=='sale';
+                        grey:state in ('cancel')
 
-						default_order='nr_lines_vip'
+                        default_order='nr_lines_vip'
 -->
 
-					<field name="patient"/>
+                    <field name="patient"/>
 
-					<field name="sex"/>
+                    <field name="sex"/>
 
-					<field name="age_years"/>
+                    <field name="age_years"/>
 
-					<field name="date_record"/>
+                    <field name="date_record"/>
 
-					<field name="first_contact"/>
+                    <field name="first_contact"/>
 
-					<field name="education"/>
+                    <field name="education"/>
 
-					<field name="country"/>
+                    <field name="country"/>
 
-					<field name="city"/>
+                    <field name="city"/>
 
-					<field name="district"/>
+                    <field name="district"/>
 
 
 
-					<field name="vip"/>
+                    <field name="vip"/>
 
-					<field name="vip_date"/>
+                    <field name="vip_date"/>
 <!--
 
 -->
-					<field name="nr_lines_vip"		attrs="{
-																'invisible':[('nr_lines_vip', '=', -1)], 
-															}"
-						/>
+                    <field name="nr_lines_vip"      attrs="{
+                                                                'invisible':[('nr_lines_vip', '=', -1)], 
+                                                            }"
+                        />
 
-						
-
-<!--
-					<field name="order_line"/>
-
-					<field name="order_line_vip"/>
--->
-
-
-					<field name="reco_line"/>
-
-					<field name="procedure_line"/>
-				</tree>
-			</field>
-		</record>
-
-
-
-
-
-		<!-- Tree 2 --> 
-		<record model="ir.ui.view" id="patient_line_proc_view_tree">
-			<field name="name">openhealth.patient.line.tree</field>
-			<field name="model">openhealth.patient.line</field>
-			<field name="arch" type="xml">
-				
-
-				<tree string="Patient Line Tree"
-
-						colors="
-						red:nr_proc==0
-						"
-
-
-					>
-<!--					
-						red:nr_lines_proc==0
-
-						default_order='nr_lines_proc,date_record asc'
-
-						green:state=='sent';
-						blue:state=='sale';
-						grey:state in ('cancel')
-
-						default_order='nr_lines_vip'
--->
-
-
-					<field name="emr"/>
-
-
-					<field name="patient"/>
-
-					<field name="doctor"/>
-
-					<field name="date_record"/>
-
+                        
 
 <!--
-					<field name="treatment"/>
+                    <field name="order_line"/>
 
-					<field name="consultation"/>
+                    <field name="order_line_vip"/>
 -->
 
 
+                    <field name="reco_line"/>
+
+                    <field name="procedure_line"/>
+                </tree>
+            </field>
+        </record>
 
 
 
 
 
+        <!-- Tree 2 --> 
+        <record model="ir.ui.view" id="patient_line_proc_view_tree">
+            <field name="name">openhealth.patient.line.tree</field>
+            <field name="model">openhealth.patient.line</field>
+            <field name="arch" type="xml">
+                
+
+                <tree string="Patient Line Tree"
+
+                        colors="
+                        red:nr_proc==0
+                        "
 
 
+                    >
+<!--                    
+                        red:nr_lines_proc==0
 
-					<field name="budget_prod"/>
+                        default_order='nr_lines_proc,date_record asc'
 
-					<field name="budget_amount"/>
+                        green:state=='sent';
+                        blue:state=='sale';
+                        grey:state in ('cancel')
 
-					<field name="budget_flag"/>
-
-					<field name="nr_budget"/>
-
-
-
-
-					<field name="nr_reco"/>						
-
-					<field name="nr_sale"/>
-
-					<field name="nr_consu"/>						
-
-					<field name="nr_products"/>
-
-					<field name="nr_proc"/>						
+                        default_order='nr_lines_vip'
+-->
 
 
+                    <field name="emr"/>
 
+
+                    <field name="patient"/>
+
+                    <field name="doctor"/>
+
+                    <field name="date_record"/>
 
 
 <!--
-					<field name="budget_date"/>
+                    <field name="treatment"/>
+
+                    <field name="consultation"/>
 -->
 
 
 
 
-					<field name="sex"/>
-
-					<field name="age_years"/>
-
-					<field name="phone_1"/>
-
-					<field name="phone_2"/>
-
-					<field name="email"/>
-
-					<field name="chief_complaint"/>
-
-					<field name="diagnosis"/>
 
 
 
-					<field name="education"/>
-
-					<field name="function"/>
-
-
-					<field name="city"/>
-
-					<field name="district"/>
 
 
 
-<!--
-					<field name="vip"/>
+                    <field name="budget_prod"/>
 
-					<field name="first_contact"/>
+                    <field name="budget_amount"/>
+
+                    <field name="budget_flag"/>
+
+                    <field name="nr_budget"/>
 
 
-					<field name="country"/>
 
-					<field name="city"/>
 
-					<field name="district"/>
--->
+                    <field name="nr_reco"/>                     
 
+                    <field name="nr_sale"/>
+
+                    <field name="nr_consu"/>                        
+
+                    <field name="nr_products"/>
+
+                    <field name="nr_proc"/>                     
 
 
 
 
 
 <!--
-
-
-					<field name="vip"/>
-					<field name="vip_date"/>
-					<field name="nr_lines_vip"		attrs="{
-																'invisible':[('nr_lines_vip', '=', -1)], 
-															}"/>
+                    <field name="budget_date"/>
 -->
+
+
+
+
+                    <field name="sex"/>
+
+                    <field name="age_years"/>
+
+                    <field name="phone_1"/>
+
+                    <field name="phone_2"/>
+
+                    <field name="email"/>
+
+                    <field name="chief_complaint"/>
+
+                    <field name="diagnosis"/>
+
+
+
+                    <field name="education"/>
+
+                    <field name="function"/>
+
+
+                    <field name="city"/>
+
+                    <field name="district"/>
+
 
 
 <!--
-					<field name="order_line"/>
-					<field name="order_line_vip"/>
+                    <field name="vip"/>
+
+                    <field name="first_contact"/>
+
+
+                    <field name="country"/>
+
+                    <field name="city"/>
+
+                    <field name="district"/>
 -->
-
-
 
 
 
@@ -481,207 +456,230 @@ Sales by patient who have a Vip Card
 
 
 <!--
-					<field name="sale_line"/>
 
-					<field name="consu_line"/>
 
-					<field name="reco_line"/>
-
-					<field name="procedure_line"/>
+                    <field name="vip"/>
+                    <field name="vip_date"/>
+                    <field name="nr_lines_vip"      attrs="{
+                                                                'invisible':[('nr_lines_vip', '=', -1)], 
+                                                            }"/>
 -->
 
-				</tree>
-			</field>
-		</record>
-
-
-
-
-
-
-		<!-- Action 1 -->
-		<record model="ir.actions.act_window" id="patient_line_form_action">
-			<field name="name">Pacientes</field>
-			<field name="res_model">openhealth.patient.line</field>
-			<field name="view_type">form</field>
 
 <!--
-			<field name="view_mode">pivot,tree,form,graph</field>
-			<field name="view_mode">tree,graph,pivot</field>
+                    <field name="order_line"/>
+                    <field name="order_line_vip"/>
 -->
 
-			<field name="view_mode">tree,form,graph,pivot</field>
 
-			<field name="domain">[
-									('marketing_id', '=', active_id),
-								]
-			</field>
+
+
+
+
+
 
 <!--
-									'search_default_Sales':1, 
-									'group_by_no_leaf':1,
-									'group_by': ('sex','education','vip'),
+                    <field name="sale_line"/>
+
+                    <field name="consu_line"/>
+
+                    <field name="reco_line"/>
+
+                    <field name="procedure_line"/>
 -->
-			<field name="context">{}
-			</field>
 
-			<field name="limit">1000</field>
-		</record>
-
+                </tree>
+            </field>
+        </record>
 
 
-		<!-- Action 2 -->
-		<record model="ir.actions.act_window" id="patient_line_proc_form_action">
-			<field name="name">Pacientes</field>
-			<field name="res_model">openhealth.patient.line</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form,graph,pivot</field>
 
-			<field name="view_id" ref="patient_line_proc_view_tree"/> 
+
+
+
+        <!-- Action 1 -->
+        <record model="ir.actions.act_window" id="patient_line_form_action">
+            <field name="name">Pacientes</field>
+            <field name="res_model">openhealth.patient.line</field>
+            <field name="view_type">form</field>
 
 <!--
-									('budget_flag', '=', True),
+            <field name="view_mode">pivot,tree,form,graph</field>
+            <field name="view_mode">tree,graph,pivot</field>
 -->
-			<field name="domain">[
-									('marketing_id', '=', active_id),
-								]
-			</field>
 
-			<field name="context">{}</field>
+            <field name="view_mode">tree,form,graph,pivot</field>
 
-			<field name="limit">1000</field>
-		</record>
+            <field name="domain">[
+                                    ('marketing_id', '=', active_id),
+                                ]
+            </field>
 
-
-
-
-
-
-
-
-
-
-		<!-- Action - Vip -->
-		<record model="ir.actions.act_window" id="patient_line_vip_form_action">
-			<field name="name">Pacientes</field>
-			<field name="res_model">openhealth.patient.line</field>
-			<field name="view_type">form</field>
-
-			<field name="view_mode">tree,form,graph,pivot</field>
-
-			<field name="domain">[
-									('vip', '=', True),
-									('marketing_id', '=', active_id),
-								]
-			</field>
-
-			<field name="context">{}</field>
-			<field name="limit">1000</field>
-		</record>
-
-
-
-		<!-- Action - No Vip -->
-		<record model="ir.actions.act_window" id="patient_line_vip_no_form_action">
-			<field name="name">Pacientes</field>
-			<field name="res_model">openhealth.patient.line</field>
-			<field name="view_type">form</field>
-
-			<field name="view_mode">tree,form,graph,pivot</field>
-
-			<field name="domain">[
-									('vip', '=', False),
-									('marketing_id', '=', active_id),
-								]
-			</field>
-
-			<field name="context">{}</field>
-			<field name="limit">1000</field>
-		</record>
-
-
-
-
-		<!-- Action - Vip Not Used -->
-		<record model="ir.actions.act_window" id="patient_line_vip_not_used_form_action">
-			<field name="name">Tarjeta Vip No Utilizada</field>
-			<field name="res_model">openhealth.patient.line</field>
-			<field name="view_type">form</field>
-
-			<field name="view_mode">tree,form,graph,pivot</field>
-
-			<field name="domain">[
-									('vip', '=', True),
-
-									('nr_lines_vip', '=', 0),
-
-									('marketing_id', '=', active_id),
-								]
-			</field>
-
-			<field name="context">{}</field>
-			<field name="limit">1000</field>
-		</record>
-
-
-
-
-
-
-
-
-
-
-
-
-		<!-- Filter --> 
-		<record id="view_patient_line_filter" model="ir.ui.view">
-			<field name="name">Patient Line Search</field>
-
-			<field name="model">openhealth.patient.line</field>
-		   	
-		   	<field name="arch" type="xml">
-			   
-			   <search string="Patient Lines">
-				   
 <!--
-					<field 	name="patient" 
-                    	filter_domain="['|',('patient','ilike',self),('physician','ilike',self)]"/>
-					<field 	name="marketing_id"/>
+                                    'search_default_Sales':1, 
+                                    'group_by_no_leaf':1,
+                                    'group_by': ('sex','education','vip'),
 -->
+            <field name="context">{}
+            </field>
+
+            <field name="limit">1000</field>
+        </record>
 
 
 
+        <!-- Action 2 -->
+        <record model="ir.actions.act_window" id="patient_line_proc_form_action">
+            <field name="name">Pacientes</field>
+            <field name="res_model">openhealth.patient.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph,pivot</field>
 
-					<group expand="1" string="Group By">
+            <field name="view_id" ref="patient_line_proc_view_tree"/> 
+
 <!--
-						<filter name="Estado" context="{'group_by':'state'}"/>
-						<filter name="Paciente" context="{'group_by':'patient'}"/>
-						<filter name="Familia" context="{'group_by':'family'}"/>
-						<filter name="Subfamilia" context="{'group_by':'sub_family'}"/>
-						<filter name="Marketing" context="{'group_by':'marketing_id'}"/>
-						<filter name="Patient Line" context="{'group_by':'patient_line_id'}"/>
+                                    ('budget_flag', '=', True),
 -->
-						<filter name="Médico" context="{'group_by':'doctor'}"/>
+            <field name="domain">[
+                                    ('marketing_id', '=', active_id),
+                                ]
+            </field>
 
-						<filter name="Nr Proc" context="{'group_by':'nr_proc'}"/>
+            <field name="context">{}</field>
 
-						<filter name="Nr Pres" context="{'group_by':'nr_budget'}"/>
-					</group>
-
-				   
-				   <!--
-				   <newline />
-				   <group expand="0" string="Group By...">
-					   <filter string="Patient" domain="[]" context="{'group_by':'patient'}" />
-				   </group>
-				   -->
-			   </search>
-		   </field>
-	   </record>
+            <field name="limit">1000</field>
+        </record>
 
 
 
 
-	</data>
+
+
+
+
+
+
+        <!-- Action - Vip -->
+        <record model="ir.actions.act_window" id="patient_line_vip_form_action">
+            <field name="name">Pacientes</field>
+            <field name="res_model">openhealth.patient.line</field>
+            <field name="view_type">form</field>
+
+            <field name="view_mode">tree,form,graph,pivot</field>
+
+            <field name="domain">[
+                                    ('vip', '=', True),
+                                    ('marketing_id', '=', active_id),
+                                ]
+            </field>
+
+            <field name="context">{}</field>
+            <field name="limit">1000</field>
+        </record>
+
+
+
+        <!-- Action - No Vip -->
+        <record model="ir.actions.act_window" id="patient_line_vip_no_form_action">
+            <field name="name">Pacientes</field>
+            <field name="res_model">openhealth.patient.line</field>
+            <field name="view_type">form</field>
+
+            <field name="view_mode">tree,form,graph,pivot</field>
+
+            <field name="domain">[
+                                    ('vip', '=', False),
+                                    ('marketing_id', '=', active_id),
+                                ]
+            </field>
+
+            <field name="context">{}</field>
+            <field name="limit">1000</field>
+        </record>
+
+
+
+
+        <!-- Action - Vip Not Used -->
+        <record model="ir.actions.act_window" id="patient_line_vip_not_used_form_action">
+            <field name="name">Tarjeta Vip No Utilizada</field>
+            <field name="res_model">openhealth.patient.line</field>
+            <field name="view_type">form</field>
+
+            <field name="view_mode">tree,form,graph,pivot</field>
+
+            <field name="domain">[
+                                    ('vip', '=', True),
+
+                                    ('nr_lines_vip', '=', 0),
+
+                                    ('marketing_id', '=', active_id),
+                                ]
+            </field>
+
+            <field name="context">{}</field>
+            <field name="limit">1000</field>
+        </record>
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Filter --> 
+        <record id="view_patient_line_filter" model="ir.ui.view">
+            <field name="name">Patient Line Search</field>
+
+            <field name="model">openhealth.patient.line</field>
+            
+            <field name="arch" type="xml">
+               
+               <search string="Patient Lines">
+                   
+<!--
+                    <field  name="patient" 
+                        filter_domain="['|',('patient','ilike',self),('physician','ilike',self)]"/>
+                    <field  name="marketing_id"/>
+-->
+
+
+
+
+                    <group expand="1" string="Group By">
+<!--
+                        <filter name="Estado" context="{'group_by':'state'}"/>
+                        <filter name="Paciente" context="{'group_by':'patient'}"/>
+                        <filter name="Familia" context="{'group_by':'family'}"/>
+                        <filter name="Subfamilia" context="{'group_by':'sub_family'}"/>
+                        <filter name="Marketing" context="{'group_by':'marketing_id'}"/>
+                        <filter name="Patient Line" context="{'group_by':'patient_line_id'}"/>
+-->
+                        <filter name="Médico" context="{'group_by':'doctor'}"/>
+
+                        <filter name="Nr Proc" context="{'group_by':'nr_proc'}"/>
+
+                        <filter name="Nr Pres" context="{'group_by':'nr_budget'}"/>
+                    </group>
+
+                   
+                   <!--
+                   <newline />
+                   <group expand="0" string="Group By...">
+                       <filter string="Patient" domain="[]" context="{'group_by':'patient'}" />
+                   </group>
+                   -->
+               </search>
+           </field>
+       </record>
+
+
+
+
+    </data>
 </openerp>

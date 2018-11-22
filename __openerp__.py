@@ -109,8 +109,8 @@
 
 
 		# Accounting 
-		#'views/payment_methods/payment_method_line.xml',
-		'views/orders/payment_method_line.xml',
+		'views/payment_method/payment_method_line.xml',
+
 
 
 
@@ -347,14 +347,15 @@
 		'views/orders/order_line.xml',
 		'views/orders/order.xml',
 		'views/orders/order_admin.xml',
-		'views/orders/order_report_nex.xml',				# Estado de Cuenta
+		#'views/orders/order_report_nex.xml',				# Estado de Cuenta
+		'views/orders/order_account.xml',				# Estado de Cuenta
 
 
 
 
 		# Payment methods 
-		#'views/payment_methods/payment_methods.xml',
-		'views/orders/payment_methods.xml',
+		'views/payment_method/payment_methods.xml',
+
 
 
 		# Counters 

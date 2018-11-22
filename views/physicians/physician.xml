@@ -10,7 +10,6 @@
             <field name="model">oeh.medical.physician</field>
             <field name="inherit_id" ref="oehealth.oeh_medical_physician_view"/>            
             <field name="mode">primary</field>
-            <field name="priority" eval="1"/>
 
             <field name="priority" eval="100"/>
 

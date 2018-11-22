@@ -199,7 +199,8 @@ class sale_order(models.Model):
 	def get_firm_address(self):
 		print
 		print 'Get Firm Address'
-		return self.partner_id.x_firm_address
+		#return self.partner_id.x_firm_address
+		return self.partner_id.x_address
 
 
 

@@ -39,9 +39,9 @@ class Partner(models.Model):
 
 	# Company
 
-	x_firm_address = fields.Char(
-			"Dirección (Razón social)",
-		)
+	#x_firm_address = fields.Char(
+	#		"Dirección (Razón social)",
+	#	)
 
 
 	x_firm = fields.Char(

@@ -96,8 +96,8 @@
 		# ----------------------------------------------------------- Recent ------------------------------------------------------
 
 		# Reports
-		'views/product_selectors/product_selector.xml',
 		#'views/products/product_selector.xml',
+		#'views/product_selectors/product_selector.xml',
 
 
 		

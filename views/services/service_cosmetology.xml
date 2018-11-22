@@ -7,12 +7,12 @@
 <!-- FORM --> 
         <record model="ir.ui.view" id="service_cosmetology_form_view">
             <field name="name">service.cosmetology.form</field>
-
             <field name="model">openhealth.service.cosmetology</field>
-
             <field name="inherit_id" ref="service_form_view"/>
             <field name="mode">primary</field>
                         
+            <field name="priority" eval="100"/>
+
             <field name="arch" type="xml">              
 
                 <!-- <xpath expr="//field[@name='title']" position="before"> -->
@@ -20,23 +20,11 @@
                     <h1>Cosmiatría</h1>                 
                 </xpath>
 
-
-
                 <xpath expr="//field[@name='laser']" position="replace">                    
                     <field name="family"    invisible="1"   />
                 </xpath>
-
-
-<!--
-                    <field name="vspace"/>
-                    <field name="service"/>
--->
             </field>
         </record>       
-<!--
-<xpath expr="//field[@name='patient']" position="replace"> 
-</xpath>
--->
 
 
 
@@ -45,36 +33,16 @@
         <record model="ir.ui.view" id="service_cosmetology_tree_view">
             <field name="name">service.cosmetology.tree</field>
             <field name="model">openhealth.service.cosmetology</field>
-
             <field name="inherit_id" ref="service_tree_view"/>
             <field name="mode">primary</field>
 
+            <field name="priority" eval="100"/>
 
             <field name="arch" type="xml">
-
                 <xpath expr="//field[@name='service']" position="replace">
                     <field name="service" />
                 </xpath>
-
             </field>
         </record>
-<!--                    
-                <tree string="Service Tree">
-                    <field name="name"/>
-                    <field name="laser"/>                                   
-                    <field name="service"/>
-
-                    <field name="treatment"/>
-                    <field name="id"/>
-                    <field name="cosmetology"/>
-                    <field name="consultation"/>
-                </tree>
--->
-
-
-
-
-
-
     </data>
 </openerp>

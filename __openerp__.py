@@ -124,18 +124,19 @@
 		# Marketing 
 		'views/marketing/marketing_order_line.xml',
 		'views/marketing/marketing_reco_line.xml',
-
-		#'views/media/media_line.xml',
 		'views/marketing/media_line.xml',
-		
-		#'views/histogram/histogram.xml',
 		'views/marketing/histogram.xml',
 		
+
 		#'views/places/place.xml',
+		'views/marketing/place_actions.xml',
+		'views/marketing/place_pivot.xml',
 		'views/marketing/place.xml',
 		
+
 		'views/marketing/marketing.xml',
 		'views/marketing/marketing_pivot.xml',
+
 
 
 

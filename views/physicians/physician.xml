@@ -11,9 +11,10 @@
             <field name="inherit_id" ref="oehealth.oeh_medical_physician_view"/>            
             <field name="mode">primary</field>
             <field name="priority" eval="1"/>
+
+            <field name="priority" eval="100"/>
+
             <field name="arch" type="xml">
-
-
 
 
                 <xpath expr="//field[@name='institution']" position="replace">
@@ -28,41 +29,20 @@
 
 
 
-
-
-
                 <xpath expr="//field[@name='consultancy_price']" position="before">
-<!--
--->
                     <field name="x_user_name" />
-
                     <field name="vspace" />
-
-
                     <field name="active" />
                     <field name="vspace" />
                 </xpath>
 
 
 
-
-
                 <xpath expr="//field[@name='code']" position="after">
-
                     <field name="vspace" />
                     <field name="x_therapist" />
                     <field name="idx" />
-<!--
-                    <field name="x_type" />
-                    <field name="id" />
--->
                 </xpath>
-
-
-
-
-
-
 
             </field>
         </record>
@@ -80,19 +60,11 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,kanban,form</field>
             <field name="context">{'order': 'name'}</field>
-
-
-
             <field name="domain">[
                                         ('x_therapist', '=', False),
                                     ]
             </field>
-
-
-
             <!--
-
-            <field name="context">{}</field>
             <field name="view_id" eval="False"/>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">Create the first treatment
@@ -111,17 +83,11 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,kanban,form</field>
             <field name="context">{'order': 'name'}</field>
-
-
             <field name="domain">[
                                         ('x_therapist', '=', True),
                                     ]
             </field>
-
-            
             <!--
-
-            <field name="context">{}</field>
             <field name="view_id" eval="False"/>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">Create the first treatment
@@ -129,11 +95,6 @@
             </field>
             -->
         </record>
-
-
-
-
-
 
 
 
@@ -148,13 +109,11 @@
 -->
             <field name="view_mode">tree,kanban,form</field>
             <field name="context">{'order': 'name'}</field>
-
             <field name="domain">[
                                     ('active', '!=', True),
 
                 ]</field>
             <!--
-            <field name="context">{}</field>
             <field name="view_id" eval="False"/>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">Create the first treatment
@@ -176,25 +135,13 @@
             <field name="priority" eval="1"/>
             -->
             <field name="arch" type="xml">
-                
                 <tree string="Physician Tree">
-
                     <field name="name"/>
-
                     <field name="idx"/>
-
                     <field name="x_user_name"/>
-
                     <field name="available_lines"/>
-
                     <field name="speciality"/>
-
                     <field name="active"/>
-
-<!--
-                    <field name="code"/>
-                    <field name="address_id"/>
--->
                 </tree>
             </field>
         </record>

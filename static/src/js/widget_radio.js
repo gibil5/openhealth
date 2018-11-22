@@ -1,16 +1,16 @@
 openerp.web_widget_radio = function (instance)
 {
     instance.web.form.widgets.add('radio', 'instance.web_widget_radio.FieldRadio');
-	
+    
     instance.web_widget_radio.FieldRadio = instance.web.form.AbstractField.extend(instance.web.form.ReinitializeFieldMixin, {
         
-		template: 'FieldRadio',
+        template: 'FieldRadio',
         
-		events: {
+        events: {
             'click input': 'click_change_value'
         },
         
-		init: function(field_manager, node) {
+        init: function(field_manager, node) {
             /* Radio button widget: Attributes options:
             * - "horizontal" to display in column
             * - "no_radiolabel" don't display text values
@@ -20,14 +20,14 @@ openerp.web_widget_radio = function (instance)
             this.domain = false;
         },
         
-		initialize_content: function () {
+        initialize_content: function () {
             this.uniqueId = _.uniqueId("radio");
             this.on("change:effective_readonly", this, this.render_value);
             this.field_manager.on("view_content_has_changed", this, this.get_selection);
             this.get_selection();
         },
         
-		click_change_value: function (event) {
+        click_change_value: function (event) {
             var val = $(event.target).val();
             val = this.field.type == "selection" ? val : +val;
             if (val == this.get_value()) {
@@ -36,7 +36,7 @@ openerp.web_widget_radio = function (instance)
                 this.set_value(val);
             }
         },
-		
+        
         /** Get the selection and render it
          *  selection: [[identifier, value_to_display], ...]
          *  For selection fields: this is directly given by this.field.selection
@@ -75,7 +75,7 @@ openerp.web_widget_radio = function (instance)
                 }
             });
         },
-		
+        
         set_value: function (value_) {
             if (value_) {
                 if (this.field.type == "selection") {
@@ -87,12 +87,12 @@ openerp.web_widget_radio = function (instance)
             }
             this._super(value_);
         },
-		
+        
         get_value: function () {
             var value = this.get('value');
             return value instanceof Array ? value[0] : value;
         },
-		
+        
         render_value: function () {
             var self = this;
             this.$el.toggleClass("oe_readonly", this.get('effective_readonly'));

@@ -1,48 +1,48 @@
 <?xml version="1.0"?>
 <openerp>
-	<data>
+    <data>
 
 
 
 <!-- Accounting -->
-		<menuitem id="main_account_menu" 
-			sequence="1"
-			name="Contabilidad"
-			
-			groups="openhealth.roots,openhealth.managers,openhealth.directors,openhealth.caja"
-			/>
+        <menuitem id="main_account_menu" 
+            sequence="1"
+            name="Contabilidad"
+            
+            groups="openhealth.roots,openhealth.managers,openhealth.directors,openhealth.caja"
+            />
 
 
 
 
 <!-- Sales Record -->
-		<menuitem id="account_menu" name="Registro de Ventas"
-			sequence="1"
-			parent="main_account_menu"/>
+        <menuitem id="account_menu" name="Registro de Ventas"
+            sequence="1"
+            parent="main_account_menu"/>
 
 
-		<!-- Account Contasis -->
-		<menuitem id="account_conta_menu" name="Líneas de Venta" parent="account_menu"
-			
-			sequence="0"
+        <!-- Account Contasis -->
+        <menuitem id="account_conta_menu" name="Líneas de Venta" parent="account_menu"
+            
+            sequence="0"
 
-			action="account_contasis_list_action"
+            action="account_contasis_list_action"
 
-			groups="openhealth.roots,openhealth.managers,openhealth.directors"
-			/>
+            groups="openhealth.roots,openhealth.managers,openhealth.directors"
+            />
 
 
-		<!-- Account Contasis - Caja -->
-		<menuitem id="account_conta_cash_menu" 
-			parent="account_menu"
-			sequence="1"
+        <!-- Account Contasis - Caja -->
+        <menuitem id="account_conta_cash_menu" 
+            parent="account_menu"
+            sequence="1"
 
-			name="Ventas - Caja" 
-			
-			action="account_contasis_cash_list_action"
+            name="Ventas - Caja" 
+            
+            action="account_contasis_cash_list_action"
 
-			groups="openhealth.roots,openhealth.caja"
-			/>
+            groups="openhealth.roots,openhealth.caja"
+            />
 
 
 
@@ -50,55 +50,55 @@
 
 <!-- Electronic -->
 
-		<!-- Electronic -->
-		<menuitem 	id="account_electronic_menu"
-					parent="main_account_menu"
-					sequence="3"
+        <!-- Electronic -->
+        <menuitem   id="account_electronic_menu"
+                    parent="main_account_menu"
+                    sequence="3"
 
-					name="Facturación Electrónica"
-				/>
-
-
-
-		<!-- Delta -->
-		<menuitem 	id="account_all_sales_menu" 
-						
-					name="Ventas" 
-
-					parent="account_electronic_menu"
-						
-					sequence="1"
-
-					action="order_list_delta_action"
-				/>
+                    name="Facturación Electrónica"
+                />
 
 
 
-		<!-- Container --> 
-		<menuitem 	id="account_containter_menu" 
-					
-					name="Generar TXT" 
-					
-					parent="account_electronic_menu"
+        <!-- Delta -->
+        <menuitem   id="account_all_sales_menu" 
+                        
+                    name="Ventas" 
 
-					sequence="2"
+                    parent="account_electronic_menu"
+                        
+                    sequence="1"
 
-					action="container_list_action"
-			/>
-
-
-
-		<!-- Txt -->
-		<!--
-		<menuitem 	id="account_texto_menu"
-					parent="account_electronic_menu"
-					sequence="3"
-					name="Archivos TXT"
-					action="base_directory_files_download.ir_filesystem_directory_action"
-			/>
-		-->
+                    action="order_list_delta_action"
+                />
 
 
 
-	</data>
+        <!-- Container --> 
+        <menuitem   id="account_containter_menu" 
+                    
+                    name="Generar TXT" 
+                    
+                    parent="account_electronic_menu"
+
+                    sequence="2"
+
+                    action="container_list_action"
+            />
+
+
+
+        <!-- Txt -->
+        <!--
+        <menuitem   id="account_texto_menu"
+                    parent="account_electronic_menu"
+                    sequence="3"
+                    name="Archivos TXT"
+                    action="base_directory_files_download.ir_filesystem_directory_action"
+            />
+        -->
+
+
+
+    </data>
 </openerp>

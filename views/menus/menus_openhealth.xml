@@ -1,104 +1,104 @@
 <?xml version="1.0"?>
 <openerp>
-	<data>
+    <data>
 
 
 
 <!-- Open Health -->
-		<menuitem 	id="main_openhealth_menu" 
-					sequence="1"
+        <menuitem   id="main_openhealth_menu" 
+                    sequence="1"
 
-					name="Open Health"
-					
-					groups="openhealth.roots"
-			/>
+                    name="Open Health"
+                    
+                    groups="openhealth.roots"
+            />
 
 
 
 
 
 <!-- Open Health -->
-		<menuitem 	id="openhealth_openhealth_menu"
-					parent="main_openhealth_menu"
-					sequence="1"
-					name="Open Health"
-				/>
+        <menuitem   id="openhealth_openhealth_menu"
+                    parent="main_openhealth_menu"
+                    sequence="1"
+                    name="Open Health"
+                />
 
 
 
 
-		<!-- Files -->
-<!--		
-		<menuitem 	id="oh_file_menu" 
-					name="Files" 
-					parent="openhealth_openhealth_menu"
-					sequence="0"
+        <!-- Files -->
+<!--        
+        <menuitem   id="oh_file_menu" 
+                    name="Files" 
+                    parent="openhealth_openhealth_menu"
+                    sequence="0"
 
-					action="filesystem_file_list_action"
-			/>
+                    action="filesystem_file_list_action"
+            />
 -->
 
 
 
-		<!-- Companies --> 
-		<menuitem 	id="oh_content_menu" 
-					name="Companies" 
-					parent="openhealth_openhealth_menu"
-					sequence="1"
-					action="company_list_action"
-			/>
+        <!-- Companies --> 
+        <menuitem   id="oh_content_menu" 
+                    name="Companies" 
+                    parent="openhealth_openhealth_menu"
+                    sequence="1"
+                    action="company_list_action"
+            />
 
 
-		<!-- Electronic --> 
-		<menuitem id="oh_electronic_menu"
-					name="Electronic Orders"
-					parent="openhealth_openhealth_menu"
-					sequence="2"
-					action="electronic_order_form_action"
-			/>
+        <!-- Electronic --> 
+        <menuitem id="oh_electronic_menu"
+                    name="Electronic Orders"
+                    parent="openhealth_openhealth_menu"
+                    sequence="2"
+                    action="electronic_order_form_action"
+            />
 
 
-		<!-- Corrector --> 
-		<menuitem id="oh_corrector_menu"
-					name="Correctors"
-					parent="openhealth_openhealth_menu"
-					sequence="3"
-					action="corrector_list_action"
-			/>
+        <!-- Corrector --> 
+        <menuitem id="oh_corrector_menu"
+                    name="Correctors"
+                    parent="openhealth_openhealth_menu"
+                    sequence="3"
+                    action="corrector_list_action"
+            />
 
 
-		<!-- Product Product --> 
-		<menuitem 	id="oh_product_product_menu" 
-					name="Products Product"
-					parent="openhealth_openhealth_menu"
-					sequence="4"
-					action="product_product_list_action"
-			/>
+        <!-- Product Product --> 
+        <menuitem   id="oh_product_product_menu" 
+                    name="Products Product"
+                    parent="openhealth_openhealth_menu"
+                    sequence="4"
+                    action="product_product_list_action"
+            />
 
 
 
 
 
-		<!-- Product Pricelist Item --> 
-		<!-- Product Pricelist Item Products --> 
-		<!-- Product Pricelist Item Cons --> 
+        <!-- Product Pricelist Item --> 
+        <!-- Product Pricelist Item Products --> 
+        <!-- Product Pricelist Item Cons --> 
 <!--
-		<menuitem id="oh_pl_item_menu" 
-					name="Pricelist Items" 
-					parent="openhealth_openhealth_menu"
-					action="product_pricelist_item_action"
-			/>
-		<menuitem id="oh_pl_item_prods_menu" 
-					name="Pricelist Items Products" 
-					parent="openhealth_openhealth_menu"
-					action="product_pricelist_item_product_action"
-			/>
+        <menuitem id="oh_pl_item_menu" 
+                    name="Pricelist Items" 
+                    parent="openhealth_openhealth_menu"
+                    action="product_pricelist_item_action"
+            />
+        <menuitem id="oh_pl_item_prods_menu" 
+                    name="Pricelist Items Products" 
+                    parent="openhealth_openhealth_menu"
+                    action="product_pricelist_item_product_action"
+            />
 
-		<menuitem id="oh_pl_item_cons_menu"
-					name="Pricelist Items Consultations" 
-					parent="openhealth_openhealth_menu"
-					action="product_pricelist_item_consultation_action"
-			/>
+        <menuitem id="oh_pl_item_cons_menu"
+                    name="Pricelist Items Consultations" 
+                    parent="openhealth_openhealth_menu"
+                    action="product_pricelist_item_consultation_action"
+            />
 -->
 
 
@@ -106,41 +106,41 @@
 
 
 <!-- Coder -->
-		<menuitem 	id="oh_coder_menu"
-			
-					parent="main_openhealth_menu"
+        <menuitem   id="oh_coder_menu"
+            
+                    parent="main_openhealth_menu"
 
-					sequence="1"
+                    sequence="1"
 
-					name="Coder"
-				/>
-
-
-
-
-		<!-- Coder - All --> 
-		<menuitem 	id="oh_coder_all_menu" 
-
-					name="All" 
-
-					parent="oh_coder_menu"
-
-					action="coder_list_action"
-			/>
+                    name="Coder"
+                />
 
 
 
-		<!-- Coder - Product --> 
-		<!-- Coder - Service --> 
+
+        <!-- Coder - All --> 
+        <menuitem   id="oh_coder_all_menu" 
+
+                    name="All" 
+
+                    parent="oh_coder_menu"
+
+                    action="coder_list_action"
+            />
+
+
+
+        <!-- Coder - Product --> 
+        <!-- Coder - Service --> 
 <!--
-		<menuitem id="coder_product_menu" name="Product" parent="openhealth_menu"
-				action="coder_product_list_action"
-			/>
+        <menuitem id="coder_product_menu" name="Product" parent="openhealth_menu"
+                action="coder_product_list_action"
+            />
 
 
-		<menuitem id="coder_service_menu" name="Service" parent="openhealth_menu"
-				action="coder_service_list_action"
-			/>
+        <menuitem id="coder_service_menu" name="Service" parent="openhealth_menu"
+                action="coder_service_list_action"
+            />
 -->
 
 
@@ -156,39 +156,39 @@
 
 
 
-<!--					
-					groups="openhealth.roots,openhealth.managers"
+<!--                    
+                    groups="openhealth.roots,openhealth.managers"
 -->
 
 <!-- Electronic -->
-		<menuitem 	id="main_electronic_menu"
+        <menuitem   id="main_electronic_menu"
 
-					sequence="1"
+                    sequence="1"
 
-					name="Electronic"
+                    name="Electronic"
 
-					groups="openhealth.roots"
-			/>
+                    groups="openhealth.roots"
+            />
 
 
 
 
 <!-- Container -->
-		<menuitem 	id="openhealth_container_menu"
+        <menuitem   id="openhealth_container_menu"
 
-					parent="main_electronic_menu"
+                    parent="main_electronic_menu"
 
-					sequence="0"
+                    sequence="0"
 
-					name="Container"
-				/>
+                    name="Container"
+                />
 
 
-		<!-- Container --> 
-		<menuitem id="content_menu" name="Container" parent="openhealth_container_menu"
+        <!-- Container --> 
+        <menuitem id="content_menu" name="Container" parent="openhealth_container_menu"
 
-				action="container_list_action"
-			/>
+                action="container_list_action"
+            />
 
 
 
@@ -197,62 +197,62 @@
 
 
 <!-- Coder -->
-		<menuitem 	id="openhealth_menu"
+        <menuitem   id="openhealth_menu"
 
-					parent="main_electronic_menu"
+                    parent="main_electronic_menu"
 
-					sequence="1"
+                    sequence="1"
 
-					name="Coder"
-				/>
+                    name="Coder"
+                />
 
 
 
 
 <!-- Dev -->
 
-		<!-- Coder - Product --> 
-		<menuitem id="coder_product_menu" name="Product" parent="openhealth_menu"
+        <!-- Coder - Product --> 
+        <menuitem id="coder_product_menu" name="Product" parent="openhealth_menu"
 
-				action="coder_product_list_action"
-			/>
-
-
-		<!-- Coder - Service --> 
-		<menuitem id="coder_service_menu" name="Service" parent="openhealth_menu"
-
-				action="coder_service_list_action"
-
-			/>
+                action="coder_product_list_action"
+            />
 
 
-		<!-- Coder - All --> 
-		<menuitem id="coder_all_menu" name="All" parent="openhealth_menu"
+        <!-- Coder - Service --> 
+        <menuitem id="coder_service_menu" name="Service" parent="openhealth_menu"
 
-				action="coder_list_action"
+                action="coder_service_list_action"
 
-			/>
-
-
+            />
 
 
+        <!-- Coder - All --> 
+        <menuitem id="coder_all_menu" name="All" parent="openhealth_menu"
 
-		<!-- Pricelist --> 
-		<!-- Pricelist Item --> 
-		<!--
-		<menuitem id="pricelist_menu" name="Pricelist" parent="openhealth_menu"
-				action="pricelist_list_action"
-			/>
+                action="coder_list_action"
 
-		<menuitem id="pricelist_item_menu" name="Pricelist Item" parent="openhealth_menu"
-				action="pricelist_item_list_action"
-			/>
-		-->
+            />
 
 
 
 
 
+        <!-- Pricelist --> 
+        <!-- Pricelist Item --> 
+        <!--
+        <menuitem id="pricelist_menu" name="Pricelist" parent="openhealth_menu"
+                action="pricelist_list_action"
+            />
 
-	</data>
+        <menuitem id="pricelist_item_menu" name="Pricelist Item" parent="openhealth_menu"
+                action="pricelist_item_list_action"
+            />
+        -->
+
+
+
+
+
+
+    </data>
 </openerp>

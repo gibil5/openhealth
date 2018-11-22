@@ -1,67 +1,67 @@
 <?xml version="1.0"?>
 <openerp>
-	<data>
+    <data>
 
 
 
 <!-- Marketing -->
-		<menuitem id="main_marketing_menu" 
+        <menuitem id="main_marketing_menu" 
 
-			sequence="1"
+            sequence="1"
 
-			name="Marketing"
-			
-			groups="openhealth.roots,openhealth.managers,openhealth.directors"
-			/>
-
-
-
-		<!-- Marketing -->
-		<menuitem 	id="marketing_menu" 
-					name="Marketing"
-					parent="main_marketing_menu"/>
+            name="Marketing"
+            
+            groups="openhealth.roots,openhealth.managers,openhealth.directors"
+            />
 
 
 
-
-		<!-- Marketing Patients -->
-		<menuitem 	id="marketing_patient_menu" 
-					
-					name="Perfil del Paciente" 
-					
-					parent="marketing_menu"
-					sequence="1"
-					action="marketing_patient_list_action"/>
+        <!-- Marketing -->
+        <menuitem   id="marketing_menu" 
+                    name="Marketing"
+                    parent="main_marketing_menu"/>
 
 
 
-		<!-- Marketing Order Lines -->
-		<menuitem 	id="marketing_order_lines_menu" 
 
-					name="Marketing Order Lines" 
-			
-					parent="marketing_menu"
-			
-					sequence="2"
-			
-					action="marketing_order_line_form_action"
-
-					/>
+        <!-- Marketing Patients -->
+        <menuitem   id="marketing_patient_menu" 
+                    
+                    name="Perfil del Paciente" 
+                    
+                    parent="marketing_menu"
+                    sequence="1"
+                    action="marketing_patient_list_action"/>
 
 
-		<!-- Marketing recom Lines -->
-		<menuitem 	id="marketing_recom_lines_menu" 
 
-					name="Marketing Reco Lines" 
-			
-					parent="marketing_menu"
-			
-					sequence="3"
-			
-					action="marketing_recom_line_form_action"
+        <!-- Marketing Order Lines -->
+        <menuitem   id="marketing_order_lines_menu" 
 
-					/>
+                    name="Marketing Order Lines" 
+            
+                    parent="marketing_menu"
+            
+                    sequence="2"
+            
+                    action="marketing_order_line_form_action"
+
+                    />
 
 
-	</data>
+        <!-- Marketing recom Lines -->
+        <menuitem   id="marketing_recom_lines_menu" 
+
+                    name="Marketing Reco Lines" 
+            
+                    parent="marketing_menu"
+            
+                    sequence="3"
+            
+                    action="marketing_recom_line_form_action"
+
+                    />
+
+
+    </data>
 </openerp>

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <openerp>
-	<data>
+    <data>
 
 
 
@@ -9,35 +9,35 @@
 
 
 <!--
-	<menuitem id="stock.menu_warehouse_report" name="Reports" sequence="99" parent="stock.menu_stock_root" groups="group_stock_manager"/>
+    <menuitem id="stock.menu_warehouse_report" name="Reports" sequence="99" parent="stock.menu_stock_root" groups="group_stock_manager"/>
 -->
 
 
 <!-- Kardex -->
-	<menuitem 
-				id="menu_warehouse_kardex" 
-				parent="stock.menu_stock_root" 
+    <menuitem 
+                id="menu_warehouse_kardex" 
+                parent="stock.menu_stock_root" 
 
-				name="KARDEX" 
-				
-				sequence="2" 
-				
+                name="KARDEX" 
+                
+                sequence="2" 
+                
 
-				
-					groups="openhealth.roots,openhealth.almacen_managers,openhealth.almacens,openhealth.managers,openhealth.directors"
-			/>
+                
+                    groups="openhealth.roots,openhealth.almacen_managers,openhealth.almacens,openhealth.managers,openhealth.directors"
+            />
 
 
 
 <!--
-				groups="stock.group_stock_manager,base.group_configuration"
-				groups="openhealth.almacens,openhealth.managers,openhealth.directors"
+                groups="stock.group_stock_manager,base.group_configuration"
+                groups="openhealth.almacens,openhealth.managers,openhealth.directors"
 
-				action="action_move_form2" 
-				parent="stock.menu_warehouse_report" 
+                action="action_move_form2" 
+                parent="stock.menu_warehouse_report" 
 
 
-					groups="openhealth.roots,openhealth.almacens,openhealth.managers,openhealth.directors"
+                    groups="openhealth.roots,openhealth.almacens,openhealth.managers,openhealth.directors"
 -->
 
 
@@ -45,15 +45,15 @@
 
 <!-- Kardex --> 
 <!--
-	<menuitem 
-				id="menu_action_move_selector" 
-				parent="menu_warehouse_kardex" 
-				sequence="131"
+    <menuitem 
+                id="menu_action_move_selector" 
+                parent="menu_warehouse_kardex" 
+                sequence="131"
 
-				name="KARDEX"
+                name="KARDEX"
 
-				action="stock_move_selector_cremas_form_action" 
-			/>
+                action="stock_move_selector_cremas_form_action" 
+            />
 -->
 
 
@@ -65,30 +65,30 @@
 
 
 <!--
-				groups="stock.group_stock_manager,stock.group_stock_user"
+                groups="stock.group_stock_manager,stock.group_stock_user"
 -->
 <!-- All Transfers --> 
-	<menuitem 		id="stock.all_picking" 
-				name="All Transfers" 
-				parent="stock.menu_stock_warehouse_mgmt" 
-				sequence="2" 
-				action="stock.action_picking_tree_all" 
+    <menuitem       id="stock.all_picking" 
+                name="All Transfers" 
+                parent="stock.menu_stock_warehouse_mgmt" 
+                sequence="2" 
+                action="stock.action_picking_tree_all" 
 
-				groups="openhealth.roots"
-			/>
+                groups="openhealth.roots"
+            />
 
 
 
 
 
 <!-- Inventory Adjustments -->
-	<menuitem 		action="stock.action_inventory_form" 
-				id="stock.menu_action_inventory_form" 
-				parent="stock.menu_stock_inventory_control" 
-				sequence="30"
+    <menuitem       action="stock.action_inventory_form" 
+                id="stock.menu_action_inventory_form" 
+                parent="stock.menu_stock_inventory_control" 
+                sequence="30"
 
-				groups="openhealth.roots,stock.group_stock_manager"
-				/>
+                groups="openhealth.roots,stock.group_stock_manager"
+                />
 
 
 
@@ -102,18 +102,18 @@
 
 
 <!--
-				groups="stock.group_stock_manager"
+                groups="stock.group_stock_manager"
 -->
 <!-- Procurement exceptions -->
-		<menuitem 
-				action="procurement.procurement_order_action_exceptions" 
-				id="stock.menu_stock_procurement_action" 
-				parent="stock.menu_warehouse_report" 
-				sequence="150" 
+        <menuitem 
+                action="procurement.procurement_order_action_exceptions" 
+                id="stock.menu_stock_procurement_action" 
+                parent="stock.menu_warehouse_report" 
+                sequence="150" 
 
 
-				groups="openhealth.roots"
-			/>
+                groups="openhealth.roots"
+            />
 
 
 
@@ -122,47 +122,47 @@
 
 
 <!-- Configuration --> 
-	<menuitem      
-				id="stock.menu_stock_config_settings" 
-				parent="stock.menu_stock_root"
-				sequence="100" 
-		
+    <menuitem      
+                id="stock.menu_stock_config_settings" 
+                parent="stock.menu_stock_root"
+                sequence="100" 
+        
 
-				name="Configuration" 
-		
-				groups="openhealth.roots" 
+                name="Configuration" 
+        
+                groups="openhealth.roots" 
 
-			/>
-
-
+            />
 
 
-
-<!-- Reordering Rules --> 
-	<menuitem
-				id="stock.menu_reordering_rules_config"
-				action="stock.action_orderpoint_form"
-				parent="stock.menu_stock_inventory_control" 
-				sequence="2"
-
-
-				name="Reordering Rules" 
-
-				groups="openhealth.roots" 
-			/>
 
 
 
 <!-- Reordering Rules --> 
-	<menuitem 		id="stock.menu_quants" 	
-				name="Inventory Valuation"
-				parent="stock.menu_warehouse_report" 
-				sequence="120" 
-				action="stock.quantsact"
+    <menuitem
+                id="stock.menu_reordering_rules_config"
+                action="stock.action_orderpoint_form"
+                parent="stock.menu_stock_inventory_control" 
+                sequence="2"
 
-				groups="openhealth.roots" 
-				
-			/>
+
+                name="Reordering Rules" 
+
+                groups="openhealth.roots" 
+            />
+
+
+
+<!-- Reordering Rules --> 
+    <menuitem       id="stock.menu_quants"  
+                name="Inventory Valuation"
+                parent="stock.menu_warehouse_report" 
+                sequence="120" 
+                action="stock.quantsact"
+
+                groups="openhealth.roots" 
+                
+            />
 
 
 
@@ -170,56 +170,56 @@
 
 
 <!--
-				groups="base.group_no_one"
+                groups="base.group_no_one"
 -->
 
 <!-- Operations --> 
-	<menuitem 		id="stock.menu_stock_warehouse_mgmt" 
-				name="Operations" 
-				parent="stock.menu_stock_root" 
-				sequence="2" 
+    <menuitem       id="stock.menu_stock_warehouse_mgmt" 
+                name="Operations" 
+                parent="stock.menu_stock_root" 
+                sequence="2" 
 
 
-				groups="openhealth.roots,openhealth.almacen_managers" 
-			/>
+                groups="openhealth.roots,openhealth.almacen_managers" 
+            />
 
 <!--
-				groups="stock.group_stock_manager,stock.group_stock_user"
+                groups="stock.group_stock_manager,stock.group_stock_user"
 -->
 
 
 
 <!-- All Transfers --> 
-	<menuitem 		id="stock.all_picking" 
-				name="All Transfers" 
-				parent="stock.menu_stock_warehouse_mgmt" 
-				sequence="2" 
-				action="stock.action_picking_tree_all" 
+    <menuitem       id="stock.all_picking" 
+                name="All Transfers" 
+                parent="stock.menu_stock_warehouse_mgmt" 
+                sequence="2" 
+                action="stock.action_picking_tree_all" 
 
-				groups="openhealth.roots" 
-			/>
+                groups="openhealth.roots" 
+            />
 
 
 
 
 
 <!-- Internal Transfers --> 
-	<menuitem 		id="stock.internal_picking" 
-				
-				name="Transferencias internas" 
-				
-				parent="stock.menu_stock_warehouse_mgmt" 
-				
-				sequence="1" 
+    <menuitem       id="stock.internal_picking" 
+                
+                name="Transferencias internas" 
+                
+                parent="stock.menu_stock_warehouse_mgmt" 
+                
+                sequence="1" 
 
 
-				
-				action="action_picking_tree_internal" 
+                
+                action="action_picking_tree_internal" 
 
 
 
-				groups="openhealth.roots,openhealth.almacen_managers" 
-			/>
+                groups="openhealth.roots,openhealth.almacen_managers" 
+            />
 
 
 
@@ -229,36 +229,36 @@
 
 
 <!--
-				groups="openhealth.roots,stock.group_stock_manager"
+                groups="openhealth.roots,stock.group_stock_manager"
 -->
 <!-- Stock moves -->
-	<menuitem 		
-				id="stock.menu_action_move_form2" 
-				parent="stock.menu_warehouse_report" 
-				sequence="130"
+    <menuitem       
+                id="stock.menu_action_move_form2" 
+                parent="stock.menu_warehouse_report" 
+                sequence="130"
 
 
-				action="stock.action_move_form2" 
-								
-				groups="openhealth.roots"
-			/>
+                action="stock.action_move_form2" 
+                                
+                groups="openhealth.roots"
+            />
 
 
 <!--
-	<menuitem 		
-				id="menu_stock_move_cremas" 
-				parent="stock.menu_warehouse_report" 
-				sequence="140"
-				
-				action="action_stock_move_cremas" 
+    <menuitem       
+                id="menu_stock_move_cremas" 
+                parent="stock.menu_warehouse_report" 
+                sequence="140"
+                
+                action="action_stock_move_cremas" 
 
-				groups="openhealth.roots,stock.group_stock_manager"
-			/>
+                groups="openhealth.roots,stock.group_stock_manager"
+            />
 -->
 
 
 
 
 
-	</data>
+    </data>
 </openerp>

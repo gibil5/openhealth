@@ -1,239 +1,239 @@
 <?xml version="1.0"?>
 <openerp>
-	<data noupdate='0'>
+    <data noupdate='0'>
 
 
 
 <!-- Productos -->
-		<menuitem id="main_products_menu"
+        <menuitem id="main_products_menu"
 
-			sequence="-7"
+            sequence="-7"
 
-			name="Productos"
+            name="Productos"
 
-			groups="openhealth.roots,openhealth.caja,openhealth.directors,openhealth.managers,openhealth.physicians,openhealth.assistants,openhealth.staffs,openhealth.reception"
-			/>
+            groups="openhealth.roots,openhealth.caja,openhealth.directors,openhealth.managers,openhealth.physicians,openhealth.assistants,openhealth.staffs,openhealth.reception"
+            />
 
 
 
 
 
-<!-- All -->	
-		<menuitem 	id="prod_ser_menu"
+<!-- All -->    
+        <menuitem   id="prod_ser_menu"
 
-					parent="main_products_menu"
-			
-					sequence="1"
+                    parent="main_products_menu"
+            
+                    sequence="1"
 
-					name="Todo"
-				/>
+                    name="Todo"
+                />
 
-			<!-- All -->
-			<menuitem 	id="prod_ser_all_menu" 	
-						parent="prod_ser_menu"
-						sequence="1"
+            <!-- All -->
+            <menuitem   id="prod_ser_all_menu"  
+                        parent="prod_ser_menu"
+                        sequence="1"
 
-						name="Todo"
+                        name="Todo"
 
-						action="product_template_list_action"
-					/>
+                        action="product_template_list_action"
+                    />
 
 
-			<!-- All -->
-			<menuitem 	id="prod_ser_all_saleok_menu" 	
-						parent="prod_ser_menu"
-						sequence="2"
+            <!-- All -->
+            <menuitem   id="prod_ser_all_saleok_menu"   
+                        parent="prod_ser_menu"
+                        sequence="2"
 
-						name="Todo - Venta"
+                        name="Todo - Venta"
 
-						action="product_template_saleok_list_action"
-					/>
+                        action="product_template_saleok_list_action"
+                    />
 
 
 
-			<!-- All -->
-			<menuitem 	id="prod_ser_all_notsaleok_menu" 	
-						parent="prod_ser_menu"
-						sequence="3"
+            <!-- All -->
+            <menuitem   id="prod_ser_all_notsaleok_menu"    
+                        parent="prod_ser_menu"
+                        sequence="3"
 
-						name="Todo - Not Sale Ok"
+                        name="Todo - Not Sale Ok"
 
-						action="product_template_notsaleok_list_action"
-					/>
+                        action="product_template_notsaleok_list_action"
+                    />
 
 
 
 
 
-			<!-- All -->
-			<menuitem 	id="prod_ser_all_consu_menu" 	
-						parent="prod_ser_menu"
-						sequence="4"
+            <!-- All -->
+            <menuitem   id="prod_ser_all_consu_menu"    
+                        parent="prod_ser_menu"
+                        sequence="4"
 
-						name="Todo - Consu"
+                        name="Todo - Consu"
 
-						action="product_template_consu_list_action"
-					/>
+                        action="product_template_consu_list_action"
+                    />
 
 
 
 
-			<!-- All -->
-			<menuitem 	id="prod_ser_all_inac_menu" 	
-						parent="prod_ser_menu"
-						sequence="5"
+            <!-- All -->
+            <menuitem   id="prod_ser_all_inac_menu"     
+                        parent="prod_ser_menu"
+                        sequence="5"
 
-						name="Todo - Inactvo"
+                        name="Todo - Inactvo"
 
-						action="product_template_inac_list_action"
-					/>
+                        action="product_template_inac_list_action"
+                    />
 
 
 
 
-<!-- Pricelist --> 			
-		<menuitem 	id="pricelists_menu" 
+<!-- Pricelist -->          
+        <menuitem   id="pricelists_menu" 
 
-					parent="main_products_menu"
-			
-					sequence="12"
+                    parent="main_products_menu"
+            
+                    sequence="12"
 
-					name="Pricelist"
-				/>
+                    name="Pricelist"
+                />
 
 
-			<!-- All -->
-			<menuitem 	id="prods_pl_item_all_menu"
-						parent="pricelists_menu"
-						sequence="0"
+            <!-- All -->
+            <menuitem   id="prods_pl_item_all_menu"
+                        parent="pricelists_menu"
+                        sequence="0"
 
-						name="All"
+                        name="All"
 
-						action="product_pricelist_item_action"
-				/>
+                        action="product_pricelist_item_action"
+                />
 
 
-			<!-- Product -->
-			<menuitem 	id="prods_pl_item_prods_menu"
-						parent="pricelists_menu"
-						sequence="1"
+            <!-- Product -->
+            <menuitem   id="prods_pl_item_prods_menu"
+                        parent="pricelists_menu"
+                        sequence="1"
 
-						name="Products"
+                        name="Products"
 
-						action="product_pricelist_item_product_action"
-				/>
+                        action="product_pricelist_item_product_action"
+                />
 
-			<!-- Consultation -->
-			<menuitem 	id="prods_pl_item_cons_menu"
-						parent="pricelists_menu"
-						sequence="2"
+            <!-- Consultation -->
+            <menuitem   id="prods_pl_item_cons_menu"
+                        parent="pricelists_menu"
+                        sequence="2"
 
-						name="Consultations"
+                        name="Consultations"
 
-						action="product_pricelist_item_consultation_action"
-				/>
+                        action="product_pricelist_item_consultation_action"
+                />
 
 
-			<!-- laser_co2 -->
-			<menuitem 	id="prods_pl_item_co2_menu"
-						parent="pricelists_menu"
-						sequence="3"
+            <!-- laser_co2 -->
+            <menuitem   id="prods_pl_item_co2_menu"
+                        parent="pricelists_menu"
+                        sequence="3"
 
-						name="Co2"
+                        name="Co2"
 
-						action="product_pricelist_item_laser_co2_action"
-				/>
+                        action="product_pricelist_item_laser_co2_action"
+                />
 
 
-			<!-- laser_ipl -->
-			<menuitem 	id="prods_pl_item_ipl_menu"
-						parent="pricelists_menu"
-						sequence="3"
+            <!-- laser_ipl -->
+            <menuitem   id="prods_pl_item_ipl_menu"
+                        parent="pricelists_menu"
+                        sequence="3"
 
-						name="Ipl"
+                        name="Ipl"
 
-						action="product_pricelist_item_laser_ipl_action"
-				/>
+                        action="product_pricelist_item_laser_ipl_action"
+                />
 
-			<!-- laser_ndyag -->
-			<menuitem 	id="prods_pl_item_ndyag_menu"
-						parent="pricelists_menu"
-						sequence="3"
+            <!-- laser_ndyag -->
+            <menuitem   id="prods_pl_item_ndyag_menu"
+                        parent="pricelists_menu"
+                        sequence="3"
 
-						name="Ndyag"
+                        name="Ndyag"
 
-						action="product_pricelist_item_laser_ndyag_action"
-				/>
+                        action="product_pricelist_item_laser_ndyag_action"
+                />
 
-			<!-- laser_quick -->
-			<menuitem 	id="prods_pl_item_quick_menu"
-						parent="pricelists_menu"
-						sequence="3"
+            <!-- laser_quick -->
+            <menuitem   id="prods_pl_item_quick_menu"
+                        parent="pricelists_menu"
+                        sequence="3"
 
-						name="Quick"
+                        name="Quick"
 
-						action="product_pricelist_item_laser_quick_action"
-				/>
+                        action="product_pricelist_item_laser_quick_action"
+                />
 
 
 
 
-			<!-- cosmetology -->
-			<menuitem 	id="prods_pl_item_cosmetology_menu"
-						parent="pricelists_menu"
-						sequence="4"
+            <!-- cosmetology -->
+            <menuitem   id="prods_pl_item_cosmetology_menu"
+                        parent="pricelists_menu"
+                        sequence="4"
 
-						name="Cosmetology"
+                        name="Cosmetology"
 
-						action="product_pricelist_item_cosmetology_action"
-				/>
+                        action="product_pricelist_item_cosmetology_action"
+                />
 
 
-			<!-- medical -->
-			<menuitem 	id="prods_pl_item_medical_menu"
-						parent="pricelists_menu"
-						sequence="5"
+            <!-- medical -->
+            <menuitem   id="prods_pl_item_medical_menu"
+                        parent="pricelists_menu"
+                        sequence="5"
 
-						name="Medical"
+                        name="Medical"
 
-						action="product_pricelist_item_medical_action"
-				/>
+                        action="product_pricelist_item_medical_action"
+                />
 
 
 
 
 
 
-<!-- Products --> 			
-		<menuitem 	id="prods_menu" 
+<!-- Products -->           
+        <menuitem   id="prods_menu" 
 
-					parent="main_products_menu"
-			
-					sequence="3"
+                    parent="main_products_menu"
+            
+                    sequence="3"
 
-					name="Productos"
-				/>
+                    name="Productos"
+                />
 
-			
-			<!-- Products -->
-			<menuitem 	id="prods_product_menu" 	
-						parent="prods_menu"
-						sequence="1"
+            
+            <!-- Products -->
+            <menuitem   id="prods_product_menu"     
+                        parent="prods_menu"
+                        sequence="1"
 
-						name="Productos"
+                        name="Productos"
 
-						action="product_template_product_list_action"
-					/>
+                        action="product_template_product_list_action"
+                    />
 
 
-			<!-- Pricelist Export -->
+            <!-- Pricelist Export -->
 <!--
-			<menuitem 	id="prods_pl_product_menu" 	
-						parent="prods_menu"
-						sequence="2"
-						name="Pricelist Exp"
-						action="product_template_pl_list_action"
-					/>
+            <menuitem   id="prods_pl_product_menu"  
+                        parent="prods_menu"
+                        sequence="2"
+                        name="Pricelist Exp"
+                        action="product_template_pl_list_action"
+                    />
 -->
 
 
@@ -244,102 +244,102 @@
 
 
 <!-- Services -->
-		<menuitem 	id="services_menu" 
-					parent="main_products_menu"
-					sequence="4"
+        <menuitem   id="services_menu" 
+                    parent="main_products_menu"
+                    sequence="4"
 
-					name="Servicios"
-					/>
-
-
+                    name="Servicios"
+                    />
 
 
 
 
-			<!-- Consultation -->
-			<menuitem 	id="prods_services_consultation_menu" 
-						name="Consultas"
-						parent="services_menu"
-						sequence="0"
-						action="product_template_service_consultation_list_action"/>
+
+
+            <!-- Consultation -->
+            <menuitem   id="prods_services_consultation_menu" 
+                        name="Consultas"
+                        parent="services_menu"
+                        sequence="0"
+                        action="product_template_service_consultation_list_action"/>
 
 
 
 
-			<!-- CO2 -->
-			<menuitem 	id="prods_services_co2_menu" 
-						name="Laser Co2"
-						parent="services_menu"
-						sequence="1"
-						action="product_template_service_co2_list_action"
-					/>
+            <!-- CO2 -->
+            <menuitem   id="prods_services_co2_menu" 
+                        name="Laser Co2"
+                        parent="services_menu"
+                        sequence="1"
+                        action="product_template_service_co2_list_action"
+                    />
 
 
-			<!-- Exc -->
-			<menuitem 	id="prods_services_excilite_menu" 
-						name="Laser Excilite"
-						parent="services_menu"
-						sequence="2"
-						action="product_template_service_excilite_list_action"/>
+            <!-- Exc -->
+            <menuitem   id="prods_services_excilite_menu" 
+                        name="Laser Excilite"
+                        parent="services_menu"
+                        sequence="2"
+                        action="product_template_service_excilite_list_action"/>
 
 
-			<!-- Ipl -->
-			<menuitem 	id="prods_services_ipl_menu" 
-						name="Laser IPL"
-						parent="services_menu"
-						sequence="3"
-						action="product_template_service_ipl_list_action"/>
-
-
-
-
-			<!-- Ndyag -->
-			<menuitem 	id="prods_services_ndyag_menu" 
-						name="Laser Ndyag"
-						parent="services_menu"
-						sequence="4"
-						action="product_template_service_ndyag_list_action"/>
-
-
-			<!-- Quick -->
-			<menuitem 	id="prods_services_quick_menu" 
-						name="QUICK LASER"
-						parent="services_menu"
-						sequence="5"
-						action="product_template_service_quick_list_action"/>
+            <!-- Ipl -->
+            <menuitem   id="prods_services_ipl_menu" 
+                        name="Laser IPL"
+                        parent="services_menu"
+                        sequence="3"
+                        action="product_template_service_ipl_list_action"/>
 
 
 
 
-			<!-- Cosmetology -->
-			<menuitem 	id="prods_services_cosetology_menu" 
-						name="Cosmeatria"
-						parent="services_menu"
-						sequence="6"
-
-						action="product_template_service_cosmetology_list_action"/>
-
+            <!-- Ndyag -->
+            <menuitem   id="prods_services_ndyag_menu" 
+                        name="Laser Ndyag"
+                        parent="services_menu"
+                        sequence="4"
+                        action="product_template_service_ndyag_list_action"/>
 
 
-
-			<!-- Medical -->
-			<menuitem 	id="prods_services_medical_menu" 
-						name="T. Médico"
-						parent="services_menu"
-						sequence="7"
-						action="product_template_service_medical_list_action"/>
+            <!-- Quick -->
+            <menuitem   id="prods_services_quick_menu" 
+                        name="QUICK LASER"
+                        parent="services_menu"
+                        sequence="5"
+                        action="product_template_service_quick_list_action"/>
 
 
 
-			<!-- All Services -->
-			<menuitem 	id="prods_services_menu" 
-						parent="services_menu"
-						sequence="10"
 
-						name="Servicios"
+            <!-- Cosmetology -->
+            <menuitem   id="prods_services_cosetology_menu" 
+                        name="Cosmeatria"
+                        parent="services_menu"
+                        sequence="6"
 
-						action="product_template_service_list_action"
-					/>
+                        action="product_template_service_cosmetology_list_action"/>
+
+
+
+
+            <!-- Medical -->
+            <menuitem   id="prods_services_medical_menu" 
+                        name="T. Médico"
+                        parent="services_menu"
+                        sequence="7"
+                        action="product_template_service_medical_list_action"/>
+
+
+
+            <!-- All Services -->
+            <menuitem   id="prods_services_menu" 
+                        parent="services_menu"
+                        sequence="10"
+
+                        name="Servicios"
+
+                        action="product_template_service_list_action"
+                    />
 
 
 
@@ -356,53 +356,53 @@
 
 
 <!-- Inactive -->
-		<menuitem 	id="services_inactive_menu" 
+        <menuitem   id="services_inactive_menu" 
 
-					parent="main_products_menu"
-			
-					sequence="5"
+                    parent="main_products_menu"
+            
+                    sequence="5"
 
-					name="Inactivos"
-					/>
-
-
-			<!-- Productos -->
-			<menuitem 	id="prods_product_inactive_menu" 
-
-						parent="services_inactive_menu"
-				
-						sequence="1"
-
-						name="Productos"
-
-						action="product_template_product_inactive_list_action"
-					/>
+                    name="Inactivos"
+                    />
 
 
+            <!-- Productos -->
+            <menuitem   id="prods_product_inactive_menu" 
 
-			<!-- Servicios -->
-			<menuitem 	id="prods_services_inactive_menu" 
+                        parent="services_inactive_menu"
+                
+                        sequence="1"
 
-						parent="services_inactive_menu"
-				
-						sequence="2"
+                        name="Productos"
 
-						name="Servicios"
-
-						action="product_template_service_inactive_list_action"
-					/>
+                        action="product_template_product_inactive_list_action"
+                    />
 
 
-			<!-- Medical -->
-			<menuitem 	id="prods_services_medical_inactive_menu" 
 
-						parent="services_inactive_menu"
-				
-						sequence="6"
+            <!-- Servicios -->
+            <menuitem   id="prods_services_inactive_menu" 
 
-						name="T. Médico"
+                        parent="services_inactive_menu"
+                
+                        sequence="2"
 
-						action="product_template_service_medical_inactive_list_action"/>
+                        name="Servicios"
+
+                        action="product_template_service_inactive_list_action"
+                    />
+
+
+            <!-- Medical -->
+            <menuitem   id="prods_services_medical_inactive_menu" 
+
+                        parent="services_inactive_menu"
+                
+                        sequence="6"
+
+                        name="T. Médico"
+
+                        action="product_template_service_medical_inactive_list_action"/>
 
 
 
@@ -411,48 +411,48 @@
 
 
 <!-- Vip -->
-		<menuitem 	id="sales_cards_menu" 
-					name="Vip"
-					parent="main_products_menu"
-					sequence="6"
-					groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors"
-					/>
+        <menuitem   id="sales_cards_menu" 
+                    name="Vip"
+                    parent="main_products_menu"
+                    sequence="6"
+                    groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors"
+                    />
 
-			<menuitem 	id="sales_card_sub_menu" 
-						name="Tarjetas Vip"
-						parent="sales_cards_menu"
-						sequence="1"
+            <menuitem   id="sales_card_sub_menu" 
+                        name="Tarjetas Vip"
+                        parent="sales_cards_menu"
+                        sequence="1"
 
-						action="card_list_action"
-					/>
+                        action="card_list_action"
+                    />
 
-			<menuitem 	id="sales_card_inactive_sub_menu" 
-						name="Tarjetas Vip - Anuladas"
-						parent="sales_cards_menu"
-						sequence="2"
+            <menuitem   id="sales_card_inactive_sub_menu" 
+                        name="Tarjetas Vip - Anuladas"
+                        parent="sales_cards_menu"
+                        sequence="2"
 
-						action="card_inactive_list_action"
-					/>
+                        action="card_inactive_list_action"
+                    />
 
-			<menuitem 	id="partners_card_sub_menu" 
-						name="Clientes Vip"
-						parent="sales_cards_menu"
-						sequence="3"
+            <menuitem   id="partners_card_sub_menu" 
+                        name="Clientes Vip"
+                        parent="sales_cards_menu"
+                        sequence="3"
 
-						action="partner_vip_list_action"
-					/>
+                        action="partner_vip_list_action"
+                    />
 
-			<menuitem 	id="vip_product_template_services_menu" 
-						name="Servicios Vip"
-						parent="sales_cards_menu"
-						sequence="4"
+            <menuitem   id="vip_product_template_services_menu" 
+                        name="Servicios Vip"
+                        parent="sales_cards_menu"
+                        sequence="4"
 
-						action="product_template_service_vip_list_action"
-					/>
-
-
+                        action="product_template_service_vip_list_action"
+                    />
 
 
 
-	</data>
+
+
+    </data>
 </openerp>

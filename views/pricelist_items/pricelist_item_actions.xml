@@ -1,158 +1,158 @@
 <?xml version="1.0"?>
 <openerp>
-	<data>
+    <data>
 
 
 
 <!-- Pricelists -->
 
 
-		<!-- All --> 
-		<record model="ir.actions.act_window" id="product_pricelist_item_action">
-			<field name="name">Productos</field>
-			<field name="res_model">product.pricelist.item</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,kanban,form</field>
+        <!-- All --> 
+        <record model="ir.actions.act_window" id="product_pricelist_item_action">
+            <field name="name">Productos</field>
+            <field name="res_model">product.pricelist.item</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form</field>
             <field name="context">{}</field>
             <field name="domain">[]</field>
-		</record>
+        </record>
 
 
 
 
-		<!-- Products --> 
-		<record model="ir.actions.act_window" id="product_pricelist_item_product_action">
-			<field name="name">Pricelist Productos</field>
-			<field name="res_model">product.pricelist.item</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,kanban,form</field>
+        <!-- Products --> 
+        <record model="ir.actions.act_window" id="product_pricelist_item_product_action">
+            <field name="name">Pricelist Productos</field>
+            <field name="res_model">product.pricelist.item</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form</field>
             <field name="context">{}</field>
 
             <field name="domain">[
-									('x_type', 'in', ['product']),
-            	]</field>		
-		</record>
+                                    ('x_type', 'in', ['product']),
+                ]</field>       
+        </record>
 
 
-		<!-- Consultation --> 
-		<record model="ir.actions.act_window" id="product_pricelist_item_consultation_action">
-			<field name="name">Pricelist Co2</field>
-			<field name="res_model">product.pricelist.item</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,kanban,form</field>
-            <field name="context">{}</field>
-            
-            <field name="domain">[
-									('x_type', 'in', ['consultation']),
-            	]</field>
-		</record>
-
-
-
-
-		<!-- laser_co2 --> 
-		<record model="ir.actions.act_window" id="product_pricelist_item_laser_co2_action">
-			<field name="name">Pricelist Co2</field>
-			<field name="res_model">product.pricelist.item</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,kanban,form</field>
+        <!-- Consultation --> 
+        <record model="ir.actions.act_window" id="product_pricelist_item_consultation_action">
+            <field name="name">Pricelist Co2</field>
+            <field name="res_model">product.pricelist.item</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form</field>
             <field name="context">{}</field>
             
             <field name="domain">[
-									('x_type', 'in', ['laser_co2']),
-            	]</field>
-
-			<field name="limit">200</field>
-		</record>
+                                    ('x_type', 'in', ['consultation']),
+                ]</field>
+        </record>
 
 
 
-		<!-- laser_ipl --> 
-		<record model="ir.actions.act_window" id="product_pricelist_item_laser_ipl_action">
-			<field name="name">Pricelist ipl</field>
-			<field name="res_model">product.pricelist.item</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,kanban,form</field>
+
+        <!-- laser_co2 --> 
+        <record model="ir.actions.act_window" id="product_pricelist_item_laser_co2_action">
+            <field name="name">Pricelist Co2</field>
+            <field name="res_model">product.pricelist.item</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form</field>
             <field name="context">{}</field>
             
             <field name="domain">[
-									('x_type', 'in', ['laser_ipl']),
-            	]</field>
+                                    ('x_type', 'in', ['laser_co2']),
+                ]</field>
 
-			<field name="limit">200</field>
-		</record>
+            <field name="limit">200</field>
+        </record>
 
 
-		<!-- laser_ndyag --> 
-		<record model="ir.actions.act_window" id="product_pricelist_item_laser_ndyag_action">
-			<field name="name">Pricelist ndyag</field>
-			<field name="res_model">product.pricelist.item</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,kanban,form</field>
+
+        <!-- laser_ipl --> 
+        <record model="ir.actions.act_window" id="product_pricelist_item_laser_ipl_action">
+            <field name="name">Pricelist ipl</field>
+            <field name="res_model">product.pricelist.item</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form</field>
             <field name="context">{}</field>
             
             <field name="domain">[
-									('x_type', 'in', ['laser_ndyag']),
-            	]</field>
+                                    ('x_type', 'in', ['laser_ipl']),
+                ]</field>
 
-			<field name="limit">200</field>
-		</record>
+            <field name="limit">200</field>
+        </record>
 
 
-		<!-- laser_quick --> 
-		<record model="ir.actions.act_window" id="product_pricelist_item_laser_quick_action">
-			<field name="name">Pricelist quick</field>
-			<field name="res_model">product.pricelist.item</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,kanban,form</field>
+        <!-- laser_ndyag --> 
+        <record model="ir.actions.act_window" id="product_pricelist_item_laser_ndyag_action">
+            <field name="name">Pricelist ndyag</field>
+            <field name="res_model">product.pricelist.item</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form</field>
             <field name="context">{}</field>
             
             <field name="domain">[
-									('x_type', 'in', ['laser_quick']),
-            	]</field>
+                                    ('x_type', 'in', ['laser_ndyag']),
+                ]</field>
 
-			<field name="limit">200</field>
-		</record>
-
-
+            <field name="limit">200</field>
+        </record>
 
 
-
-
-
-
-		<!-- cosmetology --> 
-		<record model="ir.actions.act_window" id="product_pricelist_item_cosmetology_action">
-			<field name="name">Pricelist Cosmeto</field>
-			<field name="res_model">product.pricelist.item</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,kanban,form</field>
+        <!-- laser_quick --> 
+        <record model="ir.actions.act_window" id="product_pricelist_item_laser_quick_action">
+            <field name="name">Pricelist quick</field>
+            <field name="res_model">product.pricelist.item</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form</field>
             <field name="context">{}</field>
             
             <field name="domain">[
-									('x_type', 'in', ['cosmetology']),
-            	]</field>
+                                    ('x_type', 'in', ['laser_quick']),
+                ]</field>
 
-			<field name="limit">200</field>
-		</record>
+            <field name="limit">200</field>
+        </record>
 
 
 
-		<!-- medical --> 
-		<record model="ir.actions.act_window" id="product_pricelist_item_medical_action">
-			<field name="name">Pricelist Medical</field>
-			<field name="res_model">product.pricelist.item</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,kanban,form</field>
+
+
+
+
+
+        <!-- cosmetology --> 
+        <record model="ir.actions.act_window" id="product_pricelist_item_cosmetology_action">
+            <field name="name">Pricelist Cosmeto</field>
+            <field name="res_model">product.pricelist.item</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form</field>
             <field name="context">{}</field>
             
             <field name="domain">[
-									('x_type', 'in', ['medical']),
-            	]</field>
+                                    ('x_type', 'in', ['cosmetology']),
+                ]</field>
 
-			<field name="limit">200</field>
-		</record>
+            <field name="limit">200</field>
+        </record>
 
 
-	</data>
+
+        <!-- medical --> 
+        <record model="ir.actions.act_window" id="product_pricelist_item_medical_action">
+            <field name="name">Pricelist Medical</field>
+            <field name="res_model">product.pricelist.item</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="context">{}</field>
+            
+            <field name="domain">[
+                                    ('x_type', 'in', ['medical']),
+                ]</field>
+
+            <field name="limit">200</field>
+        </record>
+
+
+    </data>
 </openerp>

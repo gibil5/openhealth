@@ -1,50 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
-	<data>
+    <data>
 
 
 
-		<!-- Form view -->
-		<record model="ir.ui.view" id="payment_method_line_form_view">
+        <!-- Form view -->
+        <record model="ir.ui.view" id="payment_method_line_form_view">
 
-			<field name="name">payment.method.line.form</field>
-			
-			<field name="model">openhealth.payment_method_line</field>
+            <field name="name">payment.method.line.form</field>
+            
+            <field name="model">openhealth.payment_method_line</field>
 
-			<!--
-			<field name="inherit_id" ref="sale.view_order_form"/>			
-	        <field name="mode">primary</field>
-	        <field name="priority" eval="1"/>
-	        -->
-
-
-			<field name="arch" type="xml">
-
-				<form string="Payment Method - Form">
+            <!--
+            <field name="inherit_id" ref="sale.view_order_form"/>           
+            <field name="mode">primary</field>
+            <field name="priority" eval="1"/>
+            -->
 
 
+            <field name="arch" type="xml">
+
+                <form string="Payment Method - Form">
 
 
 
-					<!-- Header --> 
+
+
+                    <!-- Header --> 
 <!--
-						states="sale"						
+                        states="sale"                       
 -->
-					<header>
+                    <header>
 
 
-						<!-- Back to Order --> 
-<!--						
-						<button 
-								name="open_pm"
-								type="object" 
-								class="oe_highlight"
-								string="Regresar"
-						/>
+                        <!-- Back to Order --> 
+<!--                        
+                        <button 
+                                name="open_pm"
+                                type="object" 
+                                class="oe_highlight"
+                                string="Regresar"
+                        />
 -->
 
-					
-					</header>
+                    
+                    </header>
 
 
 
@@ -52,204 +52,204 @@
 
 
 
-					<!-- Sheet --> 
-					<sheet>
-						
+                    <!-- Sheet --> 
+                    <sheet>
+                        
 <!--
-						<h1><field name="order"   /></h1>
-						<h1><field name="order" class="oe_inline"/></h1>
+                        <h1><field name="order"   /></h1>
+                        <h1><field name="order" class="oe_inline"/></h1>
 -->
 
-						<h1>Pago</h1>
+                        <h1>Pago</h1>
 
 
-						<group>
+                        <group>
 
-							<group>
-<!--								
+                            <group>
+<!--                                
 -->
-								<field name="vspace"   />	
+                                <field name="vspace"   />   
 
-								<field name="name"   />													
-								
-								<field name="vspace"   />	
+                                <field name="name"   />                                                 
+                                
+                                <field name="vspace"   />   
 
-								<field name="method"   />	
+                                <field name="method"   />   
 
-								<field name="vspace"   />	
+                                <field name="vspace"   />   
 
-								<field name="subtotal"   />	
+                                <field name="subtotal"   /> 
 
-								<field name="vspace"   />
+                                <field name="vspace"   />
 <!--
-								<field name="code"   invisible="1" />	
+                                <field name="code"   invisible="1" />   
 -->
-							</group>
+                            </group>
 
 
-							<group>
+                            <group>
 <!--
-								<field name="code" 		attrs="{'invisible':[
-																					('method', '!=', 'debit_visa'), 
-																					('method', '!=', 'debit_master'), 
-																					('method', '!=', 'credit_visa'), 
-																					('method', '!=', 'credit_master'), 
-																					('method', '!=', 'diners'), 
-																					('method', '!=', 'american_express'), 
-																			]}"			/>
+                                <field name="code"      attrs="{'invisible':[
+                                                                                    ('method', '!=', 'debit_visa'), 
+                                                                                    ('method', '!=', 'debit_master'), 
+                                                                                    ('method', '!=', 'credit_visa'), 
+                                                                                    ('method', '!=', 'credit_master'), 
+                                                                                    ('method', '!=', 'diners'), 
+                                                                                    ('method', '!=', 'american_express'), 
+                                                                            ]}"         />
 
 attrs="{'invisible':[
-																						('method', '!=', 'debit_visa'), 
-																						('method', '!=', 'debit_master'), 
-																						('method', '!=', 'credit_visa'), 
-																						('method', '!=', 'credit_master'), 
-																						('method', '!=', 'diners'), 
-																						('method', '!=', 'american_express'), 
-																			]}"			
+                                                                                        ('method', '!=', 'debit_visa'), 
+                                                                                        ('method', '!=', 'debit_master'), 
+                                                                                        ('method', '!=', 'credit_visa'), 
+                                                                                        ('method', '!=', 'credit_master'), 
+                                                                                        ('method', '!=', 'diners'), 
+                                                                                        ('method', '!=', 'american_express'), 
+                                                                            ]}"         
 
 -->
 
 
 
-								<field name="vspace"   />	
-								<field name="payment_method"   />	
-								<field name="vspace"   />	
+                                <field name="vspace"   />   
+                                <field name="payment_method"   />   
+                                <field name="vspace"   />   
 
 <!--
-								<field name="code" 		
+                                <field name="code"      
 
-														attrs="{	'invisible':[ ('method', 'in', ['cash', 'cuota_perfecta'] ),], 
-																	'required':[ ('method', 'in', ['debit_visa', 'debit_master', 'credit_visa', 'credit_master', 'diners', 'american_express'] ),]
-																}"
+                                                        attrs="{    'invisible':[ ('method', 'in', ['cash', 'cuota_perfecta'] ),], 
+                                                                    'required':[ ('method', 'in', ['debit_visa', 'debit_master', 'credit_visa', 'credit_master', 'diners', 'american_express'] ),]
+                                                                }"
 -->
-								/>
-							</group>
+                                />
+                            </group>
 
 
-						</group>
+                        </group>
 
 
-					</sheet>
-				</form>
+                    </sheet>
+                </form>
 
 
-				
-			</field>
-		</record>
-
-
-
+                
+            </field>
+        </record>
 
 
 
-		<!-- Tree view --> 
-		<record model="ir.ui.view" id="payment_method_line_tree_view">
-			<field name="name">payment_method_line.tree</field>
-			<field name="model">openhealth.payment_method_line</field>
-			<field name="arch" type="xml">
-				<tree string="payment_method_line Tree">
-					
-
-					<field name="date_time"/>
-
-					<field name="date_char"/>
-
-					<field name="time_char"/>
 
 
 
-					<field name="x_type"/>
+        <!-- Tree view --> 
+        <record model="ir.ui.view" id="payment_method_line_tree_view">
+            <field name="name">payment_method_line.tree</field>
+            <field name="model">openhealth.payment_method_line</field>
+            <field name="arch" type="xml">
+                <tree string="payment_method_line Tree">
+                    
 
-					<field name="serial_nr"/>
+                    <field name="date_time"/>
 
-					<field name="patient"/>													
+                    <field name="date_char"/>
 
-					<field name="document"/>				
-
-					<field name="document_type"/>
-
-					<field name="method"/>
-
-					<field name="subtotal"/>
+                    <field name="time_char"/>
 
 
-					<field name="state"/>
+
+                    <field name="x_type"/>
+
+                    <field name="serial_nr"/>
+
+                    <field name="patient"/>                                                 
+
+                    <field name="document"/>                
+
+                    <field name="document_type"/>
+
+                    <field name="method"/>
+
+                    <field name="subtotal"/>
+
+
+                    <field name="state"/>
 
 <!--
-					<field name="account_id"   />
-					<field name="currency"  />
-					<field name="create_date"/>
-					<field name="write_date"/>
-					<field name="name"/>
-					<field name="payment_method"   />
--->				
+                    <field name="account_id"   />
+                    <field name="currency"  />
+                    <field name="create_date"/>
+                    <field name="write_date"/>
+                    <field name="name"/>
+                    <field name="payment_method"   />
+-->             
 
-				</tree>
-			</field>
-		</record>
-
-
+                </tree>
+            </field>
+        </record>
 
 
 
 
 
-		<!-- Action -->
-		<record model="ir.actions.act_window" id="payment_line_form_action">
-
-			<field name="name">Reconciliación de Tarjetas</field>
-			
-			<field name="res_model">openhealth.payment_method_line</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-
-			<field name="domain">[
-									('account_id', '=', active_id),
-									('state', '=', 'sale'),
-								]
-			</field>
-
-			<field name="limit">1000</field>
-		</record>
 
 
+        <!-- Action -->
+        <record model="ir.actions.act_window" id="payment_line_form_action">
 
-		<!-- Action --> 
-		<record model="ir.actions.act_window" id="openhealth_payment_method_line_form_action">
-			<field name="name">Payment method line</field>
-			<field name="res_model">openhealth.payment_method_line</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree, form</field>
+            <field name="name">Reconciliación de Tarjetas</field>
+            
+            <field name="res_model">openhealth.payment_method_line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+
+            <field name="domain">[
+                                    ('account_id', '=', active_id),
+                                    ('state', '=', 'sale'),
+                                ]
+            </field>
+
+            <field name="limit">1000</field>
+        </record>
+
+
+
+        <!-- Action --> 
+        <record model="ir.actions.act_window" id="openhealth_payment_method_line_form_action">
+            <field name="name">Payment method line</field>
+            <field name="res_model">openhealth.payment_method_line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree, form</field>
             
             <field name="domain">[]</field>
-			<field name="context">{}</field>
-		</record>
+            <field name="context">{}</field>
+        </record>
 
 
 
 
 
 <!-- FILTER --> 
-		<record id="payment_line_filter" model="ir.ui.view">
-			<field name="name">payment Line Search</field>
-			<field name="model">openhealth.payment_method_line</field>
-		   	<field name="arch" type="xml">
-				<search string="payment Lines">
+        <record id="payment_line_filter" model="ir.ui.view">
+            <field name="name">payment Line Search</field>
+            <field name="model">openhealth.payment_method_line</field>
+            <field name="arch" type="xml">
+                <search string="payment Lines">
 <!--
-					<field 	name="numerofactura"	/>
-						<separator/>
-						<filter name="tipodocumento" context="{'group_by':'tipodocumento'}"/>
+                    <field  name="numerofactura"    />
+                        <separator/>
+                        <filter name="tipodocumento" context="{'group_by':'tipodocumento'}"/>
 -->
-					<field 	name="patient"	/>
-					<group expand="1" string="Group By">
-						<filter name="Tipo" context="{'group_by':'method'}"/>
-						<filter name="Paciente" context="{'group_by':'patient'}"/>
-					</group>
+                    <field  name="patient"  />
+                    <group expand="1" string="Group By">
+                        <filter name="Tipo" context="{'group_by':'method'}"/>
+                        <filter name="Paciente" context="{'group_by':'patient'}"/>
+                    </group>
 
-			   </search>
-		   </field>
-	   </record>
+               </search>
+           </field>
+       </record>
 
-	</data>
+    </data>
 </openerp>
 

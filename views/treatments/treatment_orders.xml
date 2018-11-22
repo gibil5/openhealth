@@ -1,45 +1,45 @@
 <?xml version="1.0"?>
 <openerp>
-	<data>
+    <data>
 
 
 
-		<!-- Orders-->
-		<record model="ir.ui.view" id="treatment_quotation_form_view">
-			<field name="name">treatment.quotation.form</field>
-			<field name="model">openhealth.treatment</field>
+        <!-- Orders-->
+        <record model="ir.ui.view" id="treatment_quotation_form_view">
+            <field name="name">treatment.quotation.form</field>
+            <field name="model">openhealth.treatment</field>
 
-			<field name="priority" eval="1"/>
-			
-			<field name="inherit_id" ref="treatment_form_view"/>
-			<field name="arch" type="xml">
+            <field name="priority" eval="1"/>
+            
+            <field name="inherit_id" ref="treatment_form_view"/>
+            <field name="arch" type="xml">
 
 
-				<notebook>
+                <notebook>
 <!--
-					<page string="Ventas"   		 >
+                    <page string="Ventas"            >
 
 
 attrs="{'invisible': [('user_id', '!=', 
 
 eval="[ 
-										(4, ref('openhealth.director_clinicachavarri')),
-										(4, ref('openhealth.manager_clinicachavarri')),
-									]"
+                                        (4, ref('openhealth.director_clinicachavarri')),
+                                        (4, ref('openhealth.manager_clinicachavarri')),
+                                    ]"
 )]}"
 uid
 
 attrs="{'invisible': [('user_id', '!=', 
 eval="[ 
-										(4, ref('openhealth.director_clinicachavarri')),
-										(4, ref('openhealth.manager_clinicachavarri')),
-									]"
+                                        (4, ref('openhealth.director_clinicachavarri')),
+                                        (4, ref('openhealth.manager_clinicachavarri')),
+                                    ]"
 )]}"
 
 
 
 
-attrs="{'invisible': [	('user_id', '!=', 1)
+attrs="{'invisible': [  ('user_id', '!=', 1)
 ]}
 "
 -->
@@ -47,7 +47,7 @@ attrs="{'invisible': [	('user_id', '!=', 1)
 
 
 <!--
-<page string="Caja">	
+<page string="Caja">    
 
 
 groups="openhealth.directors,openhealth.managers"
@@ -61,7 +61,7 @@ groups="openhealth.roots,openhealth.reception,openhealth.directors,openhealth.ma
 
 
 
-<page string="Caja"	
+<page string="Caja" 
 >
 
 
@@ -69,17 +69,17 @@ groups="openhealth.roots,openhealth.reception,openhealth.directors,openhealth.ma
 
 
 <!--
-						<field name="order_ids"/>
-						<field name="order_ids"		readonly="1"		>
+                        <field name="order_ids"/>
+                        <field name="order_ids"     readonly="1"        >
 attrs="{'readonly':[('state ', '=', 'done')]}"
--->					
+-->                 
 
 
 
-						<field name="order_ids"			>
+                        <field name="order_ids"         >
 
 
-							<tree string="Prespuestos"	create="false" 	
+                            <tree string="Prespuestos"  create="false"  
 
 colors="
 red:state=='draft';
@@ -91,68 +91,68 @@ blue:state=='sale';
 grey:state in ('cancel')
 "
 
->										
+>                                       
 
 
 
-								<!-- Hot Button -->
-								<button 
-									name="open_line_current" 
-									type="object" 
-									class="oe_highlight"	
+                                <!-- Hot Button -->
+                                <button 
+                                    name="open_line_current" 
+                                    type="object" 
+                                    class="oe_highlight"    
 
-									string="Entrar"
-								/>
-
-<!--
-								<field  name="name"	string="Presupuesto #"/>
--->
-
-								<field  name="pricelist_id"/>
-
-								<field  name="partner_id"/>
-
-
-								
-								<field  name="x_doctor"/>
-
-								<field name="x_product"/>
-
-								<field name="state"/>
-								
-								<field name="nr_lines"/>
-
-								<field name="amount_total"	groups="openhealth.roots,openhealth.directors,openhealth.managers"/>
-								
-								<field name="date_order"/>					
-
-
-
-								<field name="x_procedure_created"/>
+                                    string="Entrar"
+                                />
 
 <!--
-								<field name="x_target"/>
-								<field name="x_family"/>
+                                <field  name="name" string="Presupuesto #"/>
 -->
-							</tree>
-						</field>
 
-					</page>
-				</notebook>
+                                <field  name="pricelist_id"/>
+
+                                <field  name="partner_id"/>
+
+
+                                
+                                <field  name="x_doctor"/>
+
+                                <field name="x_product"/>
+
+                                <field name="state"/>
+                                
+                                <field name="nr_lines"/>
+
+                                <field name="amount_total"  groups="openhealth.roots,openhealth.directors,openhealth.managers"/>
+                                
+                                <field name="date_order"/>                  
+
+
+
+                                <field name="x_procedure_created"/>
 
 <!--
-						<notebook>
-							<page string="Presupuesto"   		 >
-								<field name="quotation_ids"/>
-							</page>
-							<page string="FACTURADO"   		 >
-								<field name="sale_ids"/>
-							</page>
-						</notebook>
+                                <field name="x_target"/>
+                                <field name="x_family"/>
+-->
+                            </tree>
+                        </field>
+
+                    </page>
+                </notebook>
+
+<!--
+                        <notebook>
+                            <page string="Presupuesto"           >
+                                <field name="quotation_ids"/>
+                            </page>
+                            <page string="FACTURADO"         >
+                                <field name="sale_ids"/>
+                            </page>
+                        </notebook>
 -->
 
 
-			</field>
-		</record>
-	</data>
+            </field>
+        </record>
+    </data>
 </openerp>

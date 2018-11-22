@@ -1,107 +1,107 @@
 <?xml version="1.0"?>
 <openerp>
-	<data>
+    <data>
 
 
 
 
-		<!-- ACTION --> 
-		<record model="ir.actions.act_window" id="zone_list_action">
-			<field name="name">zone</field>
-			<field name="res_model">openhealth.zone</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
+        <!-- ACTION --> 
+        <record model="ir.actions.act_window" id="zone_list_action">
+            <field name="name">zone</field>
+            <field name="res_model">openhealth.zone</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
             <field name="context">{}</field>
-			
+            
             <field name="domain">[]</field>
 
-			<!--
+            <!--
             <field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first order
-				</p>
-			</field>
-			-->
-		</record>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first order
+                </p>
+            </field>
+            -->
+        </record>
 
 
 
 
 
-		<!-- ACTION  Co2 --> 
-		<record model="ir.actions.act_window" id="zone_co2_list_action">
+        <!-- ACTION  Co2 --> 
+        <record model="ir.actions.act_window" id="zone_co2_list_action">
 
-			<field name="name">Zone Co2</field>
-			
-			<field name="res_model">openhealth.zone</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
+            <field name="name">Zone Co2</field>
+            
+            <field name="res_model">openhealth.zone</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
             <field name="context">{}</field>
-			
+            
             <field name="domain">[
-									('treatment','=','laser_co2'), 
-            	]</field>
+                                    ('treatment','=','laser_co2'), 
+                ]</field>
 
-			<!--
+            <!--
             <field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first order
-				</p>
-			</field>
-			-->
-		</record>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first order
+                </p>
+            </field>
+            -->
+        </record>
 
 
 
-		<!-- ACTION  quick --> 
-		<record model="ir.actions.act_window" id="zone_quick_list_action">
+        <!-- ACTION  quick --> 
+        <record model="ir.actions.act_window" id="zone_quick_list_action">
 
-			<field name="name">Zone Quick</field>
-			
-			<field name="res_model">openhealth.zone</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
+            <field name="name">Zone Quick</field>
+            
+            <field name="res_model">openhealth.zone</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
             <field name="context">{}</field>
-			
+            
             <field name="domain">[
-									('treatment','=','laser_quick'), 
-            	]</field>
+                                    ('treatment','=','laser_quick'), 
+                ]</field>
 
-			<!--
+            <!--
             <field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first order
-				</p>
-			</field>
-			-->
-		</record>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first order
+                </p>
+            </field>
+            -->
+        </record>
 
 
 
 
 
-		<!-- ACTION  excilite --> 
-		<record model="ir.actions.act_window" id="zone_excilite_list_action">
+        <!-- ACTION  excilite --> 
+        <record model="ir.actions.act_window" id="zone_excilite_list_action">
 
-			<field name="name">Zone Excilite</field>
-			
-			<field name="res_model">openhealth.zone</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
+            <field name="name">Zone Excilite</field>
+            
+            <field name="res_model">openhealth.zone</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
             <field name="context">{}</field>
-			
+            
             <field name="domain">[
-									('treatment','=','laser_excilite'), 
-            	]</field>
+                                    ('treatment','=','laser_excilite'), 
+                ]</field>
 
-			<!--
+            <!--
             <field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first order
-				</p>
-			</field>
-			-->
-		</record>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first order
+                </p>
+            </field>
+            -->
+        </record>
 
 
 
@@ -112,55 +112,55 @@
 
 
 
-		<!-- ACTION  ipl --> 
-		<record model="ir.actions.act_window" id="zone_ipl_list_action">
-			
-			<field name="name">Zone Ipl</field>
-			
-			<field name="res_model">openhealth.zone</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
+        <!-- ACTION  ipl --> 
+        <record model="ir.actions.act_window" id="zone_ipl_list_action">
+            
+            <field name="name">Zone Ipl</field>
+            
+            <field name="res_model">openhealth.zone</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
             <field name="context">{}</field>
-			
+            
             <field name="domain">[
-									('treatment','=','laser_ipl'), 
-            	]</field>
+                                    ('treatment','=','laser_ipl'), 
+                ]</field>
 
-			<!--
+            <!--
             <field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first order
-				</p>
-			</field>
-			-->
-		</record>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first order
+                </p>
+            </field>
+            -->
+        </record>
 
 
 
 
 
-		<!-- ACTION  ndyag --> 
-		<record model="ir.actions.act_window" id="zone_ndyag_list_action">
+        <!-- ACTION  ndyag --> 
+        <record model="ir.actions.act_window" id="zone_ndyag_list_action">
 
-			<field name="name">Zone Ndyag</field>
-			
-			<field name="res_model">openhealth.zone</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
+            <field name="name">Zone Ndyag</field>
+            
+            <field name="res_model">openhealth.zone</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
             <field name="context">{}</field>
-			
+            
             <field name="domain">[
-									('treatment','=','laser_ndyag'), 
-            	]</field>
+                                    ('treatment','=','laser_ndyag'), 
+                ]</field>
 
-			<!--
+            <!--
             <field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first order
-				</p>
-			</field>
-			-->
-		</record>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first order
+                </p>
+            </field>
+            -->
+        </record>
 
 
 
@@ -173,37 +173,37 @@
 
 
 
-		<!-- TREE -->	
-		<record model="ir.ui.view" id="zone_tree_view">
-			<field name="name">openhealth zone</field>
-			<field name="model">openhealth.zone</field>
-			<field name="type">tree</field>
-			<field name="priority" eval="1"/>
+        <!-- TREE -->   
+        <record model="ir.ui.view" id="zone_tree_view">
+            <field name="name">openhealth zone</field>
+            <field name="model">openhealth.zone</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="1"/>
 
-			<field name="arch" type="xml">	
+            <field name="arch" type="xml">  
 
-				<tree string="Openhealth zone Tree"   >
+                <tree string="Openhealth zone Tree"   >
 
-					<field name="name"/>
+                    <field name="name"/>
 
-					<field name="name_short"/>
+                    <field name="name_short"/>
 
-					<field name="treatment"/>
+                    <field name="treatment"/>
 
 <!--
-					<field name="laser_quick"/>
-					<field name="laser_co2"/>
-					<field name="laser_excilite"/>
-					<field name="laser_ipl"/>
-					<field name="laser_ndyag"/>
+                    <field name="laser_quick"/>
+                    <field name="laser_co2"/>
+                    <field name="laser_excilite"/>
+                    <field name="laser_ipl"/>
+                    <field name="laser_ndyag"/>
 -->
-				</tree>
-			</field>
-		</record>
+                </tree>
+            </field>
+        </record>
 
 
 
 
 
-	</data>
+    </data>
 </openerp>

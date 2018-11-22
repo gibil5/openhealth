@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
-	<data>
+    <data>
 
 
 
@@ -8,75 +8,75 @@
 
 
 
-		<!-- Treatment List -->
-		<record model="ir.actions.act_window" id="treatment_list_action">
-			<field name="name">Tratamientos</field>
-			<field name="res_model">openhealth.treatment</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
+        <!-- Treatment List -->
+        <record model="ir.actions.act_window" id="treatment_list_action">
+            <field name="name">Tratamientos</field>
+            <field name="res_model">openhealth.treatment</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
             <field name="context">{}</field>            
 
-			<field name="domain">[
-										('physician', '!=', False),
-								]
-			</field>
+            <field name="domain">[
+                                        ('physician', '!=', False),
+                                ]
+            </field>
 
-			<field name="limit">20</field>
+            <field name="limit">20</field>
 
             <field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first treatment
-				</p>
-			</field>
-		</record>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first treatment
+                </p>
+            </field>
+        </record>
 
 
 
-		<!-- Treatment - Inactive -->
-			<record model="ir.actions.act_window" id="treatment_inactive_list_action">
-			<field name="name">Tratamientos Inactivos</field>
-			<field name="res_model">openhealth.treatment</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
+        <!-- Treatment - Inactive -->
+            <record model="ir.actions.act_window" id="treatment_inactive_list_action">
+            <field name="name">Tratamientos Inactivos</field>
+            <field name="res_model">openhealth.treatment</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
             <field name="context">{}</field>            
 
-			<field name="domain">[
-										('active', '=', False),
-								]
-			</field>
+            <field name="domain">[
+                                        ('active', '=', False),
+                                ]
+            </field>
 
-			<field name="limit">40</field>
+            <field name="limit">40</field>
 
             <field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first treatment
-				</p>
-			</field>
-		</record>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first treatment
+                </p>
+            </field>
+        </record>
 
 
 
-		<!-- Treatment Test -->
-		<record model="ir.actions.act_window" id="treatment_test_list_action">
-			<field name="name">Tratamientos Test</field>
-			<field name="res_model">openhealth.treatment</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
+        <!-- Treatment Test -->
+        <record model="ir.actions.act_window" id="treatment_test_list_action">
+            <field name="name">Tratamientos Test</field>
+            <field name="res_model">openhealth.treatment</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
             <field name="context">{}</field>            
 
-			<field name="domain">[
-									('x_test', '=', True), 
-								]
-			</field>
+            <field name="domain">[
+                                    ('x_test', '=', True), 
+                                ]
+            </field>
 
-			<field name="limit">20</field>
+            <field name="limit">20</field>
 
             <field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first treatment
-				</p>
-			</field>
-		</record>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first treatment
+                </p>
+            </field>
+        </record>
 
 
 
@@ -85,49 +85,49 @@
 
 
 
-		<!-- Form Action - By Patient -->
+        <!-- Form Action - By Patient -->
 <!--
--->		
-		<record model="ir.actions.act_window" id="treatment_form_action">
-			<field name="name">Tratamientos</field>
-			<field name="res_model">openhealth.treatment</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-		</record>
+-->     
+        <record model="ir.actions.act_window" id="treatment_form_action">
+            <field name="name">Tratamientos</field>
+            <field name="res_model">openhealth.treatment</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
 <!--
-			<field name="context">{
-										'default_x_target': 'doctor',
-										'default_x_type': 'consultation',
-										'default_appointment_date': time.strftime('%Y-%m-%d 14:00:00'),
-									}
-			</field>
+            <field name="context">{
+                                        'default_x_target': 'doctor',
+                                        'default_x_type': 'consultation',
+                                        'default_appointment_date': time.strftime('%Y-%m-%d 14:00:00'),
+                                    }
+            </field>
 -->
 
 
 
 
-		<!-- Treatment - Legacy -->
+        <!-- Treatment - Legacy -->
 <!--
-			<record model="ir.actions.act_window" id="treatment_legacy_list_action">
-			<field name="name">Tratamientos Legacy</field>
-			<field name="res_model">openhealth.treatment</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
+            <record model="ir.actions.act_window" id="treatment_legacy_list_action">
+            <field name="name">Tratamientos Legacy</field>
+            <field name="res_model">openhealth.treatment</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
             <field name="context">{}</field>            
 
-			<field name="domain">[
-										('physician', '=', False),
-								]
-			</field>
+            <field name="domain">[
+                                        ('physician', '=', False),
+                                ]
+            </field>
 
             <field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first treatment
-				</p>
-			</field>
-		</record>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first treatment
+                </p>
+            </field>
+        </record>
 -->
 
 
-	</data>
+    </data>
 </openerp>

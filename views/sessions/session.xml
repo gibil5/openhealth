@@ -1,496 +1,496 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
-	<data>
+    <data>
 
 
 
-		<!-- Session -->
-		<record model="ir.ui.view" id="session_form_view">
-			<field name="name">session.form</field>
-			<field name="model">openhealth.session</field>
-			<field name="arch" type="xml">
-				<form string="Evaluation">
-				</form>
-			</field>
-		</record>
+        <!-- Session -->
+        <record model="ir.ui.view" id="session_form_view">
+            <field name="name">session.form</field>
+            <field name="model">openhealth.session</field>
+            <field name="arch" type="xml">
+                <form string="Evaluation">
+                </form>
+            </field>
+        </record>
 
 
 
-		<!-- Session MED -->
-		<record model="ir.ui.view" id="session_med_form_view">
-			<field name="name">session.med.form</field>
-			<field name="model">openhealth.session.med</field>
+        <!-- Session MED -->
+        <record model="ir.ui.view" id="session_med_form_view">
+            <field name="name">session.med.form</field>
+            <field name="model">openhealth.session.med</field>
 
-			<field name="arch" type="xml">
-				<form string="Evaluation">
-
-
-					<!-- Header --> 
-					<header>
+            <field name="arch" type="xml">
+                <form string="Evaluation">
 
 
-						<!-- Treatment --> 
+                    <!-- Header --> 
+                    <header>
+
+
+                        <!-- Treatment --> 
 <!--
-						<button 
-								name="open_treatment"
-								type="object" 
-								class="oe_highlight"
-								string="INICIO"
-						/>
+                        <button 
+                                name="open_treatment"
+                                type="object" 
+                                class="oe_highlight"
+                                string="INICIO"
+                        />
 
-						<button 
-							type="object" 
-							class="oe_highlight"
-							string="Cita" 
-							name="open_appointment" 
-						/>
--->			
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+                            string="Cita" 
+                            name="open_appointment" 
+                        />
+-->         
 
 <!--
-						<button 
-							name="%(oeh_medical_appointment_action_tree_confirmed)d"	
-							type="action" 
-							class="oe_highlight"
-							
-							context="{									
-											'search_default_doctor': doctor,
+                        <button 
+                            name="%(oeh_medical_appointment_action_tree_confirmed)d"    
+                            type="action" 
+                            class="oe_highlight"
+                            
+                            context="{                                  
+                                            'search_default_doctor': doctor,
 
-											'default_patient': patient, 
-											'default_doctor' : doctor, 
-											'default_appointment_date': evaluation_start_date, 
-
-
-											'default_treatment': treatment, 
-											'default_x_type': 'session', 
-											'default_state': 'pre_scheduled', 
-
-											'default_x_target' : 'doctor', 
+                                            'default_patient': patient, 
+                                            'default_doctor' : doctor, 
+                                            'default_appointment_date': evaluation_start_date, 
 
 
-											'default_session_id' : active_id, 
-											'default_session' : active_id, 
-									}" 											
+                                            'default_treatment': treatment, 
+                                            'default_x_type': 'session', 
+                                            'default_state': 'pre_scheduled', 
+
+                                            'default_x_target' : 'doctor', 
 
 
-							string="Crear CITA"
-						/>
+                                            'default_session_id' : active_id, 
+                                            'default_session' : active_id, 
+                                    }"                                          
+
+
+                            string="Crear CITA"
+                        />
 -->
 
 
-						<!-- App -->
-						<button 
-							type="object" 
-							class="oe_highlight"
+                        <!-- App -->
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
 
-							name="update_appointment" 	
+                            name="update_appointment"   
 
-							string="Cambiar Cita"
-						/>
-
-
-						<!-- Dates -->
-						<button 
-							type="object" 
-							class="oe_highlight"
-
-							name="update_dates" 	
-
-							string="Actualizar Fechas"
-						/>
+                            string="Cambiar Cita"
+                        />
 
 
+                        <!-- Dates -->
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
 
-						<!-- State --> 
-						<field 	name="state" 
-							widget="statusbar" 
-							statusbar_visible="draft, inprogress, done"
-						/>
-					</header>
+                            name="update_dates"     
 
-					
-
-							
-					<sheet>
-
-						<!-- Id -->
-						<div>						
-
-							<!-- Persona --> 
-							<div class="oe_left"  style="width: 300px;">
-								<div class="oe_title" >
-
-									<h1 class="jx_title">Sesión</h1>	
-
-								</div>								
-								<group></group>
-								<h2>
-									<field name="patient"/>
-								</h2>
-							</div>
+                            string="Actualizar Fechas"
+                        />
 
 
 
-							<!-- Buttons --> 
-							<div class="oe_left" style="width: 300px;" name="buttons">
-								
+                        <!-- State --> 
+                        <field  name="state" 
+                            widget="statusbar" 
+                            statusbar_visible="draft, inprogress, done"
+                        />
+                    </header>
 
-								
-							</div>
-						
-						
-							<!-- Number --> 
-							<div class="oe_right" >
-								<div class="oe_title" >
+                    
+
+                            
+                    <sheet>
+
+                        <!-- Id -->
+                        <div>                       
+
+                            <!-- Persona --> 
+                            <div class="oe_left"  style="width: 300px;">
+                                <div class="oe_title" >
+
+                                    <h1 class="jx_title">Sesión</h1>    
+
+                                </div>                              
+                                <group></group>
+                                <h2>
+                                    <field name="patient"/>
+                                </h2>
+                            </div>
+
+
+
+                            <!-- Buttons --> 
+                            <div class="oe_left" style="width: 300px;" name="buttons">
+                                
+
+                                
+                            </div>
+                        
+                        
+                            <!-- Number --> 
+                            <div class="oe_right" >
+                                <div class="oe_title" >
 
 <!--
-									<label class="oe_edit_only" for="name" string="sesión #"/>
-									<label class="" for="name" string="Sesión #"	readonly="1"	/>
+                                    <label class="oe_edit_only" for="name" string="sesión #"/>
+                                    <label class="" for="name" string="Sesión #"    readonly="1"    />
 -->
 
 
-									<h1><field name="treatment" 	readonly="1"	/></h1>
-									<h2><field name="procedure" 	readonly="1"	/></h2>
+                                    <h1><field name="treatment"     readonly="1"    /></h1>
+                                    <h2><field name="procedure"     readonly="1"    /></h2>
 <!--
-									<field name="name" 		readonly="1"	/>
-									<h1><field name="name" class="oe_inline"/></h1>
-									<h1><field name="treatment" class="oe_inline"/></h1>
+                                    <field name="name"      readonly="1"    />
+                                    <h1><field name="name" class="oe_inline"/></h1>
+                                    <h1><field name="treatment" class="oe_inline"/></h1>
 -->
-								</div>
-							</div>
-						</div>
+                                </div>
+                            </div>
+                        </div>
 
 
 
-						<!-- Padding --> 
+                        <!-- Padding --> 
 <!--
-						<group></group>
-						<group></group>
-						<group></group>
-						<group></group>
--->					
-						<!--
-						<div class="oe_left" style="height: 55px;">
-						</div>
-						-->
+                        <group></group>
+                        <group></group>
+                        <group></group>
+                        <group></group>
+-->                 
+                        <!--
+                        <div class="oe_left" style="height: 55px;">
+                        </div>
+                        -->
 
 
 
-						<!-- Autofill --> 
-						<group>
-							<group>
-							</group>
-							<group class="oe_right">
+                        <!-- Autofill --> 
+                        <group>
+                            <group>
+                            </group>
+                            <group class="oe_right">
 <!--
-								<field name="x_autofill"/>
--->						
-								<field name="x_autofill" 	groups="openhealth.roots"		/>
-							</group>							
-						</group>						
-						
+                                <field name="x_autofill"/>
+-->                     
+                                <field name="x_autofill"    groups="openhealth.roots"       />
+                            </group>                            
+                        </group>                        
+                        
 
 
-						<!-- Fields --> 
-						<group>
-							<!--
-							<field string="Próxima cita" name="appointment" domain="[('patient', '=', patient)]" options="{'no_create': True}"/>
-							-->
-<!--							
-							<group>
-								<field name="procedure"		/>
-							</group>
-							<group>
-								<field name="evaluation_type"	invisible="1"/>
-							</group>
--->						
-							
+                        <!-- Fields --> 
+                        <group>
+                            <!--
+                            <field string="Próxima cita" name="appointment" domain="[('patient', '=', patient)]" options="{'no_create': True}"/>
+                            -->
+<!--                            
+                            <group>
+                                <field name="procedure"     />
+                            </group>
+                            <group>
+                                <field name="evaluation_type"   invisible="1"/>
+                            </group>
+-->                     
+                            
 
-							<group>
-								<field name="doctor" 	readonly="1"		options="{'no_create': True}"			/>
-							</group>
-							
+                            <group>
+                                <field name="doctor"    readonly="1"        options="{'no_create': True}"           />
+                            </group>
+                            
 
-							<group>
-								<field name="x_done"/>
-								
-								<field name="vspace"/>
+                            <group>
+                                <field name="x_done"/>
+                                
+                                <field name="vspace"/>
 
-								<field name="chief_complaint"	readonly="1"	/>
+                                <field name="chief_complaint"   readonly="1"    />
 
 
-							</group>
-							
-							
-							<group>
-								<field name="appointment"/>	
-								<field name="vspace"/>
-								<field name="evaluation_start_date"/>
-								
-								<field name="evaluation_nr"		readonly="1"	invisible="1"	/>
-							</group>
-							<group>
-								<field name="laser"/>
-								<field name="vspace"/>
-								<field name="product"		readonly="1"	/>
+                            </group>
+                            
+                            
+                            <group>
+                                <field name="appointment"/> 
+                                <field name="vspace"/>
+                                <field name="evaluation_start_date"/>
+                                
+                                <field name="evaluation_nr"     readonly="1"    invisible="1"   />
+                            </group>
+                            <group>
+                                <field name="laser"/>
+                                <field name="vspace"/>
+                                <field name="product"       readonly="1"    />
 
-								<field name="zone"			invisible="1"	/>
-							</group>
+                                <field name="zone"          invisible="1"   />
+                            </group>
 
 <!--
-							<group>
-							</group>
-							<group>
-							</group>
+                            <group>
+                            </group>
+                            <group>
+                            </group>
 
-							<group>
-							</group>
-							<group>
-							</group>
+                            <group>
+                            </group>
+                            <group>
+                            </group>
 -->
-						</group>
+                        </group>
 
 
 
 
-						<!-- Notebook - Config --> 
-						<notebook>
-						</notebook>
+                        <!-- Notebook - Config --> 
+                        <notebook>
+                        </notebook>
 
 
 
-						
-						<!-- Padding --> 
-						<group>
-						</group>
-						<group>
-						</group>
-
-
-
-
-						<!-- Notebook - Visia --> 
-						<notebook>
-							<page string="Fotos VISIA" >
-								<field
-									name="image_ids"
-									nolabel="1"
-									context="{
-												'default_owner_model': 'openhealth.session.med',
-												'default_owner_id': id,
-									}"
-									mode="kanban"
-								/>
-							</page>
-						</notebook>
-					</sheet>
-				</form>
-			</field>
-		</record>
+                        
+                        <!-- Padding --> 
+                        <group>
+                        </group>
+                        <group>
+                        </group>
 
 
 
 
-
+                        <!-- Notebook - Visia --> 
+                        <notebook>
+                            <page string="Fotos VISIA" >
+                                <field
+                                    name="image_ids"
+                                    nolabel="1"
+                                    context="{
+                                                'default_owner_model': 'openhealth.session.med',
+                                                'default_owner_id': id,
+                                    }"
+                                    mode="kanban"
+                                />
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
 
 
 
 
 
 
-		<!-- Form --> 
+
+
+
+
+
+        <!-- Form --> 
 
 <!--
-		<record model="ir.ui.view" id="session_med_form_view">
-			<field name="name">session.med.form</field>
-			<field name="model">openhealth.session.med</field>
+        <record model="ir.ui.view" id="session_med_form_view">
+            <field name="name">session.med.form</field>
+            <field name="model">openhealth.session.med</field>
 
 
-			<field name="inherit_id" ref="session_form_view"/>
-	        <field name="mode">primary</field>
-			<field name="arch" type="xml">				
+            <field name="inherit_id" ref="session_form_view"/>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">              
 
 
-				<xpath expr="//h1" position="replace">
-					<h1 class="jx_title">Sesión</h1>	
-        		</xpath>
-
-
-
-				<xpath expr="//field[@name='co2_observations']" position="after">
-					<group>
-
-
-						<notebook>
-							<page string="Fotos VISIA" >
-
-								<field
-									name="image_ids"
-									nolabel="1"
-									context="{
-												'default_owner_model': 'openhealth.session_med',
-												'default_owner_id': id,
-									}"
-									mode="kanban"
-								/>
-
-							</page>
-						</notebook>
-					
-
-					</group>
-				</xpath>
-
-
-				<xpath expr="//field[@name='evaluation_nr']" position="after">
-
-					<group>
-					<group string="Laser Co2"  	attrs="{'invisible':[('laser', '!=', 'laser_co2' )]}"	>
-
-						<field name="co2_mode_emission"			attrs = "{'required':[('laser','in',('laser_co2'))]}"/>
-
-						<field name="co2_mode_exposure"			attrs = "{'required':[('laser','in',('laser_co2'))]}"/>
-
-						<field name="co2_power"					attrs = "{'required':[('laser','in',('laser_co2'))]}"	/>
-						
-						<field name="co2_energy"				attrs = "{'required':[('laser','in',('laser_co2'))]}"	/>
-					</group>
-
-					<group>
-					</group>
-					</group>
-				</xpath>
-
-
-			</field>						
-		</record>		
--->
+                <xpath expr="//h1" position="replace">
+                    <h1 class="jx_title">Sesión</h1>    
+                </xpath>
 
 
 
+                <xpath expr="//field[@name='co2_observations']" position="after">
+                    <group>
 
 
+                        <notebook>
+                            <page string="Fotos VISIA" >
+
+                                <field
+                                    name="image_ids"
+                                    nolabel="1"
+                                    context="{
+                                                'default_owner_model': 'openhealth.session_med',
+                                                'default_owner_id': id,
+                                    }"
+                                    mode="kanban"
+                                />
+
+                            </page>
+                        </notebook>
+                    
+
+                    </group>
+                </xpath>
 
 
+                <xpath expr="//field[@name='evaluation_nr']" position="after">
+
+                    <group>
+                    <group string="Laser Co2"   attrs="{'invisible':[('laser', '!=', 'laser_co2' )]}"   >
+
+                        <field name="co2_mode_emission"         attrs = "{'required':[('laser','in',('laser_co2'))]}"/>
+
+                        <field name="co2_mode_exposure"         attrs = "{'required':[('laser','in',('laser_co2'))]}"/>
+
+                        <field name="co2_power"                 attrs = "{'required':[('laser','in',('laser_co2'))]}"   />
+                        
+                        <field name="co2_energy"                attrs = "{'required':[('laser','in',('laser_co2'))]}"   />
+                    </group>
+
+                    <group>
+                    </group>
+                    </group>
+                </xpath>
 
 
-
-
-
-
-		<!-- Tree --> 
-		<record model="ir.ui.view" id="session_med_tree_view">
-			<field name="name">session.med.tree</field>
-
-			<field name="model">openhealth.session.med</field>
-			
-			<field name="arch" type="xml">
-
-
-
-				<tree 	string="Session Med Tree"
-
-						colors="
-						red:state=='draft';
-						green:state=='inprogress';
-						blue:state=='done'
-						">
-
-
-					
-					<!-- Quick Button -->
-					<button 
-						type="object" 
-						class="oe_highlight"	
-						string="E"
-						name="open_line_current" 
-					/>
-
-<!--
-					<field name="evaluation_nr"/>
+            </field>                        
+        </record>       
 -->
 
-					<field name="name"/>
-					
-					<field name="appointment"/>
-
-					<field name="patient"  string="Paciente"/>
-					
-					<field name="doctor"   />
-
-					<field name="chief_complaint"/>
-
-					<field name="laser"/>
-
-
-
-
-					<field name="evaluation_start_date"/>
-
-					<field name="nr_days"/>
-
-
-
-					
-					<field name="nr_images"/>
-
-					<field name="state"/>
-
-					<field name="x_done"/>
-
-					<!--
-					<field name="product"/>
-					<field name="procedure"/>
-					<field name="owner"/>
-
-					<field name="treatment_id"/>
-					<field name="duration"/>
-					<field name="nr_services"/>
-					<field name="price_total"/>
-					-->
-				</tree>
-			</field>
-		</record>
-		
-		
-
-
-		
 
 
 
 
 
 
-		
 
 
-		
-		<!-- Window Form Action --> 
-		<record model="ir.actions.act_window" id="session_form_action">
-			<field name="name">Sesiones</field>
-			<field name="res_model">openhealth.session</field>
-			<field name="view_type">form</field>
 
-			<field name="view_mode">tree,form</field>
-			
-			<!--
+
+
+
+        <!-- Tree --> 
+        <record model="ir.ui.view" id="session_med_tree_view">
+            <field name="name">session.med.tree</field>
+
+            <field name="model">openhealth.session.med</field>
+            
+            <field name="arch" type="xml">
+
+
+
+                <tree   string="Session Med Tree"
+
+                        colors="
+                        red:state=='draft';
+                        green:state=='inprogress';
+                        blue:state=='done'
+                        ">
+
+
+                    
+                    <!-- Quick Button -->
+                    <button 
+                        type="object" 
+                        class="oe_highlight"    
+                        string="E"
+                        name="open_line_current" 
+                    />
+
+<!--
+                    <field name="evaluation_nr"/>
+-->
+
+                    <field name="name"/>
+                    
+                    <field name="appointment"/>
+
+                    <field name="patient"  string="Paciente"/>
+                    
+                    <field name="doctor"   />
+
+                    <field name="chief_complaint"/>
+
+                    <field name="laser"/>
+
+
+
+
+                    <field name="evaluation_start_date"/>
+
+                    <field name="nr_days"/>
+
+
+
+                    
+                    <field name="nr_images"/>
+
+                    <field name="state"/>
+
+                    <field name="x_done"/>
+
+                    <!--
+                    <field name="product"/>
+                    <field name="procedure"/>
+                    <field name="owner"/>
+
+                    <field name="treatment_id"/>
+                    <field name="duration"/>
+                    <field name="nr_services"/>
+                    <field name="price_total"/>
+                    -->
+                </tree>
+            </field>
+        </record>
+        
+        
+
+
+        
+
+
+
+
+
+
+        
+
+
+        
+        <!-- Window Form Action --> 
+        <record model="ir.actions.act_window" id="session_form_action">
+            <field name="name">Sesiones</field>
+            <field name="res_model">openhealth.session</field>
+            <field name="view_type">form</field>
+
+            <field name="view_mode">tree,form</field>
+            
+            <!--
             <field name="domain">[]</field>
             <field name="context">{}</field>
             <field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first session
-				</p>
-			</field>
-			-->
-		</record>		
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first session
+                </p>
+            </field>
+            -->
+        </record>       
 
 
 
 
 
-		<!-- Filter --> 
+        <!-- Filter --> 
         <record id="view_medical_session_filter" model="ir.ui.view">
            <field name="name">session Search</field>
-           <field name="model">openhealth.session</field>		   
+           <field name="model">openhealth.session</field>          
            <field name="arch" type="xml">
                <search string="sessions">
 
@@ -505,10 +505,10 @@
 
 
 
-		<!-- Filter --> 
+        <!-- Filter --> 
         <record id="view_medical_session_med_filter" model="ir.ui.view">
            <field name="name">session Med Search</field>
-           <field name="model">openhealth.session.med</field>		   
+           <field name="model">openhealth.session.med</field>          
            <field name="arch" type="xml">
                <search string="sessions.med">
 
@@ -519,8 +519,8 @@
            </field>
        </record>
 
-		
-	</data>
+        
+    </data>
 </openerp>
 
 

@@ -1,157 +1,157 @@
 <?xml version="1.0"?>
 <openerp>
-	<data>
+    <data>
 
 
 
-		<!-- Configuration - Manual - 2 -->
-		<record model="ir.ui.view" id="session_configuration_simple_2_form_view">
-			<field name="name">session.configuration.form</field>
-			<field name="model">openhealth.session.med</field>
-			
-			<field name="priority" eval="2"/>
-			
-			<field name="inherit_id" ref="session_med_form_view"/>
-			<field name="arch" type="xml">
+        <!-- Configuration - Manual - 2 -->
+        <record model="ir.ui.view" id="session_configuration_simple_2_form_view">
+            <field name="name">session.configuration.form</field>
+            <field name="model">openhealth.session.med</field>
+            
+            <field name="priority" eval="2"/>
+            
+            <field name="inherit_id" ref="session_med_form_view"/>
+            <field name="arch" type="xml">
 
-				<notebook position="inside">										
-					
+                <notebook position="inside">                                        
+                    
 
-					<page string="2" 	attrs="{'invisible':[
-																('laser', 'not in', ['laser_co2', 'laser_quick', 'laser_ipl']), 
-															]}"	>
+                    <page string="2"    attrs="{'invisible':[
+                                                                ('laser', 'not in', ['laser_co2', 'laser_quick', 'laser_ipl']), 
+                                                            ]}" >
 
 
 
 <!-- Laser Co2 --> 
-						<group string="Láser Co2"   attrs="{'invisible':[('laser', '!=', 'laser_co2')]}">
+                        <group string="Láser Co2"   attrs="{'invisible':[('laser', '!=', 'laser_co2')]}">
 
 
 
-							<group	attrs="{'invisible':[('laser', '!=', 'laser_co2' )]}"	>
+                            <group  attrs="{'invisible':[('laser', '!=', 'laser_co2' )]}"   >
 
-								<field name="co2_mode_emission_2"			/>
-								<field name="co2_mode_exposure_2"			/>
-								<field name="co2_power_2"					/>
-								<field name="co2_energy_2"					/>
-								<field name="vspace" />
-								<field name="co2_observations_2"		/>
-							
-							</group>
+                                <field name="co2_mode_emission_2"           />
+                                <field name="co2_mode_exposure_2"           />
+                                <field name="co2_power_2"                   />
+                                <field name="co2_energy_2"                  />
+                                <field name="vspace" />
+                                <field name="co2_observations_2"        />
+                            
+                            </group>
 
 
-							<group	attrs="{'invisible':[('laser', '!=', 'laser_co2' )]}"	>
+                            <group  attrs="{'invisible':[('laser', '!=', 'laser_co2' )]}"   >
 
-										<!-- Frecuencia --> 
-										<field name="co2_frequency_2"			attrs = "{'required':[
-																									('laser','in',('laser_co2')), 
-																									('co2_mode_emission_2','=',('continuous')), 
-																								]}"/>
+                                        <!-- Frecuencia --> 
+                                        <field name="co2_frequency_2"           attrs = "{'required':[
+                                                                                                    ('laser','in',('laser_co2')), 
+                                                                                                    ('co2_mode_emission_2','=',('continuous')), 
+                                                                                                ]}"/>
 
-										<!-- Fluencia --> 
-										<field name="co2_fluency_2"			attrs = "{'required':[
-																									('laser','in',('laser_co2')), 
-																									('co2_mode_emission_2','=',('fractional')), 
-																								]}"/>
+                                        <!-- Fluencia --> 
+                                        <field name="co2_fluency_2"         attrs = "{'required':[
+                                                                                                    ('laser','in',('laser_co2')), 
+                                                                                                    ('co2_mode_emission_2','=',('fractional')), 
+                                                                                                ]}"/>
 
-										<!-- Densidad --> 
-										<field name="co2_density_2"			attrs = "{'required':[
-																									('laser','in',('laser_co2')), 
-																									('co2_mode_emission_2','=',('fractional')), 
-																								]}"/>
+                                        <!-- Densidad --> 
+                                        <field name="co2_density_2"         attrs = "{'required':[
+                                                                                                    ('laser','in',('laser_co2')), 
+                                                                                                    ('co2_mode_emission_2','=',('fractional')), 
+                                                                                                ]}"/>
 
-										<!-- Tiempo --> 
-										<field name="co2_time_2"				attrs = "{'required':[
-																									('laser','in',('laser_co2')), 
-																									('co2_mode_emission_2','=',('fractional')), 
-																								]}"/>
+                                        <!-- Tiempo --> 
+                                        <field name="co2_time_2"                attrs = "{'required':[
+                                                                                                    ('laser','in',('laser_co2')), 
+                                                                                                    ('co2_mode_emission_2','=',('fractional')), 
+                                                                                                ]}"/>
 
-										<!-- Distancia --> 
-										<field name="co2_distance_2"			attrs = "{'required':[
-																									('laser','in',('laser_co2')), 
-																									('co2_mode_emission_2','=',('fractional')), 
-																								]}"/>
-							</group>
-						</group>
+                                        <!-- Distancia --> 
+                                        <field name="co2_distance_2"            attrs = "{'required':[
+                                                                                                    ('laser','in',('laser_co2')), 
+                                                                                                    ('co2_mode_emission_2','=',('fractional')), 
+                                                                                                ]}"/>
+                            </group>
+                        </group>
 
 
 
 
 
 <!-- Quick --> 
-						<group string="Quick Laser"   attrs="{'invisible':[('laser', '!=', 'laser_quick')]}">
-							<group>
-								<field name="quick_type_2"	attrs = "{'required':[('laser','in',('laser_quick'))]}"/>
+                        <group string="Quick Laser"   attrs="{'invisible':[('laser', '!=', 'laser_quick')]}">
+                            <group>
+                                <field name="quick_type_2"  attrs = "{'required':[('laser','in',('laser_quick'))]}"/>
 
 
-								<field name="quick_manipule_zoom_2"		nolabel="0"
-																		attrs = "{
-																					'required':		[('laser','in',('laser_quick'))], 
-																					'invisible':	[('quick_type_2','in',('resolve'))], 
-																				}"		 
-																		widget="radio" />
+                                <field name="quick_manipule_zoom_2"     nolabel="0"
+                                                                        attrs = "{
+                                                                                    'required':     [('laser','in',('laser_quick'))], 
+                                                                                    'invisible':    [('quick_type_2','in',('resolve'))], 
+                                                                                }"       
+                                                                        widget="radio" />
 
 
-								<field name="quick_manipule_resolve_2"	nolabel="0"
-																		attrs = "{	
-																					'required':		[('laser','in',('laser_quick'))], 
-																					'invisible':	[('quick_type_2','in',('zoom'))], 
-																				}"	 	
-																		widget="radio"	/>
+                                <field name="quick_manipule_resolve_2"  nolabel="0"
+                                                                        attrs = "{  
+                                                                                    'required':     [('laser','in',('laser_quick'))], 
+                                                                                    'invisible':    [('quick_type_2','in',('zoom'))], 
+                                                                                }"      
+                                                                        widget="radio"  />
 
-							</group>
+                            </group>
 
-							<group>
-								<field name="quick_spot_2"	/>
+                            <group>
+                                <field name="quick_spot_2"  />
 
-								<field name="quick_fluency_2"	/>
+                                <field name="quick_fluency_2"   />
 
-								<field name="quick_frequency_2"	/>
-							</group>
+                                <field name="quick_frequency_2" />
+                            </group>
 
-						</group>
+                        </group>
 
-						<group  	attrs="{'invisible':[('laser', '!=', 'laser_quick')]}">
-							<group>
-								<field name="quick_observations_2"	/>
-							</group>
-						</group>
+                        <group      attrs="{'invisible':[('laser', '!=', 'laser_quick')]}">
+                            <group>
+                                <field name="quick_observations_2"  />
+                            </group>
+                        </group>
 
 
 
 <!-- Ipl --> 
-						<group string="Láser M22-IPL"  attrs="{'invisible':[('laser', '!=', 'laser_ipl')]}">
+                        <group string="Láser M22-IPL"  attrs="{'invisible':[('laser', '!=', 'laser_ipl')]}">
 
-							<group>
-								<field name="ipl_fluency_2"			attrs = "{'required':[('laser','in',('laser_ipl'))]}"/>
-								<field name="vspace"/>								
-								<field name="ipl_phototype_2"/>
-								<field name="vspace"/>								
-								<field name="ipl_lesion_type_2"/>
-								<field name="vspace"/>								
-								<field name="ipl_lesion_depth_2"/>
-								<field name="vspace"/>								
-								<field name="ipl_pulse_type_2"/>
-								<field name="vspace"/>								
-								<field name="ipl_pulse_duration_2"/>
-								<field name="vspace"/>								
-								<field name="ipl_pulse_time_between_2"/>
-								<field name="vspace"/>								
-								<field name="ipl_filter_2"/>
-								<field name="vspace"/>								
-								<field name="ipl_spot_2"/>
-								<field name="vspace"/>								
-								<field name="ipl_observations_2"/>
-							</group>
-						</group>
-
-
+                            <group>
+                                <field name="ipl_fluency_2"         attrs = "{'required':[('laser','in',('laser_ipl'))]}"/>
+                                <field name="vspace"/>                              
+                                <field name="ipl_phototype_2"/>
+                                <field name="vspace"/>                              
+                                <field name="ipl_lesion_type_2"/>
+                                <field name="vspace"/>                              
+                                <field name="ipl_lesion_depth_2"/>
+                                <field name="vspace"/>                              
+                                <field name="ipl_pulse_type_2"/>
+                                <field name="vspace"/>                              
+                                <field name="ipl_pulse_duration_2"/>
+                                <field name="vspace"/>                              
+                                <field name="ipl_pulse_time_between_2"/>
+                                <field name="vspace"/>                              
+                                <field name="ipl_filter_2"/>
+                                <field name="vspace"/>                              
+                                <field name="ipl_spot_2"/>
+                                <field name="vspace"/>                              
+                                <field name="ipl_observations_2"/>
+                            </group>
+                        </group>
 
 
-					</page>
-				</notebook>
-			</field>
-		</record>
 
-	</data>
+
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+    </data>
 </openerp>

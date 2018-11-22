@@ -97,7 +97,8 @@
 
 		# Reports
 		#'views/product_selectors/product_selector.xml',
-		'views/products/product_selector.xml',
+		#'views/products/product_selector.xml',
+
 
 		
 		#'views/report_sale/report_sale_product.xml',

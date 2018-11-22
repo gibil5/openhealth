@@ -439,8 +439,8 @@
 
 
 		# Pricelist Items
-		'views/products/pricelist_item_actions.xml',
-		'views/products/pricelist_item.xml',
+		'views/pricelist_items/pricelist_item_actions.xml',
+		'views/pricelist_items/pricelist_item.xml',
 
 
 

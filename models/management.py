@@ -621,6 +621,22 @@ class Management(models.Model):
 
 
 
+	# Update QC All
+	@api.multi
+	def update_qc_all(self, x_type):
+		"""
+		high level support for doing this and that.
+		"""
+		#print
+		#print 'Update QC All'
+
+		# Gap and Checksum
+		self.update_qc('ticket_receipt')
+		self.update_qc('ticket_invoice')
+
+
+
+
 # ----------------------------------------------------------- Electronic - Clear ------------------
 	# Clear
 	@api.multi

@@ -16,7 +16,7 @@
 
 		23 Nov 2018
 
-		Fulcrum - DEV - DOCEAN - PROLIANT - TRAVIS
+		Fulcrum - TRAVIS Quality Controlled
 
 		Code without Tests is broken by design. Jacob Kaplan-Moss
 		

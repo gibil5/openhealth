@@ -146,6 +146,19 @@
                         />
 
 
+                        <!-- QC -->
+                        <button 
+                                type="object" 
+                                class="oe_highlight oe_right"
+
+                                name="update_qc_all"
+
+                                string="QC"                              
+
+                        />
+
+
+
                         <!-- Legacy -->
                         <!-- Export -->
 <!--                        

@@ -875,13 +875,13 @@ class sale_order(models.Model):
 		credit_note = self.copy(default={
 											'x_serial_nr': serial_nr,
 											'x_counter_value': counter_value,
-
 											'x_credit_note_owner': self.id,
 											'amount_total': self.amount_total,
 											'amount_untaxed': self.amount_untaxed,
 											'x_title': 'Nota de Crédito Electrónica',
-
 											'state': state,
+
+											'x_payment_method': False, 
 								})
 		#print credit_note
 

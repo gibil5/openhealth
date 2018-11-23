@@ -937,16 +937,17 @@ Look for the Minimalist experience !!!
 
 
                     <field name="name"          string="Referencia"/>
-
-                    <field name="date_order"    string="Fecha"  />
-
-
+                    <field name="date_order"    string="Fecha"/>
                     <field name="x_serial_nr" />
                     <field name="x_counter_value"   groups="openhealth.roots"/>
 
 
                     <field name="x_electronic"  groups="openhealth.roots"/>
                     
+
+                    <field name="x_payment_method"  groups="openhealth.roots"/>
+
+
                     <field name="x_qr_img"  groups="openhealth.roots"/>
 
 

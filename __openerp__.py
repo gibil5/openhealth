@@ -14,7 +14,7 @@
 
 	'description': """
 
-		21 Nov 2018
+		22 Nov 2018
 
 		Fulcrum - DEV - DOCEAN - PROLIANT
 		
@@ -295,10 +295,11 @@
 		'data/prods/odoo_data_services_consult.xml',
 		'data/prods/odoo_data_services_cos.xml',
 		
-		
+
 		'data/prods/odoo_data_services_med_dep.xml',
 		'data/prods/odoo_data_services_cos_dep.xml',
 
+		#'data/prods/odoo_data_products_consu.xml',
 
 
 

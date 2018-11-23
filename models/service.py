@@ -1,37 +1,35 @@
 # -*- coding: utf-8 -*-
-#
-# 		Service 
-# 
-# 		Created: 				20 Sep 2016
-# 		Last updated: 	 	27 Aug 2018
-#
+"""
+ 		Service
+
+ 		Created: 				20 Sep 2016
+ 		Last updated: 	 		23 Nov 2018
+"""
+#from datetime import datetime
 from openerp import models, fields, api
-from datetime import datetime
 import prodvars
-#import serv_funcs
 import ipl
 
 class Service(models.Model):
+	"""
+	high level support for doing this and that.
+	"""
 
 	_name = 'openhealth.service'
 
-	#_inherit = 'openhealth.base', 
+	#_inherit = 'openhealth.base',
 
 
-# ----------------------------------------------------------- Dep ? - Tmp ? ------------------------------------------------------
 
-	#x_time = fields.Char()
 
-	
 # ----------------------------------------------------------- Prices ------------------------------------------------------
 
-	# Price 
+	# Price
 	price = fields.Float(
-			#string='Precio Standard', 
-			string='Precio', 
+			string='Precio',
 
-			compute='_compute_price', 
-		) 
+			compute='_compute_price',
+		)
 	#@api.multi
 	@api.depends('service')
 	def _compute_price(self):
@@ -41,10 +39,10 @@ class Service(models.Model):
 
 	# Price VIP
 	price_vip = fields.Float(
-			compute='_compute_price_vip', 
-			
-			string='Precio VIP', 
-		) 
+			compute='_compute_price_vip',
+
+			string='Precio VIP',
+		)
 	#@api.multi
 	@api.depends('service')
 	def _compute_price_vip(self):
@@ -53,170 +51,170 @@ class Service(models.Model):
 
 
 
-	# Price Manual 
+	# Price Manual
 	price_manual = fields.Float(
 			string="Precio Manual",
-			default=-1, 
+			default=-1,
 		)
 
 
 	# Price Applied
 	price_applied = fields.Float(
-			#string='Precio Aplicado', 
-			default=-1, 
-		) 
+			#string='Precio Aplicado',
+			default=-1,
+		)
 
 
-# ----------------------------------------------------------- Primitives ------------------------------------------------------
+# ----------------------------------------------------------- Primitives --------------------------
 
-	# Name 
+	# Name
 	name = fields.Char(
 			default='SE',
 			string='Servicio #',
-			compute='_compute_name', 
-			#required=True, 
+			compute='_compute_name',
+			#required=True,
 		)
 	@api.multi
 	def _compute_name(self):
 		for record in self:
-			record.name = 'SE00' + str(record.id) 
+			record.name = 'SE00' + str(record.id)
 
 
 
-	# Name short 
+	# Name short
 	name_short = fields.Char(
-			compute='_compute_name_short', 
+			compute='_compute_name_short',
 			#string='Short name'
 		)
 
 	@api.depends('service')
 	def _compute_name_short(self):
 		for record in self:
-			record.name_short = record.service.x_name_short 
+			record.name_short = record.service.x_name_short
 
 
-	# State 
+	# State
 	state = fields.Selection(
 			[
 				('draft', 		'Inicio'),
-				('budget', 		'Presupuestado'),	
-				('sale', 		'Pagado'),				
-			], 
-			#selection = serv_vars._state_list, 
-			string='Estado', 			
-			default = 'draft', 
+				('budget', 		'Presupuestado'),
+				('sale', 		'Pagado'),
+			],
+			#selection = serv_vars._state_list,
+			string='Estado',
+			default = 'draft',
 		)
 
 
-	# Family 
+	# Family
 	family = fields.Selection(
-			string="Familia", 
+			string="Familia",
 			selection=prodvars._family_list,
-		)	
+		)
 
 
-	# Laser 
+	# Laser
 	laser = fields.Selection(
-			selection = prodvars._laser_type_list, 
-			string="Láser", 			
-			default='none',			
-			#required=True, 
+			selection = prodvars._laser_type_list,
+			string="Láser", 
+			default='none',
+			#required=True,
 			index=True
 		)
 
 
-	# Sessions 
+	# Sessions
 	sessions = fields.Selection(
-			#selection = jxvars._pathology_list, 
-			selection = prodvars._sessions_list, 
-			string="Sesiones", 
+			#selection = jxvars._pathology_list,
+			selection = prodvars._sessions_list,
+			string="Sesiones",
 		)
 
-	# Comeback 
+	# Comeback
 	comeback = fields.Boolean(
-			string='Regreso', 			
+			string='Regreso',
 		)
 
 	# Treatment (for Product)
 	x_treatment = fields.Selection(
 			selection=prodvars._treatment_list,
-			string="Tratamiento", 			
-		)	
+			string="Tratamiento",
+		)
 
-	# Zone 
+	# Zone
 	zone = fields.Selection(
-			selection = prodvars._zone_list, 
-			string="Zona", 
+			selection = prodvars._zone_list,
+			string="Zona",
 		)
 
 	# Pathology
 	pathology = fields.Selection(
-			selection = prodvars._pathology_list, 
-			string="Patología", 
+			selection = prodvars._pathology_list,
+			string="Patología",
 		)
 
-	# Vertical space 
+	# Vertical space
 	vspace = fields.Char(
-			' ', 
+			' ',
 			readonly=True
 		)
 
-	# Time 
+	# Time
 	time = fields.Char(
 			default='',
-			string="Tiempo", 
+			string="Tiempo",
 		)
-	
+
 
 	_time_list = [
-					('15 min','15 min'),	
+					('15 min','15 min'),
 					('30 min','30 min'),
 					('none',''),
 		]
 
 	time_1 = fields.Selection(
-			#selection = exc._time_list, 
-			selection = _time_list, 
-			string="Tiempo", 
-			default='none',	
+			#selection = exc._time_list,
+			selection = _time_list,
+			string="Tiempo",
+			default='none',
 			)
 
 
 	# Nr sessions
 	nr_sessions = fields.Char(
-			default='',	
+			default='',
 	)
-	
-	
+
+
 	nr_sessions_1 = fields.Selection(
-			selection = ipl._nr_sessions_list, 
-			string="Número de sesiones", 
-			default='none',	
+			selection = ipl._nr_sessions_list,
+			string="Número de sesiones",
+			default='none',
 	)
 
 
-	# Code 
+	# Code
 	code = fields.Char(
-			string='Code', 
+			string='Code',
 
-			compute='_compute_code', 
+			compute='_compute_code',
 			)
 	@api.depends('service')
 	def _compute_code(self):
 		for record in self:
-			record.code= record.service.name 
+			record.code= record.service.name
 
 
-	# Title 
+	# Title
 	title = fields.Char(
-			string='Title', 
+			string='Title',
 			default='',
 			readonly=True,
 		)
-	
+
 	# Over notebook
 	notebook_over = fields.Char(
-			string='Over notebook', 
+			string='Over notebook',
 			default='',
 			readonly=True,
 		)
@@ -225,11 +223,11 @@ class Service(models.Model):
 
 
 
-# ----------------------------------------------------------- Relationals ------------------------------------------------------
-	# Patient 
+# ----------------------------------------------------------- Relationals -------------------------
+	# Patient
 	patient = fields.Many2one(
-			'oeh.medical.patient', 
-			'Paciente', 
+			'oeh.medical.patient',
+			'Paciente',
 		)
 
 	# Physician
@@ -238,175 +236,202 @@ class Service(models.Model):
 			string="Médico",
 			index=True
 		)
-	
-	# Service 
+
+	# Service
 	service = fields.Many2one(
 			'product.template',
 			domain = [
 						('type', '=', 'service'),
 					],
 			string="Producto",
-			required=True, 
+			required=True,
 		)
 
-	# Treatement 
+	# Treatement
 	treatment = fields.Many2one('openhealth.treatment',
-			ondelete='cascade', 			
-			string="Tratamiento", 
-			readonly=True, 			
-			required = True, 
+			ondelete='cascade',
+			string="Tratamiento",
+			readonly=True,
+			required = True,
 		)
 
 	 # Nex zone
 	nex_zone = fields.Many2one(
 			'openhealth.zone',
-			string="Nex Zone", 
+			string="Nex Zone",
 		)
 
-	# Nex Pathology 
+	# Nex Pathology
 	nex_pathology = fields.Many2one(
 			'openhealth.pathology',
-			string="Nex Pathology", 
+			string="Nex Pathology",
 		)
 
 
-# ----------------------------------------------------------- Nr ofs ------------------------------------------------------
+# ----------------------------------------------------------- Nr ofs ------------------------------
 
 	nr_hands_i = fields.Integer(
-			'hands', 
-			#default=0, 
+			'hands',
+			#default=0,
 			required=False,
 		)
 
 	nr_body_local_i = fields.Integer(
-			'body local', 
+			'body local',
 			required=False,
 		)
 
 	nr_face_local_i = fields.Integer(
-			'face local', 
+			'face local',
 			required=False,
 		)
 
 	nr_cheekbones = fields.Integer(
-			'cheek', 
+			'cheek',
 			required=False,
 		)
 
 	nr_face_all = fields.Integer(
-			'face all', 
+			'face all',
 			required=False,
 		)
 
 	nr_face_all_hands = fields.Integer(
-			'face all hands', 
+			'face all hands',
 			required=False,
 		)
 
 	nr_face_all_neck = fields.Integer(
-			'face all neck', 
+			'face all neck',
 			required=False,
 		)
 
 	nr_neck = fields.Integer(
-			'neck', 
+			'neck',
 			required=False,
 		)
 
 	nr_neck_hands = fields.Integer(
-			'neck hands', 
+			'neck hands',
 			required=False,
 		)
 
 
 
 
-# ----------------------------------------------------------- Actions ------------------------------------------------------
+# ----------------------------------------------------------- Actions -----------------------------
 
 	# Open Treatment
-	@api.multi 
+	@api.multi
 	def open_treatment(self):
+		"""
+		high level support for doing this and that.
+		"""
 		ret = self.treatment.open_myself()
-		return ret 
+		return ret
 	# open_treatment
 
 
 	# Clear all
-	def clear_all(self,token):		
+	def clear_all(self,token):
+		"""
+		high level support for doing this and that.
+		"""
 		self.clear_commons()
-		self.clear_local() 
+		self.clear_local()
 		return token
 
 
 	# Clear commons
-	def clear_commons(self):	
+	def clear_commons(self):
+		"""
+		high level support for doing this and that.
+		"""
 		#self.zone = 'none'
 		self.pathology = 'none'
 
 
 	# Clear times
 	def clear_times(self,token):
+		"""
+		high level support for doing this and that.
+		"""
 		self.time = ''
-		self.time_1 = 'none'		
+		self.time_1 = 'none'
 		return token
-		
 
-	# Clear Local 	
+
+	# Clear Local
 	def clear_local(self):
-		pass 
+		"""
+		high level support for doing this and that.
+		"""
+		pass
 
 
-# ----------------------------------------------------------- Actions ------------------------------------------------------
-	# Product 
+# ----------------------------------------------------------- Actions -----------------------------
+	# Product
 	def get_product(self):
-		print 
-		print 'Get Product'
-		print self.laser
-		print self.zone
-		print self.pathology
-		print self.time
+		"""
+		high level support for doing this and that.
+		"""
+		#print
+		#print 'Get Product'
+		#print self.laser
+		#print self.zone
+		#print self.pathology
+		#print self.time
 
-		#if self.laser != False and self.zone != False and self.pathology != 'none': 
-		self.service = self.env['product.template'].search([	
-															('x_treatment', '=', 	self.laser),	
-															('x_zone', '=', 		self.zone),	
+		#if self.laser != False and self.zone != False and self.pathology != 'none':
+		self.service = self.env['product.template'].search([
+															('x_treatment', '=', 	self.laser),
+															('x_zone', '=', 		self.zone),
 															('x_pathology', '=', 	self.pathology),
-															('x_time', '=', 		self.time),	
+															('x_time', '=', 		self.time),
 													])
-		print self.service
+		#print self.service
 
 	# Product M22
 	def get_product_m22(self):
-		print 
-		print 'Get Product M22'
-		self.service = self.env['product.template'].search([	
-															('x_treatment', '=', 	self.laser),	
-															('x_zone', '=', 		self.zone),	
+		"""
+		high level support for doing this and that.
+		"""
+		#print
+		#print 'Get Product M22'
+		self.service = self.env['product.template'].search([
+															('x_treatment', '=', 	self.laser),
+															('x_zone', '=', 		self.zone),
 															('x_pathology', '=', 	self.pathology),
-															('x_time', '=', 		self.time),	
+															('x_time', '=', 		self.time),
 															('x_sessions', '=', 	self.nr_sessions)
 													])
 
-	# Medical 
+	# Medical
 	def get_product_medical(self):
-		print 
-		print 'Get Product Medical'
-		self.service = self.env['product.template'].search([	
+		"""
+		high level support for doing this and that.
+		"""
+		#print
+		#print 'Get Product Medical'
+		self.service = self.env['product.template'].search([
 																('x_treatment', '=', 	self.x_treatment),
 																('x_sessions', '=', 	self.sessions)
 													])
 
 
 
-# ---------------------------------------------- Open Line Current --------------------------------------------------------
+# ---------------------------------------------- Open Line Current --------------------------------
 
-	# Open Line 
+	# Open Line
 	@api.multi
-	def open_line_current(self): 
-		service_id = self.id 
+	def open_line_current(self):
+		"""
+		high level support for doing this and that.
+		"""
+		service_id = self.id
 		return {
 				'type': 'ir.actions.act_window',
-				'name': ' Edit Service Current', 
+				'name': ' Edit Service Current',
 				'view_type': 'form',
 				'view_mode': 'form',
 				'res_model': self._name,
@@ -419,21 +444,21 @@ class Service(models.Model):
 				'context': {
 				}
 		}
-	# open_line_current 
+	# open_line_current
 
 
 
-# ----------------------------------------------------------- On changes ------------------------------------------------------
-	
+# ----------------------------------------------------------- On changes --------------------------
+
 	# Service
 	@api.onchange('service')
 	def _onchange_service(self):
 		if self.service != 'none':
 			self.time_1 = self.service.x_time
-		
+
 	@api.onchange('nr_sessions_1')
 	def _onchange_nr_sessions_1(self):
-		if self.nr_sessions_1 != 'none':	
+		if self.nr_sessions_1 != 'none':
 			self.nr_sessions = self.nr_sessions_1
 			return {
 				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time),('x_sessions', '=', self.nr_sessions) ]},
@@ -441,35 +466,39 @@ class Service(models.Model):
 
 	@api.onchange('time_1')
 	def _onchange_time_1(self):
-		if self.time_1 != 'none':				
+		if self.time_1 != 'none':
 			self.time_1 = self.clear_times(self.time_1)
 			self.time = self.time_1
 			return {
-				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time)]},				
+				'domain': {'service': [('x_treatment', '=', self.laser),('x_zone', '=', self.zone),('x_pathology', '=', self.pathology),('x_time', '=', self.time)]},
 			}
 
 
 
 
-# ----------------------------------------------------------- Test ------------------------------------------------------
-
+# ----------------------------------------------------------- Test --------------------------------
 	# Computes
 	def test_computes(self):
-		print 
-		print 'Service - Computes'
-
-		print 'name: ', self.name  
-		print 'name_short: ', self.name_short
-		print 'code: ', self.code 
-		print 'price: ', self.price
-		print 'price_vip: ', self.price_vip
+		"""
+		high level support for doing this and that.
+		"""
+		pass
+		#print
+		#print 'Service - Computes'
+		#print 'name: ', self.name
+		#print 'name_short: ', self.name_short
+		#print 'code: ', self.code
+		#print 'price: ', self.price
+		#print 'price_vip: ', self.price_vip
 
 
 	# Actions
 	def test_actions(self):
-		print 
-		print 'Service - Actions'
-
+		"""
+		high level support for doing this and that.
+		"""
+		#print
+		#print 'Service - Actions'
 		self.open_line_current()
 		self.open_treatment()
 		self.clear_all('token')
@@ -481,17 +510,18 @@ class Service(models.Model):
 		#self.get_product_medical()
 
 
-	# Test  
+	# Test
 	def test(self):
-		print 
-		print 'Service - Test'
-
-		print self 
+		"""
+		high level support for doing this and that.
+		"""
+		#print
+		#print 'Service - Test'
 
 		# Computes
 		self.test_computes()
 
-		# Actions 
+		# Actions
 		self.test_actions()
 
-	# test 
+	# test

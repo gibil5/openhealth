@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 #
 #
-# 		*** OPEN HEALTH - Purchase Order line  
+# 		*** OPEN HEALTH - Purchase Order line  - Deprecated !
 # 
 # Created: 				13 Dec 2017
+# Last:					23 Nov 2018
 #
 
 from openerp import models, fields, api

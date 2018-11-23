@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+#
+# AccountInvoice- Deprecated !
+#
+# Last:					23 Nov 2018
 
 from openerp import models, fields, api
 

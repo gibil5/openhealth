@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 #
 #
-# 		*** OPEN HEALTH - Purchase   
+# 		*** OPEN HEALTH - Purchase - Deprecated !
 # 
 # Created: 				30 Oct 2017
+# Last:					23 Nov 2018
 #
 
 from openerp import models, fields, api

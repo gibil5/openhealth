@@ -187,7 +187,6 @@ jx
                             type="object"
                             class="oe_highlight"
                             name="create_credit_note"
-                            groups="openhealth.roots"
 
                             states="sale,cancel"                     
 

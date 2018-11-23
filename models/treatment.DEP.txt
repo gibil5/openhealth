@@ -1,0 +1,46 @@
+
+# ----------------------------------------------------------- Test - Computes ------------------------------------------------------
+
+	# Computes
+	def test_computes(self):
+		#print
+		#print 'Treatment - Computes'
+
+		t0 = timer()
+
+		print self.name
+		print self.state
+		print self.progress
+		print self.vip
+		print self.pricelist_id
+		print self.patient_sex
+		print self.patient_age
+		print self.patient_city
+		print self.x_vip_inprog
+		print self.consultation_progress
+		print self.nr_appointments
+		print self.nr_consultations
+		print self.nr_budgets_cons
+		print self.nr_invoices_cons
+		print self.nr_services
+		print self.nr_services_co2
+		print self.nr_services_excilite
+		print self.nr_services_ipl
+		print self.nr_services_ndyag
+		print self.nr_services_quick
+		print self.nr_services_medical
+		print self.nr_services_cosmetology
+		print self.nr_services_vip
+		print self.nr_services_product
+		print self.nr_controls
+		print self.nr_sessions
+		print self.nr_procedures
+
+
+		t1 = timer()
+
+		self.delta_1 = t1 - t0
+
+		#print self.delta_1
+
+	# test_computes

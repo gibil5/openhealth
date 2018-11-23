@@ -1014,12 +1014,12 @@ class sale_order(models.Model):
 			'openhealth.payment_method',
 			string="Pago", 
 
-			states={	
-					'draft': [('readonly', False)],
-					'sent': [('readonly', False)],
+			#states={	
+			#		'draft': [('readonly', False)],
+			#		'sent': [('readonly', False)],
 					#'sale': [('readonly', True)],
-					'sale': [('readonly', False)],
-				}, 
+			#	}, 
+			states=READONLY_STATES, 
 		)
 
 

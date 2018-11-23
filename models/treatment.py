@@ -16,8 +16,6 @@ import creates as cre
 import lib_rep
 import reco_funcs
 import test_treatment as tst
-#import lib_obj
-#import export
 
 class Treatment(models.Model):
 	_inherit = 'openhealth.process'
@@ -29,17 +27,17 @@ class Treatment(models.Model):
 
 # ----------------------------------------------------------- Test --------------------------------
 	x_test = fields.Boolean(
-			'Test', 
+			'Test',
 		)
 
 
 # ----------------------------------------------------------- Optimization ------------------------
 	delta_1 = fields.Float(
-			'Delta 1', 
+			'Delta 1',
 		)
 
 	delta_2 = fields.Float(
-			'Delta 2', 
+			'Delta 2',
 		)
 
 
@@ -50,7 +48,7 @@ class Treatment(models.Model):
 		Integration Test of the Treatment Class.
 		"""
 		if self.patient.x_test:
-			
+
 			# Reset
 			tst.reset_treatment(self)
 
@@ -63,29 +61,60 @@ class Treatment(models.Model):
 
 # ----------------------------------------------------------- Test Integration Reports ------------
 	# Reports - Integration
-	@api.multi 
+	@api.multi
 	def test_case_reports(self):
 		"""
 		Integration Test for Class Reporting capabilites (Update method).
 		"""
 		#print 'Test - Report'
-		#print 
-		
-		if self.patient.x_test: 
-			
-			# Object Oriented 
-			
-			# Reports 
-			closing = 		lib_rep.Report('closing', 		'openhealth.closing', 				'date', 		self)
-			
-			resap = 		lib_rep.Report('resap',	 		'openhealth.report.sale.product', 	'name', 		self)
-			
-			management = 	lib_rep.Report('management', 	'openhealth.management', 			'date_begin', 	self)
-			
-			marketing = 	lib_rep.Report('marketing', 	'openhealth.marketing', 			'date_begin', 	self)
-			
-			account = 	lib_rep.Report('account.contasis', 	'openhealth.account.contasis', 		'date_begin', 	self)
-			
+		#print
+
+		if self.patient.x_test:
+
+			# Object Oriented
+
+			# Init
+			caller = self
+
+
+			# Reports
+
+			name = 'closing'
+			model = 'openhealth.closing'
+			descriptor = 'date'
+			closing = lib_rep.Report(name, model, descriptor, caller)
+			#closing = lib_rep.Report('closing',	 		'openhealth.closing', 	'date', 		self)
+
+
+			name = 'resap'
+			model = 'openhealth.report.sale.product'
+			descriptor = 'name'
+			resap = lib_rep.Report(name, model, descriptor, caller)
+			#resap = lib_rep.Report('resap',	 		'openhealth.report.sale.product', 	'name', 		self)
+
+
+			name = 'management'
+			model = 'openhealth.management'
+			descriptor = 'date_begin'
+			management = lib_rep.Report(name, model, descriptor, caller)
+			#management = 	lib_rep.Report('management', 	'openhealth.management', 			'date_begin', 	self)
+
+
+			name = 'marketing'
+			model = 'openhealth.marketing'
+			descriptor = 'date_begin'
+			marketing = lib_rep.Report(name, model, descriptor, caller)
+			#marketing = 	lib_rep.Report('marketing', 	'openhealth.marketing', 			'date_begin', 	self)
+
+
+			name = 'account.contasis'
+			model = 'openhealth.account.contasis'
+			descriptor = 'date_begin'
+			account = lib_rep.Report(name, model, descriptor, caller)
+			#account = 		lib_rep.Report('account.contasis', 	'openhealth.account.contasis', 		'date_begin', 	self)
+
+
+
 			#state_of_acc = 	lib_rep.Report('state_of_acc', 		'openhealth.order.report.nex', 		'create_date', 	self)
 			#doctor_line = 		lib_rep.Report('doctor_line', 		'openhealth.management.doctor.line', 				'write_date', 		self)
 			#family_line = 		lib_rep.Report('family_line', 		'openhealth.management.family.line', 				'write_date', 		self)
@@ -93,7 +122,7 @@ class Treatment(models.Model):
 
 
 
-			# All  
+			# All
 			objs = [
 						closing,
 						resap,
@@ -103,37 +132,35 @@ class Treatment(models.Model):
 				]
 
 
-			# Update 
-			for obj in objs: 
+			# Update
+			for obj in objs:
 				obj.update()
 
-			# Print 
-			for obj in objs: 
+			# Print
+			for obj in objs:
 				print obj
 
 
 
 # ----------------------------------------------------------- Test Reset --------------------------
-	@api.multi 
+	@api.multi
 	def test_reset(self):
-		#print 
+		#print
 		#print 'Test Case - Reset'
-		if self.patient.x_test: 
+		if self.patient.x_test:
 			tst.reset_treatment(self)
-		else: 
-			print 'Not a Tester'
 
 
 
 # ----------------------------------------------------------- Test Flags --------------------------
 
 	# Clear All
-	@api.multi 
+	@api.multi
 	def clear_all(self):
 		tst.clear_all(self)
 
 	# Set All
-	@api.multi 
+	@api.multi
 	def set_all(self):
 		tst.set_all(self)
 
@@ -142,41 +169,41 @@ class Treatment(models.Model):
 
 # ----------------------------------------------------------- Vip  --------------------------------
 
-	# Vip 
+	# Vip
 	vip = fields.Boolean(
 		string="VIP",
-		#default=False, 
+		#default=False,
 
-		compute='_compute_vip', 
+		compute='_compute_vip',
 	)
 	@api.multi
 	def _compute_vip(self):
 		for record in self:
 			card = record.env['openhealth.card'].search([
-															('patient_name','=', record.patient.name),
+															('patient_name', '=', record.patient.name),
 														],
 														#order='appointment_date desc',
 														limit=1,)
 			if card.name != False:
-				record.vip = True 
+				record.vip = True
 
 
 
 
-	# Pricelist 
+	# Pricelist
 	pricelist_id = fields.Many2one(
-			'product.pricelist', 
-			string='Pricelist', 
-			readonly=True, 
-			#states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}, 
-			#help="Pricelist for current sales order.", 
-			
-			compute='_compute_pricelist_id', 
+			'product.pricelist',
+			string='Pricelist',
+			readonly=True,
+			#states={'draft': [('readonly', False)], 'sent': [('readonly', False)]},
+			#help="Pricelist for current sales order.",
+
+			compute='_compute_pricelist_id',
 	)
 	@api.multi
 	def _compute_pricelist_id(self):
 		for record in self:
-			
+
 			record.pricelist_id = record.patient.property_product_pricelist
 
 
@@ -184,53 +211,53 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Create Appointment  ------------------------------------------------------
+# ----------------------------------------------------------- Create Appointment  -----------------
 
 	# Create Appointment Consultation
-	@api.multi 
+	@api.multi
 	def create_appointment_consultation(self):
 
 		# Consultation
 		x_type = 'consultation'
 		subtype = 'consultation'
 		state = 'pre_scheduled'
-		
+
 		self.create_appointment_nex(x_type, subtype, state)
 
 
 
-	# Create Appointment Nex 
-	@api.multi 
+	# Create Appointment Nex
+	@api.multi
 	#def create_appointment_nex(self):
 	def create_appointment_nex(self, x_type, subtype, state):
-		#print 
+		#print
 		#print 'Create Appointment'
 
 
-		# Init 
+		# Init
 		doctor_name = self.physician.name
 
 
 
-		# Consultation, Procedure 
-		if x_type in ['consultation', 'procedure']: 	# Appointment is Today. With time. So check for availability. 
-		
+		# Consultation, Procedure
+		if x_type in ['consultation', 'procedure']: 	# Appointment is Today. With time. So check for availability.
 
-			# Get Next Slot - Real Time version 
+
+			# Get Next Slot - Real Time version
 			appointment_date = lib.get_next_slot(self)						# Get Next Slot
 			#print appointment_date
 
 
-			if appointment_date != False: 
+			if appointment_date != False:
 
 
-				# Init 
+				# Init
 				states = False
 				duration = 0.5
 
 
-				
-				# Check and Push 
+
+				# Check and Push
 				#appointment_date_str = procedure_funcs.check_and_push(self, appointment_date, duration, x_type, doctor_name, states)
 				#appointment_date_str = user.check_and_push(self, appointment_date, duration, x_type, doctor_name, states)
 				appointment_date_str = user.check_and_push(self, appointment_date, duration, doctor_name, states)
@@ -238,40 +265,40 @@ class Treatment(models.Model):
 
 
 
-				# Create 
+				# Create
 				#print 'Create'
 				#appointment = self.env['oeh.medical.appointment'].create({
 				appointment = self.appointment_ids.create({
-																			'appointment_date': appointment_date_str, 
+																			'appointment_date': appointment_date_str,
 																			'patient':			self.patient.id,
 																			'doctor':			self.physician.id,
 
-																			#'state': 			'pre_scheduled', 
-																			#'x_type': 			'consultation', 
-																			#'x_subtype': 		'consultation', 
+																			#'state': 			'pre_scheduled',
+																			#'x_type': 			'consultation',
+																			#'x_subtype': 		'consultation',
 
-																			'state': 			state, 
-																			'x_type': 			x_type, 
-																			'x_subtype': 		subtype, 
+																			'state': 			state,
+																			'x_type': 			x_type,
+																			'x_subtype': 		subtype,
 
-																			'treatment':	self.id, 
+																			'treatment':	self.id,
 																	})
 				#print appointment
 
 
 
-		# Session, Control 
-		else: 	# Appointment is not Today. Without time. 
+		# Session, Control
+		else: 	# Appointment is not Today. Without time.
 
-			print 'Appointment not Today'
+			#print 'Appointment not Today'
 
 
 			# Init
-			if x_type == 'control': 
+			if x_type == 'control':
 				duration = 0.25
 				state = 'pre_scheduled_control'
 				states = ['pre_scheduled_control']
-			else: 
+			else:
 				duration = 0.5
 				state = 'pre_scheduled_session'
 				states = ['pre_scheduled_session']
@@ -281,13 +308,13 @@ class Treatment(models.Model):
 
 
 
-			# Control 
+			# Control
 			nr_days = 0
 			#nr_days = 1
 
 
 			#start_date = self.start_date
-			start_date = datetime.datetime.now() + datetime.timedelta(hours=-5,minutes=0)	
+			start_date = datetime.datetime.now() + datetime.timedelta(hours=-5, minutes=0)
 			#date_2_format = "%Y-%m-%d"
 			date_format = "%Y-%m-%d %H:%M:%S"
 			start_date_str = start_date.strftime(date_format)
@@ -295,79 +322,79 @@ class Treatment(models.Model):
 
 
 
-			# Control date 
+			# Control date
 			#appointment_date = procedure_funcs.get_next_date(self, start_date_str, nr_days)
 			appointment_date = lib.get_next_date(self, start_date_str, nr_days)
 
-			print appointment_date
+			#print appointment_date
 
 
-			# Cut Time out 
-			appointment_date_str = appointment_date.strftime("%Y-%m-%d")		
+			# Cut Time out
+			appointment_date_str = appointment_date.strftime("%Y-%m-%d")
 			appointment_date_str = appointment_date_str + ' 14:00:00'			# 09:00:00
-			print appointment_date_str
+			#print appointment_date_str
 
 
 
-			# Check and Push 
+			# Check and Push
 			#appointment_date_str = procedure_funcs.check_and_push(self, appointment_date_str, duration, x_type, doctor_name, states)
 			#appointment_date_str = user.check_and_push(self, appointment_date_str, duration, x_type, doctor_name, states)
 			appointment_date_str = user.check_and_push(self, appointment_date_str, duration, doctor_name, states)
 
 
 
-			# Create 
+			# Create
 			appointment = self.env['oeh.medical.appointment'].create({
 																			'appointment_date': appointment_date_str,
 																			'patient':			self.patient.id,
 																			'doctor':			self.physician.id,
 																			'duration': duration,
-																			
+
 																			#'x_create_procedure_automatic': False,
-																			#'x_chief_complaint': chief_complaint, 
+																			#'x_chief_complaint': chief_complaint,
 																			#'x_target': 'doctor',
 
 																			'state': state,
 																			'x_type': x_type,
 																			'x_subtype': subtype,
 
-																			'treatment':	self.id, 
+																			'treatment':	self.id,
 																	})
 
 
 
 
-# ----------------------------------------------------------- Update Apps  ------------------------------------------------------
-	
-	# Update Appointments 
+# ----------------------------------------------------------- Update Apps  ------------------------
+
+	# Update Appointments
 	@api.multi
 	def update_appointments(self):
-		
-		#print 
+
+		#print
 		#print 'Update Appointments'
 
-		# Consultations 
-		for consultation in self.consultation_ids: 
-			if consultation.appointment.appointment_date != False: 			
+		# Consultations
+		for consultation in self.consultation_ids:
+			if consultation.appointment.appointment_date != False: 
 				consultation.evaluation_start_date = consultation.appointment.appointment_date
 
-		# Sessions 
-		for session in self.session_ids: 
-			if session.appointment.appointment_date != False: 
+		# Sessions
+		for session in self.session_ids:
+			if session.appointment.appointment_date != False:
 				session.evaluation_start_date = session.appointment.appointment_date
 
 	# update_appointments
 
 
 
-# ----------------------------------------------------------- Creates  ------------------------------------------------------
-	
-	# Create Sessions  
-	#@api.multi 
+# ----------------------------------------------------------- Creates  ----------------------------
+
+	# Create Sessions
+	#@api.multi
 	#def create_sessions(self):
-	#	print 
+	#	print
 	#	print 'Create Sessions'
-	#	for procedure in self.procedure_ids: 
+	#	for procedure in self.procedure_ids:
 	#		procedure.create_sessions()
 
 
@@ -379,30 +406,30 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Create Procedure  ------------------------------------------------------
-	# Create Procedure 
+# ----------------------------------------------------------- Create Procedure  -------------------
+	# Create Procedure
 	@api.multi
-	def create_procedure(self, date_app, subtype, product_id):		
-		#print 
+	def create_procedure(self, date_app, subtype, product_id):
+		#print
 		#print 'Create Procedure'
 		ret = cre.create_procedure_go(self, date_app, subtype, product_id)
-	# create_procedure 
+	# create_procedure
 
 
 
-# ----------------------------------------------------------- Create Controls  ------------------------------------------------------
-	# Create Controls  
-	@api.multi 
+# ----------------------------------------------------------- Create Controls  --------------------
+	# Create Controls
+	@api.multi
 	def create_controls(self):
-		print 
-		print 'Create Controls'
+		#print
+		#print 'Create Controls'
 		control_date = self.start_date
 		patient_id = self.patient.id
 		doctor_id = self.physician.id
 		treatment_id = self.id
 		chief_complaint = self.chief_complaint
 
-		# Create Control 
+		# Create Control
 		control = self.control_ids.create({
 											'evaluation_start_date':control_date,
 											'first_date':control_date,
@@ -413,7 +440,7 @@ class Treatment(models.Model):
 
 											#'appointment': appointment_id,
 											#'product':product_id,
-											#'procedure':procedure_id,										
+											#'procedure':procedure_id,
 									})
 	# create_controls
 
@@ -424,86 +451,84 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Testing Booleans ------------------------------------------------------
+# ----------------------------------------------------------- Testing Booleans --------------------
 
 	# Create Flags
 
 	# Sessions
 	ses_create = fields.Boolean(
-			string="Ses", 
-			default=False, 
-		)	
+			string="Ses",
+			default=False,
+		)
 
 	# Controls
 	con_create = fields.Boolean(
-			string="Con", 
-			default=False, 
-		)	
+			string="Con",
+			default=False,
+		)
 
 
 
-	# Laser 
+	# Laser
 	co2_create = fields.Boolean(
-			string="Co2", 
-			default=False, 
-		)	
+			string="Co2",
+			default=False,
+		)
 
 	exc_create = fields.Boolean(
-			string="Exc", 
-			default=False, 
-		)	
+			string="Exc",
+			default=False,
+		)
 
 	ipl_create = fields.Boolean(
-			string="Ipl", 
-			default=False, 
-		)	
+			string="Ipl",
+			default=False,
+		)
 
 	ndy_create = fields.Boolean(
-			string="Ndyag", 
-			default=False, 
-		)	
+			string="Ndyag",
+			default=False,
+		)
 
 	qui_create = fields.Boolean(
-			string="Quick", 
-			default=False, 
-		)	
+			string="Quick",
+			default=False,
+		)
 
 	# Medical
 	med_create = fields.Boolean(
-			string="Med", 
-			default=False, 
-		)	
+			string="Med",
+			default=False,
+		)
 
 	# Cosmeto
 	cos_create = fields.Boolean(
-			string="Cos", 
-			default=False, 
-		)	
+			string="Cos",
+			default=False,
+		)
 
 	# Vip
 	vip_create = fields.Boolean(
-			string="Vip", 
-			default=False, 
-		)	
+			string="Vip",
+			default=False,
+		)
 
 	# Product
 	product_create = fields.Boolean(
-			string="Product", 
-			default=False, 
-		)	
+			string="Product",
+			default=False,
+		)
 
 
 
 
-# ----------------------------------------------------------- Reload ------------------------------------------------------
+# ----------------------------------------------------------- Reload ------------------------------
 
-	# Reload 
-	@api.multi 
+	# Reload
+	@api.multi
 	def reload(self):
-
-		#print 
+		#print
 		#print 'Reload'
-
 		return {
 				'type': 'ir.actions.client',
 				'tag': 'reload',
@@ -516,48 +541,36 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Create Procedure Manual  ------------------------------------------------------
+# ----------------------------------------------------------- Create Procedure Manual  ------------
 	@api.multi
 	def create_procedure_man(self):
-		
-		print 
-		print 'Create Procedure - Manual'
+		#print
+		#print 'Create Procedure - Manual'
 
 
-		# Loop - Create Procedures 
+		# Loop - Create Procedures
 		ret = 0
 		for order in self.order_pro_ids:
 
-			#if order.state == 'sale' 	and 	not order.x_procedure_created: 
-			if order.state == 'sale': 
+			if order.state == 'sale':
 
-				# Update 
+				# Update
 				order.x_procedure_created = True
 
 				# Loop
 				for line in order.order_line:
-					
 
-					# Init 
-					#product_product = line.product_id
-					#product_product = product_id
 
+					# Init
 					date_app = order.date_order
-
 					product_id = line.product_id
 
-
-					# Search 
+					# Search
 					product_template = self.env['product.template'].search([
-																				('x_name_short','=', product_id.x_name_short),
-																				#('x_origin','=', False),
+																				('x_name_short', '=', product_id.x_name_short),
 												])
 
-					#subtype = product_id.x_subtype
-
 					subtype = product_template.x_treatment
-					#subtype = product_template.x_treatment
-
 
 					ret = cre.create_procedure_go(self, date_app, subtype, product_id.id)
 
@@ -568,29 +581,29 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Manual ------------------------------------------------------
+# ----------------------------------------------------------- Manual ------------------------------
 
 	# Manual
 	add_procedures = fields.Boolean(
-			string="Control Manual", 
-			default=False, 
-		)	
+			string="Control Manual",
+			default=False,
+		)
 
-	# Reset  
-	@api.multi 
+	# Reset
+	@api.multi
 	def reset_procs(self):
-		self.add_procedures = False 
+		self.add_procedures = False
 
-	# Toggle  
-	@api.multi 
+	# Toggle
+	@api.multi
 	def toggle_add_procedures(self):
-		self.add_procedures = not self.add_procedures 
+		self.add_procedures = not self.add_procedures
 
 
 
-# ----------------------------------------------------------- Alta ------------------------------------------------------
+# ----------------------------------------------------------- Alta --------------------------------
 
-	# Closed 
+	# Closed
 	treatment_closed = fields.Boolean(
 			string="De Alta",
 			default=False,
@@ -598,86 +611,86 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Canonical ------------------------------------------------------
+# ----------------------------------------------------------- Canonical ---------------------------
 
-	# Name 
+	# Name
 	name = fields.Char(
-			string="Tratamiento #", 
+			string="Tratamiento #",
 
-			compute='_compute_name', 
+			compute='_compute_name',
 		)
 	@api.multi
 	#@api.depends('start_date')
 	def _compute_name(self):
 		for record in self:
-			record.name = 'TR0000' + str(record.id) 
+			record.name = 'TR0000' + str(record.id)
 
 
-	# Space 
+	# Space
 	vspace = fields.Char(
-			' ', 
+			' ',
 			readonly=True
 		)
 
 
-	# Active 
+	# Active
 	active = fields.Boolean(
-			default=True, 
+			default=True,
 		)
 
 
 
 
-# ----------------------------------------------------------- Macro ------------------------------------------------------
+# ----------------------------------------------------------- Macro -------------------------------
 
 	# Sex
 	patient_sex = fields.Char(
-			string="Sexo", 
+			string="Sexo",
 
-			compute='_compute_patient_sex', 
+			compute='_compute_patient_sex',
 		)
 
 	@api.multi
 	def _compute_patient_sex(self):
-		#print 
+		#print
 		#print 'Compute Patient Sex'
-		for record in self:		
+		for record in self:
 			#print 'record'
-			if record.patient.sex != False: 
+			if record.patient.sex != False:
 				record.patient_sex = record.patient.sex[0]
 
 
 	# Age
 	patient_age = fields.Char(
-			string="Edad", 
+			string="Edad",
 
-			compute='_compute_patient_age', 
+			compute='_compute_patient_age',
 		)
 
 	@api.multi
 	def _compute_patient_age(self):
-		#print 
+		#print
 		#print 'Compute Patient Age'
-		for record in self:		
+		for record in self:
 			#print 'record'
-			if record.patient.age != False: 
+			if record.patient.age != False:
 				record.patient_age = record.patient.age.split()[0]
 
 
-	# City 
+	# City
 	patient_city = fields.Char(
-			string="Lugar de procedencia", 
-			
-			compute='_compute_patient_city', 
+			string="Lugar de procedencia",
+
+			compute='_compute_patient_city',
 		)
 
 	@api.multi
 	def _compute_patient_city(self):
-		#print 
+		#print
 		#print 'Compute Patient City'
-		for record in self:		
+		for record in self:
 			#print 'record'
-			if record.patient.city_char != False: 
+			if record.patient.city_char != False:
 				city = record.patient.city_char
 				record.patient_city = city.title()
 
@@ -685,27 +698,26 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Vip in prog ------------------------------------------------------
+# ----------------------------------------------------------- Vip in prog -------------------------
 
-	# Vip in progress 
+	# Vip in progress
 	x_vip_inprog = fields.Boolean(
-			string="Vip en progreso", 
-			default=False, 
-		
-			compute='_compute_vip_inprog', 
+			string="Vip en progreso",
+			default=False,
+
+			compute='_compute_vip_inprog',
 		)
 
 	@api.multi
 	def _compute_vip_inprog(self):
 		for record in self:
-			#nr_vip = self.env['openhealth.service.vip'].search_count([		
-			nr_vip = self.env['openhealth.service.product'].search_count([		
-																			('treatment','=', record.id),
-																			('service','in', ['tarjeta vip','Tarjeta Vip','Tarjeta VIP','TARJETA VIP']),
+			nr_vip = self.env['openhealth.service.product'].search_count([
+																			('treatment', '=', record.id),
+																			('service', 'in', ['tarjeta vip', 'Tarjeta Vip', 'Tarjeta VIP', 'TARJETA VIP']),
 																			#('state','=', 'draft'),
-				]) 
-			if nr_vip > 0: 
-				record.x_vip_inprog = True 
+				])
+			if nr_vip > 0:
+				record.x_vip_inprog = True
 
 
 
@@ -713,68 +725,68 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Relational ------------------------------------------------------
+# ----------------------------------------------------------- Relational --------------------------
 
 	consultation_ids = fields.One2many(
-			'openhealth.consultation', 
-			'treatment', 
-			string = "Consultas", 
+			'openhealth.consultation',
+			'treatment',
+			string="Consultas",
 		)
 
 
 	procedure_ids = fields.One2many(
-			'openhealth.procedure', 
-			'treatment', 
-			string = "Procedimientos", 
+			'openhealth.procedure',
+			'treatment',
+			string="Procedimientos",
 		)
 
 	session_ids = fields.One2many(
-			'openhealth.session.med', 
-			'treatment', 
-			string = "Sesiones", 
+			'openhealth.session.med',
+			'treatment',
+			string="Sesiones",
 		)
 
 	control_ids = fields.One2many(
-			'openhealth.control', 
-			'treatment', 
-			string = "Controles", 
+			'openhealth.control',
+			'treatment',
+			string="Controles",
 		)
 
-	# Reservations 
+	# Reservations
 	reservation_ids = fields.One2many(
-			'oeh.medical.appointment', 
-			'treatment', 
-			string = "Reserva de sala", 
-			domain = [
-						#('x_machine', '!=', 'false'),	
+			'oeh.medical.appointment',
+			'treatment',
+			string="Reserva de sala",
+			domain=[
+						#('x_machine', '!=', 'false'),
 					],
 			)
 
-	# Appointments 
+	# Appointments
 	appointment_ids = fields.One2many(
-			'oeh.medical.appointment',  
-			'treatment', 
-			string = "Citas", 
+			'oeh.medical.appointment',
+			'treatment',
+			string="Citas",
 			#domain = [
 			#			('x_target', '=', 'doctor'),
 			#		],
 		)
 
-	# Orders 
+	# Orders
 	order_ids = fields.One2many(
-			'sale.order',			 
-			'treatment', 
+			'sale.order',
+			'treatment',
 			string="Presupuestos",
 		)
 
 	# Orders Procedures
 	order_pro_ids = fields.One2many(
-			'sale.order',			 
-			'treatment', 
+			'sale.order',
+			'treatment',
 			string="Presupuestos",
-			domain = [
+			domain=[
 						#('x_family', '=', 'procedure'),
-						('x_family', 'in', ['procedure','cosmetology']),
+						('x_family', 'in', ['procedure', 'cosmetology']),
 					],
 		)
 
@@ -782,22 +794,22 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Services ------------------------------------------------------
-	
+# ----------------------------------------------------------- Services ----------------------------
+
 	# Product
 	service_product_ids = fields.One2many(
 
-			'openhealth.service.product', 
-		
-			'treatment', 
+			'openhealth.service.product',
+
+			'treatment',
 			string="Servicios Producto"
 		)
 
 
 	# Vip
 	service_vip_ids = fields.One2many(
-			'openhealth.service.vip', 
-			'treatment', 
+			'openhealth.service.vip',
+			'treatment',
 			string="Servicios vip"
 		)
 
@@ -805,59 +817,59 @@ class Treatment(models.Model):
 
 
 
-	# Service 
+	# Service
 	service_ids = fields.One2many(
-			'openhealth.service', 	
-			'treatment', 
+			'openhealth.service',
+			'treatment',
 			string="Servicios"
 		)
 
 	# Quick
 	service_quick_ids = fields.One2many(
-			'openhealth.service.quick', 
-			'treatment', 
+			'openhealth.service.quick',
+			'treatment',
 			string="Servicios quick"
 			)
 
 	# Co2
 	service_co2_ids = fields.One2many(
-			'openhealth.service.co2', 
-			'treatment', 
+			'openhealth.service.co2',
+			'treatment',
 			string="Servicios Co2"
 			)
 
 	# Excilite
 	service_excilite_ids = fields.One2many(
-			'openhealth.service.excilite', 
-			'treatment', 
+			'openhealth.service.excilite',
+			'treatment',
 			string="Servicios Excilite"
 			)
 
 	# Ipl
 	service_ipl_ids = fields.One2many(
-			'openhealth.service.ipl', 
-			'treatment', 
+			'openhealth.service.ipl',
+			'treatment',
 			string="Servicios ipl"
 			)
 
 	# Ndyag
 	service_ndyag_ids = fields.One2many(
-			'openhealth.service.ndyag', 
-			'treatment', 
+			'openhealth.service.ndyag',
+			'treatment',
 			string="Servicios ndyag"
 			)
 
 	# Medical
 	service_medical_ids = fields.One2many(
-			'openhealth.service.medical', 
-			'treatment', 
+			'openhealth.service.medical',
+			'treatment',
 			string="Servicios medical"
 			)
 
 	# Cosmetology
 	service_cosmetology_ids = fields.One2many(
-			'openhealth.service.cosmetology', 
-			'treatment', 
+			'openhealth.service.cosmetology',
+			'treatment',
 			string="Servicios cosmeatria"
 		)
 
@@ -871,11 +883,11 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Consultation Progress ------------------------------------------------------
-	
+# ----------------------------------------------------------- Consultation Progress ---------------
+
 	# Consultation progress
 	consultation_progress = fields.Float(
-			default = 0, 
+			default=0,
 
 			compute="_compute_progress",
 		)
@@ -889,13 +901,13 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- State ------------------------------------------------------
-	
-	# State 
+# ----------------------------------------------------------- State -------------------------------
+
+	# State
 	state = fields.Selection(
-			selection = treatment_vars._state_list, 
-			string='Estado', 
-			default = 'empty', 
+			selection=treatment_vars._state_list,
+			string='Estado',
+			default='empty',
 
 			compute="_compute_state",
 		)
@@ -907,7 +919,7 @@ class Treatment(models.Model):
 	def _compute_state(self):
 		for record in self:
 
-			# Init 
+			# Init
 			state = 'empty'
 
 
@@ -945,18 +957,18 @@ class Treatment(models.Model):
 				state = 'appointment'
 
 
-			# Assign 
+			# Assign
 			record.state = state
-	
+
 	# _compute_state
 
 
 
 
 
-# ----------------------------------------------------------- Number ofs ------------------------------------------------------
+# ----------------------------------------------------------- Number ofs --------------------------
 
-	# Appointments 
+	# Appointments
 	nr_appointments = fields.Integer(
 			string="Citas",
 
@@ -965,43 +977,43 @@ class Treatment(models.Model):
 	@api.multi
 	def _compute_nr_appointments(self):
 		for record in self:
-			record.nr_appointments=self.env['oeh.medical.appointment'].search_count([
-																						('treatment','=', record.id),
-																						#('x_target','=', 'doctor'),
-																	]) 
+			record.nr_appointments = self.env['oeh.medical.appointment'].search_count([
+																						('treatment', '=', record.id),
+																						#('x_target', '=', 'doctor'),
+																	])
 
 
-	# Budgets - Consultations 			# DEP ? 
+	# Budgets - Consultations 			# DEP ?
 	nr_budgets_cons = fields.Integer(
 			string="Presupuestos Consultas",
-			
+
 			compute="_compute_nr_budgets_cons",
 	)
 	@api.multi
 	def _compute_nr_budgets_cons(self):
 		for record in self:
-			record.nr_budgets_cons=self.env['sale.order'].search_count([
-																	('treatment','=', record.id),
-																	('x_family','=', 'consultation'),
-																	('state','=', 'draft'),
-																	]) 
+			record.nr_budgets_cons = self.env['sale.order'].search_count([
+																	('treatment', '=', record.id),
+																	('x_family', '=', 'consultation'),
+																	('state', '=', 'draft'),
+																	])
 
 	# Invoices - Consultations
 	nr_invoices_cons = fields.Integer(
 			string="Facturas Consultas",
-			
+
 			compute="_compute_nr_invoices_cons",
 	)
 	@api.multi
 	def _compute_nr_invoices_cons(self):
 		for record in self:
-			record.nr_invoices_cons=self.env['sale.order'].search_count([
-																			('treatment','=', record.id),
-																			('x_family','=', 'consultation'),
-																			('state','=', 'sale'),
-																	]) 
+			record.nr_invoices_cons = self.env['sale.order'].search_count([
+																			('treatment', '=', record.id),
+																			('x_family', '=', 'consultation'),
+																			('state', '=', 'sale'),
+																	])
 
-	# Consultations 
+	# Consultations
 	nr_consultations = fields.Integer(
 			string="Nr Consultas",
 
@@ -1011,7 +1023,7 @@ class Treatment(models.Model):
 	@api.depends('consultation_ids')
 	def _compute_nr_consultations(self):
 		for record in self:
-			ctr = 0 
+			ctr = 0
 			for c in record.consultation_ids:
 				ctr = ctr + 1
 			record.nr_consultations = ctr
@@ -1022,37 +1034,37 @@ class Treatment(models.Model):
 
 
 
-	# Budgets - Proc   					# DEP ?  
+	# Budgets - Proc   					# DEP ?
 	nr_budgets_pro = fields.Integer(
 			string="Presupuestos - Pro",
-			
+
 			compute="_compute_nr_budgets_pro",
 	)
 	@api.multi
 	def _compute_nr_budgets_pro(self):
 		for record in self:
-			record.nr_budgets_pro=self.env['sale.order'].search_count([
-																		('treatment','=', record.id),
-																		('x_family','=', 'procedure'),
-																		('state','=', 'draft'),
-																	]) 
+			record.nr_budgets_pro = self.env['sale.order'].search_count([
+																		('treatment', '=', record.id),
+																		('x_family', '=', 'procedure'),
+																		('state', '=', 'draft'),
+																	])
 
 	# Invoices - Proc
 	nr_invoices_pro = fields.Integer(
 			string="Facturas",
-			
+
 			compute="_compute_nr_invoices_pro",
 	)
 	@api.multi
 	def _compute_nr_invoices_pro(self):
 		for record in self:
-			record.nr_invoices_pro=self.env['sale.order'].search_count([
-																			('treatment','=', record.id),	
-																			('x_family','=', 'procedure'),
-																			('state','=', 'sale'),
-																	]) 
+			record.nr_invoices_pro = self.env['sale.order'].search_count([
+																			('treatment', '=', record.id),
+																			('x_family', '=', 'procedure'),
+																			('state', '=', 'sale'),
+																	])
 
-	# Procedures 
+	# Procedures
 	nr_procedures = fields.Integer(
 			string="Procedimientos",
 
@@ -1061,25 +1073,25 @@ class Treatment(models.Model):
 	@api.multi
 	def _compute_nr_procedures(self):
 		for record in self:
-			record.nr_procedures=self.env['openhealth.procedure'].search_count([
-																					('treatment','=', record.id),
-																	]) 
+			record.nr_procedures = self.env['openhealth.procedure'].search_count([
+																					('treatment', '=', record.id),
+																	])
 
 
-	# Sessions 
+	# Sessions
 	nr_sessions = fields.Integer(
 			string="Sesiones",
-			
+
 			compute="_compute_nr_sessions",
 	)
 	@api.multi
 	def _compute_nr_sessions(self):
 		for record in self:
-			record.nr_sessions=self.env['openhealth.session.med'].search_count([
-																					('treatment','=', record.id),
-																				]) 
+			record.nr_sessions = self.env['openhealth.session.med'].search_count([
+																					('treatment', '=', record.id),
+																				])
 
-	# Controls 
+	# Controls
 	nr_controls = fields.Integer(
 			string="Controles",
 
@@ -1088,10 +1100,10 @@ class Treatment(models.Model):
 	@api.multi
 	def _compute_nr_controls(self):
 		for record in self:
-			record.nr_controls=0
-			record.nr_controls=self.env['openhealth.control'].search_count([
-																	('treatment','=', record.id),	
-																	])																	
+			record.nr_controls = 0
+			record.nr_controls = self.env['openhealth.control'].search_count([
+																	('treatment', '=', record.id),
+																	])
 																	#order='appointment_date desc', limit=1)
 
 
@@ -1104,8 +1116,8 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Number ofs - Services ------------------------------------------------------
-	# Number of Services  
+# ----------------------------------------------------------- Number ofs - Services ---------------
+	# Number of Services
 	nr_services = fields.Integer(
 			string="Servicios",
 
@@ -1114,19 +1126,16 @@ class Treatment(models.Model):
 	@api.multi
 	def _compute_nr_services(self):
 		for record in self:
+			quick =	self.env['openhealth.service.quick'].search_count([('treatment', '=', record.id),])
+			co2 = self.env['openhealth.service.co2'].search_count([('treatment', '=', record.id),])
+			exc = self.env['openhealth.service.excilite'].search_count([('treatment', '=', record.id),])
+			ipl = self.env['openhealth.service.ipl'].search_count([('treatment', '=', record.id),])
+			ndyag = self.env['openhealth.service.ndyag'].search_count([('treatment', '=', record.id),])
+			medical = self.env['openhealth.service.medical'].search_count([('treatment', '=', record.id),])
+			vip = self.env['openhealth.service.vip'].search_count([('treatment', '=', record.id),])
+			product = self.env['openhealth.service.product'].search_count([('treatment', '=', record.id),])
 
-			quick =		self.env['openhealth.service.quick'].search_count([('treatment','=', record.id),]) 
-			co2 =		self.env['openhealth.service.co2'].search_count([('treatment','=', record.id),]) 
-			exc = 		self.env['openhealth.service.excilite'].search_count([('treatment','=', record.id),]) 
-			ipl = 		self.env['openhealth.service.ipl'].search_count([('treatment','=', record.id),]) 
-			ndyag = 	self.env['openhealth.service.ndyag'].search_count([('treatment','=', record.id),]) 
-			medical =	self.env['openhealth.service.medical'].search_count([('treatment','=', record.id),]) 
-
-			vip =		self.env['openhealth.service.vip'].search_count([('treatment','=', record.id),]) 
-			product =	self.env['openhealth.service.product'].search_count([('treatment','=', record.id),]) 
-
-			#record.nr_services = vip + quick + co2 + exc + ipl + ndyag + medical
-			record.nr_services =  quick + co2 + exc + ipl + ndyag + medical + vip + product
+			record.nr_services = quick + co2 + exc + ipl + ndyag + medical + vip + product
 
 
 
@@ -1139,8 +1148,8 @@ class Treatment(models.Model):
 	@api.multi
 	def _compute_nr_services_product(self):
 		for record in self:
-			services =		self.env['openhealth.service.product'].search_count([('treatment','=', record.id),]) 
-			record.nr_services_product = services 
+			services = self.env['openhealth.service.product'].search_count([('treatment', '=', record.id),])
+			record.nr_services_product = services
 
 
 
@@ -1153,8 +1162,8 @@ class Treatment(models.Model):
 	@api.multi
 	def _compute_nr_services_vip(self):
 		for record in self:
-			services =		self.env['openhealth.service.vip'].search_count([('treatment','=', record.id),]) 
-			record.nr_services_vip = services 
+			services = self.env['openhealth.service.vip'].search_count([('treatment', '=', record.id),])
+			record.nr_services_vip = services
 
 
 
@@ -1162,14 +1171,14 @@ class Treatment(models.Model):
 	# Quick
 	nr_services_quick = fields.Integer(
 			string="Servicios Quick",
-			
+
 			compute="_compute_nr_services_quick",
 	)
 	@api.multi
 	def _compute_nr_services_quick(self):
 		for record in self:
-			services =		self.env['openhealth.service.quick'].search_count([('treatment','=', record.id),]) 
-			record.nr_services_quick = services 
+			services = self.env['openhealth.service.quick'].search_count([('treatment', '=', record.id),])
+			record.nr_services_quick = services
 
 
 
@@ -1182,8 +1191,8 @@ class Treatment(models.Model):
 	@api.multi
 	def _compute_nr_services_co2(self):
 		for record in self:
-			services =		self.env['openhealth.service.co2'].search_count([('treatment','=', record.id),]) 
-			record.nr_services_co2 = services 
+			services = self.env['openhealth.service.co2'].search_count([('treatment', '=', record.id),])
+			record.nr_services_co2 = services
 
 
 
@@ -1196,49 +1205,49 @@ class Treatment(models.Model):
 	@api.multi
 	def _compute_nr_services_excilite(self):
 		for record in self:
-			services = 		self.env['openhealth.service.excilite'].search_count([('treatment','=', record.id),]) 
-			record.nr_services_excilite = services 
+			services = self.env['openhealth.service.excilite'].search_count([('treatment', '=', record.id),])
+			record.nr_services_excilite = services
 
 
 	# ipl
 	nr_services_ipl = fields.Integer(
 			string="Servicios",
-			
+
 			compute="_compute_nr_services_ipl",
 	)
 	@api.multi
 	def _compute_nr_services_ipl(self):
 		for record in self:
-			services = 		self.env['openhealth.service.ipl'].search_count([('treatment','=', record.id),]) 
-			record.nr_services_ipl = services 
+			services = self.env['openhealth.service.ipl'].search_count([('treatment', '=', record.id),])
+			record.nr_services_ipl = services
 
 
 
 	# ndyag
 	nr_services_ndyag = fields.Integer(
 			string="Servicios",
-			
+
 			compute="_compute_nr_services_ndyag",
 	)
 	@api.multi
 	def _compute_nr_services_ndyag(self):
 		for record in self:
-			services = 		self.env['openhealth.service.ndyag'].search_count([('treatment','=', record.id),]) 
-			record.nr_services_ndyag = services 
+			services = self.env['openhealth.service.ndyag'].search_count([('treatment', '=', record.id),])
+			record.nr_services_ndyag = services
 
 
 
 	# medical
 	nr_services_medical = fields.Integer(
 			string="Servicios",
-			
+
 			compute="_compute_nr_services_medical",
 	)
 	@api.multi
 	def _compute_nr_services_medical(self):
 		for record in self:
-			services = 		self.env['openhealth.service.medical'].search_count([('treatment','=', record.id),]) 
-			record.nr_services_medical = services 
+			services = self.env['openhealth.service.medical'].search_count([('treatment', '=', record.id),])
+			record.nr_services_medical = services
 
 
 
@@ -1247,45 +1256,45 @@ class Treatment(models.Model):
 	# Cosmetology
 	nr_services_cosmetology = fields.Integer(
 			string="Servicios",
-			
+
 			compute="_compute_nr_services_cosmetology",
 	)
 	@api.multi
 	def _compute_nr_services_cosmetology(self):
 		for record in self:
-			services = 		self.env['openhealth.service.cosmetology'].search_count([('treatment','=', record.id),]) 
-			record.nr_services_cosmetology = services 
+			services = self.env['openhealth.service.cosmetology'].search_count([('treatment', '=', record.id),])
+			record.nr_services_cosmetology = services
 
 
 
 
 
 
-# ----------------------------------------------------------- Open Myself ------------------------------------------------------
+# ----------------------------------------------------------- Open Myself -------------------------
 	# Open Myself
-	@api.multi 
+	@api.multi
 	def open_myself(self):
 
-		treatment_id = self.id  
+		treatment_id = self.id
 
 		return {
-			# Mandatory 
+			# Mandatory
 			'type': 'ir.actions.act_window',
 			'name': 'Open Consultation Current',
-			# Window action 
+			# Window action
 			'res_model': 'openhealth.treatment',
 			'res_id': treatment_id,
-			# Views 
+			# Views
 			"views": [[False, "form"]],
 			'view_mode': 'form',
 			'target': 'current',
 			#'view_id': view_id,
 			#"domain": [["patient", "=", self.patient.name]],
-			#'auto_search': False, 
+			#'auto_search': False,
 			'flags': {
 					'form': {'action_buttons': True, }
 					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-			},			
+			},
 			'context':   {}
 		}
 	# open_myself
@@ -1296,19 +1305,18 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Creates - Manual, Process and Testing ------------------------------------------------------
-#jx
+# ----------------------------------------------------------- Creates - Manual, Process and Testing -----------
 
 
 
-# ----------------------------------------------------------- Create Order - Fields ------------------------------------------------------
+# ----------------------------------------------------------- Create Order - Fields ---------------------------
 
-	# Partner 
+	# Partner
 	partner_id = fields.Many2one(
 			'res.partner',
-			string = "Cliente", 	
+			string="Cliente",
 
-			compute='_compute_partner_id', 
+			compute='_compute_partner_id',
 		)
 
 	#@api.multi
@@ -1316,13 +1324,13 @@ class Treatment(models.Model):
 	def _compute_partner_id(self):
 		for record in self:
 			partner = record.env['res.partner'].search([
-															('name','like', record.patient.name),
-				
+															('name', 'like', record.patient.name),
+
 														],
 														#order='appointment_date desc',
 														limit=1,)
 
-			record.partner_id = partner 
+			record.partner_id = partner
 	# _compute_partner_id
 
 
@@ -1330,50 +1338,50 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Create Order Consultation  ------------------------------------------------------
-	@api.multi 
+# ----------------------------------------------------------- Create Order Consultation  ----------
+	@api.multi
 	def create_order_con_tst(self):
 
-		# Init 
+		# Init
 		target = 'consultation'
 
-		# Create 
-		order = cre.create_order(self, target)		
+		# Create
+		order = cre.create_order(self, target)
 
 		return order
 
 
 
-# ----------------------------------------------------------- Create Order Consultation  ------------------------------------------------------
-	@api.multi 
+# ----------------------------------------------------------- Create Order Consultation  ----------
+	@api.multi
 	def create_order_con(self):
 
-		# Init 
+		# Init
 		target = 'consultation'
 
-		# Create 
-		order = cre.create_order(self, target)		
-		
-		# Open 
+		# Create
+		order = cre.create_order(self, target)
+
+		# Open
 		return {
-				# Created 
+				# Created
 				'res_id': order.id,
-				# Mandatory 
+				# Mandatory
 				'type': 'ir.actions.act_window',
 				'name': 'Open Order Current',
-				# Window action 
+				# Window action
 				'res_model': 'sale.order',
-				# Views 
+				# Views
 				"views": [[False, "form"]],
 				'view_mode': 'form',
 				'target': 'current',
 				#'view_id': view_id,
 				#"domain": [["patient", "=", self.patient.name]],
-				#'auto_search': False, 
+				#'auto_search': False,
 				'flags': {
 						'form': {'action_buttons': True, }
 						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-						},			
+						},
 				'context': {}
 			}
 	# create_order_con
@@ -1384,33 +1392,33 @@ class Treatment(models.Model):
 
 
 
-# -----------------------------------------------------------  Create Order Pro  ------------------------------------------------------
-	@api.multi 
+# -----------------------------------------------------------  Create Order Pro  ------------------
+	@api.multi
 	def create_order_pro(self):
 
 		target = 'procedure'
 
-		order = cre.create_order(self, target)		
+		order = cre.create_order(self, target)
 
 		return {
-				# Created 
+				# Created
 				'res_id': order.id,
-				# Mandatory 
+				# Mandatory
 				'type': 'ir.actions.act_window',
 				'name': 'Open Order Current',
-				# Window action 
+				# Window action
 				'res_model': 'sale.order',
-				# Views 
+				# Views
 				"views": [[False, "form"]],
 				'view_mode': 'form',
 				'target': 'current',
 				#'view_id': view_id,
 				#"domain": [["patient", "=", self.patient.name]],
-				#'auto_search': False, 
+				#'auto_search': False,
 				'flags': {
 						'form': {'action_buttons': True, }
 						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-						},			
+						},
 				'context': {}
 			}
 	# create_order_pro
@@ -1418,84 +1426,84 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------- Create Consultation ------------------------------------------------------------
-	# Create Consultation 
+# ----------------------------------------------------- Create Consultation -----------------------
+	# Create Consultation
 	@api.multi
-	def create_consultation(self):  
+	def create_consultation(self):
 
-		# Init vars 
+		# Init vars
 		patient_id = self.patient.id
-		treatment_id = self.id 
+		treatment_id = self.id
 		chief_complaint = self.chief_complaint
 
 
-		# Doctor 
+		# Doctor
 		doctor = user.get_actual_doctor(self)
-		doctor_id = doctor.id 
+		doctor_id = doctor.id
 
-		if doctor_id == False: 
+		if doctor_id == False:
 			doctor_id = self.physician.id
 
 
-		# Date 
-		GMT = time_funcs.Zone(0,False,'GMT')
+		# Date
+		GMT = time_funcs.Zone(0, False, 'GMT')
 		#evaluation_start_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
 		evaluation_start_date = datetime.datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
 
-		# Apointment 
-		appointment = self.env['oeh.medical.appointment'].search([ 	
-																	('patient', '=', self.patient.name),		
+		# Apointment
+		appointment = self.env['oeh.medical.appointment'].search([
+																	('patient', '=', self.patient.name),
 																	('doctor', '=', self.physician.name),
 																	('x_type', '=', 'consultation'),
-															], 
+															],
 															order='appointment_date desc', limit=1)
 		appointment_id = appointment.id
 
-		# Search  
+		# Search
 		consultation = self.env['openhealth.consultation'].search([
-																		('treatment','=', self.id),
+																		('treatment', '=', self.id),
 																],
 																#order='appointment_date desc',
 																limit=1,)
-		# Create if it does not exist 
+		# Create if it does not exist
 		if consultation.name == False:
-			# Change App state 
-			if appointment.name != False: 
+			# Change App state
+			if appointment.name != False:
 				appointment.state = 'Scheduled'
 
-			# Consultation 
+			# Consultation
 			consultation = self.env['openhealth.consultation'].create({
-																		'patient': patient_id,													
-																		'treatment': treatment_id,	
+																		'patient': patient_id,
+																		'treatment': treatment_id,
 																		'evaluation_start_date': evaluation_start_date,
 																		'chief_complaint': chief_complaint,
 																		'appointment': appointment_id,
 																		'doctor': doctor_id,
 													})
-			consultation_id = consultation.id 
+			consultation_id = consultation.id
 
 			# Update
 			rec_set = self.env['oeh.medical.appointment'].browse([
-																	appointment_id																
+																	appointment_id
 																])
 			ret = rec_set.write({
 									'consultation': consultation_id,
 								})
 
-		consultation_id = consultation.id 
+		consultation_id = consultation.id
 
-		# Update Patient 
-		#consultation.update_patient()		
+		# Update Patient
+		#consultation.update_patient()
 
 		return {
 
-			# Mandatory 
+			# Mandatory
 			'type': 'ir.actions.act_window',
 			'name': 'Open Consultation Current',
-			# Window action 
+			# Window action
 			'res_model': 'openhealth.consultation',
 			'res_id': consultation_id,
-			# Views 
+			# Views
 			"views": [[False, "form"]],
 			'view_mode': 'form',
 			'target': 'current',
@@ -1503,16 +1511,16 @@ class Treatment(models.Model):
 			#'view_id': 'oeh_medical_evaluation_view',
 			#'view_id': 'oehealth.oeh_medical_evaluation_view',
 			#"domain": [["patient", "=", self.patient.name]],
-			#'auto_search': False, 
+			#'auto_search': False,
 			'flags': {
 						'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 						#'form': {'action_buttons': True, }
-					},			
+					},
 			'context':   {
 							'search_default_treatment': treatment_id,
 							'default_patient': patient_id,
 							'default_doctor': doctor_id,
-							'default_treatment': treatment_id,		
+							'default_treatment': treatment_id,
 							'default_evaluation_start_date': evaluation_start_date,
 							'default_chief_complaint': chief_complaint,
 							'default_appointment': appointment_id,
@@ -1524,33 +1532,33 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Create Service (Recommendation) ------------------------------------------------------
+# ----------------------------------------------------------- Create Service (Recommendation) -----
 
-	# Create Service 
+	# Create Service
 	@api.multi
 	def create_service(self):
-		#print 
+		#print
 		#print 'Create Service'
 
-		# Init 
-		res_id = self.id 
-		res_model = 'openhealth.treatment'		
+		# Init
+		res_id = self.id
+		res_model = 'openhealth.treatment'
 		view_id = self.env.ref('openhealth.treatment_2_form_view').id
-		print view_id
+		#print view_id
 
-		# Open 
+		# Open
 		return {
-			# Mandatory 
+			# Mandatory
 			'type': 'ir.actions.act_window',
 			'name': 'Open Treatment Current',
-			# Window action 
+			# Window action
 			'priority': 1,
 			'res_id': res_id,
 			'res_model': res_model,
 			#'view_id': view_id,
-			# Views 
+			# Views
 			#"views": [[False, "form"]],
-			
+
 
 			"views": [[view_id, "form"]],
 
@@ -1558,14 +1566,14 @@ class Treatment(models.Model):
 			'view_mode': 'form',
 			'target': 'current',
 			#"domain": [["patient", "=", self.patient.name]],
-			#'auto_search': False, 
+			#'auto_search': False,
 			'flags': {
 					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 					#'form': {'action_buttons': True, }
 					'form': {'action_buttons': False, }
-					},			
+					},
 			'context': {
-						#'default_treatment': treatment_id,					
+						#'default_treatment': treatment_id,
 					}
 		}
 	# create_service
@@ -1573,196 +1581,135 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- All Services ------------------------------------------------------
+# ----------------------------------------------------------- All Services ------------------------
 	# Product
 	@api.multi
-	def create_service_product(self):  
+	def create_service_product(self):
 		ret = reco_funcs.create_service_product(self)
-		return ret 
+		return ret
 
-	# Co2 
+	# Co2
 	@api.multi
-	def create_service_co2(self):  
+	def create_service_co2(self):
 		ret = reco_funcs.create_service_co2(self)
-		return ret 
+		return ret
 
-	# Quick 
+	# Quick
 	@api.multi
-	def create_service_quick(self):  
+	def create_service_quick(self):
 		ret = reco_funcs.create_service_quick(self)
-		return ret 
+		return ret
 
-	# Excilite 
+	# Excilite
 	@api.multi
-	def create_service_excilite(self):  
+	def create_service_excilite(self):
 		ret = reco_funcs.create_service_excilite(self)
-		return ret 
+		return ret
 
 	# Ipl
 	@api.multi
-	def create_service_ipl(self):  
+	def create_service_ipl(self):
 		ret = reco_funcs.create_service_ipl(self)
-		return ret 
+		return ret
 
-	# Ndyag 
+	# Ndyag
 	@api.multi
-	def create_service_ndyag(self):  
+	def create_service_ndyag(self):
 		ret = reco_funcs.create_service_ndyag(self)
-		return ret 
+		return ret
 
 	# Medical
 	@api.multi
-	def create_service_medical(self):  
+	def create_service_medical(self):
 		ret = reco_funcs.create_service_medical(self)
-		return ret 
+		return ret
 
 	# Cosmetology
 	@api.multi
-	def create_service_cosmetology(self):  
+	def create_service_cosmetology(self):
 		ret = reco_funcs.create_service_cosmetology(self)
-		return ret 
+		return ret
 
 
 
-# ----------------------------------------------------------- Update ------------------------------------------------------
-	# Flag 
+# ----------------------------------------------------------- Update ------------------------------
+	# Flag
 	flag = fields.Boolean(
-			'Flag', 
+			'Flag',
 		)
 
 	# Update
-	@api.multi 
+	@api.multi
 	def update(self):
-		#print 
+		#print
 		#print 'Update'
 		self.flag = not self.flag
-	# update 
+	# update
 
 
 
 
-# ----------------------------------------------------------- Test ------------------------------------------------------
+# ----------------------------------------------------------- Test --------------------------------
 	# Test
 	#def test(self):
 	def test_creates(self):
-		print 
-		print 'Treatment - Test'
+		#print
+		#print 'Treatment - Test'
 
 		ret = self.create_service_product()
 		#print ret
-		#print 
+		#print
 
 		ret = self.create_service_co2()
 		#print ret
-		#print 
+		#print
 
 		ret = self.create_service_excilite()
 		#print ret
-		#print 
+		#print
 
 		ret = self.create_service_ipl()
 		#print ret
-		#print 
+		#print
 
 		ret = self.create_service_ndyag()
 		#print ret
-		#print 
+		#print
 
 		ret = self.create_service_quick()
 		#print ret
-		#print 
+		#print
 
 		ret = self.create_service_medical()
 		#print ret
-		#print 
+		#print
 
 		ret = self.create_service_cosmetology()
 		#print ret
-		#print 
+		#print
 
-	# test_creates 
-
-
-# ----------------------------------------------------------- Test - Computes ------------------------------------------------------
-
-	# Computes
-	def test_computes(self):
-		print 
-		print 'Treatment - Computes'
-
-		t0 = timer()
-
-
-		print self.name
-		print self.state
+	# test_creates
 
 
 
-		print self.progress  
 
-
-		print self.vip
-		print self.pricelist_id
-
-		print self.patient_sex
-		print self.patient_age
-		print self.patient_city
-
-		print self.x_vip_inprog
-		print self.consultation_progress
-
-		print self.nr_appointments
-		print self.nr_consultations
-		print self.nr_budgets_cons
-		print self.nr_invoices_cons
-		print self.nr_services
-		print self.nr_services_co2
-		print self.nr_services_excilite
-		print self.nr_services_ipl
-		print self.nr_services_ndyag
-		print self.nr_services_quick
-		print self.nr_services_medical
-		print self.nr_services_cosmetology
-		print self.nr_services_vip
-		print self.nr_services_product
-
-		print self.nr_controls
-		print self.nr_sessions
-		print self.nr_procedures
-
-
-		t1 = timer()
-
-		self.delta_1 = t1 - t0
-
-		print self.delta_1
-
-	# test_computes
-
-
-
-# ----------------------------------------------------------- Testing - Treatment Unit ------------------------------------------------------
-
-	# Treatment - Unit  
-	@api.multi 
+# ----------------------------------------------------------- Testing Unit ------------------------
+	# Treatment - Unit
+	@api.multi
 	def test_unit(self):
-		if self.patient.x_test: 
+		if self.patient.x_test:
 			#self.test()
 			self.test_creates()
 
 
-# ----------------------------------------------------------- Test ------------------------------------------------------
+# ----------------------------------------------------------- Test --------------------------------
 	# Test
 	@api.multi
 	def test(self):
-		print 
-		print 'Treatment - Test'
+		#print
+		#print 'Treatment - Test'
+
 		#self.test_computes()
-
 		self.test_reset()
-
 		self.test_integration()
-
 		self.test_case_reports()
-
-

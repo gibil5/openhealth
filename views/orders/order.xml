@@ -184,12 +184,16 @@
                                                                         'readonly': [
                                                                                         ('x_admin_mode', '!=', True), 
                                                                                     ], 
-                                                                }"  
+                                                            }"
                                                 />
 
                     <field name="vspace"/>
 
-                    <field name="x_payment_method"/>
+
+
+                    <field name="x_payment_method"      attrs="{'readonly': [('x_admin_mode', '!=', True),],}"/>
+
+
 
                     <field name="x_type"
                                                         attrs="{     
@@ -198,6 +202,7 @@
                                                                                     ], 
                                                                 }"  
                                         />
+
 
                     <field name="x_type_code"           groups="openhealth.roots"/>
 <!--
@@ -733,14 +738,16 @@ Look for the Minimalist experience !!!
                         "
                     >
 
-                    <field name="name"          string="Referencia"     />
+                    <field name="name"          string="Referencia"/>
                     
-                    <field name="x_type" />
+                    <field name="x_type"/>
                     <field name="state"/>
                     
-                    <field name="x_serial_nr" />
+                    <field name="x_serial_nr"/>
+                    <field name="x_counter_value"/>
 
-                    <field name="x_delta" />
+                    <field name="x_delta"/>
+
 <!--                    
                     <field name="x_checksum"    />
                     <field name="x_pm_total"    groups="openhealth.roots"   />

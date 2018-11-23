@@ -4,19 +4,20 @@
 
 
 
-<!-- Quality Control --> 
+<!-- Main Quality Control --> 
 <menuitem   id="main_qc_menu" 
-            sequence="0"
+            
+            sequence="-8"
 
-            name="QC"
+            name="Quality"
 
-            groups="openhealth.roots,openhealth.directors"
+            groups="openhealth.roots"
         />
 
 
 
 
-<!-- Sales --> 
+        <!-- Sales --> 
         <menuitem   id="qc_sales_menu" 
                     parent="main_qc_menu"
                     sequence="1"
@@ -25,10 +26,21 @@
                 />
 
 
+            <!-- Checksum -->           
+            <menuitem   id="qc_sales_all_checksum_menu" 
+                        parent="qc_sales_menu"
+                        sequence="1"
+
+                        name="Checksum" 
+
+                        action="order_list_checksum_action"
+                    />
+
+
             <!-- Delta -->          
             <menuitem   id="qc_sales_all_delta_menu" 
                         parent="qc_sales_menu"
-                        sequence="6"
+                        sequence="2"
 
                         name="Delta" 
 
@@ -36,15 +48,6 @@
                     />
 
 
-            <!-- Checksum -->           
-            <menuitem   id="qc_sales_all_checksum_menu" 
-                        parent="qc_sales_menu"
-                        sequence="7"
-
-                        name="Checksum" 
-
-                        action="order_list_checksum_action"
-                    />
 
 
     </data>

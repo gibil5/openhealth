@@ -427,24 +427,6 @@ class Container(models.Model):
 
 # ----------------------------------------------------------- Actions -----------------------------
 
-	# QC
-	@api.multi
-	def test_qc(self):
-		"""
-		high level support for doing this and that.
-		"""
-		#print
-		#print 'Test - Qc'
-
-		# Gap Analysis
-		self.mgt.update_qc('ticket_receipt')
-		self.mgt.update_qc('receipt')
-		self.mgt.update_qc('ticket_invoice')
-
-	# test_qc
-
-
-
 	# Clear
 	@api.multi
 	def clear(self):
@@ -470,3 +452,26 @@ class Container(models.Model):
 		self.receipt_count = 0
 
 	# clear
+
+
+
+# ----------------------------------------------------------- Actions -----------------------------
+	# QC
+	@api.multi
+	def test_qc(self):
+		"""
+		high level support for doing this and that.
+		"""
+		#print
+		#print 'Test - Qc'
+
+
+		# Gap and Checksum
+		self.mgt.update_qc('ticket_receipt')
+		self.mgt.update_qc('ticket_invoice')
+		#self.mgt.update_qc('receipt')
+
+
+
+	# test_qc
+

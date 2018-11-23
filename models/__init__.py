@@ -118,8 +118,9 @@ from . import session_med
 # New
 from . import product_pricelist_item
 
-from . import filesystem_directory
-from . import filesystem_file
+# Deprecated
+#from . import filesystem_directory
+#from . import filesystem_file
 
 
 

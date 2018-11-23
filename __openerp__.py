@@ -14,10 +14,10 @@
 
 	'description': """
 
-		22 Nov 2018
+		23 Nov 2018
 
-		Fulcrum - DEV - DOCEAN - PROLIANT
-		
+		Fulcrum - DEV - DOCEAN - PROLIANT - TRAVIS
+
 		Code without Tests is broken by design. Jacob Kaplan-Moss
 		
 		Zero Maintenance is Perfection. 
@@ -296,10 +296,11 @@
 		'data/prods/odoo_data_services_cos.xml',
 		
 
-		'data/prods/odoo_data_services_med_dep.xml',
-		'data/prods/odoo_data_services_cos_dep.xml',
+		'data/prods/odoo_data_services_med_dep.xml',	# Dependance
+		#'data/prods/odoo_data_services_cos_dep.xml', 	# Dependance ?
 
-		#'data/prods/odoo_data_products_consu.xml',
+
+		#'data/prods/odoo_data_products_consu.xml',		# Deprecated
 
 
 
@@ -317,8 +318,9 @@
 		#'data/pricelists/pricelist_products.xml',
 
 
+
 		# Suppliers 
-		#'data/suppliers.xml',							# DEPRECATED - Very 
+		'data/suppliers.xml',							# Very Important - Account Invoice Dependance
 
 
 

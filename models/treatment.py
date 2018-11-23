@@ -33,6 +33,14 @@ class Treatment(models.Model):
 		)
 
 
+# ----------------------------------------------------------- Optimization ------------------------
+	delta_1 = fields.Float(
+			'Delta 1', 
+		)
+
+	delta_2 = fields.Float(
+			'Delta 2', 
+		)
 
 
 # ----------------------------------------------------------- Test Integration --------------------
@@ -1749,18 +1757,12 @@ class Treatment(models.Model):
 	def test(self):
 		print 
 		print 'Treatment - Test'
+		#self.test_computes()
 
-		self.test_computes()
+		self.test_reset()
+
+		self.test_integration()
+
+		self.test_case_reports()
 
 
-
-
-# ----------------------------------------------------------- Optimization ------------------------------------------------------
-	
-	delta_1 = fields.Float(
-			'Delta 1', 
-		)
-
-	delta_2 = fields.Float(
-			'Delta 2', 
-		)

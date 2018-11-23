@@ -4,23 +4,12 @@
 
 
 
-<!-- Menus --> 
+<!-- Main - Caja -->
+<menuitem   id="main_sales_menu" 
+            sequence="-9"
 
-
-<!--
-groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
--->
-
-
-<!-- Caja -->
-
-
-        <!-- Main - sales -->
-        <menuitem   id="main_sales_menu" 
-                    sequence="-9"
-
-                    name="Caja"
-                />
+            name="Caja"
+        />
 
 
 

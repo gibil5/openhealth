@@ -5,6 +5,7 @@
 
 
         <!--  -->
+        <!--
         <record id='' model='product.template'>
 
             <field name='name'></field>
@@ -23,7 +24,7 @@
 
             <field name='categ_id' ref="topical"/>
         </record>
-
+        -->
 
 
         <record id='fillderma_ultra' model='product.template'>

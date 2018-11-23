@@ -600,7 +600,8 @@ class Management(models.Model):
 
 		# Loop
 		for order in orders:
-			# Serial Nr
+
+			# Gap
 			serial_nr = int(order.x_serial_nr.split('-')[1])
 			if serial_nr_last != 0:
 				delta = serial_nr - serial_nr_last
@@ -611,7 +612,13 @@ class Management(models.Model):
 			order.x_delta = delta
 			# Update Counter Value
 			#order.x_counter_value = int(order.x_serial_nr.split('-')[1])
+
+
+			# Checksum
+			order.checksum()
+
 	# update_qc
+
 
 
 # ----------------------------------------------------------- Electronic - Clear ------------------

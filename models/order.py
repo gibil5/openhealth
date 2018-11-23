@@ -16,18 +16,75 @@ import creates
 import pat_vars
 import user
 import lib
-import lib_con
 import lib_qr
 import chk_patient
 import chk_order
-
 import test_order
+#import lib_con
 
 class sale_order(models.Model):
 	"""
 	high level support for doing this and that.
 	"""
 	_inherit = 'sale.order'
+
+
+
+# ----------------------------------------------------------- Checksum ----------------------------
+	# Checksum 
+	x_checksum = fields.Float(
+			'Checksum', 
+			readonly=True,
+
+			default = 5,
+		)
+
+
+	# Checksum Func
+	@api.multi 
+	def checksum(self):
+		#print
+		#print 'Check Sum'
+
+		self.check_payment_method()
+
+		#self.x_checksum = self.amount_total - self.x_pm_total 
+
+		#delta = self.amount_total - self.x_pm_total
+		delta = int(self.amount_total) - int(self.x_pm_total)
+
+		#print delta
+
+		if delta != 0:
+			self.x_checksum = 1
+		else:
+			self.x_checksum = 0
+
+
+
+
+	# Pm Total 
+	x_pm_total = fields.Float(
+			'Total MP', 
+			readonly=True, 
+		)
+
+	# Check payment method
+	@api.multi 
+	def check_payment_method(self):
+		#print
+		#print 'Check Payment Method'
+		pm_total = 0 
+		
+		for pm in self.x_payment_method.pm_line_ids: 
+			pm_total = pm_total + pm.subtotal
+		
+		self.x_pm_total = pm_total
+		
+		#if self.x_pm_total != self.amount_total:
+		#	msg = 'Error: Verificar la Forma de Pago.'
+		#	raise Warning(_(msg))
+
 
 
 
@@ -45,17 +102,12 @@ class sale_order(models.Model):
 		)
 
 
-
-
-
-
-
 # ----------------------------------------------------------- Constraints - Sql -------------------
 	# Uniqueness constraints for:
 	# Serial Number
 	_sql_constraints = [
-							('x_serial_nr','unique(x_serial_nr)', 'SQL Warning: x_serial_nr must be unique !'),
-				]
+				('x_serial_nr','unique(x_serial_nr)', 'SQL Warning: x_serial_nr must be unique !'),
+			]
 
 
 
@@ -172,8 +224,8 @@ class sale_order(models.Model):
 
 
 	def get_credit_note_type(self):
-		print
-		print 'Get Credit Note Type'
+		#print
+		#print 'Get Credit Note Type'
 
 		_dic_cn = {
 					'cancel':	'Anulación',
@@ -190,15 +242,15 @@ class sale_order(models.Model):
 # ----------------------------------------------------------- Electronic - Getters ----------------
 
 	def get_patient_address(self):
-		print
-		print 'Get Patient Address'
+		#print
+		#print 'Get Patient Address'
 		return self.partner_id.x_address
 
 
 
 	def get_firm_address(self):
-		print
-		print 'Get Firm Address'
+		#print
+		#print 'Get Firm Address'
 		#return self.partner_id.x_firm_address
 		return self.partner_id.x_address
 
@@ -308,19 +360,26 @@ class sale_order(models.Model):
 	# Correct payment method
 	@api.multi
 	def correct_pm(self):
-		print
-		print 'Correct Payment Method'
+		#print
+		#print 'Correct Payment Method'
 
 		#order_id = self.id
 
+
 		if self.x_payment_method.name == False:
-			
 			#print 'Create'
 			self.x_payment_method = self.env['openhealth.payment_method'].create({
 																					'order': 	self.id,
+
+																					'partner':	self.partner_id.id,
+																					'total':	self.amount_total,
 				})
+
+
+		#print self.x_payment_method
 		
 		res_id = self.x_payment_method.id
+
 
 		return {
 			# Mandatory
@@ -460,8 +519,8 @@ class sale_order(models.Model):
 	# Patient  
 	@api.onchange('patient')
 	def _onchange_patient(self):	
-		print 
-		print 'On Change Patient'
+		#print
+		#print 'On Change Patient'
 
 		if self.patient.name != False: 
 
@@ -470,29 +529,21 @@ class sale_order(models.Model):
 			self.partner_id = self.patient.partner_id.id 
 
 
-			print self.patient.x_id_doc
-			print self.patient.x_id_doc_type
-			#print self.patient.x_dni + '.'
+			#print self.patient.x_id_doc
+			#print self.patient.x_id_doc_type
 
 
 			# Id Doc 
-			if self.patient.x_id_doc != False: 
-				
-				print 'Mark 1'
-				
+			if self.patient.x_id_doc != False:
 				self.x_id_doc = self.patient.x_id_doc
 				self.x_id_doc_type = self.patient.x_id_doc_type
 
+
 			# Get x Dni 
-			#elif self.patient.x_dni != '': 
-			elif self.patient.x_dni not in [False, '']: 
-				
-				print 'Mark 2'
-				
+			elif self.patient.x_dni not in [False, '']:				
 				self.x_id_doc = self.patient.x_dni
 				self.x_id_doc_type = 'dni'
 				self.x_dni = self.patient.x_dni
-
 
 				# Update Patient - Dep 
 				#self.x_msg = '1'
@@ -501,8 +552,7 @@ class sale_order(models.Model):
 
 
 			# Ruc 				
-			if self.patient.x_ruc != False: 
-				print 'Mark 3'
+			if self.patient.x_ruc != False:
 				self.x_ruc = self.patient.x_ruc
 
 
@@ -538,53 +588,6 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Check - Pm Total --------------------
-
-	# Pm Total 
-	x_pm_total = fields.Float(
-			'Total MP', 
-			readonly=True, 
-		)
-
-
-	# Checksum 
-	x_checksum = fields.Float(
-			'Checksum', 
-			readonly=True, 
-			default = -1, 
-		)
-
-
-	# Check payment method 
-	@api.multi 
-	def check_payment_method(self):
-
-		#print 
-		#print 'Check Payment Method'
-
-		pm_total = 0 
-		for pm in self.x_payment_method.pm_line_ids: 
-			pm_total = pm_total + pm.subtotal
-		self.x_pm_total = pm_total
-
-		#if self.x_pm_total != self.amount_total:
-		#	msg = 'Error: Verificar la Forma de Pago.'
-		#	raise Warning(_(msg))
-
-
-
-
-	# Check Sum 
-	@api.multi 
-	def check_sum(self):
-
-		#print 
-		#print 'Check Sum'
-
-		self.x_checksum = self.amount_total - self.x_pm_total 
-
-
-
 
 # ----------------------------------------------------------- Check - Content ---------------------
 
@@ -594,8 +597,8 @@ class sale_order(models.Model):
 	# Check Content 
 	@api.multi 
 	def check_content(self):
-		print 
-		print 'Check Content'
+		#print
+		#print 'Check Content'
 
 		#self.x_dni = self.partner_id.x_dni
 		#self.x_ruc = self.partner_id.x_ruc
@@ -616,7 +619,7 @@ class sale_order(models.Model):
 		# Dni - Generalize, to accept other docs (passport, foreign card, ptp)
 		if self.x_type in ['ticket_receipt', 'receipt']: 
 
-			print 'Receipt'
+			#print 'Receipt'
 
 			# Test 
 
@@ -649,8 +652,8 @@ class sale_order(models.Model):
 		# Ruc
 		elif self.x_type in ['ticket_invoice', 'invoice']: 
 
-			print 'Invoice'
-			print self.x_ruc
+			#print 'Invoice'
+			#print self.x_ruc
 			
 
 			# Test 
@@ -676,8 +679,8 @@ class sale_order(models.Model):
 	# Action confirm 
 	@api.multi 
 	def validate(self):
-		print
-		print 'Validate'
+		#print
+		#print 'Validate'
 
 
 		# Payment method validation
@@ -733,9 +736,9 @@ class sale_order(models.Model):
 		#self.check_content()
 
 		# Id Doc and Ruc
-		print self.x_type
-		print self.x_id_doc
-		print self.x_ruc
+		#print self.x_type
+		#print self.x_id_doc
+		#print self.x_ruc
 
 		# Invoice
 		if self.x_type in ['ticket_invoice', 'invoice']:
@@ -785,8 +788,8 @@ class sale_order(models.Model):
 	# Action confirm 
 	@api.multi 
 	def action_confirm_nex(self):
-		print 
-		print 'Action confirm - Nex'
+		#print
+		#print 'Action confirm - Nex'
 
 		
 		#Write your logic here - Begin
@@ -844,18 +847,8 @@ class sale_order(models.Model):
 	# Duplicate
 	@api.multi
 	def create_credit_note(self):
-		print
-		print 'Create CN'
-
-		# Serial Nr
-		#if self.x_type in ['ticket_invoice', 'invoice']:
-		#	serial_nr = self.x_serial_nr.replace("F001", "FC01")
-		
-		#elif self.x_type in ['ticket_receipt', 'receipt']:
-		#	serial_nr = self.x_serial_nr.replace("B001", "BC01")
-		
-		#else:
-		#	serial_nr = self.x_serial_nr.replace("001", "C01")
+		#print
+		#print 'Create CN'
 
 
 		# State
@@ -865,7 +858,6 @@ class sale_order(models.Model):
 		counter_value = user.get_counter_value(self, self.x_type, state)
 
 		# Serial Nr
-		#serial_nr = user.get_serial_nr(self.x_type, counter_value)
 		serial_nr = user.get_serial_nr(self.x_type, counter_value, state)
 
 
@@ -1023,11 +1015,10 @@ class sale_order(models.Model):
 			string="Pago", 
 
 			states={	
-					'draft': [('readonly', False)], 
-					'sent': [('readonly', False)], 
-					'sale': [('readonly', True)], 
-					
-					#'editable': [('readonly', False)], 
+					'draft': [('readonly', False)],
+					'sent': [('readonly', False)],
+					#'sale': [('readonly', True)],
+					'sale': [('readonly', False)],
 				}, 
 		)
 
@@ -1697,8 +1688,8 @@ class sale_order(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		print 
-		print 'Order - Test - Interface'
+		#print
+		#print 'Order - Test - Interface'
 		test_order.test(self)
 
 
@@ -1708,8 +1699,8 @@ class sale_order(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		print 
-		print 'Order - Pay myself - Interface'
+		#print
+		#print 'Order - Pay myself - Interface'
 		test_order.pay_myself(self)
 
 

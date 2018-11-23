@@ -123,6 +123,20 @@
 
 
 
+                        <!-- Test --> 
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+                            name="test" 
+
+                            string="TEST" 
+
+                            groups="openhealth.roots"
+                        />
+
+
+
+
                         <!-- Create Appointment --> 
                         <button 
                             class="oe_highlight"
@@ -331,29 +345,9 @@
 
 
 
-
-
-
-
-
-
-
-                        <!-- Test --> 
-                        <button 
-                            type="object" 
-                            class="oe_highlight"
-                            name="test" 
-
-                            string="Test" 
-
-                            groups="openhealth.roots"
-                        />
-
-
                         <!-- State --> 
                         <field  name="state" 
                                 widget="statusbar" 
-
 
                                 statusbar_visible="appointment, invoice_consultation, consultation, service, budget_procedure, invoice_procedure, procedure, sessions, controls, done"
                         />

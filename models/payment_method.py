@@ -262,12 +262,14 @@ class PaymentMethod(models.Model):
 			readonly=True, 
 		)
 
+
 	# Date created 
 	date_created = fields.Datetime(
-			string="Fecha", 
-			required=True, 
-			#states=READONLY_STATES, 
+			string="Fecha",
+
+			#required=True,
 		)
+
 
 	# Partner 
 	partner = fields.Many2one(

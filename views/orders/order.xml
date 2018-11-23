@@ -10,23 +10,17 @@
             <field name="model">sale.order</field>          
             <field name="inherit_id" ref="sale.view_order_form"/>   
             <field name="mode">primary</field>
-<!--
-            <field name="priority" eval="100"/>
--->
             <field name="priority" eval="1"/>
 
             <field name="arch" type="xml">
 
 
-<!--
-                            statusbar_visible="draft, sent, sale, editable"
-                            statusbar_visible="draft, verified, sent, sale, editable"
--->
+
+
                 <!-- Status Bar --> 
                 <xpath expr="//field[@name='state']" position="replace">
                     <field  name="state" 
-                            widget="statusbar" 
-                            
+                            widget="statusbar"                            
                             statusbar_visible="draft, verified, sent, sale"
                     />
                 </xpath>
@@ -63,9 +57,6 @@
                 <xpath expr="//button[@name='action_confirm']" position="replace">
                 </xpath>
 
-
-
-
                 <!-- OLD Buttons - DEPRECATED --> 
                 <xpath expr="//button[@type='action']" position="replace">
                 </xpath>
@@ -79,17 +70,15 @@
 
 
 <!-- REDEFINE -->
-<!--
-                            name="action_confirm"
--->
-                <!-- Confirm -->
+
+                <!-- Redefine -->
                 <xpath expr="//button[@name='action_confirm']" position="replace">
 
 
+                    <!-- Validate -->
                     <button 
                             type="object" 
                             class="oe_highlight"
-
                             name="validate"
 
                             string="Validar"                            
@@ -98,10 +87,10 @@
                     />
 
 
+                    <!-- Confirm -->
                     <button 
                             type="object" 
                             class="oe_highlight"
-
                             name="action_confirm_nex"
 
                             string="CONFIRMAR"
@@ -110,37 +99,11 @@
                     />
 
 
-<!--
+
+                    <!-- Correct -->
                     <button 
                             type="object" 
                             class="oe_highlight"
-
-                            name="create_procedure_wapp"
-
-                            string="Create Proc"        
-
-                            groups="openhealth.roots"
-                    />
--->
-<!--
-                    <button 
-                            type="object" 
-                            class="oe_highlight"
-                            name="test"
-
-                            string="Test"       
-
-                            groups="openhealth.roots"
-                    />
--->
-<!--
-jx
--->
-
-                    <button 
-                            type="object" 
-                            class="oe_highlight"
-
                             name="correct_pm"
 
                             string="Corregir"
@@ -155,10 +118,9 @@ jx
                             name="cancel_order"     
                             type="object" 
                             class="oe_highlight"    
+                            groups="openhealth.roots,openhealth.caja,openhealth.managers,openhealth.directors"
 
                             string="Anular"
-
-                            groups="openhealth.roots,openhealth.caja,openhealth.managers,openhealth.directors"
 
                             states="sale"                       
                     />
@@ -169,20 +131,16 @@ jx
                     <button 
                             type="object" 
                             class="oe_highlight"    
-
                             name="activate_order"   
+                            groups="openhealth.roots,openhealth.caja,openhealth.managers,openhealth.directors"
 
                             string="Activar"
-
-                            groups="openhealth.roots"
 
                             states="cancel"                     
                     />
 
 
                     <!-- Create CN -->
-                    <!--
-                    -->
                     <button
                             type="object"
                             class="oe_highlight"
@@ -194,43 +152,18 @@ jx
                     />
 
 
-
-
-                    <!-- Serial Nr -->
-                    <!--
-                    <button 
-                            type="object"
-                            class="oe_highlight"
-                            string="Fix Serial Nr"
-                            name="fix_serial_nr"
-                            groups="openhealth.roots"
-                    />
-                    -->
-
-
-
-                    <!-- Make QR -->
-<!--
+                    <!-- Checksum -->
                     <button
                             type="object"
                             class="oe_highlight"
-                            string="Make QR"
-                            name="make_qr"
-                            groups="openhealth.roots"
+                            
+                            name="checksum"
+
+                            string="CHECKSUM"
+
+                            states="sale,cancel"                     
                     />
--->
-
                 </xpath>
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -245,10 +178,6 @@ jx
 
                     <field name="vspace"/>
 
-<!--
-                    <field name="date_order"            string="Fecha"      readonly="0"    />
--->
-
                     <field name="date_order"            string="Fecha"
 
                                                         attrs="{     
@@ -258,19 +187,10 @@ jx
                                                                 }"  
                                                 />
 
-
-
                     <field name="vspace"/>
 
+                    <field name="x_payment_method"/>
 
-
-                    <field name="x_payment_method"      readonly="1"    />
-
-
-
-<!--
-                    <field name="x_type"/>
--->
                     <field name="x_type"
                                                         attrs="{     
                                                                         'readonly': [
@@ -279,21 +199,12 @@ jx
                                                                 }"  
                                         />
 
-
-
-
-
                     <field name="x_type_code"           groups="openhealth.roots"/>
-
+<!--
                     <field name="x_pm_total"/>
-
+-->
                     <field name="vspace"/>
 
-
-
-<!--                    
-                    <field name="x_serial_nr"/>
--->
                     <field name="x_serial_nr"       attrs="{     
                                                                         'readonly': [
                                                                                         ('x_admin_mode', '!=', True), 
@@ -302,11 +213,6 @@ jx
 
                             />
 
-
-
-<!--
-                    <field name="x_counter_value"       groups="openhealth.roots"   />
--->
                     <field name="x_counter_value"       groups="openhealth.roots"   
 
                                                         attrs="{     
@@ -316,25 +222,10 @@ jx
                                                                 }"  
                         />
 
-
                     <field name="vspace"/>
-
-
 
                     <field name="x_electronic"          groups="openhealth.roots"/>
 
-
-
-<!--
-                    <field name="x_sale_document_type"  invisible="1"   readonly="1"    />
-                    <field name="vspace"/>
-                    <field name="x_sale_document"/>
-                    <field name="vspace" />
-                    <field name="x_amount_total" />
-                    <field name="pm_total" />
-                    <field name="x_payment_complete" />
-                    <field name="vspace" />
--->         
                 </xpath>
 
 
@@ -345,15 +236,12 @@ jx
                 <!-- Price list --> 
                 <xpath expr="//field[@name='pricelist_id']" position="replace">
 
+                    <field name="x_checksum"                groups="openhealth.roots"/>
+                    <field name="x_pm_total"                groups="openhealth.roots"/>
 
                     <field name="x_admin_mode"              groups="openhealth.roots, openhealth.managers, openhealth.caja"/>
-
-<!--
-                    <field name="x_prefix"/>
-                    <field name="x_separator"/>
-                    <field name="x_padding"/>
--->
-                    <field name="pricelist_id"              readonly="1"    />
+                    
+                    <field name="pricelist_id"              readonly="1"/>
                 </xpath>
 
 
@@ -389,23 +277,6 @@ jx
                 
 
 
-                    <!-- Print --> 
-<!--                    
-                    <button 
-                            type="object" 
-                            class="oe_highlight"
-                            attrs="{'invisible':[   '|',
-                                                    ('x_type','not in',['ticket_invoice','ticket_receipt']), 
-                                                    ('state','not in',['sale']), 
-                                            ]}"
-
-                            groups="openhealth.roots, openhealth.caja, openhealth.managers"
-                            
-                            name="print_ticket"
-                            
-                            string="Imprimir - ANT"
-                        />
--->
 
 
 
@@ -413,15 +284,12 @@ jx
                     <button 
                             type="object"
                             class="oe_highlight"
-
                             attrs="{'invisible':[   '|',
                                                     ('x_type','not in',['ticket_invoice','ticket_receipt']),
                                                     ('state','not in',['sale', 'credit_note']), 
                                             ]}"
-
-                            groups="openhealth.roots, openhealth.caja, openhealth.managers"
-
                             name="print_ticket_electronic"
+                            groups="openhealth.roots, openhealth.caja, openhealth.managers"
 
                             string="Imprimir - Electrónico"
                         />
@@ -434,43 +302,34 @@ jx
 
 
 
-
-                    <!-- Add Prod -->
 <!--
-                            groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors,openhealth.physicians"
-                            context="{'x_type': 'product'}"
---> 
+                    groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors,openhealth.physicians,openhealth.managers"
+-->
+                    <!-- Add Prod -->
                     <button 
                             type="object" 
                             class="oe_highlight"
-
                             name="open_product_selector_product"                            
-                            
-                            states="draft"                      
 
                             string="Agregar PRODUCTO"
 
-                    groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors,openhealth.physicians,openhealth.managers"
+                            states="draft"                      
                         />
 
 
 
-                    <!-- Add Serv -->
 <!--
-                            groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors,openhealth.physicians"
-                            context="{'x_type': 'service'}"
+                    groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors,openhealth.physicians,openhealth.managers"
 --> 
+                    <!-- Add Serv -->
                     <button 
                             type="object" 
                             class="oe_highlight"
-
                             name="open_product_selector_service"
-
-                            states="draft"                      
 
                             string="Agregar SERVICIO"
 
-                    groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors,openhealth.physicians,openhealth.managers"
+                            states="draft"
                         />
 
 
@@ -482,11 +341,11 @@ jx
                             name="create_payment_method"
                             type="object" 
                             class="oe_highlight"
-                            states="draft"                      
+                            groups="openhealth.roots,openhealth.caja,openhealth.directors"
 
                             string="PAGAR"
 
-                            groups="openhealth.roots,openhealth.caja,openhealth.directors"
+                            states="draft"                      
                         />
                 </xpath>
 
@@ -556,54 +415,33 @@ jx
                 </field>
 
 
-
-
-
-
                 <!-- Partner --> 
                 <field name="partner_id" position="replace">
-<!--
-                    <field name="partner_id"    groups="openhealth.roots"           />
-                    <field name="patient"                   options="{'no_create': True, 'no_create_edit':True}"        />
--->
                     <field name="patient"       required="1"            options="{'no_create': False, 'no_create_edit':True}"       />
-<!--
--->
                 </field>
-
 
 
                 <!-- Dni --> 
                 <field name="patient" position="before">
-
-
                     <field name="x_credit_note"         attrs="{'invisible':[('state', 'not in', ['cancel'])]}"/>
-                    <field name="x_credit_note_type"    attrs="{'invisible':[('state', 'not in', ['credit_note'])]}"    />
-                    <field name="x_credit_note_owner"   attrs="{'invisible':[('state', 'not in', ['credit_note'])]}"    />
-
-
+                    <field name="x_credit_note_type"    attrs="{'invisible':[('state', 'not in', ['credit_note'])]}"/>
+                    <field name="x_credit_note_owner"   attrs="{'invisible':[('state', 'not in', ['credit_note'])]}"/>
                     <field name="vspace"/>
+                    
                     <field name="x_partner_dni"
                                                             attrs="{
                                                                         'readonly':[('patient', '!=', False)], 
                                                                 }"
                         />
+                    
                     <field name="vspace"/>
                 </field>
 
-<!--
-                    <field name="x_dni"     groups="openhealth.roots"               />
-                    <field name="x_ruc"     groups="openhealth.roots"   />
--->
+
+
+                <!-- Id Docs -->
                 <field name="patient" position="after"  >
 
-
-
-<!--
-                    <field name="x_id_doc_type"     readonly="1"/>
-
-                    <field name="x_id_doc"          readonly="1"/>
--->
                     <field name="x_id_doc_type"     
                                                         attrs="{
                                                                         'required':[('x_type', 'not in', ['ticket_invoice', 'invoice'])], 
@@ -617,39 +455,23 @@ jx
 
                         />
 
-
-
-
                     <field name="x_dni"/>
 
-
-
                     <field name="vspace"/>
-                    
 
                     <field name="x_ruc"
                                                         attrs="{
                                                                         'required':[('x_type', 'in', ['ticket_invoice', 'invoice'])], 
                                                                 }"
                         />
-
                 </field>
 
 
 
                 <!-- New Natives --> 
-<!--
-                <field name="patient" position="after">
--->             
                 <field name="x_ruc" position="after">
+
                     <field name="vspace"/>
-
-
-
-
-<!--
-                    <field name="x_doctor"      required="1"        options="{'no_create': True, 'no_create_edit':True}"            />
--->
 
                     <field name="x_doctor"      required="1"        options="{'no_create': True, 'no_create_edit':True}"            
 
@@ -661,11 +483,7 @@ jx
                                                                         }"  
                                         />
 
-
-
-
                     <field name="vspace"/>
-
 
                     <field name="treatment"         
                                                                     attrs="{     
@@ -676,7 +494,6 @@ jx
 
                         />
 
-
                     <field name="vspace"/>
 
                     <field name="x_family"      readonly="1"    />
@@ -686,19 +503,14 @@ jx
 
 
 
-
-
-                <!-- Buttons - Cancel, Activate, Reset, Etc --> 
+                <!-- Buttons - Post Mortem --> 
                 <field name="amount_total" position="after">                        
                         <group class="oe_left"  style="width: 600px;">
                             <group col='5'      groups="openhealth.roots,openhealth.caja,openhealth.directors">
 
 
-
-
-
-
-                                <!-- Cancelled -->
+                                <!-- Cancel Boolean -->
+                                <!--
                                 <group>
                                     <field 
                                             name="x_cancel" 
@@ -707,19 +519,17 @@ jx
 
                                             groups="openhealth.roots,openhealth.caja,openhealth.managers,openhealth.directors" />
                                 </group>
-
+                                -->
 
 
                                 <!-- Reset --> 
                                 <button 
                                         type="object" 
                                         class="oe_highlight"
-                                        
                                         name="reset"
+                                        groups="openhealth.roots"
 
                                         string="Reset"
-
-                                        groups="openhealth.roots"
                                 />
 
 
@@ -729,15 +539,15 @@ jx
                                             name="remove_myself"    
                                             type="object" 
                                             class="oe_highlight"
-                                            string="Remove"
                                             groups="openhealth.roots"
+
+                                            string="Remove"
                                     />
+
                                 </group>
                             </group>
                         </group>
                 </field>
-
-
 
 
 
@@ -749,24 +559,9 @@ jx
 </xpath>
 
 
-
 <!-- Order Lines  -->
 <!-- Must be ReadOnly for: Sale and Cancel -->
 <xpath expr="//field[@name='order_line']" position="attributes">
-
-<!--
-<attribute name='readonly'>1</attribute> 
-attrs="{'readonly': [('state', 'in', ('done','cancel'))]}">
-    <attribute name='readonly'>1</attribute> 
-    <attribute name='attrs'>{'readonly': [('state', 'in', ('sent','sale','done','cancel'))]}</attribute> 
-    <attribute name='attrs'>{'readonly': [('state', 'in', ('done','cancel'))]}</attribute> 
--->
-
-
-<!--
-    <attribute name='attrs'>{'readonly': [('state', 'in', ('sent','sale','done','cancel'))]}</attribute> 
-    <attribute name='attrs'>{'readonly': [('state', 'in', ('sale','cancel'))]}</attribute>
--->
 
     <attribute name='attrs'>{'readonly': [('state', 'in', ('sale','cancel','sent','validated'))]}</attribute>
 </xpath>
@@ -774,32 +569,15 @@ attrs="{'readonly': [('state', 'in', ('done','cancel'))]}">
 
 
 
-<!--
-<xpath expr="//tree[@string='Sales Order Lines']/field[@name='name']" position="after">
-    <field name="display_name"/>
--->
-<!--
--->
-
-
 
 
 
 <!-- Hide --> 
-<!--
-<xpath expr="//tree/field[@name='price_unit']" position="replace">
-    <field name="price_unit"    readonly="1"            />
-</xpath>
--->
-
 <xpath expr="//tree/field[@name='tax_id']" position="replace">
     <field name="tax_id"    readonly="1"        invisible="1"       />
 </xpath>
 
 <xpath expr="//tree/field[@name='name']" position="replace">
-<!--
-    <field name="name"  readonly="1"    invisible="1"       />
--->
     <field name="name"  readonly="0"    invisible="0"       />
 </xpath>
 
@@ -807,53 +585,14 @@ attrs="{'readonly': [('state', 'in', ('done','cancel'))]}">
 
 
 
-
-
 <!-- Change --> 
 <xpath expr="//tree/field[@name='product_id']" position="replace">
-
-<!--
-    <field name="product_id"        options="{'no_create':False, 'no_create_edit':True}"    />
-
-    <field name="product_id"        options="{'no_create': True, 'no_create_edit':True}"    />
--->
-
-
-    <!-- Quick Button -->
-<!--
-        groups="openhealth.roots"
-    <button 
-        type="object" 
-        class="oe_highlight"    
-        string="E"
-        
-        name="open_line_current" 
-    />
--->
-
-
     <field name="product_id"    options="{'no_create': True, 'no_create_edit':True}"/>
 </xpath>
 
 
 
-
-
-
-
-
-
-<!-- Add --> 
-<!--
-<xpath expr="//tree/field[@name='name']" position="after">
-    <field name="x_price_manual"/>
-</xpath>
-<xpath expr="//tree/field[@name='product_uom_qty']" position="after">
-    <field name="x_qty"/>
-</xpath>
--->
-
-
+<!-- Add -->
 
 <!-- Short name --> 
 <xpath expr="//tree/field[@name='name']" position="after">
@@ -864,53 +603,32 @@ attrs="{'readonly': [('state', 'in', ('done','cancel'))]}">
 
 
 
-
-
 <!-- 
 Chatter - Deprecated !!!
 Look for the Minimalist experience !!!
--->
-<!--
-                <div class="oe_chatter">
-                    <field name="message_follower_ids" widget="mail_followers"/>
-                    <field name="message_ids" widget="mail_thread"/>
-                </div>
 -->
                 <field name="message_follower_ids" position="replace">
                 </field>
 
 
-                
+                <!-- QR -->
                 <field name="message_ids" position="replace">
-
                     <group col="1">
-
                         <group>
                             <field name="x_qr_data"/>
                         </group>
-
                     </group>
-
                     <group col="1">
-
                         <group>
                             <field name="x_qr_img" widget="image"/>
                         </group>
-
                     </group>
-
                 </field>
 
 
-
-                <!-- Image -->
-                <!--
-                <field name="x_image" widget="image"/>
-                -->
-
             </field>
         </record>
-        
+        <!-- END -->
         
 
 
@@ -923,8 +641,6 @@ Look for the Minimalist experience !!!
             <field name="model">sale.order</field>
             <field name="arch" type="xml">
 
-
-
                 <tree string="Order Tree"
 
                         colors="
@@ -935,121 +651,62 @@ Look for the Minimalist experience !!!
                         "
                     >
 
-
                     <field name="name"          string="Referencia"/>
                     <field name="date_order"    string="Fecha"/>
                     <field name="x_serial_nr" />
                     <field name="x_counter_value"   groups="openhealth.roots"/>
-
-
                     <field name="x_electronic"  groups="openhealth.roots"/>
                     
 
-                    <field name="x_payment_method"  groups="openhealth.roots"/>
+                    <field name="x_payment_method"/>
+                    <field name="x_checksum"    groups="openhealth.roots"   />
 
 
                     <field name="x_qr_img"  groups="openhealth.roots"/>
-
-
-
-
 
                     <field name="x_type" />
                     <field name="x_type_code"   groups="openhealth.roots"/>
                     <field name="state"/>
 
-
-
-
                     <field name="x_id_doc_type"/>
                     <field name="x_id_doc"/>
                     <field name="x_ruc"/>
 
-
-
-
-
-
-
-                    
-
-                    
                     <field name="x_delta"           groups="openhealth.roots"/>
 
 
 
 
-
-
-
-
-
-
-
-
                     <field name="patient"/>
-
-
-                    <field name="x_doctor" />
-
-                    <field name="treatment" />
-
-
-
+                    <field name="x_doctor"/>
+                    <field name="treatment"/>
                     <field name="nr_lines"/>
-
-                    <field name="x_family" />
-
+                    <field name="x_family"/>
                     <field name="x_product"/>
-
-
-
-
 
                     <field name="amount_untaxed"    sum="Total Untaxed"         widget="monetary"       string="Total"  />
 
-<!--
-                    <field name="x_qr_data"     groups="openhealth.roots"/>
-
-                    <field name="x_pm_total"    groups="openhealth.roots"   />
-                    <field name="x_checksum"    groups="openhealth.roots"   />
--->
-
-
-
-
                     <field name="user_id"       string="Creado por" />
 
-
-
-
-
 <!--
-                    <field name="x_legacy"      groups="openhealth.roots"/>
-                    <field name="create_date" />
-                    <field name="write_date" />
--->
-
-
-<!--
-                    <field name="create_date"/>
-
-
-                    <field name="user_id"       string="Generado por"   />
-
-                    <field name="comment"/>
-                    <field name="note"/>
-                    <field name="partner_id"/>
-                    <field name="product"/>
-                    <field name="x_date_order_corr" string="Fec"    />
-
-                    <field name="x_note"/>
+                    <field name="x_qr_data"     groups="openhealth.roots"/>
+                    <field name="x_pm_total"    groups="openhealth.roots"   />
 -->
                 </tree>
             </field>
         </record>
 <!--
-                    <field name="x_delta" />
+                    <field name="x_legacy"      groups="openhealth.roots"/>
+                    <field name="create_date" />
+                    <field name="write_date" />
+                    <field name="create_date"/>
+                    <field name="user_id"       string="Generado por"   />
+                    <field name="comment"/>
+                    <field name="note"/>
+                    <field name="partner_id"/>
+                    <field name="product"/>
+                    <field name="x_date_order_corr" string="Fec"    />
+                    <field name="x_note"/>
 -->
 
 
@@ -1058,78 +715,49 @@ Look for the Minimalist experience !!!
 
 
 
-<!-- TREE 2 --> 
+<!-- TREE 2  - DELTA --> 
         <record model="ir.ui.view" id="view_order_delta_tree">
             <field name="name">sale.order.tree</field>
             <field name="model">sale.order</field>
             <field name="arch" type="xml">
 
-
-
-                <tree string="Order Tree"
-
-                        colors="
-                        red:x_delta==2;
+<!--
                         blue:state=='sale';
                         green:state=='credit_note';
                         grey:state in ('cancel')
+-->
+                <tree string="Order Tree"
+
+                        colors="
+                        red:x_delta!=1
                         "
                     >
 
-
                     <field name="name"          string="Referencia"     />
-
+                    
                     <field name="x_type" />
-
                     <field name="state"/>
-
-
-
-<!--
--->
+                    
                     <field name="x_serial_nr" />
 
-
-
                     <field name="x_delta" />
-<!--
+<!--                    
                     <field name="x_checksum"    />
--->
-
-
-
-                    <field name="patient"/>
-
-                    <field name="x_doctor" />
-
-                    <field name="treatment" />
-
-
-
-                    <field name="nr_lines"/>
-
-                    <field name="x_family" />
-
-                    <field name="x_product"/>
-
-
-
-
-                    <field name="amount_untaxed"    sum="Total Untaxed"         widget="monetary"       string="Total"  />
-
                     <field name="x_pm_total"    groups="openhealth.roots"   />
-
-
-
-
-                    <field name="date_order"    string="Fecha"  />
-
-                    <field name="state"/>
-
                     <field name="user_id"       string="Creado por" />
-
-
-
+                    <field name="x_family" />
+                    <field name="x_product"/>
+                    <field name="x_doctor" />
+                    <field name="treatment" />
+                    <field name="state"/>
+-->
+                    <field name="date_order"    string="Fecha"  />
+                    <field name="patient"/>
+                    <field name="nr_lines"/>
+                    <field name="amount_untaxed"    sum="Total Untaxed"         widget="monetary"       string="Total"  />
+                </tree>
+            </field>
+        </record>
 <!--
                     <field name="user_id"       string="Generado por"   />
                     <field name="comment"/>
@@ -1139,79 +767,55 @@ Look for the Minimalist experience !!!
                     <field name="x_date_order_corr" string="Fec"    />
                     <field name="x_note"/>
 -->
-                </tree>
-            </field>
-        </record>
 
 
 
 
 
-<!-- TREE 3 --> 
+<!-- TREE 3 - CHECKSUM --> 
         <record model="ir.ui.view" id="view_order_checksum_tree">
             <field name="name">sale.order.tree</field>
             <field name="model">sale.order</field>
             <field name="arch" type="xml">
 
                 <tree string="Order Tree"
-
                         colors="
+
                         red:x_checksum!=0;
+                        
                         grey:x_checksum==-1
+                        
                         "
                     >
 
-
                     <field name="name"          string="Referencia"     />
-
+                    
                     <field name="x_type" />
-
                     <field name="state"/>
-
-
-
-
+                    
                     <field name="x_serial_nr" />
-<!--
-                    <field name="x_delta" />
--->
                     <field name="x_checksum"    />
 
+                    <field name="x_payment_method"/>
+                    <field name="x_pm_total"/>
 
-
-
+                    <field name="date_order"    string="Fecha"  />
                     <field name="patient"/>
 
                     <field name="x_doctor" />
-
                     <field name="treatment" />
 
-
-
                     <field name="nr_lines"/>
-
                     <field name="x_family" />
-
                     <field name="x_product"/>
-
-
-
-
                     <field name="amount_untaxed"    sum="Total Untaxed"         widget="monetary"       string="Total"  />
-
-                    <field name="x_pm_total"    groups="openhealth.roots"   />
-
-
-
-
-                    <field name="date_order"    string="Fecha"  />
-
+<!--
                     <field name="state"/>
-
                     <field name="user_id"       string="Creado por" />
-
-
-
+-->            
+                </tree>
+            </field>
+        </record>
 <!--
                     <field name="user_id"       string="Generado por"   />
                     <field name="comment"/>
@@ -1221,9 +825,7 @@ Look for the Minimalist experience !!!
                     <field name="x_date_order_corr" string="Fec"    />
                     <field name="x_note"/>
 -->
-                </tree>
-            </field>
-        </record>
+
 
 
     </data>

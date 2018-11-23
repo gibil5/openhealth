@@ -192,11 +192,14 @@ from . import card
 #from . import cos_classes
 
 
-# Legacy 
+
+# Legacy
 #from . import legacy
 #from . import legacy_manager
 #from . import legacy_manager_patient
 #from . import legacy_manager_order
+
+
 #from . import data_analyzer
 
 

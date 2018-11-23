@@ -1,26 +1,16 @@
 # -*- coding: utf-8 -*-
-#
-# 	Repo
-# 
-# Created: 				28 Mayo 2018
-#
-from openerp import models, fields, api
-#import matplotlib.pyplot as plt
-#import pandas as pd
-#import numpy as np
-#import collections
+"""
+ 	Repo - Inherited by Management and Marketing
 
+ 	Created: 				28 May 2018
+ 	Last up: 				23 Nov 2018
+"""
+from openerp import models, fields, api
 
 class Repo(models.Model):
-
-	#_inherit='sale.closing'
-
 	_name = 'openhealth.repo'
-
-	#_order = 'create_date desc'
-	#_order = 'date_begin asc,name asc'
-
-
+	#_inherit=''
+	#_order = ''
 
 
 # ----------------------------------------------------------- Inherited ------------------------------------------------------
@@ -31,7 +21,6 @@ class Repo(models.Model):
 			required=True, 
 		)
 
-
 	# Dates 
 	date_begin = fields.Date(
 			string="Fecha Inicio", 
@@ -40,16 +29,12 @@ class Repo(models.Model):
 			required=True, 
 		)
 
-
 	date_end = fields.Date(
 			string="Fecha Fin", 
 			default = fields.Date.today, 
 			#readonly=True,
 			required=True, 
 		)
-
-
-
 
 	# Amount
 	total_amount = fields.Float(
@@ -59,8 +44,6 @@ class Repo(models.Model):
 			readonly=True, 
 		)
 
-
-
 	# Count
 	total_count = fields.Integer(
 			#'Total Ventas',
@@ -69,8 +52,6 @@ class Repo(models.Model):
 			readonly=True, 
 		)
 
-
-
 	# Spacing
 	vspace = fields.Char(
 			' ', 
@@ -78,36 +59,17 @@ class Repo(models.Model):
 		)
 
 
-
-
-
-# ----------------------------------------------------------- Actions ------------------------------------------------------
-
+# ----------------------------------------------------------- Actions -----------------------------
 	# Set Stats
 	@api.multi
-	def set_stats(self):  
-
-		print 
-		print 'Set Stats'
-		print 
-
-
-
-
-
-
-# ----------------------------------------------------------- Update Repo ------------------------------------------------------
+	def set_stats(self):
+		#print
+		#print 'Set Stats'
+		pass
 
 	# Update orders
 	@api.multi
-	def update_repo(self):  
-
-		print
-		print 'Update Repo'
-		print
-
-
-
-
-
-
+	def update_repo(self):
+		#print
+		#print 'Update Repo'
+		pass

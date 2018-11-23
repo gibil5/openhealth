@@ -1,36 +1,27 @@
 # -*- coding: utf-8 -*-
-#
+"""
 #	Rsync. 
 # 
 #	Created: 			 1 Oct 2018
 # 	Last up: 	 		 1 Oct 2018
-#
+"""
 import os
 import shutil
 import io
 
-
-
-
-# ----------------------------------------------------------- Create Services  ------------------------------------------------------
-#def synchronize(export_date): 
-def synchronize(): 
-	print 
-	print "Synchronize"
+# ----------------------------------------------------------- Sync  -------------------------------
+def synchronize():
+	#print
+	#print "Synchronize"
 	
-	# Init 
+	# Init
 	base_dir = os.environ['HOME']
-
-	#source = '/Users/gibil/Virtualenvs/Odoo9-min/odoo/mssoft/ventas/'
 	source = base_dir + "/mssoft/ventas/"
 	destination = 'root@165.227.25.8:/var/www/html/ventas'
 
-
-	# Rsync 
+	# Rsync
 	os.system("rsync -rv " + source + " " + destination)
 
-
-
-	# List 
-	#ret = os.listdir(path)  
-	#print ret 
+	# List
+	#ret = os.listdir(path)
+	#print ret

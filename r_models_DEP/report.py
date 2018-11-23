@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-#
-# 		Report - Deprecated 
+# 	Report - Deprecated 
 # 
 #
 

@@ -1,4 +1,29 @@
 
+# ----------------------------------------------------------- Constraints Python - Dep ------------------
+	# Check Phone 3
+	#@api.constrains('phone_3')
+	#def _check_phone_3(self):
+		#print
+		#print 'Check Phone 3'
+		#chk_patient._check_phone_3(self)
+
+	# Check Phone
+	#@api.constrains('phone')
+	#def _check_phone(self):
+		#print
+		#print 'Check Phone'
+		#chk_patient._check_phone(self)
+
+	# Check Mobile
+	#@api.constrains('mobile')
+	#def _check_mobile(self):
+		#print
+		#print 'Check Mobile'
+		#chk_patient._check_mobile(self)
+
+
+
+
 
 # ----------------------------------------------------------- Update - Id Docs ------------------------------------------------------
 
@@ -30,3 +55,14 @@
 														)
  		print count_1 
  		print count_2
+
+
+
+# ----------------------------------------------------------- On Change - Id Docs ------------------------------------------------------
+	# Id Doc  
+	#@api.onchange('x_id_doc')
+	#def _onchange_x_id_doc(self):
+		#self.autofill() if self.x_autofill == True else 'don'
+		
+		#if self.x_id_doc_type in ['dni']: 
+		#	self.x_dni = self.x_id_doc

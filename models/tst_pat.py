@@ -22,7 +22,7 @@ def test_cases(self, container_id, doctor_id):
 				# Patient 0 - REVILLA RONDON JOSE JAVIER
 				{
 						'active': 		True,
-						'test_case': 	'dni,ticket_invoice,product_1,40',
+						'test_case': 	'dni',
 
 						'name': 		'REVILLA RONDON JOSE JAVIER',
 						'name_last': 	'revilla rondon',
@@ -48,9 +48,8 @@ def test_cases(self, container_id, doctor_id):
 
 				# Patient 1 - Passport
 				{
-						'active': 		False, 
-						#'test_case': 	'passport, ticket_receipt', 
-						'test_case': 	'passport, receipt', 
+						'active': 		True, 
+						'test_case': 	'passport', 
 
 						'name': 		'NUÑEZ NUÑEZ FATIMA', 
 						'name_last': 	'nuñez nuñez', 
@@ -72,10 +71,8 @@ def test_cases(self, container_id, doctor_id):
 
 				# Patient 2 - CE
 				{
-						'active': 		False, 
-						#'test_case': 	'foreign_card, ticket_receipt', 
-						#'test_case': 	'foreign_card, invoice', 
-						'test_case': 	'foreign_card, receipt', 
+						'active': 		True,
+						'test_case': 	'foreign_card', 
 
 						'name': 		'RABELAIS RABELAIS FRANCOIS', 
 						'name_last': 	'rabelais rabelais', 
@@ -98,9 +95,8 @@ def test_cases(self, container_id, doctor_id):
 
 				# Patient 3 - PTP
 				{
-						'active': 		False, 
-						#'test_case': 	'ptp, ticket_receipt', 
-						'test_case': 	'ptp, receipt', 
+						'active': 		True,
+						'test_case': 	'ptp', 
 
 						'name': 		'TOTTI TOTTI FRANCESCO', 
 						'name_last': 	'totti totti', 
@@ -120,12 +116,10 @@ def test_cases(self, container_id, doctor_id):
 
 
 
-
-
 				# Patient 4 - OTHER
 				{
-						'active': 		False, 
-						'test_case': 	'other, ticket_receipt', 
+						'active': 		True,
+						'test_case': 	'other', 
 
 						'name': 		'MICHELOT MICHELOT IVANNA', 
 						'name_last': 	'michelot michelot', 
@@ -142,6 +136,9 @@ def test_cases(self, container_id, doctor_id):
 
 						'id_code':  	False,
 				}, 
+
+
+
 
 
 
@@ -179,7 +176,7 @@ def test_cases(self, container_id, doctor_id):
 
 				#  Patient 7 - DNI, Legacy 
 				{
-						'active': 		False, 
+						'active': 		False,
 						'test_case': 	'dni, ticket_receipt, legacy', 
 
 						'name': 		'NEO NEO NEODIUMX', 
@@ -203,7 +200,7 @@ def test_cases(self, container_id, doctor_id):
 
 				# Patient 8 - Ticket Receipt Canceled 
 				{
-						'active': 		False, 
+						'active': 		False,
 						'test_case': 	'dni, ticket_receipt_cancel', 
 
 						'name': 		'DIBALA DIBALA PAOLO', 
@@ -227,7 +224,7 @@ def test_cases(self, container_id, doctor_id):
 
 				# Patient 9 - COMANECI COMANECI NADIA
 				{
-						'active': 		False, 
+						'active': 		False,
 						#'test_case': 	'dni, ticket_receipt', 
 						'test_case': 	'dni,ticket_receipt,con_med,1', 
 
@@ -251,15 +248,16 @@ def test_cases(self, container_id, doctor_id):
 
 				# Patient 10 - MsSoft
 				{
-						'active': 		False, 
-						'test_case': 	'dni,ticket_receipt,product_1,40', 
+						'active': 		False,
+						#'test_case': 	'dni,ticket_receipt,product_1,40', 
+						'test_case': 	'dni', 
 
 						'name': 		'usuarioprueba', 
 						'name_last': 	'usuarioprueba', 
 						'name_first':  	'', 
 
 						'id_doc_type': 	'dni', 
-						'id_doc':  		'1241547', 
+						'id_doc':  		'12415470', 
 
 						'sex': 			'Male', 
 						'address': 		'Jr. pichis Nro. 106,,',					

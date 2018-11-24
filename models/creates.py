@@ -10,6 +10,37 @@ import lib
 import user
 
 
+# ----------------------------------------------------------- Remove Patient  ---------------------
+def remove_patient(self, name):
+	"""
+	high level support for doing this and that.
+	"""
+	print
+	print 'Remove Patient'
+	#print name
+
+	# Unlink Patient
+	self.env['oeh.medical.patient'].search([
+												('name', '=', name),
+									],).unlink()
+
+	# Unlink Partner
+	self.env['res.partner'].search([
+												('name', '=', name),
+									],).unlink()
+
+
+	# Unlink - Card
+ 	#cards = self.env['openhealth.card'].search([
+	#													('patient_name', '=', name),
+	#												],)
+ 	#for card in cards:
+ 	#	if card.name != False:
+ 	#		card.unlink()
+
+
+
+
 # -------------------------------------------------------------------------------------------------
 # Create Order
 def create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id, short_name, qty, x_type, pricelist_id):
@@ -749,33 +780,6 @@ def create_procedure_wapp(self, subtype, product_id):
 # create_procedure_wapp
 
 
-# ----------------------------------------------------------- Remove Patient  ---------------------
-def remove_patient(self, name):
-	"""
-	high level support for doing this and that.
-	"""
-	#print
-	#print 'Remove Patient'
-	#print name
-
-	# Unlink Patient
-	self.env['oeh.medical.patient'].search([
-															('name', '=', name),
-														],).unlink()
-
-	# Unlink Partner
-	self.env['res.partner'].search([
-														('name', '=', name),
-													],).unlink()
-
-
-	# Unlink - Card
- 	#cards = self.env['openhealth.card'].search([
-	#													('patient_name', '=', name),
-	#												],)
- 	#for card in cards:
- 	#	if card.name != False:
- 	#		card.unlink()
 
 
 

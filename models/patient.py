@@ -3,7 +3,7 @@
 		Patient 
  
  		Created: 		26 Aug 2016
-		Last up: 		 5 Nov 2018
+		Last up: 		24 Nov 2018
 """
 from openerp import models, fields, api
 from datetime import datetime
@@ -23,15 +23,11 @@ class Patient(models.Model):
 	_order = 'x_id_code desc'
 
 
-
-
-
 # ----------------------------------------------------------- Constraints - Sql -------------------
 	# Uniqueness constraints for: 
 	# 	Name
 	# 	Id Code - Nr de Historia
-	# 	Id Doc - Documento de Identidad 
-	
+	# 	Id Doc - Documento de Identidad
 	_sql_constraints = [
 	#						('name_unique','unique(name)', 'SQL Warning: name must be unique !'),
 							('name_unique','Check(1=1)', 'SQL Warning: name must be unique !'),
@@ -46,94 +42,47 @@ class Patient(models.Model):
 
 
 # ----------------------------------------------------------- Constraints Python - Important ------
-
 	# Id doc - Documento Identidad 
 	@api.constrains('x_id_doc')
 	def check_x_id_doc(self):
 		chk_patient.check_x_id_doc(self)
-
 
 	# Ruc
 	@api.constrains('x_ruc')
 	def check_x_ruc(self):
 		#print
 		#print 'Check Ruc'
-		#chk._check_x_ruc(self)
 		chk_patient.check_x_ruc(self)
-
 
 	# Check Name  
 	@api.constrains('name')
 	def check_name(self):
 		#print
 		#print 'Check Name'
-		#chk_patient._check_name(self)
 		chk_patient.check_name(self)
-
 
 	# Check Id Code - Hr Historia  
 	@api.constrains('x_id_code')
 	def _check_x_id_code(self):
 		#print
 		#print 'Check Id Code'
-		#chk_patient._check_x_id_code(self)
 		chk_patient.check_x_id_code(self)
 
 
 
-
-# ----------------------------------------------------------- Constraints Python - Dep ------------------
-	# Check Phone 3
-	#@api.constrains('phone_3')
-	#def _check_phone_3(self):
-		#print
-		#print 'Check Phone 3'
-		#chk_patient._check_phone_3(self)
-
-	# Check Phone
-	#@api.constrains('phone')
-	#def _check_phone(self):
-		#print
-		#print 'Check Phone'
-		#chk_patient._check_phone(self)
-
-	# Check Mobile
-	#@api.constrains('mobile')
-	#def _check_mobile(self):
-		#print
-		#print 'Check Mobile'
-		#chk_patient._check_mobile(self)
-
-
-
-
-
-# ----------------------------------------------------------- Id Doc ------------------------------------------------------
-
+# ----------------------------------------------------------- Id Doc ------------------------------
 	# Id Document 
 	x_id_doc = fields.Char(
 			'Nr. Doc.',
 			#required=True,
 		)
 
-
 	# Id Document Type 
 	x_id_doc_type = fields.Selection(
-			#[	
-			#	('dni', 			'DNI'),
-			#	('passport', 		'Pasaporte'),
-			#	('foreigner_card', 	'Carnet de Extranjería'),
-			#	('ptp', 			'PTP'),	
-			#	('other', 			'Otro'),
-			#], 
-			selection = pat_vars._id_doc_type_list, 
+			selection=pat_vars._id_doc_type_list, 
 			string='Tipo de documento', 
-			#default="dni",
 			#required=True,
 		)
-
-
-
 
 	# Id Document Type 
 	x_id_doc_type_code = fields.Char(
@@ -144,22 +93,8 @@ class Patient(models.Model):
 
 	@api.multi
 	def _compute_x_id_doc_type_code(self):
-		for record in self:			
-	
+		for record in self:
 			record.x_id_doc_type_code = pat_vars._dic_id_doc_code[record.x_id_doc_type]
-
-
-
-
-
-	# Id Doc  
-	#@api.onchange('x_id_doc')
-	#def _onchange_x_id_doc(self):
-		#self.autofill() if self.x_autofill == True else 'don'
-		
-		#if self.x_id_doc_type in ['dni']: 
-		#	self.x_dni = self.x_id_doc
-
 
 
 
@@ -189,8 +124,7 @@ class Patient(models.Model):
 
 
 
-# ----------------------------------------------------------- QC ------------------------------------------------------
-
+# ----------------------------------------------------------- QC ----------------------------------
 	# Data complete 
 	x_data_complete = fields.Boolean(
 			string="Data Complete", 

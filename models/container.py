@@ -86,7 +86,33 @@ class Container(models.Model):
 
 
 
-# ----------------------------------------------------------- Patients ----------------------------
+# ----------------------------------------------------------- Patients Remove ---------------------
+	@api.multi
+	def remove_patients(self):
+		"""
+		high level support for doing this and that.
+		"""
+		#print
+		#print 'Remove Patients'
+
+
+		# Search
+		patients = self.env['oeh.medical.patient'].search([
+															('name', 'not in', ['REVILLA RONDON JOSE JAVIER']),
+															('x_test', 'in', [True]),
+													],
+														#order='write_date desc',
+														#limit=1,
+													)
+
+		for patient in patients:
+			name = patient.name
+			creates.remove_patient(self, name)
+
+
+
+
+# ----------------------------------------------------------- Patients Create ---------------------
 	# Create Patients
 	@api.multi
 	def create_patients(self):
@@ -105,9 +131,7 @@ class Container(models.Model):
 
 
 		# Create Patients
-		pat_array = tst_pat.test_cases(self, container_id, doctor_id)
-
-		#print pat_array
+		tst_pat.test_cases(self, container_id, doctor_id)
 
 
 
@@ -462,16 +486,8 @@ class Container(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		#print
-		#print 'Test - Qc'
-
-
 		# Gap and Checksum
 		self.mgt.update_qc('ticket_receipt')
 		self.mgt.update_qc('ticket_invoice')
-		#self.mgt.update_qc('receipt')
-
-
 
 	# test_qc
-

@@ -3,26 +3,15 @@
 #from . import models
 
 
-
-# Monthly reports
-#from . import sale_report
+# Company
 from . import company
-
-
-
-
 
 
 # Inheritable 
 from . import medical
 from . import line
-
-
-
-
-
-# Repo - For Management and Marketing 
 from . import repo
+
 
 
 # Management
@@ -30,7 +19,6 @@ from . import mgt_line
 from . import doctor_line
 from . import family_line
 from . import sub_family_line
-
 from . import management_order_line
 from . import management 
 
@@ -40,10 +28,11 @@ from . import management
 from . import electronic_order
 from . import electronic_line
 from . import coder 
-
 from . import texto
-from . import container
 
+
+# Containers
+from . import container
 from . import corrector
 
 
@@ -65,7 +54,6 @@ from . import marketing
 from . import account_line
 from . import account_contasis
 
-#from . import account_line_contasis
 
 
 
@@ -76,9 +64,6 @@ from . import product_counter
 from . import order_report_nex			# Estado de Cuenta 
 from . import report_sale_product
 
-# Deprecated 
-#from . import report
-#from . import report_sale
 
 
 
@@ -118,9 +103,6 @@ from . import session_med
 # New
 from . import product_pricelist_item
 
-# Deprecated
-#from . import filesystem_directory
-#from . import filesystem_file
 
 
 
@@ -171,27 +153,28 @@ from . import card
 # DEPRECATED
 #--------------
 #from . import event
-
-
-
-
-# Daily reports
+#from . import sale_report
 #from . import sale_report_md
+#from . import filesystem_directory
+#from . import filesystem_file
+#from . import account_line_contasis
+#from . import report
+#from . import report_sale
+
+
+
+
 
 
 # Test
 #from . import test
 
-
 # Order 
 #from . import ticket
-
 
 # Cosmetology 
 #from . import cosmetology				
 #from . import cos_classes
-
-
 
 # Legacy
 #from . import legacy
@@ -199,9 +182,7 @@ from . import card
 #from . import legacy_manager_patient
 #from . import legacy_manager_order
 
-
 #from . import data_analyzer
-
 
 # Purchase 
 #from . import purchase

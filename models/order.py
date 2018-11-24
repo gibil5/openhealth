@@ -67,13 +67,14 @@ class sale_order(models.Model):
 	# Update Pm
 	@api.multi 
 	def update_payment(self):
-		print
-		print 'Update Payment'
+		#print
+		#print 'Update Payment'
 
 		for line in self.x_payment_method.pm_line_ids:
-			print line.name
-			print line.method
-			print line.subtotal
+			pass
+			#print line.name
+			#print line.method
+			#print line.subtotal
 
 
 

@@ -5,7 +5,6 @@
  		Created: 				20 Sep 2016
  		Last updated: 	 		23 Nov 2018
 """
-#from datetime import datetime
 from openerp import models, fields, api
 import prodvars
 import ipl
@@ -14,16 +13,10 @@ class Service(models.Model):
 	"""
 	high level support for doing this and that.
 	"""
-
 	_name = 'openhealth.service'
 
-	#_inherit = 'openhealth.base',
 
-
-
-
-# ----------------------------------------------------------- Prices ------------------------------------------------------
-
+# ----------------------------------------------------------- Prices ------------------------------
 	# Price
 	price = fields.Float(
 			string='Precio',

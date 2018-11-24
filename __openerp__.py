@@ -14,7 +14,7 @@
 
 	'description': """
 
-		23 Nov 2018
+		24 Nov 2018
 
 		Fulcrum - TRAVIS Quality Controlled
 
@@ -348,10 +348,10 @@
 
 
 		# Orders
+		'views/orders/order.xml',
 		'views/orders/order_actions.xml',
 		'views/orders/order_search.xml',
 		'views/orders/order_line.xml',
-		'views/orders/order.xml',
 		'views/orders/order_admin.xml',
 		#'views/orders/order_report_nex.xml',				# Estado de Cuenta
 		'views/orders/order_account.xml',				# Estado de Cuenta New

@@ -156,6 +156,7 @@
                     <button
                             type="object"
                             class="oe_highlight"
+                            groups="openhealth.roots"
                             
                             name="checksum"
 
@@ -163,6 +164,21 @@
 
                             states="sale,cancel"                     
                     />
+
+
+                    <!-- Payment -->
+                    <button
+                            type="object"
+                            class="oe_highlight"
+                            groups="openhealth.roots"
+                            
+                            name="update_payment"
+
+                            string="PAYMENT"
+
+                            states="sale"                     
+                    />
+
                 </xpath>
 
 
@@ -779,7 +795,7 @@ Look for the Minimalist experience !!!
 
 
 
-<!-- TREE 3 - CHECKSUM --> 
+<!-- TREE 3 - CHECKSUM -->
         <record model="ir.ui.view" id="view_order_checksum_tree">
             <field name="name">sale.order.tree</field>
             <field name="model">sale.order</field>
@@ -832,6 +848,50 @@ Look for the Minimalist experience !!!
                     <field name="x_date_order_corr" string="Fec"    />
                     <field name="x_note"/>
 -->
+
+
+
+
+<!-- TREE 4 - PAYMENT -->
+        <record model="ir.ui.view" id="view_order_payment_tree">
+            <field name="name">sale.order.tree</field>
+            <field name="model">sale.order</field>
+            <field name="arch" type="xml">
+
+                <tree string="Order Tree">
+
+                    <field name="name"          string="Referencia"/>
+                    
+                    <field name="x_type"/>
+                    
+                    <field name="state"/>
+                    
+                    <field name="x_serial_nr" />
+                    
+                    <field name="x_checksum"    />
+
+                    <field name="x_payment_method"/>
+                    
+                    <field name="x_pm_total"/>
+
+<!--
+-->
+                    <field name="x_pm_cash"/>
+                    
+                    <field name="x_pm_visa_credit"/>
+                    <field name="x_pm_visa_debit"/>
+                    
+                    <field name="x_pm_master_credit"/>
+                    <field name="x_pm_master_debit"/>
+                    
+                    <field name="x_pm_american"/>
+                    <field name="x_pm_diners"/>
+
+                </tree>
+            </field>
+        </record>
+
+
 
 
 

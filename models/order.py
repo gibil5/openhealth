@@ -30,6 +30,53 @@ class sale_order(models.Model):
 
 
 
+# ----------------------------------------------------------- Payment ----------------------------
+	x_pm_cash = fields.Float(
+			'Cash',
+		)
+
+
+	x_pm_visa_credit = fields.Float(
+			'Visa Credit',
+		)
+
+	x_pm_visa_debit = fields.Float(
+			'Visa Debit',
+		)
+
+
+	x_pm_master_credit = fields.Float(
+			'Master Credit',
+		)
+
+	x_pm_master_debit = fields.Float(
+			'Master Debit',
+		)
+
+
+	x_pm_american = fields.Float(
+			'American',
+		)
+
+	x_pm_diners = fields.Float(
+			'Diners',
+		)
+
+
+
+	# Update Pm
+	@api.multi 
+	def update_payment(self):
+		print
+		print 'Update Payment'
+
+		for line in self.x_payment_method.pm_line_ids:
+			print line.name
+			print line.method
+			print line.subtotal
+
+
+
 # ----------------------------------------------------------- Checksum ----------------------------
 	# Checksum 
 	x_checksum = fields.Float(

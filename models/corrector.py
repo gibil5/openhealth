@@ -71,8 +71,8 @@ class Corrector(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		print
-		print 'Clear Pl Items'
+		#print
+		#print 'Clear Pl Items'
 
 		# Clear
 		self.pl_item_ids.unlink()
@@ -90,8 +90,8 @@ class Corrector(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		print
-		print 'Create Pl Items'
+		#print
+		#print 'Create Pl Items'
 
 
 		# Clear
@@ -241,7 +241,7 @@ class Corrector(models.Model):
 		# Create
 		for product in products:
 
-			print product
+			#print product
 
 
 			# Init
@@ -270,7 +270,7 @@ class Corrector(models.Model):
 												'corrector_id': self.id,
 				})
 
-			print pl_item
+			#print pl_item
 
 
 
@@ -285,8 +285,8 @@ class Corrector(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		print
-		print 'Create Pl Items'
+		#print
+		#print 'Create Pl Items'
 
 
 		# Clear
@@ -323,7 +323,7 @@ class Corrector(models.Model):
 
 		# Create
 		for row in data:
-			print row
+			#print row
 
 			# Init
 			name = row['Name']
@@ -351,7 +351,7 @@ class Corrector(models.Model):
 												'corrector_id': self.id,
 				})
 
-			print pl_item
+			#print pl_item
 
 		# Print
 		#print data
@@ -367,8 +367,8 @@ class Corrector(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		print
-		print 'Unfix Names'
+		#print
+		#print 'Unfix Names'
 
 
 		# Init
@@ -436,9 +436,9 @@ class Corrector(models.Model):
 
 		# Loop
 		for product in products:
-			print product.name
+			#print product.name
 			if self.go_flag:
-				print
+				#print
 				product.unfix_name()
 
 
@@ -452,8 +452,8 @@ class Corrector(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		print
-		print 'Fix Names'
+		#print
+		#print 'Fix Names'
 
 
 		# Init
@@ -521,10 +521,8 @@ class Corrector(models.Model):
 
 		# Loop
 		for product in products:
-			print product.name
-
+			#print product.name
 			product.x_go_flag = self.go_flag
-
 			product.fix_name()
 
 
@@ -537,8 +535,8 @@ class Corrector(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		print
-		print 'Create - Codes'
+		#print
+		#print 'Create - Codes'
 
 
 		# Product
@@ -610,8 +608,8 @@ class Corrector(models.Model):
 		#for product in products.sorted(key=lambda l: l.type in ['product']):
 		for product in products:
 
-			print product.name
-			print product.x_name_short
+			#print product.name
+			#print product.x_name_short
 
 			if self.go_flag:
 				product.x_counter = idx
@@ -619,8 +617,8 @@ class Corrector(models.Model):
 			idx = idx + 1
 
 
-		print
-		print count
-		print
+		#print
+		#print count
+		#print
 
 	# create_codes

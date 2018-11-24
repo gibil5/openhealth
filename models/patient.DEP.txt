@@ -1,0 +1,32 @@
+
+
+# ----------------------------------------------------------- Update - Id Docs ------------------------------------------------------
+
+	# Update Id Docs 
+	@api.multi
+	def update_id_docs(self):
+		#print
+		#print 'Update Id Docs'
+
+		# Search 
+ 		#patients = self.env['oeh.medical.patient'].search([
+		#														('x_legacy', '!=', True), 
+		#												],
+															#order='write_date desc',
+		#													#limit=1,
+		#												)
+
+ 		count_1 = self.env['oeh.medical.patient'].search_count([
+																('x_legacy', '!=', True), 
+														],
+															#order='write_date desc',
+															#limit=1,
+														)
+ 		count_2 = self.env['oeh.medical.patient'].search_count([
+																('x_legacy', '=', True), 
+														],
+															#order='write_date desc',
+															#limit=1,
+														)
+ 		print count_1 
+ 		print count_2

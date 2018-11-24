@@ -13,10 +13,7 @@ import count_funcs
 import pat_vars
 import creates
 import tst_pat
-
-#import chk_patient as chk
 import chk_patient
-
 
 class Patient(models.Model):
 	"""
@@ -345,9 +342,8 @@ class Patient(models.Model):
 	# Generate 
 	@api.multi 
 	def generate_order_report(self):
-
-		print 
-		print 'Generate Order Report'
+		#print
+		#print 'Generate Order Report'
 
 		# Clean 
 		self.remove_order_report()
@@ -784,11 +780,9 @@ class Patient(models.Model):
 
 
 # ----------------------------------------------------------- Open Treatment ------------------------------------------------------
-
 	# Open Treatment 
 	@api.multi
-	def open_treatment(self):  
-
+	def open_treatment(self):
 		#print
 		#print 'Open Treatment'
 
@@ -869,17 +863,14 @@ class Patient(models.Model):
 	# Name
 	@api.onchange('x_last_name', 'x_first_name')
 	def _onchange_x_last_name(self):
-		print 'On Change'
-		print 'Last First Names'
-
+		#print 'On Change'
+		#print 'Last First Names'
 		#self.name = lib.strip_accents(self.x_last_name.upper() + ' ' + self.x_first_name.upper()) if self.x_last_name and self.x_first_name else 'don'
 
-		if self.x_last_name: 
-			#self.x_last_name = lib.strip_accents(self.x_last_name.upper()) 
+		if self.x_last_name:
 			self.x_last_name = lib.remove_whitespaces(self.x_last_name.upper()) 
 
-		if self.x_first_name: 
-			#self.x_first_name =  lib.strip_accents(self.x_first_name.upper()) 
+		if self.x_first_name:
 			self.x_first_name =  lib.remove_whitespaces(self.x_first_name.upper()) 
 
 
@@ -891,13 +882,9 @@ class Patient(models.Model):
 	# Test - Init  
 	@api.multi 
 	def test_init(self, patient_id=False, partner_id=False, doctor_id=False, treatment_id=False, pl_id=False):
-		print 
-		print 'Patient - Test Init'
-
-
+		#print
+		#print 'Patient - Test Init'
 		pat_array = tst_pat.test_init(self, patient_id, partner_id, doctor_id, treatment_id, pl_id)
-
-
 		return pat_array
 
 
@@ -906,36 +893,30 @@ class Patient(models.Model):
 
 	# Computes
 	def test_computes(self):
-		print 
-		print 'Patient - Computes'
-
-		# Partner 
-		# Computes 
-		print 
-		print 'Computes - Partner'
-		print self.partner_id.city_char
-		print self.partner_id.x_address
-		print self.partner_id.x_vip
-		
+		pass
+		#print
+		#print 'Patient - Computes'
+		# Partner
+		#print
+		#print 'Computes - Partner'
+		#print self.partner_id.city_char
+		#print self.partner_id.x_address
+		#print self.partner_id.x_vip
 		# Patient 
-		print 
-		print 'Computes'
-		print self.name 
-		#print self.x_full_name		# Dep
-		print self.x_treatment_count
-		print self.x_vip
-		print self.x_card
-		print self.x_legacy
-		print self.x_counter
+		#print
+		#print 'Computes'
+		#print self.name
+		#print self.x_treatment_count
+		#print self.x_vip
+		#print self.x_card
+		#print self.x_legacy
+		#print self.x_counter
 
 
 	# Actions
 	def test_actions(self):
-		print 
-		print 'Patient - Actions'
-
-		print 
-		print 'Actions'
+		#print
+		#print 'Patient - Actions'
 		self.deactivate_patient()
 		self.activate_patient()
 		self.open_treatment()
@@ -946,34 +927,24 @@ class Patient(models.Model):
 
 	# Actions
 	def test_services(self):
-		print 
-		print 'Patient - Services'
-
-		for treatment in self.treatment_ids: 
-
-			print 'Services'
-
+		#print
+		#print 'Patient - Services'
+		for treatment in self.treatment_ids:
 			for service in treatment.service_co2_ids: 
 				service.test()
-
 			for service in treatment.service_excilite_ids: 
 				service.test()
-
 			for service in treatment.service_ipl_ids: 
 				service.test()
-
 			for service in treatment.service_ndyag_ids: 
 				service.test()
-
 			for service in treatment.service_product_ids: 
 				service.test()
-
 			for service in treatment.service_quick_ids: 
 				service.test()
 
 
 # ----------------------------------------------------------- Test - Cycle ------------------------------------------------------
-	
 	# Test - Cycle 
 	# Test the whole Patient Cycle. 
 
@@ -981,9 +952,6 @@ class Patient(models.Model):
 	def test_cycle(self):
 		#print 
 		#print 'Test Cycle'
-		#print self.name 
-		#print self.x_test_case
-
 
 		# Init 
 		patient_id = self.id
@@ -994,9 +962,6 @@ class Patient(models.Model):
 		qty = int(self.x_test_case.split(',')[3])
 
 
-		#date_order = '2017-10-18 09:00:00'
-
-
 		# Loop 
 		for treatment in self.treatment_ids: 
 
@@ -1005,20 +970,13 @@ class Patient(models.Model):
 			doctor_id = False 
 
 			# Create 
-			#order = creates.create_order_fast(self, patient_id, partner_id, treatment_id, id_doc, id_doc_type, short_name, qty)
 			order = creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id, id_doc, id_doc_type, short_name, qty)
-
 
 			# Pay 
 			order.test(self.x_test_case)
 
-
 			# Update 
 			#creates.update_order(date_order)
-
-
-
-
 
 
 
@@ -1027,15 +985,13 @@ class Patient(models.Model):
 	# Test - Integration 
 	@api.multi 
 	def test(self):
-		print 'jx'
-		print 'jx'
-		print 'Patient - Test'
+		#print
+		#print 'Patient - Test'
 
-		# Unit Testing 
+		# Test Unit
 		#self.test_computes()
 		#self.test_actions()
 		#self.test_services()
-
 
 		# Test Cycle
 		self.test_cycle()
@@ -1075,52 +1031,14 @@ class Patient(models.Model):
 	# Print Patient
 	@api.multi
 	def print_patient_hc(self):
-		print 
-		print 'Print Patient'
-		
+		#print
+		#print 'Print Patient'
 		name = 'openhealth.report_patient_view'
-
 		return self.env['report'].get_action(self, name)
 
 
 
-# ----------------------------------------------------------- Update - Id Docs ------------------------------------------------------
-
-	# Update Id Docs 
-	@api.multi
-	def update_id_docs(self):
-		print 
-		print 'Update Id Docs'
-
-		# Search 
- 		#patients = self.env['oeh.medical.patient'].search([
-		#														('x_legacy', '!=', True), 
-		#												],
-															#order='write_date desc',
-		#													#limit=1,
-		#												)
-
- 		count_1 = self.env['oeh.medical.patient'].search_count([
-																('x_legacy', '!=', True), 
-														],
-															#order='write_date desc',
-															#limit=1,
-														)
- 		count_2 = self.env['oeh.medical.patient'].search_count([
-																('x_legacy', '=', True), 
-														],
-															#order='write_date desc',
-															#limit=1,
-														)
- 		print count_1 
- 		print count_2
-
-
-
-
-
 # ----------------------------------------------------------- CRUD ------------------------------------------------------
-
 	# Create 
 	@api.model
 	def create(self,vals):
@@ -1128,9 +1046,7 @@ class Patient(models.Model):
 		#print 'CRUD - Patient - Create'
 		#print 
 	
-
-		#if 'name' in vals:
-		if 'name' in vals 	and 	'x_first_name' in vals  	and  'x_last_name' in vals:
+		if 'name' in vals and 'x_first_name' in vals and 'x_last_name' in vals:
 
 			name = vals['name']
 			#print name 
@@ -1154,7 +1070,6 @@ class Patient(models.Model):
 		# Put your logic here 
 
 
-
 		# Serial Number. Increase must be AFTER creation 
 		name_ctr = 'emr'
 	 	counter = self.env['openhealth.counter'].search([
@@ -1173,11 +1088,10 @@ class Patient(models.Model):
 
 
 
-		# Name 
+		# Name - Dep
 		#res.name = lib.strip_accents(res.x_last_name.upper() + ' ' + res.x_first_name.upper()) 
 
-
-		# Check 
+		# Check - Dep
 		#chk._check_name(res)
 		#chk_patient.check_name(res)
 		

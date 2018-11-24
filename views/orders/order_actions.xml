@@ -7,6 +7,68 @@
 <!-- ACTIONS -->
 
 
+        <!-- QC - Delta -->
+        <record model="ir.actions.act_window" id="order_list_delta_action">
+            <field name="name">Delta</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+
+            <field name="view_id" ref="view_order_delta_tree"/> 
+
+            <field name="domain">[
+                                    ('x_type', 'in', ['ticket_receipt', 'ticket_invoice']),
+                                ]
+            </field>
+            <field name="context">{}</field>
+            <field name="limit">500</field>
+        </record>
+
+
+        <!-- QC - Check -->
+        <record model="ir.actions.act_window" id="order_list_checksum_action">
+            <field name="name">Checksum</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+
+            <field name="view_id" ref="view_order_checksum_tree"/> 
+
+            <field name="domain">[
+                                    ('x_type', 'in', ['ticket_receipt','ticket_invoice']),
+                                    ('state', 'in', ['sale']),
+                                ]
+            </field>
+            <field name="context">{}</field>
+            <field name="limit">500</field>
+        </record>
+
+
+
+       <!-- QC - Payment -->
+        <record model="ir.actions.act_window" id="order_list_payment_action">
+            <field name="name">Payment</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+
+            <field name="view_id" ref="view_order_payment_tree"/> 
+
+            <field name="domain">[
+                                    ('x_type', 'in', ['ticket_receipt', 'ticket_invoice']),
+                                ]
+            </field>
+            <field name="context">{}</field>
+            <field name="limit">500</field>
+        </record>
+
+
+
+
+
+
+
+
 
         <!-- Budgets -->
         <record model="ir.actions.act_window" id="budget_list_action">
@@ -96,52 +158,6 @@
 
 
 
-
-
-        <!-- ACTION - All - Delta -->
-        <record model="ir.actions.act_window" id="order_list_delta_action">
-
-            <field name="name">Delta</field>
-            
-            <field name="res_model">sale.order</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-
-            <field name="view_id" ref="view_order_delta_tree"/> 
-
-            <field name="domain">[
-                                    ('x_type', 'in', ['ticket_receipt', 'ticket_invoice']),
-                                ]
-            </field>
-
-            <field name="context">{}</field>
-            <field name="limit">500</field>
-        </record>
-
-
-
-
-
-        <!-- ACTION - All - Checksum -->
-        <record model="ir.actions.act_window" id="order_list_checksum_action">
-            
-            <field name="name">Checksum</field>
-
-            <field name="res_model">sale.order</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-
-            <field name="view_id" ref="view_order_checksum_tree"/> 
-
-            <field name="domain">[
-                                    ('x_type', 'in', ['ticket_receipt','ticket_invoice']),
-                                    ('state', 'in', ['sale']),
-                                ]
-            </field>
-
-            <field name="context">{}</field>
-            <field name="limit">500</field>
-        </record>
 
 
 

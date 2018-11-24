@@ -5,7 +5,7 @@
  		Created: 			26 Aug 2016
  		Last up: 	 		21 Nov 2018
 """
-from timeit import default_timer as timer
+#from timeit import default_timer as timer
 import datetime
 from openerp import models, fields, api
 import time_funcs
@@ -85,13 +85,11 @@ class Treatment(models.Model):
 			closing = lib_rep.Report(name, model, descriptor, caller)
 			#closing = lib_rep.Report('closing',	 		'openhealth.closing', 	'date', 		self)
 
-
 			name = 'resap'
 			model = 'openhealth.report.sale.product'
 			descriptor = 'name'
 			resap = lib_rep.Report(name, model, descriptor, caller)
 			#resap = lib_rep.Report('resap',	 		'openhealth.report.sale.product', 	'name', 		self)
-
 
 			name = 'management'
 			model = 'openhealth.management'
@@ -99,27 +97,23 @@ class Treatment(models.Model):
 			management = lib_rep.Report(name, model, descriptor, caller)
 			#management = 	lib_rep.Report('management', 	'openhealth.management', 			'date_begin', 	self)
 
-
 			name = 'marketing'
 			model = 'openhealth.marketing'
 			descriptor = 'date_begin'
 			marketing = lib_rep.Report(name, model, descriptor, caller)
 			#marketing = 	lib_rep.Report('marketing', 	'openhealth.marketing', 			'date_begin', 	self)
 
-
 			name = 'account.contasis'
 			model = 'openhealth.account.contasis'
 			descriptor = 'date_begin'
 			account = lib_rep.Report(name, model, descriptor, caller)
-			#account = 		lib_rep.Report('account.contasis', 	'openhealth.account.contasis', 		'date_begin', 	self)
+			#account = lib_rep.Report('account.contasis', 	'openhealth.account.contasis', 		'date_begin', 	self)
 
 
-
-			#state_of_acc = 	lib_rep.Report('state_of_acc', 		'openhealth.order.report.nex', 		'create_date', 	self)
-			#doctor_line = 		lib_rep.Report('doctor_line', 		'openhealth.management.doctor.line', 				'write_date', 		self)
-			#family_line = 		lib_rep.Report('family_line', 		'openhealth.management.family.line', 				'write_date', 		self)
-			#sub_family_line = 	lib_rep.Report('sub_family_line', 	'openhealth.management.sub_family.line', 			'write_date', 		self)
-
+			#state_of_acc = lib_rep.Report('state_of_acc', 	'openhealth.order.report.nex', 		'create_date', self)
+			#doctor_line = lib_rep.Report('doctor_line', 	'openhealth.management.doctor.line', 'write_date', self)
+			#family_line = lib_rep.Report('family_line', 	'openhealth.management.family.line', 'write_date', self)
+			#sub_family_line = lib_rep.Report('sub_family_line', 'openhealth.management.sub_family.line', 'write_date', self)
 
 
 			# All
@@ -1708,7 +1702,6 @@ class Treatment(models.Model):
 	def test(self):
 		#print
 		#print 'Treatment - Test'
-
 		#self.test_computes()
 		self.test_reset()
 		self.test_integration()

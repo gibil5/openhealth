@@ -48,6 +48,16 @@
                     />
 
 
+            <!-- Payment -->
+            <menuitem   id="qc_sales_all_payment_menu" 
+                        parent="qc_sales_menu"
+                        sequence="3"
+
+                        name="Payment" 
+
+                        action="order_list_payment_action"
+                    />
+
 
 
     </data>

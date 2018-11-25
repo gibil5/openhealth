@@ -6,7 +6,7 @@
  		Is completely standard. Gives service to all Users.
 
  		Created: 			13 Aug 2018
- 		Last up: 	 		 5 Nov 2018
+ 		Last up: 	 		24 Nov 2018
 """
 import datetime
 
@@ -18,15 +18,11 @@ def get_checksum_gen(generated, name):
 	"""
 	Get Checksum Generated
 	"""
-
 	if generated == name:
 		checksum = '1'
 	else:
 		checksum = '0'
 	return checksum
-
-
-
 
 
 
@@ -77,54 +73,12 @@ def is_today(date, state):
 
 
 
-
 #------------------------------------------------ Patient - Test content --------------------------
-# Length
-def test_for_length(self, token, length):
-	"""
-	Test for Length
-	"""
-	print
-	print 'Lib - Test for Length'
-	print token
-	print length
-
-	if token and (len(str(token)) != length):
-		return {
-				'warning': {
-					'title': "Error: Debe tener " + str(length) + " caracteres.",
-					'message': token,
-				}}
-	else:
-		return 0
-# test_for_length
-
-
-
-# Digits
-def test_for_digits(self, token):
-	"""
-	Test for Digits
-	"""
-
-	if token and (not token.isdigit()):
-		return {
-				'warning': {
-					'title': "Error: Debe ser número.",
-					'message': token,
-				}}
-	else:
-		return 0
-# test_for_digits
-
-
-
 # Name
 def test_for_one_last_name(self, last_name):
 	"""
 	Test for one last name
 	"""
-
 	if last_name != False:
 		nr_words = len(last_name.split())
 		if nr_words == 1:
@@ -139,17 +93,13 @@ def test_for_one_last_name(self, last_name):
 
 
 
-
-
 #------------------------------------------------ Get Next Date -----------------------------------
 def get_next_date(self, evaluation_start_date, nr_days):
 	"""
 	Get Next Date
 	"""
-
 	#print
 	#print 'Get Next Date'
-	#import datetime
 	date_format = "%Y-%m-%d %H:%M:%S"
 	delta = datetime.timedelta(days=nr_days)
 	start = datetime.datetime.strptime(evaluation_start_date, date_format)
@@ -252,7 +202,8 @@ def doctor_available(self, app_date_str):
 
 	# Delta
 
-	app_date_dt = datetime.datetime.strptime(app_date_str, date_format) + datetime.timedelta(hours=-5, minutes=0)
+	app_date_dt = datetime.datetime.strptime(app_date_str, date_format) + \
+																		datetime.timedelta(hours=-5, minutes=0)
 
 	app_limit_dt = datetime.datetime.strptime(app_limit_str, date_format)
 	delta = app_limit_dt - app_date_dt
@@ -310,15 +261,10 @@ def get_slot(idx):
 	"""
 	#print
 	#print 'Get Slot'
-
 	date_format = "%H:%M:%S"
-
 	date_str = "09:00:00"
-
 	date_dt = datetime.datetime.strptime(date_str, date_format) + datetime.timedelta(minutes=idx*15)
-
 	slot = date_dt.strftime(date_format)
-
 	return slot
 
 
@@ -372,53 +318,6 @@ def get_net_tax(amount):
 
 
 
-#------------------------------------------------ Format Standard ---------------------------------
-def format_std(line):
-	"""
-	Format Standard
-	"""
-	#print
-	#print 'Format Standard'
-	_se = ","
-	content = correct_date(line.x_date_created) + _se + \
-				line.serial_nr + _se + \
-				line.patient.name + _se + \
-				line.patient.x_id_doc_type + _se + \
-				line.patient.x_id_doc + _se + \
-				line.product_id.name
-				#line.patient.x_firm + _se + \
-				#line.patient.x_ruc + _se + \
-				#line.patient.email + _se + \
-				#line.patient.name.encode('utf-8')
-				#line.patient.name + _se +
-				#line.patient.x_dni + _se +
-				#lr.encode('utf-8')
-	return content
-
-
-
-#------------------------------------------------ Print -------------------------------------------
-def print_line(order):
-	"""
-	Print a line
-	"""
-	print
-	print 'Print'
-	print order
-	print order.x_date_created
-	print order.patient.name
-	print order.patient.x_id_doc
-	print order.patient.x_id_doc_type
-	print order.patient.x_firm
-	print order.patient.x_ruc
-	print order.patient.email
-	print
-	print order.serial_nr
-	print order.product_id.name
-	print
-
-
-
 #------------------------------------------------ Date - Correct for Utc - With Delta--------------
 def correct_date_delta(date, delta_hou=0, delta_min=0, delta_sec=0):
 	"""
@@ -427,9 +326,11 @@ def correct_date_delta(date, delta_hou=0, delta_min=0, delta_sec=0):
 	#print
 	#print 'Correct Date'
 	date_format = "%Y-%m-%d %H:%M:%S"
-	date_dt = datetime.datetime.strptime(date, date_format) + datetime.timedelta(hours=delta_hou, minutes=delta_min, seconds=delta_sec)
+	date_dt = datetime.datetime.strptime(date, date_format) + \
+															datetime.timedelta(hours=delta_hou, minutes=delta_min, seconds=delta_sec)
 	date_s = date_dt.strftime(date_format)
 	return date_s
+
 
 
 #------------------------------------------------ Date - Correct for Utc --------------------------

@@ -5,14 +5,11 @@
 # 	Created: 			 1 Nov 2016
 # 	Last updated: 	 	 2 Sep 2018
 #
-from openerp import models, fields, api
 import datetime
+from openerp import models, fields, api
 import app_vars
 import time_funcs
 import lib
-import user
-
-import eval_vars
 import control_vars
 
 class Control(models.Model):
@@ -20,6 +17,16 @@ class Control(models.Model):
 	_name = 'openhealth.control'
 
 	_inherit = ['oeh.medical.evaluation', 'base_multi_image.owner']
+
+
+
+# ----------------------------------------------------------- Deprecated ------------------------------------------------------
+	#@api.onchange('appointment')
+	#def _onchange_appointment(self):
+	#	print 
+	#	print 'On Change - Appointment'
+		#self.control_date = self.appointment.appointment_date
+
 
 
 # ----------------------------------------------------------- Dates ------------------------------------------------------
@@ -35,15 +42,11 @@ class Control(models.Model):
 
 	@api.multi
 	#@api.depends('state')
-	#def _compute_evaluation_start_date(self):
 	def _compute_evaluation_start_date_nex(self):
-		print 
-		print 'Compute - Eval Start Date'
+		#print
+		#print 'Compute - Eval Start Date'
 		for record in self:
-			print record.appointment.appointment_date
 			record.evaluation_start_date = record.appointment.appointment_date
-
-
 
 
 
@@ -58,10 +61,9 @@ class Control(models.Model):
 	@api.multi
 	#@api.depends('state')
 	def _compute_control_date(self):
-		print 
-		print 'Compute - Control Date'
+		#print
+		#print 'Compute - Control Date'
 		for record in self:
-			print record.appointment.appointment_date
 			record.control_date = record.appointment.appointment_date
 
 
@@ -127,8 +129,7 @@ class Control(models.Model):
 	@api.multi
 	#@api.depends('state')
 	def _compute_maturity(self):
-		
-		#print 
+		#print
 		#print 'Compute Maturity'
 		
 		for record in self:
@@ -227,11 +228,7 @@ class Control(models.Model):
 			#ondelete='cascade', 
 		)
 
-	@api.onchange('appointment')
-	def _onchange_appointment(self):
-		print 
-		print 'On Change - Appointment'
-		#self.control_date = self.appointment.appointment_date
+
 
 
 
@@ -454,14 +451,12 @@ class Control(models.Model):
 
 
 
-# ----------------------------------------------------------- Update ------------------------------------------------------
-
+# ----------------------------------------------------------- Update ------------------------------
 	# Update Done  
 	@api.multi	
 	def update_done(self):
-
-		print 
-		print 'Update Done'
+		#print
+		#print 'Update Done'
 
 		# Done 
 		if self.x_done == False: 
@@ -485,9 +480,8 @@ class Control(models.Model):
 	# Update App  
 	@api.multi	
 	def update_dates(self):
-
-		print 
-		print 'Update Dates'
+		#print
+		#print 'Update Dates'
 
 		self.evaluation_start_date = self.appointment.appointment_date
 
@@ -496,7 +490,6 @@ class Control(models.Model):
 
 		# First
 		self.first_date = self.appointment.appointment_date
-
 
 		# Treatment Flag 
 		self.treatment.update()

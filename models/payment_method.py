@@ -16,31 +16,8 @@ class PaymentMethod(models.Model):
 	_name = 'openhealth.payment_method'
 
 
-# ----------------------------------------------------------- Id Doc - Deperecated ! ------------------------------------------------------
 
-	# Id Doc 
-	#id_doc = fields.Char(
-	#		'Nr. Doc.', 
-	#		required=True, 
-	#		readonly=True, 
-	#	)
-
-	# Id Document Type 
-	#id_doc_type = fields.Selection(
-	#		selection = pat_vars._id_doc_type_list, 
-	#		string='Tipo de documento', 
-	#		required=True, 
-	#		readonly=True, 
-	#	)
-
-
-	# DNI 
-	#dni = fields.Char(
-	#		'DNI', 
-	#		states=pm_vars.READONLY_STATES, 
-	#	)
-
-
+# ----------------------------------------------------------- Deperecated ? ------------------------------------------------------
 	# Firm 
 	firm = fields.Char(
 			'Razón social',
@@ -63,8 +40,8 @@ class PaymentMethod(models.Model):
 	# Onchange Pm Line Ids 
 	@api.onchange('pm_line_ids')
 	def _onchange_pm_line_ids(self):
-		print 
-		print 'On change - Line'
+		#print
+		#print 'On change - Line'
 
 		pm_total = 0
 		ctr = 1
@@ -102,17 +79,12 @@ class PaymentMethod(models.Model):
 	@api.multi
 	#@api.depends('total', 'pm_total')
 	def _compute_pm_total(self):
-		print 
-		print 'Compute Pm Total'
-
+		#print
+		#print 'Compute Pm Total'
 		for record in self:
-
 			pm_total = 0
-
 			for line in record.pm_line_ids:
-
 				pm_total = pm_total + line.subtotal
-
 			record.pm_total = pm_total
 			
 
@@ -130,9 +102,8 @@ class PaymentMethod(models.Model):
 	@api.multi
 	#@api.depends('total', 'pm_total')
 	def _compute_balance(self):		
-		print 
-		print 'Compute Balance'
-
+		#print
+		#print 'Compute Balance'
 		for record in self:
 			record.balance = record.total - record.pm_total
 
@@ -207,19 +178,12 @@ class PaymentMethod(models.Model):
 	@api.multi
 	#@api.depends('state')
 	def _compute_state(self):
-		#print 
-		#print 'Compute State'
-		
 		for record in self:
-		
 			record.state = 'draft'
-		
-			if record.balance == 0.0		and		record.saledoc != False:
+			if record.balance == 0.0 and record.saledoc != False:
 				record.state = 'sale'
-		
 			if record.confirmed:
 				record.state = 'done'
-		
 			if record.editable:
 				record.state = 'editable'
 
@@ -316,7 +280,6 @@ class PaymentMethod(models.Model):
 			string="Editable", 
 		)
 
-
 	# For Admin Editing 
 	@api.multi
 	def state_force(self):  
@@ -327,33 +290,3 @@ class PaymentMethod(models.Model):
 			self.editable = False
 			self.confirmed = True
 
-
-# ----------------------------------------------------------- CRUD ------------------------------------------------------
-	# Write 
-	@api.multi
-	def write(self,vals):
-		#print
-		#print 'Payment Method  - Write'
-		#print vals
-
-
-		# Update Partner - Dni, Ruc, Firm 
-		#if 'dni' in vals: 
-		#	dni = vals['dni']
-		#	self.partner.x_dni = dni 
-
-		#if 'ruc' in vals: 
-		#	ruc = vals['ruc']
-		#	self.partner.x_ruc = ruc 
-
-		#if 'firm' in vals: 
-		#	firm = vals['firm']
-		#	self.partner.x_firm = firm 
-
-
-		#Write your logic here
-		res = super(PaymentMethod, self).write(vals)
-		#Write your logic here
-
-		return res
-	# write 

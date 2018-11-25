@@ -10,30 +10,30 @@ class Report:
 
 	def __init__(self, name, model, descriptor, caller):
 		#print 'Class Report - Init'
-		self.env = caller.env 
+		self.env = caller.env
 		self.name = name
 		self.model = model
 		self.descriptor = descriptor
 
 		# Search
 		self.db_obj = self.env[self.model].search([
-														('test_target', '=', True), 
+														('test_target', '=', True),
 
 													],
 												#order=self.descriptor +  ' desc',
 												limit=1,
 										)
 		#print self.db_obj
-		#print 
+		#print
 
 
-	def update(self): 
+	def update(self):
 		#print
 		#print 'Class Report - Update'
-		if self.db_obj.name != False: 
+		if self.db_obj.name != False:
 			self.db_obj.update()
 
 
-	def __repr__(self): 
-		return 'Report(*{!r})'.format(self.model)		# !r chooses repr to format the value 
+	def __repr__(self):
+		return 'Report(*{!r})'.format(self.model)		# !r chooses repr to format the value
 

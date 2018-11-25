@@ -1,0 +1,58 @@
+
+
+# ----------------------------------------------------------- Id Doc - Deperecated ! ------------------------------------------------------
+
+	# Id Doc 
+	#id_doc = fields.Char(
+	#		'Nr. Doc.', 
+	#		required=True, 
+	#		readonly=True, 
+	#	)
+
+	# Id Document Type 
+	#id_doc_type = fields.Selection(
+	#		selection = pat_vars._id_doc_type_list, 
+	#		string='Tipo de documento', 
+	#		required=True, 
+	#		readonly=True, 
+	#	)
+
+
+	# DNI 
+	#dni = fields.Char(
+	#		'DNI', 
+	#		states=pm_vars.READONLY_STATES, 
+	#	)
+
+
+
+
+# ----------------------------------------------------------- CRUD ------------------------------------------------------
+	# Write 
+	@api.multi
+	def write(self,vals):
+		#print
+		#print 'Payment Method  - Write'
+		#print vals
+
+
+		# Update Partner - Dni, Ruc, Firm 
+		#if 'dni' in vals: 
+		#	dni = vals['dni']
+		#	self.partner.x_dni = dni 
+
+		#if 'ruc' in vals: 
+		#	ruc = vals['ruc']
+		#	self.partner.x_ruc = ruc 
+
+		#if 'firm' in vals: 
+		#	firm = vals['firm']
+		#	self.partner.x_firm = firm 
+
+
+		#Write your logic here
+		res = super(PaymentMethod, self).write(vals)
+		#Write your logic here
+
+		return res
+	# write 

@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
-#
+"""
 # 	*** Procedure Session Funcs 
 #
 # Created: 				  1 Nov 2016
 # Last updated: 	 	 15 Aug 2018
-#
+"""
 from openerp import models, fields, api
 from datetime import datetime
 import time_funcs
-
 import user
 import lib
 
@@ -17,10 +16,8 @@ import lib
 
 @api.multi
 def create_sessions(self, nr_sessions, nr_ses_created):
-
-	print
-	print 'Create Sessions - Go'
-
+	#print
+	#print 'Create Sessions - Go'
 
 	# Init
 	procedure_id = self.id 
@@ -85,7 +82,7 @@ def create_sessions(self, nr_sessions, nr_ses_created):
 	#for k in range(0,self.number_sessions): 
 	for k in range(0, nr_sessions): 
 
-		print k 
+		#print k 
 
 
 		# Init 
@@ -106,8 +103,8 @@ def create_sessions(self, nr_sessions, nr_ses_created):
 			
 			appointment_date = session_date_str + ' '
 
-			print app_date
-			print appointment_date
+			#print app_date
+			#print appointment_date
 
 			# Search Appointment 
 			appointment = self.env['oeh.medical.appointment'].search([ 	
@@ -156,8 +153,8 @@ def create_sessions(self, nr_sessions, nr_ses_created):
 																})
 		
 		appointment_id = appointment.id
-		print appointment 
-		print appointment_id
+		#print appointment
+		#print appointment_id
 
 
 

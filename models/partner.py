@@ -212,9 +212,8 @@ class Partner(models.Model):
 	@api.multi
 	#@api.depends('x_card')
 	def _compute_x_vip(self):
-
-		print
-		print 'Compute  - Partner - Vip'
+		#print
+		#print 'Compute  - Partner - Vip'
 
 		# Does he have a Vip card ?
 		for record in self:

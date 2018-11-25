@@ -118,8 +118,8 @@ class AccountContasis(models.Model):
 	# Update
 	@api.multi
 	def update(self):  
-		print 
-		print 'Account - Update'
+		#print 
+		#print 'Account - Update'
 
 
 		# Clear 

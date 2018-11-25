@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# 		lib.py
+# 		lib.py - Dep ?
 #
 # 		Abstract, general purpose. Can be Unit-tested. Is completely standard. Gives service to all Users
 # 
@@ -11,8 +11,8 @@
 
 #------------------------------------------------ File Name ---------------------------------------------------
 def generate_serial_nr(counter, delta, pad):
-	print 
-	print 'Gen Serial Nr'
+	#print
+	#print 'Gen Serial Nr'
 
 	return '001-' + str(counter + delta).zfill(pad)
 
@@ -21,7 +21,7 @@ def generate_serial_nr(counter, delta, pad):
 
 #------------------------------------------------ File Name ---------------------------------------------------
 def get_serial_nr(serial_nr, delta, pad):
-	print 
-	print 'Get Serial Nr'
+	#print 
+	#print 'Get Serial Nr'
 
 	return '001-' + str(int(serial_nr.split('-')[1]) + delta).zfill(pad)

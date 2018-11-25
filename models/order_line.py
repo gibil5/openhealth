@@ -287,7 +287,8 @@ class SaleOrderLine(models.Model):
 
 		# Consultation
 		elif categ == 'consultation':
-			print
+			#print
+			pass
 
 		# Products
 		else:

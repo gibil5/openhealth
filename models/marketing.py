@@ -10,10 +10,6 @@ import pat_vars
 import mkt_funcs
 import numpy as np
 import collections
-#import acc_funcs
-#import openerp.addons.decimal_precision as dp
-#import matplotlib.pyplot as plt
-#import pandas as pd
 
 class Marketing(models.Model):
 
@@ -680,8 +676,8 @@ class Marketing(models.Model):
 	# Correct
 	@api.multi
 	def correct_patients(self):  
-		print 
-		print 'Correct Patients'
+		#print 
+		#print 'Correct Patients'
 
 		# Loop 
 		for line in self.patient_line: 
@@ -695,8 +691,8 @@ class Marketing(models.Model):
 					# This !
 					line.patient.x_date_record = line.patient.create_date
 			
-					print 'Correct !'
-		print 
+					#print 'Correct !'
+		#print 
 	# correct_patients
 
 
@@ -1894,12 +1890,9 @@ class Marketing(models.Model):
 	# Update
 	@api.multi
 	def update(self):  
-		print 'Marketing - Update'
-
+		#print 'Marketing - Update'
 		self.update_patients()
-
 		self.update_sales()
-
 		self.update_recos()
 
 	# update 

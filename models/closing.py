@@ -496,9 +496,7 @@ class Closing(models.Model):
 	# Update 
 	@api.multi
 	def update(self):  
-
-		print 'Closing - Update'
-
+		#print 'Closing - Update'
 		self.update_totals()
 
 

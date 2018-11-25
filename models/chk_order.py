@@ -17,8 +17,8 @@ _MODEL = 'sale.order'
 # -----------------------------------------------------------  Ruc --------------------------------------
 # Check Id Doc
 def check_id_doc(self):
-	print
-	print 'Chk - Check Id Doc'
+	#print
+	#print 'Chk - Check Id Doc'
 
 	# Loop 
 	for record in self:
@@ -131,8 +131,8 @@ def check_name(self):
 # -----------------------------------------------------------  Serial Nr - Custom ------------------------------------------------------
 # Check Serial Nr - Content 
 def _check_x_serial_nr(self):
-	print
-	print 'Check Serial Nr'
+	#print
+	#print 'Check Serial Nr'
 	
 	_name = 'x_serial_nr'
 
@@ -170,10 +170,10 @@ def _check_x_serial_nr(self):
 
 
 			# Prints 
-			print record.patient.name 
-			print serial_nr
-			print last_serial_nr
-			print delta 
+			#print record.patient.name 
+			#print serial_nr
+			#print last_serial_nr
+			#print delta 
 
 
 			# Content 
@@ -187,8 +187,8 @@ def _check_x_serial_nr(self):
 # -----------------------------------------------------------  Ruc ------------------------------------------------------
 # Check Ruc
 def check_x_ruc_dep(self):
-	print
-	print 'Check Ruc'
+	#print
+	#print 'Check Ruc'
 	
 	# Init 
 	_name = 'x_ruc'
@@ -212,8 +212,8 @@ def check_x_ruc_dep(self):
 # ----------------------------------------------------------- Sale ------------------------------------------------------
 # Check Var Reco
 def check_var_sale(self, _model, _name, _length, _bad, uniqueness, format_number, content):
-	print 
-	print 'Check - Var Sale'
+	#print 
+	#print 'Check - Var Sale'
 
 
 	# Loop 

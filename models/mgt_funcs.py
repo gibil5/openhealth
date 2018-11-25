@@ -14,8 +14,8 @@ def get_orders_filter_fast(self, date_bx, date_ex):
 	"""
 	high level support for doing this and that.
 	"""
-	print
-	print 'Get Orders - Fast'
+	#print
+	#print 'Get Orders - Fast'
 
 
 	# Init

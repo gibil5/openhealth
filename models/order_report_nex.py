@@ -108,9 +108,8 @@ class order_report_nex(models.Model):
 	@api.multi 
 	#def update_order_report(self):
 	def update(self):
-
-		print 
-		print 'EC - Update'
+		#print 
+		#print 'EC - Update'
 
 		# Clean 
 		self.order_line_ids.unlink()

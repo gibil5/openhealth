@@ -248,11 +248,9 @@ class Card(models.Model):
 
 	@api.multi
 	def unlink(self):
-
-		print 'jx'
-		print 'CRUD - Card - Unlink'
-		print 
-		
+		#print 'jx'
+		#print 'CRUD - Card - Unlink'
+		#print 
 
 
 		# Partner - Pricelist 
@@ -280,10 +278,9 @@ class Card(models.Model):
 
 	@api.model
 	def create(self,vals):
-
-		print 'jx'
-		print 'CRUD - Card - Create'
-		print 
+		#print 'jx'
+		#print 'CRUD - Card - Create'
+		#print 
 
 		#print vals
 		#print 

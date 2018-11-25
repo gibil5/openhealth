@@ -131,8 +131,8 @@ class Treatment(models.Model):
 				obj.update()
 
 			# Print
-			for obj in objs:
-				print obj
+			#for obj in objs:
+			#	print obj
 
 
 

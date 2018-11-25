@@ -10,8 +10,8 @@ from openerp import models, fields, api
 # ---------------------------------------------- Create Service - Product --------------------------------------------------------
 # Product 
 def create_service_product(self):  
-	print 
-	print 'Create Service Product'
+	#print
+	#print 'Create Service Product'
 
 	# Init 
 	patient_id = self.patient.id

@@ -22,8 +22,8 @@ class Evaluation(models.Model):
 	@api.multi	
 	def update_dates(self):
 
-		print 
-		print 'Update Dates'
+		#print 
+		#print 'Update Dates'
 
 		self.evaluation_start_date = self.appointment.appointment_date
 
@@ -35,8 +35,8 @@ class Evaluation(models.Model):
 	@api.multi	
 	def update_appointment(self):
 
-		print 
-		print 'Update Appointment'
+		#print 
+		#print 'Update Appointment'
 
 		res_id = self.appointment.id  
 

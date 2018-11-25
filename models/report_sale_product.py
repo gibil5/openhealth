@@ -3,8 +3,6 @@
 # 	ReportSaleProduct 
 # 
 from openerp import models, fields, api
-#import resap_funcs
-#import account_funcs as acc_funcs
 import mgt_funcs
 
 class ReportSaleProduct(models.Model):
@@ -92,8 +90,8 @@ class ReportSaleProduct(models.Model):
 	# Update 
 	@api.multi
 	def update(self):  
-		print 
-		print 'Report Sale Product - Update'
+		#print
+		#print 'Report Sale Product - Update'
 
 
 		# Clean 

@@ -20,8 +20,8 @@ def import_txt(self):
 	"""
 	high level support for doing this and that.
 	"""
-	print
-	print 'Import Txt'
+	#print
+	#print 'Import Txt'
 
 	#print(os.environ['HOME'])
 
@@ -49,7 +49,7 @@ def import_txt(self):
 		fnames.append(tic_rec_fname)
 
 
-	print fnames
+	#print fnames
 
 
 	# Loop

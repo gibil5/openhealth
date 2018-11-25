@@ -26,9 +26,8 @@ class Counter(models.Model):
 	@api.multi
 	#@api.depends('total')
 	def _compute_delta(self):
-		print 
-		print 'Counter - Compute Delta'
-
+		#print
+		#print 'Counter - Compute Delta'
 		for record in self:
 			if record.x_type in ['sale']: 
 				record.delta = user.get_delta(record)

@@ -15,8 +15,8 @@ def remove_patient(self, name):
 	"""
 	high level support for doing this and that.
 	"""
-	print
-	print 'Remove Patient'
+	#print
+	#print 'Remove Patient'
 	#print name
 
 	# Unlink Patient

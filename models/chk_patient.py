@@ -15,8 +15,8 @@ import chk
 #------------------------------------------------ Name ---------------------------------------------------
 # Check Name - Uniqueness
 def check_name(self):
-	print
-	print 'Check - Name'
+	#print
+	#print 'Check - Name'
 
 	# Init 	
 	#var_name = 'name'
@@ -51,8 +51,8 @@ def check_name(self):
 # ----------------------------------------------------------- Ruc ---------------------------------
 # Check Ruc
 def check_x_ruc(self):
-	print
-	print 'Check Ruc - 2nd version'
+	#print
+	#print 'Check Ruc - 2nd version'
 	
 	# Init
 	_name = 'Ruc'

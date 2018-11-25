@@ -54,8 +54,8 @@ class Product(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		print
-		print 'Get Code'
+		#print
+		#print 'Get Code'
 
 		coder = self.env['openhealth.coder'].search([
 															('type', 'in', ['product']),
@@ -75,8 +75,8 @@ class Product(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		print
-		print 'Unfix Name'
+		#print
+		#print 'Unfix Name'
 
 
 		if self.x_name_unfixed not in [False, '']:
@@ -96,8 +96,8 @@ class Product(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		print
-		print 'Fix Name'
+		#print
+		#print 'Fix Name'
 
 
 

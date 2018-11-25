@@ -14,8 +14,8 @@ from openerp.exceptions import ValidationError
 #------------------------------------------------ Name ---------------------------------------------------
 # Check Name 
 def check_name(self):
-	print 
-	print 'Check - Name'
+	#print 
+	#print 'Check - Name'
 
 	# Init 	
 	var_name = 'name'

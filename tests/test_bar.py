@@ -15,8 +15,8 @@ from openerp.tests.common import TransactionCase
 class TestModelA(TransactionCase):
 
 	def test_some_action(self):
-
-		print 'jx'
+		pass
+		#print 'jx'
 
 		#record = self.env['openhealth.test'].create({
 		#												'name': 'jx'

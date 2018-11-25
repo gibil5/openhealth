@@ -145,8 +145,8 @@ class payment_method_line(models.Model):
 	# Update Fields
 	@api.multi
 	def update_fields(self):  
-		print
-		print 'PM Line - Update'
+		#print
+		#print 'PM Line - Update'
 
 		# Dates 
 		date_time_corr, date_time_str = acc_funcs.correct_time(self,self.date_time, -5)

@@ -15,8 +15,8 @@ def create_controls(self, nr_controls, nr_ctl_created):
 	"""
 	Creates Controls for the Procedure Class.
 	"""
-	print
-	print 'Create Controls'
+	#print
+	#print 'Create Controls'
 
 	# Clean - Deprecated
 	#rec_set = self.env['openhealth.control'].search([

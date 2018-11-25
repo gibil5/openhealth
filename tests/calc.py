@@ -12,4 +12,4 @@ if __name__ == '__main__':
     #print calc 
     
     res = calc.add(2, 3)
-    print res 
+    #print res

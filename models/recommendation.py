@@ -36,8 +36,8 @@ class recommendation(models.Model):
 	# Product 
 	@api.multi
 	def create_service_product(self):  
-		print 
-		print 'Create Service Product'
+		#print 
+		#print 'Create Service Product'
 
 		# Init 
 		patient_id = self.treatment.patient.id

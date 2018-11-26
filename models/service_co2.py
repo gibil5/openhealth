@@ -7,10 +7,8 @@
 #
 from openerp import models, fields, api
 from datetime import datetime
-import service_co2_vars
-import prodvars
-
-#import serv_funcs
+from . import service_co2_vars
+from . import prodvars
 
 class ServiceCo2(models.Model):
 	_name = 'openhealth.service.co2'

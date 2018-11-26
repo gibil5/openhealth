@@ -4,8 +4,8 @@
 # 
 from openerp import models, fields, api
 from datetime import datetime
-import prodvars
-import quick
+from . import prodvars
+from . import quick
 class ServiceQuick(models.Model):
 	_inherit = 'openhealth.service'
 	_name = 'openhealth.service.quick'

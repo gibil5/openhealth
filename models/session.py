@@ -4,7 +4,6 @@
 # 
 # Created: 				 1 Nov 2016
 #
-
 from openerp import models, fields, api
 from datetime import datetime
 from . import time_funcs

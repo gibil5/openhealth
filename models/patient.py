@@ -7,13 +7,13 @@
 """
 from openerp import models, fields, api
 from datetime import datetime
-import lib
-import user
-import count_funcs
-import pat_vars
-import creates
-import tst_pat
-import chk_patient
+from . import lib
+from . import user
+from . import count_funcs
+from . import pat_vars
+from . import creates
+from . import tst_pat
+from . import chk_patient
 
 class Patient(models.Model):
 	"""

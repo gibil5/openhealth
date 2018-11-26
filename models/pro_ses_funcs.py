@@ -7,13 +7,12 @@
 """
 from openerp import models, fields, api
 from datetime import datetime
-import time_funcs
-import user
-import lib
+from . import time_funcs
+from . import user
+from . import lib
 
 
 #------------------------------------------------ Create Sessions ---------------------------------------------------
-
 @api.multi
 def create_sessions(self, nr_sessions, nr_ses_created):
 	#print

@@ -6,8 +6,9 @@
 # 	Last mod: 				28 Aug 2018
 #
 from openerp import models, fields, api
-import pm_vars
-import account_funcs as acc_funcs
+from . import pm_vars
+from . import account_funcs as acc_funcs
+
 class payment_method_line(models.Model):	
 	_name = 'openhealth.payment_method_line'
 	_order = 'date_time asc'

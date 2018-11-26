@@ -6,13 +6,9 @@
 #
 
 from openerp import models, fields, api
-
-import pat_vars
-
-import eval_vars
-
-import prodvars
-
+from . import pat_vars
+from . import eval_vars
+from . import prodvars
 
 class PaitentLine(models.Model):
 	

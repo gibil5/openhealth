@@ -6,12 +6,11 @@
 	Last updated: 	 	 	24 Nov 2018
 """
 from openerp import models, fields, api
-import app_vars
-import pro_con_funcs
-import pro_ses_funcs
+from . import app_vars
+from . import pro_con_funcs
+from . import pro_ses_funcs
 
 class Procedure(models.Model):
-
 	_name = 'openhealth.procedure'
 	#_inherit = ['oeh.medical.evaluation', 'openhealth.base']
 	_inherit = 'oeh.medical.evaluation'

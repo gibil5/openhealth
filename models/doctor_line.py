@@ -6,9 +6,8 @@
 # Last up: 			20 Aug 2018
 #
 from openerp import models, fields, api
-import collections
-
-import mgt_vars
+from . import collections
+from . import mgt_vars
 
 class DoctorLine(models.Model):	
 

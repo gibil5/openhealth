@@ -6,9 +6,7 @@
 # Last up: 			20 Aug 2018
 #
 from openerp import models, fields, api
-
-import mgt_vars
-
+from . import mgt_vars
 
 class FamilyLine(models.Model):	
 

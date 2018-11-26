@@ -6,8 +6,8 @@
 	Created: 			14 Aug 2018
  	Last up: 	 		 5 Nov 2018
 """
-import lib
-import user
+from . import lib
+from . import user
 
 
 # ----------------------------------------------------------- Remove Patient  ---------------------

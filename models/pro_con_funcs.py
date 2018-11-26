@@ -5,8 +5,8 @@
 # 	Created: 				  1 Nov 2016
 # 	Last updated: 	 	 	 21 Nov 2018
 """
-import user
-import lib
+from . import user
+from . import lib
 
 
 #------------------------------------------------ Create Controls ---------------------------------

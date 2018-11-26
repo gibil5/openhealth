@@ -6,8 +6,8 @@
 # 		Last up: 	 		 3 Sep 2018
 # 
 from openerp import models, fields, api
-import count_vars
-import user 
+from . import count_vars
+from . import user
 
 class Counter(models.Model):
 	

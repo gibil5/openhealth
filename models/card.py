@@ -13,10 +13,7 @@ from . import count_funcs
 class Card(models.Model):
 
 	_name = 'openhealth.card'		
-	#_inherit = 'oeh.medical.card'
 
-	
-	#_order = 'date_created desc'
 	_order = 'name desc'
 
 
@@ -238,7 +235,7 @@ class Card(models.Model):
 
 
 
-# ----------------------------------------------------------- CRUD ------------------------------------------------------
+# ----------------------------------------------------------- CRUD - Deprecated ? -----------------
 	@api.multi
 	def unlink(self):
 		#print 'jx'
@@ -258,7 +255,12 @@ class Card(models.Model):
 
 
 		# Put your logic here 
-		res = models.Model.unlink(self)
+		#res = models.Model.unlink(self)
+		#res = super(openhealth.Card, self).unlink()
+		res = super(models.Model, self).unlink()
+
+
+
 		# Or here 
 				
 		return res 

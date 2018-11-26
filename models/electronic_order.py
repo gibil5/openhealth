@@ -8,9 +8,9 @@
 
 """
 from openerp import models, fields, api
-import ord_vars
-import lib
-import chk_electronic
+from . import ord_vars
+from . import lib
+from . import chk_electronic
 
 class electronic_order(models.Model):
 	"""

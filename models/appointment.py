@@ -6,9 +6,9 @@
 		Last updated: 	 	24 Nov 2018
 """
 from openerp import models, fields, api
-import app_vars
-import lib
-import user
+from . import app_vars
+from . import lib
+from . import user
 
 class Appointment(models.Model):
 	_inherit = 'oeh.medical.appointment'

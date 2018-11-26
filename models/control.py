@@ -7,10 +7,10 @@
 #
 import datetime
 from openerp import models, fields, api
-import app_vars
-import time_funcs
-import lib
-import control_vars
+from . import app_vars
+from . import time_funcs
+from . import lib
+from . import control_vars
 
 class Control(models.Model):
 	

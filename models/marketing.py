@@ -4,12 +4,12 @@
 # 
 # Created: 				19 Mayo 2018
 #
-from openerp import models, fields, api
 import datetime
-import pat_vars
-import mkt_funcs
 import numpy as np
 import collections
+from openerp import models, fields, api
+from . import pat_vars
+from . import mkt_funcs
 
 class Marketing(models.Model):
 

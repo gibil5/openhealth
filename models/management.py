@@ -8,9 +8,9 @@
 import collections
 from timeit import default_timer as timer
 from openerp import models, fields, api
-import mgt_funcs
-import export
-import mgt_vars
+from . import mgt_funcs
+from . import export
+from . import mgt_vars
 
 class Management(models.Model):
 	"""

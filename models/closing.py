@@ -5,10 +5,9 @@
 # Created: 			18 Oct 2017
 # Last up: 	 		18 Aug 2018
 #
-from openerp import models, fields, api
-
 import datetime
-import clos_funcs
+from openerp import models, fields, api
+from . import clos_funcs
 
 class Closing(models.Model):	
 	#_inherit='sale.closing'

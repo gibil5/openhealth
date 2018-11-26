@@ -11,16 +11,15 @@ from num2words import num2words
 from openerp import models, fields, api
 from openerp import _
 from openerp.exceptions import Warning
-import ord_vars
-import creates
-import pat_vars
-import user
-import lib
-import lib_qr
-import chk_patient
-import chk_order
-import test_order
-#import lib_con
+from . import ord_vars
+from . import creates
+from . import pat_vars
+from . import user
+from . import lib
+from . import lib_qr
+from . import chk_patient
+from . import chk_order
+from . import test_order
 
 class sale_order(models.Model):
 	"""

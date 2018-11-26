@@ -8,14 +8,14 @@
 #from timeit import default_timer as timer
 import datetime
 from openerp import models, fields, api
-import time_funcs
-import treatment_vars
-import lib
-import user
-import creates as cre
-import lib_rep
-import reco_funcs
-import test_treatment as tst
+from . import time_funcs
+from . import treatment_vars
+from . import lib
+from . import user
+from . import creates as cre
+from . import lib_rep
+from . import reco_funcs
+from . import test_treatment as tst
 
 class Treatment(models.Model):
 	_inherit = 'openhealth.process'

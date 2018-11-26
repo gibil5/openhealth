@@ -16,7 +16,8 @@
         </record>
 
 
-        <record id="rchavarri_clinicachavarri" model="res.users">
+
+        <record id="rchavarri_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Renato Chavarri</field>
             <field name="login">rchavarri@clinicachavarri.com</field>
 
@@ -44,7 +45,7 @@
             <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
         </record>
 
-        <record id="fchavarri_clinicachavarri" model="res.users">
+        <record id="fchavarri_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Fernando Chavarri</field>
             <field name="login">fchavarri@clinicachavarri.com</field>
 
@@ -80,7 +81,7 @@
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
         </record>
 
-        <record id="vmori_clinicachavarri" model="res.users">
+        <record id="vmori_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Victor Mori</field>
             <field name="login">vmori@clinicachavarri.com</field>
 
@@ -109,7 +110,7 @@
             <field name="email">jessenwanger@clinicachavarri.com</field>
         </record>
 
-        <record id="jessenwanger_clinicachavarri" model="res.users">
+        <record id="jessenwanger_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Josef Essenwanger</field>
             <field name="login">jessenwanger@clinicachavarri.com</field>
 

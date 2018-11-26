@@ -4,10 +4,6 @@
 
 
 
-
-
-
-
 <!-- Yober Ramirez -->
         <record id="yramirez_partner" model="res.partner">
             <field name="name">Yober Ramirez</field>
@@ -16,7 +12,8 @@
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
         </record>
 
-        <record id="yramirez_clinicachavarri" model="res.users">
+
+        <record id="yramirez_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Yober Ramirez</field>
             <field name="login">yramirez@clinicachavarri.com</field>
             

@@ -12,7 +12,7 @@
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
         </record>
 
-        <record id="pbalboa_clinicachavarri" model="res.users">
+        <record id="pbalboa_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Percy Balboa</field>
             <field name="login">pbalboa@clinicachavarri.com</field>
 
@@ -40,7 +40,7 @@
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
         </record>
 
-        <record id="achaponan_clinicachavarri" model="res.users">
+        <record id="achaponan_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Angelo Chapoñan</field>
             <field name="login">achaponan@clinicachavarri.com</field>
 
@@ -66,7 +66,7 @@
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
         </record>
 
-        <record id="fcatpo_clinicachavarri" model="res.users">
+        <record id="fcatpo_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Fatima Catpo</field>
             <field name="login">fcatpo@clinicachavarri.com</field>
 
@@ -99,7 +99,7 @@
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
         </record>
 
-        <record id="lloli_clinicachavarri" model="res.users">
+        <record id="lloli_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Luis Loli</field>
             <field name="login">lloli@clinicachavarri.com</field>
             
@@ -125,7 +125,7 @@
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
         </record>
 
-        <record id="ipuga_clinicachavarri" model="res.users">
+        <record id="ipuga_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Ivan Puga</field>
             <field name="login">ipuga@clinicachavarri.com</field>
             
@@ -154,7 +154,7 @@
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
         </record>
 
-        <record id="lmasias_clinicachavarri" model="res.users">
+        <record id="lmasias_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Leonardo Masias</field>
             <field name="login">lmasias@clinicachavarri.com</field>
             

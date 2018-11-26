@@ -19,7 +19,7 @@
         </record>
 
 
-        <record id="mpedemonte_clinicachavarri" model="res.users">
+        <record id="mpedemonte_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Maria Luisa Pedemonte</field>            
             <field name="login">mpedemonte@clinicachavarri.com</field>
 

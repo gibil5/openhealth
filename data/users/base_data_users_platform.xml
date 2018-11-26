@@ -12,7 +12,7 @@
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
         </record>
 
-        <record id="jlopez_clinicachavarri" model="res.users">
+        <record id="jlopez_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Johanna Lopez</field>
             <field name="login">jlopez@clinicachavarri.com</field>
 
@@ -38,7 +38,7 @@
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
         </record>
 
-        <record id="pramirez_clinicachavarri" model="res.users">
+        <record id="pramirez_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Paulo Ramirez</field>
             <field name="login">pramirez@clinicachavarri.com</field>
 
@@ -63,7 +63,7 @@
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
         </record>
 
-        <record id="cramirez_clinicachavarri" model="res.users">
+        <record id="cramirez_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Cinthya Ramirez</field>
             <field name="login">cramirez@clinicachavarri.com</field>
 
@@ -87,7 +87,7 @@
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
         </record>
 
-        <record id="nescobar_clinicachavarri" model="res.users">
+        <record id="nescobar_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Nicolas Escobar</field>
             <field name="login">nescobar@clinicachavarri.com</field>
 
@@ -114,7 +114,7 @@
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
         </record>
 
-        <record id="imichelot_clinicachavarri" model="res.users">
+        <record id="imichelot_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Ivanna Michelot</field>
             <field name="login">imichelot@clinicachavarri.com</field>
 
@@ -142,7 +142,7 @@
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
         </record>
 
-        <record id="gnunhez_clinicachavarri" model="res.users">
+        <record id="gnunhez_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Gilda Nuñez</field>
             <field name="login">gnunhez@clinicachavarri.com</field>
 <!--
@@ -168,7 +168,7 @@
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
         </record>
 
-        <record id="mgrieve_clinicachavarri" model="res.users">
+        <record id="mgrieve_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Mariana Grieve</field>
             <field name="login">mgrieve@clinicachavarri.com</field>
             
@@ -195,7 +195,7 @@
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
         </record>
 
-        <record id="ktejada_clinicachavarri" model="res.users">
+        <record id="ktejada_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Karla Tejeda</field>
             <field name="login">ktejeda@clinicachavarri.com</field>
 <!--
@@ -221,7 +221,7 @@
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
         </record>
 
-        <record id="ctorrealba_clinicachavarri" model="res.users">
+        <record id="ctorrealba_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Claudia Torrealba</field>
             <field name="login">ctorrealba@clinicachavarri.com</field>
 

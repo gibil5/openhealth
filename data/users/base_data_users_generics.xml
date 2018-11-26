@@ -12,7 +12,8 @@
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
         </record>
 
-        <record id="plataforma_clinicachavarri" model="res.users">
+
+        <record id="plataforma_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">PLATAFORMA</field>
             <field name="login">plataforma@clinicachavarri.com</field>
 
@@ -41,7 +42,8 @@
         </record>
 
 
-        <record id="caja_clinicachavarri" model="res.users">
+
+        <record id="caja_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">CAJA</field>
             <field name="login">caja@clinicachavarri.com</field>
 
@@ -71,7 +73,7 @@
         </record>
 
 
-        <record id="medico_clinicachavarri" model="res.users">
+        <record id="medico_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">MEDICO</field>
             <field name="login">medico@clinicachavarri.com</field>
             
@@ -103,7 +105,8 @@
             <field name="email">archivo@clinicachavarri.com</field>
         </record>
 
-        <record id="archivo_clinicachavarri" model="res.users">
+
+        <record id="archivo_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">ARCHIVO</field>
             <field name="login">archivo@clinicachavarri.com</field>
 
@@ -133,7 +136,7 @@
         </record>
 
 
-        <record id="almacen_clinicachavarri" model="res.users">
+        <record id="almacen_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">ALMACEN</field>
             <field name="login">almacen@clinicachavarri.com</field>
             
@@ -162,7 +165,8 @@
         </record>
 
 
-        <record id="asistente_clinicachavarri" model="res.users">
+
+        <record id="asistente_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">ASISTENTE</field>
             <field name="login">asistente@clinicachavarri.com</field>
             
@@ -195,7 +199,8 @@
         </record>
 
 
-        <record id="staff_clinicachavarri" model="res.users">
+
+        <record id="staff_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">STAFF</field>
             <field name="login">staff@clinicachavarri.com</field>
             
@@ -224,7 +229,8 @@
         </record>
 
 
-        <record id="manager_clinicachavarri" model="res.users">
+
+        <record id="manager_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">MANAGER</field>
             <field name="login">manager@clinicachavarri.com</field>
 
@@ -252,7 +258,8 @@
             <field name="email">director@clinicachavarri.com</field>
         </record>
 
-        <record id="director_clinicachavarri" model="res.users">
+
+        <record id="director_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">DIRECTOR</field>
             <field name="login">director@clinicachavarri.com</field>
 

@@ -344,3 +344,44 @@ def correct_date(date):
 	date_dt = datetime.datetime.strptime(date, date_format) + datetime.timedelta(hours=-5, minutes=0)
 	date_s = date_dt.strftime(date_format)
 	return date_s
+
+
+
+
+#------------------------------------------------ Partner On change - Test --------------------------
+# Length
+def test_for_length(self, token, length):
+	"""
+	Test for Length
+	"""
+
+	if token and (len(str(token)) != length):
+		return {
+				'warning': {
+					'title': "Error: Debe tener " + str(length) + " caracteres.",
+					'message': token,
+				}}
+	else:
+		return 0
+# test_for_length
+
+
+
+# Digits
+def test_for_digits(self, token):
+	"""
+	Test for Digits
+	"""
+
+	if token and (not token.isdigit()):
+		return {
+				'warning': {
+					'title': "Error: Debe ser número.",
+					'message': token,
+				}}
+	else:
+		return 0
+# test_for_digits
+
+
+

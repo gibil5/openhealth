@@ -15,35 +15,29 @@
 
             <field name="page_width">75</field>
 
-
             <field name="margin_left">5</field>         
 
             <field name="margin_right">3</field>
 
-            <field name="header_spacing">0</field>
-
             <field name="dpi">130</field>
-
-
-
 
             <field name="margin_top">35</field>
             
             <field name="header_spacing">35</field>
 
-
-<!--
-            <field name="margin_bottom">80</field>          
-            <field name="margin_bottom">70</field>          
--->
             <field name="margin_bottom">0</field>
 
+            <field name="page_height">260</field>
 
 <!--
+            <field name="header_spacing">0</field>
+
+            <field name="margin_bottom">80</field>          
+            <field name="margin_bottom">70</field>          
+
             <field name="page_height">270</field>
             <field name="page_height">240</field>
 -->
-            <field name="page_height">260</field>
         </record>
 
 

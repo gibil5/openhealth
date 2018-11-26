@@ -674,7 +674,9 @@ class sale_order(models.Model):
 			# Nr of characters
 			if self.x_id_doc_type not in ['other']: 
 				length = _length[self.x_id_doc_type]
+
 				ret = lib.test_for_length(self, self.x_id_doc, length)
+				
 				if ret != 0:
 					msg = "Error: Documento debe tener " + str(length) + " caracteres."
 					raise Warning(_(msg))
@@ -705,7 +707,9 @@ class sale_order(models.Model):
 
 			# Test 
 			length = 11
+
 			ret = lib.test_for_length(self, self.x_ruc, length)
+			
 			if ret != 0:
 				msg = "Error: RUC debe tener " + str(length) + " caracteres."
 				raise Warning(_(msg))

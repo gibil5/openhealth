@@ -67,31 +67,6 @@ def test_integration(self):
 
 
 
-
-
-
-# ----------------------------------------------------------- Computes ----------------------------
-# Computes - Deprecated ?
-#def test_computes(self):
-	"""
-	high level support for doing this and that.
-	"""
-	#print
-	#print 'Order - Computes'
-
-	#print 'x_partner_vip\t', self.x_partner_vip
-	#print 'nr_lines\t', self.nr_lines
-	#print 'x_amount_total\t', self.x_amount_total
-	#print 'x_total_in_words\t', self.x_total_in_words
-	#print 'x_total_cents\t', self.x_total_cents
-	#print 'x_total_net\t', self.x_total_net
-	#print 'x_total_tax\t', self.x_total_tax
-	#print 'x_my_company\t', self.x_my_company
-	#print 'x_date_order_corr\t', self.x_date_order_corr
-
-
-
-
 # ----------------------------------------------------------- Actions -----------------------------
 # Actions
 def test_actions(self):
@@ -107,8 +82,6 @@ def test_actions(self):
 	self.cancel_order()
 	self.activate_order()
 	self.open_line_current()
-
-
 
 
 

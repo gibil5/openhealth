@@ -5,10 +5,10 @@
 	Created: 			11 Sep 2018
 	Last up: 	 		12 Sep 2018
 """
+from __future__ import print_function  # Only needed for Python 2
 import os
 import shutil
 import io
-from __future__ import print_function  # Only needed for Python 2
 from . import lib_exp
 
 

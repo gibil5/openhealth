@@ -9,7 +9,7 @@
 		Last up: 	 		27 Sep 2018
 """
 from openerp.exceptions import ValidationError
-import chk
+from . import chk
 _MODEL = 'sale.order'
 
 

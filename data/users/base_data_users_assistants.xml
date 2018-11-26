@@ -8,7 +8,6 @@
 <!-- Elias Ochante -->
         <record id="yochante_partner" model="res.partner">
             <field name="name">Elias Ochante</field>
-
             <field name="email">eochante@clinicachavarri.com</field>
 <!--
             <field name="email">yochante@clinicachavarri.com</field>
@@ -17,7 +16,9 @@
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
         </record>
 
-        <record id="yochante_clinicachavarri" model="res.users">
+
+
+        <record id="yochante_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Elias Ochante</field>
 
             <field name="login">eochante@clinicachavarri.com</field>
@@ -51,7 +52,7 @@
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
         </record>
 
-        <record id="rgarcia_clinicachavarri" model="res.users">
+        <record id="rgarcia_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Rossana Garcia</field>
             <field name="login">rgarcia@clinicachavarri.com</field>
             
@@ -81,7 +82,7 @@
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
         </record>
 
-        <record id="nmendoza_clinicachavarri" model="res.users">
+        <record id="nmendoza_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Nancy Mendoza</field>
             <field name="login">nmendoza@clinicachavarri.com</field>
             
@@ -109,7 +110,7 @@
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
         </record>
 
-        <record id="mtirado_clinicachavarri" model="res.users">
+        <record id="mtirado_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Melita Tirado</field>
             <field name="login">mtirado@clinicachavarri.com</field>
             
@@ -138,7 +139,7 @@
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
         </record>
 
-        <record id="eruiz_clinicachavarri" model="res.users">
+        <record id="eruiz_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Eulalia Ruiz</field>
             <field name="login">eruiz@clinicachavarri.com</field>
             

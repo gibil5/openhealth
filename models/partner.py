@@ -300,26 +300,29 @@ class Partner(models.Model):
 		self.city = "" if self.x_foreign == True else 'don'
 
 
-	# Dni - Test - For Digits and Length
-	@api.onchange('x_dni')
-	def _onchange_x_dni(self):
-
-		ret = lib.test_for_digits(self, self.x_dni)		
-		return ret if ret != 0 else 'don'
-
-		ret = lib.test_for_length(self, self.x_dni, 8)
-		return ret if ret != 0 else 'don'
 
 
-	# Ruc - Test - For Digits 
-	@api.onchange('x_ruc')
-	def _onchange_x_ruc(self):
+	# Dni - Test - For Digits and Length - Deprecated !
+	#@api.onchange('x_dni')
+	#def _onchange_x_dni(self):
+
+	#	ret = lib.test_for_digits(self, self.x_dni)		
+	#	return ret if ret != 0 else 'don'
+
+	#	ret = lib.test_for_length(self, self.x_dni, 8)
+	#	return ret if ret != 0 else 'don'
+
+
+	# Ruc - Test - For Digits - Deprecated
+	#@api.onchange('x_ruc')
+	#def _onchange_x_ruc(self):
 		
-		ret = lib.test_for_digits(self, self.x_ruc)		
-		return ret if ret != 0 else 'don'
+	#	ret = lib.test_for_digits(self, self.x_ruc)		
+	#	return ret if ret != 0 else 'don'
 
-		ret = lib.test_for_length(self, self.x_ruc, 11)		
-		return ret if ret != 0 else 'don'
+	#	ret = lib.test_for_length(self, self.x_ruc, 11)		
+	#	return ret if ret != 0 else 'don'
+
 
 
 

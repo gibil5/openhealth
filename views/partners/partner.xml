@@ -96,18 +96,13 @@
 
 
 
-
+<!--
                     <field name="vspace"/>
-
                     <field  name="x_dni"/>
-
-
-
                     <field name="vspace"/>
-
                     <field name="x_firm"/>
-                    
                     <field name="x_ruc"/>               
+-->            
                 </xpath>
 
 

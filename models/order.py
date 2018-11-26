@@ -7,7 +7,12 @@
 """
 import math
 import datetime
-from num2words import num2words
+
+try:
+	from num2words import num2words
+except (ImportError, IOError) as err:
+	_logger.debug(err)
+
 from openerp import models, fields, api
 from openerp import _
 from openerp.exceptions import Warning
@@ -636,94 +641,6 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Check - Content ---------------------
-
-	# Personal identifiers: Dni, Ruc 
-	# Check for length and digits 
-
-	# Check Content 
-	@api.multi 
-	def check_content(self):
-		#print
-		#print 'Check Content'
-
-		#self.x_dni = self.partner_id.x_dni
-		#self.x_ruc = self.partner_id.x_ruc
-
-		#print self.patient.name 				# Generates an Error ! With Ñ
-		#print 'Dni: ', self.x_dni
-		#print 'Ruc: ', self.x_ruc 
-
-
-		_length = {
-					'dni': 8,
-					'passport': 12,
-					'foreign_card': 12,
-					'ptp': 12,					# Verify !
-		}
-
-
-		# Dni - Generalize, to accept other docs (passport, foreign card, ptp)
-		if self.x_type in ['ticket_receipt', 'receipt']: 
-
-			#print 'Receipt'
-
-			# Test 
-
-
-			# Nr of characters
-			if self.x_id_doc_type not in ['other']: 
-				length = _length[self.x_id_doc_type]
-
-				ret = lib.test_for_length(self, self.x_id_doc, length)
-				
-				if ret != 0:
-					msg = "Error: Documento debe tener " + str(length) + " caracteres."
-					raise Warning(_(msg))
-
-
-
-			# Must be Number - Only for DNIs 
-			if self.x_id_doc_type in ['dni']: 
-				ret = lib.test_for_digits(self, self.x_id_doc)
-				if ret != 0:
-					#msg = "Error: DNI debe ser un Número."
-					msg = "Error: Documento debe ser un Número."
-					raise Warning(_(msg))
-	
-
-
-			# Update 
-			self.partner_id.x_dni = self.x_dni
-
-
-
-		# Ruc
-		elif self.x_type in ['ticket_invoice', 'invoice']: 
-
-			#print 'Invoice'
-			#print self.x_ruc
-			
-
-			# Test 
-			length = 11
-
-			ret = lib.test_for_length(self, self.x_ruc, length)
-			
-			if ret != 0:
-				msg = "Error: RUC debe tener " + str(length) + " caracteres."
-				raise Warning(_(msg))
-
-			ret = lib.test_for_digits(self, self.x_ruc)
-			if ret != 0:
-				msg = "Error: RUC debe ser un Número."
-				raise Warning(_(msg))
-
-			# Update 
-			self.partner_id.x_ruc = self.x_ruc
-
-
-
 
 # ----------------------------------------------------------- Validate ----------------------------
 
@@ -767,7 +684,6 @@ class sale_order(models.Model):
 		#print self.x_type
 
 
-
 		# Create Procedure with Appointment 
 		if self.treatment.name != False: 
 			for line in self.order_line: 
@@ -780,11 +696,6 @@ class sale_order(models.Model):
 			self.treatment.update_appointments()
 
 
-
-
-
-		# Check Content - DEP 
-		#self.check_content()
 
 		# Id Doc and Ruc
 		#print self.x_type
@@ -802,7 +713,6 @@ class sale_order(models.Model):
 			if self.x_id_doc_type in [False, '']  or self.x_id_doc in [False, '']:
 				msg = "Error: Documento de Identidad Ausente."
 				raise Warning(_(msg))
-
 
 
 

@@ -6,8 +6,8 @@
  		Last updated: 	 		23 Nov 2018
 """
 from openerp import models, fields, api
-import prodvars
-import ipl
+from . import prodvars
+from . import ipl
 
 class Service(models.Model):
 	"""

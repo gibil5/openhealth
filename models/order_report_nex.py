@@ -5,10 +5,8 @@
 # Created: 				14 Nov 2017
 # Last updated: 	 	20 Aug 2018
 #
-
 from openerp import models, fields, api
-
-import ord_vars
+from . import ord_vars
 
 class order_report_nex(models.Model):
 

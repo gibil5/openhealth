@@ -6,10 +6,10 @@
 # 		Last up: 	 		31 Aug 2018
 #
 from openerp import models, fields, api
-import pm_vars
 from openerp import _
 from openerp.exceptions import Warning
-import pat_vars
+from . import pm_vars
+from . import pat_vars
 
 class PaymentMethod(models.Model):
 

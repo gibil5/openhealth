@@ -4,11 +4,8 @@
 # 
 # Created: 				18 May 2018
 #
-
 from openerp import models, fields, api
-
-import mgt_vars
-
+from . import mgt_vars
 
 class ManagementLine(models.Model):
 

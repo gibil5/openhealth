@@ -4,19 +4,12 @@
 # 
 # Created: 				26 May 2018
 #
-
 from openerp import models, fields, api
+from . import prodvars
 
-import prodvars
-
-
-
-class Medical(models.Model):
-	
+class Medical(models.Model):	
 	_name = 'openhealth.medical'
-
 	#_order = 'date_create asc'
-
 
 
 

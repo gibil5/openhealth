@@ -7,7 +7,7 @@
 	Created: 			28 Sep 2018
 	Last up: 	 		28 Sep 2018
 """
-import creates as cre
+from . import creates as cre
 
 
 # ---------------------------------------------------- Test Cases ---------------------------------

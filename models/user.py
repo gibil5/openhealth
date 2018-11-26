@@ -9,7 +9,7 @@
  		Last up: 	 		19 Nov 2018
 """
 import datetime
-import ord_vars
+from . import ord_vars
 
 
 #------------------------------------------------ Get Serial Nr -----------------------------------

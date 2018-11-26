@@ -5,7 +5,6 @@
  		Created: 			26 Aug 2016
  		Last up: 	 		21 Nov 2018
 """
-#from timeit import default_timer as timer
 import datetime
 from openerp import models, fields, api
 from . import time_funcs

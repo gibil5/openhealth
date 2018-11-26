@@ -6,8 +6,8 @@
 # 
 from openerp import models, fields, api
 from datetime import datetime,tzinfo,timedelta
-import cosvars
-import prodvars
+from . import cosvars
+from . import prodvars
 
 class ServiceCosmetology(models.Model):
 

@@ -4,11 +4,8 @@
 # 
 from openerp import models, fields, api
 from datetime import datetime
-import ndyag
-import prodvars
-
-#import serv_funcs
-
+from . import ndyag
+from . import prodvars
 
 class ServiceNdyag(models.Model):
 	_name = 'openhealth.service.ndyag'

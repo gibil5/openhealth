@@ -4,10 +4,8 @@
 # 
 from openerp import models, fields, api
 from datetime import datetime
-import exc
-import prodvars
-
-#import serv_funcs
+from . import exc
+from . import prodvars
 
 class ServiceExcilite(models.Model):
 	_name = 'openhealth.service.excilite'

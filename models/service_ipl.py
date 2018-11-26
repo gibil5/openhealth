@@ -2,12 +2,10 @@
 #
 # 	Service Ipl 
 # 
-from openerp import models, fields, api
 from datetime import datetime
-import ipl
-import prodvars
-
-#import serv_funcs
+from openerp import models, fields, api
+from . import ipl
+from . import prodvars
 
 class ServiceIpl(models.Model):
 	_name = 'openhealth.service.ipl'

@@ -2,11 +2,10 @@
 #
 # 	Service Medical treatment 
 # 
-from openerp import models, fields, api
 from datetime import datetime
-import prodvars
-import service_medical_vars
-#import serv_funcs
+from openerp import models, fields, api
+from . import prodvars
+from . import service_medical_vars
 
 class ServiceMedical(models.Model):
 

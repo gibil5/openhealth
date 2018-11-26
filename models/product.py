@@ -7,10 +7,10 @@
 """
 from openerp import models, fields, api
 from openerp.exceptions import ValidationError
-import prodvars
-import lib
-import gen
-import gen_tic
+from . import prodvars
+from . import lib
+from . import gen
+from . import gen_tic
 
 class Product(models.Model):
 	"""

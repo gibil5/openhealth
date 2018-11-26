@@ -14,7 +14,6 @@ class recommendation(models.Model):
 
 # ---------------------------------------------- Fields --------------------------------------------------------
 	name = fields.Char(
-			#string="Recomendacion #", 
 			string="Recomendacion", 
 
 			compute='_compute_name', 

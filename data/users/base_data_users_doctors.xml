@@ -11,7 +11,7 @@
             <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
         </record>
 
-        <record id="lgonzales_clinicachavarri" model="res.users">
+        <record id="lgonzales_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Leo Gonzales</field>
             <field name="login">lgonzales@clinicachavarri.com</field>
             
@@ -40,7 +40,7 @@
             <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
         </record>
 
-        <record id="pmonteverde_clinicachavarri" model="res.users">
+        <record id="pmonteverde_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Piero Monteverde</field>
             <field name="login">pmonteverde@clinicachavarri.com</field>
             
@@ -71,7 +71,8 @@
             <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
         </record>
 
-        <record id="pcanales_clinicachavarri" model="res.users">
+
+        <record id="pcanales_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Paul Canales</field>
             <field name="login">pcanales@clinicachavarri.com</field>
             
@@ -98,7 +99,7 @@
             <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
         </record>
 
-        <record id="cescudero_clinicachavarri" model="res.users">
+        <record id="cescudero_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Carlos Escudero</field>
             <field name="login">cescudero@clinicachavarri.com</field>
             
@@ -129,7 +130,7 @@
             <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
         </record>
 
-        <record id="lache_clinicachavarri" model="res.users">
+        <record id="lache_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Lisette Ache</field>
             <field name="login">lache@clinicachavarri.com</field>
             

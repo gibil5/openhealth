@@ -31,7 +31,7 @@ cabriojo@clinicachavarri.com
 
 
 
-        <record id="rloayza_clinicachavarri" model="res.users">
+        <record id="rloayza_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Rodrigo Loaiza</field>
             <field name="login">rloaiza@clinicachavarri.com</field>
             
@@ -65,7 +65,7 @@ cabriojo@clinicachavarri.com
 
 
 
-        <record id="lcastillo_clinicachavarri" model="res.users">
+        <record id="lcastillo_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Luis Castillo</field>
             <field name="login">lcastillo@clinicachavarri.com</field>
             
@@ -98,7 +98,7 @@ cabriojo@clinicachavarri.com
 
 
 
-        <record id="cabriojo_clinicachavarri" model="res.users">
+        <record id="cabriojo_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Carlos Abriojo</field>
             <field name="login">cabriojo@clinicachavarri.com</field>
             

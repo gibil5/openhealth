@@ -498,13 +498,13 @@ class Control(models.Model):
 
 # ----------------------------------------------------------- CRUD ------------------------------------------------------
 
-	@api.multi
-	def unlink(self):
+	#@api.multi
+	#def unlink(self):
 		#print 
 		#print 'Unlink - Override'
 		#print self.appointment
 		#self.appointment.unlink() 
 		#print 
-		return models.Model.unlink(self)
+	#	return models.Model.unlink(self)
 
 

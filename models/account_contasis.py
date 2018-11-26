@@ -5,9 +5,9 @@
 # 	Created: 				18 Apr 2018
 # 	Last mod: 				21 Aug 2018
 # 
-from openerp import models, fields, api
 import datetime
-import account_funcs as acc_funcs
+from openerp import models, fields, api
+from . import account_funcs as acc_funcs
 
 
 

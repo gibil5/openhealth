@@ -5,7 +5,12 @@
 # Created: 				19 Mayo 2018
 #
 import datetime
-import numpy as np
+
+try:
+	import numpy as np
+except (ImportError, IOError) as err:
+	_logger.debug(err)
+
 import collections
 from openerp import models, fields, api
 from . import pat_vars

@@ -55,7 +55,7 @@ def check_x_ruc(self):
 	
 	# Init
 	_name = 'Ruc'
-	length = 11
+	x_length = 11
 
 
 	# Loop 
@@ -71,8 +71,8 @@ def check_x_ruc(self):
 			if not record.x_ruc.isdigit():
 				raise ValidationError("Check Paciente: %s debe ser un numero: %s" % (_name, _value))
 
-			if len(str(record.x_ruc))!= length: 
-				raise ValidationError("Check Paciente: %s debe tener %s digitos: %s" % (_name, str(length), _value))
+			if len(str(record.x_ruc))!= x_length: 
+				raise ValidationError("Check Paciente: %s debe tener %s digitos: %s" % (_name, str(x_length), _value))
 
 
 
@@ -101,12 +101,11 @@ def check_x_id_doc(self):
 
 		# Init 					
 		if _type in ['dni']: 
-			length = 8
-		#elif _type in ['passport', 'ptp', 'foreign_card']: 
+			x_length = 8
 		elif _type in ['passport', 'ptp', 'foreign_card', 'foreigner_card']: 
-			length = 12
+			x_length = 12
 		elif _type in ['other']: 
-			length = 20
+			x_length = 20
 
 
 
@@ -147,7 +146,7 @@ def check_x_id_doc(self):
 				if len(str(_value))!= length: 
 					#raise ValidationError("Rec Warning: x_id_doc must have " + str(length) + " numbers: %s" % _value)
 					#raise ValidationError("Check Paciente: %s must have %s numbers: %s" % (_name, str(length), _value))
-					raise ValidationError("Check Paciente: %s debe tener %s digitos: %s" % (_name, str(length), _value))
+					raise ValidationError("Check Paciente: %s debe tener %s digitos: %s" % (_name, str(x_length), _value))
 
 
 

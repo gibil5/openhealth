@@ -7,11 +7,9 @@
 #
 # 	Be sure to include one patient with: passporte, cancelled sale. For complete coverage. 
 #
-from openerp import models, fields, api
-
 import datetime
-
-import account_funcs as acc_funcs
+from openerp import models, fields, api
+from . import account_funcs as acc_funcs
 
 class AccountLine(models.Model):
 	

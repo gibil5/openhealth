@@ -22,7 +22,7 @@ def check_serial_nr(self, container_id):
 
 	var_name = 'Serial Nr'
 	name = 'serial_nr'
-	length = 13
+	x_length = 13
 
 
 	# Loop
@@ -60,9 +60,9 @@ def check_serial_nr(self, container_id):
 
 
 		# Has Length
-		if len(record.serial_nr) != length:
+		if len(record.serial_nr) != x_length:
 			raise ValidationError("Warning: %s must have %s numbers: %s"\
-																		% (name, str(length), record.serial_nr))
+																		% (name, str(x_length), record.serial_nr))
 
 
 

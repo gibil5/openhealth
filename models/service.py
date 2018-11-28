@@ -475,14 +475,13 @@ class Service(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		pass
 		#print
-		#print 'Service - Computes'
-		#print 'name: ', self.name
-		#print 'name_short: ', self.name_short
-		#print 'code: ', self.code
-		#print 'price: ', self.price
-		#print 'price_vip: ', self.price_vip
+		print('Service - Computes')
+		print('name: ', self.name)
+		print('name_short: ', self.name_short)
+		print('code: ', self.code)
+		print('price: ', self.price)
+		print('price_vip: ', self.price_vip)
 
 
 	# Actions

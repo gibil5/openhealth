@@ -134,6 +134,16 @@
                             groups="openhealth.roots"
                         />
 
+                        <!-- Test --> 
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+                            name="test_libs" 
+
+                            string="TEST LIBS" 
+
+                            groups="openhealth.roots"
+                        />
 
 
 
@@ -1085,7 +1095,6 @@ Fields
 
 
 <!--
-                                <field name="ses_create"/>
 -->
                             <!-- Create Flags --> 
                             <group      groups="openhealth.roots"   >
@@ -1096,6 +1105,7 @@ Fields
                                 <field name="med_create"/>
                                 <field name="cos_create"/>
                                 <field name="con_create"/>
+                                <field name="ses_create"/>
                             </group>
 
                             <group      groups="openhealth.roots"   >
@@ -1260,8 +1270,18 @@ Fields
                             <group></group>
                         </group>
 
+
                         <!-- Notebook --> 
-                        <notebook></notebook>
+                        <notebook>
+                            
+                            <page string="Electronic">
+
+                                <field name="electronic_order"/>
+
+                            </page>
+
+                        </notebook>
+
                     </sheet>
                 </form>
             </field>

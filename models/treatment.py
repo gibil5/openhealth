@@ -12,14 +12,81 @@ from . import treatment_vars
 from . import lib
 from . import user
 from . import creates as cre
-from . import lib_rep
+#from . import lib_rep
 from . import reco_funcs
 from . import test_treatment as tst
+from . import test_foo
 
 class Treatment(models.Model):
 	_inherit = 'openhealth.process'
 	_name = 'openhealth.treatment'
 	_order = 'write_date desc'
+
+
+
+
+# ----------------------------------------------------------- Test Libs --------------------
+	@api.multi
+	def test_libs(self):
+		"""
+		Test Libraries
+		"""
+
+		print
+		print('Test Libs')
+
+		# Product Generated Names
+		lib = test_foo.LibGen()
+		lib.test()
+		print(lib)
+
+
+		# Export TXT
+		#self.electronic_order.unlink()
+		#for order in self.order_ids:
+		#	electronic_order = cre.create_order_electronic(self, order)
+		#	lib = test_foo.LibExp(electronic_order)
+		#	lib.test()
+		#	print(lib)
+
+
+
+		# Check Patient
+		lib = test_foo.LibChkPatient(self.patient)
+		lib.test()
+		print(lib)
+
+
+
+		# Test Products
+		lib = test_foo.Products(self)
+		lib.test()
+		print(lib)
+
+
+
+		# Test Reports
+		lib = test_foo.Reports(self)
+		lib.test()
+		print(lib)
+
+
+
+		# Test Patients
+		lib = test_foo.Patients(self)
+		lib.test()
+		print(lib)
+
+
+
+
+
+
+	# Electronic
+	electronic_order = fields.One2many(
+			'openhealth.electronic.order',
+			'treatment_id',
+		)
 
 
 
@@ -54,84 +121,6 @@ class Treatment(models.Model):
 			# Test Integration
 			tst.test_integration_treatment(self)
 
-
-
-
-
-# ----------------------------------------------------------- Test Integration Reports ------------
-	# Reports - Integration
-	@api.multi
-	def test_case_reports(self):
-		"""
-		Integration Test for Class Reporting capabilites (Update method).
-		"""
-		#print 'Test - Report'
-		#print
-
-		if self.patient.x_test:
-
-			# Object Oriented
-
-			# Init
-			caller = self
-
-
-			# Reports
-
-			name = 'closing'
-			model = 'openhealth.closing'
-			descriptor = 'date'
-			closing = lib_rep.Report(name, model, descriptor, caller)
-			#closing = lib_rep.Report('closing',	 		'openhealth.closing', 	'date', 		self)
-
-			name = 'resap'
-			model = 'openhealth.report.sale.product'
-			descriptor = 'name'
-			resap = lib_rep.Report(name, model, descriptor, caller)
-			#resap = lib_rep.Report('resap',	 		'openhealth.report.sale.product', 	'name', 		self)
-
-			name = 'management'
-			model = 'openhealth.management'
-			descriptor = 'date_begin'
-			management = lib_rep.Report(name, model, descriptor, caller)
-			#management = 	lib_rep.Report('management', 	'openhealth.management', 			'date_begin', 	self)
-
-			name = 'marketing'
-			model = 'openhealth.marketing'
-			descriptor = 'date_begin'
-			marketing = lib_rep.Report(name, model, descriptor, caller)
-			#marketing = 	lib_rep.Report('marketing', 	'openhealth.marketing', 			'date_begin', 	self)
-
-			name = 'account.contasis'
-			model = 'openhealth.account.contasis'
-			descriptor = 'date_begin'
-			account = lib_rep.Report(name, model, descriptor, caller)
-			#account = lib_rep.Report('account.contasis', 	'openhealth.account.contasis', 		'date_begin', 	self)
-
-
-			#state_of_acc = lib_rep.Report('state_of_acc', 	'openhealth.order.report.nex', 		'create_date', self)
-			#doctor_line = lib_rep.Report('doctor_line', 	'openhealth.management.doctor.line', 'write_date', self)
-			#family_line = lib_rep.Report('family_line', 	'openhealth.management.family.line', 'write_date', self)
-			#sub_family_line = lib_rep.Report('sub_family_line', 'openhealth.management.sub_family.line', 'write_date', self)
-
-
-			# All
-			objs = [
-						closing,
-						resap,
-						management,
-						marketing,
-						account,
-				]
-
-
-			# Update
-			for obj in objs:
-				obj.update()
-
-			# Print
-			#for obj in objs:
-			#	print obj
 
 
 
@@ -1642,10 +1631,9 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Test --------------------------------
+# ----------------------------------------------------------- Test Create Recos --------------------------------
 	# Test
-	#def test(self):
-	def test_creates(self):
+	def test_create_recos(self):
 		#print
 		#print 'Treatment - Test'
 
@@ -1681,18 +1669,62 @@ class Treatment(models.Model):
 		#print ret
 		#print
 
-	# test_creates
+	# test_create_recos
+
+
+
+# ----------------------------------------------------------- Test - Computes ---------------------
+	def test_computes(self):
+		print()
+		print('Treatment - Computes')
+
+		#t0 = timer()
+
+		print(self.name)
+		print(self.state)
+		print(self.progress)
+		print(self.vip)
+		print(self.pricelist_id)
+		print(self.patient_sex)
+		print(self.patient_age)
+		print(self.patient_city)
+		print(self.x_vip_inprog)
+		print(self.consultation_progress)
+		print(self.nr_appointments)
+		print(self.nr_consultations)
+		print(self.nr_budgets_cons)
+		print(self.nr_invoices_cons)
+		print(self.nr_services)
+		print(self.nr_services_co2)
+		print(self.nr_services_excilite)
+		print(self.nr_services_ipl)
+		print(self.nr_services_ndyag)
+		print(self.nr_services_quick)
+		print(self.nr_services_medical)
+		print(self.nr_services_cosmetology)
+		print(self.nr_services_vip)
+		print(self.nr_services_product)
+		print(self.nr_controls)
+		print(self.nr_sessions)
+		print(self.nr_procedures)
+
+		#t1 = timer()
+		#self.delta_1 = t1 - t0
+
+		#print self.delta_1
+
+	# test_computes
 
 
 
 
 # ----------------------------------------------------------- Testing Unit ------------------------
 	# Treatment - Unit
-	@api.multi
-	def test_unit(self):
-		if self.patient.x_test:
+	#@api.multi
+	#def test_unit(self):
+	#	if self.patient.x_test:
 			#self.test()
-			self.test_creates()
+	#		self.test_create_recos()
 
 
 # ----------------------------------------------------------- Test --------------------------------
@@ -1701,7 +1733,14 @@ class Treatment(models.Model):
 	def test(self):
 		#print
 		#print 'Treatment - Test'
-		#self.test_computes()
-		self.test_reset()
-		self.test_integration()
-		self.test_case_reports()
+		if self.patient.x_test:
+
+			self.test_reset()
+			self.test_integration()
+
+			self.test_create_recos()
+			self.test_computes()
+
+			#self.test_libs()
+
+

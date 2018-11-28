@@ -21,7 +21,7 @@ def test_cases(self, container_id, doctor_id):
 	_pars = [
 				# Patient 0 - REVILLA RONDON JOSE JAVIER
 				{
-						'active': 		True,
+						'active': 		False,
 						'test_case': 	'dni',
 
 						'name': 		'REVILLA RONDON JOSE JAVIER',

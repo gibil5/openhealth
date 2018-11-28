@@ -5,8 +5,9 @@
  		Generates Names and Description, from Short Names. 
  
  		Created: 			21 Sep 2018
-		Last up: 	 		 5 Nov 2018
+		Last up: 	 		26 Nov 2018
 """
+#import gen_vars as gv
 from . import gen_vars as gv
 
 
@@ -19,10 +20,7 @@ def get_generated_prod(short_name):
 	generated = ''
 	
 	if 	short_name in gv._dic_prod: 
-
 			generated = gv._dic_prod[short_name]
-
-	#print generated
 
 	return generated
 
@@ -39,7 +37,6 @@ def get_generated_con(short_name):
 	zone = short_name.split('_')[1]
 
 	if 	tre in gv._dic_tre and zone in gv._dic_zo:
-
 			generated = gv._dic_tre[tre] + ' ' + gv._dic_zo[zone]
 
 	return generated
@@ -63,12 +60,10 @@ def get_generated_co2(short_name):
 	# All but MT 
 	if third != 'mon': 	
 		if 	tre in gv._dic_tre 	and 	zone in gv._dic_zo 	and 	patho in gv._dic_patho_co2 	and 	deg in gv._dic_deg:
-
 				generated = gv._dic_tre[tre] + ' - ' + gv._dic_zo[zone] + ' - ' + gv._dic_patho_co2[patho] + ' ' + gv._dic_deg[deg]
 
 	# Only Monalisa Touch
-	else: 
-
+	else:
 		generated = gv._dic_tre[tre] + ' - ' + gv._dic_zo[zone] + ' - ' + gv._dic_patho_co2[third]
 
 	return generated
@@ -98,14 +93,12 @@ def get_generated_med(short_name):
 		
 		# Infiltrations 
 		elif tre in ['inf']: 
-		
 			generated = gv._dic_tre_med[tre] + ' - ' + gv._dic_patho[patho]
 		
 		elif tre in gv._dic_tre_med and zone in gv._dic_zo and patho in gv._dic_patho: 
 
 			if len(arr) > 3: 
 				ses = 		arr[3]
-		
 				generated = gv._dic_tre_med[tre] + ' - ' + gv._dic_zo[zone] + ' - ' + gv._dic_patho[patho] + ' - ' + gv._dic_ses[ses]
 
 	return generated

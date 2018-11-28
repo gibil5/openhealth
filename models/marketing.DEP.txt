@@ -1,0 +1,80 @@
+
+
+
+
+# ----------------------------------------------------------- Correct ------------------------------------------------------
+	
+	# Correct
+	@api.multi
+	def correct_patients(self):  
+		#print 
+		#print 'Correct Patients'
+
+		# Loop 
+		for line in self.patient_line: 
+
+			# Filter 1 
+			if line.patient.x_date_record == False: 
+			
+				# Filter 2
+				if line.patient.x_date_record != line.patient.create_date:
+			
+					# This !
+					line.patient.x_date_record = line.patient.create_date
+			
+					#print 'Correct !'
+		#print 
+	# correct_patients
+
+
+
+
+# ----------------------------------------------------------- Relational ------------------------------------------------------
+	# Sales
+	#sale_line_tkr = fields.One2many(
+	#		'openhealth.marketing.order.line', 
+	#		'marketing_id',
+	#	)
+
+
+
+
+# ----------------------------------------------------------- Inheritable ------------------------------------------------------
+	# Name 
+	#name = fields.Char(
+	#		string="Nombre", 		
+	#		required=True, 
+	#	)
+
+
+	# Dates 
+	#date_begin = fields.Date(
+	#		string="Fecha Inicio", 
+	#		default = fields.Date.today, 
+			#readonly=True,
+	#		required=True, 
+	#	)
+
+
+	#date_end = fields.Date(
+	#		string="Fecha Fin", 
+	#		default = fields.Date.today, 
+			#readonly=True,
+	#		required=True, 
+	#	)
+
+
+	# Count
+	#total_count = fields.Integer(
+	#		'Nr',
+	#		readonly=True, 
+	#	)
+
+
+
+	# Spacing
+	#vspace = fields.Char(
+	#		' ', 
+	#		readonly=True
+	#	)
+

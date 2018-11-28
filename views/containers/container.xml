@@ -37,8 +37,6 @@
                             string="Crear TXT"                              
                         />
 
-
-
                         <!-- QC --> 
                         <button 
                             type="object" 
@@ -50,6 +48,16 @@
                             groups="openhealth.roots"
                         />
 
+                        <!-- QC --> 
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+                            name="update" 
+                            
+                            string="Actualizar"                                 
+
+                            groups="openhealth.roots"
+                        />
 
 
                         <!-- Correct --> 

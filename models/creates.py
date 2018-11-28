@@ -10,34 +10,78 @@ from . import lib
 from . import user
 
 
-# ----------------------------------------------------------- Remove Patient  ---------------------
-def remove_patient(self, name):
+# -------------------------------------------------------------------------------------------------
+# Create Order
+def create_order_electronic(self, order):
 	"""
 	high level support for doing this and that.
 	"""
 	#print
-	#print 'Remove Patient'
-	#print name
-
-	# Unlink Patient
-	self.env['oeh.medical.patient'].search([
-												('name', '=', name),
-									],).unlink()
-
-	# Unlink Partner
-	self.env['res.partner'].search([
-												('name', '=', name),
-									],).unlink()
+	#print 'Create Order Fast'
 
 
-	# Unlink - Card
- 	#cards = self.env['openhealth.card'].search([
-	#													('patient_name', '=', name),
-	#												],)
- 	#for card in cards:
- 	#	if card.name != False:
- 	#		card.unlink()
+	# Id Doc and Receptor
+	if order.x_type in ['ticket_invoice', 'invoice']:
+		receptor = order.patient.x_firm.upper()
+		id_doc = order.patient.x_ruc
+		id_doc_type = 'ruc'
+		id_doc_type_code = '6'
+	else:
+		receptor = order.patient.name
+		id_doc = order.patient.x_id_doc
+		id_doc_type = order.patient.x_id_doc_type
+		id_doc_type_code = order.patient.x_id_doc_type_code
 
+
+
+	# Create Electronic Order
+	electronic_order = self.electronic_order.create({
+														'receptor': 	receptor,
+														'patient': 		order.patient.id,
+
+														'name': 			order.name,
+														'x_date_created': 	order.date_order,
+														'doctor': 			order.x_doctor.id,
+														'state': 			order.state,
+														'serial_nr': 		order.x_serial_nr,
+
+														# Type of Sale
+														'type_code': 		order.x_type_code,
+														'x_type': 			order.x_type,
+
+														# Id Doc
+														'id_doc': 				id_doc,
+														'id_doc_type': 			id_doc_type,
+														'id_doc_type_code': 	id_doc_type_code,
+
+														# Line
+														#'product_id': 			line.product_id.id,
+														#'product_uom_qty': 		line.product_uom_qty,
+														#'price_unit': 			line.price_unit,
+
+
+														# Totals
+														'amount_total': 		order.amount_total,
+														'amount_total_net': 	order.x_total_net,
+														'amount_total_tax': 	order.x_total_tax,
+
+
+														# QC
+														'counter_value': 		order.x_counter_value,
+														'delta': 				order.x_delta,
+
+														# Credit Note
+														'credit_note_owner': 	order.x_credit_note_owner.id,
+
+
+
+														# Rel
+														'management_id': 		False,
+														'container_id': 		False,
+														'treatment_id': 		self.id,
+	})
+
+	return electronic_order
 
 
 
@@ -610,7 +654,7 @@ def create_procedure_go(self, app_date_str, subtype, product_id):
 	"""
 	high level support for doing this and that.
 	"""
-	#print
+	#print()
 	#print 'Create Procedure - Go'
 
 	# Init
@@ -742,8 +786,8 @@ def create_procedure_wapp(self, subtype, product_id):
 	"""
 	high level support for doing this and that.
 	"""
-	#print
-	#print 'Create Proc - With App'
+	#print()
+	#print('Create Proc - With App')
 
 	# Init
 	duration = 0.5
@@ -801,3 +845,43 @@ def remove_orders(self, patient_id):
 						})
 		order.unlink()
 # remove_orders
+
+
+# ----------------------------------------------------------- Remove Patient  ---------------------
+def remove_patient(self, name):
+	"""
+	high level support for doing this and that.
+	"""
+	#print()
+	#print('Remove Patient')
+	#print(name)
+
+	# Unlink Patient
+	patients = self.env['oeh.medical.patient'].search([
+												('name', '=', name),
+									],)
+	#print(patients)
+	
+	for patient in patients:
+		for treatment in patient.treatment_ids:
+			treatment.unlink()
+
+	patients.unlink()
+
+
+	# Unlink Partner
+	partners = self.env['res.partner'].search([
+												('name', '=', name),
+									],)
+	#print(partners)
+	partners.unlink()
+
+
+	# Unlink - Card
+ 	#cards = self.env['openhealth.card'].search([
+	#													('patient_name', '=', name),
+	#												],)
+ 	#for card in cards:
+ 	#	if card.name != False:
+ 	#		card.unlink()
+

@@ -827,24 +827,23 @@ class Patient(models.Model):
 
 	# Computes
 	def test_computes(self):
-		pass
-		#print
-		#print 'Patient - Computes'
+		print()
+		print('Patient - Computes')
 		# Partner
-		#print
-		#print 'Computes - Partner'
-		#print self.partner_id.city_char
-		#print self.partner_id.x_address
-		#print self.partner_id.x_vip
+		print()
+		print('Computes - Partner')
+		print(self.partner_id.city_char)
+		print(self.partner_id.x_address)
+		print(self.partner_id.x_vip)
 		# Patient 
-		#print
-		#print 'Computes'
-		#print self.name
-		#print self.x_treatment_count
-		#print self.x_vip
-		#print self.x_card
-		#print self.x_legacy
-		#print self.x_counter
+		print()
+		print('Computes')
+		print(self.name)
+		print(self.x_treatment_count)
+		print(self.x_vip)
+		print(self.x_card)
+		print(self.x_legacy)
+		print(self.x_counter)
 
 
 	# Actions
@@ -878,57 +877,21 @@ class Patient(models.Model):
 				service.test()
 
 
-# ----------------------------------------------------------- Test - Cycle ------------------------------------------------------
-	# Test - Cycle 
-	# Test the whole Patient Cycle. 
 
-	@api.multi 
-	def test_cycle(self):
-		#print 
-		#print 'Test Cycle'
-
-		# Init 
-		patient_id = self.id
-		partner_id = self.partner_id.id
-		id_doc = self.x_id_doc
-		id_doc_type = self.x_id_doc_type
-		short_name = self.x_test_case.split(',')[2]
-		qty = int(self.x_test_case.split(',')[3])
-
-
-		# Loop 
-		for treatment in self.treatment_ids: 
-
-			# Init 
-			treatment_id = treatment.id 
-			doctor_id = False 
-
-			# Create 
-			order = creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id, id_doc, id_doc_type, short_name, qty)
-
-			# Pay 
-			order.test(self.x_test_case)
-
-			# Update 
-			#creates.update_order(date_order)
-
-
-
-# ----------------------------------------------------------- Test ------------------------------------------------------
-
+# ----------------------------------------------------------- Test --------------------------------
 	# Test - Integration 
 	@api.multi 
 	def test(self):
-		#print
-		#print 'Patient - Test'
+		print()
+		print('Patient - Test')
 
 		# Test Unit
-		#self.test_computes()
-		#self.test_actions()
-		#self.test_services()
+		self.test_computes()
+		self.test_actions()
+		self.test_services()
 
-		# Test Cycle
-		self.test_cycle()
+		# Test Cycle - Dep ?
+		#self.test_cycle()
 	# test 
 
 

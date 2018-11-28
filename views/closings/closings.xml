@@ -160,13 +160,10 @@
                 <tree string="Cierres de caja"  default_order='date desc'>
                     
                     <field name="name"/>
-
-                    <field name="test_target"/>
+                    <field name="test_target"  groups="openhealth.roots"/>
 
                     <field name="total_cash"/>
-
                     <field name="total_cards"/>
-
                     <field name="total"/>
 
 <!--

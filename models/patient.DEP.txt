@@ -1,4 +1,48 @@
 
+
+# ----------------------------------------------------------- Test - Cycle ------------------------------------------------------
+	# Test - Cycle 
+	# Test the whole Patient Cycle. 
+
+	@api.multi 
+	def test_cycle(self):
+		#print 
+		#print 'Test Cycle'
+
+		# Init 
+		patient_id = self.id
+		partner_id = self.partner_id.id
+		id_doc = self.x_id_doc
+		id_doc_type = self.x_id_doc_type
+		short_name = self.x_test_case.split(',')[2]
+		qty = int(self.x_test_case.split(',')[3])
+
+
+		# Loop 
+		for treatment in self.treatment_ids: 
+
+			# Init 
+			treatment_id = treatment.id 
+			doctor_id = False 
+
+			# Create 
+			order = creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id, id_doc, id_doc_type, short_name, qty)
+
+			# Pay 
+			order.test(self.x_test_case)
+
+			# Update 
+			#creates.update_order(date_order)
+
+
+
+
+
+
+
+
+
+
 # ----------------------------------------------------------- Constraints Python - Dep ------------------
 	# Check Phone 3
 	#@api.constrains('phone_3')

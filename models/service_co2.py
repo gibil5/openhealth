@@ -11,7 +11,9 @@ from . import service_co2_vars
 from . import prodvars
 
 class ServiceCo2(models.Model):
+
 	_name = 'openhealth.service.co2'
+
 	_inherit = 'openhealth.service'
 	
 

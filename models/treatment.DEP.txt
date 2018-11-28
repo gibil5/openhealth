@@ -1,4 +1,90 @@
 
+
+
+# ----------------------------------------------------------- Test Integration Reports ------------
+	# Reports - Integration
+	@api.multi
+	def test_case_reports(self):
+		"""
+		Integration Test for Class Reporting capabilites (Update method).
+		"""
+		#print 'Test - Report'
+		#print
+
+		if self.patient.x_test:
+
+			# Object Oriented
+
+			# Init
+			caller = self
+
+
+			# Reports
+
+			name = 'closing'
+			model = 'openhealth.closing'
+			descriptor = 'date'
+			closing = lib_rep.Report(name, model, descriptor, caller)
+			#closing = lib_rep.Report('closing',	 		'openhealth.closing', 	'date', 		self)
+
+			name = 'resap'
+			model = 'openhealth.report.sale.product'
+			descriptor = 'name'
+			resap = lib_rep.Report(name, model, descriptor, caller)
+			#resap = lib_rep.Report('resap',	 		'openhealth.report.sale.product', 	'name', 		self)
+
+			name = 'management'
+			model = 'openhealth.management'
+			descriptor = 'date_begin'
+			management = lib_rep.Report(name, model, descriptor, caller)
+			#management = 	lib_rep.Report('management', 	'openhealth.management', 			'date_begin', 	self)
+
+			name = 'marketing'
+			model = 'openhealth.marketing'
+			descriptor = 'date_begin'
+			marketing = lib_rep.Report(name, model, descriptor, caller)
+			#marketing = 	lib_rep.Report('marketing', 	'openhealth.marketing', 			'date_begin', 	self)
+
+			name = 'account.contasis'
+			model = 'openhealth.account.contasis'
+			descriptor = 'date_begin'
+			account = lib_rep.Report(name, model, descriptor, caller)
+			#account = lib_rep.Report('account.contasis', 	'openhealth.account.contasis', 		'date_begin', 	self)
+
+
+
+			#state_of_acc = lib_rep.Report('state_of_acc', 	'openhealth.order.report.nex', 		'create_date', self)
+			#doctor_line = lib_rep.Report('doctor_line', 	'openhealth.management.doctor.line', 'write_date', self)
+			#family_line = lib_rep.Report('family_line', 	'openhealth.management.family.line', 'write_date', self)
+			#sub_family_line = lib_rep.Report('sub_family_line', 'openhealth.management.sub_family.line', 'write_date', self)
+
+
+
+			# All
+			objs = [
+						closing,
+						resap,
+						management,
+						marketing,
+						account,
+				]
+
+
+			# Update
+			for obj in objs:
+				obj.update()
+
+			# Print
+			#for obj in objs:
+			#	print obj
+
+	# test_case_reports
+
+
+
+
+
+
 # ----------------------------------------------------------- Test - Computes ------------------------------------------------------
 
 	# Computes

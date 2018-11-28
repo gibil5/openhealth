@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
  	lib_rep.py
- 	Integration Tests for the Treatment Class
+ 	Integration Tests for the Treatment class - Dep !
 
  	Created: 			14 Aug 2018
  	Last up: 	 		27 Aug 2018

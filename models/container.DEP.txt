@@ -1,0 +1,35 @@
+	partner = fields.Many2one(
+			'res.partner',
+		)
+
+	doctor = fields.Many2one(
+			'oeh.medical.physician',
+		)
+
+	treatment = fields.Many2one(
+			'openhealth.treatment',
+		)
+
+
+	#export_date_end = fields.Date(
+	#		string="Fecha Fin",
+	#		default=fields.Date.today,
+	#		required=True,
+	#	)
+
+
+
+
+	# Patient
+	#patient = fields.Many2one(
+	#		'oeh.medical.patient',
+	#		string="patient",
+	#		required=True,
+	#		domain=[
+	#					('x_test', '=', 'True'),
+	#				],
+	#	)
+
+	#patient = fields.Many2one(
+	#		'oeh.medical.patient',
+	#	)

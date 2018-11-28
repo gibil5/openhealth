@@ -34,55 +34,6 @@ class Container(models.Model):
 
 
 
-# ----------------------------------------------------------- Export ------------------------------
-
-	# Export Txt
-	@api.multi
-	def export_txt(self):
-		"""
-		high level support for doing this and that.
-		"""
-		#print
-		#print 'Export - Txt'
-
-
-		# Clean
-		self.txt_ids.unlink()
-
-
-
-		# Export
-		fname = export.export_txt(self, self.mgt.electronic_order, self.export_date)
-
-
-		fname_txt = fname.split('/')[-1]
-		#print fname_txt
-
-
-		#self.txt_pack_name = fname
-
-
-		# Read Binary
-		#f = io.open(fname, mode="rb", encoding="utf-8")
-		f = io.open(fname, mode="rb")
-		out = f.read()
-		f.close()
-
-
-		#print out
-		#print fname
-		#print fname_txt
-
-
-
-		self.write({
-					'txt_pack': base64.b64encode(out),
-					'txt_pack_name': fname_txt,
-				})
-
-	# export_txt
-
-
 
 
 
@@ -92,9 +43,8 @@ class Container(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		#print
-		#print 'Remove Patients'
-
+		print()
+		print('Remove Patients')
 
 		# Search
 		patients = self.env['oeh.medical.patient'].search([
@@ -104,7 +54,6 @@ class Container(models.Model):
 														#order='write_date desc',
 														#limit=1,
 													)
-
 		for patient in patients:
 			name = patient.name
 			creates.remove_patient(self, name)
@@ -119,55 +68,33 @@ class Container(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		#print
-		#print 'Init Patients'
-
+		print()
+		print('Create Patients')
 
 		# Init
-		#pl_id = self.patient.property_product_pricelist.id
-		#pl_id = False
 		container_id = self.id
 		doctor_id = self.doctor.id
-
 
 		# Create Patients
 		tst_pat.test_cases(self, container_id, doctor_id)
 
 
-
 		# Init
 		name = 'Export'
 
-		# Search Mgt
-		#self.mgt = self.env['openhealth.management'].search([
-		#														('name', '=', name),
-		#											],
-														#order='write_date desc',
-		#												limit=1,
-		#											)
 
-
-
-		# Update
+		# Update Mgt
 		if self.mgt.name != False:
 			self.mgt.date_begin = self.export_date_begin
-
-			#self.mgt.date_end = self.export_date_end
 			self.mgt.date_end = self.export_date_begin
-
 
 		# Create Mgt
 		else:
 			self.mgt = self.env['openhealth.management'].create({
 																'name': 		name,
 																'date_begin': 	self.export_date_begin,
-
-																#'date_end': 	self.export_date_end,
 																'date_end': 	self.export_date_begin,
 													})
-
-		#print self.mgt
-
 	# create_patients
 
 
@@ -255,73 +182,12 @@ class Container(models.Model):
 
 
 
-# ----------------------------------------------------------- Electronic --------------------------
-	# Create Electronic
-	@api.multi
-	def create_electronic(self):
-		"""
-		high level support for doing this and that.
-		"""
-		#print
-		#print 'Create - Electronic'
-
-
-		# Clean
-		self.electronic_order_ids.unlink()
-
-
-		# Init Dates
-		date_format = "%Y-%m-%d"
-
-		date_dt = datetime.datetime.strptime(self.export_date_begin, date_format) + \
-																					datetime.timedelta(hours=+5, minutes=0)
-
-		self.export_date = date_dt.strftime(date_format).replace('-', '_')
-
-
-
-		# Init Mgt
-		self.mgt.date_begin = self.export_date_begin
-		#self.mgt.date_end = self.export_date_end
-		self.mgt.date_end = self.export_date_begin
-
-
-
-
-		self.mgt.container = self.id
-		self.mgt.state_arr = 'sale,cancel,credit_note'
-
-
-		# Update Mgt
-		self.mgt.update_fast()
-
-
-		#self.amount_total = self.mgt.update_electronic()
-		self.amount_total, self.receipt_count, self.invoice_count = self.mgt.update_electronic()
-
-
-	# create_electronic
-
 
 
 
 
 
 # ----------------------------------------------------------- Relational --------------------------
-	# Patient
-	#patient = fields.Many2one(
-	#		'oeh.medical.patient',
-	#		string="patient",
-	#		required=True,
-	#		domain=[
-	#					('x_test', '=', 'True'),
-	#				],
-	#	)
-
-	#patient = fields.Many2one(
-	#		'oeh.medical.patient',
-	#	)
-
 	# Doctor
 	doctor = fields.Many2one(
 			'oeh.medical.physician',
@@ -375,9 +241,6 @@ class Container(models.Model):
 		)
 
 
-
-
-
 	# Total
 	amount_total = fields.Float(
 			'Total',
@@ -396,26 +259,11 @@ class Container(models.Model):
 
 
 
-
-
-
 	# Name
 	name = fields.Char(
 			'Nombre',
 		)
 
-
-	partner = fields.Many2one(
-			'res.partner',
-		)
-
-	doctor = fields.Many2one(
-			'oeh.medical.physician',
-		)
-
-	treatment = fields.Many2one(
-			'openhealth.treatment',
-		)
 
 	# Management
 	mgt = fields.Many2one(
@@ -433,11 +281,6 @@ class Container(models.Model):
 		)
 
 
-	#export_date_end = fields.Date(
-	#		string="Fecha Fin",
-	#		default=fields.Date.today,
-	#		required=True,
-	#	)
 
 
 	export_date = fields.Char(
@@ -479,8 +322,79 @@ class Container(models.Model):
 
 
 
-# ----------------------------------------------------------- Actions -----------------------------
-	# QC
+# ----------------------------------------------------------- Export ------------------------------
+	@api.multi
+	def export_txt(self):
+		"""
+		high level support for doing this and that.
+		"""
+		#print
+		#print 'Export - Txt'
+
+		# Clean
+		self.txt_ids.unlink()
+
+
+		# Export
+		fname = export.export_txt(self, self.mgt.electronic_order, self.export_date)
+
+
+		# Download file
+		fname_txt = fname.split('/')[-1]
+		# Read Binary
+		f = io.open(fname, mode="rb")
+		out = f.read()
+		f.close()
+
+
+		# Update
+		self.write({
+					'txt_pack': base64.b64encode(out),
+					'txt_pack_name': fname_txt,
+				})
+
+	# export_txt
+
+
+
+# ----------------------------------------------------------- Electronic --------------------------
+	# Create Electronic
+	@api.multi
+	def create_electronic(self):
+		"""
+		high level support for doing this and that.
+		"""
+		#print
+		#print 'Create - Electronic'
+
+		# Clean
+		self.electronic_order_ids.unlink()
+
+		# Init Dates
+		date_format = "%Y-%m-%d"
+		date_dt = datetime.datetime.strptime(self.export_date_begin, date_format) + \
+																					datetime.timedelta(hours=+5, minutes=0)
+
+		self.export_date = date_dt.strftime(date_format).replace('-', '_')
+
+
+		# Init Mgt
+		self.mgt.date_begin = self.export_date_begin
+		self.mgt.date_end = self.export_date_begin
+		self.mgt.container = self.id
+		self.mgt.state_arr = 'sale,cancel,credit_note'
+
+		# Update
+		self.mgt.update_fast()
+
+		# Create
+		self.amount_total, self.receipt_count, self.invoice_count = self.mgt.update_electronic()
+
+	# create_electronic
+
+
+
+# ----------------------------------------------------------- QC -----------------------------
 	@api.multi
 	def test_qc(self):
 		"""
@@ -491,3 +405,18 @@ class Container(models.Model):
 		self.mgt.update_qc('ticket_invoice')
 
 	# test_qc
+
+
+
+
+# ----------------------------------------------------------- Update -----------------------------
+	@api.multi
+	def update(self):
+		"""
+		high level support for doing this and that.
+		"""
+		self.test_qc()
+		self.create_electronic()
+		self.export_txt()
+
+

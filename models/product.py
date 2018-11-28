@@ -5,6 +5,7 @@
  		Created: 			   Nov 2016
 		Last up: 	 		 5 Nov 2018
 """
+from __future__ import print_function
 from openerp import models, fields, api
 from openerp.exceptions import ValidationError
 from . import prodvars
@@ -23,6 +24,13 @@ class Product(models.Model):
 
 
 
+# ----------------------------------------------------------- Test -------------------------------
+	x_test = fields.Boolean(
+			'Test',
+		)
+
+
+
 # ----------------------------------------------------------- Account -----------------------------
 
 	x_name_account = fields.Char(
@@ -36,7 +44,7 @@ class Product(models.Model):
 
 
 	vspace = fields.Char(
-			' ', 
+			' ',
 			readonly=True
 		)
 
@@ -69,7 +77,6 @@ class Product(models.Model):
 
 
 # ----------------------------------------------------------- Unfix  ------------------------------
-	# Fix Name
 	@api.multi
 	def unfix_name(self):
 		"""
@@ -77,7 +84,6 @@ class Product(models.Model):
 		"""
 		#print
 		#print 'Unfix Name'
-
 
 		if self.x_name_unfixed not in [False, '']:
 			self.name = self.x_name_unfixed
@@ -90,7 +96,6 @@ class Product(models.Model):
 
 
 # ----------------------------------------------------------- Fix  --------------------------------
-	# Fix Name
 	@api.multi
 	def fix_name(self):
 		"""
@@ -99,11 +104,8 @@ class Product(models.Model):
 		#print
 		#print 'Fix Name'
 
-
-
 		# Array Name
 		name_arr = self.name.split('-')
-
 
 
 		# Co2
@@ -156,7 +158,6 @@ class Product(models.Model):
 				self.x_name_unfixed = self.name
 
 
-
 			# Init
 			short_arr = self.x_name_short.split('_')
 
@@ -193,7 +194,6 @@ class Product(models.Model):
 					self.x_name_short = short
 
 
-
 			# Fix
 			if self.x_go_flag:
 				self.name = self.x_generated
@@ -201,55 +201,15 @@ class Product(models.Model):
 
 
 
-
-
-
-
-
-		# Closed
-		if False:
-
-			# Unfixed
-			if self.x_name_unfixed in [False, '']:
-				self.x_name_unfixed = self.name
-
-
-			# Fix Name
-			# To avoid repetition
-			#if len(name_arr) == 4:
-
-			#	for tup in [
-			#					('1', '5 min - 1'),
-			#					('2', '15 min - 1'),
-			#					('3', '30 min - 1'),
-			#					('4', '45 min - 1'),
-			#				]:
-
-			#		name = self.name.replace(tup[0], tup[1])
-
-				# Fix
-			#	self.name = name
-
-
-
-
-
 # ----------------------------------------------------------- Codes -------------------------------
-
 	# Go Flag
 	x_go_flag = fields.Boolean()
-
 
 	# Name Unfixed
 	x_name_unfixed = fields.Char()
 
-
 	# Short Name Unfixed
 	x_short_unfixed = fields.Char()
-
-
-
-
 
 
 	# Name Short
@@ -291,117 +251,11 @@ class Product(models.Model):
 
 # Relaxed ! - For Prod
 # ----------------------------------------------------------- Constraints - Sql -------------------
-
 	#_sql_constraints = [
 	#						('name_unique','unique(name)', 'SQL Warning: name must be unique !'),
 	#						('x_name_short_unique','unique(x_name_short)', 'SQL Warning: x_name_short must be unique !'),
 	#						('x_code_unique','unique(x_code)', 'SQL Warning: x_code must be unique !'),
 	#					]
-
-
-
-
-# ----------------------------------------------------------- Constraints - Python ----------------
-	# Check Name
-	@api.constrains('name')
-	def _check_name(self):
-		"""
-		high level support for doing this and that.
-		"""
-
-		if False:
-		#if True:
-			for record in self:
-
-				#if record.name == '0':
-				#	raise ValidationError("C Warning: Default code not valid: %s" % record.name)
-
-				# Count
-				if record.name != False:
-					count = self.env['product.template'].search_count([
-																		('name', '=', record.name),
-												])
-					if count > 1:
-						raise ValidationError("Rec Warning: NAME already exists: %s" % record.name)
-
-			# all records passed the test, don't return anything
-
-
-
-	# Check Default Code
-	@api.constrains('default_code')
-	def _check_default_code(self):
-		"""
-		high level support for doing this and that.
-		"""
-
-		if False:
-		#if True:
-			for record in self:
-
-				if record.default_code == '0':
-					raise ValidationError("C Warning: Default code not valid: %s" % record.default_code)
-
-				# Count
-				if record.default_code != False:
-					count = self.env['product.template'].search_count([
-																		('default_code', '=', record.default_code),
-												])
-					if count > 1:
-						raise ValidationError("Rec Warning: DEFAULT CODE already exists: %s" % record.default_code)
-
-		# all records passed the test, don't return anything
-
-
-
-
-	# Check Type
-	@api.constrains('type')
-	def _check_type(self):
-
-		if False:
-		#if True:
-			for record in self:
-				if record.type == 'consu':
-					raise ValidationError("Rec Warning: TYPE not valid: %s" % record.type)
-
-				# Count
-				#if record.type != False:
-				#	count = self.env['product.template'].search_count([
-				#														('type', '=', 'consu'),
-				#								])
-				#	if count > 0:
-				#		raise ValidationError("C Warning: Type already exists: %s" % record.type)
-
-			# all records passed the test, don't return anything
-
-
-
-
-
-	# Check Code
-	@api.constrains('x_code')
-	def _check_x_code(self):
-
-		if False:
-		#if True:
-			for record in self:
-
-				#if record.name == '0':
-				#	raise ValidationError("C Warning: Default code not valid: %s" % record.name)
-
-				# Count
-				if record.x_code != False:
-					count = self.env['product.template'].search_count([
-																		('x_code', '=', record.x_code),
-												])
-					if count > 1:
-						raise ValidationError("Rec Warning: CODE already exists: %s" % record.x_code)
-
-			# all records passed the test, don't return anything
-
-
-
 
 
 
@@ -506,9 +360,6 @@ class Product(models.Model):
 
 
 
-
-
-
 # ----------------------------------------------------------- Canonical ---------------------------
 	# Unit of measure
 	uom = fields.Many2one(
@@ -581,6 +432,35 @@ class Product(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Test Computes --------------------------------
+	# Test 
+	@api.multi 
+	def test_computes(self):
+		#print()
+		print('Product - Test Computes')
+
+		print(self.x_name_ticket)
+		print(self.x_generated)
+		print(self.x_checksum_1)
+		print(self.x_checksum_2)
+
+
+
+
+# ----------------------------------------------------------- Test --------------------------------
+	# Test 
+	@api.multi 
+	def test(self):
+		#print()
+		print('Product - Test')
+
+		# Test Unit
+		self.test_computes()
+		#self.test_actions()
+		#self.test_services()
+
+	# test 
 
 
 

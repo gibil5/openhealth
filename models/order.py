@@ -23,7 +23,7 @@ from . import user
 from . import lib
 from . import lib_qr
 from . import chk_patient
-from . import chk_order
+#from . import chk_order
 from . import test_order
 
 class sale_order(models.Model):
@@ -96,7 +96,7 @@ class sale_order(models.Model):
 	@api.multi 
 	def checksum(self):
 		#print
-		#print 'Check Sum'
+		#print 'CheckSum'
 
 		self.check_payment_method()
 
@@ -165,25 +165,22 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Constraints - Python ----------------
+# ----------------------------------------------------------- Constraints - From Chk Patient ------
 	# Check Ruc
 	@api.constrains('x_ruc')
 	def _check_x_ruc(self):
-		#print
-		#print 'Check Ruc'
 		if self.x_type in ['ticket_invoice', 'invoice']:
-			chk_order.check_ruc(self)
+			#chk_order.check_ruc(self)
+			chk_patient.check_x_ruc(self)
 
 
-	# Check Id doc - Documento Identidad 
+
+	# Check Id doc - Use Chk Patient
 	@api.constrains('x_id_doc')
 	def _check_x_id_doc(self):
-		#print
-		#print 'Check Id Doc'
-		#chk_patient.check_x_id_doc(self)
 		if self.x_type in ['ticket_receipt', 'receipt']:
-			#chk_order.check_id_doc(self)
 			chk_patient.check_x_id_doc(self)
+
 
 
 	# Check Serial Number
@@ -647,8 +644,8 @@ class sale_order(models.Model):
 	# Action confirm 
 	@api.multi 
 	def validate(self):
-		#print
-		#print 'Validate'
+		#print()
+		#print('Validate')
 
 
 		# Payment method validation
@@ -684,16 +681,24 @@ class sale_order(models.Model):
 		#print self.x_type
 
 
+
 		# Create Procedure with Appointment 
 		if self.treatment.name != False: 
+
 			for line in self.order_line: 
+
+				#print(line.product_id.name)
+				
 				if line.product_id.x_family in ['laser', 'medical', 'cosmetology']:
-					# Create 
+					
+					# Create
 					creates.create_procedure_wapp(self, line.product_id.x_treatment, line.product_id.id)
+
 				line.update_recos()
 			# Update 
 			self.x_procedure_created = True
 			self.treatment.update_appointments()
+
 
 
 

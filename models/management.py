@@ -722,6 +722,8 @@ class Management(models.Model):
 				})
 
 
+
+
 			# Update Amount Total
 			if order.state in ['sale', 'cancel']:
 				amount_total = amount_total + order.amount_total

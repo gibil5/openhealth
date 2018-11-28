@@ -60,6 +60,17 @@
                         />
 
 
+                        <!-- Test -->
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+                            name="test" 
+
+                            string="TEST" 
+
+                            groups="openhealth.roots"
+                        />
+
 
 
 

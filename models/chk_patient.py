@@ -8,7 +8,7 @@
 		Last up: 	 		27 Sep 2018
 """
 from openerp.exceptions import ValidationError
-from . import chk
+#from . import chk
 
 
 #------------------------------------------------ Name ---------------------------------------------------
@@ -143,7 +143,7 @@ def check_x_id_doc(self):
 
 			# All but Other - Has a fixed length
 			if _type not in ['other']:
-				if len(str(_value))!= length: 
+				if len(str(_value))!= x_length: 
 					#raise ValidationError("Rec Warning: x_id_doc must have " + str(length) + " numbers: %s" % _value)
 					#raise ValidationError("Check Paciente: %s must have %s numbers: %s" % (_name, str(length), _value))
 					raise ValidationError("Check Paciente: %s debe tener %s digitos: %s" % (_name, str(x_length), _value))

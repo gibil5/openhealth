@@ -192,15 +192,11 @@
 
                         <group      col="2"     groups='openhealth.roots'  >
                             <group>
-
                                 <field name="container"/>
-                                
                                 <field name="state_arr"/>
-
                                 <field name="type_arr"/>
-
-<!--
                                 <field name="test_target"/>
+<!--
                                 <field name="legacy"/>
 -->
                             </group>
@@ -442,6 +438,8 @@
                 <tree string="Management Tree">
                     
                     <field name="name"/>
+                    <field name="test_target"   groups="openhealth.roots"/>
+
                     <field name="date_begin"    string="Fecha Inicio"/>
                     <field name="date_end"      string="Fecha Fin"/>
                     <field name="write_date"    string="Actualizado"/>
@@ -455,7 +453,6 @@
             </field>
         </record>
 <!--
-                    <field name="test_target"   groups="openhealth.roots"/>
                     <field name="delta_1"       string="D 1"    groups="openhealth.roots"/>
                     <field name="delta_2"       string="D 2"    groups="openhealth.roots"/>
                     <field name="date_begin"    string="Fecha Inicio"/>

@@ -43,7 +43,7 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 			#print 'Pricelist: ', 			order.pricelist_id.name		# Verify 
 			#print 'order.amount_total: ', 	order.amount_total		# Verify 
 			#print 'Assert'
-			order.test()
+			#order.test()		# Dep !
 			
 
 
@@ -86,29 +86,32 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 			#print 'Pricelist: ', 	order.pricelist_id.name		# Verify
 			#print 'amount_total: ', order.amount_total			# Verify
 			#print 'Assert'
-			order.test()
+			
+			#order.test()		# Deprecated ! - Do not mix integrations and unit tests
 
 
 
 
 	# Sessions
-	if self.ses_create:
 	#if False:
+	if self.ses_create:
 		#print 
 		#print 
 		#print 'Create Sessions'
 		for procedure in self.procedure_ids: 
-			for _ in range(2): 
+			#for _ in range(2): 
+			for _ in range(1): 
 				procedure.create_sessions()
 
 
 	# Controls 
-	if self.con_create:
 	#if False:
+	if self.con_create:
 		#print 
 		#print 'Create Controls'
 		for procedure in self.procedure_ids: 
-			for _ in range(6): 
+			#for _ in range(6): 
+			for _ in range(1):
 				procedure.create_controls()
 
 # test_integration_treatment

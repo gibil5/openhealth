@@ -16,7 +16,6 @@ class electronic_order(models.Model):
 	"""
 	high level support for doing this and that.
 	"""
-
 	#_inherit = 'openhealth.management.order.line'
 	_inherit = 'openhealth.line'
 
@@ -28,11 +27,38 @@ class electronic_order(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Handles -----------------------------
+
+	# Treatment
+	treatment_id = fields.Many2one(
+			'openhealth.treatment',
+			ondelete='cascade',
+		)
+
+
+
+	# Container
+	container_id = fields.Many2one(
+			'openhealth.container',
+			ondelete='cascade',
+		)
+
+	# Management
+	management_id = fields.Many2one(
+			'openhealth.management',
+			ondelete='cascade',
+		)
+
+
+
+
 # ----------------------------------------------------------- Dep ---------------------------------
 	# Id
 	#id_serial_nr = fields.Char(
 	#		'Id Serial Nr',
 	#	)
+
 
 
 
@@ -128,20 +154,6 @@ class electronic_order(models.Model):
 		)
 
 
-
-# ----------------------------------------------------------- Handles -----------------------------
-
-	# Container
-	container_id = fields.Many2one(
-			'openhealth.container',
-			ondelete='cascade',
-		)
-
-	# Management
-	management_id = fields.Many2one(
-			'openhealth.management',
-			ondelete='cascade',
-		)
 
 
 

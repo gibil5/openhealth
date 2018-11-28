@@ -297,9 +297,9 @@
 		
 
 		'data/prods/odoo_data_services_med_dep.xml',	# Dependance
+
+
 		#'data/prods/odoo_data_services_cos_dep.xml', 	# Dependance ?
-
-
 		#'data/prods/odoo_data_products_consu.xml',		# Deprecated
 
 

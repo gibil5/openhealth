@@ -12,8 +12,9 @@
             <field name="mode">primary</field>
 <!--
             <field name="priority" eval="100"/>
--->
             <field name="priority" eval="1"/>
+-->
+            <field name="priority" eval="0"/>
 
             <field name="arch" type="xml">
 

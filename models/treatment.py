@@ -33,7 +33,7 @@ class Treatment(models.Model):
 		Test Libraries
 		"""
 
-		print
+		print()
 		print('Test Libs')
 
 		# Product Generated Names

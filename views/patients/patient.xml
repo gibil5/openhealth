@@ -641,7 +641,10 @@
 
 
 <!-- TREE 2 -->
+<!--
         <record model="ir.ui.view" id="openhealth.oeh_medical_patient_tree_2">
+-->
+        <record model="ir.ui.view" id="oeh_medical_patient_tree_2">
             <field name="name">patient.tree</field>
             <field name="model">oeh.medical.patient</field>
             <field name="arch" type="xml">  

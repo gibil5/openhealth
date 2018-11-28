@@ -1380,13 +1380,18 @@ limit = 40
 
         <!-- FAVS -->
         <!-- By Month --> 
-        <record id="openhealth.filter_tre_order_month" model="ir.filters">
+<!--
+        <record id="openhealth.filter_tre_order_month" model="ir.filters">        
             <field name="name">Por Mes</field>
             <field name="model_id">openhealth.treatment</field>
             <field name="context">{'group_by': ['start_date']}</field>
         </record>
+-->
         <!-- By Doctor --> 
+<!--
         <record id="openhealth.filter_tre_order_phy" model="ir.filters">
+-->
+        <record id="filter_tre_order_phy" model="ir.filters">
             <field name="name">Por Medico</field>
             <field name="model_id">openhealth.treatment</field>
             <field name="context">{'group_by': ['physician']}</field>

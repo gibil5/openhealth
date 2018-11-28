@@ -140,6 +140,14 @@
         </record>
 
 
+        <!-- Product Categories - Children --> 
+<!--
+        <record id='topical' model='product.category'>
+            <field name='name'>Cremas</field>
+            <field name='parent_id'     ref='platform_product_categ'/>
+        </record>
+-->
+
 
 
         <!-- Test --> 
@@ -201,13 +209,6 @@
 
 
 
-        <!-- Product Categories - Children --> 
-        <record id='topical' model='product.category'>
-            <field name='name'>Cremas</field>
-<!--
-            <field name='parent_id'     ref='platform_product_categ'/>
--->
-        </record>
 
 
 

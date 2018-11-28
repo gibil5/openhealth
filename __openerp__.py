@@ -252,7 +252,7 @@
 
 		# Doctors
 		'data/physicians/base_data_physicians.xml',				
-		'data/physicians/base_data_physicians_inactive.xml',				
+		#'data/physicians/base_data_physicians_inactive.xml',		Dep ???
 		'data/physicians/base_data_physicians_new.xml',				
 
 
@@ -277,7 +277,7 @@
 		'data/users/base_data_users_managers.xml',	
 		'data/users/base_data_users_doctors_new.xml',		
 
-		'data/users/base_data_users_test.xml',	
+		#'data/users/base_data_users_test.xml',		Dep !!!
 
 
 

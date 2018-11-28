@@ -53,6 +53,26 @@
             <field name='categ_id' ref="laser_m22"/>
         </record>
 
+<!--
+        <record id='ipl_fac_sta_30m_one' model='product.template'>
+            <field name='type'>service</field>
+            <field name='x_name_short'>ipl_fac_sta_30m_one</field>
+            <field name='name'>LASER M22 IPL - Rostro - Manchas - 1 - 30 min</field>
+            <field name='x_treatment'>laser_ipl</field>
+            <field name='x_zone'>face</field>
+            <field name='x_pathology'>stains</field>
+            <field name='price'>1800</field>
+
+            <field name='x_time'>30 min</field>
+            <field name='x_sessions'>1</field>
+            <field name='x_price_vip'>0</field>
+            <field name='x_family'>laser</field>
+            <field name='categ_id' ref="laser_m22"/>
+        </record>
+-->
+
+
+
         <record id='ipl_fee_dep_5m_one' model='product.template'>
             <field name='type'>service</field>
             <field name='x_name_short'>ipl_fee_dep_5m_one</field>
@@ -117,21 +137,7 @@
             <field name='categ_id' ref="laser_m22"/>
         </record>
 
-        <record id='ipl_fac_ros_30m_one' model='product.template'>
-            <field name='type'>service</field>
-            <field name='x_name_short'>ipl_fac_ros_30m_one</field>
-            <field name='name'>LASER M22 IPL - Rostro - Rosacea - 1 - 30 min</field>
-            <field name='x_treatment'>laser_ipl</field>
-            <field name='x_zone'>face</field>
-            <field name='x_pathology'>rosacea</field>
-            <field name='price'>1800</field>
-
-            <field name='x_time'>30 min</field>
-            <field name='x_sessions'>1</field>
-            <field name='x_price_vip'>0</field>
-            <field name='x_family'>laser</field>
-            <field name='categ_id' ref="laser_m22"/>
-        </record>
+ 
 
         <record id='ndy_bol_tel_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -222,6 +228,9 @@
             <field name='categ_id' ref="laser_m22"/>
         </record>
 
+
+
+<!--
         <record id='ipl_fac_ros_30m_one' model='product.template'>
             <field name='type'>service</field>
             <field name='x_name_short'>ipl_fac_ros_30m_one</field>
@@ -237,6 +246,26 @@
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_m22"/>
         </record>
+-->
+       <record id='ipl_fac_ros_30m_one' model='product.template'>
+            <field name='type'>service</field>
+            <field name='x_name_short'>ipl_fac_ros_30m_one</field>
+            <field name='name'>LASER M22 IPL - Rostro - Rosacea - 1 - 30 min</field>
+            <field name='x_treatment'>laser_ipl</field>
+            <field name='x_zone'>face</field>
+            <field name='x_pathology'>rosacea</field>
+            <field name='price'>1800</field>
+
+            <field name='x_time'>30 min</field>
+            <field name='x_sessions'>1</field>
+            <field name='x_price_vip'>0</field>
+            <field name='x_family'>laser</field>
+            <field name='categ_id' ref="laser_m22"/>
+        </record>
+
+
+
+
 
         <record id='ipl_han_dep_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -357,22 +386,6 @@
         </record>
 
 
-
-        <record id='ipl_fac_sta_30m_one' model='product.template'>
-            <field name='type'>service</field>
-            <field name='x_name_short'>ipl_fac_sta_30m_one</field>
-            <field name='name'>LASER M22 IPL - Rostro - Manchas - 1 - 30 min</field>
-            <field name='x_treatment'>laser_ipl</field>
-            <field name='x_zone'>face</field>
-            <field name='x_pathology'>stains</field>
-            <field name='price'>1800</field>
-
-            <field name='x_time'>30 min</field>
-            <field name='x_sessions'>1</field>
-            <field name='x_price_vip'>0</field>
-            <field name='x_family'>laser</field>
-            <field name='categ_id' ref="laser_m22"/>
-        </record>
 
         <record id='ipl_nec_dep_5m_one' model='product.template'>
             <field name='type'>service</field>

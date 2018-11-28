@@ -13,7 +13,7 @@
 -->
 
         <!-- Product Managers --> 
-        <record id="openhealth.product_managers" model="res.groups">
+        <record id="product_managers" model="res.groups">
 
             <field name="name">Product Managers</field>
             
@@ -45,7 +45,7 @@
 <!--
                                             (4, ref('openhealth.rzevallos')), 
 -->
-        <record id="openhealth.hc_managers" model="res.groups">
+        <record id="hc_managers" model="res.groups">
 
             <field name="name">HC Managers</field>
 
@@ -94,7 +94,7 @@
 <!-- Readers --> 
 
         <!-- Product Readers --> 
-        <record id="openhealth.product_readers" model="res.groups">
+        <record id="product_readers" model="res.groups">
             <field name="name">Product Readers</field>
             <field name="category_id" ref="module_openhealth_category"/>
 
@@ -155,7 +155,7 @@
 
 
         <!-- HC Readers --> 
-        <record id="openhealth.hc_readers" model="res.groups">
+        <record id="hc_readers" model="res.groups">
             <field name="name">HC Readers</field>
             <field name="category_id" ref="module_openhealth_category"/>
 

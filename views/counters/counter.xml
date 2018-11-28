@@ -98,7 +98,7 @@
 <!--
         <record model="ir.ui.view" id="openhealth.counter_tree_view">
 -->
-        <record model="ir.ui.view" id="openhealth.counter_tree_view">
+        <record model="ir.ui.view" id="counter_tree_view">
             <field name="name">openhealth.counter.tree</field>
             <field name="model">openhealth.counter</field>
             <field name="arch" type="xml">

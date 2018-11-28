@@ -16,7 +16,7 @@
                                                         (4, ref('openhealth.rzevallos')), 
 -->
 <!-- Roots --> 
-        <record id="openhealth.roots" model="res.groups">
+        <record id="roots" model="res.groups">
             <field name="name">roots</field>
             <field name="category_id" ref="module_openhealth_category"/>
 
@@ -32,7 +32,7 @@
                                                     (4, ref('openhealth.rzevallos')), 
 -->
 <!-- Directors --> 
-        <record id="openhealth.directors" model="res.groups">
+        <record id="directors" model="res.groups">
             <field name="name">Directores</field>
             <field name="category_id" ref="module_openhealth_category"/>
 
@@ -60,7 +60,7 @@
 
 
 <!-- Archivers -->
-        <record id="openhealth.archivers" model="res.groups">
+        <record id="archivers" model="res.groups">
             
             <field name="name">Archivadores</field>
             
@@ -105,7 +105,7 @@
 
 
 <!-- Almacen  Manager --> 
-        <record id="openhealth.almacen_managers" model="res.groups">
+        <record id="almacen_managers" model="res.groups">
             <field name="name">Almacen Managers</field>
             <field name="category_id" ref="module_openhealth_category"/>
 
@@ -129,7 +129,7 @@
 
 
 <!-- Almacen --> 
-        <record id="openhealth.almacens" model="res.groups">
+        <record id="almacens" model="res.groups">
             <field name="name">Almacens</field>
             <field name="category_id" ref="module_openhealth_category"/>
 
@@ -160,7 +160,7 @@
 -->
 
 <!-- Managers --> 
-        <record id="openhealth.managers" model="res.groups">
+        <record id="managers" model="res.groups">
             <field name="name">Managers</field>
             <field name="category_id" ref="module_openhealth_category"/>
 
@@ -205,7 +205,7 @@
                                         (4, ref('openhealth.fchavarri_clinicachavarri')),
 -->
 <!-- Medicos --> 
-        <record id="openhealth.physicians" model="res.groups">
+        <record id="physicians" model="res.groups">
             <field name="name">Medicos</field>
             <field name="category_id" ref="module_openhealth_category"/>
 
@@ -244,7 +244,7 @@
 
 
 <!-- Asistentes --> 
-        <record id="openhealth.assistants" model="res.groups">
+        <record id="assistants" model="res.groups">
             <field name="name">Asistentes</field>
             <field name="category_id" ref="module_openhealth_category"/>
 
@@ -275,7 +275,7 @@
                                         (4, ref('openhealth.avidal_clinicachavarri')),
 -->
 <!-- Plataforma --> 
-        <record id="openhealth.reception" model="res.groups">
+        <record id="reception" model="res.groups">
             <field name="name">Plataforma</field>
             <field name="category_id" ref="module_openhealth_category"/>
 
@@ -310,7 +310,7 @@
 
 
 <!-- Caja --> 
-        <record id="openhealth.caja" model="res.groups">
+        <record id="caja" model="res.groups">
             <field name="name">Caja</field>
             <field name="category_id" ref="module_openhealth_category"/>
 
@@ -341,7 +341,7 @@
 -->
 
 <!-- Staff --> 
-        <record id="openhealth.staffs" model="res.groups">
+        <record id="staffs" model="res.groups">
             <field name="name">Staff</field>
             <field name="category_id" ref="module_openhealth_category"/>
 

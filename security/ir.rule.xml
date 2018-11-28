@@ -101,7 +101,7 @@
 
 
         <!-- Almacen can see all the supplierinfos -->
-        <record id="openhealth.almacen_supplierinfos" model="ir.rule">
+        <record id="almacen_supplierinfos" model="ir.rule">
             <field name="name">Almacen can see all the supplierinfos</field>
             <field name="model_id" ref="product.model_product_supplierinfo"/>
             

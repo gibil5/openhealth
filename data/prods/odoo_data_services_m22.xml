@@ -579,21 +579,7 @@
             <field name='categ_id' ref="laser_m22"/>
         </record>
 
-        <record id='ipl_fac_ros_30m_six' model='product.template'>
-            <field name='type'>service</field>
-            <field name='x_name_short'>ipl_fac_ros_30m_six</field>
-            <field name='name'>LASER M22 IPL - Rostro - Rosacea - 6 - 30 min</field>
-            <field name='x_treatment'>laser_ipl</field>
-            <field name='x_zone'>face</field>
-            <field name='x_pathology'>rosacea</field>
-            <field name='price'>10800</field>
-
-            <field name='x_time'>30 min</field>
-            <field name='x_sessions'>6</field>
-            <field name='x_price_vip'>6000</field>
-            <field name='x_family'>laser</field>
-            <field name='categ_id' ref="laser_m22"/>
-        </record>
+ 
 
         <record id='ipl_fac_dep_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -626,6 +612,25 @@
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_m22"/>
         </record>
+<!--
+        <record id='ipl_fac_sta_30m_six' model='product.template'>
+            <field name='type'>service</field>
+            <field name='x_name_short'>ipl_fac_sta_30m_six</field>
+            <field name='name'>LASER M22 IPL - Rostro - Manchas - 6 - 30 min</field>
+            <field name='x_treatment'>laser_ipl</field>
+            <field name='x_zone'>face</field>
+            <field name='x_pathology'>stains</field>
+            <field name='price'>10800</field>
+
+            <field name='x_time'>30 min</field>
+            <field name='x_sessions'>6</field>
+            <field name='x_price_vip'>6000</field>
+            <field name='x_family'>laser</field>
+            <field name='categ_id' ref="laser_m22"/>
+        </record>
+-->
+
+
 
         <record id='ipl_fac_ros_30m_six' model='product.template'>
             <field name='type'>service</field>
@@ -642,6 +647,24 @@
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_m22"/>
         </record>
+<!--
+       <record id='ipl_fac_ros_30m_six' model='product.template'>
+            <field name='type'>service</field>
+            <field name='x_name_short'>ipl_fac_ros_30m_six</field>
+            <field name='name'>LASER M22 IPL - Rostro - Rosacea - 6 - 30 min</field>
+            <field name='x_treatment'>laser_ipl</field>
+            <field name='x_zone'>face</field>
+            <field name='x_pathology'>rosacea</field>
+            <field name='price'>10800</field>
+
+            <field name='x_time'>30 min</field>
+            <field name='x_sessions'>6</field>
+            <field name='x_price_vip'>6000</field>
+            <field name='x_family'>laser</field>
+            <field name='categ_id' ref="laser_m22"/>
+        </record>
+-->
+
 
         <record id='ipl_glu_dep_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -783,22 +806,6 @@
             <field name='x_time'>15 min</field>
             <field name='x_sessions'>1</field>
             <field name='x_price_vip'>0</field>
-            <field name='x_family'>laser</field>
-            <field name='categ_id' ref="laser_m22"/>
-        </record>
-
-        <record id='ipl_fac_sta_30m_six' model='product.template'>
-            <field name='type'>service</field>
-            <field name='x_name_short'>ipl_fac_sta_30m_six</field>
-            <field name='name'>LASER M22 IPL - Rostro - Manchas - 6 - 30 min</field>
-            <field name='x_treatment'>laser_ipl</field>
-            <field name='x_zone'>face</field>
-            <field name='x_pathology'>stains</field>
-            <field name='price'>10800</field>
-
-            <field name='x_time'>30 min</field>
-            <field name='x_sessions'>6</field>
-            <field name='x_price_vip'>6000</field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_m22"/>
         </record>

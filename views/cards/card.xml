@@ -64,7 +64,7 @@
 
 
         <!-- TREE -->
-        <record model="ir.ui.view" id="openhealth.card_tree_view">
+        <record model="ir.ui.view" id="card_tree_view">
             <field name="name">card.tree</field>
             <field name="model">openhealth.card</field>
             <field name="arch" type="xml">

@@ -5,6 +5,7 @@
  		Created: 			26 Aug 2016
  		Last up: 	 		21 Nov 2018
 """
+from __future__ import print_function
 import datetime
 from openerp import models, fields, api
 from . import time_funcs

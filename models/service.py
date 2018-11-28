@@ -5,6 +5,7 @@
  		Created: 				20 Sep 2016
  		Last updated: 	 		23 Nov 2018
 """
+from __future__ import print_function
 from openerp import models, fields, api
 from . import prodvars
 from . import ipl

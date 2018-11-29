@@ -36,11 +36,21 @@
             <field name="name">Directores</field>
             <field name="category_id" ref="module_openhealth_category"/>
             <field name="comment">cc</field>
-
+<!--
             <field name="implied_ids" eval="[(4, ref('purchase.group_purchase_manager'))]"/>
             <field name="implied_ids" eval="[(4, ref('stock.group_stock_manager'))]"/>
             <field name="implied_ids" eval="[(4, ref('base.group_hr_manager'))]"/>
             <field name="implied_ids" eval="[(4, ref('oehealth.group_oeh_medical_manager'))]"/>
+-->
+
+            <field name="implied_ids" eval="[       
+                                                    (4, ref('purchase.group_purchase_manager')),
+                                                    (4, ref('stock.group_stock_manager')),
+                                                    (4, ref('base.group_hr_manager')),
+                                                    (4, ref('oehealth.group_oeh_medical_manager')),
+                                                ]"/>
+
+
 
             <field name="users" eval="[
                                                     (4, ref('openhealth.director_clinicachavarri')),

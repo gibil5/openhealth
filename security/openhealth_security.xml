@@ -118,9 +118,19 @@
 
             <field name="comment">cc</field>
 
+<!--
+            <field name="implied_ids" eval="[
+            ]"/>
+            <field name="implied_ids" eval="[
+            (4, ref('purchase.group_purchase_user'))
+            (4, ref('stock.group_stock_manager'))
+            ]"/>
+-->
+            <field name="implied_ids" eval="[       
+                                                (4, ref('purchase.group_purchase_user')),
+                                                (4, ref('stock.group_stock_manager')),
+                                            ]"/>
 
-            <field name="implied_ids" eval="[(4, ref('purchase.group_purchase_user'))]"/>
-            <field name="implied_ids" eval="[(4, ref('stock.group_stock_manager'))]"/>
 
             <field name="users" eval="[ 
                                         (4, ref('openhealth.almacen_clinicachavarri')),
@@ -142,15 +152,21 @@
 <!--
             <field name="comment">cc</field>
 -->
-
+<!--
             <field name="implied_ids" eval="[(4, ref('purchase.group_purchase_user'))]"/>
             <field name="implied_ids" eval="[(4, ref('stock.group_stock_user'))]"/>
+-->
+            <field name="implied_ids" eval="[       
+                                                (4, ref('purchase.group_purchase_user')),
+                                                (4, ref('stock.group_stock_user')),
+                                            ]"/>
+
+
 <!--
                                         (4, ref('openhealth.almacen_clinicachavarri')),
                                         (4, ref('openhealth.yramirez_clinicachavarri')),
 -->
-            <field name="users" eval="[ 
-                                    ]"/>
+            <field name="users" eval="[]"/>
         </record>
 
 

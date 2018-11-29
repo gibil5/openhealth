@@ -549,12 +549,16 @@
                                 -->
 
 
+<!--
+                                        groups="openhealth.roots"
+-->
                                 <!-- Reset --> 
                                 <button 
                                         type="object" 
                                         class="oe_highlight"
                                         name="reset"
-                                        groups="openhealth.roots"
+
+                                        groups="openhealth.roots,openhealth.caja"
 
                                         string="Reset"
                                 />

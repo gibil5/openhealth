@@ -15,7 +15,10 @@ except (ImportError, IOError) as err:
 
 from openerp import models, fields, api
 from openerp import _
-from openerp.exceptions import Warning
+
+#from openerp.exceptions import Warning
+from openerp.exceptions import Warning as UserError
+
 from . import ord_vars
 from . import creates
 from . import pat_vars
@@ -711,13 +714,15 @@ class sale_order(models.Model):
 		if self.x_type in ['ticket_invoice', 'invoice']:
 			if self.x_ruc in [False, '']:
 				msg = "Error: RUC Ausente."
-				raise Warning(_(msg))
+				#raise Warning(_(msg))
+				raise UserError(_(msg))
 
 		# Receipt
 		elif self.x_type in ['ticket_receipt', 'receipt']:
 			if self.x_id_doc_type in [False, '']  or self.x_id_doc in [False, '']:
 				msg = "Error: Documento de Identidad Ausente."
-				raise Warning(_(msg))
+				#raise Warning(_(msg))
+				raise UserError(_(msg))
 
 
 

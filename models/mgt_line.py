@@ -1,22 +1,35 @@
 # -*- coding: utf-8 -*-
+"""
+# 	Management Line
 #
-# 	Management Line 
-# 
 # Created: 				18 May 2018
-#
+"""
 from openerp import models, fields, api
-from . import mgt_vars
 
 class ManagementLine(models.Model):
+	"""
+	high level support for doing this and that.
+	"""
 
 	_name = 'openhealth.management.line'
 
 	_order = 'idx asc'
 
 
+#----------------------------------------------------------- Dep - Update -------------------------
+	# Update Fields
+	#def update(self):
+		#print
+		#print 'Update fields - Mgt Line'
+	#	if self.name in mgt_vars._h_name:
+	#		self.name_sp = mgt_vars._h_name[self.name]
+	#	else:
+	#		self.name_sp = self.name
+	# update
 
-	# ----------------------------------------------------------- Relational ------------------------------------------------------
 
+
+# ----------------------------------------------------------- Relational --------------------------
 	management_id = fields.Many2one(
 			'openhealth.management'
 		)
@@ -25,9 +38,7 @@ class ManagementLine(models.Model):
 			'openhealth.management.doctor.line'
 		)
 
-
-	# ----------------------------------------------------------- Primitive ------------------------------------------------------
-	
+# ----------------------------------------------------------- Primitive ---------------------------
 	name = fields.Char(
 			'Name',
 		)
@@ -37,17 +48,15 @@ class ManagementLine(models.Model):
 		)
 
 	meta = fields.Char(
-			#'Family',
 			'Meta',
 		)
 
 	meta_sp = fields.Char(
-			#'Familia',
 			'Meta',
 		)
 
 	idx = fields.Integer(
-			'Idx', 
+			'Idx',
 		)
 
 	x_count = fields.Integer(
@@ -56,40 +65,21 @@ class ManagementLine(models.Model):
 
 	amount = fields.Float(
 			'Monto',
-			digits=(16,1), 
+			digits=(16, 1),
 		)
 
 
 
-	#----------------------------------------------------------- Actions ------------------------------------------------------------
-
-	# Update Fields
+#----------------------------------------------------------- Open Line Current --------------------
 	@api.multi
-	#def update_fields(self):  
-	def update(self):  
-
-		#print 
-		#print 'Update fields - Mgt Line'
-		#print 
-		if self.name in mgt_vars._h_name: 
-			self.name_sp = mgt_vars._h_name[self.name]
-		else: 
-			self.name_sp = self.name
-	# update_fields
-
-
-
-	#----------------------------------------------------------- Open Line Current ------------------------------------------------------------
-
-	# For quick access
-	@api.multi
-	def open_line_current(self):  
-
-		res_id = self.id 
-
+	def open_line_current(self):
+		"""
+		high level support for doing this and that.
+		"""
+		res_id = self.id
 		return {
 				'type': 'ir.actions.act_window',
-				'name': ' Edit Order Current', 
+				'name': ' Edit Order Current',
 				'view_type': 'form',
 				'view_mode': 'form',
 				'res_model': self._name,

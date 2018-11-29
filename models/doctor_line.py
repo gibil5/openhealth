@@ -298,15 +298,10 @@ class DoctorLine(models.Model):
 
 
 
-# ----------------------------------------------------------- Update ------------------------------------------------------
-
-	# Update Fields
-	@api.multi
-	#def update_fields(self):  
+# ----------------------------------------------------------- Update ------------------------------
 	def update(self):  
-
 		#print 
-		#print 'Update Fields'
+		#print 'Update'
 
 		# Names 
 		if self.name in mgt_vars._h_name: 
@@ -320,6 +315,4 @@ class DoctorLine(models.Model):
 			self.ratio_pro_con_co2 = (float(self.nr_procedures_co2) / float(self.nr_consultations)) * 100 
 			self.ratio_pro_con_quick = (float(self.nr_procedures_quick) / float(self.nr_consultations)) * 100 
 
-	# update_fields
-
-
+	# update

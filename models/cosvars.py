@@ -2,101 +2,6 @@
 
 
 
-
-
-_hash_tre_mac = {
-		
-
-		'vip_card': 'vip_card', 
-
-
-
-
-
-		'consultation': 'consultation', 
-
-
-		'triactive_carboxytherapy': 					'laser_triactive',
-		'carboxytherapy': 								'carboxy_diamond', 
-		'diamond_tip' : 								'carboxy_diamond', 
-		'triactive_carboxytherapy_reductionchamber': 	'chamber_reduction',
-
-
-
-
-		'laser_quick': 									'laser_quick',
-
-		'laser_co2': 									'laser_co2_1',
-		'laser_excilite': 								'laser_excilite',
-		'laser_ipl': 									'laser_m22',
-		'laser_ndyag': 									'laser_m22',
-
-
-
-
-		# Medical
-		'criosurgery': 				'criosurgery', 
-		'botulinum_toxin': 			'botulinum_toxin', 
-		'hyaluronic_acid': 			'hyaluronic_acid', 
-		'hyaluronic_acid_repair': 	'hyaluronic_acid_repair', 
-		'intravenous_vitamin': 		'intravenous_vitamin', 
-		'lepismatic': 				'lepismatic', 
-		'mesotherapy_nctf': 		'mesotherapy_nctf', 
-		'plasma': 					'plasma', 
-		'sclerotherapy': 			'sclerotherapy', 
-
-
-
-		False:	'', 
-	}
-
-
-
-
-
-
-
-
-# Procedure
-_procedure_list = [
-							
-							('diamond_tip',							'Punta de diamantes'),
-
-
-							('carboxytherapy',						'Carboxiterapia'),
-
-
-							('laser_triactive',						'Láser triactivo'),			
-
-
-							('reductionchamber',					'Cámara de reducción'),
-			
-			]
-
-
-
-
-
-
-
-
-
-# Chief complaint
-_chief_complaint_list = [
-				
-							('rejuvenation_face',			'Rejuvenecimiento facial'),			
-							('deep_face_cleansing',			'Limpieza facial profunda'),
-							('reaffirmation',				'Reafirmación'),
-							('reduction_weight_measures',	'Reducción de peso y medidas'),
-			
-			]
-
-
-
-
-
-
-
 # Criosurgery
 _cos_dia_list = [
 		('1',			'1 Sesión (30 min)'),	
@@ -127,3 +32,34 @@ _cos_tri_list = [
 
 		('none',''),
 		]
+
+
+#------------------------------------------------ Getters -----------------------------------------
+
+def get_cos_dia_list():
+	"""
+	high level support for doing this and that.
+	"""
+	return _cos_dia_list
+
+
+
+def get_cos_car_list():
+	"""
+	high level support for doing this and that.
+	"""
+	return _cos_car_list
+
+
+
+def get_cos_tri_list():
+	"""
+	high level support for doing this and that.
+	"""
+	return _cos_tri_list
+
+
+
+
+
+

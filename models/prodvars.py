@@ -51,9 +51,36 @@ _laser_type_list = [
 		#('',''), 	
 		#('none','None'), 	
 		('none',		'none'),
-		]
+]
 
 
+
+
+_time_list = [		
+				('15 min','15 min'),	
+				('30 min','30 min'),
+				('60 min','60 min'),
+				('none',''),
+]
+
+
+
+
+
+#------------------------------------------------ Getters -----------------------------------------
+
+def get_laser_type_list():
+	"""
+	high level support for doing this and that.
+	"""
+	return _laser_type_list
+
+
+def get_time_list():
+	"""
+	high level support for doing this and that.
+	"""
+	return _time_list
 
 
 
@@ -418,17 +445,6 @@ _pathology_list = [
 
 
 
-
-
-_time_list = [
-		
-		('15 min','15 min'),	
-		('30 min','30 min'),
-		
-		('60 min','60 min'),
-
-		('none',''),
-		]
 
 
 

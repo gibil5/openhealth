@@ -1,19 +1,15 @@
 # -*- coding: utf-8 -*-
 """
-		Patient 
- 
+		Patient
+
  		Created: 		26 Aug 2016
-		Last up: 		24 Nov 2018
+		Last up: 		29 Nov 2018
 """
 from __future__ import print_function
 from openerp import models, fields, api
-from datetime import datetime
 from . import lib
-from . import user
 from . import count_funcs
 from . import pat_vars
-from . import creates
-from . import tst_pat
 from . import chk_patient
 
 class Patient(models.Model):
@@ -25,77 +21,84 @@ class Patient(models.Model):
 
 
 # ----------------------------------------------------------- Constraints - Sql -------------------
-	# Uniqueness constraints for: 
-	# 	Name
-	# 	Id Code - Nr de Historia
-	# 	Id Doc - Documento de Identidad
+	# Uniqueness constraints for:
+	# 	Name, Id Code (Nr de Historia), Id Doc (Documento de Identidad)
 	_sql_constraints = [
-	#						('name_unique','unique(name)', 'SQL Warning: name must be unique !'),
-							('name_unique','Check(1=1)', 'SQL Warning: name must be unique !'),
-	
-	#						('x_id_code_unique','unique(x_id_code)', 'SQL Warning: x_id_code must be unique !'),
-							('x_id_code_unique','Check(1=1)', 'SQL Warning: x_id_code must be unique !'),
-	
-	#						('x_id_doc_unique','unique(x_id_doc)', 'SQL Warning: x_id_doc must be unique !'),
-							('x_id_doc_unique','Check(1=1)', 'SQL Warning: x_id_doc must be unique !'),
-						]     
+							('name_unique', 'Check(1=1)', 'SQL Warning: name must be unique !'),
+							('x_id_code_unique', 'Check(1=1)', 'SQL Warning: x_id_code must be unique !'),
+							('x_id_doc_unique', 'Check(1=1)', 'SQL Warning: x_id_doc must be unique !'),
+						]
 
 
 
 # ----------------------------------------------------------- Constraints Python - Important ------
-	# Id doc - Documento Identidad 
+
+	# Id doc - Documento Identidad
 	@api.constrains('x_id_doc')
 	def check_x_id_doc(self):
+		"""
+		high level support for doing this and that.
+		"""
 		chk_patient.check_x_id_doc(self)
+
+
 
 	# Ruc
 	@api.constrains('x_ruc')
 	def check_x_ruc(self):
-		#print
-		#print 'Check Ruc'
+		"""
+		Check Ruc
+		"""
 		chk_patient.check_x_ruc(self)
 
-	# Check Name  
+	# Check Name
 	@api.constrains('name')
 	def check_name(self):
-		#print
-		#print 'Check Name'
+		"""
+		Check Name
+		"""
 		chk_patient.check_name(self)
 
-	# Check Id Code - Hr Historia  
+	# Check - Hr History
 	@api.constrains('x_id_code')
 	def _check_x_id_code(self):
-		#print
-		#print 'Check Id Code'
+		"""
+		Check Id Code
+		"""
 		chk_patient.check_x_id_code(self)
 
 
 
+
 # ----------------------------------------------------------- Id Doc ------------------------------
-	# Id Document 
+	# Id Document
 	x_id_doc = fields.Char(
 			'Nr. Doc.',
 			#required=True,
 		)
 
-	# Id Document Type 
+	# Id Document Type
 	x_id_doc_type = fields.Selection(
-			selection=pat_vars._id_doc_type_list, 
-			string='Tipo de documento', 
+
+			#selection=pat_vars._id_doc_type_list,
+			selection=pat_vars.get_id_doc_type_list(),
+
+			string='Tipo de documento',
 			#required=True,
 		)
 
-	# Id Document Type 
+	# Id Document Type
 	x_id_doc_type_code = fields.Char(
-			string='Tipo de documento Cod', 
+			string='Tipo de documento Cod',
 
-			compute='_compute_x_id_doc_type_code', 
+			compute='_compute_x_id_doc_type_code',
 		)
 
 	@api.multi
 	def _compute_x_id_doc_type_code(self):
 		for record in self:
-			record.x_id_doc_type_code = pat_vars._dic_id_doc_code[record.x_id_doc_type]
+			#record.x_id_doc_type_code = pat_vars._dic_id_doc_code[record.x_id_doc_type]
+			record.x_id_doc_type_code = pat_vars.get_dic_id_doc_code(record.x_id_doc_type)
 
 
 
@@ -106,198 +109,207 @@ class Patient(models.Model):
 			'Modo Admin',
 		)
 
+
 # ----------------------------------------------------------- Test - Fields -----------------------
 	x_test_case = fields.Char(
-			'Test Case', 
+			'Test Case',
 		)
 
 	x_test = fields.Boolean(
-			'Test', 
+			'Test',
 		)
 
+
 # ----------------------------------------------------------- Handle ------------------------------
-	# Container 
+	# Container
 	container_id = fields.Many2one(
-		'openhealth.container', 		
-		ondelete='cascade', 
+		'openhealth.container',
+		ondelete='cascade',
 	)
 
 
 
 
 # ----------------------------------------------------------- QC ----------------------------------
-	# Data complete 
+	# Data complete
 	x_data_complete = fields.Boolean(
-			string="Data Complete", 
+			string="Data Complete",
 
 			compute='_compute_x_data_complete',
 	)
 
 	@api.multi
-	#@api.depends('x_card')
 	def _compute_x_data_complete(self):
-		for record in self:	
-			if record.x_legacy or record.x_treatment_count > 0: 
-				record.x_data_complete = True
-			else: 
-				record.x_data_complete = False
+		for record in self:
+			#if record.x_legacy or record.x_treatment_count > 0:
+			#	record.x_data_complete = True
+			#else:
+			#	record.x_data_complete = False
+
+			record.x_data_complete = (record.x_legacy or record.x_treatment_count > 0)
 
 
 
-
-	# Legacy 
+	# Legacy
 	x_legacy = fields.Boolean(
-			string="Legacy", 
+			string="Legacy",
 
-			compute='_compute_x_legacy', 
+			compute='_compute_x_legacy',
 	)
 
 	@api.multi
-	#@api.depends('x_card')
 	def _compute_x_legacy(self):
 		for record in self:
-			#pass 
-			if record.x_counter < 13963: 
+			if record.x_counter < 13963:
 				record.x_legacy = True
 
 
 
-	# Counter 
+	# Counter
 	x_counter = fields.Integer(
-			string="Counter", 
-			#default=55, 
+			string="Counter",
 
-			compute='_compute_x_counter', 
+			compute='_compute_x_counter',
 	)
 
 	@api.multi
-	#@api.depends('x_card')
 	def _compute_x_counter(self):
 		for record in self:
-			#pass 
-			if record.x_id_code != False: 
+			if record.x_id_code != False:
 				record.x_counter = str(record.x_id_code)
 
 
 
 
-# ----------------------------------------------------------- HC Number ------------------------------------------------------
-	# Default - HC Number 
+# ----------------------------------------------------------- HC Number ---------------------------
+	# Default - HC Number
 	@api.model
 	def _get_default_id_code(self):
 		name_ctr = 'emr'
+
  		counter = self.env['openhealth.counter'].search([
-																('name', '=', name_ctr), 
+																('name', '=', name_ctr),
 														],
 															#order='write_date desc',
 															limit=1,
 														)
-		
-		name = count_funcs.get_name(self, counter.prefix, counter.separator, counter.padding, counter.value)
-		
+ 		# Init
+ 		prefix = counter.prefix
+ 		separator = counter.separator
+ 		padding = counter.padding
+ 		value = counter.value
+
+		name = count_funcs.get_name(self, prefix, separator, padding, value)
+
 		return name
 
 
-	# NC Number 
+	# NC Number
 	x_id_code = fields.Char(
 			'Nr Historia Médica',
 
-			default=_get_default_id_code, 
+			default=_get_default_id_code,
 		)
 
 
 
-# ----------------------------------------------------------- Primitives - Redefined ------------------------------------------------------
+# ----------------------------------------------------------- Primitives - Redefined --------------
 
-	# Allergies 
+	# Allergies
 	x_allergies = fields.Many2one(
-			'openhealth.allergy', 
-			string = "Alergias", 
-			required=False, 
+			'openhealth.allergy',
+			string="Alergias",
+			required=False,
 		)
 
-	# Stree2 Char - If Province 
+	# Stree2 Char - If Province
 	street2_char = fields.Char(
-			string = "Distrito Prov.", 	
-			required=False, 
+			string="Distrito Prov.",
+			required=False,
 		)
 
 
 
-# ----------------------------------------------------------- Legacy ------------------------------------------------------
+# ----------------------------------------------------------- Legacy ------------------------------
 
 	# Date created
 	x_date_created = fields.Date(
-			string = "Fecha de Apertura",
-			default = fields.Date.today, 
+			string="Fecha de Apertura",
+			default=fields.Date.today,
 			#readonly = True,
 			required=False,
 		)
 
 	x_date_record = fields.Datetime(
-			string='Fecha Registro', 
+			string='Fecha Registro',
 		)
 
 	x_district = fields.Char(
-			string='Distrito L', 
+			string='Distrito L',
 		)
 
 
 
-# ----------------------------------------------------------- Estado de Cuenta ------------------------------------------------------
+# ----------------------------------------------------------- Estado de Cuenta --------------------
 
 	# Estado de cuenta
-	order_report_nex = fields.Many2one(			
-			'openhealth.order.report.nex',		
-			string="Estado de cuenta",		
+	order_report_nex = fields.Many2one(
+			'openhealth.order.report.nex',
+			string="Estado de cuenta",
 		)
 
 
-	# Remove 
-	@api.multi 
+	# Remove
+	@api.multi
 	def remove_order_report(self):
+		"""
+		high level support for doing this and that.
+		"""
 		self.order_report_nex = False
 	# remove_order_report
 
 
-	# Create 
-	@api.multi 
+	# Create
+	@api.multi
 	def create_order_report(self):
+		"""
+		high level support for doing this and that.
+		"""
 		name = 'EC - ' + self.partner_id.name
 		order_report_id = self.env['openhealth.order.report.nex'].create({
-																			'name': name, 
-																			'patient': self.id,	
+																			'name': name,
+																			'patient': self.id,
 																			'partner_id': self.partner_id.id,
 																		}).id
-		#print name 			# Warning - Generates Error in Prod. Because of Latin chars (ie Ñ). 
+		#print name 			# Warning - Generates Error in Prod. Because of Latin chars (ie Ñ).
 		return order_report_id
 	# create_order_report
 
 
-	# Generate 
-	@api.multi 
+	# Generate
+	@api.multi
 	def generate_order_report(self):
-		#print
-		#print 'Generate Order Report'
+		"""
+		Estado de Cuenta.
+		"""
 
-		# Clean 
+		# Clean
 		self.remove_order_report()
-		
+
 		# Create
 		self.order_report_nex = self.create_order_report()
 		res_id = self.order_report_nex.id
 
-		# Update 
-		#self.order_report_nex.update_order_report()
+		# Update
 		self.order_report_nex.update()
 
 		return {
 				'type': 'ir.actions.act_window',
-				'name': ' New Order Report', 
+				'name': ' New Order Report',
 				'view_type': 'form',
-				'view_mode': 'form',	
+				'view_mode': 'form',
 				'target': 'current',
-				'res_model': 'openhealth.order.report.nex',				
+				'res_model': 'openhealth.order.report.nex',
 				'res_id': res_id,
 				'flags': 	{
 								#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
@@ -311,54 +323,49 @@ class Patient(models.Model):
 
 
 
-# ----------------------------------------------------------- Personal - Now Hard wired to Partner ------------------------------------------------------
 
 
+# ----------------------------------------------------------- Personal - Hard wired to Partner ----
 
 
-
-
-
-
-
-# ----------------------------------------------------------- New Personal - 2 ------------------------------------------------------
-	# Nationality 
+# ----------------------------------------------------------- Personal - 2 ------------------------
+	# Nationality
 	x_nationality = fields.Selection(
-			[	
-				('peruvian', 	'Peruano'),
-				('other', 		'Otro'),
-			], 
-			'Nacionalidad', 
+			[
+				('peruvian', 'Peruano'),
+				('other', 'Otro'),
+			],
+			'Nacionalidad',
 			default="peruvian",
-			required=True,  
+			required=True,
 		)
 
 
-	# First Impression 
+	# First Impression
 	x_first_impression = fields.Selection(
-			[	
-				('positive', 		'Positivo'),
-				('normal', 			'Normal'),
-				('insecure', 		'Inseguro'),
-				('asking', 			'Preguntón'),
-				('barterint', 		'Regateador'),
-				('agressive', 		'Agresivo'),
-				('psychiatric', 	'Psiquiátrico'),
-				('lawyer', 			'Abogado'),
-				#('other', 			'Otro'),
-			], 
-			string="Primera impresión", 
-			default='normal', 
-			required=True, 
+			[
+				('positive', 'Positivo'),
+				('normal', 'Normal'),
+				('insecure', 'Inseguro'),
+				('asking', 'Preguntón'),
+				('barterint', 'Regateador'),
+				('agressive', 'Agresivo'),
+				('psychiatric', 'Psiquiátrico'),
+				('lawyer', 'Abogado'),
+				#('other', 'Otro'),
+			],
+			string="Primera impresión",
+			default='normal',
+			required=True,
 		)
 
 
-	# Vip 
+	# Vip
 	x_vip = fields.Boolean(
 		string="VIP",
-		default=False, 
+		default=False,
 
-		compute='_compute_x_vip', 
+		compute='_compute_x_vip',
 	)
 
 	#@api.multi
@@ -366,22 +373,22 @@ class Patient(models.Model):
 	def _compute_x_vip(self):
 		for record in self:
 			x_card = record.env['openhealth.card'].search([
-															('patient_name','=', record.name),
+															('patient_name', '=', record.name),
 														],
 														#order='appointment_date desc',
 														limit=1,)
 
 			if x_card.name != False:
-				record.x_vip = True 
+				record.x_vip = True
 
 
 
-	# Vip Card 
+	# Vip Card
 	x_card = fields.Many2one(
 			'openhealth.card',
-			string = "Tarjeta VIP", 	
+			string="Tarjeta VIP",
 
-			compute='_compute_x_card', 
+			compute='_compute_x_card',
 		)
 
 	#@api.multi
@@ -389,7 +396,7 @@ class Patient(models.Model):
 	def _compute_x_card(self):
 		for record in self:
 			x_card = record.env['openhealth.card'].search([
-															('patient_name','=', record.name),
+															('patient_name', '=', record.name),
 														],
 														#order='appointment_date desc',
 														limit=1,)
@@ -398,17 +405,16 @@ class Patient(models.Model):
 
 
 
+# ----------------------------------------------------------- Autofill ----------------------------
 
-
-
-
-# ----------------------------------------------------------- Autofill ------------------------------------------------------
-
-	# Open Treatment 
+	# Open Treatment
 	@api.multi
-	def autofill(self):  
+	def autofill(self):
+		"""
+		high level support for doing this and that.
+		"""
 
-		# Personal 
+		# Personal
 		self.sex = 'Male'
 		self.dob = '1965-05-26'
 		self.email = 'jrevilla55@gmail.com'
@@ -419,332 +425,296 @@ class Patient(models.Model):
 		self.x_firm = 'Revilla y Asociados'
 		self.mobile = '991960734'
 		self.street2_sel = 41
-		self.street = 'Av. San Borja Norte 610'			
+		self.street = 'Av. San Borja Norte 610'
 		self.function = 'Ingeniero'
 		self.x_education_level = 'university'
 		self.x_first_impression = 'normal'
 
  		allergy_id = self.env['openhealth.allergy'].search([
-															('name', '=', 'Ninguna'), 
+															('name', '=', 'Ninguna'),
 														],
 															#order='write_date desc',
 															limit=1,
-													).id	
-		#allergy_id = allergy.id
- 		if allergy_id != False: 
-			self.x_allergies = allergy_id 
+													).id
+ 		if allergy_id != False:
+			self.x_allergies = allergy_id
 
-
-		#self.x_dni = '09817195'
 		self.x_id_doc_type = 'dni'
 		self.x_id_doc = '09817195'
 
 
 
-# ----------------------------------------------------------- Autofill ------------------------------------------------------
-	
+# ----------------------------------------------------------- Autofill ----------------------------
+
 	# Autofill
 	x_autofill = fields.Boolean(
 			string="Autofill",
-			default=False, 
+			default=False,
 		)
 
 
 
-# ----------------------------------------------------------- Relational ------------------------------------------------------
+# ----------------------------------------------------------- Relational --------------------------
 
-	# Treatments 
+	# Treatments
 	treatment_ids = fields.One2many(
-			'openhealth.treatment', 		
-			'patient', 
+			'openhealth.treatment',
+			'patient',
 			string="Tratamientos"
 		)
 
 
-# ----------------------------------------------------------- Re-definitions ------------------------------------------------------
+# ----------------------------------------------------------- Re-definitions ----------------------
 
 	# Age
 	age = fields.Char(
-			string = "Edad", 		
+			string="Edad",
 		)
 
-	# Sex 
+	# Sex
 	sex = fields.Selection(
-			selection = pat_vars._sex_type_list, 
+
+			#selection=pat_vars._sex_type_list,
+			selection=pat_vars.get_sex_type_list(),
+
 			string="Sexo",
-			required=False, 
+			required=False,
 		)
 
-	# Date of Birth  
+	# Date of Birth
 	dob = fields.Date(
 			string="Fecha nacimiento",
-			required=False, 
+			required=False,
 			default="2000-01-01"
 		)
 
 	# Function
 	function = fields.Char(
-			string = 'Ocupación',  
-			placeholder = '',
-			#required=True, 
+			string='Ocupación',
+			placeholder='',
+			#required=True,
 		)
 
 
-# ----------------------------------------------------------- New fields ------------------------------------------------------
 
-	# First 
+# ----------------------------------------------------------- Fields ------------------------------
+
+	# First
 	x_first_name = fields.Char(
-		string = "Nombres", 	
-		required=True, 
-		default='',		
+		string="Nombres",
+		required=True,
+		default='',
 	)
 
 
-	# Last 
+	# Last
 	x_last_name = fields.Char(
-		string = "Apellidos", 	
-		required=True, 
-		default='',	
+		string="Apellidos",
+		required=True,
+		default='',
 	)
 
 
-
-
-	# Active 
+	# Active
 	x_active = fields.Boolean(
-			string = "Activa", 	
-			default = True, 
-			#readonly = True, 
-			required=True, 
+			string="Activa",
+			default=True,
+			#readonly = True,
+			required=True,
 			)
 
 	x_first_contact = fields.Selection(
-			selection = pat_vars._first_contact_list, 
-		
-			string = '¿ Cómo se enteró ?',
-			#required=True, 
+
+			#selection=pat_vars._first_contact_list,
+			selection=pat_vars.get_first_contact_list(),
+
+			string='¿ Cómo se enteró ?',
+			#required=True,
 		)
 
-	x_country_residence= fields.Many2one(
-			'res.country', 
-			string = 'País de residencia', 
-			default = '', 
+	x_country_residence = fields.Many2one(
+			'res.country',
+			string='País de residencia',
+			default='',
 		)
 
-	x_education_level= fields.Selection(
-			selection = pat_vars._education_level_type,
-			string = 'Grado de instrucción',
-		)
+	x_education_level = fields.Selection(
 
+			#selection=pat_vars._education_level_type,
+			selection=pat_vars.get_education_level_type(),
+
+			string='Grado de instrucción',
+		)
 
 
 	# Caregiver
 	x_caregiver_last_name = fields.Char(
-			string = 'Apellidos',
+			string='Apellidos',
 		)
 
 	x_caregiver_first_name = fields.Char(
-			string = 'Nombres',
+			string='Nombres',
 		)
 
 	x_caregiver_dni = fields.Char(
-			string = "DNI", 	
+			string="DNI",
 		)
 
 	x_caregiver_relation = fields.Selection(
-			selection = pat_vars._FAMILY_RELATION, 		
-			string = 'Parentesco',
-			default = 'none', 
+
+			#selection=pat_vars._FAMILY_RELATION,
+			selection=pat_vars.get_FAMILY_RELATION(),
+
+			string='Parentesco',
+			default='none',
 		)
 
 	phone_3 = fields.Char(
 		string="Teléfono",
-		required=False, 
+		required=False,
 		)
-	
 
 
-	# Control docs 
+
+	# Control docs
 	x_control_dni_copy = fields.Boolean(
-			string = 'Copia de DNI', 
-			default = False 
+			string='Copia de DNI',
+			default=False
 			)
 
 	x_control_informed_consent = fields.Boolean(
-			string = 'Consentimiento informado', 
-			default = False 
+			string='Consentimiento informado',
+			default=False
 			)
 
 	x_control_visia_record = fields.Boolean(
-			string = 'Registro VISIA pre-procedimiento', 
-			default = False 
+			string='Registro VISIA pre-procedimiento',
+			default=False
 			)
 
 	x_control_photo_record = fields.Boolean(
-			string = 'Registro fotográfico pre-procedimiento', 
-			default = False 
+			string='Registro fotográfico pre-procedimiento',
+			default=False
 			)
 
 	x_control_treatment_signed_patient = fields.Boolean(
-			string = 'Copia de información de tratamiento Láser firmada por el paciente', 
-			default = False 
+			string='Copia de información de tratamiento Láser firmada por el paciente',
+			default=False
 			)
 
 	x_control_postlaser_instructions_signed = fields.Boolean(
-			string = 'Copia de indicaciones post-Láser firmado por el paciente', 
-			default = False 
+			string='Copia de indicaciones post-Láser firmado por el paciente',
+			default=False
 			)
 
 	x_control_treatment_signed_doctor = fields.Boolean(
-			string = 'Informe de tratamiento Láser firmado por el doctor', 
-			default = False 
+			string='Informe de tratamiento Láser firmado por el doctor',
+			default=False
 			)
 
 	x_control_clinical_analsis = fields.Boolean(
-			string = 'Análisis clínicos', 
-			default = False 
+			string='Análisis clínicos',
+			default=False
 			)
 
 	x_control_control_pictures = fields.Boolean(
-			string = 'Fotos de controles', 
-			default = False 
+			string='Fotos de controles',
+			default=False
 			)
 
 	x_control_control_pictures_visia = fields.Boolean(
-			string = 'Fotos de controles con VISIA', 
-			default = False 
+			string='Fotos de controles con VISIA',
+			default=False
 			)
 
 	x_control_physician = fields.Many2one(
 			'oeh.medical.physician',
-			string="Médico responsable del control", 
+			string="Médico responsable del control",
 			)
 
 	x_date_consent = fields.Date(
-			string = "Fecha de consentimiento informado", 	
-			default = fields.Date.today, 
+			string="Fecha de consentimiento informado",
+			default=fields.Date.today,
 		)
 
 
-# ----------------------------------------------------------- Treatment Count ------------------------------------------------------
+# ----------------------------------------------------------- Treatment Count ---------------------
 
-	# Treatment count  
+	# Treatment count
 	x_treatment_count = fields.Integer(
-			string = "Nr TRATAMIENTOS",
-			default = 0, 
+			string="Nr TRATAMIENTOS",
+			default=0,
 
 			compute='_compute_x_treatment_count',
 		)
 
 	@api.multi
-	#@api.depends('x_allergies')
 	def _compute_x_treatment_count(self):
 		for record in self:
-			count = 0 
-			for tr in record.treatment_ids:   
-				count = count + 1  
-			record.x_treatment_count = count  
+			count = 0
+			#for tr in record.treatment_ids:
+			for _ in record.treatment_ids:
+				count = count + 1
+			record.x_treatment_count = count
 
 
 
-# ----------------------------------------------------------- Deactivate ------------------------------------------------------
+# ----------------------------------------------------------- Deactivate --------------------------
 	# Deactivate
-	@api.multi 
+	@api.multi
 	def deactivate_patient(self):
-
-		# Init 
+		"""
+		high level support for doing this and that.
+		"""
 		self.active = False
 		self.partner_id.active = False
 
-		# Treatments 		
- 		#treatments = self.env['openhealth.treatment'].search([
-		#														('patient', '=', self.name), 
-		#												],
-															#order='write_date desc',
-															#limit=1,
-		#												)
 
- 		#for treatment in treatments: 
- 		#	treatment.active = False
-
-
-		# Conter Decrease - DEP ! 
- 		#counter = self.env['openhealth.counter'].search([
-		#														('name', '=', 'emr'), 
-		#												],
-															#order='write_date desc',
-		#													limit=1,
-		#												)
- 		#counter.decrease()
- 	
- 	# deactivate_patient
-
-
-
-# ----------------------------------------------------------- Activate ------------------------------------------------------
-	# Activate Patient 
-	@api.multi 
+# ----------------------------------------------------------- Activate ----------------------------
+	# Activate Patient
+	@api.multi
 	def activate_patient(self):
-
-		# Init 
+		"""
+		high level support for doing this and that.
+		"""
 		self.active = True
 		self.partner_id.active = True
 
-		# Treatments
- 		#treatments = self.env['openhealth.treatment'].search([
-		#														('patient', '=', self.name), 
-		#												],
-															#order='write_date desc',
-															#limit=1,
-		#												)
- 		#for treatment in treatments: 
- 		#	treatment.active = True
 
-
-		# Conter Increase - DEP ! 
- 		#counter = self.env['openhealth.counter'].search([
-		#														('name', '=', 'emr'), 
-		#												],
-															#order='write_date desc',
-		#													limit=1,
-		#												)
- 		#counter.increase()
- 	# activate_patient
-
-
-
-
-# ----------------------------------------------------------- Open Treatment ------------------------------------------------------
-	# Open Treatment 
+# ----------------------------------------------------------- Open Treatment ----------------------
+	# Open Treatment
 	@api.multi
 	def open_treatment(self):
+		"""
+		high level support for doing this and that.
+		"""
 		#print
 		#print 'Open Treatment'
 
 
-		# Search 
-		treatment = self.env['openhealth.treatment'].search([		
-																('patient','=', self.id),
+		# Search
+		treatment = self.env['openhealth.treatment'].search([
+																('patient', '=', self.id),
 															],
 															order='write_date desc',
 															limit=1,
 														)
 		return {
-					# Mandatory 
+					# Mandatory
 					'type': 'ir.actions.act_window',
 					'name': 'Open Treatment Current',
-					# Window action 
+					# Window action
 					'res_model': 'openhealth.treatment',
 					#'res_id': treatment_id,
 					'res_id': treatment.id,
-					# Views 
+					# Views
 					"views": [[False, "form"]],
 					'view_mode': 'form',
 					'target': 'current',
 					'flags': {
 							'form': {'action_buttons': True, }
 							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-					},	
+					},
 					'context':   {
 									'search_default_patient': self.id,
 									'default_patient': self.id,
@@ -755,15 +725,18 @@ class Patient(models.Model):
 
 
 
-# ----------------------------------------------------------- On Changes ------------------------------------------------------
+# ----------------------------------------------------------- On Changes --------------------------
 
-	# Ternary If 
+	# Ternary If
 	#isApple = True if fruit == 'Apple' else False
 
-	# Autofill 
+	# Autofill
 	@api.onchange('x_autofill')
 	def _onchange_x_autofill(self):
-		self.autofill() if self.x_autofill == True else 'don'
+		#self.autofill() if self.x_autofill == True else 'don'
+		if self.x_autofill:
+			self.autofill()
+
 
 	# Street2 ?
 	@api.onchange('street2_char')
@@ -776,58 +749,51 @@ class Patient(models.Model):
 		self.street2 = pat_vars.zip_dic_inv[self.street2_sel]
 		self.zip = self.street2_sel
 
-	# Street 
+	# Street
 	@api.onchange('street')
 	def _onchange_street(self):
 		self.street = self.street.strip().title() if self.street != False else ''
 
 
 
-# ----------------------------------------------------------- On Changes - Name ------------------------------------------------------
+# ----------------------------------------------------------- On Changes - Name -------------------
 
-	# Only format last and first. Do not assign Name. 
+	# Only format last and first. Do not assign Name.
 	# This is done in CRUD.
 
 
-	# Must have two or more last names 
+	# Must have two or more last names
 	@api.onchange('x_last_name')
 	def _onchange_x_last_name_test(self):
 		return lib.test_for_one_last_name(self, self.x_last_name) if self.x_last_name else 'don'
 
-	
+
 	# Name
 	@api.onchange('x_last_name', 'x_first_name')
 	def _onchange_x_last_name(self):
 		#print 'On Change'
 		#print 'Last First Names'
-		#self.name = lib.strip_accents(self.x_last_name.upper() + ' ' + self.x_first_name.upper()) if self.x_last_name and self.x_first_name else 'don'
+
+		#self.name = lib.strip_accents(self.x_last_name.upper() + ' ' + \
+																# self.x_first_name.upper()) if self.x_last_name and self.x_first_name else 'don'
 
 		if self.x_last_name:
-			self.x_last_name = lib.remove_whitespaces(self.x_last_name.upper()) 
+			self.x_last_name = lib.remove_whitespaces(self.x_last_name.upper())
 
 		if self.x_first_name:
-			self.x_first_name =  lib.remove_whitespaces(self.x_first_name.upper()) 
+			self.x_first_name = lib.remove_whitespaces(self.x_first_name.upper())
 
 
 
 
 
-# ----------------------------------------------------------- Test - Init ------------------------------------------------------
-	
-	# Test - Init  
-	@api.multi 
-	def test_init(self, patient_id=False, partner_id=False, doctor_id=False, treatment_id=False, pl_id=False):
-		#print
-		#print 'Patient - Test Init'
-		pat_array = tst_pat.test_init(self, patient_id, partner_id, doctor_id, treatment_id, pl_id)
-		return pat_array
-
-
-
-# ----------------------------------------------------------- Test - Computes------------------------------------------------------
+# ----------------------------------------------------------- Test - Computes----------------------
 
 	# Computes
 	def test_computes(self):
+		"""
+		high level support for doing this and that.
+		"""
 		print()
 		print('Patient - Computes')
 		# Partner
@@ -836,7 +802,7 @@ class Patient(models.Model):
 		print(self.partner_id.city_char)
 		print(self.partner_id.x_address)
 		print(self.partner_id.x_vip)
-		# Patient 
+		# Patient
 		print()
 		print('Computes')
 		print(self.name)
@@ -849,40 +815,49 @@ class Patient(models.Model):
 
 	# Actions
 	def test_actions(self):
+		"""
+		high level support for doing this and that.
+		"""
 		#print
 		#print 'Patient - Actions'
 		self.deactivate_patient()
 		self.activate_patient()
 		self.open_treatment()
 		self.generate_order_report()
-		if self.x_test: 
+		if self.x_test:
 			self.autofill()
 
 
 	# Actions
 	def test_services(self):
+		"""
+		high level support for doing this and that.
+		"""
 		#print
 		#print 'Patient - Services'
 		for treatment in self.treatment_ids:
-			for service in treatment.service_co2_ids: 
+			for service in treatment.service_co2_ids:
 				service.test()
-			for service in treatment.service_excilite_ids: 
+			for service in treatment.service_excilite_ids:
 				service.test()
-			for service in treatment.service_ipl_ids: 
+			for service in treatment.service_ipl_ids:
 				service.test()
-			for service in treatment.service_ndyag_ids: 
+			for service in treatment.service_ndyag_ids:
 				service.test()
-			for service in treatment.service_product_ids: 
+			for service in treatment.service_product_ids:
 				service.test()
-			for service in treatment.service_quick_ids: 
+			for service in treatment.service_quick_ids:
 				service.test()
 
 
 
 # ----------------------------------------------------------- Test --------------------------------
-	# Test - Integration 
-	@api.multi 
+	# Test - Integration
+	@api.multi
 	def test(self):
+		"""
+		high level support for doing this and that.
+		"""
 		print()
 		print('Patient - Test')
 
@@ -893,42 +868,45 @@ class Patient(models.Model):
 
 		# Test Cycle - Dep ?
 		#self.test_cycle()
-	# test 
+	# test
 
 
 
 
-# ----------------------------------------------------------- Const - Print ------------------------------------------------------
-	# Dic - For the HC Report 
+# ----------------------------------------------------------- Const - Print -----------------------
+	# Dic - For the HC Report
 	_dic = {
-					False: 	'',	
+					False: 	'',
 
-					# Sex 
-					'Male': 	'Masculino',	
+					# Sex
+					'Male': 	'Masculino',
 					'Female': 	'Femenino',
 
-					# Sex 
-					'first': 		'Primaria',	
+					# Sex
+					'first': 		'Primaria',
 					'second': 		'Secundaria',
 					'technical': 	'Técnica',
 					'university': 	'Universidad',
 					'masterphd': 	'Master / Doctorado',
 
-					# Caregiver Relation 
-					'none': 	'Ninguno',	
-					'Father': 	'Padre',	
-					'Mother': 	'Madre',	
-					'Brother': 	'Hermano/a',	
-					'Grand Father': 	'Abuelo/a',	
-					'Friend': 	'Amigo/a',	
-					'Husband': 	'Esposo/a',	
-					'Other': 	'Otro',	
+					# Caregiver Relation
+					'none': 	'Ninguno',
+					'Father': 	'Padre',
+					'Mother': 	'Madre',
+					'Brother': 	'Hermano/a',
+					'Grand Father': 	'Abuelo/a',
+					'Friend': 	'Amigo/a',
+					'Husband': 	'Esposo/a',
+					'Other': 	'Otro',
 	}
 
-# ----------------------------------------------------------- Print - Patient HC ------------------------------------------------------
+# ----------------------------------------------------------- Print - Patient HC ------------------
 	# Print Patient
 	@api.multi
 	def print_patient_hc(self):
+		"""
+		high level support for doing this and that.
+		"""
 		#print
 		#print 'Print Patient'
 		name = 'openhealth.report_patient_view'
@@ -936,42 +914,43 @@ class Patient(models.Model):
 
 
 
-# ----------------------------------------------------------- CRUD ------------------------------------------------------
-	# Create 
+# ----------------------------------------------------------- CRUD --------------------------------
+	# Create
 	@api.model
-	def create(self,vals):
-		#print 
+	def create(self, vals):
+		#print
 		#print 'CRUD - Patient - Create'
-		#print 
-	
+		#print
+
 		if 'name' in vals and 'x_first_name' in vals and 'x_last_name' in vals:
 
 			name = vals['name']
-			#print name 
+			#print name
 
-			if name == False: 
+			#if name == False:
+			if not name:
 
-				# Name 
+				# Name
 				#print 'Name'
 				last_name = vals['x_last_name']
 				first_name = vals['x_first_name']
 
-				#name = lib.strip_accents(last_name.upper() + ' ' + first_name.upper()) 
+				#name = lib.strip_accents(last_name.upper() + ' ' + first_name.upper())
 				name = last_name.upper() + ' ' + first_name.upper()
-				
-				vals['name'] = name 
+
+				vals['name'] = name
 
 
 
-		# Put your logic here 
+		# Put your logic here
 		res = super(Patient, self).create(vals)
-		# Put your logic here 
+		# Put your logic here
 
 
-		# Serial Number. Increase must be AFTER creation 
+		# Serial Number. Increase must be AFTER creation
 		name_ctr = 'emr'
 	 	counter = self.env['openhealth.counter'].search([
-																	('name', '=', name_ctr), 
+																	('name', '=', name_ctr),
 															],
 																#order='write_date desc',
 																limit=1,
@@ -979,21 +958,21 @@ class Patient(models.Model):
 		counter.increase()		# Here !!!
 
 
-		# Date record 
-		if res.x_date_record == False: 
+		# Date record
+		#if res.x_date_record == False:
+		if not res.x_date_record:
 			res.x_date_record = res.create_date
 
 
 
 
 		# Name - Dep
-		#res.name = lib.strip_accents(res.x_last_name.upper() + ' ' + res.x_first_name.upper()) 
+		#res.name = lib.strip_accents(res.x_last_name.upper() + ' ' + res.x_first_name.upper())
 
 		# Check - Dep
 		#chk._check_name(res)
 		#chk_patient.check_name(res)
-		
+
 
 		return res
-	# CRUD - Create 
-
+	# CRUD - Create

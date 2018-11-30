@@ -58,12 +58,10 @@ class Treatment(models.Model):
 		print(lib)
 
 
-
 		# Test Products
 		lib = test_foo.Products(self)
 		lib.test()
 		print(lib)
-
 
 
 		# Test Reports
@@ -72,12 +70,17 @@ class Treatment(models.Model):
 		print(lib)
 
 
-
 		# Test Patients
 		lib = test_foo.Patients(self)
 		lib.test()
 		print(lib)
 
+
+
+		# Test Payments
+		lib = test_foo.Payments(self)
+		lib.test()
+		print(lib)
 
 
 

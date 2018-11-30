@@ -1,5 +1,116 @@
 
 
+
+# ----------------------------------------------------------- Deactivate --------------------------
+	# Deactivate
+	@api.multi
+	def deactivate_patient(self):
+		"""
+		high level support for doing this and that.
+		"""
+
+		# Init
+		self.active = False
+		self.partner_id.active = False
+
+		# Treatments
+ 		#treatments = self.env['openhealth.treatment'].search([
+		#														('patient', '=', self.name),
+		#												],
+															#order='write_date desc',
+															#limit=1,
+		#												)
+
+ 		#for treatment in treatments:
+ 		#	treatment.active = False
+
+
+		# Conter Decrease - DEP !
+ 		#counter = self.env['openhealth.counter'].search([
+		#														('name', '=', 'emr'),
+		#												],
+															#order='write_date desc',
+		#													limit=1,
+		#												)
+ 		#counter.decrease()
+
+ 	# deactivate_patient
+
+
+
+# ----------------------------------------------------------- Activate ----------------------------
+	# Activate Patient
+	@api.multi
+	def activate_patient(self):
+		"""
+		high level support for doing this and that.
+		"""
+
+		# Init
+		self.active = True
+		self.partner_id.active = True
+
+		# Treatments
+ 		#treatments = self.env['openhealth.treatment'].search([
+		#														('patient', '=', self.name),
+		#												],
+															#order='write_date desc',
+															#limit=1,
+		#												)
+ 		#for treatment in treatments:
+ 		#	treatment.active = True
+
+
+		# Conter Increase - DEP !
+ 		#counter = self.env['openhealth.counter'].search([
+		#														('name', '=', 'emr'),
+		#												],
+															#order='write_date desc',
+		#													limit=1,
+		#												)
+ 		#counter.increase()
+ 	# activate_patient
+
+
+
+
+
+
+# ----------------------------------------------------------- HC Number ---------------------------
+		#name = count_funcs.get_name(self, counter.prefix, counter.separator, counter.padding, counter.value)
+
+
+
+
+
+# ----------------------------------------------------------- Test - Init -------------------------
+
+	# Test - Init
+	#@api.multi
+	#def test_init(self, patient_id=False, partner_id=False, doctor_id=False, treatment_id=False, pl_id=False):
+		#print
+		#print 'Patient - Test Init'
+	#	pat_array = tst_pat.test_init(self, patient_id, partner_id, doctor_id, treatment_id, pl_id)
+	#	return pat_array
+
+
+
+
+# ----------------------------------------------------------- Constraints - Sql -------------------
+	_sql_constraints = [
+	#						('name_unique','unique(name)', 'SQL Warning: name must be unique !'),
+	#						('x_id_code_unique', 'unique(x_id_code)', 'SQL Warning: x_id_code must be unique !'),
+	#						('x_id_doc_unique', 'unique(x_id_doc)', 'SQL Warning: x_id_doc must be unique !'),
+	]
+
+
+
+
+
+
+
+
+
 # ----------------------------------------------------------- Test - Cycle ------------------------------------------------------
 	# Test - Cycle 
 	# Test the whole Patient Cycle. 

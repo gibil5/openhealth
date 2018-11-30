@@ -14,14 +14,11 @@
 
                     <header>
 
-<!--
-                                states="paid"
--->
+
                         <!-- Generate --> 
                         <button 
                                 type="object" 
-                                class="oe_highlight"
-                                
+                                class="oe_highlight"                                
                                 states="sale"
                                 
                                 name="go_back"
@@ -29,28 +26,22 @@
                                 string="Regresar"
                         />
 
-<!--
-                    <button 
-                            type="object" 
-                            class="oe_highlight"
 
-                            name="state_force"
 
-                            states="done,editable"
+                        <!-- Test --> 
+                        <button 
+                                type="object" 
+                                class="oe_highlight"
+                                
+                                name="test"
 
-                            string="STATE"
+                                string="TEST"
 
-                            groups="openhealth.roots"
+                                groups="openhealth.roots"
                         />
--->
 
 
-<!--
-                                statusbar_visible="draft, paid, done"
-                                statusbar_visible="draft, sale, done"
 
-                                statusbar_visible="draft, sale, done, editable"
--->
                         <!-- State --> 
                         <field  name="state" 
                                 widget="statusbar" 

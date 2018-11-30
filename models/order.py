@@ -15,10 +15,7 @@ except (ImportError, IOError) as err:
 
 from openerp import models, fields, api
 from openerp import _
-
-#from openerp.exceptions import Warning
 from openerp.exceptions import Warning as UserError
-
 from . import ord_vars
 from . import creates
 from . import pat_vars
@@ -26,6 +23,7 @@ from . import user
 from . import lib
 from . import lib_qr
 from . import chk_patient
+
 #from . import chk_order
 from . import test_order
 

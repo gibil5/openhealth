@@ -1,38 +1,152 @@
 # -*- coding: utf-8 -*-
 
 
-
 # Id Doc Type
 _id_doc_type_list = [
-
 					('dni', 			'DNI'),
 					('passport', 		'Pasaporte'),
 					('foreign_card', 	'CE'),
 					('ptp', 			'PTP'),
 					('other', 			'Otro'),
 					
-					# Dep 					
-					('foreigner_card', 	'CE'),
+					# Dep
+					('foreigner_card', 	'CE - Antiguo'),
 ]
 
-# Id Doc Code 
+
+
+# Id Doc Code
 _dic_id_doc_code = {
+					'dni': 			'1',
+					'ruc': 			'6',
+
 					'other': 		'0',
 					'ptp': 			'0',
-					#'ptp': 		'8',	# Verify
-
-					'dni': 			'1',
-
 					'foreign_card': '4',
-					'foreigner_card': '4',			# Dep
-					
-					'ruc': 			'6',
+					'foreigner_card': '4',		# Legacy				
 					'passport': 	'7',
-
+					
 					#'sale_note': 		'15',
-
 					False: 		'x',
 }
+
+
+_first_contact_list = [
+		
+		('recommendation','Recomendación'), 
+		('tv','Tv'), 
+		('radio','Radio'), 
+		
+		#('website','Sitio web'), 
+		('website','Web'), 
+		('facebook','Facebook'), 					# New
+		('instagram','Instagram'), 					# New
+		
+		#('mail_campaign','Campaña de mail'), 
+		('mail_campaign','Mailing'), 
+
+		('callcenter','Call Center'), 				# New 
+		('old_patient','Paciente Antiguo'), 		# New 		
+
+
+		# Deprecated
+		('internet','Internet'), 
+		('none','Ninguno'), 
+]
+
+
+
+_education_level_type = [
+			('first', 'Primaria'),
+			('second', 'Secundaria'),
+			('technical', 'Instituto'),
+			('university', 'Universidad'),
+			('masterphd', 'Posgrado'),
+]
+
+
+
+
+
+_FAMILY_RELATION = [
+			
+			('none', 'Ninguno'),
+
+			('Father', 'Padre'),
+			('Mother', 'Madre'),
+			('Brother', 'Hermano'),
+			('Grand Father', 'Abuelo'),
+			('Friend', 'Amigo'),
+			('Husband', 'Esposo'),
+			('Other', 'Otro'),
+			#('Sister', 'Hermana'),
+			#('Wife', 'Esposa'),
+			#('Grand Mother', 'Abuela'),
+			#('Aunt', 'Tía'),
+			#('Uncle', 'Tío'),
+			#('Nephew', 'Sobrino'),
+			#('Niece', 'Sobrina'),
+			#('Cousin', 'Primo'),
+			#('Relative', 'Pariente'),
+]
+
+
+
+_sex_type_list = [
+					('Male', 'Masculino'),
+					('Female', 'Femenino'),
+]
+
+
+
+
+#------------------------------------------------ Getters -----------------------------------------
+
+def get_id_doc_type_list():
+	"""
+	high level support for doing this and that.
+	"""
+	return _id_doc_type_list
+
+
+
+def get_sex_type_list():
+	"""
+	high level support for doing this and that.
+	"""
+	return _sex_type_list
+
+
+
+def get_first_contact_list():
+	"""
+	high level support for doing this and that.
+	"""
+	return _first_contact_list
+
+
+
+def get_education_level_type():
+	"""
+	high level support for doing this and that.
+	"""
+	return _education_level_type
+
+
+def get_FAMILY_RELATION():
+	"""
+	high level support for doing this and that.
+	"""
+	return _FAMILY_RELATION
+
+
+def get_dic_id_doc_code(x_type):
+	"""
+	high level support for doing this and that.
+	"""
+	return _dic_id_doc_code[x_type]
+
+
 
 
 
@@ -140,12 +254,6 @@ _cc_dic = {
 
 
 
-_sex_type_list = [
-
-			('Male', 'Masculino'),
-			('Female', 'Femenino'),
-
-			]
 
 
 
@@ -167,64 +275,11 @@ _dic_sex = {
 
 
 
-_education_level_type = [
-			('first', 'Primaria'),
-			('second', 'Secundaria'),
-			('technical', 'Instituto'),
-			('university', 'Universidad'),
-			('masterphd', 'Posgrado'),
-			]
-
-
-
-_FAMILY_RELATION = [
-			
-			('none', 'Ninguno'),
-
-			('Father', 'Padre'),
-			('Mother', 'Madre'),
-			('Brother', 'Hermano'),
-			('Grand Father', 'Abuelo'),
-			('Friend', 'Amigo'),
-			('Husband', 'Esposo'),
-			('Other', 'Otro'),
-			#('Sister', 'Hermana'),
-			#('Wife', 'Esposa'),
-			#('Grand Mother', 'Abuela'),
-			#('Aunt', 'Tía'),
-			#('Uncle', 'Tío'),
-			#('Nephew', 'Sobrino'),
-			#('Niece', 'Sobrina'),
-			#('Cousin', 'Primo'),
-			#('Relative', 'Pariente'),
-			]
 
 
 
 
 
-_first_contact_list = [
-		
-		('recommendation','Recomendación'), 
-		('tv','Tv'), 
-		('radio','Radio'), 
-		
-		#('website','Sitio web'), 
-		('website','Web'), 
-		('facebook','Facebook'), 					# New
-		('instagram','Instagram'), 					# New
-		
-		#('mail_campaign','Campaña de mail'), 
-		('mail_campaign','Mailing'), 
-
-		('callcenter','Call Center'), 				# New 
-		('old_patient','Paciente Antiguo'), 		# New 		
-
-
-		# Deprecated
-		('internet','Internet'), 
-		('none','Ninguno'), 
-]
 
 
 

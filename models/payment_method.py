@@ -5,14 +5,12 @@
  		Created: 			26 Aug 2016
 		Last up: 	 		31 Aug 2018
 """
+from __future__ import print_function
+
 from openerp import models, fields, api
 from openerp import _
-
-#from openerp.exceptions import Warning
 from openerp.exceptions import Warning as UserError
-
 from . import pm_vars
-#from . import pat_vars
 
 class PaymentMethod(models.Model):
 	"""
@@ -23,109 +21,32 @@ class PaymentMethod(models.Model):
 
 
 
-# ----------------------------------------------------------- Deperecated ? -----------------------
-	# Firm
-	firm = fields.Char(
-			'Razón social',
-			#states=pm_vars.READONLY_STATES,
-			readonly=True,
-		)
-
-
-	# Ruc
-	ruc = fields.Char(
-			'Ruc',
-			#states=pm_vars.READONLY_STATES,
-			readonly=True,
-		)
-
-
-
-# ----------------------------------------------------------- On Change ---------------------------
-
-	# Onchange Pm Line Ids
-	@api.onchange('pm_line_ids')
-	def _onchange_pm_line_ids(self):
-		#print
-		#print 'On change - Line'
-
-		pm_total = 0
-		ctr = 1
-		for line in self.pm_line_ids:
-			pm_total = pm_total + line.subtotal
-			ctr = ctr + 1
-
-		#self.balance = self.total - pm_total
-
-		self.balance = self.total - pm_total
-		self.pm_total = pm_total
-		self.nr_pm = ctr
-
-		if self.balance < 0:
-
-			# Raise Error
-			msg = "Error: Subtotal incorrecto !"
-			#raise Warning(_(msg))
-			raise UserError(_(msg))
-
-	# _onchange_pm_line_ids
-
-
-
-# ----------------------------------------------------------- Paid --------------------------------
-
-	# Total Paid
-	pm_total = fields.Float(
-			string='Total pagado',
-			#required=True,
-			default=0,
-
-			compute="_compute_pm_total",
-		)
-
-	@api.multi
-	#@api.depends('total', 'pm_total')
-	def _compute_pm_total(self):
-		#print
-		#print 'Compute Pm Total'
-		for record in self:
-			pm_total = 0
-			for line in record.pm_line_ids:
-				pm_total = pm_total + line.subtotal
-			record.pm_total = pm_total
-
-
-
-
-	# Balance
-	balance = fields.Float(
-			string='Saldo',
-			readonly=True,
-			default=0,
-
-			compute="_compute_balance",
-		)
-
-	@api.multi
-	#@api.depends('total', 'pm_total')
-	def _compute_balance(self):
-		#print
-		#print 'Compute Balance'
-		for record in self:
-			record.balance = record.total - record.pm_total
+# ----------------------------------------------------------- Dep ? ------------------------------
+	# For Admin Editing
+	#@api.multi
+	#def state_force(self):
+	#	"""
+	#	high level support for doing this and that.
+	#	"""
+	#	if self.state == 'done':
+	#		self.editable = True
+	#		self.confirmed = False
+	#	elif self.state == 'editable':
+	#		self.editable = False
+	#		self.confirmed = True
 
 
 
 
 # ----------------------------------------------------------- Locked ------------------------------
+
 	# Lines
 	pm_line_ids = fields.One2many(
 			'openhealth.payment_method_line',
 			'payment_method',
 			string="Pago #",
-
-			#states=READONLY_STATES,
 		)
+
 
 
 	# Total
@@ -138,11 +59,9 @@ class PaymentMethod(models.Model):
 
 
 
-
 	# Saledoc
 	saledoc = fields.Selection(
 			string="Tipo",
-
 			selection=pm_vars._sale_doc_type_list,
 
 			states=pm_vars.READONLY_STATES,
@@ -150,80 +69,6 @@ class PaymentMethod(models.Model):
 
 
 
-
-
-
-# ----------------------------------------------------------- Computes ----------------------------
-
-	# Name - Used by Order
-	name = fields.Char(
-			string="Pagos",
-
-			compute='_compute_name',
-		)
-	@api.multi
-	def _compute_name(self):
-		#print
-		#print 'Compute Name'
-		for record in self:
-			record.name = 'PA-' + str(record.id).zfill(6)
-
-
-	# state
-	state = fields.Selection(
-			selection=[
-							('draft', 'Inicio'),
-							('sale', 'Pagado'),
-							('done', 'Completo'),
-							('editable', 'e'),
-						],
-			string='Estado',
-			default='draft',
-
-			compute="_compute_state",
-		)
-
-	@api.multi
-	#@api.depends('state')
-	def _compute_state(self):
-		for record in self:
-			record.state = 'draft'
-			if record.balance == 0.0 and record.saledoc != False:
-				record.state = 'sale'
-			if record.confirmed:
-				record.state = 'done'
-			if record.editable:
-				record.state = 'editable'
-
-
-
-
-
-
-	# Nr Payments
-	nr_pm = fields.Char(
-			default=2,
-		)
-
-
-# ----------------------------------------------------------- Actions -----------------------------
-	# go_back
-	@api.multi
-	def go_back(self):
-		"""
-		high level support for doing this and that.
-		"""
-		#print
-		#print 'PM - Go Back'
-
-		self.confirmed = True
-		# Order
-		self.order.state = 'sent'
-		#self.order.x_dni = self.dni
-		#self.order.x_ruc = self.ruc
-
-		return self.order.open_myself()
-	# go_back
 
 
 # ----------------------------------------------------------- Primitives --------------------------
@@ -260,19 +105,24 @@ class PaymentMethod(models.Model):
 			readonly=True
 		)
 
+	# Nr Payments
+	nr_pm = fields.Char(
+			default=2,
+		)
 
-# ----------------------------------------------------------- Onchanges ---------------------------
+
+	# Firm
+	firm = fields.Char(
+			'Razón social',
+			readonly=True,
+		)
 
 
-	# On change Sale Doc
-	@api.onchange('saledoc')
-	def _onchange_saledoc(self):
-		#print
-		#print 'On change - Saledoc'
-		if self.balance == 0.0:
-			self.state = 'sale'
-	# _onchange_saledoc
-
+	# Ruc
+	ruc = fields.Char(
+			'Ruc',
+			readonly=True,
+		)
 
 
 # ----------------------------------------------------------- Admin - Editable --------------------
@@ -291,15 +141,182 @@ class PaymentMethod(models.Model):
 			string="Editable",
 		)
 
-	# For Admin Editing
+
+
+
+# ----------------------------------------------------------- Actions -----------------------------
+
+	# go_back
 	@api.multi
-	def state_force(self):
+	def go_back(self):
 		"""
 		high level support for doing this and that.
 		"""
-		if self.state == 'done':
-			self.editable = True
-			self.confirmed = False
-		elif self.state == 'editable':
-			self.editable = False
-			self.confirmed = True
+		self.confirmed = True
+		# Order
+		self.order.state = 'sent'
+		return self.order.open_myself()
+	# go_back
+
+
+
+
+
+
+# ----------------------------------------------------------- Computes ----------------------------
+
+	# Total Paid
+	pm_total = fields.Float(
+			string='Total pagado',
+			#required=True,
+			default=0,
+
+			compute="_compute_pm_total",
+		)
+
+	@api.multi
+	def _compute_pm_total(self):
+		for record in self:
+			pm_total = 0
+			for line in record.pm_line_ids:
+				pm_total = pm_total + line.subtotal
+			record.pm_total = pm_total
+
+
+
+
+	# Balance
+	balance = fields.Float(
+			string='Saldo',
+			readonly=True,
+			default=0,
+
+			compute="_compute_balance",
+		)
+
+	@api.multi
+	def _compute_balance(self):
+		#print
+		#print 'Compute Balance'
+		for record in self:
+			record.balance = record.total - record.pm_total
+
+
+
+
+
+	# Name - Used by Order
+	name = fields.Char(
+			string="Pagos",
+
+			compute='_compute_name',
+		)
+	@api.multi
+	def _compute_name(self):
+		for record in self:
+			record.name = 'PA-' + str(record.id).zfill(6)
+
+
+
+	# State
+	state = fields.Selection(
+			selection=[
+							('draft', 'Inicio'),
+							('sale', 'Pagado'),
+							('done', 'Completo'),
+							('editable', 'e'),
+						],
+			string='Estado',
+			default='draft',
+
+			compute="_compute_state",
+		)
+
+	@api.multi
+	def _compute_state(self):
+		for record in self:
+			record.state = 'draft'
+			if record.balance == 0.0 and record.saledoc != False:
+				record.state = 'sale'
+			if record.confirmed:
+				record.state = 'done'
+			if record.editable:
+				record.state = 'editable'
+
+
+
+
+
+# ----------------------------------------------------------- Test ---------------------------
+	def test_computes(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print(self.name)
+		print(self.pm_total)
+		print(self.balance)
+		print(self.state)
+
+
+	#def test_actions(self):
+	#	"""
+	#	high level support for doing this and that.
+	#	"""
+	#	print()
+	#	return self.go_back()
+
+
+	@api.multi
+	def test(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Test')
+
+		self.test_computes()
+
+		#return self.test_actions()		# Dangerous
+
+
+
+
+# ----------------------------------------------------------- On Changes ---------------------------
+
+	# Pm Line Ids
+	@api.onchange('pm_line_ids')
+	def _onchange_pm_line_ids(self):
+		#print
+		#print 'On change - Pm Line'
+
+		pm_total = 0
+		ctr = 1
+		for line in self.pm_line_ids:
+			pm_total = pm_total + line.subtotal
+			ctr = ctr + 1
+
+
+		# Init
+		self.balance = self.total - pm_total
+		self.pm_total = pm_total
+		self.nr_pm = ctr
+
+
+		if self.balance < 0:
+			# Raise Error
+			msg = "Error: Subtotal incorrecto !"
+			raise UserError(_(msg))
+
+	# _onchange_pm_line_ids
+
+
+
+	# On Sale Doc
+	@api.onchange('saledoc')
+	def _onchange_saledoc(self):
+		#print
+		#print 'On change - Saledoc'
+		if self.balance == 0.0:
+			self.state = 'sale'
+	# _onchange_saledoc

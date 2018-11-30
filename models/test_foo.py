@@ -8,6 +8,23 @@ from . import lib_exp
 from . import chk_patient
 
 
+# Base
+class Base(object):
+	
+	def __init__(self, obj):
+		pass
+
+	def test(self):
+		print()
+		print('Test - Base')
+
+	def __repr__(self):
+		description = 'Print Base'
+		return description
+
+
+
+
 class LibGen(object):
 	"""
 	high level support for doing this and that.
@@ -179,20 +196,6 @@ class LibChkPatient(object):
 
 
 
-#class LibChkOrder():
-#	def __init__(self, order):
-#		self.order = order
-#	def test(self):
-#		print
-#		print 'Test - LibChkOrder'
-#		print self.order
-#	def __repr__(self):
-#		description = ''		
-#		return description
-
-
-
-
 
 
 class Reports(object):
@@ -285,7 +288,8 @@ class Reports(object):
 
 
 
-class Products(object):
+#class Products(object):
+class Products(Base):
 	
 	def __init__(self, obj):
 		
@@ -323,11 +327,9 @@ class Products(object):
 
 
 
-
-	def __repr__(self):
-		description = ''
-		return description
-
+	#def __repr__(self):
+	#	description = ''
+	#	return description
 
 
 
@@ -336,7 +338,9 @@ class Products(object):
 
 
 
-class Patients(object):
+
+#class Patients(object):
+class Patients(Base):
 	
 	def __init__(self, obj):
 		
@@ -352,7 +356,6 @@ class Patients(object):
 												#limit=1,
 										)
 
-	
 	def test(self):
 		print()
 		print('Test - Patients')
@@ -364,9 +367,44 @@ class Patients(object):
 
 
 
-	def __repr__(self):
-		description = ''
-		return description
+	#def __repr__(self):
+	#	description = ''
+	#	return description
+
+
+
+
+
+#class Payments(object):
+class Payments(Base):
+	
+	def __init__(self, obj):
+
+		# Payments
+		self.payments = obj.env['openhealth.payment_method'].search([
+																		('partner', 'in', ['REVILLA RONDON JOSE JAVIER']),
+
+													],
+												order='write_date desc',
+												limit=1,
+										)
+
+	def test(self):
+		print()
+		print('Test - Payments')
+		
+		# Payments
+		for payment in self.payments:
+			
+			print(payment.partner.name)
+			
+			payment.test()
+
+
+	#def __repr__(self):
+	#	description = ''
+	#	return description
+
 
 
 

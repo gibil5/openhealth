@@ -8,7 +8,6 @@
 		Last up: 	 		27 Sep 2018
 """
 from openerp.exceptions import ValidationError
-#from . import chk
 
 
 #------------------------------------------------ Name ---------------------------------------------------
@@ -87,7 +86,6 @@ def check_x_id_doc(self):
 
 
 	# Init 	
-	#_name = 'x_id_doc'
 	_name = 'Documento de Identidad'
 
 
@@ -102,10 +100,11 @@ def check_x_id_doc(self):
 		# Init 					
 		if _type in ['dni']: 
 			x_length = 8
-		elif _type in ['passport', 'ptp', 'foreign_card', 'foreigner_card']: 
-			x_length = 12
-		elif _type in ['other']: 
-			x_length = 20
+		#elif _type in ['passport', 'ptp', 'foreign_card', 'foreigner_card']: 
+		#	x_length = 12
+		#elif _type in ['other']:
+		#else:
+		#	x_length = 20			# No restriction por the nr of digits
 
 
 
@@ -125,7 +124,6 @@ def check_x_id_doc(self):
 							'12345678',
 						]:
 
-				#raise ValidationError("C Warning: x_id_doc not valid: %s" % _value)
 				raise ValidationError("Check Paciente: %s no es valido: %s" % (_name, _value))
 
 
@@ -133,20 +131,21 @@ def check_x_id_doc(self):
 		# Format
 		if _value != False: 
 
-			# Only DNI - Is a Digit
+			# Only DNI - Is a Digit and has 8 numbers
 			if  _type in ['dni']: 
 				if not _value.isdigit():
-					#raise ValidationError("Rec Warning: x_id_doc must be a Digit: %s" % _value)
-					#raise ValidationError("Check Paciente: %s must be a Digit: %s" % (_name, _value))
 					raise ValidationError("Check Paciente: %s debe ser un numero: %s" % (_name, _value))
+
+				if len(str(_value))!= x_length:
+					raise ValidationError("Check Paciente: %s debe tener %s digitos: %s" % (_name, str(x_length), _value))
+
 						
 
 			# All but Other - Has a fixed length
-			if _type not in ['other']:
-				if len(str(_value))!= x_length: 
-					#raise ValidationError("Rec Warning: x_id_doc must have " + str(length) + " numbers: %s" % _value)
-					#raise ValidationError("Check Paciente: %s must have %s numbers: %s" % (_name, str(length), _value))
-					raise ValidationError("Check Paciente: %s debe tener %s digitos: %s" % (_name, str(x_length), _value))
+			#if _type not in ['other']:
+			#	if len(str(_value))!= x_length:
+			#		raise ValidationError("Check Paciente: %s debe tener %s digitos: %s" % (_name, str(x_length), _value))
+
 
 
 

@@ -35,8 +35,10 @@ def get_qr_data(self):
 						'ruc': 		'6',
 						'other': 	'0',
 						'ptp': 		'0',
-						'foreign_card': '4',
 						'passport': 	'7',
+
+						'foreign_card': '4',
+						'foreigner_card': '4',		# Old format
 	}
 
 

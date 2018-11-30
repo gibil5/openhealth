@@ -37,7 +37,7 @@ def test_cases(self, container_id, doctor_id):
 						'firm': 		'Revilla y Asociados',
 
 						'sex': 			'Male',
-						'address': 		'Av. San Borja Norte 610,San Borja,Lima',
+						'address': 		'Av. San Borja Norte 610,San Borja,lima',
 
 						'dni':			False,
 						'id_code':  	False,
@@ -63,7 +63,7 @@ def test_cases(self, container_id, doctor_id):
 						'dni':			False, 
 
 						'sex': 			'Female', 
-						'address': 		'Av. San Borja Norte 610,San Borja,Lima',						
+						'address': 		'Av. San Borja Norte 610,San Borja,lima',						
 
 						'id_code':  	False,
 				}, 
@@ -86,7 +86,7 @@ def test_cases(self, container_id, doctor_id):
 						'dni':			False, 
 
 						'sex': 			'Male', 
-						'address': 		'Av. San Borja Norte 610,San Borja,Lima',						
+						'address': 		'Av. San Borja Norte 610,San Borja,lima',						
 
 						'id_code':  	False,
 				}, 
@@ -109,7 +109,7 @@ def test_cases(self, container_id, doctor_id):
 						'dni':			False, 
 
 						'sex': 			'Male', 
-						'address': 		'Av. San Borja Norte 610,San Borja,Lima',						
+						'address': 		'Av. San Borja Norte 610,San Borja,lima',						
 
 						'id_code':  	False,
 				}, 
@@ -132,7 +132,7 @@ def test_cases(self, container_id, doctor_id):
 						'dni':			False, 
 
 						'sex': 			'Female', 
-						'address': 		'Av. San Borja Norte 610,San Borja,Lima',						
+						'address': 		'Av. San Borja Norte 610,San Borja,lima',						
 
 						'id_code':  	False,
 				}, 
@@ -161,7 +161,7 @@ def test_cases(self, container_id, doctor_id):
 						'dni':			False,
 
 						'sex': 			'Male',
-						'address': 		'Av. San Borja Norte 610,San Borja,Lima',
+						'address': 		'Av. San Borja Norte 610,San Borja,lima',
 
 						'id_code':  	False,
 				},
@@ -191,7 +191,7 @@ def test_cases(self, container_id, doctor_id):
 						'dni':			'09817193', 
 
 						'sex': 			'Male', 
-						'address': 		'Av. San Borja Norte 610,San Borja,Lima',						
+						'address': 		'Av. San Borja Norte 610,San Borja,lima',						
 
 						'id_code':  	'000003',
 				}, 
@@ -214,7 +214,7 @@ def test_cases(self, container_id, doctor_id):
 						'dni':			False, 
 
 						'sex': 			'Male', 
-						'address': 		'Av. San Borja Norte 610,San Borja,Lima',						
+						'address': 		'Av. San Borja Norte 610,San Borja,lima',						
 
 						'id_code':  	False,
 				}, 
@@ -236,7 +236,7 @@ def test_cases(self, container_id, doctor_id):
 						'id_doc':  		'12345679', 
 
 						'sex': 			'Female', 
-						'address': 		'Av. San Borja Norte 610,San Borja,Lima',						
+						'address': 		'Av. San Borja Norte 610,San Borja,lima',						
 
 						'ruc': 			'12345678903', 
 						'firm': 		'Comaneci y Asociados', 

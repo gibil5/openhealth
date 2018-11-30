@@ -10,7 +10,9 @@ try:
 	import numpy as np
 except (ImportError, IOError) as err:
 	_logger.debug(err)
+
 from . import pat_vars
+from . import mkt_vars
 
 
 # ----------------------------------------------------------- Cities ------------------------------
@@ -154,9 +156,13 @@ def build_districts(self):
 		
 		if code != 0: 
 
+
 			# Init vars
 			name = pat_vars.zip_dic_inv[code]
-			sector = pat_vars._h_sector[name]
+
+			#sector = pat_vars._h_sector[name]
+			sector = mkt_vars._h_sector[name]
+
 
 			# Count - Search in Collections 
 			if name in counter_district: 

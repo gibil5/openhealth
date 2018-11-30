@@ -6,8 +6,9 @@
 		Last updated: 	 	 5 Nov 2018
 """
 from openerp import models, fields, api
-from . import pat_vars
 from . import lib
+#from . import pat_vars
+from . import partner_vars
 
 class Partner(models.Model):
 	"""
@@ -82,7 +83,10 @@ class Partner(models.Model):
 		)
 
 	city = fields.Selection(
-			selection = pat_vars._city_list,
+
+			#selection = pat_vars._city_list,
+			selection = partner_vars._city_list,
+
 			string = 'Departamento',
 			default = 'lima',
 			required=False,
@@ -106,7 +110,10 @@ class Partner(models.Model):
 		)
 
 	street2_sel = fields.Selection(
-			selection = pat_vars._street2_list, 
+
+			#selection = pat_vars._street2_list,
+			selection = partner_vars._street2_list,
+
 			string = "Distrito", 	
 			
 			#required=True, 

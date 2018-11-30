@@ -6,9 +6,9 @@
 		Last up: 	 		02 Nov 2018
 """
 import datetime
-import qrcode
 import base64
 import cStringIO
+import qrcode
 
 
 
@@ -94,7 +94,7 @@ def get_qr_img(qr_data):
 	#print 'Get QR Img'
 
 
-	qr = qrcode.QRCode(version=1,error_correction=qrcode.constants.ERROR_CORRECT_L,box_size=20,border=4,)
+	qr = qrcode.QRCode(version=1, error_correction=qrcode.constants.ERROR_CORRECT_L, box_size=20, border=4, )
 
 	name = qr_data + '.png'
 
@@ -114,5 +114,3 @@ def get_qr_img(qr_data):
 	return img_str, name
 
 # get_qr_img
-
-

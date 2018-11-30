@@ -173,8 +173,11 @@ def create_patient(self, container_id, test_case, name, sex, address, id_doc_typ
 
 	# Init
 	street = address.split(',')[0]
+
 	street2_char = address.split(',')[1]
+
 	city = address.split(',')[2]
+	#city = address.split(',')[2].lower()
 
 
 

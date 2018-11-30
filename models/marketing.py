@@ -9,7 +9,6 @@ from __future__ import print_function
 import datetime
 import collections
 from openerp import models, fields, api
-from . import pat_vars
 from . import mkt_funcs
 from . import lib_marketing
 

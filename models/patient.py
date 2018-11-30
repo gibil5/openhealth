@@ -746,7 +746,10 @@ class Patient(models.Model):
 	# Zip  Street2
 	@api.onchange('street2_sel')
 	def _onchange_street2_sel(self):
-		self.street2 = pat_vars.zip_dic_inv[self.street2_sel]
+
+		#self.street2 = pat_vars.zip_dic_inv[self.street2_sel]
+		self.street2 = pat_vars.get_zip_dic_inv(self.street2_sel)
+		
 		self.zip = self.street2_sel
 
 	# Street
@@ -920,7 +923,6 @@ class Patient(models.Model):
 	def create(self, vals):
 		#print
 		#print 'CRUD - Patient - Create'
-		#print
 
 		if 'name' in vals and 'x_first_name' in vals and 'x_last_name' in vals:
 
@@ -962,16 +964,6 @@ class Patient(models.Model):
 		#if res.x_date_record == False:
 		if not res.x_date_record:
 			res.x_date_record = res.create_date
-
-
-
-
-		# Name - Dep
-		#res.name = lib.strip_accents(res.x_last_name.upper() + ' ' + res.x_first_name.upper())
-
-		# Check - Dep
-		#chk._check_name(res)
-		#chk_patient.check_name(res)
 
 
 		return res

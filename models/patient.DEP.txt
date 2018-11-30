@@ -1,6 +1,26 @@
 
 
 
+# ----------------------------------------------------------- CRUD --------------------------------
+	# Create
+	@api.model
+	def create(self, vals):
+
+
+
+
+		# Name - Dep
+		#res.name = lib.strip_accents(res.x_last_name.upper() + ' ' + res.x_first_name.upper())
+
+		# Check - Dep
+		#chk._check_name(res)
+		#chk_patient.check_name(res)
+
+		return res
+	# CRUD - Create
+
+
+
 # ----------------------------------------------------------- Deactivate --------------------------
 	# Deactivate
 	@api.multi

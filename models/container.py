@@ -10,9 +10,9 @@ import base64
 import io
 import datetime
 from openerp import models, fields, api
-from . import tst_pat
 from . import creates
 from . import export
+from . import test_cases_pat
 
 class Container(models.Model):
 	"""
@@ -76,8 +76,9 @@ class Container(models.Model):
 		container_id = self.id
 		doctor_id = self.doctor.id
 
+
 		# Create Patients
-		tst_pat.test_cases(self, container_id, doctor_id)
+		test_cases_pat.test_cases(self, container_id, doctor_id)
 
 
 		# Init

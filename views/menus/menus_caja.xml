@@ -104,18 +104,38 @@
 
 
 
+<!-- Legacy --> 
+        <menuitem   id="sales_legacy_menu" 
+
+                    name="Legacy"
+
+                    parent="main_sales_menu"
+
+                    sequence="2"
+
+                    groups="openhealth.roots"
+                />
+
+
+
             <!-- Legacy -->             
-<!--
-            <menuitem   id="sales_invoice_legacy_menu" 
+            <menuitem   id="sales_legacy_sales_menu" 
+
                         name="Legacy" 
-                        parent="sales_menu"
-                        sequence="3"
+                
+                        parent="sales_legacy_menu"
+                
+                        sequence="1"
                         
                         action="sale_legacy_list_action"
 
                         groups="openhealth.roots"
                     />
--->
+
+
+
+
+
 
 
             <!-- Delta -->          
@@ -141,7 +161,8 @@
 
 
 
-        <!-- Closings -->           
+
+<!-- Closings -->           
         <menuitem   id="sales_closings_menu" 
                     name="Cierres de caja"
                     parent="main_sales_menu"
@@ -198,6 +219,37 @@
 
                     action="counter_list_action"
                 />
+
+
+
+
+
+<!-- Inactives --> 
+<!--
+        <menuitem   id="sales_inactive_menu" 
+
+                    name="Inactivos"
+
+                    parent="main_sales_menu"
+
+                    sequence="5"
+
+                    groups="openhealth.roots"
+                />
+
+
+        <menuitem   id="sales_orders_inactive_menu" 
+                    name="Ventas" 
+                    parent="sales_inactive_menu"
+                    sequence="1"
+
+                    action="order_inactive_list_action"
+                />
+-->
+
+
+
+
 
 
 

@@ -33,11 +33,17 @@
 <div class="row">
 <b>
     <div class="col-xs-12" style="border-top: 1px solid black;"/>
+
     <div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-field="doc.x_title"/>
+    
     <!-- Conditional - Credit Note -->
     <t t-if="doc.state == 'credit_note'">
         <div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-field="doc.x_serial_nr"/>
+<!--
+        <div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-field="doc.x_date_order_corr"/>
+-->
     </t>
+
     <div class="col-xs-12" style="border-top: 1px solid black;"/>
 </b>
 </div>
@@ -51,6 +57,16 @@
 <div class="row">
 <div class="text-left" style="margin-top:10px;">
     <table style="width:100%">
+
+
+<!-- Conditional - Credit Note -->
+<t t-if="doc.state == 'credit_note'">
+        <tr>
+            <td><b>Fecha:</b></td>
+            <td><t t-esc="doc.x_date_order_corr"/></td> 
+        </tr>
+</t>
+
 
 <!-- Conditional - Receipt -->
 <t t-if="doc.x_type == 'ticket_receipt'">
@@ -90,7 +106,6 @@
             <td><t t-esc="doc.get_firm_address()"/></td> 
         </tr>
 </t>
-
 
     </table>
     <br/>

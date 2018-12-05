@@ -7,12 +7,10 @@
 """
 import math
 import datetime
-
 try:
 	from num2words import num2words
 except (ImportError, IOError) as err:
 	_logger.debug(err)
-
 from openerp import models, fields, api
 from openerp import _
 from openerp.exceptions import Warning as UserError
@@ -20,18 +18,113 @@ from . import ord_vars
 from . import creates
 from . import pat_vars
 from . import user
-from . import lib
 from . import lib_qr
 from . import chk_patient
-
-#from . import chk_order
 from . import test_order
+#from . import lib
 
 class sale_order(models.Model):
 	"""
 	high level support for doing this and that.
 	"""
 	_inherit = 'sale.order'
+
+
+
+
+# ----------------------------------------------------------- Legacy ------------------------------
+	# Legacy
+	x_legacy = fields.Boolean(
+			'Legacy',
+			default=False,
+		)
+
+
+
+
+	# Update Legacy Jan 
+	@api.multi
+	def update_legacy_jan(self):
+		#print() 
+		#print('Update Legacy - Jan')
+
+		# Legacy
+		orders = self.env['sale.order'].search([
+																('date_order', '>=', '2018-01-01'), 
+																('date_order', '<', '2018-02-01'), 
+													],
+																order='date_order asc',
+																#limit=1000,
+												)
+		#print orders
+		for order in orders:
+			order.update_legacy()
+
+	# update_type_legacy_jan
+
+
+
+
+
+	# Update Legacy Fev 
+	@api.multi
+	def update_legacy_fev(self):
+
+		orders = self.env['sale.order'].search([
+																('date_order', '>=', '2018-02-01'), 
+																('date_order', '<', '2018-03-01'), 
+													],
+																order='date_order asc',
+																#limit=1000,
+												)
+		for order in orders:
+			order.update_legacy()
+
+	# update_type_legacy_fev
+
+
+
+
+
+	# Update Legacy Mar 
+	@api.multi
+	def update_legacy_mar(self):
+
+		orders = self.env['sale.order'].search([
+																('date_order', '>=', '2018-03-01'), 
+																('date_order', '<', '2018-03-06'), 
+													],
+																order='date_order asc',
+																#limit=1000,
+												)
+		for order in orders:
+			order.update_legacy()
+
+	# update_type_legacy_mar
+
+
+
+
+
+
+
+	# Update Legacy
+	@api.multi
+	def update_legacy(self):
+		print()
+		print('Update Legacy')
+		self.x_legacy = True
+
+
+
+
+
+
+# ----------------------------------------------------------- Active ----------------------------
+	#x_inactive = fields.Boolean(
+	#		string="Active",
+	#	)
+
 
 
 
@@ -461,11 +554,6 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Legacy ------------------------------
-	# Legacy
-	x_legacy = fields.Boolean(
-			'Legacy',
-		)
 
 
 

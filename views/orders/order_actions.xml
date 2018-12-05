@@ -7,6 +7,68 @@
 <!-- ACTIONS -->
 
 
+
+        <!-- Inactive -->
+<!--
+        <record model="ir.actions.act_window" id="order_inactive_list_action">        
+            <field name="name">Ventas Inactivas</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="context">{}</field>
+
+            <field name="domain">[
+                                    ('x_inactive', '=', True), 
+                ]</field>
+
+
+        </record>
+-->
+
+
+
+        <!-- Ventas - Legacy -->
+        <record model="ir.actions.act_window" id="sale_legacy_list_action">
+            <field name="name">Ventas - Confirmadas - Legacy</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph,pivot</field>
+
+            <field name="domain">[
+                                    ('state', '=', 'sale'),
+                                    ('x_legacy', '=', True),
+                                ]
+            </field>
+
+            <field name="context">{}</field>
+        </record>
+
+
+
+
+
+        <!-- Ventas -->
+        <record model="ir.actions.act_window" id="sale_list_action">
+            <field name="name">Ventas - Confirmadas</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph,pivot</field>
+            <field name="context">{}</field>
+
+            <field name="domain">[
+                                    ('state', '=', 'sale'),
+                                    ('x_legacy', '=', False),
+                                ]
+            </field>
+
+            <field name="limit">40</field>
+        </record>
+
+
+
+
+
+
         <!-- QC - Delta -->
         <record model="ir.actions.act_window" id="order_list_delta_action">
             <field name="name">Delta</field>
@@ -89,23 +151,6 @@
 
 
 
-        <!-- Ventas -->
-        <record model="ir.actions.act_window" id="sale_list_action">
-            <field name="name">Ventas - Confirmadas</field>
-            <field name="res_model">sale.order</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form,graph,pivot</field>
-            <field name="context">{}</field>
-
-            <field name="domain">[
-                                    ('state', '=', 'sale'),
-                                    ('x_legacy', '=', False),
-                                ]
-            </field>
-
-            <field name="limit">40</field>
-        </record>
-
 
 
         <!-- Cancel -->
@@ -160,23 +205,6 @@
 
 
 
-
-
-        <!-- Action - Legacy -->
-        <record model="ir.actions.act_window" id="sale_legacy_list_action">
-            <field name="name">Ventas - Confirmadas - Legacy</field>
-            <field name="res_model">sale.order</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form,graph,pivot</field>
-
-            <field name="domain">[
-                                    ('state', '=', 'sale'),
-                                    ('x_legacy', '=', True),
-                                ]
-            </field>
-
-            <field name="context">{}</field>
-        </record>
 
 
 

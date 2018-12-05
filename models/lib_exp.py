@@ -231,7 +231,7 @@ def format_txt(order):
 
 
 
-	table_3 = 	blank + sep + acc.fmt(order.amount_total) + \
+	table_3 = blank + sep + acc.fmt(order.amount_total) + \
 				frac_1 + \
 				eol + ret + eot + ret
 

@@ -16,7 +16,6 @@ class electronic_order(models.Model):
 	"""
 	high level support for doing this and that.
 	"""
-	#_inherit = 'openhealth.management.order.line'
 	_inherit = 'openhealth.line'
 
 	_name = 'openhealth.electronic.order'
@@ -26,6 +25,39 @@ class electronic_order(models.Model):
 	_order = 'serial_nr asc'
 
 
+
+
+
+# ----------------------------------------------------------- Credit Note -------------------------
+	credit_note_type = fields.Selection(
+
+			selection=ord_vars._credit_note_type_list,
+
+			string='Motivo',
+			default='cancel',
+		)
+
+
+	def get_credit_note_type(self):
+
+		_dic_cn_type = {
+							'cancel': 					'Anulacion de la operacion',
+							'cancel_error_ruc': 		'Anulacion por error en el RUC',
+							'correct_error_desc': 		'Correccion por error en la descripcion',
+							'discount': 				'Descuento global',
+							'discount_item': 			'Descuento por item',
+
+							'return': 					'Devolucion total',
+							'return_item': 				'Devolucion por item',
+							'bonus': 					'Bonificacion',
+							'value_drop': 				'Disminucion en el valor',
+							'other': 					'Otros',
+
+							False: 						'',
+					}
+		
+
+		return _dic_cn_type[self.credit_note_type].upper()
 
 
 # ----------------------------------------------------------- Handles -----------------------------

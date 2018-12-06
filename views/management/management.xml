@@ -432,7 +432,9 @@
 <!--
                     <field name="test_target"   groups="openhealth.roots"/>
 -->                
-                    <field name="owner"   groups="openhealth.roots"/>
+                    <field name="owner"         groups="openhealth.roots"/>
+                    <field name="type_arr"      groups="openhealth.roots"/>
+                    <field name="state_arr"     groups="openhealth.roots"/>
 
 
 

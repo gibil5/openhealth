@@ -111,10 +111,15 @@ def format_txt(order):
 		date_cn = order.export_date
 		_cn = "07"
 		currency_code_cn = "PEN"
-
 		type_code_cn = order.type_code
-		reason = "ERROR EN DATOS"		
 		type_code = order.type_code
+
+
+		#reason = "ERROR EN DATOS"		
+		#reason = order.credit_note_type
+		reason = order.get_credit_note_type()
+
+		
 
 
 

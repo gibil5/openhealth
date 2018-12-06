@@ -20,13 +20,11 @@
 
 
                     <field name="serial_nr"/>
-<!--
-                    <field name="id_serial_nr"/>
--->
-
-
 
                     <field name="state"/>
+
+                    <field name="credit_note_type"/>
+
 
                     <field name="credit_note_owner"/>
 

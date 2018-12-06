@@ -54,7 +54,7 @@
                             class="oe_highlight"
                             name="update" 
                             
-                            string="Actualizar"                                 
+                            string="Update"                                 
 
                             groups="openhealth.roots"
                         />
@@ -87,15 +87,6 @@
                         <!-- Clear --> 
                         <!-- Create Sales --> 
                         <!-- Create Patients --> 
-                        <button 
-                            type="object" 
-                            class="oe_highlight oe_right"
-                            name="remove_patients"           
-                                             
-                            string="Remove Patients"                              
-
-                            groups="openhealth.roots"
-                        />
 
 
 
@@ -117,6 +108,17 @@
                             groups="openhealth.roots"
                         />
 
+
+                        <button 
+                            type="object" 
+                            class="oe_highlight oe_right"
+                            name="remove_patients"           
+                                             
+                            string="Remove Patients"                              
+
+                            groups="openhealth.roots"
+                        />
+
                         <button 
                             type="object" 
                             class="oe_highlight oe_right"   
@@ -128,14 +130,6 @@
 
 
 
-                        <button 
-                            type="object" 
-                            class="oe_highlight oe_right"
-                            name="create_codes"
-                            string="Create Codes"
-
-                            groups="openhealth.roots"
-                        />
 
 
                         <!-- Import TXT --> 

@@ -67,6 +67,45 @@ def get_padding(x_type):
 
 #------------------------------------------------ Not Protected -----------------------------------
 
+_credit_note_type_list = [
+							#('cancel', 		'Anulación'),
+							#('discount', 	'Descuento'),
+							#('bonus', 		'Bonificación'),
+							#('return', 		'Devolución'),
+							#('other', 		'Otros'),
+
+							('cancel', 					'01 - Anulación de la operación'),
+							('cancel_error_ruc', 		'02 - Anulación por error en el RUC'),
+							('correct_error_desc', 		'03 - Corrección por error en la descripción'),
+							('discount', 				'04 - Descuento global'),
+							('discount_item', 			'05 - Descuento por item'),
+
+							('return', 					'06 - Devolución total'),
+							('return_item', 			'07 - Devolución por item'),
+							('bonus', 					'08 - Bonificación'),
+							('value_drop', 				'09 - Disminución en el valor'),
+
+							('other', 					'10 - Otros'),
+			]
+
+#Anulación de la operación
+#Anulación por error en el RUC
+#Corrección por error en la descripción
+#Descuento global
+#Descuento por item
+#Devolución total
+#Devolución por item
+#Bonificación
+#Disminución en el valor
+#Otros
+
+
+
+
+
+
+
+
 # State - Current !!
 _state_list = [
 

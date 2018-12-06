@@ -343,15 +343,18 @@ class sale_order(models.Model):
 # ----------------------------------------------------------- Credit Note -------------------------
 
 	x_credit_note_type = fields.Selection(
-			[
-				('cancel', 		'Anulación'),
-				('discount', 	'Descuento'),
-				('bonus', 		'Bonificación'),
-				('return', 		'Devolución'),
-				('other', 		'Otros'),
-			],
+			#[
+			#	('cancel', 		'Anulación'),
+			#	('discount', 	'Descuento'),
+			#	('bonus', 		'Bonificación'),
+			#	('return', 		'Devolución'),
+			#	('other', 		'Otros'),
+			#],
+			#default='cancel',
+
+			selection = ord_vars._credit_note_type_list, 
+
 			string='Motivo',
-			default='cancel',
 		)
 
 

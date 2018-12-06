@@ -342,17 +342,29 @@ class sale_order(models.Model):
 
 # ----------------------------------------------------------- Credit Note -------------------------
 
+
 	x_credit_note_type = fields.Selection(
 			#[
-			#	('cancel', 		'Anulación'),
-			#	('discount', 	'Descuento'),
-			#	('bonus', 		'Bonificación'),
-			#	('return', 		'Devolución'),
-			#	('other', 		'Otros'),
-			#],
-			#default='cancel',
+				# ('cancel', 		'Anulación'),
+				# ('discount', 	'Descuento'),
+				# ('bonus', 		'Bonificación'),
+				# ('return', 		'Devolución'),
+				# ('other', 		'Otros'),
 
-			selection = ord_vars._credit_note_type_list, 
+			#	('cancel', 					'01 - Anulación de la operación'),
+			#	('cancel_error_ruc', 		'02 - Anulación por error en el RUC'),
+			#	('correct_error_desc', 		'03 - Corrección por error en la descripción'),
+			#	('discount', 				'04 - Descuento global'),
+			#	('discount_item', 			'05 - Descuento por item'),
+
+			#	('return', 					'06 - Devolución total'),
+			#	('return_item', 			'07 - Devolución por item'),
+			#	('bonus', 					'08 - Bonificación'),
+			#	('value_drop', 				'09 - Disminución en el valor'),
+			#	('other', 					'10 - Otros'),
+			#],
+			
+			selection = ord_vars._credit_note_type_list,
 
 			string='Motivo',
 		)
@@ -360,7 +372,6 @@ class sale_order(models.Model):
 
 	x_credit_note_owner = fields.Many2one(
 			'sale.order',
-			#'Propietario NC',
 			'Documento que modifica',
 		)
 
@@ -370,19 +381,30 @@ class sale_order(models.Model):
 		)
 
 
+
 	def get_credit_note_type(self):
-		#print
-		#print 'Get Credit Note Type'
-
+		"""
+		Used by Print Ticket.
+		"""
 		_dic_cn = {
-					'cancel':	'Anulación',
-					'discount':	'Descuento',
-					'bonus':	'Bonificación', 
-					'return': 	'Devolución', 
-					'other': 	'Otros',
-		
-		}
+					#'cancel':	'Anulación',
+					#'discount':	'Descuento',
+					#'bonus':	'Bonificación', 
+					#'return': 	'Devolución', 
+					#'other': 	'Otros',
+					
+					'cancel': 					'Anulación de la operación.',
+					'cancel_error_ruc': 		'Anulación por error en el RUC.',
+					'correct_error_desc': 		'Corrección por error en la descripción.',
+					'discount': 				'Descuento global.',
+					'discount_item': 			'Descuento por item.',
 
+					'return': 					'Devolución total.',
+					'return_item': 				'Devolución por item.',
+					'bonus': 					'Bonificación.',
+					'value_drop': 				'Disminución en el valor.',
+					'other': 					'Otros.',
+		}
 		return _dic_cn[self.x_credit_note_type]
 
 

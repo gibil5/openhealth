@@ -111,8 +111,8 @@ class sale_order(models.Model):
 	# Update Legacy
 	@api.multi
 	def update_legacy(self):
-		print()
-		print('Update Legacy')
+		#print()
+		#print('Update Legacy')
 		self.x_legacy = True
 
 

@@ -140,8 +140,6 @@
                         />
 
 
-
-
                 <menuitem   id="sales_report_sales_october_menu" 
                             parent="sales_reports_menu"
                             sequence="10"
@@ -150,7 +148,6 @@
 
                             action="action_order_report_october"
                         />
-
 
 
                 <menuitem   id="sales_report_sales_november_menu" 
@@ -164,11 +161,6 @@
                         />
 
 
-<!-- Inactive --> 
-
-
-
-
                 <menuitem   id="sales_report_sales_december_menu" 
                             parent="sales_reports_menu"
                             sequence="12"
@@ -176,9 +168,12 @@
                             name="Diciembre"                
 
                             action="action_order_report_december"
-
-                            groups="openhealth.roots"
                         />
 
+
+<!-- Inactive --> 
+<!--
+                            groups="openhealth.roots"
+-->
     </data>
 </openerp>

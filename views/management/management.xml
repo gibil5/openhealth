@@ -161,7 +161,6 @@
 
 
                         <!-- Legacy -->
-                        <!-- Export -->
 <!--                        
                         <button 
                                 type="object" 
@@ -173,16 +172,6 @@
                                 groups="openhealth.roots"
                         />
 
-                        <button 
-                                type="object" 
-                                class="oe_highlight oe_right"
-                                
-                                name="export_txt"
-
-                                string="Export"                             
-
-                                groups="openhealth.roots"
-                        />
 -->                     
                         
                     </header>
@@ -196,8 +185,9 @@
                                 <field name="container"/>
                                 <field name="state_arr"/>
                                 <field name="type_arr"/>
-                                <field name="test_target"/>
+                                <field name="owner"/>
 <!--
+                                <field name="test_target"/>
                                 <field name="legacy"/>
 -->
                             </group>
@@ -439,7 +429,12 @@
                 <tree string="Management Tree">
                     
                     <field name="name"/>
+<!--
                     <field name="test_target"   groups="openhealth.roots"/>
+-->                
+                    <field name="owner"   groups="openhealth.roots"/>
+
+
 
                     <field name="date_begin"    string="Fecha Inicio"/>
                     <field name="date_end"      string="Fecha Fin"/>

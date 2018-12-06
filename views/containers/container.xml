@@ -173,6 +173,7 @@
                             <group>                             
                                 <field name="name"/>
                                 <field name="export_date_begin"/>
+                                <field name="txt_pack"      filename="txt_pack_name"/>
                             </group>
                             <group>
                                 <field name="amount_total"/>
@@ -181,26 +182,33 @@
                             </group>
                         </group>
 
-                        <group>
-                            <group>                             
-                                <field name="txt_pack"      filename="txt_pack_name"/>
-<!--
-                                <field name="gentextfile" filename="name"/>
--->
 
-                            </group>
-                            <group groups="openhealth.roots">
-<!--
-                                <field name="mgt"   groups="openhealth.roots"/>
-                                <field name="doctor"    groups="openhealth.roots"/>
--->                         
+
+                        <group groups="openhealth.roots">
+                            <group>                             
                                 <field name="ticket_receipt_create"/>
                                 <field name="ticket_invoice_create"/>
+<!--
                                 <field name="ticket_receipt_cancel"/>
                                 <field name="ticket_invoice_cancel"/>
+-->
+                            </group>                             
+
+                            <group>                             
+                                <field name="receipt_create"/>
+                                <field name="invoice_create"/>
+                                <field name="sale_note_create"/>
+                                <field name="advertisement_create"/>
+                            </group>
+                        </group>
 
 
 <!--
+                                <field name="gentextfile" filename="name"/>
+
+                                <field name="mgt"   groups="openhealth.roots"/>
+                                <field name="doctor"    groups="openhealth.roots"/>
+
                                 <field name="patient" />
                                 <field name="partner" />
                                 <field name="treatment" />
@@ -208,8 +216,6 @@
                                 <field name="export_date_end"/>
                                 <field name="export_date"/>
 -->
-                            </group>
-                        </group>
 
 
 

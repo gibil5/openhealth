@@ -14,8 +14,8 @@ def get_orders_filter_fast(self, date_bx, date_ex):
 	"""
 	high level support for doing this and that.
 	"""
-	#print
-	#print 'Get Orders - Fast'
+	print('')
+	print('Get Orders - Fast')
 
 
 	# Init
@@ -62,8 +62,8 @@ def get_orders_filter(self, date_bx, date_ex, state_arr, type_arr):
 	"""
 	high level support for doing this and that.
 	"""
-	#print
-	#print 'Get Orders - Filter'
+	print('')
+	print('Get Orders - Filter')
 
 	# Init
 	DATETIME_FORMAT = "%Y-%m-%d"
@@ -84,6 +84,9 @@ def get_orders_filter(self, date_bx, date_ex, state_arr, type_arr):
 
 
 	_dic_types = {
+					'ticket_receipt,ticket_invoice,receipt,invoice,sale_note,advertisement': ['ticket_receipt', 'ticket_invoice', 'receipt', 'invoice', 'sale_note', 'advertisement'],
+
+
 					'ticket_receipt,ticket_invoice': 	['ticket_receipt', 'ticket_invoice'],
 					'ticket_receipt': 					['ticket_receipt'],
 					'ticket_invoice': 					['ticket_invoice'],

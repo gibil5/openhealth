@@ -15,14 +15,14 @@
 
 
 
-        <!-- Caja -->           
-        <menuitem   id="sales_menu" 
-                    parent="main_sales_menu"
-                    sequence="1"
-                    groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
+<!-- Caja -->           
+<menuitem   id="sales_menu" 
+            parent="main_sales_menu"
+            sequence="1"
+            groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
 
-                    name="Caja"
-                />
+            name="Caja"
+        />
 
 
 
@@ -104,14 +104,34 @@
 
 
 
-<!-- Legacy --> 
-        <menuitem   id="sales_legacy_menu" 
 
-                    name="Legacy"
-
+<!-- Closings -->           
+        <menuitem   id="sales_closings_menu" 
+                    name="Cierres de caja"
                     parent="main_sales_menu"
 
                     sequence="2"
+                    />
+
+            <menuitem   id="sales_closings_sub_menu"                        
+                        name="Diarios"
+                        parent="sales_closings_menu"
+                        sequence="1"
+
+                        action="closings_list_action"
+
+            />
+
+
+
+
+
+
+<!-- Legacy --> 
+        <menuitem   id="sales_legacy_menu" 
+                    name="Legacy"
+                    parent="main_sales_menu"
+                    sequence="3"
 
                     groups="openhealth.roots"
                 />
@@ -120,13 +140,10 @@
 
             <!-- Legacy -->             
             <menuitem   id="sales_legacy_sales_menu" 
-
                         name="Legacy" 
-                
                         parent="sales_legacy_menu"
-                
                         sequence="1"
-                        
+
                         action="sale_legacy_list_action"
 
                         groups="openhealth.roots"
@@ -162,35 +179,13 @@
 
 
 
-<!-- Closings -->           
-        <menuitem   id="sales_closings_menu" 
-                    name="Cierres de caja"
-                    parent="main_sales_menu"
-
-                    sequence="3"
-                    />
-
-            <menuitem   id="sales_closings_sub_menu"                        
-                        name="Diarios"
-                        parent="sales_closings_menu"
-                        sequence="1"
-
-                        action="closings_list_action"
-
-                        />
 
 
 
 
-
-
-
-<!--
-                    groups="openhealth.roots,openhealth.caja,openhealth.directors"
--->
-
+<!-- Dep ! -->
 <!-- Config --> 
-
+<!--
         <menuitem   id="sales_config_menu" 
                     parent="main_sales_menu"
                     sequence="4"
@@ -219,7 +214,7 @@
 
                     action="counter_list_action"
                 />
-
+-->
 
 
 
@@ -246,10 +241,6 @@
                     action="order_inactive_list_action"
                 />
 -->
-
-
-
-
 
 
 

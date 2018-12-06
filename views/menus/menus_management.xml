@@ -15,18 +15,17 @@
 
 
 
-        <!-- Management -->
+        <!-- Ventas -->
         <menuitem   id="management_menu" 
-
                     name="Ventas"
-            
-                    parent="main_management_menu"/>
+                    parent="main_management_menu"
+                />
 
 
 
 
         <!-- Management Sales -->
-        <menuitem   id="management_sales_menu" 
+        <menuitem   id="management_sales_mgt_menu" 
 
                     name="Análisis de Ventas" 
             
@@ -34,12 +33,32 @@
             
                     sequence="1"
             
+                    action="management_list_mgt_action"
+
+                />
+
+
+
+        <!-- Management Sales -->
+        <menuitem   id="management_sales_menu" 
+
+                    name="Análisis de Ventas - Admin" 
+            
+                    parent="management_menu"
+            
+                    sequence="2"
+            
                     action="management_list_action"
 
-                    />
+                    groups="openhealth.roots"
+                />
+
+
+
 
 
         <!-- Management Order Lines -->
+<!--        
         <menuitem   id="management_order_lines_menu" 
 
                     name="Management Order Lines" 
@@ -51,7 +70,7 @@
                     action="management_order_line_form_action"
 
                     />
-
+-->
 
     </data>
 </openerp>

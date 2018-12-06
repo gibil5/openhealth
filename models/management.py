@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 """
- 	Management Report
+	Management Report
 
- 	Created: 			28 May 2018
+	Created: 			28 May 2018
 	Last updated: 		 6 Nov 2018
 """
 import collections
 from timeit import default_timer as timer
 from openerp import models, fields, api
 from . import mgt_funcs
-from . import export
+#from . import export
 from . import mgt_vars
 
 class Management(models.Model):
@@ -24,16 +24,22 @@ class Management(models.Model):
 
 
 
-# ----------------------------------------------------------- Export to Text ----------------------
+# ----------------------------------------------------------- Dep --------------------------
 	# Export TXT
-	@api.multi
-	def export_txt(self):
-		"""
-		high level support for doing this and that.
-		"""
-		#print
-		#print 'Export Text'
-		export.export_txt(self.order_line)
+	#@api.multi
+	#def export_txt(self):
+	#	"""
+	#	high level support for doing this and that.
+	#	"""
+	#	export.export_txt(self.order_line)
+
+	#legacy = fields.Boolean(
+	#		'Legacy',
+	#	)
+
+
+
+# ----------------------------------------------------------- Fields ----------------------
 
 	# State Array
 	state_arr = fields.Selection(
@@ -46,7 +52,15 @@ class Management(models.Model):
 	type_arr = fields.Selection(
 			selection=mgt_vars._type_arr_list,
 			string='Types',
-			default='ticket_receipt,ticket_invoice',
+			#default='ticket_receipt,ticket_invoice',
+			default='all',
+		)
+
+	# Owner
+	owner = fields.Selection(
+			[
+				('account', 'account'),
+			],
 		)
 
 
@@ -96,10 +110,6 @@ class Management(models.Model):
 		)
 
 
-# ----------------------------------------------------------- Legacy ------------------------------
-	legacy = fields.Boolean(
-			'Legacy',
-		)
 
 
 # ----------------------------------------------------------- Totals ------------------------------
@@ -551,8 +561,6 @@ class Management(models.Model):
 
 
 
-
-
 # ----------------------------------------------------------- Update Doctors ----------------------
 	# Update
 	@api.multi
@@ -575,14 +583,6 @@ class Management(models.Model):
 
 
 
-
-
-
-
-
-
-
-
 # ----------------------------------------------------------- Electronic - Clear ------------------
 	# Clear
 	@api.multi
@@ -594,8 +594,6 @@ class Management(models.Model):
 		#print 'Electronic - Clear'
 		# Clean
 		self.electronic_order.unlink()
-
-
 
 
 
@@ -759,8 +757,17 @@ class Management(models.Model):
 
 
 		# Orders
-		orders, count = mgt_funcs.get_orders_filter\
-											(self, self.date_begin, self.date_end, self.state_arr, self.type_arr)
+		if self.type_arr in ['all']:
+			orders, count = mgt_funcs.get_orders_filter_fast(self, self.date_begin, self.date_end)
+
+		else:
+			orders, count = mgt_funcs.get_orders_filter\
+													(self, self.date_begin, self.date_end, self.state_arr, self.type_arr)
+
+
+
+
+
 		#print orders
 		#print count
 

@@ -13,9 +13,6 @@
 
 
 
-
-
-
         <!-- Historias --> 
         <menuitem   id="emr_menu" 
                     name="Historias Médicas"
@@ -23,9 +20,6 @@
 
                     sequence="1"
                     />
-
-
-
 
 
 
@@ -97,25 +91,36 @@
 
 
 
+<!-- Test --> 
+<menuitem   id="emr_test_menu" 
+            name="Test"
+            parent="main_emr_menu"
+
+            sequence="2"
+
+            groups="openhealth.roots"
+        />
+
+
+
+
         <!-- Patients Test --> 
         <menuitem   id="emr_patients_test_menu" 
-
                     name="Pacientes Test" 
-            
-                    parent="emr_menu"
+                    parent="emr_test_menu"
             
                     sequence="6"
 
                     action="patient_test_list_action"
-                    />
+                />
 
         <!-- Treatments Test -->
         <menuitem   id="emr_treatments_test_menu" 
                     name="Tratamientos Test" 
-                    parent="emr_menu"
+                    parent="emr_test_menu"
                     sequence="7"
                     action="treatment_test_list_action"
-                    />
+                />
 
 
 

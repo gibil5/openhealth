@@ -14,11 +14,14 @@ _state_arr_list = [
 
 # types
 _type_arr_list = [
-					('ticket_receipt,ticket_invoice,receipt,invoice', 	'ticket_receipt,ticket_invoice,receipt,invoice'),
+				('all', 'all'),
 
-					('ticket_receipt,ticket_invoice', 	'ticket_receipt,ticket_invoice'),
-					('ticket_receipt', 					'ticket_receipt'),
-					('ticket_invoice', 					'ticket_invoice'),
+				('ticket_receipt,ticket_invoice,receipt,invoice,sale_note,advertisement', 'ticket_receipt,ticket_invoice,receipt,invoice,sale_note,advertisement'),
+
+				('ticket_receipt,ticket_invoice,receipt,invoice', 	'ticket_receipt,ticket_invoice,receipt,invoice'),
+				('ticket_receipt,ticket_invoice', 	'ticket_receipt,ticket_invoice'),
+				('ticket_receipt', 					'ticket_receipt'),
+				('ticket_invoice', 					'ticket_invoice'),
 ]
 
 

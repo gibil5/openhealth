@@ -17,13 +17,15 @@
 
 
 
-        <!-- Sales --> 
-        <menuitem   id="qc_sales_menu" 
-                    parent="main_qc_menu"
-                    sequence="1"
+<!-- Sales --> 
+<menuitem   id="qc_sales_menu" 
+            parent="main_qc_menu"
+            sequence="1"
 
-                    name="Ventas"           
-                />
+            name="Ventas"           
+
+            groups="openhealth.roots"
+        />
 
 
             <!-- Checksum -->           

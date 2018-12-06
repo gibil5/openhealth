@@ -27,7 +27,7 @@
         <!-- Marketing Patients -->
         <menuitem   id="marketing_patient_menu" 
                     
-                    name="Perfil del Paciente" 
+                    name="Pacientes Nuevos" 
                     
                     parent="marketing_menu"
                     sequence="1"
@@ -36,31 +36,22 @@
 
 
         <!-- Marketing Order Lines -->
-        <menuitem   id="marketing_order_lines_menu" 
-
-                    name="Marketing Order Lines" 
-            
-                    parent="marketing_menu"
-            
-                    sequence="2"
-            
-                    action="marketing_order_line_form_action"
-
-                    />
-
-
         <!-- Marketing recom Lines -->
-        <menuitem   id="marketing_recom_lines_menu" 
-
-                    name="Marketing Reco Lines" 
-            
+<!--
+        <menuitem   id="marketing_order_lines_menu"
+                    name="Marketing Order Lines" 
                     parent="marketing_menu"
-            
-                    sequence="3"
-            
-                    action="marketing_recom_line_form_action"
-
+                    sequence="2"
+                    action="marketing_order_line_form_action"
                     />
+
+        <menuitem   id="marketing_recom_lines_menu" 
+                    name="Marketing Reco Lines" 
+                    parent="marketing_menu"
+                    sequence="3"
+                    action="marketing_recom_line_form_action"
+                    />
+-->
 
 
     </data>

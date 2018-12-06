@@ -133,28 +133,65 @@ class Container(models.Model):
 			partner_id = patient.partner_id.id
 			doctor_id = self.doctor.id
 			treatment_id = False
+			
 			short_name = 'product_1'
-			qty = 40
+			#qty = 40
+			qty = 1
+			
 			pricelist_id = patient.property_product_pricelist.id
 
 
 
-			# Invoice
+
+			# Ticket Invoice
 			if self.ticket_invoice_create:
 
 				x_type = 'ticket_invoice'
 
-				# Create
 				invoice = creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id,\
 																							 short_name, qty, x_type, pricelist_id)
 
-
-			# Receipt
+			# Ticket Receipt
 			if self.ticket_receipt_create:
 
 				x_type = 'ticket_receipt'
 
-				# Create
+				receipt = creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id,\
+																							 short_name, qty, x_type, pricelist_id)
+
+
+
+
+			# Invoice
+			if self.invoice_create:
+
+				x_type = 'invoice'
+
+				invoice = creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id,\
+																							 short_name, qty, x_type, pricelist_id)
+
+			# Receipt
+			if self.receipt_create:
+
+				x_type = 'receipt'
+
+				receipt = creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id,\
+																							 short_name, qty, x_type, pricelist_id)
+
+
+			# Sale Note
+			if self.sale_note_create:
+
+				x_type = 'sale_note'
+
+				invoice = creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id,\
+																							 short_name, qty, x_type, pricelist_id)
+
+			# Receipt
+			if self.advertisement_create:
+
+				x_type = 'advertisement'
+
 				receipt = creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id,\
 																							 short_name, qty, x_type, pricelist_id)
 
@@ -227,12 +264,35 @@ class Container(models.Model):
 
 	# Flags
 	ticket_invoice_create = fields.Boolean(
-			'Invoice',
+			'Ticket Invoice',
 		)
 
 	ticket_receipt_create = fields.Boolean(
+			'Ticket Receipt',
+		)
+
+
+
+	invoice_create = fields.Boolean(
+			'Invoice',
+		)
+
+	receipt_create = fields.Boolean(
 			'Receipt',
 		)
+
+	sale_note_create = fields.Boolean(
+			'SN',
+		)
+
+	advertisement_create = fields.Boolean(
+			'Adv',
+		)
+
+
+
+
+
 
 	ticket_invoice_cancel = fields.Boolean(
 			'Invoice Cancel',
@@ -241,6 +301,11 @@ class Container(models.Model):
 	ticket_receipt_cancel = fields.Boolean(
 			'Receipt Cancel',
 		)
+
+
+
+
+
 
 
 	# Total
@@ -302,7 +367,6 @@ class Container(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-
 		# Loop
 		for patient in self.patient_ids:
 			patient_id = patient.id
@@ -319,9 +383,7 @@ class Container(models.Model):
 		self.amount_total = 0
 		self.invoice_count = 0
 		self.receipt_count = 0
-
 	# clear
-
 
 
 # ----------------------------------------------------------- Export ------------------------------
@@ -405,10 +467,7 @@ class Container(models.Model):
 		# Gap and Checksum
 		self.mgt.update_qc('ticket_receipt')
 		self.mgt.update_qc('ticket_invoice')
-
 	# test_qc
-
-
 
 
 # ----------------------------------------------------------- Update -----------------------------
@@ -420,5 +479,3 @@ class Container(models.Model):
 		self.test_qc()
 		self.create_electronic()
 		self.export_txt()
-
-

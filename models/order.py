@@ -252,7 +252,8 @@ class sale_order(models.Model):
 	# Uniqueness constraints for:
 	# Serial Number
 	_sql_constraints = [
-				('x_serial_nr','unique(x_serial_nr)', 'SQL Warning: x_serial_nr must be unique !'),
+				#('x_serial_nr','unique(x_serial_nr)', 'SQL Warning: x_serial_nr must be unique !'),
+				('x_serial_nr', 'Check(1=1)', 'SQL Warning: x_serial_nr must be unique !'),
 			]
 
 

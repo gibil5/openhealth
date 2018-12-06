@@ -16,9 +16,13 @@
 
             <field name='type'>product</field>
 
-            <field name='price'>33.04</field>
+            <field name='price'>200</field>
 
+            <field name='standard_price'>200</field>
+<!--
+            <field name='price'>33.04</field>
             <field name='standard_price'>33.04</field>
+-->
         </record>
 
 

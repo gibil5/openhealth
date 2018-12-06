@@ -38,7 +38,7 @@ class Management(models.Model):
 	# State Array
 	state_arr = fields.Selection(
 			selection=mgt_vars._state_arr_list,
-			string='States',
+			string='State Array',
 			default='sale',
 			required=True,
 		)
@@ -46,7 +46,7 @@ class Management(models.Model):
 	# Type Array
 	type_arr = fields.Selection(
 			selection=mgt_vars._type_arr_list,
-			string='Types',
+			string='Type Array',
 			#default='ticket_receipt,ticket_invoice',
 			default='all',
 			required=True,
@@ -134,7 +134,8 @@ class Management(models.Model):
 
 	# Procedures
 	nr_procedures = fields.Integer(
-			'Nr Procedimientos',
+			#'Nr Procedimientos',
+			'Nr Procs',
 		)
 
 	amo_procedures = fields.Float(

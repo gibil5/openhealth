@@ -429,6 +429,12 @@
                 <tree string="Management Tree">
                     
                     <field name="name"/>
+
+                    <field name="total_amount"/>
+
+                    <field name="write_date"    string="Actualizado"/>
+
+
 <!--
                     <field name="test_target"   groups="openhealth.roots"/>
 -->                
@@ -437,16 +443,17 @@
                     <field name="state_arr"     groups="openhealth.roots"/>
 
 
-
+<!--
                     <field name="date_begin"    string="Fecha Inicio"/>
                     <field name="date_end"      string="Fecha Fin"/>
-                    <field name="write_date"    string="Actualizado"/>
-                    <field name="total_count"/>
+-->
                     <field name="nr_consultations"/>
                     <field name="nr_procedures"/>
-                    <field name="ratio_pro_con"/>
-                    <field name="total_tickets"/>
-                    <field name="total_amount"/>
+                    <field name="ratio_pro_con"     string="Ratio"/>
+                    
+                    <field name="total_tickets"     string="Nr Ventas"/>
+                    <field name="total_count"       string="Nr Lineas"/>
+
                 </tree>
             </field>
         </record>

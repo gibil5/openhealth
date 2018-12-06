@@ -133,11 +133,9 @@ class Container(models.Model):
 			partner_id = patient.partner_id.id
 			doctor_id = self.doctor.id
 			treatment_id = False
-			
 			short_name = 'product_1'
 			#qty = 40
 			qty = 1
-			
 			pricelist_id = patient.property_product_pricelist.id
 
 

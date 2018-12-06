@@ -9,7 +9,6 @@ import collections
 from timeit import default_timer as timer
 from openerp import models, fields, api
 from . import mgt_funcs
-#from . import export
 from . import mgt_vars
 
 class Management(models.Model):
@@ -17,11 +16,8 @@ class Management(models.Model):
 	high level support for doing this and that.
 	"""
 	_inherit = 'openhealth.repo'
-
 	_name = 'openhealth.management'
-
 	_order = 'date_begin asc'
-
 
 
 # ----------------------------------------------------------- Dep --------------------------
@@ -38,9 +34,7 @@ class Management(models.Model):
 	#	)
 
 
-
 # ----------------------------------------------------------- Fields ----------------------
-
 	# State Array
 	state_arr = fields.Selection(
 			selection=mgt_vars._state_arr_list,
@@ -64,8 +58,6 @@ class Management(models.Model):
 				('account', 'account'),
 			],
 		)
-
-
 
 
 # ----------------------------------------------------------- Relational --------------------------
@@ -112,8 +104,6 @@ class Management(models.Model):
 		)
 
 
-
-
 # ----------------------------------------------------------- Totals ------------------------------
 	# Count
 	total_tickets = fields.Integer(
@@ -156,7 +146,6 @@ class Management(models.Model):
 			'Precio Prom. Procedimientos',
 		)
 
-
 	# Co2
 	nr_co2 = fields.Integer(
 			'Nr Co2',
@@ -170,7 +159,6 @@ class Management(models.Model):
 			'Precio Prom. Co2',
 		)
 
-
 	# Exc
 	nr_exc = fields.Integer(
 			'Nr Exc',
@@ -183,7 +171,6 @@ class Management(models.Model):
 	avg_exc = fields.Float(
 			'Precio Prom. Exc',
 		)
-
 
 	# Ipl
 	nr_ipl = fields.Integer(
@@ -211,7 +198,6 @@ class Management(models.Model):
 			'Precio Prom. Ndyag',
 		)
 
-
 	# Quick
 	nr_quick = fields.Integer(
 			'Nr Quick',
@@ -225,7 +211,6 @@ class Management(models.Model):
 			'Precio Prom. Quick',
 		)
 
-
 	# Medical
 	nr_medical = fields.Integer(
 			'Nr TM',
@@ -238,7 +223,6 @@ class Management(models.Model):
 	avg_medical = fields.Float(
 			'Precio Prom. TM',
 		)
-
 
 	# Cosmetology
 	nr_cosmetology = fields.Integer(
@@ -320,7 +304,7 @@ class Management(models.Model):
 
 
 		# Init
-		doctor_arr = []
+		#doctor_arr = []
 		family_arr = []
 		sub_family_arr = []
 		_h_amount = {}
@@ -531,7 +515,8 @@ class Management(models.Model):
 															'doctor_id': doctor.id,
 															'management_id': self.id,
 														})
-					ret = order_line.update_fields()
+					#ret = order_line.update_fields()
+					order_line.update_fields()
 
 
 
@@ -616,7 +601,8 @@ class Management(models.Model):
 
 
 		# Orders
-		orders, count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end, self.state_arr, self.type_arr)
+		orders, count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end, \
+																						self.state_arr, self.type_arr)
 
 
 		# Init
@@ -642,7 +628,8 @@ class Management(models.Model):
 				id_doc_type_code = order.patient.x_id_doc_type_code
 
 			# Patch
-			if order.patient.x_id_doc == False and order.patient.x_id_doc_type == False:
+			#if order.patient.x_id_doc == False and order.patient.x_id_doc_type == False:
+			if not order.patient.x_id_doc and not order.patient.x_id_doc_type:
 				if order.patient.x_dni != False:
 					id_doc = order.patient.x_dni
 					id_doc_type = 'dni'
@@ -693,7 +680,8 @@ class Management(models.Model):
 				#print electronic_order
 				#print
 
-				electronic_line = electronic_order.electronic_line_ids.create({
+				#electronic_line = electronic_order.electronic_line_ids.create({
+				electronic_order.electronic_line_ids.create({
 																					# Line
 																					'product_id': 			line.product_id.id,
 																					'product_uom_qty': 		line.product_uom_qty,
@@ -758,7 +746,7 @@ class Management(models.Model):
 
 		# Init Loop
 		tickets = 0
-		first = True
+		#first = True
 
 		# Loop
 		for order in orders:
@@ -766,15 +754,16 @@ class Management(models.Model):
 
 			# Order Lines
 			for line in order.order_line:
-				if first:
-					verbosity = True
-					first = False
-				else:
-					verbosity = False
+				#if first:
+				#	verbosity = True
+				#	first = False
+				#else:
+				#	verbosity = False
 
 				# Line Analysis
 				#stats = mgt_funcs.line_analysis(self, line, verbosity)
-				stats = mgt_funcs.line_analysis(self, line)
+				#stats = mgt_funcs.line_analysis(self, line)
+				mgt_funcs.line_analysis(self, line)
 
 
 
@@ -989,15 +978,12 @@ class Management(models.Model):
 
 
 
-	# Update QC All
+	# Update QC All - Used by the UI
 	@api.multi
-	def update_qc_all(self, x_type):
+	def update_qc_all(self):
 		"""
 		high level support for doing this and that.
 		"""
-		#print
-		#print 'Update QC All'
-
 		# Gap and Checksum
 		self.update_qc('ticket_receipt')
 		self.update_qc('ticket_invoice')

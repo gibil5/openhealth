@@ -39,7 +39,9 @@ class electronic_order(models.Model):
 
 
 	def get_credit_note_type(self):
-
+		"""
+		high level support for doing this and that.
+		"""
 		_dic_cn_type = {
 							'cancel': 					'Anulacion de la operacion',
 							'cancel_error_ruc': 		'Anulacion por error en el RUC',
@@ -55,8 +57,6 @@ class electronic_order(models.Model):
 
 							False: 						'',
 					}
-		
-
 		return _dic_cn_type[self.credit_note_type].upper()
 
 

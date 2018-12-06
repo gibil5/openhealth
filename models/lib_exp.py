@@ -102,7 +102,7 @@ def format_txt(order):
 
 	#else:
 	elif order.state in ['credit_note']:
-		
+
 		# Data General
 
 		_empty_1 = "||||"
@@ -115,11 +115,11 @@ def format_txt(order):
 		type_code = order.type_code
 
 
-		#reason = "ERROR EN DATOS"		
+		#reason = "ERROR EN DATOS"
 		#reason = order.credit_note_type
 		reason = order.get_credit_note_type()
 
-		
+
 
 
 
@@ -265,7 +265,7 @@ def format_txt(order):
 #               str(order.amount_total_net) + eol + ret + \
 
 
-	# Sale 
+	# Sale
 	if order.state in ['sale']:
 
 		table_4 = code_gravada        + sep + \
@@ -278,8 +278,8 @@ def format_txt(order):
 					empty_3     + \
 					eot + ret
 
-	# Cancel 
-	else: 
+	# Cancel
+	else:
 
 		table_4 = code_gravada        + sep + \
 					acc.fmt(order.amount_total_net) + eol + ret + \
@@ -301,17 +301,17 @@ def format_txt(order):
 # !
 	empty_1 = "|]" + ret
 
-	# Sale 
+	# Sale
 	if order.state in ['sale']:
-		
+
 		table_5 = empty_1     + \
 					empty_1     + \
 					empty_1     + \
 					eot + ret
-	
-	# Cancel 
-	else: 
-		
+
+	# Cancel
+	else:
+
 		table_5 = empty_1     + \
 					eot + ret
 
@@ -430,7 +430,7 @@ def get_file_name(order):
 	#    type_prefix = _DIC_PREFIX[order.type_code]
 	#elif order.state in ['cancel']:
 	#    type_prefix = _DIC_PREFIX_CANCEL[order.type_code]
-	
+
 	type_prefix = _DIC_PREFIX[order.type_code]
 
 
@@ -442,9 +442,9 @@ def get_file_name(order):
 	date_export = order.export_date.replace("-", "")
 
 
-	if order.state in ['sale', 'cancel']: 
+	if order.state in ['sale', 'cancel']:
 		type_code = order.type_code
-	else:   
+	else:
 		type_code = '07'
 
 

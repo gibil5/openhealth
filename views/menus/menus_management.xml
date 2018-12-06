@@ -24,10 +24,10 @@
 
 
 
-        <!-- Management Sales -->
+        <!-- Sales Month -->
         <menuitem   id="management_sales_mgt_menu" 
 
-                    name="Análisis de Ventas" 
+                    name="Mensual" 
             
                     parent="management_menu"
             
@@ -39,14 +39,30 @@
 
 
 
-        <!-- Management Sales -->
+        <!-- Sales Year -->
+        <menuitem   id="management_sales_mgt_year_menu" 
+
+                    name="Anual" 
+            
+                    parent="management_menu"
+            
+                    sequence="2"
+            
+                    action="management_list_mgt_year_action"
+
+                />
+
+
+
+
+        <!-- Sales -->
         <menuitem   id="management_sales_menu" 
 
                     name="Análisis de Ventas - Admin" 
             
                     parent="management_menu"
             
-                    sequence="2"
+                    sequence="3"
             
                     action="management_list_action"
 

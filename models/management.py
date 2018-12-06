@@ -55,7 +55,8 @@ class Management(models.Model):
 	# Owner
 	owner = fields.Selection(
 			[
-				('account', 'account'),
+				('account', 'Account'),
+				('year', 'Year'),
 			],
 		)
 

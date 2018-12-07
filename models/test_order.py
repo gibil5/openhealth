@@ -7,6 +7,18 @@
 	Created: 			20 Nov 2018
 	Last up: 	 		20 Nov 2018
 """
+from __future__ import print_function
+
+
+# ----------------------------------------------------------- Test ---------------------------------
+def test(self):
+	"""
+	high level support for doing this and that.
+	"""
+	print('')
+	print('Test')
+	self.test_actions()
+	self.test_computes()
 
 
 

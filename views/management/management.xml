@@ -430,10 +430,15 @@
                     
                     <field name="name"/>
 
+
+<!--
                     <field name="total_amount"/>
+-->
+                    <field name="total_amount" sum="Total" widget="monetary"/>
+
+
 
                     <field name="write_date"    string="Actualizado"/>
-
 
 <!--
                     <field name="test_target"   groups="openhealth.roots"/>
@@ -447,8 +452,10 @@
                     <field name="date_begin"    string="Fecha Inicio"/>
                     <field name="date_end"      string="Fecha Fin"/>
 -->
+                    <field name="nr_products"/>
                     <field name="nr_consultations"/>
                     <field name="nr_procedures"/>
+
                     <field name="ratio_pro_con"     string="Ratio"/>
                     
                     <field name="total_tickets"     string="Nr Ventas"/>

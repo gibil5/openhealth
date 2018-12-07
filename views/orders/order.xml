@@ -10,16 +10,8 @@
             <field name="model">sale.order</field>          
             <field name="inherit_id" ref="sale.view_order_form"/>   
             <field name="mode">primary</field>
-
-<!--
-            <field name="priority" eval="1"/>
--->
             <field name="priority">1</field>
-
-
             <field name="arch" type="xml">
-
-
 
 
                 <!-- Status Bar --> 
@@ -29,11 +21,6 @@
                             statusbar_visible="draft, verified, sent, sale"
                     />
                 </xpath>
-
-
-
-
-
 
 
 
@@ -157,6 +144,21 @@
                     />
 
 
+                    <!-- Test -->
+                    <button
+                            type="object"
+                            class="oe_highlight"
+                            states="sale"                     
+
+                            name="test"
+
+                            string="TEST"
+
+                            groups="openhealth.roots"
+                    />
+
+
+
                     <!-- Checksum -->
                     <!--
                     <button
@@ -189,58 +191,43 @@
 
 
                     <!-- Legacy -->
+<!--
                     <button
                             type="object"
                             class="oe_highlight"
-                            states="sale"                     
-
+                            states="sale"
                             name="update_legacy"
-
                             string="Legacy"
-
                             groups="openhealth.roots"
                     />
 
-
-
-                    <!-- Legacy -->
                     <button
                             type="object"
                             class="oe_highlight"
-                            states="sale"                     
-
+                            states="sale"
                             name="update_legacy_jan"
-
                             string="Legacy Jan"
-
                             groups="openhealth.roots"
                     />
-
 
                     <button
                             type="object"
                             class="oe_highlight"
-                            states="sale"                     
-
+                            states="sale"
                             name="update_legacy_fev"
-
                             string="Legacy Fev"
-
                             groups="openhealth.roots"
                     />
-
 
                     <button
                             type="object"
                             class="oe_highlight"
-                            states="sale"                     
-
+                            states="sale"
                             name="update_legacy_mar"
-
                             string="Legacy Mar"
-
                             groups="openhealth.roots"
                     />
+-->
                 </xpath>
 
 
@@ -949,26 +936,22 @@ Look for the Minimalist experience !!!
                     
                     <field name="x_pm_total"/>
 
-<!--
--->
                     <field name="x_pm_cash"/>
                     
                     <field name="x_pm_visa_credit"/>
+
                     <field name="x_pm_visa_debit"/>
                     
                     <field name="x_pm_master_credit"/>
+
                     <field name="x_pm_master_debit"/>
                     
                     <field name="x_pm_american"/>
-                    <field name="x_pm_diners"/>
 
+                    <field name="x_pm_diners"/>
                 </tree>
             </field>
         </record>
-
-
-
-
 
     </data>
 </openerp>

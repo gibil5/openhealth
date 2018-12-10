@@ -4,6 +4,7 @@
 
 
 #from . import lib
+from libs import *
 
 
 
@@ -12,6 +13,7 @@
 #from . import account_line
 #from . import account_contasis
 from account import *
+
 
 
 
@@ -29,12 +31,25 @@ from order import *
 
 
 
+
 #from . import partner
 #from . import patient  
 #from . import counter
 #from . import company
 from patient import *
 
+
+
+
+
+# Management
+#from . import mgt_line
+#from . import doctor_line
+#from . import family_line
+#from . import sub_family_line
+#from . import management_order_line
+#from . import management 
+from management import *
 
 
 
@@ -47,14 +62,6 @@ from . import line
 from . import repo
 
 
-
-# Management
-from . import mgt_line
-from . import doctor_line
-from . import family_line
-from . import sub_family_line
-from . import management_order_line
-from . import management 
 
 
 

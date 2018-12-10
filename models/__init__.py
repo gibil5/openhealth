@@ -23,6 +23,7 @@ from account import *
 #from . import payment_method_line
 #from . import closing
 #from . import card
+#from . import order_report_nex			# Estado de Cuenta 
 from order import *
 
 
@@ -31,15 +32,13 @@ from order import *
 #from . import partner
 #from . import patient  
 #from . import counter
+#from . import company
 from patient import *
 
 
 
 
 
-
-# Company
-from . import company
 
 
 # Inheritable 
@@ -77,9 +76,7 @@ from . import corrector
 from . import media_line
 from . import marketing_recommendation_line
 from . import marketing_order_line
-
 from . import patient_line
-
 from . import histo_line
 from . import place_line
 from . import marketing
@@ -95,7 +92,6 @@ from . import marketing
 # Reports
 from . import report_order_line
 from . import product_counter 
-from . import order_report_nex			# Estado de Cuenta 
 from . import report_sale_product
 
 
@@ -111,7 +107,6 @@ from . import report_sale_product
 # EMR
 from . import product
 from . import product_product
-
 from . import image		
 from . import allergy  
 from . import process 
@@ -156,7 +151,6 @@ from . import service_medical
 from . import service_quick
 from . import service_vip
 from . import service_cosmetology
-
 from . import service_product
 from . import service_consultation
 

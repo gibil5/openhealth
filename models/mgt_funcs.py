@@ -14,8 +14,8 @@ def get_orders_filter_fast(self, date_bx, date_ex):
 	"""
 	high level support for doing this and that.
 	"""
-	print('')
-	print('Get Orders - Fast')
+	#print('')
+	#print('Get Orders - Fast')
 
 
 	# Init
@@ -188,20 +188,13 @@ def get_orders_filter_type(self, date_bx, date_ex, x_type):
 
 
 # ----------------------------------------------------------- Line Analysis -----------------------
-#def line_analysis(self, line, verbosity):
 def line_analysis(self, line):
 	"""
 	high level support for doing this and that.
 	"""
-
 	#print
 	#print 'Line Analysis'
 
-	#if verbosity:
-	#	print
-	#	print 'Line Analysis'
-	#	print line
-	#	print
 
 	# Init
 	prod = line.product_id

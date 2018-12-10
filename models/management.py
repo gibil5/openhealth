@@ -5,6 +5,8 @@
 	Created: 			28 May 2018
 	Last updated: 		 6 Nov 2018
 """
+from __future__ import print_function
+
 import collections
 from timeit import default_timer as timer
 from openerp import models, fields, api
@@ -20,18 +22,27 @@ class Management(models.Model):
 	_order = 'date_begin asc'
 
 
-# ----------------------------------------------------------- Dep --------------------------
-	# Export TXT
-	#@api.multi
-	#def export_txt(self):
-	#	"""
-	#	high level support for doing this and that.
-	#	"""
-	#	export.export_txt(self.order_line)
 
-	#legacy = fields.Boolean(
-	#		'Legacy',
-	#	)
+# ----------------------------------------------------------- Export --------------------------
+
+	# Export Stats
+	@api.multi
+	def export_stats(self):
+		"""
+		1. Create CSV files with Data. 
+		2. Generate Plot using MatPlotLib.
+		3. Export to Docean with Rsync.
+		"""
+		print()
+		print('Export Stats')
+
+
+
+
+
+
+
+
 
 
 # ----------------------------------------------------------- Fields ----------------------
@@ -131,143 +142,177 @@ class Management(models.Model):
 			'Delta 2',
 		)
 
-# ----------------------------------------------------------- Counters ----------------------------
 
-	# Procedures
-	nr_procedures = fields.Integer(
-			#'Nr Procedimientos',
-			'Nr Procs',
+
+
+# ----------------------------------------------------------- Percentages -------------------------
+
+	per_amo_procedures = fields.Float(
+			'% Monto Procedimientos',
 		)
+
+	per_amo_consultations = fields.Float(
+			'% Monto Consultas',
+		)
+
+	per_amo_products = fields.Float(
+			'% Monto Productos',
+		)
+
+
+
+	per_amo_co2 = fields.Float(
+			'% Monto Co2',
+		)
+
+	per_amo_exc = fields.Float(
+			'% Monto Exc',
+		)
+
+	per_amo_ipl = fields.Float(
+			'% Monto Ipl',
+		)
+
+	per_amo_ndyag = fields.Float(
+			'% Monto Ndyag',
+		)
+
+	per_amo_quick = fields.Float(
+			'% Monto Quick',
+		)
+
+	per_amo_medical = fields.Float(
+			'% Monto TM',
+		)
+
+	per_amo_cosmetology = fields.Float(
+			'% Monto Cosmiatria',
+		)
+
+
+
+	per_amo_topical = fields.Integer(
+			'% Monto Cremas',
+		)
+
+	per_amo_vip = fields.Integer(
+			'% Monto Vip',
+		)
+
+	per_amo_kits = fields.Integer(
+			'% Monto Kits',
+		)
+
+
+
+
+# ----------------------------------------------------------- Amounts -----------------------------
 
 	amo_procedures = fields.Float(
 			'Monto Procedimientos',
-			#digits=(16,1),
 		)
 
-	avg_procedures = fields.Float(
-			'Precio Prom. Procedimientos',
+	amo_consultations = fields.Float(
+			'Monto Consultas',
 		)
 
-	# Co2
-	nr_co2 = fields.Integer(
-			'Nr Co2',
+	amo_products = fields.Float(
+			'Monto Productos',
 		)
+
+
 
 	amo_co2 = fields.Float(
 			'Monto Co2',
-		)
-
-	avg_co2 = fields.Float(
-			'Precio Prom. Co2',
-		)
-
-	# Exc
-	nr_exc = fields.Integer(
-			'Nr Exc',
 		)
 
 	amo_exc = fields.Float(
 			'Monto Exc',
 		)
 
-	avg_exc = fields.Float(
-			'Precio Prom. Exc',
-		)
-
-	# Ipl
-	nr_ipl = fields.Integer(
-			'Nr Ipl',
-		)
-
 	amo_ipl = fields.Float(
 			'Monto Ipl',
-		)
-
-	avg_ipl = fields.Float(
-			'Precio Prom. Ipl',
-		)
-
-	# Ndyag
-	nr_ndyag = fields.Integer(
-			'Nr Ndyag',
 		)
 
 	amo_ndyag = fields.Float(
 			'Monto Ndyag',
 		)
 
-	avg_ndyag = fields.Float(
-			'Precio Prom. Ndyag',
-		)
-
-	# Quick
-	nr_quick = fields.Integer(
-			'Nr Quick',
-		)
-
 	amo_quick = fields.Float(
 			'Monto Quick',
-		)
-
-	avg_quick = fields.Float(
-			'Precio Prom. Quick',
-		)
-
-	# Medical
-	nr_medical = fields.Integer(
-			'Nr TM',
 		)
 
 	amo_medical = fields.Float(
 			'Monto TM',
 		)
 
-	avg_medical = fields.Float(
-			'Precio Prom. TM',
-		)
-
-	# Cosmetology
-	nr_cosmetology = fields.Integer(
-			'Nr Cosmiatria',
-		)
-
 	amo_cosmetology = fields.Float(
 			'Monto Cosmiatria',
 		)
 
-	avg_cosmetology = fields.Float(
-			'Precio Prom. Cosmiatria',
+	amo_services = fields.Float(
+			'Monto Servicios',
 		)
 
-	# Nr Consus
+
+
+
+	amo_topical = fields.Integer(
+			'Monto Cremas',
+		)
+
+	amo_vip = fields.Integer(
+			'Monto Vip',
+		)
+
+	amo_kits = fields.Integer(
+			'Monto Kits',
+		)
+
+
+# ----------------------------------------------------------- Numbers -----------------------------
+
+	nr_procedures = fields.Integer(
+			#'Nr Procedimientos',
+			'Nr Procs',
+		)
+
 	nr_consultations = fields.Integer(
 			'Nr Consultas',
 		)
 
-	# Amo Consus
-	amo_consultations = fields.Float(
-			'Monto Consultas',
-		)
-
-	# avg Consus
-	avg_consultations = fields.Float(
-			'Precio Prom. Consultas',
-			#digits=(16,1),
-		)
-
-	# Nr Products
 	nr_products = fields.Integer(
 			'Nr Productos',
 		)
 
-	# Amo Products
-	amo_products = fields.Float(
-			'Monto Productos',
+
+
+	nr_co2 = fields.Integer(
+			'Nr Co2',
 		)
 
-	# avg Products
-	avg_products = fields.Float(
-			'Precio Prom. Productos',
+	nr_exc = fields.Integer(
+			'Nr Exc',
+		)
+
+	nr_ipl = fields.Integer(
+			'Nr Ipl',
+		)
+
+	nr_ndyag = fields.Integer(
+			'Nr Ndyag',
+		)
+
+	nr_quick = fields.Integer(
+			'Nr Quick',
+		)
+
+	nr_medical = fields.Integer(
+			'Nr TM',
+		)
+
+	nr_cosmetology = fields.Integer(
+			'Nr Cosmiatria',
 		)
 
 	# Nr Services
@@ -275,10 +320,96 @@ class Management(models.Model):
 			'Nr Servicios',
 		)
 
-	# Amo services
-	amo_services = fields.Float(
-			'Monto Servicios',
+
+
+
+	nr_topical = fields.Integer(
+			'Nr Cremas',
 		)
+
+	nr_vip = fields.Integer(
+			'Nr Vip',
+		)
+
+	nr_kits = fields.Integer(
+			'Nr Kits',
+		)
+
+
+
+# ----------------------------------------------------------- Counters ----------------------------
+
+	# Procedures
+
+
+	avg_procedures = fields.Float(
+			'Precio Prom. Procedimientos',
+		)
+
+	# Co2
+
+
+	avg_co2 = fields.Float(
+			'Precio Prom. Co2',
+		)
+
+	# Exc
+
+
+	avg_exc = fields.Float(
+			'Precio Prom. Exc',
+		)
+
+	# Ipl
+
+
+	avg_ipl = fields.Float(
+			'Precio Prom. Ipl',
+		)
+
+	# Ndyag
+
+
+	avg_ndyag = fields.Float(
+			'Precio Prom. Ndyag',
+		)
+
+	# Quick
+
+
+	avg_quick = fields.Float(
+			'Precio Prom. Quick',
+		)
+
+	# Medical
+
+
+	avg_medical = fields.Float(
+			'Precio Prom. TM',
+		)
+
+	# Cosmetology
+
+
+	avg_cosmetology = fields.Float(
+			'Precio Prom. Cosmiatria',
+		)
+
+
+	# avg Consus
+	avg_consultations = fields.Float(
+			'Precio Prom. Consultas',
+			#digits=(16,1),
+		)
+
+
+
+	# avg Products
+	avg_products = fields.Float(
+			'Precio Prom. Productos',
+		)
+
+
 
 	# avg services
 	avg_services = fields.Float(
@@ -294,8 +425,8 @@ class Management(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		#print
-		#print 'Update Stats'
+		print()
+		print('Update Stats')
 
 
 		# Using collections - More Abstract !
@@ -392,8 +523,8 @@ class Management(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		#print
-		#print 'Update Sales - By Doctor'
+		print()
+		print('Update Sales - By Doctor')
 
 
 		# Clean
@@ -428,12 +559,10 @@ class Management(models.Model):
 										})
 
 
-
-
 		# Create Sales - By Doctor
 		for doctor in self.doctor_line:
 
-			#print doctor.name
+			#print(doctor.name)
 
 
 			# Clear
@@ -445,7 +574,8 @@ class Management(models.Model):
 			# Orders
 			orders, count = mgt_funcs.get_orders_filter_by_doctor\
 															(self, self.date_begin, self.date_end, doctor.name)
-
+			#print(orders)
+			#print(count)
 
 			#self.total_count = count
 
@@ -455,14 +585,21 @@ class Management(models.Model):
 			count = 0
 			tickets = 0
 
+
 			# Loop
 			for order in orders:
+
+				#print(order)
+				#print(order.name)
+				#print(order.patient.name)
+
 
 				# Tickets
 				tickets = tickets + 1
 
 				# Amount
 				amount = amount + order.amount_total
+
 
 				# Id Doc
 				if order.x_type in ['ticket_invoice', 'invoice']:
@@ -477,6 +614,11 @@ class Management(models.Model):
 					id_doc_type = order.patient.x_id_doc_type
 					id_doc_type_code = order.patient.x_id_doc_type_code
 
+					# Pre-Electronic
+					if id_doc_type is False or id_doc is False:
+						id_doc = order.patient.x_dni
+						id_doc_type = 'dni'
+						id_doc_type_code = '1'
 
 
 				# Order Lines
@@ -542,10 +684,8 @@ class Management(models.Model):
 		#self.total_amount = total_amount
 		#self.total_count = total_count
 		#self.total_tickets = total_tickets
-
 		#self.stats()
 
-		#print 'Done !'
 	# update_sales
 
 
@@ -557,11 +697,14 @@ class Management(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		#print
-		#print 'Management - Update Doctors'
+		print
+		print('Management - Update Doctors')
 		t0 = timer()
+
 		self.update_sales_by_doctor()
+
 		self.update_stats()
+
 		#self.update_counters()
 		#self.update_qc()
 		t1 = timer()
@@ -722,8 +865,8 @@ class Management(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		#print
-		#print 'Update Sales'
+		#print()
+		#print('Update Sales - Fast')
 
 
 		# Clean
@@ -733,46 +876,32 @@ class Management(models.Model):
 		# Orders
 		if self.type_arr in ['all']:
 			orders, count = mgt_funcs.get_orders_filter_fast(self, self.date_begin, self.date_end)
-
 		else:
 			orders, count = mgt_funcs.get_orders_filter\
 													(self, self.date_begin, self.date_end, self.state_arr, self.type_arr)
-
-
-
-
 
 		#print orders
 		#print count
 
 
+
 		# Init Loop
 		tickets = 0
-		#first = True
+
 
 		# Loop
 		for order in orders:
 			tickets = tickets + 1
 
+
 			# Order Lines
 			for line in order.order_line:
-				#if first:
-				#	verbosity = True
-				#	first = False
-				#else:
-				#	verbosity = False
 
 				# Line Analysis
-				#stats = mgt_funcs.line_analysis(self, line, verbosity)
-				#stats = mgt_funcs.line_analysis(self, line)
 				mgt_funcs.line_analysis(self, line)
 
 
 
-
-		# Ratios
-		if self.nr_consultations != 0:
-			self.ratio_pro_con = (float(self.nr_procedures) / float(self.nr_consultations)) * 100
 
 		# Families
 		if self.nr_products != 0:
@@ -786,6 +915,8 @@ class Management(models.Model):
 
 		if self.nr_procedures != 0:
 			self.avg_procedures = self.amo_procedures / self.nr_procedures
+
+
 
 		# Subfamilies
 		if self.nr_co2 != 0:
@@ -810,10 +941,40 @@ class Management(models.Model):
 			self.avg_cosmetology = self.amo_cosmetology / self.nr_cosmetology
 
 
+
+		# Ratios
+		if self.nr_consultations != 0:
+			self.ratio_pro_con = (float(self.nr_procedures) / float(self.nr_consultations)) * 100
+
+
+
+
 		# Totals
 		self.total_amount = self.amo_products + self.amo_services
 		self.total_count = self.nr_products + self.nr_services
 		self.total_tickets = tickets
+
+
+
+		# Percentages
+		if self.total_amount != 0:
+
+			self.per_amo_products = (self.amo_products / self.total_amount) * 100
+
+			self.per_amo_consultations = (self.amo_consultations / self.total_amount) * 100
+
+			self.per_amo_procedures = (self.amo_procedures / self.total_amount) * 100
+
+
+			self.per_amo_co2 = (self.amo_co2 / self.total_amount) * 100
+			self.per_amo_exc = (self.amo_exc / self.total_amount) * 100
+			self.per_amo_ipl = (self.amo_ipl / self.total_amount) * 100
+			self.per_amo_ndyag = (self.amo_ndyag / self.total_amount) * 100
+			
+			self.per_amo_quick = (self.amo_quick / self.total_amount) * 100
+			self.per_amo_medical = (self.amo_medical / self.total_amount) * 100
+			self.per_amo_cosmetology = (self.amo_cosmetology / self.total_amount) * 100
+
 
 	# update_sales_fast
 
@@ -829,10 +990,12 @@ class Management(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		#print
-		#print 'Management - Update Fast'
+		print()
+		print('Update Fast')
 		t0 = timer()
+
 		self.update_sales_fast()
+
 		t1 = timer()
 		self.delta_1 = t1 - t0
 		#print self.delta_1

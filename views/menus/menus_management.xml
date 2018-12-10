@@ -24,7 +24,7 @@
 
 
 
-        <!-- Sales Month -->
+        <!-- Month -->
         <menuitem   id="management_sales_mgt_menu" 
 
                     name="Mensual" 
@@ -39,7 +39,7 @@
 
 
 
-        <!-- Sales Year -->
+        <!-- Year -->
         <menuitem   id="management_sales_mgt_year_menu" 
 
                     name="Anual" 
@@ -55,16 +55,48 @@
 
 
 
-        <!-- Sales -->
+        <!-- Admin -->
         <menuitem   id="management_sales_menu" 
 
-                    name="Análisis de Ventas - Admin" 
+                    name="Admin" 
             
                     parent="management_menu"
             
                     sequence="3"
             
                     action="management_list_action"
+
+                    groups="openhealth.roots"
+                />
+
+
+
+
+        <!-- Export -->
+        <menuitem   id="management_sales_mgt_export_month_menu" 
+
+                    name="Export Mensual" 
+            
+                    parent="management_menu"
+            
+                    sequence="11"
+            
+                    action="management_list_mgt_export_month_action"
+
+                    groups="openhealth.roots"
+                />
+
+
+        <!-- Export -->
+        <menuitem   id="management_sales_mgt_export_year_menu" 
+
+                    name="Export Anual" 
+            
+                    parent="management_menu"
+            
+                    sequence="12"
+            
+                    action="management_list_mgt_export_year_action"
 
                     groups="openhealth.roots"
                 />

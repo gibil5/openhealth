@@ -191,7 +191,7 @@
 
 
                     <!-- Legacy -->
-<!--
+
                     <button
                             type="object"
                             class="oe_highlight"
@@ -227,7 +227,7 @@
                             string="Legacy Mar"
                             groups="openhealth.roots"
                     />
--->
+
                 </xpath>
 
 
@@ -635,12 +635,19 @@
 </xpath>
 
 
+
+
 <!-- Order Lines  -->
 <!-- Must be ReadOnly for: Sale and Cancel -->
+<!--
+    <attribute name='attrs'>{'readonly': [('state', 'in', ('sale','cancel','sent','validated'))]}</attribute>
+-->
 <xpath expr="//field[@name='order_line']" position="attributes">
 
-    <attribute name='attrs'>{'readonly': [('state', 'in', ('sale','cancel','sent','validated'))]}</attribute>
+    <attribute name='attrs'>{'readonly': [('state', 'in', ('cancel'))]}</attribute>
+
 </xpath>
+
 
 
 

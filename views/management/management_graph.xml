@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+
+
+        <!-- Graph --> 
+        <record id="view_management_graph" model="ir.ui.view">
+
+             <field name="name">management.graph</field>
+            
+             <field name="model">openhealth.management</field>
+            
+             <field name="arch" type="xml">
+
+                 <graph string="Sales Analysis">
+                
+                     <field name="date_begin" type="row"/>
+                
+                     <field name="total_amount" type="measure"/>
+                
+                 </graph>
+             
+             </field>
+        </record>
+
+
+    </data>
+</openerp>

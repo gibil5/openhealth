@@ -159,6 +159,19 @@
                         />
 
 
+                        <!-- Export -->
+                        <button 
+                                type="object" 
+                                class="oe_highlight oe_right"
+
+                                name="export_stats"
+
+                                string="Export"                              
+
+                                groups="openhealth.roots"
+                        />
+
+
 
                         <!-- Legacy -->
 <!--                        
@@ -179,24 +192,6 @@
 
                     <!-- Sheet -->  
                     <sheet>
-
-                        <group      col="2"     groups='openhealth.roots'  >
-                            <group>
-                                <field name="container"/>
-                                <field name="state_arr"/>
-                                <field name="type_arr"/>
-                                <field name="owner"/>
-<!--
-                                <field name="test_target"/>
-                                <field name="legacy"/>
--->
-                            </group>
-                            <group>
-                                <field name="delta_1"/>
-                                <field name="delta_2"/>
-                            </group>                        
-                        </group>
-
 
 
                         <!-- Totals --> 
@@ -226,6 +221,7 @@
 
 
                         <!-- Type --> 
+<!--                        
                         <group  string="Tipo"   col="3">
                             <group>
                                 <field name="nr_products"   string="Productos Nr"   />
@@ -240,23 +236,42 @@
                                 <field name="avg_services"  string="Precio Prom."   />
                             </group>
                         </group>
-
+-->
 
 
                         <!-- Families --> 
                         <group  string="Familias"   col="3" >
                             <group>
+<!--
+                                <field name="nr_products"       string="Productos Nr"   />
                                 <field name="nr_consultations"  string="Consultas Nr"/>
                                 <field name="nr_procedures"     string="Procedimientos Nr"/>
+-->
+                                <field name="nr_products"/>
+                                <field name="nr_consultations"/>
+                                <field name="nr_procedures"/>
                             </group>
+
                             <group>
+                                <field name="amo_products"      string="Monto"  />
                                 <field name="amo_consultations" string="Monto"  />
                                 <field name="amo_procedures"    string="Monto"  />
                             </group>
+
                             <group>
+
+                                <field name="per_amo_products"      string="%"/>
+                                <field name="per_amo_consultations" string="%"/>
+                                <field name="per_amo_procedures"    string="%"/>
+
+                            </group>
+<!--
+                            <group>
+                                <field name="avg_products"      string="Precio Prom."   />
                                 <field name="avg_consultations" string="Precio Prom."   />
                                 <field name="avg_procedures"    string="Precio Prom."   />
                             </group>
+-->
                         </group>
 
 
@@ -275,6 +290,12 @@
                         <!-- Sub-Families --> 
                         <group  string="Sub Familias"   col="3" >
                             <group>
+                                <field name="nr_topical"/>
+                                <field name="nr_vip"/>
+                                <field name="nr_kits"/>
+
+                                <field name="vspace"/>
+
                                 <field name="nr_co2"    string="Co2 Nr" />
                                 <field name="nr_exc"    string="Exc Nr" />
                                 <field name="nr_ipl"    string="Ipl Nr" />
@@ -284,6 +305,12 @@
                                 <field name="nr_cosmetology"    string="Cosmeatria Nr"  />
                             </group>
                             <group>
+                                <field name="amo_topical"   string="Monto"/>
+                                <field name="amo_vip"   string="Monto"/>
+                                <field name="amo_kits"   string="Monto"/>
+
+                                <field name="vspace"/>
+
                                 <field name="amo_co2"   string="Monto"/>
                                 <field name="amo_exc"   string="Monto"/>
                                 <field name="amo_ipl"   string="Monto"/>
@@ -293,6 +320,22 @@
                                 <field name="amo_cosmetology"   string="Monto"/>
                             </group>
                             <group>
+                                <field name="per_amo_topical"   string="% Monto"/>
+                                <field name="per_amo_vip"   string="% Monto"/>
+                                <field name="per_amo_kits"   string="% Monto"/>
+
+                                <field name="vspace"/>
+
+                                <field name="per_amo_co2"   string="% Monto"/>
+                                <field name="per_amo_exc"   string="% Monto"/>
+                                <field name="per_amo_ipl"   string="% Monto"/>
+                                <field name="per_amo_ndyag" string="% Monto"/>
+                                <field name="per_amo_quick" string="% Monto"/>
+                                <field name="per_amo_medical"       string="% Monto"/>
+                                <field name="per_amo_cosmetology"   string="% Monto"/>
+                            </group>
+<!--                            
+                            <group>
                                 <field name="avg_co2"   string="Precio Prom."   />
                                 <field name="avg_exc"   string="Precio Prom."   />
                                 <field name="avg_ipl"   string="Precio Prom."   />
@@ -301,6 +344,7 @@
                                 <field name="avg_medical"       string="Precio Prom."   />
                                 <field name="avg_cosmetology"   string="Precio Prom."   />
                             </group>
+-->
                         </group>
 
 
@@ -371,6 +415,30 @@
                                 </field>
                             </page>
 
+
+
+                            <!-- Admin --> 
+                            <page   string="Admin"  groups='openhealth.roots'>
+
+                                <group      col="2">
+                                    <group>
+                                        <field name="state_arr"/>
+                                        <field name="type_arr"/>
+                                        <field name="owner"/>
+                                        <field name="container"/>
+                                    </group>
+                                    <group>
+                                        <field name="delta_1"/>
+                                        <field name="delta_2"/>
+                                    </group>                        
+                                </group>
+<!--
+                                <field name="test_target"/>
+                                <field name="legacy"/>
+-->
+
+
+                            </page>
 
 
 
@@ -473,6 +541,96 @@
 -->
 
 
+
+<!-- TREE 2 --> 
+        <record model="ir.ui.view" id="management_view_export_tree">
+            <field name="name">openhealth.management.tree.2</field>
+            <field name="model">openhealth.management</field>
+            <field name="arch" type="xml">
+                <tree string="Management Tree 2">
+                    
+                    <field name="name"/>
+
+                    <field name="total_amount" sum="Total" widget="monetary"/>
+
+
+
+                    <field name="nr_products"/>
+
+                    <field name="nr_consultations"/>
+
+                    <field name="nr_procedures"/>
+
+
+
+                    <field name="amo_products"/>
+
+                    <field name="amo_consultations"/>
+
+                    <field name="amo_procedures"/>
+
+
+
+                    <field name="per_amo_products"/>
+
+                    <field name="per_amo_consultations"/>
+
+                    <field name="per_amo_procedures"/>
+
+
+
+
+
+                    <field name="amo_co2"/>
+
+                    <field name="amo_exc"/>
+
+                    <field name="amo_ipl"/>
+
+                    <field name="amo_ndyag"/>
+
+                    <field name="amo_quick"/>
+
+                    <field name="amo_medical"/>
+
+                    <field name="amo_cosmetology"/>
+
+
+
+
+                    <field name="per_amo_topical"/>
+
+                    <field name="per_amo_vip"/>
+
+                    <field name="per_amo_kits"/>
+
+
+
+
+                    <field name="per_amo_co2"/>
+
+                    <field name="per_amo_exc"/>
+
+                    <field name="per_amo_ipl"/>
+
+                    <field name="per_amo_ndyag"/>
+
+                    <field name="per_amo_quick"/>
+
+                    <field name="per_amo_medical"/>
+
+                    <field name="per_amo_cosmetology"/>
+
+
+
+<!--
+                    <field name="total_count"       string="Nr Lineas"/>
+
+                    <field name="ratio_pro_con"     string="Ratio"/>
+-->
+                </tree>
+            </field>
+        </record>
 
 
 

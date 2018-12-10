@@ -197,16 +197,12 @@ class Container(models.Model):
 
 
 			# Invoice Cancel
-			if self.ticket_invoice_cancel:
-				#print
-				invoice.cancel_order()
-
-
+			#if self.ticket_invoice_cancel:
+			#	invoice.cancel_order()
 
 			# Receipt Cancel
-			if self.ticket_receipt_cancel:
-				#print
-				receipt.cancel_order()
+			#if self.ticket_receipt_cancel:
+			#	receipt.cancel_order()
 
 
 
@@ -288,17 +284,48 @@ class Container(models.Model):
 		)
 
 
+	# All Create
+	@api.multi
+	def all_create(self):
+		"""
+		high level support for doing this and that.
+		"""
+		self.ticket_invoice_create = True
+		self.ticket_receipt_create = True
+	
+		self.invoice_create = True
+		self.receipt_create = True
+
+		self.sale_note_create = True
+		self.advertisement_create = True
+
+
+
+	# All Clear
+	@api.multi
+	def all_clear(self):
+		"""
+		high level support for doing this and that.
+		"""
+		self.ticket_invoice_create = False
+		self.ticket_receipt_create = False
+	
+		self.invoice_create = False
+		self.receipt_create = False
+
+		self.sale_note_create = False
+		self.advertisement_create = False
 
 
 
 
-	ticket_invoice_cancel = fields.Boolean(
-			'Invoice Cancel',
-		)
+	#ticket_invoice_cancel = fields.Boolean(
+	#		'Invoice Cancel',
+	#	)
 
-	ticket_receipt_cancel = fields.Boolean(
-			'Receipt Cancel',
-		)
+	#ticket_receipt_cancel = fields.Boolean(
+	#		'Receipt Cancel',
+	#	)
 
 
 

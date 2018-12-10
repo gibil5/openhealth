@@ -14,7 +14,7 @@
 
 	'description': """
 
-		6 Dec 2018
+		9 Dec 2018
 
 		Fulcrum - TRAVIS Quality Controlled
 
@@ -149,7 +149,11 @@
 		'views/management/management_family_line.xml',
 		'views/management/management_order_line.xml',
 		'views/management/management_doctor_line.xml',
+
+		#'views/management/management_graph.xml',
+
 		'views/management/management.xml',
+
 		'views/management/management_actions.xml',
 		
 

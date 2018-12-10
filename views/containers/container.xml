@@ -131,6 +131,30 @@
 
 
 
+                        <button 
+                            type="object" 
+                            class="oe_highlight oe_right"
+
+                            name="all_clear"
+                            
+                            string="Clear All"
+
+                            groups="openhealth.roots"
+                        />
+
+                        <button 
+                            type="object"
+                            class="oe_highlight oe_right"
+
+                            name="all_create"
+                            
+                            string="Create All"
+
+                            groups="openhealth.roots"
+                        />
+
+
+
 
                         <!-- Import TXT --> 
 <!--

@@ -6,9 +6,9 @@
 		Last updated: 	 	 5 Nov 2018
 """
 from openerp import models, fields, api
-from . import lib
-#from . import pat_vars
 from . import partner_vars
+#from . import lib
+
 
 class Partner(models.Model):
 	"""

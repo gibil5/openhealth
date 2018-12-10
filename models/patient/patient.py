@@ -7,10 +7,14 @@
 """
 from __future__ import print_function
 from openerp import models, fields, api
-from . import lib
-from . import count_funcs
+#from . import lib
+#from . import count_funcs
+#from . import chk_patient
+import count_funcs
+import chk_patient
 from . import pat_vars
-from . import chk_patient
+from . import pat_funcs
+
 
 class Patient(models.Model):
 	"""
@@ -768,7 +772,8 @@ class Patient(models.Model):
 	# Must have two or more last names
 	@api.onchange('x_last_name')
 	def _onchange_x_last_name_test(self):
-		return lib.test_for_one_last_name(self, self.x_last_name) if self.x_last_name else 'don'
+		#return lib.test_for_one_last_name(self, self.x_last_name) if self.x_last_name else 'don'
+		return pat_funcs.test_for_one_last_name(self, self.x_last_name) if self.x_last_name else 'don'
 
 
 	# Name
@@ -781,10 +786,12 @@ class Patient(models.Model):
 																# self.x_first_name.upper()) if self.x_last_name and self.x_first_name else 'don'
 
 		if self.x_last_name:
-			self.x_last_name = lib.remove_whitespaces(self.x_last_name.upper())
+			#self.x_last_name = lib.remove_whitespaces(self.x_last_name.upper())
+			self.x_last_name = pat_funcs.remove_whitespaces(self.x_last_name.upper())
 
 		if self.x_first_name:
-			self.x_first_name = lib.remove_whitespaces(self.x_first_name.upper())
+			#self.x_first_name = lib.remove_whitespaces(self.x_first_name.upper())
+			self.x_first_name = pat_funcs.remove_whitespaces(self.x_first_name.upper())
 
 
 

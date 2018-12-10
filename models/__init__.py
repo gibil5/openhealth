@@ -3,11 +3,37 @@
 #from . import models
 
 
+#from . import lib
+
+
+
 
 # Account
 #from . import account_line
 #from . import account_contasis
 from account import *
+
+
+
+# Order 
+#from . import order
+#from . import order_line
+#from . import product_selector
+#from . import payment_method
+#from . import payment_method_line
+#from . import closing
+#from . import card
+from order import *
+
+
+
+
+#from . import partner
+#from . import patient  
+#from . import counter
+from patient import *
+
+
 
 
 
@@ -51,7 +77,9 @@ from . import corrector
 from . import media_line
 from . import marketing_recommendation_line
 from . import marketing_order_line
+
 from . import patient_line
+
 from . import histo_line
 from . import place_line
 from . import marketing
@@ -74,8 +102,6 @@ from . import report_sale_product
 
 
 
-# Counters
-from . import counter
 
 
 
@@ -83,9 +109,6 @@ from . import counter
 
 
 # EMR
-from . import partner
-from . import patient  
-
 from . import product
 from . import product_product
 
@@ -140,14 +163,6 @@ from . import service_consultation
 
 
 
-# Order 
-from . import order
-from . import order_line
-from . import product_selector
-from . import payment_method
-from . import payment_method_line
-from . import closing
-from . import card
 
 
 

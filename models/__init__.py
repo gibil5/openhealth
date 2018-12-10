@@ -3,6 +3,15 @@
 #from . import models
 
 
+
+# Account
+#from . import account_line
+#from . import account_contasis
+from account import *
+
+
+
+
 # Company
 from . import company
 
@@ -50,9 +59,6 @@ from . import marketing
 
 
 
-# Accounting
-from . import account_line
-from . import account_contasis
 
 
 

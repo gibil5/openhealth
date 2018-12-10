@@ -95,27 +95,38 @@
 
 		# ----------------------------------------------------------- Recent ------------------------------------------------------
 
-		# Reports
+		# Product Selector
 		'views/product_selectors/product_selector.xml',
 
-
-		
+		# RSP
 		'views/report_sale/report_sale_product.xml',
 		'views/report_sale/item_counter.xml',
 
 
 
 
-		# Accounting 
+
+
+		# Account - Payments
 		'views/payment_method/payment_method_line.xml',
 
 
 
-
+		# Account
 		'views/account/account_line.xml',
+		'views/account/account_line_actions.xml',
+
+		'views/account/account_contasis_actions.xml',
 		'views/account/account_contasis.xml',
+
+
+
+		# Account - Patients 					# Dep ???
 		'views/account/patient_line.xml',
 		'views/account/patient_line_pivot.xml',
+
+
+
 
 
 
@@ -124,18 +135,12 @@
 		'views/marketing/marketing_reco_line.xml',
 		'views/marketing/media_line.xml',
 		'views/marketing/histogram.xml',
-		
-
 		#'views/places/place.xml',
 		'views/marketing/place_actions.xml',
 		'views/marketing/place_pivot.xml',
 		'views/marketing/place.xml',
-		
-
 		'views/marketing/marketing.xml',
 		'views/marketing/marketing_pivot.xml',
-
-
 
 
 
@@ -149,11 +154,8 @@
 		'views/management/management_family_line.xml',
 		'views/management/management_order_line.xml',
 		'views/management/management_doctor_line.xml',
-
 		#'views/management/management_graph.xml',
-
 		'views/management/management.xml',
-
 		'views/management/management_actions.xml',
 		
 

@@ -36,12 +36,17 @@
 
 
 
+<!--
+                                name="%(account_line_list_action)d" 
+-->
 
                         <!-- Registro -->
                         <button 
                                 class="oe_highlight"
-                                type="action" 
-                                name="%(account_line_list_action)d" 
+                                type="action"
+
+
+                                name="%(account_line_registro_action)d" 
 
                                 context="{
                                             'search_default_account_id': active_id, 
@@ -52,15 +57,21 @@
 
 
 
+<!--
+                                name="%(account_line_form_action)d" 
+-->
 
                         <!-- Contasis -->
                         <button 
                                 class="oe_highlight"
                                 type="action" 
-                                name="%(account_line_form_action)d" 
+
+                                name="%(account_line_contasis_action)d" 
+
                                 context="{
                                             'search_default_account_id': active_id, 
                                         }"                                          
+
                                 string="Contasis"                               
                         />
 
@@ -260,127 +271,6 @@
 
 
 
-
-
-
-        <!-- ACTION - All -->
-        <record model="ir.actions.act_window" id="account_contasis_list_action">    
-            <field name="name">Todo</field>
-            <field name="res_model">openhealth.account.contasis</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <!--
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="view_id" eval="False"/>            
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create">Create the first order
-                </p>
-            </field>
-            -->
-        </record>
-
-
-        <!-- ACTION - Caja -->
-        <record model="ir.actions.act_window" id="account_contasis_cash_list_action">   
-            <field name="name">Todo</field>
-            <field name="res_model">openhealth.account.contasis</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-
-
-            <field name="domain">[
-                                    ('owner', '=', 'cash'),
-                                ]
-            </field>
-
-            <field name="context">{
-                                    'default_owner': 'cash',
-                                }
-            </field>
-
-
-            <!--
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="view_id" eval="False"/>            
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create">Create the first order
-                </p>
-            </field>
-            -->
-        </record>
-
-
-
-
-
-
-
-
-        <!-- ACTION - Order -->
-        <record model="ir.actions.act_window" id="account_contasis_order_list_action">  
-            <field name="name">Ventas</field>
-            <field name="res_model">openhealth.account.contasis</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-
-            <field name="domain">[
-                                    ('x_type', '=', 'order'),
-                                ]
-            </field>
-
-            <field name="context">{
-                                    'default_x_type': 'order',
-                                }
-            </field>
-
-            <!--
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="view_id" eval="False"/>            
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create">Create the first order
-                </p>
-            </field>
-            -->
-        </record>
-
-
-
-
-        <!-- ACTION - Patient -->
-        <record model="ir.actions.act_window" id="account_contasis_patient_list_action">    
-
-            <field name="name">Pacientes Nuevos</field>
-            
-            <field name="res_model">openhealth.account.contasis</field>
-            <field name="view_type">form</field>
-
-            <field name="view_mode">tree,form,graph,pivot</field>
-
-            <field name="domain">[
-                                    ('x_type', '=', 'patient'),
-                                ]
-            </field>
-
-
-            <field name="context">{
-                                    'default_x_type': 'patient',
-                                }
-            </field>
-
-
-            <!--
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="view_id" eval="False"/>            
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create">Create the first order
-                </p>
-            </field>
-            -->
-        </record>
 
 
 

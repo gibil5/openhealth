@@ -1,159 +1,168 @@
 # -*- coding: utf-8 -*-
-#
-# 	payment method line
-# 
-# 	Created: 				2016
-# 	Last mod: 				28 Aug 2018
-#
+"""
+	payment method line
+
+ 	Created: 				2016
+ 	Last mod: 				28 Aug 2018
+"""
+#from . import account_funcs as acc_funcs
 from openerp import models, fields, api
 from . import pm_vars
-from . import account_funcs as acc_funcs
+from . import acc_funcs
 
-class payment_method_line(models.Model):	
+class payment_method_line(models.Model):
+	"""
+	high level support for doing this and that.
+	"""
 	_name = 'openhealth.payment_method_line'
+
 	_order = 'date_time asc'
 
 
 
-# ----------------------------------------------------------- Init ------------------------------------------------------
-	# Init 
-	#def __init__(self, pool, cr): 
-	#	print 
+# ----------------------------------------------------------- Init --------------------------------
+	# Init
+	#def __init__(self, pool, cr):
+	#	print
 	#	print 'Init'
-		#print self 
+		#print self
 		#print pool
-		#print cr 
+		#print cr
 
 
-# ----------------------------------------------------------- Important ------------------------------------------------------
-	# Subtotal 
+# ----------------------------------------------------------- Important ---------------------------
+	# Subtotal
 	subtotal = fields.Float(
-			string = 'Subtotal', 
-			#default=self.balance, 
-			required=True, 
+			string='Subtotal',
+			#default=self.balance,
+			required=True,
 		)
 
 
 
 
-# ----------------------------------------------------------- Relational ------------------------------------------------------
+# ----------------------------------------------------------- Relational --------------------------
 	# Payment Method
 	payment_method = fields.Many2one(
 			'openhealth.payment_method',
-			ondelete='cascade', 
-			required=False, 			
+			ondelete='cascade',
+			required=False,
 		)
 
-	# Account - Contabilidad  
+	# Account - Contabilidad
 	account_id = fields.Many2one(
 			'openhealth.account.contasis',
-			ondelete='cascade', 
+			ondelete='cascade',
 		)
 
 
-# ----------------------------------------------------------- Meta ------------------------------------------------------
+# ----------------------------------------------------------- Meta --------------------------------
 
-	# Date 
+	# Date
 	date_char = fields.Char(
-			string="Fecha", 
+			string="Fecha",
 		)
 
-	# Time 
+	# Time
 	time_char = fields.Char(
-			string="Hora", 
+			string="Hora",
 		)
 
 
 
-	# State 
+	# State
 	state = fields.Selection(
-			selection = pm_vars._state_list, 
-			string="Estado", 
+			selection=pm_vars._state_list,
+			string="Estado",
 		)
 
 
 
-	# Document 
+	# Document
 	document = fields.Char(
-			string="Documento", 
+			string="Documento",
 		)
 
 	document_type = fields.Char(
-			string="Tipo Doc", 
+			string="Tipo Doc",
 		)
 
 
 
-	# Other 
+	# Other
 	patient = fields.Many2one(
-			'oeh.medical.patient', 
-			string="Nombre", 
+			'oeh.medical.patient',
+			string="Nombre",
 		)
 
 	serial_nr = fields.Char(
-			string="Nr. de serie", 
+			string="Nr. de serie",
 		)
 
 	x_type = fields.Selection(
-			[	('receipt', 			'Boleta'),
-				('invoice', 			'Factura'),
-				('advertisement', 		'Canje Publicidad'),
-				('sale_note', 			'Canje NV'),
-				('ticket_receipt', 		'Ticket Boleta'),
-				('ticket_invoice', 		'Ticket Factura'),	], 
-			string='Tipo', 
+			[
+				('receipt', 'Boleta'),
+				('invoice', 'Factura'),
+				('advertisement', 'Canje Publicidad'),
+				('sale_note', 'Canje NV'),
+				('ticket_receipt', 'Ticket Boleta'),
+				('ticket_invoice', 'Ticket Factura'),
+			],
+			string='Tipo',
 		)
 
 	date_time = fields.Datetime(
-			#string="Fecha", 
-			string="Fecha y Hora", 
+			#string="Fecha",
+			string="Fecha y Hora",
 		)
 
 
-# ----------------------------------------------------------- Primitives ------------------------------------------------------
+# ----------------------------------------------------------- Primitives --------------------------
 
-	# Name 
-	name = fields.Char( 
-			string="#", 
-			required=True, 
+	# Name
+	name = fields.Char(
+			string="#",
+			required=True,
 		)
 
 	# Method
 	method = fields.Selection(
-			selection = pm_vars._payment_method_list,
-			string="Forma de Pago", 
-			default="cash", 
-			required=True, 
+			selection=pm_vars._payment_method_list,
+			string="Forma de Pago",
+			default="cash",
+			required=True,
 		)
 
 
-	# Currency 
+	# Currency
 	currency = fields.Char(
-			string="Moneda", 
-			default="S/.", 
+			string="Moneda",
+			default="S/.",
 		)
 
-	# Vspace 
+	# Vspace
 	vspace = fields.Char(
-			' ', 
+			' ',
 			readonly=True
 			)
 
 
 
-# ----------------------------------------------------------- Actions ------------------------------------------------------
+# ----------------------------------------------------------- Actions -----------------------------
 
 	# Update Fields
 	@api.multi
-	def update_fields(self):  
+	def update_fields(self):
+		"""
+		high level support for doing this and that.
+		"""
 		#print
 		#print 'PM Line - Update'
 
-		# Dates 
-		date_time_corr, date_time_str = acc_funcs.correct_time(self,self.date_time, -5)
+		# Dates
+		date_time_corr, date_time_str = acc_funcs.correct_time(self, self.date_time, -5)
 
 		self.date_char = date_time_str.split()[0]
 		self.time_char = date_time_str.split()[1]
 
 	# update_fields
-

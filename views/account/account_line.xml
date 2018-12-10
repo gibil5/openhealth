@@ -4,13 +4,15 @@
         
 
 
-<!-- Tree --> 
+<!-- Tree 1 - Contasis --> 
+        <!--
         <record model="ir.ui.view" id="account_line_view_order_tree">
+        -->
+        <record model="ir.ui.view" id="account_line_view_contasis_tree">
             <field name="name">openhealth.account.line.tree</field>
-
             <field name="model">openhealth.account.line</field>
-            
             <field name="arch" type="xml">
+
                 <tree string="Account Line Tree">
                     
                     <field name="fecha"/>
@@ -33,13 +35,9 @@
                     <field name="igv"/>
                     <field name="otros"/>
                     <field name="total"/>
-
-
                     
                     <field name="product"/>
                     <field name="product_type"/>
-
-
 
                     <field name="tipocambio"/>
 
@@ -74,8 +72,9 @@
                     <field name="mediop"/>
                     <field name="comd"/>
                     <field name="importec"/>
-
-
+                </tree>
+            </field>
+        </record>
 <!--
                     <field name="cuo_mes"/>
                     <field name="cuo_sd"/>
@@ -92,129 +91,39 @@
                     <field name="amount"/>
 -->
 
-                </tree>
-            </field>
-        </record>
 
 
 
 
 
-<!-- Tree 2 --> 
+
+<!-- Tree 2 - Registro --> 
+        <!--
         <record model="ir.ui.view" id="account_line_rv_view_tree">
+        -->
+        <record model="ir.ui.view" id="account_line_view_registro_tree">
             <field name="name">openhealth.account.line.tree</field>
             <field name="model">openhealth.account.line</field>
             <field name="arch" type="xml">
                 <tree string="Account Line Tree">
-
                     <field name="serial_nr"/>
                     <field name="x_type"/>
-
                     <field name="date_time"/>
                     <field name="date_char"/>
                     <field name="time_char"/>
-
-
-
                     <field name="patient"/>
                     <field name="document"/>
                     <field name="document_type"/>
-
-
-
                     <field name="qty"/>
                     <field name="product"/>
                     <field name="product_type"/>
-                    
                     <field name="state"/>
-
                     <field name="amount_net"/>
                     <field name="amount_tax"/>
                     <field name="amount"/>
                 </tree>
             </field>
         </record>
-<!--
--->
-
-
-
-
-
-
-        <!-- Window Form Action -->
-        <record model="ir.actions.act_window" id="account_line_form_action">
-            <field name="name">Plantilla de Contasis</field>
-            <field name="res_model">openhealth.account.line</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <field name="domain">[
-                                    ('account_id', '=', active_id),
-                                ]
-            </field>
-            <field name="limit">1000</field>
-        </record>
-
-
-
-
-
-        <!-- Action 2 -->
-        <record model="ir.actions.act_window" id="account_line_list_action">
-            <field name="name">Registro de Ventas</field>
-            <field name="res_model">openhealth.account.line</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <field name="domain">[
-                                    ('account_id', '=', active_id),
-                                ]
-            </field>
-
-            <field name="view_id" ref="account_line_rv_view_tree"/> 
-
-            <field name="limit">1000</field>
-
-            <!--
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="view_id" eval="False"/>
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create">Create the first order
-                </p>
-            </field>
-            -->
-        </record>
-
-
-
-
-
-
-
-
-        <!-- FILTER --> 
-        <record id="acount_line_filter" model="ir.ui.view">
-            <field name="name">Account Line Search</field>
-            <field name="model">openhealth.account.line</field>
-            <field name="arch" type="xml">
-                <search string="Account Lines">
-
-                    <field  name="numerofactura"    />
-                    
-                    <group expand="1" string="Group By">
-
-                        <filter name="tipodoc" context="{'group_by':'tipodoc'}"/>
-                        <separator/>                        
-                        <filter name="tipodocumento" context="{'group_by':'tipodocumento'}"/>
-
-                        <filter name="Producto" context="{'group_by':'product'}"/>
-                        <filter name="Tipo de producto" context="{'group_by':'product_type'}"/>
-
-                    </group>
-               </search>
-           </field>
-       </record>
-
 
 
     </data>

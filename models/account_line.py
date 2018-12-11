@@ -9,7 +9,9 @@
 """
 from openerp import models, fields, api
 from . import acc_vars
+
 #from . import acc_funcs
+from libs import acc_lib
 
 
 
@@ -383,7 +385,7 @@ class AccountLine(models.Model):
 
 		# Dates
 		#self.date_time_corr, date_time_str = acc_funcs.correct_time(self, self.date_time, -5)
-		self.date_time_corr, date_time_str = AccLib.correct_time(self, self.date_time, -5)
+		self.date_time_corr, date_time_str = acc_lib.AccFuncs.correct_time(self.date_time, -5)
 
 		self.date_char = date_time_str.split()[0]
 		self.time_char = date_time_str.split()[1]

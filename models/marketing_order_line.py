@@ -19,47 +19,21 @@ class marketing_order_line(models.Model):
 
 
 
-# ----------------------------------------------------------- Inheritable ------------------------------------------------------
-
-	#name = fields.Text(
-	#	string='Description', 
-	#	required=True, 
-	#	)
-
-	#patient = fields.Many2one(
-	#	'oeh.medical.patient',
-	#	string='Paciente', 
-		#required=True, 		
-	#	)
-
-
-	# Doctor 
-	doctor = fields.Many2one(
-			'oeh.medical.physician',
-			string = "Médico", 	
-		)
-
-
-
-
-
-
-	# Date Created 
-	#x_date_created = fields.Datetime(
-	#		string='Fecha', 
-	#	)
-
-
+# ----------------------------------------------------------- Dep ! ------------------------------------------------------
 	# Product 
 	#product_id = fields.Many2one(
-			
-	#		'product.product', 
-			
+	#		
+	#		'product.product',
 	#		string='Producto', 
 	#		domain=[('sale_ok', '=', True)], 
 	#		change_default=True, 
 	#		ondelete='restrict', 
 	#		required=True, 
+	#	)
+
+	# Date Created 
+	#x_date_created = fields.Datetime(
+	#		string='Fecha', 
 	#	)
 
 
@@ -111,14 +85,33 @@ class marketing_order_line(models.Model):
 	#		})
 
 
+	#name = fields.Text(
+	#	string='Description', 
+	#	required=True, 
+	#	)
+
+	#patient = fields.Many2one(
+	#	'oeh.medical.patient',
+	#	string='Paciente', 
+		#required=True, 		
+	#	)
 
 
+
+
+
+# ----------------------------------------------------------- Inheritable ------------------------------------------------------
+
+	# Doctor 
+	doctor = fields.Many2one(
+			'oeh.medical.physician',
+			string = "Médico", 	
+		)
 
 
 
 
 # ----------------------------------------------------------- Handles ------------------------------------------------------
-	
 
 	# Marketing Id
 	marketing_id = fields.Many2one(			

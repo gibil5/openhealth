@@ -7,13 +7,14 @@
 """
 from __future__ import print_function
 from openerp import models, fields, api
-#from . import lib
-#from . import count_funcs
-#from . import chk_patient
-import count_funcs
-import chk_patient
 from . import pat_vars
 from . import pat_funcs
+
+#from . import lib
+from . import chk_patient
+#from . import count_funcs
+from libs import count_funcs
+
 
 
 class Patient(models.Model):

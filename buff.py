@@ -1,8 +1,16 @@
 # -*- coding: utf-8 -*-
+#
+# 	*** OPEN HEALTH - MIN
+#
+###############################
+
 {
 	'name': "Open Health - MIN",
 
-	'summary': "",
+	'summary': """
+		Fulcrum
+	""",
+
 
 	'description': """
 
@@ -55,120 +63,28 @@
 
 	""",
 
-	'author': "",
+	'author': "DataMetrics",
 	
-	'website': "",
+	'website': "http://jrevilla.com/",
 
+	# Categories can be used to filter modules in modules listing
+	# Check https://github.com/odoo/odoo/blob/master/openerp/addons/base/module/module_data.xml
+	# for the full list
+	#'category': 'Health',
 	
 	'category': 'Object Oriented',
 	
 	'version': '2.0',
 
+
+	# Dependencies - Very important !
+	# ------------------------------
 	'depends': ['base', 'oehealth', 'base_multi_image'],
 
 
+
+	# always
 	'data': [
-
-
-# ----------------------------------------------------------- Data - First ------------------------------------------------------
-
-		# Check that data is not updated. All the time. 
-
-		# Categs
-		'data/categs/base_data_categs_partners.xml',			
-		'data/categs/base_data_categs_prods.xml',			
-
-
-		# Important 
-		#'views/pathologies/pathology.xml',
-		'data/pathologies/pathology.xml',
-
-		'data/prods/zone/data_pathologies.xml',			
-		'data/prods/zone/data_nexzones.xml',	
-
-		# Zone
-		#'views/zones/zone.xml',
-		'views/zones/zone_actions.xml',
-
-		'data/prods/zone/data_zones_quick.xml',			 
-		'data/prods/zone/data_zones_co2.xml',			 
-		'data/prods/zone/data_zones_excilite.xml',			 
-		'data/prods/zone/data_zones_ipl.xml',			 
-		'data/prods/zone/data_zones_ndyag.xml',			 
-
-
-		# Allergy 
-		#'views/allergies/allergy.xml',
-		'data/allergies/allergy.xml',
-
-
-		# Doctors
-		'data/physicians/base_data_physicians.xml',				
-		#'data/physicians/base_data_physicians_inactive.xml',		Dep ???
-		'data/physicians/base_data_physicians_new.xml',				
-
-
-
-		# Generics 
-		'data/users/base_data_users_generics.xml',	
-
-
-		# Users - With pw
-		'data/users/base_data_users_platform.xml',	
-		'data/users/base_data_users_cash.xml',		
-		'data/users/base_data_users_doctors.xml',
-
-		'data/users/base_data_users_assistants.xml',	
-		
-		'data/users/base_data_users_staff.xml',		
-		'data/users/base_data_users_almacen.xml',		
-		'data/users/base_data_users_managers.xml',	
-		'data/users/base_data_users_doctors_new.xml',		
-
-		#'data/users/base_data_users_test.xml',		Dep !!!
-
-
-
-		# ----------------------------------------------------------- Data - Products ------------------------------------------------------
-
-		'data/prods/odoo_data_products.xml',
-		'data/prods/odoo_data_products_new.xml',
-		'data/prods/odoo_data_products_dep.xml',			# Important
-
-		'data/prods/odoo_data_services_co2.xml',
-		'data/prods/odoo_data_services_exc.xml',
-		'data/prods/odoo_data_services_m22.xml',
-		'data/prods/odoo_data_services_med.xml',		
-		'data/prods/odoo_data_services_consult.xml',
-		'data/prods/odoo_data_services_cos.xml',
-		'data/prods/odoo_data_services_med_dep.xml',	# Dependance
-
-
-		#'data/prods/odoo_data_services_cos_dep.xml', 	# Dependance ?
-		#'data/prods/odoo_data_products_consu.xml',		# Deprecated
-
-
-
-
-		# Pricelists - Vip
-		'data/pricelists/pricelists.xml',
-		
-		# Pricelists - Deprecated ?
-		#'data/pricelists/pricelist_items_co2.xml',
-		#'data/pricelists/pricelist_items_ipl.xml',
-		#'data/pricelists/pricelist_items_ndyag.xml',
-		#'data/pricelists/pricelist_items_quick.xml',
-		#'data/pricelists/pricelist_items_med_cos.xml',
-		#'data/pricelists/pricelist_consultation.xml',
-		#'data/pricelists/pricelist_products.xml',
-
-
-
-		# Suppliers 
-		'data/suppliers.xml',							# Very Important - Account Invoice Dependance
-
-
-
 
 
 
@@ -300,6 +216,116 @@
 
 
 
+		# ----------------------------------------------------------- Data ------------------------------------------------------
+
+		# Check that data is not updated. All the time. 
+
+		# Categs
+		'data/categs/base_data_categs_partners.xml',			
+		'data/categs/base_data_categs_prods.xml',			
+
+
+		# Important 
+		#'views/pathologies/pathology.xml',
+		'data/pathologies/pathology.xml',
+
+		'data/prods/zone/data_pathologies.xml',			
+		'data/prods/zone/data_nexzones.xml',	
+
+		# Zone
+		#'views/zones/zone.xml',
+		'views/zones/zone_actions.xml',
+
+		'data/prods/zone/data_zones_quick.xml',			 
+		'data/prods/zone/data_zones_co2.xml',			 
+		'data/prods/zone/data_zones_excilite.xml',			 
+		'data/prods/zone/data_zones_ipl.xml',			 
+		'data/prods/zone/data_zones_ndyag.xml',			 
+
+
+		# Allergy 
+		#'views/allergies/allergy.xml',
+		'data/allergies/allergy.xml',
+
+
+		# Doctors
+		'data/physicians/base_data_physicians.xml',				
+		#'data/physicians/base_data_physicians_inactive.xml',		Dep ???
+		'data/physicians/base_data_physicians_new.xml',				
+
+
+
+
+
+
+
+		# Generics 
+		'data/users/base_data_users_generics.xml',	
+
+
+		# Users - With pw
+		'data/users/base_data_users_platform.xml',	
+		'data/users/base_data_users_cash.xml',		
+		'data/users/base_data_users_doctors.xml',
+
+		'data/users/base_data_users_assistants.xml',	
+		
+		'data/users/base_data_users_staff.xml',		
+		'data/users/base_data_users_almacen.xml',		
+		'data/users/base_data_users_managers.xml',	
+		'data/users/base_data_users_doctors_new.xml',		
+
+		#'data/users/base_data_users_test.xml',		Dep !!!
+
+
+
+
+		# ----------------------------------------------------------- Data - Products ------------------------------------------------------
+
+		'data/prods/odoo_data_products.xml',
+		'data/prods/odoo_data_products_new.xml',
+		'data/prods/odoo_data_products_dep.xml',			# Important
+
+		'data/prods/odoo_data_services_co2.xml',
+		'data/prods/odoo_data_services_exc.xml',
+		'data/prods/odoo_data_services_m22.xml',
+		'data/prods/odoo_data_services_med.xml',		
+		'data/prods/odoo_data_services_consult.xml',
+		'data/prods/odoo_data_services_cos.xml',
+		
+
+		'data/prods/odoo_data_services_med_dep.xml',	# Dependance
+
+
+		#'data/prods/odoo_data_services_cos_dep.xml', 	# Dependance ?
+		#'data/prods/odoo_data_products_consu.xml',		# Deprecated
+
+
+
+
+		# Pricelists - Vip
+		'data/pricelists/pricelists.xml',
+		
+		# Pricelists - Deprecated ?
+		#'data/pricelists/pricelist_items_co2.xml',
+		#'data/pricelists/pricelist_items_ipl.xml',
+		#'data/pricelists/pricelist_items_ndyag.xml',
+		#'data/pricelists/pricelist_items_quick.xml',
+		#'data/pricelists/pricelist_items_med_cos.xml',
+		#'data/pricelists/pricelist_consultation.xml',
+		#'data/pricelists/pricelist_products.xml',
+
+
+
+		# Suppliers 
+		'data/suppliers.xml',							# Very Important - Account Invoice Dependance
+
+
+
+
+
+
+
 
 
 # ----------------------------------------------------------- Views ------------------------------------------------------
@@ -310,7 +336,6 @@
 		'views/services/service_actions.xml',
 		'views/services/service_search.xml',
 
-		'views/appointments/appointment_actions.xml',
 
 
 
@@ -407,6 +432,7 @@
 
 		# Appointments
 		'views/appointments/appointment.xml',
+		'views/appointments/appointment_actions.xml',
 
 
 
@@ -436,7 +462,15 @@
 
 
 
-		# ----------------------------------------------------------- Views - Second ------------------------------------------------------
+
+
+
+
+
+
+
+
+		# ----------------------------------------------------------- Views - Second Level ------------------------------------------------------
 
 		# Sessions
 		'views/sessions/session.xml',
@@ -547,9 +581,7 @@
 		'security/ir.rule.xml', 	# Dep 
 
 
-
-
-# ----------------------------------------------------------- Menus ------------------------------------------------------
+		# ----------------------------------------------------------- Menus ------------------------------------------------------
 		'views/menus/menus.xml',
 		'views/menus/menus_products.xml',
 		'views/menus/menus_caja.xml',
@@ -558,16 +590,20 @@
 		'views/menus/menus_marketing.xml',		 
 		'views/menus/menus_management.xml',		  
 		'views/menus/menus_qc.xml',
-		'views/menus/menus_account.xml',
 
+		'views/menus/menus_account.xml',
 	],
 
-	'demo': [],
+
+
+
+	# Only loaded in demonstration mode
+	'demo': [
+		#'demo/demo.xml',
+	],
 
 	# Static - Style Css 
-	'css': [],
+	'css': ['static/src/css/jx.css'],
 	
-	'js': [],
+	'js': [''],
 }
-
-

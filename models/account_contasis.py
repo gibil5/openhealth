@@ -7,7 +7,10 @@
 """
 from openerp import models, fields, api
 from . import acc_vars
+
 #from . import acc_funcs
+from libs import acc_lib
+
 
 class AccountContasis(models.Model):
 	"""
@@ -124,7 +127,8 @@ class AccountContasis(models.Model):
 
 
 		# Sales and Cancelled
-		orders, count = acc_funcs.get_orders_filter(self, self.date_begin, self.date_end)
+		#orders, count = acc_funcs.get_orders_filter(self, self.date_begin, self.date_end)
+		orders, count = acc_lib.AccFuncs.get_orders_filter(self, self.date_begin, self.date_end)
 
 
 		count = 0
@@ -170,7 +174,8 @@ class AccountContasis(models.Model):
 				qty = line.product_uom_qty
 
 				# Net and Taxes
-				amount_net, amount_tax = acc_funcs.get_net_tax(self, amount)
+				#amount_net, amount_tax = acc_funcs.get_net_tax(self, amount)
+				amount_net, amount_tax = acc_lib.AccFuncs.get_net_tax(amount)
 
 				# Create
 				acc_line = self.account_line.create({

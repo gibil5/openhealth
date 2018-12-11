@@ -8,7 +8,10 @@
 #
 from datetime import datetime
 from openerp import models, fields, api
-from . import count_funcs
+
+#from . import count_funcs
+from libs import count_funcs
+
 
 class Card(models.Model):
 

@@ -8,7 +8,8 @@
 from openerp import models, fields, api
 from datetime import datetime
 from . import session_vars
-from . import lib
+#from . import lib
+from libs import lib
 
 class SessionMed(models.Model):	
 	_name = 'openhealth.session.med'

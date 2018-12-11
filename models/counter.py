@@ -7,7 +7,7 @@
 # 
 from openerp import models, fields, api
 from . import count_vars
-from . import user
+from libs import user
 
 class Counter(models.Model):
 	

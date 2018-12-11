@@ -9,8 +9,9 @@ import datetime
 from openerp import models, fields, api
 from . import app_vars
 from . import time_funcs
-from . import lib
 from . import control_vars
+#from . import lib
+from libs import lib
 
 class Control(models.Model):
 	

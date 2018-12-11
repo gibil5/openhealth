@@ -6,7 +6,7 @@
 # 	Last updated: 		30 Aug 2018
 #
 from openerp import models, fields, api
-from . import ord_vars
+from libs import ord_vars
 
 class order_report_nex_line(models.Model):
 

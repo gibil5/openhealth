@@ -8,8 +8,8 @@
 from openerp import models, fields, api
 from datetime import datetime
 from . import time_funcs
-from . import user
-from . import lib
+from libs import user
+from libs import lib
 
 
 #------------------------------------------------ Create Sessions ---------------------------------------------------

@@ -7,8 +7,8 @@
 """
 from openerp import models, fields, api
 from . import app_vars
-from . import lib
-from . import user
+from libs import user
+from libs import lib
 
 class Appointment(models.Model):
 	_inherit = 'oeh.medical.appointment'

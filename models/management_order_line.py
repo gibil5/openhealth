@@ -7,7 +7,7 @@
 #
 from openerp import models, fields, api
 from . import prodvars
-from . import ord_vars
+from libs import ord_vars
 
 class management_order_line(models.Model):
 	

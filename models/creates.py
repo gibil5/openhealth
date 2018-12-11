@@ -6,8 +6,8 @@
 	Created: 			14 Aug 2018
  	Last up: 	 		 5 Nov 2018
 """
-from . import user
-from . import lib
+from libs import user
+from libs import lib
 
 
 # -------------------------------------------------------------------------------------------------

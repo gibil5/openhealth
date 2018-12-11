@@ -10,13 +10,14 @@ import datetime
 from openerp import models, fields, api
 from . import time_funcs
 from . import treatment_vars
-from . import lib
-from . import user
 from . import creates as cre
 #from . import lib_rep
 from . import reco_funcs
 from . import test_treatment as tst
 from . import test_foo
+
+from libs import lib
+from libs import user
 
 class Treatment(models.Model):
 	_inherit = 'openhealth.process'

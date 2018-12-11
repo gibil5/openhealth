@@ -9,9 +9,10 @@ from __future__ import print_function
 from openerp import models, fields, api
 from openerp.exceptions import ValidationError
 from . import prodvars
-from . import lib
 from . import gen
 from . import gen_tic
+#from . import lib
+from libs import lib
 
 class Product(models.Model):
 	"""

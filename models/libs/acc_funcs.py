@@ -7,7 +7,7 @@ import datetime
 
 
 
-# ----------------------------------------------------------- Get Orders Filter ------------------------------------------------------
+# ----------------------------------------------------------- Get Orders Filter -------------------
 
 # Provides sales between begin date and end date. 
 # Sales and Cancelled also. 
@@ -51,7 +51,7 @@ def get_orders_filter(self, date_bx, date_ex):
 
 
 
-# ----------------------------------------------------------- Get Net and Tax ------------------------------------------------------
+# ----------------------------------------------------------- Get Net and Tax ---------------------
 
 # Get Net and Tax 
 @api.multi
@@ -67,10 +67,8 @@ def get_net_tax(self, amount):
 
 
 
-#------------------------------------------------ Correct Time ---------------------------------------------------
-
+#------------------------------------------------ Correct Time ------------------------------------
 # Used by Account Line 
-
 # Correct Time 
 # Format: 	1876-10-10 00:00:00
 def correct_time(self, date, delta):
@@ -78,20 +76,14 @@ def correct_time(self, date, delta):
 	#print 'Correct'
 	#print date 
 	# Print delta 
-	if date != False: 
-
+	if date != False:
 		year = int(date.split('-')[0])
-
 		if year >= 1900:
-
 			DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
 			DATETIME_FORMAT_sp = "%d/%m/%Y %H:%M"
-
 			date_field1 = datetime.datetime.strptime(date, DATETIME_FORMAT)
-
 			date_corr = date_field1 + datetime.timedelta(hours=delta,minutes=0)
 			date_corr_sp = date_corr.strftime(DATETIME_FORMAT_sp)
-
 			return date_corr, date_corr_sp
 # correct_time
 

@@ -8,7 +8,9 @@
 #from . import account_funcs as acc_funcs
 from openerp import models, fields, api
 from . import pm_vars
-from . import acc_funcs
+
+#from . import acc_funcs
+
 
 class payment_method_line(models.Model):
 	"""
@@ -160,7 +162,8 @@ class payment_method_line(models.Model):
 		#print 'PM Line - Update'
 
 		# Dates
-		date_time_corr, date_time_str = acc_funcs.correct_time(self, self.date_time, -5)
+		#date_time_corr, date_time_str = acc_funcs.correct_time(self, self.date_time, -5)
+		date_time_corr, date_time_str = AccLib.correct_time(self, self.date_time, -5)
 
 		self.date_char = date_time_str.split()[0]
 		self.time_char = date_time_str.split()[1]

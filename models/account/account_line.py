@@ -7,11 +7,11 @@
 
  	Be sure to include one patient with: passporte, cancelled sale. For complete coverage.
 """
-#import datetime
-#from . import account_funcs as acc_funcs
 from openerp import models, fields, api
-from . import acc_funcs
 from . import acc_vars
+#from . import acc_funcs
+
+
 
 class AccountLine(models.Model):
 	"""
@@ -382,7 +382,9 @@ class AccountLine(models.Model):
 
 
 		# Dates
-		self.date_time_corr, date_time_str = acc_funcs.correct_time(self, self.date_time, -5)
+		#self.date_time_corr, date_time_str = acc_funcs.correct_time(self, self.date_time, -5)
+		self.date_time_corr, date_time_str = AccLib.correct_time(self, self.date_time, -5)
+
 		self.date_char = date_time_str.split()[0]
 		self.time_char = date_time_str.split()[1]
 
@@ -393,7 +395,6 @@ class AccountLine(models.Model):
 
 		# Product
 		self.product_type = self.product.type
-		#self.cuentab = acc_funcs._cuentab[self.product_type]
 		self.cuentab = acc_vars._cuentab[self.product_type]
 
 
@@ -418,7 +419,6 @@ class AccountLine(models.Model):
 
 
 		# Type Doc
-		#self.tipodocumento = acc_funcs._h_type[self.x_type]
 		self.tipodocumento = acc_vars._sale_type[self.x_type]
 
 

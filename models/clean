@@ -1,3 +1,11 @@
 
+
 mv *.pyc ./pyc/. 
 
+mv account/*.pyc ./pyc/.
+
+mv management/*.pyc ./pyc/.
+
+mv order/*.pyc ./pyc/.
+
+mv patient/*.pyc ./pyc/.

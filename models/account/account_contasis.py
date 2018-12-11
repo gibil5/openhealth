@@ -5,10 +5,9 @@
  	Created: 				18 Apr 2018
  	Last up: 				10 Dec 2018
 """
-#from . import account_funcs as acc_funcs
 from openerp import models, fields, api
-from . import acc_funcs
 from . import acc_vars
+#from . import acc_funcs
 
 class AccountContasis(models.Model):
 	"""
@@ -158,8 +157,6 @@ class AccountContasis(models.Model):
 					document_type = '1'
 				else: 										# Other
 					document = order.patient.x_id_doc
-
-					#document_type = acc_funcs._doc_type[order.patient.x_id_doc_type]
 					document_type = acc_vars._doc_type[order.patient.x_id_doc_type]
 
 

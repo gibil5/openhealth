@@ -10,9 +10,9 @@ import base64
 import io
 import datetime
 from openerp import models, fields, api
-from . import creates
 from . import export
 from . import test_cases_pat
+#from . import creates
 
 class Container(models.Model):
 	"""

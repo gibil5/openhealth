@@ -3,8 +3,24 @@
 #from . import models
 
 
+from . import cosmetology
+
+
+
 #from . import lib
 from libs import *
+
+
+# Containers
+from . import container
+from . import corrector
+
+
+# Inheritable 
+from . import medical
+from . import line
+from . import repo
+
 
 
 
@@ -24,7 +40,7 @@ from account import *
 #from . import payment_method
 #from . import payment_method_line
 #from . import closing
-#from . import card
+from . import card
 #from . import order_report_nex			# Estado de Cuenta 
 from order import *
 
@@ -56,10 +72,6 @@ from . import management
 
 
 
-# Inheritable 
-from . import medical
-from . import line
-from . import repo
 
 
 
@@ -72,9 +84,6 @@ from . import coder
 from . import texto
 
 
-# Containers
-from . import container
-from . import corrector
 
 
 

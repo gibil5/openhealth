@@ -8,7 +8,7 @@
 #
 from openerp import models, fields, api
 import openerp.addons.decimal_precision as dp
-from . import lib
+#from . import lib
 
 class Line(models.Model):	
 	_name = 'openhealth.line'

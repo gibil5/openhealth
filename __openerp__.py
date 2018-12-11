@@ -196,11 +196,15 @@
 		'views/payment_method/payment_method_line.xml',
 
 
+
+
 		# Account
-		'views/account/account_line.xml',
-		'views/account/account_line_actions.xml',
-		'views/account/account_contasis_actions.xml',
-		'views/account/account_contasis.xml',
+		#'views/account/account_line.xml',
+		#'views/account/account_line_actions.xml',
+		#'views/account/account_contasis_actions.xml',
+		#'views/account/account_contasis.xml',
+
+
 
 
 
@@ -393,9 +397,9 @@
 
 
 		# Containers 
-		'views/containers/container.xml',
 		'views/containers/texto.xml',
-		'views/containers/corrector.xml',
+		#'views/containers/container.xml',
+		#'views/containers/corrector.xml',
 
 
 

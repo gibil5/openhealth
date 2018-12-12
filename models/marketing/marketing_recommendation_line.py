@@ -5,7 +5,8 @@
 #
 from openerp import models, fields, api
 
-from emr import prodvars
+#from emr import prodvars
+from openerp.addons.openhealth.models.emr import prodvars
 
 
 class marketing_recommendation_line(models.Model):

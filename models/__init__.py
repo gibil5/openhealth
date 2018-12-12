@@ -46,13 +46,16 @@ from . import texto
 
 
 # Marketing
-from . import medical
-from . import media_line
-from . import marketing_recommendation_line
-from . import marketing_order_line
-from . import histo_line
-from . import place_line
-from . import marketing
+from marketing import *
+#from . import medical
+#from . import media_line
+#from . import marketing_recommendation_line
+#from . import marketing_order_line
+#from . import histo_line
+#from . import place_line
+#from . import marketing
+
+
 
 
 

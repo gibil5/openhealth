@@ -6,7 +6,8 @@
 #
 from openerp import models, fields, api
 
-from emr import prodvars
+#from emr import prodvars
+from openerp.addons.openhealth.models.emr import prodvars
 
 
 class Medical(models.Model):	

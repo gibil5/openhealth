@@ -13,7 +13,7 @@ from . import pat_vars
 from openerp.addons.openhealth.models.libs import eval_vars
 
 #from . import prodvars
-from openerp.addons.openhealth.models.libs import prodvars
+from openerp.addons.openhealth.models.emr import prodvars
 
 
 class PaitentLine(models.Model):

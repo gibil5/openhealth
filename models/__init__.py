@@ -16,7 +16,6 @@ from . import repo
 
 # Base
 from . import company
-from . import product_pricelist_item
 
 
 
@@ -51,6 +50,7 @@ from . import marketing_recommendation_line
 from . import marketing_order_line
 from . import histo_line
 from . import place_line
+from . import marketing
 
 
 
@@ -66,7 +66,7 @@ from patient import *
 
 # Reports
 from . import report_order_line
-from . import product_counter 
+#from . import product_counter 
 from . import order_report_nex			# Estado de Cuenta 
 from . import report_sale_product
 
@@ -83,6 +83,8 @@ from . import counter
 
 # EMR
 from emr import *
+
+#from . import product_pricelist_item
 
 # Medical
 #from . import product
@@ -123,10 +125,12 @@ from emr import *
 
 
 
+
+
 # Order 
 from . import order
 from . import order_line
-from . import product_selector
+#from . import product_selector
 from . import payment_method
 from . import payment_method_line
 from . import closing
@@ -153,7 +157,8 @@ from containers import *
 
 
 
-from . import marketing
+
+
 
 
 

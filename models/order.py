@@ -17,7 +17,7 @@ from openerp import models, fields, api
 from openerp import _
 from openerp.exceptions import Warning as UserError
 from libs import ord_vars
-from . import creates
+from libs import creates
 from . import pat_vars
 from libs import user
 from . import lib_qr

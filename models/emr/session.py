@@ -7,7 +7,9 @@
 from openerp import models, fields, api
 from datetime import datetime
 from . import time_funcs
-from libs import eval_vars
+
+#from libs import eval_vars
+from openerp.addons.openhealth.models.libs import eval_vars
 
 class Session(models.Model):
 

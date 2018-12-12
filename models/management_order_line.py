@@ -7,9 +7,10 @@
 #
 from openerp import models, fields, api
 
-from libs import ord_vars
+#from libs import ord_vars
+from openerp.addons.openhealth.models.libs import ord_vars
 
-from libs import prodvars
+from emr import prodvars
 
 
 class management_order_line(models.Model):

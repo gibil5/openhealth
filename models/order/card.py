@@ -10,7 +10,8 @@ from datetime import datetime
 from openerp import models, fields, api
 
 #from . import count_funcs
-from libs import count_funcs
+#from libs import count_funcs
+from openerp.addons.openhealth.models.libs import count_funcs
 
 
 class Card(models.Model):

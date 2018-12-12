@@ -9,7 +9,8 @@ from openerp import models, fields, api
 from . import pm_vars
 
 #from . import acc_funcs
-from libs import acc_lib
+#from libs import acc_lib
+from openerp.addons.openhealth.models.libs import acc_lib
 
 
 class payment_method_line(models.Model):

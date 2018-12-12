@@ -22,9 +22,11 @@ from openerp.exceptions import Warning as UserError
 #from libs import user
 from openerp.addons.openhealth.models.libs import ord_vars, creates, user
 
-from . import pat_vars
+#from . import pat_vars
+#from . import chk_patient
+from openerp.addons.openhealth.models.patient import pat_vars, chk_patient
+
 from . import lib_qr
-from . import chk_patient
 from . import test_order
 
 class sale_order(models.Model):

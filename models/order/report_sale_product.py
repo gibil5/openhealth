@@ -3,7 +3,10 @@
 # 	ReportSaleProduct 
 # 
 from openerp import models, fields, api
-from . import mgt_funcs
+
+#from . import mgt_funcs
+from openerp.addons.openhealth.models.management import mgt_funcs
+
 
 class ReportSaleProduct(models.Model):
 	

@@ -17,10 +17,11 @@ from openerp import models, fields, api
 from openerp import _
 from openerp.exceptions import Warning as UserError
 
-#from libs import ord_vars
+from . import ord_vars
+
 #from libs import creates
 #from libs import user
-from openerp.addons.openhealth.models.libs import ord_vars, creates, user
+from openerp.addons.openhealth.models.libs import creates, user
 
 #from . import pat_vars
 #from . import chk_patient

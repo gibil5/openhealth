@@ -71,7 +71,7 @@
 
         <!-- QC - Delta -->
         <record model="ir.actions.act_window" id="order_list_delta_action">
-            <field name="name">Delta</field>
+            <field name="name">QC - Delta</field>
             <field name="res_model">sale.order</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
@@ -80,11 +80,14 @@
 
             <field name="domain">[
                                     ('x_type', 'in', ['ticket_receipt', 'ticket_invoice']),
+                                    ('state', 'in', ['sale']),
                                 ]
             </field>
             <field name="context">{}</field>
             <field name="limit">500</field>
         </record>
+
+
 
 
         <!-- QC - Check -->
@@ -107,6 +110,8 @@
 
 
 
+
+
        <!-- QC - Payment -->
         <record model="ir.actions.act_window" id="order_list_payment_action">
             <field name="name">Payment</field>
@@ -118,6 +123,7 @@
 
             <field name="domain">[
                                     ('x_type', 'in', ['ticket_receipt', 'ticket_invoice']),
+                                    ('state', 'in', ['sale']),
                                 ]
             </field>
             <field name="context">{}</field>

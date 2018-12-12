@@ -7,8 +7,8 @@
 #
 from openerp import models, fields, api
 
-#from libs import ord_vars
-from openerp.addons.openhealth.models.libs import ord_vars
+from . import ord_vars
+
 
 
 class order_report_nex_line(models.Model):

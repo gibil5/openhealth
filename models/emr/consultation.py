@@ -8,7 +8,10 @@
 
 from openerp import models, fields, api
 from datetime import datetime,tzinfo,timedelta
-from libs import eval_vars
+
+#from libs import eval_vars
+from openerp.addons.openhealth.models.libs import eval_vars
+
 from . import app_vars
 
 

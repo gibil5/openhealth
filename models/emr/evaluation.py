@@ -7,9 +7,13 @@
 from openerp import models, fields, api
 from datetime import datetime
 
-from libs import eval_vars
-from libs import prodvars
-from patient import pat_vars
+#from libs import eval_vars
+#from libs import prodvars
+from openerp.addons.openhealth.models.libs import eval_vars, prodvars
+
+
+#from patient import pat_vars
+from openerp.addons.openhealth.models.patient import pat_vars
 
 
 class Evaluation(models.Model):

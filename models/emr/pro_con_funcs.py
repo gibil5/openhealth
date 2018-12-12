@@ -5,8 +5,9 @@
 # 	Created: 				  1 Nov 2016
 # 	Last updated: 	 	 	 21 Nov 2018
 """
-from libs import user
-from libs import lib
+#from libs import user
+#from libs import lib
+from openerp.addons.openhealth.models.libs import user, lib
 
 
 #------------------------------------------------ Create Controls ---------------------------------

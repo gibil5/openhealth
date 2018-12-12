@@ -8,8 +8,9 @@
 from openerp import models, fields, api
 from datetime import datetime
 from . import time_funcs
-from libs import user
-from libs import lib
+#from libs import user
+#from libs import lib
+from openerp.addons.openhealth.models.libs import user, lib
 
 
 #------------------------------------------------ Create Sessions ---------------------------------------------------

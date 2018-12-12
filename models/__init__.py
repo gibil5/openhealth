@@ -15,7 +15,6 @@ from . import repo
 
 
 # Base
-from . import company
 
 
 
@@ -28,6 +27,7 @@ from . import family_line
 from . import sub_family_line
 from . import management_order_line
 from . import management 
+
 
 
 
@@ -58,6 +58,7 @@ from . import marketing
 #from . import patient_line
 #from . import partner
 #from . import patient
+#from . import company
 from patient import *
 
 

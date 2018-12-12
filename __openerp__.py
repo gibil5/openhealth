@@ -6,7 +6,7 @@
 
 	'description': """
 
-		11 Dec 2018
+		12 Dec 2018
 
 		Fulcrum - TRAVIS Quality Controlled
 
@@ -55,16 +55,16 @@
 
 	""",
 
-	'author': "",
+	'author': "DataMetrics",
 	
-	'website': "",
-
+	'website': "http://jrevilla.com/",
 	
 	'category': 'Object Oriented',
 	
 	'version': '2.0',
 
 	'depends': ['base', 'oehealth', 'base_multi_image'],
+
 
 
 	'data': [
@@ -187,9 +187,11 @@
 		'views/product_selectors/product_selector.xml',
 
 
+
 		# RSP
 		'views/report_sale/report_sale_product.xml',
 		'views/report_sale/item_counter.xml',
+
 
 
 		# Account - Payments
@@ -255,8 +257,8 @@
 
 		# ----------------------------------------------------------- Views - Base Actions ------------------------------------------------------
 
-		# Base - Form and List Actions - Must be the first 
-		#'views/base.xml',										# Very important - All Actions should go here - Dependencies
+		# Base - Form and List Actions - Must be the first
+		
 		'views/base_actions.xml',										# Very important - All Actions should go here - Dependencies
 		
 
@@ -446,12 +448,12 @@
 		'views/sessions/session.xml',
 		'views/sessions/session_config_simple.xml',
 		'views/sessions/session_config_simple_2.xml',
-		#'views/sessions/session_config_manual.xml',	# Dep
+		#'views/sessions/session_config_manual.xml',		# Dep
 
 
 
 		# Evaluations - 2
-		#'views/evaluations/evaluation_oeh.xml',
+		#'views/evaluations/evaluation_oeh.xml',			# Dep
 
 
 
@@ -465,7 +467,7 @@
 		'views/services/service_quick.xml',		
 		'views/services/service_medical.xml',
 		'views/services/service_cosmetology.xml',
-		#'views/services/service_vip.xml',			# Dep
+		#'views/services/service_vip.xml',					# Dep
 
 
 		'views/services/zones/service_co2_zone.xml',
@@ -486,7 +488,7 @@
 
 
 		# Consultation - 2
-		#'views/consultations/consultation_med.xml',	# Dep ?
+		#'views/consultations/consultation_med.xml',			# Dep ?
 		'views/consultations/consultation_diagnosis.xml',
 		
 
@@ -513,10 +515,10 @@
 
 
 
-		# ----------------------------------------------------------- FileSystem Directory ------------------------------------------------------
+		# ----------------------------------------------------------- FileSystem - Dep ------------------------------------------------------
 
-		#'views/containers/filesystem_directory.xml',
-		#'views/containers/filesystem_file.xml',
+		#'views/containers/filesystem_directory.xml',	# Dep
+		#'views/containers/filesystem_file.xml',		# Dep
 
 
 
@@ -548,7 +550,7 @@
 		'security/openhealth_security.xml',
 		'security/openhealth_security_readers.xml',		
 		'security/ir.model.access.csv',
-		'security/ir.rule.xml', 	# Dep 
+		'security/ir.rule.xml', 				# Dep 
 
 
 
@@ -566,11 +568,14 @@
 
 	],
 
+
 	'demo': [],
 
+
 	# Static - Style Css 
-	'css': [],
+	'css': ['static/src/css/jx.css'],
 	
+
 	'js': [],
 }
 

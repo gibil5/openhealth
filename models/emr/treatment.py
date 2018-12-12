@@ -14,14 +14,16 @@ from . import treatment_vars
 from . import reco_funcs
 from . import test_treatment as tst
 
-from libs import lib
-from libs import user
 
+#from libs import lib
+#from libs import user
 #from . import creates as cre
 from openerp.addons.openhealth.models.libs import creates as cre
+from openerp.addons.openhealth.models.libs import lib, user
 
-#from . import test_foo
-from containers import test_foo
+
+from . import test_foo
+
 
 
 class Treatment(models.Model):

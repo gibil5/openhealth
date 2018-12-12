@@ -8,10 +8,15 @@
 
 """
 from openerp import models, fields, api
-from libs import ord_vars
+
+#from libs import ord_vars
+#from libs import lib
+from openerp.addons.openhealth.models.libs import lib, ord_vars
+
 from . import chk_electronic
+
 #from . import lib
-from libs import lib
+
 
 class electronic_order(models.Model):
 	"""

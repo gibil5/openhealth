@@ -34,10 +34,12 @@ from management import *
 
 
 # Electronic
-from . import electronic_order
-from . import electronic_line
-from . import coder 
-from . import texto
+from electronic import *
+
+#from . import electronic_order
+#from . import electronic_line
+#from . import coder 
+#from . import texto
 
 
 

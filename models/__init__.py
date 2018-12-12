@@ -66,11 +66,14 @@ from marketing import *
 #from . import partner
 #from . import patient
 #from . import company
+
+#from . import counter
+
 from patient import *
 
 
+
 # Counters
-from . import counter
 
 
 

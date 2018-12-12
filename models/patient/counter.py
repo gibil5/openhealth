@@ -7,7 +7,10 @@
 # 
 from openerp import models, fields, api
 from . import count_vars
-from libs import user
+
+#from libs import user
+from openerp.addons.openhealth.models.libs import user
+
 
 class Counter(models.Model):
 	

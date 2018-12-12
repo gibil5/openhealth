@@ -4,8 +4,9 @@
 """
 from __future__ import print_function
 from . import gen
-from . import lib_exp
 from . import chk_patient
+
+from . import lib_exp
 
 
 # Base

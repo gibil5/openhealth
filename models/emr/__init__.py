@@ -1,6 +1,23 @@
 # -*- coding: utf-8 -*-
 
 
+# Medical
+from . import product
+from . import product_product
+from . import image		
+from . import allergy
+from . import process
+from . import treatment
+from . import evaluation  
+from . import appointment 
+from . import consultation
+from . import procedure
+from . import control
+from . import physician 
+from . import session 
+from . import session_med
+
+
 # Zones
 from . import zone
 from . import nexzone

@@ -9,7 +9,8 @@
 from openerp import models, fields, api
 
 #from . import eval_vars
-from libs import eval_vars
+#from libs import eval_vars
+from openerp.addons.openhealth.models.libs import eval_vars
 
 #from . import treatment_vars
 

@@ -8,7 +8,7 @@
 from openerp import models, fields, api
 from datetime import datetime
 from . import service_co2_vars
-from libs import prodvars
+from . import prodvars
 
 class ServiceCo2(models.Model):
 

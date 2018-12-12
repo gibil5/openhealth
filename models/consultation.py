@@ -8,7 +8,7 @@
 
 from openerp import models, fields, api
 from datetime import datetime,tzinfo,timedelta
-from . import eval_vars
+from libs import eval_vars
 from . import app_vars
 
 

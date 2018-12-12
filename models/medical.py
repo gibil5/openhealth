@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 #
-# 	Medical
+# 	Medical - Used by Marketing
 # 
 # Created: 				26 May 2018
 #
 from openerp import models, fields, api
-from . import prodvars
+
+from libs import prodvars
+
 
 class Medical(models.Model):	
 	_name = 'openhealth.medical'

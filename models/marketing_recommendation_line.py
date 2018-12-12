@@ -4,7 +4,9 @@
 # 	Marketing Recommendation Line 
 #
 from openerp import models, fields, api
-from . import prodvars
+
+from libs import prodvars
+
 
 class marketing_recommendation_line(models.Model):
 	_inherit='openhealth.medical'

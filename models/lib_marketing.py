@@ -11,8 +11,10 @@ try:
 except (ImportError, IOError) as err:
 	_logger.debug(err)
 
-from . import pat_vars
 from . import mkt_vars
+
+#from . import pat_vars
+from openerp.addons.openhealth.models.patient import pat_vars
 
 
 # ----------------------------------------------------------- Cities ------------------------------

@@ -9,7 +9,6 @@ from libs import *
 
 
 # Inheritable
-from . import medical
 from . import line
 from . import repo
 
@@ -42,14 +41,24 @@ from . import texto
 
 
 
+
+
+
 # Marketing
+from . import medical
 from . import media_line
 from . import marketing_recommendation_line
 from . import marketing_order_line
-from . import patient_line
 from . import histo_line
 from . import place_line
-from . import marketing
+
+
+
+# Patient
+#from . import patient_line
+#from . import partner
+#from . import patient
+from patient import *
 
 
 
@@ -64,6 +73,7 @@ from . import report_sale_product
 
 
 
+
 # Counters
 from . import counter
 
@@ -72,8 +82,6 @@ from . import counter
 
 
 # EMR
-from . import partner
-from . import patient
 from . import product
 from . import product_product
 from . import image		
@@ -90,18 +98,10 @@ from . import session
 from . import session_med
 
 
-
-
-
-
-
-
 # Zones
 from . import zone
 from . import nexzone
 from . import pathology
-
-
 
 
 # Services 
@@ -132,6 +132,9 @@ from . import card
 
 
 
+
+
+
 # Accounting
 #from . import account_line
 #from . import account_contasis
@@ -147,6 +150,7 @@ from containers import *
 
 
 
+from . import marketing
 
 
 

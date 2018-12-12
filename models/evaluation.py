@@ -6,9 +6,11 @@
 #
 from openerp import models, fields, api
 from datetime import datetime
-from . import eval_vars
-from . import prodvars
-from . import pat_vars
+
+from libs import eval_vars
+from libs import prodvars
+from patient import pat_vars
+
 
 class Evaluation(models.Model):
 

@@ -6,8 +6,11 @@
 # 	Last updated: 		 4 Nov 2018
 #
 from openerp import models, fields, api
-from . import prodvars
+
 from libs import ord_vars
+
+from libs import prodvars
+
 
 class management_order_line(models.Model):
 	

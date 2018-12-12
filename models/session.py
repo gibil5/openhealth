@@ -7,7 +7,7 @@
 from openerp import models, fields, api
 from datetime import datetime
 from . import time_funcs
-from . import eval_vars
+from libs import eval_vars
 
 class Session(models.Model):
 

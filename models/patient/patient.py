@@ -12,8 +12,10 @@ from . import pat_funcs
 
 #from . import lib
 from . import chk_patient
+
 #from . import count_funcs
-from libs import count_funcs
+#from libs import count_funcs
+from openerp.addons.openhealth.models.libs import count_funcs
 
 
 

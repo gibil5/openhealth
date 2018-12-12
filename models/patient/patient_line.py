@@ -7,8 +7,14 @@
 
 from openerp import models, fields, api
 from . import pat_vars
-from . import eval_vars
-from . import prodvars
+
+
+#from . import eval_vars
+from openerp.addons.openhealth.models.libs import eval_vars
+
+#from . import prodvars
+from openerp.addons.openhealth.models.libs import prodvars
+
 
 class PaitentLine(models.Model):
 	

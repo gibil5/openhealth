@@ -7,7 +7,7 @@
 """
 from __future__ import print_function
 from openerp import models, fields, api
-from . import prodvars
+from libs import prodvars
 from . import ipl
 
 class Service(models.Model):

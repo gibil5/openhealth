@@ -4,7 +4,9 @@
 """
 from __future__ import print_function
 from . import gen
-from . import chk_patient
+
+#from . import chk_patient
+from openerp.addons.openhealth.models.patient import chk_patient
 
 from . import lib_exp
 

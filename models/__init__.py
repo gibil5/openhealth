@@ -69,19 +69,6 @@ from marketing import *
 from patient import *
 
 
-
-
-
-# Reports
-from . import report_order_line
-#from . import product_counter 
-from . import order_report_nex			# Estado de Cuenta 
-from . import report_sale_product
-
-
-
-
-
 # Counters
 from . import counter
 
@@ -89,10 +76,22 @@ from . import counter
 
 
 
+# Reports
+from . import report_order_line
+from . import order_report_nex			# Estado de Cuenta 
+from . import report_sale_product
+
+
+
+
 # EMR
 from emr import *
 
+#from . import product_counter 
+
 #from . import product_pricelist_item
+
+#from . import product_selector
 
 # Medical
 #from . import product
@@ -136,13 +135,14 @@ from emr import *
 
 
 # Order 
-from . import order
-from . import order_line
-#from . import product_selector
-from . import payment_method
-from . import payment_method_line
-from . import closing
-from . import card
+from order import *
+
+#from . import order
+#from . import order_line
+#from . import payment_method
+#from . import payment_method_line
+#from . import closing
+#from . import card
 
 
 

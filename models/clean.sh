@@ -13,7 +13,7 @@ mv management/*.pyc ./pyc/.
 mv marketing/*.pyc ./pyc/.
 mv electronic/*.pyc ./pyc/.
 
-# mv order/*.pyc ./pyc/.
+mv order/*.pyc ./pyc/.
 
 
 

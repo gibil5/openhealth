@@ -16,10 +16,13 @@ except (ImportError, IOError) as err:
 from openerp import models, fields, api
 from openerp import _
 from openerp.exceptions import Warning as UserError
-from libs import ord_vars
-from libs import creates
+
+#from libs import ord_vars
+#from libs import creates
+#from libs import user
+from openerp.addons.openhealth.models.libs import ord_vars, creates, user
+
 from . import pat_vars
-from libs import user
 from . import lib_qr
 from . import chk_patient
 from . import test_order

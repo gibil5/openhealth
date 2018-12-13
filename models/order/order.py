@@ -322,7 +322,6 @@ class sale_order(models.Model):
 					'bonus': 					'Bonificación.',
 					'value_drop': 				'Disminución en el valor.',
 					'other': 					'Otros.',
-
 					False: 						'',
 		}
 		return _dic_cn[self.x_credit_note_type]

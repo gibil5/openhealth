@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='utf-8'?>
+<openerp>
+    <data>
+
+
+
+<!-- Products - New - 12 DEc 2018-->
+
+
+        <!-- Claridermil -->
+        <record id='claridermil' model='product.template'>
+
+            <field name='name'>Claridermil</field>
+
+            <field name='x_name_short'>claridermil</field>
+
+            <field name='type'>product</field>
+
+            <field name='price'>300</field>
+
+            <field name='standard_price'>300</field>
+        </record>
+
+
+
+        <!-- Vitamina K -->
+        <record id='vitamin_k' model='product.template'>
+
+            <field name='name'>Vitamina K</field>
+
+            <field name='x_name_short'>vitamin_k</field>
+
+            <field name='type'>product</field>
+
+            <field name='price'>250</field>
+
+            <field name='standard_price'>250</field>
+        </record>
+
+
+
+
+        <!-- Producto 3 -->
+<!--        
+        <record id='product_3' model='product.template'>
+
+            <field name='name'>Producto 3</field>
+
+            <field name='x_name_short'>product_3</field>
+
+            <field name='type'>product</field>
+
+            <field name='price'>200</field>
+
+            <field name='standard_price'>200</field>
+        </record>
+-->
+
+    </data>
+</openerp>

@@ -135,6 +135,10 @@
 		'data/prods/odoo_data_products_new.xml',
 		'data/prods/odoo_data_products_dep.xml',			# Important
 
+		'data/prods/odoo_data_products_new_20181212.xml',	# New
+
+
+
 		'data/prods/odoo_data_services_co2.xml',
 		'data/prods/odoo_data_services_exc.xml',
 		'data/prods/odoo_data_services_m22.xml',

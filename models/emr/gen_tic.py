@@ -14,8 +14,8 @@ _dic_prod = {
 
 			# New
 			'product_1': 				'Producto 1',
-			'claridermil': 				'Claridermil',
-			'vitamin_k': 				'Vitamina K',
+			'claridermil': 				'CLARIDERMIL',
+			'vitamin_k': 				'VITAMINA K',
 
 
 

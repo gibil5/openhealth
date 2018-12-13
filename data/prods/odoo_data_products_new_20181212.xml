@@ -10,7 +10,7 @@
         <!-- Claridermil -->
         <record id='claridermil' model='product.template'>
 
-            <field name='name'>Claridermil</field>
+            <field name='name'>CLARIDERMIL</field>
 
             <field name='x_name_short'>claridermil</field>
 
@@ -19,6 +19,8 @@
             <field name='price'>300</field>
 
             <field name='standard_price'>300</field>
+
+            <field name='x_family'>topical</field>
         </record>
 
 
@@ -26,7 +28,7 @@
         <!-- Vitamina K -->
         <record id='vitamin_k' model='product.template'>
 
-            <field name='name'>Vitamina K</field>
+            <field name='name'>VITAMINA K</field>
 
             <field name='x_name_short'>vitamin_k</field>
 
@@ -35,6 +37,8 @@
             <field name='price'>250</field>
 
             <field name='standard_price'>250</field>
+
+            <field name='x_family'>topical</field>
         </record>
 
 

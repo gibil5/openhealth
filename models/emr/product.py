@@ -15,13 +15,14 @@ from openerp.exceptions import ValidationError
 from openerp.addons.openhealth.models.libs import lib
 
 
-
-#from . import gen
-from openerp.addons.openhealth.models.containers import gen
-#from . import gen_tic
-from openerp.addons.openhealth.models.containers import gen_tic
-
 from . import prodvars
+from . import gen
+from . import gen_tic
+
+#from openerp.addons.openhealth.models.containers import gen
+#from openerp.addons.openhealth.models.containers import gen_tic
+
+
 
 
 class Product(models.Model):

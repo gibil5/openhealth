@@ -7,7 +7,6 @@
  		Created: 			21 Sep 2018
 		Last up: 	 		26 Nov 2018
 """
-#import gen_vars as gv
 from . import gen_vars as gv
 
 

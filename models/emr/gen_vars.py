@@ -9,7 +9,12 @@ _dic_prod = {
 				#'dexpantenol_5ml': 		'AMP. DEXPANTENOL 5 ML',
 				'dexpantenol_5ml': 		'DEXPANTENOL 5 ML',
 				
-				'product_1': 			'Producto 1',
+
+				# New
+				'product_1': 				'Producto 1',
+				'claridermil': 				'Claridermil',
+				'vitamin_k': 				'Vitamina K',
+
 
 
 				'acneclean': 			'ACNECLEAN 50 GR',

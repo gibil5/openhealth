@@ -12,8 +12,11 @@ _dic_prod = {
 			'dexpantenol_5ml': 			'DEXPANTENOL 5 ML',
 
 
-			# MsSoft
+			# New
 			'product_1': 				'Producto 1',
+			'claridermil': 				'Claridermil',
+			'vitamin_k': 				'Vitamina K',
+
 
 
 			# Proliant - New

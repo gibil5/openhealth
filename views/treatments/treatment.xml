@@ -951,6 +951,8 @@ Fields
 
                         <!-- Padding --> 
                         <group>     
+                            <field name="x_test"   groups="openhealth.roots"     />
+
                             <field name="patient_sex"       />
                             <field name="patient_age"       />
                             <field name="patient_city"      />

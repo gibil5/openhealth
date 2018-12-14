@@ -3,12 +3,17 @@
 	Management Report
 
 	Created: 			28 May 2018
-	Last updated: 		 6 Nov 2018
+	Last updated: 		13 Dic 2018
 """
 from __future__ import print_function
-
 import collections
 from timeit import default_timer as timer
+
+import pandas as pd
+import csv
+import matplotlib.pyplot as plt
+#import numpy as np
+
 from openerp import models, fields, api
 from . import mgt_funcs
 from . import mgt_vars
@@ -23,23 +28,277 @@ class Management(models.Model):
 
 
 
+
+
+# ----------------------------------------------------------- Update All Years -------------------
+	# Update All Years
+	@api.multi
+	def update_all_years(self):
+		"""
+		Update All Years
+		"""
+		print()
+		print('Update All Years')
+
+		# Search
+		managements = self.env['openhealth.management'].search([
+																	('owner', 'in', ['year']),
+															],
+																	order='date_begin asc',
+																	#limit=1000,
+														)
+		# Loop
+		for mgt in managements:
+			print(mgt.name)
+			mgt.update_fast()
+
+	# update_all_years
+
+
+
+
+# ----------------------------------------------------------- Update All Months -------------------
+	# Update All Months
+	@api.multi
+	def update_all_months(self):
+		"""
+		Update All Months
+		"""
+		print()
+		print('Update All Months')
+
+		# Search
+		managements = self.env['openhealth.management'].search([
+																	('owner', 'not in', ['account', 'year']),
+															],
+																	order='date_begin asc',
+																	#limit=1000,
+														)
+		# Loop
+		for mgt in managements:
+			print(mgt.name)
+			mgt.update_fast()
+
+	# update_all_months
+
+
+
+
 # ----------------------------------------------------------- Export --------------------------
 
 	# Export Stats
 	@api.multi
 	def export_stats(self):
 		"""
-		1. Create CSV files with Data. 
+		1. Create CSV files with Data.
 		2. Generate Plot using MatPlotLib.
 		3. Export to Docean with Rsync.
 		"""
 		print()
 		print('Export Stats')
 
+		self.create_csv()
+
+		#self.create_graph()
 
 
 
 
+	# 1. Create Graph
+	@api.multi
+	def create_graph(self):
+		"""
+		2. Create Graph files with MatPlotLib.
+		"""
+		print()
+		print('Create Graph')
+
+
+		# Read
+		with open(self.fname, mode='r') as csv_file:
+
+			csv_reader = csv.DictReader(csv_file)
+
+			ctr = 0
+
+			for row in csv_reader:
+
+				#if ctr < self.count:
+				if 'Anual' in row['name']:
+
+					print(row)
+
+					# Time
+					#self.sec.append(float(row['sec']))
+
+					per_amo_products = float(row['per_amo_products'])
+					per_amo_consultations = float(row['per_amo_consultations'])
+					per_amo_procedures = float(row['per_amo_procedures'])
+
+					print(per_amo_products)
+					print(per_amo_consultations)
+					print(per_amo_procedures)
+
+
+		# Plot
+		labels = 'Productos', 'Consultas', 'Procedimientos'
+		sizes = [per_amo_products, per_amo_consultations, per_amo_consultations]
+		explode = (0, 0, 0)
+		fig1, ax1 = plt.subplots()
+		ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%', shadow=True, startangle=90)
+		ax1.axis('equal')
+
+		#plt.show()
+		
+		#fig.savefig('foo.png')
+		#fig.savefig('path/to/save/image/to.png')   # save the figure to file
+
+
+
+
+	# 1. Create CSV
+	@api.multi
+	def create_csv(self):
+		"""
+		1. Create CSV files with Data.
+		"""
+		print()
+		print('Create CSV')
+
+		# Init
+		names = []
+		total_amounts = []
+
+		amo_products = []
+		amo_consultations = []
+		amo_procedures = []
+
+		per_amo_products = []
+		per_amo_consultations = []
+		per_amo_procedures = []
+
+		per_amo_co2 = []
+		per_amo_exc = []
+		per_amo_ipl = []
+		per_amo_ndyag = []
+		per_amo_quick = []
+
+		per_amo_medical = []
+		per_amo_cosmetology = []
+
+		per_amo_topical = []
+		per_amo_card = []
+		per_amo_kit = []
+
+
+
+
+		# Search
+		managements = self.env['openhealth.management'].search([
+																	('owner', 'not in', ['account']),
+															],
+																	#order='date_begin asc',
+																	order='date_begin,name asc',
+																	#limit=1000,
+														)
+		# Loop
+		for mgt in managements:
+
+			names.append(mgt.name)
+			total_amounts.append(mgt.total_amount)
+
+			amo_products.append(mgt.amo_products)
+			amo_consultations.append(mgt.amo_consultations)
+			amo_procedures.append(mgt.amo_procedures)
+
+			per_amo_products.append(mgt.per_amo_products)
+			per_amo_consultations.append(mgt.per_amo_consultations)
+			per_amo_procedures.append(mgt.per_amo_procedures)
+
+
+			per_amo_co2.append(mgt.per_amo_co2)
+			per_amo_exc.append(mgt.per_amo_exc)
+			per_amo_ipl.append(mgt.per_amo_ipl)
+			per_amo_ndyag.append(mgt.per_amo_ndyag)
+			per_amo_quick.append(mgt.per_amo_quick)
+
+			per_amo_medical.append(mgt.per_amo_medical)
+			per_amo_cosmetology.append(mgt.per_amo_cosmetology)
+
+			per_amo_topical.append(mgt.per_amo_topical)
+			per_amo_card.append(mgt.per_amo_card)
+			per_amo_kit.append(mgt.per_amo_kit)
+
+
+
+		# Prints
+		if True:
+			print(names)
+			print(total_amounts)
+
+			print(amo_products)
+			print(amo_consultations)
+			print(amo_procedures)
+
+
+			print(per_amo_products)
+			print(per_amo_consultations)
+			print(per_amo_procedures)
+
+			print(per_amo_co2)
+			print(per_amo_exc)
+			print(per_amo_ipl)
+			print(per_amo_ndyag)
+			print(per_amo_quick)
+
+			print(per_amo_medical)
+			print(per_amo_cosmetology)
+
+			print(per_amo_topical)
+			print(per_amo_card)
+			print(per_amo_kit)
+
+
+
+
+		# Export to CSV
+
+		#path = '/Users/gibil/reports/' + self.fname + '.csv'
+		#path = '/Users/gibil/reports/mgt.csv'
+		self.fname = '/Users/gibil/reports/mgt.csv'
+
+		data_frame = pd.DataFrame({
+										"name": names,
+										"total_amount": total_amounts,
+
+										"amo_products": amo_products,
+										"amo_consultations": amo_consultations,
+										"amo_procedures": amo_procedures,
+
+										"per_amo_products": per_amo_products,
+										"per_amo_consultations": per_amo_consultations,
+										"per_amo_procedures": per_amo_procedures,
+
+										"per_amo_co2": per_amo_co2,
+										"per_amo_exc": per_amo_exc,
+										"per_amo_ipl": per_amo_ipl,
+										"per_amo_ndyag": per_amo_ndyag,
+										"per_amo_quick": per_amo_quick,
+										
+										"per_amo_medical": per_amo_medical,
+										"per_amo_cosmetology": per_amo_cosmetology,
+
+										"per_amo_topical": per_amo_topical,
+										"per_amo_card": per_amo_card,
+										"per_amo_kit": per_amo_kit,
+						})
+
+		#data_frame.to_csv(path, index=False)
+		data_frame.to_csv(self.fname, index=False)
+
+
+	# Fname
+	fname = fields.Char()
 
 
 
@@ -130,9 +389,6 @@ class Management(models.Model):
 
 
 # ----------------------------------------------------------- QC ----------------------------------
-	test_target = fields.Boolean(
-			string="Test Target",
-		)
 
 	delta_1 = fields.Float(
 			'Delta 1',
@@ -181,6 +437,7 @@ class Management(models.Model):
 			'% Monto Quick',
 		)
 
+
 	per_amo_medical = fields.Float(
 			'% Monto TM',
 		)
@@ -191,15 +448,15 @@ class Management(models.Model):
 
 
 
-	per_amo_topical = fields.Integer(
+	per_amo_topical = fields.Float(
 			'% Monto Cremas',
 		)
 
-	per_amo_vip = fields.Integer(
+	per_amo_card = fields.Float(
 			'% Monto Vip',
 		)
 
-	per_amo_kits = fields.Integer(
+	per_amo_kit = fields.Float(
 			'% Monto Kits',
 		)
 
@@ -261,11 +518,11 @@ class Management(models.Model):
 			'Monto Cremas',
 		)
 
-	amo_vip = fields.Integer(
+	amo_card = fields.Integer(
 			'Monto Vip',
 		)
 
-	amo_kits = fields.Integer(
+	amo_kit = fields.Integer(
 			'Monto Kits',
 		)
 
@@ -327,94 +584,60 @@ class Management(models.Model):
 			'Nr Cremas',
 		)
 
-	nr_vip = fields.Integer(
+	nr_card = fields.Integer(
 			'Nr Vip',
 		)
 
-	nr_kits = fields.Integer(
+	nr_kit = fields.Integer(
 			'Nr Kits',
 		)
 
 
 
-# ----------------------------------------------------------- Counters ----------------------------
-
-	# Procedures
-
+# ----------------------------------------------------------- Avg ---------------------------------
 
 	avg_procedures = fields.Float(
 			'Precio Prom. Procedimientos',
 		)
 
-	# Co2
-
-
 	avg_co2 = fields.Float(
 			'Precio Prom. Co2',
 		)
-
-	# Exc
-
 
 	avg_exc = fields.Float(
 			'Precio Prom. Exc',
 		)
 
-	# Ipl
-
-
 	avg_ipl = fields.Float(
 			'Precio Prom. Ipl',
 		)
-
-	# Ndyag
-
 
 	avg_ndyag = fields.Float(
 			'Precio Prom. Ndyag',
 		)
 
-	# Quick
-
-
 	avg_quick = fields.Float(
 			'Precio Prom. Quick',
 		)
-
-	# Medical
-
 
 	avg_medical = fields.Float(
 			'Precio Prom. TM',
 		)
 
-	# Cosmetology
-
-
 	avg_cosmetology = fields.Float(
 			'Precio Prom. Cosmiatria',
 		)
 
-
-	# avg Consus
 	avg_consultations = fields.Float(
 			'Precio Prom. Consultas',
-			#digits=(16,1),
 		)
 
-
-
-	# avg Products
 	avg_products = fields.Float(
 			'Precio Prom. Productos',
 		)
 
-
-
-	# avg services
 	avg_services = fields.Float(
 			'Precio Prom. Servicios',
-			#digits=(16,1),
 		)
 
 
@@ -428,21 +651,17 @@ class Management(models.Model):
 		print()
 		print('Update Stats')
 
-
 		# Using collections - More Abstract !
 
 		# Clean
 		self.family_line.unlink()
 		self.sub_family_line.unlink()
 
-
 		# Init
-		#doctor_arr = []
 		family_arr = []
 		sub_family_arr = []
 		_h_amount = {}
 		_h_sub = {}
-
 
 
 	# All
@@ -526,16 +745,13 @@ class Management(models.Model):
 		print()
 		print('Update Sales - By Doctor')
 
-
 		# Clean
 		self.doctor_line.unlink()
-
 
 		# Init vars
 		total_amount = 0
 		total_count = 0
 		total_tickets = 0
-
 
 		# Create Doctors
 		doctors = [
@@ -561,23 +777,16 @@ class Management(models.Model):
 
 		# Create Sales - By Doctor
 		for doctor in self.doctor_line:
-
 			#print(doctor.name)
 
-
 			# Clear
-			#self.order_line.unlink()
 			doctor.order_line.unlink()
-
-
 
 			# Orders
 			orders, count = mgt_funcs.get_orders_filter_by_doctor\
 															(self, self.date_begin, self.date_end, doctor.name)
 			#print(orders)
 			#print(count)
-
-			#self.total_count = count
 
 
 			# Init Loop
@@ -588,18 +797,15 @@ class Management(models.Model):
 
 			# Loop
 			for order in orders:
-
 				#print(order)
 				#print(order.name)
 				#print(order.patient.name)
-
 
 				# Tickets
 				tickets = tickets + 1
 
 				# Amount
 				amount = amount + order.amount_total
-
 
 				# Id Doc
 				if order.x_type in ['ticket_invoice', 'invoice']:
@@ -626,7 +832,6 @@ class Management(models.Model):
 
 					count = count + 1
 
-
 					# Here !!!
 					order_line = doctor.order_line.create({
 															'receptor': 	receptor,
@@ -638,53 +843,34 @@ class Management(models.Model):
 															'state': order.state,
 															'serial_nr': order.x_serial_nr,
 
-
 															# Type of Sale
 															'type_code': 	order.x_type_code,
 															'x_type': 		order.x_type,
-
 
 															# Id Doc
 															'id_doc': 				id_doc,
 															'id_doc_type': 			id_doc_type,
 															'id_doc_type_code': 	id_doc_type_code,
 
-
 															# Line
 															'product_id': 			line.product_id.id,
 															'product_uom_qty': 		line.product_uom_qty,
 															'price_unit': 			line.price_unit,
 
-
 															'doctor_id': doctor.id,
 															'management_id': self.id,
 														})
-					#ret = order_line.update_fields()
 					order_line.update_fields()
-
 
 
 			# Stats
 			doctor.amount = amount
 			doctor.x_count = count
 
-
-			# Dr Stats
-			#doctor.stats()
-
-
 			# Totals
 			total_amount = total_amount + amount
 			total_count = total_count + count
 			total_tickets = total_tickets + tickets
-
-
-
-		# Totals
-		#self.total_amount = total_amount
-		#self.total_count = total_count
-		#self.total_tickets = total_tickets
-		#self.stats()
 
 	# update_sales
 
@@ -697,7 +883,7 @@ class Management(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		print
+		print()
 		print('Management - Update Doctors')
 		t0 = timer()
 
@@ -726,8 +912,6 @@ class Management(models.Model):
 		#print 'Electronic - Clear'
 		# Clean
 		self.electronic_order.unlink()
-
-
 
 
 # ----------------------------------------------------------- Update Sales - Electronic -----------
@@ -786,7 +970,6 @@ class Management(models.Model):
 			#print id_doc_type_code
 
 
-
 			# Create Electronic Order
 			electronic_order = self.electronic_order.create({
 																'receptor': 	receptor,
@@ -825,7 +1008,6 @@ class Management(models.Model):
 				#print electronic_order
 				#print
 
-				#electronic_line = electronic_order.electronic_line_ids.create({
 				electronic_order.electronic_line_ids.create({
 																					# Line
 																					'product_id': 			line.product_id.id,
@@ -834,9 +1016,7 @@ class Management(models.Model):
 
 																					# Rel
 																					'electronic_order_id': electronic_order.id,
-				})
-
-
+					})
 
 
 			# Update Amount Total
@@ -850,12 +1030,9 @@ class Management(models.Model):
 					invoice_count = invoice_count + 1
 
 
-
 		return amount_total, receipt_count, invoice_count
 
 	# update_electronic
-
-
 
 
 
@@ -865,8 +1042,8 @@ class Management(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		#print()
-		#print('Update Sales - Fast')
+		print()
+		print('Update Sales Fast')
 
 
 		# Clean
@@ -893,9 +1070,9 @@ class Management(models.Model):
 		for order in orders:
 			tickets = tickets + 1
 
-
 			# Order Lines
 			for line in order.order_line:
+
 
 				# Line Analysis
 				mgt_funcs.line_analysis(self, line)
@@ -915,7 +1092,6 @@ class Management(models.Model):
 
 		if self.nr_procedures != 0:
 			self.avg_procedures = self.amo_procedures / self.nr_procedures
-
 
 
 		# Subfamilies
@@ -941,11 +1117,9 @@ class Management(models.Model):
 			self.avg_cosmetology = self.amo_cosmetology / self.nr_cosmetology
 
 
-
 		# Ratios
 		if self.nr_consultations != 0:
 			self.ratio_pro_con = (float(self.nr_procedures) / float(self.nr_consultations)) * 100
-
 
 
 
@@ -960,25 +1134,24 @@ class Management(models.Model):
 		if self.total_amount != 0:
 
 			self.per_amo_products = (self.amo_products / self.total_amount) * 100
-
 			self.per_amo_consultations = (self.amo_consultations / self.total_amount) * 100
-
 			self.per_amo_procedures = (self.amo_procedures / self.total_amount) * 100
+
+
+			self.per_amo_topical = (self.amo_topical / self.total_amount) * 100
+			self.per_amo_card = (self.amo_card / self.total_amount) * 100
+			self.per_amo_kit = (self.amo_kit / self.total_amount) * 100
 
 
 			self.per_amo_co2 = (self.amo_co2 / self.total_amount) * 100
 			self.per_amo_exc = (self.amo_exc / self.total_amount) * 100
 			self.per_amo_ipl = (self.amo_ipl / self.total_amount) * 100
 			self.per_amo_ndyag = (self.amo_ndyag / self.total_amount) * 100
-			
 			self.per_amo_quick = (self.amo_quick / self.total_amount) * 100
 			self.per_amo_medical = (self.amo_medical / self.total_amount) * 100
 			self.per_amo_cosmetology = (self.amo_cosmetology / self.total_amount) * 100
 
-
 	# update_sales_fast
-
-
 
 
 
@@ -1001,8 +1174,6 @@ class Management(models.Model):
 		#print self.delta_1
 		#print
 	# update
-
-
 
 
 # ----------------------------------------------------------- Reset -------------------------------
@@ -1032,20 +1203,15 @@ class Management(models.Model):
 		self.total_count = 0
 		self.total_tickets = 0
 
+		# Nr
 		self.nr_products = 0
 		self.nr_services = 0
 		self.nr_consultations = 0
 		self.nr_procedures = 0
 
-		self.amo_products = 0
-		self.amo_services = 0
-		self.amo_consultations = 0
-		self.amo_procedures = 0
-
-		self.avg_products = 0
-		self.avg_services = 0
-		self.avg_consultations = 0
-		self.avg_procedures = 0
+		self.nr_topical = 0
+		self.nr_card = 0
+		self.nr_kit = 0
 
 		self.nr_co2 = 0
 		self.nr_exc = 0
@@ -1055,6 +1221,17 @@ class Management(models.Model):
 		self.nr_medical = 0
 		self.nr_cosmetology = 0
 
+
+		# Amo
+		self.amo_products = 0
+		self.amo_services = 0
+		self.amo_consultations = 0
+		self.amo_procedures = 0
+
+		self.amo_topical = 0
+		self.amo_card = 0
+		self.amo_kit = 0
+
 		self.amo_co2 = 0
 		self.amo_exc = 0
 		self.amo_ipl = 0
@@ -1062,6 +1239,32 @@ class Management(models.Model):
 		self.amo_quick = 0
 		self.amo_medical = 0
 		self.amo_cosmetology = 0
+
+
+		# Per Amo
+		self.per_amo_products = 0
+		self.per_amo_services = 0
+		self.per_amo_consultations = 0
+		self.per_amo_procedures = 0
+
+		self.per_amo_topical = 0
+		self.per_amo_card = 0
+		self.per_amo_kit = 0
+
+		self.per_amo_co2 = 0
+		self.per_amo_exc = 0
+		self.per_amo_ipl = 0
+		self.per_amo_ndyag = 0
+		self.per_amo_quick = 0
+		self.per_amo_medical = 0
+		self.per_amo_cosmetology = 0
+
+
+		# Avg
+		self.avg_products = 0
+		self.avg_services = 0
+		self.avg_consultations = 0
+		self.avg_procedures = 0
 
 		self.avg_co2 = 0
 		self.avg_exc = 0
@@ -1087,8 +1290,7 @@ class Management(models.Model):
 	# reset_micro
 
 
-
-# ----------------------------------------------------------- Update All --------------------------
+# ----------------------------------------------------------- Update --------------------------
 	# Update
 	@api.multi
 	def update(self):

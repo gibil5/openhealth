@@ -12,7 +12,7 @@ import datetime
 from openerp import models, fields, api
 from . import export
 from . import test_cases_pat
-#from . import creates
+
 
 class Container(models.Model):
 	"""

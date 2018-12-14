@@ -41,7 +41,9 @@ class Repo(models.Model):
 			#'Total Monto',
 			#'Total',
 			'Monto Total',
-			readonly=True, 
+			readonly=True,
+
+			default=0,
 		)
 
 	# Count

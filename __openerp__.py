@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 {
-	'name': "Open Health - MIN",
+	'name': "Open Health - STRUCTURED",
 
 	'summary': "",
 
 	'description': """
 
-		12 Dec 2018
+		14 Dec 2018
 
 		Fulcrum - TRAVIS Quality Controlled
 

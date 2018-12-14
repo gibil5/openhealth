@@ -125,6 +125,8 @@ class Treatment(models.Model):
 		"""
 		Integration Test of the Treatment Class.
 		"""
+		print()
+		print('Test Integration')
 		if self.patient.x_test:
 
 			# Reset
@@ -1748,9 +1750,11 @@ class Treatment(models.Model):
 		if self.patient.x_test:
 
 			self.test_reset()
+
 			self.test_integration()
 
 			self.test_create_recos()
+			
 			self.test_computes()
 
 			#self.test_libs()

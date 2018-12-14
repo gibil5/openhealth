@@ -267,7 +267,9 @@ class Reports(object):
 		"""
 		print()
 		print('Test - Reports')
-		self.marketing.update()
+		
+		#self.marketing.update()
+		
 		self.management.update()
 		self.closing.update()
 		self.resap.update()

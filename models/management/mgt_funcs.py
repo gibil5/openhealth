@@ -205,10 +205,12 @@ def line_analysis(self, line):
 		self.nr_services = self.nr_services + line.product_uom_qty
 		self.amo_services = self.amo_services + line.price_subtotal
 
+
 		# Consultations
 		if prod.x_treatment in ['consultation']:
 			self.nr_consultations = self.nr_consultations + line.product_uom_qty
 			self.amo_consultations = self.amo_consultations + line.price_subtotal
+
 
 		# Procedures
 		else:
@@ -256,6 +258,23 @@ def line_analysis(self, line):
 	else:
 		self.nr_products = self.nr_products + line.product_uom_qty
 		self.amo_products = self.amo_products + line.price_subtotal
+
+
+		# Topical
+		if prod.x_family in ['topical']:
+			self.nr_topical = self.nr_topical + line.product_uom_qty
+			self.amo_topical = self.amo_topical + line.price_subtotal
+	
+		# card
+		elif prod.x_family in ['card']:
+			self.nr_card = self.nr_card + line.product_uom_qty
+			self.amo_card = self.amo_card + line.price_subtotal
+
+		# kit
+		elif prod.x_family in ['kit']:
+			self.nr_kit = self.nr_kit + line.product_uom_qty
+			self.amo_kit = self.amo_kit + line.price_subtotal
+
 
 	return False
 

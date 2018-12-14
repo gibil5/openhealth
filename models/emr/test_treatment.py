@@ -8,18 +8,21 @@
 	Created: 			14 Aug 2018
 	Last up: 	 		20 Nov 2018
 """
+from __future__ import print_function
 
 
 # ----------------------------------------------------------- Integration -------------------------
-# Test - Integration - Treatment 
 def test_integration_treatment(self, date_order_begin=False, date_order_end=False):
-	#print 
-	#print 'Treatment - Test Integration'
+	"""
+	Test - Integration - For Treatment 
+	"""
+	print()
+	print('Test Integration')
 
 
 	# Appointment - Consultation 
-	#print 
-	#print 'Create App - Consultation'
+	print('Create App - Consultation')
+
 	x_type = 'consultation'
 	subtype = 'consultation'
 	state = 'pre_scheduled'
@@ -28,15 +31,12 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 
 
 	# Sale - Consultation 
-	#print 
-	#print 
-	#print 'Create Order - Consultation'
+	print('Create Order - Consultation')
 	
 	self.create_order_con()			# Actual Button 
 
 	for order in self.order_ids: 
-		if order.state in ['draft']: 
-			
+		if order.state in ['draft']:
 			order.pay_myself()
 
 			#print 'Pay'
@@ -48,9 +48,7 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 
 
 	# Consultation 
-	#print 
-	#print 
-	#print 'Create Consultation'
+	print('Create Consultation')
 	self.create_consultation()
 	for consultation in self.consultation_ids: 
 		consultation.autofill()
@@ -59,24 +57,16 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 	# Recommendations 
 	# Sale Procedure 
 	if True:
-		#print 
-		#print 
-		#print 'Create Recommendations'
-
+		print('Create Recommendations')
 		create_recommendations(self)
-
-		self.create_order_pro()			# Actual Button 
-	
-
+		self.create_order_pro()			# Actual Button
 	else: 
 		create_order_pro_lines(self)
 
 
 
 	# Pay Order Procedure
-	#print
-	#print
-	#print 'Create Order - Procedure'
+	print('Create Order - Procedure')
 	for order in self.order_ids:
 		if order.state in ['draft']:
 
@@ -95,9 +85,7 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 	# Sessions
 	#if False:
 	if self.ses_create:
-		#print 
-		#print 
-		#print 'Create Sessions'
+		print('Create Sessions')
 		for procedure in self.procedure_ids: 
 			#for _ in range(2): 
 			for _ in range(1): 
@@ -107,8 +95,7 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 	# Controls 
 	#if False:
 	if self.con_create:
-		#print 
-		#print 'Create Controls'
+		print('Create Controls')
 		for procedure in self.procedure_ids: 
 			#for _ in range(6): 
 			for _ in range(1):
@@ -123,9 +110,8 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 
 # Create Recommendations 
 def create_recommendations(self):
-	#print 
-	#print 'Create Recommendations'
-
+	print
+	print('Create Recommendations')
 
 
 	# Vip
@@ -555,8 +541,8 @@ def set_all(self):
 
 # Reset 
 def reset_treatment(self):
-	#print 
-	#print 'Reset'
+	print()
+	print('Reset')
 
 
 	# Card 

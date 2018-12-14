@@ -133,6 +133,34 @@
 
                         />
 
+
+
+                        <!-- Update All Years -->
+                        <button 
+                                type="object" 
+                                class="oe_highlight oe_right"
+                                
+                                name="update_all_years"
+
+                                string="Update All Years"                             
+
+                                groups="openhealth.roots"
+                        />
+
+
+                        <!-- Update All Months -->
+                        <button 
+                                type="object" 
+                                class="oe_highlight oe_right"
+                                
+                                name="update_all_months"
+
+                                string="Update All Months"                             
+
+                                groups="openhealth.roots"
+                        />
+
+
                         <!-- Update -->
                         <button 
                                 type="object" 
@@ -209,6 +237,7 @@
                                 <field name="total_amount"/>
                                 <field name="total_count"   string="Nr Ventas"  />
                                 <field name="total_tickets"/>
+                                <field name="ratio_pro_con"/>
                             </group>
 <!--
                             <group>
@@ -277,6 +306,7 @@
 
 
                         <!-- Ratios --> 
+<!--
                         <group  string="Ratios" col="3" >
                             <group>
                                 <field name="ratio_pro_con"/>
@@ -284,15 +314,15 @@
                             <group></group>
                             <group></group>
                         </group>
-
+-->
 
 
                         <!-- Sub-Families --> 
                         <group  string="Sub Familias"   col="3" >
                             <group>
                                 <field name="nr_topical"/>
-                                <field name="nr_vip"/>
-                                <field name="nr_kits"/>
+                                <field name="nr_card"/>
+                                <field name="nr_kit"/>
 
                                 <field name="vspace"/>
 
@@ -306,8 +336,8 @@
                             </group>
                             <group>
                                 <field name="amo_topical"   string="Monto"/>
-                                <field name="amo_vip"   string="Monto"/>
-                                <field name="amo_kits"   string="Monto"/>
+                                <field name="amo_card"   string="Monto"/>
+                                <field name="amo_kit"   string="Monto"/>
 
                                 <field name="vspace"/>
 
@@ -321,8 +351,8 @@
                             </group>
                             <group>
                                 <field name="per_amo_topical"   string="% Monto"/>
-                                <field name="per_amo_vip"   string="% Monto"/>
-                                <field name="per_amo_kits"   string="% Monto"/>
+                                <field name="per_amo_card"   string="% Monto"/>
+                                <field name="per_amo_kit"   string="% Monto"/>
 
                                 <field name="vspace"/>
 
@@ -555,6 +585,16 @@
 
 
 
+                    <field name="per_amo_topical"/>
+
+                    <field name="per_amo_card"/>
+
+                    <field name="per_amo_kit"/>
+
+
+
+
+
                     <field name="nr_products"/>
 
                     <field name="nr_consultations"/>
@@ -598,11 +638,6 @@
 
 
 
-                    <field name="per_amo_topical"/>
-
-                    <field name="per_amo_vip"/>
-
-                    <field name="per_amo_kits"/>
 
 
 

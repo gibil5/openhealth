@@ -7,8 +7,8 @@
 """
 from __future__ import print_function
 import csv
-import rsync
 import matplotlib.pyplot as plt
+import rsync
 
 
 class DataModel(object):
@@ -240,10 +240,11 @@ class DataModel(object):
 		plt.legend()
 		plt.ylabel('Porcentaje')
 		plt.xlabel('Por Mes')
-		plt.title('Ventas - Por Mes - 2018')
+		
+		#plt.title('Ventas - Por Mes - 2018')
 
 		plt.savefig(self.fig_line_year)
-		
+
 		#pl.show()
 
 
@@ -261,7 +262,7 @@ class DataModel(object):
 
 		# Clean
 		plt.clf()
-		
+
 
 		#pl.scatter(g1.sec, g1.speed)
 
@@ -289,7 +290,7 @@ class DataModel(object):
 		plt.ylabel('Porcentaje')
 		plt.xlabel('Por Mes')
 
-		plt.title('Ventas - Por Mes - 2018 - Detalle')
+		#plt.title('Ventas - Por Mes - 2018 - Detalle')
 
 		plt.savefig(self.fig_line_year_micro)
 		#pl.show()
@@ -325,7 +326,7 @@ class DataModel(object):
 
 		ax1.axis('equal')
 
-		plt.title('Ventas - Anual 2018')
+		#plt.title('Ventas - Anual 2018')
 
 		#plt.show()
 
@@ -380,7 +381,7 @@ class DataModel(object):
 
 		ax1.axis('equal')
 
-		plt.title('Ventas - Anual 2018 - Detalle')
+		#plt.title('Ventas - Anual 2018 - Detalle')
 
 		#plt.show()
 
@@ -401,7 +402,9 @@ class DataModel(object):
 
 
 
-#dm = DataModel('/Users/gibil/reports/mgt.csv')
+
+print('Data Model - In')
+
 dm = DataModel('/Users/gibil/reports/')
 print(dm)
 
@@ -414,3 +417,5 @@ dm.plot_line_micro()
 dm.plot_line()
 
 dm.synchro()
+
+print('Data Model - Out')

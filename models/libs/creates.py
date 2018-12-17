@@ -6,6 +6,8 @@
 	Created: 			14 Aug 2018
  	Last up: 	 		 5 Nov 2018
 """
+from __future__ import print_function
+
 from . import user
 from . import lib
 
@@ -16,8 +18,8 @@ def create_order_electronic(self, order):
 	"""
 	high level support for doing this and that.
 	"""
-	#print
-	#print 'Create Order Fast'
+	#print()
+	#print('Create Order Fast')
 
 
 	# Id Doc and Receptor
@@ -346,9 +348,9 @@ def create_order(self, target):
 	"""
 	high level support for doing this and that.
 	"""
-	#print
-	#print 'Create Order'
-	#print target
+	print()
+	print('Create Order')
+	print(target)
 	#print 'x_vip_inprog: ', self.x_vip_inprog
 
 
@@ -364,33 +366,37 @@ def create_order(self, target):
 
 
 	# Pricelist
-
 	# Vip in Prog
 	if self.x_vip_inprog:
 		#print 'Vip in prog'
-
 		pl = self.env['product.pricelist'].search([
 															('name', '=', 'VIP'),
 													],
 														#order='write_date desc',
 														limit=1,
 													)
-
 	else:
 		pl = self.pricelist_id
 
-
-	#print pl
-	#print 'pricelist: ', pl.name
-	#print pl.id
-
+	print(pl)
+	print('pricelist: ', pl.name)
+	print(pl.id)
 
 
-# Update Patient
-		if self.patient.x_id_doc in [False, '']:
-			if self.patient.x_dni not in [False, '']:
-				self.patient.x_id_doc_type = 'dni'
-				self.patient.x_id_doc = self.patient.x_dni
+		
+
+	# Update Patient
+	if self.patient.x_id_doc in [False, '']:
+		if self.patient.x_dni not in [False, '']:
+			self.patient.x_id_doc_type = 'dni'
+			self.patient.x_id_doc = self.patient.x_dni
+
+
+
+
+
+
+
 
 
 
@@ -454,9 +460,9 @@ def create_order_lines(self, laser, order_id):
 	"""
 	high level support for doing this and that.
 	"""
-	#print
-	#print 'User - Create Order Lines'
-	#print laser
+	print()
+	print('Create Order Lines')
+	print(laser)
 
 	order = self.env['sale.order'].search([(
 												'id', '=', order_id),
@@ -485,11 +491,20 @@ def create_order_lines(self, laser, order_id):
 											#order='appointment_date desc',
 											#limit=1,
 										)
+	print(rec_set)
+
 
 	# Recommendations
 	for reco in rec_set:
+		print('Gotcha !')
+		print(reco)
+		print(reco.name)
+		print(reco.service)
+		print(reco.service.name)
+		print(reco.service.x_name_short)
+		print('Gotcha !')
 
-		#print 'Gotcha !'
+
 
 		# Init
 		reco_id = reco.id
@@ -522,12 +537,12 @@ def create_order_lines_micro(self, name_short, price_manual, price_applied, reco
 	"""
 	high level support for doing this and that.
 	"""
-	#print
-	#print 'Create Order Lines - Micro'
-	#print 'name_short: ', name_short
-	#print 'price_manual: ', price_manual
-	#print 'price_applied:', price_applied
-	#print 'reco_id: ', reco_id
+	print()
+	print('Create Order Lines - Micro')
+	print('name_short: ', name_short)
+	print('price_manual: ', price_manual)
+	print('price_applied:', price_applied)
+	print('reco_id: ', reco_id)
 	#print
 
 
@@ -551,11 +566,11 @@ def create_order_lines_micro(self, name_short, price_manual, price_applied, reco
 													('x_origin', '=', False),
 											])
 
-	#print product
-	#print product.name
-	#print product.type
-	#print product.x_family
-	#print product.x_treatment
+	print(product)
+	print(product.name)
+	print(product.type)
+	print(product.x_family)
+	print(product.x_treatment)
 
 
 	# Reco field

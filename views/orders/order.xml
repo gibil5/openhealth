@@ -191,7 +191,7 @@
 
 
                     <!-- Legacy -->
-
+<!--
                     <button
                             type="object"
                             class="oe_highlight"
@@ -227,7 +227,7 @@
                             string="Legacy Mar"
                             groups="openhealth.roots"
                     />
-
+-->
                 </xpath>
 
 
@@ -306,10 +306,6 @@
 <!-- REDEFINE -->
                 <!-- Price list --> 
                 <xpath expr="//field[@name='pricelist_id']" position="replace">
-
-                    <field name="x_checksum"            groups="openhealth.roots"/>
-
-                    <field name="x_pm_total"            groups="openhealth.roots"/>
 
                     <field name="x_admin_mode"          groups="openhealth.roots,openhealth.managers,openhealth.caja,openhealth.directors"/>
                     

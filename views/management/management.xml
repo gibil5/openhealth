@@ -201,6 +201,21 @@
 
 
 
+                        <!-- Graph -->
+                        <button 
+                                type="object" 
+                                class="oe_highlight oe_right"
+
+                                name="create_graph"
+
+                                string="Graph"                              
+
+                                groups="openhealth.roots"
+                        />
+
+
+
+
                         <!-- Legacy -->
 <!--                        
                         <button 

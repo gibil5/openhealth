@@ -6,12 +6,8 @@
  	Last up: 				10 Dec 2018
 """
 from openerp import models, fields, api
-from . import acc_vars
-
-#from . import acc_funcs
-#from libs import acc_lib
 from openerp.addons.openhealth.models.libs import acc_lib
-
+from . import acc_vars
 
 class AccountContasis(models.Model):
 	"""

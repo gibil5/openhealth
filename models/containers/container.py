@@ -10,6 +10,7 @@ import base64
 import io
 import datetime
 from openerp import models, fields, api
+from openerp.addons.openhealth.models.libs import creates
 from . import export
 from . import test_cases_pat
 
@@ -115,7 +116,6 @@ class Container(models.Model):
 		#print
 		#print 'Create Sales'
 
-
 		# Search
 		patients = self.env['oeh.medical.patient'].search([
 																('x_test', '=', True),
@@ -123,8 +123,6 @@ class Container(models.Model):
 															#order='appointment_date desc',
 															#limit=1,
 														)
-
-
 		# Loop
 		for patient in patients:
 
@@ -134,66 +132,46 @@ class Container(models.Model):
 			doctor_id = self.doctor.id
 			treatment_id = False
 			short_name = 'product_1'
-			#qty = 40
 			qty = 1
 			pricelist_id = patient.property_product_pricelist.id
 
 
-
-
 			# Ticket Invoice
 			if self.ticket_invoice_create:
-
 				x_type = 'ticket_invoice'
-
-				invoice = creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id,\
+				creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id,\
 																							 short_name, qty, x_type, pricelist_id)
 
 			# Ticket Receipt
 			if self.ticket_receipt_create:
-
 				x_type = 'ticket_receipt'
-
-				receipt = creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id,\
+				creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id,\
 																							 short_name, qty, x_type, pricelist_id)
-
-
 
 
 			# Invoice
 			if self.invoice_create:
-
 				x_type = 'invoice'
-
-				invoice = creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id,\
+				creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id,\
 																							 short_name, qty, x_type, pricelist_id)
 
 			# Receipt
 			if self.receipt_create:
-
 				x_type = 'receipt'
-
-				receipt = creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id,\
+				creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id,\
 																							 short_name, qty, x_type, pricelist_id)
-
 
 			# Sale Note
 			if self.sale_note_create:
-
 				x_type = 'sale_note'
-
-				invoice = creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id,\
+				creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id,\
 																							 short_name, qty, x_type, pricelist_id)
 
 			# Receipt
 			if self.advertisement_create:
-
 				x_type = 'advertisement'
-
-				receipt = creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id,\
+				creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id,\
 																							 short_name, qty, x_type, pricelist_id)
-
-
 
 
 			# Invoice Cancel
@@ -203,12 +181,6 @@ class Container(models.Model):
 			# Receipt Cancel
 			#if self.ticket_receipt_cancel:
 			#	receipt.cancel_order()
-
-
-
-
-		# QC
-		#self.test_qc()
 
 	# create_sales
 
@@ -292,10 +264,8 @@ class Container(models.Model):
 		"""
 		self.ticket_invoice_create = True
 		self.ticket_receipt_create = True
-	
 		self.invoice_create = True
 		self.receipt_create = True
-
 		self.sale_note_create = True
 		self.advertisement_create = True
 
@@ -309,10 +279,8 @@ class Container(models.Model):
 		"""
 		self.ticket_invoice_create = False
 		self.ticket_receipt_create = False
-	
 		self.invoice_create = False
 		self.receipt_create = False
-
 		self.sale_note_create = False
 		self.advertisement_create = False
 

@@ -6,17 +6,20 @@
 	Last updated: 		13 Dic 2018
 """
 from __future__ import print_function
+
+import os
 import collections
 from timeit import default_timer as timer
-
 import pandas as pd
 import csv
 import matplotlib.pyplot as plt
 #import numpy as np
-
 from openerp import models, fields, api
 from . import mgt_funcs
 from . import mgt_vars
+
+from . import data_model
+
 
 class Management(models.Model):
 	"""
@@ -29,64 +32,9 @@ class Management(models.Model):
 
 
 
-
-# ----------------------------------------------------------- Update All Years -------------------
-	# Update All Years
-	@api.multi
-	def update_all_years(self):
-		"""
-		Update All Years
-		"""
-		print()
-		print('Update All Years')
-
-		# Search
-		managements = self.env['openhealth.management'].search([
-																	('owner', 'in', ['year']),
-															],
-																	order='date_begin asc',
-																	#limit=1000,
-														)
-		# Loop
-		for mgt in managements:
-			print(mgt.name)
-			mgt.update_fast()
-
-	# update_all_years
-
-
-
-
-# ----------------------------------------------------------- Update All Months -------------------
-	# Update All Months
-	@api.multi
-	def update_all_months(self):
-		"""
-		Update All Months
-		"""
-		print()
-		print('Update All Months')
-
-		# Search
-		managements = self.env['openhealth.management'].search([
-																	('owner', 'not in', ['account', 'year']),
-															],
-																	order='date_begin asc',
-																	#limit=1000,
-														)
-		# Loop
-		for mgt in managements:
-			print(mgt.name)
-			mgt.update_fast()
-
-	# update_all_months
-
-
-
-
 # ----------------------------------------------------------- Export --------------------------
 
-	# Export Stats
+	# Export
 	@api.multi
 	def export_stats(self):
 		"""
@@ -99,11 +47,13 @@ class Management(models.Model):
 
 		self.create_csv()
 
-		#self.create_graph()
+		self.create_graph()
 
 
 
 
+
+# ----------------------------------------------------------- Graph --------------------------
 	# 1. Create Graph
 	@api.multi
 	def create_graph(self):
@@ -113,49 +63,19 @@ class Management(models.Model):
 		print()
 		print('Create Graph')
 
+		path = '/Users/gibil/Virtualenvs/Odoo9-min/odoo/'
+		cmd = 'python ' + path + 'addons/openhealth/models/management/data_model.py'
 
-		# Read
-		with open(self.fname, mode='r') as csv_file:
+		print(cmd)
 
-			csv_reader = csv.DictReader(csv_file)
-
-			ctr = 0
-
-			for row in csv_reader:
-
-				#if ctr < self.count:
-				if 'Anual' in row['name']:
-
-					print(row)
-
-					# Time
-					#self.sec.append(float(row['sec']))
-
-					per_amo_products = float(row['per_amo_products'])
-					per_amo_consultations = float(row['per_amo_consultations'])
-					per_amo_procedures = float(row['per_amo_procedures'])
-
-					print(per_amo_products)
-					print(per_amo_consultations)
-					print(per_amo_procedures)
-
-
-		# Plot
-		labels = 'Productos', 'Consultas', 'Procedimientos'
-		sizes = [per_amo_products, per_amo_consultations, per_amo_consultations]
-		explode = (0, 0, 0)
-		fig1, ax1 = plt.subplots()
-		ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%', shadow=True, startangle=90)
-		ax1.axis('equal')
-
-		#plt.show()
-		
-		#fig.savefig('foo.png')
-		#fig.savefig('path/to/save/image/to.png')   # save the figure to file
+		os.system(cmd)
 
 
 
 
+
+
+# ----------------------------------------------------------- CSV --------------------------
 	# 1. Create CSV
 	@api.multi
 	def create_csv(self):
@@ -1354,3 +1274,54 @@ class Management(models.Model):
 		# Gap and Checksum
 		self.update_qc('ticket_receipt')
 		self.update_qc('ticket_invoice')
+
+
+
+# ----------------------------------------------------------- Update All Years -------------------
+	# Update All Years
+	@api.multi
+	def update_all_years(self):
+		"""
+		Update All Years
+		"""
+		print()
+		print('Update All Years')
+
+		# Search
+		managements = self.env['openhealth.management'].search([
+																	('owner', 'in', ['year']),
+															],
+																	order='date_begin asc',
+																	#limit=1000,
+														)
+		# Loop
+		for mgt in managements:
+			print(mgt.name)
+			mgt.update_fast()
+
+	# update_all_years
+
+
+# ----------------------------------------------------------- Update All Months -------------------
+	# Update All Months
+	@api.multi
+	def update_all_months(self):
+		"""
+		Update All Months
+		"""
+		print()
+		print('Update All Months')
+
+		# Search
+		managements = self.env['openhealth.management'].search([
+																	('owner', 'not in', ['account', 'year']),
+															],
+																	order='date_begin asc',
+																	#limit=1000,
+														)
+		# Loop
+		for mgt in managements:
+			print(mgt.name)
+			mgt.update_fast()
+
+	# update_all_months

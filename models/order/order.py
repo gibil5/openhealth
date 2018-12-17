@@ -285,6 +285,7 @@ class sale_order(models.Model):
 # ----------------------------------------------------------- Mode Admin --------------------------
 	x_admin_mode = fields.Boolean(
 			'Modo Admin',
+ 			help='Activa el Modo Administrador.',
 		)
 
 

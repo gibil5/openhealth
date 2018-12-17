@@ -8,12 +8,8 @@
  	Be sure to include one patient with: passporte, cancelled sale. For complete coverage.
 """
 from openerp import models, fields, api
-from . import acc_vars
-
-#from . import acc_funcs
-#from libs import acc_lib
 from openerp.addons.openhealth.models.libs import acc_lib
-
+from . import acc_vars
 
 class AccountLine(models.Model):
 	"""
@@ -412,8 +408,10 @@ class AccountLine(models.Model):
 		self.numdoc = self.document
 
 
+
 		# Serial number
-		if self.serial_nr != False:
+		#if self.serial_nr != False:
+		if self.serial_nr != False and len(self.serial_nr.split('-')) == 2:
 			self.numeroserie = self.serial_nr.split('-')[0]
 			self.numerofactura = self.serial_nr.split('-')[1]
 			self.glosa = self.glosa + self.serial_nr
@@ -422,7 +420,6 @@ class AccountLine(models.Model):
 
 		# Type Doc
 		self.tipodocumento = acc_vars._sale_type[self.x_type]
-
 
 
 		# Actual amount

@@ -60,6 +60,12 @@
                                     
 
 
+                                    <field name="x_checksum"/>
+
+                                    <field name="x_pm_total"/>
+
+
+
 <!--
                                     <field name="x_legacy" />
                                     <field name="x_machine"     />

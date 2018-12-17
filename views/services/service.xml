@@ -146,19 +146,20 @@
 <!--
                                     <field name="service"   widget="radio" />
                                     <field name="vspace" />
-
                                     <field name="service" widget="radio"    attrs="{ 'invisible':[
                                                                                                         ('zone', '=', False ),
                                                                                                         ('x_treatment', '=', False ),
                                                                                                 ],}"/>
--->
                                     <field name="service"   string="Producto"   widget="radio" 
                                                             attrs="{ 'invisible':[
                                                                                                         ('zone', '=', False ),
                                                                                                         ('x_treatment', '=', False ),
                                                                                                 ],}"
                                         />
+-->
 
+
+                                    <field name="service"/>
                                 </group>
 
 

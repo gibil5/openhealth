@@ -797,7 +797,8 @@ Look for the Minimalist experience !!!
                         "
                     >
 
-                    <field name="name"          string="Referencia"     groups='openhealth.roots'/>
+                    <field name="name"          string="Referencia"/>
+
                     <field name="x_legacy"      groups="openhealth.roots"/>
 
 

@@ -10,15 +10,17 @@ from __future__ import print_function
 import os
 import collections
 from timeit import default_timer as timer
-import pandas as pd
+
 import csv
-import matplotlib.pyplot as plt
-#import numpy as np
+
 from openerp import models, fields, api
 from . import mgt_funcs
 from . import mgt_vars
-
 from . import data_model
+
+#import pandas as pd
+#import matplotlib.pyplot as plt
+
 
 
 class Management(models.Model):

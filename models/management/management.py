@@ -16,8 +16,8 @@ import csv
 from openerp import models, fields, api
 from . import mgt_funcs
 from . import mgt_vars
-from . import data_model
 
+#from . import data_model
 #import pandas as pd
 #import matplotlib.pyplot as plt
 

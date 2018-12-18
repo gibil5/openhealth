@@ -162,6 +162,10 @@
 <!--
                         <filter name="Creado por" context="{'group_by':'user_id'}"/>
 -->
+
+                        <filter name="Mes" context="{'group_by':'x_month_order'}"/>
+                        <filter name="Dia" context="{'group_by':'x_day_order'}"/>
+
                         <filter name="Tipo" context="{'group_by':'x_type'}"/>
                         <separator/>
                         <filter name="Familia" context="{'group_by':'x_family'}"/>

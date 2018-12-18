@@ -9,26 +9,26 @@ from __future__ import print_function
 
 import math
 import datetime
+
 try:
 	from num2words import num2words
 except (ImportError, IOError) as err:
 	_logger.debug(err)
+
 from openerp import models, fields, api
 from openerp import _
+
 from openerp.exceptions import Warning as UserError
 
-from . import ord_vars
-
-#from libs import creates
-#from libs import user
 from openerp.addons.openhealth.models.libs import creates, user
-
-#from . import pat_vars
-#from . import chk_patient
+from openerp.addons.openhealth.models.libs import lib
 from openerp.addons.openhealth.models.patient import pat_vars, chk_patient
 
+from . import ord_vars
 from . import lib_qr
 from . import test_order
+from . import chk_order
+
 
 class sale_order(models.Model):
 	"""
@@ -37,7 +37,86 @@ class sale_order(models.Model):
 	_inherit = 'sale.order'
 
 
-# ----------------------------------------------------------- Dep ? -------------------------------
+# ----------------------------------------------------------- Dep ---------------------------------
+
+
+
+
+
+# ----------------------------------------------------------- Dates -------------------------------
+
+	# Date
+	date_order = fields.Datetime(
+		states={
+					'draft': [('readonly', False)],
+					'sent': [('readonly', False)],
+					'sale': [('readonly', True)],
+				},
+		index=True,
+	)
+
+
+	# Month
+	x_month_order = fields.Selection(
+			selection=ord_vars._month_order_list,
+			string='Mes',
+		)
+
+
+
+	# Day
+	x_day_order = fields.Selection(
+			selection=ord_vars._day_order_list,
+			string='Dia',
+		)
+
+
+
+
+
+
+
+	# Update Day Month - All
+	@api.multi
+	def update_day_month_all(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Update Day Month - All')
+		orders = self.env['sale.order'].search([
+																#('date_order', '>=', '2018-11-01'),
+																#('date_order', '>=', '2018-06-01'),
+																('date_order', '>=', '2018-01-01'),
+
+																#('date_order', '<', '2018-12-01'),
+													],
+																order='date_order asc',
+																#limit=1000,
+												)
+		for order in orders:
+			if order.x_day_order in [False] and order.x_month_order in [False]:
+				order.update_day_month()
+
+
+
+	# Update Day Month
+	@api.multi
+	def update_day_month(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Update Day Month')
+
+		date_format = "%d"
+		self.x_day_order = lib.get_date_with_format(date_format, self.date_order)
+
+		date_format = "%m"
+		self.x_month_order = lib.get_date_with_format(date_format, self.date_order)
+
+
+
 
 
 
@@ -64,7 +143,6 @@ class sale_order(models.Model):
 												)
 		for order in orders:
 			order.update_legacy()
-
 
 
 	# Update Legacy Fev
@@ -107,12 +185,13 @@ class sale_order(models.Model):
 
 
 	# Update Legacy
-	@api.multi
-	def update_legacy(self):
-		"""
-		high level support for doing this and that.
-		"""
-		self.x_legacy = True
+	#@api.multi
+	#def update_legacy(self):
+	#	"""
+	#	high level support for doing this and that.
+	#	"""
+	#	self.x_legacy = True
+
 
 
 
@@ -221,7 +300,9 @@ class sale_order(models.Model):
 			]
 
 
+
 # ----------------------------------------------------------- Constraints - From Chk Patient ------
+
 	# Check Ruc
 	@api.constrains('x_ruc')
 	def _check_x_ruc(self):
@@ -235,6 +316,17 @@ class sale_order(models.Model):
 	def _check_x_id_doc(self):
 		if self.x_type in ['ticket_receipt', 'receipt']:
 			chk_patient.check_x_id_doc(self)
+
+
+
+
+	# Check Serial Nr
+	@api.constrains('x_serial_nr')
+	def _check_x_serial_nr(self):
+		chk_order.check_serial_nr(self)
+
+
+
 
 
 
@@ -666,8 +758,12 @@ class sale_order(models.Model):
 			self.x_doctor_uid = uid
 
 
+
+
 		# Date - Must be that of the Sale, not the Budget.
 		self.date_order = datetime.datetime.now()
+		self.update_day_month()
+
 
 
 		# Update Descriptors (family and product)
@@ -943,16 +1039,6 @@ class sale_order(models.Model):
 
 
 
-	# Date
-	date_order = fields.Datetime(
-		states={
-					'draft': [('readonly', False)],
-					'sent': [('readonly', False)],
-					'sale': [('readonly', True)],
-				},
-
-		index=True,
-	)
 
 
 	# State
@@ -1579,15 +1665,19 @@ class sale_order(models.Model):
 		self.state = 'draft'
 
 
+	# Remove
 	@api.multi
 	def remove_myself(self):
 		"""
 		high level support for doing this and that.
 		"""
-		#self.test_reset()
-		self.reset()
-		self.unlink()
-
+		if self.state in ['credit_note']:
+			#raise UserError("Advertencia: La Nota de Crédito va a ser eliminada del sistema !")
+			self.reset()
+			self.unlink()
+		else:
+			#raise UserError("Advertencia: La Venta va a ser convertida en Presupuesto !")
+			self.reset()
 
 
 # ---------------------------------------------- Cancel -------------------------------------------

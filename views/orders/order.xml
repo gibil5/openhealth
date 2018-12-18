@@ -159,6 +159,36 @@
 
 
 
+                    <!-- Update -->
+                    <button
+                            type="object"
+                            class="oe_highlight"
+                            states="sale"                     
+
+                            name="update_day_month"
+
+                            string="Update Day Month"
+
+                            groups="openhealth.roots"
+                    />
+
+                    <!-- Update -->
+                    <button
+                            type="object"
+                            class="oe_highlight"
+                            states="sale"                     
+
+                            name="update_day_month_all"
+
+                            string="Update Day Month ALL"
+
+                            groups="openhealth.roots"
+                    />
+
+
+
+
+
                     <!-- Checksum -->
                     <!--
                     <button
@@ -251,6 +281,10 @@
                                                                                     ], 
                                                             }"
                                                 />
+
+                    <field name="x_day_order"           groups='openhealth.roots'   />
+                    <field name="x_month_order"           groups='openhealth.roots'   />
+
 
                     <field name="vspace"/>
 
@@ -574,7 +608,8 @@
                 <!-- Buttons - Post Mortem --> 
                 <field name="amount_total" position="after">                        
                         <group class="oe_left"  style="width: 600px;">
-                            <group col='5'      groups="openhealth.roots,openhealth.caja,openhealth.directors">
+
+                            <group col='5'      groups="openhealth.roots,openhealth.caja,openhealth.directors,openhealth.managers">
 
 
                                 <!-- Cancel Boolean -->
@@ -592,6 +627,7 @@
 
 <!--
                                         groups="openhealth.roots"
+                                        groups="openhealth.roots,openhealth.caja"
 -->
                                 <!-- Reset --> 
                                 <button 
@@ -599,24 +635,55 @@
                                         class="oe_highlight"
                                         name="reset"
 
-                                        groups="openhealth.roots,openhealth.caja"
+                                        groups="openhealth.roots"
 
                                         string="Reset"
                                 />
 
+<!--
+                                            help="Importante: Esta operación es IRREVERSIBLE !"
+-->
 
-                                <!-- Remove --> 
                                 <group>
+
+
+                                    <!-- Remove --> 
+                                    <button
+                                            name="remove_myself"    
+                                            type="object" 
+                                            class="oe_highlight"
+
+                                            groups="openhealth.roots,openhealth.managers"
+
+                                            states="sale"
+
+                                            string="ELIMINAR"
+
+                                            help="Importante: Esta operación es REVERSIBLE !"
+
+                                            confirm="Importante: La Venta va a ser convertida en Presupuesto. Desea continuar ?"
+
+                                    />
+
+
+                                    <!-- Remove --> 
                                     <button 
                                             name="remove_myself"    
                                             type="object" 
                                             class="oe_highlight"
-                                            groups="openhealth.roots"
 
-                                            string="Remove"
+                                            groups="openhealth.roots,openhealth.managers"
+
+                                            states="credit_note"
+
+                                            string="ELIMINAR NC"
+
+                                            help="Importante: Esta operación es IRREVERSIBLE !"
+
+                                            confirm="Importante: La Nota de Crédito va a ser eliminada del sistema. Desea continuar ?"
                                     />
-
                                 </group>
+
                             </group>
                         </group>
                 </field>
@@ -730,13 +797,18 @@ Look for the Minimalist experience !!!
                         "
                     >
 
-                    <field name="name"          string="Referencia"/>
+                    <field name="name"          string="Referencia"     groups='openhealth.roots'/>
                     <field name="x_legacy"      groups="openhealth.roots"/>
 
 
 
 
                     <field name="date_order"    string="Fecha"/>
+                    <field name="x_day_order"   groups="openhealth.roots"/>
+                    <field name="x_month_order"           groups='openhealth.roots'   />
+
+
+
                     <field name="x_serial_nr" />
 
                     <field name="x_counter_value"   groups="openhealth.roots"/>
@@ -744,7 +816,7 @@ Look for the Minimalist experience !!!
                     <field name="x_electronic"  groups="openhealth.roots"/>
                     
 
-                    <field name="x_payment_method"/>
+                    <field name="x_payment_method"  groups='openhealth.roots'/>
                     <field name="x_checksum"    groups="openhealth.roots"   />
 
 

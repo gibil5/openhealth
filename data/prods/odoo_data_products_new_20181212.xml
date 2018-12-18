@@ -4,6 +4,38 @@
 
 
 
+<!-- Products - New - 17 DEc 2018-->
+
+
+        <!-- Vitamin c serum -->
+        <record id='vitamin_c_serum' model='product.template'>
+
+            <field name='name'>VITAMINA C SERUM</field>
+
+            <field name='x_name_short'>vitamin_c_serum</field>
+
+            <field name='type'>product</field>
+
+            <field name='price'>250</field>
+
+            <field name='standard_price'>250</field>
+
+            <field name='x_family'>topical</field>
+        </record>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- Products - New - 12 DEc 2018-->
 
 

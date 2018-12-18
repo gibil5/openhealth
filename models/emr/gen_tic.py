@@ -16,6 +16,7 @@ _dic_prod = {
 			'product_1': 				'Producto 1',
 			'claridermil': 				'CLARIDERMIL',
 			'vitamin_k': 				'VITAMINA K',
+			'vitamin_c_serum': 			'VITAMINA C SERUM',
 
 
 

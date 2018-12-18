@@ -6,24 +6,31 @@
  		Is completely standard. Gives service to all Users.
 
  		Created: 			13 Aug 2018
- 		Last up: 	 		24 Nov 2018
+ 		Last up: 	 		18 Dec 2018
 """
+from __future__ import print_function
 import datetime
 
 
-
-#------------------------------------------------ Checksum ----------------------------------------
-# Get Checksum Generated
-def get_checksum_gen(generated, name):
+#------------------------------------------------ Date - Correct for Utc --------------------------
+def get_date_with_format(date_format, date):
 	"""
-	Get Checksum Generated
+	Get Date with Format
 	"""
-	if generated == name:
-		checksum = '1'
-	else:
-		checksum = '0'
-	return checksum
+	#print()
+	#print('Get Date Format')
+	#print(date_format)
+	#print(date)
 
+	date_format_1 = "%Y-%m-%d %H:%M:%S"
+
+	date_dt = datetime.datetime.strptime(date, date_format_1) + datetime.timedelta(hours=-5, minutes=0)
+	#print(date_dt)
+
+	date_s = date_dt.strftime(date_format)
+	#print(date_s)
+
+	return date_s
 
 
 
@@ -322,7 +329,7 @@ def correct_date(date):
 
 
 
-#------------------------------------------------ Partner On change - Test --------------------------
+#------------------------------------------------ Partner On change - Test ------------------------
 # Length
 def test_for_length(self, token, length):
 	"""
@@ -356,3 +363,16 @@ def test_for_digits(self, token):
 	else:
 		return 0
 # test_for_digits
+
+
+#------------------------------------------------ Checksum ----------------------------------------
+# Get Checksum Generated
+def get_checksum_gen(generated, name):
+	"""
+	Get Checksum Generated
+	"""
+	if generated == name:
+		checksum = '1'
+	else:
+		checksum = '0'
+	return checksum

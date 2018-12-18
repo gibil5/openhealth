@@ -349,9 +349,12 @@ access_sale_order,sale.order,model_sale_order,,1,1,1,0
 access_sale_order_caja,sale.order.caja,model_sale_order,openhealth.caja,1,1,1,0
 access_sale_order_reception,sale.order.reception,model_sale_order,openhealth.reception,1,1,1,0
 access_sale_order_physicians,sale.order.physicians,model_sale_order,openhealth.physicians,1,1,1,0
-access_sale_order_managers,sale.order.managers,model_sale_order,openhealth.managers,1,1,1,0
+
+access_sale_order_managers,sale.order.managers,model_sale_order,openhealth.managers,1,1,1,1
+
 access_sale_order_assistants,sale.order.assistants,model_sale_order,openhealth.assistants,1,0,0,0
 access_sale_order_archivers,sale.order.archivers,model_sale_order,openhealth.archivers,1,1,1,1
+
 
 
 access_sale_order_line,sale.order.line,model_sale_order_line,,1,1,1,1

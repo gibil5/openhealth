@@ -404,7 +404,12 @@ class DataModel(object):
 
 print('Data Model - In')
 
-dm = DataModel('/Users/gibil/reports/')
+
+#fname = '/Users/gibil/reports/'
+fname = '/home/odoo/reports/'
+dm = DataModel(fname)
+
+
 print(dm)
 
 dm.read_macro()

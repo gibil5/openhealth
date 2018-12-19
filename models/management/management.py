@@ -17,8 +17,8 @@ from openerp import models, fields, api
 from . import mgt_funcs
 from . import mgt_vars
 
-#from . import data_model
 import pandas as pd
+#from . import data_model
 
 
 class Management(models.Model):
@@ -185,7 +185,15 @@ class Management(models.Model):
 
 		#path = '/Users/gibil/reports/' + self.fname + '.csv'
 		#path = '/Users/gibil/reports/mgt.csv'
-		self.fname = '/Users/gibil/reports/mgt.csv'
+		#self.fname = '/Users/gibil/reports/mgt.csv'
+
+
+		# Init
+		csv_fname = 'mgt.csv'
+		base_dir = os.environ['HOME']
+		self.fname = base_dir + "/reports/" + csv_fname
+
+
 
 		data_frame = pd.DataFrame({
 										"name": names,
@@ -213,7 +221,7 @@ class Management(models.Model):
 										"per_amo_kit": per_amo_kit,
 						})
 
-		#data_frame.to_csv(path, index=False)
+
 		data_frame.to_csv(self.fname, index=False)
 
 

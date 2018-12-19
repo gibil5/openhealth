@@ -64,6 +64,7 @@ class Management(models.Model):
 		print('Create Graph')
 
 		path = '/Users/gibil/Virtualenvs/Odoo9-min/odoo/'
+
 		cmd = 'python ' + path + 'addons/openhealth/models/management/data_model.py'
 
 		print(cmd)

@@ -8,6 +8,10 @@
 from __future__ import print_function
 import csv
 import rsync
+
+import matplotlib
+matplotlib.use('Agg')
+
 import matplotlib.pyplot as plt
 
 class DataModel(object):
@@ -405,8 +409,8 @@ class DataModel(object):
 print('Data Model - In')
 
 
-#fname = '/Users/gibil/reports/'
-fname = '/home/odoo/reports/'
+fname = '/Users/gibil/reports/'
+#fname = '/home/odoo/reports/'
 dm = DataModel(fname)
 
 

@@ -12,14 +12,12 @@ import collections
 from timeit import default_timer as timer
 
 import csv
+import pandas as pd
 
 from openerp import models, fields, api
 from . import mgt_funcs
 from . import mgt_vars
-
-#import pandas as pd
-#from . import data_model
-#import matplotlib.pyplot as plt
+from . import data_model
 
 
 

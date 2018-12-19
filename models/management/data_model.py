@@ -8,8 +8,7 @@
 from __future__ import print_function
 import csv
 import rsync
-#import matplotlib.pyplot as plt
-
+import matplotlib.pyplot as plt
 
 class DataModel(object):
 	"""

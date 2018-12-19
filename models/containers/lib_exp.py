@@ -331,7 +331,8 @@ def format_txt(order):
 
 
 # Producto 2|NIU|10.00|150.00|17.7|01|||27|10|1000|IGV|VAT||||||040010008|15.00||]		# Dep
-# Producto 2|NIU|10.00|150.00|17.7|01|||27|10|1000|IGV|VAT||||||040010008|15.00||||]
+# Producto 2|NIU|10.00|150.00|17.7|01|||27|10|1000|IGV|VAT||||||040010008|15.00||||]	# Dep
+# Producto 2|NIU|10.00|150.00|17.7|01|27|10|1000|IGV|VAT||||||040010008|15.00||||]
 # !
 
 # sep + blank + sep + blank + sep + blank + sep + \
@@ -376,15 +377,17 @@ def format_txt(order):
 #                   str(line.price_tax)             + sep + \
 #                   str(line.price_unit_net)        + sep + \
 
+#					blank                           + sep + \
+#					blank                           + sep + \
+
+
 		in_line = line.product_id.name            + sep + \
 					unit_code                       + sep + \
 					acc.fmt(line.product_uom_qty)       + sep + \
 					acc.fmt(line.price_net)             + sep + \
 					acc.fmt(line.price_unit)            + sep + \
 					price_type_code                 + sep + \
-					blank                           + sep + \
-					blank                           + sep + \
-					acc.fmt(line.price_tax)             + sep + \
+					acc.fmt(line.price_tax)         + sep + \
 					tax_exemption_reason_code       + sep + \
 					tax_id                          + sep + \
 					tax_name                        + sep + \

@@ -350,7 +350,7 @@ def create_order(self, target):
 	"""
 	print()
 	print('Create Order')
-	print(target)
+	#print(target)
 	#print 'x_vip_inprog: ', self.x_vip_inprog
 
 
@@ -378,9 +378,9 @@ def create_order(self, target):
 	else:
 		pl = self.pricelist_id
 
-	print(pl)
-	print('pricelist: ', pl.name)
-	print(pl.id)
+	#print(pl)
+	#print('pricelist: ', pl.name)
+	#print(pl.id)
 
 
 		

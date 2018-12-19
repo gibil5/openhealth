@@ -215,6 +215,21 @@
 
 
 
+                        <!-- Graph Server -->
+                        <button 
+                                type="object" 
+                                class="oe_highlight oe_right"
+
+                                name="create_graph_server"
+
+                                string="Graph Server"                              
+
+                                groups="openhealth.roots"
+                        />
+
+
+
+
 
                         <!-- Legacy -->
 <!--                        

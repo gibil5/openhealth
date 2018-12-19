@@ -53,6 +53,27 @@ class Management(models.Model):
 
 
 
+# ----------------------------------------------------------- Graph Server ------------------------
+	# Create Graph Server
+	@api.multi
+	def create_graph_server(self):
+		"""
+		2. Create Graph files with MatPlotLib.
+		"""
+		print()
+		print('Create Graph')
+
+		path = '/root/openerp/'
+
+		cmd = 'python ' + path + 'addons/openhealth/models/management/data_model.py'
+
+		print(cmd)
+
+		os.system(cmd)
+
+
+
+
 # ----------------------------------------------------------- Graph --------------------------
 	# 1. Create Graph
 	@api.multi

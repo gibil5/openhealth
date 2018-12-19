@@ -13,21 +13,28 @@ import os
 
 
 # ----------------------------------------------------------- Sync  -------------------------------
-def synchronize():
+def synchronize(server):
 	print()
 	print("Synchronize")
-	
+	print(server)
+
 	# Init
 	base_dir = os.environ['HOME']
-
-	#source = base_dir + "/mssoft/ventas/"
-	#source = base_dir + "/reports/"
 	source = base_dir + "/reports/img/"
 	
-	destination = 'root@165.227.25.8:/var/www/html/reports'
+
+	if server in ['local']:
+		destination = 'root@165.227.25.8:/var/www/html/reports'
+	elif server in ['remote']:
+		destination = '/var/www/html/reports'
+
+
+	print(destination)
+
 
 	# Rsync
 	os.system("rsync -rv " + source + " " + destination)
+
 
 	# List
 	#ret = os.listdir(path)

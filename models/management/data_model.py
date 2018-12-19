@@ -8,11 +8,14 @@
 from __future__ import print_function
 import csv
 import rsync
-
 import matplotlib
 matplotlib.use('Agg')
-
 import matplotlib.pyplot as plt
+
+#from argparse import ArgumentParser
+#parser = ArgumentParser()
+#parser.add_argument("-s", "--server", dest="server", help="which SERVER", metavar="SERVER")
+
 
 class DataModel(object):
 	"""
@@ -23,8 +26,8 @@ class DataModel(object):
 		"""
 		high level support for doing this and that.
 		"""
-		print()
-		print("Init")
+		#print()
+		#print("Init")
 
 		#self.fname = fname
 		self.fname = path + 'mgt.csv'
@@ -394,13 +397,15 @@ class DataModel(object):
 
 
 
-	def synchro(self):
+	def synchro(self, server):
 		"""
 		high level support for doing this and that.
 		"""
 		print()
 		print("Synchro")
-		rsync.synchronize()
+		rsync.synchronize(server)
+
+
 
 
 
@@ -408,13 +413,35 @@ class DataModel(object):
 
 print('Data Model - In')
 
+from argparse import ArgumentParser
+parser = ArgumentParser()
+parser.add_argument("-s", "--server", dest="server", help="which SERVER", metavar="SERVER")
 
-fname = '/Users/gibil/reports/'
-#fname = '/home/odoo/reports/'
+#parser.add_argument("-f", "--file", dest="filename", help="write report to FILE", metavar="FILE")
+#parser.add_argument("-q", "--quiet", action="store_false", dest="verbose", default=True, help="don't print status messages to stdout")
+
+
+
+args = parser.parse_args()
+
+#print(parser)
+print(parser.parse_args())
+print(args.server)
+
+
+
+
+
+if args.server in ['local']:
+	fname = '/Users/gibil/reports/'
+
+elif args.server in ['remote']:
+	fname = '/home/odoo/reports/'
+
+
 dm = DataModel(fname)
+#print(dm)
 
-
-print(dm)
 
 dm.read_macro()
 dm.plot_pie()
@@ -424,6 +451,9 @@ dm.read_micro()
 dm.plot_line_micro()
 dm.plot_line()
 
-dm.synchro()
+
+dm.synchro(args.server)
+
+
 
 print('Data Model - Out')

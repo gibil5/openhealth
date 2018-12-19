@@ -56,7 +56,7 @@ class Management(models.Model):
 # ----------------------------------------------------------- Graph Server ------------------------
 	# Create Graph Server
 	@api.multi
-	def create_graph_server(self):
+	def create_graph_remote(self):
 		"""
 		2. Create Graph files with MatPlotLib.
 		"""
@@ -65,7 +65,8 @@ class Management(models.Model):
 
 		path = '/root/openerp/'
 
-		cmd = 'python ' + path + 'addons/openhealth/models/management/data_model.py'
+		#cmd = 'python ' + path + 'addons/openhealth/models/management/data_model.py'
+		cmd = 'python ' + path + 'addons/openhealth/models/management/data_model.py -s remote'
 
 		print(cmd)
 
@@ -86,7 +87,8 @@ class Management(models.Model):
 
 		path = '/Users/gibil/Virtualenvs/Odoo9-min/odoo/'
 
-		cmd = 'python ' + path + 'addons/openhealth/models/management/data_model.py'
+		#cmd = 'python ' + path + 'addons/openhealth/models/management/data_model.py'
+		cmd = 'python ' + path + 'addons/openhealth/models/management/data_model.py -s local'
 
 		print(cmd)
 

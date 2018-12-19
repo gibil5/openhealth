@@ -19,8 +19,17 @@ def synchronize(server):
 	print(server)
 
 	# Init
-	base_dir = os.environ['HOME']
+	
+
+	if server in ['local']:
+		base_dir = os.environ['HOME']
+	elif server in ['remote']:
+		base_dir = '/home/odoo'
+
+
+
 	source = base_dir + "/reports/img/"
+
 	
 
 	if server in ['local']:

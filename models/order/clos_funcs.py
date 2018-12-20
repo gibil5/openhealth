@@ -1,47 +1,48 @@
 # -*- coding: utf-8 -*-
 """
  		clos_funcs.py
- 
+
  		Created: 			       2016
 		Last up: 	 		 4 Sep 2018
 """
-from openerp import models, fields, api
+from __future__ import print_function
 import datetime
-
-
-
-# ----------------------------------------------------------- Set Totals ---------------------------
-
-def set_totals(self):
-	print()
-	print('Set All')
-
-	
-	# Get Orders
-	x_type = 'all'
-	orders, count = get_orders(self, self.date, x_type)
-
-	# Init
-	amount_untaxed = 0
-	count = 0
-
-	# Loop
-	for order in orders:
-		amount_untaxed = amount_untaxed + order.amount_untaxed
-		count = count + 1
-
-	# Total
-	self.total = amount_untaxed
-
-# set_totals
+#from openerp import models, fields, api
 
 
 
 # ----------------------------------------------------------- Set Proof ---------------------------
 
 def set_proof_totals(self):
+	"""
+	high level support for doing this and that.
+	"""
 	print()
 	print('Set By Proof')
+
+
+
+
+	# Credit Notes
+
+	# Get Orders
+	state = 'credit_note'
+	orders, count = get_orders_state(self, self.date, state)
+	print(orders)
+	print(count)
+
+	# Init
+	total = 0
+	for order in orders:
+		total = total + order.amount_untaxed
+
+	self.crn_tot = total
+
+	if count != 0:
+		self.serial_nr_first_crn = orders[0].x_serial_nr
+		self.serial_nr_last_crn = orders[-1].x_serial_nr
+
+
 
 
 
@@ -183,9 +184,48 @@ def set_proof_totals(self):
 
 
 
+# ----------------------------------------------------------- Get Orders --------------------------
+
+def get_orders_state(self, date, state):
+	"""
+	high level support for doing this and that.
+	"""
+	print()
+	print('Get Orders State')
+
+
+	# Init
+	count = 0
+	DATETIME_FORMAT = "%Y-%m-%d"
+	date_begin = date + ' 05:00:00'
+	date_end_dt = datetime.datetime.strptime(date, DATETIME_FORMAT) + datetime.timedelta(hours=24) + datetime.timedelta(hours=5, minutes=0)
+	date_end = date_end_dt.strftime('%Y-%m-%d %H:%M')
+
+
+	# Search
+	orders = self.env['sale.order'].search([
+												('state', '=', state),
+												('date_order', '>=', date_begin),
+												('date_order', '<', date_end),
+										])
+	count = self.env['sale.order'].search_count([
+												('state', '=', state),
+												('date_order', '>=', date_begin),
+												('date_order', '<', date_end),
+										])
+	return orders, count
+
+# get_orders_state
+
+
+
+
 # ----------------------------------------------------------- Set Form ----------------------------
 
 def set_form_totals(self):
+	"""
+	high level support for doing this and that.
+	"""
 	print()
 	print('Set By Form')
 
@@ -193,11 +233,11 @@ def set_form_totals(self):
 	# Get Orders
 	x_type = 'all'
 
-	orders,count = get_orders(self, self.date, x_type)
+	orders, count = get_orders(self, self.date, x_type)
 
 
 	# Init
-	cash_tot = 0 
+	cash_tot = 0
 	ame_tot = 0
 	din_tot = 0
 	mac_tot = 0
@@ -207,30 +247,30 @@ def set_form_totals(self):
 
 
 	# Loop
-	for order in orders: 
+	for order in orders:
 
-		for pm_line in order.x_payment_method.pm_line_ids: 
+		for pm_line in order.x_payment_method.pm_line_ids:
 
 			if pm_line.method == 'cash':
-				cash_tot = cash_tot + pm_line.subtotal  
+				cash_tot = cash_tot + pm_line.subtotal
 
 			elif pm_line.method == 'american_express':
-				ame_tot = ame_tot + pm_line.subtotal  
+				ame_tot = ame_tot + pm_line.subtotal
 
 			elif pm_line.method == 'diners':
-				din_tot = din_tot + pm_line.subtotal  
+				din_tot = din_tot + pm_line.subtotal
 
 			elif pm_line.method == 'credit_master':
-				mac_tot = mac_tot + pm_line.subtotal  
+				mac_tot = mac_tot + pm_line.subtotal
 
 			elif pm_line.method == 'debit_master':
-				mad_tot = mad_tot + pm_line.subtotal  
+				mad_tot = mad_tot + pm_line.subtotal
 
 			elif pm_line.method == 'credit_visa':
-				vic_tot = vic_tot + pm_line.subtotal  
+				vic_tot = vic_tot + pm_line.subtotal
 
 			elif pm_line.method == 'debit_visa':
-				vid_tot = vid_tot + pm_line.subtotal  
+				vid_tot = vid_tot + pm_line.subtotal
 
 
 	# Form
@@ -246,40 +286,64 @@ def set_form_totals(self):
 
 
 
+# ----------------------------------------------------------- Set Totals ---------------------------
+
+def set_totals(self):
+	"""
+	high level support for doing this and that.
+	"""
+	print()
+	print('Set All')
+
+
+	# Get Orders
+	x_type = 'all'
+	orders, count = get_orders(self, self.date, x_type)
+
+	# Init
+	amount_untaxed = 0
+	count = 0
+
+	# Loop
+	for order in orders:
+		amount_untaxed = amount_untaxed + order.amount_untaxed
+		count = count + 1
+
+
+	# Total
+	#self.total = amount_untaxed
+	self.total = amount_untaxed - self.crn_tot
+
+# set_totals
+
+
+
 
 # ----------------------------------------------------------- Get Orders --------------------------
-@api.multi
+
 def get_orders(self, date, x_type):
-	#print
-	#print 'Get Orders'
-	#print date 
+	"""
+	high level support for doing this and that.
+	"""
+	#print()
+	#print('Get Orders')
+	#print(date)
 
-
-	count = 0 
-
-
-
-	#DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
+	# Init
+	count = 0
 	DATETIME_FORMAT = "%Y-%m-%d"
-
 	date_begin = date + ' 05:00:00'
-
-
-	date_end_dt  = datetime.datetime.strptime(date, DATETIME_FORMAT) + datetime.timedelta(hours=24) + datetime.timedelta(hours=5,minutes=0)
-	#print date_end_dt
+	date_end_dt = datetime.datetime.strptime(date, DATETIME_FORMAT) + datetime.timedelta(hours=24) + datetime.timedelta(hours=5, minutes=0)
 	date_end = date_end_dt.strftime('%Y-%m-%d %H:%M')
 
 
-
-	if x_type == 'all': 
-		
+	# Search
+	if x_type == 'all':
 		orders = self.env['sale.order'].search([
 													('state', '=', 'sale'),
 													('date_order', '>=', date_begin),
 													('date_order', '<', date_end),
 											])
-
-
 		count = self.env['sale.order'].search_count([
 													('state', '=', 'sale'),
 													('date_order', '>=', date_begin),
@@ -288,8 +352,7 @@ def get_orders(self, date, x_type):
 
 
 
-	else: 
-
+	else:
 		orders = self.env['sale.order'].search([
 													('state', '=', 'sale'),
 													('date_order', '>=', date_begin),
@@ -299,7 +362,6 @@ def get_orders(self, date, x_type):
 												order='x_serial_nr asc',
 												#limit=1,
 											)
-
 		count = self.env['sale.order'].search_count([
 													('state', '=', 'sale'),
 													('date_order', '>=', date_begin),
@@ -311,33 +373,6 @@ def get_orders(self, date, x_type):
 											)
 
 
-
-
-
-
-
-	#print date_begin
-	#print date_end
-	#print orders  
-	
-	#return orders 
 	return orders, count
 
-
-
-
-
-
-
-
-# ----------------------------------------------------------- Funcs ------------------------------------------------------
-#@api.multi
-#def update_orders(self, date):
-#	print 'jx'
-#	print 'Get Orders'
-#	orders = get_orders(self, date)
-#	print orders
-#	for order in orders: 
-#		order.update_type()
-		#print order.x_type 
-
+# get_orders

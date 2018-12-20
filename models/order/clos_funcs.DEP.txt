@@ -1,0 +1,15 @@
+
+
+
+
+
+# ----------------------------------------------------------- Funcs ------------------------------------------------------
+#@api.multi
+#def update_orders(self, date):
+#	print 'jx'
+#	print 'Get Orders'
+#	orders = get_orders(self, date)
+#	print orders
+#	for order in orders:
+#		order.update_type()
+		#print order.x_type

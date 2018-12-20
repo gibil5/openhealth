@@ -290,18 +290,18 @@ class Closing(models.Model):
 		print('Update Totals')
 
 
-		# All
-		clos_funcs.set_totals(self)
-
-
 
 		# Proof
 		clos_funcs.set_proof_totals(self)
 
 
-
 		# Form
 		clos_funcs.set_form_totals(self)
+
+
+		# All
+		clos_funcs.set_totals(self)
+
 
 
 
@@ -312,9 +312,12 @@ class Closing(models.Model):
 
 		self.cash_tot_wblack = self.cash_tot - (self.total_form - self.total_form_wblack)
 
+
+		# Subtotals
 		self.total_cards = self.ame_tot + self.din_tot + self.mac_tot + self.mad_tot + self.vic_tot + self.vid_tot 						#+ self.cuo_tot
 
-		self.total_cash = self.cash_tot
+		#self.total_cash = self.cash_tot
+		self.total_cash = self.cash_tot - self.crn_tot
 
 	# update_totals
 

@@ -4,60 +4,25 @@
         
 
 
-        <!-- Graph --> 
-        <record id="view_closing_graph" model="ir.ui.view">
-             <field name="name">closing.graph</field>
-             <field name="model">openhealth.closing</field>
-             <field name="arch" type="xml">
-
-                 <graph string="Análisis de Cierres de Caja">
-
-<!--
-                    <field name="date" type="row"/>
-                    <field name="date" interval="day" type="col"    />
-                     <field name="total_cash" type="measure"/>                 
-                     <field name="total_cards" type="measure"/>
--->             
-                    
-                    <!-- Row --> 
-                    <field name="date" interval="day" type="row"    />
-                    
-                     
-                     <!-- Measures --> 
-                     <field name="total" type="measure"/>
-                 </graph>
-             </field>
-        </record>
-
-
-
-
-
-        <!-- FORM view --> 
+        <!-- FORM --> 
         <record model="ir.ui.view" id="closing_form_view">
             <field name="name">closing.form</field>
             <field name="model">openhealth.closing</field>
             <field name="arch" type="xml">
                 <form string="Clsing Form">
                     
-
                     <!-- Header -->
                     <header>
                         <button 
                                 type="object" 
                                 class="oe_highlight"
-
                                 name="update"
-
                                 string="Actualizar"
                         />
                     </header>
 
-
-
                     <!-- Sheet -->  
                     <sheet>
-
 
 
                         <!-- Base -->
@@ -65,8 +30,6 @@
                             <group>
                                 <field name="name"/>
                                 <field name="date"/>
-            
-                                <field name="test_target"/>
                             </group>
                             <group>
                                 <field name="total"/>
@@ -75,6 +38,60 @@
                             </group>
                         </group>
 
+
+
+
+
+                        <!-- Proof -->
+                        <group  string="Documentos de pago"     col="2"         >
+
+                            <group>
+
+                                <field name="crn_tot"/>
+                                <field name="serial_nr_first_crn"       />
+                                <field name="serial_nr_last_crn"        />
+
+                                <field name="vspace"/>
+
+                                <field name="tkr_tot"/>
+                                <field name="serial_nr_first_tkr"       />
+                                <field name="serial_nr_last_tkr"        />
+                                
+                                <field name="vspace"/>
+                                
+                                <field name="tki_tot"/>
+                                <field name="serial_nr_first_tki"       />
+                                <field name="serial_nr_last_tki"        />
+                                
+                                <field name="vspace"/>
+                                
+                                <field name="rec_tot"/>
+                                <field name="serial_nr_first_rec"       />
+                                <field name="serial_nr_last_rec"        />
+                                
+                                <field name="vspace"/>
+                                
+                                <field name="inv_tot"/>
+                                <field name="serial_nr_first_inv"       />
+                                <field name="serial_nr_last_inv"        />
+                                
+                                <field name="vspace"/>
+                                <field name="adv_tot"/>
+                                <field name="serial_nr_first_adv"       />
+                                <field name="serial_nr_last_adv"        />
+                                
+                                <field name="vspace"/>
+                                
+                                <field name="san_tot"/>
+                                <field name="serial_nr_first_san"       />
+                                <field name="serial_nr_last_san"        />
+                                <field name="vspace"/>
+                            </group>
+
+                            <group>
+                                <field name="total_proof"/>
+                            </group>
+                        </group>
 
 
 
@@ -89,48 +106,8 @@
                                 <field name="vic_tot"/>
                                 <field name="vid_tot"/>
                             </group>
-
                             <group>
                                 <field name="total_form"/>
-                            </group>
-                        </group>
-
-
-
-
-                        <!-- Proof -->
-                        <group  string="Documentos de pago"     col="2"         >
-
-                            <group>
-
-                                <field name="tkr_tot"/>
-                                <field name="serial_nr_first_tkr"       />
-                                <field name="serial_nr_last_tkr"        />
-                                <field name="vspace"/>
-                                <field name="tki_tot"/>
-                                <field name="serial_nr_first_tki"       />
-                                <field name="serial_nr_last_tki"        />
-                                <field name="vspace"/>
-                                <field name="rec_tot"/>
-                                <field name="serial_nr_first_rec"       />
-                                <field name="serial_nr_last_rec"        />
-                                <field name="vspace"/>
-                                <field name="inv_tot"/>
-                                <field name="serial_nr_first_inv"       />
-                                <field name="serial_nr_last_inv"        />
-                                <field name="vspace"/>
-                                <field name="adv_tot"/>
-                                <field name="serial_nr_first_adv"       />
-                                <field name="serial_nr_last_adv"        />
-                                <field name="vspace"/>
-                                <field name="san_tot"/>
-                                <field name="serial_nr_first_san"       />
-                                <field name="serial_nr_last_san"        />
-                                <field name="vspace"/>
-                            </group>
-
-                            <group>
-                                <field name="total_proof"/>
                             </group>
                         </group>
 
@@ -160,13 +137,15 @@
                 <tree string="Cierres de caja"  default_order='date desc'>
                     
                     <field name="name"/>
-                    <field name="test_target"  groups="openhealth.roots"/>
+
 
                     <field name="total_cash"/>
                     <field name="total_cards"/>
                     <field name="total"/>
 
 <!--
+                    <field name="test_target"  groups="openhealth.roots"/>
+
                     <field name="date"      string="Fecha"  />
 
                     <field name="total_form"/>
@@ -218,6 +197,32 @@
         </record>
         
 
+
+
+<!-- Graph --> 
+        <record id="view_closing_graph" model="ir.ui.view">
+             <field name="name">closing.graph</field>
+             <field name="model">openhealth.closing</field>
+             <field name="arch" type="xml">
+
+                 <graph string="Análisis de Cierres de Caja">
+
+<!--
+                    <field name="date" type="row"/>
+                    <field name="date" interval="day" type="col"    />
+                     <field name="total_cash" type="measure"/>                 
+                     <field name="total_cards" type="measure"/>
+-->             
+                    
+                    <!-- Row --> 
+                    <field name="date" interval="day" type="row"    />
+                    
+                     
+                     <!-- Measures --> 
+                     <field name="total" type="measure"/>
+                 </graph>
+             </field>
+        </record>
 
     </data>
 </openerp>

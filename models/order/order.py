@@ -17,18 +17,14 @@ except (ImportError, IOError) as err:
 
 from openerp import models, fields, api
 from openerp import _
-
 from openerp.exceptions import Warning as UserError
-
 from openerp.addons.openhealth.models.libs import creates, user
 from openerp.addons.openhealth.models.libs import lib
 from openerp.addons.openhealth.models.patient import pat_vars, chk_patient
-
 from . import ord_vars
 from . import lib_qr
 from . import test_order
 from . import chk_order
-
 
 class sale_order(models.Model):
 	"""
@@ -61,7 +57,6 @@ class sale_order(models.Model):
 			selection=ord_vars._month_order_list,
 			string='Mes',
 		)
-
 
 
 	# Day

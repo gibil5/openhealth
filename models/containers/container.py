@@ -14,7 +14,6 @@ from openerp.addons.openhealth.models.libs import creates
 from . import export
 from . import test_cases_pat
 
-
 class Container(models.Model):
 	"""
 	high level support for doing this and that.
@@ -363,8 +362,11 @@ class Container(models.Model):
 		# Loop
 		for patient in self.patient_ids:
 			patient_id = patient.id
+
+			# Protected			
 			if patient.x_test:
 				creates.remove_orders(self, patient_id)
+
 
 		# Electronic
 		self.mgt.electronic_order.unlink()

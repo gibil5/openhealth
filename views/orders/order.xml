@@ -160,6 +160,7 @@
 
 
                     <!-- Update -->
+<!--
                     <button
                             type="object"
                             class="oe_highlight"
@@ -172,7 +173,6 @@
                             groups="openhealth.roots"
                     />
 
-                    <!-- Update -->
                     <button
                             type="object"
                             class="oe_highlight"
@@ -184,7 +184,7 @@
 
                             groups="openhealth.roots"
                     />
-
+-->
 
 
 

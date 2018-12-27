@@ -1,349 +1,243 @@
 <openerp>
     <data>
 
-        <report
-            string="Cierre de Caja"
-            id="report_closing"
-            model="openhealth.closing"
-            report_type="qweb-pdf"
-            name="openhealth.report_closing_view"            
-            file="openhealth_closing.report_patient"
 
 
-            paperformat="appointment_receipt"
-        />
+<!-- Report -->
+<report
+    string="Cierre de Caja"
+    id="report_closing"
+    model="openhealth.closing"
+    report_type="qweb-pdf"
+    name="openhealth.report_closing_view"            
+    file="openhealth_closing.report_patient"
 
+    paperformat="appointment_receipt"
+/>
 
 
-        <template id="openhealth.report_closing_view">
-            <t t-call="report.html_container">                 
-            <t t-foreach="docs" t-as="doc">
-            <t>          
 
+<template id="openhealth.report_closing_view">
+    <t t-call="report.html_container">                 
+    <t t-foreach="docs" t-as="doc">
+    <t>          
 
 
-
-
-<!-- Header --> 
-<div class="header">    
-    <img src='/openhealth/static/src/img/logo_chavarri.png' style="max-height: 100px;"/>
-</div>
-
-
-
-
-
-<!--                                Page 1 - Begin                                          -->
-<div class="page">  
-
-
-<!--
---> 
-<br/>
-<br/>
-
-<br/>
-<br/>
-<br/>
-
-
-<center>
-<h4>
-    Cierre de Caja
-</h4>
-</center>
-<!--
-<br/>
--->
-
-
-
-
-
-<!-- Total --> 
-<h5>                            
-        <b>Total:</b>
-        <t t-esc="doc.total"/>
-</h5>                            
-
-<!-- Date --> 
-<h5>                            
-        <b>Fecha:</b>
-        <t t-esc="doc.date"/>   
-</h5>
-<!--                            
-<br/>
-<br/>
--->
-<!-- Title --> 
-<h4>                            
-    Documentos de Pago
-</h4>
-<!--
-<br/>
--->
-
-
-
-
-
-
-<!-- Table --> 
-<!--
-<table style="line-height: 200%;">
--->
-<table style="line-height: 200%;">
-
-
-<tr>
-<th>Boletas:</th>
-
-<th><t t-esc="doc.rec_tot"/></th>
-</tr>
-
-
-<tr>
-<th>De:</th>
-<th><t t-esc="doc.serial_nr_first_rec"/></th>
-</tr>
-
-<tr>
-<th>A:</th>
-<th><t t-esc="doc.serial_nr_last_rec"/></th>
-</tr>
-
-
-
-
-
-<tr>
-<th>Facturas:</th>
-<th><t t-esc="doc.inv_tot"/></th>
-</tr>
-
-<tr>
-<th>De:</th>
-<th><t t-esc="doc.serial_nr_first_inv"/></th>
-</tr>
-
-<tr>
-<th>A:</th>
-<th><t t-esc="doc.serial_nr_last_inv"/></th>
-</tr>
-
-
-
-
-
-
-
-<tr>
-<th>Tic. Boleta:</th>
-<th><t t-esc="doc.tkr_tot"/></th>
-</tr>
-
-<tr>
-<th>De:</th>
-<th><t t-esc="doc.serial_nr_first_tkr"/></th>
-</tr>
-
-<tr>
-<th>A:</th>
-<th><t t-esc="doc.serial_nr_last_tkr"/></th>
-</tr>
-
-
-
-
-
-
-
-<tr>
-<th>Tic. Factura:</th>
-<th><t t-esc="doc.tki_tot"/></th>
-</tr>
-
-<tr>
-<th>De:</th>
-<th><t t-esc="doc.serial_nr_first_tki"/></th>
-</tr>
-
-<tr>
-<th>A:</th>
-<th><t t-esc="doc.serial_nr_last_tki"/></th>
-</tr>
-
-
-
-
-
-<!--
-<tr>
-<th>Canjes Publicidad:</th>
-<th><t t-esc="doc.adv_tot"/></th>
-</tr>
-
-<tr>
-<th>Canjes NV:</th>
-<th><t t-esc="doc.san_tot"/></th>
-</tr>
--->
-
-
-<tr>
-<th>Total:</th>
-<!--
-<th><t t-esc="doc.total_proof"/></th>
--->
-<th><t t-esc="doc.total_proof_wblack"/></th>
-</tr>
-
-</table>    
-
-
-
-
-
-
-
-<!--
-<br/>
--->
-<!-- Title --> 
-<h4>                            
-    Formas de Pago
-</h4>
-<!--
-<br/>
--->
-
-
-
-
-<!-- Table --> 
-<!--
-<table style="line-height: 300%;">
--->
-<table style="line-height: 270%;">
-
-
-
-<tr>
-<th>Efectivo:</th>
-<!--
-<th><t t-esc="doc.cash_tot"/></th>
--->
-<th><t t-esc="doc.cash_tot_wblack"/></th>
-</tr>
-
-<tr>
-<th>American Express:</th>
-<th><t t-esc="doc.ame_tot"/></th>
-</tr>
-
-
-<!--
-<tr>
-<th>Cuota Perfecta :</th>
-<th><t t-esc="doc.cuo_tot"/></th>
-</tr>
--->
-
-
-<tr>
-<th>Diners:</th>
-<th><t t-esc="doc.din_tot"/></th>
-</tr>
-
-
-
-
-<tr>
-<th>Mastercard - Crédito:</th>
-<th><t t-esc="doc.mac_tot"/></th>
-</tr>
-
-<tr>
-<th>Mastercard - Débito:</th>
-<th><t t-esc="doc.mad_tot"/></th>
-</tr>
-
-
-
-
-<tr>
-<th>Visa - Crédito:</th>
-<th><t t-esc="doc.vic_tot"/></th>
-</tr>
-
-
-<tr>
-<th>Visa - Débito:</th>
-<th><t t-esc="doc.vid_tot"/></th>
-</tr>
-
-
-
-
-
-<tr>
-<th>Total:</th>
-<!--
-<th><t t-esc="doc.total_form"/></th>
--->
-<th><t t-esc="doc.total_form_wblack"/></th>
-</tr>
-
-</table>    
-
-
-
-
-
-
-
-</div> <!-- page --> 
-
-
-
-
-
-
-
-
-<!-- Footer --> 
-<!--
-<div class="footer">    
-    <div class='row'>
-
-        <div class='col-xs-4'>
-            <b>
-            Fecha:
-            </b>
-            <t t-esc="doc.name"/>
+        <!-- Header --> 
+        <div class="header">    
+            <img src='/openhealth/static/src/img/logo_chavarri.png' style="max-height: 100px;"/>
         </div>
 
 
-        <div class='col-xs-3'>
-        </div>
 
 
-        <div class='col-xs-5'>
-            <b>
-            Cierre de Caja #:
-            </b>
-            <t t-esc="doc.date_time"/>
-        </div>
-    
-    </div>
-</div>
+        <!-- Page -->
+        <div class="page">  
+
+        <br/><br/><br/><br/><br/>
+
+
+        <!-- Title --> 
+        <center><h4>Cierre de Caja</h4></center>
+
+        <!-- Total --> 
+        <h5><b>Total:</b><t t-esc="doc.total"/></h5>                            
+
+        <!-- Date --> 
+        <h5><b>Fecha:</b><t t-esc="doc.date"/></h5>
+
+
+
+
+
+        <!-- Proof --> 
+        <h4>Documentos de Pago</h4>
+
+
+
+        <!-- Table --> 
+        <table style="line-height: 200%;">
+
+
+
+            <!-- Credit Notes -->
+            <tr>
+                <th>Notas de Crédito:</th>
+                <th><t t-esc="doc.crn_tot"/></th>
+            </tr>
+            <tr>
+                <th>De:</th>
+                <th><t t-esc="doc.serial_nr_first_crn"/></th>
+            </tr>
+            <tr>
+                <th>A:</th>
+                <th><t t-esc="doc.serial_nr_last_crn"/></th>
+            </tr>
+
+
+<!--
+                <th>Tic. Boleta:</th>
 -->
-<!-- Footer --> 
+            <!-- Ticket Receipt -->
+            <tr>
+                <th>Boleta Electronica:</th>
+                <th><t t-esc="doc.tkr_tot"/></th>
+            </tr>
+            <tr>
+                <th>De:</th>
+                <th><t t-esc="doc.serial_nr_first_tkr"/></th>
+            </tr>
+            <tr>
+                <th>A:</th>
+                <th><t t-esc="doc.serial_nr_last_tkr"/></th>
+            </tr>
+
+<!--
+                <th>Tic. Factura:</th>
+-->
+            <!-- Ticket Invoice -->
+            <tr>
+                <th>Factura Electronica:</th>
+                <th><t t-esc="doc.tki_tot"/></th>
+            </tr>
+            <tr>
+                <th>De:</th>
+                <th><t t-esc="doc.serial_nr_first_tki"/></th>
+            </tr>
+            <tr>
+                <th>A:</th>
+                <th><t t-esc="doc.serial_nr_last_tki"/></th>
+            </tr>
 
 
-            </t>
-            </t>
-            </t>
-        </template>
+
+            <!-- Receipt -->
+            <tr>
+                <th>Boletas:</th>
+                <th><t t-esc="doc.rec_tot"/></th>
+            </tr>
+            <tr>
+                <th>De:</th>
+                <th><t t-esc="doc.serial_nr_first_rec"/></th>
+            </tr>
+            <tr>
+                <th>A:</th>
+                <th><t t-esc="doc.serial_nr_last_rec"/></th>
+            </tr>
+
+
+            <!-- Invoice -->
+            <tr>
+                <th>Facturas:</th>
+                <th><t t-esc="doc.inv_tot"/></th>
+            </tr>
+            <tr>
+                <th>De:</th>
+                <th><t t-esc="doc.serial_nr_first_inv"/></th>
+            </tr>
+            <tr>
+                <th>A:</th>
+                <th><t t-esc="doc.serial_nr_last_inv"/></th>
+            </tr>
+
+
+
+            <!-- Total -->
+            <tr>
+                <th>Total:</th>
+                <!--
+                <th><t t-esc="doc.total_proof"/></th>
+                -->
+                <th><t t-esc="doc.total_proof_wblack"/></th>
+            </tr>
+        </table>    
+        <!-- Table End --> 
+
+
+
+
+
+
+
+        <!-- Form --> 
+        <h4>Formas de Pago</h4>
+
+
+        <!-- Table --> 
+        <table style="line-height: 270%;">
+
+
+            <!-- Cash -->
+            <tr>
+                <th>Efectivo:</th>
+                <!--
+                <th><t t-esc="doc.cash_tot"/></th>
+                -->
+                <th><t t-esc="doc.cash_tot_wblack"/></th>
+            </tr>
+
+
+            <!-- American -->
+            <tr>
+                <th>American Express:</th>
+                <th><t t-esc="doc.ame_tot"/></th>
+            </tr>
+
+
+            <!-- Diners -->
+            <tr>
+                <th>Diners:</th>
+                <th><t t-esc="doc.din_tot"/></th>
+            </tr>
+
+
+            <!-- Master - Cred -->
+            <tr>
+                <th>Mastercard - Crédito:</th>
+                <th><t t-esc="doc.mac_tot"/></th>
+            </tr>
+
+            <!-- Master - Deb -->
+            <tr>
+                <th>Mastercard - Débito:</th>
+                <th><t t-esc="doc.mad_tot"/></th>
+            </tr>
+
+
+            <!-- Visa - Cred -->
+            <tr>
+                <th>Visa - Crédito:</th>
+                <th><t t-esc="doc.vic_tot"/></th>
+            </tr>
+
+
+            <!-- Visa - Deb -->
+            <tr>
+                <th>Visa - Débito:</th>
+                <th><t t-esc="doc.vid_tot"/></th>
+            </tr>
+
+
+
+            <!-- Total -->
+            <tr>
+                <th>Total:</th>
+                <!--
+                <th><t t-esc="doc.total_form"/></th>
+                -->
+                <th><t t-esc="doc.total_form_wblack"/></th>
+            </tr>
+        </table>    
+
+
+
+        </div>
+        <!-- Page End --> 
+
+    </t>
+    </t>
+    </t>
+</template>
+
     </data>
 </openerp>

@@ -37,8 +37,11 @@ _payment_method_list = [
 
 
 _sale_doc_type_list = [
-						('ticket_receipt', 		'Ticket Boleta'),
-						('ticket_invoice', 		'Ticket Factura'),
+						#('ticket_receipt', 	'Ticket Boleta'),
+						#('ticket_invoice', 	'Ticket Factura'),
+						('ticket_receipt', 		'Boleta Electronica'),
+						('ticket_invoice', 		'Factura Electronica'),
+
 						('receipt', 			'Boleta'),
 						('invoice', 			'Factura'),
 						('advertisement', 		'Canje Publicidad'),

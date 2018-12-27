@@ -317,7 +317,7 @@
 
                             />
 
-                    <field name="x_counter_value"       groups="openhealth.roots,openhealth.directors"   
+                    <field name="x_counter_value"       groups="openhealth.roots,openhealth.managers"   
 
                                                         attrs="{     
                                                                         'readonly': [

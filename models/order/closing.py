@@ -6,20 +6,19 @@
 	Last up: 	 		20 Dec 2018
 """
 from __future__ import print_function
-
 from openerp import models, fields, api
 from . import clos_funcs
 
 class Closing(models.Model):
 	"""
-	high level support for doing this and that.
+	Native class.
+	Encapsulates Odoo services.
 	"""
 	_name = 'openhealth.closing'
 
 
 
 # ----------------------------------------------------------- Dep ---------------------------------
-
 	#test_target = fields.Boolean(
 	#		string="Test Target",
 	#	)
@@ -41,13 +40,15 @@ class Closing(models.Model):
 
 	# Ticket Receipts
 	tkr_tot = fields.Float(
-			'Tickets Boleta',
+			#'Tickets Boleta',
+			'Boleta Electronica',
 			default=0,
 		)
 
 	# Ticket Invoices
 	tki_tot = fields.Float(
-			'Tickets Factura',
+			#'Tickets Factura',
+			'Factura Electronica',
 			default=0,
 		)
 
@@ -79,6 +80,11 @@ class Closing(models.Model):
 
 
 # ----------------------------------------------------------- Natives -----------------------------
+
+	# Type
+	x_type = fields.Char()
+
+
 
 	# Dates
 	date = fields.Date(
@@ -278,6 +284,8 @@ class Closing(models.Model):
 
 
 
+
+
 # ----------------------------------------------------------- Update Totals -----------------------
 
 	# Update Totals
@@ -306,7 +314,8 @@ class Closing(models.Model):
 
 
 		# Totals
-		self.total_form = self.cash_tot + self.ame_tot + self.din_tot + self.mac_tot + self.mad_tot + self.vic_tot + self.vid_tot
+		self.total_form = self.cash_tot + self.ame_tot + self.din_tot + self.mac_tot \
+																					+ self.mad_tot + self.vic_tot + self.vid_tot
 
 		self.total_form_wblack = self.total_proof_wblack
 
@@ -314,10 +323,10 @@ class Closing(models.Model):
 
 
 		# Subtotals
-		self.total_cards = self.ame_tot + self.din_tot + self.mac_tot + self.mad_tot + self.vic_tot + self.vid_tot 						#+ self.cuo_tot
+		self.total_cards = self.ame_tot + self.din_tot + self.mac_tot + self.mad_tot \
+																					+ self.vic_tot + self.vid_tot
 
-		#self.total_cash = self.cash_tot
-		self.total_cash = self.cash_tot - self.crn_tot
+		self.total_cash = self.cash_tot
 
 	# update_totals
 
@@ -330,5 +339,5 @@ class Closing(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		#print 'Closing - Update'
+		#print('Update')
 		self.update_totals()

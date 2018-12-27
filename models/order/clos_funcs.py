@@ -7,7 +7,38 @@
 """
 from __future__ import print_function
 import datetime
-#from openerp import models, fields, api
+
+
+
+# ----------------------------------------------------------- Set Proof ---------------------------
+def get_gen_totals(self):
+	"""
+	Abstract, General purpose.
+	Gives service to other methods.
+	Provider of services.
+	"""
+	print()
+	print('Get Generic Totals')
+
+
+	# Get Orders
+	orders, count = get_orders(self, self.date, self.x_type)
+
+
+	# Init
+	total = 0
+	for order in orders:
+		total = total + order.amount_untaxed
+	gen_tot = total
+
+	if count != 0:
+		serial_nr_first = orders[0].x_serial_nr
+		serial_nr_last = orders[-1].x_serial_nr
+	else:
+		serial_nr_first = ''
+		serial_nr_last = ''
+
+	return gen_tot, serial_nr_first, serial_nr_last
 
 
 
@@ -15,10 +46,36 @@ import datetime
 
 def set_proof_totals(self):
 	"""
-	high level support for doing this and that.
+	Object oriented. 
+	User of services.
 	"""
 	print()
 	print('Set By Proof')
+
+
+	# Receipt
+	self.x_type = 'receipt'
+	self.rec_tot, self.serial_nr_first_rec, self.serial_nr_last_rec = get_gen_totals(self)
+
+	# Invoice
+	self.x_type = 'invoice'
+	self.inv_tot, self.serial_nr_first_inv, self.serial_nr_last_inv = get_gen_totals(self)
+
+	# Ticket Receipt
+	self.x_type = 'ticket_receipt'
+	self.tkr_tot, self.serial_nr_first_tkr, self.serial_nr_last_tkr = get_gen_totals(self)
+
+	# Ticket Invoices
+	self.x_type = 'ticket_invoice'
+	self.tki_tot, self.serial_nr_first_tki, self.serial_nr_last_tki = get_gen_totals(self)
+
+	# Advertisement
+	self.x_type = 'advertisement'
+	self.adv_tot, self.serial_nr_first_adv, self.serial_nr_last_adv = get_gen_totals(self)
+
+	# Sale Notes
+	self.x_type = 'sale_note'
+	self.san_tot, self.serial_nr_first_san, self.serial_nr_last_san = get_gen_totals(self)
 
 
 
@@ -28,8 +85,6 @@ def set_proof_totals(self):
 	# Get Orders
 	state = 'credit_note'
 	orders, count = get_orders_state(self, self.date, state)
-	print(orders)
-	print(count)
 
 	# Init
 	total = 0
@@ -45,139 +100,11 @@ def set_proof_totals(self):
 
 
 
-
-
-	# Receipt
-
-	# Get Orders
-	x_type = 'receipt'
-	orders, count = get_orders(self, self.date, x_type)
-
-
-	# Init
-	total = 0
-	for order in orders:
-		total = total + order.amount_untaxed
-
-	self.rec_tot = total
-
-	if count != 0:
-		self.serial_nr_first_rec = orders[0].x_serial_nr
-		self.serial_nr_last_rec = orders[-1].x_serial_nr
-
-
-
-
-
-	# Invoice
-
-	# Get Orders
-	x_type = 'invoice'
-	orders, count = get_orders(self, self.date, x_type)
-
-
-	# Init
-	total = 0
-	for order in orders:
-		total = total + order.amount_untaxed
-	self.inv_tot = total
-
-	if count != 0:
-		self.serial_nr_first_inv = orders[0].x_serial_nr
-		self.serial_nr_last_inv = orders[-1].x_serial_nr
-
-
-
-
-
-	# Ticket Receipt
-	# Get Orders
-	x_type = 'ticket_receipt'
-	orders, count = get_orders(self, self.date, x_type)
-
-	#print orders
-	#print orders[0].x_serial_nr
-	#print orders[-1].x_serial_nr
-
-	# Init
-	total = 0
-	for order in orders:
-		total = total + order.amount_untaxed
-	self.tkr_tot = total
-
-	if count != 0:
-		self.serial_nr_first_tkr = orders[0].x_serial_nr
-		self.serial_nr_last_tkr = orders[-1].x_serial_nr
-
-
-
-
-
-	# Ticket Invoices
-
-	# Get Orders
-	x_type = 'ticket_invoice'
-	orders, count = get_orders(self, self.date, x_type)
-
-	# Init
-	total = 0
-	for order in orders:
-		total = total + order.amount_untaxed
-	self.tki_tot = total
-
-	if count != 0:
-		self.serial_nr_first_tki = orders[0].x_serial_nr
-		self.serial_nr_last_tki = orders[-1].x_serial_nr
-
-
-
-
-
-	# Advertisement
-
-	# Get Orders
-	x_type = 'advertisement'
-	orders, count = get_orders(self, self.date, x_type)
-
-
-	# Init
-	total = 0
-	for order in orders:
-		total = total + order.amount_untaxed
-	self.adv_tot = total
-
-	if count != 0:
-		self.serial_nr_first_adv = orders[0].x_serial_nr
-		self.serial_nr_last_adv = orders[-1].x_serial_nr
-
-
-
-
-
-	# Sale Notes
-
-	# Get Orders
-	x_type = 'sale_note'
-	orders, count = get_orders(self, self.date, x_type)
-
-	# Init
-	total = 0
-	for order in orders:
-		total = total + order.amount_untaxed
-	self.san_tot = total
-
-	if count != 0:
-		self.serial_nr_first_san = orders[0].x_serial_nr
-		self.serial_nr_last_san = orders[-1].x_serial_nr
-
-
-
-
-
 	# Totals Proof
-	self.total_proof = self.rec_tot + self.inv_tot + self.tkr_tot + self.tki_tot + self.adv_tot + self.san_tot
-	self.total_proof_wblack = self.rec_tot + self.inv_tot + self.tkr_tot + self.tki_tot 	#+ self.adv_tot + self.san_tot
+	#self.total_proof = self.rec_tot + self.inv_tot + self.tkr_tot + self.tki_tot + self.adv_tot + self.san_tot
+	self.total_proof = self.rec_tot + self.inv_tot + self.tkr_tot + self.tki_tot + self.adv_tot + self.san_tot - self.crn_tot
 
+	self.total_proof_wblack = self.rec_tot + self.inv_tot + self.tkr_tot + self.tki_tot 	#+ self.adv_tot + self.san_tot
 
 # set_proof_totals
 
@@ -188,7 +115,8 @@ def set_proof_totals(self):
 
 def get_orders_state(self, date, state):
 	"""
-	high level support for doing this and that.
+	Abstract, General purpose.
+	Provider of services.
 	"""
 	print()
 	print('Get Orders State')
@@ -224,17 +152,15 @@ def get_orders_state(self, date, state):
 
 def set_form_totals(self):
 	"""
-	high level support for doing this and that.
+	Object oriented. 
+	User of services.
 	"""
 	print()
 	print('Set By Form')
 
-
 	# Get Orders
 	x_type = 'all'
-
 	orders, count = get_orders(self, self.date, x_type)
-
 
 	# Init
 	cash_tot = 0
@@ -244,7 +170,6 @@ def set_form_totals(self):
 	mad_tot = 0
 	vic_tot = 0
 	vid_tot = 0
-
 
 	# Loop
 	for order in orders:
@@ -274,7 +199,8 @@ def set_form_totals(self):
 
 
 	# Form
-	self.cash_tot = cash_tot
+	#self.cash_tot = cash_tot
+	self.cash_tot = cash_tot - self.crn_tot
 	self.ame_tot = ame_tot
 	self.din_tot = din_tot
 	self.mac_tot = mac_tot
@@ -290,7 +216,8 @@ def set_form_totals(self):
 
 def set_totals(self):
 	"""
-	high level support for doing this and that.
+	Object oriented. 
+	User of services.
 	"""
 	print()
 	print('Set All')
@@ -323,11 +250,13 @@ def set_totals(self):
 
 def get_orders(self, date, x_type):
 	"""
-	high level support for doing this and that.
+	Abstract, General purpose.
+	Gives service to other methods.
 	"""
 	#print()
 	#print('Get Orders')
 	#print(date)
+	#print(x_type)
 
 	# Init
 	count = 0
@@ -350,8 +279,6 @@ def get_orders(self, date, x_type):
 													('date_order', '<', date_end),
 											])
 
-
-
 	else:
 		orders = self.env['sale.order'].search([
 													('state', '=', 'sale'),
@@ -371,7 +298,6 @@ def get_orders(self, date, x_type):
 												#order='x_serial_nr asc',
 												#limit=1,
 											)
-
 
 	return orders, count
 

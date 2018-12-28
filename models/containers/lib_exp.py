@@ -319,6 +319,8 @@ def format_txt(order):
 
 
 
+
+
 # Table 6 - Invoice order
 
 # Producto 1|NIU|40.00|1120.00|
@@ -351,34 +353,27 @@ def format_txt(order):
 	tax_exemption_reason_code = "10"        # ver
 	table_6 = ""
 
-	price_type_code = "01"
+
+
+	# Price type Separator 
+
+	#price_type_code = "01"
+
+	if order.x_type in ['ticket_receipt', 'receipt']:
+		price_type_code_sep = "01|"
+
+	elif order.x_type in ['ticket_invoice', 'invoice']:
+		price_type_code_sep = "01|||"
+
+
+
 
 
 	# Loop
 	for line in order.electronic_line_ids:
 
 
-		#account_code = acc.get_account_code(line.product_id)
 		account_code = line.product_id.get_code()
-
-
-		#print line
-		#print line.product_id.name
-		#print line.product_uom_qty
-		#print line.price_unit
-		#print line.price_tax
-		#print line.price_unit_net
-		#print account_code
-
-
-#                   str(line.product_uom_qty)       + sep + \
-#                   str(line.price_net)             + sep + \
-#                   str(line.price_unit)            + sep + \
-#                   str(line.price_tax)             + sep + \
-#                   str(line.price_unit_net)        + sep + \
-
-#					blank                           + sep + \
-#					blank                           + sep + \
 
 
 		in_line = line.product_id.name            + sep + \
@@ -386,7 +381,7 @@ def format_txt(order):
 					acc.fmt(line.product_uom_qty)       + sep + \
 					acc.fmt(line.price_net)             + sep + \
 					acc.fmt(line.price_unit)            + sep + \
-					price_type_code                 + sep + \
+					price_type_code_sep                 + \
 					acc.fmt(line.price_tax)         + sep + \
 					tax_exemption_reason_code       + sep + \
 					tax_id                          + sep + \

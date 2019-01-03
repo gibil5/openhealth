@@ -18,6 +18,7 @@
 
 
                         <!-- Update -->
+<!--
                         <button 
                                 type="object" 
                                 class="oe_highlight"
@@ -25,13 +26,13 @@
 
                                 string="Actualizar"                             
                         />
-
+-->
 
 
                         <!-- Update Patients -->
                         <!-- Update Sales -->
                         <!-- Update Recos -->
-<!--
+
                         <button 
                                 type="object" 
                                 class="oe_highlight"
@@ -55,7 +56,7 @@
 
                                 string="Recomendaciones"    
                         />
--->
+
 
 
 
@@ -228,14 +229,16 @@
 
                             <group>
                                 <field name="name"/>
-
                                 <field name="date_begin"/>
-
                                 <field name="date_end"/>
 
-                                <field name="write_date"    string="Actualizado"/>
+                                <field name="write_date"        string="Actualizado"   groups="openhealth.roots"/>
 
-                                <field name="test_target"/>
+                                <field name="owner"             groups="openhealth.roots"/>
+                                <field name="delta_patients"    groups="openhealth.roots"/>
+                                <field name="delta_sales"       groups="openhealth.roots"/>
+                                <field name="delta_recos"       groups="openhealth.roots"/>
+
                             </group>
 
                             
@@ -598,21 +601,24 @@ attrs="{'invisible':[('x_type', '!=', 'patient')]}"
 -->
                 <tree string="Marketing Tree">
                     
-
                     <field name="name"/>
-                    
-                    <field name="test_target"/>
 
 
-<!--
                     <field name="write_date"    string="Actualizado"/>
--->
+
+                    <field name="delta_patients"      groups="openhealth.roots"/>
+                    <field name="delta_sales"         groups="openhealth.roots"/>
+                    <field name="delta_recos"         groups="openhealth.roots"/>
+
+
+
+                    <field name="owner"         groups="openhealth.roots"/>
+
                     <field name="date_begin"    string="Fecha Inicio"/>
 
                     <field name="date_end"      string="Fecha Fin"/>
 
                     <field name="total_count"/>
-
 
                     <field name="patient_sale_count"/>
 
@@ -624,6 +630,8 @@ attrs="{'invisible':[('x_type', '!=', 'patient')]}"
                 </tree>
             </field>
         </record>
+<!--
+-->
 
 
 

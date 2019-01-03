@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 {
-	'name': "Open Health - STRUCTURED OBJECT ORIENTED",
+	'name': "Open Health - STRUCTURED - OBJECT ORIENTED",
 
 	'summary': "",
 
 	'description': """
 
-		27 Dec 2018
+		3 Jan 2019
 
-		Fulcrum - TRAVIS Quality Controlled
+		Fulcrum - TRAVIS Quality Controlled - 2019
 
 		Code without Tests is broken by design. Jacob Kaplan-Moss
 		
@@ -68,6 +68,12 @@
 
 
 	'data': [
+
+
+# ----------------------------------------------------------- New ------------------------------------------------------
+		'views/schedulers/scheduler.xml',
+		'views/schedulers/configurator.xml',
+
 
 
 # ----------------------------------------------------------- Data - First ------------------------------------------------------

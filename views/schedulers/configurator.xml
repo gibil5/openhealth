@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        
+
+
+        <!-- FORM --> 
+        <record model="ir.ui.view" id="configurator_form_view">
+            <field name="name">configurator.form</field>           
+            <field name="model">openhealth.configurator</field>
+            <field name="arch" type="xml">
+                <form string="configurator Form">
+                    
+
+
+                    <!-- Header -->
+                    <header>
+                    </header>
+
+
+
+
+
+
+
+                    <!-- Sheet -->  
+                    <sheet>
+
+
+                        <group  string="Total"  col="3" >
+                            <group>
+                                <field name="name"/>
+                                <field name="date_begin"/>
+                                <field name="date_end"/>
+                                <field name="write_date"        string="Actualizado"   groups="openhealth.roots"/>
+                            </group>
+
+                            <group>
+                                <field name="x_type"/>
+                            </group>
+                        </group>
+
+
+
+                        <!-- Notebook --> 
+                        <notebook>
+                        </notebook>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+
+
+
+
+        
+        <!-- TREE --> 
+        <record model="ir.ui.view" id="configurator_view_tree">
+            <field name="name">openhealth.configurator.tree</field>
+            <field name="model">openhealth.configurator</field>
+            <field name="arch" type="xml">
+
+                <tree string="Marketing Tree">
+                    
+                    <field name="name"/>
+
+                    <field name="write_date"    string="Actualizado"/>
+
+                    <field name="date_begin"/>
+
+                    <field name="date_end"/>
+
+                </tree>
+            </field>
+        </record>
+
+
+
+
+
+
+
+        <!-- ACTION - All -->
+        <record model="ir.actions.act_window" id="configurator_list_action">   
+            
+            <field name="name">Configurators</field>
+            
+            <field name="res_model">openhealth.configurator</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>            
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first order
+                </p>
+            </field>
+            -->
+        </record>
+
+
+
+    </data>
+</openerp>

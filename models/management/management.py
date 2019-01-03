@@ -3,23 +3,19 @@
 	Management Report
 
 	Created: 			28 May 2018
-	Last updated: 		13 Dic 2018
+	Last updated: 		 3 Jan 2019
 """
 from __future__ import print_function
 
 import os
 import collections
+import datetime
 from timeit import default_timer as timer
-
 import csv
-
 from openerp import models, fields, api
 from . import mgt_funcs
 from . import mgt_vars
-
 import pandas as pd
-#from . import data_model
-
 
 class Management(models.Model):
 	"""
@@ -29,6 +25,18 @@ class Management(models.Model):
 	_name = 'openhealth.management'
 	_order = 'date_begin asc'
 
+
+
+
+# ----------------------------------------------------------- QC ----------------------------------
+
+	delta_fast = fields.Float(
+			'Delta Fast',
+		)
+
+	delta_doctor = fields.Float(
+			'Delta Doctor',
+		)
 
 
 
@@ -279,6 +287,7 @@ class Management(models.Model):
 			[
 				('account', 'Account'),
 				('year', 'Year'),
+				('month', 'Month'),
 			],
 		)
 
@@ -337,17 +346,6 @@ class Management(models.Model):
 	# Ratios
 	ratio_pro_con = fields.Float(
 			'Ratio (proc/con) %',
-		)
-
-
-# ----------------------------------------------------------- QC ----------------------------------
-
-	delta_1 = fields.Float(
-			'Delta 1',
-		)
-
-	delta_2 = fields.Float(
-			'Delta 2',
 		)
 
 
@@ -600,8 +598,8 @@ class Management(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		print()
-		print('Update Stats')
+		#print()
+		#print('Update Stats')
 
 		# Using collections - More Abstract !
 
@@ -694,8 +692,8 @@ class Management(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		print()
-		print('Update Sales - By Doctor')
+		#print()
+		#print('Update Sales - By Doctor')
 
 		# Clean
 		self.doctor_line.unlink()
@@ -835,8 +833,8 @@ class Management(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		print()
-		print('Management - Update Doctors')
+		#print()
+		print('Update Doctors')
 		t0 = timer()
 
 		self.update_sales_by_doctor()
@@ -846,8 +844,8 @@ class Management(models.Model):
 		#self.update_counters()
 		#self.update_qc()
 		t1 = timer()
-		self.delta_2 = t1 - t0
-		#print self.delta_2
+		self.delta_doctor = t1 - t0
+		#print self.delta_doctor
 		#print
 	# update_doctors
 
@@ -994,8 +992,8 @@ class Management(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		print()
-		print('Update Sales Fast')
+		#print()
+		#print('Update Sales Fast')
 
 
 		# Clean
@@ -1115,15 +1113,15 @@ class Management(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		print()
+		#print()
 		print('Update Fast')
 		t0 = timer()
 
 		self.update_sales_fast()
 
 		t1 = timer()
-		self.delta_1 = t1 - t0
-		#print self.delta_1
+		self.delta_fast = t1 - t0
+		#print self.delta_fast
 		#print
 	# update
 
@@ -1135,8 +1133,8 @@ class Management(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		#print
-		#print 'Reset'
+		#print()
+		print('Reset')
 		self.reset_macro()
 		self.reset_micro()
 	# reset
@@ -1242,20 +1240,6 @@ class Management(models.Model):
 	# reset_micro
 
 
-# ----------------------------------------------------------- Update --------------------------
-	# Update
-	@api.multi
-	def update(self):
-		"""
-		high level support for doing this and that.
-		"""
-		#print
-		#print 'Management - Update'
-		self.reset()
-		self.update_fast()
-		self.update_doctors()
-	# update
-
 
 
 # ----------------------------------------------------------- Update - QC -------------------------
@@ -1357,3 +1341,34 @@ class Management(models.Model):
 			mgt.update_fast()
 
 	# update_all_months
+
+
+# ----------------------------------------------------------- Update --------------------------
+	# Update
+	@api.multi
+	def update(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Management - Update')
+
+		t0 = timer()
+		now_0 = datetime.datetime.now()
+
+		self.reset()
+		self.update_fast()
+		self.update_doctors()
+
+		t1 = timer()
+		now_1 = datetime.datetime.now()
+
+		delta = t1 - t0
+		print()
+		#print(t0)
+		#print(t1)
+		print(now_0)
+		print(now_1)
+		print(delta)
+		print()
+	# update

@@ -40,11 +40,30 @@
 
 
 
+        <!-- Configurators --> 
+        <menuitem   id="oh_configurator_menu" 
+                    name="Configurators" 
+                    parent="openhealth_openhealth_menu"
+                    sequence="1"
+                    action="configurator_list_action"
+            />
+
+
+        <!-- Schedulers --> 
+        <menuitem   id="oh_scheduler_menu" 
+                    name="Schedulers" 
+                    parent="openhealth_openhealth_menu"
+                    sequence="2"
+                    action="scheduler_list_action"
+            />
+
+
+
         <!-- Companies --> 
         <menuitem   id="oh_content_menu" 
                     name="Companies" 
                     parent="openhealth_openhealth_menu"
-                    sequence="1"
+                    sequence="3"
                     action="company_list_action"
             />
 
@@ -53,7 +72,7 @@
         <menuitem id="oh_electronic_menu"
                     name="Electronic Orders"
                     parent="openhealth_openhealth_menu"
-                    sequence="2"
+                    sequence="3"
                     action="electronic_order_form_action"
             />
 

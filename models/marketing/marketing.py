@@ -6,7 +6,10 @@
  	Last up: 	 			27 Nov 2018
 """
 from __future__ import print_function
+
 import datetime
+from timeit import default_timer as timer
+
 import collections
 from openerp import models, fields, api
 from . import mkt_funcs
@@ -21,10 +24,35 @@ class Marketing(models.Model):
 
 
 
-# ----------------------------------------------------------- Test Target - Important -------------
-	test_target = fields.Boolean(
-			string="Test Target", 
+# ----------------------------------------------------------- Dep ---------------------------------
+	#test_target = fields.Boolean(
+	#		string="Test Target", 
+	#	)
+
+
+
+# ----------------------------------------------------------- QC ----------------------------------
+
+	delta_patients = fields.Float(
+			'Delta Pacientes',
 		)
+
+	delta_sales = fields.Float(
+			'Delta Ventas',
+		)
+
+	delta_recos = fields.Float(
+			'Delta Recos',
+		)
+
+
+	owner = fields.Selection(
+			[
+				('year', 'Year'),
+				('month', 'Month'),
+			],
+		)
+
 
 
 
@@ -702,10 +730,15 @@ class Marketing(models.Model):
 
 
 # ----------------------------------------------------------- Update Recommendations --------------
-	@api.multi  
+	# Update Recos
+	@api.multi
 	def update_recos(self):  
-		#print 
-		#print 'Update Recos'
+		#print()
+		print('Update Recos')
+
+
+		# QC
+		t0 = timer()
 
 
 		# Clean 
@@ -841,16 +874,24 @@ class Marketing(models.Model):
 			# Counts 
 			self.patient_reco_count = self.patient_reco_count + len(pat_line.reco_line)
 
+
+		# QC
+		t1 = timer()
+		self.delta_recos = t1 - t0
+
 	# update_recos
 
 
 
 # ----------------------------------------------------------- Update Sales ------------------------
-	# Update Patients
+	# Update Sales
 	@api.multi
 	def update_sales(self):  
-		#print
-		#print 'Update Sales'
+		#print()
+		print('Update Sales')
+
+		# QC
+		t0 = timer()
 
 		# Clean Macros 
 		self.patient_budget_count = 0 
@@ -982,6 +1023,11 @@ class Marketing(models.Model):
 			# Update Nrs
 			pat_line.update_nrs()
 
+
+		# QC
+		t1 = timer()
+		self.delta_sales = t1 - t0
+
 	# update_sales
 
 
@@ -990,8 +1036,15 @@ class Marketing(models.Model):
 	# Update Patients
 	@api.multi
 	def update_patients(self):  
-		#print
-		#print 'Update Patients'
+		#print()
+		print('Update Patients')
+
+
+		# QC
+		t0 = timer()
+		now_0 = datetime.datetime.now()
+
+
 
 		# Clear 
 		self.patient_line.unlink()
@@ -1050,7 +1103,11 @@ class Marketing(models.Model):
 		lib_marketing.build_cities(self)
 
 
-		#print 'Done !'
+
+		t1 = timer()
+		now_1 = datetime.datetime.now()
+		self.delta_patients = t1 - t0
+
 	# update_patients
 
 
@@ -1064,7 +1121,5 @@ class Marketing(models.Model):
 	def update(self):  
 		print('Marketing - Update')
 		self.update_patients()
-		self.update_sales()
-		self.update_recos()
-
-	# update 
+		#self.update_sales()
+		#self.update_recos()

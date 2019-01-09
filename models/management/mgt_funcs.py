@@ -192,8 +192,8 @@ def line_analysis(self, line):
 	"""
 	high level support for doing this and that.
 	"""
-	#print
-	#print 'Line Analysis'
+	print()
+	print('Line Analysis')
 
 
 	# Init
@@ -255,7 +255,8 @@ def line_analysis(self, line):
 
 
 	# Products
-	else:
+	#else:
+	elif prod.type in ['product']:
 		self.nr_products = self.nr_products + line.product_uom_qty
 		self.amo_products = self.amo_products + line.price_subtotal
 
@@ -274,6 +275,15 @@ def line_analysis(self, line):
 		elif prod.x_family in ['kit']:
 			self.nr_kit = self.nr_kit + line.product_uom_qty
 			self.amo_kit = self.amo_kit + line.price_subtotal
+
+
+	# Consu
+	elif prod.type in ['consu']:
+		print('Consu')
+
+		self.nr_other = self.nr_other + line.product_uom_qty
+		self.amo_other = self.amo_other + line.price_subtotal
+
 
 
 	return False

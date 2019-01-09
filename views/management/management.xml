@@ -201,18 +201,24 @@
                                 <field name="nr_products"       string="Productos"/>
                                 <field name="nr_consultations"  string="Consultas"/>
                                 <field name="nr_procedures"     string="Procedimientos"/>
+
+                                <field name="nr_other"          string="Otros"/>
                             </group>
 
                             <group>
                                 <field name="amo_products"      string="Monto"  nolabel="0"/>
                                 <field name="amo_consultations" string="Monto"  nolabel="0"/>
                                 <field name="amo_procedures"    string="Monto"  nolabel="0" />
+
+                                <field name="amo_other"         string="Otros"/>
                             </group>
 
                             <group>
-                                <field name="per_amo_products"   string="%"       nolabel="0"     widget="percentage" />
-                                <field name="per_amo_consultations"  string="%"   nolabel="0"     widget="percentage" />
-                                <field name="per_amo_procedures"    string="%"    nolabel="0"     widget="percentage" />
+                                <field name="per_amo_products"          string="Porc"       nolabel="0"     widget="percentage" />
+                                <field name="per_amo_consultations"     string="Porc"      nolabel="0"     widget="percentage" />
+                                <field name="per_amo_procedures"        string="Porc"      nolabel="0"     widget="percentage" />
+
+                                <field name="per_amo_other"             string="Porc"      nolabel="0"     widget="percentage" />
                             </group>
                         </group>
 
@@ -220,8 +226,10 @@
                         <group string="Familias - Precios Promedio"   col="3">
                             <group>
                                 <field name="avg_products"      string="Productos"/>
-                                <field name="avg_consultations" string="Consultas"/>
+                                <field name="avg_consultations" string="otherltas"/>
                                 <field name="avg_procedures"    string="Procedimientos"/>
+
+                                <field name="avg_other"         string="Otros"/>
                             </group>
                         </group>
 

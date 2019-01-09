@@ -355,6 +355,11 @@ class Management(models.Model):
 
 # ----------------------------------------------------------- Percentages -------------------------
 
+	per_amo_other = fields.Float(
+			'% Monto',
+		)
+
+
 	per_amo_products = fields.Float(
 			#'% Monto Productos',
 			#'% monto prod',
@@ -441,6 +446,11 @@ class Management(models.Model):
 			'Monto Productos',
 		)
 
+	amo_other = fields.Float(
+			'Monto Otros',
+		)
+
+
 
 
 	amo_co2 = fields.Float(
@@ -506,6 +516,11 @@ class Management(models.Model):
 			'Nr Productos',
 		)
 
+	nr_other = fields.Integer(
+			'Nr Otros',
+		)
+
+
 
 
 	nr_co2 = fields.Integer(
@@ -559,6 +574,10 @@ class Management(models.Model):
 
 
 # ----------------------------------------------------------- Avg ---------------------------------
+
+	avg_other = fields.Float(
+			'Precio Prom. Otros',
+		)
 
 	avg_products = fields.Float(
 			'Precio Prom. Productos',
@@ -1089,7 +1108,6 @@ class Management(models.Model):
 			# Order Lines
 			for line in order.order_line:
 
-
 				# Line Analysis
 				mgt_funcs.line_analysis(self, line)
 
@@ -1097,6 +1115,10 @@ class Management(models.Model):
 
 
 		# Families
+		if self.nr_other != 0:
+			self.avg_other = self.amo_other / self.nr_other
+
+
 		if self.nr_products != 0:
 			self.avg_products = self.amo_products / self.nr_products
 
@@ -1153,8 +1175,11 @@ class Management(models.Model):
 
 
 		# Totals
-		self.total_amount = self.amo_products + self.amo_services
+		#self.total_amount = self.amo_products + self.amo_services
+		self.total_amount = self.amo_products + self.amo_services + self.amo_other
+
 		self.total_count = self.nr_products + self.nr_services
+
 		self.total_tickets = tickets
 
 
@@ -1179,6 +1204,8 @@ class Management(models.Model):
 			#self.per_amo_medical = (self.amo_medical / self.total_amount) * 100
 			#self.per_amo_cosmetology = (self.amo_cosmetology / self.total_amount) * 100
 
+
+			self.per_amo_other = (self.amo_other / self.total_amount)
 
 			self.per_amo_products = (self.amo_products / self.total_amount)
 			self.per_amo_consultations = (self.amo_consultations / self.total_amount)
@@ -1235,6 +1262,7 @@ class Management(models.Model):
 	# reset
 
 
+
 	# Reset Macros
 	def reset_macro(self):
 		"""
@@ -1249,6 +1277,8 @@ class Management(models.Model):
 		self.total_tickets = 0
 
 		# Nr
+		self.nr_other = 0
+
 		self.nr_products = 0
 		self.nr_services = 0
 		self.nr_consultations = 0
@@ -1267,7 +1297,10 @@ class Management(models.Model):
 		self.nr_cosmetology = 0
 
 
+
 		# Amo
+		self.amo_other = 0
+
 		self.amo_products = 0
 		self.amo_services = 0
 		self.amo_consultations = 0

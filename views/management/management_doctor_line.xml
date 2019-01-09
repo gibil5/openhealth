@@ -95,9 +95,14 @@
                                 <field name="family_line">
                                     <tree string="Familia"  limit="1000">
                                         <field name="name_sp"/>
+<!--
                                         <field name="name"/>
+-->
                                         <field name="x_count"/>
-                                        <field name="amount"/>
+
+                                        <field name="amount"    groups="openhealth.roots"/>
+
+                                        <field name="per_amo"   widget="percentage"/>
                                     </tree>
                                 </field>
                             </page>
@@ -109,12 +114,18 @@
                                 <field name="sub_family_line">
                                     <tree string="Subfamilia"   limit="1000"    >   
                                         <field name="name_sp"/>
+<!--
                                         <field name="name"/>
+-->                                    
                                         <field name="x_count"/>
-                                        <field name="amount"/>
+
+                                        <field name="amount"    groups="openhealth.roots"/>
+
+                                        <field name="per_amo"   widget="percentage"/>
                                     </tree>
                                 </field>
                             </page>
+
 
 
                             <!-- Sales -->

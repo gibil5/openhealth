@@ -16,6 +16,7 @@ class ManagementLine(models.Model):
 	_order = 'idx asc'
 
 
+
 #----------------------------------------------------------- Dep - Update -------------------------
 	# Update Fields
 	#def update(self):
@@ -63,10 +64,19 @@ class ManagementLine(models.Model):
 			'Nr',
 		)
 
+
+
+
 	amount = fields.Float(
 			'Monto',
 			digits=(16, 1),
 		)
+
+	per_amo = fields.Float(
+			'% Monto',
+			#digits=(16, 1),
+		)
+
 
 
 

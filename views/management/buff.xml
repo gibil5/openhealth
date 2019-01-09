@@ -1,0 +1,35 @@
+<!--
+                                <field name="per_amo_products"      string="%"/>
+                                <field name="per_amo_consultations" string="%"/>
+                                <field name="per_amo_procedures"    string="%"/>
+
+                                <label for="per_amo_consultations">%%</label>
+-->
+<!--
+                                <field name="per_amo_products"      class='oe_inline'/>
+                                <field name="per_amo_consultations" class='oe_inline'/>
+                                <field name="per_amo_procedures"    class='oe_inline'/>
+-->
+                                
+
+
+<!--
+<div name="per_amo_products">
+    <label for="per_amo_products"/>
+    <field name="per_amo_products" class="oe_inline"/>  %%
+</div>
+
+<div name="per_amo_consultations">
+    <label for="per_amo_consultations"/>
+    <field name="per_amo_consultations" class="oe_inline"/>  %%
+</div>
+-->
+
+
+
+
+
+
+<!--
+
+-->

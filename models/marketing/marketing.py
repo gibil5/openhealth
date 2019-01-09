@@ -6,18 +6,19 @@
  	Last up: 	 			27 Nov 2018
 """
 from __future__ import print_function
-
 import datetime
 from timeit import default_timer as timer
-
 import collections
 from openerp import models, fields, api
 from . import mkt_funcs
 from . import lib_marketing
 
 class Marketing(models.Model):
+
 	_inherit='openhealth.repo'
+
 	_name = 'openhealth.marketing'
+
 	_order = 'date_begin asc,name asc'
 
 

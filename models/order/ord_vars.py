@@ -2,6 +2,12 @@
 
 
 
+#_dic_month = {
+#					'01': 	'BC01',
+#}
+
+
+
 _month_order_list = [
 
 					('01', 		'ENE'),

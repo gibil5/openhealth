@@ -6,7 +6,7 @@
 
 	'description': """
 
-		3 Jan 2019
+		8 Jan 2019
 
 		Fulcrum - TRAVIS Quality Controlled - 2019
 
@@ -539,6 +539,8 @@
 		# ----------------------------------------------------------- Closings ------------------------------------------------------
 		# Closing 
 		'views/closings/closings.xml',
+		'views/closings/closings_search.xml',
+
 
 		#'reports/closing.xml',
 		'reports/closing/closing.xml',

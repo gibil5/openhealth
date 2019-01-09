@@ -19,6 +19,28 @@
                                 name="update"
                                 string="Actualizar"
                         />
+
+
+                        <button 
+                                type="object" 
+                                class="oe_highlight oe_right"
+
+                                name="update_month_all"
+
+                                string="Update month All"
+
+                                groups="openhealth.roots"
+                        />
+                        <button 
+                                type="object" 
+                                class="oe_highlight oe_right"
+
+                                name="update_month"
+
+                                string="Update month"
+
+                                groups="openhealth.roots"
+                        />
                     </header>
 
                     <!-- Sheet -->  
@@ -30,6 +52,8 @@
                             <group>
                                 <field name="name"/>
                                 <field name="date"/>
+                                <field name="month"/>
+                                <field name="year"/>
                             </group>
                             <group>
                                 <field name="total"/>
@@ -137,6 +161,8 @@
                 <tree string="Cierres de caja"  default_order='date desc'>
                     
                     <field name="name"/>
+                    <field name="month"/>
+                    <field name="year"/>
 
 
                     <field name="total_cash"/>

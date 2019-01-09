@@ -353,17 +353,29 @@ class Management(models.Model):
 
 # ----------------------------------------------------------- Percentages -------------------------
 
-	per_amo_procedures = fields.Float(
-			'% Monto Procedimientos',
+	per_amo_products = fields.Float(
+			#'% Monto Productos',
+			#'% monto prod',
+			#' ',
+			'Porc Monto',
 		)
 
 	per_amo_consultations = fields.Float(
-			'% Monto Consultas',
+			#'% Monto Consultas',
+			#'% monto cons',
+			#'Monto Consultas',
+			#' ',
+			'Porc Monto',
 		)
 
-	per_amo_products = fields.Float(
-			'% Monto Productos',
+	per_amo_procedures = fields.Float(
+			#'% Monto Procedimientos',
+			#'% monto proc',
+			#'Monto Procedimientos',
+			#' ',
+			'Porc Monto',
 		)
+
 
 
 
@@ -546,9 +558,41 @@ class Management(models.Model):
 
 # ----------------------------------------------------------- Avg ---------------------------------
 
+
+	avg_products = fields.Float(
+			'Precio Prom. Productos',
+		)
+
+	avg_consultations = fields.Float(
+			'Precio Prom. Consultas',
+		)
+
 	avg_procedures = fields.Float(
 			'Precio Prom. Procedimientos',
 		)
+
+	avg_services = fields.Float(
+			'Precio Prom. Servicios',
+		)
+
+
+
+
+
+	avg_topical = fields.Float(
+			'Precio Prom. Cremas',
+		)
+
+	avg_card = fields.Float(
+			'Precio Prom. Vip',
+		)
+
+	avg_kit = fields.Float(
+			'Precio Prom. Kits',
+		)
+
+
+
 
 	avg_co2 = fields.Float(
 			'Precio Prom. Co2',
@@ -578,17 +622,9 @@ class Management(models.Model):
 			'Precio Prom. Cosmiatria',
 		)
 
-	avg_consultations = fields.Float(
-			'Precio Prom. Consultas',
-		)
 
-	avg_products = fields.Float(
-			'Precio Prom. Productos',
-		)
 
-	avg_services = fields.Float(
-			'Precio Prom. Servicios',
-		)
+
 
 
 # ----------------------------------------------------------- Update Stats ------------------------
@@ -817,6 +853,12 @@ class Management(models.Model):
 			doctor.amount = amount
 			doctor.x_count = count
 
+			# Percentage
+			if self.total_amount != 0: 
+				doctor.per_amo = (doctor.amount / self.total_amount)
+
+
+
 			# Totals
 			total_amount = total_amount + amount
 			total_count = total_count + count
@@ -1044,7 +1086,20 @@ class Management(models.Model):
 			self.avg_procedures = self.amo_procedures / self.nr_procedures
 
 
+
+
 		# Subfamilies
+		if self.nr_topical != 0:
+			self.avg_topical = self.amo_topical / self.nr_topical
+
+		if self.nr_card != 0:
+			self.avg_card = self.amo_card / self.nr_card
+
+		if self.nr_kit != 0:
+			self.avg_kit = self.amo_kit / self.nr_kit
+
+
+
 		if self.nr_co2 != 0:
 			self.avg_co2 = self.amo_co2 / self.nr_co2
 
@@ -1083,23 +1138,38 @@ class Management(models.Model):
 		# Percentages
 		if self.total_amount != 0:
 
-			self.per_amo_products = (self.amo_products / self.total_amount) * 100
-			self.per_amo_consultations = (self.amo_consultations / self.total_amount) * 100
-			self.per_amo_procedures = (self.amo_procedures / self.total_amount) * 100
+			#self.per_amo_products = (self.amo_products / self.total_amount) * 100
+			#self.per_amo_consultations = (self.amo_consultations / self.total_amount) * 100
+			#self.per_amo_procedures = (self.amo_procedures / self.total_amount) * 100
+			self.per_amo_products = (self.amo_products / self.total_amount)
+			self.per_amo_consultations = (self.amo_consultations / self.total_amount)
+			self.per_amo_procedures = (self.amo_procedures / self.total_amount)
 
 
-			self.per_amo_topical = (self.amo_topical / self.total_amount) * 100
-			self.per_amo_card = (self.amo_card / self.total_amount) * 100
-			self.per_amo_kit = (self.amo_kit / self.total_amount) * 100
 
+			#self.per_amo_topical = (self.amo_topical / self.total_amount) * 100
+			#self.per_amo_card = (self.amo_card / self.total_amount) * 100
+			#self.per_amo_kit = (self.amo_kit / self.total_amount) * 100
 
-			self.per_amo_co2 = (self.amo_co2 / self.total_amount) * 100
-			self.per_amo_exc = (self.amo_exc / self.total_amount) * 100
-			self.per_amo_ipl = (self.amo_ipl / self.total_amount) * 100
-			self.per_amo_ndyag = (self.amo_ndyag / self.total_amount) * 100
-			self.per_amo_quick = (self.amo_quick / self.total_amount) * 100
-			self.per_amo_medical = (self.amo_medical / self.total_amount) * 100
-			self.per_amo_cosmetology = (self.amo_cosmetology / self.total_amount) * 100
+			#self.per_amo_co2 = (self.amo_co2 / self.total_amount) * 100
+			#self.per_amo_exc = (self.amo_exc / self.total_amount) * 100
+			#self.per_amo_ipl = (self.amo_ipl / self.total_amount) * 100
+			#self.per_amo_ndyag = (self.amo_ndyag / self.total_amount) * 100
+			#self.per_amo_quick = (self.amo_quick / self.total_amount) * 100
+			#self.per_amo_medical = (self.amo_medical / self.total_amount) * 100
+			#self.per_amo_cosmetology = (self.amo_cosmetology / self.total_amount) * 100
+
+			self.per_amo_topical = (self.amo_topical / self.total_amount)
+			self.per_amo_card = (self.amo_card / self.total_amount)
+			self.per_amo_kit = (self.amo_kit / self.total_amount)
+
+			self.per_amo_co2 = (self.amo_co2 / self.total_amount)
+			self.per_amo_exc = (self.amo_exc / self.total_amount)
+			self.per_amo_ipl = (self.amo_ipl / self.total_amount)
+			self.per_amo_ndyag = (self.amo_ndyag / self.total_amount)
+			self.per_amo_quick = (self.amo_quick / self.total_amount)
+			self.per_amo_medical = (self.amo_medical / self.total_amount)
+			self.per_amo_cosmetology = (self.amo_cosmetology / self.total_amount)
 
 	# update_sales_fast
 

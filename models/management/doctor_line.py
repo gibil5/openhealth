@@ -11,9 +11,9 @@ from . import mgt_vars
 
 class DoctorLine(models.Model):	
 
-	_inherit = 'openhealth.management.line'
-	
 	_name = 'openhealth.management.doctor.line'
+
+	_inherit = 'openhealth.management.line'
 	
 	_order = 'amount desc'
 
@@ -168,7 +168,6 @@ class DoctorLine(models.Model):
 												'x_count': count, 
 												'doctor_id': self.id, 
 											})
-
 			#family.update_fields()
 			family.update()
 
@@ -309,10 +308,12 @@ class DoctorLine(models.Model):
 		else: 
 			self.name_sp = self.name
 
+
 		# Ratios
 		if self.nr_consultations != 0: 
 			self.ratio_pro_con = (float(self.nr_procedures) / float(self.nr_consultations)) * 100 
 			self.ratio_pro_con_co2 = (float(self.nr_procedures_co2) / float(self.nr_consultations)) * 100 
 			self.ratio_pro_con_quick = (float(self.nr_procedures_quick) / float(self.nr_consultations)) * 100 
+
 
 	# update

@@ -309,29 +309,28 @@ jx
                                 <field name="nr_consultations"  string="Consultas Nr"/>
                                 <field name="nr_procedures"     string="Procedimientos Nr"/>
 -->
-                                <field name="nr_products"/>
-                                <field name="nr_consultations"/>
-                                <field name="nr_procedures"/>
+                                <field name="nr_products"       string="Productos"/>
+                                <field name="nr_consultations"  string="Consultas"/>
+                                <field name="nr_procedures"     string="Procedimientos"/>
+                            </group>
+
+
+                            <group>
+                                <field name="per_amo_products"          nolabel="0"     widget="percentage" />
+                                <field name="per_amo_consultations"     nolabel="0"     widget="percentage" />
+                                <field name="per_amo_procedures"        nolabel="0"     widget="percentage" />
                             </group>
 
                             <group>
-                                <field name="amo_products"      string="Monto"  />
-                                <field name="amo_consultations" string="Monto"  />
-                                <field name="amo_procedures"    string="Monto"  />
-                            </group>
-
-                            <group>
-
-                                <field name="per_amo_products"      string="%"/>
-                                <field name="per_amo_consultations" string="%"/>
-                                <field name="per_amo_procedures"    string="%"/>
-
+                                <field name="avg_products"      string="Precio Prom"/>
+                                <field name="avg_consultations" string="Precio Prom"/>
+                                <field name="avg_procedures"    string="Precio Prom"/>
                             </group>
 <!--
                             <group>
-                                <field name="avg_products"      string="Precio Prom."   />
-                                <field name="avg_consultations" string="Precio Prom."   />
-                                <field name="avg_procedures"    string="Precio Prom."   />
+                                <field name="amo_products"      string="S/."/>
+                                <field name="amo_consultations" string="S/."/>
+                                <field name="amo_procedures"    string="S/."/>
                             </group>
 -->
                         </group>
@@ -353,27 +352,61 @@ jx
                         <!-- Sub-Families --> 
                         <group  string="Sub Familias"   col="3" >
                             <group>
-                                <field name="nr_topical"/>
-                                <field name="nr_card"/>
-                                <field name="nr_kit"/>
+                                <field name="nr_topical"    string="Cremas"/>
+                                <field name="nr_card"       string="Vip"/>
+                                <field name="nr_kit"        string="Kits"/>
 
                                 <field name="vspace"/>
 
-                                <field name="nr_co2"    string="Co2 Nr" />
-                                <field name="nr_exc"    string="Exc Nr" />
-                                <field name="nr_ipl"    string="Ipl Nr" />
-                                <field name="nr_ndyag"  string="Ndyag Nr"   />
-                                <field name="nr_quick"  string="Quick Nr"   />
-                                <field name="nr_medical"        string="TM Nr"  />
-                                <field name="nr_cosmetology"    string="Cosmeatria Nr"  />
+                                <field name="nr_co2"    string="Co2"/>
+                                <field name="nr_exc"    string="Exc"/>
+                                <field name="nr_ipl"    string="Ipl"/>
+                                <field name="nr_ndyag"  string="Ndyag"/>
+                                <field name="nr_quick"  string="Quick"/>
+                                <field name="nr_medical"        string="TM"/>
+                                <field name="nr_cosmetology"    string="Cosmeatria"/>
                             </group>
+
+
+                            <group>
+                                <field name="per_amo_topical"   string="% Monto"    widget="percentage"/>
+                                <field name="per_amo_card"   string="% Monto"       widget="percentage"/>
+                                <field name="per_amo_kit"   string="% Monto"        widget="percentage"/>
+
+                                <field name="vspace"/>
+
+                                <field name="per_amo_co2"   string="% Monto"        widget="percentage"/>
+                                <field name="per_amo_exc"   string="% Monto"        widget="percentage"/>
+                                <field name="per_amo_ipl"   string="% Monto"        widget="percentage"/>
+                                <field name="per_amo_ndyag" string="% Monto"        widget="percentage"/>
+                                <field name="per_amo_quick" string="% Monto"        widget="percentage"/>
+                                <field name="per_amo_medical"       string="% Monto"    widget="percentage"/>
+                                <field name="per_amo_cosmetology"   string="% Monto"    widget="percentage"/>
+                            </group>
+
+
+                            <group>
+                                <field name="avg_topical"   string="Precio Prom"/>
+                                <field name="avg_card"      string="Precio Prom"/>
+                                <field name="avg_kit"       string="Precio Prom"/>
+
+                                <field name="vspace"/>
+
+                                <field name="avg_co2"   string="Precio Prom"/>
+                                <field name="avg_exc"   string="Precio Prom"/>
+                                <field name="avg_ipl"   string="Precio Prom"/>
+                                <field name="avg_ndyag" string="Precio Prom"/>
+                                <field name="avg_quick"     string="Precio Prom"/>
+                                <field name="avg_medical"       string="Precio Prom"/>
+                                <field name="avg_cosmetology"   string="Precio Prom"/>
+                            </group>
+
+<!--
                             <group>
                                 <field name="amo_topical"   string="Monto"/>
                                 <field name="amo_card"   string="Monto"/>
                                 <field name="amo_kit"   string="Monto"/>
-
                                 <field name="vspace"/>
-
                                 <field name="amo_co2"   string="Monto"/>
                                 <field name="amo_exc"   string="Monto"/>
                                 <field name="amo_ipl"   string="Monto"/>
@@ -381,31 +414,6 @@ jx
                                 <field name="amo_quick" string="Monto"/>
                                 <field name="amo_medical"       string="Monto"/>
                                 <field name="amo_cosmetology"   string="Monto"/>
-                            </group>
-                            <group>
-                                <field name="per_amo_topical"   string="% Monto"/>
-                                <field name="per_amo_card"   string="% Monto"/>
-                                <field name="per_amo_kit"   string="% Monto"/>
-
-                                <field name="vspace"/>
-
-                                <field name="per_amo_co2"   string="% Monto"/>
-                                <field name="per_amo_exc"   string="% Monto"/>
-                                <field name="per_amo_ipl"   string="% Monto"/>
-                                <field name="per_amo_ndyag" string="% Monto"/>
-                                <field name="per_amo_quick" string="% Monto"/>
-                                <field name="per_amo_medical"       string="% Monto"/>
-                                <field name="per_amo_cosmetology"   string="% Monto"/>
-                            </group>
-<!--                            
-                            <group>
-                                <field name="avg_co2"   string="Precio Prom."   />
-                                <field name="avg_exc"   string="Precio Prom."   />
-                                <field name="avg_ipl"   string="Precio Prom."   />
-                                <field name="avg_ndyag" string="Precio Prom."   />
-                                <field name="avg_quick"     string="Precio Prom."   />
-                                <field name="avg_medical"       string="Precio Prom."   />
-                                <field name="avg_cosmetology"   string="Precio Prom."   />
                             </group>
 -->
                         </group>
@@ -427,14 +435,19 @@ jx
                                             string="e"
                                         />
                                         <field name="name"/>
+
+                                        <field name="x_count"    string="Nr Ventas"/>
                                         <field name="nr_consultations"/>
                                         <field name="nr_procedures"/>
                                         <field name="nr_products"/>
+
                                         <field name="ratio_pro_con"/>
                                         <field name="ratio_pro_con_co2"/>
                                         <field name="ratio_pro_con_quick"/>
-                                        <field name="x_count"/>
-                                        <field name="amount"/>
+
+                                        <field name="amount"    groups="openhealth.roots"/>
+
+                                        <field name="per_amo"   widget="percentage"/>
                                     </tree>
                                 </field>
                             </page>
@@ -453,8 +466,9 @@ jx
                                         <field name="idx"/>
                                         <field name="name_sp"/>
                                         <field name="meta_sp"/>
-                                        <field name="amount"/>
                                         <field name="x_count"/>
+
+                                        <field name="amount"    invisible="1"/>
                                     </tree>
                                 </field>
                             </page>
@@ -473,7 +487,8 @@ jx
                                         <field name="name_sp"/>
                                         <field name="meta_sp"/>
                                         <field name="x_count"/>
-                                        <field name="amount"/>
+
+                                        <field name="amount"    invisible="1"/>
                                     </tree>
                                 </field>
                             </page>

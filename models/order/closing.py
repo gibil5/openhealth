@@ -8,6 +8,7 @@
 from __future__ import print_function
 from openerp import models, fields, api
 from . import clos_funcs
+from . import ord_vars
 
 class Closing(models.Model):
 	"""
@@ -105,6 +106,19 @@ class Closing(models.Model):
 			' ',
 			readonly=True
 		)
+
+
+	# Month
+	month = fields.Selection(
+			selection=ord_vars._month_order_list,
+			string='Mes',
+		)
+
+	# Year
+	year = fields.Char(
+			string='Año',
+		)
+
 
 
 # ----------------------------------------------------------- Partials ----------------------------
@@ -341,3 +355,65 @@ class Closing(models.Model):
 		"""
 		#print('Update')
 		self.update_totals()
+
+
+
+# ----------------------------------------------------------- Update All Months -------------------
+	# Update Month
+	@api.multi
+	def update_month_all(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Update Month All')
+
+
+		# Search
+		configurator = self.env['openhealth.configurator'].search([
+																	('name', 'in', ['closing']),
+															],
+																	order='date_begin,name asc',
+																	limit=1,
+														)
+		print(configurator)
+		print(configurator.name)
+
+		date_begin = configurator.date_begin
+		date_end = configurator.date_end
+
+		# Search
+		closings = self.env['openhealth.closing'].search([
+																	('date', '>=', date_begin),
+																	('date', '<', date_end),
+																	#('owner', 'in', ['month']),
+															],
+																	order='date asc',
+																	#limit=1000,
+														)
+		print(closings)
+
+		for closing in closings:
+			print(closing.name)
+			closing.update_month()
+
+
+
+# ----------------------------------------------------------- Update Month ------------------------
+	# Update Month
+	@api.multi
+	def update_month(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Update Month')
+		print(self.name)
+		print(self.date)
+
+		month = self.date.split('-')[1]
+		self.month = month
+
+		year = self.date.split('-')[0]
+		self.year = year
+

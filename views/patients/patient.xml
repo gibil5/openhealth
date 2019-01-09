@@ -519,30 +519,29 @@
 
 
 
+                    <field name="city"/>
+                    <field name="street2_sel"/>
+                    <field name="street2_char"/>
+
+
+
                     <field name="x_id_doc_type" string="Tipo Doc"/>
                     <field name="x_id_doc_type_code"    string="Cod"/>
                     <field name="x_id_doc"      string="Nr Doc"/>
 
 
 
-
                     <field name="x_dni"/>
-
-
                     <field name="x_ruc"/>
-                    
                     <field name="x_firm"/>
 
 
 
                     <field name="treatment_ids"/>
-
 <!--
                     <field name="city"          string="Depto"/>                    
                     <field name="age"/>
                     <field name="sex"/>     
-
-
 
                     <field name="x_treatment_count"/>
                     <field name="x_firm"/>

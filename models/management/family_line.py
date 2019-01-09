@@ -6,6 +6,7 @@
 # Last up: 			20 Aug 2018
 #
 from __future__ import print_function
+
 from openerp import models, fields, api
 from . import mgt_vars
 
@@ -15,12 +16,14 @@ class FamilyLine(models.Model):
 
 	_name = 'openhealth.management.family.line'
 
+	_order = 'amount desc'
+
 
 
 # ----------------------------------------------------------- Update ------------------------------
 	def update(self):
-		print()
-		print('Update - Family')
+		#print()
+		#print('Update - Family - jx')
 
 
 

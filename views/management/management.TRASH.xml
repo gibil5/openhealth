@@ -1,0 +1,104 @@
+
+
+
+
+                        <!-- Electronic - Clear -->
+                        <!-- Update Electronic -->
+                        <!-- Electronic -->
+<!--
+                        <button 
+                                type="object" 
+                                class="oe_highlight"
+                                
+                                name="clear_electronic"
+
+                                string="Clear"                              
+                        />
+
+                        <button 
+                                type="object" 
+                                class="oe_highlight"
+                                
+                                name="update_electronic"
+
+                                string="Electronic"                             
+                        />
+
+                        <button 
+                                class="oe_highlight"
+                                type="action" 
+                                context="{
+                                            'search_default_management_id': active_id,  
+                                        }"
+
+                                name="%(electronic_order_form_action)d" 
+
+                                string="Electronic Sales"   
+                        />
+-->
+
+
+
+
+                        <!-- Families -->
+<!--
+                        <button 
+                                class="oe_highlight"
+                                type="action" 
+                                context="{
+                                            'search_default_management_id': active_id,  
+                                        }"                                                                          
+                                name="%(management_family_line_form_action)d" 
+
+                                string="Ver Familias"   
+                        />
+-->
+                        <!-- Doctores -->
+<!--
+                        <button 
+                                class="oe_highlight"
+                                type="action" 
+                                context="{
+                                            'search_default_management_id': active_id,  
+                                        }"                                          
+                                name="%(management_doctor_line_form_action)d" 
+
+                                string="Ver Doctores"   
+                        />
+
+                                groups="openhealth.roots"
+-->
+
+
+
+                        <!-- Legacy -->
+<!--                        
+                        <button 
+                                type="object" 
+                                class="oe_highlight oe_right"
+                                name="sales_legacy"
+
+                                string="Legacy"                             
+
+                                groups="openhealth.roots"
+                        />
+
+-->                     
+
+
+
+
+
+                        <!-- Ratios --> 
+<!--
+                        <group  string="Ratios" col="3" >
+                            <group>
+                                <field name="ratio_pro_con"/>
+                            </group>
+                            <group></group>
+                            <group></group>
+                        </group>
+-->
+
+
+

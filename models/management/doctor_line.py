@@ -5,6 +5,8 @@
 # Created: 			18 May 2018
 # Last up: 			20 Aug 2018
 #
+from __future__ import print_function
+
 import collections
 from openerp import models, fields, api
 from . import mgt_vars
@@ -103,9 +105,8 @@ class DoctorLine(models.Model):
 	# Set Stats
 	@api.multi
 	def stats(self):  
-
-		#print 
-		#print 'Stats - Doctor'
+		print()
+		print('Doctor - Stats')
 
 		# Using collections - More Abstract !
 
@@ -144,91 +145,64 @@ class DoctorLine(models.Model):
 
 
 
-		
-		# Count and Create 
+
+
+
+# Count and Create 
 
 		#print 'Count'
 
-
-
-		# Family 
-
+		# Family - Using collections
 		counter_family = collections.Counter(family_arr)
-		
-		for key in counter_family: 
+		for key in counter_family:
+
+			#print('Gotcha !')
 
 			count = counter_family[key]
-
 			#print key 
 			#print count
-
 			family = self.family_line.create({
-												#'name': mgt_vars._h_family_sp[key], 
 												'name': key, 
 												'x_count': count, 
 												'doctor_id': self.id, 
 											})
-			#family.update_fields()
 			family.update()
-
-
-
 
 			# Counters 
 			#print key
 
-
 			# Families 
-			#if key in ['consultation', 'consultation_gyn']: 
 			if key in ['consultation', 'consultation_gyn', 'consultation_0', 'consultation_100']: 
 				self.nr_consultations = self.nr_consultations + count
-			
 			elif key in ['laser', 'medical', 'cosmetology']: 
 				self.nr_procedures = self.nr_procedures + count
-
 			elif key in ['topical', 'card']: 
 				self.nr_products = self.nr_products + count
-
-
-
 			# Subfamilies 
 			if key == 'medical': 
 				self.nr_medicals = self.nr_medicals + count
-
-
 			if key == 'cosmetology': 
 				self.nr_cosmetologies = self.nr_cosmetologies + count
 
 
-
-
-
-
-		# Subfamily 
-
+		# Subfamily - Using collections
 		counter_sub_family = collections.Counter(sub_family_arr)
-
 		for key in counter_sub_family: 
 
-			count = counter_sub_family[key]
+			#print('Gotcha !')
 
+			count = counter_sub_family[key]
 			sub_family = self.sub_family_line.create({
 														'name': key, 
 														'x_count': count, 
 														'doctor_id': self.id, 
 												})
-
-			#sub_family.update_fields()
 			sub_family.update()
-
-
 
 			# Counters 
 			#print key
-
 			if key == 'laser_co2': 
 				self.nr_procedures_co2 = count
-
 			elif key == 'laser_quick': 			
 				self.nr_procedures_quick = count
 
@@ -237,7 +211,8 @@ class DoctorLine(models.Model):
 
 
 
-		# Amounts 
+
+# Amounts and Percentages
 
 		#print 'Amounts'
 
@@ -246,6 +221,7 @@ class DoctorLine(models.Model):
 			
 			amount = 0 
 
+
 			orders = self.env['openhealth.management.order.line'].search([
 																			('family', '=', family.name),
 																			('doctor_id', '=', self.id),
@@ -253,12 +229,17 @@ class DoctorLine(models.Model):
 																		#order='x_serial_nr asc',
 																		#limit=1,
 																	)
-
 			for order in orders: 
 				amount = amount + order.price_total
 
 
 			family.amount = amount
+
+
+			# Percentage
+			if self.amount != 0:
+				family.per_amo = family.amount / self.amount
+
 
 			#print family.name 
 			#print amount
@@ -285,6 +266,12 @@ class DoctorLine(models.Model):
 
 			sub_family.amount = amount
 
+			# Percentage
+			if self.amount != 0:
+				sub_family.per_amo = sub_family.amount / self.amount
+
+
+
 			#print sub_family.name 
 			#print amount
 			#print 
@@ -292,15 +279,15 @@ class DoctorLine(models.Model):
 		#self.update_fields()
 		self.update()
 
-	# set_stats
+	# stats
 
 
 
 
 # ----------------------------------------------------------- Update ------------------------------
 	def update(self):  
-		#print 
-		#print 'Update'
+		#print()
+		#print('Doctor - Update')
 
 		# Names 
 		if self.name in mgt_vars._h_name: 

@@ -3,7 +3,7 @@
  	Closing
 
 	Created: 			18 Oct 2017
-	Last up: 	 		20 Dec 2018
+	Last up: 	 		 9 Jan 2019
 """
 from __future__ import print_function
 from openerp import models, fields, api
@@ -112,11 +112,15 @@ class Closing(models.Model):
 	month = fields.Selection(
 			selection=ord_vars._month_order_list,
 			string='Mes',
+			#required=True,
+			readonly=True,
 		)
 
 	# Year
 	year = fields.Char(
 			string='Año',
+			#required=True,
+			readonly=True,
 		)
 
 
@@ -355,7 +359,7 @@ class Closing(models.Model):
 		"""
 		#print('Update')
 		self.update_totals()
-
+		self.update_month()
 
 
 # ----------------------------------------------------------- Update All Months -------------------
@@ -406,14 +410,13 @@ class Closing(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		print()
-		print('Update Month')
-		print(self.name)
-		print(self.date)
+		#print()
+		#print('Update Month')
+		#print(self.name)
+		#print(self.date)
 
 		month = self.date.split('-')[1]
 		self.month = month
 
 		year = self.date.split('-')[0]
 		self.year = year
-

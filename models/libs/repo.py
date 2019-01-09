@@ -61,6 +61,21 @@ class Repo(models.Model):
 		)
 
 
+
+
+	# Amount Total Year
+	total_amount_year = fields.Float(
+			'Monto Total Año',
+			default=0,
+		)
+
+	# Average Total Amount
+	avg_total_amount = fields.Float(
+			'Promedio Anual',
+		)
+
+
+
 # ----------------------------------------------------------- Actions -----------------------------
 	# Set Stats
 	@api.multi

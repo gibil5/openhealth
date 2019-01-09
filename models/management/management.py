@@ -21,8 +21,10 @@ class Management(models.Model):
 	"""
 	high level support for doing this and that.
 	"""
-	_inherit = 'openhealth.repo'
 	_name = 'openhealth.management'
+
+	_inherit = 'openhealth.repo'
+
 	_order = 'date_begin asc'
 
 
@@ -357,7 +359,7 @@ class Management(models.Model):
 			#'% Monto Productos',
 			#'% monto prod',
 			#' ',
-			'Porc Monto',
+			'% Monto',
 		)
 
 	per_amo_consultations = fields.Float(
@@ -365,7 +367,7 @@ class Management(models.Model):
 			#'% monto cons',
 			#'Monto Consultas',
 			#' ',
-			'Porc Monto',
+			'% Monto',
 		)
 
 	per_amo_procedures = fields.Float(
@@ -373,7 +375,7 @@ class Management(models.Model):
 			#'% monto proc',
 			#'Monto Procedimientos',
 			#' ',
-			'Porc Monto',
+			'% Monto',
 		)
 
 
@@ -558,7 +560,6 @@ class Management(models.Model):
 
 # ----------------------------------------------------------- Avg ---------------------------------
 
-
 	avg_products = fields.Float(
 			'Precio Prom. Productos',
 		)
@@ -639,15 +640,18 @@ class Management(models.Model):
 
 		# Using collections - More Abstract !
 
+
 		# Clean
 		self.family_line.unlink()
 		self.sub_family_line.unlink()
+
 
 		# Init
 		family_arr = []
 		sub_family_arr = []
 		_h_amount = {}
 		_h_sub = {}
+
 
 
 	# All
@@ -681,6 +685,7 @@ class Management(models.Model):
 			doctor.stats()
 
 
+
 	# By Family
 
 		# Count
@@ -697,6 +702,11 @@ class Management(models.Model):
 													'management_id': self.id,
 												})
 			family.update()
+
+			# Percentage
+			if self.total_amount != 0:
+				family.per_amo = family.amount / self.total_amount
+
 
 
 
@@ -717,6 +727,10 @@ class Management(models.Model):
 												})
 			sub_family.update()
 
+			# Percentage
+			if self.total_amount != 0:
+				sub_family.per_amo = sub_family.amount / self.total_amount
+
 	# update_stats
 
 
@@ -731,13 +745,16 @@ class Management(models.Model):
 		#print()
 		#print('Update Sales - By Doctor')
 
+
 		# Clean
 		self.doctor_line.unlink()
+
 
 		# Init vars
 		total_amount = 0
 		total_count = 0
 		total_tickets = 0
+
 
 		# Create Doctors
 		doctors = [
@@ -753,6 +770,7 @@ class Management(models.Model):
 					'Clinica Chavarri',
 				]
 
+
 		# Loop
 		for doctor in doctors:
 			doctor = self.doctor_line.create({
@@ -761,12 +779,15 @@ class Management(models.Model):
 										})
 
 
+
 		# Create Sales - By Doctor
 		for doctor in self.doctor_line:
+
 			#print(doctor.name)
 
 			# Clear
 			doctor.order_line.unlink()
+
 
 			# Orders
 			orders, count = mgt_funcs.get_orders_filter_by_doctor\
@@ -775,10 +796,12 @@ class Management(models.Model):
 			#print(count)
 
 
+
 			# Init Loop
 			amount = 0
 			count = 0
 			tickets = 0
+
 
 
 			# Loop
@@ -849,13 +872,14 @@ class Management(models.Model):
 					order_line.update_fields()
 
 
+
 			# Stats
 			doctor.amount = amount
 			doctor.x_count = count
-
 			# Percentage
 			if self.total_amount != 0: 
 				doctor.per_amo = (doctor.amount / self.total_amount)
+
 
 
 
@@ -864,7 +888,7 @@ class Management(models.Model):
 			total_count = total_count + count
 			total_tickets = total_tickets + tickets
 
-	# update_sales
+	# update_sales_by_doctor
 
 
 
@@ -1138,14 +1162,10 @@ class Management(models.Model):
 		# Percentages
 		if self.total_amount != 0:
 
+			# Dep
 			#self.per_amo_products = (self.amo_products / self.total_amount) * 100
 			#self.per_amo_consultations = (self.amo_consultations / self.total_amount) * 100
 			#self.per_amo_procedures = (self.amo_procedures / self.total_amount) * 100
-			self.per_amo_products = (self.amo_products / self.total_amount)
-			self.per_amo_consultations = (self.amo_consultations / self.total_amount)
-			self.per_amo_procedures = (self.amo_procedures / self.total_amount)
-
-
 
 			#self.per_amo_topical = (self.amo_topical / self.total_amount) * 100
 			#self.per_amo_card = (self.amo_card / self.total_amount) * 100
@@ -1158,6 +1178,11 @@ class Management(models.Model):
 			#self.per_amo_quick = (self.amo_quick / self.total_amount) * 100
 			#self.per_amo_medical = (self.amo_medical / self.total_amount) * 100
 			#self.per_amo_cosmetology = (self.amo_cosmetology / self.total_amount) * 100
+
+
+			self.per_amo_products = (self.amo_products / self.total_amount)
+			self.per_amo_consultations = (self.amo_consultations / self.total_amount)
+			self.per_amo_procedures = (self.amo_procedures / self.total_amount)
 
 			self.per_amo_topical = (self.amo_topical / self.total_amount)
 			self.per_amo_card = (self.amo_card / self.total_amount)

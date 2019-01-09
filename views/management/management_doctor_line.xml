@@ -15,6 +15,17 @@
                     <!-- Header -->
                     <header>
                         
+
+                        <!-- Stats -->
+                        <button 
+                                type="object" 
+                                class="oe_highlight"
+                                name="stats"
+
+                                string="Stats"                              
+                        />
+
+
                         <!-- Orders -->
                         <button 
                                 class="oe_highlight"
@@ -28,14 +39,6 @@
                                 string="Ventas" 
                         />
 
-                        <!-- Stats -->
-                        <button 
-                                type="object" 
-                                class="oe_highlight"
-                                name="stats"
-
-                                string="Stats"                              
-                        />
                     </header>
 
 
@@ -100,8 +103,8 @@
 -->
                                         <field name="x_count"/>
 
-                                        <field name="amount"    groups="openhealth.roots"/>
 
+                                        <field name="amount"/>
                                         <field name="per_amo"   widget="percentage"/>
                                     </tree>
                                 </field>
@@ -119,8 +122,8 @@
 -->                                    
                                         <field name="x_count"/>
 
-                                        <field name="amount"    groups="openhealth.roots"/>
 
+                                        <field name="amount"/>
                                         <field name="per_amo"   widget="percentage"/>
                                     </tree>
                                 </field>

@@ -5,6 +5,8 @@
 # Last up: 			20 Aug 2018
 # Last up: 			20 Aug 2018
 #
+from __future__ import print_function
+
 from openerp import models, fields, api
 from . import mgt_vars
 
@@ -14,13 +16,15 @@ class SubFamilyLine(models.Model):
 	
 	_name = 'openhealth.management.sub_family.line'
 	
+	_order = 'amount desc'
+
 
 
 # ----------------------------------------------------------- Update ------------------------------
 
 	def update(self):  
-		#print 
-		#print 'Update fields - Mgt Line - Family'
+		#print()
+		#print('Update - Sub Family - jx')
 
 
 		# Name Sp 

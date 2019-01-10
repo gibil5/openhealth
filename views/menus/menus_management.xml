@@ -24,16 +24,31 @@
 
 
 
-        <!-- Month -->
-        <menuitem   id="management_sales_mgt_menu" 
+        <!-- Month 2019 -->
+        <menuitem   id="management_sales_mgt_2019_menu" 
 
-                    name="Mensual" 
+                    name="Mensual 2019" 
             
                     parent="management_menu"
             
                     sequence="1"
             
-                    action="management_list_mgt_action"
+                    action="management_list_mgt_2019_action"
+
+                />
+
+
+
+        <!-- Month 2018 -->
+        <menuitem   id="management_sales_mgt_2018_menu" 
+
+                    name="Mensual 2018" 
+            
+                    parent="management_menu"
+            
+                    sequence="2"
+            
+                    action="management_list_mgt_2018_action"
 
                 />
 
@@ -46,11 +61,13 @@
             
                     parent="management_menu"
             
-                    sequence="2"
+                    sequence="3"
             
                     action="management_list_mgt_year_action"
 
                 />
+
+
 
 
 
@@ -62,7 +79,7 @@
             
                     parent="management_menu"
             
-                    sequence="3"
+                    sequence="10"
             
                     action="management_list_action"
 

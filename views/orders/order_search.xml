@@ -38,17 +38,15 @@
                     <separator/>
 
 
-                    <!-- Custo --> 
 
 
-<!--
-                                                            ('x_legacy','=',True),
--->
+<!-- Custo --> 
+
 
                     <!-- Jan --> 
                     <filter string="Enero" domain="[
-                                                            ('date_order','&gt;=','2018-01-01 05:00:00'),
-                                                            ('date_order','&lt;','2018-02-01 05:00:00'),
+                                                            ('date_order','&gt;=','2019-01-01 05:00:00'),
+                                                            ('date_order','&lt;','2019-02-01 05:00:00'),
                                             ]"/>
 
 
@@ -56,8 +54,8 @@
 
                     <!-- Feb --> 
                     <filter string="Febrero" domain="[
-                                                            ('date_order','&gt;=','2018-02-01 05:00:00'),
-                                                            ('date_order','&lt;','2018-03-01 05:00:00'),
+                                                            ('date_order','&gt;=','2019-02-01 05:00:00'),
+                                                            ('date_order','&lt;','2019-03-01 05:00:00'),
                                             ]"/>
 
 
@@ -67,49 +65,49 @@
 
                     <!-- Mar --> 
                     <filter string="Marzo" domain="[
-                                                            ('date_order','&gt;=','2018-03-01 05:00:00'),
-                                                            ('date_order','&lt;','2018-04-01 05:00:00'),
+                                                            ('date_order','&gt;=','2019-03-01 05:00:00'),
+                                                            ('date_order','&lt;','2019-04-01 05:00:00'),
                                             ]"/>
 
 
 
                     <filter string="Abril" domain="[
-                                                            ('date_order','&gt;=','2018-04-01 05:00:00'),
-                                                            ('date_order','&lt;','2018-05-01 05:00:00'),
+                                                            ('date_order','&gt;=','2019-04-01 05:00:00'),
+                                                            ('date_order','&lt;','2019-05-01 05:00:00'),
                                             ]"/>
 
 
 
                     <filter string="Mayo" domain="[
-                                                            ('date_order','&gt;=','2018-05-01 05:00:00'),
-                                                            ('date_order','&lt;','2018-06-01 05:00:00'),
+                                                            ('date_order','&gt;=','2019-05-01 05:00:00'),
+                                                            ('date_order','&lt;','2019-06-01 05:00:00'),
                                             ]"/>
 
 
 
                     <filter string="Junio" domain="[
-                                                            ('date_order','&gt;=','2018-06-01 05:00:00'),
-                                                            ('date_order','&lt;=','2018-07-01 05:00:00'),
+                                                            ('date_order','&gt;=','2019-06-01 05:00:00'),
+                                                            ('date_order','&lt;=','2019-07-01 05:00:00'),
                                             ]"/>
 
 
 
                     <filter string="Julio"          domain="[
-                                                                ('date_order','&gt;=','2018-07-01 05:00:00'),
-                                                                ('date_order','&lt;=','2018-08-01 05:00:00'),
+                                                                ('date_order','&gt;=','2019-07-01 05:00:00'),
+                                                                ('date_order','&lt;=','2019-08-01 05:00:00'),
                                                     ]"/>
 
 
                     <filter string="Agosto"         domain="[
-                                                                ('date_order','&gt;=','2018-08-01 05:00:00'),
-                                                                ('date_order','&lt;=','2018-09-01 05:00:00'),
+                                                                ('date_order','&gt;=','2019-08-01 05:00:00'),
+                                                                ('date_order','&lt;=','2019-09-01 05:00:00'),
                                                     ]"/>
 
 
 
                     <filter string="Setiembre"      domain="[
-                                                                ('date_order','&gt;=','2018-09-01 05:00:00'),
-                                                                ('date_order','&lt;=','2018-10-01 05:00:00'),
+                                                                ('date_order','&gt;=','2019-09-01 05:00:00'),
+                                                                ('date_order','&lt;=','2019-10-01 05:00:00'),
                                                             ]"
                                                     />
 
@@ -117,22 +115,22 @@
 
 
                     <filter string="Octubre"        domain="[
-                                                                ('date_order','&gt;=','2018-10-01 05:00:00'),
-                                                                ('date_order','&lt;=','2018-11-01 05:00:00'),
+                                                                ('date_order','&gt;=','2019-10-01 05:00:00'),
+                                                                ('date_order','&lt;=','2019-11-01 05:00:00'),
                                                             ]"
                                             />
 
 
                     <filter string="Noviembre"      domain="[
-                                                                ('date_order','&gt;=','2018-11-01 05:00:00'),
-                                                                ('date_order','&lt;=','2018-12-01 05:00:00'),
+                                                                ('date_order','&gt;=','2019-11-01 05:00:00'),
+                                                                ('date_order','&lt;=','2019-12-01 05:00:00'),
                                                             ]"
                                             />
 
 
                     <filter string="Diciembre"      domain="[
-                                                                ('date_order','&gt;=','2018-12-01 05:00:00'),
-                                                                ('date_order','&lt;=','2019-01-01 05:00:00'),
+                                                                ('date_order','&gt;=','2019-12-01 05:00:00'),
+                                                                ('date_order','&lt;=','2020-01-01 05:00:00'),
                                                             ]"
                                             />
 

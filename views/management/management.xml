@@ -144,6 +144,10 @@
                                 <field name="date_end"/>
                                 <field name="owner"   groups="openhealth.roots"  />
 
+
+                                <field name="month"  groups="openhealth.roots"/>
+                                <field name="year"   groups="openhealth.roots"/>
+
 <!--
                                 <field name="vspace"/>
                                 <field name="write_date"    string="Actualizado"/>
@@ -226,7 +230,7 @@
                         <group string="Familias - Precios Promedio"   col="3">
                             <group>
                                 <field name="avg_products"      string="Productos"/>
-                                <field name="avg_consultations" string="otherltas"/>
+                                <field name="avg_consultations" string="Consultas"/>
                                 <field name="avg_procedures"    string="Procedimientos"/>
 
                                 <field name="avg_other"         string="Otros"/>
@@ -490,8 +494,11 @@
             <field name="model">openhealth.management</field>
             <field name="arch" type="xml">
                 <tree string="Management Tree">
-                    
+
+
                     <field name="name"/>
+                    <field name="month"  groups="openhealth.roots"/>
+                    <field name="year"   groups="openhealth.roots"/>
 
 
 <!--

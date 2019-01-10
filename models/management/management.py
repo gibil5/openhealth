@@ -1337,6 +1337,9 @@ class Management(models.Model):
 
 
 		# Per Amo
+		self.per_amo_other = 0
+
+
 		self.per_amo_products = 0
 		self.per_amo_services = 0
 		self.per_amo_consultations = 0
@@ -1356,6 +1359,8 @@ class Management(models.Model):
 
 
 		# Avg
+		self.avg_other = 0
+
 		self.avg_products = 0
 		self.avg_services = 0
 		self.avg_consultations = 0

@@ -499,6 +499,8 @@
                     <field name="name"/>
                     <field name="month"  groups="openhealth.roots"/>
                     <field name="year"   groups="openhealth.roots"/>
+                    <field name="date_begin"    string="Fecha Inicio"   groups="openhealth.roots"/>
+                    <field name="date_end"      string="Fecha Fin"      groups="openhealth.roots"/>
 
 
 <!--
@@ -539,8 +541,6 @@
             </field>
         </record>
 <!--
-                    <field name="date_begin"    string="Fecha Inicio"/>
-                    <field name="date_end"      string="Fecha Fin"/>
                     <field name="write_date"    string="Actualizado"/>
 -->
 

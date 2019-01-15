@@ -192,8 +192,8 @@ def line_analysis(self, line):
 	"""
 	high level support for doing this and that.
 	"""
-	print()
-	print('Line Analysis')
+	#print()
+	#print('Line Analysis')
 
 
 	# Init
@@ -279,11 +279,9 @@ def line_analysis(self, line):
 
 	# Consu
 	elif prod.type in ['consu']:
-		print('Consu')
-
+		#print('Consu')
 		self.nr_other = self.nr_other + line.product_uom_qty
 		self.amo_other = self.amo_other + line.price_subtotal
-
 
 
 	return False

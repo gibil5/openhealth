@@ -49,7 +49,6 @@ class Repo(models.Model):
 	# Count
 	total_count = fields.Integer(
 			#'Total Ventas',
-			#'Nr Pacientes',
 			'Nr Ventas',
 			readonly=True, 
 		)
@@ -69,10 +68,19 @@ class Repo(models.Model):
 			default=0,
 		)
 
+
 	# Average Total Amount
 	avg_total_amount = fields.Float(
 			'Promedio Anual',
 		)
+
+
+
+	# Percentage Total Amount Year
+	per_amo_total = fields.Float(
+			'Porc Monto Año',
+		)
+
 
 
 

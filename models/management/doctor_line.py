@@ -1,117 +1,122 @@
 # -*- coding: utf-8 -*-
-#
-# 		Doctor Line 
-# 
-# Created: 			18 May 2018
-# Last up: 			20 Aug 2018
-#
+"""
+	Doctor Line
+
+	Created: 			18 May 2018
+	Last up: 			15 Jan 2019
+"""
 from __future__ import print_function
 
 import collections
 from openerp import models, fields, api
 from . import mgt_vars
 
-class DoctorLine(models.Model):	
+class DoctorLine(models.Model):
+	"""
+	high level support for doing this and that.
+	"""
 
 	_name = 'openhealth.management.doctor.line'
 
 	_inherit = 'openhealth.management.line'
-	
+
 	_order = 'amount desc'
 
 
 
 
-# ----------------------------------------------------------- Relational ------------------------------------------------------
+# ----------------------------------------------------------- Relational --------------------------
 
 	# Sales
 	order_line = fields.One2many(
-			'openhealth.management.order.line', 
+			'openhealth.management.order.line',
 			'doctor_id',
 		)
 
-	# Family 
+	# Family
 	family_line = fields.One2many(
-			'openhealth.management.family.line', 
+			'openhealth.management.family.line',
 			'doctor_id',
 		)
 
-	# Sub family 
+	# Sub family
 	sub_family_line = fields.One2many(
-			'openhealth.management.sub_family.line', 
+			'openhealth.management.sub_family.line',
 			'doctor_id',
 		)
 
 
-# ----------------------------------------------------------- Primitives ------------------------------------------------------
+# ----------------------------------------------------------- Primitives --------------------------
 
-	# Nr Families 
+	# Nr Families
 	nr_consultations = fields.Integer(
-			'Nr Consultas', 
-			default=0, 
+			'Nr Consultas',
+			default=0,
 		)
 
 	nr_products = fields.Integer(
-			'Nr Productos', 
-			default=0, 
+			'Nr Productos',
+			default=0,
 		)
 
 	nr_procedures = fields.Integer(
-			'Nr Procedimientos', 
-			default=0, 
+			'Nr Procedimientos',
+			default=0,
 		)
 
 
-	# Nr Sub Families 
+	# Nr Sub Families
 	nr_procedures_co2 = fields.Integer(
-			'Nr Co2', 
-			default=0, 
+			'Nr Co2',
+			default=0,
 		)
 
 	nr_procedures_quick = fields.Integer(
-			'Nr Quick', 
-			default=0, 
+			'Nr Quick',
+			default=0,
 		)
 
 	nr_medicals = fields.Integer(
-			'Nr Tratamientos Médicos', 
-			default=0, 
+			'Nr Tratamientos Médicos',
+			default=0,
 		)
 
 	nr_cosmetologies = fields.Integer(
-			'Nr Cosmeatrias', 
-			default=0, 
+			'Nr Cosmeatrias',
+			default=0,
 		)
 
 
 
-	# Ratios 
+	# Ratios
 	ratio_pro_con = fields.Float(
-			'Ratio Total %', 
+			'Ratio Total %',
 		)
 
 	ratio_pro_con_co2 = fields.Float(
-			'Ratio Co2 %', 
+			'Ratio Co2 %',
 		)
 
 	ratio_pro_con_quick = fields.Float(
-			'Ratio Quick %', 
+			'Ratio Quick %',
 		)
 
 
+# ----------------------------------------------------------- Stats -------------------------------
 
-# ----------------------------------------------------------- Stats ------------------------------------------------------
-
-	# Set Stats
+	# Stats
 	@api.multi
-	def stats(self):  
+	def stats(self):
+		"""
+		high level support for doing this and that.
+		"""
 		print()
 		print('Doctor - Stats')
 
 		# Using collections - More Abstract !
 
 
-		# Clear 
+		# Clear
 		self.sub_family_line.unlink()
 		self.family_line.unlink()
 
@@ -133,8 +138,8 @@ class DoctorLine(models.Model):
 
 
 
-		# Loop 
-		for line in self.order_line: 
+		# Loop
+		for line in self.order_line:
 
 			# Family
 			family_arr.append(line.family)
@@ -148,7 +153,7 @@ class DoctorLine(models.Model):
 
 
 
-# Count and Create 
+# Count and Create
 
 		#print 'Count'
 
@@ -159,51 +164,51 @@ class DoctorLine(models.Model):
 			#print('Gotcha !')
 
 			count = counter_family[key]
-			#print key 
+			#print key
 			#print count
 			family = self.family_line.create({
-												'name': key, 
-												'x_count': count, 
-												'doctor_id': self.id, 
+												'name': key,
+												'x_count': count,
+												'doctor_id': self.id,
 											})
 			family.update()
 
-			# Counters 
+			# Counters
 			#print key
 
-			# Families 
-			if key in ['consultation', 'consultation_gyn', 'consultation_0', 'consultation_100']: 
+			# Families
+			if key in ['consultation', 'consultation_gyn', 'consultation_0', 'consultation_100']:
 				self.nr_consultations = self.nr_consultations + count
-			elif key in ['laser', 'medical', 'cosmetology']: 
+			elif key in ['laser', 'medical', 'cosmetology']:
 				self.nr_procedures = self.nr_procedures + count
-			elif key in ['topical', 'card']: 
+			elif key in ['topical', 'card']:
 				self.nr_products = self.nr_products + count
-			# Subfamilies 
-			if key == 'medical': 
+			# Subfamilies
+			if key == 'medical':
 				self.nr_medicals = self.nr_medicals + count
-			if key == 'cosmetology': 
+			if key == 'cosmetology':
 				self.nr_cosmetologies = self.nr_cosmetologies + count
 
 
 		# Subfamily - Using collections
 		counter_sub_family = collections.Counter(sub_family_arr)
-		for key in counter_sub_family: 
+		for key in counter_sub_family:
 
 			#print('Gotcha !')
 
 			count = counter_sub_family[key]
 			sub_family = self.sub_family_line.create({
-														'name': key, 
-														'x_count': count, 
-														'doctor_id': self.id, 
+														'name': key,
+														'x_count': count,
+														'doctor_id': self.id,
 												})
 			sub_family.update()
 
-			# Counters 
+			# Counters
 			#print key
-			if key == 'laser_co2': 
+			if key == 'laser_co2':
 				self.nr_procedures_co2 = count
-			elif key == 'laser_quick': 			
+			elif key == 'laser_quick':
 				self.nr_procedures_quick = count
 
 
@@ -216,10 +221,10 @@ class DoctorLine(models.Model):
 
 		#print 'Amounts'
 
-		# Family 
-		for family in self.family_line: 
-			
-			amount = 0 
+		# Family
+		for family in self.family_line:
+
+			amount = 0
 
 
 			orders = self.env['openhealth.management.order.line'].search([
@@ -229,7 +234,7 @@ class DoctorLine(models.Model):
 																		#order='x_serial_nr asc',
 																		#limit=1,
 																	)
-			for order in orders: 
+			for order in orders:
 				amount = amount + order.price_total
 
 
@@ -241,16 +246,16 @@ class DoctorLine(models.Model):
 				family.per_amo = family.amount / self.amount
 
 
-			#print family.name 
+			#print family.name
 			#print amount
-			#print 
+			#print
 
 
 
-		# Sub Family 
-		for sub_family in self.sub_family_line: 
-			
-			amount = 0 
+		# Sub Family
+		for sub_family in self.sub_family_line:
+
+			amount = 0
 
 			orders = self.env['openhealth.management.order.line'].search([
 																			('sub_family', '=', sub_family.name),
@@ -260,7 +265,7 @@ class DoctorLine(models.Model):
 																		#limit=1,
 																	)
 
-			for order in orders: 
+			for order in orders:
 				amount = amount + order.price_total
 
 
@@ -272,9 +277,9 @@ class DoctorLine(models.Model):
 
 
 
-			#print sub_family.name 
+			#print sub_family.name
 			#print amount
-			#print 
+			#print
 
 		#self.update_fields()
 		self.update()
@@ -282,25 +287,23 @@ class DoctorLine(models.Model):
 	# stats
 
 
-
-
 # ----------------------------------------------------------- Update ------------------------------
-	def update(self):  
+	def update(self):
+		"""
+		high level support for doing this and that.
+		"""
 		#print()
 		#print('Doctor - Update')
 
-		# Names 
-		if self.name in mgt_vars._h_name: 
+		# Names
+		if self.name in mgt_vars._h_name:
 			self.name_sp = mgt_vars._h_name[self.name]
-		else: 
+		else:
 			self.name_sp = self.name
 
-
 		# Ratios
-		if self.nr_consultations != 0: 
-			self.ratio_pro_con = (float(self.nr_procedures) / float(self.nr_consultations)) * 100 
-			self.ratio_pro_con_co2 = (float(self.nr_procedures_co2) / float(self.nr_consultations)) * 100 
-			self.ratio_pro_con_quick = (float(self.nr_procedures_quick) / float(self.nr_consultations)) * 100 
-
-
+		if self.nr_consultations != 0:
+			self.ratio_pro_con = (float(self.nr_procedures) / float(self.nr_consultations)) * 100
+			self.ratio_pro_con_co2 = (float(self.nr_procedures_co2) / float(self.nr_consultations)) * 100
+			self.ratio_pro_con_quick = (float(self.nr_procedures_quick) / float(self.nr_consultations)) * 100
 	# update

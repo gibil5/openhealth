@@ -37,6 +37,17 @@
 
                             <group>
                                 <field name="x_type"/>
+
+                                <field name="month_create"/>
+                                <field name="year_create"/>
+                            </group>
+
+                            <group>
+                                <field name="total_amount_year_2018"/>
+                                <field name="total_nr_year_2018"/>
+
+                                <field name="total_amount_year_2019"/>
+                                <field name="total_nr_year_2019"/>
                             </group>
                         </group>
 

@@ -163,18 +163,25 @@
             <field name="model">openhealth.management.doctor.line</field>
             <field name="arch" type="xml">
                 <tree string="management doctor line Tree">
-
+<!--
                     <field name="management_id"/>
+-->
                     <field name="name"/>
+
+                    <field name="x_count"/>
+                    <field name="per_nr"   widget="percentage"/>
                     <field name="nr_consultations"/>
                     <field name="nr_procedures"/>
                     <field name="nr_products"/>
                     <field name="nr_medicals"/>
+
                     <field name="ratio_pro_con"/>
                     <field name="ratio_pro_con_co2"/>
                     <field name="ratio_pro_con_quick"/>
-                    <field name="x_count"/>
+
+
                     <field name="amount"/>
+                    <field name="per_amo"   widget="percentage"/>
                 </tree>
             </field>
         </record>

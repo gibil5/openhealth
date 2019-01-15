@@ -3,13 +3,15 @@
 	Management Report
 
 	Created: 			28 May 2018
-	Last updated: 		 3 Jan 2019
+	Last updated: 		15 Jan 2019
 """
 from __future__ import print_function
 
 import os
 import collections
+
 import datetime
+
 from timeit import default_timer as timer
 import csv
 import pandas as pd
@@ -46,8 +48,10 @@ class Management(models.Model):
 		)
 
 
-	year = fields.Char(
-			'Año',
+
+	year = fields.Selection(
+			selection=ord_vars._year_order_list,
+			string='Año',
 		)
 
 	month = fields.Selection(
@@ -330,6 +334,15 @@ class Management(models.Model):
 			'management_id',
 		)
 
+	# Sales
+	sale_line_tkr = fields.One2many(
+			'openhealth.management.order.line',
+			'management_tkr_id',
+		)
+
+
+
+
 	# Doctor
 	doctor_line = fields.One2many(
 			'openhealth.management.doctor.line',
@@ -348,16 +361,28 @@ class Management(models.Model):
 			'management_id',
 		)
 
-	# Sales
-	sale_line_tkr = fields.One2many(
-			'openhealth.management.order.line',
-			'management_tkr_id',
+
+	# Day
+	day_line = fields.One2many(
+			'openhealth.management.day.line',
+			'management_id',
 		)
 
 
+
+
+
 # ----------------------------------------------------------- Totals ------------------------------
-	# Count
+	# Sales
+	total_count = fields.Integer(
+			#'Nr Líneas',
+			'Nr Ventas',
+			readonly=True, 
+		)
+
+	# Ticket
 	total_tickets = fields.Integer(
+			#'Nr Ventas',
 			'Nr Tickets',
 			readonly=True,
 		)
@@ -373,7 +398,7 @@ class Management(models.Model):
 # ----------------------------------------------------------- Percentages -------------------------
 
 	per_amo_other = fields.Float(
-			'% Monto',
+			'Porc Monto',
 		)
 
 
@@ -381,7 +406,7 @@ class Management(models.Model):
 			#'% Monto Productos',
 			#'% monto prod',
 			#' ',
-			'% Monto',
+			'Porc Monto',
 		)
 
 	per_amo_consultations = fields.Float(
@@ -389,7 +414,7 @@ class Management(models.Model):
 			#'% monto cons',
 			#'Monto Consultas',
 			#' ',
-			'% Monto',
+			'Porc Monto',
 		)
 
 	per_amo_procedures = fields.Float(
@@ -397,8 +422,34 @@ class Management(models.Model):
 			#'% monto proc',
 			#'Monto Procedimientos',
 			#' ',
-			'% Monto',
+			'Porc Monto',
 		)
+
+	per_amo_other = fields.Float(
+			'Porc Monto',
+		)
+
+
+
+
+	per_nr_products = fields.Float(
+			'Porc Nr',
+		)
+
+	per_nr_consultations = fields.Float(
+			'Porc Nr',
+		)
+
+	per_nr_procedures = fields.Float(
+			'Porc Nr',
+		)
+
+	per_nr_other = fields.Float(
+			'Porc Nr',
+		)
+
+
+
 
 
 
@@ -1201,6 +1252,13 @@ class Management(models.Model):
 
 
 
+
+		# Percentages
+		if self.total_amount_year != 0:
+				self.per_amo_total = self.total_amount / self.total_amount_year
+
+
+
 		# Percentages
 		if self.total_amount != 0:
 
@@ -1253,13 +1311,13 @@ class Management(models.Model):
 		high level support for doing this and that.
 		"""
 		#print()
-		print('Update Fast')
+		#print('Update Fast')
+		
 		t0 = timer()
-
 		self.update_sales_fast()
-
 		t1 = timer()
 		self.delta_fast = t1 - t0
+
 		#print self.delta_fast
 		#print
 	# update
@@ -1289,9 +1347,12 @@ class Management(models.Model):
 		#print 'Reset Macros'
 
 		# Clear
+		self.total_amount_year = 0
+
 		self.total_amount = 0
 		self.total_count = 0
 		self.total_tickets = 0
+
 
 		# Nr
 		self.nr_other = 0
@@ -1316,6 +1377,7 @@ class Management(models.Model):
 
 
 		# Amo
+		self.per_amo_total = 0
 		self.amo_other = 0
 
 		self.amo_products = 0
@@ -1338,16 +1400,14 @@ class Management(models.Model):
 
 		# Per Amo
 		self.per_amo_other = 0
-
+		self.per_amo_topical = 0
+		self.per_amo_card = 0
+		self.per_amo_kit = 0
 
 		self.per_amo_products = 0
 		self.per_amo_services = 0
 		self.per_amo_consultations = 0
 		self.per_amo_procedures = 0
-
-		self.per_amo_topical = 0
-		self.per_amo_card = 0
-		self.per_amo_kit = 0
 
 		self.per_amo_co2 = 0
 		self.per_amo_exc = 0
@@ -1358,8 +1418,12 @@ class Management(models.Model):
 		self.per_amo_cosmetology = 0
 
 
+
 		# Avg
 		self.avg_other = 0
+		self.avg_topical = 0
+		self.avg_kit = 0
+		self.avg_card = 0
 
 		self.avg_products = 0
 		self.avg_services = 0
@@ -1373,7 +1437,13 @@ class Management(models.Model):
 		self.avg_quick = 0
 		self.avg_medical = 0
 		self.avg_cosmetology = 0
+
+
+		# Ratios
+		self.ratio_pro_con = 0
+
 	# reset_macro
+
 
 
 	# Reset Micro (Doctors, Families, Sub-families)
@@ -1493,7 +1563,65 @@ class Management(models.Model):
 	# update_all_months
 
 
-# ----------------------------------------------------------- Update --------------------------
+
+
+# ----------------------------------------------------------- Update Days -------------------------
+	# Update Days
+	@api.multi
+	def update_days(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Update Days')
+
+		#d1 = date(2008, 8, 15)  # start date
+		#d2 = date(2008, 9, 15)  # end date
+
+		#date_format = "%Y-%m-%d %H:%M:%S"
+		date_format = "%Y-%m-%d"
+
+		date_end_dt = datetime.datetime.strptime(self.date_end, date_format)
+
+		date_begin_dt = datetime.datetime.strptime(self.date_begin, date_format)
+
+
+		#delta = d2 - d1         # timedelta
+		#delta = self.date_end - self.date_begin
+		delta = date_end_dt - date_begin_dt
+
+		print(delta)
+
+		for i in range(delta.days + 1):
+		    #print(d1 + timedelta(i))			
+		    #print(self.date_begin + datetime.timedelta(i))
+		    #print(date_begin_dt + datetime.timedelta(i))
+
+		    date_dt = date_begin_dt + datetime.timedelta(i)
+
+		    weekday = date_dt.weekday()
+
+		    weekday_str = ord_vars._dic_weekday[weekday]
+
+		    #print(date_dt, weekday)
+
+		    if weekday not in [6]:
+
+		    	if weekday in [5]:
+		    		duration = 0.5
+		    	else:
+		    		duration = 1
+
+		    	#print(date_dt, weekday_str)
+		    	#print(date_dt, weekday, weekday_str)
+		    	print(date_dt, weekday, weekday_str, duration)
+
+		    	if weekday in [5]:
+		    		print()
+
+
+
+# ----------------------------------------------------------- Update ------------------------------
 	# Update
 	@api.multi
 	def update(self):

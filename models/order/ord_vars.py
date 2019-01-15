@@ -8,6 +8,38 @@
 
 
 
+_week_day_list = [
+					('monday', 			'Lunes'),
+					('tuesday', 		'Martes'),
+					('wednesday', 		'Miercoles'),
+					('thursday', 		'Jueves'),
+					('friday', 			'Viernes'),
+
+					('saturday', 		'Sabado'),
+					('sunday', 			'Domingo'),
+]
+
+_dic_weekday = {
+					0: 	'monday',
+					1: 	'tuesday',
+					2: 	'wednesday',
+					3: 	'thursday',
+					4: 	'friday',
+					5: 	'saturday',
+					6: 	'sunday',
+}
+
+
+
+
+
+_year_order_list = [
+					('2019', 		'2019'),
+					('2018', 		'2018'),
+]
+
+
+
 _month_order_list = [
 
 					('01', 		'ENE'),

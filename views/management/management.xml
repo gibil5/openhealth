@@ -33,6 +33,66 @@
                                 string="Analisis por Doctor"
                         />
 
+
+
+
+                        <!-- See Days -->
+                        <button 
+                                class="oe_highlight"
+                                type="action" 
+                                context="{
+                                            'search_default_management_id': active_id,  
+                                        }"                                          
+                                name="%(management_day_line_form_action)d" 
+
+                                string="Ventas Promedio"   
+                        />
+
+
+
+                        <!-- See Doctors -->
+                        <button 
+                                class="oe_highlight"
+                                type="action" 
+                                context="{
+                                            'search_default_management_id': active_id,  
+                                        }"                                          
+                                name="%(management_doctor_line_form_action)d" 
+
+                                string="Ver Doctores"   
+                        />
+
+                        <!-- Families -->
+                        <button 
+                                class="oe_highlight"
+                                type="action" 
+                                context="{
+                                            'search_default_management_id': active_id,  
+                                        }"                                                                          
+                                name="%(management_family_line_form_action)d" 
+
+                                string="Ver Familias"   
+                        />
+
+                        <!-- Sub Families -->
+                        <button 
+                                class="oe_highlight"
+
+                                type="action"
+                                
+                                context="{
+                                            'search_default_management_id': active_id,  
+                                        }"
+
+                                name="%(management_sub_family_line_form_action)d" 
+
+                                string="Ver Sub-Familias"   
+                        />
+
+
+
+
+
                         <!-- See Sales -->
                         <button 
                                 class="oe_highlight"
@@ -43,6 +103,7 @@
                                 name="%(management_order_line_form_action)d"
                                 string="Ver Ventas" 
                         />
+
 
 
 
@@ -62,7 +123,29 @@
 
                         />
 
+
+                        <!-- Update Days -->
+                        <button 
+                                type="object" 
+                                class="oe_highlight oe_right"
+
+                                name="update_days"
+
+                                string="Ventas Promedio"                              
+
+                        />
+
+
+
+
                         <!-- Update All Years -->
+                        <!-- Update All Months -->
+                        <!-- Update -->
+                        <!-- QC -->
+                        <!-- Export -->
+                        <!-- Graph -->
+                        <!-- Graph Server -->
+<!--
                         <button 
                                 type="object" 
                                 class="oe_highlight oe_right"                                
@@ -72,7 +155,6 @@
                         />
 
 
-                        <!-- Update All Months -->
                         <button 
                                 type="object" 
                                 class="oe_highlight oe_right"
@@ -81,7 +163,6 @@
                                 groups="openhealth.roots"
                         />
 
-                        <!-- Update -->
                         <button 
                                 type="object" 
                                 class="oe_highlight oe_right"
@@ -90,7 +171,6 @@
                                 groups="openhealth.roots"
                         />
 
-                        <!-- QC -->
                         <button 
                                 type="object" 
                                 class="oe_highlight oe_right"
@@ -99,7 +179,6 @@
                                 groups="openhealth.roots"
                         />
 
-                        <!-- Export -->
                         <button 
                                 type="object" 
                                 class="oe_highlight oe_right"
@@ -108,7 +187,6 @@
                                 groups="openhealth.roots"
                         />
 
-                        <!-- Graph -->
                         <button 
                                 type="object" 
                                 class="oe_highlight oe_right"
@@ -117,7 +195,7 @@
                                 groups="openhealth.roots"
                         />
 
-                        <!-- Graph Server -->
+
                         <button 
                                 type="object" 
                                 class="oe_highlight oe_right"
@@ -125,6 +203,7 @@
                                 string="Graph Remote"
                                 groups="openhealth.roots"
                         />
+-->
                     </header>
 
 
@@ -156,7 +235,7 @@
 
 
                             <group>
-                                <field name="total_count"   string="Nr Ventas"  />
+                                <field name="total_count"/>
                                 <field name="total_tickets"/>
                                 <field name="ratio_pro_con"/>
                             </group>
@@ -164,11 +243,10 @@
 
                             <group>
                                 <field name="total_amount"/>
-<!--
                                 <field name="total_amount_year"/>
-                                <field name="avg_total_amount"/>
--->
+                                <field name="per_amo_total"   widget="percentage"  />
                             </group>
+
 <!--
                             <group>
                                 <field name="ratio_pro_con"/>
@@ -214,26 +292,33 @@
                                 <field name="amo_consultations" string="Monto"  nolabel="0"/>
                                 <field name="amo_procedures"    string="Monto"  nolabel="0" />
 
-                                <field name="amo_other"         string="Otros"/>
+                                <field name="amo_other"         string="Monto"/>
                             </group>
 
                             <group>
-                                <field name="per_amo_products"          string="Porc"       nolabel="0"     widget="percentage" />
-                                <field name="per_amo_consultations"     string="Porc"      nolabel="0"     widget="percentage" />
-                                <field name="per_amo_procedures"        string="Porc"      nolabel="0"     widget="percentage" />
-
-                                <field name="per_amo_other"             string="Porc"      nolabel="0"     widget="percentage" />
+                                <field name="avg_products"      string="Precio Prom"/>
+                                <field name="avg_consultations" string="Precio Prom"/>
+                                <field name="avg_procedures"    string="Precio Prom"/>
+                                <field name="avg_other"         string="Precio Prom"/>
                             </group>
                         </group>
 
 
-                        <group string="Familias - Precios Promedio"   col="3">
-                            <group>
-                                <field name="avg_products"      string="Productos"/>
-                                <field name="avg_consultations" string="Consultas"/>
-                                <field name="avg_procedures"    string="Procedimientos"/>
 
-                                <field name="avg_other"         string="Otros"/>
+
+                        <group string="Porcentajes"   col="3">
+                            <group>
+                                <field name="per_nr_products"          string="Productos Nr"   widget="percentage" />
+                                <field name="per_nr_consultations"     string="Consultas Nr"   widget="percentage" />
+                                <field name="per_nr_procedures"        string="Procedimientos Nr"  widget="percentage" />
+                                <field name="per_nr_other"             string="Otros Nr"       widget="percentage" />
+                            </group>
+
+                            <group>
+                                <field name="per_amo_products"         string="Monto" widget="percentage" />
+                                <field name="per_amo_consultations"    string="Monto" widget="percentage" />
+                                <field name="per_amo_procedures"       string="Monto" widget="percentage" />
+                                <field name="per_amo_other"            string="Monto" widget="percentage" />
                             </group>
                         </group>
 
@@ -305,7 +390,7 @@
 
 
 
-                        <group  string="Sub-Familias - Precios Promedio"   col="3" >
+                        <group  string="Precios Promedio"   col="3" >
 
                             <group>
                                 <field name="avg_topical"   string="Cremas"/>
@@ -341,6 +426,34 @@
                         <notebook>  
 
 
+                            <!-- Day --> 
+                            <page   string="Ventas Promedio">
+
+                                <field name="day_line">
+                                
+                                    <tree string="Day">
+
+                                        <!-- Open Button -->
+                                        <button 
+                                            type="object" 
+                                            class="oe_highlight"    
+                                            name="open_line_current" 
+                                            string="e"
+                                        />
+                                    
+                                        <field name="name"/>
+
+                                        <field name="x_count"    string="Nr Ventas"/>
+                                        <field name="per_nr"   widget="percentage"/>
+
+                                        <field name="amount"/>
+                                        <field name="per_amo"   widget="percentage"/>
+                                    </tree>
+                                </field>
+                            </page>
+
+
+
                             <!-- Doctores --> 
                             <page   string="Por Doctor">
                                 <field name="doctor_line">
@@ -355,6 +468,8 @@
                                         <field name="name"/>
 
                                         <field name="x_count"    string="Nr Ventas"/>
+                                        <field name="per_nr"   widget="percentage"/>
+
                                         <field name="nr_consultations"/>
                                         <field name="nr_procedures"/>
                                         <field name="nr_products"/>
@@ -384,8 +499,9 @@
                                         <field name="idx"/>
                                         <field name="name_sp"/>
                                         <field name="meta_sp"/>
-                                        <field name="x_count"/>
 
+                                        <field name="x_count"/>
+                                        <field name="per_nr"   widget="percentage"/>
 
                                         <field name="amount"/>
                                         <field name="per_amo"   widget="percentage"/>
@@ -406,8 +522,9 @@
                                         <field name="idx"/>
                                         <field name="name_sp"/>
                                         <field name="meta_sp"/>
-                                        <field name="x_count"/>
 
+                                        <field name="x_count"/>
+                                        <field name="per_nr"   widget="percentage"/>
 
                                         <field name="amount"/>
                                         <field name="per_amo"   widget="percentage"/>
@@ -506,10 +623,9 @@
 <!--
                     <field name="total_amount"/>
 -->
+
                     <field name="total_amount" sum="Total" widget="monetary"/>
-<!--
-                    <field name="avg_total_amount"/>
--->
+                    <field name="per_amo_total"   widget="percentage"  />
 
 
                     <field name="write_date"        string="Actualizado"/>
@@ -541,6 +657,7 @@
             </field>
         </record>
 <!--
+                    <field name="avg_total_amount"/>
                     <field name="write_date"    string="Actualizado"/>
 -->
 

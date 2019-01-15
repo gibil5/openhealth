@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+
+
+<!-- TREE --> 
+        <record model="ir.ui.view" id="management_day_line_view_tree">
+            <field name="name">openhealth.management.day.line.tree</field>
+            <field name="model">openhealth.management.day.line</field>
+            <field name="arch" type="xml">
+                <tree string="management day line Tree">
+<!--
+                    <field name="management_id"/>
+                    <field name="name"/>
+                    <field name="x_count"/>
+                    <field name="per_nr"   widget="percentage"/>
+                    <field name="amount"/>
+                    <field name="per_amo"   widget="percentage"/>
+-->
+
+
+
+                    <field name="date"/>
+                    <field name="week_day"/>
+                    <field name="amount"/>
+                    <field name="cumulative"/>
+                    <field name="avg_amount"/>
+                    <field name="nr_days"/>
+                    <field name="projection"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+
+
+<!-- ACTION - day -->
+        <record model="ir.actions.act_window" id="management_day_line_form_action"> 
+            <field name="name">dayes</field>
+            <field name="res_model">openhealth.management.day.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="limit">1000</field>
+            <!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>            
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first order
+                </p>
+            </field>
+            -->
+        </record>
+
+
+
+
+
+        <!-- Filter --> 
+        <record id="view_management_day_line_filter" model="ir.ui.view">
+            <field name="name">day Search</field>
+            <field name="model">openhealth.management.day.line</field>
+            <field name="arch" type="xml">
+               <search string="dayes">
+                    <field  name="management_id"/>
+               </search>
+           </field>
+       </record>
+
+
+    </data>
+</openerp>

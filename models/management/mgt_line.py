@@ -39,6 +39,7 @@ class ManagementLine(models.Model):
 			'openhealth.management.doctor.line'
 		)
 
+
 # ----------------------------------------------------------- Primitive ---------------------------
 	name = fields.Char(
 			'Name',
@@ -75,6 +76,10 @@ class ManagementLine(models.Model):
 	per_amo = fields.Float(
 			'% Monto',
 			#digits=(16, 1),
+		)
+
+	per_nr = fields.Float(
+			'% Nr',
 		)
 
 

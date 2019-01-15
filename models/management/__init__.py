@@ -2,6 +2,8 @@
 
 from . import mgt_line
 
+from . import day_line
+
 from . import doctor_line
 
 from . import family_line

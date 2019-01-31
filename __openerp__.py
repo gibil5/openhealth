@@ -595,7 +595,7 @@
 		'views/menus/menus_app.xml',
 
 
-		'views/menus/menus_config.xml',
+		#'views/menus/menus_config.xml',
 
 
 		'views/menus/menus_products.xml',

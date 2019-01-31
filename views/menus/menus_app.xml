@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <openerp>
-    <data noupdate='0'>
+    <data>
 
 
 
@@ -28,11 +28,12 @@
         />
 
 
-
-
+<!--
+                    id="oeh_medical_appointment_list_1"
+-->
         <!-- Calendar --> 
         <menuitem 
-                    id="oeh_medical_appointment_list_1"
+                    id="oeh_medical_appointment_list_cal_calendar"
 
                     parent="oehealth_appointment_menu"  
                     
@@ -44,10 +45,12 @@
         />
 
 
-
+<!--
+                    id="oeh_medical_appointment_list_7"
+-->
         <!-- Tree --> 
         <menuitem 
-                    id="oeh_medical_appointment_list_7"
+                    id="oeh_medical_appointment_list_cal_all"
 
                     parent="oehealth_appointment_menu"  
                     
@@ -57,6 +60,11 @@
 
                     name="Todas"
         />
+
+
+
+
+
 
 
 

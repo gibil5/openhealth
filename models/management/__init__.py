@@ -20,10 +20,7 @@ from . import management
 
 
 
-#from . import scheduler
-
-#from . import configurator
-
-#from . import configurator_report
-
-#from . import configurator_emr
+from . import scheduler
+from . import configurator
+from . import configurator_report
+from . import configurator_emr

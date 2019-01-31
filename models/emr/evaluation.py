@@ -39,29 +39,24 @@ class Evaluation(models.Model):
 # ----------------------------------------------------------- Defaults ----------------------------
 
 	# Default Configurator
-	#@api.model
-	#def _get_default_configurator(self):
+	@api.model
+	def _get_default_configurator(self):
 
-		#name_ctr = 'emr'
-
-		# Init
-	#	configurator = self.env['openhealth.configurator.emr'].search([
-	#																		('name', 'in', ['Historias']),
-	#																	],
+		configurator = self.env['openhealth.configurator.emr'].search([
+																			('name', 'in', ['Historias']),
+																		],
 																			#order='date_begin,name asc',
-	#																		limit=1,
-	#													)
-	#	return configurator
+																			limit=1,
+														)
+		return configurator
 
 
 
 # ----------------------------------------------------------- Relationals -------------------------
 
 
-	configurator = fields.Char()
-
-
 	# Configurator
+	configurator = fields.Char()
 	#configurator = fields.Many2one(
 	#		'openhealth.configurator.emr',
 	#		string="Configuracion",

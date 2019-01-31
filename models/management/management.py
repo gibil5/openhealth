@@ -1573,68 +1573,69 @@ class Management(models.Model):
 
 
 
-# ----------------------------------------------------------- Update Days -------------------------
-	# Update Days
+# ----------------------------------------------------------- Update ------------------------------
+	# Update
 	@api.multi
-	def update_days(self):
+	def update(self):
 		"""
 		high level support for doing this and that.
 		"""
 		print()
-		print('Update Days')
+		print('Management - Update')
 
-		# Clean
-		self.day_line.unlink()
+		t0 = timer()
+		now_0 = datetime.datetime.now()
 
+		self.reset()
+		self.update_fast()
+		self.update_doctors()
 
-		# Create
-		#date_format = "%Y-%m-%d %H:%M:%S"
-		date_format = "%Y-%m-%d"
-		date_end_dt = datetime.datetime.strptime(self.date_end, date_format)
-		date_begin_dt = datetime.datetime.strptime(self.date_begin, date_format)
-		delta = date_end_dt - date_begin_dt
+		t1 = timer()
+		now_1 = datetime.datetime.now()
+
+		delta = t1 - t0
+		print()
+		#print(t0)
+		#print(t1)
+		print(now_0)
+		print(now_1)
 		print(delta)
-
-		for i in range(delta.days + 1):
-		    #print(d1 + timedelta(i))			
-		    #print(self.date_begin + datetime.timedelta(i))
-		    #print(date_begin_dt + datetime.timedelta(i))
-
-		    date_dt = date_begin_dt + datetime.timedelta(i)
-
-		    weekday = date_dt.weekday()
-
-		    weekday_str = ord_vars._dic_weekday[weekday]
-
-		    #print(date_dt, weekday)
-
-
-		    if weekday in [5]:
-		    	duration = 0.5
-		    else:
-		    	duration = 1
-
-
-		    #if weekday not in [6]:
-		    if weekday in [0, 1, 2, 3, 4, 5]:
-
-		    	# Create
-				day = self.day_line.create({
-										'name': weekday_str,
-										'date': date_dt,
-										'weekday': weekday_str,
-										'duration': duration,
-										'management_id': self.id,
-								})
-
-				day.update_amount()		# Important !
-
-				print(date_dt, weekday, weekday_str)
+		print()
+	# update
 
 
 
-# ----------------------------------------------------------- Update ------------------------------
-	# Update
+
+
+# -------------------------------------------------------------------------------------------------
+# 	Productivity                                                                                  #
+# -------------------------------------------------------------------------------------------------
+
+
+# ----------------------------------------------------------- Update Averages ---------------------
+	# Update Averages
+	@api.multi
+	def update_day_avg(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Update - Average')
+
+
+		# Update
+		for day in self.day_line:
+			print(day.date)
+
+			day.update_avg()
+
+			day.update_projection()
+
+
+
+
+# ----------------------------------------------------------- Update Cumulative -------------------
+	# Update Cumulative
 	@api.multi
 	def update_day_cumulative(self):
 		"""
@@ -1677,53 +1678,83 @@ class Management(models.Model):
 
 
 
-# ----------------------------------------------------------- Update ------------------------------
-	# Update
+
+
+# ----------------------------------------------------------- Create Days -------------------------
+	# Create Days
 	@api.multi
-	def update_day_avg(self):
+	#def update_days(self):
+	def create_days(self):
 		"""
 		high level support for doing this and that.
 		"""
 		print()
-		print('Update - Average')
+		print('Create Days')
+
+		# Clean
+		self.day_line.unlink()
 
 
-		# Update
-		for day in self.day_line:
-			print(day.date)
-
-			day.update_avg()
-
-			day.update_projection()
-
-
-
-# ----------------------------------------------------------- Update ------------------------------
-	# Update
-	@api.multi
-	def update(self):
-		"""
-		high level support for doing this and that.
-		"""
-		print()
-		print('Management - Update')
-
-		t0 = timer()
-		now_0 = datetime.datetime.now()
-
-		self.reset()
-		self.update_fast()
-		self.update_doctors()
-
-		t1 = timer()
-		now_1 = datetime.datetime.now()
-
-		delta = t1 - t0
-		print()
-		#print(t0)
-		#print(t1)
-		print(now_0)
-		print(now_1)
+		# Create
+		#date_format = "%Y-%m-%d %H:%M:%S"
+		date_format = "%Y-%m-%d"
+		date_end_dt = datetime.datetime.strptime(self.date_end, date_format)
+		date_begin_dt = datetime.datetime.strptime(self.date_begin, date_format)
+		delta = date_end_dt - date_begin_dt
 		print(delta)
+
+		for i in range(delta.days + 1):
+
+		    date_dt = date_begin_dt + datetime.timedelta(i)
+
+		    weekday = date_dt.weekday()
+
+		    weekday_str = ord_vars._dic_weekday[weekday]
+
+		    #print(date_dt, weekday)
+
+
+		    # Duration
+		    if weekday in [5]:
+		    	duration = 0.5
+		    else:
+		    	duration = 1
+
+
+		    # Not Sunday
+		    if weekday in [0, 1, 2, 3, 4, 5]:
+
+		    	# Create
+				day = self.day_line.create({
+										'name': weekday_str,
+										'date': date_dt,
+										'weekday': weekday_str,
+										'duration': duration,
+										'management_id': self.id,
+								})
+
+				day.update_amount()		# Important !
+
+				print(date_dt, weekday, weekday_str)
+
+	# update_days
+
+
+
+
+# ----------------------------------------------------------- Update Prod -------------------------
+	# Update Days
+	@api.multi
+	def update_productivity(self):
+		"""
+		high level support for doing this and that.
+		"""
 		print()
-	# update
+		print('Update Productivity')
+		self.create_days()
+		self.update_day_cumulative()
+		self.update_day_avg()
+
+
+
+

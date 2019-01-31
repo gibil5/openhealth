@@ -33,11 +33,30 @@
                                 string="Analisis por Doctor"
                         />
 
+                        <!-- See Sales -->
+                        <button 
+                                class="oe_highlight"
+                                type="action" 
+                                context="{
+                                            'search_default_management_id': active_id,  
+                                        }"                                          
+                                name="%(management_order_line_form_action)d"
+                                string="Ver Ventas" 
+                        />
 
 
 
-                        <!-- See Days -->
-<!--
+                        <!-- Update Productivity -->
+                        <button 
+                                type="object" 
+                                class="oe_highlight"
+
+                                name="update_productivity"
+                                
+                                string="Actualizar Productividad"                             
+                        />
+
+                        <!-- See Productivity -->
                         <button
                                 class="oe_highlight"
                                 type="action" 
@@ -46,15 +65,13 @@
                                         }"                                          
                                 name="%(management_day_line_form_action)d" 
 
-                                string="Ventas Promedio"   
+                                string="Ver Productividad"   
                         />
--->
 
 
                         <!-- See Doctors -->
                         <!-- Families -->
                         <!-- Sub Families -->
-                        <!-- See Sales -->
 <!--
                         <button 
                                 class="oe_highlight"
@@ -93,15 +110,6 @@
                         />
 -->
 
-                        <button 
-                                class="oe_highlight"
-                                type="action" 
-                                context="{
-                                            'search_default_management_id': active_id,  
-                                        }"                                          
-                                name="%(management_order_line_form_action)d"
-                                string="Ver Ventas" 
-                        />
 
 
 
@@ -122,17 +130,21 @@
                         />
 
 
+
                         <!-- Update Days -->
                         <!-- Update Cumulative -->
                         <!-- Update Average -->
 <!--
+-->
                         <button 
                                 type="object" 
                                 class="oe_highlight oe_right"
 
-                                name="update_days"
+                                name="update_day_avg"
 
-                                string="Update Day"
+                                string="Update Days Avg"
+
+                                groups="openhealth.roots"
                         />
 
                         <button 
@@ -141,19 +153,22 @@
 
                                 name="update_day_cumulative"
 
-                                string="Update Cumu"
-                        />
+                                string="Update Days Cumu"
 
+                                groups="openhealth.roots"
+                        />
 
                         <button 
                                 type="object" 
                                 class="oe_highlight oe_right"
 
-                                name="update_day_avg"
+                                name="create_days"
 
-                                string="Update Avg"
+                                string="Create Days"
+
+                                groups="openhealth.roots"
                         />
--->
+
 
 
 

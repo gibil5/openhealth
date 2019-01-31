@@ -20,8 +20,7 @@ from . import management
 
 
 
-from . import scheduler
-
+#from . import scheduler
 
 #from . import configurator
 

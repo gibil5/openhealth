@@ -81,8 +81,7 @@
 
 
 # ----------------------------------------------------------- New ------------------------------------------------------
-		'views/configurators/scheduler.xml',
-
+		#'views/configurators/scheduler.xml',
 		#'views/configurators/configurator.xml',
 		#'views/configurators/configurator_emr.xml',
 

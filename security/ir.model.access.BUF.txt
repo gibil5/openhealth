@@ -1,5 +1,8 @@
 
 
+access_openhealth_configurator_emr,openhealth.configurator.emr,model_openhealth_configurator_emr,,1,1,1,1
+
+
 
 
 

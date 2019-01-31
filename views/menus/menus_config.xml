@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+
+
+<!-- Config -->
+        <menuitem   id="main_config_menu" 
+                    sequence="-16"
+
+                    name="Config"
+            />
+
+
+
+        <!-- Config -->
+        <menuitem   id="openhealth_config_menu"
+
+                    parent="main_config_menu"
+            
+                    sequence="1"
+            
+                    name="Config"
+                />
+
+
+
+        <!-- EMR --> 
+        <menuitem   id="config_emr_menu" 
+
+                    name="Historias" 
+            
+                    parent="openhealth_config_menu"
+            
+                    sequence="1"
+            
+                    action="configurator_emr_list_action"
+            />
+
+
+
+        <!-- Reports --> 
+        <menuitem   id="config_report_menu" 
+
+                    name="Reportes" 
+            
+                    parent="openhealth_config_menu"
+            
+                    sequence="3"
+            
+                    action="configurator_report_list_action"
+            />
+
+
+
+
+        <!-- Configurators --> 
+        <menuitem   id="config_config_menu" 
+
+                    name="Configurators" 
+            
+                    parent="openhealth_config_menu"
+            
+                    sequence="5"
+            
+                    action="configurator_list_action"
+            />
+
+
+
+
+    </data>
+</openerp>

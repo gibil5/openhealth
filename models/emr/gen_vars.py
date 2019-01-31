@@ -10,6 +10,12 @@ _dic_prod = {
 				'dexpantenol_5ml': 		'DEXPANTENOL 5 ML',
 				
 
+				# New - 28 Jan 2019
+				'collagen_naara': 			'COLAGENO NAARA',
+				'ageless_box': 				'CAJA AGELESS',
+				'ageless_blister': 			'BLISTER AGELESS',
+
+
 				# New
 				'product_1': 				'Producto 1',
 				'claridermil': 				'CLARIDERMIL',

@@ -6,20 +6,15 @@
 # 	Last updated: 		 4 Nov 2018
 #
 from openerp import models, fields, api
-
-#from libs import ord_vars
 from openerp.addons.openhealth.models.order import ord_vars
-
-#from emr import prodvars
 from openerp.addons.openhealth.models.emr import prodvars
-
 
 class management_order_line(models.Model):
 	
-	_inherit='openhealth.line'
-
 	_name = 'openhealth.management.order.line'
 	
+	_inherit='openhealth.line'
+
 	_description = "Openhealth Management Order Line"
 
 

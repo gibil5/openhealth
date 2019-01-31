@@ -6,7 +6,6 @@
 
 <!-- Products - New - 17 DEc 2018-->
 
-
         <!-- Vitamin c serum -->
         <record id='vitamin_c_serum' model='product.template'>
 
@@ -26,18 +25,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
 <!-- Products - New - 12 DEc 2018-->
-
 
         <!-- Claridermil -->
         <record id='claridermil' model='product.template'>

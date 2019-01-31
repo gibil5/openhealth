@@ -3,26 +3,20 @@
 	Management Report
 
 	Created: 			28 May 2018
-	Last updated: 		15 Jan 2019
+	Last updated: 		25 Jan 2019
 """
 from __future__ import print_function
 
 import os
 import collections
-
 import datetime
-
 from timeit import default_timer as timer
 import csv
 import pandas as pd
 from openerp import models, fields, api
+from openerp.addons.openhealth.models.order import ord_vars
 from . import mgt_funcs
 from . import mgt_vars
-
-#from . import ord_vars
-from openerp.addons.openhealth.models.order import ord_vars
-
-
 
 class Management(models.Model):
 	"""
@@ -362,12 +356,22 @@ class Management(models.Model):
 		)
 
 
+
+
+# ----------------------------------------------------------- Daily -------------------------------
+
 	# Day
 	day_line = fields.One2many(
 			'openhealth.management.day.line',
 			'management_id',
 		)
 
+
+	# Day Doctor
+	#day_doctor_line = fields.One2many(
+	#		'openhealth.management.day.doctor.line',
+	#		'management_id',
+	#	)
 
 
 
@@ -930,11 +934,15 @@ class Management(models.Model):
 
 					# Here !!!
 					order_line = doctor.order_line.create({
+															'date_order_date': order.date_order,
+
+															'x_date_created': order.date_order,
+
+
+															'name': order.name,
 															'receptor': 	receptor,
 															'patient': 		order.patient.id,
 
-															'name': order.name,
-															'x_date_created': order.date_order,
 															'doctor': order.x_doctor.id,
 															'state': order.state,
 															'serial_nr': order.x_serial_nr,
@@ -1575,21 +1583,16 @@ class Management(models.Model):
 		print()
 		print('Update Days')
 
-		#d1 = date(2008, 8, 15)  # start date
-		#d2 = date(2008, 9, 15)  # end date
+		# Clean
+		self.day_line.unlink()
 
+
+		# Create
 		#date_format = "%Y-%m-%d %H:%M:%S"
 		date_format = "%Y-%m-%d"
-
 		date_end_dt = datetime.datetime.strptime(self.date_end, date_format)
-
 		date_begin_dt = datetime.datetime.strptime(self.date_begin, date_format)
-
-
-		#delta = d2 - d1         # timedelta
-		#delta = self.date_end - self.date_begin
 		delta = date_end_dt - date_begin_dt
-
 		print(delta)
 
 		for i in range(delta.days + 1):
@@ -1605,19 +1608,93 @@ class Management(models.Model):
 
 		    #print(date_dt, weekday)
 
-		    if weekday not in [6]:
 
-		    	if weekday in [5]:
-		    		duration = 0.5
-		    	else:
-		    		duration = 1
+		    if weekday in [5]:
+		    	duration = 0.5
+		    else:
+		    	duration = 1
 
-		    	#print(date_dt, weekday_str)
-		    	#print(date_dt, weekday, weekday_str)
-		    	print(date_dt, weekday, weekday_str, duration)
 
-		    	if weekday in [5]:
-		    		print()
+		    #if weekday not in [6]:
+		    if weekday in [0, 1, 2, 3, 4, 5]:
+
+		    	# Create
+				day = self.day_line.create({
+										'name': weekday_str,
+										'date': date_dt,
+										'weekday': weekday_str,
+										'duration': duration,
+										'management_id': self.id,
+								})
+
+				day.update_amount()		# Important !
+
+				print(date_dt, weekday, weekday_str)
+
+
+
+# ----------------------------------------------------------- Update ------------------------------
+	# Update
+	@api.multi
+	def update_day_cumulative(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Update - Cumulative')
+
+		amount_total = 0
+		duration_total = 0
+
+
+		# Clean
+		#for day in self.day_line:
+		#	if day.amount in [0]:
+				#day.duration = 0
+		#		day.unlink()
+
+
+
+		# Update Cumulative and Nr Days
+		for day in self.day_line:
+			#print(day.name)
+			print(day.date)
+
+			amount_total = amount_total  + day.amount
+
+			day.cumulative = amount_total
+
+			duration_total = duration_total + day.duration
+
+			day.nr_days = duration_total
+
+
+
+		# Update Nr Days Total
+		for day in self.day_line:
+			day.nr_days_total = duration_total
+
+
+
+
+# ----------------------------------------------------------- Update ------------------------------
+	# Update
+	@api.multi
+	def update_day_avg(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Update - Average')
+
+
+		# Update
+		for day in self.day_line:
+			print(day.date)
+
+			day.update_avg()
+
+			day.update_projection()
 
 
 

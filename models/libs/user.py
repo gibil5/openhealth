@@ -6,149 +6,31 @@
  		Can not be Unit-tested (depends on a third-party library: Odoo).
 
  		Created: 			13 Aug 2018
- 		Last up: 	 		19 Nov 2018
+ 		Last up: 	 		31 Jan 2019
 """
 import datetime
-
-#from . import ord_vars
 from openerp.addons.openhealth.models.order import ord_vars
 
 
 
-#------------------------------------------------ Get Serial Nr -----------------------------------
-# Get the Counter QC Delta
-def get_serial_nr(x_type, counter_value, state):
-	"""
-	high level support for doing this and that.
-	"""
-	#print
-	#print 'Get Serial Nr'
-
-	# Init
-	separator = '-'
-
-
-	if state in ['credit_note']:
-		#prefix = ord_vars._dic_prefix_cn[x_type]
-		prefix = ord_vars.get_prefix_cn(x_type)
-
-	else:
-		#prefix = ord_vars._dic_prefix[x_type]
-		prefix = ord_vars.get_prefix(x_type)
-
-
-
-	#padding = ord_vars._dic_padding[x_type]
-	padding = ord_vars.get_padding(x_type)
-
-
-
-	# Serial Nr
-	serial_nr = prefix  +  separator  +  str(counter_value).zfill(padding)
-
-
-	return serial_nr
-
-
-
-#------------------------------------------------ Get Counter -------------------------------------
-# Get the Counter
-def get_counter_value(self, x_type, state):
-	"""
-	high level support for doing this and that.
-	"""
-	#print 'Get Counter value'
-	#print state
-
-
-	# Search
-
-	# Sale, Cancel
-	if state in ['validated']:
-
-		order = self.env['sale.order'].search([
-													('x_electronic', '=', True),
-													('x_type', '=', x_type),
-													('state', 'in', ['sale', 'cancel']),
-												],
-											order='x_counter_value desc',
-											limit=1,
-										)
-
-
-	# Credit Note
-	elif state in ['credit_note']:
-
-		order = self.env['sale.order'].search([
-													('x_electronic', '=', True),
-													('x_type', '=', x_type),
-													('state', 'in', ['credit_note']),
-												],
-											order='x_counter_value desc',
-											limit=1,
-										)
-
-	return order.x_counter_value + 1
-
-
-
-
-
-#------------------------------------------------ Get Delta ---------------------------------------
-# Get the Counter QC Delta
-def get_delta(self):
-	"""
-	high level support for doing this and that.
-	"""
-	#print
-	#print 'User - Get Delta'
-
-	# Order
-	order = self.env['sale.order'].search([
-												('x_type', '=', self.name),
-												('state', '=', 'sale'),
-											],
-											order='date_order desc',
-											limit=1,
-										)
-	#order.x_counter_value
-
-	delta = self.value - order.x_counter_value
-
-	return delta
-
-
-
-# ----------------------------------------------------------- Get Product -------------------------
-# Returns the Product Id
-def get_product(self, shortname):
-	"""
-	high level support for doing this and that.
-	"""
-	#print
-	#print 'Get Default Id'
-	product_id = self.env['product.template'].search([
-														('x_name_short', '=', shortname),
-													],
-													#order='date_order desc',
-													limit=1,
-												).id
-	return product_id
-
-
-
 #------------------------------------------------ Check and Push ----------------------------------
-#@api.multi
-#def check_and_push(self, appointment_date, duration, x_type, doctor_name, states):
+
 def check_and_push(self, appointment_date, duration, doctor_name, states):
 	"""
-	high level support for doing this and that.
+	Check if Dr available and if not check next time slot.
+	Returns a Date sring.
 	"""
-	#print
-	#print 'Check and push'
+	#print()
+	#print('User - Check and push')
+	#print(appointment_date)
+	#print(duration)
+	#print(doctor_name)
+	#print(states)
+
 
 	# Init
 	delta_var = datetime.timedelta(hours=duration)
+
 	date_format = "%Y-%m-%d %H:%M:%S"
 	appointment_date_dt = datetime.datetime.strptime(appointment_date, date_format)
 	k = 0
@@ -167,14 +49,11 @@ def check_and_push(self, appointment_date, duration, doctor_name, states):
 
 
 		# Search
-		#if states == False:
 		if not states:
 
 			appointment = self.env['oeh.medical.appointment'].search([
 																		('appointment_date', '=', appointment_date_str),
 																		('doctor', '=', doctor_name),
-																		#('x_type', '=', x_type),
-																		#('state', 'in', '['pre_scheduled_control']'),
 																	],
 																	#order='appointment_date desc',
 																	limit=1
@@ -191,22 +70,20 @@ def check_and_push(self, appointment_date, duration, doctor_name, states):
 		else:
 
 			appointment = self.env['oeh.medical.appointment'].search([
-																		#('state', '=', state),
-																		('state', 'in', states),
-
 																		('appointment_date', '=', appointment_date_str),
 																		('doctor', '=', doctor_name),
+
+																		('state', 'in', states),
 																	],
 																	#order='appointment_date desc',
 																	limit=1
 																)
 
 			appointment_bis = self.env['oeh.medical.appointment'].search([
-																			#('state', '=', state),
-																			('state', 'in', states),
-
 																			('appointment_end', '=', appointment_end_str),
 																			('doctor', '=', doctor_name),
+
+																			('state', 'in', states),
 																		],
 																		#order='appointment_date desc',
 																		limit=1
@@ -217,13 +94,10 @@ def check_and_push(self, appointment_date, duration, doctor_name, states):
 
 
 		# Check
-		#if (appointment.name == False) and (appointment_bis.name == False): 	# Success
-		if (not appointment.name) and (not appointment_bis.name): 	# Success
-			#print 'Success'
+		if (not appointment.name) and (not appointment_bis.name): 	# Success. Return
 			ret = 0
 		else:
-			#print 'Error. Repeat.'
-			k = k + 1					# Error. Repeat.
+			k = k + 1												# Error. Repeat
 
 	return appointment_date_str
 
@@ -355,3 +229,94 @@ def _get_default_id(self, x_type):
 	return obj.id
 
 # _get_default_id
+
+
+#------------------------------------------------ Get Serial Nr -----------------------------------
+def get_serial_nr(x_type, counter_value, state):
+	"""
+	Get the Serial Nr, given the type, counter and state.
+	"""
+
+	# Separator
+	separator = '-'
+
+	# Prefix
+	if state in ['credit_note']:
+		prefix = ord_vars.get_prefix_cn(x_type)
+	else:
+		prefix = ord_vars.get_prefix(x_type)
+
+	# Padding
+	padding = ord_vars.get_padding(x_type)
+
+	# Serial Nr
+	serial_nr = prefix  +  separator  +  str(counter_value).zfill(padding)
+
+	return serial_nr
+
+
+
+#------------------------------------------------ Get Counter -------------------------------------
+# Get the Counter
+def get_counter_value(self, x_type, state):
+	"""
+	Get New Counter value. Given type and state.
+	"""
+
+	# Sale, Cancel
+	if state in ['validated']:
+		order = self.env['sale.order'].search([
+													('x_electronic', '=', True),
+													('x_type', '=', x_type),
+													('state', 'in', ['sale', 'cancel']),
+												],
+											order='x_counter_value desc',
+											limit=1,
+										)
+	# Credit Note
+	elif state in ['credit_note']:
+		order = self.env['sale.order'].search([
+													('x_electronic', '=', True),
+													('x_type', '=', x_type),
+													('state', 'in', ['credit_note']),
+												],
+											order='x_counter_value desc',
+											limit=1,
+										)
+	return order.x_counter_value + 1
+
+
+#------------------------------------------------ Get Delta ---------------------------------------
+# Get the Counter QC Delta
+def get_delta(self):
+	"""
+	For Delta QC.
+	"""
+
+	# Search
+	order = self.env['sale.order'].search([
+												('x_type', '=', self.name),
+												('state', '=', 'sale'),
+											],
+											order='date_order desc',
+											limit=1,
+										)
+
+	delta = self.value - order.x_counter_value
+
+	return delta
+
+
+# ----------------------------------------------------------- Get Product Id ----------------------
+def get_product(self, shortname):
+	"""
+	Get the Product Id given the Shortname.
+	"""
+	# Search
+	product_id = self.env['product.template'].search([
+														('x_name_short', '=', shortname),
+													],
+													#order='date_order desc',
+													limit=1,
+												).id
+	return product_id

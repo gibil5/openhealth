@@ -75,7 +75,9 @@
                         />
 -->
 
+
                         <!-- App -->
+<!--
                         <button 
                             type="object" 
                             class="oe_highlight"
@@ -85,6 +87,7 @@
 
                             states="draft,inprogress"
                         />
+-->
 
 
                         <!-- Dates -->
@@ -223,23 +226,19 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
                                 <field name="vspace"/>
 
 
-<!--                                
--->
 
+                                <field name="control_date"      readonly="1"/>
 
+                                <field name="real_date"/>
+
+                                <field name="vspace"/>
+
+<!--
 
                                 <field name="evaluation_start_date"/>
-
-                                <field name="vspace"/>
-
-                                <field name="control_date"      readonly="1"        />
-
-                                <field name="vspace"/>
-
                                 <field name="first_date"/>
-
                                 <field name="vspace"/>
-
+-->
 
 
                                 <field name="maturity"/>
@@ -400,24 +399,20 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 
 <!--
                     <field name="evaluation_nr"/>
-                    <field name="name"/>
+                    <field name="first_date"/>
+                    <field name="state_app"/>
+                    <field name="maturity"/>
 -->             
-                    
+
+                    <field name="name"/>
+
+                    <field name="control_date"      widget="date"/>
+                    <field name="nr_days"/>
                     <field name="appointment"/>
 
-                    <field name="state_app"/>
 
+                    <field name="real_date"/>
 
-
-                    <field name="first_date"/>
-
-                    <field name="control_date"/>
-
-
-
-                    <field name="nr_days"/>
-
-                    <field name="maturity"/>
 
                     <field name="patient" />
                     

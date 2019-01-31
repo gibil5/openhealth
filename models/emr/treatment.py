@@ -3,34 +3,53 @@
  		*** Treatment
 
  		Created: 			26 Aug 2016
- 		Last up: 	 		21 Nov 2018
+ 		Last up: 	 		21 Jan 2019
 """
 from __future__ import print_function
 import datetime
 from openerp import models, fields, api
 from . import time_funcs
 from . import treatment_vars
-#from . import lib_rep
 from . import reco_funcs
-from . import test_treatment as tst
-
-
-#from libs import lib
-#from libs import user
-#from . import creates as cre
 from openerp.addons.openhealth.models.libs import creates as cre
 from openerp.addons.openhealth.models.libs import lib, user
-
-
 from . import test_foo
 
-
+from . import test_treatment
 
 class Treatment(models.Model):
+
 	_inherit = 'openhealth.process'
+
 	_name = 'openhealth.treatment'
+
 	_order = 'write_date desc'
 
+	_description = 'Treatment'
+
+
+
+
+# ----------------------------------------------------------- Test --------------------------------
+
+	x_test_scenario = fields.Selection(
+			[
+				('co2', 'Co2'),
+				('exc', 'Exc'),
+				('quick', 'Quick'),
+				('ipl', 'Ipl'),
+				('ndyag', 'Ndyag'),
+
+				('all', 'All'),
+			],
+			string="Scenarios",
+		)
+
+
+
+	x_test = fields.Boolean(
+			'Test',
+		)
 
 
 
@@ -103,11 +122,6 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Test --------------------------------
-	x_test = fields.Boolean(
-			'Test',
-		)
-
 
 # ----------------------------------------------------------- Optimization ------------------------
 	delta_1 = fields.Float(
@@ -130,10 +144,10 @@ class Treatment(models.Model):
 		if self.patient.x_test:
 
 			# Reset
-			tst.reset_treatment(self)
+			test_treatment.reset_treatment(self)
 
 			# Test Integration
-			tst.test_integration_treatment(self)
+			test_treatment.test_integration_treatment(self)
 
 
 
@@ -141,10 +155,10 @@ class Treatment(models.Model):
 # ----------------------------------------------------------- Test Reset --------------------------
 	@api.multi
 	def test_reset(self):
-		#print
-		#print 'Test Case - Reset'
+		print()
+		print('Test Case - Reset')
 		if self.patient.x_test:
-			tst.reset_treatment(self)
+			test_treatment.reset_treatment(self)
 
 
 
@@ -153,12 +167,12 @@ class Treatment(models.Model):
 	# Clear All
 	@api.multi
 	def clear_all(self):
-		tst.clear_all(self)
+		test_treatment.clear_all(self)
 
 	# Set All
 	@api.multi
 	def set_all(self):
-		tst.set_all(self)
+		test_treatment.set_all(self)
 
 
 
@@ -1446,14 +1460,23 @@ class Treatment(models.Model):
 		#evaluation_start_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
 		evaluation_start_date = datetime.datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
 
+
+
 		# Apointment
-		appointment = self.env['oeh.medical.appointment'].search([
-																	('patient', '=', self.patient.name),
-																	('doctor', '=', self.physician.name),
-																	('x_type', '=', 'consultation'),
-															],
-															order='appointment_date desc', limit=1)
-		appointment_id = appointment.id
+		if False:
+			appointment = self.env['oeh.medical.appointment'].search([
+																		('patient', '=', self.patient.name),
+																		('doctor', '=', self.physician.name),
+																		('x_type', '=', 'consultation'),
+																],
+																order='appointment_date desc', limit=1)
+			appointment_id = appointment.id
+		
+		appointment_id = False
+
+
+
+
 
 		# Search
 		consultation = self.env['openhealth.consultation'].search([
@@ -1463,9 +1486,12 @@ class Treatment(models.Model):
 																limit=1,)
 		# Create if it does not exist
 		if consultation.name == False:
+
 			# Change App state
-			if appointment.name != False:
-				appointment.state = 'Scheduled'
+			if False:
+				if appointment.name != False:
+					appointment.state = 'Scheduled'
+
 
 			# Consultation
 			consultation = self.env['openhealth.consultation'].create({
@@ -1478,13 +1504,15 @@ class Treatment(models.Model):
 													})
 			consultation_id = consultation.id
 
+
 			# Update
-			rec_set = self.env['oeh.medical.appointment'].browse([
-																	appointment_id
-																])
-			ret = rec_set.write({
-									'consultation': consultation_id,
-								})
+			if False:
+				rec_set = self.env['oeh.medical.appointment'].browse([
+																		appointment_id
+																	])
+				ret = rec_set.write({
+										'consultation': consultation_id,
+									})
 
 		consultation_id = consultation.id
 

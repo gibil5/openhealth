@@ -6,7 +6,7 @@
 
 <!-- Main - Caja -->
 <menuitem   id="main_sales_menu" 
-            sequence="-9"
+            sequence="-29"
 
             name="Caja"
         />

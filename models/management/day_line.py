@@ -7,8 +7,11 @@
 """
 from __future__ import print_function
 
+import numpy as np
+
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.order import ord_vars
+from . import mgt_funcs
 
 class DayLine(models.Model):
 	"""
@@ -19,7 +22,7 @@ class DayLine(models.Model):
 
 	_inherit = 'openhealth.management.line'
 
-	_order = 'amount desc'
+	_order = 'date asc'
 
 
 
@@ -37,8 +40,8 @@ class DayLine(models.Model):
 			'Fecha',
 		)
 
-	week_day = fields.Selection(
-			selection=ord_vars._week_day_list,
+	weekday = fields.Selection(
+			selection=ord_vars._weekday_list,
 			string='Dia de semana',
 		)
 
@@ -52,10 +55,100 @@ class DayLine(models.Model):
 			#digits=(16, 1),
 		)
 
-	nr_days = fields.Integer(
-			'Nr dias',
-		)
 
 	projection = fields.Float(
 			'Proyección a final del mes',
 		)
+
+	duration = fields.Float(
+			'Duracion',
+		)
+
+
+	nr_days = fields.Float(
+			'Nr dias',
+		)
+
+	nr_days_total = fields.Float(
+			'Total dias',
+		)
+
+
+
+# ----------------------------------------------------------- Update ------------------------------
+	# Update
+	@api.multi
+	def update_projection(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Update - Projection')
+
+		self.projection = self.avg_amount * self.nr_days_total
+
+
+
+# ----------------------------------------------------------- Update ------------------------------
+	# Update
+	@api.multi
+	def update_avg(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Update - Average')
+
+		self.avg_amount = self.cumulative / self.nr_days
+
+
+
+
+
+# ----------------------------------------------------------- Update ------------------------------
+	# Update
+	@api.multi
+	def update_amount(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Update - amount')
+
+		orders, count = mgt_funcs.get_orders_filter_fast(self, self.date, self.date)
+
+		print(orders)
+		print(count)
+
+
+		data_amount = []
+
+		for order in orders:
+			#print(order.amount_total)
+			data_amount.append(order.amount_total)
+
+
+		self.x_count = len(data_amount)
+		print(self.x_count)
+
+
+		if self.x_count != 0:
+
+			print(data_amount)
+
+			#mean_amount = np.mean(data_amount)
+			#print(mean_amount)
+			#self.avg_amount = mean_amount
+			#amax = np.amax(self.data)
+			#amin = np.amin(self.data)
+
+
+			self.amount = np.sum(data_amount)
+
+
+			# Mean of sales, compounded with number of days
+			#self.avg_amount = np.mean(data_amount)			# Not correct !
+
+
+
+

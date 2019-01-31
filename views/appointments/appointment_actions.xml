@@ -4,77 +4,76 @@
 
 
 
-<!-- ACTIONS --> 
+<!-- ACTIONS TYPE -->
 
-        <!--  Confirmed -->  
-        <record id="oeh_medical_appointment_action_tree_confirmed" model="ir.actions.act_window">
 
-                    <field name="name">Citas</field>
-
+        <!-- Controls -->
+        <record id="oeh_medical_appointment_action_tree_controls" model="ir.actions.act_window">
+                    <field name="name">Controles</field>
                     <field name="res_model">oeh.medical.appointment</field>
                     <field name="view_type">form</field>
-                    <field name="view_mode">calendar,tree,form</field>  
+                    <field name="view_mode">tree,calendar,form</field>
                     <field name="view_id" eval="False"/>
 
-<!--
-                                            ('state', 'in', ['pre_scheduled','Scheduled', 'completed', 'invoiced']),
-                                            ('state', 'in', ['pre_scheduled','Scheduled', 'invoiced', 'event']),
-                                            ('x_target', '=', 'doctor'),
--->
-
                     <field name="domain">[
-                                            ('state', 'in', ['pre_scheduled','Scheduled']),
+                                            ('x_type', 'in', ['control']),
                                         ]
                     </field>
+
+                    <field name="context">{
+                                            'default_x_type': 'control',
+                                            'default_x_subtype': 'laser_co2',
+                                            'default_duration': '0.25',                                            
+                                        }
+                    </field>
+        </record>
+
+
+
+
+
+        <!-- Consultations -->
+        <record id="oeh_medical_appointment_action_tree_consultations" model="ir.actions.act_window">
+                    <field name="name">Consultas</field>
+                    <field name="res_model">oeh.medical.appointment</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,calendar,form</field>
+                    <field name="view_id" eval="False"/>
+
+                    <field name="domain">[
+                                            ('x_type', 'in', ['consultation']),
+                                        ]
+                    </field>
+
 
                     <field name="context">{
                                             'default_x_type': 'consultation',
                                             'default_x_subtype': 'consultation',
                                         }
                     </field>
-
-                    <field name="help" type="html">
-                      <p class="oe_view_nocontent_create">
-                        Click to add a new appointment.
-                      </p><p>
-                        oeHealth appointment screen can easily find all of your appointment details;
-                      </p>
-                    </field>
         </record>
 
 
-
-
-
-
-
-
-        <!-- Controls -->
-        <record id="oeh_medical_appointment_action_tree_controls" model="ir.actions.act_window">
-<!--
-                    <field name="name">Controles - Sin hora</field>
--->
-                    <field name="name">Controles</field>
-
+        <!-- Procedures -->
+        <record id="oeh_medical_appointment_action_tree_procedures" model="ir.actions.act_window">
+                    <field name="name">Procedimientos</field>
                     <field name="res_model">oeh.medical.appointment</field>
                     <field name="view_type">form</field>
-                    <field name="view_mode">calendar,tree,form</field>
+                    <field name="view_mode">tree,calendar,form</field>
                     <field name="view_id" eval="False"/>
 
-                    
                     <field name="domain">[
-                                            ('state', '=', 'pre_scheduled_control'),
+                                            ('x_type', 'in', ['procedure']),
                                         ]
                     </field>
 
 
                     <field name="context">{
-                                            'default_x_type': 'control',
-                                            'default_state': 'pre_scheduled_control',
+                                            'default_x_type': 'procedure',
+                                            'default_x_subtype': 'laser_co2',
                                         }
                     </field>
         </record>
-
 
 
         <!-- Sessions -->
@@ -84,22 +83,233 @@
 
                     <field name="res_model">oeh.medical.appointment</field>
                     <field name="view_type">form</field>
-                    <field name="view_mode">calendar,tree,form</field>
+                    <field name="view_mode">tree,calendar,form</field>
                     <field name="view_id" eval="False"/>
 
                     
                     <field name="domain">[
-                                            ('state', '=', 'pre_scheduled_session'),
+                                            ('x_type', 'in', ['session']),
                                         ]
                     </field>
 
 
                     <field name="context">{
                                             'default_x_type': 'session',
-                                            'default_state': 'pre_scheduled_session',
+                                            'default_x_subtype': 'laser_co2',
                                         }
                     </field>
         </record>
+
+
+
+        <!-- Events -->
+        <record id="oeh_medical_appointment_action_tree_events" model="ir.actions.act_window">
+                    <field name="name">Eventos</field>
+                    <field name="res_model">oeh.medical.appointment</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,calendar,form</field>
+                    <field name="view_id" eval="False"/>
+
+                    <field name="domain">[
+                                            ('x_type', 'in', ['event']),
+                                        ]
+                    </field>
+
+
+                    <field name="context">{
+                                            'default_x_type': 'event',
+                                        }
+                    </field>
+        </record>
+
+
+
+
+
+
+<!-- ACTIONS DOCTORS --> 
+
+        <!--  Canales -->  
+        <record id="oeh_medical_appointment_action_tree_canales" model="ir.actions.act_window">
+                    <field name="name">Dr. Canales</field>
+                    <field name="res_model">oeh.medical.appointment</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,calendar,form</field>  
+                    <field name="view_id" eval="False"/>
+
+                    <field name="domain">[
+                                            ('doctor', 'in', ['Dr. Canales']),
+                                        ]
+                    </field>
+
+                    <field name="context">{
+                                            'default_x_type': 'consultation',
+                                            'default_x_subtype': 'consultation',
+                                        }
+                    </field>
+        </record>
+
+        <!--  chavarri -->  
+        <record id="oeh_medical_appointment_action_tree_chavarri" model="ir.actions.act_window">
+                    <field name="name">Dr. Chavarri</field>
+                    <field name="res_model">oeh.medical.appointment</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,calendar,form</field>  
+                    <field name="view_id" eval="False"/>
+
+                    <field name="domain">[
+                                            ('doctor', 'in', ['Dr. Chavarri']),
+                                        ]
+                    </field>
+
+                    <field name="context">{
+                                            'default_x_type': 'consultation',
+                                            'default_x_subtype': 'consultation',
+                                        }
+                    </field>
+        </record>
+
+
+
+
+
+
+
+
+        <!--  gonzales -->  
+        <record id="oeh_medical_appointment_action_tree_gonzales" model="ir.actions.act_window">
+                    <field name="name">Dr. Gonzales</field>
+                    <field name="res_model">oeh.medical.appointment</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,calendar,form</field>  
+                    <field name="view_id" eval="False"/>
+
+                    <field name="domain">[
+                                            ('doctor', 'in', ['Dr. Gonzales']),
+                                        ]
+                    </field>
+
+                    <field name="context">{
+                                            'default_x_type': 'consultation',
+                                            'default_x_subtype': 'consultation',
+                                        }
+                    </field>
+        </record>
+
+        <!--  monteverde -->  
+        <record id="oeh_medical_appointment_action_tree_monteverde" model="ir.actions.act_window">
+                    <field name="name">Dr. Monteverde</field>
+                    <field name="res_model">oeh.medical.appointment</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,calendar,form</field>  
+                    <field name="view_id" eval="False"/>
+
+                    <field name="domain">[
+                                            ('doctor', 'in', ['Dr. Monteverde']),
+                                        ]
+                    </field>
+
+                    <field name="context">{
+                                            'default_x_type': 'consultation',
+                                            'default_x_subtype': 'consultation',
+                                        }
+                    </field>
+        </record>
+
+        <!--  loaiza -->  
+        <record id="oeh_medical_appointment_action_tree_loaiza" model="ir.actions.act_window">
+                    <field name="name">Dr. Loaiza</field>
+                    <field name="res_model">oeh.medical.appointment</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,calendar,form</field>  
+                    <field name="view_id" eval="False"/>
+
+                    <field name="domain">[
+                                            ('doctor', 'in', ['Dr. Loaiza']),
+                                        ]
+                    </field>
+
+                    <field name="context">{
+                                            'default_x_type': 'consultation',
+                                            'default_x_subtype': 'consultation',
+                                        }
+                    </field>
+        </record>
+
+
+
+
+
+
+
+
+        <!--  castillo -->  
+        <record id="oeh_medical_appointment_action_tree_castillo" model="ir.actions.act_window">
+                    <field name="name">Dr. Castillo</field>
+                    <field name="res_model">oeh.medical.appointment</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,calendar,form</field>  
+                    <field name="view_id" eval="False"/>
+
+                    <field name="domain">[
+                                            ('doctor', 'in', ['Dr. Castillo']),
+                                        ]
+                    </field>
+
+                    <field name="context">{
+                                            'default_x_type': 'consultation',
+                                            'default_x_subtype': 'consultation',
+                                        }
+                    </field>
+        </record>
+
+        <!--  abriojo -->  
+        <record id="oeh_medical_appointment_action_tree_abriojo" model="ir.actions.act_window">
+                    <field name="name">Dr. Abriojo</field>
+                    <field name="res_model">oeh.medical.appointment</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,calendar,form</field>  
+                    <field name="view_id" eval="False"/>
+
+                    <field name="domain">[
+                                            ('doctor', 'in', ['Dr. Abriojo']),
+                                        ]
+                    </field>
+
+                    <field name="context">{
+                                            'default_x_type': 'consultation',
+                                            'default_x_subtype': 'consultation',
+                                        }
+                    </field>
+        </record>
+
+        <!--  escudero -->  
+        <record id="oeh_medical_appointment_action_tree_escudero" model="ir.actions.act_window">
+                    <field name="name">Dr. Escudero</field>
+                    <field name="res_model">oeh.medical.appointment</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,calendar,form</field>  
+                    <field name="view_id" eval="False"/>
+
+                    <field name="domain">[
+                                            ('doctor', 'in', ['Dr. Escudero']),
+                                        ]
+                    </field>
+
+                    <field name="context">{
+                                            'default_x_type': 'consultation',
+                                            'default_x_subtype': 'consultation',
+                                        }
+                    </field>
+        </record>
+
+
+
+
+
+
+
+
 
 
 
@@ -154,6 +364,89 @@
                     </field>
         </record>
 -->
+
+
+
+
+
+<!-- ACTIONS - TIME --> 
+
+        <!-- Today -->
+        <record id="oeh_medical_appointment_action_tree_today" model="ir.actions.act_window">
+
+                    <field name="name">Hoy</field>
+
+                    <field name="res_model">oeh.medical.appointment</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,calendar,form</field>
+                    <field name="view_id" eval="False"/>
+
+<!--
+                                            ('x_confirmable', '=', True),
+                                            ('x_today', '=', True),
+
+                                            ('appointment_date', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 05:00:00')),
+                                            ('appointment_date', '&gt;=', '2019-01-29 05:00:00'),
+-->
+                    <field name="domain">[
+                            ('appointment_date', '&gt;=',  datetime.datetime.now().strftime('%Y-%m-%d 05:00:00')),
+                            ('appointment_date', '&lt;=', (datetime.date.today() + datetime.timedelta(days=1)).strftime('%Y-%m-%d 05:00:00')),
+                                        ]
+                    </field>
+
+
+                    <field name="context">{
+                                            'default_x_type': 'consultation',
+                                        }
+                    </field>
+        </record>
+
+
+
+        <!-- This Month -->
+        <!-- This year -->
+
+<!--
+        <record id="oeh_medical_appointment_action_tree_this_month" model="ir.actions.act_window">
+                    <field name="name">Este Mes</field>
+                    <field name="res_model">oeh.medical.appointment</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,calendar,form</field>
+                    <field name="view_id" eval="False"/>
+
+                    <field name="domain">[
+                                            ('appointment_date','&gt;=',time.strftime('%Y-%m-01 05:00:00')),
+                                        ]
+                    </field>
+
+
+                    <field name="context">{
+                                            'default_x_type': 'consultation',
+                                        }
+                    </field>
+        </record>
+
+
+        <record id="oeh_medical_appointment_action_tree_this_year" model="ir.actions.act_window">
+                    <field name="name">Este Año</field>
+                    <field name="res_model">oeh.medical.appointment</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,calendar,form</field>
+                    <field name="view_id" eval="False"/>
+                    
+                    <field name="domain">[
+                                            ('appointment_date','&gt;=',time.strftime('%Y-01-01 05:00:00')), 
+                                        ]
+                    </field>
+
+
+                    <field name="context">{
+                                            'default_x_type': 'consultation',
+                                        }
+                    </field>
+        </record>
+-->
+
 
 
 

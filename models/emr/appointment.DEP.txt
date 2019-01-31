@@ -1,6 +1,39 @@
 
 
 
+	# Action Create
+	@api.multi
+	#@api.model
+	def update_id_doc(self, patient):
+		"""
+		Update Action Create
+		"""
+		print()
+		print('Update Id Doc')
+
+		#print(patient)
+		#print(patient.name)
+		#print(patient.x_id_doc_type)
+		#print(patient.x_id_doc)
+
+		return patient.x_id_doc
+
+
+
+
+	# Action Create
+	#@api.model
+	#def update_id_doc_type(self, patient):
+	#	"""
+	#	Update Action Create
+	#	"""
+	#	print()
+	#	print('Update Id Doc Type')
+	#	return patient.x_id_doc_type
+
+
+
+
 # ----------------------------------------------------------- Deprecated -------------------------------
 	#@api.onchange('appointment_date')
 	#def _onchange_appointment_date(self):

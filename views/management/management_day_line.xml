@@ -10,6 +10,8 @@
             <field name="model">openhealth.management.day.line</field>
             <field name="arch" type="xml">
                 <tree string="management day line Tree">
+
+
 <!--
                     <field name="management_id"/>
                     <field name="name"/>
@@ -20,13 +22,16 @@
 -->
 
 
-
                     <field name="date"/>
-                    <field name="week_day"/>
+                    <field name="weekday"/>
+                    <field name="duration"/>
                     <field name="amount"/>
+
                     <field name="cumulative"/>
-                    <field name="avg_amount"/>
                     <field name="nr_days"/>
+                    <field name="avg_amount"/>
+
+                    <field name="nr_days_total"/>
                     <field name="projection"/>
                 </tree>
             </field>
@@ -38,7 +43,7 @@
 
 <!-- ACTION - day -->
         <record model="ir.actions.act_window" id="management_day_line_form_action"> 
-            <field name="name">dayes</field>
+            <field name="name">Ventas Promedio</field>
             <field name="res_model">openhealth.management.day.line</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
@@ -60,7 +65,7 @@
 
 
 
-        <!-- Filter --> 
+<!-- Filter -->
         <record id="view_management_day_line_filter" model="ir.ui.view">
             <field name="name">day Search</field>
             <field name="model">openhealth.management.day.line</field>

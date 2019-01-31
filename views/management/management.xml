@@ -37,7 +37,8 @@
 
 
                         <!-- See Days -->
-                        <button 
+<!--
+                        <button
                                 class="oe_highlight"
                                 type="action" 
                                 context="{
@@ -47,10 +48,14 @@
 
                                 string="Ventas Promedio"   
                         />
-
+-->
 
 
                         <!-- See Doctors -->
+                        <!-- Families -->
+                        <!-- Sub Families -->
+                        <!-- See Sales -->
+<!--
                         <button 
                                 class="oe_highlight"
                                 type="action" 
@@ -62,7 +67,6 @@
                                 string="Ver Doctores"   
                         />
 
-                        <!-- Families -->
                         <button 
                                 class="oe_highlight"
                                 type="action" 
@@ -74,7 +78,6 @@
                                 string="Ver Familias"   
                         />
 
-                        <!-- Sub Families -->
                         <button 
                                 class="oe_highlight"
 
@@ -88,12 +91,8 @@
 
                                 string="Ver Sub-Familias"   
                         />
+-->
 
-
-
-
-
-                        <!-- See Sales -->
                         <button 
                                 class="oe_highlight"
                                 type="action" 
@@ -103,7 +102,6 @@
                                 name="%(management_order_line_form_action)d"
                                 string="Ver Ventas" 
                         />
-
 
 
 
@@ -125,15 +123,38 @@
 
 
                         <!-- Update Days -->
+                        <!-- Update Cumulative -->
+                        <!-- Update Average -->
+<!--
                         <button 
                                 type="object" 
                                 class="oe_highlight oe_right"
 
                                 name="update_days"
 
-                                string="Ventas Promedio"                              
-
+                                string="Update Day"
                         />
+
+                        <button 
+                                type="object" 
+                                class="oe_highlight oe_right"
+
+                                name="update_day_cumulative"
+
+                                string="Update Cumu"
+                        />
+
+
+                        <button 
+                                type="object" 
+                                class="oe_highlight oe_right"
+
+                                name="update_day_avg"
+
+                                string="Update Avg"
+                        />
+-->
+
 
 
 
@@ -243,8 +264,10 @@
 
                             <group>
                                 <field name="total_amount"/>
+<!--
                                 <field name="total_amount_year"/>
                                 <field name="per_amo_total"   widget="percentage"  />
+-->
                             </group>
 
 <!--
@@ -296,29 +319,31 @@
                             </group>
 
                             <group>
-                                <field name="avg_products"      string="Precio Prom"/>
-                                <field name="avg_consultations" string="Precio Prom"/>
-                                <field name="avg_procedures"    string="Precio Prom"/>
-                                <field name="avg_other"         string="Precio Prom"/>
+                                <field name="per_amo_products"         string="Porc Monto" widget="percentage" />
+                                <field name="per_amo_consultations"    string="Porc Monto" widget="percentage" />
+                                <field name="per_amo_procedures"       string="Porc Monto" widget="percentage" />
+                                <field name="per_amo_other"            string="Porc Monto" widget="percentage" />
                             </group>
+
+<!--
+                            <group>
+                                <field name="per_nr_products"          string="Productos Porc Nr"   widget="percentage" />
+                                <field name="per_nr_consultations"     string="Consultas Porc Nr"   widget="percentage" />
+                                <field name="per_nr_procedures"        string="Procedimientos Porc Nr"  widget="percentage" />
+                                <field name="per_nr_other"             string="Otros Porc Nr"       widget="percentage" />
+                            </group>
+-->
                         </group>
 
 
 
 
-                        <group string="Porcentajes"   col="3">
+                        <group string="Precios Promedio"   col="3">
                             <group>
-                                <field name="per_nr_products"          string="Productos Nr"   widget="percentage" />
-                                <field name="per_nr_consultations"     string="Consultas Nr"   widget="percentage" />
-                                <field name="per_nr_procedures"        string="Procedimientos Nr"  widget="percentage" />
-                                <field name="per_nr_other"             string="Otros Nr"       widget="percentage" />
-                            </group>
-
-                            <group>
-                                <field name="per_amo_products"         string="Monto" widget="percentage" />
-                                <field name="per_amo_consultations"    string="Monto" widget="percentage" />
-                                <field name="per_amo_procedures"       string="Monto" widget="percentage" />
-                                <field name="per_amo_other"            string="Monto" widget="percentage" />
+                                <field name="avg_products"      string="Productos"/>
+                                <field name="avg_consultations" string="Consultas"/>
+                                <field name="avg_procedures"    string="Procedimientos"/>
+                                <field name="avg_other"         string="Otros"/>
                             </group>
                         </group>
 
@@ -426,33 +451,6 @@
                         <notebook>  
 
 
-                            <!-- Day --> 
-                            <page   string="Ventas Promedio">
-
-                                <field name="day_line">
-                                
-                                    <tree string="Day">
-
-                                        <!-- Open Button -->
-                                        <button 
-                                            type="object" 
-                                            class="oe_highlight"    
-                                            name="open_line_current" 
-                                            string="e"
-                                        />
-                                    
-                                        <field name="name"/>
-
-                                        <field name="x_count"    string="Nr Ventas"/>
-                                        <field name="per_nr"   widget="percentage"/>
-
-                                        <field name="amount"/>
-                                        <field name="per_amo"   widget="percentage"/>
-                                    </tree>
-                                </field>
-                            </page>
-
-
 
                             <!-- Doctores --> 
                             <page   string="Por Doctor">
@@ -478,7 +476,6 @@
                                         <field name="ratio_pro_con_co2"/>
                                         <field name="ratio_pro_con_quick"/>
 
-
                                         <field name="amount"/>
                                         <field name="per_amo"   widget="percentage"/>
                                     </tree>
@@ -489,6 +486,80 @@
                                         <field name="nr_procedures_quick"/>
                                         <field name="nr_medicals"/>
 -->
+
+
+                            <!-- Day Prod --> 
+                            <page   string="Productividad">
+
+                                <field name="day_line">
+                                
+                                    <tree string="Day Prod">
+
+                                        <!-- Open Button -->
+<!--
+                                        <button 
+                                            type="object" 
+                                            class="oe_highlight"    
+                                            name="open_line_current" 
+                                            string="e"
+                                        />
+                                    
+                                        <field name="name"/>
+                                        <field name="x_count"    string="Nr Ventas"/>
+                                        <field name="per_nr"   widget="percentage"/>
+                                        <field name="amount"/>
+                                        <field name="per_amo"   widget="percentage"/>
+-->
+
+
+                                        <field name="name"/>
+
+                                        <field name="date"/>
+                                        <field name="weekday"/>
+                                        <field name="duration"/>
+                                        <field name="amount"/>
+                                        <field name="cumulative"/>
+                                        <field name="avg_amount"/>
+                                        <field name="nr_days"/>
+                                        <field name="projection"/>
+                                    </tree>
+                                </field>
+                            </page>
+
+
+
+                            <!-- Day Doctor --> 
+<!--                            
+                            <page   string="Diario por Doctor">
+
+                                <field name="day_doctor_line">
+                                
+                                    <tree string="Day Doctor">
+
+                                        <field name="date"/>
+                                        <field name="weekday"/>
+                                        <field name="duration"/>
+
+                                        <field name="amount"/>
+
+
+                                        <field name="amount_fchavarri"/>
+                                        <field name="amount_pcanales"/>
+                                        <field name="amount_lgonzales"/>
+
+                                        <field name="amount_pmonteverde"/>
+                                        <field name="amount_lcastillo"/>
+                                        <field name="amount_cabriojo"/>
+
+                                        <field name="amount_rloaiza"/>
+                                        <field name="amount_cescudero"/>
+
+                                    </tree>
+                                </field>
+                            </page>
+-->
+
+
 
 
 

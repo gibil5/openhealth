@@ -63,11 +63,12 @@ class Scheduler(models.Model):
 		print('Scheduler - Update Marketing External')
 
 		# Search
-		configurator = self.env['openhealth.configurator'].search([
-																	('name', 'in', ['marketing']),
-															],
-																	order='date_begin,name asc',
-																	limit=1,
+		#configurator = self.env['openhealth.configurator'].search([
+		configurator = self.env['openhealth.configurator.report'].search([
+																			('name', 'in', ['marketing']),
+																		],
+																			order='date_begin,name asc',
+																			limit=1,
 														)
 		print(configurator)
 		print(configurator.name)
@@ -125,11 +126,12 @@ class Scheduler(models.Model):
 
 
 		# Search
-		configurator = self.env['openhealth.configurator'].search([
-																	('name', 'in', ['management']),
-															],
-																	order='date_begin,name asc',
-																	limit=1,
+		#configurator = self.env['openhealth.configurator'].search([
+		configurator = self.env['openhealth.configurator.report'].search([
+																			('name', 'in', ['management']),
+																		],
+																			order='date_begin,name asc',
+																			limit=1,
 														)
 		print(configurator)
 		print(configurator.name)

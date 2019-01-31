@@ -7,7 +7,7 @@
 <!-- Main Quality Control --> 
 <menuitem   id="main_qc_menu" 
             
-            sequence="-8"
+            sequence="-6"
 
             name="Quality"
 

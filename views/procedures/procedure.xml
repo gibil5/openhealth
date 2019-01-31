@@ -22,6 +22,8 @@
                         <!-- Controls -->
 <!--
                             groups="openhealth.roots,openhealth.archivers,openhealth.managers,openhealth.physicians,openhealth.directors"
+
+                            name="create_controls"
 -->
                         <button 
                             type="object" 
@@ -30,7 +32,8 @@
                                                     ('laser', '!=', 'laser_quick'), 
                                                     ('laser', '!=', 'laser_co2'), 
                                                 ]}"
-                            name="create_controls" 
+
+                            name="create_controls_manual" 
 
                             string="Crear Controles"                            
                         />
@@ -41,19 +44,26 @@
                         <!--
                             attrs="{ 'invisible':[  ('number_sessions','==',1),     ]}"
                             groups="openhealth.roots,openhealth.archivers,openhealth.managers,openhealth.physicians,openhealth.directors"
+
+                            name="create_sessions"
                         --> 
                         <button 
                             type="object" 
                             class="oe_highlight"
-                            name="create_sessions"  
+
+                            name="create_sessions_manual"  
 
                             string="Crear Sesiones"
                         />
 
 
 
+
+
                         <!-- App -->
-                        <!--
+                        <!-- Clear Sessions -->
+                        <!-- Clear Controls -->
+<!--
                         <button 
                             type="object" 
                             class="oe_highlight"
@@ -62,18 +72,7 @@
 
                             string="Update App"
                         />
-                        -->
 
-
-
-                        
-
-
-
-
-
-
-                        <!-- Clear Sessions -->
                         <button 
                             type="object" 
                             class="oe_highlight"
@@ -83,13 +82,6 @@
                             string="Clear Sessions"
                         />
 
-
-<!--
-                                                    ('laser', '!=', 'laser_quick'), 
-                                                    ('laser', '!=', 'laser_co2'), 
--->
-
-                        <!-- Clear Controls -->
                         <button 
                             type="object" 
                             class="oe_highlight"
@@ -101,7 +93,7 @@
 
                             string="Clear Controls"
                         />
-
+-->
 
 
 
@@ -218,18 +210,18 @@
                             
                             <group>
                                 <field name="doctor" options="{'no_create': True}"  />
-                                
                                 <field name="evaluation_start_date"/>
                                 <field name="session_date"/>
-                                
                                 <field name="appointment"   required="0"/>  
                                 <field name="machine"/>
                             </group>
                             <group>
-                                <field name="chief_complaint"/>                             
+                                <field name="chief_complaint"/>                           
                                 <field name="number_sessions"/>                             
                                 <field name="number_controls"/>                             
                                 <field name="product"/>
+
+                                <field name="configurator"/>
                             </group>
                             
 <!--

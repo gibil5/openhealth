@@ -3,7 +3,7 @@
 	Procedure 	
 
 	Created: 				 1 Nov 2016
-	Last updated: 	 	 	24 Nov 2018
+	Last updated: 	 	 	28 Jan 2019
 """
 from openerp import models, fields, api
 from . import app_vars
@@ -11,9 +11,120 @@ from . import pro_con_funcs
 from . import pro_ses_funcs
 
 class Procedure(models.Model):
+
 	_name = 'openhealth.procedure'
-	#_inherit = ['oeh.medical.evaluation', 'openhealth.base']
+
 	_inherit = 'oeh.medical.evaluation'
+
+	#_order = 'write_date desc'
+
+	_description = 'Procedure'
+
+
+
+# ----------------------------------------------------------- Creates Man -------------------------
+	# Create Controls Manual
+	@api.multi	
+	def create_controls_manual(self):
+		print()
+		print('Create Controls Manual')
+
+		nr_controls = 1
+
+		nr_ctl_created = self.env['openhealth.control'].search_count([
+																		('procedure','=', self.id), 
+																	]) 
+		# Create
+		ret = pro_con_funcs.create_controls(self, nr_controls, nr_ctl_created)
+
+
+
+
+	# Create Sessions Manual
+	@api.multi	
+	def create_sessions_manual(self): 
+		
+		nr_sessions = 1
+
+		nr_ses_created = self.env['openhealth.session.med'].search_count([
+																			('procedure', '=', self.id), 
+																	]) 
+
+		# Create
+		ret = pro_ses_funcs.create_sessions(self, nr_sessions, nr_ses_created)
+	
+
+
+
+
+
+# ----------------------------------------------------------- Creates -----------------------------
+	# Create Controls 
+	@api.multi	
+	def create_controls(self):
+
+		# Init
+		if self.configurator.name != False:
+			if self.laser in ['laser_co2']:
+				nr_controls = self.configurator.nr_controls_co2
+			elif self.laser in ['laser_quick']:
+				nr_controls = self.configurator.nr_controls_quick
+			elif self.laser in ['laser_exc']:
+				nr_controls = self.configurator.nr_controls_exc
+			elif self.laser in ['laser_ipl']:
+				nr_controls = self.configurator.nr_controls_ipl
+			elif self.laser in ['laser_ndyag']:
+				nr_controls = self.configurator.nr_controls_ndyag
+			else:
+				nr_controls = 0
+		else:
+			nr_controls = 0
+
+		self.number_controls = nr_controls
+
+		nr_ctl_created = self.env['openhealth.control'].search_count([
+																		('procedure','=', self.id), 
+																	]) 
+		# Create
+		ret = pro_con_funcs.create_controls(self, nr_controls, nr_ctl_created)
+
+	# create_controls
+
+
+
+
+	# Create Sessions 
+	@api.multi	
+	def create_sessions(self): 
+		
+		# Init
+		if self.configurator.name != False:
+			if self.laser in ['laser_co2']:
+				nr_sessions = self.configurator.nr_sessions_co2
+			elif self.laser in ['laser_quick']:
+				nr_sessions = self.configurator.nr_sessions_quick
+			elif self.laser in ['laser_exc']:
+				nr_sessions = self.configurator.nr_sessions_exc
+			elif self.laser in ['laser_ipl']:
+				nr_sessions = self.configurator.nr_sessions_ipl
+			elif self.laser in ['laser_ndyag']:
+				nr_sessions = self.configurator.nr_sessions_ndyag
+			else:
+				nr_sessions = 0
+		else:
+			nr_sessions = 0
+
+		self.number_sessions = nr_sessions
+
+		nr_ses_created = self.env['openhealth.session.med'].search_count([
+																			('procedure', '=', self.id), 
+																	]) 
+
+		# Create
+		ret = pro_ses_funcs.create_sessions(self, nr_sessions, nr_ses_created)
+	
+	# create_sessions
+
 
 
 
@@ -38,72 +149,16 @@ class Procedure(models.Model):
 			ondelete='cascade', 
 			)
 
-
-
-# ----------------------------------------------------------- Clears ------------------------------
-	# Clear Sessions 
-	@api.multi	
-	def clear_sessions(self):
-
-		self.session_ids.unlink()
-
-
-
-	# Clear Controls 
-	@api.multi	
-	def clear_controls(self):
-
-		self.control_ids.unlink()
-
-
-
-# ----------------------------------------------------------- Creates -----------------------------
-	# Create Controls 
-	@api.multi	
-	def create_controls(self):
-		# Init 
-		nr_controls = 1 
-		nr_ctl_created = self.env['openhealth.control'].search_count([
-																		('procedure','=', self.id), 
-																	]) 
-
-		# Create 
-		ret = pro_con_funcs.create_controls(self, nr_controls, nr_ctl_created)
-
-	# create_controls
-
-
-
-
-	# Create Sessions 
-	@api.multi	
-	def create_sessions(self): 
-		
-		#nr_sessions = self.number_sessions
-		nr_sessions = 1
-
-		nr_ses_created = self.env['openhealth.session.med'].search_count([
-																			('procedure', '=', self.id), 
-																	]) 
-
-
-		#ret = pro_ses_funcs.create_sessions(self, nr_sessions)
-		ret = pro_ses_funcs.create_sessions(self, nr_sessions, nr_ses_created)
-
-	
-	# create_sessions
-
-
-
-
-
 # ----------------------------------------------------------- Dates -------------------------------
 
 	# Date 
 	evaluation_start_date = fields.Datetime(
 			string = "Fecha y hora", 	
-			#default = fields.Date.today, 
-			required=True, 
+
+			default = fields.Date.today, 
+			
+			#required=True, 	Dep !
+			required=False,
 			
 			#readonly=True, 
 			readonly=False, 
@@ -330,3 +385,15 @@ class Procedure(models.Model):
 				'context':   {}
 		}
 	# open_line_current
+
+
+# ----------------------------------------------------------- Clears ------------------------------
+	# Clear Sessions 
+	@api.multi	
+	def clear_sessions(self):
+		self.session_ids.unlink()
+
+	# Clear Controls 
+	@api.multi	
+	def clear_controls(self):
+		self.control_ids.unlink()

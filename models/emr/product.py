@@ -2,28 +2,16 @@
 """
  		*** Product Template
 
- 		Created: 			   Nov 2016
-		Last up: 	 		 5 Nov 2018
+ 		Created: 			    Nov 2016
+		Last up: 	 		 25 Jan 2019
 """
 from __future__ import print_function
 from openerp import models, fields, api
 from openerp.exceptions import ValidationError
-
-
-#from . import lib
-#from libs import lib
 from openerp.addons.openhealth.models.libs import lib
-
-
 from . import prodvars
 from . import gen
 from . import gen_tic
-
-#from openerp.addons.openhealth.models.containers import gen
-#from openerp.addons.openhealth.models.containers import gen_tic
-
-
-
 
 class Product(models.Model):
 	"""

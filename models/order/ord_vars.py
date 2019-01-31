@@ -8,7 +8,7 @@
 
 
 
-_week_day_list = [
+_weekday_list = [
 					('monday', 			'Lunes'),
 					('tuesday', 		'Martes'),
 					('wednesday', 		'Miercoles'),

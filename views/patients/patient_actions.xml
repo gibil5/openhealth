@@ -79,7 +79,9 @@
             <field name="name">Pacientes Todos</field>
             <field name="res_model">oeh.medical.patient</field>
             <field name="view_type">form</field>
+
             <field name="view_mode">tree,form,kanban,graph,pivot</field>
+            
             <field name="context">{}</field>
             
             <field name="domain">[]</field>

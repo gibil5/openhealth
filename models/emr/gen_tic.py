@@ -7,9 +7,16 @@
 _dic_prod = {
 			# Dep 
 			#'token': 					'Token', 
-
 			#'dexpantenol_5ml': 		'AMP. DEXPANTENOL 5 ML',
 			'dexpantenol_5ml': 			'DEXPANTENOL 5 ML',
+
+
+
+			# New - 28 Jan 2019
+			'collagen_naara': 			'COLAGENO NAARA',
+			'ageless_box': 				'CAJA AGELESS',
+			'ageless_blister': 			'BLISTER AGELESS',
+
 
 
 			# New

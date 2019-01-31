@@ -6,8 +6,10 @@
 
         <!-- FORM --> 
         <record model="ir.ui.view" id="configurator_form_view">
-            <field name="name">configurator.form</field>           
-            <field name="model">openhealth.configurator</field>
+            <field name="name">configurator.form</field> 
+
+            <field name="model">openhealth.configurator.report</field>
+            
             <field name="arch" type="xml">
                 <form string="configurator Form">
                     
@@ -63,16 +65,12 @@
         </record>
 
 
-
-
-
-
-
-        
         <!-- TREE --> 
         <record model="ir.ui.view" id="configurator_view_tree">
             <field name="name">openhealth.configurator.tree</field>
-            <field name="model">openhealth.configurator</field>
+
+            <field name="model">openhealth.configurator.report</field>
+
             <field name="arch" type="xml">
 
                 <tree string="Marketing Tree">
@@ -95,12 +93,37 @@
 
 
 
+
+
+        <!-- ACTION - Reports -->
+        <record model="ir.actions.act_window" id="configurator_report_list_action">   
+            <field name="name">Configurators</field>
+            
+            <field name="res_model">openhealth.configurator.report</field>
+
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>            
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first order
+                </p>
+            </field>
+            -->
+        </record>
+
+
+
+
+
         <!-- ACTION - All -->
         <record model="ir.actions.act_window" id="configurator_list_action">   
-            
             <field name="name">Configurators</field>
             
             <field name="res_model">openhealth.configurator</field>
+
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             <!--

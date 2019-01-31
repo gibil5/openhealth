@@ -1,14 +1,24 @@
 # -*- coding: utf-8 -*-
 {
-	'name': "Open Health - STRUCTURED - OBJECT ORIENTED",
+	'name': "Open Health - STRUCTURED - SERVICE ORIENTED - ALIVE",
 
 	'summary': "",
 
 	'description': """
 
-		15 Jan 2019
+		31 Jan 2019
 
-		Fulcrum - TRAVIS Quality Controlled - 2019
+		Go - Fulcrum - TRAVIS Quality Controlled - 2019
+
+		Learn from Go, to maintain your territory:
+			- Build Eyes.
+			- Eyes are the arrangement of internal liberties. 
+
+		Critical Use Cases: 
+		- New patient wants a consultation. 
+		- Existing patient wants to change Control Appointment. 
+		  Dr has not created anything.
+
 
 		Code without Tests is broken by design. Jacob Kaplan-Moss
 		
@@ -71,8 +81,11 @@
 
 
 # ----------------------------------------------------------- New ------------------------------------------------------
-		'views/schedulers/scheduler.xml',
-		'views/schedulers/configurator.xml',
+		'views/configurators/scheduler.xml',
+
+		'views/configurators/configurator.xml',
+		'views/configurators/configurator_emr.xml',
+
 
 
 
@@ -140,8 +153,10 @@
 		'data/prods/odoo_data_products.xml',
 		'data/prods/odoo_data_products_new.xml',
 		'data/prods/odoo_data_products_dep.xml',			# Important
+		'data/prods/odoo_data_products_new_20181212.xml',
 
-		'data/prods/odoo_data_products_new_20181212.xml',	# New
+		'data/prods/odoo_data_products_new_20190128.xml',	# New !
+
 
 
 
@@ -331,6 +346,7 @@
 		'views/services/service_search.xml',
 
 		'views/appointments/appointment_actions.xml',
+		'views/appointments/appointment_search.xml',
 
 
 
@@ -521,8 +537,11 @@
 		'views/patients/patient_control_docs.xml',
 		#'views/patients/patient_appointments.xml',
 
+
+
 		# Appointments - 2
 		'views/appointments/calendar.xml',
+		'views/appointments/appointment_kanban.xml',
 
 
 
@@ -573,6 +592,12 @@
 
 # ----------------------------------------------------------- Menus ------------------------------------------------------
 		'views/menus/menus.xml',
+		'views/menus/menus_app.xml',
+
+
+		'views/menus/menus_config.xml',
+
+
 		'views/menus/menus_products.xml',
 		'views/menus/menus_caja.xml',
 		'views/menus/menus_reporting.xml',

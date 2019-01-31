@@ -6,7 +6,7 @@
  	Integration Tests for the Treatment Class
 
 	Created: 			14 Aug 2018
-	Last up: 	 		20 Nov 2018
+	Last up: 	 		22 Jan 20189
 """
 from __future__ import print_function
 
@@ -20,13 +20,56 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 	print('Test Integration')
 
 
-	# Appointment - Consultation 
-	print('Create App - Consultation')
+	# Init
+	self.co2_create = False
+	self.exc_create = False
+	self.ipl_create = False
+	self.ndy_create = False
+	self.qui_create = False
 
-	x_type = 'consultation'
-	subtype = 'consultation'
-	state = 'pre_scheduled'
-	self.create_appointment_nex(x_type, subtype, state)
+	self.med_create = False
+	self.cos_create = False
+	self.vip_create = False
+	self.product_create = False
+
+
+	# Test Cases
+	if self.x_test_scenario in ['co2']:
+		self.co2_create = True
+
+	elif self.x_test_scenario in ['exc']:
+		self.exc_create = True
+
+	elif self.x_test_scenario in ['ipl']:
+		self.ipl_create = True
+
+	elif self.x_test_scenario in ['ndyag']:
+		self.ndy_create = True
+
+	elif self.x_test_scenario in ['quick']:
+		self.qui_create = True
+
+	elif self.x_test_scenario in ['all']:
+		self.co2_create = True
+		self.exc_create = True
+		self.ipl_create = True
+		self.ndy_create = True
+		self.qui_create = True
+
+		self.med_create = True
+		self.cos_create = True
+		self.vip_create = True
+		self.product_create = True
+
+
+
+
+	# Appointment - Consultation 
+	#print('Create App - Consultation')
+	#x_type = 'consultation'
+	#subtype = 'consultation'
+	#state = 'pre_scheduled'
+	#self.create_appointment_nex(x_type, subtype, state)
 
 
 
@@ -83,23 +126,28 @@ def test_integration_treatment(self, date_order_begin=False, date_order_end=Fals
 
 
 	# Sessions
-	#if False:
-	if self.ses_create:
+	if False:
+	#if self.ses_create:
 		print('Create Sessions')
 		for procedure in self.procedure_ids: 
+
 			#for _ in range(2): 
-			for _ in range(1): 
+			for _ in range(1):
 				procedure.create_sessions()
 
 
+
 	# Controls 
-	#if False:
-	if self.con_create:
+	if False:
+	#if self.con_create:
 		print('Create Controls')
 		for procedure in self.procedure_ids: 
-			#for _ in range(6): 
-			for _ in range(1):
+
+			#for _ in range(1):
+			for _ in range(6):
 				procedure.create_controls()
+
+
 
 # test_integration_treatment
 
@@ -585,7 +633,9 @@ def reset_treatment(self):
 
 	# Orders 
 	for order in self.order_ids:
-		order.remove_myself()
+		#order.remove_myself()
+		order.remove_myself_force()
+
 
 
 	# Conter Decrease - Deprecated !!!

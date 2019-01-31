@@ -20,7 +20,10 @@ class Patient(models.Model):
 	high level support for doing this and that.
 	"""
 	_inherit = 'oeh.medical.patient'
+
 	_order = 'x_id_code desc'
+
+	_description = 'Patient'
 
 
 # ----------------------------------------------------------- Constraints - Sql -------------------

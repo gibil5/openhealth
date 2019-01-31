@@ -4,22 +4,14 @@
 
 # State 
 _state_list = [
-				('pre_scheduled',	 		'No confirmado'),
-				#('Scheduled', 				'Confirmado'),
-				('Scheduled', 				'Cita Confirmada'),
-				
-				#('pre_scheduled_control', 	'Sin Hora (Control)'),
-				#('pre_scheduled_session', 	'Sin Hora (Sesion)'),
-				('pre_scheduled_control', 	'Pre-cita'),
-				('pre_scheduled_session', 	'Pre-cita Sesion'),
+				#('pre_scheduled',	 		'No confirmado'),
+				('pre_scheduled',	 		'No Confirmado'),
+				('Scheduled', 				'Confirmado'),
 
 
-				#('confirmable', 				'Confirmable'),
+				#('pre_scheduled_control', 	'Pre-cita'),
+				#('pre_scheduled_session', 	'Pre-cita Sesion'),
 
-				#('event', 					'Evento'),
-				#('invoiced', 				'Facturado'),
-				#('error', 					'Error'),
-				#('completed', 				'Completo'),
 
 				# Oe Health 
 				#('Scheduled', 'Scheduled'),
@@ -34,12 +26,11 @@ _state_list = [
 
 # Type 
 _type_list = [
+        			('control', 	'Control'),
         			('consultation', 'Consulta'),
         			('procedure', 	'Procedimiento'),
-        			('event', 		'Evento'),
         			('session', 	'Sesión'),
-        			('control', 	'Control'),
-        			
+        			('event', 		'Evento'),
         			#('cosmetology', 'Cosmiatría'),
 ]
 

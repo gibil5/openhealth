@@ -41,13 +41,14 @@
 
 
         <!-- Configurators --> 
+<!--
         <menuitem   id="oh_configurator_menu" 
                     name="Configurators" 
                     parent="openhealth_openhealth_menu"
                     sequence="1"
                     action="configurator_list_action"
             />
-
+-->
 
         <!-- Schedulers --> 
         <menuitem   id="oh_scheduler_menu" 

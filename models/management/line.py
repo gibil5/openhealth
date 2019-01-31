@@ -1,38 +1,46 @@
 # -*- coding: utf-8 -*-
-#
-# 		Line
-# 		Inherited by: management_order_line, marketing_order_line, order_report_nex_line, electronic_line 
-# 		
-# 		Created: 				26 May 2018
-# 		Last updated: 			14 Sep 2018
-#
+"""
+		Line
+ 		Inherited by: management_order_line, marketing_order_line, order_report_nex_line, electronic_line 
+ 		
+ 		Created: 				26 May 2018
+ 		Last updated: 			25 Jan 2019
+"""
 from openerp import models, fields, api
 import openerp.addons.decimal_precision as dp
-from . import lib
+from openerp.addons.openhealth.models.libs import lib
 
 class Line(models.Model):	
+
 	_name = 'openhealth.line'
+
 	_order = 'x_date_created asc'
 
 
 
-# ----------------------------------------------------------- Fields ------------------------------------------------------
+# ----------------------------------------------------------- Dates ------------------------------------------------------
 
 	# Date Created 
 	x_date_created = fields.Datetime(
-			string='Fecha', 
+			#string='Fecha', 
+			string='Fecha y Hora', 
 		)
 
+	# Date Date
+	#date_order_date = fields.Date(
+	date_order_date = fields.Datetime(
+		'Fecha',
+	)
+
+
+
+# ----------------------------------------------------------- Core ------------------------------------------------------
 
 	# Name 
 	name = fields.Char(
 			string="Nombre", 		
 			#required=True, 
 		)
-
-
-
-# ----------------------------------------------------------- Core ------------------------------------------------------
 
 	# Product Product 
 	product_id = fields.Many2one(

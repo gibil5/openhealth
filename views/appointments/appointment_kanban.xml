@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+
+
+<!-- KANBAN -->
+<!--
+             <record model="ir.ui.view" id="oeh_medical_patient_kanban_view">
+-->
+             <record model="ir.ui.view" id="oeh_medical_appointment_kanban_view">
+
+                <field name="name">Appointment Kanban</field>
+                
+                <field name="model">oeh.medical.appointment</field>
+                
+                <field name="arch" type="xml">
+                    
+                    <kanban     >
+                    
+                        <templates>
+                            <t t-name="kanban-box">
+
+                                <div class="oeh_medical_vignette">
+<!--                                    
+                                    <div class="oeh_medical_image">
+                                        <a type="open"><img t-att-src="kanban_image('oeh.medical.patient', 'image_medium', record.id.value)" class="oeh_medical_picture"/></a>
+                                    </div>
+-->
+                                    <div class="oeh_medical_details">
+                                        <h4>
+<!--                                            
+                                            <a type="open"><field name="name"/></a>
+-->
+                                            <a type="open"><field name="patient"/></a>
+                                        </h4>
+
+                                        <ul>
+<!--                                            
+                                            <li t-if="record.patient.raw_value"><field name="patient"/></li>
+-->
+                                            <li t-if="record.doctor.raw_value"><field name="doctor"/></li>
+
+                                            <li t-if="record.x_type.raw_value"><field name="x_type"/></li>
+
+                                            <li t-if="record.appointment_date.raw_value"><field name="appointment_date"/></li>
+
+                                            <li t-if="record.state.raw_value"><field name="state"/></li>
+
+                                            <li t-if="record.x_confirmable.raw_value"><field name="x_confirmable"  invisible="1"/></li>
+
+
+<!--
+                                            <li t-if="record.identification_code.raw_value"><field name="identification_code"/></li>
+                                            <li t-if="record.sex.raw_value"><field name="sex"/></li>
+                                            <li t-if="record.age.raw_value"><field name="age"/></li>
+                                            <li t-if="record.rh.raw_value"><field name="blood_type"/> <field name="rh"/></li>
+                                            <li t-if="record.email.raw_value"><a t-attf-href="mailto:#{record.email.value}"><field name="email"/></a></li>
+-->
+                                        </ul>
+
+
+<!--
+<a type="button">
+    <button name="button_name" type="button_type" class="oe_highlight">
+        <span>Submit</span>
+    </button>
+</a>
+-->
+                                            <!-- Confirm --> 
+<!--                                            
+                                            <a type="button">
+                                            <button
+                                                type="object"
+                                                class="oe_highlight"
+
+                                                name="confirm"
+
+                                                string="Confirmar"
+                                            />
+                                            </a>
+-->
+
+
+<a type="button">
+    <button name="confirm" type="object" class="oe_highlight"
+    attrs="{'invisible':[   '|',
+                                                ('x_confirmable', 'in', [False]),
+                                                ('state', 'in', ['Scheduled']),
+                                            ]}"
+        >
+        <span>Confirmar</span>
+    </button>
+</a>
+
+<a type="button">
+    <button name="un_confirm" type="object" class="oe_highlight"
+
+                        states="Scheduled"
+        >
+        <span>Des Confirmar</span>
+    </button>
+</a>
+
+<a type="button">
+    <button name="check_and_push" type="object" class="oe_highlight"
+
+                        states="Scheduled"
+        >
+        <span>+</span>
+    </button>
+</a>
+
+
+
+<a type="button">
+    <button name="check_and_pull" type="object" class="oe_highlight"
+
+                        states="Scheduled"
+        >
+        <span>-</span>
+    </button>
+</a>
+
+
+
+
+
+
+                                            <!-- Un Confirm --> 
+<!--
+                                           <div>
+                                            <button 
+                                                type="object" 
+                                                class="oe_highlight"
+                                                name="un_confirm"
+
+                                                string="Des Confirmar"
+                                            />
+                                            </div>
+-->
+
+                                    </div>
+                                </div>
+                            </t>
+                        </templates>
+                    
+                    </kanban>
+
+                </field>
+            </record>
+
+
+    </data>
+</openerp>

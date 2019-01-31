@@ -32,6 +32,9 @@ class sale_order(models.Model):
 	"""
 	_inherit = 'sale.order'
 
+	_description = 'Order'
+
+
 
 # ----------------------------------------------------------- Dep ---------------------------------
 
@@ -50,6 +53,16 @@ class sale_order(models.Model):
 				},
 		index=True,
 	)
+
+
+	# Date Date
+	x_date_order_date = fields.Date(
+		'Fecha',
+	)
+
+
+
+
 
 
 	# Month
@@ -783,17 +796,19 @@ class sale_order(models.Model):
 
 
 
-		# Create Procedure with Appointment
+		# Create Procedure 
 		if self.treatment.name != False:
-
 			for line in self.order_line:
-
-				#print(line.product_id.name)
-
 				if line.product_id.x_family in ['laser', 'medical', 'cosmetology']:
 
+
+					# Create with Appointment - Dep !
+					#creates.create_procedure_wapp(self, line.product_id.x_treatment, line.product_id.id)
+
 					# Create
-					creates.create_procedure_wapp(self, line.product_id.x_treatment, line.product_id.id)
+					#creates.create_procedure_go(self, False, line.product_id.x_treatment, line.product_id.id)
+					self.treatment.create_procedure(False, line.product_id.x_treatment, line.product_id.id)
+
 
 				line.update_recos()
 			# Update
@@ -1662,7 +1677,7 @@ class sale_order(models.Model):
 		self.state = 'draft'
 
 
-	# Remove
+	# Remove - Protected for Sales
 	@api.multi
 	def remove_myself(self):
 		"""
@@ -1675,6 +1690,18 @@ class sale_order(models.Model):
 		else:
 			#raise UserError("Advertencia: La Venta va a ser convertida en Presupuesto !")
 			self.reset()
+
+
+
+	# Remove Force
+	@api.multi
+	def remove_myself_force(self):
+		"""
+		high level support for doing this and that.
+		"""
+		self.reset()
+		self.unlink()
+
 
 
 # ---------------------------------------------- Cancel -------------------------------------------
@@ -1770,3 +1797,27 @@ class sale_order(models.Model):
 		#print
 		#print 'Order - Pay myself - Interface'
 		test_order.pay_myself(self)
+
+
+
+
+# ----------------------------------------------------------- Automatic ---------------------------
+
+	# Get Control Date Auto
+	@api.multi
+	def get_date_order_auto(self, date):
+		"""
+		Get Date Order
+		"""
+		#print()
+		#print('Get Date Order Auto')
+		#print(date)
+
+		if date not in [False]:
+			date_format = "%Y-%m-%d %H:%M:%S"
+			date_dt = datetime.datetime.strptime(date, date_format) + datetime.timedelta(hours=-5, minutes=0)
+			date_str = date_dt.strftime(date_format)
+		else:
+			date_str = False
+
+		return date_str

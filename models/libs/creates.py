@@ -348,8 +348,8 @@ def create_order(self, target):
 	"""
 	high level support for doing this and that.
 	"""
-	print()
-	print('Create Order')
+	#print()
+	#print('Create Order')
 	#print(target)
 	#print 'x_vip_inprog: ', self.x_vip_inprog
 
@@ -460,9 +460,9 @@ def create_order_lines(self, laser, order_id):
 	"""
 	high level support for doing this and that.
 	"""
-	print()
-	print('Create Order Lines')
-	print(laser)
+	#print()
+	#print('Create Order Lines')
+	#print(laser)
 
 	order = self.env['sale.order'].search([(
 												'id', '=', order_id),
@@ -537,17 +537,16 @@ def create_order_lines_micro(self, name_short, price_manual, price_applied, reco
 	"""
 	high level support for doing this and that.
 	"""
-	print()
-	print('Create Order Lines - Micro')
-	print('name_short: ', name_short)
-	print('price_manual: ', price_manual)
-	print('price_applied:', price_applied)
-	print('reco_id: ', reco_id)
+	#print()
+	#print('Create Order Lines - Micro')
+	#print('name_short: ', name_short)
+	#print('price_manual: ', price_manual)
+	#print('price_applied:', price_applied)
+	#print('reco_id: ', reco_id)
 	#print
 
 
 	# Init
-
 	_h_field = {
 					'consultation' : 	'service_consultation_id',
 					'laser_co2' : 		'service_co2_id',
@@ -678,7 +677,10 @@ def create_procedure_go(self, app_date_str, subtype, product_id):
 	# Init
 	treatment_id = self.id
 	patient = self.patient.id
+
+
 	chief_complaint = self.chief_complaint
+
 
 	# Doctor
 	doctor = user.get_actual_doctor(self)
@@ -688,47 +690,52 @@ def create_procedure_go(self, app_date_str, subtype, product_id):
 
 
 
-	# Search - Appointment
-	appointment = self.env['oeh.medical.appointment'].search([
-																('patient', '=', self.patient.name),
-																('doctor', '=', self.physician.name),
-																('x_type', '=', 'procedure'),
-																('x_subtype', '=', subtype),
-														],
-															order='appointment_date desc', limit=1)
-	#print appointment
+
+	# Create App - Dep !
+	if False:
+		# Search - Appointment
+		appointment = self.env['oeh.medical.appointment'].search([
+																	('patient', '=', self.patient.name),
+																	('doctor', '=', self.physician.name),
+																	('x_type', '=', 'procedure'),
+																	('x_subtype', '=', subtype),
+															],
+																order='appointment_date desc', limit=1)
+		#print appointment
 
 
-	# Delta - Check if existing App is in the Future
-	if appointment.name != False:
-		future = appointment.appointment_date
-		delta, delta_sec = lib.get_delta_now(self, future)
+		# Delta - Check if existing App is in the Future
+		if appointment.name != False:
+			future = appointment.appointment_date
+			delta, delta_sec = lib.get_delta_now(self, future)
 
 
-	if appointment.name == False or delta_sec < 0: 		# If no appointment or appointment in the past
+		if appointment.name == False or delta_sec < 0: 		# If no appointment or appointment in the past
 
-		# Is the hour before 21:00
-		app_date_ok = lib.doctor_available(self, app_date_str)
+			# Is the hour before 21:00
+			app_date_ok = lib.doctor_available(self, app_date_str)
 
-		if app_date_ok:
+			if app_date_ok:
 
-			# Create App
-			appointment = self.env['oeh.medical.appointment'].create({
-																		'appointment_date': app_date_str,
-																		'patient':			self.patient.id,
-																		'doctor':			self.physician.id,
-																		'state': 			'pre_scheduled',
-																		'x_type': 			'procedure',
-																		'x_subtype': 		subtype,
+				# Create App
+				appointment = self.env['oeh.medical.appointment'].create({
+																			'appointment_date': app_date_str,
+																			'patient':			self.patient.id,
+																			'doctor':			self.physician.id,
+																			'state': 			'pre_scheduled',
+																			'x_type': 			'procedure',
+																			'x_subtype': 		subtype,
 
-																		'treatment':		self.id,
-																})
-	appointment_id = appointment.id
-	#print appointment
-
-
+																			'treatment':		self.id,
+																	})
+		appointment_id = appointment.id
+		#print appointment
 
 
+
+
+
+	appointment_id = False
 
 	# Search - Product Product
 	product_product = self.env['product.product'].search([
@@ -740,8 +747,6 @@ def create_procedure_go(self, app_date_str, subtype, product_id):
 																('x_origin', '=', False),
 														])
 
-
-
 	# Create Proc
 
 	# Init
@@ -752,14 +757,17 @@ def create_procedure_go(self, app_date_str, subtype, product_id):
 	ret = 0
 
 
-	app_date_ok = lib.doctor_available(self, app_date_str)
+	# If Dr available
+	#app_date_ok = lib.doctor_available(self, app_date_str)
 
 
-	if app_date_ok:
+	#if app_date_ok:
+	if True:
 
 		# Create Procedure
 		procedure = self.procedure_ids.create({
-												'evaluation_start_date':app_date_str,
+												#'evaluation_start_date':app_date_str,
+
 												'appointment': appointment_id,
 												'patient':patient,
 												'doctor':doctor_id,
@@ -772,25 +780,35 @@ def create_procedure_go(self, app_date_str, subtype, product_id):
 
 
 
-		# Create Session - New
-		session = self.env['openhealth.session.med'].create({
-																'evaluation_start_date':app_date_str,
-																'appointment': appointment_id,
-																'patient': patient,
-																'doctor': doctor_id,
-																'product': product_template.id,
-																'chief_complaint': chief_complaint,
+		# Create Controls
+		procedure.create_controls()
 
-																'procedure': procedure_id,
-																'treatment': treatment_id,
-														})
-		session_id = session.id
+		# Create Sessions
+		procedure.create_sessions()
+
+
+
+		# Create Session - New
+		#session = self.env['openhealth.session.med'].create({
+																#'evaluation_start_date':app_date_str,
+
+		#														'appointment': appointment_id,
+		#														'patient': patient,
+		#														'doctor': doctor_id,
+		#														'product': product_template.id,
+		#														'chief_complaint': chief_complaint,
+
+		#														'procedure': procedure_id,
+		#														'treatment': treatment_id,
+		#												})
+		#session_id = session.id
 
 
 
 	# Update Appointment
-	if procedure_id != False:
-		ret = user.update_appointment_handlers(self, appointment_id, consultation_id, procedure_id, session_id, control_id)
+	if False:
+		if procedure_id != False:
+			ret = user.update_appointment_handlers(self, appointment_id, consultation_id, procedure_id, session_id, control_id)
 
 
 	return ret

@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='utf-8'?>
+<openerp>
+    <data>
+
+
+
+<!-- Products - New - 25 JAN 2019 -->
+
+<!--
+TIPO
+PROVEEDOR
+NOMBRE PRODUCTO
+COSTO UNITARIO (INC. IGV)
+PRECIO VENTA (INC. IGV)
+
+
+
+COLAGENO NAARA
+104.75
+170.00
+JEUNESSE
+LABORATORIO EXTERNO
+
+CAJA AGELESS
+155.61
+250.00
+JEUNESSE
+LABORATORIO EXTERNO
+
+
+BLISTER AGELESS
+31.12
+50.00
+JEUNESSE
+LABORATORIO EXTERNO
+
+-->
+
+
+        <!-- COLAGENO NAARA -->
+        <record id='collagen_naara' model='product.template'>
+
+            <field name='name'>COLAGENO NAARA</field>
+
+            <field name='x_name_short'>collagen_naara</field>
+
+            <field name='price'>170.00</field>
+
+            <field name='x_family'>topical</field>
+
+            <field name='type'>product</field>
+        </record>
+
+
+
+        <!-- CAJA AGELESS -->
+        <record id='ageless_box' model='product.template'>
+
+            <field name='name'>CAJA AGELESS</field>
+
+            <field name='x_name_short'>ageless_box</field>
+
+            <field name='price'>250.00</field>
+
+            <field name='x_family'>topical</field>
+
+            <field name='type'>product</field>
+        </record>
+
+
+
+        <!-- BLISTER AGELESS -->
+        <record id='ageless_blister' model='product.template'>
+
+            <field name='name'>BLISTER AGELESS</field>
+
+            <field name='x_name_short'>ageless_blister</field>
+
+            <field name='price'>50.00</field>
+
+            <field name='x_family'>topical</field>
+
+            <field name='type'>product</field>
+        </record>
+
+
+    </data>
+</openerp>

@@ -25,6 +25,19 @@ class DoctorLine(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Nex --------------------------
+	# Day Line
+	day_line = fields.One2many(
+
+			'openhealth.management.day.doctor.line',
+		
+			'doctor_id',
+		)
+
+
+
+
 # ----------------------------------------------------------- Relational --------------------------
 
 	# Sales

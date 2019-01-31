@@ -92,18 +92,39 @@
         
 
 
+                            <!-- Diario --> 
+<!--
+-->
+                            <page   string="Diario">
+                                <field name="day_line">
+
+                                    <tree string="Familia"  limit="1000">
+<!--
+                                        <field name="name"/>
+-->
+
+                                        <field name="date"/>
+                                        <field name="weekday"/>
+                                        <field name="duration"/>
+
+                                        <field name="amount"/>
+
+                                        <field name="nr_consultations"/>
+                                        <field name="nr_procedures"/>
+                                        <field name="ratio_pro_con"/>
+                                    </tree>
+
+                                </field>
+                            </page>
+
+
 
                             <!-- Familias --> 
                             <page   string="Familias">
                                 <field name="family_line">
                                     <tree string="Familia"  limit="1000">
                                         <field name="name_sp"/>
-<!--
-                                        <field name="name"/>
--->
                                         <field name="x_count"/>
-
-
                                         <field name="amount"/>
                                         <field name="per_amo"   widget="percentage"/>
                                     </tree>
@@ -117,12 +138,7 @@
                                 <field name="sub_family_line">
                                     <tree string="Subfamilia"   limit="1000"    >   
                                         <field name="name_sp"/>
-<!--
-                                        <field name="name"/>
--->                                    
                                         <field name="x_count"/>
-
-
                                         <field name="amount"/>
                                         <field name="per_amo"   widget="percentage"/>
                                     </tree>

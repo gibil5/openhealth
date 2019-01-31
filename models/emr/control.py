@@ -1,21 +1,16 @@
 # -*- coding: utf-8 -*-
-#
-# 	*** Control 	
-# 
-# 	Created: 			 1 Nov 2016
-# 	Last updated: 	 	 2 Sep 2018
-#
+"""
+ 		Control 	
+ 
+ 		Created: 			01 Nov 2016
+		Last updated: 	 	23 Jan 2019
+"""
 import datetime
 from openerp import models, fields, api
+from openerp.addons.openhealth.models.libs import lib
 from . import app_vars
 from . import time_funcs
 from . import control_vars
-
-#from . import lib
-#from libs import lib
-from openerp.addons.openhealth.models.libs import lib
-
-
 
 class Control(models.Model):
 	
@@ -23,26 +18,39 @@ class Control(models.Model):
 
 	_inherit = ['oeh.medical.evaluation', 'base_multi_image.owner']
 
+	_description = 'Control'
 
-
-# ----------------------------------------------------------- Deprecated ------------------------------------------------------
-	#@api.onchange('appointment')
-	#def _onchange_appointment(self):
-	#	print 
-	#	print 'On Change - Appointment'
-		#self.control_date = self.appointment.appointment_date
 
 
 
 # ----------------------------------------------------------- Dates ------------------------------------------------------
+
+	# Real date 
+	control_date = fields.Datetime(
+			#string = "Fecha Real",
+			string = "Fecha Control",
+			#readonly=True,
+
+			#compute='_compute_control_date',
+		)
+	@api.multi
+	#@api.depends('state')
+	def _compute_control_date(self):
+		for record in self:
+			record.control_date = record.appointment.appointment_date
+
+
+
+
+
 
 	# Date
 	evaluation_start_date = fields.Datetime(
 			string = "Fecha", 	
 			required=False, 
 		
-			#compute='_compute_evaluation_start_date', 
-			#compute='_compute_evaluation_start_date_nex', 
+			#compute='_compute_evaluation_start_date',
+			#compute='_compute_evaluation_start_date_nex',
 		)
 
 	@api.multi
@@ -56,29 +64,19 @@ class Control(models.Model):
 
 
 
-	# Real date 
-	control_date = fields.Datetime(
-			string = "Fecha Real",
-			readonly=True, 	
-
-			compute='_compute_control_date', 
-		)
-	@api.multi
-	#@api.depends('state')
-	def _compute_control_date(self):
-		#print
-		#print 'Compute - Control Date'
-		for record in self:
-			record.control_date = record.appointment.appointment_date
-
-
-
-
 	# First date 
 	first_date = fields.Datetime(
-			string = "Fecha Inicial", 		
-			readonly=True, 	
+			string = "Fecha Inicial",
+			readonly=True,
 		)
+
+
+
+	# Real date 
+	real_date = fields.Datetime(
+			string = "Fecha Real",
+		)
+
 
 
 # ----------------------------------------------------------- State ------------------------------------------------------
@@ -499,17 +497,5 @@ class Control(models.Model):
 		# Treatment Flag 
 		self.treatment.update()
 
-
-
-# ----------------------------------------------------------- CRUD ------------------------------------------------------
-
-	#@api.multi
-	#def unlink(self):
-		#print 
-		#print 'Unlink - Override'
-		#print self.appointment
-		#self.appointment.unlink() 
-		#print 
-	#	return models.Model.unlink(self)
 
 

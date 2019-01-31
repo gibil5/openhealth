@@ -15,5 +15,3 @@ mv electronic/*.pyc ./pyc/.
 
 mv order/*.pyc ./pyc/.
 
-
-

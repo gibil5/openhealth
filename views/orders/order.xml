@@ -804,7 +804,10 @@ Look for the Minimalist experience !!!
 
 
 
-                    <field name="date_order"    string="Fecha"/>
+                    <field name="date_order"            string="Fecha y hora"/>
+                    <field name="x_date_order_date"/>
+
+
                     <field name="x_day_order"   groups="openhealth.roots"/>
                     <field name="x_month_order"           groups='openhealth.roots'   />
 

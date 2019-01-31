@@ -25,10 +25,10 @@ def get_date_with_format(date_format, date):
 	date_format_1 = "%Y-%m-%d %H:%M:%S"
 
 	date_dt = datetime.datetime.strptime(date, date_format_1) + datetime.timedelta(hours=-5, minutes=0)
-	#print(date_dt)
+	print(date_dt)
 
 	date_s = date_dt.strftime(date_format)
-	#print(date_s)
+	print(date_s)
 
 	return date_s
 
@@ -51,24 +51,54 @@ def get_todays_name(date_format):
 
 
 
-#------------------------------------------------ Date - If Today ---------------------------------
-def is_today(date, state):
+
+#------------------------------------------------ Date - Is Today ---------------------------------
+def is_today(date):
 	"""
-	Is Today with State
+	Is Today
 	"""
-	#print
-	#print 'Is Today'
+	#print()
+	#print('Is Today')
+	#print(date)
+
 	date_format = "%Y-%m-%d %H:%M:%S"
+
 	date_dt = datetime.datetime.strptime(date, date_format) + datetime.timedelta(hours=-5, minutes=0)
+	#date_dt = datetime.datetime.strptime(date, date_format) + datetime.timedelta(hours=0, minutes=0)
+	#date_dt = datetime.datetime.strptime(date, date_format) + datetime.timedelta(hours=+5, minutes=0)
+
+	#print(date_dt)
+
 	if date_dt.date() == datetime.datetime.today().date():
 		is_today = True
 	else:
 		is_today = False
+
+	#print(is_today)
+
+	return is_today
+
+
+
+
+#------------------------------------------------ Date - Is Today ---------------------------------
+#def is_today_and_not_scheduled(date, state):
+#	"""
+#	Is Today with State
+#	"""
+	#print
+	#print 'Is Today'
+#	date_format = "%Y-%m-%d %H:%M:%S"
+#	date_dt = datetime.datetime.strptime(date, date_format) + datetime.timedelta(hours=-5, minutes=0)
+#	if date_dt.date() == datetime.datetime.today().date():
+#		is_today = True
+#	else:
+#		is_today = False
 	# Prints
 	#print date
 	#print date_dt
 	#print is_today
-	return is_today and state != 'Scheduled'
+#	return is_today and state != 'Scheduled'
 
 
 

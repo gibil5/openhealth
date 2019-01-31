@@ -41,6 +41,7 @@ class ManagementLine(models.Model):
 
 
 # ----------------------------------------------------------- Primitive ---------------------------
+
 	name = fields.Char(
 			'Name',
 		)

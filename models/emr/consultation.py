@@ -1,19 +1,14 @@
 # -*- coding: utf-8 -*-
-#
-# 	*** Consultation 
-# 
-# Created: 				 1 Nov 2016
-# Last updated: 	 	 7 Dec 2016 
-#
+"""
+ 		Consultation 
 
-from openerp import models, fields, api
+		Created: 			 1 Nov 2016
+		Last updated: 	 	23 Jan 2019
+"""
 from datetime import datetime,tzinfo,timedelta
-
-#from libs import eval_vars
+from openerp import models, fields, api
 from openerp.addons.openhealth.models.libs import eval_vars
-
 from . import app_vars
-
 
 class Consultation(models.Model):
 

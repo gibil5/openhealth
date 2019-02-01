@@ -11,8 +11,12 @@
 		Go - Fulcrum - TRAVIS Quality Controlled - 2019
 
 		Learn from Go, to maintain your territory:
-			- Build Eyes.
-			- Eyes are the arrangement of internal liberties. 
+			- Build Eyes. Eyes are the arrangement of internal liberties. 
+
+		New Micro Services:
+			- Management Reports. Productivity. 
+			- Appointments. 
+			- New Products. 
 
 		Critical Use Cases: 
 		- New patient wants a consultation. 

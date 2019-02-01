@@ -3,22 +3,32 @@
     <data>
 
 
+<!--
+        <menuitem id="main_appointment_calendar_menu"
+-->
 
  <!-- Calendar -->
-        <menuitem id="main_appointment_calendar_menu"
-                sequence="-17"
+<menuitem 
+            id="main_appointment_calendar_menu"
 
-                name="Calendario"
+            sequence="-17"
+
+            name="Calendario"
                 
-                groups="openhealth.roots,openhealth.assistants,openhealth.reception,openhealth.caja,openhealth.physicians,openhealth.directors"
-            />
+            groups="openhealth.roots,openhealth.assistants,openhealth.reception,openhealth.caja,openhealth.physicians,openhealth.directors"
+        />
+
 
 
 <!--
             name="Citas - Médicos"
 -->
+
+<!--
+                parent="main_appointment_calendar_menu"            
+-->
 <!-- Citas Confirmadas --> 
-        <menuitem id="oehealth_appointment_menu" 
+        <menuitem id="oehealth_appointment_menu_jx" 
 
                 parent="main_appointment_calendar_menu"            
                 
@@ -35,7 +45,7 @@
         <menuitem 
                     id="oeh_medical_appointment_list_cal_calendar"
 
-                    parent="oehealth_appointment_menu"  
+                    parent="oehealth_appointment_menu_jx"  
                     
                     sequence="1"
 
@@ -52,7 +62,7 @@
         <menuitem 
                     id="oeh_medical_appointment_list_cal_all"
 
-                    parent="oehealth_appointment_menu"  
+                    parent="oehealth_appointment_menu_jx"  
                     
                     sequence="3"
 
@@ -98,11 +108,11 @@
 <!-- Citas No Confirmadas --> 
         <menuitem id="oehealth_appointment_nc_menu"
 
-            parent="main_appointment_calendar_menu"            
+                parent="main_appointment_calendar_menu"            
             
-            sequence="3"
+                sequence="3"
 
-            name="Hoy - No Confirmadas"
+                name="Hoy - No Confirmadas"
             />
 
 

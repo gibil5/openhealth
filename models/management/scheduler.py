@@ -76,9 +76,11 @@ class Scheduler(models.Model):
 		if configurator.name not in [False, '']:
 			date_begin = configurator.date_begin
 			x_type = configurator.x_type
-		else:
-			date_begin = '2018-12-01'
-			x_type = 'fast'
+
+		#else:
+		#	date_begin = '2018-12-01'
+		#	x_type = 'fast'
+
 
 
 		# Search
@@ -137,20 +139,16 @@ class Scheduler(models.Model):
 		print(configurator.name)
 
 		if configurator.name not in [False, '']:
-
 			date_begin = configurator.date_begin
-
 			x_type = configurator.x_type
-
 			month_create = configurator.month_create
-
 			year_create = configurator.year_create
 
-		else:
-			date_begin = '2018-12-01'
-			x_type = 'fast'
-			month_create = False
-			year_create = False
+		#else:
+		#	date_begin = '2018-12-01'
+		#	x_type = 'fast'
+		#	month_create = False
+		#	year_create = False
 
 
 

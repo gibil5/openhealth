@@ -55,7 +55,7 @@ class Management(models.Model):
 			domain=[
 						#('x_type', '=', 'emr'),
 					],
-			default=_get_default_configurator,
+			#default=_get_default_configurator,
 		)
 
 

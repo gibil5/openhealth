@@ -22,6 +22,17 @@ class ConfiguratorReport(models.Model):
 
 
 
+# ----------------------------------------------------------- Redefined ---------------------------
+
+	name = fields.Selection(			
+			[
+				('management', 'Management'),
+				('marketing', 'Marketing'),
+			],
+			#string="Nombre",
+			required=True,
+		)
+
 
 # ----------------------------------------------------------- Fields --------------------------
 

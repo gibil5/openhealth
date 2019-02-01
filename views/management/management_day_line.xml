@@ -24,6 +24,9 @@
 
                     <field name="date"/>
                     <field name="weekday"/>
+
+                    <field name="holiday"/>
+
                     <field name="duration"/>
                     <field name="amount"/>
 

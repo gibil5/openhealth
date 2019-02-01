@@ -25,3 +25,8 @@ class Configurator(models.Model):
 		)
 
 
+
+	x_type = fields.Char(
+			#string="Tipo",
+		)
+

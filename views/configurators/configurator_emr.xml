@@ -5,11 +5,15 @@
 
 
 		<!-- FORM --> 
-		<record model="ir.ui.view" id="configurator_form_view">
-			<field name="name">configurator.form</field> 
+		<record model="ir.ui.view" id="configurator_emr_form_view">
+
+			<field name="name">configurator.emr.form</field>
+
 			<field name="model">openhealth.configurator.emr</field>
+			
 			<field name="arch" type="xml">
-				<form string="configurator Form">
+
+				<form string="configurator EMR Form">
 
 					<!-- Header -->
 					<header></header>
@@ -66,9 +70,38 @@
 						</group>
 
 
+<!--
+                        <group  string="Feriados"  col="2" >
+                            <group>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+-->
 
 						<!-- Notebook --> 
 						<notebook>
+
+
+                            <!-- Holidays --> 
+                            <page   string="Feriados">
+
+                                <field name="day_line">
+                                
+                                    <tree string="Holidays">
+<!--
+                                        <field name="name"/>
+-->
+                                        <field name="date"/>
+
+                                        <field name="holiday"/>
+                                    </tree>
+                                </field>
+
+                            </page>
+
+
+
 						</notebook>
 
 					</sheet>
@@ -78,9 +111,10 @@
 
 
 
-		<!-- TREE --> 
-		<record model="ir.ui.view" id="configurator_view_tree">
-			<field name="name">openhealth.configurator.tree</field>
+<!-- TREE -->
+		<record model="ir.ui.view" id="configurator_emr_view_tree">
+			
+			<field name="name">openhealth.configurator.emr.tree</field>
 
 			<field name="model">openhealth.configurator.emr</field>
 
@@ -101,6 +135,7 @@
 
 		<!-- ACTION - EMR -->
 		<record model="ir.actions.act_window" id="configurator_emr_list_action">
+
 			<field name="name">Configurators - EMR</field>
 			
 			<field name="res_model">openhealth.configurator.emr</field>

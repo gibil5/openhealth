@@ -780,11 +780,14 @@ def create_procedure_go(self, app_date_str, subtype, product_id):
 
 
 
+
 		# Create Controls
-		procedure.create_controls()
+		#procedure.create_controls()  			# Here !
+
 
 		# Create Sessions
-		procedure.create_sessions()
+		#procedure.create_sessions()  			# Here !
+
 
 
 

@@ -23,20 +23,7 @@ class Evaluation(models.Model):
 
 
 
-# ----------------------------------------------------------- Dep ? -------------------------------
-	# Cosmetology
-	#cosmetology = fields.Many2one(
-	#		'openhealth.cosmetology',
-	#		ondelete='cascade',
-	#		string="Cosmiatría",
-	#		)
-
-
-
-
-
-
-# ----------------------------------------------------------- Defaults ----------------------------
+# ----------------------------------------------------------- Configurator ------------------------
 
 	# Default Configurator
 	@api.model
@@ -52,9 +39,6 @@ class Evaluation(models.Model):
 
 
 
-# ----------------------------------------------------------- Relationals -------------------------
-
-
 	# Configurator
 	configurator = fields.Char()
 	#configurator = fields.Many2one(
@@ -68,6 +52,8 @@ class Evaluation(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Relationals -------------------------
 
 	# Treatment
 	treatment = fields.Many2one(

@@ -6,7 +6,7 @@
 
 	'description': """
 
-		31 Jan 2019
+		1 Feb 2019
 
 		Go - Fulcrum - TRAVIS Quality Controlled - 2019
 
@@ -86,9 +86,12 @@
 
 # ----------------------------------------------------------- New ------------------------------------------------------
 		'views/configurators/scheduler.xml',
+
 		'views/configurators/configurator.xml',
+
 		'views/configurators/configurator_emr.xml',
 
+		'views/configurators/configurator_report.xml',
 
 
 

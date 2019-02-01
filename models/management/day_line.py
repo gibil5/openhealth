@@ -27,6 +27,15 @@ class DayLine(models.Model):
 
 
 
+# ----------------------------------------------------------- Relational --------------------------
+
+	configurator_emr_id = fields.Many2one(
+			'openhealth.configurator.emr'
+		)
+
+
+
+
 # ----------------------------------------------------------- Redefined ---------------------------
 	amount = fields.Float(
 			'Venta por dia',
@@ -35,6 +44,15 @@ class DayLine(models.Model):
 
 
 # ----------------------------------------------------------- Primitives --------------------------
+
+	holiday = fields.Boolean(
+			'Feriado',
+			default=False,
+			#readonly=True,
+		)
+
+
+
 
 	date = fields.Date(
 			'Fecha',

@@ -259,10 +259,8 @@
                                 <field name="date_end"/>
                                 <field name="owner"   groups="openhealth.roots"  />
 
-
                                 <field name="month"  groups="openhealth.roots"/>
                                 <field name="year"   groups="openhealth.roots"/>
-
 <!--
                                 <field name="vspace"/>
                                 <field name="write_date"    string="Actualizado"/>
@@ -279,6 +277,9 @@
 
                             <group>
                                 <field name="total_amount"/>
+
+                                <field name="configurator"/>
+
 <!--
                                 <field name="total_amount_year"/>
                                 <field name="per_amo_total"   widget="percentage"  />
@@ -524,13 +525,15 @@
                                         <field name="per_nr"   widget="percentage"/>
                                         <field name="amount"/>
                                         <field name="per_amo"   widget="percentage"/>
--->
-
 
                                         <field name="name"/>
+-->
 
                                         <field name="date"/>
                                         <field name="weekday"/>
+
+                                        <field name="holiday"/>
+
                                         <field name="duration"/>
                                         <field name="amount"/>
                                         <field name="cumulative"/>

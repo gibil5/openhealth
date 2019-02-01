@@ -31,6 +31,36 @@ class Management(models.Model):
 
 
 
+# ----------------------------------------------------------- Configurator ------------------------
+
+	# Default Configurator
+	@api.model
+	def _get_default_configurator(self):
+
+		configurator = self.env['openhealth.configurator.emr'].search([
+																			('x_type', 'in', ['emr']),
+																		],
+																			#order='date_begin,name asc',
+																			limit=1,
+														)
+		return configurator
+
+
+
+	# Configurator
+	#configurator = fields.Char()
+	configurator = fields.Many2one(
+			'openhealth.configurator.emr',
+			string="Configuracion",
+			domain=[
+						#('x_type', '=', 'emr'),
+					],
+			default=_get_default_configurator,
+		)
+
+
+
+
 # ----------------------------------------------------------- QC ----------------------------------
 
 	delta_fast = fields.Float(
@@ -43,15 +73,20 @@ class Management(models.Model):
 
 
 
+
 	year = fields.Selection(
 			selection=ord_vars._year_order_list,
 			string='Año',
+			default='2019',
+			required=True,
 		)
+
 
 	month = fields.Selection(
 			selection=ord_vars._month_order_list,
 			string='Mes',
 			#readonly=True,
+			required=True,
 		)
 
 
@@ -282,6 +317,19 @@ class Management(models.Model):
 
 
 # ----------------------------------------------------------- Fields ----------------------
+
+	# Owner
+	owner = fields.Selection(
+			[
+				('month', 'Month'),
+				('year', 'Year'),
+				('account', 'Account'),
+			],
+			default='month',
+			required=True,
+		)
+
+
 	# State Array
 	state_arr = fields.Selection(
 			selection=mgt_vars._state_arr_list,
@@ -289,6 +337,7 @@ class Management(models.Model):
 			default='sale',
 			required=True,
 		)
+
 
 	# Type Array
 	type_arr = fields.Selection(
@@ -299,14 +348,6 @@ class Management(models.Model):
 			required=True,
 		)
 
-	# Owner
-	owner = fields.Selection(
-			[
-				('account', 'Account'),
-				('year', 'Year'),
-				('month', 'Month'),
-			],
-		)
 
 
 # ----------------------------------------------------------- Relational --------------------------

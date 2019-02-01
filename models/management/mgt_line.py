@@ -31,6 +31,7 @@ class ManagementLine(models.Model):
 
 
 # ----------------------------------------------------------- Relational --------------------------
+
 	management_id = fields.Many2one(
 			'openhealth.management'
 		)

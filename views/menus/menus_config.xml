@@ -8,7 +8,7 @@
         <menuitem   id="main_config_menu" 
                     sequence="-16"
 
-                    name="Config"
+                    name="Configuracion"
             />
 
 
@@ -20,7 +20,7 @@
             
                     sequence="1"
             
-                    name="Config"
+                    name="Configuracion"
                 />
 
 

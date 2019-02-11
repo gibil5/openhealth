@@ -781,17 +781,18 @@ def create_procedure_go(self, app_date_str, subtype, product_id):
 
 
 
-		# Create Controls
-		#procedure.create_controls()  			# Here !
 
+		# Create Controls
+		procedure.create_controls()  			# Here !
 
 		# Create Sessions
-		#procedure.create_sessions()  			# Here !
+		procedure.create_sessions()  			# Here !
 
 
 
 
-		# Create Session - New
+
+		# Create Session - Dep !
 		#session = self.env['openhealth.session.med'].create({
 																#'evaluation_start_date':app_date_str,
 

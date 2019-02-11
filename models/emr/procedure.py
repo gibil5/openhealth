@@ -3,7 +3,7 @@
 	Procedure 	
 
 	Created: 				 1 Nov 2016
-	Last updated: 	 	 	28 Jan 2019
+	Last updated: 	 	 	 6 Feb 2019
 """
 from openerp import models, fields, api
 from . import app_vars
@@ -16,45 +16,9 @@ class Procedure(models.Model):
 
 	_inherit = 'oeh.medical.evaluation'
 
-	#_order = 'write_date desc'
-
 	_description = 'Procedure'
 
-
-
-# ----------------------------------------------------------- Creates Man -------------------------
-	# Create Controls Manual
-	@api.multi	
-	def create_controls_manual(self):
-		print()
-		print('Create Controls Manual')
-
-		nr_controls = 1
-
-		nr_ctl_created = self.env['openhealth.control'].search_count([
-																		('procedure','=', self.id), 
-																	]) 
-		# Create
-		ret = pro_con_funcs.create_controls(self, nr_controls, nr_ctl_created)
-
-
-
-
-	# Create Sessions Manual
-	@api.multi	
-	def create_sessions_manual(self): 
-		
-		nr_sessions = 1
-
-		nr_ses_created = self.env['openhealth.session.med'].search_count([
-																			('procedure', '=', self.id), 
-																	]) 
-
-		# Create
-		ret = pro_ses_funcs.create_sessions(self, nr_sessions, nr_ses_created)
-	
-
-
+	#_order = 'write_date desc'
 
 
 
@@ -126,6 +90,36 @@ class Procedure(models.Model):
 	# create_sessions
 
 
+
+
+
+# ----------------------------------------------------------- Creates Man -------------------------
+	# Create Controls Manual
+	@api.multi	
+	def create_controls_manual(self):
+		#print()
+		#print('Create Controls Manual')
+		nr_controls = 1
+		nr_ctl_created = self.env['openhealth.control'].search_count([
+																		('procedure','=', self.id), 
+																	]) 
+		# Create
+		ret = pro_con_funcs.create_controls(self, nr_controls, nr_ctl_created)
+
+
+
+	# Create Sessions Manual
+	@api.multi	
+	def create_sessions_manual(self):
+		#print()
+		#print('Create Sessions Manual')
+		nr_sessions = 1
+		nr_ses_created = self.env['openhealth.session.med'].search_count([
+																			('procedure', '=', self.id), 
+																	])
+		# Create
+		ret = pro_ses_funcs.create_sessions(self, nr_sessions, nr_ses_created)
+	
 
 
 

@@ -4,6 +4,38 @@
 		"selected_items":
 		[
 			[
+				"order",
+				"order_line"
+			],
+			[
+				"pro",
+				"product_uom_qty"
+			],
+			[
+				"or",
+				"order_line"
+			],
+			[
+				"Fil",
+				"Filter"
+			],
+			[
+				"days",
+				"days_inactive"
+			],
+			[
+				"Produ",
+				"Productividad"
+			],
+			[
+				"update_cu",
+				"update_day_cumulative"
+			],
+			[
+				"update",
+				"update_days"
+			],
+			[
 				"ne",
 				"next_date"
 			],
@@ -264,10 +296,6 @@
 				"patient"
 			],
 			[
-				"pro",
-				"product_id"
-			],
-			[
 				"treat",
 				"treatment"
 			],
@@ -486,34 +514,6 @@
 			[
 				"ticket_rc",
 				"ticket_receipt"
-			],
-			[
-				"doct",
-				"doctor_id"
-			],
-			[
-				"x_typ",
-				"x_type"
-			],
-			[
-				"trem",
-				"treatment_id"
-			],
-			[
-				"re",
-				"receptor"
-			],
-			[
-				"file",
-				"file_name"
-			],
-			[
-				"targ",
-				"target_line"
-			],
-			[
-				"fn",
-				"fnames"
 			]
 		]
 	},
@@ -523,43 +523,177 @@
 			"file": "__openerp__.py",
 			"settings":
 			{
-				"buffer_size": 13861,
+				"buffer_size": 14186,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "models/emr/appointment.py",
+			"file": "models/emr/product.py",
 			"settings":
 			{
-				"buffer_size": 25157,
+				"buffer_size": 9906,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "views/appointments/appointment.xml",
+			"file": "models/management/mgt_funcs.py",
 			"settings":
 			{
-				"buffer_size": 11984,
+				"buffer_size": 9435,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "models/libs/user.py",
+			"file": "data/prods/odoo_data_products_new_20190128.xml",
 			"settings":
 			{
-				"buffer_size": 7773,
+				"buffer_size": 1872,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "views/appointments/appointment_kanban.xml",
+			"file": "data/prods/odoo_data_products.xml",
 			"settings":
 			{
-				"buffer_size": 5368,
+				"buffer_size": 18948,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/order/order.py",
+			"settings":
+			{
+				"buffer_size": 38513,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/management/management.py",
+			"settings":
+			{
+				"buffer_size": 36353,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/management/configurator_emr.py",
+			"settings":
+			{
+				"buffer_size": 2155,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/configurators/configurator_emr.xml",
+			"settings":
+			{
+				"buffer_size": 3795,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/emr/evaluation.py",
+			"settings":
+			{
+				"buffer_size": 8526,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/emr/procedure.py",
+			"settings":
+			{
+				"buffer_size": 8614,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/procedures/procedure.xml",
+			"settings":
+			{
+				"buffer_size": 11779,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/order/closing.py",
+			"settings":
+			{
+				"buffer_size": 6964,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/order/clos_funcs.py",
+			"settings":
+			{
+				"buffer_size": 6833,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/order/closing.DEP.py",
+			"settings":
+			{
+				"buffer_size": 165,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/closings/closings.xml",
+			"settings":
+			{
+				"buffer_size": 8764,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/orders/order.xml",
+			"settings":
+			{
+				"buffer_size": 34416,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/menus/menus_caja.xml",
+			"settings":
+			{
+				"buffer_size": 6116,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/order/order_line.py",
+			"settings":
+			{
+				"buffer_size": 5923,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/libs/creates.py",
+			"settings":
+			{
+				"buffer_size": 21345,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -574,64 +708,28 @@
 			}
 		},
 		{
-			"file": "views/menus/menus_app.xml",
+			"file": "models/emr/gen_vars.py",
 			"settings":
 			{
-				"buffer_size": 12173,
+				"buffer_size": 6430,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "views/appointments/calendar.xml",
+			"file": "models/emr/gen_tic.py",
 			"settings":
 			{
-				"buffer_size": 9844,
+				"buffer_size": 8210,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "views/appointments/appointment_actions.xml",
+			"file": "data/users/base_data_users_assistants.xml",
 			"settings":
 			{
-				"buffer_size": 17344,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/patients/patient_actions.xml",
-			"settings":
-			{
-				"buffer_size": 8012,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/emr/app_vars.py",
-			"settings":
-			{
-				"buffer_size": 6823,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/orders/order.xml",
-			"settings":
-			{
-				"buffer_size": 33278,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/order/order.py",
-			"settings":
-			{
-				"buffer_size": 37847,
+				"buffer_size": 5851,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -710,83 +808,98 @@
 	},
 	"file_history":
 	[
+		"/Users/gibil/cellar/github/openhealth/data/prods/odoo_data_products_new.xml",
+		"/Users/gibil/cellar/github/openhealth/data/prods/odoo_data_products_new_20181212.xml",
+		"/Users/gibil/cellar/github/openhealth/views/orders/order.xml",
+		"/Users/gibil/cellar/github/openhealth/data/prods/odoo_data_products.xml",
+		"/Users/gibil/cellar/github/openhealth/models/management/line.py",
+		"/Users/gibil/cellar/github/openhealth/models/emr/physician.py",
+		"/Users/gibil/cellar/github/openhealth/models/patient/patient.py",
+		"/Users/gibil/cellar/github/openhealth/models/emr/__init__.py",
+		"/Users/gibil/cellar/github/openhealth/models/emr/doctor.py",
+		"/Users/gibil/cellar/github/openhealth/views/configurators/configurator_emr.xml",
+		"/Users/gibil/cellar/github/openhealth/models/management/configurator_emr.py",
+		"/Users/gibil/cellar/github/openhealth/models/management/day_line.py",
+		"/Users/gibil/cellar/github/openhealth/models/libs/user.py",
+		"/Users/gibil/cellar/github/openhealth/views/management/management_order_line.xml",
+		"/Users/gibil/cellar/github/openhealth/views/management/management.xml",
+		"/Users/gibil/cellar/github/openhealth/models/management/mgt_funcs.py",
+		"/Users/gibil/cellar/github/openhealth/models/management/doctor_line.py",
+		"/Users/gibil/cellar/github/openhealth/models/management/management_order_line.py",
+		"/Users/gibil/cellar/github/openhealth/models/management/management.py",
+		"/Users/gibil/cellar/github/openhealth/models/order/order_line.py",
+		"/Users/gibil/cellar/github/openhealth/views/orders/order_actions.xml",
+		"/Users/gibil/cellar/github/openhealth/readme.txt",
+		"/Users/gibil/cellar/github/openhealth/data/prods/odoo_data_products_dep.xml",
+		"/Users/gibil/cellar/github/openhealth/views/management/management_day_line.xml",
+		"/Users/gibil/cellar/github/openhealth/models/emr/treatment.py",
+		"/Users/gibil/cellar/github/openhealth/models/libs/creates.py",
+		"/Users/gibil/cellar/github/openhealth/models/emr/procedure.py",
+		"/Users/gibil/cellar/github/openhealth/models/emr/evaluation.py",
+		"/Users/gibil/cellar/github/openhealth/models/emr/consultation.py",
+		"/Users/gibil/cellar/github/openhealth/models/management/scheduler.py",
+		"/Users/gibil/cellar/github/openhealth/views/configurators/configurator.xml",
+		"/Users/gibil/cellar/github/openhealth/views/configurators/configurator_report.xml",
+		"/Users/gibil/cellar/github/openhealth/models/management/mgt_line.py",
+		"/Users/gibil/cellar/github/openhealth/views/menus/menus_app.xml",
+		"/Users/gibil/cellar/github/openhealth/views/menus/menus_config.xml",
+		"/Users/gibil/cellar/github/openhealth/models/management/configurator.py",
+		"/Users/gibil/cellar/github/openhealth/models/management/configurator_report.py",
+		"/Users/gibil/cellar/github/openhealth/security/ir.model.access.csv",
+		"/Users/gibil/cellar/github/openhealth/views/payment_method/payment_methods.xml",
+		"/Users/gibil/cellar/github/openhealth/security/ir.model.access.BUF.txt",
+		"/Users/gibil/cellar/github/openhealth/models/emr/appointment.py",
+		"/Users/gibil/cellar/github/openhealth/models/emr/app_vars.py",
+		"/Users/gibil/cellar/github/openhealth/views/patients/patient_actions.xml",
+		"/Users/gibil/cellar/github/openhealth/views/appointments/appointment_actions.xml",
+		"/Users/gibil/cellar/github/openhealth/views/appointments/calendar.xml",
+		"/Users/gibil/cellar/github/openhealth/models/libs/lib.py",
+		"/Users/gibil/cellar/github/openhealth/views/appointments/appointment_kanban.xml",
+		"/Users/gibil/cellar/github/openhealth/views/appointments/appointment.xml",
+		"/Users/gibil/cellar/github/openhealth/models/management/__init__.py",
+		"/Users/gibil/cellar/github/openhealth/models/emr/evaluation.DEP.py",
 		"/Users/gibil/cellar/github/openhealth/views/patients/patient.xml",
 		"/Users/gibil/cellar/github/openhealth/views/menus/menus.xml",
 		"/Users/gibil/cellar/github/openhealth/views/orders/order_search.xml",
-		"/Users/gibil/cellar/github/openhealth/models/emr/procedure.py",
 		"/Users/gibil/cellar/github/openhealth/models/emr/pro_con_funcs.py",
 		"/Users/gibil/cellar/github/openhealth/models/emr/pro_ses_funcs.py",
 		"/Users/gibil/cellar/github/openhealth/models/emr/test_treatment.py",
-		"/Users/gibil/cellar/github/openhealth/models/libs/creates.py",
 		"/Users/gibil/cellar/github/openhealth/views/treatments/treatment.DEP.xml",
 		"/Users/gibil/cellar/github/openhealth/views/treatments/treatment.xml",
-		"/Users/gibil/cellar/github/openhealth/models/emr/treatment.py",
 		"/Users/gibil/cellar/github/openhealth/views/controls/control.xml",
 		"/Users/gibil/cellar/github/openhealth/models/emr/control.py",
-		"/Users/gibil/cellar/github/openhealth/models/emr/evaluation.py",
 		"/Users/gibil/cellar/github/openhealth/views/procedures/procedure.xml",
-		"/Users/gibil/cellar/github/openhealth/models/emr/app_vars.py",
-		"/Users/gibil/cellar/github/openhealth/models/libs/lib.py",
 		"/Users/gibil/cellar/github/openhealth/views/appointments/appointment_search.xml",
-		"/Users/gibil/cellar/github/openhealth/data/prods/odoo_data_products_new_20181212.xml",
 		"/Users/gibil/cellar/github/openhealth/models/emr/prodvars.py",
 		"/Users/gibil/cellar/github/openhealth/models/emr/product.py",
 		"/Users/gibil/cellar/github/openhealth/models/emr/gen.py",
 		"/Users/gibil/cellar/github/openhealth/models/emr/gen_tic.py",
 		"/Users/gibil/cellar/github/openhealth/models/emr/gen_vars.py",
 		"/Users/gibil/cellar/github/openhealth/data/prods/odoo_data_products_new_20190128.xml",
-		"/Users/gibil/cellar/github/openhealth/security/ir.model.access.csv",
-		"/Users/gibil/cellar/github/openhealth/views/menus/menus_config.xml",
-		"/Users/gibil/cellar/github/openhealth/models/management/configurator_report.py",
-		"/Users/gibil/cellar/github/openhealth/readme.txt",
-		"/Users/gibil/cellar/github/openhealth/views/configurators/configurator_emr.xml",
-		"/Users/gibil/cellar/github/openhealth/models/management/configurator_emr.py",
 		"/Users/gibil/cellar/github/openhealth/models/order/order.py",
-		"/Users/gibil/cellar/github/openhealth/models/management/scheduler.py",
-		"/Users/gibil/cellar/github/openhealth/models/patient/patient.py",
-		"/Users/gibil/cellar/github/openhealth/models/management/doctor_line.py",
-		"/Users/gibil/cellar/github/openhealth/models/management/line.py",
 		"/Users/gibil/cellar/github/openhealth/models/management/day_doctor_line.DEP.py",
 		"/Users/gibil/cellar/github/openhealth/views/management/management_doctor_line.xml",
 		"/Users/gibil/cellar/github/openhealth/models/management/day_doctor_line.py",
-		"/Users/gibil/cellar/github/openhealth/models/management/management.py",
-		"/Users/gibil/cellar/github/openhealth/views/appointments/appointment_actions.xml",
-		"/Users/gibil/cellar/github/openhealth/models/management/__init__.py",
-		"/Users/gibil/cellar/github/openhealth/models/management/configurator.py",
-		"/Users/gibil/cellar/github/openhealth/views/configurators/configurator.xml",
 		"/Users/gibil/cellar/github/openhealth/views/menus/menus_openhealth.xml",
-		"/Users/gibil/cellar/github/openhealth/views/menus/menus_app.xml",
 		"/Users/gibil/cellar/github/openhealth/views/menus/menus_caja.xml",
 		"/Users/gibil/cellar/github/openhealth/views/menus/menus_configurators.xml",
 		"/Users/gibil/cellar/github/openhealth/views/menus/menus_products.xml",
-		"/Users/gibil/cellar/github/openhealth/models/emr/consultation.py",
 		"/Users/gibil/cellar/github/openhealth/views/services/service_co2.xml",
 		"/Users/gibil/cellar/github/openhealth/views/product_selectors/product_selector.xml",
 		"/Users/gibil/cellar/github/openhealth/models/patient/partner.py",
 		"/Users/gibil/cellar/github/openhealth/models/emr/product_selector.py",
 		"/Users/gibil/cellar/github/openhealth/views/services/service.xml",
-		"/Users/gibil/cellar/github/openhealth/views/appointments/appointment.xml",
-		"/Users/gibil/cellar/github/openhealth/models/emr/appointment.py",
-		"/Users/gibil/cellar/github/openhealth/views/orders/order.xml",
-		"/Users/gibil/cellar/github/openhealth/views/management/management_order_line.xml",
-		"/Users/gibil/cellar/github/openhealth/models/management/management_order_line.py",
-		"/Users/gibil/cellar/github/openhealth/models/management/mgt_line.py",
-		"/Users/gibil/cellar/github/openhealth/models/management/day_line.py",
-		"/Users/gibil/cellar/github/openhealth/views/management/management.xml",
 		"/Users/gibil/cellar/github/openhealth/models/emr/control.TRASH.py",
 		"/Users/gibil/cellar/github/openhealth/models/patient/pat_vars.py",
 		"/Users/gibil/cellar/github/openhealth/models/emr/appointment.DEP.txt",
-		"/Users/gibil/cellar/github/openhealth/models/libs/user.py",
 		"/Users/gibil/cellar/github/openhealth/models/management/doctor_line.pyc",
 		"/Users/gibil/cellar/github/openhealth/views/menus/menus_qc.xml",
-		"/Users/gibil/cellar/github/openhealth/views/orders/order_actions.xml",
 		"/Users/gibil/cellar/github/openhealth/views/patients/patient_search.xml",
 		"/Users/gibil/cellar/github/openhealth/models/order/ord_vars.py",
 		"/Users/gibil/cellar/github/openhealth/data/physicians/base_data_physicians_new.xml",
 		"/Users/gibil/cellar/github/openhealth/data/physicians/base_data_physicians.xml",
 		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_doctors.xml",
 		"/Users/gibil/cellar/github/openhealth/views/appointments/appointment.TRASH.xml",
-		"/Users/gibil/cellar/github/openhealth/views/management/management_day_line.xml",
 		"/Users/gibil/cellar/github/openhealth/views/management/management_family_line.xml",
 		"/Users/gibil/cellar/github/openhealth/views/management/management_subfamily_line.xml",
 		"/Users/gibil/cellar/github/openhealth/models/management/family_line.py",
@@ -798,9 +911,7 @@
 		"/Users/gibil/cellar/github/openhealth/views/management/management.TRASH.xml",
 		"/Users/gibil/cellar/github/openhealth/models/libs/repo.py",
 		"/Users/gibil/cellar/github/openhealth/views/schedulers/configurator.xml",
-		"/Users/gibil/cellar/github/openhealth/data/prods/odoo_data_products.xml",
 		"/Users/gibil/cellar/github/openhealth/models/order/closing.py",
-		"/Users/gibil/cellar/github/openhealth/models/management/mgt_funcs.py",
 		"/Users/gibil/cellar/github/openhealth/data/categs/base_data_categs_prods.xml",
 		"/Users/gibil/cellar/github/openhealth/data/physicians/base_data_physicians_inactive.txt",
 		"/Users/gibil/cellar/github/openhealth/views/menus/menus_management.xml",
@@ -824,24 +935,11 @@
 		"/Users/gibil/cellar/github/openhealth/reports/closing/closing.DEP.xml",
 		"/Users/gibil/cellar/github/openhealth/models/management/data_model.py",
 		"/Users/gibil/cellar/github/openhealth/models/management/rsync.py",
-		"/Users/gibil/cellar/github/openhealth/models/order/chk_order.py",
-		"/Users/gibil/cellar/github/openhealth/models/patient/chk_patient.py",
-		"/Users/gibil/cellar/github/openhealth/models/order/chk_order.DEP.txt",
-		"/Users/gibil/cellar/github/openhealth/data/prods/odoo_data_services_med.xml",
-		"/Users/gibil/cellar/github/openhealth/data/prods/odoo_data_services_cos.xml",
-		"/Users/gibil/cellar/github/openhealth/data/prods/odoo_data_products_new.xml",
-		"/Users/gibil/cellar/github/openhealth/data/prods/odoo_data_services_m22.xml",
-		"/Users/gibil/cellar/github/openhealth/models/patient/chk_order",
-		"/Users/gibil/cellar/github/openhealth/models/emr/service_co2.py",
-		"/Users/gibil/cellar/github/openhealth/models/management/buff.py",
-		"/Users/gibil/cellar/github/openhealth/models/emr/service.py",
-		"/Users/gibil/cellar/github/openhealth/views/orders/order_admin.xml",
-		"/Users/gibil/cellar/github/openhealth/models/account/account_contasis.py",
-		"/Users/gibil/cellar/github/openhealth/models/account/account_line.py"
+		"/Users/gibil/cellar/github/openhealth/models/order/chk_order.py"
 	],
 	"find":
 	{
-		"height": 25.0
+		"height": 37.0
 	},
 	"find_in_files":
 	{
@@ -856,6 +954,33 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"other",
+			"x_credit_note_type",
+			"default=",
+			"x_credit_note_type",
+			"create",
+			"validate",
+			"derm",
+			"regenera",
+			"update_credit_note",
+			"update_",
+			"update_credit_note",
+			"create_credit_note",
+			"credit_note_list",
+			"jx",
+			"get_orders_filter_by_doctor",
+			"update_doctors",
+			"many2one",
+			"doctor",
+			"create_procedure",
+			"readonly",
+			"selection",
+			"main_appointment_calendar_menu",
+			"create_days",
+			"openhealth",
+			"configurator",
+			"emr",
+			"configurator",
 			"check_and_push(self)",
 			"check_and_push(self",
 			"check_and_push(",
@@ -956,34 +1081,7 @@
 			"consultation",
 			"create_controls",
 			"tst.",
-			"record",
-			"get_default",
-			"get_",
-			"domain",
-			"control",
-			"date",
-			"consultation",
-			"push",
-			"state",
-			"on_change",
-			"id_doc",
-			"confirmable",
-			"appointment_date",
-			"control",
-			"month",
-			"oeh_medical_appointment_action_tree",
-			"Citas ",
-			"canales",
-			"month",
-			"check",
-			"doctor_avai",
-			"cana",
-			"appointment_date",
-			"_date",
-			"comments = ",
-			"selection = ",
-			"string = ",
-			"readonly = "
+			"record"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1129,7 +1227,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1138,15 +1236,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 13861,
+						"buffer_size": 14186,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								20,
-								20
+								4012,
+								4012
 							]
 						],
 						"settings":
@@ -1164,85 +1262,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "models/emr/appointment.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 25157,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5404,
-								5404
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 4506.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "views/appointments/appointment.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 11984,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2498,
-								2498
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2099.0,
+						"translation.y": 2398.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "models/libs/user.py",
+					"buffer": 1,
+					"file": "models/emr/product.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7773,
+						"buffer_size": 9906,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1176,
-								1176
+								547,
+								547
 							]
 						],
 						"settings":
@@ -1251,27 +1291,56 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1194.0,
+						"translation.y": 4.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "views/appointments/appointment_kanban.xml",
+					"buffer": 2,
+					"file": "models/management/mgt_funcs.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5368,
+						"buffer_size": 9435,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1805,
-								1805
+								2368,
+								2368
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1279.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "data/prods/odoo_data_products_new_20190128.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1872,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								664,
+								664
 							]
 						],
 						"settings":
@@ -1281,14 +1350,481 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1520.0,
+						"translation.y": 529.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "data/prods/odoo_data_products.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 18948,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								14923,
+								15366
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 7872.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "models/order/order.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 38513,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								20602,
+								20602
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 16628.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
+					"file": "models/management/management.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 36353,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								35268,
+								35268
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 21027.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "models/management/configurator_emr.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2155,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1062,
+								1062
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 467.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "views/configurators/configurator_emr.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3795,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								393,
+								393
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "models/emr/evaluation.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8526,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1105,
+								1105
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 455.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "models/emr/procedure.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8614,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								303,
+								303
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 962.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "views/procedures/procedure.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11779,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8219,
+								8219
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3346.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "models/order/closing.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6964,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6198,
+								6198
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 6263.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 16,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "models/order/clos_funcs.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6833,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2048,
+								2048
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1115.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "models/order/closing.DEP.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 165,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2,
+								2
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 17,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "views/closings/closings.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8764,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								246,
+								246
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3142.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "views/orders/order.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 34416,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								16441,
+								16441
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 19,
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "views/menus/menus_caja.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6116,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3309,
+								3309
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2074.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 18,
+					"type": "text"
+				},
+				{
+					"buffer": 18,
+					"file": "models/order/order_line.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5923,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								932,
+								947
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 229.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 20,
+					"type": "text"
+				},
+				{
+					"buffer": 19,
+					"file": "models/libs/creates.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 21345,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								17964,
+								17964
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 12888.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 20,
 					"file": "models/libs/lib.py",
 					"semi_transient": false,
 					"settings":
@@ -1300,157 +1836,8 @@
 						"selection":
 						[
 							[
-								1742,
-								1742
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 800.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "views/menus/menus_app.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 12173,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								196,
-								196
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 34.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "views/appointments/calendar.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 9844,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3570,
-								3570
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1075.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "views/appointments/appointment_actions.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 17344,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								17320,
-								17344
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 7041.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "views/patients/patient_actions.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8012,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2666,
-								2739
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 983.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "models/emr/app_vars.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6823,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								349,
-								349
+								148,
+								154
 							]
 						],
 						"settings":
@@ -1462,54 +1849,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
-					"file": "views/orders/order.xml",
+					"buffer": 21,
+					"file": "models/emr/gen_vars.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 33278,
+						"buffer_size": 6430,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								23798,
-								23812
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 11935.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "models/order/order.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 37847,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								90,
-								90
+								253,
+								253
 							]
 						],
 						"settings":
@@ -1521,7 +1878,66 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 23,
+					"type": "text"
+				},
+				{
+					"buffer": 22,
+					"file": "models/emr/gen_tic.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8210,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								286,
+								286
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 21,
+					"type": "text"
+				},
+				{
+					"buffer": 23,
+					"file": "data/users/base_data_users_assistants.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5851,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								774,
+								774
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 22,
 					"type": "text"
 				}
 			]
@@ -1589,27 +2005,27 @@
 		[
 			[
 				"m",
-				"~/cellar/github/openhealth/views/menus/menus_app.xml"
+				"~/cellar/github/openhealth/views/menus/menus_caja.xml"
+			],
+			[
+				"o",
+				"~/cellar/github/openhealth/models/order/order.py"
 			],
 			[
 				"e",
 				"~/cellar/github/openhealth/models/emr/evaluation.py"
 			],
 			[
-				"p",
-				"~/cellar/github/openhealth/views/procedures/procedure.xml"
-			],
-			[
 				"s",
 				"~/cellar/github/openhealth/models/management/scheduler.py"
 			],
 			[
-				"c",
-				"~/cellar/github/openhealth/models/emr/control.py"
+				"p",
+				"~/cellar/github/openhealth/views/procedures/procedure.xml"
 			],
 			[
-				"o",
-				"~/cellar/github/openhealth/models/order/order.py"
+				"c",
+				"~/cellar/github/openhealth/models/emr/control.py"
 			],
 			[
 				"t",
@@ -1750,7 +2166,7 @@
 		[
 			[
 				"",
-				"~/Virtualenvs/Odoo9/odoo/addons/web_calendar/web-calendar.sublime-project"
+				"~/Virtualenvs/Odoo9-min/odoo/addons/sale/SaleOrder.sublime-project"
 			],
 			[
 				"\t",

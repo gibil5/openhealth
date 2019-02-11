@@ -1,17 +1,20 @@
 # -*- coding: utf-8 -*-
 {
-	'name': "Open Health - STRUCTURED - SERVICE ORIENTED - ALIVE",
+	'name': "Open Health - SERVICE ORIENTED - ALIVE - W INTERNAL LIBERTIES",
 
 	'summary': "",
 
 	'description': """
 
-		1 Feb 2019
+		11 Feb 2019
 
 		Go - Fulcrum - TRAVIS Quality Controlled - 2019
 
-		Learn from Go, to maintain your territory:
-			- Build Eyes. Eyes are the arrangement of internal liberties. 
+		Learn from Go, to build and maintain territory:
+			- Build Eyes. Which are the arrangement of internal liberties.
+			- Not too few. Not too much. Two is the good number. 
+			- Watch for the Atari, that comes from nowhere. 
+			- Build ladders and recognize when your token are captured.
 
 		New Micro Services:
 			- Management Reports. Productivity. 

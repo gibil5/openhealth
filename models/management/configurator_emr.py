@@ -26,11 +26,20 @@ class ConfiguratorEmr(models.Model):
 
 # ----------------------------------------------------------- Relational -------------------------------
 
-	# Day
+	# Day Line
 	day_line = fields.One2many(
 			'openhealth.management.day.line',
 
 			#'management_id',
+			'configurator_emr_id',
+		)
+
+
+
+	# Doctor Line
+	doctor_line = fields.One2many(
+			'openhealth.doctor',
+
 			'configurator_emr_id',
 		)
 
@@ -41,19 +50,22 @@ class ConfiguratorEmr(models.Model):
 	name = fields.Selection(			
 			[
 				#('emr', 'Historias'),
-
-				('lima', 'Sede Lima'),
-				('tacna', 'Tacna'),
+				#('lima', 'Sede Lima'),
+				#('tacna', 'Sede Tacna'),
+				('Lima', 'Sede Lima'),
+				('Tacna', 'Sede Tacna'),
 			],
-			#string="Nombre",
+			string="Nombre",
 			required=True,
 		)
 
 
 	x_type = fields.Selection(
 			[
-				('emr', 'Historias Medicas'),
+				('emr', 'emr'),
 			],
+			string="Tipo",
+			required=True,
 		)
 
 

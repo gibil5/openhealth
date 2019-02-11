@@ -9,6 +9,7 @@
             sequence="-29"
 
             name="Caja"
+
         />
 
 
@@ -19,6 +20,7 @@
 <menuitem   id="sales_menu" 
             parent="main_sales_menu"
             sequence="1"
+
             groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
 
             name="Caja"
@@ -58,7 +60,7 @@
             <!-- Ventas -->             
             <menuitem   id="sales_invoice_menu" 
                         parent="sales_menu"
-                        sequence="2"
+                        sequence="3"
                         
                         name="Ventas" 
 
@@ -71,7 +73,7 @@
             <!-- Anulados -->           
             <menuitem   id="sales_cancelled_menu"  
                         parent="sales_menu"
-                        sequence="4"
+                        sequence="5"
                         
                         name="Anulados" 
 
@@ -80,23 +82,11 @@
 
 
 
-            <!-- Notas de Crédito -->           
-            <menuitem   id="sales_credit_note_menu"                         
-                        parent="sales_menu"
-                        sequence="5"
-                        
-                        name="Notas de Crédito" 
-
-                        action="credit_note_list_action"
-                        />
-
-
-
             <!-- Todo -->           
             <menuitem   id="sales_all_menu" 
                         name="Todo" 
                         parent="sales_menu"
-                        sequence="6"
+                        sequence="7"
 
                         action="order_list_action"
                         />
@@ -104,23 +94,69 @@
 
 
 
+            <!-- Notas de Credito -->
+            <menuitem   id="sales_credit_note_menu"
 
-<!-- Closings -->           
+                        parent="sales_menu"
+            
+                        sequence="9"
+                        
+                        name="Notas de Credito"
+
+                        action="credit_note_list_action"
+                    />
+
+
+            <!-- Notas de Credito y Ventas -->           
+            <menuitem   id="sales_credit_note_sale_menu"   
+
+                        parent="sales_menu"
+            
+                        sequence="11"
+                        
+                        name="Notas de Credito y Ventas" 
+
+                        action="credit_note_sale_list_action"
+                    />
+
+
+
+
+
+
+
+
+
+
+<!-- Closings -->
         <menuitem   id="sales_closings_menu" 
                     name="Cierres de caja"
                     parent="main_sales_menu"
-
                     sequence="2"
-                    />
 
-            <menuitem   id="sales_closings_sub_menu"                        
+            groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
+                />
+
+<!--
+                        id="sales_closings_sub_menu"
+-->
+            <menuitem   
+                        id="sales_closings_sub_menu_jx"
+
                         name="Diarios"
+            
                         parent="sales_closings_menu"
+            
                         sequence="1"
 
                         action="closings_list_action"
-
             />
+
+
+
+
+
+
 
 
 
@@ -136,16 +172,12 @@
                     groups="openhealth.roots"
                 />
 
-
-
             <!-- Legacy -->             
             <menuitem   id="sales_legacy_sales_menu" 
                         name="Legacy" 
                         parent="sales_legacy_menu"
                         sequence="1"
-
                         action="sale_legacy_list_action"
-
                         groups="openhealth.roots"
                     />
 

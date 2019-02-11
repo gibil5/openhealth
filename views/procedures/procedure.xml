@@ -214,14 +214,15 @@
                                 <field name="session_date"/>
                                 <field name="appointment"   required="0"/>  
                                 <field name="machine"/>
+
+                                <field name="vspace"/>
+                                <field name="configurator"/>
                             </group>
                             <group>
                                 <field name="chief_complaint"/>                           
                                 <field name="number_sessions"/>                             
                                 <field name="number_controls"/>                             
                                 <field name="product"/>
-
-                                <field name="configurator"/>
                             </group>
                             
 <!--

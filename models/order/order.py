@@ -397,6 +397,17 @@ class sale_order(models.Model):
 			string='Motivo',
 		)
 
+	
+	x_credit_note_amount = fields.Float(
+			'Monto Devolución',
+			#default=-1,
+			default=-1.0,
+		)
+
+
+
+
+
 	x_credit_note_owner = fields.Many2one(
 			'sale.order',
 			'Documento que modifica',
@@ -929,19 +940,86 @@ class sale_order(models.Model):
 
 
 
-# ---------------------------------------------- Credit Note --------------------------------------
-	# Duplicate
+
+
+# ---------------------------------------------- Update Counter -----------------------------------
+	# Update Counter
+	@api.multi
+	def update_counter(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Update Counter')
+		#print(self.x_counter_value)
+		#print(self.x_serial_nr)
+
+		counter_value = self.x_counter_value		
+		state = self.state
+		serial_nr = user.get_serial_nr(self.x_type, counter_value, state)
+
+		#print(serial_nr)
+
+		if self.x_serial_nr != serial_nr:
+			print('Gotcha !')
+			counter = user.get_counter_from_serial_nr(self.x_serial_nr)
+			#print(counter)
+			self.x_counter_value = counter
+
+
+
+# ---------------------------------------------- Credit Note - Update -----------------------------
+	# Update CN
+	@api.multi
+	def update_credit_note(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Update CN')
+
+		if self.state in ['credit_note']:
+			self.order_line.unlink()
+
+
+			# Search
+			product = self.env['product.product'].search([
+															('name', 'in', ['DEVOLUCION']),
+															],
+															#order='date_begin asc',
+															limit=1,
+														)
+			print(product)
+			product_id = product.id
+			print(product_id)
+
+			line = self.order_line.create({
+											'product_id': product_id,
+
+											'price_unit': self.x_credit_note_amount,
+
+											'product_uom_qty': 1,
+
+											'order_id': self.id,
+										})
+
+
+
+
+# ---------------------------------------------- Credit Note - Create -----------------------------
+	# Create CN
 	@api.multi
 	def create_credit_note(self):
 		"""
 		high level support for doing this and that.
 		"""
-		#print
-		#print 'Create CN'
+		print()
+		print('Create CN')
 
 
 		# State
 		state = 'credit_note'
+
 
 		# Counter
 		counter_value = user.get_counter_value(self, self.x_type, state)
@@ -956,28 +1034,38 @@ class sale_order(models.Model):
 		credit_note = self.copy(default={
 											'x_serial_nr': serial_nr,
 											'x_counter_value': counter_value,
-											'x_credit_note_owner': self.id,
-											'amount_total': self.amount_total,
-											'amount_untaxed': self.amount_untaxed,
+
+
+											'x_credit_note_owner': self.id,											
 											'x_title': 'Nota de Crédito Electrónica',
+											'x_payment_method': False,
+
 											'state': state,
 
-											'x_payment_method': False,
+											'amount_total': self.amount_total,
+											'amount_untaxed': self.amount_untaxed,
 								})
-		#print credit_note
+		print(credit_note)
+		#print(credit_note.order_line)
+
+		# Remove Order Lines
+		credit_note.order_line.unlink()
 
 
-		# Counter
-		#credit_note.x_counter_value = user.get_counter_value(credit_note)
-		#x_counter_value = user.get_counter_value(credit_note)
-		#print x_counter_value
+
+		#for line in credit_note.order_line:
+		#	print(line.price_unit)
+		#	print(line.product_uom_qty)
+		#	if line.product_uom_qty > 0:
+		#		line.product_uom_qty = line.product_uom_qty * (-1)
+		#	print(line.product_uom_qty)
+		#	print()
 
 
 		# Update Self
-		#ret = self.write({
 		self.write({
 							'x_credit_note': credit_note.id,
-						})
+					})
 
 
 

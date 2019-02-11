@@ -9,13 +9,22 @@
             <field name="name">openhealth.management.order.line.tree</field>
             <field name="model">openhealth.management.order.line</field>
             <field name="arch" type="xml">
+
                 <tree string="management order line Tree">
 
-
                     <field name="doctor"/>
+
                     <field name="date_order_date"   widget="date"/>
                     <field name="x_date_created"/>
+
+<!--
                     <field name="price_total"/>
+-->
+                    <field name="price_total"    sum="Monto Total"         widget="monetary"       string="Monto"/>
+
+
+                    <field name="state"/>
+
 
 
                     <field name="receptor"/>
@@ -58,7 +67,7 @@
 
 
 
-        <!-- ACTION - Order -->
+<!-- ACTION - Order -->
         <record model="ir.actions.act_window" id="management_order_line_form_action">   
             <field name="name">Ventas</field>
             <field name="res_model">openhealth.management.order.line</field>

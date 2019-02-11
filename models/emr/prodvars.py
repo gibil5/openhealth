@@ -473,8 +473,12 @@ _sessions_list = [
 
 _family_list = [
 
+		# 6 Feb 2019
+		('credit_note',		'credit_note'), 
+
 		# 12 Jul 2018
-		('other',		'other'), 
+		('other',			'other'), 
+
 
 
 		# Service 

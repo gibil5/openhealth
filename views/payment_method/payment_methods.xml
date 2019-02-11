@@ -4,51 +4,42 @@
 
 
 
-        <!-- FORM -->
+<!-- FORM -->
         <record model="ir.ui.view" id="payment_method_form_view">
             <field name="name">payment.method.form</field>
             <field name="model">openhealth.payment_method</field>
             <field name="arch" type="xml">
-
                 <form string="Payment Method - Form">
 
-                    <header>
 
+                    <header>
 
                         <!-- Generate --> 
                         <button 
                                 type="object" 
                                 class="oe_highlight"                                
                                 states="sale"
-                                
                                 name="go_back"
-
                                 string="Regresar"
                         />
 
 
-
-                        <!-- Test --> 
+                        <!-- Test -->
+<!--
                         <button 
                                 type="object" 
                                 class="oe_highlight"
-                                
                                 name="test"
-
                                 string="TEST"
-
                                 groups="openhealth.roots"
                         />
-
-
+-->
 
                         <!-- State --> 
                         <field  name="state" 
                                 widget="statusbar" 
                                 invisible="0"
-
                                 statusbar_visible="draft, sale, done"
-                        
                         />
                     </header>
 

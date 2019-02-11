@@ -89,9 +89,13 @@ def set_proof_totals(self):
 	# Init
 	total = 0
 	for order in orders:
-		total = total + order.amount_untaxed
+
+		#total = total + order.amount_untaxed
+		total = total + order.x_credit_note_amount
+
 
 	self.crn_tot = total
+
 
 	if count != 0:
 		self.serial_nr_first_crn = orders[0].x_serial_nr
@@ -101,10 +105,11 @@ def set_proof_totals(self):
 
 
 	# Totals Proof
-	#self.total_proof = self.rec_tot + self.inv_tot + self.tkr_tot + self.tki_tot + self.adv_tot + self.san_tot
 	self.total_proof = self.rec_tot + self.inv_tot + self.tkr_tot + self.tki_tot + self.adv_tot + self.san_tot - self.crn_tot
 
+
 	self.total_proof_wblack = self.rec_tot + self.inv_tot + self.tkr_tot + self.tki_tot 	#+ self.adv_tot + self.san_tot
+
 
 # set_proof_totals
 

@@ -2,6 +2,8 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+access_openhealth_configurator_emr,openhealth.configurator.emr,model_openhealth_configurator_emr,,1,1,1,1
+
 
 
 
@@ -9,13 +11,10 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_openhealth_management_day_line,openhealth.management.day.line,model_openhealth_management_day_line,,1,1,1,1
 
 
-
 access_openhealth_container,openhealth.container,model_openhealth_container,,1,1,1,1
 access_openhealth_texto,openhealth.texto,model_openhealth_texto,,1,1,1,1
 access_openhealth_electronic_order,openhealth.electronic_order,model_openhealth_electronic_order,,1,1,1,1
 access_openhealth_electronic_line,openhealth.electronic_line,model_openhealth_electronic_line,,1,1,1,1
-
-
 
 
 access_res_partner_directors,res.partner.directors,model_res_partner,openhealth.directors,1,1,1,1

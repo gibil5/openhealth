@@ -10,6 +10,11 @@ _dic_prod = {
 				'dexpantenol_5ml': 		'DEXPANTENOL 5 ML',
 				
 
+				# New - 5 Feb 2019
+				'devolution':				'DEVOLUCION',
+				'regenera_derm':			'REGENERA DERM x 50g',
+
+
 				# New - 28 Jan 2019
 				'collagen_naara': 			'COLAGENO NAARA',
 				'ageless_box': 				'CAJA AGELESS',

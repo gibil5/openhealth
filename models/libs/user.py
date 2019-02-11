@@ -6,15 +6,90 @@
  		Can not be Unit-tested (depends on a third-party library: Odoo).
 
  		Created: 			13 Aug 2018
- 		Last up: 	 		31 Jan 2019
+ 		Last up: 	 		 7 Feb 2019
 """
 import datetime
 from openerp.addons.openhealth.models.order import ord_vars
 
 
 
-#------------------------------------------------ Check and Push ----------------------------------
+#------------------------------------------------ Get Counter From Serial Nr ----------------------
+# Get Counter From Serial Nr
+def get_counter_from_serial_nr(serial_nr):
+	"""
+	Get Counter. From Serial Nr.
+	"""
+	#print()
+	#print('Get Counter From Serial Nr')
+	#print(serial_nr)
+	counter = int(serial_nr.split('-')[1])
+	return counter
 
+
+
+
+#------------------------------------------------ Get Serial Nr -----------------------------------
+def get_serial_nr(x_type, counter_value, state):
+	"""
+	Get the Serial Nr, given the type, counter and state.
+	"""
+	print()
+	print('Get Serial Nr')
+
+	# Separator
+	separator = '-'
+
+	# Prefix
+	if state in ['credit_note']:
+		prefix = ord_vars.get_prefix_cn(x_type)
+	else:
+		prefix = ord_vars.get_prefix(x_type)
+
+	# Padding
+	padding = ord_vars.get_padding(x_type)
+
+	# Serial Nr
+	serial_nr = prefix  +  separator  +  str(counter_value).zfill(padding)
+
+	return serial_nr
+
+
+
+#------------------------------------------------ Get Counter -------------------------------------
+# Get the Counter
+def get_counter_value(self, x_type, state):
+	"""
+	Get New Counter value. Given type and state.
+	"""
+	print()
+	print('Get Counter Value')
+
+	# Sale, Cancel
+	if state in ['validated']:
+		order = self.env['sale.order'].search([
+													('x_electronic', '=', True),
+													('x_type', '=', x_type),
+													('state', 'in', ['sale', 'cancel']),
+												],
+											order='x_counter_value desc',
+											limit=1,
+										)
+	# Credit Note
+	elif state in ['credit_note']:
+		order = self.env['sale.order'].search([
+													('x_electronic', '=', True),
+													('x_type', '=', x_type),
+													('state', 'in', ['credit_note']),
+												],
+											order='x_counter_value desc',
+											limit=1,
+										)
+	return order.x_counter_value + 1
+
+
+
+
+#------------------------------------------------ Check and Push ----------------------------------
 def check_and_push(self, appointment_date, duration, doctor_name, states):
 	"""
 	Check if Dr available and if not check next time slot.
@@ -231,59 +306,6 @@ def _get_default_id(self, x_type):
 # _get_default_id
 
 
-#------------------------------------------------ Get Serial Nr -----------------------------------
-def get_serial_nr(x_type, counter_value, state):
-	"""
-	Get the Serial Nr, given the type, counter and state.
-	"""
-
-	# Separator
-	separator = '-'
-
-	# Prefix
-	if state in ['credit_note']:
-		prefix = ord_vars.get_prefix_cn(x_type)
-	else:
-		prefix = ord_vars.get_prefix(x_type)
-
-	# Padding
-	padding = ord_vars.get_padding(x_type)
-
-	# Serial Nr
-	serial_nr = prefix  +  separator  +  str(counter_value).zfill(padding)
-
-	return serial_nr
-
-
-
-#------------------------------------------------ Get Counter -------------------------------------
-# Get the Counter
-def get_counter_value(self, x_type, state):
-	"""
-	Get New Counter value. Given type and state.
-	"""
-
-	# Sale, Cancel
-	if state in ['validated']:
-		order = self.env['sale.order'].search([
-													('x_electronic', '=', True),
-													('x_type', '=', x_type),
-													('state', 'in', ['sale', 'cancel']),
-												],
-											order='x_counter_value desc',
-											limit=1,
-										)
-	# Credit Note
-	elif state in ['credit_note']:
-		order = self.env['sale.order'].search([
-													('x_electronic', '=', True),
-													('x_type', '=', x_type),
-													('state', 'in', ['credit_note']),
-												],
-											order='x_counter_value desc',
-											limit=1,
-										)
-	return order.x_counter_value + 1
 
 
 #------------------------------------------------ Get Delta ---------------------------------------

@@ -4,34 +4,30 @@
 		
 
 
-		<!-- FORM --> 
+<!-- FORM --> 
 		<record model="ir.ui.view" id="configurator_emr_form_view">
-
 			<field name="name">configurator.emr.form</field>
-
 			<field name="model">openhealth.configurator.emr</field>
-			
 			<field name="arch" type="xml">
-
 				<form string="configurator EMR Form">
+
 
 					<!-- Header -->
 					<header></header>
 
 
 
-
-
 					<!-- Sheet -->  
 					<sheet>
-
 
 						<group>
 							<group>
 								<field name="name"/>
 							</group>
 
-							<group></group>
+							<group>
+								<field name="x_type"/>
+							</group>
 						</group>
 
 
@@ -97,9 +93,24 @@
                                         <field name="holiday"/>
                                     </tree>
                                 </field>
-
                             </page>
 
+
+                            <!-- Doctors --> 
+                            <page   string="Medicos Activos">
+
+                                <field name="doctor_line">
+                                
+                                    <tree string="Drs.">
+<!--
+-->
+                                        <field name="name"/>
+
+                                        <field name="active"/>
+
+                                    </tree>
+                                </field>
+                            </page>
 
 
 						</notebook>

@@ -55,6 +55,7 @@ class Line(models.Model):
 		)
 
 
+
 	# Qty
 	product_uom_qty = fields.Float(
 			string='Cantidad', 
@@ -145,12 +146,11 @@ class Line(models.Model):
 		for line in self:
 
 			price_unit = line.price_unit
+
 			unit_net, unit_tax = lib.get_net_tax(price_unit)
 			
-
 			total = price_unit * line.product_uom_qty
 			net, tax = lib.get_net_tax(total)
-			
 
 			line.update({
 				'price_total': total,

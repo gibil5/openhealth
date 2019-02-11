@@ -23,6 +23,13 @@ class Product(models.Model):
 
 
 
+# ----------------------------------------------------------- Type -------------------------------
+	#def _get_product_template_type(self, cr, uid, context=None):
+	#	return [('consu', _('Consumable')), ('service', _('Service'))]
+
+
+
+
 
 # ----------------------------------------------------------- Test -------------------------------
 	x_test = fields.Boolean(
@@ -325,9 +332,12 @@ class Product(models.Model):
 				elif record.x_family in ['cosmetology']:
 					record.x_generated = gen.get_generated_exc(record.x_name_short)
 
-				# Products
-				elif record.type in ['product']:
+
+				# Products and Consu
+				#elif record.type in ['product']:
+				elif record.type in ['product', 'consu']:
 					record.x_generated = gen.get_generated_prod(record.x_name_short)
+
 
 				# Quick
 				elif record.x_treatment in ['laser_quick']:

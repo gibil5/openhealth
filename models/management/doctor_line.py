@@ -123,8 +123,8 @@ class DoctorLine(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		print()
-		print('Doctor - Stats')
+		#print()
+		#print('Doctor - Stats')
 
 		# Using collections - More Abstract !
 

@@ -109,7 +109,8 @@
                     <button 
                             name="cancel_order"     
                             type="object" 
-                            class="oe_highlight"    
+                            class="oe_highlight"
+
                             groups="openhealth.roots,openhealth.caja,openhealth.managers,openhealth.directors"
 
                             string="Anular"
@@ -123,7 +124,8 @@
                     <button 
                             type="object" 
                             class="oe_highlight"    
-                            name="activate_order"   
+                            name="activate_order"
+
                             groups="openhealth.roots,openhealth.caja,openhealth.managers,openhealth.directors"
 
                             string="Activar"
@@ -144,7 +146,38 @@
                     />
 
 
+                    <!-- Update CN -->
+                    <button
+                            type="object"
+                            class="oe_highlight"
+
+                            name="update_credit_note"
+
+                            states="credit_note"                     
+
+                            string="Actualizar NC"
+                    />
+
+
+
+                    <!-- Update Counter -->
+                    <button
+                            type="object"
+                            class="oe_highlight"
+
+                            name="update_counter"
+
+                            states="sale,credit_note"                     
+
+                            string="Update Counter"
+
+                            groups="openhealth.roots"
+                    />
+
+
+
                     <!-- Test -->
+<!--                    
                     <button
                             type="object"
                             class="oe_highlight"
@@ -156,7 +189,7 @@
 
                             groups="openhealth.roots"
                     />
-
+-->
 
 
                     <!-- Update -->
@@ -525,9 +558,30 @@
 
                 <!-- Dni --> 
                 <field name="patient" position="before">
+
                     <field name="x_credit_note"         attrs="{'invisible':[('state', 'not in', ['cancel'])]}"/>
-                    <field name="x_credit_note_type"    attrs="{'invisible':[('state', 'not in', ['credit_note'])]}"/>
+
+
+
+
+                    <field name="x_credit_note_type"    attrs="{    
+                                                                    'invisible':    [('state', 'not in', ['credit_note'])],
+
+                                                                    'required':     [('state', 'in', ['credit_note'])],
+                                                                }"/>
+                    
+                    <field name="x_credit_note_amount"    attrs="{    
+                                                                    'invisible':    [('state', 'not in', ['credit_note'])],
+
+                                                                    'required':     [('state', 'in', ['credit_note'])],
+                                                                }"/>
+                    
+
+
+
+
                     <field name="x_credit_note_owner"   attrs="{'invisible':[('state', 'not in', ['credit_note'])]}"/>
+                    
                     <field name="vspace"/>
                     
                     <field name="x_partner_dni"
@@ -799,42 +853,39 @@ Look for the Minimalist experience !!!
 
                     <field name="name"          string="Referencia"/>
 
-                    <field name="x_legacy"      groups="openhealth.roots"/>
 
+<!--
+                    <field name="x_legacy"      groups="openhealth.roots"/>
+                    <field name="x_date_order_date"/>
+                    <field name="x_payment_method"  groups='openhealth.roots'/>
+                    <field name="x_checksum"    groups="openhealth.roots"   />
+                    <field name="x_qr_img"  groups="openhealth.roots"/>
+                    <field name="x_delta"           groups="openhealth.roots"/>
+                    <field name="x_type_code"   groups="openhealth.roots"/>
+-->
 
 
 
                     <field name="date_order"            string="Fecha y hora"/>
-                    <field name="x_date_order_date"/>
-
-
                     <field name="x_day_order"   groups="openhealth.roots"/>
                     <field name="x_month_order"           groups='openhealth.roots'   />
 
 
 
-                    <field name="x_serial_nr" />
-
+                    <field name="x_serial_nr"/>
                     <field name="x_counter_value"   groups="openhealth.roots"/>
-                    
                     <field name="x_electronic"  groups="openhealth.roots"/>
                     
 
-                    <field name="x_payment_method"  groups='openhealth.roots'/>
-                    <field name="x_checksum"    groups="openhealth.roots"   />
-
-
-                    <field name="x_qr_img"  groups="openhealth.roots"/>
 
                     <field name="x_type" />
-                    <field name="x_type_code"   groups="openhealth.roots"/>
+                    <field name="amount_untaxed"    sum="Total Untaxed"         widget="monetary"       string="Total"  />
                     <field name="state"/>
 
                     <field name="x_id_doc_type"/>
                     <field name="x_id_doc"/>
                     <field name="x_ruc"/>
 
-                    <field name="x_delta"           groups="openhealth.roots"/>
 
 
 
@@ -846,7 +897,6 @@ Look for the Minimalist experience !!!
                     <field name="x_family"/>
                     <field name="x_product"/>
 
-                    <field name="amount_untaxed"    sum="Total Untaxed"         widget="monetary"       string="Total"  />
 
                     <field name="user_id"       string="Creado por" />
 

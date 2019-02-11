@@ -11,6 +11,10 @@ _dic_prod = {
 			'dexpantenol_5ml': 			'DEXPANTENOL 5 ML',
 
 
+			# New - 5 Feb 2019
+			'devolution':				'DEVOLUCION',
+			'regenera_derm':			'REGENERA DERM x 50g',
+
 
 			# New - 28 Jan 2019
 			'collagen_naara': 			'COLAGENO NAARA',
@@ -291,6 +295,11 @@ def gen_ticket_name(self, treatment, zone, pathology, family, x_type, name_short
 		if name_short in _dic_prod: 
 			name_ticket = _dic_prod[name_short] 
 
+
+# Consu (Devolution and Other)
+	elif x_type == 'consu': 
+		if name_short in _dic_prod: 
+			name_ticket = _dic_prod[name_short] 
 
 
 # Service 

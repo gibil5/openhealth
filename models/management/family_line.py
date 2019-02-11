@@ -29,6 +29,10 @@ class FamilyLine(models.Model):
 
 		# Idx 
 		_h_idx = {
+					# 7 Feb 2019
+					'credit_note': 	10, 		
+
+
 					# 13 Jul 2018 
 					'other': 	40, 		
 					False: 0, 		

@@ -133,40 +133,42 @@ class DayLine(models.Model):
 		print()
 		print('Update - amount')
 
+
+		# Search
 		orders, count = mgt_funcs.get_orders_filter_fast(self, self.date, self.date)
 
-		print(orders)
-		print(count)
+
+		#print(orders)
+		#print(count)
 
 
 		data_amount = []
 
+
 		for order in orders:
-			#print(order.amount_total)
-			data_amount.append(order.amount_total)
+
+			#data_amount.append(order.amount_total)
+
+			# Sales and CNs
+			if order.state in ['credit_note']:
+				data_amount.append(-order.amount_total)
+				
+			elif order.state in ['sale']:
+				data_amount.append(order.amount_total)
+
+
 
 
 		self.x_count = len(data_amount)
-		print(self.x_count)
-
 
 		if self.x_count != 0:
 
-			print(data_amount)
-
-			#mean_amount = np.mean(data_amount)
-			#print(mean_amount)
-			#self.avg_amount = mean_amount
-			#amax = np.amax(self.data)
-			#amin = np.amin(self.data)
-
-
 			self.amount = np.sum(data_amount)
 
+			#amax = np.amax(self.data)
+			#amin = np.amin(self.data)
 
 			# Mean of sales, compounded with number of days
 			#self.avg_amount = np.mean(data_amount)			# Not correct !
 
-
-
-
+	# update_amount

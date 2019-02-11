@@ -5,8 +5,129 @@
 	Created: 			28 May 2018
 	Last mod: 			20 Nov 2018
 """
+from __future__ import print_function
 
 import datetime
+
+
+
+# ----------------------------------------------------------- Line Analysis -----------------------
+def line_analysis(self, line):
+	"""
+	high level support for doing this and that.
+	"""
+	#print()
+	#print('Line Analysis')
+
+
+	# Init
+	prod = line.product_id
+
+
+	# Services
+	if prod.type in ['service']:
+		self.nr_services = self.nr_services + line.product_uom_qty
+		self.amo_services = self.amo_services + line.price_subtotal
+
+
+		# Consultations
+		if prod.x_treatment in ['consultation']:
+			self.nr_consultations = self.nr_consultations + line.product_uom_qty
+			self.amo_consultations = self.amo_consultations + line.price_subtotal
+
+
+		# Procedures
+		else:
+			self.nr_procedures = self.nr_procedures + line.product_uom_qty
+			self.amo_procedures = self.amo_procedures + line.price_subtotal
+
+			# Co2
+			if prod.x_treatment in ['laser_co2']:
+				self.nr_co2 = self.nr_co2 + line.product_uom_qty
+				self.amo_co2 = self.amo_co2 + line.price_subtotal
+
+			# Exc
+			elif prod.x_treatment in ['laser_excilite']:
+				self.nr_exc = self.nr_exc + line.product_uom_qty
+				self.amo_exc = self.amo_exc + line.price_subtotal
+
+			# Ipl
+			elif prod.x_treatment in ['laser_ipl']:
+				self.nr_ipl = self.nr_ipl + line.product_uom_qty
+				self.amo_ipl = self.amo_ipl + line.price_subtotal
+
+			# Ndyag
+			elif prod.x_treatment in ['laser_ndyag']:
+				self.nr_ndyag = self.nr_ndyag + line.product_uom_qty
+				self.amo_ndyag = self.amo_ndyag + line.price_subtotal
+
+			# Quick
+			elif prod.x_treatment in ['laser_quick']:
+				self.nr_quick = self.nr_quick + line.product_uom_qty
+				self.amo_quick = self.amo_quick + line.price_subtotal
+
+			else:
+				# Medical
+				if prod.x_family in ['medical']:
+					self.nr_medical = self.nr_medical + line.product_uom_qty
+					self.amo_medical = self.amo_medical + line.price_subtotal
+
+				# Cosmeto
+				elif prod.x_family in ['cosmetology']:
+					self.nr_cosmetology = self.nr_cosmetology + line.product_uom_qty
+					self.amo_cosmetology = self.amo_cosmetology + line.price_subtotal
+
+
+	# Products
+	#else:
+	elif prod.type in ['product']:
+		self.nr_products = self.nr_products + line.product_uom_qty
+		self.amo_products = self.amo_products + line.price_subtotal
+
+
+		# Topical
+		if prod.x_family in ['topical']:
+			self.nr_topical = self.nr_topical + line.product_uom_qty
+			self.amo_topical = self.amo_topical + line.price_subtotal
+
+		# card
+		elif prod.x_family in ['card']:
+			self.nr_card = self.nr_card + line.product_uom_qty
+			self.amo_card = self.amo_card + line.price_subtotal
+
+		# kit
+		elif prod.x_family in ['kit']:
+			self.nr_kit = self.nr_kit + line.product_uom_qty
+			self.amo_kit = self.amo_kit + line.price_subtotal
+
+
+
+	# Consu
+	elif prod.type in ['consu']:
+
+		#print('Consu')
+
+		if prod.x_family in ['credit_note']:
+			self.nr_credit_notes = self.nr_credit_notes + line.product_uom_qty
+
+			self.amo_credit_notes = self.amo_credit_notes + line.price_subtotal
+
+		else:
+			self.nr_other = self.nr_other + line.product_uom_qty
+
+			self.amo_other = self.amo_other + line.price_subtotal
+
+
+
+
+
+	return False
+
+# line_analysis
+
+
+
+
 
 # ----------------------------------------------------------- Get Orders Fast -------------------
 # States: In State Array
@@ -31,7 +152,8 @@ def get_orders_filter_fast(self, date_bx, date_ex):
 
 	# Orders
 	orders = self.env['sale.order'].search([
-													('state', 'in', ['sale']),
+													#('state', 'in', ['sale']),
+													('state', 'in', ['sale', 'credit_note']),
 
 													('date_order', '>=', date_begin),
 													('date_order', '<', date_end),
@@ -42,7 +164,8 @@ def get_orders_filter_fast(self, date_bx, date_ex):
 											)
 	# Count
 	count = self.env['sale.order'].search_count([
-													('state', 'in', ['sale']),
+													#('state', 'in', ['sale']),
+													('state', 'in', ['sale', 'credit_note']),
 
 													('date_order', '>=', date_begin),
 													('date_order', '<', date_end),
@@ -52,6 +175,7 @@ def get_orders_filter_fast(self, date_bx, date_ex):
 												#limit=1,
 											)
 	return orders, count
+
 # get_orders_filter_fast
 
 
@@ -187,107 +311,6 @@ def get_orders_filter_type(self, date_bx, date_ex, x_type):
 
 
 
-# ----------------------------------------------------------- Line Analysis -----------------------
-def line_analysis(self, line):
-	"""
-	high level support for doing this and that.
-	"""
-	#print()
-	#print('Line Analysis')
-
-
-	# Init
-	prod = line.product_id
-
-
-	# Services
-	if prod.type in ['service']:
-		self.nr_services = self.nr_services + line.product_uom_qty
-		self.amo_services = self.amo_services + line.price_subtotal
-
-
-		# Consultations
-		if prod.x_treatment in ['consultation']:
-			self.nr_consultations = self.nr_consultations + line.product_uom_qty
-			self.amo_consultations = self.amo_consultations + line.price_subtotal
-
-
-		# Procedures
-		else:
-			self.nr_procedures = self.nr_procedures + line.product_uom_qty
-			self.amo_procedures = self.amo_procedures + line.price_subtotal
-
-			# Co2
-			if prod.x_treatment in ['laser_co2']:
-				self.nr_co2 = self.nr_co2 + line.product_uom_qty
-				self.amo_co2 = self.amo_co2 + line.price_subtotal
-
-			# Exc
-			elif prod.x_treatment in ['laser_excilite']:
-				self.nr_exc = self.nr_exc + line.product_uom_qty
-				self.amo_exc = self.amo_exc + line.price_subtotal
-
-			# Ipl
-			elif prod.x_treatment in ['laser_ipl']:
-				self.nr_ipl = self.nr_ipl + line.product_uom_qty
-				self.amo_ipl = self.amo_ipl + line.price_subtotal
-
-			# Ndyag
-			elif prod.x_treatment in ['laser_ndyag']:
-				self.nr_ndyag = self.nr_ndyag + line.product_uom_qty
-				self.amo_ndyag = self.amo_ndyag + line.price_subtotal
-
-			# Quick
-			elif prod.x_treatment in ['laser_quick']:
-				self.nr_quick = self.nr_quick + line.product_uom_qty
-				self.amo_quick = self.amo_quick + line.price_subtotal
-
-			else:
-				# Medical
-				if prod.x_family in ['medical']:
-					self.nr_medical = self.nr_medical + line.product_uom_qty
-					self.amo_medical = self.amo_medical + line.price_subtotal
-
-				# Cosmeto
-				elif prod.x_family in ['cosmetology']:
-					self.nr_cosmetology = self.nr_cosmetology + line.product_uom_qty
-					self.amo_cosmetology = self.amo_cosmetology + line.price_subtotal
-
-
-	# Products
-	#else:
-	elif prod.type in ['product']:
-		self.nr_products = self.nr_products + line.product_uom_qty
-		self.amo_products = self.amo_products + line.price_subtotal
-
-
-		# Topical
-		if prod.x_family in ['topical']:
-			self.nr_topical = self.nr_topical + line.product_uom_qty
-			self.amo_topical = self.amo_topical + line.price_subtotal
-	
-		# card
-		elif prod.x_family in ['card']:
-			self.nr_card = self.nr_card + line.product_uom_qty
-			self.amo_card = self.amo_card + line.price_subtotal
-
-		# kit
-		elif prod.x_family in ['kit']:
-			self.nr_kit = self.nr_kit + line.product_uom_qty
-			self.amo_kit = self.amo_kit + line.price_subtotal
-
-
-	# Consu
-	elif prod.type in ['consu']:
-		#print('Consu')
-		self.nr_other = self.nr_other + line.product_uom_qty
-		self.amo_other = self.amo_other + line.price_subtotal
-
-
-	return False
-
-
-
 
 
 
@@ -295,11 +318,11 @@ def line_analysis(self, line):
 # Provides sales between begin date and end date. Filters: by Doctor.
 def get_orders_filter_by_doctor(self, date_bx, date_ex, doctor):
 	"""
-	high level support for doing this and that.
+	Sales.
+	Must include Credit Notes.
 	"""
-
-	#print
-	#print 'Get Orders - By Doctor'
+	print()
+	print('Get Orders Filter - By Doctor')
 
 	# Init
 	# Dates
@@ -320,7 +343,9 @@ def get_orders_filter_by_doctor(self, date_bx, date_ex, doctor):
 
 	# Orders
 	orders = self.env['sale.order'].search([
-													('state', '=', 'sale'),
+													#('state', '=', 'sale'),
+													('state', 'in', ['sale', 'credit_note']),
+
 													('date_order', '>=', date_begin),
 													('date_order', '<', date_end),
 													('x_doctor', '=', doctor),
@@ -331,7 +356,9 @@ def get_orders_filter_by_doctor(self, date_bx, date_ex, doctor):
 											)
 	# Count
 	count = self.env['sale.order'].search_count([
-													('state', '=', 'sale'),
+													#('state', '=', 'sale'),
+													('state', 'in', ['sale', 'credit_note']),
+
 													('date_order', '>=', date_begin),
 													('date_order', '<', date_end),
 													('x_doctor', '=', doctor),
@@ -341,4 +368,5 @@ def get_orders_filter_by_doctor(self, date_bx, date_ex, doctor):
 												#limit=1,
 											)
 	return orders, count
+
 # get_orders_filter_by_doctor

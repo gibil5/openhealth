@@ -138,6 +138,8 @@ class management_order_line(models.Model):
 	family = fields.Selection(
 			string = "Familia", 	
 			selection = [
+							('credit_note',	'Notas de Credito'),
+
 							('other',	'Otros'), 
 							('topical',	'Cremas'), 
 							('card',	'Tarjeta'), 

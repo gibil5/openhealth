@@ -30,7 +30,8 @@ class Evaluation(models.Model):
 	def _get_default_configurator(self):
 
 		configurator = self.env['openhealth.configurator.emr'].search([
-																			('name', 'in', ['Historias']),
+																			#('name', 'in', ['Historias']),
+																			('x_type', 'in', ['emr']),
 																		],
 																			#order='date_begin,name asc',
 																			limit=1,
@@ -39,16 +40,19 @@ class Evaluation(models.Model):
 
 
 
+	#configurator = fields.Char()
+	
 	# Configurator
-	configurator = fields.Char()
-	#configurator = fields.Many2one(
-	#		'openhealth.configurator.emr',
-	#		string="Configuracion",
-	#		domain=[
-	#					('name', '=', 'Historias'),
-	#				],
-	#		default=_get_default_configurator,
-	#	)
+	configurator = fields.Many2one(
+			'openhealth.configurator.emr',
+			string="Configuracion",
+			domain=[
+						#('name', '=', 'Historias'),
+						('x_type', '=', 'emr'),
+					],
+
+			default=_get_default_configurator,
+		)
 
 
 

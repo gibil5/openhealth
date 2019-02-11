@@ -210,6 +210,26 @@
 
 
 
+        <!-- Credit Notes and Sales -->
+        <record model="ir.actions.act_window" id="credit_note_sale_list_action">
+            <field name="name">Notas de Crédito y Ventas</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph,pivot</field>
+            <field name="context">{}</field>
+
+            <field name="domain">[
+                                    ('state', 'in', ['credit_note', 'sale']),
+                                ]
+            </field>
+
+            <field name="limit">40</field>
+        </record>
+
+
+
+
+
 
 
 

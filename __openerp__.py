@@ -143,6 +143,8 @@
 
 		# Users - With pw
 		'data/users/base_data_users_platform.xml',	
+		'data/users/base_data_users_platform_new.xml',	
+
 		'data/users/base_data_users_cash.xml',		
 		'data/users/base_data_users_doctors.xml',
 

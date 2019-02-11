@@ -367,7 +367,15 @@
                                 <field name="x_treatment_count"         groups="openhealth.roots"/>
 -->
                                 <field name="x_data_complete"       groups="openhealth.roots"/>
+
+
+<!--
                                 <field name="property_product_pricelist"    />
+-->
+                                <field name="property_product_pricelist"    required="1"/>
+
+
+                                
                                 <field name="x_vip"     invisible="1"       />
                                 <field name="x_card"    />
                             </group>

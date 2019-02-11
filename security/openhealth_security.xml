@@ -312,6 +312,9 @@
                                         (4, ref('openhealth.jlopez_clinicachavarri')),
 
 
+
+                                        (4, ref('openhealth.durdanivia_clinicachavarri')),
+
                                         (4, ref('openhealth.rgarcia_clinicachavarri')),
                                         (4, ref('openhealth.imichelot_clinicachavarri')),
                                         (4, ref('openhealth.gnunhez_clinicachavarri')),

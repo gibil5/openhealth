@@ -138,7 +138,10 @@
                                         (4, ref('openhealth.asistente_clinicachavarri')),
                                         (4, ref('openhealth.yochante_clinicachavarri')),
                                         (4, ref('openhealth.rgarcia_clinicachavarri')),
+
+                                        (4, ref('openhealth.rmendoza_clinicachavarri')),
                                         (4, ref('openhealth.nmendoza_clinicachavarri')),
+
                                         (4, ref('openhealth.mtirado_clinicachavarri')),
                                         (4, ref('openhealth.eruiz_clinicachavarri')),
 
@@ -192,10 +195,14 @@
                                         (4, ref('openhealth.lloli_clinicachavarri')),
                                         (4, ref('openhealth.ipuga_clinicachavarri')),
                                         
+
+
+                                        (4, ref('openhealth.rmendoza_clinicachavarri')),
+                                        (4, ref('openhealth.nmendoza_clinicachavarri')),
+
                                         (4, ref('openhealth.asistente_clinicachavarri')),
                                         (4, ref('openhealth.yochante_clinicachavarri')),
                                         (4, ref('openhealth.rgarcia_clinicachavarri')),
-                                        (4, ref('openhealth.nmendoza_clinicachavarri')),
                                         (4, ref('openhealth.mtirado_clinicachavarri')),
                                         (4, ref('openhealth.eruiz_clinicachavarri')),
 

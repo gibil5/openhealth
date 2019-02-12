@@ -279,8 +279,11 @@
             <field name="users" eval="[ 
                                         (4, ref('openhealth.asistente_clinicachavarri')),
 
-                                        (4, ref('openhealth.yochante_clinicachavarri')),
+
+                                        (4, ref('openhealth.rmendoza_clinicachavarri')),
+
                                         (4, ref('openhealth.nmendoza_clinicachavarri')),
+                                        (4, ref('openhealth.yochante_clinicachavarri')),
                                         (4, ref('openhealth.mtirado_clinicachavarri')),
                                         (4, ref('openhealth.eruiz_clinicachavarri')),
                                     ]"/>

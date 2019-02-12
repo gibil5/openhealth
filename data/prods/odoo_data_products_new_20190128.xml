@@ -35,17 +35,8 @@ LABORATORIO EXTERNO
 
 -->
 
-        <!-- DEVOLUTION -->
-        <record id='devolution' model='product.template'>
 
-            <field name='name'>DEVOLUCION</field>
-            
-            <field name='x_name_short'>devolution</field>
 
-            <field name='x_family'>credit_note</field>
-
-            <field name='type'>consu</field>
-        </record>
 
 
 

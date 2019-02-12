@@ -74,6 +74,9 @@
 
 
 
+
+                                            (4, ref('openhealth.ssaucedo_clinicachavarri')),
+                                            (4, ref('openhealth.dchumpitaz_clinicachavarri')),
                                             (4, ref('openhealth.durdanivia_clinicachavarri')),
 
                                             (4, ref('openhealth.plataforma_clinicachavarri')),
@@ -142,7 +145,13 @@
                                         
 
 
+
+
+                                        (4, ref('openhealth.ssaucedo_clinicachavarri')),
+                                        (4, ref('openhealth.dchumpitaz_clinicachavarri')),
+
                                         (4, ref('openhealth.durdanivia_clinicachavarri')),
+
 
                                         (4, ref('openhealth.plataforma_clinicachavarri')),
                                         (4, ref('openhealth.jlopez_clinicachavarri')),

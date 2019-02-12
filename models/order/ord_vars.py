@@ -2,11 +2,31 @@
 
 
 
+_dic_credit_note = {
+					'cancel': 				'cancel',
+					'cancel_error_ruc': 	'cancel_error',
+					'correct_error_desc': 	'correction',
+					
+					'discount': 			'discount',
+					'discount_item': 		'discount_item',
+					
+					'return': 				'return',
+					'return_item': 			'return_item',
+
+					'bonus': 				'bonus',
+					'value_drop': 			'value_drop',
+					'other': 				'other',
+}
+
+
+
+
+
+
+
 #_dic_month = {
 #					'01': 	'BC01',
 #}
-
-
 
 _weekday_list = [
 					('monday', 			'Lunes'),

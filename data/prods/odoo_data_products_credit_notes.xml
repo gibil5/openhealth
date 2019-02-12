@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='utf-8'?>
+<openerp>
+    <data>
+
+
+<!--
+cancel 					01 - Anulación de la operación
+cancel_error_ruc 		02 - Anulación por error en el RUC
+correct_error_desc 		03 - Corrección por error en la descripción
+discount 				04 - Descuento global
+discount_item 			05 - Descuento por item
+return 					06 - Devolución total
+return_item 			07 - Devolución por item
+
+bonus 					08 - Bonificación
+value_drop 				09 - Disminución en el valor
+other 					10 - Otros
+-->
+
+       <!-- DEVOLUTION -->
+       
+        <record id='devolution' model='product.template'>
+
+            <field name='name'>DEVOLUCION</field>
+            
+            <field name='x_name_short'>devolution</field>
+
+            <field name='x_family'>credit_note</field>
+
+            <field name='type'>consu</field>
+        </record>
+
+
+
+
+<!-- Products - Credit Notes -->
+
+
+        <!-- CANCEL -->
+        <record id='cancel' model='product.template'>
+
+            <field name='name'>ANULACION DE LA OPERACION</field>
+            
+            <field name='x_name_short'>cancel</field>
+
+            <field name='x_family'>credit_note</field>
+
+            <field name='type'>consu</field>
+        </record>
+
+
+
+
+        <!-- CANCEL ERROR RUC -->
+        <record id='cancel_error_ruc' model='product.template'>
+
+            <field name='name'>ANULACION POR ERROR EN EL RUC</field>
+            
+            <field name='x_name_short'>cancel_error_ruc</field>
+
+            <field name='x_family'>credit_note</field>
+
+            <field name='type'>consu</field>
+        </record>
+
+
+        <!-- CORRECT ERROR DESC -->
+        <record id='correct_error_desc' model='product.template'>
+
+            <field name='name'>CORRECCION POR ERROR EN LA DESCRIPCION</field>
+            
+            <field name='x_name_short'>correct_error_desc</field>
+
+            <field name='x_family'>credit_note</field>
+
+            <field name='type'>consu</field>
+        </record>
+
+
+
+
+
+        <!-- discount -->
+        <record id='discount' model='product.template'>
+
+            <field name='name'>DESCUENTO GLOBAL</field>
+            
+            <field name='x_name_short'>discount</field>
+
+            <field name='x_family'>credit_note</field>
+
+            <field name='type'>consu</field>
+        </record>
+
+
+        <!-- discount_item -->
+        <record id='discount_item' model='product.template'>
+
+            <field name='name'>DESCUENTO POR ITEM</field>
+            
+            <field name='x_name_short'>discount_item</field>
+
+            <field name='x_family'>credit_note</field>
+
+            <field name='type'>consu</field>
+        </record>
+
+
+       <!-- return -->
+        <record id='return' model='product.template'>
+
+            <field name='name'>DEVOLUCION TOTAL</field>
+            
+            <field name='x_name_short'>return</field>
+
+            <field name='x_family'>credit_note</field>
+
+            <field name='type'>consu</field>
+        </record>
+
+
+       <!-- return_item -->
+        <record id='return_item' model='product.template'>
+
+            <field name='name'>DEVOLUCION POR ITEM</field>
+            
+            <field name='x_name_short'>return_item</field>
+
+            <field name='x_family'>credit_note</field>
+
+            <field name='type'>consu</field>
+        </record>
+
+
+       <!-- bonus -->
+        <record id='bonus' model='product.template'>
+
+            <field name='name'>BONIFICACION</field>
+            
+            <field name='x_name_short'>bonus</field>
+
+            <field name='x_family'>credit_note</field>
+
+            <field name='type'>consu</field>
+        </record>
+
+       <!-- value_drop -->
+        <record id='value_drop' model='product.template'>
+
+            <field name='name'>DISMINUCION EN EL VALOR</field>
+            
+            <field name='x_name_short'>value_drop</field>
+
+            <field name='x_family'>credit_note</field>
+
+            <field name='type'>consu</field>
+        </record>
+
+       <!-- other -->
+        <record id='other' model='product.template'>
+
+            <field name='name'>OTROS</field>
+            
+            <field name='x_name_short'>other</field>
+
+            <field name='x_family'>credit_note</field>
+
+            <field name='type'>consu</field>
+        </record>
+
+
+
+    </data>
+</openerp>

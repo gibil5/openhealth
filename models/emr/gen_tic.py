@@ -11,17 +11,35 @@ _dic_prod = {
 			'dexpantenol_5ml': 			'DEXPANTENOL 5 ML',
 
 
-			# New - 5 Feb 2019
-			'devolution':				'DEVOLUCION',
-			'regenera_derm':			'REGENERA DERM x 50g',
 
+			# New - 12 Feb 2019
+			'devolution':				'DEVOLUCION',
+
+			'cancel':					'ANULACION',
+			'cancel_error_ruc':			'ANULACION RUC',
+			'correct_error_desc':		'CORRECCION',
+			
+			'discount':					'DESCUENTO',
+			'discount_item':			'DESCUENTO ITEM',
+			
+			'return':					'DEVOLUCION',
+			'return_item':				'DEVOLUCION ITEM',
+
+			'bonus':					'BONIFICACION',
+			'value_drop':				'DISM VALOR',
+			'other':					'OTRO',
+
+
+
+
+
+			# New - 5 Feb 2019
+			'regenera_derm':			'REGENERA DERM x 50g',
 
 			# New - 28 Jan 2019
 			'collagen_naara': 			'COLAGENO NAARA',
 			'ageless_box': 				'CAJA AGELESS',
 			'ageless_blister': 			'BLISTER AGELESS',
-
-
 
 			# New
 			'product_1': 				'Producto 1',

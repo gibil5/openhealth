@@ -75,7 +75,7 @@
 
                             string="Validar"                            
 
-                            states="sent"                       
+                            states="sent"
                     />
 
 
@@ -87,7 +87,7 @@
 
                             string="CONFIRMAR"
                             
-                            states="validated"                      
+                            states="validated"
                     />
 
 
@@ -100,7 +100,7 @@
 
                             string="Corregir"
                             
-                            states="sale"                       
+                            states="sale"
                     />
 
 
@@ -115,7 +115,7 @@
 
                             string="Anular"
 
-                            states="sale"                       
+                            states="sale"
                     />
 
 
@@ -130,7 +130,7 @@
 
                             string="Activar"
 
-                            states="cancel"                     
+                            states="cancel"
                     />
 
 
@@ -153,7 +153,7 @@
 
                             name="update_credit_note"
 
-                            states="credit_note"                     
+                            states="credit_note"
 
                             string="Actualizar NC"
                     />
@@ -161,19 +161,16 @@
 
 
                     <!-- Update Counter -->
+<!--
                     <button
                             type="object"
                             class="oe_highlight"
-
                             name="update_counter"
-
-                            states="sale,credit_note"                     
-
+                            states="sale,credit_note"
                             string="Update Counter"
-
                             groups="openhealth.roots"
                     />
-
+-->
 
 
                     <!-- Test -->
@@ -181,12 +178,9 @@
                     <button
                             type="object"
                             class="oe_highlight"
-                            states="sale"                     
-
+                            states="sale"
                             name="test"
-
                             string="TEST"
-
                             groups="openhealth.roots"
                     />
 -->
@@ -197,24 +191,18 @@
                     <button
                             type="object"
                             class="oe_highlight"
-                            states="sale"                     
-
+                            states="sale"
                             name="update_day_month"
-
                             string="Update Day Month"
-
                             groups="openhealth.roots"
                     />
 
                     <button
                             type="object"
                             class="oe_highlight"
-                            states="sale"                     
-
+                            states="sale"
                             name="update_day_month_all"
-
                             string="Update Day Month ALL"
-
                             groups="openhealth.roots"
                     />
 -->
@@ -228,12 +216,9 @@
                             type="object"
                             class="oe_highlight"
                             groups="openhealth.roots"
-                            
                             name="checksum"
-
                             string="CHECKSUM"
-
-                            states="sale,cancel"                     
+                            states="sale,cancel"
                     />
                     -->
 
@@ -243,12 +228,9 @@
                             type="object"
                             class="oe_highlight"
                             groups="openhealth.roots"
-                            
                             name="update_payment"
-
                             string="PAYMENT"
-
-                            states="sale"                     
+                            states="sale"
                     />
                     -->
 
@@ -580,8 +562,13 @@
 
 
 
+
                     <field name="x_credit_note_owner"   attrs="{'invisible':[('state', 'not in', ['credit_note'])]}"/>
                     
+                    <field name="x_credit_note_owner_amount"/>
+
+
+
                     <field name="vspace"/>
                     
                     <field name="x_partner_dni"

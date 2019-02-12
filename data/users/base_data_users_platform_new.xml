@@ -3,10 +3,8 @@
     <data>
 
 <!--
-vv7cr64k
 pk2ry333
 q39cwmmv
-suv3bm7q
 rn9vstcw
 jm48h6bd
 e9mp2v4w
@@ -14,6 +12,7 @@ n2vp2fbt
 827fndzr
 ah5k7j2h
 -->
+
 
 <!-- Daniela Urdanivia -->
         <record id="durdanivia" model="res.partner">
@@ -36,6 +35,58 @@ ah5k7j2h
 
             <field name="partner_id" ref="durdanivia"/>
         </record>
+
+
+
+
+<!-- Salvador Saucedo -->
+        <record id="ssaucedo" model="res.partner">
+            <field name="name">Salvador Saucedo</field>
+            <field name="email">ssaucedo@clinicachavarri.com</field>
+            <field name="function">reception</field>
+            <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
+        </record>
+
+        <record id="ssaucedo_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
+            <field name="name">Salvador Saucedo</field>
+            <field name="login">ssaucedo@clinicachavarri.com</field>
+
+            <field name="password">suv3bm7q</field>
+
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="active">True</field>
+            <field name="tz">America/Lima</field>
+            <field name="lang">es_ES</field>
+
+            <field name="partner_id" ref="ssaucedo"/>
+        </record>
+
+
+
+
+<!-- Diana Chumpitaz -->
+        <record id="dchumpitaz" model="res.partner">
+            <field name="name">Diana Chumpitaz</field>
+            <field name="email">dchumpitaz@clinicachavarri.com</field>
+            <field name="function">reception</field>
+            <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
+        </record>
+
+        <record id="dchumpitaz_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
+            <field name="name">Diana Chumpitaz</field>
+            <field name="login">dchumpitaz@clinicachavarri.com</field>
+
+            <field name="password">dv7cr64k</field>
+
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="active">True</field>
+            <field name="tz">America/Lima</field>
+            <field name="lang">es_ES</field>
+
+            <field name="partner_id" ref="dchumpitaz"/>
+        </record>
+
+
 
 
 

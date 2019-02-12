@@ -4,6 +4,54 @@
 
 
 
+<!-- FORM --> 
+        <record model="ir.ui.view" id="management_day_line_form_view">
+            <field name="name">openhealth.management.day.line.form</field>
+            <field name="model">openhealth.management.day.line</field>
+
+
+            <field name="arch" type="xml">
+                <form string="Management Form">
+
+                    <!-- Header -->
+                    <header>
+                    </header>
+
+
+
+
+
+                    <!-- Sheet -->  
+                    <sheet>
+
+
+                        <group>
+                            <group>
+                                <field name="date"/>
+                                <field name="holiday"/>
+<!--
+                                <field name="name"/>
+                                <field name="weekday"/>
+-->
+                            </group>
+
+                            <group></group>
+                        </group>
+
+
+                        <!-- Notebook --> 
+                        <notebook>  
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+
+
+
 <!-- TREE --> 
         <record model="ir.ui.view" id="management_day_line_view_tree">
             <field name="name">openhealth.management.day.line.tree</field>

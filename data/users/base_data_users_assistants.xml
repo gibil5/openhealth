@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
+    <data>
+<!--    
     <data noupdate='0'>
-
+-->
 
 
 
@@ -31,8 +33,10 @@
             <field name="password">s7VEutKW</field>
             <field name="password">s7veutkw</field>
             <field name="password">eochante</field>
--->     
+
             <field name="password">eochante</field>
+-->     
+            <field name="password">e7vxut</field>
 
 
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
@@ -45,30 +49,31 @@
 
 
 
-<!-- Rossana Garcia -->
-        <record id="rgarcia_partner" model="res.partner">
-            <field name="name">Rossana Garcia</field>
-            <field name="email">rgarcia@clinicachavarri.com</field>
+
+<!-- Melita Tirado -->
+        <record id="mtirado_partner" model="res.partner">
+            <field name="name">Melita Tirado</field>
+            <field name="email">mtirado@clinicachavarri.com</field>
             <field name="function">assistant</field>
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
         </record>
 
-        <record id="rgarcia_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
-            <field name="name">Rossana Garcia</field>
-            <field name="login">rgarcia@clinicachavarri.com</field>
+        <record id="mtirado_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
+            <field name="name">Melita Tirado</field>
+            <field name="login">mtirado@clinicachavarri.com</field>
             
 <!--
-            <field name="password">rgarcia</field>
-            <field name="password">2ppGAB4Y</field>
-            <field name="password">2ppgab4y</field>
+            <field name="password">mtirado</field>
+            <field name="password">8ECMLfF7</field>
+            <field name="password">8ecmlff7</field>
 -->     
-            <field name="password">rgarcia</field>
+            <field name="password">m8ec7f</field>
 
 
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="lang">es_ES</field>
             <field name="tz">America/Lima</field>
-            <field name="partner_id" ref="rgarcia_partner"/>
+            <field name="partner_id" ref="mtirado_partner"/>
             <field name="active">True</field>
         </record>
 
@@ -90,8 +95,9 @@
 <!--
             <field name="password">nmendoza</field>
             <field name="password">NTu7AXhV</field>
--->     
             <field name="password">ntu7axhv</field>
+-->     
+            <field name="password">ntu7ax</field>
 
 
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
@@ -103,31 +109,42 @@
 
 
 
-<!-- Melita Tirado -->
-        <record id="mtirado_partner" model="res.partner">
-            <field name="name">Melita Tirado</field>
-            <field name="email">mtirado@clinicachavarri.com</field>
+
+
+
+
+<!-- Rossana Garcia -->
+        <record id="rgarcia_partner" model="res.partner">
+            <field name="name">Rossana Garcia</field>
+            <field name="email">rgarcia@clinicachavarri.com</field>
             <field name="function">assistant</field>
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
         </record>
 
-        <record id="mtirado_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
-            <field name="name">Melita Tirado</field>
-            <field name="login">mtirado@clinicachavarri.com</field>
+        <record id="rgarcia_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
+            <field name="name">Rossana Garcia</field>
+            <field name="login">rgarcia@clinicachavarri.com</field>
             
 <!--
-            <field name="password">mtirado</field>
-            <field name="password">8ECMLfF7</field>
+            <field name="password">rgarcia</field>
+            <field name="password">2ppGAB4Y</field>
+            <field name="password">2ppgab4y</field>
+            <field name="password">rgarcia</field>
 -->     
-            <field name="password">8ecmlff7</field>
+            <field name="password">r2pb4y</field>
 
 
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="lang">es_ES</field>
             <field name="tz">America/Lima</field>
-            <field name="partner_id" ref="mtirado_partner"/>
+            <field name="partner_id" ref="rgarcia_partner"/>
             <field name="active">True</field>
         </record>
+
+
+
+
+
 
 
 

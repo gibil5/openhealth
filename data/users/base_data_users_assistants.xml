@@ -5,6 +5,13 @@
     <data noupdate='0'>
 -->
 
+<!--
+8jhc93
+z4srq3
+hvmw5t
+a33g6g
+-->     
+
 
 
 <!-- Elias Ochante -->
@@ -80,6 +87,8 @@
 
 
 
+
+
 <!-- Nancy Mendoza -->
         <record id="nmendoza_partner" model="res.partner">
             <field name="name">Nancy Mendoza</field>
@@ -106,6 +115,31 @@
             <field name="partner_id" ref="nmendoza_partner"/>
             <field name="active">True</field>
         </record>
+
+
+
+<!-- Rosa Mendoza -->
+        <record id="rmendoza_partner" model="res.partner">
+            <field name="name">Rosa Mendoza</field>
+            <field name="email">rmendoza@clinicachavarri.com</field>
+            <field name="function">assistant</field>
+            <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
+        </record>
+
+        <record id="rmendoza_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
+            <field name="name">Rosa Mendoza</field>
+            <field name="login">rmendoza@clinicachavarri.com</field>
+            
+            <field name="password">yc5tgc</field>
+
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="lang">es_ES</field>
+            <field name="tz">America/Lima</field>
+            <field name="partner_id" ref="rmendoza_partner"/>
+            <field name="active">True</field>
+        </record>
+
+
 
 
 

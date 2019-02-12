@@ -45,8 +45,6 @@
 <!--
 
 
-                                            (4, ref('openhealth.ssaucedo_clinicachavarri')),
-                                            (4, ref('openhealth.dchumpitaz_clinicachavarri')),
 -->
         <record id="hc_managers" model="res.groups">
 
@@ -78,6 +76,8 @@
 
 
 
+                                            (4, ref('openhealth.ssaucedo_clinicachavarri')),
+                                            (4, ref('openhealth.dchumpitaz_clinicachavarri')),
                                             (4, ref('openhealth.durdanivia_clinicachavarri')),
 
                                             (4, ref('openhealth.plataforma_clinicachavarri')),
@@ -103,8 +103,6 @@
 
 
 <!--
-                                        (4, ref('openhealth.ssaucedo_clinicachavarri')),
-                                        (4, ref('openhealth.dchumpitaz_clinicachavarri')),
 -->
         <!-- Product Readers --> 
         <record id="product_readers" model="res.groups">
@@ -154,6 +152,8 @@
 
 
 
+                                        (4, ref('openhealth.ssaucedo_clinicachavarri')),
+                                        (4, ref('openhealth.dchumpitaz_clinicachavarri')),
                                         (4, ref('openhealth.durdanivia_clinicachavarri')),
 
 

@@ -295,8 +295,6 @@
 
 <!--
 
-                                        (4, ref('openhealth.ssaucedo_clinicachavarri')),
-                                        (4, ref('openhealth.dchumpitaz_clinicachavarri')),
 -->
 <!-- Plataforma --> 
         <record id="reception" model="res.groups">
@@ -308,8 +306,8 @@
 
 
             <field name="users" eval="[ 
-
-
+                                        (4, ref('openhealth.ssaucedo_clinicachavarri')),
+                                        (4, ref('openhealth.dchumpitaz_clinicachavarri')),
                                         (4, ref('openhealth.durdanivia_clinicachavarri')),
 
                                         (4, ref('openhealth.plataforma_clinicachavarri')),

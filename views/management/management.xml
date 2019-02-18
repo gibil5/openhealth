@@ -33,6 +33,18 @@
                                 string="Analisis por Doctor"
                         />
 
+
+                        <!-- See Doctors -->
+                        <button
+                                class="oe_highlight"
+                                type="action"
+                                context="{
+                                            'search_default_management_id': active_id,
+                                        }"
+                                name="%(management_doctor_line_form_action)d"
+                                string="Ver Doctores"
+                        />
+
                         <!-- See Sales -->
                         <button 
                                 class="oe_highlight"
@@ -43,6 +55,8 @@
                                 name="%(management_order_line_form_action)d"
                                 string="Ver Ventas" 
                         />
+
+
 
 
 
@@ -69,20 +83,9 @@
                         />
 
 
-                        <!-- See Doctors -->
                         <!-- Families -->
                         <!-- Sub Families -->
 <!--
-                        <button 
-                                class="oe_highlight"
-                                type="action" 
-                                context="{
-                                            'search_default_management_id': active_id,  
-                                        }"                                          
-                                name="%(management_doctor_line_form_action)d" 
-
-                                string="Ver Doctores"   
-                        />
 
                         <button 
                                 class="oe_highlight"
@@ -474,6 +477,7 @@
                             <page   string="Por Doctor">
                                 <field name="doctor_line">
                                     <tree string="Doctor">                                          
+
                                         <!-- Open Button -->
                                         <button 
                                             type="object" 
@@ -481,6 +485,7 @@
                                             name="open_line_current" 
                                             string="e"
                                         />
+
                                         <field name="name"/>
 
                                         <field name="x_count"    string="Nr Ventas"/>

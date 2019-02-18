@@ -191,6 +191,8 @@
 
 
 
+
+
         <!-- Credit Notes -->
         <record model="ir.actions.act_window" id="credit_note_list_action">
             <field name="name">Notas de Crédito</field>
@@ -208,8 +210,6 @@
         </record>
 
 
-
-
         <!-- Credit Notes and Sales -->
         <record model="ir.actions.act_window" id="credit_note_sale_list_action">
             <field name="name">Notas de Crédito y Ventas</field>
@@ -225,6 +225,28 @@
 
             <field name="limit">40</field>
         </record>
+
+
+
+
+
+
+        <!-- Flow Block -->
+        <record model="ir.actions.act_window" id="flow_block_list_action">
+            <field name="name">Flujos Bloqueados</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph,pivot</field>
+            <field name="context">{}</field>
+
+            <field name="domain">[
+                                    ('x_block_flow', 'in', [True]),
+                                ]
+            </field>
+
+            <field name="limit">40</field>
+        </record>
+
 
 
 

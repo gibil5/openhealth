@@ -321,8 +321,9 @@ def get_orders_filter_by_doctor(self, date_bx, date_ex, doctor):
 	Sales.
 	Must include Credit Notes.
 	"""
-	print()
-	print('Get Orders Filter - By Doctor')
+	#print()
+	#print('Get Orders Filter - By Doctor')
+
 
 	# Init
 	# Dates

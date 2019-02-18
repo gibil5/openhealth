@@ -3,7 +3,7 @@
 	Doctor Line
 
 	Created: 			18 May 2018
-	Last up: 			15 Jan 2019
+	Last up: 			13 Feb 2019
 """
 from __future__ import print_function
 
@@ -15,7 +15,6 @@ class DoctorLine(models.Model):
 	"""
 	high level support for doing this and that.
 	"""
-
 	_name = 'openhealth.management.doctor.line'
 
 	_inherit = 'openhealth.management.line'
@@ -24,14 +23,12 @@ class DoctorLine(models.Model):
 
 
 
-
-
 # ----------------------------------------------------------- Nex --------------------------
 	# Day Line
 	day_line = fields.One2many(
 
 			'openhealth.management.day.doctor.line',
-		
+
 			'doctor_id',
 		)
 
@@ -45,6 +42,8 @@ class DoctorLine(models.Model):
 			'openhealth.management.order.line',
 			'doctor_id',
 		)
+
+
 
 	# Family
 	family_line = fields.One2many(
@@ -320,3 +319,42 @@ class DoctorLine(models.Model):
 			self.ratio_pro_con_co2 = (float(self.nr_procedures_co2) / float(self.nr_consultations)) * 100
 			self.ratio_pro_con_quick = (float(self.nr_procedures_quick) / float(self.nr_consultations)) * 100
 	# update
+
+
+# ----------------------------------------------------------- Update Daily ------------------------------
+	@api.multi
+	def update_daily(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Update Daily')
+
+		print(self.day_line)
+		self.day_line.unlink()
+
+		date_array = []
+
+		for line in self.order_line:
+
+			date = line.x_date_created.split()[0]
+
+			# Create
+			if date not in date_array:
+				date_array.append(date)
+
+				day = self.day_line.create({
+												'date': date,												
+												'doctor_id': self.id,
+									})
+				day.update()
+
+
+			# Update Lines
+			day.update_line(line)
+
+			day.update_macro()
+
+
+
+		print(date_array)

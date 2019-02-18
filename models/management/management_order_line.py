@@ -19,6 +19,38 @@ class management_order_line(models.Model):
 
 
 
+# ----------------------------------------------------------- Handles -----------------------------
+
+	# Management 
+	management_id = fields.Many2one(
+			'openhealth.management',
+			ondelete='cascade',
+		)
+
+	# Doctor 
+	doctor_id = fields.Many2one(			
+			'openhealth.management.doctor.line',
+			ondelete='cascade', 			
+		)
+
+	# Doctor Day
+	doctor_day_id = fields.Many2one(			
+			'openhealth.management.day.doctor.line',
+			ondelete='cascade', 			
+		)
+
+
+
+
+	# Sales TKR
+	management_tkr_id = fields.Many2one(			
+			'openhealth.management',
+			ondelete='cascade',		
+		)
+
+
+
+
 # ----------------------------------------------------------- Dep ? -----------------------------
 
 	# Container  
@@ -174,27 +206,6 @@ class management_order_line(models.Model):
 		)
 
 
-
-
-# ----------------------------------------------------------- Handles -----------------------------
-
-	# Management 
-	management_id = fields.Many2one(
-			'openhealth.management',
-			ondelete='cascade',
-		)
-
-	# Doctor 
-	doctor_id = fields.Many2one(			
-			'openhealth.management.doctor.line',
-			ondelete='cascade', 			
-		)
-
-	# Sales TKR
-	management_tkr_id = fields.Many2one(			
-			'openhealth.management',
-			ondelete='cascade',		
-		)
 
 
 

@@ -26,6 +26,7 @@ class Line(models.Model):
 			string='Fecha y Hora', 
 		)
 
+
 	# Date Date
 	#date_order_date = fields.Date(
 	date_order_date = fields.Datetime(

@@ -446,8 +446,10 @@ class Container(models.Model):
 		# Update
 		self.mgt.update_fast()
 
+
 		# Create
 		self.amount_total, self.receipt_count, self.invoice_count = self.mgt.update_electronic()
+
 
 	# create_electronic
 

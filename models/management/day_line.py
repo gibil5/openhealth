@@ -93,6 +93,7 @@ class DayLine(models.Model):
 
 
 
+
 # ----------------------------------------------------------- Update ------------------------------
 	# Update
 	@api.multi
@@ -100,9 +101,8 @@ class DayLine(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		print()
-		print('Update - Projection')
-
+		#print()
+		#print('Update - Projection')
 		self.projection = self.avg_amount * self.nr_days_total
 
 
@@ -114,9 +114,8 @@ class DayLine(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		print()
-		print('Update - Average')
-
+		#print()
+		#print('Update - Average')
 		self.avg_amount = self.cumulative / self.nr_days
 
 
@@ -130,8 +129,8 @@ class DayLine(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		print()
-		print('Update - amount')
+		#print()
+		#print('Update - amount')
 
 
 		# Search

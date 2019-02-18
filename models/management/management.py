@@ -954,109 +954,123 @@ class Management(models.Model):
 
 			# Loop
 			for order in orders:
-				#print(order)
-				#print(order.name)
-				#print(order.patient.name)
 
 				# Tickets
 				tickets = tickets + 1
 
 
-
-
-				# Amount
-				#amount = amount + order.amount_total
-
-				# Amount with State
-				if order.state in ['credit_note']:
-					#amount = amount - order.amount_total
-					#amount = amount - order.x_credit_note_amount
-					amount = amount - order.amount_total
-					print('Gotcha !')
-					print(amount)
-
-				elif order.state in ['sale']:
-					amount = amount + order.amount_total
+				# Filter Block
+				if not order.x_block_flow:
 
 
 
 
 
-				# Id Doc
-				if order.x_type in ['ticket_invoice', 'invoice']:
-					receptor = order.patient.x_firm.upper()
-					id_doc = order.patient.x_ruc
-					id_doc_type = 'ruc'
-					id_doc_type_code = '6'
+					# Parse Data
 
-				else:
-					receptor = order.patient.name
-					id_doc = order.patient.x_id_doc
-					id_doc_type = order.patient.x_id_doc_type
-					id_doc_type_code = order.patient.x_id_doc_type_code
+					# Amount
+					#amount = amount + order.amount_total
 
-					# Pre-Electronic
-					if id_doc_type is False or id_doc is False:
-						id_doc = order.patient.x_dni
-						id_doc_type = 'dni'
-						id_doc_type_code = '1'
-
-
-
-
-				# Order Lines
-				for line in order.order_line:
-
-					count = count + 1
-
-
-					# State
+					# Amount with State
 					if order.state in ['credit_note']:
-						price_unit = -line.price_unit
-						#price_unit = -1
-					
+						#amount = amount - order.amount_total
+						#amount = amount - order.x_credit_note_amount
+						amount = amount - order.amount_total
+						print('Gotcha !')
+						print(amount)
+
 					elif order.state in ['sale']:
-						price_unit = line.price_unit
+						amount = amount + order.amount_total
 
 
 
-					# Here !!!
-					order_line = doctor.order_line.create({
-															'date_order_date': order.date_order,
-															'x_date_created': order.date_order,
 
-															'name': order.name,
-															'receptor': 	receptor,
-															'patient': 		order.patient.id,
-															'doctor': order.x_doctor.id,
-															'serial_nr': order.x_serial_nr,
+					# Id Doc
+					if order.x_type in ['ticket_invoice', 'invoice']:
+						receptor = order.patient.x_firm.upper()
+						id_doc = order.patient.x_ruc
+						id_doc_type = 'ruc'
+						id_doc_type_code = '6'
 
-															# Type of Sale
-															'type_code': 	order.x_type_code,
-															'x_type': 		order.x_type,
+					else:
+						receptor = order.patient.name
+						id_doc = order.patient.x_id_doc
+						id_doc_type = order.patient.x_id_doc_type
+						id_doc_type_code = order.patient.x_id_doc_type_code
 
-															# Id Doc
-															'id_doc': 				id_doc,
-															'id_doc_type': 			id_doc_type,
-															'id_doc_type_code': 	id_doc_type_code,
-
-
-
-															# Line
-															'product_id': 			line.product_id.id,
-															'product_uom_qty': 		line.product_uom_qty,
-
-															#'price_unit': 			line.price_unit,
-															'price_unit': 			price_unit,
-
-															# State
-															'state': order.state,
+						# Pre-Electronic
+						if id_doc_type is False or id_doc is False:
+							id_doc = order.patient.x_dni
+							id_doc_type = 'dni'
+							id_doc_type_code = '1'
 
 
-															'doctor_id': doctor.id,
-															'management_id': self.id,
-														})
-					order_line.update_fields()
+
+
+					# Order Lines
+					for line in order.order_line:
+
+						count = count + 1
+
+
+						# State
+						if order.state in ['credit_note']:
+							price_unit = -line.price_unit
+							#price_unit = -1
+						
+						elif order.state in ['sale']:
+							price_unit = line.price_unit
+
+
+
+						# Here !!!
+						order_line = doctor.order_line.create({
+																'date_order_date': order.date_order,
+																'x_date_created': order.date_order,
+
+																'name': order.name,
+																'receptor': 	receptor,
+																'patient': 		order.patient.id,
+																'doctor': order.x_doctor.id,
+																'serial_nr': order.x_serial_nr,
+
+																# Type of Sale
+																'type_code': 	order.x_type_code,
+																'x_type': 		order.x_type,
+
+																# Id Doc
+																'id_doc': 				id_doc,
+																'id_doc_type': 			id_doc_type,
+																'id_doc_type_code': 	id_doc_type_code,
+
+
+
+																# Line
+																'product_id': 			line.product_id.id,
+																'product_uom_qty': 		line.product_uom_qty,
+
+																#'price_unit': 			line.price_unit,
+																'price_unit': 			price_unit,
+
+																# State
+																'state': order.state,
+
+
+																'doctor_id': doctor.id,
+																'management_id': self.id,
+															})
+						order_line.update_fields()
+
+
+
+					# Parse Data - End
+
+				# Filter Block - End
+
+			# Loop - End
+
+
+
 
 
 
@@ -1066,8 +1080,6 @@ class Management(models.Model):
 			# Percentage
 			if self.total_amount != 0: 
 				doctor.per_amo = (doctor.amount / self.total_amount)
-
-
 
 
 			# Totals
@@ -1175,6 +1187,14 @@ class Management(models.Model):
 
 			# Create Electronic Order
 			electronic_order = self.electronic_order.create({
+																#'amount_total': 		order.amount_total,
+																'amount_total_net': 	order.x_total_net,
+																'amount_total_tax': 	order.x_total_tax,
+
+																'amount_total': 		order.x_amount_flow,
+
+
+
 																'receptor': 	receptor,
 																'patient': 		order.patient.id,
 																'name': 			order.name,
@@ -1187,9 +1207,8 @@ class Management(models.Model):
 																'id_doc': 				id_doc,
 																'id_doc_type': 			id_doc_type,
 																'id_doc_type_code': 	id_doc_type_code,
-																'amount_total': 		order.amount_total,
-																'amount_total_net': 	order.x_total_net,
-																'amount_total_tax': 	order.x_total_tax,
+
+																
 																'counter_value': 		order.x_counter_value,
 																'delta': 				order.x_delta,
 
@@ -1269,23 +1288,34 @@ class Management(models.Model):
 		tickets = 0
 
 
-		# Loop
+
+
+
+# Loop
 		for order in orders:
 			tickets = tickets + 1
 
-			# Order Lines
-			for line in order.order_line:
+			# Filter Block
+			if not order.x_block_flow:
 
-				# Line Analysis
-				mgt_funcs.line_analysis(self, line)
+				# Order Lines
+				for line in order.order_line:
+
+					# Line Analysis
+					mgt_funcs.line_analysis(self, line)
 
 
 
+
+
+# Analysis
+
+
+		# Averages
 
 		# Families
 		if self.nr_other != 0:
 			self.avg_other = self.amo_other / self.nr_other
-
 
 		if self.nr_products != 0:
 			self.avg_products = self.amo_products / self.nr_products
@@ -1300,8 +1330,6 @@ class Management(models.Model):
 			self.avg_procedures = self.amo_procedures / self.nr_procedures
 
 
-
-
 		# Subfamilies
 		if self.nr_topical != 0:
 			self.avg_topical = self.amo_topical / self.nr_topical
@@ -1311,8 +1339,6 @@ class Management(models.Model):
 
 		if self.nr_kit != 0:
 			self.avg_kit = self.amo_kit / self.nr_kit
-
-
 
 		if self.nr_co2 != 0:
 			self.avg_co2 = self.amo_co2 / self.nr_co2
@@ -1336,29 +1362,32 @@ class Management(models.Model):
 			self.avg_cosmetology = self.amo_cosmetology / self.nr_cosmetology
 
 
+
+
+
 		# Ratios
 		if self.nr_consultations != 0:
 			self.ratio_pro_con = (float(self.nr_procedures) / float(self.nr_consultations)) * 100
 
 
 
+
 		# Totals
-		#self.total_amount = self.amo_products + self.amo_services
-		#self.total_amount = self.amo_products + self.amo_services + self.amo_other
 		self.total_amount = self.amo_products + self.amo_services + self.amo_other - self.amo_credit_notes
-
 		self.total_count = self.nr_products + self.nr_services
-
 		self.total_tickets = tickets
 
 
 
 
-		# Percentages - 1
-		if self.total_amount_year != 0:
-				self.per_amo_total = self.total_amount / self.total_amount_year
+		# Percentages
 
-		# Percentages - 2
+		# Year - Dep !!!
+		#if self.total_amount_year != 0:
+		#		self.per_amo_total = self.total_amount / self.total_amount_year
+
+
+		# Month
 		if self.total_amount != 0:
 
 			self.per_amo_other = (self.amo_other / self.total_amount)
@@ -1378,6 +1407,8 @@ class Management(models.Model):
 			self.per_amo_quick = (self.amo_quick / self.total_amount)
 			self.per_amo_medical = (self.amo_medical / self.total_amount)
 			self.per_amo_cosmetology = (self.amo_cosmetology / self.total_amount)
+
+
 
 	# update_sales_fast
 
@@ -1715,8 +1746,8 @@ class Management(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		print()
-		print('Update - Cumulative')
+		#print()
+		#print('Update - Cumulative')
 
 		# Init
 		amount_total = 0
@@ -1731,7 +1762,7 @@ class Management(models.Model):
 		# Update Cumulative and Nr Days
 		for day in self.day_line:
 			#print(day.name)
-			print(day.date)
+			#print(day.date)
 			amount_total = amount_total  + day.amount
 			day.cumulative = amount_total
 			duration_total = duration_total + day.duration
@@ -1828,7 +1859,7 @@ class Management(models.Model):
 
 					#print(date_dt, weekday, weekday_str)
 					#print(date_dt)
-					print(date_s)
+					#print(date_s)
 
 	# create_days
 

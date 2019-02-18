@@ -17,8 +17,21 @@ value_drop 				09 - Disminución en el valor
 other 					10 - Otros
 -->
 
-       <!-- DEVOLUTION -->
-       
+
+
+<!-- Dummy -->       
+<!--
+        <record id='correction' model='product.template'>
+            <field name='name'>Dum</field>
+            <field name='x_name_short'>dum</field>
+            <field name='x_family'></field>
+            <field name='type'>consu</field>
+        </record>
+-->
+
+
+
+<!-- DEVOLUTION -->       
         <record id='devolution' model='product.template'>
 
             <field name='name'>DEVOLUCION</field>

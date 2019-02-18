@@ -13,17 +13,13 @@
             <field name="arch" type="xml">
                 <form string="Management Form">
 
+
                     <!-- Header -->
-                    <header>
-                    </header>
-
-
-
+                    <header></header>
 
 
                     <!-- Sheet -->  
                     <sheet>
-
 
                         <group>
                             <group>

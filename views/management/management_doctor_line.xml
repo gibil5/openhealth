@@ -4,10 +4,12 @@
 
 
 
-        <!-- FORM --> 
+<!-- FORM --> 
         <record model="ir.ui.view" id="management_doctor_line_form_view">
             <field name="name">openhealth.management.doctor.line.form</field>
+
             <field name="model">openhealth.management.doctor.line</field>
+            
             <field name="arch" type="xml">
                 <form string="Management Doctor Line Form">
                     
@@ -15,6 +17,17 @@
                     <!-- Header -->
                     <header>
                         
+
+                        <!-- Update -->
+                        <button 
+                                type="object" 
+                                class="oe_highlight"
+                                
+                                name="update_daily"
+
+                                string="Actualizar Diario"                              
+                        />
+
 
                         <!-- Stats -->
                         <button 
@@ -96,9 +109,20 @@
 <!--
 -->
                             <page   string="Diario">
+
                                 <field name="day_line">
 
-                                    <tree string="Familia"  limit="1000">
+                                    <tree string="Daily"  limit="1000">
+
+
+                                        <!-- Open Button -->
+                                        <button 
+                                            type="object" 
+                                            class="oe_highlight"    
+                                            name="open_line_current" 
+                                            string="e"
+                                        />
+
 <!--
                                         <field name="name"/>
 -->
@@ -111,9 +135,27 @@
 
                                         <field name="nr_consultations"/>
                                         <field name="nr_procedures"/>
-                                        <field name="ratio_pro_con"/>
+                                        <field name="ratio_pro_con"         widget="percentage"/>
                                     </tree>
 
+                                </field>
+                            </page>
+
+
+                            <!-- Sales -->
+                            <page   string="Ventas"     >
+                                <field name="order_line">
+                                    <tree string="Ventas"   limit="1000"    > 
+                                        <field name="patient"/>
+                                        <field name="doctor"/>
+                                        <field name="x_date_created"/>
+                                        <field name="family"/>
+                                        <field name="sub_family"/>
+                                        <field name="product_id"/>
+                                        <field name="product_uom_qty"/>
+                                        <field name="price_unit"/>
+                                        <field name="price_subtotal"/>
+                                    </tree>
                                 </field>
                             </page>
 
@@ -147,22 +189,6 @@
 
 
 
-                            <!-- Sales -->
-                            <page   string="Ventas"     >
-                                <field name="order_line">
-                                    <tree string="Ventas"   limit="1000"    > 
-                                        <field name="patient"/>
-                                        <field name="doctor"/>
-                                        <field name="x_date_created"/>
-                                        <field name="family"/>
-                                        <field name="sub_family"/>
-                                        <field name="product_id"/>
-                                        <field name="product_uom_qty"/>
-                                        <field name="price_unit"/>
-                                        <field name="price_subtotal"/>
-                                    </tree>
-                                </field>
-                            </page>
 
                         </notebook>
                     </sheet>
@@ -179,6 +205,7 @@
             <field name="model">openhealth.management.doctor.line</field>
             <field name="arch" type="xml">
                 <tree string="management doctor line Tree">
+
 <!--
                     <field name="management_id"/>
 -->

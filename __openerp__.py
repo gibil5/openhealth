@@ -1,12 +1,18 @@
 # -*- coding: utf-8 -*-
 {
-	'name': "Open Health - SERVICE ORIENTED - ALIVE - W INTERNAL LIBERTIES",
+	'name': "Open Health - SERVICE ORIENTED - ALIVE - WINTLIB - DOCEAN TEST ENV",
 
 	'summary': "",
 
 	'description': """
 
-		12 Feb 2019
+		17 Feb 2019
+
+		Remember, it is just a Bigger game:
+			- DEV = 9x9
+			- TEST = 13 x 13
+			- PROD = 19 x 19
+
 
 		Go - Fulcrum - TRAVIS Quality Controlled - 2019
 
@@ -277,9 +283,11 @@
 		# Management 
 		'views/management/management_day_line.xml',
 
+		'views/management/management_day_doctor_line.xml',
+
+
 		'views/management/management_family_line.xml',
 		'views/management/management_subfamily_line.xml',
-
 		'views/management/management_order_line.xml',
 		'views/management/management_doctor_line.xml',
 		'views/management/management.xml',
@@ -375,6 +383,8 @@
 
 		# Orders
 		'views/orders/order.xml',
+		'views/orders/order_tree.xml',
+
 		'views/orders/order_actions.xml',
 		'views/orders/order_search.xml',
 		'views/orders/order_line.xml',

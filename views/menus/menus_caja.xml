@@ -107,20 +107,36 @@
                     />
 
 
+
+
+
+
             <!-- Notas de Credito y Ventas -->           
-            <menuitem   id="sales_credit_note_sale_menu"   
-
+<!--
+-->
+            <menuitem   id="sales_credit_note_sale_menu"
                         parent="sales_menu"
-            
                         sequence="11"
-                        
-                        name="Notas de Credito y Ventas" 
-
+                        name="Notas de Credito y Ventas"
                         action="credit_note_sale_list_action"
+
+                        groups="openhealth.roots"
                     />
 
 
 
+
+            <!-- Blocked -->
+            <menuitem   id="sales_flow_block_menu"
+
+                        parent="sales_menu"
+            
+                        sequence="13"
+                        
+                        name="Flujos Bloqueados"
+
+                        action="flow_block_list_action"
+                    />
 
 
 

@@ -35,6 +35,176 @@ class sale_order(models.Model):
 
 
 
+# ----------------------------------------------------------- Taxes -------------------------
+	# Net
+	x_total_net = fields.Float(
+			"Neto",
+
+			compute='_compute_x_total_net',
+		)
+
+	@api.multi
+	#@api.depends('')
+	def _compute_x_total_net(self):
+		for record in self:
+
+			if record.x_block_flow:
+
+				record.x_total_net = 0
+
+			else:
+				x = record.amount_total / 1.18
+				g = float("{0:.2f}".format(x))
+
+				record.x_total_net = g
+
+
+
+	# Tax
+	x_total_tax = fields.Float(
+			"Impuesto",
+
+			compute='_compute_x_total_tax',
+		)
+	@api.multi
+	#@api.depends('')
+	def _compute_x_total_tax(self):
+		for record in self:
+
+			if record.x_block_flow:
+
+				record.x_total_tax = 0
+
+			else:
+				x = record.x_total_net * 0.18
+				g = float("{0:.2f}".format(x))
+
+				record.x_total_tax = g
+
+
+
+
+# ----------------------------------------------------------- Credit Note -------------------------
+
+	x_block_flow = fields.Boolean(
+			'Flujo Bloqueado',
+			readonly=True,
+		)
+
+	x_amount_flow = fields.Float(
+			'Total F',
+
+			compute='_compute_x_amount_flow',
+		)
+
+	@api.multi
+	def _compute_x_amount_flow(self):
+		for record in self:
+
+			if record.x_block_flow:
+				record.x_amount_flow = 0
+
+			elif record.x_credit_note_amount not in [0, False]:
+
+				#record.x_amount_flow = record.amount_total - record.x_credit_note_amount
+				record.x_amount_flow = - record.x_credit_note_amount
+
+			else:
+				record.x_amount_flow = record.amount_total
+
+
+
+
+	x_credit_note_type = fields.Selection(
+			selection=ord_vars._credit_note_type_list,
+			string='Motivo',
+		)
+
+	x_credit_note_amount = fields.Float(
+			#'Monto Devolución',
+			'La Devolución es por S/',
+			default=0,
+		)
+
+	x_credit_note_owner_amount = fields.Float(
+			'Importe',
+			default=0,
+		)
+
+	x_credit_note_owner = fields.Many2one(
+			'sale.order',
+			'Documento que modifica',
+		)
+
+	x_credit_note = fields.Many2one(
+			'sale.order',
+			'Nota de Crédito',
+		)
+
+
+
+	def get_credit_note_type(self):
+		"""
+		Used by Print Ticket.
+		"""
+		_dic_cn = {
+					'cancel': 					'Anulación de la operación.',
+					'cancel_error_ruc': 		'Anulación por error en el RUC.',
+					'correct_error_desc': 		'Corrección por error en la descripción.',
+					'discount': 				'Descuento global.',
+					'discount_item': 			'Descuento por item.',
+					'return': 					'Devolución total.',
+					'return_item': 				'Devolución por item.',
+					'bonus': 					'Bonificación.',
+					'value_drop': 				'Disminución en el valor.',
+					'other': 					'Otros.',
+					False: 						'',
+		}
+		return _dic_cn[self.x_credit_note_type]
+
+
+	def get_credit_note_owner_amount(self):
+		"""
+		Used by Print Ticket.
+		"""
+		return self.x_credit_note_owner_amount
+
+
+
+
+# ---------------------------------------------- Credit Note - Block Flow -------------------------
+	# Block Flow
+	@api.multi
+	def block_flow(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Block Flow')
+
+		if self.state in ['credit_note']:
+			self.x_block_flow = True
+			self.x_credit_note_owner.x_block_flow = True
+
+
+	# Unblock Flow
+	@api.multi
+	def unblock_flow(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Unblock Flow')
+
+		if self.state in ['credit_note']:
+			self.x_block_flow = False
+			self.x_credit_note_owner.x_block_flow = False
+
+
+
+
+
+
 # ---------------------------------------------- Credit Note - Update -----------------------------
 	# Update CN
 	@api.multi
@@ -475,74 +645,6 @@ class sale_order(models.Model):
  			help='Activa el Modo Administrador.',
 		)
 
-
-# ----------------------------------------------------------- Credit Note -------------------------
-
-
-	x_credit_note_type = fields.Selection(
-			selection=ord_vars._credit_note_type_list,
-			string='Motivo',
-		)
-
-	
-	x_credit_note_amount = fields.Float(
-			'Monto Devolución',
-			#default=-1,
-			#default=-1.0,
-			default=0,
-		)
-
-	x_credit_note_owner_amount = fields.Float(
-			'Importe',
-			#default=-1,
-			#default=-1.0,
-			default=0,
-		)
-
-
-
-
-
-
-
-	x_credit_note_owner = fields.Many2one(
-			'sale.order',
-			'Documento que modifica',
-		)
-
-	x_credit_note = fields.Many2one(
-			'sale.order',
-			'Nota de Crédito',
-		)
-
-
-	def get_credit_note_type(self):
-		"""
-		Used by Print Ticket.
-		"""
-		_dic_cn = {
-					'cancel': 					'Anulación de la operación.',
-					'cancel_error_ruc': 		'Anulación por error en el RUC.',
-					'correct_error_desc': 		'Corrección por error en la descripción.',
-					'discount': 				'Descuento global.',
-					'discount_item': 			'Descuento por item.',
-					'return': 					'Devolución total.',
-					'return_item': 				'Devolución por item.',
-					'bonus': 					'Bonificación.',
-					'value_drop': 				'Disminución en el valor.',
-					'other': 					'Otros.',
-					False: 						'',
-		}
-		return _dic_cn[self.x_credit_note_type]
-
-
-
-
-	def get_credit_note_owner_amount(self):
-		"""
-		Used by Print Ticket.
-		"""
-		return self.x_credit_note_owner_amount
 
 
 
@@ -1337,38 +1439,6 @@ class sale_order(models.Model):
 			frac, whole = math.modf(record.amount_total)
 			record.x_total_cents = frac * 100
 
-
-
-	# Net
-	x_total_net = fields.Float(
-			"Neto",
-
-			compute='_compute_x_total_net',
-		)
-
-	@api.multi
-	#@api.depends('')
-	def _compute_x_total_net(self):
-		for record in self:
-			x = record.amount_total / 1.18
-			g = float("{0:.2f}".format(x))
-			record.x_total_net = g
-
-
-
-	# Tax
-	x_total_tax = fields.Float(
-			"Impuesto",
-
-			compute='_compute_x_total_tax',
-		)
-	@api.multi
-	#@api.depends('')
-	def _compute_x_total_tax(self):
-		for record in self:
-			x = record.x_total_net * 0.18
-			g = float("{0:.2f}".format(x))
-			record.x_total_tax = g
 
 
 

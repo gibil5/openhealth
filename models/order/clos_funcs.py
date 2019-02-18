@@ -20,15 +20,24 @@ def get_gen_totals(self):
 	print()
 	print('Get Generic Totals')
 
-
-	# Get Orders
+	# Get
 	orders, count = get_orders(self, self.date, self.x_type)
-
 
 	# Init
 	total = 0
+
+
+
+
+	# Loop
 	for order in orders:
+		# Filter Block
+		#if not order.x_block_flow:	
 		total = total + order.amount_untaxed
+
+
+
+	# Assign
 	gen_tot = total
 
 	if count != 0:
@@ -42,8 +51,8 @@ def get_gen_totals(self):
 
 
 
-# ----------------------------------------------------------- Set Proof ---------------------------
 
+# ----------------------------------------------------------- Set Proof ---------------------------
 def set_proof_totals(self):
 	"""
 	Object oriented. 
@@ -80,75 +89,38 @@ def set_proof_totals(self):
 
 
 
+
 	# Credit Notes
 
-	# Get Orders
+	# Get
 	state = 'credit_note'
-	orders, count = get_orders_state(self, self.date, state)
+	orders, count = get_orders_by_state(self, self.date, state)
 
 	# Init
 	total = 0
-	for order in orders:
 
-		#total = total + order.amount_untaxed
+
+	# Loop
+	for order in orders:
+		#total = total + order.x_amount_flow
 		total = total + order.x_credit_note_amount
 
 
-	self.crn_tot = total
 
+	# Assign
+	self.crn_tot = total
 
 	if count != 0:
 		self.serial_nr_first_crn = orders[0].x_serial_nr
 		self.serial_nr_last_crn = orders[-1].x_serial_nr
 
-
-
-
 	# Totals Proof
 	self.total_proof = self.rec_tot + self.inv_tot + self.tkr_tot + self.tki_tot + self.adv_tot + self.san_tot - self.crn_tot
 
-
 	self.total_proof_wblack = self.rec_tot + self.inv_tot + self.tkr_tot + self.tki_tot 	#+ self.adv_tot + self.san_tot
-
 
 # set_proof_totals
 
-
-
-
-# ----------------------------------------------------------- Get Orders --------------------------
-
-def get_orders_state(self, date, state):
-	"""
-	Abstract, General purpose.
-	Provider of services.
-	"""
-	print()
-	print('Get Orders State')
-
-
-	# Init
-	count = 0
-	DATETIME_FORMAT = "%Y-%m-%d"
-	date_begin = date + ' 05:00:00'
-	date_end_dt = datetime.datetime.strptime(date, DATETIME_FORMAT) + datetime.timedelta(hours=24) + datetime.timedelta(hours=5, minutes=0)
-	date_end = date_end_dt.strftime('%Y-%m-%d %H:%M')
-
-
-	# Search
-	orders = self.env['sale.order'].search([
-												('state', '=', state),
-												('date_order', '>=', date_begin),
-												('date_order', '<', date_end),
-										])
-	count = self.env['sale.order'].search_count([
-												('state', '=', state),
-												('date_order', '>=', date_begin),
-												('date_order', '<', date_end),
-										])
-	return orders, count
-
-# get_orders_state
 
 
 
@@ -176,8 +148,10 @@ def set_form_totals(self):
 	vic_tot = 0
 	vid_tot = 0
 
+
 	# Loop
 	for order in orders:
+
 
 		for pm_line in order.x_payment_method.pm_line_ids:
 
@@ -257,6 +231,7 @@ def get_orders(self, date, x_type):
 	"""
 	Abstract, General purpose.
 	Gives service to other methods.
+	15 Feb 2019: Added Filter Block
 	"""
 	#print()
 	#print('Get Orders')
@@ -271,21 +246,29 @@ def get_orders(self, date, x_type):
 	date_end = date_end_dt.strftime('%Y-%m-%d %H:%M')
 
 
-	# Search
+	# Search If All
 	if x_type == 'all':
 		orders = self.env['sale.order'].search([
+													('x_block_flow', 'not in', [True]),
+
 													('state', '=', 'sale'),
 													('date_order', '>=', date_begin),
 													('date_order', '<', date_end),
 											])
 		count = self.env['sale.order'].search_count([
+													('x_block_flow', 'not in', [True]),
+
 													('state', '=', 'sale'),
 													('date_order', '>=', date_begin),
 													('date_order', '<', date_end),
 											])
 
+
+	# Search If Other
 	else:
 		orders = self.env['sale.order'].search([
+													('x_block_flow', 'not in', [True]),
+
 													('state', '=', 'sale'),
 													('date_order', '>=', date_begin),
 													('date_order', '<', date_end),
@@ -295,6 +278,8 @@ def get_orders(self, date, x_type):
 												#limit=1,
 											)
 		count = self.env['sale.order'].search_count([
+													('x_block_flow', 'not in', [True]),
+
 													('state', '=', 'sale'),
 													('date_order', '>=', date_begin),
 													('date_order', '<', date_end),
@@ -304,6 +289,43 @@ def get_orders(self, date, x_type):
 												#limit=1,
 											)
 
+
 	return orders, count
 
 # get_orders
+
+
+
+
+
+# ----------------------------------------------------------- Get Orders By State -----------------
+def get_orders_by_state(self, date, state):
+	"""
+	Abstract, General purpose.
+	Provider of services.
+	"""
+	print()
+	print('Get Orders State')
+
+	# Init
+	count = 0
+	DATETIME_FORMAT = "%Y-%m-%d"
+	date_begin = date + ' 05:00:00'
+	date_end_dt = datetime.datetime.strptime(date, DATETIME_FORMAT) + datetime.timedelta(hours=24) + datetime.timedelta(hours=5, minutes=0)
+	date_end = date_end_dt.strftime('%Y-%m-%d %H:%M')
+
+	# Search
+	orders = self.env['sale.order'].search([
+												('state', '=', state),
+
+												('date_order', '>=', date_begin),
+												('date_order', '<', date_end),
+										])
+	count = self.env['sale.order'].search_count([
+												('state', '=', state),
+
+												('date_order', '>=', date_begin),
+												('date_order', '<', date_end),
+										])
+	return orders, count
+# get_orders_by_state

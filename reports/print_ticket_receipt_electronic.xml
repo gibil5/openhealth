@@ -150,12 +150,12 @@
         <td><t t-esc="doc.get_credit_note_type()"/></td> 
     </tr>
 
-
+<!--
     <tr>
         <td><b>Importe:</b></td>
         <td><t t-esc="doc.get_credit_note_owner_amount()"/></td> 
     </tr>
-
+-->
 </table>
 </t>
 

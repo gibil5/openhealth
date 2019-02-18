@@ -43,3 +43,10 @@ class res_company(models.Model):
 
 
 
+	x_note = fields.Text(
+			'Nota', 
+		)
+
+
+
+

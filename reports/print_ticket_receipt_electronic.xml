@@ -298,9 +298,11 @@
 <!-- Legal --> 
 <div class="footer_">
     <div class="text-center" style="margin-top:1px;margin-bottom:1px;width:100%;font-size: xx-small;">
+
         <div class="col-xs-12 text-center" style="margin-top:7px;" t-field="doc.x_my_company.x_warning"/>
         <div class="col-xs-12 text-center" style="margin-top:7px;" t-field="doc.x_my_company.website"/>
         <div class="col-xs-12 text-center" style="margin-top:7px;" t-field="doc.x_my_company.email"/>
+
     </div>
 </div>      
 <!--

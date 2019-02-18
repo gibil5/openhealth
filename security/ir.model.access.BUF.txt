@@ -2,6 +2,11 @@
 
 
 
+access_stock_move_selector,stock.move.selector,model_stock_move_selector,,1,1,1,1
+access_stock_move_selector_cremas,stock.move.selector.cremas,model_stock_move_selector_cremas,,1,1,1,1
+access_stock_move_selector_consu,stock.move.selector.consu,model_stock_move_selector_consu,,1,1,1,1
+
+
 access_openhealth_cosmetology,openhealth.cosmetology,model_openhealth_cosmetology,,1,1,1,1
 access_openhealth_service_cosmetology,openhealth.service.cosmetology,model_openhealth_service_cosmetology,,1,1,1,1
 

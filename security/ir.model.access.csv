@@ -266,11 +266,9 @@ access_account_invoice,account.invoice,account.model_account_invoice,,1,1,1,1
 
 access_stock_move,stock.move,stock.model_stock_move,,1,1,1,1
 
-access_stock_move_selector,stock.move.selector,model_stock_move_selector,,1,1,1,1
 
-access_stock_move_selector_cremas,stock.move.selector.cremas,model_stock_move_selector_cremas,,1,1,1,1
 
-access_stock_move_selector_consu,stock.move.selector.consu,model_stock_move_selector_consu,,1,1,1,1
+
 
 
 access_stock_warehouse_orderpoint_caja,stock.warehouse.orderpoint.caja,stock.model_stock_warehouse_orderpoint,openhealth.caja,1,1,1,0

@@ -103,6 +103,9 @@
                     <field name="x_firm"/>
 -->            
                     <field name="x_ruc"/>               
+
+
+                    <field name="x_note"/>
                 </xpath>
 
 

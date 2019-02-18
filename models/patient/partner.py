@@ -19,6 +19,15 @@ class Partner(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Notes -----------------------------	
+	# Note
+	x_note = fields.Text(
+			'Nota', 
+		)
+
+
+
 # ----------------------------------------------------------- Address -----------------------------	
 	# Address
 	x_address = fields.Char(
@@ -374,3 +383,4 @@ class Partner(models.Model):
 
 		return res
 	# CRUD - Create 
+

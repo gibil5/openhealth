@@ -42,7 +42,7 @@ class res_company(models.Model):
 		)
 
 
-
+	# Note
 	x_note = fields.Text(
 			'Nota', 
 		)

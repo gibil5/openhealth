@@ -488,7 +488,8 @@
 							name="create_payment_method"
 							type="object" 
 							class="oe_highlight"
-							groups="openhealth.roots,openhealth.caja,openhealth.directors"
+
+							groups="openhealth.roots,openhealth.caja,openhealth.directors,openhealth.managers"
 
 							string="PAGAR"
 

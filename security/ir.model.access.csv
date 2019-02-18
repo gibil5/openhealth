@@ -67,8 +67,6 @@ access_openhealth_control_caja,openhealth.control.caja,model_openhealth_control,
 
 access_openhealth_consultation_managers,openhealth.consultation.managers,model_openhealth_consultation,openhealth.hc_managers,1,1,1,1
 access_openhealth_consultation_readers,openhealth.consultation.readers,model_openhealth_consultation,openhealth.hc_readers,1,0,0,0
-access_openhealth_consultation_cos,openhealth.consultation.cos,model_openhealth_consultation_cos,,1,1,1,1
-
 access_openhealth_consultation_caja,openhealth.consultation.caja,model_openhealth_consultation,openhealth.caja,1,1,1,0
 
 
@@ -419,9 +417,6 @@ access_openhealth_stock_move_min,access_openhealth_stock_move_min,model_stock_mo
 
 access_openhealth_procedure_managers,openhealth.procedure.managers,model_openhealth_procedure,openhealth.hc_managers,1,1,1,1
 access_openhealth_procedure_readers,openhealth.procedure.readers,model_openhealth_procedure,openhealth.hc_readers,1,0,0,0
-access_openhealth_procedure_cos_managers,openhealth.procedure.cos.managers,model_openhealth_procedure_cos,openhealth.hc_managers,1,1,1,1
-access_openhealth_procedure_cos_readers,openhealth.procedure.cos.readers,model_openhealth_procedure_cos,openhealth.hc_readers,1,0,0,0
-
 access_openhealth_procedure_caja,openhealth.procedure.caja,model_openhealth_procedure,openhealth.caja,1,1,1,0
 
 

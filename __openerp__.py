@@ -6,7 +6,7 @@
 
 	'description': """
 
-		18 Feb 2019
+		19 Feb 2019
 
 		Remember, it is just a Bigger game:
 			- DEV = 9x9
@@ -178,12 +178,12 @@
 
 
 
-		#'data/prods/odoo_data_services_co2.xml',
-		#'data/prods/odoo_data_services_exc.xml',
+		'data/prods/odoo_data_services_co2.xml',
+		'data/prods/odoo_data_services_exc.xml',
 		#'data/prods/odoo_data_services_m22.xml',
-		#'data/prods/odoo_data_services_med.xml',		
-		#'data/prods/odoo_data_services_consult.xml',
-		#'data/prods/odoo_data_services_cos.xml',
+		'data/prods/odoo_data_services_med.xml',		
+		'data/prods/odoo_data_services_consult.xml',
+		'data/prods/odoo_data_services_cos.xml',
 		'data/prods/odoo_data_services_med_dep.xml',	# Dependance
 
 

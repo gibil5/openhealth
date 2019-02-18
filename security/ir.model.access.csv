@@ -299,16 +299,6 @@ access_nexzone,nexzone,model_openhealth_nexzone,,1,1,1,1
 
 
 
-access_openhealth_legacy,access_openhealth_legacy,model_openhealth_legacy,,1,1,1,1
-
-
-access_openhealth_legacy_order,access_openhealth_legacy_order,model_openhealth_legacy_order,,1,1,1,1
-access_openhealth_legacy_manager_order,access_openhealth_legacy_manager_order,model_openhealth_legacy_manager_order,,1,1,1,1
-access_openhealth_legacy_patient,access_openhealth_legacy_patient,model_openhealth_legacy_patient,,1,1,1,1
-
-access_openhealth_legacy_manager,access_openhealth_legacy_manager,model_openhealth_legacy_manager,,1,1,1,1
-access_openhealth_legacy_manager_patient,access_openhealth_legacy_manager_patient,model_openhealth_legacy_manager_patient,,1,1,1,1
-
 
 
 

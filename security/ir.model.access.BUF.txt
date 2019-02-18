@@ -2,6 +2,12 @@
 
 
 
+access_openhealth_report_sale_product,openhealth.order.report.sale.product,model_openhealth_report_sale_product,,1,1,1,1
+access_openhealth_report_order_line,openhealth.report.order_line,model_openhealth_report_order_line,,1,1,1,1
+access_openhealth_report_sale,access_openhealth_report_sale,model_openhealth_report_sale,,1,1,1,1
+access_openhealth_report,access_openhealth_report,model_openhealth_report,,1,1,1,1
+
+
 access_openhealth_kardex,openhealth.kardex,model_openhealth_kardex,,1,1,1,0
 access_openhealth_kardex_move,access_openhealth_kardex_move,model_openhealth_kardex_move,,1,1,1,1
 

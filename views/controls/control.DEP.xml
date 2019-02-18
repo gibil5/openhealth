@@ -1,0 +1,91 @@
+
+                        <!-- Treatment --> 
+<!--
+                        <button 
+                                name="open_treatment"
+                                type="object" 
+                                class="oe_highlight"
+                                string="INICIO"
+                        />
+
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+                            string="Cita" 
+                            name="open_appointment" 
+                        />
+-->
+
+
+
+<!--
+                            name="%(oeh_medical_appointment_action_tree_confirmed)d"    
+                                            'default_appointment_date': evaluation_start_date, 
+                                            'default_appointment_date': write_date, 
+-->
+
+
+
+<!--
+                        <button 
+
+                            name="%(oeh_medical_appointment_control_action)d"   
+                            
+                            type="action" 
+                            
+                            class="oe_highlight"
+                            
+                            context="{                                  
+                                            'search_default_doctor': doctor,
+                                            'default_patient': patient, 
+                                            'default_doctor' : doctor, 
+                                            'default_x_type': 'control', 
+                                            'default_state': 'pre_scheduled', 
+                                            'default_x_target' : 'doctor', 
+                            
+                                            'default_treatment': treatment, 
+
+                                            'default_procedure': procedure, 
+
+                                            'default_control' : active_id, 
+                                    }"                                          
+
+
+                            string="Crear CITA"
+                        />
+-->
+
+
+                        <!-- App -->
+<!--
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+                            name="update_appointment"   
+
+                            string="Cambiar Cita"
+
+                            states="draft,inprogress"
+                        />
+-->
+
+
+                        <!-- Dates -->
+<!--                        
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+                            name="update_dates"     
+
+                            string="Actualizar Fechas"
+                        />
+                            states="cancel,draft,inprogress"
+-->
+
+
+
+<!--
+                            statusbar_visible="draft, inprogress, done"
+                            statusbar_visible="draft, inprogress, done, cancel"
+                            statusbar_visible="draft,done,cancel"
+-->

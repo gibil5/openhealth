@@ -193,7 +193,7 @@
             <field name='name'>LASER M22 ND YAG - Localizado Cuerpo - Varices - 1 - 15 min</field>
             <field name='x_treatment'>laser_ndyag</field>
             <field name='x_zone'>body_local</field>
-            <field name='x_pathology'>varices</field>
+            <field name='x_pathology'>varicose</field>
             <field name='price'>900</field>
 
             <field name='x_time'>15 min</field>
@@ -832,7 +832,7 @@
             <field name='name'>LASER M22 ND YAG - Localizado Cuerpo - Varices - 6 - 15 min</field>
             <field name='x_treatment'>laser_ndyag</field>
             <field name='x_zone'>body_local</field>
-            <field name='x_pathology'>varices</field>
+            <field name='x_pathology'>varicose</field>
             <field name='price'>5400</field>
 
             <field name='x_time'>15 min</field>

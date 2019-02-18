@@ -2,6 +2,9 @@
 
 
 
+access_openhealth_cosmetology,openhealth.cosmetology,model_openhealth_cosmetology,,1,1,1,1
+access_openhealth_service_cosmetology,openhealth.service.cosmetology,model_openhealth_service_cosmetology,,1,1,1,1
+
 access_event,openhealth.event,model_openhealth_event,,1,1,1,1
 
 access_sale_report,sale.report,model_sale_report,,1,1,1,1

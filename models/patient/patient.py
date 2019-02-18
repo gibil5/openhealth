@@ -191,6 +191,7 @@ class Patient(models.Model):
 	# Default - HC Number
 	@api.model
 	def _get_default_id_code(self):
+
 		name_ctr = 'emr'
 
  		counter = self.env['openhealth.counter'].search([

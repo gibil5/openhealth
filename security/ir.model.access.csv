@@ -464,9 +464,6 @@ access_openhealth_zone_readers,openhealth.zone.readers,model_openhealth_zone,ope
 
 
 
-access_openhealth_session_cos_managers,openhealth.session_cos.managers,model_openhealth_session_cos,openhealth.hc_managers,1,1,1,1
-access_openhealth_session_cos_readers,openhealth.session_cos.readers,model_openhealth_session_cos,openhealth.hc_readers,1,0,0,0
-access_openhealth_session_cos_assistants,openhealth.session_cos.assistants,model_openhealth_session_cos,openhealth.assistants,1,1,0,0
 
 
 

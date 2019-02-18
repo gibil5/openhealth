@@ -2,6 +2,10 @@
 
 
 
+access_openhealth_session_cos_managers,openhealth.session_cos.managers,model_openhealth_session_cos,openhealth.hc_managers,1,1,1,1
+access_openhealth_session_cos_readers,openhealth.session_cos.readers,model_openhealth_session_cos,openhealth.hc_readers,1,0,0,0
+access_openhealth_session_cos_assistants,openhealth.session_cos.assistants,model_openhealth_session_cos,openhealth.assistants,1,1,0,0
+
 access_openhealth_recommendation_directors,openhealth.recommendation.directors,model_openhealth_recommendation,openhealth.directors,1,1,1,1
 access_openhealth_recommendation_physicians,openhealth.recommendation.physicians,model_openhealth_recommendation,openhealth.physicians,1,1,1,1
 access_openhealth_recommendation_archivers,openhealth.recommendation.archivers,model_openhealth_recommendation,openhealth.archivers,1,1,1,1

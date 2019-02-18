@@ -135,9 +135,6 @@ access_openhealth_service_cosmetology,openhealth.service.cosmetology,model_openh
 
 
 
-access_openhealth_stock_min,access_openhealth_stock_min,model_openhealth_stock_min,,1,1,1,1
-access_openhealth_stock_min_inventory,access_openhealth_stock_min_inventory,model_openhealth_stock_min_inventory,,1,1,1,1
-access_openhealth_stock_min_inventory_line,access_openhealth_stock_min_inventory_line,model_openhealth_stock_min_inventory_line,,1,1,1,1
 access_openhealth_kardex_move,access_openhealth_kardex_move,model_openhealth_kardex_move,,1,1,1,1
 access_openhealth_line,access_openhealth_line,model_openhealth_line,,1,1,1,1
 access_openhealth_place_line,access_openhealth_place_line,model_openhealth_place_line,,1,1,1,1

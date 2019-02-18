@@ -98,6 +98,7 @@
  <!-- Testing -->
 
 <!--
+-->
                         <button 
                             type="object" 
                             class="oe_highlight"
@@ -105,6 +106,7 @@
                             string="TEST" 
                             groups="openhealth.roots"
                         />
+
                         <button 
                             type="object" 
                             class="oe_highlight"
@@ -112,7 +114,6 @@
                             string="TEST LIBS" 
                             groups="openhealth.roots"
                         />
--->
 
 
 

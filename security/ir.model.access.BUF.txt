@@ -2,6 +2,10 @@
 
 
 
+access_sale_report,sale.report,model_sale_report,,1,1,1,1
+access_sale_report_day,sale.report.day,model_sale_report_day,,1,1,1,1
+access_sale_report_month,access_sale_report_month,model_sale_report_month,,1,1,1,1
+
 access_openhealth_account_line_contasis,openhealth.account.line.contasis,model_openhealth_account_line_contasis,,1,1,1,1
 
 access_openhealth_report_sale_product,openhealth.order.report.sale.product,model_openhealth_report_sale_product,,1,1,1,1
@@ -20,6 +24,10 @@ access_openhealth_stock_min_inventory_line,access_openhealth_stock_min_inventory
 access_openhealth_consultation_cos,openhealth.consultation.cos,model_openhealth_consultation_cos,,1,1,1,1
 access_openhealth_procedure_cos_managers,openhealth.procedure.cos.managers,model_openhealth_procedure_cos,openhealth.hc_managers,1,1,1,1
 access_openhealth_procedure_cos_readers,openhealth.procedure.cos.readers,model_openhealth_procedure_cos,openhealth.hc_readers,1,0,0,0
+
+
+
+
 
 
 

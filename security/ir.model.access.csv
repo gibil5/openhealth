@@ -246,11 +246,7 @@ access_product_selector,product.selector,model_openhealth_product_selector,,1,1,
 
 
 
-access_sale_report,sale.report,model_sale_report,,1,1,1,1
 
-access_sale_report_day,sale.report.day,model_sale_report_day,,1,1,1,1
-
-access_sale_report_month,access_sale_report_month,model_sale_report_month,,1,1,1,1
 
 access_event,openhealth.event,model_openhealth_event,,1,1,1,1
 

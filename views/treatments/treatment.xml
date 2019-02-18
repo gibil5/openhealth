@@ -102,17 +102,28 @@
                         <button 
                             type="object" 
                             class="oe_highlight"
+                            
                             name="test" 
+                            
                             string="TEST" 
+                            
                             groups="openhealth.roots"
+
+                            help='Tests: Reset, Integration, Create Recos, Computes'
                         />
+
 
                         <button 
                             type="object" 
                             class="oe_highlight"
+                            
                             name="test_libs" 
+                            
                             string="TEST LIBS" 
+                            
                             groups="openhealth.roots"
+
+                            help='Tests: Products, Reports, Patients, Payments'
                         />
 
 
@@ -561,7 +572,10 @@
                                         type="object" 
                                         class="oe_highlight"
                                         name="test_integration" 
-                                        string="Test"
+                                        
+                                        string="Integration"
+
+                                        help='Tests: Integration'
                                     />
 
                                     <!-- Reset -->
@@ -570,7 +584,10 @@
                                         class="oe_highlight"
                                         groups="openhealth.roots"
                                         name="test_reset"
+                                        
                                         string="Reset"
+
+                                        help='Tests: Reset'
                                     />
                                 </group>
                         </group>

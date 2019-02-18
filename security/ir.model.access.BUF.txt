@@ -2,6 +2,12 @@
 
 
 
+access_openhealth_recommendation_directors,openhealth.recommendation.directors,model_openhealth_recommendation,openhealth.directors,1,1,1,1
+access_openhealth_recommendation_physicians,openhealth.recommendation.physicians,model_openhealth_recommendation,openhealth.physicians,1,1,1,1
+access_openhealth_recommendation_archivers,openhealth.recommendation.archivers,model_openhealth_recommendation,openhealth.archivers,1,1,1,1
+access_openhealth_recommendation_managers,openhealth.recommendation.managers,model_openhealth_recommendation,openhealth.managers,1,0,0,0
+access_openhealth_recommendation_reception,openhealth.recommendation.reception,model_openhealth_recommendation,openhealth.reception,1,0,0,0
+
 access_openhealth_stock_move_all,access_openhealth_stock_move_all,model_stock_move_all,,1,1,1,1
 access_openhealth_stock_move_min,access_openhealth_stock_move_min,model_stock_move_min,,1,1,1,1
 

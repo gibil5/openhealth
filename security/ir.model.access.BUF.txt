@@ -2,6 +2,8 @@
 
 
 
+access_openhealth_data_analyzer,access_openhealth_data_analyzer,model_openhealth_data_analyzer,,1,1,1,1
+access_openhealth_data,access_openhealth_data,model_openhealth_data,,1,1,1,1
 access_stock_move_selector,stock.move.selector,model_stock_move_selector,,1,1,1,1
 access_stock_move_selector_cremas,stock.move.selector.cremas,model_stock_move_selector_cremas,,1,1,1,1
 access_stock_move_selector_consu,stock.move.selector.consu,model_stock_move_selector_consu,,1,1,1,1

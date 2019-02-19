@@ -34,16 +34,6 @@
                         />
 
 
-                        <!-- See Doctors -->
-                        <button
-                                class="oe_highlight"
-                                type="action"
-                                context="{
-                                            'search_default_management_id': active_id,
-                                        }"
-                                name="%(management_doctor_line_form_action)d"
-                                string="Ver Doctores"
-                        />
 
                         <!-- See Sales -->
                         <button 
@@ -55,6 +45,19 @@
                                 name="%(management_order_line_form_action)d"
                                 string="Ver Ventas" 
                         />
+
+
+                        <!-- See Doctors -->
+                        <button
+                                class="oe_highlight"
+                                type="action"
+                                context="{
+                                            'search_default_management_id': active_id,
+                                        }"
+                                name="%(management_doctor_line_form_action)d"
+                                string="Ver Doctores"
+                        />
+
 
 
 

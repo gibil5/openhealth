@@ -67,6 +67,21 @@
                         action="sale_list_action"
                     />
 
+<!--
+                        groups="openhealth.roots"
+-->
+            <!-- Notas de Credito y Ventas -->           
+            <menuitem   id="sales_credit_note_sale_menu"
+                        parent="sales_menu"
+                        sequence="4"
+                        
+                        name="Ventas y Notas de Credito"
+
+                        action="credit_note_sale_list_action"
+                    />
+
+
+
 
 
 
@@ -111,17 +126,6 @@
 
 
 
-            <!-- Notas de Credito y Ventas -->           
-<!--
--->
-            <menuitem   id="sales_credit_note_sale_menu"
-                        parent="sales_menu"
-                        sequence="11"
-                        name="Notas de Credito y Ventas"
-                        action="credit_note_sale_list_action"
-
-                        groups="openhealth.roots"
-                    />
 
 
 

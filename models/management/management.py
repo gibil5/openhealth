@@ -1297,15 +1297,23 @@ class Management(models.Model):
 					})
 
 
-			# Update Amount Total
-			if order.state in ['sale', 'cancel']:
-				amount_total = amount_total + order.amount_total
 
+			# Update Amount Total
+			#if order.state in ['sale', 'cancel']:
+			if order.state in ['sale', 'cancel', 'credit_note']:
+
+
+				# Total
+				#amount_total = amount_total + order.amount_total
+				amount_total = amount_total + order.x_amount_flow
+
+
+				# Count
 				if order.x_type in ['ticket_receipt']:
 					receipt_count = receipt_count + 1
-
 				elif order.x_type in ['ticket_invoice']:
 					invoice_count = invoice_count + 1
+
 
 
 		return amount_total, receipt_count, invoice_count

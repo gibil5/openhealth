@@ -6,7 +6,7 @@
 
 	'description': """
 
-		19 Feb 2019
+		19 Feb 2019 - 14:00
 
 		Remember, it is just a Bigger game:
 			- DEV = 9x9

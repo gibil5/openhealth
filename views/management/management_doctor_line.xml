@@ -62,6 +62,7 @@
                         <group>                 
                             <group>
                                 <field name="name"/>
+                                <field name="management_id"     string="Mes"/>
                             </group>
 
                             <group>
@@ -136,6 +137,8 @@
                                         <field name="nr_consultations"/>
                                         <field name="nr_procedures"/>
                                         <field name="ratio_pro_con"         widget="percentage"/>
+
+                                        <field name="management_id"     string="Mes"/>
                                     </tree>
 
                                 </field>

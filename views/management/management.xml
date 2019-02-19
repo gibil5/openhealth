@@ -86,6 +86,39 @@
                         />
 
 
+
+
+
+                        <!-- Update daily -->
+                        <button 
+                                type="object" 
+                                class="oe_highlight"
+
+                                name="update_daily"
+                                
+                                string="Actualizar Diario"                             
+                        />
+
+
+                        <!-- See daily -->
+                        <!--
+                        <button
+                                class="oe_highlight"
+                                type="action" 
+                                context="{
+                                            'search_default_management_id': active_id,  
+                                        }"
+                                name="%(management_day_doctor_line_form_action)d" 
+
+                                string="Ver Diario"   
+                        />
+-->
+
+
+
+
+
+
                         <!-- Families -->
                         <!-- Sub Families -->
 <!--
@@ -141,7 +174,6 @@
                         <!-- Update Cumulative -->
                         <!-- Update Average -->
 <!--
--->
                         <button 
                                 type="object" 
                                 class="oe_highlight oe_right"
@@ -174,6 +206,7 @@
 
                                 groups="openhealth.roots"
                         />
+-->
 
 
 

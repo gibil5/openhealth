@@ -290,8 +290,9 @@
 		'views/management/management_subfamily_line.xml',
 		'views/management/management_order_line.xml',
 		'views/management/management_doctor_line.xml',
-		'views/management/management.xml',
+
 		'views/management/management_actions.xml',
+		'views/management/management.xml',
 		
 
 

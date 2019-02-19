@@ -343,10 +343,15 @@ class DoctorLine(models.Model):
 			if date not in date_array:
 				date_array.append(date)
 
+
+				# Daily
 				day = self.day_line.create({
-												'date': date,												
+												'date': date,
+
+												'management_id': self.management_id.id,
 												'doctor_id': self.id,
 									})
+
 				day.update()
 
 

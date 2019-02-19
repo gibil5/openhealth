@@ -175,6 +175,81 @@
 
 
 
+
+<!-- ACTION - day line -->
+        <record model="ir.actions.act_window" id="management_day_line_form_action"> 
+            <field name="name">Ventas Promedio</field>
+            <field name="res_model">openhealth.management.day.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="limit">1000</field>
+            <!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>            
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first order
+                </p>
+            </field>
+            -->
+        </record>
+
+
+
+<!-- ACTION - day doctor line -->
+        <record model="ir.actions.act_window" id="management_day_doctor_line_form_action"> 
+            <field name="name">Ventas Diario</field>
+            <field name="res_model">openhealth.management.day.doctor.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="limit">1000</field>
+            <!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>            
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first order
+                </p>
+            </field>
+            -->
+        </record>
+
+
+
+
+
+<!-- Filter -->
+        <record id="view_management_day_line_filter" model="ir.ui.view">
+            <field name="name">day Search</field>
+            <field name="model">openhealth.management.day.line</field>
+            <field name="arch" type="xml">
+               <search string="dayes">
+                    <field  name="management_id"/>
+               </search>
+           </field>
+       </record>
+
+
+
+<!-- Filter -->
+        <record id="view_management_day_doctor_line_filter" model="ir.ui.view">
+            <field name="name">day doctor Search</field>
+            <field name="model">openhealth.management.day.doctor.line</field>
+            <field name="arch" type="xml">
+               <search string="Diario">
+                    
+                    <field  name="management_id"/>
+               
+               </search>
+           </field>
+       </record>
+
+
+
         
     </data>
 </openerp>

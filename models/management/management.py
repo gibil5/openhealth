@@ -920,6 +920,7 @@ class Management(models.Model):
 		for doctor in doctors:
 			doctor = self.doctor_line.create({
 												'name': doctor,
+
 												'management_id': self.id,
 										})
 
@@ -1952,3 +1953,23 @@ class Management(models.Model):
 		self.create_days()
 		self.update_day_cumulative()
 		self.update_day_avg()
+
+
+
+
+# ----------------------------------------------------------- Update Daily -------------------------
+	# Update Daily
+	@api.multi
+	def update_daily(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Update daily')
+
+		for doctor in self.doctor_line:
+			doctor.update_daily()
+
+
+
+

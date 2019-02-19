@@ -13,6 +13,9 @@ from openerp import models, fields, api
 from openerp.addons.openhealth.models.order import ord_vars
 from . import mgt_funcs
 
+from openerp.addons.openhealth.models.libs import lib
+
+
 class DayLine(models.Model):
 	"""
 	high level support for doing this and that.
@@ -45,11 +48,40 @@ class DayLine(models.Model):
 
 # ----------------------------------------------------------- Primitives --------------------------
 
+	state = fields.Selection(
+			selection=[
+							('today', 'Hoy'),
+							#('holiday', 'Feriado'),
+			],
+			string='Estado',
+		)
+
+
+	today = fields.Boolean(
+			'Hoy',
+			default=False,
+
+			compute='_compute_today',
+		)
+
+	@api.multi
+	#@api.depends('order_line')
+	def _compute_today(self):
+		for record in self:
+			
+			if lib.is_today_date(record.date):
+			
+				record.today = True
+
+
+
+
 	holiday = fields.Boolean(
 			'Feriado',
 			default=False,
 			#readonly=True,
 		)
+
 
 
 
@@ -149,11 +181,14 @@ class DayLine(models.Model):
 			#data_amount.append(order.amount_total)
 
 			# Sales and CNs
-			if order.state in ['credit_note']:
-				data_amount.append(-order.amount_total)
-				
-			elif order.state in ['sale']:
-				data_amount.append(order.amount_total)
+			#if order.state in ['credit_note']:
+			#	data_amount.append(-order.amount_total)
+			#elif order.state in ['sale']:
+			#	data_amount.append(order.amount_total)
+
+			# All
+			data_amount.append(order.x_amount_flow)
+
 
 
 

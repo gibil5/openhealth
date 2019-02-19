@@ -53,6 +53,30 @@ def get_todays_name(date_format):
 
 
 #------------------------------------------------ Date - Is Today ---------------------------------
+def is_today_date(date):
+	"""
+	Is Today Date
+	"""
+	#date_format = "%Y-%m-%d %H:%M:%S"
+	date_format = "%Y-%m-%d"
+
+	#date_dt = datetime.datetime.strptime(date, date_format) + datetime.timedelta(hours=-5, minutes=0)
+	date_dt = datetime.datetime.strptime(date, date_format) + datetime.timedelta(hours=0, minutes=0)
+
+
+	if date_dt.date() == datetime.datetime.today().date():
+		is_today = True
+		print(date)
+		print(date_dt)
+
+	else:
+		is_today = False
+
+	return is_today
+
+
+
+#------------------------------------------------ Date - Is Today ---------------------------------
 def is_today(date):
 	"""
 	Is Today

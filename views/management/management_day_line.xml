@@ -7,6 +7,8 @@
 <!-- FORM --> 
         <record model="ir.ui.view" id="management_day_line_form_view">
             <field name="name">openhealth.management.day.line.form</field>
+
+
             <field name="model">openhealth.management.day.line</field>
 
 
@@ -51,10 +53,27 @@
 <!-- TREE --> 
         <record model="ir.ui.view" id="management_day_line_view_tree">
             <field name="name">openhealth.management.day.line.tree</field>
-            <field name="model">openhealth.management.day.line</field>
-            <field name="arch" type="xml">
-                <tree string="management day line Tree">
 
+            <field name="model">openhealth.management.day.line</field>
+            
+            <field name="arch" type="xml">
+
+                <tree string="management day line Tree"
+
+                                        colors="
+                                        blue:today==True
+                                        "
+                    >
+
+<!--
+                                        colors="
+                                        red:state in ('holiday')
+                                        "
+                                        red:delta==2
+                                        green:state=='sent';
+                                        blue:state=='sale';
+                                        grey:state in ('cancel')
+-->
 
 <!--
                     <field name="management_id"/>
@@ -69,6 +88,7 @@
                     <field name="date"/>
                     <field name="weekday"/>
 
+                    <field name="today"/>
                     <field name="holiday"/>
 
                     <field name="duration"/>

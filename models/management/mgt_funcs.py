@@ -107,15 +107,14 @@ def line_analysis(self, line):
 
 		#print('Consu')
 
-		if prod.x_family in ['credit_note']:
-			self.nr_credit_notes = self.nr_credit_notes + line.product_uom_qty
+		self.nr_other = self.nr_other + line.product_uom_qty
+		self.amo_other = self.amo_other + line.price_subtotal
 
-			self.amo_credit_notes = self.amo_credit_notes + line.price_subtotal
 
-		else:
-			self.nr_other = self.nr_other + line.product_uom_qty
+		#if prod.x_family in ['credit_note']:
+		#	self.nr_credit_notes = self.nr_credit_notes + line.product_uom_qty
+		#	self.amo_credit_notes = self.amo_credit_notes + line.price_subtotal
 
-			self.amo_other = self.amo_other + line.price_subtotal
 
 
 

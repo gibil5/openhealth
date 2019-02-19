@@ -3,7 +3,7 @@
 	Management Report
 
 	Created: 			28 May 2018
-	Last updated: 		25 Jan 2019
+	Last updated: 		19 Feb 2019
 """
 from __future__ import print_function
 
@@ -952,12 +952,12 @@ class Management(models.Model):
 
 
 
+
 			# Loop
 			for order in orders:
 
 				# Tickets
 				tickets = tickets + 1
-
 
 				# Filter Block
 				if not order.x_block_flow:
@@ -971,11 +971,15 @@ class Management(models.Model):
 					# Amount
 					#amount = amount + order.amount_total
 
+
 					# Amount with State
 					if order.state in ['credit_note']:
 						#amount = amount - order.amount_total
+						#amount = amount - order.amount_total
 						#amount = amount - order.x_credit_note_amount
-						amount = amount - order.amount_total
+						
+						amount = amount + order.x_amount_flow
+						
 						print('Gotcha !')
 						print(amount)
 
@@ -991,13 +995,11 @@ class Management(models.Model):
 						id_doc = order.patient.x_ruc
 						id_doc_type = 'ruc'
 						id_doc_type_code = '6'
-
 					else:
 						receptor = order.patient.name
 						id_doc = order.patient.x_id_doc
 						id_doc_type = order.patient.x_id_doc_type
 						id_doc_type_code = order.patient.x_id_doc_type_code
-
 						# Pre-Electronic
 						if id_doc_type is False or id_doc is False:
 							id_doc = order.patient.x_dni
@@ -1007,23 +1009,77 @@ class Management(models.Model):
 
 
 
-					# Order Lines
-					for line in order.order_line:
+					# Sale
+					if order.state in ['sale']:  	# Sale - Do Line Analysis
 
-						count = count + 1
+						# Order Lines
+						for line in order.order_line:
 
+							count = count + 1
 
-						# State
-						if order.state in ['credit_note']:
-							price_unit = -line.price_unit
-							#price_unit = -1
-						
-						elif order.state in ['sale']:
+							
+							# State
+							#if order.state in ['credit_note']:
+							#	price_unit = -line.price_unit
+							#elif order.state in ['sale']:
+							#	price_unit = line.price_unit
+
+							
+							# Price
 							price_unit = line.price_unit
+							
+
+							# Here !!!
+							#jx
+							order_line = doctor.order_line.create({
+																	'date_order_date': order.date_order,
+																	'x_date_created': order.date_order,
+
+																	'name': order.name,
+																	'receptor': 	receptor,
+																	'patient': 		order.patient.id,
+																	'doctor': order.x_doctor.id,
+																	'serial_nr': order.x_serial_nr,
+
+																	# Type of Sale
+																	'type_code': 	order.x_type_code,
+																	'x_type': 		order.x_type,
+
+																	# Id Doc
+																	'id_doc': 				id_doc,
+																	'id_doc_type': 			id_doc_type,
+																	'id_doc_type_code': 	id_doc_type_code,
+
+																	# State
+																	'state': order.state,
+
+																	# Handles
+																	'doctor_id': doctor.id,
+																	'management_id': self.id,
 
 
+
+																	# Line
+																	'product_id': 			line.product_id.id,
+																	'product_uom_qty': 		line.product_uom_qty,
+
+																	# Price
+																	'price_unit': 			price_unit,
+																})
+							order_line.update_fields()
+						# Line Analysis - End
+					# Conditional State Sale - End
+
+
+
+					# Credit Note
+					elif order.state in ['credit_note']:
+
+						# Price
+						price_unit = order.x_amount_flow
 
 						# Here !!!
+						#jx
 						order_line = doctor.order_line.create({
 																'date_order_date': order.date_order,
 																'x_date_created': order.date_order,
@@ -1043,27 +1099,25 @@ class Management(models.Model):
 																'id_doc_type': 			id_doc_type,
 																'id_doc_type_code': 	id_doc_type_code,
 
-
-
-																# Line
-																'product_id': 			line.product_id.id,
-																'product_uom_qty': 		line.product_uom_qty,
-
-																#'price_unit': 			line.price_unit,
-																'price_unit': 			price_unit,
-
 																# State
 																'state': order.state,
 
-
+																# Handles
 																'doctor_id': doctor.id,
 																'management_id': self.id,
+
+
+
+																# Line
+																#'product_id': 			product_id.id,
+																'product_uom_qty': 		1,
+
+																# Price
+																'price_unit': 			price_unit,
 															})
+
 						order_line.update_fields()
-
-
-
-					# Parse Data - End
+					# Conditional State CN - End
 
 				# Filter Block - End
 
@@ -1082,12 +1136,14 @@ class Management(models.Model):
 				doctor.per_amo = (doctor.amount / self.total_amount)
 
 
-			# Totals
-			total_amount = total_amount + amount
-			total_count = total_count + count
-			total_tickets = total_tickets + tickets
+			
+			# Totals - Dep !
+			#total_amount = total_amount + amount
+			#total_count = total_count + count
+			#total_tickets = total_tickets + tickets
 
 	# update_sales_by_doctor
+
 
 
 
@@ -1298,12 +1354,21 @@ class Management(models.Model):
 			# Filter Block
 			if not order.x_block_flow:
 
-				# Order Lines
-				for line in order.order_line:
 
-					# Line Analysis
-					mgt_funcs.line_analysis(self, line)
+				# Sale
+				if order.state in ['sale']:  	# Sale - Do Line Analysis
 
+					# Lines
+					for line in order.order_line:
+
+						# Line Analysis
+						mgt_funcs.line_analysis(self, line)
+
+
+				# Credit Note
+				elif order.state in ['credit_note']:  									# CN - Do Amount Flow
+					self.nr_credit_notes = self.nr_credit_notes + 1
+					self.amo_credit_notes = self.amo_credit_notes + order.x_amount_flow
 
 
 
@@ -1373,7 +1438,9 @@ class Management(models.Model):
 
 
 		# Totals
-		self.total_amount = self.amo_products + self.amo_services + self.amo_other - self.amo_credit_notes
+		#self.total_amount = self.amo_products + self.amo_services + self.amo_other - self.amo_credit_notes
+		self.total_amount = self.amo_products + self.amo_services + self.amo_other + self.amo_credit_notes
+		
 		self.total_count = self.nr_products + self.nr_services
 		self.total_tickets = tickets
 

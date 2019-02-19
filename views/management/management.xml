@@ -265,11 +265,12 @@
                                 <field name="date_end"/>
                                 <field name="owner"   groups="openhealth.roots"  />
 
+                                <field name="write_date"    string="Actualizado"/>
+
                                 <field name="month"  groups="openhealth.roots"/>
                                 <field name="year"   groups="openhealth.roots"/>
 <!--
                                 <field name="vspace"/>
-                                <field name="write_date"    string="Actualizado"/>
 -->
                             </group>
 

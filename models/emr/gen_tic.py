@@ -12,6 +12,16 @@ _dic_prod = {
 
 
 
+
+			# New - 6 Mar 2019
+			'revival_face_50gr':				'CREMA REVITALIZANTE FACIAL AH X 50GR',
+			'solar_protector_chavarri_100gr':	'PROTECTOR SOLAR DE 100GR CLINICA CHAVARRI - COOPER',
+			'fluvix_15ml':						'FLUVIX FCO X 15ML',
+
+
+
+
+
 			# New - 12 Feb 2019
 			'devolution':				'DEVOLUCION',
 

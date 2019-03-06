@@ -790,11 +790,19 @@
 <!--
 	<attribute name='attrs'>{'readonly': [('state', 'in', ('sale','cancel','sent','validated'))]}</attribute>
 -->
+<!--
+-->
+
+<!--
+	<attribute name='attrs'>{'readonly': [('state', 'in', ('cancel'))]}</attribute>
+-->
 <xpath expr="//field[@name='order_line']" position="attributes">
 
-	<attribute name='attrs'>{'readonly': [('state', 'in', ('cancel'))]}</attribute>
+	<attribute name='attrs'>{'readonly': [('state', 'not in', ('sale', 'draft', 'cancel', 'sent'))]}</attribute>
 
 </xpath>
+
+
 
 
 

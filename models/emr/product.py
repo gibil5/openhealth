@@ -19,7 +19,8 @@ class Product(models.Model):
 	"""
 	_inherit = 'product.template'
 
-	_order = 'x_name_short'
+	#_order = 'x_name_short'
+	_order = 'name'
 
 
 

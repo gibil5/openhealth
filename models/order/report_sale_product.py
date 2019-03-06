@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
-#
-# 	ReportSaleProduct 
-# 
+"""
+		ReportSaleProduct
+
+ 		Created: 			    Nov 2016
+		Last up: 	 		 06 Mar 2019
+"""
+
+from __future__ import print_function
 from openerp import models, fields, api
-
-#from . import mgt_funcs
 from openerp.addons.openhealth.models.management import mgt_funcs
-
 
 class ReportSaleProduct(models.Model):
 	
@@ -68,10 +70,18 @@ class ReportSaleProduct(models.Model):
 
 	# Create Lines 
 	def create_lines(self, orders):  
+		#print()
+		#print('Create Lines')
+
+		# Loop
 		for order in orders: 
+
 			for line in order.order_line: 
-				if line.product_id.categ_id.name == 'Cremas': 
+
+				if line.product_id.categ_id.name == 'Cremas':
 					
+					#print('Create !')
+
 					# Create Order Line 
 					ret = self.order_line_ids.create({
 															'name': line.name,
@@ -93,8 +103,8 @@ class ReportSaleProduct(models.Model):
 	# Update 
 	@api.multi
 	def update(self):  
-		#print
-		#print 'Report Sale Product - Update'
+		print()
+		print('Report Sale Product - Update')
 
 
 		# Clean 
@@ -107,10 +117,13 @@ class ReportSaleProduct(models.Model):
 		#orders,count = acc_funcs.get_orders_filter(self, self.name, self.name)				# Sales and Cancelled
 		orders,count = mgt_funcs.get_orders_filter_fast(self, self.name, self.name)			# Only Sales
 
+		#print(orders)
+		#print(count)
 
 
 		# Order lines
 		self.create_lines(orders)
+
 
 
 
@@ -125,6 +138,11 @@ class ReportSaleProduct(models.Model):
 			subtotal = order_line.price_total 
 			total_qty = total_qty + qty
 			total = total + subtotal
+
+			#print(name)
+			#print(qty)
+			#print(subtotal)
+			#print()
 
 
 			# Search 

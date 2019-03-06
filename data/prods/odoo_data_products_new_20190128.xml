@@ -38,10 +38,6 @@ LABORATORIO EXTERNO
 
 
 
-
-
-
-
         <!-- COLAGENO NAARA -->
         <record id='collagen_naara' model='product.template'>
 
@@ -54,6 +50,8 @@ LABORATORIO EXTERNO
             <field name='x_family'>topical</field>
 
             <field name='type'>product</field>
+
+            <field name='categ_id' ref="topical"/>
         </record>
 
 
@@ -70,6 +68,8 @@ LABORATORIO EXTERNO
             <field name='x_family'>topical</field>
 
             <field name='type'>product</field>
+
+            <field name='categ_id' ref="topical"/>
         </record>
 
 
@@ -86,6 +86,8 @@ LABORATORIO EXTERNO
             <field name='x_family'>topical</field>
 
             <field name='type'>product</field>
+
+            <field name='categ_id' ref="topical"/>
         </record>
 
 

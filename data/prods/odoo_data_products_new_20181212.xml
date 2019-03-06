@@ -20,6 +20,8 @@
             <field name='standard_price'>250</field>
 
             <field name='x_family'>topical</field>
+
+            <field name='categ_id' ref="topical"/>
         </record>
 
 
@@ -41,6 +43,8 @@
             <field name='standard_price'>300</field>
 
             <field name='x_family'>topical</field>
+
+            <field name='categ_id' ref="topical"/>
         </record>
 
 
@@ -59,26 +63,10 @@
             <field name='standard_price'>250</field>
 
             <field name='x_family'>topical</field>
+
+            <field name='categ_id' ref="topical"/>
         </record>
 
-
-
-
-        <!-- Producto 3 -->
-<!--        
-        <record id='product_3' model='product.template'>
-
-            <field name='name'>Producto 3</field>
-
-            <field name='x_name_short'>product_3</field>
-
-            <field name='type'>product</field>
-
-            <field name='price'>200</field>
-
-            <field name='standard_price'>200</field>
-        </record>
--->
 
     </data>
 </openerp>

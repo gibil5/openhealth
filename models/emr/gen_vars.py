@@ -10,23 +10,28 @@ _dic_prod = {
 				'dexpantenol_5ml': 		'DEXPANTENOL 5 ML',
 				
 
+				# New - 6 Mar 2019
+				'revival_face_50gr':				'CREMA REVITALIZANTE FACIAL AH X 50GR',
+				'solar_protector_chavarri_100gr':	'PROTECTOR SOLAR DE 100GR CLINICA CHAVARRI - COOPER',
+				'fluvix_15ml':						'FLUVIX FCO X 15ML',
+
+
+
+
 				# New - 5 Feb 2019
 				'devolution':				'DEVOLUCION',
 				'regenera_derm':			'REGENERA DERM x 50g',
-
 
 				# New - 28 Jan 2019
 				'collagen_naara': 			'COLAGENO NAARA',
 				'ageless_box': 				'CAJA AGELESS',
 				'ageless_blister': 			'BLISTER AGELESS',
 
-
 				# New
 				'product_1': 				'Producto 1',
 				'claridermil': 				'CLARIDERMIL',
 				'vitamin_k': 				'VITAMINA K',
 				'vitamin_c_serum': 			'VITAMINA C SERUM',
-
 
 
 				'acneclean': 			'ACNECLEAN 50 GR',

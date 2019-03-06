@@ -192,6 +192,8 @@ black:x_checksum_1=='1'
                     <field name="x_code"/>
 -->             
                     <field name="type"/>
+                    <field name="categ_id"/>
+
                     <field name="active"/>
                     <field name="sale_ok"/>
 

@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='utf-8'?>
+<openerp>
+    <data>
+
+<!--
+Código
+Nombre
+Precio de compra 
+Precio de venta
+
+CREMA REVITALIZANTE FACIAL AH X 50GR.
+1160
+200
+4.60
+
+
+
+PROTECTOR SOLAR DE 100GR CLINICA CHAVARRI.
+1136
+200
+14.30
+
+
+
+FLUVIX FCO X 15ML
+1186
+300
+209.57
+
+-->
+
+<!-- CREMA REVITALIZANTE FACIAL AH X 50GR -->
+        <record id='revival_face_50gr' model='product.template'>
+
+            <field name='name'>CREMA REVITALIZANTE FACIAL AH X 50GR</field>
+
+            <field name='x_name_short'>revival_face_50gr</field>
+
+            <field name='price'>200</field>
+
+            <field name='x_family'>topical</field>
+
+            <field name='type'>product</field>
+
+            <field name='default_code'>1160</field>
+
+            <field name='categ_id' ref="topical"/>
+        </record>
+
+
+
+
+<!-- PROTECTOR SOLAR DE 100GR CLINICA CHAVARRI - COOPER -->
+        <record id='solar_protector_chavarri_100gr' model='product.template'>
+
+            <field name='name'>PROTECTOR SOLAR DE 100GR CLINICA CHAVARRI - COOPER</field>
+
+            <field name='x_name_short'>solar_protector_chavarri_100gr</field>
+
+            <field name='price'>200</field>
+
+            <field name='x_family'>topical</field>
+
+            <field name='type'>product</field>
+
+            <field name='default_code'>1136</field>
+
+            <field name='categ_id' ref="topical"/>
+        </record>
+
+
+
+<!-- FLUVIX FCO X 15ML -->
+        <record id='fluvix_15ml' model='product.template'>
+
+            <field name='name'>FLUVIX FCO X 15ML</field>
+
+            <field name='x_name_short'>fluvix_15ml</field>
+
+            <field name='price'>300</field>
+
+            <field name='x_family'>topical</field>
+
+            <field name='type'>product</field>
+
+            <field name='default_code'>1186</field>
+
+            <field name='categ_id' ref="topical"/>
+        </record>
+
+
+    </data>
+</openerp>

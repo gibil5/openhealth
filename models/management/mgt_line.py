@@ -33,11 +33,15 @@ class ManagementLine(models.Model):
 # ----------------------------------------------------------- Relational --------------------------
 
 	management_id = fields.Many2one(
-			'openhealth.management'
+			'openhealth.management',
+
+			#ondelete='cascade',
 		)
 
 	doctor_id = fields.Many2one(
-			'openhealth.management.doctor.line'
+			'openhealth.management.doctor.line',
+
+			ondelete='cascade',
 		)
 
 

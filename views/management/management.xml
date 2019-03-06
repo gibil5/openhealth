@@ -101,7 +101,6 @@
 
 
                         <!-- See daily -->
-                        <!--
                         <button
                                 class="oe_highlight"
                                 type="action" 
@@ -112,7 +111,7 @@
 
                                 string="Ver Diario"   
                         />
--->
+
 
 
 

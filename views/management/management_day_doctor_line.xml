@@ -106,16 +106,41 @@
 
 
 <!-- TREE --> 
-<!--
-        <record model="ir.ui.view" id="management_day_line_view_tree">
+        <record model="ir.ui.view" id="management_day_doctor_line_view_tree">
             <field name="name">openhealth.management.day.doctor.line.tree</field>
+            
             <field name="model">openhealth.management.day.doctor.line</field>
+            
             <field name="arch" type="xml">
                 <tree string="management day Doctor line Tree">
+
+
+<!--
+                    <field name="name"/>
+-->
+
+                    <field name="doctor_id"/>
+
+                    <field name="date"/>
+
+                    <field name="weekday"/>
+
+                    <field name="duration"/>
+
+                    <field name="amount"/>
+
+                    <field name="nr_consultations"/>
+
+                    <field name="nr_procedures"/>
+
+                    <field name="ratio_pro_con"         widget="percentage"/>
+
+                    <field name="management_id"     string="Mes"/>
+
                 </tree>
             </field>
         </record>
--->
+
 
 
 

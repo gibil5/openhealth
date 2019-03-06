@@ -1645,7 +1645,9 @@ class Management(models.Model):
 		#print
 		#print 'Reset Doctors'
 		self.order_line.unlink()
+
 		self.doctor_line.unlink()
+
 		self.family_line.unlink()
 		self.sub_family_line.unlink()
 	# reset_micro

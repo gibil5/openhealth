@@ -225,20 +225,27 @@
 <!-- Filter -->
         <record id="view_management_day_line_filter" model="ir.ui.view">
             <field name="name">day Search</field>
+
             <field name="model">openhealth.management.day.line</field>
+            
             <field name="arch" type="xml">
                <search string="dayes">
+
                     <field  name="management_id"/>
+               
                </search>
            </field>
        </record>
 
 
 
+
 <!-- Filter -->
         <record id="view_management_day_doctor_line_filter" model="ir.ui.view">
             <field name="name">day doctor Search</field>
+
             <field name="model">openhealth.management.day.doctor.line</field>
+            
             <field name="arch" type="xml">
                <search string="Diario">
                     

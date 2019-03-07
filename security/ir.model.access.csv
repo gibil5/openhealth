@@ -4,6 +4,7 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 access_openhealth_service_cosmetology,openhealth.service.cosmetology,model_openhealth_service_cosmetology,,1,1,1,1
 access_openhealth_report_order_line,openhealth.report.order_line,model_openhealth_report_order_line,,1,1,1,1
+access_openhealth_report_sale_product,openhealth.order.report.sale.product,model_openhealth_report_sale_product,,1,1,1,1
 
 
 

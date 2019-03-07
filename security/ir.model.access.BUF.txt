@@ -1,5 +1,8 @@
 
 
+access_openhealth_service_cosmetology,openhealth.service.cosmetology,model_openhealth_service_cosmetology,,1,1,1,1
+
+
 
 
 access_openhealth_session_cos_managers,openhealth.session_cos.managers,model_openhealth_session_cos,openhealth.hc_managers,1,1,1,1
@@ -31,7 +34,6 @@ access_stock_move_selector_consu,stock.move.selector.consu,model_stock_move_sele
 
 
 access_openhealth_cosmetology,openhealth.cosmetology,model_openhealth_cosmetology,,1,1,1,1
-access_openhealth_service_cosmetology,openhealth.service.cosmetology,model_openhealth_service_cosmetology,,1,1,1,1
 
 access_event,openhealth.event,model_openhealth_event,,1,1,1,1
 

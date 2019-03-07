@@ -22,9 +22,9 @@ class Partner(models.Model):
 
 # ----------------------------------------------------------- Notes -----------------------------	
 	# Note
-	#x_note = fields.Text(
-	#		'Nota', 
-	#	)
+	x_note = fields.Text(
+			'Nota', 
+		)
 
 
 

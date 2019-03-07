@@ -33,6 +33,7 @@
                 />
 
             
+
             <!-- Products -->
             <menuitem   id="prods_product_menu"     
                         parent="prods_menu"
@@ -42,6 +43,23 @@
 
                         action="product_template_product_list_action"
                     />
+
+
+
+            <!-- Products Min -->
+            <menuitem   id="prods_product_min_menu"     
+                        
+                        parent="prods_menu"
+                        
+                        sequence="2"
+
+                        name="Productos Min"
+
+                        action="product_min_list_action"
+
+                        groups="openhealth.roots"
+                    />
+
 
 
             <!-- Pricelist Export -->

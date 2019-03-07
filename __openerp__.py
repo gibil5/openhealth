@@ -474,11 +474,18 @@
 
 
 
+
+		# Products Min
+		'views/products/product_min.xml',
+
+
+
+
 		# Products
 		'views/products/product_template.xml',
 		'views/products/product_actions.xml',
 		'views/products/product_product.xml',
-		
+
 		#'views/products/product_category.xml',
 		#'views/products/product_pricelist.xml',
 		#'views/products/purchase_order.xml',	

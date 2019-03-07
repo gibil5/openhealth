@@ -4,11 +4,12 @@ from . import product_selector
 
 from . import product_counter 
 
-
 from . import product_pricelist_item
 
 
 # Medical
+from . import product_min
+
 from . import product
 from . import product_product
 from . import image		

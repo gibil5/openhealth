@@ -23,6 +23,16 @@ class Corrector(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Deprecated ------
+	#pl_item_ids = fields.One2many(
+	#		'product.pricelist.item',
+	#		'corrector_id',
+	#	)
+
+
+
+# ----------------------------------------------------------- Fields ----------
 	name = fields.Char(
 			required=True,
 		)
@@ -55,11 +65,6 @@ class Corrector(models.Model):
 
 
 
-# ----------------------------------------------------------- Relational --------------------------
-	pl_item_ids = fields.One2many(
-			'product.pricelist.item',
-			'corrector_id',
-		)
 
 
 

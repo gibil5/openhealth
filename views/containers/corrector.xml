@@ -136,7 +136,9 @@
                             
 
                             <page string="Pricelist">
+<!--
                                 <field name="pl_item_ids"/>
+-->                        
                             </page>
 
 

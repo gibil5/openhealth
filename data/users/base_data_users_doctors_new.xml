@@ -1,56 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-    <data noupdate='1'>
-
+<!--    
+    <data noupdate='0'>
+-->
+    <data>
 
 
 
 <!--
-rloayza@clinicachavarri.com
+apereira@clinicachavarri.com
+
 lcastillo@clinicachavarri.com
 cabriojo@clinicachavarri.com
+rloayza@clinicachavarri.com
 --> 
 
 
-<!-- Rodrigo Loayza -->
+<!-- Adriana Pereira -->
+
+
+
+
 <!-- Luis Castillo -->
 <!-- Carlos Abriojo -->
+<!-- Rodrigo Loayza -->
 
 
 
 
 
-<!-- Rodrigo Loayza - Deprecated -->
-<!-- Rodrigo Loaiza -->
-        <record id="rloayza" model="res.partner">
-            <field name="name">Rodrigo Loaiza</field>
-            <field name="email">rloaiza@clinicachavarri.com</field>
+<!-- Adriana Pereira -->
+        <record id="apereira" model="res.partner">
+            <field name="name">Adriana Pereira</field>
+            <field name="email">apereira@clinicachavarri.com</field>
             <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
         </record>
 
 
+        <record id="apereira_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
+            <field name="name">Adriana Pereira</field>
 
-
-        <record id="rloayza_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
-            <field name="name">Rodrigo Loaiza</field>
-            <field name="login">rloaiza@clinicachavarri.com</field>
-            
-<!--
-            <field name="password">rloayza</field>
--->     
-            <field name="password">w5DMja5F</field>
-
-
+            <field name="login">apereira@clinicachavarri.com</field>            
+            <field name="password">6amgp9</field>
 
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="tz">America/Lima</field>
-            <field name="partner_id" ref="rloayza"/>
+            <field name="partner_id" ref="apereira"/>
             <field name="lang">es_ES</field>
             <field name="active">True</field>
         </record>
-
-
-
 
 
 
@@ -63,17 +61,11 @@ cabriojo@clinicachavarri.com
         </record>
 
 
-
-
         <record id="lcastillo_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Luis Castillo</field>
-            <field name="login">lcastillo@clinicachavarri.com</field>
-            
-<!--
-            <field name="password">lcastillo</field>
--->     
-            <field name="password">rJ54Fvfr</field>
 
+            <field name="login">lcastillo@clinicachavarri.com</field>            
+            <field name="password">rJ54Fvfr</field>
 
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="tz">America/Lima</field>
@@ -81,7 +73,6 @@ cabriojo@clinicachavarri.com
             <field name="lang">es_ES</field>
             <field name="active">True</field>
         </record>
-
 
 
 
@@ -96,17 +87,11 @@ cabriojo@clinicachavarri.com
         </record>
 
 
-
-
         <record id="cabriojo_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Carlos Abriojo</field>
-            <field name="login">cabriojo@clinicachavarri.com</field>
-            
-<!--
-            <field name="password">cabriojo</field>
--->     
-            <field name="password">aQk4Aq68</field>
 
+            <field name="login">cabriojo@clinicachavarri.com</field>            
+            <field name="password">aQk4Aq68</field>
 
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="tz">America/Lima</field>
@@ -117,6 +102,30 @@ cabriojo@clinicachavarri.com
 
 
 
+
+
+
+<!-- Rodrigo Loayza - Deprecated -->
+<!-- Rodrigo Loaiza -->
+        <record id="rloayza" model="res.partner">
+            <field name="name">Rodrigo Loaiza</field>
+            <field name="email">rloaiza@clinicachavarri.com</field>
+            <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+        </record>
+
+
+        <record id="rloayza_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
+            <field name="name">Rodrigo Loaiza</field>
+
+            <field name="login">rloaiza@clinicachavarri.com</field>            
+            <field name="password">w5DMja5F</field>
+
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="tz">America/Lima</field>
+            <field name="partner_id" ref="rloayza"/>
+            <field name="lang">es_ES</field>
+            <field name="active">True</field>
+        </record>
 
     </data>
 </openerp> 

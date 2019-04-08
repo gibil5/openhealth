@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 {
-	'name': "Open Health - SERVICE ORIENTED - ALIVE - WINTLIB - DOCEAN TEST ENV",
+	'name': "Open Health - SERVICE ORIENTED",
 
 	'summary': "",
 
 	'description': """
 
-		7 Mar 2019
+		8 April 2019
 
 		Remember, it is just a Bigger game:
 			- DEV = 9x9
@@ -492,9 +492,10 @@
 
 
 
-		# Pricelist Items
-		'views/pricelist_items/pricelist_item_actions.xml',
-		'views/pricelist_items/pricelist_item.xml',
+
+		# Pricelist Items - Deprecated ?
+		#'views/pricelist_items/pricelist_item_actions.xml',
+		#'views/pricelist_items/pricelist_item.xml',
 
 
 

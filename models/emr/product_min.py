@@ -34,6 +34,7 @@ class ProductMin(models.Model):
 
 
 	name = fields.Char(
+			required=True,
 		)
 
 	code = fields.Char(
@@ -54,6 +55,7 @@ class ProductMin(models.Model):
 	family = fields.Selection(
 			[
 				('topical', 'Topical'),
+
 				('laser', 'Laser'),
 			],
 		)
@@ -63,6 +65,11 @@ class ProductMin(models.Model):
 			[
 				('chavarri', 'Chavarri'),
 				('commercial', 'Commercial'),
+
+				('co2', 'co2'),
+				('excilite', 'excilite'),
+				('quick', 'quick'),
+				('m22', 'm22'),
 			],
 		)
 
@@ -110,9 +117,10 @@ class ProductMin(models.Model):
 	treatment = fields.Selection(
 			[
 				('LASER CO2 FRACCIONAL', 				'LASER CO2 FRACCIONAL'),
-				#('AKRON', 				'AKRON'),
-				#('AKRON', 				'AKRON'),
-				#('AKRON', 				'AKRON'),
+				('QUICKLASER', 				'QUICKLASER'),
+				('LASER EXCILITE', 				'LASER EXCILITE'),
+				('LASER M22 IPL', 				'LASER M22 IPL'),
+				('LASER M22 ND YAG', 				'LASER M22 ND YAG'),
 			],
 		)
 	zone = fields.Selection(
@@ -131,14 +139,65 @@ class ProductMin(models.Model):
 	pathology = fields.Selection(
 
 			[
-				('Rejuvenecimiento Facial ', 				'Rejuvenecimiento Facial '),
-				('Acne y Secuelas', 				'Acne y Secuelas'),
-				('Manchas', 				'Manchas'),
-				('AKRON', 				'AKRON'),
-				('AKRON', 				'AKRON'),
-				('AKRON', 				'AKRON'),
+				('Rejuvenecimiento Facial', 	'Rejuvenecimiento Facial'),
+				('Acne y Secuelas', 			'Acne y Secuelas'),
+				('Manchas', 					'Manchas'),
+				('Rejuvenecimiento Cuello', 	'Rejuvenecimiento Cuello'),
+				('Rejuvenecimiento Manos', 		'Rejuvenecimiento Manos'),
+				('Manchas', 					'Manchas'),
+				('Queratosis', 					'Queratosis'),
+				('Lunar', 						'Lunar'),
+				('Quiste', 						'Quiste'),
+				('Verruga', 					'Verruga'),
+				('Cicatriz', 					'Cicatriz'),
+				('Tatuaje', 					'Tatuaje'),
+				('Lunares Congenitos', 			'Lunares Congenitos'),
 			],
 		)
+
+
+
+
+	level = fields.Selection(
+			[
+				#('1', 				'1'),
+				#('2', 				'2'),
+				#('3', 				'3'),
+				#('4', 				'4'),
+				#('5', 				'5'),
+
+				('Grado 1', 		'Grado 1'),
+				('Grado 2', 		'Grado 2'),
+				('Grado 3', 		'Grado 3'),
+				('Grado 4', 		'Grado 4'),
+				('Grado 5', 		'Grado 5'),
+			],
+		)
+
+
+
+	sessions = fields.Selection(
+			[
+				#('1', 				'1'),
+				#('5', 				'5'),
+				#('6', 				'6'),
+
+				('1 sesion', 				'1 sesion'),
+				('5 sesiones', 				'5 sesiones'),
+				('6 sesiones', 				'6 sesiones'),
+			],
+		)
+
+
+	time = fields.Selection(
+			[
+				('2 min', 				'2 min'),
+				('5 min', 				'5 min'),
+				('15 min', 				'15 min'),
+				('30 min', 				'30 min'),
+			],
+		)
+
 
 
 
@@ -197,7 +256,8 @@ class ProductMin(models.Model):
 		for record in self:
 
 			# Content 
-			if record.price_company in [0, -1]:
+			#if record.price_company in [0, -1]:
+			if record.price_company in [-1]:
 				raise ValidationError("Check Warning: price_company not valid: %s" % record.price_company)
 
 		# all records passed the test, don't return anything

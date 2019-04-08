@@ -23,13 +23,24 @@
 
                     <field name="family"/>
                     <field name="subfamily"/>
+
+
+                    <field name="treatment"/>
+                    <field name="zone"/>
+                    <field name="pathology"/>
+                    <field name="level"/>
+                    <field name="sessions"/>
+
+                    <field name="time"/>
+
+
                     <field name="manufacturer"/>
                     <field name="brand"/>
 
                     <field name="price"/>
+                    <field name="price_vip"/>
                     <field name="price_company"/>
 <!--
-                    <field name="price_vip"/>
 -->
                 </tree>
             </field>

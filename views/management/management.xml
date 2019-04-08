@@ -19,10 +19,10 @@
 <!-- Left -->
                         <!-- Update -->
                         <button 
-                                type="object" 
+                                type="object"
                                 class="oe_highlight"
                                 name="update_fast"
-                                string="Actualizar"                             
+                                string="Actualizar"
                         />
 
                         <!-- Update Doctors -->

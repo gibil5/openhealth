@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 """
- 		*** Product Template
+		*** Product Template
 
- 		Created: 			    Nov 2016
-		Last up: 	 		 25 Jan 2019
+		Created: 			    Nov 2016
+		Last up: 	 		  9 Apr 2019
 """
 from __future__ import print_function
+
 from openerp import models, fields, api
 from openerp.exceptions import ValidationError
 from openerp.addons.openhealth.models.libs import lib
@@ -19,14 +20,98 @@ class Product(models.Model):
 	"""
 	_inherit = 'product.template'
 
-	#_order = 'x_name_short'
 	_order = 'name'
 
 
 
-# ----------------------------------------------------------- Type -------------------------------
-	#def _get_product_template_type(self, cr, uid, context=None):
-	#	return [('consu', _('Consumable')), ('service', _('Service'))]
+# ----------------------------------------------------------- Canonical -------------------------------
+
+	#name = fields.Char(
+	#	'Name', 
+	#	required=True, 
+	#	translate=True, 
+	#	select=True
+	#	)
+
+	#type = fields.Selection(
+	#		_get_product_template_type_wrapper, 
+	#		'Product Type', 
+	#		required=True,
+	#       help="A consumable is a product for which you don't manage stock, a service is a non-material product provided by a company or an individual."
+	#	)
+
+
+	# Family
+	x_family = fields.Selection(
+			selection=prodvars._family_list,
+			required=False,
+		)
+
+	# Treatment
+	x_treatment = fields.Selection(
+			selection=prodvars._treatment_list,
+			required=False,
+		)
+
+	# Zone
+	x_zone = fields.Selection(
+			selection=prodvars._zone_list,
+			required=False,
+		)
+
+	# Pathology
+	x_pathology = fields.Selection(
+			selection=prodvars._pathology_list,
+			required=False,
+		)
+
+	# Sessions
+	x_sessions = fields.Char(
+			default="",
+			required=False,
+		)
+
+	# Level
+	x_level = fields.Selection(
+			selection=prodvars._level_list,
+			required=False,
+		)
+
+	# Time
+	x_time = fields.Char(
+			selection=prodvars._time_list,
+			required=False,
+		)
+
+
+	# Price Vip
+	x_price_vip = fields.Float(
+			required=False,
+		)
+
+	# Price Vip Return
+	x_price_vip_return = fields.Float(
+			required=False,
+		)
+
+
+# ----------------------------------------------------------- Ticket -------------------------------
+	# For Tickets
+	x_name_ticket = fields.Char(
+			default="x",
+
+			compute='_compute_x_name_ticket',
+		)
+
+	@api.multi
+	#@api.depends('state')
+	def _compute_x_name_ticket(self):
+		"""
+		high level support for doing this and that.
+		"""
+		for record in self:
+			record.x_name_ticket = gen_tic.gen_ticket_name(self, record.x_treatment, record.x_zone, record.x_pathology, record.x_family, record.type, record.x_name_short)
+
 
 
 
@@ -36,8 +121,6 @@ class Product(models.Model):
 	x_test = fields.Boolean(
 			'Test',
 		)
-
-
 
 # ----------------------------------------------------------- Account -----------------------------
 
@@ -49,16 +132,12 @@ class Product(models.Model):
 			'Code Account',
 		)
 
-
-
 	vspace = fields.Char(
 			' ',
 			readonly=True
 		)
 
-
 # ----------------------------------------------------------- Codes -------------------------------
-
 	# Code
 	x_code_acc = fields.Char(
 			'Code Acc',
@@ -219,10 +298,8 @@ class Product(models.Model):
 	# Short Name Unfixed
 	x_short_unfixed = fields.Char()
 
-
 	# Name Short
 	x_name_short = fields.Char()
-
 
 	# Counter
 	x_counter = fields.Integer(
@@ -234,36 +311,6 @@ class Product(models.Model):
 			'Code',
 		)
 
-
-	# For Tickets
-	x_name_ticket = fields.Char(
-			default="x",
-
-			compute='_compute_x_name_ticket',
-		)
-
-	@api.multi
-	#@api.depends('state')
-	def _compute_x_name_ticket(self):
-		"""
-		high level support for doing this and that.
-		"""
-		for record in self:
-			record.x_name_ticket = gen_tic.gen_ticket_name(self, record.x_treatment, record.x_zone, record.x_pathology, record.x_family, record.type, record.x_name_short)
-
-
-
-
-
-
-
-# Relaxed ! - For Prod
-# ----------------------------------------------------------- Constraints - Sql -------------------
-	#_sql_constraints = [
-	#						('name_unique','unique(name)', 'SQL Warning: name must be unique !'),
-	#						('x_name_short_unique','unique(x_name_short)', 'SQL Warning: x_name_short must be unique !'),
-	#						('x_code_unique','unique(x_code)', 'SQL Warning: x_code must be unique !'),
-	#					]
 
 
 
@@ -385,59 +432,6 @@ class Product(models.Model):
 			('test', 'Test'),
 			('production', 'Production'),
 		],
-			required=False,
-		)
-
-	# Price Vip
-	x_price_vip = fields.Float(
-			required=False,
-		)
-
-
-	# Price Vip Return
-	x_price_vip_return = fields.Float(
-			required=False,
-		)
-
-	# Level
-	x_level = fields.Selection(
-			selection=prodvars._level_list,
-			required=False,
-		)
-
-	# Family
-	x_family = fields.Selection(
-			selection=prodvars._family_list,
-			required=False,
-		)
-
-	# Treatment
-	x_treatment = fields.Selection(
-			selection=prodvars._treatment_list,
-			required=False,
-		)
-
-	# Zone
-	x_zone = fields.Selection(
-			selection=prodvars._zone_list,
-			required=False,
-		)
-
-	# Pathology
-	x_pathology = fields.Selection(
-			selection=prodvars._pathology_list,
-			required=False,
-		)
-
-	# Sessions
-	x_sessions = fields.Char(
-			default="",
-			required=False,
-		)
-
-	# Time
-	x_time = fields.Char(
-			selection=prodvars._time_list,
 			required=False,
 		)
 

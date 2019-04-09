@@ -5,16 +5,16 @@ from . import product_selector
 from . import product_counter 
 
 
-# Deprecated ?
+# Deprecated ? - Price list 2019
 #from . import product_pricelist_item
+#from . import product_min
+#from . import product_product
 
 
 
 # Medical
-from . import product_min
 
 from . import product
-from . import product_product
 from . import image		
 from . import allergy
 from . import process
@@ -26,9 +26,7 @@ from . import procedure
 from . import control
 from . import session 
 from . import session_med
-
 from . import physician 
-
 from . import doctor 
 
 

@@ -2,6 +2,27 @@
 
 
 
+# Relaxed ! - For Prod
+# ----------------------------------------------------------- Constraints - Sql -------------------
+	#_sql_constraints = [
+	#						('name_unique','unique(name)', 'SQL Warning: name must be unique !'),
+	#						('x_name_short_unique','unique(x_name_short)', 'SQL Warning: x_name_short must be unique !'),
+	#						('x_code_unique','unique(x_code)', 'SQL Warning: x_code must be unique !'),
+	#					]
+
+
+
+
+
+# ----------------------------------------------------------- Type -------------------------------
+	#def _get_product_template_type(self, cr, uid, context=None):
+	#	return [('consu', _('Consumable')), ('service', _('Service'))]
+
+
+
+
+
+
 # ----------------------------------------------------------- Fix  --------------------------------
 
 		# Closed

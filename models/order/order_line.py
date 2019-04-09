@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
 """
 	Sale Order Line
+
+	Created: 			26 Aug 2016
+	Last mod: 			 9 Apr 2019
 """
+from __future__ import print_function
 from openerp import models, fields, api
 import openerp.addons.decimal_precision as dp
 from openerp.addons.openhealth.models.libs import lib
@@ -14,22 +18,20 @@ class SaleOrderLine(models.Model):
 
 
 
-# ----------------------------------------------------------- Onchanges ---------------------------
-	
-	# Price Unit
-	#@api.onchange('price_unit')
-	#def _onchange_price_unit(self):
-	#	print
-	#	print 'On change - Price Unit'
-	#	if self.price_unit in [4600.00]:
-	#		print 'Gotcha !'
-			#self.price_unit = self.x_price_vip
-	#		self.price_unit = self.product_id.x_price_vip
+# ----------------------------------------------------------- Product ----------	
+	#product_id = fields.Many2one(
+	#	'product.product',
+	#	string='Product', 
+	#	domain=[('sale_ok', '=', True)], 
+	#	change_default=True, 
+	#	ondelete='restrict', 
+	#	required=True
+	#	)
 
 
 
 
-# ----------------------------------------------------------- Prices ------------------------------
+# ----------------------------------------------------------- Prices ----------
 	# Price Unit
 	price_unit = fields.Float(
 		#'Unit Price',
@@ -39,16 +41,12 @@ class SaleOrderLine(models.Model):
 		default=0.0,
 	)
 
-
-
-
 	# Price manual
 	x_price_manual = fields.Float(
 		string="Precio manual",
 		required=False,
 		default=-1,
 	)
-
 
 	# Price std
 	x_price_std = fields.Float(
@@ -63,8 +61,6 @@ class SaleOrderLine(models.Model):
 		for record in self:
 			record.x_price_std = record.product_id.list_price
 
-
-
 	# Price Vip
 	x_price_vip = fields.Float(
 		string="Precio Vip",
@@ -77,7 +73,6 @@ class SaleOrderLine(models.Model):
 	def _compute_price_vip(self):
 		for record in self:
 			record.x_price_vip = record.product_id.x_price_vip
-
 
 
 	# Price Vip Return

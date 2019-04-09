@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
- 		*** Product Pricelist Item
+ 		*** Product Pricelist Item - Dep ?
 
  		Created: 			 13 Nov 2018
-		Last up: 	 		 13 Nov 2018
+        Last up:             9 Apr 2019
 """
 #from openerp import models, fields, api
 from openerp import models, fields

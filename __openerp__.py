@@ -6,7 +6,7 @@
 
 	'description': """
 
-		8 April 2019
+		9 April 2019
 
 		Remember, it is just a Bigger game:
 			- DEV = 9x9
@@ -475,8 +475,8 @@
 
 
 
-		# Products Min
-		'views/products/product_min.xml',
+		# Products Min - Dep ?
+		#'views/products/product_min.xml',
 
 
 

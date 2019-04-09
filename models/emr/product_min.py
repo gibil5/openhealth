@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
- 		*** Product Min
+ 		*** Product Min - Dep ?
 
  		Created: 			 07 Mar 2019
-		Last up: 	 		 07 Mar 2019
+ 		Last up: 	 		 9 Apr 2019
 """
 from __future__ import print_function
 from openerp.exceptions import ValidationError

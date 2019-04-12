@@ -269,6 +269,8 @@
 <br/>
 
 
+
+
 <!-- Total In Words --> 
 <table style="width:100%">
     <tr>
@@ -285,6 +287,20 @@
     </tr>
 </table>
 <br/>
+
+
+
+
+<!-- Note --> 
+<table style="width:100%">
+
+    <tr>
+        <td align="left" ><t t-esc="doc.get_note()"/></td> 
+    </tr>
+
+</table>
+<br/>
+
 
 
 </div>

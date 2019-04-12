@@ -3,7 +3,7 @@
 	Order
 
 	Created: 			26 Aug 2016
-	Last mod: 			12 Jan 2019
+	Last mod: 			12 Apr 2019
 """
 from __future__ import print_function
 
@@ -31,6 +31,17 @@ class sale_order(models.Model):
 	_inherit = 'sale.order'
 
 	_description = 'Order'
+
+
+
+# ----------------------------------------------------------- Print Ticket -------------------------------
+
+	def get_note(self):
+		"""
+		Used by Print Ticket.
+		"""
+		return self.note
+
 
 
 

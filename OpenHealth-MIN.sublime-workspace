@@ -529,6 +529,129 @@
 			}
 		},
 		{
+			"file": "models/emr/__init__.py",
+			"settings":
+			{
+				"buffer_size": 976,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/order/report_sale_product.py",
+			"settings":
+			{
+				"buffer_size": 3899,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/management/mgt_funcs.py",
+			"settings":
+			{
+				"buffer_size": 9742,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/emr/product_product.py",
+			"settings":
+			{
+				"buffer_size": 676,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/emr/product.py",
+			"settings":
+			{
+				"buffer_size": 10075,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "reports/print_ticket_receipt_electronic.xml",
+			"settings":
+			{
+				"buffer_size": 6874,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/order/order.py",
+			"settings":
+			{
+				"buffer_size": 41390,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/patient/patient.py",
+			"settings":
+			{
+				"buffer_size": 21338,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/patient/chk_patient.py",
+			"settings":
+			{
+				"buffer_size": 4905,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/patient/partner.py",
+			"settings":
+			{
+				"buffer_size": 7333,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/products/product_search.txt",
+			"settings":
+			{
+				"buffer_size": 2216,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/products/product_actions.xml",
+			"settings":
+			{
+				"buffer_size": 16345,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/products/product_product.xml",
+			"settings":
+			{
+				"buffer_size": 2657,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/products/product_template.xml",
+			"settings":
+			{
+				"buffer_size": 9298,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "models/order/order_line.py",
 			"settings":
 			{
@@ -538,19 +661,19 @@
 			}
 		},
 		{
-			"file": "models/emr/product.py",
+			"file": "views/orders/order_actions.xml",
 			"settings":
 			{
-				"buffer_size": 9864,
+				"buffer_size": 9618,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "models/emr/__init__.py",
+			"file": "views/orders/order_search.xml",
 			"settings":
 			{
-				"buffer_size": 975,
+				"buffer_size": 7427,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -629,6 +752,10 @@
 	},
 	"file_history":
 	[
+		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_doctors_new.xml",
+		"/Users/gibil/cellar/github/openhealth/security/openhealth_security_readers.xml",
+		"/Users/gibil/cellar/github/openhealth/security/openhealth_security.xml",
+		"/Users/gibil/cellar/github/openhealth/views/menus/menus_products.xml",
 		"/Users/gibil/cellar/github/openhealth/readme.txt",
 		"/Users/gibil/cellar/github/openhealth/models/emr/product_min.py",
 		"/Users/gibil/cellar/github/openhealth/models/emr/product_pricelist_item.py",
@@ -636,7 +763,6 @@
 		"/Users/gibil/cellar/github/openhealth/models/order/order_line.DEP.py",
 		"/Users/gibil/cellar/github/openhealth/models/order/order.py",
 		"/Users/gibil/cellar/github/openhealth/models/management/mgt_funcs.py",
-		"/Users/gibil/cellar/github/openhealth/views/menus/menus_products.xml",
 		"/Users/gibil/cellar/github/openhealth/models/containers/corrector.py",
 		"/Users/gibil/cellar/github/openhealth/views/orders/order_actions.xml",
 		"/Users/gibil/cellar/github/openhealth/models/emr/product.DEp.txt",
@@ -662,7 +788,6 @@
 		"/Users/gibil/cellar/github/openhealth/models/emr/__init__.py",
 		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_staff.xml",
 		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_platform_new.xml",
-		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_doctors_new.xml",
 		"/Users/gibil/cellar/github/openhealth/models/emr/service.py",
 		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_managers.xml",
 		"/Users/gibil/cellar/github/openhealth/models/patient/partner.py",
@@ -693,7 +818,6 @@
 		"/Users/gibil/cellar/github/openhealth/views/orders/order_tree.xml",
 		"/Users/gibil/cellar/github/openhealth/models/order/clos_funcs.py",
 		"/Users/gibil/cellar/github/openhealth/models/emr/test_treatment.py",
-		"/Users/gibil/cellar/github/openhealth/security/openhealth_security.xml",
 		"/Users/gibil/cellar/github/openhealth/views/menus/menus_openhealth.xml",
 		"/Users/gibil/cellar/github/openhealth/reports/report_layouts.xml",
 		"/Users/gibil/cellar/github/openhealth/reports/print_ticket_receipt_electronic.xml",
@@ -721,7 +845,6 @@
 		"/Users/gibil/cellar/github/openhealth/models/patient/__init__.py",
 		"/Users/gibil/cellar/github/openhealth/models/management/line.py",
 		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_assistants.xml",
-		"/Users/gibil/cellar/github/openhealth/security/openhealth_security_readers.xml",
 		"/Users/gibil/cellar/github/openhealth/data/prods/odoo_data_products_new.xml",
 		"/Users/gibil/cellar/github/openhealth/data/prods/odoo_data_products_credit_notes.xml",
 		"/Users/gibil/cellar/github/openhealth/models/management/family_line.py",
@@ -775,6 +898,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"get_credit_note_type",
+			"get",
+			"peralta",
+			"create",
+			".create",
+			"create",
 			"prefix",
 			"product_id = fields",
 			"product_id",
@@ -896,13 +1025,7 @@
 			"nr_other",
 			"other",
 			"x_credit_note_type",
-			"default=",
-			"x_credit_note_type",
-			"create",
-			"validate",
-			"derm",
-			"regenera",
-			"update_credit_note"
+			"default="
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1048,7 +1171,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -1064,8 +1187,8 @@
 						"selection":
 						[
 							[
-								111,
-								111
+								123,
+								123
 							]
 						],
 						"settings":
@@ -1086,24 +1209,52 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "models/order/order_line.py",
+					"file": "models/emr/__init__.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5842,
+						"buffer_size": 976,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								87,
-								87
+								190,
+								190
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "models/order/report_sale_product.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3899,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2216,
+								2216
 							]
 						],
 						"settings":
@@ -1112,6 +1263,35 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
+						"translation.y": 918.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "models/management/mgt_funcs.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9742,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3327,
+								3331
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 2.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
@@ -1119,20 +1299,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "models/emr/product.py",
+					"buffer": 4,
+					"file": "models/emr/product_product.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9864,
+						"buffer_size": 676,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								97,
-								97
+								49,
+								49
 							]
 						],
 						"settings":
@@ -1148,12 +1328,129 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "models/emr/__init__.py",
+					"buffer": 5,
+					"file": "models/emr/product.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 975,
+						"buffer_size": 10075,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								631,
+								631
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 125.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "reports/print_ticket_receipt_electronic.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6874,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4564,
+								4579
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3211.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "models/order/order.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 41390,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3321,
+								3440
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2399.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "models/patient/patient.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 21338,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1553,
+								1553
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "models/patient/chk_patient.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4905,
 						"regions":
 						{
 						},
@@ -1161,18 +1458,257 @@
 						[
 							[
 								218,
-								218
+								325
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.sublime-syntax"
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "models/patient/partner.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7333,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1864.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "views/products/product_search.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2216,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								216,
+								216
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 16,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "views/products/product_actions.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 16345,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "views/products/product_product.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2657,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "views/products/product_template.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9298,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7573,
+								8974
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4652.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "models/order/order_line.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5842,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								293,
+								293
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "views/orders/order_actions.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9618,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1822,
+								1865
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4772.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 17,
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "views/orders/order_search.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7427,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6750,
+								6750
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
 					"type": "text"
 				}
 			]

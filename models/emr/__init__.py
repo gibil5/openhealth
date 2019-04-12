@@ -8,7 +8,9 @@ from . import product_counter
 # Deprecated ? - Price list 2019
 #from . import product_pricelist_item
 #from . import product_min
-#from . import product_product
+
+
+from . import product_product
 
 
 

@@ -24,6 +24,18 @@ class Product(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Print Ticket -------------------------------
+
+	#def get_name_ticket(self):
+	#	"""
+	#	Used by Print Ticket.
+	#	"""
+	#	return self.x_name_ticket
+
+
+
+
 # ----------------------------------------------------------- Canonical -------------------------------
 
 	#name = fields.Char(
@@ -93,6 +105,7 @@ class Product(models.Model):
 	x_price_vip_return = fields.Float(
 			required=False,
 		)
+
 
 
 # ----------------------------------------------------------- Ticket -------------------------------

@@ -30,6 +30,7 @@ rloayza@clinicachavarri.com
 
 
 <!-- Adriana Pereira -->
+<!--
         <record id="apereira" model="res.partner">
             <field name="name">Adriana Pereira</field>
             <field name="email">apereira@clinicachavarri.com</field>
@@ -49,7 +50,7 @@ rloayza@clinicachavarri.com
             <field name="lang">es_ES</field>
             <field name="active">True</field>
         </record>
-
+-->
 
 
 

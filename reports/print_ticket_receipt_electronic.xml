@@ -203,9 +203,18 @@
 <t t-foreach="doc.order_line" t-as="line">
 <tr>
 
+
+
 <td>
-<t t-esc="line.product_id.x_name_ticket"/>
+<!--
+    <t t-esc="line.product_id.x_name_ticket"/>
+-->
+    <t t-esc="line.product_id.get_name_ticket()"/>
 </td>
+
+
+
+
 
 <td>
 <t t-esc="line.x_qty"/>

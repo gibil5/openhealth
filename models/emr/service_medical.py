@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
-#
-# 	Service Medical treatment 
-# 
+"""
+		Service Medical treatment 
+
+		Created: 				 1 Nov 2016
+		Last: 				 	29 Nov 2018
+
+"""
 from datetime import datetime
 from openerp import models, fields, api
 from . import prodvars
@@ -10,9 +14,26 @@ from . import service_medical_vars
 class ServiceMedical(models.Model):
 
 	_name = 'openhealth.service.medical'
+	
 	_inherit = 'openhealth.service'
 	
+
+
+# ----------------------------------------------------------- Natives ------------------------------
+	# Service 
+	service = fields.Many2one(
+			'product.template',
+			domain = [
+						('type', '=', 'service'),
+						('x_family', '=', 'medical'),						
+					],
+	)
 	
+
+
+
+
+
 # ---------------------------------------------- Default --------------------------------------------------------
 	# Laser 
 	laser = fields.Selection(
@@ -24,15 +45,6 @@ class ServiceMedical(models.Model):
 			index=True,
 		)
 
-# ---------------------------------------------- Relational --------------------------------------------------------
-	# Service 
-	service = fields.Many2one(
-			'product.template',
-			domain = [
-						('type', '=', 'service'),
-						('x_family', '=', 'medical'),						
-					],
-	)
 
 # ----------------------------------------------------------- Variables ------------------------------------------------------
 

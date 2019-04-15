@@ -17,6 +17,22 @@ class Service(models.Model):
 	_name = 'openhealth.service'
 
 
+
+
+# ----------------------------------------------------------- Natives ------------------------------
+	# Service
+	service = fields.Many2one(
+			'product.template',
+			domain = [
+						('type', '=', 'service'),
+					],
+			string="Producto",
+			required=True,
+		)
+
+
+
+
 # ----------------------------------------------------------- Prices ------------------------------
 	# Price
 	price = fields.Float(
@@ -231,15 +247,6 @@ class Service(models.Model):
 			index=True
 		)
 
-	# Service
-	service = fields.Many2one(
-			'product.template',
-			domain = [
-						('type', '=', 'service'),
-					],
-			string="Producto",
-			required=True,
-		)
 
 	# Treatement
 	treatment = fields.Many2one('openhealth.treatment',

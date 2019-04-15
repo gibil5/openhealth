@@ -13,6 +13,22 @@ class ServiceExcilite(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Natives ------------------------------
+	# Service 
+	service = fields.Many2one(
+			'product.template',
+
+			domain = [
+						('type', '=', 'service'),
+						('x_treatment', '=', 'laser_excilite'),
+					],
+	)
+	
+
+
+
+
 # ---------------------------------------------- Default --------------------------------------------------------
 	# Laser 
 	laser = fields.Selection(
@@ -24,18 +40,6 @@ class ServiceExcilite(models.Model):
 			index=True,
 		)
 
-
-# ----------------------------------------------------------- Fields ------------------------------------------------------
-	# Service 
-	service = fields.Many2one(
-			'product.template',
-
-			domain = [
-						('type', '=', 'service'),
-						('x_treatment', '=', 'laser_excilite'),
-					],
-	)
-	
 
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 		

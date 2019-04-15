@@ -1,18 +1,37 @@
 # -*- coding: utf-8 -*-
-#
-# 	Service Ndyag 
-# 
+"""
+	Service Ndyag 
+"""
 from openerp import models, fields, api
 from datetime import datetime
 from . import ndyag
 from . import prodvars
 
 class ServiceNdyag(models.Model):
+	
 	_name = 'openhealth.service.ndyag'
+	
 	_inherit = 'openhealth.service'
 	
 	
 	
+
+# ----------------------------------------------------------- Natives ------------------------------
+	# Service 
+	service = fields.Many2one(
+			'product.template',
+
+			domain = [
+						('type', '=', 'service'),
+						('x_treatment', '=', 'laser_ndyag'),
+					],
+	)
+
+
+
+
+
+
 # ---------------------------------------------- Default --------------------------------------------------------
 	# Laser 
 	laser = fields.Selection(
@@ -26,15 +45,6 @@ class ServiceNdyag(models.Model):
 
 
 # ----------------------------------------------------------- Fields ------------------------------------------------------
-	# Service 
-	service = fields.Many2one(
-			'product.template',
-
-			domain = [
-						('type', '=', 'service'),
-						('x_treatment', '=', 'laser_ndyag'),
-					],
-	)
 	
 	# Time 
 	time_1 = fields.Selection(

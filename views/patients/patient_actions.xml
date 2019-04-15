@@ -20,10 +20,12 @@
 -->     
             <field name="view_mode">tree,form,kanban</field>
 
+<!--
+                                    ('x_test', '!=', True),                                
+-->
 
             <field name="domain">[
                                     ('x_id_code', '!=', False), 
-                                    ('x_test', '!=', True),                                     
                 ]</field>
 
 

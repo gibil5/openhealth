@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-	Service Cosmetology
+		Service Cosmetology
 
-	Created: 				 1 Nov 2016
-	Last: 				 	29 Nov 2018
+		Created: 				 1 Nov 2016
+		Last: 				 	29 Nov 2018
 """
 from openerp import models, fields, api
 from . import prodvars
@@ -20,6 +20,19 @@ class ServiceCosmetology(models.Model):
 
 
 
+# ----------------------------------------------------------- Natives ------------------------------
+
+	# Service
+	service = fields.Many2one(
+			'product.template',
+			domain=[
+						('x_family', '=', 'cosmetology'),
+					],
+		)
+
+
+
+
 # ----------------------------------------------------------- Canonicals --------------------------
 	# Laser
 	laser = fields.Selection(
@@ -30,13 +43,6 @@ class ServiceCosmetology(models.Model):
 			index=True,
 		)
 
-	# Service
-	service = fields.Many2one(
-			'product.template',
-			domain=[
-						('x_family', '=', 'cosmetology'),
-					],
-		)
 
 
 	time_1 = fields.Selection(

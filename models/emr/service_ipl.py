@@ -1,16 +1,34 @@
 # -*- coding: utf-8 -*-
-#
-# 	Service Ipl 
-# 
+"""
+	Service Ipl 
+"""
 from datetime import datetime
 from openerp import models, fields, api
 from . import ipl
 from . import prodvars
 
 class ServiceIpl(models.Model):
+	
 	_name = 'openhealth.service.ipl'
+	
 	_inherit = 'openhealth.service'
 	
+
+
+
+# ----------------------------------------------------------- Natives ------------------------------
+	# Service 
+	service = fields.Many2one(
+			'product.template',
+
+			domain = [
+						('type', '=', 'service'),
+						('x_treatment', '=', 'laser_ipl'),
+					],
+	)
+
+
+
 
 
 # ---------------------------------------------- Default --------------------------------------------------------
@@ -27,16 +45,6 @@ class ServiceIpl(models.Model):
 
 
 # ----------------------------------------------------------- Fields ------------------------------------------------------
-
-	# Service 
-	service = fields.Many2one(
-			'product.template',
-
-			domain = [
-						('type', '=', 'service'),
-						('x_treatment', '=', 'laser_ipl'),
-					],
-	)
 
 	# Time 
 	time_1 = fields.Selection(

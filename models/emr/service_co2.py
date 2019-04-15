@@ -18,6 +18,18 @@ class ServiceCo2(models.Model):
 	
 
 
+# ----------------------------------------------------------- Natives ------------------------------
+	# Service 
+	service = fields.Many2one(
+			'product.template',
+			domain = [
+						('type', '=', 'service'),
+						('x_treatment', '=', 'laser_co2'),
+					],
+		)
+
+
+
 # ---------------------------------------------- Default --------------------------------------------------------
 	# Laser 
 	laser = fields.Selection(
@@ -52,14 +64,6 @@ class ServiceCo2(models.Model):
 		)
 
 
-	# Service 
-	service = fields.Many2one(
-			'product.template',
-			domain = [
-						('type', '=', 'service'),
-						('x_treatment', '=', 'laser_co2'),
-					],
-		)
 
 # ---------------------------------------------- Actions --------------------------------------------------------
 

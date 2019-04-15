@@ -12,7 +12,10 @@ from openerp.addons.openhealth.models.libs import lib
 from openerp.addons.openhealth.models.order import ord_vars
 from . import chk_electronic
 
-from openerp.addons.openhealth.models.containers import lib_coeffs
+
+#from openerp.addons.openhealth.models.containers import lib_coeffs
+from . import lib_coeffs
+
 
 class electronic_order(models.Model):
 	"""

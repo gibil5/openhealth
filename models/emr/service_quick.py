@@ -1,14 +1,33 @@
 # -*- coding: utf-8 -*-
-#
-# 	Service Quick 
-# 
+"""
+	Service Quick 
+"""
 from openerp import models, fields, api
 from datetime import datetime
 from . import prodvars
 from . import quick
+
 class ServiceQuick(models.Model):
+
 	_inherit = 'openhealth.service'
+
 	_name = 'openhealth.service.quick'
+
+
+
+
+# ----------------------------------------------------------- Natives ------------------------------
+	# Service 
+	service = fields.Many2one(
+			'product.template',
+			default = 'QUICKLASER - Cuello - Rejuvenecimiento Cuello - 1', 
+			domain = [
+						('type', '=', 'service'),
+						('x_treatment', '=', 'laser_quick'),
+					],
+	)
+
+
 
 
 # ---------------------------------------------- Prices --------------------------------------------------------
@@ -56,15 +75,6 @@ class ServiceQuick(models.Model):
 
 # ----------------------------------------------------------- Fields ------------------------------------------------------
 
-	# Service 
-	service = fields.Many2one(
-			'product.template',
-			default = 'QUICKLASER - Cuello - Rejuvenecimiento Cuello - 1', 
-			domain = [
-						('type', '=', 'service'),
-						('x_treatment', '=', 'laser_quick'),
-					],
-	)
 	
 
 	# Treatment 

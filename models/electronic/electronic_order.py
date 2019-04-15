@@ -4,22 +4,15 @@
  	Electronic Order - Sunat compatible
 
  	Created: 			13 Sep 2018
- 	Last updated: 		 4 Nov 2018
+ 	Last updated: 		15 Apr 2019
 
 """
 from openerp import models, fields, api
-
-#from libs import ord_vars
-#from libs import lib
 from openerp.addons.openhealth.models.libs import lib
-
 from openerp.addons.openhealth.models.order import ord_vars
-
-
 from . import chk_electronic
 
-#from . import lib
-
+from openerp.addons.openhealth.models.containers import lib_coeffs
 
 class electronic_order(models.Model):
 	"""
@@ -32,6 +25,19 @@ class electronic_order(models.Model):
 	_description = "Sunat Electronic Order"
 
 	_order = 'serial_nr asc'
+
+
+
+# ----------------------------------------------------------- Electronic -------------------------------
+
+	def get_coeff(self):
+		"""
+		Used by Txt Generation
+		From containers.lib_exp
+		"""
+		coeff = lib_coeffs.get_coeff(self.state)
+		return coeff
+
 
 
 

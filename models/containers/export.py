@@ -46,8 +46,6 @@ def export_txt(self, electronic_order, export_date):
 
 
 
-
-
 	# Loop
 	for order in electronic_order:
 
@@ -82,13 +80,15 @@ def create_txt(self, order, path):
 	"""
 
 	# Init
-
-	# File name
-	file_name = lib_exp.get_file_name(order)
+	file_name = lib_exp.get_file_name(order)		# File name
 
 
+
+
+	# This !!!
 	# Content
 	content = lib_exp.get_file_content(order)
+
 
 
 
@@ -105,8 +105,6 @@ def create_txt(self, order, path):
 
 	# Close
 	f.close()
-
-
 
 	# Create Ids
 	self.txt_ids.create({

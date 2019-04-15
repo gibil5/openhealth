@@ -34,6 +34,7 @@ class sale_order(models.Model):
 
 
 
+
 # ----------------------------------------------------------- Print Ticket -------------------------------
 
 	def get_note(self):

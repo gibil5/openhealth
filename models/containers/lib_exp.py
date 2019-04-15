@@ -3,15 +3,13 @@
 #       lib_exp.py
 #
 #       Created:            23 Oct 2018
-#       Last up:            23 Oct 2018
+#       Last up:            15 Apr 2019
 #       Checked with:       PyFlakes
 #
 """
 high level support for doing this and that.
 """
 from . import lib_account_codes as acc
-
-
 
 
 #------------------------------------------------ Const -------------------------------------------
@@ -30,6 +28,18 @@ _DIC_PREFIX_CANCEL = {
 	'11': 'FFC1',   # Invoice               # Not Sunat Compliant !
 	'13': 'BBC1',   # Receipt               # Not Sunat Compliant !
 }
+
+
+
+
+#------------------------------------------------ Get File Content --------------------------------
+# Get File Content
+def get_file_content(order):
+	"""
+	Just a wrapper.
+	"""
+	return format_txt(order)
+
 
 
 #------------------------------------------------ Format Txt --------------------------------------
@@ -194,22 +204,29 @@ def format_txt(order):
 
 
 
+
 # Table 2 - Optional
 # 228.60|1000|IGV|VAT]      # opt
 # |||]
 # |||]
 # !
 	empty_line = "|||]" + ret
-
 	tax_id = "1000"                         # ver
 	tax_name = "IGV"
 	tax_type_code = "VAT"
 
 
 
+	# Coeff - Here !
+	coeff = order.get_coeff()
+	amount_total_tax = coeff * order.amount_total_tax
+
+
+
 	#table_2 =  str(order.amount_total_tax)     + sep + \
 	#table_2 =  "%.2f"%order.amount_total_tax   + sep + \
-	table_2 = acc.fmt(order.amount_total_tax)     + sep + \
+	#table_2 = acc.fmt(order.amount_total_tax)     + sep + \
+	table_2 = acc.fmt(amount_total_tax)     + sep + \
 				tax_id                          + sep + \
 				tax_name                        + sep + \
 				tax_type_code                   + eol + ret + \
@@ -236,9 +253,18 @@ def format_txt(order):
 
 
 
-	table_3 = blank + sep + acc.fmt(order.amount_total) + \
-				frac_1 + \
-				eol + ret + eot + ret
+
+
+	# Coeff - Here !
+	coeff = order.get_coeff()
+	
+	amount_total = coeff * order.amount_total
+
+
+	#table_3 = blank + sep + acc.fmt(order.amount_total) + \
+	table_3 = blank + sep + acc.fmt(amount_total) + \
+												frac_1 + \
+												eol + ret + eot + ret
 
 
 
@@ -265,11 +291,22 @@ def format_txt(order):
 #               str(order.amount_total_net) + eol + ret + \
 
 
+
+
+	# Coeff - Here !
+	coeff = order.get_coeff()
+
+	amount_total_net = coeff * order.amount_total_net
+
+
+
 	# Sale
 	if order.state in ['sale']:
 
+					#acc.fmt(order.amount_total_net) + eol + ret + \
+
 		table_4 = code_gravada        + sep + \
-					acc.fmt(order.amount_total_net) + eol + ret + \
+					acc.fmt(amount_total_net) + eol + ret + \
 					empty_1     + \
 					empty_1     + \
 					empty_1     + \
@@ -281,8 +318,10 @@ def format_txt(order):
 	# Cancel
 	else:
 
+					#acc.fmt(order.amount_total_net) + eol + ret + \
+
 		table_4 = code_gravada        + sep + \
-					acc.fmt(order.amount_total_net) + eol + ret + \
+					acc.fmt(amount_total_net) + eol + ret + \
 					empty_1     + \
 					empty_1     + \
 					empty_1     + \
@@ -372,17 +411,33 @@ def format_txt(order):
 	# Loop
 	for line in order.electronic_line_ids:
 
-
 		account_code = line.product_id.get_code()
 
+
+
+		# Coeff - Here !
+		coeff = order.get_coeff()
+
+		price_net = coeff * line.price_net
+		price_unit = coeff * line.price_unit
+		price_tax = coeff * line.price_tax
+		price_unit_net = coeff * line.price_unit_net
+
+
+
+
+					#acc.fmt(line.price_net)             + sep + \
+					#acc.fmt(line.price_unit)            + sep + \
+					#acc.fmt(line.price_tax)         + sep + \
+					#acc.fmt(line.price_unit_net)    + \
 
 		in_line = line.product_id.name            + sep + \
 					unit_code                       + sep + \
 					acc.fmt(line.product_uom_qty)       + sep + \
-					acc.fmt(line.price_net)             + sep + \
-					acc.fmt(line.price_unit)            + sep + \
+					acc.fmt(price_net)             + sep + \
+					acc.fmt(price_unit)            + sep + \
 					price_type_code_sep                 + \
-					acc.fmt(line.price_tax)         + sep + \
+					acc.fmt(price_tax)         + sep + \
 					tax_exemption_reason_code       + sep + \
 					tax_id                          + sep + \
 					tax_name                        + sep + \
@@ -393,7 +448,7 @@ def format_txt(order):
 					blank                           + sep + \
 					blank                           + sep + \
 					account_code                    + sep + \
-					acc.fmt(line.price_unit_net)    + \
+					acc.fmt(price_unit_net)    + \
 					frac_2 + \
 					blank + eol + ret
 
@@ -455,11 +510,3 @@ def get_file_name(order):
 
 
 
-#------------------------------------------------ Get File Content --------------------------------
-# Get File Content
-def get_file_content(order):
-	"""
-	high level support for doing this and that.
-	"""
-	return format_txt(order)
-# get_file_content

@@ -8,6 +8,7 @@
         <record model="ir.ui.view" id="service_co2_form_view">            
             <field name="name">service.co2.form</field>
             <field name="model">openhealth.service.co2</field>
+
             <field name="inherit_id" ref="service_form_view"/>
             <field name="mode">primary</field>
             

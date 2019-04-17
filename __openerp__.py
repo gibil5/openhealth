@@ -6,7 +6,7 @@
 
 	'description': """
 
-		15 April 2019
+		17 April 2019
 
 		Remember, it is just a Bigger game:
 			- DEV = 9x9
@@ -562,7 +562,9 @@
 		'views/treatments/treatment_appointments.xml',
 		'views/treatments/treatment_orders.xml',
 		'views/treatments/treatment_consultations.xml',
-		'views/treatments/treatment_services.xml',
+		
+		#'views/treatments/treatment_services.xml',
+		
 		'views/treatments/treatment_procedures.xml',
 		'views/treatments/treatment_sessions.xml',
 		'views/treatments/treatment_controls.xml',

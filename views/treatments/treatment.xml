@@ -13,14 +13,6 @@
                 <form string="Treatment 2 Form">
                     <header>
 
-                            <!-- Product --> 
-                            <button 
-                                type="object" 
-                                class="oe_highlight"    
-                                name="create_service_product"
-                                string="PRODUCTOS"
-                            />
-
                             <!-- CO2 --> 
                             <button 
                                 type="object" 
@@ -61,6 +53,18 @@
                                 string=" M22-NDYAG"
                             />
 
+
+
+                            <!-- Product --> 
+                            <button 
+                                type="object" 
+                                class="oe_highlight"    
+                                name="create_service_product"
+                                string="PRODUCTOS"
+                            />
+
+
+
                             <!-- T. MEDICO -->
                             <button 
                                 type="object" 
@@ -96,9 +100,8 @@
                     <header>
 
  <!-- Testing -->
-
 <!--
--->
+
                         <button 
                             type="object" 
                             class="oe_highlight"
@@ -125,6 +128,7 @@
 
                             help='Tests: Products, Reports, Patients, Payments'
                         />
+-->
 
 
 
@@ -339,7 +343,7 @@
 
 
                                 <!-- Services -->
-                                <button type="action" class="oe_stat_button" icon="fa-list" invisible="1"
+                                <button type="action" class="oe_stat_button" icon="fa-list" invisible="0"
                                     name="%(service_list_action)d"
                                     context="{                                  
                                             'search_default_treatment': active_id,
@@ -554,6 +558,7 @@
                             <!-- Testing --> 
                             <group groups="openhealth.roots">
     <!--
+                            <group>
                                 <field name="partner_id"        invisible="0"   />                          
                                 <field name="vspace" />
                                 <field name="pricelist_id" />

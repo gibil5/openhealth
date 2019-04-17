@@ -449,10 +449,11 @@
 
 
 
-<!--
-					groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors,openhealth.physicians,openhealth.managers"
--->
 					<!-- Add Prod -->
+					<!-- Add Serv -->
+<!--
+
+
 					<button 
 							type="object" 
 							class="oe_highlight"
@@ -463,12 +464,6 @@
 							states="draft"                      
 						/>
 
-
-
-<!--
-					groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.directors,openhealth.physicians,openhealth.managers"
---> 
-					<!-- Add Serv -->
 					<button 
 							type="object" 
 							class="oe_highlight"
@@ -478,6 +473,7 @@
 
 							states="draft"
 						/>
+--> 
 
 
 

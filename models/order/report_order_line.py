@@ -22,6 +22,33 @@ class order_report_nex_line(models.Model):
 
 
 
+# ----------------------------------------------------------- Deprecated ? ------------------------------------------------------
+	# Report Sale 
+	#report_sale_a_id = fields.Many2one(
+	#	'openhealth.report.sale', 
+	#	string='Report Reference', 		
+	#	ondelete='cascade', 
+	#)
+
+	# Report Sale 
+	#report_sale_b_id = fields.Many2one(
+	#	'openhealth.report.sale', 
+	#	string='Report Reference', 		
+	#	ondelete='cascade', 
+	#)
+
+	# Report Sale Product 
+	report_sale_product_id = fields.Many2one(
+		'openhealth.report.sale.product', 
+		string='Report Reference', 		
+		ondelete='cascade', 
+	)
+
+
+
+
+
+
 # ----------------------------------------------------------- Inheritable ------------------------------------------------------
 
 	#name = fields.Text(
@@ -142,31 +169,6 @@ class order_report_nex_line(models.Model):
 
 # ----------------------------------------------------------- Handles ------------------------------------------------------
 	
-	# Report Sale 
-	report_sale_a_id = fields.Many2one(
-		'openhealth.report.sale', 
-		string='Report Reference', 		
-		ondelete='cascade', 
-	)
-
-
-	# Report Sale 
-	report_sale_b_id = fields.Many2one(
-		'openhealth.report.sale', 
-		string='Report Reference', 		
-		ondelete='cascade', 
-	)
-
-
-
-	# Report Sale Product 
-	report_sale_product_id = fields.Many2one(
-		'openhealth.report.sale.product', 
-		string='Report Reference', 		
-		ondelete='cascade', 
-	)
-
-
 	# Order Report Nex 
 	order_report_nex_id = fields.Many2one(
 		'openhealth.order.report.nex', 

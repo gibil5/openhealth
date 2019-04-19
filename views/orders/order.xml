@@ -833,10 +833,11 @@
 <!-- Add -->
 
 				<!-- Short name --> 
+<!--				
 				<xpath expr="//tree/field[@name='name']" position="after">
 					<field name="x_description"/>
 				</xpath>
-
+-->
 
 				<!-- Chatter - Deprecated !!! -->
 				<field name="message_follower_ids" position="replace">

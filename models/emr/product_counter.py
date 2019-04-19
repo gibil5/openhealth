@@ -16,6 +16,27 @@ class ItemCounter(models.Model):
 
 
 
+# ----------------------------------------------------------- Deprecated ? ------------------------------------------------------
+	# Report Sale 
+	#report_sale_a_id = fields.Many2one(
+	#	'openhealth.report.sale', 
+	#	string='Report Reference', 		
+	#	ondelete='cascade', 
+	#)
+
+	#report_sale_b_id = fields.Many2one(
+	#	'openhealth.report.sale', 
+	#	string='Report Reference', 		
+	#	ondelete='cascade', 
+	#)
+
+	#report_sale_c_id = fields.Many2one(
+	#	'openhealth.report.sale', 
+	#	string='Report Reference', 		
+	#	ondelete='cascade', 
+	#)
+
+
 
 
 
@@ -32,32 +53,6 @@ class ItemCounter(models.Model):
 
 
 # ----------------------------------------------------------- Relational ------------------------------------------------------
-
-	# Report Sale 
-	report_sale_a_id = fields.Many2one(
-
-		'openhealth.report.sale', 
-		
-		string='Report Reference', 		
-		ondelete='cascade', 
-	)
-
-	report_sale_b_id = fields.Many2one(
-
-		'openhealth.report.sale', 
-		
-		string='Report Reference', 		
-		ondelete='cascade', 
-	)
-
-	report_sale_c_id = fields.Many2one(
-
-		'openhealth.report.sale', 
-		
-		string='Report Reference', 		
-		ondelete='cascade', 
-	)
-
 
 
 

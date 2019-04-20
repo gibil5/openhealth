@@ -1,4 +1,0 @@
-# Rename all *.xml to *.txt
-for f in *.xml; do 
-    mv -- "$f" "${f%.xml}.txt"
-done

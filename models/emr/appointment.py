@@ -87,7 +87,7 @@ class Appointment(models.Model):
 			string="Tratamiento",
 			ondelete='cascade',
 			readonly=False,
-			required=True,
+			#required=True,
 		)
 
 	# Appointment is NOT Deleted if Session/Control IS Deleted
@@ -239,7 +239,7 @@ class Appointment(models.Model):
 	x_subtype = fields.Selection(
 			selection=app_vars._subtype_list,
 			string="Sub-tipo",
-			required=True,
+			#required=True,
 		)
 
 	# Date End

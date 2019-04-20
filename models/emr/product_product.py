@@ -28,8 +28,11 @@ class ProductProduct(models.Model):
 
 # ----------------------------------------------------------- Electronic - Get Code ----------------------------
 	# Get Code
-	@api.constrains('name')
+	#@api.constrains('name') - Commented because of Warning
 	def get_code(self):
+		"""
+		Used by Electronic
+		"""
 		#print
 		#print 'Get Code'
 		code = '5555555555'

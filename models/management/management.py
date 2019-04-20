@@ -86,7 +86,7 @@ class Management(models.Model):
 			selection=ord_vars._month_order_list,
 			string='Mes',
 			#readonly=True,
-			required=True,
+			#required=True,
 		)
 
 

@@ -482,3 +482,19 @@ access_openhealth_zone_readers,openhealth.zone.readers,model_openhealth_zone,ope
 
 
 
+
+
+
+
+
+
+
+
+access_openhealth_doctor,access_openhealth_doctor,model_openhealth_doctor,,1,1,1,1
+access_openhealth_coder,access_openhealth_coder,model_openhealth_coder,,1,1,1,1
+access_openhealth_service_consultation,access_openhealth_service_consultation,model_openhealth_service_consultation,,1,1,1,1
+access_openhealth_corrector,access_openhealth_corrector,model_openhealth_corrector,,1,1,1,1
+access_openhealth_scheduler,access_openhealth_scheduler,model_openhealth_scheduler,,1,1,1,1
+access_openhealth_configurator,access_openhealth_configurator,model_openhealth_configurator,,1,1,1,1
+access_openhealth_configurator_report,access_openhealth_configurator_report,model_openhealth_configurator_report,,1,1,1,1
+

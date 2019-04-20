@@ -9,7 +9,9 @@
         <!-- Clinica Chavarri -->
         <record id="dr_clinica_chavarri" model="oeh.medical.physician">
             <field name="name">Clinica Chavarri</field>
+<!--
             <field name="x_type">doctor</field>
+-->        
             <field name="consultancy_type">Residential</field>
             <field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
             <field name="idx">9</field>

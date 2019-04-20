@@ -1,7 +1,6 @@
-stock.min 				is declared but cannot be loaded! (Perhaps a module was partially removed or renamed)
-stock.min.inventory 	is declared but cannot be loaded! (Perhaps a module was partially removed or renamed)
 
 openhealth.test 			is declared but cannot be loaded! (Perhaps a module was partially removed or renamed)
+
 openhealth.counter_raw 		is declared but cannot be loaded! (Perhaps a module was partially removed or renamed)
 openhealth.product.min 		is declared but cannot be loaded! (Perhaps a module was partially removed or renamed)
 openhealth.event 			is declared but cannot be loaded! (Perhaps a module was partially removed or renamed)
@@ -24,6 +23,8 @@ printing.report.xml.action is declared but cannot be loaded! (Perhaps a module w
 stock.move.min is declared but cannot be loaded! (Perhaps a module was partially removed or renamed)
 
 
+stock.min 				is declared but cannot be loaded! (Perhaps a module was partially removed or renamed)
+stock.min.inventory 	is declared but cannot be loaded! (Perhaps a module was partially removed or renamed)
 
 
 

@@ -18,6 +18,19 @@ class SaleOrderLine(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Print Ticket -------------------------------
+
+	def get_quantity(self):
+		"""
+		Used by Print Ticket.
+		"""
+		return int(self.product_uom_qty)
+
+
+
+
+
 # ----------------------------------------------------------- Prices ----------
 	# Price Unit
 	price_unit = fields.Float(

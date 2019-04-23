@@ -108,6 +108,11 @@ class AccountContasis(models.Model):
 		)
 
 
+# ----------------------------------------------------------- Test --------------------------------
+	test_target = fields.Boolean(
+			string="Test Target",
+		)
+
 
 # ----------------------------------------------------------- Update ------------------------------
 
@@ -236,8 +241,3 @@ class AccountContasis(models.Model):
 	# update
 
 
-# ----------------------------------------------------------- Test --------------------------------
-
-	test_target = fields.Boolean(
-			string="Test Target",
-		)

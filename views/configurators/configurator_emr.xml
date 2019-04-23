@@ -97,21 +97,16 @@
 
 
                             <!-- Doctors --> 
+<!--                            
                             <page   string="Medicos Activos">
-
                                 <field name="doctor_line">
-                                
                                     <tree string="Drs.">
-<!--
--->
                                         <field name="name"/>
-
                                         <field name="active"/>
-
                                     </tree>
                                 </field>
                             </page>
-
+-->
 
 						</notebook>
 

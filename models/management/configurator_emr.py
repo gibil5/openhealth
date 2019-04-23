@@ -23,6 +23,16 @@ class ConfiguratorEmr(models.Model):
 
 
 
+# ----------------------------------------------------------- Dep -------------------------------
+	# Doctor Line
+	#doctor_line = fields.One2many(
+	#		'openhealth.doctor',
+
+	#		'configurator_emr_id',
+	#	)
+
+
+
 
 # ----------------------------------------------------------- Relational -------------------------------
 
@@ -36,12 +46,6 @@ class ConfiguratorEmr(models.Model):
 
 
 
-	# Doctor Line
-	doctor_line = fields.One2many(
-			'openhealth.doctor',
-
-			'configurator_emr_id',
-		)
 
 
 

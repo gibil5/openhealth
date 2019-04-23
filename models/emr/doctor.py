@@ -23,6 +23,12 @@ class Doctor(models.Model):
 
 
 
+# ----------------------------------------------------------- Dep --------------------------
+	#configurator_emr_id = fields.Many2one(
+	#		'openhealth.configurator.emr'
+	#	)
+
+
 
 # ----------------------------------------------------------- Fields --------------------------
 
@@ -39,8 +45,3 @@ class Doctor(models.Model):
 
 
 
-# ----------------------------------------------------------- Relational --------------------------
-
-	configurator_emr_id = fields.Many2one(
-			'openhealth.configurator.emr'
-		)

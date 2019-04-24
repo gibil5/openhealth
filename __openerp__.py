@@ -630,15 +630,14 @@
 
 # ----------------------------------------------------------- Menus ------------------------------------------------------
 		'views/menus/menus.xml',
-
 		'views/menus/menus_app.xml',
-
 		'views/menus/menus_config.xml',
-
 		'views/menus/menus_openhealth.xml',		
 
 
-		'views/menus/menus_products.xml',
+		#'views/menus/menus_products.xml',
+
+
 		'views/menus/menus_caja.xml',
 		'views/menus/menus_reporting.xml',
 		'views/menus/menus_marketing.xml',		 

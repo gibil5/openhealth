@@ -7,69 +7,6 @@
 <!-- Data - New Physicians -->
 
 
-<!-- Rodrigo Loaiza -->
-        <record id="dr_loayza" model="oeh.medical.physician">
-            <field name="name">Dr. Loaiza</field>
-            <field name="consultancy_type">Residential</field>
-            <field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
-            <field name="idx">4</field>
-
-            <field name="x_user_name" search="[('name','=','Rodrigo Loaiza')]"/>
-        </record>
-
-
-        <!-- Days -->
-        <record id="loa_mon" model="oeh.medical.physician.line">
-            <field name="physician_id" ref="dr_loayza"/>
-            <field name="name">Monday</field>
-            <field name="start_time">8.98333333333</field>
-            <field name="end_time">21.0166666667</field>
-        </record>
-
-        <record id="loa_tue" model="oeh.medical.physician.line">
-            <field name="physician_id" ref="dr_loayza"/>
-            <field name="name">Tuesday</field>
-            <field name="start_time">8.98333333333</field>
-            <field name="end_time">21.0166666667</field>
-        </record>
-        
-        <record id="loa_wed" model="oeh.medical.physician.line">
-            <field name="physician_id" ref="dr_loayza"/>
-            <field name="name">Wednesday</field>
-            <field name="start_time">8.98333333333</field>
-            <field name="end_time">21.0166666667</field>
-        </record>
-        
-        <record id="loa_thu" model="oeh.medical.physician.line">
-            <field name="physician_id" ref="dr_loayza"/>
-            <field name="name">Thursday</field>
-            <field name="start_time">8.98333333333</field>
-            <field name="end_time">21.0166666667</field>
-        </record>
-        
-        <record id="loa_fri" model="oeh.medical.physician.line">
-            <field name="physician_id" ref="dr_loayza"/>
-            <field name="name">Friday</field>
-            <field name="start_time">8.98333333333</field>
-            <field name="end_time">21.0166666667</field>
-        </record>
-        
-        <record id="loa_sat" model="oeh.medical.physician.line">
-            <field name="physician_id" ref="dr_loayza"/>
-            <field name="name">Saturday</field>
-            <field name="start_time">8.98333333333</field>
-            <field name="end_time">21.0166666667</field>
-        </record>
-        
-        <record id="loa_sun" model="oeh.medical.physician.line">
-            <field name="physician_id" ref="dr_loayza"/>
-            <field name="name">Sunday</field>
-            <field name="end_time">21.0166666667</field>
-            <field name="start_time">8.98333333333</field>
-        </record>
-
-
-
 
 <!-- Luis Castillo -->
         <record id="dr_castillo" model="oeh.medical.physician">

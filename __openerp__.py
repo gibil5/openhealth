@@ -6,7 +6,7 @@
 
 	'description': """
 
-		23 April 2019
+		24 April 2019
 
 		Remember, it is just a Bigger game:
 			- DEV = 9x9
@@ -138,8 +138,9 @@
 
 		# Doctors
 		'data/physicians/base_data_physicians.xml',				
-		#'data/physicians/base_data_physicians_inactive.xml',		Dep ???
-		'data/physicians/base_data_physicians_new.xml',				
+		'data/physicians/base_data_physicians_new.xml',	
+					
+		'data/physicians/base_data_physicians_inactive.xml',		
 
 
 

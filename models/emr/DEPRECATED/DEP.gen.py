@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
- 		gen.py
+ 		gen.py				Deprecated - 2019
 
  		Generates Names and Description, from Short Names. 
  

@@ -1,22 +1,37 @@
 # -*- coding: utf-8 -*-
-#
-# 		*** Product Selector 
-# 
-# 		Created: 			25 Jan 2018
-# 		Last updated: 	 	28 Aug 2018 
-#
+"""
+	Product Selector - 		Highly Deprecated 2019
+
+	Created: 				25 Jan 2018
+ 	Last up: 	 			24 April 2019
+
+	Used by: Order
+
+	24 Apr 2019:			Cleanup after 2019 PL. Must disappear:
+							- Onchanges. 
+"""
 from openerp import models, fields, api
 import openerp.addons.decimal_precision as dp
-#import prodvars
-
 
 class ProductSelector(models.Model):
 	
 	#_inherit = 'res.partner'
+
 	#_order = 'write_date desc'
+
 	_name = 'openhealth.product.selector'
+
 	_description = 'Product Selector'
 
+
+
+# ----------------------------------------------------------- Relational - Dep ------------------------------
+	# Zone 
+	#zone = fields.Many2one(
+	#		'openhealth.zone',
+	#		string='Zona', 
+			#create_edit=False, 
+	#	)
 
 
 
@@ -76,12 +91,6 @@ class ProductSelector(models.Model):
 		)
 	
 
-	# Zone 
-	zone = fields.Many2one(
-			'openhealth.zone', 
-			string='Zona', 
-			#create_edit=False, 
-		)
 
 
 	# Product 

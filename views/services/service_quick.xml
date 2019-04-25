@@ -38,6 +38,7 @@
                         <field name="vspace" />
                         <field name="nex_zone"          string='Zona'       widget="radio" />
                         <field name="vspace" />
+<!--
                         <field name="nr_hands_i"        invisible="1"   />
                         <field name="nr_body_local_i"   invisible="1"   />          
                         <field name="nr_face_local_i"   invisible="1"   />
@@ -47,6 +48,7 @@
                         <field name="nr_face_all_neck"  invisible="1"   />
                         <field name="nr_neck"           invisible="1"   />
                         <field name="nr_neck_hands"     invisible="1"   />
+-->
                 </xpath>
 
 

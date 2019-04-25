@@ -1,9 +1,15 @@
 # -*- coding: utf-8 -*-
-#
-# 	Pathology 
-# 
-# Created: 				26 Dec 2016
-# Last updated: 	 	id.
+"""
+	Pathology - 		Deprecated 2019
+
+	Created: 			26 Dec 2016
+ 	Last up: 	 		24 April 2019
+
+	Used by: Product Selector and Service.
+
+	24 Apr 2019:		Cleanup after 2019 PL. Must disappear:
+						- Onchanges. 
+"""
 
 from openerp import models, fields, api
 

@@ -1,16 +1,27 @@
 # -*- coding: utf-8 -*-
-#
-# 	Zones 
-# 
-# Created: 				26 Jan 2018
-# 
+"""
+	Zones - 			Deprecated 2019
+
+	Created: 			26 Jan 2018
+ 	Last up: 	 		24 April 2019
+
+	Used by: Product Selector.
+
+	24 Apr 2019:		Cleanup after 2019 PL. Must disappear:
+						- Onchanges. 
+"""
 from openerp import models, fields, api
 
 
 class Zone(models.Model):
+
 	_name = 'openhealth.zone'
+	
 	_order = 'name_short asc'
 
+
+
+# ----------------------------------------------------------- Natives ------------------------------
 	name = fields.Char(
 			string="Nombre", 
 		)

@@ -1,10 +1,15 @@
 # -*- coding: utf-8 -*-
-#
-# 	Nexzone 
-# 
-# Created: 				01 Feb 2018
-# Last updated: 	 	01 Aug 2018
-#
+"""
+	Nexzone -		 	Deprecated 2019
+
+	Created: 			01 Feb 2018
+ 	Last up: 	 		24 April 2019
+
+	Used by: Product Selector.
+
+	24 Apr 2019:		Cleanup after 2019 PL. Must disappear:
+						- Onchanges. 
+"""
 
 from openerp import models, fields, api
 

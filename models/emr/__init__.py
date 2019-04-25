@@ -1,21 +1,14 @@
 # -*- coding: utf-8 -*-
 
-
-from . import product_selector
+# Reporting
 from . import product_counter 
 
-
-# Deprecated ? - Price list 2019
-#from . import product_pricelist_item
-#from . import product_min
-
-
+# For Order Lines
 from . import product_product
 
 
 
 # Medical
-
 from . import product
 from . import image		
 from . import allergy
@@ -33,10 +26,19 @@ from . import doctor
 
 
 
+
+# Deprecated - Price list 2019
+
+#from . import product_pricelist_item
+#from . import product_min
+
+# Product Selector
+#from . import product_selector  	# Dep 2019
+
 # Zones
-from . import zone
-from . import nexzone
-from . import pathology
+#from . import zone 				# Dep 2019
+#from . import nexzone 				# Dep 2019
+#from . import pathology  			# Dep 2019
 
 
 

@@ -6,7 +6,7 @@
 
 	'description': """
 
-		24 April 2019
+		25 April 2019
 
 		Remember, it is just a Bigger game:
 			- DEV = 9x9
@@ -113,22 +113,25 @@
 		'data/categs/base_data_categs_prods.xml',			
 
 
-		# Important 
-		#'views/pathologies/pathology.xml',
-		'data/pathologies/pathology.xml',
 
-		'data/prods/zone/data_pathologies.xml',			
-		'data/prods/zone/data_nexzones.xml',	
+
+
+		# Deprecated - After cleanup 2019
+		# Important 
+		#'data/pathologies/pathology.xml',
+		#'data/prods/zone/data_pathologies.xml',			
+		#'data/prods/zone/data_nexzones.xml',
 
 		# Zone
-		#'views/zones/zone.xml',
-		'views/zones/zone_actions.xml',
+		#'views/zones/zone_actions.xml',
+		#'data/prods/zone/data_zones_quick.xml',			 
+		#'data/prods/zone/data_zones_co2.xml',			 
+		#'data/prods/zone/data_zones_excilite.xml',			 
+		#'data/prods/zone/data_zones_ipl.xml',			 
+		#'data/prods/zone/data_zones_ndyag.xml',			 
 
-		'data/prods/zone/data_zones_quick.xml',			 
-		'data/prods/zone/data_zones_co2.xml',			 
-		'data/prods/zone/data_zones_excilite.xml',			 
-		'data/prods/zone/data_zones_ipl.xml',			 
-		'data/prods/zone/data_zones_ndyag.xml',			 
+
+
 
 
 		# Allergy 
@@ -232,8 +235,8 @@
 
 		# ----------------------------------------------------------- Recent ------------------------------------------------------
 
-		# Product Selector
-		'views/product_selectors/product_selector.xml',
+		# Product Selector  
+		#'views/product_selectors/product_selector.xml',		# Dep - 2019
 
 
 
@@ -537,12 +540,16 @@
 		#'views/services/service_vip.xml',					# Dep
 
 
-		'views/services/zones/service_co2_zone.xml',
-		'views/services/zones/service_excilite_zone.xml',
-		'views/services/zones/service_ipl_zone.xml',
-		'views/services/zones/service_ndyag_zone.xml',
-		'views/services/zones/service_medical_zone.xml',
-		'views/services/zones/service_cosmetology_zone.xml',
+
+
+
+		# Deprecated - 24 Apr 2019 - New Price List
+		#'views/services/zones/service_co2_zone.xml',
+		#'views/services/zones/service_excilite_zone.xml',
+		#'views/services/zones/service_ipl_zone.xml',
+		#'views/services/zones/service_ndyag_zone.xml',
+		#'views/services/zones/service_medical_zone.xml',
+		#'views/services/zones/service_cosmetology_zone.xml',
 
 
 

@@ -11,7 +11,9 @@
 from datetime import datetime
 from openerp import models, fields, api
 from . import ipl
-from . import prodvars
+
+#from . import prodvars
+from openerp.addons.openhealth.models.emr import prodvars
 
 class ServiceIpl(models.Model):
 	

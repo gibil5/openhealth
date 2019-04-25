@@ -10,8 +10,11 @@
 """
 from openerp import models, fields, api
 from datetime import datetime
+
 from . import exc
-from . import prodvars
+
+#from . import prodvars
+from openerp.addons.openhealth.models.emr import prodvars
 
 class ServiceExcilite(models.Model):
 

@@ -4,8 +4,11 @@
 """
 from openerp import models, fields, api
 from datetime import datetime
-from . import prodvars
 from . import quick
+
+#from . import prodvars
+from openerp.addons.openhealth.models.emr import prodvars
+
 
 class ServiceQuick(models.Model):
 

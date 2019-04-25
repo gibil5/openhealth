@@ -8,8 +8,11 @@
 								- Onchanges. 
 """
 from openerp import models, fields, api
-from . import prodvars
 from . import cosvars
+
+#from . import prodvars
+from openerp.addons.openhealth.models.emr import prodvars
+
 
 class ServiceCosmetology(models.Model):
 	"""

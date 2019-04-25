@@ -41,7 +41,8 @@
 
                             <field name="vspace"/>
 
-                            <field name="x_generated"/>
+
+
                             <field name="x_code"/>
                             <field name="description"/>
                             <field name="x_name_short"/>                            
@@ -115,6 +116,8 @@
         </record>
 
 <!--
+                            <field name="x_generated"/>
+
                             <field name="x_client_type"/>               
                             <field name="type"/>
                             <field name="tax"/>
@@ -199,8 +202,7 @@ black:x_checksum_1=='1'
 
 
                     <field name="x_name_short"/>
-                    <field name="x_generated"/>
-                    <field name="x_name_ticket"/>
+
 
 
 
@@ -248,7 +250,10 @@ black:x_checksum_1=='1'
                 </tree>
             </field>
         </record>
-
+<!--
+                    <field name="x_generated"/>
+                    <field name="x_name_ticket"/>
+-->
 
 
 

@@ -40,8 +40,6 @@ from . import doctor
 #from . import nexzone 				# Dep 2019
 #from . import pathology  			# Dep 2019
 
-
-
 # Services 
 from . import service
 from . import service_co2

@@ -83,6 +83,12 @@ from patient import *
 # EMR
 from emr import *
 
+
+from service import *
+
+
+
+
 #from . import product_counter 
 
 #from . import product_pricelist_item

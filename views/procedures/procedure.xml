@@ -24,14 +24,15 @@
                             groups="openhealth.roots,openhealth.archivers,openhealth.managers,openhealth.physicians,openhealth.directors"
 
                             name="create_controls"
--->
-                        <button 
-                            type="object" 
-                            class="oe_highlight"
+
                             attrs="{'invisible':[
                                                     ('laser', '!=', 'laser_quick'), 
                                                     ('laser', '!=', 'laser_co2'), 
                                                 ]}"
+-->
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
 
                             name="create_controls_manual" 
 

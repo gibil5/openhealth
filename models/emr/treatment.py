@@ -11,7 +11,9 @@ from openerp import models, fields, api
 from . import time_funcs
 from . import treatment_vars
 from . import reco_funcs
+
 from openerp.addons.openhealth.models.libs import creates as cre
+
 from openerp.addons.openhealth.models.libs import lib, user
 from . import test_foo
 

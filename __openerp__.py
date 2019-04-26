@@ -557,8 +557,8 @@
 
 
 		# Procedures - 2  
-		'views/procedures/procedure_controls.xml',
-		'views/procedures/procedure_sessions.xml',		
+		#'views/procedures/procedure_controls.xml',				# Dep 2019
+		#'views/procedures/procedure_sessions.xml',				# Id.
 
 
 		# Consultation - 2

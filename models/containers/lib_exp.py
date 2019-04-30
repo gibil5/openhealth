@@ -48,8 +48,9 @@ def format_txt(order):
 	"""
 	high level support for doing this and that.
 	"""
-	#print
-	#print 'Format Txt'
+	print()
+	print('Format Txt')
+
 
 	# Init
 	#ret = "\n"
@@ -217,9 +218,11 @@ def format_txt(order):
 
 
 
+	# 1
 	# Coeff - Here !
-	coeff = order.get_coeff()
-	amount_total_tax = coeff * order.amount_total_tax
+	#coeff = order.get_coeff()
+	#amount_total_tax = coeff * order.amount_total_tax
+	amount_total_tax = abs(order.amount_total_tax)
 
 
 
@@ -254,11 +257,11 @@ def format_txt(order):
 
 
 
-
+	# 2
 	# Coeff - Here !
-	coeff = order.get_coeff()
-	
-	amount_total = coeff * order.amount_total
+	#coeff = order.get_coeff()
+	#amount_total = coeff * order.amount_total
+	amount_total =  abs(order.amount_total)
 
 
 	#table_3 = blank + sep + acc.fmt(order.amount_total) + \
@@ -292,11 +295,11 @@ def format_txt(order):
 
 
 
-
+	# 3
 	# Coeff - Here !
-	coeff = order.get_coeff()
-
-	amount_total_net = coeff * order.amount_total_net
+	#coeff = order.get_coeff()
+	#amount_total_net = coeff * order.amount_total_net
+	amount_total_net = abs(order.amount_total_net)
 
 
 
@@ -414,15 +417,18 @@ def format_txt(order):
 		account_code = line.product_id.get_code()
 
 
-
+		# 4
 		# Coeff - Here !
-		coeff = order.get_coeff()
+		#coeff = order.get_coeff()
+		#price_net = coeff * line.price_net
+		#price_unit = coeff * line.price_unit
+		#price_tax = coeff * line.price_tax
+		#price_unit_net = coeff * line.price_unit_net
 
-		price_net = coeff * line.price_net
-		price_unit = coeff * line.price_unit
-		price_tax = coeff * line.price_tax
-		price_unit_net = coeff * line.price_unit_net
-
+		price_net = abs(line.price_net)
+		price_unit = abs(line.price_unit)
+		price_tax = abs(line.price_tax)
+		price_unit_net = abs(line.price_unit_net)
 
 
 

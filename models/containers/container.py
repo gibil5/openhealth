@@ -6,6 +6,7 @@
 	Last mod: 				 4 Nov 2018
 """
 from __future__ import print_function
+
 import base64
 import io
 import datetime
@@ -19,6 +20,41 @@ class Container(models.Model):
 	high level support for doing this and that.
 	"""
 	_name = 'openhealth.container'
+
+
+
+# ----------------------------------------------------------- Export ------------------------------
+	@api.multi
+	def export_txt(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Export - Txt')
+
+		# Clean
+		self.txt_ids.unlink()
+
+
+
+		# Export - Here !
+		fname = export.export_txt(self, self.mgt.electronic_order, self.export_date)
+
+
+
+		# Download file
+		fname_txt = fname.split('/')[-1]
+		# Read Binary
+		f = io.open(fname, mode="rb")
+		out = f.read()
+		f.close()
+
+		# Update
+		self.write({
+					'txt_pack': base64.b64encode(out),
+					'txt_pack_name': fname_txt,
+				})
+	# export_txt
 
 
 
@@ -381,38 +417,6 @@ class Container(models.Model):
 	# clear
 
 
-# ----------------------------------------------------------- Export ------------------------------
-	@api.multi
-	def export_txt(self):
-		"""
-		high level support for doing this and that.
-		"""
-		#print
-		#print 'Export - Txt'
-
-		# Clean
-		self.txt_ids.unlink()
-
-
-		# Export
-		fname = export.export_txt(self, self.mgt.electronic_order, self.export_date)
-
-
-		# Download file
-		fname_txt = fname.split('/')[-1]
-		# Read Binary
-		f = io.open(fname, mode="rb")
-		out = f.read()
-		f.close()
-
-
-		# Update
-		self.write({
-					'txt_pack': base64.b64encode(out),
-					'txt_pack_name': fname_txt,
-				})
-
-	# export_txt
 
 
 
@@ -449,7 +453,6 @@ class Container(models.Model):
 
 		# Create
 		self.amount_total, self.receipt_count, self.invoice_count = self.mgt.update_electronic()
-
 
 	# create_electronic
 

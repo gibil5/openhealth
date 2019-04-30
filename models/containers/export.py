@@ -6,6 +6,7 @@
 	Last up: 	 		12 Sep 2018
 """
 from __future__ import print_function  # Only needed for Python 2
+
 import os
 import shutil
 import io
@@ -18,8 +19,8 @@ def export_txt(self, electronic_order, export_date):
 	"""
 	high level support for doing this and that.
 	"""
-	#print
-	#print 'Export Text'
+	print()
+	print('Export Text')
 	#print(os.environ['HOME'])
 
 	# Init
@@ -78,9 +79,12 @@ def create_txt(self, order, path):
 	"""
 	high level support for doing this and that.
 	"""
+	print()
+	print('Create Txt')
 
 	# Init
 	file_name = lib_exp.get_file_name(order)		# File name
+
 
 
 
